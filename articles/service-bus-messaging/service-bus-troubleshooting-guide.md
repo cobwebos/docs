@@ -15,19 +15,19 @@ ms.workload: na
 ms.date: 04/07/2020
 ms.author: aschhab
 ms.openlocfilehash: 63bf035d4e19cc1d64998a6ad533812e71ee71b8
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80887770"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Azure 服务总线故障排除指南
-本文针对使用 Azure 服务总线时可能看到的一些问题提供了故障排除提示和建议。 
+本文提供了有关使用 Azure 服务总线时可能会遇到的一些问题的疑难解答提示和建议。 
 
 ## <a name="connectivity-certificate-or-timeout-issues"></a>连接性、证书或超时问题
 以下步骤可帮助排除 *.servicebus.windows.net 下所有服务的连接性/证书/超时问题。 
 
-- 浏览到 或[wget](https://www.gnu.org/software/wget/) `https://<yournamespace>.servicebus.windows.net/`。 这可帮助检查是否存在 IP 筛选或虚拟网络或证书链问题（使用 java SDK 时最常见）。
+- 浏览到或[wget](https://www.gnu.org/software/wget/) `https://<yournamespace>.servicebus.windows.net/`。 这可帮助检查是否存在 IP 筛选或虚拟网络或证书链问题（使用 java SDK 时最常见）。
 
     成功消息的示例：
     
@@ -56,7 +56,7 @@ ms.locfileid: "80887770"
     ```shell
     telnet <yournamespacename>.servicebus.windows.net 5671
     ```
-- 出现间歇性连接问题时，请运行以下命令，检查是否存在任何丢弃的数据包。 此命令会尝试通过服务每隔 1 秒建立 25 个不同的 TCP 连接。 然后，可以检查其中有多少成功/失败，还可以查看 TCP 连接延迟。 你可以`psping`[从这里](/sysinternals/downloads/psping)下载该工具。
+- 出现间歇性连接问题时，请运行以下命令，检查是否存在任何丢弃的数据包。 此命令会尝试通过服务每隔 1 秒建立 25 个不同的 TCP 连接。 然后，可以检查其中有多少成功/失败，还可以查看 TCP 连接延迟。 你可以从`psping` [此处](/sysinternals/downloads/psping)下载该工具。
 
     ```shell
     .\psping.exe -n 25 -i 1 -q <yournamespace>.servicebus.windows.net:5671 -nobanner     
@@ -67,27 +67,27 @@ ms.locfileid: "80887770"
 ## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>服务升级/重新启动时可能出现的问题
 后端服务升级和重新启动可能会对应用程序造成以下影响：
 
-- 请求可能会暂时受到限制。
-- 传入消息/请求可能会下降。
+- 可能会暂时限制请求。
+- 传入消息/请求中可能有删除项。
 - 日志文件可能包含错误消息。
-- 应用程序可能会断开与服务几秒钟的时间。
+- 应用程序可能会在几秒钟后断开与服务的连接。
 
-如果应用程序代码使用 SDK，则重试策略已内置并处于活动状态。 应用程序将重新连接，而不会对应用程序/工作流造成重大影响。
+如果应用程序代码使用 SDK，则重试策略已内置并处于活动状态。 应用程序将重新连接，而不会对应用程序/工作流产生严重影响。
 
 ## <a name="unauthorized-access-send-claims-are-required"></a>未经授权的访问：需要发送声明
-当尝试使用具有发送权限的用户分配的托管标识从本地计算机上的 Visual Studio 访问服务总线主题时，可能会看到此错误。
+尝试使用具有 send 权限的用户分配的托管标识从本地计算机上的 Visual Studio 访问服务总线主题时，可能会看到此错误。
 
 ```bash
 Service Bus Error: Unauthorized access. 'Send' claim\(s\) are required to perform this operation.
 ```
 
-要解决此错误，请安装[Microsoft.Azure.服务.App身份验证](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/)库。  有关详细信息，请参阅[本地开发身份验证](..\key-vault\service-to-service-authentication.md#local-development-authentication)。 
+若要解决此错误，请安装[microsoft.azure.services.appauthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/)库。  有关详细信息，请参阅[本地开发身份验证](..\key-vault\service-to-service-authentication.md#local-development-authentication)。 
 
-要了解如何为角色分配权限，请参阅使用[Azure 活动目录对托管标识进行身份验证以访问 Azure 服务总线资源](service-bus-managed-service-identity.md)。
+若要了解如何向角色分配权限，请参阅[使用 Azure Active Directory 对托管标识进行身份验证，以访问 Azure 服务总线资源](service-bus-managed-service-identity.md)。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章： 
 
-- [Azure 资源管理器异常](service-bus-resource-manager-exceptions.md)。 它列出使用 Azure 资源管理器（通过模板或直接调用）与 Azure 服务总线交互时生成的异常。
-- [消息异常](service-bus-messaging-exceptions.md)。 它提供了由 .NET 框架为 Azure 服务总线生成的异常列表。 
+- [Azure 资源管理器例外](service-bus-resource-manager-exceptions.md)。 它列出了使用 Azure 资源管理器（通过模板或直接调用）与 Azure 服务总线交互时生成的异常。
+- [消息传送异常](service-bus-messaging-exceptions.md)。 它提供 Azure 服务总线 .NET Framework 生成的异常列表。 
 

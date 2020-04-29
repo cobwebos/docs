@@ -1,15 +1,15 @@
 ---
-title: 存储和备份的最佳做法
+title: 存储和备份最佳做法
 titleSuffix: Azure Kubernetes Service
 description: 了解有关 Azure Kubernetes 服务 (AKS) 中的存储、数据加密和备份的群集操作员最佳做法
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 843b775f7761af7cd40140c9bf34768d63eb5a50
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80877892"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的存储和备份的最佳做法
@@ -32,7 +32,7 @@ ms.locfileid: "80877892"
 
 下表概述了可用的存储类型及其功能：
 
-| 用例 | 卷插件 | 读/写一次 | 只读多次 | 读/写多次 | Windows 服务器容器支持 |
+| 用例 | 卷插件 | 读/写一次 | 只读多次 | 读/写多次 | Windows Server 容器支持 |
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
 | 共享配置       | Azure 文件   | 是 | 是 | 是 | 是 |
 | 结构化应用数据        | Azure 磁盘   | 是 | 否  | 否  | 是 |
@@ -40,7 +40,7 @@ ms.locfileid: "80877892"
 
 为 AKS 中的卷提供的两种主要存储类型由 Azure 磁盘或 Azure 文件支持。 为了提高安全性，两种类型的存储都默认使用 Azure 存储服务加密 (SSE) 来加密静态数据。 目前无法使用 AKS 节点级别的 Azure 磁盘加密对磁盘进行加密。
 
-Azure 文件和 Azure 磁盘在标准性能和高级性能层中都可用：
+Azure 文件和 Azure 磁盘均可用于 "标准" 和 "高级" 性能层：
 
 - *高级*磁盘由高性能固态硬盘 (SSD) 支持。 建议为所有生产工作负载使用高级磁盘。
 - *标准*磁盘由常规旋转磁盘 (HDD) 支持，适用于存档或不经常访问的数据。
@@ -76,7 +76,7 @@ AKS 节点作为 Azure VM 运行。 有不同类型和大小的 VM 可使用。 
 
 ![Azure Kubernetes 服务 (AKS) 群集中的永久性卷声明](media/concepts-storage/persistent-volume-claims.png)
 
-通过永久性卷声明 (PVC)，可根据需要动态创建存储。 基础 Azure 磁盘是根据 pod 的请求创建的。 在 pod 定义中，您请求创建卷并将其附加到指定的装载路径。
+通过永久性卷声明 (PVC)，可根据需要动态创建存储。 基础 Azure 磁盘是根据 pod 的请求创建的。 在 pod 定义中，请求创建卷并将其附加到指定的装载路径。
 
 有关如何动态创建和使用卷，请参阅[永久性卷声明][aks-concepts-storage-pvcs]。
 

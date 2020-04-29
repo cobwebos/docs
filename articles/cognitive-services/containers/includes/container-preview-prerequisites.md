@@ -1,18 +1,18 @@
 ---
-title: 容器公共预览先决条件
+title: 容器公共预览版必备组件
 services: cognitive-services
 author: aahill
 manager: nitinme
-description: 公共预览容器的常见先决条件
+description: 公共预览版容器的常见先决条件
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 01df991e469c35f171d89b99ca9054ee620ebcca
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80875094"
 ---
 ## <a name="prerequisites"></a>先决条件

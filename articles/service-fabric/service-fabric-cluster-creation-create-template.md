@@ -4,10 +4,10 @@ description: 了解如何为 Service Fabric 群集创建资源管理器模板。
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.openlocfilehash: 6cf0f9c3b8b54db7bd27ec8dd9c9d59d849c74cc
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80985365"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>创建 Service Fabric 群集 Resource Manager 模板
@@ -30,10 +30,10 @@ ms.locfileid: "80985365"
 > 对于国家/地区云（Azure 政府、Azure 中国、Azure 德国），还应将以下 `fabricSettings` 添加到模板：`AADLoginEndpoint`、`AADTokenEndpointFormat` 和 `AADCertEndpointFormat`。
 
 ## <a name="add-certificates"></a>添加证书
-通过引用包含证书密钥的密钥保管库将证书添加到群集 Resource Manager 模板。 将这些密钥保管库参数和值添加到资源管理器模板参数文件 *（azuredeploy.parameters.json*） 中。
+通过引用包含证书密钥的密钥保管库将证书添加到群集 Resource Manager 模板。 在资源管理器模板参数文件 (*azuredeploy.parameters.json*) 中添加这些密钥保管库参数和值。
 
 ### <a name="add-all-certificates-to-the-virtual-machine-scale-set-osprofile"></a>将所有证书都添加到虚拟机规模集 osProfile
-群集中安装的每个证书都必须在规模集资源的**osProfile**部分（Microsoft.Compute/VirtualMachineScaleSet）中配置。 该操作会指示资源提供程序在 VM 上安装证书。 此安装包括群集证书和打算用于应用程序的任何应用程序安全证书：
+必须在规模集资源 (Microsoft.Compute/virtualMachineScaleSets) 的 **osProfile** 节中配置在群集中安装的每个证书。 该操作会指示资源提供程序在 VM 上安装证书。 此安装包括群集证书和打算用于应用程序的任何应用程序安全证书：
 
 ```json
 {
@@ -132,7 +132,7 @@ ms.locfileid: "80985365"
 
 ## <a name="add-azure-ad-configuration-to-use-azure-ad-for-client-access"></a>添加 Azure AD 配置以使用 Azure AD 访问客户端
 
-通过引用包含证书密钥的密钥保管库，将 Azure AD 配置添加到群集资源管理器模板。 将这些 Azure AD 参数和值添加到资源管理器模板参数文件 *（azuredeploy.parameter.json*） 中。 
+通过引用包含证书密钥的密钥保管库，将 Azure AD 配置添加到群集资源管理器模板。 在资源管理器模板参数文件 (*azuredeploy.parameters.json*) 中添加这些 Azure AD 参数和值。 
 
 > [!NOTE]
 > 在 Linux 上，创建群集之前必须先创建 Azure AD 租户和用户。  有关详细信息，请阅读[设置 Azure AD 来对客户端进行身份验证](service-fabric-cluster-creation-setup-aad.md)。
@@ -254,9 +254,9 @@ Test-AzResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFil
 
 * [Microsoft.ServiceFabric/clusters](/azure/templates/microsoft.servicefabric/clusters)
 * [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
-* [微软.网络/虚拟网络](/azure/templates/microsoft.network/virtualnetworks)
-* [微软.网络/公共IP地址](/azure/templates/microsoft.network/publicipaddresses)
-* [微软.网络/负载平衡器](/azure/templates/microsoft.network/loadbalancers)
+* [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+* [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
+* [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
 * [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets)
 
 <!-- Links -->

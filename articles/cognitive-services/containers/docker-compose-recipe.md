@@ -11,29 +11,29 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 458cda927a6a123fcd9962efc6ab705e13f43286
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80878776"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>使用 Docker Compose 部署多个容器
 
 本文介绍如何部署多个 Azure 认知服务容器。 具体而言，其中将会介绍如何使用 Docker Compose 来协调多个 Docker 容器映像。
 
-> [Docker Compose](https://docs.docker.com/compose/) 是用于定义和运行多容器 Docker 应用程序的工具。 在"撰写"中，您可以使用 YAML 文件来配置应用程序的服务。 然后，运行一条命令，即可从配置中创建并启动所有服务。
+> [Docker Compose](https://docs.docker.com/compose/) 是用于定义和运行多容器 Docker 应用程序的工具。 使用 YAML 文件来配置应用程序的服务。 然后，运行一条命令，即可从配置中创建并启动所有服务。
 
-使用 Compose 可在一台主计算机上方便地协调多个容器映像。 在本文中，我们将组合读取和表单识别器容器。
+使用 Compose 可在一台主计算机上方便地协调多个容器映像。 在本文中，我们会将读取和窗体识别器容器组合在一起。
 
 ## <a name="prerequisites"></a>先决条件
 
 此过程要求必须在本地安装和运行多个工具：
 
 * Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
-* [多克引擎](https://www.docker.com/products/docker-engine)。 确认 Docker CLI 是否可在控制台窗口中工作。
+* [Docker 引擎](https://www.docker.com/products/docker-engine)。 确认 Docker CLI 是否可在控制台窗口中工作。
 * 具有适当定价层的 Azure 资源。 只有以下定价层适用于此容器：
   * 仅限使用 F0 或标准定价层的“计算机视觉”资源。****
-  * 仅具有 F0 或标准定价层**的窗体识别器**资源。
+  * 仅具有 F0 或标准定价层的**窗体识别器**资源。
   * 具有 S0 定价层的认知服务资源****。
 
 ## <a name="request-access-to-the-container-registry"></a>请求访问容器注册表
@@ -87,9 +87,9 @@ services:
 使用 Docker Compose 文件可以管理所定义服务的生命周期中的所有阶段：启动、停止和重新生成服务；查看服务状态；记录流。 从项目目录（docker-compose.yaml 文件所在的位置）打开命令行接口。
 
 > [!NOTE]
-> 为了避免出错，请确保主计算机与 Docker 引擎正确共享驱动器。 例如，如果*E：\公共预览*在*docker-compose.yaml*文件中用作目录，则与 Docker 共享驱动器**E。**
+> 为了避免出错，请确保主计算机与 Docker 引擎正确共享驱动器。 例如，如果将*E:\publicpreview*用作*docker yaml*文件中的目录，请将驱动器**E**与 docker 共享。
 
-从命令行接口中，执行以下命令以启动（或重新启动 *）docker-compose.yaml*文件中定义的所有服务：
+在命令行界面中，执行以下命令以启动（或重新启动） *docker yaml*文件中定义的所有服务：
 
 ```console
 docker-compose up
@@ -172,7 +172,7 @@ IMAGE ID            REPOSITORY                                                  
 
 ### <a name="test-containers"></a>测试容器
 
-在主机上打开浏览器，并使用*docker-compose.yaml*文件中的指定端口转到http://localhost:5021/swagger/index.html**本地主机**，例如 。 例如，可以使用 API 中的 **"尝试它"** 功能来测试表单识别器终结点。 两个容器的摆动页面都应该可用和可测试。
+在主计算机上打开浏览器，并使用*yaml*文件中的指定端口（例如http://localhost:5021/swagger/index.html）来使用**localhost** 。 例如，可以在 API 中使用 "**尝试 It** " 功能来测试窗体识别器终结点。 这两个容器 swagger 页面应可用且可测试。
 
 ![“表单识别器”容器](media/form-recognizer-swagger-page.png)
 

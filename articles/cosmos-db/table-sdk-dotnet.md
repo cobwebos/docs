@@ -9,10 +9,10 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
 ms.openlocfilehash: 9356ab0aec375a046a8f200838df296b2cf74bce
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80984974"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB 表 .NET API：下载和发行说明
@@ -80,9 +80,9 @@ ms.locfileid: "80984974"
 
 Microsoft 至少会在停用 SDK 前提前 12 个月**** 发出通知，以便顺利转换为更高版本/受支持版本。
 
-该`Microsoft.Azure.CosmosDB.Table`库目前仅适用于 .NET 框架，并且处于维护模式，将很快弃用。 新功能、功能和优化仅添加到 .NET 标准库[Microsoft.Azure.Cosmos.表](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)中，因此建议您升级到[Microsoft.Azure.Cosmos.table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)。
+`Microsoft.Azure.CosmosDB.Table`该库目前仅可用于 .NET Framework，并处于维护模式，即将弃用。 新特性和功能以及优化仅添加到 .NET Standard 库中，因此建议升级到 Cosmos。 [Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)，则建议升级到[Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)。
 
-已弃用[WindowsAzure.存储高级表](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview)预览包。 WindowsAzure.Storage-PremiumTable SDK 将在 2018 年 11 月 15 日停用，到时将不允许向已停用的 SDK 发出请求。 
+[Windowsazure.storage-windowsazure.storage-premiumtable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview)预览版包已弃用。 WindowsAzure.Storage-PremiumTable SDK 将在 2018 年 11 月 15 日停用，到时将不允许向已停用的 SDK 发出请求。 
 
 使用已停用的 SDK 对 Azure Cosmos DB 发出的任何请求都会遭服务拒绝。
 <br/>
@@ -118,10 +118,10 @@ Unable to resolve dependency 'Microsoft.Azure.Storage.Common'. Source(s) used: '
     
 * 使用首选 NuGet 包管理工具先安装 Microsoft.Azure.Storage.Common NuGet 包，再安装 Microsoft.Azure.CosmosDB.Table。
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>FAQ
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 若要了解有关 Azure Cosmos DB 表 API 的详细信息，请参阅 [Azure Cosmos DB 表 API 简介](table-introduction.md)。 

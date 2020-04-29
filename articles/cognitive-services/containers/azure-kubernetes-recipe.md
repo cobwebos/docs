@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: cdd1cf255c943c8dc6d55a5b749b30357bdcd373
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80876719"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>将文本分析语言检测容器部署到 Azure Kubernetes 服务
@@ -29,14 +29,14 @@ ms.locfileid: "80876719"
 * 适用于操作系统的 [Git](https://git-scm.com/downloads)，以便克隆此过程中使用的[示例](https://github.com/Azure-Samples/cognitive-services-containers-samples)。
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * [Docker 引擎](https://www.docker.com/products/docker-engine)并验证 Docker CLI 是否可在控制台窗口中工作。
-* [库布克特尔](https://storage.googleapis.com/kubernetes-release/release/v1.13.1/bin/windows/amd64/kubectl.exe).
+* [kubectl](https://storage.googleapis.com/kubernetes-release/release/v1.13.1/bin/windows/amd64/kubectl.exe)。
 * 具有适当定价层的 Azure 资源。 并非所有定价层都适用于此容器：
   * 仅具有 F0 或标准定价层的文本分析资源****。
   * 具有 S0 定价层的认知服务资源****。
 
 ## <a name="running-the-sample"></a>运行示例
 
-此过程加载并运行认知服务容器示例以进行语言检测。 该示例有两个容器，一个用于客户端应用程序，另一个用于认知服务容器。 我们将将这两个映像推送到 Azure 容器注册表。 这些映像推送到自己的注册表后，请创建 Azure Kubernetes 服务来访问这些映像和运行容器。 容器在运行时，请使用 kubectl CLI，监视容器性能****。 使用 HTTP 请求访问客户端应用程序，并查看结果。
+此过程加载并运行认知服务容器示例以进行语言检测。 该示例有两个容器，一个用于客户端应用程序，另一个用于认知服务容器。 我们会将这两个映像推送到 Azure 容器注册表。 这些映像推送到自己的注册表后，请创建 Azure Kubernetes 服务来访问这些映像和运行容器。 容器在运行时，请使用 kubectl CLI，监视容器性能****。 使用 HTTP 请求访问客户端应用程序，并查看结果。
 
 ![运行示例容器的概念性想法](../text-analytics/media/how-tos/container-instance-sample/containers.png)
 

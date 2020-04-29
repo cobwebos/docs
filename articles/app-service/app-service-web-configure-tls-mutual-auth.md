@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.custom: seodec18
 ms.openlocfilehash: 2f6dd455024aba184cbb16b5b9c7cfffd032dc70
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80811724"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>为 Azure 应用服务配置 TLS 相互身份验证
@@ -24,7 +24,7 @@ ms.locfileid: "80811724"
 
 ## <a name="enable-client-certificates"></a>启用客户端证书
 
-若要将应用设置为要求提供客户端证书，需要将应用的 `clientCertEnabled` 设置指定为 `true`。 要设置此设置，在[云壳](https://shell.azure.com)中运行以下命令。
+若要将应用设置为要求提供客户端证书，需要将应用的 `clientCertEnabled` 设置指定为 `true`。 若要设置此设置，请在[Cloud Shell](https://shell.azure.com)中运行以下命令。
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
@@ -34,14 +34,14 @@ az webapp update --set clientCertEnabled=true --name <app_name> --resource-group
 
 为应用程序启用相互身份验证时，应用根目录下的所有路径都需要客户端证书才能进行访问。 若要允许某些路径对匿名访问保持开放，可以将排除路径定义为应用程序配置的一部分。
 
-可以通过选择 **"配置** > **常规设置**"和定义排除路径来配置排除路径。 在此示例中，应用程序的 `/public` 路径下的任何内容都不会请求客户端证书。
+可以通过选择“配置”   > “常规设置”  并定义排除路径来配置排除路径。 在此示例中，应用程序的 `/public` 路径下的任何内容都不会请求客户端证书。
 
 ![证书排除路径][exclusion-paths]
 
 
 ## <a name="access-client-certificate"></a>访问客户端证书
 
-在应用服务中，请求的 TLS 终止发生在前端负载均衡器处。 在[已启用客户端证书](#enable-client-certificates)的情况下将请求转发到应用代码时，应用服务会注入包含客户端证书的 `X-ARR-ClientCert` 请求标头。 应用服务不会对此客户端证书执行任何操作，而只会将它转发到你的应用。 应用代码负责验证客户端证书。
+在应用服务中，请求的 TLS 终止发生在前端负载均衡器上。 在[已启用客户端证书](#enable-client-certificates)的情况下将请求转发到应用代码时，应用服务会注入包含客户端证书的 `X-ARR-ClientCert` 请求标头。 应用服务不会对此客户端证书执行任何操作，而只会将它转发到你的应用。 应用代码负责验证客户端证书。
 
 对于 ASP.NET，可以通过 **HttpRequest.ClientCertificate** 属性提供客户端证书。
 
@@ -218,7 +218,7 @@ export class AuthorizationHandler {
 
 ## <a name="java-sample"></a>Java 示例
 
-以下 Java 类将证书从`X-ARR-ClientCert`编码到`X509Certificate`实例。 `certificateIsValid()`验证证书的指纹与构造函数中给出的指纹匹配，并且证书尚未过期。
+以下 Java 类将证书从 `X-ARR-ClientCert` 编码为 `X509Certificate` 实例。 `certificateIsValid()` 验证证书的指纹是否与构造函数中提供的指纹匹配，并且该证书尚未过期。
 
 
 ```java

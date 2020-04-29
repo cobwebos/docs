@@ -1,7 +1,7 @@
 ---
 title: 配置容器 - 计算机视觉
 titleSuffix: Azure Cognitive Services
-description: 本文介绍如何在计算机视觉中为"识别文本"容器配置所需的设置和可选设置。
+description: 本文介绍如何在计算机视觉中配置识别文本容器的必需和可选设置。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,30 +12,30 @@ ms.date: 04/01/2020
 ms.author: aahi
 ms.custom: seodec18
 ms.openlocfilehash: 3be302019c712c13bd29d7ed3781151a1648e847
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80879303"
 ---
 # <a name="configure-computer-vision-docker-containers"></a>配置计算机视觉 Docker 容器
 
-通过使用`docker run`命令参数配置计算机视觉容器的运行时环境。 此容器有多个必需设置，以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 容器专用设置是帐单设置。 
+使用`docker run`命令参数配置计算机视觉容器的运行时环境。 此容器有多个必需设置，以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 容器专用设置是帐单设置。 
 
 ## <a name="configuration-settings"></a>配置设置
 
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> [`Billing`](#billing-configuration-setting)[`Eula`](#eula-setting)和[`ApiKey`](#apikey-configuration-setting)设置一起使用，您必须为所有三个设置提供有效值;因此，您必须为所有三个设置提供有效值。否则您的容器将无法启动。 有关使用这些配置设置实例化容器的详细信息，请参阅[计费](computer-vision-how-to-install-containers.md)。
+> [`ApiKey`](#apikey-configuration-setting)、 [`Billing`](#billing-configuration-setting)和[`Eula`](#eula-setting)设置一起使用，必须为所有三个值提供有效值;否则，你的容器将无法启动。 有关使用这些配置设置实例化容器的详细信息，请参阅[计费](computer-vision-how-to-install-containers.md)。
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 配置设置
 
-该`ApiKey`设置指定用于跟踪`Cognitive Services`容器的计费信息的 Azure 资源密钥。 必须为 ApiKey 指定值，且此值必须是为 [`Billing`](#billing-configuration-setting) 配置设置指定的“认知服务”__ 资源的有效密钥。
+此`ApiKey`设置指定用于跟踪`Cognitive Services`容器的计费信息的 Azure 资源密钥。 必须为 ApiKey 指定值，且此值必须是为 [`Billing`](#billing-configuration-setting) 配置设置指定的“认知服务”__ 资源的有效密钥。
 
 可以在以下位置找到此设置：
 
-* Azure 门户：在**密钥**下**进行认知服务**资源管理
+* Azure 门户：**认知服务**资源管理，在 "**密钥**" 下
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights 设置
 
@@ -43,15 +43,15 @@ ms.locfileid: "80879303"
 
 ## <a name="billing-configuration-setting"></a>Billing 配置设置
 
-`Billing` 设置指定 Azure 上用于计量容器帐单信息的“认知服务”__ 资源的终结点 URI。 您必须为此配置设置指定值，并且该值必须是 Azure 上的_认知服务_资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
+`Billing` 设置指定 Azure 上用于计量容器帐单信息的“认知服务”__ 资源的终结点 URI。 您必须为此配置设置指定一个值，并且该值必须是 Azure 上_认知服务_资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
 
 可以在以下位置找到此设置：
 
-* Azure 门户：**认知服务**概述，标记为`Endpoint`
+* Azure 门户：**认知服务**概述，已标记`Endpoint`
 
 请记住将`vision/v1.0`路由添加到终结点 URI，如下表所示。 
 
-|必选| 名称 | 数据类型 | 说明 |
+|必选| “属性” | 数据类型 | 说明 |
 |--|------|-----------|-------------|
 |是| `Billing` | 字符串 | 账单终结点 URI<br><br>示例：<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
 
@@ -79,23 +79,23 @@ ms.locfileid: "80879303"
 
 主机确切语法的安装位置因主机操作系统不同而异。 另外，由于 Docker 服务帐户使用的权限与主机装载位置权限之间有冲突，因此可能无法访问[主计算机](computer-vision-how-to-install-containers.md#the-host-computer)的装载位置。 
 
-|可选| 名称 | 数据类型 | 说明 |
+|可选| “属性” | 数据类型 | 说明 |
 |-------|------|-----------|-------------|
-|不允许| `Input` | 字符串 | “计算机视觉”容器不使用此项。|
-|可选| `Output` | 字符串 | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
+|不允许| `Input` | String | “计算机视觉”容器不使用此项。|
+|可选| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Docker 运行命令示例
 
 以下示例使用的配置设置说明如何编写和使用 `docker run` 命令。  运行后，容器将继续运行，直到[停止](computer-vision-how-to-install-containers.md#stop-the-container)它。
 
-* **行延续字符**：以下部分中的 Docker 命令使用反斜杠 ，`\`作为行延续字符。 根据主机操作系统的要求替换或删除字符。 
-* **参数顺序**：除非非常熟悉 Docker 容器，否则不要更改参数的顺序。
+* **行继续**符：以下部分中的 Docker 命令使用反斜杠`\`作为行继续符。 根据主机操作系统的要求替换或删除字符。 
+* **参数顺序**：不要更改参数的顺序，除非你非常熟悉 Docker 容器。
 
 将 {_argument_name_} 替换为为你自己的值：
 
-| 占位符 | 值 | 格式或示例 |
+| 占位符 | “值” | 格式或示例 |
 |-------------|-------|---|
-| **[API_KEY]** | “Azure `Computer Vision` 密钥”页上的 `Computer Vision` 资源的终结点密钥。 | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{API_KEY}** | “Azure `Computer Vision` 密钥”页上的 `Computer Vision` 资源的终结点密钥。 | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
 | **{ENDPOINT_URI}** | Azure `Computer Vision`“概览”页面上提供了账单终结点值。| 有关显式示例，请参阅[收集所需参数](computer-vision-how-to-install-containers.md#gathering-required-parameters)。 |
 
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]

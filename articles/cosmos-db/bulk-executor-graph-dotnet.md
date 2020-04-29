@@ -9,10 +9,10 @@ ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
 ms.openlocfilehash: adf512fc521ef553f0bbd6ef6dd8ee19e398b37b
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80982697"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>使用图批量执行程序 .NET 库在 Azure Cosmos DB Gremlin API 中执行批量操作
@@ -34,7 +34,7 @@ ms.locfileid: "80982697"
 
 ### <a name="creating-vertices-and-edges"></a>创建顶点和边缘
 
-`GraphBulkExecutor` 提供的 `BulkImportAsync` 方法要求使用一个包含 `GremlinVertex` 或 `GremlinEdge` 对象的 `IEnumerable` 列表，这两个对象都是在 `Microsoft.Azure.CosmosDB.BulkExecutor.Graph.Element` 命名空间中定义的。 在示例中，我们已将边缘和顶点划分到两个 BulkExecutor 导入任务中。 请参阅以下示例：
+`GraphBulkExecutor` 提供的 `BulkImportAsync` 方法要求使用一个包含 `IEnumerable` 或 `GremlinVertex` 对象的 `GremlinEdge` 列表，这两个对象都是在 `Microsoft.Azure.CosmosDB.BulkExecutor.Graph.Element` 命名空间中定义的。 在示例中，我们已将边缘和顶点划分到两个 BulkExecutor 导入任务中。 请参阅以下示例：
 
 ```csharp
 
@@ -113,9 +113,9 @@ e.AddProperty("customProperty", "value");
 
 ## <a name="sample-application"></a>示例应用程序
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 * 包含 Azure 开发工作负荷的 Visual Studio 2019。 一开始可以使用免费的 [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/downloads/)。
-* Azure 订阅。 您可以在此处创建[一个免费的 Azure 帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db)。 或者，可以通过[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 创建一个 Cosmos 数据库帐户，而无需 Azure 订阅。
+* Azure 订阅。 可在[此处创建免费的 Azure 帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db)。 或者，可以通过[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 创建一个 Cosmos 数据库帐户，而无需 Azure 订阅。
 * 包含**不受限集合**的 Azure Cosmos DB Gremlin API 数据库。 本指南介绍了如何开始使用 [.NET 中的 Azure Cosmos DB Gremlin API](https://docs.microsoft.com/azure/cosmos-db/create-graph-dotnet)。
 * Git。 有关详细信息，请查看[“Git 下载”页](https://git-scm.com/downloads)。
 
@@ -151,7 +151,7 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 ### <a name="run-the-sample-application"></a>运行示例应用程序
 
 1. 在 `App.config` 中添加特定的数据库配置参数。 此文件将用于创建 DocumentClient 实例。 如果数据库和容器尚未创建，则会自动创建它们。
-2. 运行应用程序。 此时会调用 `BulkImportAsync` 两次，一次是为了导入顶点，另一次是为了导入边缘。 如果在插入这些对象时，有对象生成了错误，则会将这些对象添加到 `.\BadVertices.txt` 或 `.\BadEdges.txt`。
+2. 运行该应用程序。 此时会调用 `BulkImportAsync` 两次，一次是为了导入顶点，另一次是为了导入边缘。 如果在插入这些对象时，有对象生成了错误，则会将这些对象添加到 `.\BadVertices.txt` 或 `.\BadEdges.txt`。
 3. 通过查询图形数据库来评估结果。 如果 `ShouldCleanupOnFinish` 选项设置为 true，则会自动删除此数据库。
 
 ## <a name="next-steps"></a>后续步骤

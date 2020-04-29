@@ -1,5 +1,5 @@
 ---
-title: Azure 宇宙数据库：SQL Python API、SDK &资源
+title: Azure Cosmos DB：SQL Python API、SDK 和资源
 description: 了解有关 SQL Python API 和 SDK 的全部信息，包括发布日期、停用日期和 Azure Cosmos DB Python SDK 各版本之间所做的更改。
 author: SnehaGunda
 ms.service: cosmos-db
@@ -9,13 +9,13 @@ ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
 ms.openlocfilehash: b81a3921ec11d589dadbdebd698ab9ad67d7649c
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80982899"
 ---
-# <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>用于 SQL API 的 Azure Cosmos DB Python SDK：发行说明和资源
+# <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Python SDK：发行说明和资源
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET 更改源](sql-api-sdk-dotnet-changefeed.md)
@@ -27,8 +27,8 @@ ms.locfileid: "80982899"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 资源提供程序](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [批量执行器 - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [批量执行器 - Java](sql-api-sdk-bulk-executor-java.md)
+> * [批量执行程序 - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [批量执行程序 - Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
@@ -71,7 +71,7 @@ ms.locfileid: "80982899"
 * 将文档更新为了引用 Azure Cosmos DB 而非 Azure DocumentDB。
 
 ### <a name="230"></a><a name="2.3.0"/>2.3.0
-* 此 SDK 版本需要最新版本的[Azure Cosmos DB 仿真器](https://aka.ms/cosmosdb-emulator)。
+* 此 SDK 版本需要[Azure Cosmos DB 模拟器](https://aka.ms/cosmosdb-emulator)的最新版本。
 
 ### <a name="221"></a><a name="2.2.1"/>2.2.1
 * 聚合字典的 bug 修复。
@@ -84,7 +84,7 @@ ms.locfileid: "80982899"
 
 ### <a name="210"></a><a name="2.1.0"/>2.1.0
 * 添加了对聚合查询（COUNT、MIN、MAX、SUM、AVG）的支持。
-* 添加了一个选项，用于在针对 Cosmos DB 仿真器运行时禁用 TLS 验证。
+* 添加了一个选项，用于在针对 Cosmos DB 模拟器运行时禁用 TLS 验证。
 * 删除了依赖请求模块精确是 2.10.0 的限制。
 * 将分区集合上的最小吞吐量从 10,100 RU/s 降低到 2500 RU/s。
 * 添加了在存储过程执行期间对启用脚本日志记录的支持。
@@ -100,7 +100,7 @@ ms.locfileid: "80982899"
 * 已对分区集合添加 TOP/ORDERBY 查询支持。
 
 ### <a name="190"></a><a name="1.9.0"/>1.9.0
-* 对限制添加了重试策略支持。 （已限制的请求收到请求速率过大的异常，错误代码 429。默认情况下，当遇到错误代码 429 时，Azure Cosmos DB 会为每个请求重试 9 次，从而在响应标头中遵守重试时间。 如果想要忽略重试之间由服务器返回的 retryAfter 时间，现在可以对 ConnectionPolicy 对象设置固定的重试间隔时间，并将其作为 RetryOptions 属性的一部分。 Azure Cosmos DB 现在对每个要中止的请求等待最多 30 秒（不考虑重试次数），并返回对错误代码 429 作出的响应。 还可以在 ConnectionPolicy 对象的 RetryOptions 属性中替代该时间。
+* 对限制添加了重试策略支持。 （限制请求收到请求速率太大的异常，错误代码429。）默认情况下，遇到错误代码429时，为每个请求 Azure Cosmos DB 重试九次，并将在响应标头中 retryAfter 时间。 如果想要忽略重试之间由服务器返回的 retryAfter 时间，现在可以对 ConnectionPolicy 对象设置固定的重试间隔时间，并将其作为 RetryOptions 属性的一部分。 Azure Cosmos DB 现在对每个要中止的请求等待最多 30 秒（不考虑重试次数），并返回对错误代码 429 作出的响应。 还可以在 ConnectionPolicy 对象的 RetryOptions 属性中替代该时间。
 * Cosmos DB 现在将 x-ms-throttle-retry-count 和 x-ms-throttle-retry-wait-time-ms 作为每个请求的响应标头返回，以表示限制重试计数和重试之间请求所等待的累计时间。
 * 已移除 document_client 类上公开的 RetryPolicy 类以及相应的属性 (retry_policy)，引入了在 ConnectionPolicy 对象上公开 RetryOptions 属性的 RetryOptions 类，该类可用于覆盖一些默认的重试选项。
 
@@ -145,12 +145,12 @@ Microsoft 至少会在停用 SDK 前提前 12 个月**** 发出通知，以便�
 使用已停用的 SDK 对 Cosmos DB 发出的任何请求都会被服务拒绝。
 
 > [!WARNING]
-> 在版本**1.0.0**之前，用于 SQL API 的所有版本的 Python SDK 均于**2016 年 2 月 29**日停用。 
+> 版本**1.0.0**之前的适用于 SQL API 的 Python SDK 的所有版本都已在**2016 年2月 29**日停用。 
 > 
 > 
 
 > [!WARNING]
-> 用于 SQL API 的 Python SDK 的所有版本 1.x 和 2.x 将于**2020 年 8 月 30**日停用。 
+> 适用于 SQL API 的 Python SDK 的所有版本1.x 和2.x 将于**2020 年8月30日**停用。 
 > 
 > 
 
@@ -174,7 +174,7 @@ Microsoft 至少会在停用 SDK 前提前 12 个月**** 发出通知，以便�
 | [1.7.0](#1.7.0) |2016 年 4 月 26 日 |2020年8月30日 |
 | [1.6.1](#1.6.1) |2016 年 4 月 8 日 |2020年8月30日 |
 | [1.6.0](#1.6.0) |2016 年 3 月 29 日 |2020年8月30日 |
-| [1.5.0](#1.5.0) |2016 年 1 月 3日 |2020年8月30日 |
+| [1.5。0](#1.5.0) |2016 年 1 月 3日 |2020年8月30日 |
 | [1.4.2](#1.4.2) |2015 年 10 月 6 日 |2020年8月30日 |
 | 1.4.1 |2015 年 10 月 6 日 |2020年8月30日 |
 | [1.2.0](#1.2.0) |2015 年 8 月 6 日 |2020年8月30日 |
@@ -187,9 +187,9 @@ Microsoft 至少会在停用 SDK 前提前 12 个月**** 发出通知，以便�
 | 0.9.1-prelease |2014 年 9 月 23 日 |2016 年 2 月 29 日 |
 | 0.9.0-prelease |2014 年 8 月 21 日 |2016 年 2 月 29 日 |
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>FAQ
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 若要了解有关 Cosmos DB 的详细信息，请参阅 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 服务页。 
 

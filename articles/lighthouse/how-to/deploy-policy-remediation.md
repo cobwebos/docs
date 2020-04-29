@@ -4,15 +4,15 @@ description: 了解如何将客户载入到 Azure 委派资源管理，使你能
 ms.date: 10/11/2019
 ms.topic: conceptual
 ms.openlocfilehash: b625e9e3c96866cfbc655a55b770c9ac07a626bd
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80985161"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>部署可以在委派的订阅中修正的策略
 
-[Azure 灯塔](../overview.md)允许服务提供商在委派的订阅中创建和编辑策略定义。 但是，要部署使用[修正任务](../../governance/policy/how-to/remediate-resources.md)的策略（即具有[DeployNot存在](../../governance/policy/concepts/effects.md#deployifnotexists)或[修改](../../governance/policy/concepts/effects.md#modify)效果的策略），您需要在客户租户中创建[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 此托管标识可供 Azure Policy 用来在策略中部署模板。 在载入 Azure 委托资源管理的客户时，以及部署策略本身时，需要执行相关步骤来启用此方案。
+[Azure Lighthouse](../overview.md)允许服务提供程序在委派的订阅中创建和编辑策略定义。 但是，若要部署使用[更正任务](../../governance/policy/how-to/remediate-resources.md)（即，具有[deployIfNotExists](../../governance/policy/concepts/effects.md#deployifnotexists)或[modify](../../governance/policy/concepts/effects.md#modify)效果的策略）的策略，需要在客户租户中创建一个[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 此托管标识可供 Azure Policy 用来在策略中部署模板。 在载入 Azure 委托资源管理的客户时，以及部署策略本身时，需要执行相关步骤来启用此方案。
 
 ## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>创建一个可以在客户租户中将角色分配给托管标识的用户
 
@@ -22,7 +22,7 @@ ms.locfileid: "80985161"
 
 将客户加入以后，在此授权中创建的 **principalId** 即可将这些内置角色分配给客户租户中的托管标识。 但是，他们不会有通常与“用户访问管理员”角色关联的任何其他权限。
 
-下面的示例显示了一个 **principalId**，该 ID 将有“用户访问管理员”角色。 此用户将能够将两个内置角色分配给客户租户中的托管标识：参与者和日志分析参与者。
+下面的示例显示了一个 **principalId**，该 ID 将有“用户访问管理员”角色。 此用户将能够将两个内置角色分配到客户租户中的托管标识：参与者和 Log Analytics 参与者。
 
 ```json
 {
@@ -40,7 +40,7 @@ ms.locfileid: "80985161"
 
 按照上述说明创建具有必需权限的用户以后，该用户即可在客户租户中部署使用补救任务的策略。
 
-例如，假设您想要在客户租户中的 Azure 密钥保管库资源上启用诊断，如[此示例](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-enforce-keyvault-monitoring)所示。 管理租户中具有适当权限（如上所述）的用户会部署 [Azure 资源管理器模板](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json)来启用此方案。
+例如，假设你想要对客户租户中的 Azure Key Vault 资源启用诊断，如本[示例](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-enforce-keyvault-monitoring)中所示。 管理租户中具有适当权限（如上所述）的用户会部署 [Azure 资源管理器模板](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json)来启用此方案。
 
 请注意，目前必须通过 API 而不是 Azure 门户创建与委托订阅配合使用的策略分配。 这样做时，必须将 **apiVersion** 设置为 **2019-04-01-preview**，其中包含新的 **delegatedManagedIdentityResourceId** 属性。 此属性用于包括驻留在客户租户中的托管标识（该租户位于已载入到 Azure 委托资源管理的订阅或资源组中）。
 

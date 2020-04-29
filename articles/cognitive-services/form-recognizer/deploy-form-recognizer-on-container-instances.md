@@ -1,7 +1,7 @@
 ---
-title: 在 Azure 容器实例中运行窗体识别器容器
+title: 在 Azure 容器实例中运行表单识别器容器
 titleSuffix: Azure Cognitive Services
-description: 将窗体识别器容器部署到 Azure 容器实例，并在 Web 浏览器中测试它。
+description: 将窗体识别器容器部署到 Azure 容器实例，并在 web 浏览器中对其进行测试。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: acba4d9fab784181fda5728c30831c8c1838b91f
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80879524"
 ---
 # <a name="deploy-the-form-recognizer-container-to-azure-container-instances"></a>将窗体识别器容器部署到 Azure 容器实例
 
-了解如何将认知服务[窗体识别器](form-recognizer-container-howto.md)容器部署到 Azure[容器实例](https://docs.microsoft.com/azure/container-instances/)。 此过程演示了创建 Azure 窗体识别器资源。 然后讨论如何拉取关联的容器映像。 最后，我们重点介绍了从浏览器中执行这两个业务流程的能力。 使用容器可以将开发人员的注意力从管理基础结构转移到应用程序开发上。
+了解如何将认知服务[窗体识别器](form-recognizer-container-howto.md)容器部署到 Azure[容器实例](https://docs.microsoft.com/azure/container-instances/)。 此过程演示如何创建 Azure 窗体识别器资源。 然后讨论如何拉取关联的容器映像。 最后，我们重点介绍了从浏览器中执行这两个业务流程的能力。 使用容器可以将开发人员的注意力从管理基础结构转移到应用程序开发上。
 
 > [!IMPORTANT]
-> 窗体识别器容器当前使用表单识别器 API 的版本 1.0。 您可以使用托管服务来访问最新版本的 API。
+> 窗体识别器容器当前使用版本1.0 的窗体识别器 API。 可以改为使用托管服务访问 API 的最新版本。
 
 [!INCLUDE [Prerequisites](../containers/includes/container-preview-prerequisites.md)]
 

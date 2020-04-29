@@ -1,16 +1,16 @@
 ---
 title: 使用 Azure Kubernetes 服务 (AKS) 运行 Apache Spark 作业
-description: 使用 Azure 库伯奈斯服务 （AKS） 创建并运行用于大规模数据处理的 Apache Spark 作业。
+description: 使用 Azure Kubernetes 服务（AKS）创建并运行用于大规模数据处理的 Apache Spark 作业。
 author: lenadroid
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
 ms.openlocfilehash: 2e399c1a7b0f9bbc2aac375fe8af969a2b9e0e48
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80877621"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>在 AKS 中运行 Apache Spark 作业
@@ -22,7 +22,7 @@ ms.locfileid: "80877621"
 为了完成本文中的步骤，需要具备以下各项。
 
 * 基本了解 Kubernetes 和 [Apache Spark][spark-quickstart]。
-* [Docker 中心][docker-hub]帐户，或 [Azure 容器注册表][acr-create]。
+* [Docker Hub][docker-hub] 帐户，或 [Azure 容器注册表][acr-create]。
 * 已在开发系统上[安装][azure-cli] Azure CLI。
 * 已在系统上安装 [JDK 8][java-install]。
 * 已在系统上安装 SBT（[Scala 生成工具][sbt-install]）。
@@ -293,7 +293,7 @@ Pi is roughly 3.152155760778804
 
 在上述示例中，Spark jar 文件已上传到 Azure 存储。 另一种做法是将 jar 文件打包成自定义生成的 Docker 映像。
 
-为此，请在 `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` 目录中查找 Spark 映像的 `dockerfile`。 在`ADD`和`jar``WORKDIR``ENTRYPOINT`声明之间的某处添加 Spark 作业的语句。
+为此，请在 `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` 目录中查找 Spark 映像的 `dockerfile`。 为 Spark `ADD`作业`jar`添加语句`WORKDIR` ，并将其添加`ENTRYPOINT`到声明。
 
 将 jar 路径更新为 `SparkPi-assembly-0.1.0-SNAPSHOT.jar` 文件在开发系统上的位置。 也可以使用自己的自定义 jar 文件。
 
@@ -327,7 +327,7 @@ ENTRYPOINT [ "/opt/entrypoint.sh" ]
 ```
 
 > [!WARNING]
-> 来自 Spark [文档][spark-docs]：“Kubernetes 计划程序当前处于实验阶段。 将来版本中可能在配置、容器映像和入口点方面有一些方行为更改。”
+> 摘自 Spark [文档][spark-docs]：“Kubernetes 计划程序当前处于实验阶段。 将来版本中可能在配置、容器映像和入口点方面有一些方行为更改。”
 
 ## <a name="next-steps"></a>后续步骤
 

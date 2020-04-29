@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: fd2a6cdad01302501e30ec60a4d3ccf6efd9c266
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80876806"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Azure 认知服务容器安全性
@@ -21,7 +21,7 @@ ms.locfileid: "80876806"
 开发应用程序时，安全性是主要关注因素。 安全性重要是因为它是成功的指标。 构建包含认知服务容器的软件解决方案时，必须了解你所受的限制和能够使用的功能。 有关网络安全的详细信息，请参阅[配置 Azure 认知服务虚拟网络][az-security]。
 
 > [!IMPORTANT]
-> 默认情况下，认知服务容器 API 上没有安全措施。** 之所以这样设置，是因为大多数情况下容器会作为 Pod 的一部分运行，而 Pod 受网络桥的保护，与外部隔离。 但是，可以启用与访问[基于云的认知服务][request-authentication]时使用的身份验证相同的身份验证。
+> 默认情况下，认知服务容器 API 上没有安全措施。** 之所以这样设置，是因为大多数情况下容器会作为 Pod 的一部分运行，而 Pod 受网络桥的保护，与外部隔离。 但是，可以启用与访问[基于云的认知服务][request-authentication]时所使用的身份验证相同的身份验证。
 
 下图演示了默认的**非安全**方法：
 

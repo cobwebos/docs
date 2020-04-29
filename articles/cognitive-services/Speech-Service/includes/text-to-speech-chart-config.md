@@ -11,19 +11,19 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 22168974ab8b285413b4fa6e947c05f65a73ae12
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80874326"
 ---
 ### <a name="text-to-speech-sub-chart-chartstexttospeech"></a>文本转语音（子图：charts/textToSpeech）
 
 若要替代“伞形”图，请在任何参数上添加前缀 `textToSpeech.`，以使其更具体。 例如，它将替代相应参数，例如，`textToSpeech.numberOfConcurrentRequest` 替代 `numberOfConcurrentRequest`。
 
-|参数|描述|默认|
+|参数|说明|默认|
 | -- | -- | -- |
-| `enabled` | 是否启用**文本到语音转换**服务。 | `false` |
+| `enabled` | **文本到语音**服务是否已启用。 | `false` |
 | `numberOfConcurrentRequest` | **文本转语音**服务的并发请求数。 此图表基于该值自动计算 CPU 和内存资源。 | `2` |
 | `optimizeForTurboMode`| 服务是否需要针对通过文本文件输入的文本进行优化。 如果为 `true`，此图表将为服务分配更多的 CPU 资源。 | `false` |
 | `image.registry`| **文本转语音** docker 映像注册表。 | `containerpreview.azurecr.io` |

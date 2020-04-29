@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒体服务 v3 的 iOS 离线公平播放流式处理
+title: 适用于 iOS 的脱机 FairPlay 流式处理与 Azure 媒体服务 v3
 description: 本主题概括介绍并演示了如何使用 Azure 媒体服务以脱机模式通过 Apple FairPlay 动态加密 HTTP Live Streaming (HLS) 内容。
 services: media-services
 keywords: HLS, DRM, FairPlay Streaming (FPS), 脱机, iOS 10
@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
 ms.openlocfilehash: 41893c2460ecb2d17e3893f867bc460105d57bbd
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80887208"
 ---
-# <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>离线公平播放流式处理 iOS 与媒体服务 v3
+# <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>适用于 iOS 的脱机 FairPlay 流式处理与媒体服务 v3
 
  Azure 媒体服务提供一套设计良好的[内容保护服务](https://azure.microsoft.com/services/media-services/content-protection/)，包括：
 
@@ -46,15 +46,15 @@ ms.locfileid: "80887208"
 > [!NOTE]
 > 下载内容时，脱机 DRM 仅针对发出单个许可证请求进行计费。 任何错误都不收费。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在 iOS 10+ 设备上为 FairPlay 实现 脱机 DRM 之前：
 
 * 查看 FairPlay 的联机内容保护： 
 
     - [Apple FairPlay 许可要求和配置](fairplay-license-overview.md)
-    - [使用 DRM 动态加密和许可证交付服务](protect-with-drm.md)
-    - 包含在线 FPS 流配置的 .NET 示例：[配置公平播放策略选项](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L505)
+    - [使用 DRM 动态加密和许可证传送服务](protect-with-drm.md)
+    - 包含配置联机 FPS 流式处理的 .NET 示例： [ConfigureFairPlayPolicyOptions](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L505)
 * 从 Apple Developer Network 获取 FPS SDK。 FPS SDK 包含两个组件：
 
     - FPS Server SDK，该组件包含密钥安全模块 (KSM)、客户端示例、规格和一组测试矢量。
@@ -123,7 +123,7 @@ CommonEncryptionCbcs objStreamingPolicyInput= new CommonEncryptionCbcs()
 FPS 脱机模式支持仅适用于 iOS 10 及更高版本。 FPS Server SDK（3.0 或更高版本）包含 FPS 脱机模式文档和示例。 具体而言，FPS Server SDK（3.0 或更高版本）包含以下与脱机模式相关的两项：
 
 * 文档：“使用 FairPlay Streaming 和 HTTP Live Streaming 的脱机播放”。 2016 年 9 月 14 日由 Apple 提供。 在 FPS Server SDK 版本 4.0 中，此文档已合并到主要 FPS 文档。
-* 示例代码：HLSCatalog 示例（Apple FPS 服务器 SDK 的一部分）用于 FPS 离线模式，适用于 [公平播放流式服务器 SDK 版本 3.1]开发\客户端\HLSCatalog_With_FPS_HLSCatalog]。 在 HLSCatalog 示例应用中，以下代码文件用于实现脱机模式功能：
+* 示例代码： \FairPlay 流式处理服务器 SDK 版本 3.1 \ Development\Client\ HLSCatalog_With_FPS \HLSCatalog\. 中的 FPS 脱机模式的 HLSCatalog 示例（Apple 的 FPS Server SDK 的一部分） 在 HLSCatalog 示例应用中，以下代码文件用于实现脱机模式功能：
 
     - AssetPersistenceManager.swift 代码文件：AssetPersistenceManager 是此示例中的主类，演示如何：
 
@@ -201,9 +201,9 @@ func requestApplicationCertificate() throws -> Data {
 可在[此演示站点](https://aka.ms/poc#22)上找到这些示例，相应的应用程序证书托管在 Azure Web 应用中。
 使用 FPS Server SDK 的版本 3 或版本 4 示例时，如果在脱机模式期间主播放列表包含备用的音频，则只播放音频。 因此，需要删除备用音频。 换言之，前面所列的第二和第三个示例在联机和脱机模式下都可正常运行。 所列的第一个示例在脱机模式期间只播放音频，联机流式处理可正常运行。
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>FAQ
 
-请参阅[常见问题，提供有关故障排除的帮助](frequently-asked-questions.md#why-does-only-audio-play-but-not-video-during-offline-mode)。
+请参阅[常见问题解答提供故障排除帮助](frequently-asked-questions.md#why-does-only-audio-play-but-not-video-during-offline-mode)。
 
 ## <a name="next-steps"></a>后续步骤
 

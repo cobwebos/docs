@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
 ms.openlocfilehash: e1223560c5d7b19bf9da4c7c16a56c4741e582a0
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80981301"
 ---
 # <a name="security-management-in-azure"></a>Azure 中的安全管理
-Azure 订阅者可从多种设备管理其云环境，这些设备包括管理工作站、开发人员电脑，甚至是具有任务特定权限的特权最终用户设备。 在某些情况下，管理功能通过基于 Web 的控制台（如[Azure 门户](https://azure.microsoft.com/features/azure-portal/)）执行。 有其他情况下，可以从本地系统通过虚拟专用网络 (VPN)、终端服务、客户端应用程序协议或 Azure 服务管理 API (SMAPI)（以编程方式）直接连接到 Azure。 此外，客户端终结点（例如平板电脑或智能手机）可以加入域或者受到隔离且不受管理。
+Azure 订阅者可从多种设备管理其云环境，这些设备包括管理工作站、开发人员电脑，甚至是具有任务特定权限的特权最终用户设备。 在某些情况下，可通过基于 Web 的控制台（例如 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)）来执行管理功能。 有其他情况下，可以从本地系统通过虚拟专用网络 (VPN)、终端服务、客户端应用程序协议或 Azure 服务管理 API (SMAPI)（以编程方式）直接连接到 Azure。 此外，客户端终结点（例如平板电脑或智能手机）可以加入域或者受到隔离且不受管理。
 
 尽管这么多种的访问和管理功能可提供丰富的选项，但选项太多也可能会让云部署承受巨大风险。 它可能变得难以管理、跟踪和审核管理操作。 这种差异还可能由于用于管理云服务的客户端终结点进行的访问不受管制而带来安全威胁。 使用普通工作站或专用工作站开发和管理基础结构会打开诸如 Web 浏览（例如水坑攻击）或电子邮件（例如社交工程和网络钓鱼）等不可预测的威胁媒介。
 
@@ -119,11 +119,11 @@ Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机�
 一般情况下，帮助保护用于云的管理员工作站的做法，与用于任何本地工作站的做法类似 — 例如，最小化生成和限制权限。 云管理的某些独特之处更类似于远程或带外企业管理。 这些特点包括使用和审核凭据、增强安全的远程访问以及威胁检测和响应。
 
 ### <a name="authentication"></a>身份验证
-可以使用 Azure 登录限制来限制用于访问管理工具的源 IP 地址和审核访问请求。 为了帮助 Azure 标识管理客户端（工作站和/或应用程序），可以配置 SMAPI（通过客户开发的工具（如 Windows PowerShell cmdlet）和 Azure 门户，以除 TLS/SSL 证书外，还需要安装客户端管理证书。 我们还建议管理员访问需要经过多重身份验证。
+可以使用 Azure 登录限制来限制用于访问管理工具的源 IP 地址和审核访问请求。 若要帮助 Azure 识别管理客户端（工作站和/或应用程序），可以同时配置 SMAPI （通过客户开发的工具，例如 Windows PowerShell cmdlet）和 Azure 门户来要求安装客户端管理证书以及 TLS/SSL 证书。 我们还建议管理员访问需要经过多重身份验证。
 
 部署到 Azure 的某些应用程序或服务可能将针对用户和管理员访问拥有自己的身份验证机制，而其他应用程序或服务则将充分利用 Azure AD。 根据是通过 Active Directory 联合身份验证服务 (AD FS)、使用目录同步还是仅在云中维护用户帐户来联合凭据，使用 [Microsoft 标识管理器](https://technet.microsoft.com/library/mt218776.aspx) （Azure AD 高级版中已随附）可帮助管理资源之间的标识生命周期。
 
-### <a name="connectivity"></a>连接
+### <a name="connectivity"></a>连接性
 有多种机制可供帮助保护客户端与 Azure 虚拟网络的连接。 在这些机制中，有两个机制（[站点到站点 VPN](https://channel9.msdn.com/series/Azure-Site-to-Site-VPN) (S2S) 和[点到站点 VPN](/azure/vpn-gateway/vpn-gateway-point-to-site-create) (P2S)）支持使用行业标准 IPsec (S2S) 或[安全套接字隧道协议](https://technet.microsoft.com/magazine/2007.06.cableguy.aspx) (SSTP) (P2S) 来进行加密和隧道传输。 当 Azure 连接到面向公众的 Azure 服务管理（例如 Azure 门户）时，Azure 需要超文本安全传输协议 (HTTPS)。
 
 未通过 RD 网关连接到 Azure 的独立强化工作站应使用基于 SSTP 的点到站点 VPN 来与 Azure 虚拟网络建立初始连接，并从 VPN 隧道与各个虚拟机建立 RDP 连接。
@@ -176,7 +176,7 @@ Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机�
 
 | 禁止事项 | 要求事项 |
 | --- | --- |
-| 不要通过电子邮件发送凭据以获取管理员访问权限或其他机密（例如，TLS/SSL 或管理证书） |用声音提供帐户名称和密码（但不要将它们存储在语音邮件中）以保持机密性、远程安装客户端/服务器证书（通过加密会话）、从受保护的网络共享下载，或通过可移动媒体手动分发。 |
+| 不要通过电子邮件发送用于管理员访问权限或其他机密的凭据（例如，TLS/SSL 或管理证书） |用声音提供帐户名称和密码（但不要将它们存储在语音邮件中）以保持机密性、远程安装客户端/服务器证书（通过加密会话）、从受保护的网络共享下载，或通过可移动媒体手动分发。 |
 | - | 主动管理管理证书生命周期。 |
 | 不要在应用程序存储中存储未加密或未哈希处理的帐户密码（例如在电子表格、SharePoint 站点或文件共享中）。 |创建安全管理策略和系统强化策略，并将它们应用到开发环境。 |
 | - | 使用 [Enhanced Mitigation Experience Toolkit 5.5](https://technet.microsoft.com/security/jj653751) 证书绑定规则，以确保能够正常访问 Azure SSL/TLS 站点。 |
@@ -206,7 +206,7 @@ Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机�
 * 加密。 确保管理工作站装有 TPM 以便能够更安全地启用 [加密文件系统](https://technet.microsoft.com/library/cc700811.aspx) (EFS) 和 BitLocker。
 * 监管。 使用 AD DS GPO 来控制所有管理员的 Windows 接口，例如文件共享。 将管理工作站纳入审核、监视和日志记录过程中。 跟踪所有管理员和开发人员的访问和使用活动。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>“摘要”
 使用强化的工作站配置来管理 Azure 云服务、虚拟机和应用程序，可帮助避免远程管理关键 IT 基础结构所造成的众多风险和威胁。 Azure 和 Windows 提供了相关机制来帮助保护和控制通信、身份验证与客户端行为。
 
 ## <a name="next-steps"></a>后续步骤

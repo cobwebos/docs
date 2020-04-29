@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/08/2020
 ms.author: aschhab
 ms.openlocfilehash: 8020b12ca892fbf7dec6fed6259526d958fb110f
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80891758"
 ---
 # <a name="message-counters"></a>消息计数器
@@ -45,9 +45,9 @@ ms.locfileid: "80891758"
 如果应用程序要基于队列长度缩放资源，则应按照慎重的进度执行此操作。 获取消息计数器是消息代理中成本高昂的操作，频繁执行它会直接对实体性能产生负面影响。
 
 > [!NOTE]
-> 发送到服务总线主题的消息将转发到该主题的订阅。 因此，主题本身的活动消息计数为 0，因为这些消息已成功转发到订阅。 获取订阅中的消息计数，并验证其大于 0。 即使您在订阅中看到消息，它们实际上也存储在主题拥有的存储中。 
+> 发送到服务总线主题的消息将转发到该主题的订阅。 因此，主题本身的活动消息计数为0，因为这些消息已成功转发到订阅。 获取订阅中的消息计数，并验证其是否大于0。 即使您在订阅中看到消息，它们实际上存储在主题拥有的存储中。 
 
-如果查看订阅，则它们将具有非零消息计数（这整个实体的存储空间加起来为 323MB）。
+如果你查看订阅，则它们将具有非零的消息计数（这将为整个实体添加最多323MB 的空间）。
 
 ## <a name="next-steps"></a>后续步骤
 

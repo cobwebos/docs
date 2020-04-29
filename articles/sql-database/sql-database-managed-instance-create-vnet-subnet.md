@@ -12,10 +12,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 09/12/2019
 ms.openlocfilehash: 0ce88f9a61b8aa7c2588a6e077d694afa6fb8631
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878844"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-database-managed-instance"></a>为 Azure SQL 数据库托管实例创建虚拟网络
@@ -34,7 +34,7 @@ Azure SQL 数据库托管实例必须部署在 Azure [虚拟网络](../virtual-n
 >
 > 如果打算使用现有的虚拟网络，则需要修改该网络的配置，以适应托管实例。 有关详细信息，请参阅[根据托管实例修改现有的虚拟网络](sql-database-managed-instance-configure-vnet-subnet.md)。
 >
-> 创建托管实例后，不支持将托管实例或 VNet 移到另一个资源组或订阅。  不支持将托管实例移动到另一个子网。
+> 创建托管实例后，不支持将托管实例或 VNet 移到另一个资源组或订阅。  也不支持将托管实例移到另一个子网。
 >
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
@@ -60,7 +60,7 @@ Azure SQL 数据库托管实例必须部署在 Azure [虚拟网络](../virtual-n
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关概述，请参阅[什么是托管实例？](sql-database-managed-instance.md)
+- 有关概述，请参阅[什么是托管实例？](sql-database-managed-instance.md)。
 - 了解[托管实例中的连接体系结构](sql-database-managed-instance-connectivity-architecture.md)。
 - 了解如何[修改托管实例的现有虚拟网络](sql-database-managed-instance-configure-vnet-subnet.md)
 - 有关如何创建虚拟网络、创建托管实例，以及从数据库备份还原数据库的教程，请参阅[创建 Azure SQL 数据库托管实例](sql-database-managed-instance-get-started.md)。

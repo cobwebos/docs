@@ -1,49 +1,49 @@
 ---
 title: 模板函数 - 字符串
-description: 介绍可在 Azure 资源管理器模板中用来处理字符串的函数。
+description: 介绍了可在 Azure Resource Manager 模板中用来处理字符串的函数。
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.openlocfilehash: c0517375b273384f263e8ba421995d4afb6c193b
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80982408"
 ---
 # <a name="string-functions-for-arm-templates"></a>ARM 模板的字符串函数
 
-资源管理器提供以下功能，用于处理 Azure 资源管理器 （ARM） 模板中的字符串：
+资源管理器提供了以下用于在 Azure 资源管理器（ARM）模板中处理字符串的函数：
 
 * [base64](#base64)
 * [base64ToJson](#base64tojson)
 * [base64ToString](#base64tostring)
-* [Concat](#concat)
-* [包含](#contains)
+* [concat](#concat)
+* [contains](#contains)
 * [dataUri](#datauri)
 * [dataUriToString](#datauritostring)
-* [空](#empty)
-* [结束与](#endswith)
-* [第一](#first)
-* [格式](#format)
-* [Guid](#guid)
-* [索引](#indexof)
-* [最后](#last)
+* [empty](#empty)
+* [endsWith](#endswith)
+* [first](#first)
+* [format](#format)
+* [guid](#guid)
+* [indexOf](#indexof)
+* [last](#last)
 * [lastIndexOf](#lastindexof)
 * [length](#length)
-* [新吉德](#newguid)
-* [垫左](#padleft)
-* [取代](#replace)
-* [跳](#skip)
-* [分裂](#split)
-* [开始与](#startswith)
+* [newGuid](#newguid)
+* [padLeft](#padleft)
+* [replace](#replace)
+* [skip](#skip)
+* [split](#split)
+* [startsWith](#startswith)
 * [string](#string)
-* [子](#substring)
-* [采取](#take)
-* [到下](#tolower)
-* [到上](#toupper)
-* [修剪](#trim)
+* [substring](#substring)
+* [take](#take)
+* [toLower](#tolower)
+* [toUpper](#toupper)
+* [trim](#trim)
 * [uniqueString](#uniquestring)
-* [Uri](#uri)
+* [uri](#uri)
 * [uriComponent](#uricomponent)
 * [uriComponentToString](#uricomponenttostring)
 
@@ -106,11 +106,11 @@ ms.locfileid: "80982408"
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | base64Output | 字符串 | b25lLCB0d28sIHRocmVl |
 | toStringOutput | 字符串 | one, two, three |
-| toJsonOutput | Object | {"one": "a", "two": "b"} |
+| toJsonOutput | 对象 | {"one": "a", "two": "b"} |
 
 ## <a name="base64tojson"></a>base64ToJson
 
@@ -171,11 +171,11 @@ ms.locfileid: "80982408"
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | base64Output | 字符串 | b25lLCB0d28sIHRocmVl |
 | toStringOutput | 字符串 | one, two, three |
-| toJsonOutput | Object | {"one": "a", "two": "b"} |
+| toJsonOutput | 对象 | {"one": "a", "two": "b"} |
 
 ## <a name="base64tostring"></a>base64ToString
 
@@ -236,11 +236,11 @@ ms.locfileid: "80982408"
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | base64Output | 字符串 | b25lLCB0d28sIHRocmVl |
 | toStringOutput | 字符串 | one, two, three |
-| toJsonOutput | Object | {"one": "a", "two": "b"} |
+| toJsonOutput | 对象 | {"one": "a", "two": "b"} |
 
 ## <a name="concat"></a>concat
 
@@ -287,7 +287,7 @@ ms.locfileid: "80982408"
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | concatOutput | 字符串 | prefix-5yj4yjf5mbg72 |
 
@@ -328,9 +328,9 @@ ms.locfileid: "80982408"
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
-| return | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
+| return | 数组 | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
 ## <a name="contains"></a>contains
 
@@ -404,7 +404,7 @@ ms.locfileid: "80982408"
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True |
 | stringFalse | Bool | False |
@@ -463,7 +463,7 @@ ms.locfileid: "80982408"
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | dataUriOutput | 字符串 | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | 字符串 | Hello, World! |
@@ -518,7 +518,7 @@ ms.locfileid: "80982408"
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | dataUriOutput | 字符串 | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | 字符串 | Hello, World! |
@@ -582,7 +582,7 @@ ms.locfileid: "80982408"
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | arrayEmpty | Bool | True |
 | objectEmpty | Bool | True |
@@ -645,7 +645,7 @@ ms.locfileid: "80982408"
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | startsTrue | Bool | True |
 | startsCapTrue | Bool | True |
@@ -701,7 +701,7 @@ ms.locfileid: "80982408"
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | 字符串 | one |
 | stringOutput | 字符串 | O |
@@ -759,9 +759,9 @@ ms.locfileid: "80982408"
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
-| formatTest | 字符串 | Hello, User。 格式化号码： 8，175，133 |
+| formatTest | 字符串 | Hello, User。 格式化数字：8175133 |
 
 ## <a name="guid"></a>guid
 
@@ -887,7 +887,7 @@ ms.locfileid: "80982408"
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | firstT | Int | 0 |
 | lastT | Int | 3 |
@@ -942,7 +942,7 @@ ms.locfileid: "80982408"
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | 字符串 | three |
 | stringOutput | 字符串 | e |
@@ -1000,7 +1000,7 @@ ms.locfileid: "80982408"
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | firstT | Int | 0 |
 | lastT | Int | 3 |
@@ -1078,7 +1078,7 @@ ms.locfileid: "80982408"
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | arrayLength | Int | 3 |
 | stringLength | Int | 13 |
@@ -1096,7 +1096,7 @@ ms.locfileid: "80982408"
 
 newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。 每次结合相同的参数调用 guid 都会返回相同的标识符。 需要为特定的环境可靠地生成相同的 GUID 时，请使用 guid。 如果每次需要不同的标识符（例如，将资源部署到测试环境），请使用 newGuid。
 
-new Guid 函数使用 .NET 框架中的[Guid 结构](/dotnet/api/system.guid)生成全局唯一标识符。
+NewGuid 函数使用 .NET Framework 中的[Guid 结构](/dotnet/api/system.guid)来生成全局唯一标识符。
 
 如果[使用相应的选项来重新部署以前已成功的部署](rollback-on-error.md)，而以前的部署包含一个使用 newGuid 的参数，则不会重新评估该参数， 而是在回滚部署中自动重复使用以前部署中的参数值。
 
@@ -1135,9 +1135,9 @@ new Guid 函数使用 .NET 框架中的[Guid 结构](/dotnet/api/system.guid)生
 
 上述示例的输出根据每个部署的不同而异，但类似于：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| guidOutput | 字符串 | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
+| guidOutput | string | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
 
 以下示例使用 newGuid 函数创建存储帐户的唯一名称。 此模板可能适用于其中的存储帐户生存期较短且未重新部署的测试环境。
 
@@ -1178,9 +1178,9 @@ new Guid 函数使用 .NET 框架中的[Guid 结构](/dotnet/api/system.guid)生
 
 上述示例的输出根据每个部署的不同而异，但类似于：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| nameOutput | 字符串 | storagenziwvyru7uxie |
+| nameOutput | string | storagenziwvyru7uxie |
 
 
 ## <a name="padleft"></a>padLeft
@@ -1191,7 +1191,7 @@ new Guid 函数使用 .NET 框架中的[Guid 结构](/dotnet/api/system.guid)生
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | valueToPad |是 |字符串或整数 |要右对齐的值。 |
 | totalLength |是 |int |返回字符串中的字符总数。 |
@@ -1227,11 +1227,11 @@ new Guid 函数使用 .NET 框架中的[Guid 结构](/dotnet/api/system.guid)生
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| stringOutput | 字符串 | 0000000123 |
+| stringOutput | String | 0000000123 |
 
 ## <a name="replace"></a>replace
 
@@ -1239,13 +1239,13 @@ new Guid 函数使用 .NET 框架中的[Guid 结构](/dotnet/api/system.guid)生
 
 返回其中某个字符串的所有实例均替换为另一个字符串的新字符串。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| originalString |是 |字符串 |包含某一个字符串的所有实例均替换为另一个字符串的值。 |
-| oldString |是 |字符串 |要从原始字符串中删除的字符串。 |
-| newString |是 |字符串 |要添加以替代已删除字符串的字符串。 |
+| originalString |是 |string |包含某一个字符串的所有实例均替换为另一个字符串的值。 |
+| oldString |是 |string |要从原始字符串中删除的字符串。 |
+| newString |是 |string |要添加以替代已删除字符串的字符串。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -1279,12 +1279,12 @@ new Guid 函数使用 .NET 框架中的[Guid 结构](/dotnet/api/system.guid)生
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| firstOutput | 字符串 | 1231231234 |
-| secondOutput | 字符串 | 123-123-xxxx |
+| firstOutput | String | 1231231234 |
+| secondOutput | String | 123-123-xxxx |
 
 ## <a name="skip"></a>skip
 
@@ -1292,12 +1292,12 @@ new Guid 函数使用 .NET 框架中的[Guid 结构](/dotnet/api/system.guid)生
 
 返回一个字符串，其中包含指定字符数后面的所有字符；或者返回一个数组，其中包含指定元素数后面的所有元素。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | originalValue |是 |数组或字符串 |用于跳过的数组或字符串。 |
-| numberToSkip |是 |int |要跳过的元素或字符数。 如果此值小于或等于 0，则返回值中的所有元素或字符。 如果此值大于数组或字符串的长度，则返回空数组或字符串。 |
+| numberToSkip |是 |int |要跳过的元素数或字符数。 如果此值小于或等于 0，则返回值中的所有元素或字符。 如果此值大于数组或字符串的长度，则返回空数组或字符串。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -1347,12 +1347,12 @@ new Guid 函数使用 .NET 框架中的[Guid 结构](/dotnet/api/system.guid)生
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["three"] |
-| stringOutput | 字符串 | two three |
+| stringOutput | String | two three |
 
 ## <a name="split"></a>split
 
@@ -1360,11 +1360,11 @@ new Guid 函数使用 .NET 框架中的[Guid 结构](/dotnet/api/system.guid)生
 
 返回包含输入字符串的子字符串的字符串数组，其中的子字符串使用指定的分隔符进行分隔。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| inputString |是 |字符串 |要拆分的字符串。 |
+| inputString |是 |string |要拆分的字符串。 |
 | delimiter |是 |字符串或字符串数组 |用于拆分字符串的分隔符。 |
 
 ### <a name="return-value"></a>返回值
@@ -1406,9 +1406,9 @@ new Guid 函数使用 .NET 框架中的[Guid 结构](/dotnet/api/system.guid)生
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | firstOutput | Array | ["one", "two", "three"] |
 | secondOutput | Array | ["one", "two", "three"] |
@@ -1419,12 +1419,12 @@ new Guid 函数使用 .NET 框架中的[Guid 结构](/dotnet/api/system.guid)生
 
 确定某个字符串是否以某个值开头。 比较不区分大小写。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |是 |字符串 |包含要查找的项的值。 |
-| stringToFind |是 |字符串 |要查找的值。 |
+| stringToSearch |是 |string |包含要查找的项的值。 |
+| stringToFind |是 |string |要查找的值。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -1468,9 +1468,9 @@ new Guid 函数使用 .NET 框架中的[Guid 结构](/dotnet/api/system.guid)生
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | startsTrue | Bool | True |
 | startsCapTrue | Bool | True |
@@ -1479,17 +1479,17 @@ new Guid 函数使用 .NET 框架中的[Guid 结构](/dotnet/api/system.guid)生
 | endsCapTrue | Bool | True |
 | endsFalse | Bool | False |
 
-## <a name="string"></a>字符串
+## <a name="string"></a>string
 
 `string(valueToConvert)`
 
 将指定的值转换为字符串。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |是 | Any |要转换为字符串的值。 可以转换任何类型的值，包括对象和数组。 |
+| valueToConvert |是 | 任意 |要转换为字符串的值。 可以转换任何类型的值，包括对象和数组。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -1542,13 +1542,13 @@ new Guid 函数使用 .NET 框架中的[Guid 结构](/dotnet/api/system.guid)生
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| objectOutput | 字符串 | {"valueA":10,"valueB":"Example Text"} |
-| arrayOutput | 字符串 | ["a","b","c"] |
-| intOutput | 字符串 | 5 |
+| objectOutput | String | {"valueA":10,"valueB":"Example Text"} |
+| arrayOutput | String | ["a","b","c"] |
+| intOutput | String | 5 |
 
 ## <a name="substring"></a>substring
 
@@ -1556,13 +1556,13 @@ new Guid 函数使用 .NET 框架中的[Guid 结构](/dotnet/api/system.guid)生
 
 返回从指定的字符位置开始且包含指定数量的字符的子字符串。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| stringToParse |是 |字符串 |从中提取子字符串的原始字符串。 |
+| stringToParse |是 |string |从中提取子字符串的原始字符串。 |
 | startIndex |否 |int |子字符串的从零开始的字符位置。 |
-| 长度 |否 |int |子字符串的字符数。 必须引用该字符串内的一个位置。 必须为零或更大值。 |
+| length |否 |int |子字符串的字符数。 必须引用该字符串内的一个位置。 必须为零或更大值。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -1570,7 +1570,7 @@ new Guid 函数使用 .NET 框架中的[Guid 结构](/dotnet/api/system.guid)生
 
 ### <a name="remarks"></a>备注
 
-当子字符串延伸超出字符串末尾或长度小于零时，函数将失败。 以下示例失败，并出现错误“索引和长度参数必须引用字符串内的一个位置。 索引参数“0”，长度参数“11”，字符串参数长度“10”。”。
+当子字符串延伸超出字符串末尾或长度小于零时，函数将失败。 以下示例将失败，并出现错误“索引和长度参数必须引用字符串内的一个位置。 索引参数：“0”，长度参数：“11”，字符串参数长度：“10”。”。
 
 ```json
 "parameters": {
@@ -1605,11 +1605,11 @@ new Guid 函数使用 .NET 框架中的[Guid 结构](/dotnet/api/system.guid)生
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| substringOutput | 字符串 | two |
+| substringOutput | String | two |
 
 ## <a name="take"></a>take
 
@@ -1617,12 +1617,12 @@ new Guid 函数使用 .NET 框架中的[Guid 结构](/dotnet/api/system.guid)生
 
 返回一个字符串，其中包含从字符串开头位置算起的指定数目的字符；或返回一个数组，其中包含从数组开头位置算起的指定数目的元素。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | originalValue |是 |数组或字符串 |要从中提取元素的数组或字符串。 |
-| numberToTake |是 |int |要提取的元素或字符数。 如果此值小于或等于 0，则返回空数组或字符串。 如果此值大于给定数组或字符串的长度，则返回数组或字符串中的所有元素。 |
+| numberToTake |是 |int |要提取的元素或字符数。 如果此值为 0 或更小，则返回一个空数组或字符串。 如果此值大于给定数组或字符串的长度，则返回数组或字符串中的所有元素。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -1672,12 +1672,12 @@ new Guid 函数使用 .NET 框架中的[Guid 结构](/dotnet/api/system.guid)生
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["one", "two"] |
-| stringOutput | 字符串 | on |
+| stringOutput | String | on |
 
 ## <a name="tolower"></a>toLower
 
@@ -1685,15 +1685,15 @@ new Guid 函数使用 .NET 框架中的[Guid 结构](/dotnet/api/system.guid)生
 
 将指定的字符串转换为小写。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| stringToChange |是 |字符串 |要转换为小写的值。 |
+| stringToChange |是 |string |要转换为小写的值。 |
 
 ### <a name="return-value"></a>返回值
 
-转换成小写形式的字符串。
+已转换为小写的字符串。
 
 ### <a name="examples"></a>示例
 
@@ -1723,12 +1723,12 @@ new Guid 函数使用 .NET 框架中的[Guid 结构](/dotnet/api/system.guid)生
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| toLowerOutput | 字符串 | one two three |
-| toUpperOutput | 字符串 | ONE TWO THREE |
+| toLowerOutput | String | one two three |
+| toUpperOutput | String | ONE TWO THREE |
 
 ## <a name="toupper"></a>toUpper
 
@@ -1736,15 +1736,15 @@ new Guid 函数使用 .NET 框架中的[Guid 结构](/dotnet/api/system.guid)生
 
 将指定的字符串转换为大写。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| stringToChange |是 |字符串 |要转换为大写的值。 |
+| stringToChange |是 |string |要转换为大写的值。 |
 
 ### <a name="return-value"></a>返回值
 
-转换成大写形式的字符串。
+已转换为大写的字符串。
 
 ### <a name="examples"></a>示例
 
@@ -1774,12 +1774,12 @@ new Guid 函数使用 .NET 框架中的[Guid 结构](/dotnet/api/system.guid)生
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| toLowerOutput | 字符串 | one two three |
-| toUpperOutput | 字符串 | ONE TWO THREE |
+| toLowerOutput | String | one two three |
+| toUpperOutput | String | ONE TWO THREE |
 
 ## <a name="trim"></a>trim
 
@@ -1787,15 +1787,15 @@ new Guid 函数使用 .NET 框架中的[Guid 结构](/dotnet/api/system.guid)生
 
 从指定的字符串中删除所有前导和尾随空白字符。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| stringToTrim |是 |字符串 |要剪裁的值。 |
+| stringToTrim |是 |string |要剪裁的值。 |
 
 ### <a name="return-value"></a>返回值
 
-前后不含空白字符的字符串。
+不带前导和尾随空白字符的字符串。
 
 ### <a name="examples"></a>示例
 
@@ -1821,11 +1821,11 @@ new Guid 函数使用 .NET 框架中的[Guid 结构](/dotnet/api/system.guid)生
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| return | 字符串 | one two three |
+| return | String | one two three |
 
 ## <a name="uniquestring"></a>uniqueString
 
@@ -1833,18 +1833,18 @@ new Guid 函数使用 .NET 框架中的[Guid 结构](/dotnet/api/system.guid)生
 
 根据作为参数提供的值创建确定性哈希字符串。 
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| baseString |是 |字符串 |哈希函数中用于创建唯一字符串的值。 |
-| 根据需要使用其他参数 |否 |字符串 |可以添加任意数目的字符串，以创建指定唯一性级别的值。 |
+| baseString |是 |string |哈希函数中用于创建唯一字符串的值。 |
+| 根据需要使用其他参数 |否 |string |可以添加任意数目的字符串，以创建指定唯一性级别的值。 |
 
 ### <a name="remarks"></a>备注
 
 当需要创建资源的唯一名称时，此函数很有帮助。 提供参数值，这些值用于限制结果的唯一性范围。 可以指定该名称对于订阅、资源组或部署是否唯一。 
 
-返回的值不是随机字符串，而是哈希函数的结果。 返回的值长度为 13 个字符。 此值并非全局唯一。 可能需要根据命名约定使用前缀来组合值，以创建有意义的名称。 以下示例显示了返回值的格式。 实际值随提供的参数而变化。
+返回的值不是随机字符串，而是哈希函数的结果。 返回的值长度为 13 个字符。 此值并非全局唯一。 可能需要根据命名约定使用前缀来组合值，以创建有意义的名称。 以下示例显示了返回值的格式。 实际值取决于提供的参数。
 
     tcvhiyu5h2o5o
 
@@ -1911,20 +1911,20 @@ new Guid 函数使用 .NET 框架中的[Guid 结构](/dotnet/api/system.guid)生
 
 通过组合 baseUri 和 relativeUri 字符串来创建绝对 URI。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| baseUri |是 |字符串 |基本 uri 字符串。 请注意观察与处理尾随斜杠 ('/') 有关的行为，如下表所述。  |
-| relativeUri |是 |字符串 |要添加到基本 uri 字符串的相对 uri 字符串。 |
+| baseUri |是 |string |基本 uri 字符串。 请注意观察与处理尾随斜杠 ('/') 有关的行为，如下表所述。  |
+| relativeUri |是 |string |要添加到基本 uri 字符串的相对 uri 字符串。 |
 
-* 如果**baseUri**以尾随斜杠结尾，则结果只是**基础 Uri**后跟相对**Uri**。
+* 如果**baseUri**以尾随斜杠结束，则结果将是后跟**relativeUri**的**baseuri** 。
 
 * 如果 **baseUri** 不以尾随斜杠结尾，则会出现以下两种情况之一。  
 
    * 如果 **baseUri** 根本没有斜杠（除了前面的“/”之外），则结果就是 **baseUri** 后跟 **relativeUri**。
 
-   * 如果**baseUri**有一些斜杠，但没有以斜杠结尾，则从最后一个斜杠开始的所有内容都将从**基 Uri**中删除，结果是**baseUri**后跟**相对 Uri**。
+   * 如果**baseUri**有一些斜杠，但不以斜杠结尾，则从最后一个斜杠开头开始的所有内容都将从**baseuri**中删除，结果为**baseuri**后跟**relativeUri**。
      
 下面是一些示例：
 
@@ -1977,13 +1977,13 @@ uri('http://contoso.org/firstpath/azuredeploy.json/', 'myscript.sh') -> http://c
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| uriOutput | 字符串 | `http://contoso.com/resources/nested/azuredeploy.json` |
-| componentOutput | 字符串 | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
-| toStringOutput | 字符串 | `http://contoso.com/resources/nested/azuredeploy.json` |
+| uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
+| componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
+| toStringOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
 
 ## <a name="uricomponent"></a>uriComponent
 
@@ -1991,11 +1991,11 @@ uri('http://contoso.org/firstpath/azuredeploy.json/', 'myscript.sh') -> http://c
 
 将 URI 编码。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| stringToEncode |是 |字符串 |要编码的值。 |
+| stringToEncode |是 |string |要编码的值。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -2032,13 +2032,13 @@ URI 编码值的字符串。
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| uriOutput | 字符串 | `http://contoso.com/resources/nested/azuredeploy.json` |
-| componentOutput | 字符串 | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
-| toStringOutput | 字符串 | `http://contoso.com/resources/nested/azuredeploy.json` |
+| uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
+| componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
+| toStringOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
 
 ## <a name="uricomponenttostring"></a>uriComponentToString
 
@@ -2046,15 +2046,15 @@ URI 编码值的字符串。
 
 返回 URI 编码值的字符串。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| uriEncodedString |是 |字符串 |要转换为字符串的 URI 编码值。 |
+| uriEncodedString |是 |string |要转换为字符串的 URI 编码值。 |
 
 ### <a name="return-value"></a>返回值
 
-URI 编码值的解码字符串。
+URI 编码值的解码后字符串。
 
 ### <a name="examples"></a>示例
 
@@ -2087,17 +2087,17 @@ URI 编码值的解码字符串。
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | “值” |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| uriOutput | 字符串 | `http://contoso.com/resources/nested/azuredeploy.json` |
-| componentOutput | 字符串 | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
-| toStringOutput | 字符串 | `http://contoso.com/resources/nested/azuredeploy.json` |
+| uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
+| componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
+| toStringOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
 
 ## <a name="next-steps"></a>后续步骤
 * 有关 Azure 资源管理器模板中各部分的说明，请参阅[创作 Azure 资源管理器模板](template-syntax.md)。
-* 要合并多个模板，请参阅[使用 Azure 资源管理器使用链接模板](linked-templates.md)。
-* 要迭代创建资源类型时指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
+* 若要合并多个模板，请参阅将[链接模板与 Azure 资源管理器一起使用](linked-templates.md)。
+* 若要在创建资源类型时迭代指定的次数，请参阅[在 Azure 中创建多个资源实例资源管理器](copy-resources.md)。
 * 要查看如何部署已创建的模板，请参阅[使用 Azure 资源管理器模板部署应用程序](deploy-powershell.md)。
 

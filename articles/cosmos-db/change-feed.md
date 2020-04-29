@@ -9,23 +9,23 @@ ms.date: 04/08/2020
 ms.reviewer: sngun
 ms.custom: seodec18
 ms.openlocfilehash: e36e95aeb25c83ccd94f11e25bfe9f1b8f7bfdad
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80984855"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Azure Cosmos DB 中的更改源
 
 Azure Cosmos DB 中更改源支持的工作原理是侦听 Azure Cosmos 容器中发生的任何更改。 然后，它会按照所更改文档的修改顺序输出这些文档的排序列表。 这些更改将会持久保留且能以异步和增量方式进行处理。可将输出分配到一个或多个使用者供并行处理。
 
-了解有关[更改源设计模式](change-feed-design-patterns.md)的更多信息。
+了解有关[更改源设计模式](change-feed-design-patterns.md)的详细信息。
 
 ## <a name="supported-apis-and-client-sdks"></a>支持的 API 和客户端 SDK
 
 目前，以下 Azure Cosmos DB API 和客户端 SDK 支持此功能。
 
-| **客户端驱动程序** | **SQL API** | **用于 Cassandra 的 Azure Cosmos DB API** | **Azure Cosmos DB 的 API for MongoDB** | **Gremlin API**|**表 API** |
+| **客户端驱动程序** | **SQL API** | **用于 Cassandra 的 Azure Cosmos DB API** | **Azure Cosmos DB 的用于 MongoDB 的 API** | **Gremlin API**|**表 API** |
 | --- | --- | --- | --- | --- | --- | --- |
 | .NET | 是 | 是 | 是 | 是 | 否 |
 |Java|是|是|是|是|否|
@@ -34,17 +34,17 @@ Azure Cosmos DB 中更改源支持的工作原理是侦听 Azure Cosmos 容器�
 
 ## <a name="change-feed-and-different-operations"></a>更改源和不同操作
 
-今天，您可以在更改源中看到所有插入和更新。 不能筛选特定类型的操作的更改源。 一个可能的替代方法是在项目上添加"软标记"以进行更新，并在处理更改源中的项时基于此标记进行筛选。
+现在，可以在更改源中看到所有插入和更新。 不能针对特定类型的操作来筛选的更改源。 一种可能的替代方法是在项上添加 "软标记"，以便在处理更改源中的项时基于该项进行更新和筛选。
 
-目前更改源不会记录删除操作。 与前面的示例类似，您可以在要删除的项目上添加软标记。 例如，您可以在名为"已删除"的项中添加属性并将其设置为"true"，并在该项目上设置 TTL，以便可以自动删除它。 可以读取历史项的更改源（与该项相对应的最新更改，不包括中间更改），例如，在五年前添加的项。 您可以读取更改源，只要可追溯到容器的来源，但如果删除了某个项目，它将从更改源中删除它。
+目前更改源不会记录删除操作。 与前面的示例类似，您可以对要删除的项添加软标记。 例如，你可以在名为 "deleted" 的项中添加一个属性，并将其设置为 "true" 并在该项上设置 TTL，以便可以自动删除它。 可以读取历史项的更改源（与该项相对应的最新更改，不包括中间更改），例如，在五年前添加的项。 你可以将更改源视为容器的源，但是如果删除了某个项，则会将其从更改源中删除。
 
 ### <a name="sort-order-of-items-in-change-feed"></a>更改源中项的排序顺序
 
-更改源项按其修改时间排序。 此排序顺序保证每个逻辑分区键。
+更改源项按其修改时间排序。 每个逻辑分区键均可保证这种排序顺序。
 
 ### <a name="consistency-level"></a>一致性级别
 
-在"最终一致性"级别使用更改源时，后续更改源读取操作之间可能存在重复事件（一个读取操作的最后一个事件显示为下一个读取操作中的第一个事件）。
+在最终一致性级别使用更改源时，可能会在后续更改源读取操作之间发生重复的事件（一个读取操作的最后一个事件显示为下一个读取操作的最后一个事件）。
 
 ### <a name="change-feed-in-multi-region-azure-cosmos-accounts"></a>多区域 Azure Cosmos 帐户中的更改流
 
@@ -87,7 +87,7 @@ _etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _
 
 * 对于 Azure Cosmos 容器的所有逻辑分区键，可以并行发生更改。 多个使用者可以使用此功能并行处理大型容器中发生的更改。
 
-* 应用程序可针对同一容器同时请求多个更改源。 可以使用 ChangeFeedOptions.StartTime 提供初始的起点。 例如，查找对应于给定时钟时间的继续令牌。 如果指定，延续令牌优先于"开始时间和开始"值。 ChangeFeedOptions.StartTime 的精度是 ~5 秒。
+* 应用程序可针对同一容器同时请求多个更改源。 可以使用 ChangeFeedOptions.StartTime 提供初始的起点。 例如，查找对应于给定时钟时间的继续令牌。 ContinuationToken （如果已指定）优先于 StartTime 和 StartFromBeginning 值。 ChangeFeedOptions.StartTime 的精度是 ~5 秒。
 
 ## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>用于 Cassandra 和 MongoDB 的 API 中的更改源
 

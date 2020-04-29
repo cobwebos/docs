@@ -1,6 +1,6 @@
 ---
 title: 适用于 Visual Studio Code 的 Azure HDInsight
-description: 了解如何将火花&蜂巢工具 （Azure HDInsight） 用于可视化工作室代码。 使用这些工具创建和提交查询和脚本。
+description: 了解如何为 Visual Studio Code 使用 Spark & Hive 工具（Azure HDInsight）。 使用工具创建和提交查询和脚本。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,25 +8,25 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.openlocfilehash: de433d85c2f04a7140fbcb918730218ac3a05e54
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878623"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>使用适用于 Visual Studio Code 的 Spark 和 Hive 工具
 
-了解如何使用 Apache Spark &蜂巢工具进行可视化工作室代码。 使用这些工具为 Apache Spark 创建和提交 Apache Hive 批处理作业、交互式 Hive 查询和 PySpark 脚本。 首先，我们将介绍如何在可视化工作室代码中安装 Spark & Hive 工具。 然后，我们将演练如何向 Spark & Hive Tools 提交作业。  
+了解如何使用 Apache Spark & Hive 工具来 Visual Studio Code。 使用这些工具创建和提交 Apache Hive 批处理作业、交互式 Hive 查询和用于 Apache Spark 的 PySpark 脚本。 首先，我们将介绍如何在 Visual Studio Code 中安装 Spark & Hive 工具。 接下来，我们将逐步介绍如何将作业提交到 Spark & Hive 工具。  
 
-Spark & Hive 工具可以安装在视觉工作室代码支持的平台上。 注意针对不同平台的以下先决条件。
+Spark & Hive 工具可安装在 Visual Studio Code 支持的平台上。 注意针对不同平台的以下先决条件。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本文中的步骤需要以下各项：
 
 - 一个 Azure HDInsight 群集。 若要创建群集，请参阅 [HDInsight 入门](hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)。 或使用支持 Apache Livy 终结点的 Spark 和 Hive 群集。
-- [视觉工作室代码](https://code.visualstudio.com/)。
-- [单声道](https://www.mono-project.com/docs/getting-started/install/)。 只有 Linux 和 macOS 需要 Mono。
+- [Visual Studio Code](https://code.visualstudio.com/)。
+- [Mono](https://www.mono-project.com/docs/getting-started/install/)。 只有 Linux 和 macOS 需要 Mono。
 - [Visual Studio Code 的 PySpark 交互式环境](set-up-pyspark-interactive-environment.md)。
 - 本地目录。 本文使用 C:\HD\HDexample****。
 
@@ -36,11 +36,11 @@ Spark & Hive 工具可以安装在视觉工作室代码支持的平台上。 注
 
 1. 打开 Visual Studio Code。
 
-2. 从菜单栏导航到 **"查看** > **扩展**"。
+2. 从菜单栏中，导航到 "**查看** > **扩展**"。
 
 3. 在搜索框中，输入“Spark & Hive”****。
 
-4. 从搜索结果中选择 **"火花&蜂巢工具**，然后选择 **"安装**：
+4. 从搜索结果中选择 " **Spark & Hive 工具**"，然后选择 "**安装**"：
 
    ![适用于 Visual Studio Code 的 Spark 和 Hive Python 安装](./media/hdinsight-for-vscode/install-hdInsight-plugin.png)
 
@@ -50,7 +50,7 @@ Spark & Hive 工具可以安装在视觉工作室代码支持的平台上。 注
 
 若要打开工作文件夹并在 Visual Studio Code 中创建文件，请执行以下步骤：
 
-1. 从菜单栏导航到 **"文件** > **打开文件夹..."...** >  **C：\HD_HDexample，** 然后选择 **"选择文件夹**"按钮。 该文件夹显示在左侧的“资源管理器”视图中****。
+1. 从菜单栏中，导航到 "**文件** > " "**打开文件夹 ...** " >  **C:\HD\HDexample**，然后选择 "**选择文件夹**" 按钮。 该文件夹显示在左侧的“资源管理器”视图中****。
 
 2. 在“资源管理器”视图中选择“HDexample”文件夹，然后选择工作文件夹旁边的“新建文件”图标：************
 
@@ -60,23 +60,23 @@ Spark & Hive 工具可以安装在视觉工作室代码支持的平台上。 注
 
 ## <a name="set-the-azure-environment"></a>设置 Azure 环境
 
-对于国家云用户，请按照以下步骤首先设置 Azure 环境，然后使用**Azure：登录**命令登录到 Azure：
+对于国家云用户，请按照以下步骤先设置 Azure 环境，然后使用**azure：登录**命令登录到 Azure：
 
 1. 导航到**文件** > **首选项** > **设置**。
-2. 搜索以下字符串 **：Azure：云**。
+2. 搜索以下字符串： **Azure： Cloud**。
 3. 从列表中选择国家云：
 
    ![设置默认登录入口配置](./media/hdinsight-for-vscode/set-default-login-entry-configuration.png)
 
 ## <a name="connect-to-an-azure-account"></a>连接到 Azure 帐户
 
-必须先连接到 Azure 帐户或链接群集，然后才能从 Visual Studio Code 向群集提交脚本。 使用 Apache Ambari 用户名和密码凭据或加入域的帐户。 遵循以下步骤连接到 Azure：
+必须先连接到 Azure 帐户或链接群集，然后才能将脚本从 Visual Studio Code 提交到群集。 使用 Apache Ambari 用户名和密码凭据或已加入域的帐户。 遵循以下步骤连接到 Azure：
 
-1. 从菜单栏中导航到 **"查看** > **命令调色板..."，** 然后输入**Azure：登录**：
+1. 从菜单栏中，导航到 "**查看** > **命令面板 ...**"，然后输入**Azure：登录**：
 
     ![适用于 Visual Studio Code 的 Spark 和 Hive 工具登录](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
 
-2. 按照登录说明登录到 Azure。 连接后，Azure 帐户名称将显示在可视化工作室代码窗口底部的状态栏上。  
+2. 按照登录说明登录到 Azure。 连接后，Azure 帐户名称将显示在 "Visual Studio Code" 窗口底部的状态栏中。  
 
 ## <a name="link-a-cluster"></a>链接群集
 
@@ -84,7 +84,7 @@ Spark & Hive 工具可以安装在视觉工作室代码支持的平台上。 注
 
 可以使用 [Apache Ambari](https://ambari.apache.org/) 管理的用户名链接标准群集，也可以使用域用户名（例如：`user1@contoso.com`）链接 Enterprise Security Pack 安全 Hadoop 群集。
 
-1. 从菜单栏中导航到 **"查看** > **命令调色板..."，** 然后输入**Spark/Hive：链接群集**。
+1. 从菜单栏中，导航到 "**查看** > " "**命令面板 ...**"，然后输入**Spark/Hive： "链接群集**"。
 
    ![命令面板链接群集命令](./media/hdinsight-for-vscode/link-cluster-command.png)
 
@@ -105,9 +105,9 @@ Spark & Hive 工具可以安装在视觉工作室代码支持的平台上。 注
    > [!NOTE]  
    > 如果群集已登录到 Azure 订阅中并且已链接群集，则使用链接用户名和密码。  
 
-### <a name="link-generic-livy-endpoint"></a>链接：通用利维终结点
+### <a name="link-generic-livy-endpoint"></a>链接：泛型 Livy 终结点
 
-1. 从菜单栏中导航到 **"查看** > **命令调色板..."，** 然后输入**Spark/Hive：链接群集**。
+1. 从菜单栏中，导航到 "**查看** > " "**命令面板 ...**"，然后输入**Spark/Hive： "链接群集**"。
 
 2. 选择链接的群集类型“通用 Livy 终结点”。****
 
@@ -121,7 +121,7 @@ Spark & Hive 工具可以安装在视觉工作室代码支持的平台上。 注
 
 ## <a name="list-clusters"></a>列出群集
 
-1. 从菜单栏导航到 **"查看** > **命令调色板..."，** 然后输入**Spark/Hive：列表群集**。
+1. 从菜单栏中，导航到 "**查看** > **命令面板 ...**"，然后输入**Spark/Hive： List Cluster**。
 
 2. 选择所需的订阅。
 
@@ -135,7 +135,7 @@ Spark & Hive 工具可以安装在视觉工作室代码支持的平台上。 注
 
 2. 选择[前面](#open-a-work-folder)创建的 **HelloWorld.hql** 文件。 它将在脚本编辑器中打开。
 
-3. 右键单击脚本编辑器，然后选择**Spark/ Hive：设置默认群集**。  
+3. 右键单击脚本编辑器，然后选择 " **Spark/Hive：设置默认群集**"。  
 
 4. [连接](#connect-to-an-azure-account)到 Azure 帐户或链接某个群集（如果尚未这样做）。
 
@@ -159,15 +159,15 @@ Spark & Hive 工具可以安装在视觉工作室代码支持的平台上。 注
 
 4. [连接](#connect-to-an-azure-account)到 Azure 帐户或链接某个群集（如果尚未这样做）。
 
-5. 右键单击脚本编辑器并选择**Hive：交互式**以提交查询，或使用 Ctrl_Alt_I 键盘快捷键。  选择**Hive：批处理**以提交脚本，或使用 Ctrl_Alt_H 键盘快捷键。  
+5. 右键单击脚本编辑器，然后选择 " **Hive： Interactive** " 以提交查询，或使用 Ctrl + Alt + I 键盘快捷方式。  选择**Hive： Batch**以提交脚本，或使用 Ctrl + Alt + H 键盘快捷方式。  
 
 6. 如果尚未指定默认群集，请选择群集。 工具还允许使用上下文菜单提交代码块而非整个脚本文件。 不久之后，查询结果将显示在新选项卡中：
 
-   ![交互式阿帕奇蜂巢查询结果](./media/hdinsight-for-vscode/interactive-hive-result.png)
+   ![交互式 Apache Hive 查询结果](./media/hdinsight-for-vscode/interactive-hive-result.png)
 
-    - **结果**面板：您可以将整个结果作为 CSV、JSON 或 Excel 文件保存到本地路径或仅选择多行。
+    - "**结果**" 面板：可以将整个结果作为 CSV、JSON 或 Excel 文件保存到本地路径，也可以只选择多个行。
 
-    - **消息**面板：当您选择**行**号时，它将跳转到正在运行的脚本的第一行。
+    - "**消息**" 面板：选择**行**号时，它将跳到正在运行的脚本的第一行。
 
 ## <a name="submit-interactive-pyspark-queries"></a>提交交互式 PySpark 查询
 
@@ -195,17 +195,17 @@ Spark & Hive 工具可以安装在视觉工作室代码支持的平台上。 注
 
 4. [连接](#connect-to-an-azure-account)到 Azure 帐户或链接某个群集（如果尚未这样做）。
 
-5. 选择所有代码，右键单击脚本编辑器，然后选择**Spark：PySpark 互动**以提交查询。 或者，使用 Ctrl+Alt+I 快捷键。
+5. 选择所有代码，右键单击脚本编辑器，然后选择 " **Spark： PySpark Interactive** " 以提交查询。 或者，使用 Ctrl+Alt+I 快捷键。
 
    ![pyspark 交互式上下文菜单](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
 
-6. 如果尚未指定默认群集，请选择群集。 几分钟后 **，Python 交互式**结果将显示在新选项卡中。这些工具还允许您使用上下文菜单提交代码块而不是整个脚本文件：
+6. 如果尚未指定默认群集，请选择群集。 几分钟后， **Python 交互式**结果将显示在新的选项卡中。使用这些工具，还可以使用上下文菜单提交代码块而非整个脚本文件：
 
    ![pyspark 交互式 python 交互式窗口](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
 
 7. 输入 **%%info**，然后按 Shift+Enter 查看作业信息（可选）：
 
-   ![pyspark 交互式视图作业信息](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
+   ![pyspark 交互查看作业信息](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
 
 8. 工具还支持 **Spark SQL** 查询：
 
@@ -250,7 +250,7 @@ Spark & Hive 工具可以安装在视觉工作室代码支持的平台上。 注
 
 4. [连接](#connect-to-an-azure-account)到 Azure 帐户或链接某个群集（如果尚未这样做）。
 
-5. 右键单击脚本编辑器，然后选择**Spark：PySpark 批处理**，或使用 Ctrl_Alt_H 键盘快捷键。
+5. 右键单击脚本编辑器，然后选择 " **Spark： PySpark Batch**"，或使用 Ctrl + Alt + H 键盘快捷方式。
 
 6. 选择要将 PySpark 作业提交到的群集：
 
@@ -260,27 +260,27 @@ Spark & Hive 工具可以安装在视觉工作室代码支持的平台上。 注
 
 ## <a name="apache-livy-configuration"></a>Apache Livy 配置
 
-支持 [Apache Livy](https://livy.incubator.apache.org/) 配置。 可在工作空间文件夹中的 **.VSCode\settings.json** 内配置 Apache Livy。 目前，Livy 配置仅支持 Python 脚本。 有关详细信息，请参阅[利维·里德梅](https://github.com/cloudera/livy/blob/master/README.rst )。
+支持 [Apache Livy](https://livy.incubator.apache.org/) 配置。 可在工作空间文件夹中的 **.VSCode\settings.json** 内配置 Apache Livy。 目前，Livy 配置仅支持 Python 脚本。 有关详细信息，请参阅[LIVY 自述文件](https://github.com/cloudera/livy/blob/master/README.rst )。
 
-<a id="triggerlivyconf"></a>**如何触发利维配置**
+<a id="triggerlivyconf"></a>**如何触发 Livy 配置**
 
 方法 1  
-1. 从菜单栏导航到 **"文件** > **首选项** > **设置**"。
-2. 在 **"搜索设置"** 框中，输入**HDInsight 作业提交：Livy Conf**。  
+1. 从菜单栏中，导航到 "**文件** > " "**首选项** > " "**设置**"。
+2. 在 "**搜索设置**" 框中，输入**HDInsight 作业提交： Livy 会议**。  
 3. 选择“在 settings.json 中编辑”以获取相关搜索结果****。
 
-方法 2 提交文件，并注意到`.vscode`该文件夹将自动添加到工作文件夹中。 可以通过选择“.vscode\settings.json”来查看 Livy 配置。****
+方法2：提交文件，并注意`.vscode`文件夹自动添加到工作文件夹。 可以通过选择“.vscode\settings.json”来查看 Livy 配置。****
 
 + 项目设置：
 
-    ![HDInsight 阿帕奇利维配置](./media/hdinsight-for-vscode/hdi-apache-livy-config.png)
+    ![HDInsight Apache Livy 配置](./media/hdinsight-for-vscode/hdi-apache-livy-config.png)
 
     >[!NOTE]
-    >对于 **driverMemory** 和 **executorMemory** 设置，请设置值和单位。 例如：1g 或 1024m。
+    >对于 **driverMemory** 和 **executorMemory** 设置，请设置值和单位。 例如：1g 或1024m。
 
 + 支持的 Livy 配置：
 
-    **POST /批量**请求正文
+    **POST/batches**请求正文
 
     | name | description | type |
     | --- | --- | --- |
@@ -301,7 +301,7 @@ Spark & Hive 工具可以安装在视觉工作室代码支持的平台上。 注
     | name | 此会话的名称 | 字符串 |
     | conf | Spark 配置属性 | key=val 的映射 |
 
-    响应正文 已创建的批处理对象。
+    响应正文：创建的批处理对象。
 
     | name | description | type |
     | --- | ---| --- |
@@ -318,11 +318,11 @@ Spark & Hive 工具可以安装在视觉工作室代码支持的平台上。 注
 
 可以通过 **Azure HDInsight** 资源管理器直接在群集中预览 Hive 表：
 
-1. [Connect](#connect-to-an-azure-account)如果尚未连接到 Azure 帐户。
+1. 如果尚未这样做，请[连接](#connect-to-an-azure-account)到 Azure 帐户。
 
 2. 选择最左侧列中的“Azure”图标。****
 
-3. 从左侧窗格中展开**AZURE：HDINSIGHT**。 此时会列出可用的订阅和群集。
+3. 在左侧窗格中，展开 " **AZURE： HDINSIGHT**"。 此时会列出可用的订阅和群集。
 
 4. 展开群集以查看 Hive 元数据数据库和表架构。
 
@@ -339,9 +339,9 @@ Spark & Hive 工具可以安装在视觉工作室代码支持的平台上。 注
    可以将整个结果作为 CSV、JSON、Excel 保存到本地路径，也可以只选择多个行。
 
 - “消息”面板
-   1. 当表中的行数大于 100 时，您将看到以下消息："前 100 行将显示为 Hive 表。
-   2. 当表中的行数小于或等于 100 时，您将看到以下消息："为 Hive 表显示 60 行。
-   3. 当表中没有内容时，您将看到以下消息：""`0 rows are displayed for Hive table.`
+   1. 当表中的行数大于100时，将看到以下消息： "将为 Hive 表显示前100行"。
+   2. 如果表中的行数小于或等于100，则会看到以下消息： "为 Hive 表显示60行"。
+   3. 如果表中没有内容，将看到以下消息： "`0 rows are displayed for Hive table.`"
 
         >[!NOTE]
         >
@@ -355,7 +355,7 @@ Spark & Hive 工具可以安装在视觉工作室代码支持的平台上。 注
 
 - **IntelliSense 自动完成**。 弹出关键字、方法、变量和其他编程元素的相关建议。 不同图标表示不同类型的对象：
 
-    ![用于视觉工作室代码智能感知对象的火花&蜂巢工具](./media/hdinsight-for-vscode/hdinsight-for-vscode-auto-complete-objects.png)
+    ![Spark & 用于 Visual Studio Code IntelliSense 对象的 Hive 工具](./media/hdinsight-for-vscode/hdinsight-for-vscode-auto-complete-objects.png)
 
 - **IntelliSense 错误标记**。 语言服务会为 Hive 脚本的编辑错误添加下划线。     
 - **语法突出显示**。 语言服务使用不同颜色来区分变量、关键字、数据类型、函数和其他编程元素：
@@ -364,7 +364,7 @@ Spark & Hive 工具可以安装在视觉工作室代码支持的平台上。 注
 
 ## <a name="reader-only-role"></a>仅限读取者角色
 
-为群集分配仅读者角色的用户无法将作业提交到 HDInsight 群集，也不能查看 Hive 数据库。 需在 [Azure 门户](https://ms.portal.azure.com/)中联系群集管理员将你的角色升级到 [**HDInsight 群集操作员**](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-granular-access-cluster-configurations#add-the-hdinsight-cluster-operator-role-assignment-to-a-user)。 如果你有有效的 Ambari 凭据，可遵循以下指导手动链接群集。
+为群集分配了 "仅读取者" 角色的用户无法将作业提交到 HDInsight 群集，也无法查看 Hive 数据库。 需在 [Azure 门户](https://ms.portal.azure.com/)中联系群集管理员将你的角色升级到 [**HDInsight 群集操作员**](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-granular-access-cluster-configurations#add-the-hdinsight-cluster-operator-role-assignment-to-a-user)。 如果你有有效的 Ambari 凭据，可遵循以下指导手动链接群集。
 
 ### <a name="browse-the-hdinsight-cluster"></a>浏览 HDInsight 群集  
 
@@ -379,7 +379,7 @@ Spark & Hive 工具可以安装在视觉工作室代码支持的平台上。 注
 1. 输入有效的 Ambari 用户名。
 2. 输入有效的密码。
 
-   ![火花&蜂巢工具，用于可视化工作室代码用户名](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-username.png)
+   ![Spark & 用于 Visual Studio Code 用户名的 Hive 工具](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-username.png)
 
    ![适用于 Visual Studio Code 的 Spark 和 Hive 工具 - 密码](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-password.png)
 
@@ -393,11 +393,11 @@ Spark & Hive 工具可以安装在视觉工作室代码支持的平台上。 注
 
 ### <a name="browse-a-data-lake-storage-gen2-account"></a>浏览 Data Lake Storage Gen2 帐户
 
-选择 Azure HDInsight 资源管理器以扩展数据湖存储 Gen2 帐户。 如果 Azure 帐户无法访问 Gen2 存储，系统将提示您输入存储访问密钥。 验证访问密钥后，Data Lake Storage Gen2 帐户将自动展开。
+选择 Azure HDInsight 资源管理器，展开 Data Lake Storage Gen2 帐户。 如果 Azure 帐户无权访问 Gen2 存储，则系统会提示输入存储访问密钥。 验证访问密钥后，Data Lake Storage Gen2 帐户将自动展开。
 
 ### <a name="submit-jobs-to-an-hdinsight-cluster-with-data-lake-storage-gen2"></a>将作业提交到使用 Data Lake Storage Gen2 的 HDInsight 群集
 
-使用数据湖存储 Gen2 将作业提交到 HDInsight 群集。 如果 Azure 帐户对 Gen2 存储没有写入访问权限，系统将提示您输入存储访问密钥。 验证访问密钥后，作业将成功提交。
+使用 Data Lake Storage Gen2 将作业提交到 HDInsight 群集。 如果 Azure 帐户对 Gen2 存储没有写入权限，系统会提示输入存储访问密钥。 验证访问密钥后，作业将成功提交。
 
 ![适用于 Visual Studio Code 的 Spark 和 Hive 工具 - 访问密钥](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-accesskey.png)
 
@@ -407,7 +407,7 @@ Spark & Hive 工具可以安装在视觉工作室代码支持的平台上。 注
 
 ## <a name="unlink-cluster"></a>取消链接群集
 
-1. 从菜单栏转到 **"查看** > **命令调色板**"，然后输入**Spark/ Hive：取消链接群集**。  
+1. 从菜单栏中转到 "**查看** > " "**命令面板**"，然后输入**Spark/Hive： "取消链接群集**"。  
 
 2. 选择要取消链接的群集。  
 
@@ -415,8 +415,8 @@ Spark & Hive 工具可以安装在视觉工作室代码支持的平台上。 注
 
 ## <a name="sign-out"></a>注销  
 
-从菜单栏转到 **"查看** > **命令调色板**"，然后输入**Azure：注销**。
+从菜单栏中转到 "**查看** > " "**命令面板**"，然后输入 " **Azure：注销**"。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关演示使用 Spark & Hive 用于视觉工作室代码的视频，请参阅[Visual Studio 代码的 Spark & Hive。](https://go.microsoft.com/fwlink/?linkid=858706)
+有关演示如何对 Visual Studio Code 使用 Spark & Hive 的视频，请参阅[spark & hive for Visual Studio Code](https://go.microsoft.com/fwlink/?linkid=858706)。

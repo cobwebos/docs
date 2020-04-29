@@ -1,7 +1,7 @@
 ---
-title: 运行 Azure 容器实例 - 语音服务
+title: 运行 Azure 容器实例-语音服务
 titleSuffix: Azure Cognitive Services
-description: 将语音服务容器部署到 Azure 容器实例，并在 Web 浏览器中测试它。
+description: 将 Speech service 容器部署到 Azure 容器实例，并在 web 浏览器中对其进行测试。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 610d5ce095097a31ee92c67f0112d1657424858e
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80878742"
 ---
-# <a name="deploy-the-speech-service-container-to-azure-container-instances"></a>将语音服务容器部署到 Azure 容器实例
+# <a name="deploy-the-speech-service-container-to-azure-container-instances"></a>将 Speech service 容器部署到 Azure 容器实例
 
-了解如何将认知服务[语音服务](speech-container-howto.md)容器部署到 Azure[容器实例](https://docs.microsoft.com/azure/container-instances/)。 此过程演示了 Azure 语音转换服务资源的创建。 然后讨论如何拉取关联的容器映像。 最后，我们重点介绍了从浏览器中执行这两个业务流程的能力。 使用容器可以将开发人员的注意力从管理基础结构转移到应用程序开发上。
+了解如何将认知服务[语音服务](speech-container-howto.md)容器部署到 Azure[容器实例](https://docs.microsoft.com/azure/container-instances/)。 此过程演示如何创建 Azure 语音服务资源。 然后讨论如何拉取关联的容器映像。 最后，我们重点介绍了从浏览器中执行这两个业务流程的能力。 使用容器可以将开发人员的注意力从管理基础结构转移到应用程序开发上。
 
 [!INCLUDE [Prerequisites](../containers/includes/container-preview-prerequisites.md)]
 

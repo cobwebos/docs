@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: sngun
 ms.openlocfilehash: 079c246f87bb8294f3c7ad6dea3391f5c67ba0ad
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80985246"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>使用 Azure Cosmos DB 和 Azure Functions 的无服务器数据库计算
@@ -49,7 +49,7 @@ Azure Cosmos DB 和 Azure Functions 支持采用以下方式集成数据库和�
 
 在 IoT 实现中，当引擎检查灯显示在连接的汽车中时，可以调用一个函数。
 
-**实施：** 使用 Cosmos DB 的 Azure 函数触发器和输出绑定
+**实施：** 使用适用于 Cosmos DB 的 Azure Functions 触发器和输出绑定
 
 1. **适用于 Cosmos DB 的 Azure Functions 触发器**用于触发与汽车警报相关的事件，例如引擎检查灯在连接的汽车上发光。
 2. 当引擎检查灯发光时，传感器数据将发送到 Azure Cosmos DB。
@@ -67,7 +67,7 @@ Azure Cosmos DB 和 Azure Functions 支持采用以下方式集成数据库和�
 
 在财务实现中，当银行帐户余额低于特定金额时，可以调用一个函数。
 
-**实现：** 使用 Azure Cosmos DB 输入绑定的计时器触发器
+**实施：** 使用 Azure Cosmos DB 输入绑定的计时器触发器
 
 1. 通过[计时器触发器](../azure-functions/functions-bindings-timer.md)，可以使用**输入绑定**每隔一定时间检索存储在 Azure Cosmos 容器中的银行帐户余额信息。
 2. 如果余额低于用户设置的低余额阈值，则采取 Azure Function 中的某个措施。
@@ -83,10 +83,10 @@ Azure Cosmos DB 和 Azure Functions 支持采用以下方式集成数据库和�
 
 在游戏中，创建新用户时，可以使用 [Azure Cosmos DB Gremlin API](graph-introduction.md) 搜索可能知道新用户的其他用户。 然后，将结果写入 [Azure Cosmos DB SQL 数据库]以便于检索。
 
-**实施：** 使用 Cosmos DB 的 Azure 函数触发器和输出绑定
+**实施：** 使用适用于 Cosmos DB 的 Azure Functions 触发器和输出绑定
 
 1. 通过使用 Azure Cosmos DB [图形数据库](graph-introduction.md)存储所有用户，可以使用适用于 Cosmos DB 的 Azure Functions 触发器创建新函数。 
-2. 每当插入新用户时，都将调用该函数，然后使用“输出绑定”**** 存储结果。
+2. 每当插入新用户时，都将调用该函数，然后使用“输出绑定”  存储结果。
 3. 该函数将查询图形数据库，以搜索与新用户直接相关的所有用户，并将该数据集返回到函数。
 4. 随后，此数据存储在 Azure Cosmos DB 表数据库中，并且这些键值对可由任何前端应用程序（向新用户显示有联系的好友）轻松检索。
 
@@ -94,7 +94,7 @@ Azure Cosmos DB 和 Azure Functions 支持采用以下方式集成数据库和�
 
 在零售实现中，当用户向购物篮添加商品时，可以为可选业务管道组件灵活创建和调用函数。
 
-**实施：** 多个 Azure 函数触发器，用于宇宙 DB 侦听一个容器
+**实施：** 侦听一个容器的多个适用于 Cosmos DB 的 Azure Functions 触发器
 
 1. 通过将适用于 Cosmos DB 的 Azure Functions 触发器添加到每个函数可以创建多个 Azure 函数，它们全部都侦听购物车数据的同一更改源。 请注意，当多个函数侦听同一更改源时，需要为每个函数提供新的租用集合。 有关租约集合的详细信息，请参阅[了解更改源处理器库](change-feed-processor.md)。
 2. 每当新商品添加到用户的购物车时，更改源都将从购物车容器中独立调用每个函数。

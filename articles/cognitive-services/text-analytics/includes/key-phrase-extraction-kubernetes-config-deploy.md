@@ -1,7 +1,7 @@
 ---
-title: 关键短语提取库伯奈斯配置和部署步骤
+title: 关键短语提取 Kubernetes 配置和部署步骤
 titleSuffix: Azure Cognitive Services
-description: 关键短语提取库伯奈斯配置和部署步骤
+description: 关键短语提取 Kubernetes 配置和部署步骤
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,45 +10,45 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 6ef7efe3d48fd20c5141803430260a80395faa82
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80877795"
 ---
 ### <a name="deploy-the-key-phrase-extraction-container-to-an-aks-cluster"></a>将关键短语提取容器部署到 AKS 群集
 
-1. 打开 Azure CLI，然后登录到 Azure。
+1. 打开 Azure CLI，并登录到 Azure。
 
     ```azurecli
     az login
     ```
 
-1. 登录到 AKS 群集。 使用`your-cluster-name`适当的`your-resource-group`值替换和替换。
+1. 登录到 AKS 群集。 用`your-cluster-name`适当`your-resource-group`的值替换和。
 
     ```azurecli
     az aks get-credentials -n your-cluster-name -g -your-resource-group
     ```
 
-    运行此命令后，它会报告类似于以下内容的消息：
+    运行此命令后，它将报告类似于以下内容的消息：
 
     ```output
     Merged "your-cluster-name" as current context in /home/username/.kube/config
     ```
 
     > [!WARNING]
-    > 如果在 Azure 帐户上有多个可用订阅，而 `az aks get-credentials` 命令返回错误，则表明你使用了错误的订阅，这是一个常见问题。 将 Azure CLI 会话的上下文设置为使用与创建资源相同的订阅，然后重试。
+    > 如果在 Azure 帐户上有多个可用订阅，而 `az aks get-credentials` 命令返回错误，则表明你使用了错误的订阅，这是一个常见问题。 将 Azure CLI 会话的上下文设置为使用创建资源时使用的同一订阅，然后重试。
     > ```azurecli
     >  az account set -s subscription-id
     > ```
 
-1. 打开您选择的文本编辑器。 此示例使用可视化工作室代码。
+1. 打开所选的文本编辑器。 此示例使用 Visual Studio Code。
 
     ```console
     code .
     ```
 
-1. 在文本编辑器中，创建名为*keyphrase.yaml*的新文件，并将下面的 YAML 粘贴到其中。 请务必替换`billing/value`并`apikey/value`使用您自己的信息。
+1. 在文本编辑器中，创建一个名为*关键短语. yaml*的新文件，并将以下 yaml 粘贴到其中。 请确保将和`billing/value` `apikey/value`替换为自己的信息。
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -94,26 +94,26 @@ ms.locfileid: "80877795"
         app: keyphrase-app
     ```
 
-1. 保存文件，然后关闭文本编辑器。
-1. 以`apply`*keyphrase.yaml*文件为目标运行 Kubernetes 命令：
+1. 保存该文件并关闭文本编辑器。
+1. 运行 Kubernetes `apply`命令，并将*关键短语*文件作为其目标：
 
     ```console
     kubectl apply -f keyphrase.yaml
     ```
 
-    命令成功应用部署配置后，将显示一条消息，类似于以下输出：
+    在该命令成功应用部署配置后，会显示一条类似于以下输出的消息：
 
     ```output
     deployment.apps "keyphrase" created
     service "keyphrase" created
     ```
-1. 验证是否部署了该窗格：
+1. 验证是否已部署 pod：
 
     ```console
     kubectl get pods
     ```
 
-    窗格运行状态的输出：
+    Pod 的运行状态的输出：
 
     ```output
     NAME                         READY     STATUS    RESTARTS   AGE
@@ -126,7 +126,7 @@ ms.locfileid: "80877795"
     kubectl get services
     ```
 
-    窗格中*键短语*服务运行状态的输出：
+    Pod 中*关键短语*服务的运行状态的输出：
 
     ```output
     NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE

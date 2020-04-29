@@ -9,10 +9,10 @@ ms.date: 08/23/2019
 ms.topic: how-to
 manager: philmea
 ms.openlocfilehash: 02481d5dcbaba15c9b17a27348207d9af64f3355
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80982032"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>从 CSP 门户创建和管理 Azure IoT Central 应用程序
@@ -33,23 +33,23 @@ Azure IoT Central 将列为可用于管理的服务。 选择页面上的 Azure 
 
 ![创建适用于 CSP 的管理器](media/howto-create-and-manage-applications-csp/image3.png)
 
-若要创建 Azure IoT Central 应用程序，请在左侧菜单中选择“生成”****。 选择一个行业模板，或选择“自定义应用”**** 从头开始创建应用程序。 这将加载“应用程序创建”页。 必须完成此页上的所有字段，然后选择“创建”。**** 你将找到有关以下每个字段的详细信息。
+若要创建 Azure IoT Central 应用程序，请在左侧菜单中选择“生成”  。 选择一个行业模板，或选择“自定义应用”**** 从头开始创建应用程序。 这将加载“应用程序创建”页。 必须完成此页上的所有字段，然后选择“创建”。  你将找到有关以下每个字段的详细信息。
 
 ![适用于 CSP 的“创建应用程序”页](media/howto-create-and-manage-applications-csp/image4.png)
 
 ![适用于 CSP 的“创建应用程序”页](media/howto-create-and-manage-applications-csp/image4-1.png)
 
-![为 CSP 计费信息创建应用程序页面](media/howto-create-and-manage-applications-csp/image4-2.png)
+![适用于云解决方案提供商的“创建应用程序”页 - 计费信息](media/howto-create-and-manage-applications-csp/image4-2.png)
 
 ## <a name="pricing-plan"></a>定价计划
 
-您只能创建使用标准定价计划作为 CSP 的应用程序。 要向客户展示 Azure IoT 中心，可以创建单独使用免费定价计划的应用程序。 在 [Azure IoT Central 定价页](https://azure.microsoft.com/pricing/details/iot-central/)上详细了解免费和标准定价计划。
+你作为云解决方案提供商只能创建使用标准定价计划的应用程序。 若要向客户展示 Azure IoT Central，可以单独创建一个使用免费定价计划的应用程序。 在 [Azure IoT Central 定价页](https://azure.microsoft.com/pricing/details/iot-central/)上详细了解免费和标准定价计划。
 
-您只能创建使用标准定价计划作为 CSP 的应用程序。 要向客户展示 Azure IoT 中心，可以创建单独使用免费定价计划的应用程序。 在 [Azure IoT Central 定价页](https://azure.microsoft.com/pricing/details/iot-central/)上详细了解免费和标准定价计划。
+你作为云解决方案提供商只能创建使用标准定价计划的应用程序。 若要向客户展示 Azure IoT Central，可以单独创建一个使用免费定价计划的应用程序。 在 [Azure IoT Central 定价页](https://azure.microsoft.com/pricing/details/iot-central/)上详细了解免费和标准定价计划。
 
 ## <a name="application-name"></a>应用程序名称
 
-应用程序的名称显示在“应用程序管理器”页上和每个 Azure IoT Central 应用程序中。**** 可以为 Azure IoT Central 应用程序选择任意名称。 选择一个在自己和组织中的其他人看来合适的名称。
+应用程序的名称显示在“应用程序管理器”页上和每个 Azure IoT Central 应用程序中。  可以为 Azure IoT Central 应用程序选择任意名称。 选择一个在自己和组织中的其他人看来合适的名称。
 
 ## <a name="application-url"></a>应用程序 URL
 
@@ -67,15 +67,15 @@ Azure Active Directory 租户包含用户标识、凭据和其他组织信息。
 
 ## <a name="azure-subscription"></a>Azure 订阅
 
-有了 Azure 订阅，就可以创建 Azure 服务的实例。 Azure IoT Central 会自动查找你有权访问的客户的所有 Azure 订阅，并将其显示在“创建应用程序”页的下拉列表中。**** 选择用于创建新 Azure IoT Central 应用程序的 Azure 订阅。
+有了 Azure 订阅，就可以创建 Azure 服务的实例。 Azure IoT Central 会自动查找你有权访问的客户的所有 Azure 订阅，并将其显示在“创建应用程序”页的下拉列表中。  选择用于创建新 Azure IoT Central 应用程序的 Azure 订阅。
 
-如果没有 Azure 订阅，则可以在 Microsoft 合作伙伴中心创建订阅。 创建 Azure 订阅以后，请导航回“创建应用程序”页。**** 新订阅显示在“Azue 订阅”**** 下拉列表中。
+如果没有 Azure 订阅，则可在 Microsoft 合作伙伴中心创建一个。 创建 Azure 订阅以后，请导航回“创建应用程序”页。  新订阅显示在“Azue 订阅”  下拉列表中。
 
 若要了解详细信息，请参阅 [Azure 订阅](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)。
 
 ## <a name="location"></a>位置
 
-**位置**是要创建应用程序的[地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)。 通常，应选择物理上离设备最近的位置以获得最佳性能。 目前，您可以在**澳大利亚**、**亚太地区**、**欧洲**、**美国**、**英国****和日本**地区创建 IoT 中心应用程序。 选择一个位置后，之后便不能将应用程序移到其他位置。
+**Location**是要在其中创建应用程序的[地理](https://azure.microsoft.com/global-infrastructure/geographies/)位置。 通常，应选择物理上离设备最近的位置以获得最佳性能。 目前，可以在**澳大利亚**、**亚太**、**欧洲**、**美国**、**英国**和**日本**地区创建 IoT Central 应用程序。 选择一个位置后，之后便不能将应用程序移到其他位置。
 
 ## <a name="application-template"></a>应用程序模板
 

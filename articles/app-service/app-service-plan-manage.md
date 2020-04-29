@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
 ms.openlocfilehash: d40f5db65ce9ca90ae978bac4491bdebccc2a328
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80811715"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>在 Azure 中管理应用服务计划
@@ -28,7 +28,7 @@ ms.locfileid: "80811715"
 
    ![在 Azure 门户中创建资源。][createResource] 
 
-1. 选择 **"新建** > **Web 应用**"或"其他应用服务应用"。
+1. 选择 "**新建** > " "**Web 应用**" 或其他类型的应用服务应用。
 
    ![在 Azure 门户中创建应用。][createWebApp] 
 
@@ -52,7 +52,7 @@ ms.locfileid: "80811715"
 > 无法在创建计划时指定所需的 Web 空间，但这可确保计划创建于与现有计划相同的 Web 空间中。 简而言之，所有使用相同资源组和区域组合创建的计划都会部署到相同的 Web 空间中。 比方说，如果在资源组 A 和区域 B 中创建了计划，则后续在资源组 A 和区域 B 中创建的所有计划都会部署到相同的 Web 空间中。 请注意，计划创建之后便不能移动 Web 空间，所以无法通过将计划移至另一个资源组，将其移到与另一个计划“相同的 Web 空间”中。
 > 
 
-1. 在[Azure 门户](https://portal.azure.com)中，搜索并选择**应用服务**，然后选择要移动的应用。
+1. 在[Azure 门户](https://portal.azure.com)中，搜索并选择 "**应用服务**"，并选择要移动的应用。
 
 2. 从左菜单中选择“更改应用服务计划”****。
 
@@ -61,7 +61,7 @@ ms.locfileid: "80811715"
 4. 如果创建一项计划，则可选择新计划的定价层。 在“定价层”中选择现有层，对其进行更改。**** 
    
    > [!IMPORTANT]
-   > 若要将应用从高层计划移到低层计划（例如，从 **D1** 移到 **F1**），应用可能会在目标计划中丢失某些功能。 例如，如果应用使用 TLS/SSL 证书，您可能会看到以下错误消息：
+   > 若要将应用从高层计划移到低层计划（例如，从 **D1** 移到 **F1**），应用可能会在目标计划中丢失某些功能。 例如，如果你的应用使用 TLS/SSL 证书，你可能会看到以下错误消息：
    >
    > `Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
 

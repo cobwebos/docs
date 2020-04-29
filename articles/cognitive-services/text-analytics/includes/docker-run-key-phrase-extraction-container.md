@@ -1,7 +1,7 @@
 ---
-title: 运行 Docker run 命令的容器示例
+title: Docker run 命令的运行容器示例
 titleSuffix: Azure Cognitive Services
-description: 键短语提取容器的 Docker 运行命令
+description: 用于关键短语提取容器的 Docker run 命令
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,13 +10,13 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 8ed42d5b0461b6273c2f8d84a267b65461d160ef
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80876960"
 ---
-要运行 *"关键短语提取*"容器，请执行`docker run`以下命令。
+若要运行*关键短语提取*容器，请执行以下`docker run`命令。
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \

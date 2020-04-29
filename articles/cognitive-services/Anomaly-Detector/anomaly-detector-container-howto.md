@@ -1,5 +1,5 @@
 ---
-title: 如何安装和运行容器，用于使用异常检测器 API
+title: 如何使用异常探测器 API 安装和运行容器
 titleSuffix: Azure Cognitive Services
 description: 使用异常检测器 API 的高级算法来确定时序数据中的异常。
 services: cognitive-services
@@ -11,40 +11,40 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: fa25d27e99a9516d461a84dde184e2a6412baa0b
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80875025"
 ---
-# <a name="install-and-run-anomaly-detector-containers-preview"></a>安装并运行异常检测器容器（预览版）
+# <a name="install-and-run-anomaly-detector-containers-preview"></a>安装和运行异常探测器容器（预览）
 
-异常检测器具有以下容器功能：
+异常探测器具有以下容器功能功能：
 
 | 函数 | 功能 |
 |--|--|
-| 异常检测器 | <li> 实时检测异常。 <li> 检测整个数据集的异常情况，作为批处理。 <li> 推断数据的预期正常范围。 <li> 支持异常检测灵敏度调整，以更好地适合您的数据。 |
+| 异常探测器 | <li> 实时检测异常情况。 <li> 在整个数据集中以批处理方式检测异常。 <li> 推断数据的预期正常范围。 <li> 支持异常情况检测敏感度调整，以便更好地适应数据。 |
 
-有关 API 的详细信息，请参阅：
-* [了解有关异常检测器 API 服务的更多信息](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
+有关 Api 的详细信息，请参阅：
+* [详细了解异常探测器 API 服务](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
-在使用异常检测器容器之前，必须满足以下先决条件：
+使用异常探测器容器之前，必须满足以下先决条件：
 
 |必选|目的|
 |--|--|
 |Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> **在 Windows 上**，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
-|异常检测器资源 |若要使用这些容器，必须具有：<br><br>Azure_异常检测器_资源，用于获取关联的 API 密钥和终结点 URI。 这两个值都可以在 Azure 门户的**异常检测器**概述和密钥页上使用，并且需要启动容器。<br><br>**[API_KEY]**：**密钥**页上的两个可用资源键之一<br><br>**[ENDPOINT_URI]**：**概述**页上提供的终结点|
+|异常探测器资源 |若要使用这些容器，必须具有：<br><br>用于获取关联的 API 密钥和终结点 URI 的 Azure_异常探测器_资源。 这两个值都可用于 Azure 门户的**异常探测器**"概述" 和 "密钥" 页，并且是启动容器所必需的。<br><br>**{API_KEY}**： "**密钥**" 页上有两个可用的资源键之一<br><br>**{ENDPOINT_URI}**： "**概述**" 页中提供的终结点|
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
 ## <a name="request-access-to-the-container-registry"></a>请求访问容器注册表
 
-您必须首先填写并提交[异常检测器容器请求表单](https://aka.ms/adcontainer)，以请求对容器的访问。
+必须先完成并提交[异常探测器容器请求窗体](https://aka.ms/adcontainer)，才能请求访问容器。
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 
@@ -58,12 +58,12 @@ ms.locfileid: "80875025"
 
 ### <a name="container-requirements-and-recommendations"></a>容器要求和建议
 
-下表描述了为异常检测器容器分配的最小和推荐的 CPU 内核和内存。
+下表描述了为异常探测器容器分配的最低和推荐的 CPU 内核和内存。
 
-| QPS（每秒查询） | 最小值 | 建议 |
+| QPS （每秒查询数） | 最小值 | 建议 |
 |-----------|---------|-------------|
-| 10 QPS | 4 核，1GB内存 | 8 核 2-GB 内存 |
-| 20 QPS | 8 核，2 GB 内存 | 16 核 4 GB 内存 |
+| 10 QPS | 4核，1 GB 内存 | 8核 2 GB 内存 |
+| 20 QPS | 8核，2 GB 内存 | 16核 4 GB 内存 |
 
 每个核心必须至少为 2.6 千兆赫 (GHz) 或更快。
 
@@ -75,14 +75,14 @@ ms.locfileid: "80875025"
 
 | 容器 | 存储库 |
 |-----------|------------|
-| 认知服务-异常检测器 | `containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector:latest` |
+| 认知-服务-异常探测器 | `containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector:latest` |
 
 <!--
 For a full description of available tags, such as `latest` used in the preceding command, see [anomaly-detector](https://go.microsoft.com/fwlink/?linkid=2083827&clcid=0x409) on Docker Hub.
 -->
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-### <a name="docker-pull-for-the-anomaly-detector-container"></a>异常检测器容器的坞取拉
+### <a name="docker-pull-for-the-anomaly-detector-container"></a>针对异常探测器容器的 Docker 拉取
 
 ```Docker
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector:latest
@@ -111,7 +111,7 @@ ApiKey={API_KEY}
 
 此命令：
 
-* 从容器映像运行异常检测器容器
+* 从容器映像运行异常探测器容器
 * 分配一个 CPU 核心和 4 GB 内存
 * 公开 TCP 端口 5000，并为容器分配伪 TTY
 * 退出后自动删除容器。 容器映像在主计算机上仍然可用。 
@@ -123,7 +123,7 @@ ApiKey={API_KEY}
 
 若要运行多个公开端口的容器，请确保在运行每个容器时使用不同的端口。 例如，在端口 5000 上运行第一个容器，在端口 5001 上运行第二个容器。
 
-请将 `<container-registry>` 和 `<container-name>` 替换为所用容器的值。 这些容器不需要是同一容器。 您可以让异常检测器容器和 LUIS 容器一起在 HOST 上运行，也可以运行多个异常检测器容器。 
+请将 `<container-registry>` 和 `<container-name>` 替换为所用容器的值。 这些容器不需要是同一容器。 可以在主机上同时运行异常探测器容器和 LUIS 容器，也可以运行多个异常探测器容器。 
 
 在端口 5000 上运行第一个容器。 
 
@@ -162,7 +162,7 @@ ApiKey={API_KEY}
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 如果运行启用了输出[装入点](anomaly-detector-container-configuration.md#mount-settings)和日志记录的容器，该容器会生成有助于排查启动或运行容器时发生的问题的日志文件。
 
@@ -170,7 +170,7 @@ ApiKey={API_KEY}
 
 ## <a name="billing"></a>计费
 
-异常检测器容器使用 Azure 帐户上的_异常检测器_资源向 Azure 发送计费信息。 
+异常探测器容器使用 Azure 帐户上的_异常探测器_资源将计费信息发送到 azure。 
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
@@ -180,21 +180,21 @@ ApiKey={API_KEY}
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>“摘要”
 
-在本文中，您学习了下载、安装和运行异常检测器容器的概念和工作流。 综上所述：
+本文介绍了用于下载、安装和运行异常探测器容器的概念和工作流。 综上所述：
 
-* 异常检测器为 Docker 提供了一个 Linux 容器，通过批处理与流式处理、预期范围推理和灵敏度调优封装异常检测。
-* 容器映像从专用于容器预览的专用 Azure 容器注册表下载。
+* 异常探测器提供了一个适用于 Docker 的 Linux 容器，可通过批处理与流式处理、预期的范围推理和敏感度优化来封装异常检测。
+* 容器映像从专用于容器预览版的专用 Azure 容器注册表下载。
 * 容器映像在 Docker 中运行。
-* 通过指定容器的主机 URI，可以使用 REST API 或 SDK 在异常检测器容器中调用操作。
+* 您可以使用 REST API 或 SDK 通过指定容器的主机 URI 来调用异常探测器容器中的操作。
 * 必须在实例化容器时指定账单信息。
 
 > [!IMPORTANT]
-> 如果未连接到 Azure 进行计量，则无法授权并运行认知服务容器。 客户需要始终让容器向计量服务传送账单信息。 认知服务容器不会向 Microsoft 发送客户数据（例如，正在分析的时间序列数据）。
+> 如果未连接到 Azure 进行计量，则无法授权并运行认知服务容器。 客户需要始终让容器向计量服务传送账单信息。 认知服务容器不会将客户数据（例如正在分析的时序数据）发送给 Microsoft。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 查看[配置容器](anomaly-detector-container-configuration.md)的配置设置
-* [将异常检测器容器部署到 Azure 容器实例](how-to/deploy-anomaly-detection-on-container-instances.md)
-* [了解有关异常检测器 API 服务的更多信息](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
+* 查看配置设置的[容器](anomaly-detector-container-configuration.md)
+* [将异常探测器容器部署到 Azure 容器实例](how-to/deploy-anomaly-detection-on-container-instances.md)
+* [详细了解异常探测器 API 服务](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

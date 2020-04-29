@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 08/29/2019
 ms.custom: mvc
 ms.openlocfilehash: 001b4e4f0ea7fbacd232b2a87abfe353f34919bd
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80985008"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>通过 Azure 门户创建 Function App
@@ -23,7 +23,7 @@ ms.locfileid: "80985008"
 
 ## <a name="service-plans"></a>服务计划
 
-Azure 函数有三种不同的服务计划：消耗计划、高级计划和专用（应用服务）计划。 必须在创建函数应用时选择服务计划，并且随后无法更改。 有关详细信息，请参阅[选择 Azure Functions 托管计划](functions-scale.md)。
+Azure Functions 有三个不同的服务计划： "消耗计划"、"高级计划" 和 "专用（应用服务）" 计划。 必须在创建函数应用时选择服务计划，并且随后无法更改。 有关详细信息，请参阅[选择 Azure Functions 托管计划](functions-scale.md)。
 
 如果计划在专用（应用服务）计划上运行 JavaScript 函数，则应选择具有较少核心的计划。 有关详细信息，请参阅[函数的 JavaScript 参考](functions-reference-node.md#choose-single-vcpu-app-service-plans)。
 
@@ -36,7 +36,7 @@ Azure 函数有三种不同的服务计划：消耗计划、高级计划和专�
 >[!NOTE]
 >使用消耗托管计划时，函数代码和绑定配置文件存储在主存储帐户的 Azure 文件存储中。 删除主存储帐户时，此内容将随之删除且无法恢复。
 
-要了解有关存储帐户类型详细信息，请参阅[介绍 Azure 存储服务](../storage/common/storage-introduction.md#core-storage-services)。 
+若要了解有关存储帐户类型的详细信息，请参阅[Azure 存储服务简介](../storage/common/storage-introduction.md#core-storage-services)。 
 
 ## <a name="next-steps"></a>后续步骤
 

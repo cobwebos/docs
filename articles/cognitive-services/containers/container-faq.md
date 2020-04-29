@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 8aae650065e8de11ccdc55a8a056c379a219fcb4
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80876500"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure 认知服务容器常见问题解答 (FAQ)
 
 ## <a name="general-questions"></a>一般问题
 
-**问：有哪些可用内容？**
+**问：有哪些功能？**
 
-**答：Azure** [认知服务中的容器支持](../cognitive-services-container-support.md)允许开发人员使用 Azure 中可用的智能 API，但具有容器化[的优点](../cognitive-services-container-support.md#features-and-benefits)。 目前已在 Azure 认知服务的子集中发布容器支持预览版，这些服务包括：
+**答：** [azure 认知服务中的容器支持](../cognitive-services-container-support.md)允许开发人员使用 Azure 中提供的相同智能 api，但具有容器化的[优势](../cognitive-services-container-support.md#features-and-benefits)。 目前已在 Azure 认知服务的子集中发布容器支持预览版，这些服务包括：
 
 > [!div class="checklist"]
 > * [异常检测器][ad-containers]
@@ -33,15 +33,15 @@ ms.locfileid: "80876500"
 > * [语音服务 API][sp-containers]
 > * [文本分析][ta-containers]
 
-**问：认知服务云和容器之间有什么区别吗？**
+**问：认知服务云和容器之间是否存在差异？**
 
-**答：** 认知服务容器是认知服务云的替代方法。 容器提供的功能与相应的云服务相同。 客户可在本地或 Azure 中部署容器。 容器与相应云服务的核心 AI 技术、定价层、API 密钥和 API 签名是相同的。 容器的[这些功能和优势](../cognitive-services-container-support.md#features-and-benefits)使得它们比其对应的云服务更受欢迎。
+**答：** 认知服务容器是认知服务云的替代方案。 容器提供的功能与相应的云服务相同。 客户可在本地或 Azure 中部署容器。 容器与相应云服务的核心 AI 技术、定价层、API 密钥和 API 签名是相同的。 容器的[这些功能和优势](../cognitive-services-container-support.md#features-and-benefits)使得它们比其对应的云服务更受欢迎。
 
-**问：容器能否适用于所有认知服务，以及下一组容器应该期待什么？**
+**问：容器将可用于所有认知服务，以及我们应期待的下一组容器？**
 
-**答：** 我们希望提供更多的认知服务作为容器产品提供。 联系您当地的 Microsoft 客户经理，获取有关新容器版本和其他认知服务公告的更新。
+**答：** 我们想要将更多认知服务作为容器产品提供。 联系本地 Microsoft 帐户管理器，获取有关新容器版本和其他认知服务公告的更新。
 
-**问：认知服务容器的服务级别协议 （SLA） 是什么？**
+**问：服务级别协议（SLA）对于认知服务容器是什么？**
 
 **答：** 认知服务容器没有 SLA。
 
@@ -50,41 +50,41 @@ ms.locfileid: "80876500"
 > [!IMPORTANT]
 > 若要详细了解认知服务服务级别协议，请[访问我们的 SLA 页](https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/)。
 
-**问：这些容器在主权云中可用吗？**
+**问：这些容器在主权云中是否可用？**
 
-**答：** 不是每个人都熟悉"主权云"一词，因此让我们从定义开始：
+**答：** 并非每个人都熟悉术语 "主权 cloud"，因此让我们从定义开始：
 
-> "主权云"由 Azure[政府](../../azure-government/documentation-government-welcome.md)[、Azure 德国](../../germany/germany-welcome.md)和[Azure 中国 21Vianet](https://docs.microsoft.com/azure/china/overview-operations)云组成。
+> "主权 cloud" 由[Azure 政府](../../azure-government/documentation-government-welcome.md)版、 [Azure 德国](../../germany/germany-welcome.md)和[azure 中国世纪互联](https://docs.microsoft.com/azure/china/overview-operations)云组成。
 
-遗憾的是，在主权云中*不支持*认知服务容器。 容器可以在这些云中运行，但它们将从公共云中拉出，并且需要将使用情况数据发送到公共终结点。
+遗憾的是，主权云中并*不*本机支持认知服务容器。 容器可以在这些云中运行，但会从公有云中提取，并需要将使用情况数据发送到公共终结点。
 
 ### <a name="versioning"></a>版本管理
 
-**问：如何将容器更新到最新版本？**
+**问：容器如何更新到最新版本？**
 
 **答：** 客户可以选择何时更新已部署的容器。 容器将标有标准的 [Docker 标记](https://docs.docker.com/engine/reference/commandline/tag/)（例如 `latest`），表示使用的是最新版本。 我们建议客户下载发布的最新版本的容器。有关在映像更新后如何接收通知的详细信息，请查看 [Azure 容器注册表 Webhook](../../container-registry/container-registry-webhook.md)。
  
 **问：将支持哪些版本？**
 
-**答：** 容器的当前和最后一个主要版本将受支持。 但是，我们建议客户保持使用最新技术。
+**答：** 将支持容器的当前主版本和最新主版本。 但是，我们建议客户保持使用最新技术。
  
-**问：如何对更新进行版本控制？**
+**问：更新如何进行版本控制？**
 
-**答：** 主要版本更改表示 API 签名发生了重大更改。 我们预计，这种变更往往与相应认知服务云产品/服务的主要版本变更相一致。 次要版本变更表示发生了 bug 修复、模型更新或推出了新的功能，但 API 签名未发生中断性变更。
+**答：** 主版本更改指示 API 签名存在重大更改。 我们预计，这种变更往往与相应认知服务云产品/服务的主要版本变更相一致。 次要版本变更表示发生了 bug 修复、模型更新或推出了新的功能，但 API 签名未发生中断性变更。
 
 ## <a name="technical-questions"></a>技术问题
 
-**问：如何在 IoT 设备上运行认知服务容器？**
+**问：我应该如何在 IoT 设备上运行认知服务容器？**
 
-无论您没有可靠的互联网连接，还是想要节省带宽成本。 或者，如果具有低延迟要求，或者正在处理需要现场分析的敏感数据，[则使用认知服务容器的 Azure IoT Edge](https://azure.microsoft.com/blog/running-cognitive-services-on-iot-edge/)可使您与云保持一致。
+你是没有可靠的 internet 连接，还是想要节省带宽成本。 或者，如果具有低延迟要求，或者处理需要在现场进行分析的敏感数据，则[与认知服务容器 Azure IoT Edge](https://azure.microsoft.com/blog/running-cognitive-services-on-iot-edge/)提供与云的一致性。
 
-**问：如何提供产品反馈和功能建议？**
+**问：如何实现提供产品反馈和功能建议吗？**
 
-**答：** 鼓励客户公开[表达他们的忧虑](https://cognitive.uservoice.com/)，并在潜在问题重叠时对这样做的其他人进行投票。 用户语音工具可用于产品反馈和功能建议。
+**答：** 我们鼓励客户公开[他们的关注](https://cognitive.uservoice.com/)点，并向上投票在潜在问题重叠的其他人。 用户语音工具可用于产品反馈和功能建议。
 
-**问：我应联系谁寻求支持？**
+**问：我要联系谁获得支持？**
 
-**答：** 客户支持渠道与认知服务云产品相同。 所有认知服务容器包括日志记录功能，可帮助我们和社区为客户提供支持。 如需其他支持，请查看以下选项。
+**答：** 客户支持渠道与认知服务云产品/服务相同。 所有认知服务容器包括日志记录功能，可帮助我们和社区为客户提供支持。 如需其他支持，请查看以下选项。
 
 ### <a name="customer-support-plan"></a>客户支持计划
 
@@ -92,20 +92,20 @@ ms.locfileid: "80876500"
 
 ### <a name="azure-knowledge-center"></a>Azure 知识中心
 
-客户可以自由浏览 Azure[知识中心](https://azure.microsoft.com/resources/knowledge-center/)来回答问题和支持问题。
+客户可免费探索[Azure 知识中心](https://azure.microsoft.com/resources/knowledge-center/)来回答问题和支持问题。
 
-### <a name="stack-overflow"></a>堆栈溢出
+### <a name="stack-overflow"></a>Stack Overflow
 
-> [堆栈溢出](https://en.wikipedia.org/wiki/Stack_Overflow)是专业和爱好者程序员的问答网站。
+> 对于专业和发烧程序员， [Stack Overflow](https://en.wikipedia.org/wiki/Stack_Overflow)是问题和答案站点。
 
 如果遇到潜在问题并想要获得满意的解答，请浏览以下标记。
 
 * [Azure 认知服务](https://stackoverflow.com/questions/tagged/azure-cognitive-services)
 * [Microsoft 认知](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
 
-**问：计费如何工作？**
+**问：帐单如何工作？**
 
-**答：** 客户根据消费付费，类似于认知服务云。 容器需配置为向 Azure 发送计量数据，因此会相应地收取事务费。 跨托管服务和本地服务使用的资源将按分层定价计入到单个配额，并且会同时计入到这两个服务的用量。 有关更多详细信息，请参阅相应产品/服务的定价页。
+**答：** 客户按消费计费，与认知服务云类似。 容器需配置为向 Azure 发送计量数据，因此会相应地收取事务费。 跨托管服务和本地服务使用的资源将按分层定价计入到单个配额，并且会同时计入到这两个服务的用量。 有关更多详细信息，请参阅相应产品/服务的定价页。
 
 * [异常检测器][ad-containers-billing]
 * [计算机视觉][cv-containers-billing]
@@ -118,21 +118,21 @@ ms.locfileid: "80876500"
 > [!IMPORTANT]
 > 如果未连接到 Azure 进行计量，则无法授权并运行认知服务容器。 客户需要始终让容器向计量服务传送账单信息。 认知服务容器不会将客户数据发送给 Microsoft。
  
-**问：当前集装箱支持保修是什么？**
+**问：容器的当前支持保证是什么？**
 
-**答：** 预览没有保修。 当容器正式宣布为通用 （GA） 时，微软的企业软件标准保修将适用。
+**答：** 预览没有任何保证。 如果容器正式发布为正式发布（GA），则适用于企业软件的 Microsoft 标准保修。
  
-**问：当互联网连接丢失时，认知服务容器会发生什么情况？**
+**问： internet 连接中断时，认知服务容器发生了什么情况？**
 
-**答：** 认知服务容器未连接到 Azure 进行计量时 *，未获得运行许可*。 客户需使容器始终能够与计量服务通信。
+**答：** 如果未连接到 Azure 进行计量，则*未授权*认知服务容器运行。 客户需使容器始终能够与计量服务通信。
 
-**问：容器在不连接到 Azure 的情况下可以运行多长时间？**
+**问：容器无需连接到 Azure 即可运行多长时间？**
 
-**答：** 认知服务容器未连接到 Azure 进行计量时 *，未获得运行许可*。 客户需使容器始终能够与计量服务通信。
+**答：** 如果未连接到 Azure 进行计量，则*未授权*认知服务容器运行。 客户需使容器始终能够与计量服务通信。
  
-**问：运行这些容器需要哪些当前硬件？**
+**问：运行这些容器需要什么当前硬件？**
 
-**答：** 认知服务容器是基于 x64 的容器，可以运行任何支持 x64 Linux Docker 容器的兼容 Linux 节点、VM 和边缘设备。 这些设备都需要 CPU 处理器。 下面提供了每个容器产品/服务的最低和推荐配置：
+**答：** 认知服务容器是基于 x64 的容器，可运行任何兼容的 Linux 节点、VM 和支持 x64 Linux Docker 容器的边缘设备。 这些设备都需要 CPU 处理器。 下面提供了每个容器产品/服务的最低和推荐配置：
 
 * [异常检测器][ad-containers-recommendations]
 * [计算机视觉][cv-containers-recommendations]
@@ -142,25 +142,25 @@ ms.locfileid: "80876500"
 * [语音服务 API][sp-containers-recommendations]
 * [文本分析][ta-containers-recommendations]
  
-**问：这些容器当前在 Windows 上是否受支持？**
+**问：当前是否在 Windows 上支持这些容器？**
 
-**答：** 认知服务容器是 Linux 容器，但是 Windows 上有一些对 Linux 容器的支持。 有关 Windows 上的 Linux 容器的详细信息，请参阅 [Docker 文档](https://blog.docker.com/2017/09/preview-linux-containers-on-windows/)。
+**答：** 认知服务容器是 Linux 容器，但在 Windows 上对 Linux 容器有一些支持。 有关 Windows 上的 Linux 容器的详细信息，请参阅 [Docker 文档](https://blog.docker.com/2017/09/preview-linux-containers-on-windows/)。
  
-**问：如何发现容器？**
+**问：如何实现发现容器？**
 
-**答：** 认知服务容器可在不同位置使用，例如 Azure 门户、Docker 集线器和 Azure 容器注册表。 有关最新的容器位置，请参阅[容器存储库和映像](../cognitive-services-container-support.md#container-repositories-and-images)。
+**答：** 认知服务容器在各种位置可用，例如 Azure 门户、Docker 中心和 Azure 容器注册表。 有关最新的容器位置，请参阅[容器存储库和映像](../cognitive-services-container-support.md#container-repositories-and-images)。
 
-**问：认知服务容器与 AWS 和 Google 产品相比如何？**
+**问：认知服务容器与 AWS 和 Google 产品/服务有何不同？**
 
-**答：** Microsoft 是第一个将预先训练的 AI 模型移动到容器中的云提供商，每次交易只需简单计费，就像客户使用云服务一样。 Microsoft 相信混合云能够为客户提供更多的选择。
+**答：** Microsoft 是第一个云提供商，它在容器中移动预先训练的 AI 模型，每个事务都有简单的计费，就好像客户使用的是云服务。 Microsoft 相信混合云能够为客户提供更多的选择。
 
-**问：容器有哪些合规性认证？**
+**问：容器有哪些符合性认证？**
 
-**答：** 认知服务容器没有任何合规性认证
+**答：** 认知服务容器没有任何符合性认证
 
-**问：认知服务容器在哪些区域可用？**
+**问：哪些区域是可用的认知服务容器？**
 
-**答：** 容器可以在任何区域的任意位置运行，但它们需要密钥，并回调到 Azure 进行计量。 云服务支持的所有区域也受访问计量的容器的支持。
+**答：** 容器可以在任何区域中的任何位置运行，但它们需要一个密钥并回叫 Azure 进行计量。 云服务支持的所有区域也受访问计量的容器的支持。
 
 [!INCLUDE [Containers next steps](includes/containers-next-steps.md)]
 

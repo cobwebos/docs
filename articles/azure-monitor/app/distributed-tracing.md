@@ -1,25 +1,25 @@
 ---
 title: Azure Application Insights 中的分布式跟踪 | Microsoft Docs
-description: 通过 OpenCensus 项目中的合作伙伴关系提供有关 Microsoft 支持分布式跟踪的信息
+description: 提供有关 Microsoft 通过我们的合作关系在 OpenCensus 项目中的分布式跟踪支持的信息
 ms.topic: conceptual
 author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 83575aa7f9b63615f453e00bd06b00a5540b9a9e
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80892251"
 ---
 # <a name="what-is-distributed-tracing"></a>什么是分布式跟踪？
 
-现代云和[微服务](https://azure.com/microservices)架构的出现催生了简单、可独立部署的服务，可帮助降低成本，同时提高可用性和吞吐量。 但是，尽管这些移动使单个服务整体更易于理解，但它们使整个系统更难推理和调试。
+现代云和[微服务](https://azure.com/microservices)体系结构的出现宣告了一种简单且可独立部署的服务的诞生，它可以提高可用性和吞吐量，同时还能降低成本。 但尽管这些变动使得单个服务更易于理解，但它们使整体系统更难以实现和调试。
 
-在整体架构中，我们已经习惯了使用调用堆栈进行调试。 调用堆栈是很好的工具，可以显示执行流（方法 A 调用了方法 B，方法 B 调用了方法 C），并可显示每个这样的调用的详细信息和参数。 这适用于在单个进程上运行的庞大单体结构或服务。但是，如果调用跨进程边界，而不仅仅是本地堆栈上的某个引用，我们该如何调试？ 
+在单一体系结构中，我们已使用调用堆栈进行调试。 调用堆栈是很好的工具，可以显示执行流（方法 A 调用了方法 B，方法 B 调用了方法 C），并可显示每个这样的调用的详细信息和参数。 这适用于在单个进程上运行的庞大单体结构或服务。但是，如果调用跨进程边界，而不仅仅是本地堆栈上的某个引用，我们该如何调试？ 
 
-这就是分布式跟踪的用处。  
+这就是在其中进入分布式跟踪的地方。  
 
 分布式跟踪就是适合现代云和微服务体系结构的调用堆栈，但是添加了简单的性能探查器。 在 Azure Monitor 中，我们提供的两种体验适合使用分布式跟踪数据。 第一种是[事务诊断](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics)视图，这相当于一个增加了时间维度的调用堆栈。 事务诊断视图适用于查看单个事务/请求，并且可以按照单个请求来查找可靠性问题和性能瓶颈的根本原因。
 
@@ -27,11 +27,11 @@ Azure Monitor 还提供[应用程序映射](https://docs.microsoft.com/azure/app
 
 ## <a name="how-to-enable-distributed-tracing"></a>如何启用分布式跟踪
 
-在应用程序中跨服务启用分布式跟踪非常简单，只需根据服务所实现的语言向每个服务添加适当的代理、SDK 或库即可。
+在应用程序中启用跨服务的分布式跟踪就像将适当的代理、SDK 或库添加到每个服务一样简单，具体取决于服务的实现语言。
 
-## <a name="enabling-via-application-insights-through-auto-instrumentation-or-sdks"></a>通过自动检测或 SDK 通过应用程序洞察实现
+## <a name="enabling-via-application-insights-through-auto-instrumentation-or-sdks"></a>通过自动检测或 Sdk 启用通过 Application Insights
 
-.NET、.NET 核心、Java、Node.js 和 JavaScript 的应用程序见解代理和/或 SDK 都支持本机分布式跟踪。 每个 Application Insights SDK 的安装和配置说明见下：
+适用于 .NET、.NET Core、Java、node.js 和 JavaScript 的 Application Insights 代理和/或 Sdk 都支持本机分布式跟踪。 每个 Application Insights SDK 的安装和配置说明见下：
 
 * [.NET](https://docs.microsoft.com/azure/application-insights/quick-monitor-portal)
 * [.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-dotnetcore-quick-start)

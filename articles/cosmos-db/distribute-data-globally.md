@@ -7,17 +7,17 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.openlocfilehash: ef511c203caa11aad4dea1047c982158810c4038
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80982117"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>使用 Azure Cosmos DB 在全球范围内分发数据 - 概述
 
 如今的应用程序需要具备高响应能力并始终联机。 若要实现低延迟和高可用性，需要在靠近用户的数据中心部署这些应用程序的实例。 这些应用程序通常部署在多个数据中心，称为全球分布式应用程序。 全球分布式应用程序需要全球分布式数据库，以便在全球范围内以透明方式复制数据，从而确保应用程序能在靠近用户的数据副本上执行操作。 
 
-Azure Cosmos DB 是一个全局分布式数据库服务，旨在提供低延迟、吞吐量弹性缩放和明确定义的语义，以实现数据一致性和高可用性。 简而言之，如果应用程序需要保证在世界任何地方的快速响应时间，如果需要始终处于联机状态，并且需要吞吐量和存储的无限弹性可扩展性，则应在 Azure Cosmos DB 上构建应用程序。
+Azure Cosmos DB 是一个全局分布式数据库服务，旨在提供低延迟、吞吐量弹性缩放和明确定义的语义，以实现数据一致性和高可用性。 简而言之，如果你的应用程序需要在世界各地的任何地方保证快速响应时间，则如果要求始终处于联机状态，并且需要吞吐量和存储的无限制和弹性可伸缩性，则应 Azure Cosmos DB 上生成应用程序。
 
 可将数据库配置为全局分布，并使其可在任何 Azure 区域中使用。 为了降低延迟，请将数据放置在更靠近用户的位置。 选择所需的区域数目取决于应用程序的全球覆盖范围以及用户所处的位置。 Cosmos DB 以透明方式将数据复制到与 Cosmos 帐户关联的所有区域。 它提供全局分布式 Azure Cosmos 数据库和容器的单个系统映像，使应用程序能够在本地读取和写入。 
 
@@ -37,11 +37,11 @@ Azure Cosmos DB 是一个全局分布式数据库服务，旨在提供低延迟�
 
 **生成高响应能力的应用。** 应用程序可以在为数据库选择的所有区域中执行近乎实时的读写。 Azure Cosmos DB 在内部处理区域之间的数据复制，并保证提供所选的一致性级别。
 
-**生成高度可用的应用。** 在全球多个区域运行数据库可提高数据库的可用性。 如果一个区域不可用，其他区域可自动处理应用程序请求。 Azure Cosmos DB 为多区域数据库提供 99.999% 的读取和写入可用性。
+**生成高度可用的应用。** 在世界各地的多个区域中运行数据库可提高数据库的可用性。 如果一个区域不可用，其他区域可自动处理应用程序请求。 Azure Cosmos DB 为多区域数据库提供 99.999% 的读取和写入可用性。
 
-**在区域中断期间保持业务连续性。** Azure Cosmos DB 支持在区域性中断期间进行[自动故障转移](how-to-manage-database-account.md#automatic-failover)。 在区域性中断期间，Azure Cosmos DB 会继续维持其延迟、可用性、一致性和吞吐量方面的 SLA。 为帮助确保整个应用程序高度可用，Cosmos DB 提供手动故障转移 API 来模拟区域性中断。 使用此 API 可以执行常规业务连续性演练。
+**在区域性中断期间保持业务连续性。** Azure Cosmos DB 支持在区域性中断期间进行[自动故障转移](how-to-manage-database-account.md#automatic-failover)。 在区域性中断期间，Azure Cosmos DB 会继续维持其延迟、可用性、一致性和吞吐量方面的 SLA。 为帮助确保整个应用程序高度可用，Cosmos DB 提供手动故障转移 API 来模拟区域性中断。 使用此 API 可以执行常规业务连续性演练。
 
-**全局扩展读取和写入吞吐量。** 您可以使每个区域都能在世界各地进行可写和弹性缩放读取和写入。 保证应用程序针对 Azure Cosmos 数据库或容器配置的吞吐量可在与 Azure Cosmos 帐户关联的所有区域中实现。 预配的吞吐量有 [SLA 的资金保障](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/)。
+**全局缩放读写吞吐量。** 可以使每个区域都可写，并在世界各地弹性缩放读取和写入。 保证应用程序针对 Azure Cosmos 数据库或容器配置的吞吐量可在与 Azure Cosmos 帐户关联的所有区域中实现。 预配的吞吐量有 [SLA 的资金保障](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/)。
 
 **从多个明确定义的一致性模型中进行选择。** Azure Cosmos 数据库复制协议提供了五种明确定义、实用且直观的一致性模型。 每个模型在一致性与性能之间进行了权衡。 使用这些一致性模型可轻松生成全球分布式应用程序。
 

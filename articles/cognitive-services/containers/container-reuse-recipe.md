@@ -1,7 +1,7 @@
 ---
 title: Docker 容器的配方
 titleSuffix: Azure Cognitive Services
-description: 了解如何使用部分或全部配置设置构建、测试和存储容器，以便进行部署和重用。
+description: 了解如何使用部分或全部配置设置生成、测试和存储容器，以便进行部署和重复使用。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 7380ff58d033a68565de7e419ff318f7bdec121d
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80875072"
 ---
 # <a name="create-containers-for-reuse"></a>创建要重复使用的容器
 
-使用这些容器配方来创建可重用的认知服务容器。 容器可以使用部分或全部配置设置生成，以便在启动容器时_不需要_这些设置。
+使用这些容器配方来创建可重用的认知服务容器。 可以用部分或全部配置设置来构建容器，以便在容器启动时_不_需要它们。
 
 创建此新容器层（包含设置）并在本地对其进行测试后，可将容器存储在容器注册表中。 容器启动时，它只需获取当前未存储在容器中的设置。 专用注册表容器提供用于传入这些设置的配置空间。
 

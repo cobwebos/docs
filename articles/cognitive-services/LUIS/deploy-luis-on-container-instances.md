@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: aahi
 ms.openlocfilehash: 08af17106846a0f5f7a0ccc2b01da1b2e15c1143
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80879188"
 ---
 # <a name="deploy-the-language-understanding-luis-container-to-azure-container-instances"></a>将语言理解 (LUIS) 容器部署到 Azure 容器实例
@@ -33,7 +33,7 @@ LUIS 容器需要在运行时中拉取的 `.gz` 模型文件。 容器必须能�
 
 ### <a name="export-and-upload-packaged-luis-app"></a>导出和上传打包的 LUIS 应用
 
-若要将 LUIS 模型（打包的应用）上传到 Azure 文件共享，需要首先<a href="luis-container-howto.md#export-packaged-app-from-luis" target="_blank" rel="noopener">将其从 LUIS 门户导出<span class="docon docon-navigate-external x-hidden-focus"></span></a>。 在 Azure 门户中，导航到存储帐户资源的“概览”**** 页，然后选择“文件共享”。****。 选择最近创建的文件共享名称，然后选择“上传”**** 按钮。
+若要将 LUIS 模型（打包的应用）上传到 Azure 文件共享，需要首先<a href="luis-container-howto.md#export-packaged-app-from-luis" target="_blank" rel="noopener">将其从 LUIS 门户导出<span class="docon docon-navigate-external x-hidden-focus"></span></a>。 在 Azure 门户中，导航到存储帐户资源的“概览”  页，然后选择“文件共享”。  。 选择最近创建的文件共享名称，然后选择“上传”  按钮。
 
 > [!div class="mx-imgBorder"]
 > ![上传到文件共享](media/luis-how-to-deploy-to-aci/upload-file-share.png)

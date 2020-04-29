@@ -4,10 +4,10 @@ description: Azure 资源运行状况概述
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.openlocfilehash: 7459a29dca01dc186d75b4545f89068569975607
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80985025"
 ---
 # <a name="azure-resource-health-faq"></a>Azure 资源运行状况常见问题解答
@@ -37,7 +37,7 @@ ms.locfileid: "80985025"
 ## <a name="how-can-i-get-help-for-a-resource-that-is-unavailable"></a>如果资源不可用，如何获取帮助？
 可以从资源运行状况边栏选项卡提交支持请求。 当资源因平台事件而不可用时，提交请求不需与 Microsoft 达成的支持协议。
 
-## <a name="does-resource-health-differentiate-between-unavailability-caused-by-platform-problems-versus-something-i-did"></a>资源运行状况是否区分了平台问题引起的不可用情况和我所做的一些内容？
+## <a name="does-resource-health-differentiate-between-unavailability-caused-by-platform-problems-versus-something-i-did"></a>资源运行状况是否区分平台问题导致的不可用与我的操作是什么？
 是的，当资源不可用时，资源运行状况会将根本原因归为以下类别之一： 
 -   用户启动的操作
 -   计划内事件 
@@ -50,9 +50,9 @@ ms.locfileid: "80985025"
 
 ## <a name="where-do-i-find-resource-health"></a>在何处查找资源运行状况？
 登录 Azure 门户以后，即可通过多种方式访问资源运行状况：
-- 导航到资源。 在左侧导航栏中，选择“资源运行状况”****
-- 转到“Azure 服务运行状况”边栏选项卡。  在左侧导航中，选择 **"资源运行状况**"。
-- 通过选择门户右上角的问号，并选择“帮助 + 支持”，打开“帮助 + 支持”边栏选项卡。******** 该边栏选项卡打开后，选择“资源运行状况”****
+- 导航到资源。 在左侧导航栏中，选择“资源运行状况” 
+- 转到“Azure 服务运行状况”边栏选项卡。  在左侧导航栏中，选择“资源运行状况”  。
+- 通过选择门户右上角的问号，并选择“帮助 + 支持”，打开“帮助 + 支持”边栏选项卡。   该边栏选项卡打开后，选择“资源运行状况” 
 
 也可使用资源运行状况 API，获取资源运行状况的相关信息。
 
@@ -60,7 +60,7 @@ ms.locfileid: "80985025"
 如需资源运行状况支持的运行状况检查和资源类型的列表，可单击[此处](resource-health-checks-resource-types.md)。
 
 ## <a name="what-should-i-do-if-my-resource-is-showing-available-but-i-believe-it-is-not"></a>如果我的资源显示可用，但我认为它不可用，该怎么办？
-检查资源的运行状况时，可直接在运行状态下单击“报告不正确的运行状态”。**** 在提交报告之前，可以选择提供更多详细信息，说明为什么你认为当前的运行状态不正确。
+检查资源的运行状况时，可直接在运行状态下单击“报告不正确的运行状态”。  在提交报告之前，可以选择提供更多详细信息，说明为什么你认为当前的运行状态不正确。
 
 ## <a name="is-resource-health-available-for-all-azure-regions"></a>资源运行状况是否适用于所有 Azure 区域？ 
 所有 Azure 地区中都提供了资源运行状况。
@@ -88,4 +88,4 @@ ms.locfileid: "80985025"
 
 了解有关资源运行状况的详细信息：
 -  [Azure 资源运行状况概述](Resource-health-overview.md)
--  [可通过 Azure 资源运行状况提供的资源类型和运行状况检查](resource-health-checks-resource-types.md)
+-  [可通过 Azure 资源运行状况使用的资源类型和运行状况检查](resource-health-checks-resource-types.md)

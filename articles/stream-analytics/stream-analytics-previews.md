@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/9/2020
 ms.openlocfilehash: 4c265665be26dcc6868ea9a303b0c12c52dfe05b
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878300"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure 流分析预览功能
@@ -49,7 +49,7 @@ ms.locfileid: "80878300"
 
 ### <a name="real-time-high-performance-scoring-with-custom-ml-models-managed-by-azure-machine-learning"></a>通过 Azure 机器学习管理的自定义 ML 模型提供实时高性能评分
 
-Azure 流分析利用预先训练的自定义机器学习模型来支持高性能实时评分，这些模型通过 Azure 机器学习进行管理，在 Azure Kubernetes 服务 (AKS) 或 Azure 容器实例 (ACI) 中进行托管，不需编写代码。 [注册](https://aka.ms/asapreview1)预览
+Azure 流分析利用预先训练的自定义机器学习模型来支持高性能实时评分，这些模型通过 Azure 机器学习进行管理，在 Azure Kubernetes 服务 (AKS) 或 Azure 容器实例 (ACI) 中进行托管，不需编写代码。 [注册](https://aka.ms/asapreview1)即可获取预览版
 
 
 ### <a name="live-data-testing-in-visual-studio"></a>Visual Studio 中的实时数据测试

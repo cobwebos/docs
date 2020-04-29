@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 应用程序见解分析 Web 应用用户保留
+title: 通过 Azure 应用程序 Insights 分析 web 应用用户保留
 description: 有多少用户回归到应用？
 ms.topic: conceptual
 author: NumberByColors
@@ -7,10 +7,10 @@ ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
 ms.openlocfilehash: e6d9be6bc6d7f90153e2fb58aa404e281568dbdd
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80892404"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>使用 Azure Application Insights 为 Web 应用程序进行用户留存情况分析
@@ -27,7 +27,7 @@ ms.locfileid: "80892404"
 
 1. 工具栏便于用户创建新的留存情况报表、打开现有留存情况报表、保存当前留存情况报表或将其另存为其他形式、还原已保存报表的更改、刷新报表数据、通过电子邮件或直接链接共享报表以及访问文档页。 
 2. 默认情况下，留存情况显示执行了任意操作，然后在一段时间后返回并执行其他任意操作的所有用户。 可以选择事件的不同组合，将关注范围缩小为仅关注特定用户活动。
-3. 添加一个或多个基于属性的筛选器。 例如，可以关注特定国家或地区中的用户。 在设置筛选器后单击“更新”。**** 
+3. 添加一个或多个基于属性的筛选器。 例如，可以关注特定国家或地区中的用户。 在设置筛选器后单击“更新”。  
 4. 整体留存情况图表显示选定时间段内用户留存情况的摘要。 
 5. 网格根据 2 号图标处的查询生成器显示保留的用户数。 每行都表示在所显示的时间段内执行了任意事件的一群用户。 行中的每个单元格显示了该用户群中有多少人在之后的某个时间段内至少回归了一次。 某些用户可能在多个时间段内都回归过。 
 6. 见解卡中显示了排名前 5 的启动事件和排名前 5 的返回事件，帮助用户更好地了解留存情况报表。 

@@ -4,10 +4,10 @@ description: 从 ASP.NET 应用中捕获异常以及请求遥测。
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.openlocfilehash: 9f24f09e7d2ef0a3e5f3a8f6546a9115118473ab
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80892336"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>使用 Application Insights 诊断 Web 应用中的异常
@@ -15,11 +15,11 @@ ms.locfileid: "80892336"
 
 ## <a name="set-up-exception-reporting"></a>设置异常报告
 * 若要报告服务器应用中的异常，请执行以下操作：
-  * 在 Azure Web 应用中添加 [Application Insights 扩展](../../azure-monitor/app/azure-web-apps.md)
-  * Azure VM 和 Azure 虚拟机缩放集 IIS 托管应用：添加[应用程序监视扩展](../../azure-monitor/app/azure-vm-vmss-apps.md)
+  * Azure Web 应用：添加 [Application Insights 扩展](../../azure-monitor/app/azure-web-apps.md)
+  * Azure VM 和 Azure 虚拟机规模集的托管 IIS 应用：添加[应用程序监视扩展](../../azure-monitor/app/azure-vm-vmss-apps.md)
   * 在应用代码中安装 [Application Insights SDK](../../azure-monitor/app/asp-net.md)，或者
-  * 在 IIS Web 服务器上运行 [Application Insights 代理](../../azure-monitor/app/monitor-performance-live-website-now.md)，或者
-  * Java Web 应用程序：启用[Java 代理](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
+  * IIS Web 服务器：运行 [Application Insights 代理](../../azure-monitor/app/monitor-performance-live-website-now.md)；或者
+  * Java web 应用：启用[java 代理](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
 * 在网页中安装 [JavaScript 代码片段](../../azure-monitor/app/javascript.md)可以捕获浏览器异常。
 * 在某些应用程序框架中或者使用某些设置时，需要执行一些额外的步骤来捕获异常：
   * [Web 窗体](#web-forms)
@@ -28,7 +28,7 @@ ms.locfileid: "80892336"
   * [Web API 2*](#web-api-2x)
   * [WCF](#wcf)
 
-  本文从代码示例的角度专门介绍 .NET 框架应用。 在 .NET 核心 SDK 中，用于 .NET 框架的一些方法已过时。 如果您有 .NET 核心应用，请参阅[.NET 核心 SDK 文档](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)。
+  本文专门探讨从代码示例角度 .NET Framework 应用。 用于 .NET Framework 的某些方法在 .NET Core SDK 中已过时。 如果有 .NET Core 应用，请参阅[.NET Core SDK 文档](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)。
 
 ## <a name="diagnosing-exceptions-using-visual-studio"></a>使用 Visual Studio 诊断异常
 在 Visual Studio 中打开应用解决方案，帮助进行调试。
@@ -41,7 +41,7 @@ ms.locfileid: "80892336"
 
 请注意，可以筛选报告，以便仅显示异常。
 
-*没有例外显示？请参阅[捕获异常](#exceptions)。*
+*没有显示异常？请参阅[捕获异常](#exceptions)。*
 
 单击异常报告，显示器堆栈跟踪。
 单击堆栈跟踪中的行引用，打开相关代码文件。
@@ -62,7 +62,7 @@ Application Insights 附带了精选的 APM 体验，帮助你诊断所监视应
 
 **或者，** 可以切换到顶部的“异常”选项卡，从异常的总体视图开始，而不是查看特定失败操作的异常： 这里可以看到为所监视的应用收集的所有异常。
 
-*没有例外显示？请参阅[捕获异常](#exceptions)。*
+*没有显示异常？请参阅[捕获异常](#exceptions)。*
 
 
 ## <a name="custom-tracing-and-log-data"></a>自定义跟踪和日志数据

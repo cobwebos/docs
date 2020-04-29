@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: cshoe
 ms.openlocfilehash: 54010269e5b61ebf28a29dd3165c4310f3472817
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878198"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>使用 Github Actions 进行持续交付
@@ -33,7 +33,7 @@ ms.locfileid: "80878198"
 
 ## <a name="create-a-service-principal"></a>创建服务主体
 
-可以在 [Azure CLI](/cli/azure/) 中使用 [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令创建[服务主体](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 可以使用 Azure 门户中的[Azure 云外壳](https://shell.azure.com)运行此命令，也可以选择"**试用"** 按钮。
+可以在 [Azure CLI](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) 中使用 [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令创建[服务主体](/cli/azure/)。 你可以使用 Azure 门户中[Azure Cloud Shell](https://shell.azure.com)或通过选择 "**试用**" 按钮来运行此命令。
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<APP_NAME> --sdk-auth
@@ -202,7 +202,7 @@ GitHub 现在可以针对 Azure 中的函数应用进行身份验证了。
 |参数 |说明  |
 |---------|---------|
 |**_应用名称_** | （必需）函数应用的名称。 |
-|_**插槽名称**_ | （可选）要部署到其中的[部署槽](functions-deployment-slots.md)的名称。 该槽必须已经在函数应用中定义。 |
+|_**槽名称**_ | （可选）要部署到其中的[部署槽](functions-deployment-slots.md)的名称。 该槽必须已经在函数应用中定义。 |
 
 
 以下示例使用第 1 版 `functions-action`：

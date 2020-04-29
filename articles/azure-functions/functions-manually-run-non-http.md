@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 12/12/2018
 ms.author: cshoe
 ms.openlocfilehash: 6571482d738549d2708fd8ab23eaf8c9f6fb1f70
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80892353"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>手动运行非 HTTP 触发的函数
@@ -26,7 +26,7 @@ ms.locfileid: "80892353"
 
 ![定义请求位置：主机名 + 文件夹路径 + 函数名](./media/functions-manually-run-non-http/azure-functions-admin-url-anatomy.png)
 
-- **主机名：** 函数应用的公共位置，由函数应用的名称和 *azurewebsites.net* 或自定义域组成。
+- **主机名：** 函数应用的公共位置，由函数应用名称加上*azurewebsites.net*或自定义域。
 - **文件夹路径：** 若要通过 HTTP 请求访问非 HTTP 触发的函数，需通过 *admin/functions* 文件夹发送请求。
 - **函数名：** 要运行的函数的名称。
 
