@@ -1,22 +1,22 @@
 ---
 title: 将资源移动到新的订阅或资源组
-description: 使用 Azure 资源管理器将资源移到新的资源组或订阅。
+description: 使用 Azure Resource Manager 将资源移到新的资源组或订阅。
 ms.topic: conceptual
 ms.date: 03/02/2020
 ms.openlocfilehash: ffb5f8be81d3628084d127db404ab994d4d5b938
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80631501"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>将资源移到新的资源组或订阅
 
 本文说明了如何将 Azure 资源移动到另一 Azure 订阅，或移动到同一订阅下的另一资源组。 可以使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 移动资源。
 
-在移动操作过程中，源组和目标组都会锁定。 在完成移动之前，将阻止对资源组执行写入和删除操作。 此锁意味着将无法添加、更新或删除资源组中的资源。 这并不意味着资源已被冻结。 例如，如果将 SQL Server 及其数据库移动到新的资源组中，则使用该数据库的应用程序将不会遇到停机的情况。 它仍可读取和写入到数据库。 锁定时间最长可达四小时，但大多数移动所需的完成时间要少得多。
+在移动操作过程中，源组和目标组都会锁定。 在完成移动之前，将阻止对资源组执行写入和删除操作。 此锁意味着将无法添加、更新或删除资源组中的资源。 这并不意味着资源已被冻结。 例如，如果将 SQL Server 及其数据库移到新的资源组中，使用数据库的应用程序体验不到停机， 仍可读取和写入到数据库。 锁定时间最长可达四小时，但大多数移动所需的完成时间要少得多。
 
-移动资源仅能够将其移动到新的资源组或订阅中。 但不会更改该资源的位置。
+移动资源只会将其移到新的资源组或订阅。 它不会更改资源的位置。
 
 ## <a name="checklist-before-moving-resources"></a>移动资源前需查看的清单
 
@@ -24,16 +24,16 @@ ms.locfileid: "80631501"
 
 1. 要移动的资源必须支持移动操作。 有关支持移动的资源列表，请参阅[资源的移动操作支持](move-support-resources.md)。
 
-1. 某些服务在移动资源时有特定的限制或要求。 如果要移动以下任何服务，请在移动之前检查该指南。
+1. 某些服务在移动资源时有特定的限制或要求。 如果要移动以下任何服务，请在移动之前查看该指南。
 
    * [应用程序服务移动指南](./move-limitations/app-service-move-limitations.md)
-   * [Azure DevOps 服务移动指南](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
+   * [Azure DevOps Services 移动指南](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
    * [经典部署模型移动指南](./move-limitations/classic-model-move-limitations.md) - 经典计算、经典存储、经典虚拟网络和云服务
    * [网络移动指南](./move-limitations/networking-move-limitations.md)
    * [恢复服务移动指南](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [虚拟机移动指南](./move-limitations/virtual-machines-move-limitations.md)
 
-1. 源订阅和目标订阅必须处于活动状态。 如果在启用已禁用的帐户时遇到问题，请[创建 Azure 支持请求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。 为问题类型选择**订阅管理**。
+1. 源订阅和目标订阅必须处于活动状态。 如果在启用已禁用的帐户时遇到问题，请[创建 Azure 支持请求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。 选择 "**订阅管理**" 作为 "问题类型"。
 
 1. 源订阅与目标订阅必须在同一个 [Azure Active Directory 租户](../../active-directory/develop/quickstart-create-new-tenant.md)中。 若要检查这两个订阅是否具有相同的租户 ID，请使用 Azure PowerShell 或 Azure CLI。
 
@@ -54,9 +54,9 @@ ms.locfileid: "80631501"
    如果源订阅和目标订阅的租户 ID 不相同，可使用以下方法协调租户 ID：
 
    * [将 Azure 订阅所有权转让给其他帐户](../../billing/billing-subscription-transfer.md)
-   * [如何关联 Azure 订阅或将 Azure 订阅添加到 Azure 活动目录](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
+   * [如何将 Azure 订阅关联或添加到 Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-1. 必须针对要移动的资源的资源提供程序注册目标订阅。 如果没有，您会收到一个错误，指出**订阅未注册为资源类型**。 将资源移到新的订阅时，可能会看到此错误，但该订阅从未配合该资源类型使用。
+1. 必须针对要移动的资源的资源提供程序注册目标订阅。 否则，会收到一条错误消息，指出**没有为资源类型注册订阅**。 将资源移到新的订阅时，可能会看到此错误，但该订阅从未配合该资源类型使用。
 
    对于 PowerShell，请使用以下命令来获取注册状态：
 
@@ -105,9 +105,9 @@ ms.locfileid: "80631501"
 
 为了演示方便，我们只有一个依赖资源。
 
-* 步骤 1：如果依赖资源分布在不同的资源组中，则首先将它们移动到一个资源组中。
-* 步骤 2：将资源和从属资源一起从源订阅移动到目标订阅。
-* 步骤 3：可选地将从属资源重新分发到目标订阅中的不同资源组。
+* 步骤1：如果从属资源分布在不同的资源组中，请先将它们移到一个资源组中。
+* 步骤2：将资源和相关资源与源订阅一起移动到目标订阅。
+* 步骤3：（可选）将从属资源重新分发给目标订阅中的不同资源组。
 
 ## <a name="validate-move"></a>验证移动
 
@@ -231,13 +231,13 @@ POST https://management.azure.com/subscriptions/{source-subscription-id}/resourc
 
 如果出现错误，请参阅[排查将 Azure 资源移到新的资源组或订阅时遇到的问题](troubleshoot-move.md)。
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 
-**问：我的资源移动操作通常需要几分钟时间，已运行近一个小时。有什么问题吗？**
+**问：我的资源移动操作（通常只需几分钟）已运行了约1小时。是否有问题？**
 
 移动资源是一项复杂的操作，包含不同的阶段。 它不仅仅涉及你尝试移动的资源的资源提供程序。 由于资源提供程序之间的依赖关系，Azure 资源管理器允许在 4 小时内完成操作。 此时间段为资源提供程序提供了从暂时性问题中恢复的机会。 如果你的移动请求还在 4 小时期间内，则操作将继续尝试完成，并且仍可能会成功。 源和目标资源组在这段时间内被锁定，以避免出现一致性问题。
 
-**问：为什么我的资源组在资源移动期间锁定 4 小时？**
+**问：为什么在资源移动期间，我的资源组锁定了4个小时？**
 
 4 小时窗口是资源移动允许的最大时间。 为了防止对正在移动的资源进行修改，在资源移动期间，源资源组和目标资源组都将被锁定。
 
@@ -245,7 +245,7 @@ POST https://management.azure.com/subscriptions/{source-subscription-id}/resourc
 
 如果资源无法在 4 小时内移动，则资源管理器会解除对这两个资源组的锁定。 已成功移动的资源位于目标资源组中。 未能移动的资源留在源资源组中。
 
-**问：在资源移动期间锁定源和目标资源组有何影响？**
+**问：在资源移动过程中，源和目标资源组的锁定有哪些？**
 
 锁定会阻止你删除任一资源组，阻止在任一资源组中创建新资源或删除移动中涉及的任何资源。
 
@@ -253,7 +253,7 @@ POST https://management.azure.com/subscriptions/{source-subscription-id}/resourc
 
 ![移动错误消息“正在尝试删除”](./media/move-resource-group-and-subscription/move-error-delete.png)
 
-**问：错误代码"缺失移动相关资源"是什么意思？**
+**问：错误代码 "MissingMoveDependentResources" 的含义是什么？**
 
 移动资源时，依赖的资源必须存在于目标资源组或订阅中，或者包含在移动请求中。 当依赖的资源不满足此要求时，你将收到 MissingMoveDependentResources 错误代码。 错误消息包含有关需要在移动请求中包括的依赖资源的详细信息。
 
@@ -273,7 +273,7 @@ POST https://management.azure.com/subscriptions/{source-subscription-id}/resourc
 
 另一个常见示例涉及移动虚拟网络。 可能必须移动与该虚拟网络关联的多个其他资源。 移动请求可能要求移动公共 IP 地址、路由表、虚拟网络网关、网络安全组和其他项。
 
-**问：为什么无法在 Azure 中移动某些资源？**
+**问：为什么我无法在 Azure 中移动某些资源？**
 
 目前，并非 Azure 中的所有资源都支持移动。 有关支持移动的资源列表，请参阅[资源的移动操作支持](move-support-resources.md)。
 

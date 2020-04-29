@@ -1,23 +1,23 @@
 ---
 title: 结合使用 OpenFaaS 与 Azure Kubernetes 服务 (AKS)
-description: 了解如何在 Azure Kubernetes 服务 （AKS） 群集上部署和使用 OpenFaaS 以使用容器构建无服务器函数。
+description: 了解如何在 Azure Kubernetes Service （AKS）群集上部署和使用 OpenFaaS，以便使用容器构建无服务器功能。
 author: justindavies
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
 ms.openlocfilehash: 95039573c607f516755f08f1ebad8b968416ec8b
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80631469"
 ---
 # <a name="using-openfaas-on-aks"></a>在 AKS 上使用 OpenFaaS
 
-[OpenFaaS][open-faas] 是一个框架，适用于通过容器构建无服务器函数。 作为一个开源项目，它在社区中大规模采用。 本文档详细介绍了如何在 Azure Kubernetes 服务 (AKS) 群集上安装和使用 OpenFaas。
+[OpenFaaS][open-faas] 是一个通过使用容器构建无服务器函数的框架。 作为一个开源项目，它在社区中大规模采用。 本文档详细介绍了如何在 Azure Kubernetes 服务 (AKS) 群集上安装和使用 OpenFaas。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 为了完成本文中的步骤，需要具备以下各项。
 
@@ -28,7 +28,7 @@ ms.locfileid: "80631469"
 
 ## <a name="add-the-openfaas-helm-chart-repo"></a>添加 OpenFaaS helm 图表存储库
 
-转到[https://shell.azure.com](https://shell.azure.com)在浏览器中打开 Azure 云外壳。
+请在[https://shell.azure.com](https://shell.azure.com)浏览器中转到打开 Azure Cloud Shell。
 
 OpenFaaS 保留有自己的 helm 图表，可以通过所有最新的更改来更新内容。
 
@@ -47,7 +47,7 @@ helm repo update
 kubectl apply -f https://raw.githubusercontent.com/openfaas/faas-netes/master/namespaces.yml
 ```
 
-为 OpenFaaS UI 门户和 REST API 生成密码：
+生成 OpenFaaS UI 门户的密码并 REST API：
 
 ```console
 # generate a random password

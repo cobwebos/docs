@@ -10,14 +10,14 @@ ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: shvija
 ms.openlocfilehash: 1b292f9b894dac7df6b9634ce1bad627c8d24fe6
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80632764"
 ---
 # <a name="connect-your-apache-spark-application-with-azure-event-hubs"></a>将 Apache Spark 应用程序与 Azure 事件中心连接
-本教程将引导您将 Spark 应用程序连接到事件中心，以便进行实时流式传输。 此集成允许在不更改协议客户端或运行自己的 Kafka 或 Zookeeper 群集的情况下进行流式处理。 本教程需要 Apache Spark v2.4+ 和 Apache Kafka v2.0+。
+本教程将指导你将 Spark 应用程序连接到事件中心，以实现实时流式处理。 此集成允许在不更改协议客户端或运行自己的 Kafka 或 Zookeeper 群集的情况下进行流式处理。 本教程需要 Apache Spark v2.4+ 和 Apache Kafka v2.0+。
 
 > [!NOTE]
 > [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/spark/) 上提供了此示例
@@ -43,7 +43,7 @@ ms.locfileid: "80632764"
 
 
 ## <a name="create-an-event-hubs-namespace"></a>创建事件中心命名空间
-要从事件中心服务进行发送和接收，需要使用事件中心命名空间。 请参阅[创建事件中心](event-hubs-create.md)以提供创建命名空间和事件中心的说明。 获取事件中心连接字符串和完全限定域名 (FQDN) 供以后使用。 有关说明，请参阅[获取事件中心连接字符串](event-hubs-get-connection-string.md)。 
+要从事件中心服务进行发送和接收，需要使用事件中心命名空间。 有关创建命名空间和事件中心的说明，请参阅[创建事件中心](event-hubs-create.md)。 获取事件中心连接字符串和完全限定域名 (FQDN) 供以后使用。 有关说明，请参阅[获取事件中心连接字符串](event-hubs-get-connection-string.md)。 
 
 ## <a name="clone-the-example-project"></a>克隆示例项目
 克隆 Azure 事件中心存储库并导航到 `tutorials/spark` 子文件夹：
@@ -103,8 +103,8 @@ df.writeStream
 
 - [在事件中心镜像 Kafka 代理](event-hubs-kafka-mirror-maker-tutorial.md)
 - [将 Apache Flink 连接到事件中心](event-hubs-kafka-flink-tutorial.md)
-- [将卡夫卡连接与事件中心集成](event-hubs-kafka-connect-tutorial.md)
+- [将 Kafka Connect 与事件中心集成](event-hubs-kafka-connect-tutorial.md)
 - [了解 GitHub 上的示例](https://github.com/Azure/azure-event-hubs-for-kafka)
-- [将 Akka 流连接到事件中心](event-hubs-kafka-akka-streams-tutorial.md)
-- [Azure 活动中心 Apache Kafka 开发人员指南](apache-kafka-developer-guide.md)
+- [将 Akka Streams 连接到事件中心](event-hubs-kafka-akka-streams-tutorial.md)
+- [Azure 事件中心 Apache Kafka 开发人员指南](apache-kafka-developer-guide.md)
 

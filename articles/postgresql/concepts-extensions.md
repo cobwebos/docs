@@ -7,17 +7,17 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.openlocfilehash: a12738f5de783c8a34718b8d9cb4bbf54f230589
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77201265"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的 PostgreSQL 扩展
 PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中将多个相关 SQL 对象捆绑在一起，可以使用单个命令在数据库中加载或删除该包。 在数据库中加载之后，扩展会如同内置功能一样运行。
 
 ## <a name="how-to-use-postgresql-extensions"></a>如何使用 PostgreSQL 扩展
-必须先在数据库中安装 PostgreSQL 扩展，然后才能使用它们。 要安装特定的扩展，请从 psql 工具运行 [CREATE 扩展](https://www.postgresql.org/docs/current/sql-createextension.html) 命令，将打包的对象加载到数据库中。
+必须先在数据库中安装 PostgreSQL 扩展，然后才能使用它们。 若要安装特定扩展，请通过 psql 工具运行  [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html)  命令，将打包的对象加载到数据库中。
 
 用于 PostgreSQL 的 Azure 数据库支持下面列出的一部分键扩展。 还可以通过运行 `SELECT * FROM pg_available_extensions;` 获取此信息。 不支持未列出的其他扩展。 不能在 Azure Database for PostgreSQL 中创建自己的扩展。
 
@@ -26,21 +26,21 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 以下扩展在 Azure Database for PostgreSQL 服务器中提供，此类服务器的 Postgres 版本为 11。 
 
 > [!div class="mx-tableFixed"]
-> | **扩展**| **扩展版本** | **说明** |
+> | **扩展名**| **扩展版本** | **说明** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | 用于将地址分析成构成元素。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Address Standardizer US 数据集示例|
 > |[btree_gin](https://www.postgresql.org/docs/11/btree-gin.html)                    | 1.3             | 支持在 GIN 中索引常见数据类型|
 > |[btree_gist](https://www.postgresql.org/docs/11/btree-gist.html)                   | 1.5             | 支持在 GiST 中索引常见数据类型|
 > |[citext](https://www.postgresql.org/docs/11/citext.html)                       | 1.5             | 不区分大小写的字符串的数据类型|
-> |[立方体](https://www.postgresql.org/docs/11/cube.html)                         | 1.4             | 用于多维数据集的数据类型|
+> |[cube](https://www.postgresql.org/docs/11/cube.html)                         | 1.4             | 用于多维数据集的数据类型|
 > |[dblink](https://www.postgresql.org/docs/11/dblink.html)                       | 1.2             | 从数据库中连接到其他 PostgreSQL 数据库|
 > |[dict_int](https://www.postgresql.org/docs/11/dict-int.html)                     | 1.0             | 用于整数的文本搜索字典模板|
 > |[earthdistance](https://www.postgresql.org/docs/11/earthdistance.html)                | 1.1             | 计算地球表面上的大圆距离|
 > |[fuzzystrmatch](https://www.postgresql.org/docs/11/fuzzystrmatch.html)                | 1.1             | 确定字符串间的相似性和差异|
 > |[hstore](https://www.postgresql.org/docs/11/hstore.html)                       | 1.5             | 用于存储（键/值）对集的数据类型|
 > |[hypopg](https://hypopg.readthedocs.io/en/latest/)                       | 1.1.2           | 用于 PostgreSQL 的假设索引|
-> |[内塔雷](https://www.postgresql.org/docs/11/intarray.html)                     | 1.2             | 针对 1-D 整数数组的函数、运算符和索引支持|
+> |[intarray](https://www.postgresql.org/docs/11/intarray.html)                     | 1.2             | 针对 1-D 整数数组的函数、运算符和索引支持|
 > |[isn](https://www.postgresql.org/docs/11/isn.html)                          | 1.2             | 用于国际产品编号标准的数据类型|
 > |[ltree](https://www.postgresql.org/docs/11/ltree.html)                        | 1.1             | 用于分层树形结构的数据类型|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | 函数和运算符，用于模拟商业 RDBMS 提供的部分函数和包|
@@ -56,7 +56,7 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 > |[pg_trgm](https://www.postgresql.org/docs/11/pgtrgm.html)                      | 1.4             | 基于三元匹配的文本相似度度量和索引搜索|
 > |[plpgsql](https://www.postgresql.org/docs/11/plpgsql.html)                      | 1.0             | PL/pgSQL 过程语言|
 > |[plv8](https://plv8.github.io/)                         | 2.3.11          | PL/JavaScript (v8) 信任的过程语言|
-> |[邮后](https://www.postgis.net/)                      | 2.5.1           | PostGIS 几何结构、地理以及光栅空间类型和函数|
+> |[postgis](https://www.postgis.net/)                      | 2.5.1           | PostGIS 几何结构、地理以及光栅空间类型和函数|
 > |[postgis_sfcgal](https://www.postgis.net/)               | 2.5.1           | PostGIS SFCGAL 函数|
 > |[postgis_tiger_geocoder](https://www.postgis.net/)       | 2.5.1           | PostGIS tiger 地理编码器和逆向地理编码器|
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.5.1           | PostGIS 拓扑空间类型和函数|
@@ -71,7 +71,7 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 以下扩展在 Azure Database for PostgreSQL 服务器中提供，此类服务器的 Postgres 版本为 10。
 
 > [!div class="mx-tableFixed"]
-> | **扩展**| **扩展版本** | **说明** |
+> | **扩展名**| **扩展版本** | **说明** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | 用于将地址分析成构成元素。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Address Standardizer US 数据集示例|
@@ -79,14 +79,14 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 > |[btree_gist](https://www.postgresql.org/docs/10/btree-gist.html)                   | 1.5             | 支持在 GiST 中索引常见数据类型|
 > |[chkpass](https://www.postgresql.org/docs/10/chkpass.html)                       | 1.0             | 用于自动加密密码的数据类型|
 > |[citext](https://www.postgresql.org/docs/10/citext.html)                       | 1.4             | 不区分大小写的字符串的数据类型|
-> |[立方体](https://www.postgresql.org/docs/10/cube.html)                         | 1.2             | 用于多维数据集的数据类型|
+> |[cube](https://www.postgresql.org/docs/10/cube.html)                         | 1.2             | 用于多维数据集的数据类型|
 > |[dblink](https://www.postgresql.org/docs/10/dblink.html)                       | 1.2             | 从数据库中连接到其他 PostgreSQL 数据库|
 > |[dict_int](https://www.postgresql.org/docs/10/dict-int.html)                     | 1.0             | 用于整数的文本搜索字典模板|
 > |[earthdistance](https://www.postgresql.org/docs/10/earthdistance.html)                | 1.1             | 计算地球表面上的大圆距离|
 > |[fuzzystrmatch](https://www.postgresql.org/docs/10/fuzzystrmatch.html)                | 1.1             | 确定字符串间的相似性和差异|
 > |[hstore](https://www.postgresql.org/docs/10/hstore.html)                       | 1.4             | 用于存储（键/值）对集的数据类型|
 > |[hypopg](https://hypopg.readthedocs.io/en/latest/)                       | 1.1.1           | 用于 PostgreSQL 的假设索引|
-> |[内塔雷](https://www.postgresql.org/docs/10/intarray.html)                     | 1.2             | 针对 1-D 整数数组的函数、运算符和索引支持|
+> |[intarray](https://www.postgresql.org/docs/10/intarray.html)                     | 1.2             | 针对 1-D 整数数组的函数、运算符和索引支持|
 > |[isn](https://www.postgresql.org/docs/10/isn.html)                          | 1.1             | 用于国际产品编号标准的数据类型|
 > |[ltree](https://www.postgresql.org/docs/10/ltree.html)                        | 1.1             | 用于分层树形结构的数据类型|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | 函数和运算符，用于模拟商业 RDBMS 提供的部分函数和包|
@@ -102,7 +102,7 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 > |[pg_trgm](https://www.postgresql.org/docs/10/pgtrgm.html)                      | 1.3             | 基于三元匹配的文本相似度度量和索引搜索|
 > |[plpgsql](https://www.postgresql.org/docs/10/plpgsql.html)                      | 1.0             | PL/pgSQL 过程语言|
 > |[plv8](https://plv8.github.io/)                         | 2.1.0          | PL/JavaScript (v8) 信任的过程语言|
-> |[邮后](https://www.postgis.net/)                      | 2.4.3           | PostGIS 几何结构、地理以及光栅空间类型和函数|
+> |[postgis](https://www.postgis.net/)                      | 2.4.3           | PostGIS 几何结构、地理以及光栅空间类型和函数|
 > |[postgis_sfcgal](https://www.postgis.net/)               | 2.4.3           | PostGIS SFCGAL 函数|
 > |[postgis_tiger_geocoder](https://www.postgis.net/)       | 2.4.3           | PostGIS tiger 地理编码器和逆向地理编码器|
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.4.3           | PostGIS 拓扑空间类型和函数|
@@ -117,7 +117,7 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 以下扩展在 Azure Database for PostgreSQL 服务器中提供，此类服务器的 Postgres 版本为 9.6。
 
 > [!div class="mx-tableFixed"]
-> | **扩展**| **扩展版本** | **说明** |
+> | **扩展名**| **扩展版本** | **说明** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.2           | 用于将地址分析成构成元素。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.2           | Address Standardizer US 数据集示例|
@@ -125,14 +125,14 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 > |[btree_gist](https://www.postgresql.org/docs/9.6/btree-gist.html)                   | 1.2             | 支持在 GiST 中索引常见数据类型|
 > |[chkpass](https://www.postgresql.org/docs/9.6/chkpass.html)                       | 1.0             | 用于自动加密密码的数据类型|
 > |[citext](https://www.postgresql.org/docs/9.6/citext.html)                       | 1.3             | 不区分大小写的字符串的数据类型|
-> |[立方体](https://www.postgresql.org/docs/9.6/cube.html)                         | 1.2             | 用于多维数据集的数据类型|
+> |[cube](https://www.postgresql.org/docs/9.6/cube.html)                         | 1.2             | 用于多维数据集的数据类型|
 > |[dblink](https://www.postgresql.org/docs/9.6/dblink.html)                       | 1.2             | 从数据库中连接到其他 PostgreSQL 数据库|
 > |[dict_int](https://www.postgresql.org/docs/9.6/dict-int.html)                     | 1.0             | 用于整数的文本搜索字典模板|
 > |[earthdistance](https://www.postgresql.org/docs/9.6/earthdistance.html)                | 1.1             | 计算地球表面上的大圆距离|
 > |[fuzzystrmatch](https://www.postgresql.org/docs/9.6/fuzzystrmatch.html)                | 1.1             | 确定字符串间的相似性和差异|
 > |[hstore](https://www.postgresql.org/docs/9.6/hstore.html)                       | 1.4             | 用于存储（键/值）对集的数据类型|
 > |[hypopg](https://hypopg.readthedocs.io/en/latest/)                       | 1.1.1           | 用于 PostgreSQL 的假设索引|
-> |[内塔雷](https://www.postgresql.org/docs/9.6/intarray.html)                     | 1.2             | 针对 1-D 整数数组的函数、运算符和索引支持|
+> |[intarray](https://www.postgresql.org/docs/9.6/intarray.html)                     | 1.2             | 针对 1-D 整数数组的函数、运算符和索引支持|
 > |[isn](https://www.postgresql.org/docs/9.6/isn.html)                          | 1.1             | 用于国际产品编号标准的数据类型|
 > |[ltree](https://www.postgresql.org/docs/9.6/ltree.html)                        | 1.1             | 用于分层树形结构的数据类型|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | 函数和运算符，用于模拟商业 RDBMS 提供的部分函数和包|
@@ -148,7 +148,7 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 > |[pg_trgm](https://www.postgresql.org/docs/9.6/pgtrgm.html)                      | 1.3             | 基于三元匹配的文本相似度度量和索引搜索|
 > |[plpgsql](https://www.postgresql.org/docs/9.6/plpgsql.html)                      | 1.0             | PL/pgSQL 过程语言|
 > |[plv8](https://plv8.github.io/)                         | 2.1.0          | PL/JavaScript (v8) 信任的过程语言|
-> |[邮后](https://www.postgis.net/)                      | 2.3.2           | PostGIS 几何结构、地理以及光栅空间类型和函数|
+> |[postgis](https://www.postgis.net/)                      | 2.3.2           | PostGIS 几何结构、地理以及光栅空间类型和函数|
 > |[postgis_sfcgal](https://www.postgis.net/)               | 2.3.2           | PostGIS SFCGAL 函数|
 > |[postgis_tiger_geocoder](https://www.postgis.net/)       | 2.3.2           | PostGIS tiger 地理编码器和逆向地理编码器|
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.3.2           | PostGIS 拓扑空间类型和函数|
@@ -163,7 +163,7 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 以下扩展在 Azure Database for PostgreSQL 服务器中提供，此类服务器的 Postgres 版本为 9.5。
 
 > [!div class="mx-tableFixed"]
-> | **扩展**| **扩展版本** | **说明** |
+> | **扩展名**| **扩展版本** | **说明** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.0           | 用于将地址分析成构成元素。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.0           | Address Standardizer US 数据集示例|
@@ -171,14 +171,14 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 > |[btree_gist](https://www.postgresql.org/docs/9.5/btree-gist.html)                   | 1.1             | 支持在 GiST 中索引常见数据类型|
 > |[chkpass](https://www.postgresql.org/docs/9.5/chkpass.html)                       | 1.0             | 用于自动加密密码的数据类型|
 > |[citext](https://www.postgresql.org/docs/9.5/citext.html)                       | 1.1             | 不区分大小写的字符串的数据类型|
-> |[立方体](https://www.postgresql.org/docs/9.5/cube.html)                         | 1.0             | 用于多维数据集的数据类型|
+> |[cube](https://www.postgresql.org/docs/9.5/cube.html)                         | 1.0             | 用于多维数据集的数据类型|
 > |[dblink](https://www.postgresql.org/docs/9.5/dblink.html)                       | 1.1             | 从数据库中连接到其他 PostgreSQL 数据库|
 > |[dict_int](https://www.postgresql.org/docs/9.5/dict-int.html)                     | 1.0             | 用于整数的文本搜索字典模板|
 > |[earthdistance](https://www.postgresql.org/docs/9.5/earthdistance.html)                | 1.0             | 计算地球表面上的大圆距离|
 > |[fuzzystrmatch](https://www.postgresql.org/docs/9.5/fuzzystrmatch.html)                | 1.0             | 确定字符串间的相似性和差异|
 > |[hstore](https://www.postgresql.org/docs/9.5/hstore.html)                       | 1.3             | 用于存储（键/值）对集的数据类型|
 > |[hypopg](https://hypopg.readthedocs.io/en/latest/)                       | 1.1.1           | 用于 PostgreSQL 的假设索引|
-> |[内塔雷](https://www.postgresql.org/docs/9.5/intarray.html)                     | 1.0             | 针对 1-D 整数数组的函数、运算符和索引支持|
+> |[intarray](https://www.postgresql.org/docs/9.5/intarray.html)                     | 1.0             | 针对 1-D 整数数组的函数、运算符和索引支持|
 > |[isn](https://www.postgresql.org/docs/9.5/isn.html)                          | 1.0             | 用于国际产品编号标准的数据类型|
 > |[ltree](https://www.postgresql.org/docs/9.5/ltree.html)                        | 1.0             | 用于分层树形结构的数据类型|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | 函数和运算符，用于模拟商业 RDBMS 提供的部分函数和包|
@@ -193,7 +193,7 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 > |[pg_stat_statements](https://www.postgresql.org/docs/9.5/pgstatstatements.html)           | 1.3             | 跟踪已执行的所有 SQL 语句的执行统计信息|
 > |[pg_trgm](https://www.postgresql.org/docs/9.5/pgtrgm.html)                      | 1.1             | 基于三元匹配的文本相似度度量和索引搜索|
 > |[plpgsql](https://www.postgresql.org/docs/9.5/plpgsql.html)                      | 1.0             | PL/pgSQL 过程语言|
-> |[邮后](https://www.postgis.net/)                      | 2.3.0           | PostGIS 几何结构、地理以及光栅空间类型和函数|
+> |[postgis](https://www.postgis.net/)                      | 2.3.0           | PostGIS 几何结构、地理以及光栅空间类型和函数|
 > |[postgis_sfcgal](https://www.postgis.net/)               | 2.3.0           | PostGIS SFCGAL 函数|
 > |[postgis_tiger_geocoder](https://www.postgis.net/)       | 2.3.0           | PostGIS tiger 地理编码器和逆向地理编码器|
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.3.0           | PostGIS 拓扑空间类型和函数|
@@ -204,26 +204,26 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 
 
 ## <a name="pg_stat_statements"></a>pg_stat_statements
-[pg_stat_statements扩展](https://www.postgresql.org/docs/current/pgstatstatements.html)在 PostgreSQL 服务器的每个 Azure 数据库上预加载，以为您提供跟踪 SQL 语句的执行统计信息的方法。
+[pg_stat_statements 扩展](https://www.postgresql.org/docs/current/pgstatstatements.html)已预加载到每个 Azure Database for PostgreSQL 服务器上，以便为你提供跟踪 SQL 语句执行统计信息的方法。
 设置 `pg_stat_statements.track`，它可以控制哪些语句由扩展计数，默认为 `top`，这意味着跟踪所有由客户端直接发布的语句。 另外两个跟踪级别为 `none` 和 `all`。 此设置可通过 [Azure 门户](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal)或 [Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli) 作为服务器参数进行配置。
 
 查询执行信息 pg_stat_statements 提供的权限与记录每个 SQL 语句时对服务器性能的影响之间存在权衡。 如果不经常使用 pg_stat_statements 扩展，则建议将 `pg_stat_statements.track` 设置为 `none`。 请注意，某些第三方监视服务可能依赖 pg_stat_statements 来提供查询性能见解，因此，请确认这是否适合你。
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink 和 postgres_fdw
-[dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html)和[postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html)允许您从一个 PostgreSQL 服务器连接到另一个服务器，或连接到同一服务器中的另一个数据库。 接收服务器需要允许来自发送服务器的连接通过其防火墙。 当使用这些扩展在 Azure Database for PostgreSQL 服务器之间进行连接时，可以通过将“允许访问 Azure 服务”设置为“开启”来实现此目的。 如果希望使用扩展来环回到同一服务器，也需要进行此设置。 可以在 Postgres 服务器的 Azure 门户页面中的“连接安全性”下找到“允许访问 Azure 服务”设置。 开启“允许访问 Azure 服务”会将所有 Azure IP 置于允许列表中。
+[dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) 和 [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) 允许你从一个 PostgreSQL 服务器连接到另一个 PostgreSQL 服务器，或者连接到同一服务器中的另一个数据库。 接收服务器需要允许来自发送服务器的连接通过其防火墙。 当使用这些扩展在 Azure Database for PostgreSQL 服务器之间进行连接时，可以通过将“允许访问 Azure 服务”设置为“开启”来实现此目的。 如果希望使用扩展来环回到同一服务器，也需要进行此设置。 可以在 Postgres 服务器的 Azure 门户页面中的“连接安全性”下找到“允许访问 Azure 服务”设置。 开启“允许访问 Azure 服务”会将所有 Azure IP 置于允许列表中。
 
 目前不支持从 Azure Database for PostgreSQL 进行出站连接，连接到其他 Azure Database for PostgreSQL 服务器的情况除外。
 
 ## <a name="uuid"></a>uuid
-如果您计划使用`uuid_generate_v4()` [uuid-ossp 扩展](https://www.postgresql.org/docs/current/uuid-ossp.html)，请考虑与[pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) `gen_random_uuid()`扩展进行比较，以获得性能优势。
+如果计划使用 `uuid_generate_v4()`uuid-ossp 扩展[中的 ](https://www.postgresql.org/docs/current/uuid-ossp.html)，请考虑将其与 `gen_random_uuid()`pgcrypto 扩展[中的 ](https://www.postgresql.org/docs/current/pgcrypto.html) 进行比较，以了解性能优势。
 
 ## <a name="pgaudit"></a>pgAudit
 [pgAudit 扩展](https://github.com/pgaudit/pgaudit/blob/master/README.md)提供会话和对象审核日志记录。 若要了解如何在 Azure Database for PostgreSQL 中使用此扩展，请访问[“审核概念”一文](concepts-audit.md)。 
 
 ## <a name="pg_prewarm"></a>pg_prewarm
-pg_prewarm扩展将关系数据加载到缓存中。 预预热缓存意味着查询在重新启动后首次运行时具有更好的响应时间。 在 Postgres 10 及以下，预热是使用[预热函数](https://www.postgresql.org/docs/10/pgprewarm.html)手动完成的。
+pg_prewarm 扩展可将关系数据加载到缓存中。 预热缓存意味着查询在重启后第一次运行时响应时间更短。 在 Postgres10 及更低版本中，使用 [prewarm 函数](https://www.postgresql.org/docs/10/pgprewarm.html)手动完成预热。
 
-在 Postgres 11 及以上，您可以将预热配置为[自动](https://www.postgresql.org/docs/current/pgprewarm.html)发生。 您需要在`shared_preload_libraries`参数列表中包含pg_prewarm，然后重新启动服务器以应用更改。 可以从[Azure 门户](howto-configure-server-parameters-using-portal.md)[、CLI、REST](howto-configure-server-parameters-using-cli.md)API 或 ARM 模板设置参数。 
+在 Postgres 11 及更高版本中，可以将预热配置为[自动](https://www.postgresql.org/docs/current/pgprewarm.html)进行。 需要在 `shared_preload_libraries` 参数列表中包含 pg_prewarm，然后重启服务器以应用更改。 可以通过 [Azure 门户](howto-configure-server-parameters-using-portal.md)、[CLI](howto-configure-server-parameters-using-cli.md)、REST API 或 ARM 模板设置参数。 
 
 ## <a name="timescaledb"></a>TimescaleDB
 TimescaleDB 是一个时序数据库，已作为 PostgreSQL 的扩展打包。 TimescaleDB 提供以时间为导向的分析功能、优化，并根据时序工作负荷来缩放 Postgres。
@@ -231,19 +231,19 @@ TimescaleDB 是一个时序数据库，已作为 PostgreSQL 的扩展打包。 T
 [详细了解 TimescaleDB](https://docs.timescale.com/latest)，它是 [Timescale, Inc.](https://www.timescale.com/) 的注册商标。 Azure Database for PostgreSQL 提供 Timescale 的开放源代码版本。 若要了解此版本中有哪些 Timescale 功能可用，请参阅 [Timescale 产品比较](https://www.timescale.com/products/)。
 
 ### <a name="installing-timescaledb"></a>安装 TimescaleDB
-若要安装 TimescaleDB，需将其包括在服务器的共享预加载库中。 对 Postgres 参数的`shared_preload_libraries`更改需要**重新启动服务器**才能生效。 可以使用 [Azure 门户](howto-configure-server-parameters-using-portal.md)或 [Azure CLI](howto-configure-server-parameters-using-cli.md) 更改参数。
+若要安装 TimescaleDB，需将其包括在服务器的共享预加载库中。 更改 Postgres 的 `shared_preload_libraries` 参数需要**重启服务器**才能生效。 可以使用 [Azure 门户](howto-configure-server-parameters-using-portal.md)或 [Azure CLI](howto-configure-server-parameters-using-cli.md) 更改参数。
 
-使用[Azure 门户](https://portal.azure.com/)：
+使用 [Azure 门户](https://portal.azure.com/)：
 
 1. 选择你的 Azure Database for PostgreSQL 服务器。
 
-2. 在侧栏中选择“服务器参数”。****
+2. 在侧栏中选择“服务器参数”。 
 
 3. 搜索 `shared_preload_libraries` 参数。
 
-4. 选择“TimescaleDB”****。
+4. 选择“TimescaleDB”  。
 
-5. 选择“保存”****，保留所做的更改。 保存更改后会获得通知。 
+5. 选择“保存”  ，保留所做的更改。 保存更改后会获得通知。 
 
 6. 获得通知后，请**重启**服务器以应用这些更改。 若要了解如何重启服务器，请参阅[重启 Azure Database for PostgreSQL 服务器](howto-restart-server-portal.md)。
 
@@ -279,4 +279,4 @@ SELECT timescaledb_post_restore();
 
 
 ## <a name="next-steps"></a>后续步骤
-如果未看到要使用的扩展，请告诉我们。 在我们的[反馈论坛](https://feedback.azure.com/forums/597976-azure-database-for-postgresql)中投票请求或创建新的反馈请求。
+如果未看到要使用的扩展，请告诉我们。 在我们的[反馈论坛](https://feedback.azure.com/forums/597976-azure-database-for-postgresql)中投票现有请求或创建新的反馈请求。

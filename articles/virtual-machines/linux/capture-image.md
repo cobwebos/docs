@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 捕获 Linux VM 映像
+title: 使用 Azure CLI 捕获 Linux VM 的映像
 description: 使用 Azure CLI 捕获 Azure VM 的映像以用于批量部署。
 author: cynthn
 ms.service: virtual-machines-linux
@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
 ms.openlocfilehash: 77f6244651551763f5460432655d66267775a256
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79250395"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>如何创建虚拟机或 VHD 的映像
@@ -19,7 +19,7 @@ ms.locfileid: "79250395"
 
 若要创建一份现有 Linux VM 的副本以用于备份或调试，或从本地 VM 上传专用 Linux VHD，请参阅[上传自定义磁盘映像并根据该映像创建 Linux VM](upload-vhd.md)。  
 
-您可以使用 Azure **VM 映像生成器（公共预览）** 服务来构建自定义映像，无需学习任何工具或设置生成管道，只需提供映像配置，映像生成器将创建映像。 有关详细信息，请参阅使用[Azure VM 映像生成器入门](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)。
+你可以使用**AZURE VM 映像生成器（公共预览版）** 服务构建自定义映像，无需了解任何工具或安装生成管道，只需提供映像配置，映像生成器就会创建映像。 有关详细信息，请参阅[通过 AZURE VM 映像生成器入门](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)。
 
 创建映像前需要以下项：
 
@@ -33,7 +33,7 @@ ms.locfileid: "79250395"
 
 
 ## <a name="step-1-deprovision-the-vm"></a>步骤 1：取消预配 VM
-首先，使用 Azure VM 代理取消预配 VM 以删除计算机特定文件和数据。 在源 Linux VM 上，使用带 `-deprovision+user` 参数的 `waagent` 命令。 有关详细信息，请参阅 Azure [Linux 代理用户指南](../extensions/agent-linux.md)。
+首先，使用 Azure VM 代理取消预配 VM 以删除计算机特定文件和数据。 在源 Linux VM 上，使用带 `-deprovision+user` 参数的 `waagent` 命令。 有关详细信息，请参阅 [Azure Linux 代理用户指南](../extensions/agent-linux.md)。
 
 1. 使用 SSH 客户端连接到 Linux VM。
 2. 在 SSH 窗口中，输入以下命令：
@@ -50,7 +50,7 @@ ms.locfileid: "79250395"
 ## <a name="step-2-create-vm-image"></a>步骤 2：创建 VM 映像
 使用 Azure CLI 将 VM 标记为通用化并捕获映像。 在以下示例中，请将示例参数名称替换为自己的值。 示例参数名称包括 *myResourceGroup*、*myVnet* 和 *myVM*。
 
-1. 对使用 [az vm deallocate](/cli/azure/vm) 取消设置的 VM 解除分配。 下面的示例在名为*myResourceGroup*的资源组中解分配名为 myVM 的*VM。*  
+1. 对使用 [az vm deallocate](/cli/azure/vm) 取消设置的 VM 解除分配。 以下示例解除分配名为*myResourceGroup*的资源组中名为*myVM*的 VM。  
    
     ```azurecli
     az vm deallocate \

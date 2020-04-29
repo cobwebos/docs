@@ -1,6 +1,6 @@
 ---
 title: 监视 Azure Site Recovery 进程服务器
-description: 本文介绍如何监视用于 VMware VM/物理服务器灾难恢复的 Azure 站点恢复进程服务器
+description: 本文介绍如何监视用于 VMware VM/物理服务器灾难恢复 Azure Site Recovery 进程服务器
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 54c161c40c881d7626f79fc9bfe1ec1c160480ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79257064"
 ---
 # <a name="monitor-the-process-server"></a>监视进程服务器
@@ -76,12 +76,12 @@ ms.locfileid: "79257064"
 
 可按如下所述监视进程服务器的运行状况： 
 
-1. 若要监视复制的计算机及其进程服务器的复制运行状况和状态，请在保管库中选择“已复制的项”，然后单击要监视的计算机。****
-2. 在“复制运行状况”中，可以监视 VM 的运行状况。**** 单击该状态可以深入查看错误详细信息。
+1. 若要监视复制的计算机及其进程服务器的复制运行状况和状态，请在保管库中选择“已复制的项”，然后单击要监视的计算机。 
+2. 在“复制运行状况”中，可以监视 VM 的运行状况。  单击该状态可以深入查看错误详细信息。
 
     ![VM 仪表板中的进程服务器运行状况](./media/vmware-physical-azure-monitor-process-server/vm-ps-health.png)
 
-4. 在“进程服务器运行状况”中，可以监视进程服务器的状态。**** 深入查看详细信息。
+4. 在“进程服务器运行状况”中，可以监视进程服务器的状态。  深入查看详细信息。
 
     ![VM 仪表板中的进程服务器详细信息](./media/vmware-physical-azure-monitor-process-server/ps-summary.png)
 
@@ -90,7 +90,7 @@ ms.locfileid: "79257064"
     - 如果进程服务器在配置服务器上的默认部署中运行，则会相应地突出显示配置服务器。
     - 若要深入查看信息，请单击配置服务器或进程服务器。 注意任何问题和任何补救建议。
 
-还可以在“Site Recovery 基础结构”下监视保管库中的进程服务器。**** 在“管理 Site Recovery 基础结构”中，单击“配置服务器”。******** 选择与进程服务器关联的配置服务器，然后深入查看进程服务器详细信息。
+还可以在“Site Recovery 基础结构”下监视保管库中的进程服务器。  在“管理 Site Recovery 基础结构”中，单击“配置服务器”。   选择与进程服务器关联的配置服务器，然后深入查看进程服务器详细信息。
 
 
 ## <a name="next-steps"></a>后续步骤

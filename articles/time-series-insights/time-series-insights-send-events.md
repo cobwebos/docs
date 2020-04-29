@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/11/2020
 ms.custom: seodec18
 ms.openlocfilehash: c3c7f59ecb3a06d80012917e2da4425a899859d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79254243"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>通过使用事件中心向时序见解环境发送事件
@@ -24,7 +24,7 @@ ms.locfileid: "79254243"
 
 ## <a name="configure-an-event-hub"></a>配置事件中心
 
-1. 要了解如何创建事件中心，请阅读[事件中心文档](https://docs.microsoft.com/azure/event-hubs/)。
+1. 若要了解如何创建事件中心，请阅读[事件中心文档](https://docs.microsoft.com/azure/event-hubs/)。
 1. 在搜索框中，搜索“事件中心”****。 在返回的列表中选择“事件中心”****。
 1. 选择事件中心。
 1. 在创建事件中心时，实际上要创建事件中心命名空间。 如果尚未在命名空间中创建事件中心，请在菜单中的“实体”下创建事件中心****。  
@@ -55,13 +55,13 @@ ms.locfileid: "79254243"
 
 ## <a name="add-a-time-series-insights-instance"></a>添加时序见解实例
 
-时序见解更新使用实例将上下文数据添加到传入的遥测数据中。 使用时间序列 ID 在查询时加入数据****。 在本文后面使用的示例 windmills 项目的“时间序列 ID”是 `id`****。 要了解有关时间序列洞察实例和**时间序列 ID**的更多内容，请阅读[时间序列模型](./time-series-insights-update-tsm.md)。
+时序见解更新使用实例将上下文数据添加到传入的遥测数据中。 使用时间序列 ID 在查询时加入数据****。 在本文后面使用的示例 windmills 项目的“时间序列 ID”是 `id`****。 若要了解有关时序见解实例和**时序 ID**的详细信息，请参阅[时序模型](./time-series-insights-update-tsm.md)。
 
 ### <a name="create-a-time-series-insights-event-source"></a>创建时序见解事件源
 
 1. 如果尚未创建事件源，请完成步骤以[创建事件源](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)。
 
-1. 为 `timeSeriesId` 设置一个值。 要了解有关**时间序列 ID**的更多内容，请阅读[时间序列模型](./time-series-insights-update-tsm.md)。
+1. 为 `timeSeriesId` 设置一个值。 若要了解有关**时序 ID**的详细信息，请参阅[时序模型](./time-series-insights-update-tsm.md)。
 
 ### <a name="push-events-to-windmills-sample"></a>将事件推送到 windmills 的示例
 
@@ -69,11 +69,11 @@ ms.locfileid: "79254243"
 
 1. 选择事件中心实例。
 
-1. 转到**共享访问策略** > **"我的发送策略**"。 复制“连接字符串 - 主密钥”的值****。
+1. 请访问**共享访问策略** > **MySendPolicy**。 复制“连接字符串 - 主密钥”的值****。
 
     [![复制主键连接字符串的值](media/send-events/configure-sample-code-connection-string.png)](media/send-events/configure-sample-code-connection-string.png#lightbox)
 
-1. 转到  https://tsiclientsample.azurewebsites.net/windFarmGen.html 。 URL 创建并运行模拟风车设备。
+1. 转到 https://tsiclientsample.azurewebsites.net/windFarmGen.html。 该 URL 创建并运行模拟 windmill 设备。
 1. 在网页上的“事件中心连接字符串”框中，粘贴在 [windmill 输入字段](#push-events-to-windmills-sample)中复制的连接字符串****。
   
     [![将主键连接字符串粘贴到“事件中心连接字符串”框中](media/send-events/configure-wind-mill-sim.png)](media/send-events/configure-wind-mill-sim.png#lightbox)
@@ -81,10 +81,10 @@ ms.locfileid: "79254243"
 1. 选择“单击可启动”****。 
 
     > [!TIP]
-    > 风车模拟器还创建JSON，你可以用作有效负载与[时间序列见解GA查询API。](https://docs.microsoft.com/rest/api/time-series-insights/ga-query)
+    > Windmill 模拟器还会创建 JSON，你可以将其用作带有[时序见解 GA 查询 api](https://docs.microsoft.com/rest/api/time-series-insights/ga-query)的有效负载。
 
     > [!NOTE]
-    > 模拟器将继续发送数据，直到关闭浏览器选项卡。
+    > 在浏览器选项卡关闭之前，模拟器将继续发送数据。
 
 1. 返回到 Azure 门户中的事件中心。 在“概述”**** 页上，显示事件中心收到的新事件。
 
@@ -111,7 +111,7 @@ ms.locfileid: "79254243"
 
 ### <a name="example-two"></a>示例二
 
-* **输入**：具有两个 JSON 对象的 JSON 数组。 每个 JSON 对象都转换为事件。
+* **输入**：包含两个 json 对象的 json 数组。 每个 JSON 对象都转换为事件。
 
     ```JSON
     [
@@ -135,7 +135,7 @@ ms.locfileid: "79254243"
 
 ### <a name="example-three"></a>示例三
 
-* **输入**：具有嵌套 JSON 数组的 JSON 对象，该数组包含两个 JSON 对象。
+* **输入**：具有嵌套 json 数组（包含两个 json 对象）的 JSON 对象。
 
     ```JSON
     {
@@ -162,7 +162,7 @@ ms.locfileid: "79254243"
 
 ### <a name="example-four"></a>示例四
 
-* **输入**：具有嵌套 JSON 数组的 JSON 对象，该数组包含两个 JSON 对象。 此输入表明复杂 JSON 对象可以表示全局属性。
+* **输入**：具有嵌套 json 数组（包含两个 json 对象）的 JSON 对象。 此输入表明复杂 JSON 对象可以表示全局属性。
 
     ```JSON
     {
@@ -203,6 +203,6 @@ ms.locfileid: "79254243"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在时序见解资源管理器中[查看您的环境](https://insights.timeseries.azure.com)。
+- 在时序见解资源管理器中[查看环境](https://insights.timeseries.azure.com)。
 
 - 阅读有关 [IoT 中心设备消息](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)的详细信息

@@ -1,21 +1,21 @@
 ---
 title: Azure Kubernetes 服务 (AKS) 中的 HTTP 应用程序路由加载项
-description: 使用 HTTP 应用程序路由加载项访问 Azure 库伯奈斯服务 （AKS） 上部署的应用程序。
+description: 使用 HTTP 应用程序路由外接程序访问在 Azure Kubernetes 服务（AKS）上部署的应用程序。
 services: container-service
 author: lachie83
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: laevenso
 ms.openlocfilehash: 6ffc9daaf1b87fc9fb6ebbb0f2787f07282afe5e
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80632404"
 ---
 # <a name="http-application-routing"></a>HTTP 应用程序路由
 
-可以通过 HTTP 应用程序路由解决方案轻松地访问部署到 Azure Kubernetes 服务 (AKS) 群集的应用程序。 启用解决方案后，它将在 AKS 群集中配置[入口控制器](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)。 在部署应用程序以后，此解决方案还可以为应用程序终结点创建可公开访问的 DNS 名称。
+可以通过 HTTP 应用程序路由解决方案轻松地访问部署到 Azure Kubernetes 服务 (AKS) 群集的应用程序。 启用该解决方案后，它将在 AKS 群集中配置[入口控制器](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)。 在部署应用程序以后，此解决方案还可以为应用程序终结点创建可公开访问的 DNS 名称。
 
 启用此加载项后，它会在订阅中创建 DNS 区域。 有关 DNS 成本的详细详细，请参阅 [DNS 定价][dns-pricing]。
 
@@ -24,9 +24,9 @@ ms.locfileid: "80632404"
 
 ## <a name="http-routing-solution-overview"></a>HTTP 路由解决方案概述
 
-该加载项部署两个组件[：Kubernetes 入口控制器][ingress]和[外部 DNS][external-dns]控制器。
+外接程序部署两个组件：一个[Kubernetes 入口控制器][ingress]和一个[外部 DNS][external-dns]控制器。
 
-- **入口控制器**：入口控制器通过类型为 LoadBalancer 的 Kubernetes 服务公开给 Internet。 入口控制器监视并实现[Kubernetes 入口资源][ingress-resource]，从而创建到应用程序终结点的路由。
+- **入口控制器**：入口控制器通过类型为 LoadBalancer 的 Kubernetes 服务公开给 Internet。 入口控制器监视并实现[Kubernetes 入口资源][ingress-resource]，这些资源创建指向应用程序终结点的路由。
 - **External-DNS 控制器**：监视 Kubernetes 入口资源并在特定于群集的 DNS 区域中创建 DNS A 记录。
 
 ## <a name="deploy-http-routing-cli"></a>部署 HTTP 路由：CLI
@@ -206,7 +206,7 @@ kubectl delete configmaps addon-http-application-routing-nginx-configuration --n
 
 针对群集中剩余的所有 *addon-http-application-routing* 资源重复前面的 `kubectl delete` 步骤。
 
-## <a name="troubleshoot"></a>故障排除
+## <a name="troubleshoot"></a>疑难解答
 
 请使用 [kubectl logs][kubectl-logs] 命令查看 External-DNS 应用程序的应用程序日志。 这些日志应确认已成功创建 A 和 TXT DNS 记录。
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 站点恢复在 VMware VM 和物理服务器的灾难恢复期间设置横向扩展进程服务器 |微软文档
+title: 使用 Azure Site Recovery 在 VMware Vm 和物理服务器的灾难恢复期间设置横向扩展进程服务器 |Microsoft Docs "
 description: 本文介绍如何在 VMware VM 和物理服务器的灾难恢复期间设置横向扩展进程服务器。
 author: Rajeswari-Mamilla
 manager: rochakm
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/23/2019
 ms.author: ramamill
 ms.openlocfilehash: 1b6084b4e93f3dc17f633f1b8496f9c26e7f576f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79257142"
 ---
 # <a name="scale-with-additional-process-servers"></a>使用额外的进程服务器进行扩展
@@ -41,7 +41,7 @@ ms.locfileid: "79257142"
 
 其中，每台受保护的源计算机配置有 3 个磁盘，每个磁盘 100 GB。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 下表中汇总了额外进程服务器的先决条件。
 
@@ -52,9 +52,9 @@ ms.locfileid: "79257142"
 下载进程服务器的安装文件，如下所示：
 
 1. 登录到 Azure 门户，并浏览到恢复服务保管库。
-2. 打开**站点恢复基础结构** > **VMWare 和物理计算机** > **配置服务器**（在 VMware &物理计算机下）。
-3. 选择配置服务器以向下钻取到配置服务器详细信息。 然后单击“+ 进程服务器”****。
-4. 在 **"添加进程"服务器** >  **"选择要部署进程服务器的位置**，选择**在本地部署横向扩展进程服务器**。
+2. 打开“Site Recovery 基础结构”   > “VMWare 和物理计算机”   > “配置服务器”  （在“针对 VMware 和物理计算机”下面）。
+3. 选择配置服务器以向下钻取到配置服务器详细信息。 然后单击“+ 进程服务器”  。
+4. 在“添加进程服务器”   >  “选择要部署进程服务器的位置”  中，选择“在本地部署横向扩展进程服务器”  。
 
    ![添加服务器页](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
 1. 单击“下载 Microsoft Azure Site Recovery 统一安装程序”****。 这会下载最新版本的安装文件。

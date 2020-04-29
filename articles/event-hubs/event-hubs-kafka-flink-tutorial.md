@@ -1,6 +1,6 @@
 ---
 title: 将 Apache Flink 用于 Apache Kafka - Azure事件中心 | Microsoft Docs
-description: 本文提供有关如何将 Apache Flink 连接到 Azure 事件中心的信息
+description: 本文提供了有关如何将 Apache Flink 连接到 Azure 事件中心的信息
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -10,16 +10,16 @@ ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: shvija
 ms.openlocfilehash: 2e5a2924cdc00c1cc057d71c40645085df4bae6a
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80632814"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>将 Apache Flink 与适用于 Apache Kafka 的 Azure 事件中心配合使用
-本教程介绍如何在不更改协议客户端或运行自己的群集的情况下将 Apache Flink 连接到事件中心。 Azure 事件中心支持 [Apache Kafka 版本 1.0](https://kafka.apache.org/10/documentation.html)。
+本教程介绍如何将 Apache Flink 连接到事件中心，而无需更改协议客户端或运行自己的群集。 Azure 事件中心支持[Apache Kafka 版本1.0。](https://kafka.apache.org/10/documentation.html)
 
-使用 Apache Kafka 的主要优势之一是它可连接的框架的生态系统。 事件中心将 Kafka 的灵活性与 Azure 生态系统的可扩展性、一致性和支持相结合。
+使用 Apache Kafka 的主要优势之一是它可连接的框架的生态系统。 事件中心将 Kafka 的灵活性与 Azure 生态系统的可伸缩性、一致性和支持结合起来。
 
 在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
@@ -29,7 +29,7 @@ ms.locfileid: "80632814"
 > * 运行 Flink 使用者
 
 > [!NOTE]
-> 此示例在[GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/flink)上可用
+> [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/flink) 上提供了此示例
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,7 +37,7 @@ ms.locfileid: "80632814"
 
 * 通读[用于 Apache Kafka 的事件中心](event-hubs-for-kafka-ecosystem-overview.md)一文。 
 * Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-* [Java 开发工具包 （JDK） 1.7+](https://aka.ms/azure-jdks)
+* [Java 开发工具包 (JDK) 1.7+](https://aka.ms/azure-jdks)
     * 在 Ubuntu 上运行 `apt-get install default-jdk`，以便安装 JDK。
     * 请确保设置 JAVA_HOME 环境变量，使之指向在其中安装了 JDK 的文件夹。
 * [下载](https://maven.apache.org/download.cgi)并[安装](https://maven.apache.org/install.html)Maven 二进制存档
@@ -47,11 +47,11 @@ ms.locfileid: "80632814"
 
 ## <a name="create-an-event-hubs-namespace"></a>创建事件中心命名空间
 
-要从任何事件中心服务进行发送或接收，需要事件中心命名空间。 请参阅[创建事件中心](event-hubs-create.md)以提供创建命名空间和事件中心的说明。 请确保复制事件中心连接字符串，以供将来使用。
+要从任何事件中心服务进行发送或接收，需要事件中心命名空间。 有关创建命名空间和事件中心的说明，请参阅[创建事件中心](event-hubs-create.md)。 请确保复制事件中心连接字符串，以供将来使用。
 
 ## <a name="clone-the-example-project"></a>克隆示例项目
 
-现在，您拥有事件中心连接字符串，可以克隆 Kafka 存储库的 Azure 事件中心并`flink`导航到子文件夹：
+现在，你已有了事件中心连接字符串，请克隆 Kafka 存储库的 Azure 事件中心，并`flink`导航到子文件夹：
 
 ```shell
 git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
@@ -87,11 +87,11 @@ mvn clean package
 mvn exec:java -Dexec.mainClass="FlinkTestProducer"
 ```
 
-制作人现在将开始在主题`test`时向事件中心发送事件，并将事件打印到停滞。
+制造者现在将开始向事件中心发送事件`test` ，并将事件打印到 stdout。
 
 ## <a name="run-flink-consumer"></a>运行 Flink 使用者
 
-使用提供的使用者示例，从事件中心接收消息。 
+使用提供的使用者示例从事件中心接收消息。 
 
 ### <a name="provide-an-event-hubs-kafka-endpoint"></a>提供事件中心 Kafka 终结点
 
@@ -118,16 +118,16 @@ mvn clean package
 mvn exec:java -Dexec.mainClass="FlinkTestConsumer"
 ```
 
-如果事件中心具有事件（例如，如果生产者也在运行），则使用者现在开始从主题`test`接收事件。
+如果事件中心具有事件（例如，如果您的制造者还在运行），则使用者现在会开始从主题`test`接收事件。
 
 查看 [ Flink 的 Kafka 连接器指南](https://ci.apache.org/projects/flink/flink-docs-stable/dev/connectors/kafka.html)，了解有关将 Flink 连接到 Kafka 的更为详细的信息。
 
 ## <a name="next-steps"></a>后续步骤
-要了解有关卡夫卡事件中心（Kafka）活动中心的更多详细信息，请参阅以下文章：  
+若要详细了解 Kafka 的事件中心，请参阅以下文章：  
 
 - [在事件中心镜像 Kafka 代理](event-hubs-kafka-mirror-maker-tutorial.md)
 - [将 Apache Spark 连接到事件中心](event-hubs-kafka-spark-tutorial.md)
-- [将卡夫卡连接与事件中心集成](event-hubs-kafka-connect-tutorial.md)
+- [将 Kafka Connect 与事件中心集成](event-hubs-kafka-connect-tutorial.md)
 - [了解 GitHub 上的示例](https://github.com/Azure/azure-event-hubs-for-kafka)
-- [将 Akka 流连接到事件中心](event-hubs-kafka-akka-streams-tutorial.md)
-- [Azure 活动中心 Apache Kafka 开发人员指南](apache-kafka-developer-guide.md)
+- [将 Akka Streams 连接到事件中心](event-hubs-kafka-akka-streams-tutorial.md)
+- [Azure 事件中心 Apache Kafka 开发人员指南](apache-kafka-developer-guide.md)

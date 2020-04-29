@@ -1,5 +1,5 @@
 ---
-title: Azure 宇宙 DB .NET 更改馈送处理器 API，SDK 发行说明
+title: Azure Cosmos DB .NET 更改源处理器 API、SDK 发行说明
 description: 了解有关更改源处理器 API 和 SDK 的全部信息，包括发布日期、停用日期和 .NET 更改源处理器 SDK 各版本之间所做的更改。
 author: ealsur
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
 ms.openlocfilehash: 5820778d46f5701b82bb289192350a9e13739d37
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80619440"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET 更改源处理器 SDK：下载和发行说明
@@ -29,8 +29,8 @@ ms.locfileid: "80619440"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 资源提供程序](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [批量执行器 - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [批量执行器 - Java](sql-api-sdk-bulk-executor-java.md)
+> * [批量执行程序 - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [批量执行程序 - Java](sql-api-sdk-bulk-executor-java.md)
 
 |   |   |
 |---|---|
@@ -47,22 +47,22 @@ ms.locfileid: "80619440"
 ### <a name="v2-builds"></a>v2 版本
 
 ### <a name="230"></a><a name="2.3.0"/>2.3.0
-* 添加了一种新的方法和`ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory`相应的公共接口`ICheckpointPartitionProcessorFactory`。 这允许接口的`IPartitionProcessor`实现使用内置的检查机制。 新工厂与现有`IPartitionProcessorFactory`工厂类似，只不过其`Create`方法也采用`ILeaseCheckpointer`参数。
-* 只有两种方法中的一个（或`ChangeFeedProcessorBuilder.WithPartitionProcessorFactory``ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory`）可用于同`ChangeFeedProcessorBuilder`一实例。
+* 添加了新方法`ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory`和相应的公共`ICheckpointPartitionProcessorFactory`接口。 这允许`IPartitionProcessor`接口的实现使用内置检查点机制。 新工厂类似于现有`IPartitionProcessorFactory`，只不过其`Create`方法也采用`ILeaseCheckpointer`参数。
+* 只能将`ChangeFeedProcessorBuilder.WithPartitionProcessorFactory`或`ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory`中的一个方法用于同一个`ChangeFeedProcessorBuilder`实例。
 
 ### <a name="228"></a><a name="2.2.8"/>2.2.8
-* 稳定性和可诊断性改进：
-  * 添加了用于检测读取更改源需要很长时间的支持。 当它花费的时间超过`ChangeFeedProcessorOptions.ChangeFeedTimeout`属性指定的值时，将采取以下步骤：
-    * 读取有问题的分区上的更改源的操作将中止。
-    * 更改馈送处理器实例放弃有问题的租约的所有权。 下一个租约获取步骤期间将选取丢弃的租约，该步骤将由相同或不同的更改馈送处理器实例完成。 这样，读取更改源将开始。
-    * 问题报告给运行状况监视器。 默认运行状况监视器将所有报告的问题发送到跟踪日志。
-  * 添加了新的公共属性： `ChangeFeedProcessorOptions.ChangeFeedTimeout`. 此属性的默认值为 10 分钟。
-  * 添加了新的公共枚举值： `Monitoring.MonitoredOperation.ReadChangeFeed`。 当 的值`HealthMonitoringRecord.Operation`设置为`Monitoring.MonitoredOperation.ReadChangeFeed`时，它指示运行状况问题与读取更改源相关。
+* 稳定性和诊断改进：
+  * 添加了对检测长时间的读取更改源的支持。 当超过`ChangeFeedProcessorOptions.ChangeFeedTimeout`属性所指定的值时，将执行以下步骤：
+    * 在有问题的分区上读取更改源的操作将中止。
+    * 更改源处理器实例会丢弃问题租约的所有权。 将由相同或不同的更改源处理器实例完成的下一次租约获取步骤期间选取丢弃的租约。 这样一来，就可以开始读取更改源。
+    * 向运行状况监视器报告问题。 默认 heath 监视器将报告的所有问题发送到跟踪日志。
+  * 添加了新的公共属性`ChangeFeedProcessorOptions.ChangeFeedTimeout`：。 此属性的默认值为10分钟。
+  * 添加了新的公共枚举值`Monitoring.MonitoredOperation.ReadChangeFeed`：。 当的值`HealthMonitoringRecord.Operation`设置为`Monitoring.MonitoredOperation.ReadChangeFeed`时，它指示运行状况问题与读取更改源相关。
 
 ### <a name="227"></a><a name="2.2.7"/>2.2.7
-* 改进了获取所有租约的时间超过租约过期间隔（例如，由于网络问题）方案的负载平衡策略：
-  * 在此方案中，负载平衡算法用于错误地将租约视为过期，从而导致从活动所有者窃取租约。 这可能引发不必要的重新平衡大量租约。
-  * 此问题在此版本中已修复，在获取所有者未更改的过期租约时避免重试冲突，并将获取过期租约推迟到下一次负载平衡迭代。
+* 改进了负载均衡策略，适用于获得所有租约所用时间超过租约过期时间间隔的情况，例如，由于网络问题：
+  * 在此方案中，用于将租约视为过期的负载平衡算法将导致活动所有者盗取租约。 这可能导致不必要地重新平衡大量租约。
+  * 在此版本中，此问题已修复，方法是避免在获取过期租约时重试，而不会更改所有者，并 posponing 获取过期租约以进行下一次负载平衡迭代。
 
 ### <a name="226"></a><a name="2.2.6"/>2.2.6
 * 改进了对观察者异常的处理。
@@ -92,7 +92,7 @@ ms.locfileid: "80619440"
 
 ### <a name="220"></a><a name="2.2.0"/>2.2.0
 * 添加了对已分区租用集合的支持。 分区键必须定义为 /id。
-* 次要重大更改：IChangeFeedDocumentClient 接口和 ChangeFeedDocumentClient 类的方法都已更改为包括 RequestOptions 和 CancellationToken 参数。 IChangeFeedDocumentClient 是一个高级扩展点，允许您提供文档客户端的自定义实现，以便与更改源处理器一起使用，例如修饰 DocumentClient 并拦截所有调用，以执行额外的跟踪、错误处理等。使用此更新，将需要更改实现 IChangeFeedDocumentClient 的代码，以在实现中包括新参数。
+* 次要重大更改：IChangeFeedDocumentClient 接口和 ChangeFeedDocumentClient 类的方法都已更改为包括 RequestOptions 和 CancellationToken 参数。 IChangeFeedDocumentClient 是一种高级扩展点，使你可以提供文档客户端的自定义实现，以便与更改源处理器一起使用，例如，修饰 DocumentClient 并截获对它的所有调用，以执行额外的跟踪、错误处理等操作。在此更新中，实现 IChangeFeedDocumentClient 的代码将需要更改为包括实现中的新参数。
 * 次要诊断改进。
 
 ### <a name="210"></a><a name="2.1.0"/>2.1.0
@@ -153,7 +153,7 @@ ms.locfileid: "80619440"
 
 ### <a name="131"></a><a name="1.3.1"/>1.3.1
 * 稳定性改进。
-  * 修复了处理已取消的任务问题，可能导致某些分区上的观察者停止。
+  * 修复了可能导致在某些分区上停止观察程序的已取消任务问题。
 * 支持手动检查点。
 * 兼容 [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.21 及更高版本。
 
@@ -184,7 +184,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 <br/>
 
-| Version | 发布日期 | 停用日期 |
+| 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
 | [2.3.0](#2.3.0) |2020年4月2日 |--- |
 | [2.2.8](#2.2.8) |2019年10月28日 |--- |
@@ -207,6 +207,6 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 若要了解有关 Cosmos DB 的详细信息，请参阅 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 服务页。

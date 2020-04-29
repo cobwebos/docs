@@ -1,6 +1,6 @@
 ---
-title: Azure 快速路由：向 VNet：门户添加网关
-description: 本文将引导您将虚拟网络网关添加到已创建的 ExpressRoute 资源管理器 VNet 中，使用 Azure 门户。
+title: Azure ExpressRoute：向 VNet 添加网关：门户
+description: 本文逐步讲解如何使用 Azure 门户将虚拟网络网关添加到为 ExpressRoute 创建的资源管理器 VNet。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -9,10 +9,10 @@ ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: 87b656f0ef999b3b15a89476f5cba4c4fcfc2b1e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79264825"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>使用 Azure 门户配置 ExpressRoute 的虚拟网络网关
@@ -20,7 +20,7 @@ ms.locfileid: "79264825"
 > * [Resource Manager - Azure 门户](expressroute-howto-add-gateway-portal-resource-manager.md)
 > * [Resource Manager - PowerShell](expressroute-howto-add-gateway-resource-manager.md)
 > * [经典 - PowerShell](expressroute-howto-add-gateway-classic.md)
-> * [视频 - Azure 门户](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)
+> * [视频-Azure 门户](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)
 > 
 > 
 
@@ -62,7 +62,7 @@ ms.locfileid: "79264825"
 
 ## <a name="create-the-virtual-network-gateway"></a>创建虚拟网络网关
 
-1. 在门户中，在左侧，单击**+** 并键入"虚拟网络网关"进行搜索。 在搜索返回结果中找到“虚拟网络网关”，并单击该条目****。 单击“虚拟网络网关”边栏选项卡底部的“创建”。******** 这会打开“创建虚拟网络网关”边栏选项卡****。
+1. 在门户的左侧，单击**+** 并在 "搜索" 中键入 "虚拟网络网关"。 在搜索返回结果中找到“虚拟网络网关”，并单击该条目****。 单击“虚拟网络网关”边栏选项卡底部的“创建”。******** 这会打开“创建虚拟网络网关”边栏选项卡****。
 2. 在“创建虚拟网络网关”边栏选项卡中，填写虚拟网络网关的值。****
 
     ![创建虚拟网络网关边栏选项卡字段](./media/expressroute-howto-add-gateway-portal-resource-manager/gw.png "创建虚拟网络网关边栏选项卡字段")
@@ -70,7 +70,7 @@ ms.locfileid: "79264825"
 4. **网关类型**：选择“ExpressRoute”****。
 5. **SKU**：从下拉列表中选择网关 SKU。
 6. **位置**：调整“位置”字段，使其指向虚拟网络所在的位置****。 如果该位置未指向虚拟网络所在的区域，该虚拟网络将不会显示在“选择虚拟网络”下拉列表中。
-7. 选择要将此网关添加到其中的虚拟网络。 单击 **"虚拟网络**"以打开 **"选择虚拟网络**边栏选项卡"。 选择 VNet。 如果看不到 VNet，请确保 **"位置"** 字段指向虚拟网络所在的区域。
+7. 选择要将此网关添加到其中的虚拟网络。 单击 "**虚拟网络**" 打开 "**选择虚拟网络**" 边栏选项卡。 选择 VNet。 如果看不到 VNet，请确保 "**位置**" 字段指向虚拟网络所在的区域。
 9. 选择公共 IP 地址。 单击“公共 IP 地址”打开“选择公共 IP 地址”边栏选项卡********。 单击“+新建”打开“创建公共 IP 地址”边栏选项卡********。 输入公共 IP 地址的名称。 此边栏选项卡会创建一个公共 IP 地址对象，将向其动态分配公共 IP 地址。 单击“确定”**** 保存对此边栏选项卡所做的更改。
 10. **订阅**：确保选择正确的订阅。
 11. **资源组**：此设置取决于所选的虚拟网络。

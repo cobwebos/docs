@@ -1,5 +1,5 @@
 ---
-title: 入门 Azure MFA 服务器 - Azure 活动目录
+title: Azure MFA 服务器入门-Azure Active Directory
 description: 本地 Azure MFA 服务器分步入门
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,22 +12,22 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5c32867313a0adf1967cb55cb78c42cc1b4e5758
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80653126"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure 多重身份验证服务器入门
 
 <center>
 
-![入门本地 MFA 服务器](./media/howto-mfaserver-deploy/server2.png)</center>
+![本地 MFA 服务器入门](./media/howto-mfaserver-deploy/server2.png)</center>
 
 本页介绍如何全新安装服务器，以及在本地 Active Directory 上对它进行设置。 如果已安装 MFA 服务器，但需进行升级，请参阅[升级到最新的 Azure 多重身份验证服务器](howto-mfaserver-deploy-upgrade.md)。 若要了解如何只安装 Web 服务，请参阅[部署 Azure 多重身份验证服务器移动应用 Web 服务](howto-mfaserver-deploy-mobileapp.md)。
 
 > [!IMPORTANT]
-> 自 2019 年 7 月 1 日起，Microsoft 将不再为新部署提供 MFA 服务器。 希望用户进行多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 在 7 月 1 日之前激活 MFA 服务器的现有客户将能够像往常一样下载最新版本、将来的更新并生成激活凭据。
+> 从2019年7月1日起，Microsoft 将不再为新部署提供 MFA 服务器。 想要从其用户请求多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 在7月1日前激活 MFA 服务器的现有客户将能够下载最新版本、将来更新和生成激活凭据。
 
 ## <a name="plan-your-deployment"></a>规划部署
 
@@ -96,8 +96,8 @@ Azure MFA 服务器由三个 Web 组件组成：
 执行以下步骤，从 Azure 门户下载 Azure 多重身份验证服务器：
 
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-2. 搜索并选择“Azure Active Directory”**。 选择**安全** > **MFA**。
-3. 在**管理器 MFA 服务器**下 ，选择**服务器设置**。
+2. 搜索并选择“Azure Active Directory”  。 选择 "**安全** > **MFA**"。
+3. 在 " **MANAGER MFA 服务器**" 下，选择 "**服务器设置**"。
 4. **** 选择“下载”，按下载页上的说明保存安装程序。 
 
    ![从 Azure 门户下载 MFA 服务器](./media/howto-mfaserver-deploy/downloadportal.png)
@@ -113,7 +113,7 @@ Azure MFA 服务器由三个 Web 组件组成：
 3. 安装完成后，单击“完成”。**** 此时会启动配置向导。
 4. 在配置向导欢迎屏幕上，选中“跳过使用身份验证配置向导”，并单击“下一步”。******** 此时向导将关闭，服务器会启动。
 
-   ![使用身份验证配置向导跳过](./media/howto-mfaserver-deploy/skip2.png)
+   ![跳过使用身份验证配置向导](./media/howto-mfaserver-deploy/skip2.png)
 
 5. 返回下载服务器的页面，单击“生成激活凭据”按钮****。 在提供的框中，将此信息复制到“Azure MFA 服务器”，然后单击“激活”****。
 
@@ -149,7 +149,7 @@ Azure MFA 服务器由三个 Web 组件组成：
 3. 现在，可以搜索单个用户，或在 AD 中搜索包含用户的 OU（组织单位）。 在本例中，我们将指定用户 OU。
 4. 突出显示右侧的所有用户，**并单击“导入**。 此时应会显示一个弹出窗口，指出操作已成功。 关闭导入窗口。
 
-   ![MFA 服务器用户从活动目录导入](./media/howto-mfaserver-deploy/import2.png)
+   ![Active Directory 的 MFA 服务器用户导入](./media/howto-mfaserver-deploy/import2.png)
 
 ### <a name="automated-synchronization-with-active-directory"></a>与 Active Directory 的自动同步
 
@@ -161,7 +161,7 @@ Azure MFA 服务器由三个 Web 组件组成：
 
 ## <a name="how-the-azure-multi-factor-authentication-server-handles-user-data"></a>Azure 多重身份验证服务器如何处理用户数据
 
-在本地使用多重身份验证 （MFA） 服务器时，用户的数据将存储在本地服务器中。 云中不会持久存储任何用户数据。 当用户执行双步验证时，MFA 服务器会将数据发送到 Azure MFA 云服务，以执行验证。 将这些身份验证请求发送到云服务时，会在请求和日志中发送以下字段，以便在客户的身份验证/使用情况报告中使用。 某些字段是可选的，可以在多重身份验证服务器中启用或禁用。 从 MFA 服务器到 MFA 云服务的通信使用基于出站端口 443 的 SSL/TLS。 这些字段是：
+当你在本地使用多重身份验证（MFA）服务器时，用户的数据将存储在本地服务器中。 云中不会持久存储任何用户数据。 当用户执行双步验证时，MFA 服务器会将数据发送到 Azure MFA 云服务，以执行验证。 将这些身份验证请求发送到云服务时，会在请求和日志中发送以下字段，以便在客户的身份验证/使用情况报告中使用。 某些字段是可选的，可以在多重身份验证服务器中启用或禁用。 从 MFA 服务器到 MFA 云服务的通信使用基于出站端口 443 的 SSL/TLS。 这些字段是：
 
 * 唯一 ID - 用户名或内部 MFA 服务器 ID
 * 名字和姓名（可选）
@@ -177,7 +177,7 @@ Azure MFA 服务器由三个 Web 组件组成：
 除了上述字段，验证结果（成功/拒绝）和任何拒绝的原因还与身份验证数据一起存储，可通过身份验证/使用情况报告获取。
 
 > [!IMPORTANT]
-> 从 2019 年 3 月开始，免费/试用 Azure AD 租户中的 MFA 服务器用户将不能使用电话呼叫选项。 SMS 消息不受此更改影响。 付费 Azure AD 租户中的用户将继续可以使用电话呼叫。 此更改仅影响免费/试用 Azure AD 租户。
+> 从2019年3月开始，电话呼叫选项对于免费/试用 Azure AD 租户中的 MFA 服务器用户将不可用。 SMS 消息不受此更改影响。 付费 Azure AD 租户中的用户将继续可以使用电话呼叫。 此更改仅影响免费/试用 Azure AD 租户。
 
 ## <a name="back-up-and-restore-azure-mfa-server"></a>备份和还原 Azure MFA 服务器
 

@@ -1,6 +1,6 @@
 ---
 title: 内存和并发限制
-description: 查看在 Azure Synapse 分析中分配给各种性能级别和资源类的内存和并发限制。
+description: 查看分配给 Azure Synapse Analytics 中不同性能级别和资源类的内存和并发限制。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,15 +12,15 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 56ab49949b4ea2a92bc591042b2d43a7f7b2dc63
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80632680"
 ---
-# <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Azure 突触分析的内存和并发限制
+# <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Azure Synapse Analytics 的内存和并发限制
 
-查看在 Azure Synapse 分析中分配给各种性能级别和资源类的内存和并发限制。  
+查看分配给 Azure Synapse Analytics 中不同性能级别和资源类的内存和并发限制。  
 
 ## <a name="data-warehouse-capacity-settings"></a>数据仓库容量设置
 
@@ -77,7 +77,7 @@ ms.locfileid: "80632680"
 
 ## <a name="concurrency-maximums-for-resource-classes"></a>资源类的并发性最大值
 
-为了确保每个查询都有足够的资源来高效地执行，Azure Synapse 中的 SQL 分析通过将并发槽分配给每个查询来跟踪资源利用率。 系统将根据重要性和并发槽位将查询置于队列中。 查询将在队列中等待，直到有足够的并发槽位可用。 [重要性](sql-data-warehouse-workload-importance.md)和并发槽位决定了 CPU 优先级。 有关详细信息，请参阅[分析工作负荷](analyze-your-workload.md)。
+为了确保每个查询具有足够的资源来有效执行，Azure Synapse 中的 SQL Analytics 通过将并发槽分配给每个查询来跟踪资源利用率。 系统将根据重要性和并发槽位将查询置于队列中。 查询将在队列中等待，直到有足够的并发槽位可用。 [重要性](sql-data-warehouse-workload-importance.md)和并发槽位决定了 CPU 优先级。 有关详细信息，请参阅[分析工作负荷](analyze-your-workload.md)。
 
 **静态资源类**
 

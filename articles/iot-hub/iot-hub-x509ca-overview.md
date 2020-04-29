@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
 ms.openlocfilehash: 3d02d3573902964a8549fa0eeb1f4f1471de1752
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79284507"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>使用 X.509 CA 证书进行设备身份验证
@@ -50,7 +50,7 @@ X.509 CA 证书的所有者能以加密方式为某个中间 CA 签名，而该 
 
 ![img-generic-cert-chain-of-trust](./media/generic-cert-chain-of-trust.png)
 
-设备证书（也称页证书）必须将“所有者名称”设置为****设备 ID**，后者是在 Azure IoT 中心注册 IoT 设备时使用过的。 身份验证需要此设置。
+设备证书（也称页证书）必须将“所有者名称”设置为  **设备 ID**，后者是在 Azure IoT 中心注册 IoT 设备时使用过的。 身份验证需要此设置。
 
 在此处了解如何像为设备签名时一样[创建证书链](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)。
 
@@ -62,7 +62,7 @@ X.509 CA 证书的所有者能以加密方式为某个中间 CA 签名，而该 
 
 所有权证明步骤涉及到在你与 IoT 中心之间执行加密质询和响应过程。  假设数字证书内容是公开的，因而容易遭到窃听，则 IoT 中心需要确认 CA 证书真正由你拥有。  为此，IoT 中心将会生成一个必须使用 CA 证书的相应私钥签名的随机质询。  如果如前所述保持私钥的机密性并对其进行保护，则只有你才能拥有所需的信息来完成此步骤。 私钥的机密性是此方法的信任源。  为质询签名后，可通过上传包含结果的文件来完成此步骤。
 
-在此处了解如何注册[CA 证书](iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub)
+在此处了解如何[注册 CA 证书](iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub)
 
 ## <a name="how-to-create-a-device-on-iot-hub"></a>如何在 IoT 中心创建设备
 

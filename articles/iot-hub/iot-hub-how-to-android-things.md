@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: robinsh
 ms.openlocfilehash: a06583e9aab4b082517d47c1022f7bec5184b9bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78673385"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>使用 Azure IoT SDK 针对 Android Things 平台进行开发
@@ -42,14 +42,14 @@ ms.locfileid: "78673385"
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
-   **MyAndroidThingsDevice** ：这是为注册设备指定的名称。 如图所示使用 MyAndroidThingsDevice。 如果为设备选择不同名称，则可能还需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
+   **MyAndroidThingsDevice**：这是为注册的设备提供的名称。 如图所示使用 MyAndroidThingsDevice。 如果为设备选择不同名称，则可能还需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
 
     ```azurecli-interactive
     az extension add --name azure-iot
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyAndroidThingsDevice
     ```
 
-2. 在 Azure 云外壳中运行以下命令，以获取刚刚注册*的设备的设备连接字符串*。 将下面的 `YourIoTHubName` 替换为你为 IoT 中心选择的名称。
+2. 在 Azure Cloud Shell 中运行以下命令，以获取刚注册设备的设备连接字符串  。 将下面的 `YourIoTHubName` 替换为你为 IoT 中心选择的名称。
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyAndroidThingsDevice --output table
@@ -65,7 +65,7 @@ ms.locfileid: "78673385"
 
 1. 构建 Android Things 应用程序的第一步是连接到 Android Things 设备。 将 Android Things 设备连接到一个显示器，并将它连接到 Internet。 Android Things 提供了有关如何连接到 WiFi 的[文档](https://developer.android.com/things/get-started/kits)。 连接到 Internet 之后，记下“网络”下列出的 IP 地址。
 
-2. 使用 [adb](https://developer.android.com/studio/command-line/adb) 工具，通过上面记下的 IP 地址连接到 Android Things 设备。 从终端使用此命令仔细检查连接。 您应该将您的设备列为"已连接"。
+2. 使用 [adb](https://developer.android.com/studio/command-line/adb) 工具，通过上面记下的 IP 地址连接到 Android Things 设备。 从终端使用此命令仔细检查连接。 你应看到你的设备已列为 "已连接"。
 
    ```
    adb devices
@@ -87,7 +87,7 @@ ms.locfileid: "78673385"
 
 ## <a name="read-the-telemetry-from-your-hub"></a>从中心读取遥测数据
 
-可通过 IoT 中心查看接收的数据。 IoT 中心 CLI 扩展可以连接到 IoT 中心上的服务端**事件**终结点。 该扩展会接收模拟设备发送的设备到云的消息。 IoT 中心后端应用程序通常在云中运行，接收和处理设备到云的消息。
+可通过 IoT 中心查看接收的数据。 IoT 中心 CLI 扩展可以连接到 IoT 中心上的服务端**事件**终结点。 扩展会接收模拟设备发送的设备到云的消息。 IoT 中心后端应用程序通常在云中运行，接收和处理设备到云的消息。
 
 在 Azure Cloud Shell 中运行以下命令，并将 `YourIoTHubName` 替换为 IoT 中心的名称：
 

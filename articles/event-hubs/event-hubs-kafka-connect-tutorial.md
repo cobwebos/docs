@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: shvija
 ms.openlocfilehash: 60c6207b1c90ca40f02097a1c82d2811a50f664d
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80632833"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>在 Azure 事件中心集成 Apache Kafka Connect 支持（预览版）
-随着业务需求的引入增加，对各种外部源和接收器的引入需求也增加。 [Apache Kafka Connect](https://kafka.apache.org/documentation/#connect) 提供的框架可以通过 Kafka 群集连接到任何外部系统（例如 MySQL、HDFS）和文件系统并与之进行数据的导入/导出。 本教程将引导您使用 Kafka 连接框架与事件中心。
+随着业务需求的引入增加，对各种外部源和接收器的引入需求也增加。 [Apache Kafka Connect](https://kafka.apache.org/documentation/#connect) 提供的框架可以通过 Kafka 群集连接到任何外部系统（例如 MySQL、HDFS）和文件系统并与之进行数据的导入/导出。 本教程介绍如何将 Kafka Connect framework 与事件中心配合使用。
 
-本教程将 Kafka Connect 与事件中心集成，并部署基本的 FileStreamSource 和 FileStreamSink 连接器。 此功能目前处于预览状态。 虽然这些连接器不是用于生产的，但它们可以用于演示端到端 Kafka Connect 方案，让 Azure 事件中心充当 Kafka 中转站。
+本教程将指导你将 Kafka Connect 与事件中心集成，并部署基本 FileStreamSource 和 FileStreamSink 连接器。 此功能目前处于预览状态。 虽然这些连接器不是用于生产的，但它们可以用于演示端到端 Kafka Connect 方案，让 Azure 事件中心充当 Kafka 中转站。
 
 > [!NOTE]
 > [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect) 上提供了此示例。
@@ -42,7 +42,7 @@ ms.locfileid: "80632833"
 - 通读[用于 Apache Kafka 的事件中心](https://docs.microsoft.com/azure/event-hubs/event-hubs-for-kafka-ecosystem-overview)简介文章
 
 ## <a name="create-an-event-hubs-namespace"></a>创建事件中心命名空间
-要从事件中心服务进行发送和接收，需要使用事件中心命名空间。 请参阅[创建事件中心](event-hubs-create.md)以提供创建命名空间和事件中心的说明。 获取事件中心连接字符串和完全限定域名 (FQDN) 供以后使用。 有关说明，请参阅[获取事件中心连接字符串](event-hubs-get-connection-string.md)。 
+要从事件中心服务进行发送和接收，需要使用事件中心命名空间。 有关创建命名空间和事件中心的说明，请参阅[创建事件中心](event-hubs-create.md)。 获取事件中心连接字符串和完全限定域名 (FQDN) 供以后使用。 有关说明，请参阅[获取事件中心连接字符串](event-hubs-get-connection-string.md)。 
 
 ## <a name="clone-the-example-project"></a>克隆示例项目
 克隆 Azure 事件中心存储库并导航到 tutorials/connect 子文件夹： 
@@ -157,11 +157,11 @@ Kafka Connect 创建的事件中心主题用于存储配置、偏移量和状态
 
 ## <a name="next-steps"></a>后续步骤
 
-要了解有关卡夫卡事件中心（Kafka）活动中心的更多详细信息，请参阅以下文章：  
+若要详细了解 Kafka 的事件中心，请参阅以下文章：  
 
 - [在事件中心镜像 Kafka 代理](event-hubs-kafka-mirror-maker-tutorial.md)
 - [将 Apache Spark 连接到事件中心](event-hubs-kafka-spark-tutorial.md)
 - [将 Apache Flink 连接到事件中心](event-hubs-kafka-flink-tutorial.md)
 - [了解 GitHub 上的示例](https://github.com/Azure/azure-event-hubs-for-kafka)
-- [将 Akka 流连接到事件中心](event-hubs-kafka-akka-streams-tutorial.md)
-- [Azure 活动中心 Apache Kafka 开发人员指南](apache-kafka-developer-guide.md)
+- [将 Akka Streams 连接到事件中心](event-hubs-kafka-akka-streams-tutorial.md)
+- [Azure 事件中心 Apache Kafka 开发人员指南](apache-kafka-developer-guide.md)

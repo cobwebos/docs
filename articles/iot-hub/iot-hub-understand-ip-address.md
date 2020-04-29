@@ -8,10 +8,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.openlocfilehash: c609f2a3843481442e97061739a806de60a680b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79367561"
 ---
 # <a name="iot-hub-ip-addresses"></a>IoT 中心 IP 地址
@@ -19,7 +19,7 @@ ms.locfileid: "79367561"
 IoT 中心公共终结点的 IP 地址前缀在 _AzureIoTHub_ [服务标记](../virtual-network/service-tags-overview.md)下定期发布。
 
 > [!NOTE]
-> 对于部署在本地网络内的设备，Azure IoT 中心支持 VNET 连接集成与专用终结点。 有关详细信息，请参阅[VNET 的 IoT 中心支持](./virtual-network-support.md#ingress-connectivity-to-iot-hub-using-private-endpoints)。
+> 对于部署在本地网络中的设备，Azure IoT 中心支持将 VNET 连接与专用终结点集成。 有关详细信息，请参阅 [IoT 中心对 VNET 的支持](./virtual-network-support.md#ingress-connectivity-to-iot-hub-using-private-endpoints)。
 
 
 可以使用这些 IP 地址前缀来控制 IoT 中心与设备或网络资产之间的连接，以实现各种网络隔离目标：

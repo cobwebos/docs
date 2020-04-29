@@ -1,5 +1,5 @@
 ---
-title: 突触 SQL 建议
+title: Synapse SQL 建议
 description: 了解 Synapse SQL 建议及其生成方式
 services: synapse-analytics
 author: kevinvngo
@@ -12,19 +12,19 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: 17877a1ef5d949fbbee080b6157844ac5b516fe7
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633684"
 ---
-# <a name="synapse-sql-recommendations"></a>突触 SQL 建议
+# <a name="synapse-sql-recommendations"></a>Synapse SQL 建议
 
-本文介绍了通过 Azure Advisor 提供的 Synapse SQL 建议。  
+本文介绍通过 Azure Advisor 提供的 Synapse SQL 建议。  
 
-SQL Analytics 提供建议，以确保数据仓库工作负载始终针对性能进行优化。 建议与 Azure [Advisor](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)紧密集成，直接在[Azure 门户](https://aka.ms/Azureadvisor)中为您提供最佳做法。 SQL Analytics 以每日节奏收集活动工作负载的遥测和曲面建议。 下面概述了支持的建议方案以及如何应用建议的操作。
+SQL Analytics 提供了一些建议，以确保对数据仓库工作负荷进行一致的性能优化。 建议与[Azure 顾问](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)紧密集成，以直接在[Azure 门户](https://aka.ms/Azureadvisor)中提供最佳实践。 SQL Analytics 按每日节奏为活动工作负荷收集遥测和曲面建议。 下面概述了支持的推荐方案，以及如何应用建议的操作。
 
-您可以[查看您的建议](https://aka.ms/Azureadvisor)！ 目前，此功能仅适用于第 2 代数据仓库。
+你现在可以[查看你的建议](https://aka.ms/Azureadvisor)！ 目前，此功能仅适用于第 2 代数据仓库。
 
 ## <a name="data-skew"></a>数据偏斜
 
@@ -32,13 +32,13 @@ SQL Analytics 提供建议，以确保数据仓库工作负载始终针对性能
 
 - [识别和消除倾斜](sql-data-warehouse-tables-distribute.md#how-to-tell-if-your-distribution-column-is-a-good-choice)
 
-## <a name="no-or-outdated-statistics"></a>无或过时的统计信息
+## <a name="no-or-outdated-statistics"></a>无或过期的统计信息
 
-具有不理想的统计信息会严重影响查询性能，因为它可能导致 SQL 查询优化器生成不理想的查询计划。 以下文档介绍了有关创建和更新统计信息的最佳做法：
+如果性能不佳，则可能会严重影响查询性能，因为这会导致 SQL 查询优化器生成不太理想的查询计划。 以下文档介绍了有关创建和更新统计信息的最佳做法：
 
 - [创建和更新表统计信息](sql-data-warehouse-tables-statistics.md)
 
-要查看这些建议影响表的列表，运行以下[T-SQL 脚本](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables)。 顾问会不断运行相同的 T-SQL 脚本以生成这些建议。
+若要查看受这些建议影响的表列表，请运行以下 [T-SQL 脚本](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables)。 顾问会不断运行相同的 T-SQL 脚本以生成这些建议。
 
 ## <a name="replicate-tables"></a>复制表
 

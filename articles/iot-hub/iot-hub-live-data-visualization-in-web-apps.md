@@ -9,10 +9,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
 ms.openlocfilehash: 138e077f7b47fa9f38a4710db95eb7208cef78e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78675323"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>在 Web 应用程序中可视化 Azure IoT 中心内的实时传感器数据
@@ -49,7 +49,7 @@ ms.locfileid: "78675323"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IOT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
+运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IoT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
 
 ```azurecli-interactive
 az extension add --name azure-iot
@@ -259,6 +259,6 @@ set EventHubConsumerGroup=YourConsumerGroupName
 
 现已成功使用 Web 应用可视化 IoT 中心的实时传感器数据。
 
-有关从 Azure IoT 中心可视化数据的另一种方法，请参阅[使用 Power BI 可视化来自 IoT 中心的实时传感器数据](iot-hub-live-data-visualization-in-power-bi.md)。
+若要从 Azure IoT 中心直观显示数据，请参阅[使用 Power BI 直观显示 IoT 中心的实时传感器数据](iot-hub-live-data-visualization-in-power-bi.md)。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

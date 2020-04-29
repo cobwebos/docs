@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mialdrid
 ms.openlocfilehash: 58e75e4efecf390c4c1449b7ec59684554fa7516
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79281413"
 ---
-# <a name="about-expressroute-virtual-network-gateways"></a>关于快速路由虚拟网络网关
+# <a name="about-expressroute-virtual-network-gateways"></a>关于 ExpressRoute 虚拟网络网关
 
-若要通过 ExpressRoute 连接 Azure 虚拟网络和本地网络，必须首先创建虚拟网络网关。 虚拟网络网关有两个用途：在网络之间交换 IP 路由和路由网络流量。 本文介绍 SKU 的网关类型、网关 SKU 和估计性能。 本文还解释了 ExpressRoute [FastPath，](#fastpath)此功能使本地网络的网络流量能够绕过虚拟网络网关以提高性能。
+若要通过 ExpressRoute 连接 Azure 虚拟网络和本地网络，必须首先创建虚拟网络网关。 虚拟网络网关有两个用途：在网络之间交换 IP 路由和路由网络流量。 本文介绍了各 SKU 的网关类型、网关 Sku 和估计性能。 本文还介绍了 ExpressRoute [FastPath](#fastpath)，这是一项功能，可让你的本地网络中的网络流量绕过虚拟网络网关，从而提高性能。
 
 ## <a name="gateway-types"></a>网关类型
 
@@ -79,24 +79,24 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/2
 
 ## <a name="fastpath"></a><a name="fastpath"></a>FastPath
 
-ExpressRoute虚拟网络网关旨在交换网络路由和路由网络流量。 FastPath 旨在提高本地网络和虚拟网络之间的数据路径性能。 启用后，FastPath 会绕过网关将网络流量直接发送到虚拟网络中的虚拟机。
+ExpressRoute 虚拟网络网关旨在交换网络路由和路由网络流量。 FastPath 旨在提高本地网络与虚拟网络之间的数据路径性能。 启用后，FastPath 会将网络流量直接发送到虚拟网络中的虚拟机，绕过网关。
 
-有关快速路径的详细信息（包括限制和要求），请参阅关于[FastPath](about-fastpath.md)。
+有关 FastPath 的详细信息，包括限制和要求，请参阅[关于 FastPath](about-fastpath.md)。
 
 ## <a name="rest-apis-and-powershell-cmdlets"></a><a name="resources"></a>REST API 和 PowerShell cmdlet
 有关将 REST API 和 PowerShell cmdlet 用于虚拟网络网关配置的其他技术资源和特定语法要求，请参阅以下页面：
 
 | **经典** | **资源管理器** |
 | --- | --- |
-| [电源外壳](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0#azure) |[电源外壳](https://docs.microsoft.com/powershell/module/az.network#networking) |
+| [PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0#azure) |[PowerShell](https://docs.microsoft.com/powershell/module/az.network#networking) |
 | [REST API](https://msdn.microsoft.com/library/jj154113.aspx) |[REST API](https://msdn.microsoft.com/library/mt163859.aspx) |
 
 ## <a name="next-steps"></a>后续步骤
 
 有关可用连接配置的详细信息，请参阅[ExpressRoute 概述](expressroute-introduction.md)。
 
-有关创建快速路由网关的详细信息，请参阅[为 ExpressRoute 创建虚拟网络网关](expressroute-howto-add-gateway-resource-manager.md)。
+有关创建 ExpressRoute 网关的详细信息，请参阅为[ExpressRoute 创建虚拟网络网关](expressroute-howto-add-gateway-resource-manager.md)。
 
 有关配置区域冗余网关的详细信息，请参阅[创建区域冗余虚拟网络网关](../../articles/vpn-gateway/create-zone-redundant-vnet-gateway.md)。
 
-有关快速路径的详细信息，请参阅[有关快速路径](about-fastpath.md)。
+有关 FastPath 的详细信息，请参阅[关于 FastPath](about-fastpath.md)。

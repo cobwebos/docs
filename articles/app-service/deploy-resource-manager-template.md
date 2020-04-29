@@ -7,10 +7,10 @@ ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
 ms.openlocfilehash: 0a282a412823207e5f662441158000e8c6121796
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80637931"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板部署 Web 应用的指南
@@ -90,7 +90,7 @@ ms.locfileid: "80637931"
 
 1. 转到站点的 [Kudu 控制台](https://github.com/projectkudu/kudu/wiki/Kudu-console)。
 2. 浏览到 D:\home\LogFiles\SiteExtensions\MSDeploy 上的文件夹。
-3. 查找 appManagerStatus.xml 和 appManagerLog.xml 文件。 第一个文件记录了状态。 第二个文件记录了有关错误的信息。 如果您不清楚错误，您可以在论坛中寻求帮助时包括该[错误](https://docs.microsoft.com/answers/topics/azure-webapps.html)。
+3. 查找 appManagerStatus.xml 和 appManagerLog.xml 文件。 第一个文件记录了状态。 第二个文件记录了有关错误的信息。 如果不明白该错误，可将它发布到[论坛](https://docs.microsoft.com/answers/topics/azure-webapps.html)上来寻求帮助。
 
 ## <a name="choose-a-unique-web-app-name"></a>选择唯一的 Web 应用名称
 
@@ -109,7 +109,7 @@ Web 应用的名称必须全局唯一。 可以使用某个可能唯一的命名
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-如果您的模板包含用于 TLS/SSL 绑定的[Microsoft.Web/证书](/azure/templates/microsoft.web/certificates)资源，并且证书存储在密钥保管库中，则必须确保应用服务标识可以访问证书。
+如果你的模板包含用于 TLS/SSL 绑定的[Microsoft Web/证书](/azure/templates/microsoft.web/certificates)资源，并且该证书存储在 Key Vault 中，则必须确保应用服务标识可以访问该证书。
 
 在全球版 Azure 中，应用服务服务主体所拥有的 ID 为 abfa0a7c-a6b6-4736-8310-5855508787cd****。 若要为应用服务服务主体授予对 Key Vault 的访问权限，请使用：
 
@@ -121,9 +121,9 @@ Set-AzKeyVaultAccessPolicy `
   -PermissionsToCertificates get
 ```
 
-在 Azure 政府中，应用服务服务主体所拥有的 ID 为 6a02c803-dafd-4136-b4c3-5a6f318b4714****。 使用上一示例中的 ID。
+在 Azure 政府中，应用服务服务主体所拥有的 ID 为 6a02c803-dafd-4136-b4c3-5a6f318b4714  。 使用上一示例中的 ID。
 
-在 Key Vault 中，选择“证书”和“生成/导入”以上传证书********。
+在 Key Vault 中，选择“证书”和“生成/导入”以上传证书   。
 
 ![导入证书](media/web-sites-rm-template-guidance/import-certificate.png)
 

@@ -1,6 +1,6 @@
 ---
 title: 分配变量
-description: 在本文中，您将找到在 SQL 池中分配 T-SQL 变量的基本提示。
+description: 在本文中，你将了解有关在 SQL 池中分配 T-sql 变量的重要提示。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,26 +12,26 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 2dcf706ea59657abc2718a69e59191604dc2849d
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633404"
 ---
 # <a name="assign-variables-in-synapse-sql-pool"></a>在 Synapse SQL 池中分配变量
 
-在本文中，您将找到在 SQL 池中分配 T-SQL 变量的基本提示。
+在本文中，你将了解有关在 SQL 池中分配 T-sql 变量的重要提示。
 
-## <a name="set-variables-with-declare"></a>使用 DECLARE 设置变量
+## <a name="set-variables-with-declare"></a>用 DECLARE 设置变量
 
-SQL 池中的变量使用`DECLARE`语句或`SET`语句进行设置。 使用 DECLARE 初始化变量是在 SQL 池中设置变量值的最灵活方法之一。
+SQL 池中的变量是使用`DECLARE`语句或`SET`语句设置的。 使用 DECLARE 初始化变量是在 SQL 池中设置变量值的最灵活方式之一。
 
 ```sql
 DECLARE @v  int = 0
 ;
 ```
 
-还可以使用 DECLARE 一次性设置多个变量。 不能使用 SELECT 或更新执行以下操作：
+还可以使用 DECLARE 一次性设置多个变量。 不能使用 SELECT 或 UPDATE 来执行以下操作：
 
 ```sql
 DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 'Smith')
@@ -39,7 +39,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-不能在同一 DECLARE 语句中初始化和使用变量。 为了演示要点，**不**允许出现以下示例中的情况，因为同一 DECLARE 语句中初始化和使用了 @p1。 因此，以下示例给出错误：
+不能在同一个 DECLARE 语句中初始化和使用变量。 为了演示要点，**不**允许出现以下示例中的情况，因为同一 DECLARE 语句中初始化和使用了 @p1。 同样，下面的示例提供了一个错误：
 
 ```sql
 DECLARE @p1 int = 0
@@ -47,7 +47,7 @@ DECLARE @p1 int = 0
 ;
 ```
 
-## <a name="set-values-with-set"></a>使用 SET 设置值
+## <a name="set-values-with-set"></a>设置值时设置
 
 SET 是设置单个变量的常见方法。
 
@@ -64,7 +64,7 @@ SET     @v +=1;
 
 ## <a name="limitations"></a>限制
 
-不能将 UPDATE 用于变量分配。
+不能对变量赋值使用 UPDATE。
 
 ## <a name="next-steps"></a>后续步骤
 

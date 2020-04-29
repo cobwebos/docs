@@ -1,6 +1,6 @@
 ---
-title: 使用 REST API 暂停、恢复、缩放
-description: 通过 REST API 管理 Azure 突触分析数据仓库中的计算能力。
+title: 暂停、恢复、缩放 REST Api
+description: 通过 REST Api 管理 Azure Synapse Analytics 数据仓库中的计算能力。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,15 +12,15 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 4efd5c63af9f09d41733e8e172270410245977ec
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633204"
 ---
 # <a name="rest-apis-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库的 REST API
 
-用于在 Azure 同步分析数据仓库中管理计算的 REST API。
+用于管理 Azure Synapse Analytics 数据仓库中的计算的 REST Api。
 
 ## <a name="scale-compute"></a>缩放计算
 
@@ -73,7 +73,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 ## <a name="set-maintenance-schedule"></a>设置维护计划
 
-在现有数据仓库上设置和更新维护计划。
+设置和更新现有数据仓库的维护计划。
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/maintenanceWindows/current?maintenanceWindowName=current&api-version=2017-10-01-preview HTTP/1.1

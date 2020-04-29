@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
 ms.openlocfilehash: 622c0cb8d58dddcdb13c7dc9412ada3f2e2d93e4
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80632989"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>使用 Azure 门户管理 Azure 资源管理器资源组
@@ -25,50 +25,50 @@ ms.locfileid: "80632989"
 
 ## <a name="what-is-a-resource-group"></a>什么是资源组
 
-资源组是用于保存 Azure 解决方案相关资源的容器。 资源组可以包含解决方案的所有资源，也可以只包含以组的形式进行管理的资源。 根据对组织有利的原则，决定如何将资源分配到资源组。 通常可将共享相同生命周期的资源添加到同一资源组，以便将其作为一个组轻松部署、更新和删除。
+资源组是用于保存 Azure 解决方案相关资源的容器。 资源组可以包含解决方案的所有资源，也可以只包含想要作为组来管理的资源。 根据对组织有利的原则，决定如何将资源分配到资源组。 通常可将共享相同生命周期的资源添加到同一资源组，以便将其作为一个组轻松部署、更新和删除。
 
-” 资源组存储有关资源的元数据。 因此，当指定资源组的位置时，也就指定了元数据的存储位置。 出于合规性原因，可能需要确保数据存储在某一特定区域。
+资源组存储与资源有关的元数据。 因此，在指定资源组的位置时，是在指定元数据的存储位置。 出于合规性原因，可能需要确保数据存储在某一特定区域。
 
 
 ## <a name="create-resource-groups"></a>创建资源组
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 选择**资源组**
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 选择“资源组” 
 
     ![添加资源组](./media/manage-resource-groups-portal/manage-resource-groups-add-group.png)
-3. 选择 **添加** 。
+3. 选择“添加”   。
 4. 输入以下值：
 
    - **订阅**：选择 Azure 订阅。 
    - **资源组**：输入新的资源组名称。 
-   - **区域**：选择 Azure 位置，如**美国中部**。
+   - **区域**：选择 Azure 位置，如 "**美国中部**"。
 
      ![创建资源组](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
-5. 选择**审核和创建**
+5. 选择“查看 + 创建” 
 6. 选择“创建”  。 创建资源组需要几秒钟的时间。
-7. 在顶部菜单中选择“刷新”以刷新资源组列表，然后选择新建的资源组将其打开。**** 或者，选择顶部的“通知”（钟形图标），然后选择“转到资源组”打开新建的资源组********
+7. 在顶部菜单中选择“刷新”以刷新资源组列表，然后选择新建的资源组将其打开。  或者，选择顶部的“通知”（钟形图标），然后选择“转到资源组”打开新建的资源组  
 
     ![转到资源组](./media/manage-resource-groups-portal/manage-resource-groups-add-group-go-to-resource-group.png)
 
 ## <a name="list-resource-groups"></a>列出资源组
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 若要列出资源组，请选择“资源组”****
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 若要列出资源组，请选择“资源组” 
 
     ![浏览资源组](./media/manage-resource-groups-portal/manage-resource-groups-list-groups.png)
 
-3. 若要自定义显示的资源组信息，请选择“编辑列”****。 以下屏幕截图显示了可添加到画面中的附加列：
+3. 若要自定义显示的资源组信息，请选择“编辑列”  。 以下屏幕截图显示了可添加到画面中的附加列：
 
 ## <a name="open-resource-groups"></a>打开资源组
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 选择**资源组**。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 选择“资源组”  。
 3. 选择要打开的资源组。
 
 ## <a name="delete-resource-groups"></a>删除资源组
 
 1. 打开要删除的资源组。  参阅[打开资源组](#open-resource-groups)。
-2. 选择“删除资源组”****。
+2. 选择“删除资源组”  。
 
     ![删除 Azure 资源组](./media/manage-resource-groups-portal/delete-group.png)
 
@@ -76,7 +76,7 @@ ms.locfileid: "80632989"
 
 ## <a name="deploy-resources-to-a-resource-group"></a>将资源部署到资源组
 
-创建资源管理器模板后，可以使用 Azure 门户部署 Azure 资源。 有关创建模板，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](../templates/quickstart-create-templates-use-the-portal.md)。 有关如何使用门户部署模板，请参阅[使用资源管理器模板和 Azure 门户部署资源](../templates/deploy-portal.md)。
+创建资源管理器模板后，可以使用 Azure 门户部署 Azure 资源。 有关如何创建模板，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](../templates/quickstart-create-templates-use-the-portal.md)。 有关如何使用门户部署模板，请参阅[使用资源管理器模板和 Azure 门户部署资源](../templates/deploy-portal.md)。
 
 ## <a name="move-to-another-resource-group-or-subscription"></a>移到另一个资源组或订阅
 
@@ -87,9 +87,9 @@ ms.locfileid: "80632989"
 锁定可以防止组织中的其他用户意外删除或修改关键资源，例如 Azure 订阅、资源组或资源。 
 
 1. 打开要删除的资源组。  参阅[打开资源组](#open-resource-groups)。
-2. 在左窗格中选择“锁定”****。
-3. 若要将锁添加到资源组，请选择“添加”。****
-4. 输入“锁定名”、“锁类型”和“备注”。************ 锁类型包括“只读”和“删除”。********
+2. 在左窗格中选择“锁定”  。
+3. 若要将锁添加到资源组，请选择“添加”。 
+4. 输入“锁定名”、“锁类型”和“备注”。    锁类型包括“只读”和“删除”。  
 
     ![锁定 Azure 资源组](./media/manage-resource-groups-portal/manage-resource-groups-add-lock.png)
 
@@ -105,11 +105,11 @@ ms.locfileid: "80632989"
 
 ## <a name="manage-access-to-resource-groups"></a>管理对资源组的访问
 
-[基于角色的访问控制 （RBAC）](../../role-based-access-control/overview.md)是管理对 Azure 中资源的访问的方式。 有关详细信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../../role-based-access-control/role-assignments-portal.md)。
+可以在 Azure 中通过[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 这种方式管理对资源的访问。 有关详细信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 若要了解 Azure 资源管理器，请参阅 [Azure 资源管理器概述](overview.md)。
 - 若要了解资源管理器模板语法，请参阅[了解 Azure 资源管理器模板的结构和语法](../templates/template-syntax.md)。
-- 要了解如何开发模板，请参阅分[步教程](/azure/azure-resource-manager/)。
+- 若要了解如何开发模板，请参阅[分步教程](/azure/azure-resource-manager/)。
 - 若要查看 Azure 资源管理器模板架构，请参阅[模板参考](/azure/templates/)。

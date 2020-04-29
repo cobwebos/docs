@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/28/2020
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 047e722a0e0ade60d1eb93a48e37333fffafd674
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76836450"
 ---
 # <a name="limits-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的限制
@@ -21,10 +21,10 @@ ms.locfileid: "76836450"
 ## <a name="maximum-connections"></a>最大连接数
 每个定价层的最大连接数和 vCore 数如下所示。 Azure 系统需要使用五个连接来监视 Azure Database for PostgreSQL 服务器。 
 
-|**定价层**| **vCore**| 最大连接数**** | **最大用户连接数** |
+|**定价层**| **vCore(s)**| 最大连接数**** | **最大用户连接数** |
 |---|---|---|---|
-|Basic| 1| 55 | 50|
-|Basic| 2| 105 | 100|
+|基本| 1| 55 | 50|
+|基本| 2| 105 | 100|
 |常规用途| 2| 150| 145|
 |常规用途| 4| 250| 245|
 |常规用途| 8| 480| 475|
@@ -43,7 +43,7 @@ ms.locfileid: "76836450"
 > [!IMPORTANT]
 > 为了获得最佳体验，我们建议你使用 pgBouncer 之类的连接池来有效地管理连接。
 
-PostgreSQL 连接，即使空闲，也可以占用大约 10MB 的内存。 而且，创建新连接需要时间。 大多数应用程序都请求许多短期连接，这加剧了这种情况。 其结果是可用于实际工作负荷的资源减少，从而导致性能下降。 减少空闲连接并重用现有连接的连接池会有助于避免这种情况。 要了解更多信息，请访问我们的[博客文章](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717)。
+PostgreSQL 连接，即使空闲，也可以占用大约 10MB 的内存。 而且，创建新连接需要时间。 大多数应用程序都请求许多短期连接，这加剧了这种情况。 其结果是可用于实际工作负荷的资源减少，从而导致性能下降。 减少空闲连接并重用现有连接的连接池会有助于避免这种情况。 若要了解详细信息，请访问我们的[博客文章](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717)。
 
 ## <a name="functional-limitations"></a>功能限制
 ### <a name="scale-operations"></a>缩放操作

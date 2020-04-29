@@ -1,6 +1,6 @@
 ---
 title: 分析工作负荷
-description: 在 Azure 同步分析中分析工作负荷的查询优先级的技术。
+description: 用于在 Azure Synapse Analytics 中分析工作负荷的查询优先顺序的方法。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,23 +12,23 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 6a38fe65b4aedf4f594531f5e9cd8cf9b5dfaac7
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80631232"
 ---
-# <a name="analyze-your-workload-in-azure-synapse-analytics"></a>在 Azure 突触分析中分析工作负荷
+# <a name="analyze-your-workload-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中分析工作负荷
 
-在 Azure 突触分析中分析 Synapse SQL 工作负荷的技术。
+用于分析 Azure Synapse Analytics 中的 Synapse SQL 工作负荷的方法。
 
 ## <a name="resource-classes"></a>资源类
 
-突触 SQL 提供资源类，用于将系统资源分配给查询。  有关资源类的详细信息，请参阅[资源类和工作负荷管理](resource-classes-for-workload-management.md)。  如果分配给查询的资源类需要的资源超出目前能够提供的量，则查询会等待。
+Synapse SQL 提供用于将系统资源分配给查询的资源类。  有关资源类的详细信息，请参阅[资源类和工作负荷管理](resource-classes-for-workload-management.md)。  如果分配给查询的资源类需要的资源超出目前能够提供的量，则查询会等待。
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>对排队的查询进行的检测，以及其他 DMV
 
-可以使用 `sys.dm_pdw_exec_requests` DMV 来确定在并发队列中等待的查询。 正在等待并发槽的查询的状态为“已挂起”****。
+可以使用 `sys.dm_pdw_exec_requests` DMV 来确定在并发队列中等待的查询。 正在等待并发槽的查询的状态为“已挂起”  。
 
 ```sql
 SELECT  r.[request_id]                           AS Request_ID
@@ -63,7 +63,7 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 ;
 ```
 
-突触 SQL 具有以下等待类型：
+Synapse SQL 具有以下等待类型：
 
 * **LocalQueriesConcurrencyResourceType**：位于并发槽框架外部的查询。 DMV 查询和 `SELECT @@VERSION` 等系统函数是本地查询的示例。
 * **UserConcurrencyResourceType**：位于并发槽框架内部的查询。 针对最终用户表的查询代表使用此资源类型的示例。
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>后续步骤
 
-有关管理数据库用户和安全的详细信息，请参阅[在 Synapse SQL 中保护数据库](sql-data-warehouse-overview-manage-security.md)。 有关如何通过更大型资源类来改进聚集列存储索引质量的详细信息，请参阅[重新生成索引以提升段质量](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)。
+有关管理数据库用户和安全性的详细信息，请参阅[保护 SYNAPSE SQL 中的数据库](sql-data-warehouse-overview-manage-security.md)。 有关如何通过更大型资源类来改进聚集列存储索引质量的详细信息，请参阅[重新生成索引以提升段质量](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)。

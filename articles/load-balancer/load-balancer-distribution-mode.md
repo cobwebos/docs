@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 11/19/2019
 ms.author: allensu
 ms.openlocfilehash: 5c50186692438be5d0922cd329c28e665310e5c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77023525"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>配置 Azure 负载均衡器的分配模式
@@ -31,7 +31,7 @@ Azure 负载均衡器的默认分配模式是五元组哈希。
 元组由以下内容组成：
 * **源 IP**
 * **源端口**
-* **目的地 IP**
+* **目标 IP**
 * **目标端口**
 * **协议类型**
 
@@ -63,16 +63,16 @@ Azure 负载均衡器的默认分配模式是五元组哈希。
 
 可以通过修改门户中的负载均衡规则来更改分发模式的配置。
 
-1. 登录 Azure 门户并通过单击“资源组”**** 找到包含要更改的负载均衡器的资源组。
-2. 在“负载均衡器概述”屏幕中，单击“设置”**** 下的“负载均衡规则”****。
+1. 登录 Azure 门户并通过单击“资源组”  找到包含要更改的负载均衡器的资源组。
+2. 在“负载均衡器概述”屏幕中，单击“设置”  下的“负载均衡规则”  。
 3. 在“负载均衡规则”屏幕中，单击要更改分发模式的负载均衡规则。
-4. 在规则下，通过更改“会话持续性”**** 下拉框来更改分发模式。  提供了以下选项：
+4. 在规则下，通过更改“会话持续性”  下拉框来更改分发模式。  提供了以下选项：
     
     * **无(基于哈希)** - 指定任何虚拟机可能处理来自同一客户端的后续请求。
     * **客户端 IP (源 IP 关联 2 元组)** - 指定来自同一客户端 IP 地址的后续请求将由同一虚拟机处理。
     * **客户端 IP 和协议(源 IP 关联 3 元组)** - 指定来自同一客户端 IP 地址和协议组合的连续请求将由同一虚拟机处理。
 
-5. 选择分发模式，然后单击“保存”****。
+5. 选择分发模式，然后单击“保存”  。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 

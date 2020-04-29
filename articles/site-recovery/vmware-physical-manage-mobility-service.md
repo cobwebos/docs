@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 站点恢复管理 VMware/物理服务器的移动代理
+title: 通过 Azure Site Recovery 管理 VMware/物理服务器的移动代理
 description: 管理可使用 Azure Site Recovery 将 VMware VM 和物理服务器灾难恢复到 Azure 的移动服务代理。
 author: Rajeswari-Mamilla
 manager: rochakm
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
 ms.openlocfilehash: 9be758c286e072b0fbefc5f8b20b7accc4e6741b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79256960"
 ---
 # <a name="manage-the-mobility-agent"></a>管理移动代理 
@@ -24,12 +24,12 @@ ms.locfileid: "79256960"
 ## <a name="update-mobility-service-from-azure-portal"></a>从 Azure 门户更新移动服务
 
 1. 开始在受保护的计算机上更新移动服务之前，请确保部署中的配置服务器、横向扩展进程服务器及所有主目标服务器均已更新。
-2. 在门户中打开保管库 >“复制的项”。****
+2. 在门户中打开保管库 >“复制的项”。 
 3. 如果配置服务器是最新版本，则会看到一条通知，指出“新的 Site Recovery 复制代理更新已可用。 单击可安装。”
 
      ![“复制的项”窗口](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 
-4. 单击该通知，并在“代理更新”中选择要在其上升级移动服务的计算机。**** 然后单击“确定”****。
+4. 单击该通知，并在“代理更新”中选择要在其上升级移动服务的计算机。  然后单击“确定”  。
 
      ![“复制的项”VM 列表](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
@@ -54,7 +54,7 @@ Update-AzRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Acco
 >[!IMPORTANT]
 > 如果要在不同的 Azure 区域之间复制 Azure IaaS VM，请不要使用此方法。 有关所有可用选项的信息，请参阅[我们的指南](azure-to-azure-autoupdate.md)。
 
-3. 将安装文件复制到受保护的计算机上，然后运行该文件以更新移动代理。
+3. 将安装文件复制到受保护的计算机上，并运行它以更新移动代理。
 
 ## <a name="update-account-used-for-push-installation-of-mobility-service"></a>更新用于推送安装移动服务的帐户
 
@@ -66,7 +66,7 @@ Update-AzRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Acco
 
 从 UI 或命令提示符卸载。
 
-- **通过 UI**：在计算机的控制面板中，选择“程序”。**** 选择**微软 Azure 站点恢复移动服务/主目标服务器** > **卸载**。
+- **通过 UI**：在计算机的控制面板中，选择“程序”。**** 选择**Microsoft Azure Site Recovery 移动服务/主目标服务器** > **卸载**"。
 - **通过命令提示符**：在计算机上以管理员身份打开命令提示符窗口。 运行以下命令： 
     ```
     MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
@@ -91,5 +91,5 @@ Update-AzRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Acco
 
 ## <a name="next-steps"></a>后续步骤
 
-- [为 VMware VM 设置灾难恢复](vmware-azure-tutorial.md)
+- [为 VMware Vm 设置灾难恢复](vmware-azure-tutorial.md)
 - [为物理服务器设置灾难恢复](physical-azure-disaster-recovery.md)

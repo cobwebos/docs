@@ -1,6 +1,6 @@
 ---
 title: 管理和监视工作负荷重要性
-description: 了解如何在 Azure 突触分析中管理和监视请求级别重要性。
+description: 了解如何在 Azure Synapse 分析中管理和监视请求级别的重要性。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,15 +12,15 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 3efd8a776542616a9ceefba331b06406540905a8
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633324"
 ---
-# <a name="manage-and-monitor-workload-importance-in-azure-synapse-analytics"></a>管理和监视 Azure 突触分析中的工作负载重要性
+# <a name="manage-and-monitor-workload-importance-in-azure-synapse-analytics"></a>在 Azure Synapse 分析中管理和监视工作负荷重要性
 
-使用 DMV 和目录视图管理和监视 Azure Synapse SQL 请求级别重要性。
+使用 Dmv 和目录视图管理和监视 Azure Synapse 中的 Synapse SQL 请求级别重要性。
 
 ## <a name="monitor-importance"></a>监视重要性
 
@@ -39,7 +39,7 @@ ORDER BY r.start_time
 
 ## <a name="manage-importance-with-catalog-views"></a>使用目录视图管理重要性
 
-sys.workload_management_workload_classifiers目录视图包含有关分类器的信息。 若要排除映射到资源类的系统定义的分类器，请执行以下代码：
+Sys. workload_management_workload_classifiers 目录视图包含有关分类器的信息。 若要排除映射到资源类的系统定义的分类器，请执行以下代码：
 
 ```sql
 SELECT *

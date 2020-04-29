@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/24/2020
 ms.openlocfilehash: dd79618b8d9f016c92166edb9ecdb0bfb113947e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76768950"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>通过 Azure 门户创建和管理 Azure Database for PostgreSQL（单一服务器）中的只读副本
@@ -18,7 +18,7 @@ ms.locfileid: "76768950"
 本文介绍如何使用 Azure 门户在 Azure Database for PostgreSQL 中创建和管理只读副本。 若要详细了解只读副本，请参阅[概述](concepts-read-replicas.md)。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 用作主服务器的 [Azure Database for PostgreSQL 服务器](quickstart-create-server-database-portal.md)。
 
 ## <a name="prepare-the-master-server"></a>准备主服务器
@@ -119,7 +119,7 @@ ms.locfileid: "76768950"
 
 1. 在 Azure 门户中，选择 Azure Database for PostgreSQL 主服务器。
 
-2. 此时会打开该服务器的“概述”页。**** 选择 **"删除**"。
+2. 此时会打开该服务器的“概述”页。**** 选择“删除”。 
 
    ![在服务器的“概述”页上，选择删除主服务器](./media/howto-read-replicas-portal/delete-server.png)
  
@@ -131,7 +131,7 @@ ms.locfileid: "76768950"
 ## <a name="delete-a-replica"></a>删除副本
 可以像删除主服务器一样删除只读副本。
 
-- 在 Azure 门户中，打开只读副本的“概述”页。**** 选择 **"删除**"。
+- 在 Azure 门户中，打开只读副本的“概述”页。**** 选择“删除”。 
 
    ![在副本的“概述”页上，选择删除该副本](./media/howto-read-replicas-portal/delete-replica.png)
  
@@ -145,7 +145,7 @@ ms.locfileid: "76768950"
 
    ![选择要删除的副本](./media/howto-read-replicas-portal/select-replica.png)
  
-4. 选择 **"删除副本**"。
+4. 选择 "**删除副本**"。
 
    ![选择“删除副本”](./media/howto-read-replicas-portal/select-delete-replica.png)
  
@@ -162,7 +162,7 @@ ms.locfileid: "76768950"
 
 1.  在 Azure 门户中，选择 Azure Database for PostgreSQL 主服务器。
 
-2.  选择“指标”****。 在 **"指标"** 窗口中，选择**跨副本的"最大延迟**"。
+2.  选择“指标”****。 在 "**指标**" 窗口中，选择**跨副本的最大延迟**。
 
     ![监视副本的最大滞后时间](./media/howto-read-replicas-portal/select-max-lag.png)
  
@@ -174,7 +174,7 @@ ms.locfileid: "76768950"
 
 1. 在 Azure 门户中，选择 Azure Database for PostgreSQL 只读副本。
 
-2. 选择“指标”****。 在 **"指标"** 窗口中，选择 **"副本延迟**"。
+2. 选择“指标”****。 在 "**指标**" 窗口中，选择 "**副本滞后**时间"。
 
    ![监视副本滞后时间](./media/howto-read-replicas-portal/select-replica-lag.png)
  

@@ -1,6 +1,6 @@
 ---
-title: 教程：使用 Azure 函数管理计算
-description: 如何使用 Azure 函数在 Azure 同步分析中管理 SQL 池的计算。
+title: 教程：管理具有 Azure Functions 的计算
+description: 如何使用 Azure 函数在 Azure Synapse Analytics 中管理 SQL 池的计算。
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -12,24 +12,24 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: aa2cff552b49bceeaf6fd46510bf78384f0e7bfb
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80631965"
 ---
-# <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>使用 Azure 函数管理 Azure 突触分析 SQL 池中的计算资源
+# <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>使用 Azure Functions 管理 Azure Synapse Analytics SQL 池中的计算资源
 
-本教程使用 Azure 函数管理 Azure 突触分析中 SQL 池的计算资源。
+本教程使用 Azure Functions 在 Azure Synapse Analytics 中管理 SQL 池的计算资源。
 
-为了将 Azure 函数应用与 SQL 池一起使用，您必须创建一个[服务主体帐户](../../active-directory/develop/howto-create-service-principal-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)，该帐户在与 SQL 池实例相同的订阅下具有参与者访问权限。
+若要将 Azure Function App 与 SQL 池一起使用，必须创建一个[服务主体帐户](../../active-directory/develop/howto-create-service-principal-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)，该帐户具有与 sql 池实例相同的订阅中的参与者访问权限。
 
 ## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板部署基于计时器的缩放
 
 若要部署该模板，需提供以下信息：
 
-- SQL 池实例中的资源组的名称
-- SQL 池实例的逻辑服务器的名称
+- SQL 池实例所在的资源组的名称
+- SQL 池实例所在的逻辑服务器的名称
 - SQL 池实例的名称
 - Azure Active Directory 的租户 ID（目录 ID）
 - 订阅 ID
@@ -66,7 +66,7 @@ ms.locfileid: "80631965"
    {second} {minute} {hour} {day} {month} {day-of-week}
    ```
 
-   例如 *，"0 30 9 + = 1-5"* 将反映每个工作日上午 9：30 的触发器。 有关详细信息，请访问 Azure Functions [计划示例](../../azure-functions/functions-bindings-timer.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#example)。
+   例如， *"0 30 9 * * 1-5"* 将在每个工作日的9：上午9:30 反映一个触发器。 有关详细信息，请访问 Azure Functions [计划示例](../../azure-functions/functions-bindings-timer.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#example)。
 
 ## <a name="change-the-time-of-the-scale-operation"></a>更改缩放操作的时间
 
@@ -97,7 +97,7 @@ ms.locfileid: "80631965"
 
 目前，模板中只包括两个缩放函数。 使用这些函数，在一天中只能纵向缩减和纵向扩展各一次。 若要进行更精细的控制，例如每天纵向缩减多次，或者在周末表现出不同的缩放行为，则需添加另一触发器。
 
-1. 创建新的空白函数。 选择*+*"功能"位置附近的按钮以显示功能模板窗格。
+1. 创建新的空白函数。 选择函数*+* 位置附近的按钮以显示函数模板窗格。
 
    ![创建新的函数](./media/manage-compute-with-azure-functions/create-new-function.png)
 

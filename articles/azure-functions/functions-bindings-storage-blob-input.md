@@ -1,22 +1,22 @@
 ---
-title: Azure Blob 存储输入绑定用于 Azure 函数
-description: 了解如何向 Azure 函数提供 Azure Blob 存储数据。
+title: Azure Functions 的 Azure Blob 存储输入绑定
+description: 了解如何向 Azure Functions 提供 Azure Blob 存储数据。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.openlocfilehash: 33db9a8d86e02db2076cdb85170d466697930b96
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633880"
 ---
-# <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Azure Blob 存储输入绑定用于 Azure 函数
+# <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Azure Functions 的 Azure Blob 存储输入绑定
 
-输入绑定允许您读取 Blob 存储数据作为 Azure 函数的输入。
+通过输入绑定，可读取 blob 存储数据作为 Azure Functions 的输入。
 
-有关设置和配置详细信息的信息，请参阅[概述](./functions-bindings-storage-blob.md)。
+若要了解设置和配置详细信息，请参阅[概述](./functions-bindings-storage-blob.md)。
 
 ## <a name="example"></a>示例
 
@@ -39,7 +39,7 @@ public static void Run(
 
 <!--Same example for input and output. -->
 
-以下示例演示 function.json** 文件中的 blob 输入和输出绑定，以及使用这些绑定的 [C# 脚本 (.csx)](functions-reference-csharp.md) 代码。 此函数创建文本 blob 的副本。 该函数由包含要复制的 Blob 名称的队列消息触发。 新的 blob 名为 *[原始 blobname] -复制*。
+以下示例演示 function.json  文件中的 blob 输入和输出绑定，以及使用这些绑定的 [C# 脚本 (.csx)](functions-reference-csharp.md) 代码。 此函数创建文本 blob 的副本。 该函数由包含要复制的 Blob 名称的队列消息触发。 新 Blob 名为 *{originalblobname}-Copy*。
 
 在 *function.json* 文件中，`queueTrigger` 元数据属性用于指定 `path` 属性中的 Blob 名称：
 
@@ -88,7 +88,7 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 
 <!--Same example for input and output. -->
 
-下面的示例展示了 function.json** 文件中的 blob 输入和输出绑定，以及使用这些绑定的 [JavaScript 代码](functions-reference-node.md)。 该函数创建 Blob 的副本。 该函数由包含要复制的 Blob 名称的队列消息触发。 新的 blob 名为 *[原始 blobname] -复制*。
+下面的示例展示了 function.json  文件中的 blob 输入和输出绑定，以及使用这些绑定的 [JavaScript 代码](functions-reference-node.md)。 该函数创建 Blob 的副本。 该函数由包含要复制的 Blob 名称的队列消息触发。 新 Blob 名为 *{originalblobname}-Copy*。
 
 在 *function.json* 文件中，`queueTrigger` 元数据属性用于指定 `path` 属性中的 Blob 名称：
 
@@ -137,7 +137,7 @@ module.exports = function(context) {
 
 <!--Same example for input and output. -->
 
-下面的示例展示了 *function.json* 文件中的 blob 输入和输出绑定，以及使用这些绑定的 [Python 代码](functions-reference-python.md)。 该函数创建 Blob 的副本。 该函数由包含要复制的 Blob 名称的队列消息触发。 新的 blob 名为 *[原始 blobname] -复制*。
+下面的示例展示了 *function.json* 文件中的 blob 输入和输出绑定，以及使用这些绑定的 [Python 代码](functions-reference-python.md)。 该函数创建 Blob 的副本。 该函数由包含要复制的 Blob 名称的队列消息触发。 新 blob 名为 *{originalblobname}-Copy*。
 
 在 *function.json* 文件中，`queueTrigger` 元数据属性用于指定 `path` 属性中的 Blob 名称：
 
@@ -277,9 +277,9 @@ public static void Run(
 }
 ```
 
-可以使用 `StorageAccount` 特性在类、方法或参数级别指定存储帐户。 有关详细信息，请参阅[触发器属性和注释](./functions-bindings-storage-blob-trigger.md#attributes-and-annotations)。
+可以使用 `StorageAccount` 特性在类、方法或参数级别指定存储帐户。 有关详细信息，请参阅[触发器-特性和批注](./functions-bindings-storage-blob-trigger.md#attributes-and-annotations)。
 
-# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
 
 C# 脚本不支持特性。
 
@@ -289,7 +289,7 @@ JavaScript 不支持特性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python 不支持属性。
+Python 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -299,16 +299,16 @@ Python 不支持属性。
 
 ## <a name="configuration"></a>配置
 
-下表介绍了您在*函数.json*文件和`Blob`属性中设置的绑定配置属性。
+下表说明了在*函数 json*文件和`Blob`属性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type** | 不适用 | 必须设置为 `blob`。 |
-|direction**** | 不适用 | 必须设置为 `in`。 [用法](#usage)部分中已阐述异常。 |
-|**name** | 不适用 | 表示函数代码中的 Blob 的变量的名称。|
+|type  | n/a | 必须设置为 `blob`。 |
+|**方向键** | n/a | 必须设置为 `in`。 [用法](#usage)部分中已阐述异常。 |
+|**name** | n/a | 表示函数代码中的 Blob 的变量的名称。|
 |**path** |**BlobPath** | Blob 的路径。 |
-|**连接** |**连接**| 包含要用于此绑定的[存储连接字符串](../storage/common/storage-configure-connection-string.md)的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果设置为`connection`"我的存储"，函数运行时将查找名为"AzureWebJobsMyStorage"的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[仅限 Blob 的存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
-|不适用 | **访问** | 表示是要读取还是写入。 |
+|**connection** |**连接**| 应用设置的名称，其中包含要用于此绑定的[存储连接字符串](../storage/common/storage-configure-connection-string.md)。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将设置`connection`为 "MyStorage"，函数运行时将查找名为 "AzureWebJobsMyStorage" 的应用程序设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[仅限 Blob 的存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
+|n/a | **访问** | 表示是要读取还是写入。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -318,7 +318,7 @@ Python 不支持属性。
 
 [!INCLUDE [functions-bindings-blob-storage-input-usage.md](../../includes/functions-bindings-blob-storage-input-usage.md)]
 
-# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
 
 [!INCLUDE [functions-bindings-blob-storage-input-usage.md](../../includes/functions-bindings-blob-storage-input-usage.md)]
 
@@ -328,7 +328,7 @@ Python 不支持属性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-通过键入为[InputStream](https://docs.microsoft.com/python/api/azure-functions/azure.functions.inputstream?view=azure-python)的参数访问 blob 数据。 有关详细信息，请参阅[输入示例](#example)。
+通过类型为[InputStream](https://docs.microsoft.com/python/api/azure-functions/azure.functions.inputstream?view=azure-python)的参数访问 blob 数据。 有关详细信息，请参阅[输入示例](#example)。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -338,5 +338,5 @@ Python 不支持属性。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Blob 存储数据更改时运行函数](./functions-bindings-storage-blob-trigger.md)
-- [从函数写入 blob 存储数据](./functions-bindings-storage-blob-output.md)
+- [在 blob 存储数据更改时运行函数](./functions-bindings-storage-blob-trigger.md)
+- [从函数中写入 blob 存储数据](./functions-bindings-storage-blob-output.md)

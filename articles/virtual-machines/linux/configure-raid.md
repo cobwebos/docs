@@ -8,10 +8,10 @@ ms.date: 02/02/2017
 ms.author: rclaus
 ms.subservice: disks
 ms.openlocfilehash: 122abda51b907491b322908c3c2c689bc1723e87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79250252"
 ---
 # <a name="configure-software-raid-on-linux"></a>在 Linux 上配置软件 RAID
@@ -21,7 +21,7 @@ ms.locfileid: "79250252"
 配置 RAID 设备需要两个或更多的空数据磁盘。  创建 RAID 设备的主要原因是提高磁盘 IO 的性能。  根据 IO 需求，可以选择附加存储在标准存储且一个磁盘最多具有 500 IO/ps 的磁盘，或高级存储且一个磁盘最多具有 5000 IO/ps 的磁盘。 本文不详细介绍如何为 Linux 虚拟机预配和附加数据磁盘。  请参阅 Microsoft Azure 文章[附加磁盘](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，详细了解如何在 Azure 上为 Linux 虚拟机附加空数据磁盘。
 
 > [!IMPORTANT]
->不要混合不同大小的磁盘，这样做将导致 raidset 的性能限制为最慢的磁盘的性能。 
+>不要混合使用不同大小的磁盘，这样做会导致 raidset 的性能限制在最慢的磁盘上。 
 
 ## <a name="install-the-mdadm-utility"></a>安装 mdadm 实用程序
 * **Ubuntu**

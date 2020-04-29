@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/12/2020
 tags: connectors
 ms.openlocfilehash: 1885d7f8713b3801ce0c9846b7a8509b3864032a
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80656303"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>在 Azure 逻辑应用中接收和响应入站 HTTPS 请求
@@ -23,9 +23,9 @@ ms.locfileid: "80656303"
 * 接收并响应来自另一个逻辑应用的 HTTPS 调用。
 
 > [!NOTE]
-> 对于传入呼叫，请求触发器仅支持** 传输层安全 (TLS) 1.2。 传出呼叫继续支持 TLS 1.0、1.1 和 1.2。 有关详细信息，请参阅解决[TLS 1.0 问题](https://docs.microsoft.com/security/solving-tls1-problem)。
+> 对于传入呼叫，请求触发器仅支持  传输层安全 (TLS) 1.2。 传出呼叫继续支持 TLS 1.0、1.1 和 1.2。 有关详细信息，请参阅[解决 TLS 1.0 问题](https://docs.microsoft.com/security/solving-tls1-problem)。
 >
-> 如果您看到 TLS 握手错误，请确保使用 TLS 1.2。 对于传入呼叫，以下是支持的密码套件：
+> 如果看到 TLS 握手错误，请确保使用 TLS 1.2。 对于传入调用，以下是受支持的密码套件：
 >
 > * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 > * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
@@ -36,21 +36,21 @@ ms.locfileid: "80656303"
 > * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 > * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* 关于[逻辑应用](../logic-apps/logic-apps-overview.md)的基本知识。 如果不熟悉逻辑应用，请了解[如何创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+* 有关[逻辑应用](../logic-apps/logic-apps-overview.md)的基本知识。 如果不熟悉逻辑应用，请了解[如何创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 <a name="add-request"></a>
 
 ## <a name="add-request-trigger"></a>添加请求触发器
 
-此内置触发器创建可手动调用的 HTTPS 终结点，该终结点只能接收** 传入的 HTTPS 请求。 发生此事件时，该触发器将会激发，并运行逻辑应用。 有关此触发器的基础 JSON 定义以及如何调用此触发器的详细信息，请参阅[“请求”触发器类型](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)，以及[在 Azure 逻辑应用中使用 HTTP 终结点调用、触发或嵌套工作流](../logic-apps/logic-apps-http-endpoint.md)。
+此内置触发器创建可手动调用的 HTTPS 终结点，该终结点只能接收  传入的 HTTPS 请求。 发生此事件时，该触发器将会激发，并运行逻辑应用。 有关此触发器的基础 JSON 定义以及如何调用此触发器的详细信息，请参阅[“请求”触发器类型](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)，以及[在 Azure 逻辑应用中使用 HTTP 终结点调用、触发或嵌套工作流](../logic-apps/logic-apps-http-endpoint.md)。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 创建空白逻辑应用。
 
-1. 逻辑应用设计器打开后，在搜索框中输入“http 请求”作为筛选器。 在触发器列表中，选择“收到 HTTP 请求时”触发器（逻辑应用工作流中的第一个步骤）。****
+1. 逻辑应用设计器打开后，在搜索框中输入“http 请求”作为筛选器。 在触发器列表中，选择“收到 HTTP 请求时”触发器（逻辑应用工作流中的第一个步骤）。 
 
    ![选择请求触发器](./media/connectors-native-reqres/select-request-trigger.png)
 
@@ -60,11 +60,11 @@ ms.locfileid: "80656303"
 
    | 属性名称 | JSON 属性名称 | 必选 | 说明 |
    |---------------|--------------------|----------|-------------|
-   | **HTTP 发布 URL** | {无} | 是 | 保存逻辑应用后生成的终结点 URL，用于调用逻辑应用 |
+   | **HTTP POST URL** | {无} | 是 | 保存逻辑应用后生成的终结点 URL，用于调用逻辑应用 |
    | **请求正文 JSON 架构** | `schema` | 否 | 描述传入请求正文中的属性和值的 JSON 架构 |
    |||||
 
-1. 在“请求正文 JSON 架构”框中，有选择性地输入一个用于描述传入请求中的正文的 JSON 架构，例如：****
+1. 在“请求正文 JSON 架构”框中，有选择性地输入一个用于描述传入请求中的正文的 JSON 架构，例如： 
 
    ![示例 JSON 架构](./media/connectors-native-reqres/provide-json-schema.png)
 
@@ -128,11 +128,11 @@ ms.locfileid: "80656303"
 
    若要生成基于预期有效负载（数据）的 JSON 架构，可以使用 [JSONSchema.net](https://jsonschema.net) 之类的工具，也可以执行以下步骤：
 
-   1. 在请求触发器中，选择“使用示例有效负载生成架构”。****
+   1. 在请求触发器中，选择“使用示例有效负载生成架构”。 
 
       ![基于有效负载生成架构](./media/connectors-native-reqres/generate-from-sample-payload.png)
 
-   1. 输入示例有效负载，然后选择“完成”。****
+   1. 输入示例有效负载，然后选择“完成”。 
 
       ![基于有效负载生成架构](./media/connectors-native-reqres/enter-payload.png)
 
@@ -155,7 +155,7 @@ ms.locfileid: "80656303"
       }
       ```
 
-1. 若要添加其他属性，请打开“添加新参数”列表，并选择要添加的参数。****
+1. 若要添加其他属性，请打开“添加新参数”列表，并选择要添加的参数。 
 
    | 属性名称 | JSON 属性名称 | 必选 | 说明 |
    |---------------|--------------------|----------|-------------|
@@ -171,13 +171,13 @@ ms.locfileid: "80656303"
 
    ![选择方法](./media/connectors-native-reqres/select-method.png)
 
-1. 现在，添加另一个操作作为工作流中的下一步骤。 在触发器下，选择“下一步骤”，以便可以找到要添加的操作。****
+1. 现在，添加另一个操作作为工作流中的下一步骤。 在触发器下，选择“下一步骤”，以便可以找到要添加的操作。 
 
    例如，可以通过[添加“响应”操作](#add-response)（可用于返回自定义的响应，本主题稍后将做介绍）来响应请求。
 
    逻辑应用只会使传入的请求保持打开一分钟。 假设逻辑应用工作流包含“响应”操作，如果在这段时间后逻辑应用未返回响应，则逻辑应用会向调用方返回 `504 GATEWAY TIMEOUT`。 否则，如果逻辑应用不包含“响应”操作，则逻辑应用会立即向调用方返回 `202 ACCEPTED` 响应。
 
-1. 完成后，保存逻辑应用。 在设计器工具栏上，选择“保存”****。 
+1. 完成后，保存逻辑应用。 在设计器工具栏上，选择“保存”  。 
 
    此步骤生成一个 URL，用于发送触发逻辑应用的请求。 若要复制此 URL，请选择 URL 旁边的复制图标。
 
@@ -204,17 +204,17 @@ ms.locfileid: "80656303"
 逻辑应用只会使传入的请求保持打开一分钟。 假设逻辑应用工作流包含“响应”操作，如果在这段时间后逻辑应用未返回响应，则逻辑应用会向调用方返回 `504 GATEWAY TIMEOUT`。 否则，如果逻辑应用不包含“响应”操作，则逻辑应用会立即向调用方返回 `202 ACCEPTED` 响应。
 
 > [!IMPORTANT]
-> 如果响应操作包含这些标头，逻辑应用将从生成的响应消息中删除这些标头，而不会显示任何警告或错误：
+> 如果响应操作包含这些标头，则逻辑应用会从生成的响应消息中删除这些标头，而不会显示任何警告或错误：
 >
 > * `Allow`
-> * `Content-*`除这些例外情况外： `Content-Disposition``Content-Encoding`和`Content-Type`
+> * `Content-*`但有以下例外`Content-Disposition`： `Content-Encoding`、和`Content-Type`
 > * `Cookie`
 > * `Expires`
 > * `Last-Modified`
 > * `Set-Cookie`
 > * `Transfer-Encoding`
 >
-> 尽管逻辑应用不会阻止您保存具有这些标头的响应操作的逻辑应用，但逻辑应用会忽略这些标头。
+> 尽管逻辑应用不会阻止你保存具有这些标头的响应操作的逻辑应用，但逻辑应用会忽略这些标头。
 
 1. 在逻辑应用设计器中要添加“响应”操作的步骤下，选择“新建步骤”****。
 
@@ -222,7 +222,7 @@ ms.locfileid: "80656303"
 
    ![添加新步骤](./media/connectors-native-reqres/add-response.png)
 
-   若要在步骤之间添加操作，请将鼠标指针移到这些步骤之间的箭头上。 选择显示的加号**+**（），然后选择 **"添加操作**"。
+   若要在步骤之间添加操作，请将鼠标指针移到这些步骤之间的箭头上。 选择出现的加号（**+**），然后选择 "**添加操作**"。
 
 1. 在“选择操作”**** 下的搜索框中，输入“响应”作为筛选器，然后选择“响应”操作。****
 
@@ -247,8 +247,8 @@ ms.locfileid: "80656303"
    | 属性名称 | JSON 属性名称 | 必选 | 说明 |
    |---------------|--------------------|----------|-------------|
    | **状态代码** | `statusCode` | 是 | 要在响应中返回的状态代码 |
-   | **头** | `headers` | 否 | 一个 JSON 对象，描述要包含在响应中的一个或多个标头 |
-   | **正文** | `body` | 否 | 响应正文 |
+   | **标头** | `headers` | 否 | 一个 JSON 对象，描述要包含在响应中的一个或多个标头 |
+   | **大量** | `body` | 否 | 响应正文 |
    |||||
 
 1. 若要添加其他属性，例如响应正文的 JSON 架构，请打开“添加新参数”列表，并选择要添加的参数。****

@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.openlocfilehash: b10ac3b4bc9dacd723b8b1265911df721b781189
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76774806"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>通过 Azure CLI、REST API 创建和管理只读副本
@@ -52,7 +52,7 @@ ms.locfileid: "76774806"
 
 [az postgres server replica create](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-create) 命令需要以下参数：
 
-| 设置 | 示例值 | 描述  |
+| 设置 | 示例值 | 说明  |
 | --- | --- | --- |
 | resource-group | myresourcegroup |  要在其中创建副本服务器的资源组。  |
 | name | mydemoserver-replica | 所创建的新副本服务器的名称。 |

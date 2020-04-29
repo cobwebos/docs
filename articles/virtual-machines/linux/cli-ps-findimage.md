@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: cynthn
 ms.openlocfilehash: 0026c70a3a1a6b5e635e6b43e74b557d4218e6d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79250304"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>使用 Azure CLI 在 Azure 市场中查找 Linux VM 映像
@@ -31,7 +31,7 @@ ms.locfileid: "79250304"
 az vm image list --output table
 ```
 
-输出包括映像 URN（Urn 列中的值）**。 使用其中一个常用市场映像创建 VM 时，可选择指定 *UrnAlias*（一种简短格式，如 *UbuntuLTS*）。
+输出包括映像 URN（Urn 列中的值）  。 使用其中一个常用市场映像创建 VM 时，可选择指定 *UrnAlias*（一种简短格式，如 *UbuntuLTS*）。
 
 ```
 You are viewing an offline list of images, use --all to retrieve an up-to-date list
@@ -98,7 +98,7 @@ Debian             credativ     8                    credativ:Debian:8:8.0.20190
 ...
 ```
 
-通过 `--location`、`--publisher` 和 `--sku` 选项应用类似的筛选器。 可以在筛选器上执行部分匹配，如搜索 `--offer Deb` 可查找所有 Debian 映像。
+通过 `--location`、`--publisher` 和 `--sku` 选项应用类似的筛选器。 可以在筛选器上执行部分匹配，如搜索 `--offer Deb` 以查找所有 Debian 映像。
 
 如果没有使用 `--location` 选项指定一个特定位置，则将返回默认位置的值。 （通过运行 `az configure --defaults location=<location>` 设置不同默认位置。）
 
@@ -234,7 +234,7 @@ westus      18.10-DAILY
 westus      19.04-DAILY
 ```
 
-最后，使用 `az vm image list` 命令查找所需的特定版本的 SKU，例如，18.04-LTS**：
+最后，使用 `az vm image list` 命令查找所需的特定版本的 SKU，例如，18.04-LTS  ：
 
 ```azurecli
 az vm image list --location westus --publisher Canonical --offer UbuntuServer --sku 18.04-LTS --all --output table
@@ -300,7 +300,7 @@ az vm image show --location westus --urn Canonical:UbuntuServer:18.04-LTS:latest
 }
 ```
 
-对 Bitnami 映像认证的 RabbitMQ 运行类似的命令显示以下 `plan` 属性：`name`、`product` 和 `publisher`。 （某些图像也有属性`promotion code`。要部署此映像，请参阅以下部分以接受术语并启用编程部署。
+对 Bitnami 映像认证的 RabbitMQ 运行类似的命令显示以下 `plan` 属性：`name`、`product` 和 `publisher`。 （某些映像还具有`promotion code`属性。）若要部署此映像，请参阅以下部分以接受条款并启用编程部署。
 
 ```azurecli
 az vm image show --location westus --urn bitnami:rabbitmq:rabbitmq:latest

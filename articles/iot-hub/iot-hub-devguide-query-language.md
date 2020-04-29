@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
 ms.openlocfilehash: bcc53322ac6942b52853be561bc3441e23fbf53b
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80632933"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>用于设备和模块孪生、作业和消息路由的 IoT 中心查询语言
 
-IoT 中心提供了一种强大的类似 SQL 的语言来检索有关[设备孪生](iot-hub-devguide-device-twins.md)、[模块孪生](iot-hub-devguide-module-twins.md)、[作业](iot-hub-devguide-jobs.md)和[消息路由](iot-hub-devguide-messages-d2c.md)的信息。 本文内容：
+IoT 中心提供类似于 SQL 的强大语言，用于检索有关[设备孪生](iot-hub-devguide-device-twins.md)、[模块孪生](iot-hub-devguide-module-twins.md)、[作业](iot-hub-devguide-jobs.md)和[消息路由](iot-hub-devguide-messages-d2c.md)的信息。 本文内容：
 
 * IoT 中心查询语言的主要功能简介，以及
 * 语言的详细说明。 有关用于消息路由的查询语言的详细信息，请参阅[消息路由中的查询](../iot-hub/iot-hub-devguide-routing-query-syntax.md)。
@@ -25,7 +25,7 @@ IoT 中心提供了一种强大的类似 SQL 的语言来检索有关[设备孪�
 
 ## <a name="device-and-module-twin-queries"></a>设备和模块孪生查询
 
-[设备孪生](iot-hub-devguide-device-twins.md)和[模块孪生](iot-hub-devguide-module-twins.md)可以包含任意的 JSON 对象作为标记和属性。 通过 IoT 中心，可将设备孪生和模块孪生作为包含所有孪生信息的单个 JSON 文档进行查询。
+[设备孪生](iot-hub-devguide-device-twins.md)和[模块孪生](iot-hub-devguide-module-twins.md)可以包含标记和属性形式的任意 JSON 对象。 通过 IoT 中心，可将设备孪生和模块孪生作为包含所有孪生信息的单个 JSON 文档进行查询。
 
 例如，假定 IoT 中心设备孪生具有以下结构（模块孪生将与之类似，只是具有附加的 moduleId）：
 
@@ -88,7 +88,7 @@ SELECT * FROM devices
 ```
 
 > [!NOTE]
-> [Azure IoT SDK](iot-hub-devguide-sdks.md) 支持将大型结果分页：
+> [Azure IoT SDK](iot-hub-devguide-sdks.md) 支持将大型结果分页。
 
 IoT 中心允许使用任意条件检索设备孪生筛选结果。 例如，若要接收 **location.region** 标记设置为 **US** 的设备孪生，请使用以下查询：
 
@@ -112,7 +112,7 @@ SELECT * FROM devices
   WHERE properties.reported.connectivity IN ['wired', 'wifi']
 ```
 
-通常需要它才能识别包含特定属性的所有设备孪生。 为此，IoT 中心支持函数 `is_defined()`。 例如，若要检索定义了 `connectivity` 属性的设备孪生，请使用以下查询：
+通常需要它才能识别包含特定属性的所有设备孪生。 为此，IoT 中心支持函数 `is_defined()` 。 例如，若要检索定义了 `connectivity` 属性的设备孪生，请使用以下查询：
 
 ```SQL
 SELECT * FROM devices
@@ -181,7 +181,7 @@ SELECT * FROM devices.modules
 
 ### <a name="c-example"></a>C# 示例
 
-查询功能由 [C# 服务 SDK](iot-hub-devguide-sdks.md) 在 **RegistryManager** 类中公开。
+查询功能由 [C# 服务 SDK](iot-hub-devguide-sdks.md) 在 RegistryManager 类中公开  。
 
 下面是一个简单的查询示例：
 
@@ -197,13 +197,13 @@ while (query.HasMoreResults)
 }
 ```
 
-“查询”对象实例化为页面大小（最大为 100）****。 然后通过多次调用 GetNextAsTwinAsync 方法来检索多个页面****。
+“查询”对象实例化为页面大小（最大为 100）  。 然后通过多次调用 GetNextAsTwinAsync 方法来检索多个页面  。
 
-查询对象公开多个“下一步”值，具体取决于该查询所需的反序列化选项****。 例如，设备孪生或作业对象，或使用投影时的普通 JSON。
+查询对象公开多个“下一步”值，具体取决于该查询所需的反序列化选项  。 例如，设备孪生或作业对象，或使用投影时的普通 JSON。
 
 ### <a name="nodejs-example"></a>Node.js 示例
 
-查询功能由[适用于 Node.js 的 Azure IoT 服务 SDK](iot-hub-devguide-sdks.md) 在 **Registry** 对象中公开。
+查询功能由[适用于 Node.js 的 Azure IoT 服务 SDK](iot-hub-devguide-sdks.md) 在 Registry 对象中公开  。
 
 下面是一个简单的查询示例：
 
@@ -226,14 +226,14 @@ var onResults = function(err, results) {
 query.nextAsTwin(onResults);
 ```
 
-“查询”对象实例化为页面大小（最大为 100）****。 然后通过多次调用 nextAsTwin 方法来检索多个页面****。
+“查询”对象实例化为页面大小（最大为 100）  。 然后通过多次调用 nextAsTwin 方法来检索多个页面  。
 
-查询对象公开多个“下一步”值，具体取决于该查询所需的反序列化选项****。 例如，设备孪生或作业对象，或使用投影时的普通 JSON。
+查询对象公开多个“下一步”值，具体取决于该查询所需的反序列化选项  。 例如，设备孪生或作业对象，或使用投影时的普通 JSON。
 
 ### <a name="limitations"></a>限制
 
 > [!IMPORTANT]
-> 关于设备孪生中的最新值，查询结果可能有几分钟的延迟。 如果按 ID 查询单个设备孪生，请使用[获取孪生 REST API](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin)。 此 API 始终返回最新值，并且具有更高的限制限制。 可以直接发出 REST API，也可以在[Azure IoT 中心服务 SDK](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks)中使用等效功能。
+> 关于设备孪生中的最新值，查询结果可能有几分钟的延迟。 如果按 ID 查询单个设备孪生，请使用[get 双子 REST API](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin)。 此 API 始终返回最新值，并具有更高的限制。 可以直接发出 REST API 或在[Azure IoT 中心服务 sdk](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks)之一中使用等效的功能。
 
 目前，仅支持在基元类型（无对象）之间进行比较，例如，仅在这些属性具有基元值时才支持 `... WHERE properties.desired.config = properties.reported.config`。
 
@@ -326,7 +326,7 @@ SELECT <select_list>
 
 ## <a name="from-clause"></a>FROM 子句
 
-**FROM <from_specification>** 子句只能假定三个值：**从设备**来查询设备孪生 **，FROM 设备.模块**查询模块孪生，或**FROM devices.jobs**查询作业每个设备的详细信息。
+**From <from_specification>** 子句只能假设三个值：**从**设备到查询设备孪生、**从**设备到查询模块孪生，或**从 devices.jobs**到查询作业的每设备详细信息。
 
 ## <a name="where-clause"></a>WHERE 子句
 
@@ -440,14 +440,14 @@ GROUP BY <group_by_element>
 | binary_operator | [运算符](#operators)部分列出的任意二进制运算符。 |
 | function_name| [函数](#functions)部分列出的任一函数。 |
 | decimal_literal |以十进制表示法表示的浮点数。 |
-| hexadecimal_literal |由字符串"0x"表示的数字，后跟十六进制数字字符串。 |
+| hexadecimal_literal |由字符串 "0x" 后跟十六进制数字字符串表示的数字。 |
 | string_literal |字符串文本是以零个或多个 Unicode 字符序列或转义符序列表示的 Unicode 字符串。 字符串文本括在单引号或双引号中。 允许的转义符：`\'`、`\"`、`\\`、`\uXXXX`（由 4 个十六进制数字定义的 Unicode 字符）。 |
 
 ### <a name="operators"></a>运算符
 
 支持以下运算符：
 
-| 系列 | 运算符 |
+| 家庭 | 运算符 |
 | --- | --- |
 | 算术 |+, -, *, /, % |
 | 逻辑 |AND、OR、NOT |
@@ -481,7 +481,7 @@ GROUP BY <group_by_element>
 | AS_NUMBER | 将输入字符串转换为数字。 如果输入数字，则为 `noop`；如果字符串不表示数字，则为 `Undefined`。|
 | IS_ARRAY | 返回一个布尔值，指示指定表达式类型是否为数组。 |
 | IS_BOOL | 返回一个布尔值，指示指定表达式的类型是否为布尔表达式。 |
-| IS_DEFINED | 返回一个布尔，它指示属性是否已经分配了值。 仅当值是基元类型时，才支持此选项。 基元类型包括字符串、布尔、数字或`null`。 不支持日期时间、对象类型和数组。 |
+| IS_DEFINED | 返回一个布尔，它指示属性是否已经分配了值。 仅当该值为基元类型时才支持此值。 基元类型包括字符串、布尔值、数字或`null`。 DateTime、对象类型和数组不受支持。 |
 | IS_NULL | 返回一个布尔值，指示指定表达式的类型是否为 null。 |
 | IS_NUMBER | 返回一个布尔值，指示指定表达式的类型是否为数字。 |
 | IS_OBJECT | 返回一个布尔值，指示指定表达式的类型是否为 JSON 对象。 |

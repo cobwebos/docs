@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 02/12/2020
 ms.author: shvija
 ms.openlocfilehash: 0b20c73ed0590f3afc19db43b4b55dd3ff6bde8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79453864"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>使用模板通过事件中心创建一个命名空间并启用捕获
 
-本文演示如何使用 Azure 资源管理器模板创建[事件中心](event-hubs-what-is-event-hubs.md)命名空间（具有一个事件中心实例），并在事件中心启用["捕获"功能](event-hubs-capture-overview.md)。 本文介绍如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。
+本文介绍如何使用 Azure 资源管理器模板创建包含一个事件中心实例的[事件中心](event-hubs-what-is-event-hubs.md)命名空间，并在事件中心启用[捕获功能](event-hubs-capture-overview.md)。 本文介绍如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。
 
 本文还介绍如何根据所选目标，指定将事件捕获到 Azure 存储 Blob 或 Azure Data Lake Store 中。
 
@@ -235,7 +235,7 @@ ms.locfileid: "79453864"
 }
 ```
 
-如果选择 Azure 数据湖存储第 1 代作为目标，请使用以下参数。 必须在要捕获事件的 Data Lake Store 路径上设置权限。 要设置权限，请参阅[将数据捕获到 Azure 数据湖存储第 1 代](event-hubs-capture-enable-through-portal.md#capture-data-to-azure-data-lake-storage-gen-1)。
+如果选择 Azure Data Lake Store 第1代作为目标，请使用以下参数。 必须在要捕获事件的 Data Lake Store 路径上设置权限。 若要设置权限，请参阅将[数据捕获到 Azure Data Lake Storage 第1代](event-hubs-capture-enable-through-portal.md#capture-data-to-azure-data-lake-storage-gen-1)。
 
 ### <a name="subscriptionid"></a>subscriptionId
 
