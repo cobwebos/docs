@@ -9,11 +9,11 @@ ms.date: 01/16/2020
 ms.author: babanisa
 ms.custom: include file
 ms.openlocfilehash: cca628a54d9ac84fbb8a798168f72adbaa24aa48
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76844527"
 ---
 >[!NOTE]
-> 始终检查图像的版本，以确保它具有您需要的假象。 如果计算机上已拔下容器映像的早期版本，则需要指定所需的版本标记，或者删除现有映像，然后再使用`:latest`标记再次拉取。 有关图像版本和标记的更多，请参阅[发行说明](../articles/event-grid/edge/release-notes.md)。
+> 请始终检查映像的版本，确保其具有所需的 feautures。 如果已在计算机上安装了以前版本的容器映像，则需要指定所需的版本标记，或删除现有的映像，然后再使用`:latest`标记进行提取。 有关映像版本和标记的详细信息，请参阅[发行说明](../articles/event-grid/edge/release-notes.md)。

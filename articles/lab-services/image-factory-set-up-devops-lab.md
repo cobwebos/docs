@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 开发人员测试实验室中从 Azure DevOps 运行映像工厂
-description: 本文介绍从 Azure DevOps（以前的可视化工作室团队服务）运行映像工厂所需的所有准备工作。
+title: 从 azure 开发测试实验室中的 Azure DevOps 运行映像工厂
+description: 本文介绍了从 Azure DevOps （以前称为 Visual Studio Team Services）运行映像工厂所需的所有准备工作。
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -13,118 +13,118 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: bb67f765684c77ed5f8527226bef578e450579e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76758676"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>从 Azure DevOps 运行映像工厂
-本文介绍从 Azure DevOps（以前的可视化工作室团队服务）运行映像工厂所需的所有准备工作。
+本文介绍了从 Azure DevOps （以前称为 Visual Studio Team Services）运行映像工厂所需的所有准备工作。
 
 > [!NOTE]
-> 任何业务流程引擎都将工作！ Azure DevOps 不是强制性的。 映像工厂使用 Azure PowerShell 脚本运行，因此可以使用 Windows 任务计划程序、其他 CI/CD 系统等手动运行映像。
+> 所有业务流程引擎都适用！ Azure DevOps 不是必需的。 映像工厂使用 Azure PowerShell 脚本运行，因此它可以使用 Windows 任务计划程序、其他 CI/CD 系统等进行手动运行。
 
 ## <a name="create-a-lab-for-the-image-factory"></a>为映像工厂创建实验室
-设置映像工厂的第一步是在 Azure 开发人员测试实验室中创建实验室。 本实验室是映像工厂实验室，我们在此创建虚拟机并保存自定义映像。 本实验被视为整个图像工厂过程的一部分。 创建实验室后，请确保保存名称，因为稍后需要它。
+设置映像工厂的第一步是在 Azure 开发测试实验室中创建实验室。 此实验室是映像工厂实验室，我们在其中创建虚拟机并保存自定义映像。 此实验室被视为总体映像工厂过程的一部分。 创建实验室后，请确保保存该名称，因为稍后需要用到它。
 
 ## <a name="scripts-and-templates"></a>脚本和模板
-为您的团队采用映像工厂的下一步是了解可用的功能。 映像工厂脚本和模板在[开发人员测试实验室 GitHub 存储库中](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory)公开提供。 以下是部分的概述：
+采用你的团队的映像工厂的下一步是了解可用的内容。 映像工厂脚本和模板在[开发测试 Labs GitHub](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory)存储库中公开提供。 下面是部分的概述：
 
-- 图像工厂。 它是根文件夹。
+- 映像工厂。 它是根文件夹。
     - 配置。 映像工厂的输入
-        - 黄金图像。 此文件夹包含表示自定义图像定义的 JSON 文件。
-        - 实验室.json. 文件团队注册以接收特定的自定义映像。
-- 脚本。 映像工厂的发动机。
+        - GoldenImages. 此文件夹包含表示自定义映像定义的 JSON 文件。
+        - Labs。 团队注册以接收特定自定义映像的文件。
+- 稿本. 映像工厂的引擎。
 
-本节中的文章提供了有关这些脚本和模板的更多详细信息。
+本部分中的文章提供了有关这些脚本和模板的更多详细信息。
 
 ## <a name="create-an-azure-devops-team-project"></a>创建 Azure DevOps 团队项目
-Azure DevOps 允许您存储源代码，在一个位置运行 Azure PowerShell。 您可以安排定期运行，使映像保持最新。 记录结果以诊断任何问题有良好的功能。  但是，使用 Azure DevOps 不是一项要求，您可以使用任何可以连接到 Azure 并可以运行 Azure PowerShell 的线束/引擎。
+Azure DevOps 可让你存储源代码，在一个位置运行 Azure PowerShell。 您可以计划定期运行以使图像保持最新状态。 有很好的工具可用于记录结果以诊断任何问题。  不过，使用 Azure DevOps 不是一种要求，你可以使用任何可连接到 Azure 并可以运行 Azure PowerShell 的工具/引擎。
 
-如果您有要使用的现有 DevOps 帐户或项目，请跳过此步骤。
+如果要改为使用现有的 DevOps 帐户或项目，请跳过此步骤。
 
-要开始，请在 Azure DevOps 中创建一个免费帐户。 访问https://www.visualstudio.com/并选择**Azure DevOps（** 以前的 VSTS）下的**免费入门**。 您需要选择唯一的帐户名称，并确保选择使用 Git 管理代码。 创建此选项后，将 URL 保存到团队项目中。 下面是一个示例 URL： `https://<accountname>.visualstudio.com/MyFirstProject`。
+若要开始，请在 Azure DevOps 中创建一个免费帐户。 访问https://www.visualstudio.com/ **Azure DevOps** （以前称为 VSTS），并选择 "**免费开始**"。 需要选择唯一的帐户名称，并确保选择使用 Git 管理代码。 创建此后，将 URL 保存到团队项目。 下面是一个示例 URL： `https://<accountname>.visualstudio.com/MyFirstProject`。
 
-## <a name="check-in-the-image-factory-to-git"></a>签入映像工厂到 Git
-映像工厂的所有 PowerShell、模板和配置都位于[公共 DevTest Labs GitHub 存储库](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory)中。 将代码导入新团队项目的最快方法是导入存储库。 这将提取整个 DevTest Labs 存储库（因此您将获得额外的文档和示例）。
+## <a name="check-in-the-image-factory-to-git"></a>将映像工厂签入到 Git
+映像工厂的所有 PowerShell、模板和配置都位于[公共开发测试 Labs GitHub](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory)存储库中。 将代码引入新团队项目的最快方法是导入存储库。 这会纳入整个开发测试实验室存储库（因此，你将获得额外的文档和示例）。
 
-1. 访问您在上一步中创建的 Azure DevOps 项目（URL 看起来像**https：\//\<帐户名称>.visualstudio.com/MyFirstProject）。**
-2. 选择 **"导入存储库**"。
-3. 输入 DevTest 实验室回购的**克隆 URL：** `https://github.com/Azure/azure-devtestlab`。
-4. 选择“导入”****。
+1. 访问在上一步中创建的 Azure DevOps 项目（URL 如下所示 **>：\//\<visualstudio.com/MyFirstProject**）。
+2. 选择 "**导入存储库**"。
+3. 输入开发测试实验室存储库的**克隆 URL** ： `https://github.com/Azure/azure-devtestlab`。
+4. 选择“导入”  。
 
     ![导入 Git 存储库](./media/set-up-devops-lab/import-git-repo.png)
 
-如果您决定只签入所需的内容（映像工厂文件），请按照[此处](https://www.visualstudio.com/en-us/docs/git/share-your-code-in-git-vs)的步骤克隆 Git 存储库，并仅推送**脚本/ImageFactory**目录中的文件。
+如果你决定仅查看所需的内容（映像工厂文件），请按照[此处](https://www.visualstudio.com/en-us/docs/git/share-your-code-in-git-vs)的步骤克隆 Git 存储库并仅推送位于**scripts/ImageFactory**目录中的文件。
 
 ## <a name="create-a-build-and-connect-to-azure"></a>创建生成并连接到 Azure
-此时，在 Azure DevOps 中的 Git 存储库中存储源文件。 现在，您需要设置管道以运行 Azure PowerShell。 执行这些步骤有很多选项。 在本文中，使用生成定义是为了简单起见，但它适用于 DevOps 生成、DevOps 发布（单个或多个环境）、其他执行引擎（如 Windows 任务计划程序）或任何其他可以执行 Azure PowerShell 的工具。
+此时，你的源文件存储在 Azure DevOps 中的 Git 存储库中。 现在，需要设置管道以运行 Azure PowerShell。 有很多选项可用于执行这些步骤。 在本文中，将使用生成定义简化，但它适用于 DevOps Build、DevOps Release （单个或多个环境）、其他执行引擎（如 Windows 任务计划程序）或任何其他可执行 Azure PowerShell 的工具。
 
 > [!NOTE]
-> 要记住的一个要点是，当要创建大量 （10+） 自定义映像时，某些 PowerShell 文件需要很长时间才能运行。 免费托管 DevOps 生成/发布代理的超时为 30 分钟，因此，一旦开始构建许多映像，您就无法使用免费托管代理。 此超时挑战适用于您决定使用的任何工具，最好预先验证是否可以延长长时间运行 Azure PowerShell 脚本的典型超时。 在 Azure DevOps 中，可以使用付费托管代理或使用自己的生成代理。
+> 需要注意的一个重要一点是，如果要创建很多（10 +）个自定义映像，则某些 PowerShell 文件需要较长时间才能运行。 免费托管的 DevOps 生成/发布代理的超时时间为30分钟，因此在开始构建多个映像后，不能使用免费的托管代理。 此超时质询适用于你决定使用的任何工具，最好先验证是否可以扩展长时间运行 Azure PowerShell 脚本的典型超时。 对于 Azure DevOps，可以使用付费托管代理，也可以使用自己的生成代理。
 
-1. 要启动，请选择在 DevOps 项目的主页上**设置"生成**"：
+1. 若要开始，请选择 DevOps 项目主页上的 "**设置生成**"：
 
-    ![设置生成按钮](./media/set-up-devops-lab/setup-build-button.png)
-2. 指定生成**的名称**（例如：生成映像并将图像传递到 DevTest 实验室）。
-3. 选择**空**生成定义，然后选择 **"应用"** 以创建生成。
-4. 在此阶段，您可以选择生成代理的 **"托管**"。
+    !["设置生成" 按钮](./media/set-up-devops-lab/setup-build-button.png)
+2. 指定生成的**名称**（例如：生成映像并将其传送到开发测试实验室）。
+3. 选择一个**空**的生成定义，然后选择 "**应用**" 创建生成。
+4. 在此阶段，你可以选择 "为生成代理**托管**"。
 5. **保存**生成定义。
 
     ![生成定义](./media/set-up-devops-lab/build-definition.png)
 
 ## <a name="configure-the-build-variables"></a>配置生成变量
-要简化命令行参数，封装将映像工厂驱动到一组生成变量的键值。 选择 **"变量"** 选项卡，您将看到多个默认变量的列表。 下面是要输入到 Azure DevOps 的变量列表：
+若要简化命令行参数，请将用于驱动映像工厂的密钥值封装到一组生成变量中。 选择 "**变量**" 选项卡，您将看到多个默认变量的列表。 下面是要在 Azure DevOps 中输入的变量的列表：
 
 
-| 变量名 | “值” | 说明 |
+| 变量名 | 值 | 注意 |
 | ------------- | ----- | ----- |
-| 配置位置 | /脚本/映像工厂/配置 | 这是存储库中到 **"配置"** 文件夹的完整路径。 如果上述导入了整个回购，则左侧的值是正确的。 否则更新以指向"配置"位置。 |
-| 开发测试实验室名称 | 我的图像工厂 | Azure 开发人员测试实验室中实验室的名称用作生成映像的工厂。 如果没有，请创建一个。 确保实验室与服务终结点有权访问的订阅相同。 |
-| 图像保留 | 1 | 要保存每种类型的图像数。 将默认值设置为 1。 |
-| MachinePassword | ******* | 虚拟机的内置管理员帐户密码。 这是一个瞬态帐户，因此请确保它是安全的。 选择右侧的小锁图标，以确保它是一个安全的字符串。 |
-| 机器用户名 | 图像工厂用户 | 虚拟机的内置管理员帐户用户名。 这是一个瞬态帐户。 |
-| 标准超时分钟数 | 30 | 超时，我们应该等待常规的 Azure 操作。 |
-| SubscriptionId |  0000000000-0000-0000-0000-0000000000000 | 实验室存在且服务终结点有权访问的订阅的 ID。 |
-| VMSize | Standard_A3 | 要用于**创建**步骤的虚拟机的大小。 创建的 VM 是瞬态的。 大小必须是[为实验室启用的](devtest-lab-set-lab-policy.md)。 确认有足够的[订阅核心配额](../azure-resource-manager/management/azure-subscription-service-limits.md)。
+| ConfigurationLocation | /Scripts/ImageFactory/Configuration | 这是存储库中指向**配置**文件夹的完整路径。 如果导入了上面的整个存储库，左侧的值是正确的。 否则，将更新为指向配置位置。 |
+| DevTestLabName | MyImageFactory | Azure 开发测试实验室中的实验室名称，用作生成映像的工厂。 如果没有，请创建一个。 确保实验室与服务终结点有权访问的订阅相同。 |
+| ImageRetention | 1 | 要保存的每种类型的映像数。 将默认值设置为1。 |
+| MachinePassword | ******* | 虚拟机的内置管理员帐户密码。 这是暂时性的帐户，因此请确保它是安全的。 选择右侧的 "小锁定" 图标以确保它是安全字符串。 |
+| MachineUserName | ImageFactoryUser | 虚拟机的内置管理员帐户用户名。 这是一个暂时性的帐户。 |
+| StandardTimeoutMinutes | 30 | 等待常规 Azure 操作的超时时间。 |
+| SubscriptionId |  0000000000-0000-0000-0000-0000000000000 | 实验室存在并且服务终结点有权访问的订阅的 ID。 |
+| VMSize | Standard_A3 | 用于**创建**步骤的虚拟机的大小。 创建的 Vm 是暂时性的。 该大小必须是[为实验室启用](devtest-lab-set-lab-policy.md)的大小。 确认有足够的[订阅核心配额](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 
 ![生成变量](./media/set-up-devops-lab/configure-build-variables.png)
 
 ## <a name="connect-to-azure"></a>连接到 Azure
-下一步是设置服务主体。 这是 Azure 活动目录中的标识，使 DevOps 生成代理能够代表用户在 Azure 中操作。 要设置它，首先添加第一个 Azure PowerShell 生成步骤。
+下一步是设置服务主体。 这是 Azure Active Directory 中的标识，它允许 DevOps 生成代理代表用户在 Azure 中运行。 若要进行设置，请首先添加 Azure PowerShell 生成步骤。
 
-1. 选择 **"添加任务**"。
-2. 搜索**Azure 电源外壳**。
-3. 找到它后，选择 **"添加"** 以将任务添加到生成。 执行此操作时，您将看到任务在左侧显示为添加。
+1. 选择 "**添加任务**"。
+2. 搜索**Azure PowerShell**。
+3. 找到后，选择 "**添加**" 将任务添加到生成中。 当你执行此操作时，你会看到任务在左侧显示为 "已添加"。
 
 ![设置 PowerShell 步骤](./media/set-up-devops-lab/set-up-powershell-step.png)
 
-设置服务主体的最快方法是让 Azure DevOps 为我们执行此操作。
+若要设置服务主体，最快的方法是让 Azure DevOps 为我们执行此操作。
 
-1. 选择您刚刚添加**的任务**。
-2. 对于**Azure 连接类型**，请选择**Azure 资源管理器**。
-3. 选择 **"管理**"链接以设置服务主体。
+1. 选择刚刚添加的**任务**。
+2. 对于 " **Azure 连接类型**"，请选择 " **azure 资源管理器**"。
+3. 选择 "**管理**" 链接以设置服务主体。
 
-有关详细信息，请参阅此[博客文章](https://devblogs.microsoft.com/devops/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)。 选择 **"管理"** 链接时，您将在 DevOps（博客文章中的第二个屏幕截图）中的位置放置，以设置与 Azure 的连接。 设置 Azure**资源管理器服务终结点**时，请确保选择该终结点。
+有关详细信息，请参阅此[博客文章](https://devblogs.microsoft.com/devops/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)。 当你选择 "**管理**" 链接时，你将在 DevOps （博客文章中的第二个屏幕截图）中的适当位置，设置到 Azure 的连接。 进行设置时，请确保选择 " **Azure 资源管理器服务终结点**"。
 
 ## <a name="complete-the-build-task"></a>完成生成任务
-如果选择生成任务，您将看到应填写的右侧窗格中的所有详细信息。
+如果你选择 "生成" 任务，你将看到右窗格中应填写的所有详细信息。
 
-1. 首先，命名生成任务：**创建虚拟机**。
-2. 选择通过选择**Azure 资源管理器**创建的**服务主体**
+1. 首先，命名生成任务： "**创建虚拟机**"。
+2. 选择通过选择 " **Azure 资源管理器**创建的**服务主体**
 3. 选择**服务终结点**。
-4. 对于**脚本路径**，请选择 **...（省略）** 在右边。
-5. 导航到**制作 GoldenImageVM.ps1**脚本。
-6. 脚本参数应如下所示：`-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -DevTestLabName $(DevTestLabName) -vmSize $(VMSize) -machineUserName $(MachineUserName) -machinePassword (ConvertTo-SecureString -string '$(MachinePassword)' -AsPlainText -Force) -StandardTimeoutMinutes $(StandardTimeoutMinutes)`
+4. 对于 "**脚本路径**"，选择 **.。。（省略号）** 右侧。
+5. 导航到**MakeGoldenImageVMs**脚本。
+6. 脚本参数应该如下所示：`-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -DevTestLabName $(DevTestLabName) -vmSize $(VMSize) -machineUserName $(MachineUserName) -machinePassword (ConvertTo-SecureString -string '$(MachinePassword)' -AsPlainText -Force) -StandardTimeoutMinutes $(StandardTimeoutMinutes)`
 
     ![完成生成定义](./media/set-up-devops-lab/complete-build-definition.png)
 
 
 ## <a name="queue-the-build"></a>对生成进行排队
-让我们通过排队新生成来验证所有内容都已正确设置。 在生成运行时，切换到[Azure 门户](https://portal.azure.com)，并在映像工厂实验室**中的所有虚拟机**上选择，以确认一切工作正常。 您应该会看到在实验室中创建三个虚拟机。
+让我们验证是否已通过排队新版本来正确设置所有内容。 生成运行时，切换到 " [Azure 门户](https://portal.azure.com)"，并选择 "映像工厂实验室" 中的**所有虚拟机**，以确认所有内容是否正常工作。 应会看到在实验室中创建了三个虚拟机。
 
-![实验室中的 VM](./media/set-up-devops-lab/vms-in-lab.png)
+![实验室中的 Vm](./media/set-up-devops-lab/vms-in-lab.png)
 
 ## <a name="next-steps"></a>后续步骤
-基于 Azure 开发人员测试实验室设置映像工厂的第一步已完成。 在本系列的下一篇文章中，您可以对这些 VM 进行泛化并保存到自定义映像。 然后，将它们分发到所有其他实验室。 请参阅本系列的下一篇文章：[保存自定义映像并分发到多个实验室](image-factory-save-distribute-custom-images.md)。
+基于 Azure 开发测试实验室设置映像工厂的第一步是完成。 在本系列的下一篇文章中，你将获得通用化并保存到自定义映像的 Vm。 然后，将其分发给其他实验室。 请参阅本系列文章中的下一篇文章：[保存自定义映像并将其分发到多个实验室](image-factory-save-distribute-custom-images.md)。

@@ -1,6 +1,6 @@
 ---
 title: Azure 开发测试实验室中自己的实验室的缩放配额和限制 | Microsoft Docs
-description: 本文介绍如何在 Azure 开发人员测试实验室中扩展实验室。 查看您的使用配额和限制，并请求增加。
+description: 本文介绍如何在 Azure 开发测试实验室中缩放实验室。 查看使用量配额和限制，并请求增加。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: f3299c24bc751263ccd284a4fddb492fba5dd1e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76761179"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>开发测试实验室中的缩放配额和限制
@@ -35,10 +35,10 @@ ms.locfileid: "76761179"
 ## <a name="view-your-usage-and-quotas"></a>查看使用情况和配额
 以下步骤演示了如何查看订阅中特定 Azure 资源的当前配额，以及如何查看每个配额已使用的百分比。
 
-1. 登录到 Azure[门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 选择“更多服务”****，并从列表中选择“计费”****。
 1. 在“计费”边栏选项卡中，选择一个订阅。
-4. 选择 **"用法+配额**"。
+4. 选择 "**使用情况 + 配额**"。
 
    ![“使用情况和配额”按钮](./media/devtest-lab-scale-lab/devtestlab-usage-and-quotas.png)
 
@@ -67,4 +67,4 @@ ms.locfileid: "76761179"
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ### <a name="next-steps"></a>后续步骤
-* 浏览[开发人员测试实验室 Azure 资源管理器快速入门模板库](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)。
+* 探索[开发测试 Labs Azure 资源管理器快速入门模板库](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)。

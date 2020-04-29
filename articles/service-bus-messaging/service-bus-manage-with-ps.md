@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: e333dfb109840538fd5dec8110e1c32adedce989
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76759238"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>使用 PowerShell 管理服务总线资源
@@ -29,7 +29,7 @@ Microsoft Azure PowerShell 是一个脚本编写环境，可用于控制和自�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，需要符合以下先决条件：
 

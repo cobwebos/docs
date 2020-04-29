@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 7386932f19eee064926184eb17f5e92e30add98e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76760379"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>暂停（禁用）和重新激活消息实体
@@ -28,7 +28,7 @@ ms.locfileid: "76760379"
 
 暂停或重新激活可以由用户或系统执行。 系统只会出于重大管理原因（如达到订阅支出限制），才会暂停实体。 系统禁用的实体不能被用户重新激活，但在暂停原因消除后就会还原。
 
-在门户中，相应实体的“属性”**** 部分允许更改状态；下面的屏幕截图显示了队列状态的切换开关：
+在门户中，相应实体的“属性”  部分允许更改状态；下面的屏幕截图显示了队列状态的切换开关：
 
 ![][1]
 
@@ -45,9 +45,9 @@ ms.locfileid: "76760379"
 -   **SendDisabled**：队列部分处于暂停状态，允许执行接收操作。
 -   **ReceiveDisabled**：队列部分处于暂停状态，允许执行发送操作。
 
-对于订阅和主题，只能设置“Active”**** 和“Disabled”****。
+对于订阅和主题，只能设置“Active”  和“Disabled”  。
 
-[EntityStatus](/dotnet/api/microsoft.servicebus.messaging.entitystatus) 枚举还定义了一组只能由系统设置的过渡状态。 下面的示例展示了用于禁用队列的 PowerShell 命令。 重新激活命令等同于以下示例，只需将 `Status` 设置为“Active”**** 即可。
+[EntityStatus](/dotnet/api/microsoft.servicebus.messaging.entitystatus) 枚举还定义了一组只能由系统设置的过渡状态。 下面的示例展示了用于禁用队列的 PowerShell 命令。 重新激活命令等同于以下示例，只需将 `Status` 设置为“Active”  即可。
 
 ```powershell
 $q = Get-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue

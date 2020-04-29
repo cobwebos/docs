@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 50d21cfe8136b9c794eae5104bbb34e28f7c1661
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76759306"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>服务总线的 AMQP 1.0 支持

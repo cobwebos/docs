@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: alkohli
 ms.openlocfilehash: 2b0149bd2bb46de87b4575ccb5d44836dd74bde9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "66242207"
 ---
 下面是本地 Web UI 支持的 Web 浏览器列表。
@@ -19,4 +19,4 @@ ms.locfileid: "66242207"
 | Google Chrome |最新版本 |已使用 Chrome 测试|
 | Microsoft Edge |最新版本 | |
 | FireFox | 最新版本 | 已使用 FireFox 测试|
-| Internet Explorer |最新版本 |如果无法登录，请检查是否已启用 Cookie 和 Javascript。 若要启用 UI 访问，请将设备 IP 添加到“隐私操作”****，以便设备可以访问 Cookie。 |
+| Internet Explorer |最新版本 |如果无法登录，请检查是否已启用 Cookie 和 Javascript。 若要启用 UI 访问，请将设备 IP 添加到“隐私操作”  ，以便设备可以访问 Cookie。 |

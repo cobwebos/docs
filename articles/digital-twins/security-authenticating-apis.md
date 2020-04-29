@@ -1,6 +1,6 @@
 ---
-title: 了解 API 身份验证 - Azure 数字孪生 |微软文档
-description: 了解如何使用 Azure 数字孪生连接到 API 并进行身份验证。
+title: 了解 API 身份验证-Azure 数字孪生 |Microsoft Docs
+description: 了解如何使用 Azure 数字孪生连接到 Api 并向其进行身份验证。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,15 +9,15 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: d950d41186d578702343645875dd7c565002d5a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76512991"
 ---
-# <a name="connect-to-and-authenticate-with-apis"></a>使用 API 连接到并进行身份验证
+# <a name="connect-to-and-authenticate-with-apis"></a>连接到 Api 并向其进行身份验证
 
-Azure 数字孪生使用 Azure Active Directory (Azure AD) 对用户进行身份验证并保护应用程序。 Azure AD 支持各种新式体系结构的身份验证。 所有这些体系结构都以行业标准协议 OAuth 2.0 或 OpenID Connect 为基础。 此外，开发人员可以使用 Azure AD 生成单租户和业务线 (LOB) 应用程序。 开发人员还可以使用 Azure AD 开发[多租户应用程序](how-to-multitenant-applications.md)。
+Azure 数字孪生使用 Azure Active Directory (Azure AD) 对用户进行身份验证并保护应用程序。 Azure AD 支持各种新式体系结构的身份验证。 所有这些体系结构都以行业标准协议 OAuth 2.0 或 OpenID Connect 为基础。 此外，开发人员可以使用 Azure AD 生成单租户和业务线 (LOB) 应用程序。 开发人员还可以使用 Azure AD 开发多[租户应用程序](how-to-multitenant-applications.md)。
 
 有关 Azure AD 的概述，请访问[基础知识页](https://docs.microsoft.com/azure/active-directory/fundamentals/)的分步指南、概念和快速入门。
 
@@ -35,7 +35,7 @@ Azure AD 支持[五种主要应用程序方案](../active-directory/develop/v2-a
 * 守护程序或服务器应用程序到 Web API：没有 Web UI 的守护程序应用程序或服务器应用程序需要通过受 Azure AD 保护的 Web API 获取资源。
 
 > [!IMPORTANT]
-> Azure 数字孪生支持以下两个身份验证库：
+> Azure 数字孪生支持以下两种身份验证库：
 > * 最新的 [Microsoft 身份验证库 (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)
 > * [Azure Active Directory 身份验证库 (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)
 
@@ -49,7 +49,7 @@ Azure AD 支持[五种主要应用程序方案](../active-directory/develop/v2-a
 
 1. 然后，使用获取的令牌，以向使用代理流的更下游 API 进行身份验证或调用该 API
 
-有关如何协调以流量为代表的说明，请阅读[OAuth 2.0 代表流](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)。 还可以查看[调用下游 Web API](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof) 中的代码示例。
+有关如何安排代理流的说明，请参阅[OAuth 2.0 代理流](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)。 还可以查看[调用下游 Web API](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof) 中的代码示例。
 
 ## <a name="next-steps"></a>后续步骤
 
