@@ -4,10 +4,10 @@ description: 通过对所有用户和角色应用锁，来防止用户更新或�
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 70fb189adb634b7ac24afe7cc8b94738117da5ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79274003"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>锁定资源以防止意外更改
@@ -15,7 +15,7 @@ ms.locfileid: "79274003"
 管理员可能需要锁定订阅、资源组或资源，以防止组织中的其他用户意外删除或修改关键资源。 可以将锁定级别设置为 **CanNotDelete** 或 **ReadOnly**。 在门户中，锁定分别称为**删除**和**只读**。
 
 * **CanNotDelete** 表示经授权的用户仍可读取和修改资源，但不能删除资源。 
-* **ReadOnly** 表示经授权的用户可以读取资源，但不能删除或更新资源。 应用此锁类似于将所有经授权的用户限制于使用“读者”**** 角色授予的权限。
+* **ReadOnly** 表示经授权的用户可以读取资源，但不能删除或更新资源。 应用此锁类似于将所有经授权的用户限制于使用“读者”  角色授予的权限。
 
 ## <a name="how-locks-are-applied"></a>锁的应用方式
 
@@ -35,31 +35,31 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
 
 ## <a name="who-can-create-or-delete-locks"></a>谁可以创建或删除锁
 
-若要创建或删除管理锁，必须有权执行 `Microsoft.Authorization/*` 或 `Microsoft.Authorization/locks/*` 操作。 在内置角色中，仅授予**所有者**和**用户访问管理员**这些操作。
+若要创建或删除管理锁，必须有权执行 `Microsoft.Authorization/*` 或 `Microsoft.Authorization/locks/*` 操作。 在内置角色中，只有“所有者”和“用户访问管理员”有权执行这些操作。  
 
 ## <a name="managed-applications-and-locks"></a>托管应用程序和锁
 
-某些 Azure 服务（如 Azure 数据块）使用[托管应用程序](../managed-applications/overview.md)来实现该服务。 在这种情况下，服务将创建两个资源组。 一个资源组包含服务的概述，并且未锁定。 另一个资源组包含服务的基础结构并处于锁定状态。
+某些 Azure 服务（如 Azure Databricks）使用[托管应用程序](../managed-applications/overview.md)来实现该服务。 在这种情况下，该服务将创建两个资源组。 一个资源组包含服务概述，未锁定。 其他资源组包含服务的基础结构并且已锁定。
 
-如果尝试删除基础结构资源组，则收到一条错误，指出资源组已锁定。 如果尝试删除基础结构资源组的锁，则收到一条错误，指出无法删除该锁，因为它归系统应用程序所有。
+如果尝试删除基础结构资源组，将收到一条错误消息，指出资源组已锁定。 如果尝试删除对基础结构资源组的锁定，会收到一条错误消息，指出无法删除该锁，因为它是系统应用程序所拥有的。
 
-相反，请删除服务，该服务也会删除基础结构资源组。
+而是删除服务，此操作还会删除基础结构资源组。
 
-对于托管应用程序，请选择您部署的服务。
+对于托管应用程序，请选择已部署的服务。
 
 ![选择服务](./media/lock-resources/select-service.png)
 
-请注意，该服务包含**托管资源组**的链接。 该资源组保存基础结构并处于锁定状态。 无法直接删除它。
+请注意，该服务包括**托管资源组**的链接。 该资源组包含基础结构并被锁定。 不能直接删除它。
 
 ![显示托管组](./media/lock-resources/show-managed-group.png)
 
-要删除服务的所有内容（包括锁定的基础结构资源组），请选择"**删除**服务"。
+若要删除服务的所有内容，包括锁定的基础结构资源组，请选择 "**删除**服务"。
 
 ![删除服务](./media/lock-resources/delete-service.png)
 
 ## <a name="azure-backups-and-locks"></a>Azure 备份和锁定
 
-如果锁定 Azure 备份服务创建的资源组，备份将开始失败。 该服务最多支持 18 个还原点。 使用**CanNotDelete**锁时，备份服务无法清理还原点。 有关详细信息，请参阅常见问题[- 备份 Azure VM。](../../backup/backup-azure-vm-backup-faq.md)
+如果你锁定由 Azure 备份服务创建的资源组，则备份将开始失败。 服务最多支持18个还原点。 使用**CanNotDelete**锁时，备份服务无法清理还原点。 有关详细信息，请参阅[常见问题-备份 Azure vm](../../backup/backup-azure-vm-backup-faq.md)。
 
 ## <a name="portal"></a>门户
 

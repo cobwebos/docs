@@ -4,10 +4,10 @@ description: 使用 Azure 资源管理器模板在 PowerShell 中自动创建和
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.openlocfilehash: 9494b659b5b4357f3190c45d8cc72c4e130f0ecc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79275875"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>使用 PowerShell 管理 Application Insights 资源
@@ -231,7 +231,7 @@ Get-AzApplicationInsights -ResourceGroupName Fabrikam -Name FabrikamProd | Forma
 
 ## <a name="set-the-data-retention"></a>设置数据保留期 
 
-若要获取 Application Insights 资源的当前数据保留期，可以使用 OSS 工具 [ARMClient](https://github.com/projectkudu/ARMClient)。  （从[大卫·埃博](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html)和[丹尼尔·鲍比斯](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/)的文章中了解更多关于ARMClient。 下面是使用 的示例，用于`ARMClient`获取当前保留：
+若要获取 Application Insights 资源的当前数据保留期，可以使用 OSS 工具 [ARMClient](https://github.com/projectkudu/ARMClient)。  （请在 [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) 和 [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/) 的文章中了解有关 ARMClient 的详细信息。）下面是一个使用 `ARMClient` 的示例，目的是获取当前的保留期：
 
 ```PS
 armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName?api-version=2018-05-01-preview
@@ -326,7 +326,7 @@ Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <res
 Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> -DailyCapGB 300
 ```
 
-您还可以使用[ARMClient](https://github.com/projectkudu/ARMClient)获取和设置每日上限参数。  要获取当前值，请使用：
+还可以使用[ARMClient](https://github.com/projectkudu/ARMClient)来获取和设置每日上限参数。  若要获取当前值，请使用：
 
 ```PS
 armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
@@ -334,7 +334,7 @@ armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 ## <a name="set-the-daily-cap-reset-time"></a>设置每日上限重置时间
 
-要设置每日上限重置时间，可以使用[ARMClient](https://github.com/projectkudu/ARMClient)。 下面是使用 的示例，用于`ARMClient`将重置时间设置为新小时（在此示例中为 12：00 UTC）：
+若要设置每日上限重置时间，可以使用[ARMClient](https://github.com/projectkudu/ARMClient)。 下面是使用`ARMClient`的一个示例，用于将重置时间设置为新小时（在此示例中为 12:00 UTC）：
 
 ```PS
 armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview "{'CurrentBillingFeatures':['Basic'],'DataVolumeCap':{'ResetTime':12}}"
@@ -364,36 +364,36 @@ Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <
                -appName myApp
 ```
 
-定义为`priceCode`：
+`priceCode`定义为：
 
 |价格代码|计划|
 |---|---|
 |1|“每 GB”计划（以前名为“基本”计划）|
 |2|“每节点”计划（以前名为“企业”计划）|
 
-最后，您可以使用[ARMClient](https://github.com/projectkudu/ARMClient)获取和设置定价计划和每日上限参数。  要获取当前值，请使用：
+最后，你可以使用[ARMClient](https://github.com/projectkudu/ARMClient)来获取和设置定价计划和每日上限参数。  若要获取当前值，请使用：
 
 ```PS
 armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
 ```
 
-您可以使用以下参数设置所有这些参数：
+您可以使用设置所有这些参数：
 
 ```PS
 armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
 "{'CurrentBillingFeatures':['Basic'],'DataVolumeCap':{'Cap':200,'ResetTime':12,'StopSendNotificationWhenHitCap':true,'WarningThreshold':90,'StopSendNotificationWhenHitThreshold':true}}"
 ```
 
-这将将每日上限设置为 200 GB/天，将每日上限重置时间配置为 12：00 UTC，在达到上限和达到警告级别时发送电子邮件，并将警告阈值设置为上限的 90%。  
+这会将每日上限设置为 200 GB/天，将每日上限重置时间配置为 12:00 UTC，当达到上限并达到警告级别时发送电子邮件，并将警告阈值设置为达到 cap 的90%。  
 
 ## <a name="add-a-metric-alert"></a>添加指标警报
 
-要自动创建指标警报，请参阅[指标警报模板一文](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-a-simple-static-threshold-metric-alert)
+若要自动创建指标警报，请参阅[指标警报模板一文](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-a-simple-static-threshold-metric-alert)
 
 
 ## <a name="add-an-availability-test"></a>添加可用性测试
 
-要自动执行可用性测试，请参阅[指标警报模板一文](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-an-availability-test-along-with-a-metric-alert)。
+若要自动执行可用性测试，请参阅[指标警报模板一文](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-an-availability-test-along-with-a-metric-alert)。
 
 ## <a name="add-more-resources"></a>添加更多资源
 
@@ -456,6 +456,6 @@ Azure 应严格按顺序设置资源。 若要确保某一设置在下一设置�
 * [创建 Application Insights 资源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically) - 不使用模板的快速方法。
 * [设置警报](powershell-alerts.md)
 * [创建 Web 测试](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
-* [将 Azure 诊断发送到应用程序见解](powershell-azure-diagnostics.md)
+* [将 Azure 诊断发送到 Application Insights](powershell-azure-diagnostics.md)
 * [从 GitHub 部署到 Azure](https://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
 * [创建版本注释](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)

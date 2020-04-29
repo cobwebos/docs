@@ -7,17 +7,17 @@ author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
 ms.openlocfilehash: 252ddeb372744986df0b8ba9b742d0462a4e8202
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79274471"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Azure Monitor 日志中的标准属性
 Azure Monitor 日志中的数据[作为一组记录存储在 Log Analytics 工作区或 Application Insights 应用程序](../log-query/logs-structure.md)中，每条记录都具有特定的数据类型，该数据类型包含一组惟一的属性。 许多数据类型都具有在多种类型中通用的标准属性。 本文介绍这些属性，并提供如何在查询中使用它们的示例。
 
 > [!NOTE]
-> 某些标准属性不会在日志分析中的架构视图或智能中显示，并且它们不会显示在查询结果中，除非您在输出中显式指定该属性。
+> 某些标准属性不会显示在 Log Analytics 的架构视图或 IntelliSense 中，也不会显示在查询结果中，除非在输出中显式指定该属性。
 
 ## <a name="timegenerated-and-timestamp"></a>TimeGenerated 和 timestamp
 **TimeGenerated**（Log Analytics 工作区）和 **Timestamp**（Application Insights 应用程序）属性包含数据源创建记录的日期和时间。 如需更多详细信息，请参阅 [Azure Monitor 中的日志数据引入时间](data-ingestion-time.md)。
@@ -46,7 +46,7 @@ exceptions
 ```
 
 ## <a name="_timereceived"></a>\_TimeReceived
-** \_Time接收**属性包含 Azure 云中的 Azure 监视器引入点接收记录的日期和时间。 这可以用来确定数据源和云之间的延迟问题。 例如，从代理发送数据时，网络问题会导致延迟。 如需更多详细信息，请参阅 [Azure Monitor 中的日志数据引入时间](data-ingestion-time.md)。
+**\_TimeReceived** 属性包含 Azure 云中的 Azure Monitor 引入点收到记录的日期和时间。 这可以用来确定数据源和云之间的延迟问题。 例如，从代理发送数据时，网络问题会导致延迟。 如需更多详细信息，请参阅 [Azure Monitor 中的日志数据引入时间](data-ingestion-time.md)。
 
 以下查询给出了从代理发送的事件记录的平均延迟（按小时）。 这包括从代理到云的时间，以及记录可供日志查询所花费的总时间。
 
@@ -60,7 +60,7 @@ Event
 ``` 
 
 ## <a name="type-and-itemtype"></a>Type 和 itemType
-**Type**（Log Analytics 工作区）和 **itemType**（Application Insights 应用程序）属性保存从中检索记录的表的名称，也可以将其视为记录类型。 此属性在将多个表的记录进行组合的查询中非常有用，例如，使用 `search` 运算符区分不同类型的记录的那些查询。 在某些地方，**$table** 可以用来替代 **Type**。
+**Type**（Log Analytics 工作区）和 **itemType**（Application Insights 应用程序）属性保存从中检索记录的表的名称，也可以将其视为记录类型。 此属性在将多个表的记录进行组合的查询中非常有用，例如，使用 `search` 运算符区分不同类型的记录的那些查询。 在某些地方， **$table** 可以用来替代 **Type**。
 
 ### <a name="examples"></a>示例
 以下查询返回过去一小时内按类型收集的记录计数。
@@ -72,13 +72,13 @@ search *
 
 ```
 ## <a name="_itemid"></a>\_ItemId
-** \_ItemId**属性包含记录的唯一标识符。
+**\_ItemId** 属性保留记录的唯一标识符。
 
 
 ## <a name="_resourceid"></a>\_ResourceId
-** \_ResourceId**属性包含记录关联的资源的唯一标识符。 这为你提供了一个标准属性，用于将查询范围限定为仅来自特定资源的记录，或者跨多个表联接相关数据。
+**\_ResourceId** 属性包含与记录关联的资源的唯一标识符。 这为你提供了一个标准属性，用于将查询范围限定为仅来自特定资源的记录，或者跨多个表联接相关数据。
 
-对于 Azure 资源，**_ResourceId** 的值是 [Azure 资源 ID URL](../../azure-resource-manager/templates/template-functions-resource.md)。 该属性目前仅限于 Azure 资源，但它将扩展到 Azure 之外的资源，例如本地计算机。
+对于 Azure 资源， **_ResourceId** 的值是 [Azure 资源 ID URL](../../azure-resource-manager/templates/template-functions-resource.md)。 该属性目前仅限于 Azure 资源，但它将扩展到 Azure 之外的资源，例如本地计算机。
 
 > [!NOTE]
 > 某些数据类型已具有包含 Azure 资源 ID 或至少包含其一部分（例如订阅 ID）的字段。 虽然为了实现向后兼容而保留了这些字段，但是建议使用 _ResourceId 来执行交叉关联，因为它将更为一致。
@@ -122,7 +122,7 @@ union withsource = tt *
 请谨慎使用这些 `union withsource = tt *` 查询，因为跨数据类型执行扫描的开销很大。
 
 ## <a name="_isbillable"></a>\_IsBillable
-** \_IsBillable**属性指定引入的数据是否可计费。 IsBillable 等于_false_的数据将免费收集，而不是向 Azure 帐户计费。 ** \_**
+**\_IsBillable** 属性指定是否对引入的数据进行计费。 **\_IsBillable** 等于 _false_ 的数据是免费收集的，不会向你的 Azure 帐户收费。
 
 ### <a name="examples"></a>示例
 若要获取发送计费数据类型的计算机列表，请使用以下查询：
@@ -149,7 +149,7 @@ union withsource = tt *
 ```
 
 ## <a name="_billedsize"></a>\_BilledSize
-** \_BilledSize 属性**指定在**\_IsBillable**为 true 时将计费到 Azure 帐户的数据字节大小。
+**\_BilledSize** 属性指定 **\_IsBillable** 为 true 时将向 Azure 帐户计费的数据字节大小。
 
 
 ### <a name="examples"></a>示例

@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: ba9a2aca73dbdb8de298b68670fd6ab16f810a4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79275771"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>使用 Application Insights 探查实时 Azure 应用服务应用
@@ -20,7 +20,7 @@ ms.locfileid: "79275771"
 ## <a name="enable-profiler-for-your-app"></a><a id="installation"></a> 为应用启用 Profiler
 若要为应用启用 Profiler，请遵循下面的说明。 如果你在运行另一种类型的 Azure 服务，则下面提供了用于在其他受支持平台上启用 Profiler 的说明：
 * [云服务](../../azure-monitor/app/profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
-* [服务结构应用程序](../../azure-monitor/app/profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
+* [Service Fabric 应用程序](../../azure-monitor/app/profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [虚拟机](../../azure-monitor/app/profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 Application Insights Profiler 是作为应用服务运行时的一部分预先安装的。 下面的步骤将展示如何为应用服务启用它。 请遵循这些步骤，即使你在构建时已在你的应用中包括了 App Insights SDK。
@@ -43,7 +43,7 @@ Application Insights Profiler 是作为应用服务运行时的一部分预先�
 可以通过为你的 Azure 应用服务创建应用设置来启用 Application Insights Profiler。 包含如上所示选项的页面为你创建这些应用设置。 但是，你可以使用模板或其他方式自动创建这些设置。 如果你的 Application Insights 资源与 Azure 应用服务处于不同的订阅中，这些设置也将起作用。
 下面是启用 Profiler 时需要执行的配置：
 
-|应用设置    | “值”    |
+|应用设置    | 值    |
 |---------------|----------|
 |APPINSIGHTS_INSTRUMENTATIONKEY         | Application Insights 资源的 iKey    |
 |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |

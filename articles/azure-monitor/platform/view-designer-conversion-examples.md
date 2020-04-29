@@ -1,5 +1,5 @@
 ---
-title: Azure 监视器视图设计器到工作簿转换示例
+title: Azure Monitor 查看设计器到工作簿转换示例
 description: ''
 author: austonli
 ms.author: aul
@@ -7,19 +7,19 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: b50d8cfa4731c487997e2bf431a9c71eff08f5d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79274159"
 ---
-# <a name="view-designer-conversion-examples"></a>查看设计器转换示例
+# <a name="view-designer-conversion-examples"></a>视图设计器转换示例
 
-要复制视图设计器选项卡式工作簿，请将以下代码复制并粘贴到高级编辑器中，该编辑器由工具栏中的</>符号表示
+若要复制 "视图设计器" 选项卡式工作簿，请将以下代码复制并粘贴到高级编辑器，由工具栏中的 </> 符号表示
 
 ![高级编辑器工具栏](media/view-designer-conversion-examples/toolbar.png)
 
-用户可能必须更新其查询设置和订阅到自己的可访问资源
+用户可能必须将其查询设置和订阅更新为他们自己的可访问资源
 
 ## <a name="vertical"></a>垂直
 
@@ -337,7 +337,7 @@ ms.locfileid: "79274159"
 }
 ```
 
-## <a name="tabbed"></a>选项 卡式 
+## <a name="tabbed"></a>键 
 
 ```Json
 {

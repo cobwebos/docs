@@ -1,5 +1,5 @@
 ---
-title: 配置快速路由和 S2S VPN 共存连接：经典
+title: 配置 ExpressRoute 和 S2S VPN 共存连接：经典
 description: 本文指导配置可在经典部署模型中并存的 ExpressRoute 连接和站点到站点 VPN 连接。
 documentationcenter: na
 services: expressroute
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: charwen
 ms.openlocfilehash: aba07e0a1dd8e7b1db8677907672d919ef034057
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79272924"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>配置 ExpressRoute 和站点到站点并存连接（经典）
@@ -214,7 +214,7 @@ ms.locfileid: "79272924"
           <Subnet name="GatewaySubnet">
             <AddressPrefix>10.17.159.224/27</AddressPrefix>
           </Subnet>
-5. 如果以前的网关是站点到站点 VPN，则还必须将连接类型更改为 **“专用”**。
+5. 如果以前的网关是站点到站点 VPN，则还必须将连接类型更改为 **“专用”** 。
    
                  <Gateway>
                   <ConnectionsToLocalNetwork>
@@ -226,5 +226,5 @@ ms.locfileid: "79272924"
 6. 此时，将拥有不带网关的虚拟网络。 若要创建新网关并完成连接，可以转到 [步骤 4 - 创建 ExpressRoute 网关](#gw)（可在前一组步骤中找到）。
 
 ## <a name="next-steps"></a>后续步骤
-有关快速路由的详细信息，请参阅[快速路由常见问题解答](expressroute-faqs.md)
+有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)
 

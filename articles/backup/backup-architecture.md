@@ -4,10 +4,10 @@ description: 概述 Azure 备份服务使用的体系结构、组件和流程。
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.openlocfilehash: b093c6702bb26fe537622727fe1b623141bf4160
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79273613"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure 备份体系结构和组件
@@ -41,11 +41,11 @@ Azure 备份将备份的数据存储在恢复服务保管库中。 保管库是 
 
 - 使用保管库可以方便地组织备份数据，并将管理开销降至最低。
 - 在每个 Azure 订阅中，最多可以创建 500 个保管库。
-- 可以监视保管库中的备份项，包括 Azure VM 和本地计算机。
+- 可以监视保管库中的已备份项，包括 Azure Vm 和本地计算机。
 - 可以使用 Azure [基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) 来管理对保管库的访问。
 - 指定如何复制保管库中的数据以实现冗余：
-  - **本地冗余存储 （LRS）：** 为了防止数据中心出现故障，可以使用 LRS。 LRS 将数据复制到存储缩放单元。 [了解详情](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)。
-  - **异地冗余存储 （GRS）：** 为了防止区域范围的中断，您可以使用 GRS。 GRS 会将数据复制到次要区域。 [了解详情](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)。
+  - **本地冗余存储 (LRS)** ：若要防范数据中心发生故障，可以使用 LRS。 LRS 将数据复制到存储缩放单元。 [了解详细信息](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)。
+  - **异地冗余存储 (GRS)** ：若要防范区域范围的服务中断，可以使用 GRS。 GRS 会将数据复制到次要区域。 [了解详细信息](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)。
   - 恢复服务保管库默认使用 GRS。
 
 ## <a name="backup-agents"></a>备份代理
@@ -61,9 +61,9 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
 
 下表解释了不同的备份类型及其使用时机：
 
-**备份类型** | **详细信息** | **使用**
+**备份类型** | **详细信息** | **使用情况**
 --- | --- | ---
-**全** | 完整备份包含整个数据源。 占用的网络带宽比差异或增量备份更多。 | 用于初始备份。
+**完整** | 完整备份包含整个数据源。 占用的网络带宽比差异或增量备份更多。 | 用于初始备份。
 **差异** |  差异备份存储自初始完整备份以来发生更改的块。 使用较少的网络带宽和存储量，且不保留未更改数据的冗余副本。<br/><br/> 效率不高，因为需要传输并存储每次后续备份之后未发生更改的数据块。 | Azure 备份不使用此备份类型。
 **增量** | 增量备份仅存储自上次备份以来发生更改的数据块。 存储和网络效率高。 <br/><br/> 使用增量备份时，无需使用完整备份进行补充。 | DPM/MABS 使用此备份类型来备份磁盘，备份到 Azure 的所有方案都使用此备份类型。 不用于 SQL Server 备份。
 
@@ -71,10 +71,10 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
 
 下表解释了 SQL Server 数据库使用的不同备份类型及其使用时机：
 
-**备份类型** | **详细信息** | **使用**
+**备份类型** | **详细信息** | **使用情况**
 --- | --- | ---
-**完全备份** | 完整数据库备份将备份整个数据库。 完整备份包含特定数据库中或一组文件组或文件中的所有数据。 完整备份还包含足够的日志用于恢复该数据。 | 每天最多可以触发一次完整备份。<br/><br/> 可以选择每天或每周创建完整备份。
-**差分备份** | 差异备份基于最新的、以前的完整数据备份。<br/><br/> 它只捕获自完整备份以来发生更改的数据。 |  每天最多可以触发一次差异备份。<br/><br/> 不能在同一天配置完整备份和差异备份。
+**完整备份** | 完整数据库备份将备份整个数据库。 完整备份包含特定数据库中或一组文件组或文件中的所有数据。 完整备份还包含足够的日志用于恢复该数据。 | 每天最多可以触发一次完整备份。<br/><br/> 可以选择每天或每周创建完整备份。
+**差异备份** | 差异备份基于最新的、以前的完整数据备份。<br/><br/> 它只捕获自完整备份以来发生更改的数据。 |  每天最多可以触发一次差异备份。<br/><br/> 不能在同一天配置完整备份和差异备份。
 **事务日志备份** | 日志备份可以实现时间点还原，精度可达到特定的秒。 | 最多可以配置为每隔 15 分钟创建事务日志备份。
 
 ### <a name="comparison-of-backup-types"></a>备份类型的比较
@@ -135,11 +135,11 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
     - 快照数据可能不会立即复制到保管库。 在高峰期，可能需要好几个小时才能完成备份。 每日备份策略规定的 VM 备份总时间不会超过 24 小时。
 1. 将数据发送到保管库后，将创建恢复点。 默认情况下，快照会保留两天，然后再删除。 此功能允许从这些快照执行还原操作，从而缩短还原时间。 它减少了从保管库转换数据和复制回数据所需的时间。 请参阅 [Azure 备份即时还原功能](https://docs.microsoft.com/azure/backup/backup-instant-restore-capability)。
 
-不需要显式允许 Internet 连接来备份 Azure VM。
+无需显式允许 internet 连接来备份 Azure Vm。
 
 ![备份 Azure VM](./media/backup-architecture/architecture-azure-vm.png)
 
-## <a name="architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders"></a>体系结构：直接备份本地 Windows 服务器计算机或 Azure VM 文件或文件夹
+## <a name="architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders"></a>体系结构：直接备份本地 Windows Server 计算机或者 Azure VM 文件或文件夹
 
 1. 若要设置方案，请在计算机中下载并安装 MARS 代理。 然后选择要备份的内容、运行备份的时间，以及备份在 Azure 中保留的期限。
 1. 初始备份根据备份设置运行。
@@ -153,7 +153,7 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
 
 ![使用 MARS 代理备份本地 Windows Server 计算机](./media/backup-architecture/architecture-on-premises-mars.png)
 
-## <a name="architecture-back-up-to-dpmmabs"></a>架构：备份到 DPM/MABS
+## <a name="architecture-back-up-to-dpmmabs"></a>体系结构：备份到 DPM/MABS
 
 1. 在要保护的计算机上安装 DPM 或 MABS 保护代理。 然后，将这些计算机添加到 DPM 保护组。
     - 若要保护本地计算机，DPM 或 MABS 服务器必须位于本地。
@@ -170,15 +170,15 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
 Azure VM 使用磁盘来存储其操作系统、应用和数据。 每个 Azure VM 至少包含两个磁盘：一个磁盘用于操作系统，另一个用作临时磁盘。 Azure VM 还可以使用数据磁盘来存储应用数据。 磁盘以 VHD 的形式进行存储。
 
 - 在 Azure 上的标准或高级存储帐户中，VHD 以页 Blob 的形式进行存储：
-  - **标准存储：** 可靠、低成本的磁盘支持，支持运行对延迟不敏感的工作负载的 VM。 标准存储可以使用标准固态硬盘 (SSD) 或标准机械硬盘 (HDD)。
-  - **高级存储：** 高性能磁盘支持。 使用高级 SSD 磁盘。
+  - **标准存储：** 为运行不关注延迟的工作负荷的 VM 提供可靠、低成本的磁盘支持。 标准存储可以使用标准固态硬盘 (SSD) 或标准机械硬盘 (HDD)。
+  - **高级存储：** 高性能磁盘支持。 使用高级·SSD 磁盘。
 - 磁盘具有不同的性能层：
-  - **标准硬盘磁盘：** 由 HDD 支持，用于经济高效的存储。
-  - **标准 SSD 磁盘：** 组合高级 SSD 磁盘和标准硬盘磁盘的元素。 提供的一致性能和可靠性超过 HDD，而性价比仍然很高。
-  - **高级 SSD 磁盘：** 由 SSD 支持，为运行 I/O 密集型工作负载的 VM 提供高性能和低延迟。
+  - **标准 HDD 磁盘：** 基于 HDD，用作经济高效的存储。
+  - **标准 SSD 磁盘：** 结合了高级 SSD 磁盘和标准 HDD 磁盘的特点。 提供的一致性能和可靠性超过 HDD，而性价比仍然很高。
+  - **高级·SSD 磁盘：** 基于 SSD，为运行 I/O 密集型工作负荷的 VM 提供高性能和低延迟。
 - 磁盘可以是托管磁盘或非托管磁盘：
   - **非托管磁盘：** VM 使用的传统磁盘类型。 对于这些磁盘，可以创建自己的存储帐户，并在创建磁盘时指定该存储帐户。 然后需要确定如何最大限度地利用 VM 的存储资源。
-  - **托管磁盘：** Azure 为您创建和管理存储帐户。 你只需指定磁盘大小和性能层，Azure 就会自动创建托管磁盘。 当你添加磁盘和缩放 VM 时，Azure 将处理存储帐户。
+  - **托管磁盘：** Azure 将为你创建和管理存储帐户。 你只需指定磁盘大小和性能层，Azure 就会自动创建托管磁盘。 当你添加磁盘和缩放 VM 时，Azure 将处理存储帐户。
 
 有关磁盘存储和 VM 可用的磁盘类型的详细信息，请参阅以下文章：
 
@@ -191,7 +191,7 @@ Azure VM 使用磁盘来存储其操作系统、应用和数据。 每个 Azure 
 可以通过 Azure 备份来备份使用高级存储的 Azure VM：
 
 - 在备份使用高级存储的 VM 过程中，备份服务将在存储帐户中创建名为 *AzureBackup-* 的临时暂存位置。 暂存位置大小与恢复点快照大小相同。
-- 确保高级存储帐户有足够的可用空间，可以容纳临时暂存位置。 有关详细信息，请参阅[高级页面 blob 存储帐户的可伸缩性目标](../storage/blobs/scalability-targets-premium-page-blobs.md)。 不要修改暂存位置。
+- 确保高级存储帐户有足够的可用空间，可以容纳临时暂存位置。 有关详细信息，请参阅[高级页 blob 存储帐户的可伸缩性目标](../storage/blobs/scalability-targets-premium-page-blobs.md)。 不要修改暂存位置。
 - 备份作业完成后，将删除暂存位置。
 - 用于暂存位置的存储的价格与[高级存储定价](../virtual-machines/windows/disks-types.md#billing)相一致。
 
@@ -212,9 +212,9 @@ Azure VM 使用磁盘来存储其操作系统、应用和数据。 每个 Azure 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看支持矩阵以了解[备份方案的支持功能和限制](backup-support-matrix.md)。
+- 查看支持矩阵，以[了解备份方案支持的功能和限制](backup-support-matrix.md)。
 - 为以下方案之一设置备份：
-  - [备份 Azure VM。](backup-azure-arm-vms-prepare.md)
+  - [备份 Azure VM](backup-azure-arm-vms-prepare.md)。
   - 不使用备份服务器[直接备份 Windows 计算机](tutorial-backup-windows-server-to-azure.md)。
   - [设置 MABS](backup-azure-microsoft-azure-backup.md) 以备份到 Azure，然后将工作负荷备份到 MABS。
   - [设置 DPM](backup-azure-dpm-introduction.md) 以备份到 Azure，然后将工作负荷备份到 DPM。

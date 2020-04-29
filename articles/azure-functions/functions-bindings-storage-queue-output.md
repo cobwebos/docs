@@ -1,23 +1,23 @@
 ---
-title: Azure 函数的 Azure 队列存储输出绑定
-description: 了解如何在 Azure 函数中创建 Azure 队列存储消息。
+title: 适用于 Azure Functions 的 Azure 队列存储输出绑定
+description: 了解如何在 Azure Functions 中创建 Azure 队列存储消息。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 76af5f398edd736874fa79095f2e80c02298eac0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277331"
 ---
-# <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Azure 函数的 Azure 队列存储输出绑定
+# <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>适用于 Azure Functions 的 Azure 队列存储输出绑定
 
-Azure 函数可以通过设置输出绑定创建新的 Azure 队列存储消息。
+Azure Functions 可以通过设置输出绑定来创建新的 Azure 队列存储消息。
 
-有关设置和配置详细信息的信息，请参阅[概述](./functions-bindings-storage-queue.md)。
+有关设置和配置详细信息，请参阅[概述](./functions-bindings-storage-queue.md)。
 
 ## <a name="example"></a>示例
 
@@ -41,9 +41,9 @@ public static class QueueFunctions
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-以下示例演示 function.json 文件中的一个 HTTP 触发器绑定以及使用该绑定的 [C# 脚本 (.csx)](functions-reference-csharp.md) 代码**。 该函数针对收到的每个 HTTP 请求创建一个包含 CustomQueueMessage 对象有效负载的队列项****。
+以下示例演示 function.json 文件中的一个 HTTP 触发器绑定以及使用该绑定的 [C# 脚本 (.csx)](functions-reference-csharp.md) 代码  。 该函数针对收到的每个 HTTP 请求创建一个包含 CustomQueueMessage 对象有效负载的队列项  。
 
-下面是*函数.json*文件：
+function.json  文件如下所示：
 
 ```json
 {
@@ -100,11 +100,11 @@ public static void Run(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-以下示例演示 function.json 文件中的一个 HTTP 触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)**。 该函数针对收到的每个 HTTP 请求创建一个队列项。
+以下示例演示 function.json 文件中的一个 HTTP 触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)  。 该函数针对收到的每个 HTTP 请求创建一个队列项。
 
-下面是*函数.json*文件：
+function.json  文件如下所示：
 
 ```json
 {
@@ -186,7 +186,7 @@ module.exports = function(context) {
 }
 ```
 
-要在队列中设置单个消息，可以将单个值传递给`set`方法。
+若要在队列中设置单个消息，请向`set`方法传递单个值。
 
 ```python
 import azure.functions as func
@@ -215,7 +215,7 @@ def main(req: func.HttpRequest, msg: func.Out[typing.List[str]]) -> func.HttpRes
 
 # <a name="java"></a>[Java](#tab/java)
 
- 下面的示例显示了一个 Java 函数，该函数在由 HTTP 请求触发时为其创建队列消息。
+ 下面的示例演示一个 Java 函数，该函数为 HTTP 请求触发时的创建队列消息。
 
 ```java
 @FunctionName("httpToQueue")
@@ -265,21 +265,21 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 
 可以使用 `StorageAccount` 特性在类、方法或参数级别指定存储帐户。 有关详细信息，请参阅“触发器 - 特性”。
 
-# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
 
 C# 脚本不支持特性。
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 JavaScript 不支持特性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python 不支持属性。
+Python 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-注释`QueueOutput`允许您将消息写入函数的输出。 下面的示例显示了创建队列消息的 HTTP 触发函数。
+使用`QueueOutput`批注可以编写消息作为函数的输出。 下面的示例演示了一个用于创建队列消息的 HTTP 触发的函数。
 
 ```java
 package com.function;
@@ -300,27 +300,27 @@ public class HttpTriggerQueueOutput {
 }
 ```
 
-| properties    | 描述 |
+| properties    | 说明 |
 |-------------|-----------------------------|
-|`name`       | 在函数签名中声明参数名称。 触发函数时，此参数的值具有队列消息的内容。 |
+|`name`       | 声明函数签名中的参数名称。 触发函数时，此参数的值将具有队列消息的内容。 |
 |`queueName`  | 声明存储帐户中的队列名称。 |
 |`connection` | 指向存储帐户连接字符串。 |
 
-与`QueueOutput`注释关联的参数类型为[输出绑定\<T\>](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/OutputBinding.java)实例。
+与`QueueOutput`批注关联的参数被类型化为[OutputBinding\<T\> ](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/OutputBinding.java)实例。
 
 ---
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 
-下表介绍了您在*函数.json*文件和`Queue`属性中设置的绑定配置属性。
+下表说明了在*函数 json*文件和`Queue`属性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |描述|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type** | 不适用 | 必须设置为 `queue`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
-|direction**** | 不适用 | 必须设置为 `out`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|**name** | 不适用 | 表示函数代码中的队列的变量的名称。 设置为 `$return` 可引用函数返回值。|
-|**queueName** |**队列名称** | 队列的名称。 |
-|**连接** | **连接** |包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，Functions 运行时将会查找名为“MyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。|
+|type  | 不适用 | 必须设置为 `queue`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|**方向键** | n/a | 必须设置为 `out`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
+|**name** | n/a | 表示函数代码中的队列的变量的名称。 设置为 `$return` 可引用函数返回值。|
+|**queueName** |**QueueName** | 队列的名称。 |
+|**connection** | **连接** |包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，Functions 运行时将会查找名为“MyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -328,12 +328,12 @@ public class HttpTriggerQueueOutput {
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-使用 方法参数（如`out T paramName`）编写单个队列消息。 可以使用方法返回类型而不使用 `out` 参数，`T` 可为以下任何类型：
+使用方法参数（如） `out T paramName`编写单个队列消息。 可以使用方法返回类型而不使用 `out` 参数，`T` 可为以下任何类型：
 
 * 可序列化为 JSON 的对象
 * `string`
 * `byte[]`
-* [云队列消息] 
+* [CloudQueueMessage] 
 
 如果尝试绑定到 `CloudQueueMessage` 并收到错误消息，请确保已引用[正确的存储 SDK 版本](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)。
 
@@ -342,14 +342,14 @@ public class HttpTriggerQueueOutput {
 * `ICollector<T>` 或 `IAsyncCollector<T>`
 * [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
 
-# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
 
-使用 方法参数（如`out T paramName`）编写单个队列消息。 是`paramName`函数 的属性中`name`指定的值 *。* 可以使用方法返回类型而不使用 `out` 参数，`T` 可为以下任何类型：
+使用方法参数（如） `out T paramName`编写单个队列消息。 `paramName`是在`name` *函数 json*的属性中指定的值。 可以使用方法返回类型而不使用 `out` 参数，`T` 可为以下任何类型：
 
 * 可序列化为 JSON 的对象
 * `string`
 * `byte[]`
-* [云队列消息] 
+* [CloudQueueMessage] 
 
 如果尝试绑定到 `CloudQueueMessage` 并收到错误消息，请确保已引用[正确的存储 SDK 版本](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)。
 
@@ -358,25 +358,25 @@ public class HttpTriggerQueueOutput {
 * `ICollector<T>` 或 `IAsyncCollector<T>`
 * [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-输出队列项可通过`context.bindings.<NAME>`与`<NAME>`*函数.json*中定义的名称匹配的位置可用。 可对队列项有效负载使用字符串或 JSON 可序列化对象。
+通过`context.bindings.<NAME>`与*函数 json*中定义的名称`<NAME>`匹配的，可以获取输出队列项。 可对队列项有效负载使用字符串或 JSON 可序列化对象。
 
 # <a name="python"></a>[Python](#tab/python)
 
-从函数中提供事件中心消息有两个选项：
+有两个选项可用于从函数输出事件中心消息：
 
-- **返回值**：将`name`*函数.json*中的`$return`属性设置为 。 使用此配置，函数的返回值将保留为队列存储消息。
+- **返回值**：将`name` *函数 json*中的属性设置为`$return`。 使用此配置时，函数的返回值将持久保存为队列存储消息。
 
-- **命令 ：** 将值传递给声明为[Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python)类型的参数的[集](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)方法。 传递给`set`的值将保留为队列存储消息。
+- **命令式**：向声明为[Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python)类型的参数的[set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)方法传递值。 传递给`set`的值将持久保存为队列存储消息。
 
 # <a name="java"></a>[Java](#tab/java)
 
-使用[队列输出](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queueoutput)注释从函数中输出事件中心消息有两个选项：
+可以通过以下两个选项使用[QueueOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queueoutput)批注从函数输出事件中心消息：
 
-- **返回值**：通过将注释应用于函数本身，函数的返回值将保留为事件中心消息。
+- **返回值**：通过将批注应用于函数本身，函数的返回值将作为事件中心消息保持。
 
-- **命令：** 要显式设置消息值，请将注释应用于类型[`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding)的特定参数，其中`T`POJO 或任何本机 Java 类型。 使用此配置，将值传递给`setValue`该方法会将该值保留为事件中心消息。
+- **命令式**：若要显式设置消息值，请将批注应用到类型[`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding)的特定参数，其中`T`是 POJO 或任何本机 Java 类型。 使用此配置时，向`setValue`方法传递值会将值作为事件中心消息保留。
 
 ---
 
@@ -386,7 +386,7 @@ public class HttpTriggerQueueOutput {
 |---|---|
 | 队列 | [队列错误代码](https://docs.microsoft.com/rest/api/storageservices/queue-service-error-codes) |
 | Blob、表、队列 | [存储错误代码](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
-| Blob、表、队列 |  [疑难解答](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
+| Blob、表、队列 |  [故障排除](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 <a name="host-json"></a>  
 
@@ -412,7 +412,7 @@ public class HttpTriggerQueueOutput {
 }
 ```
 
-|properties  |默认 | 描述 |
+|properties  |默认 | 说明 |
 |---------|---------|---------|
 |maxPollingInterval|00:00:01|队列轮询的最大间隔时间。 最小值为 00:00:00.100（100 毫秒），可递增至 00:01:00（1 分钟）。  在 1.x 中，数据类型是毫秒，在 2.x 及更高版本中，数据类型是 TimeSpan。|
 |visibilityTimeout|00:00:00|消息处理失败时的重试间隔时间。 |
@@ -422,8 +422,8 @@ public class HttpTriggerQueueOutput {
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在队列存储数据更改时运行函数（触发器）](./functions-bindings-storage-queue-trigger.md)
+- [将函数作为队列存储数据更改运行（触发器）](./functions-bindings-storage-queue-trigger.md)
 
 <!-- LINKS -->
 
-[云队列消息]: /dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage
+[CloudQueueMessage]: /dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage

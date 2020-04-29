@@ -1,84 +1,84 @@
 ---
-title: 使用 Azure Blob 存储进行模型转换
-description: 描述设置和使用 blob 存储进行模型转换的常见步骤。
+title: 将 Azure Blob 存储用于模型转换
+description: 介绍为模型转换设置和使用 blob 存储的常见步骤。
 author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
 ms.openlocfilehash: 6f0605077bd131c54f27e3bf46240331557fd92e
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681644"
 ---
-# <a name="use-azure-blob-storage-for-model-conversion"></a>使用 Azure Blob 存储进行模型转换
+# <a name="use-azure-blob-storage-for-model-conversion"></a>将 Azure Blob 存储用于模型转换
 
-[模型转换](model-conversion.md)服务需要访问 Azure Blob 存储，以便它可以检索输入数据和存储输出数据。 本文介绍如何执行最常见的步骤。
+[模型转换](model-conversion.md)服务需要访问 Azure blob 存储，以便可以检索输入数据和存储输出数据。 本文介绍如何执行最常见的步骤。
 
 ## <a name="prepare-azure-storage-accounts"></a>准备 Azure 存储帐户
 
-- 创建存储帐户 （存储 V2）
-- 在存储帐户中创建输入 blob 容器（例如，名为"arrinput"）
-- 在存储帐户中创建输出 Blob 容器（例如，名为"arr输出"）
+- 创建存储帐户（StorageV2）
+- 在存储帐户中创建一个输入 blob 容器（例如，名为 "arrinput"）
+- 在存储帐户中创建一个输出 blob 容器（例如，名为 "arroutput"）
 
 > [!TIP]
-> 有关如何设置存储帐户的分步说明，请查看[快速入门：转换用于渲染的模型](../../quickstarts/convert-model.md)
+> 有关如何设置存储帐户的分步说明，请参阅[快速入门：转换用于呈现的模型](../../quickstarts/convert-model.md)
 
-存储帐户和 blob 容器的创建可以使用以下工具之一完成：
+可以通过以下工具之一来创建存储帐户和 blob 容器：
 
 - [Azure 门户](https://portal.azure.com)
 - [az 命令行](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [Azure 存储浏览器](https://azure.microsoft.com/features/storage-explorer/)
-- SDK（C#，Python ...
+- Sdk （c #、Python ...）
 
-## <a name="ensure-azure-remote-rendering-can-access-your-storage-account"></a>确保 Azure 远程呈现可以访问存储帐户
+## <a name="ensure-azure-remote-rendering-can-access-your-storage-account"></a>确保 Azure 远程呈现可以访问你的存储帐户
 
-Azure 远程 Rending 需要从存储帐户检索模型数据，并将数据写回存储帐户。
+Azure 远程呈现需要从存储帐户检索模型数据，并将数据写回。
 
-您可以通过以下两种方式授予 Azure 远程呈现对存储帐户的访问权限：
+可以通过以下两种方式授予对存储帐户的 Azure 远程呈现访问权限：
 
 ### <a name="connect-your-azure-storage-account-with-your-azure-remote-rendering-account"></a>将 Azure 存储帐户与 Azure 远程呈现帐户连接
 
-按照"[创建帐户](../create-an-account.md#link-storage-accounts)"部分中给出的步骤操作。
+按照[创建帐户](../create-an-account.md#link-storage-accounts)部分中提供的步骤进行操作。
 
 ### <a name="retrieve-sas-for-the-storage-containers"></a>检索存储容器的 SAS
 
-存储的访问签名 （SAS） 用于授予输入的读取访问权限和输出的写入访问权限。 我们建议在每次转换模型时生成新的 URI。 由于 URI 会在一段时间后过期，因此将其保留更长时间可能会意外中断应用程序。
+存储访问签名（SAS）用于授予对输入和输出访问权限的读取访问权限。 建议每次转换模型时生成新的 Uri。 由于 Uri 将在一段时间后过期，将它们保持较长的持续时间可能会导致应用程序意外中断。
 
-有关 SAS 的详细信息，请参阅[SAS 文档](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)。
+有关 SAS 的详细信息，请参阅[sas 文档](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)。
 
-可以使用：
+可以使用以下项之一生成 SAS URI：
 
-- az PowerShell 模块
-  - 请参阅[示例 PowerShell 脚本](../../samples/powershell-example-scripts.md)
+- az PowerShell module
+  - 请参阅[PowerShell 脚本示例](../../samples/powershell-example-scripts.md)
 - [az 命令行](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [Azure 存储浏览器](https://azure.microsoft.com/features/storage-explorer/)
-  - 右键单击容器"获取共享访问签名"（读取、列表访问输入容器，写入输出容器的访问）
-- SDK（C#，Python ...
+  - 右键单击容器 "获取共享访问签名" （读取、列出输入容器的访问权限、对输出容器的写访问权限）
+- Sdk （c #、Python ...）
 
-在资产转换中使用共享访问签名的示例显示在[Powershell 示例脚本](../../samples/powershell-example-scripts.md#script-conversionps1)的 Conversion.ps1 中。
+有关在资产转换中使用共享访问签名的示例，请访问[Powershell 示例脚本](../../samples/powershell-example-scripts.md#script-conversionps1)。
 
-## <a name="upload-an-input-model"></a>上传输入模型
+## <a name="upload-an-input-model"></a>上载输入模型
 
-要开始转换模型，您需要使用以下选项之一上载模型：
+若要开始转换模型，需要使用以下选项之一上载它：
 
-- [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)- 在 Azure Blob 存储上上载/下载/管理文件的便捷 UI
+- [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)-一种方便的 UI，可用于上传/下载/管理 Azure blob 存储上的文件
 - [Azure 命令行](https://docs.microsoft.com/azure/storage/common/storage-azure-cli)
 - [Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.2.0)
-  - 请参阅[示例电源外壳脚本](../../samples/powershell-example-scripts.md)
-- [使用存储 SDK（Python、C# ...](https://docs.microsoft.com/azure/storage/)
-- [使用 Azure 存储 REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)
+  - 请参阅[PowerShell 脚本示例](../../samples/powershell-example-scripts.md)
+- [使用存储 SDK （Python、c # ...）](https://docs.microsoft.com/azure/storage/)
+- [使用 Azure 存储 REST Api](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)
 
-有关如何上传数据进行转换的示例，请参阅[Powershell 示例脚本](../../samples/powershell-example-scripts.md#script-conversionps1)的 Conversion.ps1。
+有关如何上传用于转换的数据的示例，请参阅[Powershell 示例脚本](../../samples/powershell-example-scripts.md#script-conversionps1)的转换。
 
 ## <a name="get-a-sas-uri-for-the-converted-model"></a>获取转换后的模型的 SAS URI
 
-此步骤类似于[检索存储容器的 SAS。](#retrieve-sas-for-the-storage-containers) 但是，这一次您需要检索已写入输出容器的模型文件的 SAS URI。
+此步骤类似于[检索存储容器的 SAS](#retrieve-sas-for-the-storage-containers)。 但是，这次需要检索模型文件的 SAS URI，该 URI 已写入到输出容器。
 
-例如，要通过[Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)检索 SAS URI，请右键单击模型文件并选择"获取共享访问签名"。
+例如，若要通过[Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)检索 SAS URI，请右键单击模型文件，然后选择 "获取共享访问签名"。
 
-如果尚未将存储帐户连接到 Azure 远程呈现帐户，则需要共享访问签名 （SAS） 来加载模型。 您可以在["创建帐户](../create-an-account.md#link-storage-accounts)"中了解如何连接您的帐户。
+如果尚未将存储帐户连接到 Azure 远程呈现帐户，则需要使用共享访问签名（SAS）来加载模型。 你可以在[创建帐户](../create-an-account.md#link-storage-accounts)中了解如何连接你的帐户。
 
 ## <a name="next-steps"></a>后续步骤
 

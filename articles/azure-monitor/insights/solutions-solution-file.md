@@ -8,10 +8,10 @@ ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 999177f821b98adfa015520252bd3323d0892533
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79275173"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>在 Azure 中创建管理解决方案文件（预览版）
@@ -32,7 +32,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 
 
 ## <a name="structure"></a>结构
-管理解决方案文件的基本结构与[资源管理器模板](../../azure-resource-manager/templates/template-syntax.md#template-format)相同，如下所示。  以下各节描述了解决方案中的顶级元素及其内容。  
+管理解决方案文件的基本结构与如下所示的[资源管理器模板](../../azure-resource-manager/templates/template-syntax.md#template-format)相同。  以下各节描述了解决方案中的顶级元素及其内容。  
 
     {
        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -43,7 +43,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
        "outputs": {  }
     }
 
-## <a name="parameters"></a>参数
+## <a name="parameters"></a>parameters
 [parameters](../../azure-resource-manager/templates/template-syntax.md#parameters) 是你在用户安装管理解决方案时从用户请求的值。  存在所有解决方案均具有的标准参数，你也可以根据特定解决方案的需要添加其他参数。  用户安装解决方案时提供参数值的方式取决于特定参数和解决方案安装方式。
 
 用户通过 Azure 市场或 Azure 快速入门模板[安装管理解决方案](solutions.md#install-a-monitoring-solution)时，系统会提示他们选择 [Log Analytics 工作区和自动化帐户](solutions.md#log-analytics-workspace-and-automation-account)。  这些用于填充每个标准参数的值。  系统不提示用户直接提供标准参数的值，但会提示他们提供任何其他参数的值。
@@ -61,7 +61,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 
 下表描述了参数属性。
 
-| 特性 | 描述 |
+| Attribute | 说明 |
 |:--- |:--- |
 | type |参数的数据类型。 向用户显示的输入控件取决于数据类型。<br><br>bool - 下拉框<br>string - 文本框<br>int - 文本框<br>securestring - 密码字段<br> |
 | category |参数的可选类别。  相同类别中的参数分到一组。 |
@@ -122,7 +122,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
     }
 
 
-请参阅解决方案的其他元素中语法为 **parameters('parameter name')** 的参数值。  例如，要访问工作区名称，请使用**参数（"工作区名称"）**
+请参阅解决方案的其他元素中语法为 **parameters('parameter name')** 的参数值。  例如，要访问工作区名称，将使用 **parameters('workspaceName')**
 
 ## <a name="variables"></a>变量
 [Variables](../../azure-resource-manager/templates/template-syntax.md#variables) 是会在管理解决方案的其余部分使用的值。  这些值不公开给安装解决方案的用户。  它们旨在向作者提供一个位置，供作者在该位置中管理可在整个解决方案中使用多次的值。 应将任何特定于解决方案的值放在变量中，而不是在 **resources** 元素中对其进行硬编码。  这使代码更具可读性，并允许在更高版本中轻松地更改这些值。
@@ -137,7 +137,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
         "AutomationApiVersion": "2015-10-31"
     },
 
-引用整个解决方案中的变量值时的语法为 **variables('variable name')** 的变量值。  例如，要访问解决方案名称变量，请使用**变量（"解决方案名称"）。**
+引用整个解决方案中的变量值时的语法为 **variables('variable name')** 的变量值。  例如，若要访问 SolutionName 变量，需使用 **variables('SolutionName')** 。
 
 还可定义包含多组值的复杂变量。  这些复杂变量对以下管理解决方案特别有用：为不同类型的资源定义多个属性。  例如，可将如上所示的解决方案变量重构到以下内容。
 
@@ -158,7 +158,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 
 
 ### <a name="dependencies"></a>依赖项
-**dependsOn** 元素指定对另一个资源的[依赖](../../azure-resource-manager/templates/define-resource-dependency.md)。  安装解决方案时，资源的所有依赖均已创建后才能创建资源。  例如，如果解决方案使用[作业资源](solutions-resources-automation.md#automation-jobs)安装，则该解决方案需要[启动 runbook](solutions-resources-automation.md#runbooks)。  作业资源将依赖于 runbook 资源，以确保在创建作业之前创建 runbook。
+**dependsOn** 元素指定对另一个资源的[依赖](../../azure-resource-manager/templates/define-resource-dependency.md)。  安装解决方案时，资源的所有依赖均已创建后才能创建资源。  例如，如果解决方案使用[作业资源](solutions-resources-automation.md#runbooks)安装，则该解决方案需要[启动 runbook](solutions-resources-automation.md#automation-jobs)。  作业资源将依赖于 runbook 资源，以确保在创建作业之前创建 runbook。
 
 ### <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics 工作区和自动化帐户
 管理解决方案需要 [Log Analytics 工作区](../../azure-monitor/platform/manage-access.md)来包含视图，也需要[自动化帐户](../../automation/automation-security-overview.md#automation-account-overview)来包含 runbook 和相关资源。  这些内容在解决方案中的资源创建之前必须已经存在，并且不能在解决方案本身中定义。  部署解决方案时，用户将[指定工作区和帐户](solutions.md#log-analytics-workspace-and-automation-account)，但作为作者，应考虑以下几点。
@@ -204,18 +204,18 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 ### <a name="properties"></a>属性
 解决方案资源具有下表中的属性。  这包括由用于定义安装解决方案后如何管理资源的解决方案引用和包含的资源。  解决方案中的每个资源应在 **referencedResources** 或 **containedResources** 属性中列出。
 
-| properties | 描述 |
+| properties | 说明 |
 |:--- |:--- |
-| workspaceResourceId |窗体中的日志分析工作区的 ID * \<>/提供程序/Microsoft.操作见解/工作区/\<工作区名称\>*。 |
+| workspaceResourceId |格式为 *\<Resource Group ID>/providers/Microsoft.OperationalInsights/workspaces/\<Workspace Name\>* 的 Log Analytics 工作区的 ID。 |
 | referencedResources |解决方案中不应随解决方案一起删除的资源的列表。 |
 | containedResources |解决方案中应随解决方案一起删除的资源的列表。 |
 
-上面的示例适用于具有 runbook、计划和视图的解决方案。  在 **properties** 元素中*引用* 计划和 runbook，这样它们就不会随解决方案一起删除。  *包含*视图，以便它将随解决方案一起删除。
+上面的示例适用于具有 runbook、计划和视图的解决方案。  在 *properties* 元素中**引用** 计划和 runbook，这样它们就不会随解决方案一起删除。  *包含*视图，以便它将随解决方案一起删除。
 
 ### <a name="plan"></a>计划
 解决方案资源的 **plan** 实体具有下表中的属性。
 
-| properties | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | name |解决方案名称。 |
 | 版本 |由作者确定的解决方案版本。 |

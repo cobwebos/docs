@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: aa0ffbd69e73ddbef72e0eabf79f2736079c3d23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79270714"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>管理 Azure 开发测试实验室中的某个实验室的所有策略
@@ -39,7 +39,7 @@ Azure 开发测试实验室允许通过管理每个实验室的策略（设置�
 
 1. 如果启用此策略，选择一个或多个可以在实验室中创建的 VM 大小。
 
-1. 选择“保存”。****
+1. 选择“保存”  。
 
 ## <a name="set-virtual-machines-per-user"></a>设置每个用户的虚拟机
 通过“每个用户的虚拟机数”策略可指定个人用户可创建的 VM 数量****。 若用户在达到用户上限时尝试创建或声明 VM，则会出现错误消息，指出无法创建/声明 VM。 
@@ -52,7 +52,7 @@ Azure 开发测试实验室允许通过管理每个实验室的策略（设置�
 
 1. 选择“是”限制可以使用 SSD（固态磁盘）的 VM 数。**** 如果不希望限制可以使用 SSD 的 VM 数，请选择“否”。**** 如果选择“是”，请输入一个值，指示可以使用 SSD 创建的 VM 数量。**** 
 
-1. 选择“保存”。****
+1. 选择“保存”  。
 
 ## <a name="set-virtual-machines-per-lab"></a>设置每个实验室的虚拟机
 通过“每个实验室的虚拟机数”策略可指定当前实验室可创建的 VM 数量****。 若用户在达到实验室上限时尝试创建 VM，则会出现错误消息，表示无法创建 VM。 
@@ -65,7 +65,7 @@ Azure 开发测试实验室允许通过管理每个实验室的策略（设置�
 
 1. 选择“是”限制可以使用 SSD（固态磁盘）的 VM 数。**** 如果不希望限制可以使用 SSD 的 VM 数，请选择“否”。**** 如果选择“是”，请输入一个值，指示可以使用 SSD 创建的 VM 数量。**** 
 
-1. 选择“保存”。****
+1. 选择“保存”  。
 
 ## <a name="set-auto-shutdown"></a>设置自动关机
 通过指定此实验室 VM 关机的时间，自动关机策略有助于最小化实验室浪费。
@@ -82,7 +82,7 @@ Azure 开发测试实验室允许通过管理每个实验室的策略（设置�
 
    有关 Webhook 的详细信息，请参阅[创建 Webhook 或 API Azure 函数](../azure-functions/functions-create-a-web-hook-or-api-function.md)。 
 
-1. 选择“保存”。****
+1. 选择“保存”  。
 
 默认情况下，一旦启用，此策略会应用到当前实验室中所有 VM。 要从特定 VM 中删除此设置，请打开 VM 的管理窗格，并更改其“自动关机”设置****。
 
@@ -121,11 +121,11 @@ Azure 开发测试实验室允许通过管理每个实验室的策略（设置�
 
 3. 如果启用此策略，请指定计划的启动时间、时区以及在每周的哪几天应用该时间。 
 
-4. 选择“保存”。****
+4. 选择“保存”  。
 
 一旦启用，此策略不会自动应用到当前实验室中所有 VM。 若要将此设置应用到特定 VM，请打开 VM 的管理窗格，并更改其“自动启动”设置****。
 
-## <a name="set-expiration-date"></a>设置到期日期
+## <a name="set-expiration-date"></a>设置过期日期
 在[创建 VM](devtest-lab-add-vm.md) 时可以设置到期日期。 在“高级设置”中，选择日历图标，指定一个会自动删除 VM 的日期****。 默认情况下，VM 永不过期。
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
