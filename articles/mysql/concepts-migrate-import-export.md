@@ -1,5 +1,5 @@
 ---
-title: 导入和导出 - MySQL 的 Azure 数据库
+title: 导入和导出 - Azure Database for MySQL
 description: 本文介绍使用 MySQL Workbench 等工具在 Azure Database for MySQL 导入和导出数据库的常用方法。
 author: ajlam
 ms.author: andrela
@@ -7,22 +7,22 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
 ms.openlocfilehash: 83b0a69e063e9427c726216ef873f5a1c97f9582
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78163720"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>使用导入和导出迁移 MySQL 数据库
 本文介绍通过使用 MySQL Workbench 将数据导入和导出到 Azure Database for MySQL 服务器的两种常用方法。 
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 若要逐步执行本操作方法指南，需要：
 - 按照[使用 Azure 门户创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-portal.md)所述创建的 Azure Database for MySQL 服务器。
-- MySQL 工作台[MySQL 工作台 下载](https://dev.mysql.com/downloads/workbench/)或其他第三方 MySQL 工具执行导入/导出。
+- MySQL 工作台[Mysql 工作台下载](https://dev.mysql.com/downloads/workbench/)或其他第三方 mysql 工具来执行导入/导出。
 
 ## <a name="use-common-tools"></a>使用常用工具
-使用常见实用程序和工具（如 MySQL 工作台或 mysqldump）将数据远程连接到或导出到 MySQL 的 Azure 数据库中。 
+使用常见的实用工具和工具（如 MySQL 工作台或 mysqldump）远程连接数据，并将数据导入或导出 Azure Database for MySQL。 
 
 在具有 Internet 连接的客户端计算机上使用此类工具连接到 Azure Database for MySQL。 如[在 Azure Database for MySQL 中配置 SSL 连接](concepts-ssl-connection-security.md)中所述，使用具有 SSL 加密的连接是最安全的做法。
 
@@ -83,7 +83,7 @@ ms.locfileid: "78163720"
 下面的示例将从 CSV 文件导入表：
 1. 右键单击要导入的数据库的表。 
 2. 浏览要导入的 CSV 文件并选择它，然后单击“下一步” ****。 
-3. 选择目标表（新的或现有的），然后选择或取消选择“导入前截断表” **** 复选框。 单击“下一步”****。
+3. 选择目标表（新的或现有的），然后选择或取消选择“导入前截断表” **** 复选框。 单击“下一步”。 
 4. 选择编码和要导入的列，然后单击“下一步”****。 
 5. 在“导入数据”**** 页上，单击“下一步”****。 向导相应地导入数据。
 

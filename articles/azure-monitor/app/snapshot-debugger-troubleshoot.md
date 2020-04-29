@@ -1,15 +1,15 @@
 ---
-title: 排除 Azure 应用程序见解快照调试器
+title: 排查 Azure Application Insights Snapshot Debugger 问题
 description: 本文提供故障排除步骤和信息，帮助开发人员解决在启用或使用 Application Insights 快照调试器时遇到的难题。
 ms.topic: conceptual
 author: brahmnes
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 485f35ed249ab7f6bbb987d8c79afe20287cd25a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671403"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> 排查启用 Application Insights Snapshot Debugger 或查看快照时遇到的问题
@@ -45,10 +45,10 @@ ms.locfileid: "77671403"
 创建快照后，将在磁盘上创建一个小型转储文件 (.dmp)。 一个单独的上传程序进程会创建该小型转储文件，并将其连同所有关联的 PDB 一起上传到 Application Insights Snapshot Debugger 存储。 成功上传小型转储后，会将其从磁盘中删除。 上传程序进程的日志文件会保留在磁盘上。 在应用服务环境中，可在 `D:\Home\LogFiles` 中找到这些日志。 通过应用服务的 Kudu 管理站点查找这些日志文件。
 
 1. 在 Azure 门户中，打开应用服务应用程序。
-2. 单击“高级工具”****，或搜索 **Kudu**。
-3. 单击“转到”****。
-4. 在“调试控制台”下拉列表框中，选择“CMD”********。
-5. 单击“日志文件”****。
+2. 单击“高级工具”  ，或搜索 **Kudu**。
+3. 单击“开始”  。
+4. 在“调试控制台”下拉列表框中，选择“CMD”   。
+5. 单击“日志文件”  。
 
 应至少看到一个名称以 `Uploader_` 或 `SnapshotUploader_` 开头，且扩展名为 `.log` 的文件。 单击相应图标，下载任意日志文件或在浏览器中打开文件。
 文件名包括可标识应用服务实例的唯一后缀。 如果应用服务实例托管于多台计算机上，则每台计算机都有单独的日志文件。 当上传程序检测到新的小型转储文件时，会将其记录在日志文件中。 下面是成功的快照和上传的示例：
@@ -97,7 +97,7 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
     DateTime=2018-03-09T01:47:19.4614027Z
 ```
 
-对于未__ 托管于应用服务中的应用程序，上传程序日志与小型转储位于同一文件夹：`%TEMP%\Dumps\<ikey>`（其中 `<ikey>` 是检测密钥）。
+对于未  托管于应用服务中的应用程序，上传程序日志与小型转储位于同一文件夹：`%TEMP%\Dumps\<ikey>`（其中 `<ikey>` 是检测密钥）。
 
 ## <a name="troubleshooting-cloud-services"></a>云服务故障排除
 对于云服务中的角色而言，默认临时文件夹可能太小，无法容纳小型转储文件，从而导致丢失快照。
@@ -161,13 +161,13 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
 - APPDATA
 - TEMP
 
-如果找不到合适的文件夹，则快照收集器将报告一个错误，指出“找不到合适的影子副本文件夹。”__
+如果找不到合适的文件夹，则快照收集器将报告一个错误，指出“找不到合适的影子副本文件夹。” 
 
 如果复制失败，则快照收集器会报告一个 `ShadowCopyFailed` 错误。
 
 如果无法启动上传程序，则快照收集器会报告一个 `UploaderCannotStartFromShadowCopy` 错误。 消息的正文通常包含 `System.UnauthorizedAccessException`。 发生此错误通常是因为应用程序正在权限降低的帐户下运行。 此帐户有权向影子副本文件夹进行写入，但无权执行代码。
 
-因为这些错误通常发生在启动期间，所以它们后面通常会跟有一个 `ExceptionDuringConnect` 错误，指出“上传程序无法启动。”__
+因为这些错误通常发生在启动期间，所以它们后面通常会跟有一个 `ExceptionDuringConnect` 错误，指出“上传程序无法启动。” 
 
 若要解决这些错误，可以通过 `ShadowCopyFolder` 配置选项手动指定影子副本文件夹。 例如，使用 ApplicationInsights.config：
 
@@ -196,10 +196,10 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
 
 ## <a name="use-application-insights-search-to-find-exceptions-with-snapshots"></a>使用 Application Insights 搜索查找附带快照的异常
 
-创建快照后，出现的异常标记有快照 ID。 向 Application Insights 报告异常遥测时，该快照 ID 作为自定义属性包含在内。 通过 Application Insights 中的“搜索”****，可借助 `ai.snapshot.id` 自定义属性找到所有遥测。
+创建快照后，出现的异常标记有快照 ID。 向 Application Insights 报告异常遥测时，该快照 ID 作为自定义属性包含在内。 通过 Application Insights 中的“搜索”  ，可借助 `ai.snapshot.id` 自定义属性找到所有遥测。
 
 1. 在 Azure 门户中浏览到 Application Insights 资源。
-2. 单击“搜索”****。
+2. 单击 **“搜索”** 。
 3. 在“搜索”文本框中输入 `ai.snapshot.id`，然后按 Enter。
 
 ![在门户中使用快照 ID 搜索遥测](./media/snapshot-debugger/search-snapshot-portal.png)

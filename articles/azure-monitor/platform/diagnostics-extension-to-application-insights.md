@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/19/2016
 ms.openlocfilehash: 80d971abd248ca8253a374b488c693ea9aa2ea3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77672321"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>将云服务、虚拟机或 Service Fabric 诊断数据发送到 Application Insights
@@ -56,7 +56,7 @@ Application Insights 接收器的示例配置：
     ]
 }
 ```
-- **接收器的 ** *name* 属性是用于唯一标识该接收器的字符串值。
+- **接收器**的 name  属性是用于唯一标识该接收器的字符串值。
 
 - **ApplicationInsights** 元素指定要将 Azure 诊断数据发送到的 Application Insights 资源的检测键。
     - 如果没有 Application Insights 资源，请参阅[创建新的 Application Insights 资源](../../azure-monitor/app/create-new-resource.md )，了解有关创建资源和获取检测键的详细信息。
@@ -210,7 +210,7 @@ Application Insights 接收器的示例配置：
 
 - **通道只能记录类型，而不能记录性能计数器。** 如果对性能计数器元素指定通道，将忽略该通道。
 - **通道的日志级别不能超过 Azure 诊断所要收集的日志级别。** 例如，不能在 Logs 元素中收集应用程序日志错误，并且不能尝试向 Application Insight 接收器发送详细日志。 *scheduledTransferLogLevelFilter* 属性收集的日志数始终必须等于或大于尝试发送到接收器的日志数。
-- **无法将 Azure 诊断扩展收集的 Blob 数据发送到 Application Insights。** 例如，在*目录*节点下指定的任何内容。 对于故障转储，实际故障转储将发送到 Blob 存储，并只会将生成了故障转储的通知发送到 Application Insights。
+- **无法将 Azure 诊断扩展收集的 Blob 数据发送到 Application Insights。** 例如，*Directories* 节点下指定的任何数据。 对于故障转储，实际故障转储将发送到 Blob 存储，并只会将生成了故障转储的通知发送到 Application Insights。
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何在 Application Insights 中[查看 Azure 诊断信息](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices)。

@@ -1,5 +1,5 @@
 ---
-title: Azure VM 上的配置文件 Web 应用 - 应用程序见解探查器
+title: 在 Azure VM 上分析 web 应用-Application Insights Profiler
 description: 使用 Application Insights Profiler 探查 Azure VM 上的 Web 应用。
 ms.topic: conceptual
 author: cweining
@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 11/08/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 7c5dfe6ed08df01f78346c76fd5a35e7d64ab520
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671573"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>使用 Application Insights Profiler 探查在 Azure 虚拟机或虚拟机规模集上运行的 Web 应用
@@ -20,7 +20,7 @@ ms.locfileid: "77671573"
 Azure Application Insights Profiler 也可以部署在以下服务上：
 * [Azure 应用服务](../../azure-monitor/app/profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Azure 云服务](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
-* [Azure 服务结构](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Service Fabric](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 ## <a name="deploy-profiler-on-a-virtual-machine-or-a-virtual-machine-scale-set"></a>在虚拟机或虚拟机规模集上部署 Profiler
 本文介绍如何在 Azure 虚拟机 (VM) 或 Azure 虚拟机规模集上运行 Application Insights Profiler。 Profiler 与适用于 VM 的 Azure 诊断扩展一同安装。 请将该扩展配置为运行 Profiler，并将 Application Insights SDK 内置到应用程序中。
@@ -67,12 +67,12 @@ Azure Application Insights Profiler 也可以部署在以下服务上：
 
 1. 如果目标应用程序通过 [IIS](https://www.microsoft.com/web/downloads/platform.aspx) 运行，请启用 `IIS Http Tracing` Windows 功能。
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 与环境建立远程访问连接，然后使用 [添加 Windows 功能]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) 窗口。 或者，以管理员身份在 PowerShell 中运行以下命令：  
+   a. 与环境建立远程访问连接，然后使用 [添加 Windows 功能]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) 窗口。 或者，以管理员身份在 PowerShell 中运行以下命令：  
 
     ```powershell
     Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All
     ```  
-   b.保留“数据库类型”设置，即设置为“共享”。 如果无法建立远程访问连接，可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 运行以下命令：  
+   b. 如果无法建立远程访问连接，可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 运行以下命令：  
 
     ```powershell
     az vm run-command invoke -g MyResourceGroupName -n MyVirtualMachineName --command-id RunPowerShellScript --scripts "Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All"
@@ -87,7 +87,7 @@ Azure Application Insights Profiler 也可以部署在以下服务上：
 
     ![检查是否安装了 WAD 扩展][wadextension]
 
-2. 查找你的 VM 的 VM 诊断扩展。 转到[https://resources.azure.com](https://resources.azure.com)。 展开你的资源组、Microsoft.Compute 虚拟机、虚拟机名称和扩展。  
+2. 查找你的 VM 的 VM 诊断扩展。 转到 [https://resources.azure.com](https://resources.azure.com)。 展开你的资源组、Microsoft.Compute 虚拟机、虚拟机名称和扩展。  
 
     ![在 Azure 资源浏览器中导航到 WAD 配置][azureresourceexplorer]
 

@@ -1,5 +1,5 @@
 ---
-title: 列车 SVD 推荐者：模块参考
+title: 训练 SVD 推荐器：模块参考
 titleSuffix: Azure Machine Learning
 description: 了解如何通过 Azure 机器学习中的“训练 SVD 推荐器”模块使用 SVD 算法训练 Bayesian 推荐器。
 services: machine-learning
@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: 417ef716c391126982809574fc16f6681115cac3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79477402"
 ---
 # <a name="train-svd-recommender"></a>训练 SVD 推荐器
@@ -26,7 +26,7 @@ ms.locfileid: "79477402"
   
 ## <a name="more-about-recommendation-models-and-the-svd-recommender"></a>有关建议模型和 SVD 推荐器的详细信息  
 
-建议系统的主要目标是向系统的用户推荐一个或多个项目。**** 项目示例可能为电影、餐馆、书籍或歌曲。 用户可以是具有项目首选项的人员、一组人员或其他实体。  
+建议系统的主要目标是向系统的用户推荐一个或多个项目。   项目示例可能为电影、餐馆、书籍或歌曲。 用户可以是具有项目首选项的人员、一组人员或其他实体。  
 
 推荐器系统有两种主要方法： 
 
@@ -35,7 +35,7 @@ ms.locfileid: "79477402"
 
 SVD 推荐器使用用户和项目的标识符，以及用户对项目的评级的矩阵。 它是一个*协作式推荐器*。 
 
-有关 SVD 推荐者的详细信息，请参阅相关研究论文：[推荐器系统的矩阵分解技术](https://datajobs.com/data-science-repo/Recommender-Systems-[Netflix].pdf)。
+有关 SVD 推荐器的详细信息，请参阅相关的研究论文：[推荐器系统的矩阵分解技术](https://datajobs.com/data-science-repo/Recommender-Systems-[Netflix].pdf)。
 
 
 ## <a name="how-to-configure-train-svd-recommender"></a>如何配置“训练 SVD 推荐器”  
@@ -48,11 +48,11 @@ SVD 推荐器使用用户和项目的标识符，以及用户对项目的评级�
 + 第二列包含项目标识符。
 + 第三列包含用户-项目对的评级。 评级值必须是数字类型的。  
 
-Azure 机器学习设计器中**的影片分级**数据集（选择**数据集**，然后**示例**）演示了预期的格式：
+Azure 机器学习设计器中的**电影分级**数据集（选择**数据集**，然后是**示例**）演示了预期的格式：
 
-![电影分级](media/module/movie-ratings-dataset.png)
+![电影评分](media/module/movie-ratings-dataset.png)
 
-通过此示例，您可以看到单个用户对多部电影进行了评级。 
+在此示例中，可以看到一个用户已对多个电影评级。 
 
 ### <a name="train-the-model"></a>定型模型
 

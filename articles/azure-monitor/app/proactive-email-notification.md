@@ -7,10 +7,10 @@ ms.author: harelbr
 ms.date: 03/13/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: f73e5bbdd8585b3367e529a8fa00630042e56cac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671777"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>智能检测电子邮件通知更改
@@ -36,7 +36,7 @@ ms.locfileid: "77671777"
 若要通过 Azure 门户将用户分配到“监视读者”或“监视参与者”角色，请按照[添加角色分配](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment)一文中所述的步骤执行操作。 确保选择_监视读者_或_监视参与者_作为用户分配到的角色。
 
 > [!NOTE]
-> 使用规则设置中的“其他电子邮件收件人”选项配置的智能检测通知特定收件人将不会受此更改影响__。 这些收件人将继续接收电子邮件通知。
+> 使用规则设置中的“其他电子邮件收件人”选项配置的智能检测通知特定收件人将不会受此更改影响  。 这些收件人将继续接收电子邮件通知。
 
 如果对此更改有任何问题或疑问，欢迎[联系我们](mailto:smart-alert-feedback@microsoft.com)。
 

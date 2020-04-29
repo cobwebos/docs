@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
 ms.openlocfilehash: 4b314fbdb9cbc0c0b797cbee8e92ee4702bbea81
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77919458"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>远程桌面服务在 Azure VM 上不启动
@@ -34,14 +34,14 @@ ms.locfileid: "77919458"
 
 - 在使用事件查看器远程查看 VM 中的事件日志时， 你发现远程桌面服务 (TermService) 未启动或无法启动。 下面是日志示例：
 
-    **日志名称**： 系统 </br>
-    **源**： 服务控制管理器 </br>
+    **日志名称**：系统 </br>
+    **源**：服务控制管理器 </br>
     **日期**: 12/16/2017 11:19:36 AM</br>
-    **事件 ID**： 7022</br>
+    **事件 ID**：7022</br>
     **任务类别**: 无</br>
-    **级别**： 错误</br>
-    **关键词**： 经典</br>
-    **用户**：不适用</br>
+    **级别**：错误</br>
+    **关键字**：经典</br>
+    **用户**：暂缺</br>
     **计算机**: vm.contoso.com</br>
     **说明**: 远程桌面服务服务在启动时挂起。 
 
@@ -97,21 +97,21 @@ ms.locfileid: "77919458"
     |  错误 |  建议 |
     |---|---|
     |5- 访问被拒绝 |请参阅 [TermService 服务由于访问被拒绝错误而停止](#termservice-service-is-stopped-because-of-an-access-denied-problem)。 |
-    |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |请参阅[已禁用术语服务](#termservice-service-is-disabled)。  |  
+    |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |请参阅[TermService 服务已禁用](#termservice-service-is-disabled)。  |  
     |1058 - ERROR_SERVICE_DISABLED  |请参阅 [TermService 服务崩溃或挂起](#termservice-service-crashes-or-hangs)。  |
     |1059 - ERROR_CIRCULAR_DEPENDENCY |请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。|
     |1067 - ERROR_PROCESS_ABORTED  |请参阅 [TermService 服务崩溃或挂起](#termservice-service-crashes-or-hangs)。  |
     |1068 - ERROR_SERVICE_DEPENDENCY_FAIL|请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。|
     |1069 - ERROR_SERVICE_LOGON_FAILED  |请参阅 [TermService 服务由于登录失败而失败](#termservice-service-fails-because-of-logon-failure) |
     |1070 - ERROR_SERVICE_START_HANG   | 请参阅 [TermService 服务崩溃或挂起](#termservice-service-crashes-or-hangs)。 |
-    |1077 - ERROR_SERVICE_NEVER_STARTED   | 请参阅[已禁用术语服务](#termservice-service-is-disabled)。  |
+    |1077 - ERROR_SERVICE_NEVER_STARTED   | 请参阅[TermService 服务已禁用](#termservice-service-is-disabled)。  |
     |1079 - ERROR_DIFERENCE_SERVICE_ACCOUNT   |请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。 |
     |1753   |请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。   |
     
 #### <a name="termservice-service-is-stopped-because-of-an-access-denied-problem"></a>TermService 服务由于访问被拒绝问题而停止
 
 1. 连接到[串行控制台](serial-console-windows.md)并打开 PowerShell 实例。
-2. 通过运行以下脚本下载进程监视器工具：
+2. 通过运行以下脚本来下载进程监视器工具：
 
    ```
    remove-module psreadline  
@@ -139,16 +139,16 @@ ms.locfileid: "77919458"
    procmon /Terminate 
    ```
 
-5. 收集文件**c：\temp_ProcMonTrace.PML**：
+5. 收集文件**c:\temp\ProcMonTrace.PML**：
 
     1. [将数据磁盘附加到 VM](../windows/attach-managed-disk-portal.md
 )。
     2. 使用串行控制台可将文件复制到新驱动器。 例如，`copy C:\temp\ProcMonTrace.PML F:\` 。 在此命令中，F 是附加的数据磁盘的驱动程序号。
     3. 分离数据驱动器，并将其附加到已安装进程监视器 ubstakke 的正常 VM。
 
-6. 在正常的 VM 上使用进程监视器打开 **ProcMonTrace.PML**。 然后按**结果筛选为 ACCESS 拒绝**，如以下屏幕截图所示：
+6. 在正常的 VM 上使用进程监视器打开 **ProcMonTrace.PML**。 然后按**结果筛选为 "拒绝访问**"，如以下屏幕截图所示：
 
-    ![按结果筛选过程监视器](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
+    ![按进程监视器中的结果筛选](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
 
  
 6. 修复输出中的注册表项、文件夹或文件。 通常，出现此问题的原因是服务中使用的登录帐户没有 ACL 权限，因此无法访问这些对象。 若要了解登录帐户的正确 ACL 权限，可以在正常的 VM 上检查。 
@@ -201,9 +201,9 @@ ms.locfileid: "77919458"
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>将 OS 磁盘附加到恢复 VM
 
-1. [将操作系统磁盘附加到恢复 VM。](../windows/troubleshoot-recovery-disks-portal.md)
+1. [将 OS 磁盘附加到恢复 VM](../windows/troubleshoot-recovery-disks-portal.md)。
 2. 开始与恢复 VM 建立远程桌面连接。 确保附加的磁盘在磁盘管理控制台中标记为“联机”。**** 请注意分配给附加的 OS 磁盘的驱动器号。
-3. 打开一个提升的命令提示实例 （**以管理员身份运行**）。 然后运行以下脚本。 我们假设分配给附加的 OS 磁盘的驱动器号为**F**。将其替换为 VM 中的相应值。 
+3. 打开提升的命令提示符实例（**以管理员身份运行**）。 然后运行以下脚本。 假设分配给附加 OS 磁盘的驱动器号为**F**。将其替换为 VM 中的相应值。 
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv

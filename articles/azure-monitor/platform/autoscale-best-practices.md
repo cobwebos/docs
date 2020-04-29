@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: a05cf87e660cc6c388ea2055bb174c47b99da4a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79248913"
 ---
 # <a name="best-practices-for-autoscale"></a>自动缩放最佳实践
@@ -38,15 +38,15 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 如果手动将实例计数更新为高于或低于最大值的值，则自动缩放引擎会自动缩放回最小值（如果低于）或最大值（如果高于）。 例如，将范围设置在 3 和 6 之间。 如果有一个正在运行的实例，则自动缩放引擎会在下次运行时缩放为三个实例。 同样，如果将缩放规模手动设置为八个实例，则自动缩放会在下次运行时收缩回六个实例。  手动缩放效果只是暂时的，除非也重置了自动缩放规则。
 
 ### <a name="always-use-a-scale-out-and-scale-in-rule-combination-that-performs-an-increase-and-decrease"></a>始终使用执行增加和减少的扩大和缩小规则组合
-如果仅使用组合的一个部件，则自动缩放将仅在单个方向采取操作（横向扩展或收缩），直至它达到配置文件中定义的最大或最小实例计数。 这不是最佳的，理想情况下，你希望资源在使用率过高时纵向扩展以确保可用性。 同样，当使用率过低时，你希望资源纵向收缩，以便可以实现成本节省。
+如果仅使用组合的一个部件，则自动缩放将仅在单个方向采取操作（横向扩展或收缩），直至它达到配置文件中定义的最大或最小实例计数。 这不是最佳的，理想情况下，你希望资源在使用率过高时纵向扩展以确保可用性。 同样，当使用率过低时，你希望资源纵向缩减，以便可以实现成本节省。
 
 ### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>为诊断指标选择相应统计信息
-对于诊断指标，可以选择“平均值”**、“最小值”**、“最大值”** 和“总计”** 作为用作缩放依据的指标。 最常见的统计信息是“平均值”**。
+对于诊断指标，可以选择“平均值”  、“最小值”  、“最大值”  和“总计”  作为用作缩放依据的指标。 最常见的统计信息是“平均值”  。
 
 ### <a name="choose-the-thresholds-carefully-for-all-metric-types"></a>认真为所有指标类型选择阈值
 我们建议基于实际情况为扩大和缩小认真选择不同阈值。
 
-我们建议不要使用如同以下示例的自动缩放设置，其中针对扩大和缩小条件的阈值相同或相似**：
+我们建议不要使用如同以下示例的自动缩放设置，其中针对扩大和缩小条件的阈值相同或相似  ：
 
 * 当线程计数 >= 600 时，按 1 计数增加实例
 * 当线程计数 <= 600 时，按 1 计数减少实例
@@ -57,7 +57,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 2. 自动缩放会通过添加第三个实例进行横向扩展。
 3. 接下来，假定实例间的平均线程数下降到 575。
 4. 进行减少之前，自动缩放会尝试估计缩小后的最终状态。 例如，575 x 3（当前实例计数）= 1,725/2（减少后的最终实例数）= 862.5 个线程。 这意味着如果平均线程计数保持不变，甚至只是略有下降，自动缩放就必须立即再次扩大（即使是在缩小后）。 但是，如果它再次增加，则整个过程会重复，从而导致无限循环。
-5. 为了避免这种情况（称之为“波动”），自动缩放根本不会减少。 相反，它会跳过，并在服务作业下次执行时再次重新评估条件。 这种摇摆状态可能会使许多人感到困惑，因为在平均线程计数是 575 时，自动缩放似乎未起作用。
+5. 为了避免这种情况（称之为“波动”），自动缩放根本不会纵向缩减。 相反，它会跳过，并在服务作业下次执行时再次重新评估条件。 这种摇摆状态可能会使许多人感到困惑，因为在平均线程计数是 575 时，自动缩放似乎未起作用。
 
 在缩减期间进行评估的目的是避免“反复”情况：缩减和扩展操作不断交替。 为扩展和缩减选择相同阈值时，请记住此行为。
 
@@ -113,10 +113,10 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 
 ### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>有关在配置文件中配置多个规则时进行自动缩放的注意事项
 
-在某些情况下可能必须在一个配置文件中设置多个规则。 自动缩放引擎在设置多个规则时使用以下自动缩放规则。
+在某些情况下可能必须在一个配置文件中设置多个规则。 设置了多个规则时，自动缩放引擎将使用以下自动缩放规则。
 
-进行横向扩展时，只要满足任一规则，自动缩放就会运行**。
-进行缩小** 时，自动缩放需要满足所有规则。
+进行横向扩展时，只要满足任一规则，自动缩放就会运行  。
+进行缩小  时，自动缩放需要满足所有规则。
 
 为了进一步说明，假定你具有以下 4 个自动缩放规则：
 
@@ -133,22 +133,22 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 另一方面，如果 CPU 是 25% 且内存是 51%，则自动缩放**不会**缩小。 要进行缩小，CPU 必须是 29% 且内存是 49%。
 
 ### <a name="always-select-a-safe-default-instance-count"></a>始终选择安全的默认实例计数
-默认实例计数很重要，因为自动缩放将服务缩放到指标不可用时的计数。 因此，请选择对工作负荷安全的默认实例计数。
+默认实例计数十分重要，因为自动缩放会在指标不可用时将服务缩放为该计数。 因此，请选择对工作负荷安全的默认实例计数。
 
 ### <a name="configure-autoscale-notifications"></a>配置自动缩放通知
 发生以下任何一种情况时，自动缩放会发布至活动日志：
 
-* 自动缩放将发出缩放操作。
+* 自动缩放发出缩放操作。
 * 自动缩放服务成功完成缩放操作。
 * 自动缩放服务未能执行缩放操作。
 * 自动缩放服务无法使用指标进行缩放决策。
 * 指标再次可用（恢复）于进行缩放决策。
 
-还可以使用活动日志警报监视自动缩放引擎的运行状况。 下面举例说明如何[创建活动日志警报以监视订阅上的所有自动缩放引擎操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)或[创建活动日志警报以监视订阅上所有失败的自动缩放缩小/扩大操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)。
+还可以使用活动日志警报监视自动缩放引擎的运行状况。 下面举例说明如何[创建活动日志警报以监视订阅上的所有自动缩放引擎操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)或[创建活动日志警报以监视订阅上所有失败的自动横向缩减/横向扩展操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)。
 
 除了使用活动日志警报以外，还可以配置电子邮件或 Webhook 通知，以通过自动缩放设置上的通知选项卡获取有关成功缩放操作的通知。
 
 ## <a name="next-steps"></a>后续步骤
 - [创建活动日志警报以监视订阅上的所有自动缩放引擎操作。](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
-- [创建活动日志警报以监视订阅上所有失败的自动缩放缩小/扩大操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
+- [创建活动日志警报以监视订阅上所有失败的自动横向缩减/横向扩展操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
 

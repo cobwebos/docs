@@ -4,10 +4,10 @@ description: 使用 Azure Application Insights 中的智能检测监视应用程
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.openlocfilehash: a08fae4774a8afb9959f55ea3196cd1a45c33439
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671760"
 ---
 # <a name="abnormal-rise-in-exception-volume-preview"></a>异常卷的异常增加（预览）
@@ -26,5 +26,5 @@ Application Insights 自动分析应用程序中引发的异常，并对异常�
 ## <a name="how-do-i-fix-it"></a>如何解决问题？
 通知包括诊断信息，以在诊断进程中提供支持：
 1. **会审。** 通知会显示有多少用户或多少请求受到影响。 这可以帮助你对问题分配优先级。
-2. **范围。** 该问题是影响所有流量，还是只影响某些操作？ 可以从通知中获取此信息。
+2. **划分范围。** 该问题是影响所有流量，还是只影响某些操作？ 可以从通知中获取此信息。
 3. **诊断。** 检测包括从中引发异常的方法以及异常类型的相关信息。 还可以使用链接到支持信息的相关项和报告，帮助进一步诊断问题。

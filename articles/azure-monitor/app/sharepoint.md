@@ -4,10 +4,10 @@ description: 开始使用新检测密钥监视新应用程序
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.openlocfilehash: 395e8d667985318f4a084428c6fd4c395ee8b956
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671437"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>使用 Application Insights 监视 SharePoint site 站点
@@ -39,7 +39,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 </script>
 ```
 
-在要跟踪的每个页面&lt;的 /head&gt;标记之前插入脚本。如果您的网站有母版页，则可以将脚本放在那里。 例如，在 ASP.NET MVC 项目中，将其放置在 View\Shared\_Layout.cshtml 中
+在要跟踪的每个页面的 &lt;/head&gt; 标记之前插入脚本。如果网站有母版页，可以在那里插入脚本。 例如，在 ASP.NET MVC 项目中，将其放置在 View\Shared\_Layout.cshtml 中
 
 该脚本包含将遥测定向到 Application Insights 资源的检测密钥。
 

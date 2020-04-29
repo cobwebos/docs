@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.openlocfilehash: aa573e84fa9fff83bd6a894f516ce5f67b3afa79
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78194336"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Azure 认知搜索中的同义词
@@ -23,7 +23,7 @@ ms.locfileid: "78194336"
 
 ## <a name="create-synonyms"></a>创建同义词
 
-我们不提供创建同义词的门户支持，但你可以使用 REST API 或 .NET SDK。 要开始使用 REST，我们建议使用此 API[使用 Postman](search-get-started-postman.md)和制定请求：[创建同义词映射](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)。 如果是 C# 开发人员，一开始可以[使用 C# 在 Azure 认知搜索中添加同义词](search-synonyms-tutorial-sdk.md)。
+我们不提供创建同义词的门户支持，但你可以使用 REST API 或 .NET SDK。 若要开始使用 REST，建议[使用 Postman](search-get-started-postman.md)，并使用此 API 来表述请求：[创建同义词映射](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)。 如果是 C# 开发人员，一开始可以[使用 C# 在 Azure 认知搜索中添加同义词](search-synonyms-tutorial-sdk.md)。
 
 另外，如果使用[客户托管密钥](search-security-manage-encryption-keys.md)进行服务端静态加密，则可对同义词映射的内容应用该保护。
 
@@ -45,7 +45,7 @@ ms.locfileid: "78194336"
 
 #### <a name="add-or-update-a-synonym-map-under-your-service-using-post-or-put"></a>使用 POST 或 PUT 可在服务下添加或更新同义词映射。
 
-使用 POST 或 PUT 可将同义词映射上传到服务。 每个规则必须通过换行符（“\n”）进行分隔。 您可以在免费服务中定义每个同义词映射最多 5，000 个规则，在所有其他 SKU 中每个映射定义 20，000 个规则。 每条规则可包含最多 20 个扩展。
+使用 POST 或 PUT 可将同义词映射上传到服务。 每个规则必须通过换行符（“\n”）进行分隔。 在免费服务中可为每个同义词映射定义最多 5,000 条规则，在所有其他 SKU 中可为每个映射定义最多 20,000 条规则。 每条规则可包含最多 20 个扩展。
 
 同义词映射的格式必须为 Apache Solr，以下对此进行了解释。 如果现有的同义词字典具有不同格式，并且希望直接使用它，请在 [UserVoice](https://feedback.azure.com/forums/263029-azure-search) 上向我们反馈。
 
@@ -76,7 +76,7 @@ ms.locfileid: "78194336"
 
 ##### <a name="apache-solr-synonym-format"></a>Apache Solr 同义词格式
 
-Solr 格式支持等效和显式同义词映射。 映射规则符合 Apache Solr 的开源同义词筛选器规范，本文档中所述：[同义词过滤器](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter)。 下面是等效同义词的示例规则。
+Solr 格式支持等效和显式同义词映射。 映射规则遵循 Apache Solr 的开源同义词筛选器规范，详情请参阅此文档：[SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter)。 下面是等效同义词的示例规则。
 ```
 USA, United States, United States of America
 ```

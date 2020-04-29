@@ -11,10 +11,10 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.openlocfilehash: c5f12da3606361b504d4581916d9645fa3cd24f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79283454"
 ---
 # <a name="understand-automated-machine-learning-results"></a>了解自动化机器学习的结果
@@ -25,7 +25,7 @@ ms.locfileid: "79283454"
 了解有关以下方面的详细信息：
 + [分类模型的指标、图表和曲线](#classification)
 + [回归模型的指标、图表和图形](#regression)
-+ [模型可解释性和功能重要性](#explain-model)
++ [模型可解释性和特征重要性](#explain-model)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -42,7 +42,7 @@ ms.locfileid: "79283454"
 
 1. 转到你的工作区。
 
-1. 在工作区的左侧面板中，选择“试验”。****
+1. 在工作区的左侧面板中，选择“试验”。 
 
    ![试验菜单的屏幕截图](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-menu.png)
 
@@ -50,11 +50,11 @@ ms.locfileid: "79283454"
 
    [![试验列表](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list-expanded.png)
 
-1. 在底部的表中，选择“运行”。****
+1. 在底部的表中，选择“运行”。 
 
-   [![试运行](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run-expanded.png)）
+   [![试验运行](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run-expanded.png))
 
-1. 在“模型”中，选择要进一步探索的模型的“算法名称”。****
+1. 在“模型”中，选择要进一步探索的模型的“算法名称”。 
 
    [![试验模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model-expanded.png)
 
@@ -64,9 +64,9 @@ ms.locfileid: "79283454"
 
 对于使用 Azure 机器学习的自动化机器学习功能生成的每个分类模型，将提供以下指标和图表
 
-+ [指标](#classification-metrics)
++ [度量值](#classification-metrics)
 + [混淆矩阵](#confusion-matrix)
-+ [精度-召回图表](#precision-recall-chart)
++ [精度-召回率图表](#precision-recall-chart)
 + [接收方操作特征 (ROC)](#roc)
 + [提升曲线](#lift-curve)
 + [增益曲线](#gains-curve)
@@ -76,7 +76,7 @@ ms.locfileid: "79283454"
 
 在分类任务的每次运行迭代中保存以下指标。
 
-指标|描述|计算|其他参数
+指标|说明|计算|其他参数
 --|--|--|--
 AUC_macro| AUC 是接收方操作特性曲线下面的区域。 Macro 是每个类的 AUC 算术平均值。  | [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="macro"|
 AUC_Micro| AUC 是接收方操作特性曲线下面的区域。 通过组合每个类中的真报率和误报率来全局计算 Micro。| [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="micro"|
@@ -89,7 +89,7 @@ balanced_accuracy|平衡准确度是每个类的召回率算术平均值。|[计
 f1_score_macro|F1 评分是精度和召回率的调和平均值。 Macro 是每个类的 F1 评分算术平均值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="macro"|
 f1_score_micro|F1 评分是精度和召回率的调和平均值。 通过统计真报率、漏报率和误报率总值来全局计算 Micro。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="micro"|
 f1_score_weighted|F1 评分是精度和召回率的调和平均值。 按每个类的 F1 评分类频率计算的加权平均值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="weighted"|
-log_loss|这是（多元）逻辑回归及其扩展（如神经网络）中使用的损耗函数，定义为给定概率分类器预测的真实标签的负日志可能性。 对于在 {0,1} 中包含真实标签 yt，且包含 yt=1 的估计概率 yp 的单个样本，对数损失为 -log P(yt&#124;yp) = -(yt log(yp) + (1 - yt) log(1 - yp))。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|无|
+log_loss|这是在中使用的丢失函数，例如神经网络，它在给定概率分类器预测的情况下，将其（多项式）逻辑回归和扩展（如神经网络）定义为负对数。 对于在 {0,1} 中包含真实标签 yt，且包含 yt=1 的估计概率 yp 的单个样本，对数损失为 -log P(yt&#124;yp) = -(yt log(yp) + (1 - yt) log(1 - yp))。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|无|
 norm_macro_recall|规范化宏召回率是已规范化的宏召回率，因此，随机性能的评分为 0，完美性能的评分为 1。 可以通过公式 norm_macro_recall := (recall_score_macro - R)/(1 - R) 来计算此值，其中，R 是随机预测的 recall_score_macro 预期值（例如，对于二元分类，R=0.5；对于 C 类分类问题，R=(1/C)）。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average = "macro" |
 precision_score_macro|Precision 是正确标记的积极预测元素的百分比。 Macro 是每个类的精度算术平均值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="macro"|
 precision_score_micro|Precision 是正确标记的积极预测元素的百分比。 通过统计真报率和误报率总值来全局计算 Micro。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="micro"|
@@ -112,13 +112,13 @@ weighted_accuracy|加权准确度是当分配给每个示例的权重等于该�
 #### <a name="what-does-a-good-model-look-like"></a>良好的模型是怎样的？
 我们要将数据集的实际值与模型提供的预测值进行比较。 因此，如果机器学习模型的大部分值沿对角线分布（表示模型预测了正确的值），则该模型具有较高的准确度。 如果模型中的类不平衡，则混淆矩阵可帮助检测有偏差的模型。
 
-##### <a name="example-1-a-classification-model-with-poor-accuracy"></a>示例 1：精度差的分类模型
+##### <a name="example-1-a-classification-model-with-poor-accuracy"></a>示例 1：准确度较差的分类模型
 ![准确度较差的分类模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix1.png)
 
-##### <a name="example-2-a-classification-model-with-high-accuracy"></a>示例 2：高精度分类模型 
+##### <a name="example-2-a-classification-model-with-high-accuracy"></a>示例 2：准确度较高的分类模型 
 ![准确度较高的分类模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix2.png)
 
-##### <a name="example-3-a-classification-model-with-high-accuracy-and-high-bias-in-model-predictions"></a>示例3：模型预测中高精度、高偏置的分类模型
+##### <a name="example-3-a-classification-model-with-high-accuracy-and-high-bias-in-model-predictions"></a>示例 3：准确度较高且模型预测偏差较高的分类模型
 ![准确度较高且模型预测偏差较高的分类模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-biased-model.png)
 
 <a name="precision-recall-chart"></a>
@@ -135,10 +135,10 @@ weighted_accuracy|加权准确度是当分配给每个示例的权重等于该�
 #### <a name="what-does-a-good-model-look-like"></a>良好的模型是怎样的？
 根据业务问题的目标，理想的精准率-召回率曲线可能各不相同。 下面给出了一些示例
 
-##### <a name="example-1-a-classification-model-with-low-precision-and-low-recall"></a>示例 1：精度低、召回率低的分类模型
+##### <a name="example-1-a-classification-model-with-low-precision-and-low-recall"></a>示例 1：精准率和召回率较低的分类模型
 ![精准率和召回率较低的分类模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall1.png)
 
-##### <a name="example-2-a-classification-model-with-100-precision-and-100-recall"></a>示例 2：精度为 ±100% 且召回 ±100% 的分类模型 
+##### <a name="example-2-a-classification-model-with-100-precision-and-100-recall"></a>示例 2：精准率和召回率大约为 100% 的分类模型 
 ![精准率和召回率较高的分类模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall2.png)
 <a name="roc"></a>
 ### <a name="roc-chart"></a>ROC 图
@@ -154,11 +154,11 @@ weighted_accuracy|加权准确度是当分配给每个示例的权重等于该�
 #### <a name="what-does-a-good-model-look-like"></a>良好的模型是怎样的？
 理想情况下，该模型具有较接近 100% 的真报率和较接近 0% 的误报率。 
 
-##### <a name="example-1-a-classification-model-with-low-true-labels-and-high-false-labels"></a>示例 1：低真实标签和高假标签的分类模型
+##### <a name="example-1-a-classification-model-with-low-true-labels-and-high-false-labels"></a>示例 1：真报标签较少且误报标签较多的分类模型
 ![真报标签较少且误报标签较多的分类模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-1.png)
 
-##### <a name="example-2-a-classification-model-with-high-true-labels-and-low-false-labels"></a>示例 2：具有高真实标签和低假标签的分类模型
-![具有高真实标签和低假标签的分类模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-2.png)
+##### <a name="example-2-a-classification-model-with-high-true-labels-and-low-false-labels"></a>示例 2：真报标签较多且误报标签较少的分类模型
+![真报标签较多且误报标签较少的分类模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-2.png)
 <a name="lift-curve"></a>
 ### <a name="lift-chart"></a>提升图
 #### <a name="what-is-a-lift-chart"></a>什么是提升图？
@@ -167,9 +167,9 @@ weighted_accuracy|加权准确度是当分配给每个示例的权重等于该�
 可以根据基线比较 Azure 机器学习自动生成的模型的性能提升，以查看该特定模型的值增益。
 #### <a name="what-does-a-good-model-look-like"></a>良好的模型是怎样的？
 
-##### <a name="example-1-a-classification-model-that-does-worse-than-a-random-selection-model"></a>示例 1：比随机选择模型差的分类模型
+##### <a name="example-1-a-classification-model-that-does-worse-than-a-random-selection-model"></a>示例 1：比随机选择模型更差的分类模型
 ![比随机选择模型更差的分类模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve1.png)
-##### <a name="example-2-a-classification-model-that-performs-better-than-a-random-selection-model"></a>示例 2：比随机选择模型性能更好的分类模型
+##### <a name="example-2-a-classification-model-that-performs-better-than-a-random-selection-model"></a>示例 2：表现比随机选择模型更好的分类模型
 ![表现更好的分类模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve2.png)
 <a name="gains-curve"></a>
 ### <a name="gains-chart"></a>增益图
@@ -181,16 +181,16 @@ weighted_accuracy|加权准确度是当分配给每个示例的权重等于该�
 借助累积增益图，可以使用一个对应于模型所需增益的百分比来选择分类截止值。 此信息提供了查看随附提升图中的结果的另一种方式。
 
 #### <a name="what-does-a-good-model-look-like"></a>良好的模型是怎样的？
-##### <a name="example-1-a-classification-model-with-minimal-gain"></a>示例 1：增益最小的分类模型
+##### <a name="example-1-a-classification-model-with-minimal-gain"></a>示例 1：增益极低的分类模型
 ![增益极低的分类模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve1.png)
 
-##### <a name="example-2-a-classification-model-with-significant-gain"></a>示例 2：具有显著增益的分类模型
-![具有显著增益的分类模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve2.png)
+##### <a name="example-2-a-classification-model-with-significant-gain"></a>示例 2：增益很高的分类模型
+![增益很高的分类模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve2.png)
 <a name="calibration-plot"></a>
 ### <a name="calibration-chart"></a>校准图
 
 #### <a name="what-is-a-calibration-chart"></a>什么是校准图？
-校准图用于显示预测模型的置信度。 它通过显示预测概率和实际概率之间的关系来达到此点，其中"概率"表示特定实例属于某个标签下的可能性。
+校准图用于显示预测模型的置信度。 它通过显示预测概率和实际概率之间的关系来实现，其中“概率”表示一个特定实例属于某个标签的可能性。
 #### <a name="what-does-automated-ml-do-with-the-calibration-chart"></a>自动化 ML 如何处理校准图？
 对于所有分类问题，可以查看微观平均、宏观平均以及给定预测模型中每个类的校准行。
 
@@ -199,17 +199,17 @@ weighted_accuracy|加权准确度是当分配给每个示例的权重等于该�
  适当校准的模型与 y=x 行对齐，表示它在预测中具有合理的置信度。 置信度过高的模型与 y=0 行对齐，其中会显示预测概率，但不显示实际概率。 
 
 
-##### <a name="example-1-a-well-calibrated-model"></a>示例 1：校准良好的模型
+##### <a name="example-1-a-well-calibrated-model"></a>示例 1：适当校准的模型
 ![ 适当校准的模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve1.png)
 
-##### <a name="example-2-an-over-confident-model"></a>示例 2：过于自信的模型
+##### <a name="example-2-an-over-confident-model"></a>示例 2：置信度过高的模型
 ![置信度过高的模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve2.png)
 
 ## <a name="regression-results"></a><a name="regression"></a> 回归结果
 
 对于使用 Azure 机器学习的自动化机器学习功能生成的每个回归模型，将提供以下指标和图表
 
-+ [指标](#reg-metrics)
++ [度量值](#reg-metrics)
 + [预测与真实](#pvt)
 + [残差直方图](#histo)
 
@@ -218,7 +218,7 @@ weighted_accuracy|加权准确度是当分配给每个示例的权重等于该�
 
 在回归或预测任务的每次运行迭代中保存以下指标。
 
-|指标|描述|计算|其他参数
+|指标|说明|计算|其他参数
 --|--|--|--|
 explained_variance|解释方差是数学模型计算给定数据集的方差时遵循的比例。 它是原始数据方差与误差方差之间的递减百分比。 如果误差平均值为 0，则它等于解释方差。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|无|
 r2_score|R2 是与输出平均值的基线模型相比，平方误差的确定系数或递减百分比。 |[计算](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|无|
@@ -232,19 +232,19 @@ normalized_root_mean_squared_error|规范化均方根误差是均方根误差除
 root_mean_squared_log_error|均方根对数误差是预期平方对数误差的平方根|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|无|
 normalized_root_mean_squared_log_error|规范化均方根对数误差指均方根对数误差除以数据范围后的值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|除以数据范围|
 
-### <a name="predicted-vs-true-chart"></a><a name="pvt"></a>预测与真实图表
-#### <a name="what-is-a-predicted-vs-true-chart"></a>什么是预测与真实图表？
-预测值与 True 显示了预测值与其相关回归问题的真实值之间的关系。 可以使用此图形来衡量模型的性能，因为预测值与 y=x 行越接近，预测模型的准确度就越高。
+### <a name="predicted-vs-true-chart"></a><a name="pvt"></a> 预测值与真实值图
+#### <a name="what-is-a-predicted-vs-true-chart"></a>什么是预测值与真实值图？
+预测与“真实”显示回归问题的预测值与其相关真实值之间的关系。 可以使用此图形来衡量模型的性能，因为预测值与 y=x 行越接近，预测模型的准确度就越高。
 
-#### <a name="what-does-automated-ml-do-with-the-predicted-vs-true-chart"></a>自动 ML 如何处理预测与真实图表？
+#### <a name="what-does-automated-ml-do-with-the-predicted-vs-true-chart"></a>自动化 ML 如何处理预测值与真实值图？
 每次运行后，可以查看每个回归模型的预测与真实图形。 为了保护数据隐私，值已装箱在一起，每个箱的大小在图表区域的下半部分显示为条形图。 可将预测模型（带有浅色阴影，其中显示了误差边际）与模型的理想值进行比较。
 
 #### <a name="what-does-a-good-model-look-like"></a>良好的模型是怎样的？
-##### <a name="example-1-a-classification-model-with-low-accuracy"></a>示例 1：精度较低的分类模型
+##### <a name="example-1-a-classification-model-with-low-accuracy"></a>示例 1：准确度较低的分类模型
 ![预测准确度较低的回归模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression1.png)
 
-##### <a name="example-2-a-regression-model-with-high-accuracy"></a>示例 2：高精度回归模型 
-[![预测中高精度的回归模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2-expanded.png)
+##### <a name="example-2-a-regression-model-with-high-accuracy"></a>示例 2：准确度较高的回归模型 
+[![预测准确度较高的回归模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2-expanded.png)
 
 
 
@@ -256,10 +256,10 @@ normalized_root_mean_squared_log_error|规范化均方根对数误差指均方�
 #### <a name="what-does-a-good-model-look-like"></a>良好的模型是怎样的？
 良好的模型通常会产生钟形曲线或接近为零的误差数。
 
-##### <a name="example-1-a-regression-model-with-bias-in-its-errors"></a>示例 1：错误中具有偏差的回归模型
+##### <a name="example-1-a-regression-model-with-bias-in-its-errors"></a>示例 1：误差中带有偏差的回归模型
 ![误差中带有偏差的 SA 回归模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression3.png)
 
-##### <a name="example-2-a-regression-model-with-more-even-distribution-of-errors"></a>示例 2：错误分布更均匀的回归模型
+##### <a name="example-2-a-regression-model-with-more-even-distribution-of-errors"></a>示例 2：误差较均匀分布的回归模型
 ![误差较均匀分布的回归模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression4.png)
 
 ## <a name="model-interpretability-and-feature-importance"></a><a name="explain-model"></a> 模型可解释性和特征重要性

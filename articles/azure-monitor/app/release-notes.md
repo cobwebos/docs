@@ -4,10 +4,10 @@ description: Application Insights SDK 的最新更新。
 ms.topic: conceptual
 ms.date: 05/17/2017
 ms.openlocfilehash: fcd20e1d14cebb9a5f5cc8ff2f7ae3f16fa594cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671505"
 ---
 # <a name="sdk-release-notes---application-insights"></a>SDK 发行说明 - Application Insights
@@ -22,7 +22,7 @@ ms.locfileid: "77671505"
       - [.NET 日志记录适配器](https://github.com/Microsoft/ApplicationInsights-dotnet-logging/releases)
       - [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnet5/releases)
 * [Java](https://github.com/Microsoft/ApplicationInsights-Java)
-* [Javascript](https://github.com/Microsoft/ApplicationInsights-JS/commits/master)
+* [JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/commits/master)
 * [其他平台](https://github.com/Microsoft/ApplicationInsights-Home)
 
 此外，请阅读我们的[博客](https://azure.microsoft.com/blog/tag/application-insights/)和[服务更新](https://azure.microsoft.com/updates/?service=application-insights)，它从整体上概括了 Application Insights 服务中的重大改进。

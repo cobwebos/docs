@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure CLI 将 VM 迁移到资源管理器
-description: 本文逐步讲解如何使用 Azure CLI 对资源进行平台支持的从经典部署模型到 Azure 资源管理器部署模型的迁移
+description: 本文逐步讲解如何使用 Azure CLI 对资源进行平台支持的从经典部署模型到 Azure Resource Manager 部署模型的迁移
 author: tanmaygore
 manager: vashan
 ms.service: virtual-machines-linux
@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
 ms.openlocfilehash: c41292a05e5c857cd0b1c120784a400f2f5410ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78945359"
 ---
-# <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>使用 Azure CLI 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型
+# <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>使用 Azure CLI 将 IaaS 资源从经典部署模型迁移到 Azure Resource Manager 部署模型
 
 > [!IMPORTANT]
-> 今天，大约 90% 的 IaaS VM 正在使用[Azure 资源管理器](https://azure.microsoft.com/features/resource-manager/)。 截至 2020 年 2 月 28 日，经典 VM 已被弃用，将于 2023 年 3 月 1 日完全停用。 [详细了解]( https://aka.ms/classicvmretirement)此弃用[及其如何影响您](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me)。
+> 目前，大约90% 的 IaaS Vm 正在使用[Azure 资源管理器](https://azure.microsoft.com/features/resource-manager/)。 截至2020年2月28日，经典 Vm 已弃用，并将在2023年3月1日完全停用。 [了解]( https://aka.ms/classicvmretirement)有关此过时的详细信息以及[它对你有何影响](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me)。
 
 以下步骤演示如何使用 Azure 命令行接口 (CLI) 命令将基础结构即服务 (IaaS) 资源从经典部署模型迁移到 Azure 资源管理器部署模型。 本文中的操作需要 [Azure 经典 CLI](../../cli-install-nodejs.md)。 由于 Azure CLI 仅适用于 Azure 资源管理器资源，因此它不能用于此迁移。
 
@@ -63,7 +63,7 @@ ms.locfileid: "78945359"
 > 
 > 
 
-使用以下命令向迁移资源提供程序注册。 请注意，在某些情况下，此命令超时。但是，注册将成功。
+使用以下命令向迁移资源提供程序注册。 请注意，在某些情况下，此命令会超时。但是，注册会成功。
 
     azure provider register Microsoft.ClassicInfrastructureMigrate
 

@@ -1,5 +1,5 @@
 ---
-title: 查询存储 - MariaDB 的 Azure 数据库
+title: 查询存储-Azure Database for MariaDB
 description: 了解 Azure Database for MariaDB 中的查询存储功能，可以帮助你跟踪一段时间内的性能。
 author: ajlam
 ms.author: andrela
@@ -7,15 +7,15 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: a502638744009fc34a7f0a27f8034b89d2c8fa26
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79527803"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>使用查询存储监视 Azure Database for MariaDB 的性能
 
-**适用于：** MariaDB 的 Azure 数据库 10.2
+**适用于：** Azure Database for MariaDB 10。2
 
 使用 Azure Database for Mariadb 中的查询存储功能可以跟踪一段时间内的查询性能。 通过帮助快速查找运行时间最长且资源最密集的查询，查询存储可简化性能故障排除。 查询存储自动捕获查询和运行时统计信息的历史记录，并保留它们以供查看。 它按时间范围分隔数据，以便可以查看数据库使用模式。 所有用户、数据库和查询的数据都存储在 Azure Database for MariaDB 实例的 **mysql** 架构数据库中。
 
@@ -89,7 +89,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 | **参数** | **说明** | **默认** | **范围** |
 |---|---|---|---|
-| query_store_capture_mode | 根据值打开/关闭查询存储功能。 注意：如果performance_schema处于关闭程度，则打开query_store_capture_mode将打开performance_schema以及此功能所需的性能架构工具子集。 | ALL | NONE、ALL |
+| query_store_capture_mode | 根据值打开/关闭查询存储功能。 注意：如果 performance_schema 为 OFF，打开 query_store_capture_mode 将打开 performance_schema，并启用此功能所需的性能架构检测子集。 | ALL | NONE、ALL |
 | query_store_capture_interval | 查询存储捕获时间间隔，以分钟为单位。 允许指定聚合查询指标的时间间隔 | 15 | 5 - 60 |
 | query_store_capture_utility_queries | 打开或关闭捕获系统中正在执行的所有实用工具查询的功能。 | 是 | YES、NO |
 | query_store_retention_period_in_days | 在查询存储中保留数据的时限，以天为单位。 | 7 | 1 - 30 |
@@ -116,7 +116,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 此视图返回查询存储中的所有数据。 每个不同的数据库 ID、用户 ID 和查询 ID 都有一行。
 
-| **名称** | **数据类型** | **IS_NULLABLE** | **说明** |
+| **Name** | **数据类型** | **IS_NULLABLE** | **说明** |
 |---|---|---|---|
 | `schema_name`| varchar(64) | 是 | 架构名称 |
 | `query_id`| bigint(20) | 是| 为特定查询生成的唯一 ID，如果在不同的架构中执行同一个查询，将生成新的 ID |
@@ -149,7 +149,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 此视图返回查询存储中的等待事件数据。 每个不同的数据库 ID、用户 ID、查询 ID 和事件都有一行。
 
-| **名称**| **数据类型** | **IS_NULLABLE** | **说明** |
+| **Name**| **数据类型** | **IS_NULLABLE** | **说明** |
 |---|---|---|---|
 | `interval_start` | timestamp | 是| 间隔开始时间（15 分钟增量）|
 | `interval_end` | timestamp | 是| 间隔结束时间（15 分钟增量）|
@@ -163,7 +163,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 ### <a name="functions"></a>函数
 
-| **名称**| **说明** |
+| **名称**| **描述** |
 |---|---|
 | `mysql.az_purge_querystore_data(TIMESTAMP)` | 清除给定时间戳之前的所有查询存储数据 |
 | `mysql.az_procedure_purge_querystore_event(TIMESTAMP)` | 清除给定时间戳之前的所有等待事件数据 |
@@ -178,4 +178,4 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解有关[查询性能见解](concepts-query-performance-insight.md)的更多
+- 了解有关[查询性能见解](concepts-query-performance-insight.md)的详细信息

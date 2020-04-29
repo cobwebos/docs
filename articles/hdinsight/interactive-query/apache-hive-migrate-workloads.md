@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.openlocfilehash: ec96189185a06c1fcbd95eed6216ade47f3089c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79214643"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>将 Azure HDInsight 3.6 Hive 工作负荷迁移到 HDInsight 4.0
@@ -39,12 +39,12 @@ HDInsight 3.6 和 HDInsight 4.0 需要不同的元存储架构，并且不能共
 
 如果使用内部元存储，则可以使用查询来导出 Hive 元存储中的对象定义，然后将其导入到新数据库。
 
-完成此脚本后，假定旧群集将不再用于访问脚本中引用的任何表或数据库。
+此脚本完成后，将假定不再使用旧群集访问脚本中引用的任何表或数据库。
 
 > [!NOTE]
-> 在 ACID 表中，将创建表下方数据的新副本。
+> 对于 ACID 表，将创建该表下数据的新副本。
 
-1. 使用[安全外壳 （SSH） 客户端](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到 HDInsight 群集。
+1. 使用[安全外壳 (SSH) 客户端](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到 HDInsight 群集。
 
 1. 输入以下命令，通过 [Beeline 客户端](../hadoop/apache-hadoop-use-hive-beeline.md)从打开的 SSH 会话连接到 HiveServer2：
 
@@ -94,21 +94,21 @@ HDInsight 3.6 和 HDInsight 4.0 需要不同的元存储架构，并且不能共
     done
     ```
 
-    此命令生成名为**alltables.hql**的文件。
+    此命令会生成一个名为“alltables.hql”  的文件。
 
-1. 退出 SSH 会话。 然后输入 scp 命令以在本地下载**所有表.hql。**
+1. 退出 SSH 会话。 然后输入一条 scp 命令，以在本地下载 alltables.hql  。
 
     ```bash
     scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:alltables.hql c:/hdi
     ```
 
-1. 将所有**表.hql**上载到*新的*HDInsight 群集。
+1. 将 alltables.hql  上传到新的 HDInsight 群集。 
 
     ```bash
     scp c:/hdi/alltables.hql sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/home/sshuser/
     ```
 
-1. 然后使用 SSH 连接到新的 HDInsight 群集。** 在 SSH 会话中运行以下代码：
+1. 然后使用 SSH 连接到新的 HDInsight 群集。  在 SSH 会话中运行以下代码：
 
     ```bash
     beeline -u "jdbc:hive2://localhost:10001/;transportMode=http" -i alltables.hql
@@ -121,13 +121,13 @@ HDInsight 3.6 和 HDInsight 4.0 需要不同的元存储架构，并且不能共
 
 接下来使用下表中的值。 请将 `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` 替换为**复制的** Hive 元存储的相应值，并以空格分隔。 指定 SQL 服务器名称时，请不要包含“.database.windows.net”。
 
-|properties | “值” |
+|properties | 值 |
 |---|---|
 |脚本类型|- Custom|
-|“属性”|Hive 升级|
+|名称|Hive 升级|
 |Bash 脚本 URI|`https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh`|
 |节点类型|Head|
-|参数|SQLSERVERNAME DATABASENAME USERNAME PASSWORD|
+|parameters|SQLSERVERNAME DATABASENAME USERNAME PASSWORD|
 
 > [!Warning]  
 > 将 HDInsight 3.6 元数据架构转换为 HDInsight 4.0 架构的升级过程不可逆。
@@ -197,7 +197,7 @@ alter table myacidtable compact 'major';
 1. 在 HDInsight 3.6 群集中导航到 Ranger 服务管理器面板。
 2. 导航到名为 **HIVE** 的策略，并将该策略导出到某个 JSON 文件。
 3. 确保导出的策略 JSON 中引用的所有用户都存在于新群集中。 如果该策略 JSON 中引用的某个用户不存在于新群集中，请将该用户添加到新群集，或者从策略中删除引用。
-4. 在 HDInsight 4.0 群集中导航到“Ranger 服务管理器”面板。****
+4. 在 HDInsight 4.0 群集中导航到“Ranger 服务管理器”面板。 
 5. 导航到名为 **HIVE** 的策略，并导入步骤 2 中导出的 Ranger 策略 JSON。
 
 ## <a name="check-compatibility-and-modify-codes-as-needed-in-test-app"></a>在测试应用中检查兼容性并根据需要修改代码
@@ -222,16 +222,16 @@ alter table myacidtable compact 'major';
 
 在 HDInsight 4.0 中，HiveCLI 已由 Beeline 取代。 HiveCLI 是 Hiveserver 1 的 thrift 客户端，Beeline 是用于访问 Hiveserver 2 的 JDBC 客户端。 Beeline 还可用于连接 JDBC 兼容的其他任何数据库终结点。 Beeline 可以现成地在 HDInsight 4.0 上使用，而无需进行任何安装。
 
-在 HDInsight 3.6 中，用来与 Hive 服务器交互的 GUI 客户端是 Ambari Hive 视图。 HDInsight 4.0 不随安巴里视图一起发货。 我们为我们的客户提供了一种使用数据分析工作室 （DAS） 的方式，该工作室不是核心的 HDInsight 服务。 DAS 不会附带 HDInsight 群集开箱即用，也不是官方支持的软件包。 但是，可以使用[脚本操作](../hdinsight-hadoop-customize-cluster-linux.md)在群集上安装 DAS，如下所示：
+在 HDInsight 3.6 中，用来与 Hive 服务器交互的 GUI 客户端是 Ambari Hive 视图。 Ambari 视图不附带 HDInsight 4.0。 我们为客户提供了一种使用数据分析工作室（DAS）的方法，该方法不是核心 HDInsight 服务。 DAS 不会随 HDInsight 群集一起提供，并且不是正式支持的程序包。 但是，可以使用[脚本操作](../hdinsight-hadoop-customize-cluster-linux.md)在群集上安装 DAS，如下所示：
 
-|properties | “值” |
+|属性 | 值 |
 |---|---|
 |脚本类型|- Custom|
-|“属性”|Das|
+|名称|转移|
 |Bash 脚本 URI|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
 |节点类型|Head|
 
-等待 10 到 15 分钟，然后使用此 URL 启动`https://CLUSTERNAME.azurehdinsight.net/das/`数据分析工作室： 。
+等待10到15分钟，然后使用以下 URL 启动 Data Analytics Studio： `https://CLUSTERNAME.azurehdinsight.net/das/`。
 
 在访问 DAS 之前，可能需要刷新 Ambari UI 和/或重新启动所有 Ambari 组件。
 

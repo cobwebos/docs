@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/02/2020
 ms.openlocfilehash: f386530ffb3a074a5c1db1d9f28535d28c8b1284
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78252409"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>将 Apache Spark 和 Apache Hive 与 Hive 仓库连接器相集成
@@ -22,7 +22,7 @@ Hive 仓库连接器可让你利用 Hive 和 Spark 的独特功能来生成强�
 
 Apache Spark 中的结构化流式处理 API 可以提供流式处理功能，而 Apache Hive 则无法提供此类功能。 从 HDInsight 4.0 开始，Apache Spark 2.3.1 和 Apache Hive 3.1.0 使用单独的元存储，这可能会增大互操作性的难度。 使用 Hive 仓库连接器可以更轻松地将 Spark 与 Hive 一起使用。 HWC 库将数据从 LLAP 守护程序并行加载到 Spark 执行器，这比使用从 Spark 到 Hive 的标准 JDBC 连接更为有效，且更具可伸缩性。
 
-![蜂巢仓库连接器体系结构](./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png)
+![hive 仓库连接器体系结构](./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png)
 
 Hive 仓库连接器支持的部分操作如下：
 
@@ -54,31 +54,31 @@ Hive 仓库连接器支持的部分操作如下：
 
 #### <a name="from-your-interactive-query-cluster"></a>在交互式查询群集中
 
-1. 使用`https://LLAPCLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/configs`交互式查询群集的名称导航`LLAPCLUSTERNAME`到群集的 Apache Ambari Hive 页面。
+1. 使用 `https://LLAPCLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/configs` 导航到群集的 Apache Ambari Hive 页，其中 `LLAPCLUSTERNAME` 是 Interactive Query 群集的名称。
 
-1. 导航到**高级** > **常规** > **配置单元.metastore.uris**并记下该值。 该值可能类似于 `thrift://iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`。
+1. 导航到“高级”   > “常规”   > “hive.metastore.uris”  ，然后记下该值。 该值可能类似于 `thrift://iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`。
 
-1. 导航到**高级** > **配置单元站点** > **配置单元.zookeeper.quorum**并记下该值。 该值可能类似于 `zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`。
+1. 导航到“高级”   > “高级 hive-site”   > “hive.zookeeper.quorum”  ，然后记下该值。 该值可能类似于 `zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`。
 
 #### <a name="from-your-apache-spark-cluster"></a>在 Apache Spark 群集中
 
-1. 使用`https://SPARKCLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/configs`Apache Spark 群集的名称导航`SPARKCLUSTERNAME`到群集的 Apache Ambari Hive 页面。
+1. 使用 `https://SPARKCLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/configs` 导航到群集的 Apache Ambari Hive 页，其中 `SPARKCLUSTERNAME` 是 Apache Spark 群集的名称。
 
-1. 导航到**高级** > **配置单元-交互式网站** > **hive.llap.daemon.服务.主机**并记下值。 该值可能类似于 `@llap0`。
+1. 导航到“高级”   > “高级 hive-interactive-site”   > “hive.llap.daemon.service.hosts”  ，然后记下该值。 该值可能类似于 `@llap0`。
 
 ### <a name="configure-spark-cluster-settings"></a>配置 Spark 群集设置
 
-从 Spark Ambari Web UI 导航到**Spark2** > **CONFIGS** > **自定义 spark2 默认值**。
+在 Spark Ambari Web UI 中，导航到“Spark2”   >   “CONFIGS” >   “自定义 spark2-defaults”。
 
 ![Apache Ambari Spark2 配置](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
 
-根据需要选择“添加属性...”****，以便添加/更新以下属性：
+根据需要选择“添加属性...”  ，以便添加/更新以下属性：
 
-| 键 | “值” |
+| 键 | Value |
 |----|----|
 |`spark.hadoop.hive.llap.daemon.service.hosts`|此前从 **hive.llap.daemon.service.hosts** 获取的值。|
-|`spark.sql.hive.hiveserver2.jdbc.url`|`jdbc:hive2://LLAPCLUSTERNAME.azurehdinsight.net:443/;user=admin;password=PWD;ssl=true;transportMode=http;httpPath=/hive2`. 设置为 JDBC 连接字符串，用于连接到交互式查询群集上的 Hiveserver2。 将 `LLAPCLUSTERNAME` REPLACE 为交互式查询群集的名称。 将 `PWD` 替换为实际密码。|
-|`spark.datasource.hive.warehouse.load.staging.dir`|`wasbs://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp`. 设置为与 HDFS 兼容的适当暂存目录。 如果你有两个不同的群集，则暂存目录应是 LLAP 群集存储帐户的暂存目录中的某个文件夹，这样，HiveServer2 才能访问它。  将 `STORAGE_ACCOUNT_NAME` 替换为群集使用的存储帐户的名称，将 `STORAGE_CONTAINER_NAME` 替换为存储容器的名称。|
+|`spark.sql.hive.hiveserver2.jdbc.url`|`jdbc:hive2://LLAPCLUSTERNAME.azurehdinsight.net:443/;user=admin;password=PWD;ssl=true;transportMode=http;httpPath=/hive2`。 设置为 JDBC 连接字符串，用于连接到交互式查询群集上的 Hiveserver2。 将 `LLAPCLUSTERNAME` REPLACE 为交互式查询群集的名称。 将 `PWD` 替换为实际密码。|
+|`spark.datasource.hive.warehouse.load.staging.dir`|`wasbs://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp`。 设置为与 HDFS 兼容的适当暂存目录。 如果你有两个不同的群集，则暂存目录应是 LLAP 群集存储帐户的暂存目录中的某个文件夹，这样，HiveServer2 才能访问它。  将 `STORAGE_ACCOUNT_NAME` 替换为群集使用的存储帐户的名称，将 `STORAGE_CONTAINER_NAME` 替换为存储容器的名称。|
 |`spark.datasource.hive.warehouse.metastoreUri`|此前从 **hive.metastore.uris** 获取的值。|
 |`spark.security.credentials.hiveserver2.enabled`|`false`，适用于 YARN 客户端部署模式。|
 |`spark.hadoop.hive.zookeeper.quorum`|此前从 **hive.zookeeper.quorum** 获取的值。|
@@ -122,7 +122,7 @@ Hive 仓库连接器支持的部分操作如下：
 
 ### <a name="connecting-and-running-queries-on-enterprise-security-package-esp-clusters"></a>在企业安全性套餐 (ESP) 群集上连接和运行查询
 
-企业安全性套餐 (ESP) 为 Azure HDInsight 中的 Apache Hadoop 群集提供企业级功能，例如，基于 Active Directory 的身份验证、多用户支持和基于角色的访问控制。 有关 ESP 的详细信息，请参阅[在 HDInsight 中使用企业安全包](../domain-joined/apache-domain-joined-architecture.md)。
+企业安全性套餐 (ESP) 为 Azure HDInsight 中的 Apache Hadoop 群集提供企业级功能，例如，基于 Active Directory 的身份验证、多用户支持和基于角色的访问控制。 有关 ESP 的详细信息，请参阅[在 HDInsight 中使用企业安全性套餐](../domain-joined/apache-domain-joined-architecture.md)。
 
 1. 通过 SSH 连接到 Apache Spark 群集的头节点。 有关使用 SSH 连接到群集的详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)。
 
@@ -253,7 +253,7 @@ Spark 原生并不支持写入到 Hive 管理的 ACID 表。 但是，使用 HWC
 
         ![hive 数据仓库连接器 ranger hive 策略列表](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 提供所需的策略名称。 选择数据库：**默认**，Hive 表：**演示**、Hive 列：**名称**、用户 **：rsadmin2、** 访问类型：**选择**和**部分掩码：** 从 **"选择遮罩选项"** 菜单中显示最后 4 个。 单击 **“添加”**。
+    a. 提供所需的策略名称。 选择数据库：**默认**，hive 表：**演示**，hive 列：**名称**，用户： **rsadmin2**，访问类型： **Select**，和**部分掩码：** 从 "**选择屏蔽" 选项**菜单中显示最后4项。 单击“添加”  。
                 ![创建策略](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. 再次查看该表的内容。 应用 Ranger 策略之后，我们只能看到该列的最后四个字符。
 

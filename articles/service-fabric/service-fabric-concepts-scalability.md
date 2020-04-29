@@ -1,15 +1,15 @@
 ---
 title: Service Fabric 服务的可伸缩性
-description: 了解 Azure 服务结构中的缩放以及用于扩展应用程序的各种技术。
+description: 了解如何在 Azure Service Fabric 中进行缩放以及用于缩放应用程序的各种方法。
 author: masnider
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: masnider
 ms.openlocfilehash: 17827342b67d37d9fbeb56654824e004367823ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79282557"
 ---
 # <a name="scaling-in-service-fabric"></a>在 Service Fabric 中进行缩放
@@ -63,13 +63,13 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ## <a name="scaling-by-creating-or-removing-new-named-services"></a>通过创建或删除新命名服务进行缩放
 命名服务实例是群集中某命名应用程序实例内的服务类型的特定实例（请参阅 [Service Fabric 应用程序生命周期](service-fabric-application-lifecycle.md)）。 
 
-新的命名服务实例可在服务变得更繁忙或不繁忙时进行创建（或删除）。 这使请求可在更多服务实例中进行传播，通常允许减少现有服务上的负载。 创建服务时，Service Fabric 群集资源管理器将以分布式方式放置群集中的服务。 确切的决策受群集中的[指标](service-fabric-cluster-resource-manager-metrics.md)和其他放置规则约束。 服务可以通过几种不同的方式创建，但最常见的是通过诸如某人调用[`New-ServiceFabricService`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)等管理操作，或者通过代码调用[`CreateServiceAsync`](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet)。 `CreateServiceAsync` 甚至可从正在群集中运行的其他服务内进行调用。
+新的命名服务实例可在服务变得更繁忙或不繁忙时进行创建（或删除）。 这使请求可在更多服务实例中进行传播，通常允许减少现有服务上的负载。 创建服务时，Service Fabric 群集资源管理器将以分布式方式放置群集中的服务。 确切的决策受群集中的[指标](service-fabric-cluster-resource-manager-metrics.md)和其他放置规则约束。 可以通过多种不同的方式来创建服务，但最常见的方法是通过管理操作（ [`New-ServiceFabricService`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)如用户调用）或[`CreateServiceAsync`](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet)通过代码调用。 `CreateServiceAsync` 甚至可从正在群集中运行的其他服务内进行调用。
 
 动态创建服务可用于各种方案，属于通用模式。 例如，请想一想代表特定工作流的有状态服务。 表示工作的调用将向此服务显示，且此服务将执行该工作流的步骤并记录进度。 
 
 将如何对此特定服务进行缩放？ 服务可以是某种形式的多租户，并一次性接受同一工作流的多个不同实例的调用和启动步骤。 但是，这可能使代码更复杂，因为现在它需要考虑同一工作流的多个不同实例，所有实例处于不同的阶段，来自不同的客户。 此外，同时处理多个工作流不能解决缩放问题。 这是因为此服务在某个时间点将占用过多资源，以适应特定计算机。 许多最初并不是针对此模式生成的服务也会因其代码中的一些固有瓶颈或速度减慢而遇到困难。 这些类型的问题将导致服务跟踪的并发工作流数量增多时，服务无法正常运行。  
 
-解决方案是为要跟踪的工作流的每个不同实例创建此服务的实例。这是一个伟大的模式，无论服务是无状态还是有状态，都有效。 为使此模式正常运行，通常会使用用作“工作负荷管理器服务”的另一服务。 此服务的功能是接收请求，并将这些请求路由到其他服务。 管理器在收到消息时可动态创建工作负荷服务的实例，然后将请求传递到这些服务。 给定工作流服务完成其工作后，管理器服务也可接收回调。 管理器接收这些回调后，可删除工作流服务的该实例，或者如果需要更多调用，可将其保留。 
+解决方案是为想要跟踪的工作流的每个不同实例创建此服务的实例。这是一种很好的模式，无论服务是无状态还是有状态。 为使此模式正常运行，通常会使用用作“工作负荷管理器服务”的另一服务。 此服务的功能是接收请求，并将这些请求路由到其他服务。 管理器在收到消息时可动态创建工作负荷服务的实例，然后将请求传递到这些服务。 给定工作流服务完成其工作后，管理器服务也可接收回调。 管理器接收这些回调后，可删除工作流服务的该实例，或者如果需要更多调用，可将其保留。 
 
 这种管理器的高级版本甚至可以创建它所管理的服务的池。 池有助于确保在传入新请求时，无需等待服务启动。 管理器可以从池中只选取当前不繁忙的工作流服务，或随机路由。 保持服务池可用性可更快速处理新请求，因为请求不太可能必须等待新服务启动。 创建新服务很快，但也不是免费或瞬时完成。 池有助于最大程度减少请求在维护之前需要等待的时间。 当响应时间是最重要因素时，经常使用此管理器和池模式。 请求排队，并在后台创建服务，然后将其传递也是一种常用的管理器模式，如同基于服务当前挂起的工作量的一些跟踪，创建和删除服务。__ 
 
@@ -94,14 +94,14 @@ Service Fabric 支持分区。 分区可将服务拆分成若干逻辑和物理�
 
 <center>
 
-![具有三个节点的分区布局](./media/service-fabric-concepts-scalability/layout-three-nodes.png)
+![包含三个节点的分区布局](./media/service-fabric-concepts-scalability/layout-three-nodes.png)
 </center>
 
 如果增加节点数目，Service Fabric 将移动其中的一些现有副本。 例如，假设节点数增加到 4，且已重新分发副本。 现在，服务在每个节点上有 3 个正在运行的副本，每个副本均属于不同的分区。 这可以实现更高的资源利用率，因为新节点不冷。 通常情况下，这还可提高性能，因为每项服务均有更多可用资源。
 
 <center>
 
-![具有四个节点的分区布局](./media/service-fabric-concepts-scalability/layout-four-nodes.png)
+![包含四个节点的分区布局](./media/service-fabric-concepts-scalability/layout-four-nodes.png)
 </center>
 
 ## <a name="scaling-by-using-the-service-fabric-cluster-resource-manager-and-metrics"></a>使用 Service Fabric 群集资源管理器和指标进行缩放

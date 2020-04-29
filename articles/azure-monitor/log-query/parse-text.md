@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 12/04/2018
 ms.openlocfilehash: d7a37d51c411488231205fd036f9a287f5206ce5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77672440"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>分析 Azure Monitor 日志中的文本数据
@@ -136,10 +136,10 @@ MyCustomCSVLog_CL
 ## <a name="parse-predefined-structures-in-a-query"></a>在查询中分析预定义结构
 如果数据采用已知结构设置格式，则可能能够使用 [Kusto 查询语言](/azure/kusto/query/)中的一个函数来分析预定义结构：
 
-- [Json](/azure/kusto/query/parsejsonfunction)
+- [JSON](/azure/kusto/query/parsejsonfunction)
 - [XML](/azure/kusto/query/parse-xmlfunction)
 - [IPv4](/azure/kusto/query/parse-ipv4function)
-- [Url](/azure/kusto/query/parseurlfunction)
+- [URL](/azure/kusto/query/parseurlfunction)
 - [URL 查询](/azure/kusto/query/parseurlqueryfunction)
 - [文件路径](/azure/kusto/query/parsepathfunction)
 - [用户代理](/azure/kusto/query/parse-useragentfunction)

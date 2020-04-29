@@ -7,10 +7,10 @@ ms.author: bfung
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 194a2da23c8fb405c492df8f6ee173cc97fde4ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671330"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>在 Azure Service Fabric、云服务和虚拟机中为 .NET 应用启用快照调试器
@@ -25,7 +25,7 @@ ms.locfileid: "77671330"
 
 2. 将 [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包添加到应用。
 
-3. 如果需要，自定义添加到[应用程序 Insights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)的快照调试器配置。默认快照调试器配置大多为空，所有设置都是可选的。 以下示例显示与默认配置等效的配置：
+3. 如果需要，可自定义添加到 [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 的快照调试器配置。默认快照调试器配置大多为空，并且所有设置都是可选的。 以下示例显示与默认配置等效的配置：
 
     ```xml
     <TelemetryProcessors>

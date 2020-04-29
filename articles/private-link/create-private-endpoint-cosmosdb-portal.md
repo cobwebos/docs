@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: allensu
 ms.openlocfilehash: b7a50a2dabc9503ca5dbdd3388e29cfc69963885
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78252602"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>使用 Azure 专用链接以私密方式连接到 Azure Cosmos 帐户
@@ -21,7 +21,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 Azure[门户。](https://portal.azure.com)
+登录到 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="create-a-vm"></a>创建 VM
 
@@ -29,73 +29,73 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
 在本部分中，你将创建虚拟网络和子网来托管用于访问专用链接资源（在本例中为 Azure Cosmos 帐户）的 VM。
 
-在本节中，您需要将步骤中的以下参数替换为以下信息：
+在本部分中，你需要将步骤中的以下参数替换为以下信息：
 
-| 参数                   | “值”                |
+| 参数                   | Value                |
 |-----------------------------|----------------------|
-| **\<资源组名称>**  | myResourceGroup|
-| **\<虚拟网络名称>** | myVirtualNetwork         |
-| **\<区域名称>**          | 美国中西部     |
-| **\<IPv4 地址空间>**   | 10.1.0.0\16          |
-| **\<子网名称>**          | mySubnet        |
-| **\<子网地址范围>** | 10.1.0.0\24          |
+| **\<resource-group-name>**  | myResourceGroup|
+| **\<virtual-network-name>** | myVirtualNetwork         |
+| **\<region-name>**          | 美国中西部     |
+| **\<IPv4-address-space>**   | 10.1.0.0 \ 16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 10.1.0.0 \ 24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-the-virtual-machine"></a>创建虚拟机
 
-1. 在 Azure 门户中屏幕的左上角，选择 **"创建资源** > **计算** > **虚拟机**"。
+1. 在 Azure 门户屏幕的左上方，选择 "**创建资源** > " "**计算** > " "**虚拟机**"。
 
-1. 在“创建虚拟机 - 基本信息”**** 中，输入或选择以下信息：
+1. 在“创建虚拟机 - 基本信息”  中，输入或选择以下信息：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     | ------- | ----- |
-    | **项目详情** | |
+    | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
-    | 资源组 | 选择**我的资源组**。 已在上一部分创建此内容。  |
+    | 资源组 | 选择“myResourceGroup”。  已在上一部分创建此内容。  |
     | **实例详细信息** |  |
     | 虚拟机名称 | 输入 *myVm*。 |
-    | 区域 | 选择“WestCentralUS”。**** |
-    | 可用性选项 | 保留默认值“不需要基础结构冗余”****。 |
-    | 图像 | 选择“Windows Server 2019 Datacenter”。**** |
-    | 大小 | 保留默认值“标准 DS1 v2”****。 |
+    | 区域 | 选择“WestCentralUS”。  |
+    | 可用性选项 | 保留默认值“不需要基础结构冗余”  。 |
+    | 映像 | 选择“Windows Server 2019 Datacenter”。  |
+    | 大小 | 保留默认值“标准 DS1 v2”  。 |
     | **管理员帐户** |  |
     | 用户名 | 输入所选用户名。 |
-    | 密码 | 输入选择的密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
+    | Password | 输入选择的密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     | 确认密码 | 重新输入密码。 |
     | **入站端口规则** |  |
-    | 公共入站端口 | 保留默认值“无”****。 |
+    | 公共入站端口 | 保留默认值“无”  。 |
     | **节省资金** |  |
-    | 已有 Windows 许可证？ | 保留默认值“否”****。 |
+    | 已有 Windows 许可证？ | 保留默认值“否”  。 |
     |||
 
-1. 选择 **"下一步"：磁盘**。
+1. 在完成时选择“下一步:**磁盘”** 。
 
-1. 在 **"创建虚拟机磁盘"中**，保留默认值并选择 **"下一步：网络**"。
+1. 在“创建虚拟机 - 磁盘”中保留默认值，然后选择“下一步:  **网络”** 。
 
-1. 在“创建虚拟机 - 基本信息”**** 中，选择以下信息：
+1. 在“创建虚拟机 - 基本信息”  中，选择以下信息：
 
-    | 设置 | “值” |
+    | 设置 | 值 |
     | ------- | ----- |
-    | 虚拟网络 | 保留默认值“MyVirtualNetwork”****。  |
-    | 地址空间 | 保留默认值“10.1.0.0/24”。****|
-    | 子网 | 保留默认值“mySubnet (10.1.0.0/24)”。****|
-    | 公共 IP | 保留默认值“(new) myVm-ip”****。 |
-    | 公共入站端口 | 选择“允许所选端口”****。 |
-    | 选择入站端口 | 选择“HTTP”和“RDP”。********|
+    | 虚拟网络 | 保留默认值“MyVirtualNetwork”  。  |
+    | 地址空间 | 保留默认值“10.1.0.0/24”。 |
+    | 子网 | 保留默认值“mySubnet (10.1.0.0/24)”。 |
+    | 公共 IP | 保留默认值“(new) myVm-ip”  。 |
+    | 公共入站端口 | 选择“允许所选端口”  。 |
+    | 选择入站端口 | 选择“HTTP”和“RDP”。  |
     ||
 
-1. 选择“查看 + 创建”****。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置****。
+1. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置  。
 
-1. 当您看到**验证传递**的消息时，选择 **"创建**"。
+1. 看到“验证通过”消息时，选择“创建”   。
 
 ## <a name="create-an-azure-cosmos-account"></a>创建 Azure Cosmos 帐户
 
-创建 [Azure Cosmos SQL API 帐户](../cosmos-db/create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account)。 为简单起见，可以在与其他资源（即"WestCentralUS"）相同的区域创建 Azure Cosmos 帐户。
+创建 [Azure Cosmos SQL API 帐户](../cosmos-db/create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account)。 为简单起见，可以在与其他资源（即 "WestCentralUS"）相同的区域中创建 Azure Cosmos 帐户。
 
 ## <a name="create-a-private-endpoint-for-your-azure-cosmos-account"></a>为 Azure Cosmos 帐户创建专用终结点
 
-使用链接文章的 Azure 门户部分为 Azure Cosmos 帐户创建专用链接，如"[创建专用链接](../cosmos-db/how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-the-azure-portal)"中所述。
+创建 Azure Cosmos 帐户的专用链接，如使用链接项目的[Azure 门户部分创建专用链接](../cosmos-db/how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-the-azure-portal)中所述。
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
 
@@ -103,22 +103,22 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
 1. 在门户的搜索栏中，输入 *myVm*。
 
-1. 选择“连接”按钮。**** 选择“连接”按钮后，“连接到虚拟机”随即打开********。
+1. 选择“连接”按钮。  选择“连接”按钮后，“连接到虚拟机”随即打开   。
 
-1. 选择**下载 RDP 文件**。 Azure 会创建远程桌面协议 (*.rdp*) 文件，并将其下载到计算机。
+1. 选择“下载 RDP 文件”  。 Azure 会创建远程桌面协议 ( *.rdp*) 文件，并将其下载到计算机。
 
-1. 打开下载的 *.rdp*文件。
+1. 打开下载的 *.rdp* 文件。
 
-    1. 出现提示时，选择“连接”****。
+    1. 出现提示时，选择“连接”  。
 
     1. 输入在创建 VM 时指定的用户名和密码。
 
         > [!NOTE]
-        > 您可能需要选择**更多选项** > **"使用其他帐户**"来指定创建 VM 时输入的凭据。
+        > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据   。
 
-1. 选择“确定”。
+1. 选择“确定”  。
 
-1. 你可能会在登录过程中收到证书警告。 如果收到证书警告，请选择“确定”或“继续”********。
+1. 你可能会在登录过程中收到证书警告。 如果收到证书警告，请选择“确定”或“继续”   。
 
 1. VM 桌面出现后，将其最小化以返回到本地桌面。  
 
@@ -128,9 +128,9 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
 1. 若要包括 IP 地址和 DNS 映射，请登录到虚拟机 *myVM*，打开 `c:\Windows\System32\Drivers\etc\hosts` 文件，并采用以下格式包括上一步骤中的 DNS 信息：
 
-   [专用 IP 地址][帐户终结点]文档.azure.com
+   [专用 IP 地址][Account endpoint] .com
 
-   **例子：**
+   **示例：**
 
    10.1.255.13 mycosmosaccount.documents.azure.com
 
@@ -143,34 +143,34 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
 1. 选择“连接到 Cosmos DB”****。
 
-1. 选择**API**。
+1. 选择 " **API**"。
 
 1. 通过粘贴之前复制的信息来输入连接字符串。
 
-1. 选择“下一步”。
+1. 选择“下一步”  。
 
-1. 选择“连接”****。
+1. 选择“连接”  。
 
 1. 浏览 *mycosmosaccount* 中的 Azure Cosmos 数据库和容器。
 
 1. （可选）向 *mycosmosaccount* 中添加新项。
 
-1. 关闭远程桌面连接到*myVM。*
+1. 关闭与*myVM*的远程桌面连接。
 
 ## <a name="clean-up-resources"></a>清理资源
 
 用完专用终结点、Azure Cosmos 帐户和 VM 之后，请删除资源组及其包含的所有资源： 
 
-1. 在门户顶部的“搜索”框中输入“myResourceGroup”，并从搜索结果中选择“myResourceGroup”********。
+1. 在门户顶部的“搜索”框中输入“myResourceGroup”，并从搜索结果中选择“myResourceGroup”    。
 
-1. 选择“删除资源组”****。
+1. 选择“删除资源组”  。
 
-1. 输入 *"资源组***"以键入资源组名称**，然后选择 **"删除**"。
+1. 输入*myResourceGroup*作为 **"资源组名称"** ，然后选择 "**删除**"。
 
 ## <a name="next-steps"></a>后续步骤
 
 在本文中，你在虚拟网络上创建了一个 VM、一个 Azure Cosmos 帐户和一个专用终结点。 你从 Internet 连接到了该 VM，并使用专用链接安全地与 Azure Cosmos 帐户进行通信。
 
-* 要了解有关私有终结点的更多内容，请参阅[什么是 Azure 专用终结点？](private-endpoint-overview.md)
+* 若要了解有关专用终结点的详细信息，请参阅[什么是 Azure 专用终结点？](private-endpoint-overview.md)。
 
 * 若要详细了解与 Azure Cosmos DB 一起使用时专用终结点的限制，请参阅[与 Azure Cosmos DB 之间的 Azure 专用链接](../cosmos-db/how-to-configure-private-endpoints.md)一文。

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
 ms.openlocfilehash: 1c24782285ac9b06d5499351eebe1693ade07297
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78162938"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中配置 IP 防火墙
@@ -19,11 +19,11 @@ ms.locfileid: "78162938"
 
 * 通过 Azure 门户
 * 通过使用 Azure 资源管理器模板来以声明方式进行配置
-* 通过更新**ipRangeFilter**属性，通过 Azure CLI 或 Azure PowerShell 以编程方式
+* 通过更新 **ipRangeFilter** 属性并借助 Azure CLI 或 Azure PowerShell 来以编程方式进行配置
 
 ## <a name="configure-an-ip-firewall-by-using-the-azure-portal"></a><a id="configure-ip-policy"></a>使用 Azure 门户配置 IP 防火墙
 
-若要在 Azure 门户中设置 IP 访问控制策略，请转到 Azure Cosmos DB 帐户页，然后在导航菜单中选择“防火墙和虚拟网络”。**** 将“允许从以下位置访问”值更改为“选定的网络”，然后选择“保存”。************
+若要在 Azure 门户中设置 IP 访问控制策略，请转到 Azure Cosmos DB 帐户页，然后在导航菜单中选择“防火墙和虚拟网络”。  将“允许从以下位置访问”值更改为“选定的网络”，然后选择“保存”。   
 
 ![此屏幕截图显示了如何在 Azure 门户中打开“防火墙”页](./media/how-to-configure-firewall/azure-portal-firewall.png)
 
@@ -34,7 +34,7 @@ ms.locfileid: "78162938"
 
 ### <a name="allow-requests-from-the-azure-portal"></a>允许来自 Azure 门户的请求
 
-以编程的方式启用 IP 访问控制策略时，需将 Azure 门户的 IP 地址添加到 ipRangeFilter 属性以维持访问。**** 门户 IP 地址是：
+以编程的方式启用 IP 访问控制策略时，需将 Azure 门户的 IP 地址添加到 ipRangeFilter 属性以维持访问。  门户 IP 地址是：
 
 |区域|IP 地址|
 |------|----------|
@@ -43,17 +43,17 @@ ms.locfileid: "78162938"
 |US Gov|52.244.48.71|
 |所有其他区域|104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26|
 
-您可以通过选择"**允许从 Azure 门户访问**"选项来启用访问 Azure 门户的请求，如以下屏幕截图所示：
+可以通过选择 "**允许从 Azure 门户访问**" 选项启用访问 Azure 门户的请求，如以下屏幕截图所示：
 
 ![此屏幕截图显示了如何启用对 Azure 门户的访问](./media/how-to-configure-firewall/enable-azure-portal.png)
 
 ### <a name="allow-requests-from-global-azure-datacenters-or-other-sources-within-azure"></a>允许来自全球的 Azure 数据中心或 Azure 中的其他源的请求
 
-如果通过不提供静态 IP 的服务（例如 Azure 流分析和 Azure Functions）访问 Azure Cosmos DB 帐户，仍可使用 IP 防火墙来限制访问。 您可以通过选择**Azure 数据中心内的"接受连接**"选项来启用从 Azure 中的其他源进行访问，如以下屏幕截图所示：
+如果通过不提供静态 IP 的服务（例如 Azure 流分析和 Azure Functions）访问 Azure Cosmos DB 帐户，仍可使用 IP 防火墙来限制访问。 可以通过从 azure**数据中心内选择 "接受连接**" 选项，从 azure 中的其他源启用访问权限，如以下屏幕截图所示：
 
 ![此屏幕截图显示了如何在 Azure 门户中打开“防火墙”页](./media/how-to-configure-firewall/enable-azure-services.png)
 
-启用此选项时，IP 地址`0.0.0.0`将添加到允许的 IP 地址列表中。 IP`0.0.0.0`地址限制 Azure 数据中心 IP 范围对 Azure Cosmos DB 帐户的请求。 此设置不允许任何其他 IP 范围访问 Azure Cosmos DB 帐户。
+启用此选项后，IP 地址`0.0.0.0`将添加到 "允许的 ip 地址" 列表中。 `0.0.0.0` IP 地址将请求从 Azure 数据中心 IP 范围限制到你的 Azure Cosmos DB 帐户。 此设置不允许任何其他 IP 范围访问 Azure Cosmos DB 帐户。
 
 > [!NOTE]
 > 该选项将防火墙配置为允许来自 Azure 的所有请求，包括来自 Azure 中部署的其他客户的订阅的请求。 此选项允许的 IP 地址较为广泛，因为限制了防火墙策略的有效性。 仅当请求并非来自虚拟网络中的静态 IP 或子网时，才使用此选项。 选择此选项将自动允许从 Azure 门户进行访问，因为 Azure 门户在 Azure 中部署。
@@ -64,7 +64,7 @@ ms.locfileid: "78162938"
 
 门户将自动检测客户端 IP 地址。 它可能是计算机的客户端 IP 地址，也可能是网络网关的 IP 地址。 请务必在将工作负荷置于生产环境之前删除此 IP 地址。
 
-若要将当前 IP 添加到 IP 列表，请选择“添加当前 IP”。**** 再选择“保存”****。
+若要将当前 IP 添加到 IP 列表，请选择“添加当前 IP”。**** 再选择“保存”  。
 
 ![此屏幕截图显示了如何为当前 IP 配置防火墙设置](./media/how-to-configure-firewall/enable-current-ip.png)
 

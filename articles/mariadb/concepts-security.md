@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 8f41fe1005e96b428337bc73b9d468962a079596
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79527820"
 ---
 # <a name="security-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的安全性
@@ -45,7 +45,7 @@ IP 防火墙规则基于每个请求的起始 IP 地址授予对服务器的访�
 
 ## <a name="threat-protection"></a>威胁防护
 
-您可以选择加入[高级威胁保护](concepts-data-access-and-security-threat-protection.md)，该保护可检测异常活动，指示访问或利用服务器的异常和潜在有害尝试。
+你可以选择 "[高级威胁防护](concepts-data-access-and-security-threat-protection.md)"，它会检测异常活动，这些活动表示对访问或利用服务器的异常和潜在有害尝试。
 
 [审核日志记录](concepts-audit-logs.md)可用于跟踪数据库中的活动。 
 

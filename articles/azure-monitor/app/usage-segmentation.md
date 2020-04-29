@@ -1,5 +1,5 @@
 ---
-title: Azure 应用程序见解中的用户、会话和事件分析
+title: 在 Azure Application Insights 中进行用户、会话和事件分析
 description: 对 Web 应用的用户进行人口统计学分析。
 ms.topic: conceptual
 author: NumberByColors
@@ -7,10 +7,10 @@ ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 56059304026b060e2215ce73e0e94e3200573a14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670978"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>在 Application Insights 中进行用户、会话和事件分析
@@ -47,13 +47,13 @@ ms.locfileid: "77670978"
 ## <a name="saving-and-sharing-reports"></a>保存和共享报表 
 可以将用户报表保存为在“我的报表”部分中专供你使用的报表，或者将其保存为在“共享报表”部分中可供对此 Application Insights 资源具有访问权限的其他所有人访问的共享报表。
 
-若要共享“用户”、“会话”或“事件”报表的链接，请单击工具栏中的“共享”****，然后复制该链接。
+若要共享“用户”、“会话”或“事件”报表的链接，请单击工具栏中的“共享”  ，然后复制该链接。
 
-若要共享“用户”、“会话”或“事件”报表中的数据副本，请单击工具栏中的“共享”****，然后单击“Word 图标”**** 使用该数据创建一个 Word 文档。 或者，单击主图表上方的“Word 图标”****。
+若要共享“用户”、“会话”或“事件”报表中的数据副本，请单击工具栏中的“共享”  ，然后单击“Word 图标”  使用该数据创建一个 Word 文档。 或者，单击主图表上方的“Word 图标”  。
 
 ## <a name="meet-your-users"></a>了解用户
 
-“了解用户”**** 部分显示与当前查询匹配的五个示例用户的相关信息。 除了聚合之外，考虑并探究个体的行为可以洞察人们使用应用的实际方式。
+“了解用户”  部分显示与当前查询匹配的五个示例用户的相关信息。 除了聚合之外，考虑并探究个体的行为可以洞察人们使用应用的实际方式。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -62,5 +62,5 @@ ms.locfileid: "77670978"
     - [漏斗图](usage-funnels.md)
     - [保留](usage-retention.md)
     - [用户流](usage-flows.md)
-    - [练习 册](../../azure-monitor/app/usage-workbooks.md)
+    - [工作簿](../../azure-monitor/app/usage-workbooks.md)
     - [添加用户上下文](usage-send-user-context.md)

@@ -12,10 +12,10 @@ ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 03/12/2019
 ms.openlocfilehash: a9bf28fb1b3c5278d25b417fc646d2ad3d6f1abc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79213992"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>SQL 数据库中扩展事件的事件文件目标代码
@@ -34,14 +34,14 @@ ms.locfileid: "79213992"
   - 将 Azure 存储容器分配到事件文件目标。
   - 创建和启动事件会话，等等。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
 > PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
-- Azure 帐户和订阅。 您可以注册免费[试用](https://azure.microsoft.com/pricing/free-trial/)。
+- Azure 帐户和订阅。 你可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 - 可以在其中创建表的任何数据库。
   
   - 或者，也可以快速[创建一个 **AdventureWorksLT** 演示数据库](sql-database-get-started.md)。
@@ -249,7 +249,7 @@ PowerShell 脚本在结束时输出了几个命名值。 必须编辑 Transact-S
 6. 保存并运行该脚本。
 
 > [!WARNING]
-> 之前 PowerShell 脚本生成的 SAS 密钥值可能以“?”（问号）开头。 在以下 T-SQL 脚本中使用 SAS 密钥时，必须*删除前导“?”*。 否则，安全性可能会阻止操作。
+> 之前 PowerShell 脚本生成的 SAS 密钥值可能以“?”（问号）开头。 在以下 T-SQL 脚本中使用 SAS 密钥时，必须*删除前导“?”* 。 否则，安全性可能会阻止操作。
 
 ### <a name="transact-sql-code"></a>Transact-SQL 代码
 
@@ -442,9 +442,9 @@ GO
 
 ## <a name="output"></a>输出
 
-完成 Transact-SQL 脚本后，请单击 **event_data_XML** 列标题下的单元格。 将显示一**\<个事件>** 元素，显示一个 UPDATE 语句。
+完成 Transact-SQL 脚本后，请单击 **event_data_XML** 列标题下的单元格。 此时将显示一个 **\<event>** 元素，其中显示了一个 UPDATE 语句。
 
-下面是测试期间生成的>元素的一**\<个事件**：
+下面是测试期间生成的一个 **\<event>** 元素：
 
 ```xml
 <event name="sql_statement_starting" package="sqlserver" timestamp="2015-09-22T19:18:45.420Z">
@@ -510,7 +510,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 - [如何通过 .NET 使用 Blob 存储](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 - [命名和引用容器、Blob 与元数据](https://msdn.microsoft.com/library/azure/dd135715.aspx)
 - [使用根容器](https://msdn.microsoft.com/library/azure/ee395424.aspx)
-- [第 1 课：在 Azure 容器上创建存储的访问策略和共享访问签名](https://msdn.microsoft.com/library/dn466430.aspx)
+- [第 1 课：在 Azure 容器上创建存储访问策略和共享访问签名](https://msdn.microsoft.com/library/dn466430.aspx)
   - [第 2 课：使用共享访问签名创建 SQL Server 凭据](https://msdn.microsoft.com/library/dn466435.aspx)
 - [Microsoft SQL Server 扩展事件](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)
 

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.openlocfilehash: 4fd71a7f322cb2672eb485f17e4de2619a7c2d2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78270030"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>使用 Power BI 连接知识存储
@@ -43,7 +43,7 @@ ms.locfileid: "78270030"
 
 1. 在“获取数据”窗口中，依次选择“Azure”、“Azure 表存储”。************
 
-1. 单击“连接”。
+1. 单击“连接”  。
 
 1. 对于“帐户名称或 URL”，请输入你的 Azure 存储帐户名称（系统将为你创建完整 URL）。****
 
@@ -110,7 +110,7 @@ In the enrichment step of the wizard, attach a billable [Cognitive Services](htt
 
 在自己的订阅中操作时，最好在项目结束时确定是否仍需要已创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 
-可以使用左侧导航窗格中的“所有资源”或“资源组”链接********，在门户中查找和管理资源。
+可以使用左侧导航窗格中的“所有资源”或“资源组”链接   ，在门户中查找和管理资源。
 
 如果使用的是免费服务，请记住只能设置三个索引、索引器和数据源。 可以在门户中删除单个项目，以不超出此限制。
 
@@ -119,4 +119,4 @@ In the enrichment step of the wizard, attach a billable [Cognitive Services](htt
 若要了解如何使用存储资源管理器浏览此知识存储，请参阅以下文章。
 
 > [!div class="nextstepaction"]
-> [使用存储资源管理器查看](knowledge-store-view-storage-explorer.md)
+> [使用存储资源管理器进行查看](knowledge-store-view-storage-explorer.md)

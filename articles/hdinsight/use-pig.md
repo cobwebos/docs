@@ -10,15 +10,15 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.openlocfilehash: ea960a92aee1c9447bb12d27cffdc42de9fd907a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77672117"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>将 Apache Pig 与 Apache Hadoop on HDInsight 配合使用
 
-了解如何使用[阿帕奇猪](https://pig.apache.org/)与HDInsight。
+了解如何将 [Apache Pig](https://pig.apache.org/) 与 HDInsight 配合使用。
 
 Apache Pig 是一个平台，用于使用名为 *Pig Latin* 的过程语言为 Apache Hadoop 创建程序。 Pig 可以替代 Java 来创建 *MapReduce* 解决方案，它已包括在 Azure HDInsight 中。 使用下表可以找出将 Pig 与 HDInsight 配合使用的各种方法：
 
@@ -28,13 +28,13 @@ Apache Pig 是一个平台，用于使用名为 *Pig Latin* 的过程语言为 A
 
 使用 Pig，可以将处理定义成一系列转换，相关数据经过这些转换即可生成所需的输出。
 
-使用 Pig Latin 语言，可以通过一个或多个转换从原始输入描述数据流，以便生成所需的输出。 Pig Latin 程序遵循下述常规模式：
+通过 Pig Latin 语言，可以描述从原始输入开始，经过一个或多个转换，最终生成所需输出的数据流。 Pig Latin 程序遵循下述常规模式：
 
-* **加载**：读取要从文件系统操作的数据。
+* **加载**：从文件系统中读取要操作的数据。
 
-* **转换**：操作数据。
+* **转换**：操作该数据。
 
-* **转储或存储**：将数据输出到屏幕或存储以进行处理。
+* **转储或存储**：将数据输出到屏幕或将其存储后再进行处理。
 
 ### <a name="user-defined-functions"></a>用户定义的函数
 
@@ -53,7 +53,7 @@ HDInsight 提供各种示例数据集，它们存储在 `/example/data` 和 `/Hd
 在前面的示例中，日志级别为 ERROR。
 
 > [!NOTE]  
-> 还可以使用 [Apache Log4j](https://en.wikipedia.org/wiki/Log4j) 日志记录工具来生成 log4j 文件，然后将该文件上传到 Blob。 请参阅[将数据上传到 HDInsight](hdinsight-upload-data.md) 以获取相关说明。 有关如何将 Azure 存储中的 Blob 与 HDInsight 配合使用的详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用](hdinsight-hadoop-use-blob-storage.md)。
+> 还可以使用 [Apache Log4j](https://en.wikipedia.org/wiki/Log4j) 日志记录工具来生成 log4j 文件，并将该文件上传到 Blob。 请参阅[将数据上传到 HDInsight](hdinsight-upload-data.md) 以了解相关说明。 有关如何将 Azure 存储中的 Blob 用于 HDInsight 的详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用](hdinsight-hadoop-use-blob-storage.md)。
 
 ## <a name="example-job"></a><a id="job"></a>示例作业
 
@@ -75,7 +75,7 @@ HDInsight 提供各种示例数据集，它们存储在 `/example/data` 和 `/Hd
 
 ## <a name="run-the-pig-latin-job"></a><a id="run"></a>运行 Pig Latin 作业
 
-HDInsight 可以使用各种方法来运行 Pig Latin 作业。 使用下表来确定哪种方法最适合，并按链接进行演练。
+HDInsight 可以使用各种方法来运行 Pig Latin 作业。 使用下表来确定哪种方法最适合用户，并访问此链接进行演练。
 
 ## <a name="pig-and-sql-server-integration-services"></a>Pig 和 SQL Server Integration Services
 
@@ -85,7 +85,7 @@ HDInsight 可以使用各种方法来运行 Pig Latin 作业。 使用下表来�
 
 * [Azure 订阅连接管理器][connectionmanager]
 
-在[此处][ssispack]了解有关 Azure Feature Pack for SSIS 的详细信息。
+若要详细了解 Azure Feature Pack for SSIS，请查看[此处][ssispack]。
 
 ## <a name="next-steps"></a><a id="nextsteps"></a>后续步骤
 

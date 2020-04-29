@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 01/23/2020
 ms.author: victorh
 ms.openlocfilehash: bc34afe82c1b73afb5f3d5d1a07f2a5059590146
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76705955"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>Azure 防火墙日志分析示例
@@ -22,15 +22,15 @@ ms.locfileid: "76705955"
 
 ## <a name="azure-monitor-logs-view"></a>Azure Monitor 日志视图
 
-下面是配置示例 Azure Monitor 日志可视化的方法。 可从 [azure-docs-json-samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) 存储库下载可视化示例。 最简单的方法是右键单击此页面上的超链接，然后选择“另存为”，并提供类似“AzureFirewall.omsview”的名称******。 
+下面是配置示例 Azure Monitor 日志可视化的方法。 可从 [azure-docs-json-samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) 存储库下载可视化示例。 最简单的方法是右键单击此页面上的超链接，然后选择“另存为”，并提供类似“AzureFirewall.omsview”的名称   。 
 
 执行以下步骤以将视图添加到 Log Analytics 工作区中：
 
 1. 在 Azure 门户中打开 Log Analytics 工作区。
-2. 打开“常规”下的“视图设计器”********。
-3. 单击“导入”****。
-4. 浏览并选择之前下载的“AzureFirewall.omsview”文件****。
-5. 单击“保存”。****
+2. 打开“常规”下的“视图设计器”   。
+3. 单击“导入”  。
+4. 浏览并选择之前下载的“AzureFirewall.omsview”文件  。
+5. 单击“保存”  。
 
 以下是视图查找应用程序规则日志数据的方式：
 
@@ -40,7 +40,7 @@ ms.locfileid: "76705955"
 
 ![网络规则日志数据]( ./media/log-analytics-samples/azurefirewall-networkrulelogstats.png)
 
-AzureDiagnostics 下的 Azure 防火墙日志数据类别为“AzureFirewallApplicationRule”或“AzureFirewallNetworkRule”********。 包含详细信息的数据存储在 msg_s 字段中。 借助[分析](https://docs.microsoft.com/azure/kusto/query/parseoperator)运算符，可从 msg_s 字段中提取各种相关属性。 以下查询提取两种类别的信息。
+AzureDiagnostics 下的 Azure 防火墙日志数据类别为“AzureFirewallApplicationRule”或“AzureFirewallNetworkRule”   。 包含详细信息的数据存储在 msg_s 字段中。 借助[分析](https://docs.microsoft.com/azure/kusto/query/parseoperator)运算符，可从 msg_s 字段中提取各种相关属性。 以下查询提取两种类别的信息。
 
 ## <a name="application-rules-log-data-query"></a>应用程序规则日志数据查询
 
@@ -168,7 +168,7 @@ AzureDiagnostics
 
 ## <a name="sample-logs"></a>示例日志
 
-以下日志示例显示日志条目中包含的数据。
+以下日志示例显示了日志条目中包含的数据。
 
 ![日志条目](media/log-analytics-samples/log1.png)
 

@@ -1,6 +1,6 @@
 ---
 title: Azure 媒体服务 LiveEvent 类型 | Microsoft Docs
-description: 在 Azure 媒体服务中，可以将实时事件设置为*传递*或*实时编码*。 本文显示了比较实时事件类型的详细表。
+description: 在 Azure 媒体服务中，可以将直播活动设为“直通”  或“实时编码”  。 本文显示了比较直播活动类型的详细表格。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,23 +14,23 @@ ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
 ms.openlocfilehash: a28d4d96f643c12eeb6aa542db2c6af06f4fd954
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78244644"
 ---
 # <a name="live-event-types-comparison"></a>实时事件类型比较
 
-在 Azure 媒体服务中，[可以将实时事件](https://docs.microsoft.com/rest/api/media/liveevents)设置为*传递*（本地实时编码器发送多个比特率流）或*实时编码*（本地实时编码器发送单个比特率流）。 
+在 Azure 媒体服务中，可以将[直播活动](https://docs.microsoft.com/rest/api/media/liveevents)设为“直通”  （本地实时编码器发送多比特率流）或“实时编码”  （本地实时编码器发送单比特率流）。 
 
-本文比较了实时事件类型的功能。
+本文对直播活动类型的功能进行了比较。
 
 ## <a name="types-comparison"></a>类型比较 
 
 下表比较了实时事件类型的功能。 这些类型是在创建期间使用 [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype) 设置的：
 
-* **LiveEventEncodingType.None** - 本地实时编码器发送多比特率流。 引入的流通过实时事件传递，而不会经过任何进一步的处理。 也称为传递实时事件。
+* **LiveEventEncodingType.None** - 本地实时编码器发送多比特率流。 引入的流通过实时事件传递，而不会经过任何进一步的处理。 也称为“直通直播活动”。
 * **LiveEventEncodingType.Standard** - 本地实时编码器将单比特率流发送到实时事件，媒体服务创建多比特率流。 如果贡献源的分辨率为 720p 或更高，则 **Default720p** 预设将编码一组 6 分辨率/比特率对（本文稍后会提供详细信息）。
 * **LiveEventEncodingType.Premium1080p** - 本地实时编码器将单比特率流发送到实时事件，媒体服务创建多比特率流。 Default1080p 预设指定分辨率/比特率对的输出集（本文稍后会提供详细信息）。 
 
@@ -54,7 +54,7 @@ ms.locfileid: "78244644"
 | 价格|请参阅[定价页](https://azure.microsoft.com/pricing/details/media-services/)并单击“实时视频”选项卡|请参阅[定价页](https://azure.microsoft.com/pricing/details/media-services/)并单击“实时视频”选项卡|
 | 最长运行时间| 24 小时 x 365 天，实时线性 | 24 小时 x 365 天，实时线性（预览）|
 | 传递嵌入式 CEA 608/708 字幕数据的能力|是|是|
-| 能够打开实时转录|是|是|
+| 能够开启实时脚本|是|是|
 | 支持插入静态图像|否|否|
 | 支持通过 API 发出广告指示| 否|否|
 | 支持通过带内 SCTE35 消息发出广告指示|是|是|

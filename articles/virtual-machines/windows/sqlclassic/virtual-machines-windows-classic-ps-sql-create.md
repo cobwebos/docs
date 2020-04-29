@@ -1,5 +1,5 @@
 ---
-title: 创建经典 SQL Server VM（电源外壳）
+title: 创建经典 SQL Server VM （PowerShell）
 description: 提供用于创建具有 SQL Server 虚拟机库映像的 Azure VM的步骤和 PowerShell 脚本。 本主题使用经典部署模式。
 services: virtual-machines-windows
 documentationcenter: na
@@ -16,10 +16,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 5bfdcfab37091a5f581ce147c0a6af5ccd8147a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77914783"
 ---
 # <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-classic"></a>使用 Azure PowerShell 预配 SQL Server 虚拟机（经典）
@@ -29,7 +29,7 @@ ms.locfileid: "77914783"
 本文提供了有关如何通过使用 PowerShell cmdlet 在 Azure 中创建 SQL Server 虚拟机的步骤。
 
 > [!NOTE] 
-> Azure 有两种不同的部署模型来创建和使用资源：[资源管理器和经典](../../../azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
+> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
 
 有关此主题中的 Resource Manager 版本，请参阅[使用 Azure PowerShell Resource Manager 预配 SQL Server 虚拟机](../sql/virtual-machines-windows-ps-sql-create.md)。
 
@@ -82,7 +82,7 @@ ms.locfileid: "77914783"
    > [!NOTE]
    > 如果需要新的存储帐户，首先请使用 New-AzureStorageAccount 命令创建一个全部小写的存储帐户名称，如以下示例所示：`New-AzureStorageAccount -StorageAccountName "<storage account name>" -Location $dcLocation`
 
-4. 将目标存储帐户名称分配给 **$staccount**。 然后使用 Set-AzureSubscription 设置订阅和当前存储帐户****。
+4. 将目标存储帐户名称分配给 **$staccount**。 然后使用 Set-AzureSubscription 设置订阅和当前存储帐户  。
 
    ```powershell
    $staccount="<storage account name>"
@@ -140,11 +140,11 @@ ms.locfileid: "77914783"
    ```
 
 > [!NOTE]
-> 有关更多说明和配置选项，请参阅[使用 Azure PowerShell 创建和预配置基于 Windows 的虚拟机](../classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)中的**生成命令集**部分。
+> 有关更多说明和配置选项，请参阅**使用 Azure PowerShell 创建和预配置基于 Windows 的虚拟机**中的[生成命令集](../classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)部分。
 
 ## <a name="example-powershell-script"></a>PowerShell 脚本示例
 
-以下脚本提供完整脚本的示例，该脚本在 Windows Server 2012 R2 虚拟机上创建 SQL Server 2016 RTM Enterprise****。 如果使用此脚本，必须根据本主题中之前的步骤自定义初始变量。
+以下脚本提供完整脚本的示例，该脚本在 Windows Server 2012 R2 虚拟机上创建 SQL Server 2016 RTM Enterprise  。 如果使用此脚本，必须根据本主题中之前的步骤自定义初始变量。
 
 ```powershell
 # Customize these variables based on your settings and requirements:

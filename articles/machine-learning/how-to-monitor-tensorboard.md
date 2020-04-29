@@ -10,10 +10,10 @@ author: maxluk
 ms.author: maxluk
 ms.date: 02/27/2020
 ms.openlocfilehash: b6b7e47acdbc5bd059e17e512731bd09c8580798
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78195373"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>使用 TensorBoard 和 Azure 机器学习可视化试验运行与指标
@@ -39,7 +39,7 @@ ms.locfileid: "78195373"
 
     * Azure 机器学习计算实例 - 无需下载或安装
 
-        * 完成[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)，以创建预加载 SDK 和示例存储库的专用笔记本服务器。
+        * 在开始本教程之前完成[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)创建预先加载了 SDK 和示例存储库的专用笔记本服务器。
 
         * 在笔记本服务器上的 samples 文件夹中，导航到以下目录找到两个已完成的和已扩展的笔记本：
             * **how-to-use-azureml > training-with-deep-learning > export-run-history-to-tensorboard > export-run-history-to-tensorboard.ipynb**
@@ -53,7 +53,7 @@ ms.locfileid: "78195373"
   
 <a name="direct"></a>
 
-## <a name="option-1-directly-view-run-history-in-tensorboard"></a>选项 1：直接查看 TensorBoard 中的运行历史记录
+## <a name="option-1-directly-view-run-history-in-tensorboard"></a>选项 1：直接在 TensorBoard 中查看运行历史记录
 
 此选项适用于原生可以输出可供 TensorBoard 使用的日志文件的试验，例如 PyTorch、Chainer 和 TensorFlow 试验。 如果你的试验无此功能，请改用 [`export_to_tensorboard()` 方法](#export)。
 
@@ -87,7 +87,7 @@ tf_code = requests.get("https://raw.githubusercontent.com/tensorflow/tensorflow/
 with open(os.path.join(exp_dir, "mnist_with_summaries.py"), "w") as file:
     file.write(tf_code.text)
 ```
-在整个 MNIST 代码文件中，mnist_with_summaries.py，请注意有呼叫`tf.summary.scalar()`的`tf.summary.histogram()`行，`tf.summary.FileWriter()`等。这些方法将实验的关键指标分组、记录和标记到运行历史记录中。 `tf.summary.FileWriter()` 特别重要，因为它序列化所记录的试验指标中的数据，使 TensorBoard 能够基于这些数据生成可视化效果。
+在整个 MNIST 代码文件 mnist_with_summaries.py 中，请注意一些调用 `tf.summary.scalar()`、`tf.summary.histogram()`、`tf.summary.FileWriter()` 等的行。这些方法将试验的关键指标分组、记录和标记到运行历史记录中。 `tf.summary.FileWriter()` 特别重要，因为它序列化所记录的试验指标中的数据，使 TensorBoard 能够基于这些数据生成可视化效果。
 
  ### <a name="configure-experiment"></a>配置试验
 
@@ -150,7 +150,7 @@ compute_target.wait_for_completion(show_output=True, min_node_count=None)
 
 ### <a name="submit-run-with-tensorflow-estimator"></a>使用 TensorFlow 估算器提交运行
 
-TensorFlow 估算器提供一种在计算目标上启动 TensorFlow 训练作业的简单方法。 它通过泛型[`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py)类实现，可用于支持任何框架。 有关使用泛型估算器训练模型的详细信息，请参阅[通过估算器使用 Azure 机器学习训练模型](how-to-train-ml-models.md)
+TensorFlow 估算器提供一种在计算目标上启动 TensorFlow 训练作业的简单方法。 该估算器是通过泛型 [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) 类实现的，可用于支持任何框架。 有关使用泛型估算器训练模型的详细信息，请参阅[通过估算器使用 Azure 机器学习训练模型](how-to-train-ml-models.md)
 
 ```Python
 from azureml.train.dnn import TensorFlow
@@ -183,12 +183,12 @@ tb.stop()
 ```
 
 >[!Note]
- 虽然此示例使用 TensorFlow，但 TensorBoard 可以像 PyTorch 或链子型号一样容易使用。 TensorFlow 必须在运行 TensorBoard 的计算机上可用，但在执行 PyTorch 或链式计算的计算机上不需要 TensorFlow。 
+ 虽然此示例使用了 TensorFlow，但 TensorBoard 可以轻松地用于 PyTorch 或 Chainer 模型。 TensorFlow 必须在运行 TensorBoard 的计算机上可用，但在执行 PyTorch 或 Chainer 计算的计算机上不是必需的。 
 
 
 <a name="export"></a>
 
-## <a name="option-2-export-history-as-log-to-view-in-tensorboard"></a>选项 2：将历史记录导出为日志，以在 TensorBoard 中查看
+## <a name="option-2-export-history-as-log-to-view-in-tensorboard"></a>选项 2：将历史记录导出为日志以在 TensorBoard 中查看
 
 以下代码设置一个示例试验，使用 Azure 机器学习运行历史记录 API 开始日志记录过程，然后将试验运行历史记录导出到 TensorBoard 可用的日志中，以进行可视化。 
 

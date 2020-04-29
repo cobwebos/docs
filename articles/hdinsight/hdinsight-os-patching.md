@@ -1,5 +1,5 @@
 ---
-title: 为 Azure HDInsight 群集配置操作系统修补计划
+title: 为 Azure HDInsight 群集配置 OS 修补计划
 description: 了解如何为基于 Linux 的 HDInsight 群集配置 OS 修补计划。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/21/2020
 ms.openlocfilehash: f8e694f658d6e9de04c92001214ecd5c32ff7753
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78206854"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>为基于 Linux 的 HDInsight 群集配置 OS 修补计划
@@ -30,16 +30,16 @@ HDInsight 为你提供支持，允许你在群集上执行常见任务，例如�
 
 ## <a name="preparation"></a>准备工作
 
-在部署到生产之前，在具有代表性的非生产环境中进行修补。 制定计划，在实际修补之前充分测试系统。
+在部署到生产环境之前，在具有代表性的非生产环境中打补丁。 制定计划，以便在实际打补丁之前对系统进行充分测试。
 
-从与群集的 ssh 会话中，您可能会不时收到一条消息，指出升级可用。 消息可能如下所示：
+在与群集的 ssh 会话中，你可能会不时收到“可以升级”消息。 该消息可能如下所示：
 
 ```
 New release '18.04.3 LTS' available.
 Run 'do-release-upgrade' to upgrade it
 ```
 
-修补是可选的，由您自行决定。
+打补丁是可选的，由你自行决定。
 
 ## <a name="restart-nodes"></a>重启节点
   

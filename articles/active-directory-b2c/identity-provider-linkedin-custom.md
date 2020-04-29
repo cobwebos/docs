@@ -1,7 +1,7 @@
 ---
-title: 使用自定义策略使用LinkedIn帐户设置登录
+title: 使用自定义策略设置 LinkedIn 帐户登录
 titleSuffix: Azure AD B2C
-description: 使用自定义策略在 Azure 活动目录 B2C 中使用LinkedIn帐户设置登录。
+description: 使用自定义策略在 Azure Active Directory B2C 中设置 LinkedIn 帐户的登录。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,23 +12,23 @@ ms.date: 07/25/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 80bd1b65d04ea49fc742033e1850d95a85021c9f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78188165"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略设置使用 LinkedIn 帐户的登录
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文介绍如何使用 Azure 活动目录 B2C （Azure AD B2C） 中的[自定义策略](custom-policy-overview.md)，从LinkedIn帐户为用户启用登录。
+本文说明如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自定义策略](custom-policy-overview.md)，为 LinkedIn 帐户中的用户启用登录。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 完成 [Azure Active Directory B2C 中的自定义策略入门](custom-policy-get-started.md)中的步骤。
-- LinkedIn帐户 - 如果您还没有帐户，[请创建一个帐户](https://www.linkedin.com/start/join)。
-- LinkedIn页面 - 您需要[一个LinkedIn页面](https://www.linkedin.com/help/linkedin/answer/710/creating-a-linkedin-company-page)才能与您在下一节中创建LinkedIn应用程序相关联。
+- LinkedIn 帐户-如果你还没有帐户，请[创建一个帐户](https://www.linkedin.com/start/join)。
+- LinkedIn 页面-需要一个[LinkedIn 页面](https://www.linkedin.com/help/linkedin/answer/710/creating-a-linkedin-company-page)，与下一节中创建的 LinkedIn 应用程序相关联。
 
 ## <a name="create-an-application"></a>创建应用程序
 
@@ -39,20 +39,20 @@ ms.locfileid: "78188165"
 1. 使用你的 LinkedIn 帐户凭据登录到 [LinkedIn 应用程序管理](https://www.linkedin.com/secure/developer?newapp=)网站。
 1. 选择“创建应用”****。
 1. 输入**应用名称**。
-1. 输入与LinkedIn页名称对应**的公司**名称。 如果尚未创建主页，请创建LinkedIn主页。
-1. （可选）输入**隐私政策 URL**。 它必须是有效的 URL，但不需要是可访问的终结点。
-1. 输入**商务电子邮件**。
-1. 上传**应用徽标**图像。 徽标图像必须为正方形，其尺寸必须至少为 100x100 像素。
-1. 在"**产品"** 部分保留默认设置。
-1. 审查以**法律术语**形式提供的信息。 如果您同意这些条款，请选中此框。
+1. 输入与 LinkedIn 页面名称对应的**公司**名称。 如果还没有 LinkedIn 页面，请创建一个。
+1. 可有可无输入**隐私策略 URL**。 它必须是有效的 URL，但不需要是可访问的终结点。
+1. 输入**业务电子邮件**。
+1. 上传**应用徽标**图像。 徽标图像必须是正方形，其尺寸必须至少为100x100 像素。
+1. 在 "**产品**" 部分保留默认设置。
+1. 查看**法律条款**中提供的信息。 如果你同意这些条款，请选中此框。
 1. 选择“创建应用”****。
 
 ### <a name="configure-auth"></a>配置身份验证
 
-1. 选择 **"Auth"** 选项卡。
+1. 选择 "**身份验证**" 选项卡。
 1. 记录**客户端 ID**。
-1. 揭示和记录**客户秘密**。
-1. 在**OAuth 2.0 设置**下，添加以下**重定向 URL**。 将 `your-tenant` 替换为租户的名称。 使用租户名称**的所有小写字母**，即使该名称在 Azure AD B2C 中使用大写字母定义也是如此。
+1. 显示并记录**客户端密码**。
+1. 在 " **OAuth 2.0 设置**" 下，添加以下**重定向 URL**。 将 `your-tenant` 替换为租户的名称。 使用**所有小写字母**作为租户名称，即使它是在 Azure AD B2C 中使用大写字母定义的也是如此。
 
     `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/oauth2/authresp`
 
@@ -60,24 +60,24 @@ ms.locfileid: "78188165"
 
 你需要存储前面在 Azure AD B2C 租户中记录的客户端机密。
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录****。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”********。
 4. 在“概述”页上选择“标识体验框架”****。
-5. 选择**策略键**，然后选择 **"添加**"。
+5. 选择 "**策略密钥**"，然后选择 "**添加**"。
 6. 对于“选项”****，请选择 `Manual`。
-7. 输入策略密钥的**名称**。 例如，`LinkedInSecret` 。 前缀*B2C_1A_* 将自动添加到密钥的名称中。
-8. 在 **"机密**"中，输入您以前记录的客户端密钥。
+7. 输入策略密钥的**名称**。 例如，`LinkedInSecret` 。 前缀*B2C_1A_* 会自动添加到密钥名称。
+8. 在 "**密钥**" 中，输入你之前记录的客户端密码。
 9. 在“密钥用法”处选择 `Signature`。****
-10. 单击 **“创建”**。
+10. 单击 **“创建”** 。
 
 ## <a name="add-a-claims-provider"></a>添加声明提供程序
 
 如果希望用户使用 LinkedIn 帐户登录，需将该帐户定义为 Azure AD B2C 可通过终结点与其进行通信的声明提供程序。 该终结点将提供一组声明，Azure AD B2C 使用这些声明来验证特定的用户是否已完成身份验证。
 
-通过将LinkedIn帐户添加到策略扩展文件中**的声明提供程序**元素，将其定义为声明提供程序。
+通过将 LinkedIn 帐户添加到策略扩展文件中的**ClaimsProviders**元素，将其定义为声明提供程序。
 
-1. 在编辑器中打开*社交和本地帐户/[信任框架扩展.xml]* 文件。 此文件位于作为先决条件之一的一部分下载的[自定义策略初学者包][starter-pack]中。
+1. 在编辑器中打开*SocialAndLocalAccounts/* * trustframeworkextensions.xml** * 文件。 此文件位于[自定义策略初学者包][starter-pack]中，你可以在其中一个必备组件中下载。
 1. 找到 **ClaimsProviders** 元素。 如果该元素不存在，请在根元素下添加它。
 1. 如下所示添加新的 **ClaimsProvider**：
 
@@ -127,14 +127,14 @@ ms.locfileid: "78188165"
     </ClaimsProvider>
     ```
 
-1. 将**client_id**的值替换为您以前记录的应用程序的LinkedIn的客户端 ID。
+1. 将**client_id**的值替换为前面记录的 LinkedIn 应用程序的客户端 id。
 1. 保存文件。
 
 ### <a name="add-the-claims-transformations"></a>添加声明转换
 
-技术配置文件LinkedIn需要**将"从链接响应中提取"** 和 **"从链接响应中提取"** 声明转换添加到索赔转换列表中。 如果文件中未定义**声明转换**元素，请添加父 XML 元素，如下所示。 声明转换还需要定义名为**nullStringClaim**的新声明类型。
+LinkedIn 技术配置文件需要将**ExtractGivenNameFromLinkedInResponse**和**ExtractSurNameFromLinkedInResponse**声明转换添加到 ClaimsTransformations 的列表中。 如果未在文件中定义**ClaimsTransformations**元素，请按如下所示添加父 XML 元素。 声明转换还需要一个名为**nullStringClaim**的新声明类型。
 
-在*TrustFramework 扩展.xml*文件顶部附近添加**构建块**元素。 有关示例，请参阅*TrustFrameworkBase.xml。*
+将**BuildingBlocks**元素添加到*trustframeworkextensions.xml*文件的顶部附近。 有关示例，请参阅*trustframeworkbase.xml* 。
 
 ```XML
 <BuildingBlocks>
@@ -174,17 +174,17 @@ ms.locfileid: "78188165"
 
 ### <a name="upload-the-extension-file-for-verification"></a>上传扩展文件以进行验证
 
-现在配置了策略，以便 Azure AD B2C 知道如何与LinkedIn帐户进行通信。 请尝试上传策略的扩展文件，以确认到目前为止没有任何问题。
+你现在已配置了一个策略，以便 Azure AD B2C 知道如何与 LinkedIn 帐户通信。 尝试上传策略的扩展文件，以确认它目前不会有任何问题。
 
 1. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”********。
 2. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件****。
-3. 单击 **“上载”**。
+3. 单击“上载” 。 
 
 ## <a name="register-the-claims-provider"></a>注册声明提供程序
 
-此时，标识提供程序已设置，但它在任何注册或登录屏幕中不可用。 若要使其可用，需要创建现有模板用户旅程的副本，并对其进行修改，使其具有 LinkedIn 标识提供者。
+此时，标识提供者已设置，但在任何注册或登录屏幕上都不可用。 若要使其可用，需要创建现有模板用户旅程的副本，并对其进行修改，使其具有 LinkedIn 标识提供者。
 
-1. 在初学者包中打开*TrustFrameworkBase.xml*文件。
+1. 打开初学者包中的*trustframeworkbase.xml*文件。
 2. 找到并复制包含 `Id="SignUpOrSignIn"` 的 **UserJourney** 元素的完整内容。
 3. 打开 *TrustFrameworkExtensions.xml* 并找到 **UserJourneys** 元素。 如果该元素不存在，请添加一个。
 4. 将复制的 **UserJourney** 元素的完整内容粘贴为 **UserJourneys** 元素的子级。
@@ -218,7 +218,7 @@ ms.locfileid: "78188165"
 
 ## <a name="create-an-azure-ad-b2c-application"></a>创建 Azure AD B2C 应用程序
 
-通过您在 B2C 租户中注册的应用程序与 Azure AD B2C 的通信。 本部分列出了可用于创建测试应用程序的可选步骤（如果尚未创建）。
+与 Azure AD B2C 通信是通过在 B2C 租户中注册的应用程序进行的。 本部分列出了可用于创建测试应用程序的可选步骤（如果尚未创建）。
 
 [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 
@@ -235,11 +235,11 @@ ms.locfileid: "78188165"
 
 ## <a name="migration-from-v10-to-v20"></a>从 v1.0 迁移到 v2.0
 
-LinkedIn 最近[已将其 API 从 v1.0 更新到 v2.0](https://engineering.linkedin.com/blog/2018/12/developer-program-updates)。 要将现有配置迁移到新配置，请使用以下部分中的信息更新技术配置文件中的元素。
+LinkedIn 最近[已将其 API 从 v1.0 更新到 v2.0](https://engineering.linkedin.com/blog/2018/12/developer-program-updates)。 若要将现有配置迁移到新配置，请使用以下部分中的信息更新技术配置文件中的元素。
 
 ### <a name="replace-items-in-the-metadata"></a>替换元数据中的项
 
-在**技术配置文件**的现有**元数据**元素中，从以下**项**元素更新：
+在**技术配置文件**的现有**元数据**元素中，更新以下项中的下列**项**元素：
 
 ```XML
 <Item Key="ClaimsEndpoint">https://api.linkedin.com/v1/people/~:(id,first-name,last-name,email-address,headline)</Item>
@@ -253,9 +253,9 @@ LinkedIn 最近[已将其 API 从 v1.0 更新到 v2.0](https://engineering.linke
 <Item Key="scope">r_emailaddress r_liteprofile</Item>
 ```
 
-### <a name="add-items-to-the-metadata"></a>将项目添加到元数据
+### <a name="add-items-to-the-metadata"></a>向元数据添加项
 
-在**技术配置文件**的**元数据**中，添加以下**项**元素：
+在**技术配置文件**的**元数据**中，添加以下**Item**元素：
 
 ```XML
 <Item Key="external_user_identity_claim_id">id</Item>
@@ -263,9 +263,9 @@ LinkedIn 最近[已将其 API 从 v1.0 更新到 v2.0](https://engineering.linke
 <Item Key="ResolveJsonPathsInJsonTokens">true</Item>
 ```
 
-### <a name="update-the-outputclaims"></a>更新输出要求
+### <a name="update-the-outputclaims"></a>更新 OutputClaims
 
-在**技术配置文件**的现有**输出声明**中，从以下内容更新以下**输出声明**元素：
+在**技术配置文件**的现有**OutputClaims**中，更新以下**OutputClaim**元素：
 
 ```XML
 <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName" />
@@ -279,9 +279,9 @@ LinkedIn 最近[已将其 API 从 v1.0 更新到 v2.0](https://engineering.linke
 <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="lastName.localized" />
 ```
 
-### <a name="add-new-outputclaimstransformation-elements"></a>添加新的输出声明转换元素
+### <a name="add-new-outputclaimstransformation-elements"></a>添加新的 OutputClaimsTransformation 元素
 
-在**技术配置文件**的 **"输出要求转换"中**，添加以下**输出要求转换**元素：
+在**技术配置文件**的**OutputClaimsTransformations**中，添加以下**OutputClaimsTransformation**元素：
 
 ```XML
 <OutputClaimsTransformation ReferenceId="ExtractGivenNameFromLinkedInResponse" />
@@ -290,9 +290,9 @@ LinkedIn 最近[已将其 API 从 v1.0 更新到 v2.0](https://engineering.linke
 
 ### <a name="define-the-new-claims-transformations-and-claim-type"></a>定义新的声明转换和声明类型
 
-在最后一步中，您添加了需要定义的新声明转换。 要定义声明转换，请将它们添加到**声明转换**列表中。 如果文件中未定义**声明转换**元素，请添加父 XML 元素，如下所示。 声明转换还需要定义名为**nullStringClaim**的新声明类型。
+在最后一个步骤中，您添加了需要定义的新声明转换。 若要定义声明转换，请将它们添加到**ClaimsTransformations**列表中。 如果未在文件中定义**ClaimsTransformations**元素，请按如下所示添加父 XML 元素。 声明转换还需要一个名为**nullStringClaim**的新声明类型。
 
-构建**块**元素应在文件顶部附近添加。 例如，请参阅*信任框架基础.xml。*
+应将**BuildingBlocks**元素添加到文件的顶部附近。 请参阅*trustframeworkbase.xml*作为示例。
 
 ```XML
 <BuildingBlocks>
@@ -332,11 +332,11 @@ LinkedIn 最近[已将其 API 从 v1.0 更新到 v2.0](https://engineering.linke
 
 ### <a name="obtain-an-email-address"></a>获取电子邮件地址
 
-作为从 v1.0 迁移到 v2.0 LinkedIn迁移的一部分，需要对另一个 API 进行额外调用才能获取电子邮件地址。 如果您在注册期间需要获取电子邮件地址，请执行以下操作：
+作为 LinkedIn 从1.0 版迁移到 v2.0 的一部分，需要额外调用另一个 API 才能获得电子邮件地址。 如果需要在注册过程中获取电子邮件地址，请执行以下操作：
 
-1. 完成上述步骤，允许 Azure AD B2C 与LinkedIn联合，以便用户登录。 作为联合的一部分，Azure AD B2C 接收LinkedIn的访问令牌。
-2. 将LinkedIn访问令牌保存到声明中。 [在此处查看说明](idp-pass-through-custom.md)。
-3. 添加以下声明提供程序，将请求添加到LinkedIn的`/emailAddress`API。 为了授权此请求，您需要LinkedIn访问令牌。
+1. 完成上述步骤以允许 Azure AD B2C 与 LinkedIn 联合以允许用户登录。 在联合身份验证过程中，Azure AD B2C 接收 LinkedIn 的访问令牌。
+2. 将 LinkedIn 访问令牌保存到声明。 [请参阅此处的说明](idp-pass-through-custom.md)。
+3. 添加以下向 LinkedIn 的`/emailAddress` API 发出请求的声明提供程序。 若要授权此请求，需要 LinkedIn 访问令牌。
 
     ```XML
     <ClaimsProvider>
@@ -364,7 +364,7 @@ LinkedIn 最近[已将其 API 从 v1.0 更新到 v2.0](https://engineering.linke
     </ClaimsProvider>
     ```
 
-4. 将以下业务流程步骤添加到用户旅程中，以便在用户使用LinkedIn登录时触发 API 声明提供程序。 请确保适当地更新`Order`号码。 在触发LinkedIn技术配置文件的业务流程步骤之后立即添加此步骤。
+4. 将以下业务流程步骤添加到用户旅程，以便在用户使用 LinkedIn 登录时触发 API 声明提供程序。 请确保相应地更新`Order`该编号。 在触发 LinkedIn 技术配置文件的业务流程步骤之后立即添加此步骤。
 
     ```XML
     <!-- Extra step for LinkedIn to get the email -->
@@ -386,9 +386,9 @@ LinkedIn 最近[已将其 API 从 v1.0 更新到 v2.0](https://engineering.linke
     </OrchestrationStep>
     ```
 
-在注册期间从LinkedIn获取电子邮件地址是可选的。 如果您选择不从LinkedIn获取电子邮件，但在注册期间需要一封电子邮件，则用户需要手动输入电子邮件地址并验证它。
+在注册期间从 LinkedIn 获取电子邮件地址是可选的。 如果你选择不从 LinkedIn 获取电子邮件，但在注册过程中需要一个，则用户需要手动输入电子邮件地址并对其进行验证。
 
-有关使用LinkedIn标识提供程序的策略的完整示例，请参阅[自定义策略初学者包](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/linkedin-identity-provider)。
+有关使用 LinkedIn 标识提供者的策略的完整示例，请参阅[自定义策略初学者包](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/linkedin-identity-provider)。
 
 <!-- Links - EXTERNAL -->
 [starter-pack]: https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack

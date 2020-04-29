@@ -7,20 +7,20 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: acd87fac5ec2edc40d27d98f073e13c0acae8d8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c7fcb1429438ee024cb226b63cfcdcab05ed9f8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79498598"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-etcd-api-preview"></a>Azure Cosmos DB etcd API（预览版）简介
 
-Azure Cosmos DB 是 Microsoft 针对任务关键型应用程序提供的全球分布式多模型数据库服务。 它提供交钥匙全球分发、吞吐量和存储的弹性扩展、第 99 个百分位数的单位毫秒延迟，以及保证的高可用性，所有这些都由行业领先的 SLA 支持。
+Azure Cosmos DB 是 Microsoft 针对任务关键型应用程序提供的全球分布式多模型数据库服务。 它提供全包式的全局分发、吞吐量和存储的弹性扩展、99% 的每个位数毫秒的延迟，以及保证的高可用性，所有这些均由行业领先的 SLA 提供支持。
 
 [Etcd](https://github.com/etcd-io/etcd) 是分布式键/值存储。 在 [Kubernetes](https://kubernetes.io/) 中，etcd 用于存储 Kubernetes 群集的状态和配置。 确保 etcd 的可用性、可靠性和性能对于 Kubernetes 群集的整体群集运行状况、可伸缩性、弹性可用性和性能至关重要。 
 
-Azure 宇宙 DB 中的蚀刻 API 允许您使用 Azure 宇宙 DB 作为[Azure 库伯奈的](../aks/index.yml)后端存储。 Azure Cosmos DB 中的 etcd API 目前处于预览状态。 Azure Cosmos DB 实施 etcd 线路协议。 借助 Azure Cosmos DB 中的蚀刻 API，开发人员将自动获得高度可靠、[可用](high-availability.md)、[全局分布](distribute-data-globally.md)的 Kubernetes。 此 API 可让开发人员在完全托管的云原生 PaaS 服务中缩放 Kubernetes 状态管理。 
+Azure Cosmos DB 中的 etcd API 允许将 Azure Cosmos DB 用作[Azure Kubernetes](../aks/index.yml)的后端存储。 Azure Cosmos DB 中的 etcd API 目前处于预览状态。 Azure Cosmos DB 实施 etcd 线路协议。 使用 Azure Cosmos DB 中的 etcd API，开发人员可以自动获得高度可靠、[可用](high-availability.md)的[全球分布式](distribute-data-globally.md)Kubernetes。 此 API 可让开发人员在完全托管的云原生 PaaS 服务中缩放 Kubernetes 状态管理。 
 
 > [!NOTE]
 > 与 Azure Cosmos DB 中的其他 API 不同，无法通过 Azure 门户、CLI 或 SDK 预配 etcd API 帐户。 只能通过部署资源管理器模板来预配 etcd API 帐户；有关详细步骤，请参阅[如何使用 Azure Cosmos DB 预配 Azure Kubernetes](bootstrap-kubernetes-cluster.md) 一文。 Azure Cosmos DB etcd API 目前以受限预览版提供。 可以通过填写注册表单来[注册预览版](https://aka.ms/cosmosetcdapi-signup)。
@@ -39,7 +39,7 @@ Azure Cosmos DB 实施 etcd 线路协议版本 3，允许[主节点的](https://
 
 作为一种完全托管的云原生服务，Azure Cosmos DB 无需 Kubernetes 开发人员设置和管理 etcd。 Azure Cosmos DB 中的 API etcd 具有可伸缩性、高可用性和容错能力，并提供高性能。 设置跨多个节点的复制、执行滚动更新、安全修补和监视 etcd 运行状况所造成的开销均由 Azure Cosmos DB 处理。
 
-### <a name="global-distribution--high-availability"></a>全球分销&高可用性 
+### <a name="global-distribution--high-availability"></a>全局分发 & 高可用性 
 
 Azure Cosmos DB 使用 etcd API 来保证单个区域中 99.99% 的数据读写可用性，以及多个区域中 99.999% 的读写可用性。 
 
@@ -50,7 +50,7 @@ Azure Cosmos DB 为不同区域中的读写请求提供弹性缩放能力。
 
 ### <a name="security--enterprise-readiness"></a>安全性和企业就绪
 
-将 etcd 数据存储到 Azure Cosmos DB 后，Kubernetes 开发人员会自动获得 Azure Cosmos DB 支持的[内置静态加密](database-encryption-at-rest.md)、[认证与法规遵从性](compliance.md)和[备份与还原功能](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)。 
+将 etcd 数据存储到 Azure Cosmos DB 后，Kubernetes 开发人员会自动获得 Azure Cosmos DB 支持的[内置静态加密](database-encryption-at-rest.md)、[认证与法规遵从性](compliance.md)和[备份与还原功能](online-backup-and-restore.md)。 
 
 ## <a name="next-steps"></a>后续步骤
 

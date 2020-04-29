@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中的 Windows VM 上安装赛门铁克终结点保护
+title: 在 Azure 中的 Windows VM 上安装 Symantec Endpoint Protection
 description: 了解如何在使用经典部署模型创建的新的或现有的 Azure VM 上安装和配置 Symantec Endpoint Protection 安全扩展。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/31/2017
 ms.author: akjosh
 ms.openlocfilehash: 63f9441d4df9551405c2ab2bf8c0c67d7de5753c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77919900"
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>如何在 Windows VM 上安装和配置 Symantec Endpoint Protection
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-Azure 有两种不同的部署模型来创建和使用资源：[资源管理器和经典](../../azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
+Azure 具有用于创建和处理资源的两个不同的部署模型：[资源管理器和经典](../../azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。
 
 本文介绍如何在运行 Windows Server 的现有虚拟机 (VM) 上安装和配置 Symantec Endpoint Protection 客户端。 这是完整的客户端，其中包括病毒和间谍软件防护、防火墙和入侵防御等服务。 该客户端通过 VM 代理作为安全扩展插件进行安装。
 
@@ -33,7 +33,7 @@ Azure 有两种不同的部署模型来创建和使用资源：[资源管理器�
 ## <a name="install-symantec-endpoint-protection-on-an-existing-vm"></a>在现有 VM 上安装 Symantec Endpoint Protection
 在开始之前，需具备以下先决条件：
 
-* 在工作计算机上安装 Azure PowerShell 模块 0.8.2 版或更高版本。 可以使用 **Get-Module azure | format-table version** 命令查看已安装的 Azure PowerShell 的版本。 有关说明和指向最新版本的链接，请参阅[如何安装和配置 Azure PowerShell][PS]。 使用 `Add-AzureAccount` 登录到 Azure 订阅。
+* 在工作计算机上安装 Azure PowerShell 模块 0.8.2 版或更高版本。 可以使用 **Get-Module azure | format-table version** 命令查看已安装的 Azure PowerShell 的版本。 有关说明以及指向最新版本的链接，请参阅[如何安装和配置 Azure PowerShell][PS]。 使用 `Add-AzureAccount` 登录到 Azure 订阅。
 * 在 Azure 虚拟机上运行的 VM 代理。
 
 首先，请验证虚拟机上是否已安装 VM 代理。 填写云服务名称和虚拟机名称，并在管理员级别的 Azure PowerShell 命令提示符下运行以下命令。 替换引号内的所有内容，包括 < and > 字符。

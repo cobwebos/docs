@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: juliako
 ms.openlocfilehash: 1c2d6287a89c7816c30cf26978859c07dba0251d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78197498"
 ---
 # <a name="azure-media-services-overview"></a>Azure 媒体服务概述 
 
 > [!div class="op_single_selector" title1="选择所使用的媒体服务版本："]
-> * [版本 3](../latest/media-services-overview.md)
-> * [版本 2](media-services-overview.md)
+> * [第 3 版](../latest/media-services-overview.md)
+> * [第 2 版](media-services-overview.md)
 
 > [!NOTE]
-> 媒体服务 v2 中未添加新功能。 <br/>查看最新版本，[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 媒体服务 v2 中未添加新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 Microsoft Azure 媒体服务 (AMS) 是一个可扩展的基于云的平台，使开发人员能够生成可缩放的媒体管理和传送应用程序。 媒体服务基于 REST API，你可以使用这些 API 安全地上传、存储、编码和打包视频或音频内容，以供点播以及以实时流形式传送到各种客户端（例如，电视、电脑和移动设备）。
 
@@ -36,13 +36,13 @@ Microsoft Azure 媒体服务 (AMS) 是一个可扩展的基于云的平台，使
 
 ## <a name="compliance-privacy-and-security"></a>符合性、隐私和安全性
 
-作为重要提醒，在使用 Azure 媒体服务时必须遵守所有适用法律，并且不得以侵犯他人权利或可能损害他人权利的方式使用媒体服务或任何 Azure 服务。
+需要重点提醒的是，在使用 Azure 媒体服务时，你必须遵守所有适用法律，不得以侵犯他人权利或可能对他人有害的方式使用媒体服务或任何 Azure 服务。
 
-在将任何视频/图像上载到媒体服务之前，您必须拥有使用视频/图像的所有适当权利，包括在法律要求的情况下，在视频/图像中使用、处理和存储其数据的所有必要同意（如果有）。 有些法域可能对收集、在线处理和存储某些类别的数据（如生物识别数据）规定了特殊的法律要求。 在使用媒体服务和 Azure 处理和存储受特殊法律要求约束的任何数据之前，必须确保符合可能适用于您的任何此类法律要求。
+在将任何视频/图像上传到媒体服务之前，必须拥有该视频/图像的适当使用权限，包括根据法律的要求，获得视频/图像中的个人（如果有）授予的，在媒体服务和 Azure 中使用、处理和存储其数据的所有必要许可。 某些司法辖区可能会对收集、在线处理和存储某些类别的数据（例如生物识别数据）施加特殊的法律要求。 在根据特殊法律要求使用媒体服务和 Azure 处理与存储任何数据之前，必须确保符合可能适用于你的任何法律要求。
 
-要了解媒体服务的合规性、隐私和安全，请访问 Microsoft[信任中心](https://www.microsoft.com/trust-center/?rtc=1)。 有关 Microsoft 的隐私义务、数据处理和保留做法，包括如何删除您的数据，请查看 Microsoft[的隐私声明](https://privacy.microsoft.com/PrivacyStatement)、[在线服务条款](https://www.microsoft.com/licensing/product-licensing/products?rtc=1)（"OST"） 和[数据处理附录](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)（"DPA"）。 通过使用媒体服务，您同意受 OST、DPA 和隐私声明的约束。
+若要了解媒体服务中的合规性、隐私性和安全性，请访问 Microsoft[信任中心](https://www.microsoft.com/trust-center/?rtc=1)。 有关 Microsoft 的隐私义务、数据处理和保留实践（包括如何删除数据），请查看 Microsoft[隐私声明](https://privacy.microsoft.com/PrivacyStatement)、[在线服务条款](https://www.microsoft.com/licensing/product-licensing/products?rtc=1)（"OST"）和[数据处理补充](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)条款（"DPA"）。 使用媒体服务即表示你同意遵守 OST、DPA 和隐私声明。
  
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要开始使用 Azure 媒体服务，应该具备以下条件：
 
@@ -63,7 +63,7 @@ Microsoft Azure 媒体服务 (AMS) 是一个可扩展的基于云的平台，使
     
         * [NuGet 包](https://www.nuget.org/packages/windowsazure.mediaservices/)
         * [GitHub 源代码](https://github.com/Azure/azure-sdk-for-media-services)
-    * [用于 Java 的 Azure SDK](https://github.com/Azure/azure-sdk-for-java)，
+    * [Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java)，
     * [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php)，
     * [适用于 Node.js 的 Azure 媒体服务](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) （这是 Node.js SDK 的非 Microsoft 版本。 它由社区维护，当前未包括所有的 AMS API）。
 * 现有工具：
@@ -76,7 +76,7 @@ Microsoft Azure 媒体服务 (AMS) 是一个可扩展的基于云的平台，使
 
 ## <a name="code-samples"></a>代码示例
 
-在****“Azure 代码示例”库中查找多个代码示例：[Azure 媒体服务代码示例](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0)。
+在  “Azure 代码示例”库中查找多个代码示例：[Azure 媒体服务代码示例](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0)。
 
 ## <a name="concepts"></a>概念
 

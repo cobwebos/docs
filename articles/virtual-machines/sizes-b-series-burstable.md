@@ -1,5 +1,5 @@
 ---
-title: B 系列可突发 - Azure 虚拟机
+title: B 系列可突增 - Azure 虚拟机
 description: 描述 B 系列可突增 Azure VM 大小。
 services: virtual-machines
 author: ayshakeen
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: ayshak
 ms.openlocfilehash: 5121ef8eb3123d830233e91968c69b331d255bd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78161074"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B 系列可突增虚拟机大小
 
-B 系列 VM 非常适合不需要 CPU 持续完全性能的工作负载，例如 Web 服务器、概念证明、小型数据库和开发构建环境。 这些工作负荷通常具有可突增的性能要求。 B 系列使用户可以购买具有基准性能的 VM 大小，并且该 VM 实例在 CPU 使用率未达到其基线时会增加积分。 在虚拟机累积积分后，当应用程序需要更高的 CPU 性能时，虚拟机可以使用高达 100% vCPU 突增到基线以上。
+B 系列 VM 非常适合于并非持续需要 CPU 完全性能的工作负荷，例如 Web 服务器、概念证明、小型数据库和开发生成环境。 这些工作负荷通常具有可突增的性能要求。 B 系列使用户可以购买具有基准性能的 VM 大小，并且该 VM 实例在 CPU 使用率未达到其基线时会增加积分。 在虚拟机累积积分后，当应用程序需要更高的 CPU 性能时，虚拟机可以使用高达 100% vCPU 突增到基线以上。
 
 B 系列有以下 VM 大小：
 
@@ -27,9 +27,9 @@ B 系列有以下 VM 大小：
 
 实时迁移：支持
 
-内存保留更新：受支持
+内存保留更新：支持
 
-| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | VM 的基本 CPU 性能 | VM 的最大 CPU 性能 | 初始信用额度 | 贷项/小时 | 最大累积积分 | 最大数据磁盘数 | 最大缓存和临时存储吞吐量：IOPS/MBps | 最大未缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数 |
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | VM 的基本 CPU 性能 | VM 的最大 CPU 性能 | 初始信用额度 | 累积的额度/小时 | 最大累积积分 | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | Standard_B1ls<sup>1</sup> | 1  | 0.5 | 4   | 5%   | 100%  | 30  | 3   | 72   | 2  | 200/10    | 160/10    | 2  |
 | Standard_B1s              | 1  | 1   | 4   | 10%  | 100%  | 30  | 6   | 144  | 2  | 400/10    | 320/10    | 2  |
@@ -40,7 +40,7 @@ B 系列有以下 VM 大小：
 | Standard_B8ms             | 8  | 32  | 64  | 135% | 800%  | 240 | 81  | 1944 | 16 | 4320/50   | 4320/50   | 4  |
 | Standard_B12ms            | 12 | 48  | 96  | 202% | 1200% | 360 | 121 | 2909 | 16 | 6480/75   | 4320/50   | 6  |
 | Standard_B16ms            | 16 | 64  | 128 | 270% | 1600% | 480 | 162 | 3888 | 32 | 8640/100  | 4320/50   | 8  |
-| Standard_B20ms            | 20 | 80  | 160 | 337% | 2000% | 600 | 203 | 4860 | 32 | 10800/125 | 4320/50   | 8  |
+| Standard_B20ms            | 20 个 | 80  | 160 | 337% | 2000% | 600 | 203 | 4860 | 32 | 10800/125 | 4320/50   | 8  |
 
 <sup>1</sup> 仅 Linux 支持 B1ls
 
@@ -52,9 +52,9 @@ B 系列有以下 VM 大小：
 
 B16 特征：
 
-最大 CPU 速率： 16vCPU = 100% = 1600%
+最大 CPU 性能：16vCPU * 100% = 1600%
 
-基线： 270%
+基线：270%
 
 ![每小时流量数据图表](./media/b-series-burstable/office-workload.png)
 
@@ -88,9 +88,9 @@ B16 特征：
 
 <sup>1</sup> 累积的积分/在一小时中使用的积分等于：`((Base CPU perf of VM - CPU Usage) / 100) * 60 minutes`。  
 
-对于具有 16 个 vCPU 和 64 GiB 内存的D16s_v3，每小时费率为 0.936 美元/小时（每月 $673.92），对于具有 16 个 v CPU 和 64 GiB 内存的 B16ms，费率为每小时 0.794 美元（每月 547.86 美元）。 <b>这样可以节省 15%！</b>
+对于具有16个个 vcpu 和 64 GiB 内存的 D16s_v3，每小时费率为 $0.936/小时（每月 $673.92），对于 B16ms 为16个 vcpu，64 GiB 内存为每小时 $0.794 （每月 $547.86）。 <b>这会节省15% 的费用！</b>
 
-## <a name="q--a"></a>问题解答
+## <a name="q--a"></a>问与答
 
 ### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>问：如何从 VM 获得 135% 的基线性能？
 
@@ -115,9 +115,9 @@ B16 特征：
 
 如果我用在非高峰时间获得的 120 个积分减去在高峰时间内使用的 96 个积分，我每天将累积可用于其他突发活动的 24 个积分。
 
-### <a name="q-how-can-i-calculate-credits-accumulated-and-used"></a>问：如何计算累积和使用的信贷额？
+### <a name="q-how-can-i-calculate-credits-accumulated-and-used"></a>问：如何计算累计和使用的信用额度？
 
-**答**： 您可以使用以下公式：
+**答**：可以使用以下公式：
 
 (VM 的基础 CPU 性能 - CPU 使用率) / 100 = 累积的积分或每分钟使用量
 
@@ -131,13 +131,13 @@ B16 特征：
 
 **答**：当 VM 为“已重新部署”并且 VM 移到另一节点时，累积的信用额度将丢失。 如果 VM 已停止/已启动，但仍保留在同一节点，VM 将保留累积的信用额度。 只要 VM 在节点上重新启动，它就会获取初始信用额度，对于 Standard_B8ms，该信用额度为 240 分钟。
 
-### <a name="q-what-happens-if-i-deploy-an-unsupported-os-image-on-b1ls"></a>问：如果在 B1ls 上部署不支持的操作系统映像，会发生什么情况？
+### <a name="q-what-happens-if-i-deploy-an-unsupported-os-image-on-b1ls"></a>问：如果我在 B1ls 上部署不受支持的 OS 映像，会发生什么情况？
 
-**A** ： B1ls 仅支持 Linux 映像，如果您部署任何其他操作系统映像，则可能无法获得最佳的客户体验。
+**答**： B1ls 仅支持 Linux 映像，如果部署任何其他操作系统映像，则可能不会获得最佳的客户体验。
 
 ## <a name="other-sizes"></a>其他大小
 
-- [一般用途](sizes-general.md)
+- [常规用途](sizes-general.md)
 - [计算优化](sizes-compute.md)
 - [内存优化](sizes-memory.md)
 - [存储优化](sizes-storage.md)
@@ -146,4 +146,4 @@ B16 特征：
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助你跨 Azure SKU 比较计算性能的详细信息。
+了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。

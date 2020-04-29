@@ -1,5 +1,5 @@
 ---
-title: 微软认知工具包与阿帕奇火花 - Azure HDInsight
+title: 与 Apache Spark Microsoft Cognitive Toolkit-Azure HDInsight
 description: 了解如何在 Azure HDInsight Spark 群集中使用 Spark Python API 将定型的 Microsoft 认知工具包深入学习模型应用于数据集。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/14/2020
 ms.openlocfilehash: 1933db624dfef2ffa747ecb043be6730b6b884b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78206548"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>将 Microsoft 认知工具包深入学习模型与 Azure HDInsight Spark 群集配合使用
 
 在本文中，将执行以下步骤。
 
-1. 运行自定义脚本以在 Azure HDInsight Spark 群集上安装[Microsoft 认知工具包](https://docs.microsoft.com/cognitive-toolkit/)。
+1. 运行自定义脚本，以在 Azure HDInsight Spark 群集上安装 [Microsoft Cognitive Toolkit](https://docs.microsoft.com/cognitive-toolkit/)。
 
 2. 将 [Jupyter Notebook](https://jupyter.org/) 上传到 [Apache Spark](https://spark.apache.org/) 群集，以了解如何使用 [Spark Python API (PySpark)](https://spark.apache.org/docs/latest/api/python/index.html) 将定型的 Microsoft Cognitive Toolkit 深度学习模型应用于 Azure Blob 存储帐户中的文件
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * HDInsight 上的 Apache Spark 群集。 请参阅[创建 Apache Spark 群集](./apache-spark-jupyter-spark-sql-use-portal.md)。
 
@@ -31,7 +31,7 @@ ms.locfileid: "78206548"
 
 ## <a name="how-does-this-solution-flow"></a>此解决方案的流程如何？
 
-此解决方案分为本文和您作为本文一部分上传的 Jupyter 笔记本。 在本文中，完成以下步骤：
+此解决方案分为两部分，即本文和在本文中上传的 Jupyter 笔记本。 在本文中，完成以下步骤：
 
 * 在 HDInsight Spark 群集上运行脚本操作，安装 Microsoft 认知工具包和 Python 包。
 * 将运行解决方案的 Jupyter 笔记本上传到 HDInsight Spark 群集中。
@@ -50,39 +50,39 @@ ms.locfileid: "78206548"
 
 ## <a name="install-microsoft-cognitive-toolkit"></a>安装 Microsoft 认知工具包
 
-可以使用脚本操作在 Spark 群集上安装 Microsoft 认知工具包。 脚本操作使用自定义脚本在群集上安装默认情况下不可用的组件。 您可以使用 Azure 门户中的自定义脚本、使用 HDInsight .NET SDK 或使用 Azure PowerShell。 还可以在创建群集过程中或者在群集已启动并运行之后使用脚本安装工具包。
+可以使用脚本操作在 Spark 群集上安装 Microsoft 认知工具包。 脚本操作使用自定义脚本在群集上安装默认情况下不可用的组件。 可以通过使用 HDInsight .NET SDK 或使用 Azure PowerShell 从 Azure 门户中使用自定义脚本。 还可以在创建群集过程中或者在群集已启动并运行之后使用脚本安装工具包。
 
 在本文中，我们在群集创建完成后使用门户安装该工具包。 有关运行自定义脚本的其他方式，请参阅[使用脚本操作自定义 HDInsight 群集](../hdinsight-hadoop-customize-cluster-linux.md)。
 
 ### <a name="using-the-azure-portal"></a>使用 Azure 门户
 
-有关如何使用 Azure 门户运行脚本操作的说明，请参阅[使用脚本操作自定义 HDInsight 群集](../hdinsight-hadoop-customize-cluster-linux.md#script-action-during-cluster-creation)。 确保提供以下输入，以便安装 Microsoft 认知工具包。 对脚本操作使用以下值：
+有关如何使用 Azure 门户运行脚本操作的说明，请参阅[使用脚本操作自定义 HDInsight 群集](../hdinsight-hadoop-customize-cluster-linux.md#script-action-during-cluster-creation)。 确保提供以下输入，以便安装 Microsoft 认知工具包。 对于脚本操作，请使用以下值：
 
-|properties |“值” |
+|properties |值 |
 |---|---|
 |脚本类型|- Custom|
-|“属性”| 安装 MCT|
+|名称| 安装 MCT|
 |Bash 脚本 URI|`https://raw.githubusercontent.com/Azure-Samples/hdinsight-pyspark-cntk-integration/master/cntk-install.sh`|
 |节点类型：|头节点、工作器节点|
-|参数|无|
+|parameters|无|
 
 ## <a name="upload-the-jupyter-notebook-to-azure-hdinsight-spark-cluster"></a>将 Jupyter 笔记本上传到 Azure HDInsight Spark 群集
 
-要将 Microsoft 认知工具包与 Azure HDInsight Spark 群集配合使用，必须将 Jupyter 笔记本 **CNTK_model_scoring_on_Spark_walkthrough.ipynb** 加载到 Azure HDInsight Spark 群集中。 此笔记本可在 GitHub 上[https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration)提供。
+要将 Microsoft 认知工具包与 Azure HDInsight Spark 群集配合使用，必须将 Jupyter 笔记本 **CNTK_model_scoring_on_Spark_walkthrough.ipynb** 加载到 Azure HDInsight Spark 群集中。 GitHub 上的 [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration) 位置提供了此 Notebook。
 
-1. 下载并解压缩[https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration)。
+1. 下载并解压缩 [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration)。
 
-1. 在 Web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.net/jupyter`，其中 `CLUSTERNAME` 是群集的名称。
+1. 在 Web 浏览器中导航到 `https://CLUSTERNAME.azurehdinsight.net/jupyter`，其中的 `CLUSTERNAME` 是群集的名称。
 
-1. 从 Jupyter 笔记本中，选择右上角的 **"上传"，** 然后导航到下载并选择文件`CNTK_model_scoring_on_Spark_walkthrough.ipynb`。
+1. 在 Jupyter 笔记本中，选择右上角的“上传”  ，然后导航到“下载”并选择文件 `CNTK_model_scoring_on_Spark_walkthrough.ipynb`。
 
-    ![将 Jupyter 笔记本上载到 Azure HDInsight Spark 群集](./media/apache-spark-microsoft-cognitive-toolkit/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png "将 Jupyter 笔记本上载到 Azure HDInsight Spark 群集")
+    ![将 Jupyter 笔记本上传到 Azure HDInsight Spark 群集](./media/apache-spark-microsoft-cognitive-toolkit/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png "将 Jupyter 笔记本上传到 Azure HDInsight Spark 群集")
 
-1. 再次选择 **"上传**"。
+1. 再次选择“上传”  。
 
-1. 上传笔记本后，单击笔记本的名称，然后按照笔记本本身的说明操作如何加载数据集并执行文章。
+1. 笔记本上传后，单击笔记本的名称，并按照笔记本本身中有关如何加载数据集和执行本文的说明进行操作。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
 

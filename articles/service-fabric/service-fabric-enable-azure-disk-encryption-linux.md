@@ -4,10 +4,10 @@ description: 本文介绍如何使用 Azure 资源管理器和 Azure Key Vault �
 ms.topic: article
 ms.date: 03/22/2019
 ms.openlocfilehash: c600d822d20b0e5a0ca613935b1dfa4be838fcec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78252817"
 ---
 # <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-linux"></a>为 Linux 中的 Azure Service Fabric 群集节点启用磁盘加密 
@@ -33,18 +33,18 @@ ms.locfileid: "78252817"
 
  **自我注册**
 
-针对虚拟机规模集的磁盘加密预览版需要自我注册。 请使用以下步骤：
+针对虚拟机规模集的磁盘加密预览版需要自我注册。 使用以下步骤：
 
 1. 运行以下命令： 
     ```powershell
     Register-AzProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
     ```
-2. 等待大约 10 分钟，直到状态显示为“已注册”。** 可通过运行以下命令来检查状态。
+2. 等待大约 10 分钟，直到状态显示为“已注册”。  可通过运行以下命令来检查状态。
     ```powershell
     Get-AzProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
     Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
     ```
-**Azure Key Vault**
+**Azure 密钥保管库**
 
 1. 在规模集所在的同一订阅和区域中创建 Key Vault。 然后，使用相应的 PowerShell cmdlet 在 Key Vault 中选择 **EnabledForDiskEncryption** 访问策略。 也可以运行以下命令，在 Azure 门户中使用 Azure Key Vault UI 设置策略。
     ```powershell
@@ -55,7 +55,7 @@ ms.locfileid: "78252817"
 3. 安装最新版本的 [Azure PowerShell 中的 Azure SDK](https://github.com/Azure/azure-powershell/releases)。 以下是在规模集实例上启用 ([Set](/powershell/module/az.compute/set-azvmssdiskencryptionextension)) 加密、检索 ([Get](/powershell/module/az.compute/get-azvmssvmdiskencryption)) 加密状态以及删除 ([disable](/powershell/module/az.compute/disable-azvmssdiskencryption)) 加密所需的虚拟机规模集 Azure 磁盘加密 cmdlet。
 
 
-| 命令 | 版本 |  源  |
+| 命令 | 版本 |  Source  |
 | ------------- |-------------| ------------|
 | Get-AzVmssDiskEncryptionStatus   | 1.0.0 或更高版本 | Az.Compute |
 | Get-AzVmssVMDiskEncryptionStatus   | 1.0.0 或更高版本 | Az.Compute |
@@ -173,11 +173,11 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 ```
 
 ### <a name="mount-a-data-disk-to-a-linux-instance"></a>将数据磁盘装载到 Linux 实例
-在继续对虚拟机规模集加密之前，请确保正确装载已添加的数据磁盘。 登录到 Linux 群集 VM 并运行 **LSBLK** 命令。 输出应在“装入点”列中显示添加的数据磁盘。****
+在继续对虚拟机规模集加密之前，请确保正确装载已添加的数据磁盘。 登录到 Linux 群集 VM 并运行 **LSBLK** 命令。 输出应在“装入点”列中显示添加的数据磁盘。 
 
 
 ### <a name="deploy-application-to-a-service-fabric-cluster-in-linux"></a>将应用程序部署到 Linux 中的 Service Fabric 群集
-要将应用程序部署到群集，请按照["快速入门：将 Linux 容器部署到 Service Fabric"](service-fabric-quickstart-containers-linux.md)中的步骤和指导操作。
+若要将应用程序部署到群集，请遵循以下文章中的步骤和指导：[快速入门：将 Linux 容器部署到 Service Fabric](service-fabric-quickstart-containers-linux.md)。
 
 
 ### <a name="enable-disk-encryption-for-the-virtual-machine-scale-sets-created-previously"></a>为前面创建的虚拟机规模集启用磁盘加密
@@ -203,7 +203,7 @@ az vmss encryption enable -g <resourceGroupName> -n <VMSS name> --disk-encryptio
 
 ### <a name="validate-if-disk-encryption-is-enabled-for-a-virtual-machine-scale-set-in-linux"></a>验证是否为 Linux 中的虚拟机规模集启用了磁盘加密
 若要获取整个虚拟机规模集或规模集中任意实例的状态，请运行以下命令。
-此外，可以登录到 Linux 群集 VM 并运行 **LSBLK** 命令。 输出应在“装入点”列中显示已添加的数据磁盘，“类型”列应显示为“加密”。**********
+此外，可以登录到 Linux 群集 VM 并运行 **LSBLK** 命令。 输出应在“装入点”列中显示已添加的数据磁盘，“类型”列应显示为“加密”。   
 
 ```powershell
 

@@ -15,17 +15,17 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 5a8a58a3935b7cd5efb8565f7e3278ccaae4f4de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77921430"
 ---
 # <a name="troubleshoot-deploying-linux-virtual-machine-issues-in-azure"></a>排查 Azure 中的 Linux 虚拟机部署问题
 
 若要排查 Azure 中虚拟机 (VM) 的部署问题，请查看[热门问题](#top-issues)了解常见故障和解决方法。
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **"获取支持**"。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 "**获取支持**"。
 
 ## <a name="top-issues"></a>常见问题
 [!INCLUDE [virtual-machines-linux-troubleshoot-deploy-vm-top](../../../includes/virtual-machines-linux-troubleshoot-deploy-vm-top.md)]
@@ -34,7 +34,7 @@ ms.locfileid: "77921430"
 \<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
 - 以更小的 VM 大小重试请求。
 - 如果无法更改请求的 VM 大小：
-    - 停止可用性集中的所有 VM。 依次单击“资源组”****> 资源组 >“资源”****> 可用性集 >“虚拟机”****> 虚拟机 >“停止”****。
+    - 停止可用性集中的所有 VM。 依次单击“资源组”  > 资源组 >“资源”  > 可用性集 >“虚拟机”  > 虚拟机 >“停止”  。
     - 在所有 VM 都停止后，创建相应大小的 VM。
     - 先启动新 VM，再选择所有已停止的 VM 并单击“启动”。
 
@@ -91,4 +91,4 @@ ms.locfileid: "77921430"
 ## <a name="next-steps"></a>后续步骤
 如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。
 
-或者，你也可以提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **"获取支持**"。
+或者，你也可以提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 "**获取支持**"。

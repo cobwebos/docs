@@ -1,6 +1,6 @@
 ---
-title: Azure 快速路由：直接配置快速路由：CLI
-description: 本文使用 Azure CLI 帮助您配置快速路由直接
+title: Azure ExpressRoute：配置 ExpressRoute Direct： CLI
+description: 本文将帮助你使用 Azure CLI
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: cherylmc
 ms.openlocfilehash: dcca1417aec52fb4bf99d5c480d81995154a68b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79481970"
 ---
-# <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>使用 Azure CLI 直接配置快速路由
+# <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>使用 Azure CLI 配置 ExpressRoute Direct
 
 可以使用 Azure ExpressRoute Direct 连接到位于全球战略分布的对等互连位置的 Microsoft 全球网络。 有关详细信息，请参阅[关于 ExpressRoute Direct Connect](expressroute-erdirect-about.md)。
 
@@ -38,7 +38,7 @@ ms.locfileid: "79481970"
    az account set --subscription "<subscription ID>"
    ```
 
-2. 重新注册您的订阅到 Microsoft.Network 以访问快速路由端口定位和快速路由端口 API
+2. 将你的订阅重新注册到 Microsoft 以访问 expressrouteportslocation 和 expressrouteport Api
 
    ```azurecli
    az provider register --namespace Microsoft.Network
@@ -284,9 +284,9 @@ ms.locfileid: "79481970"
 
 只能在 ExpressRoute Direct 上使用其他线路带宽来支持上面概述的场景。 带宽为 40 Gbps 和 100 Gbps。
 
-**SkuTier**可以是本地、标准版或高级版。
+**SkuTier**可以是本地、标准或高级。
 
-**SkuFamily**必须仅按流量计费数据，因为 ExpressRoute Direct 不支持无限制的数据。
+**SkuFamily**必须是 MeteredData，因为 ExpressRoute 直接不支持。
 在 ExpressRoute Direct 资源上创建线路：
 
   ```azurecli

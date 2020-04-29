@@ -11,10 +11,10 @@ ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
 ms.openlocfilehash: c1912e670a9cf1c178b58cefbd33171f15be2483
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79218251"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>有关 Azure 机器学习工作室（经典）的 Net# 神经网络规范语言的指南
@@ -25,8 +25,8 @@ Net# 是由 Microsoft 开发的用于定义复杂神经网络体系结构（例�
 
 在下列上下文中，可以使用 Net# 体系结构规范：
 
-+ 微软 Azure 机器学习工作室中的所有神经网络模块（经典）：[多类神经网络](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network)、[双类神经网络](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network)和[神经网络回归](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
-+ 神经网络在 Microsoft ML 服务器中功能：R 语言[的神经网](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet)和[rxNeuralNet，](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)以及 Python [rx_neural_network。](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network)
++ Microsoft Azure 机器学习工作室（经典）中的所有神经网络模块：[多类神经网络](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network)[双类神经网络](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network)和[神经网络回归](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
++ Microsoft ML Server 中的神经网络函数：R 语言的 [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) 和 [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)，以及 Python 的 [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network)。
 
 
 本文介绍了使用 Net# 开发自定义神经网络的基本概念和所需语法：
@@ -51,14 +51,14 @@ Net# 支持各种类型的连接捆绑，可自定义映射到隐藏层和映射
 
 + **筛选捆绑**。 可通过使用源层节点和目标层节点的位置来定义谓词。 每当谓词为 True，节点即连接。
 
-+ **卷积包**。 可在源层中定义节点的小范围邻域。 目标层中的每个节点连接到源层中节点的一个邻域。
++ **卷积捆绑**。 可在源层中定义节点的小范围邻域。 目标层中的每个节点连接到源层中节点的一个邻域。
 
 + **池捆绑**和**响应规范化**捆绑。 这些与卷积捆绑类似，用户可在其中定义源层中小范围的邻域。 不同之处在于这些捆绑中边缘的权重不可训练。 相反，为源节点值应用预定义的函数可确定目标节点值。
 
 
 ## <a name="supported-customizations"></a>支持的自定义项
 
-在 Azure 机器学习工作室（经典）中创建的神经网络模型的体系结构可通过使用 Net# 广泛自定义。 可以：
+在 Azure 机器学习工作室（经典）中创建的神经网络模型的体系结构可通过使用 Net# 广泛自定义。 方法：
 
 + 创建隐藏层并控制每层的节点数。
 + 指定如何相互连接层。
@@ -215,7 +215,7 @@ hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 
     如果维度值为 False，则将定义内核，使留出的每个端上的节点数都相同（最大差值为 1）。 此属性的默认值为一个元组，其所有组件都等于 False。
 
-+ **UpperPad** 和 **LowerPad**：（可选）对大量要使用的填充提供更好的控制。 **重要提示：** 当且仅当***没有***定义上述的 **Padding** 属性时，才能定义这些属性。 值必须是正整数值的元组，其长度为绑定的实参数量。 指定这些属性后，“虚拟”节点将添加到输入层的每个维度的上下两端。 每个维度的上下两端添加的节点数分别由 **LowerPad**[i] 和 **UpperPad**[i] 确定。
++ **UpperPad** 和 **LowerPad**：（可选）对大量要使用的填充提供更好的控制。 **重要提示：** 当且仅当“没有”定义上述的“Padding”属性时，才能定义这些属性  。 值必须是正整数值的元组，其长度为绑定的实参数量。 指定这些属性后，“虚拟”节点将添加到输入层的每个维度的上下两端。 每个维度的上下两端添加的节点数分别由 **LowerPad**[i] 和 **UpperPad**[i] 确定。
 
     若要确保内核只对应“真实”节点而不是“虚拟”节点，则必须符合以下条件：
   - **LowerPad** 的每个组件必须严格小于 `KernelShape[d]/2`。
@@ -253,7 +253,7 @@ hidden P1 [5, 12, 12]
 
 有关池层的详细信息，请参阅这些文章：
 
-+ [https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf)（第3.4节）
++ [https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf)（第 3.4 节）
 + [https://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf](https://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf)
 + [https://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf](https://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf)
 

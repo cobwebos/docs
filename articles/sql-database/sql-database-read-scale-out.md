@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 06/03/2019
 ms.openlocfilehash: 1a1b9907cd931716949d92d948a7d541fd2d5057
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78206939"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>使用只读副本对只读的查询工作负荷进行负载均衡
@@ -24,7 +24,7 @@ ms.locfileid: "78206939"
 
 作为[高可用性体系结构](./sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)的一部分，“高级”和“业务关键”服务层级中的每个数据库会自动预配有一个主要副本和多个次要副本。 为次要副本预配的计算大小与主要副本相同。 **读取扩展**功能允许使用一个只读副本的容量而不是共享读写副本，对 SQL 数据库只读工作负载进行负载均衡。 这样，只读工作负荷将与主要的读写工作负荷相隔离，不会影响其性能。 该功能适用于包含逻辑隔离的只读工作负荷（例如分析）的应用程序。 在“高级”和“业务关键”服务层级中，应用程序可以使用此额外的容量获得性能优势，而无需额外付费。
 
-如果至少创建了一个次要副本，则“超大规模”服务层级还会提供“读取扩展”**** 功能。 如果只读工作负荷需要的资源多于一个次要副本上的可用资源，则可以使用多个次要副本。 “基本”、“标准”和“常规用途”服务层级的高可用性体系结构不包含任何副本。 ****“读取扩展”功能在这些服务层级中不可用。
+如果至少创建了一个次要副本，则“超大规模”服务层级还会提供“读取扩展”  功能。 如果只读工作负荷需要的资源多于一个次要副本上的可用资源，则可以使用多个次要副本。 “基本”、“标准”和“常规用途”服务层级的高可用性体系结构不包含任何副本。  “读取扩展”功能在这些服务层级中不可用。
 
 下图演示了使用“业务关键”数据库的应用程序。
 
@@ -32,10 +32,10 @@ ms.locfileid: "78206939"
 
 新的“高级”、“业务关键”和“超大规模”数据库中默认已启用读取扩展功能。 对于超大规模，默认情况下，为新数据库创建一个次要副本。 如果在 SQL 连接字符串中配置了 `ApplicationIntent=ReadOnly`，则网关会将应用程序重定向到该数据库的只读副本。 有关如何使用 `ApplicationIntent` 属性的信息，请参阅[指定应用程序意向](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent)。
 
-如果你希望确保应用程序始终连接到主要副本，而不管 SQL 连接字符串中的 `ApplicationIntent` 设置如何，则必须在创建数据库或更改其配置时显式禁用读取扩展。 例如，如果将数据库从标准层或通用层升级到高级、业务关键或超大规模层，并希望确保所有连接继续转到主副本，请禁用"读取横向扩展"。有关如何禁用它的详细信息，请参阅[启用和禁用读取横向扩展](#enable-and-disable-read-scale-out)。
+如果你希望确保应用程序始终连接到主要副本，而不管 SQL 连接字符串中的 `ApplicationIntent` 设置如何，则必须在创建数据库或更改其配置时显式禁用读取扩展。 例如，如果将数据库从“标准”或“常规用途”层级升级到“高级”、“业务关键”或“超大规模”层级，并想要确保所有连接继续定向到主要副本，请禁用读取扩展。有关如何禁用读取扩展的详细信息，请参阅[启用和禁用读取扩展](#enable-and-disable-read-scale-out)。
 
 > [!NOTE]
-> 只读副本不支持查询数据存储、扩展事件和 SQL 探查器功能。
+> 只读副本不支持查询数据存储、扩展事件和 SQL Profiler 功能。
 
 ## <a name="data-consistency"></a>数据一致性
 
@@ -91,7 +91,7 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 
 ### <a name="azure-portal"></a>Azure 门户
 
-可以在“配置数据库”边栏选项卡上管理“读取扩展”设置。****
+可以在“配置数据库”边栏选项卡上管理“读取扩展”设置。 
 
 ### <a name="powershell"></a>PowerShell
 
@@ -100,7 +100,7 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 
 在 Azure PowerShell 中管理读取横向扩展需要安装 Azure PowerShell 2016 年 12 月版或更高版本。 有关最新的 PowerShell 版本，请参阅 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 
-您可以通过调用[Set-AzSql数据库](/powershell/module/az.sql/set-azsqldatabase)cmdlet 并传递`Enabled``Disabled``-ReadScale`参数所需的值或 - 在 Azure PowerShell 中禁用或重新启用读取横向扩展。
+可以通过调用[AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) cmdlet 并传入所需的值（或`Enabled` `Disabled` --对于`-ReadScale`参数）来禁用或重新启用 Azure PowerShell 中的读取横向扩展。
 
 若要对现有数据库禁用读取扩展（请将尖括号中的项替换为环境的正确值，并删除尖括号）：
 

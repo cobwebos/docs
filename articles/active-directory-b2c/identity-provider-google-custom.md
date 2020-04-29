@@ -1,5 +1,5 @@
 ---
-title: 使用自定义策略使用 Google 帐户设置登录
+title: 使用自定义策略设置使用 Google 帐户进行登录
 titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 中使用自定义策略设置使用 LinkedIn 帐户的登录。
 services: active-directory-b2c
@@ -12,19 +12,19 @@ ms.date: 09/20/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 8d02c86a1ff330aa4003299e1494a164089d8470
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78188216"
 ---
 # <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的自定义策略设置 Google 帐户登录
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文介绍如何使用 Azure 活动目录 B2C （Azure AD B2C） 中的[自定义策略](custom-policy-overview.md)为使用 Google 帐户的用户启用登录。
+本文说明如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自定义策略](custom-policy-overview.md)为使用 Google 帐户的用户进行登录。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 完成 [Active Directory B2C 中的自定义策略入门](custom-policy-get-started.md)中的步骤。
 - 如果没有 Google 帐户，请根据[创建 Google 帐户](https://accounts.google.com/SignUp)中所述创建一个帐户。
@@ -41,14 +41,14 @@ ms.locfileid: "78188216"
 6. 在“应用程序类型”**** 下，选择“Web 应用程序”****。
 7. 输入应用程序的**名称**。
 8. 在“授权的 JavaScript 来源”中输入 `https://your-tenant-name.b2clogin.com`，然后在“授权的重定向 URI”中输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。******** 将 your-tenant-name 替换为租户的名称。 输入租户名称时，必须全部使用小写字母，即使租户是使用大写字母在 Azure AD B2C 中定义的，也是如此。
-8. 单击 **“创建”**。
-9. 复制**客户端 ID**和**客户端机密**的值。 将 Google 配置为租户中的标识提供者时需要这两项。 客户端机密是一个重要的安全凭据。
+8. 单击 **“创建”** 。
+9. 复制 "**客户端 ID** " 和 "**客户端密钥**" 的值。 将 Google 配置为租户中的标识提供者时需要这两项。 客户端机密是一个重要的安全凭据。
 
 ## <a name="create-a-policy-key"></a>创建策略密钥
 
 你需要存储前面在 Azure AD B2C 租户中记录的客户端机密。
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录****。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”********。
 4. 在“概述”页上选择“标识体验框架”****。
@@ -57,7 +57,7 @@ ms.locfileid: "78188216"
 7. 输入策略密钥的**名称**。 例如，`GoogleSecret` 。 前缀 `B2C_1A_` 会自动添加到密钥名称。
 8. 在“机密”中，输入前面记录的应用程序机密****。
 9. 在“密钥用法”处选择 `Signature`。****
-10. 单击 **“创建”**。
+10. 单击 **“创建”** 。
 
 ## <a name="add-a-claims-provider"></a>添加声明提供程序
 
@@ -120,7 +120,7 @@ ms.locfileid: "78188216"
 
 1. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”********。
 2. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件****。
-3. 单击 **“上载”**。
+3. 单击“上载” 。 
 
 ## <a name="register-the-claims-provider"></a>注册声明提供程序
 
@@ -148,7 +148,7 @@ ms.locfileid: "78188216"
 准备好按钮后，需将它链接到某个操作。 在本例中，Azure AD B2C 使用该操作来与 Google 帐户通信以接收令牌。
 
 1. 在用户旅程中找到包含 `Order="2"` 的 **OrchestrationStep**。
-2. 添加以下**声明交换**元素，确保您对**用于 TargetClaimsExchangeId**的 ID 使用相同的值 ：
+2. 添加以下**ClaimsExchange**元素，以确保为用于**TargetClaimsExchangeId**的 ID 使用相同的值：
 
     ```XML
     <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAuth" />
@@ -160,7 +160,7 @@ ms.locfileid: "78188216"
 
 ## <a name="create-an-azure-ad-b2c-application"></a>创建 Azure AD B2C 应用程序
 
-通过您在 B2C 租户中注册的应用程序与 Azure AD B2C 的通信。 本部分列出了可用于创建测试应用程序的可选步骤（如果尚未创建）。
+与 Azure AD B2C 通信是通过在 B2C 租户中注册的应用程序进行的。 本部分列出了可用于创建测试应用程序的可选步骤（如果尚未创建）。
 
 [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 

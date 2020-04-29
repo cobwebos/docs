@@ -11,10 +11,10 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/05/2018
 ms.openlocfilehash: 34333d4fe6e9b34a0c8b56cca8123f4ed93a917a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79218120"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-workspace-using-azure-resource-manager"></a>使用 Azure 资源管理器部署 Azure 机器学习工作室（经典）工作区
@@ -114,7 +114,7 @@ $rg = New-AzResourceGroup -Name "uniquenamerequired523" -Location "South Central
 $rg
 ```
 
-验证资源组是否预配正确。 **预配状态**应为"成功"。
+验证资源组是否预配正确。 **ProvisioningState** 应为“Succeeded”。
 资源组名称由模板使用，用于生成存储帐户名称。 存储帐户名称长度必须为 3 到 24 个字符，并且只能使用数字和小写字母。
 
 ![资源组](./media/deploy-with-resource-manager-template/resourcegroupprovisioning.png)

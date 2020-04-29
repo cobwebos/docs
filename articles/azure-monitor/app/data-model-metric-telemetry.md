@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: 3e4a1fc3de58b8e65ab9c7a288bdf3eb37e7bae0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671964"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>指标遥测：Application Insights 数据模型
@@ -33,11 +33,11 @@ Application Insights 支持几个已知的指标名称。 这些指标已放入 
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | 工作正在进行... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | 平均请求执行时间
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | 工作正在进行... | [requestsInQueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | 队列中等待处理的请求数
 
-## <a name="name"></a>“属性”
+## <a name="name"></a>名称
 
 想要在 Application Insights 门户和 UI 中看到的指标的名称。 
 
-## <a name="value"></a>“值”
+## <a name="value"></a>值
 
 度量的单个值。 要聚合的各个度量值的总和。
 

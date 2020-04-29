@@ -6,21 +6,21 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
 ms.openlocfilehash: e2d075a58872f9337c7d1faa642a48047e2f9ddf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78250177"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>测试 Azure 托管应用程序的门户接口
 
 为托管应用程序[创建 createUiDefinition.json 文件](create-uidefinition-overview.md)之后，需要测试用户体验。 为了简化测试，请使用一个可在门户中加载文件的沙盒环境。 不需要真正部署该托管应用程序。 沙盒在当前的全屏门户体验中提供用户界面。 也可使用脚本来测试接口。 本文对这两种方法都进行了介绍。 建议使用沙盒来预览接口。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 一个 **createUiDefinition.json** 文件。 如果没有此文件，请复制[示例文件](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json)。
 
-* Azure 订阅。 如果没有 Azure 订阅，请先[创建一个免费帐户](https://azure.microsoft.com/free/)。"
+* Azure 订阅。 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="use-sandbox"></a>使用沙盒
 
@@ -28,7 +28,7 @@ ms.locfileid: "78250177"
 
    ![显示沙盒](./media/test-createuidefinition/show-sandbox.png)
 
-1. 将空定义替换为 createUiDefinition.json 文件的内容。 选择“预览”****。
+1. 将空定义替换为 createUiDefinition.json 文件的内容。 选择“预览”  。
 
    ![选择“预览”](./media/test-createuidefinition/select-preview.png)
 
@@ -36,13 +36,13 @@ ms.locfileid: "78250177"
 
    ![显示窗体](./media/test-createuidefinition/show-ui-form.png)
 
-### <a name="troubleshooting"></a>疑难解答
+### <a name="troubleshooting"></a>故障排除
 
-如果在选择“预览”**** 后窗体未显示，则可能存在语法错误。 在右侧滚动条上查找红色指示器，然后导航到它。
+如果在选择“预览”  后窗体未显示，则可能存在语法错误。 在右侧滚动条上查找红色指示器，然后导航到它。
 
 ![显示语法错误](./media/test-createuidefinition/show-syntax-error.png)
 
-如果窗体未显示，但看到一个带泪滴的云图标，则表明窗体出现错误，例如缺少属性。 在浏览器中打开“Web 开发人员工具”。 “控制台”显示有关界面的重要消息。****
+如果窗体未显示，但看到一个带泪滴的云图标，则表明窗体出现错误，例如缺少属性。 在浏览器中打开“Web 开发人员工具”。 “控制台”显示有关界面的重要消息。 
 
 ![显示错误](./media/test-createuidefinition/show-error.png)
 

@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/27/2016
 ms.openlocfilehash: 3f22ce3b1fb750e33e35d35ee1fe5ad1893abcfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79204114"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Azure 机器学习工作室（经典版）中的应用程序生命周期管理
@@ -28,7 +28,7 @@ Azure 机器学习工作室（经典版）是一个在 Azure 云平台中运行�
 有两种用于控制实验版本的建议方法。 可以依赖内置的运行历史记录，或以 JSON 格式导出实验以在外部管理它。 每种方法各有利弊。
 
 ### <a name="experiment-snapshots-using-run-history"></a>使用运行历史记录的实验快照
-在 Azure 机器学习工作室（经典版）学习实验的执行模型中，每次单击实验编辑器中的“运行”按钮时，都会将该实验的不可变快照提交到作业计划程序****。 要查看此快照列表，单击实验编辑器视图中命令栏上的“运行历史记录”按钮****。
+在 Azure 机器学习工作室（经典版）学习实验的执行模型中，每次单击实验编辑器中的“运行”按钮时，都会将该实验的不可变快照提交到作业计划程序  。 要查看此快照列表，单击实验编辑器视图中命令栏上的“运行历史记录”按钮  。
 
 ![“运行历史记录”按钮](./media/version-control/runhistory.png)
 
@@ -54,7 +54,7 @@ Azure 机器学习工作室（经典版）中的训练模型序列化为称为 i
 4. 调用对 Web 服务训练的 BES 终结点，并指定所需的 iLearner 文件名以及将存储它的 Blob 存储帐户位置。
 5. BES 调用完成后，即可获得生成的 iLearner 文件。
 
-检索 iLearner 文件的另一种方法是通过 PowerShell commandlet [Download-AmlExperimentNodeOutput](https://github.com/hning86/azuremlps#download-amlexperimentnodeoutput)**。 如果只想获取 iLearner 文件的副本，不需要以编程方式重新训练模型，此方法可能比较容易。
+检索 iLearner 文件的另一种方法是通过 PowerShell commandlet [Download-AmlExperimentNodeOutput  ](https://github.com/hning86/azuremlps#download-amlexperimentnodeoutput)。 如果只想获取 iLearner 文件的副本，不需要以编程方式重新训练模型，此方法可能比较容易。
 
 有了 iLearner 文件（包含训练的模型）以后，即可采用自己的版本控制策略。 该策略就像将前缀/后缀作为命名约定应用一样简单，只需将 iLearner 文件保留在 Blob 存储中即可，也可将其复制/导入到版本控制系统中。
 
@@ -94,7 +94,7 @@ ALM 的一个重要方面是能够自动化应用程序的执行和部署过程�
 7. 在预测实验中[更新训练模型](https://github.com/hning86/azuremlps#update-amlexperimentuserasset)。
 8. [运行预测实验](https://github.com/hning86/azuremlps#start-amlexperiment)。
 9. 从预测实验[部署 Web 服务](https://github.com/hning86/azuremlps#new-amlwebservice)。
-10. 测试 Web 服务[RRS](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint)或[BES](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint)终结点。
+10. 测试 Web 服务 [RRS](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint) 或 [BES](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint) 终结点。
 
 ## <a name="next-steps"></a>后续步骤
 * 下载 [Azure 机器学习工作室（经典版）PowerShell](https://aka.ms/amlps) 模块，并开始自动执行 ALM 任务。

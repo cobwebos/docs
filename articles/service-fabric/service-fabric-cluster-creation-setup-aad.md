@@ -4,10 +4,10 @@ description: 了解如何设置 Azure Active Directory (Azure AD) 来对 Service
 ms.topic: conceptual
 ms.date: 6/28/2019
 ms.openlocfilehash: 28c4c65cfcc77607dfe9a463a09ecd10389a6eca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78193368"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>为客户端身份验证设置 Azure Active Directory
@@ -49,18 +49,18 @@ $Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9
 > [!NOTE]
 > 对于国家/地区云（例如，Azure 政府、Azure 中国、Azure 德国），还应指定 `-Location` 参数。
 
-执行 PowerShell 命令 `Get-AzureSubscription`，可找到 TenantId**。 执行此命令，为每个订阅显示 TenantId。
+执行 PowerShell 命令 `Get-AzureSubscription`，可找到 TenantId  。 执行此命令，为每个订阅显示 TenantId。
 
-*群集名称*用于对脚本创建的 Azure AD 应用程序进行前缀。 它不需要完全匹配实际的群集名称。 旨在更加轻松地将 Azure AD 项目映射到其配合使用的 Service Fabric 群集。
+将 ClusterName 用作脚本创建的 Azure AD 应用程序的前缀  。 它不需要完全匹配实际的群集名称。 旨在更加轻松地将 Azure AD 项目映射到其配合使用的 Service Fabric 群集。
 
-*WebApplicationReplyUrl*是 Azure AD 在完成登录后返回给用户的默认终结点。 将此终结点设置为群集的 Service Fabric Explorer 的终结点。 如果创建 Azure AD 应用程序来表示现有群集，请确保此 URL 与现有群集的终结点匹配。 如果为新群集创建应用程序，请计划群集将要拥有的终结点，并确保不使用现有群集的终结点。 默认情况下，Service Fabric Explorer 终结点为：
+WebApplicationReplyUrl 是 Azure AD 在完成登录过程之后返回给用户的默认终结点  。 将此终结点设置为群集的 Service Fabric Explorer 的终结点。 如果创建 Azure AD 应用程序来表示现有群集，请确保此 URL 与现有群集的终结点匹配。 如果为新群集创建应用程序，请计划群集将要拥有的终结点，并确保不使用现有群集的终结点。 默认情况下，Service Fabric Explorer 终结点为：
 
 https://&lt;cluster_domain&gt;:19080/Explorer
 
 系统会提示登录到具有 Azure AD 租户管理权限的帐户。 完成此操作后，脚本会创建 Web 和本机应用程序来代表 Service Fabric 群集。 在 [Azure 门户][azure-portal]中查看租户的应用程序时，应会看到两个新条目：
 
-   * *群集名称*\_群集
-   * *群集名称*\_客户端
+   * *ClusterName*\_Cluster
+   * *ClusterName*\_Client
 
 [创建支持 AAD 的群集](service-fabric-cluster-creation-create-template.md#add-azure-ad-configuration-to-use-azure-ad-for-client-access)时，该脚本显示 Azure 资源管理器模板所需的 JSON，因此最好不要关闭 PowerShell 窗口。
 
@@ -81,13 +81,13 @@ Azure AD 的设置和使用可能有一定难度，可以参考下面的一些�
 
 ![SFX 证书对话框][sfx-select-certificate-dialog]
 
-#### <a name="reason"></a>原因
-未在 Azure AD 群集应用程序中为用户分配角色。 因此，Service Fabric 群集的 Azure AD 身份验证失败。 Service Fabric Explorer 将故障回复到证书身份验证。
+#### <a name="reason"></a>Reason
+未在 Azure AD 群集应用程序中为用户分配角色。 因此，Service Fabric 群集的 Azure AD 身份验证失败。 Service Fabric Explorer 会故障回复到证书身份验证。
 
 #### <a name="solution"></a>解决方案
 遵循有关设置 Azure AD 的说明操作，并为用户分配角色。 此外，我们建议打开“访问应用需要的用户分配”，如 `SetupApplications.ps1` 所示。
 
-### <a name="connection-with-powershell-fails-with-an-error-the-specified-credentials-are-invalid"></a>使用 PowerShell 连接失败并出现错误：“指定的凭据无效”
+### <a name="connection-with-powershell-fails-with-an-error-the-specified-credentials-are-invalid"></a>使用 PowerShell 进行连接失败并出现错误：“指定的凭据无效”
 #### <a name="problem"></a>问题
 使用 PowerShell 以“AzureActiveDirectory”安全模式连接到群集时，成功登录到 Azure AD 后，连接失败并显示错误：“指定的凭据无效”。
 
@@ -96,27 +96,27 @@ Azure AD 的设置和使用可能有一定难度，可以参考下面的一些�
 
 ### <a name="service-fabric-explorer-returns-a-failure-when-you-sign-in-aadsts50011"></a>登录时，Service Fabric Explorer 返回失败信息：“AADSTS50011”
 #### <a name="problem"></a>问题
-用户尝试登录到 Service Fabric Explorer 中的 Azure AD 时，页面返回故障：“AADSTS50011：回复地址 &lt;url&gt; 与针对应用程序 &lt;guid&gt; 配置的回复地址不匹配”。
+尝试登录到 Service Fabric Explorer 中的 Azure AD 时，页面将返回失败信息：“AADSTS50011：回复地址 &lt;url&gt; 与为应用程序 &lt;guid&gt; 配置的回复地址不匹配。”
 
 ![SFX 回复地址不匹配][sfx-reply-address-not-match]
 
-#### <a name="reason"></a>原因
-代表 Service Fabric Explorer 的群集 (web) 应用程序尝试针对 Azure AD 进行身份验证，在执行请求的过程中提供了重定向返回 URL。 但是，该 URL 并未列在 Azure AD 应用程序的“回复 URL”**** 列表中。
+#### <a name="reason"></a>Reason
+代表 Service Fabric Explorer 的群集 (web) 应用程序尝试针对 Azure AD 进行身份验证，在执行请求的过程中提供了重定向返回 URL。 但是，该 URL 并未列在 Azure AD 应用程序的“回复 URL”  列表中。
 
 #### <a name="solution"></a>解决方案
-在群集的 Azure AD 应用注册页上，选择 **"身份验证**"，并在 **"重定向 URI"** 部分下，将服务结构资源管理器 URL 添加到列表中。 保存所做更改。
+在群集的 "Azure AD 应用注册" 页上，选择 "**身份验证**"，然后在 "**重定向 uri** " 部分下，将 Service Fabric Explorer URL 添加到列表。 保存所做更改。
 
 ![Web 应用程序回复 URL][web-application-reply-url]
 
-### <a name="connecting-to-the-cluster-using-azure-ad-authentication-via-powershell-gives-an-error-when-you-sign-in-aadsts50011"></a>通过 PowerShell 使用 Azure AD 身份验证连接到群集，在登录时出现错误："AADSTS50011"
+### <a name="connecting-to-the-cluster-using-azure-ad-authentication-via-powershell-gives-an-error-when-you-sign-in-aadsts50011"></a>在登录时，通过 PowerShell 使用 Azure AD 身份验证连接到群集时，会出现错误： "AADSTS50011"
 #### <a name="problem"></a>问题
-当您尝试通过 PowerShell 使用 Azure AD 连接到服务结构群集时，登录页将返回故障："AADSTS50011：请求中指定的回复 URL 与为应用程序配置的回复 URL不匹配：guid &lt;&gt;。
+尝试通过 PowerShell 连接到使用 Azure AD 的 Service Fabric 群集时，登录页返回失败： "AADSTS50011：请求中指定的回复 url 与为应用程序&lt;guid&gt;配置的回复 url 不匹配。"
 
 #### <a name="reason"></a>原因
-与上述问题类似，PowerShell 尝试针对 Azure AD 进行身份验证，Azure AD 提供未在 Azure AD 应用程序**回复 URL**列表中列出的重定向 URL。  
+与前面的问题类似，PowerShell 尝试对 Azure AD 进行身份验证，该 URL 提供 Azure AD 应用程序**答复 url**列表中未列出的重定向 URL。  
 
 #### <a name="solution"></a>解决方案
-使用与上述问题相同的过程，但 URL 必须设置为`urn:ietf:wg:oauth:2.0:oob`，命令行身份验证的特殊重定向。
+使用与上述问题相同的过程，但 URL 必须设置为`urn:ietf:wg:oauth:2.0:oob`，这是命令行身份验证的特殊重定向。
 
 ### <a name="connect-the-cluster-by-using-azure-ad-authentication-via-powershell"></a>使用 Azure AD 身份验证通过 PowerShell 连接群集
 若要连接 Service Fabric 群集，请使用以下 PowerShell 命令示例：

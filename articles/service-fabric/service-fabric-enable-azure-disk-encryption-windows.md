@@ -4,10 +4,10 @@ description: 本文介绍如何在 Azure 资源管理器中使用 Azure Key Vaul
 ms.topic: article
 ms.date: 03/22/2019
 ms.openlocfilehash: b08cdb63aa6f334c5a6f7c230b1624d232206c3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78251820"
 ---
 # <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-windows"></a>为 Windows 中的 Azure Service Fabric 群集节点启用磁盘加密 
@@ -27,7 +27,7 @@ ms.locfileid: "78251820"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 **自我注册** 
 
@@ -37,21 +37,21 @@ ms.locfileid: "78251820"
     ```powershell
     Register-AzProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
     ```
-2. 等待大约 10 分钟，直到状态显示为“已注册”。** 可通过运行以下命令来检查状态。 
+2. 等待大约 10 分钟，直到状态显示为“已注册”。  可通过运行以下命令来检查状态。 
     ```powershell
     Get-AzProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
     Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
     ```
 **Azure Key Vault** 
 
-1. 在规模集所在的同一订阅和区域中创建 Key Vault，然后在该 Key Vault 中使用相应的 PowerShell cmdlet 选择“EnabledForDiskEncryption”访问策略。**** 也可以运行以下命令，在 Azure 门户中使用 Azure Key Vault UI 设置策略。
+1. 在规模集所在的同一订阅和区域中创建 Key Vault，然后在该 Key Vault 中使用相应的 PowerShell cmdlet 选择“EnabledForDiskEncryption”访问策略。  也可以运行以下命令，在 Azure 门户中使用 Azure Key Vault UI 设置策略。
     ```powershell
     Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption
     ```
 2. 安装最新版本的 [Azure CLI](/cli/azure/install-azure-cli)，其中包含新的加密命令。
 3. 安装最新版本的 [Azure PowerShell 中的 Azure SDK](https://github.com/Azure/azure-powershell/releases)。 以下是在规模集实例上启用 ([Set](/powershell/module/az.compute/set-azvmssdiskencryptionextension)) 加密、检索 ([Get](/powershell/module/az.compute/get-azvmssvmdiskencryption)) 加密状态以及删除 ([disable](/powershell/module/az.compute/disable-azvmssdiskencryption)) 加密所需的虚拟机规模集 Azure 磁盘加密 cmdlet。
 
-| 命令 | 版本 |  源  |
+| Command | 版本 |  源  |
 | ------------- |-------------| ------------|
 | Get-AzVmssDiskEncryptionStatus   | 1.0.0 或更高版本 | Az.Compute |
 | Get-AzVmssVMDiskEncryptionStatus   | 1.0.0 或更高版本 | Az.Compute |

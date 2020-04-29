@@ -5,17 +5,17 @@ ms.topic: conceptual
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: ba0d848904d1ba885dc53e2941953d8dfb4864cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671913"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>依赖项遥测：Application Insights 数据模型
 
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的依赖项遥测表示受监视组件与远程组件（如 SQL 或 HTTP 终结点）的交互。
 
-## <a name="name"></a>“属性”
+## <a name="name"></a>名称
 
 通过此依赖项调用启动的命令的名称。 低基数值。 示例包括存储过程名称和 URL 路径模板。
 
@@ -23,7 +23,7 @@ ms.locfileid: "77671913"
 
 依赖项调用实例的标识符。 用于与此依赖项调用所对应的请求遥测项关联。 有关详细信息，请参阅[关联](../../azure-monitor/app/correlation.md)页。
 
-## <a name="data"></a>数据
+## <a name="data"></a>data
 
 此依赖项调用启动的命令。 示例包括使用所有查询参数的 SQL 语句和 HTTP URL。
 

@@ -12,10 +12,10 @@ ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 02/26/2019
 ms.openlocfilehash: 9e19e904b47d69444b491dd88ffe49ff812aafc3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79208871"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>使用资源运行状况排查 Azure SQL 数据库的连接问题
@@ -34,25 +34,25 @@ ms.locfileid: "79208871"
 
 ### <a name="available"></a>可用
 
-“可用”状态表示资源运行状况未检测到 SQL 资源中的系统错误导致的登录失败。****
+“可用”状态表示资源运行状况未检测到 SQL 资源中的系统错误导致的登录失败。 
 
 ![可用](./media/sql-database-resource-health/sql-resource-health-available.jpg)
 
 ### <a name="degraded"></a>已降级
 
-**降级**状态意味着资源运行状况检测到大多数成功登录，但也检测到一些失败。 这些问题很有可能是暂时性登录错误。 若要减轻暂时性登录错误导致的连接问题所造成的影响，请在代码中实施[重试逻辑](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors)。
+“已降级”状态表示资源运行状况检测到大多数登录成功，但也有一部分登录失败。  这些问题很有可能是暂时性登录错误。 若要减轻暂时性登录错误导致的连接问题所造成的影响，请在代码中实施[重试逻辑](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors)。
 
 ![已降级](./media/sql-database-resource-health/sql-resource-health-degraded.jpg)
 
 ### <a name="unavailable"></a>不可用
 
-“不可用”状态表示资源运行状况检测到 SQL 资源登录一直失败。**** 如果资源长时间保持此状态，请与支持人员联系。
+“不可用”状态表示资源运行状况检测到 SQL 资源登录一直失败。  如果资源长时间保持此状态，请与支持人员联系。
 
 ![不可用](./media/sql-database-resource-health/sql-resource-health-unavailable.jpg)
 
 ### <a name="unknown"></a>未知
 
-运行状况为“未知”**** 指示资源运行状况未收到此资源的相关信息已超过 10 分钟。 尽管此状态不是资源状态的最终指示，但它是故障排除过程中一个重要的数据点。 如果资源正在按预期方式运行，资源状态会在几分钟后更改为“可用”。 如果资源遇到问题，“未知”运行状态可能暗示平台中的事件正在影响资源。
+运行状况为“未知”  指示资源运行状况未收到此资源的相关信息已超过 10 分钟。 尽管此状态不是资源状态的最终指示，但它是故障排除过程中一个重要的数据点。 如果资源正在按预期方式运行，资源状态会在几分钟后更改为“可用”。 如果资源遇到问题，“未知”运行状态可能暗示平台中的事件正在影响资源。
 
 ![未知](./media/sql-database-resource-health/sql-resource-health-unknown.jpg)
 

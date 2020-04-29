@@ -1,5 +1,5 @@
 ---
-title: 使用应用程序见解配置文件实时 Azure 服务结构应用
+title: 通过 Application Insights 分析实时 Azure Service Fabric 应用
 description: 为 Service Fabric 应用程序启用 Profiler
 ms.topic: conceptual
 author: cweining
@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 664d6eb377185613a1a5670daf6747b482c79d9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671607"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>使用 Application Insights 探查实时 Azure Service Fabric 应用程序

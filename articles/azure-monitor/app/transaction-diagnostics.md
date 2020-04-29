@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.openlocfilehash: 39c4c51a1bc84e06efac3674b1ee5b487f9e6729
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671131"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>统一的跨组件事务诊断
@@ -84,7 +84,7 @@ ms.locfileid: "77671131"
 
 如果确实具有权限，且使用了最新的 Application Insights SDK 来检测组件，请通过右上方的反馈通道告知我们。
 
-*我看到依赖项的重复行。这是预料之中的吗？*
+*我看到依赖项的重复行。这是不是吗？*
 
 当前，出站依赖项调用与入站请求分开显示。 通常情况下，这两种调用大致相同，但持续时间值因网络往返而不同。 可通过前导图标和样式不同的持续时间条来区分它们。 这份数据演示文稿是否包含令人困惑的内容？ 欢迎提供反馈！
 

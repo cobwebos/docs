@@ -8,10 +8,10 @@ ms.date: 07/07/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
 ms.openlocfilehash: 8905222214d58eeba24ecf50da768ffa1d65c39d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670876"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>在 Visual Studio 中使用 Azure Application Insights 调试应用程序
@@ -72,7 +72,7 @@ Application Insights 的“搜索”窗口显示已记录的事件。 （如果�
 ## <a name="trends"></a>趋势
 趋势是用于可视化一段时间内的应用行为的工具。 
 
-从 Application Insights 工具栏按钮或 Application Insights“搜索”窗口选择“浏览遥测趋势” **** 。 选择五种常见查询中的一个，以便开始使用。 可以根据遥测类型、时间范围和其他属性分析不同的数据集。 
+从 Application Insights 工具栏按钮或 Application Insights“搜索”窗口选择“浏览遥测趋势”  。 选择五种常见查询中的一个，以便开始使用。 可以根据遥测类型、时间范围和其他属性分析不同的数据集。 
 
 若要查找数据中的异常情况，请选择“视图类型”下拉列表下的其中一个异常情况选项。 使用窗口底部的筛选选项，可轻松地全力探索遥测的特定子集。
 
@@ -90,7 +90,7 @@ Application Insights 的“搜索”窗口显示已记录的事件。 （如果�
 * *最初，将 Application Insights 完全配置为将遥测发送到门户。但现在只想查看 Visual Studio 中的遥测。*
   
   * 在“搜索”窗口的“设置”中，即使应用将遥测发送到门户，也有选项可供搜索本地诊断。
-  * 要停止将遥测发送到门户，请从应用程序 Insights.config 注释掉行`<instrumentationkey>...`。当您准备好再次向门户发送遥测数据时，请取消注释它。
+  * 要停止将遥测发送到门户，请注释禁止 ApplicationInsights.config 的 `<instrumentationkey>...` 行。准备好再次将遥测发送到门户时，请取消注释。
 
 
 ## <a name="next-steps"></a>后续步骤

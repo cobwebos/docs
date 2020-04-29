@@ -11,10 +11,10 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
 ms.openlocfilehash: 333ed411ab818cff77a7cba6c7de4f42c36f5b6b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79218210"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-classic-web-service-from-excel"></a>从 Excel 使用 Azure 机器学习工作室（经典）Web 服务
@@ -28,29 +28,29 @@ ms.locfileid: "79218210"
 
 
 ## <a name="steps"></a>步骤
-发布 Web 服务。 [教程 3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)说明如何做到这一点。 目前，仅具有单个输出（即单个评分标签）的请求/响应服务支持 Excel 工作簿功能。 
+发布 Web 服务。 [教程 3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)说明如何执行此操作。 目前，仅具有单个输出（即单个评分标签）的请求/响应服务支持 Excel 工作簿功能。 
 
 获得 Web 服务后，点击工作室左侧的 **WEB SERVICES** 部分，并从Excel 中选择要使用的 Web 服务。
 
 **经典 Web 服务**
 
-1. 在 Web 服务的“DASHBOARD”**** 选项卡上有一行“REQUEST/RESPONSE”**** 服务。 如果此服务具有单个输出，应在该行看到“下载 Excel 工作簿”**** 链接。
+1. 在 Web 服务的“DASHBOARD”  选项卡上有一行“REQUEST/RESPONSE”  服务。 如果此服务具有单个输出，应在该行看到“下载 Excel 工作簿”  链接。
 
     ![使用工作室（经典）Web 服务门户下载 Excel 工作簿](./media/consuming-from-excel/excellink.png)
-2. 单击“下载 Excel 工作簿”****。
+2. 单击“下载 Excel 工作簿”  。
 
 **新的 Web 服务**
 
-1. 在 Azure 机器学习 Web 服务门户中，选择“使用”****。
-2. 在使用页上的“Web 服务使用选项”**** 部分中，单击 Excel 图标。
+1. 在 Azure 机器学习 Web 服务门户中，选择“使用”  。
+2. 在使用页上的“Web 服务使用选项”  部分中，单击 Excel 图标。
 
 **使用工作簿**
 
 1. 打开工作簿。
-2. 系统会显示安全警告；单击“启用编辑”**** 按钮。
+2. 系统会显示安全警告；单击“启用编辑”  按钮。
 
     ![启用编辑以删除受保护的视图安全警告](./media/consuming-from-excel/enableeditting.png)
-3. 系统会显示安全警告。 单击“启用内容”**** 按钮，在电子表格上运行宏。
+3. 系统会显示安全警告。 单击“启用内容”  按钮，在电子表格上运行宏。
 
     ![启用内容以关闭禁用宏的安全警告](./media/consuming-from-excel/enablecontent.png)
 4. 启用宏后，将生成一个表。 要求将蓝色的列作为 RRS Web 服务的输入或 **PARAMETERS**。 注意，RRS 服务的输出，**PREDICTED VALUES** 为绿色。 给定行的所有列都填满时，工作簿会自动调用评分 API，并显示评分结果。

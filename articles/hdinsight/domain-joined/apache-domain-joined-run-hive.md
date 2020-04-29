@@ -1,5 +1,5 @@
 ---
-title: 阿帕奇游侠中的 Apache 蜂巢策略 - Azure HDInsight
+title: Apache Ranger 中的 Apache Hive 策略-Azure HDInsight
 description: 了解如何为具有企业安全性套餐的 Azure HDInsight 服务中的 Hive 配置 Apache Ranger 策略。
 author: omidm1
 ms.author: omidm
@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
 ms.openlocfilehash: 90d7da9c8ddd8c9c595f2209dcc34e2f595acfd2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78196920"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>在具有企业安全性套餐的 HDInsight 中配置 Apache Hive 策略
 
 了解如何为 Apache Hive 配置 Apache Ranger 策略。 本文将创建两个 Ranger 策略来限制对 hivesampletable 的访问。 HDInsight 群集附带 hivesampletable。 配置策略后，使用 Excel 和 ODBC 驱动程序连接到 HDInsight 中的 Hive 表。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 具有企业安全性套餐的 HDInsight 群集。 请参阅[配置具有 ESP 的 HDInsight 群集](apache-domain-joined-configure.md)。
 * 装有 Office 2016、Office 2013 Professional Plus、Office 365 Pro Plus、Excel 2013 Standalone 或 Office 2010 Professional Plus 的工作站。
@@ -27,7 +27,7 @@ ms.locfileid: "78196920"
 ## <a name="connect-to-apache-ranger-admin-ui"></a>连接到 Apache Ranger 管理 UI
 **连接到 Ranger 管理 UI**
 
-1. 从浏览器导航到游侠管理员 UI，其中`https://CLUSTERNAME.azurehdinsight.net/Ranger/`CLUSTERNAME 是群集的名称。
+1. 在浏览器中，导航到 Ranger 管理 UI， `https://CLUSTERNAME.azurehdinsight.net/Ranger/`其中 CLUSTERNAME 是群集的名称。
 
    > [!NOTE]  
    > Ranger 使用的凭据与 Apache Hadoop 群集不同。 若要防止浏览器使用缓存的 Hadoop 凭据，请使用新的 InPrivate 浏览器窗口连接到 Ranger 管理 UI。
@@ -40,28 +40,28 @@ ms.locfileid: "78196920"
 
 ## <a name="create-domain-users"></a>创建域用户
 
-请参阅[创建具有 ESP 的 HDInsight 群集](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)，了解如何创建 hiveruser1 和 hiveuser2。 在本文中，您可以使用两个用户帐户。
+请参阅[创建具有 ESP 的 HDInsight 群集](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)，了解如何创建 hiveruser1 和 hiveuser2。 本文中使用这两个用户帐户。
 
 ## <a name="create-ranger-policies"></a>创建 Ranger 策略
 
-本部分将创建用于访问 hivesampletable 的两个 Ranger 策略。 将授予对不同列集的 select 权限。 这两个用户是在[创建具有 ESP 的 HDInsight 群集](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)的教程中创建的。 在下一节中，您将在 Excel 中测试两个策略。
+本部分将创建用于访问 hivesampletable 的两个 Ranger 策略。 将授予对不同列集的 select 权限。 这两个用户是在[创建具有 ESP 的 HDInsight 群集](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)的教程中创建的。 在下一部分中，你将在 Excel 中测试两个策略。
 
 **创建 Ranger 策略**
 
 1. 打开 Ranger 管理 UI。 请参阅“连接到 Apache Ranger 管理 UI”。
-2. 选择**CLUSTERNAME_Hive，** 在**蜂巢**下。 应会看到两个预配置策略。
-3. 选择 **"添加新策略**"，然后输入以下值：
+2. 选择 " **CLUSTERNAME_Hive**"，然后单击 " **Hive**"。 应会看到两个预配置策略。
+3. 选择 "**添加新策略**"，然后输入以下值：
 
-    |properties |“值” |
+    |属性 |值 |
     |---|---|
-    |策略名称|读-hive样表-所有|
-    |蜂巢数据库|default|
+    |策略名称|hivesampletable-all|
+    |Hive 数据库|default|
     |表|hivesampletable|
-    |蜂巢柱|*|
-    |选择用户|蜂巢1|
+    |Hive 列|*|
+    |选择用户|hiveuser1|
     |权限|select|
 
-    ![HDInsight ESP 游侠蜂巢策略配置](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
+    ![HDInsight ESP Ranger Hive 策略配置](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
 
     > [!NOTE]  
     > 如果“选择用户”中未填充域用户，请等待片刻时间让 Ranger 与 AAD 同步。
@@ -70,36 +70,36 @@ ms.locfileid: "78196920"
 
 5. 重复最后两个步骤，创建具有以下属性的另一个策略：
 
-    |properties |“值” |
+    |属性 |值 |
     |---|---|
-    |策略名称|读-hive样表-设备制作|
-    |蜂巢数据库|default|
+    |策略名称|hivesampletable-devicemake|
+    |Hive 数据库|default|
     |表|hivesampletable|
-    |蜂巢列|客户端 id，设备制造|
-    |选择用户|蜂巢2|
+    |Hive 列|clientid，devicemake|
+    |选择用户|hiveuser2|
     |权限|select|
 
 ## <a name="create-hive-odbc-data-source"></a>创建 Hive ODBC 数据源
 
 可以在 [Create Hive ODBC data source](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)（创建 Hive ODBC 数据源）中找到说明。  
 
- | properties  |描述 |
+ | 属性  |说明 |
  | --- | --- |
  | 数据源名称 | 为数据源提供名称 |
- | 主机 | 输入CLUSTERNAME.azurehdinsight.net。 例如，myHDICluster.azurehdinsight.net |
+ | 主机 | 输入 CLUSTERNAME.azurehdinsight.net。 例如，myHDICluster.azurehdinsight.net |
  | 端口 | 使用 **443**。 （此端口已从 563 更改为 443。） |
- | 数据库 | 使用**默认**。 |
+ | 数据库 | 使用**默认值**。 |
  | Hive 服务器类型 | 选择“Hive Server 2”**** |
  | 机制 | 选择“Azure HDInsight 服务”**** |
  | HTTP 路径 | 将此字段留空。 |
- | 用户名 | 输入 hiveuser1@contoso158.onmicrosoft.com。 如果域名不同，则更新域名。 |
- | 密码 | 输入 hiveuser1 的密码。 |
+ | 用户名 | 输入 hiveuser1@contoso158.onmicrosoft.com。 如果域名不同，请更新域名。 |
+ | Password | 输入 hiveuser1 的密码。 |
 
 在保存数据源之前，请务必单击“测试”。****
 
 ## <a name="import-data-into-excel-from-hdinsight"></a>将数据从 HDInsight 导入 Excel
 
-在最后一节中，您配置了两个策略。  hiveuser1 对所有列拥有 select 权限，hiveuser2 对两个列拥有 select 权限。 在本部分中，会模拟两个用户将数据导入 Excel。
+在上一部分中，你配置了两个策略。  hiveuser1 对所有列拥有 select 权限，hiveuser2 对两个列拥有 select 权限。 在本部分中，会模拟两个用户将数据导入 Excel。
 
 1. 在 Excel 中打开新工作簿或现有工作簿。
 
@@ -107,29 +107,29 @@ ms.locfileid: "78196920"
 
     ![打开数据连接向导](./media/apache-domain-joined-run-hive/simbahiveodbc-excel-dataconnection1.png)
 
-1. 从下拉列表中，选择您在最后一节中创建的数据源名称，然后选择 **"确定**"。
+1. 从下拉列表中，选择在上一部分中创建的数据源名称，然后选择 **"确定"**。
 
 1. 第一次使用时，将打开“ODBC 驱动程序”**** 对话框。 从左侧菜单中选择 **Windows**。 然后选择“连接”**** 以打开“导航器”**** 窗口。
 
 1. 等待“选择数据库和表”**** 对话框打开。 这可能需要几秒钟时间。
 
-1. 选择**蜂巢，** 然后选择 **"下一步**"。
+1. 选择 " **hivesampletable**"，然后选择 "**下一步**"。
 
-1. 选择“完成”****。
+1. 选择“完成”  。
 
-1. 在“导入数据”**** 对话框中，可更改或指定查询。 为此，请选择**属性**。 这可能需要几秒钟时间。
+1. 在“导入数据”**** 对话框中，可更改或指定查询。 为此，请选择 "**属性**"。 这可能需要几秒钟时间。
 
-1. 选择"**定义"** 选项卡。命令文本为：
+1. 选择 "**定义**" 选项卡。命令文本为：
 
        SELECT * FROM "HIVE"."default"."hivesampletable"
 
-   根据定义的 Ranger 策略，hiveuser1 对所有列拥有 select 权限。  因此，此查询适用于 hiveuser1 的凭据，但此查询不能与 hiveuser2 的凭据一起使用。
+   根据定义的 Ranger 策略，hiveuser1 对所有列拥有 select 权限。  因此，此查询适用于 hiveuser1 凭据，但此查询不适用于 hiveuser2 凭据。
 
-1. 选择 **"确定"** 可关闭连接属性对话框。
+1. 选择 **"确定"** 以关闭 "连接属性" 对话框。
 
-1. 选择 **"确定"** 以关闭 **"导入数据"** 对话框。  
+1. 选择 **"确定"** 以关闭 "**导入数据**" 对话框。  
 
-1. 重新输入 hiveuser1 的密码，并单击“确定”。**** 需要几秒钟时间才能将数据导入到 Excel 中。 完成后，您将看到 11 列数据。
+1. 重新输入 hiveuser1 的密码，并单击“确定”。**** 需要几秒钟时间才能将数据导入到 Excel 中。 完成后，应会看到11个数据列。
 
 测试在最后一个部分中创建的第二个策略 (read-hivesampletable-devicemake)
 
@@ -142,11 +142,11 @@ ms.locfileid: "78196920"
 
         SELECT * FROM "HIVE"."default"."hivesampletable"
 
-    修改为：
+    to:
 
         SELECT clientid, devicemake FROM "HIVE"."default"."hivesampletable"
 
-    完成后，您将看到两列导入的数据。
+    完成后，应会看到导入的两个数据列。
 
 ## <a name="next-steps"></a>后续步骤
 

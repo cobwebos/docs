@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 中的文件共享在 WSFC 上群集 SAP ASCS/SCS |微软文档
+title: 使用 Azure 中的文件共享对 WSFC 上的群集 SAP ASCS/SCS 进行分类 |Microsoft Docs
 description: 了解如何使用 Azure 中的文件共享在 Windows 故障转移群集上群集化 SAP ASCS/SCS 实例。
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -17,10 +17,10 @@ ms.date: 07/24/2019
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 545bcd1fa521b945d822b7eb69945cf381bf480a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77918659"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
@@ -212,7 +212,7 @@ Windows Server 故障转移群集是 Windows 中高可用性 SAP ASCS/SCS 安装
 
 故障转移群集是由 1+n 个独立服务器（节点）构成的组，这些服务器配合工作以提高应用程序和服务的可用性。 如果发生节点故障，Windows Server 故障转移群集会计算可能发生的故障数并保留正常运行的群集以提供应用程序和服务。 可从不同的仲裁模式中选择，以实现故障转移群集。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 在开始本文所述的任务之前，请先查看此文：
 
 * [适用于 SAP NetWeaver 的 Azure 虚拟机高可用性体系结构和方案][sap-high-availability-architecture-scenarios]
@@ -291,11 +291,11 @@ SAP \<SID\> 群集角色不包含群集共享磁盘或通用文件共享群集�
 
 存储空间直通用作横向扩展文件共享的共享磁盘。 可以借助存储空间直通，使用具有本地存储的服务器构建高度可用且可缩放的存储。 用于横向扩展文件共享（例如 SAP 全局主机文件）的共享存储不是单一故障点。
 
-选择存储空间直接时，请考虑以下用例：
+选择存储空间直通时，请考虑以下用例：
 
-- 用于构建存储空间直接群集的虚拟机需要在 Azure 可用性集中部署。
-- 对于存储空间直接群集的灾难恢复，可以使用[Azure 站点恢复服务](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#replicated-machines---storage)。
-- 不支持跨不同的 Azure 可用性区域拉伸存储空间直接群集。
+- 需要在 Azure 可用性集中部署用于构建存储空间直通群集的虚拟机。
+- 对于存储空间直通群集的灾难恢复，可以使用[Azure Site Recovery 服务](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#replicated-machines---storage)。
+- 不支持将存储空间直通群集延伸到不同的 Azure 可用性区域。
 
 ### <a name="sap-prerequisites-for-scale-out-file-shares-in-azure"></a>Azure 中的横向扩展文件共享的 SAP 先决条件
 
@@ -353,5 +353,5 @@ SAP \<SID\> 群集角色不包含群集共享磁盘或通用文件共享群集�
 * [针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 SAP HA 的 Azure 基础结构][sap-high-availability-infrastructure-wsfc-file-share]
 * [针对 SAP ASCS/SCS 实例在 Windows 故障转移群集和文件共享上安装 SAP NetWeaver HA][sap-high-availability-installation-wsfc-shared-disk]
 * [在 Azure 中为 UPD 存储部署双节点存储空间直通横向扩展文件服务器][deploy-sofs-s2d-in-azure]
-* [直接在 Windows 服务器中的存储空间 2016][s2d-in-win-2016]
+* [Windows Server 2016 中的存储空间直通][s2d-in-win-2016]
 * [深入探讨：存储空间直通中的卷][deep-dive-volumes-in-s2d]

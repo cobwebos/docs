@@ -8,39 +8,39 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.openlocfilehash: 34c8555356d5c0142d7b677c8119fe66806ab064
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76834899"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio"></a>使用 Visual Studio 在本地测试流分析查询
 
-您可以使用 Visual Studio 的 Azure 流分析工具在本地使用示例数据或[实时数据](stream-analytics-live-data-local-testing.md)测试流分析作业。 
+可以使用适用于 Visual Studio 的 Azure 流分析工具，通过示例数据或[实时数据](stream-analytics-live-data-local-testing.md)在本地测试流分析作业。 
 
 使用此[快速入门](stream-analytics-quick-create-vs.md)了解如何使用 Visual Studio 创建流分析作业。
 
 ## <a name="test-your-query"></a>测试查询
 
-在 Azure 流分析项目中双击“Script.asaql”，在编辑器中打开脚本****。 可以编译查询，查看是否存在任何语法错误。 查询编辑器支持 IntelliSense、语法颜色设置和错误标记。
+在 Azure 流分析项目中双击“Script.asaql”，在编辑器中打开脚本  。 可以编译查询，查看是否存在任何语法错误。 查询编辑器支持 IntelliSense、语法颜色设置和错误标记。
 
 ![查询编辑器](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-query-01.png)
  
 ### <a name="add-local-input"></a>添加本地输入
 
-若要针对本地静态数据验证查询，右键单击输入并选择“添加本地输入”****。
+若要针对本地静态数据验证查询，右键单击输入并选择“添加本地输入”  。
    
 ![添加本地输入](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-01.png)
    
-在弹出窗口中，从本地路径选择示例数据，然后单击“保存”****。
+在弹出窗口中，从本地路径选择示例数据，然后单击“保存”  。
    
 ![添加本地输入](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-02.png)
    
-名为 local_EntryStream.json**** 的文件会自动添加到输入文件夹。
+名为 local_EntryStream.json  的文件会自动添加到输入文件夹。
    
 ![本地输入文件夹的文件列表](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-03.png)
    
-在查询编辑器中选择“本地运行”****。 或者按 F5。
+在查询编辑器中选择“本地运行”  。 或者按 F5。
    
 ![本地运行](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-local-run-01.png)
    
@@ -58,15 +58,15 @@ ms.locfileid: "76834899"
    
 
 ### <a name="sample-input"></a>示例输入
-还可以将输入源中的示例输入数据收集到本地文件。 右键单击输入配置文件并选择“示例数据”****。 
+还可以将输入源中的示例输入数据收集到本地文件。 右键单击输入配置文件并选择“示例数据”  。 
 
 ![示例数据](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-01.png)
 
-仅可从事件中心或 IoT 中心采样数据流。 其他输入源不受支持。 在弹出对话框中，填写用于保存示例数据的本地路径，然后选择“示例”****。
+仅可从事件中心或 IoT 中心采样数据流。 其他输入源不受支持。 在弹出对话框中，填写用于保存示例数据的本地路径，然后选择“示例”  。
 
 ![示例数据配置](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-02.png)
  
-您可以在 **"输出"** 窗口中看到进度。 
+可在“输出”  窗口中查看进度。 
 
 ![示例数据输出](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-03.png)
 

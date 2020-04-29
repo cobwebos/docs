@@ -1,5 +1,5 @@
 ---
-title: 使用应用程序见解配置文件器在 Azure 中配置文件生产应用
+title: 通过 Application Insights Profiler 分析 Azure 中的生产应用
 description: 使用一个精简的探查器识别 Web 服务器代码中的热路径。
 ms.topic: conceptual
 author: cweining
@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: ce952bd248640d03fcff43284707614577df8469
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671641"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>使用 Application Insights 探查 Azure 中的生产应用程序
@@ -22,7 +22,7 @@ Profiler 适用于以下 Azure 服务中部署的 .NET 应用程序。 下面提
 
 * [Azure 应用服务](profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Azure 云服务](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
-* [Azure 服务结构](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Service Fabric](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Azure 虚拟机和虚拟机规模集](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 * [**预览** ASP.NET Core Azure Linux Web 应用](profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json) 
 
@@ -65,7 +65,7 @@ Microsoft 服务探查器结合使用采样方法和检测来分析应用程序�
 
 ### <a name="lock-contention-clrjitutil_moncontention-or-clrjitutil_monenterworker"></a><a id="lockcontention"></a>锁争用（clr!JITutil\_MonContention 或 clr!JITutil\_MonEnterWorker）
 
-clr!JITutil\_MonContention 或 clr!JITutil\_MonEnterWorker 指示当前线程正在等待释放锁********。 执行 C# **LOCK** 语句、调用 **Monitor.Enter** 方法或者结合 **MethodImplOptions.Synchronized** 属性调用某个方法时，通常会显示此文本。 当线程_A_获取锁，并且线程_B_尝试在线程_A_释放锁之前获取同一锁时，通常会发生锁争用。
+clr!JITutil\_MonContention 或 clr!JITutil\_MonEnterWorker 指示当前线程正在等待释放锁********。 执行 C# **LOCK** 语句、调用 **Monitor.Enter** 方法或者结合 **MethodImplOptions.Synchronized** 属性调用某个方法时，通常会显示此文本。 当线程_a_获取锁，而线程_B_在线程_a_释放该锁之前尝试获取同一个锁时，通常会发生锁争用。
 
 ### <a name="loading-code-cold"></a><a id="ngencold"></a>加载代码 ([COLD])
 
@@ -123,7 +123,7 @@ CPU 正忙于执行指令。
 为 Azure 应用程序启用 Application Insights Profiler。 另请参阅：
 * [应用程序服务](profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Azure 云服务](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
-* [Azure 服务结构](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Service Fabric](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Azure 虚拟机和虚拟机规模集](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 
