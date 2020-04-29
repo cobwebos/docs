@@ -9,10 +9,10 @@ ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 8d0f9866864ca4b02ca6238be2ac44537a586c2d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67172962"
 ---
 ## <a name="update-resources"></a>更新资源
@@ -20,12 +20,12 @@ ms.locfileid: "67172962"
 对于能够更新的内容，存在一些限制。 以下项目可以更新： 
 
 共享映像库：
-- 描述
+- 说明
 
 映像定义：
 - 建议的 vCPU 数
 - 建议的内存
-- 描述
+- 说明
 - 生命周期终结日期
 
 映像版本：

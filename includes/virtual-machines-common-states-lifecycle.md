@@ -9,13 +9,13 @@ ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
 ms.openlocfilehash: 57f557a812ec5e4eea75b76ca1394ca360a85d30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67172889"
 ---
-Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和“电源”状态。**** 本文旨在介绍这些状态并专门突出显示了何时会对客户收取实例使用费用。 
+Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和“电源”状态。   本文旨在介绍这些状态并专门突出显示了何时会对客户收取实例使用费用。 
 
 ## <a name="power-states"></a>电源状态
 
@@ -32,7 +32,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 状态
 </th>
 <th>
-描述
+说明
 </th>
 <th>
 实例使用计费
@@ -40,7 +40,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 </tr>
 <tr>
 <td>
-<p><b>开始</b></p>
+<p><b>正在启动</b></p>
 </td>
 <td>
 <p>VM 正在启动。</p>
@@ -71,7 +71,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
  ]</code><br>
 </td>
 <td>
-<p><b>嘴</b></p>
+<p><b>计费</b></p>
 </td>
 </tr>
 <tr>
@@ -79,7 +79,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 <p><b>正在停止</b></p>
 </td>
 <td>
-<p>这是一种过渡性状态。 完成后，会显示为“已停止”。****</p>
+<p>这是一种过渡性状态。 完成后，会显示为“已停止”。</p>
 <code>"statuses": [<br>
  {<br>
  "code": "PowerState/stopping",<br>
@@ -89,12 +89,12 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
  ]</code><br>
 </td>
 <td>
-<p><b>嘴</b></p>
+<p><b>计费</b></p>
 </td>
 </tr>
 <tr>
 <td>
-<p><b>停止</b></p>
+<p><b>已停止</b></p>
 </td>
 <td>
 <p>VM 已在来宾 OS 中关闭，或者已使用 PowerOff API 关闭。</p>
@@ -116,7 +116,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 <p><b>正在解除分配</b></p>
 </td>
 <td>
-<p>过渡性状态。 完成后，VM 会显示为“已解除分配”。****</p>
+<p>过渡性状态。 完成后，VM 会显示为“已解除分配”。</p>
 <code>"statuses": [<br>
  {<br>
  "code": "PowerState/deallocating",<br>
@@ -131,7 +131,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 </tr>
 <tr>
 <td>
-<p><b>交易</b></p>
+<p><b>已解除分配</b></p>
 </td>
 <td>
 <p>VM 已成功停止并从主机中删除。 </p>
@@ -175,10 +175,10 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 <tbody>
 <tr>
 <td width="162">
-<p><b>States</b></p>
+<p><b>状态</b></p>
 </td>
 <td width="366">
-<p>描述</p>
+<p>说明</p>
 </td>
 </tr>
 <tr>
@@ -196,7 +196,7 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 </tr>
 <tr>
 <td width="162">
-<p><b>正在更新</b></p>
+<p><b>更新</b></p>
 </td>
 <td width="366">
 <code>"statuses": [<br>

@@ -9,10 +9,10 @@ ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: d2a85f3947e9993e5d1853e45c6d03586a074cf6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67172913"
 ---
 ## <a name="update-resources"></a>更新资源
@@ -20,12 +20,12 @@ ms.locfileid: "67172913"
 对于能够更新的内容，存在一些限制。 以下项目可以更新： 
 
 共享映像库：
-- 描述
+- 说明
 
 映像定义：
 - 建议的 vCPU 数
 - 建议的内存
-- 描述
+- 说明
 - 生命周期终结日期
 
 映像版本：
@@ -54,7 +54,7 @@ Update-AzGalleryImageDefinition `
    -EndOfLifeDate 01/01/2030
 ```
 
-此示例演示如何使用 [Update-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimageversion) 来排除此映像版本，使之不能用作最新映像。**
+此示例演示如何使用 [Update-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimageversion) 来排除此映像版本，使之不能用作最新映像。 
 
 ```azurepowershell-interactive
 Update-AzGalleryImageVersion `
