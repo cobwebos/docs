@@ -1,5 +1,5 @@
 ---
-title: Azure 中的互操作性 ：数据平面分析
+title: Azure 中的互操作性：数据平面分析
 description: 本文提供测试设置的数据平面分析，可用于分析 Azure 中 ExpressRoute、站点到站点 VPN 和虚拟网络对等互连之间互操作性。
 documentationcenter: na
 services: networking
@@ -11,13 +11,13 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: fe7b74b0d4d065d4f222fefbbdc4a1d434d1163b
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80518262"
 ---
-# <a name="interoperability-in-azure--data-plane-analysis"></a>Azure 中的互操作性 ：数据平面分析
+# <a name="interoperability-in-azure--data-plane-analysis"></a>Azure 中的互操作性：数据平面分析
 
 本文介绍了[测试设置][Setup]的数据平面分析。 你也可以查看测试设置的[测试设置配置][Configuration]和[控制平面分析][Control-Analysis]。
 
@@ -164,7 +164,7 @@ ms.locfileid: "80518262"
 
     Trace complete.
 
-在此跟踪路由中，第一个跃点是集线器 VNet 的到 MSEE 的 ExpressRoute 网关隧道终结点。 第二个和第三个跃点为 CE 路由器和本地位置 1 LAN IP。 这些 IP 地址不会在中心/辐射 VNet 中播发。 第四个跃点是本地位置 1 中的 VM。
+在此 traceroute 中，第一个跃点是中心 VNet 的 ExpressRoute 网关隧道终结点到 MSEE。 第二个和第三个跃点为 CE 路由器和本地位置 1 LAN IP。 这些 IP 地址不会在中心/辐射 VNet 中播发。 第四个跃点是本地位置 1 中的 VM。
 
 ### <a name="path-to-on-premises-location-2"></a>本地位置 2 的路径
 
@@ -182,7 +182,7 @@ ms.locfileid: "80518262"
 
     Trace complete.
 
-在此跟踪路由中，第一个跃点是集线器 VNet 的到 MSEE 的 ExpressRoute 网关隧道终结点。 第二个和第三个跃点为 CE 路由器和本地位置 2 LAN IP。 这些 IP 地址不会在中心/辐射 VNet 中播发。 第四个跃点是在本地位置 2 中的 VM。
+在此 traceroute 中，第一个跃点是中心 VNet 的 ExpressRoute 网关隧道终结点到 MSEE。 第二个和第三个跃点为 CE 路由器和本地位置 2 LAN IP。 这些 IP 地址不会在中心/辐射 VNet 中播发。 第四个跃点是在本地位置 2 中的 VM。
 
 ### <a name="path-to-the-remote-vnet"></a>远程 VNet 的路径
 
@@ -198,7 +198,7 @@ ms.locfileid: "80518262"
 
     Trace complete.
 
-在此跟踪路由中，第一个跃点是集线器 VNet 的到 MSEE 的 ExpressRoute 网关隧道终结点。 第二个跃点是远程 VNet 的网关 IP。 第二个跃点的 IP 范围不会在中心/辐射 VNet 中播发。 第三个跃点是远程 VNet 中的 VM。
+在此 traceroute 中，第一个跃点是中心 VNet 的 ExpressRoute 网关隧道终结点到 MSEE。 第二个跃点是远程 VNet 的网关 IP。 第二个跃点的 IP 范围不会在中心/辐射 VNet 中播发。 第三个跃点是远程 VNet 中的 VM。
 
 ## <a name="data-path-from-the-branch-vnet"></a>分支 VNet 中的数据路径
 
@@ -304,7 +304,7 @@ ms.locfileid: "80518262"
 
 ![4][4]
 
-如前文所述，测试设置使用站点到站点 VPN 作为本地位置 1 与中心 VNet 之间的备用 ExpressRoute 连接。 要测试备份数据路径，让我们在本地位置 1 主 CE 路由器和相应的 MSEE 之间引发 ExpressRoute 链路故障。 为引发 ExpressRoute 链接故障，请关闭面向 MSEE 的 CE 接口：
+如前文所述，测试设置使用站点到站点 VPN 作为本地位置 1 与中心 VNet 之间的备用 ExpressRoute 连接。 若要测试备份数据路径，让我们在本地位置1主 CE 路由器与相应的 MSEE 之间引发 ExpressRoute 链接故障。 为引发 ExpressRoute 链接故障，请关闭面向 MSEE 的 CE 接口：
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -356,7 +356,7 @@ ms.locfileid: "80518262"
 
 ### <a name="path-to-on-premises-location-2"></a>本地位置 2 的路径
 
-如在[控制平面分析][Control-Analysis]中所述，根据网络配置，本地位置 2 看不到本地位置 1。 以下 ping 结果确认了这一事实： 
+如[控制平面分析][Control-Analysis]中所述，根据网络配置，本地位置 2 看不到本地位置 1。 以下 ping 结果确认了这一事实： 
 
     C:\Users\rb>ping 10.1.31.10
     
@@ -420,7 +420,7 @@ ms.locfileid: "80518262"
 
 ### <a name="path-to-the-branch-vnet-on-premises-location-1-and-the-remote-vnet"></a>分支 VNet、本地位置 1 和远程 VNet 的路径
 
-如在[控制平面分析][Control-Analysis]中所述，根据网络配置，分支 VNet、本地位置 1 或远程 VNet 看不到本地位置 1。 
+如[控制平面分析][Control-Analysis]中所述，根据网络配置，分支 VNet、本地位置 1 或远程 VNet 看不到本地位置 1。 
 
 ## <a name="data-path-from-the-remote-vnet"></a>远程 VNet 中的数据路径
 
@@ -454,7 +454,7 @@ ms.locfileid: "80518262"
 
 ### <a name="path-to-the-branch-vnet-and-on-premises-location-2"></a>分支 VNet 和本地位置 2 的路径
 
-如在[控制平面分析][Control-Analysis]中所述，根据网络配置，分支 VNet 或本地位置 2 看不到远程 VNet。 
+如[控制平面分析][Control-Analysis]中所述，根据网络配置，分支 VNet 或本地位置 2 看不到远程 VNet。 
 
 ### <a name="path-to-on-premises-location-1"></a>本地位置 1 的路径
 

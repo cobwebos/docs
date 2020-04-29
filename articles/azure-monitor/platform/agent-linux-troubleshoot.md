@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
 ms.openlocfilehash: 2343de97d06abdefed2c2977a7341aa411429319
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80520742"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>如何排查 Log Analytics Linux 代理的问题 
@@ -22,8 +22,8 @@ ms.locfileid: "80520742"
 * 具有顶级支持权益的客户可以通过[顶级支持](https://premier.microsoft.com/)提出支持请求。
 * 签订了 Azure 支持协议的客户可以在 [Azure 门户](https://manage.windowsazure.com/?getsupport=true)中提出支持请求。
 * 借助 [OMI 故障排除指南](https://github.com/Microsoft/omi/blob/master/Unix/doc/diagnose-omi-problems.md)诊断 OMI 问题。
-* 提交[GitHub 问题](https://github.com/Microsoft/OMS-Agent-for-Linux/issues)。
-* 访问日志分析反馈页面，查看已提交的想法和 Bug[https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback)或提交新的想法和错误。  
+* 文件 a [GitHub 问题](https://github.com/Microsoft/OMS-Agent-for-Linux/issues)。
+* 若要查看已提交的想法和 bug [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) ，请访问 Log Analytics 反馈页，或提供新的建议。  
 
 ## <a name="important-log-locations-and-log-collector-tool"></a>重要的日志位置和日志收集器工具
 
@@ -146,7 +146,7 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 </match>
 ```
 
-## <a name="issue--unable-to-connect-through-proxy-to-azure-monitor"></a>问题：无法通过代理连接到 Azure 监视器
+## <a name="issue--unable-to-connect-through-proxy-to-azure-monitor"></a>问题：无法通过代理连接到 Azure Monitor
 
 ### <a name="probable-causes"></a>可能的原因
 * 在载入期间指定的代理不正确
@@ -158,7 +158,7 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 
 2. 请查看[更新代理设置](agent-manage.md#update-proxy-settings)部分，验证是否已将代理正确配置为通过代理服务器进行通信。    
 
-3. 仔细检查 Azure 监视器[网络防火墙要求](log-analytics-agent.md#firewall-requirements)列表中概述的终结点是否正确添加到允许列表中。 如果使用 Azure 自动化，则上述链接了所需的网络配置步骤。
+3. 仔细检查 Azure Monitor[网络防火墙要求](log-analytics-agent.md#firewall-requirements)列表中列出的终结点是否已正确添加到允许列表中。 如果使用 Azure 自动化，则还会在上面链接必要的网络配置步骤。
 
 ## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>问题：尝试载入时收到 403 错误
 
@@ -176,10 +176,10 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 这是第一次将 Linux 数据上传到 Log Analytics 工作区时发生的已知问题。 这不会影响发送的数据或服务体验。
 
 
-## <a name="issue-you-see-omiagent-using-100-cpu"></a>问题：您看到使用 100% CPU 的奥位
+## <a name="issue-you-see-omiagent-using-100-cpu"></a>问题：你看到 omiagent 使用 100% CPU
 
 ### <a name="probable-causes"></a>可能的原因
-nss-pem 包 [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.el7.x86_64.rpm.html) 中的回归导致了严重的性能问题，我们已在 Redhat/CentOS 7.x 发行版中看到发生了很多这样的问题。 要了解有关此问题的更多详细信息，请查看以下文档[：libcurl 中的 Bug 1667121 性能回归](https://bugzilla.redhat.com/show_bug.cgi?id=1667121)。
+nss-pem 包 [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.el7.x86_64.rpm.html) 中的回归导致了严重的性能问题，我们已在 Redhat/CentOS 7.x 发行版中看到发生了很多这样的问题。 若要了解有关此问题的详细信息，请查看以下文档： [libcurl 中的 Bug 1667121 性能回归](https://bugzilla.redhat.com/show_bug.cgi?id=1667121)。
 
 与性能相关的 bug 并不总是发生，而且它们很难再现。 如果你在 omiagent 中遇到这样的问题，应该使用脚本 omiHighCPUDiagnostics.sh，它将在超过某个阈值时收集 omiagent 的堆栈跟踪。
 
@@ -298,7 +298,7 @@ nss-pem 包 [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3
 * 相比 Log Analytics Linux 代理程序包安装的版本，OMI 程序包已手动升级到较新版本
 * DSC 资源在 `omsconfig.log` 日志文件中记录“找不到类”** 错误
 * Log Analytics 代理数据已备份
-* DSC 日志*当前配置不存在。使用 -Path 参数执行启动 Dsc 配置命令，以指定配置文件并首先创建当前配置。* （在 `omsconfig.log` 日志文件中），但不存在关于 `PerformRequiredConfigurationChecks` 操作的日志消息。
+* DSC 日志*当前配置不存在。使用-Path 参数执行 Start-dscconfiguration 命令，以指定配置文件并首先创建当前配置。* （在 `omsconfig.log` 日志文件中），但不存在关于 `PerformRequiredConfigurationChecks` 操作的日志消息。
 
 ### <a name="resolution"></a>解决方法
 1. 安装 auditd 程序包等所有依赖项。
@@ -307,7 +307,7 @@ nss-pem 包 [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3
 5. 在某些 Azure 分发系统中，omid OMI 服务器后台程序在重新启动虚拟机后未启动。 这将导致看不到 Audit、ChangeTracking 或 UpdateManagement 解决方案相关的数据。 解决方法是通过运行 `sudo /opt/omi/bin/service_control restart` 来手动启动 omi 服务器。
 6. OMI 程序包手动升级到较新版本后，必须手动重新启动，Log Analytics 代理才能继续运行。 对于其中 OMI 服务器在升级之后无法自动启动的分发，此为必需步骤。 运行 `sudo /opt/omi/bin/service_control restart` 重新启动 OMI。
 7. 如果在 omsconfig.log 中看到 DSC 资源“找不到类”** 错误，请运行 `sudo /opt/omi/bin/service_control restart`。
-8. 在某些情况下，当 Linux 的日志分析代理无法与 Azure 监视器对话时，代理上的数据将备份到完整的缓冲区大小：50 MB。 该代理应通过运行以下命令重新启动：`/opt/microsoft/omsagent/bin/service_control restart`。
+8. 在某些情况下，当 Linux 的 Log Analytics 代理无法与 Azure Monitor 通信时，代理上的数据将备份到完整的缓冲区大小： 50 MB。 该代理应通过运行以下命令重新启动：`/opt/microsoft/omsagent/bin/service_control restart`。
 
     >[!NOTE]
     >此问题已在代理版本 1.1.0-28 或更高版本中解决
@@ -331,7 +331,7 @@ nss-pem 包 [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3
     sudo service cron start
     ```
 
-    **Suse**
+    **SUSE**
 
     ```
     # To Install the service binaries

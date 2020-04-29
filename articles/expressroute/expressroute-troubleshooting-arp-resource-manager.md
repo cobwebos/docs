@@ -1,5 +1,5 @@
 ---
-title: Azure 快速路由：ARP 表 - 故障排除
+title: Azure ExpressRoute： ARP 表-疑难解答
 description: 此页说明了如何为 ExpressRoute 线路获取 ARP 表
 services: expressroute
 author: charwen
@@ -9,20 +9,20 @@ ms.date: 01/30/2017
 ms.author: charwen
 ms.custom: seodec18
 ms.openlocfilehash: b31e9eb852c69d5f02eb855e319d2a4901942994
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80618525"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>在 Resource Manager 部署模型中获取 ARP 表
 > [!div class="op_single_selector"]
-> * [PowerShell - 资源管理器](expressroute-troubleshooting-arp-resource-manager.md)
+> * [PowerShell - Resource Manager](expressroute-troubleshooting-arp-resource-manager.md)
 > * [PowerShell - 经典](expressroute-troubleshooting-arp-classic.md)
 > 
 > 
 
-本文指导完成相关步骤，以便了解 ExpressRoute 线路的 ARP 表。
+本文指导你完成相关步骤，以便了解 ExpressRoute 线路的 ARP 表。
 
 > [!IMPORTANT]
 > 本文档旨在帮助你诊断和修复简单问题。 它不是为了替代 Microsoft 支持部门。 如果无法通过下述指南解决问题，则必须通过 [Microsoft 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)开具支持票证。
@@ -139,7 +139,7 @@ ARP 表示例：
 ### <a name="arp-table-when-a-circuit-is-in-operational-state-expected-state"></a>当线路处于运行状态（预期状态）时的 ARP 表
 * ARP 表会有一个针对本地端且带有有效 IP 地址和 MAC 地址的条目，以及一个类似的针对 Microsoft 端的条目。 
 * 本地 IP 地址的最后一个八位字节将始终是奇数。
-* Microsoft IP 地址的最后一个八位字节将始终是偶数。
+* Microsoft IP 地址的最后一个八位字节始终会是偶数。
 * 所有 3 种对等互连（主/辅助）在 Microsoft 端都会显示相同的 MAC 地址。 
 
         Age InterfaceProperty IpAddress  MacAddress    
@@ -178,5 +178,5 @@ ARP 表示例：
   * 获取路由摘要以确定 BGP 会话的状态 
   * 获取路由表以确定哪些前缀跨 ExpressRoute 播发
 * 通过查看输入/输出中的字节数来验证数据传输
-* 如果仍然存在问题，请通过 [Microsoft 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)开具一个支持票证。
+* 如果仍然存在问题，请通过 [Microsoft 支持部门](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 开具一个支持票证。
 

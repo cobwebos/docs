@@ -1,5 +1,5 @@
 ---
-title: 数据库每个租户 SaaS 教程
+title: 每租户数据库 SaaS 教程
 description: 部署并探究一个 Wingtip Tickets SaaS 多租户应用程序，该应用程序使用 Azure SQL 数据库演示了“每租户一个数据库”模式和其他 SaaS 模式。
 services: sql-database
 ms.service: sql-database
@@ -12,17 +12,17 @@ ms.author: genemi
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: 3182daa4ebf3becc824b600d1e487e12b875b275
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80529657"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>部署并探究一个多租户 SaaS 应用，该应用通过“每租户一个数据库”模式使用 SQL 数据库
 
 本教程中，你将部署并探究 Wingtip Tickets SaaS“每租户一个数据库”应用程序 (Wingtip)。 该应用使用“每租户一个数据库”模式存储多个租户的数据。 该应用设计用于展示简化了 SaaS 方案的启用方式的 Azure SQL 数据库功能。
 
-选择“部署到 Azure”后，五分钟即生成一个多租户 SaaS 应用程序****。 该应用包括一个在云中运行的 SQL 数据库。 该应用部署有三个示例租户，每个租户具有其自己的数据库。 所有数据库都部署到一个 SQL 弹性池中。 该应用会部署到 Azure 订阅。 用户具有完全访问权限，可以浏览并处理该应用的各个组件。 应用程序 C# 源代码和管理脚本在[WingtipTicketsSaaS-DbPerTenant GitHub 存储库中][github-wingtip-dpt]可用。
+选择“部署到 Azure”后，五分钟即生成一个多租户 SaaS 应用程序****。 该应用包括一个在云中运行的 SQL 数据库。 该应用部署有三个示例租户，每个租户具有其自己的数据库。 所有数据库都部署到一个 SQL 弹性池中。 该应用会部署到 Azure 订阅。 用户具有完全访问权限，可以浏览并处理该应用的各个组件。 [Wingtipticketssaas-dbpertenant 提供了-Wingtipticketssaas-dbpertenant-master GitHub][github-wingtip-dpt]存储库中提供了应用程序 c # 源代码和管理脚本。
 
 本教程介绍以下内容：
 
@@ -36,7 +36,7 @@ ms.locfileid: "80529657"
 
 可通过观看[相关教程系列](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)，了解各种 SaaS 设计和管理模式。 除了初始部署相关内容，这些教程还提供其他丰富的内容延展。 使用这些教程时，可以观察所提供的脚本来了解不同的 SaaS 模式是如何实现的。 脚本演示 SQL 数据库的功能如何简化 SaaS 应用程序的开发。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，请确保安装 Azure PowerShell。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
 
@@ -70,7 +70,7 @@ ms.locfileid: "80529657"
 
     a. 选择“我同意上述条款和条件”。
 
-    b. 选择“购买”。****
+    b. 选择“购买”。 
 
 1. 若要监视部署状态，请选择“通知”（搜索框右侧的钟形图标）****。 部署 Wingtip Tickets SaaS 应用大约需要 5 分钟。
 
@@ -96,7 +96,7 @@ ms.locfileid: "80529657"
 
 运行任何脚本之前，在 UserConfig 文件中更新“资源组”和“用户”值。 将这些变量设置为部署期间使用的值。
 
-1. 在 PowerShell ISE 中，打开 ...\\学习模块\\**用户配置.psm1**
+1. 在 PowerShell ISE 中打开 .。。\\学习模块\\**userconfig.psm1. hbase-runner.psm1**
 1. 使用部署（仅限 10 和 11 行）的特定值，更新 ResourceGroupName 和 Name********。
 1. 保存更改。
 
@@ -128,8 +128,8 @@ Wingtip 应用程序使用  [*Azure 流量管理器*](../traffic-manager/traffi
 
     | URL 部分        | 说明       |
     | :-------------- | :---------------- |
-    | 事件.翼尖-dpt | Wingtip 应用的事件部分。<br /><br /> **-dpt** 部分将 Wingtip Tickets 的“每租户一个数据库”实现与其他实现区分开来。 例如，单个**“每租户应用”(-sa**) 实现，或多租户数据库** (-mt**) 实现。 |
-    | .*&lt;用户&gt;* | 在示例中为 *af1*。 |
+    | wingtip-user | Wingtip 应用的事件部分。<br /><br /> **-dpt** 部分将 Wingtip Tickets 的“每租户一个数据库”实现与其他实现区分开来。 例如，单个**“每租户应用”(-sa**) 实现，或多租户数据库** (-mt**) 实现。 |
+    | .* &lt;用户&gt;* | 在示例中为 *af1*。 |
     | .trafficmanager.net/ | 流量管理器、基 URL。 |
     | fabrikamjazzclub | 标识名为 Fabrikam Jazz Club 的租户。 |
     | &nbsp; | &nbsp; |
@@ -140,7 +140,7 @@ Wingtip 应用程序使用  [*Azure 流量管理器*](../traffic-manager/traffi
   - 目录是通过使用分片映射管理实现的**。
 - 事件中心使用目录中的扩展元数据为每个租户构造事件页 URL 的列表。
 
-在生产环境中，通常创建 CNAME DNS 记录，将 [*公司互联网域*](../traffic-manager/traffic-manager-point-internet-domain.md) 指向流量管理器 DNS 名称。
+在生产环境中，通常要创建一条 CNAME dns 记录，将 [*公司 internet 域*](../traffic-manager/traffic-manager-point-internet-domain.md) 指向流量管理器 DNS 名称。
 
 > [!NOTE]
 > 在本教程中，流量管理器的用途可能不是非常明显。 此系列教程的目标是展示可以处理复杂生产环境规模的各种模式。 在这种情况下，例如，你将具有分布在全球的多个 Web 应用，并且它们与数据库共存于相同的位置，你将需要使用流量管理器在这些实例之间进行路由。
@@ -210,7 +210,7 @@ Demo-LoadGenerator.ps1 模拟客户事务的活动工作负载**。 以下步骤
 - 已初始化。
 - 已在目录中注册。
 
-成功预配*后，新*租户的事件网站将显示在浏览器中。
+成功预配后，新租户的 "*事件*" 站点将显示在浏览器中。
 
 ![新租户](./media/saas-dbpertenant-get-started-deploy/red-maple-racing.png)
 
@@ -268,7 +268,7 @@ LoadGenerator.ps1 运行几分钟后，可提供足够的数据，用于开始�
 > - 如何通过查看池使用率来监视租户活动。
 > - 如何删除示例资源以停止相关计费。
 
-接下来，请尝试[预配和目录教程](saas-dbpertenant-provision-and-catalog.md)。
+接下来，请尝试[预配和编录教程](saas-dbpertenant-provision-and-catalog.md)。
 
 <!-- Link references. -->
 

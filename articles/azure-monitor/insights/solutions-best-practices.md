@@ -1,16 +1,16 @@
 ---
-title: Azure 最佳实践中的管理解决方案
-description: 在本文中，了解创建管理解决方案文件的提示。 了解如何处理数据源、运行簿、视图和警报。
+title: Azure 最佳做法中的管理解决方案
+description: 本文介绍如何创建管理解决方案文件。 请参阅如何使用数据源、runbook、视图和警报。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
 ms.openlocfilehash: 7cb300297336edcce4294b800520ad570b12bcde
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80548169"
 ---
 # <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>在 Azure 中创建管理解决方案的最佳做法（预览版）

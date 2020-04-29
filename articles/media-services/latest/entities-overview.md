@@ -1,7 +1,7 @@
 ---
 title: 媒体服务实体的筛选、排序和分页
 titleSuffix: Azure Media Services
-description: 了解 Azure 媒体服务 v3 实体的筛选、排序和分页。
+description: 了解如何对 Azure 媒体服务 v3 实体进行筛选、排序和分页。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,10 +14,10 @@ ms.date: 01/21/2020
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 7e4f1141a9d4bd58451782e8412063a22565556d
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80584530"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>媒体服务实体的筛选、排序和分页
@@ -35,19 +35,19 @@ ms.locfileid: "80584530"
 
 相等性运算符：
 
-- `eq`：测试字段是否*等于*常量值。
-- `ne`：测试字段*是否不等于*常量值。
+- `eq`：测试某个字段是否*等于*某个常量值。
+- `ne`：测试某个字段是否*不等于*某个常量值。
 
 范围运算符：
 
-- `gt`：测试字段是否*大于*常量值。
-- `lt`：测试字段是否*小于*常量值。
-- `ge`： 测试字段是否*大于或等于*常量值。
-- `le`： 测试字段是否*小于或等于*常量值。
+- `gt`：测试某个字段是否*大于*某个常量值。
+- `lt`：测试某个字段是否*小于*某个常量值。
+- `ge`：测试某个字段是否大于或等于  某个常数值。
+- `le`：测试某个字段是否*小于或等于*某个常量值。
 
 ## <a name="filter"></a>筛选器
 
-用于`$filter`提供 OData 筛选器参数，以便仅查找您感兴趣的对象。
+使用 `$filter` 提供一个 OData 筛选器参数，以便只查找感兴趣的对象。
 
 下面的 REST 示例根据资产的 `alternateId` 值进行筛选：
 
@@ -81,7 +81,7 @@ GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000
 如果在对集合进行分页时创建或删除了实体，则返回的结果中会反映这些更改（如果这些更改位于集合中尚未下载的部分中）。
 
 > [!TIP]
-> 始终用于`nextLink`枚举集合，并且不依赖于特定的页面大小。
+> 始终使用 `nextLink` 来枚举集合，而不依赖于特定的页面大小。
 >
 > `nextLink` 值存在的前提是有多个页面的实体。
 
@@ -158,27 +158,27 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 |实体名称|属性名称|筛选器|订单|
 |---|---|---|---|
-|[资产](https://docs.microsoft.com/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` 和 `desc`|
+|[资产](https://docs.microsoft.com/rest/api/media/assets/)|name|`eq`、`gt`、`lt`、`ge`、`le`|`asc` 和 `desc`|
 ||properties.alternateId |`eq`||
 ||properties.assetId |`eq`||
-||properties.created| `eq`, `gt`, `lt`| `asc` 和 `desc`|
-|[内容关键策略](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
-||properties.created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
-||properties.description    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
-||properties.lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
+||properties.created| `eq`、`gt`、`lt`| `asc` 和 `desc`|
+|[内容密钥策略](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
+||properties.created    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
+||properties.description    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`||
+||properties.lastModified|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
 ||properties.policyId|`eq`, `ne`||
 |[作业](https://docs.microsoft.com/rest/api/media/jobs)| name  | `eq`            | `asc` 和 `desc`|
 ||properties.state        | `eq`, `ne`        |                         |
-||properties.created      | `gt`, `ge`, `lt`, `le`| `asc` 和 `desc`|
-||properties.lastModified | `gt`, `ge`, `lt`, `le` | `asc` 和 `desc`| 
-|[流式处理器](https://docs.microsoft.com/rest/api/media/streaminglocators)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
-||properties.created    |`eq`, `ne`, `ge`, `le`,  `gt`, `lt`|`asc` 和 `desc`|
-||properties.endTime    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
-|[流式处理策略](https://docs.microsoft.com/rest/api/media/streamingpolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
-||properties.created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` 和 `desc`|
+||properties.created      | `gt`、`ge`、`lt`、`le`| `asc` 和 `desc`|
+||properties.lastModified | `gt`、`ge`、`lt`、`le` | `asc` 和 `desc`| 
+|[流式处理定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
+||properties.created    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
+||properties.endTime    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
+|[流式处理策略](https://docs.microsoft.com/rest/api/media/streamingpolicies)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
+||properties.created    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` 和 `desc`|
 |[转换](https://docs.microsoft.com/rest/api/media/transforms)| name | `eq`            | `asc` 和 `desc`|
-|| properties.created      | `gt`, `ge`, `lt`, `le`| `asc` 和 `desc`|
-|| properties.lastModified | `gt`, `ge`, `lt`, `le`| `asc` 和 `desc`|
+|| properties.created      | `gt`、`ge`、`lt`、`le`| `asc` 和 `desc`|
+|| properties.lastModified | `gt`、`ge`、`lt`、`le`| `asc` 和 `desc`|
 
 ## <a name="next-steps"></a>后续步骤
 

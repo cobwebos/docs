@@ -1,6 +1,6 @@
 ---
 title: M 系列 - Azure 虚拟机
-description: M 系列 VM 的规格。
+description: M 系列 VM 的规范。
 services: virtual-machines
 author: ayshakeen
 ms.service: virtual-machines
@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 03/31/2020
 ms.author: jushiman
 ms.openlocfilehash: 3e0552570d5bdb7f812852cd058710b833b7fdd4
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80521341"
 ---
 # <a name="m-series"></a>M 系列
 
-M 系列提供高 vCPU 计数（最多 128 个 vCPU）和大量内存（高达 3.8 TiB）。 它也非常适用于极大型数据库或受益于高 vCPU 计数和大量内存的其他应用程序。 英特尔&reg;至强&reg;CPU E7-8890 v3 = 2.50GHz 和英特尔&reg;至强&reg;白金 8280M 2.7GHz（级联湖）均支持 M 系列尺寸。
+M 系列提供高 vCPU 计数（最多 128 个vCPU）和大量内存（最高 3.8 TiB）。 它也非常适用于极大型数据库或受益于高 vCPU 计数和大量内存的其他应用程序。 &reg;在 intel&reg; E7-8890 v3 @ 2.50 ghz 和 intel&reg;强&reg;白金 8280M 2.7 ghz （Cascade Lake）上，支持 M 系列大小。
 
-M 系列 VM 的功能是&reg;英特尔超线程技术。
+M 系列 VM 的 Intel&reg;超线程技术功能。
 
 ACU：160-180
 
@@ -32,7 +32,7 @@ ACU：160-180
 
 写入加速器：[支持](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 
-| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存和临时存储吞吐量：IOPS/MBps（GiB 中的缓存大小） | 最大未缓存磁盘吞吐量：IOPS/MBps | 最大 NIC/预期网络带宽 （Mbps） |
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数/预期网络带宽 (Mbps) |
 |---|---|---|---|---|---|---|---|
 | Standard_M8ms <sup>2</sup>       | 8   | 218.75 | 256   | 8  | 10000/100 (793)     | 5000/125   | 4/2000  |
 | Standard_M16ms <sup>2</sup>      | 16  | 437.5  | 512   | 16 | 20000/200 (1587)    | 10000/250  | 8/4000  |
@@ -43,13 +43,13 @@ ACU：160-180
 | Standard_M64ls                   | 64  | 512    | 2048  | 64 | 80000/800 (6348)    | 40000/1000 | 8/16000 |
 | Standard_M64ms <sup>3</sup>      | 64  | 1792   | 2048  | 64 | 80000/800 (6348)    | 40000/1000 | 8/16000 |
 | Standard_M128s <sup>1</sup>      | 128 | 2048   | 4096  | 64 | 160000/1600 (12696) | 80000/2000 | 8/30000 |
-| Standard_M128ms <sup>1，2，3</sup> | 128 | 3892   | 4096  | 64 | 160000/1600 (12696) | 80000/2000 | 8/30000 |
+| Standard_M128ms <sup>1,2,3</sup> | 128 | 3892   | 4096  | 64 | 160000/1600 (12696) | 80000/2000 | 8/30000 |
 | Standard_M64                     | 64  | 1024   | 7168  | 64 | 80000/800 (1228)    | 40000/1000 | 8/16000 |
 | Standard_M64m                    | 64  | 1792   | 7168  | 64 | 80000/800 (1228)    | 40000/1000 | 8/16000 |
 | Standard_M128 <sup>1</sup>       | 128 | 2048   | 14336 | 64 | 250000/1600 (2456)  | 80000/2000 | 8/32000 |
 | Standard_M128m <sup>1</sup>      | 128 | 3892   | 14336 | 64 | 250000/1600 (2456)  | 80000/2000 | 8/32000 |
 
-<sup>1</sup>超过 64 个 vCPU 需要这些支持的来宾操作系统之一：Windows 服务器 2016、Ubuntu 16.04 LTS、SLES 12 SP2 和红帽企业 Linux、CentOS 7.3 或 Oracle Linux 7.3，带有 LIS 4.2.1。
+<sup>1</sup> 超过 64 vCPU 的 VM 需要以下受支持的来宾 OS 之一：Windows Server 2016、Ubuntu 16.04 LTS、SLES 12 SP2 和 Red Hat Enterprise Linux、CentOS 7.3 或带 LIS 4.2.1 的 Oracle Linux 7.3。
 
 <sup>2</sup> 受约束的可用核心大小。
 
@@ -59,7 +59,7 @@ ACU：160-180
 
 ## <a name="other-sizes"></a>其他大小
 
-- [一般用途](sizes-general.md)
+- [常规用途](sizes-general.md)
 - [内存优化](sizes-memory.md)
 - [存储优化](sizes-storage.md)
 - [GPU 优化](sizes-gpu.md)
@@ -68,4 +68,4 @@ ACU：160-180
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助你跨 Azure SKU 比较计算性能的详细信息。
+了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。

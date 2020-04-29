@@ -6,17 +6,17 @@ manager: gwallace
 ms.topic: article
 ms.date: 02/25/2020
 ms.openlocfilehash: 514cc25e1959145c65fe60cd3054cec4ed28f44d
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80617425"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证
 
 结合使用 Azure 容器注册表 (ACR) 和 Azure Kubernetes 服务 (AKS) 时，需要建立身份验证机制。 本文提供了在这两个 Azure 服务之间配置身份验证的示例。 
 
-可以使用 Azure CLI 通过几个简单的命令设置 AKS 与 ACR 的集成。 此集成将 AcrPull 角色分配给与 AKS 群集关联的服务主体。
+可以使用 Azure CLI 通过几个简单的命令设置 AKS 与 ACR 的集成。 此集成将 AcrPull 角色分配给关联到 AKS 群集的服务主体。
 
 ## <a name="before-you-begin"></a>在开始之前
 
@@ -25,7 +25,7 @@ ms.locfileid: "80617425"
 * **Azure 订阅**上的**所有者**或 **Azure 帐户管理员**角色
 * Azure CLI 2.0.73 版或更高版本
 
-为了避免需要**所有者**或 Azure**帐户管理员**角色，可以手动配置服务主体或使用现有服务主体从 AKS 对 ACR 进行身份验证。 有关详细信息，请参阅[具有服务主体的 ACR 身份验证](../container-registry/container-registry-auth-service-principal.md)，或者[使用拉取密钥从 Kubernetes](../container-registry/container-registry-auth-kubernetes.md)进行身份验证。
+若要避免需要**所有者**或**Azure 帐户管理员**角色，可以手动配置服务主体或使用现有的服务主体对 AKS 中的 ACR 进行身份验证。 有关详细信息，请参阅[使用服务主体进行 ACR 身份验证](../container-registry/container-registry-auth-service-principal.md)或[使用请求密码从 Kubernetes 进行身份验证](../container-registry/container-registry-auth-kubernetes.md)。
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>通过 ACR 集成创建新的 AKS 群集
 
@@ -42,7 +42,7 @@ az acr create -n $MYACR -g myContainerRegistryResourceGroup --sku basic
 az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-acr $MYACR
 ```
 
-或者，您可以使用具有以下格式的 ACR 资源 ID 指定 ACR 名称：
+或者，您可以使用 ACR 资源 ID 指定 ACR 名称，其格式如下：
 
 `/subscriptions/\<subscription-id\>/resourceGroups/\<resource-group-name\>/providers/Microsoft.ContainerRegistry/registries/\<name\>` 
 

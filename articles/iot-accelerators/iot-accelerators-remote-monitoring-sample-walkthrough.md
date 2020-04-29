@@ -1,6 +1,6 @@
 ---
 title: 远程监视解决方案加速器概述 - Azure | Microsoft Docs
-description: 本文概述了远程监视解决方案的一些关键元素，使您能够了解其工作原理。
+description: 本文概述了远程监视解决方案的一些关键要素，以帮助你了解其工作原理。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: f501eb55f72811063ddf1d8e02a0ce2137d598f3
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80546318"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>远程监视解决方案加速器概述
@@ -32,7 +32,7 @@ GitHub 上提供了远程监视解决方案加速器代码：
 
 ## <a name="logical-architecture"></a>逻辑体系结构
 
-下图概述了覆盖在[IoT 体系结构](../iot-fundamentals/iot-introduction.md)上的远程监视解决方案加速器的逻辑组件：
+下图概述了在[IoT 体系结构](../iot-fundamentals/iot-introduction.md)上叠加的远程监视解决方案加速器的逻辑组件：
 
 ![逻辑体系结构](./media/iot-accelerators-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
 

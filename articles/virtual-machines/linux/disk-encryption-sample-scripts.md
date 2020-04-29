@@ -1,6 +1,6 @@
 ---
 title: Azure 磁盘加密示例脚本
-description: 本文是适用于 Linux VM 的 Microsoft Azure 磁盘加密的附录。
+description: 本文是 Microsoft Azure 适用于 Linux Vm 的磁盘加密的附录。
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: b54f9f3466fe5f7e2da622077f53575d6f43f72d
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80585956"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure 磁盘加密示例脚本 
@@ -43,7 +43,7 @@ ms.locfileid: "80585956"
 下表显示了可在 PowerShell 脚本中使用的参数： 
 
 
-|参数|描述|必需？|
+|参数|说明|必需？|
 |------|------|------|
 |$resourceGroupName| KeyVault 所属的资源组的名称。  如果不存在具有此名称的资源组，则会新建一个资源组。| True|
 |$keyVaultName|要将加密密钥放到的 KeyVault 的名称。 如果不存在具有此名称的保管库，则会新建一个保管库。| True|
@@ -97,11 +97,11 @@ ms.locfileid: "80585956"
 2. 根据需要配置 VM。 如果打算加密所有（OS + 数据）驱动器，则需要指定数据驱动器且可从 /etc/fstab 处装载数据驱动器。
 
    > [!NOTE]
-   > 使用 UUID =... 在 /etc/fstab 中指定数据驱动器（而不是指定 /dev/sdb1 等块设备名称）。 在加密过程中，驱动器的顺序会在 VM 上有所改变。 如果 VM 依赖于特定块设备顺序，加密后将无法装载。
+   > 使用 UUID =... 在 /etc/fstab 中指定数据驱动器（而不是指定 /dev/sdb1 等块设备名称）。 在加密过程中，驱动器的顺序将在 VM 上有所改变。 如果 VM 依赖于特定块设备顺序，加密后将无法装载。
 
 3. 注销 SSH 会话。
 
-4. 若要加密 OS，请在启用加密时将 volumeType 指定为“All”或“OS”。********
+4. 若要加密 OS，请在启用加密时将 volumeType 指定为“All”或“OS”。  
 
    > [!NOTE]
    > 未作为 `systemd` 服务运行的所有用户空间进程应使用 `SIGKILL` 终止。 重启 VM。 在正在运行的 VM 上启用 OS 磁盘加密时，请计划 VM 停机时间。
@@ -132,9 +132,9 @@ ms.locfileid: "80585956"
     ```
   VM 变为“OS 磁盘加密开始”后，在支持高级存储的 VM 上将需要花费大约 40-50 分钟。
 
-  由于 WALinuxAgent 出现[问题 #388](https://github.com/Azure/WALinuxAgent/issues/388)，`OsVolumeEncrypted` 和 `DataVolumesEncrypted` 在某些发行版中显示为 `Unknown`。 在 WALinuxAgent 2.1.5 版及更高版本中，会自动修复此问题。 如果在输出中看到 `Unknown`，可通过使用 Azure 资源浏览器验证磁盘加密状态。
+  由于 WALinuxAgent 出现[问题 #388](https://github.com/Azure/WALinuxAgent/issues/388)，`OsVolumeEncrypted` 和 `DataVolumesEncrypted` 在某些发行版中显示为 `Unknown`。 在 WALinuxAgent 2.1.5 版及更高版本中，将自动修复此问题。 如果在输出中看到 `Unknown`，可通过使用 Azure 资源浏览器验证磁盘加密状态。
 
-  转到 [Azure 资源浏览器](https://resources.azure.com/)，并在左侧的选择面板中展开此层次结构：
+  转到 [Azure 资源浏览器](https://resources.azure.com/)，然后在左侧的选择面板中展开此层次结构：
 
   ~~~~
   |-- subscriptions
@@ -166,7 +166,7 @@ ms.locfileid: "80585956"
 ### <a name="ubuntu-16"></a>Ubuntu 16
 通过执行以下步骤在分发版安装过程中配置加密：
 
-1. 对磁盘进行分区时选择“配置加密卷”****。
+1. 对磁盘进行分区时选择“配置加密卷”  。
 
    ![Ubuntu 16.04 安装 - 配置加密卷](./media/disk-encryption/ubuntu-1604-preencrypted-fig1.png)
 
@@ -246,7 +246,7 @@ ms.locfileid: "80585956"
    ```
 6. 运行 `update-initramfs -u -k all` 更新 initramfs 以使 `keyscript` 生效。
 
-7. 现在可以解除配置 VM。
+7. 现在可以取消预配 VM。
 
    ![Ubuntu 16.04 安装 - 更新 initramfs](./media/disk-encryption/ubuntu-1604-preencrypted-fig6.png)
 
@@ -254,7 +254,7 @@ ms.locfileid: "80585956"
 
 ### <a name="opensuse-132"></a>openSUSE 13.2
 若要在分发版安装期间配置加密，请执行以下步骤：
-1. 对磁盘进行分区时，选择“加密卷组”****，并输入密码。 这是要上传到 Key Vault 的密码。
+1. 对磁盘进行分区时，选择“加密卷组”  ，然后输入密码。 这是要上传到 Key Vault 的密码。
 
    ![openSUSE 13.2 安装 - 加密卷组](./media/disk-encryption/opensuse-encrypt-fig1.png)
 
@@ -290,7 +290,7 @@ ms.locfileid: "80585956"
    ```bash
     if [ -z "$DRACUT_SYSTEMD" ]; then
    ```
-   修改为：
+   to:
    ```bash
     if [ 1 ]; then
    ```
@@ -320,14 +320,14 @@ ms.locfileid: "80585956"
 
 6. 现在可以解除配置 VM，并将 VHD 上传到 Azure 中。
 
-### <a name="centos-7-and-rhel-81"></a>CentOS 7 和 RHEL 8.1
+### <a name="centos-7-and-rhel-81"></a>CentOS 7 和 RHEL 8。1
 
 若要在分发版安装期间配置加密，请执行以下步骤：
-1. 对磁盘进行分区时，选择“加密我的数据”****。
+1. 对磁盘进行分区时，选择“加密我的数据”  。
 
    ![CentOS 7 安装 - 安装目标](./media/disk-encryption/centos-encrypt-fig1.png)
 
-2. 确保为根分区选择了“加密”****。
+2. 确保为根分区选择了“加密”  。
 
    ![CentOS 7 安装 - 为根分区选择加密](./media/disk-encryption/centos-encrypt-fig2.png)
 
@@ -439,7 +439,7 @@ ms.locfileid: "80585956"
 在下一步中使用 `$secretUrl` 以便[在不使用 KEK 的情况下附加 OS 磁盘](#without-using-a-kek)。
 
 ### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>使用 KEK 加密的磁盘加密机密
-将机密上传到 Key Vault 之前，可根据需要使用密钥加密密钥对其进行加密。 先使用包装 [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) 加密使用密钥加密密钥的机密。 此换行操作的输出是 base64 URL 编码字符串，然后可以使用[`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret)cmdlet 将其上载为机密。
+将机密上传到 Key Vault 之前，可根据需要使用密钥加密密钥对其进行加密。 先使用包装 [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) 加密使用密钥加密密钥的机密。 此包装操作的输出是 base64 URL 编码的字符串，可以使用 [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) cmdlet 将其作为机密上传。
 
 ```powershell
     # This is the passphrase that was provided for encryption during the distribution installation

@@ -1,27 +1,27 @@
 ---
-title: MongoDB 扩展命令，用于管理蒙戈DB Azure 宇宙 DB API 中的数据
-description: 本文介绍如何使用 MongoDB 扩展命令来管理存储在 Azure Cosmos DB 的 MongoDB API 中的数据。
+title: 用于管理 Azure Cosmos DB 的 MongoDB API 中的数据的 MongoDB 扩展命令
+description: 本文介绍如何使用 MongoDB 扩展命令管理 Azure Cosmos DB 的 API for MongoDB 中存储的数据。
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
 ms.openlocfilehash: f99c4d096bcbe1fbdc42cac80a491d6017266cb2
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80583585"
 ---
-# <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>使用 MongoDB 扩展命令管理存储在蒙戈DB Azure 宇宙 DB API 中的数据 
+# <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>使用 MongoDB 扩展命令管理存储在 MongoDB Azure Cosmos DB 的 API 中的数据 
 
-Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服务。 您可以使用任何开源[的蒙戈DB客户端驱动程序](https://docs.mongodb.org/ecosystem/drivers)与 Azure Cosmos DB 的蒙戈DB API 进行通信。 Azure Cosmos DB 的蒙戈DB API 通过遵循[MongoDB 导线协议](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)，允许使用现有的客户端驱动程序。
+Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服务。 可以通过使用任何开源[MongoDB 客户端驱动程序](https://docs.mongodb.org/ecosystem/drivers)与 AZURE COSMOS DB 的 API 进行通信。 使用 Azure Cosmos DB 的 MongoDB API，可以通过遵守[mongodb 线路协议](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)使用现有的客户端驱动程序。
 
-通过使用适用于 MongoDB 的 Azure Cosmos DB API，您可以享受 Cosmos DB 的优势，例如全局分发、自动分片、高可用性、延迟保证、自动加密、静态加密、备份等，同时保留对 MongoDB 应用的投资。
+通过使用 Azure Cosmos DB 的适用于 MongoDB 的 API，你可以享受多种优势 Cosmos DB 例如：全局分发、自动分片、高可用性、延迟保证、自动、静态加密和备份等，同时保留你在 MongoDB 应用中的投资。
 
 ## <a name="mongodb-protocol-support"></a>MongoDB 协议支持
 
-默认情况下，Azure Cosmos DB 的 MongoDB API 与 MongoDB 服务器版本 3.2 兼容，有关详细信息，请参阅[支持的功能和语法](mongodb-feature-support.md)。 MongoDB 版本 3.4 中添加的功能或查询运算符目前可在 MongoDB 的 Azure Cosmos DB API 中作为预览版提供。 以下扩展命令支持针对 MongoDB 在 Azure Cosmos DB API 中存储的数据执行 CRUD 操作时特定的 Azure Cosmos DB 功能：
+默认情况下，Azure Cosmos DB 的 MongoDB API 与 MongoDB 服务器版本3.2 兼容，有关更多详细信息，请参阅[支持的功能和语法](mongodb-feature-support.md)。 MongoDB 版本3.4 中添加的功能或查询运算符当前在 Azure Cosmos DB 的适用于 MongoDB 的 API 中作为预览提供。 以下扩展命令在对存储在 MongoDB Azure Cosmos DB API 中的数据执行 CRUD 操作时支持特定 Azure Cosmos DB 功能：
 
 * [创建数据库](#create-database)
 * [更新数据库](#update-database)
@@ -43,7 +43,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 下表描述了该命令中的参数：
 
-|**字段**|**Type** |**说明** |
+|**字段**|类型  |**说明** |
 |---------|---------|---------|
 | customAction   |  字符串  |   自定义命令的名称，必须是“CreateDatabase”。      |
 | offerThroughput | int  | 对数据库设置的预配吞吐量。 此参数是可选的。 |
@@ -85,7 +85,7 @@ db.runCommand({customAction: "CreateDatabase", offerThroughput: 1000 });
 
 下表描述了该命令中的参数：
 
-|**字段**|**Type** |**说明** |
+|**字段**|类型  |**说明** |
 |---------|---------|---------|
 | customAction    |    字符串     |   自定义命令的名称。 必须是“UpdateDatabase”。      |
 |  offerThroughput   |  int       |     要对数据库设置的新预配吞吐量。    |
@@ -118,7 +118,7 @@ db.runCommand({customAction: "UpdateDatabase", offerThroughput: 1200 });
 下表描述了该命令中的参数：
 
 
-|**字段**|**Type** |**说明** |
+|**字段**|类型  |**说明** |
 |---------|---------|---------|
 |  customAction   |   字符串      |   自定义命令的名称。 必须是“GetDatabase”|
         
@@ -126,7 +126,7 @@ db.runCommand({customAction: "UpdateDatabase", offerThroughput: 1200 });
 
 如果该命令成功，则响应包含带有以下字段的文档：
 
-|**字段**|**Type** |**说明** |
+|**字段**|类型  |**说明** |
 |---------|---------|---------|
 |  `ok`   |   `int`     |   响应的状态。 1 == 成功。 0 == 失败。      |
 | `database`    |    `string`        |   数据库的名称。      |
@@ -160,12 +160,12 @@ db.runCommand({customAction: "GetDatabase"});
 
 下表描述了该命令中的参数：
 
-| **字段** | **Type** | **必需** | **说明** |
+| **字段** | 类型  | **必需** | **说明** |
 |---------|---------|---------|---------|
-| customAction | 字符串 | 必选 | 自定义命令的名称。 必须是"创建集合"。|
+| customAction | 字符串 | 必选 | 自定义命令的名称。 必须为 "CreateCollection"。|
 | collection | 字符串 | 必选 | 集合的名称。 不允许使用特殊字符。|
-| offerThroughput | int | 可选* | 预配的吞吐量以在数据库上设置。 如果未提供此参数，它将默认为最小值 400 RU/s。 • 要指定吞吐量超过 10，000 RU/s，需要该`shardKey`参数。|
-| shardKey | 字符串 | 可选* | 分片集合的分片键的路径。 如果在 中`offerThroughput`设置超过 10，000 RU/s，则需要此参数。  如果指定，则插入的所有文档都需要此值。 |
+| offerThroughput | int | 可有可无 | 要对数据库设置的预配吞吐量。 如果未提供此参数，将默认为最小 400 RU/秒。 * 若要指定超过 10000 RU/s 的吞吐量`shardKey` ，参数是必需的。|
+| shardKey | 字符串 | 可有可无 | 分片集合的分片键的路径。 如果在中`offerThroughput`设置了 10000 RU/s，则此参数是必需的。  如果已指定，则所有插入的文档将需要此值。 |
 
 ### <a name="output"></a>输出
 
@@ -184,7 +184,7 @@ db.runCommand({customAction: "CreateCollection", collection: "testCollection", o
 
 **创建分片集合**
 
-要创建名称为"testCollection"且预配吞吐量为 1000 个 R 和分片键属性"a.b"的分片集合，请使用以下命令：
+若要创建名为 "testCollection" 的分片集合，并预配 1000 ru 的吞吐量和 shardkey 属性 "b. b"，请使用以下命令：
 
 ```shell
 use test
@@ -205,7 +205,7 @@ db.runCommand({customAction: "CreateCollection", collection: "testCollection", o
 
 下表描述了该命令中的参数：
 
-|**字段**|**Type** |**说明** |
+|**字段**|**类型** |**说明** |
 |---------|---------|---------|
 |  customAction   |   字符串      |   自定义命令的名称。 必须是“UpdateCollection”。      |
 |  collection   |   字符串      |   集合的名称。       |
@@ -240,7 +240,7 @@ db.runCommand({customAction: "UpdateCollection", collection: "testCollection", o
 下表描述了该命令中的参数：
 
 
-|**字段**|**Type** |**说明** |
+|**字段**|**类型** |**说明** |
 |---------|---------|---------|
 | customAction    |   字符串      |   自定义命令的名称。 必须是“GetCollection”。      |
 | collection    |    字符串     |    集合的名称。     |
@@ -250,7 +250,7 @@ db.runCommand({customAction: "UpdateCollection", collection: "testCollection", o
 如果该命令成功，则响应包含带有以下字段的文档
 
 
-|**字段**|**Type** |**说明** |
+|**字段**|**类型** |**说明** |
 |---------|---------|---------|
 |  `ok`   |    `int`     |   响应的状态。 1 == 成功。 0 == 失败。      |
 | `database`    |    `string`     |   数据库的名称。      |
@@ -275,7 +275,7 @@ db.runCommand({customAction: "GetCollection", collection: "testCollection"});
 
 如果未指定，则自定义响应包含带有以下字段的文档：
 
-|**字段**|**Type** |**说明** |
+|**字段**|**类型** |**说明** |
 |---------|---------|---------|
 |  `ok`   |    `int`     |   响应的状态。 1 == 成功。 0 == 失败。      |
 | `code`    |   `int`      |   仅当命令失败时才返回（即，正常 == 0）。 包含 MongoDB 错误代码。 这是一个可选的响应参数。      |

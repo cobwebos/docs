@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 02/02/2019
 ms.openlocfilehash: de57a46f92fab2486aa7722daf8745a01be1f4f6
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80617583"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>将 Azure Active Directory 与 Azure Kubernetes Service 集成
@@ -47,59 +47,59 @@ ms.locfileid: "80617583"
 
 应用第一个 Azure AD 应用程序来获取用户的 Azure AD 组成员身份。 若要在 Azure 门户中创建此应用程序：
 
-1. 选择**Azure 活动目录** > **应用注册** > **新注册**。
+1. 选择“Azure Active Directory” > “应用注册” > “新建注册”。   
 
     a. 为应用程序命名，例如 *AKSAzureADServer*。
 
-    b. 对于“支持的帐户类型”设置，请选择“仅限此组织目录中的帐户”。********
+    b. 对于“支持的帐户类型”设置，请选择“仅限此组织目录中的帐户”。  
     
-    c. 对于“重定向 URI”类型，请选择“Web”，然后输入任何 URI 格式的值，例如 *https://aksazureadserver*。****
+    c. 对于“重定向 URI”类型，请选择“Web”，然后输入任何 URI 格式的值，例如 *https://aksazureadserver* 。 
 
-    d. 完成后，选择“注册”。****
+    d. 完成后，选择“注册”。 
 
-2. 选择“清单”，将 **groupMembershipClaims:** 值编辑为 **All**。**** 完成更新后，选择“保存”。****
+2. 选择“清单”，将 **groupMembershipClaims:** 值编辑为 **All**。  完成更新后，选择“保存”。 
 
     ![将组成员身份更新为“所有”](media/aad-integration/edit-manifest.png)
 
-3. 在 Azure AD 应用程序的左窗格中，选择“证书和机密”。****
+3. 在 Azure AD 应用程序的左窗格中，选择“证书和机密”。 
 
-    a. 选择“+ 新建客户端机密”。****
+    a. 选择“+ 新建客户端机密”。 
 
-    b. 添加密钥说明，例如“AKS Azure AD 服务器”。** 选择过期时间，然后选择“添加”。****
+    b. 添加密钥说明，例如“AKS Azure AD 服务器”。  选择过期时间，然后选择“添加”。 
 
     c. 记下密钥值，因为以后不再会显示此值。 部署支持 Azure AD 的 AKS 群集时，此值称为“服务器应用程序机密”。
 
-4. 在 Azure AD 应用程序的左窗格中，依次选择“API 权限”、“+ 添加权限”。********
+4. 在 Azure AD 应用程序的左窗格中，依次选择“API 权限”、“+ 添加权限”。  
 
-    a. 在“Microsoft API”下选择“Microsoft Graph”。********
+    a. 在“Microsoft API”下选择“Microsoft Graph”。  
 
-    b. 选择“委托的权限”，然后勾选“目录”>“Directory.Read.All (读取目录数据)”。********
+    b. 选择“委托的权限”，然后勾选“目录”>“Directory.Read.All (读取目录数据)”。  
 
-    c. 如果“用户”>“User.Read (登录并读取用户个人资料)”的默认委托权限不存在，请勾选该权限。****
+    c. 如果“用户”>“User.Read (登录并读取用户个人资料)”的默认委托权限不存在，请勾选该权限。 
 
-    d. 选择“应用程序权限”，然后勾选“目录”>“Directory.Read.All (读取目录数据)”。********
+    d. 选择“应用程序权限”，然后勾选“目录”>“Directory.Read.All (读取目录数据)”。  
 
     ![设置 Graph 权限](media/aad-integration/graph-permissions.png)
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 选择“添加权限”以保存更新。****
+    e. 选择“添加权限”以保存更新。 
 
-    f. 在“授予许可”下，选择“授予管理员许可”。******** 如果正在使用的当前帐户未作为租户管理员列出，此按钮将不可用。
+    f. 在“授予许可”下，选择“授予管理员许可”。   如果正在使用的当前帐户未作为租户管理员列出，此按钮将不可用。
 
     成功授予权限后，门户中会显示以下通知：
 
    ![权限授予成功的通知](media/aad-integration/permissions-granted.png)
 
-5. 在 Azure AD 应用程序的左窗格中，依次选择“公开 API”、“+ 添加范围”。********
+5. 在 Azure AD 应用程序的左窗格中，依次选择“公开 API”、“+ 添加范围”。  
     
     a. 输入**范围名称**、**管理员许可显示名称**和**管理员许可说明**，例如 *AKSAzureADServer*。
 
-    b. 确保“状态”设置为“已启用”********。
+    b. 确保“状态”设置为“已启用”   。
 
     ![将服务器应用作为 API 公开，以便与其他服务配合使用](media/aad-integration/expose-api.png)
 
-    c. 选择 **"添加范围**"。
+    c. 选择“添加作用域”。 
 
-6. 返回到应用程序的“概述”页，并记下“应用程序(客户端) ID”。******** 部署支持 Azure AD 的 AKS 群集时，此值称为“服务器应用程序 ID”。
+6. 返回到应用程序的“概述”页，并记下“应用程序(客户端) ID”。   部署支持 Azure AD 的 AKS 群集时，此值称为“服务器应用程序 ID”。
 
     ![获取应用程序 ID](media/aad-integration/application-id.png)
 
@@ -107,20 +107,20 @@ ms.locfileid: "80617583"
 
 使用 Kubernetes CLI (kubectl) 登录时，将使用第二个 Azure AD 应用程序。
 
-1. 选择**Azure 活动目录** > **应用注册** > **新注册**。
+1. 选择“Azure Active Directory” > “应用注册” > “新建注册”。   
 
     a. 为应用程序命名，例如 *AKSAzureADClient*。
 
-    b. 对于“支持的帐户类型”设置，请选择“仅限此组织目录中的帐户”。********
+    b. 对于“支持的帐户类型”设置，请选择“仅限此组织目录中的帐户”。  
 
-    c. 对于“重定向 URI”类型，请选择“Web”，然后输入任何 URI 格式的值，例如 *https://aksazureadclient*。****
+    c. 对于“重定向 URI”类型，请选择“Web”，然后输入任何 URI 格式的值，例如 *https://aksazureadclient* 。 
 
     >[!NOTE]
-    >如果要创建新的启用 RBAC 的群集以支持容器的 Azure 监视器，请将以下两个附加重定向 URL 作为**Web**应用程序类型添加到此列表。 第一个基本 URL 值`https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`应为，第二个基本 URL 值应为`https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`
+    >若要新建启用了 RBAC 的群集以支持用于容器的 Azure Monitor，请将以下两个附加重定向 URL 作为 **Web** 应用程序类型添加到此列表中。 第一个基本 URL 值应该是`https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` ，第二个基 url 的值应为`https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`
     >
-    >如果在 Azure 中国中使用此功能，则第一个基本 URL 值应为`https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`，第二个基本 URL 值应为`https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`
+    >如果在 Azure 中国区使用此功能，则第一个 "基本 URL" 值`https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`应为，第二个 "基 url" 值应为`https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`
     >
-    >有关详细信息，请参阅如何为容器设置 Azure 监视器[的实时数据（预览）功能](../azure-monitor/insights/container-insights-livedata-setup.md)，以及[配置 AD 集成身份验证](../azure-monitor/insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication)部分下配置身份验证的步骤。
+    >有关详细信息，请参阅如何为容器的 Azure Monitor[设置实时数据（预览）功能](../azure-monitor/insights/container-insights-livedata-setup.md)，以及在[配置 AD 集成身份验证](../azure-monitor/insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication)部分下配置身份验证的步骤。
 
     d. 完成后，选择“注册”。****
 
@@ -132,9 +132,9 @@ ms.locfileid: "80617583"
 
     ![配置应用程序权限](media/aad-integration/select-api.png)
 
-    c. 选择“添加权限”****。
+    c. 选择“添加权限”  。
 
-    d. 在“授予许可”下，选择“授予管理员许可”。******** 如果当前帐户不是租户管理员，则此按钮不可用。授予权限后，门户中将显示以下通知：
+    d. 在“授予许可”下，选择“授予管理员许可”。******** 如果当前帐户不是租户管理员，则此按钮不可用。授予权限时，门户中会显示以下通知：
 
     ![权限授予成功的通知](media/aad-integration/permissions-granted.png)
 
@@ -150,7 +150,7 @@ ms.locfileid: "80617583"
 
 接下来，获取 Azure 租户的 ID。 创建 AKS 群集时，要使用此值。
 
-在 Azure 门户中，选择**Azure 活动目录** > **属性**并记下**目录 ID**。 创建支持 Azure AD 的 AKS 群集时，此值称为“租户 ID”。
+在 Azure 门户中，选择**Azure Active Directory** > **属性**并记下**目录 ID**。 创建支持 Azure AD 的 AKS 群集时，此值称为“租户 ID”。
 
 ![获取 Azure 租户 ID](media/aad-integration/tenant-id.png)
 

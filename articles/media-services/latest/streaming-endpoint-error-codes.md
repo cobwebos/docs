@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: juliako
 ms.openlocfilehash: 7d3a85e6fcc5b9d1c5ca1511cd7edd05ff5d9ae4
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80582700"
 ---
 # <a name="streaming-endpoint-origin-errors"></a>流式处理终结点（来源）错误 
 
 本主题描述 Azure 媒体服务[流式处理终结点服务](streaming-endpoint-concept.md)可能会出现的错误。
 
-## <a name="400-bad-request"></a>400 错误请求
+## <a name="400-bad-request"></a>400 错误的请求
 
 请求包含无效的信息，出于以下原因之一被拒绝，错误代码如下：
 
@@ -36,7 +36,7 @@ ms.locfileid: "80582700"
 
 ## <a name="403-forbidden"></a>403 禁止访问
 
-出于以下原因之一，未允许该请求：
+出于以下原因之一，不允许该请求：
 
 |错误代码|十六进制值 |错误说明|
 |---|---|---|
@@ -144,7 +144,7 @@ ms.locfileid: "80582700"
 有关加密的文章和示例，请参阅：
 
 - [概念：内容保护](content-protection-overview.md)
-- [概念：内容关键策略](content-key-policy-concept.md)
+- [概念：内容密钥策略](content-key-policy-concept.md)
 - [概念：流式处理策略](streaming-policy-concept.md)
 - [示例：使用 AES 加密进行保护](protect-with-aes128.md)
 - [示例：使用 DRM 进行保护](protect-with-drm.md)
@@ -160,7 +160,7 @@ ms.locfileid: "80582700"
 有关实时流的文章和示例，请参阅：
 
 - [概念：实时传送视频流概述](live-streaming-overview.md)
-- [概念：实时活动和实时输出](live-events-outputs-concept.md)
+- [概念：实时事件和实时输出](live-events-outputs-concept.md)
 - [示例：实时传送视频流教程](stream-live-tutorial-with-api.md)
 
 ## <a name="416-range-not-satisfiable"></a>416 不符合范围要求
@@ -171,7 +171,7 @@ ms.locfileid: "80582700"
 
 ## <a name="500-internal-server-error"></a>500 内部服务器错误
 
-在处理请求期间，媒体服务遇到了某种错误，从而阻止继续处理请求。  
+在处理请求期间，媒体服务会遇到一些阻止处理继续执行的错误。  
 
 |错误代码|十六进制值 |错误说明|
 |---|---|---|
@@ -184,10 +184,10 @@ ms.locfileid: "80582700"
 
 ## <a name="503-service-unavailable"></a>503 服务不可用
 
-服务器当前无法接收请求。 服务请求过多可能引发此错误。 媒体服务限制机制会限制那些发出过多服务请求的应用程序的资源使用情况。
+服务器当前无法接收请求。 导致此错误的可能原因是向服务发出了过多的请求。 对于发出过多服务请求的应用程序，媒体服务限制机制将限制其资源使用量。
 
 > [!NOTE]
-> 检查错误消息和错误代码字符串以获取有关收到 503 错误的原因的更多详细信息。 此错误并不始终意味着限制。
+> 查看错误消息和错误代码字符串，获取收到 503 错误的原因的更多详细信息。 此错误并不始终意味着限制。
 > 
 
 |错误代码|十六进制值 |错误说明|
@@ -198,7 +198,7 @@ ms.locfileid: "80582700"
 
 查看 [Azure 媒体服务社区](media-services-community.md)文章，了解可以提出问题、提供反馈和获取有关媒体服务的更新的不同方法。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [编码错误代码](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
 - [Azure 媒体服务概念](concepts-overview.md)

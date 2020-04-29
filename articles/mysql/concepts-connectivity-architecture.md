@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.openlocfilehash: 6014e98d01755f29da74160fb1ef38ba29a74ba6
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80547494"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的连接体系结构
@@ -29,7 +29,7 @@ ms.locfileid: "80547494"
 | **区域名称** | **网关 IP 地址** |
 |:----------------|:-------------|
 | 澳大利亚中部| 20.36.105.0     |
-| 澳大利亚中部2     | 20.36.113.0   |
+| 澳大利亚 Central2     | 20.36.113.0   |
 | 澳大利亚东部 | 13.75.149.87, 40.79.161.1     |
 | 澳大利亚东南部 |191.239.192.109, 13.73.109.251   |
 | 巴西南部 | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
@@ -71,17 +71,17 @@ ms.locfileid: "80547494"
 
 ## <a name="connection-redirection"></a>连接重定向
 
-MySQL 的 Azure 数据库支持一个额外的连接策略**重定向**，它有助于减少客户端应用程序和 MySQL 服务器之间的网络延迟。 使用此功能，在将初始 TCP 会话建立到 MySQL 服务器的 Azure 数据库后，服务器将承载 MySQL 服务器的节点的后端地址返回给客户端。 此后，所有后续数据包直接流向服务器，绕过网关。 当数据包直接流向服务器时，延迟和吞吐量提高了性能。
+Azure Database for MySQL 支持附加的连接策略（**重定向**），有助于减少客户端应用程序和 MySQL 服务器之间的网络延迟。 利用此功能，在建立到 Azure Database for MySQL 服务器的初始 TCP 会话后，服务器会将发起 MySQL 服务器的节点的后端地址返回到客户端。 此后，所有后续数据包将直接流向服务器，绕过网关。 当数据包直接流向服务器时，延迟和吞吐量会提高性能。
 
-具有引擎版本 5.6、5.7 和 8.0 的 MySQL 服务器的 Azure 数据库支持此功能。
+具有引擎版本5.6、5.7 和8.0 的 Azure Database for MySQL 服务器支持此功能。
 
-对重定向的支持在由 Microsoft 开发的 PHP [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure)扩展中提供，并且可在[PECL](https://pecl.php.net/package/mysqlnd_azure)上提供。 有关如何在应用程序中使用重定向的详细信息，请参阅[配置重定向](./howto-redirection.md)一文。
+支持重定向在 Microsoft 开发的 PHP [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure)扩展中提供，可在[PECL](https://pecl.php.net/package/mysqlnd_azure)上找到。 有关如何在应用程序中使用重定向的详细信息，请参阅[配置重定向](./howto-redirection.md)一文。
 
 > [!IMPORTANT]
-> 对 PHP [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure)扩展中重定向的支持当前处于预览状态。
+> PHP [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure)扩展中对重定向的支持目前以预览版提供。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用 Azure 门户为 MySQL 防火墙规则创建和管理 Azure 数据库](./howto-manage-firewall-using-portal.md)
+* [使用 Azure 门户创建和管理 Azure Database for MySQL 防火墙规则](./howto-manage-firewall-using-portal.md)
 * [使用 Azure CLI 创建和管理 Azure Database for MySQL 防火墙规则](./howto-manage-firewall-using-cli.md)
-* [使用 MySQL 的 Azure 数据库配置重定向](./howto-redirection.md)
+* [配置与 Azure Database for MySQL 的重定向](./howto-redirection.md)

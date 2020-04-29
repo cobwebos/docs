@@ -13,10 +13,10 @@ ms.date: 07/26/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 85a9cad80156dc6ac40e78610c91805d485ff3df
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80585996"
 ---
 # <a name="content-key-policies"></a>内容密钥策略
@@ -35,7 +35,7 @@ ms.locfileid: "80585996"
 * 应为媒体服务帐户设计一组有限的策略，并在需要相同的选项时重新将这些策略用于流定位符。 有关详细信息，请参阅[配额和限制](limits-quotas-constraints.md)。
 * 内容密钥策略可更新。 密钥传送缓存可能需要长达 15 分钟来更新策略和拾取更新后的策略。 
 
-   通过更新策略，您将覆盖现有的 CDN 缓存，这可能导致使用缓存内容的客户产生播放问题。  
+   更新策略后，你将覆盖现有的 CDN 缓存，这可能会导致使用缓存内容的客户出现播放问题。  
 * 建议不要为每个资产创建新的内容密钥策略。 在需要使用相同策略选项的资产之间共享同一内容密钥策略的主要好处包括：
    
    * 可以更轻松地管理少量的策略。
@@ -61,5 +61,5 @@ ms.locfileid: "80585996"
 ## <a name="next-steps"></a>后续步骤
 
 * [使用 AES-128 动态加密和密钥传递服务](protect-with-aes128.md)
-* [使用 DRM 动态加密和许可证交付服务](protect-with-drm.md)
+* [使用 DRM 动态加密和许可证传送服务](protect-with-drm.md)
 * [EncodeHTTPAndPublishAESEncrypted](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/EncodeHTTPAndPublishAESEncrypted)

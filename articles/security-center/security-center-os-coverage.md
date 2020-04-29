@@ -1,5 +1,5 @@
 ---
-title: Azure 安全中心支持的平台 |微软文档
+title: Azure 安全中心支持的平台 |Microsoft Docs
 description: 本文档提供 Azure 安全中心支持的平台列表。
 services: security-center
 documentationcenter: na
@@ -14,15 +14,15 @@ ms.workload: na
 ms.date: 03/31/2020
 ms.author: memildin
 ms.openlocfilehash: 3c8bf69b745f5dba8c08556908df4d4ae5b5769f
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80521921"
 ---
-# <a name="supported-platforms"></a>支持的平台 
+# <a name="supported-platforms"></a>受支持的平台 
 
-此页显示 Azure 安全中心支持的平台和环境。
+此页面显示 Azure 安全中心支持的平台和环境。
 
 ## <a name="combinations-of-environments"></a>环境组合<a name="vm-server"></a>
 
@@ -33,32 +33,32 @@ Azure 安全中心支持不同类型的混合环境中的虚拟机和服务器�
 * Azure 和其他云
 * Azure、其他云和本地
 
-对于在 Azure 订阅上激活的 Azure 环境，Azure 安全中心将自动发现在订阅中部署的 IaaS 资源。
+对于在 Azure 订阅上激活的 Azure 环境，Azure 安全中心会自动发现在该订阅中部署的 IaaS 资源。
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
-安全中心取决于[日志分析代理](../azure-monitor/platform/agents-overview.md#log-analytics-agent)。 确保您的计算机运行此代理受支持的操作系统之一，如下页所述：
+安全中心取决于[Log Analytics 代理](../azure-monitor/platform/agents-overview.md#log-analytics-agent)。 请确保计算机正在运行此代理支持的操作系统之一，如以下页面所述：
 
-* [适用于 Windows 支持的操作系统的日志分析代理](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)
-* [Linux 支持的操作系统的日志分析代理](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)
+* [适用于 Windows 的 Log Analytics 代理支持的操作系统](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)
+* [适用于 Linux 的 Log Analytics 代理支持的操作系统](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)
 
-还确保您的日志分析代理已[正确配置为将数据发送到安全中心](security-center-enable-data-collection.md#manual-agent)
+还要确保正确配置 Log Analytics 代理[，以将数据发送到安全中心](security-center-enable-data-collection.md#manual-agent)
 
 > [!TIP]
-> 要了解有关 Windows 和 Linux 上提供的特定安全中心功能的更多信息，请参阅[计算机的功能覆盖范围](security-center-services.md)。
+> 若要详细了解 Windows 和 Linux 上提供的特定安全中心功能，请参阅[计算机的功能覆盖](security-center-services.md)。
 
 ## <a name="managed-virtual-machine-services"></a>托管虚拟机服务<a name="virtual-machine"></a>
 
-虚拟机也是在客户订阅中创建的，作为某些 Azure 托管服务的一部分，例如 Azure 库伯奈斯 （AKS）、Azure 数据块等。 安全中心也会发现这些虚拟机，如果支持的操作系统可用，则可以安装和配置日志分析代理。
+还会在客户订阅中创建虚拟机，作为某些 Azure 托管服务的一部分，例如 Azure Kubernetes （AKS）、Azure Databricks 等。 安全中心还会发现这些虚拟机，并且可以在支持的操作系统可用时安装和配置 Log Analytics 代理。
 
 ## <a name="cloud-services"></a>云服务<a name="cloud-services"></a>
 
 还支持在云服务中运行的虚拟机。 仅监视云服务 Web 和在生产槽运行的辅助角色。 若要了解有关云服务的详细信息，请参阅[云服务概述](../cloud-services/cloud-services-choose-me.md)。
 
-还支持保护驻留在 Azure 堆栈中的 VM。 有关安全中心与 Azure 堆栈集成的详细信息，请参阅[将 Azure 堆栈虚拟机装到安全中心](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack)。
+还支持对驻留在 Azure Stack 中的 Vm 进行保护。 有关安全中心与 Azure Stack 的集成的详细信息，请参阅将[Azure Stack 虚拟机加入到安全中心](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[安全中心如何使用日志分析代理收集数据](security-center-enable-data-collection.md)。
+- 了解[安全中心如何使用 Log Analytics 代理收集数据](security-center-enable-data-collection.md)。
 - 了解[安全中心如何管理和保护数据](security-center-data-security.md)。
-- 了解如何[规划和了解采用 Azure 安全中心的设计注意事项](security-center-planning-and-operations-guide.md)。
+- 了解如何[规划和了解设计注意事项，以便采用 Azure 安全中心](security-center-planning-and-operations-guide.md)。

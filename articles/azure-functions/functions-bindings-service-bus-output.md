@@ -1,23 +1,23 @@
 ---
 title: Azure Functions 的 Azure 服务总线绑定
-description: 了解如何从 Azure 函数发送 Azure 服务总线消息。
+description: 了解如何从 Azure Functions 发送 Azure 服务总线消息。
 author: craigshoemaker
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.openlocfilehash: 02d9ce87d45c5f1c9a123aae18f7d710b268f03e
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80582256"
 ---
-# <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure 服务总线输出绑定用于 Azure 函数
+# <a name="azure-service-bus-output-binding-for-azure-functions"></a>适用于 Azure Functions 的 Azure 服务总线输出绑定
 
 使用 Azure 服务总线输出绑定发送队列或主题消息。
 
-有关设置和配置详细信息的信息，请参阅[概述](functions-bindings-service-bus-output.md)。
+若要了解设置和配置详细信息，请参阅[概述](functions-bindings-service-bus-output.md)。
 
 ## <a name="example"></a>示例
 
@@ -39,7 +39,7 @@ public static string ServiceBusOutput([HttpTrigger] dynamic input, ILogger log)
 
 以下示例演示 *function.json* 文件中的一个服务总线输出绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 该函数使用计时器触发器，每隔 15 秒发送一条队列消息。
 
-下面是 function.json** 文件中的绑定数据：
+下面是 function.json  文件中的绑定数据：
 
 ```json
 {
@@ -90,7 +90,7 @@ public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<str
 
 以下示例演示 *function.json* 文件中的一个服务总线输出绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数使用计时器触发器，每隔 15 秒发送一条队列消息。
 
-下面是 function.json** 文件中的绑定数据：
+下面是 function.json  文件中的绑定数据：
 
 ```json
 {
@@ -140,9 +140,9 @@ module.exports = function (context, myTimer) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-下面的示例演示如何在 Python 中写入服务总线队列。
+以下示例演示如何写出到 Python 中的服务总线队列。
 
-服务总线绑定定义在*函数.json*中定义，其中*类型*设置为`serviceBus`。
+服务总线绑定定义在*类型*设置为`serviceBus`的*函数 json*中定义。
 
 ```json
 {
@@ -174,7 +174,7 @@ module.exports = function (context, myTimer) {
 }
 ```
 
-在`set`init *\_.py 中，可以通过将值传递给 方法来向队列写入消息。 _ \__*
+在 py 中`set` * _ \__，通过将值传递给方法，可以将消息写入\_* 队列。
 
 ```python
 import azure.functions as func
@@ -190,7 +190,7 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-下面的示例显示了一个 Java 函数，该函数在 HTTP`myqueue`请求触发时向服务总线队列发送消息。
+下面的示例演示一个 Java 函数，该函数在 HTTP 请求触发时将`myqueue`消息发送到服务总线队列。
 
 ```java
 @FunctionName("httpToServiceBusQueue")
@@ -242,7 +242,7 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-可以将`Connection`属性设置为指定包含要使用的服务总线连接字符串的应用设置的名称，如以下示例所示：
+可以设置`Connection`属性以指定包含要使用的服务总线连接字符串的应用设置的名称，如以下示例中所示：
 
 ```csharp
 [FunctionName("ServiceBusOutput")]
@@ -253,11 +253,11 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-有关完整示例，请参阅[输出示例](#example)。
+有关完整示例，请参阅[输出-示例](#example)。
 
 可以使用 `ServiceBusAccount` 特性在类、方法或参数级别指定要使用的服务总线帐户。  有关详细信息，请参阅[触发器 - 特性](functions-bindings-service-bus-trigger.md#attributes-and-annotations)。
 
-# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
 
 C# 脚本不支持特性。
 
@@ -267,27 +267,27 @@ JavaScript 不支持特性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python 不支持属性。
+Python 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-和`ServiceBusQueueOutput``ServiceBusTopicOutput`注释可用于将消息写入函数输出。 用这些注释修饰的参数必须声明为与`OutputBinding<T>`消息类型对应`T`的类型所在的参数。
+`ServiceBusQueueOutput`和`ServiceBusTopicOutput`批注可用于将消息作为函数输出进行编写。 用这些批注修饰的参数必须声明为`OutputBinding<T>` ，其中`T`是与消息类型相对应的类型。
 
 ---
 
 ## <a name="configuration"></a>配置
 
-下表介绍了您在*函数.json*文件和`ServiceBus`属性中设置的绑定配置属性。
+下表说明了在*函数 json*文件和`ServiceBus`属性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |描述|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type** | 不适用 | 必须设置为“serviceBus”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
-|direction**** | 不适用 | 必须设置为“out”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|**name** | 不适用 | 变量的名称，表示函数代码中的队列或主题消息。 设置为“$return”可引用函数返回值。 |
-|**queueName**|**队列名称**|队列名称。  仅在发送队列消息的情况下设置，不为主题设置。
-|**topicName**|**主题名称**|主题名称。 仅在发送主题消息的情况下设置，不为队列设置。|
-|**连接**|**连接**|应用设置的名称，包含要用于此绑定的服务总线连接字符串。 如果应用设置名称以“AzureWebJobs”开头，则只能指定该名称的余下部分。 例如，如果设置为`connection`"MyServiceBus"，则函数运行时将查找名为"AzureWebJobsMyServiceBus"的应用设置。 如果将 `connection` 留空，函数运行时将使用名为“AzureWebJobsServiceBus”的应用设置中的默认服务总线连接字符串。<br><br>若要获取连接字符串，请执行[获取管理凭据](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)中显示的步骤。 必须是服务总线命名空间的连接字符串，不限于特定的队列或主题。|
-|**访问权限**|**访问**|连接字符串的访问权限。 可用值为 `manage` 和 `listen`。 默认值是 `manage`，其指示 `connection` 具有“管理”**** 权限。 如果使用不具有“管理”**** 权限的连接字符串，请将 `accessRights` 设置为“listen”。 否则，Functions 运行时可能会在尝试执行需要管理权限的操作时失败。 在 Azure 函数版本 2.x 及更高版本中，此属性不可用，因为最新版本的服务总线 SDK 不支持管理操作。|
+|type  | n/a | 必须设置为“serviceBus”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|**方向键** | n/a | 必须设置为“out”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
+|**name** | n/a | 变量的名称，表示函数代码中的队列或主题消息。 设置为“$return”可引用函数返回值。 |
+|**queueName**|**QueueName**|队列名称。  仅在发送队列消息的情况下设置，不为主题设置。
+|**topicName**|**TopicName**|主题名称。 仅在发送主题消息的情况下设置，不为队列设置。|
+|**connection**|**连接**|应用设置的名称，包含要用于此绑定的服务总线连接字符串。 如果应用设置名称以“AzureWebJobs”开头，则只能指定该名称的余下部分。 例如，如果将设置`connection`为 "MyServiceBus"，函数运行时将查找名为 "AzureWebJobsMyServiceBus" 的应用程序设置。 如果将 `connection` 留空，函数运行时将使用名为“AzureWebJobsServiceBus”的应用设置中的默认服务总线连接字符串。<br><br>若要获取连接字符串，请执行[获取管理凭据](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)中显示的步骤。 必须是服务总线命名空间的连接字符串，不限于特定的队列或主题。|
+|**accessRights**|**访问**|连接字符串的访问权限。 可用值为 `manage` 和 `listen`。 默认值是 `manage`，其指示 `connection` 具有“管理”**** 权限。 如果使用不具有“管理”**** 权限的连接字符串，请将 `accessRights` 设置为“listen”。 否则，Functions 运行时可能会在尝试执行需要管理权限的操作时失败。 在 Azure Functions 版本2.x 及更高版本中，此属性不可用，因为 Service Bus SDK 的最新版本不支持管理操作。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -297,7 +297,7 @@ Python 不支持属性。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-对输出绑定使用以下参数类型：
+为输出绑定使用以下参数类型：
 
 * `out T paramName` - `T` 可以是任何可 JSON 序列化的类型。 如果函数退出时参数值为 null，Functions 将创建具有 null 对象的消息。
 * `out string` - 如果函数退出时参数值为 null，Functions 不创建消息。
@@ -310,11 +310,11 @@ Python 不支持属性。
 
 * 异步函数需要返回值或 `IAsyncCollector` 而不是 `out` 参数。
 
-* 要访问会话 ID，请使用 类型[`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message)并使用 属性`sessionId`。
+* 若要访问会话 ID，请绑定到[`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message)类型并使用`sessionId`属性。
 
-# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
 
-对输出绑定使用以下参数类型：
+为输出绑定使用以下参数类型：
 
 * `out T paramName` - `T` 可以是任何可 JSON 序列化的类型。 如果函数退出时参数值为 null，Functions 将创建具有 null 对象的消息。
 * `out string` - 如果函数退出时参数值为 null，Functions 不创建消息。
@@ -327,7 +327,7 @@ Python 不支持属性。
 
 * 异步函数需要返回值或 `IAsyncCollector` 而不是 `out` 参数。
 
-* 要访问会话 ID，请使用 类型[`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message)并使用 属性`sessionId`。
+* 若要访问会话 ID，请绑定到[`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message)类型并使用`sessionId`属性。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -335,11 +335,11 @@ Python 不支持属性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-使用[Azure 服务总线 SDK](https://docs.microsoft.com/azure/service-bus-messaging)而不是内置输出绑定。
+使用[Azure 服务总线 SDK](https://docs.microsoft.com/azure/service-bus-messaging) ，而不是内置的输出绑定。
 
 # <a name="java"></a>[Java](#tab/java)
 
-使用[Azure 服务总线 SDK](https://docs.microsoft.com/azure/service-bus-messaging)而不是内置输出绑定。
+使用[Azure 服务总线 SDK](https://docs.microsoft.com/azure/service-bus-messaging) ，而不是内置的输出绑定。
 
 ---
 
@@ -347,8 +347,8 @@ Python 不支持属性。
 
 | 绑定 | 参考 |
 |---|---|
-| 服务总线 | [服务总线错误代码](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-exceptions) |
-| 服务总线 | [服务总线限制](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quotas) |
+| Service Bus | [服务总线错误代码](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-exceptions) |
+| Service Bus | [服务总线限制](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quotas) |
 
 <a name="host-json"></a>  
 
@@ -381,13 +381,13 @@ Python 不支持属性。
 }
 ```
 
-|Property  |默认 | 描述 |
+|属性  |默认 | 说明 |
 |---------|---------|---------|
 |prefetchCount|0|获取或设置消息接收方可以同时请求的消息数。|
 |maxAutoRenewDuration|00:05:00|自动续订消息锁的最长持续时间。|
-|autoComplete|true|触发器应立即将消息标记为已完成（自动完成），还是等待函数成功退出以调用完成。|
+|autoComplete|true|触发器应立即将消息标记为完成（自动完成），还是等待函数成功退出才能调用完成。|
 |maxConcurrentCalls|16|消息泵应该对回调发起的最大并发调用数。 默认情况下，Functions 运行时同时处理多条消息。 若要指示运行时一次只处理单个队列或主题消息，请将 `maxConcurrentCalls` 设置为 1。 |
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建服务总线队列或主题消息时运行函数（触发器）](./functions-bindings-service-bus-trigger.md)
+- [在创建服务总线队列或主题消息时运行函数（触发器）](./functions-bindings-service-bus-trigger.md)

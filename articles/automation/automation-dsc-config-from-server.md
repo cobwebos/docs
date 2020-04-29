@@ -1,7 +1,7 @@
 ---
 title: 从现有服务器创建配置 - Azure 自动化
 description: 了解如何从 Azure 自动化的现有服务器创建配置。
-keywords: dsc,powershell,配置,安装程序
+keywords: dsc,powershell,配置,设置
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -11,25 +11,25 @@ ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: dff9b8f52207a38cf7eaddefa178aff262ddc546
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80585550"
 ---
 # <a name="create-configurations-from-existing-servers"></a>从现有服务器创建配置
 
-> 适用于： Windows 电源外壳 5.1
+> 适用于：Windows PowerShell 5.1
 
 从现有服务器创建配置可能很难。
-可能不需要所有设置，只需要你关注的设置。**
+可能不需要所有设置，只需要你关注的设置。 
 即使在这个时候，仍需了解必须以什么顺序应用设置，以便成功应用配置。
 
 > [!NOTE]
 > 本文引用了一个由开放源代码社区维护的解决方案。
-> 支持仅以 GitHub 协作的形式提供，而不是从 Microsoft 获得。
+> 支持仅以 GitHub 协作形式提供，不适用于 Microsoft。
 
-## <a name="community-project-reversedsc"></a>社区项目：反向DSC
+## <a name="community-project-reversedsc"></a>社区项目：ReverseDSC
 
 已创建一个名为 [ReverseDSC](https://github.com/microsoft/reversedsc) 的社区维护解决方案，目的是让其在此领域中使用（从 SharePoint 开始）。
 

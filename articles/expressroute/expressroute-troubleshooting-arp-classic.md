@@ -1,5 +1,5 @@
 ---
-title: Azure 快速路由：ARP 表 - 故障排除：经典
+title: Azure ExpressRoute：ARP 表 - 故障排除：经典
 description: 此页说明了如何为 ExpressRoute 线路获取 ARP 表 - 经典部署模型。
 services: expressroute
 author: charwen
@@ -8,20 +8,20 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: charwen
 ms.openlocfilehash: a7a24fc6674adca21e01d2502263c9767510469e
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80618621"
 ---
 # <a name="getting-arp-tables-in-the-classic-deployment-model"></a>在经典部署模型中获取 ARP 表
 > [!div class="op_single_selector"]
-> * [PowerShell - 资源管理器](expressroute-troubleshooting-arp-resource-manager.md)
+> * [PowerShell - Resource Manager](expressroute-troubleshooting-arp-resource-manager.md)
 > * [PowerShell - 经典](expressroute-troubleshooting-arp-classic.md)
 > 
 > 
 
-本文指导完成为 Azure ExpressRoute 线路获取地址解析协议 (ARP) 表的步骤。
+本文介绍为 Azure ExpressRoute 线路获取地址解析协议 (ARP) 表的步骤。
 
 > [!IMPORTANT]
 > 本文档旨在帮助你诊断和修复简单问题。 它不是为了替代 Microsoft 支持部门。 如果使用以下指南无法解决问题，请使用 [Microsoft Azure 帮助+支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)建立支持请求。
@@ -29,7 +29,7 @@ ms.locfileid: "80618621"
 > 
 
 ## <a name="address-resolution-protocol-arp-and-arp-tables"></a>地址解析协议 (ARP) 和 ARP 表
-ARP 是 [RFC 826](https://tools.ietf.org/html/rfc826) 中定义的第 2 层协议。 ARP 用于以太网地址（MAC 地址）映射到 IP 地址。
+ARP 是 [RFC 826](https://tools.ietf.org/html/rfc826)中定义的第 2 层协议。 ARP 用于将以太网地址（MAC 地址）映射到 IP 地址。
 
 可以通过 ARP 表来映射 IPv4 地址和 MAC 地址，以便实现特定的对等互连。 用于 ExpressRoute 线路对等互连的 ARP 表为每个接口（主接口和辅助接口）提供以下信息：
 
@@ -53,7 +53,7 @@ ARP 表可帮助验证第 2 层配置，并可针对第 2 层的基本连接问�
 在继续之前，请确保具备以下条件：
 
 * 配置了至少一个对等互连的有效的 ExpressRoute 线路。 该线路必须由连接提供商进行完整的配置。 用户（或用户的连接提供商）必须在该线路上配置至少一个对等互连（Azure 专用、Azure 公共或 Microsoft）。
-* 用于配置对等互连（Azure 专用、Azure 公共和 Microsoft）的 IP 地址范围。 查看[ExpressRoute 路由要求页](expressroute-routing.md)中的 IP 地址分配示例，了解 IP 地址如何映射到您端和 ExpressRoute 端的接口。 可通过查看 [ExpressRoute 对等互连配置页](expressroute-howto-routing-classic.md)了解对等互连配置。
+* 用于配置对等互连（Azure 专用、Azure 公共和 Microsoft）的 IP 地址范围。 查看 [ExpressRoute 路由要求页](expressroute-routing.md)中的 IP 地址分配示例，了解如何将 IP 地址映射到你所在的一侧和 ExpressRoute 侧的接口。 可以通过查看 [ExpressRoute 对等互连配置页](expressroute-howto-routing-classic.md)了解对等互连配置。
 * 网络团队或连接提供商提供的有关接口（用于这些 IP 地址）的 MAC 地址的信息。
 * Azure 的最新 Windows PowerShell 模块（1.50 版或更高版本）。
 

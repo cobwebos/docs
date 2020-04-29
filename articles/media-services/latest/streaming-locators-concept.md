@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
 ms.openlocfilehash: 41b2d0ad1e072fb2bf5860ae80f8f25f886b37f7
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80582680"
 ---
 # <a name="streaming-locators"></a>流式处理定位符
@@ -24,7 +24,7 @@ ms.locfileid: "80582680"
 
 创建**流定位符**的过程称为发布。 默认情况下，除非配置可选的开始和结束时间，否则调用 API 后，**流定位符**立即生效，并持续到被删除为止。 
 
-创建**流定位器**时，必须指定**资产**名称和**流式处理策略**名称。 有关详情，请参阅以下主题：
+创建**流定位器**时，必须指定**资产**名称和**流式处理策略**名称。 有关详细信息，请参阅下列主题：
 
 * [资产](assets-concept.md)
 * [流式处理策略](streaming-policy-concept.md)
@@ -58,7 +58,7 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 
 ### <a name="encrypted"></a>加密 
 
-如果需要使用 CENC 加密来加密内容，请将策略设置为“Predefined_MultiDrmCencStreaming”。 宽文加密将应用于 DASH 流，并播放就绪平滑。 密钥会根据配置的 DRM 许可证传送到播放客户端。
+如果需要使用 CENC 加密来加密内容，请将策略设置为“Predefined_MultiDrmCencStreaming”。 Widevine 加密将应用于短划线流，PlayReady 为平滑。 密钥会根据配置的 DRM 许可证传送到播放客户端。
 
 ```csharp
 StreamingLocator locator = await client.StreamingLocators.CreateAsync(
@@ -92,13 +92,13 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 
 |语言|API|
 |---|---|
-|REST|[列表流定位器](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators)|
+|REST|[liststreaminglocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators)|
 |CLI|[az ams asset list-streaming-locators](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
-|.NET|[列表流定位器](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocators?view=azure-dotnet#Microsoft_Azure_Management_Media_AssetsOperationsExtensions_ListStreamingLocators_Microsoft_Azure_Management_Media_IAssetsOperations_System_String_System_String_System_String_)|
+|.NET|[ListStreamingLocators](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocators?view=azure-dotnet#Microsoft_Azure_Management_Media_AssetsOperationsExtensions_ListStreamingLocators_Microsoft_Azure_Management_Media_IAssetsOperations_System_String_System_String_System_String_)|
 |Java|[AssetStreamingLocator](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators#assetstreaminglocator)|
 |Node.js|[listStreamingLocators](https://docs.microsoft.com/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [资产](assets-concept.md)
 * [流式处理策略](streaming-policy-concept.md)
@@ -107,4 +107,4 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 
 ## <a name="next-steps"></a>后续步骤
 
-[如何创建流式定位器和生成 URL](create-streaming-locator-build-url.md)
+[如何创建流式处理定位符并生成 Url](create-streaming-locator-build-url.md)

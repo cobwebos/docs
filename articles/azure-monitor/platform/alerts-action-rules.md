@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
 ms.openlocfilehash: 6585890395d7656f239ac3098cd374ecd4757842
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80618991"
 ---
 # <a name="action-rules-preview"></a>操作规则（预览版）
@@ -21,7 +21,7 @@ ms.locfileid: "80618991"
 
 ### <a name="suppression-of-alerts"></a>消除警报
 
-在许多情况下，消除警报生成的通知会有好处。 这些方案的范围从计划维护时段期间的抑制到非工作时间的抑制。 例如，由于 **ContosoVM** 正在接受计划内维护，负责 **ContosoVM** 的团队希望在本周末消除警报通知。 
+在许多情况下，消除警报生成的通知会有好处。 这些情况包括计划内维护时段消除警报通知，以及在非营业时间消除警报通知。 例如，由于 **ContosoVM** 正在接受计划内维护，负责 **ContosoVM** 的团队希望在本周末消除警报通知。 
 
 尽管该团队可以手动禁用针对 **ContosoVM** 配置的每条警报规则（并在维护后重新启用），则此过程并不简单。 操作规则可以帮助你灵活配置消除时段，从而大规模地定义警报消除。 在前面的示例中，该团队可以针对 **ContosoVM** 定义一条操作规则，以便在周末消除所有警报通知。
 
@@ -37,11 +37,11 @@ ms.locfileid: "80618991"
 
 ## <a name="configuring-an-action-rule"></a>配置操作规则
 
-在 Azure Monitor 中的“警报”登陆页上选择“管理操作”可以访问该功能。******** 然后选择“操作规则(预览版)”。**** 在警报登陆页的仪表板中选择“操作规则(预览版)”可以访问规则。****
+在 Azure Monitor 中的“警报”登陆页上选择“管理操作”可以访问该功能。   然后选择“操作规则(预览版)”。  在警报登陆页的仪表板中选择“操作规则(预览版)”可以访问规则。 
 
 ![Azure Monitor 登陆页中的操作规则](media/alerts-action-rules/action-rules-landing-page.png)
 
-选择“+ 新建操作规则”。**** 
+选择“+ 新建操作规则”。  
 
 ![添加新的操作规则](media/alerts-action-rules/action-rules-new-rule.png)
 
@@ -53,7 +53,7 @@ ms.locfileid: "80618991"
 
 ![新建操作规则的流程](media/alerts-action-rules/action-rules-new-rule-creation-flow.png)
 
-### <a name="scope"></a>范围
+### <a name="scope"></a>作用域
 
 首先选择范围（Azure 订阅、资源组或目标资源）。 还可以多重选择单个订阅中的范围组合。
 
@@ -65,15 +65,15 @@ ms.locfileid: "80618991"
 
 可用的筛选器包括： 
 
-* **严重性**：选择一个或多个警报严重性的选项。 **严重性 = Sev1** 表示该操作规则适用于设置为 Sev1 的所有警报。
-* **监视服务**：基于原始监视服务的筛选器。 此筛选器也是多选的。 例如，**监视服务 =“Application Insights”** 表示该操作规则适用于所有基于 Application Insights 的警报。
-* **资源类型**：基于特定资源类型的筛选器。 此筛选器也是多选的。 例如，**资源类型 =“虚拟机”** 表示该操作规则适用于所有虚拟机。
-* **警报规则 ID**：使用警报规则的资源管理器 ID 筛选特定警报规则的选项。
-* **监视器条件**：警报实例的筛选器，其中已**触发**或**已解析**为监视器条件。
-* **说明**： 注册表达式（正则表达式）匹配，用于定义与描述匹配的字符串匹配项，定义为警报规则的一部分。 例如，**“说明”包含“prod”** 将匹配其说明中包含字符串“prod”的所有警报。
-* **警报上下文（有效负载）：** 定义与警报有效负载的警报上下文字段的字符串匹配的正则表达式匹配。 例如，**“警报上下文(有效负载)”包含“computer-01”** 将匹配其负载包含字符串“computer-01”的所有警报。
+* **严重性**：用于选择一个或多个警报严重性的选项。 **严重性 = Sev1** 表示该操作规则适用于设置为 Sev1 的所有警报。
+* **监视服务**：根据原始监视服务进行筛选。 此筛选器也是多选的。 例如，**监视服务 =“Application Insights”** 表示该操作规则适用于所有基于 Application Insights 的警报。
+* **资源类型**：根据特定的资源类型进行筛选。 此筛选器也是多选的。 例如，**资源类型 =“虚拟机”** 表示该操作规则适用于所有虚拟机。
+* **警报规则 ID**：用于使用警报规则的资源管理器 ID 筛选特定警报规则的选项。
+* **监视条件**：使用“已触发”或“已解决”作为监视条件来筛选警报实例。  
+* **说明**：针对定义为警报规则的一部分的说明定义字符串匹配项的 regex（正则表达式）匹配。 例如， **“说明”包含“prod”** 将匹配其说明中包含字符串“prod”的所有警报。
+* **警报上下文(有效负载)** ：针对警报有效负载的警报上下文字段定义字符串匹配的 regex 匹配。 例如， **“警报上下文(有效负载)”包含“computer-01”** 将匹配其负载包含字符串“computer-01”的所有警报。
 
-这些筛选器相互结合应用。 例如，如果设置 **“资源类型”= 虚拟机**，**“严重性”= Sev0**，则只会在 VM 上筛选所有的 **Sev0** 警报。 
+这些筛选器相互结合应用。 例如，如果设置 **“资源类型”= 虚拟机**， **“严重性”= Sev0**，则只会在 VM 上筛选所有的 **Sev0** 警报。 
 
 ![操作规则筛选器](media/alerts-action-rules/action-rules-new-rule-creation-flow-filters.png)
 
@@ -83,16 +83,16 @@ ms.locfileid: "80618991"
 
 #### <a name="suppression"></a>消除
 
-如果选择“消除”，请配置消除操作和通知的持续时间。**** 选择以下选项之一：
-* **从现在开始（始终）：** 无限期地禁止所有通知。
-* **在计划的时间**：禁止在有界持续时间内的通知。
-* **重复**：禁止每天、每周或每月定期的通知。
+如果选择“消除”，请配置消除操作和通知的持续时间。  选择以下选项之一：
+* **从现在起(始终)** ：无限期消除所有通知。
+* **在计划时间**：在有限的持续时间内消除通知。
+* **重复**：按每日、每周或每月重复计划消除通知。
 
 ![操作规则 - 消除](media/alerts-action-rules/action-rules-new-rule-creation-flow-suppression.png)
 
 #### <a name="action-group"></a>操作组
 
-如果在切换选项中选择“操作组”，请添加现有的操作组或新建一个操作组。**** 
+如果在切换选项中选择“操作组”，请添加现有的操作组或新建一个操作组。  
 
 > [!NOTE]
 > 只能将一个操作组关联到一个操作规则。
@@ -102,39 +102,39 @@ ms.locfileid: "80618991"
 ### <a name="action-rule-details"></a>操作规则详细信息
 
 最后，配置操作规则的以下详细信息
-* “属性”
+* 名称
 * 该规则要保存到的资源组
-* 描述 
+* 说明 
 
 ## <a name="example-scenarios"></a>示例方案
 
-### <a name="scenario-1-suppression-of-alerts-based-on-severity"></a>方案 1：根据严重性抑制警报
+### <a name="scenario-1-suppression-of-alerts-based-on-severity"></a>应用场景 1：根据严重性消除警报
 
 Contoso 希望在每个周末消除其订阅 **ContosoSub** 中所有 VM 上的所有 Sev4 警报的通知。
 
-**解决方案：** 创建具有：
+**解决方案：** 使用以下设置创建一个操作规则：
 * 范围 = **ContosoSub**
 * 筛选器
     * 严重性 = **Sev4**
     * 资源类型 = **虚拟机**
-* 消除重复周期设置为“每周”，并选中“星期六”和“星期日”********
+* 消除重复周期设置为“每周”，并选中“星期六”和“星期日”  
 
-### <a name="scenario-2-suppression-of-alerts-based-on-alert-context-payload"></a>方案 2：基于警报上下文（有效负载）抑制警报
+### <a name="scenario-2-suppression-of-alerts-based-on-alert-context-payload"></a>应用场景 2：根据警报上下文（有效负载）消除警报
 
 Contoso 希望无限期消除针对 **ContosoSub** 中 **Computer-01** 生成的所有日志警报的通知，因为该计算机即将接受维护。
 
-**解决方案：** 创建具有：
+**解决方案：** 使用以下设置创建一个操作规则：
 * 范围 = **ContosoSub**
 * 筛选器
     * 监视服务 = **Log Analytics**
     * 警报上下文（有效负载）包含 **Computer-01**
-* 消除时间设置为“从现在起(始终)”****
+* 消除时间设置为“从现在起(始终)” 
 
-### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>方案 3：在资源组定义的操作组
+### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>应用场景 3：在资源组中定义的操作组
 
 Contoso [在订阅级别定义了一个指标警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor)。 但是，Contoso 想要定义专用针对其资源组 **ContosoRG** 生成的警报触发的操作。
 
-**解决方案：** 创建具有：
+**解决方案：** 使用以下设置创建一个操作规则：
 * 范围 = **ContosoRG**
 * 无筛选器
 * 操作组设置为 **ContosoActionGroup**
@@ -150,9 +150,9 @@ Contoso [在订阅级别定义了一个指标警报](https://docs.microsoft.com/
 
 在此处，可以通过选中相应的复选框，大规模启用、禁用或删除操作规则。 选择某个操作规则会打开其配置页。 此页可帮助你更新该操作规则的定义，以及启用或禁用该规则。
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
-结合[“结果数”](alerts-unified-log.md)选项创建的日志警报会使用整个搜索结果生成单个警报实例（可能跨多台计算机）。 在此方案中，如果操作规则使用“警报上下文(有效负载)”筛选器，则只要有匹配项，该规则就会作用于警报实例。**** 在上述方案 2 中，如果生成的日志警报的搜索结果包含 **Computer-01** 和 **Computer-02**，则会消除整个通知。 完全不会为 **Computer-02** 生成通知。
+结合[“结果数”](alerts-unified-log.md)选项创建的日志警报会使用整个搜索结果生成单个警报实例（可能跨多台计算机）。 在此方案中，如果操作规则使用“警报上下文(有效负载)”筛选器，则只要有匹配项，该规则就会作用于警报实例。  在上述方案 2 中，如果生成的日志警报的搜索结果包含 **Computer-01** 和 **Computer-02**，则会消除整个通知。 完全不会为 **Computer-02** 生成通知。
 
 ![操作规则和日志警报（结果数）](media/alerts-action-rules/action-rules-log-alert-number-of-results.png)
 
@@ -160,33 +160,33 @@ Contoso [在订阅级别定义了一个指标警报](https://docs.microsoft.com/
 
 ![操作规则和日志警报（结果数）](media/alerts-action-rules/action-rules-log-alert-metric-measurement.png)
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>常见问题
 
 ### <a name="while-im-configuring-an-action-rule-id-like-to-see-all-the-possible-overlapping-action-rules-so-that-i-avoid-duplicate-notifications-is-it-possible-to-do-that"></a>在配置操作规则时，我希望看到所有可能重叠的操作规则，以避免收到重复通知。 可以做到这一点吗？
 
 在配置操作规则时定义范围后，可以看到在同一范围重叠的操作规则列表（如果有）。 这种重叠可能属于以下情况之一：
 
-* 完全匹配：例如，您正在定义的操作规则和重叠操作规则位于同一订阅上。
-* 子集：例如，您定义的操作规则位于订阅上，重叠操作规则位于订阅中的资源组上。
-* 超级集：例如，您定义的操作规则位于资源组上，重叠操作规则位于包含资源组的订阅上。
-* 一个交集：例如，您定义的操作规则位于**VM1**和**VM2**上，重叠操作规则位于**VM2**和**VM3**上。
+* 完全匹配：例如，你定义的操作规则和重叠的操作规则在同一订阅中。
+* 子集：例如，你定义的操作规则在某个订阅中，而重叠的操作规则在该订阅的某个资源组中。
+* 超集：例如，你定义的操作规则在某个资源组中，而重叠的操作规则在包含该资源组的订阅中。
+* 交集：例如，你定义的操作规则在 **VM1** 和 **VM2** 中，而重叠的操作规则在 **VM2** 和 **VM3** 中。
 
 ![重叠的操作规则](media/alerts-action-rules/action-rules-overlapping.png)
 
 ### <a name="while-im-configuring-an-alert-rule-is-it-possible-to-know-if-there-are-already-action-rules-defined-that-might-act-on-the-alert-rule-im-defining"></a>在配置警报规则时，能够知道是否已存在可能作用于我所定义的警报规则的任何操作规则吗？
 
-为警报规则定义目标资源后，可以选择“操作”部分下的“查看配置的操作”，来查看在同一范围发生作用的操作列表（如果有）。******** 此列表是根据以下范围方案填充的：
+为警报规则定义目标资源后，可以选择“操作”部分下的“查看配置的操作”，来查看在同一范围发生作用的操作列表（如果有）。   此列表是根据以下范围方案填充的：
 
-* 完全匹配：例如，您正在定义的警报规则和操作规则位于同一订阅上。
-* 子集：例如，您定义的警报规则位于订阅上，操作规则位于订阅中的资源组上。
-* 超级集：例如，您定义的警报规则位于资源组上，操作规则位于包含资源组的订阅上。
-* 交叉点：例如，您定义的警报规则位于**VM1**和**VM2**上，操作规则位于**VM2**和**VM3**上。
+* 完全匹配：例如，你定义的警报规则和操作规则在同一订阅中。
+* 子集：例如，你定义的警报规则在某个订阅中，而操作规则在该订阅的某个资源组中。
+* 超集：例如，你定义的警报规则在某个资源组中，而操作规则在包含该资源组的订阅中。
+* 交集：例如，你定义的警报规则在 **VM1** 和 **VM2** 中，而操作规则在 **VM2** 和 **VM3** 中。
     
 ![重叠的操作规则](media/alerts-action-rules/action-rules-alert-rule-overlapping.png)
 
 ### <a name="can-i-see-the-alerts-that-have-been-suppressed-by-an-action-rule"></a>是否可以看到操作规则消除的警报？
 
-在[警报列表页](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-managing-alert-instances)中，可以选择一个名为“消除状态”的附加列。**** 如果消除了某个警报实例的通知，该实例会在列表中显示该状态。
+在[警报列表页](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-managing-alert-instances)中，可以选择一个名为“消除状态”的附加列。  如果消除了某个警报实例的通知，该实例会在列表中显示该状态。
 
 ![消除的警报实例](media/alerts-action-rules/action-rules-suppressed-alerts.png)
 

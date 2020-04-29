@@ -16,38 +16,38 @@ ms.workload: data-services
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: a80fb97810fee04a4eb50c43178c168e66f29173
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80618730"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>为服务总线启用诊断日志
 
 开始使用 Azure 服务总线命名空间时，你可能想要监视命名空间的创建、删除或访问方式和时间。 本文概述所有可用的操作日志和诊断日志。
 
-Azure 服务总线目前支持活动日志和操作日志，这些日志捕获针对 Azure 服务总线命名空间执行的管理操作。** 具体而言，这些日志捕获操作类型，包括队列创建、所用的资源和操作状态。
+Azure 服务总线目前支持活动日志和操作日志，这些日志捕获针对 Azure 服务总线命名空间执行的管理操作。  具体而言，这些日志捕获操作类型，包括队列创建、所用的资源和操作状态。
 
 ## <a name="operational-logs-schema"></a>操作日志架构
 
 所有日志均以 JavaScript 对象表示法 (JSON) 格式存储在以下两个位置：
 
-- **Azure 活动**：显示针对 Azure 门户中的命名空间或通过 Azure 资源管理器模板部署执行的操作和操作的日志。
-- **Azure诊断**：使用 API 或通过语言 SDK 上的管理客户端显示针对命名空间执行的操作和操作的日志。
+- **AzureActivity**：显示通过 Azure 门户或 Azure 资源管理器模板部署对命名空间执行操作时生成的日志。
+- **AzureDiagnostics**：显示使用 API 或通过语言 SDK 中的管理客户端对命名空间执行操作时生成的日志。
 
 操作日志 JSON 字符串包含下表列出的元素：
 
-| “属性” | 描述 |
+| 名称 | 说明 |
 | ------- | ------- |
 | ActivityId | 内部 ID，用于标识指定的活动 |
 | EventName | 操作名称 |
-| ResourceId | Azure 资源管理器资源 ID |
+| ResourceId | Azure Resource Manager 资源 ID |
 | SubscriptionId | 订阅 ID |
 | EventTimeString | 操作时间 |
 | EventProperties | 操作属性 |
 | 状态 | 操作状态 |
 | 调用方 | 操作的调用方（Azure 门户或管理客户端） |
-| 类别 | OperationalLogs |
+| Category | OperationalLogs |
 
 下面是运行日志 JSON 字符串的示例：
 
@@ -74,12 +74,12 @@ Azure 服务总线目前支持活动日志和操作日志，这些日志捕获�
 
 在操作日志中捕获以下管理操作： 
 
-| 范围 | Operation|
+| 作用域 | 操作|
 |-------| -------- |
-| 命名空间 | <ul> <li> 创建命名空间</li> <li> 更新命名空间 </li> <li> 删除命名空间 </li> <li> 更新命名空间共享访问策略 </li> </ul> | 
-| 队列 | <ul> <li> 创建队列</li> <li> 更新队列</li> <li> 删除队列 </li> <li> 自动删除删除队列 </li> </ul> | 
-| 主题 | <ul> <li> 创建主题 </li> <li> 更新主题 </li> <li> 删除主题 </li> <li> 自动删除删除主题 </li> </ul> |
-| 订阅 | <ul> <li> 创建订阅 </li> <li> 更新订阅 </li> <li> 删除订阅 </li> <li> 自动删除删除订阅 </li> </ul> |
+| 命名空间 | <ul> <li> 创建命名空间</li> <li> 更新命名空间 </li> <li> 删除命名空间 </li> <li> 更新命名空间 Win2k3 策略 </li> </ul> | 
+| 队列 | <ul> <li> 创建队列</li> <li> 更新队列</li> <li> 删除队列 </li> <li> AutoDelete 删除队列 </li> </ul> | 
+| 主题 | <ul> <li> 创建主题 </li> <li> 更新主题 </li> <li> 删除主题 </li> <li> AutoDelete 删除主题 </li> </ul> |
+| 订阅 | <ul> <li> 创建订阅 </li> <li> 更新订阅 </li> <li> 删除订阅 </li> <li> AutoDelete 删除订阅 </li> </ul> |
 
 > [!NOTE]
 > 目前，不会在操作日志中跟踪“读取”操作。**
@@ -109,7 +109,7 @@ Azure 服务总线目前支持活动日志和操作日志，这些日志捕获�
 
     ![“诊断设置”窗格](./media/service-bus-diagnostic-logs/image3.png)
 
-1. 选择“保存”。 
+1. 选择“保存”  。
 
 新设置将在大约 10 分钟后生效。 日志将显示在“诊断日志”窗格中配置的存档目标中。****
 

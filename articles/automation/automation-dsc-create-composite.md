@@ -1,7 +1,7 @@
 ---
 title: 将配置转换为用于状态配置的复合资源 - Azure 自动化
 description: 了解如何在 Azure 自动化中将配置转换为用于状态配置的复合资源。
-keywords: dsc,powershell,配置,安装程序
+keywords: dsc,powershell,配置,设置
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -11,18 +11,18 @@ ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: a39b038d31d1b4a614ff0acf7df2586706bb0404
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80585511"
 ---
 # <a name="convert-configurations-to-composite-resources"></a>将配置转换为复合资源
 
-> 适用于： Windows 电源外壳 5.1
+> 适用于：Windows PowerShell 5.1
 
 开始创作配置以后，即可快速创建用于管理设置组的“方案”。
-示例有：
+示例如下：
 
 - 创建 Web 服务器
 - 创建 DNS 服务器
@@ -36,9 +36,9 @@ ms.locfileid: "80585511"
 
 > [!NOTE]
 > 本文引用了一个由开放源代码社区维护的解决方案。
-> 支持仅以 GitHub 协作的形式提供，而不是从 Microsoft 获得。
+> 支持仅以 GitHub 协作形式提供，不适用于 Microsoft。
 
-## <a name="community-project-compositeresource"></a>社区项目：综合资源
+## <a name="community-project-compositeresource"></a>社区项目：CompositeResource
 
 为了解决此难题，已创建一个名为 [CompositeResource](https://github.com/microsoft/compositeresource) 的社区维护解决方案。
 

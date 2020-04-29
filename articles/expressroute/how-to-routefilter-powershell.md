@@ -1,5 +1,5 @@
 ---
-title: 快速路由：路由筛选器- 微软对等互连：Azure 电源外壳
+title: ExpressRoute：路由筛选器 - Microsoft 对等互连：Azure PowerShell
 description: 本文介绍如何使用 PowerShell 配置用于 Microsoft 对等互连的路由筛选器
 services: expressroute
 author: charwen
@@ -9,10 +9,10 @@ ms.date: 02/25/2019
 ms.author: charwen
 ms.custom: seodec18
 ms.openlocfilehash: 3fa53258321b22e1683122edca1816f6d4c291b5
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80618606"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>配置用于 Microsoft 对等互连的路由筛选器：PowerShell
@@ -24,7 +24,7 @@ ms.locfileid: "80618606"
 
 路由筛选器是通过 Microsoft 对等互连使用部分受支持服务的一种方法。 本文中的步骤可帮助配置和管理 ExpressRoute 线路的路由筛选器。
 
-Office 365 服务（如交换联机、SharePoint 在线和 Skype 业务）以及 Azure 公共服务（如存储和 SQL DB）可通过 Microsoft 对等互连访问。 Azure 公共服务可按区域选择，但不能针对每个公共服务定义。
+Office 365 服务（如 Exchange Online、SharePoint Online 和 Skype for Business）以及 Azure 公共服务（如存储和 SQL 数据库）可通过 Microsoft 对等互连进行访问。 Azure 公共服务可按区域选择，但不能针对每个公共服务定义。
 
 如果在 ExpressRoute 线路中配置了 Microsoft 对等互连并附加了路由筛选器，则会通过建立的 BGP 会话播发为这些服务选择的所有前缀。 每个前缀附加有 BGP 团体值，以标识通过该前缀提供的服务。 有关 BGP 团体值及其映射到的服务的列表，请参阅 [BGP 团体](expressroute-routing.md#bgp)。
 
@@ -47,7 +47,7 @@ Office 365 服务（如交换联机、SharePoint 在线和 Skype 业务）以及
 > 
 > 
 
-### <a name="workflow"></a><a name="workflow"></a>流程
+### <a name="workflow"></a><a name="workflow"></a>工作流
 
 若要通过 Microsoft 对等互连成功连接服务，必须完成以下配置步骤：
 
@@ -68,7 +68,7 @@ Office 365 服务（如交换联机、SharePoint 在线和 Skype 业务）以及
 
  - 在开始配置之前，请查看[先决条件](expressroute-prerequisites.md)和[工作流](expressroute-workflows.md)。
 
- - 必须有一个活动的 ExpressRoute 线路。 按照说明[创建 ExpressRoute 电路](expressroute-howto-circuit-arm.md)，并在继续操作之前由连接提供商启用该电路。 ExpressRoute 线路必须处于已预配且已启用状态。
+ - 必须有一个活动的 ExpressRoute 线路。 继续之前，请按照说明[创建 ExpressRoute 线路](expressroute-howto-circuit-arm.md)，并让连接提供商启用该线路。 ExpressRoute 线路必须处于已预配且已启用状态。
 
  - 必须有活动的 Microsoft 对等互连。 按照[创建和修改对等互连配置](expressroute-circuit-peerings.md)一文中的说明操作。
 
@@ -103,14 +103,14 @@ Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
 
 ## <a name="step-1-get-a-list-of-prefixes-and-bgp-community-values"></a><a name="prefixes"></a>步骤 1：获取前缀和 BGP 团体值的列表
 
-### <a name="1-get-a-list-of-bgp-community-values"></a>1. 获取 BGP 社区价值观列表
+### <a name="1-get-a-list-of-bgp-community-values"></a>1. 获取 BGP 团体值的列表
 
 使用以下 cmdlet 获取与通过 Microsoft 对等互连可访问服务相关联的 BGP 团体值列表，以及与之关联的前缀列表：
 
 ```azurepowershell-interactive
 Get-AzBgpServiceCommunity
 ```
-### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. 列出要使用的值
+### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. 创建要使用的值的列表
 
 列出要在路由筛选器中使用的 BGP 团体值列表。
 
@@ -126,7 +126,7 @@ Get-AzBgpServiceCommunity
 New-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup" -Location "West US"
 ```
 
-### <a name="2-create-a-filter-rule"></a>2. 创建筛选器规则
+### <a name="2-create-a-filter-rule"></a>2. 创建筛选规则
 
 可将一组 BGP 团体指定为逗号分隔列表，如示例所示。 运行以下命令来创建新规则：
  

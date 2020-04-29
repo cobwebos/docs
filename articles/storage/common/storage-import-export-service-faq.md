@@ -9,10 +9,10 @@ ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 904f93aa705a4e327f29bbec109bdf3b937f6c70
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80519480"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure 导入/导出服务：常见问题解答
@@ -61,7 +61,7 @@ ms.locfileid: "80519480"
 
 ### <a name="can-i-cancel-my-job"></a>是否可以取消我的作业？
 
-是的。 可以取消状态为“正在创建”或“正在寄送”的作业。******** 在这些阶段之外，无法取消作业，它将一直执行到最终阶段。
+是的。 可以取消状态为“正在创建”或“正在寄送”的作业。   在这些阶段之外，无法取消作业，它将一直执行到最终阶段。
 
 ### <a name="how-long-can-i-view-the-status-of-completed-jobs-in-the-azure-portal"></a>在 Azure 门户中可以查看多长时间的已完成作业的状态？
 
@@ -70,7 +70,7 @@ ms.locfileid: "80519480"
 ### <a name="if-i-want-to-import-or-export-more-than-10-drives-what-should-i-do"></a>如果我想要导入或导出 10 个以上驱动器，我应该怎样做？
 
 一个导入或导出作业在单个作业中只能引用 10 个驱动器。 若要寄送 10 个以上驱动器，应当创建多个作业。 与同一作业关联的驱动器必须放在同一个包裹中一起寄送。
-有关数据容量跨越多个磁盘导入作业时的详细信息和指导，请与 Microsoft 支持部门联系。
+有关数据容量跨越多个磁盘导入作业的详细信息和指南，请联系 Microsoft 支持部门。
 
 ### <a name="the-uploaded-blob-shows-status-as-lease-expired-what-should-i-do"></a>上传的 blob 显示状态为“租用已过期”。   应采取何种操作？
 
@@ -97,20 +97,20 @@ ms.locfileid: "80519480"
 - 在亚洲和澳大利亚区域的 DHL 帐户编号。
 
 > [!NOTE]
-> 印度的数据中心需要信头（送达查兰）上的声明信才能返回驱动器。 要安排所需的输入通行证，还必须与所选运营商预订取件，并与数据中心共享详细信息。
+> 印度中的数据中心需要使用信头上的声明字母（传递 challan）来返回驱动器。 若要安排所需的条目传递，还必须将所选的承运人预订并共享数据中心。
 
-### <a name="are-there-any-restrictions-with-shipping-and-returning-my-drive-internationally"></a>航运和返回我的驱动器国际是否有任何限制？
+### <a name="are-there-any-restrictions-with-shipping-and-returning-my-drive-internationally"></a>对于发货情况是否有任何限制并在国际上返还我的驱动器？
 
 请注意，发运的物理介质可能需要穿越国界。 应当负责确保物理介质和数据是遵照适用的法律导入和/或导出的。 在发运物理介质之前，请咨询顾问以验证介质和数据是否可以合法地发运到所确定的数据中心。 这会有助于确保它可以及时到达 Microsoft。
 
-上传完成后，将驱动器返回到国际地址的过程可能比本地运输所需的通常 2-3 天要长。 在 Azure 门户中列出的阶段（打包）中，数据盒团队确保提供正确的文档，以确保货件符合各种国际进出口要求。
+上传完成后，将驱动器返回到国际地址的过程可能需要的时间比本地发货所需的典型2-3 天要长。 在 Azure 门户中列出为打包的阶段期间，Data Box 团队确保提供了正确的文档，以确保发货符合各种国际进口和出口要求。
 
 ### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>将磁盘传送到数据中心是否有任何特殊要求？
 
-这些要求取决于特定的 Azure 数据中心限制。
+要求取决于特定的 Azure 数据中心限制。
 
-- 出于安全原因，有几个站点（如澳大利亚、德国和英国南部）要求在包裹上写入 Microsoft 数据中心入站 ID 号。 在将驱动器或磁盘运送到数据中心之前，请与 Azure DataBox 操作部adbops@microsoft.com（ ） 联系以获得此号码。 如果没有此编号，包将被拒绝。
-- 印度的数据中心需要司机的个人资料，如政府身份证或证明号。 （例如，PAN、AADHAR、DL）、姓名、联系人和车牌号，以获得门进入通行证。 为避免交货延误，请告知您的承运商这些要求。
+- 有一些站点（如澳大利亚、德国和英国南部）需要出于安全原因在包裹上写入 Microsoft datacenter Inbound ID 号。 将驱动器或磁盘寄送到数据中心之前，请联系 Azure DataBox Operationsadbops@microsoft.com（）获取此号码。 如果没有此编号，将拒绝包。
+- 印度数据中心需要驱动程序的个人详细信息，例如政府 ID 卡或证明不需要。 （例如，PAN、AADHAR、DL）、name、contact 和 car 盘子编号，用于获取入口经历。 若要避免交付延迟，请向您的运营商通知这些要求。
 
 ### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>创建作业时，寄送地址是一个不同于存储帐户位置的位置。   应采取何种操作？
 
@@ -128,7 +128,7 @@ Azure 数据中心会将不符合支持要求的驱动器返还给你。 如果�
 
 ### <a name="does-the-service-format-the-drives-before-returning-them"></a>该服务是否会在返还驱动器之前将其格式化？
 
-不是。 所有驱动器都使用 BitLocker 加密。
+不能。 所有驱动器都使用 BitLocker 加密。
 
 ### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>如何才能访问此服务导入的数据？
 
@@ -144,7 +144,7 @@ Azure 数据中心会将不符合支持要求的驱动器返还给你。 如果�
 
 ### <a name="is-the-waimportexport-tool-compatible-with-32-bit-operating-systems"></a>WAImportExport 工具是否与 32 位操作系统兼容？
 
-不是。 WAImportExport 工具仅兼容 64 位 Windows 操作系统。 有关受支持的 OS 的完整列表，请转到[受支持的操作系统](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements)。
+不能。 WAImportExport 工具仅兼容 64 位 Windows 操作系统。 有关受支持的 OS 的完整列表，请转到[受支持的操作系统](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements)。
 
 ### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Azure 导入/导出支持的最大块 Blob 和页 Blob 大小是多少？
 
@@ -153,7 +153,7 @@ Azure 数据中心会将不符合支持要求的驱动器返还给你。 如果�
 
 ### <a name="does-azure-importexport-support-aes-256-encryption"></a>Azure 导入/导出是否支持 AES-256 加密？
 
-不是。 Azure 导入/导出服务使用 AES-128 位锁加密。
+不能。 Azure 导入/导出服务使用 AES-128 BitLocker 加密。
 
 ## <a name="next-steps"></a>后续步骤
 

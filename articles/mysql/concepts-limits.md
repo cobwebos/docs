@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 4/1/2020
 ms.openlocfilehash: 6ca09ab0578fb88e443d6e9e1f920c22457eb042
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80548473"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的限制
@@ -18,14 +18,14 @@ ms.locfileid: "80548473"
 
 ## <a name="server-parameters"></a>服务器参数
 
-几个常用服务器参数的最小值和最大值由定价层和 vCore 决定。 有关限制，请参阅下表。
+几个常用服务器参数的最小值和最大值由定价层和 Vcore 确定。 有关限制，请参阅下表。
 
 ### <a name="max_connections"></a>max_connections
 
-|**定价层**|**vCore**|**默认值**|**最小值**|**最大值**|
+|**定价层**|**vCore(s)**|**默认值**|**最小值**|**最大值**|
 |---|---|---|---|---|
-|Basic|1|50|10|50|
-|Basic|2|100|10|100|
+|基本|1|50|10|50|
+|基本|2|100|10|100|
 |常规用途|2|300|10|600|
 |常规用途|4|625|10|1250|
 |常规用途|8|1250|10|2500|
@@ -42,23 +42,23 @@ ms.locfileid: "80548473"
 > 错误 1040 (08004): 连接过多
 
 > [!IMPORTANT]
-> 为了获得最佳体验，我们建议您使用代理SQL 等连接池程序来高效地管理连接。
+> 为了获得最佳体验，我们建议使用 ProxySQL 等连接池来有效地管理连接。
 
-创建到 MySQL 的新客户端连接需要时间，一旦建立，这些连接将占用数据库资源，即使处于空闲状态也是如此。 大多数应用程序都请求许多短期连接，这加剧了这种情况。 其结果是可用于实际工作负荷的资源减少，从而导致性能下降。 减少空闲连接并重用现有连接的连接池会有助于避免这种情况。 要了解如何设置 ProxySQL，请访问我们的[博客文章](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)。
+与 MySQL 建立新的客户端连接需要花费一段时间，并且在建立后，这些连接会占用数据库资源，甚至是在空闲时。 大多数应用程序都请求许多短期连接，这加剧了这种情况。 其结果是可用于实际工作负荷的资源减少，从而导致性能下降。 减少空闲连接并重用现有连接的连接池会有助于避免这种情况。 若要了解如何设置 ProxySQL，请访问我们的[博客文章](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)。
 
 ### <a name="query_cache_size"></a>query_cache_size
 
-默认情况下，查询缓存处于关闭状态。 要启用查询缓存，请配置参数`query_cache_type`。 
+查询缓存默认情况下处于关闭状态。 若要启用查询缓存，请配置`query_cache_type`参数。 
 
-查看[MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_query_cache_size)以了解有关此参数的更多内容。
+有关此参数的详细信息，请参阅[MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_query_cache_size)。
 
 > [!NOTE]
-> 查询缓存从 MySQL 5.7.20 开始弃用，并已在 MySQL 8.0 中删除
+> 在 mysql 5.7.20 中，查询缓存已弃用，已在 MySQL 8.0 中被删除
 
-|**定价层**|**vCore**|**默认值**|**最小值**|**最大值**|
+|**定价层**|**vCore(s)**|**默认值**|**最小值**|**最大值**|
 |---|---|---|---|---|
-|Basic|1|基本层中不可配置|不可用|不可用|
-|Basic|2|基本层中不可配置|不可用|不可用|
+|基本|1|在基本层中不可配置|空值|空值|
+|基本|2|在基本层中不可配置|空值|空值|
 |常规用途|2|0|0|16777216|
 |常规用途|4|0|0|33554432|
 |常规用途|8|0|0|67108864|
@@ -73,12 +73,12 @@ ms.locfileid: "80548473"
 
 ### <a name="sort_buffer_size"></a>sort_buffer_size
 
-查看[MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_sort_buffer_size)以了解有关此参数的更多内容。
+有关此参数的详细信息，请参阅[MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_sort_buffer_size)。
 
-|**定价层**|**vCore**|**默认值**|**最小值**|**最大值**|
+|**定价层**|**vCore(s)**|**默认值**|**最小值**|**最大值**|
 |---|---|---|---|---|
-|Basic|1|基本层中不可配置|不可用|不可用|
-|Basic|2|基本层中不可配置|不可用|不可用|
+|基本|1|在基本层中不可配置|空值|空值|
+|基本|2|在基本层中不可配置|空值|空值|
 |常规用途|2|524288|32768|4194304|
 |常规用途|4|524288|32768|8388608|
 |常规用途|8|524288|32768|16777216|
@@ -93,12 +93,12 @@ ms.locfileid: "80548473"
 
 ### <a name="join_buffer_size"></a>join_buffer_size
 
-查看[MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_join_buffer_size)以了解有关此参数的更多内容。
+有关此参数的详细信息，请参阅[MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_join_buffer_size)。
 
-|**定价层**|**vCore**|**默认值**|**最小值**|**最大值**|
+|**定价层**|**vCore(s)**|**默认值**|**最小值**|**最大值**|
 |---|---|---|---|---|
-|Basic|1|基本层中不可配置|不可用|不可用|
-|Basic|2|基本层中不可配置|不可用|不可用|
+|基本|1|在基本层中不可配置|空值|空值|
+|基本|2|在基本层中不可配置|空值|空值|
 |常规用途|2|262144|128|268435455|
 |常规用途|4|262144|128|536870912|
 |常规用途|8|262144|128|1073741824|
@@ -113,12 +113,12 @@ ms.locfileid: "80548473"
 
 ### <a name="max_heap_table_size"></a>max_heap_table_size
 
-查看[MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_max_heap_table_size)以了解有关此参数的更多内容。
+有关此参数的详细信息，请参阅[MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_max_heap_table_size)。
 
-|**定价层**|**vCore**|**默认值**|**最小值**|**最大值**|
+|**定价层**|**vCore(s)**|**默认值**|**最小值**|**最大值**|
 |---|---|---|---|---|
-|Basic|1|基本层中不可配置|不可用|不可用|
-|Basic|2|基本层中不可配置|不可用|不可用|
+|基本|1|在基本层中不可配置|空值|空值|
+|基本|2|在基本层中不可配置|空值|空值|
 |常规用途|2|16777216|16384|268435455|
 |常规用途|4|16777216|16384|536870912|
 |常规用途|8|16777216|16384|1073741824|
@@ -133,12 +133,12 @@ ms.locfileid: "80548473"
 
 ### <a name="tmp_table_size"></a>tmp_table_size
 
-查看[MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_tmp_table_size)以了解有关此参数的更多内容。
+有关此参数的详细信息，请参阅[MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_tmp_table_size)。
 
-|**定价层**|**vCore**|**默认值**|**最小值**|**最大值**|
+|**定价层**|**vCore(s)**|**默认值**|**最小值**|**最大值**|
 |---|---|---|---|---|
-|Basic|1|基本层中不可配置|不可用|不可用|
-|Basic|2|基本层中不可配置|不可用|不可用|
+|基本|1|在基本层中不可配置|空值|空值|
+|基本|2|在基本层中不可配置|空值|空值|
 |常规用途|2|16777216|1024|67108864|
 |常规用途|4|16777216|1024|134217728|
 |常规用途|8|16777216|1024|268435456|
@@ -153,7 +153,7 @@ ms.locfileid: "80548473"
 
 ### <a name="time_zone"></a>time_zone
 
-可以通过从 MySQL 命令行或`mysql.az_load_timezone`MySQL 工作台等工具调用存储过程来填充时区表。 有关如何调用存储过程并设置全局或会话级时区，请参阅[Azure 门户](howto-server-parameters.md#working-with-the-time-zone-parameter)或[Azure CLI](howto-configure-server-parameters-using-cli.md#working-with-the-time-zone-parameter)文章。
+可以通过从 MySQL 命令行或 MySQL 工作台等`mysql.az_load_timezone`工具调用存储过程来填充时区表。 有关如何调用存储过程并设置全局或会话级别时区的详细说明，请参阅[Azure 门户](howto-server-parameters.md#working-with-the-time-zone-parameter)或[Azure CLI](howto-configure-server-parameters-using-cli.md#working-with-the-time-zone-parameter)文章。
 
 ## <a name="storage-engine-support"></a>存储引擎支持
 
@@ -164,15 +164,15 @@ ms.locfileid: "80548473"
 ### <a name="unsupported"></a>不支持
 - [MyISAM](https://dev.mysql.com/doc/refman/5.7/en/myisam-storage-engine.html)
 - [BLACKHOLE](https://dev.mysql.com/doc/refman/5.7/en/blackhole-storage-engine.html)
-- [ARCHIVE](https://dev.mysql.com/doc/refman/5.7/en/archive-storage-engine.html)
+- [存档](https://dev.mysql.com/doc/refman/5.7/en/archive-storage-engine.html)
 - [FEDERATED](https://dev.mysql.com/doc/refman/5.7/en/federated-storage-engine.html)
 
 ## <a name="privilege-support"></a>特权支持
 
 ### <a name="unsupported"></a>不支持
 - DBA 角色：许多服务器参数和设置可能会无意中导致服务器性能下降或使 DBMS 的 ACID 属性无效。 因此，为了维护产品级别的服务完整性和 SLA，此服务不公开 DBA 角色。 默认用户帐户（在创建新的数据库实例时构造）允许该用户执行托管数据库实例中的大部分 DDL 和 DML 语句。 
-- 超级特权：同样[超级特权](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super)也受到限制。
-- 定义：需要超级权限才能创建并且受到限制。 如果使用备份导入数据，请在执行 mysqldump 时手动删除或使用 `--skip-definer` 命令删除 `CREATE DEFINER` 命令。
+- 超级权限：同样，也会限制[超级权限](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super)。
+- DEFINER：需要超级权限才能创建和受限。 如果使用备份导入数据，请在执行 mysqldump 时手动删除或使用 `--skip-definer` 命令删除 `CREATE DEFINER` 命令。
 
 ## <a name="data-manipulation-statement-support"></a>数据操作语句支持
 
@@ -205,5 +205,5 @@ ms.locfileid: "80548473"
 - 建立连接后，MySQL 服务器实例显示错误的服务器版本。 若要获取正确的服务器实例引擎版本，请使用 `select version();` 命令。
 
 ## <a name="next-steps"></a>后续步骤
-- [每个服务层中提供的内容](concepts-pricing-tiers.md)
+- [每个服务层提供的功能](concepts-pricing-tiers.md)
 - [支持的 MySQL 数据库版本](concepts-supported-versions.md)

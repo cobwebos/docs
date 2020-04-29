@@ -12,32 +12,32 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
 ms.openlocfilehash: 61a85b2554bbd69541b3081f72525d2b7deed625
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80529235"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>导入或导出 Azure SQL 数据库但不允许 Azure 服务访问服务器
 
-本文介绍如何在 Azure SQL 服务器上将“允许 Azure 服务”设置为“关闭”的情况下导入或导出 Azure SQL 数据库。**** 工作流使用 Azure 虚拟机运行 SqlPackage 来执行导入或导出操作。
+本文介绍如何在 Azure SQL 服务器上将“允许 Azure 服务”设置为“关闭”的情况下导入或导出 Azure SQL 数据库。   工作流使用 Azure 虚拟机运行 SqlPackage 来执行导入或导出操作。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录 [Azure 门户](https://portal.azure.com/)。
+登录到 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="create-the-azure-virtual-machine"></a>创建 Azure 虚拟机
 
-通过选择"**部署到 Azure"按钮创建 Azure**虚拟机。
+通过选择 "**部署到 azure** " 按钮，创建 Azure 虚拟机。
 
-此模板允许您使用 Windows 版本的几个不同选项，使用最新的修补版本部署简单的 Windows 虚拟机。 这将在资源组位置部署 A2 大小的 VM，并返回 VM 的完全限定域名。
+此模板允许你使用最新的修补版本，为 Windows 版本使用几个不同的选项部署简单的 Windows 虚拟机。 这会在资源组位置中部署 A2 大小 VM，并返回 VM 的完全限定域名。
 <br><br>
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-simple-windows%2Fazuredeploy.json" target="_blank">
     <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
 </a>
 
-有关详细信息，请参阅[Windows VM 的非常简单的部署](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)。
+有关详细信息，请参阅[WINDOWS VM 的非常简单的部署](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)。
 
 
 ## <a name="connect-to-the-virtual-machine"></a>连接到虚拟机
@@ -48,13 +48,13 @@ ms.locfileid: "80529235"
 
     ![VM](./media/import-export-from-vm/vm.png)  
 
-2. 选择 **"连接**"。
+2. 选择“连接”  。
 
    此时会显示远程桌面协议文件（.rdp 文件）窗体，其中包含虚拟机的公共 IP 地址和端口号。
 
    ![RDP 窗体](./media/import-export-from-vm/rdp.png)  
 
-3. 选择**下载 RDP 文件**。
+3. 选择“下载 RDP 文件”  。
 
    > [!NOTE]
    > 也可使用 SSH 连接到 VM。
@@ -84,7 +84,7 @@ ms.locfileid: "80529235"
 
 以下步骤针对虚拟机的公共 IP 地址创建服务器级 IP 防火墙规则，并启用从虚拟机的连接。
 
-1. 在左侧菜单中选择“SQL 数据库”，然后在“SQL 数据库”页上选择你的数据库。******** 数据库的概述页将打开，显示完全限定的服务器名称（如**servername.database.windows.net），** 并提供进一步配置的选项。
+1. 在左侧菜单中选择“SQL 数据库”，然后在“SQL 数据库”页上选择你的数据库。******** 此时会打开数据库的 "概述" 页，其中显示了完全限定的服务器名称（例如**servername.database.windows.net**），并提供了进一步配置的选项。
 
 2. 请复制此完全限定的服务器名称，以便在连接到服务器及其数据库时使用。
 
@@ -96,7 +96,7 @@ ms.locfileid: "80529235"
 
 4. 在工具栏上选择“添加客户端 IP”，将虚拟机的公共 IP 地址添加到新的服务器级 IP 防火墙规则。**** 服务器级 IP 防火墙规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。
 
-5. 选择“保存”。  此时会针对虚拟机的公共 IP 地址创建服务器级 IP 防火墙规则，在 SQL 数据库服务器上打开端口 1433。
+5. 选择“保存”  。 此时会针对虚拟机的公共 IP 地址创建服务器级 IP 防火墙规则，在 SQL 数据库服务器上打开端口 1433。
 
 6. 关闭“防火墙设置”页。****
 
@@ -165,7 +165,7 @@ sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 
 ## <a name="next-steps"></a>后续步骤
 
-- 要了解如何连接到和查询导入的 SQL 数据库，请参阅[快速入门：Azure SQL 数据库：使用 SQL 服务器管理工作室连接和查询数据](sql-database-connect-query-ssms.md)。
+- 若要了解如何连接并查询导入的 SQL 数据库，请参阅[快速入门： AZURE SQL 数据库：使用 SQL Server Management Studio 来连接和查询数据](sql-database-connect-query-ssms.md)。
 - 有关 SQL Server 客户咨询团队使用 BACPAC 文件进行迁移的博客，请参阅 [Migrating from SQL Server to Azure SQL Database using BACPAC Files](https://techcommunity.microsoft.com/t5/DataCAT/Migrating-from-SQL-Server-to-Azure-SQL-Database-using-Bacpac/ba-p/305407)（使用 BACPAC 文件从 SQL Server 迁移到 Azure SQL 数据库）。
 - 有关对于整个 SQL Server 数据库迁移进程（包括性能建议）的讨论，请参阅[将 SQL Server 数据库迁移到 Azure SQL 数据库](sql-database-single-database-migrate.md)。
 - 若要了解如何安全地管理和共享存储密钥和共享访问签名，请参阅 [Azure 存储安全指南](https://docs.microsoft.com/azure/storage/common/storage-security-guide)。

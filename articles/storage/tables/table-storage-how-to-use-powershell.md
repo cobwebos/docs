@@ -1,6 +1,6 @@
 ---
 title: 使用 PowerShell 执行 Azure 表存储操作 | Microsoft 文档
-description: 了解如何使用 PowerShell 运行常见任务，如创建、查询、从 Azure 表存储帐户中删除数据。
+description: 了解如何使用 PowerShell 从 Azure 表存储帐户运行创建、查询和删除数据等常见任务。
 author: roygara
 ms.service: storage
 ms.topic: article
@@ -8,10 +8,10 @@ ms.date: 04/05/2019
 ms.author: rogarana
 ms.subservice: tables
 ms.openlocfilehash: 746044aa835df52e61c234c8b5ca61164fffbbc5
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80545951"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>使用 Azure PowerShell 执行 Azure 表存储操作 
@@ -37,7 +37,7 @@ Azure 表存储是一种 NoSQL 数据存储，可用于存储和查询大量的�
 > 使用 PowerShell 的 Azure 功能必须已安装 `Az` 模块。 `AzTable` 的当前版本与较旧的 AzureRM 模块不兼容。
 > 如果需要，请遵循[用于安装 Az 模块的最新安装说明](/powershell/azure/install-az-ps)。
 
-安装或更新 Azure PowerShell 后，必须安装模块 **AzTable**，其中包含用于管理实体的命令。 若要安装此模块，请以管理员身份运行 PowerShell 并使用 Install-Module**** 命令。
+安装或更新 Azure PowerShell 后，必须安装模块 **AzTable**，其中包含用于管理实体的命令。 若要安装此模块，请以管理员身份运行 PowerShell 并使用 Install-Module  命令。
 
 > [!IMPORTANT]
 > 出于模块名称兼容性原因，我们在 PowerShell 库中仍然以旧名称 `AzureRmStorageTables` 发布此同一模块。 此文档将仅引用新名称。
@@ -56,7 +56,7 @@ Add-AzAccount
 
 ## <a name="retrieve-list-of-locations"></a>检索位置列表
 
-如果你不知道要使用哪个位置，可以列出可用的位置。 显示列表后，找到要使用的位置。 这些示例使用 eastus****。 将此值存储在变量 location**** 中，以供以后使用。
+如果你不知道要使用哪个位置，可以列出可用的位置。 显示列表后，找到要使用的位置。 这些示例使用 eastus****。 将此值存储在变量 location  中，以供以后使用。
 
 ```powershell
 Get-AzLocation | select Location
@@ -117,7 +117,7 @@ $storageTable = Get-AzStorageTable –Name $tableName –Context $ctx
 ## <a name="reference-cloudtable-property-of-a-specific-table"></a>引用特定表的 CloudTable 属性
 
 > [!IMPORTANT]
-> 使用 **AzTable** PowerShell 模块时必须使用 CloudTable。 调用**Get-AzStorageTable**命令以获取对此对象的引用。 如果表尚不存在，则此命令还创建表。
+> 使用 **AzTable** PowerShell 模块时必须使用 CloudTable。 调用**AzStorageTable**命令获取对此对象的引用。 如果表尚不存在，则此命令还创建表。
 
 若要使用 **AzTable** 对表执行操作，需要引用特定表的 CloudTable 属性。
 
@@ -162,6 +162,6 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 * [存储 PowerShell cmdlet](/powershell/module/az.storage#storage)
 
-* [使用 PowerShell 中的 Azure 表 - AzureRm 存储表/AzTable PS 模块 v2.0](https://paulomarquesc.github.io/working-with-azure-storage-tables-from-powershell)
+* [从 PowerShell 使用 Azure 表 - AzureRmStorageTable/AzTable PS 模块 v2.0](https://paulomarquesc.github.io/working-with-azure-storage-tables-from-powershell)
 
 * [Microsoft Azure 存储资源管理器](../../vs-azure-tools-storage-manage-with-storage-explorer.md)是 Microsoft 免费提供的独立应用，适用于在 Windows、macOS 和 Linux 上以可视方式处理 Azure 存储数据。

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
 ms.openlocfilehash: 83548063a796401792bd19e7ec27be36a0efa4e4
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80549207"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure 上可用的安全服务和技术
@@ -77,12 +77,12 @@ ms.locfileid: "80549207"
 |服务|说明|
 |------|--------|
 | [Azure&nbsp;备份](/azure/backup/backup-introduction-to-azure-backup)| 一项基于 Azure 的服务，用于备份和还原 Azure 云中的数据。 |
-| [Azure&nbsp;&nbsp;站点恢复](/azure/site-recovery/site-recovery-overview)|一项联机服务，它可将在物理计算机和虚拟机 (VM) 上运行的工作负荷从主站点复制到辅助位置，以便在出现故障后恢复服务。 |
+| [Azure&nbsp;Site&nbsp;Recovery](/azure/site-recovery/site-recovery-overview)|一项联机服务，它可将在物理计算机和虚拟机 (VM) 上运行的工作负荷从主站点复制到辅助位置，以便在出现故障后恢复服务。 |
 
 ## <a name="networking"></a>网络
 |服务|说明|
 |------|--------|
-| [网络安全&nbsp;&nbsp;组](/azure/virtual-network/virtual-networks-nsg)| 一项基于网络的访问控制功能，它使用 5 元组进行允许或拒绝决策。  |
+| [网络&nbsp;安全&nbsp;组](/azure/virtual-network/virtual-networks-nsg)| 一项基于网络的访问控制功能，它使用 5 元组进行允许或拒绝决策。  |
 | [Azure VPN 网关](/azure/vpn-gateway/vpn-gateway-about-vpngateways)| 一种网络设备，用作 VPN 终结点，以允许跨界访问 Azure 虚拟网络。  |
 | [Azure 应用程序网关](/azure/application-gateway/application-gateway-introduction)|高级 Web 应用程序负载均衡器，可基于 URL 进行路由并执行 SSL 卸载。 |
 |[Web 应用程序防火墙](/azure/frontdoor/waf-overview)（WAF）|应用程序网关的一项功能，可以对 Web 应用程序进行集中保护，避免其受到常见的攻击和漏洞危害|

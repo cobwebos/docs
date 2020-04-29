@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: d8e453336005f3389f67e9571fac438bfc340c1b
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80549012"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>多租户 SaaS 应用程序与 Azure 认知搜索的设计模式
@@ -37,7 +37,7 @@ ms.locfileid: "80549012"
 ### <a name="service-and-index-limits-in-azure-cognitive-search"></a>Azure 认知搜索中的服务和索引限制
 Azure 认知搜索中有一些不同的[定价层](https://azure.microsoft.com/pricing/details/search/)，每一层都有不同的[限制和配额](search-limits-quotas-capacity.md)。 有一些限制位于服务级别，有一些位于索引级别，还有一些位于分区级别。
 
-|  | Basic | 标准 1 | 标准 2 | 标准 3 | 标准 3 HD |
+|  | 基本 | 标准 1 | 标准 2 | 标准 3 | 标准 3 HD |
 | --- | --- | --- | --- | --- | --- |
 | 每个服务的副本数上限 |3 |12 |12 |12 |12 |
 | 每个服务的分区数上限 |1 |12 |12 |12 |3 |
@@ -51,7 +51,7 @@ Azure 认知搜索中有一些不同的[定价层](https://azure.microsoft.com/p
 
 S3 HD 通过以使用分区扩展索引的能力，换得在单个服务中承载更多索引的能力，允许多个小索引在单个搜索服务中填满并受其管理。
 
-S3 服务旨在承载固定数量的索引（最大 200 个），并允许每个索引在将新分区添加到服务时水平缩放大小。 将分区添加到 S3 HD 服务会增加服务可以承载的最大索引数。 单个 S3HD 索引的理想最大大小约为 50 - 80 GB，尽管系统对每个索引没有硬大小限制。
+S3 服务旨在承载固定数量的索引（最多200），并允许每个索引在新分区添加到服务时水平缩放大小。 向 S3 HD services 添加分区会增加服务可承载的最大索引数。 单个 S3HD 索引的理想最大大小大约为 50-80 GB，不过系统施加的每个索引没有硬性大小限制。
 
 ## <a name="considerations-for-multitenant-applications"></a>多租户应用程序注意事项
 多租户应用程序必须在租户之间高效分配资源，同时在各租户之间保持一定程度的隐私。 设计此类应用程序的体系结构时需要了解几个注意事项：
@@ -68,7 +68,7 @@ Azure 认知搜索提供几个可用于隔离租户数据和工作负荷的边�
 对于多租户方案，应用程序开发人员使用一个或多个搜索服务，并在各服务和/或各索引中划分其租户。 Azure 认知搜索具有一些适用于对多租户方案建模的常见模式：
 
 1. *每租户索引：* 每个租户都在搜索服务中有自己的索引，可与其他租户共享。
-2. *每个租户的服务：* 每个租户都有自己的专用 Azure 认知搜索服务，提供最高级别的数据和工作负载分离。
+2. *每租户服务：* 每个租户都有自己的专用 Azure 认知搜索服务，提供最高级别的数据和工作负荷分离。
 3. *二者混合：* 为较大、活跃度较高的租户分配专用服务，而为较小的租户分配共享服务中的各个索引。
 
 ## <a name="1-index-per-tenant"></a>1. 每个租户的索引
@@ -103,7 +103,7 @@ Azure 认知搜索允许各索引和索引总数的规模增加。 如果选择�
 
 当各租户发展过快使其服务不再适用时，扩展此模式将遇到困难。 Azure 认知搜索当前不支持升级搜索服务的定价层，因此所有数据都需要以手动方式复制到新服务中。
 
-## <a name="3-mixing-both-models"></a>3. 混合两种型号
+## <a name="3-mixing-both-models"></a>3. 混合两种模型
 另一种对多组织建模的模式是混合使用每租户索引和每租户服务策略。
 
 通过混合使用这两种模式，应用程序的最大租户可以占用专用服务，而活跃度较低且具有长尾效应的较小租户可以占用共享服务中的索引。 此模型可确保最大租户持续享有服务的高性能，同时帮助较小租户避免受到干扰性邻户的影响。

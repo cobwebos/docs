@@ -14,14 +14,14 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: memildin
 ms.openlocfilehash: aa262b0be3902f6e143a53f8f1302156fc5aede6
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80582985"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>管理在 Azure 安全中心调查中找到的用户数据
-本文提供有关如何管理在 Azure 安全中心调查功能中找到的用户数据的信息。 调查数据存储在[Azure 监视器日志](../log-analytics/log-analytics-overview.md)中，并在安全中心中公开。 管理用户数据包括导出或删除数据的能力。
+本文提供有关如何管理在 Azure 安全中心调查功能中找到的用户数据的信息。 调查数据存储在[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)中，并在安全中心公开。 管理用户数据包括导出或删除数据的能力。
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
@@ -57,4 +57,4 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 
 ## <a name="next-steps"></a>后续步骤
 有关管理用户数据的详细信息，请参阅[管理 Azure 安全中心的用户数据](security-center-privacy.md)。
-要了解有关删除 Azure 监视器日志中的私有数据的更多内容，请参阅[如何导出和删除私有数据](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data)。
+若要了解有关在 Azure Monitor 日志中删除私有数据的详细信息，请参阅[如何导出和删除私有数据](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data)。

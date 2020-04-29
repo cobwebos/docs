@@ -1,7 +1,7 @@
 ---
 title: 要在 State Configuration 中使用的基于 STIG 的配置 - Azure 自动化
 description: 了解基于 STIG 的配置以用于 Azure 自动化中的 State Configuration。
-keywords: dsc,powershell,配置,安装程序
+keywords: dsc,powershell,配置,设置
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -11,22 +11,22 @@ ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: d6d257198fcae54b1214d77f6b905d876d2687f5
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80585532"
 ---
 # <a name="configuration-based-on-stig"></a>基于 STIG 的配置
 
-> 适用于： Windows 电源外壳 5.1
+> 适用于：Windows PowerShell 5.1
 
 首次创建配置内容可能很困难。
 在许多情况下，目标是按照希望符合行业建议的“基线”自动配置服务器。
 
 > [!NOTE]
 > 本文引用了一个由开放源代码社区维护的解决方案。
-> 支持仅以 GitHub 协作的形式提供，而不是从 Microsoft 获得。
+> 支持仅以 GitHub 协作形式提供，不适用于 Microsoft。
 
 ## <a name="community-project-powerstig"></a>社区项目：PowerSTIG
 

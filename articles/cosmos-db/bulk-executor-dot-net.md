@@ -10,30 +10,30 @@ ms.date: 03/23/2020
 ms.author: ramkris
 ms.reviewer: sngun
 ms.openlocfilehash: 40ef05107f20a3396f6710f894a2dbad2d7fa6c9
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80478848"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>使用批量执行程序 .NET 库在 Azure Cosmos DB 中执行批量操作
 
 > [!NOTE]
-> 本文中描述的此大容量执行器库适用于使用 .NET SDK 2.x 版本的应用程序。 对于新应用程序，可以使用直接与[.NET SDK 版本 3.x](tutorial-sql-api-dotnet-bulk-import.md)一起可用的**批量支持**，并且不需要任何外部库。 
+> 本文中所述的此批量执行程序库是使用 .NET SDK 2.x 版的应用程序维护的。 对于新应用程序，可以使用[.NET SDK 版本](tutorial-sql-api-dotnet-bulk-import.md)3.x 直接提供的**批量支持**，而不需要任何外部库。 
 
-> 如果您当前正在使用批量执行器库并计划迁移到较新的 SDK 上的批量支持，请使用[迁移指南](how-to-migrate-from-bulk-executor-library.md)中的步骤迁移应用程序。
+> 如果你当前正在使用大容量执行程序库，并且计划迁移到较新的 SDK 上的批量支持，请使用[迁移指南](how-to-migrate-from-bulk-executor-library.md)中的步骤来迁移你的应用程序。
 
 本教程提供有关使用批量执行程序 .NET 库在 Azure Cosmos 容器中导入和更新文档的说明。 若要了解批量执行程序库及它如何帮助你利用大量吞吐量和存储，请参阅[批量执行程序库概述](bulk-executor-overview.md)一文。 本教程将讲解一个示例 .NET 应用程序，该应用程序可将随机生成的文档批量导入 Azure Cosmos 容器。 导入之后，它会显示如何通过指定要对特定文档字段执行的修补操作，来批量更新导入的数据。
 
 目前，批量执行程序库仅受 Azure Cosmos DB SQL API 和 Gremlin API 帐户支持。 本文介绍如何配合使用 SQL API 帐户和批量执行程序 .NET 库。 若要了解如何配合使用 Gremlin API 帐户和批量执行程序 .NET 库，请参阅[在 Azure Cosmos DB Gremlin API 中执行批量操作](bulk-executor-graph-dotnet.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 如果尚未安装 Visual Studio 2019，可以下载并使用 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。
 
-* 如果没有 Azure 订阅，请先创建[一个免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。"
+* 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-* 无需 Azure 订阅即可[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，也无需缴纳费用或承诺金。 或者，您可以将 Azure [Cosmos DB 模拟器](https://docs.microsoft.com/azure/cosmos-db/local-emulator)与`https://localhost:8081`终结点一起使用。 [对请求进行身份验证](local-emulator.md#authenticating-requests)中提供了主密钥。
+* 无需 Azure 订阅即可[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，也无需缴纳费用或承诺金。 或者，可以将[Azure Cosmos DB 模拟器](https://docs.microsoft.com/azure/cosmos-db/local-emulator)与`https://localhost:8081`终结点一起使用。 [对请求进行身份验证](local-emulator.md#authenticating-requests)中提供了主密钥。
 
 * 使用 .NET 快速入门文章的[创建数据库帐户](create-sql-api-dotnet.md#create-account)部分所述的步骤创建 Azure Cosmos DB SQL API 帐户。
 

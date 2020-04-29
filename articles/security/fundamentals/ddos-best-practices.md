@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure DDoS 保护设计弹性解决方案
+title: 利用 Azure DDoS 保护设计复原解决方案
 description: 了解如何利用日志记录数据深入了解应用程序的情况。
 services: security
 author: terrylanfear
@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
 ms.openlocfilehash: 8be1f1161ac1c4611ddb2a5ec61592394014c488
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80548682"
 ---
-# <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS 保护 - 设计弹性解决方案
+# <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS 保护-设计复原解决方案
 
 本文面向 IT 决策人和安全管理人员。 预期读者熟悉 Azure、网络和安全性。
 DDoS 是企图耗尽应用程序资源的一种攻击。 其目的是影响应用程序的可用性和处理合法请求的能力。 此类攻击正变得越来越复杂，且规模和影响程度越来越高。 DDoS 攻击可能会将任何可通过 Internet 公开访问的终结点作为目标。 针对分布式拒绝服务 (DDoS) 复原能力进行设计需要规划和设计各种故障模式。 Azure 针对 DDoS 攻击提供持续保护。 这种保护默认已集成到 Azure 平台中，且不收取额外的费用。
@@ -73,7 +73,7 @@ Azure 提供两个可以防御网络攻击（第 3 层和第 4 层）的 DDoS �
 
 Azure 中的基本 DDoS 防护包括硬件和软件组件。 软件控制平面决定何时、何处的何种流量应该流过用于分析和消除攻击流量的硬件设备。 控制平面根据基础结构范围的 DDoS 防护策略做出此决定。** 此策略是静态设置的，将全局应用到所有 Azure 客户。
 
-例如，DDoS 防护策略指定在生成多大的流量后应触发保护。** （也就是说，租户的流量应该通过清理设备进行路由。然后，该策略指定清理设备应如何*缓解*攻击。
+例如，DDoS 防护策略指定在生成多大的流量后应触发保护。** （也就是说，应该通过清理设备路由租户的流量。）然后，该策略指定清理设备应如何*缓解*攻击。
 
 Azure DDoS 防护基本服务用于实现基础结构保护和 Azure 平台保护。 当流量速率过大，从而可能影响到多租户环境中的多个客户时，该服务会降低流量。 它不提供警报或者按客户自定义的策略。
 
@@ -81,7 +81,7 @@ Azure DDoS 防护基本服务用于实现基础结构保护和 Azure 平台保�
 
 标准防护提供增强的 DDoS 缓解功能。 这种防护自动经过优化，可帮助保护虚拟网络中的特定 Azure 资源。 可在任何新的或现有的虚拟网络上启用保护，且无需对应用程序或资源做出任何更改。 与基本服务相比，该服务具有多种优势，包括日志记录、警报和遥测。 以下部分概述了标准 Azure DDoS 防护服务的重要功能。
 
-#### <a name="adaptive-real-time-tuning"></a>自适应实时调谐
+#### <a name="adaptive-real-time-tuning"></a>自适应实时优化
 
 Azure DDoS 防护基本服务可帮助保护客户，并防止影响其他客户。 例如，如果为典型的合法传入流量预配了某个服务，并且该流量小于基础结构范围 DDoS 防护策略的触发率，那么，针对该客户资源的 DDoS 攻击可能会被忽略。** 一般来说，最近攻击（例如多向量 DDoS）的复杂性，以及租户的应用程序特定行为，要求按客户采用自定义的保护策略。 该服务使用两项见解来实现这种自定义：
 
@@ -93,11 +93,11 @@ Azure DDoS 防护基本服务可帮助保护客户，并防止影响其他客户
 
 #### <a name="ddos-protection-telemetry-monitoring-and-alerting"></a>DDoS 防护遥测、监视和警报
 
-标准 DDoS 防护在 DDoS 攻击持续期间通过 [Azure Monitor](/azure/azure-monitor/overview) 公开丰富的遥测数据。 可以针对 DDoS 防护使用的任何 Azure Monitor 指标配置警报。 您可以通过 Azure 监视器诊断界面将日志记录与 Splunk（Azure 事件中心）、Azure 监视器日志和 Azure 存储集成，以便进行高级分析。
+标准 DDoS 防护在 DDoS 攻击持续期间通过 [Azure Monitor](/azure/azure-monitor/overview) 公开丰富的遥测数据。 可以针对 DDoS 防护使用的任何 Azure Monitor 指标配置警报。 可以通过 Azure Monitor 诊断界面将日志记录与 Splunk （Azure 事件中心）、Azure Monitor 日志和 Azure 存储集成，以便进行高级分析。
 
 ##### <a name="ddos-mitigation-policies"></a>DDoS 缓解策略
 
-在 Azure 门户中，选择 **"监视** > **指标**"。 在“指标”窗格上，依次选择资源组、“公共 IP 地址”资源类型和 Azure 公共 IP 地址。******** DDoS 指标将显示在“可用指标”窗格中。****
+在 Azure 门户中，选择 "**监视** > **指标**"。 在“指标”窗格上，依次选择资源组、“公共 IP 地址”资源类型和 Azure 公共 IP 地址。******** DDoS 指标将显示在“可用指标”窗格中。****
 
 标准 DDoS 防护针对已启用 DDoS 的虚拟网络中受保护资源的每个公共 IP，应用三个自动优化的缓解策略（TCP SYN、TCP 和 UDP）。 可以选择“触发 DDoS 缓解措施的入站数据包数”指标来查看策略阈值。****
 
@@ -127,7 +127,7 @@ Azure DDoS 防护基本服务可帮助保护客户，并防止影响其他客户
 
 如果使用标准 DDoS 防护，请确保在面向 Internet 的终结点的虚拟网络上启用它。 配置 DDoS 警报有助于持续密切关注基础结构上存在的任何潜在攻击。 
 
-独立监控应用程序。 了解应用程序的正常行为。 如果应用程序在遇到 DDoS 攻击期间的行为不符合预期，请准备好采取措施。
+独立监视您的应用程序。 了解应用程序的正常行为。 如果应用程序在遇到 DDoS 攻击期间的行为不符合预期，请准备好采取措施。
 
 #### <a name="testing-through-simulations"></a>通过模拟进行测试
 
@@ -193,7 +193,7 @@ Microsoft 部署了广泛的威胁情报网络。 此网络利用了为 Microsof
 
 - 某个行动者威胁针对你的资源发起 DDoS 攻击。
 
-- 如果需要允许列出 Azure DDoS 保护标准的 IP 或 IP 范围。 常见方案是，如果流量从外部云 WAF 路由到 Azure，则允许列表 IP。 
+- 如果需要允许列出 Azure DDoS 保护标准中的 IP 或 IP 范围。 常见的情况是，如果流量从外部云 WAF 路由到 Azure，则允许列出 IP。 
 
 对于影响关键业务的攻击，请创建严重性为 A 的[支持票证](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 
@@ -235,7 +235,7 @@ Microsoft 部署了广泛的威胁情报网络。 此网络利用了为 Microsof
 
 #### <a name="paas-web-application"></a>PaaS Web 应用程序
 
-此参考体系结构显示了在单个区域中运行 Azure 应用服务应用程序。 此体系结构显示了使用 [Azure 应用服务和](https://azure.microsoft.com/documentation/services/app-service/)  [Azure SQL 数据库](https://azure.microsoft.com/documentation/services/sql-database/)的 Web 应用程序的一组经过验证的实践。
+此参考体系结构显示了在单个区域中运行 Azure 应用服务应用程序。 此体系结构显示了一组适用于使用 [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/) 和 [Azure SQL 数据库](https://azure.microsoft.com/documentation/services/sql-database/)的 web 应用程序的经过验证的做法。
 已针对故障转移场景设置了备用区域。
 
 ![PaaS Web 应用程序的参考体系结构示意图](./media/ddos-best-practices/image11.png)

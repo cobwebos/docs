@@ -1,7 +1,7 @@
 ---
 title: 大规模配置数据 - Azure 自动化
 description: 了解如何为 Azure 自动化中的 State Configuration 大规模配置数据。
-keywords: dsc,powershell,配置,安装程序
+keywords: dsc,powershell,配置,设置
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -11,15 +11,15 @@ ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 644ea1c00af7e71ff56852298fff18e5293c137b
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80585569"
 ---
 # <a name="configuration-data-at-scale"></a>大规模配置数据
 
-> 适用于： Windows 电源外壳 5.1
+> 适用于：Windows PowerShell 5.1
 
 管理成百上千的服务器可能是一项挑战。
 客户提供的反馈表明，最困难的方面实际上是管理[配置数据](/powershell/scripting/dsc/configurations/configdata)。
@@ -27,14 +27,14 @@ ms.locfileid: "80585569"
 
 > [!NOTE]
 > 本文引用了一个由开放源代码社区维护的解决方案。
-> 支持仅以 GitHub 协作的形式提供，而不是从 Microsoft 获得。
+> 支持仅以 GitHub 协作形式提供，不适用于 Microsoft。
 
-## <a name="community-project-datum"></a>社区项目：达图姆
+## <a name="community-project-datum"></a>社区项目：Datum
 
 为了解决此难题，已创建一个名为 [Datum](https://github.com/gaelcolas/Datum) 的社区维护解决方案。
 Datum 基于其他配置管理平台的出色构想，并为 PowerShell DSC 实现了相同类型的解决方案。
 根据逻辑思想将信息[组织到文本文件中](https://github.com/gaelcolas/Datum#3-intended-usage)。
-示例有：
+示例如下：
 
 - 应全局应用的设置
 - 应当应用于位置中所有服务器的设置

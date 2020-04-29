@@ -4,10 +4,10 @@ description: 了解如何将现有应用程序打包为来宾可执行文件，�
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.openlocfilehash: c6c6bc0369593c177b74261da1fd8c15dd73fcb3
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80520489"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>打包现有可执行文件并将其部署到 Service Fabric
@@ -22,8 +22,8 @@ ms.locfileid: "80520489"
 
 Visual Studio 提供 Service Fabric 服务模板将来宾可执行文件部署到 Service Fabric 群集。
 
-1. 选择 **"文件** > **新项目**"并创建服务结构应用程序。
-2. 选择 **"来宾可执行文件**"作为服务模板。
+1. 依次选择“**文件**” > “**新建项目**”，并创建一个 Service Fabric 应用程序。
+2. 选择“**来宾可执行文件**”作为服务模板。
 3. 单击“**浏览**”，选择包含可执行文件的文件夹，并填充剩余参数，从而创建服务。
    * *代码包行为*。 可以设置为将文件夹中的所有内容复制到 Visual Studio 项目中，这在可执行文件不发生变化时很有用。 如果预期可执行文件会更改，并且希望能够动态选择新版本，则可以改为选择文件夹的链接。 在 Visual Studio 中创建应用程序项目时，可以使用链接的文件夹。 这样一来，可以从项目内链接到源位置，以便能够在来宾可执行文件的源目标中对它进行更新。 在生成时，应用程序包中包括这些更新。
    * *Program* 指定为了启动服务应运行的可执行文件。
@@ -32,16 +32,16 @@ Visual Studio 提供 Service Fabric 服务模板将来宾可执行文件部署�
      * `CodeBase` 指定将应用程序包中的 Code 目录（如上述文件结构中的 `Code` 目录所示）设为工作目录。
      * `CodePackage` 指定将应用程序包的根目录（如上述文件结构中的 `GuestService1Pkg` 目录所示）设为工作目录。
      * `Work` 指定文件会被置于名为 work 的子目录中。
-4. 为服务命名，然后单击 **"确定**"。
+4. 为服务命名，并单击“**确定**”。
 5. 如果服务需要通信终结点，现在可以在 ServiceManifest.xml 文件中添加协议、端口和类型。 例如：`<Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" UriScheme="http" PathSuffix="myapp/" Type="Input" />`。
 6. 现在，可以通过在 Visual Studio 中调试解决方案，针对本地群集执行打包和发布操作。 完成后，可以将应用程序发布到远程群集，也可以将解决方案签入源控件。
 7. 请阅读[检查正在运行的应用程序](#check-your-running-application)，了解如何查看在 Service Fabric Explorer 中运行的来宾可执行服务。
 
 有关示例演练，请参阅[使用 Visual Studio 创建第一个来宾可执行应用程序](quickstart-guest-app.md)。
 
-### <a name="packaging-multiple-executables-with-visual-studio"></a>使用 Visual Studio 打包多个可执行文件
+### <a name="packaging-multiple-executables-with-visual-studio"></a>在 Visual Studio 中打包多个可执行文件
 
-您可以使用 Visual Studio 生成包含多个来宾可执行文件的应用程序包。 添加第一个来宾可执行文件后，右键单击应用程序项目并选择 **"添加>新服务交换矩阵服务**，将第二个来宾可执行项目添加到解决方案中。
+可以使用 Visual Studio 生成包含多个来宾可执行文件的应用程序包。 添加第一个来宾可执行文件后，右键单击应用程序项目，然后选择 "**外接程序 >" Service Fabric "服务**"，将第二个来宾可执行项目添加到解决方案中。
 
 > [!NOTE]
 > 如果选择在 Visual Studio 项目中链接源，则生成 Visual Studio 解决方案可确保应用程序包能够与源中的更改保持同步。
@@ -56,7 +56,7 @@ Visual Studio 提供 Service Fabric 服务模板将来宾可执行文件部署�
 
 Yeoman 创建应用程序包，其中包含相应的应用程序和清单文件，以及安装和卸载脚本。
 
-### <a name="packaging-multiple-executables-using-yeoman-on-linux"></a>在 Linux 上使用 Yeoman 打包多个可执行文件
+### <a name="packaging-multiple-executables-using-yeoman-on-linux"></a>使用 Linux 上的 Yeoman 打包多个可执行文件
 
 要将其他服务添加到使用 `yo` 创建的应用程序，请执行以下步骤：
 
@@ -286,7 +286,7 @@ New-ServiceFabricService -ApplicationName 'fabric:/nodeapp' -ServiceName 'fabric
 ```
 
 >[!TIP]
-> 如果包较大或包含多个文件，请先[压缩包](service-fabric-package-apps.md#compress-a-package)，然后将其复制到映像存储区。 [在此处](service-fabric-deploy-remove-applications.md#upload-the-application-package)阅读更多内容。
+> 如果包较大或包含多个文件，请先[压缩包](service-fabric-package-apps.md#compress-a-package)，然后将其复制到映像存储区。 [在此处](service-fabric-deploy-remove-applications.md#upload-the-application-package)阅读详细信息。
 >
 
 Service Fabric 服务可以采用各种“配置”进行部署。 例如，可以部署为单个或多个实例，也可以部署为在 Service Fabric 群集的每个节点上都有一个服务实例。

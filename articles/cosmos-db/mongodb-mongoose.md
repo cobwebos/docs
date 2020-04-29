@@ -10,10 +10,10 @@ author: timsander1
 ms.author: tisande
 ms.custom: seodec18
 ms.openlocfilehash: ff4455571aa5cfa5c9214bdf18af1853b0cef352
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80585408"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>将 Node.js Mongoose 应用程序连接到 Azure Cosmos DB
@@ -22,29 +22,29 @@ ms.locfileid: "80585408"
 
 Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Cosmos DB 核心的全球分布和水平缩放功能。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-[Node.js](https://nodejs.org/) v0.10.29 或更高版本。
+[Node.js](https://nodejs.org/) 版本 v0.10.29 或更高版本。
 
 ## <a name="create-a-cosmos-account"></a>创建 Cosmos 帐户
 
-让我们创建一个 Cosmos 帐户。 如果已经有想要使用的帐户，可以直接跳到“设置 Node.js 应用程序”。 如果使用 Azure Cosmos DB 仿真器，请按照[Azure Cosmos DB 仿真器](local-emulator.md)的步骤设置仿真器，然后向前跳过以设置 Node.js 应用程序。
+让我们创建一个 Cosmos 帐户。 如果已经有想要使用的帐户，可以直接跳到“设置 Node.js 应用程序”。 如果使用 Azure Cosmos DB 仿真器，请遵循 [Azure Cosmos DB 仿真器](local-emulator.md)中的步骤设置该仿真器，并直接跳到“设置 Node.js 应用程序”。
 
 [!INCLUDE [cosmos-db-create-dbaccount-mongodb](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
 ### <a name="create-a-database"></a>创建数据库 
-在此应用程序中，我们将介绍在 Azure Cosmos DB 中创建集合的两种方法： 
-- **将每个对象模型存储在单独的集合中**：我们建议[创建一个具有专用吞吐量的数据库](set-throughput.md#set-throughput-on-a-database)。 使用此容量模型将为您提供更好的成本效益。
+在此应用程序中，我们将介绍两种在 Azure Cosmos DB 中创建集合的方法： 
+- **将每个对象模型存储在一个单独的集合中**：我们建议[创建具有专用吞吐量的数据库](set-throughput.md#set-throughput-on-a-database)。 使用此容量模型可以更好地节省成本。
 
-    :::image type="content" source="./media/mongodb-mongoose/db-level-throughput.png" alt-text="Node.js 教程 - Azure 门户的屏幕截图，演示如何在 Azure Cosmos DB 帐户的数据资源管理器中创建数据库，以便与 Mongoose 节点模块一起使用":::
+    :::image type="content" source="./media/mongodb-mongoose/db-level-throughput.png" alt-text="Node.js 教程-Azure 门户的屏幕截图，其中显示了如何在 Azure Cosmos DB 帐户的数据资源管理器中创建数据库，以便用于 Mongoose 节点模块":::
 
-- **将所有对象模型存储在单个 Cosmos DB 集合中**：如果您希望将所有模型存储在单个集合中，则只需创建新数据库而无需选择预配吞吐量选项即可。 使用此容量模型将为每个对象模型创建具有其自身吞吐量容量的每个集合。
+- 将**所有对象模型存储在单个 Cosmos DB 集合中**：如果想要在单个集合中存储所有模型，只需选择 "预配吞吐量" 选项即可创建新的数据库。 使用此容量模型将创建每个集合，每个集合都具有其自己的每个对象模型的吞吐量容量。
 
-创建数据库后，您将在下面的环境变量中使用`COSMOSDB_DBNAME`该名称。
+创建数据库后，将在下面的`COSMOSDB_DBNAME`环境变量中使用该名称。
 
 ## <a name="set-up-your-nodejs-application"></a>设置 Node.js 应用程序
 
@@ -104,15 +104,15 @@ Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可�
 
     连接到 Azure Cosmos DB 后，可以在 Mongoose 中立即开始设置对象模型。
 
-## <a name="best-practices-for-using-mongoose-with-cosmos-db"></a>将蒙古斯与宇宙 DB 一起使用的最佳做法
+## <a name="best-practices-for-using-mongoose-with-cosmos-db"></a>结合使用 Mongoose 与 Cosmos DB 的最佳实践
 
-对于你创建的每个模型，Mongoose 都会创建一个新集合。 最好使用先前讨论的[数据库级吞吐量选项](set-throughput.md#set-throughput-on-a-database)（以前讨论）来解决这一问题。 要使用单个集合，您需要使用 Mongoose[鉴别器](https://mongoosejs.com/docs/discriminators.html)。 鉴别器是架构继承机制。 使用鉴别器可在同一底层 MongoDB 集合的底层创建多个具有重叠架构的模型。
+对于你创建的每个模型，Mongoose 都会创建一个新集合。 使用之前讨论的 "[数据库级别吞吐量" 选项](set-throughput.md#set-throughput-on-a-database)最好地解决此问题。 若要使用单个集合，需要使用 Mongoose[鉴别器](https://mongoosejs.com/docs/discriminators.html)。 鉴别器是架构继承机制。 使用鉴别器可在同一底层 MongoDB 集合的底层创建多个具有重叠架构的模型。
 
-可将各种数据模型存储在同一集合中，然后在查询时使用筛选子句，只提取所需的数据。 让我们浏览一下每个模型。
+可将各种数据模型存储在同一集合中，然后在查询时使用筛选子句，只提取所需的数据。 让我们演练一下每个模型。
 
 ### <a name="one-collection-per-object-model"></a>每个对象模型一个集合
 
-本部分探讨了如何使用 Azure Cosmos DB 的用于 MongoDB 的 API 来实现此目的。 此方法是我们推荐的方法，因为它允许您控制成本和容量。 因此，数据库上的请求单位数量不取决于对象模型的数量。 这是 Mongoose 的默认操作模型，因此，您可能对此很熟悉。
+本部分探讨了如何使用 Azure Cosmos DB 的用于 MongoDB 的 API 来实现此目的。 此方法是我们建议的方法，因为它允许您控制成本和容量。 因此，数据库的请求单位数量并不取决于对象模型的数量。 这是 Mongoose 的默认操作模型，因此，你可能会熟悉这一点。
 
 1. 再次打开 ```index.js```。
 
@@ -321,7 +321,7 @@ Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可�
 
 - 了解如何将 [Studio 3T](mongodb-mongochef.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
 - 了解如何将 [Robo 3T](mongodb-robomongo.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
-- 使用 Azure Cosmos DB 的用于 MongoDB 的 API 浏览 MongoDB [示例](mongodb-samples.md)。
+- 通过 Azure Cosmos DB 的用于 MongoDB 的 API 来浏览 MongoDB [示例](mongodb-samples.md)。
 
 [alldata]: ./media/mongodb-mongoose/mongo-collections-alldata.png
 [multiple-coll]: ./media/mongodb-mongoose/mongo-mutliple-collections.png

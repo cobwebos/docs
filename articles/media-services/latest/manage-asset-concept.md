@@ -1,7 +1,7 @@
 ---
 title: 管理 Azure 媒体服务中的资产
 titleSuffix: Azure Media Services
-description: 输入媒体（例如，通过上传或实时引入）、输出媒体（从作业输出）和发布媒体（用于流式传输）的资产。 本主题概述了如何创建新资产和上载文件。
+description: 可以在资产中输入媒体（例如，通过上传或实时引入）、输出媒体（从作业输出）以及从中发布媒体（用于流式处理）。 本主题概述如何创建新资产和上传文件。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,23 +14,23 @@ ms.date: 03/26/2020
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 9136fd702fad5c12a8ec97a68ff8a592a203d7d2
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80582200"
 ---
 # <a name="manage-assets"></a>管理资产
 
-在 Azure 媒体服务中，[资产](https://docs.microsoft.com/rest/api/media/assets)是您 
+在 Azure 媒体服务的[资产](https://docs.microsoft.com/rest/api/media/assets)中可执行以下操作： 
 
-* 将媒体文件上载到资产中，
-* 将实时流引入并存档到资产中，
-* 将分析作业编码的结果输出到资产，
-* 发布用于流式传输的媒体， 
-* 从资产下载文件。
+* 将媒体文件上传到资产；
+* 将实时传送流引入和存档到资产；
+* 将分析作业的编码结果输出到资产；
+* 发布媒体以进行流式处理； 
+* 从资产中下载文件。
 
-本主题概述了如何将文件上载到资产和执行一些其他常见操作。 它还提供指向代码示例和相关主题的链接。
+本主题概述如何将文件上传到资产，以及如何执行其他一些常见操作。 此外，提供了代码示例和相关主题的链接。
 
 ## <a name="prerequisite"></a>先决条件 
 
@@ -39,7 +39,7 @@ ms.locfileid: "80582200"
 * [概念](concepts-overview.md)
 * [使用媒体服务 v3 API 进行开发](media-services-apis-overview.md)（包括有关访问 API、命名约定等的信息） 
 
-## <a name="upload-media-files-into-an-asset"></a>将媒体文件上载到资产
+## <a name="upload-media-files-into-an-asset"></a>将媒体文件上传到资产
 
 将数字文件上传到存储中并与资产关联后，即可将其用于媒体服务编码、流式传输和分析内容工作流。 一个常见的媒体服务工作流是上传、编码和流式传输文件。 本部分概述常规步骤。
 
@@ -58,9 +58,9 @@ ms.locfileid: "80582200"
 
     可以使用媒体服务 API [列出资产容器 URL](https://docs.microsoft.com/rest/api/media/assets/listcontainersas)。
 
-    **资产容器Sas.listContainerSas**采用一个[列表容器As输入](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput)参数，你设置`expiryTime`。 时间应设置为< 24 小时。
+    AssetContainerSas.listContainerSas 采用 [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) 参数，在此参数中可以设置 `expiryTime`。  时间应设置为小于 24 小时。
 
-    [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput)返回多个 SAS URL，因为每个存储帐户有两个存储帐户密钥。 存储帐户有两个密钥，因为它有助于故障转移和存储帐户密钥的无缝轮换。 第一个 SAS URL 表示第一个存储帐户密钥，第二个 SAS URL 表示第二个密钥。
+    [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) 返回多个 SAS URL，因为每个存储帐户有两个存储帐户密钥。 存储帐户有两个密钥，因为它有助于进行故障转移并无缝轮换存储帐户密钥。 第一个 SAS URL 表示第一个存储帐户密钥，第二个 SAS URL 表示第二个密钥。
 3. 使用 Azure 存储 API 或 SDK（例如，[存储 REST API](../../storage/common/storage-rest-api-auth.md) 或 [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)）将文件上传到资产容器。
 4. 使用媒体服务 v3 API 创建用于处理“输入”资产的转换和作业。 有关详细信息，请参阅[转换和作业](transform-concept.md)。
 5. 从“输出”资产流式传输内容。
@@ -100,40 +100,40 @@ curl -X PUT \
  Asset asset = await client.Assets.CreateOrUpdateAsync(resourceGroupName, accountName, assetName, new Asset());
 ```
 
-### <a name="see-also"></a>请参阅
+### <a name="see-also"></a>另请参阅
 
 * [从本地文件创建作业输入](job-input-from-local-file-how-to.md)
 * [从 HTTPS URL 创建作业输入](job-input-from-http-how-to.md)
 
-## <a name="ingest-and-archive-live-streams-into-an-asset"></a>将实时流引入并存档到资产中
+## <a name="ingest-and-archive-live-streams-into-an-asset"></a>将实时传送流引入和存档到资产
 
-在媒体服务中，[实时输出](https://docs.microsoft.com/rest/api/media/liveoutputs)对象类似于数字录像机，它将捕获您的实时流并将其记录到媒体服务帐户中的资产中。 记录的内容将保存到[资产](https://docs.microsoft.com/rest/api/media/assets)资源定义的容器中。
+在媒体服务中，[实时输出](https://docs.microsoft.com/rest/api/media/liveoutputs)对象类似于数字视频录制器，它会捕获实时流并将其记录到媒体服务帐户中的某个资产内。 记录的内容保存在[资产](https://docs.microsoft.com/rest/api/media/assets)资源定义的容器中。
 
-有关详细信息，请参见:
+有关详细信息，请参阅：
 
 * [使用云 DVR](live-event-cloud-dvr.md)
-* [流式传输实时教程](stream-live-tutorial-with-api.md)
+* [流式传输实时流的教程](stream-live-tutorial-with-api.md)
 
-## <a name="output-the-results-of-a-job-to-an-asset"></a>将作业的结果输出到资产
+## <a name="output-the-results-of-a-job-to-an-asset"></a>将作业结果输出到资产
 
-在媒体服务中，在处理视频（例如编码或分析）时，您需要创建一个输出[资产](assets-concept.md)来存储[作业](transforms-jobs-concept.md)的结果。
+在媒体服务中，处理视频（例如编码或分析）时，需要创建一个输出[资产](assets-concept.md)来存储[作业](transforms-jobs-concept.md)结果。
 
-有关详细信息，请参见:
+有关详细信息，请参阅：
 
 * [对视频进行编码](encoding-concept.md)
 * [从本地文件创建作业输入](job-input-from-local-file-how-to.md)
 
-## <a name="publish-an-asset-for-streaming"></a>发布用于流式处理的资产
+## <a name="publish-an-asset-for-streaming"></a>发布资产以进行流式处理
 
-要发布用于流式处理的资产，您需要创建[流式处理器](streaming-locators-concept.md)。 流式处理器需要知道要发布的资产名称。 
+若要发布资产以进行流式处理，需要创建一个[流定位符](streaming-locators-concept.md)。 流定位符需要知道所要发布的资产名称。 
 
-有关详细信息，请参见:
+有关详细信息，请参阅：
 
-[教程：使用媒体服务 v3 对视频进行上载、编码和流式传输](stream-files-tutorial-with-api.md)
+[教程：使用媒体服务 v3 上传、编码和流式传输视频](stream-files-tutorial-with-api.md)
 
-## <a name="download-results-of-a-job-from-an-output-asset"></a>从输出资产下载作业结果
+## <a name="download-results-of-a-job-from-an-output-asset"></a>从输出资产中下载作业结果
 
-然后，您可以使用媒体服务和存储 API 将作业的这些结果下载到本地文件夹。 
+然后，可以使用媒体服务和存储 API 将作业结果下载到本地文件夹。 
 
 请参阅[下载文件](download-results-howto.md)示例。
 
@@ -143,8 +143,8 @@ curl -X PUT \
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅演示如何上传、编码、分析、实时流式传输和按需流式传输的完整代码示例： 
+查看演示如何上传、编码、分析、流式传输实时流和点播流的完整代码示例： 
 
-* [爪哇](https://docs.microsoft.com/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/)， 
-* [.NET](https://docs.microsoft.com/samples/azure-samples/media-services-v3-dotnet/azure-media-services-v3-samples-using-net/)， 
-* [REST](https://docs.microsoft.com/samples/azure-samples/media-services-v3-rest-postman/azure-media-services-postman-collection/).
+* [Java](https://docs.microsoft.com/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/)； 
+* [.NET](https://docs.microsoft.com/samples/azure-samples/media-services-v3-dotnet/azure-media-services-v3-samples-using-net/)； 
+* [REST](https://docs.microsoft.com/samples/azure-samples/media-services-v3-rest-postman/azure-media-services-postman-collection/)。

@@ -8,10 +8,10 @@ ms.date: 03/31/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 3dadb57c6358623974de1a27e1601d99b28fee32
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80584331"
 ---
 # <a name="locking-down-an-app-service-environment"></a>锁定应用服务环境
@@ -41,11 +41,11 @@ ASE 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 
 ## <a name="locking-down-inbound-management-traffic"></a>锁定入站管理流量
 
-如果尚未为 ASE 子网分配 NSG，请创建一个。 在 NSG 中，设置第一个规则，以允许在端口 454、455 上使用名为 AppServiceManagement 的服务标记中的流量。 允许从 AppService 管理标记进行访问的规则是公共 IP 管理 ASE 的唯一要求。 位于该服务标记后面的地址仅用来管理 Azure 应用服务。 流经这些连接的管理流量由身份验证证书提供加密和保护。 此通道上的典型流量包括客户发起的命令和运行状况探测等等。 
+如果尚未为 ASE 子网分配 NSG，请创建一个。 在 NSG 中，将第一个规则设为允许来自端口 454、455 上名为 AppServiceManagement 的服务标记的流量。 若要从公共 IP 管理 ASE，只需设置允许从 AppServiceManagement 标记进行访问的规则。 位于该服务标记后面的地址仅用来管理 Azure 应用服务。 流经这些连接的管理流量由身份验证证书提供加密和保护。 此通道上的典型流量包括客户发起的命令和运行状况探测等等。 
 
 通过门户创建的带有新子网的 ASE 在创建时带有一个 NSG，其中包含 AppServiceManagement 标记的允许规则。  
 
-ASE 还必须允许来自端口 16001 上的负载均衡器代码的入站请求。 端口 16001 上的负载均衡器的请求是在负载均衡器和 ASE 前端之间保持活动检查。 如果端口 16001 被阻止，则 ASE 将不正常。
+ASE 还必须允许端口 16001 上来自负载均衡器标记的入站请求。 端口 16001 上来自负载均衡器的请求在负载均衡器和 ASE 前端之间进行保持连接检查。 如果端口 16001 被阻止，则 ASE 将不正常。
 
 ## <a name="configuring-azure-firewall-with-your-ase"></a>在 ASE 中配置 Azure 防火墙 
 
@@ -61,11 +61,11 @@ ASE 还必须允许来自端口 16001 上的负载均衡器代码的入站请求
    
    ![添加应用程序规则][1]
    
-1. 在 Azure 防火墙 UI >“规则”>“网络规则集合”中，选择“添加网络规则集合”。 提供名称、优先级，并设置“允许”。 在“规则”部分中，在 IP 地址下，提供一个名称，选择“任何”作为协议，将源和目标地址设置为 *，将端口设置为 123。**** 此规则允许系统使用 NTP 执行时钟同步。 以相同的方式针对端口 12000 创建另一个规则，以帮助诊断任何系统问题。 
+1. 在 Azure 防火墙 UI >“规则”>“网络规则集合”中，选择“添加网络规则集合”。 提供名称、优先级，并设置“允许”。 在“规则”部分中，在 IP 地址下，提供一个名称，选择“任何”作为协议，将源和目标地址设置为 *，将端口设置为 123。  此规则允许系统使用 NTP 执行时钟同步。 以相同的方式针对端口 12000 创建另一个规则，以帮助诊断任何系统问题。 
 
    ![添加 NTP 网络规则][3]
    
-1. 在 Azure 防火墙 UI >“规则”>“网络规则集合”中，选择“添加网络规则集合”。 提供名称、优先级，并设置“允许”。 在“规则”部分中，在“服务标记”下，提供一个名称，选择“任何”**** 作为协议，将 * 设置为源地址，选择服务标记 AzureMonitor，然后将端口设置为 80、443。 此规则允许系统向 Azure Monitor 提供运行状况和指标信息。
+1. 在 Azure 防火墙 UI >“规则”>“网络规则集合”中，选择“添加网络规则集合”。 提供名称、优先级，并设置“允许”。 在“规则”部分中，在“服务标记”下，提供一个名称，选择“任何”  作为协议，将 * 设置为源地址，选择服务标记 AzureMonitor，然后将端口设置为 80、443。 此规则允许系统向 Azure Monitor 提供运行状况和指标信息。
 
    ![添加 NTP 服务标记网络规则][6]
    
@@ -98,7 +98,7 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 
     AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
  
-首次运行应用程序时，如果不知道所有的应用程序依赖项，则将 Azure 防火墙与 Azure Monitor 日志集成会很有用。 可以从[Azure 监视器 中的分析日志数据](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)中了解有关 Azure 监视器日志的更多信息。
+首次运行应用程序时，如果不知道所有的应用程序依赖项，则将 Azure 防火墙与 Azure Monitor 日志集成会很有用。 可以通过[在 Azure Monitor 中分析日志数据](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)详细了解 Azure Monitor 日志。
  
 ## <a name="dependencies"></a>依赖项
 
@@ -226,9 +226,9 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 | \*.management.azure.com:443 |
 | \*.update.microsoft.com:443 |
 | \*.windowsupdate.microsoft.com:443 |
-| \*.identity.azure.net:443 |
+| \*。 identity.azure.net:443 |
 | \*.ctldl.windowsupdate.com:80 |
-| \*.ctldl.windowsupdate.com:443 |
+| \*。 ctldl.windowsupdate.com:443 |
 
 #### <a name="linux-dependencies"></a>Linux 依赖项 
 
@@ -243,7 +243,7 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 |download.mono-project.com:80 |
 |packages.treasuredata.com:80|
 |security.ubuntu.com:80 |
-| \*.cdn.mscr.io:443 |
+| \*。 cdn.mscr.io:443 |
 |mcr.microsoft.com:443 |
 |packages.fluentbit.io:80 |
 |packages.fluentbit.io:443 |
@@ -262,15 +262,15 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 
 ## <a name="us-gov-dependencies"></a>US Gov 依赖项
 
-对于美国 Gov 区域中的 ASE，请按照本文档的[ASE](https://docs.microsoft.com/azure/app-service/environment/firewall-integration#configuring-azure-firewall-with-your-ase)部分的"配置 Azure 防火墙"中的说明来配置具有 ASE 的 Azure 防火墙。
+对于 US Gov 区域中的 Ase，请按照本文档中的[使用 Ase 配置 Azure 防火墙](https://docs.microsoft.com/azure/app-service/environment/firewall-integration#configuring-azure-firewall-with-your-ase)部分中的说明，使用 Ase 配置 azure 防火墙。
 
-如果要在美国政府中使用 Azure 防火墙以外的设备 
+如果要在 US Gov 中使用 Azure 防火墙以外的设备 
 
 * 应在支持服务终结点的服务中配置服务终结点。
 * 可将 FQDN HTTP/HTTPS 终结点放在防火墙设备中。
 * 通配符 HTTP/HTTPS 终结点是可以根据许多限定符随 ASE 一起变化的依赖项。
 
-Linux 不在美国 Gov 区域提供，因此不列为可选配置。
+Linux 在 US Gov 区域中不可用，因此不作为可选配置列出。
 
 #### <a name="service-endpoint-capable-dependencies"></a>支持服务终结点的依赖项 ####
 

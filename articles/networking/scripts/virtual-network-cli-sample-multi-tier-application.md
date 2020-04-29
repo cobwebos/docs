@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
 ms.openlocfilehash: 97e26eaed72bc15ebc46a893d269b05484d8a064
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80521542"
 ---
 # <a name="create-a-network-for-multi-tier-applications"></a>为多层应用程序创建网络
@@ -59,6 +59,6 @@ az group delete --name MyResourceGroup --yes
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure CLI 的详细信息，请参阅[Azure CLI 文档](/cli/azure)。
+有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。
 
-其他网络 CLI 脚本示例可在[Azure 网络概述文档中](../cli-samples.md)找到
+可在[Azure 网络概述文档](../cli-samples.md)中找到其他网络 CLI 脚本示例

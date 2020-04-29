@@ -1,5 +1,5 @@
 ---
-title: 快速路由：路由筛选器 - 微软对等互连：Azure 门户
+title: ExpressRoute：路由筛选器-Microsoft 对等互连： Azure 门户
 description: 本文介绍如何使用 Azure 门户配置用于 Microsoft 对等互连的路由筛选器。
 services: expressroute
 author: charwen
@@ -9,10 +9,10 @@ ms.date: 07/01/2019
 ms.author: charwen
 ms.custom: seodec18
 ms.openlocfilehash: f2be9b4e7152c61885b1a41e94ebd328059d437b
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80618564"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>配置用于 Microsoft 对等互连的路由筛选器：Azure 门户
@@ -24,7 +24,7 @@ ms.locfileid: "80618564"
 
 路由筛选器是通过 Microsoft 对等互连使用部分受支持服务的一种方法。 本文中的步骤可帮助配置和管理 ExpressRoute 线路的路由筛选器。
 
-Office 365 服务（如交换联机、SharePoint 在线和 Skype 业务）以及 Azure 服务（如存储和 SQL DB）可通过 Microsoft 对等互连访问。 如果在 ExpressRoute 线路中配置 Microsoft 对等互连，则会通过建立的 BGP 会话播发与这些服务相关的所有前缀。 每个前缀附加有 BGP 团体值，以标识通过该前缀提供的服务。 有关 BGP 团体值及其映射到的服务的列表，请参阅 [BGP 团体](expressroute-routing.md#bgp)。
+Office 365 服务（如 Exchange Online、SharePoint Online 和 Skype for Business）以及 Azure 服务（如存储和 SQL 数据库）可通过 Microsoft 对等互连进行访问。 如果在 ExpressRoute 线路中配置 Microsoft 对等互连，则会通过建立的 BGP 会话播发与这些服务相关的所有前缀。 每个前缀附加有 BGP 团体值，以标识通过该前缀提供的服务。 有关 BGP 团体值及其映射到的服务的列表，请参阅 [BGP 团体](expressroute-routing.md#bgp)。
 
 如需连接所有服务，则应通过 BGP 播发大量前缀。 这会显著增加网络中路由器所维护路由表的大小。 如果打算仅使用通过 Microsoft 对等互连提供的一部分服务，可通过两种方式减少路由表大小。 可以：
 
@@ -45,7 +45,7 @@ Office 365 服务（如交换联机、SharePoint 在线和 Skype 业务）以及
 > 
 > 
 
-### <a name="workflow"></a><a name="workflow"></a>流程
+### <a name="workflow"></a><a name="workflow"></a>工作流
 
 若要通过 Microsoft 对等互连成功连接服务，必须完成以下配置步骤：
 
@@ -66,27 +66,27 @@ Office 365 服务（如交换联机、SharePoint 在线和 Skype 业务）以及
 
  - 在开始配置之前，请查看[先决条件](expressroute-prerequisites.md)和[工作流](expressroute-workflows.md)。
 
- - 必须有一个活动的 ExpressRoute 线路。 按照说明[创建 ExpressRoute 电路](expressroute-howto-circuit-portal-resource-manager.md)，并在继续操作之前由连接提供商启用该电路。 ExpressRoute 线路必须处于已预配且已启用状态。
+ - 必须有一个活动的 ExpressRoute 线路。 继续之前，请按照说明[创建 ExpressRoute 线路](expressroute-howto-circuit-portal-resource-manager.md)，并让连接提供商启用该线路。 ExpressRoute 线路必须处于已预配且已启用状态。
 
  - 必须有活动的 Microsoft 对等互连。 按照[创建和修改对等互连配置](expressroute-howto-routing-portal-resource-manager.md)中的说明操作
 
 
 ## <a name="step-1-get-a-list-of-prefixes-and-bgp-community-values"></a><a name="prefixes"></a>步骤 1：获取前缀和 BGP 团体值的列表
 
-### <a name="1-get-a-list-of-bgp-community-values"></a>1. 获取 BGP 社区价值观列表
+### <a name="1-get-a-list-of-bgp-community-values"></a>1. 获取 BGP 团体值的列表
 
 可从 [ExpressRoute 路由要求](expressroute-routing.md)页获取与可通过 Microsoft 对等互连访问的服务关联的 BGP 社区值。
 
-### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. 列出要使用的值
+### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. 创建要使用的值的列表
 
-创建要在路由筛选器中使用的[BGP 社区值](expressroute-routing.md#bgp)的列表。 
+创建要在路由筛选器中使用的[BGP 团体值](expressroute-routing.md#bgp)列表。 
 
 ## <a name="step-2-create-a-route-filter-and-a-filter-rule"></a><a name="filter"></a>步骤 2：创建路由筛选器和筛选规则
 
 1 个路由筛选器只能有 1 个规则，并且规则类型必须是“允许”。 此规则可以有与之关联的 BGP 团体值列表。
 
 ### <a name="1-create-a-route-filter"></a>1. 创建路由筛选器
-可以通过选择创建新资源的选项来创建路由筛选器。 单击"**创建资源** > **网络** > **路由筛选器**"，如下图所示：
+可以通过选择创建新资源的选项来创建路由筛选器。 单击 "**创建资源** > " "**网络** > " "**RouteFilter**"，如下图所示：
 
 ![创建路由筛选器](./media/how-to-routefilter-portal/CreateRouteFilter1.png)
 
@@ -94,7 +94,7 @@ Office 365 服务（如交换联机、SharePoint 在线和 Skype 业务）以及
 
 ![创建路由筛选器](./media/how-to-routefilter-portal/CreateRouteFilter.png)
 
-### <a name="2-create-a-filter-rule"></a>2. 创建筛选器规则
+### <a name="2-create-a-filter-rule"></a>2. 创建筛选规则
 
 可通过选择管理规则选项卡添加和更新路由筛选器规则。
 

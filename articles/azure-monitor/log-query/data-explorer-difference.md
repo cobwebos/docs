@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 04/01/2020
 ms.openlocfilehash: 265179909c8ae4a6fa630b835bc9993f042d6460
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80585699"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Azure Monitor 日志查询语言差异
@@ -24,23 +24,23 @@ ms.locfileid: "80585699"
 
 ### <a name="statements-not-supported-in-azure-monitor"></a>Azure Monitor 中不支持的语句
 
-* [别名](/azure/kusto/query/aliasstatement)
-* [查询参数](/azure/kusto/query/queryparametersstatement)
+* [Alias](/azure/kusto/query/aliasstatement)
+* [Query parameters](/azure/kusto/query/queryparametersstatement)
 
 ### <a name="functions-not-supported-in-azure-monitor"></a>Azure Monitor 中不支持的函数
 
-* [群集（）](/azure/kusto/query/clusterfunction)
+* [cluster()](/azure/kusto/query/clusterfunction)
 * [cursor_after()](/azure/kusto/query/cursorafterfunction)
 * [cursor_before_or_at()](/azure/kusto/query/cursorbeforeoratfunction)
 * [cursor_current()、current_cursor()](/azure/kusto/query/cursorcurrent)
-* [数据库（）](/azure/kusto/query/databasefunction)
+* [database()](/azure/kusto/query/databasefunction)
 * [current_principal()](/azure/kusto/query/current-principalfunction)
 * [extent_id()](/azure/kusto/query/extentidfunction)
 * [extent_tags()](/azure/kusto/query/extenttagsfunction)
 
 ### <a name="operators-not-supported-in-azure-monitor"></a>Azure Monitor 中不支持的运算符
 
-* [跨群集联接](/azure/kusto/query/joincrosscluster)
+* [跨群集加入](/azure/kusto/query/joincrosscluster)
 
 ### <a name="plugins-not-supported-in-azure-monitor"></a>Azure Monitor 中不支持的插件
 
@@ -51,8 +51,8 @@ ms.locfileid: "80585699"
 ## <a name="additional-operators-in-azure-monitor"></a>Azure Monitor 中的附加运算符
 下列运算符支持特定的 Azure Monitor 功能并且在 Azure Monitor 外部不可用。
 
-* [应用程序（）](app-expression.md)
-* [工作区（）](workspace-expression.md)
+* [app()](app-expression.md)
+* [workspace()](workspace-expression.md)
 
 ## <a name="next-steps"></a>后续步骤
 

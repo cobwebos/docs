@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
 ms.openlocfilehash: 662619e101b45d1dd8b34ea97e31f214b254124a
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80521886"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>排查虚拟网络对等互连问题
@@ -36,8 +36,8 @@ ms.locfileid: "80521886"
 
 若要为同一订阅中的虚拟网络配置虚拟网络对等互连，请使用以下文章中所述的方法：
 
-* 如果虚拟网络位于同一区域，请参阅[创建对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#create-a-peering)。**
-* 如果虚拟网络位于不同的区域，请参阅[虚拟网络对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)。** 
+* 如果虚拟网络位于同一区域，请参阅[创建对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#create-a-peering)。 
+* 如果虚拟网络位于不同的区域，请参阅[虚拟网络对等互连](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)。  
 
 > [!Note]
 > 对于以下资源，无法通过全局虚拟网络对等互连建立连接： 
@@ -59,7 +59,7 @@ ms.locfileid: "80521886"
 若要为不同订阅或 Active Directory 租户中的虚拟网络配置虚拟网络对等互连，请参阅[使用 Azure CLI 在不同的订阅中创建对等互连](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli)。
 
 > [!Note]
-> 若要配置网络对等互连，必须在这两个订阅中拥有“网络参与者”权限。**** 有关详细信息，请参阅[对等互连权限](virtual-network-manage-peering.md#permissions)。
+> 若要配置网络对等互连，必须在这两个订阅中拥有“网络参与者”权限。  有关详细信息，请参阅[对等互连权限](virtual-network-manage-peering.md#permissions)。
 
 ## <a name="configure-virtual-network-peering-with-hub-spoke-topology-that-uses-on-premises-resources"></a>通过使用本地资源的中心辐射型拓扑配置虚拟网络对等互连
 
@@ -67,11 +67,11 @@ ms.locfileid: "80521886"
 
 ### <a name="for-a-site-to-site-connection-or-an-expressroute-connection"></a>对于站点到站点连接或 ExpressRoute 连接
 
-按照以下步骤操作：[为虚拟网络对等互连配置 VPN 网关传输](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json)。
+遵循以下文章中的步骤：[针对虚拟网络对等互连配置 VPN 网关传输](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json)。
 
 ### <a name="for-point-to-site-connections"></a>对于点到站点连接
 
-1. 按照以下步骤操作：[为虚拟网络对等互连配置 VPN 网关传输](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json)。
+1. 遵循以下文章中的步骤：[针对虚拟网络对等互连配置 VPN 网关传输](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json)。
 2. 建立或更改虚拟网络对等互连后，下载并重新安装点到站点包，使点到站点客户端能够获取指向辐射虚拟网络的更新路由。
 
 ## <a name="configure-virtual-network-peering-with-hub-spoke-topology-virtual-network"></a>配置与中心辐射型拓扑虚拟网络的虚拟网络对等互连
@@ -109,7 +109,7 @@ ms.locfileid: "80521886"
 
 ## <a name="troubleshoot-a-connectivity-issue-between-two-peered-virtual-networks"></a>排查两个对等互连虚拟网络之间的连接问题
 
-使用具有必要[角色和权限](virtual-network-manage-peering.md#permissions)的帐户登录到 [Azure 门户](https://portal.azure.com/)。 选择该虚拟网络，选择“对等互连”，然后检查“状态”字段。******** 状态是什么？
+使用具有必要[角色和权限](virtual-network-manage-peering.md#permissions)的帐户登录到 [Azure 门户](https://portal.azure.com/)。 选择该虚拟网络，选择“对等互连”，然后检查“状态”字段。   状态是什么？
 
 ### <a name="the-peering-status-is-connected"></a>对等互连状态为“已连接”
 
@@ -160,7 +160,7 @@ ms.locfileid: "80521886"
 若要排查影响第三方 NVA 或 VPN 网关的连接问题，请参阅以下文章：
 
 * [NVA 故障排除](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-nva)
-* [服务链](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining)
+* [服务链接](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining)
 
 ### <a name="my-network-does-not-use-a-third-party-nva-or-vpn-gateway"></a>网络未使用第三方 NVA 或 VPN 网关
 
@@ -170,25 +170,25 @@ ms.locfileid: "80521886"
 
 不支持使用远程网关。
 
-如果辐射虚拟网络已有 VPN 网关，则辐射虚拟网络不支持“使用远程网关”选项。**** 这是因为虚拟网络对等互连存在限制。
+如果辐射虚拟网络已有 VPN 网关，则辐射虚拟网络不支持“使用远程网关”选项。  这是因为虚拟网络对等互连存在限制。
 
 #### <a name="both-the-hub-virtual-network-and-the-spoke-virtual-network-do-not-have-a-vpn-gateway"></a>中心虚拟网络和辐射虚拟网络都不使用 VPN 网关
 
 对于站点到站点连接或 Azure ExpressRoute 连接，请检查从本地连接到远程虚拟网络时出现问题的以下主要原因：
 
-* 在具有网关的虚拟网络上，验证是否选中了“允许转发的流量”复选框。****
-* 在没有网关的虚拟网络上，验证是否选中了“使用远程网关”复选框。****
+* 在具有网关的虚拟网络上，验证是否选中了“允许转发的流量”复选框。 
+* 在没有网关的虚拟网络上，验证是否选中了“使用远程网关”复选框。 
 * 让网络管理员检查你的本地设备，验证是否为所有这些设备添加了远程虚拟网络地址空间。
 
 对于点到站点连接：
 
-* 在具有网关的虚拟网络上，验证是否选中了“允许转发的流量”复选框。****
-* 在没有网关的虚拟网络上，验证是否选中了“使用远程网关”复选框。****
+* 在具有网关的虚拟网络上，验证是否选中了“允许转发的流量”复选框。 
+* 在没有网关的虚拟网络上，验证是否选中了“使用远程网关”复选框。 
 * 下载并重新安装点到站点客户端包。 新对等互连的虚拟网络路由不会自动将路由添加到点到站点客户端。
 
 ## <a name="troubleshoot-a-hub-spoke-network-connectivity-issue-between-spoke-virtual-networks-in-the-same-region"></a>排查同一区域中辐射虚拟网络之间的中心辐射型网络连接问题
 
-中心网络必须包含 NVA。 在将 NVA 设置为下一跃点的辐射中配置 UDR，并在中心虚拟网络中启用“允许转发的流量”。****
+中心网络必须包含 NVA。 在将 NVA 设置为下一跃点的辐射中配置 UDR，并在中心虚拟网络中启用“允许转发的流量”。 
 
 有关详细信息，请参阅[服务链接](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining)，并与所选的 [NVA 供应商](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)讨论这些要求。
 
@@ -213,12 +213,12 @@ ms.locfileid: "80521886"
 若要排查此问题：
 
 1. 登录到 Azure 门户。 
-1. 在 Web 应用中选择“网络”，然后选择“VNet 集成”。********
-1. 检查是否可以看到远程虚拟网络。 手动输入远程虚拟网络地址空间（“同步网络”和“添加路由”）。********
+1. 在 Web 应用中选择“网络”，然后选择“VNet 集成”。  
+1. 检查是否可以看到远程虚拟网络。 手动输入远程虚拟网络地址空间（“同步网络”和“添加路由”）。  
 
 有关详细信息，请参阅以下文章：
 
-* [将应用与 Azure 虚拟网络集成](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
+* [将应用与 Azure 虚拟网络进行集成](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
 * [关于点到站点 VPN 路由](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-point-to-site-routing)
 
 ## <a name="troubleshoot-a-virtual-network-peering-configuration-error-message"></a>排查出现虚拟网络对等互连配置错误消息的问题 
@@ -237,12 +237,12 @@ ms.locfileid: "80521886"
 
 ### <a name="the-remote-virtual-network-lacks-a-gateway"></a>远程虚拟网络缺少网关
 
-当您从不同的租户对等虚拟网络，并且稍后想要配置`Use Remote Gateways`时，将发生此问题。 Azure 门户的一个限制是无法验证另一个租户的虚拟网络中是否存在虚拟网络网关。
+当你对等租户中的虚拟网络进行对等互连时，将`Use Remote Gateways`出现此问题。 Azure 门户的限制是，它无法验证其他租户的虚拟网络中是否存在虚拟网络网关。
 
-有两种方法可以解决此问题：
+可以通过两种方法解决此问题：
 
- * 创建新对等互连时，请删除`Use Remote Gateways`对等互连并激活该选项。
- * 使用 PowerShell 或 CLI 而不是 Azure 门户`Use Remote Gateways`来启用 。
+ * 删除对等互连并在创建新`Use Remote Gateways`的对等互连时激活该选项。
+ * 使用 PowerShell 或 CLI （而不是 Azure 门户）启用`Use Remote Gateways`。
 
 ## <a name="next-steps"></a>后续步骤
 

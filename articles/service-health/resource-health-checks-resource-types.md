@@ -4,10 +4,10 @@ description: 通过 Azure 资源运行状况支持的资源类型
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.openlocfilehash: 5cc80147730fdc97b1181690f6e70fc538d4afcc
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80478902"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure 资源运行状况中的资源类型和运行状况检查
@@ -41,27 +41,27 @@ ms.locfileid: "80478902"
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.classiccompute/virtualmachines
 |执行的检查|
 |---|
-|<ul><li>主机服务器是否已启动并正在运行？</li><li>主机 OS 启动是否已完成？</li><li>是否已配置并启动虚拟机容器？</li><li>主机和存储帐户之间是否有网络连接？</li><li>来宾 OS 启动是否已完成？</li><li>是否存在持续的计划内维护？</li><li>主机硬件是否降级并预计很快会失败？</li></ul>|
+|<ul><li>主机服务器是否已启动并正在运行？</li><li>主机 OS 启动是否已完成？</li><li>是否已配置并启动虚拟机容器？</li><li>主机和存储帐户之间是否有网络连接？</li><li>来宾 OS 启动是否已完成？</li><li>是否存在持续的计划内维护？</li><li>主机硬件是否已降级并预计很快会发生故障？</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.cognitiveservices/accounts
 |执行的检查|
 |---|
 |<ul><li>是否可从数据中心内访问帐户？</li><li>认知服务资源提供程序是否可用？</li><li>认知服务在相应区域中是否可用？</li><li>是否可以在保存资源元数据的存储帐户上执行读取操作？</li><li>是否已达到 API 调用配额？</li><li>是否已达到 API 调用读取限制？</li></ul>|
 
-## <a name="microsoftcomputehostgroupshosts"></a>微软.计算/主机组/主机
+## <a name="microsoftcomputehostgroupshosts"></a>Hostgroups/主机
 |执行的检查|
 |---|
-|<ul><li>主机是否启动并运行</li><li>主机硬件是否降级？</li><li>主机是否已转移？</li><li>主机硬件服务是否已修复为不同的硬件？</li></ul>|
+|<ul><li>主机是否已启动并正在运行</li><li>主机硬件是否降级？</li><li>主机是否已解除分配？</li><li>主机硬件服务是否修复到不同的硬件？</li></ul>|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.compute/virtualmachines
 |执行的检查|
 |---|
-|<ul><li>托管此虚拟机的服务器是否已启动并运行？</li><li>主机 OS 启动是否已完成？</li><li>是否已配置并启动虚拟机容器？</li><li>主机和存储帐户之间是否有网络连接？</li><li>来宾 OS 启动是否已完成？</li><li>是否存在持续的计划内维护？</li><li>主机硬件是否降级并预计很快会失败？</li></ul>|
+|<ul><li>托管此虚拟机的服务器是否已启动并运行？</li><li>主机 OS 启动是否已完成？</li><li>是否已配置并启动虚拟机容器？</li><li>主机和存储帐户之间是否有网络连接？</li><li>来宾 OS 启动是否已完成？</li><li>是否存在持续的计划内维护？</li><li>主机硬件是否降级并预测到很快会失败？</li></ul>|
 
-## <a name="microsoftdatafactoryfactories"></a>微软.数据工厂/工厂
+## <a name="microsoftdatafactoryfactories"></a>Datafactory/工厂
 |执行的检查|
 |---|
-|<ul><li>是否有管道运行失败？</li><li>托管数据工厂的群集是否正常？</li></ul>|
+|<ul><li>是否有管道运行失败？</li><li>承载数据工厂的群集是否正常？</li></ul>|
 
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.datalakeanalytics/accounts
 |执行的检查|
@@ -74,15 +74,15 @@ ms.locfileid: "80478902"
 |---|
 |<ul><li>是否有用户无法将数据上传到 Data Lake Store？</li><li>是否有用户无法从 Data Lake Store 下载数据？</li></ul>|
 
-## <a name="microsoftdatamigrationservices"></a>微软.数据迁移/服务
+## <a name="microsoftdatamigrationservices"></a>Microsoft.datamigration/服务
 |执行的检查|
 |---|
-|<ul><li>数据库迁移服务没有预配？</li><li>数据库迁移服务是否由于不活动或用户请求而停止？</li></ul>|
+|<ul><li>数据库迁移服务是否无法预配？</li><li>数据库迁移服务是否由于不活动或用户请求而停止？</li></ul>|
 
 ## <a name="microsoftdatashareaccounts"></a>Microsoft.DataShare/accounts
 |执行的检查|
 |---|
-|<ul><li>数据共享帐户是否启动并运行？</li><li>托管数据共享的群集是否可用？</li></ul>|
+|<ul><li>数据共享帐户是否已启动并正在运行？</li><li>托管数据共享的群集是否可用？</li></ul>|
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
 |执行的检查|
@@ -182,7 +182,7 @@ ms.locfileid: "80478902"
 ## <a name="microsoftpowerbiworkspacecollections"></a>Microsoft.PowerBI/workspaceCollections
 |执行的检查|
 |---|
-|<ul><li>主机 OS 是否已启动并正在运行？</li><li>是否可从数据中心外部访问 workspaceCollection？</li><li>电源 BI 资源提供程序是否可用？</li><li>电源 BI 服务是否在相应区域可用？</li></ul>|
+|<ul><li>主机 OS 是否已启动并正在运行？</li><li>是否可从数据中心外部访问 workspaceCollection？</li><li>Power BI 的资源提供程序是否可用？</li><li>Power BI 服务在相应区域中是否可用？</li></ul>|
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.search/searchServices
 |执行的检查|
@@ -197,7 +197,7 @@ ms.locfileid: "80478902"
 ## <a name="microsoftservicefabricclusters"></a>Microsoft.ServiceFabric/clusters
 |执行的检查|
 |---|
-|<ul><li>服务结构群集是否启动并运行？</li><li>服务结构群集能否通过 Azure 资源管理器进行管理？</li></ul>|
+|<ul><li>Service Fabric 群集是否已启动并正在运行？</li><li>Service Fabric 群集是否可以通过 Azure 资源管理器来管理？</li></ul>|
 
 ## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft.SQL/managedInstances/databases
 |执行的检查|

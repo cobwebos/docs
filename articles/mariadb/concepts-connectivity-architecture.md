@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 38b6f797541ef07fa3fb5e1dc71029a4cbcf5d22
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80546295"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的连接体系结构
@@ -31,7 +31,7 @@ ms.locfileid: "80546295"
 | **区域名称** | **网关 IP 地址** |
 |:----------------|:-------------|
 | 澳大利亚中部| 20.36.105.0     |
-| 澳大利亚中部2     | 20.36.113.0   |
+| 澳大利亚 Central2     | 20.36.113.0   |
 | 澳大利亚东部 | 13.75.149.87, 40.79.161.1     |
 | 澳大利亚东南部 |191.239.192.109, 13.73.109.251   |
 | 巴西南部 | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
@@ -73,5 +73,5 @@ ms.locfileid: "80546295"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用 Azure 门户为 MariaDB 防火墙规则创建和管理 Azure 数据库](./howto-manage-firewall-portal.md)
+* [使用 Azure 门户创建和管理 Azure Database for MariaDB 防火墙规则](./howto-manage-firewall-portal.md)
 * [使用 Azure CLI 创建和管理 Azure Database for MariaDB 防火墙规则](./howto-manage-firewall-cli.md)

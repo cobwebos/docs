@@ -1,6 +1,6 @@
 ---
 title: Azure Cloud Shell 功能 | Microsoft Docs
-description: Azure 云外壳中的功能概述
+description: Azure Cloud Shell 中的功能概述
 services: Azure
 documentationcenter: ''
 author: maertendMSFT
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
 ms.openlocfilehash: 78275211b77cb34cf9aa92e44778e5d4d81fffed
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80521015"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell 的功能和工具
@@ -44,22 +44,22 @@ Cloud Shell 安全、自动地验证帐户对 Azure CLI 和 Azure PowerShell 的
 
 ### <a name="azure-drive-azure"></a>Azure 驱动器 (Azure:)
 
-云壳中的 PowerShell 提供 Azure`Azure:`驱动器 （）。 您可以使用 切换到 Azure 驱动器`cd Azure:`，然后返回主`cd  ~`目录。
+PowerShell in Cloud Shell 提供 Azure 驱动器（`Azure:`）。 可以通过切换到的 Azure 驱动器`cd Azure:`并返回到主目录。 `cd  ~`
 使用 Azure 驱动器可以轻松发现和浏览 Azure 资源（例如计算、网络、存储等），类似于文件系统导航。
 无论位于何种驱动器，都可以继续使用熟悉的 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure) 来管理这些资源。
 直接在 Azure 门户中或者通过 Azure PowerShell cmdlet 对 Azure 资源所做的任何更改会反映在 Azure 驱动器中。  可以运行 `dir -Force` 刷新资源。
 
 ![](media/features-powershell/azure-drive.png)
 
-### <a name="manage-exchange-online"></a>在线管理交换
+### <a name="manage-exchange-online"></a>管理 Exchange Online
 
-云壳中的 PowerShell 包含 Exchange Online 模块的私有版本。  运行`Connect-EXOPSSession`以获取 Exchange cmdlet。
+Cloud Shell 中的 PowerShell 包含 Exchange Online 模块的专用生成。  运行`Connect-EXOPSSession`以获取 Exchange cmdlet。
 
 ![](media/features-powershell/exchangeonline.png)
 
- 运行 
+ `Get-Command -Module tmp_*`运行
 > [!NOTE]
-> 模块名称应以`tmp_`开头，如果已安装具有相同前缀的模块，则其 cmdlet 也将浮出水面。 
+> 模块名称应以开头`tmp_`，如果已使用相同的前缀安装了模块，则还会显示其 cmdlet。 
 
 ![](media/features-powershell/exchangeonlinecmdlets.png)
 
@@ -72,13 +72,13 @@ Cloud Shell 预先配置了开放源代码工具（如 Terraform、Ansible 和 C
 |类别   |名称   |
 |---|---|
 |Linux 工具            |bash<br> zsh<br> sh<br> tmux<br> dig<br>               |
-|Azure 工具            |[Azure CLI](https://github.com/Azure/azure-cli) 和 [Azure 经典 CLI](https://github.com/Azure/azure-xplat-cli)<br> [阿兹比贝](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#writing-your-first-azcopy-command)<br> [Azure Functions CLI](https://github.com/Azure/azure-functions-core-tools)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [批处理 Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
+|Azure 工具            |[Azure CLI](https://github.com/Azure/azure-cli) 和 [Azure 经典 CLI](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#writing-your-first-azcopy-command)<br> [Azure Functions CLI](https://github.com/Azure/azure-functions-core-tools)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
 |文本编辑器           |代码（Cloud Shell 编辑器）<br> vim<br> nano<br> emacs    |
 |源代码管理         |git                    |
 |生成工具            |make<br> maven<br> npm<br> pip         |
-|容器             |[Docker 计算机](https://github.com/docker/machine)<br> [库布克特尔](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [掌舵](https://github.com/kubernetes/helm)<br> [DC/OS CLI](https://github.com/dcos/dcos-cli)         |
+|容器             |[Docker 计算机](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS CLI](https://github.com/dcos/dcos-cli)         |
 |数据库              |MySQL 客户端<br> PostgreSql 客户端<br> [sqlcmd 实用工具](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
-|其他                  |iPython 客户端<br> [Cloud Foundry CLI](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef InSpec](https://www.chef.io/inspec/)<br> [木偶螺栓](https://puppet.com/docs/bolt/latest/bolt.html)<br> [哈希公司包装机](https://www.packer.io/)|
+|其他                  |iPython 客户端<br> [Cloud Foundry CLI](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef InSpec](https://www.chef.io/inspec/)<br> [Puppet 螺栓](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp Packer](https://www.packer.io/)|
 
 ## <a name="language-support"></a>语言支持
 
@@ -88,11 +88,11 @@ Cloud Shell 预先配置了开放源代码工具（如 Terraform、Ansible 和 C
 |Go         |1.9        |
 |Java       |1.8        |
 |Node.js    |8.16.0      |
-|PowerShell |[7.0.0](https://github.com/PowerShell/powershell/releases)       |
+|PowerShell |[版](https://github.com/PowerShell/powershell/releases)       |
 |Python     |2.7 和 3.5（默认）|
 
 ## <a name="next-steps"></a>后续步骤
 [Cloud Shell 中的 Bash 快速入门](quickstart.md) <br>
-[云壳中的 PowerShell 快速入门](quickstart-powershell.md) <br>
+[Cloud Shell 快速入门中的 PowerShell](quickstart-powershell.md) <br>
 [了解 Azure CLI](https://docs.microsoft.com/cli/azure/) <br>
 [了解 Azure PowerShell](https://docs.microsoft.com/powershell/azure/) <br>
