@@ -8,17 +8,17 @@ ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
 ms.openlocfilehash: d4bbd5560681aa73709019e87c6c22470a64ad78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79481732"
 ---
 # <a name="deprecated-deploy-docker-ce-cluster"></a>（已弃用）部署 Docker CE 群集
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-在此快速入门中，使用 Azure CLI 部署 Docker CE 群集。 然后，在群集上部署和运行包含 Web 前端和 Redis 实例的多容器应用程序。 完成后，即可通过 Internet 访问应用程序。
+在本快速入门中，将使用 Azure CLI 部署 Docker CE 群集。 然后，在群集上部署和运行包含 Web 前端和 Redis 实例的多容器应用程序。 完成后，即可通过 Internet 访问应用程序。
 
 Azure 容器服务上的 Docker CE 为预览版，不应用于生产工作负荷****。
 
@@ -53,7 +53,7 @@ az group create --name myResourceGroup --location westus2
 
 ## <a name="create-docker-swarm-cluster"></a>创建 Docker Swarm 群集
 
-使用 [az acs create](/cli/azure/acs#az-acs-create) 命令在 Azure 容器服务中创建 Docker CE 群集。 有关 Docker CE 的区域可用性的信息，请参阅[Docker CE 的 ACS 区域](https://github.com/Azure/ACS/blob/master/announcements/2017-08-04_additional_regions.md)
+使用 [az acs create](/cli/azure/acs#az-acs-create) 命令在 Azure 容器服务中创建 Docker CE 群集。 有关 Docker CE 的区域可用性的信息，请参阅[DOCKER ce 的 ACS 区域](https://github.com/Azure/ACS/blob/master/announcements/2017-08-04_additional_regions.md)
 
 以下示例创建名为 mySwarmCluster** 的群集，其中包含一个 Linux 主节点和三个 Linux 代理节点。
 
@@ -67,7 +67,7 @@ az acs create --name mySwarmCluster --orchestrator-type dockerce --resource-grou
 
 ## <a name="connect-to-the-cluster"></a>连接到群集
 
-在整个快速入门过程中，您需要 Docker Swarm 主控形状和 Docker 代理池的 FQDN。 运行以下命令即可返回主 FQDN 和代理 FQDN。
+在此快速入门中，你需要 Docker Swarm master 和 Docker 代理池的 FQDN。 运行以下命令即可返回主 FQDN 和代理 FQDN。
 
 ```azurecli
 az acs list --resource-group myResourceGroup --query '[*].{Master:masterProfile.fqdn,Agent:agentPoolProfiles[0].fqdn}' -o table
@@ -159,13 +159,13 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="get-the-code"></a>获取代码
 
-在此快速入门中，预先创建的容器映像已用于创建 Docker 服务。 GitHub 上提供了相关的应用程序代码、Dockerfile 和 Compose 文件。
+在本快速入门中，已使用预先创建的容器映像来创建 Docker 服务。 GitHub 上提供了相关的应用程序代码、Dockerfile 和 Compose 文件。
 
 [https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis.git)
 
 ## <a name="next-steps"></a>后续步骤
 
-在此快速入门中，您部署了 Docker Swarm 群集，并为此部署了多容器应用程序。
+在本快速入门中，你部署了 Docker Swarm 群集并向其部署了多容器应用程序。
 
 若要了解如何将 Docker Swarm 与 Azure DevOps 集成，请继续学习“将 CI/CD 与 Docker Swarm 和 Azure DevOps 配合使用”。
 

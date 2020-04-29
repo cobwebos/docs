@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: b8215cd852d54283bfc6bd47e77d7d63ee4e2582
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79475487"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>如何在 Azure API 管理中使用 Azure Active Directory B2C 为开发人员帐户授权
@@ -36,11 +36,11 @@ Azure Active Directory B2C 是一种云标识管理解决方案，适用于消�
 1. 若要开始，请登录到 [Azure 门户](https://portal.azure.com)并找到你的 API 管理实例。
 
    > [!NOTE]
-   > 如果尚未创建 API 管理服务实例，请参阅[在 Azure API 管理教程][Get started with Azure API Management]中[创建 API 管理服务实例][Create an API Management service instance]。
+   > 如果尚未创建 API 管理服务实例，请参阅 [Azure API 管理入门教程][Create an API Management service instance]中的[创建 API 管理服务实例][Get started with Azure API Management]。
 
-1. 在“标识”**** 下。 单击 **"在顶部添加**"。
+1. 在“标识”  下。 单击顶部的“+添加”  。
 
-   此时将在右侧显示“添加标识提供者”**** 窗格。 选择“Azure Active Directory B2C”。****
+   此时将在右侧显示“添加标识提供者”  窗格。 选择“Azure Active Directory B2C”。 
     
    ![将 AAD B2C 添加为标识提供者][api-management-howto-add-b2c-identity-provider]
 
@@ -48,23 +48,23 @@ Azure Active Directory B2C 是一种云标识管理解决方案，适用于消�
 
    ![AAD B2C 标识提供者重定向 URL][api-management-howto-copy-b2c-identity-provider-redirect-url]
 
-1. 在一个新选项卡中，在 Azure 门户中访问你的 Azure Active Directory B2C 租户并打开“应用程序”**** 边栏选项卡。
+1. 在一个新选项卡中，在 Azure 门户中访问你的 Azure Active Directory B2C 租户并打开“应用程序”  边栏选项卡。
 
    ![注册新应用程序 1][api-management-howto-aad-b2c-portal-menu]
 
-1. 单击“添加”按钮创建新的 Azure Active Directory B2C 应用程序。****
+1. 单击“添加”按钮创建新的 Azure Active Directory B2C 应用程序。 
 
    ![注册新应用程序 2][api-management-howto-aad-b2c-add-button]
 
-1. 在“新建应用程序”边栏选项卡中，输入应用程序的名称。**** 在“Web 应用/Web API”下面选择“是”，在“允许隐式流”下面选择“是”。**************** 然后，将在步骤 3 中复制的**重定向 URL** 粘贴到“回复 URL”文本框中。****
+1. 在“新建应用程序”边栏选项卡中，输入应用程序的名称。  在“Web 应用/Web API”下面选择“是”，在“允许隐式流”下面选择“是”。     然后，将在步骤 3 中复制的**重定向 URL** 粘贴到“回复 URL”文本框中。 
 
    ![注册新应用程序 3][api-management-howto-aad-b2c-app-details]
 
-1. 如果您使用的是新的开发人员门户（不是旧版开发人员门户），请在应用程序声明中包括**给定名称**、**姓氏**和**用户的对象 ID。**
+1. 如果你使用的是新的开发人员门户（而不是旧开发人员门户），请在应用程序声明中包括**给定的名称**、**姓氏**和**用户的对象 ID** 。
 
     ![应用程序声明](./media/api-management-howto-aad-b2c/api-management-application-claims.png)
 
-1. 单击“创建”**** 按钮。 创建应用程序后，它会显示在“应用程序”边栏选项卡。**** 单击应用程序的名称可查看其详细信息。
+1. 单击“创建”  按钮。 创建应用程序后，它会显示在“应用程序”边栏选项卡。**** 单击应用程序的名称可查看其详细信息。
 
    ![注册新应用程序 4][api-management-howto-aad-b2c-app-created]
 
@@ -92,11 +92,11 @@ Azure Active Directory B2C 是一种云标识管理解决方案，适用于消�
 
 ## <a name="developer-portal---add-azure-ad-b2c-account-authentication"></a>开发人员门户 - 添加 Azure AD B2C 帐户身份验证
 
-在开发人员门户中，可以使用**登录按钮：OAuth**小部件使用 AAD B2C 登录。 此小组件已包括在默认开发人员门户内容的登录页上。
+在开发人员门户中，可以通过 "**登录" 按钮**进行 AAD B2C 登录： OAuth 小组件。 此小组件已包括在默认开发人员门户内容的登录页上。
 
 尽管每当新用户使用 AAD B2C 登录时都会自动创建一个新帐户，但你可以考虑向注册页添加同一小组件。
 
-**注册表单：OAuth**小部件表示用于与 OAuth 注册的窗体。
+**注册窗体： OAuth**小组件代表用于注册 OAuth 的窗体。
 
 > [!IMPORTANT]
 > 需要[重新发布门户](api-management-howto-developer-portal-customize.md#publish)才能使 AAD 更改生效。

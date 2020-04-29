@@ -5,20 +5,20 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 21f6ff8078d5a1db88b2fde33c9063a56b3ee43a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 0058c0a0cedf2ea3f6c32f8f8368cca5b8dc6e3c
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81682907"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509000"
 ---
 # <a name="use-the-azure-automation-graphical-runbook-sdk"></a>使用 Azure 自动化图形 runbook SDK
 
 [图形 runbook](automation-graphical-authoring-intro.md)有助于管理底层 Windows PowerShell 或 PowerShell 工作流代码的复杂性。 Microsoft Azure 自动化图形创作 SDK 使开发人员能够创建和编辑图形 runbook，以便与 Azure 自动化一起使用。 本文介绍了通过代码创建图形 runbook 的基本步骤。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-将`Microsoft.Azure.Automation.GraphicalRunbook.Model`包导入到项目中。
+将`Microsoft.Azure.Management.Automation.GraphicalRunbook.Model`包导入到项目中。
 
 ## <a name="create-a-runbook-object-instance"></a>创建 Runbook 对象实例
 

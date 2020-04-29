@@ -1,5 +1,5 @@
 ---
-title: 创建&查询 Azure 数据湖分析 - Azure CLI
+title: 创建 & 查询 Azure Data Lake Analytics-Azure CLI
 description: 了解如何使用 Azure 命令行接口创建 Azure Data Lake Analytics 帐户，并提交 U-SQL 作业。
 ms.service: data-lake-analytics
 author: saveenr
@@ -8,10 +8,10 @@ ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 06/18/2017
 ms.openlocfilehash: d9fc9bee98391f7272a417324b9c3a540b6adbe6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79474503"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli"></a>通过 Azure CLI 开始使用 Azure Data Lake Analytics
@@ -19,17 +19,17 @@ ms.locfileid: "79474503"
 
 本文介绍如何使用 Azure CLI 命令行接口创建 Azure Data Lake Analytics 帐户、提交 USQL 作业和目录。 此作业读取制表符分隔值 (TSV) 文件，并将其转换为逗号分隔值 (CSV) 文件。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 在开始之前，需要以下项：
 
-* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* 本文要求运行 Azure CLI 2.0 或更高版本。 如果需要安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
+* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* 本文要求运行 Azure CLI 2.0 或更高版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
 
 
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-要登录到 Azure 订阅，请执行：
+登录到 Azure 订阅：
 
 ```azurecli
 az login
@@ -62,9 +62,9 @@ az group list
 az group create --name "<Resource Group Name>" --location "<Azure Location>"
 ```
 
-* **数据湖分析帐户名称**。 每个 Data Lake Analytics 帐户都有一个名称。
+* **Data Lake Analytics 帐户名称**。 每个 Data Lake Analytics 帐户都有一个名称。
 * **位置**。 使用支持 Data Lake Analytics 的 Azure 数据中心之一。
-* **默认数据湖存储帐户**：每个数据湖分析帐户都有一个默认的数据湖存储帐户。
+* **默认 Data Lake Store 帐户**：每个 Data Lake Analytics 帐户都有一个默认的 Data Lake Store 帐户。
 
 若要列出现有的 Data Lake Store 帐户，请执行以下命令：
 
@@ -194,4 +194,4 @@ az dls fs download --account "myadlsaccount" --source-path "/Output/SearchLog-fr
 
 * 若要查看 Data Lake Analytics Azure CLI 参考文档，请参阅 [Data Lake Analytics](/cli/azure/dla)。
 * 若要查看 Data Lake Store Azure CLI 参考文档，请参阅 [Data Lake Store](/cli/azure/dls)。
-* 要查看更复杂的查询，请参阅[使用 Azure 数据湖分析分析分析网站日志](data-lake-analytics-analyze-weblogs.md)。
+* 若要查看更复杂的查询，请参阅[使用 Azure Data Lake Analytics 分析网站日志](data-lake-analytics-analyze-weblogs.md)。

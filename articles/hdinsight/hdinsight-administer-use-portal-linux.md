@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/23/2020
-ms.openlocfilehash: 8380cfcbf267b117108d46794153bd5a61b8ec6a
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 8170a0190e2d322c07f8f4978a77a8171579cbfb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116224"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232881"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集
 
@@ -200,9 +200,9 @@ HDInsight 群集可以有两个用户帐户。 HDInsight 群集用户帐户（HT
 
 将在群集中的所有节点上更改密码。
 
-### <a name="change-the-ssh-user-password"></a>更改 SSH 用户密码
+### <a name="change-the-ssh-user-password-or-public-key"></a>更改 SSH 用户密码或公钥
 
-1. 使用文本编辑器将以下文本保存到名为 **changepassword.sh**的文件中。
+1. 使用文本编辑器将以下文本保存为名为**changecredentials.sh**的文件。
 
     > [!IMPORTANT]  
     > 所用的编辑器必须使用 LF 作为行尾。 如果编辑器使用 CRLF，则脚本将无法正常工作。
@@ -222,13 +222,13 @@ HDInsight 群集可以有两个用户帐户。 HDInsight 群集用户帐户（HT
    | 字段 | Value |
    | --- | --- |
    | 脚本类型 | 从下拉列表中选择“- 自定义”。 |
-   | 名称 |“更改 ssh 密码” |
-   | Bash 脚本 URI |changepassword.sh 文件的 URI |
+   | 名称 |"更改 ssh 凭据" |
+   | Bash 脚本 URI |Changecredentials.sh 文件的 URI |
    | 节点类型：（头节点、辅助角色节点、Nimbus 节点、监督器节点或 Zookeeper 节点。） |✓ 适用于所有列出的节点类型 |
    | parameters |输入 SSH 用户名和新密码。 用户名与密码之间应有一个空格。 Ssh 密码中不支持以下字符： "' '/\ <% ~ | $ &
    | 保留此脚本操作... |将此字段保留未选中状态。 |
 
-6. 选择“创建”**** 以应用脚本。 脚本完成后，可以使用 SSH 和新密码连接到群集。
+6. 选择“创建”**** 以应用脚本。 脚本完成后，便可以使用 SSH 和新凭据连接到群集。
 
 ## <a name="find-the-subscription-id"></a>查找订阅 ID
 

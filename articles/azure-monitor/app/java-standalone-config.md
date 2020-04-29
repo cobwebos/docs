@@ -3,12 +3,12 @@ title: 随时随地监视 Java 应用程序-Azure Monitor Application Insights
 description: 无代码置备应用程序性能监视，适用于在任何环境中运行的 Java 应用程序，而无需检测应用程序。 使用分布式跟踪和应用程序映射查找问题 d 的根本原因。
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 5d930d349a2ab1efbd7a61904874bf6bdb411889
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 478e42669339ac015076c89da103d91080090685
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641883"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509204"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>配置选项-Java 独立代理，用于 Azure Monitor Application Insights
 
@@ -33,14 +33,14 @@ ms.locfileid: "81641883"
 
 ## <a name="configuration-file-path"></a>配置文件路径
 
-默认情况下，Application Insights Java 3.0 Preview 需要将配置文件命名`ApplicationInsights.json`为，并将其与位于同一个目录中`applicationinsights-agent-3.0.0-PREVIEW.jar`。
+默认情况下，Application Insights Java 3.0 Preview 需要将配置文件命名`ApplicationInsights.json`为，并将其与位于同一个目录中`applicationinsights-agent-3.0.0-PREVIEW.4.jar`。
 
 你可以使用以下任一方法指定你自己的配置文件路径：
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE`环境变量或
 * `applicationinsights.configurationFile`Java 系统属性
 
-如果指定相对路径，则将相对于所在的目录`applicationinsights-agent-3.0.0-PREVIEW.jar`解析它。
+如果指定相对路径，则将相对于所在的目录`applicationinsights-agent-3.0.0-PREVIEW.4.jar`解析它。
 
 ## <a name="connection-string"></a>连接字符串
 
@@ -150,11 +150,13 @@ Application Insights Java 3.0 Preview 通过 Log4j、Logback 和 util 自动捕�
 }
 ```
 
-## <a name="micrometer"></a>Micrometer
+## <a name="micrometer-including-metrics-from-spring-boot-actuator"></a>Micrometer （包括弹簧 Boot 传动装置的指标）
 
-默认情况下，如果你的应用程序使用[Micrometer](https://micrometer.io)，Application Insights 3.0 （从预览版开始）现在会将其自身添加到 Micrometer 全局注册表并捕获 Micrometer 指标。
+如果你的应用程序使用[Micrometer](https://micrometer.io)，Application Insights 3.0 （从预览版开始）现在捕获发送到 Micrometer 全局注册表的指标。
 
-如果要禁用此功能：
+如果你的应用程序使用[春季 Boot 制动器](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)，Application Insights 3.0 （从预览版开始）现在捕获由弹簧 Boot 传动装置（使用 Micrometer，但不使用 Micrometer 全局注册表）配置的指标。
+
+如果要禁用这些功能：
 
 ```json
 {

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 04/24/2020
 ms.author: victorh
-ms.openlocfilehash: 6396f8292a4c54f7fce237439f37c3e8156d59e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4fcadb6d930f7863c733dad105432a64127b59b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "74169040"
+ms.locfileid: "82232643"
 ---
 # <a name="fqdn-tags-overview"></a>FQDN 标记概述
 
@@ -36,6 +36,7 @@ FQDN 标记表示与已知的 Microsoft 服务关联的一组完全限定的域�
 |应用服务环境 (ASE)|允许出站访问 ASE 平台流量。 此标记未涵盖由 ASE 创建的特定于客户的存储和 SQL 终结点。 这些应通过[服务终结点](../virtual-network/tutorial-restrict-network-access-to-resources.md)启用或手动添加。<br><br>有关将 Azure 防火墙与 ASE 集成的详细信息，请参阅[锁定应用服务环境](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase)。|
 |Azure 备份|允许对 Azure 备份服务进行出站访问。|
 |Azure HDInsight|允许出站访问 HDInsight 平台流量。 此标记不会涵盖特定于客户的存储或来自 HDInsight 的 SQL 流量。 使用[服务终结点](../virtual-network/tutorial-restrict-network-access-to-resources.md)启用这些项或手动添加它们。|
+|WindowsVirtualDesktop (WVD)|允许出站 Windows 虚拟桌面平台通信。 此标记不包括由 WVD 创建的部署特定的存储和服务总线终结点。 此外，还需要 DNS 和 KMS 网络规则。 有关将 Azure 防火墙与 WVD 集成的详细信息，请参阅[使用 Azure 防火墙保护 Windows 虚拟桌面部署](protect-windows-virtual-desktop.md)。 
 
 > [!NOTE]
 > 在应用程序规则中选择 FQDN 标记时，“协议:端口”字段必须设置为 **https**。

@@ -4,12 +4,12 @@ description: 了解如何在 Azure Batch 中使用多实例任务类型执行消
 ms.topic: article
 ms.date: 03/13/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aad2b649c92716a807d577bb4f112d47d447545e
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 39c7aff0618daafc2c02efaea229de3741804c7a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82115969"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231690"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>在 Batch 中使用多实例任务来运行消息传递接口 (MPI) 应用程序
 
@@ -181,14 +181,12 @@ Batch 创建的多个[环境变量][msdn_env_var]特定于已分配给某个多�
 如需这些环境变量以及其他 Batch 计算节点环境变量的完整详细信息（包括内容和可见性），请参阅[计算节点环境变量][msdn_env_var]。
 
 > [!TIP]
-> 此批处理 Linux MPI 代码示例包含一个示例，介绍了如何使用这些环境变量中的其中几个。 [coordination-cmd][coord_cmd_example] Bash 脚本可从 Azure 存储下载常用应用程序和输入文件，在主节点上启用网络文件系统 (NFS) 共享，以及将其他分配给多实例任务的节点配置为 NFS 客户端。
->
->
+> 此批处理 Linux MPI 代码示例包含一个示例，介绍了如何使用这些环境变量中的其中几个。
 
 ## <a name="resource-files"></a>资源文件
-多实例任务需要考虑两组资源文件：所有任务（主要任务和子任务）下载的**通用资源文件**，以及为多实例任务本身指定的**资源文件**（只有主要任务下载）。****
+多实例任务需要考虑两组资源文件：所有任务（主要任务和子任务）下载的**通用资源文件**，以及为多实例任务本身指定的**资源文件**（只有主要任务下载）。  
 
-可以在任务的多实例设置中指定一个或多个**通用资源文件**。 主要任务及所有子任务从 [Azure 存储](../storage/common/storage-introduction.md)将这些通用资源文件下载到每个节点的**任务共享目录**。 可以使用 `AZ_BATCH_TASK_SHARED_DIR` 环境变量从应用程序命令和协调命令行访问任务共享目录。 `AZ_BATCH_TASK_SHARED_DIR` 路径在所有分配给多实例任务的节点上都是相同的，因此可在主要任务和所有子任务之间共享单个协调命令。 从远程访问的意义上来说，批处理并不“共享”目录，但用户可将其用作装入点或共享点，如此前在有关环境变量的提示中所述。
+可以在任务的多实例设置中指定一个或多个**通用资源文件**。 主要任务及所有子任务从 [Azure 存储](../storage/common/storage-introduction.md)将这些通用资源文件下载到每个节点的**任务共享目录**。 可以使用 `AZ_BATCH_TASK_SHARED_DIR` 环境变量从应用程序命令和协调命令行访问任务共享目录。 `AZ_BATCH_TASK_SHARED_DIR` 路径在所有分配给多实例任务的节点上都是相同的，因此可在主要任务和所有子任务之间共享单个协调命令。 从远程访问的意义上来说，Batch 并不“共享”目录，但用户可将其用作装入点或共享点，如此前在有关环境变量的提示中所述。
 
 默认情况下，为多实例任务本身指定的资源文件下载到任务的工作目录 `AZ_BATCH_TASK_WORKING_DIR`。 如前所述，仅主要任务下载为多实例任务本身指定的资源文件（与通用资源文件相比）。
 
@@ -209,10 +207,10 @@ Batch 创建的多个[环境变量][msdn_env_var]特定于已分配给某个多�
 如果最近的任务是多实例任务的一部分，计算节点的最近任务列表反映子任务的 ID。
 
 ## <a name="obtain-information-about-subtasks"></a>获取有关子任务的信息
-若要使用 Batch .NET 库获取子任务的详细信息，请调用 [CloudTask.ListSubtasks][net_task_listsubtasks] 方法。 此方法返回所有子任务的相关信息，以及已执行任务的计算节点的相关信息。 可以根据此信息判断每项子任务的根目录、池 ID、其当前状态、退出代码等等。 可以使用此信息结合 [PoolOperations.GetNodeFile][poolops_getnodefile] 方法，以获取子任务的文件。 请注意，此方法不返回主要任务 (ID 0) 的相关信息。
+若要使用 Batch .NET 库获取子任务的信息，请调用 [CloudTask.ListSubtasks][net_task_listsubtasks] 方法。 此方法返回所有子任务的相关信息，以及已执行任务的计算节点的相关信息。 可以根据此信息判断每项子任务的根目录、池 ID、其当前状态、退出代码等等。 可以使用此信息结合 [PoolOperations.GetNodeFile][poolops_getnodefile] 方法，获取子任务的文件。 请注意，此方法不返回主要任务 (ID 0) 的相关信息。
 
 > [!NOTE]
-> 除非另有指明，否则在多实例 [CloudTask][net_task] 本身执行的 Batch .NET 方法只** 应用到主要任务。 例如，当在多实例任务上调用 [CloudTask.ListNodeFiles][net_task_listnodefiles] 方法时，只返回主要任务的文件。
+> 除非另有说明，否则在多实例 [CloudTask][net_task] 本身执行的 Batch .NET 方法只应用到主要任务。  例如，当在多实例任务上调用 [CloudTask.ListNodeFiles][net_task_listnodefiles] 方法时，只返回主要任务的文件。
 >
 >
 
@@ -260,9 +258,9 @@ GitHub 上的 [MultiInstanceTasks][github_mpi] 代码示例演示了如何通过
 
 ### <a name="preparation"></a>准备工作
 1. 执行[如何编译和运行简单的 MS-MPI 程序][msmpi_howto]中的开始两个步骤。 这样即可满足下一步的先决条件。
-2. 生成 [MPIHelloWorld][helloworld_proj] 示例 MPI 程序的发行** 版。 该程序是会在计算节点上通过多实例任务运行的程序。
-3. 创建包含 `MPIHelloWorld.exe`（在步骤 2 构建）和 `MSMpiSetup.exe`（在步骤 1 下载）的 zip 文件。 需在下一步将此 zip 文件作为应用程序包上传。
-4. 通过 [Azure 门户][portal]创建名为“MPIHelloWorld”的 Batch [应用程序](batch-application-packages.md)，并将在上一步创建的 zip 文件指定为“1.0”版应用程序包。 有关详细信息，请参阅[上载和管理应用程序](batch-application-packages.md#upload-and-manage-applications)。
+2. 生成 *MPIHelloWorld* 示例 MPI 程序的[发行][helloworld_proj]版。 该程序是会在计算节点上通过多实例任务运行的程序。
+3. 创建包含 `MPIHelloWorld.exe`（在步骤 2 构建）和 `MSMpiSetup.exe`（在步骤 1 下载）的 zip 文件。 下一步需要将此 zip 文件作为应用程序包上传。
+4. 通过 [Azure 门户][portal]创建名为“MPIHelloWorld”的 Batch [应用程序](batch-application-packages.md)，并将上一步创建的 zip 文件指定为“1.0”版应用程序包。 有关详细信息，请参阅[上传和管理应用程序](batch-application-packages.md#upload-and-manage-applications)。
 
 > [!TIP]
 > 生成*发行*版 `MPIHelloWorld.exe`，这样就不需在应用程序包中包括任何其他依赖项（例如 `msvcp140d.dll` 或 `vcruntime140d.dll`）。
@@ -274,9 +272,9 @@ GitHub 上的 [MultiInstanceTasks][github_mpi] 代码示例演示了如何通过
 2. 在 Visual Studio 2019 中打开 MultiInstanceTasks **解决方案**。 `MultiInstanceTasks.sln` 解决方案文件位于：
 
     `azure-batch-samples\CSharp\ArticleProjects\MultiInstanceTasks\`
-3. 将批处理和存储帐户凭据输入 **Microsoft.Azure.Batch.Samples.Common** 项目中的 `AccountSettings.settings`。
+3. 将 Batch 和存储帐户凭据输入到 **Microsoft.Azure.Batch.Samples.Common** 项目中的 `AccountSettings.settings`。
 4. **生成并运行** MultiInstanceTasks 解决方案，在批处理池中的计算节点上执行 MPI 示例应用程序。
-5. 可选**：通过 [Azure 门户][portal]或 [Batch Explorer][batch_labs] 检查示例池、作业和任务（“MultiInstanceSamplePool”、“MultiInstanceSampleJob”、“MultiInstanceSampleTask”），再删除这些资源。
+5. *可选*：在删除资源前，请先通过 [Azure 门户][portal]或 [Batch Explorer][batch_labs] 检查示例池、作业和任务（“MultiInstanceSamplePool”、“MultiInstanceSampleJob”、“MultiInstanceSampleTask”）。
 
 > [!TIP]
 > 如果没有 Visual Studio，可下载免费版 [Visual Studio Community][visual_studio]。

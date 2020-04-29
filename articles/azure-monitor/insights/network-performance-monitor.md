@@ -7,10 +7,10 @@ author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
 ms.openlocfilehash: 9660e87f3ee4e1c1c6a270f14928fdd111664e66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79480872"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的网络性能监视器解决方案
@@ -24,7 +24,7 @@ ms.locfileid: "79480872"
 
 网络性能监视器提供以下三种用途广泛的功能： 
 
-* [性能监视器](network-performance-monitor-performance-monitor.md)：可以跨云部署和本地位置、多个数据中心和分支机构、任务关健型多层应用程序或微服务监视网络连接。 使用性能监视器，可以在用户产生抱怨之前检测到网络问题。
+* [性能监视器](network-performance-monitor-performance-monitor.md)：可跨云部署和本地位置、多个数据中心和分支机构、任务关健型多层应用程序或微服务监视网络连接。 使用性能监视器，可以在用户产生抱怨之前检测到网络问题。
 
 * [服务连接性监视器](network-performance-monitor-service-connectivity.md)：可监视从用户到所关注的服务的连接，确定路径中存在的具体基础结构，并识别网络瓶颈的发生位置。 可以赶在用户之前了解中断情况，沿网络路径查看问题的具体位置。 
 
@@ -155,14 +155,14 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 1. 选择要监视的节点或清除要停止监视的节点。 
 2. 选中“用于监视”****，或清除它（视情况而定）。 
-3. 选择“保存”。**** 
+3. 选择“保存”  。 
 
 
 配置所需功能：
 
 - [性能监视器](network-performance-monitor-performance-monitor.md#configuration)
 - [服务连接监视器](network-performance-monitor-performance-monitor.md#configuration)
-- [快速路由监视器](network-performance-monitor-expressroute.md#configuration)
+- [ExpressRoute 监视器](network-performance-monitor-expressroute.md#configuration)
 
  
 
@@ -171,7 +171,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 下表显示了数据收集方法，以及有关如何为网络性能监视器收集数据的其他详细信息。
 
-| Platform | 直接代理 | System Center Operations Manager 代理 | Azure 存储 | 需要 Operations Manager？ | Operations Manager 代理数据通过管理组发送 | 收集频率 |
+| 平台 | 直接代理 | System Center Operations Manager 代理 | Azure 存储 | 需要 Operations Manager？ | Operations Manager 代理数据通过管理组发送 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows | &#8226; | &#8226; |  |  |  |每隔 5 秒发送 TCP 握手/ICMP ECHO 消息，每隔 3 分钟发送数据 |
  

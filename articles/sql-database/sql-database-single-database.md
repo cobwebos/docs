@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
 ms.openlocfilehash: fc63de4057def632d3ac1980e8cb3eaedbff2175
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79500759"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>什么是 Azure SQL 数据库中的单一数据库
@@ -37,7 +37,7 @@ ms.locfileid: "79500759"
 
 ## <a name="monitoring-and-alerting"></a>监视和警报
 
-将内置的[性能监视](sql-database-performance-guidance.md)和[警报工具](sql-database-insights-alerts-portal.md)与性能等级组合使用。 使用这些工具，可以根据当前需求或项目性能的需求，快速评估调高或调低性能产生的影响。 此外，SQL 数据库可以[发出指标和资源日志](sql-database-metrics-diag-logging.md)，以便更轻松地进行监视。
+将内置的[性能监视](sql-database-performance-guidance.md)和[警报工具](sql-database-insights-alerts-portal.md)与性能等级组合使用。 使用这些工具，可以根据当前需求或项目性能的需求，快速评估调高或调低性能产生的影响。 此外，SQL 数据库可[发出指标和资源日志](sql-database-metrics-diag-logging.md)，以便于监视。
 
 ## <a name="availability-capabilities"></a>可用性功能
 
@@ -52,10 +52,10 @@ Microsoft SQL Server 和 Azure SQL 数据库都完全支持应用程序使用的
 
 ## <a name="security"></a>安全性
 
-SQL 数据库提供一系列[内置的安全性和合规性](sql-database-security-overview.md)功能，可帮助您的应用程序满足各种安全性和合规性要求。
+SQL 数据库提供一系列[内置安全性和符合性](sql-database-security-overview.md)功能，帮助应用程序满足各种安全性和符合性要求。
 
 > [!IMPORTANT]
-> Azure SQL 数据库（所有部署选项）已通过了许多符合性标准的认证。 有关详细信息，请参阅 Microsoft [Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，您可以在其中找到最新的 SQL 数据库合规性认证列表。
+> Azure SQL 数据库（所有部署选项）已通过了许多符合性标准的认证。 有关详细信息，请参阅[Microsoft Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，你可以在其中找到最新的 SQL 数据库符合性认证列表。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 05/13/2019
-ms.openlocfilehash: dbf75262440474c5cb50a6d733ac7cba212b5f3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 277faa2d47df9fddd1762d90d9aa2fb5bf00d4df
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75651652"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508117"
 ---
 # <a name="azure-managed-application-with-managed-identity"></a>包含托管标识的 Azure 托管应用程序
 
@@ -54,7 +54,7 @@ ms.locfileid: "75651652"
 
 ```json
 "outputs": {
-    "managedIdentity": "[parse('{\"Type\":\"SystemAssigned\"}')]"
+    "managedIdentity": { "Type": "SystemAssigned" }
 }
 ```
 
@@ -66,71 +66,65 @@ ms.locfileid: "75651652"
 - 托管标识需要复杂的使用者输入。
 - 创建托管应用程序时需要托管标识。
 
-#### <a name="systemassigned-createuidefinition"></a>SystemAssigned CreateUIDefinition
+#### <a name="managed-identity-createuidefinition-control"></a>托管标识 CreateUIDefinition 控件
 
-为托管应用程序启用 SystemAssigned 标识的基本 CreateUIDefinition。
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
-  "handler": "Microsoft.Azure.CreateUIDef",
-  "version": "0.1.2-preview",
-    "parameters": {
-        "basics": [
-            {}
-        ],
-        "steps": [
-        ],
-        "outputs": {
-            "managedIdentity": "[parse('{\"Type\":\"SystemAssigned\"}')]"
-        }
-    }
-}
-```
-
-#### <a name="userassigned-createuidefinition"></a>UserAssigned CreateUIDefinition
-
-一个基本 CreateUIDefinition，它使用**用户分配的标识**资源作为输入，并为托管应用程序启用 UserAssigned 标识。
+CreateUIDefinition 支持内置[托管标识控件](./microsoft-managedidentity-identityselector.md)。
 
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
   "handler": "Microsoft.Azure.CreateUIDef",
-  "version": "0.1.2-preview",
-    "parameters": {
-        "basics": [
-            {}
-        ],
-        "steps": [
-            {
-                "name": "manageIdentity",
-                "label": "Identity",
-                "subLabel": {
-                    "preValidation": "Manage Identities",
-                    "postValidation": "Done"
-                },
-                "bladeTitle": "Identity",
-                "elements": [
-                    {
-                        "name": "userAssignedText",
-                        "type": "Microsoft.Common.TextBox",
-                        "label": "User assigned managed identity",
-                        "defaultValue": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.ManagedIdentity/userassignedidentites/myuserassignedidentity",
-                        "visible": true
-                    }
-                ]
-            }
-        ],
-        "outputs": {
-            "managedIdentity": "[parse(concat('{\"Type\":\"UserAssigned\",\"UserAssignedIdentities\":{',string(steps('manageIdentity').userAssignedText),':{}}}'))]"
-        }
+  "version": "0.0.1-preview",
+  "parameters": {
+    "basics": [],
+    "steps": [
+      {
+        "name": "applicationSettings",
+        "label": "Application Settings",
+        "subLabel": {
+          "preValidation": "Configure your application settings",
+          "postValidation": "Done"
+        },
+        "bladeTitle": "Application Settings",
+        "elements": [
+          {
+            "name": "appName",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Managed application Name",
+            "toolTip": "Managed application instance name",
+            "visible": true
+          },
+          {
+            "name": "appIdentity",
+            "type": "Microsoft.ManagedIdentity.IdentitySelector",
+            "label": "Managed Identity Configuration",
+            "toolTip": {
+              "systemAssignedIdentity": "Enable system assigned identity to grant the managed application access to additional existing resources.",
+              "userAssignedIdentity": "Add user assigned identities to grant the managed application access to additional existing resources."
+            },
+            "defaultValue": {
+              "systemAssignedIdentity": "Off"
+            },
+            "options": {
+              "hideSystemAssignedIdentity": false,
+              "hideUserAssignedIdentity": false,
+              "readOnlySystemAssignedIdentity": false
+            },
+            "visible": true
+          }
+        ]
+      }
+    ],
+    "outputs": {
+      "applicationResourceName": "[steps('applicationSettings').appName]",
+      "location": "[location()]",
+      "managedIdentity": "[steps('applicationSettings').appIdentity]"
     }
+  }
 }
 ```
 
-以上 CreateUIDefinition.json 生成“创建用户”体验，其中包含一个文本框，供使用者输入**用户分配的标识** Azure 资源 ID。 生成的体验如下所示：
-
-![用户分配的标识 CreateUIDefinition 示例](./media/publish-managed-identity/user-assigned-identity.png)
+![托管标识 CreateUIDefinition](./media/publish-managed-identity/msi-cuid.png)
 
 ### <a name="using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板
 
@@ -203,7 +197,7 @@ ms.locfileid: "75651652"
 
 ## <a name="granting-access-to-azure-resources"></a>授予对 Azure 资源的访问权限
 
-为托管应用程序授予标识后，可为该应用程序授予对现有 Azure 资源的访问权限。 可以通过 Azure 门户中的“访问控制(IAM)”界面完成此过程。 可以搜索托管应用程序或**用户分配的标识**的名称来添加角色分配。
+向托管应用程序授予标识后，便可以获得对现有 Azure 资源的访问权限。 可以通过 Azure 门户中的“访问控制(IAM)”界面完成此过程。 可以搜索托管应用程序或**用户分配的标识**的名称来添加角色分配。
 
 ![为托管应用程序添加角色分配](./media/publish-managed-identity/identity-role-assignment.png)
 
@@ -331,10 +325,10 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 请求正文参数：
 
-参数 | 必须 | 说明
+参数 | 必选 | 说明
 ---|---|---
-authorizationAudience | 否  | 目标资源的应用 ID URI。 它也是颁发的令牌的 `aud`（受众）声明。 默认值为“https://management.azure.com/”
-userAssignedIdentities | 否  | 要检索其令牌的用户分配托管标识的列表。 如果未指定，`listTokens` 将返回系统分配的托管标识的令牌。
+authorizationAudience | *不* | 目标资源的应用 ID URI。 它也是颁发的令牌的 `aud`（受众）声明。 默认值为“https://management.azure.com/”
+userAssignedIdentities | *不* | 要检索其令牌的用户分配托管标识的列表。 如果未指定，`listTokens` 将返回系统分配的托管标识的令牌。
 
 
 示例响应可能如下所示：
@@ -367,7 +361,7 @@ expires_in | 访问令牌的有效秒数。
 expires_on | 访问令牌过期的时间范围。 此值以从纪元算起的秒数表示。
 not_before | 访问令牌生效的时间范围。 此值以从纪元算起的秒数表示。
 authorizationAudience | 请求其访问令牌的 `aud`（受众）。 这与 `listTokens` 请求中提供的值相同。
-ResourceId | 颁发的令牌的 Azure 资源 ID。 此值为托管应用程序 ID 或用户分配的标识 ID。
+resourceId | 颁发的令牌的 Azure 资源 ID。 此值为托管应用程序 ID 或用户分配的标识 ID。
 token_type | 令牌的类型。
 
 ## <a name="next-steps"></a>后续步骤
