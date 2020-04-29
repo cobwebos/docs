@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 58fa98005d7d89e84404d99cf4f55e456fd91f21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76721738"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>使用 SQL 和 Python 在 SQL Server 中为数据创建功能
@@ -28,7 +28,7 @@ ms.locfileid: "76721738"
 > 
 > 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 本文假设用户具备以下条件：
 
 * 已创建 Azure 存储帐户。 如果需要说明，请参阅[创建 Azure 存储帐户](../../storage/common/storage-account-create.md)
@@ -37,9 +37,9 @@ ms.locfileid: "76721738"
 ## <a name="feature-generation-with-sql"></a><a name="sql-featuregen"></a>使用 SQL 生成特征
 在本部分中，介绍使用 SQL 生成功能的方法：  
 
-* [基于计数的功能生成](#sql-countfeature)
-* [装箱功能生成](#sql-binningfeature)
-* [从单个列滚动要素](#sql-featurerollout)
+* [生成基于计数的功能](#sql-countfeature)
+* [生成装箱功能](#sql-binningfeature)
+* [从单个列推出功能](#sql-featurerollout)
 
 > [!NOTE]
 > 一旦生成其他功能，可将它们作为列添加到现有表格，或使用其他功能和主键来创建可与原始表结合的新表格。
@@ -47,7 +47,7 @@ ms.locfileid: "76721738"
 > 
 
 ### <a name="count-based-feature-generation"></a><a name="sql-countfeature"></a>基于计数生成特征
-本文档演示两种生成计数功能的方法。 第一种方法是使用条件求和，第二种方法是使用 where 子句。 然后，可以将这些新功能与原始表（使用主键列）联接，以在原始数据旁边具有计数要素。
+本文档演示两种生成计数功能的方法。 第一种方法是使用条件求和，第二种方法是使用 where 子句。 然后，这些新功能可以与原始表联接（使用主键列），以使统计功能与原始数据一起使用。
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3>
 
@@ -74,9 +74,9 @@ ms.locfileid: "76721738"
 * 第三位小数值达 110 m：可以定大型农业区域或工业园区。
 * 第四位小数值达 11 m：可识别小块土地。 其准确性相当于未更正的、无干扰的 GPS 部件的典型准确性。
 * 第五位小数值达 1.1 m：可将树与树区分开。 可通过差异更正获得该级别的、商用 GPS 计价单位的准确性。
-* 六位小数值最高为 0.11 m：您可以使用此级别详细布局结构、设计景观、修建道路。 对于追踪冰川和河流的运动，它是不二之选。 这一目标可以通过对 GPS 采取艰苦的措施来实现，例如差别校正的 GPS。
+* 第六个小数位最高可达 0.11 m：可以使用此级别来详细布局结构，以便设计环境，构建道路。 对于追踪冰川和河流的运动，它是不二之选。 此目标可通过将 painstaking 度量值与 GPS 结合使用来实现，例如差异纠正 GPS。
 
-位置信息可具有以下特征：分离地区、位置和城市信息。 一旦也可以调用 REST 终结点，如必应地图 API（请参阅`https://msdn.microsoft.com/library/ff701710.aspx`获取区域/区域信息）。
+位置信息可具有以下特征：分离地区、位置和城市信息。 还可以调用 REST 终结点（如 Bing 地图 API）（请参阅`https://msdn.microsoft.com/library/ff701710.aspx`获取区域/地区信息）。
 
     select
         <location_columnname>
@@ -111,7 +111,7 @@ ms.locfileid: "76721738"
     import pyodbc
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-Python 中的[Pandas 库](https://pandas.pydata.org/)为 Python 编程的数据操作提供了一组丰富的数据结构和数据分析工具。 以下代码读取从 SQL Server 数据库返回到 Pandas 数据帧的结果：
+Python 中的 [Pandas 库](https://pandas.pydata.org/)提供一组丰富的数据结构，以及针对 Python 编程的数据操作的数据分析工具。 以下代码读取从 SQL Server 数据库返回到 Pandas 数据帧的结果：
 
     # Query database and load the returned results in pandas data frame
     data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)

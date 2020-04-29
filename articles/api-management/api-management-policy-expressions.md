@@ -14,14 +14,14 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
 ms.openlocfilehash: 6614e70d130abe46067c657bda3ccdd7000caddc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79243999"
 ---
 # <a name="api-management-policy-expressions"></a>API 管理策略表达式
-本文在 C# 7 中讨论策略表达式语法。 每个表达式都可以访问隐式提供的[上下文](api-management-policy-expressions.md#ContextVariables)变量和允许的 .NET Framework 类型的[子集](api-management-policy-expressions.md#CLRTypes)。
+本文介绍 c # 7 中的策略表达式语法。 每个表达式都可以访问隐式提供的[上下文](api-management-policy-expressions.md#ContextVariables)变量以及允许的 .NET Framework 类型[子集](api-management-policy-expressions.md#CLRTypes)。
 
 更多相关信息：
 
@@ -33,12 +33,12 @@ ms.locfileid: "79243999"
 - 要下载策略语句，请参阅 [api-management-samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies) GitHub 存储库。
 
 
-## <a name="syntax"></a><a name="Syntax"></a>语法
+## <a name="syntax"></a><a name="Syntax"></a> 语法
 单一语句表达式括在 `@(expression)` 中，其中 `expression` 是格式正确的 C# 表达式语句。
 
 多语句表达式括在 `@{expression}` 中。 多语句表达式中的所有代码路径必须以 `return` 语句结尾。
 
-## <a name="examples"></a><a name="PolicyExpressionsExamples"></a>例子
+## <a name="examples"></a><a name="PolicyExpressionsExamples"></a> 示例
 
 ```
 @(true)
@@ -65,7 +65,7 @@ ms.locfileid: "79243999"
 }
 ```
 
-## <a name="usage"></a><a name="PolicyExpressionsUsage"></a>使用
+## <a name="usage"></a><a name="PolicyExpressionsUsage"></a>用法
 在任何 API 管理[策略](api-management-policies.md)中，表达式都可用作属性值或文本值（除非策略引用另行指定）。
 
 > [!IMPORTANT]
@@ -76,173 +76,173 @@ ms.locfileid: "79243999"
 
 |类型|受支持的成员|
 |--------------|-----------------------|
-|Newtonsoft.Json.Formatting|All|
+|Newtonsoft.Json.Formatting|全部|
 |Newtonsoft.Json.JsonConvert|SerializeObject、DeserializeObject|
-|Newtonsoft.Json.Linq.Extensions|All|
-|Newtonsoft.Json.Linq.JArray|All|
-|Newtonsoft.Json.Linq.JConstructor|All|
-|Newtonsoft.Json.Linq.JContainer|All|
-|Newtonsoft.Json.Linq.JObject|All|
-|Newtonsoft.Json.Linq.JProperty|All|
-|Newtonsoft.Json.Linq.JRaw|All|
-|Newtonsoft.Json.Linq.JToken|All|
-|Newtonsoft.Json.Linq.JTokenType|All|
-|Newtonsoft.Json.Linq.JValue|All|
-|System.Array|All|
-|System.BitConverter|All|
-|System.Boolean|All|
-|System.Byte|All|
-|System.Char|All|
-|System.Collections.Generic.Dictionary<TKey, TValue>|All|
-|System.Collections.Generic.HashSet\<T>|All|
-|System.Collections.Generic.ICollection\<T>|All|
-|System.Collections.Generic.IDictionary<TKey, TValue>|All|
-|System.Collections.Generic.IEnumerable\<T>|All|
-|System.Collections.Generic.IEnumerator\<T>|All|
-|System.Collections.Generic.IList\<T>|All|
-|System.Collections.Generic.IReadOnlyCollection\<T>|All|
-|System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>|All|
-|System.Collections.Generic.ISet\<T>|All|
-|System.Collections.Generic.KeyValuePair<TKey, TValue>|All|
-|System.Collections.Generic.List\<T>|All|
-|System.Collections.Generic.Queue\<T>|All|
-|System.Collections.Generic.Stack\<T>|All|
-|System.Convert|All|
+|Newtonsoft.Json.Linq.Extensions|全部|
+|Newtonsoft.Json.Linq.JArray|全部|
+|Newtonsoft.Json.Linq.JConstructor|全部|
+|Newtonsoft.Json.Linq.JContainer|全部|
+|Newtonsoft.Json.Linq.JObject|全部|
+|Newtonsoft.Json.Linq.JProperty|全部|
+|Newtonsoft.Json.Linq.JRaw|全部|
+|Newtonsoft.Json.Linq.JToken|全部|
+|Newtonsoft.Json.Linq.JTokenType|全部|
+|Newtonsoft.Json.Linq.JValue|全部|
+|System.Array|全部|
+|System.BitConverter|全部|
+|System.Boolean|全部|
+|System.Byte|全部|
+|System.Char|全部|
+|System.Collections.Generic.Dictionary<TKey, TValue>|全部|
+|System.Collections.Generic.HashSet\<T>|全部|
+|System.Collections.Generic.ICollection\<T>|全部|
+|System.Collections.Generic.IDictionary<TKey, TValue>|全部|
+|System.Collections.Generic.IEnumerable\<T>|全部|
+|System.Collections.Generic.IEnumerator\<T>|全部|
+|System.Collections.Generic.IList\<T>|全部|
+|System.Collections.Generic.IReadOnlyCollection\<T>|全部|
+|System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>|全部|
+|System.Collections.Generic.ISet\<T>|全部|
+|System.Collections.Generic.KeyValuePair<TKey, TValue>|全部|
+|System.Collections.Generic.List\<T>|全部|
+|System.Collections.Generic.Queue\<T>|全部|
+|System.Collections.Generic.Stack\<T>|全部|
+|System.Convert|全部|
 |System.DateTime|（构造函数）、Add、AddDays、AddHours、AddMilliseconds、AddMinutes、AddMonths、AddSeconds、AddTicks、AddYears、Date、Day、DayOfWeek、DayOfYear、DaysInMonth、Hour、IsDaylightSavingTime、IsLeapYear、MaxValue、Millisecond、Minute、MinValue、Month、Now、Parse、Second、Subtract、Ticks、TimeOfDay、Today、ToString、UtcNow、Year|
 |System.DateTimeKind|Utc|
-|System.DateTimeOffset|All|
-|System.Decimal|All|
-|System.Double|All|
-|System.Exception|All|
-|System.Guid|All|
-|System.Int16|All|
-|System.Int32|All|
-|System.Int64|All|
-|System.IO.StringReader|All|
-|System.IO.StringWriter|All|
-|System.Linq.Enumerable|All|
-|System.Math|All|
-|System.MidpointRounding|All|
-|System.Net.WebUtility|All|
-|System.Nullable|All|
-|System.Random|All|
-|System.SByte|All|
-|System.Security.Cryptography.AsymmetricAlgorithm|All|
-|System.Security.Cryptography.CipherMode|All|
-|System.Security.Cryptography.HashAlgorithm|All|
-|System.Security.Cryptography.HashAlgorithmName|All|
-|System.Security.Cryptography.HMAC|All|
-|System.Security.Cryptography.HMACMD5|All|
-|System.Security.Cryptography.HMACSHA1|All|
-|System.Security.Cryptography.HMACSHA256|All|
-|System.Security.Cryptography.HMACSHA384|All|
-|System.Security.Cryptography.HMACSHA512|All|
-|System.Security.Cryptography.KeyedHashAlgorithm|All|
-|System.Security.Cryptography.MD5|All|
-|System.Security.Cryptography.Oid|All|
-|System.Security.Cryptography.PaddingMode|All|
-|System.Security.Cryptography.RNGCryptoServiceProvider|All|
-|System.Security.Cryptography.RSA|All|
-|System.Security.Cryptography.RSAEncryptionPadding|All|
-|System.Security.Cryptography.RSASignaturePadding|All|
-|System.Security.Cryptography.SHA1|All|
-|System.Security.Cryptography.SHA1Managed|All|
-|System.Security.Cryptography.SHA256|All|
-|System.Security.Cryptography.SHA256Managed|All|
-|System.Security.Cryptography.SHA384|All|
-|System.Security.Cryptography.SHA384Managed|All|
-|System.Security.Cryptography.SHA512|All|
-|System.Security.Cryptography.SHA512Managed|All|
-|System.Security.Cryptography.SymmetricAlgorithm|All|
-|System.Security.Cryptography.X509Certificates.PublicKey|All|
-|System.Security.Cryptography.X509Certificates.RSACertificateExtensions|All|
-|System.Security.Cryptography.X509Certificates.X500DistinguishedName|“属性”|
-|System.Security.Cryptography.X509Certificates.X509Certificate|All|
-|System.Security.Cryptography.X509Certificates.X509Certificate2|All|
-|System.Security.Cryptography.X509Certificates.X509ContentType|All|
-|System.Security.Cryptography.X509Certificates.X509NameType|All|
-|System.Single|All|
-|System.String|All|
-|System.StringComparer|All|
-|System.StringComparison|All|
-|System.StringSplitOptions|All|
-|System.Text.Encoding|All|
+|System.DateTimeOffset|全部|
+|System.Decimal|全部|
+|System.Double|全部|
+|System.Exception|全部|
+|System.Guid|全部|
+|System.Int16|全部|
+|System.Int32|全部|
+|System.Int64|全部|
+|System.IO.StringReader|全部|
+|System.IO.StringWriter|全部|
+|System.Linq.Enumerable|全部|
+|System.Math|全部|
+|System.MidpointRounding|全部|
+|System.Net.WebUtility|全部|
+|System.Nullable|全部|
+|System.Random|全部|
+|System.SByte|全部|
+|System.Security.Cryptography.AsymmetricAlgorithm|全部|
+|System.Security.Cryptography.CipherMode|全部|
+|System.Security.Cryptography.HashAlgorithm|全部|
+|System.Security.Cryptography.HashAlgorithmName|全部|
+|System.Security.Cryptography.HMAC|全部|
+|System.Security.Cryptography.HMACMD5|全部|
+|System.Security.Cryptography.HMACSHA1|全部|
+|System.Security.Cryptography.HMACSHA256|全部|
+|System.Security.Cryptography.HMACSHA384|全部|
+|System.Security.Cryptography.HMACSHA512|全部|
+|System.Security.Cryptography.KeyedHashAlgorithm|全部|
+|System.Security.Cryptography.MD5|全部|
+|System.Security.Cryptography.Oid|全部|
+|System.Security.Cryptography.PaddingMode|全部|
+|System.Security.Cryptography.RNGCryptoServiceProvider|全部|
+|System.Security.Cryptography.RSA|全部|
+|System.Security.Cryptography.RSAEncryptionPadding|全部|
+|System.Security.Cryptography.RSASignaturePadding|全部|
+|System.Security.Cryptography.SHA1|全部|
+|System.Security.Cryptography.SHA1Managed|全部|
+|System.Security.Cryptography.SHA256|全部|
+|System.Security.Cryptography.SHA256Managed|全部|
+|System.Security.Cryptography.SHA384|全部|
+|System.Security.Cryptography.SHA384Managed|全部|
+|System.Security.Cryptography.SHA512|全部|
+|System.Security.Cryptography.SHA512Managed|全部|
+|System.Security.Cryptography.SymmetricAlgorithm|全部|
+|System.Security.Cryptography.X509Certificates.PublicKey|全部|
+|System.Security.Cryptography.X509Certificates.RSACertificateExtensions|全部|
+|System.Security.Cryptography.X509Certificates.X500DistinguishedName|名称|
+|System.Security.Cryptography.X509Certificates.X509Certificate|全部|
+|System.Security.Cryptography.X509Certificates.X509Certificate2|全部|
+|System.Security.Cryptography.X509Certificates.X509ContentType|全部|
+|System.Security.Cryptography.X509Certificates.X509NameType|全部|
+|System.Single|全部|
+|System.String|全部|
+|System.StringComparer|全部|
+|System.StringComparison|全部|
+|System.StringSplitOptions|全部|
+|System.Text.Encoding|全部|
 |System.Text.RegularExpressions.Capture|Index、Length、Value|
 |System.Text.RegularExpressions.CaptureCollection|Count、Item|
 |System.Text.RegularExpressions.Group|Captures、Success|
 |System.Text.RegularExpressions.GroupCollection|Count、Item|
 |System.Text.RegularExpressions.Match|Empty、Groups、Result|
 |System.Text.RegularExpressions.Regex|（构造函数）、IsMatch、Match、Matches、Replace、Unescape、Split|
-|System.Text.RegularExpressions.RegexOptions|All|
-|System.Text.StringBuilder|All|
-|System.TimeSpan|All|
-|System.TimeZone|All|
-|System.TimeZoneInfo.AdjustmentRule|All|
-|System.TimeZoneInfo.TransitionTime|All|
-|System.TimeZoneInfo|All|
-|System.Tuple|All|
-|System.UInt16|All|
-|System.UInt32|All|
-|System.UInt64|All|
-|System.Uri|All|
-|System.UriPartial|All|
-|System.Xml.Linq.Extensions|All|
-|System.Xml.Linq.XAttribute|All|
-|System.Xml.Linq.XCData|All|
-|System.Xml.Linq.XComment|All|
-|System.Xml.Linq.XContainer|All|
-|System.Xml.Linq.XDeclaration|All|
-|System.Xml.Linq.XDocument|除：加载外的所有|
-|System.Xml.Linq.XDocumentType|All|
-|System.Xml.Linq.XElement|All|
-|System.Xml.Linq.XName|All|
-|System.Xml.Linq.XNamespace|All|
-|System.Xml.Linq.XNode|All|
-|System.Xml.Linq.XNodeDocumentOrderComparer|All|
-|System.Xml.Linq.XNodeEqualityComparer|All|
-|System.Xml.Linq.XObject|All|
-|System.Xml.Linq.XProcessingInstruction|All|
-|System.Xml.Linq.XText|All|
-|System.Xml.XmlNodeType|All|
+|System.Text.RegularExpressions.RegexOptions|全部|
+|System.Text.StringBuilder|全部|
+|System.TimeSpan|全部|
+|System.TimeZone|全部|
+|System.TimeZoneInfo.AdjustmentRule|全部|
+|System.TimeZoneInfo.TransitionTime|全部|
+|System.TimeZoneInfo|全部|
+|System.Tuple|全部|
+|System.UInt16|全部|
+|System.UInt32|全部|
+|System.UInt64|全部|
+|System.Uri|全部|
+|System.UriPartial|全部|
+|System.Xml.Linq.Extensions|全部|
+|System.Xml.Linq.XAttribute|全部|
+|System.Xml.Linq.XCData|全部|
+|System.Xml.Linq.XComment|全部|
+|System.Xml.Linq.XContainer|全部|
+|System.Xml.Linq.XDeclaration|全部|
+|System.Xml.Linq.XDocument|全部，除了：加载|
+|System.Xml.Linq.XDocumentType|全部|
+|System.Xml.Linq.XElement|全部|
+|System.Xml.Linq.XName|全部|
+|System.Xml.Linq.XNamespace|全部|
+|System.Xml.Linq.XNode|全部|
+|System.Xml.Linq.XNodeDocumentOrderComparer|全部|
+|System.Xml.Linq.XNodeEqualityComparer|全部|
+|System.Xml.Linq.XObject|全部|
+|System.Xml.Linq.XProcessingInstruction|全部|
+|System.Xml.Linq.XText|全部|
+|System.Xml.XmlNodeType|全部|
 
-## <a name="context-variable"></a><a name="ContextVariables"></a>上下文变量
-每个策略[表达式](api-management-policy-expressions.md#Syntax)中隐式提供了名为 `context` 的变量。 其成员提供与 `\request` 相关的信息。 所有 `context` 成员均为只读。
+## <a name="context-variable"></a><a name="ContextVariables"></a> 上下文变量
+在每个策略[表达式](api-management-policy-expressions.md#Syntax)中均可隐式使用名为 `context` 的变量。 其成员提供与 `\request` 相关的信息。 所有 `context` 成员均为只读的。
 
 |上下文变量|允许的方法、属性和参数值|
 |----------------------|-------------------------------------------------------|
-|上下文|[阿皮](#ref-context-api)： [IApi](#ref-iapi)<br /><br /> [部署](#ref-context-deployment)<br /><br /> Elapsed: TimeSpan - 时间戳值和当前时间之间的时间间隔<br /><br /> [上次错误](#ref-context-lasterror)<br /><br /> [操作](#ref-context-operation)<br /><br /> [Product](#ref-context-product)<br /><br /> [请求](#ref-context-request)<br /><br /> RequestId: Guid - 唯一请求标识符<br /><br /> [响应](#ref-context-response)<br /><br /> [订阅](#ref-context-subscription)<br /><br /> Timestamp: DateTime - 接收到请求的时间点<br /><br /> Tracing: bool - 指示跟踪是为打开还是关闭 <br /><br /> [用户](#ref-context-user)<br /><br /> [变量](#ref-context-variables)： iReadOnly 字典<字符串，对象><br /><br /> void Trace(message: string)|
-|<a id="ref-context-api"></a>context.Api|Id: 字符串<br /><br /> IsCurrentRevision：bool<br /><br />  Name: 字符串<br /><br /> Path: 字符串<br /><br /> Revision: string<br /><br /> 服务Url： [IUrl](#ref-iurl)<br /><br /> Version: string |
-|<a id="ref-context-deployment"></a>context.Deployment|Region: 字符串<br /><br /> ServiceName: 字符串<br /><br /> Certificates: IReadOnlyDictionary<string, X509Certificate2>|
-|<a id="ref-context-lasterror"></a>context.LastError|Source: 字符串<br /><br /> Reason: 字符串<br /><br /> Message: 字符串<br /><br /> Scope: 字符串<br /><br /> Section: 字符串<br /><br /> Path: 字符串<br /><br /> PolicyId: 字符串<br /><br /> 有关 context.LastError 的详细信息，请参阅[错误处理](api-management-error-handling-policies.md)。|
-|<a id="ref-context-operation"></a>context.Operation|Id: 字符串<br /><br /> Method: 字符串<br /><br /> Name: 字符串<br /><br /> UrlTemplate: 字符串|
-|<a id="ref-context-product"></a>context.Product|阿皮斯：iE500<IApi [IApi](#ref-iapi)\><br /><br /> ApprovalRequired: 布尔值<br /><br /> 组：IGroup<IE5 [IGroup](#ref-igroup)\><br /><br /> Id: 字符串<br /><br /> Name: 字符串<br /><br /> State: enum ProductState {NotPublished, Published}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: 布尔值|
-|<a id="ref-context-request"></a>context.Request|正文[：IMessageBody](#ref-imessagebody) `null`或请求没有正文。<br /><br /> Certificate: System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> [标题](#ref-context-request-headers)： IReadOnly 字典<字符串，字符串\><br /><br /> IpAddress: 字符串<br /><br /> MatchedParameters: IReadOnlyDictionary<string, string><br /><br /> Method: 字符串<br /><br /> 原始 Url： [IUrl](#ref-iurl)<br /><br /> Url： [IUrl](#ref-iurl)|
-|<a id="ref-context-request-headers"></a>string context.Request.Headers.GetValueOrDefault(headerName: 字符串, defaultValue: 字符串)|headerName: 字符串<br /><br /> defaultValue: 字符串<br /><br /> 如果找不到标头，则返回逗号分隔的请求标头值或 `defaultValue`。|
-|<a id="ref-context-response"></a>context.Response|正文： [IMessageBody](#ref-imessagebody)<br /><br /> [标题](#ref-context-response-headers)： IReadOnly 字典<字符串，字符串\><br /><br /> StatusCode: 整数<br /><br /> StatusReason: 字符串|
-|<a id="ref-context-response-headers"></a>string context.Response.Headers.GetValueOrDefault(headerName: 字符串, defaultValue: 字符串)|headerName: 字符串<br /><br /> defaultValue: 字符串<br /><br /> 如果找不到标头，则返回逗号分隔的响应标头值或 `defaultValue`。|
-|<a id="ref-context-subscription"></a>context.Subscription|CreatedTime: DateTime<br /><br /> EndDate: DateTime?<br /><br /> Id: 字符串<br /><br /> Key: 字符串<br /><br /> Name: 字符串<br /><br /> PrimaryKey: 字符串<br /><br /> SecondaryKey: 字符串<br /><br /> StartDate: DateTime?|
-|<a id="ref-context-user"></a>context.User|Email: 字符串<br /><br /> FirstName: 字符串<br /><br /> 组：IGroup<IE5 [IGroup](#ref-igroup)\><br /><br /> Id: 字符串<br /><br /> 标识：iE5<[IUser 身份](#ref-iuseridentity)\><br /><br /> LastName: 字符串<br /><br /> Note: 字符串<br /><br /> RegistrationDate: DateTime|
-|<a id="ref-iapi"></a>IApi|Id: 字符串<br /><br /> Name: 字符串<br /><br /> Path: 字符串<br /><br /> Protocols: IEnumerable<string\><br /><br /> 服务Url： [IUrl](#ref-iurl)<br /><br /> 订阅键参数名称[：I 订阅键参数名称](#ref-isubscriptionkeyparameternames)|
-|<a id="ref-igroup"></a>IGroup|Id: 字符串<br /><br /> Name: 字符串|
-|<a id="ref-imessagebody"></a>IMessageBody|作为\>t<（保留内容：bool = false）：其中 T：字符串、字节*、JObject、JToken、JArray、XNode、XElement、XDocument<br /><br /> `context.Request.Body.As<T>` 和 `context.Response.Body.As<T>` 方法用于读取请求和响应采用指定类型 `T` 的消息正文。 该方法默认使用原始消息正文流，并在返回后将其呈现为不可用。 要通过让该方法在正文流的副本上执行操作而避免这种情况，请将 `preserveContent` 参数设置为 `true`。 请转到[此处](api-management-transformation-policies.md#SetBody)查看示例。|
-|<a id="ref-iurl"></a>IUrl|Host: 字符串<br /><br /> Path: 字符串<br /><br /> Port: 整数<br /><br /> [查询](#ref-iurl-query)： iRead唯一字典<字符串，字符串\><br /><br /> QueryString: 字符串<br /><br /> Scheme: 字符串|
-|<a id="ref-iuseridentity"></a>IUserIdentity|Id: 字符串<br /><br /> Provider: 字符串|
-|<a id="ref-isubscriptionkeyparameternames"></a>ISubscriptionKeyParameterNames|Header: 字符串<br /><br /> Query: 字符串|
-|<a id="ref-iurl-query"></a>string IUrl.Query.GetValueOrDefault(queryParameterName: 字符串, defaultValue: 字符串)|queryParameterName: 字符串<br /><br /> defaultValue: 字符串<br /><br /> 如果找不到参数，则会返回逗号分隔的查询参数值或 `defaultValue`。|
-|<a id="ref-context-variables"></a>T 上下文。变量.获取值或默认<T（\>变量名称：字符串，默认值：T）|variableName: 字符串<br /><br /> defaultValue: T<br /><br /> 如果找不到变量，则会返回强制转换为 `T` 或 `defaultValue` 类型的变量值。<br /><br /> 如果指定的类型与已返回变量的实际类型不符，此方法会引发异常。|
-|BasicAuthCredentials AsBasic(input: this string)|input: 字符串<br /><br /> 如果输入参数包含有效的 HTTP Basic Authentication 授权请求标头值，此方法会返回类型为 `BasicAuthCredentials` 的对象；否则，此方法会返回 null。|
-|bool TryParseBasic(input: this string, result: out BasicAuthCredentials)|input: 字符串<br /><br /> result: out BasicAuthCredentials<br /><br /> 如果输入参数包含请求标头中的有效 HTTP Basic Authentication 授权值，此方法会返回 `true` 且结果参数会包含类型为 `BasicAuthCredentials` 的值；否则，此方法会返回 `false`。|
-|BasicAuthCredentials|Password: 字符串<br /><br /> UserId: 字符串|
-|Jwt AsJwt(input: this string)|input: 字符串<br /><br /> 如果输入参数包含有效的 JWT 令牌值，此方法会返回类型为 `Jwt` 的对象；否则，此方法会返回 `null`。|
-|bool TryParseJwt(input: this string, result: out Jwt)|input: 字符串<br /><br /> result: out Jwt<br /><br /> 如果输入参数包含有效的 JWT 令牌值，此方法会返回 `true` 且结果参数包含类型为 `Jwt` 的值；否则，此方法会返回 `false`。|
-|Jwt|Algorithm: 字符串<br /><br /> Audience: IEnumerable<string\><br /><br /> Claims: IReadOnlyDictionary<string, string[]><br /><br /> ExpirationTime: DateTime?<br /><br /> Id: 字符串<br /><br /> Issuer: 字符串<br /><br /> 发布时间： 日期时间？<br /><br /> NotBefore: DateTime?<br /><br /> Subject: 字符串<br /><br /> Type: 字符串|
-|string Jwt.Claims.GetValueOrDefault(claimName: 字符串, defaultValue: 字符串)|claimName: 字符串<br /><br /> defaultValue: 字符串<br /><br /> 如果找不到标头，则返回逗号分隔的声明值或 `defaultValue`。|
+|上下文|[Api](#ref-context-api)：[IApi](#ref-iapi)<br /><br /> [部署](#ref-context-deployment)<br /><br /> Elapsed：TimeSpan - 时间戳值和当前时间之间的时间间隔<br /><br /> [LastError](#ref-context-lasterror)<br /><br /> [操作](#ref-context-operation)<br /><br /> [产品](#ref-context-product)<br /><br /> [请求](#ref-context-request)<br /><br /> RequestId：Guid - 唯一请求标识符<br /><br /> [响应](#ref-context-response)<br /><br /> [订阅](#ref-context-subscription)<br /><br /> 时间戳:DateTime - 接收到请求的时间点<br /><br /> Tracing: bool - 指示跟踪是为打开还是关闭 <br /><br /> [User](#ref-context-user)<br /><br /> [变量](#ref-context-variables)：IReadOnlyDictionary<string, object><br /><br /> void Trace(message：string)|
+|<a id="ref-context-api"></a>context.Api|Id：string<br /><br /> IsCurrentRevision：bool<br /><br />  Name：string<br /><br /> Path：string<br /><br /> Revision: string<br /><br /> ServiceUrl：[IUrl](#ref-iurl)<br /><br /> Version: string |
+|<a id="ref-context-deployment"></a>context.Deployment|Region：string<br /><br /> ServiceName：string<br /><br /> 证书：IReadOnlyDictionary<string, X509Certificate2>|
+|<a id="ref-context-lasterror"></a>context.LastError|Source：string<br /><br /> Reason：string<br /><br /> Message：string<br /><br /> Scope：string<br /><br /> Section：string<br /><br /> Path：string<br /><br /> PolicyId：string<br /><br /> 有关 context.LastError 的详细信息，请参阅[错误处理](api-management-error-handling-policies.md)。|
+|<a id="ref-context-operation"></a>context.Operation|Id：string<br /><br /> Method：string<br /><br /> Name：string<br /><br /> UrlTemplate：string|
+|<a id="ref-context-product"></a>context.Product|Api：IEnumerable<[IApi](#ref-iapi)\><br /><br /> ApprovalRequired：bool<br /><br /> 组：IEnumerable<[IGroup](#ref-igroup)\><br /><br /> Id：string<br /><br /> Name：string<br /><br /> State：enum ProductState {NotPublished, Published}<br /><br /> SubscriptionLimit：int?<br /><br /> SubscriptionRequired：bool|
+|<a id="ref-context-request"></a>context.Request|正文：[IMessageBody](#ref-imessagebody) 或 `null`（如果请求没有正文）。<br /><br /> 证书：System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> [标头](#ref-context-request-headers)：IReadOnlyDictionary<string, string[]><br /><br /> IpAddress：string<br /><br /> MatchedParameters：IReadOnlyDictionary<string, string><br /><br /> Method：string<br /><br /> OriginalUrl：[IUrl](#ref-iurl)<br /><br /> URL：[IUrl](#ref-iurl)|
+|<a id="ref-context-request-headers"></a>string context.Request.Headers.GetValueOrDefault(headerName: string, defaultValue: string)|headerName：string<br /><br /> defaultValue：string<br /><br /> 如果找不到标头，则返回逗号分隔的请求标头值或 `defaultValue`。|
+|<a id="ref-context-response"></a>context.Response|正文：[IMessageBody](#ref-imessagebody)<br /><br /> [标头](#ref-context-response-headers)：IReadOnlyDictionary<string, string[]><br /><br /> StatusCode：int<br /><br /> StatusReason：string|
+|<a id="ref-context-response-headers"></a>string context.Response.Headers.GetValueOrDefault(headerName: string, defaultValue: string)|headerName：string<br /><br /> defaultValue：string<br /><br /> 如果找不到标头，则返回逗号分隔的响应标头值或 `defaultValue`。|
+|<a id="ref-context-subscription"></a>context.Subscription|CreatedTime：DateTime<br /><br /> EndDate:DateTime?<br /><br /> Id：string<br /><br /> Key：string<br /><br /> Name：string<br /><br /> PrimaryKey：string<br /><br /> SecondaryKey：string<br /><br /> StartDate:DateTime?|
+|<a id="ref-context-user"></a>context.User|Email：string<br /><br /> FirstName：string<br /><br /> 组：IEnumerable<[IGroup](#ref-igroup)\><br /><br /> Id：string<br /><br /> 标识：IEnumerable<[IUserIdentity](#ref-iuseridentity)\><br /><br /> LastName：string<br /><br /> Note：string<br /><br /> RegistrationDate：DateTime|
+|<a id="ref-iapi"></a>IApi|Id：string<br /><br /> Name：string<br /><br /> Path：string<br /><br /> 协议：IEnumerable<string\><br /><br /> ServiceUrl：[IUrl](#ref-iurl)<br /><br /> SubscriptionKeyParameterNames：[ISubscriptionKeyParameterNames](#ref-isubscriptionkeyparameternames)|
+|<a id="ref-igroup"></a>IGroup|Id：string<br /><br /> Name：string|
+|<a id="ref-imessagebody"></a>IMessageBody|As<T\>(preserveContent: bool = false):其中 T 为 string、byte[]、JObject、JToken、JArray、XNode、XElement、XDocument<br /><br /> `context.Request.Body.As<T>` 和 `context.Response.Body.As<T>` 方法用于以指定的类型 `T` 读取请求和响应消息正文。 该方法默认使用原始消息正文流，并在返回后将其呈现为不可用。 要通过让该方法在正文流的副本上执行操作而避免这种情况，请将 `preserveContent` 参数设置为 `true`。 请转到[此处](api-management-transformation-policies.md#SetBody)查看示例。|
+|<a id="ref-iurl"></a>IUrl|Host：string<br /><br /> Path：string<br /><br /> Port：int<br /><br /> [查询](#ref-iurl-query)：IReadOnlyDictionary<string, string[]><br /><br /> QueryString：string<br /><br /> Scheme：string|
+|<a id="ref-iuseridentity"></a>IUserIdentity|Id：string<br /><br /> Provider：string|
+|<a id="ref-isubscriptionkeyparameternames"></a>ISubscriptionKeyParameterNames|Header：string<br /><br /> Query：string|
+|<a id="ref-iurl-query"></a>string IUrl.Query.GetValueOrDefault(queryParameterName: string, defaultValue: string)|queryParameterName：string<br /><br /> defaultValue：string<br /><br /> 如果找不到参数，则会返回逗号分隔的查询参数值或 `defaultValue`。|
+|<a id="ref-context-variables"></a>T context.Variables.GetValueOrDefault<T\>(variableName: string, defaultValue:T)|variableName：string<br /><br /> defaultValue:T<br /><br /> 如果找不到变量，则会返回强制转换为 `T` 或 `defaultValue` 类型的变量值。<br /><br /> 如果指定的类型与已返回变量的实际类型不符，此方法会引发异常。|
+|BasicAuthCredentials AsBasic(input：this string)|input：string<br /><br /> 如果输入参数包含有效的 HTTP Basic Authentication 授权请求标头值，此方法会返回类型为 `BasicAuthCredentials` 的对象；否则，此方法会返回 null。|
+|bool TryParseBasic(input：this string, result：out BasicAuthCredentials)|input：string<br /><br /> result：out BasicAuthCredentials<br /><br /> 如果输入参数包含请求标头中的有效 HTTP Basic Authentication 授权值，此方法会返回 `true` 且结果参数会包含类型为 `BasicAuthCredentials` 的值；否则，此方法会返回 `false`。|
+|BasicAuthCredentials|Password：string<br /><br /> UserId：string|
+|Jwt AsJwt(input：this string)|input：string<br /><br /> 如果输入参数包含有效的 JWT 令牌值，此方法会返回类型为 `Jwt` 的对象；否则，此方法会返回 `null`。|
+|bool TryParseJwt(input：this string, result：out Jwt)|input：string<br /><br /> result：out Jwt<br /><br /> 如果输入参数包含有效的 JWT 令牌值，此方法会返回 `true` 且结果参数包含类型为 `Jwt` 的值；否则，此方法会返回 `false`。|
+|Jwt|Algorithm：string<br /><br /> 受众：IEnumerable<string\><br /><br /> 声明：IReadOnlyDictionary<string, string[]><br /><br /> ExpirationTime：DateTime?<br /><br /> Id：string<br /><br /> Issuer：string<br /><br /> IssuedAt：DateTime?<br /><br /> NotBefore：DateTime?<br /><br /> Subject：string<br /><br /> Type：string|
+|string Jwt.Claims.GetValueOrDefault(claimName：string, defaultValue：string)|claimName：string<br /><br /> defaultValue：string<br /><br /> 如果找不到标头，则返回逗号分隔的声明值或 `defaultValue`。|
 |byte[] Encrypt(input: this byte[], alg: string, key:byte[], iv:byte[])|input - 要加密的明文<br /><br />alg - 对称加密算法的名称<br /><br />key - 加密密钥<br /><br />iv - 初始化矢量<br /><br />返回已加密的明文。|
-|byte[] Encrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm)|input - 要加密的明文<br /><br />alg - 加密算法<br /><br />返回已加密的明文。|
-|byte[] Encrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm, key:byte[], iv:byte[])|input - 要加密的明文<br /><br />alg - 加密算法<br /><br />key - 加密密钥<br /><br />iv - 初始化矢量<br /><br />返回已加密的明文。|
+|byte[] Encrypt(input: this byte[], alg:System.Security.Cryptography.SymmetricAlgorithm)|input - 要加密的明文<br /><br />alg - 加密算法<br /><br />返回已加密的明文。|
+|byte[] Encrypt(input: this byte[], alg:System.Security.Cryptography.SymmetricAlgorithm, key:byte[], iv:byte[])|input - 要加密的明文<br /><br />alg - 加密算法<br /><br />key - 加密密钥<br /><br />iv - 初始化矢量<br /><br />返回已加密的明文。|
 |byte[] Decrypt(input: this byte[], alg: string, key:byte[], iv:byte[])|input - 要解密的密文<br /><br />alg - 对称加密算法的名称<br /><br />key - 加密密钥<br /><br />iv - 初始化矢量<br /><br />返回明文。|
-|byte[] Decrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm)|input - 要解密的密文<br /><br />alg - 加密算法<br /><br />返回明文。|
-|byte[] Decrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm, key:byte[], iv:byte[])|input - 要解密的密文<br /><br />alg - 加密算法<br /><br />key - 加密密钥<br /><br />iv - 初始化矢量<br /><br />返回明文。|
+|byte[] Decrypt(input: this byte[], alg:System.Security.Cryptography.SymmetricAlgorithm)|input - 要解密的密文<br /><br />alg - 加密算法<br /><br />返回明文。|
+|byte[] Decrypt(input: this byte[], alg:System.Security.Cryptography.SymmetricAlgorithm, key:byte[], iv:byte[])|input - 要解密的密文<br /><br />alg - 加密算法<br /><br />key - 加密密钥<br /><br />iv - 初始化矢量<br /><br />返回明文。|
 |bool VerifyNoRevocation(input: this System.Security.Cryptography.X509Certificates.X509Certificate2)|在不检查证书吊销状态的情况下执行 X.509 链验证。<br /><br />输入 - 证书对象<br /><br />如果验证成功，则返回 `true`；如果验证失败，则返回 `false`。|
 
 

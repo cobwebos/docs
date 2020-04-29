@@ -1,5 +1,5 @@
 ---
-title: 地理路由使用的国家/区域层次结构 - Azure 流量管理器
+title: 地理路由使用的国家/地区层次结构 - Azure 流量管理器
 description: 本文列出了 Azure 流量管理器地理路由类型使用的国家/地区层次结构
 services: traffic-manager
 documentationcenter: ''
@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: rohink
 ms.openlocfilehash: 19445c06ccf08d2d7916545ad495c56883616c7a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76938643"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Azure 流量管理器将国家/地区层次结构用于地理流量路由方法
@@ -270,7 +270,7 @@ ms.locfileid: "76938643"
 
         - TT(特立尼达和多巴哥)
 
-        - UM（美国离岛）
+        - UM(美属本土外小岛屿)
 
         - US(美国)
 
@@ -380,7 +380,7 @@ ms.locfileid: "76938643"
 
         - VG(英属维尔京群岛)
 
-        - 六（美属维尔京群岛）
+        - VI(美属维尔京群岛)
 
         - XE(圣尤斯特歇斯)
 
@@ -458,7 +458,7 @@ ms.locfileid: "76938643"
 
         - TM(土库曼斯坦)
 
-        - TW(中国台湾)
+        - TW(台湾)
 
         - UZ(乌兹别克斯坦)
 

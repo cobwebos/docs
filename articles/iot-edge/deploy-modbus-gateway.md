@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
 ms.openlocfilehash: 23fbbd87230ea0a0147dc9d90c77729f4d531e98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76511138"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>通过 IoT Edge 设备网关连接 Modbus TCP 设备
@@ -33,7 +33,7 @@ ms.locfileid: "76511138"
 
 ## <a name="prepare-a-modbus-container"></a>准备 Modbus 容器
 
-若要测试 Modbus 网关功能，可以使用 Microsoft 提供的示例模块。 可以从 Azure 应用商店[、Modbus](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview)或映像 URI 访问模块`mcr.microsoft.com/azureiotedge/modbus:1.0`。
+若要测试 Modbus 网关功能，可以使用 Microsoft 提供的示例模块。 可以通过 Azure 市场 [Modbus](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview) 或映像 URI `mcr.microsoft.com/azureiotedge/modbus:1.0` 访问模块。
 
 如果需要创建自己的模块并根据环境对其自定义，可以使用 GitHub 上的开源 [Azure IoT Edge Modbus 模块](https://github.com/Azure/iot-edge-modbus)项目。 按照该项目中的指南创建自己的容器映像。 若要创建容器映像，请参阅[在 Visual Studio 中开发 C# 模块](how-to-visual-studio-develop-csharp-module.md)或[在 Visual Studio Code 中开发模块](how-to-vs-code-develop-module.md)。 这些文章说明了如何创建新模块并将容器映像发布到注册表。
 
@@ -43,38 +43,38 @@ ms.locfileid: "76511138"
 
 1. 在 [Azure 门户](https://portal.azure.com/)中转到 IoT 中心。
 
-2. 转到“IoT Edge”****，然后单击 IoT Edge 设备。
+2. 转到“IoT Edge”  ，然后单击 IoT Edge 设备。
 
-3. 选择“设置模块”****。
+3. 选择“设置模块”  。
 
-4. 在“IoT Edge 模块”部分中，添加 Modbus 模块****：
+4. 在“IoT Edge 模块”部分中，添加 Modbus 模块  ：
 
-   1. 单击“添加”下拉列表，然后选择“市场模块”********。
-   2. 搜索 `Modbus`，并选择 Microsoft 的“Modbus TCP 模块”****。
-   3. IoT 中心的模块会自动进行配置，并显示在 IoT Edge 模块列表中。 路由也会自动进行配置。 选择“查看 + 创建”****。
-   4. 查看部署清单并选择“创建”****。
+   1. 单击“添加”下拉列表，然后选择“市场模块”   。
+   2. 搜索 `Modbus`，并选择 Microsoft 的“Modbus TCP 模块”  。
+   3. IoT 中心的模块会自动进行配置，并显示在 IoT Edge 模块列表中。 路由也会自动进行配置。 选择“查看 + 创建”  。
+   4. 查看部署清单并选择“创建”  。
 
-5. 在列表中选择 Modbus`ModbusTCPModule`模块 ，然后选择 **"模块孪生设置"** 选项卡。模块孪生所需属性所需的 JSON 是自动填充的。
+5. 在列表中选择 Modbus 模块 `ModbusTCPModule`，然后选择“模块孪生设置”选项卡  。自动填充模块孪生所需属性的必需 JSON。
 
-6. 查找 JSON 中的 SlaveConnection 属性，并将其值设置为 Modbus 设备的 IPv4 地址****。
+6. 查找 JSON 中的 SlaveConnection 属性，并将其值设置为 Modbus 设备的 IPv4 地址  。
 
-7. 选择 **"更新**"。
+7. 选择“更新”  。
 
-8. 选择“查看 + 创建”，检查部署，然后选择“创建”********。
+8. 选择“查看 + 创建”，检查部署，然后选择“创建”   。
 
-9. 返回到“设备详细信息”页，并选择“刷新”****。 此时会看到新的 `ModbusTCPModule` 模块与 IoT Edge 运行时一起运行。
+9. 返回到“设备详细信息”页，并选择“刷新”  。 此时会看到新的 `ModbusTCPModule` 模块与 IoT Edge 运行时一起运行。
 
 ## <a name="view-data"></a>查看数据
 
-查看通过 Modbus 模块的数据：
+查看通过 Modbus 模块发送过来的数据：
 
 ```cmd/sh
 iotedge logs modbus
 ```
 
-您还可以使用 Visual Studio 代码的[Azure IoT 中心扩展名](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)（以前的 Azure IoT 工具包扩展），查看设备正在发送的遥测数据。
+也可使用[适用于 Visual Studio Code 的 Azure IoT 中心扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)（以前称为 Azure IoT 工具包扩展）查看设备正在发送的遥测数据。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 要了解有关 IoT Edge 设备如何充当网关的信息，请参阅[创建充当透明网关的 IoT Edge 设备](./how-to-create-transparent-gateway.md)。
-* 有关 IoT 边缘模块的工作原理的详细信息，请参阅[了解 Azure IoT 边缘模块](iot-edge-modules.md)。
+* 若要详细了解如何让 IoT Edge 设备充当网关，请参阅[创建充当透明网关的 IoT Edge 设备](./how-to-create-transparent-gateway.md)。
+* 有关 IoT Edge 模块工作原理的详细信息，请参阅[了解 Azure IoT Edge 模块](iot-edge-modules.md)。

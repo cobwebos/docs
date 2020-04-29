@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 4e3e430874f9d5b64f717b6ebb1cacb0eae46b1f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79243947"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Azure API 管理中的用户配置文件模板
@@ -25,7 +25,7 @@ ms.locfileid: "79243947"
   
  本部分中的模板可用于自定义开发人员门户中的用户配置文件页面的内容。  
   
--   [配置 文件](#Profile)  
+-   [配置文件](#Profile)  
   
 -   [订阅](#Subscriptions)  
   
@@ -40,7 +40,7 @@ ms.locfileid: "79243947"
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="profile"></a><a name="Profile"></a>配置 文件  
+##  <a name="profile"></a><a name="Profile"></a> 配置文件  
  **配置文件**模板用于自定义开发人员门户中用户配置文件页的用户配置文件部分。  
   
  ![“用户配置文件”页](./media/api-management-user-profile-templates/APIM-User-Profile-Page.png "“APIM 用户配置文件”页")  
@@ -97,8 +97,8 @@ ms.locfileid: "79243947"
 </div>  
 ```  
   
-### <a name="controls"></a>控件  
- 此模板不得使用任何[页面控件](api-management-page-controls.md)。  
+### <a name="controls"></a>控制  
+ 此模板可能不使用任何[页面控件](api-management-page-controls.md)。  
   
 ### <a name="data-model"></a>数据模型  
   
@@ -185,7 +185,7 @@ ms.locfileid: "79243947"
 }  
 ```  
   
-##  <a name="subscriptions"></a><a name="Subscriptions"></a>订阅  
+##  <a name="subscriptions"></a><a name="Subscriptions"></a> 订阅  
  **订阅**模板用于自定义开发人员门户中用户配置文件页的订阅部分。  
   
  ![“用户订阅”页](./media/api-management-user-profile-templates/APIM-User-Subscription-Page.png "“APIM 用户订阅”页")  
@@ -316,10 +316,10 @@ ms.locfileid: "79243947"
 </div>  
 ```  
   
-### <a name="controls"></a>控件  
+### <a name="controls"></a>控制  
  此模板使用以下[页面控件](api-management-page-controls.md)。  
   
--   [订阅取消](api-management-page-controls.md#subscription-cancel)  
+-   [subscription-cancel](api-management-page-controls.md#subscription-cancel)  
   
 ### <a name="data-model"></a>数据模型  
   
@@ -406,7 +406,7 @@ ms.locfileid: "79243947"
 }  
 ```  
   
-##  <a name="applications"></a><a name="Applications"></a>应用  
+##  <a name="applications"></a><a name="Applications"></a> 应用程序  
  **应用程序**模板用于自定义开发人员门户中用户配置文件页的订阅部分。  
   
  ![“用户帐户应用程序”页](./media/api-management-user-profile-templates/APIM-User-Account-Applications-Page.png "“APIM 用户帐户应用程序”页")  
@@ -479,7 +479,7 @@ ms.locfileid: "79243947"
 </div>  
 ```  
   
-### <a name="controls"></a>控件  
+### <a name="controls"></a>控制  
  此模板使用以下[页面控件](api-management-page-controls.md)。  
   
 -   [app-actions](api-management-page-controls.md#app-actions)  
@@ -570,7 +570,7 @@ ms.locfileid: "79243947"
 ```  
   
 ##  <a name="update-account-info"></a><a name="UpdateAccountInfo"></a> 更新帐户信息  
- “更新帐户信息”模板用于自定义开发人员门户中的“更新帐户信息”页。********  
+ “更新帐户信息”模板用于自定义开发人员门户中的“更新帐户信息”页。    
   
  ![“用户帐户信息”页开发人员门户模板](./media/api-management-user-profile-templates/APIM-User-Account-Info-Page-Developer-Portal-Templates.png "“APIM 用户帐户信息”页开发人员门户模板")  
   
@@ -606,8 +606,8 @@ ms.locfileid: "79243947"
 </a>  
 ```  
   
-### <a name="controls"></a>控件  
- 此模板不得使用任何[页面控件](api-management-page-controls.md)。  
+### <a name="controls"></a>控制  
+ 此模板可能不使用任何[页面控件](api-management-page-controls.md)。  
   
 ### <a name="data-model"></a>数据模型  
  [用户帐户信息](api-management-template-data-model-reference.md#UserAccountInfo)实体。  

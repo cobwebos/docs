@@ -1,6 +1,6 @@
 ---
-title: 修复了"无法从这里到达那里"错误 - Azure AD
-description: 查找潜在的解决方法，了解您收到"无法从这里到达那里"错误消息的原因。
+title: "\"无法从此处获取\" 错误的修补程序-Azure AD"
+description: 找到可能的修补程序，了解为何出现 "无法从这里获取" 错误消息。
 services: active-directory
 author: curtand
 manager: daveba
@@ -14,13 +14,13 @@ ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: 2484de4e554d16ba049d206981a44654ede28a3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77190023"
 ---
-# <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>"您无法从这里到达那里"错误消息的可能修复
+# <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>可能出现的 "无法从此处获取" 错误消息的修补程序
 
 访问组织的内部 Web 应用或服务时，可能会收到以下错误消息：无法从此处访问****。 此消息表示组织已使阻止设备访问组织的资源的策略就位。 虽然你可能不必联系支持人员来解决此问题，但可以先尝试执行以下操作。
 
@@ -34,13 +34,13 @@ ms.locfileid: "77190023"
 ## <a name="make-sure-youre-using-a-supported-operating-system"></a>确保使用的是支持的操作系统
 确保正在运行支持的操作系统版本，包括：
 
-- **窗口客户端。** Windows 7 或更高版本。
+- **Windows 客户端。** Windows 7 或更高版本。
 
-- **窗口服务器。** Windows Server 2008 R2 或更高版本。
+- **Windows Server。** Windows Server 2008 R2 或更高版本。
 
 - **macOS.** macOS X 或更高版本
 
-- **安卓和 iOS。** 最新版本的 Android 和 iOS 移动操作系统
+- **Android 和 iOS。** 最新版本的 Android 和 iOS 移动操作系统
 
 若要解决此问题，必须安装并运行支持的操作系统。
 
@@ -63,9 +63,9 @@ ms.locfileid: "77190023"
 ### <a name="to-join-your-device-to-your-network"></a>将设备加入网络
 如果设备未加入组织的网络，则可以执行两个操作之一：
 
-- 加入工作设备。**** 将工作专用的 Windows 10 设备加入组织的网络，以便能够访问可能受限的资源。 有关详细信息和分步说明，请参阅[将工作设备加入组织的网络](user-help-join-device-on-network.md)。
+- **加入你的工作设备。** 将工作专用的 Windows 10 设备加入组织的网络，以便能够访问可能受限的资源。 有关详细信息和分步说明，请参阅[将工作设备加入组织的网络](user-help-join-device-on-network.md)。
 
-- **注册用于工作的个人设备。** 在组织的网络上注册个人设备（通常为电话或平板电脑）。 设备注册后，可以访问组织的受限资源。 有关详细信息和分步说明，请参阅[在组织的网络上注册个人设备](user-help-register-device-on-network.md)。
+- **注册你的个人设备进行工作。** 在组织的网络上注册个人设备（通常为电话或平板电脑）。 设备注册后，可以访问组织的受限资源。 有关详细信息和分步说明，请参阅[在组织的网络上注册个人设备](user-help-register-device-on-network.md)。
 
 ## <a name="next-steps"></a>后续步骤
 - [什么是 MyApps 门户？](active-directory-saas-access-panel-introduction.md)

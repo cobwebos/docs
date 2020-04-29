@@ -9,10 +9,10 @@ ms.date: 02/25/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: eb62883859a3efeb1c05deb38d8a40fba76e9cdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79137914"
 ---
 # <a name="list-blobs-with-net"></a>使用 .NET 列出 Blob
@@ -39,9 +39,9 @@ ms.locfileid: "79137914"
 
 ### <a name="manage-how-many-results-are-returned"></a>管理要返回的结果数
 
-默认情况下，列出操作每次最多返回 5000 条结果。 若要返回更少的结果，请在调用某个 **ListBlobs** 方法时为 `maxresults` 参数提供非零值。
+默认情况下，列出操作每次最多返回 5000 条结果。 若要返回更少的结果，请在调用某个 `maxresults`ListBlobs**方法时为** 参数提供非零值。
 
-如果列出操作返回的 Blob 超过 5000 个，或者你为 `maxresults` 指定了一个导致列出操作返回存储帐户中一部分容器的值，则 Azure 存储将返回一个包含 Blob 列表的继续标记。** 继续标记是一个不透明值，可用于从 Azure 存储中检索下一组结果。
+如果列出操作返回的 Blob 超过 5000 个，或者你为 `maxresults` 指定了一个导致列出操作返回存储帐户中一部分容器的值，则 Azure 存储将返回一个包含 Blob 列表的继续标记。  继续标记是一个不透明值，可用于从 Azure 存储中检索下一组结果。
 
 在代码中检查继续标记的值，以确定它是否为 null。 如果继续标记为 null，则表示结果集是完整的。 如果继续标记不为 null，则再次调用列出操作，并传入继续标记以检索下一组结果，直到继续标记为 null。
 
@@ -51,11 +51,11 @@ ms.locfileid: "79137914"
 
 ### <a name="return-metadata"></a>返回元数据
 
-若要连同结果一起返回 Blob 元数据，请指定 [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) 枚举的 **Metadata** 值。 Azure 存储包含每个返回的 Blob 的元数据，因此在此上下文中，无需同时调用 **FetchAttributes** 方法之一即可检索 Blob 元数据。
+若要连同结果一起返回 Blob 元数据，请指定 **BlobListingDetails** 枚举的 [Metadata](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) 值。 Azure 存储包含每个返回的 Blob 的元数据，因此在此上下文中，无需同时调用 **FetchAttributes** 方法之一即可检索 Blob 元数据。
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>平面列表与分层列表
 
-Azure 存储中的 Blob 以平面范式进行组织，而不是以分层范式（类似于经典文件系统）进行组织。 但是，可以将 Blob 组织到虚拟目录** 中，以便模拟文件夹结构。 虚拟目录构成 blob 名称的一部分，并由分隔符表示。
+Azure 存储中的 Blob 以平面范式进行组织，而不是以分层范式（类似于经典文件系统）进行组织。 但是，可以将 Blob 组织到虚拟目录  中，以便模拟文件夹结构。 虚拟目录构成 blob 名称的一部分，并由分隔符表示。
 
 若要将 Blob 组织成虚拟目录，请在 Blob 名称中使用分隔符。 默认分隔符是正斜杠 (/)，但你可以指定任何字符作为分隔符。
 
@@ -209,5 +209,5 @@ Blob name: FolderA/FolderB/FolderC/blob3.txt
 
 ## <a name="next-steps"></a>后续步骤
 
-- [列表 Blob](/rest/api/storageservices/list-blobs)
+- [列出 Blob](/rest/api/storageservices/list-blobs)
 - [枚举 Blob 资源](/rest/api/storageservices/enumerating-blob-resources)

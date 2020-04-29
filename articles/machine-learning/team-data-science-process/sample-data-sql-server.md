@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 71a2ec9dc4d644fb8739db3817e2cd1d09913da7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76717644"
 ---
 # <a name="sample-data-in-sql-server-on-azure"></a><a name="heading"></a>对 Azure 上 SQL Server 中的数据进行采样
@@ -30,14 +30,14 @@ Python 采样使用要连接到 Azure 上 SQL Server 的 [pyodbc](https://code.g
 > 
 
 **为什么对数据进行采样？**
-如果计划要分析的数据集很大，通常最好是对数据进行向下采样，以将数据减至较小但具备代表性且更易于管理的规模。 采样有助于数据理解、探索和功能工程。 它在[团队数据科学过程 (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 中的作用是启用数据处理功能和机器学习模型的快速原型设计。
+如果计划要分析的数据集很大，通常最好是对数据进行向下采样，以将数据减至较小但具备代表性且更易于管理的规模。 采样有助于数据理解、探索和特征工程。 它在[团队数据科学过程 (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 中的作用是启用数据处理功能和机器学习模型的快速原型设计。
 
 此采样任务是[团队数据科学流程 (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 中的一个步骤。
 
 ## <a name="using-sql"></a><a name="SQL"></a>使用 SQL
 本部分介绍了几种使用 SQL 针对数据库中的数据执行简单随机采样的方法。 请根据数据大小及其分发方式选择一种方法。
 
-以下两项显示了如何使用 SQL Server 中的 `newid` 执行采样。 您选择的方法取决于您希望示例的随机性（以下示例代码中的pk_id假定为自动生成的主键）。
+以下两项显示了如何使用 SQL Server 中的 `newid` 执行采样。 选择的方法取决于您想要样本的随机程度（在以下示例代码中 pk_id 假设为自动生成的主键）。
 
 1. 不太严格的随机采样
    
@@ -48,7 +48,7 @@ Python 采样使用要连接到 Azure 上 SQL Server 的 [pyodbc](https://code.g
         SELECT * FROM <table_name>
         WHERE 0.1 >= CAST(CHECKSUM(NEWID(), <primary_key>) & 0x7fffffff AS float)/ CAST (0x7fffffff AS int)
 
-Tablesample 也可用于数据采样。 如果数据大小较大（假设不同页面上的数据不相关），并且查询在合理时间内完成，则此选项可能是更好的方法。
+Tablesample 也可用于数据采样。 如果数据大小较大（假设不同页面上的数据不相关），并且查询在合理的时间内完成，则此选项可能是更好的方法。
 
     SELECT *
     FROM <table_name> 
@@ -60,18 +60,18 @@ Tablesample 也可用于数据采样。 如果数据大小较大（假设不同�
 > 
 
 ### <a name="connecting-to-azure-machine-learning"></a><a name="sql-aml"></a>连接到 Azure 机器学习
-可直接在 Azure 机器学习[导入数据][import-data]模块中使用上述采样查询，对数据进行联机低采样并将其引入 Azure 机器学习实验。 使用读取器模块读取采样数据的屏幕截图如下所示：
+可直接在 Azure 机器学习[导入数据][import-data]模块中使用上述采样查询，对数据进行联机低采样并将其引入 Azure 机器学习试验。 使用读取器模块读取采样数据的屏幕截图如下所示：
 
 ![读取器 SQL][1]
 
 ## <a name="using-the-python-programming-language"></a><a name="python"></a>使用 Python 编程语言
-本部分演示了如何使用 [pyodbc 库](https://code.google.com/p/pyodbc/)建立 ODBC 与 Python 中 SQL Server 数据库的连接。 数据库连接字符串如下所示：（将服务器名称、dbname、用户名和密码替换为您的配置）：
+本部分演示了如何使用 [pyodbc 库](https://code.google.com/p/pyodbc/)建立 ODBC 与 Python 中 SQL Server 数据库的连接。 数据库连接字符串如下所示：（将 servername、dbname、username 和 password 替换为你的配置）：
 
     #Set up the SQL Azure connection
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-Python 中的 [Pandas](https://pandas.pydata.org/) 库提供一组丰富的数据结构，以及针对 Python 编程的数据操作的数据分析工具。 以下代码将 Azure SQL 数据库中表中 0.1% 的数据样本读取为熊猫数据：
+Python 中的 [Pandas](https://pandas.pydata.org/) 库提供一组丰富的数据结构，以及针对 Python 编程的数据操作的数据分析工具。 下面的代码将 Azure SQL 数据库中的表中的0.1% 样本数据读入 Pandas 数据：
 
     import pandas as pd
 
@@ -81,7 +81,7 @@ Python 中的 [Pandas](https://pandas.pydata.org/) 库提供一组丰富的数�
 现在，可以在 Pandas 数据帧中处理采样的数据。 
 
 ### <a name="connecting-to-azure-machine-learning"></a><a name="python-aml"></a>连接到 Azure 机器学习
-可以使用以下示例代码将低采样的数据保存到文件，并将其上传到 Azure blob。 可以使用[导入数据][import-data]模块将 blob 中的数据直接读取到 Azure 机器学习实验。 步骤如下： 
+可以使用以下示例代码将低采样的数据保存到文件，并将其上传到 Azure blob。 可以使用[导入数据][import-data]模块将 blob 中的数据直接读取到 Azure 机器学习试验。 步骤如下： 
 
 1. 将 Pandas 数据帧写入本地文件
    
@@ -112,7 +112,7 @@ Python 中的 [Pandas](https://pandas.pydata.org/) 库提供一组丰富的数�
 ![blob 读取器][2]
 
 ## <a name="the-team-data-science-process-in-action-example"></a>运行中的团队数据科学过程示例
-要演练使用公共数据集的团队数据科学流程示例，请参阅[操作中的团队数据科学进程：使用 SQL Server](sql-walkthrough.md)。
+若要逐步了解团队数据科学使用公共数据集处理 a 的示例，请参阅[操作中的团队数据科学过程：使用 SQL Server](sql-walkthrough.md)。
 
 [1]: ./media/sample-sql-server-virtual-machine/reader_database.png
 [2]: ./media/sample-sql-server-virtual-machine/reader_blob.png

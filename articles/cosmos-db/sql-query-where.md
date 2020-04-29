@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: tisande
 ms.openlocfilehash: 483a0533eafc81ef8698d260a753062ae074f6d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78898781"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 WHERE 子句
@@ -25,7 +25,7 @@ WHERE <filter_condition>
   
 ```  
   
-## <a name="arguments"></a>自变量
+## <a name="arguments"></a>参数
 
 - `<filter_condition>`  
   
@@ -37,9 +37,9 @@ WHERE <filter_condition>
   
 ## <a name="remarks"></a>备注
   
-  为了能够返回文档，指定为筛选条件的表达式的求值结果必须为 true。 只有布尔值`true`才能满足条件，任何其他值：未定义、空、假、数字、数组或对象将无法满足条件。
+  为了能够返回文档，指定为筛选条件的表达式的求值结果必须为 true。 只有布尔值`true`满足条件，任何其他值：未定义、null、False、数字、数组或对象将不满足条件。
 
-  如果将分区键包含在`WHERE`子句中作为相等筛选器的一部分，则查询将自动筛选为仅相关分区。
+  如果在`WHERE`子句中包含分区键作为相等筛选器的一部分，则查询将自动仅筛选相关的分区。
 
 ## <a name="examples"></a>示例
 
@@ -75,7 +75,7 @@ WHERE <filter_condition>
 |位    | \|、&、^、<<、>>、>>>（补零右移） |
 |逻辑    | AND、OR、NOT      |
 |比较 | =、!=、&lt;、&gt;、&lt;=、&gt;=、<> |
-|String     |  \|\|（连接） |
+|字符串     |  \|\|（连接） |
 
 以下查询使用二元运算符：
 
@@ -109,6 +109,6 @@ WHERE <filter_condition>
 
 ## <a name="next-steps"></a>后续步骤
 
-- [开始](sql-query-getting-started.md)
+- [入门](sql-query-getting-started.md)
 - [IN 关键字](sql-query-keywords.md#in)
-- [from 子句](sql-query-from.md)
+- [FROM 子句](sql-query-from.md)

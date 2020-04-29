@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
 ms.openlocfilehash: aac0060527af7b7d880f971e7608be3fa44a2d15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76905107"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>从预构建的模板创建逻辑应用工作流
@@ -21,7 +21,7 @@ ms.locfileid: "76905107"
 
 此处有一些模板类别：
 
-| 模板类型 | 描述 | 
+| 模板类型 | 说明 | 
 | ------------- | ----------- | 
 | 企业云模板 | 用于集成 Azure Blob、Dynamics CRM、Salesforce、Box 以及其他连接器来满足企业云需求。 例如，可以使用这些模板组织业务领导方式或备份公司文件数据。 | 
 | 个人工作效率模板 | 通过设置日常提醒、将重要工作项目添加为待办事项，以及通过自动化将耗时较长的任务缩减为单个用户同意的步骤，有助于提高个人工作效率。 | 
@@ -34,9 +34,9 @@ ms.locfileid: "76905107"
 
 ## <a name="create-logic-apps-from-templates"></a>从模板创建逻辑应用
 
-1. 如果尚未登录，请登录到[Azure 门户](https://portal.azure.com "Azure 门户")。
+1. 登录到 [Azure 门户](https://portal.azure.com "Azure 门户")（如果尚未登录）。
 
-2. 从主 Azure 菜单中，选择 **"创建资源** > **企业集成** > **逻辑应用**"。
+2. 在 Azure 主菜单中，选择“创建资源” **“企业集成”** “逻辑应用” >    >   。
 
    ![Azure 门户 >“新建”>“Enterprise Integration”>“逻辑应用”](./media/logic-apps-create-logic-apps-from-templates/azure-portal-create-logic-app.png)
 
@@ -44,16 +44,16 @@ ms.locfileid: "76905107"
 
    ![提供逻辑应用的详细信息](./media/logic-apps-create-logic-apps-from-templates/logic-app-settings.png)
 
-   | 设置 | “值” | 描述 | 
+   | 设置 | 值 | 说明 | 
    | ------- | ----- | ----------- | 
-   | **名称** | *逻辑应用名称* | 提供一个唯一的逻辑应用名称。 | 
-   | **订阅** | *your-Azure-subscription-name* | 选择要使用的 Azure 订阅。 | 
-   | **资源组** | ** your-Azure-resource-group-name | 创建或选择一个用于此逻辑应用的 [Azure 资源组](../azure-resource-manager/management/overview.md)，以便组织与此应用相关联的所有资源。 | 
-   | **位置** | ** your-Azure-datacenter-region | 选择用于部署逻辑应用的数据中心区域，例如“美国西部”。 | 
-   | **日志分析** | 关闭（默认）或者打开******** | 使用[Azure 监视器日志](../log-analytics/log-analytics-overview.md)为逻辑应用设置[诊断日志记录](../logic-apps/monitor-logic-apps-log-analytics.md)。 需要已具有 Log Analytics 工作区。 | 
+   | **名称** |  your-logic-app-name | 提供一个唯一的逻辑应用名称。 | 
+   | **订阅** |  your-Azure-subscription-name | 选择要使用的 Azure 订阅。 | 
+   | **资源组** |  your-Azure-resource-group-name | 创建或选择一个用于此逻辑应用的 [Azure 资源组](../azure-resource-manager/management/overview.md)，以便组织与此应用相关联的所有资源。 | 
+   | **位置** |  your-Azure-datacenter-region | 选择用于部署逻辑应用的数据中心区域，例如“美国西部”。 | 
+   | **Log Analytics** | 关闭（默认）或者打开******** | 使用[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)为逻辑应用设置[诊断日志记录](../logic-apps/monitor-logic-apps-log-analytics.md)。 需要已具有 Log Analytics 工作区。 | 
    |||| 
 
-4. 准备就绪后，请选择“固定到仪表板”****。 这样一来，逻辑应用就会自动显示在 Azure 仪表板上，并在部署后打开。 选择 **“创建”**。
+4. 准备就绪后，请选择“固定到仪表板”****。 这样一来，逻辑应用就会自动显示在 Azure 仪表板上，并在部署后打开。 选择“创建”  。
 
    > [!NOTE]
    > 如果不希望固定逻辑应用，则必须在部署后手动查找并打开逻辑应用，然后才能继续。
@@ -99,7 +99,7 @@ ms.locfileid: "76905107"
 
 ## <a name="update-logic-apps-with-templates"></a>使用模板更新逻辑应用
 
-1. 在[Azure 门户](https://portal.azure.com "Azure 门户")中，在逻辑应用设计器中查找并打开逻辑应用。
+1. 在[Azure 门户](https://portal.azure.com "Azure 门户")中，查找并打开逻辑应用设计器中的逻辑应用。
 
 2. 在设计器工具栏上，选择“模板”****。 此操作会放弃所有未保存更改，因此，会出现警告消息，以便确认是否继续。 若确认执行请求，请选择“确定”****。 例如：
 

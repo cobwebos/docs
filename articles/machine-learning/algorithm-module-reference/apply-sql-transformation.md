@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
 ms.openlocfilehash: 2e44a4861e2522b766aab9c7151d76c471dd2d8c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76314532"
 ---
 # <a name="apply-sql-transformation"></a>应用 SQL 转换
@@ -29,13 +29,13 @@ ms.locfileid: "76314532"
 -   执行 SQL 查询语句，筛选或更改数据，并以数据表的形式返回查询结果。  
 
 > [!IMPORTANT]
-> 此模块中使用的 SQL 引擎是 SQLite****。 有关 SQLite 语法的详细信息，请参阅 [SQL as Understood by SQLite](https://www.sqlite.org/index.html)。  
+> 此模块中使用的 SQL 引擎是 SQLite  。 有关 SQLite 语法的详细信息，请参阅 [SQL as Understood by SQLite](https://www.sqlite.org/index.html)。  
 
 ## <a name="how-to-configure-apply-sql-transformation"></a>如何配置应用 SQL 转换  
 
 该模块可将最多三个数据集用作输入。 引用连接到每个输入端口的数据集时，必须使用名称 `t1`、`t2` 和 `t3`。 表编号指示输入端口的索引。  
   
-剩余参数是使用 SQLite 语法的 SQL 查询。 在“SQL 脚本”文本框中键入多行时，请使用分号终止每条语句****。 否则，换行符会转换为空格。  
+剩余参数是使用 SQLite 语法的 SQL 查询。 在“SQL 脚本”文本框中键入多行时，请使用分号终止每条语句  。 否则，换行符会转换为空格。  
 
 此模块支持 SQLite 语法的所有标准语句。 如需了解不支持的语句列表，请参阅[技术说明](#technical-notes)部分。
 
@@ -60,8 +60,8 @@ ms.locfileid: "76314532"
 - 可在 SQLite 中创建“视图”，但之后视图为只读。 不可在视图中执行 `DELETE`、`INSERT` 或 `UPDATE` 语句。 但可创建一个触发器，尝试在视图上执行 `DELETE`、`INSERT` 或 `UPDATE`，并在触发器主体中执行其他操作。  
   
 
-除了官方 SQLite 网站上提供的不支持的功能列表外，以下 wiki 还提供其他不支持的功能列表[：SQLite - 不支持的 SQL](http://www2.sqlite.org/cvstrac/wiki?p=UnsupportedSql)  
+除了在官方 SQLite 网站上提供不受支持的功能列表，下面的 Wiki 还提供其他不受支持的功能列表：[SQLite - 不受支持的 SQL](http://www2.sqlite.org/cvstrac/wiki?p=UnsupportedSql)  
     
 ## <a name="next-steps"></a>后续步骤
 
-参阅 Azure 机器学习[可用的模块集](module-reference.md)。 
+请参阅 Azure 机器学习的[可用模块集](module-reference.md)。 

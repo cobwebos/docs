@@ -1,15 +1,15 @@
 ---
 title: Azure Service Fabric CLI - sfctl chaos schedule
-description: 了解 sfctl，Azure 服务结构命令行接口。 包括用于混沌调度的命令列表。
+description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于混沌测试计划的命令列表。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 29b365c48e405830e238945f1d94156f477c15b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76906187"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
@@ -17,7 +17,7 @@ ms.locfileid: "76906187"
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|说明|
 | --- | --- |
 | get | 获取定义何时以及如何运行 Chaos 的 Chaos Schedule。 |
 | set | 设置 Chaos 使用的计划。 |
@@ -27,15 +27,15 @@ ms.locfileid: "76906187"
 
 获取正在使用的 Chaos Schedule 版本以及定义何时以及如何运行 Chaos 的 Chaos Schedule。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -48,9 +48,9 @@ ms.locfileid: "76906187"
 
 Chaos 将自动基于 Chaos Schedule 来计划运行。 如果提供的版本与服务器上的版本匹配，则将更新 Chaos Schedule。 更新 Chaos Schedule 时，服务器上的版本将递增 1。 在达到较大数字后，服务器上的版本将自动换回 0。 如果在进行此调用时正在运行 Chaos，则此调用将失败。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --chaos-parameters-dictionary | 一个 JSON 编码列表，表示字符串名称到 Jobs 要使用的 ChaosParameters 的映射。 |
 | --expiry-date-utc | 停止使用 Schedule 来计划 Chaos 的日期和时间。  默认值\: 9999-12-31T23\:59\:59.999Z。 |
@@ -61,7 +61,7 @@ Chaos 将自动基于 Chaos Schedule 来计划运行。 如果提供的版本与
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -140,5 +140,5 @@ sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z"
 
 
 ## <a name="next-steps"></a>后续步骤
-- [设置](service-fabric-cli.md)服务结构 CLI。
+- [安装](service-fabric-cli.md) Service Fabric CLI。
 - 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。

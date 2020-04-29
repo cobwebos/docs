@@ -1,5 +1,5 @@
 ---
-title: Azure 媒体服务 - 实时流中信号时点元数据
+title: Azure 媒体服务 - 在实时传送流中发出计时元数据的信号
 description: 本规范概述在将计时元数据引入和流式传输到 Azure 媒体服务时使用的信号发送法。 这包括对泛型计时元数据信号 (ID3) 的支持，以及对用于广告插入和接合信号的 SCTE-35 信号的支持。
 services: media-services
 documentationcenter: ''
@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
 ms.openlocfilehash: 551fb0cb9f3745a62d5d84f2c4878bbbbe5ad9a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79137316"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>实时传送视频流中的超时元数据信号 
 
-上次更新时间： 2019-08-22
+上次更新时间：2019-08-22
 
 ### <a name="conformance-notation"></a>一致表示法
 
 本文档中的关键字“必须”、“不得”、“需要”、“应”、“不应”、“应该”、“不能”、“建议”、“可以”和“可选”根据 RFC 2119 中所述予以解释
 
-## <a name="1-introduction"></a>1. 介绍 
+## <a name="1-introduction"></a>1.简介 
 
 为了表示客户端播放器上的广告插入或自定义元数据事件，广播装置通常使用视频中嵌入的计时元数据。 为实现这些方案，媒体服务将提供对计时元数据以及从实时传送视频流频道的引入点到客户端应用程序的传输支持。
 本规范针对实时传送视频流信号中的计时元数据概述了媒体服务支持的多种模式：
@@ -50,7 +50,7 @@ ms.locfileid: "79137316"
 | 打包器            | Azure 媒体服务“流式处理终结点”提供适用于 DASH 和 HLS 的动态打包功能，在媒体行业称为“打包器”。                                                                              |
 | 呈现时间   | 事件呈现给查看者的时间。 该时间表示媒体时间线上查看者可以看到事件的那一刻。 例如，SCTE-35 splice_info() 命令消息的呈现时间为 splice_time()。 |
 | 到达时间        | 事件消息到达的时间。 该时间通常不同于事件的呈现时间，因为事件消息在事件的呈现时间之前发送。                                                    |
-| 稀疏轨迹        | 不连续的媒体轨迹，时间与父级或控件轨迹的时间同步。                                                                                                                                                  |
+| 稀疏轨道        | 不连续的媒体轨迹，时间与父级或控件轨迹的时间同步。                                                                                                                                                  |
 | 源              | Azure 媒体流式处理服务                                                                                                                                                                                                             |
 | 信道接收器        | Azure 媒体实时传送视频流服务                                                                                                                                                                                                        |
 | HLS                 | Apple HTTP Live Streaming 协议                                                                                                                                                                                                            |
@@ -67,34 +67,34 @@ ms.locfileid: "79137316"
 以下文档包含本文中参考的条款，构成了本文档的条款。 标准主体随时可修订所有文档，我们建议读者调查应用下面所列最新版本文档的可能性。 另外提醒读者，新版参考文档可能与 Azure 媒体服务的此计时元数据规范版本不兼容。
 
 
-| Standard          | 定义                                                                                                                                                                                                     |
+| 标准          | 定义                                                                                                                                                                                                     |
 | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Adobe-Primetime] | [Primetime 数字节目插入信号规范 1.2](https://www.adobe.com/content/dam/acom/en/devnet/primetime/PrimetimeDigitalProgramInsertionSignalingSpecification.pdf)                       |
 | [Adobe-Flash-AS]  | [FLASH ActionScript 语言参考](https://help.adobe.com/archive/en_US/as2/flashlite_2.x_3.x_aslr.pdf)                                                                                                   |
 | [AMF0]            | [“操作消息格式 AMF0”](https://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf)                                                                                                              |
-| [DASH-IF-IOP]     | DASH 行业论坛互通指导 v 4.2[https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html](https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html)    |
-| [HLS-TMD]         | 用于 HTTP 实时流式处理的时点元数据 -[https://developer.apple.com/streaming](https://developer.apple.com/streaming)                                                                                        |
+| [DASH-IF-IOP]     | DASH 行业论坛互操作指南 v4.2 [https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html](https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html)    |
+| [HLS-TMD]         | HTTP Live Streaming 的计时元数据 - [https://developer.apple.com/streaming](https://developer.apple.com/streaming)                                                                                        |
 | [CMAF-ID3]        | [常用媒体应用程序格式 (CMAF) 中的计时元数据](https://github.com/AOMediaCodec/id3-emsg)                                                                                                        |
-| [ID3v2]           | ID3 标签版本 2.4.0[http://id3.org/id3v2.4.0-structure](http://id3.org/id3v2.4.0-structure)                                                                                                                |
-| [ISO-14496-12]    | ISO/IEC 14496-12：第12部分 ISO 基本介质文件格式，第四版 2012-07-15                                                                                                                                 |
-| [MPEGDASH]        | 信息技术 -- -- 通过 HTTP （DASH） 进行动态自适应流流 -- 第 1 部分：媒体演示描述和分段格式。 2014 年 5 月。 已发布。 URL：https://www.iso.org/standard/65274.html         |
-| [MPEGCMAF]        | 信息技术 -- -- 多媒体应用格式 （MPEG-A） -- -- 第 19 部分：分段媒体的共同媒体应用格式 （CMAF）。 2018 年 1 月。 已发布。 URL：https://www.iso.org/standard/71975.html |
-| [MPEGCENC]        | 信息技术 -- -- MPEG 系统技术 -- -- 第 7 部分：ISO 基础媒体文件格式文件中的常见加密。 2016 年 2 月。 已发布。 URL：https://www.iso.org/standard/68042.html                   |
-| [MS-SSTR]         | ["微软平滑流式处理协议"，2014 年 5 月 15 日](https://docs.microsoft.com/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)                                                     |
-| [MS-SSTR-Ingest]  | [Azure 媒体服务 碎片 MP4 实时引入规范](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview)                                                      |
-| [RFC8216]         | R. Pantos, Ed.; W. May. HTTP Live Streaming。 2017 年 8 月。 这只是信息性消息。 [https://tools.ietf.org/html/rfc8216](https://tools.ietf.org/html/rfc8216)                                                            |
-| [RFC4648]         | Base16、Base32 和 Base64 数据编码 -[https://tools.ietf.org/html/rfc4648](https://tools.ietf.org/html/rfc4648)                                                                                     |
-| [RTMP]            | ["Adobe 的实时消息协议"，2012 年 12 月 21 日](https://www.adobe.com/devnet/rtmp.html)                                                                                                            |
-| [SCTE-35-2019]    | SCTE 35： 2019 - 数字程序插入提示消息电缆 -https://www.scte.org/SCTEDocs/Standards/ANSI_SCTE%2035%202019r1.pdf                                                                       |
-| [SCTE-214-1]      | SCTE 214-1 2016 – 基于 IP 的电缆服务 MPEG DASH 第 1 部分：MPD 约束和扩展                                                                                                                 |
-| [SCTE-214-3]      | SCTE 214-3 2015 MPEG DASH，适用于基于 IP 的有线服务第 3 部分：DASH/FF 配置文件                                                                                                                                  |
+| [ID3v2]           | ID3 标记版本 2.4.0 [http://id3.org/id3v2.4.0-structure](http://id3.org/id3v2.4.0-structure)                                                                                                                |
+| [ISO-14496-12]    | ISO/IEC 14496-12：第 12 部分：ISO 基础媒体文件格式，2012-07-15 第 4 版                                                                                                                                 |
+| [MPEGDASH]        | 信息技术 - 通过 HTTP 的动态自适应流式处理 (DASH) - 第 1 部分：媒体展现说明和分段格式。 2014 年 5 月。 已发布。 URL： https://www.iso.org/standard/65274.html         |
+| [MPEGCMAF]        | 信息技术 - 多媒体应用程序格式 (MPEG-A) -- 第 19 部分：分段媒体的常用媒体应用程序格式 (CMAF)。 2018 年 1 月。 已发布。 URL： https://www.iso.org/standard/71975.html |
+| [MPEGCENC]        | 信息技术 -- MPEG 系统技术 -- 第 7 部分：ISO 基本媒体格式文件中的通用加密。 2016 年 2 月。 已发布。 URL： https://www.iso.org/standard/68042.html                   |
+| [MS-SSTR]         | [“Microsoft 平滑流式处理协议”，2014 年 5 月 15 日](https://docs.microsoft.com/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)                                                     |
+| [MS-SSTR-Ingest]  | [Azure 媒体服务分片 MP4 实时引入规范](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview)                                                      |
+| [RFC8216]         | R. Pantos, Ed.; W. May. HTTP Live Streaming。 2017 年 8 月。 信息。 [https://tools.ietf.org/html/rfc8216](https://tools.ietf.org/html/rfc8216)                                                            |
+| [RFC4648]         | Base16、Base32 和 Base64 数据编码 - [https://tools.ietf.org/html/rfc4648](https://tools.ietf.org/html/rfc4648)                                                                                     |
+| [RTMP]            | [“Adobe 实时消息传送协议”，2012 年 12 月 21 日](https://www.adobe.com/devnet/rtmp.html)                                                                                                            |
+| [SCTE-35-2019]    | SCTE 35：2019 - 有线电视数字节目插入提示消息 - https://www.scte.org/SCTEDocs/Standards/ANSI_SCTE%2035%202019r1.pdf                                                                       |
+| [SCTE-214-1]      | SCTE 214-1 2016 – 基于 IP 的有线电视服务的 MPEG DASH 第 1 部分：MPD 约束和扩展                                                                                                                 |
+| [SCTE-214-3]      | SCTE 214-3 2015 – 基于 IP 的有线电视服务的 MPEG DASH 第 3 部分：DASH/FF 配置文件                                                                                                                                  |
 | [SCTE-224]        | SCTE 224 2018r1 – 事件计划和通知接口                                                                                                                                                  |
 | [SCTE-250]        | 事件和信号管理 API (ESAM)                                                                                                                                                                      |
 
 ---
 
 
-## <a name="2-timed-metadata-ingest"></a>2. 时令元数据引入
+## <a name="2-timed-metadata-ingest"></a>2.计时元数据引入
 
 Azure 媒体服务支持 [RTMP] 和平滑流式处理 [MS-SSTR-Ingest] 协议的实时带内元数据。 可以结合自己独特的自定义架构（JSON、二进制、XML）和行业定义的格式（例如 ID3，或广播流中广告信号的 SCTE-35）使用实时元数据来自定义事件。 
 
@@ -115,7 +115,7 @@ Azure 媒体服务支持 [RTMP] 和平滑流式处理 [MS-SSTR-Ingest] 协议的
  - 要连同浏览器中的视频一起显示的交互式广告包
  - 知识竞赛或投票
   
-Azure 媒体服务实时事件和打包程序能够接收这些时时元数据信号并将其转换为元数据流，这些元数据流可以使用基于标准的协议（如 HLS 和 DASH）到达客户端应用程序。
+Azure 媒体服务实时事件和打包器可以接收这些计时元数据信号，并将其转换成可通过基于标准的协议（例如 HLS 和 DASH）抵达客户端应用程序的元数据流。
 
 
 ## <a name="21-rtmp-timed-metadata"></a>2.1 RTMP 计时元数据
@@ -131,9 +131,9 @@ Azure 媒体服务实时事件和打包程序能够接收这些时时元数据�
 - **onCuePoint** - 受某些本地硬件编码器（例如 Elemental 实时编码器）的支持，用于发出 [SCTE35] 消息信号。 
   
 
-下表描述了媒体服务将同时为"简单"和 [SCTE35] 消息模式引入的 AMF 消息负载的格式。
+下表介绍媒体服务将为“简单”和 [SCTE35] 消息模式引入的 AMF 消息有效负载的格式。
 
-可以使用 [AMF0] 消息的名称来区分相同类型的多个事件流。  对于 [SCTE-35] 消息和"简单"模式，AMF 消息的名称必须按照 [Adobe-Primetime] 规范的要求"onAdCue"。。  下面未列出的任何字段在引入时应由 Azure 媒体服务忽略。
+可以使用 [AMF0] 消息的名称来区分相同类型的多个事件流。  对于 [SCTE-35] 消息和“简单”模式，AMF 消息的名称在 [Adobe-Primetime] 规范中必须是“onAdCue”。  下面未列出的任何字段在引入时应由 Azure 媒体服务忽略。
 
 ## <a name="211-rtmp-with-custom-metadata-using-onuserdataevent"></a>2.1.1 使用“onUserDataEvent”和 RTMP 提供自定义元数据
 
@@ -208,7 +208,7 @@ Azure 媒体服务实时事件和打包程序能够接收这些时时元数据�
 ```
 
 ### <a name="built-in-supported-scheme-id-uris"></a>内置支持的方案 ID URI
-| 方案 ID URI                 | 描述                                                                                                                                                                                                                                          |
+| 方案 ID URI                 | 说明                                                                                                                                                                                                                                          |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | https:\//aomedia.org/emsg/ID3 | 描述如何在 CMAF 兼容的 [MPEGCMAF] 分段 MP4 中以计时元数据的形式携带 [ID3v2] 元数据。 有关详细信息，请参阅[常用媒体应用程序格式 (CMAF) 中的计时元数据](https://github.com/AOMediaCodec/id3-emsg) |
 
@@ -216,9 +216,9 @@ Azure 媒体服务实时事件和打包程序能够接收这些时时元数据�
 
 收到有效的 **“onUserDataEvent”** 事件后，Azure 媒体服务将查找与 EventStreamType（在 [MPEGDASH] 中定义）匹配的有效 XML 有效负载，分析该 XML 有效负载，然后将其转换为 [MPEGCMAF] MP4 片段“emsg”版本 1，以便存储在实时存档中并传输到媒体服务打包器。   打包器将检测实时流中的“emsg”块并执行以下操作：
 
-- （a） 将其"动态打包"到 TS 段，以便按照 HLS 时时元数据规范 [HLS-TMD] 交付给 HLS 客户端，或
-- （b） 通过 HLS 或 DASH 以 CMAF 片段传递，或 
-- （c） 将其转换为稀疏轨道信号，以便通过平滑流式处理 [MS-SSTR] 传递。
+- (a)    将其“动态打包”成 TS 段，以传送到符合 HLS 计时元数据规范 [HLS-TMD] 的 HLS 客户端，或者
+- (b)    传递该块，以通过 HLS 或 DASH 在 CMAF 片段中传送，或者 
+- (c)    将其转换为稀疏轨迹信号，以通过平滑流式处理 [MS-SSTR] 进行传送。
 
 除了带内“emsg”格式的 CMAF 或适用于 HLS 的 TS PES 数据包外，适用于 DASH (MPD) 和平滑流的清单将包含对带内事件流的引用（在平滑流中也称为“稀疏流轨迹”）。 
 
@@ -229,58 +229,58 @@ Azure 媒体服务实时事件和打包程序能够接收这些时时元数据�
 - 如果未在 EventStream 元素中设置时间刻度，默认将使用 RTMP 1 kHz 时间刻度
 - onUserDataEvent 消息的最大传送频率限制为每 500 毫秒一次。如果更频繁地发送事件，可能会影响带宽和实时源的稳定性
 
-## <a name="212-rtmp-ad-cue-signaling-with-onadcue"></a>2.1.2 RTMP 广告提示信号与"onAdCue"
+## <a name="212-rtmp-ad-cue-signaling-with-onadcue"></a>2.1.2 使用“onAdCue”发送 RTMP 广告提示信号
 
 Azure 媒体服务可以侦听和响应可用于在实时流中通知各种实时同步元数据的多个 [AMF0] 消息类型。  [Primetime] 规范定义了两个称为“简单”和“SCTE-35”模式的提示类型。 对于“简单”模式，媒体服务支持称为“onAdCue”的单个 AMF 提示消息，该消息使用与下表中的“简单模式”信号定义匹配的有效负载。  
 
-以下部分显示了 RTMP“简单”模式有效负载，它可用于发送基本“spliceOut”广告信号，该信号将传递到 HLS、DASH 和 Microsoft 平滑流式处理的客户端清单。 这对于以下场景非常有用：客户没有基于 SCTE-35 的复杂广告信号部署或插入系统，而是使用基本的本地编码器通过 API 在提示消息中发送。 通常，本地编码器将支持基于 REST 的 API 来触发此信号，该信号还将通过将 IDR 帧插入到视频中并启动新的 GOP 来"拼接条件"视频流。
+以下部分显示了 RTMP“简单”模式有效负载，它可用于发送基本“spliceOut”广告信号，该信号将传递到 HLS、DASH 和 Microsoft 平滑流式处理的客户端清单。 这对于以下场景非常有用：客户没有基于 SCTE-35 的复杂广告信号部署或插入系统，而是使用基本的本地编码器通过 API 在提示消息中发送。 通常，本地编码器支持使用基于 REST 的 API 来触发此信号，这还会通过将 IDR 帧插入视频并启动新的 GOP 来对视频流进行“拼接适配”。
 
-## <a name="213--rtmp-ad-cue-signaling-with-onadcue---simple-mode"></a>2.1.3 RTMP 广告提示信号与"onAdCue" - 简单模式
+## <a name="213--rtmp-ad-cue-signaling-with-onadcue---simple-mode"></a>2.1.3 使用“onAdCue”发送 RTMP 广告提示信号 - 简单模式
 
 | 字段名称 | 字段类型 | 必需？ | 说明                                                                                                                                                                                                                                                                        |
 | ---------- | ---------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| type       | String     | 必选  | 事件消息。  应为“SpliceOut”以指定简单模式接合。                                                                                                                                                                                                         |
-| id         | String     | 必选  | 描述接合或片段的唯一标识符。 标识消息的此实例                                                                                                                                                                                       |
-| duration   | Number     | 必选  | 接合持续时间。 单位为小数形式的秒。                                                                                                                                                                                                                           |
+| type       | String     | 必须  | 事件消息。  应为“SpliceOut”以指定简单模式接合。                                                                                                                                                                                                         |
+| id         | String     | 必须  | 描述接合或片段的唯一标识符。 标识消息的此实例                                                                                                                                                                                       |
+| duration   | Number     | 必须  | 接合持续时间。 单位为小数形式的秒。                                                                                                                                                                                                                           |
 | elapsed    | Number     | 可选  | 如果信号重复出现以便支持接收，此字段应为自接合开始后已经过去的呈现时间量。 单位为小数形式的秒。 使用简单模式时，此值不得超过接合的原始持续时间。 |
-| time       | Number     | 必选  | 呈现时间应为接合的时间。 单位为小数形式的秒。                                                                                                                                                                                                |
+| time       | Number     | 必须  | 呈现时间应为接合的时间。 单位为小数形式的秒。                                                                                                                                                                                                |
 
 ---
  
-#### <a name="example-mpeg-dash-manifest-output-when-using-adobe-rtmp-simple-mode"></a>使用 Adobe RTMP 简单模式时，示例 MPEG DASH 清单输出
+#### <a name="example-mpeg-dash-manifest-output-when-using-adobe-rtmp-simple-mode"></a>使用 Adobe RTMP 简单模式时的 MPEG DASH 清单输出示例
 
-使用[Adobe 简单模式查看示例 3.3.2.1 MPEG DASH .mpd 事件流](#3321-example-mpeg-dash-mpd-manifest-signaling-of-rtmp-streaming-using-adobe-simple-mode)
+参阅示例 [3.3.2.1 使用 Adobe 简单模式的 MPEG DASH .mpd 事件流](#3321-example-mpeg-dash-mpd-manifest-signaling-of-rtmp-streaming-using-adobe-simple-mode)
 
-请参阅[示例 3.3.3.1 具有单周期和 Adobe 简单模式](#3331-example-mpeg-dash-manifest-mpd-with-single-period-eventstream-using-adobe-simple-mode-signals)的 DASH 清单
+参阅示例 [3.3.3.1 使用单周期和 Adobe 简单模式的 DASH 清单](#3331-example-mpeg-dash-manifest-mpd-with-single-period-eventstream-using-adobe-simple-mode-signals)
 
-#### <a name="example-hls-manifest-output-when-using-adobe-rtmp-simple-mode"></a>使用 Adobe RTMP 简单模式时的示例 HLS 清单输出
+#### <a name="example-hls-manifest-output-when-using-adobe-rtmp-simple-mode"></a>使用 Adobe RTMP 简单模式时的 HLS 清单输出示例
 
-请参阅[使用 Adobe 简单模式和 EXT-X-CUE 标记的示例 3.2.2 HLS 清单](#322-apple-hls-with-adobe-primetime-ext-x-cue-legacy)
+参阅示例 [3.2.2 使用 Adobe 简单模式和 EXT-X-CUE 标记的 HLS 清单](#322-apple-hls-with-adobe-primetime-ext-x-cue-legacy)
 
-## <a name="214-rtmp-ad-cue-signaling-with-onadcue---scte-35-mode"></a>2.1.4 RTMP 广告提示信号与"onAdCue" - SCTE-35 模式
+## <a name="214-rtmp-ad-cue-signaling-with-onadcue---scte-35-mode"></a>2.1.4 使用“onAdCue”发送 RTMP 广告提示信号 - SCTE-35 模式
 
 使用需要将完整 SCTE-35 有效负载消息传递到 HLS 或 DASH 清单的更高级广播生产工作流时，最好是使用 [Adobe-Primetime] 规范的“SCTE-35 模式”。  此模式支持将带内 SCTE-35 信号直接发送到本地实时编码器，然后使用 [Adobe-Primetime] 规范中指定的“SCTE-35 模式”将信号编码成 RTMP 流。 
 
 通常，SCTE-35 消息只能显示在本地编码器上的 MPEG-2 传输流 (TS) 输入中。 有关如何配置包含 SCTE-35 的传输流引入，以及如何在 Adobe SCTE-35 模式下将其传递到 RTMP 的详细信息，请咨询编码器制造商。
 
-在此方案中，必须使用 **“onAdCue”**[AMF0] 消息类型从本地编码器发送以下有效负载。
+在此方案中，必须使用 **“onAdCue”** [AMF0] 消息类型从本地编码器发送以下有效负载。
 
 | 字段名称 | 字段类型 | 必需？ | 说明                                                                                                                                                                                                                                                                                                                                                                                                        |
 | ---------- | ---------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 提示        | String     | 必选  | 事件消息。  对于 [SCTE-35] 消息，这必须是 base64 编码的 [RFC4648] 二进制 splice_info_section()，才能将消息发送到 HLS、Smooth 和 Dash 客户端。                                                                                                                                                                                                                               |
-| type       | String     | 必选  | 标识消息方案的 URN 或 URL。 对于 [SCTE-35] 消息，这**应该**是 **“scte35”**，才能根据 [Adobe-Primetime] 将消息发送到 HLS、Smooth 和 Dash 客户端。 也可以选择性地使用 URN“urn:scte:scte35:2013:bin”发出 [SCTE-35] 消息信号。                                                                                                        |
-| id         | String     | 必选  | 描述接合或片段的唯一标识符。 标识消息的此实例。  具有等效语义的消息应具有相同的值。                                                                                                                                                                                                                                                       |
-| duration   | Number     | 必选  | 如果已知，则为事件或广告接合段的持续时间。 如果未知，则值**应**为 0。                                                                                                                                                                                                                                                                                                                    |
+| 提示        | String     | 必须  | 事件消息。  对于 [SCTE-35] 消息，这必须是 base64 编码的 [RFC4648] 二进制 splice_info_section()，才能将消息发送到 HLS、Smooth 和 Dash 客户端。                                                                                                                                                                                                                               |
+| type       | String     | 必须  | 标识消息方案的 URN 或 URL。 对于 [SCTE-35] 消息，这**应该**是 **“scte35”** ，才能根据 [Adobe-Primetime] 将消息发送到 HLS、Smooth 和 Dash 客户端。 也可以选择性地使用 URN“urn:scte:scte35:2013:bin”发出 [SCTE-35] 消息信号。                                                                                                        |
+| id         | String     | 必须  | 描述接合或片段的唯一标识符。 标识消息的此实例。  具有等效语义的消息应具有相同的值。                                                                                                                                                                                                                                                       |
+| duration   | Number     | 必须  | 如果已知，则为事件或广告接合段的持续时间。 如果未知，该值**应该**为 0。                                                                                                                                                                                                                                                                                                                    |
 | elapsed    | Number     | 可选  | 如果 [SCTE-35] 广告信号重复出现以便接收，此字段应为自接合开始后已经过去的呈现时间量。 单位为小数形式的秒。 在 [SCTE-35] 模式下，此值可能超过接合或片段的最初指定持续时间。                                                                                                                   |
-| time       | Number     | 必选  | 事件或广告接合的呈现时间。  演示时间和持续时间**应**与 [ISO-14496-12] 附件一中定义的类型 1 或 2 的流接入点 （SAP） 一致。对于 HLS 出口，时间和持续时间**应**与段边界对齐。 相同事件流中的不同事件消息的呈现时间和持续时间不得重叠。 单位为小数形式的秒。 |
+| time       | Number     | 必须  | 事件或广告接合的呈现时间。  按照 [ISO-14496-12] Annex I 中的定义，呈现时间和持续时间**应该**与类型 1 或 2 的流访问点保持一致。对于 HLS 出口，时间和持续时间**应该**与片段边界保持一致。 相同事件流中的不同事件消息的呈现时间和持续时间不得重叠。 单位为小数形式的秒。 |
 
 ---
 
-#### <a name="example-mpeg-dash-mpd-manifest-with-scte-35-mode"></a>示例 MPEG DASH .mpd 清单与 SCTE-35 模式
-参见[第 3.3.3.2 节示例 DASH 清单与 SCTE-35](#3332-example-mpeg-dash-manifest-mpd-with-multi-period-eventstream-using-adobe-scte35-mode-signaling)
+#### <a name="example-mpeg-dash-mpd-manifest-with-scte-35-mode"></a>使用 SCTE-35 模式的示例 MPEG DASH .mpd 清单
+参阅[第 3.3.3.2 部分：使用 SCTE-35 的 DASH 清单示例](#3332-example-mpeg-dash-manifest-mpd-with-multi-period-eventstream-using-adobe-scte35-mode-signaling)
 
-#### <a name="example-hls-manifest-m3u8-with-scte-35-mode-signal"></a>示例 HLS 清单 .m3u8 与 SCTE-35 模式信号
-参见[第 3.2.1.1 节示例 HLS 清单，以及 SCTE-35](#3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35)
+#### <a name="example-hls-manifest-m3u8-with-scte-35-mode-signal"></a>使用 SCTE-35 模式信号的 HLS .m3u8 清单示例
+参阅[第 3.2.1.1 部分：使用 SCTE-35 的 HLS 清单示例](#3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35)
 
 ## <a name="215-rtmp-ad-signaling-with-oncuepoint-for-elemental-live"></a>2.1.5 使用 Elemental Live“onCuePoint”和 RTMP 发送广告信号
 
@@ -289,18 +289,18 @@ Elemental Live 本地编码器支持在 RTMP 信号中使用广告标记。 Azur
 “onCuePoint”消息类型在 [Adobe-Flash-AS] 中定义，从 Elemental Live RTMP 输出发送时采用以下有效负载结构。
 
 
-| properties   | 描述                                                                                                                                                                                                                     |
+| 属性   | 说明                                                                                                                                                                                                                     |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | name       | 在 Elemental Live 中的名称应为“**scte35**”。                                                                                                                                                                              |
 | time       | 时间线中提示点在视频文件中发生的时间（秒）                                                                                                                                           |
 | type       | 提示点的类型应设置为“**event**”。                                                                                                                                                                             |
-| parameters | 名称/值对字符串的关联数组，其中包含来自 SCTE-35 消息的信息，包括 Id 和持续时间。 这些值由 Azure 媒体服务分析，将包含在清单修饰标记中。 |
+| 参数 | 名称/值对字符串的关联数组，包含 SCTE-35 消息中的信息，包括 ID 和持续时间。 这些值由 Azure 媒体服务分析，将包含在清单修饰标记中。 |
 
 
 使用此广告标记模式时，HLS 清单输出类似于 Adobe 的“简单”模式。
 
 
-#### <a name="example-mpeg-dash-mpd-single-period-adobe-simple-mode-signals"></a>示例 MPEG DASH MPD，单周期，Adobe 简单模式信号
+#### <a name="example-mpeg-dash-mpd-single-period-adobe-simple-mode-signals"></a>MPEG DASH MPD 单周期 Adobe 简单模式信号示例
 
 ~~~ xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -355,9 +355,9 @@ Elemental Live 本地编码器支持在 RTMP 信号中使用广告标记。 Azur
 </MPD>
 ~~~
 
-#### <a name="example-hls-playlist-adobe-simple-mode-signals-using-ext-x-cue-tag-truncated--for-brevity"></a>示例 HLS 播放列表，Adobe 简单模式信号使用 EXT-X-CUE 标记（截断的"..."简洁）
+#### <a name="example-hls-playlist-adobe-simple-mode-signals-using-ext-x-cue-tag-truncated--for-brevity"></a>使用 EXT-X-CUE 标记的 HLS 播放列表 Adobe 简单模式信号示例（为简洁起见，已截断部分内容）
 
-下面的示例显示了使用 Adobe"简单"模式信号和旧版 [Adobe-Primetime] EXT-X-CUE 标记的 RTMP 引入流的媒体服务动态打包器的输出。  
+以下示例显示了使用 Adobe 简单模式信号和传统 [Adobe-Primetime] EXT-X-CUE 标记的 RTMP 引入流的媒体服务动态打包器的输出。  
 
 ~~~
 #EXTM3U
@@ -405,76 +405,76 @@ Fragments(video=1583488022000000,format=m3u8-aapl-v8)
 
 ## <a name="22-fragmented-mp4-ingest-smooth-streaming"></a>2.2 分片 MP4 引入（平滑流式处理）
 
-有关实时流引入的要求，请参阅 [MS-SSTR-Ingest]。 以下各节提供有关引入超时呈现元数据的详细信息。  定时演示元数据被引入为稀疏轨道，在实时服务器清单盒（请参阅 MS-SSTR）和影片盒（"moov"）中定义。  
+有关实时流引入的要求，请参阅 [MS-SSTR-Ingest]。 以下各节提供有关引入超时呈现元数据的详细信息。  超时呈现元数据作为稀疏轨迹引入，Live Server Manifest Box（请参阅 MS-SSTR）和 Movie Box（“moov”）中都对稀疏轨迹进行了定义。  
 
-每个稀疏片段由影片片段框（"moof"）和媒体数据框（"mdat"）组成，其中"mdat"框是二进制消息。
+每个稀疏片段都包含 Movie Fragment Box（“moof”）和 Media Data Box（“mdat”），其中“mdat”块是二进制消息。
 
 为了实现帧准确的广告插入，编码器必须在显示需要插入提示时拆分片段。  必须创建以新建 IDR 帧开头的新片段，或使用 [ISO-14496-12] 附录 I 中定义的类型 1 或 2 流访问点 (SAP)。这样，Azure 媒体打包器将正确生成 HLS 清单和 DASH 多时段清单，其中的新时段从帧准确的接合适配呈现时间开始。
 
 ### <a name="221-live-server-manifest-box"></a>2.2.1 Live Server Manifest Box
 
-稀疏轨道**必须在**包含**\<文本流\>** 条目的实时服务器清单框中**声明，并且必须**设置以下属性：
+稀疏轨迹**必须**在具有 **\<textstream\>** 条目的 Live Server Manifest Box 中进行声明，并且**必须**包含以下属性集：
 
-| **属性名称** | **字段类型** | **必填？** | **说明**                                                                                                                                                                                                              |
+| **属性名称** | **字段类型** | **必需？** | **说明**                                                                                                                                                                                                              |
 | ------------------ | -------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| systemBitrate      | Number         | 必选      | **必须**为"0"，指示具有未知可变比特率的轨道。                                                                                                                                                          |
-| parentTrackName    | String         | 必选      | **必须是**父轨道的名称，稀疏轨道时间代码与父轨道的时间刻度对齐。 父级轨迹不能为稀疏轨迹。                                                                             |
-| manifestOutput     | Boolean        | 必选      | **必须**为"true"，以指示稀疏轨道将嵌入到平滑客户端清单中。                                                                                                                        |
-| 子类型            | String         | 必选      | **必须是**四个字符代码"DATA"。                                                                                                                                                                                  |
-| Scheme             | String         | 必选      | **必须是**标识消息方案的 URN 或 URL。 对于 [SCTE-35] 消息，这**必须**为“urn:scte:scte35:2013:bin”，以便按照 [SCTE-35] 将消息发送至 HLS、Smooth 和 Dash 客户端。 |
-| trackName          | String         | 必选      | **必须是**稀疏轨道的名称。轨道名称可用于使用相同的方案区分多个事件流。 每个唯一事件流**都必须**有一个唯一的轨道名称。                                |
-| 时间刻度          | Number         | 可选      | **必须**为父轨道的时间刻度。                                                                                                                                                                               |
+| systemBitrate      | Number         | 必须      |  必须为“0”，以指示具有未知、可变比特率的轨迹。                                                                                                                                                          |
+| parentTrackName    | String         | 必须      | **必须**是父级轨迹的名称，稀疏轨迹时间码与父级轨迹时间刻度一致。 父级轨迹不能为稀疏轨迹。                                                                             |
+| manifestOutput     | 布尔        | 必须      |  必须为“true”，以指示将在 Smooth 客户端清单中嵌入稀疏轨迹。                                                                                                                        |
+| 子类型            | String         | 必须      |  必须是四字符代码的“DATA”。                                                                                                                                                                                  |
+| Scheme             | String         | 必须      | **必须**为标识消息方案的 URN 或 URL。 对于 [SCTE-35] 消息，这**必须**为“urn:scte:scte35:2013:bin”，以便按照 [SCTE-35] 将消息发送至 HLS、Smooth 和 Dash 客户端。 |
+| trackName          | String         | 必须      | **必须**为稀疏轨迹的名称。trackName 可用来区分具有相同方案的多个事件流。 每个唯一事件流**必须**具有唯一的轨迹名称。                                |
+| timescale          | Number         | 可选      | **必须**为父级轨迹时间刻度。                                                                                                                                                                               |
 
 ---
 
 ### <a name="222-movie-box"></a>2.2.2 Movie Box
 
-影片盒（"moov"）遵循实时服务器清单框作为稀疏轨道的流标头的一部分。
+作为稀疏轨迹的流标头的一部分，Movie Box（“moov”）将遵循 Live Server Manifest Box。
 
-"moov"框**应**包含 [ISO-14496-12] 中定义的**TrackHeaderBox （'tkhd'）** 框，其中包含以下约束：
+如 [ISO-14496-12] 中定义的，“moov”块  应该包含 **TrackHeaderBox (‘tkhd’)** 块，且具有以下约束：
 
-| **字段名称** | **字段类型**          | **必填？** | **说明**                                                                                                    |
+| **字段名称** | **字段类型**          | **必需？** | **说明**                                                                                                    |
 | -------------- | ----------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------ |
-| duration       | 64 位无符号整数 | 必选      | **应**为 0，因为轨道框的样本为零，轨道框中的样本总持续时间为 0。 |
+| duration       | 64 位无符号整数 | 必须      | **应该**为 0，因为轨迹块具有零个示例，且轨迹块中示例的总持续时间为 0。 |
 
 ---
 
-"moov"框**应**包含 [ISO-14496-12] 中定义的**处理程序框 （"hdlr"），** 其中包含以下约束：
+如 [ISO-14496-12] 中所述，“moov”块  应该包含 **HandlerBox (‘hdlr’)** ，且具有以下约束：
 
-| **字段名称** | **字段类型**          | **必填？** | **说明**       |
+| **字段名称** | **字段类型**          | **必需？** | **说明**       |
 | -------------- | ----------------------- | ------------- | --------------------- |
-| handler_type   | 32 位无符号整数 | 必选      | **应该是**"元"。 |
+| handler_type   | 32 位无符号整数 | 必须      |  应该为“meta”。 |
 
 ---
 
-"stsd"框**应**包含一个 MetaDataSampleentry 框，其中包含 [ISO-14496-12] 中定义的编码名称。  例如，对于 SCTE-35 消息，编码名称**应**为"scte"。
+如 [ISO-14496-12] 中所述，“stsd”块  应该包含带有编码名称的 MetaDataSampleEntry 块。  例如，对于 SCTE-35 消息，编码名称**应该**为“scte”。
 
 ### <a name="223-movie-fragment-box-and-media-data-box"></a>2.2.3 Movie Fragment Box 和 Media Data Box
 
-稀疏轨道片段由影片片段框（"moof"）和媒体数据框（"mdat"）组成。
+稀疏轨迹片段包含 Movie Fragment Box（“moof”）和 Media Data Box（“mdat”）。
 
 > [!NOTE]
 > 为了实现帧准确的广告插入，编码器必须在显示需要插入提示时拆分片段。  必须创建以新建 IDR 帧开头的，或者以 [ISO-14496-12] 附录 I 中定义的类型 1 或 2 流访问点 (SAP) 开头的新片段。
 > 
 
-"电影片段框"（"moof"）框**必须**包含在 [MS-SSTR] 中定义的**轨道片段扩展标题框 （"uuid"）** 框，其中包含以下字段：
+如 [MS-SSTR] 中定义，MovieFragmentBox（“moof”）框  必须包含 **TrackFragmentExtendedHeaderBox (‘uuid’)** 框，且具有以下字段：
 
-| **字段名称**         | **字段类型**          | **必填？** | **说明**                                                                                           |
+| **字段名称**         | **字段类型**          | **必需？** | **说明**                                                                                           |
 | ---------------------- | ----------------------- | ------------- | --------------------------------------------------------------------------------------------------------- |
-| fragment_absolute_time | 64 位无符号整数 | 必选      | **必须是**活动到达时间。 此值可使消息与父级轨迹保持一致。           |
-| fragment_duration      | 64 位无符号整数 | 必选      | **必须是**事件的持续时间。 持续时间可以为零，以指示持续时间未知。 |
+| fragment_absolute_time | 64 位无符号整数 | 必须      | **必须**为事件的到达时间。 此值可使消息与父级轨迹保持一致。           |
+| fragment_duration      | 64 位无符号整数 | 必须      | **必须**为事件的持续时间。 持续时间可以为零，以指示持续时间未知。 |
 
 ---
 
 
-MediaDataBox （"mdat"） 框**必须**具有以下格式：
+MediaDataBox (‘mdat’) 框  必须采用以下格式：
 
-| **字段名称**          | **字段类型**                   | **必填？** | **说明**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| **字段名称**          | **字段类型**                   | **必需？** | **说明**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ----------------------- | -------------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 版本                 | 32 位无符号整数 (uimsbf) | 必选      | 确定"mdat"框内容的格式。 将忽略无法识别的版本。 当前仅支持版本 1。                                                                                                                                                                                                                                                                                                                                                                      |
-| id                      | 32 位无符号整数 (uimsbf) | 必选      | 标识消息的此实例。 具有等效语义的消息应具有相同的值；即，处理具有相同 ID 的任何一个事件消息块就足够了。                                                                                                                                                                                                                                                                                                                            |
-| presentation_time_delta | 32 位无符号整数 (uimsbf) | 必选      | 在 Track片段扩展标题框中指定的fragment_absolute_time和presentation_time_delta**必须**为事件的表示时间。 演示时间和持续时间**应**与 [ISO-14496-12] 附件一中定义的类型 1 或 2 的流接入点 （SAP） 一致。对于 HLS 出口，时间和持续时间**应**与段边界对齐。 同一事件流中不同事件消息的表示时间和持续时间**不得**重叠。 |
-| message                 | Byte Array                       | 必选      | 事件消息。 对于 [SCTE-35] 消息，消息仍为二进制 binary splice_info_section()。 对于 [SCTE-35] 消息，这**必须**为 splice_info_section()，以便按照 [SCTE-35] 将消息发送至 HLS、Smooth 和 Dash 客户端。 对于 [SCTE-35] 消息，二进制splice_info_section（） 是"mdat"框的有效负载，**它不是**基于 64 编码的。                                                                                                                     |
+| 版本                 | 32 位无符号整数 (uimsbf) | 必须      | 确定“mdat”块的内容格式。 将忽略无法识别的版本。 当前仅支持版本 1。                                                                                                                                                                                                                                                                                                                                                                      |
+| id                      | 32 位无符号整数 (uimsbf) | 必须      | 标识消息的此实例。 具有等效语义的消息应具有相同的值；即，处理具有相同 ID 的任何一个事件消息块就足够了。                                                                                                                                                                                                                                                                                                                            |
+| presentation_time_delta | 32 位无符号整数 (uimsbf) | 必须      | TrackFragmentExtendedHeaderBox 中指定的 fragment_absolute_time 总和以及 presentation_time_delta **必须**是事件的呈现时间。 按照 [ISO-14496-12] Annex I 中的定义，呈现时间和持续时间**应该**与类型 1 或 2 的流访问点保持一致。对于 HLS 出口，时间和持续时间**应该**与片段边界保持一致。 相同事件流中的不同事件消息的呈现时间和持续时间**不得**重叠。 |
+| message                 | Byte Array                       | 必须      | 事件消息。 对于 [SCTE-35] 消息，消息仍为二进制 binary splice_info_section()。 对于 [SCTE-35] 消息，这**必须**为 splice_info_section()，以便按照 [SCTE-35] 将消息发送至 HLS、Smooth 和 Dash 客户端。 对于 [SCTE-35] 消息，二进制 splice_info_section() 是“mdat”块的有效负载，且它  不是 base64 编码。                                                                                                                     |
 
 ---
 
@@ -486,7 +486,7 @@ MediaDataBox （"mdat"） 框**必须**具有以下格式：
 
 ## <a name="3-timed-metadata-delivery"></a>3 超时元数据交付
 
-事件流数据对媒体服务不透明。 媒体服务仅传递引入终结点和客户端终结点之间的三条信息。 以下属性根据 [SCTE-35] 和/或客户端的流式处理协议交付给客户端：
+事件流数据对媒体服务不透明。 媒体服务仅传递引入终结点和客户端终结点之间的三条信息。 根据 [SCTE-35] 和/或客户端的流式处理协议，将向客户端传递以下属性：
 
 1.  架构 - 标识消息方案的 URN 或 URL。
 2.  呈现时间 - 媒体时间线上的事件的呈现时间。
@@ -496,7 +496,7 @@ MediaDataBox （"mdat"） 框**必须**具有以下格式：
 
 ## <a name="31-microsoft-smooth-streaming-manifest"></a>3.1 Microsoft 平滑流式处理清单  
 
-有关如何格式化稀疏消息轨道的详细信息，请参阅稀疏轨道处理 [MS-SSTR]。对于 [SCTE35] 消息，平滑流将输出基64编码的splice_info_section（） 到稀疏片段。
+有关如何设置稀疏消息轨迹格式的详细信息，参阅稀疏轨迹处理 [MS-SSTR]。对于 [SCTE35] 消息，平滑流式处理会将 base64 编码的 splice_info_section() 输出到稀疏片段。
 StreamIndex **必须**具有子类型“DATA”，CustomAttributes **必须**包含名称为“Schema”、值为“urn:scte:scte35:2013:bin”的属性。
 
 #### <a name="smooth-client-manifest-example-showing-base64-encoded-scte35-splice_info_section"></a>演示 base64 编码 [SCTE35] splice_info_section() 的平滑客户端清单示例
@@ -547,15 +547,15 @@ Azure 媒体服务支持在实时或按需事件期间使用以下 HLS 清单标
 
 每个标记的数据输出根据所用的引入信号模式而异。 例如，使用 Adobe 简单模式进行的 RTMP 引入不包含完整的 SCTE-35 base64 编码有效负载。
 
-## <a name="321-apple-hls-with-ext-x-daterange-recommended"></a>3.2.1 苹果HLS与EXT-X-DATERANGE（推荐）
+## <a name="321-apple-hls-with-ext-x-daterange-recommended"></a>3.2.1 使用 EXT-X-DATERANGE 的 Apple HLS（建议）
 
 Apple HTTP Live Streaming [RFC8216] 规范允许发送 [SCTE-35] 消息信号。 消息将根据标题为“将 SCTE-35 映射到 EXT-X-DATERANGE”的 [RFC8216] 部分插入到 EXT-X-DATERANGE 标记中的分段播放列表。  客户端应用层可以分析 M3U 播放列表并处理 M3U 标记，或通过 Apple Player Framework 接收事件。  
 
 Azure 媒体服务（版本 3 API）中**建议**的方法是遵循 [RFC8216]，并将 EXT-X_DATERANGE 标记用于清单中的 [SCTE35] 广告权益修饰。
 
-## <a name="3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35"></a>3.2.1.1 示例 HLS 清单 .m3u8 显示 SCTE-35 的 EXT-X-DATERANGE 信令
+## <a name="3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35"></a>3.2.1.1 显示 SCTE-35 的 EXT-X-DATERANGE 信号发送的示例 HLS 清单 .m3u8
 
-以下示例来自媒体服务动态打包器的 HLS 清单输出显示了使用来自 [RFC8216] 的 EXT-X-DATERANGE 标记，以指示流中的 SCTE-35 事件。 此外，此流包含 [Adobe-Primetime] 的"旧版"EXT-X-CUE 标记。
+媒体服务动态打包器的以下示例 HLS 清单输出显示了使用来自 [RFC8216] 的 EXT-X-DATERANGE 标记在流中发送 SCTE-35 事件信号。 此外，此流包含 [Adobe-Primetime] 的“传统”EXT-X-CUE 标记。
 
 ~~~
 #EXTM3U
@@ -762,21 +762,21 @@ Azure 媒体服务（版本 2 和 3 API）中还提供一种“传统”实现�
 
 “传统”EXT-X-CUE 标记的定义如下，也可以在 [Adobe-Primetime] 规范中以规范方式引用它。 应该只在有必要时才将它用于传统的 SCTE35 信号，否则应根据 EXT-X-DATERANGE 所述在 [RFC8216] 中定义建议的标记。 
 
-| **属性名称** | **类型**                      | **必填？**                             | **说明**                                                                                                                                                                                                                                                                          |
+| **属性名称** | **类型**                      | **必需？**                             | **说明**                                                                                                                                                                                                                                                                          |
 | ------------------ | ----------------------------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 提示                | 带引号的字符串                 | 必选                                  | 如 [RFC4648] 中所述编码为 base64 字符串的消息。 对于 [SCTE-35] 消息，这是 base64 编码的 splice_info_section()。                                                                                                                                      |
-| 类型               | 带引号的字符串                 | 必选                                  | 标识消息方案的 URN 或 URL。 对于 [SCTE-35] 消息，类型采用特殊值"scte35"。                                                                                                                                                                          |
-| ID                 | 带引号的字符串                 | 必选                                  | 事件的唯一标识符。 引入消息时，如果未指定 ID，Azure 媒体服务将生成唯一 ID。                                                                                                                                              |
-| DURATION           | 十进制浮点数 | 必选                                  | 事件持续时间。 如果未知，则值**应**为 0。 单位为小数形式的秒。                                                                                                                                                                                           |
-| 已用时间            | 十进制浮点数 | 可选，但是对于滑动窗口为必需 | 当重复信号以支持滑动表示窗口时，此字段**必须是**事件开始以来的表示时间量。 单位为小数形式的秒。 此值可能超过接合或片段的最初指定持续时间。 |
-| TIME               | 十进制浮点数 | 必选                                  | 事件的呈现时间。 单位为小数形式的秒。                                                                                                                                                                                                                        |
+| 提示                | 带引号的字符串                 | 必须                                  | 如 [RFC4648] 中所述编码为 base64 字符串的消息。 对于 [SCTE-35] 消息，这是 base64 编码的 splice_info_section()。                                                                                                                                      |
+| TYPE               | 带引号的字符串                 | 必须                                  | 标识消息方案的 URN 或 URL。 对于 [SCTE-35] 消息，类型将采用特殊值“scte35”。                                                                                                                                                                          |
+| ID                 | 带引号的字符串                 | 必须                                  | 事件的唯一标识符。 引入消息时，如果未指定 ID，Azure 媒体服务将生成唯一 ID。                                                                                                                                              |
+| DURATION           | 十进制浮点数 | 必须                                  | 事件持续时间。 如果未知，该值**应该**为 0。 单位为小数形式的秒。                                                                                                                                                                                           |
+| 已用时间            | 十进制浮点数 | 可选，但是对于滑动窗口为必需 | 如果信号重复出现以便支持滑动呈现窗口，此字段**必须**为事件开始后已经过去的呈现时间量。 单位为小数形式的秒。 此值可能超过接合或片段的最初指定持续时间。 |
+| TIME               | 十进制浮点数 | 必须                                  | 事件的呈现时间。 单位为小数形式的秒。                                                                                                                                                                                                                        |
 
 
 HLS 播放器应用程序层将使用 TYPE 执行以下操作：标识消息的格式、对消息进行解码、应用必要的时间转换以及处理事件。  根据事件的时间戳，事件时间在父级轨迹的片段播放列表中保持同步。  它们被插入在最近的片段（#EXTINF 标记）前面。
 
-### <a name="323-hls-m3u8-manifest-example-using-legacy-adobe-primetime-ext-x-cue"></a>3.2.3 HLS .m3u8 使用"传统"Adobe PrimeTime EXT-X-CUE 的清单示例
+### <a name="323-hls-m3u8-manifest-example-using-legacy-adobe-primetime-ext-x-cue"></a>3.2.3 使用“传统”Adobe Primetime EXT-X-CUE 的 HLS .m3u8 清单示例
 
-以下示例演示使用 Adobe Primetime EXT-X-CUE 标记的 HLS 清单修饰。  "CUE"参数仅包含 TYPE 和持续时间属性，这意味着这是使用 Adobe"简单"模式信令的 RTMP 源。  如果这是 SCTE-35 模式信号，则标签将包括 base64 编码的二进制 SCTE-35 有效负载，如[3.2.1.1 示例](#3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35)所示。
+以下示例演示使用 Adobe Primetime EXT-X-CUE 标记的 HLS 清单修饰。  “CUE”参数仅包含 TYPE 和 Duration 属性，这意味着，这是使用 Adobe“简单”模式信号的 RTMP 源。  如果这是 SCTE-35 模式信号，则标记将包含 base64 编码的二进制 SCTE-35 有效负载，如 [3.2.1.1 示例](#3211-example-hls-manifest-m3u8-showing-ext-x-daterange-signaling-of-scte-35)中所示。
 
 ~~~
 #EXTM3U
@@ -841,7 +841,7 @@ Fragments(video=4011702982,format=m3u8-aapl)
 
 ### <a name="324-hls-message-handling-for-legacy-adobe-primetime-ext-x-cue"></a>3.2.4“传统”Adobe Primetime EXT-X-CUE 的 HLS 消息处理
 
-事件在每个视频和音轨的段播放列表中发出信号。EXT-X-CUE 标记的位置**必须始终**在第一个 HLS 段之前（对于拼接或段启动）之前，或者紧接其时间和 DURATION 属性引用的最后一个 HLS 段（对于中段或段端的拼接），这是 [Adobe-Primetime] 的要求。
+事件会在每个视频和音频轨迹的片段播放列表中发出信号。根据 [Adobe-Primetime] 的要求，EXT-X-CUE 标记**必须**始终位于第一个 HLS 片段（用于接合结束或片段开始）之前或位于最后一个 HLS 片段（用于接合开始或片段结束）之后，以便其 TIME 和 DURATION 属性进行引用。
 
 根据 [Adobe-Primetime] 的要求，启用滑动呈现窗口后，EXT-X-CUE 标记**必须**重复出现足够多的次数，以便始终在片段播放列表中完整介绍接合或片段，并且 ELASPED 属性**必须**用于指示接合或片段活跃的时间量。
 
@@ -852,7 +852,7 @@ Fragments(video=4011702982,format=m3u8-aapl)
 [MPEGDASH] 提供三种方式来发出事件信号：
 
 1.  MPD EventStream 中发出信号的事件
-2.  使用事件消息框（"emsg"）在带内发出信号的事件
+2.  使用事件消息框 ('emsg') 在带内发出信号的事件
 3.  两者的组合
 
 MPD EventStream 中发出信号的事件可用于 VOD 流式处理，因为下载 MPD 后，客户端即可有权访问所有事件。 这也适用于 SSAI 信号，其中的下游 SSAI 供应商需要从多时段 MPD 清单分析信号，并动态插入广告内容。  带内 ('emsg') 解决方案可用于实时流式处理，其中的客户端无需再次下载 MPD，或者客户端与源之间不会发生任何 SSAI 清单操作。 
@@ -879,18 +879,18 @@ MPD EventStream 中发出信号的事件可用于 VOD 流式处理，因为下�
 
 EventStream 元素具有以下属性：
 
-| **属性名称** | **类型**                | **必填？** | **说明**                                                                                                                                                                                                                                                                                                                                                                         |
+| **属性名称** | **类型**                | **必需？** | **说明**                                                                                                                                                                                                                                                                                                                                                                         |
 | ------------------ | ----------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| scheme_id_uri      | 字符串                  | 必选      | 标识消息的方案。 方案将设为“Live Server Manifest”块中的方案属性的值。 该值**应该**是用于标识消息方案的 URN 或 URL；根据 [SCTE-214-1] 部分 6.7.4 (MPD)，支持的输出 schemeId 应该是 "urn:scte:scte35:2014:xml+bin"，因为出于 MPD 的简洁性，该服务目前仅支持 "xml+bin"。 |
-| value              | 字符串                  | 可选      | 方案所有者用于自定义消息的语义的附加字符串值。 为便于区分具有相同方案的多个事件流，值**必须**设为 事件流的名称（[MS-SSTR-Ingest] 的 trackName，或 [RTMP] 引入的 AMF 消息）。                                                                         |
-| 时间刻度          | 32 位无符号整数 | 必选      | 时间刻度，以每秒为刻度单位。                                                                                                                                                                                                                                                                                                                                                     |
+| scheme_id_uri      | string                  | 必须      | 标识消息的方案。 方案将设为“Live Server Manifest”块中的方案属性的值。 该值**应该**是用于标识消息方案的 URN 或 URL；根据 [SCTE-214-1] 部分 6.7.4 (MPD)，支持的输出 schemeId 应该是 "urn:scte:scte35:2014:xml+bin"，因为出于 MPD 的简洁性，该服务目前仅支持 "xml+bin"。 |
+| value              | string                  | 可选      | 方案所有者用于自定义消息的语义的附加字符串值。 为便于区分具有相同方案的多个事件流，值**必须**设为 事件流的名称（[MS-SSTR-Ingest] 的 trackName，或 [RTMP] 引入的 AMF 消息）。                                                                         |
+| 时间刻度          | 32 位无符号整数 | 必须      | 时间刻度，以每秒为刻度单位。                                                                                                                                                                                                                                                                                                                                                     |
 
 
 ### <a name="332-example-event-streams-for-mpeg-dash"></a>3.3.2 MPEG DASH 的示例事件流
 
-#### <a name="3321-example-mpeg-dash-mpd-manifest-signaling-of-rtmp-streaming-using-adobe-simple-mode"></a>3.3.2.1 使用 Adobe 简单模式 RTMP 流的示例 MPEG DASH .mpd 清单信令
+#### <a name="3321-example-mpeg-dash-mpd-manifest-signaling-of-rtmp-streaming-using-adobe-simple-mode"></a>3.3.2.1 使用 Adobe 简单模式的 RTMP 流的示例 MPEG DASH .mpd 清单信号发送
 
-下面的示例显示了使用 Adobe"简单"模式信令的 RTMP 流的媒体服务动态打包器的摘录事件流。
+以下示例显示了使用 Adobe“简单”模式信号的 RTMP 流的媒体服务动态打包器的事件流摘录。
 
 ~~~ xml
 <!-- Example EventStream element using "urn:com:adobe:dpi:simple:2015" Adobe simple signaling per [Adobe-Primetime] -->
@@ -909,9 +909,9 @@ EventStream 元素具有以下属性：
     </EventStream>
 ~~~
 
-#### <a name="3322-example-mpeg-dash-mpd-manifest-signaling-of-an-rtmp-stream-using-adobe-scte-35-mode"></a>3.3.2.2 使用 Adobe SCTE-35 模式的 RTMP 流示例 MPEG DASH .mpd 清单信令
+#### <a name="3322-example-mpeg-dash-mpd-manifest-signaling-of-an-rtmp-stream-using-adobe-scte-35-mode"></a>3.3.2.2 使用 Adobe SCTE-35 模式的 RTMP 流的示例 MPEG DASH .mpd 清单信号发送
 
-下面的示例显示了使用 Adobe SCTE-35 模式信令的 RTMP 流的媒体服务动态打包器的摘录事件流。
+以下示例显示了使用 Adobe SCTE-35 模式信号的 RTMP 流的媒体服务动态打包器的事件流摘录。
 
 ~~~ xml
 <!-- Example EventStream element using xml+bin style signaling per [SCTE-214-1] -->
@@ -936,10 +936,10 @@ EventStream 元素具有以下属性：
 > 呈现时间的值（以秒为单位）是此属性的值与 EventStream@timescale 属性的值相除的结果。
 > 如果不存在，则呈现时间值为 0。
 
-#### <a name="3331-example-mpeg-dash-manifest-mpd-with-single-period-eventstream-using-adobe-simple-mode-signals"></a>3.3.3.1 使用 Adobe 简单模式信号，使用单周期事件流示例 MPEG DASH 清单 （MPD）
+#### <a name="3331-example-mpeg-dash-manifest-mpd-with-single-period-eventstream-using-adobe-simple-mode-signals"></a>3.3.3.1 使用 Adobe 简单模式信号的单周期事件流的示例 MPEG DASH 清单 (MPD)
 
-下面的示例显示了使用 Adobe"简单"模式广告信号方法源 RTMP 流的媒体服务动态打包器的输出。 输出是单个期间清单，显示事件流使用 schemeId Uri 设置为"urn：com：adobe：dpi：简单：2015"，value 属性设置为"简单信号"。
-每个简单信号都位于事件元素中@presentationTime，该元素具有@duration、@id和 基于传入的简单信号填充的属性。
+以下示例显示了使用 Adobe“简单”模式广告信号方法的源 RTMP 流的媒体服务动态打包器的输出。 输出是单周期清单，显示使用设置为“urn:com:adobe:dpi:simple:2015”的 schemeId URI、设置为“simplesignal”的值属性的事件流。
+每个简单信号在某个 Event 元素中提供，该元素中的 @presentationTime、@duration 和 @id 属性是根据传入的简单信号填充的。
 
 ~~~ xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -992,10 +992,10 @@ EventStream 元素具有以下属性：
 
 ~~~
 
-#### <a name="3332-example-mpeg-dash-manifest-mpd-with-multi-period-eventstream-using-adobe-scte35-mode-signaling"></a>3.3.3.2 使用 Adobe SCTE35 模式信令的具有多周期事件流的 MPEG DASH 清单 （MPD） 示例
+#### <a name="3332-example-mpeg-dash-manifest-mpd-with-multi-period-eventstream-using-adobe-scte35-mode-signaling"></a>3.3.3.2 使用 Adobe SCTE35 模式信号的多周期事件流的示例 MPEG DASH 清单 (MPD)
 
-下面的示例显示了使用 Adobe SCTE35 模式信令源 RTMP 流的媒体服务动态打包器的输出。
-在这种情况下，输出清单是具有 EventStream 元素的多周期 DASH .mpd，@schemeIdUri属性设置为"urn：scte：scte：scte35：2014：xml_bin"，@value属性设置为"scte35"。 事件流中的每个事件元素都包含完整的基点64编码二进制 SCTE35 信号 
+以下示例显示了使用 Adobe SCTE35 模式信号的源 RTMP 流的媒体服务动态打包器的输出。
+在本例中，输出清单是包含 EventStream 元素的多周期 DASH .mpd，@schemeIdUri 属性设置为“urn:scte:scte35:2014:xml+bin”，@value 属性设置为“scte35”。 EventStream 中的每个 Event 元素包含完整的 base64 编码二进制 SCTE35 信号 
 
 ~~~ xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -1124,25 +1124,25 @@ EventStream 元素具有以下属性：
 ~~~
 ### <a name="334-mpeg-dash-in-band-event-message-box-signaling"></a>3.3.4 MPEG DASH 带内事件消息框信号
 
-带内事件流要求 MPD 具有适应集级别的 InbandEventStream 元素。  此元素具有强制性 schemeIdUri 属性和可选的时间刻度属性，该属性也显示在事件消息框 （"emsg"） 中。  MPD 中未定义的方案标识符的事件消息框**不应**存在。
+带内事件流要求 MPD 具有适应集级别的 InbandEventStream 元素。  此元素具有一个必需的 schemeIdUri 属性和可选的时间刻度属性，该属性还显示在事件消息块（“emsg”）中。  **不应**存在具有未在 MPD 中定义的方案标识符的事件消息框。
 
 对于带内 [SCTE-35] 负载，信号**必须**使用 schemeId = "urn:scte:scte35:2013:bin"。
 [SCTE-214-3] 部分 7.3.2（SCTE 35 提示消息的负载）中定义了 [SCTE-35] 带内消息的规范定义。
 
 以下详细信息概述了客户端预期在 'emsg' 中使用的符合 [SCTE-214-3] 的特定值：
 
-| **字段名称**          | **字段类型**          | **必填？** | **说明**                                                                                                                                                                                                                                                                                        |
+| **字段名称**          | **字段类型**          | **必需？** | **说明**                                                                                                                                                                                                                                                                                        |
 | ----------------------- | ----------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| scheme_id_uri           | 字符串                  | 必选      | 标识消息的方案。 方案将设为“Live Server Manifest”块中的方案属性的值。 该值**必须**是用于标识消息方案的 URN。 对于 [SCTE-35] 消息，此**消息必须**为 "urn：scte：scte：scte35：2013：bin"，符合 [SCTE-214-3]          |
-| “值”                   | 字符串                  | 必选      | 方案所有者用于自定义消息的语义的附加字符串值。 为便于区分具有相同方案的多个事件流，值将设为 事件流的名称（平滑引入的 trackName 或 RTMP 引入的 AMF 消息）。 |
-| 时间刻度               | 32 位无符号整数 | 必选      | 时间刻度（以每秒刻度为单位）的时间刻度，时间刻度和持续时间字段位于"emsg"框中。                                                                                                                                                                                                            |
-| Presentation_time_delta | 32 位无符号整数 | 必选      | 此片段中的事件呈现时间的媒体呈现时间增量和最早的呈现时间。 演示时间和持续时间**应**与 [ISO-14496-12] 附件一中定义的类型 1 或 2 的流接入点 （SAP） 一致。                                  |
-| event_duration          | 32 位无符号整数 | 必选      | 事件的持续时间或 0xFFFFFFFF，以指示未知的持续时间。                                                                                                                                                                                                                              |
-| ID                      | 32 位无符号整数 | 必选      | 标识消息的此实例。 具有等效语义的消息应具有相同的值。 引入消息时，如果未指定 ID，Azure 媒体服务将生成唯一 ID。                                                                                        |
-| Message_data            | Byte Array              | 必选      | 事件消息。 对于 [SCTE-35] 消息，消息数据是符合 [SCTE-214-3] 的二进制 binary splice_info_section()                                                                                                                                                                        |
+| scheme_id_uri           | string                  | 必须      | 标识消息的方案。 方案将设为“Live Server Manifest”块中的方案属性的值。 该值**必须**是用于标识消息方案的 URN。 对于 [SCTE-35] 消息，此值  必须是符合 [SCTE-214-3] 的 "urn:scte:scte35:2013:bin"          |
+| Value                   | string                  | 必须      | 方案所有者用于自定义消息的语义的附加字符串值。 为便于区分具有相同方案的多个事件流，值将设为 事件流的名称（平滑引入的 trackName 或 RTMP 引入的 AMF 消息）。 |
+| 时间刻度               | 32 位无符号整数 | 必须      | “emsg”块中的时间和持续时间字段的时间刻度（以“滴答数/秒”为单位）。                                                                                                                                                                                                            |
+| Presentation_time_delta | 32 位无符号整数 | 必须      | 此片段中的事件呈现时间的媒体呈现时间增量和最早的呈现时间。 呈现时间和持续时间**应该**与类型 1 或 类型 2 的流访问点 (SAP) 保持一致，如 [ISO-14496-12] 附录 I 中所述。                                  |
+| event_duration          | 32 位无符号整数 | 必须      | 事件的持续时间或 0xFFFFFFFF，以指示未知的持续时间。                                                                                                                                                                                                                              |
+| ID                      | 32 位无符号整数 | 必须      | 标识消息的此实例。 具有等效语义的消息应具有相同的值。 引入消息时，如果未指定 ID，Azure 媒体服务将生成唯一 ID。                                                                                        |
+| Message_data            | Byte Array              | 必须      | 事件消息。 对于 [SCTE-35] 消息，消息数据是符合 [SCTE-214-3] 的二进制 binary splice_info_section()                                                                                                                                                                        |
 
 
-#### <a name="example-inbandevenstream-entity-for-adobe-simple-mode"></a>Adobe 简单模式的 InBandevenStream 实体示例
+#### <a name="example-inbandevenstream-entity-for-adobe-simple-mode"></a>Adobe 简单模式的示例 InBandEvenStream 实体
 ~~~ xml
 
       <InbandEventStream schemeIdUri="urn:com:adobe:dpi:simple:2015" value="amssignal"/>
@@ -1150,19 +1150,19 @@ EventStream 元素具有以下属性：
 
 ### <a name="335-dash-message-handling"></a>3.3.5 DASH 消息处理
 
-事件在"emsg"框中为视频和音频轨道在带内发出信号。  所有片段请求都会发出信号，因为 presentation_time_delta 为 15 秒或更少。 
+对于视频和音频轨迹，事件都是“emsg”块内的带内信号。  所有片段请求都会发出信号，因为 presentation_time_delta 为 15 秒或更少。 
 
 启用滑动呈现窗口后，当事件消息的时间和持续时间之和小于清单中的媒体数据的时间时，将从 MPD 中删除事件消息。  换而言之，当事件消息引用的媒体时间滚出滑动呈现窗口时，将从清单中删除事件消息。
 
-## <a name="4-scte-35-ingest-implementation-guidance-for-encoder-vendors"></a>4. SCTE-35 编码器供应商的引入实施指南
+## <a name="4-scte-35-ingest-implementation-guidance-for-encoder-vendors"></a>4.面向编码器供应商的 SCTE-35 引入实现指南
 
 以下指导原则针对编码器供应商在实施此规范时可能遇到的常见问题。  以下指导原则是根据真实的合作伙伴反馈收集的，旨在更轻松地为其他人实施此规范。 
 
-[SCTE-35] 消息使用方案 **"urn：scte：scte：scte35：2013：bin"** 为 [MS-SSTR-ingest] 和类型 **"scte35"** 为 [RTMP] 摄录。 为便于转换基于 MPEG-2 传输流呈现时间戳 (PTS) 的 [SCTE-35] 计时，事件呈现时间（对于平滑引入为 fragment_absolute_time 字段，对于 RTMP 引入为时间字段）在 PTS (pts_time + pts_adjustment of the splice_time()) 和媒体时间线之间提供了一种映射。 映射是必需的，因为 33 位 PTS 值每隔大约 26.5 小时将汇总一次。
+[SCTE-35] 消息针对 [MS-SSTR-Ingest] 使用方案 **“urn:scte:scte35:2013:bin”** 以二进制格式引入，并针对 [RTMP] 引入使用类型 **“scte35”** 。 为便于转换基于 MPEG-2 传输流呈现时间戳 (PTS) 的 [SCTE-35] 计时，事件呈现时间（对于平滑引入为 fragment_absolute_time 字段，对于 RTMP 引入为时间字段）在 PTS (pts_time + pts_adjustment of the splice_time()) 和媒体时间线之间提供了一种映射。 映射是必需的，因为 33 位 PTS 值每隔大约 26.5 小时将汇总一次。
 
-平滑流式处理 （MS-SSTR-inge） 要求媒体数据框 （"mdat"）**必须**包含 [SCTE-35] 中定义的**splice_info_section（）。** 
+平滑流式处理引入 [MS-SSTR-Ingest] 要求媒体数据框 (‘mdat’)  必须包含 [SCTE-35] 中所定义的 **splice_info_section()** 。 
 
-对于 RTMP 引入，AMF 消息的提示属性应设置为 [SCTE-35] 中定义的 base64 编码**splice_info_section()**。  
+对于 RTMP 引入，AMF 消息的提示属性应设置为 [SCTE-35] 中定义的 base64 编码**splice_info_section()** 。  
 
 如果消息采用上述格式，它们将发送到上面定义的 HLS、Smooth 和 DASH 客户端。  
 
@@ -1176,7 +1176,7 @@ EventStream 元素具有以下属性：
 | -------- | ------------------------------------------------------------------------------------------------------------------- |
 | 07/2/19  | 修订了 SCTE35 的 RTMP 引入支持，添加了 Elemental Live 的 RTMP“onCuePoint”                                  |
 | 08/22/19 | 已做出更新，将 OnUserDataEvent 添加到自定义元数据的 RTMP                                                          |
-| 1/08/20  | 修复了 RTMP 简单和 RTMP SCTE35 模式下的错误。 从"上提示"更改为"上ACue"。 更新了简单模式表。 |
+| 1/08/20  | 修复了 RTMP 简单模式和 RTMP SCTE35 模式的错误。 已从“onCuePoint”更改为“onAdCue”。 更新了简单模式表。 |
 
 ## <a name="next-steps"></a>后续步骤
 查看媒体服务学习路径。

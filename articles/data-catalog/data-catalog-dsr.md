@@ -1,16 +1,16 @@
 ---
 title: Azure 数据目录中支持的数据源
-description: 本文列出了 Azure 数据目录当前受支持的数据源的规范。
+description: 本文列出了 Azure 数据目录当前支持的数据源的规格。
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: ec716924d3cebf8e78b0505b95837b91c568813a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78898148"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure 数据目录中支持的数据源
@@ -29,7 +29,7 @@ ms.locfileid: "78898148"
        <td><b>说明</b></td>
     </tr>
     <tr>
-      <td>Azure 数据湖存储目录（仅限第 1 代）</td>
+      <td>Azure Data Lake Store 目录（仅第1代）</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -37,7 +37,7 @@ ms.locfileid: "78898148"
       <td></td>
     </tr>
     <tr>
-      <td>Azure 数据湖存储文件（仅限第 1 代）</td>
+      <td>Azure Data Lake Store 文件（仅第1代）</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -124,7 +124,7 @@ ms.locfileid: "78898148"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td>Oracle 10 及更高版本。</td>
+      <td>Oracle 10 和更高版本。</td>
     </tr>
     <tr>
       <td>Oracle Database 视图</td>
@@ -132,7 +132,7 @@ ms.locfileid: "78898148"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td>Oracle 10 及更高版本。</td>
+      <td>Oracle 10 和更高版本。</td>
     </tr>
     <tr>
       <td>其他（通用资产）</td>
@@ -195,8 +195,8 @@ ms.locfileid: "78898148"
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>浏览者</td>
-      <td>仅本机模式服务器。 不支持 SharePoint 模式。 仅 SQL Server 2008 及更高版本</td>
+      <td>浏览器</td>
+      <td>仅本机模式服务器。 不支持 SharePoint 模式。 仅 SQL Server 2008 和更高版本</td>
     </tr>
     <tr>
       <td>SQL Server 表</td>
@@ -236,7 +236,7 @@ ms.locfileid: "78898148"
       <td>✓</td>
       <td>✓</td>
       <td></td>
-      <td>只能用英语工作。 不支持措施。</td>
+      <td>仅适用于英语。 度量值不受支持。</td>
     </tr>
     <tr>
       <td>SAP HANA 视图</td>

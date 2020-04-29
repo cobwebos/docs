@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure PowerShell 列出 Azure 资源的拒绝分配
+title: 列出拒绝 Azure 资源的分配 Azure PowerShell
 description: 了解如何通过 Azure PowerShell 列出已被拒绝在特定范围内访问特定 Azure 资源操作的用户、组、服务主体和托管标识。
 services: active-directory
 documentationcenter: ''
@@ -14,10 +14,10 @@ ms.date: 06/12/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 5ba18b89bd37dbd55350321c503e37ab0590ab87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77137398"
 ---
 # <a name="list-deny-assignments-for-azure-resources-using-azure-powershell"></a>使用 Azure PowerShell 列出 Azure 资源的拒绝分配
@@ -27,12 +27,12 @@ ms.locfileid: "77137398"
 > [!NOTE]
 > 不能直接创建自己的拒绝分配。 有关如何创建拒绝分配的详细信息，请参阅[拒绝分配](deny-assignments.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-若要获取拒绝分配的相关信息，必须具有：
+如要获取拒绝分配的相关信息，必须具有：
 
 - `Microsoft.Authorization/denyAssignments/read` 权限，其包括在大多数 [Azure 资源的内置角色](built-in-roles.md)中
-- [Azure 云外壳](/azure/cloud-shell/overview)或[Azure PowerShell](/powershell/azure/install-az-ps)中的 PowerShell
+- Azure Cloud Shell 或[Azure PowerShell](/powershell/azure/install-az-ps) [中的 PowerShell](/azure/cloud-shell/overview)
 
 ## <a name="list-deny-assignments"></a>列出拒绝分配
 
@@ -113,7 +113,7 @@ Principals         : {
 
 ### <a name="list-deny-assignments-at-a-subscription-scope"></a>列出订阅范围内的拒绝分配
 
-若要列出订阅范围内的所有拒绝分配，请使用 [Get-AzDenyAssignment](/powershell/module/az.resources/get-azdenyassignment)。 若要获取订阅 ID，可以在 Azure 门户中的“订阅”**** 边栏选项卡上找到它，也可以使用 [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription)。
+若要列出订阅范围内的所有拒绝分配，请使用 [Get-AzDenyAssignment](/powershell/module/az.resources/get-azdenyassignment)。 若要获取订阅 ID，可以在 Azure 门户中的“订阅”  边栏选项卡上找到它，也可以使用 [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription)。
 
 ```azurepowershell
 Get-AzDenyAssignment -Scope /subscriptions/<subscription_id>

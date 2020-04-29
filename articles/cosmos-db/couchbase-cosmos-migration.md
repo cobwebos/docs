@@ -1,42 +1,42 @@
 ---
-title: 从 CouchBase 迁移到 Azure 宇宙数据库 SQL API
-description: 从 CouchBase 迁移到 Azure Cosmos DB SQL API 的分步指南
+title: 从 CouchBase 迁移到 Azure Cosmos DB SQL API
+description: 有关从 CouchBase 迁移到 Azure Cosmos DB SQL API 的分步指南
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.openlocfilehash: 9713d963978e34ad874dc032676a6e1f14e4657c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77210939"
 ---
-# <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>从 CouchBase 迁移到 Azure 宇宙数据库 SQL API
+# <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>从 CouchBase 迁移到 Azure Cosmos DB SQL API
 
-Azure Cosmos DB 是一个可扩展的、全局分布的完全托管数据库。 它提供了对数据的保证低延迟访问。 要了解有关 Azure Cosmos DB 的详细信息，请参阅[概述](introduction.md)文章。 本文提供了将连接到 Couchbase 的 Java 应用程序迁移到 Azure Cosmos DB 中的 SQL API 帐户的说明。
+Azure Cosmos DB 是一种可扩展、全球分布式且完全托管的数据库。 它能够确保数据访问延迟较低。 若要详细了解 Azure Cosmos DB，请参阅[概述](introduction.md)文章。 本文说明如何将连接到 Couchbase 的 Java 应用程序迁移到 Azure Cosmos DB 中的 SQL API 帐户。
 
-## <a name="differences-in-nomenclature"></a>命名学的差异
+## <a name="differences-in-nomenclature"></a>术语差别
 
-与 Couchbase 相比，以下是 Azure Cosmos DB 中工作方式不同的关键功能：
+下面是相比于 Couchbase，在 Azure Cosmos DB 中以不同方式工作的重要功能：
 
 |   Couchbase     |   Azure Cosmos DB   |
 | ---------------|-------------------|
-|沙发基础服务器| Account       |
+|Couchbase 服务器| 帐户       |
 |桶           | 数据库      |
 |桶           | 容器/集合 |
-|JSON 文档    | 项目/文档 |
+|JSON 文档    | 项/文档 |
 
 ## <a name="key-differences"></a>主要区别
 
-* Azure Cosmos DB 在文档中有一个"ID"字段，而 Couchbase 的 ID 是存储桶的一部分。 "ID"字段在整个分区中是唯一的。
+* Azure Cosmos DB 在文档中有一个“ID”字段，而 Couchbase 将 ID 用作桶的一部分。 “ID”字段在整个分区中是唯一的。
 
-* Azure Cosmos DB 使用分区或分片技术进行缩放。 这意味着它将数据拆分为多个分片/分区。 这些分区/分片是根据您提供的分区键属性创建的。 您可以选择分区键来优化读取以及写入操作或读取/写入优化。 要了解更多信息，请参阅[分区](./partition-data.md)文章。
+* Azure Cosmos DB 使用分区或分片技术进行缩放。 这意味着它会将数据拆分为多个分片/分区。 这些分区/分片是基于提供的分区键属性创建的。 可以选择分区键来优化读取以及写入操作，或者优化读/写操作。 若要了解详细信息，请参阅[分区](./partition-data.md)一文。
 
-* 在 Azure Cosmos DB 中，顶级层次结构不需要指示集合，因为集合名称已存在。 此功能使 JSON 结构更简单。 下面是一个示例，该示例显示了 Couchbase 和 Azure Cosmos DB 之间的数据模型差异：
+* 在 Azure Cosmos DB 中，顶级层次结构无需表示集合，因为集合名称已存在。 此功能大幅简化了 JSON 结构。 以下示例展示了 Couchbase 与 Azure Cosmos DB 之间的数据模型差别：
 
-   **沙发底座**： 文档 ID = "99FF4444"
+   **Couchbase**：文档 ID = "99FF4444"
 
     ```json
     {
@@ -66,7 +66,7 @@ Azure Cosmos DB 是一个可扩展的、全局分布的完全托管数据库。 
     }
    ```
 
-   **Azure 宇宙 DB**： 请参阅文档中的"ID"，如下所示
+   **Azure Cosmos DB**：引用文档中的“ID”，如下所示
 
     ```json
     {
@@ -98,16 +98,16 @@ Azure Cosmos DB 是一个可扩展的、全局分布的完全托管数据库。 
          
 ## <a name="java-sdk-support"></a>Java SDK 支持
 
-Azure Cosmos DB 具有以下 SDK 来支持不同的 Java 框架：
+Azure Cosmos DB 提供以下 SDK 来支持不同的 Java 框架：
 
 * 异步 SDK
-* 弹簧启动 SDK
+* Spring Boot SDK
 
-以下各节介绍何时使用这些 SDK。 考虑一个示例，其中我们有三种类型的工作负载：
+以下部分将介绍何时使用其中的每种 SDK。 假设我们有三种类型的工作负荷：
 
-## <a name="couchbase-as-document-repository--spring-data-based-custom-queries"></a>作为文档存储库的 Couchbase &基于数据的自定义查询
+## <a name="couchbase-as-document-repository--spring-data-based-custom-queries"></a>用作文档存储库的 Couchbase，以及基于 Spring Data 的自定义查询
 
-如果要迁移的工作负载基于基于 Spring Boot 的 SDK，则可以使用以下步骤：
+如果要迁移的工作负荷基于 Spring Boot SDK，则可以使用以下步骤：
 
 1. 将父级添加到 POM.xml 文件：
 
@@ -126,7 +126,7 @@ Azure Cosmos DB 具有以下 SDK 来支持不同的 Java 框架：
    <azure.version>2.1.6</azure.version>
    ```
 
-1. 向 POM.xml 文件添加依赖项：
+1. 将依赖项添加到 POM.xml 文件：
 
    ```java
    <dependency>
@@ -136,7 +136,7 @@ Azure Cosmos DB 具有以下 SDK 来支持不同的 Java 框架：
    </dependency>
    ```
 
-1. 在资源下添加应用程序属性，并指定以下内容。 请确保替换 URL、键和数据库名称参数：
+1. 在资源下面添加应用程序属性，并指定以下语句。 请务必替换 URL、密钥和数据库名称参数：
 
    ```java
       azure.cosmosdb.uri=<your-cosmosDB-URL>
@@ -144,7 +144,7 @@ Azure Cosmos DB 具有以下 SDK 来支持不同的 Java 框架：
       azure.cosmosdb.database=<your-cosmosDB-dbName>
    ```
 
-1. 在模型中定义集合的名称。 您还可以指定进一步注释。 例如，ID，分区键以显式表示它们：
+1. 在模型中定义集合的名称。 还可以指定其他注释。 例如，指定 ID、分区键以显式表示资源：
 
    ```java
    @Document(collection = "mycollection")
@@ -157,48 +157,48 @@ Azure Cosmos DB 具有以下 SDK 来支持不同的 Java 框架：
        }
    ```
 
-以下是 CRUD 操作的代码段：
+下面是 CRUD 操作的代码片段：
 
 ### <a name="insert-and-update-operations"></a>插入和更新操作
 
-*其中_repo*是存储库的对象，*文档*是 POJO 类的对象。 您可以使用`.save`插入或向上设置（如果找到具有指定 ID 的文档）。 以下代码段演示如何插入或更新文档对象：
+其中 *_repo*是存储库的对象，而*doc*是 POJO 类的对象。 可以使用 `.save` 执行插入或更新插入（如果找到了具有指定 ID 的文档）。 以下代码片段演示如何插入或更新 doc 对象：
 
 ```_repo.save(doc);```
 
 ### <a name="delete-operation"></a>删除操作
 
-请考虑以下代码段，其中文档对象将具有标识和分区密钥，必须查找和删除该对象：
+考虑以下代码片段，其中，doc 对象包含查找和删除对象所必需的 ID 和分区键：
 
 ```_repo.delete(doc);```
 
 ### <a name="read-operation"></a>读取操作
 
-您可以使用或不指定分区键来读取文档。 如果不指定分区键，则将其视为跨分区查询。 请考虑以下代码示例，首先将使用 ID 和分区键字段执行操作。 第二个示例使用常规字段&而不指定分区键字段。
+无论指定还是不指定分区键，均可读取文档。 如果未指定分区键，则将其视为跨分区查询。 考虑以下代码示例。第一个示例使用 ID 和分区键字段执行操作。 第二个示例使用常规字段，且不指定分区键字段。
 
 * ```_repo.findByIdAndName(objDoc.getId(),objDoc.getName());```
 * ```_repo.findAllByStatus(objDoc.getStatus());```
 
-这就是它，您现在可以将应用程序与 Azure Cosmos DB 一起使用。 此文档中描述的示例的完整代码示例可在[CouchbasetoCosmosDB-SpringCosmos](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/SpringCosmos) GitHub 存储库中提供。
+就是这样，你现在可以将应用程序用于 Azure Cosmos DB。 本文档中所述示例的完整代码示例已在 [CouchbaseToCosmosDB-SpringCosmos](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/SpringCosmos) GitHub 存储库中提供。
 
-## <a name="couchbase-as-a-document-repository--using-n1ql-queries"></a>使用 N1QL 查询&作为文档存储库的 Couchbase
+## <a name="couchbase-as-a-document-repository--using-n1ql-queries"></a>用作文档存储库的 Couchbase，使用 N1QL 查询
 
-N1QL 查询是在 Couchbase 中定义查询的方法。
+可以通过 N1QL 查询在 Couchbase 中定义查询。
 
-|N1QL 查询 | Azure 宇宙DB 查询|
+|N1QL 查询 | Azure CosmosDB 查询|
 |-------------------|-------------------|
-|SELECT`TravelDocument`META（ .id `TravelDocument`AS ID， .* 从`TravelDocument`WHERE `_type` @ "com.xx.xx.xx.xxx.xxx" 和国家 = '印度' 和任何 m 在 签证 满足 m.type = '多入口'` Validity`和 m.国家在 ['印度'， 不丹 ' _ ORDER BY DESC LIMIT 25   | 选择 c.id，c 从 c JOIN m 在 c.国家_'印度' where c._type = "com.xx.xx.xx.xxx.xxx"和 c.国家 = '印度' 和 m.type = '多条目'和 m.国家 IN （'印度'， '不丹' ORDER BY c.有效性 DESC OFFSET 0 LIMIT 25 |
+|选择 "META`TravelDocument`（）. ID" 作为`TravelDocument`id，. `TravelDocument` * `_type` FROM WHERE = "Visas"，"国家/地区 = ' 印度 '"，"国家/地区"，其中的任何 m 项在 "印度"，不丹 "] ORDER BY ` Validity` DESC 限制 25 OFFSET 0   | 选择 c。 id，从 c 中的 c 联接 m （其中，c 为 "印度"），其中，c. _type = ".com. xx. xx. xx. .0... .0............... e.. e。 |
 
-您可以在 N1QL 查询中注意到以下更改：
+在 N1QL 查询中，可以注意到以下更改：
 
-* 您无需使用 META 关键字或引用第一级文档。 相反，您可以创建自己对容器的引用。 在此示例中，我们将其视为"c"（可以是任何内容）。 此引用用作所有第一级字段的前缀。 Fr 示例，c.id，c.国家等。
+* 不需要使用 META 关键字或引用第一级文档。 你可以创建自己的对容器的引用。 在此示例中，我们已将其视为“c”（可以是任何内容）。 此引用用作所有第一级字段的前缀。 例如，c.id、c.country，等等。
 
-* 现在，您可以在子文档中进行联接，并引用专用别名（如"m"）而不是"ANY"。 为子文档创建别名后，需要使用别名。 例如，m.国家/
+* 在不指定“ANY”的情况下，现在可以针对子文档执行联接，并使用专用别名（例如“m”）来引用它。 为子文档创建别名后，需要使用别名。 例如 m.Country。
 
-* 在 Azure Cosmos DB 查询中，OFFSET 的顺序不同，首先需要指定 OFFSET，然后再指定"限制"。 如果使用最大自定义定义的查询，建议不要使用 Spring Data SDK，因为它在将查询传递到 Azure Cosmos DB 时在客户端可能有不必要的开销。 相反，我们有一个直接的AsyncJava SDK，在这种情况下可以非常有效地使用它。
+* OFFSET 的顺序在 Azure Cosmos DB 查询中是不同的，需要先指定 OFFSET，再指定 LIMIT。 如果使用了最大数目的自定义查询，我们建议不要使用 Spring Data SDK，否则在将查询传递给 Azure Cosmos DB 时，可能会在客户端上产生不必要的开销。 我们提供了一个直接异步 Java SDK，在这种情况下，可以更有效地利用该 SDK。
 
 ### <a name="read-operation"></a>读取操作
 
-将 Async Java SDK 用于以下步骤：
+通过以下步骤使用异步 Java SDK：
 
 1. 将以下依赖项配置到 POM.xml 文件中：
 
@@ -211,7 +211,7 @@ N1QL 查询是在 Couchbase 中定义查询的方法。
    </dependency>
    ```
 
-1. 使用`ConnectionBuilder`如下示例所示的方法为 Azure Cosmos DB 创建连接对象。 请确保将此声明放入 Bean 中，以便以下代码只能执行一次：
+1. 如以下示例中所示，使用 `ConnectionBuilder` 方法为 Azure Cosmos DB 创建一个连接对象。 请确保将此声明放入 bean 中，以便仅执行以下代码一次：
 
    ```java
    ConnectionPolicy cp=new ConnectionPolicy();
@@ -228,13 +228,13 @@ N1QL 查询是在 Couchbase 中定义查询的方法。
    container = client.getDatabase(_dbName).getContainer(_collName);
    ```
 
-1. 要执行查询，您需要运行以下代码段：
+1. 若要执行查询，需运行以下代码片段：
 
    ```java
    Flux<FeedResponse<CosmosItemProperties>> objFlux= container.queryItems(query, fo);
    ```
 
-现在，在上述方法的帮助下，您可以传递多个查询并没有任何麻烦地执行。 如果需要执行一个大型查询（可以拆分为多个查询，请尝试以下代码段而不是前一个查询代码段）：
+现在，借助上述方法，可以非常顺利地传递并执行多个查询。 如果必须执行一个可拆分为多个查询的较大查询，请尝试运行以下代码片段，而不要运行前面所述的代码：
 
 ```java
 for(SqlQuerySpec query:queries)
@@ -258,17 +258,17 @@ for(SqlQuerySpec query:queries)
 }
 ```
 
-使用前面的代码，您可以并行运行查询，并增加分布式执行以进行优化。 此外，您还可以运行插入和更新操作：
+使用上述代码可以并行运行查询，并增加分布式执行以进行优化。 此外，还可以运行插入和更新操作：
 
 ### <a name="insert-operation"></a>插入操作
 
-要插入文档，请运行以下代码：
+若要插入文档，请运行以下代码：
 
 ```java 
 Mono<CosmosItemResponse> objMono= container.createItem(doc,ro);
 ```
 
-然后订阅单声道作为：
+然后按如下所示订阅 Mono：
 
 ```java
 CountDownLatch latch=new CountDownLatch(1);
@@ -284,33 +284,33 @@ objMono .subscribeOn(Schedulers.elastic())
 latch.await();              
 ```
 
-### <a name="upsert-operation"></a>Upsert 操作
+### <a name="upsert-operation"></a>更新插入操作
 
-Upsert 操作要求您指定需要更新的文档。 要获取完整文档，可以使用标题读取操作下提及的代码段，然后修改所需的字段。 以下代码段使文档向上：
+更新插入操作要求指定所需更新的文档。 若要提取完整文档，可以使用“读取操作”标题下提到的代码片段，然后修改所需的字段。 以下代码片段将更新插入文档：
 
 ```java
 Mono<CosmosItemResponse> obs= container.upsertItem(doc, ro);
 ```
-然后订阅单声道。 请参阅插入操作中的单声道订阅代码段。
+然后订阅 Mono。 请参考“插入操作”中的 Mono 订阅代码片段。
 
 ### <a name="delete-operation"></a>删除操作
 
-以下代码段将执行删除操作：
+以下代码片段执行删除操作：
 
 ```java     
 CosmosItem objItem= container.getItem(doc.Id, doc.Tenant);
 Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 ```
 
-然后订阅单声道，在插入操作中引用单声道订阅代码段。 完整的代码示例在[CouchbasetoCosmosDB-AsyncInSpring](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncInSpring) GitHub 存储库中提供。
+然后订阅 Mono。请参考“插入操作”中的 Mono 订阅代码片段。 [CouchbaseToCosmosDB-AsyncInSpring](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncInSpring) GitHub 存储库中提供了完整的代码示例。
 
-## <a name="couchbase-as-a-keyvalue-pair"></a>沙发底座作为键/值对
+## <a name="couchbase-as-a-keyvalue-pair"></a>用作键/值对的 Couchbase
 
-这是一种简单的工作负载类型，您可以在其中执行查找而不是查询。 对键/值对使用以下步骤：
+这是一个简单类型的工作负荷，在其中可以执行查找而不是查询。 针对键/值对使用以下步骤：
 
-1. 请考虑将"/ID"作为主键，这将确保可以直接在特定分区中执行查找操作。 创建集合并将"/ID"指定为分区键。
+1. 考虑使用“/ID”作为主键，以确保可以直接在特定的分区中执行查找操作。 创建一个集合，并指定“/ID”作为分区键。
 
-1. 完全关闭索引。 由于您将执行查找操作，因此没有进行索引开销的点。 要关闭索引，请登录到 Azure 门户，转到 Azure Cosmos DB 帐户。 打开**数据资源管理器**，选择**您的数据库**和**容器**。 打开 **"缩放&设置"** 选项卡并选择**索引策略**。 当前索引策略如下所示：
+1. 完全关闭索引功能。 由于执行的是查找操作，因此不会带来任何索引开销。 若要禁用索引功能，请登录到 Azure 门户并转到“Azure Cosmos DB 帐户”。 打开“数据资源管理器”，选择你的**数据库**和**容器**。  打开“规模和设置”选项卡，然后选择“索引策略”。   索引策略目前如下所示：
     
    ```json
    {
@@ -348,7 +348,7 @@ Mono<CosmosItemResponse> objMono = objItem.delete(ro);
    }
    ````
 
-   将上述索引策略替换为以下策略：
+   将以上索引策略替换为以下策略：
 
    ```json
    {
@@ -356,7 +356,7 @@ Mono<CosmosItemResponse> objMono = objItem.delete(ro);
    }
    ```
 
-1. 使用以下代码段创建连接对象。 连接对象（放置在其中@Bean或使其为静态对象）：
+1. 使用以下代码片段创建连接对象。 连接对象（将放在 @Bean 中，或设为静态）：
 
    ```java
    ConnectionPolicy cp=new ConnectionPolicy();
@@ -373,11 +373,11 @@ Mono<CosmosItemResponse> objMono = objItem.delete(ro);
    container = client.getDatabase(_dbName).getContainer(_collName);
    ```
 
-现在，您可以执行 CRUD 操作，如下所示：
+现在，可按如下所示执行 CRUD 操作：
 
 ### <a name="read-operation"></a>读取操作
 
-要阅读该项目，请使用以下代码段：
+若要读取项，请使用以下代码片段：
 
 ```java        
 CosmosItemRequestOptions ro=new CosmosItemRequestOptions();
@@ -400,13 +400,13 @@ latch.await();
 
 ### <a name="insert-operation"></a>插入操作
 
-要插入项目，可以执行以下代码：
+若要插入项，可执行以下代码：
 
 ```java 
 Mono<CosmosItemResponse> objMono= container.createItem(doc,ro);
 ```
 
-然后订阅单声道作为：
+然后按如下所示订阅 Mono：
 
 ```java
 CountDownLatch latch=new CountDownLatch(1);
@@ -422,36 +422,36 @@ objMono.subscribeOn(Schedulers.elastic())
 latch.await();
 ```
 
-### <a name="upsert-operation"></a>Upsert 操作
+### <a name="upsert-operation"></a>更新插入操作
 
-要更新项的值，请参阅下面的代码段：
+若要更新项的值，请参考以下代码片段：
 
 ```java
 Mono<CosmosItemResponse> obs= container.upsertItem(doc, ro);
 ```
-然后订阅单声道，在插入操作中引用单声道订阅代码段。
+然后订阅 Mono。请参考“插入操作”中的 Mono 订阅代码片段。
 
 ### <a name="delete-operation"></a>删除操作
 
-使用以下代码段执行删除操作：
+使用以下代码片段执行删除操作：
 
 ```java     
 CosmosItem objItem= container.getItem(id, id);
 Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 ```
 
-然后订阅单声道，在插入操作中引用单声道订阅代码段。 完整的代码示例在[CouchbasetoCosmosDB-AsyncKeyValue](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncKeyValue) GitHub 存储库中提供。
+然后订阅 Mono。请参考“插入操作”中的 Mono 订阅代码片段。 [CouchbaseToCosmosDB-AsyncKeyValue](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncKeyValue) GitHub 存储库中提供了完整的代码示例。
 
 ## <a name="data-migration"></a>数据迁移
 
-有两种方法可以迁移数据。
+可通过两种方式迁移数据。
 
-* **使用 Azure 数据工厂：** 这是最推荐的方法来迁移数据。 将源配置为 Couchbase 并将接收器配置为 Azure Cosmos DB SQL API，有关详细步骤，请参阅 Azure [Cosmos DB 数据工厂连接器](../data-factory/connector-azure-cosmos-db.md)一文。
+* **使用 Azure 数据工厂：** 强烈建议使用此方法来迁移数据。 将源配置为 Couchbase，将接收器配置为 Azure Cosmos DB SQL API。有关详细步骤，请参阅 [Azure Cosmos DB 数据工厂连接器](../data-factory/connector-azure-cosmos-db.md)一文。
 
-* **使用 Azure 宇宙数据库数据导入工具：** 建议使用数据量较少的 VM 迁移此选项。 有关详细步骤，请参阅[数据导入器](./import-data.md)一文。
+* **使用 Azure Cosmos DB 数据导入工具：** 使用包含少量数据的 VM 进行迁移时，建议使用此选项。 有关详细步骤，请参阅[数据导入工具](./import-data.md)一文。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 要执行性能测试，请参阅[使用 Azure Cosmos DB 一文进行性能和缩放测试](./performance-testing.md)。
-* 要优化代码，请参阅[Azure Cosmos DB](./performance-tips-async-java.md)一文的性能提示。
-* 探索 Java 同步 V3 [SDK，SDK 参考](https://github.com/Azure/azure-cosmosdb-java/tree/v3)GitHub 存储库。
+* 若要执行性能测试，请参阅[使用 Azure Cosmos DB 执行性能和规模测试](./performance-testing.md)一文。
+* 若要优化代码，请参阅 [Azure Cosmos DB 性能提示](./performance-tips-async-java.md)一文。
+* 若要探索 Java 异步 V3 SDK，请访问 [SDK 参考](https://github.com/Azure/azure-cosmosdb-java/tree/v3) GitHub 存储库。

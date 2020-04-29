@@ -11,10 +11,10 @@ ms.custom: ''
 manager: mtillman
 ms.author: mblythe
 ms.openlocfilehash: accdfbd939fad73ca7d008450c358d366e7f8b70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76900759"
 ---
 # <a name="export-or-delete-user-settings"></a>导出或删除用户设置
@@ -31,23 +31,23 @@ ms.locfileid: "76900759"
 
 ## <a name="export-or-delete-your-portal-settings"></a>导出或删除门户设置
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
-1. 在门户的标题中，选择![“设置”图标“设置”](media/azure-portal-export-delete-settings/settings-icon.png) ****。
+1. 在门户的标题中，选择![“设置”图标](media/azure-portal-export-delete-settings/settings-icon.png)“设置”  。
 
-1. 选择“导出所有设置”**** 或“删除所有设置和专用仪表板”****。
+1. 选择“导出所有设置”  或“删除所有设置和专用仪表板”  。
 
     ![Azure 门户设置和设置选项](media/azure-portal-export-delete-settings/azure-portal-settings-with-export-delete.png)
 
       下表介绍了这些操作。
 
-      | 操作 | 描述 |
+      | 操作 | 说明 |
       | --- | --- |
-      | **导出所有设置** | 创建一个 .json** 文件，其中包含你的用户设置（如颜色主题、收藏夹和专用仪表板）。|
+      | **导出所有设置** | 创建一个 .json  文件，其中包含你的用户设置（如颜色主题、收藏夹和专用仪表板）。|
       | **删除所有设置和专用仪表板** | 删除指向专用仪表板的所有链接以及你对门户所做的其他自定义设置。 |
 
 > [!NOTE]
-> 由于用户设置的动态性质和数据损坏风险，因此不能从 .json** 文件导入设置。
+> 由于用户设置的动态性质和数据损坏风险，因此不能从 .json  文件导入设置。
 >
 >
 

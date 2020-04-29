@@ -1,5 +1,5 @@
 ---
-title: 如何在云预配中使用单一登录
+title: 如何使用云预配的单一登录
 description: 本文介绍如何安装和使用云预配的 sso。
 services: active-directory
 author: billmath
@@ -12,14 +12,14 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3667dd529ce5542be84c5e357053d8cd11eb91e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76908983"
 ---
-# <a name="using-single-sign-on-with-cloud-provisioning"></a>将单一登录与云资源调配一起使用
-以下文档介绍如何在云预配时使用单一登录。
+# <a name="using-single-sign-on-with-cloud-provisioning"></a>使用云预配的单一登录
+以下文档介绍了如何使用云预配的单一登录。
 
 [!INCLUDE [active-directory-cloud-provisioning-sso.md](../../../includes/active-directory-cloud-provisioning-sso.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: 评估推荐者：模块参考
+title: 评估推荐器：模块参考
 titleSuffix: Azure Machine Learning
 description: 了解如何使用 Azure 机器学习中的“评估推荐器”模块来评估推荐器模型预测的准确度。
 services: machine-learning
@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
 ms.openlocfilehash: 38144d5df04427a82989b78843466ecd55386196
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76312254"
 ---
 # <a name="evaluate-recommender"></a>评估推荐器
@@ -90,4 +90,4 @@ ms.locfileid: "76312254"
 
 ## <a name="next-steps"></a>后续步骤
 
-参阅 Azure 机器学习[可用的模块集](module-reference.md)。 
+请参阅 Azure 机器学习的[可用模块集](module-reference.md)。 

@@ -1,15 +1,15 @@
 ---
-title: Azure 服务结构 CLI-sfctl 网格服务副本
-description: 了解 sfctl，Azure 服务结构命令行接口。 包括用于获取应用程序资源副本详细信息的命令列表。
+title: Azure Service Fabric sfctl 网格服务-副本
+description: 了解 sfctl，Azure Service Fabric 命令行界面。 包含用于获取应用程序资源的副本详细信息的命令的列表。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: ac604ec0a854964746ef34627b054e853662265f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76905952"
 ---
 # <a name="sfctl-mesh-service-replica"></a>sfctl mesh service-replica
@@ -17,26 +17,26 @@ ms.locfileid: "76905952"
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|说明|
 | --- | --- |
 | list | 列出某个服务的所有副本。 |
-| show | 获取应用程序服务的给定副本。 |
+| 显示 | 获取应用程序服务的给定副本。 |
 
 ## <a name="sfctl-mesh-service-replica-list"></a>sfctl mesh service-replica list
 列出某个服务的所有副本。
 
 获取某个服务的所有副本的相关信息。 此信息包括服务副本的说明和其他属性。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --app-name --application-name [必需] | 应用程序的名称。 |
 | --service-name [必需] | 服务的名称。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -49,9 +49,9 @@ ms.locfileid: "76905952"
 
 获取具有给定名称的服务副本的相关信息。 此信息包括服务副本的说明和其他属性。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --app-name --application-name [必需] | 应用程序的名称。 |
 | --name -n [必需] | 服务副本的名称。 |
@@ -59,7 +59,7 @@ ms.locfileid: "76905952"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -69,5 +69,5 @@ ms.locfileid: "76905952"
 
 
 ## <a name="next-steps"></a>后续步骤
-- [设置](service-fabric-cli.md)服务结构 CLI。
+- [设置](service-fabric-cli.md)Service Fabric CLI。
 - 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。

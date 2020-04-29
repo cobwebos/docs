@@ -12,14 +12,14 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d3eb4d2faf58d1861fda9d04437f9f9530c77672
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76718474"
 ---
 # <a name="process-data-in-sql-server-virtual-machine-on-azure"></a><a name="heading"></a>在 Azure 上处理 SQL Server 虚拟机中的数据
-本文档介绍如何浏览数据，并针对存储在 Azure 的 SQL Server VM 中的数据生成功能。 此目标可以通过使用 SQL 或使用编程语言（如 Python）进行数据争鸣来完成。
+本文档介绍如何浏览数据，并针对存储在 Azure 的 SQL Server VM 中的数据生成功能。 使用 SQL 或使用 Python 等编程语言，可以通过数据整理来完成此目标。
 
 > [!NOTE]
 > 本文档中的示例 SQL 语句假定数据在 SQL Server 中。 如果不是这样，请参阅云数据科学进程映射，了解如何将数据移到 SQL Server。
@@ -56,17 +56,17 @@ ms.locfileid: "76718474"
 ### <a name="feature-generation"></a><a name="sql-featuregen"></a>功能生成
 在本部分中，介绍使用 SQL 生成功能的方法：  
 
-1. [基于计数的功能生成](#sql-countfeature)
-2. [装箱功能生成](#sql-binningfeature)
-3. [从单个列滚动要素](#sql-featurerollout)
+1. [生成基于计数的功能](#sql-countfeature)
+2. [生成装箱功能](#sql-binningfeature)
+3. [从单个列推出功能](#sql-featurerollout)
 
 > [!NOTE]
 > 一旦生成其他功能，可将它们作为列添加到现有表格，或使用其他功能和主键来创建可与原始表结合的新表格。 
 > 
 > 
 
-### <a name="count-based-feature-generation"></a><a name="sql-countfeature"></a>基于计数的功能生成
-以下示例演示两种生成计数功能的方法。 第一种方法是使用条件求和，第二种方法是使用“where”子句。 然后，这些结果可以与原始表（使用主键列）联接，以具有与原始数据一起的计数要素。
+### <a name="count-based-feature-generation"></a><a name="sql-countfeature"></a>基于计数生成功能
+以下示例演示两种生成计数功能的方法。 第一种方法是使用条件求和，第二种方法是使用“where”子句。 然后，可以将这些结果与原始表联接（使用主键列），使其与原始数据一起使用计数功能。
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3> 
 
@@ -82,7 +82,7 @@ ms.locfileid: "76718474"
 ### <a name="rolling-out-the-features-from-a-single-column"></a><a name="sql-featurerollout"></a>从单个列推出功能
 在此部分中，将演示如何在表格中推出单列以生成其他功能。 该示例假定用户尝试在其中生成功能的表中，具有一个纬度或经度列。
 
-下面简要介绍纬度/经度位置数据（来自 stackoverflow 的资源[如何测量纬度和经度的准确性？](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)）。 本指南在将位置列为一个或多个功能之前，非常有用：
+下面简要介绍纬度/经度位置数据（来自 stackoverflow 的资源[如何测量纬度和经度的准确性？](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)）。 在将位置作为一个或多个功能包含之前，此指导将非常有用：
 
 * 符号指示地球上的四个方向：东、南、西、北。
 * 非零的百位数代表经度，而不是纬度！
@@ -95,7 +95,7 @@ ms.locfileid: "76718474"
 * 第五位小数值达 1.1 m：可将树与树区分开。 可通过差异更正获得该级别的、商用 GPS 计价单位的准确性。
 * 第六个小数位值达 0.11 m：可用于详细布局结构、设计景观和修建道路等。 对于追踪冰川和河流的运动，它是不二之选。 可通过差异更正 GPS 等获得以上数值。
 
-位置信息还具有以下特征：分离地区、位置和城市信息。 您还可以调用 REST 终结点，例如必应地图 API，可在[点查找位置](https://msdn.microsoft.com/library/ff701710.aspx)以获取区域/地区信息。
+位置信息还具有以下特征：分离地区、位置和城市信息。 你还可以调用 REST 终结点，例如 "[按点查找位置](https://msdn.microsoft.com/library/ff701710.aspx)" 中提供的 BING 地图 API，以获取区域/地区信息。
 
     select 
         <location_columnname>
@@ -121,7 +121,7 @@ ms.locfileid: "76718474"
 ![azureml 读取器][1] 
 
 ## <a name="using-a-programming-language-like-python"></a><a name="python"></a>使用 Python 等编程语言
-如果数据位于 SQL Server 中，使用 Python 浏览数据和生成功能类似于使用 Python处理 Azure blob 中的数据，如[处理数据科学环境中的 Azure Blob 数据](data-blob.md)中所述。 将数据从数据库加载到熊猫数据框中，以便进行更多处理。 在本部分中，我们记录连接到数据库并将数据加载到的数据帧的过程。
+如果数据位于 SQL Server 中，使用 Python 浏览数据和生成功能类似于使用 Python处理 Azure blob 中的数据，如[处理数据科学环境中的 Azure Blob 数据](data-blob.md)中所述。 将数据库中的数据加载到 pandas 数据帧，以便进行更多的处理。 在本部分中，我们记录连接到数据库并将数据加载到的数据帧的过程。
 
 以下连接字符串格式可用于使用 pyodbc 从 Python 连接到 SQL Server 数据库（具有特定值的替换服务器名、dbname、用户名和密码）：
 
@@ -129,7 +129,7 @@ ms.locfileid: "76718474"
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-Python 中的[Pandas 库](https://pandas.pydata.org/)为 Python 编程的数据操作提供了一组丰富的数据结构和数据分析工具。 下面的代码读取 SQL Server 数据库返回的结果到 Pandas 数据帧:
+Python 中的 [Pandas 库](https://pandas.pydata.org/)提供一组丰富的数据结构，以及针对 Python 编程的数据操作的数据分析工具。 下面的代码读取 SQL Server 数据库返回的结果到 Pandas 数据帧:
 
     # Query database and load the returned results in pandas data frame
     data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)

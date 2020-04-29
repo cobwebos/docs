@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: 4ad5e961e390b60784355ff3bc72aca4a2f73e11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77190960"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中为大型数据集编制索引
 
 随着数据量的增长或处理需求的变化，你可能发现，简单或默认的索引编制策略不再实用。 在 Azure 认知搜索中，可通过多种方法来适应较大的数据集，包括构建数据上传请求、对计划和分布式工作负荷使用特定于源的索引器，等等。
 
-这些相同的技术也适用于长时间运行的进程。 特别是，[并行索引](#parallel-indexing)中概述的步骤有助于计算密集型索引，例如[AI 扩充管道](cognitive-search-concept-intro.md)中的图像分析或自然语言处理。
+这些相同的技术也适用于长时间运行的进程。 具体而言，[并行索引编制](#parallel-indexing)中所述的步骤有助于完成计算密集型编制索引，例如 [AI 扩充管道](cognitive-search-concept-intro.md)中的图像分析或自然语言处理。
 
 以下部分探讨的三种技术适用于对大量数据进行索引编制。
 
@@ -47,7 +47,7 @@ ms.locfileid: "77190960"
 + 将数据分区成较小的独立数据源可以实现并行处理。 可以将源数据拆分成较小的组件（例如 Azure Blob 存储中的多个容器），然后在 Azure 认知搜索中创建多个相应的可以通过并行方式编制索引的[数据源对象](https://docs.microsoft.com/rest/api/searchservice/create-data-source)。
 
 > [!NOTE]
-> 索引器是特定于数据源的，因此使用索引器方法仅适用于 Azure 上的选定数据源[：SQL 数据库](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)[、Blob 存储](search-howto-indexing-azure-blob-storage.md)、[表存储](search-howto-indexing-azure-tables.md)[、Cosmos DB](search-howto-index-cosmosdb.md)。
+> 索引器特定于数据源，因此，使用索引器方法仅对 Azure 上的选定数据源可行：[SQL 数据库](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)、[Blob 存储](search-howto-indexing-azure-blob-storage.md)、[表存储](search-howto-indexing-azure-tables.md)和 [Cosmos DB](search-howto-index-cosmosdb.md)。
 
 ### <a name="scheduled-indexing"></a>计划的索引
 
@@ -80,9 +80,9 @@ ms.locfileid: "77190960"
 
 对于索引器，处理能力并不严格依赖于搜索服务所用每个服务单位 (SU) 的一个索引器子系统。 可以在基本或标准层上预配的、至少包含两个副本的 Azure 认知搜索服务中创建多个并发索引器。 
 
-1. 在 [Azure 门户](https://portal.azure.com)中，在搜索服务仪表板的“概述”页上，选中“定价层”以确认它能够适应并行索引。******** 基本和标准层提供多个副本。
+1. 在 [Azure 门户](https://portal.azure.com)中，在搜索服务仪表板的“概述”页上，选中“定价层”以确认它能够适应并行索引。   基本和标准层提供多个副本。
 
-2. 在 **"设置** > **缩放"中**，增加用于并行处理[的副本](search-capacity-planning.md)：每个索引器工作负载的一个附加副本。 保留足够数量的现有查询卷。 为索引牺牲查询工作负荷并不是一个很好的折衷方法。
+2. 在“设置” > “缩放”中，为并行处理[增加副本](search-capacity-planning.md)：为每个索引器工作负荷额外添加一个副本。   保留足够数量的现有查询卷。 为索引牺牲查询工作负荷并不是一个很好的折衷方法。
 
 3. 在 Azure 认知搜索索引器可以访问的级别，将数据分配到多个容器。 这可能是 Azure SQL 数据库中的多个表、Azure Blob 存储中的多个容器，或多个集合。 为每个表或容器定义一个数据源对象。
 
@@ -99,7 +99,7 @@ ms.locfileid: "77190960"
 > [!Note]
 > 增加副本时，如果索引大小预计会显著增加，请考虑增加分区计数。 分区存储索引内容的切片；分区数越多，每个分区要存储的切片就越小。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 + [索引器概述](search-indexer-overview.md)
 + [在门户中编制索引](search-import-data-portal.md)

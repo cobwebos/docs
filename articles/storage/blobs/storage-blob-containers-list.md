@@ -9,10 +9,10 @@ ms.date: 01/06/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 155b8f5d50c7b106daff8dab4df17200b844c988
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79135898"
 ---
 # <a name="list-blob-containers-with-net"></a>使用 .NET 列出 Blob 容器
@@ -32,7 +32,7 @@ ms.locfileid: "79135898"
 
 默认情况下，列出操作每次最多返回 5000 条结果。 若要返回更少的结果，请在调用某个 **ListContainerSegmented** 方法时为 `maxresults` 参数提供非零值。
 
-如果存储帐户包含 5000 个以上的容器，或者你为 `maxresults` 指定了一个导致列出操作返回存储帐户中一部分容器的值，则 Azure 存储将返回一个包含容器列表的继续标记。** 继续标记是一个不透明值，可用于从 Azure 存储中检索下一组结果。
+如果存储帐户包含 5000 个以上的容器，或者你为 `maxresults` 指定了一个导致列出操作返回存储帐户中一部分容器的值，则 Azure 存储将返回一个包含容器列表的继续标记。  继续标记是一个不透明值，可用于从 Azure 存储中检索下一组结果。
 
 在代码中检查继续标记的值，以确定它是否为 null。 如果继续标记为 null，则表示结果集是完整的。 如果继续标记不为 null，则再次调用 **ListContainersSegmented** 或 **ListContainersSegmentedAsync**，并传入继续标记以检索下一组结果，直到继续标记为 null。
 
@@ -44,7 +44,7 @@ ms.locfileid: "79135898"
 
 若要连同结果一起返回容器元数据，请指定 [ContainerListingDetails](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) 枚举的 **Metadata** 值。 Azure 存储包含每个返回的容器的元数据，因此无需同时调用 **FetchAttributes** 方法之一即可检索容器元数据。
 
-## <a name="example-list-containers"></a>示例：列表容器
+## <a name="example-list-containers"></a>示例：列出容器
 
 以下示例以异步方式列出存储帐户中以指定的前缀开头的容器。 该示例每次以 5 个结果为增量列出容器，并使用继续标记获取下一个结果段。 该示例还会连同结果一起返回容器元数据。
 
@@ -98,7 +98,7 @@ private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClie
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
-[列出](/rest/api/storageservices/list-containers2)
-[枚举 Blob 资源的](/rest/api/storageservices/enumerating-blob-resources)容器
+[列出容器](/rest/api/storageservices/list-containers2)
+[枚举 Blob 资源](/rest/api/storageservices/enumerating-blob-resources)

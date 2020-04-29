@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒体服务实时传送视频流，通过 Azure 门户创建多比特率流 | Microsoft Docs
-description: 本教程会逐步指导用户使用 Azure 门户创建频道，该频道接收单比特率实时流，然后将其编码为多比特率流。
+description: 本教程介绍了创建通道的步骤，该通道接收单比特率实时流并利用 Azure 门户将其编码为多比特率流。
 services: media-services
 documentationcenter: ''
 author: anilmur
@@ -15,28 +15,28 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 7d2e4274e6feaebac6536eed2f8a99d251cd5ceb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77162559"
 ---
 # <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>使用媒体服务实时传送视频流，通过 Azure 门户创建多比特率流  
 > [!div class="op_single_selector"]
-> * [门户](media-services-portal-creating-live-encoder-enabled-channel.md)
+> * [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 > * [REST API](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本，[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
-本教程指导完成创建 **频道** 的步骤，该频道接收单比特率实时流，并将其编码为多比特率流。
+本教程介绍了创建**通道**的步骤，该通道接收单比特率实时流，并将其编码为多比特率流。
 
-有关为实时编码启用的通道的更多相关概念信息，请参阅 [使用 Azure 媒体服务执行实时流式处理以创建多比特率流](media-services-manage-live-encoder-enabled-channels.md)。
+有关为实时编码启用的通道的更多相关概念信息，请参阅[使用 Azure 媒体服务实时传送视频流以创建多比特率流](media-services-manage-live-encoder-enabled-channels.md)。
 
 ## <a name="common-live-streaming-scenario"></a>常见的实时流方案
-以下是在创建常见的实时流应用程序时涉及的常规步骤。
+以下是创建常见的实时流应用程序时涉及的常规步骤。
 
 > [!NOTE]
 > 目前，直播活动的最大建议持续时间为 8 小时。 如果需要较长时间运行某个频道，请联系 amshelp@microsoft.com。
@@ -44,7 +44,7 @@ ms.locfileid: "77162559"
 1. 将视频摄像机连接到计算机。 <br/>有关设置建议，请查看[简单且可移植的事件视频设备设置]( https://link.medium.com/KNTtiN6IeT)。
 
     如果你无法访问摄像机，则可以使用 [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md) 等工具从视频文件生成实时源。
-1. 启动并配置可以通过以下协议之一输出单比特率流的本地实时编码器：RTMP 或平滑流式处理。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](https://go.microsoft.com/fwlink/?LinkId=532824)。 <br/>此外，看看这个博客：[使用OBS进行实时流式处理](https://link.medium.com/ttuwHpaJeT)。
+1. 启动并配置可以通过以下协议之一输出单比特率流的本地实时编码器：RTMP 或平滑流式处理。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](https://go.microsoft.com/fwlink/?LinkId=532824)。 <br/>此外，请查看此博客：[包含 OBS 的实时流式处理生产](https://link.medium.com/ttuwHpaJeT)。
 
     此步骤也可以在创建频道后执行。
 1. 创建并启动频道。 
@@ -61,7 +61,7 @@ ms.locfileid: "77162559"
 1. 要停止流式传输并存档事件时，停止事件。
 1. 删除事件（并选择性地删除资产）。   
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 以下是完成本教程所需具备的条件。
 
@@ -77,7 +77,7 @@ ms.locfileid: "77162559"
 3. 选择“自定义创建” ****。 选择此选项可以创建一个频道来进行实时编码。
 
     ![创建通道](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel.png)
-4. 单击 **"设置**"。
+4. 单击 "**设置**"。
 
    1. 选择“实时编码” **** 频道类型。 此类型指定要创建能够进行实时编码的频道。 这意味着传入单比特率流将发送到频道，并使用指定的实时编码器设置编码为多比特率流。 有关详细信息，请参阅 [使用 Azure 媒体服务执行实时流式处理以创建多比特率流](media-services-manage-live-encoder-enabled-channels.md)。 单击“确定”。
    2. 指定频道的名称。
@@ -141,7 +141,7 @@ ms.locfileid: "77162559"
 将流传输到通道后，可以通过创建资产、节目和流定位符来启动流式传输事件。 这会存档流，并使观看者可通过流式处理终结点使用该流。 
 
 >[!NOTE]
->创建 AMS 帐户时，**默认**流式处理终结点将添加到处于 **"已停止"** 状态的帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。**** 
+>创建 AMS 帐户后，会将**默认**流式处理终结点添加到帐户的 "**已停止**" 状态。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。**** 
 
 可通过两种方式启动该活动： 
 
@@ -189,7 +189,7 @@ ms.locfileid: "77162559"
 * 目前，直播活动的最大建议持续时间为 8 小时。 如果需要较长时间运行某个频道，请联系 amshelp@microsoft.com。
 * 确保要从中流式传输内容的流式处理终结点处于“正在运行”状态。****
 
-## <a name="next-step"></a>后续步骤
+## <a name="next-step"></a>下一步
 查看媒体服务学习路径。
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -11,10 +11,10 @@ author: vaidyas
 ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.openlocfilehash: d03a3d482d147d3bc69354ee09dfe0b187610a09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78927446"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>将机器学习模型部署到 Azure Functions（预览版）
@@ -25,9 +25,9 @@ ms.locfileid: "78927446"
 > [!IMPORTANT]
 > 虽然 Azure 机器学习和 Azure Functions 都已正式发布，但将模型从机器学习服务部署到 Functions 的功能目前处于预览阶段。
 
-通过 Azure 机器学习，可从经训练的机器学习模型创建 Docker 映像。 Azure 机器学习现在提供了将这些机器学习模型生成到函数应用中的预览功能，而这些函数应用可[部署到 Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-deployment-technologies#docker-container) 中。
+使用 Azure 机器学习，可通过经过训练的机器学习模型创建 Docker 映像。 Azure 机器学习现在提供了将这些机器学习模型生成到函数应用中的预览功能，而这些函数应用可[部署到 Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-deployment-technologies#docker-container) 中。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建工作区](how-to-manage-workspace.md)一文。
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
@@ -46,7 +46,7 @@ ms.locfileid: "78927446"
 
 在部署之前，必须确定将模型作为 Web 服务运行所需的内容。 以下列表描述了部署所需的基本项：
 
-* __条目脚本__。 此脚本接受请求，使用模型为请求评分并返回结果。
+* 一个入口脚本  。 此脚本接受请求，使用模型为请求评分并返回结果。
 
     > [!IMPORTANT]
     > 入口脚本特定于你的模型；它必须能够识别传入请求数据的格式、模型所需数据的格式以及返回给客户端的数据的格式。
@@ -56,12 +56,12 @@ ms.locfileid: "78927446"
     > 默认情况下，在为函数打包时，输入被视为文本。 如果想使用输入的原始字节（例如用于 Blob 触发器），则应使用 [AMLRequest 接受原始数据](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#binary-data)。
 
 
-* 依赖项，如运行入口脚本或模型所需的帮助程序脚本或 Python/Conda 包****
+* 依赖项，如运行入口脚本或模型所需的帮助程序脚本或 Python/Conda 包 
 
-这些实体被封装到推理配置中____。 推理配置引用入口脚本和其他依赖项。
+这些实体被封装到推理配置中  。 推理配置引用入口脚本和其他依赖项。
 
 > [!IMPORTANT]
-> 创建用于 Azure Functions 的推理配置时，需要使用 [Environment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py) 对象。 请注意，如果要定义自定义环境，必须将版本不低于 1.0.45 的 azureml-defaults 添加为 pip 依赖项。 此包包含将模型托管为 Web 服务所需的功能。 下面的示例演示如何创建环境对象并将其用于推理配置：
+> 创建用于 Azure Functions 的推理配置时，需要使用 [Environment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py) 对象。 请注意，如果要定义自定义环境，需要将版本不低于 1.0.45 的 azureml-defaults 添加为 Pip 依赖项。 此包包含将模型托管为 Web 服务所需的功能。 下面的示例演示如何创建环境对象并将其用于推理配置：
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -82,7 +82,7 @@ ms.locfileid: "78927446"
 有关推理配置的详细信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。
 
 > [!IMPORTANT]
-> 部署到 Azure Functions 时，无需创建部署配置____。
+> 部署到 Azure Functions 时，无需创建部署配置  。
 
 ## <a name="install-the-sdk-preview-package-for-functions-support"></a>安装 SDK 预览版包以获取函数支持
 
@@ -97,7 +97,7 @@ pip install azureml-contrib-functions
 若想创建要部署到 Azure Functions 的 Docker 映像，请为想应用的触发器使用 [azureml.contrib.functions.package](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py) 或特定包函数。 下面的代码段演示如何通过模型和推理配置生成带有 blob 触发器的新包：
 
 > [!NOTE]
-> 该代码片段假定 `model` 包含已注册的模型，并且 `inference_config` 包含推理环境的配置。 有关详细信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。
+> 代码段假定 `model` 包含已注册的模型，`inference_config` 包含推理环境的配置。 有关详细信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。
 
 ```python
 from azureml.contrib.functions import package
@@ -142,21 +142,21 @@ print(blob.location)
     }
     ```
 
-    保存“用户名”和某个“密码”的值________。
+    保存“用户名”和某个“密码”的值   。
 
-1. 如果你还没有资源组或应用服务计划来部署服务，以下命令将演示如何创建这两项：
+1. 如果还没有用于部署服务的资源组或应用服务计划，可使用以下命令来创建这两项：
 
     ```azurecli-interactive
     az group create --name myresourcegroup --location "West Europe"
     az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
     ```
 
-    在此示例中，使用_Linux 基本_定价层`--sku B1`（ 。
+    此示例使用了“Linux 基本”  定价层级 (`--sku B1`)。
 
     > [!IMPORTANT]
-    > Azure 机器学习创建的映像使用 Linux，因此必须使用 `--is-linux` 参数。
+    > Azure 机器学习创建的映像使用 Linux，因此需要使用 `--is-linux` 参数。
 
-1. 创建用于 Web 作业存储的存储帐户，并获取其连接字符串。 将 `<webjobStorage>` 替换为要使用的名称。
+1. 创建要用于 Web 作业存储的存储帐户并获取其连接字符串。 将 `<webjobStorage>` 替换为要使用的名称。
 
     ```azurecli-interactive
     az storage account create --name <webjobStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
@@ -165,7 +165,7 @@ print(blob.location)
     az storage account show-connection-string --resource-group myresourcegroup --name <webJobStorage> --query connectionString --output tsv
     ```
 
-1. 使用以下命令来创建函数应用。 将 `<app-name>` 替换为要使用的名称。 将 `<acrinstance>` 和 `<imagename>` 替换为之前返回的 `package.location` 的值。 替换为`<webjobStorage>`上一步骤中的存储帐户的名称：
+1. 使用以下命令来创建函数应用。 将 `<app-name>` 替换为要使用的名称。 将 `<acrinstance>` 和 `<imagename>` 替换为之前返回的 `package.location` 的值。 将 `<webjobStorage>` 替换为上一步中存储帐户的名称：
 
     ```azurecli-interactive
     az functionapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename> --storage-account <webjobStorage>
@@ -174,7 +174,7 @@ print(blob.location)
     > [!IMPORTANT]
     > 此时，函数应用已创建。 但是，由于你尚未向包含映像的 Azure 容器注册表提供 blob 触发器的连接字符串或凭据，因此函数应用未处于活动状态。 在接下来的步骤中，为容器注册表提供连接字符串和身份验证信息。 
 
-1. 创建用于 Blob 触发器存储的存储帐户，并获取其连接字符串。 将 `<triggerStorage>` 替换为要使用的名称。
+1. 创建要用于 blob 触发器存储的存储帐户并获取其连接字符串。 将 `<triggerStorage>` 替换为要使用的名称。
 
     ```azurecli-interactive
     az storage account create --name <triggerStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
@@ -184,7 +184,7 @@ print(blob.location)
     ```
     记录要提供给函数应用的此连接字符串。 稍后在要求提供 `<triggerConnectionString>` 时会用到该字符串
 
-1. 创建用于存储帐户中输入和输出信息的容器。 替换为`<triggerConnectionString>`前面返回的连接字符串：
+1. 创建用于存储帐户中输入和输出信息的容器。 将 `<triggerConnectionString>` 替换为先前返回的连接字符串：
 
     ```azurecli-interactive
     az storage container create -n input --connection-string <triggerConnectionString>
@@ -193,19 +193,19 @@ print(blob.location)
     az storage container create -n output --connection-string <triggerConnectionString>
     ```
 
-1. 要将触发器连接字符串与函数应用关联，请使用以下命令。 替换为`<app-name>`函数应用的名称。 替换为`<triggerConnectionString>`前面返回的连接字符串：
+1. 若要将触发器连接字符串与函数应用关联，请使用以下命令。 将 `<app-name>` 替换为函数应用的名称。 将 `<triggerConnectionString>` 替换为先前返回的连接字符串：
 
     ```azurecli-interactive
     az functionapp config appsettings set --name <app-name> --resource-group myresourcegroup --settings "TriggerConnectionString=<triggerConnectionString>"
     ```
-1. 您需要使用以下命令检索与创建容器关联的标记。 替换为`<username>`以前从容器注册表返回的用户名：
+1. 需要使用以下命令检索与创建的容器关联的标记。 将 `<username>` 替换为先前从容器注册表返回的用户名：
 
     ```azurecli-interactive
     az acr repository show-tags --repository package --name <username> --output tsv
     ```
-    保存返回的值，它将用作下一步中的`imagetag`。
+    保存返回的值，它将在下一步中用作 `imagetag`。
 
-1. 若要为函数应用提供访问容器注册表所需的凭据，请使用以下命令。 替换为`<app-name>`函数应用的名称。 将 `<acrinstance>` 和 `<imagetag>` 替换为上一步中 AZ CLI 调用中的值。 将 `<username>` 和 `<password>` 替换为之前检索到的 ACR 登录信息：
+1. 若要为函数应用提供访问容器注册表所需的凭据，请使用以下命令。 将 `<app-name>` 替换为函数应用的名称。 将 `<acrinstance>` 和 `<imagetag>` 替换为上一步中 AZ CLI 调用中的值。 将 `<username>` 和 `<password>` 替换为之前检索到的 ACR 登录信息：
 
     ```azurecli-interactive
     az functionapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package:<imagetag> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
@@ -249,18 +249,18 @@ print(blob.location)
 
 ## <a name="test-the-deployment"></a>测试部署
 
-加载映像且应用可用后，请使用以下步骤触发应用：
+加载映像并且应用可用后，使用以下步骤来触发应用：
 
-1. 创建包含score.py文件期望的数据的文本文件。 以下示例将处理一个score.py，该score.py需要 10 个数字的数组：
+1. 创建一个文本文件，使其包含 score.py 文件所需的数据。 以下示例中的 score.py 需要其中包含 10 个数字的数组：
 
     ```json
     {"data": [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]]}
     ```
 
     > [!IMPORTANT]
-    > 数据的格式取决于您的score.py和模型的期望。
+    > 数据的格式取决于你的 score.py 和模型所需的内容。
 
-2. 使用以下命令将此文件上载到前面创建的触发器存储 Blob 中的输入容器。 替换为`<file>`包含数据的文件的名称。 替换为`<triggerConnectionString>`前面返回的连接字符串。 在此示例中，`input`是前面创建的输入容器的名称。 如果使用其他名称，请替换此值：
+2. 使用以下命令将此文件上传到之前创建的触发器存储 blob 中的输入容器。 将 `<file>` 替换为包含数据的文件的名称。 将 `<triggerConnectionString>` 替换为先前返回的连接字符串。 在此示例中，`input` 是前面创建的输入容器的名称。 如果你使用了其他名称，请替换此值：
 
     ```azurecli-interactive
     az storage blob upload --container-name input --file <file> --name <file> --connection-string <triggerConnectionString>
@@ -275,23 +275,23 @@ print(blob.location)
     }
     ```
 
-3. 要查看函数生成的输出，请使用以下命令列出生成的输出文件。 替换为`<triggerConnectionString>`前面返回的连接字符串。 在此示例中，`output`是前面创建的输出容器的名称。 如果您使用其他名称，请替换此值：
+3. 若要查看函数生成的输出，请使用以下命令列出生成的输出文件。 将 `<triggerConnectionString>` 替换为先前返回的连接字符串。 在此示例中，`output` 是前面创建的输出容器的名称。 如果你使用了其他名称，请替换此值：
 
     ```azurecli-interactive
     az storage blob list --container-name output --connection-string <triggerConnectionString> --query '[].name' --output tsv
     ```
 
-    此命令的输出类似于`sample_input_out.json`。
+    此命令的输出类似于 `sample_input_out.json`。
 
-4. 要下载文件并检查内容，请使用以下命令。 替换为`<file>`前一命令返回的文件名。 替换为`<triggerConnectionString>`前面返回的连接字符串： 
+4. 若要下载文件并检查内容，请使用以下命令。 将 `<file>` 替换为上一命令返回的文件名。 将 `<triggerConnectionString>` 替换为先前返回的连接字符串： 
 
     ```azurecli-interactive
     az storage blob download --container-name output --file <file> --name <file> --connection-string <triggerConnectionString>
     ```
 
-    完成命令后，打开该文件。 它包含模型返回的数据。
+    在该命令完成后，打开文件。 它包含模型返回的数据。
 
-有关使用 Blob 触发器的详细信息，请参阅[创建由 Azure Blob 存储存储触发的函数](/azure/azure-functions/functions-create-storage-blob-triggered-function)。
+有关使用 blob 触发器的详细信息，请参阅[创建 Azure Blob 存储触发的函数](/azure/azure-functions/functions-create-storage-blob-triggered-function)一文。
 
 ## <a name="next-steps"></a>后续步骤
 

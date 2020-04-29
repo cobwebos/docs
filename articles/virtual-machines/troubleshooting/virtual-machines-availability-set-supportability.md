@@ -1,6 +1,6 @@
 ---
 title: 将 Azure VM 添加到现有可用性集的可支持性 | Microsoft Docs
-description: 本文提供了一个可支持性矩阵，介绍可以在同一可用性集中混合哪些 VM 系列
+description: 本文提供了一个可支持性矩阵，说明可以在同一可用性集中混合哪些 VM 系列
 documentationcenter: ''
 author: Deland-Han
 manager: dcscontentpm
@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.openlocfilehash: a9ca8f219bef787de04b51600209bfd3a24dd166
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77122917"
 ---
 # <a name="supportability-of-adding-azure-vms-to-an-existing-availability-set"></a>将 Azure VM 添加到现有可用性集的可支持性
@@ -32,4 +32,4 @@ ms.locfileid: "77122917"
 
 所有其他系列都不能在同一可用性集中，因为它们需要特定的硬件。
 
-A8/A9 VM 大小不能混合，因为专用 RDMA 后端网络的要求。
+由于专用 RDMA 后端网络的要求，不能混合使用 A8/A9 VM 大小。

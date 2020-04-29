@@ -1,6 +1,6 @@
 ---
-title: 开始使用 Azure 快速启动中心
-description: 使用 Azure 快速入门中心指导体验开始使用 Azure。 学习设置、迁移和创新。
+title: Azure 快速入门中心入门
+description: 使用 Azure 快速启动中心指导体验开始使用 Azure。 了解如何设置、迁移和创新。
 services: azure-portal
 keywords: ''
 author: mgblythe
@@ -10,40 +10,40 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: 21dd43b5179d0752699bb56b51a2c08976aa037b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76900686"
 ---
-# <a name="get-started-with-the-azure-quickstart-center"></a>开始使用 Azure 快速启动中心
+# <a name="get-started-with-the-azure-quickstart-center"></a>Azure 快速入门中心入门
 
-Azure 快速入门中心是 Azure 门户中的一种指导性体验，可供任何想要提高 Azure 知识的任何人使用。 对于新加入 Azure 的组织，这是注册和设置云环境的最快方法。
+Azure 快速入门中心是 Azure 门户提供给想要改进其 Azure 知识的任何人的指导体验。 对于 Azure 的新组织，它是加入和设置云环境的最快方法。
 
 ## <a name="overview"></a>概述
 
 Azure 快速入门中心有三个入门选项：
 
-* **设置指南**：专为 IT 管理员和云架构师设计，我们的指南介绍了 Azure 采用的关键概念。 结构化步骤可帮助您在学习时采取行动，应用 Microsoft 推荐的最佳实践。 迁移指南可帮助您在准备迁移到 Azure 时评估就绪情况并进行规划。
+* **设置指南**：专为 IT 管理员和云架构师设计，本指南介绍了适用于 Azure 的主要概念。 结构化步骤可帮助你在学习时执行操作，从而应用 Microsoft 推荐的最佳做法。 迁移指南可帮助你评估准备情况并在准备转移到 Azure 时进行规划。
 
-* **启动项目**：如果您已准备好创建资源，则此部分允许您在提交服务选项之前了解有关您的选择的更多信息。 您将了解有关服务以及使用服务的原因、探索成本和确定先决条件的更多。 做出选择后，您可以直接进行创建。
+* **启动项目**：如果已准备好创建资源，本部分可让你在提交到服务选项之前详细了解你的选择。 你将了解有关该服务的详细信息以及你应该使用它的原因，探索成本并识别必备组件。 做出选择后，可以直接进行创建。
 
-* **在线学习**：Azure 快速入门中心的这一部分突出显示了 Microsoft 学习的免费入门课程模块。 选择磁贴以启动课程并了解有关 Azure 中的云概念和管理资源详细信息。
+* **联机学习**： Azure 快速入门中的此部分重点介绍 Microsoft Learn 的免费的介绍课程模块。 选择一个磁贴以启动课程，并详细了解云概念和在 Azure 中管理资源。
 
-## <a name="how-to-use-azure-quickstart-center"></a>如何使用 Azure 快速启动中心
+## <a name="how-to-use-azure-quickstart-center"></a>如何使用 Azure 快速入门中心
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 从 Azure 门户菜单中选择“所有服务”****。
 
-1. 选择**常规** > **快速启动中心**。
+1. 选择 "**常规** > **快速入门中心**"。
 
-有关 Azure 快速入门中心可以为您做什么的深入了解，请查看此视频：
+若要深入了解 Azure 快速入门中可执行的操作，请查看此视频：
 > [!VIDEO https://www.youtube.com/embed/0bSA7RXrbAg]
 
-[Azure 快速启动中心简介](https://www.youtube.com/watch?v=0bSA7RXrbAg)
+[Azure 快速入门中心简介](https://www.youtube.com/watch?v=0bSA7RXrbAg)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 在 Azure 的[Microsoft 云采用框架](/azure/architecture/cloud-adoption/)中了解有关 Azure 设置和迁移的信息。
-* 使用[微软学习](/learn/azure/)的更多课程解锁云技能。
+* 在[适用于 azure 的 Microsoft 云采用框架](/azure/architecture/cloud-adoption/)中了解有关 azure 设置和迁移的详细信息。
+* 通过[Microsoft Learn](/learn/azure/)中的更多课程来解锁云技能。

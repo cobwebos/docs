@@ -8,10 +8,10 @@ ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
 ms.openlocfilehash: 11a6debe735459b617f6f93c3f67a32350dd4623
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76549047"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>（已弃用）用于通过 Azure DevOps Services 在包含 Docker Swarm 的 Azure 容器服务中部署多容器应用程序的完整 CI/CD 管道
@@ -38,7 +38,7 @@ ms.locfileid: "76549047"
 1. 群集上的 Docker Swarm 提取最新的映像版本 
 1. 使用 Docker Compose 部署应用程序的新版本 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始本教程之前，需要完成以下任务：
 
@@ -80,7 +80,7 @@ Microsoft 提供一个 Azure DevOps Services 扩展用于在 Azure Pipelines 流
 
     ![Azure DevOps Services - 外部连接](./media/container-service-docker-swarm-setup-ci-cd/vsts-services-menu.png)
 
-1. 在左侧，单击 **"新服务终结点** > **GitHub**"。
+1. 在左侧，单击 "**新建服务终结点** > **GitHub**"。
 
     ![Azure DevOps Services - GitHub](./media/container-service-docker-swarm-setup-ci-cd/vsts-github.png)
 
@@ -147,7 +147,7 @@ Microsoft 提供一个 Azure DevOps Services 扩展用于在 Azure Pipelines 流
 
     ![Azure DevOps Services - Docker 生成](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-build.png)
 
-    对于生成操作，请选择 Azure 容器注册表、**生成映像**操作和定义每个映像的 Dockerfile。 将“生成上下文”设置为 Dockerfile 根目录，然后定义“映像名称”。******** 
+    对于生成操作，请选择 Azure 容器注册表和 "**生成映像**" 操作，并选择定义每个映像的 Dockerfile。 将“生成上下文”设置为 Dockerfile 根目录，然后定义“映像名称”。******** 
     
     如上面的屏幕截图中所示，使用 Azure 容器注册表的 URI 作为映像名称的开头。 （还可以使用生成变量来参数化映像的标记，在本示例中为生成标识符。）
 
@@ -159,11 +159,11 @@ Microsoft 提供一个 Azure DevOps Services 扩展用于在 Azure Pipelines 流
 
 1. 为每个映像（共五个）配置生成和推送步骤后，请在生成工作流中另外添加两个步骤。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 使用 bash 脚本将 docker-compose.yml 文件中的*BuildNumber*事件替换为当前生成 Id 的命令行任务。有关详细信息，请参阅以下屏幕。
+    a. 一个命令行任务，该任务使用 bash 脚本将 docker-compose.yml. docker-compose.override.yml 文件中的*BuildNumber*实例替换为当前生成 Id。有关详细信息，请参阅下面的屏幕。
 
     ![Azure DevOps Services - 更新 Compose 文件](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-replace-build-number.png)
 
-    b.保留“数据库类型”设置，即设置为“共享”。 一个可将已更新的 Compose 文件转换为生成项目，使其可在发布阶段使用的任务。 请参阅以下屏幕截图中的详细信息。
+    b. 一个可将已更新的 Compose 文件转换为生成项目，使其可在发布阶段使用的任务。 请参阅以下屏幕截图中的详细信息。
 
     ![Azure DevOps Services - 发布 Compose 文件](./media/container-service-docker-swarm-setup-ci-cd/vsts-publish-compose.png) 
 
@@ -177,9 +177,9 @@ Microsoft 提供一个 Azure DevOps Services 扩展用于在 Azure Pipelines 流
 
 ### <a name="initial-release-setup"></a>初始发布设置
 
-1. 要创建发布管道，请单击 **"发布** > **"**
+1. 若要创建发布管道，请**单击 "** > 发布 **+ 发布**"
 
-1. 要配置项目源，请单击 **"项目** > **链接项目"源**。 在此处，请将此新发布管道链接到在上一步骤中定义的生成。 这样，便可以在发布过程中使用 docker-compose.yml 文件。
+1. 若要配置项目源，请单击 "**项目** > " "**链接项目源**"。 在此处，请将此新发布管道链接到在上一步骤中定义的生成。 这样，便可以在发布过程中使用 docker-compose.yml 文件。
 
     ![Azure DevOps Services - 发布项目](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-artefacts.png) 
 
@@ -222,4 +222,4 @@ Microsoft 提供一个 Azure DevOps Services 扩展用于在 Azure Pipelines 流
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关使用 Azure DevOps 服务进行 CI/CD 的详细信息，请参阅[Azure 管道文档](/azure/devops/pipelines/?view=azure-devops)一文。
+* 有关与 Azure DevOps Services 的 CI/CD 的详细信息，请参阅[Azure Pipelines 文档](/azure/devops/pipelines/?view=azure-devops)文章。

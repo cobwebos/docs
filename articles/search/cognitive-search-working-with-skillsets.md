@@ -1,7 +1,7 @@
 ---
-title: 技能集概念和工作流
+title: 技能组概念和工作流
 titleSuffix: Azure Cognitive Search
-description: 技能集是在 Azure 认知搜索中创作 AI 扩充管道的位置。 了解有关技能集组合的重要概念和详细信息。
+description: 技能组是你在 Azure 认知搜索中创作 AI 扩充管道的地方。 了解有关技能组构成的重要概念和详细信息。
 manager: nitinme
 author: vkurpad
 ms.author: vikurpad
@@ -9,20 +9,20 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 8b45840215092281c7fbc8d499e26b095b374dd6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77191027"
 ---
-# <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Azure 认知搜索中的技能集概念和组合
+# <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Azure 认知搜索中的技能组概念和构成
 
-本文面向需要更深入地了解浓缩管道工作原理并假定您对 AI 浓缩过程有概念理解的开发人员。 如果您是新概念，则从：
+本文面向需要深入了解扩充管道工作原理的开发人员，并假设读者在概念上对 AI 扩充过程有所了解。 如果你不熟悉此概念，请从以下项开始：
 + [Azure 认知搜索中的 AI 扩充](cognitive-search-concept-intro.md)
 + [知识存储（预览版）](knowledge-store-concept-intro.md)
 
 ## <a name="specify-the-skillset"></a>指定技能集
-技能集是 Azure 认知搜索中的可重用资源，用于指定用于在索引期间分析、转换和丰富文本或图像内容的认知技能集合。 通过创建技能集，可以在数据引入阶段附加文本和图像扩充，并从原始内容提取和创建新的信息与结构。
+技能组是 Azure 认知搜索中的可重用资源，在索引编制期间指定用于分析、转换和扩充文本或图像内容的认知技能组合。 通过创建技能集，可以在数据引入阶段附加文本和图像扩充，并从原始内容提取和创建新的信息与结构。
 
 技能集有三个属性：
 
@@ -44,7 +44,7 @@ ms.locfileid: "77191027"
 |数据源\分析模式|默认|JSON、JSON 行 和 CSV|
 |---|---|---|
 |Blob 存储|/document/content<br>/document/normalized_images/*<br>…|/document/{key1}<br>/document/{key2}<br>…|
-|SQL|/document/{column1}<br>/document/{column2}<br>…|空值 |
+|SQL|/document/{column1}<br>/document/{column2}<br>…|不适用 |
 |Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|空值|
 
  技能在执行时，会将新节点添加到扩充树。 然后，这些新节点可用作下游技能的输入、投影到知识存储，或映射到索引字段。 扩充是不可变的：创建节点后无法对其进行编辑。 随着技能集变得越来越复杂，扩充树也会更加复杂，但是，并非扩充树中的所有节点都需要将扩充保存到索引或知识存储中。 
@@ -56,7 +56,7 @@ ms.locfileid: "77191027"
 每个技能都需要一个上下文。 上下文确定：
 +   根据所选节点执行技能的次数。 对于类型集合的上下文值，在末尾添加 ```/*``` 会导致为该集合中的每个实例调用技能一次。 
 +   在扩充树中添加技能输出的位置。 输出始终作为上下文节点的子级添加到树中。 
-+   输入的形状。 对于多级集合，将上下文设置为父集合将影响技能的输入形状。 例如，如果某个扩充树包含国家/地区列表，其中的每个国家/地区已使用包含邮政编码列表的州/省列表进行扩充。
++   输入的形状。 对于多级别集合，将上下文设置为父集合会影响技能的输入的形状。 例如，如果某个扩充树包含国家/地区列表，其中的每个国家/地区已使用包含邮政编码列表的州/省列表进行扩充。
 
 |上下文|输入|输入的形状|技能调用|
 |---|---|---|---|
@@ -65,9 +65,9 @@ ms.locfileid: "77191027"
 
 ### <a name="sourcecontext"></a>SourceContext
 
-`sourceContext`仅用于技能投入和[预测](knowledge-store-projection-overview.md)。 它用于构造多级别嵌套对象。 您可能需要创建新对象，以便将其作为技能的输入传递到知识存储中。 由于扩充节点可能不是扩充树中的有效 JSON 对象，并且引用树中的节点仅在创建节点时返回该状态，因此使用富集作为技能输入或投影需要创建格式良好的 JSON 对象。 `sourceContext` 可用于构造分层的匿名类型对象，如果你仅使用上下文，则需要多个技能。 下一部分将使用 `sourceContext`。 查看生成扩充的技能输出，以确定它是否是有效的 JSON 对象，而不是基元类型。
+`sourceContext` 仅在技能输入和[投影](knowledge-store-projection-overview.md)中使用。 它用于构造多级别嵌套对象。 你可能需要创建一个新对象，以将其作为技能或项目的输入传递到知识存储中。 由于扩充节点可能不是扩充树中的有效 JSON 对象，并且引用树中的某个节点仅返回该节点在创建时的状态，因此，使用扩充作为技能输入或预测时，需要创建一个格式正确的 JSON 对象。 `sourceContext` 可用于构造分层的匿名类型对象，如果你仅使用上下文，则需要多个技能。 下一部分将使用 `sourceContext`。 查看生成了扩充的技能输出，以确定它是否为有效的 JSON 对象而不是基元类型。
 
-### <a name="projections"></a>投影
+### <a name="projections"></a>投影数
 
 投影是从扩充树中选择要保存到知识存储的节点的过程。 投影是可输出为表或对象投影的文档（内容和扩充）的自定义形状。 若要详细了解如何使用投影，请参阅[使用投影](knowledge-store-projection-overview.md)。
 
@@ -85,9 +85,9 @@ ms.locfileid: "77191027"
 
 由于我们使用的是索引器的分隔文本分析模式，因此扩充过程中的某个文档表示 CSV 文件中的单个行。
 
-### <a name="skill-1-split-skill"></a>技能#1：拆分技能 
+### <a name="skill-1-split-skill"></a>技能 #1：拆分技能 
 
-![文档开裂后的浓缩树](media/cognitive-search-working-with-skillsets/enrichment-tree-doc-cracking.png "文档开裂后和技能执行前的浓缩树")
+![完成文档破解后的扩充树](media/cognitive-search-working-with-skillsets/enrichment-tree-doc-cracking.png "完成文档破解之后、执行技能之前的扩充树")
 
 此技能使用 ```"/document/reviews_text"``` 的技能上下文对 `reviews_text` 执行一次。 技能输出是一个列表，其中的 `reviews_text` 分块成包含 5000 个字符的段。 拆分技能的输出名为 `pages`，将添加到扩充树。 使用 `targetName` 功能可以在将技能输出添加到扩充树之前对其重命名。
 
@@ -96,25 +96,25 @@ ms.locfileid: "77191027"
 
 所有扩充的根节点是 `"/document"`。 使用 Blob 索引器时，`"/document"` 节点包含 `"/document/content"` 和 `"/document/normalized_images"` 的子节点。 使用 CSV 数据时（如本示例所示），列名称将映射到 `"/document"` 下的节点。 若要访问由技能添加到节点的任何扩充，需要使用扩充的完整路径。 例如，若要使用 ```pages``` 节点中的文本作为另一技能的输入，需将该节点指定为 ```"/document/reviews_text/pages/*"```。
  
- ![技能#1后浓缩树](media/cognitive-search-working-with-skillsets/enrichment-tree-skill1.png "技能执行后#1浓缩树")
+ ![执行技能 #1 后的扩充树](media/cognitive-search-working-with-skillsets/enrichment-tree-skill1.png "执行技能 #1 后的扩充树")
 
 ### <a name="skill-2-language-detection"></a>技能 #2 语言检测
  尽管语言检测技能是技能集中定义的第三个技能（技能 #3），但它是下一个要执行的技能。 由于它不会受到阻止（无需输入），因此它将与前一个技能同时执行。 与前面的拆分技能一样，语言检测技能也只对每个文档调用一次。 扩充树现在包含新的语言节点。
- ![技能#2后浓缩树](media/cognitive-search-working-with-skillsets/enrichment-tree-skill2.png "技能执行后#2浓缩树")
+ ![执行技能 #2 后的扩充树](media/cognitive-search-working-with-skillsets/enrichment-tree-skill2.png "执行技能 #2 后的扩充树")
  
- ### <a name="skill-3-key-phrases-skill"></a>技能#3：关键短语技能 
+ ### <a name="skill-3-key-phrases-skill"></a>技能 #3：关键短语技能 
 
 将会针对 `pages` 集合中的每个项，根据给定的 ```/document/reviews_text/pages/*``` 上下文调用关键短语技能一次。 该技能的输出是关联的页元素下的一个节点。 
 
  现在，你应该可以查看技能集中的其他技能，并直观地了解扩充树如何随着每个技能的执行而不断扩大。 某些技能（例如合并技能和整形程序技能）也会创建新的节点，但只使用现有节点中的数据，而不会创建全新的扩充。
 
-![浓缩树后所有技能](media/cognitive-search-working-with-skillsets/enrichment-tree-final.png "浓缩树后所有技能")
+![执行所有技能后的扩充树](media/cognitive-search-working-with-skillsets/enrichment-tree-final.png "执行所有技能后的扩充树")
 
 上述树中的连接器颜色指示扩充由不同的技能创建，节点需要单独寻址，并且在选择父节点时不会成为返回的对象部分。
 
 ## <a name="save-enrichments-in-a-knowledge-store"></a>将扩充保存到知识存储中 
 
-技能集还会定义一个知识存储，可在其中将扩充的文档投影为表或对象。 要在知识库中保存富集数据，请为富集文档定义一组投影。 要了解有关知识存储的详细信息，请参阅[知识商店概述](knowledge-store-concept-intro.md)
+技能集还会定义一个知识存储，可在其中将扩充的文档投影为表或对象。 若要将扩充数据保存到知识存储中，你需要为扩充的文档定义一组投影。 若要详细了解知识存储，请参阅[知识存储概述](knowledge-store-concept-intro.md)
 
 ### <a name="slicing-projections"></a>切片投影
 

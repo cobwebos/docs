@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: e3e2ef3340ca836f56176c21cf3d221f0bf172b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76722231"
 ---
 # <a name="deploy-models-to-production-to-play-an-active-role-in-making-business-decisions"></a>将模型部署到生产中，使这些模型在制定业务决策方面能够发挥积极作用
@@ -27,7 +27,7 @@ ms.locfileid: "76722231"
 
 - [使用 Azure 机器学习部署模型的位置](../how-to-deploy-and-where.md)
 - [SQL-Server 中的模型部署](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
-- [Microsoft 机器学习服务器](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
+- [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
 >[!NOTE]
 >在部署之前，必须确保模型的延迟评分够低，使模型可在生产环境中使用。
@@ -39,7 +39,7 @@ ms.locfileid: "76722231"
 
 ## <a name="ab-testing"></a>A/B 测试
 
-当多个模型在生产中时，可以使用[A/B 测试](https://en.wikipedia.org/wiki/A/B_testing)来比较模型性能。 
+当生产中有多个模型时，可以使用[A/B 测试](https://en.wikipedia.org/wiki/A/B_testing)来比较模型的性能。 
  
 ## <a name="next-steps"></a>后续步骤
 

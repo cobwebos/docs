@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 98054060210f55803d6e2811e1f494fd3ff00e48
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76838252"
 ---
-# <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>如何在 AI 扩充方案中处理和提取图像中的信息
+# <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>如何处理和提取 AI 扩充方案中的图像中的信息
 
-Azure 认知搜索具有多个用于处理图像和图像文件的功能。 在文档破解过程中，可以使用 *imageAction* 参数从包含字母数字文本的照片或图片中提取文本，例如停车标志中的“停”字样。 其他场景包括：生成图像的文本表示形式，例如代表蒲公英照片的“蒲公英”字样，或者“黄色”颜色。 还可以提取图像的元数据，例如其大小。
+Azure 认知搜索有多项适用于图像和图像文件的功能。 在文档破解过程中，可以使用 *imageAction* 参数从包含字母数字文本的照片或图片中提取文本，例如停车标志中的“停”字样。 其他场景包括：生成图像的文本表示形式，例如代表蒲公英照片的“蒲公英”字样，或者“黄色”颜色。 还可以提取图像的元数据，例如其大小。
 
-本文更详细地介绍图像处理，并提供有关在 AI 扩充管道中处理图像的指导。
+本文详细介绍图像处理，并提供了在 AI 扩充管道中处理图像的指南。
 
 <a name="get-normalized-images"></a>
 
@@ -29,14 +29,14 @@ Azure 认知搜索具有多个用于处理图像和图像文件的功能。 在�
 
 无法关闭图像规范化功能。 循环访问图像的技术需要规范化的图像。 在索引器上启用图像规范化需要将技能组附加到该索引器。
 
-| 配置参数 | 描述 |
+| 配置参数 | 说明 |
 |--------------------|-------------|
-| imageAction   | 如果在遇到嵌入图像或图像文件时无需执行任何操作，请将此项设置为 "none"。 <br/>设置为 "generateNormalizedImages" 会在文档破解过程中生成一系列规范化的图像。<br/>设置为"生成规范化的ImagePerPage"以生成一系列规范化图像，其中对于数据源中的 PDF，每个页面呈现到一个输出图像。  对于非 PDF 文件类型，该功能与“generateNormalizedImages”相同。<br/>对于任何不是“none”的选项，这些图像会在 *normalized_images* 字段中公开。 <br/>默认为 "none"。 将 "dataToExtract" 设置为 "contentAndMetadata" 时，此配置仅与 Blob 数据源相关。 <br/>将从给定文档中提取最多 1000 个图像。 如果在文档中有超过 1000 个图像，则将提取前 1000 个，并将生成警告。 |
+| imageAction   | 如果在遇到嵌入图像或图像文件时无需执行任何操作，请将此项设置为 "none"。 <br/>设置为 "generateNormalizedImages" 会在文档破解过程中生成一系列规范化的图像。<br/>设置为“generateNormalizedImagePerPage”，以生成一系列规范化的图像，对于数据源中的 PDF 文件，每一页呈现为一个输出图像。  对于非 PDF 文件类型，该功能与“generateNormalizedImages”相同。<br/>对于任何不是“none”的选项，这些图像会在 *normalized_images* 字段中公开。 <br/>默认为 "none"。 将 "dataToExtract" 设置为 "contentAndMetadata" 时，此配置仅与 Blob 数据源相关。 <br/>将从给定文档中提取最多 1000 个图像。 如果在文档中有超过 1000 个图像，则将提取前 1000 个，并将生成警告。 |
 |  normalizedImageMaxWidth | 生成的规范化图像的最大宽度（以像素为单位）。 默认为 2000。 允许的最大值为 10000。 | 
 |  normalizedImageMaxHeight | 生成的规范化图像的最大高度（以像素为单位）。 默认为 2000。 允许的最大值为 10000。|
 
 > [!NOTE]
-> 如果将*imageAction*属性设置为"无"以外的任何内容，则无法将*解析模式*属性设置为"默认"以外的任何内容。  在索引器配置中，只能将这两个属性中的一个设置为非默认值。
+> 如果将 *imageAction* 属性设置为 "none" 之外的其他值，则只能将 *parsingMode* 属性设置为 "default"。  在索引器配置中，只能将这两个属性中的一个设置为非默认值。
 
 将 **parsingMode** 参数设置为 `json`（将每个 Blob 作为单个文档进行索引编制）或 `jsonArray`（如果 Blob 包含 JSON 数组，且需要将数组的每个元素视为单独的文档）。
 
@@ -60,7 +60,7 @@ Azure 认知搜索具有多个用于处理图像和图像文件的功能。 在�
 
 将 *imageAction* 设置为“none”以外的值后，新的 *normalized_images* 字段会包含一系列图像。 每个图像都是一个包含以下成员的复杂类型：
 
-| 图像成员       | 描述                             |
+| 图像成员       | 说明                             |
 |--------------------|-----------------------------------------|
 | data               | JPEG 格式的规范化图像的 BASE64 编码字符串。   |
 | width              | 规范化图像的宽度（以像素为单位）。 |
@@ -109,7 +109,7 @@ Azure 认知搜索具有多个用于处理图像和图像文件的功能。 在�
 1. 运行 OCR 技术，使用 `"/document/normalized_images"` 作为输入
 1. 将这些图像的文本表示形式与从文件提取的原始文本合并。 可以使用[文本合并](cognitive-search-skill-textmerger.md)技术将两个文本区块合并成单个大型字符串。
 
-以下示例技术集会创建的 merged_text** 字段包含文档的文本内容， 以及每个嵌入图像中的 OCR 化文本。 
+以下示例技术集会创建的 merged_text  字段包含文档的文本内容， 以及每个嵌入图像中的 OCR 化文本。 
 
 #### <a name="request-body-syntax"></a>请求正文语法
 ```json
@@ -213,9 +213,9 @@ Azure 认知搜索具有多个用于处理图像和图像文件的功能。 在�
         }
 ```
 
-## <a name="see-also"></a>请参阅
-+ [创建索引器 （REST）](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
-+ [图像分析技术](cognitive-search-skill-image-analysis.md)
+## <a name="see-also"></a>另请参阅
++ [创建索引器 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [图像分析技能](cognitive-search-skill-image-analysis.md)
 + [OCR 技术](cognitive-search-skill-ocr.md)
 + [文本合并技术](cognitive-search-skill-textmerger.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)

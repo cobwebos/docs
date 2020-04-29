@@ -1,15 +1,15 @@
 ---
 title: Azure Service Fabric CLI - sfctl store
-description: 了解 sfctl，Azure 服务结构命令行接口。 包括用于在群集映像存储上执行文件级操作的命令列表。
+description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于对群集映像存储执行文件级别操作的命令列表。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 75c62b54ff3aa7f3af344aa3e1ca81d431ae0ab2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76905622"
 ---
 # <a name="sfctl-store"></a>sfctl store
@@ -17,7 +17,7 @@ ms.locfileid: "76905622"
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|说明|
 | --- | --- |
 | delete | 删除现有的映像存储内容。 |
 | root-info | 获取映像存储根目录中的内容信息。 |
@@ -28,16 +28,16 @@ ms.locfileid: "76905622"
 
 删除在给定图像存储相对路径中找到的现有映像存储内容。 预配已上传的应用程序包后，可以使用此命令删除这些包。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --content-path [必需] | 映像存储中文件或文件夹在其根目录中的相对路径。 |
 | --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -50,15 +50,15 @@ ms.locfileid: "76905622"
 
 返回有关映像存储根目录中的映像存储内容的信息。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -71,16 +71,16 @@ ms.locfileid: "76905622"
 
 返回有关指定 contentPath 中的映像存储内容的信息。 contentPath 相对于映像存储的根目录。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --content-path [必需] | 映像存储中文件或文件夹在其根目录中的相对路径。 |
 | --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |

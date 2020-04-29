@@ -12,15 +12,15 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
 ms.openlocfilehash: 42433ec419ac9e02077cd0359e18b5114206f27d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76721823"
 ---
 # <a name="create-cicd-pipelines-for-ai-apps-using-azure-pipelines-docker-and-kubernetes"></a>使用 Azure Pipelines、Docker 和 Kubernetes 为 AI 应用创建 CI/CD 管道
 
-人工智能 (AI) 应用程序是嵌入在预先训练的机器学习 (ML) 模型中的应用程序代码的组合。 AI 应用程序总是有两个工作流：数据科学家构建 ML 模型，应用开发人员构建应用并将其公开给最终用户使用。 本文介绍如何为将在应用源代码嵌入了 ML 模型的 AI 应用程序实现持续集成和持续交付 (CI/CD) 管道。 示例代码和教程使用 Python Flask Web 应用程序，并从专用 Azure Blob 存储帐户获取预训练的模型。 也可以使用 AWS S3 存储帐户。
+人工智能 (AI) 应用程序是嵌入在预先训练的机器学习 (ML) 模型中的应用程序代码的组合。 AI 应用程序始终有两个工作流：数据科学家构建 ML 模型，应用开发人员构建应用并将其公开给最终用户使用。 本文介绍如何为将在应用源代码嵌入了 ML 模型的 AI 应用程序实现持续集成和持续交付 (CI/CD) 管道。 示例代码和教程使用 Python Flask web 应用程序，并从专用 Azure blob 存储帐户提取预先训练模型。 也可以使用 AWS S3 存储帐户。
 
 > [!NOTE]
 > 以下过程是执行 CI/CD 的几种方法之一。 除了此工具和先决条件之外，还有其他选择。
@@ -60,7 +60,7 @@ ms.locfileid: "76721823"
 10. 用户对应用的请求将通过 DNS 服务器。
 11. DNS 服务器将请求传递给负载均衡器，并将响应发送回用户。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [Team Data Science Process (TDSP)](/azure/machine-learning/team-data-science-process/)
 - [Azure 机器学习 (AML)](/azure/machine-learning/)

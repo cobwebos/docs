@@ -9,10 +9,10 @@ ms.date: 12/17/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: c95ed6dde3c00c0688ccfd58565fd112427c8899
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79135932"
 ---
 # <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>使用 .NET 在 Azure 存储中创建或删除容器
@@ -81,7 +81,7 @@ private static async Task<CloudBlobContainer> CreateSampleContainerAsync(CloudBl
 
 ## <a name="create-the-root-container"></a>创建根容器
 
-根容器充当存储帐户的默认容器。 每个存储帐户只能包含一个根容器，该容器必须命名为 *$root.*。 必须显式创建或删除根容器。
+根容器充当存储帐户的默认容器。 每个存储帐户只能包含一个根容器，该容器必须命名为 *$root.* 。 必须显式创建或删除根容器。
 
 可以引用存储在根容器中的 Blob，而无需包含根容器名称。 根容器允许引用位于存储帐户层次结构顶层的 Blob。 例如，可通过以下方式引用驻留在根容器中的 Blob：
 
@@ -185,7 +185,7 @@ private static async Task DeleteContainersWithPrefixAsync(CloudBlobClient blobCl
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [Create Container 操作](/rest/api/storageservices/create-container)
 - [Delete Container 操作](/rest/api/storageservices/delete-container)

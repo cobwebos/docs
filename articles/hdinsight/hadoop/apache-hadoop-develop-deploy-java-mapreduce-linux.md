@@ -1,6 +1,6 @@
 ---
 title: 为 Apache Hadoop 创建 Java MapReduce - Azure HDInsight
-description: 了解如何使用 Apache Maven 创建基于 Java 的 MapReduce 应用程序，并使用 Azure HDInsight 中的 Hadoop 运行它。
+description: 了解如何使用 Apache Maven 创建基于 Java 的 MapReduce 应用程序，然后使用 Azure HDInsight 中的 Hadoop 运行它。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/16/2020
 ms.openlocfilehash: a37a8bb45c11d5b74f3059a153806e3d083cf452
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76311948"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>为 HDInsight 上的 Apache Hadoop 开发 Java MapReduce 程序
@@ -21,7 +21,7 @@ ms.locfileid: "76311948"
 
 ## <a name="prerequisites"></a>先决条件
 
-* [Java 开发人员工具包 （JDK） 版本 8](https://aka.ms/azure-jdks).
+* [Java 开发人员工具包 (JDK) 版本 8](https://aka.ms/azure-jdks)。
 
 * 根据 Apache 要求正确[安装](https://maven.apache.org/install.html)的 [Apache Maven](https://maven.apache.org/download.cgi)。  Maven 是 Java 项目的项目生成系统。
 
@@ -38,17 +38,17 @@ cd C:\HDI
 
 ## <a name="create-a-maven-project"></a>创建 Maven 项目
 
-1. 输入以下命令以创建名为**wordcountjava**的 Maven 项目：
+1. 输入以下命令，以创建名为 **wordcountjava** 的 Maven 项目：
 
    ```bash
    mvn archetype:generate -DgroupId=org.apache.hadoop.examples -DartifactId=wordcountjava -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
    ```
 
-    此命令创建一个目录，该目录的名称由`artifactID`参数指定（本示例中的**字数java）。** 此目录包含以下项：
+    此命令将使用 `artifactID` 参数指定的名称（此示例中为 **wordcountjava**）创建目录。此目录包含以下项：
 
     * `pom.xml` - [项目对象模型 (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)，其中包含用于生成项目的信息和配置详细信息。
-    * src_main_java_org_apache_hadoop_示例：包含应用程序代码。
-    * src_test_java_org_apache_hadoop_示例：包含应用程序的测试。
+    * src\main\java\org\apache\hadoop\examples:包含应用程序代码。
+    * src\test\java\org\apache\hadoop\examples:包含应用程序的测试。
 
 1. 删除生成的示例代码。 输入以下命令，删除生成的测试和应用程序文件 `AppTest.java` 与 `App.java`：
 
@@ -60,7 +60,7 @@ cd C:\HDI
 
 ## <a name="update-the-project-object-model"></a>更新项目对象模型
 
-有关 pom.xml 文件的完整参考，请参阅 https://maven.apache.org/pom.html。 输入以下命令打开 `pom.xml`：
+有关 pom.xml 文件的完整参考，请参阅 https://maven.apache.org/pom.html 。 输入以下命令打开 `pom.xml`：
 
 ```cmd
 notepad pom.xml
@@ -139,7 +139,7 @@ Maven 插件允许自定义项目的构建阶段。 此节用于添加插件、�
 </build>
 ```
 
-本节配置阿帕奇 Maven 编译器插件和 Apache Maven 阴影插件。 该编译器插件用于编译拓扑。 该阴影插件用于防止在由 Maven 构建的 JAR 程序包中复制许可证。 此插件用于防止 HDInsight 群集在运行时出现“重复的许可证文件”错误。 将 maven-shade-plugin 用于 `ApacheLicenseResourceTransformer` 实现可防止发生此错误。
+本部分配置 Apache Maven 编译器插件和 Apache Maven 阴影插件。 该编译器插件用于编译拓扑。 该阴影插件用于防止在由 Maven 构建的 JAR 程序包中复制许可证。 此插件用于防止 HDInsight 群集在运行时出现“重复的许可证文件”错误。 将 maven-shade-plugin 用于 `ApacheLicenseResourceTransformer` 实现可防止发生此错误。
 
 maven-shade-plugin 还会生成 uber jar，其中包含应用程序所需的所有依赖项。
 

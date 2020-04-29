@@ -1,13 +1,13 @@
 ---
-title: 来自 ACR 任务的外部身份验证
-description: 配置 Azure 容器注册表任务 （ACR 任务）以使用 Azure 资源的托管标识读取存储在 Azure 密钥保管库中的 Docker Hub 凭据。
+title: ACR 任务中的外部身份验证
+description: 使用 Azure 资源的托管标识配置 Azure 容器注册表任务（ACR 任务）以读取存储在 Azure 密钥保管库中的 Docker 中心凭据。
 ms.topic: article
 ms.date: 01/14/2020
 ms.openlocfilehash: 47d3d643ee1287ef4f444095a2c6cfe6dcab294b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76842514"
 ---
 # <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>ACR 任务中使用 Azure 托管标识的外部身份验证 
@@ -16,11 +16,11 @@ ms.locfileid: "76842514"
 
 本文介绍如何在要访问 Azure Key Vault 中存储的机密的任务中启用托管标识。 
 
-为了创建 Azure 资源，本文要求运行 Azure CLI 版本 2.0.68 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级，请参阅[安装 Azure CLI][azure-cli]。
+为了创建 Azure 资源，本文要求运行 Azure CLI 版本 2.0.68 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
 
 ## <a name="scenario-overview"></a>方案概述
 
-示例任务将读取存储在 Azure Key Vault 中的 Docker Hub 凭据。 凭据适用于具有专用 Docker Hub 存储库的写入（推送）权限的 Docker Hub 帐户。 若要读取凭据，请使用托管标识配置任务，并为其分配适当的权限。 与标识关联的任务将生成一个映像，并登录到 Docker Hub，以将映像推送到专用存储库。 
+示例任务将读取存储在 Azure Key Vault 中的 Docker Hub 凭据。 凭据适用于对专用 Docker 中心存储库具有写入（推送）权限的 Docker 中心帐户。 若要读取凭据，请使用托管标识配置任务，并为其分配适当的权限。 与标识关联的任务将生成一个映像，并登录到 Docker Hub，以将映像推送到专用存储库。 
 
 此示例演示了使用用户分配的或系统分配的托管标识的步骤。 选择哪种标识取决于组织的需求。
 
@@ -30,19 +30,19 @@ ms.locfileid: "76842514"
 
 需要一个 Azure 容器注册表，将在其中运行任务。 在本文中，此注册表名为 *myregistry*。 在后续步骤中，请将其替换为自己的注册表名称。
 
-如果还没有 Azure 容器注册表，请参阅[快速入门：使用 Azure CLI 创建专用容器注册表](container-registry-get-started-azure-cli.md)。 暂时不需要将映像推送到注册表。
+如果你没有 Azure 容器注册表，请参阅[快速入门：使用 Azure CLI 创建专用容器注册表](container-registry-get-started-azure-cli.md)。 暂时不需要将映像推送到注册表。
 
 在 Docker Hub 中需有一个专用存储库，并且有一个有权写入存储库的 Docker Hub 帐户。 在此示例中，此存储库名为 *hubuser/hubrepo*。 
 
 ## <a name="create-a-key-vault-and-store-secrets"></a>创建 Key Vault 并存储机密
 
-首先，如果需要，请使用以下[az 组创建][az-group-create]命令在*东部*位置创建名为*myResourceGroup*的资源组：
+首先，如果需要，请在*eastus*位置创建一个名为*myResourceGroup*的资源组，并在其中包含以下[az group create][az-group-create]命令：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-使用[az 密钥保管库创建][az-keyvault-create]命令创建密钥保管库。 请务必指定唯一的 Key Vault 名称。 
+使用 [az keyvault create][az-keyvault-create] 命令创建 Key Vault。 请务必指定唯一的 Key Vault 名称。 
 
 ```azurecli-interactive
 az keyvault create --name mykeyvault --resource-group myResourceGroup --location eastus
@@ -96,9 +96,9 @@ steps:
 * 将映像推送到专用 Docker Hub 存储库。
 
 
-## <a name="option-1-create-task-with-user-assigned-identity"></a>选项 1：使用用户分配的标识创建任务
+## <a name="option-1-create-task-with-user-assigned-identity"></a>选项 1：创建使用用户分配的标识的任务
 
-本部分中的步骤将创建一个任务并启用用户分配的标识。 如果要改为启用系统分配的标识，请参阅[选项 2：使用系统分配的标识创建任务](#option-2-create-task-with-system-assigned-identity)。 
+本部分中的步骤将创建一个任务并启用用户分配的标识。 若要改为启用系统分配的标识，请参阅[选项 2：创建使用系统分配的标识的任务](#option-2-create-task-with-system-assigned-identity)。 
 
 [!INCLUDE [container-registry-tasks-user-assigned-id](../../includes/container-registry-tasks-user-assigned-id.md)]
 
@@ -117,9 +117,9 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
-## <a name="option-2-create-task-with-system-assigned-identity"></a>选项 2：使用系统分配的标识创建任务
+## <a name="option-2-create-task-with-system-assigned-identity"></a>选项 2：创建使用系统分配的标识的任务
 
-本部分中的步骤将创建一个任务并启用系统分配的标识。 如果要改为启用用户分配的标识，请参阅[选项 1：使用用户分配的身份创建任务](#option-1-create-task-with-user-assigned-identity)。 
+本部分中的步骤将创建一个任务并启用系统分配的标识。 若要改为启用用户分配的标识，请参阅[选项 1：创建使用用户分配的标识的任务](#option-1-create-task-with-user-assigned-identity)。 
 
 ### <a name="create-task"></a>创建任务
 
@@ -138,7 +138,7 @@ az acr task create \
 
 ## <a name="grant-identity-access-to-key-vault"></a>为标识授予对 Key Vault 的访问权限
 
-运行以下[az 密钥库集策略][az-keyvault-set-policy]命令，以在密钥保管库上设置访问策略。 以下示例允许标识读取 Key Vault 中的机密。 
+运行以下 [az keyvault set-policy][az-keyvault-set-policy] 命令来设置对 Key Vault 的访问策略。 以下示例允许标识读取 Key Vault 中的机密。 
 
 ```azurecli
 az keyvault set-policy --name mykeyvault \

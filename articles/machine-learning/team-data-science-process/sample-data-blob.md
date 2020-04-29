@@ -12,23 +12,23 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4832762a88073f4d819925659bf9078e18f60c2d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76720266"
 ---
-# <a name="sample-data-in-azure-blob-storage"></a><a name="heading"></a>Azure Blob 存储中的示例数据
+# <a name="sample-data-in-azure-blob-storage"></a><a name="heading"></a>对 Azure blob 存储中的数据采样
 
 本文介绍对在 Azure blob 存储中数据进行采样的方法：通过以编程方式下载数据，并使用以 Python 编写的过程对其进行采样。
 
 **为什么对数据进行采样？**
-如果计划要分析的数据集很大，通常最好是对数据进行向下采样，以将数据减至较小但具备代表性且更易于管理的规模。 采样有助于数据理解、探索和功能工程。 它在 Cortana Analytics 进程中的作用是能够快速建立数据处理函数和机器学习模型的快速原型。
+如果计划要分析的数据集很大，通常最好是对数据进行向下采样，以将数据减至较小但具备代表性且更易于管理的规模。 采样有助于数据理解、探索和特征工程。 它在 Cortana Analytics 进程中的作用是能够快速建立数据处理函数和机器学习模型的快速原型。
 
 此采样任务是[团队数据科学流程 (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 中的一个步骤。
 
 ## <a name="download-and-down-sample-data"></a>下载和向下采样数据
-1. 使用 Blob 服务从 Azure Blob 存储下载数据，从以下示例 Python 代码中下载： 
+1. 使用以下示例 Python 代码中的 Blob 服务从 Azure blob 存储下载数据： 
    
         from azure.storage.blob import BlobService
         import tables
@@ -61,7 +61,7 @@ ms.locfileid: "76720266"
         sample_rows = np.random.choice(dataframe_blobdata.index.values, sample_size)
         dataframe_blobdata_sample = dataframe_blobdata.ix[sample_rows]
 
-现在，您可以使用上述数据框和 1% 样本进行进一步探索和生成功能。
+现在，你可以使用上面的数据帧，其中包含一个用于进一步探索和功能生成的百分比示例。
 
 ## <a name="upload-data-and-read-it-into-azure-machine-learning"></a><a name="heading"></a>上传数据并读入 Azure 机器学习
 可以使用以下示例代码向下采样数据，并直接在 Azure 机器学习中使用：

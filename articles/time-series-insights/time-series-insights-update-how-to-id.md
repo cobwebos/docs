@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: seodec18
 ms.openlocfilehash: a62c2460698408f6a2bfa51c6638bdeaf88bb31f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77083532"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>选择时序 ID 的最佳做法
@@ -27,11 +27,11 @@ ms.locfileid: "77083532"
 
 > [!IMPORTANT]
 > 时序 ID 如下：
-> * 区分大小写的属性**：搜索、比较和更新以及分区都会用到字母和字符的大小写。
-> * 不可变属性**：一旦创建，无法更改。
+> * 区分大小写的属性  ：搜索、比较和更新以及分区都会用到字母和字符的大小写。
+> * 不可变属性  ：一旦创建，无法更改。
 
 > [!TIP]
-> 如果事件源是 IoT 中心，则时序 ID 可能是 iothub-connection-device-id******。
+> 如果事件源是 IoT 中心，则时序 ID 可能是 iothub-connection-device-id。
 
 要遵守的主要最佳做法包括：
 
@@ -39,7 +39,7 @@ ms.locfileid: "77083532"
 * 在[时序模型](./time-series-insights-update-tsm.md)的叶节点级别，时序 ID 应是唯一的。
 * 时序 ID 属性名称字符串的字符数限制为 128 个。 时序 ID 属性值的字符数限制为 1024 个。
 * 如果时序 ID 的某个唯一属性值缺失，该值将被视为 null 值，并遵循相同的唯一性约束规则。
-* 此外，最多可以选择三个键属性作为时序 ID。** 这些属性的组合将是表示时序 ID 的组合键。  
+* 此外，最多可以选择三个键属性作为时序 ID。  这些属性的组合将是表示时序 ID 的组合键。  
   > [!NOTE]
   > 三个键属性必须是字符串。
   > 必须针对此组合键运行查询，而不能每次查询一个属性。
@@ -48,13 +48,13 @@ ms.locfileid: "77083532"
 
 以下方案描述如何选择多个键属性作为时序 ID。  
 
-### <a name="example-1-time-series-id-with-a-unique-key"></a>示例 1：带唯一键的时间序列 ID
+### <a name="example-1-time-series-id-with-a-unique-key"></a>示例 1：具有唯一键的时序 ID
 
 * 你有两个传统的资产群。 每个群有一个唯一键。
-* 其中一个群以属性 **deviceId** 进行唯一标识。 另一个群的唯一属性为 **objectId**。 这两个群都不包含对方的唯一属性。 在此示例中，您可以选择两个键，**设备 Id**和**objectId**，作为唯一键。
+* 其中一个群以属性 **deviceId** 进行唯一标识。 另一个群的唯一属性为 **objectId**。 这两个群都不包含对方的唯一属性。 在此示例中，可选择两个键 **deviceId** 和 **objectId** 作为唯一键。
 * 我们接受 null 值，且如果事件有效负载中缺少某个属性，则计为 null 值。 向两个事件源发送数据时，这种方法同样合适，其中每个事件源中的数据具有唯一的时序 ID。
 
-### <a name="example-2-time-series-id-with-a-composite-key"></a>示例 2：带复合键的时间序列 ID
+### <a name="example-2-time-series-id-with-a-composite-key"></a>示例 2：具有组合键的时序 ID
 
 * 同一组资产中需要多个唯一的属性。 
 * 你是一家智能建筑制造商，希望在每个房间部署传感器。 对于每个房间，通常对 **sensorId** 使用相同的值。 例如，**sensor1**、**sensor2** 和 **sensor3**。
@@ -80,6 +80,6 @@ ms.locfileid: "77083532"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 阅读更多有关[数据建模](./time-series-insights-update-tsm.md)。
+* 详细了解[数据建模](./time-series-insights-update-tsm.md)。
 
-* 规划[Azure 时间序列见解预览环境](./time-series-insights-update-plan.md)。
+* 规划 [Azure 时序见解预览版环境](./time-series-insights-update-plan.md)。

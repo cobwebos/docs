@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.openlocfilehash: 7aa1e0aa6bbbee9d40eb0d48318a8e2908a75f9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78897860"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Azure Cosmos DB Graph 帐户的区域终结点
@@ -112,4 +112,4 @@ foreach (string location in readLocations)
 * [了解如何在 Azure Cosmos DB 中管理数据库帐户](how-to-manage-database-account.md)
 * Azure Cosmos DB 中的[高可用性](high-availability.md)
 * [Azure Cosmos DB 全局分布 - 揭秘](global-dist-under-the-hood.md)
-* Azure 宇宙数据库的[Azure CLI 示例](cli-samples.md)
+* Azure Cosmos DB 的 [Azure CLI 示例](cli-samples.md)

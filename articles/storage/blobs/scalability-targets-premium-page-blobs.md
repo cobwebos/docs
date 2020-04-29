@@ -10,10 +10,10 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: e134c69f5d602cb4369e9410e3e2b9d3478b11a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76756243"
 ---
 # <a name="scalability-and-performance-targets-for-premium-page-blob-storage-accounts"></a>高级页 blob 存储帐户的可伸缩性和性能目标
@@ -39,12 +39,12 @@ ms.locfileid: "76756243"
 
 高级页 blob 帐户是针对高级性能配置的通用帐户。 建议使用常规用途 v2 存储帐户。
 
-如果您对非托管磁盘使用高级页面 Blob 存储帐户，并且应用程序超出了单个存储帐户的可伸缩性目标，则 Microsoft 建议迁移到托管磁盘。 有关托管磁盘的详细信息，请参阅[用于 Windows VM 的 Azure 磁盘存储概述](../../virtual-machines/windows/managed-disks-overview.md)或[用于 Linux VM 的 Azure 磁盘存储概述](../../virtual-machines/linux/managed-disks-overview.md)。
+如果对非托管磁盘使用高级页 blob 存储帐户并且应用程序超过了单个存储帐户的可伸缩性目标，则 Microsoft 建议迁移到托管磁盘。 有关托管磁盘的详细信息，请参阅[用于 Windows VM 的 Azure 磁盘存储概述](../../virtual-machines/windows/managed-disks-overview.md)或[用于 Linux VM 的 Azure 磁盘存储概述](../../virtual-machines/linux/managed-disks-overview.md)。
 
 如果不能迁移到托管磁盘，则请生成应用程序以使用多个存储帐户，并将数据分布到这些存储帐户中。 例如，如果要将 51-TB 的磁盘附加到多个 VM，请将这些磁盘分散在两个存储帐户中。 35 TB 是单个高级存储帐户的限制。 请确保单个高级性能存储帐户永远不会超过 35 TB 的预配磁盘。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [标准存储帐户的可伸缩性和性能目标](../common/scalability-targets-standard-account.md)
-- [高级块 Blob 存储帐户的可伸缩性目标](../blobs/scalability-targets-premium-block-blobs.md)
+- [高级块 blob 存储帐户的可伸缩性目标](../blobs/scalability-targets-premium-block-blobs.md)
 - [Azure 订阅限制和配额](../../azure-resource-manager/management/azure-subscription-service-limits.md)

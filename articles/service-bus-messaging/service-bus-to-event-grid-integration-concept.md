@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.openlocfilehash: 1e514e2856afae4ff6f877bb193935da1bc5d623
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76773475"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure 服务总线到事件网格的集成概述
@@ -38,7 +38,7 @@ Azure 服务总线已推出与 Azure 事件网格集成的新功能。 此功能
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ### <a name="verify-that-you-have-contributor-access"></a>验证你是否有参与者访问权限
-转到服务总线命名空间，然后选择**访问控制 （IAM），** 然后选择**角色分配**选项卡。验证您是否具有参与者对命名空间的访问权限。 
+转到“服务总线”命名空间，选择“访问控制(IAM)”  ，并选择“角色分配”  选项卡。验证你是否拥有该命名空间的参与者访问权限。 
 
 ### <a name="events-and-event-schemas"></a>事件和事件架构
 
@@ -111,7 +111,7 @@ Azure 服务总线已推出与 Azure 事件网格集成的新功能。 此功能
 
 ### <a name="use-filters-to-limit-where-you-get-events-from"></a>使用筛选器限制事件的来源
 
-例如，如果你只想从命名空间中的某个队列或订阅接收事件，可以使用事件网格提供的“开头为”或“结尾为”筛选器。**** 在某些接口中，筛选器称为 *"预**和后缀"* 筛选器。 如果需要接收多个（但并非所有）队列和订阅的事件，可以创建多个事件网格订阅，并为每个订阅提供一个筛选器。
+例如，如果你只想从命名空间中的某个队列或订阅接收事件，可以使用事件网格提供的“开头为”或“结尾为”筛选器。**** 在某些界面中，筛选器称为 "*前*" 和 "*后缀*" 筛选器。 如果需要接收多个（但并非所有）队列和订阅的事件，可以创建多个事件网格订阅，并为每个订阅提供一个筛选器。
 
 ## <a name="create-event-grid-subscriptions-for-service-bus-namespaces"></a>为服务总线命名空间创建事件网格订阅
 
@@ -119,14 +119,14 @@ Azure 服务总线已推出与 Azure 事件网格集成的新功能。 此功能
 
 * 在 Azure 门户中
 * 在 [Azure CLI](#azure-cli-instructions) 中
-* 在[电源外壳中](#powershell-instructions)
+* 在[PowerShell](#powershell-instructions)中
 
 ## <a name="azure-portal-instructions"></a>Azure 门户说明
 
 若要创建新的事件网格订阅，请执行以下操作：
 1. 在 Azure 门户中转到自己的命名空间。
 2. 在左窗格中，选择“事件网格”****。 
-3. 选择**活动订阅**。  
+3. 选择 "**事件订阅**"。  
 
    下图显示了包含事件网格订阅的命名空间：
 
@@ -138,7 +138,7 @@ Azure 服务总线已推出与 Azure 事件网格集成的新功能。 此功能
 
 ## <a name="azure-cli-instructions"></a>Azure CLI 说明
 
-首先，请确保已安装 Azure CLI 2.0 或更高版本。 [下载安装程序](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 选择**Windows + X**，然后打开具有管理员权限的新 PowerShell 控制台。 或者，也可以在 Azure 门户中使用命令外壳。
+首先，请确保已安装 Azure CLI 2.0 或更高版本。 [下载安装程序](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 选择**Windows + X**，然后使用管理员权限打开新的 PowerShell 控制台。 或者，也可以在 Azure 门户中使用命令外壳。
 
 执行以下代码：
 

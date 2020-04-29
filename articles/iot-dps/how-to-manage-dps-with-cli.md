@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure CLI & IoT 扩展管理 IoT 中心设备配置服务
-description: 了解如何使用 Azure CLI 和 IoT 扩展来管理 IoT 中心设备配置服务 （DPS）
+title: 使用 Azure CLI 和 IoT 扩展管理 IoT 中心设备预配服务
+description: 了解如何使用 Azure CLI 和 IoT 扩展来管理 IoT 中心设备预配服务 (DPS)
 author: chrissie926
 ms.author: menchi
 ms.date: 01/17/2018
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 03ec0b41ad910ff0d1dcdc17148e01ec94ea9fb0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78674521"
 ---
 # <a name="how-to-use-azure-cli-and-the-iot-extension-to-manage-the-iot-hub-device-provisioning-service"></a>如何使用 Azure CLI 和 IoT 扩展来管理 IoT 中心设备预配服务
@@ -32,7 +32,7 @@ IoT 扩展丰富了 Azure CLI 的功能，例如设备管理和完整的 IoT Edg
 
 ### <a name="install-the-azure-cli"></a>安装 Azure CLI
 
-按照[安装说明](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)在环境中安装 Azure CLI。 至少，Azure CLI 版本必须为 2.0.70 或以上。 请使用 `az –version` 验证版本。 此版本支持 az 扩展命令，并引入了 Knack 命令框架。 在 Windows 上，一种简单的安装方法是下载并安装 [MSI](https://aka.ms/InstallAzureCliWindows)。
+按照[安装说明](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)在环境中安装 Azure CLI。 Azure CLI 版本必须至少是 2.0.70 或更高版本。 请使用 `az –version` 验证版本。 此版本支持 az 扩展命令，并引入了 Knack 命令框架。 在 Windows 上，一种简单的安装方法是下载并安装 [MSI](https://aka.ms/InstallAzureCliWindows)。
 
 ### <a name="install-iot-extension"></a>安装 IoT 扩展
 
@@ -46,20 +46,20 @@ IoT 扩展丰富了 Azure CLI 的功能，例如设备管理和完整的 IoT Edg
 在开始之前，请完成前面所述的安装步骤。 如果没有 Azure 帐户，可以立即[创建一个免费帐户](https://azure.microsoft.com/free/?v=17.39a)。 
 
 
-### <a name="1-log-in-to-the-azure-account"></a>1. 登录到 Azure 帐户
+### <a name="1-log-in-to-the-azure-account"></a>1.登录到 Azure 帐户
   
     az login
 
-![login](./media/how-to-manage-dps-with-cli/login.jpg)
+![登录](./media/how-to-manage-dps-with-cli/login.jpg)
 
-### <a name="2-create-a-resource-group-iothubblogdemo-in-eastus"></a>2. 在东部创建资源组 IoTHubBlogDemo
+### <a name="2-create-a-resource-group-iothubblogdemo-in-eastus"></a>2. 在 eastus 中创建资源组 IoTHubBlogDemo
 
     az group create -l eastus -n IoTHubBlogDemo
 
 ![创建资源组](./media/how-to-manage-dps-with-cli/create-resource-group.jpg)
 
 
-### <a name="3-create-two-device-provisioning-services"></a>3. 创建两个设备配置服务
+### <a name="3-create-two-device-provisioning-services"></a>3.创建两个设备预配服务
 
     az iot dps create --resource-group IoTHubBlogDemo --name demodps
 
@@ -67,27 +67,27 @@ IoT 扩展丰富了 Azure CLI 的功能，例如设备管理和完整的 IoT Edg
 
     az iot dps create --resource-group IoTHubBlogDemo --name demodps2
 
-### <a name="4-list-all-the-existing-device-provisioning-services-under-this-resource-group"></a>4. 列出此资源组下的所有现有设备配置服务
+### <a name="4-list-all-the-existing-device-provisioning-services-under-this-resource-group"></a>4.列出此资源组下的所有现有设备预配服务
 
     az iot dps list --resource-group IoTHubBlogDemo
 
 ![列出设备预配服务](./media/how-to-manage-dps-with-cli/list-dps.jpg)
 
 
-### <a name="5-create-an-iot-hub-blogdemohub-under-the-newly-created-resource-group"></a>5. 在新创建的资源组下创建 IoT 中心博客DemoHub
+### <a name="5-create-an-iot-hub-blogdemohub-under-the-newly-created-resource-group"></a>5.在新建的资源组下创建 IoT 中心 blogDemoHub
 
     az iot hub create --name blogDemoHub --resource-group IoTHubBlogDemo
 
 ![创建 IoT 中心](./media/how-to-manage-dps-with-cli/create-hub.jpg)
 
-### <a name="6-link-one-existing-iot-hub-to-a-device-provisioning-service"></a>6. 将一个现有 IoT 中心链接到设备预配服务
+### <a name="6-link-one-existing-iot-hub-to-a-device-provisioning-service"></a>6.将一个现有的 IoT 中心链接到设备预配服务
 
     az iot dps linked-hub create --resource-group IoTHubBlogDemo --dps-name demodps --connection-string <connection string> -l westus
 
 ![链接中心](./media/how-to-manage-dps-with-cli/create-hub.jpg)
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你了解了如何执行以下操作：
+在本教程中，你已学习了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 注册设备

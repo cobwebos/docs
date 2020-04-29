@@ -10,10 +10,10 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 01/03/2019
 ms.openlocfilehash: 13746b86eed75055ceb5203afafb2d27a78ce1d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76722078"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL 数据库审核日志格式
@@ -26,7 +26,7 @@ ms.locfileid: "76722078"
 
 Blob 存储中存储的审核日志存储在 Azure 存储帐户中名为 `sqldbauditlogs` 的容器内。 该容器中的目录层次结构采用 `<ServerName>/<DatabaseName>/<AuditName>/<Date>/` 格式。 Blob 文件名的格式为 `<CreationTime>_<FileNumberInSession>.xel`，其中，`CreationTime` 采用 UTC `hh_mm_ss_ms` 格式，`FileNumberInSession` 是运行的索引（如果会话日志跨多个 Blob 文件）。
 
-例如，对于 `Server1` 上的数据库 `Database1`，下面是可能的有效路径：
+例如，对于 `Database1` 上的数据库 `Server1`，下面是可能的有效路径：
 
     Server1/Database1/SqlDbAuditing_ServerAudit_NoRetention/2019-02-03/12_23_30_794_0.xel
 
@@ -39,11 +39,11 @@ Blob 存储中存储的审核日志存储在 Azure 存储帐户中名为 `sqldba
 
 ### <a name="log-analytics"></a>Log Analytics
 
-审核事件将写入配置审核期间定义的 Log Analytics 工作区，并写入 `SQLSecurityAuditEvents` 类别的 `AzureDiagnostics` 表。 有关 Log Analytics 搜索语言和命令的其他有用信息，请参阅 [Log Analytics 搜索参考](../log-analytics/log-analytics-log-search.md)。
+审核事件将写入配置审核期间定义的 Log Analytics 工作区，并写入 `AzureDiagnostics` 类别的 `SQLSecurityAuditEvents` 表。 有关 Log Analytics 搜索语言和命令的其他有用信息，请参阅 [Log Analytics 搜索参考](../log-analytics/log-analytics-log-search.md)。
 
 ## <a name="audit-log-fields"></a><a id="subheading-1"></a>审核日志字段
 
-| 名称 (Blob) | 名称（事件中心/Log Analytics） | 描述 | Blob 类型 | 事件中心/Log Analytics 类型 |
+| 名称 (Blob) | 名称（事件中心/Log Analytics） | 说明 | Blob 类型 | 事件中心/Log Analytics 类型 |
 |-------------|---------------------------------|-------------|-----------|-------------------------------|
 | action_id | action_id_s | 操作的 ID | varchar(4) | 字符串 |
 | action_name | action_name_s | 操作的名称 | 空值 | 字符串 |
@@ -91,4 +91,4 @@ Blob 存储中存储的审核日志存储在 Azure 存储帐户中名为 `sqldba
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关[Azure SQL 数据库审核](sql-database-auditing.md)的详细信息。
+详细了解 [Azure SQL 数据库审核](sql-database-auditing.md)。

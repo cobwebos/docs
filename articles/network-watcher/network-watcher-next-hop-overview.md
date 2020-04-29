@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 33c22b5b68b6677e8cf271dc185007316ec44500
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76844052"
 ---
 # <a name="use-next-hop-to-diagnose-virtual-machine-routing-problems"></a>使用“下一个跃点”功能来诊断虚拟机路由问题
 
-来自虚拟机 (VM) 的流量将基于与网络接口 (NIC) 关联的有效路由发送到目标。 “下一个跃点”功能可获取来自特定 VM 和 NIC 的数据包的下一跃点类型和 IP 地址。 了解下一个跃点可帮助你确定流量是否定向到预定目标，或流量是否无处发送。 不正确的路由配置（将流量定向到本地位置或虚拟设备）可能会导致连接问题。 “下一跃点”功能也返回与下一跃点关联的路由表。 如果路由定义为用户定义的路由，则将返回该路由。 否则，“下一个跃点”功能返回“系统路由”****。
+来自虚拟机 (VM) 的流量将基于与网络接口 (NIC) 关联的有效路由发送到目标。 “下一个跃点”功能可获取来自特定 VM 和 NIC 的数据包的下一跃点类型和 IP 地址。 了解下一个跃点可帮助你确定流量是否定向到预定目标，或流量是否无处发送。 不正确的路由配置（将流量定向到本地位置或虚拟设备）可能会导致连接问题。 “下一跃点”功能也返回与下一跃点关联的路由表。 如果路由定义为用户定义的路由，则将返回该路由。 否则，“下一个跃点”功能返回“系统路由”  。
 
 ![下一跃点概述](./media/network-watcher-next-hop-overview/figure1.png)
 

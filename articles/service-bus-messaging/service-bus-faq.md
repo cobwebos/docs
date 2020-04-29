@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 3cd4e69481fb452391e6dc027cb41fd6dae71b7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76760243"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure 服务总线 - 常见问题解答 (FAQ)
@@ -24,7 +24,7 @@ ms.locfileid: "76760243"
 
 ## <a name="general-questions-about-azure-service-bus"></a>关于 Azure 服务总线的一般问题
 ### <a name="what-is-azure-service-bus"></a>什么是 Azure 服务总线？
-[Azure 服务总线](service-bus-messaging-overview.md)是一个异步消息云平台，使您能够在分离的系统之间发送数据。 Microsoft 以服务的形式提供此功能，这意味着不需要托管自有硬件就能使用它。
+[Azure 服务总线](service-bus-messaging-overview.md)是一个异步消息传送云平台，可允许在分离的系统之间发送数据。 Microsoft 以服务的形式提供此功能，这意味着不需要托管自有硬件就能使用它。
 
 ### <a name="what-is-a-service-bus-namespace"></a>什么是服务总线命名空间？
 [命名空间](service-bus-create-namespace-portal.md)提供了用于对应用程序中的服务总线资源进行寻址的范围容器。 必须创建命名空间才能使用服务总线，而且这也是开始使用的第一步。
@@ -33,7 +33,7 @@ ms.locfileid: "76760243"
 [服务总线队列](service-bus-queues-topics-subscriptions.md)是用于存储消息的实体。 有多个应用程序，或者有多个需要彼此通信的分布式应用程序部分时，队列特别有用。 队列和发行中心的相似之处在于，两者都会接收多个产品（消息），再从该处送出。
 
 ### <a name="what-are-azure-service-bus-topics-and-subscriptions"></a>什么是 Azure 服务总线主题和订阅？
-主题可被视为队列，使用多个订阅时，它将成为更丰富的消息传送模型；实质上是一种一对多的通信工具。 此发布/订阅模型（或 pub/sub**）启用了一个应用程序，该应用程序将消息发送到具有多个订阅的主题中，进而使多个应用程序接收到该消息。
+主题可被视为队列，使用多个订阅时，它将成为更丰富的消息传送模型；实质上是一种一对多的通信工具。 此发布/订阅模型（或 pub/sub  ）启用了一个应用程序，该应用程序将消息发送到具有多个订阅的主题中，进而使多个应用程序接收到该消息。
 
 ### <a name="what-is-a-partitioned-entity"></a>什么是分区实体？
 传统的队列或主题由单个消息中转站进行处理并存储在一个消息存储中。 仅在基本和标准消息传递层中受支持，[分区队列或主题](service-bus-partitioning.md)由多个消息中转站处理，并存储在多个消息传送存储中。 此功能意味着分区的队列或主题的总吞吐量不再受到单个消息中转站或消息存储的性能限制。 此外，消息传送存储的临时中断不会导致分区的队列或主题不可用。
@@ -74,7 +74,7 @@ ms.locfileid: "76760243"
     ```
     nslookup <yournamespace>.servicebus.windows.net
     ```
-2. 记下“非权威回答”**** 部分中的名称，该名称采用下述格式之一： 
+2. 记下“非权威回答”  部分中的名称，该名称采用下述格式之一： 
 
     ```
     <name>-s1.servicebus.windows.net
@@ -86,7 +86,7 @@ ms.locfileid: "76760243"
 
 ## <a name="best-practices"></a>最佳做法
 ### <a name="what-are-some-azure-service-bus-best-practices"></a>Azure 服务总线的最佳实践有哪些？
-请参阅[使用服务总线改进性能的最佳做法][Best practices for performance improvements using Service Bus] - 本文介绍了如何在交换消息时优化性能。
+请参阅[使用服务总线改进性能的最佳做法][Best practices for performance improvements using Service Bus] - 此文介绍了如何在交换消息时优化性能。
 
 ### <a name="what-should-i-know-before-creating-entities"></a>创建实体前需了解哪些事项？
 队列和主题的下列属性固定不变。 预配实体时，请考虑此限制，因为必须创建新的替代实体才可修改这些属性。

@@ -1,15 +1,15 @@
 ---
 title: Azure Service Fabric CLI- sfctl compose
-description: 了解 sfctl，Azure 服务结构命令行接口。 包括 Docker 撰写应用程序的命令列表。
+description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于 Docker Compose 应用程序的命令列表。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 1e40ca4e3c5ec8b7566646aa7ef723bd4c9e45a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76906132"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
@@ -17,7 +17,7 @@ ms.locfileid: "76906132"
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|说明|
 | --- | --- |
 | create | 创建 Service Fabric compose 部署。 |
 | list | 获取在 Service Fabric 群集中创建的 compose 部署列表。 |
@@ -30,9 +30,9 @@ ms.locfileid: "76906132"
 ## <a name="sfctl-compose-create"></a>sfctl compose create
 创建 Service Fabric compose 部署。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --deployment-name [必需] | 部署的名称。 |
 | --file-path       [必需] | 目标 Docker Compose 文件的路径。 |
@@ -43,7 +43,7 @@ ms.locfileid: "76906132"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -56,9 +56,9 @@ ms.locfileid: "76906132"
 
 获取 Service Fabric 群集中已创建的或正在创建的 compose 部署的状态。 响应包括名称、状态和有关 compose 部署的其他详细信息。 如果部署列表在一页中显示不下，则将返回一页结果及一个继续标记，该标记可用于获取下一页。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则该继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
 | --max-results | 作为分页查询的一部分返回的最大结果数。 此参数定义返回结果数的上限。 如果根据配置中定义的最大消息大小限制，无法将这些结果容纳到消息中，则返回的结果数可能小于指定的最大结果数。 如果此参数为零或者未指定，则分页查询包含返回消息中最多可容纳的结果数。 |
@@ -66,7 +66,7 @@ ms.locfileid: "76906132"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -79,16 +79,16 @@ ms.locfileid: "76906132"
 
 删除现有的 Service Fabric compose 部署。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --deployment-name [必需] | 部署的标识。 |
 | --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -101,16 +101,16 @@ ms.locfileid: "76906132"
 
 返回 Service Fabric 群集中已创建或正在创建的、且名称与指定为参数的部署相匹配的 compose 部署的状态。 响应包括名称、状态和有关部署的其他详细信息。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --deployment-name [必需] | 部署的标识。 |
 | --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -123,9 +123,9 @@ ms.locfileid: "76906132"
 
 验证提供的升级参数，如果参数有效，则开始升级部署。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --deployment-name [必需] | 部署的名称。 |
 | --file-path        [必需] | 目标 Docker compose 文件的路径。 |
@@ -150,7 +150,7 @@ ms.locfileid: "76906132"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -163,16 +163,16 @@ ms.locfileid: "76906132"
 
 回退 Service Fabric compose 部署升级。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --deployment-name [必需] | 部署的标识。 |
 | --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -185,16 +185,16 @@ ms.locfileid: "76906132"
 
 返回有关 compose 部署升级状态的信息以及可帮助调试应用程序运行状况问题的详细信息。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --deployment-name [必需] | 部署的标识。 |
 | --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -204,5 +204,5 @@ ms.locfileid: "76906132"
 
 
 ## <a name="next-steps"></a>后续步骤
-- [设置](service-fabric-cli.md)服务结构 CLI。
+- [安装](service-fabric-cli.md) Service Fabric CLI。
 - 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。

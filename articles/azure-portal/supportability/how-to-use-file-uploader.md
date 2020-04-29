@@ -1,6 +1,6 @@
 ---
-title: Azure 支持请求 - 文件上载指南
-description: 描述使用 Microsoft Azure 支持请求文件上载选项时的指南
+title: Azure 支持请求-文件上传指南
+description: 介绍使用 Microsoft Azure 支持请求文件上传选项时的准则
 author: genlin
 tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
@@ -9,27 +9,27 @@ ms.topic: article
 ms.date: 01/23/2020
 ms.author: genli
 ms.openlocfilehash: ac8dffe3b1200f3925478f968170498ee744bb79
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76548962"
 ---
-# <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>微软 Azure 新的支持请求文件上载实用程序指南
+# <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Microsoft Azure 新的支持请求文件上传实用工具指南
 
-创建[支持请求](https://portal.azure.com/#create/Microsoft.Support)时，文件上载选项可以帮助您轻松上传诊断文件或您认为与事件相关的任何其他文件。  
+[创建支持请求](https://portal.azure.com/#create/Microsoft.Support)时，"文件上传" 选项可以帮助你轻松上传诊断文件或你认为与事件相关的任何其他文件。  
 
 > [!NOTE]
 > 为保护隐私，请不要在上传内容中含入任何个人信息。
 >
 >
 
-使用文件上载选项时，请遵循以下准则：
+使用 "文件上传" 选项时，请遵循以下准则：
 
-* 所有文件都必须具有文件名扩展名，如 *.docx*或 *.xlsx*。 有关允许的文件名扩展名，请参阅表。
+* 所有文件必须具有文件扩展名，如 *.docx*或 *.xlsx*。 有关允许的文件扩展名，请参阅表。
 * 文件名不得超过 110 个字符。
 * 不能上载多个文件。
-* 文件不能大于 4 MB。
+* 文件大小不能超过 4 MB。
 
 ## <a name="table-of-the-allowed-file-name-extensions"></a>允许使用的文件扩展名表
 

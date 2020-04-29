@@ -1,7 +1,7 @@
 ---
-title: 创建 VNet 对等互连 - 不同的订阅
+title: 创建 VNet 对等互连-不同订阅
 titlesuffix: Azure Virtual Network
-description: 了解如何在通过不同 Azure 订阅中的 Resource Manager 创建的虚拟网络间创建虚拟网络对等互连。
+description: 了解如何在通过不同 Azure 订阅中的资源管理器创建的虚拟网络间创建虚拟网络对等互连。
 services: virtual-network
 documentationcenter: ''
 author: anavinahar
@@ -13,33 +13,33 @@ ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: anavin
 ms.openlocfilehash: d085279167b498b13cfb79b97703cfdff7d6dd8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79245117"
 ---
-# <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>创建虚拟网络对等互连 - Resource Manager，不同订阅
+# <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>创建虚拟网络对等互连 - 资源管理器，不同的订阅
 
-本教程介绍如何在通过 Resource Manager 创建的虚拟网络间创建虚拟网络对等互连。 虚拟网络位于不同订阅。 在两个虚拟网络之间建立对等互连可让不同虚拟网络中的资源以相同的带宽和延迟彼此通信，就像这些资源位于同一个虚拟网络中一样。 了解有关[虚拟网络对等互连](virtual-network-peering-overview.md)的详细信息。
+本教程介绍如何在通过资源管理器创建的虚拟网络间创建虚拟网络对等互连。 虚拟网络位于不同订阅。 在两个虚拟网络之间建立对等互连可让不同虚拟网络中的资源以相同的带宽和延迟彼此通信，就像这些资源位于同一个虚拟网络中一样。 了解有关[虚拟网络对等互连](virtual-network-peering-overview.md)的详细信息。
 
 创建虚拟网络对等互连的步骤有所不同，具体取决于虚拟网络是否位于相同订阅，以及创建虚拟网络的 [ Azure 部署模型](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 选择下表中的方案，了解如何采用其他方案创建虚拟网络对等互连：
 
 |Azure 部署模型  | Azure 订阅  |
 |--------- |---------|
-|[都是资源管理器模型](tutorial-connect-virtual-networks-portal.md) |相同|
-|[一个为 Resource Manager 模型，一个为经典模型](create-peering-different-deployment-models.md) |相同|
-|[一个为 Resource Manager 模型，一个为经典模型](create-peering-different-deployment-models-subscriptions.md) |不同|
+|[均为资源管理器模型](tutorial-connect-virtual-networks-portal.md) |相同|
+|[一个为资源管理器模型，一个为经典模型](create-peering-different-deployment-models.md) |相同|
+|[一个为资源管理器模型，一个为经典模型](create-peering-different-deployment-models-subscriptions.md) |不同|
 
 不能在通过经典部署模型部署的两个虚拟网络之间创建对等互连。 如需连接两个通过经典部署模型创建的虚拟网络，可使用 Azure [VPN 网关](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)来连接它们。
 
 本教程将在同一区域中的虚拟网络之间建立对等互连。 还可以将不同[受支持的区域](virtual-network-manage-peering.md#cross-region)中的虚拟网络对等互连。 建议在对等互连虚拟网络之前让自己熟悉[对等互连的要求和约束](virtual-network-manage-peering.md#requirements-and-constraints)。
 
-可以使用 Azure[门户](#portal)、Azure[命令行接口](#cli)（CLI）、Azure [PowerShell](#powershell)或[Azure 资源管理器模板](#template)创建虚拟网络对等互连。 选择前面的任何工具链接可以直接转到使用所选工具创建虚拟网络对等互连的步骤。
+可以使用 [Azure 门户](#portal)、Azure [命令行接口](#cli) (CLI)、Azure [PowerShell](#powershell)、或 [Azure 资源管理器模板](#template)创建虚拟网络对等互连。 选择前面的任何工具链接可以直接转到使用所选工具创建虚拟网络对等互连的步骤。
 
-如果虚拟网络位于不同的订阅中，并且订阅与不同的 Azure 活动目录租户相关联，请先完成以下步骤，然后再继续：
+如果虚拟网络在不同的订阅中，并且订阅与不同的 Azure Active Directory 租户相关联，请在继续操作之前完成以下步骤：
 1. 将每个 Active Directory 租户中的用户添加作为所对立的 Azure Active Directory 租户中的[宾客用户](../active-directory/b2b/add-users-administrator.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-guest-users-to-the-directory)。
-1. 每个用户必须接受来自相反的 Azure 活动目录租户的来宾用户邀请。
+1. 每个用户都必须接受来自相反 Azure Active Directory 租户的来宾用户邀请。
 
 ## <a name="create-peering---azure-portal"></a><a name="portal"></a>创建对等互连 - Azure 门户
 
@@ -54,13 +54,13 @@ ms.locfileid: "79245117"
     - **子网地址范围**： *10.0.0.0/24*
     - 订阅：选择订阅 A****。
     - 资源组：选择“新建”并输入 myResourceGroupA**********
-    - **地点**：*美国东部*
+    - **位置**：*美国东部*
 4. 在门户顶部的“搜索资源”框中键入 myVnetA******。 选择出现在搜索结果中的“myVnetA”****。 
 5. 从左侧的垂直选项列表中选择“访问控制(IAM)”。****
 6. 在“myVnetA - 访问控制(IAM)”**** 下，选择“+ 添加角色分配”****。
 7. 在“角色”框中选择“网络参与者”。********
 8. 在“选择”框中，选择 *UserB*，或者键入 UserB 的电子邮件地址来搜索该用户。****
-9. 选择“保存”。****
+9. 选择“保存”  。
 10. 在“myVnetA - 访问控制 (IAM)”下，选择左侧垂直选项列表中的“属性”********。 复制“资源 ID”，在稍后的步骤中使用****。 资源 ID 类似于以下示例：`/subscriptions/<Subscription Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/virtualNetworks/myVnetA`。
 11. 以用户 A 的身份注销门户，然后以用户 B 的身份登录。
 12. 完成步骤 2-3，在步骤 3 中输入或选择以下值：
@@ -71,7 +71,7 @@ ms.locfileid: "79245117"
     - **子网地址范围**： *10.1.0.0/24*
     - 订阅：选择订阅 B****。
     - 资源组：选择“新建”并输入 myResourceGroupB**********
-    - **地点**：*美国东部*
+    - **位置**：*美国东部*
 
 13. 在门户顶部的“搜索资源”框中键入 myVnetB******。 选择出现在搜索结果中的“myVnetB”****。
 14. 在“myVnetB”下，选择左侧垂直选项列表中的“属性”********。 复制“资源 ID”，在稍后的步骤中使用****。 资源 ID 类似于以下示例：`/subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB`。
@@ -79,7 +79,7 @@ ms.locfileid: "79245117"
 16. 以用户 B 的身份注销门户，然后以用户 A 的身份登录。
 17. 在门户顶部的“搜索资源”框中键入 myVnetA******。 选择出现在搜索结果中的“myVnetA”****。
 18. 选择“myVnetA”****。
-19. 在“设置”**** 下，选择“对等”****。
+19. 在 "**设置**" 下，选择**对等互连**。
 20. 在“myVnetA - 对等互连”**** 下，选择“+ 添加”****。
 21. 在“添加对等互连”**** 下，输入或选择以下选项，然后选择“确定”****：
      - 名称：myVnetAToMyVnetB******
@@ -233,7 +233,7 @@ ms.locfileid: "79245117"
 
 10. 注销用户 A 的 Azure 登录，然后以用户 B 的身份登录。
 11. 创建从 myVnetB 到 myVnetA 的对等互连。 将步骤 8 中的脚本内容复制到电脑的文本编辑器。 将 `<SubscriptionB-Id>` 替换为订阅 A 的 ID，并分别将所有 A 更改为 B，将所有 B 更改为 A。要执行该脚本，请复制修改后的脚本，将其粘贴到 PowerShell，然后按 `Enter`。
-12. 查看 myVnetB 的对等互连状态。 将步骤 9 中的脚本内容复制到电脑的文本编辑器。 将资源组和虚拟网络名称中的 A 更改为 B。 若要执行该脚本，请将修改后的脚本粘贴到 PowerShell，然后按 `Enter`。 状态为“已连接”****。 创建从 myVnetB 到 myVnetA 的对等互连后，myVnetA 的对等互连状态变为“已连接”****************。 可以用户 A 的身份重新登录 Azure，并再次完成步骤 9，验证 myVnetA 的对等互连状态。
+12. 查看 myVnetB 的对等互连状态。 将步骤 9 中的脚本内容复制到电脑的文本编辑器。 将资源组和虚拟网络名称中的 A 更改为 B。 若要执行该脚本，请将修改后的脚本粘贴到 PowerShell，然后按 `Enter`。 状态为“已连接”****。 创建从**myVnetB**到**myVnetA**的对等互连后， **myVnetA**的对等互连状态将更改为 "**已连接**"。 可以用户 A 的身份重新登录 Azure，并再次完成步骤 9，验证 myVnetA 的对等互连状态。
 
     > [!NOTE]
     > 直到两个虚拟网络的对等互连状态均为“已连接”时，对等互连才建立成功****。
@@ -291,7 +291,7 @@ ms.locfileid: "79245117"
 
 1. 以用户 A 的身份登录 Azure 门户。
 2. 在门户的搜索框中，输入 myResourceGroupA****。 在搜索结果中，选择“myResourceGroupA”****。
-3. 选择 **"删除**"。
+3. 选择“删除”。 
 4. 若要确认删除，请在“键入资源组名称”框中输入“myResourceGroupA”，然后选择“删除”************。
 5. 注销用户 A 的门户登录，然后以用户 B 的身份登录。
 6. 完成 myResourceGroupB 的步骤 2-4.

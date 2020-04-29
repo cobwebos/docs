@@ -1,5 +1,5 @@
 ---
-title: 在 API 管理中使用客户端证书身份验证保护 API
+title: 在 API 管理中使用客户端证书身份验证保护 Api
 titleSuffix: Azure API Management
 description: 了解如何使用客户端证书保护对 API 的访问
 services: api-management
@@ -14,25 +14,25 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
 ms.openlocfilehash: 8c1d126f01580574a83850e63945aa7e513eaeda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76713147"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>如何使用 API 管理中的客户端证书身份验证确保 API 安全
 
 API 管理提供的功能可确保使用客户端证书安全地访问 API（即，客户端到 API 管理）。 可以使用策略表达式验证传入证书并根据所需值检查证书属性。
 
-有关使用客户端证书（即从后端进行 API 管理）保护对 API 后端服务的访问的信息，请参阅[如何使用客户端证书身份验证保护后端服务](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
+有关使用客户端证书保护对 API 后端服务的访问（即，API 管理到后端）的信息，请参阅[如何使用客户端证书身份验证保护后端服务](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
 
 > [!IMPORTANT]
-> 要通过开发人员、基本、标准或高级层中的 HTTP/2 接收和验证客户端证书，必须在"自定义域"边栏选项卡上打开"协商客户端证书"设置，如下所示。
+> 若要在开发人员层、基本层、标准层或高级层中通过 HTTP/2 接收和验证客户端证书，必须在“自定义域”边栏选项卡上启用“协商客户端证书”设置，如下所示。
 
 ![协商客户端证书](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
 
 > [!IMPORTANT]
-> 要接收和验证"消耗"层中的客户端证书，必须打开"自定义域"边栏选项卡上的"请求客户端证书"设置，如下所示。
+> 若要在“消耗”层中接收并验证客户端证书，必须在“自定义域”边栏选项卡上启用“请求客户端证书”设置，如下所示。
 
 ![请求客户端证书](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
 
@@ -93,7 +93,7 @@ API 管理提供的功能可确保使用客户端证书安全地访问 API（即
 
 > [!TIP]
 > 本[文](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672)中所述的客户端证书死锁问题可以通过多种方式表现出来，例如：请求冻结、请求在超时后生成 `403 Forbidden` 状态代码、`context.Request.Certificate` 为 `null`。 此问题通常会影响内容长度约为 60KB 或更大的 `POST` 和 `PUT` 请求。
-> 为防止此问题发生，请打开"自定义域"边栏选项卡上所需主机名的"协商客户端证书"设置，如下所示。 在“消耗”层中，此功能不可用。
+> 若要防止出现此问题，请在“自定义域”边栏选项卡上为所需主机名启用“协商客户端证书”设置，如下所示。 在“消耗”层中，此功能不可用。
 
 ![协商客户端证书](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
 

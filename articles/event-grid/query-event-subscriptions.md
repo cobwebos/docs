@@ -1,6 +1,6 @@
 ---
 title: 查询 Azure 事件网格订阅
-description: 本文介绍如何在 Azure 订阅中列出事件网格订阅。 您可以根据订阅类型提供不同的参数。
+description: 本文介绍如何列出 Azure 订阅中的事件网格订阅。 可以根据订阅类型提供不同的参数。
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 2da4ba5946f16092c1d0918aec8dc3109b5fd4a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76721534"
 ---
 # <a name="query-event-grid-subscriptions"></a>查询事件网格订阅 
@@ -161,5 +161,5 @@ Get-AzEventGridSubscription -ResourceId $resourceid
 ## <a name="next-steps"></a>后续步骤
 
 * 有关事件传送和重试的信息，请参阅[事件网格消息传送和重试](delivery-and-retry.md)。
-* 有关事件网格的简介，请参阅[有关事件网格](overview.md)。
+* 有关事件网格的介绍，请参阅[关于事件网格](overview.md)。
 * 若要快速开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。

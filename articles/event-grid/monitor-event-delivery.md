@@ -1,6 +1,6 @@
 ---
 title: 监视 Azure 事件网格消息传送
-description: 本文介绍如何使用 Azure 门户查看 Azure 事件网格消息的传递状态。
+description: 本文介绍如何使用 Azure 门户查看 Azure 事件网格消息的传送状态。
 services: event-grid
 author: spelluru
 manager: timlt
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 16587feaca65aa21836d9be1c44e00faa0f4f8d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76722129"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>监视事件网格消息传送 
@@ -44,15 +44,15 @@ ms.locfileid: "76722129"
 
 若要查看事件订阅的指标，可以按订阅类型搜索或按特定资源的订阅搜索。
 
-若要按事件订阅类型搜索，请选择“所有服务”****。
+若要按事件订阅类型搜索，请选择“所有服务”  。
 
 ![选择所有服务](./media/monitor-event-delivery/all-services.png)
 
-搜索事件网格****，并从可用选项中选择“事件网格订阅”****。
+搜索事件网格  ，并从可用选项中选择“事件网格订阅”  。
 
 ![搜索事件订阅](./media/monitor-event-delivery/search-and-select.png)
 
-按事件类型、订阅和位置进行筛选。 针对要查看的订阅选择“指标”****。
+按事件类型、订阅和位置进行筛选。 针对要查看的订阅选择“指标”  。
 
 ![筛选事件订阅](./media/monitor-event-delivery/filter-events.png)
 
@@ -60,7 +60,7 @@ ms.locfileid: "76722129"
 
 ![查看事件指标](./media/monitor-event-delivery/subscription-metrics.png)
 
-若要查找特定资源的指标，请选择该资源。 然后，选择“事件”****。
+若要查找特定资源的指标，请选择该资源。 然后，选择“事件”  。
 
 ![选择资源的事件](./media/monitor-event-delivery/select-events.png)
 
@@ -78,12 +78,12 @@ ms.locfileid: "76722129"
 
 ## <a name="set-alerts"></a>设置警报
 
-可以为自定义主题和事件域设置针对主题和域级别指标的警报。 在“概览”边栏选项卡中，从左侧的资源菜单选择“警报”****，以便查看、管理和创建警报规则。 [了解有关 Azure Monitor 警报的详细信息](../azure-monitor/platform/alerts-overview.md)
+可以为自定义主题和事件域设置针对主题和域级别指标的警报。 在“概览”边栏选项卡中，从左侧的资源菜单选择“警报”  ，以便查看、管理和创建警报规则。 [了解有关 Azure Monitor 警报的详细信息](../azure-monitor/platform/alerts-overview.md)
 
 ![查看事件指标](./media/monitor-event-delivery/select-alerts.png)
 
 ## <a name="next-steps"></a>后续步骤
 
 * 有关事件传送和重试的信息，请参阅[事件网格消息传送和重试](delivery-and-retry.md)。
-* 有关事件网格的简介，请参阅[有关事件网格](overview.md)。
+* 有关事件网格的介绍，请参阅[关于事件网格](overview.md)。
 * 若要快速开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。

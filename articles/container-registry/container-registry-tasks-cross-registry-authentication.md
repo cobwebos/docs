@@ -1,22 +1,22 @@
 ---
 title: 在 ACR 任务中进行跨注册表身份验证
-description: 配置 Azure 容器注册表任务 （ACR 任务）以使用 Azure 资源的托管标识访问另一个专用 Azure 容器注册表
+description: 使用 Azure 资源的托管标识配置 Azure 容器注册表任务（ACR 任务）以访问其他专用 Azure 容器注册表
 ms.topic: article
 ms.date: 01/14/2020
 ms.openlocfilehash: 47b2a50784cf56b089fea0981e5a06d581b8ba3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76842481"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>ACR 任务中使用 Azure 托管标识的跨注册表身份验证 
 
 在 [ACR 任务](container-registry-tasks-overview.md)中，可以[启用 Azure 资源的托管标识](container-registry-tasks-authentication-managed-identity.md)。 该任务可以使用该标识来访问其他 Azure 资源，而无需提供或管理凭据。 
 
-在本文中，您将了解如何在任务中启用托管标识，以便从不同于用于运行该任务的注册表中提取映像。
+本文介绍如何在任务中启用托管标识，从注册表中提取映像，该映像与用于运行任务的注册表不同。
 
-为了创建 Azure 资源，本文要求运行 Azure CLI 版本 2.0.68 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级，请参阅[安装 Azure CLI][azure-cli]。
+为了创建 Azure 资源，本文要求运行 Azure CLI 版本 2.0.68 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
 
 ## <a name="scenario-overview"></a>方案概述
 
@@ -35,7 +35,7 @@ ms.locfileid: "76842481"
 
 在后续步骤中，请将其替换为自己的注册表名称。
 
-如果还没有所需的 Azure 容器注册表，请参阅[快速入门：使用 Azure CLI 创建专用容器注册表](container-registry-get-started-azure-cli.md)。 暂时不需要将映像推送到注册表。
+如果你没有所需的 Azure 容器注册表，请参阅[快速入门：使用 Azure CLI 创建专用容器注册表](container-registry-get-started-azure-cli.md)。 暂时不需要将映像推送到注册表。
 
 ## <a name="prepare-base-registry"></a>准备基础注册表
 
@@ -52,7 +52,7 @@ az acr build --image baseimages/node:9-alpine --registry mybaseregistry --file D
 
 ## <a name="define-task-steps-in-yaml-file"></a>在 YAML 文件中定义任务步骤
 
-此示例[多步骤任务](container-registry-tasks-multi-step.md)的步骤在一个 [YAML 文件](container-registry-tasks-reference-yaml.md)中定义。 在本地工作目录中`helloworldtask.yaml`创建名为的文件并粘贴以下内容。 使用基础注册表的服务器名称更新生成步骤中的 `REGISTRY_NAME` 值。
+此示例[多步骤任务](container-registry-tasks-multi-step.md)的步骤在一个 [YAML 文件](container-registry-tasks-reference-yaml.md)中定义。 在本地工作目录`helloworldtask.yaml`中创建名为的文件并粘贴以下内容。 使用基础注册表的服务器名称更新生成步骤中的 `REGISTRY_NAME` 值。
 
 ```yml
 version: v1.1.0
@@ -64,9 +64,9 @@ steps:
 
 生成步骤使用 [Azure-Samples/acr-build-helloworld-node](https://github.com/Azure-Samples/acr-build-helloworld-node.git) 存储库中的 `Dockerfile-app` 文件生成映像。 `--build-arg` 引用基础注册表以提取基础映像。 成功生成后，该映像将推送到用于运行该任务的注册表。
 
-## <a name="option-1-create-task-with-user-assigned-identity"></a>选项 1：使用用户分配的标识创建任务
+## <a name="option-1-create-task-with-user-assigned-identity"></a>选项 1：创建使用用户分配的标识的任务
 
-本部分中的步骤将创建一个任务并启用用户分配的标识。 如果要改为启用系统分配的标识，请参阅[选项 2：使用系统分配的标识创建任务](#option-2-create-task-with-system-assigned-identity)。 
+本部分中的步骤将创建一个任务并启用用户分配的标识。 若要改为启用系统分配的标识，请参阅[选项 2：创建使用系统分配的标识的任务](#option-2-create-task-with-system-assigned-identity)。 
 
 [!INCLUDE [container-registry-tasks-user-assigned-id](../../includes/container-registry-tasks-user-assigned-id.md)]
 
@@ -85,9 +85,9 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
-## <a name="option-2-create-task-with-system-assigned-identity"></a>选项 2：使用系统分配的标识创建任务
+## <a name="option-2-create-task-with-system-assigned-identity"></a>选项 2：创建使用系统分配的标识的任务
 
-本部分中的步骤将创建一个任务并启用系统分配的标识。 如果要改为启用用户分配的标识，请参阅[选项 1：使用用户分配的身份创建任务](#option-1-create-task-with-user-assigned-identity)。 
+本部分中的步骤将创建一个任务并启用系统分配的标识。 若要改为启用用户分配的标识，请参阅[选项 1：创建使用用户分配的标识的任务](#option-1-create-task-with-user-assigned-identity)。 
 
 ### <a name="create-task"></a>创建任务
 
@@ -124,7 +124,7 @@ az role assignment create \
 
 ## <a name="add-target-registry-credentials-to-task"></a>将目标注册表凭据添加到任务
 
-现在使用[az acr 任务凭据添加][az-acr-task-credential-add]命令使任务能够使用标识的凭据对基本注册表进行身份验证。 根据在任务中启用的托管标识类型运行相应的命令。 如果启用了用户分配的标识，请传递包含标识客户端 ID 的 `--use-identity`。 如果启用了系统分配的标识，请传递 `--use-identity [system]`。
+现在，使用[az acr task credential add][az-acr-task-credential-add]命令使任务能够使用标识的凭据通过基本注册表进行身份验证。 根据在任务中启用的托管标识类型运行相应的命令。 如果启用了用户分配的标识，请传递包含标识客户端 ID 的 `--use-identity`。 如果启用了系统分配的标识，请传递 `--use-identity [system]`。
 
 ```azurecli
 # Add credentials for user-assigned identity to the task

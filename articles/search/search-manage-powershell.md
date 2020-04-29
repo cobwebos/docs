@@ -10,39 +10,39 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: 711071e08a52a0075512bc8b3ffe14707238cdfe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77209290"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>使用 PowerShell 管理 Azure 认知搜索服务
 > [!div class="op_single_selector"]
 > * [门户](search-manage.md)
-> * [电源外壳](search-manage-powershell.md)
+> * [PowerShell](search-manage-powershell.md)
 > * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-您可以在 Windows、Linux 或[Azure 云外壳](https://docs.microsoft.com/azure/cloud-shell/overview)中运行 PowerShell cmdlet 和脚本，以创建和配置 Azure 认知搜索。 **Az.Search**模块将[Azure PowerShell](https://docs.microsoft.com/powershell/)扩展为[搜索管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement)的完整奇偶校验，并能够执行以下任务：
+可以在 Windows、Linux 或[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)上运行 PowerShell cmdlet 和脚本，以创建和配置 Azure 认知搜索。 **Az.Search** 模块扩展了 [Azure PowerShell](https://docs.microsoft.com/powershell/)，完全可与[搜索管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement) 搭配使用，并可执行以下任务：
 
 > [!div class="checklist"]
-> * [在订阅中列出搜索服务](#list-search-services)
-> * [退货服务信息](#get-search-service-information)
+> * [列出订阅中的搜索服务](#list-search-services)
+> * [返回服务信息](#get-search-service-information)
 > * [创建或删除服务](#create-or-delete-a-service)
 > * [重新生成管理 API 密钥](#regenerate-admin-keys)
 > * [创建或删除查询 API 密钥](#create-or-delete-query-keys)
-> * [使用副本和分区向上或向下扩展](#scale-replicas-and-partitions)
+> * [使用副本和分区进行纵向缩放](#scale-replicas-and-partitions)
 
-偶尔会询问有关*上述列表中未*出现的任务的问题。 目前，您不能使用**Az.Search**模块或管理 REST API 更改服务器名称、区域或层。 创建服务时，会分配专用资源。 因此，更改基础硬件（位置或节点类型）需要新的服务。 同样，没有工具或 API 用于将内容（如索引）从一个服务传输到另一个服务。
+偶尔，系统会询问有关任务未  在上述列表中出现的问题。 目前，不能使用 **Az.Search** 模块或管理 REST API 来更改服务器名称、区域或层。 创建服务时，会分配专用资源。 因此，更改底层硬件（位置或节点类型）需要新的服务。 类似地，没有任何工具或 API 可将一个服务中的内容（例如索引）传输到另一个服务。
 
-在服务中，内容创建和管理是通过[搜索服务 REST API](https://docs.microsoft.com/rest/api/searchservice/)或[.NET SDK](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search)。 虽然没有专用的 PowerShell 命令用于内容，但您可以编写调用 REST 或 .NET API 以创建和加载索引的 PowerShell 脚本。
+在服务中，内容创建和管理通过[搜索服务 REST API](https://docs.microsoft.com/rest/api/searchservice/) 或 [.NET SDK](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search) 完成。 尽管没有专用的 PowerShell 命令可用于内容，但可以编写 PowerShell 脚本来调用 REST 或 .NET API 以创建并加载索引。
 
 <a name="check-versions-and-load"></a>
 
 ## <a name="check-versions-and-load-modules"></a>检查版本并加载模块
 
-本文中的示例是交互式，需要提升的权限。 必须安装 Azure PowerShell（**Az** 模块）。 有关详细信息，请参阅安装[Azure 电源外壳](/powershell/azure/overview)。
+本文中的示例是交互式，需要提升的权限。 必须安装 Azure PowerShell（**Az** 模块）。 有关详细信息，请参阅[安装 Azure PowerShell](/powershell/azure/overview)。
 
 ### <a name="powershell-version-check-51-or-later"></a>PowerShell 版本检查（5.1 或更高版本）
 

@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 635bddef1a98d6ed2b112662d8c9c44fe65e9e32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76906103"
 ---
 # <a name="sfctl-events"></a>sfctl events
@@ -19,7 +19,7 @@ ms.locfileid: "76906103"
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|说明|
 | --- | --- |
 | all-applications-list | 获取应用程序相关的所有事件。 |
 | all-nodes-list | 获取节点相关的所有事件。 |
@@ -38,9 +38,9 @@ ms.locfileid: "76906103"
 
 响应是 ApplicationEvent 对象的列表。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --end-time-utc   [必需] | 查找查询的结束时间，采用 ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 格式。 |
 | --start-time-utc [必需] | 查找查询的开始时间，采用 ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 格式。 |
@@ -51,7 +51,7 @@ ms.locfileid: "76906103"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -64,9 +64,9 @@ ms.locfileid: "76906103"
 
 响应是 NodeEvent 对象的列表。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --end-time-utc   [必需] | 查找查询的结束时间，采用 ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 格式。 |
 | --start-time-utc [必需] | 查找查询的开始时间，采用 ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 格式。 |
@@ -77,7 +77,7 @@ ms.locfileid: "76906103"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -90,9 +90,9 @@ ms.locfileid: "76906103"
 
 响应是 PartitionEvent 对象的列表。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --end-time-utc   [必需] | 查找查询的结束时间，采用 ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 格式。 |
 | --start-time-utc [必需] | 查找查询的开始时间，采用 ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 格式。 |
@@ -103,7 +103,7 @@ ms.locfileid: "76906103"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -116,9 +116,9 @@ ms.locfileid: "76906103"
 
 响应是 ServiceEvent 对象的列表。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --end-time-utc   [必需] | 查找查询的结束时间，采用 ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 格式。 |
 | --start-time-utc [必需] | 查找查询的开始时间，采用 ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 格式。 |
@@ -129,7 +129,7 @@ ms.locfileid: "76906103"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -142,9 +142,9 @@ ms.locfileid: "76906103"
 
 响应是 ApplicationEvent 对象的列表。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --application-id [必需] | 应用程序的标识。 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
 | --end-time-utc   [必需] | 查找查询的结束时间，采用 ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 格式。 |
@@ -156,7 +156,7 @@ ms.locfileid: "76906103"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -169,9 +169,9 @@ ms.locfileid: "76906103"
 
 响应是 ClusterEvent 对象的列表。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --end-time-utc   [必需] | 查找查询的结束时间，采用 ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 格式。 |
 | --start-time-utc [必需] | 查找查询的开始时间，采用 ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 格式。 |
@@ -182,7 +182,7 @@ ms.locfileid: "76906103"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -195,9 +195,9 @@ ms.locfileid: "76906103"
 
 响应是 NodeEvent 对象的列表。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --end-time-utc   [必需] | 查找查询的结束时间，采用 ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 格式。 |
 | --node-name [必需] | 节点的名称。 |
@@ -209,7 +209,7 @@ ms.locfileid: "76906103"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -222,9 +222,9 @@ ms.locfileid: "76906103"
 
 响应是 ReplicaEvent 对象的列表。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --end-time-utc   [必需] | 查找查询的结束时间，采用 ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 格式。 |
 | --partition-id   [必需] | 分区的标识。 |
@@ -236,7 +236,7 @@ ms.locfileid: "76906103"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -249,9 +249,9 @@ ms.locfileid: "76906103"
 
 响应是 PartitionEvent 对象的列表。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --end-time-utc   [必需] | 查找查询的结束时间，采用 ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 格式。 |
 | --partition-id   [必需] | 分区的标识。 |
@@ -263,7 +263,7 @@ ms.locfileid: "76906103"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -276,9 +276,9 @@ ms.locfileid: "76906103"
 
 响应是 ReplicaEvent 对象的列表。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --end-time-utc   [必需] | 查找查询的结束时间，采用 ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 格式。 |
 | --partition-id   [必需] | 分区的标识。 |
@@ -291,7 +291,7 @@ ms.locfileid: "76906103"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -304,9 +304,9 @@ ms.locfileid: "76906103"
 
 响应是 ServiceEvent 对象的列表。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --end-time-utc   [必需] | 查找查询的结束时间，采用 ISO UTC yyyy-MM-ddTHH\:mm\:ssZ 格式。 |
 | --service-id     [必需] | 服务的标识。 此 ID 通常是不带“fabric\:”URI 方案的服务全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果服务名称为“fabric\:/myapp/app1/svc1”，则 6.0 及更高版本中的服务标识为“myapp\~app1\~svc1”，在以前的版本中为“myapp/app1/svc1”。 |
@@ -318,7 +318,7 @@ ms.locfileid: "76906103"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |

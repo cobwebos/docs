@@ -6,17 +6,17 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4a117e7f69647af3ad82f9013bfa40556ccc0dbd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77152884"
 ---
 # <a name="durable-functions-versions-overview"></a>Durable Functions 版本概述
 
-Durable Functions 是 [Azure Functions](../functions-overview.md) 和 [Azure WebJobs](../../app-service/web-sites-create-web-jobs.md) 的扩展，可用于在无服务器环境中编写有状态函数**。 该扩展可用于管理状态、检查点和重启。 如果你不熟悉 Durable Functions，请参阅[概述文档](durable-functions-overview.md)。
+Durable Functions 是 [Azure Functions](../functions-overview.md) 和 [Azure WebJobs](../../app-service/web-sites-create-web-jobs.md) 的扩展，可用于在无服务器环境中编写有状态函数  。 该扩展可用于管理状态、检查点和重启。 如果你不熟悉 Durable Functions，请参阅[概述文档](durable-functions-overview.md)。
 
-## <a name="new-features-in-2x"></a>2.x 中的新功能
+## <a name="new-features-in-2x"></a>2\.x 中的新功能
 
 此部分介绍在 2.x 版中添加的 Durable Functions 功能。
 
@@ -24,7 +24,7 @@ Durable Functions 是 [Azure Functions](../functions-overview.md) 和 [Azure Web
 
 在 Durable Functions 2.x 中，我们引入了一个新的[实体函数](durable-functions-entities.md)概念。
 
-实体函数定义读取和更新较小状态片段（称为“持久实体”）的操作。** 与业务流程协调程序函数一样，实体函数是具有特殊触发器类型“实体触发器”的函数。** 与业务流程协调程序函数不同，实体函数没有任何特定的代码约束。 实体函数还会显式管理状态，而不是通过控制流隐式表示状态。
+实体函数定义用于读取和更新较小状态片段（称为“持久实体”）的操作。  与业务流程协调程序函数类似，实体函数是具有特殊触发器类型“实体触发器”的函数。  与业务流程协调程序函数不同，实体函数没有任何特定的代码约束。 实体函数还会显式管理状态，而不是通过控制流隐式表示状态。
 
 有关详细信息，请参阅[持久实体](durable-functions-entities.md)一文。
 
@@ -60,13 +60,13 @@ Durable Functions 2.x 使用新的 host.json 架构。 基于 1.x 的主要更�
 
 有关详细信息，请参阅 [Durable Functions host.json 参考文档](durable-functions-bindings.md#durable-functions-2-0-host-json)。
 
-#### <a name="default-taskhub-name-changes"></a>默认任务中心名称更改
+#### <a name="default-taskhub-name-changes"></a>默认的任务中心名称更改
 
-在版本 1.x 中，如果在 host.json 中未指定任务中心名称，则将其默认为"持久功能Hub"。 在版本 2.x 中，默认任务中心名称现在派生自函数应用的名称。 因此，如果在升级到 2.x 时未指定任务中心名称，则代码将使用新任务中心运行，并且所有运行中的业务流程将不再具有应用程序处理它们。 要解决这个问题，您可以显式将任务中心名称设置为 v1.x 默认值"持久功能Hub"，也可以按照我们的[零停机时间部署指南](durable-functions-zero-downtime-deployment.md)了解如何处理在运行中业务流程的突发更改的详细信息。
+在版本 1.x 中，如果未在 host.json 中指定任务中心名称，则该名称默认为“DurableFunctionsHub”。 在版本 2.x 中，默认的任务中心名称现在派生自函数应用的名称。 因此，如果在升级到 2.x 时未指定任务中心名称，则代码会使用新的任务中心进行操作，并且所有正在进行的业务流程将不再有处理它们的应用程序。 若要解决此情况，可以显式将任务中心名称设置为 v1.x 默认值“DurableFunctionsHub”，也可以参阅我们的[零停机部署指南](durable-functions-zero-downtime-deployment.md)，详细了解如何处理正在进行的业务流程的中断性变更。
 
 #### <a name="public-interface-changes-net-only"></a>公共接口更改（仅 .NET）
 
-在 1.x 版中，Durable Functions 支持的各种“上下文”对象包含适合在单元测试中使用的抽象基类。__ 作为 Durable Functions 2.x 的一部分，这些抽象基类由接口取代。
+在 1.x 版中，Durable Functions 支持的各种“上下文”对象包含适合在单元测试中使用的抽象基类。  作为 Durable Functions 2.x 的一部分，这些抽象基类由接口取代。
 
 下表显示了主要更改：
 
@@ -81,4 +81,4 @@ Durable Functions 2.x 使用新的 host.json 架构。 基于 1.x 的主要更�
 
 #### <a name="functionjson-changes-javascript-and-c-script"></a>function.json 更改（JavaScript 和 C# Script）
 
-在 Durable Functions 1.x 中，业务流程客户端使用的 `type` 为 `orchestrationClient`。 2.x 版改用 `durableClient`。
+在 Durable Functions 1.x 中，业务流程客户端使用的 `type` 为 `orchestrationClient`。 2\.x 版改用 `durableClient`。

@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 4b725c8a1bf0649a640c02a9a1828ec9014d36d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76905665"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>为 Azure Data Lake Storage Gen2 中的文档编制索引
@@ -30,17 +30,17 @@ ms.locfileid: "76905665"
 
 需要完成几个步骤才能为 Data Lake Storage Gen2 中的内容编制索引。
 
-### <a name="step-1-sign-up-for-the-preview"></a>第 1 步：注册预览版
+### <a name="step-1-sign-up-for-the-preview"></a>步骤1：注册预览版
 
 填写[此表单](https://aka.ms/azure-cognitive-search/indexer-preview)注册 Data Lake Storage Gen2 索引器预览版。 在我们同意你注册预览版后，你会收到确认电子邮件。
 
-### <a name="step-2-follow-the-azure-blob-storage-indexing-setup-steps"></a>第 2 步：按照 Azure Blob 存储索引设置步骤操作
+### <a name="step-2-follow-the-azure-blob-storage-indexing-setup-steps"></a>步骤2：遵循 Azure Blob 存储索引设置步骤
 
 收到预览版注册成功的确认消息后，便可以创建索引管道。
 
 可以使用 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 来为 Data Lake Storage Gen2 中的内容和元数据编制索引。 目前不支持门户或 .NET SDK。
 
-为 Data Lake Storage Gen2 中的内容编制索引，与为 Azure Blob 存储中的内容编制索引相同。 若要了解如何设置 Data Lake Storage Gen2 数据源、索引和索引器，请参阅[如何使用 Azure 认知搜索为 Azure Blob 存储中的文档编制索引](search-howto-indexing-azure-blob-storage.md)。 Blob 存储文章还提供有关支持哪些文档格式、提取哪些 Blob 元数据属性、增量索引等的信息。 此信息同样适用于 Data Lake Storage Gen2。
+为 Data Lake Storage Gen2 中的内容编制索引，与为 Azure Blob 存储中的内容编制索引相同。 若要了解如何设置 Data Lake Storage Gen2 数据源、索引和索引器，请参阅[如何使用 Azure 认知搜索为 Azure Blob 存储中的文档编制索引](search-howto-indexing-azure-blob-storage.md)。 Blob 存储一文还提供了有关支持的文档格式、提取的 Blob 元数据属性、增量索引等信息。 此信息同样适用于 Data Lake Storage Gen2。
 
 ## <a name="access-control"></a>访问控制
 
@@ -50,7 +50,7 @@ Azure Data Lake Storage Gen2 实现了一个[访问控制模型](https://docs.mi
 
 ## <a name="change-detection"></a>更改检测
 
-数据存储湖存储 Gen2 索引器支持更改检测。 这意味着，当索引器运行时，它只会重新索引由 blob 的时间戳确定的已更改的`LastModified`Blob。
+Data Lake Storage Gen2 索引器支持更改检测。 这意味着当索引器运行时，它只会重新编制索引由 blob 的`LastModified`时间戳确定的已更改 blob。
 
 > [!NOTE] 
-> 数据存储第 2 代允许重命名目录。 重命名目录时，该目录中 Blob 的时间戳不会更新。 因此，索引器不会重新索引这些 blob。 如果需要在目录重命名后重新编制目录中的 Blob，因为它们现在具有新的 URL，则需要更新目录中所有 Blob`LastModified`的时间戳，以便索引器知道在将来的运行期间重新索引它们。
+> Data Lake Storage Gen2 允许重命名目录。 重命名目录时，该目录中的 blob 的时间戳不会更新。 因此，索引器不会重新索引这些 blob。 如果需要在目录重命名之后重新编制索引目录中的 blob，因为它们现在具有新 Url，则需要更新目录中所有 blob 的`LastModified`时间戳，以便索引器知道在以后运行时对它们进行重新索引。

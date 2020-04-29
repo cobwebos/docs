@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 03/05/2020
 ms.author: apimpm
 ms.openlocfilehash: af7c995c11322a538dd9e27a905f1ddbc723e8ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79244090"
 ---
 # <a name="access-and-customize-developer-portal"></a>访问和自定义开发人员门户
@@ -36,7 +36,7 @@ ms.locfileid: "79244090"
 
 ![API 管理开发人员门户 - 管理模式](media/api-management-howto-developer-portal-customize/cover.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)
 - 导入并发布 Azure API 管理实例。 有关详细信息，请参阅[导入和发布](import-and-publish.md)
@@ -48,7 +48,7 @@ ms.locfileid: "79244090"
 遵循以下步骤访问托管版本的门户。
 
 1. 在 Azure 门户中转到你的 API 管理服务实例。
-1. 单击顶部导航栏中的“开发人员门户”按钮。**** 此时会打开一个新的浏览器标签页，其中包含管理版本的门户。
+1. 单击顶部导航栏中的“开发人员门户”按钮。  此时会打开一个新的浏览器标签页，其中包含管理版本的门户。
 
 ## <a name="understand-the-portals-administrative-interface"></a>了解门户的管理界面
 
@@ -84,7 +84,7 @@ ms.locfileid: "79244090"
 
 ![“保存”按钮](media/api-management-howto-developer-portal-customize/save-button.png)
 
-每当在门户中进行更改，都需要按下底部菜单中的“保存”按钮来手动保存更改。**** 保存更改时，修改的内容会自动上传到 API 管理服务。
+每当在门户中进行更改，都需要按下底部菜单中的“保存”按钮来手动保存更改。  保存更改时，修改的内容会自动上传到 API 管理服务。
 
 ## <a name="customize-the-portals-content"></a>自定义门户的内容
 
@@ -126,9 +126,9 @@ ms.locfileid: "79244090"
 
 发布门户后，可以通过管理面板所用的相同 URL（例如 `https://contoso-api.developer.azure-api.net`）访问该门户。 在单独的浏览器会话（incognito/专用浏览模式）中以外部访问者身份查看它。
 
-## <a name="apply-the-cors-policy-on-apis"></a>在 API 上应用 CORS 策略
+## <a name="apply-the-cors-policy-on-apis"></a>应用 Api 上的 CORS 策略
 
-您需要在 API 上启用 CORS（跨源资源共享），以便门户访问者通过内置的交互式控制台测试 API。 有关详细信息，请参阅[本文档。](api-management-howto-developer-portal.md#cors)
+需要在 Api 上启用 CORS （跨域资源共享），才能让门户的访问者通过内置交互控制台来测试 Api。 有关更多详细信息，请参阅[此文档](api-management-howto-developer-portal.md#cors)。
 
 ## <a name="next-steps"></a>后续步骤
 

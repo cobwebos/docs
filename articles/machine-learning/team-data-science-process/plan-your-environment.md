@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: b0b811a2b7ed432b7fc5015886b28337ca33424e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76710322"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>如何规定高级分析数据处理的方案和计划
@@ -75,11 +75,11 @@ ms.locfileid: "76710322"
 * 同时涉及本地和云资源的混合场景
 * 在迁移过程中业务逻辑会处理、修改或更改数据的场景
 
-有关详细信息，请参阅使用[Azure 数据工厂将数据从本地 SQL 服务器移动到 SQL Azure。](move-sql-azure-adf.md)
+有关详细信息，请参阅[使用 Azure 数据工厂将数据从本地 SQL Server 移动到 SQL Azure](move-sql-azure-adf.md)。
 
 ### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>要将多少数据移动到 Azure？
 
-大型数据集可能会超出某些环境的存储容量。 有关示例，请参阅下一部分中针对机器学习工作室（经典）大小限制的讨论。 在这种情况下，在分析过程中可以使用一个数据样本。 有关如何在不同 Azure 环境中向下采样数据集的详细信息，请参阅[ Team Data Science Process 中的示例数据](sample-data.md)。
+大型数据集可能会超过某些环境的存储容量。 有关示例，请参阅下一部分中针对机器学习工作室（经典）大小限制的讨论。 在这种情况下，在分析过程中可以使用一个数据样本。 有关如何在不同 Azure 环境中向下采样数据集的详细信息，请参阅[ Team Data Science Process 中的示例数据](sample-data.md)。
 
 ## <a name="data-characteristics-questions-type-format-and-size"></a>数据特征问题：类型、格式和大小
 
@@ -149,10 +149,10 @@ ms.locfileid: "76710322"
 * [Azure 机器学习工作室](../studio/what-is-ml-studio.md)
 * [Revolution Analytics](https://www.microsoft.com/sql-server/machinelearningserver)
 * [RStudio](https://www.rstudio.com)
-* [Python Tools for Visual Studio](https://aka.ms/ptvsdocs)
+* [用于 Visual Studio 的 Python 工具](https://aka.ms/ptvsdocs)
 * [Anaconda](https://www.continuum.io/why-anaconda)
-* [朱派笔记本](https://jupyter.org/)
-* [微软电源 BI](https://powerbi.microsoft.com)
+* [Jupyter 笔记本](https://jupyter.org/)
+* [Microsoft Power BI](https://powerbi.microsoft.com)
 
 ## <a name="identify-your-advanced-analytics-scenario"></a>确定高级分析方案
 

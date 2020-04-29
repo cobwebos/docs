@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: 2877284c419da4999e23490fc986e5da44e5d92e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76514504"
 ---
 # <a name="relay-hybrid-connections-node-api-overview"></a>中继混合连接 Node API 概述
 
 ## <a name="overview"></a>概述
 
-Azure[`hyco-ws`](https://www.npmjs.com/package/hyco-ws)中继混合连接的节点包构建并扩展[了"ws"NPM](https://www.npmjs.com/package/ws)包。 此包将重新导出该基程序包的所有导出，并添加允许与 Azure 中继服务混合连接功能集成的新导出。 
+Azure 中继混合连接的 [`hyco-ws`](https://www.npmjs.com/package/hyco-ws) Node 包是在 [‘ws’](https://www.npmjs.com/package/ws) NPM 包的基础上进行构建和扩展的。 此包将重新导出该基程序包的所有导出，并添加允许与 Azure 中继服务混合连接功能集成的新导出。 
 
 在现有应用程序中，`require('ws')` 可以改为结合使用此包与 `require('hyco-ws')`，从而还可以实现混合方案，其中应用程序可以同时从“防火墙内”和通过混合连接本地侦听 WebSocket 连接。
   

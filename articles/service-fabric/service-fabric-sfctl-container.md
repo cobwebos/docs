@@ -1,15 +1,15 @@
 ---
 title: Azure Service Fabric CLI - sfctl container
-description: 了解 sfctl，Azure 服务结构命令行接口。 包括容器的命令列表。
+description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于容器的命令列表。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 07861e2b67eea67740b341cbea994de978973664
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76906119"
 ---
 # <a name="sfctl-container"></a>sfctl container
@@ -17,7 +17,7 @@ ms.locfileid: "76906119"
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|说明|
 | --- | --- |
 | invoke-api | 在 Service Fabric 节点上部署的容器上调用给定代码包的容器 API。 |
 | 日志 | 获取 Service Fabric 节点上部署的容器的容器日志。 |
@@ -25,9 +25,9 @@ ms.locfileid: "76906119"
 ## <a name="sfctl-container-invoke-api"></a>sfctl container invoke-api
 在 Service Fabric 节点上部署的容器上调用给定代码包的容器 API。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --application-id           [必需] | 应用程序的标识。 <br><br> 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
 | --code-package-instance-id [必需] | 唯一标识 Service Fabric 节点上部署的代码包实例的 ID。 <br><br> 可以使用“service code-package-list”检索。 |
@@ -42,7 +42,7 @@ ms.locfileid: "76906119"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -53,9 +53,9 @@ ms.locfileid: "76906119"
 ## <a name="sfctl-container-logs"></a>sfctl container logs
 获取 Service Fabric 节点上部署的容器的容器日志。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --application-id           [必需] | 应用程序的标识。 <br><br> 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
 | --code-package-instance-id [必需] | 代码包实例 ID，可以通过“service code-package-list”来检索。 |
@@ -67,7 +67,7 @@ ms.locfileid: "76906119"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -77,5 +77,5 @@ ms.locfileid: "76906119"
 
 
 ## <a name="next-steps"></a>后续步骤
-- [设置](service-fabric-cli.md)服务结构 CLI。
+- [安装](service-fabric-cli.md) Service Fabric CLI。
 - 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。

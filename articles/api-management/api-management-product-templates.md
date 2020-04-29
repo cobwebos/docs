@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 393563427e936e07315cd44b78cb793d4292b352
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79243921"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Azure API 管理中的产品模板
@@ -70,19 +70,19 @@ ms.locfileid: "79243921"
 </div>  
 ```  
   
-### <a name="controls"></a>控件  
+### <a name="controls"></a>控制  
  `Product list` 模板可使用以下[页面控件](api-management-page-controls.md)。  
   
--   [分页控制](api-management-page-controls.md#paging-control)  
+-   [paging-control](api-management-page-controls.md#paging-control)  
   
--   [搜索控制](api-management-page-controls.md#search-control)  
+-   [search-control](api-management-page-controls.md#search-control)  
   
 ### <a name="data-model"></a>数据模型  
   
 |properties|类型|说明|  
 |--------------|----------|-----------------|  
-|分页|[分页](api-management-template-data-model-reference.md#Paging)实体。|产品集合的分页信息。|  
-|筛选|[筛选](api-management-template-data-model-reference.md#Filtering)实体。|产品列表页的筛选信息。|  
+|Paging|[分页](api-management-template-data-model-reference.md#Paging)实体。|产品集合的分页信息。|  
+|Filtering|[筛选](api-management-template-data-model-reference.md#Filtering)实体。|产品列表页的筛选信息。|  
 |Products|[产品](api-management-template-data-model-reference.md#Product)实体的集合。|对当前用户可见的产品。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  
@@ -123,7 +123,7 @@ ms.locfileid: "79243921"
 }  
 ```  
   
-##  <a name="product"></a><a name="Product"></a>产品  
+##  <a name="product"></a><a name="Product"></a> Product  
  **产品**模板可用于自定义开发人员门户中产品页的正文。  
   
  ![开发人员门户产品页](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
@@ -197,10 +197,10 @@ ms.locfileid: "79243921"
 {% endif %}  
 ```  
   
-### <a name="controls"></a>控件  
+### <a name="controls"></a>控制  
  `Product list` 模板可使用以下[页面控件](api-management-page-controls.md)。  
   
--   [订阅按钮](api-management-page-controls.md#subscribe-button)  
+-   [subscribe-button](api-management-page-controls.md#subscribe-button)  
   
 ### <a name="data-model"></a>数据模型  
   

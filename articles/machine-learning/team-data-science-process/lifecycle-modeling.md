@@ -12,17 +12,17 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1d3cd61ea3da88c4c5231f22c0e127508591fb8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76720463"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命周期建模阶段
 
 本文概述了与 Team Data Science Process (TDSP) 的建模阶段相关联的目标、任务和可交付结果。 此过程提供可用于构建数据科学项目的建议生命周期。 该生命周期概述了项目通常执行的主要阶段（通常以迭代方式进行）：
 
-   1. **业务理解**
+   1. **了解业务**
    2. **数据采集和理解**
    3. **建模**
    4. **部署**
@@ -41,9 +41,9 @@ ms.locfileid: "76720463"
 ## <a name="how-to-do-it"></a>如何执行
 在此阶段中解决了三个主要任务：
 
-  * **特征工程**：从原始数据创建数据要素，以方便模型培训。
-  * **模型培训**：通过比较其成功指标，查找最准确地回答这个问题的模型。
-  * 确定模型是否适合**生产。**
+  * **功能设计**：从原始数据创建数据功能，以实现模型定型。
+  * **模型定型**：通过比较模型的成功指标，找出最能准确回答问题的模型。
+  * 确定模型是否适用于生产。 
 
 ### <a name="feature-engineering"></a>特性工程
 功能设计包括对原始变量的涵盖、聚合和转换，以创建分析中使用的功能。 若要深入了解模型的驱动因素，则需要了解这些功能彼此间的关系，以及使用这些功能的机器学习算法方式。 
@@ -57,10 +57,10 @@ ms.locfileid: "76720463"
 
 模型定型的过程包括以下步骤： 
 
-   * 随机**拆分输入数据**，以便建模到训练数据集和测试数据集中。
-   * 使用定型数据集生成模型****。
-   * 评估定型数据集和测试数据集****。 使用一系列竞争机器学习算法，以及关联的各种优化参数（称为“参数整理”），这些参数适用于回答与当前数据相关的问题**。
-   * 比较备用方法的成功指标，确定可回答问题的“最佳”解决方案****。
+   * 随机拆分输入数据，以建模成定型数据集和测试数据集  。
+   * 使用定型数据集生成模型  。
+   * 评估定型数据集和测试数据集  。 使用一系列竞争机器学习算法，以及关联的各种优化参数（称为“参数整理”），这些参数适用于回答与当前数据相关的问题  。
+   * 比较备用方法的成功指标，确定可回答问题的“最佳”解决方案  。
 
 > [!NOTE]
 > **避免泄漏**：若添加定型数据集外部数据，则会导致数据泄漏，因为此类数据允许模型或机器学习算法做出不切实际的良好预测。 泄露是数据科学家获得好到不真实的预测结果时会紧张的常见原因。 很难检测到这些依赖项。 为避免泄漏，通常需要在生成分析数据集、创建模型和评估结果准确性之间进行循环。 
@@ -72,9 +72,9 @@ ms.locfileid: "76720463"
 ## <a name="artifacts"></a>项目
 在此阶段中生成的项目包括：
 
-   * [功能集](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md)：为建模开发的功能在**数据定义**报表的 **"功能集**"部分中描述。 它包括指向代码以生成功能的指针，以及说明如何生成功能的描述。
+   * [功能集](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md)：“数据定义”报表的“功能集”部分介绍了为建模开发的功能   。 它包括指向代码以生成功能的指针，以及说明如何生成功能的描述。
    * [模型报表](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md)：对于尝试过的每个模型，都会根据模板生成一个标准报表，用于详细介绍每次试验。
-   * **检查点决策**：评估模型是否为生产工作充分。 要提出的一些关键问题有：
+   * **检查点决策**：评估模型是否足以用于生产。 要提出的一些关键问题有：
      * 在给定测试数据的情况下，模型是否能充分地回答问题？ 
      * 是否应尝试备用方法？ 是否应收集其他数据、进行更多的功能设计或使用其他算法进行试验？
 
@@ -82,7 +82,7 @@ ms.locfileid: "76720463"
 
 以下是 TDSP 生命周期中每个步骤的链接：
 
-   1. [业务理解](lifecycle-business-understanding.md)
+   1. [了解业务](lifecycle-business-understanding.md)
    2. [数据采集和理解](lifecycle-data.md)
    3. [建模](lifecycle-modeling.md)
    4. [部署](lifecycle-deployment.md)

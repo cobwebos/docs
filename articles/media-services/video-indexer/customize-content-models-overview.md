@@ -1,7 +1,7 @@
 ---
-title: 在 Azure 媒体服务视频索引器中自定义内容模型
+title: 在 Azure 媒体服务中自定义内容模型视频索引器
 titleSuffix: Azure Media Services
-description: 本文提供了指向概念文章的链接，这些文章解释了每种自定义类型的好处。 本文还链接到说明如何实现每个模型的自定义的"执行指南"。
+description: 本文提供了说明每种类型的自定义优点的概念文章的链接。 本文还将链接到介绍如何实现每个模型的自定义的操作方法指南。
 services: media-services
 author: anikaz
 manager: johndeu
@@ -11,21 +11,21 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: anzaman
 ms.openlocfilehash: 09e6fd8530ddb1745a92c6f31f4d5a5843a2ac10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76513161"
 ---
-# <a name="customizing-content-models-in-video-indexer"></a>在视频索引器中自定义内容模型
+# <a name="customizing-content-models-in-video-indexer"></a>自定义视频索引器中的内容模型
 
-视频索引器允许您自定义其某些型号，以适应您的特定用例。 这些模式包括[品牌](customize-brands-model-overview.md)、[语言和](customize-language-model-overview.md)[人](customize-person-model-overview.md)。 您可以使用视频索引器网站或 API 轻松自定义这些模型。
+视频索引器允许你自定义其一些模型，使其适应你的特定用例。 这些模型包含[品牌](customize-brands-model-overview.md)、[语言](customize-language-model-overview.md)和[人员](customize-person-model-overview.md)。 可以使用视频索引器网站或 API 轻松地自定义这些模型。
 
-本文提供了指向解释每种自定义类型优势的文章的链接。 本文还链接到说明如何实现每个模型的自定义的"执行指南"。
+本文提供了说明每种类型的自定义优点的文章的链接。 本文还将链接到介绍如何实现每个模型的自定义的操作方法指南。
 
 ## <a name="animated-characters"></a>动画字符
 
-* [动画角色检测](animated-characters-recognition.md)
+* [动画字符检测](animated-characters-recognition.md)
 
 ## <a name="brands-model"></a>品牌模型
 

@@ -1,6 +1,6 @@
 ---
-title: 创建流定位器并生成 URL - Azure 媒体服务
-description: 本文演示如何创建流式定位器和生成 URL。
+title: 创建流式处理定位符并生成 URL - Azure 媒体服务
+description: 本文演示如何创建流式处理定位符并生成 URL。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,17 +12,17 @@ ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
 ms.openlocfilehash: 2972c60aa5874c21a6f7bce21020ad58b5f3b556
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78304558"
 ---
-# <a name="create-a-streaming-locator-and-build-urls"></a>创建流式定位器并生成 URL
+# <a name="create-a-streaming-locator-and-build-urls"></a>创建流定位器并生成 URL
 
-在 Azure 媒体服务中，要生成流式处理 URL，需要首先创建[流式处理器](streaming-locators-concept.md)。 然后串联[流终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints)主机名和**流式处理器**路径。 在此示例中，使用*默认***流式处理终结点**。 首次创建媒体服务帐户时，此*默认***流式处理终结点**将处于停止状态，因此您需要调用**Start**开始流式传输。
+在 Azure 媒体服务中，若要生成流式处理 URL，首先需要创建[流式处理定位符](streaming-locators-concept.md)。 然后连接[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints)主机名和流式处理定位符  路径。 此示例使用默认的**流式处理终结点**  。 首次创建媒体服务帐户时，此默认的流式处理终结点  将处于停止状态，因此需要调用“Start”   来启动流式处理。
 
-本文演示如何创建流式处理器并使用 Java 和 .NET SDK 构建流式处理 URL。
+本文演示如何使用 Java 和 .NET SDK 创建流式处理定位符并生成流式处理 URL。
 
 ## <a name="prerequisite"></a>先决条件 
 
@@ -85,7 +85,7 @@ private static List<String> getStreamingUrls(MediaManager manager, String resour
 }
 ```
 
-请参阅完整的代码示例：[使用预定义预设进行编码](https://github.com/Azure-Samples/media-services-v3-java/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/src/main/java/sample/EncodingWithMESPredefinedPreset.java)
+请参阅完整代码示例：[EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-java/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/src/main/java/sample/EncodingWithMESPredefinedPreset.java)
 
 ## <a name="net"></a>.NET
 
@@ -158,9 +158,9 @@ private static async Task<IList<string>> GetStreamingUrlsAsync(
 }
 ```
 
-请参阅完整的代码示例：[使用预定义预设进行编码](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/Program.cs)
+请参阅完整代码示例：[EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/Program.cs)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [使用 .NET 创建筛选器](filters-dynamic-manifest-dotnet-howto.md)
 * [使用 REST 创建筛选器](filters-dynamic-manifest-rest-howto.md)
@@ -168,4 +168,4 @@ private static async Task<IList<string>> GetStreamingUrlsAsync(
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用 DRM 保护您的内容](protect-with-drm.md)。
+[使用 DRM 保护内容](protect-with-drm.md)。

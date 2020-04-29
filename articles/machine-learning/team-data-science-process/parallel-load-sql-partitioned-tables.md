@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 673a801e218d055bf482dc97972e36584cddd402
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76721330"
 ---
 # <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>生成并优化表以便快速将数据并行导入到 Azure VM 上的 SQL Server
@@ -25,7 +25,7 @@ ms.locfileid: "76721330"
 ## <a name="create-a-new-database-and-a-set-of-filegroups"></a>创建一个新数据库和一组文件组
 * [创建一个新数据库](https://technet.microsoft.com/library/ms176061.aspx)（如果不存在）。
 * 将数据库文件组添加到将保存已分区物理文件的数据库。 
-* 如果数据库已经存在，则可以使用[CREATE DATABASE（](https://technet.microsoft.com/library/ms176061.aspx)如果数据库已存在）或[ALTER 数据库](https://msdn.microsoft.com/library/bb522682.aspx)来完成此操作。
+* 该操作可以通过 [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx)（如果是新数据库）或通过 [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx)（如果数据库已存在）完成。
 * 向每个数据库文件组中添加一个或多个文件（根据需要）。
   
   > [!NOTE]
@@ -57,7 +57,7 @@ ms.locfileid: "76721330"
 ## <a name="create-a-partitioned-table"></a>创建已分区表
 若要根据映射到在上一步中创建的数据库文件组的数据架构创建分区表，必须先创建分区函数和方案。 将数据批量导入到分区表时，会根据分区方案在文件组之中分布记录，如下所述。
 
-### <a name="1-create-a-partition-function"></a>1. 创建分区函数
+### <a name="1-create-a-partition-function"></a>1.创建分区函数
 [创建分区函数](https://msdn.microsoft.com/library/ms187802.aspx)此函数用于定义要包括在每个分区表中的值/边界范围，例如，按 2013 年的月份（某些 \_datetime\_ 字段）限制分区：
   
         CREATE PARTITION FUNCTION <DatetimeFieldPFN>(<datetime_field>)  
@@ -66,7 +66,7 @@ ms.locfileid: "76721330"
             '20130501', '20130601', '20130701', '20130801',
             '20130901', '20131001', '20131101', '20131201' )
 
-### <a name="2-create-a-partition-scheme"></a>2. 创建分区方案
+### <a name="2-create-a-partition-scheme"></a>2.创建分区方案
 [创建分区方案](https://msdn.microsoft.com/library/ms179854.aspx)。 此方案将分区函数中的每个分区范围映射到物理文件组，例如：
   
         CREATE PARTITION SCHEME <DatetimeFieldPScheme> AS  
@@ -85,7 +85,7 @@ ms.locfileid: "76721330"
         INNER JOIN sys.partition_range_values prng ON prng.function_id=pfun.function_id
         WHERE pfun.name = <DatetimeFieldPFN>
 
-### <a name="3-create-a-partition-table"></a>3. 创建分区表
+### <a name="3-create-a-partition-table"></a>3.创建分区表
 [创建分区表](https://msdn.microsoft.com/library/ms174979.aspx)（根据数据架构），并指定用于对表进行分区的分区方案和约束字段，例如：
   
         CREATE TABLE <table_name> ( [include schema definition here] )
@@ -99,7 +99,7 @@ ms.locfileid: "76721330"
 * [更改数据库](https://msdn.microsoft.com/library/bb522682.aspx)，以将事务日志记录方案更改为 BULK_LOGGED 以最大限度降低日志记录开销，例如：
   
         ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
-* 若要加快数据加载，请并行启动批量导入操作。 有关加快将大数据批量导入 SQL Server 数据库的提示，请参阅[在不到 1 小时内加载 1 TB。](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx)
+* 若要加快数据加载，请并行启动批量导入操作。 有关将大数据大容量导入到 SQL Server 数据库中的提示，请参阅[在不到1小时内加载 1 TB](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx)。
 
 下面的 PowerShell 脚本是使用 BCP并行加载数据的示例。
 

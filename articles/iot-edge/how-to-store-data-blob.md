@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: bea00f429f31f2be62ee6a9c00f88873c595d94c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76509812"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>使用 IoT Edge 上的 Azure Blob 存储在边缘中存储数据
@@ -26,7 +26,7 @@ IoT Edge 上的 Azure Blob 存储在边缘提供了[块 blob](https://docs.micro
 * 需要在本地有效处理数据以便以较低的延迟访问数据，并尽快地对紧急情况做出反应。
 * 需要降低带宽成本，避免将 TB 量级的数据传输到云中。 可在本地处理数据，并仅将已处理的数据发送到云中。
 
-观看视频，快速介绍
+观看视频以了解快速简介
 > [!VIDEO https://www.youtube.com/embed/xbwgMNGB_3Y]
 
 此模块附带 **deviceToCloudUpload** 和 **deviceAutoDelete** 功能。
@@ -53,7 +53,7 @@ IoT Edge 上的 Azure Blob 存储在边缘提供了[块 blob](https://docs.micro
 * 指定以分钟为单位的时间 (deleteAfterMinutes)，该时间过后会自动删除这些 Blob。
 * 选择在 deleteAfterMinutes 值到期后保留上传的 Blob 的功能。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 Azure IoT Edge 设备：
 
@@ -83,7 +83,7 @@ Azure 中的标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)�
 | uploadOrder | NewestFirst、OldestFirst | 用于选择将数据复制到 Azure 的顺序。 默认设置为 `OldestFirst`。 顺序由 Blob 的上次修改时间确定。 <br><br> 环境变量：`deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
 | cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` 是一个连接字符串，用于指定要将数据上传到的存储帐户。 指定 `Azure Storage Account Name`、`Azure Storage Account Key` 或 `End point suffix`。 添加用于上传数据的适当 Azure EndpointSuffix，它在全局 Azure、政府 Azure 和 Microsoft Azure Stack 中是不同的。 <br><br> 可以选择在此处选择指定 Azure 存储 SAS 连接字符串。 但是，在此属性过期时必须将其更新。 <br><br> 环境变量：`deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
 | storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | 用于指定要上传到 Azure 的容器名称。 此模块允许指定源和目标容器名称。 如果未指定目标容器名称，系统会自动分配 `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>` 作为容器名称。 可以创建目标容器名称的模板字符串，具体请查看“可能的值”列。 <br>* %h -> IoT 中心名称（3 到 50 个字符）。 <br>* %d -> IoT Edge 设备 ID（1 到 129 个字符）。 <br>* %m -> 模块名称（1 到 64 个字符）。 <br>* %c -> 源容器名称（3 到 63 个字符）。 <br><br>容器名称的最大大小为 63 个字符。尽管系统会自动分配目标容器名称，但如果容器大小超过 63 个字符，系统会将每个部分（IoTHubName、IotEdgeDeviceID、ModuleName、SourceContainerName）修剪为 15 个字符。 <br><br> 环境变量：`deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target=<targetName>` |
-| deleteAfterUpload | true、false | 默认设置为 `false`。 设置为 `true` 时，上传到云存储完成后将自动删除数据。 <br><br> **注意**：如果使用追加 Blob，此设置将在成功上载后从本地存储中删除追加 Blob，并且将来对这些 blob 的任何追加块操作都将失败。 如果你的应用程序不经常追加操作或不支持连续追加操作，请谨慎使用此设置，不要启用此设置<br><br> 环境变量：`deviceToCloudUploadProperties__deleteAfterUpload={false,true}`。 |
+| deleteAfterUpload | true、false | 默认设置为 `false`。 设置为 `true` 时，上传到云存储完成后将自动删除数据。 <br><br> **警告**：如果使用追加 blob，此设置将在成功上传后从本地存储中删除追加 blob，以后对这些 Blob 的 append 块操作将失败。 如果你的应用程序不经常追加操作或不支持连续追加操作，请谨慎使用此设置，不要启用此设置<br><br> 环境变量：`deviceToCloudUploadProperties__deleteAfterUpload={false,true}`。 |
 
 ### <a name="deviceautodeleteproperties"></a>deviceAutoDeleteProperties
 
@@ -93,7 +93,7 @@ Azure 中的标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)�
 | ----- | ----- | ---- |
 | deleteOn | true、false | 默认设置为 `false`。 若要启用此功能，请将此字段设置为 `true`。 <br><br> 环境变量：`deviceAutoDeleteProperties__deleteOn={false,true}` |
 | deleteAfterMinutes | `<minutes>` | 以分钟为单位指定时间。 达到此值时，模块会自动删除本地存储中的 Blob。 <br><br> 环境变量：`deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
-| retainWhileUploading | true、false | 默认情况下，它设置为 `true`。在 deleteAfterMinutes 分钟过后，它会保留上传到云存储的 Blob。 可以将它设置为 `false`。在 deleteAfterMinutes 分钟过后，它会删除数据。 注意：对于此属性的工作上传应设置为 true。  <br><br> **注意**：如果使用追加 Blob，此设置将在值过期时从本地存储中删除追加 Blob，并且这些 blob 的任何将来追加块操作都将失败。 你可能需要确保到期值足够大，以满足应用程序执行追加操作的预期频率。<br><br> 环境变量：`deviceAutoDeleteProperties__retainWhileUploading={false,true}`|
+| retainWhileUploading | true、false | 默认情况下，它设置为 `true`。在 deleteAfterMinutes 分钟过后，它会保留上传到云存储的 Blob。 可以将它设置为 `false`。在 deleteAfterMinutes 分钟过后，它会删除数据。 注意：若要使用此属性，应将 uploadOn 设置为 true。  <br><br> **警告**：如果使用追加 blob，则当值过期时，此设置将从本地存储中删除追加 blob，对这些 blob 的任何将来追加块操作都将失败。 你可能需要确保到期值足够大，以满足应用程序执行追加操作的预期频率。<br><br> 环境变量：`deviceAutoDeleteProperties__retainWhileUploading={false,true}`|
 
 ## <a name="using-smb-share-as-your-local-storage"></a>使用 SMB 共享作为本地存储
 
@@ -127,7 +127,7 @@ New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -
 
 如果在 Linux 容器的 create 选项中对存储使用了[卷装入点](https://docs.docker.com/storage/volumes/)作为存储，则无需执行任何额外的步骤；但如果使用了[绑定装入点](https://docs.docker.com/storage/bind-mounts/)，则需要执行这些步骤才能正常运行服务。
 
-遵循将用户访问权限限制为执行其工作所需的最低权限的最低权限的原则，此模块包括用户（名称：absie，ID：11000）和用户组（名称：absie，ID：11000）。 如果容器以 **root** 身份启动（默认用户为 **root**），则我们的服务将以低特权的 **absie** 用户身份启动。
+按照最低权限原则将用户的访问权限限制为用户执行其工作所需的最低权限，此模块包括用户（名称： absie、ID：11000）和用户组（name： absie，ID：11000）。 如果容器以 **root** 身份启动（默认用户为 **root**），则我们的服务将以低特权的 **absie** 用户身份启动。
 
 由于存在此行为，要使服务正常运行，对主机路径绑定的权限配置至关重要，否则服务将会崩溃并出现拒绝访问错误。 目录绑定中使用的路径需可由容器用户（例如 absie 11000）访问。 可以通过在主机上执行以下命令，来为容器用户授予对目录的访问权限：
 
@@ -187,7 +187,7 @@ Azure Blob 存储文档包括多种语言的快速入门示例代码。 可以�
 * [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs-legacy.md)
 * [JS/HTML](../storage/blobs/storage-quickstart-blobs-javascript-client-libraries-legacy.md)
 * [Ruby](../storage/blobs/storage-quickstart-blobs-ruby.md)
-* [开始](../storage/blobs/storage-quickstart-blobs-go.md)
+* [Go](../storage/blobs/storage-quickstart-blobs-go.md)
 * [PHP](../storage/blobs/storage-quickstart-blobs-php.md)
 
 ## <a name="connect-to-your-local-storage-with-azure-storage-explorer"></a>通过 Azure 存储资源管理器连接到本地存储
@@ -216,7 +216,7 @@ IoT Edge 上的 Blob 存储模块使用 Azure 存储 SDK，并与适用于块 Bl
 
 由于并非所有 Azure Blob 存储操作都受 IoT Edge 上的 Azure Blob 存储支持，因此此部分列出了每项操作的状态。
 
-### <a name="account"></a>Account
+### <a name="account"></a>帐户
 
 受支持：
 

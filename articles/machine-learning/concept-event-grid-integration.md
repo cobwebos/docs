@@ -10,10 +10,10 @@ ms.author: andyxu
 author: gogowings
 ms.date: 11/04/2019
 ms.openlocfilehash: d8a975487c68a21b2c8b6fa2f07d86c312243f12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79139039"
 ---
 # <a name="consume-azure-machine-learning-events-preview"></a>使用 Azure 机器学习事件（预览版）
@@ -36,13 +36,13 @@ Azure 事件网格从源中（例如 Azure 机器学习和其他 Azure 服务）
 
 Azure 机器学习在机器学习生命周期的各个时间点提供事件： 
 
-| 事件类型 | 描述 |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | `Microsoft.MachineLearningServices.RunCompleted` | 在机器学习试验运行完成时引发 |
 | `Microsoft.MachineLearningServices.ModelRegistered` | 在工作区中注册机器学习模型时引发 |
 | `Microsoft.MachineLearningServices.ModelDeployed` | 当具有一个或多个模型的推理服务完成部署时引发 |
 | `Microsoft.MachineLearningServices.DatasetDriftDetected` | 当两个数据集的数据偏移检测作业完成时引发 |
-| `Microsoft.MachineLearningServices.RunStatusChanged` | 运行时更改运行状态时引发，当前仅在运行状态为"失败"时引发 |
+| `Microsoft.MachineLearningServices.RunStatusChanged` | 在运行状态更改时引发，当前仅在运行状态为“失败”时引发 |
 
 ## <a name="subscribe-to-machine-learning-events"></a>订阅机器学习事件
 
@@ -54,7 +54,7 @@ Azure 机器学习事件的订阅由基于角色的访问控制 (RBAC) 提供保
 事件订阅可以指定一个或多个 Azure 机器学习事件类型。
 
 ### <a name="filter-by-event-subject"></a>按事件使用者筛选
-Azure 事件网格支持基于“开头为”和“结尾为”匹配的主题筛选器________，将含有匹配使用者的事件传送给订阅方。 不同的机器学习事件具有不同的使用者格式。
+Azure 事件网格支持基于“开头为”和“结尾为”匹配的主题筛选器   ，将含有匹配使用者的事件传送给订阅方。 不同的机器学习事件具有不同的使用者格式。
 
 | 事件类型 | 使用者格式 | 示例使用者 |
 | ---------- | ----------- | ----------- |

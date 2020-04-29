@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: seodec18
 ms.openlocfilehash: 1ec0d9c7ecf16c60c32abdf08b358268f460edb0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77087211"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>预配和管理 Azure 时序见解预览版
@@ -23,7 +23,7 @@ ms.locfileid: "77087211"
 
 ## <a name="overview"></a>概述
 
-Azure 时间序列见解 预览环境是即*用即付*（PAYG） 环境。
+Azure 时序见解预览版环境为即*用即付*（PAYG）环境。
 
 预配 Azure 时序见解预览版环境时，我们创建以下 Azure 资源：
 
@@ -55,8 +55,8 @@ Azure 时间序列见解 预览环境是即*用即付*（PAYG） 环境。
 1. 输入时序 ID。
 
     > [!NOTE]
-    > * 时间序列 ID 区分*大小写*且*不可变*。 （一经设置，不可更改。）
-    > * 时间序列指示数最多只能*有三*个键。
+    > * 时序 ID*区分大小写*且*不可变*。 （一经设置，不可更改。）
+    > * 时序 Id 最多可包含*三个*键。
     > * 有关详细信息，请参阅[如何选择时序 ID](time-series-insights-update-how-to-id.md)
 
 1. 通过选择存储帐户名称并指定复制选项来创建 Azure 存储帐户。 这样做会自动创建 Azure 存储常规用途 v1 帐户。 该帐户在之前选择的 Azure 时序见解预览版环境所在的区域中创建。
@@ -65,11 +65,11 @@ Azure 时间序列见解 预览环境是即*用即付*（PAYG） 环境。
 
 1. **（可选）** 如果需要在环境中对最新数据进行更快且不受限制的查询，请为环境启用暖存储。 也可在创建时序见解预览版环境后，在左导航窗格中通过“存储配置”选项创建或删除暖存储。****
 
-    [![暖存储配置](media/v2-update-manage/create-and-manage-warm-storage.png)](media/v2-update-manage/create-and-manage-warm-storage.png#lightbox)
+    [![热存储配置](media/v2-update-manage/create-and-manage-warm-storage.png)](media/v2-update-manage/create-and-manage-warm-storage.png#lightbox)
 
 1. **（可选）** 可以现在就添加事件源， 也可以等到预配完实例后再添加。
 
-   * 时间序列见解支持[Azure IoT 中心](./time-series-insights-how-to-add-an-event-source-iothub.md)和 Azure[事件中心](./time-series-insights-how-to-add-an-event-source-eventhub.md)作为事件源选项。 虽然在创建环境时只能添加单个事件源，但可以在以后添加其他事件源。 
+   * 时序见解支持[Azure IoT 中心](./time-series-insights-how-to-add-an-event-source-iothub.md)和[azure 事件中心](./time-series-insights-how-to-add-an-event-source-eventhub.md)作为事件源选项。 虽然在创建环境时只能添加单个事件源，但可以在以后添加其他事件源。 
    
      在添加事件源时，可以选择现有的使用者组，也可以创建新的使用者组。 最好创建唯一的使用者组，确保所有事件对 Azure 时序见解预览版环境可见。
 

@@ -1,5 +1,5 @@
 ---
-title: 使用静态专用 IP 地址创建 VM - Azure PowerShell
+title: 创建具有静态专用 IP 地址的 VM-Azure PowerShell
 description: 了解如何使用 PowerShell 创建具有专用 IP 地址的虚拟机。
 services: virtual-network
 documentationcenter: na
@@ -17,10 +17,10 @@ ms.date: 02/07/2019
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: 1745ca176fac18b4903686cb556670531ee40a1a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79244753"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>使用 PowerShell 创建具有静态专用 IP 地址的虚拟机
@@ -108,5 +108,5 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解专用[IP 地址](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)并将[静态专用 IP 地址](virtual-network-network-interface-addresses.md#add-ip-addresses)分配给 Azure 虚拟机。
-- 了解有关创建[Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)和[Windows](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)虚拟机的更多信息。
+- 详细了解[专用 ip 地址](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)，并将[静态专用 ip 地址](virtual-network-network-interface-addresses.md#add-ip-addresses)分配给 Azure 虚拟机。
+- 了解有关创建[Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)和[Windows](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)虚拟机的详细信息。

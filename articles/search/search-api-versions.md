@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 178f56354120bf7a65c51f1c9cf54e34bd011d97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79137282"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Azure 认知搜索中的 API 版本
@@ -48,10 +48,10 @@ Azure 认知搜索会定期发布功能更新。 这些更新有时（但并非�
 >
 > 服务 REST API 和管理 REST API 的版本控制彼此独立。 版本号如有相似之处，实属巧合。
 
-正式版（或 GA）API 可以在生产中使用，并遵循 Azure 服务级别协议。 预览版中的实验功能并不总是会迁移到 GA 版本。 强烈建议不要在生产应用程序中使用预览版 API。****
+正式版（或 GA）API 可以在生产中使用，并遵循 Azure 服务级别协议。 预览版中的实验功能并不总是会迁移到 GA 版本。 强烈建议不要在生产应用程序中使用预览版 API。 
 
-## <a name="update-to-the-latest-version-of-the-rest-api-by-october-15-2020"></a>在 2020 年 10 月 15 日前更新到最新版本的 REST API
-以下版本的 Azure 认知搜索 REST API 将从 2020 年 10 月 15 日停用，不再受支持 **：2014-07-31-预览**版 **、2014-10-20 预览**版 **、2015-02-28 预览**版和**2015-02-28**。 此外，早于**3.0.0-rc**的 Azure 认知搜索 .NET SDK 版本也将停用，因为它们的目标是这些 REST API 版本之一。 在此日期之后，使用任何已弃用的 REST API 或 SDK 版本的应用程序将不再工作，必须升级。 与此类的任何更改一样，我们提前 12 个月通知，因此您有足够的时间进行调整。  要继续使用 Azure 认知搜索，请在 2020 年 10 月 15 日前将目标[REST API](search-api-migration.md)的现有代码迁移到 REST API[版本 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/)或更新版本或 .NET SDK 到[版本 3.0](search-dotnet-sdk-migration.md)或更新。  如果您对更新到最新版本有任何疑问，请在 2020 年azuresearch_contact@microsoft.com5 月 15 日前发送邮件，以确保有足够的时间更新代码。
+## <a name="update-to-the-latest-version-of-the-rest-api-by-october-15-2020"></a>在 2020 年 10 月 15 日之前，更新到最新版 REST API
+从 2020 年 10 月 15 日起，Azure 认知搜索 REST API 的以下版本将会停用，不再受支持：**2014-07-31-Preview**、**2014-10-20-Preview**、**2015-02-28-Preview** 和 **2015-02-28**。 此外，还将停用早于 **3.0.0-rc** 的 Azure 认知搜索 .NET SDK 版本，因为它们以这些 REST API 版本之一为目标。 在此日期之后，使用任何弃用的 REST API 或 SDK 版本的应用程序将不再能够正常运行，必须进行升级。 对于这种类型的任何更改，我们会提前 12 个月进行通知，以便你有足够的时间进行调整。  若要继续使用 Azure 认知搜索，请在 2020 年 10 月 15 日之前，将以 [REST API](search-api-migration.md) 为目标的现有代码迁移到 [REST API 版本 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) 或更新版本，或将 .NET SDK 迁移到[版本 3.0](search-dotnet-sdk-migration.md) 或更新版本。  若有关于更新到最新版本的任何问题，请在 2020 年 5 月 15 日之前发送邮件到 azuresearch_contact@microsoft.com，确保有足够的时间更新代码。
 
 ## <a name="about-preview-and-generally-available-versions"></a>关于预览版和正式版
 Azure 认知搜索始终先通过 REST API 预发布实验功能，再通过 .NET SDK 的预发布版本进行发布。

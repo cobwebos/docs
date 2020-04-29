@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: b36a3faab49ee8d51c25aa18879e6f5d1db8c2fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76716757"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>在 Azure 上使用 Scala 和 Spark 展开数据科研
@@ -224,7 +224,7 @@ Spark 可以读取和写入到 Azure Blob 存储。 可以使用 Spark 处理任
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**输出：**
+**输出**
 
 运行该单元格的时间：8 秒。
 
@@ -245,7 +245,7 @@ Spark 可以读取和写入到 Azure Blob 存储。 可以使用 Spark 处理任
     # SHOW ONLY THE TOP THREE ROWS
     sqlResultsDF.show(3)
 
-**输出：**
+**输出**
 
 | fare_amount | passenger_count | tip_amount | tipped |
 | --- | --- | --- | --- |
@@ -254,12 +254,12 @@ Spark 可以读取和写入到 Azure Blob 存储。 可以使用 Spark 处理任
 |        10.5 |2.0 |1.0 |1.0 |
 
 ## <a name="data-exploration-and-visualization"></a>数据浏览和可视化
-将数据引入到 Spark 中后，数据科学过程的下一步是通过浏览和可视化更深入地了解数据。 在此部分中，可以使用 SQL 查询检查出租车数据。 然后，将结果导入数据框，使用自动可视化 Jupyter 功能绘制目标变量和预期要素以进行目视检查。
+将数据引入到 Spark 中后，数据科学过程的下一步是通过浏览和可视化更深入地了解数据。 在此部分中，可以使用 SQL 查询检查出租车数据。 然后，将结果导入到数据帧中，以便使用自动可视化 Jupyter 功能绘制目标变量和用于视觉检查的预期功能。
 
 ### <a name="use-local-and-sql-magic-to-plot-data"></a>使用本地和 SQL magic 绘制数据
 默认情况下，从 Jupyter notebook 运行的任何代码片段的输出，在保留于辅助角色节点上的会话上下文中可用。 如果要将行程保存到辅助角色节点，以便每次计算，并且计算所需的所有数据都可以在 Jupyter 服务器节点（这是头节点）上本地可用，则可以使用 `%%local` magic 在 Jupyter 服务器上运行代码片段。
 
-* **SQL**魔法`%%sql`（ 。 HDInsight Spark 内核支持针对 SQLContext 的简单内联 HiveQL 查询。 （`-o VARIABLE_NAME`）参数在 Jupyter 服务器上将 SQL 查询的输出保留为 Pandas 数据帧。 此设置表示输出将在本地模式下可用。
+* **SQL 幻**数`%%sql`（）。 HDInsight Spark 内核支持针对 SQLContext 的简单内联 HiveQL 查询。 （`-o VARIABLE_NAME`）参数在 Jupyter 服务器上将 SQL 查询的输出保留为 Pandas 数据帧。 此设置表示输出将在本地模式下可用。
 * `%%local` **magic**。 `%%local`magic 在 Jupyter 服务器上本地运行代码，该服务器是 HDInsight 群集的头节点。 通常，将 `%%local` magic 与 `%%sql` magic 和 `-o` 参数结合使用。 `-o` 参数将本地保留 SQL 查询的输出，然后 `%%local` 将触发下一组代码片段，针对本地保留的 SQL 查询输出本地运行。
 
 ### <a name="query-the-data-by-using-sql"></a>使用 SQL 查询数据
@@ -327,7 +327,7 @@ Spark 可以读取和写入到 Azure Blob 存储。 可以使用 Spark 处理任
     plt.show()
 
 
-**输出：**
+**输出**
 
 ![小费金额直方图](./media/scala-walkthrough/plot-tip-amount-histogram.png)
 
@@ -409,7 +409,7 @@ MLlib 的建模和预测函数需要带有分类输入数据的特征在使用�
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**输出：**
+**输出**
 
 运行该单元格时间：4 秒。
 
@@ -448,7 +448,7 @@ MLlib 的建模和预测函数需要带有分类输入数据的特征在使用�
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**输出：**
+**输出**
 
 运行该单元格时间：2 秒。
 
@@ -491,7 +491,7 @@ MLlib 的建模和预测函数需要带有分类输入数据的特征在使用�
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**输出：**
+**输出**
 
 运行该单元格时间：4 秒。
 
@@ -594,7 +594,7 @@ MLlib 的建模和预测函数需要带有分类输入数据的特征在使用�
     println("ROC on test data = " + ROC)
 
 
-**输出：**
+**输出**
 
 测试数据的 ROC = 0.9827381497557599
 
@@ -632,7 +632,7 @@ MLlib 的建模和预测函数需要带有分类输入数据的特征在使用�
     plt.show()
 
 
-**输出：**
+**输出**
 
 ![有无小费 ROC 曲线](./media/scala-walkthrough/plot-roc-curve-tip-or-not.png)
 
@@ -665,7 +665,7 @@ MLlib 的建模和预测函数需要带有分类输入数据的特征在使用�
     println("ROC on test data = " + ROC)
 
 
-**输出：**
+**输出**
 
 测试数据的 ROC = 0.9847103571552683
 
@@ -721,7 +721,7 @@ MLlib 的建模和预测函数需要带有分类输入数据的特征在使用�
     println(s"Area under ROC curve: ${metrics.areaUnderROC}")
 
 
-**输出：**
+**输出**
 
 ROC 曲线为 0.9846895479241554 下的面积
 
@@ -773,7 +773,7 @@ ROC 曲线为 0.9846895479241554 下的面积
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**输出：**
+**输出**
 
 运行该单元格时间：13 秒。
 
@@ -804,7 +804,7 @@ ROC 曲线为 0.9846895479241554 下的面积
     println("R-sqr on test data = " + r2)
 
 
-**输出：**
+**输出**
 
 测试数据的 R-sqr = 0.5960320470835743
 
@@ -846,14 +846,14 @@ ROC 曲线为 0.9846895479241554 下的面积
     plt.axis([-1, 15, -1, 8])
     plt.show(ax)
 
-**输出：**
+**输出**
 
 ![小费金额：实际与预测](./media/scala-walkthrough/plot-actual-vs-predicted-tip-amount.png)
 
 ### <a name="create-a-gbt-regression-model"></a>创建 GBT 回归模型
 使用 Spark ML `GBTRegressor()` 函数创建 GBT 回归模型，并根据测试数据评估模型。
 
-[渐变提升树](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts)（GBTS） 是决策树的合奏。 GBTS 以迭代方式训练决策树，以尽量减少损失函数。 您可以使用 GBTS 进行回归和分类。 其可处理分类特征，不需要特征缩放，并且能够捕获非线性和特征交互。 它们还可以在多类分类设置中使用。
+[梯度提升树](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts)（gbt）是决策树的整体。 GBT 培训决策树，以最大程度地减少丢失函数。 您可以使用 GBT 进行回归和分类。 其可处理分类特征，不需要特征缩放，并且能够捕获非线性和特征交互。 它们还可以在多类分类设置中使用。
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
@@ -879,7 +879,7 @@ ROC 曲线为 0.9846895479241554 下的面积
     println("Test R-sqr is: " + Test_R2);
 
 
-**输出：**
+**输出**
 
 测试 R sqr 为：0.7655383534596654
 
@@ -936,7 +936,7 @@ ROC 曲线为 0.9846895479241554 下的面积
     println("Test R-sqr is: " + Test_R2);
 
 
-**输出：**
+**输出**
 
 测试 R sqr 为：0.6226484708501209
 
@@ -980,7 +980,7 @@ ROC 曲线为 0.9846895479241554 下的面积
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**输出：**
+**输出**
 
 运行该单元格时间：33 秒。
 
@@ -1095,7 +1095,7 @@ ROC 曲线为 0.9846895479241554 下的面积
     val test_rsqr = new RegressionMetrics(labelAndPreds).r2
 
 
-**输出：**
+**输出**
 
 运行该单元格时间：61 秒。
 

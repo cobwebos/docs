@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
 ms.openlocfilehash: e75e3f3eecf6c34050aeaa7fe387fffb0de58a74
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76513195"
 ---
 # <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>从 Windows Azure 媒体编码器迁移到 Media Encoder Standard
 
-本文讨论从旧版 Windows Azure 媒体编码器 （WAME） 媒体处理器（正在停用）迁移到媒体编码器标准媒体处理器的步骤。 有关停用日期，请参阅此[遗留组件](legacy-components.md)主题。
+本文介绍了从旧 Windows Azure 媒体编码器 (WAME) 媒体处理器（即将停用）迁移到 Media Encoder Standard 媒体处理器的步骤。 有关停用日期，请参阅此[旧组件](legacy-components.md)主题。
 
 使用 WAME 对文件进行编码时，客户通常使用了命名预设字符串，如 `H264 Adaptive Bitrate MP4 Set 1080p`。 为了进行迁移，需要更新代码以使用 **Media Encoder Standard** 媒体处理器而不是 WAME，以及一个等效的[系统预设](media-services-mes-presets-overview.md)（如 `H264 Multiple Bitrate 1080p`）。 
 
@@ -74,9 +74,9 @@ ITask task = job.Tasks.AddNew("My encoding task",
 * Media Encoder Standard 生成项目，例如包含[输入文件元数据](media-services-input-metadata-schema.md)和[输出文件元数据](media-services-output-metadata-schema.md)的文件。
 * 如[定价页](https://azure.microsoft.com/pricing/details/media-services/#encoding)（特别是“常见问题解答”部分）所述，使用 Media Encoder Standard 对视频进行编码时，将根据作为输出产生的文件的持续时间进行计费。 使用 WAME，将根据输入视频文件和输出视频文件的大小进行计费。
 
-## <a name="need-help"></a>需要帮助？
+## <a name="need-help"></a>需要帮助吗?
 
-您可以通过导航到["新建支持"请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)来打开支持票证
+可以通过导航到 "[新建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)" 来打开支持票证
 
 ## <a name="next-steps"></a>后续步骤
 

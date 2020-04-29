@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 0708e395eff90ff5b889c05f0fd5e7a98205c5bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76721891"
 ---
 # <a name="collaborative-coding-with-git"></a>使用 Git 进行协作编程
@@ -25,11 +25,11 @@ ms.locfileid: "76721891"
 
 使用 Azure DevOps 可以轻松地将 Azure Boards“用户情景”或“任务”工作项与 Azure Repos Git 存储库分支连接起来。 可以将用户情景或任务直接链接到与之关联的代码。 
 
-若要将工作项连接到新分支，请选择该工作项旁边的“操作”**** 省略号（**...**），并在上下文菜单上，滚动到并选中“新分支”****。  
+若要将工作项连接到新分支，请选择该工作项旁边的“操作”  省略号（ **...** ），并在上下文菜单上，滚动到并选中“新分支”  。  
 
 ![1](./media/collaborative-coding-with-git/1-sprint-board-view.png)
 
-在“创建分支”**** 对话框中，提供新的分支名称和基本 Azure Repos Git 存储库和基分支。 基本存储库必须与工作项位于同一 Azure DevOps 项目中。 基分支可以是主分支或其他某个现有分支。 选择“创建分支”****。 
+在“创建分支”  对话框中，提供新的分支名称和基本 Azure Repos Git 存储库和基分支。 基本存储库必须与工作项位于同一 Azure DevOps 项目中。 基分支可以是主分支或其他某个现有分支。 选择“创建分支”  。 
 
 ![2](./media/collaborative-coding-with-git/2-create-a-branch.png)
 
@@ -55,7 +55,7 @@ git checkout <working branch name>
 
 ![3](./media/collaborative-coding-with-git/3-git-branches.png)
 
-还可以将工作项链接到现有的分支。 在工作项的“详细信息”**** 页上，选择“添加链接”****。 然后选择要将工作项链接到的现有分支，并选择“确定”****。 
+还可以将工作项链接到现有的分支。 在工作项的“详细信息”  页上，选择“添加链接”  。 然后选择要将工作项链接到的现有分支，并选择“确定”  。 
 
 ![4](./media/collaborative-coding-with-git/4-link-to-an-existing-branch.png)
 
@@ -74,13 +74,13 @@ git push origin script
 
 ## <a name="create-a-pull-request"></a><a name='CreateapullrequestonVSTS-3'></a>创建拉取请求
 
-在执行了一个或多个提交和推送后，如果已准备好将当前工作分支合并到它的基分支中时，可以在 Azure Repos 中创建并提交一个拉取请求**。 
+在执行了一个或多个提交和推送后，如果已准备好将当前工作分支合并到它的基分支中时，可以在 Azure Repos 中创建并提交一个拉取请求  。 
 
-从 Azure DevOps 项目的主页中，指向左侧导航中的 **"存储库** > **拉取"请求**。 然后选择“新建拉取请求”**** 按钮，或“创建拉取请求”**** 链接。
+在 Azure DevOps 项目的主页中，指向左侧导航栏中的“存储库”   > “拉取请求”  。 然后选择“新建拉取请求”  按钮，或“创建拉取请求”  链接。
 
 ![6](./media/collaborative-coding-with-git/6-spring-create-pull-request.png)
 
-如有必要，请在“新建拉取请求”**** 屏幕上，导航到要将更改合并到的 Git 存储库和分支。 添加或更改所需的任何其他信息。 在 **"审阅者**"下，添加审阅者的名称，然后选择"**创建**"。 
+如有必要，请在“新建拉取请求”  屏幕上，导航到要将更改合并到的 Git 存储库和分支。 添加或更改所需的任何其他信息。 在 "**审阅者**" 下，添加审阅者的姓名，然后选择 "**创建**"。 
 
 ![7](./media/collaborative-coding-with-git/7-spring-send-pull-request.png)
 
@@ -90,15 +90,15 @@ git push origin script
 
 ![8](./media/collaborative-coding-with-git/8-add_comments.png)
 
-审阅者批准更改后，你或具有合并权限的其他人可以将工作分支合并到它的基分支中。 选择“完成”****，然后在“完成拉取请求”**** 对话框中选择“完成合并”****。 可选择在合并完此工作分支后将其删除。 
+审阅者批准更改后，你或具有合并权限的其他人可以将工作分支合并到它的基分支中。 选择“完成”  ，然后在“完成拉取请求”  对话框中选择“完成合并”  。 可选择在合并完此工作分支后将其删除。 
 
 ![10](./media/collaborative-coding-with-git/10-spring-complete-pullrequest.png)
 
-确认该请求已被标记为“已完成”****。 
+确认该请求已被标记为“已完成”  。 
 
 ![11](./media/collaborative-coding-with-git/11-spring-merge-pullrequest.png)
 
-返回到左侧导航栏中的“存储库”**** 时，可以看到已切换到主分支，因为 `script` 分支已被删除。
+返回到左侧导航栏中的“存储库”  时，可以看到已切换到主分支，因为 `script` 分支已被删除。
 
 ![12](./media/collaborative-coding-with-git/12-spring-branch-deleted.png)
 

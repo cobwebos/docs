@@ -12,15 +12,15 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 8f696f1c6c414cd9db082e79e0f34c56156e1ee0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76722486"
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>使用 Azure 数据工厂将数据从本地 SQL 服务器移到 SQL Azure
 
-本文演示如何使用 Azure 数据工厂 （ADF） 通过 Azure Blob 存储将数据从本地 SQL Server 数据库移动到 SQL Azure 数据库：此方法是受支持的旧方法，具有复制暂存副本的优点，但[我们建议查看数据迁移页以获取最新选项](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1)。
+本文介绍如何使用 Azure 数据工厂（ADF）通过 Azure Blob 存储将数据从本地 SQL Server 数据库移动到 SQL Azure 数据库：此方法是受支持的旧版方法，该方法具有已复制的暂存副本的优点，但[我们建议查看数据迁移页获取最新的选项](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1)。
 
 有关汇总了用于将数据移到 Azure SQL 数据库的各种选项的表格，请参阅[将数据移到 Azure SQL 数据库进行 Azure 机器学习](move-sql-azure.md)。
 
@@ -32,27 +32,27 @@ Azure 数据工厂是一项完全托管、基于云的数据集成服务，可�
 在以下情况中，请考虑使用 ADF：
 
 * 在同时访问本地和云资源的混合方案中需要不断迁移数据时
-* 当数据需要转换或在迁移时向其添加业务逻辑时。
+* 数据需要转换或在迁移时向其添加业务逻辑时。
 
 ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定期管理数据移动。 ADF 还具有其他功能，例如支持复杂操作。 有关 ADF 的详细信息，请参阅 [Azure 数据工厂 (ADF)](https://azure.microsoft.com/services/data-factory/) 中的文档。
 
 ## <a name="the-scenario"></a><a name="scenario"></a>方案
-我们设置了一个由两个数据迁移活动组成的 ADF 管道。 它们每天在本地 SQL 数据库和云中的 Azure SQL 数据库之间移动数据。 这两个活动是：
+我们设置了一个由两个数据迁移活动组成的 ADF 管道。 它们共同在本地 SQL 数据库和云中的 Azure SQL 数据库之间每天移动数据。 这两个活动是：
 
 * 从本地 SQL Server 数据库将数据复制到 Azure Blob 存储帐户
 * 从 Azure Blob 存储帐户将数据复制到 Azure SQL 数据库。
 
 > [!NOTE]
-> 此处显示的步骤已根据 ADF 团队提供的更详细的教程进行了调整：将[数据从本地 SQL Server 数据库复制到 Azure Blob 存储](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/)引用，该主题的相关部分在适当的时候提供。
+> 此处所示的步骤改编自 ADF 团队提供的更详细教程：[将数据从本地 SQL Server 数据库复制到 Azure Blob 存储](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) 在适当时候提供了对该主题相关部分的引用。
 >
 >
 
 ## <a name="prerequisites"></a><a name="prereqs"></a>先决条件
 本教程假设你拥有：
 
-* **Azure 订阅**。 如果尚无订阅，可注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure 存储帐户**。 在本教程中，将使用 Azure 存储帐户存储数据。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-account-create.md)一文。 创建存储帐户后，需要获取用于访问存储的帐户密钥。 请参阅[管理存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)。
-* 访问 **Azure SQL 数据库**。 如果必须设置 Azure SQL 数据库，则主题["使用 Microsoft Azure SQL 数据库入门](../../sql-database/sql-database-get-started.md)"提供了有关如何预配 Azure SQL 数据库新实例的信息。
+* 一个 **Azure 订阅**。 如果尚无订阅，可注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* 一个 **Azure 存储帐户**。 在本教程中，将使用 Azure 存储帐户存储数据。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-account-create.md)一文。 创建存储帐户后，需要获取用于访问存储的帐户密钥。 请参阅[管理存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)。
+* 访问 **Azure SQL 数据库**。 如果必须设置 Azure SQL 数据库，可在主题 [Microsoft Azure SQL 数据库入门](../../sql-database/sql-database-get-started.md)中找到相关信息，了解如何预配 Azure SQL 数据库的新实例。
 * 已在本地安装和配置 **Azure PowerShell**。 有关说明，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 > [!NOTE]
@@ -69,7 +69,7 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 [创建 Azure 数据工厂](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory)中提供了在 [Azure 门户](https://portal.azure.com/)中创建新的 Azure 数据工厂和资源组的相关说明。 将新的 ADF 实例命名为 *adfdsp*，将创建的资源组命名为 *adfdsprg*。
 
 ## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>安装和配置 Azure 数据工厂集成运行时
-集成运行时是 Azure 数据工厂用于跨不同网络环境提供数据集成功能的客户管理的数据集成基础结构。 此运行时以前称为“数据管理网关”。
+Integration Runtime 是由 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的客户托管的数据集成基础结构。 此运行时以前称为“数据管理网关”。
 
 若要进行设置，请[按照有关创建管道的说明进行操作](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline)
 
@@ -78,7 +78,7 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 
 1. 本地 SQL Server
 2. Azure Blob 存储
-3. Azure SQL 数据库
+3. Azure SQL Database
 
 [创建链接服务](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)中提供了创建链接服务的分步过程。
 
@@ -93,8 +93,8 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 
 表中基于 JSON 的定义使用以下名称：
 
-* 本地 SQL server 中的“表名”**** 为 nyctaxi_data**
-* Azure Blob 存储帐户中的**容器名**为 containername**
+* 本地 SQL server 中的“表名”  为 nyctaxi_data 
+* Azure Blob 存储帐户中的**容器名**为 containername 
 
 此 ADF 管道所需的表定义有 3 个：
 
@@ -136,9 +136,9 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 }
 ```
 
-此处不包括列名称。 您可以通过在此处包括列名称来子选择它们（有关详细信息，请查看[ADF 文档](../../data-factory/copy-activity-overview.md)主题）。
+此处不包括列名称。 可以通过在列名称中包含它们来对其进行选择（有关详细信息，请参阅[ADF 文档](../../data-factory/copy-activity-overview.md)主题）。
 
-将表的 JSON 定义复制到名为 onpremtabledef.json** 的文件中，并将其保存到已知位置（此处假定为 *C:\temp\onpremtabledef.json*）。 使用以下 Azure PowerShell cmdlet 在 ADF 中创建表：
+将表的 JSON 定义复制到名为 onpremtabledef.json  的文件中，并将其保存到已知位置（此处假定为 *C:\temp\onpremtabledef.json*）。 使用以下 Azure PowerShell cmdlet 在 ADF 中创建表：
 
     New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
 
@@ -171,7 +171,7 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 }
 ```
 
-将表的 JSON 定义复制到名为 bloboutputtabledef.json** 的文件中，并将其保存到已知位置（此处假定为 *C:\temp\bloboutputtabledef.json*）。 使用以下 Azure PowerShell cmdlet 在 ADF 中创建表：
+将表的 JSON 定义复制到名为 bloboutputtabledef.json  的文件中，并将其保存到已知位置（此处假定为 *C:\temp\bloboutputtabledef.json*）。 使用以下 Azure PowerShell cmdlet 在 ADF 中创建表：
 
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json
 
@@ -203,7 +203,7 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 }
 ```
 
-将表的 JSON 定义复制到名为 AzureSqlTable.json** 的文件中，并将其保存到已知位置（此处假定为 *C:\temp\AzureSqlTable.json*）。 使用以下 Azure PowerShell cmdlet 在 ADF 中创建表：
+将表的 JSON 定义复制到名为 AzureSqlTable.json  的文件中，并将其保存到已知位置（此处假定为 *C:\temp\AzureSqlTable.json*）。 使用以下 Azure PowerShell cmdlet 在 ADF 中创建表：
 
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json
 
@@ -211,7 +211,7 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 ## <a name="define-and-create-the-pipeline"></a><a name="adf-pipeline"></a>定义和创建管道
 使用以下基于脚本的过程，指定属于管道的活动并创建管道。 可使用 JSON 文件定义管道属性。
 
-* 该脚本假设管道名称**** 是 AMLDSProcessPipeline**。
+* 该脚本假设管道名称  是 AMLDSProcessPipeline  。
 * 另请注意：我们将管道的周期设置为每天执行，并且为作业使用默认的执行时间（UTC 的凌晨 12 点）。
 
 > [!NOTE]
@@ -302,4 +302,4 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 
 在管道执行后，应能看到数据显示在为 blob 选择的容器中，每天一个文件。
 
-我们没有利用 ADF 提供的功能来增量地管道数据。 若要深入了解如何执行此操作以及 ADF 提供的其他功能，请参阅 [ADF 文档](https://azure.microsoft.com/services/data-factory/)。
+我们尚未将 ADF 提供的功能增量用于管道数据。 若要深入了解如何执行此操作以及 ADF 提供的其他功能，请参阅 [ADF 文档](https://azure.microsoft.com/services/data-factory/)。
