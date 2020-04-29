@@ -14,10 +14,10 @@ ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 0585c1251ba18e1390f3eee28a989edee6eb8591
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77616931"
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复 
@@ -40,7 +40,7 @@ Azure 上的 SAP HANA（大型实例）在四个地缘政治区域（美国、�
 
 下表显示了当前支持的高可用性和灾难恢复方法与组合：
 
-| HANA 大型实例支持的方案 | 高可用性选项 | 灾难恢复选项 | 注释 |
+| HANA 大型实例支持的方案 | 高可用性选项 | 灾难恢复选项 | 说明 |
 | --- | --- | --- | --- |
 | 单节点 | 不可用。 | 专用 DR 设置。<br /> 多用途 DR 设置。 | |
 | 主机自动故障转移：横向扩展（使用或不使用备用）<br /> 包括 1+1 | 在备用节点充当活动角色的情况下可行。<br /> HANA 控制角色切换。 | 专用 DR 设置。<br /> 多用途 DR 设置。<br /> 使用存储复制实现 DR 同步。 | HANA 卷集将附加到所有节点。<br /> DR 站点必须拥有相同的节点数。 |
@@ -69,7 +69,7 @@ Azure 上的 SAP HANA（大型实例）在四个地缘政治区域（美国、�
 
 若要利用 HANA 大型实例的灾难恢复功能，需要规划好与两个 Azure 区域之间的网络连接。 需使用一条 Azure ExpressRoute 线路从本地连接到主要 Azure 区域，使用另一个线路从本地连接到灾难恢复区域。 这种措施可以应对 Azure 区域（包括 Microsoft 企业边缘路由器 (MSEE) 位置）中出现的问题。
 
-还可以采取第二种措施，就是将连接到某个区域中 Azure 上的 SAP HANA（大型实例）的所有 Azure 虚拟网络都连接到 ExpressRoute 线路，此线路将连接其他区域的 HANA 大型实例。 使用此*交叉连接*，在区域 1 中的 Azure 虚拟网络上运行的服务可以连接到区域 2 中的 HANA 大型实例单元，相反。 这种措施可以避免当 Azure 离线时，只有一个 MSEE 位置连接到本地位置。
+还可以采取第二种措施，就是将连接到某个区域中 Azure 上的 SAP HANA（大型实例）的所有 Azure 虚拟网络都连接到 ExpressRoute 线路，此线路将连接其他区域的 HANA 大型实例。 通过此*交叉连接*，在区域1中的 Azure 虚拟网络上运行的服务可以连接到区域2中的 HANA 大型实例单元，也可以连接到其他方法。 这种措施可以避免当 Azure 离线时，只有一个 MSEE 位置连接到本地位置。
 
 下图展示了灾难恢复方案的弹性配置：
 

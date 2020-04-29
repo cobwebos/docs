@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
 ms.openlocfilehash: 489a90180454e2b4a9dad34730fbd3c4f235a2ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77598096"
 ---
 # <a name="upgrade-the-service-fabric-version-that-runs-on-your-cluster"></a>升级群集上运行的 Service Fabric 版本 
@@ -26,10 +26,10 @@ ms.locfileid: "77598096"
 可以使用两个不同的工作流将群集升级至最新版本或受支持的 Service Fabric 版本。 其中一个工作流适用于已建立网络连接，可自动下载最新版本的群集。 另一个工作流适用于未建立网络连接，无法下载最新 Service Fabric 版本的群集。
 
 ## <a name="enable-auto-upgrade-of-the-service-fabric-version-of-your-cluster"></a>支持自动升级群集的 Service Fabric 版本
-要将群集设置为在 Microsoft 发布新版本时下载 Service Fabric 的更新，可将 `fabricClusterAutoupgradeEnabled` 群集配置设置为 true**。 若要手动选择希望群集一直使用的某个受支持的 Service Fabric 版本，可将 `fabricClusterAutoupgradeEnabled` 群集配置设置为 false**。
+要将群集设置为在 Microsoft 发布新版本时下载 Service Fabric 的更新，可将 `fabricClusterAutoupgradeEnabled` 群集配置设置为 true**。 若要手动选择希望群集一直使用的某个受支持的 Service Fabric 版本，可将 `fabricClusterAutoupgradeEnabled` 群集配置设置为 false  。
 
 ## <a name="upgrade-clusters-that-have-connectivity-to-download-the-latest-code-and-configuration"></a>升级已建立网络连接，可下载最新代码和配置的群集
-如果您的群集节点与[Microsoft 下载中心](https://download.microsoft.com)具有互联网连接，请使用以下步骤将群集升级到受支持的版本。
+如果群集节点可以通过 internet 连接到[Microsoft 下载中心](https://download.microsoft.com)，请使用以下步骤将群集升级到受支持的版本。
 
 对于可以连接到 [Microsoft 下载中心](https://download.microsoft.com)的群集，Microsoft 会定期检查新的 Service Fabric 版本是否已发布。
 
@@ -37,11 +37,11 @@ ms.locfileid: "77598096"
 
 “当前的群集版本 [版本号] 支持在 [日期] 结束。”
 
-群集运行最新版本后，警告会消失。
+群集运行最新版本后，警告将会消失。
 
 看到群集运行状况警告时，请更新群集：
 
-1. 从对已被列为群集中节点的所有计算机具有管理员访问权限的任何计算机中连接到该群集。 运行此脚本的计算机不一定是群集的一部分。
+1. 从对群集配置文件中列为节点的所有计算机拥有管理员访问权限的任何计算机连接到该群集。 运行此脚本的计算机不一定是群集的一部分。
 
     ```powershell
     ###### connect to the secure cluster using certs
@@ -85,7 +85,7 @@ ms.locfileid: "77598096"
 
     解决造成回滚的问题后，请遵循前面所述的相同步骤再次启动升级。
 
-## <a name="upgrade-clusters-that-have-no-connectivity-to-download-the-latest-code-and-configuration"></a>升级*未建立网络连接*，无法下载最新代码和配置的群集
+## <a name="upgrade-clusters-that-have-no-connectivity-to-download-the-latest-code-and-configuration"></a>升级 *未建立网络连接*，无法下载最新代码和配置的群集
 如果群集节点未与 [Microsoft 下载中心](https://download.microsoft.com)建立 Internet 连接，请使用以下步骤将群集升级到支持的版本。
 
 > [!NOTE]
@@ -94,11 +94,11 @@ ms.locfileid: "77598096"
 >
 
 ### <a name="auto-provisioning-vs-manual-provisioning"></a>自动预配与手动预配
-若要为最新代码版本启用自动下载和注册，请设置 Service Fabric 更新服务。 有关说明，请参阅[独立包](service-fabric-cluster-standalone-package-contents.md)中的 Tools\ServiceFabricUpdateService.zip\Readme_InstructionsAndHowTos.txt**。
+若要为最新代码版本启用自动下载和注册，请设置 Service Fabric 更新服务。 有关说明，请参阅[独立包](service-fabric-cluster-standalone-package-contents.md)中的 Tools\ServiceFabricUpdateService.zip\Readme_InstructionsAndHowTos.txt  。
 
 对于手动步骤，请根据以下说明操作。
 
-在开始配置升级之前，修改群集配置以将以下属性设置为*false：*
+在启动配置升级之前，请修改群集配置，将以下属性设置为 *false*。
 
 ```json
 "fabricClusterAutoupgradeEnabled": false,
@@ -121,7 +121,7 @@ ms.locfileid: "77598096"
     Get-ServiceFabricRuntimeUpgradeVersion -BaseVersion <TargetCodeVersion as noted in Step 1> 
     ```
 
-3. 从对已被列为群集中节点的所有计算机具有管理员访问权限的任何计算机中连接到该群集。 运行此脚本的计算机不一定是群集的一部分。
+3. 从对群集配置文件中列为节点的所有计算机拥有管理员访问权限的任何计算机连接到该群集。 运行此脚本的计算机不一定是群集的一部分。
 
     ```powershell
     ###### Get the list of available Service Fabric versions
@@ -130,7 +130,7 @@ ms.locfileid: "77598096"
     ###### Here is a filled-out example
     Copy-ServiceFabricClusterPackage -Code -CodePackagePath .\MicrosoftAzureServiceFabric.5.3.301.9590.cab -ImageStoreConnectionString "fabric:ImageStore"
     ```
-4. 将下载的程序包复制到群集映像存储中。
+4. 将下载的包复制到群集映像存储区中。
 
 5. 注册复制的程序包。
 

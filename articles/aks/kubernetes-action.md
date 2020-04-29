@@ -7,15 +7,15 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: atulmal
 ms.openlocfilehash: 5ee8ee4d2c9e225d82e58daffeef9e5f09e43e6b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77595359"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>用于将容器部署到 Kubernetes 服务的 GitHub Actions
 
-可以通过 [GitHub Actions](https://help.github.com/en/articles/about-github-actions) 灵活地生成自动化软件开发生命周期工作流。 库伯内斯操作[azure/aks-set-context@v1](https://github.com/Azure/aks-set-context)有助于部署到 Azure 库伯奈斯服务群集。 此操作设置目标 AKS 群集上下文，该上下文可供其他操作（例如 [azure/k8s-deploy](https://github.com/Azure/k8s-deploy/tree/master)、[azure/k8s-create-secret](https://github.com/Azure/k8s-create-secret/tree/master) 等）使用，也可运行任何 kubectl 命令。
+可以通过 [GitHub Actions](https://help.github.com/en/articles/about-github-actions) 灵活地生成自动化软件开发生命周期工作流。 Kubernetes 操作 [azure/aks-set-context@v1](https://github.com/Azure/aks-set-context) 促进到 Azure Kubernetes 服务群集的部署。 此操作设置目标 AKS 群集上下文，该上下文可供其他操作（例如 [azure/k8s-deploy](https://github.com/Azure/k8s-deploy/tree/master)、[azure/k8s-create-secret](https://github.com/Azure/k8s-create-secret/tree/master) 等）使用，也可运行任何 kubectl 命令。
 
 工作流通过存储库的 `/.github/workflows/` 路径中的 YAML (.yml) 文件定义。 此定义包含组成工作流的各种步骤和参数。
 
@@ -24,14 +24,14 @@ ms.locfileid: "77595359"
 |部分  |任务  |
 |---------|---------|
 |**身份验证** | 登录到专用容器注册表 (ACR) |
-|**建立** | 生成和推送容器映像  |
-|**部署** | 1. 设置目标 AKS 群集 |
-| |2. 在库伯内斯群集中创建通用/docker 注册密钥  |
-||3. 部署到库伯奈斯群集|
+|**生成** | 生成和推送容器映像  |
+|**部署** | 1.设置目标 AKS 群集 |
+| |2.在 Kubernetes 群集中创建通用/docker 注册表机密  |
+||3.部署到 Kubernetes 群集|
 
 ## <a name="create-a-service-principal"></a>创建服务主体
 
-可以在 [Azure CLI](https://docs.microsoft.com/cli/azure/) 中使用 [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令创建[服务主体](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)。 可以使用 Azure 门户中的[Azure 云外壳](https://shell.azure.com/)运行此命令，也可以选择"**试用"** 按钮。
+可以在 [Azure CLI](https://docs.microsoft.com/cli/azure/) 中使用 [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令创建[服务主体](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)。 你可以使用 Azure 门户中[Azure Cloud Shell](https://shell.azure.com/)或通过选择 "**试用**" 按钮来运行此命令。
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP> --sdk-auth
@@ -76,8 +76,8 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 | **参数**  | **说明**  |
 |---------|---------|
 | **namespace** | （可选）选择目标 Kubernetes 命名空间。 如果未提供命名空间，则命令会在默认命名空间中运行 | 
-| **体现** |  （必需）将要用于部署的清单文件的路径 |
-| **图像** | （可选）将要用于在清单文件上进行替换的映像的完全限定资源 URL |
+| **进行** |  （必需）将要用于部署的清单文件的路径 |
+| **images** | （可选）将要用于在清单文件上进行替换的映像的完全限定资源 URL |
 | **imagepullsecrets** | （可选）已在群集中设置的 docker 注册表机密的名称。 这些机密名称的每一个都在输入清单文件中的工作负载的 imagePullSecrets 字段下添加 |
 | **kubectl-version** | （可选）安装 kubectl 二进制文件的特定版本 |
 

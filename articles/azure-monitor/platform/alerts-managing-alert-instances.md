@@ -5,10 +5,10 @@ ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 1910b3b474012365e8117f584379b2b29f8ce3de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77667612"
 ---
 # <a name="manage-alert-instances-with-unified-alerts"></a>使用统一警报管理警报实例
@@ -22,25 +22,25 @@ ms.locfileid: "77667612"
 
 可以通过以下任意一种方式转到“警报”页：
 
-- 在 [Azure 门户](https://portal.azure.com/)中，选择“监视” > “警报”。********  
+- 在 [Azure 门户](https://portal.azure.com/)中，选择“监视” **“警报”。**  >    
 
      ![监视警报的屏幕截图](media/alerts-managing-alert-instances/monitoring-alerts-managing-alert-instances-toc.jpg)
   
-- 使用特定资源的上下文。 打开资源，转到“监视”**** 部分，然后选择“警报”****。 登陆页已经过预先筛选，以显示有关特定资源的警报。
+- 使用特定资源的上下文。 打开资源，转到“监视”  部分，然后选择“警报”  。 登陆页已经过预先筛选，以显示有关特定资源的警报。
 
      ![资源监视警报的屏幕截图](media/alerts-managing-alert-instances/alert-resource.JPG)
 
-- 使用特定资源组的上下文。 打开资源组，转到“监视”**** 部分，然后选择“警报”****。 登陆页已经过预先筛选，以显示有关特定资源的警报。    
+- 使用特定资源组的上下文。 打开资源组，转到“监视”  部分，然后选择“警报”  。 登陆页已经过预先筛选，以显示有关特定资源的警报。    
 
      ![资源组监视警报的屏幕截图](media/alerts-managing-alert-instances/alert-rg.JPG)
 
 ## <a name="find-alert-instances"></a>查找警报实例
 
-“警报摘要”**** 页提供了整个 Azure 中的所有警报实例的概览。 可以通过选择**多个订阅**（最多 5 个）或通过在**资源组**、特定**资源**或**时间范围**中进行筛选来修改摘要视图。 选择“警报总数”**** 或任何严重性区段可以转到警报的列表视图。     
+“警报摘要”  页提供了整个 Azure 中的所有警报实例的概览。 可以通过选择**多个订阅**（最多 5 个）或通过在**资源组**、特定**资源**或**时间范围**中进行筛选来修改摘要视图。 选择“警报总数”  或任何严重性区段可以转到警报的列表视图。     
 
 ![“警报摘要”页的屏幕截图](media/alerts-managing-alert-instances/alerts-summary.jpg)
  
-在“所有警报”**** 页上，列出了 Azure 上的所有警报实例。 如果是从警报通知进入到门户中，则可以使用可用的筛选器在该特定的警报实例上收缩范围。
+在“所有警报”  页上，列出了 Azure 上的所有警报实例。 如果是从警报通知进入到门户中，则可以使用可用的筛选器在该特定的警报实例上收缩范围。
 
 > [!NOTE]
 > 如果你是通过选择任何严重性区段进入了该页面，则列表将针对该严重性进行预先筛选。
@@ -52,7 +52,7 @@ ms.locfileid: "77667612"
 > [!NOTE]
 > 如果你是通过选择任何严重性区段进入了该页面，则列表将针对该严重性进行预先筛选。
 
-选择任何警报实例将打开“警报详细信息”**** 页，让你可以查看有关该特定警报实例的更多详细信息。   
+选择任何警报实例将打开“警报详细信息”  页，让你可以查看有关该特定警报实例的更多详细信息。   
 
 ![“警报详细信息”页的屏幕截图](media/alerts-managing-alert-instances/alert-details.jpg)  
 

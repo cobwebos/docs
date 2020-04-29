@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
 ms.openlocfilehash: 32b680acdee29bf97a0e132fee93d5fee3377245
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77604943"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>创建多个适用于 Cosmos DB 的 Azure Functions 触发器
@@ -23,16 +23,16 @@ ms.locfileid: "77604943"
 
 使用 [Azure Functions](../azure-functions/functions-overview.md) 生成无服务器体系结构时，[建议](../azure-functions/functions-best-practices.md#avoid-long-running-functions)创建协同工作的小型函数集，而不是长时间运行的大型函数。
 
-在使用[适用于 Cosmos DB 的 Azure Functions 触发器](./change-feed-functions.md)生成基于事件的无服务器流时，只要特定 [Azure Cosmos 容器](./databases-containers-items.md#azure-cosmos-containers)中存在新事件，就会遇到要执行多项操作的方案。 如果要触发的操作彼此独立，理想的解决方案是为每个要执行的操作创建一个适用于 Cosmos DB 的 Azure Functions 触发器，所有触发器侦听同一 Azure Cosmos 容器上的更改****。
+在使用[适用于 Cosmos DB 的 Azure Functions 触发器](./change-feed-functions.md)生成基于事件的无服务器流时，只要特定 [Azure Cosmos 容器](./databases-containers-items.md#azure-cosmos-containers)中存在新事件，就会遇到要执行多项操作的方案。 如果要触发的操作彼此独立，理想的解决方案是为每个要执行的操作创建一个适用于 Cosmos DB 的 Azure Functions 触发器，所有触发器侦听同一 Azure Cosmos 容器上的更改  。
 
 ## <a name="optimizing-containers-for-multiple-triggers"></a>优化多个触发器的容器
 
-鉴于适用于 Cosmos DB 的 Azure Functions 触发器的要求，我们需要第二个容器来存储状态，也称为租用容器****。 这是否意味着每个 Azure 函数需要一个单独的租用容器？
+鉴于适用于 Cosmos DB 的 Azure Functions 触发器的要求，我们需要第二个容器来存储状态，也称为租用容器   。 这是否意味着每个 Azure 函数需要一个单独的租用容器？
 
 可以使用以下两个选项：
 
-* **根据函数创建一个租约容器**：此方法可以转换为额外的成本，除非您使用的是[共享吞吐量数据库](./set-throughput.md#set-throughput-on-a-database)。 请记住，容器级别的最小吞吐量是 400 个[请求单位](./request-units.md)，对于租用容器，它仅用于检查进度和维护状态。
-* 拥有**一个租约容器并共享它**用于所有函数：第二个选项更好地利用容器上的预配请求单位，因为它允许多个 Azure 函数共享和使用相同的预配吞吐量。
+* 为每个函数创建一个租用容器  ：除非使用[共享吞吐量数据库](./set-throughput.md#set-throughput-on-a-database)，否则此方法可能会转化为其他成本。 请记住，容器级别的最小吞吐量是 400 个[请求单位](./request-units.md)，对于租用容器，它仅用于检查进度和维护状态。
+* 创建一个租用容器并为所有函数共享  ：第二个选项更好地利用了容器上预配的请求单元，因为它允许多个 Azure Functions 共享和使用相同的预配吞吐量。
 
 本文的目的是指导你完成第二个选项。
 
@@ -42,7 +42,7 @@ ms.locfileid: "77604943"
 
 例如，如果有三个触发器：一个发送电子邮件，一个执行聚合以创建具体化视图，一个将更改发送到另一个存储，供以后分析，那么可以将“电子邮件”的 `LeaseCollectionPrefix` 分配到第一个触发器，“具体化”分配到第二个触发器，“分析”分配到第三个触发器。
 
-重要的是，所有三个触发器都可以使用相同的租用容器配置（帐户、数据库和容器名称）****。
+重要的是，所有三个触发器都可以使用相同的租用容器配置（帐户、数据库和容器名称）  。
 
 请参阅以下非常简单的代码示例，该示例使用 C# 中的 `LeaseCollectionPrefix` 属性：
 

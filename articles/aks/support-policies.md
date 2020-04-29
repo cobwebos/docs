@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
 ms.openlocfilehash: a5d90106a85a61cbf499c4c08130392b922a45f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77593574"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes 服务的支持策略
@@ -20,15 +20,15 @@ ms.locfileid: "77593574"
 ## <a name="service-updates-and-releases"></a>服务更新和版本
 
 * 有关详细信息，请参阅 [AKS 发行说明](https://github.com/Azure/AKS/releases)。
-* 有关预览版要素的信息，请参阅[AKS 预览功能和相关项目](https://github.com/Azure/AKS/blob/master/previews.md)。
+* 有关预览版功能的信息，请参阅[AKS preview 功能和相关项目](https://github.com/Azure/AKS/blob/master/previews.md)。
 
 ## <a name="managed-features-in-aks"></a>AKS 中的托管功能
 
 基本的基础结构即服务 (IaaS) 云组件（例如计算或网络组件）可让用户访问低级别的控件机制和自定义选项。 相比之下，AKS 提供统包式的 Kubernetes 部署，为客户提供一组通用配置和所需的功能。 AKS 客户可用的自定义功能、部署和其他选项有限。 这些客户不需要考虑或直接管理 Kubernetes 群集。
 
-借助 AKS，客户可以获得一个完全托管型的控制平面。** 该控制平面包含客户操作以及向最终用户提供 Kubernetes 群集的全部所需组件和服务。 所有Kubernetes组件都由微软维护和操作。
+借助 AKS，客户可以获得一个完全托管型的控制平面。** 该控制平面包含客户操作以及向最终用户提供 Kubernetes 群集的全部所需组件和服务。 所有 Kubernetes 组件都由 Microsoft 维护和操作。
 
-Microsoft 通过控制窗格管理和监视以下组件：
+Microsoft 通过控件窗格管理和监视以下组件：
 
 * Kubelet 或 Kubernetes API 服务器
 * Etcd 或兼容的键-值存储，提供服务质量 (QoS)、可伸缩性和运行时
@@ -37,24 +37,24 @@ Microsoft 通过控制窗格管理和监视以下组件：
 
 AKS 不是完全托管型的群集解决方案。 某些组件（例如工作器节点）实行分担责任制，用户必须帮助维护 AKS 群集。** 例如，必须提供用户输入才能应用工作器节点操作系统 (OS) 安全修补程序。
 
-这些服务*的管理*方式是 Microsoft 和 AKS 团队部署、操作并负责服务可用性和功能。 客户无法改动这些托管组件。 Microsoft 限制自定义，以确保用户体验一致且可扩展。 有关完全可自定义的解决方案，请参阅 [AKS 引擎](https://github.com/Azure/aks-engine)。
+*管理*服务时，MICROSOFT 和 AKS 团队将部署、操作并负责服务可用性和功能。 客户无法改动这些托管组件。 Microsoft 限制了自定义，以确保用户体验的一致性和可缩放性。 有关完全可自定义的解决方案，请参阅 [AKS 引擎](https://github.com/Azure/aks-engine)。
 
 > [!NOTE]
-> AKS 工作器节点作为常规的 Azure IaaS 资源显示在 Azure 门户中。 但是，这些虚拟机将部署到自定义的 Azure 资源组（带有 MC\\* 前缀）。 无法更改 AKS 工作器节点。 例如，可以使用安全外壳 (SSH) 更改 AKS 工作器节点，如同更改普通虚拟机一样（但是，无法更改基本的 OS 映像，并且更新或重新启动后，更改不会持久保留），并可以将其他 Azure 资源附加到 AKS 工作器节点。 但是，如果更改带外管理和自定义项，AKS 群集可能变得不受支持。** 除非 Microsoft 支持部门指示您进行更改，否则应避免更改辅助节点。
+> AKS 工作器节点作为常规的 Azure IaaS 资源显示在 Azure 门户中。 但是，这些虚拟机将部署到自定义的 Azure 资源组（带有 MC\\* 前缀）。 无法更改 AKS 工作器节点。 例如，可以使用安全外壳 (SSH) 更改 AKS 工作器节点，如同更改普通虚拟机一样（但是，无法更改基本的 OS 映像，并且更新或重新启动后，更改不会持久保留），并可以将其他 Azure 资源附加到 AKS 工作器节点。 但是，如果更改带外管理和自定义项，AKS 群集可能变得不受支持。** 请避免更改辅助角色节点，除非 Microsoft 支持部门指示你进行更改。
 
-按上述定义发出不受支持的操作（如所有代理节点的带外处理）会使群集不受支持。 AKS 保留存档已配置超出支持准则的控制平面的权利，这些控制平面的长时间为 30 天或超过 30 天。 AKS 维护群集蚀刻元数据的备份，并可以轻松地重新分配群集。 此重新分配可以通过任何 PUT 操作启动，使群集恢复支持，例如升级或扩展到活动代理节点。
+发出前面定义的不受支持的操作，如所有代理节点的带外释放，将导致不受支持的群集。 AKS 保留了存档控制平面的权利，该控制面已配置为延长时间段（超过30天）的支持准则。 AKS 维护群集 etcd 元数据的备份，并可随时重新分配群集。 此重新分配可由使群集返回到支持的任何 PUT 操作（如升级或缩放到活动代理节点）启动。
 
 ## <a name="shared-responsibility"></a>共担责任
 
 创建群集时，客户需定义 AKS 创建的 Kubernetes 工作器节点。 客户工作负荷将在这些节点上执行。 客户拥有并可以查看或修改工作器节点。
 
-由于客户群集节点执行专用代码并存储敏感数据，因此 Microsoft 支持只能以有限的方式访问它们。 如果没有客户的明确许可或帮助，Microsoft 支持无法登录到这些节点，无法执行命令或查看这些节点的日志。
+由于客户群集节点执行专用代码并存储敏感数据，因此 Microsoft 支持部门只能以有限的方式访问这些数据。 Microsoft 支持部门不能登录到，不能在中执行命令，也不能查看这些节点的日志，无需快速获得客户权限或协助。
 
-由于辅助节点是敏感的，Microsoft 会非常小心限制其后台管理。 在许多情况下，即使 Kubernetes 主节点（etc）和其他 Microsoft 管理的组件发生故障，您的工作负载仍将继续运行。 不小心修改工作器节点可能会导致数据和工作负荷丢失，并使群集变得不受支持。
+由于辅助角色节点是敏感的，因此，Microsoft 要非常小心地限制其后台管理。 在许多情况下，即使 Kubernetes 主节点、etcd 和其他 Microsoft 托管组件发生故障，工作负荷也将继续运行。 不小心修改工作器节点可能会导致数据和工作负荷丢失，并使群集变得不受支持。
 
 ## <a name="aks-support-coverage"></a>AKS 支持范围
 
-Microsoft 为以下工作提供技术支持：
+Microsoft 为以下各项提供技术支持：
 
 * 连接到 Kubernetes 服务提供和支持的所有 Kubernetes 组件，例如 API 服务器。
 * Kubernetes 控制平面服务（例如 Kubernetes 主节点、API 服务器、etcd 和 kube-dns）的管理、运行时间、QoS 和操作。
@@ -67,25 +67,25 @@ Microsoft 为以下工作提供技术支持：
   * 入口控制器以及入口或负载均衡器配置
   * 网络性能和延迟
 
-Microsoft 不为以下提供技术支持：
+Microsoft 不为以下各项提供技术支持：
 
-* 有关 Kubernetes 用法的问题。 例如，Microsoft 支持不提供有关如何创建自定义入口控制器、使用应用程序工作负载或应用第三方或开源软件包或工具的建议。
+* 有关 Kubernetes 用法的问题。 例如，Microsoft 支持部门不会提供有关如何创建自定义入口控制器、使用应用程序工作负载或应用第三方或开源软件包或工具的建议。
   > [!NOTE]
-  > Microsoft 支持部门可以就 AKS 群集功能、自定义和调优（例如，库伯内斯操作问题和程序）提供建议。
+  > Microsoft 支持部门可以建议 AKS 群集功能、自定义和优化（例如，Kubernetes 操作问题和过程）。
 * 不是作为 Kubernetes 控制平面的一部分提供的，或者不是在 AKS 群集中部署的第三方开源项目。 这些项目可能包括 Istio、Helm、Envoy 等等。
   > [!NOTE]
-  > 微软可以为第三方开源项目（如赫尔姆和库勒德）提供尽力而为的支持。 如果第三方开源工具与 Kubernetes Azure 云提供商或其他特定于 AKS 的错误 Bug 集成，Microsoft 支持 Microsoft 文档中的示例和应用程序。
+  > Microsoft 可以为第三方开源项目（如 Helm 和 Kured）提供最大努力支持。 当第三方开源工具与 Kubernetes Azure 云提供程序或其他特定于 AKS 的 bug 集成时，Microsoft 支持 Microsoft 文档中的示例和应用程序。
 * 第三方闭源软件。 此类软件可能包括安全扫描工具以及网络设备或软件。
-* 有关多云或多供应商扩建的问题。 例如，Microsoft 不支持与运行联合多公共云供应商解决方案相关的问题。
+* 有关多云或多供应商扩建的问题。 例如，Microsoft 不支持运行联合 multipublic 云供应商解决方案相关的问题。
 * [AKS 文档](https://docs.microsoft.com/azure/aks/)中未列出的网络自定义。
   > [!NOTE]
-  > Microsoft 确实支持与网络安全组 （NSG） 相关的问题和 Bug。 例如，Microsoft 支持可以回答有关 NSG 未能更新或意外的 NSG 或负载均衡器行为的问题。
+  > Microsoft 支持与网络安全组（Nsg）相关的问题和 bug。 例如，Microsoft 支持部门可以回答有关更新 NSG 失败或意外的 NSG 或负载均衡器行为的问题。
 
 ## <a name="aks-support-coverage-for-worker-nodes"></a>针对工作器节点的 AKS 支持范围
 
-### <a name="microsoft-responsibilities-for-aks-worker-nodes"></a>微软对 AKS 辅助节点的责任
+### <a name="microsoft-responsibilities-for-aks-worker-nodes"></a>AKS 工作节点的 Microsoft 责任
 
-Microsoft 和客户共同负责 Kubernetes 工作节点，其中：
+Microsoft 和客户分担 Kubernetes 工作节点的责任，其中：
 
 * 基本 OS 映像收到了必需的新增功能（例如监视和网络代理）。
 * 工作器节点自动收到了 OS 修补程序。
@@ -100,7 +100,7 @@ Microsoft 和客户共同负责 Kubernetes 工作节点，其中：
 
 ### <a name="customer-responsibilities-for-aks-worker-nodes"></a>客户对 AKS 工作器节点承担的责任
 
-Microsoft 不会自动重新启动辅助节点以应用操作系统级修补程序。 尽管 OS 修补程序是为工作器节点交付的，但客户需负责重新启动工作器节点来应用更改。** 系统或 OS 级别的共享库、守护程序（例如固态混合驱动器 (SSHD)）和其他组件将自动得到修补。
+Microsoft 不会自动重新启动工作节点以应用操作系统级修补程序。 尽管 OS 修补程序是为工作器节点交付的，但客户需负责重新启动工作器节点来应用更改。** 系统或 OS 级别的共享库、守护程序（例如固态混合驱动器 (SSHD)）和其他组件将自动得到修补。
 
 客户负责执行 Kubernetes 升级。 他们可以通过 Azure 控制面板或 Azure CLI 执行升级。 这适用于包含 Kubernetes 安全性或功能改进的更新。
 
@@ -113,7 +113,7 @@ Microsoft 不会自动重新启动辅助节点以应用操作系统级修补程�
 
 对于安全缺陷所影响到的工作器节点，如果有不会造成任何停机的修补程序可用，则 AKS 团队会应用该修补程序，并通知用户发生了更改。
 
-当安全修补程序需要重新启动辅助节点时，Microsoft 将通知客户此要求。 客户负责重新启动或更新以获取群集修补程序。 如果用户未根据 AKS 的指导应用修补程序，其群集仍会受到安全问题的影响。
+当安全修补程序需要重新启动工作节点时，Microsoft 会通知客户此要求。 客户负责重新启动或更新以获取群集修补程序。 如果用户未根据 AKS 的指导应用修补程序，其群集仍会受到安全问题的影响。
 
 ### <a name="node-maintenance-and-access"></a>节点维护和访问
 
@@ -128,7 +128,7 @@ Microsoft 不会自动重新启动辅助节点以应用操作系统级修补程�
 作为一项托管服务，AKS 在网络和连接方面存在特定的要求。 与普通 IaaS 组件的要求相比，这些要求不太灵活。 在 AKS 中，自定义 NSG 规则、阻止特定端口（例如，使用防火墙规则阻止出站端口 443）以及将 URL 加入允许列表等操作可能导致群集不受支持。
 
 > [!NOTE]
-> 目前，AKS 不允许你完全锁定群集的出口流量。 要控制 URL 和端口的列表，群集可用于出站流量，请参阅[限制出口流量](limit-egress-traffic.md)。
+> 目前，AKS 不允许你完全锁定群集的出口流量。 若要控制群集可用于出站流量的 Url 和端口的列表，请参阅[限制传出流量](limit-egress-traffic.md)。
 
 ## <a name="unsupported-alpha-and-beta-kubernetes-features"></a>不支持的 alpha 和 beta Kubernetes 功能
 
@@ -141,7 +141,7 @@ AKS 仅支持上游 Kubernetes 项目中的稳定功能。 除非另有说明，
 
 ## <a name="preview-features-or-feature-flags"></a>预览功能或功能标志
 
-对于需要扩展测试和用户反馈的功能，Microsoft 会发布功能标志后面的新的预览功能或功能。 请将这些功能视为预发行版或 beta 功能。
+对于需要扩展测试和用户反馈的功能，Microsoft 发布了功能标志后的新预览版功能或功能。 请将这些功能视为预发行版或 beta 功能。
 
 预览功能或功能标志功能不适用于生产环境。 API 和行为的持续更改、bug 修复及其他更改可能导致群集不稳定和停机。
 
@@ -154,7 +154,7 @@ AKS 仅支持上游 Kubernetes 项目中的稳定功能。 除非另有说明，
 
 ## <a name="upstream-bugs-and-issues"></a>上游 bug 和问题
 
-由于上游 Kubernetes 项目的开发速度，不可避免地会出现 bug。 其中的某些 bug 无法在 AKS 系统内部得到修补或解决。 bug 修复需要对上游项目（例如 Kubernetes、节点或辅助角色操作系统以及内核）应用较大的修补程序。 对于 Microsoft 拥有的组件（如 Azure 云提供程序），AKS 和 Azure 人员致力于修复社区上游的问题。
+由于上游 Kubernetes 项目的开发速度，不可避免地会出现 bug。 其中的某些 bug 无法在 AKS 系统内部得到修补或解决。 bug 修复需要对上游项目（例如 Kubernetes、节点或辅助角色操作系统以及内核）应用较大的修补程序。 对于 Microsoft 拥有的组件（如 Azure 云提供商），AKS 和 Azure 人员承诺解决社区中的上游问题。
 
 如果判定某个技术支持问题是一个或多个上游 bug 的根本原因，则 AKS 支持和工程团队将会：
 

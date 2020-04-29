@@ -1,6 +1,6 @@
 ---
 title: 为 Azure 上的 SAP HANA（大型实例）类型 II SKU 执行操作系统备份和还原 | Microsoft Docs
-description: 在 Azure（大型实例）类型 II SKU 上为 SAP HANA 执行操作系统备份和还原
+description: 针对 Azure （大型实例）类型 II Sku 执行操作系统备份和还原 SAP HANA
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
@@ -14,34 +14,34 @@ ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 100e1b974e54d8c0065194bc7beb18f458011434
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77616866"
 ---
-# <a name="os-backup-and-restore-for-type-ii-skus-of-revision-3-stamps"></a>版本 3 戳的 II 型 SKU 的操作系统备份和恢复
+# <a name="os-backup-and-restore-for-type-ii-skus-of-revision-3-stamps"></a>修订版3中的 II 类 Sku 的操作系统备份和还原
 
-本文档介绍为修订版 3 的 HANA 大型实例的**II 类型 SKU**执行操作系统文件级备份和还原的步骤。 
+本文档介绍了为修订版3的 HANA 大型实例的**II 类 sku**执行操作系统文件级别备份和还原的步骤。 
 
 >[!Important]
-> **本文不适用于修订版 4 HANA 大型实例戳中的 II 类型 SKU 部署。** 在修订版 4 HANA 大型实例戳中部署的 II 类型 HANA 大型实例单元的启动 LUNS 可以备份存储快照，因为修订版 3 戳中已部署的 I 型 SKU 就是这种情况
+> **本文不适用于修订版 4 HANA 大型实例戳记中的 II 类 SKU 部署。** 在修订版 4 HANA 大型实例中部署的第 II 类 HANA 大型实例单元的启动 LUN 可以用存储快照进行备份，因为在修订版 3 stamp 中已有类型 I Sku
 
 
 >[!NOTE]
 >OS 备份脚本使用预安装在服务器中的 ReaR 软件。  
 
-预配由 Microsoft`Service Management`团队完成后，默认情况下，服务器配置了两个备份计划，以备份操作系统的文件系统级别。 可以使用以下命令检查备份作业的计划：
+Microsoft `Service Management`团队完成预配后，默认情况下，服务器配置了两个备份计划以备份操作系统的文件系统级别。 可以使用以下命令检查备份作业的计划：
 ```
 #crontab –l
 ```
-您可以随时使用以下命令更改备份计划：
+可以使用以下命令随时更改备份计划：
 ```
 #crontab -e
 ```
 ## <a name="how-to-take-a-manual-backup"></a>如何执行手动备份？
 
-操作系统文件系统备份已使用**cron 作业**计划。 但也可以手动执行操作系统文件级备份。 要执行手动备份，请运行以下命令：
+已使用**cron 作业**计划 OS 文件系统备份。 但也可以手动执行操作系统文件级备份。 要执行手动备份，请运行以下命令：
 
 ```
 #rear -v mkbackup
@@ -99,4 +99,4 @@ EXCLUDE_VG=( vgHANA-data-HC2 vgHANA-data-HC3 vgHANA-log-HC2 vgHANA-log-HC3 vgHAN
 BACKUP_PROG_EXCLUDE=("${BACKUP_PROG_EXCLUDE[@]}" '/media' '/var/tmp/*' '/var/crash' '/hana' '/usr/sap'  ‘/proc’)
 ```
 
-以下屏幕截图显示了完整备份的恢复：![后工具配置.PNG](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)
+以下屏幕截图显示了完整备份的还原： ![RearToolConfiguration](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)

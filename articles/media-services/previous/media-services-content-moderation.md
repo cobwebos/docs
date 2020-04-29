@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒体内容审查器检测可能的成人和猥亵内容 | Microsoft Docs
-description: Azure 媒体内容审阅者媒体处理器可帮助检测视频中潜在的成人和淫秽内容。
+description: Azure 媒体内容审查器媒体处理器可帮助检测视频中可能存在的成人和猥亵内容。
 services: media-services
 documentationcenter: ''
 author: sanjeev3
@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
 ms.openlocfilehash: 83fe7867a3128ac82597c028452863a1ad681ace
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77914307"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>使用 Azure 媒体内容审查器检测可能的成人和猥亵内容 
 
 > [!NOTE]
-> **Azure 媒体内容审阅者**媒体处理器将停用。 有关停用日期，请参阅[旧组件](legacy-components.md)主题。
+> “Azure 媒体内容审查器”  媒体处理器将停用。 有关停用日期，请参阅此[旧组件](legacy-components.md)主题。
 
 ## <a name="overview"></a>概述
 借助 **Azure 媒体内容审查器**媒体处理器 (MP)，你可以对视频使用机器辅助审查。 例如，你可能希望检测视频中可能存在的成人和猥亵内容，以及复查由人工审查团队标记出的内容。
@@ -47,7 +47,7 @@ ms.locfileid: "77914307"
 
 ### <a name="root-json-elements"></a>根 JSON 元素
 
-| 元素 | 描述 |
+| 元素 | 说明 |
 | --- | --- |
 | 版本 |内容审查器的版本。 |
 | 时间刻度 |视频每秒的“刻度”数。 |
@@ -56,20 +56,20 @@ ms.locfileid: "77914307"
 | width |输出视频帧的宽度，以像素为单位。|
 | height |输出视频帧的高度，以像素为单位。|
 | totalDuration |输入视频的持续时间，以“时钟周期”为单位。 |
-| [碎片](#fragments-json-elements) |元数据划分成称为“片段”的不同段。 每个片段是一个自动检测到的快照，包含开始时间、持续时间、间隔数字和事件。 |
+| [片段](#fragments-json-elements) |元数据划分成称为“片段”的不同段。 每个片段是一个自动检测到的快照，包含开始时间、持续时间、间隔数字和事件。 |
 
 ### <a name="fragments-json-elements"></a>片段 JSON 元素
 
-|元素|描述|
+|元素|说明|
 |---|---|
 | start |第一个事件的开始时间（以“刻度”为单位）。 |
 | duration |片段的长度（以“刻度”为单位）。 |
 | interval |片段中每个事件条目的间隔（以“刻度”为单位）。 |
-| [事件](#events-json-elements) |每个事件都代表一个剪辑，每个剪辑包含在该持续时间内检测到和跟踪的关键帧。 它是事件的数组。 外部数组代表一个时间间隔。 内部数组包含在该时间点发生的 0 个或多个事件。|
+| [events](#events-json-elements) |每个事件都代表一个剪辑，每个剪辑包含在该持续时间内检测到和跟踪的关键帧。 它是事件的数组。 外部数组代表一个时间间隔。 内部数组包含在该时间点发生的 0 个或多个事件。|
 
 ### <a name="events-json-elements"></a>事件 JSON 元素
 
-|元素|描述|
+|元素|说明|
 |---|---|
 | reviewRecommended | `true` 或 `false`，具体取决于 **adultScore** 或 **racyScore** 是否超出了内部阈值。 |
 | adultScore | 可能的成人内容的可信度分数，范围为 0.00 到 0.99。 |

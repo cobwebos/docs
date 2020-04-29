@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
 ms.openlocfilehash: 8a47131cb4f19cce1664eafa50c67ab1a1171e67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77919424"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Azure VM 启动在更新 Windows 时停滞
@@ -43,7 +43,7 @@ ms.locfileid: "77919424"
 ### <a name="remove-the-update-that-causes-the-problem"></a>删除导致问题的更新
 
 1. 拍摄受影响的 VM 的 OS 磁盘的快照作为备份。 有关详细信息，请参阅[拍摄磁盘快照](../windows/snapshot-copy-managed-disk.md)。 
-2. [将操作系统磁盘附加到恢复 VM。](troubleshoot-recovery-disks-portal-windows.md)
+2. [将 OS 磁盘附加到恢复 VM](troubleshoot-recovery-disks-portal-windows.md)。
 3. 将 OS 磁盘附加到恢复 VM 上后，运行 **diskmgmt.msc** 以打开磁盘管理，并确保所附磁盘已**联机**。 记下分配给保存 \windows 文件夹的附加 OS 磁盘的驱动器号。 如果磁盘已加密，先解密磁盘，然后再继续此文档中的下一步。
 
 4. 打开权限提升的命令提示符实例（“以管理员身份运行”）。 运行以下命令获取附加 OS 磁盘上的更新包列表：
@@ -66,7 +66,7 @@ ms.locfileid: "77919424"
     ```
     dism /Image:<Attached OS disk>:\ /Remove-Package /PackageName:<PACKAGE NAME TO DELETE>
     ```
-    示例： 
+    例如： 
 
     ```
     dism /Image:F:\ /Remove-Package /PackageName:Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5

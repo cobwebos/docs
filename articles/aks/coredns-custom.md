@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
 ms.openlocfilehash: 78132a53313f4a8ee5c10af340c8dab08c3e42c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77595818"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>使用 Azure Kubernetes 服务自定义 CoreDNS
@@ -75,7 +75,7 @@ kubectl delete pod --namespace kube-system -l k8s-app=kube-dns
 
 ## <a name="custom-forward-server"></a>自定义转发服务器
 
-如果需要为网络流量指定转发服务器，可以创建 ConfigMap 来自定义 DNS。 在以下示例中，请将 `forward` 名称和地址更新为你自己的环境的值。 创建名为 `corednsms.yaml` 的文件并粘贴以下示例配置：
+如需为网络流量指定转发服务器，可以创建 ConfigMap 以自定义 DNS。 在以下示例中，请将 `forward` 名称和地址更新为你自己的环境的值。 创建名为 `corednsms.yaml` 的文件并粘贴以下示例配置：
 
 ```yaml
 apiVersion: v1
@@ -175,9 +175,9 @@ data:
           }
 ```
 
-## <a name="enable-logging-for-dns-query-debugging"></a>为 DNS 查询调试启用日志记录 
+## <a name="enable-logging-for-dns-query-debugging"></a>启用日志记录以进行 DNS 查询调试 
 
-要启用 DNS 查询日志记录，请在核心 dns 自定义配置映射中应用以下配置：
+若要启用 DNS 查询日志记录，请在 coredns-custom ConfigMap 中应用以下配置：
 
 ```yaml
 apiVersion: v1

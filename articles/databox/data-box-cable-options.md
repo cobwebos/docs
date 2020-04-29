@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/24/2018
 ms.author: alkohli
 ms.openlocfilehash: ffabd917eff1c545bba734ab1621b947ee8d9ae9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77920631"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Azure Data Box 的布线选项
@@ -36,8 +36,8 @@ ms.locfileid: "77920631"
 
 2. 在服务器上，请完成以下设置：
 
-    - 将“IP 地址”设置为**** 192.168.100.5
-    - 将“子网”**** 设置为 255.255.255.0
+    - 将“IP 地址”设置为  192.168.100.5
+    - 将“子网”  设置为 255.255.255.0
 
 3. 通过 192.168.100.10 访问设备的本地 Web UI。 在 Azure 门户中使用解锁密码登录并解锁 Data Box。
 
@@ -62,8 +62,8 @@ ms.locfileid: "77920631"
 2. 使用用于 DATA 3 的 RJ45 或 SFP+ 电缆将 DATA 1 或 DATA 2 连接到充当数据源的服务器。 建议使用 10-GbE DATA 1 或 DATA 2 端口以确保良好的性能。
 3. 在服务器上，请完成以下设置：
 
-   - 将“IP 地址”设置为**** 192.168.100.5
-   - 将“子网”**** 设置为 255.255.255.0
+   - 将“IP 地址”设置为  192.168.100.5
+   - 将“子网”  设置为 255.255.255.0
 
      ![双端口设置](media/data-box-cable-options/cabling-2-port-setup.png)
 

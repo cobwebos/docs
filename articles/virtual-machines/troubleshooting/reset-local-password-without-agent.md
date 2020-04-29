@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
 ms.openlocfilehash: becbf88aeda164f7d916cbc1f1ace89262cc1a3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77921617"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>脱机重置 Azure VM 的本地 Windows 密码
@@ -43,7 +43,7 @@ ms.locfileid: "77921617"
 
 在执行以下步骤之前，始终应该尝试使用 [Azure 门户或 Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 来重置密码。 在开始之前，请确保备份 VM。
 
-1. 为受影响的 VM 的 OS 磁盘拍摄快照，从快照创建磁盘，然后将该磁盘附加到故障排除 VM。 有关详细信息，请参阅[通过使用 Azure 门户将 OS 磁盘附加到恢复 VM 来对 Windows VM 进行故障排除](troubleshoot-recovery-disks-portal-windows.md)。
+1. 为受影响 VM 的 OS 磁盘拍摄快照，从快照创建磁盘，然后将该磁盘附加到故障排除 VM。 有关详细信息，请参阅[通过使用 Azure 门户将 OS 磁盘附加到恢复 VM 来对 Windows VM 进行故障排除](troubleshoot-recovery-disks-portal-windows.md)。
 2. 使用远程桌面连接到故障排除 VM。
 3. 在源 VM 的驱动器上的 `\Windows\System32\GroupPolicy` 中创建 `gpt.ini`（如果存在 gpt.ini，请将它重命名为 gpt.ini.bak）：
    
@@ -61,7 +61,7 @@ ms.locfileid: "77921617"
      
      ![创建 gpt.ini](./media/reset-local-password-without-agent/create-gpt-ini.png)
 
-4. 在 `\Windows\System32\GroupPolicy\Machines\Scripts\` 中创建 `scripts.ini` 确保隐藏的文件夹已显示。 如果需要，请创建 `Machine` 或 `Scripts` 文件夹。
+4. 在 `scripts.ini` 中创建 `\Windows\System32\GroupPolicy\Machines\Scripts\` 确保隐藏的文件夹已显示。 如果需要，请创建 `Machine` 或 `Scripts` 文件夹。
    
    * 将以下代码行添加到创建的 `scripts.ini` 文件：
      
@@ -73,7 +73,7 @@ ms.locfileid: "77921617"
      
      ![创建 scripts.ini](./media/reset-local-password-without-agent/create-scripts-ini.png)
 
-5. 在 `\Windows\System32` 中创建包含以下内容的 `FixAzureVM.cmd`，将 `<username>` 和 `<newpassword>` 替换为自己的值：
+5. 在 `FixAzureVM.cmd` 中创建包含以下内容的 `\Windows\System32`，将 `<username>` 和 `<newpassword>` 替换为自己的值：
    
     ```
     net user <username> <newpassword> /add
@@ -87,7 +87,7 @@ ms.locfileid: "77921617"
 
 6. 在 Azure 门户中，从故障排除 VM 分离该磁盘。
 
-7. [更改受影响的 VM 的操作系统磁盘](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm)。
+7. [更改受影响 VM 的 OS 磁盘](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm)。
 
 8. 运行新 VM 后，使用在 `FixAzureVM.cmd` 脚本中指定的新密码通过远程桌面连接到该 VM。
 
@@ -111,27 +111,27 @@ ms.locfileid: "77921617"
 
 1. 在 Azure 门户中删除受影响的 VM。 删除 VM 只会删除元数据，以及 Azure 中对 VM 的引用。 删除 VM 时，会保留虚拟磁盘：
    
-   * 在 Azure 门户中选择 VM，然后单击“删除”**：
+   * 在 Azure 门户中选择 VM，然后单击“删除”  ：
      
      ![删除现有 VM](./media/reset-local-password-without-agent/delete-vm-classic.png)
 
 2. 将源 VM 的 OS 磁盘附加到故障排除 VM。 故障排除 VM 必须与源 VM 的 OS 磁盘位于同一区域（例如 `West US`）：
    
-   1. 在 Azure 门户中选择故障排除 VM。 单击*磁盘* | *附加现有*：
+   1. 在 Azure 门户中选择故障排除 VM。 单击“磁盘” *“附加现有磁盘”：*  |  
      
       ![附加现有磁盘](./media/reset-local-password-without-agent/disks-attach-existing-classic.png)
      
-   2. 选择“VHD 文件”，并选择包含源 VM 的存储帐户：**
+   2. 选择“VHD 文件”，并选择包含源 VM 的存储帐户： 
      
       ![选择存储帐户](./media/reset-local-password-without-agent/disks-select-storage-account-classic.png)
      
-   3. 选中标有“显示经典存储帐户”** 的框，然后选择源容器。 源容器通常为 *vhd*：
+   3. 选中标有“显示经典存储帐户”  的框，然后选择源容器。 源容器通常为 *vhd*：
      
       ![选择存储容器](./media/reset-local-password-without-agent/disks-select-container-classic.png)
 
       ![选择存储容器](./media/reset-local-password-without-agent/disks-select-container-vhds-classic.png)
      
-   4. 选择要附加的 OS VHD。 单击“选择”完成该过程：**
+   4. 选择要附加的 OS VHD。 单击“选择”完成该过程： 
      
       ![选择源虚拟磁盘](./media/reset-local-password-without-agent/disks-select-source-vhd-classic.png)
 
@@ -141,7 +141,7 @@ ms.locfileid: "77921617"
 
 3. 使用远程桌面连接到故障排除的 VM，确保源 VM 的 OS 磁盘可见：
 
-   1. 在 Azure 门户中选择故障排除 VM，并单击“连接”。**
+   1. 在 Azure 门户中选择故障排除 VM，并单击“连接”。 
 
    2. 打开下载的 RDP 文件。 输入故障排除 VM 的用户名和密码。
 
@@ -149,7 +149,7 @@ ms.locfileid: "77921617"
      
       ![查看附加的数据磁盘](./media/reset-local-password-without-agent/troubleshooting-vm-file-explorer-classic.png)
 
-4. 在`gpt.ini``\Windows\System32\GroupPolicy`源 VM 的驱动器上创建（如果存在`gpt.ini`，请重命名为`gpt.ini.bak`）：
+4. 在`gpt.ini`源`\Windows\System32\GroupPolicy` VM 的驱动器上创建（如果`gpt.ini`存在，请重命名`gpt.ini.bak`为）：
    
    > [!WARNING]
    > 请确保你不会在 `C:\Windows`（用于排除 VM 故障的 OS 驱动器）中意外创建以下文件。 应该在源 VM 的、作为数据磁盘附加的 OS 驱动器中创建以下文件。
@@ -165,7 +165,7 @@ ms.locfileid: "77921617"
      
      ![创建 gpt.ini](./media/reset-local-password-without-agent/create-gpt-ini-classic.png)
 
-5. 在 `\Windows\System32\GroupPolicy\Machines\Scripts\` 中创建 `scripts.ini` 确保隐藏的文件夹已显示。 如果需要，请创建 `Machine` 或 `Scripts` 文件夹。
+5. 在 `scripts.ini` 中创建 `\Windows\System32\GroupPolicy\Machines\Scripts\` 确保隐藏的文件夹已显示。 如果需要，请创建 `Machine` 或 `Scripts` 文件夹。
    
    * 将以下代码行添加到创建的 `scripts.ini` 文件：
 
@@ -177,7 +177,7 @@ ms.locfileid: "77921617"
      
      ![创建 scripts.ini](./media/reset-local-password-without-agent/create-scripts-ini-classic.png)
 
-6. 在 `\Windows\System32` 中创建包含以下内容的 `FixAzureVM.cmd`，将 `<username>` 和 `<newpassword>` 替换为自己的值：
+6. 在 `FixAzureVM.cmd` 中创建包含以下内容的 `\Windows\System32`，将 `<username>` 和 `<newpassword>` 替换为自己的值：
    
     ```
     net user <username> <newpassword> /add
@@ -191,9 +191,9 @@ ms.locfileid: "77921617"
 
 7. 在 Azure 门户中，从故障排除 VM 分离该磁盘：
    
-   1. 在 Azure 门户中选择故障排除 VM，并单击“磁盘”。**
+   1. 在 Azure 门户中选择故障排除 VM，并单击“磁盘”。 
    
-   2. 选择在步骤 2 中附加的数据磁盘，单击“分离”****，然后单击“确定”****。
+   2. 选择在步骤 2 中附加的数据磁盘，单击“分离”  ，然后单击“确定”  。
 
      ![分离磁盘](./media/reset-local-password-without-agent/data-disks-classic.png)
      

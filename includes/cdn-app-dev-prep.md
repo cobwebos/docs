@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/21/2018
 ms.author: mazha
 ms.openlocfilehash: 41f2d4540f665137d34d262546cdc1a2edfbae3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77608731"
 ---
 ## <a name="prerequisites"></a>先决条件
@@ -19,8 +19,8 @@ ms.locfileid: "77608731"
 * 向该资源组应用权限，使得只有来自 Azure AD 租户的已授权用户可与 CDN 配置文件进行交互
 
 ### <a name="creating-the-resource-group"></a>创建资源组
-1. 登录到 Azure[门户](https://portal.azure.com)。
-2. 单击 **"创建资源**"。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+2. 单击 "**创建资源**"。
 3. 搜索“资源组”****，在“资源组”窗格中，单击“创建”****。
 
     ![创建新资源组](./media/cdn-app-dev-prep/cdn-new-rg-1-include.png)

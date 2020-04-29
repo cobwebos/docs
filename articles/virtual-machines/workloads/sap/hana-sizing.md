@@ -14,18 +14,18 @@ ms.date: 09/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 404f8318816edcc2cfd1c50ca42304ff6ec93039
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77616907"
 ---
 # <a name="sizing"></a>调整大小
 
 为 HANA 大型实例调整大小与为一般 HANA 调整大小没有什么不同。 对于现有的已部署系统，需要从其他 RDBMS 迁移到 HANA，SAP 提供了许多在现有 SAP 系统上运行的报告。 如果数据库移到 HANA，这些报告会针对 HANA 实例检查数据并计算内存需求。 请阅读以下 SAP 说明来获取有关如何运行这些报告以及如何获取其最新修补程序或版本的详细信息：
 
-- [SAP 注释#1793345 - HANA 上 SAP 套件的尺寸调整](https://launchpad.support.sap.com/#/notes/1793345)
-- [SAP 说明#1872170 - HANA 和 S/4 HANA 尺寸调整报告的套件](https://launchpad.support.sap.com/#/notes/1872170)
+- [SAP 说明 #1793345-为 HANA 上的 SAP 套件调整大小](https://launchpad.support.sap.com/#/notes/1793345)
+- [SAP 说明 #1872170 HANA 和 S/4 HANA 大小调整报告](https://launchpad.support.sap.com/#/notes/1872170)
 - [SAP 说明 #2121330 - 常见问题解答：HANA 上的 SAP BW 的大小调整报告](https://launchpad.support.sap.com/#/notes/2121330)
 - [SAP 说明 #1736976 - 适用于 HANA 上的 BW 的大小调整报告](https://launchpad.support.sap.com/#/notes/1736976)
 - [SAP 说明 #2296290 - 新的适用于 HANA 上的 BW 的大小调整报告](https://launchpad.support.sap.com/#/notes/2296290)

@@ -13,10 +13,10 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 20e64e5225987a8045e406a0e8fcae098c580c61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77913372"
 ---
 # <a name="troubleshooting-steps-specific-to-allocation-failure-scenarios-in-the-classic-deployment-model"></a>针对经典部署模型中的分配失败情况进行故障排除的步骤
@@ -50,7 +50,7 @@ Upgrade_VMSizeNotSupported 或 GeneralError
 
 必须在托管现有云服务的原始群集上，尝试请求重设 VM 大小或向现有云服务添加 VM 或角色实例。 创建新的云服务可让 Azure 平台查找其他有可用资源或支持所请求的 VM 大小的群集。
 
-**解决 方案**
+**解决方法**
 
 如果错误是 Upgrade_VMSizeNotSupported\*，请尝试使用不同的 VM 大小。 如果使用不同的 VM 大小不可行，但可接受使用不同的虚拟 IP 地址 (VIP)，则创建新的云服务来托管新的 VM，并将新的云服务添加到运行现有 VM 的区域虚拟网络中。 如果现有的云服务未使用区域虚拟网络，用户仍然可以为新的云服务创建新的虚拟网络，然后[将现有虚拟网络连接到新的虚拟网络](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/)。 详细了解[区域虚拟网络](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)。
 
@@ -65,7 +65,7 @@ GeneralError\*
 
 部分解除分配表示已停止（解除分配）云服务中的一或多个 VM，但不是全部。 停止（解除分配）VM 时会释放相关联的资源。 因此，重新启动已停止（解除分配）的 VM 是一项新的分配请求。 重新启动已部分解除分配的云服务中的 VM 相当于向现有云服务添加 VM。 必须在托管现有云服务的原始群集上尝试发出分配请求。 创建不同云服务可让 Azure 平台查找其他有可用资源或支持所请求的 VM 大小的群集。
 
-**解决 方案**
+**解决方法**
 
 如果可接受使用不同的 VIP，请删除已停止（解除分配）的 VM（但保留相关联的磁盘），并通过不同的云服务加回 VM。 使用区域虚拟网络连接云服务：
 
@@ -81,7 +81,7 @@ GeneralError\*
 
 完全解除分配表示已从云服务停止（解除分配）所有 VM。 必须在托管云服务的原始群集上尝试发出分配请求来重新启动这些 VM。 创建新的云服务可让 Azure 平台查找其他有可用资源或支持所请求的 VM 大小的群集。
 
-**解决 方案**
+**解决方法**
 
 如果可接受使用不同的 VIP，请删除已停止（解除分配）的原始 VM（但保留相关联的磁盘），并删除对应的云服务（停止（解除分配）VM 时就已释放相关联的计算资源）。 创建新的云服务来加回 VM。
 
@@ -94,7 +94,7 @@ New_General\* 或 New_VMSizeNotSupported\*
 
 云服务的过渡环境部署和生产环境部署托管于同一个群集中。 添加第二个部署时，会在托管第一个部署的相同群集中尝试发出对应的分配请求。
 
-**解决 方案**
+**解决方法**
 
 删除第一个部署和原始的云服务，并重新部署云服务。 此操作可能将第一个部署安排到有足够可用资源可满足这两个部署的群集，或安排到支持所请求 VM 大小的群集。
 
@@ -107,7 +107,7 @@ New_General\* 或 New_VMSizeNotSupported\*
 
 任何分配给地缘组的计算资源都绑定到一个群集。 该地缘组中新的计算资源请求将于托管现有资源的相同群集中尝试发出。 无论是通过新的云服务还是现有的云服务创建新资源，都是如此。
 
-**解决 方案**
+**解决方法**
 
 如果不一定需要地缘组，请不要使用地缘组或尝试将计算资源分组为多个地缘组。
 
@@ -120,7 +120,7 @@ New_General\* 或 New_VMSizeNotSupported\*
 
 在引入区域虚拟网络之前，必须先将虚拟网络与地缘组进行关联。 这样，便会根据上一部分“分配案例：地缘组：（VM/服务邻近性）”中所述的相同约束，绑定已放入地缘组中的计算资源。 计算资源已绑定到一个群集。
 
-**解决 方案**
+**解决方法**
 
 如果不需要地缘组，请为要添加的新资源创建新的区域虚拟网络，然后[将现有虚拟网络连接到新的虚拟网络](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/)。 详细了解[区域虚拟网络](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)。
 

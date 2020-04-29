@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
 ms.openlocfilehash: 90034a56fcf5211059d37270e12391249f7a16b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77920155"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>在强制隧道方案中，Windows 激活失败
@@ -38,7 +38,7 @@ Azure Windows VM 需要连接到 Azure KMS 服务器才能激活 Windows。 激�
 
 Azure 全球云的 KMS 服务器的 IP 地址为 23.102.135.246。 其 DNS 名称是 kms.core.windows.net。 如果使用其他 Azure 平台（如 Azure 德国），则必须使用相应 KMS 服务器的 IP 地址。 有关详细信息，请参阅下表：
 
-|Platform| KMS DNS|KMS IP|
+|平台| KMS DNS|KMS IP|
 |------|-------|-------|
 |Azure 全球|kms.core.windows.net|23.102.135.246|
 |Azure 德国|kms.core.cloudapi.de|51.4.143.248|

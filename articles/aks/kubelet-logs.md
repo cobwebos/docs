@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 03/05/2019
 ms.openlocfilehash: b7a74803af916f9e9de72dd528273007ce37832f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77595376"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>从 Azure Kubernetes 服务 (AKS) 群集节点获取 kubelet 日志
@@ -27,7 +27,7 @@ ms.locfileid: "77595376"
 
 ## <a name="get-kubelet-logs"></a>获取 kubelet 日志
 
-连接到节点后，运行以下命令以拉*库贝莱特*日志：
+连接到节点后，运行以下命令以拉取 *kubelet* 日志：
 
 ```console
 sudo journalctl -u kubelet -o cat

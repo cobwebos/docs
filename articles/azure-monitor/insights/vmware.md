@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
 ms.openlocfilehash: c1622ef16155206d779c6d703fc7da568d233e7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77664773"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Monitor 中的 VMware 监视（已弃用）解决方案
@@ -40,10 +40,10 @@ vSphere ESXi 主机 5.5、6.0 和 6.5
    ![系统日志流](./media/vmware/diagram.png)
 
 ### <a name="configure-syslog-collection"></a>配置系统日志收集
-1. 为 VSphere 设置 syslog 转发。 有关帮助设置 syslog 转发的详细信息，请参阅[在 ESXi 5.0 及更高版本上配置 syslog (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322)。 转到**ESXi 主机配置** > **软件** > **高级设置** > **系统**。
+1. 为 VSphere 设置 syslog 转发。 有关帮助设置 syslog 转发的详细信息，请参阅[在 ESXi 5.0 及更高版本上配置 syslog (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322)。 转到“ESXi 主机配置”   > “软件”   > “高级设置”   > “Syslog”  。
    ![vsphereconfig](./media/vmware/vsphere1.png)  
-1. 在“Syslog.global.logHost”** 字段中，添加 Linux 服务器和端口号 *1514*。 例如，`tcp://hostname:1514` 或 `tcp://123.456.789.101:1514`
-1. 为 syslog 打开 ESXi 主机防火墙。 **ESXi 主机配置** > **软件** > **安全配置文件** > **防火墙**和打开**属性**。  
+1. 在“Syslog.global.logHost”  字段中，添加 Linux 服务器和端口号 *1514*。 例如，`tcp://hostname:1514` 或 `tcp://123.456.789.101:1514`
+1. 为 syslog 打开 ESXi 主机防火墙。 “ESXi 主机配置”   > “软件”   > “安全配置文件”   > “防火墙”  并打开“属性”  。  
 
     ![vspherefw](./media/vmware/vsphere2.png)  
 
@@ -108,7 +108,7 @@ VMware 磁贴显示在 Log Analytics 工作区中。 它提供任何失败的高
 ![磁贴](./media/vmware/tile.png)
 
 #### <a name="navigate-the-dashboard-view"></a>导航仪表板视图
-在“VMware”**** 仪表板视图中，边栏选项卡的组织方式如下：
+在“VMware”  仪表板视图中，边栏选项卡的组织方式如下：
 
 * 失败状态计数
 * 按事件计数排名靠前的主机
@@ -131,7 +131,7 @@ VMware 磁贴显示在 Log Analytics 工作区中。 它提供任何失败的高
 
 可以通过单击 ESXi 主机或事件类型进一步了解相关信息。
 
-单击 ESXi 主机名时，可查看该 ESXi 主机的信息。 如果要缩小包含事件类型的结果范围，将 `“ProcessName_s=EVENT TYPE”` 添加到搜索查询中。 可以在搜索筛选器中选择“ProcessName”****。 会缩小信息范围。
+单击 ESXi 主机名时，可查看该 ESXi 主机的信息。 如果要缩小包含事件类型的结果范围，将 `“ProcessName_s=EVENT TYPE”` 添加到搜索查询中。 可以在搜索筛选器中选择“ProcessName”  。 会缩小信息范围。
 
 ![钻取](./media/vmware/eventhostdrilldown.png)
 
@@ -151,7 +151,7 @@ VMware 磁贴显示在 Log Analytics 工作区中。 它提供任何失败的高
 
 
 #### <a name="save-queries"></a>保存查询
-保存日志查询是 Azure Monitor 中的标准功能，可帮助你保留认为有用的任何查询。 创建有用的查询后，单击“收藏夹”**** 将其保存下来。 已保存的查询可在以后从[我的仪表板](../learn/tutorial-logs-dashboards.md)页（可在其中创建你自己的自定义仪表板）轻松地对其进行重复使用。
+保存日志查询是 Azure Monitor 中的标准功能，可帮助你保留认为有用的任何查询。 创建有用的查询后，单击“收藏夹”  将其保存下来。 已保存的查询可在以后从[我的仪表板](../learn/tutorial-logs-dashboards.md)页（可在其中创建你自己的自定义仪表板）轻松地对其进行重复使用。
 
 ![DockerDashboardView](./media/vmware/dockerdashboardview.png)
 
@@ -188,13 +188,13 @@ syslog 时间戳有一个 ESXi 主机 bug。 有关详细信息，请参阅 [VMw
   1. Log Analytics 侦听端口 1514。 若要验证其是否打开，请运行以下命令：`netstat -a | grep 1514`
   1. 应看到端口 `1514/tcp` 处于打开状态。 如果未看到，请验证 omsagent 是否正确安装。 如果看不到端口信息，则未在 VM 上打开 syslog 端口。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 使用 `ps -ef | grep oms` 验证 Log Analytics 代理是否正在运行。 如果未运行，通过运行 `sudo /opt/microsoft/omsagent/bin/service_control start` 命令启动此进程
+    a. 使用 `ps -ef | grep oms` 验证 Log Analytics 代理是否正在运行。 如果未运行，通过运行 `sudo /opt/microsoft/omsagent/bin/service_control start` 命令启动此进程
 
-     b.保留“数据库类型”设置，即设置为“共享”。 打开 `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf` 文件。
+     b. 打开 `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf` 文件。
 
      c. 验证适当的用户和组设置是否有效，类似于：`-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf`
 
-     d.单击“下一步”。 如果文件不存在或用户和组设置有误，则通过[准备 Linux 服务器](#prepare-a-linux-server)采取纠正措施。
+     d. 如果文件不存在或用户和组设置有误，则通过[准备 Linux 服务器](#prepare-a-linux-server)采取纠正措施。
 
 ## <a name="next-steps"></a>后续步骤
 * 使用 Log Analytics 中的[日志查询](../log-query/log-query-overview.md)可查看详细的 VMware 主机数据。

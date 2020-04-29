@@ -13,10 +13,10 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 09/05/2019
 ms.openlocfilehash: 9652b78674d6a6b905eb049564d1b17cdc7c17b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78254916"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure 数据库迁移服务支持的迁移方案的状态
@@ -25,7 +25,7 @@ Azure 数据库迁移服务旨在支持脱机（一次性）和联机（连续�
 
 ## <a name="offline-versus-online-migrations"></a>脱机和联机迁移
 
-使用 Azure 数据库迁移服务可以执行脱机或联机迁移。 通过“脱机”迁移，应用程序停机时间在迁移开始的同时开始**。 若要限制迁移完成时交接到新环境所需的停机时间，请使用联机迁移。** 建议对脱机迁移进行测试，以便确定其停机时间是否可以接受；如果不能接受，请执行联机迁移。
+使用 Azure 数据库迁移服务可以执行脱机或联机迁移。 通过“脱机”迁移，应用程序停机时间在迁移开始的同时开始  。 若要限制迁移完成时交接到新环境所需的停机时间，请使用联机迁移。  建议对脱机迁移进行测试，以便确定其停机时间是否可以接受；如果不能接受，请执行联机迁移。
 
 ## <a name="migration-scenario-status"></a>迁移方案状态
 
@@ -36,7 +36,7 @@ Azure 数据库迁移服务支持的迁移方案的状态随时间而变化。 �
 下表显示使用 Azure 数据库迁移服务时支持的迁移方案。
 
 > [!NOTE]
-> 如果下面列出的方案未显示在用户界面中，请与["询问 Azure 数据库迁移"](mailto:AskAzureDatabaseMigrations@service.microsoft.com)别名联系以获取其他信息。
+> 如果在用户界面中列出了如下所示的方案，请联系[请求 Azure 数据库迁移](mailto:AskAzureDatabaseMigrations@service.microsoft.com)别名获取其他信息。
 
 > [!IMPORTANT]
 > 若要在个人预览版中查看 Azure 数据库迁移服务当前支持的所有方案，请参阅 [DMS 预览站点](https://aka.ms/dms-preview)。

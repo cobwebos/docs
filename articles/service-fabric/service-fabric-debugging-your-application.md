@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: fff8a19d5643f7ce866c9eb9c57486340b6f8a50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77624138"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>使用 Visual Studio 调试 Service Fabric 应用程序
@@ -20,7 +20,7 @@ ms.locfileid: "77624138"
 
 
 ## <a name="debug-a-local-service-fabric-application"></a>调试本地 Service Fabric 应用程序
-可以通过在本地计算机开发群集中部署和调试 Azure Service Fabric 应用程序来节省时间和资金。 Visual Studio 2019 或 2015 可以将应用程序部署到本地群集，并将调试器自动连接到应用程序的所有实例。 可视工作室必须以管理员身份运行才能连接调试器。
+可以通过在本地计算机开发群集中部署和调试 Azure Service Fabric 应用程序来节省时间和资金。 Visual Studio 2019 或 2015 可以将应用程序部署到本地群集，并将调试器自动连接到应用程序的所有实例。 必须以管理员身份运行 Visual Studio 才能连接调试器。
 
 1. 按照[设置 Service Fabric 开发环境](service-fabric-get-started.md)中的步骤启动本地开发群集。
 2. 按 **F5** 或单击“**调试**” > **开始调试**。
@@ -32,10 +32,10 @@ ms.locfileid: "77624138"
    > Visual Studio 将附加到应用程序的所有实例。 单步执行代码时，断点可能被多个进程命中，从而产生并发会话。 尝试通过在线程 ID 上设置每个断点条件，或使用诊断事件，在命中后禁用断点、。
    > 
    > 
-4. “诊断事件”**** 窗口将自动打开，以实时查看诊断事件。
+4. “诊断事件”  窗口将自动打开，以实时查看诊断事件。
    
     ![查看实时诊断事件][diagnosticevents]
-5. 也可以在 Cloud Explorer 中打开“**诊断事件**”窗口。  在“**Service Fabric**”下，右键单击任何节点，并选择“**查看流式跟踪”**。
+5. 也可以在 Cloud Explorer 中打开“**诊断事件**”窗口。  在“**Service Fabric**”下，右键单击任何节点，并选择“**查看流式跟踪”** 。
    
     ![打开“诊断事件”窗口][viewdiagnosticevents]
    
@@ -45,7 +45,7 @@ ms.locfileid: "77624138"
     ```csharp
     ServiceEventSource.Current.ServiceMessage(this, "My ServiceMessage with a parameter {0}", result.Value.ToString());
     ```
-7. “诊断事件”**** 窗口支持实时筛选、暂停和检查事件。  筛选是对事件消息及其内容进行的简单字符串搜索。
+7. “诊断事件”  窗口支持实时筛选、暂停和检查事件。  筛选是对事件消息及其内容进行的简单字符串搜索。
    
     ![实时筛选、暂停和恢复或检查事件][diagnosticeventsactions]
 8. 调试服务与调试任何其他应用程序类似。 通常，将通过 Visual Studio 设置断点，以便轻松调试。 即使可靠集合在多个节点间进行复制，它们仍会实现 IEnumerable。 此实现意味着，可以在调试时使用 Visual Studio 中的结果视图来查看其中存储的内容。 为此，可以在代码中的任意位置设置断点。
@@ -71,7 +71,7 @@ ms.locfileid: "77624138"
 > [!WARNING]
 > 远程调试适用于开发/测试方案，而非用于生产环境中，因为它会对运行中的应用程序造成影响。
 
-1. 在“云资源管理器”中导航到群集****。 右键单击并选择“启用调试”****
+1. 在“云资源管理器”中导航到群集  。 右键单击并选择“启用调试” 
    
     ![启用远程调试][enableremotedebugging]
    
@@ -115,7 +115,7 @@ ms.locfileid: "77624138"
 > 流跟踪适用于开发/测试方案，而非用于生产环境中，因为它会对运行中的应用程序造成影响。
 > 在生产方案中，应依赖于使用 Azure 诊断转发事件。
 
-1. 在“云资源管理器”中导航到群集****。 右键单击并选择“启用流式跟踪”****
+1. 在“云资源管理器”中导航到群集  。 右键单击并选择“启用流式跟踪” 
    
     ![启用远程流跟踪][enablestreamingtraces]
    

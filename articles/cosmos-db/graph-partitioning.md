@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.custom: seodec18
 ms.openlocfilehash: 44d3b7c2b9e23b90f696162747d9728b18fb7d3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77623373"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用分区图形
 
-Azure Cosmos DB 中 Gremlin API 的重要功能之一是通过横向缩放处理大规模图形。 容器可以在存储和吞吐量方面独立缩放。 可以在 Azure Cosmos DB 中创建自动缩放的容器以存储图形数据。 数据根据指定的分区键自动均衡****。
+Azure Cosmos DB 中 Gremlin API 的重要功能之一是通过横向缩放处理大规模图形。 容器可以在存储和吞吐量方面独立缩放。 可以在 Azure Cosmos DB 中创建自动缩放的容器以存储图形数据。 数据根据指定的分区键自动均衡  。
 
-如果容器的大小预计存储超过 20 GB，或者您希望每秒分配超过 10，000 个请求单位 （RUs），**则需要分区**。 [Azure Cosmos DB 分区机制](partition-data.md)中的相同常规原则也适用，下面介绍了一些特定于图形的优化。
+如果容器预计存储的大小超过 20 GB，或者要分配超过10000个请求单位/秒（ru），**则需要进行分区**。 [Azure Cosmos DB 分区机制](partition-data.md)中的相同常规原则也适用，下面介绍了一些特定于图形的优化。
 
 ![图形分区。](./media/graph-partitioning/graph-partitioning.png)
 
@@ -27,7 +27,7 @@ Azure Cosmos DB 中 Gremlin API 的重要功能之一是通过横向缩放处理
 
 以下指南介绍了 Azure Cosmos DB 中分区策略的运作方式：
 
-- 顶点和边缘作为 JSON 文档存储****。
+- 顶点和边缘作为 JSON 文档存储  。
 
 - **顶点需要分区键**。 此键通过哈希算法确定在哪个分区中存储顶点。 创建新容器时将定义分区键属性名称，其格式为 `/partitioning-key-name`。
 
@@ -78,9 +78,9 @@ Azure Cosmos DB 中 Gremlin API 的重要功能之一是通过横向缩放处理
 
 - **查询边缘时尽量使用传出方向**。 如上所述，边缘连同其源顶点一起朝传出方向存储。 在设计数据和查询时考虑了此模式时，则可以最大程度地减少出现跨分区查询的可能性。 相反，`in()` 查询将始终是开销巨大的扇出查询。
 
-- **选择一个分区键，它将在分区之间均匀分布数据**。 此决策在很大程度上取决于解决方案的数据模型。 请在 [Azure Cosmos DB 中的分区和缩放](partition-data.md)中详细了解如何创建适当的分区键。
+- **选择可将数据均匀分配到不同分区的分区键**。 此决策在很大程度上取决于解决方案的数据模型。 请在 [Azure Cosmos DB 中的分区和缩放](partition-data.md)中详细了解如何创建适当的分区键。
 
-- 优化查询，以获取分区边界内的数据****。 最佳的分区策略与查询模式相符。 从单个分区获取数据的查询可提供最佳性能。
+- 优化查询，以获取分区边界内的数据  。 最佳的分区策略与查询模式相符。 从单个分区获取数据的查询可提供最佳性能。
 
 ## <a name="next-steps"></a>后续步骤
 

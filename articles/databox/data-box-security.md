@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: alkohli
 ms.openlocfilehash: 21b05631f1c225c9c4b1f7c65d18588900850b8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77911723"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box 安全性和数据保护
@@ -28,7 +28,7 @@ Microsoft Azure Data Box 解决方案由四个彼此交互的主要组件构成�
 - **Azure 中托管的 Azure Data Box 服务** – 用于创建设备订单、配置设备，然后跟踪订单完成状态的管理服务。
 - **Data Box 设备** – 寄送给你的，用于将本地数据导入到 Azure 的传输设备。 
 - **连接到设备的客户端/主机** – 基础结构中的客户端，它们连接到 Data Box 设备，并包含需要保护的数据。
-- **云存储** – Azure 云中的存储数据的位置。 这通常是链接到所创建的 Azure Data Box 资源的存储帐户。
+- **云存储** – Azure 云中存储数据的位置。 这通常是链接到所创建的 Azure Data Box 资源的存储帐户。
 
 下图指示了通过 Azure Data Box 解决方案运行的从本地到 Azure 的数据流。
 
@@ -50,7 +50,7 @@ Data Box 设备由以下功能提供保护：
 - 仅运行 Data Box 特定的软件。
 - 在锁定状态下启动。
 - 通过设备解锁密码控制设备访问。
-- 访问凭据，用于将数据复制到和复制出设备。 对 Azure 门户中的“设备凭据”**** 页面的所有访问都将记录在[活动日志](data-box-logs.md#query-activity-logs-during-setup)中。
+- 访问凭据，用于将数据复制到和复制出设备。 对 Azure 门户中的“设备凭据”  页面的所有访问都将记录在[活动日志](data-box-logs.md#query-activity-logs-during-setup)中。
 
 ### <a name="data-box-data-protection"></a>Data Box 数据保护
 
@@ -100,7 +100,7 @@ Azure Data Box 在服务中收集并显示以下关键实例中的个人信息�
 
 Data Box 中实现了以下安全准则： 
 
-|准则   |描述   |
+|准则   |说明   |
 |---------|---------|
 |[IEC 60529 IP52](https://www.iec.ch/)    | 防水防尘保护         |
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | 对不利运输条件的承受力          |

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
 ms.openlocfilehash: c110a4e0429ba52e01c472097a2241f91d504cf5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77616212"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>在 Azure 上部署 SAP S/4HANA 或 BW/4HANA
@@ -42,9 +42,9 @@ ms.locfileid: "77616212"
 ### <a name="create-an-account-in-the-sap-cal"></a>在 SAP CAL 中创建帐户
 1. 首次登录 SAP CAL，请使用 SAP S-User 或 SAP 中注册的其他用户。 然后定义 SAP CAL 用于在 Azure 上部署设备的 SAP CAL 帐户。 在帐户定义中，需要：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择 Azure 上的部署模型（Resource Manager 或经典）。
+    a. 选择 Azure 上的部署模型（Resource Manager 或经典）。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 输入 Azure 订阅。 一个 SAP CAL 帐户仅可分配到一个订阅。 如果需要多个订阅，则需要另外创建 SAP CAL 帐户。
+    b. 输入 Azure 订阅。 一个 SAP CAL 帐户仅可分配到一个订阅。 如果需要多个订阅，则需要另外创建 SAP CAL 帐户。
 
     c. 授予 SAP CAL 权限，以便部署到 Azure 订阅中。
 
@@ -53,9 +53,9 @@ ms.locfileid: "77616212"
 
 1. 创建一个新的 SAP CAL 帐户。 “帐户”页显示 Azure 的三个选项****： 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 Microsoft Azure（经典）**** 是经典部署模型，已不再是首选项。
+    a. Microsoft Azure（经典）**** 是经典部署模型，已不再是首选项。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 Microsoft Azure 是新的 Resource Manager 部署模型。****
+    b. Microsoft Azure 是新的 Resource Manager 部署模型。****
 
     c. 21Vianet 运营的 Windows Azure 是在中国使用经典部署模型的一个选项****。
 
@@ -75,7 +75,7 @@ ms.locfileid: "77616212"
 
    ![Internet Explorer 云服务确认](./media/cal-s4h/s4h-pic5a.png)
 
-1. 单击“接受”****。 如果授权成功，则将再次显示 SAP CAL 帐户定义。 稍后，用户将收到一条消息，确认授权过程成功。
+1. 单击“接受”  。 如果授权成功，则将再次显示 SAP CAL 帐户定义。 稍后，用户将收到一条消息，确认授权过程成功。
 
 1. 若要将新创建的 SAP CAL 帐户分配到你的用户，请在右侧的文本框中输入你的用户 ID 并单击“添加”****。****
 
@@ -111,13 +111,13 @@ ms.locfileid: "77616212"
 
 1. 在“帐户详细信息”页上，需要执行以下操作****：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择 SAP CAL 帐户。 （使用通过 Resource Manager 部署模型部署时关联的帐户。）
+    a. 选择 SAP CAL 帐户。 （使用通过 Resource Manager 部署模型部署时关联的帐户。）
 
-    b.保留“数据库类型”设置，即设置为“共享”。 输入实例“名称”****。
+    b. 输入实例“名称”****。
 
     c. 选择 Azure**区域**。 SAP CAL 建议一个区域。 如果需要另一个 Azure 区域并且没有 SAP CAL 订阅，则需要通过 SAP 订购 CAL 订阅。
 
-    d.单击“下一步”。 输入一个用于解决方案的八个或九个字符的主密码****。 密码用于不同组件的管理员。
+    d. 输入一个用于解决方案的八个或九个字符的主密码****。 密码用于不同组件的管理员。
 
    ![SAP CAL 基本模式：创建实例](./media/cal-s4h/s4h-pic10a.png)
 

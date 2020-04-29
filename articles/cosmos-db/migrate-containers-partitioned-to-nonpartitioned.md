@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: mjbrown
 ms.openlocfilehash: 742ef62895f3ef64e8fa22ab21d2947bee57776b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77623355"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>将未分区的容器迁移到已分区的容器
 
-Azure Cosmos DB 支持创建不带分区键的容器。 目前可以使用 Azure CLI 以及版本低于或等于 2.x 的 Azure Cosmos DB SDK（.Net、Java、NodeJs）创建未分区的容器。 无法使用 Azure 门户创建未分区的容器。 但是，此类非分区容器没有弹性，固定存储容量为 20 GB，吞吐量限制为 10K RU/s。
+Azure Cosmos DB 支持创建不带分区键的容器。 目前可以使用 Azure CLI 以及版本低于或等于 2.x 的 Azure Cosmos DB SDK（.Net、Java、NodeJs）创建未分区的容器。 无法使用 Azure 门户创建未分区的容器。 但是，此类未分区容器不具有弹性，具有 20 GB 的固定存储容量，且吞吐量限制为 10K RU/s。
 
 未分区的容器已经过时，应将现有的未分区容器迁移到已分区的容器，以扩展存储量和吞吐量。 Azure Cosmos DB 提供系统定义的机制用于将未分区的容器迁移到已分区的容器。 本文档介绍如何将所有现有的未分区容器自动迁移到已分区的容器。 仅当使用的是支持所有语言的 V3 版 SDK 时，才能利用自动迁移功能。
 
@@ -24,7 +24,7 @@ Azure Cosmos DB 支持创建不带分区键的容器。 目前可以使用 Azure
 
 ## <a name="migrate-container-using-the-system-defined-partition-key"></a>使用系统定义的分区键迁移容器
 
-为了支持迁移，Azure Cosmos DB 提供了一个系统定义的`/_partitionkey`分区密钥，该键在没有分区键的所有容器上命名。 迁移容器后，无法更改分区键定义。 例如，已迁移到分区容器的容器的定义如下所示：
+为了支持迁移，Azure Cosmos DB 在所有没有分区键的容器上`/_partitionkey`提供名为的系统定义的分区键。 迁移容器后，无法更改分区键定义。 例如，已迁移到分区容器的容器的定义如下所示：
 
 ```json
 {
@@ -95,11 +95,11 @@ ItemResponse<DeviceInformationItem> readResponse =
                       
 ## <a name="migrate-the-documents"></a>迁移文档
 
-虽然容器定义使用分区键属性增强，但容器中的文档不会自动迁移。 这意味着，系统分区键属性 `/_partitionKey` 路径不会自动添加到现有的文档。 需要通过读取创建的不带分区键的文档将现有文档重新分区，然后使用文档中的 `_partitionKey` 属性重新写入这些文档。
+当使用分区键属性增强容器定义时，容器中的文档不会自动迁移。 这意味着，系统分区键属性 `/_partitionKey` 路径不会自动添加到现有的文档。 需要通过读取创建的不带分区键的文档将现有文档重新分区，然后使用文档中的 `_partitionKey` 属性重新写入这些文档。
 
 ## <a name="access-documents-that-dont-have-a-partition-key"></a>访问不带分区键的文档
 
-应用程序可以使用名为"分区键.none"的特殊系统属性访问没有分区密钥的现有文档，这是非迁移文档的值。 可以在所有 CRUD 和查询操作中使用此属性。 以下示例演示如何从 NonePartitionKey 读取单个文档。 
+应用程序可以通过使用名为 "PartitionKey" 的特殊系统属性来访问没有分区键的现有文档，这是未迁移的文档的值。 可以在所有 CRUD 和查询操作中使用此属性。 以下示例演示如何从 NonePartitionKey 读取单个文档。 
 
 ```csharp
 CosmosItemResponse<DeviceInformationItem> readResponse = 
@@ -114,7 +114,7 @@ await migratedContainer.Items.ReadItemAsync<DeviceInformationItem>(
 
 ## <a name="compatibility-with-sdks"></a>与 SDK 的兼容性
 
-Azure Cosmos DB SDK 的旧版本（如 V2.x.x 和 V1.x.x）不支持系统定义的分区密钥属性。 因此，当您从较旧的 SDK 读取容器定义时，它不包含任何分区密钥定义，并且这些容器的行为将完全与以前一样。 使用旧版 SDK 生成的应用程序将继续使用未分区的容器，就如同未发生任何更改一样。 
+旧版本的 Azure Cosmos DB Sdk （例如 V2. x. x. x. x. x）不支持系统定义的分区键属性。 因此，当从较旧的 SDK 读取容器定义时，它不包含任何分区键定义，这些容器的行为与以前完全相同。 使用旧版 SDK 生成的应用程序将继续使用未分区的容器，就如同未发生任何更改一样。 
 
 如果迁移的容器已由最新/V3 版 SDK 使用，当你开始在新文档中填充系统定义的分区键时，不再可以从旧版 SDK 访问（读取、更新、删除、查询）此类文档。
 
@@ -129,7 +129,7 @@ Azure Cosmos DB SDK 的旧版本（如 V2.x.x 和 V1.x.x）不支持系统定义
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure Cosmos DB 中的分区](partitioning-overview.md)
-* [在 Azure 宇宙数据库中请求单位](request-units.md)
+* [Azure Cosmos DB 中的请求单位](request-units.md)
 * [在容器和数据库上预配吞吐量](set-throughput.md)
 * [使用 Azure Cosmos 帐户](account-overview.md)
 

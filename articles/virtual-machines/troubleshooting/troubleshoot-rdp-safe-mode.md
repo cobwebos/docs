@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
 ms.openlocfilehash: 7bc2c0f472a03c3f069a889c360bea9017a780f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77918200"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>由于 VM 启动到安全模式，因此无法对 VM 进行 RDP
@@ -73,7 +73,7 @@ RDP 服务在安全模式下不可用。 VM 启动到安全模式时，只会加
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>将 OS 磁盘附加到恢复 VM
 
-1. [将操作系统磁盘附加到恢复 VM。](../windows/troubleshoot-recovery-disks-portal.md)
+1. [将 OS 磁盘附加到恢复 VM](../windows/troubleshoot-recovery-disks-portal.md)。
 2. 开始与恢复 VM 建立远程桌面连接。
 3. 确保磁盘在磁盘管理控制台中标记为“联机”。**** 请注意分配给附加的 OS 磁盘的驱动器号。
 
@@ -83,7 +83,7 @@ RDP 服务在安全模式下不可用。 VM 启动到安全模式时，只会加
 
 若要启用转储日志和串行控制台，请运行以下脚本。
 
-1. 打开提升的命令提示会话 （**以管理员身份运行**）。
+1. 打开提升的命令提示符会话（**以管理员身份运行**）。
 2. 运行以下脚本：
 
     对于此脚本，我们假设分配给附加 OS 磁盘的驱动器号为 F。请将此驱动器号替换为 VM 中的相应值。
@@ -112,7 +112,7 @@ RDP 服务在安全模式下不可用。 VM 启动到安全模式时，只会加
 
 #### <a name="configure-the-windows-to-boot-into-normal-mode"></a>配置 Windows 以启动到正常模式
 
-1. 打开提升的命令提示会话 （**以管理员身份运行**）。
+1. 打开提升的命令提示符会话（**以管理员身份运行**）。
 2. 检查启动配置数据。 在以下命令中，我们假设分配给附加 OS 磁盘的驱动器号为 F。请将此驱动器号替换为 VM 的相应值。
 
         bcdedit /store F:\boot\bcd /enum

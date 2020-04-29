@@ -14,10 +14,10 @@ ms.date: 01/31/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 141a75a75a214ff4a6f136df7570d6e81f7f4e82
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77617009"
 ---
 # <a name="onboarding-requirements"></a>加入要求
@@ -32,7 +32,7 @@ ms.locfileid: "77617009"
 
 **网络连接**
 
-- 本地到 Azure 之间的 ExpressRoute：若要将本地数据中心连接到 Azure，请确保从 ISP 订购至少 1 Gbps 的连接。 HANA 大型实例单元与 Azure 之间的连接也使用 ExpressRoute 技术。 HANA 大型实例单元与 Azure 之间的此 ExpressRoute 连接包含在 HANA 大型实例单元的价格中，其中包括此特定 ExpressRoute 线路的所有数据流入和流出费用。 因此，您作为客户，除了本地和 Azure 之间的 ExpressRoute 链接之外，不会遇到额外费用。
+- 本地到 Azure 之间的 ExpressRoute：若要将本地数据中心连接到 Azure，请确保从 ISP 订购至少 1 Gbps 的连接。 HANA 大型实例单元与 Azure 之间的连接也使用 ExpressRoute 技术。 HANA 大型实例单元与 Azure 之间的此 ExpressRoute 连接包含在 HANA 大型实例单元的价格中，其中包括此特定 ExpressRoute 线路的所有数据流入和流出费用。 因此，作为客户，在本地与 Azure 之间的 ExpressRoute 链接以外，不会产生额外的成本。
 
 **操作系统**
 
@@ -61,7 +61,7 @@ ms.locfileid: "77617009"
 > 对于类型 II 设备，目前仅支持 SLES 12 SP2 OS 版本。 
 
 
-**数据库**
+**Database**
 
 - SAP HANA（平台版或企业版）的许可证和软件安装组件。
 

@@ -9,10 +9,10 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.openlocfilehash: 238c12baf55b525a24107a727d09588ef06a6bef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77598300"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 存储生命周期
@@ -32,7 +32,7 @@ ms.locfileid: "77598300"
 
 ## <a name="storage-account-support"></a>存储帐户支持
 
-生命周期管理策略可用于通用 v2 （GPv2） 帐户、Blob 存储帐户和高级块 Blob 存储帐户。 在 Azure 门户中，可将现有的常规用途 (GPv1) 帐户升级为 GPv2 帐户。 有关存储帐户的详细信息，请参阅[Azure 存储帐户概述](../common/storage-account-overview.md)。  
+生命周期管理策略可用于常规用途 v2 （GPv2）帐户、Blob 存储帐户和高级块 Blob 存储帐户。 在 Azure 门户中，可将现有的常规用途 (GPv1) 帐户升级为 GPv2 帐户。 有关存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。  
 
 ## <a name="pricing"></a>定价
 
@@ -47,14 +47,14 @@ ms.locfileid: "77598300"
 可以使用以下任一方法来添加、编辑或删除策略：
 
 * [Azure 门户](https://portal.azure.com)
-* [Azure 电源外壳](https://github.com/Azure/azure-powershell/releases)
+* [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
 * [REST API](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
 
 可以完整读取或写入策略。 不支持部分更新。 
 
 > [!NOTE]
-> 如果为存储帐户启用了防火墙规则，生命周期管理请求可能会被阻止。 您可以通过为受信任的 Microsoft 服务提供异常来取消阻止这些请求。 有关详细信息，请参阅[配置防火墙和虚拟网络](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)中的“例外”部分。
+> 如果为存储帐户启用了防火墙规则，生命周期管理请求可能会被阻止。 可以通过为受信任的 Microsoft 服务提供例外，来取消阻止这些请求。 有关详细信息，请参阅[配置防火墙和虚拟网络](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)中的“例外”部分。
 
 本文介绍如何使用门户和 PowerShell 方法管理策略。  
 
@@ -67,34 +67,34 @@ ms.locfileid: "77598300"
 
 #### <a name="azure-portal-list-view"></a>Azure 门户列表视图
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 2. 在 Azure 门户中，搜索并选择你的存储帐户。 
 
-3. 在“Blob 服务”下，选择“生命周期管理”以查看或更改规则********。
+3. 在“Blob 服务”下，选择“生命周期管理”以查看或更改规则   。
 
-4. 选择“列表视图”选项卡。****
+4. 选择“列表视图”选项卡。 
 
-5. 选择“添加规则”，然后填写“操作集”窗体字段。******** 在以下示例中，如果 Blob 有 30 天未修改，它们将转移到冷存储。
+5. 选择“添加规则”，然后填写“操作集”窗体字段。   在以下示例中，如果 Blob 有 30 天未修改，它们将转移到冷存储。
 
    ![Azure 门户中的生命周期管理操作集页](media/storage-lifecycle-management-concepts/lifecycle-management-action-set.png)
 
-6. 选择“筛选器集”添加可选的筛选器。**** 然后，选择“浏览”以指定作为筛选依据的容器和文件夹。****
+6. 选择“筛选器集”添加可选的筛选器。  然后，选择“浏览”以指定作为筛选依据的容器和文件夹。 
 
    ![Azure 门户中的生命周期管理筛选器集页](media/storage-lifecycle-management-concepts/lifecycle-management-filter-set-browse.png)
 
-8. 选择“查看 + 添加”以查看策略设置。****
+8. 选择“查看 + 添加”以查看策略设置。 
 
-9. 选择“添加”以添加新策略。****
+9. 选择“添加”以添加新策略。 
 
 #### <a name="azure-portal-code-view"></a>Azure 门户代码视图
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 2. 在 Azure 门户中，搜索并选择你的存储帐户。
 
-3. 在“Blob 服务”下，选择“生命周期管理”以查看或更改策略********。
+3. 在“Blob 服务”下，选择“生命周期管理”以查看或更改策略   。
 
-4. 以下 JSON 是可粘贴到“代码视图”选项卡中的策略示例。****
+4. 以下 JSON 是可粘贴到“代码视图”选项卡中的策略示例。 
 
    ```json
    {
@@ -124,11 +124,11 @@ ms.locfileid: "77598300"
    }
    ```
 
-5. 选择“保存”。****
+5. 选择“保存”。 
 
 6. 有关此 JSON 示例的详细信息，请参阅[策略](#policy)和[规则](#rules)部分。
 
-# <a name="powershell"></a>[电源壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用以下 PowerShell 脚本可将策略添加到存储帐户。 必须使用资源组名称初始化 `$rgname` 变量。 必须使用存储帐户名称初始化 `$accountName` 变量。
 
@@ -311,7 +311,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 运行条件基于期限。 基本 Blob 使用上次修改时间来跟踪陈旧程度，Blob 快照使用快照创建时间来跟踪陈旧程度。
 
-| 操作运行条件             | 条件值                          | 描述                             |
+| 操作运行条件             | 条件值                          | 说明                             |
 |----------------------------------|------------------------------------------|-----------------------------------------|
 | daysAfterModificationGreaterThan | 指示陈旧程度（天）的整数值 | 基本 Blob 操作的条件     |
 | daysAfterCreationGreaterThan     | 指示陈旧程度（天）的整数值 | Blob 快照操作的条件 |
@@ -432,13 +432,13 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 }
 ```
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>常见问题解答
 
 **我创建了一个新策略，但操作为什么没有立即运行？**  
 平台每天运行一次生命周期策略。 配置策略后，某些操作可能需要在长达 24 小时之后才能首次运行。  
 
 **如果更新现有策略，运行操作需要多长时间？**  
-已更新的策略最多需要 24 小时才能生效。 策略生效后，最多可能需要 24 小时才能执行操作。 因此，策略操作可能需要长达 48 小时才能完成。   
+已更新的策略最多需要 24 小时才能生效。 策略生效后，最多可能需要 24 小时才能执行操作。 因此，策略操作最多可能需要 48 小时才能完成。   
 
 **我手动解冻了某个存档的 Blob，如何防止它暂时性地移回到存档层？**  
 将 Blob 从一个访问层移到另一个访问层后，其上次修改时间不会更改。 如果手动将存档的 Blob 解冻到热层，生命周期管理引擎会将它移回到存档层。 暂时禁用影响此 Blob 的规则可防止该 Blob 再次存档。 可以安全地将 Blob 移回到存档层时，重新启用该规则即可。 如果需要将 Blob 永久保留在热层或冷层，也可以将其复制到另一个位置。

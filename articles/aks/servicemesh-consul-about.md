@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: c518985b360fa3264bd5ac1e3fe76d61b2810b9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77594203"
 ---
 # <a name="consul"></a>Consul
@@ -35,11 +35,11 @@ ms.locfileid: "77594203"
 
 ## <a name="selection-criteria"></a>选择条件
 
-在评估领事的工作量时，了解并考虑以下方面非常重要：
+为工作负荷评估 Consul 时，请务必了解并考虑以下方面：
 
 - [Consul 原则](#consul-principles)
 - [功能](#capabilities)
-- [应用场景](#scenarios)
+- [方案](#scenarios)
 
 
 ### <a name="consul-principles"></a>Consul 原则
@@ -57,17 +57,17 @@ ms.locfileid: "77594203"
 
 Consul 提供下述功能集：
 
-- **网格**+ 网关（多数据中心）、虚拟机（群集节点外）、服务同步、内置调试选项
+- **网格**-网关（多数据中心），虚拟机（群集节点不足），服务同步，内置调试选项
 
-- **代理**= 特使、内置代理、可插拔的 l4 代理，适用于 Windows 工作负载
+- **代理**-Envoy、内置代理、可插入、适用于 Windows 工作负荷的 l4 代理
 
-- **流量管理**– 路由、拆分、解析
+- **流量管理**–路由、拆分、解析
 
-- **政策**= 意图，ACL
+- **策略**–意向，acl
 
-- **安全性**– 授权、身份验证、加密、基于 SPIFFE 的身份、外部 CA （Vault）、证书管理和轮换
+- **安全性**–授权、身份验证、加密、基于 SPIFFE 的标识、外部 CA （保管库）、证书管理和旋转
 
-- **可观测性**– 指标、ui 仪表板、普罗米图斯、格拉法纳
+- **可观察性**–指标，ui 仪表板，prometheus，grafana
 
 
 ### <a name="scenarios"></a>方案

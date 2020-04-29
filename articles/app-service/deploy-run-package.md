@@ -4,10 +4,10 @@ description: 部署应用的具有原子性的 ZIP 包。 提高应用在 ZIP �
 ms.topic: article
 ms.date: 01/14/2020
 ms.openlocfilehash: 5cc909d79b3f5ea2b4c6a3da12bc7250addbe00c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77920716"
 ---
 # <a name="run-your-app-in-azure-app-service-directly-from-a-zip-package"></a>直接从 ZIP 包运行 Azure 应用服务中的应用
@@ -63,7 +63,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 如果将同名的已更新包发布到 Blob 存储，则需要重启应用，以便将更新的包加载到应用服务中。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 - 直接从包运行会使 `wwwroot` 变为只读目录。 如果应用尝试将文件写入此目录，将会收到错误。
 - 不支持 TAR 和 GZIP 格式。
@@ -72,5 +72,5 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ## <a name="more-resources"></a>更多资源
 
-- [Azure 应用服务的连续部署](deploy-continuous-deployment.md)
+- [Azure App Service 的持续部署](deploy-continuous-deployment.md)
 - [使用 ZIP 或 WAR 文件部署代码](deploy-zip.md)

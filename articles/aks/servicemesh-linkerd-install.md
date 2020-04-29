@@ -7,10 +7,10 @@ ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: 419b61527b68299c82dec4f2f5da6b0220859cc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77593699"
 ---
 # <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中安装 Linkerd
@@ -22,7 +22,7 @@ ms.locfileid: "77593699"
 > [!NOTE]
 > 这些说明引用 Linkerd 版本 `stable-2.6.0`。
 >
-> 可针对 Kubernetes 版本 `1.13+` 运行 Linkerd `stable-2.6.x`。 可以在 [GitHub - Linkerd 版本][linkerd-github-releases]中找到 Stable 和 Edge 的其他 Linkerd 版本。
+> 可针对 Kubernetes 版本 `stable-2.6.x` 运行 Linkerd `1.13+`。 可以在 [GitHub - Linkerd 版本][linkerd-github-releases]中找到 Stable 和 Edge 的其他 Linkerd 版本。
 
 在本文中，学习如何：
 
@@ -136,7 +136,7 @@ kubectl get svc --namespace linkerd --output wide
 kubectl get pod --namespace linkerd --output wide
 ```
 
-以下示例输出显示了现在应该正在运行的服务和 Pod（安排在 Linux 节点上）：
+以下示例输出显示了现在应该正在运行的服务和 Pod（在 Linux 节点上计划）：
 
 ```console
 NAME                     TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)             AGE  SELECTOR
@@ -247,7 +247,7 @@ Opening Linkerd dashboard in the default browser
 > [!WARNING]
 > 从正在运行的系统中删除 Linkerd 可能会导致服务之间出现流量相关的问题。 在继续之前，请确保对系统进行预配，以便在没有 Linkerd 的情况下系统仍可正常运行。
 
-首先，需删除数据平面代理。 从工作负载命名空间中删除任何自动代理注入[注释][linkerd-automatic-proxy-injection]，并推出工作负载部署。 工作负荷不应该再有任何关联的数据平面组件。
+首先，需删除数据平面代理。 请从工作负荷命名空间中删除任何自动代理注入[注释][linkerd-automatic-proxy-injection]，然后展开工作负荷部署。 工作负荷不应该再有任何关联的数据平面组件。
 
 最后，请删除控制平面，如下所示：
 
@@ -262,7 +262,7 @@ linkerd install --ignore-cluster | kubectl delete -f -
 - [Linkerd - Helm 安装][linkerd-install-with-helm]
 - [Linkerd - 针对角色权限的多阶段安装][linkerd-multi-stage-installation]
 
-也可以使用以下示例应用程序按照其他方案操作：
+也可使用以下项按照其他方案操作：
 
 - [Linkerd emojivoto 演示][linkerd-demo-emojivoto]
 - [Linkerd books 演示][linkerd-demo-books]

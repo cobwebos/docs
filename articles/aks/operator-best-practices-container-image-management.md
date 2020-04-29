@@ -5,15 +5,15 @@ services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.openlocfilehash: efe72157f598c336248e407c57bce92fe87da23a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77594732"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中容器映像管理和安全性的最佳做法
 
-在 Azure Kubernetes 服务 (AKS) 中开发和运行应用程序时，容器和容器映像的安全性是需要考虑的一个重要方面。 包括过时基础映像或未修补的应用程序运行时的容器可能会引入安全风险和可能的攻击途径。 为了尽量降低这些风险，你应集成一些工具，这些工具在生成时和运行时扫描并修正容器中的问题。 越早在过程中捕获漏洞或过时的基础映像，群集就安全。 在本文中，“容器”是指容器注册表中存储的容器映像以及正在运行的容器**。
+在 Azure Kubernetes 服务 (AKS) 中开发和运行应用程序时，容器和容器映像的安全性是需要考虑的一个重要方面。 包括过时基础映像或未修补的应用程序运行时的容器可能会引入安全风险和可能的攻击途径。 为了尽量降低这些风险，你应集成一些工具，这些工具在生成时和运行时扫描并修正容器中的问题。 越早在过程中捕获漏洞或过时的基础映像，群集就安全。 在本文中，“容器”是指容器注册表中存储的容器映像以及正在运行的容器  。
 
 本文重点介绍如何保护 AKS 中的容器。 学习如何：
 
@@ -21,9 +21,9 @@ ms.locfileid: "77594732"
 > * 扫描并修复映像漏洞
 > * 在更新基础映像时自动触发并重新部署容器映像
 
-还可以阅读[群集安全性][best-practices-cluster-security]和[Pod 安全性][best-practices-pod-security]的最佳做法。
+还可以阅读[群集安全性][best-practices-cluster-security]和 [Pod 安全性][best-practices-pod-security]的最佳做法。
 
-您还可以使用[安全中心的容器安全][security-center-containers]功能来帮助扫描容器中的漏洞。  Azure[容器注册表][security-center-acr]与安全中心集成，以帮助保护映像和注册表免受漏洞。
+你还可以使用[安全中心中的容器安全性][security-center-containers]来帮助扫描容器中的漏洞。  此外， [Azure 容器注册表][security-center-acr]与安全中心集成，可帮助保护映像和注册表免受漏洞的影响。
 
 ## <a name="secure-the-images-and-run-time"></a>保护映像和运行时
 

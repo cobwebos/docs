@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 8518e30a54c2486abf84cd9ac026cc4dccb3fa84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77593894"
 ---
 # <a name="istio"></a>Istio
@@ -44,7 +44,7 @@ Istio 提供了由基于 [Envoy][envoy-proxy] 的挎斗组成的数据平面。 
 
 - [设计目标](#design-goals)
 - [功能](#capabilities)
-- [应用场景](#scenarios)
+- [方案](#scenarios)
 
 
 ### <a name="design-goals"></a>设计目标
@@ -64,15 +64,15 @@ Istio 提供了由基于 [Envoy][envoy-proxy] 的挎斗组成的数据平面。 
 
 Istio 提供下述功能集：
 
-- **网格**+ 网关（多群集）、虚拟机（网格扩展）
+- **网格**-网关（多群集），虚拟机（网格扩展）
 
-- **交通管理**– 路由、拆分、超时、断路器、重试、入口、出口
+- **流量管理**–路由、拆分、超时、断路断路、重试、入口、出口
 
-- **策略**= 访问控制、速率限制、配额、自定义策略适配器
+- **策略**–访问控制、速率限制、配额、自定义策略适配器
 
-- **安全性**+ 身份验证 （jwt）、授权、加密 （mTLS）、外部 CA（HashiCorp 保险库）
+- **安全**-身份验证（jwt）、授权、加密（mTLS）、外部 CA （HashiCorp 保管库）
 
-- **可观测性**– 黄金指标、镜像、跟踪、自定义适配器、普罗米古斯、格拉法纳
+- **可观察性**–金牌指标、镜像、跟踪、自定义适配器、prometheus、grafana
 
 ### <a name="scenarios"></a>方案
 

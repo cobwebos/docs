@@ -14,10 +14,10 @@ ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cea89087742f1987f693b8bfb627bd71038a0c14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77616919"
 ---
 # <a name="sap-hana-large-instances-deployment"></a>SAP HANA（大型实例）部署 
@@ -36,7 +36,7 @@ Microsoft 需要使用以下信息来部署 HANA 大型实例单元：
 - 对于每个 Azure 部署区域：
     - 用于将 Azure 虚拟网络连接到 HANA 大型实例的 ER-P2P 连接的 /29 IP 地址范围。
     - 用于 HANA 大型实例服务器 IP 池的 /24 CIDR 块。
-    - 使用[ExpressRoute 全局覆盖](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)线启用从本地到 HANA 大型实例单元的直接路由或不同 Azure 区域中的 HANA 大型实例单元之间的路由时可选，您需要另预留一个 /29 IP 地址范围。 此特定范围可能不会与您之前定义的任何其他 IP 地址范围重叠。
+    - 可选：使用[ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)启用从本地到 Hana 大型实例单元的直接路由，或在不同 Azure 区域中的 Hana 大型实例单元之间进行路由时，需要保留另一个/29 IP 地址范围。 此特定范围不能与之前定义的任何其他 IP 地址范围重叠。
 - 对于连接到 HANA 大型实例的每个 Azure 虚拟网络，虚拟网络地址空间属性中使用的 IP 地址范围值。
 - 对于每个 HANA 大型实例系统的数据：
   - 所需主机名，最好是使用完全限定的域名。
@@ -50,7 +50,7 @@ Microsoft 需要使用以下信息来部署 HANA 大型实例单元：
 
 在 Microsoft 部署 HANA 大型实例后，可以使用以下序列与它建立连接：
 
-1. [将 Azure VM 连接到 HANA 大型实例](hana-connect-azure-vm-large-instances.md)
+1. [将 Azure Vm 连接到 HANA 大型实例](hana-connect-azure-vm-large-instances.md)
 2. [将 VNet 连接到 HANA 大型实例 ExpressRoute](hana-connect-vnet-express-route.md)
 3. [其他网络要求（可选）](hana-additional-network-requirements.md)
 

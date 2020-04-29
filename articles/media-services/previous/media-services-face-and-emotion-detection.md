@@ -16,16 +16,16 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.openlocfilehash: 2d746167f993438e5fce467365844df2078c08a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77919289"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>使用 Azure 媒体分析检测面部和情绪
 
 > [!NOTE]
-> **Azure 媒体人脸检测器**媒体处理器将停用。 有关停用日期，请参阅[旧组件](legacy-components.md)主题。
+> Azure Media Face Detector  媒体处理器将停用。 有关停用日期，请参阅此[旧组件](legacy-components.md)主题。
 
 ## <a name="overview"></a>概述
 
@@ -81,7 +81,7 @@ ms.locfileid: "77919289"
 ```
 
 #### <a name="attribute-descriptions"></a>属性说明
-| 属性名称 | 描述 |
+| 属性名称 | 说明 |
 | --- | --- |
 | “模式” |快速 - 处理速度快，但准确度较低（默认）。|
 
@@ -156,7 +156,7 @@ ms.locfileid: "77919289"
 
 
 #### <a name="attribute-descriptions"></a>属性说明
-| 属性名称 | 描述 |
+| 属性名称 | 说明 |
 | --- | --- |
 | “模式” |Faces：仅人脸检测。<br/>PerFaceEmotion：独立返回每个人脸检测的情绪。<br/>AggregateEmotion：返回帧中所有面部的平均情绪值。 |
 | AggregateEmotionWindowMs |在已选择 AggregateEmotion 模式时使用。 指定用于生成每个聚合结果的视频的长度，以毫秒为单位。 |
@@ -348,7 +348,7 @@ ms.locfileid: "77919289"
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-设置开发环境，使用 连接信息填充 app.config 文件，如使用[.NET 的媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
+设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
 
 #### <a name="example"></a>示例
 

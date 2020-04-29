@@ -1,5 +1,5 @@
 ---
-title: 在 VM 上安装趋势微型深度安全性
+title: 在虚拟机上安装趋势微 Deep Security
 description: 本文介绍如何在 Azure 中使用经典部署模型创建的 VM 上安装和配置 Trend Micro Deep Security。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
 ms.openlocfilehash: cffd2eab3a616b4d16d847d0f2e1a26655f40459
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77919917"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>如何在 Windows VM 上安装和配置 Trend Micro Deep Security 即服务
@@ -85,7 +85,7 @@ ms.locfileid: "77919917"
 * 示例的[说明](https://go.microsoft.com/fwlink/?LinkId=404099)
 
 ## <a name="additional-resources"></a>其他资源
-[如何登录到运行 Windows 服务器的虚拟机]
+[如何登录到运行 Windows Server 的虚拟机]
 
 [Azure VM 扩展和功能]
 
@@ -95,5 +95,5 @@ ms.locfileid: "77919917"
 [3]: ./media/trend/SecurityAgentDetails.png
 
 <!-- Link references -->
-[如何登录到运行 Windows 服务器的虚拟机]:../windows/classic/connect-logon.md
+[如何登录到运行 Windows Server 的虚拟机]:../windows/classic/connect-logon.md
 [Azure VM 扩展和功能]: https://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409

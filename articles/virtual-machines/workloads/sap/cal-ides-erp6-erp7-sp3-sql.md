@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
 ms.openlocfilehash: 3efd92226b7c69590f3960458ffec49b63b8364f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77616708"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>在 Azure 上为 SAP ERP 6.0 部署 SAP IDES EHP7 SP3
@@ -39,9 +39,9 @@ ms.locfileid: "77616708"
 ### <a name="create-an-account-in-the-sap-cal"></a>在 SAP CAL 中创建帐户
 1. 首次登录 SAP CAL，请使用 SAP S-User 或 SAP 中注册的其他用户。 然后定义 SAP CAL 用于在 Azure 上部署设备的 SAP CAL 帐户。 在帐户定义中，需要：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择 Azure 上的部署模型（Resource Manager 或经典）。
+    a. 选择 Azure 上的部署模型（Resource Manager 或经典）。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 输入 Azure 订阅。 一个 SAP CAL 帐户仅可分配到一个订阅。 如果需要多个订阅，则需要另外创建 SAP CAL 帐户。
+    b. 输入 Azure 订阅。 一个 SAP CAL 帐户仅可分配到一个订阅。 如果需要多个订阅，则需要另外创建 SAP CAL 帐户。
     
     c. 授予 SAP CAL 权限，以便部署到 Azure 订阅中。
 
@@ -50,9 +50,9 @@ ms.locfileid: "77616708"
 
 1. 若要创建新的 SAP CAL 帐户，“帐户”**** 页显示 Azure 的两个选项： 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 Microsoft Azure（经典）**** 是经典部署模型，已不再是首选项。
+    a. Microsoft Azure（经典）**** 是经典部署模型，已不再是首选项。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 Microsoft Azure 是新的 Resource Manager 部署模型。****
+    b. Microsoft Azure 是新的 Resource Manager 部署模型。****
 
     ![SAP CAL 帐户](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic-2a.PNG)
 
@@ -72,7 +72,7 @@ ms.locfileid: "77616708"
 
     ![Internet Explorer 云服务确认](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic5a.PNG)
 
-1. 单击“接受”****。 如果授权成功，则将再次显示 SAP CAL 帐户定义。 稍后，用户将收到一条消息，确认授权过程成功。
+1. 单击“接受”  。 如果授权成功，则将再次显示 SAP CAL 帐户定义。 稍后，用户将收到一条消息，确认授权过程成功。
 
 1. 若要将新创建的 SAP CAL 帐户分配到你的用户，请在右侧的文本框中输入你的用户 ID 并单击“添加”****。**** 
 
@@ -97,15 +97,15 @@ ms.locfileid: "77616708"
 
 1. 在“基本模式：创建实例”**** 页上，需要：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 输入实例“名称”****。
+    a. 输入实例“名称”****。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 选择 Azure**区域**。 可能需要 SAP CAL 订阅才能获取提供的多个 Azure 区域。
+    b. 选择 Azure**区域**。 可能需要 SAP CAL 订阅才能获取提供的多个 Azure 区域。
 
     c.  输入解决方案的主“密码”****，如下所示：
 
     ![SAP CAL 基本模式：创建实例](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
-1. 单击 **“创建”**。 一段时间后，根据解决方案的大小和复杂性（SAP CAL 提供估算值），状态将显示为“活动”并可供使用： 
+1. 单击 **“创建”** 。 一段时间后，根据解决方案的大小和复杂性（SAP CAL 提供估算值），状态将显示为“活动”并可供使用： 
 
     ![SAP CAL 实例](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic12a.png)
 

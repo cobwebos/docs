@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d7938f7db22f004a0bf6cdf2e22dc8e103896719
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77617397"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>创建 SAP NetWeaver 多 SID 配置
@@ -55,7 +55,7 @@ ms.locfileid: "77617397"
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 已根据 [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide]中的介绍和下图所示，配置了用于一个 SAP ASCS/SCS 实例的 WSFC 群集。
 
 ![高可用性 SAP ASCS/SCS 实例][sap-ha-guide-figure-6001]
@@ -88,7 +88,7 @@ ms.locfileid: "77617397"
 ## <a name="prepare-the-infrastructure"></a>准备基础结构
 若要准备基础结构，可以使用以下参数安装附加的 SAP ASCS/SCS 实例：
 
-| 参数名称 | “值” |
+| 参数名称 | 值 |
 | --- | --- |
 | SAP ASCS/SCS SID |pr1-lb-ascs |
 | SAP DBMS 内部负载均衡器 | PR5 |
@@ -242,7 +242,7 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 概要过程如下所述：
 
 1. [安装 SAP 第一个群集节点][sap-ha-guide-9.1.2]。  
- 在此步骤中，您将在**存在 WSFC 群集节点 1**上安装具有高可用性 ASCS/SCS 实例的 SAP。
+ 在此步骤中，你在**现有 WSFC 群集节点 1**上安装包含高可用性 ASCS/SCS 实例的 SAP。
 
 2. [修改 ASCS/SCS 实例的 SAP 配置文件][sap-ha-guide-9.1.3]。
 
@@ -259,7 +259,7 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
  在用于 SAP ASCS/SCS 实例的两个群集节点上，打开 SAP ASCS/SCS 使用的所有 Windows 防火墙端口。 有关这些端口，请参阅 [Windows VM 上的高可用性的 SAP NetWeaver 指南][sap-ha-guide-8.8]。  
  此外，打开 Azure 内部负载均衡器探测端口，在本例中为 62350。
 
-7. [更改 SAP ERS Windows 服务实例的开始类型][sap-ha-guide-9.4]。
+7. [更改 SAP ERS Windows 服务实例的启动类型][sap-ha-guide-9.4]。
 
 8. 在新的专用 VM 上[安装 SAP 主应用程序服务器][sap-ha-guide-9.5]。
 

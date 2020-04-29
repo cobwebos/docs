@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
 ms.openlocfilehash: c22a401a6b25f7bb2c27a10e52214fa42ac6089b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77918217"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>Azure VM 中远程桌面频繁断开连接
@@ -34,7 +34,7 @@ ms.locfileid: "77918217"
 
 ## <a name="solution"></a>解决方案
 
-在按照这些步骤之前，先将受影响 VM 的[OS 磁盘快照](../windows/snapshot-copy-managed-disk.md)作为备份。 
+在执行这些步骤之前，请将受影响的 VM 的[OS 磁盘快照](../windows/snapshot-copy-managed-disk.md)作为备份。 
 
 要解决此问题，请使用串行控制或通过将 VM 的 OS 磁盘附加到恢复 VM 来[修复 VM 脱机](#repair-the-vm-offline)。
 
@@ -87,12 +87,12 @@ ms.locfileid: "77918217"
 
 ### <a name="repair-the-vm-offline"></a>修复 VM 脱机
 
-1. [将操作系统磁盘附加到恢复 VM。](../windows/troubleshoot-recovery-disks-portal.md)
+1. [将 OS 磁盘附加到恢复 VM](../windows/troubleshoot-recovery-disks-portal.md)。
 2. 将 OS 磁盘附加到恢复 VM 后，请确保磁盘在磁盘管理控制台中标记为“联机”****。 请注意分配给附加的 OS 磁盘的驱动器号。
 3. 在附加的 OS 磁盘上，浏览到 \windows\system32\config 文件夹****。 将此文件夹中的所有文件复制为备份，以备回滚之需。
 4. 启动注册表编辑器 (regedit.exe)。
-5. 选择“HKEY_LOCAL_MACHINE”**** 项。 在菜单上，选择**文件** > **加载蜂巢**：
-6. 浏览到您连接的操作系统磁盘上的 **[windows_system32_config_SYSTEM] 系统**文件夹。 输入“BROKENSYSTEM”**** 作为配置单元名称。 新的注册表配置单元将显示在“HKEY_LOCAL_MACHINE”**** 项之下。 然后加载 HKEY_LOCAL_MACHINE 密钥下的软件配置单元 \windows\system32\config\SOFTWARE********。 输入“BROKENSOFTWARE”**** 作为配置单元软件。 
+5. 选择“HKEY_LOCAL_MACHINE”**** 项。 在菜单上，选择 "**文件** > " "**加载配置单元**"：
+6. 浏览到已附加 OS 磁盘上的**\windows\system32\config\SYSTEM**文件夹。 输入“BROKENSYSTEM”**** 作为配置单元名称。 新的注册表配置单元将显示在“HKEY_LOCAL_MACHINE”**** 项之下。 然后加载 HKEY_LOCAL_MACHINE 密钥下的软件配置单元 \windows\system32\config\SOFTWARE********。 输入“BROKENSOFTWARE”**** 作为配置单元软件。 
 7. 打开提升的命令提示符窗口（以管理员身份运行），然后在其余步骤中运行命令以重置 RDP 配置****。 
 8. 将 RDP 的安全层级降为 0，以便服务器和客户端之间的通信使用本机 RDP 加密：
 

@@ -8,10 +8,10 @@ ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
 ms.openlocfilehash: 09e55abcd97317b87f8a272afa51c6b4ace572e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77598079"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>排查 Azure 文件存储性能问题
@@ -20,36 +20,36 @@ ms.locfileid: "77598079"
 
 ## <a name="high-latency-low-throughput-and-general-performance-issues"></a>高延迟、低吞吐量和一般性能问题
 
-### <a name="cause-1-share-experiencing-throttling"></a>原因 1：共享体验限制
+### <a name="cause-1-share-experiencing-throttling"></a>原因 1：共享遇到限制
 
 高级共享上的默认配额为 100 GiB，这可以提供 100 个基线 IOPS （一小时内可能会激增到 300）。 有关预配及其与 IOPS 之间的关系的详细信息，请参阅规划指南中的[预配的共享](storage-files-planning.md#understanding-provisioning-for-premium-file-shares)部分。
 
 若要确认共享是否受到限制，可以利用门户中的“Azure 指标”。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 选择“所有服务”，然后搜索“指标”********。
+1. 选择“所有服务”，然后搜索“指标”   。
 
-1. 选择“指标”****。
+1. 选择“指标”  。
 
 1. 选择你的存储帐户作为资源。
 
-1. 选择“文件”作为指标命名空间。****
+1. 选择“文件”作为指标命名空间。 
 
-1. 选择“事务”作为指标。****
+1. 选择“事务”作为指标。 
 
 1. 添加 **ResponseType** 的筛选器，并检查是否有任何请求的响应代码为 **SuccessWithThrottling**（适用于 SMB）或 **ClientThrottlingError**（适用于 REST）。
 
 ![高级文件共享的指标选项](media/storage-troubleshooting-premium-fileshares/metrics.png)
 
 > [!NOTE]
-> 要在文件共享被限制时接收警报，请参阅[如何在文件共享被限制时创建警报](#how-to-create-an-alert-if-a-file-share-is-throttled)。
+> 若想在文件共享受到限制时收到警报，请参阅[如何创建文件共享受到限制时的警报](#how-to-create-an-alert-if-a-file-share-is-throttled)。
 
 ### <a name="solution"></a>解决方案
 
 - 通过在共享中指定更高的配额来增大共享预配的容量。
 
-### <a name="cause-2-metadatanamespace-heavy-workload"></a>原因 2：元数据/命名空间繁重的工作负载
+### <a name="cause-2-metadatanamespace-heavy-workload"></a>原因 2：元数据/命名空间密集型工作负荷
 
 如果大多数请求以元数据为中心（例如 createfile/openfile/closefile/queryinfo/querydirectory），则与读/写操作相比，延迟将会更严重。
 
@@ -102,7 +102,7 @@ ms.locfileid: "77598079"
 
 - 跨多个 VM 分散负载。
 - 在同一 VM 上，通过 **nosharesock** 选项使用多个装入点，并将负载分散到这些装入点。
-- 在 Linux 上，尝试安装**带有无严格同步**选项，以避免强制 SMB 刷新每个**fsync**调用。 对于 Azure 文件，此选项不会干扰数据一致性，但可能会导致目录列表 **（ls-l**命令） 上的文件元数据陈旧。 直接查询文件的元数据（**stat** 命令）会返回最新的文件元数据。
+- 在 Linux 上，尝试使用 **nostrictsync** 选项进行装载，以免每次调用 **fsync** 时都强制执行 SMB 刷新。 对于 Azure 文件，此选项不会影响数据一致性，但可能会导致目录列表（**ls -l** 命令）中出现过时的文件元数据。 直接查询文件的元数据（**stat** 命令）会返回最新的文件元数据。
 
 ## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>涉及大量打开/关闭操作的元数据密集型工作负荷出现较高的延迟。
 
@@ -172,37 +172,37 @@ CentOS/RHEL 不支持大于 1 的 IO 深度。
 
 - 安装可用的[修补程序](https://support.microsoft.com/help/3114025/slow-performance-when-you-access-azure-files-storage-from-windows-8-1)。
 
-## <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>如果文件共享受到限制，如何创建警报
+## <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>如何创建文件共享受到限制时的警报
 
-1. 在[Azure 门户](https://portal.azure.com)中，单击**监视器**。 
+1. 在 [Azure 门户](https://portal.azure.com)中单击“监视”。  
 
-2. 单击 **"警报"，** 然后单击 **"新警报规则**"。
+2. 依次单击“警报”、“+ 新建警报规则”。  
 
-3. 单击 **"选择"** 以选择包含要提醒的文件共享的**存储帐户/文件**资源，然后单击"**完成**"。 例如，如果存储帐户名称是 contoso，请选择 contoso/文件资源。
+3. 单击“选择”  以选择要对其发出警报的文件共享所在的**存储帐户/文件**资源，然后单击“完成”  。 例如，如果存储帐户名称为“contoso”，则选择“contoso/文件”资源。
 
-4. 单击"**添加**"以添加条件。
+4. 单击“添加”以添加条件。 
 
-5. 您将看到存储帐户支持的信号列表，选择**交易记录**指标。
+5. 你将看到存储帐户支持的信号列表，请选择“事务”  指标。
 
-6. 在 **"配置信号逻辑**"边栏选项卡上，转到**响应类型**维度，单击"**维度值**下拉"，然后选择 **"成功与旋转**（用于 SMB）"或 **"客户端旋转错误**"（用于 REST）。 
-
-  > [!NOTE]
-  > 如果未列出成功与旋转或客户端限制错误维度值，则表示资源未被限制。  要添加维度值，**+** 请单击 **"维度值**"旁边的下拉列表，键入 **"成功与旋转**"或 **"客户端旋转错误**"，单击"**确定**"，然后#6重复步骤。
-
-7. 转到 **"文件共享**"维度，单击"**维度"值**下拉列表，然后选择要提醒的文件共享。 
+6. 在“配置信号逻辑”  边栏选项卡上，转到“响应类型”  维度，单击“维度值”  下拉列表，并选择 **SuccessWithThrottling**（对于 SMB）或 **ClientThrottlingError**（对于 REST）。 
 
   > [!NOTE]
-  > 如果文件共享是标准文件共享，则维度值下拉将为空，因为每股指标不适用于标准文件共享。 如果存储帐户中的任何文件共享受到限制，并且警报不会标识哪个文件共享被限制，将触发标准文件共享的限制警报。 由于每股指标不适用于标准文件共享，因此建议每个存储帐户有一个文件共享。 
+  > 如果 SuccessWithThrottling 或 ClientThrottlingError 维度值未列出，则意味着资源尚未受到限制。  若要添加维度值，请单击“维度值”  下拉列表旁边的 **+** ，键入 **SuccessWithThrottling** 或 **ClientThrottlingError**，单击“确定”  ，然后重复步骤 #6。
 
-8. 定义用于评估指标警报规则的**警报参数**（阈值、运算符、聚合粒度和频率），然后单击 **"完成**"。
+7. 转到“文件共享”  维度，单击“维度值”  下拉列表，并选择要对其发出警报的文件共享。 
+
+  > [!NOTE]
+  > 如果文件共享是标准文件共享，则“维度值”下拉列表将为空，因为每共享指标不可用于标准文件共享。 如果存储帐户中的任何文件共享受到限制，则会触发标准文件共享的限制警报，并且警报不会识别哪个文件共享受到限制。 因为每共享指标不可用于标准文件共享，所以建议为每个存储帐户使用一个文件共享。 
+
+8. 定义用来评估指标警报规则的**警报参数**（阈值、运算符、聚合粒度和频率），然后单击“完成”  。
 
   > [!TIP]
-  > 如果使用静态阈值，则指标图表可帮助确定文件共享当前被限制的合理阈值。 如果使用动态阈值，则指标图表将显示基于最近数据的计算阈值。
+  > 如果使用的是静态阈值，并且文件共享当前受到限制，则指标图表可以帮助确定合理的阈值。 如果使用的是动态阈值，则指标图表将显示基于最新数据计算出的阈值。
 
-9. 通过选择现有操作组或创建新操作组，将**操作组**（电子邮件、SMS 等）添加到警报中。
+9. 通过选择现有操作组或创建新的操作组，将一个**操作组**（电子邮件、短信，等等）添加到警报中。
 
-10. 填写**警报详细信息**，如**警报规则名称**、**描述**和**严重性**。
+10. 填写**警报详细信息**，例如**警报规则名称**、**说明**和**严重性**。
 
-11. 单击 **"创建警报规则**"以创建警报。
+11. 单击“创建警报规则”以创建警报  。
 
-要了解有关在 Azure 监视器中配置警报的详细信息，请参阅[Microsoft Azure 中的警报概述]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)。
+若要详细了解如何在 Azure Monitor 中配置警报，请参阅 [Microsoft Azure 中的警报概述]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)。

@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: alkohli
 ms.openlocfilehash: 7ba6ea8606fc354527ff4114bc45a0904941ba93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77918931"
 ---
-# <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure 数据框磁盘：常见问题
+# <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk：常见问题解答
 
 使用 Microsoft Azure Data Box 磁盘云解决方案可以通过快速、经济、可靠的方式将 TB 量级的数据发送到 Azure。 本常见问题解答文章包含在 Azure 门户中使用 Data Box 磁盘时可能遇到的问题及其解答。 
 
@@ -30,30 +30,30 @@ ms.locfileid: "77918931"
 
 ## <a name="about-the-service"></a>关于该服务
 
-### <a name="q-what-is-azure-data-box-service"></a>Q. 什么是 Azure Data Box 服务？ 
+### <a name="q-what-is-azure-data-box-service"></a>问： 什么是 Azure Data Box 服务？ 
 A.  Azure Data Box 服务专为脱机数据引入而设计。 此服务可以管理针对数据传输定制的、具有不同存储容量的所有产品组合。 
 
-### <a name="q-what-are-azure-data-box-disks"></a>Q. 什么是 Azure Data Box 磁盘？
+### <a name="q-what-are-azure-data-box-disks"></a>问： 什么是 Azure Data Box 磁盘？
 A. 使用 Azure Data Box 磁盘能够快速、经济、安全地将 TB 量级的数据传入和传出 Azure。 Microsoft 会向你寄送 1 到 5 个磁盘，每个磁盘的最大存储容量为 35 TB。 可以通过 Azure 门户中的 Data Box 服务轻松配置、连接和解锁这些磁盘。  
 
 磁盘已使用 Microsoft BitLocker 驱动器加密进行加密，可在 Azure 门户中管理加密密钥。 然后，从客户的服务器复制数据。 在数据中心，Microsoft 会使用高速专用网络上传链路将数据从驱动器迁移到云中，然后将其上传到 Azure。
 
-### <a name="q-when-should-i-use-data-box-disks"></a>Q. 何时应使用 Data Box 磁盘？
+### <a name="q-when-should-i-use-data-box-disks"></a>问： 何时应使用 Data Box 磁盘？
 A. 如果需要将 40 TB（或更少）的数据传输到 Azure，则使用 Data Box Disk 会很有利。
 
-### <a name="q-what-is-the-price-of-data-box-disks"></a>Q. Data Box 磁盘的价格是多少？
+### <a name="q-what-is-the-price-of-data-box-disks"></a>问： Data Box 磁盘的价格是多少？
 A. 有关 Data Box Disk 的价格，请访问[定价页](https://azure.microsoft.com/pricing/details/databox/disk/)。
 
-### <a name="q-how-do-i-get-data-box-disks"></a>Q. 如何获取 Data Box 磁盘？ 
+### <a name="q-how-do-i-get-data-box-disks"></a>问： 如何获取 Data Box 磁盘？ 
 A.  若要获取 Azure Data Box Disk，请登录到 Azure 门户并创建磁盘的 Data Box 订单。 提供联系信息和通知详细信息。 在你提交订单后，我们会在 10 天内将磁盘寄送给你，具体时间取决于磁盘的供货情况。
 
-### <a name="q-what-is-the-maximum-amount-of-data-i-can-transfer-with-data-box-disks-in-one-instance"></a>Q. 在一个实例中使用 Data Box 磁盘最多可以传输多少数据？
+### <a name="q-what-is-the-maximum-amount-of-data-i-can-transfer-with-data-box-disks-in-one-instance"></a>问： 在一个实例中使用 Data Box 磁盘最多可以传输多少数据？
 A. 如果使用 5 个磁盘，并且磁盘具有 8 TB 容量（7 TB 可用容量），则最大可用容量为 35 TB。 因此，可在一个实例中传输 35 TB 数据。 若要传输更多数据，需订购更多的磁盘。
 
-### <a name="q-how-can-i-check-if-data-box-disks-are-available-in-my-region"></a>Q. 如何检查 Data Box 磁盘是否在我的区域中可用？ 
-A.  若要了解目前在哪些区域提供 Data Box Disk，请转到[区域可用性](data-box-disk-overview.md#region-availability)。  
+### <a name="q-how-can-i-check-if-data-box-disks-are-available-in-my-region"></a>问： 如何检查 Data Box 磁盘是否在我的区域中可用？ 
+A.  若要查看目前提供 Data Box Disks 的区域，请转到[区域可用性](data-box-disk-overview.md#region-availability)。  
 
-### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>Q. 使用 Data Box 磁盘可在哪些区域存储数据？
+### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>问： 使用 Data Box 磁盘可在哪些区域存储数据？
 A. 美国、加拿大、澳大利亚、西欧和北欧、韩国及日本的所有区域支持 Data Box Disk。 仅支持 Azure 公有云区域。 不支持 Azure 政府版或其他主权云。
 
 ### <a name="q-will-my-data-box-disk-cross-country-borders-during-shipping"></a>Q. 我的 Data Box Disk 在运输过程中是否将跨越国家/地区边界？
@@ -65,20 +65,20 @@ A. 如果 Data Box Disk 出现任何问题，请联系 [Microsoft 支持部门](
 ## <a name="configure-and-connect"></a>配置和连接
  
 ### <a name="q-can-i-specify-the-number-of-data-box-disks-in-the-order"></a>Q. 是否可在订单中指定 Data Box 磁盘的数目？
-A.  不是。 根据数据大小和磁盘的供货情况，你最多会收到 5 个 8 TB 磁盘。  
+A.  不能。 根据数据大小和磁盘的供货情况，你最多会收到 5 个 8 TB 磁盘。  
 
 ### <a name="q-how-do-i-unlock-the-data-box-disks"></a>Q. 如何解锁 Data Box 磁盘？ 
 A.  在 Azure 门户中，转到自己的 Data Box 磁盘订单，并导航到“设备详细信息”。**** 复制支持密钥。 从 Azure 门户下载并提取适用于操作系统的 Data Box Disk 解锁工具。 在具有要复制到磁盘的数据的计算机上运行该工具。 提供支持密钥以解锁磁盘。 同一个支持密钥可解锁所有磁盘。 
 
 有关分步说明，请转至[在 Windows 客户端上解锁磁盘](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client)或[在 Linux 客户端上解锁磁盘](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client)。
 
-### <a name="q-can-i-use-a-linux-host-computer-to-connect-and-copy-the-data-on-to-the-data-box-disks"></a>Q. 是否可以使用 Linux 主机建立连接并将数据复制到 Data Box 磁盘？
+### <a name="q-can-i-use-a-linux-host-computer-to-connect-and-copy-the-data-on-to-the-data-box-disks"></a>问： 是否可以使用 Linux 主机建立连接并将数据复制到 Data Box 磁盘？
 A.  是的。 Linux 和 Windows 客户端都可用于连接数据并将数据复制到 Data Box Disk。 有关详细信息，请转到主机的[受支持操作系统](data-box-disk-system-requirements.md)列表。
 
 ### <a name="q-my-disks-are-dispatched-but-now-i-want-to-cancel-this-order-why-is-the-cancel-button-not-available"></a>Q. 我的磁盘已发货，但现在我想取消此订单。 为何取消按钮不可用？
 A.  订购磁盘后，只能在发货之前取消订单。 磁盘一旦发货，就再也不能取消订单。 但是，你可以将磁盘退货，需要支付一定的费用。 
 
-### <a name="q-can-i-connect-multiple-data-box-disks-at-the-same-to-the-host-computer-to-transfer-data"></a>Q. 是否可以同时将多个 Data Box 磁盘连接到主机来传输数据？
+### <a name="q-can-i-connect-multiple-data-box-disks-at-the-same-to-the-host-computer-to-transfer-data"></a>问： 是否可以同时将多个 Data Box 磁盘连接到主机来传输数据？
 A. 是的。 可将多个 Data Box 磁盘连接到同一主机来传输数据，多个复制作业可以并行运行。
 
 ## <a name="track-status"></a>跟踪状态
@@ -121,7 +121,7 @@ A. 对通过 USB 3.0 连接的磁盘进行测试时，磁盘性能最高为 430 
 ### <a name="q-how-do-i-know-that-my-data-is-secure-during-transit"></a>Q. 如何知道我的数据在传输过程中是否安全？ 
 A.  Data Box 磁盘已使用 BitLocker AES-128 位加密进行加密，支持密钥只在 Azure 门户中提供。 使用帐户凭据登录到 Azure 门户即可获取支持密钥。 运行 Data Box 磁盘解锁工具时，请提供此支持密钥。
 
-### <a name="q-how-do-i-copy-the-data-to-the-data-box-disks"></a>Q. 如何将数据复制到 Data Box 磁盘？ 
+### <a name="q-how-do-i-copy-the-data-to-the-data-box-disks"></a>问： 如何将数据复制到 Data Box 磁盘？ 
 A.  使用 Robocopy、Diskboss 等 SMB 复制工具，甚至是 Windows 文件资源管理器的拖放式操作，即可将数据复制到磁盘。
 
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>Q. 在加快数据复制方面你们是否有诀窍？
@@ -141,20 +141,20 @@ A.  若要加快复制过程：
 - 将文件复制到 VM 的磁盘。
 
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box-disks"></a>Q. 是否可对 Data Box 磁盘使用多个存储帐户？
-A.  不是。 Data Box 磁盘目前仅支持一个存储帐户（常规或经典帐户）。 支持热 Blob 和冷 Blob。 目前仅支持美国、西欧和北欧的 Azure 公有云中的存储帐户。
+A.  不能。 Data Box 磁盘目前仅支持一个存储帐户（常规或经典帐户）。 支持热 Blob 和冷 Blob。 目前仅支持美国、西欧和北欧的 Azure 公有云中的存储帐户。
 
 ### <a name="q-what-is-the-toolset-available-for-my-data-with-data-box-disks"></a>Q. Data Box Disk 提供了用于处理数据的什么工具集？
 A. 随 Data Box Disk 提供的工具集包含三个工具：
- - **数据盒磁盘解锁工具**：使用此工具解锁从微软发货的加密磁盘。 使用此工具解锁磁盘时，需要提供从 Azure 门户中的 Data Box Disk 订单中获得的密钥。 
- - **数据框磁盘验证工具**：使用此工具根据 Azure 命名约定验证大小、格式和 blob 名称。 它还生成复制的数据的校验和，然后使用校验和来验证上传到 Azure 的数据。
- - **数据盒磁盘拆分复制工具**：当您使用多个磁盘并且具有需要拆分和复制到所有磁盘的大型数据集时，请使用此工具。 此工具当前可用于 Windows。 不支持将此工具与托管磁盘配合使用。 此工具也会在复制数据时进行验证，因此可以在使用此工具时跳过验证步骤。
+ - **Data Box Disk 解锁工具**：使用此工具解锁从 Microsoft 提供的加密磁盘。 使用此工具解锁磁盘时，需要提供从 Azure 门户中的 Data Box Disk 订单中获得的密钥。 
+ - **Data Box Disk 验证工具**：使用此工具根据 Azure 命名约定验证大小、格式和 blob 名称。 它还生成复制的数据的校验和，然后使用校验和来验证上传到 Azure 的数据。
+ - **Data Box Disk 剥离复制工具**：使用此工具时，使用多个磁盘时，需要在所有磁盘之间进行拆分和复制的大型数据集。 此工具当前可用于 Windows。 不支持将此工具与托管磁盘配合使用。 此工具也会在复制数据时进行验证，因此可以在使用此工具时跳过验证步骤。
 
 此工具集可用于 Windows 和 Linux。 可以从以下位置下载此工具集：
 - [下载适用于 Windows 的 Data Box Disk 工具集](https://aka.ms/databoxdisktoolswin) 
 - [下载适用于 Linux 的 Data Box Disk 工具集](https://aka.ms/databoxdisktoolslinux)
  
 ### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>Q. 我可以使用 Data Box Disk 将数据传输到 Azure 文件，然后在 Azure 文件同步中使用该数据吗？ 
-A. 数据框磁盘支持 Azure 文件，但不适用于 Azure 文件同步。如果文件数据与 Azure 文件同步一起使用，则不保留元数据。
+A. 支持 Data Box Disk Azure 文件，但无法与 Azure 文件同步完美配合使用。如果文件数据与 Azure 文件同步一起使用，则不保留元数据。
 
 
 ## <a name="verify-and-upload"></a>验证和上传

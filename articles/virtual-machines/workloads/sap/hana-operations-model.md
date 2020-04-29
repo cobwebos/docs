@@ -14,10 +14,10 @@ ms.date: 09/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e147e4a5f104ca4cd1a10a776c907e3f9f1d6128
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77616971"
 ---
 # <a name="operations-model-and-responsibilities"></a>操作模型和责任
@@ -40,7 +40,7 @@ Azure 上的 SAP HANA（大型实例）提供的服务与 Azure IaaS 服务相�
 
 **SDDC**：用来将数据中心作为软件定义的实体进行管理的管理软件。 Microsoft 可以通过它出于规模、可用性和性能原因而创建资源池。
 
-**O/S**： 您选择的操作系统（SUSE Linux 或红帽 Linux）在服务器上运行。 向提供的 OS 映像是各个 Linux 供应商提供给 Microsoft 用于运行 SAP HANA 的映像。 必须具有 Linux 供应商的订阅，以便获取 SAP HANA 优化的特定映像。 你负责向 OS 供应商注册映像。 
+**O/S**：选择在服务器上运行的 OS （SUSE Linux 或 Red Hat linux）。 向提供的 OS 映像是各个 Linux 供应商提供给 Microsoft 用于运行 SAP HANA 的映像。 必须具有 Linux 供应商的订阅，以便获取 SAP HANA 优化的特定映像。 你负责向 OS 供应商注册映像。 
 
 从 Microsoft 移交的观点来看，还对进一步修补 Linux 操作系统负有责任。 此修补还包括成功安装 SAP HANA 所需的附加包，而这些包尚未由特定 Linux 供应商在其 SAP HANA 优化型 OS 映像中提供。 （有关详细信息，请参阅 SAP 的 HANA 安装文档和 SAP 说明。） 
 
@@ -57,7 +57,7 @@ HANA 大型实例的底层基础结构提供了用于备份和还原 OS 卷的�
 
 **中间件**：主要是 SAP HANA 实例。 管理、操作和监视由你负责。 可以通过提供的功能使用存储快照来实现备份、还原和灾难恢复目的。 这些功能由基础结构提供。 但是，责任还包括利用这些功能设计高可用性或灾难恢复功能，利用它们，以及监视是否已成功执行存储快照。
 
-**数据**：您的数据由 SAP HANA 管理，以及其他数据，如位于卷或文件共享上的备份文件。 你的责任包括监视磁盘可用空间、管理卷上的内容。 你还负责监视磁盘卷备份和存储快照的成功执行。 确保数据成功复制到灾难恢复站点是 Microsoft 的责任。
+**数据**：由 SAP HANA 管理的数据，以及位于卷或文件共享上的其他数据（例如备份文件）。 你的责任包括监视磁盘可用空间、管理卷上的内容。 你还负责监视磁盘卷备份和存储快照的成功执行。 确保数据成功复制到灾难恢复站点是 Microsoft 的责任。
 
 **应用程序：** SAP 应用程序实例；对于非 SAP 应用程序，则指那些应用程序的应用层。 你的责任包括这些应用程序的部署、管理、操作和监视。 你还负责与以下各项的容量规划相关的那些应用程序：CPU 资源消耗、内存消耗、Azure 存储消耗、虚拟网络内部的网络带宽消耗。 你还负责对虚拟网络到 Azure 上的 SAP HANA（大型实例）之间的网络带宽消耗进行容量规划。
 

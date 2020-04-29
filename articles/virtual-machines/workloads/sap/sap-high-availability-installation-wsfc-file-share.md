@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a393c1ac09283f1570908cea72750ed5ae28f81e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77617327"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>在 Windows 故障转移群集上安装 SAP NetWeaver 高可用性，在 Azure 上安装适用于 SAP ASCS/SCS 实例的文件共享
@@ -199,7 +199,7 @@ ms.locfileid: "77617327"
 
 本文介绍如何在 Azure 上安装和配置高可用 SAP 系统，使用 Windows Server 故障转移群集 (WSFC) 和横向扩展文件服务器作为一个选项来群集化 SAP ASCS/SCS 实例。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始安装之前，请查看以下文章：
 
@@ -210,8 +210,8 @@ ms.locfileid: "77617327"
 * [Azure VM 上的 SAP NetWeaver 高可用性][high-availability-guide]
 
 需要以下来自 SAP 的可执行文件和 DLL：
-* SAP 软件配置管理器 （SWPM） 安装工具版本 SPS25 或更高版本。
-* SAP 内核 7.49 或更高版本
+* SAP 软件预配管理器（SWPM）安装工具版本 SPS25 或更高版本。
+* SAP 内核7.49 或更高版本
 
 > [!IMPORTANT]
 > 将 SAP NetWeaver 7.40（及更高版本）与 SAP 内核 7.49（及更高版本）配合使用时，即可通过文件共享来群集化 SAP ASCS/SCS 实例。
@@ -231,7 +231,7 @@ ms.locfileid: "77617327"
 
 在 SOFS 群集上创建以下卷和文件共享：
 
-* SOFS`C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\`群集共享卷 （CSV） 上的 SAP GLOBALHOST 文件结构
+* SOFS 群集共享`C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\`卷（CSV）上的 SAP GLOBALHOST 文件结构
 
 * SAPMNT 文件共享
 
@@ -299,7 +299,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 在第一个群集节点上安装 SAP ASCS/SCS 实例。 若要安装该实例，请在 SAP SWPM 安装工具中转到：
 
-**\<产品>**  >   >  **Installation** >  >  >  **DBMS>安装应用程序服务器 ABAP（或 Java） >高可用性系统 ASCS/SCS 实例第一\<****Java****群集节点**。**Application Server ABAP** **High-Availability System****ASCS/SCS instance**
+**\<Product>**  >  >  **DBMS \<>** >  **Installation** >  **Java** **High-Availability System****ASCS/SCS instance****First cluster node****Application Server ABAP**安装应用程序服务器 > ABAP （或 Java） > 高可用性系统 ASCS/SCS 实例的第一个群集节点。
 
 ### <a name="add-a-probe-port"></a>添加探测端口
 
@@ -309,12 +309,12 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 在第二个群集节点上安装 SAP ASCS/SCS 实例。 若要安装该实例，请在 SAP SWPM 安装工具中转到：
 
-**\<产品>**  >   >  **Installation** >  >  >  **Java****Additional cluster node** ** \<DBMS>** 安装**应用程序服务器 ABAP（** 或 Java）>**高可用性系统****ASCS/SCS 实例**附加群集节点 。
+**\<Product>**  >   >  **DBMS \<>****安装** >  >  **Java** **High-Availability System****Additional cluster node****ASCS/SCS instance****Application Server ABAP**应用程序服务器 ABAP （或 Java） > 高可用性系统 ASCS/SCS 实例附加群集节点。 > 
 
 
 ## <a name="update-the-sap-ascsscs-instance-profile"></a>更新 SAP ASCS/SCS 实例配置文件
 
-更新 SAP ASCS/SCS 实例配置文件\<SID 中的参数>_ASCS/SCS\<Nr>_\<主机>。
+在 SAP ASCS/scs 实例配置文件\<SID>_ASCS/scs\<Nr>_ \<Host> 中更新参数。
 
 
 | 参数名称 | 参数值 |
@@ -323,7 +323,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 | enque/encni/set_so_keepalive  | **true** |
 | service/ha_check_node | **1** |
 
-重新启动 SAP ASCS/SCS 实例。 在`KeepAlive`SAP ASCS/SCS 群集节点上设置参数，请按照在[SAP ASCS/SCS 实例的群集节点上设置注册表项][high-availability-guide]的说明。 
+重新启动 SAP ASCS/SCS 实例。 在`KeepAlive`两个 sap ASCS/scs 群集节点上设置参数时，请按照说明[在 SAP ASCS/scs 实例的群集节点上设置注册表项][high-availability-guide]。 
 
 ## <a name="install-a-dbms-instance-and-sap-application-servers"></a>安装 DBMS 实例和 SAP 应用程序服务器
 
@@ -336,8 +336,8 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 * [不使用共享磁盘在故障转移群集上安装 ASCS/SCS 实例 - 高可用性文件共享的官方 SAP 指南][sap-official-ha-file-share-document]
 
-* [直接在 Windows 服务器中的存储空间 2016][s2d-in-win-2016]
+* [Windows Server 2016 中的存储空间直通][s2d-in-win-2016]
 
-* [用于应用程序数据概览的横向扩展文件服务器][sofs-overview]
+* [应用程序数据的横向扩展文件服务器概述][sofs-overview]
 
 * [Windows Server 2016 中存储方面的新增功能][new-in-win-2016-storage]

@@ -1,5 +1,5 @@
 ---
-title: 具有 WSFC&文件共享的 SAP ASCS/SCS HA 的 Azure 基础结构 |微软文档
+title: 用于 SAP ASCS/SCS HA 和 WSFC&文件共享的 Azure 基础结构 |Microsoft Docs
 description: 针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 SAP 高可用性的 Azure 基础结构
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4abae94ded92aca075fcb41a7cd42491e92d41d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77591534"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 SAP 高可用性的 Azure 基础结构
@@ -222,8 +222,8 @@ ms.locfileid: "77591534"
 | --- | --- | --- | --- |
 | 第一个群集节点 ASCS/SCS 群集 | ascs-1 | 10.0.6.4 | ascs-as |
 | 第二个群集节点 ASCS/SCS 群集 | ascs-2 | 10.0.6.5 | ascs-as |
-| 群集网络名称 |ascs-cl | 10.0.6.6 | 不适用 |
-| SAP PR1 ASCS 群集网络名称 |pr1-ascs | 10.0.6.7 | 不适用 |
+| 群集网络名称 |ascs-cl | 10.0.6.6 | n/a |
+| SAP PR1 ASCS 群集网络名称 |pr1-ascs | 10.0.6.7 | n/a |
 
 
 **表 1**：ASCS/SCS 群集
@@ -240,8 +240,8 @@ ms.locfileid: "77591534"
 | 第一个群集节点 | sofs-1 | 10.0.6.10 | sofs-as |
 | 第二个群集节点 | sofs-2 | 10.0.6.11 | sofs-as |
 | 第三个群集节点 | sofs-3 | 10.0.6.12 | sofs-as |
-| 群集网络名称 | sofs-cl | 10.0.6.13 | 不适用 |
-| SAP 全局主机名 | sapglobal | 使用所有群集节点的 IP | 不适用 |
+| 群集网络名称 | sofs-cl | 10.0.6.13 | n/a |
+| SAP 全局主机名 | sapglobal | 使用所有群集节点的 IP | n/a |
 
 **表 3**：横向扩展文件服务器群集
 
@@ -256,13 +256,13 @@ ms.locfileid: "77591534"
 
 * [设置所需的 DNS IP 地址][sap-high-availability-infrastructure-wsfc-shared-disk-dns-ip]。
 
-* [为 SAP 虚拟机设置静态 IP 地址][sap-ascs-high-availability-multi-sid-wsfc-set-static-ip]。
+* [设置 SAP 虚拟机的静态 IP 地址][sap-ascs-high-availability-multi-sid-wsfc-set-static-ip]。
 
 * [为 Azure 内部负载均衡器设置静态 IP 地址][sap-high-availability-infrastructure-wsfc-shared-disk-set-static-ip-ilb]。
 
 * [为 Azure 内部负载均衡器设置默认 ASCS/SCS 负载均衡规则][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules]。
 
-* [更改 Azure 内部负载均衡器的 ASCS/SCS 默认负载平衡规则][sap-high-availability-infrastructure-wsfc-shared-disk-change-ascs-ilb-rules]。
+* [更改 Azure 内部负载均衡器的 ASCS/SCS 默认负载均衡规则][sap-high-availability-infrastructure-wsfc-shared-disk-change-ascs-ilb-rules]。
 
 * [将 Windows 虚拟机添加到域][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain]。
 
@@ -324,7 +324,7 @@ Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 
 ![图 1：带托管磁盘的横向扩展文件服务器资源管理器模板的 UI 屏幕][sap-ha-guide-figure-8010]
 
-_**图 1**：用于使用托管磁盘横向扩展文件服务器资源管理器模板的 UI 屏幕_
+_**图 1**：带托管磁盘的横向扩展文件服务器资源管理器模板的 UI 屏幕_
 
 在模板中，执行以下操作：
 1. 在“Vm 计数”**** 框中，输入最小计数 **2**。
@@ -338,19 +338,19 @@ _**图 1**：用于使用托管磁盘横向扩展文件服务器资源管理器�
 
 ![图 2：不带托管磁盘的横向扩展文件服务器 Azure 资源管理器模板的 UI 屏幕][sap-ha-guide-figure-8011]
 
-_**图 2**：无托管磁盘的横向扩展文件服务器 Azure 资源管理器模板的 UI 屏幕_
+_**图 2**：不带托管磁盘的横向扩展文件服务器 Azure 资源管理器模板的 UI 屏幕_
 
 在“存储帐户类型”**** 框中，选择“高级存储”****。 其他所有设置与托管磁盘的设置相同。
 
 ## <a name="adjust-cluster-timeout-settings"></a>调整群集超时设置
 
-成功安装 Windows 横向扩展文件服务器群集后，根据 Azure 中的条件调整故障转移检测超时阈值。 博客文章 [Tuning failover cluster network thresholds][tuning-failover-cluster-network-thresholds]（调整故障转移群集网络阈值）中阐述了要更改的参数。 假设群集 VM 位于同一子网中，请将以下参数更改为以下值：
+成功安装 Windows 横向扩展文件服务器群集后，请将故障转移检测的超时阈值调整为 Azure 中的条件。 博客文章 [Tuning failover cluster network thresholds][tuning-failover-cluster-network-thresholds]（调整故障转移群集网络阈值）中阐述了要更改的参数。 假设群集 Vm 位于同一子网中，请将以下参数更改为以下值：
 
-- 相同的子网延迟 = 2000
+- SameSubNetDelay = 2000
 - SameSubNetThreshold = 15
-- 路由历史记录长度 = 30
+- RoutingHistoryLength = 30
 
-这些设置已经过客户测试，可以提供合理的折衷。 它们具有足够的弹性，但它们在实际错误条件或 VM 故障时也提供了足够快的故障转移。
+这些设置已经过客户测试，可以提供合理的折衷。 它们具有足够的弹性，但在真正的错误情况下或 VM 发生故障时，它们还提供足够快速的故障转移。
 
 ## <a name="next-steps"></a>后续步骤
 

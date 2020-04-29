@@ -13,14 +13,14 @@ ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
 ms.openlocfilehash: 54ba87b681a055bb46b81ca81d2bcdd103491f27
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77921447"
 ---
-# <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>启动 Azure VM 时 Windows 在蓝屏上显示“关键服务失败”
-本文介绍了在 Microsoft Azure 中启动 Windows 虚拟机 (VM) 时可能会遇到的“关键服务失败”错误。 它提供了故障排除步骤来帮助解决问题。 
+# <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>启动 Azure VM 时 Windows 在蓝色屏幕上显示“关键服务失败”
+本文介绍了在 Microsoft Azure 中启动 Windows 虚拟机 (VM) 时可能会遇到的“关键服务失败”错误。 并提供用于解决问题的故障排除步骤。 
 
 
 ## <a name="symptom"></a>症状 
@@ -44,7 +44,7 @@ Windows VM 不启动。 在[启动诊断](./boot-diagnostics.md)中检查启动�
 ### <a name="attach-the-os-disk-to-a-recovery-vm"></a>将 OS 磁盘附加到恢复 VM
 
 1. 拍摄受影响的 VM 的 OS 磁盘的快照作为备份。 有关详细信息，请参阅[拍摄磁盘快照](../windows/snapshot-copy-managed-disk.md)。
-2. [将操作系统磁盘附加到恢复 VM。](./troubleshoot-recovery-disks-portal-windows.md) 
+2. [将 OS 磁盘附加到恢复 VM](./troubleshoot-recovery-disks-portal-windows.md)。 
 3. 建立到恢复 VM 的远程桌面连接。
 
 ### <a name="enable-dump-logs-and-serial-console"></a>启用转储日志和串行控制台
@@ -90,7 +90,7 @@ Windows VM 不启动。 在[启动诊断](./boot-diagnostics.md)中检查启动�
 
         bcdedit /store F: boot\bcd /set {default} safeboot minimal
 
-2. [分离 OS 磁盘，然后将 OS 磁盘重新附加到受影响的 VM。](troubleshoot-recovery-disks-portal-windows.md) VM 将以安全模式启动。 如果仍然遇到错误，请转到可选步骤。
+2. [分离 os 磁盘，然后将 os 磁盘重新附加到受影响的 VM](troubleshoot-recovery-disks-portal-windows.md)。 VM 将以安全模式启动。 如果仍然遇到错误，请转到可选步骤。
 3. 打开“运行”**** 框，运行 **verifier** 来启动驱动程序验证程序管理器工具。
 4. 选择“自动选择未经签名的驱动程序”****，然后单击“下一步”****。
 5. 此时将显示未经签名的驱动程序文件的列表。 请记住这些文件名。
@@ -106,16 +106,16 @@ Windows VM 不启动。 在[启动诊断](./boot-diagnostics.md)中检查启动�
 若要自己分析转储日志，请执行以下步骤：
 
 1. 将 OS 磁盘附加到恢复 VM。
-2. 在您连接的操作系统磁盘上，浏览到 **[windows_system32_config**。将所有文件复制为备份，以防需要回滚。
+2. 在附加的 OS 磁盘上，浏览到**\windows\system32\config**。如果需要回滚，请将所有文件复制为备份。
 3. 启动**注册表编辑器** (regedit.exe)。
-4. 选择“HKEY_LOCAL_MACHINE”**** 项。 在菜单上，选择 **"文件** > **加载蜂巢**"。
-5. 浏览到您连接的操作系统磁盘上的 **[windows_system32_config_SYSTEM] 系统**文件夹。 输入“BROKENSYSTEM”**** 作为配置单元名称。 新的注册表配置单元将显示在“HKEY_LOCAL_MACHINE”**** 项之下。
+4. 选择“HKEY_LOCAL_MACHINE”**** 项。 在菜单上，选择 "**文件** > " "**加载配置单元**"。
+5. 浏览到已附加 OS 磁盘上的**\windows\system32\config\SYSTEM**文件夹。 输入“BROKENSYSTEM”**** 作为配置单元名称。 新的注册表配置单元将显示在“HKEY_LOCAL_MACHINE”**** 项之下。
 6. 浏览到 **HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Control\CrashControl** 并进行以下更改：
 
     Autoreboot = 0
 
     CrashDumpEnabled = 2
-7.  选择“BROKENSYSTEM”****。 从菜单中，选择 **"文件** > **卸载 Hive**"。
+7.  选择“BROKENSYSTEM”****。 从菜单中选择 "**文件** > " "**卸载配置单元**"。
 8.  修改 BCD 设置以在调试模式下启动。 在提升的命令提示符下运行以下命令：
 
     ```cmd
@@ -132,7 +132,7 @@ Windows VM 不启动。 在[启动诊断](./boot-diagnostics.md)中检查启动�
     bcdedit /store <OS DISK LETTER>:\boot\bcd /set {default} recoveryenabled no
     bcdedit /store <OS DISK LETTER>:\boot\bcd /set {default} integrityservices disable
     ```
-9. [分离 OS 磁盘，然后将 OS 磁盘重新附加到受影响的 VM。](troubleshoot-recovery-disks-portal-windows.md)
+9. [分离 os 磁盘，然后将 os 磁盘重新附加到受影响的 VM](troubleshoot-recovery-disks-portal-windows.md)。
 10. 启动 VM 以查看它是否显示了转储分析。 找到无法加载的文件。 需要使用正常工作的 VM 中的文件替换此文件。 
 
     下面是转储分析的示例。 可以看到 **FAILURE** 在 filecrypt.sys 中：“FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt.sys”。

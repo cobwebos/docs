@@ -5,10 +5,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.openlocfilehash: 4bb19d7da971a82aef9c0e1fc092cc648ac49c4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77595988"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的应用程序存储选项
@@ -30,14 +30,14 @@ ms.locfileid: "77595988"
 
 用于存储和检索数据的传统卷作为 Azure 存储支持的 Kubernetes 资源创建。 你可以手动创建这些数据卷并直接分配给 Pod，也可以让 Kubernetes 自动创建它们。 这些数据卷可以使用 Azure 磁盘或 Azure 文件：
 
-- *Azure 磁盘*可用于创建 Kubernetes *DataDisk* 资源。 Azure 磁盘可以使用由高性能 SSD 支持的 Azure 高级存储，也可以使用由普通 HDD 支持 Azure 标准存储。 对于大部分生产和开发工作负荷，请使用高级存储。 Azure 磁盘以 ReadWriteOnce** 的形式装载，因此仅可用于单个 Pod。 对于可同时由多个 Pod 访问的存储卷，请使用 Azure 文件存储。
+- *Azure 磁盘*可用于创建 Kubernetes *DataDisk* 资源。 Azure 磁盘可以使用由高性能 SSD 支持的 Azure 高级存储，也可以使用由普通 HDD 支持 Azure 标准存储。 对于大部分生产和开发工作负荷，请使用高级存储。 Azure 磁盘以 ReadWriteOnce  的形式装载，因此仅可用于单个 Pod。 对于可同时由多个 Pod 访问的存储卷，请使用 Azure 文件存储。
 - *Azure 文件*可用于将 Azure 存储帐户支持的 SMB 3.0 共享装载到 Pod。 借助 Azure 文件,可跨多个节点和 Pod 共享数据。 文件可以使用由常规 HDD 支持的 Azure 标准存储，也可以使用由高性能 SSD 支持的Azure 高级存储。
 > [!NOTE] 
 > Azure 文件存储支持运行 Kubernetes 1.13 或更高版本的 AKS 群集中的高级存储。
 
 在 Kubernetes 中，卷不仅仅能够表示可以存储和检索信息的传统磁盘。 Kubernetes 卷还可以用于将数据注入 Pod 以供容器使用。 Kubernetes 中常见的其他卷类型包括：
 
-- *emptyDir*：此卷通常用作 Pod 的临时空间。 Pod 中的所有容器都可以访问卷上的数据。 写入此卷类型的数据仅在 Pod 的生命周期内持续保存，当 Pod 被删除时，卷也会删除。 此卷通常使用基础本地节点磁盘存储，尽管它也可以仅存在于节点的内存中。
+- *emptyDir*：此卷通常用作 Pod 的临时空间。 Pod 中的所有容器都可以访问卷上的数据。 写入此卷类型的数据仅在 Pod 的生命周期内持续保存，当 Pod 被删除时，卷也会删除。 此卷通常使用基础本地节点磁盘存储，但它也可以仅存在于节点的内存中。
 - *secret*：此卷用于将敏感数据注入 Pod，例如密码。 首先使用 Kubernetes API 创建机密。 在定义 pod 或部署时，可以请求特定机密。 机密仅提供给所计划的 pod 需要该机密的节点，且机密存储在 *tmpfs* 中，不写入磁盘。 当节点上最后一个需要该机密的 pod 被删除后，将从该节点的 tmpfs 中删除该机密。 机密存储在给定的命名空间中，只有同一命名空间中的 pod 能访问该机密。
 - *configMap*：此卷类型用于将键-值对属性注入 Pod，例如应用程序配置信息。 无需在容器映像中定义应用程序配置信息，而是可以将其定义为 Kubernetes 资源，以便在部署新 Pod 实例时可轻松为其更新并应用。 与使用 secret 一样，必须先使用 Kubernetes API 创建 ConfigMap。 随后可在定义 Pod 或部署时请求此 ConfigMap。 ConfigMap 存储在给定命名空间内，且只能由同一命名空间中的 Pod 访问。
 
@@ -120,14 +120,14 @@ spec:
 
 ## <a name="next-steps"></a>后续步骤
 
-如需相关的最佳做法，请参阅 [AKS 中的存储和备份最佳做法][operator-best-practices-storage]。
+如需相关的最佳做法，请参阅[在 AKS 中存储和备份的最佳做法][operator-best-practices-storage]。
 
 若要了解如何创建使用 Azure 磁盘或 Azure 文件的动态和静态卷，请参阅以下操作指南：
 
 - [使用 Azure 磁盘创建静态卷][aks-static-disks]
-- [使用 Azure 文件创建静态卷][aks-static-files]
+- [使用 Azure 文件存储创建静态卷][aks-static-files]
 - [使用 Azure 磁盘创建动态卷][aks-dynamic-disks]
-- [使用 Azure 文件创建动态卷][aks-dynamic-files]
+- [使用 Azure 文件存储创建动态卷][aks-dynamic-files]
 
 有关核心 Kubernetes 和 AKS 概念的详细信息，请参阅以下文章：
 

@@ -14,16 +14,16 @@ ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4060dbe936af8ff1f9dd8c958f64834cb06525de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77615085"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>使用 STONITH 在 SUSE 中进行高可用性设置
 本文档将针对如何使用 STONITH 设备在 SUSE 操作系统上设置高可用性，进行详细的分步说明。
 
-**免责声明：***本指南是通过在 Microsoft HANA 大型实例环境中测试设置派生的，该设置已成功工作。由于 HANA 大型实例的 Microsoft 服务管理团队不支持操作系统，您可能需要联系 SUSE 以进行进一步的故障排除或对操作系统层进行澄清。Microsoft 服务管理团队确实设置了 STONITH 设备并完全支持并可以参与对 STONITH 设备问题的故障排除。*
+**免责声明：** *本指南是通过测试成功运行的 Microsoft HANA 大型实例环境中的设置得出的。由于适用于 HANA 大型实例的 Microsoft 服务管理团队不支持操作系统，因此，你可能需要联系 SUSE，以便在操作系统层上进行进一步的故障排除或澄清。Microsoft 服务管理团队设置了 STONITH 设备，并完全支持并可参与 STONITH 设备问题的疑难解答。*
 ## <a name="overview"></a>概述
 要使用 SUSE 群集设置高可用性，必须满足以下先决条件。
 ### <a name="pre-requisites"></a>先决条件
@@ -63,7 +63,7 @@ ms.locfileid: "77615085"
 7.  将资源配置为群集
 8.  测试故障转移过程
 
-## <a name="1---identify-the-sbd-device"></a>1. 识别 SBD 设备
+## <a name="1---identify-the-sbd-device"></a>1. 确定 SBD 设备
 本部分将介绍如何在 Microsoft 服务管理团队配置 STONITH 后确定适用于设置的 SBD 设备。 **** 本部分仅适用于现有客户。 如果你是新客户，Microsoft 服务管理团队会向你提供 SBD 设备名称，所以，可以跳过此部分。
 
 1.1 将 /etc/iscsi/initiatorname.isci 修改为** 
@@ -92,7 +92,7 @@ iscsiadm -m node -l
 ```
 ![iSCSIadmLogin.png](media/HowToHLI/HASetupWithStonith/iSCSIadmLogin.png)
 
-1.5 执行重新扫描脚本 *：rescan-scsi-bus.sh*。 此脚本显示为您创建的新磁盘。  在两个节点上都运行该脚本。 应会看到一个大于零的 LUN 编号（例如，1、2 等）
+1.5 执行重新扫描脚本： *rescan-scsi-bus.sh*。 此脚本将显示为你创建的新磁盘。  在两个节点上都运行该脚本。 应会看到一个大于零的 LUN 编号（例如，1、2 等）
 
 ```
 rescan-scsi-bus.sh
@@ -143,10 +143,10 @@ zypper in SAPHanaSR SAPHanaSR-doc
 
 ![yast-hawk-continue.png](media/HowToHLI/HASetupWithStonith/yast-hawk-continue.png)
 
-单击"**继续"**
+单击 "**继续**"
 
-预期值 = 部署的节点数（在本例中![为](media/HowToHLI/HASetupWithStonith/yast-Cluster-Security.png)2）yast-Cluster-Security.png 单击 **"下一个**
-![yast-](media/HowToHLI/HASetupWithStonith/yast-cluster-configure-csync2.png)群集配置-csync2.png 添加节点名称"，然后单击"添加建议的文件"
+预期值 = 部署的节点数（在本例中为 2 ![） yast-Cluster-Security](media/HowToHLI/HASetupWithStonith/yast-Cluster-Security.png)单击 "**下一步**
+!["](media/HowToHLI/HASetupWithStonith/yast-cluster-configure-csync2.png) yast-cluster-configure-csync2 添加节点名称，然后单击 "添加建议的文件"
 
 单击“打开 csync2”
 
@@ -154,19 +154,19 @@ zypper in SAPHanaSR SAPHanaSR-doc
 
 ![yast-key-file.png](media/HowToHLI/HASetupWithStonith/yast-key-file.png)
 
-单击“确定”****
+单击 **“确定”**
 
 使用 Csync2 中的 IP 地址和预共享密钥执行身份验证。 使用 csync2 -k /etc/csync2/key_hagroup 生成密钥文件。 在创建文件 key_hagroup 后，应将其手动复制到群集的所有成员。 **** 确保将文件从 node1 复制到 node2。
 
 ![yast-cluster-conntrackd.png](media/HowToHLI/HASetupWithStonith/yast-cluster-conntrackd.png)
 
-单击 **"下一个**
-![yast-群集服务.png"](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
+单击 "**下一步**
+![" yast-cluster-service](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
 
 在默认选项中，启动已关闭，将其更改为“打开”，以便 pacemaker 在启动时开始。 可以基于设置需求做出选择。
 单击“下一步”，完成群集配置。****
 
-## <a name="4---setting-up-the-softdog-watchdog"></a>4. 设置软狗看门狗
+## <a name="4---setting-up-the-softdog-watchdog"></a>4. 设置 Softdog 监视器
 本部分将介绍监视器 (softdog) 的配置。
 
 4.1 将以下行添加到这两个**** 节点上的 /etc/init.d/boot.local**。
@@ -257,7 +257,7 @@ systemctl start pacemaker
 ```
 crm_mon
 ```
-![crm-mon.png](media/HowToHLI/HASetupWithStonith/crm-mon.png)您还可以登录到 hawk 以检查群集状态*https://\<节点 IP>：7630*。 默认用户是 hacluster，密码为 linux。 如果需要，可以使用 passwd ** 命令更改密码。
+![crm-mon](media/HowToHLI/HASetupWithStonith/crm-mon.png)你还可以登录到 hawk 以检查群集状态*https://\<节点 IP>： 7630*。 默认用户是 hacluster，密码为 linux。 如果需要，可以使用 passwd ** 命令更改密码。
 
 ## <a name="7-configure-cluster-properties-and-resources"></a>7. 配置群集属性和资源 
 本部分将介绍配置群集资源的步骤。
@@ -322,7 +322,7 @@ crm configure load update crm-vip.txt
 在运行命令 crm_mon** 时，可以在那里看到两个资源。
 ![crm_mon_command.png](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
 
-此外，您还可以在*https://\<节点 IP 地址>：7630/cib/实时/状态*处查看状态
+此外，你还可以在*https://\<节点 IP 地址>： 7630/cib/live/state*中查看状态
 
 ![hawlk-status-page.png](media/HowToHLI/HASetupWithStonith/hawlk-status-page.png)
 
@@ -334,14 +334,14 @@ Service pacemaker stop
 现在，停止 node2**** 上的 pacemaker 服务，资源已故障转移到 node1****
 
 **故障转移之前**  
-![故障转移前.png](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
+![Before-failover .png](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
 
 故障转移后****  
-![故障转移后.png](media/HowToHLI/HASetupWithStonith/after-failover.png)  
-![故障转移后一个 crm](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
+![after-failover .png](media/HowToHLI/HASetupWithStonith/after-failover.png)  
+![crm-mon-after-failover .png](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
 
 
-## <a name="9-troubleshooting"></a>9. 故障排除
+## <a name="9-troubleshooting"></a>9. 疑难解答
 本部分将介绍几个在安装过程中可能会遇到的失败情景。 你不一定会遇到这些问题。
 
 ### <a name="scenario-1-cluster-node-not-online"></a>情景 1：群集节点未联机
@@ -436,11 +436,11 @@ zypper -n install libyui-qt
 ![yast-pattern1.png](media/HowToHLI/HASetupWithStonith/yast-pattern1.png)
 ![yast-pattern2.png](media/HowToHLI/HASetupWithStonith/yast-pattern2.png)
 
-单击 **"接受"**
+单击 "**接受**"
 
 ![yast-changed-packages.png](media/HowToHLI/HASetupWithStonith/yast-changed-packages.png)
 
-单击"**继续"**
+单击 "**继续**"
 
 ![yast2-performing-installation.png](media/HowToHLI/HASetupWithStonith/yast2-performing-installation.png)
 
@@ -533,7 +533,7 @@ cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys
 
 ![ha-cluster-join-fix.png](media/HowToHLI/HASetupWithStonith/ha-cluster-join-fix.png)
 
-## <a name="10-general-documentation"></a>10. 一般文件
+## <a name="10-general-documentation"></a>10. 常规文档
 可以在以下文章中找到有关 SUSE HA 设置的详细信息： 
 
 - [SAP HANA SR 性能优化方案](https://www.suse.com/docrep/documents/ir8w88iwu7/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf )
