@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: spelluru
 ms.openlocfilehash: fb6092b7ccb3d1a4214f8d26119d9dc50b0ed317
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81482063"
 ---
 # <a name="topic-filters-and-actions"></a>主题筛选器和操作
@@ -29,28 +29,28 @@ ms.locfileid: "81482063"
 
 -   *布尔筛选器* - 通过 **TrueFilter** 和 **FalseFilter** 可以为订阅选择所有到达消息 (**true**) 或不选择任何到达消息 (**false**)。
 
--   *SQL 筛选器* - **SqlFilter** 包含类似 SQL 的条件表达式，它会在代理中针对到达的消息的用户定义属性和系统属性进行计算。 所有系统属性在条件表达式中必须带有前缀 `sys.`。 [筛选器条件的 SQL 语言子集](service-bus-messaging-sql-filter.md)测试属性`EXISTS`（）、空值 （）、`IS NULL`逻辑 NOT/AND/OR、关系运算符、简单数值算术和与`LIKE`匹配的简单文本模式。
+-   *SQL 筛选器* - **SqlFilter** 包含类似 SQL 的条件表达式，它会在代理中针对到达的消息的用户定义属性和系统属性进行计算。 所有系统属性在条件表达式中必须带有前缀 `sys.`。 [筛选条件的 SQL 语言子集](service-bus-messaging-sql-filter.md)测试属性（`EXISTS`）、null 值（`IS NULL`）、逻辑非/和/或关系运算符、简单数字算法以及与的`LIKE`简单文本模式匹配是否存在。
 
--   *相关筛选器* - **CorrelationFilter** 包含一组条件，这些条件按照到达消息的一个或多个用户和系统属性进行匹配。 常用用途是匹配**关联 Id**属性，但应用程序也可以选择与以下属性匹配：
+-   *相关筛选器* - **CorrelationFilter** 包含一组条件，这些条件按照到达消息的一个或多个用户和系统属性进行匹配。 常见的用途是与**CorrelationId**属性匹配，但应用程序也可以选择与以下属性匹配：
 
-    - **内容类型**
+    - **ContentType**
      - **Label**
-     - **消息 Id**
+     - **MessageId**
      - **ReplyTo**
      - **ReplyToSessionId**
      - **SessionId** 
-     - **到**
+     - **自**
      - 任何用户定义的属性。 
      
      当到达消息的某个属性值等于相关筛选器中指定的值时，便存在匹配。 对于字符串表达式，比较会区分大小写。 指定多个匹配属性时，筛选器会将它们合并为逻辑“与”条件，这意味着若要使筛选器匹配，所有条件都必须匹配。
 
-所有筛选器都会计算消息属性。 筛选器无法评估消息正文。
+所有筛选器都会计算消息属性。 筛选器无法计算消息正文。
 
-复杂筛选器规则需要处理能力。 特别是，使用 SQL 筛选器规则会导致订阅、主题和命名空间级别的总体消息吞吐量降低。 只要有可能，应用程序应该选择相关筛选器而不是类似 SQL 的筛选器，因为它们的处理效率更高，对吞吐量的影响也较小。
+复杂筛选器规则需要处理能力。 具体而言，使用 SQL 筛选规则会导致订阅、主题和命名空间级别的总体消息吞吐量降低。 只要有可能，应用程序就会选择依赖于 SQL 的筛选器上的关联筛选器，因为它们的处理效率要高得多，而且对吞吐量的影响更小。
 
 ## <a name="actions"></a>操作
 
-使用 SQL 筛选条件，可以定义可通过添加、删除或替换属性及其值对消息进行批注的操作。 操作[使用类似 SQL 的表达式](service-bus-messaging-sql-filter.md)，该表达式有一点依赖于 SQL UPDATE 语句语法。 在消息匹配后和在订阅中选择消息之前，对该消息执行操作。 对消息属性进行的更改是复制到订阅中的消息所专有的。
+使用 SQL 筛选条件，可以定义可通过添加、删除或替换属性及其值对消息进行批注的操作。 操作[使用类似 SQL 的表达式](service-bus-messaging-sql-filter.md)，该表达式有一点依赖于 SQL UPDATE 语句语法。 对消息进行匹配后，以及在将消息选入订阅之前，会对该消息执行操作。 对消息属性进行的更改是复制到订阅中的消息所专有的。
 
 ## <a name="usage-patterns"></a>使用模式
 
@@ -64,13 +64,13 @@ ms.locfileid: "81482063"
 
 
 > [!NOTE]
-> 目前，Azure 门户不允许为订阅指定筛选器规则。 可以使用任何受支持的 SDK 或 Azure 资源管理器模板来定义订阅规则。 
+> 目前 Azure 门户不允许为订阅指定筛选规则。 可使用任何受支持的 Sdk 或 Azure 资源管理器模板来定义订阅规则。 
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下示例： 
 
-- [.NET - 基本发送和接收教程与过滤器](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveTutorialwithFilters/BasicSendReceiveTutorialWithFilters)
-- [.NET - 主题筛选器](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters)
+- [.NET-带有筛选器的基本发送和接收教程](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveTutorialwithFilters/BasicSendReceiveTutorialWithFilters)
+- [.NET-主题筛选器](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters)
 - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/samples/javascript/advanced/topicFilters.js)
 - [类型脚本](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/samples/typescript/src/advanced/topicFilters.ts)
 - [Azure Resource Manager 模板](https://docs.microsoft.com/azure/templates/microsoft.servicebus/2017-04-01/namespaces/topics/subscriptions/rules)

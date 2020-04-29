@@ -1,24 +1,24 @@
 ---
 title: 定义输出值的多个实例
-description: 在 Azure 资源管理器模板中使用复制操作在从部署返回值时多次迭代。
+description: 从部署中返回值时，可以在 Azure 资源管理器模板中使用复制操作进行多次迭代。
 ms.topic: conceptual
 ms.date: 04/17/2020
 ms.openlocfilehash: 0315af2f083285c4704b08fec608341b6f0b2231
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81617824"
 ---
 # <a name="output-iteration-in-arm-templates"></a>ARM 模板中的输出迭代
 
-本文介绍如何在 Azure 资源管理器 （ARM） 模板中为输出创建多个值。 通过将**复制**元素添加到模板的输出部分，可以在部署期间动态返回多个项。
+本文介绍如何为 Azure 资源管理器（ARM）模板中的输出创建多个值。 通过将 **copy** 元素添加到模板的 outputs 节，可以在部署过程中动态返回许多项。
 
-还可以将 copy 与[资源](copy-resources.md)、[资源中的属性](copy-properties.md)和[变量](copy-variables.md)一起使用。
+还可以将 copy 用于[资源](copy-resources.md)、[资源中的属性](copy-properties.md)，以及[变量](copy-variables.md)。
 
 ## <a name="outputs-iteration"></a>输出迭代
 
-复制元素具有以下常规格式：
+copy 元素采用以下常规格式：
 
 ```json
 "copy": {
@@ -27,11 +27,11 @@ ms.locfileid: "81617824"
 }
 ```
 
-**count**属性指定所需的输出值的迭代次数。
+**count** 属性指定要对该输出值进行的迭代次数。
 
-**输入**属性指定要重复的属性。 创建从**输入**属性中的值构造的元素数组。 它可以是单个属性（如字符串），也可以是具有多个属性的对象。
+**input** 属性指定要重复的属性。 你将创建一个由 **input** 属性中的值构造的元素数组。 它可以是单个属性（例如字符串），也可以是具有多个属性的对象。
 
-以下示例创建可变数量的存储帐户，并为每个存储帐户返回终结点：
+以下示例创建可变数量的存储帐户，并返回每个存储帐户的终结点：
 
 ```json
 {
@@ -75,7 +75,7 @@ ms.locfileid: "81617824"
 }
 ```
 
-前面的模板返回具有以下值的数组：
+前面的模板返回包含以下值的数组：
 
 ```json
 [
@@ -84,7 +84,7 @@ ms.locfileid: "81617824"
 ]
 ```
 
-下一个示例从新的存储帐户返回三个属性。
+下一示例返回新存储帐户的三个属性。
 
 ```json
 {
@@ -132,7 +132,7 @@ ms.locfileid: "81617824"
 }
 ```
 
-前面的示例返回具有以下值的数组：
+前面的示例返回包含以下值的数组：
 
 ```json
 [
@@ -151,11 +151,11 @@ ms.locfileid: "81617824"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 要浏览教程，请参阅[教程：使用 ARM 模板创建多个资源实例](template-tutorial-create-multiple-instances.md)。
-* 有关复制元素的其他用途，请参阅：
+* 若要学习教程，请参阅[教程：使用 ARM 模板创建多个资源实例](template-tutorial-create-multiple-instances.md)。
+* 有关 copy 元素的其他用法，请参阅：
   * [ARM 模板中的资源迭代](copy-resources.md)
   * [ARM 模板中的属性迭代](copy-properties.md)
-  * [ARM 模板中的可变迭代](copy-variables.md)
-* 如果要了解模板的各个部分，请参阅[创作 ARM 模板](template-syntax.md)。
-* 要了解如何部署模板，请参阅[使用 ARM 模板部署应用程序](deploy-powershell.md)。
+  * [ARM 模板中的变量迭代](copy-variables.md)
+* 如果要了解有关模板的部分，请参阅[创作 ARM 模板](template-syntax.md)。
+* 若要了解如何部署模板，请参阅[使用 ARM 模板部署应用程序](deploy-powershell.md)。
 

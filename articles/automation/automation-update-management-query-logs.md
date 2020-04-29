@@ -1,77 +1,77 @@
 ---
 title: 查询 Azure 更新管理日志
-description: 本文介绍如何在日志分析工作区中查询日志以进行更新管理。
+description: 本文介绍如何在 Log Analytics 工作区中查询更新管理的日志。
 services: automation
 ms.subservice: update-management
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.openlocfilehash: 09eacb42eff6ecf3a3fca2d7fb401f52195f5f2d
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81617421"
 ---
-# <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>在 Azure 监视器日志中查询更新管理记录
+# <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Azure Monitor 日志中更新管理的查询更新记录
 
-除了更新管理解决方案中提供的详细信息外，您还可以针对日志分析工作区中存储的日志进行搜索。 在解决方案页中，在左侧窗格中，选择 **"日志**"。 将打开"日志搜索"页。
+除了更新管理解决方案中提供的详细信息外，还可以搜索存储在 Log Analytics 工作区中的日志。 从 "解决方案" 页的左窗格中，选择 "**日志**"。 此时将打开 "日志搜索" 页。
 
-您还可以了解如何自定义查询或从不同的客户端使用它们。 请参阅[日志分析搜索 API 文档](https://dev.loganalytics.io/)。
+你还可以了解如何自定义查询或从不同客户端使用它们。 请参阅[Log Analytics 搜索 API 文档](https://dev.loganalytics.io/)。
 
 ## <a name="update-records"></a>更新记录
 
-更新管理收集 Windows 和 Linux VM 的记录以及日志搜索结果中显示的数据类型。 以下各节介绍这些记录。
+更新管理收集 Windows 和 Linux Vm 的记录以及日志搜索结果中显示的数据类型。 以下各节介绍了这些记录。
 
 ### <a name="required-updates"></a>所需更新
 
-创建具有 类型的`RequiredUpdate`记录，表示计算机所需的更新。 这些记录的属性在下表中列出：
+将创建一个类型为的`RequiredUpdate`记录，表示计算机所需的更新。 这些记录的属性在下表中列出：
 
 | properties | 说明 | 
 |----------|-------------|
-| Computer | 报告机的完全限定域名。 |
+| 计算机 | 报表计算机的完全限定的域名。 |
 | KBID | Windows 更新的知识库文章 ID。 |
-| ManagementGroupName | 操作管理器管理组或日志分析工作区的名称。 | 
-| Products | 更新适用于的产品。 | 
-| PublishDate | 更新准备好从 Windows 更新下载和安装的日期。 |
-| 服务器 | | 
-| SourceHealthServiceId | 表示日志分析 Windows 代理 ID 的唯一标识符。 |
+| ManagementGroupName | Operations Manager 管理组或 Log Analytics 工作区的名称。 | 
+| Products | 更新适用的产品。 | 
+| PublishDate | 可从 Windows 更新下载和安装更新的日期。 |
+| Server (服务器) | | 
+| SourceHealthServiceId | 表示 Log Analytics Windows 代理 ID 的唯一标识符。 |
 | SourceSystem | *OperationsManager* | 
-| TenantId | 表示 Azure 活动目录的组织实例的唯一标识符。 | 
+| TenantId | 表示 Azure Active Directory 的组织实例的唯一标识符。 | 
 | TimeGenerated | 创建记录的日期和时间。 | 
-| 类型 | *更新* | 
-| UpdateClassification | 指示可应用的更新类型。 对于 Windows：<br> *关键更新*<br> *安全更新*<br> *更新汇总*<br> *功能包*<br> *服务包*<br> *定义更新*<br> *工具*<br> *更新*. 对于 Linux：<br> *关键和安全更新*<br> *其他* |
-| 更新严重性 | 漏洞的严重性评级。 值为：<br> *严重*<br> *重要说明*<br> *中等*<br> *低* |
+| 类型 | *Update* | 
+| UpdateClassification | 指示可应用的更新的类型。 对于 Windows：<br> *关键更新*<br> *安全更新*<br> *更新汇总*<br> *功能包*<br> *服务包*<br> *定义更新*<br> *工具*<br> *更新*。 对于 Linux：<br> *关键和安全更新*<br> *其他* |
+| UpdateSeverity | 此漏洞的严重性分级。 值为：<br> *严重*<br> *重要说明*<br> *中等*<br> *低* |
 | UpdateTitle | 更新的标题。|
 
 ### <a name="update"></a>更新
 
-`Update`将创建一个记录，该记录表示计算机可用的更新及其安装状态。 这些记录的属性在下表中列出：
+将创建一个类型为的`Update`记录，该记录表示可用的更新和计算机的安装状态。 这些记录的属性在下表中列出：
 
 | properties | 说明 | 
 |----------|-------------|
-| 批准来源 | 仅适用于 Windows 操作系统。 记录的批准来源。 该值是微软更新。 |
-| 已批准 | 如果记录已批准，则为 True，否则为 False。 |
-| 分类 | 批准分类。 该值为"更新"。 |
-| Computer | 报告机的完全限定域名。 |
-| 计算机环境 | 环境。 可能的值是 Azure 或非 Azure。 |
+| ApprovalSource | 仅适用于 Windows 操作系统。 记录的审批源。 值为 Microsoft 更新。 |
+| 已批准 | 如果记录已获批准，则为 True; 否则为 False。 |
+| 分类 | 审批分类。 值为 Updates。 |
+| 计算机 | 报表计算机的完全限定的域名。 |
+| ComputerEnvironment | 环境。 可能的值为 Azure 或非 Azure。 |
 | MSRCBulletinID | 安全公告 ID 号。 | 
-| MSRCSeverity | 漏洞的严重性评级。 值为：<br> 严重<br> 重要说明<br> 中等<br> 低 |  
+| MSRCSeverity | 此漏洞的严重性分级。 值为：<br> 严重<br> 重要说明<br> 中等<br> 低 |  
 | KBID | Windows 更新的知识库文章 ID。 |
-| ManagementGroupName | 操作管理器管理组或日志分析工作区的名称。 |
+| ManagementGroupName | Operations Manager 管理组或 Log Analytics 工作区的名称。 |
 | UpdateID | 软件更新的唯一标识符。 |
-| RevisionNumber | 更新的特定修订的修订号。 |
-| 可选 | 如果记录是可选的，则为 True，否则为 False。 | 
+| RevisionNumber | 更新的特定修订版本的版本号。 |
+| 可选 | 如果记录是可选的，则为 True; 否则为 False。 | 
 | RebootBehavior | 安装/卸载更新后的重新启动行为。 |
 | _ResourceId | 与记录关联的资源的唯一标识符。 |
-| 类型 | 记录类型。 该值为"更新"。 |
+| 类型 | 记录类型。 值为 Update。 |
 | VMUUID | 虚拟机的唯一标识符。 |
-| MG | 管理组或日志分析工作区的唯一标识符。 | 
-| TenantId | 表示组织 Azure 活动目录实例的唯一标识符。 | 
+| MG | 管理组或 Log Analytics 工作区的唯一标识符。 | 
+| TenantId | 表示组织的 Azure Active Directory 实例的唯一标识符。 | 
 | SourceSystem | 记录的源系统。 该值为 `OperationsManager`。 | 
 | TimeGenerated | 创建记录的日期和时间。 | 
 | SourceComputerId | 表示源计算机的唯一标识符。 | 
 | 标题 | 更新的标题。 |
-| 发布日期 （UTC） | 更新准备好从 Windows 更新下载和安装的日期。  |
+| PublishedDate （UTC） | 可从 Windows 更新下载和安装更新的日期。  |
 | UpdateState | 更新的当前状态。 | 
 | Products | 更新适用的产品。 |
 | SubscriptionId | Azure 订阅的唯一标识符。 | 
@@ -82,40 +82,40 @@ ms.locfileid: "81617421"
 
 ### <a name="update-agent"></a>更新代理
 
-将创建具有 类型的`UpdateAgent`记录，该记录提供计算机上的更新代理的详细信息。 这些记录的属性在下表中列出：
+将创建一个类型为的`UpdateAgent`记录，该记录提供计算机上的更新代理的详细信息。 这些记录的属性在下表中列出：
 
 | properties | 说明 | 
 |----------|-------------|
-| 最旧缺失的一年年龄需要更新 | | 
+| AgeofOldestMissingRequiredUpdate | | 
 | AutomaticUpdateEnabled | | 
-| Computer | 报告机的完全限定域名。 |
-| 日自上次更新桶 | | 
-| ManagementGroupName | 操作管理器管理组或日志分析工作区的名称。 |
+| 计算机 | 报表计算机的完全限定的域名。 |
+| DaySinceLastUpdateBucket | | 
+| ManagementGroupName | Operations Manager 管理组或 Log Analytics 工作区的名称。 |
 | OSVersion | 操作系统的版本。 |
-| 服务器 | |
-| SourceHealthServiceId | 表示日志分析 Windows 代理 ID 的唯一标识符。 |
+| Server (服务器) | |
+| SourceHealthServiceId | 表示 Log Analytics Windows 代理 ID 的唯一标识符。 |
 | SourceSystem | 记录的源系统。 该值为 `OperationsManager`。 | 
-| TenantId | 表示组织 Azure 活动目录实例的唯一标识符。 |
+| TenantId | 表示组织的 Azure Active Directory 实例的唯一标识符。 |
 | TimeGenerated | 创建记录的日期和时间。 |
-| 类型 | 记录类型。 该值为"更新"。 | 
+| 类型 | 记录类型。 值为 Update。 | 
 | WindowsUpdateAgentVersion | Windows 更新代理的版本。 |
-| WSUSServer | 如果 Windows 更新代理出现问题，则出错，以帮助进行故障排除。 |
+| WSUSServer | 如果 Windows 更新代理存在问题，则会出现错误，以帮助进行故障排除。 |
 
 ### <a name="update-deployment-status"></a>更新部署状态 
 
-将创建具有 类型的`UpdateRunProgress`记录，该记录按计算机提供计划部署的更新部署状态。 这些记录的属性在下表中列出：
+将创建一个类型为的`UpdateRunProgress`记录，该记录通过计算机提供计划部署的更新部署状态。 这些记录的属性在下表中列出：
 
 | properties | 说明 | 
 |----------|-------------|
-| Computer | 报告机的完全限定域名。 |
-| 计算机环境 | 环境。 值为 Azure 或非 Azure。 | 
-| CorrelationId | 运行更新的 Runbook 作业的唯一标识符。 |
+| 计算机 | 报表计算机的完全限定的域名。 |
+| ComputerEnvironment | 环境。 值为 Azure 或非 Azure。 | 
+| CorrelationId | 用于更新的 runbook 作业运行的唯一标识符。 |
 | EndTime | 同步过程结束的时间。 | 
-| 错误结果 | 如果更新安装失败，则生成 Windows 更新错误代码。 | 
-| 安装状态 | 客户端计算机上的更新的可能安装状态，<br> `NotStarted`- 作业尚未触发。<br> `FailedToStart`- 无法在机器上启动作业。<br> `Failed`- 作业已启动，但异常失败。<br> `InProgress`- 工作正在进行中。<br> `MaintenanceWindowExceeded`- 如果执行仍然存在，但达到维护窗口间隔。<br> `Succeeded`-工作成功了<br> `InstallFailed`- 更新成功安装失败。<br> `NotIncluded`<br> `Excluded` |
+| ErrorResult | Windows 更新在更新安装失败时生成的错误代码。 | 
+| InstallationStatus | 客户端计算机上的更新的可能安装状态，<br> `NotStarted`-尚未触发作业。<br> `FailedToStart`-无法在计算机上启动作业。<br> `Failed`-作业已启动，但失败，并出现异常。<br> `InProgress`-作业正在进行中。<br> `MaintenanceWindowExceeded`-如果执行剩余但达到了维护时段的间隔。<br> `Succeeded`-作业成功。<br> `InstallFailed`-更新安装失败。<br> `NotIncluded`<br> `Excluded` |
 | KBID | Windows 更新的知识库文章 ID。 | 
-| ManagementGroupName | 操作管理器管理组或日志分析工作区的名称。 |
-| OSType | 操作系统的类型。 值是 Windows 或 Linux。 | 
+| ManagementGroupName | Operations Manager 管理组或 Log Analytics 工作区的名称。 |
+| OSType | 操作系统的类型。 值为 Windows 或 Linux。 | 
 | Products | 更新适用的产品。 |
 | 资源 | 资源的名称。 | 
 | ResourceId | 与记录关联的资源的唯一标识符。 |
@@ -125,36 +125,36 @@ ms.locfileid: "81617421"
 | SourceSystem | 记录的源系统。 该值为 `OperationsManager`。 |
 | StartTime | 计划安装更新的时间。 |
 | SubscriptionId | Azure 订阅的唯一标识符。 | 
-| 成功重新测量 | 指示第一次尝试的更新执行失败，当前操作是否为重试尝试的值。 |
+| SucceededOnRetry | 一个值，该值指示在第一次尝试时更新执行是否失败，以及当前操作是否为重试尝试。 |
 | TimeGenerated | 创建记录的日期和时间。 |
 | 标题 | 更新的标题。 |
 | 类型 | 更新的类型。 该值为 `UpdateRunProgress`。 |
-| 更新 Id | 软件更新的唯一标识符。 |
+| UpdateId | 软件更新的唯一标识符。 |
 | VMUUID | 虚拟机的唯一标识符。 |
 | ResourceId | 与记录关联的资源的唯一标识符。 |
 
 ### <a name="update-summary"></a>更新摘要 
 
-将创建具有 类型的`UpdateSummary`记录，该记录按计算机提供更新摘要。 这些记录的属性在下表中列出：
+将创建一个类型为的`UpdateSummary`记录，该记录按计算机提供更新摘要。 这些记录的属性在下表中列出：
 
 | properties | 说明 | 
 |----------|-------------|
-| Computer | 报告机的完全限定域名。 |
-| 计算机环境 | 环境。 值为 Azure 或非 Azure。 | 
-| CriticalUpdatesMissing | 缺少的适用关键更新数。 | 
-| ManagementGroupName | 操作管理器管理组或日志分析工作区的名称。 |
-| NETRuntimeVersion | 在 Windows 计算机上安装的 .NET 框架的版本。 |
-| OldestMissingSecurityUpdateBucket | 最旧缺少的安全存储桶的指定器。 值为：<br> 最近如果值小于 30 天<br> 30 天前<br> 60 天前<br> 90 天前<br> 120 天前<br> 150 天前<br> 180 天前<br> 当值大于 180 天时，旧。 | 
-| OldestMissingSecurityUpdateInDays | 检测到的未安装的最早更新的总天数。 |
+| 计算机 | 报表计算机的完全限定的域名。 |
+| ComputerEnvironment | 环境。 值为 Azure 或非 Azure。 | 
+| CriticalUpdatesMissing | 缺少的适用关键更新的数目。 | 
+| ManagementGroupName | Operations Manager 管理组或 Log Analytics 工作区的名称。 |
+| NETRuntimeVersion | Windows 计算机上安装的 .NET Framework 版本。 |
+| OldestMissingSecurityUpdateBucket | 最早缺少的安全 bucket 的说明符。 值为：<br> 最近的 if 值小于30天<br> 30天前<br> 60天前<br> 90天前<br> 120天前<br> 150天前<br> 180天前<br> 当值超过180天时较早。 | 
+| OldestMissingSecurityUpdateInDays | 检测到未安装的最早更新的总天数。 |
 | OsVersion | 操作系统的版本。 |
 | OtherUpdatesMissing | 缺少检测到的更新计数。 |
-| 资源 | 记录的资源的名称。 | 
+| 资源 | 记录的资源名称。 | 
 | ResourceGroup | 包含资源的资源组的名称。 |
 | ResourceId | 与记录关联的资源的唯一标识符。 |
 | ResourceProvider | 资源提供程序。 |
 | ResourceType | 资源类型。 |
-| 重新启动挂起 | 如果重新启动处于挂起状态，则为 True，否则为 False。 |
-| SecurityUpdatesMissing | 缺少的安全更新的计数。| 
+| RestartPending | 如果重新启动处于挂起状态，则为 True; 否则为 False。 |
+| SecurityUpdatesMissing | 适用的缺少安全更新的计数。| 
 | SourceComputerId | 虚拟机的唯一标识符。 |
 | SourceSystem | 记录的源系统。 该值为 `OpsManager`。 | 
 | SubscriptionId | Azure 订阅的唯一标识符。 |
@@ -163,17 +163,17 @@ ms.locfileid: "81617421"
 | 类型 | 记录类型。 该值为 `UpdateSummary`。 |
 | VMUUID | 虚拟机的唯一标识符。 |
 | WindowsUpdateAgentVersion | Windows 更新代理的版本。 |
-| WindowsUpdateSetting | Windows 更新代理的状态。 可能的值包括：<br> `Scheduled installation`<br> `Notify before installation`<br> `Error returned from unhealthy WUA agent` | 
-| WSUSServer | 如果 Windows 更新代理出现问题，则出错，以帮助进行故障排除。 |
+| WindowsUpdateSetting | Windows 更新代理的状态。 可能的值为：<br> `Scheduled installation`<br> `Notify before installation`<br> `Error returned from unhealthy WUA agent` | 
+| WSUSServer | 如果 Windows 更新代理存在问题，则会出现错误，以帮助进行故障排除。 |
 | _ResourceId | 与记录关联的资源的唯一标识符。 |
 
 ## <a name="sample-queries"></a>示例查询
 
-以下各节为为更新管理收集的更新记录提供示例日志查询。
+以下各节提供了针对更新管理收集的更新记录的示例日志查询。
 
 ### <a name="confirm-that-non-azure-machines-are-onboarded"></a>确认非 Azure 计算机已加入
 
-要确认直接连接的计算机正在与 Azure 监视器日志通信，请运行以下日志搜索之一。
+若要确认直接连接的计算机是否正在与 Azure Monitor 日志通信，请运行以下日志搜索之一。
 
 #### <a name="linux"></a>Linux
 
@@ -189,12 +189,12 @@ Heartbeat
 | where OSType == "Windows" | summarize arg_max(TimeGenerated, *) by SourceComputerId | top 500000 by Computer asc | render table
 ```
 
-在 Windows 计算机上，您可以查看以下信息以验证代理连接 Azure 监视器日志：
+在 Windows 计算机上，你可以查看以下信息以验证代理与 Azure Monitor 日志的连接：
 
 1. 在控制面板中，打开 **Microsoft Monitoring Agent**。 在“Azure Log Analytics”选项卡上，代理会显示以下消息：“Microsoft Monitoring Agent 已成功连接到 Log Analytics”。********
 2. 打开“Windows 事件日志”。 转到“应用程序和服务日志\Operations Manager”，搜索来自“服务连接器”源的事件 ID 3000 和事件 ID 5002。******** 这些事件指示计算机已注册到 Log Analytics 工作区并且正在接收配置。
 
-如果代理无法与 Azure 监视器日志通信，并且代理配置为通过防火墙或代理服务器与 Internet 通信，请确认防火墙或代理服务器配置正确。 若要了解如何验证防火墙或代理服务器是否已正确配置，请参阅 [Windows 代理的网络配置](../azure-monitor/platform/agent-windows.md)或 [Linux 代理的网络配置](../log-analytics/log-analytics-agent-linux.md)。
+如果代理无法与 Azure Monitor 日志通信，并且该代理已配置为通过防火墙或代理服务器与 internet 通信，请确认正确配置了防火墙或代理服务器。 若要了解如何验证防火墙或代理服务器是否已正确配置，请参阅 [Windows 代理的网络配置](../azure-monitor/platform/agent-windows.md)或 [Linux 代理的网络配置](../log-analytics/log-analytics-agent-linux.md)。
 
 > [!NOTE]
 > 如果 Linux 系统配置为与代理或 Log Analytics 网关通信，并且你将载入此解决方案，请使用以下命令更新 proxy.conf** 权限来向 omiuser 组授予对文件的读取权限：
@@ -204,11 +204,11 @@ Heartbeat
 
 执行评估后，新添加的 Linux 代理会显示状态“已更新”。**** 此过程可能需要长达 6 小时的时间。
 
-要确认操作管理器管理组正在与 Azure 监视器日志通信，请参阅[验证操作管理器与 Azure 监视器日志的集成](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-azure-monitor)。
+若要确认 Operations Manager 管理组是否正在与 Azure Monitor 日志通信，请参阅[验证 Operations Manager 与 Azure Monitor 日志的集成](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-azure-monitor)。
 
 ### <a name="single-azure-vm-assessment-queries-windows"></a>单个 Azure VM 评估查询 (Windows)
 
-将 VMUUID 值替换为要查询的虚拟机的 VM GUID。 您可以在 Azure 监视器日志中运行以下查询来查找应使用的 VMUUID：`Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
+将 VMUUID 值替换为要查询的虚拟机的 VM GUID。 可以通过在 Azure Monitor 日志中运行以下查询来找到应使用的 VMUUID：`Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
 
 #### <a name="missing-updates-summary"></a>缺少更新摘要
 
@@ -237,7 +237,7 @@ Update
 
 ### <a name="single-azure-vm-assessment-queries-linux"></a>单个 Azure VM 评估查询 (Linux)
 
-对于某些 Linux 发行版，与来自 Azure 资源管理器的 VMUUID 值和存储在 Azure 监视器日志中的内容存在[内质](https://en.wikipedia.org/wiki/Endianness)不匹配。 以下查询可检查任一字节序的匹配情况。 使用 GUID 的 big-endian 和 little-endian 格式替换 VMUUID 值可正常地返回结果。 您可以在 Azure 监视器日志中运行以下查询来查找应使用的 VMUUID：`Update | where Computer == "<machine name>"
+对于某些 Linux 发行版，与来自 Azure 资源管理器的 VMUUID 值和存储在 Azure Monitor 日志[中的值不匹配。](https://en.wikipedia.org/wiki/Endianness) 以下查询可检查任一字节序的匹配情况。 使用 GUID 的 big-endian 和 little-endian 格式替换 VMUUID 值可正常地返回结果。 可以通过在 Azure Monitor 日志中运行以下查询来找到应使用的 VMUUID：`Update | where Computer == "<machine name>"
 | summarize by Computer, VMUUID`
 
 #### <a name="missing-updates-summary"></a>缺少更新摘要
@@ -409,5 +409,5 @@ Update
 
 ## <a name="next-steps"></a>后续步骤
 
-* 使用 Azure[监视器日志](../log-analytics/log-analytics-log-searches.md)中的日志搜索查看详细的更新数据。
+* 使用[Azure Monitor 日志](../log-analytics/log-analytics-log-searches.md)中的日志搜索查看详细的更新数据。
 * 针对更新部署状态[创建警报](automation-tutorial-update-management.md#configure-alerts)。

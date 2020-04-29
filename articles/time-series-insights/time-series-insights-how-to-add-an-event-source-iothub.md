@@ -1,6 +1,6 @@
 ---
-title: 如何添加 IoT 中心事件源 - Azure 时间序列见解 |微软文档
-description: 了解如何将 IoT 中心事件源添加到时间序列见解环境。
+title: 如何添加 IoT 中心事件源-Azure 时序见解 |Microsoft Docs
+description: 了解如何将 IoT 中心事件源添加到时序见解环境。
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: a0a2f703d9224b8b9dd77c80b2b6a7faee70f5bb
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81538097"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>向时序见解环境添加 IoT 中心事件源
@@ -25,12 +25,12 @@ ms.locfileid: "81538097"
 > [!NOTE]
 > 本文中的说明适用于 Azure 时序见解 GA 版和时序见解预览版环境。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* 创建[Azure 时间序列见解环境](time-series-insights-update-create-environment.md)。
+* 创建[Azure 时序见解环境](time-series-insights-update-create-environment.md)。
 * [使用 Azure 门户创建 IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
 * IoT 中心必须有正在发送进来的活动消息事件。
-* 在 IoT 中心创建专用使用者组，以供时序见解环境使用。 每个时序见解事件源都必须具有自己的专用使用者组，该组不与其他使用者共享。 如果多个读取器使用来自同一使用者组的事件，则所有读取器都可能显示失败。 有关详细信息，请阅读[Azure IoT 中心开发人员指南](../iot-hub/iot-hub-devguide.md)。
+* 在 IoT 中心创建专用使用者组，以供时序见解环境使用。 每个时序见解事件源都必须具有自己的专用使用者组，该组不与其他使用者共享。 如果多个读取器使用同一个使用者组中的事件，则所有读取器都可能会出现故障。 有关详细信息，请阅读[Azure IoT 中心开发人员指南](../iot-hub/iot-hub-devguide.md)。
 
 ### <a name="add-a-consumer-group-to-your-iot-hub"></a>将使用者组添加到 IoT 中心
 
@@ -38,7 +38,7 @@ ms.locfileid: "81538097"
 
 若要将新的使用者组添加到 IoT 中心，请执行以下操作：
 
-1. 在[Azure 门户](https://portal.azure.com)中，查找并打开 IoT 中心。
+1. 在[Azure 门户](https://portal.azure.com)中，找到并打开 IoT 中心。
 
 1. 在“设置”下，选择“内置终结点”，然后选择“事件”终结点************。
 
@@ -46,15 +46,15 @@ ms.locfileid: "81538097"
 
 1. 在****“使用者组”下，为使用者组输入唯一名称。 创建新的事件源时，请在时序见解环境中使用此相同名称。
 
-1. 选择“保存”。 
+1. 选择“保存”  。
 
 ## <a name="add-a-new-event-source"></a>添加新的事件源
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-1. 在左侧菜单中，选择“所有资源”****。 选择时序见解环境。
+1. 在左侧菜单中，选择“所有资源”  。 选择时序见解环境。
 
-1. 在 **"设置"** 下，选择**事件源**，然后选择 **"添加**"。
+1. 在 "**设置**" 下，选择 "**事件源**"，然后选择 "**添加**"。
 
    [![选择“事件源”，然后选择“添加”按钮](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-add-event-source.png)](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-add-event-source.png#lightbox)
 
@@ -72,28 +72,28 @@ ms.locfileid: "81538097"
 
        [![“新建事件源”窗格 - 需要在“通过可用订阅使用 IoT 中心”选项中设置的属性](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-create-configure-confirm.png)](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-create-configure-confirm.png#lightbox)
 
-       | properties | 说明 |
+       | 属性 | 说明 |
        | --- | --- |
        | 订阅 | 所需的 iot 中心所属的订阅。 |
        | IoT 中心名称 | 所选 iot 中心的名称。 |
-       | IoT 中心策略名称 | 选择共享访问策略。 您可以在 IoT 中心设置选项卡上找到共享访问策略。每个共享访问策略都有一个名称、您设置的权限和访问密钥。 事件源的共享访问策略必须具有服务连接权限******。 |
+       | IoT 中心策略名称 | 选择共享访问策略。 可以在 "IoT 中心设置" 选项卡上找到共享访问策略。每个共享访问策略都有名称、所设置的权限以及访问密钥。 事件源的共享访问策略必须具有服务连接权限******。 |
        | IoT 中心策略密钥 | 密钥已预填充。 |
 
     * 如果 IoT 中心在订阅外部，或者你希望选择高级选项，请选择“手动提供 IoT 中心设置”****。
 
       下表介绍“手动提供 IoT 中心设置”**** 所需的属性：
 
-       | properties | 说明 |
+       | 属性 | 说明 |
        | --- | --- |
        | 订阅 ID | 所需的 iot 中心所属的订阅。 |
        | 资源组 | 在其中创建了此 IoT 中心的资源组名称。 |
        | IoT 中心名称 | IoT 中心的名称。 创建 IoT 中心时，为 IoT 中心输入了一个名称。 |
-       | IoT 中心策略名称 | 共享访问策略。 您可以在 IoT 中心设置选项卡上创建共享访问策略。每个共享访问策略都有一个名称、您设置的权限和访问密钥。 事件源的共享访问策略必须具有服务连接权限******。 |
+       | IoT 中心策略名称 | 共享访问策略。 可以在 "IoT 中心设置" 选项卡上创建共享访问策略。每个共享访问策略都有名称、所设置的权限以及访问密钥。 事件源的共享访问策略必须具有服务连接权限******。 |
        | IoT 中心策略密钥 | 用于对 Azure 服务总线命名空间的访问权限进行身份验证的共享访问密钥。 在此处输入主密钥或辅助密钥。 |
 
     * 这两个选项共享以下配置选项：
 
-       | properties | 说明 |
+       | 属性 | 说明 |
        | --- | --- |
        | IoT 中心使用者组 | 从 IoT 中心读取事件的使用者组。 强烈建议为事件源使用专用的使用者组。 |
        | 事件序列化格式 | 目前，JSON 是唯一可用的序列化格式。 事件消息必须采用此格式，否则将无法读取任何数据。 |
@@ -102,7 +102,7 @@ ms.locfileid: "81538097"
 
 1. 添加已添加到 IoT 中心的专用时序见解使用者组名称。
 
-1. 选择“创建”  。
+1. 选择“创建”。 
 
 1. 创建事件源以后，时序见解就会自动将数据流式传输到环境中。
 

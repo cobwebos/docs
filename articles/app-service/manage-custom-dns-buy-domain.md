@@ -1,15 +1,15 @@
 ---
 title: 购买自定义域名
-description: 了解如何购买应用服务域并将其用作应用 Azure 应用服务的自定义域。
+description: 了解如何购买应用服务域，并将其用作应用 Azure App Service 的自定义域。
 ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
 ms.openlocfilehash: 47daf4ecd034c390a1460610e78d4fffd9277ac7
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81535700"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>为 Azure 应用服务购买自定义域名
@@ -70,7 +70,7 @@ ms.locfileid: "81535700"
 ## <a name="buy-the-domain"></a>购买域
 
 ### <a name="pricing-information"></a>定价信息
-有关 Azure 应用服务域的定价信息，请访问[应用服务定价页面](https://azure.microsoft.com/pricing/details/app-service/windows/)并向下滚动到应用服务域。
+有关 Azure App Service 域的定价信息，请访问[应用服务定价页](https://azure.microsoft.com/pricing/details/app-service/windows/)并向下滚动到 "应用服务域"。
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 打开 [Azure 门户](https://portal.azure.com/)，然后使用 Azure 帐户登录。
@@ -137,18 +137,18 @@ ms.locfileid: "81535700"
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
 > [!NOTE]
-> 自定义域**的"不安全**"标签意味着它尚未绑定到 TLS/SSL 证书，并且从浏览器到自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 要配置 TLS 绑定，请参阅[在 Azure 应用服务 中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
+> 你的自定义域的 "**不安全**" 标签意味着尚未绑定到 TLS/SSL 证书，并且从浏览器到自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 若要配置 TLS 绑定，请参阅[在 Azure App Service 中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
 >
 
-若要测试主机名，请在浏览器中导航到列出的主机名。 在前面的屏幕截图中，请尝试导航到_kontoso.net_和_wwwkontoso.net\._。
+若要测试主机名，请在浏览器中导航到列出的主机名。 在上面的屏幕截图的示例中，请尝试导航到_kontoso.net_和_www\.kontoso.net_。
 
 ## <a name="assign-hostnames-to-app"></a>将主机名分配到应用
 
-如果选择在购买过程中不向应用分配一个或多个默认主机名，或者需要分配未列出的主机名，则可以随时分配主机名。
+如果选择不在购买过程中将一个或多个默认主机名分配到应用，或者需要分配未列出的主机名，则可以随时分配主机名。
 
 还可以将应用服务域中的主机名分配到任何其他应用。 执行的步骤取决于应用服务域和应用是否属于同一个订阅。
 
-- 不同的订阅：将应用服务域的自定义 DNS 记录映射到应用，如外部购买的域。 有关将自定义 DNS 名称添加到应用服务域的信息，请参阅[管理自定义 DNS 记录](#custom)。 若要将外部购买的域映射到应用，请参阅[将现有的自定义 DNS 名称映射到 Azure 应用服务](app-service-web-tutorial-custom-domain.md)。 
+- 不同订阅：将来自应用服务域的自定义 DNS 记录映射到应用，例如外部购买的域。 有关将自定义 DNS 名称添加到应用服务域的信息，请参阅[管理自定义 DNS 记录](#custom)。 若要将外部购买的域映射到应用，请参阅[将现有的自定义 DNS 名称映射到 Azure 应用服务](app-service-web-tutorial-custom-domain.md)。 
 - 相同的订阅：使用以下步骤。
 
 ### <a name="launch-add-hostname"></a>启动“添加主机名”
@@ -171,7 +171,7 @@ ms.locfileid: "81535700"
 在“添加主机名”对话框中，键入应用服务域或任何子域的完全限定域名。**** 例如：
 
 - kontoso.net
-- wwwkontoso.net\.
+- www\.kontoso.net
 - abc.kontoso.net
 
 完成后，选择“验证”。**** 系统会自动选择主机名记录类型。
@@ -195,11 +195,11 @@ ms.locfileid: "81535700"
 
 ## <a name="renew-the-domain"></a>续订域
 
-你所购买的应用服务域自购买之日起的一年内有效。 默认情况下，通过收取下一年费用的付款方式将域配置为自动续订。 您可以手动续订域名。
+你所购买的应用服务域自购买之日起的一年内有效。 默认情况下，通过收取下一年费用的付款方式将域配置为自动续订。 你可以手动续订你的域名。
 
 如果要关闭自动续订，或者手动续订域，请按照以下步骤操作。
 
-在"**应用服务**"选项卡中，单击应用的名称，选择 **"设置**"，然后选择 **"自定义域**"。
+在 "**应用服务**" 选项卡中，单击应用的名称，选择 "**设置**"，然后选择 "**自定义域**"。
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
@@ -211,21 +211,21 @@ ms.locfileid: "81535700"
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-autorenew.png)
 
-若要手动续订域，选择“续订域”****。 但是，此按钮在[域过期前 90 天](#when-domain-expires)才处于活动状态。
+若要手动续订域，选择“续订域”****。 但是，此按钮在[域过期之前90天内](#when-domain-expires)处于非活动状态。
 
-如果您的域续订成功，您将在 24 小时内收到电子邮件通知。
+如果域续订成功，则会在24小时内收到电子邮件通知。
 
-## <a name="when-domain-expires"></a>域过期时
+## <a name="when-domain-expires"></a>域过期时间
 
-Azure 处理过期或过期的应用服务域，如下所示：
+Azure 会处理过期或过期的应用服务域，如下所示：
 
-* 如果禁用自动续订：在域过期前 90 天，将向您发送续订通知电子邮件，并在门户中激活 **"续订域**"按钮。
-* 如果启用了自动续订：在域到期日期后的第二天，Azure 会尝试为域名续订付费。
-* 如果在自动续订期间发生错误（例如，存档的卡已过期），或者禁用了自动续订并允许域过期，Azure 会通知您域过期并存档域名。 您可以[手动续订](#renew-the-domain)域。
-* 在过期后的第 4 天和第 12 天，Azure 会向您发送其他通知电子邮件。 您可以[手动续订](#renew-the-domain)域。
-* 在到期后的第 19 天，您的域名将保持保留状态，但需支付兑换费。 您可以致电客户支持以续订您的域名，但需支付任何适用的续订和兑换费用。
-* 在过期后的第 25 天，Azure 会使用域名行业拍卖服务将域进行拍卖。 您可以致电客户支持以续订您的域名，但需支付任何适用的续订和兑换费用。
-* 在过期后的第 30 天，您无法再兑换您的域名。
+* 如果禁用自动续订：在域过期之前90天，将向你发送续订通知电子邮件，并在门户中激活 "**续订域**" 按钮。
+* 如果启用自动续订：在你的域到期日期之后的那一日，Azure 将尝试为你的域名续订付费。
+* 如果在自动续订期间出现错误（例如，你的卡已过期），或者如果禁用自动续订，并且你允许域过期，则 Azure 会通知你域过期，并使你的域名过期。 你可以[手动续订](#renew-the-domain)你的域。
+* 在过期后的第4天和第12天，Azure 会向你发送其他通知电子邮件。 你可以[手动续订](#renew-the-domain)你的域。
+* 在过期后的第19天，你的域仍保持不变，但会收取兑换费。 你可以致电客户支持人员续订你的域名，但需遵守任何适用的续订和兑换费用。
+* 在过期后的第25天，Azure 将使用域名行业拍卖服务使你的域与拍卖联系。 你可以致电客户支持人员续订你的域名，但需遵守任何适用的续订和兑换费用。
+* 过期后的30天后，你将无法再兑换你的域。
 
 <a name="custom"></a>
 
@@ -235,7 +235,7 @@ Azure 处理过期或过期的应用服务域，如下所示：
 
 ### <a name="open-app-service-domain"></a>打开“应用服务域”
 
-在 Azure 门户中，从左侧菜单中，选择 **"所有服务** > **应用服务域**"。
+在 Azure 门户中，从左侧菜单中选择 "**所有服务** > " "**应用服务域**"。
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
@@ -255,7 +255,7 @@ Azure 处理过期或过期的应用服务域，如下所示：
 
 ### <a name="open-app-service-domain"></a>打开“应用服务域”
 
-在 Azure 门户中，从左侧菜单中，选择 **"所有服务** > **应用服务域**"。
+在 Azure 门户中，从左侧菜单中选择 "**所有服务** > " "**应用服务域**"。
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
@@ -269,7 +269,7 @@ Azure 处理过期或过期的应用服务域，如下所示：
 
 只有在删除所有主机名绑定之后，才能删除应用服务域。
 
-通过选择 **...** > **删除**。 删除所有绑定后，选择“保存”。****
+通过**选择 "** 删除每个主机名" > **删除**。 删除所有绑定后，选择“保存”。****
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png)
 

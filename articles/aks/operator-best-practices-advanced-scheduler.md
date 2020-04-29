@@ -1,20 +1,20 @@
 ---
-title: 计划程序功能的最佳实践
+title: 计划程序功能的最佳方案
 titleSuffix: Azure Kubernetes Service
 description: 了解有关使用 Azure Kubernetes 服务 (AKS) 中的高级计划程序功能（例如排斥 (taint) 和容许 (toleration)、节点选择器和关联，或 pod 间关联和反关联）的群集操作员最佳做法
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: d0d13a699d2559c6b4360c807721e0b748959382
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81617525"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的高级计划程序功能的最佳做法
 
-在 Azure Kubernetes 服务 (AKS) 中管理群集时，通常需要隔离团队和工作负荷。 Kubernetes 计划程序提供了高级功能，允许您控制可以在某些节点上安排哪些 pod，或者如何跨群集适当地分配多 pod 应用程序。 
+在 Azure Kubernetes 服务 (AKS) 中管理群集时，通常需要隔离团队和工作负荷。 Kubernetes 计划程序提供高级功能，让你控制可在特定节点上计划哪些 Pod，或者如何在整个群集中适当地分配多 Pod 应用程序。 
 
 本最佳做法文章重点介绍面向群集操作员的高级 Kubernetes 计划功能。 在本文中，学习如何：
 
@@ -29,7 +29,7 @@ ms.locfileid: "81617525"
 
 创建 AKS 群集时，可以部署支持 GPU 的节点或具有大量强大 CPU 的节点。 这些节点通常用于大数据处理工作负荷，例如机器学习 (ML) 或人工智能 (AI)。 由于此类硬件通常是需要部署的昂贵节点资源，因此需要限制可在这些节点上计划的工作负荷。 你可能想要专门使用群集中的某些节点来运行入口服务，并阻止其他工作负荷。
 
-这种对不同节点的支持是通过使用多个节点池提供的。 AKS 群集提供一个或多个节点池。
+这种对不同节点的支持通过使用多个节点池来提供。 AKS 群集提供一个或多个节点池。
 
 Kubernetes 计划程序能够使用排斥和容许来限制可在节点上运行的工作负荷。
 
@@ -79,13 +79,13 @@ spec:
 
 升级 AKS 中的节点池时，排斥和容许在应用于新节点时遵循一个设定的模式：
 
-- **使用虚拟机缩放集的默认群集**
+- **使用虚拟机规模集的默认群集**
   - 假设你的群集有两个节点 - *node1* 和 *node2*。 升级节点池。
-  - 创建了另外两个节点，*节点3*和*节点4，* 并且分别传递了污点。
-  - 将删除原始*节点 1*和节点*2。*
+  - 另外两个节点（node3  和 node4  ）将被创建，并且排斥会被分别传递。
+  - 原始 node1  和 node2  将被删除。
 
-- **不支持虚拟机规模集支持的群集**
-  - 同样，假设您有一个双节点群集 -*节点1*和*节点2*。 在升级时，将创建另一个节点 (*node3*)。
+- **不支持虚拟机规模集的群集**
+  - 同样，让我们假设你有一个双节点群集 - node1  和 node2  。 在升级时，将创建另一个节点 (*node3*)。
   - *node1* 中的排斥将应用于 *node3*，然后 *node1* 将被删除。
   - 将创建另一个新节点（名为 *node1*，因为以前的 *node1* 被删除），并且 *node2* 排斥将应用于新的 *node1*。 然后，将删除 *node2*。
   - 实际上，*node1* 变成了 *node3*，*node2* 变成了 *node1*。
@@ -132,9 +132,9 @@ spec:
 
 ### <a name="node-affinity"></a>节点关联
 
-节点选择器是将 pod 分配到给定节点的基本方法。 使用节点关联可以获得更高的灵活性。** 使用节点关联可以定义当 pod 无法与节点匹配时发生的情况。 可以要求 Kubernetes 计划程序与包含标记主机的 pod 相匹配。** 或者，可以优先选择匹配，但如果不匹配，则允许在其他主机上计划 pod。**
+节点选择器是将 pod 分配到给定节点的基本方法。 使用节点关联可以获得更高的灵活性。  使用节点关联可以定义当 pod 无法与节点匹配时发生的情况。 可以要求 Kubernetes 计划程序与包含标记主机的 pod 相匹配。  或者，可以优先选择匹配，但如果不匹配，则允许在其他主机上计划 pod。 
 
-以下示例将节点关联设置为 *requiredDuringSchedulingIgnoredDuringExecution*。 这种关联要求 Kubernetes 计划使用具有匹配标签的节点。 如果没有可用的节点，则 pod 必须等待计划继续。 要允许将 pod 安排在不同的节点上，可以改为将该值设置为*首选在"计划期间忽略"执行 ：*
+以下示例将节点关联设置为 *requiredDuringSchedulingIgnoredDuringExecution*。 这种关联要求 Kubernetes 计划使用具有匹配标签的节点。 如果没有可用的节点，则 pod 必须等待计划继续。 若要允许在其他节点上计划 pod，可以改为将值设置为*preferredDuringSchedulingIgnoreDuringExecution*：
 
 ```yaml
 kind: Pod
@@ -168,7 +168,7 @@ spec:
 
 ### <a name="inter-pod-affinity-and-anti-affinity"></a>pod 间关联和反关联
 
-Kubernetes 计划程序逻辑隔离工作负荷的最终方法之一是使用 pod 间关联或反关联。 这些设置定义不应在具有现有匹配 pod 的节点上计划 pod，或者应该计划 pod。**** 默认情况下，Kubernetes 计划程序会尝试在跨节点的副本集3中计划多个 pod。 可围绕此行为定义更具体的规则。
+Kubernetes 计划程序逻辑隔离工作负荷的最终方法之一是使用 pod 间关联或反关联。 这些设置定义不应在具有现有匹配 pod 的节点上计划 pod，或者应该计划 pod。   默认情况下，Kubernetes 计划程序会尝试在跨节点的副本集3中计划多个 pod。 可围绕此行为定义更具体的规则。
 
 同时使用 Azure Redis 缓存的 Web 应用程序就是一个很好的例子。 可以使用 pod 反关联规则来请求 Kubernetes 计划程序跨节点分配副本。 然后，可以使用关联规则来确保在相应缓存所在的同一主机上计划每个 Web 应用组件。 跨节点的 pod 分配如以下示例所示：
 
@@ -177,7 +177,7 @@ Kubernetes 计划程序逻辑隔离工作负荷的最终方法之一是使用 po
 | webapp-1   | webapp-2   | webapp-3   |
 | cache-1    | cache-2    | cache-3    |
 
-与使用节点选择器或节点关联相比，此示例是一种更复杂的部署。 部署可让你控制 Kubernetes 如何在节点上计划 pod，并可以逻辑隔离资源。 有关此 Web 应用程序的完整示例，请参阅[在同一节点上使用][k8s-pod-affinity]Azure 缓存。
+与使用节点选择器或节点关联相比，此示例是一种更复杂的部署。 部署可让你控制 Kubernetes 如何在节点上计划 pod，并可以逻辑隔离资源。 有关这个使用 Azure Cache for Redis 的 Web 应用程序的完整示例，请参阅[在同一节点上共置 Pod][k8s-pod-affinity]。
 
 ## <a name="next-steps"></a>后续步骤
 

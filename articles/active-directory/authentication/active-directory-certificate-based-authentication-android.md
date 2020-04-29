@@ -1,5 +1,5 @@
 ---
-title: 基于 Android 证书的身份验证 - Azure 活动目录
+title: 基于 Android 证书的身份验证-Azure Active Directory
 description: 了解 Android 设备的解决方案中配置基于证书的身份验证的支持方案和要求
 services: active-directory
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d9760624afec111a271ae5aa0ebbe5533d6ba8d6
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81680215"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Android 上 Azure Active Directory 基于证书的身份验证
@@ -27,7 +27,7 @@ ms.locfileid: "81680215"
 
 如果配置了此功能，就无需在移动设备上的某些邮件和 Microsoft Office 应用程序中输入用户名和密码组合。
 
-本主题为您提供了在 Android 设备上为 Office 365 企业、商业、教育、美国政府、中国和德国计划中租户用户配置 CBA 的要求和支持的方案。
+本主题提供了在 Android 设备上为 Office 365 企业版、商业版、教育版、美国政府版和德国计划中的租户用户配置 CBA 时的要求和受支持方案。
 
 此功能在 Office 365 US Government Defense 和 Federal 计划中以预览形式提供。
 
@@ -66,7 +66,7 @@ ms.locfileid: "81680215"
 
 有关详细信息，请参阅[自定义 AD FS 登录页](https://technet.microsoft.com/library/dn280950.aspx)。
 
-某些 Office 应用（启用了现代身份验证）在其请求中向 Azure AD 发送"*提示\登录*"。 默认情况下，Azure AD 在请求 ADFS 时将"*提示=登录*"转换为"*哇*"（要求 ADFS 执行 U/P Auth）和 *"wfresh_0"（* 要求 ADFS 忽略 SSO 状态并进行新的身份验证）。 如果想要为这些应用启用基于证书的身份验证，需要修改默认 Azure AD 行为。 将联合域设置中的"*提示登录行为*"设置为"*已禁用*"。
+某些 Office 应用（启用了新式身份验证）向其请求中的 Azure AD 发送 "*prompt = login*"。 默认情况下，Azure AD 会将请求中的 "*prompt = login*" 转换为 "*wauth = usernamepassworduri*" （要求 Adfs 执行 U/P 身份验证）和 "*wfresh = 0*" （要求 adfs 忽略 SSO 状态并执行全新的身份验证）。 如果想要为这些应用启用基于证书的身份验证，需要修改默认 Azure AD 行为。 将联盟域设置中的 "*PromptLoginBehavior*" 设置为 "*Disabled*"。
 可使用 [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) cmdlet 执行此任务：
 
 `Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`

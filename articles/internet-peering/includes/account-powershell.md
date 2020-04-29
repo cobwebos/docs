@@ -9,25 +9,25 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: beffb2babefd86c2807e21e9337cba66f42fcfc2
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678491"
 ---
-在开始配置之前，请安装并导入所需的模块。 您需要管理员权限才能在 PowerShell 中安装模块。
+在开始配置之前，请安装并导入所需的模块。 你需要管理员权限才能在 PowerShell 中安装模块。
 
-1. 安装并导入 Az 模块。
+1. 安装和导入 Az 模块。
     ```powershell
     Install-Module Az -AllowClobber
     Import-Module Az
     ```
-1. 安装并导入 Az.对等模块。
+1. 安装并导入 Az. 对等模块。
     ```powershell
     Install-Module -Name Az.Peering -AllowClobber
     Import-Module Az.Peering
     ```
-1. 使用此命令验证模块是否正确导入：
+1. 使用此命令验证是否已正确导入模块：
     ```powershell
     Get-Module
     ```
@@ -40,13 +40,13 @@ ms.locfileid: "81678491"
     Get-AzSubscription
     Select-AzSubscription -SubscriptionId "subscription-id"
     ```
-1. 如果还没有资源组，则必须在创建对等互连之前创建一个资源组。 为此，可以运行以下命令：
+1. 如果还没有资源组，则必须先创建一个资源组，然后才能创建对等互连。 为此，可以运行以下命令：
 
     ```powershell
     New-AzResourceGroup -Name "PeeringResourceGroup" -Location "Central US"
     ```
 > [!IMPORTANT]
-> 如果您尚未关联 ASN 和订阅，请按照[关联对等 ASN](../howto-subscription-association-powershell.md)中的步骤操作。 请求对等互连需要此操作。
+> 如果尚未关联 ASN 和订阅，请遵循[关联对等 ASN](../howto-subscription-association-powershell.md)中的步骤。 请求对等互连需要此操作。
 
 > [!NOTE]
 > 资源组的位置与选择设置对等互连的位置无关。

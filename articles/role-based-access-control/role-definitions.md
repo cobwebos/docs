@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: 777ea7cc29679a3819e94d39913f167ea1cb3453
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81641375"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>了解 Azure 资源的角色定义
@@ -28,7 +28,7 @@ ms.locfileid: "81641375"
 
 ## <a name="role-definition"></a>角色定义
 
-角色定义是权限的集合。** 它有时简称为“角色”**。 角色定义列出可以执行的操作，例如读取、写入和删除。 它还可以列出不能执行的操作，或者与基础数据相关的操作。 角色定义具有以下属性：
+角色定义是权限的集合。  它有时简称为“角色”  。 角色定义列出可以执行的操作，例如读取、写入和删除。 它还可以列出不能执行的操作，或者与基础数据相关的操作。 角色定义具有以下属性：
 
 ```
 Name
@@ -52,7 +52,7 @@ AssignableScopes []
 | `NotActions` | 一个字符串数组，指定要从允许的 `Actions` 中排除的管理操作。 |
 | `DataActions` | 一个字符串数组，指定该角色允许对该对象中的数据执行的数据操作。 |
 | `NotDataActions` | 一个字符串数组，指定要从允许的 `DataActions` 中排除的数据操作。 |
-| `AssignableScopes` | 指定角色可用于分配的范围的字符串数组。 |
+| `AssignableScopes` | 一个字符串数组，该数组指定角色可用于分配的范围。 |
 
 ### <a name="operations-format"></a>操作格式
 
@@ -108,7 +108,7 @@ AssignableScopes []
 
 以前，基于角色的访问控制不用于数据操作。 数据操作的授权根据资源提供程序的不同而异。 用于管理操作的同一基于角色的访问控制授权模型已扩展到数据操作。
 
-为了支持数据操作，新的数据属性已添加到角色定义中。 数据操作在 `DataActions` 和 `NotDataActions` 属性中指定。 通过添加这些数据属性，可在管理与数据之间保持隔离。 这可以防止包含通配符 (`*`) 的当前角色分配突然访问数据。 下面是可在 `DataActions` 和 `NotDataActions` 中指定的一些数据操作：
+为了支持数据操作，新的数据属性已添加到角色定义。 数据操作在 `DataActions` 和 `NotDataActions` 属性中指定。 通过添加这些数据属性，可在管理与数据之间保持隔离。 这可以防止包含通配符 (`*`) 的当前角色分配突然访问数据。 下面是可在 `DataActions` 和 `NotDataActions` 中指定的一些数据操作：
 
 - 读取容器中的 Blob 列表
 - 在容器中写入存储 Blob
@@ -231,7 +231,7 @@ Bob 的权限限制为[存储 Blob 数据参与者](built-in-roles.md#storage-bl
 
 ## <a name="assignablescopes"></a>AssignableScopes
 
-该`AssignableScopes`属性指定具有此角色定义的范围（管理组、订阅或资源组）。 只能在需要此角色的管理组、订阅或资源组中分配此角色。 您必须至少使用一个管理组、订阅或资源组。
+`AssignableScopes`属性指定具有此角色定义的作用域（管理组、订阅或资源组）。 只能在需要此角色的管理组、订阅或资源组中分配此角色。 必须至少使用一个管理组、订阅或资源组。
 
 内置角色已将 `AssignableScopes` 设置为根范围 (`"/"`)。 根范围指示角色可供在所有范围中进行分配。 有效的可分配范围的示例包括：
 
@@ -251,4 +251,4 @@ Bob 的权限限制为[存储 Blob 数据参与者](built-in-roles.md#storage-bl
 
 * [Azure 资源的内置角色](built-in-roles.md)
 * [Azure 资源的自定义角色](custom-roles.md)
-* [Azure 资源管理器资源管理器提供程序操作](resource-provider-operations.md)
+* [Azure 资源管理器资源提供程序操作](resource-provider-operations.md)
