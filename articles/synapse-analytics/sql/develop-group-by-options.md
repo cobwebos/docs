@@ -1,6 +1,6 @@
 ---
-title: 在 SynapsE SQL 中使用组 BY 选项
-description: Synapse SQL 允许通过实现不同的 GROUP BY 选项来开发解决方案。
+title: 在 Synapse SQL 中使用 GROUP BY 选项
+description: Synapse SQL 允许通过实施不同的 GROUP BY 选项来开发解决方案。
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -12,24 +12,24 @@ ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
 ms.openlocfilehash: 261f75344d250ae8a8d9687f4bcd80535d11716b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81429039"
 ---
-# <a name="group-by-options-in-synapse-sql"></a>SynapsE SQL 中的分组 BY 选项
-Synapse SQL 允许通过实现不同的 GROUP BY 选项来开发解决方案。 
+# <a name="group-by-options-in-synapse-sql"></a>Synapse SQL 中的 GROUP BY 选项
+Synapse SQL 允许通过实施不同的 GROUP BY 选项来开发解决方案。 
 
-## <a name="what-does-group-by-do"></a>组 BY 做什么
+## <a name="what-does-group-by-do"></a>GROUP BY do
 
 [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 子句用于将数据聚合成摘要行集。
 
-SQL 按需支持整个 GROUP BY 选项。 SQL 池支持数量有限的 GROUP BY 选项。
+SQL 点播支持整组分组选项。 SQL 池支持的 GROUP BY 选项数量有限。
 
-## <a name="group-by-options-supported-in-sql-pool"></a>SQL 池中支持的分组 BY 选项
+## <a name="group-by-options-supported-in-sql-pool"></a>SQL 池中支持的 GROUP BY 选项
 
-GROUP BY 具有 SQL 池不支持的一些选项。 这些选项具有解决方法，如下所示：
+"分组依据" 具有 SQL 池不支持的某些选项。 这些选项有解决方法，如下所示：
 
 * 带 ROLLUP 的 GROUP BY
 * GROUPING SETS
@@ -37,9 +37,9 @@ GROUP BY 具有 SQL 池不支持的一些选项。 这些选项具有解决方�
 
 ### <a name="rollup-and-grouping-sets-options"></a>Rollup 和 grouping sets 选项
 
-此处最简单的选项是使用 UNION ALL 执行汇总，而不是依赖显式语法。 结果应完全相同
+此处最简单的选项是使用 UNION ALL 来执行汇总，而不是依赖显式语法。 结果应完全相同
 
-以下示例使用带有 ROLLUP 选项的 GROUP BY 语句：
+下面的示例使用带有 ROLLUP 选项的 GROUP BY 语句：
 
 ```sql
 SELECT [SalesTerritoryCountry]
@@ -91,9 +91,9 @@ JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritor
 
 ### <a name="cube-options"></a>Cube 选项
 
-可以使用"全联盟"方法创建具有 CUBE 的组。 问题在于，代码可能很快就会变得庞大且失控。 要缓解此问题，可以使用此更高级的方法。
+可以使用 UNION ALL 方法创建 GROUP BY WITH CUBE。 问题在于，代码可能很快就会变得庞大且失控。 若要缓解此问题，可以使用这种更高级的方法。
 
-第一步是定义“cube”，它定义我们想要创建的所有聚合级别。 请注意两个派生表生成所有级别的 CROSS JOIN。 代码的其余部分用于格式化。
+第一步是定义“cube”，它定义我们想要创建的所有聚合级别。 请记下两个派生表的交叉联接，因为它会生成所有级别。 其余代码适用于格式设置。
 
 ```sql
 CREATE TABLE #Cube
@@ -124,11 +124,11 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-下图显示了["选择"创建表](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)的结果：
+下图显示了[CREATE TABLE 为 SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)的结果：
 
 ![按多维数据集分组](./media/develop-group-by-options/develop-group-by-cube.png)
 
-第二步是指定用于存储中期结果的目标表：
+第二步是指定目标表用于存储临时结果：
 
 ```sql
 DECLARE
@@ -151,7 +151,7 @@ WITH
 ;
 ```
 
-第三步是循环访问执行聚合的列的多维数据集。 查询将针对临时表中的每一行运行一次#Cube。 结果存储在#Results临时表中：
+第三步是遍历执行聚合的列的多维数据集。 查询将对 #Cube 临时表中的每一行运行一次。 结果存储在 #Results 临时表中：
 
 ```sql
 SET @nbr =(SELECT MAX(Seq) FROM #Cube);
@@ -175,7 +175,7 @@ BEGIN
 END
 ```
 
-最后，您可以通过从#Results临时表中读取来返回结果：
+最后，您可以通过读取 #Results 临时表来返回结果：
 
 ```sql
 SELECT *
@@ -184,7 +184,7 @@ ORDER BY 1,2,3
 ;
 ```
 
-通过将代码分解为多个部分并生成循环构造，代码变得更加可管理和可维护。
+通过将代码分解到各个部分并生成循环构造，代码将变得更易于管理和维护。
 
 ## <a name="next-steps"></a>后续步骤
 

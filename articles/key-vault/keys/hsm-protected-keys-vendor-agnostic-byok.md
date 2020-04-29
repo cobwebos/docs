@@ -1,6 +1,6 @@
 ---
 title: 如何为 Azure Key Vault 生成和传输受 HSM 保护的密钥 - Azure Key Vault | Microsoft Docs
-description: 使用本文可帮助您规划、生成和传输自己的受 HSM 保护的密钥，以便与 Azure 密钥保管库一起使用。 也称为自带密钥 （BYOK）。
+description: 使用本文来帮助你规划、生成并传输自己的受 HSM 保护的密钥，以便与 Azure Key Vault 一起使用。 也称为自带密钥（BYOK）。
 services: key-vault
 author: amitbapat
 manager: devtiw
@@ -11,127 +11,127 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
 ms.openlocfilehash: 77568928e50fb4398aa786dbbd4a44b9277a8d5b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81429702"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-preview"></a>将受 HSM 保护的密钥导入到 Key Vault（预览版）
 
 > [!NOTE]
-> 此功能处于预览状态，仅在 Azure 区域中可用，*东部美国 2 EUAP*和美国*中部 EUAP。* 
+> 此功能处于预览阶段，仅适用于 Azure 区域 "*美国东部 2 EUAP* " 和 "*美国中部" EUAP*。 
 
-为了在使用 Azure 密钥保管库时添加保证，可以在硬件安全模块 （HSM） 中导入或生成密钥;密钥永远不会离开 HSM 边界。 此方案通常称为*自带密钥*（BYOK）。 密钥保管库使用 nCipher nShield 系列 HSM（FIPS 140-2 级验证）来保护密钥。
+若要在使用 Azure Key Vault 时添加保证，可以在硬件安全模块（HSM）中导入或生成密钥;密钥永远不会离开 HSM 边界。 这种情况通常称为 "*自带密钥*" （BYOK）。 Key Vault 使用 Hsm （FIPS 140-2 Level 2）的 nCipher nShield 系列来保护密钥。
 
-使用本文中的信息可帮助您规划、生成和传输自己的受 HSM 保护的密钥，以便与 Azure 密钥保管库一起使用。
+使用本文中的信息来帮助你规划、生成并传输自己的受 HSM 保护的密钥，以便与 Azure Key Vault 一起使用。
 
 > [!NOTE]
-> 此功能不适用于 Azure 中国 21Vianet。 
+> 此功能不适用于 Azure 中国世纪互联。 
 > 
-> 此导入方法仅适用于[受支持的 HSM。](#supported-hsms) 
+> 此 import 方法仅适用于[受支持的 hsm](#supported-hsms)。 
 
-有关详细信息，以及如何开始使用密钥保管库（包括如何为受 HSM 保护的密钥创建密钥保管库）的教程，请参阅[什么是 Azure 密钥保管库？](../general/overview.md)
+有关详细信息，以及有关如何开始使用 Key Vault （包括如何为 HSM 保护的密钥创建密钥保管库）的教程，请参阅[什么是 Azure Key Vault？](../general/overview.md)。
 
 ## <a name="overview"></a>概述
 
-这里是编写过程的概述。 本文稍后将介绍要完成的具体步骤。
+这里是编写过程的概述。 本文的后面部分将介绍完成的特定步骤。
 
-* 在密钥保管库中，生成密钥（称为*密钥交换密钥*（KEK）。 KEK 必须是仅具有密钥操作的`import`RSA-HSM 密钥。 只有密钥保管库高级 SKU 支持 RSA-HSM 密钥。
-* 将 KEK 公钥下载为 .pem 文件。
+* 在 Key Vault 中，生成一个密钥（称为*密钥交换密钥*（KEK））。 KEK 必须是仅具有`import`密钥操作的 RSA HSM 密钥。 仅 Key Vault 高级 SKU 支持 RSA-HSM 密钥。
+* 下载作为 pem 文件的 KEK 公钥。
 * 将 KEK 公钥传输到连接到本地 HSM 的脱机计算机。
-* 在脱机计算机中，使用 HSM 供应商提供的 BYOK 工具创建 BYOK 文件。 
-* 目标密钥使用 KEK 加密，KEK 保持加密，直到将其传输到密钥保管库 HSM。 只有密钥的加密版本才会离开本地 HSM。
-* 在密钥保管库 HSM 中生成的 KEK 不可导出。 HSM 强制实施规则，即密钥保管库 HSM 之外不存在 KEK 的明确版本。
+* 在脱机计算机中，使用 HSM 供应商提供的 BYOK 工具来创建 BYOK 文件。 
+* 使用 KEK 加密目标密钥，该密钥将保持加密状态，直到将其传输到 Key Vault HSM。 只有已加密版本的密钥才能离开本地 HSM。
+* Key Vault HSM 内生成的 KEK 不可导出。 Hsm 强制执行规则，该规则在 Key Vault HSM 之外不存在 KEK 的明文版本。
 * KEK 必须位于将导入目标密钥的同一密钥保管库中。
-* 当 BYOK 文件上载到密钥保管库时，密钥保管库 HSM 使用 KEK 私钥解密目标密钥材料并将其导入为 HSM 密钥。 此操作完全发生在密钥保管库 HSM 中。 目标密钥始终保留在 HSM 保护边界中。
+* 将 BYOK 文件上传到 Key Vault 时，Key Vault HSM 使用 KEK 私钥来解密目标密钥材料，并将其作为 HSM 密钥导入。 此操作完全在 Key Vault HSM 内发生。 目标密钥始终保留在 HSM 保护边界内。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-下表列出了在 Azure 密钥保管库中使用 BYOK 的先决条件：
+下表列出了在 Azure Key Vault 中使用 BYOK 的先决条件：
 
-| 要求 | 详细信息 |
+| 要求 | 更多信息 |
 | --- | --- |
-| Azure 订阅 |要在 Azure 密钥保管库中创建密钥保管库，需要 Azure 订阅。 [注册免费试用版](https://azure.microsoft.com/pricing/free-trial/)。 |
-| 用于导入 HSM 保护密钥的密钥保管库高级 SKU |有关 Azure 密钥保管库中的服务层和功能的详细信息，请参阅[密钥保管库定价](https://azure.microsoft.com/pricing/details/key-vault/)。 |
-| 支持 HSM 列表的 HSM 和 BYOK 工具和 HSM 供应商提供的说明 | 您必须拥有 HSM 的权限，并具备如何使用 HSM 的基本知识。 请参阅[支持的 HSM](#supported-hsms)。 |
-| Azure CLI 版本 2.1.0 或更高版本 | 请参阅[安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。|
+| Azure 订阅 |若要在 Azure Key Vault 中创建密钥保管库，需要一个 Azure 订阅。 [注册免费试用版](https://azure.microsoft.com/pricing/free-trial/)。 |
+| 一个 Key Vault 高级 SKU，用于导入受 HSM 保护的密钥 |有关 Azure Key Vault 中的服务层和功能的详细信息，请参阅[Key Vault 定价](https://azure.microsoft.com/pricing/details/key-vault/)。 |
+| 受支持的 Hsm 列表中的 HSM 和 HSM 供应商提供的 BYOK 工具和说明 | 你必须具有 HSM 的权限以及如何使用 HSM 的基本知识。 请参阅[支持的 hsm](#supported-hsms)。 |
+| Azure CLI 版本2.1.0 或更高版本 | 请参阅[安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。|
 
-## <a name="supported-hsms"></a>支持 HSM
+## <a name="supported-hsms"></a>支持的 Hsm
 
-|供应商名称|供应商类型|支持的 HSM 型号|详细信息|
+|供应商名称|供应商类型|支持的 HSM 模型|更多信息|
 |---|---|---|---|
-|泰莱斯|制造商|SafeNet Luna HSM 7 系列，固件版本 7.3 或更高版本| [SafeNet Luna BYOK 工具和文档](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
-|福塔尼克斯|HSM 作为服务|自防密钥管理服务 （SDKMS）|[将 SDKMS 密钥导出到 BYOK 的云提供商 - Azure 密钥保管库](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
+|Thales|制造商|SafeNet Luna HSM 7 系列固件版本7.3 或更高版本| [SafeNet Luna BYOK 工具和文档](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
+|Fortanix|HSM 即服务|自我防御密钥管理服务（SDKMS）|[将 SDKMS 密钥导出到 BYOK 的云提供程序-Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
 
 
 > [!NOTE]
-> 要从 nCipher nShield 系列导入受 HSM 保护的密钥，请使用[传统的 BYOK 过程](hsm-protected-keys-legacy.md)。
+> 若要从 Hsm 的 nCipher nShield 系列导入受 HSM 保护的密钥，请使用[旧版 BYOK 过程](hsm-protected-keys-legacy.md)。
 
-## <a name="supported-key-types"></a>支持密钥类型
+## <a name="supported-key-types"></a>支持的密钥类型
 
-|项名|密钥类型|密钥大小|源|说明|
+|项名称|密钥类型|密钥大小|源|说明|
 |---|---|---|---|---|
-|密钥交换密钥 （KEK）|RSA| 2，048 位<br />3，072 位<br />4，096 位|Azure 密钥保管库 HSM|在 Azure 密钥保管库中生成的由 HSM 支持的 RSA 密钥对|
-|目标密钥|RSA|2，048 位<br />3，072 位<br />4，096 位|供应商 HSM|要传输到 Azure 密钥保管库 HSM 的密钥|
+|密钥交换密钥（KEK）|RSA| 2048位<br />3072位<br />4096位|Azure Key Vault HSM|在 Azure Key Vault 中生成的 HSM 支持的 RSA 密钥对|
+|目标密钥|RSA|2048位<br />3072位<br />4096位|供应商 HSM|要传输到 Azure Key Vault HSM 的密钥|
 
-## <a name="generate-and-transfer-your-key-to-the-key-vault-hsm"></a>生成密钥并将其传输到密钥保管库 HSM
+## <a name="generate-and-transfer-your-key-to-the-key-vault-hsm"></a>生成密钥并将其传输到 Key Vault HSM
 
-要生成密钥并将其传输到密钥保管库 HSM：
+生成密钥并将其传输到 Key Vault HSM：
 
-* [第 1 步：生成 KEK](#step-1-generate-a-kek)
-* [第 2 步：下载 KEK 公钥](#step-2-download-the-kek-public-key)
-* [第 3 步：生成并准备密钥进行传输](#step-3-generate-and-prepare-your-key-for-transfer)
-* [步骤 4：将密钥传输到 Azure 密钥保管库](#step-4-transfer-your-key-to-azure-key-vault)
+* [步骤1：生成 KEK](#step-1-generate-a-kek)
+* [步骤2：下载 KEK 公钥](#step-2-download-the-kek-public-key)
+* [步骤3：生成并准备要传输的密钥](#step-3-generate-and-prepare-your-key-for-transfer)
+* [步骤4：将密钥传输到 Azure Key Vault](#step-4-transfer-your-key-to-azure-key-vault)
 
-### <a name="step-1-generate-a-kek"></a>第 1 步：生成 KEK
+### <a name="step-1-generate-a-kek"></a>步骤1：生成 KEK
 
-KEK 是在密钥保管库 HSM 中生成的 RSA 密钥。 KEK 用于加密要导入的密钥（*目标*密钥）。
+KEK 是在 Key Vault HSM 中生成的 RSA 密钥。 KEK 用于对要导入的密钥（*目标*密钥）进行加密。
 
-KEK 必须：
-- RSA-HSM 键（2，048 位;3，072 位;或 4，096 位）
-- 在要导入目标密钥的同一密钥保管库中生成
-- 使用允许的键操作设置为`import`
+KEK 必须是：
+- RSA-HSM 密钥（2048位; 3072 位; 或4096位）
+- 在你打算导入目标密钥的同一密钥保管库中生成
+- 已使用允许的密钥操作设置为`import`
 
 > [!NOTE]
-> KEK 必须具有"导入"作为唯一允许的密钥操作。 "导入"与所有其他关键操作是互斥的。
+> KEK 必须具有 "import" 作为唯一允许的键操作。 "import" 与所有其他键操作是互相排斥的。
 
-使用[az 密钥库密钥创建](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create)命令创建将键操作设置为`import`的 KEK。 记录从以下命令返回`kid`的密钥标识符 （ ）。 （您将使用步骤`kid`[3](#step-3-generate-and-prepare-your-key-for-transfer)中的值 。）
+使用[az keyvault key create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create)命令创建具有设置为`import`的关键操作的 KEK。 记录从以下命令返回`kid`的密钥标识符（）。 （你将在`kid` [步骤 3](#step-3-generate-and-prepare-your-key-for-transfer)中使用此值。）
 
 ```azurecli
 az keyvault key create --kty RSA-HSM --size 4096 --name KEKforBYOK --ops import --vault-name ContosoKeyVaultHSM
 ```
 
-### <a name="step-2-download-the-kek-public-key"></a>第 2 步：下载 KEK 公钥
+### <a name="step-2-download-the-kek-public-key"></a>步骤2：下载 KEK 公钥
 
-使用[az 密钥库密钥下载](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-download)将 KEK 公钥下载到 .pem 文件。 使用 KEK 公钥加密您导入的目标密钥。
+使用[az keyvault key 下载](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-download)将 KEK 公钥下载到 pem 文件。 导入的目标密钥是使用 KEK 公钥进行加密的。
 
 ```azurecli
 az keyvault key download --name KEKforBYOK --vault-name ContosoKeyVaultHSM --file KEKforBYOK.publickey.pem
 ```
 
-将 KEKforBYOK.publickey.pem 文件传输到脱机计算机。 在下一步中，您将需要此文件。
+将 KEKforBYOK. publickey 文件传输到脱机计算机。 下一步将需要此文件。
 
-### <a name="step-3-generate-and-prepare-your-key-for-transfer"></a>第 3 步：生成并准备密钥进行传输
+### <a name="step-3-generate-and-prepare-your-key-for-transfer"></a>步骤3：生成并准备要传输的密钥
 
-请参阅 HSM 供应商的文档以下载并安装 BYOK 工具。 按照 HSM 供应商的说明生成目标密钥，然后创建密钥传输包（BYOK 文件）。 BYOK 工具将使用`kid`从步骤[1](#step-1-generate-a-kek)和 KEKforBYOK.publickey.pem 文件在步骤[2](#step-2-download-the-kek-public-key)中下载，以在 BYOK 文件中生成加密的目标密钥。
+请参阅 HSM 供应商的文档，下载并安装 BYOK 工具。 按照 HSM 供应商提供的说明生成目标密钥，然后创建密钥传输包（BYOK 文件）。 BYOK 工具将使用`kid`步骤[1](#step-1-generate-a-kek)和[步骤 2](#step-2-download-the-kek-public-key)中下载的 KEKforBYOK 文件，在 BYOK 文件中生成加密目标密钥。
 
-将 BYOK 文件传输到已连接的计算机。
+将 BYOK 文件传输到连接的计算机。
 
 > [!NOTE] 
-> 不支持导入 RSA 1，024 位密钥。 目前，不支持导入椭圆曲线 （EC） 键。
+> 不支持导入 RSA 1024 位密钥。 当前不支持导入椭圆曲线（EC）键。
 > 
-> **已知问题**：仅支持从 SafeNet Luna HSM 导入 RSA 4K 目标密钥，但固件 7.4.0 或更高版本才受支持。
+> **已知问题**：仅固件 v7.4.0 或更高版本支持从 SafeNet Luna hsm 导入 RSA 4k 目标密钥。
 
-### <a name="step-4-transfer-your-key-to-azure-key-vault"></a>步骤 4：将密钥传输到 Azure 密钥保管库
+### <a name="step-4-transfer-your-key-to-azure-key-vault"></a>步骤4：将密钥传输到 Azure Key Vault
 
-要完成密钥导入，请将密钥传输包（BYOK 文件）从断开连接的计算机传输到联网计算机。 使用[az 密钥库密钥导入](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import)命令将 BYOK 文件上载到密钥保管库 HSM。
+若要完成密钥导入，请将密钥传输包（BYOK 文件）从断开连接的计算机传输到连接到 internet 的计算机。 使用[az keyvault key import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import)命令将 BYOK 文件上传到 Key Vault HSM。
 
 ```azurecli
 az keyvault key import --vault-name ContosoKeyVaultHSM --name ContosoFirstHSMkey --byok-file KeyTransferPackage-ContosoFirstHSMkey.byok
 ```
 
-如果上载成功，Azure CLI 将显示导入密钥的属性。
+如果上传成功，Azure CLI 将显示导入的密钥的属性。
 
 ## <a name="next-steps"></a>后续步骤
 

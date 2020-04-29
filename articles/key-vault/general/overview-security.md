@@ -1,5 +1,5 @@
 ---
-title: Azure 密钥保管库安全性 |微软文档
+title: Azure Key Vault 安全性 |Microsoft Docs
 description: 管理 Azure Key Vault、密钥和机密的访问权限。 介绍 Key Vault 的身份验证和授权模型以及如何保护 Key Vault。
 services: key-vault
 author: msmbaldwin
@@ -12,10 +12,10 @@ ms.date: 04/18/2019
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
 ms.openlocfilehash: dbe13b2d1291f212af7da9d1176bc3d90997978b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81428961"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault 安全性
@@ -48,9 +48,9 @@ ms.locfileid: "81428961"
 
 在资源组中创建 Key Vault 时，可以使用 Azure AD 管理访问权限。 授予用户或组管理资源组中的密钥保管库的权限。 可以通过分配适当的 RBAC 角色在特定范围级别授予访问权限。 若要授予用户管理密钥保管库的访问权限，请为特定范围的用户分配预定义的 `key vault Contributor` 角色。 可以将以下范围级别分配给 RBAC 角色：
 
-- **订阅**：在订阅级别分配的 RBAC 角色应用于该订阅中的所有资源组和资源。
-- **资源组**：在资源组级别分配的 RBAC 角色应用于该资源组中的所有资源。
-- **特定资源**：为特定资源分配的 RBAC 角色应用于该资源。 在这种情况下，资源是特定的密钥保管库。
+- **订阅**：在订阅级别分配的 RBAC 角色适用于该订阅中的所有资源组和资源。
+- **资源组**：在资源组级别分配的 RBAC 角色适用于该资源组中的所有资源。
+- **特定资源**：为特定资源分配的 RBAC 角色适用于该资源。 在这种情况下，资源是特定的密钥保管库。
 
 有多种预定义角色。 如果预定义角色不符合需求，可以定义自己的角色。 有关详细信息，请参阅[RBAC：内置角色](../../role-based-access-control/built-in-roles.md)。
 
@@ -67,7 +67,7 @@ Key Vault 访问策略单独授予对密钥、机密或证书的权限。 可以
 
 若要为密钥保管库设置访问策略，可以使用 [Azure 门户](https://portal.azure.com/)、[Azure CLI 工具](/cli/azure/install-azure-cli?view=azure-cli-latest)、[PowerShell](/powershell/azureps-cmdlets-docs) 或[密钥保管库管理 REST API](/rest/api/keyvault/)。
 
-可以使用[Azure 密钥保管库的虚拟网络服务终结点](overview-vnet-service-endpoints.md)来限制数据平面访问。 可以配置[防火墙和虚拟网络规则](network-security.md)以提供额外的安全层。
+你可以使用[Azure Key Vault 的虚拟网络服务终结点](overview-vnet-service-endpoints.md)限制数据平面访问。 可以配置[防火墙和虚拟网络规则](network-security.md)以提供额外的安全层。
 
 ## <a name="network-access"></a>网络访问
 
@@ -75,7 +75,7 @@ Key Vault 访问策略单独授予对密钥、机密或证书的权限。 可以
 
 防火墙规则生效后，仅当用户的请求来自允许的虚拟网络或 IPv4 地址范围时，他们才能从 Key Vault 读取数据。 从 Azure 门户访问 Key Vault 时，这同样适用。 虽然用户可从 Azure 门户浏览到 Key Vault，但如果其客户端计算机不在允许列表中，则可能无法列出密钥、机密或证书。 这也会影响其他 Azure 服务的 Key Vault 选取器。 如果防火墙规则阻止了用户的客户端计算机，则用户可以查看 Key Vault 列表，但不能查看列表密钥。
 
-有关 Azure 密钥保管库网络地址的详细信息，请查看[Azure 密钥保管库的虚拟网络服务终结点](overview-vnet-service-endpoints.md)。
+有关 Azure Key Vault 网络地址查看[Azure Key Vault 的虚拟网络服务终结点](overview-vnet-service-endpoints.md)）的详细信息
 
 ## <a name="monitoring"></a>监视
 
@@ -97,6 +97,6 @@ Key Vault 日志记录保存有关针对保管库执行的活动的信息。 Key
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure 密钥保管库的虚拟网络服务终结点](overview-vnet-service-endpoints.md)）
+- [Azure Key Vault 的虚拟网络服务终结点](overview-vnet-service-endpoints.md)）
 - [RBAC：内置角色](../../role-based-access-control/built-in-roles.md)
-- [Azure 密钥保管库的虚拟网络服务终结点](overview-vnet-service-endpoints.md)）
+- [Azure Key Vault 的虚拟网络服务终结点](overview-vnet-service-endpoints.md)）

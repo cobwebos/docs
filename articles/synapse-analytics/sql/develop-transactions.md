@@ -1,6 +1,6 @@
 ---
 title: 使用事务
-description: 用于开发解决方案的 SQL 池（数据仓库）中实现事务的提示。
+description: 有关在开发解决方案时实现 SQL 池（数据仓库）中的事务的技巧。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,25 +11,25 @@ ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 9b9ce5110a03ec4d67b3e8af6d9b18e5ad6836af
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81428714"
 ---
 # <a name="using-transactions-in-sql-pool"></a>在 SQL 池中使用事务
 
-用于开发解决方案的 SQL 池（数据仓库）中实现事务的提示。
+有关在开发解决方案时实现 SQL 池（数据仓库）中的事务的技巧。
 
 ## <a name="what-to-expect"></a>期望
 
-如您所料，SQL 池支持事务作为数据仓库工作负载的一部分。 但是，为了确保 SQL 池的性能保持规模，与 SQL Server 相比，某些功能是有限的。 本文将突出两者的差异，并列出其他信息。
+正如您所料，SQL 池支持将事务作为数据仓库工作负荷的一部分。 但是，为了确保 SQL 池的性能维持在一定的程度，与 SQL Server 相比，某些功能会受到限制。 本文将突出两者的差异，并列出其他信息。
 
 ## <a name="transaction-isolation-levels"></a>事务隔离级别
 
-SQL 池实现 ACID 事务。 事务支持的隔离级别默认为"读取未提交"。  在连接到主数据库时，可以通过打开用户数据库的READ_COMMITTED_SNAPSHOT数据库选项将其更改为"读取共享快照"。  
+SQL 池实现 ACID 事务。 事务支持的隔离级别默认为未提交读。  在连接到 master 数据库时，可以通过打开用户数据库的 READ_COMMITTED_SNAPSHOT 数据库选项，将其更改为读取已提交快照隔离。  
 
-启用后，此数据库中的所有事务都将在"读取"状态下执行，并且在会话级别设置"未执行"将不受遵守。 有关详细信息，请查看[ALTER 数据库设置选项（转算-SQL）。](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)
+启用后，此数据库中的所有事务都将在已提交读快照隔离下执行，并将不会遵守设置 "在会话级别未提交的读取"。 有关详细信息，请参阅[ALTER DATABASE SET 选项（transact-sql）](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest) 。
 
 ## <a name="transaction-size"></a>事务大小
 单个数据修改事务有大小限制。 限制按每个分发进行应用。 因此，通过将限制乘以分发数，可得总分配额。 
@@ -89,10 +89,10 @@ SQL 池实现 ACID 事务。 事务支持的隔离级别默认为"读取未提�
 
 ## <a name="transaction-state"></a>事务状态
 
-SQL 池使用 XACT_STATE（） 函数使用值 -2 报告失败的事务。 此值表示事务已失败并标记为仅可回滚。
+SQL 池使用 XACT_STATE （）函数通过值-2 报告失败的事务。 此值表示事务已失败并标记为仅可回滚。
 
 > [!NOTE]
-> XACT_STATE 函数使用 -2 表示失败的事务，以代表 SQL Server 中不同的行为。 SQL Server 使用值 -1 来代表无法提交的事务。 SQL Server 可以容忍事务内的某些错误，而无需将其标记为无法提交。 例如，`SELECT 1/0` 导致错误，但不强制事务进入无法提交状态。 SQL Server 还允许读取无法提交的事务。 但是，SQL 池不允许您执行此操作。 如果 SQL 池事务中发生错误，它将自动进入 -2 状态，并且在语句回滚之前，您将无法进行任何进一步的选择语句。 因此，必须查看应用程序代码是否使用 XACT_STATE()，你可能需要修改代码。
+> XACT_STATE 函数使用 -2 表示失败的事务，以代表 SQL Server 中不同的行为。 SQL Server 使用值 -1 来代表无法提交的事务。 SQL Server 可以容忍事务内的某些错误，而无需将其标记为无法提交。 例如，`SELECT 1/0` 导致错误，但不强制事务进入无法提交状态。 SQL Server 还允许读取无法提交的事务。 但是，SQL 池不允许这样做。 如果 SQL 池事务内部发生错误，它会自动进入-2 状态，并且在该语句回退之前，您将无法再执行任何 select 语句。 因此，必须查看应用程序代码是否使用 XACT_STATE()，你可能需要修改代码。
 
 例如，在 SQL Server 中，可能会看到如下所示的事务：
 
@@ -138,7 +138,7 @@ Msg 111233, Level 16, State 1, Line 1 111233；当前事务已中止，所有挂
 
 不会获得 ERROR_* 函数的输出值。
 
-在 SQL 池中，需要稍微更改代码：
+在 SQL 池中，代码需要稍作更改：
 
 ```sql
 SET NOCOUNT ON;
@@ -181,11 +181,11 @@ SELECT @xact_state AS TransactionState;
 
 ## <a name="error_line-function"></a>Error_Line() 函数
 
-还值得注意的是，SQL 池不实现或支持ERROR_LINE（） 函数。 如果代码中具有此内容，则需要将其删除以符合 SQL 池。 请在代码中使用查询标签，而不是实现等效的功能。 有关详细信息，请参阅 [LABEL](develop-label.md) 一文。
+还值得注意的是，SQL 池不实现或支持 ERROR_LINE （）函数。 如果你在代码中具有此项，则需要将其删除才能符合 SQL 池。 请在代码中使用查询标签，而不是实现等效的功能。 有关详细信息，请参阅 [LABEL](develop-label.md) 一文。
 
 ## <a name="using-throw-and-raiserror"></a>使用 THROW 和 RAISERROR
 
-THROW 是用于在 SQL 池中引发异常的更现代的实现，但也支持 RAISERROR。 不过，有些值得注意的差异。
+THROW 是在 SQL 池中引发异常的更现代的实现，但也支持 RAISERROR。 不过，有些值得注意的差异。
 
 * 对于 THROW，用户定义的错误消息数目不能在 100,000 - 150,000 的范围内
 * RAISERROR 错误消息固定为 50,000
@@ -193,7 +193,7 @@ THROW 是用于在 SQL 池中引发异常的更现代的实现，但也支持 RA
 
 ## <a name="limitations"></a>限制
 
-SQL 池确实有一些与事务相关的其他限制。
+SQL 池有一些与事务相关的其他限制。
 
 这些限制如下：
 
@@ -206,4 +206,4 @@ SQL 池确实有一些与事务相关的其他限制。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关优化事务的详细信息，请参阅[事务最佳做法](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。 还提供[SQL 池](best-practices-sql-pool.md)和[SQL 按需（预览）](on-demand-workspace-overview.md)的其他最佳实践指南。
+若要了解有关优化事务的详细信息，请参阅[事务最佳做法](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。 还为[sql 池](best-practices-sql-pool.md)和[sql 点播（预览版）](on-demand-workspace-overview.md)提供了更多的最佳实践指南。
