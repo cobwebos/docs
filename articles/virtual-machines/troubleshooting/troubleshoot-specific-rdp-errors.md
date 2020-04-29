@@ -16,10 +16,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 851c5eb4ebfee4e4a4836a07b51578dd2b0c68cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79266866"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Azure 中 Windows VM 特定 RDP 错误消息故障排除
@@ -27,7 +27,7 @@ ms.locfileid: "79266866"
 
 有关特定错误消息的信息，请参阅以下内容：
 
-* [远程会话已断开连接，因为没有可用的远程桌面许可证服务器来提供许可证](#rdplicense)。
+* [由于没有可用于提供许可证的远程桌面授权服务器，远程会话已断开连接](#rdplicense)。
 * [远程桌面找不到计算机“名称”](#rdpname)。
 * [身份验证出错。无法联系本地安全机构](#rdpauth)。
 * [Windows 安全性错误：凭据无效](#wincred)。
@@ -69,7 +69,7 @@ ms.locfileid: "79266866"
 ## <a name="an-authentication-error-has-occurred-the-local-security-authority-cannot-be-contacted"></a>发生身份验证错误。 无法联系本地安全机构。
 原因：目标 VM 在凭据的用户名部分找不到安全机构。
 
-当用户名位于*SecurityAuthority*\\*用户名*（例如：CORP_User1）中时，*安全颁发机构*部分是 VM 的计算机名称（对于本地安全机构）或活动目录域名。
+如果用户名格式为 *SecurityAuthority*\\*UserName*（例如：CORP\User1），则 *SecurityAuthority* 部分是 VM 的计算机名（表示本地安全机构）或 Active Directory 域名。
 
 可能的解决方法：
 
@@ -84,8 +84,8 @@ ms.locfileid: "79266866"
 
 基于 Windows 的计算机可以验证本地帐户或域帐户的凭据。
 
-* 对于本地帐户，请使用*计算机名称*\\*用户名*语法（例如：SQL1_admin4798）。
-* 对于域帐户，请使用*域名*\\*用户名*语法（例如：CONTOSO_peterodman）。
+* 对于本地帐户，请使用 *ComputerName*\\*UserName* 语法（例如：SQL1\Admin4798）。
+* 对于域帐户，请使用 *DomainName*\\*UserName* 语法（例如：CONTOSO\peterodmane）。
 
 如果已将 VM 提升为新的 Active Directory 林中的域控制器，则会将用于登录的本地管理员帐户转换为新的林和域中具有相同密码的等效帐户。 然后，将删除本地帐户。
 
@@ -102,7 +102,7 @@ ms.locfileid: "79266866"
 
 每台 Windows 计算机都具有远程桌面用户本地组，包含可以远程登录的帐户和组。 本地 Administrators 组的成员也具有访问权限，即使在远程桌面用户本地组中未列出这些帐户。 对于已加入域的计算机，本地 Administrators 组还包含该域的域管理员。
 
-确保用于连接的帐户具有远程桌面登录权限。 解决方法是使用域管理员或本地管理员帐户通过远程桌面建立连接。 若要将所需帐户添加到远程桌面用户本地组，请使用 Microsoft 管理控制台管理单元（“系统工具”>“本地用户和组”>“组”>“远程桌面用户”****）。
+确保用于连接的帐户具有远程桌面登录权限。 解决方法是使用域管理员或本地管理员帐户通过远程桌面建立连接。 若要将所需帐户添加到远程桌面用户本地组，请使用 Microsoft 管理控制台管理单元（“系统工具”>“本地用户和组”>“组”>“远程桌面用户”  ）。
 
 ## <a name="next-steps"></a>后续步骤
 如果没有发生这些错误，但在使用 RDP 连接时出现未知问题，请参阅[远程桌面故障排除指南](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。

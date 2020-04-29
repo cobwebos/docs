@@ -1,5 +1,5 @@
 ---
-title: StorSimple 虚拟阵列的门户准备
+title: 为 StorSimple 虚拟阵列准备门户
 description: 此为部署 StorSimple 虚拟阵列的第一个教程，介绍如何准备 Azure 门户
 author: alkohli
 ms.assetid: 68a4cfd3-94c9-46cb-805c-46217290ce02
@@ -9,10 +9,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7f2c7a6f9c1146627f81dc20386c59a91724b245
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79254529"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>部署 StorSimple 虚拟阵列 - 准备 Azure 门户
@@ -40,7 +40,7 @@ ms.locfileid: "79254529"
 | **#** | **此步骤的内容** | **执行此操作...** | **并使用这些文档。** |
 | --- | --- | --- | --- |
 | 1. |**设置 Azure 门户** |在预配 StorSimple 虚拟阵列之前创建和配置 StorSimple Device Manager 服务。 |[准备门户](storsimple-virtual-array-deploy1-portal-prep.md) |
-| 2. |**预配虚拟阵列** |对于 Hyper-V，可在主机系统上预配和连接 StorSimple 虚拟阵列，该主机系统在 Windows Server 2012 R2、Windows Server 2012 或 Windows Server 2008 R2 上运行 Hyper-V。 <br></br> <br></br> 对于 VMware，可在运行 VMware ESXi 5.0、5.5、6.0 或 6.5 的主机系统上预配和连接 StorSimple 虚拟阵列。<br></br> |[在 Hyper-V 中预配虚拟阵列](storsimple-virtual-array-deploy2-provision-hyperv.md) <br></br> <br></br> [在 VMware 中预配虚拟阵列](storsimple-virtual-array-deploy2-provision-vmware.md) |
+| 2. |**预配虚拟阵列** |对于 Hyper-V，可在主机系统上预配和连接 StorSimple 虚拟阵列，该主机系统在 Windows Server 2012 R2、Windows Server 2012 或 Windows Server 2008 R2 上运行 Hyper-V。 <br></br> <br></br> 对于 VMware，可在运行 VMware ESXi 5.0、5.5、6.0 或 6.5 的主机系统上预配和连接 StorSimple 虚拟阵列。<br></br> |[在 Hyper-v 中预配虚拟阵列](storsimple-virtual-array-deploy2-provision-hyperv.md) <br></br> <br></br> [在 VMware 中预配虚拟阵列](storsimple-virtual-array-deploy2-provision-vmware.md) |
 | 3. |**设置虚拟阵列** |对于文件服务器，请执行初始设置、注册 StorSimple 文件服务器并完成设备设置。 然后即可预配 SMB 共享。 <br></br> <br></br> 对于 iSCSI 服务器，请执行初始设置、注册 StorSimple iSCSI 服务器并完成设备设置。 然后即可预配 iSCSI 卷。 |[将虚拟阵列设置为文件服务器](storsimple-virtual-array-deploy3-fs-setup.md)<br></br> <br></br>[将虚拟阵列设置为 iSCSI 服务器](storsimple-virtual-array-deploy3-iscsi-setup.md) |
 
 现在可以开始设置 Azure 门户。
@@ -52,7 +52,7 @@ ms.locfileid: "79254529"
 * 下载 [StorSimple 虚拟阵列文件服务器配置清单](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf)。
 * 下载 [StorSimple 虚拟阵列 iSCSI 服务器配置清单](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 下面是 StorSimple Device Manager 服务、StorSimple 虚拟阵列以及数据中心网络的配置先决条件。
 
@@ -127,7 +127,7 @@ StorSimple Device Manager 服务的单个实例可以管理多个 StorSimple 虚
 
 #### <a name="to-get-the-virtual-array-image"></a>获取虚拟阵列映像
 
-1. 登录到[Azure 门户](https://portal.azure.com/)。 
+1. 登录 [Azure 门户](https://portal.azure.com/)。 
 2. 在 Azure 门户中，单击“浏览”>“StorSimple Device Manager”****。
 3. 选择现有的 StorSimple Device Manager 服务。 在“StorSimple Device Manager”**** 边栏选项卡中，单击“快速启动”****。 
 4. 单击需要从 Microsoft 下载中心下载的映像的相应链接。 映像文件约为 4.8 GB。
@@ -149,7 +149,7 @@ StorSimple Device Manager 服务的单个实例可以管理多个 StorSimple 虚
 
 1. 导航到 Device Manager 服务，选择并双击它。 这会打开“概述”**** 边栏选项卡。
 2. 在“配置”**** 部分中，选择“存储帐户凭据”****。
-3. 单击 **“添加”**。
+3. 单击“添加”  。
 4. 在“添加存储帐户”**** 边栏选项卡中，执行以下操作：
    
    1. 对于“订阅”****，选择“当前”****。
@@ -158,11 +158,11 @@ StorSimple Device Manager 服务的单个实例可以管理多个 StorSimple 虚
    
    3. 选择“启用”，创建用于在 StorSimple 设备和云之间传输网络通信的安全通道。**** 仅当要在私有云中操作时，才选择“禁用”****。
    
-   4. 单击 **“添加”**。 成功创建存储帐户后，将收到通知。<br></br>
+   4. 单击“添加”  。 成功创建存储帐户后，将收到通知。<br></br>
    
       ![添加现有的存储帐户凭据](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 
-## <a name="next-step"></a>后续步骤
+## <a name="next-step"></a>下一步
 
 下一步是针对 StorSimple 虚拟阵列预配虚拟机。 根据主机操作系统参阅以下操作的详细说明：
 

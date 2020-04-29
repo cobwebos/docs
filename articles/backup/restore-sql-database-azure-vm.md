@@ -4,10 +4,10 @@ description: 本文介绍如何还原 Azure VM 上运行的、使用 Azure 备�
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.openlocfilehash: 642476c98ca223da01bda5c6eb79ee9b53732468
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79252449"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>还原 Azure VM 上的 SQL Server 数据库
@@ -31,7 +31,7 @@ Azure 备份可以还原 Azure VM 上运行的 SQL Server 数据库，如下所�
 - 目标服务器必须注册到与源服务器相同的保管库。
 - 若要将 TDE 加密的数据库还原到另一个 SQL Server，需先[将证书还原到目标服务器](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server?view=sql-server-2017)。
 - 在还原“master”数据库之前，请使用启动选项 **-m AzureWorkloadBackup** 在单用户模式下启动 SQL Server 实例。
-  - **-m**的值是客户端的名称。
+  - **-m** 的值是客户端的名称。
   - 只能使用指定的客户端名称打开连接。
 - 对于所有系统数据库（模型数据库、master 数据库、msdb 数据库），请在触发还原操作之前停止 SQL Server 代理服务。
 - 关闭任何可能尝试与其中任何数据库建立连接的应用程序。
@@ -41,7 +41,7 @@ Azure 备份可以还原 Azure VM 上运行的 SQL Server 数据库，如下所�
 
 若要进行还原，需要以下权限：
 
-- 在其中执行还原的保管库中的“备份操作员”权限。****
+- 在其中执行还原的保管库中的“备份操作员”权限。 
 - 对已备份的源 VM 的**参与者（写入）** 访问权限。
 - 对目标 VM 的**参与者（写入）** 访问权限：
   - 若要还原到同一 VM，则此项将是源 VM。
@@ -50,8 +50,8 @@ Azure 备份可以还原 Azure VM 上运行的 SQL Server 数据库，如下所�
 按如下所述进行还原：
 
 1. 打开在其中注册 SQL Server VM 的保管库。
-2. 在保管库仪表板的“使用情况”下，选择“备份项”********。
-3. 在“备份项”中的“备份管理类型”下，选择“Azure VM 中的 SQL”。************
+2. 在保管库仪表板的“使用情况”下，选择“备份项”   。
+3. 在“备份项”中的“备份管理类型”下，选择“Azure VM 中的 SQL”。   
 
     ![选择“Azure VM 中 SQL”](./media/backup-azure-sql-database/sql-restore-backup-items.png)
 
@@ -64,63 +64,63 @@ Azure 备份可以还原 Azure VM 上运行的 SQL Server 数据库，如下所�
     - 最旧和最新的还原点。
     - 处于完整和批量日志记录恢复模式的、且已配置事务日志备份的数据库在过去 24 小时的日志备份状态。
 
-6. 选择“还原”。****
+6. 选择“还原”。 
 
     ![选择“还原”](./media/backup-azure-sql-database/restore-db.png)
 
-7. 在“还原配置”中，指定要将数据还原到何处（或如何还原）：****
-   - **备用位置**：将数据库还原到备用位置并保留原始源数据库。
-   - **覆盖数据库**：将数据还原到原始源所在的同一 SQL Server 实例。 此选项会覆盖原始数据库。
+7. 在“还原配置”中，指定要将数据还原到何处（或如何还原）： 
+   - **备用位置**：将数据库还原到备用位置，同时保留原始源数据库。
+   - **覆盖 DB**：将数据还原到原始源所在的同一 SQL Server 实例。 此选项将覆盖原始数据库。
 
     > [!IMPORTANT]
-    > 如果选定的数据库属于 Always On 可用性组，则 SQL Server 不允许覆盖数据库。 仅“备用位置”可用。****
+    > 如果选定的数据库属于 Always On 可用性组，则 SQL Server 不允许覆盖数据库。 仅“备用位置”可用。 
     >
-   - **还原为文件**：而不是作为数据库还原，而是还原备份文件，这些文件稍后可以在任何存在文件的计算机上使用 SQL Server 管理工作室作为数据库恢复。
+   - **作为文件还原**：不是作为数据库还原，而是以后使用 SQL Server Management Studio 在包含备份文件的计算机上，还原可作为数据库恢复的备份文件。
      ![“还原配置”菜单](./media/backup-azure-sql-database/restore-configuration.png)
 
 ### <a name="restore-to-an-alternate-location"></a>还原到备用位置
 
-1. 在 **"还原配置"** 菜单中，在 **"还原位置"** 下，选择 **"备用位置**"。
+1. 在“还原配置”菜单中的“还原位置”下，选择“备用位置”。   
 2. 选择要将数据库还原到其中的 SQL Server 名称和实例。
-3. 在“还原数据库名称”框中，输入目标数据库的名称。****
-4. 如果适用，请选择“当选定的 SQL 实例上已存在同名的 DB 时覆盖”。****
-5. 选择“确定”。
+3. 在“还原数据库名称”框中，输入目标数据库的名称。 
+4. 如果适用，请选择“当选定的 SQL 实例上已存在同名的 DB 时覆盖”。 
+5. 选择“确定”  。
 
     ![为“还原配置”菜单提供值](./media/backup-azure-sql-database/restore-configuration.png)
 
-6. 在 **"选择还原点"** 中，选择是[还原到特定时间点](#restore-to-a-specific-point-in-time)还是[还原到特定恢复点](#restore-to-a-specific-restore-point)。
+6. 在“选择还原点”中，选择是要[还原到特定的时间点](#restore-to-a-specific-point-in-time)，还是[还原到特定的恢复点](#restore-to-a-specific-restore-point)。 
 
     > [!NOTE]
     > 时间点还原仅适用于采用完整和批量日志记录恢复模式的数据库日志备份。
 
 ### <a name="restore-and-overwrite"></a>还原并覆盖
 
-1. 在 **"还原配置"** 菜单中，在 **"还原位置"** 下，选择 **"覆盖 DB** > **确定**"。
+1. 在“还原配置”菜单中的“还原位置”下，选择“覆盖数据库” > “确定”。    
 
     ![选择“覆盖数据库”](./media/backup-azure-sql-database/restore-configuration-overwrite-db.png)
 
-2. 在“选择还原点”中选择“日志(时间点)”，以[还原到特定的时间点](#restore-to-a-specific-point-in-time)。******** 或者选择“完整和差异”以还原到[特定的恢复点](#restore-to-a-specific-restore-point)。****
+2. 在“选择还原点”中选择“日志(时间点)”，以[还原到特定的时间点](#restore-to-a-specific-point-in-time)。   或者选择“完整和差异”以还原到[特定的恢复点](#restore-to-a-specific-restore-point)。 
 
     > [!NOTE]
     > 时间点还原仅适用于采用完整和批量日志记录恢复模式的数据库日志备份。
 
 ### <a name="restore-as-files"></a>作为文件还原
 
-若要将备份数据作为 .bak 文件而不是数据库还原，请选择“作为文件还原”。**** 将文件转储到指定的路径后，可将这些文件放在要将其作为数据库还原到的任何计算机上。 由于可将这些文件移到任何计算机，因此现在可以跨订阅和区域还原数据。
+若要将备份数据作为 .bak 文件而不是数据库还原，请选择“作为文件还原”。  将文件转储到指定的路径后，可将这些文件放在要将其作为数据库还原到的任何计算机上。 由于可将这些文件移到任何计算机，因此现在可以跨订阅和区域还原数据。
 
-1. 在“还原配置”菜单中的“还原位置”下，选择“作为文件还原”。************
+1. 在“还原配置”菜单中的“还原位置”下，选择“作为文件还原”。   
 2. 选择要将备份还原到的 SQL Server 名称。
-3. 在“服务器上的目标路径”中，输入在步骤 2 中选择的服务器上的文件夹路径。**** 此位置是服务要将全部所需备份文件转储到的位置。 通常，将网络共享路径或已装载的 Azure 文件共享的路径指定为目标路径，可让同一网络中的其他计算机或者装载了相同 Azure 文件共享的计算机更轻松地访问这些文件。<BR>
+3. 在“服务器上的目标路径”中，输入在步骤 2 中选择的服务器上的文件夹路径。  此位置是服务要将全部所需备份文件转储到的位置。 通常，将网络共享路径或已装载的 Azure 文件共享的路径指定为目标路径，可让同一网络中的其他计算机或者装载了相同 Azure 文件共享的计算机更轻松地访问这些文件。<BR>
 
-    >要还原安装在目标已注册 VM 上的 Azure 文件共享上的数据库备份文件，请确保 NT AUTHORITY_SYSTEM 有权访问文件共享。 您可以执行以下步骤，向安装在 VM 上的 AFS 授予读取/写入权限：
+    >若要将数据库备份文件还原到安装在目标注册 VM 上的 Azure 文件共享上，请确保 NT AUTHORITY\SYSTEM 有权访问该文件共享。 你可以执行以下步骤来向 VM 上装载的 AFS 授予读取/写入权限：
     >
-    >- 运行`PsExec -s cmd`以进入 NT 授权_SYSTEM 外壳
+    >- 运行`PsExec -s cmd`以进入 NT AUTHORITY\SYSTEM shell
     >   - 执行 `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>`
-    >   - 使用`dir \\<storageacct>.file.core.windows.net\<filesharename>`
-    >- 将还原作为文件从备份保管库启动为`\\<storageacct>.file.core.windows.net\<filesharename>`路径<BR>
-    您可以通过下载 Psexec<https://docs.microsoft.com/sysinternals/downloads/psexec>
+    >   - 使用验证访问`dir \\<storageacct>.file.core.windows.net\<filesharename>`
+    >- 将备份保管库中的文件作为路径进行`\\<storageacct>.file.core.windows.net\<filesharename>`还原<BR>
+    可以通过下载 Psexec<https://docs.microsoft.com/sysinternals/downloads/psexec>
 
-4. 选择“确定”。
+4. 选择“确定”  。
 
     ![选择“作为文件还原”](./media/backup-azure-sql-database/restore-as-files.png)
 
@@ -142,13 +142,13 @@ Azure 备份可以还原 Azure VM 上运行的 SQL Server 数据库，如下所�
     ![打开日历](./media/backup-azure-sql-database/recovery-point-logs-calendar.png)
 
 1. 选择日期后，时间线图会显示连续范围内的可用恢复点。
-1. 在时间线图表中指定恢复时间，或选择一个时间。 然后选择 **"确定**"。
+1. 在时间线图表中指定恢复时间，或选择一个时间。 然后选择“确定”  。
 
     ![选择还原点](./media/backup-azure-sql-database/recovery-point-logs-graph.png)
 
-1. 在 **"高级配置"** 菜单上，如果要在还原后保持数据库不运行，请**启用"使用 NORECOVERY 还原**"。
+1. 在 "**高级配置**" 菜单上，如果要在还原后保留数据库 nonoperational，请启用 "**使用 NORECOVERY 还原**"。
 1. 若要更改目标服务器上的还原位置，请输入新的目标路径。
-1. 选择“确定”。
+1. 选择“确定”  。
 
     ![高级配置菜单](./media/backup-azure-sql-database/restore-point-advanced-configuration.png)
 
@@ -166,11 +166,11 @@ Azure 备份可以还原 Azure VM 上运行的 SQL Server 数据库，如下所�
     ![选择完整恢复点](./media/backup-azure-sql-database/choose-fd-recovery-point.png)
 
     >[!NOTE]
-    > 默认情况下，将显示过去 30 天的恢复点。 您可以通过单击 **"筛选"** 并选择自定义范围来显示超过 30 天的恢复点。
+    > 默认情况下，将显示过去30天内的恢复点。 可以通过单击 "**筛选器**" 并选择自定义范围来显示30天之前的恢复点。
 
-1. 在 **"高级配置"** 菜单上，如果要在还原后保持数据库不运行，请**启用"使用 NORECOVERY 还原**"。
+1. 在 "**高级配置**" 菜单上，如果要在还原后保留数据库 nonoperational，请启用 "**使用 NORECOVERY 还原**"。
 1. 若要更改目标服务器上的还原位置，请输入新的目标路径。
-1. 选择“确定”。
+1. 选择“确定”  。
 
     ![高级配置菜单](./media/backup-azure-sql-database/restore-point-advanced-configuration.png)
 

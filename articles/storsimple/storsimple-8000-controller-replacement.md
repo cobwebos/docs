@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: dd2f6fcc9b2f5d716566e91e89487969613d1005
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79267919"
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>更换 StorSimple 设备上的控制器模块
@@ -62,7 +62,7 @@ ms.locfileid: "79267919"
 当 Microsoft Azure StorSimple 设备上的两个控制器之一发生故障、工作异常或缺失时，需要更换一个控制器。
 
 ### <a name="single-controller-replacement-logic"></a>单控制器更换逻辑
-在单控制器更换过程中，首先应拆下有故障的控制器。 （设备中的剩余控制器是活动控制器。插入更换控制器时，将执行以下操作：
+在单控制器更换过程中，首先应拆下有故障的控制器。 （设备中的剩余控制器是活动控制器。）插入替换控制器时，将发生下列操作：
 
 1. 用于更换的控制器立即开始与 StorSimple 设备通信。
 2. 在用于更换的控制器上复制活动控制器的虚拟硬盘 (VHD) 快照。
@@ -90,7 +90,7 @@ ms.locfileid: "79267919"
    
     **图 1** StorSimple 设备的背面
    
-   | Label | 描述 |
+   | Label | 说明 |
    |:--- |:--- |
    | 1 |PCM 0 |
    | 2 |PCM 1 |
@@ -195,7 +195,7 @@ ms.locfileid: "79267919"
    > [!NOTE]
    > 控制器和 LED 激活最长可能需要 5 分钟时间。
   
-5. 要验证替换是否成功，在 Azure 门户中，转到设备，然后导航到**监视器** > **硬件运行状况**，并确保控制器 0 和控制器 1 都正常（状态为绿色）。
+5. 若要验证更换是否成功，请在 Azure 门户中，转到你的设备，然后导航到 "**监视** > **硬件运行状况**"，并确保 "控制器 0" 和 "控制器 1" 运行正常（状态为绿色）。
 
 ## <a name="identify-the-active-controller-on-your-device"></a>识别设备的活动控制器
 在很多情况下（例如，首次注册设备或更换控制器时），需要在 StorSimple 设备中找到活动控制器。 活动控制器处理所有磁盘固件和联网操作。 可以使用以下方法识别活动控制器：
@@ -207,7 +207,7 @@ ms.locfileid: "79267919"
 下面介绍了其中的每个过程。
 
 ### <a name="use-the-azure-portal-to-identify-the-active-controller"></a>使用 Azure 门户识别活动控制器
-在 Azure 门户中，导航到设备，然后**监视** > **硬件运行状况**，然后滚动到 **"控制器"** 部分。 可以在此处确认哪个控制器处于活动状态。
+在 Azure 门户中，导航到你的 > **设备，** 然后**滚动到 "****控制器**" 部分。 可以在此处确认哪个控制器处于活动状态。
 
 ![在 Azure 门户中识别活动控制器](./media/storsimple-controller-replacement/IC752072.png)
 
@@ -231,7 +231,7 @@ ms.locfileid: "79267919"
 
 **图 8** 带有数据端口和监控 LED 的主机箱的背面
 
-| Label | 描述 |
+| Label | 说明 |
 |:--- |:--- |
 | 1-6 |DATA 0 – 5 网络端口 |
 | 7 |蓝色 LED |

@@ -9,10 +9,10 @@ ms.date: 12/13/2018
 ms.author: gwallace
 ms.custom: include file
 ms.openlocfilehash: d700dfcf5a7b6e9ada2a755335689ffa571e4c3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80334612"
 ---
 #### <a name="process-automation"></a>流程自动化
@@ -43,20 +43,20 @@ ms.locfileid: "80334612"
 
 #### <a name="change-tracking-and-inventory"></a>更改跟踪和库存
 
-下表显示了每台计算机用于更改跟踪的跟踪物料限制。
+下表显示了每台计算机用于更改跟踪的跟踪项限制。
 
 | **资源** | **限制**| **说明** |
 |---|---|---|
 |文件|500||
 |注册表|250||
 |Windows 软件|250|不包括软件更新。|
-|Linux 包|1,250||
-|Services|250||
+|Linux 包|1250||
+|服务|250||
 |守护程序|250||
 
 #### <a name="update-management"></a>更新管理
 
-下表显示了更新管理的限制。
+下表显示更新管理的限制。
 
 | **资源** | **限制**| **说明** |
 |---|---|---|

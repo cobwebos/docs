@@ -4,22 +4,22 @@ description: 保留和隐私政策声明
 ms.topic: conceptual
 ms.date: 09/29/2019
 ms.openlocfilehash: 30878eecf795c85713b9f09b8325b326416022b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79275992"
 ---
-# <a name="data-collection-retention-and-storage-in-application-insights"></a>应用程序见解中的数据收集、保留和存储
+# <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights 中的数据收集、保留和存储
 
 在应用中安装 [Azure Application Insights][start] SDK 后，它会将有关应用的遥测数据发送到云中。 负责的开发人员自然想要确切了解发送了哪些数据、数据的后续情况，以及如何控制数据。 具体而言，是否发送了敏感数据？数据存储在何处？其安全性怎样？ 
 
 首先，简短的答案是：
 
 * “按原样”运行的标准遥测模块不太可能将敏感数据发送到服务。 遥测考虑到负载、性能和使用指标、异常报告和其他诊断数据。 诊断报告中显示的主要用户数据是 URL；但是，应用在任何情况下都不应该将敏感数据以明文形式放在 URL 中。
-* 可以编写发送其他自定义遥测数据的代码，帮助进行诊断与监视使用情况。 （此可扩展性是应用程序见解的一大功能。错误地编写此代码，以便包含个人和其他敏感数据是可能的。 如果应用程序使用此类数据，则应对编写的所有代码应用彻底的审阅过程。
+* 可以编写发送其他自定义遥测数据的代码，帮助进行诊断与监视使用情况。 （这种可扩展性是 Application Insights 的突出特性之一）。在编写此代码时，有可能不小心包含个人数据和其他敏感数据。 如果应用程序使用此类数据，则应对编写的所有代码进行彻底评审。
 * 开发和测试应用时，可以轻松检查 SDK 发送的内容。 数据会显示在 IDE 和浏览器的调试输出窗口中。 
-* 数据保存在美国的 [Microsoft Azure](https://azure.com) 服务器中。 （但你的应用可以在任何地方运行。Azure[具有强大的安全流程，并满足广泛的合规性标准](https://azure.microsoft.com/support/trust-center/)。 只有你和指定的团队可以访问数据。 Microsoft 工作人员只会在知情的情况下和受限的具体情况下，才对数据拥有受限的访问权限。 将对传输中的静态数据加密。
+* 数据保存在美国的 [Microsoft Azure](https://azure.com) 服务器中。 （但应用可在任何位置运行）。Azure 有[严格的安全过程，并符合各种法规标准](https://azure.microsoft.com/support/trust-center/)。 只有你和指定的团队可以访问数据。 Microsoft 工作人员只会在知情的情况下和受限的具体情况下，才对数据拥有受限的访问权限。 将对传输中的静态数据加密。
 *   检查收集的数据，因为这可能包括在某些情况下允许但在其他情况下不允许的数据。  设备名称就是一个很好的例子。 服务器中的设备名称不会对隐私造成影响，而且很有用，但是电话或笔记本电脑中的设备名称可能会对隐私造成影响，而且用处不大。 主要针对目标服务器开发的 SDK 将在默认情况下收集设备名称，该名称可能需要在正常事件和异常中被被覆盖。
 
 本文的余下部分详细阐述上述答案。 本文的内容简单直白，因此，可以将其转达给不属于直属团队的同事。
@@ -27,7 +27,7 @@ ms.locfileid: "79275992"
 ## <a name="what-is-application-insights"></a>什么是 Application Insights？
 [Azure Application Insights][start] 是 Microsoft 提供的一项服务，可帮助改进实时应用程序的性能和可用性。 它在应用程序运行时全程进行监视，包括测试期间以及发布或部署之后。 Application Insights 可创建图表和表格来显示多种信息，例如，一天中的哪些时间用户最多、应用的响应能力如何，以及应用依赖的任何外部服务是否顺利地为其提供服务。 如果出现崩溃、故障或性能问题，可以搜索详细的遥测数据来诊断原因。 此外，如果应用的可用性和性能有任何变化，服务会向你发送电子邮件。
 
-要获取此功能，需在应用程序中安装 Application Insights SDK，该 SDK 将成为应用程序代码的一部分。 当应用运行时，SDK 将监视其操作，并将遥测发送到 Application Insights 服务。 这是 [Microsoft Azure](https://azure.com) 托管的云服务。 （但应用程序见解适用于任何应用程序，而不仅仅是托管在 Azure 中的应用程序。
+要获取此功能，需在应用程序中安装 Application Insights SDK，该 SDK 将成为应用程序代码的一部分。 当应用运行时，SDK 将监视其操作，并将遥测发送到 Application Insights 服务。 这是 [Microsoft Azure](https://azure.com) 托管的云服务。 （但 Application Insights 适用于任何应用程序，而不只是托管在 Azure 中的应用程序。）
 
 Application Insights 服务存储并分析遥测数据。 若要查看分析或搜索已存储的遥测数据，可以登录到 Azure 帐户并打开应用程序的 Application Insights 资源。 还可以与团队的其他成员或指定的 Azure 订户共享数据访问权限。
 
@@ -38,7 +38,7 @@ Application Insights SDK 可用于多种应用程序类型：托管在自己的 
 ## <a name="what-data-does-it-collect"></a>它收集哪些数据？
 有三种数据源：
 
-* SDK。可以[在开发阶段](../../azure-monitor/app/asp-net.md)或者[在运行时](../../azure-monitor/app/monitor-performance-live-website-now.md)将它与应用集成。 不同类型的应用程序有不同的 SDK。 还有一个[用于网页的 SDK，](../../azure-monitor/app/javascript.md)该 SDK 与页面一起加载到最终用户的浏览器中。
+* SDK。可以[在开发阶段](../../azure-monitor/app/asp-net.md)或者[在运行时](../../azure-monitor/app/monitor-performance-live-website-now.md)将它与应用集成。 不同类型的应用程序有不同的 SDK。 还有一个网页[SDK](../../azure-monitor/app/javascript.md)，它与页面一起加载到最终用户的浏览器中。
   
   * 每个 SDK 有许多[模块](../../azure-monitor/app/configuration-with-applicationinsights-config.md)，这些模块使用不同的技术收集不同类型的遥测数据。
   * 如果在开发环境中安装 SDK，则除了使用标准模块发送自己的遥测数据以外，还可以使用 SDK 的 API 发送这些数据。 这些自定义遥测数据可以包含所要发送的任何数据。
@@ -48,7 +48,7 @@ Application Insights SDK 可用于多种应用程序类型：托管在自己的 
 ### <a name="what-kinds-of-data-are-collected"></a>收集哪些类型的数据？
 主要类别如下：
 
-* [Web 服务器遥测数据](../../azure-monitor/app/asp-net.md) - HTTP 请求。  URI、处理请求花费的时间、响应代码、客户端 IP 地址。 `Session id`.
+* [Web 服务器遥测数据](../../azure-monitor/app/asp-net.md) - HTTP 请求。  URI、处理请求花费的时间、响应代码、客户端 IP 地址。 `Session id`。
 * [网页](../../azure-monitor/app/javascript.md) - 页面、用户和会话计数。 页面加载时间。 异常。 Ajax 调用。
 * 性能计数器 - 内存、CPU、IO、网络占用量。
 * 客户端和服务器上下文 - OS、区域性、设备类型、浏览器和屏幕分辨率。
@@ -80,7 +80,7 @@ Application Insights SDK 可用于多种应用程序类型：托管在自己的 
 
 1 分钟粒度的聚合数据（即，在指标资源管理器中显示的计数、平均值和其他统计信息）可保留 90 天。
 
-[调试快照](../../azure-monitor/app/snapshot-debugger.md)存储 15 天。 此保留策略是逐个应用程序进行设置。 如果需要，可以在 Azure 门户中打开支持案例，以请求增加此值。
+[调试快照](../../azure-monitor/app/snapshot-debugger.md)将存储 15 天。 此保留策略是逐个应用程序进行设置。 如果需要，可以在 Azure 门户中打开支持案例，以请求增加此值。
 
 ## <a name="who-can-access-the-data"></a>谁可以访问该数据？
 你和团队成员（如果使用组织帐户）可以看到数据。 
@@ -91,15 +91,15 @@ Application Insights SDK 可用于多种应用程序类型：托管在自己的 
 Microsoft 只使用这些数据来向你提供服务。
 
 ## <a name="where-is-the-data-held"></a>数据保存在哪个位置？
-* 创建新的 Application Insights 资源时，可以选择存储位置。 在此处了解有关每个区域的应用程序见解可用性[的更多信息](https://azure.microsoft.com/global-infrastructure/services/?products=all)。
+* 创建新的 Application Insights 资源时，可以选择存储位置。 [在此处](https://azure.microsoft.com/global-infrastructure/services/?products=all)了解有关每个区域 Application Insights 可用性的详细信息。
 
-#### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>这是否意味着我的应用程序必须在美国、欧洲或东南亚托管？
-* 不是。 应用程序可在任何位置运行，不管是在自己的本地主机中还是云中。
+#### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>这是否意味着应用必须托管在美国、欧洲或东南亚？
+* 否。 应用程序可在任何位置运行，不管是在自己的本地主机中还是云中。
 
 ## <a name="how-secure-is-my-data"></a>数据的安全性如何？
 Application Insights 是一项 Azure 服务。 [Azure Security, Privacy, and Compliance white paper](https://go.microsoft.com/fwlink/?linkid=392408)（Azure 安全性、隐私性和遵从性白皮书）中介绍了安全政策。
 
-数据存储在 Microsoft Azure 服务器中。 对于 Azure 门户中的帐户，帐户限制在[Azure 安全、隐私和合规性文档中](https://go.microsoft.com/fwlink/?linkid=392408)描述。
+数据存储在 Microsoft Azure 服务器中。 对于 Azure 门户中的帐户， [Azure 安全性、隐私和合规性文档](https://go.microsoft.com/fwlink/?linkid=392408)中介绍了帐户限制。
 
 Microsoft 工作人员对数据的访问将受到限制。 我们只有在获得许可以及为了帮助你使用 Application Insights 而有必要访问时才访问数据。 
 
@@ -122,7 +122,7 @@ Microsoft 工作人员对数据的访问将受到限制。 我们只有在获得
 
 利用本地存储的遥测通道会在 TEMP 或 APPDATA 目录中创建临时文件，但仅限于运行应用程序的特定帐户。 当终结点暂时不可用或达到限制值时，可能会发生这种情况。 解决此问题后，遥测通道便会恢复发送所有新数据和暂留数据。
 
-此持久数据不会在本地加密。 如果这是一个问题，请检查数据并限制私人数据的收集。 （有关详细信息，请参阅[如何导出和删除私有数据](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data)。
+此持久数据不会在本地加密。 如果这是一个问题，请检查数据并限制私人数据的收集。 （有关详细信息，请参阅[如何导出和删除私有数据](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data)。）
 
 如果客户需要根据特定安全要求配置此目录，可以针对每个框架进行配置。 请确保运行应用程序的进程对此目录拥有写入权限，并确保此目录受保护，以免遥测数据遭用户意外读取。
 
@@ -155,7 +155,7 @@ Microsoft 工作人员对数据的访问将受到限制。 我们只有在获得
 
 ### <a name="netcore"></a>NetCore
 
-默认情况下，`ServerTelemetryChannel` 使用当前用户的本地应用数据文件夹 `%localAppData%\Microsoft\ApplicationInsights` 或临时文件夹 `%TMP%`。 （请参阅此处[的实现](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84)。在 Linux 环境中，除非指定存储文件夹，否则将禁用本地存储。
+默认情况下，`ServerTelemetryChannel` 使用当前用户的本地应用数据文件夹 `%localAppData%\Microsoft\ApplicationInsights` 或临时文件夹 `%TMP%`。 （请参阅此处的[实现](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84)。）在 Linux 环境中，除非指定了存储文件夹，否则将禁用本地存储。
 
 下面的代码片段展示了如何在 `Startup.cs` 类的 `ConfigureServices()` 方法中设置 `ServerTelemetryChannel.StorageFolder`：
 
@@ -171,17 +171,17 @@ services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {
 
 可更改 [Sender.ts](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384) 中的静态变量 `Sender.TEMPDIR_PREFIX` 的运行时值，以替代文件夹前缀 `appInsights-node`。
 
-### <a name="javascript-browser"></a>JavaScript（浏览器）
+### <a name="javascript-browser"></a>JavaScript （浏览器）
 
-[HTML5 会话存储](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)用于保留数据。 使用两个单独的缓冲区：`AI_buffer`和`AI_sent_buffer`。 批处理并等待发送的遥测存储在 中`AI_buffer`。 刚刚发送的遥测数据将放在其中`AI_sent_buffer`，直到引入服务器响应已成功接收它。 成功接收遥测时，将从所有缓冲区中删除它。 在瞬态故障（例如，用户失去网络连接）时，遥测将保持在`AI_buffer`中，直到成功接收数据或引入服务器响应遥测无效（例如，架构错误或太旧）。
+[HTML5 会话存储](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)用于持久保存数据。 使用两个单独的缓冲区`AI_buffer` ： `AI_sent_buffer`和。 批处理并等待发送的遥测数据存储在中`AI_buffer`。 刚刚发送的遥测数据将放入`AI_sent_buffer` ，直到引入服务器响应已成功接收。 成功接收遥测后，将从所有缓冲区中删除遥测数据。 发生暂时性故障（例如，用户失去网络连接）时，遥测数据将一直`AI_buffer`保留到成功接收，或引入服务器响应遥测无效（例如，架构错误或过旧）。
 
-可以通过设置为[`enableSessionStorageBuffer`](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/JavaScript/JavaScriptSDK.Interfaces/IConfig.ts#L31)来禁用遥测缓冲区`false`。 关闭会话存储时，本地阵列将用作持久存储。 由于 JavaScript SDK 在客户端设备上运行，因此用户可以通过其浏览器的开发人员工具访问此存储位置。
+可以通过将设置[`enableSessionStorageBuffer`](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/JavaScript/JavaScriptSDK.Interfaces/IConfig.ts#L31)为来`false`禁用遥测缓冲区。 关闭会话存储时，会将本地阵列改为用作永久性存储。 由于 JavaScript SDK 在客户端设备上运行，因此用户可以通过浏览器的开发人员工具访问此存储位置。
 
-### <a name="opencensus-python"></a>打开 Census Python
+### <a name="opencensus-python"></a>OpenCensus Python
 
-默认情况下，OpenCensus Python SDK 使用当前`%username%/.opencensus/.azure/`用户文件夹 。 只有当前用户和管理员，才有权访问此文件夹。 （请参阅此处[的实现](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/storage.py)。具有持久数据的文件夹将以生成遥测的 Python 文件命名。
+默认情况下，OpenCensus Python SDK 使用当前用户`%username%/.opencensus/.azure/`文件夹。 只有当前用户和管理员，才有权访问此文件夹。 （请参阅此处的[实现](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/storage.py)。）包含持久数据的文件夹将在生成遥测的 Python 文件后命名。
 
-您可以通过传入正在使用的导出器的构造函数中的`storage_path`参数来更改存储文件的位置。
+可以通过传入正在使用的导出程序的构造函数中的`storage_path`参数来更改存储文件的位置。
 
 ```python
 AzureLogHandler(
@@ -204,16 +204,16 @@ AzureLogHandler(
 | --- | --- | --- |
 | Azure 应用服务  | 受支持，可能需要配置。 | 已在 2018 年 4 月宣告支持。 阅读有关[配置详细信息](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)的宣告。  |
 | Azure 函数应用 | 受支持，可能需要配置。 | 已在 2018 年 4 月宣告支持。 阅读有关[配置详细信息](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)的宣告。 |
-|.NET | 受支持，配置因版本而异。 | 有关 .NET 4.7 和早期版本的详细配置信息，请参阅[这些说明](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)。  |
-|状态监视器 | 受支持，需要配置 | 状态监视器依赖于[OS 配置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [.NET 配置](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)来支持 TLS 1.2。
+|.NET | 受支持，配置因版本而异。 | 有关 .NET 4.7 及更早版本的详细配置信息，请参阅[这些说明](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)。  |
+|状态监视器 | 受支持，需要配置 | 状态监视器依赖[OS 配置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [.net 配置](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)来支持 TLS 1.2。
 |Node.js |  受支持，在 v10.5.0 中可能需要配置。 | 使用[官方的 Node.js TLS/SSL 文档](https://nodejs.org/api/tls.html)完成任何特定于应用程序的配置。 |
 |Java | 受支持，[JDK 6 Update 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) 和 [JDK 7](https://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html) 中添加了对 TLS 1.2 的 JDK 支持。 | JDK 8 [默认使用 TLS 1.2](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default)。  |
 |Linux | Linux 分发版往往依赖于 [OpenSSL](https://www.openssl.org) 来提供 TLS 1.2 支持。  | 请检查 [OpenSSL 变更日志](https://www.openssl.org/news/changelog.html)，确认你的 OpenSSL 版本是否受支持。|
 | Windows 8.0 - 10 | 受支持，并且默认已启用。 | 确认是否仍在使用[默认设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)。  |
-| Windows Server 2012 - 2016 | 受支持，并且默认已启用。 | 确认您仍在使用[默认设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
-| Windows 7 SP1 和 Windows Server 2008 R2 SP1 | 受支持，但默认未启用。 | 有关启用方法的详细信息，请参阅[传输层安全性 (TLS) 注册表设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)页。  |
+| Windows Server 2012 - 2016 | 受支持，并且默认已启用。 | 确认你仍在使用[默认设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
+| Windows 7 SP1 和 Windows Server 2008 R2 SP1 | 默认情况下支持但不启用。 | 有关启用方法的详细信息，请参阅[传输层安全性 (TLS) 注册表设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)页。  |
 | Windows Server 2008 SP2 | 对 TLS 1.2 的支持需要更新。 | 请参阅 Windows Server 2008 SP2 中的[更新以添加对 TLS 1.2 的支持](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s)。 |
-|Windows Vista | 不提供支持。 | 空值
+|Windows Vista | 不受支持。 | 空值
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>检查 Linux 分发版正在运行哪个 OpenSSL 版本
 
@@ -241,18 +241,18 @@ openssl s_client -connect bing.com:443 -tls1_2
 但是，可以在应用程序中实现此类功能。 所有 SDK 都包括关闭遥测收集的 API 设置。 
 
 ## <a name="data-sent-by-application-insights"></a>Application Insights 发送的数据
-SDK 根据平台的不同而异，可以安装多个组件。 （请参阅[应用程序见解 - 概述][start]。每个组件发送不同的数据。
+SDK 根据平台的不同而异，可以安装多个组件。 （请参阅[Application Insights-概述][start]。）每个组件都发送不同的数据。
 
 #### <a name="classes-of-data-sent-in-different-scenarios"></a>不同情况下发送的数据类
 
 | 操作 | 收集的数据类（参阅下一表格） |
 | --- | --- |
-| [将 Application Insights SDK 添加到 .NET Web 项目][greenbrown] |ServerContext<br/>推断<br/>性能计数器<br/>Requests<br/>**异常**<br/>会话<br/>users |
+| [将 Application Insights SDK 添加到 .NET Web 项目][greenbrown] |ServerContext<br/>推断<br/>性能计数器<br/>Requests<br/>**异常**<br/>会话<br/>用户 |
 | [在 IIS 上安装状态监视器][redfield] |依赖项<br/>ServerContext<br/>推断<br/>性能计数器 |
-| [将 Application Insights SDK 添加到 Java Web 应用][java] |ServerContext<br/>推断<br/>请求<br/>会话<br/>users |
+| [将 Application Insights SDK 添加到 Java Web 应用][java] |ServerContext<br/>推断<br/>请求<br/>会话<br/>用户 |
 | [将 JavaScript SDK 添加到网页][client] |ClientContext <br/>推断<br/>页<br/>ClientPerf<br/>Ajax |
 | [定义默认属性][apiproperties] |所有标准事件和自定义事件的**属性** |
-| [调用 TrackMetricapi][api] |数值<br/>**属性** |
+| [调用 TrackMetricapi][api] |数字值<br/>**属性** |
 | [调用跟踪*][api] |事件名称<br/>**属性** |
 | [调用 TrackException][api] |**异常**<br/>堆栈转储<br/>**属性** |
 | SDK 无法收集数据。 例如： <br/> - 无法访问性能计数器<br/> - 遥测初始值设定项异常 |SDK 诊断 |
@@ -277,7 +277,7 @@ SDK 根据平台的不同而异，可以安装多个组件。 （请参阅[应�
 | Requests |URL、持续时间、响应代码 |
 | 依赖项 |类型（SQL、HTTP...）、连接字符串或 URI、同步/异步、持续时间、成功结果、SQL 语句（包含状态监视器） |
 | **异常** |类型、**消息**、调用堆栈、源文件、行号、`thread id` |
-| 崩溃 |`Process id`、`parent process id`、`crash thread id`、应用程序修补程序、`id`、版本；异常类型、地址、原因；模糊符号和寄存器、二进制开始和结束地址、二进制文件名和路径、CPU 类型 |
+| 故障 |`Process id`、`parent process id`、`crash thread id`、应用程序修补程序、`id`、版本；异常类型、地址、原因；模糊符号和寄存器、二进制开始和结束地址、二进制文件名和路径、CPU 类型 |
 | 跟踪 |**消息**和严重级别 |
 | 性能计数器 |处理器时间、可用内存、请求速率、异常率、进程专用字节、IO 速率、请求持续期间、请求队列长度 |
 | 可用性 |Web 测试响应代码、每个测试步骤的持续时间、测试名称、时间戳、成功结果、响应时间、测试位置 |
@@ -288,8 +288,8 @@ SDK 根据平台的不同而异，可以安装多个组件。 （请参阅[应�
 > [!NOTE]
 > 客户端 IP 用于推断地理位置，但默认情况下，不再存储 IP 数据且将所有的零写入关联的字段。 若要了解有关个人数据处理的详细信息，推荐参阅这一篇[文章](../../azure-monitor/platform/personal-data-mgmt.md#application-data)。 如果需要存储 IP 地址数据，我们的[“IP 地址收集”一文](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)会指导你完成选择。
 
-## <a name="credits"></a>致谢
-本产品包括 MaxMind 创建的 GeoLite2 数据，[https://www.maxmind.com](https://www.maxmind.com)可从 中获取。
+## <a name="credits"></a>信用
+本产品包括由 MaxMind 创建的 GeoLite2 数据，可[https://www.maxmind.com](https://www.maxmind.com)从获取。
 
 
 

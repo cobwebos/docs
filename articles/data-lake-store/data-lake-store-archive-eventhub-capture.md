@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: bb67c1769510710b368bef4dc0b501f939b3427e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79265657"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>使用 Azure Data Lake Storage Gen1 捕获事件中心的数据
 
 了解如何使用 Azure Data Lake Storage Gen1 捕获 Azure 事件中心收到的数据。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 * **Azure Data Lake Storage Gen1 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)。
 
@@ -37,50 +37,50 @@ ms.locfileid: "79265657"
 
 1. 打开要在其中捕获事件中心的数据的 Data Lake Storage Gen1 帐户，然后单击“数据资源管理器”****。
 
-    ![数据存储湖存储第 1 代数据资源管理器](./media/data-lake-store-archive-eventhub-capture/data-lake-store-open-data-explorer.png "数据存储湖存储第 1 代数据资源管理器")
+    ![Data Lake Storage Gen1 数据资源管理器](./media/data-lake-store-archive-eventhub-capture/data-lake-store-open-data-explorer.png "Data Lake Storage Gen1 数据资源管理器")
 
 1.  单击“新建文件夹”，然后为要在其中捕获数据的文件夹输入名称****。
 
-    ![在数据存储库第 1 代中创建新文件夹](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-new-folder.png "在数据存储库第 1 代中创建新文件夹")
+    ![在 Data Lake Storage Gen1 中创建新文件夹](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-new-folder.png "在 Data Lake Storage Gen1 中创建新文件夹")
 
 1. 分配 Data Lake Storage Gen1 根目录的权限。 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“数据资源管理器”，选择 Data Lake Storage Gen1 帐户的根目录，然后单击“访问”********。
+    a. 单击“数据资源管理器”，选择 Data Lake Storage Gen1 帐户的根目录，然后单击“访问”********。
 
-    ![为数据存储库第 1 代根分配权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "为数据存储库第 1 代根分配权限")
+    ![为 Data Lake Storage Gen1 根分配权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "为 Data Lake Storage Gen1 根分配权限")
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“访问”下，单击“添加”，单击“选择用户或组”，然后搜索 `Microsoft.EventHubs`************。 
+    b. 在“访问”下，单击“添加”，单击“选择用户或组”，然后搜索 `Microsoft.EventHubs`************。 
 
-    ![为数据存储库第 1 代根分配权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "为数据存储库第 1 代根分配权限")
+    ![为 Data Lake Storage Gen1 根分配权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "为 Data Lake Storage Gen1 根分配权限")
     
-    单击“选择”。
+    单击“选择”  。
 
     c. 在“分配权限”下，单击“选择权限”********。 将“权限”设为“执行”********。 将“添加到”设为“此文件夹和所有子文件夹”********。 将“添加为”设为“一个访问权限入口和一个默认权限入口”********。
 
     > [!IMPORTANT]
     > 创建用于捕获 Azure 事件中心接收的数据的新文件夹层次结构时，这是确保可以访问目标文件夹的简便方法。  但是，如果顶层文件夹具有许多子文件和文件夹，则添加对顶层文件夹的所有子代的权限时，可能需要花费很长时间。  如果根文件夹包含大量文件和文件夹，则分别对最终目标文件夹的路径中的每个文件夹添加对 `Microsoft.EventHubs` 的**执行**权限可能更快。 
 
-    ![为数据存储库第 1 代根分配权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "为数据存储库第 1 代根分配权限")
+    ![为 Data Lake Storage Gen1 根分配权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "为 Data Lake Storage Gen1 根分配权限")
 
-    单击“确定”。
+    单击" **确定**"。
 
 1. 为 Data Lake Storage Gen1 帐户下要在其中捕获数据的文件夹分配权限。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 单击“数据资源管理器”，选择 Data Lake Storage Gen1 帐户中的文件夹，然后单击“访问”********。
+    a. 单击“数据资源管理器”，选择 Data Lake Storage Gen1 帐户中的文件夹，然后单击“访问”********。
 
-    ![为数据存储湖存储第 1 代文件夹分配权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "为数据存储湖存储第 1 代文件夹分配权限")
+    ![分配 Data Lake Storage Gen1 文件夹的权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "分配 Data Lake Storage Gen1 文件夹的权限")
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“访问”下，单击“添加”，单击“选择用户或组”，然后搜索 `Microsoft.EventHubs`************。 
+    b. 在“访问”下，单击“添加”，单击“选择用户或组”，然后搜索 `Microsoft.EventHubs`************。 
 
-    ![为数据存储湖存储第 1 代文件夹分配权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "为数据存储湖存储第 1 代文件夹分配权限")
+    ![分配 Data Lake Storage Gen1 文件夹的权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "分配 Data Lake Storage Gen1 文件夹的权限")
     
-    单击“选择”。
+    单击“选择”  。
 
     c. 在“分配权限”下，单击“选择权限”********。 将“权限”设为“读取”、“写入”和“执行”************。 将“添加到”设为“此文件夹和所有子文件夹”********。 最后，将“添加为”设为“一个访问权限入口和一个默认权限入口”********。
 
-    ![为数据存储湖存储第 1 代文件夹分配权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "为数据存储湖存储第 1 代文件夹分配权限")
+    ![分配 Data Lake Storage Gen1 文件夹的权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "分配 Data Lake Storage Gen1 文件夹的权限")
     
-    单击“确定”。 
+    单击" **确定**"。 
 
 ## <a name="configure-event-hubs-to-capture-data-to-data-lake-storage-gen1"></a>配置事件中心，将数据捕获到 Data Lake Storage Gen1
 
@@ -94,23 +94,23 @@ ms.locfileid: "79265657"
 
     ![创建事件中心](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "创建事件中心")
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 为事件中心提供一个名称。
+    a. 为事件中心提供一个名称。
     
-    b.保留“数据库类型”设置，即设置为“共享”。 本教程将“分区计数”和“消息保留期”均设为默认值********。
+    b. 本教程将“分区计数”和“消息保留期”均设为默认值********。
     
     c. 将“捕获”设为“开”********。 设置“时间窗口”（捕获频率）和“大小窗口”（捕获的数据大小）********。 
     
-    d.单击“下一步”。 对于“捕获提供程序”，选择“Azure Data Lake Store”，然后选择之前创建的 Data Lake Storage Gen1 帐户********。 对于“Data Lake 路径”，输入之前在 Data Lake Storage Gen1 帐户中创建的文件夹的名称****。 只需提供文件夹的相对路径。
+    d. 对于“捕获提供程序”，选择“Azure Data Lake Store”，然后选择之前创建的 Data Lake Storage Gen1 帐户********。 对于“Data Lake 路径”，输入之前在 Data Lake Storage Gen1 帐户中创建的文件夹的名称****。 只需提供文件夹的相对路径。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 将“示例捕获文件名格式”保留为默认值****。 此选项用于管理在捕获文件夹下创建的文件夹结构。
+    e. 将“示例捕获文件名格式”保留为默认值****。 此选项用于管理在捕获文件夹下创建的文件夹结构。
 
-    f. 单击 **“创建”**。
+    f. 单击 **“创建”** 。
 
 ## <a name="test-the-setup"></a>测试设置
 
 现可通过向 Azure 事件中心发送数据来测试解决方案。 按照[将事件发送到 Azure 事件中心](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md)中的说明进行操作。 开始发送数据后，可看到数据使用指定的文件夹结构反映在 Data Lake Storage Gen1 中。 例如，在 Data Lake Storage Gen1 帐户中，文件夹结构如以下屏幕截图所示。
 
-![数据存储湖存储第 1 代中的示例事件中心数据](./media/data-lake-store-archive-eventhub-capture/data-lake-store-eventhub-data-sample.png "数据存储湖存储第 1 代中的示例事件中心数据")
+![Data Lake Storage Gen1 中的 EventHub 数据示例](./media/data-lake-store-archive-eventhub-capture/data-lake-store-eventhub-data-sample.png "Data Lake Storage Gen1 中的 EventHub 数据示例")
 
 > [!NOTE]
 > 即使没有消息进入事件中心，事件中心也会将仅含标题的空文件写入 Data Lake Storage Gen1 帐户。 写入文件的时间间隔与创建事件中心时提供的时间间隔相同。
@@ -122,6 +122,6 @@ ms.locfileid: "79265657"
 数据位于 Data Lake Storage Gen1 中后，可运行分析作业来处理数据。 请参阅 [USQL Avro Example](https://github.com/Azure/usql/tree/master/Examples/AvroExamples)（USQL Avro 示例）了解如何使用 Azure Data Lake Analytics 执行此操作。
   
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 * [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
 * [将数据从 Azure 存储 Blob 复制到 Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)

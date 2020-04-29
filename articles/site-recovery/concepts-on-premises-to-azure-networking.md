@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
 ms.openlocfilehash: f222cdd315b79503b1bdea032f495c71df4682b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79281985"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>从本地故障转移后连接到 Azure VM 
@@ -37,7 +37,7 @@ ms.locfileid: "79281985"
 
 在本地 Windows 计算机上执行以下操作：
 
-1. 配置 Windows 设置。 这包括删除任何静态持久路由或 WinHTTP 代理，并将磁盘 SAN 策略设置为 **OnlineAll**。 [按照](../virtual-machines/windows/prepare-for-upload-vhd-image.md#set-windows-configurations-for-azure)这些说明操作。
+1. 配置 Windows 设置。 这包括删除任何静态持久路由或 WinHTTP 代理，并将磁盘 SAN 策略设置为 **OnlineAll**。 [按照这些说明](../virtual-machines/windows/prepare-for-upload-vhd-image.md#set-windows-configurations-for-azure)进行操作。
 
 2. 确保[这些服务](../virtual-machines/windows/prepare-for-upload-vhd-image.md#check-the-windows-services)正在运行。
 
@@ -77,8 +77,8 @@ ms.locfileid: "79281985"
 
 若要在故障转移后设置 Azure VM 的内部 IP 地址，可使用以下选项：
 
-- **保留相同的 IP 地址**：您可以在 Azure VM 上使用与分配给本地计算机的 IP 地址相同的 IP 地址。
-- **使用不同的 IP 地址**：可以为 Azure VM 使用不同的 IP 地址。
+- **保留相同的 ip 地址**：你可以在 Azure VM 上使用与分配给本地计算机的 ip 地址相同的 ip 地址。
+- **使用不同的 ip 地址**：可以为 Azure VM 使用不同的 ip 地址。
 
 
 ## <a name="retain-ip-addresses"></a>保留 IP 地址

@@ -4,10 +4,10 @@ description: 搜索和筛选由 Web 应用发送的原始遥测数据。
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.openlocfilehash: 8039a55784f63030f330d6c1e2061e99b8b63bbf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79275979"
 ---
 # <a name="using-search-in-application-insights"></a>使用 Application Insights 中的搜索
@@ -56,12 +56,12 @@ ms.locfileid: "79275979"
 
 事件类型包括：
 
-* **跟踪** - [诊断日志](../../azure-monitor/app/asp-net-trace-logs.md)，包括跟踪跟踪、日志4Net、NLog 和系统.诊断.跟踪调用。
-* **请求**- 服务器应用程序收到的 HTTP 请求，包括页面、脚本、图像、样式文件和数据。 这些事件用于创建请求和响应概述图表。
-* **网页视图** - [遥测由 Web 客户端发送](../../azure-monitor/app/javascript.md)，用于创建页面视图报表。
+* **跟踪** - [诊断日志](../../azure-monitor/app/asp-net-trace-logs.md)，包括 TrackTrace、log4Net、NLog 和 System.Diagnostic.Trace 调用。
+* **请求** - 服务器应用程序收到的 HTTP 请求，包括页面、脚本、图像、样式文件和数据。 这些事件用于创建请求和响应概述图表。
+* **页面视图** - [由 Web 客户端发送的遥测数据](../../azure-monitor/app/javascript.md)，用于创建页面视图报告。
 * **自定义事件** - 如果插入了对 TrackEvent() 的调用以便[监视使用情况](../../azure-monitor/app/api-custom-events-metrics.md)，可以在此处搜索这些调用。
-* **异常**-[服务器中未捕获的异常](../../azure-monitor/app/asp-net-exceptions.md)，以及使用 TrackException（） 记录的异常。
-* **从** - [服务器应用程序](../../azure-monitor/app/asp-net-dependencies.md)到其他服务（如 REST API 或数据库）的依赖项调用，以及来自[客户端代码](../../azure-monitor/app/javascript.md)的 AJAX 调用。
+* **异常** - 未捕获到的[服务器中的异常](../../azure-monitor/app/asp-net-exceptions.md)，以及使用 TrackException() 记录的异常。
+* **依赖项** - [发自服务器应用程序的调用](../../azure-monitor/app/asp-net-dependencies.md)，调用对象为 REST API 或数据库等其他服务器，以及[客户端代码](../../azure-monitor/app/javascript.md)中的 AJAX 调用。
 * **可用性** - [可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)的结果。
 
 ## <a name="filter-on-property-values"></a>按属性值筛选
@@ -81,7 +81,7 @@ ms.locfileid: "79275979"
 ## <a name="search-the-data"></a>搜索数据
 
 > [!NOTE]
-> 若要编写更复杂的查询，请在“搜索”边栏选项卡的顶部打开[**日志（分析）**](../../azure-monitor/log-query/get-started-portal.md)。
+> 若要编写更复杂的查询，请在“搜索”边栏选项卡的顶部打开[**日志（分析）** ](../../azure-monitor/log-query/get-started-portal.md)。
 >
 
 可以搜索任何属性值中的关键词。 如果已编写包含属性值的[自定义事件](../../azure-monitor/app/api-custom-events-metrics.md)，可使用此功能。
@@ -92,7 +92,7 @@ ms.locfileid: "79275979"
 
 搜索完整单词，而不搜索子字符串。 使用引号将特殊字符引起来。
 
-| String | *未*找到 | 已找到 |
+| String |  未找到 | 已找到 |
 | --- | --- | --- |
 | HomeController.About |`home`<br/>`controller`<br/>`out` | `homecontroller`<br/>`about`<br/>`"homecontroller.about"`|
 |United States|`Uni`<br/>`ted`|`united`<br/>`states`<br/>`united AND states`<br/>`"united states"`
@@ -116,7 +116,7 @@ ms.locfileid: "79275979"
 
 可以使用任何遥测项中的详细信息，在 GitHub 或 Azure DevOps 中创建 Bug。
 
-通过单击任何遥测项转到端到端事务详细信息视图，然后选择“创建工作项”。****
+通过单击任何遥测项转到端到端事务详细信息视图，然后选择“创建工作项”。 
 
 ![单击“新建工作项”、编辑字段，并单击“确定”。](./media/diagnostic-search/work-item.png)
 
@@ -133,7 +133,7 @@ ms.locfileid: "79275979"
 
 [了解如何向 Application Insights 发送日志和自定义的遥测数据](../../azure-monitor/app/asp-net-trace-logs.md)。
 
-## <a name="q--a"></a><a name="questions"></a>问答
+## <a name="q--a"></a><a name="questions"></a>问题解答
 
 ### <a name="how-much-data-is-retained"></a><a name="limits"></a>保留多少数据？
 
@@ -148,4 +148,4 @@ ms.locfileid: "79275979"
 * [在 Analytics 中编写复杂查询](../../azure-monitor/log-query/get-started-portal.md)
 * [向 Application Insights 发送日志和自定义的遥测数据](../../azure-monitor/app/asp-net-trace-logs.md)
 * [设置可用性和响应能力测试](../../azure-monitor/app/monitor-web-app-availability.md)
-* [疑难解答](../../azure-monitor/app/troubleshoot-faq.md)
+* [故障排除](../../azure-monitor/app/troubleshoot-faq.md)

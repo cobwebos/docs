@@ -9,10 +9,10 @@ ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: e85dc8c079205484db9b7b7c43a0086f69feb3be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80059933"
 ---
 ## <a name="create-a-self-signed-root-certificate"></a><a name="rootcert"></a>创建自签名根证书
@@ -28,7 +28,7 @@ ms.locfileid: "80059933"
    -HashAlgorithm sha256 -KeyLength 2048 `
    -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign
    ```
- 3. 如果要在创建此根证书后立即创建客户端证书，请保持 PowerShell 控制台打开状态。
+ 3. 如果你想要在创建此根证书之后创建客户端证书，请将 PowerShell 控制台保持打开状态。
 
 ## <a name="generate-a-client-certificate"></a><a name="clientcert"></a>生成客户端证书
 
@@ -38,7 +38,7 @@ ms.locfileid: "80059933"
 
 这些示例使用 New-SelfSignedCertificate cmdlet 生成有效期为一年的客户端证书。 有关参数的其他信息（例如为客户端证书设置其他有效期），请参阅 [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate)。
 
-### <a name="example-1---powershell-console-session-still-open"></a>示例 1 - PowerShell 控制台会话仍处于打开状态
+### <a name="example-1---powershell-console-session-still-open"></a>示例 1-PowerShell 控制台会话仍处于打开状态
 
 如果创建自签名根证书之后没有关闭 PowerShell 控制台，请使用此示例。 此示例延续上一节的内容，并使用已声明的“$cert”变量。 如果创建自签名根证书后关闭了 PowerShell 控制台，或者要在新的 PowerShell 控制台会话中创建其他客户端证书，请使用[示例 2](#ex2) 中的步骤。
 
@@ -52,7 +52,7 @@ New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature 
 -Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
 ```
 
-### <a name="example-2---new-powershell-console-session"></a><a name="ex2"></a>示例 2 - 新的 PowerShell 控制台会话
+### <a name="example-2---new-powershell-console-session"></a><a name="ex2"></a>示例 2-新的 PowerShell 控制台会话
 
 若要创建其他客户端证书，或者不想要使用创建自签名根证书时所用的同一个 PowerShell 会话，请使用以下步骤：
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 1e75acc03209fdd7e613801c9152f24aaecfa6de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79267776"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>为 StorSimple 8000 系列设备部署 StorSimple 设备管理器服务
@@ -57,7 +57,7 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 
 对于每项 StorSimple 设备管理器服务，存在以下属性：
 
-* **名称** – 在创建 StorSimple 设备管理器服务时为其分配的名称。 **创建服务后，无法更改服务名称。对于无法在 Azure 门户中重命名的其他实体（如设备、卷、卷容器和备份策略）也是如此。**
+* **名称** – 在创建 StorSimple 设备管理器服务时为其分配的名称。 **创建服务后无法更改服务名称。这也适用于其他实体，例如设备、卷、卷容器和备份策略，这些实体无法在 Azure 门户中重命名。**
 * **状态** – 服务的状态，可以是 **“活动”**、**“正在创建”** 或 **“联机”**。
 * **位置** – 会在其中部署 StorSimple 设备的地理位置。
 * **订阅** – 与你的服务关联的计费订阅。
@@ -77,7 +77,7 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 
     ![搜索要删除的服务](./media/storsimple-8000-manage-service/deletessdevman1.png)
 
-2. 这将转到 StorSimple 设备管理器服务边栏选项卡。 单击“删除”****。
+2. 这将转到 StorSimple 设备管理器服务边栏选项卡。 单击 **“删除”** 。
 
     ![删除服务](./media/storsimple-8000-manage-service/deletessdevman2.png)
 

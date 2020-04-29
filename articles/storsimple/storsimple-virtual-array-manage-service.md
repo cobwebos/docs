@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 2ff987448e3900c2a533789b2f38fd3ced71ce72
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79267451"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>为 StorSimple 虚拟阵列部署 StorSimple Device Manager 服务
@@ -70,10 +70,10 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 
 #### <a name="to-delete-a-service"></a>删除服务
 
-1. 转到**所有资源**。 搜索 StorSimple Device Manager 服务。 选择要删除的服务。
+1. 中转到 "**所有资源**"。 搜索 StorSimple Device Manager 服务。 选择要删除的服务。
    
     ![选择要删除的服务](./media/storsimple-virtual-array-manage-service/deleteservice2.png)
-2. 转到服务仪表板，确保没有设备连接到该服务。 如果没有设备注册到此服务，则还将看到指示此内容的横幅消息。 单击“删除”****。
+2. 转到服务仪表板，确保没有设备连接到该服务。 如果没有设备注册到此服务，则还将看到指示此内容的横幅消息。 单击 **“删除”** 。
    
     ![删除服务](./media/storsimple-virtual-array-manage-service/deleteservice3.png)
 

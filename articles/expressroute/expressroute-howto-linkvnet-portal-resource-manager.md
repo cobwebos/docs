@@ -1,6 +1,6 @@
 ---
-title: 快速路由：将 VNet 链接到电路：Azure 门户
-description: 将 VNet 连接到 Azure 快速路由电路。 操作步骤。
+title: ExpressRoute：将 VNet 链接到线路： Azure 门户
+description: 将 VNet 连接到 Azure ExpressRoute 线路。 操作步骤。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -9,24 +9,24 @@ ms.date: 09/17/2019
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: 4c7a24ad692086398059d1afd48c8927e9d18582
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79272911"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>使用门户将虚拟网络连接到 ExpressRoute 线路
 > [!div class="op_single_selector"]
 > * [Azure 门户](expressroute-howto-linkvnet-portal-resource-manager.md)
-> * [电源外壳](expressroute-howto-linkvnet-arm.md)
+> * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
-> * [视频 - Azure 门户](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
-> * [电源外壳（经典）](expressroute-howto-linkvnet-classic.md)
+> * [视频-Azure 门户](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
+> * [PowerShell （经典）](expressroute-howto-linkvnet-classic.md)
 > 
 
 本文可帮助你使用 Azure 门户创建连接来将虚拟网络链接到 Azure ExpressRoute 线路。 连接到 Azure ExpressRoute 线路的虚拟网络可以在同一订阅中，也可以属于另一订阅。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 * 在开始配置之前，请先查看[先决条件](expressroute-prerequisites.md)、[路由要求](expressroute-routing.md)和[工作流](expressroute-workflows.md)。
 
@@ -52,12 +52,12 @@ ms.locfileid: "79272911"
 
 ### <a name="to-create-a-connection"></a>创建连接
 
-1. 确保已成功配置 ExpressRoute 线路和 Azure 专用对等互连。 按照[创建 ExpressRoute 电路](expressroute-howto-circuit-arm.md)中的说明操作，[并为 ExpressRoute 电路创建和修改对等互连](expressroute-howto-routing-arm.md)。 ExpressRoute 线路应如下图所示：
+1. 确保已成功配置 ExpressRoute 线路和 Azure 专用对等互连。 按照[创建 expressroute 线路](expressroute-howto-circuit-arm.md)中的说明进行操作，并[为 ExpressRoute 线路创建和修改对等互连](expressroute-howto-routing-arm.md)。 ExpressRoute 线路应如下图所示：
 
-   [![ExpressRoute 线路屏幕截图](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png "视图电路")](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1-exp.png#lightbox)
-2. 现在可以开始预配连接，以便将虚拟网络网关链接到 ExpressRoute 线路。 单击"**连接** > **添加**"以打开 **"添加连接**"页，然后配置这些值。
+   [![ExpressRoute 线路屏幕截图](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png "查看线路")](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1-exp.png#lightbox)
+2. 现在可以开始预配连接，以便将虚拟网络网关链接到 ExpressRoute 线路。 单击 "**连接** > " "**添加**" 以打开 "**添加连接**" 页，然后配置这些值。
 
-   [![添加连接屏幕截图](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png "添加连接屏幕截图")](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1-exp.png#lightbox)
+   [![添加连接屏幕快照](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png "添加连接屏幕快照")](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1-exp.png#lightbox)
 3. 成功配置连接之后，连接对象会显示连接的信息。
 
    ![连接对象屏幕截图](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub2.png)
@@ -111,7 +111,7 @@ ms.locfileid: "79272911"
 
 **若要兑换连接授权**
 
-1. 单击 **"新建"** 按钮。
+1. 单击 " **+ 新建**" 按钮。
 
    ![单击“新建”](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection1.png)
 2. 在市场中搜索“连接”****，选择它并单击“创建”****。
@@ -122,7 +122,7 @@ ms.locfileid: "79272911"
 
    ![“基本信息”页面](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
 5. 在“设置”页面中，选择“虚拟网络网关”并选中“兑换授权”复选框。************
-6. 输入“授权密钥”和“对等线路 URI”，并为连接命名。******** 单击“确定”。 **对等线路 URI** 是 ExpressRoute 线路的资源 ID（可以在 ExpressRoute 线路的“属性设置”窗格下找到）。
+6. 输入“授权密钥”和“对等线路 URI”，并为连接命名。******** 单击" **确定**"。 **对等线路 URI** 是 ExpressRoute 线路的资源 ID（可以在 ExpressRoute 线路的“属性设置”窗格下找到）。
 
    ![“设置”页](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
 7. 在“摘要”页面中复查信息，并单击“确定”。********

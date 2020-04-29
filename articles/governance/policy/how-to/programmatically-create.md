@@ -4,10 +4,10 @@ description: 本文逐步讲解如何使用 Azure CLI、Azure PowerShell 和 RES
 ms.date: 01/31/2019
 ms.topic: how-to
 ms.openlocfilehash: 08ed43a464d1dd7de8220428dbc1c61ce9fc3ad6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79264539"
 ---
 # <a name="programmatically-create-policies"></a>以编程方式创建策略
@@ -16,7 +16,7 @@ ms.locfileid: "79264539"
 
 有关符合性的信息，请参阅[获取符合性数据](get-compliance-data.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保满足以下先决条件：
 
@@ -87,7 +87,7 @@ ms.locfileid: "79264539"
 
    将 _ContosoRG_ 替换为所需资源组的名称。
 
-   `New-AzPolicyAssignment`上的 **"范围"** 参数适用于管理组、订阅、资源组或单个资源。 该参数使用完整资源路径，它将返回 `Get-AzResourceGroup` 的 **ResourceId** 属性。 每个容器的**范围**模式如下所示。 将 `{rName}`、`{rgName}`、`{subId}` 和 `{mgName}` 分别替换为你的资源名称、资源组名称、订阅 ID 和管理组名称。
+   **的**scope`New-AzPolicyAssignment` 参数适用于管理组、订阅、资源组或单个资源。 该参数使用完整资源路径，它将返回 **的**ResourceId`Get-AzResourceGroup` 属性。 每个容器的**范围**模式如下所示。 将 `{rName}`、`{rgName}`、`{subId}` 和 `{mgName}` 分别替换为你的资源名称、资源组名称、订阅 ID 和管理组名称。
    `{rType}` 将替换为资源的**资源类型**，例如 VM 的 `Microsoft.Compute/virtualMachines`。
 
    - 资源 - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
@@ -216,7 +216,7 @@ ms.locfileid: "79264539"
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
 
-   `az policy assignment create` 的 **--scope** 参数适用于管理组、订阅、资源组或单个资源。 该参数使用完整资源路径。 **每个容器的 -scope**的模式如下。 将 `{rName}`、`{rgName}`、`{subId}` 和 `{mgName}` 分别替换为你的资源名称、资源组名称、订阅 ID 和管理组名称。 `{rType}` 将替换为资源的**资源类型**，例如 VM 的 `Microsoft.Compute/virtualMachines`。
+   **的**--scope`az policy assignment create` 参数适用于管理组、订阅、资源组或单个资源。 该参数使用完整资源路径。 每个容器的 **--scope** 模式如下所示。 将 `{rName}`、`{rgName}`、`{subId}` 和 `{mgName}` 分别替换为你的资源名称、资源组名称、订阅 ID 和管理组名称。 `{rType}` 将替换为资源的**资源类型**，例如 VM 的 `Microsoft.Compute/virtualMachines`。
 
    - 资源 - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - 资源组 - `/subscriptions/{subID}/resourceGroups/{rgName}`
@@ -242,7 +242,7 @@ az policy definition show --name 'Audit Storage Accounts with Open Public Networ
 查看以下文章，详细了解本文中所示的命令和查询。
 
 - [Azure REST API 资源](/rest/api/resources/)
-- [Azure 电源外壳模块](/powershell/module/az.resources/#policies)
+- [Azure PowerShell 模块](/powershell/module/az.resources/#policies)
 - [Azure CLI 策略命令](/cli/azure/policy?view=azure-cli-latest)
 - [Azure Policy Insights 资源提供程序 REST API 参考](/rest/api/policy-insights)
-- [使用 Azure 管理组组织资源](../../management-groups/overview.md)。
+- [使用 Azure 管理组来组织资源](../../management-groups/overview.md)。

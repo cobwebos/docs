@@ -11,10 +11,10 @@ ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
 ms.openlocfilehash: 2277aa3de5955efe5a3e4cb938fa557352f89006
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79217974"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>使用 Azure 机器学习工作室（经典）Web 服务门户管理 Web 服务
@@ -32,7 +32,7 @@ ms.locfileid: "79217974"
 * 添加和删除终结点（仅限于经典 Web 服务）
 
 >[!NOTE]
->此外，还可以在“Web 服务”选项卡上的[机器学习工作室（经典）](https://studio.azureml.net)中管理经典 Web 服务****。
+>此外，还可以在“Web 服务”选项卡上的[机器学习工作室（经典）](https://studio.azureml.net)中管理经典 Web 服务  。
 
 ## <a name="permissions-to-manage-new-resources-manager-based-web-services"></a>用于管理基于资源管理器的新 Web 服务的权限
 
@@ -40,7 +40,7 @@ ms.locfileid: "79217974"
 
 如果用户没有访问 Azure 机器学习 Web 服务门户中的资源的正确权限，那么在尝试部署 Web 服务时会收到以下错误：
 
-*Web 服务部署失败。此帐户对包含工作区的 Azure 订阅没有足够的访问权限。为了将 Web 服务部署到 Azure，必须邀请同一帐户到工作区，并授予对包含工作区的 Azure 订阅的访问权限。*
+*Web Service deployment failed.This account does not have sufficient access to the Azure subscription that contains the Workspace.In order to deploy a Web Service to Azure, the same account must be invited to the Workspace and be given access to the Azure subscription that contains the Workspace.* （Web 服务部署失败。此帐户没有足够的权限访问工作区所属的 Azure 订阅。若要将 Web 服务部署到 Azure，必须邀请同一帐户加入工作区并为其授予对工作区所属的 Azure 订阅的访问权限。）
 
 有关创建工作区的详细信息，请参阅[创建和共享 Azure 机器学习工作室（经典）工作区](create-workspace.md)。
 

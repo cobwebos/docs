@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: d2b8b2fecbf85e6590294f1fbd7ff2a4453b9e87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79282778"
 ---
 # <a name="create-a-basic-index-in-azure-cognitive-search"></a>在 Azure 认知搜索中创建基本索引
 
 在 Azure 认知搜索中，*索引*是用于在 Azure 认知搜索服务上进行筛选和全文搜索的*文档*和其他构造的持久存储。 从概念上讲，文档是索引中的一个可搜索数据单元。 例如，电子商务零售商可能有所销售每件商品的文档，新闻机构可能有每篇报道的文档。 将这些概念对应到更为熟悉的数据库等效对象：*索引*在概念上类似于*表*，*文档*大致相当于表中的*行*。
 
-添加或上传索引时，Azure 认知搜索将根据提供的架构创建物理基础结构。 例如，如果将索引中的某个字段标记为可搜索，则为该字段创建倒排索引。 以后在 Azure 认知搜索中添加或上传文档或者提交搜索查询时，将向搜索服务中的特定索引发送请求。 加载包含文档值的字段称为索引编制或数据引入。**
+添加或上传索引时，Azure 认知搜索将根据提供的架构创建物理基础结构。 例如，如果将索引中的某个字段标记为可搜索，则为该字段创建倒排索引。 以后在 Azure 认知搜索中添加或上传文档或者提交搜索查询时，将向搜索服务中的特定索引发送请求。 加载包含文档值的字段称为索引编制或数据引入。 
 
 可以在门户、[REST API](search-create-index-rest-api.md) 或 [.NET SDK](search-create-index-dotnet.md) 中创建索引。
 
@@ -29,11 +29,11 @@ ms.locfileid: "79282778"
 
 1. 确定是否可以使用[索引器](search-indexer-overview.md#supported-data-sources)。 如果你的外部数据是支持的数据源之一，则你可以使用[**导入数据**](search-import-data-portal.md)向导制作原型和加载索引。
 
-2. 如果无法使用“导入数据”，仍可以使用“添加索引”页上的控件[在门户中创建初始索引](search-create-index-portal.md)，以及添加字段、数据类型和分配属性。******** 门户会显示不同数据类型可用的属性。 如果你不太熟悉索引设计，此功能非常有用。
+2. 如果无法使用“导入数据”，仍可以使用“添加索引”页上的控件[在门户中创建初始索引](search-create-index-portal.md)，以及添加字段、数据类型和分配属性。   门户会显示不同数据类型可用的属性。 如果你不太熟悉索引设计，此功能非常有用。
 
    ![“添加索引”页，其中按数据类型显示了属性](media/search-create-index-portal/field-attributes.png "“添加索引”页，其中按数据类型显示了属性")
   
-   单击“创建”时，将在搜索服务中创建支持你的索引的所有物理结构。****
+   单击“创建”时，将在搜索服务中创建支持你的索引的所有物理结构。 
 
 3. 使用[获取索引 REST API](https://docs.microsoft.com/rest/api/searchservice/get-index) 和 [Postman](search-get-started-postman.md) 等 Web 测试工具下载索引架构。 现在，门户中会显示所创建的索引的 JSON 表示形式。 
 
@@ -166,7 +166,7 @@ ms.locfileid: "79282778"
 
 用于生成索引的 API 具有不同的默认行为。 对于 [REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Index)，大多数特性在默认情况下处于启用状态（例如，**searchable** 和 **retrievable** 对于字符串字段为 true），并且通常只需要在要关闭它们时设置它们。 对于 .NET SDK，情况恰恰相反。 对于未显式设置的任何属性，默认情况下禁用相应的搜索行为，除非你特别启用它。
 
-| 特性 | 描述 |
+| 属性 | 说明 |
 | --- | --- |
 | `key` |为每个文档提供唯一 ID 以便查找文档的字符串。 每个索引必须有一个 key。 只有一个字段可以是 key，并且此字段类型必须设置为 Edm.String。 |
 | `retrievable` |指定是否可以在搜索结果中返回字段。 |
@@ -183,7 +183,7 @@ ms.locfileid: "79282778"
 
 ![基于属性选择的索引大小](./media/search-what-is-an-index/realestate-index-size.png "基于属性选择的索引大小")
 
-尽管这些索引变体是人造的，但我们可以参考这些变体来对属性影响存储的方式进行广泛比较。 设置 **retrievable** 是否会增大索引大小？ 不是。 将字段添加到**建议器**是否会增大索引大小？ 是的。
+尽管这些索引变体是人造的，但我们可以参考这些变体来对属性影响存储的方式进行广泛比较。 设置 **retrievable** 是否会增大索引大小？ 否。 将字段添加到**建议器**是否会增大索引大小？ 是的。
 
 支持筛选和排序的索引在比例上大于仅支持全文搜索的那些索引。 筛选和排序操作扫描完全匹配项，要求存在完整的文档。 相比之下，支持全文搜索和模糊搜索的可搜索字段使用倒排索引，而这些索引中填充了空间占用量比整个文档更小的标记化字词。 
 
@@ -197,9 +197,9 @@ ms.locfileid: "79282778"
 
 ## <a name="scoring-profiles"></a>为配置文件评分
 
-[评分配置文件](index-add-scoring-profiles.md)是架构的一部分，用于定义自定义评分行为，以便影响搜索结果中显示的项目。 计分配置文件由字段权重和函数组成。 若要使用它们，请在查询字符串上按名称指定配置文件。
+[评分配置文件](index-add-scoring-profiles.md)是定义自定义评分行为，方便用户影响搜索结果中排名更高的项的架构部分。 计分配置文件由字段权重和函数组成。 若要使用它们，请在查询字符串上按名称指定配置文件。
 
-在幕后运行的默认计分概要文件，用于为结果集中的每个项目计算搜索分数。 可使用内部、未命名的计分概要文件。 或者，将**默认评分配置文件**设置为使用自定义配置文件作为默认值，在查询字符串上未指定自定义配置文件时调用。
+在幕后运行的默认计分概要文件，用于为结果集中的每个项目计算搜索分数。 可使用内部、未命名的计分概要文件。 或者，将 **defaultScoringProfile** 设置为使用自定义配置文件作为默认配置文件，每当未在查询字符串上指定自定义配置文件时，将调用该配置文件。
 
 ## <a name="analyzers"></a>分析器
 
@@ -211,11 +211,11 @@ ms.locfileid: "79282778"
 
 可为 CORS 设置以下选项：
 
-+ **允许的源**（必需）：这是将被授予对索引的访问权限的源列表。 这意味着，将允许从这些来源提供的任何 JavaScript 代码查询索引（假设它提供正确的 api-key）。 每个来源通常采用 `protocol://<fully-qualified-domain-name>:<port>` 格式，不过往往会省略 `<port>`。 有关更多详细信息，请参阅[跨域资源共享 (Wikipedia)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)。
++ **allowedOrigins**（必需）：这是会被授予索引访问权限的来源的列表。 这意味着，将允许从这些来源提供的任何 JavaScript 代码查询索引（假设它提供正确的 api-key）。 每个来源通常采用 `protocol://<fully-qualified-domain-name>:<port>` 格式，不过往往会省略 `<port>`。 有关更多详细信息，请参阅[跨域资源共享 (Wikipedia)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)。
 
-  若要允许访问所有来源，请将 `*` 作为单个项目包含在 **allowedOrigins** 数组中。 不建议对生产搜索服务采用这种做法，但它在开发和调试中却很有用。**
+  若要允许访问所有来源，请将 `*` 作为单个项目包含在 **allowedOrigins** 数组中。 不建议对生产搜索服务采用这种做法，但它在开发和调试中却很有用。 
 
-+ **maxAgeIn秒**（可选）：浏览器使用此值来确定缓存 CORS 预检响应的持续时间（以秒为单位）。 此值必须是非负整数。 此值越大，性能越好，但 CORS 策略更改生效所需的时间也越长。 如果未设置此值，将使用 5 分钟的默认持续时间。
++ **maxAgeInSeconds**（可选）：浏览器使用此值确定缓存 CORS 预检响应的持续时间（以秒为单位）。 此值必须是非负整数。 此值越大，性能越好，但 CORS 策略更改生效所需的时间也越长。 如果未设置此值，将使用 5 分钟的默认持续时间。
 
 ## <a name="encryption-key"></a>加密密钥
 

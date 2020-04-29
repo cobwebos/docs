@@ -10,15 +10,15 @@ ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: b51b2c21fd9256c93f6947386a48336af2b75d88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79271923"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Storm 进行故障排除
 
-了解在[阿帕奇安巴里](https://ambari.apache.org/)使用[阿帕奇风暴](https://storm.apache.org/)有效载荷的顶级问题和他们的决议。
+了解处理 [Apache Ambari](https://storm.apache.org/) 中的 [Apache Storm](https://ambari.apache.org/) 有效负载时的最常见问题及其解决方法。
 
 ## <a name="how-do-i-access-the-storm-ui-on-a-cluster"></a>如何在群集上访问 Storm UI？
 
@@ -27,8 +27,8 @@ ms.locfileid: "79271923"
 ### <a name="apache-ambari-ui"></a>Apache Ambari UI
 
 1. 转到 Ambari 仪表板。
-2. 在服务列表中，选择“Storm”。****
-3. 在“快速链接”菜单中，选择“Storm UI”。********
+2. 在服务列表中，选择“Storm”。 
+3. 在“快速链接”菜单中，选择“Storm UI”。  
 
 ### <a name="direct-link"></a>直接链接
 
@@ -36,11 +36,11 @@ ms.locfileid: "79271923"
 
 `https://<cluster DNS name>/stormui`
 
-示例： `https://stormcluster.azurehdinsight.net/stormui`
+示例：`https://stormcluster.azurehdinsight.net/stormui`
 
 ## <a name="how-do-i-transfer-storm-event-hub-spout-checkpoint-information-from-one-topology-to-another"></a>如何将 Storm 事件中心 Spout 检查点信息从一个拓扑传输到另一个拓扑？
 
-开发可使用 HDInsight Storm 事件中心 Spout .jar 文件从 Azure 事件中心读取数据的拓扑时，必须在新群集上部署同名的拓扑。 但是，您必须保留在旧群集上提交到[Apache ZooKeeper](https://zookeeper.apache.org/)的检查点数据。
+开发可使用 HDInsight Storm 事件中心 Spout .jar 文件从 Azure 事件中心读取数据的拓扑时，必须在新群集上部署同名的拓扑。 但是，必须保留提交给旧群集上[Apache ZooKeeper](https://zookeeper.apache.org/)的检查点数据。
 
 ### <a name="where-checkpoint-data-is-stored"></a>检查点数据的存储位置
 
@@ -145,7 +145,7 @@ Storm 工作节点运行以下服务：
 
 ### <a name="latest-apache-storm-event-hub-spout-binaries-for-hdinsight-35-linux-storm-clusters"></a>HDInsight 3.5+ Linux Storm 群集的最新 Apache Storm 事件中心 Spout 二进制文件
 
-要了解如何使用与 HDInsight 3.5+ Linux 风暴群集配合使用的最新风暴事件中心分孔，请参阅[mvn-repo readme 文件](https://github.com/hdinsight/mvn-repo/blob/master/README.md)。
+若要了解如何使用适用于 HDInsight 3.5 + Linux 风暴群集的最新风暴事件中心 spout，请参阅[mvn-存储库自述文件](https://github.com/hdinsight/mvn-repo/blob/master/README.md)。
 
 ### <a name="source-code-examples"></a>源代码示例
 
@@ -174,7 +174,7 @@ Nimbus Log4J 配置是从 `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml` 读
 
 提交拓扑时，用户可能会收到类似于以下内容的错误消息：`Topology submission exception, cause not a leader, the current leader is NimbusInfo`。
 
-若要解决此问题，用户可能需要提交票证以重启/重新引导节点。 有关详细信息，请参阅[https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html)。
+若要解决此问题，用户可能需要提交票证以重启/重新引导节点。 有关详细信息，请[https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html)参阅。
 
 ---
 
@@ -184,6 +184,6 @@ Nimbus Log4J 配置是从 `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml` 读
 
 - 通过 [Azure 社区支持](https://azure.microsoft.com/support/community/)获取 Azure 专家的解答。
 
-- 与[@AzureSupport](https://twitter.com/azuresupport)- 用于改善客户体验的官方 Microsoft Azure 帐户连接。 将 Azure 社区连接到正确的资源：答案、支持和专家。
+- 连接[@AzureSupport](https://twitter.com/azuresupport) -官方 Microsoft Azure 帐户来改善客户体验。 将 Azure 社区连接到正确的资源：答案、支持和专家。
 
 - 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”****，或打开“帮助 + 支持”**** 中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅包含对订阅管理和计费支持的访问权限，并且通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。

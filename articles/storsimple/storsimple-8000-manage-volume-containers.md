@@ -1,5 +1,5 @@
 ---
-title: 管理 StorSimple 8000 系列设备的体积容器
+title: 管理 StorSimple 8000 系列设备的卷容器
 description: 介绍如何使用“StorSimple Device Manager 服务卷容器”页添加、修改或删除卷容器。
 services: storsimple
 documentationcenter: NA
@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/19/2017
 ms.author: alkohli
 ms.openlocfilehash: cbdad3c68848ce552811ee658bb29df74a6fad19
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79267672"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-volume-containers"></a>使用 StorSimple Device Manager 服务管理 StorSimple 卷容器

@@ -13,10 +13,10 @@ ms.author: abnarain
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: 54cb06f1c77ab68818d8531b57d6eb936deda8d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79265722"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
@@ -29,8 +29,8 @@ ms.locfileid: "79265722"
 
 在 Azure 数据工厂管道中可使用两类活动。
 
-- [数据移动活动](data-factory-data-movement-activities.md)，用于在[受支持的源和接收器数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)之间移动数据。
-- [数据转换活动](data-factory-data-transformation-activities.md)，使用计算服务（如 Azure HDInsight、Azure 批处理和 Azure 机器学习）转换数据。
+- 用于在[支持的源和接收器数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)之间移动数据的[数据移动活动](data-factory-data-movement-activities.md)。
+- 使用计算服务（例如 Azure HDInsight、Azure Batch 和 Azure 机器学习）来转换数据的[数据转换活动](data-factory-data-transformation-activities.md)。
 
 要将数据移入/移出数据工厂不支持的数据存储，需使用自己的数据移动逻辑创建**自定义活动**，然后在管道中使用该活动。 同样，要以数据工厂不支持的方式转换/处理数据，需使用自己的数据转换逻辑创建自定义活动，并在管道中使用该活动。
 
@@ -42,21 +42,21 @@ ms.locfileid: "79265722"
 > - 无法使用自定义活动中的数据管理网关来访问本地数据源。 目前，[数据管理网关](data-factory-data-management-gateway.md)仅支持数据工厂中的复制活动和存储过程活动。
 
 ## <a name="walkthrough-create-a-custom-activity"></a>演练：创建自定义活动
-### <a name="prerequisites"></a>先决条件
-* 视觉工作室 2012/2013/2015/2017
+### <a name="prerequisites"></a>必备条件
+* Visual Studio 2012/2013/2015/2017
 * 下载并安装 [Azure .NET SDK](https://azure.microsoft.com/downloads/)
 
 ### <a name="azure-batch-prerequisites"></a>Azure Batch 先决条件
-在本演练中，将 Azure Batch 用作计算资源运行自定义 .NET 活动。 **Azure Batch**是一个平台服务，适用于在云中有效运行大规模并行和高性能计算 (HPC) 应用程序。 Azure Batch 计划在**虚拟机的托管集合**上运行计算密集型工作，并可以自动缩放计算资源以满足作业的需求。 有关 Azure Batch 服务的详细概述，请参阅 [Azure Batch 基础知识][batch-technical-overview]一文。
+在本演练中，将 Azure Batch 用作计算资源运行自定义 .NET 活动。 **Azure Batch**是一种平台服务，用于在云中高效运行大规模并行和高性能计算（HPC）应用程序。 Azure Batch 计划要在托管**的虚拟机集合**上运行的计算密集型工作，并且可以自动缩放计算资源以符合作业的需求。 有关 Azure Batch 服务的详细概述，请参阅 [Azure Batch 基础知识][batch-technical-overview]一文。
 
 本教程会创建一个包含 VM 池的 Azure Batch 帐户。 以下是具体步骤：
 
-1. 使用[Azure 门户](https://portal.azure.com)创建**Azure 批处理帐户**。 有关说明，请参阅[创建和管理 Azure Batch 帐户][batch-create-account]一文。
+1. 使用[Azure 门户](https://portal.azure.com)创建**Azure Batch 帐户**。 有关说明，请参阅[创建和管理 Azure Batch 帐户][batch-create-account]一文。
 2. 记下 Azure Batch 帐户名称、帐户密钥、URI 和池名称。 随后需要使用这些信息来创建 Azure Batch 链接服务。
     1. 在 Azure Batch 帐户的主页上，可以看到采用以下格式的 **URL**：`https://myaccount.westus.batch.azure.com`。 在本示例中，**myaccount** 是 Azure Batch 帐户的名称。 在链接服务定义中使用的 URI 是不带帐户名称的 URL。 例如：`https://<region>.batch.azure.com`。
     2. 在左侧菜单中单击“密钥”并复制“主访问密钥”。********
     3. 要使用现有池，请在菜单中单击“池”，并记下该池的 **ID**。**** 如果没有池，会转到下一步。
-2. 创建**Azure 批处理池**。
+2. 创建**Azure Batch 池**。
 
    1. 在 [Azure 门户](https://portal.azure.com)中，单击左侧菜单中的“浏览”****，并单击“Batch 帐户”****。
    2. 选择 Azure Batch 帐户，打开“Batch 帐户”**** 边栏选项卡。
@@ -89,10 +89,10 @@ public IDictionary<string, string> Execute(
 
 该方法采用四个参数：
 
-- **链接服务**。 此属性是活动的输入/输出数据集引用的“数据存储”链接服务的可枚举列表。
-- **数据集**. 此属性是活动的输入/输出数据集的可枚举列表。 可使用此参数获取输入和输出数据集定义的位置和架构。
-- **活动**. 此属性表示当前活动。 可以使用它来访问与自定义活动关联的扩展属性。 有关详细信息，请参阅[访问扩展属性](#access-extended-properties)。
-- **记录器**. 使用此对象可以编写会在管道用户日志中显示的调试注释。
+- **linkedservices.json**。 此属性是活动的输入/输出数据集引用的“数据存储”链接服务的可枚举列表。
+- **数据集**。 此属性是活动的输入/输出数据集的可枚举列表。 可使用此参数获取输入和输出数据集定义的位置和架构。
+- **活动**。 此属性表示当前活动。 可以使用它来访问与自定义活动关联的扩展属性。 有关详细信息，请参阅[访问扩展属性](#access-extended-properties)。
+- **记录器**。 使用此对象可以编写会在管道用户日志中显示的调试注释。
 
 该方法返回一个字典，此字典可在以后将自定义活动链接在一起。 此功能尚未实现，因此该方法将返回空字典。
 
@@ -100,17 +100,17 @@ public IDictionary<string, string> Execute(
 1. 创建 **.NET 类库**项目。
    <ol type="a">
      <li>启动 Visual Studio。</li>
-     <li>单击<b>"文件</b>"，指向<b>"新建"，</b>然后单击<b>"项目</b>"。</li>
+     <li>单击 "<b>文件</b>"，指向 "<b>新建</b>"，然后单击 "<b>项目</b>"。</li>
      <li>展开“模板”，并选择“Visual C#”。<b></b><b></b> 此演练中使用的是 C#，但也可使用任何 .NET 语言开发自定义活动。</li>
-     <li>从右侧项目类型列表中选择“类库”<b></b>。 在可视化工作室中，选择<b>类库 （.NET 框架）</b> </li>
+     <li>从右侧项目类型列表中选择“类库”<b></b>。 在 Visual Studio 中，选择 "<b>类库（.NET Framework）</b> " </li>
      <li>对于“名称”<b></b>，输入 <b>MyDotNetActivity</b>。</li>
      <li>对于“位置”<b></b>，选择“C:\ADFGetStarted”<b></b>。</li>
      <li>单击“确定”<b></b>以创建项目。</li>
    </ol>
 
-2. 单击**工具**，指向**NuGet 包管理器**，然后单击 **"包管理器控制台**"。
+2. 单击 "**工具**"，指向 " **NuGet 程序包管理器**"，然后单击 "**程序包管理器控制台**"。
 
-3. 在包管理器控制台中，执行以下命令以导入**Microsoft.Azure.管理.数据工厂**。
+3. 在 "包管理器控制台" 中，执行以下命令以导入**microsoft.azure.management.datafactories**。
 
     ```powershell
     Install-Package Microsoft.Azure.Management.DataFactories
@@ -371,7 +371,7 @@ public IDictionary<string, string> Execute(
     > [!IMPORTANT]
     > 将 4.5.2 版本的 .NET Framework 作为项目的目标框架：右键单击项目，然后单击“属性”**** 设置目标框架。 数据工厂不支持针对低于 4.5.2 的 .NET Framework 版本编译的自定义活动。
 
-11. 启动**Windows 资源管理器**，并根据生成类型导航到**bin_调试**或**bin_释放**文件夹。
+11. 启动**Windows 资源管理器**，然后导航到**bin\debug**或**bin\release**文件夹，具体取决于生成的类型。
 12. 创建 zip 文件“MyDotNetActivity.zip”，其中包含 \<project folder\>\bin\Debug 文件夹中的所有二进制文件****。 包含 **MyDotNetActivity.pdb** 文件以便获取其他详细信息，例如出现故障时引发问题的源代码中的行号。
 
     > [!IMPORTANT]
@@ -409,7 +409,7 @@ test custom activity Microsoft test custom activity Microsoft
 1. 创建**数据工厂**。
 2. 为运行自定义活动的 VM 的 Azure Batch 池以及用于保存输入/输出 Blob 的 Azure 存储创建**链接服务**。
 3. 创建表示自定义活动的输入和输出的输入和输出**数据集**。
-4. 创建使用自定义活动的**管道**。
+4. 创建一个使用自定义活动的**管道**。
 
 > [!NOTE]
 > 创建 **file.txt** 并将其上传到 blob 容器中（如果尚未进行此操作）。 请参阅上一部分中的说明。
@@ -425,9 +425,9 @@ test custom activity Microsoft test custom activity Microsoft
 
     ![“新建 Azure 数据工厂”边栏选项卡](media/data-factory-use-custom-activities/new-azure-data-factory-blade.png)
 3. 单击“资源组名称”****，并选择现有资源组或创建资源组。
-4. 验证您使用的是希望创建数据**工厂的正确****订阅**和地区。
+4. 验证要在其中创建数据工厂的正确**订阅**和**区域**。
 5. 在“新建数据工厂”边栏选项卡中单击“创建”。********
-6. 在 Azure 门户的**仪表板**中可以看到正在创建的数据工厂。
+6. 你将看到在 Azure 门户的**仪表板**中创建的数据工厂。
 7. 成功创建数据工厂后，将看到“数据工厂”边栏选项卡，其中显示数据工厂的内容。
 
     ![“数据工厂”边栏选项卡](media/data-factory-use-custom-activities/data-factory-blade.png)
@@ -437,7 +437,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 #### <a name="create-azure-storage-linked-service"></a>创建 Azure 存储链接服务
 1. 在 **CustomActivityFactory** 的“数据工厂”**** 边栏选项卡上，单击“作者和部署”**** 磁贴。 随即显示“数据工厂编辑器”。
-2. 单击命令栏上**的新数据存储**并选择**Azure 存储**。 在编辑器中，应会看到用于创建 Azure 存储链接服务的 JSON 脚本。
+2. 单击命令栏上的 "**新建数据存储**"，并选择 " **Azure 存储**"。 在编辑器中，应会看到用于创建 Azure 存储链接服务的 JSON 脚本。
 
     ![新建数据存储 - Azure 存储](media/data-factory-use-custom-activities/new-data-store-menu.png)
 3. 将 `<accountname>` 替换为 Azure 存储帐户的名称，将 `<accountkey>` 替换为 Azure 存储帐户的访问密钥。 若要了解如何获取存储访问密钥，请参阅[管理存储帐户访问密钥](../../storage/common/storage-account-keys-manage.md)。
@@ -446,7 +446,7 @@ test custom activity Microsoft test custom activity Microsoft
 4. 单击命令栏上的“部署”，部署链接服务。****
 
 #### <a name="create-azure-batch-linked-service"></a>创建 Azure Batch 链接服务
-1. 在数据工厂编辑器中，单击 **...在**命令栏上，单击 **"新建计算**"，然后从菜单中选择**Azure 批处理**。
+1. 在数据工厂编辑器中，单击 " **..."** 在命令栏上，单击 "**新建计算**"，然后从菜单中选择 " **Azure Batch** "。
 
     ![新建计算 - Azure Batch](media/data-factory-use-custom-activities/new-azure-compute-batch.png)
 2. 对 JSON 脚本进行以下更改：
@@ -479,7 +479,7 @@ test custom activity Microsoft test custom activity Microsoft
 在此步骤中，创建表示输入和输出数据的数据集。
 
 #### <a name="create-input-dataset"></a>创建输入数据集
-1. 在数据工厂的**编辑器**中，单击 **...在**命令栏上，单击 **"新建数据集**"，然后从下拉菜单中选择**Azure Blob 存储**。
+1. 在数据工厂**编辑器**中，单击 " **..."在命令栏上，单击**"**新建数据集**"，然后从下拉菜单中选择 " **Azure Blob 存储**"。
 2. 将右窗格中的 JSON 替换为以下 JSON 代码片段：
 
     ```json
@@ -512,7 +512,7 @@ test custom activity Microsoft test custom activity Microsoft
 3. 单击工具栏上的“部署”****，创建并部署 **InputDataset**。 确认编辑器标题栏中显示了“已成功创建表”**** 消息。
 
 #### <a name="create-an-output-dataset"></a>创建输出数据集
-1. 在**数据工厂编辑器**中，单击 **...在**命令栏上，单击 **"新建数据集**"，然后选择**Azure Blob 存储**。
+1. 在**数据工厂编辑器**中，单击 " **..."** 在命令栏上，单击 "**新建数据集**"，然后选择 " **Azure Blob 存储**"。
 2. 将右窗格中的 JSON 脚本替换为以下 JSON 脚本：
 
     ```JSON
@@ -555,11 +555,11 @@ test custom activity Microsoft test custom activity Microsoft
    | 4 |2016-11-16T03:00:00 |2016-11-16-03.txt |
    | 5 |2016-11-16T04:00:00 |2016-11-16-04.txt |
 
-    请记住，输入文件夹中的所有文件都是具有上述开始时间的切片的一部分。 处理此切片时，自定义活动将扫描每个文件，并在输出文件中生成具有搜索词（“Microsoft”）出现次数的行。 如果输入文件夹中有三个文件，则输出文件中对于每个每小时切片有三行：2016-11-16-00.txt、2016-11-16：00：00：00.txt 等。
+    请记住，输入文件夹中的所有文件都是具有上述开始时间的切片的一部分。 处理此切片时，自定义活动将扫描每个文件，并在输出文件中生成具有搜索词（“Microsoft”）出现次数的行。 如果输入文件夹中有三个文件，则每小时切片的输出文件中有三行： 2016-11-16-00.txt，2016-11：01：00： 00 .txt，等等。
 3. 若要部署 **OutputDataset**，请在命令栏上单击“部署”。****
 
 ### <a name="create-and-run-a-pipeline-that-uses-the-custom-activity"></a>创建并运行使用自定义活动的管道
-1. 在数据工厂编辑器中，单击 **...更多**，然后在命令栏上选择 **"新建管道**"。
+1. 在数据工厂编辑器中，单击 " **..."** 然后在命令栏上选择 "**新建管道**"。
 2. 将右窗格中的 JSON 替换为以下 JSON 脚本：
 
     ```JSON
@@ -617,7 +617,7 @@ test custom activity Microsoft test custom activity Microsoft
    * **PackageFile** 设置为 **customactivitycontainer/MyDotNetActivity.zip**。 采用以下格式：containerforthezip/nameofthezip.zip。
    * 自定义活动采用 **InputDataset** 作为输入，采用 **OutputDataset** 作为输出。
    * 自定义活动的 linkedServiceName 属性指向 **AzureBatchLinkedService**它将告诉 Azure 数据工厂自定义活动需要在 Azure Batch VM 上运行。
-   * 默认情况下 **，isPaused**属性设置为**false。** 在此示例中管道会立即运行，因为切片从过去启动。 可将此属性设置为 true 以暂停管道，然后将其设置回 false 以重新启动。
+   * 默认情况下， **isPaused**属性设置为**false** 。 在此示例中管道会立即运行，因为切片从过去启动。 可将此属性设置为 true 以暂停管道，然后将其设置回 false 以重新启动。
    * **start** 时间和 **end** 时间相隔 **5** 小时且切片按小时生成，因此管道将生成五个切片。
 3. 若要部署管道，请在命令栏上单击“部署”。****
 
@@ -686,14 +686,14 @@ test custom activity Microsoft test custom activity Microsoft
     ```
 
    如果名称匹配，请确认是否所有二进制文件都在 zip 文件的**根文件夹**中。 也就是说，打开 zip 文件时，应看到所有文件均在根文件夹中，而非在任何子文件夹中。
-3. 如果未将输入切片设置为 **"就绪"，** 请确认输入文件夹结构正确，并且输入文件夹中存在**file.txt。**
+3. 如果输入切片未设置为**就绪**，请确认输入文件夹结构正确，并且**文件 .txt**存在于输入文件夹中。
 3. 在自定义活动的 **Execute** 方法中，使用 **IActivityLogger** 对象记录可帮助解决问题的信息。 记录的消息会显示在用户日志文件（一个或多个文件，命名为 user-0.log、user-1.log、user-2.log 等）中。
 
    在“OutputDataset”**** 边栏选项卡中，单击切片以查看该切片的“数据切片”**** 边栏选项卡。 可看到该切片的**活动运行**。 应看到该切片的一个活动运行。 如果在命令栏中单击“运行”，将启动同一切片的另一个活动运行。
 
    单击活动运行时，会显示具有日志文件列表的“活动运行详细信息”**** 边栏选项卡。 在 user_0.log 文件中会显示记录的消息。 发生错误后，会显示 3 个活动运行，因为管道/活动 JSON 中的重试计数设置为 3。 单击活动运行时，会显示日志文件，可查看文件解决该错误。
 
-   在日志文件列表中，单击“user-0.log”****。 右侧面板中是使用 **IActivityLogger.Write** 方法的结果。 如果未看到所有消息，请检查是否有更多的日志文件命名为：user_1.log、user_2.log 等。否则，代码可能在最后一条记录的消息后失败。
+   在日志文件列表中，单击“user-0.log”****。 右侧面板中是使用 **IActivityLogger.Write** 方法的结果。 如果看不到所有消息，请检查是否有更多名为的日志文件： user_1 日志记录、user_2 日志等。否则，在上次记录消息后，代码可能已失败。
 
    此外，检查 **system-0.log** 中是否包含任何系统错误消息和异常。
 4. 将 **PDB** 文件包含在 zip 文件中，这样，在发生错误时，错误详细信息中会提供**调用堆栈**等信息。
@@ -713,7 +713,7 @@ test custom activity Microsoft test custom activity Microsoft
     ```
 
     生成项目。 从 bin\Debug 文件夹中删除 4.3.0 版本以上的 Azure.Storage 程序集。 创建包含二进制代码的 zip 文件和 PDB 文件。 使用 blob 容器 (customactivitycontainer) 中的此文件替换旧的 zip 文件。 重新运行失败的切片（右击切片，并单击“运行”）。
-8. 自定义活动不使用包中的 **app.config** 文件。 因此，如果代码从配置文件读取任何连接字符串，其在运行时无效。 使用 Azure Batch 时，最佳做法是在**Azure KeyVault**中保存任何机密，使用基于证书的服务主体来保护**密钥库**，并将证书分发到 Azure Batch 池。 然后，.NET 自定义活动可以在运行时从 KeyVault 访问机密。 该解决方案是一种通用解决方法，可以延伸到任何类型的机密，而不仅仅是连接字符串。
+8. 自定义活动不使用包中的 **app.config** 文件。 因此，如果代码从配置文件读取任何连接字符串，其在运行时无效。 使用 Azure Batch 的最佳做法是在**Azure KeyVault**中保存所有机密，使用基于证书的服务主体来保护**KeyVault**，并将证书分发到 Azure Batch 池。 然后，.NET 自定义活动可以在运行时从 KeyVault 访问机密。 该解决方案是一种通用解决方法，可以延伸到任何类型的机密，而不仅仅是连接字符串。
 
    有一个更容易的解决方法（但非最佳做法）：可通过连接字符串设置创建 **Azure SQL 链接服务**，再创建使用该链接服务的数据集，并将作为虚拟输入数据集的数据集链接到自定义 .NET 活动。 然后，可访问自定义活动代码中的链接服务连接字符串。
 

@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f04bd7788a9cc9657e14aedfb153182d6e53eb95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79259703"
 ---
 # <a name="view-custom-role-assignments-in-azure-active-directory"></a>在 Azure Active Directory 中查看自定义角色分配
@@ -31,9 +31,9 @@ ms.locfileid: "79259703"
 
 此过程介绍如何查看组织范围的角色分配。
 
-1. 在 Azure [AD](https://aad.portal.azure.com) 组织中使用特权角色管理员或全局管理员权限登录到 Azure AD 管理中心。
-1. 依次选择“Azure Active Directory”、“角色和管理员”，然后选择一个角色，将其打开并查看其属性。********
-1. 选择“分配”，查看角色的分配****。
+1. 在 Azure AD 组织中，以特权角色管理员或全局管理员权限登录到 [Azure AD 管理中心](https://aad.portal.azure.com) 。
+1. 依次选择“Azure Active Directory”、“角色和管理员”，然后选择一个角色，将其打开并查看其属性。  
+1. 选择“分配”，查看角色的分配  。
 
     ![从列表中打开一个角色时，查看角色分配和权限](./media/roles-view-assignments/role-assignments.png)
 
@@ -43,7 +43,7 @@ ms.locfileid: "79259703"
 
 ### <a name="prepare-powershell"></a>准备 PowerShell
 
-首先，必须[下载 Azure AD 预览 PowerShell 模块](https://www.powershellgallery.com/packages/AzureAD/)。
+首先，必须[下载 Azure AD 预览版 PowerShell 模块](https://www.powershellgallery.com/packages/AzureAD/)。
 
 若要安装 Azure AD PowerShell 模块，请使用以下命令：
 
@@ -104,16 +104,16 @@ HTTP/1.1 200 OK
 
 此部分介绍如何查看单应用程序范围的角色分配。 此功能目前处于公开预览状态。
 
-1. 在 Azure [AD](https://aad.portal.azure.com) 组织中使用特权角色管理员或全局管理员权限登录到 Azure AD 管理中心。
-1. 选择“应用注册”，然后选择要查看其属性的应用注册。**** 可能必须选择“所有应用程序”，以便在 Azure AD 组织中查看应用注册的完整列表。****
+1. 在 Azure AD 组织中，以特权角色管理员或全局管理员权限登录到 [Azure AD 管理中心](https://aad.portal.azure.com) 。
+1. 选择“应用注册”，然后选择要查看其属性的应用注册。  可能必须选择“所有应用程序”，以便在 Azure AD 组织中查看应用注册的完整列表。 
 
     ![在“应用注册”页中创建或编辑应用注册](./media/roles-create-custom/appreg-all-apps.png)
 
-1. 在应用注册中，选择“角色和管理员”，然后选择一个角色，以查看其属性。****
+1. 在应用注册中，选择“角色和管理员”，然后选择一个角色，以查看其属性。 
 
     ![在“应用注册”页中查看应用注册角色分配](./media/roles-view-assignments/appreg-assignments.png)
 
-1. 选择“分配”，查看角色的分配****。 在应用注册中打开分配视图会显示局限于此 Azure AD 资源的分配。
+1. 选择“分配”，查看角色的分配  。 在应用注册中打开分配视图会显示局限于此 Azure AD 资源的分配。
 
     ![在应用注册的属性中查看应用注册角色分配](./media/roles-view-assignments/appreg-assignments-2.png)
 

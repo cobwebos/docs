@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 5b2801b0a71f04803955e9d8bc18a97133019996
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79246547"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用数组和对象
@@ -54,7 +54,7 @@ FROM f
 
 ## <a name="iteration"></a><a id="Iteration"></a>迭代
 
-SQL API 支持通过 JSON 数组进行迭代，并通过 FROM 源中的[IN 关键字](sql-query-keywords.md#in)添加新构造。 在以下示例中：
+SQL API 支持循环访问 JSON 数组，它可以通过 FROM 源中的 [IN 关键字](sql-query-keywords.md#in)添加一个新的构造。 在以下示例中：
 
 ```sql
     SELECT *
@@ -90,7 +90,7 @@ SQL API 支持通过 JSON 数组进行迭代，并通过 FROM 源中的[IN 关�
     ]
 ```
 
-下一个查询循环访问 `Families` 容器中的 `children`。 输出的数组与前面的查询不同。 此示例拆分 `children` 并将结果平展为单个数组：  
+下一个查询循环访问 `children` 容器中的 `Families`。 输出的数组与前面的查询不同。 此示例拆分 `children` 并将结果平展为单个数组：  
 
 ```sql
     SELECT *
@@ -157,6 +157,6 @@ SQL API 支持通过 JSON 数组进行迭代，并通过 FROM 源中的[IN 关�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [开始](sql-query-getting-started.md)
+- [入门](sql-query-getting-started.md)
 - [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [联接](sql-query-join.md)

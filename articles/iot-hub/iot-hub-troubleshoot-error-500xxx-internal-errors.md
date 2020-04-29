@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: 7f3f5177e084693c45bed1088a4e1d091be100ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79271039"
 ---
 # <a name="500xxx-internal-errors"></a>500xxx 内部错误
@@ -23,13 +23,13 @@ ms.locfileid: "79271039"
 
 向 IoT 中心发出的请求失败并出现错误，该错误以 500 和/或某种类型的“服务器错误”开头。 一些可能的原因如下：
 
-* **500001 服务器错误**： IoT 中心遇到服务器端问题。
+* **500001 ServerError**：IoT 中心遇到服务器端问题。
 
-* **500008 通用超时**：IoT 中心在超时之前无法完成连接请求。
+* **500008 GenericTimeout**：IoT 中心在超时之前无法完成连接请求。
 
-* **服务不可用（无错误代码）：IoT**中心遇到内部错误。
+* **ServiceUnavailable (无错误代码)** ：IoT 中心遇到了内部错误。
 
-* **内部服务器错误（无错误代码）：IoT**中心遇到内部错误。
+* **InternalServerError (无错误代码)** ：IoT 中心遇到了内部错误。
 
 ## <a name="cause"></a>原因
 

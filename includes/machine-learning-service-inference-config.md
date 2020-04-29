@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 01/28/2020
 ms.author: larryfr
 ms.openlocfilehash: 5102e8f75da14c58e948e81aaa418539dd18869a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80159399"
 ---
 `inferenceconfig.json` 文档中的条目映射到 [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) 类的参数。 下表描述了 JSON 文档中的实体与方法参数之间的映射：
 
-| JSON 实体 | 方法参数 | 描述 |
+| JSON 实体 | 方法参数 | 说明 |
 | ----- | ----- | ----- |
 | `entryScript` | `entry_script` | 包含要为映像运行的代码的本地文件路径。 |
-| `sourceDirectory` | `source_directory` | 可选。 包含创建映像的所有文件的文件夹的路径，从而轻松访问此文件夹或子文件夹中的任何文件。 可以从本地计算机上载整个文件夹作为 Web 服务的依赖项。 注意：entry_script、conda_file和extra_docker_file_steps路径是source_directory路径的相对路径。 |
+| `sourceDirectory` | `source_directory` | 可选。 包含创建映像的所有文件的文件夹的路径，这样就可以轻松地访问此文件夹或子文件夹中的任何文件。 你可以从本地计算机上传整个文件夹，作为 Webservice 的依赖项。 注意： entry_script、conda_file 和 extra_docker_file_steps 路径是 source_directory 路径的相对路径。 |
 | `environment` | `environment` | 可选。  Azure 机器学习[环境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)。|
 
-您可以在推理配置文件中包括 Azure 机器学习[环境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)的完整规范。 如果工作区中不存在此环境，Azure 机器学习将创建它。 否则，Azure 机器学习将在必要时更新环境。 以下 JSON 就是一个示例：
+可以在推理配置文件中包含 Azure 机器学习[环境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)的完整规范。 如果工作区中不存在此环境，Azure 机器学习将创建它。 否则，Azure 机器学习将更新环境（如有必要）。 下面的 JSON 是一个示例：
 
 ```json
 {
@@ -65,7 +65,7 @@ ms.locfileid: "80159399"
 }
 ```
 
-还可以在分离的 CLI 参数中使用现有的 Azure 机器学习[环境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)，并从推理配置文件中删除"环境"密钥。 将 -e 用于环境名称，对于环境版本使用 -ev。 如果不指定 --ev，将使用最新版本。 下面是推理配置文件的示例：
+你还可以在单独的 CLI 参数中使用现有 Azure 机器学习[环境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)，并从推理配置文件中删除 "环境" 密钥。 将-e 用于环境名称，将--ev 用于环境版本。 如果未指定--ev，将使用最新版本。 下面是推理配置文件的示例：
 
 ```json
 {
@@ -74,9 +74,9 @@ ms.locfileid: "80159399"
 }
 ```
 
-以下命令演示如何使用以前的推理配置文件（名为 myinferenceConfig.json）部署模型。 
+以下命令演示了如何使用以前的推理配置文件（名为 myInferenceConfig）来部署模型。 
 
-它还使用现有 Azure 机器学习[环境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)的最新版本（称为 AzureML-最小）。
+它还使用最新版本的现有 Azure 机器学习[环境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)（名为 AzureML-最小）。
 
 ```azurecli-interactive
 az ml model deploy -m mymodel:1 --ic myInferenceConfig.json -e AzureML-Minimal --dc deploymentconfig.json

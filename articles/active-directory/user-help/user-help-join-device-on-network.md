@@ -1,5 +1,5 @@
 ---
-title: 将工作设备加入组织的网络 - AD
+title: 将你的工作设备加入你组织的网络-AD
 description: 了解如何将工作设备加入组织的网络。
 services: active-directory
 author: curtand
@@ -13,10 +13,10 @@ ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
 ms.openlocfilehash: 0ff8b85a15d94ded2d702e0df247f9ebc4d3f923
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79266307"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>将工作设备加入组织的网络
@@ -25,7 +25,7 @@ ms.locfileid: "79266307"
 ## <a name="what-happens-when-you-join-your-device"></a>加入设备时会发生什么情况
 在将 Windows 10 设备加入组织的网络中时，会发生以下操作：
 
-- Windows 会将您的设备注册到组织的网络，允许您使用个人帐户访问资源。 设备注册后，Windows 将设备加入网络，因此你可以使用组织的用户名和密码来登录并访问受限的资源。
+- Windows 会将设备注册到组织的网络，让你使用个人帐户访问资源。 设备注册后，Windows 将设备加入网络，因此你可以使用组织的用户名和密码来登录并访问受限的资源。
 
 - （可选）根据组织的选择，可能需要通过[多重身份验证](multi-factor-authentication-end-user-first-time.md)或[安全信息](user-help-security-info-overview.md)设置双重验证。
 
@@ -61,7 +61,7 @@ ms.locfileid: "79266307"
 
     ![“设置上的帐户”屏幕](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. 选择 **"访问工作或学校**"，并确保看到显示类似"**连接到*\<your_organization>* Azure AD**"之类的文本。
+2. 选择 "**访问工作单位或学校**"，并确保显示类似于 "**连接到* \<your_organization>* Azure AD**" 的文本。
 
     ![“访问工作单位或学校”屏幕，含已连接的 contoso 帐户](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "79266307"
 
     ![“设置上的帐户”屏幕](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. 选择 **"访问工作或学校**"，并确保看到显示类似"**连接到*\<your_organization>* Azure AD**"之类的文本。
+2. 选择 "**访问工作单位或学校**"，并确保显示类似于 "**连接到* \<your_organization>* Azure AD**" 的文本。
 
     ![“访问工作单位或学校”屏幕，含已连接的 contoso 帐户](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 
@@ -115,4 +115,4 @@ ms.locfileid: "79266307"
 
 - 如果组织希望你能够注册个人设备（例如手机），请参阅[在组织的网络上注册个人设备](user-help-register-device-on-network.md)。
 
-- 如果您的组织使用 Microsoft Intune 进行管理，并且您对注册、登录或任何其他与 Intune 相关的问题有疑问，请参阅[Intune 用户帮助内容](https://docs.microsoft.com/intune-user-help/use-managed-devices-to-get-work-done)。
+- 如果你的组织使用 Microsoft Intune 进行管理，并且你对注册、登录或任何其他与 Intune 相关的问题有疑问，请参阅[intune 用户帮助内容](https://docs.microsoft.com/intune-user-help/use-managed-devices-to-get-work-done)。

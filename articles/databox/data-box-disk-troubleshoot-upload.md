@@ -1,5 +1,5 @@
 ---
-title: 使用日志对数据上传进行故障排除
+title: 使用日志排查数据上传问题
 titleSuffix: Azure Data Box Disk
 description: 介绍如何使用日志以及排查将数据上传到 Azure Data Box Disk 时出现的问题。
 services: databox
@@ -10,15 +10,15 @@ ms.topic: article
 ms.date: 06/17/2019
 ms.author: alkohli
 ms.openlocfilehash: 7c14988706ef193ef5da868c55f6c4f55e7d98f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260132"
 ---
 # <a name="understand-logs-to-troubleshoot-data-upload-issues-in-azure-data-box-disk"></a>了解如何使用日志排查将数据上传到 Azure Data Box Disk 时出现的问题
 
-本文适用于 Microsoft Azure 数据框磁盘，并介绍将数据上载到 Azure 时看到的问题。
+本文适用于 Microsoft Azure Data Box Disk 并介绍将数据上传到 Azure 时看到的问题。
 
 ## <a name="about-upload-logs"></a>关于上传日志
 
@@ -38,7 +38,7 @@ ms.locfileid: "79260132"
 
     ![门户中日志的链接](./media/data-box-disk-troubleshoot-upload/data-box-disk-portal-logs.png)
 
-2. 转到“waies”。****
+2. 转到“waies”。 
 
     ![错误和详细日志](./media/data-box-disk-troubleshoot-upload/data-box-disk-portal-logs-1.png)
 
@@ -156,7 +156,7 @@ ms.locfileid: "79260132"
 
 下表汇总了将数据上传到 Azure 时生成的错误。
 
-| 错误代码 | 描述                   |
+| 错误代码 | 说明                   |
 |-------------|------------------------------|
 |`None` |  已成功完成。           |
 |`Renamed` | 已成功重命名 Blob。   |
@@ -183,4 +183,4 @@ ms.locfileid: "79260132"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [打开数据框磁盘问题的支持票证](data-box-disk-contact-microsoft-support.md)。
+- [为 Data Box Disk 问题打开支持票证](data-box-disk-contact-microsoft-support.md)。

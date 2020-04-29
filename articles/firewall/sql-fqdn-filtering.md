@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/19/2019
 ms.author: victorh
 ms.openlocfilehash: 858cfc9a8c15f1e33e688bb5086a58f194e7173f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79501496"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>配置使用 SQL FQDN 的 Azure 防火墙应用程序规则
@@ -25,7 +25,7 @@ ms.locfileid: "79501496"
 
 使用 SQL FQDN 可以筛选流量：
 
-- 从 VNet 发往 Azure SQL 数据库或 Azure SQL 数据仓库的流量。 例如：只允许访问*sql-server1.database.windows.net。*
+- 从 VNet 发往 Azure SQL 数据库或 Azure SQL 数据仓库的流量。 例如：仅允许访问*sql-server1.database.windows.net*。
 - 从本地发往 VNet 中运行的 Azure SQL 托管实例或 SQL IaaS 的流量。
 - 从辐射到辐射基础结构发往 VNet 中运行的 Azure SQL 托管实例或 SQL IaaS 的流量。
 
@@ -37,10 +37,10 @@ ms.locfileid: "79501496"
 ## <a name="configure-using-azure-cli"></a>使用 Azure CLI 进行配置
 
 1. [使用 Azure CLI 部署 Azure 防火墙](deploy-cli.md)。
-2. 如果筛选发往 Azure SQL 数据库、SQL 数据仓库或 SQL 托管实例的流量，请确保将 SQL 连接模式设置为“代理”。**** 要了解如何切换 SQL 连接模式，请参阅[Azure SQL 连接设置](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-settings#change-connection-policy-via-azure-cli)。
+2. 如果筛选发往 Azure SQL 数据库、SQL 数据仓库或 SQL 托管实例的流量，请确保将 SQL 连接模式设置为“代理”。  若要了解如何切换 SQL 连接模式，请参阅[AZURE Sql 连接设置](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-settings#change-connection-policy-via-azure-cli)。
 
    > [!NOTE]
-   > 与重定向模式相比，SQL 代理模式可能会增大延迟。**** 若要继续使用重定向模式（在 Azure 中建立客户端连接的默认模式），可以在防火墙[网络规则](tutorial-firewall-deploy-portal.md#configure-a-network-rule)中使用 SQL [服务标记](service-tags.md)筛选访问流量。
+   > 与重定向模式相比，SQL 代理模式可能会增大延迟。   若要继续使用重定向模式（在 Azure 中建立客户端连接的默认模式），可以在防火墙[网络规则](tutorial-firewall-deploy-portal.md#configure-a-network-rule)中使用 SQL [服务标记](service-tags.md)筛选访问流量。
 
 3. 配置使用 SQL FQDN 的应用程序规则以允许访问 SQL 服务器：
 
@@ -59,11 +59,11 @@ ms.locfileid: "79501496"
 
 ## <a name="configure-using-the-azure-portal"></a>使用 Azure 门户进行配置
 1. [使用 Azure CLI 部署 Azure 防火墙](deploy-cli.md)。
-2. 如果筛选发往 Azure SQL 数据库、SQL 数据仓库或 SQL 托管实例的流量，请确保将 SQL 连接模式设置为“代理”。**** 要了解如何切换 SQL 连接模式，请参阅[Azure SQL 连接设置](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-settings#change-connection-policy-via-azure-cli)。  
+2. 如果筛选发往 Azure SQL 数据库、SQL 数据仓库或 SQL 托管实例的流量，请确保将 SQL 连接模式设置为“代理”。  若要了解如何切换 SQL 连接模式，请参阅[AZURE Sql 连接设置](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-settings#change-connection-policy-via-azure-cli)。  
 
    > [!NOTE]
-   > 与重定向模式相比，SQL 代理模式可能会增大延迟。**** 若要继续使用重定向模式（在 Azure 中建立客户端连接的默认模式），可以在防火墙[网络规则](tutorial-firewall-deploy-portal.md#configure-a-network-rule)中使用 SQL [服务标记](service-tags.md)筛选访问流量。
-3. 在应用程序规则中添加相应的协议、端口和 SQL FQDN，然后选择“保存”。****
+   > 与重定向模式相比，SQL 代理模式可能会增大延迟。   若要继续使用重定向模式（在 Azure 中建立客户端连接的默认模式），可以在防火墙[网络规则](tutorial-firewall-deploy-portal.md#configure-a-network-rule)中使用 SQL [服务标记](service-tags.md)筛选访问流量。
+3. 在应用程序规则中添加相应的协议、端口和 SQL FQDN，然后选择“保存”。 
    ![使用 SQL FQDN 的应用程序规则](media/sql-fqdn-filtering/application-rule-sql.png)
 4. 从通过防火墙筛选流量的 VNet 中的虚拟机访问 SQL。 
 5. 验证 [Azure 防火墙日志](log-analytics-samples.md)是否显示允许流量。

@@ -8,10 +8,10 @@ ms.date: 03/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: aaa3a6d128fe7dd466f6f60ab515f05fa38ba63b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79252800"
 ---
 # <a name="monitor-server-metrics"></a>监视服务器指标
@@ -23,7 +23,7 @@ Analysis Services 在 Azure 指标资源管理器（门户中的一个免费工�
 
 ## <a name="to-monitor-metrics-for-an-analysis-services-server"></a>监视 Analysis Services 服务器指标
 
-1. 在 Azure 门户中，选择“指标”****。
+1. 在 Azure 门户中，选择“指标”  。
 
     ![在 Azure 门户中监视](./media/analysis-services-monitor/aas-monitor-portal.png)
 
@@ -37,7 +37,7 @@ Analysis Services 在 Azure 指标资源管理器（门户中的一个免费工�
 
 使用此表可确定哪些指标最适用于监视方案。 在同一图表上只能显示相同单位的指标。
 
-|指标|指标显示名称|单位|聚合类型|描述|
+|指标|指标显示名称|单位|聚合类型|说明|
 |---|---|---|---|---|
 |CommandPoolJobQueueLength|命令池作业队列长度|Count|平均值|命令线程池队列中的作业数。|
 |CurrentConnections|连接: 当前连接数|Count|平均值|当前已建立的客户端连接的数量。|
@@ -88,6 +88,6 @@ Analysis Services 在 Azure 指标资源管理器（门户中的一个免费工�
 |TotalConnectionRequests|连接请求总数|Count|平均值|连接请求总数。 |
 
 ## <a name="next-steps"></a>后续步骤
-[Azure 监视器概述](../azure-monitor/overview.md)      
-[使用 Azure 指标资源管理器入门](../azure-monitor/platform/metrics-getting-started.md)      
+[Azure Monitor 概述](../azure-monitor/overview.md)      
+[Azure 指标资源管理器入门](../azure-monitor/platform/metrics-getting-started.md)      
 [Azure Monitor REST API 中的指标](/rest/api/monitor/metrics)

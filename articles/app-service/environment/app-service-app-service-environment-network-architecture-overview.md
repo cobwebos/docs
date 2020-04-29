@@ -1,6 +1,6 @@
 ---
-title: 网络架构 v1
-description: 应用服务环境网络拓扑的体系结构概述。 此文档仅提供给使用旧版 v1 ASE 的客户。
+title: 网络体系结构 v1
+description: 应用服务环境的网络拓扑的体系结构概述。 此文档仅为使用旧版 v1 ASE 的客户提供。
 author: stefsch
 ms.assetid: 13d03a37-1fe2-4e3e-9d57-46dfb330ba52
 ms.topic: article
@@ -8,10 +8,10 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: b1b866f3be789c59eea38c5c22b5557d557440be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79243843"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>应用服务环境的网络体系结构概述
@@ -64,7 +64,7 @@ ms.locfileid: "79243843"
 ## <a name="calls-between-app-service-environments"></a>在应用服务环境之间调用
 如果在相同的虚拟网络中部署多个应用服务环境，并从一个应用服务环境传出调用到另一个应用服务环境，则可能会出现更复杂的情景。  这些跨应用服务环境的调用也被视为“Internet”调用。
 
-下图显示了一个分层体系结构示例，该体系结构在一个应用服务环境（例如"前门"Web 应用）上调用应用，用于调用第二个应用服务环境的应用（例如，内部后端 API 应用，这些应用并非打算从 Internet 访问）。 
+下图显示了一个分层体系结构的示例，其中的应用程序在一台应用服务环境（例如，"前门" web 应用）调用另一个应用服务环境上的应用（例如，不打算从 Internet 访问的内部后端 API 应用）。 
 
 ![在应用服务环境之间调用][CallsBetweenAppServiceEnvironments] 
 

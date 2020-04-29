@@ -8,10 +8,10 @@ ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
 ms.openlocfilehash: 920ff19b162843d1c2d631ad192ce1b3c4273a68
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79248770"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Azure 指标资源管理器入门
@@ -27,9 +27,9 @@ Azure Monitor 指标资源管理器是 Microsoft Azure 门户的一个组件，�
 
 ## <a name="create-your-first-metric-chart"></a>创建第一个指标图表
 
-若要在资源、资源组、订阅或 Azure Monitor 视图中创建指标图表，请打开“指标”选项卡并执行以下步骤：****
+若要在资源、资源组、订阅或 Azure Monitor 视图中创建指标图表，请打开“指标”选项卡并执行以下步骤： 
 
-1. 使用资源选取器选择要查看其指标的资源。 （如果已在特定资源的上下文中打开了“指标”，则系统已预先选择该资源）。****
+1. 使用资源选取器选择要查看其指标的资源。 （如果已在特定资源的上下文中打开了“指标”，则系统已预先选择该资源）。 
 
     > ![选择资源](./media/metrics-getting-started/resource-picker.png)
 
@@ -42,11 +42,11 @@ Azure Monitor 指标资源管理器是 Microsoft Azure 门户的一个组件，�
 4. （可选）可以更改指标聚合。 例如，你可能希望图表显示指标的最小值、最大值或平均值。
 
 > [!NOTE]
-> 如果要查看在同一图表中绘制的多个指标，请使用“添加指标”按钮，并重复这些步骤****。 若要在一个视图中添加多个图表，请选择顶部的“添加图表”按钮。****
+> 如果要查看在同一图表中绘制的多个指标，请使用“添加指标”按钮，并重复这些步骤  。 若要在一个视图中添加多个图表，请选择顶部的“添加图表”按钮。 
 
 ## <a name="select-a-time-range"></a>选择时间范围
 
-默认情况下，图表显示最近 24 小时内的指标数据。 使用“时间选取器”面板可更改时间范围，以及放大或缩小图表。**** 
+默认情况下，图表显示最近 24 小时内的指标数据。 使用“时间选取器”面板可更改时间范围，以及放大或缩小图表。  
 
 ![更改时间范围面板](./media/metrics-getting-started/time-picker.png)
 
@@ -57,9 +57,9 @@ Azure Monitor 指标资源管理器是 Microsoft Azure 门户的一个组件，�
 
 [筛选](metrics-charts.md#apply-filters-to-charts)和[拆分](metrics-charts.md#apply-splitting-to-a-chart)是用于处理包含维度的指标的强大诊断工具。 这些功能会显示各种指标段（“维度值”）如何影响指标的整体值，并让你识别可能的离群值。
 
-- 通过**筛选**可以选择要包含在图表中的维度值。 例如，在绘制“服务器响应时间”指标的图表时，你可能想要成功的请求。** 需要对“请求成功”维度应用筛选器。** 
+- 通过**筛选**可以选择要包含在图表中的维度值。 例如，在绘制“服务器响应时间”指标的图表时，你可能想要成功的请求。  需要对“请求成功”维度应用筛选器。  
 
-- **拆分**可以控制图表是针对维度的每个值显示单独行，还是将值聚合为一行。 例如，可以在一行中查看所有服务器实例的平均响应时间，也可以在不同的行中查看每台服务器的此项指标。 需要对“服务器实例”维度应用拆分才能查看单独的行。**
+- **拆分**可以控制图表是针对维度的每个值显示单独行，还是将值聚合为一行。 例如，可以在一行中查看所有服务器实例的平均响应时间，也可以在不同的行中查看每台服务器的此项指标。 需要对“服务器实例”维度应用拆分才能查看单独的行。 
 
 请参阅应用了筛选和拆分的[图表示例](metric-chart-samples.md)。 本文介绍了用于配置图表的步骤。
 
@@ -70,6 +70,6 @@ Azure Monitor 指标资源管理器是 Microsoft Azure 门户的一个组件，�
 ## <a name="next-steps"></a>后续步骤
 
 * [了解指标资源管理器的高级功能](metrics-charts.md)
-* [对指标资源管理器进行排除故障](metrics-troubleshoot.md)
+* [对指标资源管理器进行故障排除](metrics-troubleshoot.md)
 * [查看 Azure 服务的可用指标列表](metrics-supported.md)
 * [查看已配置图表的示例](metric-chart-samples.md)

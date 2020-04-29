@@ -11,10 +11,10 @@ ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 9879f98e72e22fc0745a9e91f29216cbe74ab8fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79255296"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>在 Microsoft Azure 存储中管理并发
@@ -84,7 +84,7 @@ catch (StorageException ex)
 }  
 ```
 
-Azure 存储还包括支持其他条件标头，例如 If-Modified-Since、If-Unmodified-Since 和 If-None-Match，以及这些标头的组合************。 有关详细信息，请参阅[为 Blob 服务操作指定条件标头](https://msdn.microsoft.com/library/azure/dd179371.aspx)。  
+Azure 存储还包括支持其他条件标头，例如 If-Modified-Since、If-Unmodified-Since 和 If-None-Match，以及这些标头的组合    。 有关详细信息，请参阅[为 Blob 服务操作指定条件标头](https://msdn.microsoft.com/library/azure/dd179371.aspx)。  
 
 下表概述接受条件标头（例如请求中的 **If-Match**）的容器操作，以及在响应中返回 ETag 值的容器操作。  
 
@@ -160,7 +160,7 @@ catch (StorageException ex)
 }  
 ```
 
-如果尝试对租赁的 Blob 执行写入操作，而不传递租约 ID，则请求会失败，显示 412 错误。 请注意，如果该租约在调用 **UploadText** 方法前到期，但仍传递租约 ID，则请求也会失败，显示 **412** 错误。 有关管理租约到期时间和租赁指示号的详细信息，请参阅[租约 Blob](https://msdn.microsoft.com/library/azure/ee691972.aspx) REST 文档。  
+如果尝试对租赁的 Blob 执行写入操作，而不传递租约 ID，则请求会失败，显示 412 错误。 请注意，如果该租约在调用 **UploadText** 方法前到期，但仍传递租约 ID，则请求也会失败，显示 **412** 错误。 有关如何管理租约到期时间和租约 ID 的详细信息，请参阅 [Lease Blob](https://msdn.microsoft.com/library/azure/ee691972.aspx)（租用 Blob）REST 文档。  
 
 以下 Blob 操作可以使用租约来管理悲观并发：  
 
@@ -199,7 +199,7 @@ catch (StorageException ex)
 
 * [Specifying Conditional Headers for Blob Service Operations](https://msdn.microsoft.com/library/azure/dd179371.aspx)（为 Blob 服务操作指定条件标头）
 * [Lease Container](https://msdn.microsoft.com/library/azure/jj159103.aspx)（租赁容器）
-* [租赁 Blob](https://msdn.microsoft.com/library/azure/ee691972.aspx)
+* [租用 Blob](https://msdn.microsoft.com/library/azure/ee691972.aspx)
 
 ## <a name="managing-concurrency-in-table-storage"></a>在表存储中管理并发
 
@@ -213,7 +213,7 @@ catch (StorageException ex)
 4. 如果实体的当前 ETag 值与请求的必需 **If-Match** 标头中的 ETag 不同，则该服务将 412 错误返回到客户端。 这向客户端表明，其他进程自该客户端检索到实体起已更新该实体。
 5. 如果实体的当前 ETag 值与请求中的必需 **If-Match** 标头内的 ETag 相同，或者 **If-Match** 标头包含通配符 (*)，则服务执行请求的操作并更新实体的当前 ETag 值以指出已更新该值。  
 
-请注意，与 Blob 服务不同，表服务要求客户端在更新请求中包含**If-Match**标头。 但是，如果客户端在请求中将 **If-Match** 标头设置为通配符 (*)，则可以强制执行非条件更新（“以最后写入者为准”策略）并绕过并发检查。  
+请注意，与 Blob 服务不同，表服务要求客户端将 If-Match 标头包括在更新请求中  。 但是，如果客户端在请求中将 **If-Match** 标头设置为通配符 (*)，则可以强制执行非条件更新（“以最后写入者为准”策略）并绕过并发检查。  
 
 以下 C# 代码段显示以前创建或检索到的客户实体是如何更新其电子邮件地址的。 初始插入或检索操作将 ETag 值存储在客户对象中，因为示例在执行替换操作时使用相同的对象实例，所以将 ETag 值自动发送回表服务，从而使该服务可以检查是否存在并发违规情况。 如果其他进程已更新表存储中的实体，则该服务将返回 HTTP 412 (不满足前提条件) 状态消息。  可以在这里下载完整的示例：[使用 Azure 存储管理并发](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)。
 

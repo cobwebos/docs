@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: ce56c406c884471c445b25343d5c42f9edcbe4c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79249537"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Azure API 管理中的页模板
@@ -41,7 +41,7 @@ ms.locfileid: "79249537"
 ##  <a name="sign-in"></a><a name="SignIn"></a>登录  
  **登录**模板用于自定义开发人员门户中的登录页面。  
   
- ![登录页面](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APIM 登录页开发人员门户模板")  
+ ![登录页](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APIM 登录页开发人员门户模板")  
   
 ### <a name="default-template"></a>默认模板  
   
@@ -99,12 +99,12 @@ ms.locfileid: "79249537"
 </div>  
 ```  
   
-### <a name="controls"></a>控件  
- 此模板可以使用以下[页面控件](api-management-page-controls.md)。  
+### <a name="controls"></a>控制  
+ 此模板使用以下[页面控件](api-management-page-controls.md)。  
   
--   [基本登录](api-management-page-controls.md#basic-signin)  
+-   [basic-signin](api-management-page-controls.md#basic-signin)  
   
--   [供应商](api-management-page-controls.md#providers)  
+-   [providers](api-management-page-controls.md#providers)  
   
 ### <a name="data-model"></a>数据模型  
  [用户登录](api-management-template-data-model-reference.md#UseSignIn)实体。  
@@ -137,7 +137,7 @@ ms.locfileid: "79249537"
 }
 ```  
   
-##  <a name="sign-up"></a><a name="SignUp"></a>登记  
+##  <a name="sign-up"></a><a name="SignUp"></a>注册  
  **注册**模板用于自定义开发人员门户中的注册页面。  
   
  ![注册页](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APIM 注册页开发人员门户模板")  
@@ -158,10 +158,10 @@ ms.locfileid: "79249537"
 </div>  
 ```  
   
-### <a name="controls"></a>控件  
- 此模板可以使用以下[页面控件](api-management-page-controls.md)。  
+### <a name="controls"></a>控制  
+ 此模板使用以下[页面控件](api-management-page-controls.md)。  
   
--   [注册](api-management-page-controls.md#sign-up)  
+-   [sign-up](api-management-page-controls.md#sign-up)  
   
 ### <a name="data-model"></a>数据模型  
  [用户注册](api-management-template-data-model-reference.md#UserSignUp)实体。  
@@ -222,7 +222,7 @@ ms.locfileid: "79249537"
 </p>  
 ```  
   
-### <a name="controls"></a>控件  
+### <a name="controls"></a>控制  
  此模板可能不使用任何[页面控件](api-management-page-controls.md)。  
   
 ### <a name="data-model"></a>数据模型  

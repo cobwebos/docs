@@ -7,10 +7,10 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.openlocfilehash: 50bab4c26046059b993c19a030a8f840ae336ef2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79274536"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>使用 IT 服务管理连接器将 Azure 连接到 ITSM 工具
@@ -33,7 +33,7 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 -  在 ITSM 工具中，根据 Azure 警报（指标警报、活动日志警报和 Log Analytics 警报）创建工作项。
 -  可以选择将 ITSM 工具中的事件和更改请求数据同步到 Azure Log Analytics 工作区。
 
-了解更多关于[法律条款和隐私政策](https://go.microsoft.com/fwLink/?LinkID=522330&clcid=0x9)的信息。
+详细了解[法律条款和隐私策略](https://go.microsoft.com/fwLink/?LinkID=522330&clcid=0x9)。
 
 执行以下步骤即可开始使用 ITSM 连接器：
 
@@ -57,7 +57,7 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 3. 在“OMS 工作区”部分，选择要在其中安装解决方案的 Azure Log Analytics 工作区。****
    >[!NOTE]
    > * 作为从 Microsoft Operations Management Suite (OMS) 到 Azure Monitor 的持续过渡的一部分，OMS 现工作区在称为 Log Analytics 工作区。
-   > * ITSM 连接器只能在以下区域的 Log Analytics 工作区中安装：美国东部、美国西部、美国中南部、美国中西部、加拿大中部、西欧、英国南部、东南亚、日本东部、印度中部、澳大利亚东南部。
+   > * 只能在以下区域的 Log Analytics 工作区中安装 ITSM 连接器：美国东部、美国西部、美国中南部、美国西部、美国中南部、西欧、东南亚、东南亚、日本东部、印度中部、澳大利亚东南部
 
 4. 在“OMS 工作区设置”部分，选择要在其中创建解决方案资源的资源组。****
 
@@ -65,9 +65,9 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
    >[!NOTE]
    >作为从 Microsoft Operations Management Suite (OMS) 到 Azure Monitor 的持续过渡的一部分，OMS 现工作区在称为 Log Analytics 工作区。
 
-5. 单击 **“创建”**。
+5. 单击 **“创建”** 。
 
-部署解决方案资源时，窗口的右上角将显示一条通知。
+部署解决方案资源后，会在窗口的右上角出现一个通知。
 
 
 ## <a name="creating-an-itsm--connection"></a>创建 ITSM 连接
@@ -76,7 +76,7 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 
 若要创建连接，需要准备好 ITSM 工具，以允许从 ITSM 连接器解决方案建立连接。  
 
-根据您连接到的 ITSM 产品，请使用以下步骤：
+根据你要连接到的 ITSM 产品，请执行以下步骤：
 
 - [System Center Service Manager (SCSM)](../../azure-monitor/platform/itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
 - [ServiceNow](../../azure-monitor/platform/itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
@@ -130,7 +130,7 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 
 6. 从下拉列表菜单中选择“工作项”**** 类型。
    选择使用现有模板或填充 ITSM 产品要求的字段。
-7. 单击“确定”。
+7. 单击" **确定**"。
 
 创建/编辑 Azure 警报规则时，使用具有 ITSM 操作的操作组。 警报触发时，会在 ITSM 工具中创建/更新工作项。
 
@@ -151,7 +151,7 @@ ITSMC 支持使用以下 ITSM 工具建立的连接：
 
 还可以在服务映射解决方案中，将针对受影响计算机同步的事件可视化。
 
-服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 它允许如所想一般作为提供重要服务的互连系统查看服务器。 服务映射显示任何 TCP 连接的体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。 [了解详情](../../azure-monitor/insights/service-map.md)。
+服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 它允许如所想一般作为提供重要服务的互连系统查看服务器。 服务映射显示任何 TCP 连接的体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。 [了解详细信息](../../azure-monitor/insights/service-map.md)。
 
 如果使用了服务映射解决方案，则可以查看 ITSM 解决方案中创建的服务台工作项，如以下示例中所示：
 
@@ -181,7 +181,7 @@ ServiceDeskWorkItemType_s="Incident"
 - 状态
 - 紧急性
 - 影响
-- 优先度
+- Priority
 - 升级
 - 创建者
 - 解决者
@@ -189,13 +189,13 @@ ServiceDeskWorkItemType_s="Incident"
 - 源
 - 分配给
 - 类别
-- Title
-- 描述
+- 标题
+- 说明
 - 创建日期
 - 关闭日期
 - 解决日期
 - 上次修改日期
-- Computer
+- 计算机
 
 
 **工作项：** **更改请求**
@@ -209,14 +209,14 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - 关闭者
 - 源
 - 分配给
-- Title
+- 标题
 - 类型
 - 类别
 - 状态
 - 升级
 - 冲突状态
 - 紧急性
-- 优先度
+- Priority
 - 风险
 - 影响
 - 分配给
@@ -228,18 +228,18 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - 计划结束日期
 - 工作开始日期
 - 工作结束日期
-- 描述
-- Computer
+- 说明
+- 计算机
 
 ## <a name="output-data-for-a-servicenow-incident"></a>ServiceNow 事件的输出数据
 
 | Log Analytics 字段 | ServiceNow 字段 |
 |:--- |:--- |
-| ServiceDeskId_s| Number |
+| ServiceDeskId_s| 数字 |
 | IncidentState_s | 状态 |
 | Urgency_s |紧急性 |
 | Impact_s |影响|
-| Priority_s | 优先度 |
+| Priority_s | Priority |
 | CreatedBy_s | 打开者 |
 | ResolvedBy_s | 解决者|
 | ClosedBy_s  | 关闭者 |
@@ -247,17 +247,17 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | AssignedTo_s | 已分配到  |
 | Category_s | 类别 |
 | Title_s|  简短说明 |
-| Description_s|  说明 |
+| Description_s|  注意 |
 | CreatedDate_t|  已打开 |
 | ClosedDate_t| 已关闭|
 | ResolvedDate_t|已解决|
-| Computer  | 配置项 |
+| 计算机  | 配置项 |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>ServiceNow 更改请求的输出数据
 
 | Log Analytics | ServiceNow 字段 |
 |:--- |:--- |
-| ServiceDeskId_s| Number |
+| ServiceDeskId_s| 数字 |
 | CreatedBy_s | 请求者 |
 | ClosedBy_s | 关闭者 |
 | AssignedTo_s | 已分配到  |
@@ -266,7 +266,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Category_s|  类别 |
 | CRState_s|  状态|
 | Urgency_s|  紧急性 |
-| Priority_s| 优先度|
+| Priority_s| Priority|
 | Risk_s| 风险|
 | Impact_s| 影响|
 | RequestedDate_t  | 请求日期 |
@@ -275,8 +275,8 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | PlannedEndDate_t  |   计划结束日期 |
 | WorkStartDate_t  | 实际开始日期 |
 | WorkEndDate_t | 实际结束日期|
-| Description_s | 描述 |
-| Computer  | 配置项 |
+| Description_s | 说明 |
+| 计算机  | 配置项 |
 
 
 ## <a name="troubleshoot-itsm-connections"></a>排查 ITSM 连接问题
@@ -289,7 +289,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 2. 如果未向 Log Analytics 同步来自 ServiceNow 的数据，请确保 ServiceNow 实例处于非休眠状态。 如果 ServiceNow 开发实例长时间处于空闲状态，有时会进入休眠状态。 否则，请报告问题。
 3. 如果 Log Analytics 警报触发但未在 ITSM 产品中创建工作项，或配置项未创建/未链接到工作项，或出于任何一般信息的目的，请查看以下位置：
-   -  ITSMC：该解决方案显示连接/工作项/计算机等的摘要。单击显示**连接器状态**的磁贴，该磁贴将带您使用相关查询**进行"日志搜索**"。 查看含有 LogType_S as ERROR 的日志记录，了解详细信息。
+   -  ITSMC：此解决方案显示连接/工作项/计算机等的摘要。单击显示 "**连接器状态**" 的磁贴，该磁贴会使你通过相关查询来**记录搜索**。 查看含有 LogType_S as ERROR 的日志记录，了解详细信息。
    - “日志搜索”页：`*`使用 ServiceDeskLog_CL`*` 查询直接查看错误/相关信息****。
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Service Manager Web 应用部署故障排除
@@ -300,7 +300,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 ## <a name="contact-us"></a>联系我们
 
-有关 IT 服务管理连接器的任何查询或反馈，请通过 联系我们[omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com)。
+有关 IT 服务管理连接器的任何查询或反馈，请联系我们[omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com)。
 
 ## <a name="next-steps"></a>后续步骤
 [将 ITSM 产品/服务添加到 IT Service Management Connector](../../azure-monitor/platform/itsmc-connections.md)。

@@ -7,15 +7,15 @@ ms.date: 09/17/2018
 ms.author: masnider
 ms.custom: sfrev
 ms.openlocfilehash: a9266c2a8d2ad179cfdb12e367a14f37d1abc9b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79258234"
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric 术语概述
 
-Azure Service Fabric 是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务。  可以[在任何位置托管 Service Fabric 群集](service-fabric-deploy-anywhere.md)：Azure、本地数据中心或任何云提供程序。  Service Fabric 是支持 [Azure Service Fabric 网格](/azure/service-fabric-mesh)的业务流程协调程序。 可以使用任何框架编写服务，并从多个环境选项中选择运行应用程序的位置。 本文详细介绍 Service Fabric 所使用的术语，帮助了解文档中使用的术语。
+Service Fabric 是分布式系统平台，可借助它轻松打包、部署和管理可缩放且可靠的微服务。  可以[在任何位置托管 Service Fabric 群集](service-fabric-deploy-anywhere.md)：Azure、本地数据中心或任何云提供程序。  Service Fabric 是支持 [Azure Service Fabric 网格](/azure/service-fabric-mesh)的业务流程协调程序。 可以使用任何框架编写服务，并从多个环境选项中选择运行应用程序的位置。 本文详细介绍 Service Fabric 所使用的术语，帮助了解文档中使用的术语。
 
 ## <a name="infrastructure-concepts"></a>基础结构概念
 
@@ -33,7 +33,7 @@ Azure Service Fabric 是一种分布式系统平台，适用于打包、部署�
 
 **应用程序**：应用程序是网格应用程序的部署、版本控制和生存期的单位。 可以独立管理每个应用程序实例的生命周期。  应用程序由一个或多个服务代码包和设置组成。 应用程序是使用 Azure 资源模型 (RM) 架构定义的。  服务被描述为 RM 模板中的应用程序资源的属性。  应用程序使用的网络和卷由应用程序引用。  创建应用程序时，应用程序、服务、网络和卷均使用 Service Fabric 资源模型建模。
 
-**服务**：应用程序中的服务代表微服务并执行完整且独立的功能。 每个服务由一个或多个代码包组成，这些代码包描述运行与代码包关联的容器映像所需的一切。  应用程序中的服务数量可以增大和减小。
+**服务**：应用程序中的服务代表微服务并执行完整且独立的功能。 每个服务都包含一个或多个代码包，用于描述运行与代码包关联的容器映像所需的所有内容。  应用程序中的服务数量可以增大和减小。
 
 **网络**：网络资源为应用程序创建专用网络，并独立于可能引用它的应用程序或服务。 同一网络可以包含来自不同应用程序的多个服务。 网络是应用程序引用的可部署资源。
 
@@ -69,7 +69,7 @@ Azure Service Fabric 是一种分布式系统平台，适用于打包、部署�
 有两种类型的服务：
 
 * **** 无状态：服务的持久状态存储在 Azure 存储、Azure SQL 数据库、Azure Cosmos DB 等外部存储服务中时，请使用无状态服务。 当服务没有永久性存储时，请使用无状态服务。 以计算器服务为例，首先要将值传递给该服务，然后服务使用这些值执行计算并返回结果。
-* **有状态**：当您希望 Service Fabric 通过其可靠集合或可靠参与者编程模型管理服务的状态时，请使用有状态服务。 创建命名服务时，请指定要将状态分布于其中的分区数量，以实现伸缩性。 此外，指定跨节点复制状态的次数，以实现可靠性。 每个命名服务都有一个主副本和多个辅助副本。 在写入主要副本时修改命名服务的状态。 然后，Service Fabric 将此状态复制到所有辅助副本，以保持状态同步。Service Fabric 会自动检测主副本何时失败，并将现有辅助副本提升为主副本。 然后，Service Fabric 会创建新的次要副本。  
+* 有**状态**：如果要 Service Fabric 通过可靠集合或 Reliable Actors 编程模型管理服务状态，请使用有状态服务。 创建命名服务时，请指定要将状态分布于其中的分区数量，以实现伸缩性。 此外，指定跨节点复制状态的次数，以实现可靠性。 每个命名服务都有一个主副本和多个辅助副本。 在写入主要副本时修改命名服务的状态。 然后 Service Fabric 将此状态复制到所有次要副本以使状态保持同步。Service Fabric 自动检测主副本失败的时间，并将现有辅助副本升级为主副本。 然后，Service Fabric 会创建新的次要副本。  
 
 副本或实例**** 是指已部署或运行中的服务的代码（和有状态服务的状态）。 请参阅[副本和实例](service-fabric-concepts-replica-lifecycle.md)。
 
@@ -86,11 +86,11 @@ Azure Service Fabric 是一种分布式系统平台，适用于打包、部署�
 
 **** 数据包：一个磁盘目录，其中包含服务类型的静态只读数据文件，通常是照片、音频和视频文件。 服务类型的 `ServiceManifest.xml` 文件引用数据包目录中的文件。 创建命名服务后，会将数据包复制到选定来运行命名服务的一个或多个节点。 代码开始运行，现在即可访问数据文件。
 
-**** 配置包：一个磁盘目录，其中包含服务类型的静态只读配置文件，通常是文本文件。 服务类型的 `ServiceManifest.xml` 文件引用配置包目录中的文件。 创建命名服务时，配置包中的文件将复制到一个或多个选择运行命名服务的节点。 然后，代码开始运行，现在即可访问配置文件。
+**** 配置包：一个磁盘目录，其中包含服务类型的静态只读配置文件，通常是文本文件。 服务类型的 `ServiceManifest.xml` 文件引用配置包目录中的文件。 创建命名服务时，会将配置包中的文件复制到选定运行命名服务的一个或多个节点。 然后，代码开始运行，现在即可访问配置文件。
 
-**容器**：默认情况下，Service Fabric 以进程形式部署和激活这些服务。 Service Fabric 还可以部署容器映像中的服务。 容器是一种虚拟化技术，用于从应用程序抽象底层操作系统。 应用程序及其运行时、依赖项和系统库在一个容器内运行。 容器对自己的操作系统构造隔离视图具有全部专有访问权限。 服务交换矩阵支持 Linux 上的 Windows Server 容器和 Docker 容器。 有关详细信息，请参阅 [Service Fabric 和容器](service-fabric-containers-overview.md)。
+**容器**：默认情况下，Service Fabric 以进程形式部署和激活这些服务。 Service Fabric 还可以部署容器映像中的服务。 容器是一种虚拟化技术，用于从应用程序中提取基础操作系统。 应用程序及其运行时、依赖项和系统库在一个容器内运行。 容器对自己的操作系统构造隔离视图具有全部专有访问权限。 Service Fabric 支持 Linux 上的 Windows Server 容器和 Docker 容器。 有关详细信息，请参阅 [Service Fabric 和容器](service-fabric-containers-overview.md)。
 
-**** 分区方案：创建命名服务时，需要指定一个分区方案。 包含大量状态的服务跨分区拆分数据，将状态分散在群集的节点上。 通过在分区之间拆分数据，可以扩展命名服务的状态。 在分区中，无状态命名服务具有实例，而有状态命名服务具有副本。 通常，无状态命名服务只有一个分区，因为它们没有内部状态。 分区实例提供可用性。 如果一个实例失败，其他实例可继续正常运行，然后 Service Fabric 将创建新的实例。 有状态的命名服务在副本中保持其状态，并且每个分区都有自己的副本集，因此状态保持同步。如果副本失败，Service Fabric 会从现有副本生成新副本。
+**** 分区方案：创建命名服务时，需要指定一个分区方案。 包含大量状态的服务跨分区拆分数据，将状态分散在群集的节点上。 通过在分区之间拆分数据，可以扩展命名服务的状态。 在分区中，无状态命名服务具有实例，而有状态命名服务具有副本。 通常，无状态命名服务只有一个分区，因为它们没有内部状态。 分区实例提供可用性。 如果一个实例失败，其他实例可继续正常运行，然后 Service Fabric 将创建新的实例。 有状态命名服务在副本中保持其状态，每个分区都有自己的副本集，因此状态保持同步。如果副本失败，Service Fabric 会从现有副本生成新的副本。
 
 有关详细信息，请阅读 [Service Fabric Reliable Services 分区](service-fabric-concepts-partitioning.md)一文。
 
@@ -100,13 +100,13 @@ Azure Service Fabric 是一种分布式系统平台，适用于打包、部署�
 
 **** 命名服务：每个 Service Fabric 群集均有一个命名服务，该服务将服务名称解析到群集中的某个位置。 使用类似于管理群集的 Internet 域名系统 (DNS) 的方式管理服务名称和属性。 客户端可以使用命名服务安全地与群集中的任何节点进行通信，以解析服务名称及其位置。 应用程序在群集内移动。 例如，原因可以是故障、资源平衡或重设群集大小。 可开发解析当前网络位置的服务和客户端。 客户端会获得实际计算机 IP 地址及其当前运行位置所在的端口。
 
-阅读[与服务通信](service-fabric-connect-and-communicate-with-services.md)，了解有关与命名服务配合使用的客户端和服务通信 API 的详细信息。
+有关使用命名服务的客户端和服务通信 Api 的详细信息，请阅读[与服务通信](service-fabric-connect-and-communicate-with-services.md)。
 
 **** 映像存储服务：每个 Service Fabric 群集都有一个映像存储服务，其中保存已部署且版本化的应用程序包。 将应用程序包复制到映像存储，并注册该应用程序包内包含的应用程序类型。 预配应用程序类型后，根据它创建命名应用程序。 在删除某个应用程序类型的所有命名应用程序之后，可以从映像存储服务中注销该应用程序类型。
 
 有关映像存储服务的详细信息，请参阅[了解 ImageStoreConnectionString 设置](service-fabric-image-store-connection-string.md)。
 
-有关将应用程序部署到映像存储服务的详细信息，请阅读["部署应用程序](service-fabric-deploy-remove-applications.md)"一文。
+有关将应用程序部署到映像存储服务的详细信息，请阅读[部署应用程序一](service-fabric-deploy-remove-applications.md)文。
 
 **故障转移管理器服务**：每个 Service Fabric 群集都具有一个故障转移管理器服务，负责执行以下操作：
 
@@ -131,7 +131,7 @@ Service Fabric 资源是可以单独部署到 Service Fabric 的任何内容，�
 
 本机应用程序模型为应用程序提供对 Service Fabric 的完整低级别访问权限。 应用程序和服务被定义为 XML 清单文件中的已注册类型。
 
-本机模型支持 Reliable Services 和 Reliable Actors 框架，该框架提供对 C# 和 Java 中 Service Fabric 运行时 API 和群集管理 API 的访问权限。 本机模型还支持任意容器和可执行文件。 [服务结构网格环境中](/azure/service-fabric-mesh/service-fabric-mesh-overview)不支持本机模型。
+本机模型支持 Reliable Services 和 Reliable Actors 框架，该框架提供对 C# 和 Java 中 Service Fabric 运行时 API 和群集管理 API 的访问权限。 本机模型还支持任意容器和可执行文件。 [Service Fabric 网格环境](/azure/service-fabric-mesh/service-fabric-mesh-overview)中不支持本机模型。
 
 **Reliable Services**：用于构建无状态和有状态服务的 API。 有状态服务将其状态存储在 Reliable Collections（例如字典或队列）中。 也可插入各种通信堆栈，如 Web API 和 Windows Communication Foundation (WCF)。
 
@@ -141,13 +141,13 @@ Service Fabric 资源是可以单独部署到 Service Fabric 的任何内容，�
 
 **容器**：Service Fabric 支持在 Linux 上部署 Docker 容器，在 Windows Server 2016 上部署 Windows Server 容器，同时支持 Hyper-V 隔离模式。 在 Service Fabric [应用程序模型](service-fabric-application-model.md)中，容器表示放置多个服务副本的应用程序主机。 Service Fabric 可运行任何容器，该方案类似于来宾可执行的方案，可在容器内打包现有应用程序。 此外，也可[在容器内运行 Service Fabric 服务](service-fabric-services-inside-containers.md)。
 
-**来宾可执行文件**：您可以作为服务在 Azure 服务结构中运行任何类型的代码，如 Node.js、Python、Java 或C++。 Service Fabric 将这些类型的服务称为来宾可执行文件，视其为无状态服务。 在 Service Fabric 群集中运行来宾可执行文件的优点包括高可用性、运行状况监视、应用程序生命周期管理、高密度和可发现性。
+**来宾可执行文件**：可以在 Azure 中运行任何类型的代码（例如 Node.js、Python、Java 或 c + +）作为服务 Service Fabric。 Service Fabric 将这些类型的服务称为来宾可执行文件，视其为无状态服务。 在 Service Fabric 群集中运行来宾可执行文件的优点包括高可用性、运行状况监视、应用程序生命周期管理、高密度和可发现性。
 
 有关详细信息，请阅读[为服务选择编程模型](service-fabric-choose-framework.md)一文。
 
 ### <a name="docker-compose"></a>Docker Compose 
 
-[Docker Compose](https://docs.docker.com/compose/) 是 Docker 项目的一部分。 服务结构为[使用 Docker 合成模型部署应用程序](service-fabric-docker-compose.md)提供了有限的支持。
+[Docker Compose](https://docs.docker.com/compose/) 是 Docker 项目的一部分。 Service Fabric 为[使用 Docker Compose 模型部署应用程序](service-fabric-docker-compose.md)提供有限的支持。
 
 ## <a name="environments"></a>环境
 
@@ -160,7 +160,7 @@ Service Fabric 是一种开放源平台技术，多种不同的服务和产品�
 
 ## <a name="environment-framework-and-deployment-model-support-matrix"></a>环境、框架和部署模型支持矩阵
 
-不同的环境对框架和部署模型具有不同级别的支持。 下表介绍了支持的框架和部署模型组合。
+不同环境对框架和部署模型具有不同的支持级别。 下表介绍了支持的框架和部署模型组合。
 
 | 应用程序类型 | 介绍依据 | Azure Service Fabric 网格 | Azure Service Fabric 群集（任何 OS）| 本地群集 | 独立群集 |
 |---|---|---|---|---|---|
