@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.date: 08/03/2017
 ms.author: damendo
 ms.openlocfilehash: e405a91b1ea541b4ed3328fdb3bf80ca82731c93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79283233"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>通过 Azure 门户使用 Azure 网络观察程序排查连接问题
 
 > [!div class="op_single_selector"]
 > - [门户](network-watcher-connectivity-portal.md)
-> - [电源外壳](network-watcher-connectivity-powershell.md)
+> - [PowerShell](network-watcher-connectivity-powershell.md)
 > - [Azure CLI](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
 
@@ -43,15 +43,15 @@ ms.locfileid: "79283233"
 
 此示例通过端口 80 检查与目标虚拟机的连接。
 
-导航到网络观察程序并单击“排查连接问题”****。 选择虚拟机以检查其连接性。 在“目标”**** 部分，选择“选择虚拟机”****，并选择正确的虚拟机和端口来进行测试。
+导航到网络观察程序并单击“排查连接问题”  。 选择虚拟机以检查其连接性。 在“目标”  部分，选择“选择虚拟机”  ，并选择正确的虚拟机和端口来进行测试。
 
-单击“检查”**** 后，将检查指定的端口上的虚拟机间的连接性。 在此示例中，目标虚拟机不可访问，并显示了一个跃点列表。
+单击“检查”  后，将检查指定的端口上的虚拟机间的连接性。 在此示例中，目标虚拟机不可访问，并显示了一个跃点列表。
 
 ![查看虚拟机的连接性结果][1]
 
 ## <a name="check-remote-endpoint-connectivity"></a>检查远程终结点连接性
 
-若要检查远程终结点的连接性和延迟性，请在“目标”**** 区域中选择“手动指定”**** 单选按钮，输入 URL 和端口并单击“检查”****。  此步骤适用于网站等远程终结点及存储终结点。
+若要检查远程终结点的连接性和延迟性，请在“目标”  区域中选择“手动指定”  单选按钮，输入 URL 和端口并单击“检查”  。  此步骤适用于网站等远程终结点及存储终结点。
 
 ![查看网站的连接性结果][2]
 
@@ -59,7 +59,7 @@ ms.locfileid: "79283233"
 
 查看[创建警报触发的数据包捕获](network-watcher-alert-triggered-packet-capture.md)，了解如何利用虚拟机警报自动执行数据包捕获
 
-通过访问[检查 IP 流验证](diagnose-vm-network-traffic-filtering-problem.md)，查找是否允许某些流量进入或退出 VM
+访问[检查 IP 流验证](diagnose-vm-network-traffic-filtering-problem.md)，查找是否允许某些流量传入或传出 VM
 
 [1]: ./media/network-watcher-connectivity-portal/figure1.png
 [2]: ./media/network-watcher-connectivity-portal/figure2.png

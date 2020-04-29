@@ -7,17 +7,17 @@ author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
 ms.openlocfilehash: 92b6737f48d8d8704f461c9adac92284b323b05f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79274341"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>将 Operations Manager 连接到 Azure Monitor
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-若要保持 [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) 中的现有投资并将扩展功能用于 Azure Monitor，可将 Operations Manager 与 Log Analytics 工作区集成。 这允许您利用 Azure 监视器中的日志机会，同时继续使用操作管理器：
+若要保持 [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) 中的现有投资并将扩展功能用于 Azure Monitor，可将 Operations Manager 与 Log Analytics 工作区集成。 这样既可以利用 Azure Monitor 中的日志，又可以继续使用 Operations Manager 执行以下操作：
 
 * 使用 Operations Manager 监视 IT 服务的运行状况
 * 保持与支持事件和问题管理的 ITSM 解决方案集成
@@ -25,7 +25,7 @@ ms.locfileid: "79274341"
 
 与 System Center Operations Manager 集成时，可以利用 Azure Monitor 在收集、存储和分析 Operations Manager 日志数据方面的速度和效率优势，提高服务操作策略的价值。 Azure Monitor 日志查询可以帮助你确定问题的相关因素和根本原因，并重现其发生过程，为现有问题管理过程提供支持。 查询引擎在检查性能、事件和警报数据方面非常灵活，丰富的仪表板和报告功能可以有意义的方式公开此数据，这均展示了 Azure Monitor 为使 Operations Manager 锦上添花所引入的强大优势。
 
-向操作经理管理组报告的代理会根据工作区中启用的[日志分析数据源](agent-data-sources.md)和解决方案从服务器收集数据。 根据已启用的解决方案，其数据可直接从 Operations Manager 管理服务器发送到服务，或者出于在代理托管系统上收集的数据量的考虑，直接从代理发送到 Log Analytics 工作区。 管理服务器直接将数据转发到服务，数据永远不会写入操作数据库或数据仓库数据库。 当管理服务器与 Azure Monitor 断开连接时，会将数据缓存在本地直到重新建立通信。 如果管理服务器由于计划内维护或计划外停机而处于脱机状态，管理组中的另一台管理服务器将恢复与 Azure Monitor 的连接。  
+向 Operations Manager 管理组报告的代理基于在工作区中启用的 [Log Analytics 数据源](agent-data-sources.md)和解决方案收集来自服务器的数据。 根据已启用的解决方案，其数据可直接从 Operations Manager 管理服务器发送到服务，或者出于在代理托管系统上收集的数据量的考虑，直接从代理发送到 Log Analytics 工作区。 管理服务器直接将数据转发到服务，数据永远不会写入操作数据库或数据仓库数据库。 当管理服务器与 Azure Monitor 断开连接时，会将数据缓存在本地直到重新建立通信。 如果管理服务器由于计划内维护或计划外停机而处于脱机状态，管理组中的另一台管理服务器将恢复与 Azure Monitor 的连接。  
 
 下图显示了 System Center Operations Manager 管理组中的管理服务器及代理与 Azure Monitor 之间的连接，包括方向和端口。
 
@@ -33,7 +33,7 @@ ms.locfileid: "79274341"
 
 如果 IT 安全策略不允许网络上的计算机连接到 Internet，可将管理服务器配置为连接到 Log Analytics 网关，以根据启用的解决方案接收配置信息并发送收集的数据。 有关如何将 Operations Manager 管理组配置为通过 Log Analytics 网关与 Azure Monitor 通信的详细信息和步骤，请参阅[使用 Log Analytics 网关将计算机连接到 Azure Monitor](../../azure-monitor/platform/gateway.md)。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请查看以下要求。
 
@@ -43,7 +43,7 @@ ms.locfileid: "79274341"
 * Log Analytics 工作区。 有关详细信息，请查看 [Log Analytics 工作区概述](design-logs-deployment.md)。 
 * 使用 [Log Analytics 参与者角色](manage-access.md#manage-access-using-azure-permissions)成员帐户在 Azure 中进行身份验证。
 
-* 支持的区域 - 系统中心操作管理器仅支持以下 Azure 区域以连接到日志分析工作区：
+* 支持的区域-System Center Operations Manager 连接到 Log Analytics 工作区，则仅支持以下 Azure 区域：
     - 美国中西部
     - 澳大利亚东南部
     - 西欧
@@ -58,11 +58,11 @@ ms.locfileid: "79274341"
 >[!NOTE]
 >最近对 Azure API 所做的最新会阻止客户在其管理组与 Azure Monitor 之间成功配置首次集成。 对于已将其管理组与该服务进行集成的客户，除非需要重新配置现有连接，否则他们不受影响。  
 >已为以下版本的 Operations Manager 发布了新的管理包：
-> - 对于系统中心操作管理器 2019，此管理包包含在源介质中，并在设置新管理组期间或升级期间安装。
->- 运营管理器 1801 管理包也适用于运营管理器 1807。
->- 对于系统中心操作管理器 1801，[请在此处](https://www.microsoft.com/download/details.aspx?id=57173)下载管理包。
->- 对于系统中心 2016 - 运营管理器，[请在此处](https://www.microsoft.com/download/details.aspx?id=57172)下载管理包。  
->- 对于系统中心操作管理器 2012 R2，[请在此处](https://www.microsoft.com/download/details.aspx?id=57171)下载管理包。  
+> - 对于 System Center Operations Manager 2019，此管理包包含在源媒体中并在安装新管理组或升级过程中安装。
+>- Operations Manager 1801 管理包还适用于 Operations Manager 1807。
+>- 对于 System Center Operations Manager 1801，请从[此处](https://www.microsoft.com/download/details.aspx?id=57173)下载管理包。
+>- Operations Manager，请从[此处](https://www.microsoft.com/download/details.aspx?id=57172)下载管理包。2016  
+>- 对于 System Center Operations Manager 2012 R2，请从[此处](https://www.microsoft.com/download/details.aspx?id=57171)下载管理包。  
 
 
 ### <a name="network"></a>网络
@@ -104,8 +104,8 @@ ms.locfileid: "79274341"
 首次向 Log Analytics 工作区注册 Operations Manager 管理组期间，为管理组指定代理配置的选项在操作控制台中不可用。  必须成功向服务注册管理组后，此选项才可用。  若要解决此问题，需使用 Netsh，对运行操作控制台以配置集成的系统，以及管理组中的所有管理服务器进行系统代理配置的更新。  
 
 1. 打开提升的命令指示符。
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 转到“启动”****，然后键入“cmd”****。
-   b.保留“数据库类型”设置，即设置为“共享”。 右键单击**命令提示**并选择"以管理员身份运行"*。
+   a. 转到“启动”****，然后键入“cmd”****。
+   b. 右键单击 "**命令提示符**"，然后选择 "以管理员身份运行"。
 1. 键入以下命令并按 Enter****：
 
     `netsh winhttp set proxy <proxy>:<port>`
@@ -133,10 +133,10 @@ ms.locfileid: "79274341"
 
 配置与 Log Analytics 工作区的集成后，只是建立了与服务的连接，不会从向管理组报告的代理中收集任何数据。 配置针对 Azure Monitor 收集日志数据的特定代理管理计算机后才会出现这种情况。 可以单独选择计算机对象，或者选择一个包含 Windows 计算机对象的组。 不能选择包含另一个类实例的组，如逻辑磁盘或 SQL 数据库。
 
-1. 打开 Operations Manager 控制台并选择“管理”**** 工作区。
+1. 打开 Operations Manager 控制台并选择“**管理**”工作区。
 1. 展开 Operations Management Suite 节点，并单击“**连接**”。
 1. 在窗格右侧的“操作”标题下单击“**添加计算机/组**”链接。
-1. 在“计算机搜索”对话框中，可以搜索 Operations Manager 监视的计算机或组。**** 选择要将操作管理器管理服务器（包括操作管理器管理服务器）的计算机或组添加到 Azure 监视器，然后单击"**添加**"，然后单击"**确定**"。
+1. 在“计算机搜索”对话框中，可以搜索 Operations Manager 监视的计算机或组。**** 选择包括 Operations Manager 管理服务器的计算机或组以加载到 Azure Monitor 中，单击 "**添加**"，然后单击 **"确定"**。
 
 可以在 Operations 控制台“**管理**”工作区中的 Operations Management Suite 下，查看配置为从“受管理计算机”节点收集数据的计算机和组。 在此处，可根据需要添加或移除计算机和组。
 
@@ -173,13 +173,13 @@ ms.locfileid: "79274341"
 * **Microsoft.SystemCenter.Advisor.MPUpdate** - 更新 Azure Monitor 基础管理包。 默认情况下，每 12 小时运行一次。
 * **Microsoft.SystemCenter.Advisor.Core.GetIntelligencePacksRule** - 更新在工作区中启用的解决方案管理包。 默认情况下，每五 (5) 分钟运行一次。
 
-可以重写这两个规则，以防止通过禁用它们自动下载，或者修改管理服务器与 Azure 监视器同步的频率，以确定新的管理包是否可用，并且是否应下载。 请按照“[如何重写规则或监视器](https://technet.microsoft.com/library/hh212869.aspx)”的步骤，通过以秒为单位的值修改“**频率**”参数来更改同步计划，或修改“**已启用**”参数禁用规则。 锁定 Operations Manager 管理组类所有对象的替代项。
+可以重写这两个规则，以防止自动下载，方法是禁用自动下载，或修改管理服务器与 Azure Monitor 进行同步的频率，以确定新的管理包是否可用且应下载。 请按照“[如何重写规则或监视器](https://technet.microsoft.com/library/hh212869.aspx)”的步骤，通过以秒为单位的值修改“**频率**”参数来更改同步计划，或修改“**已启用**”参数禁用规则。 锁定 Operations Manager 管理组类所有对象的替代项。
 
 若要继续按照现有更改控制过程控制生产管理组中的管理包版本，可以禁用规则并在允许更新的特定时间段内将其启用。 如果环境中有开发或 QA 管理组，并且该组已连接到 Internet，则通过 Log Analytics 工作区配置该管理组，使之支持此方案。 这样，在将 Azure Monitor 管理包发布到生产管理组之前，就可以查看和评估其迭代版本。
 
 ## <a name="switch-an-operations-manager-group-to-a-new-log-analytics-workspace"></a>将 Operations Manager 组切换到新的 Log Analytics 工作区
 
-1. 登录到 中的[https://portal.azure.com](https://portal.azure.com)Azure 门户。
+1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 1. 在 Azure 门户中，单击左下角的“更多服务”****。 在资源列表中，键入“Log Analytics”****。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”，然后创建一个工作区。****  
 1. 使用属于 Operations Manager 管理员角色成员的帐户打开 Operations Manager 控制台，并选择“**管理**”工作区。
 1. 展开 Log Analytics，然后选择“连接”****。
@@ -240,7 +240,7 @@ ms.locfileid: "79274341"
    * Microsoft System Center Advisor Internal
 
 1. 在 Azure 门户中，单击“设置”磁贴。****
-1. 选择**连接源**。
+1. 选择 "**连接的源**"。
 1. 在 System Center Operations Manager 部分下的表中，应该可看到想要从工作区移除的管理组的名称。 在“**最后的数据**”列下，单击“**移除**”。  
 
     > [!NOTE]

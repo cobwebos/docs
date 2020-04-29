@@ -5,10 +5,10 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.openlocfilehash: b3d683153a1e70f4c65dcc5e401f4ee702af8b49
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277097"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>使用 Visual Studio 开发 Azure Functions  
@@ -27,7 +27,7 @@ Visual Studio 在开发函数时提供以下优势：
 
 除非另有说明，否则将演示 Visual Studio 2019 的过程和示例。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 从 Visual Studio 2017 开始，Azure Functions Tools 包含在 Visual Studio 的 Azure 开发工作负荷中。 请确保在 Visual Studio 安装中包括 **Azure 开发**工作负荷。
 
@@ -42,11 +42,11 @@ Visual Studio 在开发函数时提供以下优势：
 
 ### <a name="check-your-tools-version-in-visual-studio-2017"></a><a name="check-your-tools-version"></a>在 Visual Studio 2017 中检查工具版本
 
-1. 在“工具”菜单中，选择“扩展和更新”********。 展开**已安装** > **的工具**并选择**Azure 函数和 Web 作业工具**。
+1. 在“工具”菜单中，选择“扩展和更新”********。 展开 "**已安装** > 的**工具**"，然后选择 " **Azure Functions 和 Web 作业工具**"。
 
     ![验证 Functions 工具版本](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
 
-1. 请注意已安装**的版本**。 可以将此版本与[发行说明](https://github.com/Azure/Azure-Functions/blob/master/VS-AzureTools-ReleaseNotes.md)中列出的最新版本进行比较。 
+1. 记下已安装的**版本**。 可以将此版本与[发行说明](https://github.com/Azure/Azure-Functions/blob/master/VS-AzureTools-ReleaseNotes.md)中列出的最新版本进行比较。 
 
 1. 如果你的版本较旧，可以在 Visual Studio 中更新工具，如以下部分中所示。
 
@@ -60,7 +60,7 @@ Visual Studio 在开发函数时提供以下优势：
 
 1. 在安装程序中，选择“确定”**** 以启动，然后单击“修改”**** 以更新工具。 
 
-1. 更新完成后，选择 **"关闭"** 并重新启动可视化工作室。
+1. 更新完成后，选择 "**关闭**并重新启动 Visual Studio"。
 
 > [!NOTE]  
 > 在 Visual Studio 2019 和更高版本中，Azure Functions Tools 扩展将作为 Visual Studio 的一部分更新。  
@@ -110,7 +110,7 @@ Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webh
 
     ![创建队列触发的函数](./media/functions-develop-vs/functions-vstools-create-queuetrigger.png)
 
-    此触发器示例使用具有名为 **QueueStorage** 的键的连接字符串。 此连接字符串设置必须在[本地.settings.json 文件中](functions-run-local.md#local-settings-file)定义。
+    此触发器示例使用具有名为 **QueueStorage** 的键的连接字符串。 必须在 web.config[文件](functions-run-local.md#local-settings-file)中定义此连接字符串设置。
 
 3. 检查新添加的类。 将会看到一个静态 **Run** 方法，它已使用 **FunctionName** 属性设置了属性。 该属性指示该方法是函数的入口点。
 
@@ -136,9 +136,9 @@ Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webh
     }
     ```
 
-    已向提供给入口点方法的每个绑定参数提供了特定于绑定的属性。 该属性采用绑定信息作为参数。 在前面的示例中，第一个参数应用了**QueueTrigger**属性，指示队列触发函数。 队列名称和连接字符串设置名称作为参数传递到“QueueTrigger”属性。**** 有关详细信息，请参阅 [Azure Functions 的 Azure 队列存储绑定](functions-bindings-storage-queue-trigger.md)。
+    已向提供给入口点方法的每个绑定参数提供了特定于绑定的属性。 该属性采用绑定信息作为参数。 在上面的示例中，第一个参数应用了**QueueTrigger**属性，表示队列触发的函数。 队列名称和连接字符串设置名称作为参数传递到“QueueTrigger”属性。**** 有关详细信息，请参阅 [Azure Functions 的 Azure 队列存储绑定](functions-bindings-storage-queue-trigger.md)。
 
-可以使用上述过程向函数应用项目添加更多的函数。 项目中的每个函数可以有不同的触发器，但每个函数的触发器必须刚好一个。 有关详细信息，请参阅[Azure 函数触发器和绑定概念](functions-triggers-bindings.md)。
+可以使用上述过程向函数应用项目添加更多的函数。 项目中的每个函数可以有不同的触发器，但每个函数的触发器必须刚好一个。 有关详细信息，请参阅[Azure Functions 触发器和绑定概念](functions-triggers-bindings.md)。
 
 ## <a name="add-bindings"></a>添加绑定
 
@@ -207,7 +207,7 @@ For an example of how to test a queue triggered function, see the [queue trigger
 
 ![](./media/functions-develop-vs/functions-vstools-app-settings2.png)
 
-**本地**表示 local.settings.json 文件中的设置值，**远程**是 Azure 的函数应用中的当前设置。  选择 **"添加设置"** 以创建新的应用设置。 使用“从本地插入值”**** 链接将设置值复制到“远程”**** 字段。 你选择“确定”**** 后，挂起的更改将写入本地设置文件和函数应用。
+**本地**表示 local.settings.json 文件中的设置值，**远程**是 Azure 的函数应用中的当前设置。  选择 "**添加设置**" 以创建新的应用设置。 使用“从本地插入值”**** 链接将设置值复制到“远程”**** 字段。 你选择“确定”**** 后，挂起的更改将写入本地设置文件和函数应用。
 
 > [!NOTE]
 > 默认情况下，不会将 local.settings.json 文件签入到源代码管理中。 这意味着从源代码管理中克隆本地 Functions 项目时，该项目没有 local.settings.json 文件。 在这种情况下，需要在项目根目录中手动创建 local.settings.json 文件，以便 **Application Settings** 对话框按预期工作。 

@@ -1,5 +1,5 @@
 ---
-title: Azure 前门服务域上的地理筛选
+title: Azure 前门服务的域中的异地筛选
 description: 本文介绍 Azure Front Door 服务的地区筛选策略
 services: web-application-firewall
 author: vhorne
@@ -9,10 +9,10 @@ ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
 ms.openlocfilehash: e287da94a71fccabddb90f3f5a3699f4c4cf22a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79472599"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>什么是 Azure Front Door 的域中的地区筛选？
@@ -48,7 +48,7 @@ WAF 策略通常包括一组自定义规则。 规则由匹配条件、操作和
 | BH | 巴林|
 | BI | 布隆迪|
 | BJ | 贝宁|
-| BL | 圣巴泰勒米|
+| BL | 圣巴泰勒米岛|
 | BN | 文莱|
 | BO | 玻利维亚|
 | BR | 巴西|
@@ -131,14 +131,14 @@ WAF 策略通常包括一组自定义规则。 规则由匹配条件、操作和
 | LY | 利比亚 |
 | MA | 摩洛哥|
 | MD | 摩尔多瓦共和国|
-| MG | 马达加斯加岛|
+| MG | 马达加斯加|
 | MK | 北马其顿|
 | ML | 马里|
 | MM | 缅甸|
 | MN | 蒙古|
 | MO | 澳门特别行政区|
-| MQ | 马提尼克岛|
-| MR | 毛利塔尼亚|
+| MQ | 马提尼克|
+| MR | 毛里塔尼亚|
 | MT | 马耳他|
 | MV | 马尔代夫|
 | MW | 马拉维|
@@ -162,7 +162,7 @@ WAF 策略通常包括一组自定义规则。 规则由匹配条件、操作和
 | PL | 波兰|
 | PR | 波多黎各|
 | PT | 葡萄牙|
-| PW | 帕劳群岛|
+| PW | 帕劳|
 | PY | 巴拉圭|
 | QA | 卡塔尔|
 | RE | 留尼汪|

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/26/2020
 ms.openlocfilehash: 2c6495454e5ba2449d4b3c74a096681f74610813
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79272768"
 ---
 # <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>使用 Azure CLI 管理 Azure HDInsight 群集
@@ -23,7 +23,7 @@ ms.locfileid: "79272768"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure CLI。 如果尚未安装 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 来了解步骤。
 
@@ -31,7 +31,7 @@ ms.locfileid: "79272768"
 
 ## <a name="connect-to-azure"></a>连接到 Azure
 
-登录到 Azure 订阅。 如果计划使用 Azure 云外壳，请在代码块的右上角选择 **"试用它**"。 否则，请输入以下命令：
+登录到 Azure 订阅。 如果打算使用 Azure Cloud Shell，请在代码块的右上角选择“试用”  。 否则，请输入以下命令：
 
 ```azurecli-interactive
 az login
@@ -90,9 +90,9 @@ az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --w
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，您学习了如何执行不同的 HDInsight 群集管理任务。 若要了解详细信息，请参阅以下文章：
+本文介绍了如何执行不同的 HDInsight 群集管理任务。 若要了解详细信息，请参阅以下文章：
 
 * [使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集](hdinsight-administer-use-portal-linux.md)
 * [使用 Azure PowerShell 管理 HDInsight](hdinsight-administer-use-powershell.md)
-* [开始使用 Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
+* [Azure HDInsight 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [Azure CLI 入门](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)

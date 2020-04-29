@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 447b3dcf5040835f5a853beff68bde794ece51f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277851"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>处理 Durable Functions 中的错误 (Azure Functions)
@@ -19,7 +19,7 @@ Durable Function 业务流程采用代码实现，并可使用编程语言的内
 
 活动函数中引发的任何异常都将封送回业务流程协调程序函数，并作为 `FunctionFailedException` 引发。 可在业务流程协调程序函数中编写满足需要的错误处理和补偿代码。
 
-例如，考虑使用以下业务流程协调程序函数，将一个帐户中的资金转移到另一帐户：
+例如，考虑使用以下业务流程协调程序函数，将一个帐户中的资金转到另一帐户：
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -60,9 +60,9 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
 ```
 
 > [!NOTE]
-> 前面的 C# 示例适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关不同版本之间的差异的详细信息，请参阅[持久函数版本](durable-functions-versions.md)一文。
+> 前面的 C# 示例适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -104,7 +104,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ## <a name="automatic-retry-on-failure"></a>失败时自动重试
 
-调用活动函数或子业务流程函数时，可指定自动重试策略。 以下示例尝试调用某个函数多达 3 次，且每次重试之间等待 5 秒：
+调用活动函数或子业务流程函数时，可指定自动重试策略。 以下示例尝试调用某函数多达三次，每次重试之间等待 5 秒：
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -123,9 +123,9 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
 ```
 
 > [!NOTE]
-> 前面的 C# 示例适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关不同版本之间的差异的详细信息，请参阅[持久函数版本](durable-functions-versions.md)一文。
+> 前面的 C# 示例适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -145,14 +145,14 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-上例中的活动函数调用采用用于配置自动重试策略的参数。 可通过多种选项自定义自动重试策略：
+上一示例中的活动函数调用使用一个参数来配置自动重试策略。 可通过多种选项自定义自动重试策略：
 
-* **最大尝试次数**：重试的最大次数。
-* **首次重试间隔**：首次重试前需要等待的时间。
+* **最大尝试次数**：最大重试尝试次数。
+* **首次重试间隔**：首次尝试重试前需要等待的时间。
 * **回退系数**：用来确定回退增加速率的系数。 默认值为 1。
-* **最大重试间隔**：每次重试之间需要等待的最大时间。
-* **重试超时**：执行重试的最大时间。 默认行为是可无限期重试。
-* **句柄**：可以指定用户定义的回调，以确定是否应重试函数。
+* **最大重试间隔**：尝试重试之间需要等待的最长时间。
+* **重试超时**：执行重试所花费的最长时间。 默认行为是可无限期重试。
+* **处理**：可以指定用户定义的回叫来确定是否应该重试函数。
 
 ## <a name="function-timeouts"></a>函数超时
 
@@ -189,9 +189,9 @@ public static async Task<bool> Run([OrchestrationTrigger] IDurableOrchestrationC
 ```
 
 > [!NOTE]
-> 前面的 C# 示例适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关不同版本之间的差异的详细信息，请参阅[持久函数版本](durable-functions-versions.md)一文。
+> 前面的 C# 示例适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");

@@ -4,10 +4,10 @@ description: 说明在使用 Azure 资源管理器部署资源时如何解决 Az
 ms.topic: troubleshooting
 ms.date: 02/15/2019
 ms.openlocfilehash: a9182be53cc91240a62ab201efc53d674f7cf427
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79273769"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>解决资源提供程序注册的错误
@@ -53,7 +53,7 @@ Message: The client '<identifier>' with object id '<identifier>' does not have a
 
 ## <a name="solution-1---powershell"></a>解决方案 1 - PowerShell
 
-对于 PowerShell，请使用 Get-AzResourceProvider 查看注册状态****。
+对于 PowerShell，请使用 Get-AzResourceProvider 查看注册状态  。
 
 ```powershell
 Get-AzResourceProvider -ListAvailable
@@ -101,11 +101,11 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 
 可以通过门户查看注册状态，并注册资源提供程序命名空间。
 
-1. 在门户中，选择“所有服务”。****
+1. 在门户中，选择“所有服务”。 
 
    ![选择所有服务](./media/error-register-resource-provider/select-all-services.png)
 
-1. 选择**订阅**。
+1. 选择 **订阅**。
 
    ![选择订阅](./media/error-register-resource-provider/select-subscriptions.png)
 
@@ -113,10 +113,10 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 
    ![选择订阅以注册资源提供程序](./media/error-register-resource-provider/select-subscription-to-register.png)
 
-1. 对于订阅，选择“资源提供程序”****。
+1. 对于订阅，选择“资源提供程序”  。
 
    ![选择资源提供程序](./media/error-register-resource-provider/select-resource-provider.png)
 
-1. 查看资源提供程序列表，根据需要选择“注册”链接，注册尝试部署的类型的资源提供程序****。
+1. 查看资源提供程序列表，根据需要选择“注册”链接，注册尝试部署的类型的资源提供程序  。
 
    ![列出资源提供程序](./media/error-register-resource-provider/list-resource-providers.png)

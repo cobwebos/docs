@@ -4,10 +4,10 @@ description: 组织的见解的所有者、参与者和读者。
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.openlocfilehash: 1e57af269c4052d0dcd4a8f7970ca23017024299
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79473126"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights 中的资源、角色和访问控制
@@ -15,7 +15,7 @@ ms.locfileid: "79473126"
 通过使用 [Microsoft Azure 中基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)，可以控制哪些用户对 Azure [Application Insights][start] 中的数据具有读取和更新访问权限。
 
 > [!IMPORTANT]
-> 将访问权限分配给应用程序资源所属**资源组或订阅**中的用户（并非资源本身）。 分配 **Application Insights 组件参与者**角色。 这可确保对 Web 测试和警报及应用程序资源的访问实现统一控制。 [了解详情](#access)。
+> 将访问权限分配给应用程序资源所属**资源组或订阅**中的用户（并非资源本身）。 分配 **Application Insights 组件参与者**角色。 这可确保对 Web 测试和警报及应用程序资源的访问实现统一控制。 [了解详细信息](#access)。
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "79473126"
 
 * **资源** - Microsoft Azure 服务的实例。 Application Insights 资源会收集、分析并显示从应用程序发送的遥测数据。  其他类型的 Azure 资源包括 Web 应用、数据库和 VM。
   
-    要查看资源，请打开[Azure 门户][portal]，登录并单击"所有资源"。 为找到资源，请在筛选器字段中键入部分名称。
+    要查看资源，请打开 [Azure 门户][portal]并登录，然后单击“所有资源”。 为找到资源，请在筛选器字段中键入部分名称。
   
     ![Azure 资源的列表](./media/resources-roles-access-control/10-browse.png)
 
@@ -50,19 +50,19 @@ ms.locfileid: "79473126"
 
 必须对订阅或资源组拥有所有者权限。
 
-用户必须具有 [Microsoft 帐户][account]，或对[组织 Microsoft 帐户](../../active-directory/fundamentals/sign-up-organization.md)的访问权限。 可以将访问权限提供给个人，也可以提供给 Azure Active Directory 中定义的用户组。
+用户必须具有 [Microsoft 帐户][account]，或对其[组织 Microsoft 帐户](../../active-directory/fundamentals/sign-up-organization.md)的访问权限。 可以将访问权限提供给个人，也可以提供给 Azure Active Directory 中定义的用户组。
 
 #### <a name="navigate-to-resource-group-or-directly-to-the-resource-itself"></a>导航到资源组或直接导航到该资源本身
 
-从左侧菜单中选择“访问控制 (IAM)”****。
+从左侧菜单中选择“访问控制 (IAM)”  。
 
 ![Azure 门户中的访问控制按钮的屏幕截图](./media/resources-roles-access-control/0001-access-control.png)
 
-选择 **"添加角色分配**"
+选择“添加角色分配” 
 
 ![以红色突出显示添加按钮的访问控制菜单的屏幕截图](./media/resources-roles-access-control/0002-add.png)
 
-下面的“添加权限”**** 视图主要特定于 Application Insights 资源，如果从更高级别（如资源组）查看访问控制权限，则将看到其他并非以 Application Insights 为中心的角色。
+下面的“添加权限”  视图主要特定于 Application Insights 资源，如果从更高级别（如资源组）查看访问控制权限，则将看到其他并非以 Application Insights 为中心的角色。
 
 若要查看有关所有基于 Azure 角色的访问控制内置角色的信息，请使用[官方参考内容](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
 
@@ -76,8 +76,8 @@ ms.locfileid: "79473126"
 | --- | --- |
 | [所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) |可以更改任何内容，包括用户访问权限。 |
 | [参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) |可以编辑任何内容，包括所有资源。 |
-| [Application Insights 组件参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |可以编辑应用程序见解资源。 |
-| [读者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |可以查看但无法更改任何内容。 |
+| [Application Insights 组件参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |可以编辑 Application Insights 资源。 |
+| [读取者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |可以查看但无法更改任何内容。 |
 | [Application Insights 快照调试器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-snapshot-debugger) | 授予用户使用 Application Insights 快照调试器功能的权限。 请注意，此角色既不包含在所有者角色中，也不包含在参与者角色中。 |
 | Azure 服务部署版本管理参与者 | 通过 Azure 服务部署进行部署的服务的参与者角色。 |
 | [数据清除程序](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#data-purger) | 清除个人数据的特殊角色。 有关更多信息，请参阅我们的[个人数据指南](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data)。   |
@@ -104,7 +104,7 @@ ms.locfileid: "79473126"
 如果希望的用户不在目录中，可以邀请具有 Microsoft 帐户的任何人。
 （如果他们使用诸如 Outlook.com、OneDrive、Windows Phone 或 XBox Live 等服务，他们就会有 Microsoft 帐户。）
 
-## <a name="related-content"></a>相关的内容
+## <a name="related-content"></a>相关内容
 
 * [Azure 中基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)
 

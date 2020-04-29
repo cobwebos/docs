@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 9c292246f947e4d3a364f79b31fe7a1deebd33d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79275693"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Application Insights 中的遥测通道
@@ -17,7 +17,7 @@ ms.locfileid: "79275693"
 
 ## <a name="what-are-telemetry-channels"></a>什么是遥测通道？
 
-遥测通道负责缓冲遥测项并将其发送到 Application Insights 服务，存储在该服务中的项可用于查询和分析。 遥测通道是实现[`Microsoft.ApplicationInsights.ITelemetryChannel`](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet)接口的任何类。
+遥测通道负责缓冲遥测项并将其发送到 Application Insights 服务，存储在该服务中的项可用于查询和分析。 遥测通道是实现 [`Microsoft.ApplicationInsights.ITelemetryChannel`](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) 接口的任何类。
 
 遥测信道的 `Send(ITelemetry item)` 方法在调用所有遥测初始化表达式和遥测处理器之后调用。 因此，遥测处理器删除的任何项不会进入通道。 一般情况下，`Send()` 不会立即将项发送到后端。 它通常将这些项缓冲在内存中并分批发送，以提高传输效率。
 
@@ -27,11 +27,11 @@ ms.locfileid: "79275693"
 
 Application Insights .NET 和 .NET Core SDK 随附了两个内置通道：
 
-* `InMemoryChannel`：一个轻量级通道，用于缓冲内存中的项，直到它们被发送。 项在内存中缓冲，每隔 30 秒刷新一次，或者每当缓冲了 500 个项时刷新。 此通道提供最基本的可靠性保证，因为它在失败后不会重试发送遥测数据。 此外，此通道不会在磁盘上保留项，因此，在（正常或非正常）关闭应用程序后，未发送的所有项都会永久丢失。 此通道实现 `Flush()` 方法，使用此方法可以强制同步刷新内存中的所有遥测项。 此通道非常适合用于短时间运行的、最好是进行同步刷新的应用程序。
+* `InMemoryChannel`：一个轻型通道，它在内存中将项缓冲到发送为止。 项在内存中缓冲，每隔 30 秒刷新一次，或者每当缓冲了 500 个项时刷新。 此通道提供最基本的可靠性保证，因为它在失败后不会重试发送遥测数据。 此外，此通道不会在磁盘上保留项，因此，在（正常或非正常）关闭应用程序后，未发送的所有项都会永久丢失。 此通道实现 `Flush()` 方法，使用此方法可以强制同步刷新内存中的所有遥测项。 此通道非常适合用于短时间运行的、最好是进行同步刷新的应用程序。
 
     此通道随附在较大的 Microsoft.ApplicationInsights NuGet 包中，是未配置任何其他通道时，SDK 使用的默认通道。
 
-* `ServerTelemetryChannel`：具有重试策略和在本地磁盘上存储数据的功能的更高级通道。 如果发生暂时性错误，此通道会重试发送遥测数据。 在网络中断或者遥测量较高时，此通道还会使用本地磁盘存储在磁盘上保留项。 由于这些重试机制和本地磁盘存储，我们认为此通道更可靠，建议在所有生产方案中使用。 此通道是根据官方文档配置的 [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) 和 [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) 应用程序的默认通道。 此通道已针对长时间运行的服务器方案进行优化。 此[`Flush()`](#which-channel-should-i-use)通道实现的方法不是同步的。
+* `ServerTelemetryChannel`：一个更高级的通道，它具有重试策略，并可以在本地磁盘上存储数据。 如果发生暂时性错误，此通道会重试发送遥测数据。 在网络中断或者遥测量较高时，此通道还会使用本地磁盘存储在磁盘上保留项。 由于这些重试机制和本地磁盘存储，我们认为此通道更可靠，建议在所有生产方案中使用。 此通道是根据官方文档配置的 [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) 和 [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) 应用程序的默认通道。 此通道已针对长时间运行的服务器方案进行优化。 此通道实现的 [`Flush()`](#which-channel-should-i-use) 方法不是同步的。
 
     此通道作为 Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel NuGet 包交付，使用 Microsoft.ApplicationInsights.Web 或 Microsoft.ApplicationInsights.AspNetCore NuGet 包时可自动获取它。
 
@@ -122,11 +122,11 @@ TelemetryConfiguration.Active.TelemetryChannel = serverTelemetryChannel;
 
 下面是 `ServerTelemetryChannel` 的最常用设置：
 
-1. `MaxTransmissionBufferCapacity`：通道用于缓冲内存传输的最大内存量（以字节为单位）。 达到此容量时，新项将直接存储到本地磁盘。 默认值为 5 MB。 设置更大的值可以减少磁盘用量，但请记住，如果应用程序崩溃，内存中的项将会丢失。
+1. `MaxTransmissionBufferCapacity`：用于在内存中缓冲传输内容的通道所用的内存量，以字节为单位。 达到此容量时，新项将直接存储到本地磁盘。 默认值为 5 MB。 设置更大的值可以减少磁盘用量，但请记住，如果应用程序崩溃，内存中的项将会丢失。
 
-1. `MaxTransmissionSenderCapacity`：将同时发送到应用程序`Transmission`见解的最大实例数。 默认值为 10。 可将此设置配置为更大的数字，生成巨量的遥测数据时建议这样做。 执行负载测试或关闭采样时，往往会出现大量的遥测数据。
+1. `MaxTransmissionSenderCapacity`：要同时发送到 Application Insights 的最大 `Transmission` 实例数量。 默认值为 10。 可将此设置配置为更大的数字，生成巨量的遥测数据时建议这样做。 执行负载测试或关闭采样时，往往会出现大量的遥测数据。
 
-1. `StorageFolder`：通道用于根据需要将项目存储到磁盘的文件夹。 在 Windows 中，如果未显式指定其他路径，则会使用 %LOCALAPPDATA% 或 %TEMP%。 在非 Windows 环境中，必须指定有效的位置，否则遥测数据不会存储到本地磁盘。
+1. `StorageFolder`：磁盘上的文件夹，通道根据需要将项存储到其中。 在 Windows 中，如果未显式指定其他路径，则会使用 %LOCALAPPDATA% 或 %TEMP%。 在非 Windows 环境中，必须指定有效的位置，否则遥测数据不会存储到本地磁盘。
 
 ## <a name="which-channel-should-i-use"></a>应使用哪个通道？
 

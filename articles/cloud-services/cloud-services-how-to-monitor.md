@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: tagore
 ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79273093"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>云服务监视简介
@@ -48,13 +48,13 @@ ms.locfileid: "79273093"
 * 客户错误日志
 
 > [!IMPORTANT]
-> 虽然所有这些数据都聚合到存储帐户中，但门户**不**提供绘制数据的本机方法。 强烈建议你将另一个服务（如 Application Insights）集成到应用程序中。
+> 尽管所有这些数据都会聚合到存储帐户中，但门户**不**提供绘制数据图表的本机方法。 强烈建议你将另一个服务（如 Application Insights）集成到应用程序中。
 
 ## <a name="setup-diagnostics-extension"></a>设置诊断扩展
 
 首先，如果你没有**经典**存储帐户，请[创建一个](../storage/common/storage-account-create.md)。 确保为创建的存储帐户指定**经典部署模型**。
 
-接下来，导航到“存储帐户(经典)”资源。**** 选择 **"设置** > **访问键**"并复制**主连接字符串**值。 云服务需要此值。 
+接下来，导航到“存储帐户(经典)”资源。  选择“设置” **“访问密钥”，并复制“主连接字符串”值。**  >    云服务需要此值。 
 
 必须更改两个配置文件才能启用高级诊断：**ServiceDefinition.csdef** 和 **ServiceConfiguration.cscfg**。
 

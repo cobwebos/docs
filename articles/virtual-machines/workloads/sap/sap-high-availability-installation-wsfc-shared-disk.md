@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e50733c843dfd21e35572f00fc6690e1e84aba97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79279827"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>在 Azure 中，使用 Windows 故障转移群集和共享磁盘为 SAP ASCS/SCS 实例安装 SAP NetWeaver HA
@@ -148,13 +148,13 @@ ms.locfileid: "79279827"
 
 本文介绍如何通过使用 Windows Server 故障转移群集和群集共享磁盘，群集化 SAP ASCS/SCS 实例，在 Azure 中配置高可用性 SAP 系统。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始安装之前，请查看这些文档：
 
 * [体系结构指南：使用群集共享磁盘在 Windows 故障转移群集上群集化 SAP ASCS/SCS 实例][sap-high-availability-guide-wsfc-shared-disk]
 
-* [通过使用 SAP ASCS/SCS 实例的 Windows 故障转移群集和共享磁盘为 SAP HA 准备 Azure 基础结构][sap-high-availability-infrastructure-wsfc-shared-disk]
+* [为 SAP ASCS/SCS 实例使用 Windows 故障转移群集和共享磁盘准备 SAP HA 的 Azure 基础结构][sap-high-availability-infrastructure-wsfc-shared-disk]
 
 本文不会介绍 DBMS 安装，因为安装因所使用的 DBMS 系统而异。 本文假设 DBMS 在高可用性方面的疑虑已通过不同 DBMS 供应商为 Azure 提供的功能支持而获得解决。 例如，适用于 SQL Server 的 AlwaysOn 或数据库镜像，以及适用于 Oracle 数据库的 Oracle Data Guard。 在本文中所使用的方案中，我们未向 DBMS 添加更多保护。
 
@@ -195,7 +195,7 @@ ms.locfileid: "79279827"
 
    图 1****：定义 SAP ASCS/SCS 群集虚拟名称和 TCP/IP 地址的 DNS 条目__
 
-2. 要定义分配给虚拟主机名的 IP 地址，请选择 DNS**管理器** > **域**。
+2. 若要定义分配给虚拟主机名的 IP 地址，请选择 " **DNS 管理器** > **域**"。
 
    ![图 2：SAP ASCS/SCS 群集配置的新虚拟名称和 TCP/IP 地址][sap-ha-guide-figure-3047]
 
@@ -338,7 +338,7 @@ ms.locfileid: "79279827"
 
    ![图 4：设置新值后探测群集端口][sap-ha-guide-figure-3049]
 
-   _**图 4：** 设置新值后探测群集端口_
+   _**图4：** 设置新值后探测群集端口_
 
 ### <a name="open-the-windows-firewall-probe-port"></a><a name="4498c707-86c0-4cde-9c69-058a7ab8c3ac"></a>打开 Windows 防火墙探测端口
 
@@ -390,13 +390,13 @@ SAP PR1 群集组在群集节点 A（例如在 pr1-ascs-0）上运行。 将属�
 
 ![图 6：故障转移群集管理器：SAP \<SID\> 群集组在群集节点 A 上运行][sap-ha-guide-figure-5000]
 
-_**图 6：** 故障转移群集管理器：SAP \<SID\>群集组在群集节点 A 上运行_
+_**图6：** 故障转移群集管理器： SAP \<SID\>群集组在群集节点 A 上运行_
 
 在 SIOS DataKeeper 管理和配置工具中，可以看到共享磁盘数据以同步方式从群集节点 A 上的源卷驱动器 S 复制到群集节点 B 上的目标卷驱动器 S。例如，从 pr1-ascs-0 [10.0.0.40] 复制到 pr1-ascs-1 [10.0.0.41]。
 
 ![图 7：在 SIOS DataKeeper 中，将本地卷从群集节点 A 复制到群集节点 B][sap-ha-guide-figure-5001]
 
-_**图 7：** 在 SIOS 数据保持器中，将本地卷从群集节点 A 复制到群集节点 B_
+_**图7：** 在 SIOS DataKeeper 中，将本地卷从群集节点 A 复制到群集节点 B_
 
 ### <a name="failover-from-node-a-to-node-b"></a><a name="5e959fa9-8fcd-49e5-a12c-37f6ba07b916"></a>从节点 A 故障转移到节点 B
 
@@ -425,4 +425,4 @@ _**图 7：** 在 SIOS 数据保持器中，将本地卷从群集节点 A 复制
 
    ![图 9：SIOS DataKeeper 将本地卷从群集节点 B 复制到群集节点 A][sap-ha-guide-figure-5003]
 
-   _**图 9：** SIOS 数据保持器将本地卷从群集节点 B 复制到群集节点 A_
+   _**图9：** SIOS DataKeeper 将本地卷从群集节点 B 复制到群集节点 A_

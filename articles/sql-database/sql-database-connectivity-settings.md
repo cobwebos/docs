@@ -1,6 +1,6 @@
 ---
-title: Azure SQL 数据库和数据仓库的连接设置
-description: 本文档介绍 TLS 版本选择和代理与 Azure SQL 重定向设置
+title: 适用于 Azure SQL 数据库和数据仓库的连接设置
+description: 本文档介绍 Azure SQL 的 TLS 版本选项和代理与重定向设置
 services: sql-database
 ms.service: sql-database
 titleSuffix: Azure SQL Database and SQL Data Warehouse
@@ -10,10 +10,10 @@ ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 03/09/2020
 ms.openlocfilehash: d18fdee85bd0fbabe68fe9890c4a2dc74366041d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79366081"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL 连接设置
@@ -23,20 +23,20 @@ ms.locfileid: "79366081"
 > [!IMPORTANT]
 > 本文*不适用于* **Azure SQL 数据库托管实例**
 
-本文介绍了在服务器级别控制与 Azure SQL 数据库的连接的设置。 这些设置适用于与服务器关联的**所有**SQL 数据库和 SQL 数据仓库数据库。
+本文介绍了用于控制服务器级别的 Azure SQL 数据库连接的设置。 这些设置适用于与服务器关联的**所有**sql 数据库和 Sql 数据仓库数据库。
 
 > [!NOTE]
-> 应用这些设置后，它们**将立即生效**，如果客户端不符合每个设置的要求，则可能导致连接丢失。
+> 应用这些设置后，这些设置将**立即生效**，如果客户端不满足每个设置的要求，则可能会导致客户端的连接丢失。
 
-可通过**防火墙和虚拟网络**边栏选项卡访问连接设置，如下图所示：
+可从 "**防火墙和虚拟网络**" 边栏选项卡访问连接设置，如以下屏幕截图中所示：
 
  ![连接设置的屏幕截图][1]
 
 
 ## <a name="deny-public-network-access"></a>拒绝公共网络访问
-在 Azure 门户中，当 **"拒绝公共网络访问**"设置设置为 **"是**"时，只允许通过专用终结点进行连接。 当此设置设置为 **"否"** 时，客户端可以使用私有终结点或公共终结点进行连接。
+在 Azure 门户中，当 "**拒绝公共网络访问**" 设置设置为 **"是"** 时，只允许通过专用终结点进行连接。 如果此设置设置为 "**否**"，则客户端可以使用专用或公用终结点进行连接。
 
-设置 **"拒绝公用网络访问****为是**"后，使用公共终结点的客户端登录尝试将失败，出现以下错误：
+将 "**拒绝公共网络访问**" 设置为 **"是"** 后，使用公共终结点的客户端登录尝试将失败，并出现以下错误：
 
 ```output
 Error 47073
@@ -48,7 +48,7 @@ An instance-specific error occurred while establishing a connection to SQL Serve
 > [!IMPORTANT]
 > PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。 以下脚本需要 [Azure PowerShell 模块](/powershell/azure/install-az-ps)。
 
-以下 PowerShell 脚本显示了如何在`Get`逻辑`Set`服务器级别使用**公共网络访问**属性：
+下面的 PowerShell 脚本显示了逻辑`Get`服务器`Set`级别的 "如何" 和 "**公用网络访问**" 属性：
 
 ```powershell
 #Get the Public Network Access property
@@ -62,10 +62,10 @@ Set-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group 
 
 ## <a name="change-public-network-access-via-cli"></a>通过 CLI 更改公共网络访问
 > [!IMPORTANT]
-> 本节中的所有脚本都需要[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+> 本部分中的所有脚本都需要[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 ### <a name="azure-cli-in-a-bash-shell"></a>bash shell 中的 Azure CLI
-以下 CLI 脚本演示如何在 bash shell 中更改**公共网络访问**：
+以下 CLI 脚本演示了如何在 bash shell 中更改**公共网络访问权限**：
 
 ```azurecli-interactive
 
@@ -86,7 +86,7 @@ az sql server update -n sql-server-name -g sql-server-group --set publicNetworkA
 > [!IMPORTANT]
 > PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。 以下脚本需要 [Azure PowerShell 模块](/powershell/azure/install-az-ps)。
 
-以下 PowerShell 脚本演示如何使用 PowerShell 更改连接策略：
+下面的 PowerShell 脚本演示如何使用 PowerShell 更改连接策略：
 
 ```powershell
 # Get SQL Server ID
@@ -104,10 +104,10 @@ Set-AzResource -ResourceId $id -Properties @{"connectionType" = "Proxy"} -f
 
 ## <a name="change-connection-policy-via-azure-cli"></a>通过 Azure CLI 更改连接策略
 > [!IMPORTANT]
-> 本节中的所有脚本都需要[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+> 本部分中的所有脚本都需要[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 ### <a name="azure-cli-in-a-bash-shell"></a>bash shell 中的 Azure CLI
-以下 CLI 脚本演示如何在 bash shell 中更改连接策略： 
+以下 CLI 脚本演示了如何在 bash shell 中更改连接策略： 
 
 ```azurecli-interactive
 # Get SQL Server ID
@@ -138,7 +138,7 @@ az resource update --ids %sqlserverid% --set properties.connectionType=Proxy
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- 有关连接在 Azure SQL 数据库中工作原理的概述，请参阅[Azure SQL 连接体系结构](sql-database-connectivity-architecture.md)
+- 有关 Azure SQL 数据库中的连接的工作原理的概述，请参阅[AZURE Sql 连接体系结构](sql-database-connectivity-architecture.md)
 - 有关如何更改 Azure SQL 数据库服务器的 Azure SQL 数据库连接策略的信息，请参阅 [conn-policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy)。
 
 <!--Image references-->

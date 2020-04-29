@@ -8,10 +8,10 @@ ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
 ms.openlocfilehash: 02d04076ccc41d243a493838667f5e8cc6bfa5ac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79371148"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>（已弃用）使用 Log Analytics 监视 Azure 容器服务群集
@@ -21,7 +21,7 @@ ms.locfileid: "79371148"
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 本演练假定用户已[使用 Azure 容器服务创建 Kubernetes 群集](container-service-kubernetes-walkthrough.md)，
 
 并假设已安装 `az` Azure CLI 和 `kubectl` 工具。
@@ -92,7 +92,7 @@ kubectl create -f oms-daemonset.yaml
 ### <a name="installing-the-log-analytics-agent-using-a-kubernetes-secret"></a>使用 Kubernetes 机密安装 Log Analytics 代理
 若要保护 Log Analytics 工作区 ID 和密钥，可以使用 Kubernetes 机密作为 DaemonSet YAML 文件的一部分。
 
-- 复制脚本、机密模板文件和守护进程 YAML 文件（来自[存储库](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)），并确保它们位于同一目录中。
+- 复制脚本、机密模板文件和 DaemonSet YAML 文件（从[存储库](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)），并确保它们位于同一目录中。
   - 机密生成脚本 - secret-gen.sh
   - 机密模板 - secret-template.yaml
     - DaemonSet YAML 文件 - omsagent-ds-secrets.yaml
@@ -132,7 +132,7 @@ kubectl create -f oms-daemonset.yaml
   KEY:    88 bytes
   ```
 
-  - 通过运行以下内容创建 omsagent 守护进程集：
+  - 通过运行以下内容创建 omsagent 守护程序集：
   
   ```console
   kubectl create -f omsagent-ds-secrets.yaml

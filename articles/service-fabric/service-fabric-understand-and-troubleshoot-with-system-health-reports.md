@@ -6,14 +6,14 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: a76ae803b1283ce50d2f4e259943ce5ffcf0274c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79282011"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>使用系统运行状况报告进行故障排除
-Azure Service Fabric 组件提供有关现成群集中所有实体的系统运行状况报告。 [运行状况存储](service-fabric-health-introduction.md#health-store)根据系统报告来创建和删除实体。 它还将这些实体组织为层次结构以捕获实体交互。
+Azure Service Fabric 组件提供有关现成群集中所有实体的系统运行状况报告。 [运行状况存储](service-fabric-health-introduction.md#health-store)根据系统报告来创建和删除实体。 它还会将这些实体组织为层次结构以捕获实体交互。
 
 > [!NOTE]
 > 请阅读 [Service Fabric 运行状况模型](service-fabric-health-introduction.md)以了解与运行状况相关的概念。
@@ -23,11 +23,11 @@ Azure Service Fabric 组件提供有关现成群集中所有实体的系统运�
 使用系统运行状况报告，不仅可以查看群集和应用程序功能，还能标记问题。 对于应用程序和服务，系统运行状况报告从 Service Fabric 的角度验证实体得到实现并且正常运行。 报告既不监视服务的业务逻辑运行状况，也不检测无响应的进程。 用户服务可以使用其逻辑的特有信息来丰富运行状况数据。
 
 > [!NOTE]
-> 用户监视程序发送的运行状况报告仅在系统组件创建实体后** 才可见。 如果实体遭到删除，运行状况存储会自动删除与实体相关联的所有运行状况报告。 这同样适用于创建实体的新实例。 例如，创建新的有状态持久化服务副本实例时， 所有与旧实例关联的报告都将从存储中删除并清除。
+> 用户监视程序发送的运行状况报告仅在系统组件创建实体后  才可见。 如果实体遭到删除，运行状况存储会自动删除与实体相关联的所有运行状况报告。 这同样适用于创建实体的新实例。 例如，创建新的有状态持久化服务副本实例时， 所有与旧实例关联的报告都会从存储中删除并清除。
 > 
 > 
 
-按来源标识系统组件报告，并以“**System**”。 前缀。 监视器不能与来源使用相同的前缀，因为如果参数无效，报告会被拒绝。
+按来源标识系统组件报告，并以“**System**”。 前缀开头。 监视器不能与源使用相同的前缀，因为如果参数无效，报告会被拒绝。
 
 接下来，将以一些系统报告为例，介绍是什么触发生成这些报告，以及如何纠正报告指出的潜在问题。
 
@@ -37,21 +37,21 @@ Azure Service Fabric 组件提供有关现成群集中所有实体的系统运�
 > 
 
 ## <a name="cluster-system-health-reports"></a>群集系统运行状况报告
-群集运行状况实体在运行状况存储中自动创建。 如果一切工作正常，则不会有任何系统报告。
+群集运行状况实体在运行状况存储中自动创建。 如果一切运行正常，则不提供系统报告。
 
 ### <a name="neighborhood-loss"></a>邻居丢失
-**System.Federation** 在检测到邻居丢失时会报告一个错误。 报告来自于单个节点，并且在属性名称中包含节点 ID。 如果整个 Service Fabric 环缺少一个邻近区域，通常可以有两个事件，分别代表间隙报告的两端。 如果有多个邻居丢失，则将有更多事件。
+**System.Federation** 在检测到邻居丢失时会报告一个错误。 报告来自于单个节点，并且在属性名称中包含节点 ID。 如果整个 Service Fabric 环缺少一个邻近区域，通常可以有两个事件，分别代表间隙报告的两端。 如果有多个邻居丢失，则会有更多事件。
 
-报告将全局租用超时指定为生存时间 (TTL)。 只要条件仍处于活动状态，就会在每半个 TTL 期间重新发送一次报告。 事件到期后会自动将其删除。 过期后删除行为可以确保从运行状况存储中正常清理报告，即使在报告节点停止运行时，也不例外。
+报告将全局租用超时指定为生存时间 (TTL)。 只要条件仍处于活动状态，就会在每半个 TTL 期间重新发送一次报告。 事件过期后会被自动删除。 过期后删除行为可以确保从运行状况存储中正常清理报告，即使在报告节点停止运行时，也不例外。
 
 * **SourceId**：System.Federation
-* **属性**：从**邻域**开始，包括节点信息。
+* **属性**：以 **Neighborhood** 开头并包含节点信息。
 * **后续步骤**：调查邻近区域丢失的原因。 例如，检查群集节点之间的通信。
 
-### <a name="rebuild"></a>“重新生成”
+### <a name="rebuild"></a>重新生成
 
 “故障转移管理器(FM)”服务管理有关群集节点的信息。 当 FM 失去其数据并陷入数据丢失时，将无法保证它具有关于群集节点的最新信息。 在这种情况下，系统将经历重新生成，并且 System.FM 将从群集中的所有节点收集数据，以便重新生成其状态。 有时，由于网络或节点问题，重新生成可能会陷入卡滞或停滞。 “故障转移主管理器(FMM)”服务也可能会发生这种情况。 FMM 是一项无状态的系统服务，用于跟踪所有 FM 在群集中的位置。 FMM 主节点始终是 ID 最接近 0 的节点。 如果删除该节点，将触发重新生成。
-如果出现上面任意一种情况，System.FM**** 或 System.FMM**** 将通过错误报表对其进行标记。 重新生成可能会卡滞在以下两个阶段之一：
+如果出现上面任意一种情况，System.FM  或 System.FMM  将通过错误报表对其进行标记。 重新生成可能会卡滞在以下两个阶段之一：
 
 * **等待广播**：FM/FMM 等待其他节点的广播消息答复。
 
@@ -59,9 +59,9 @@ Azure Service Fabric 组件提供有关现成群集中所有实体的系统运�
 * **等待节点**：FM/FMM 已收到来自其他节点的广播答复，正在等待特定节点的答复。 运行状况报告列出 FM/FMM 正在等待其响应的节点。
    * **后续步骤**：调查 FM/FMM 和所列出节点之间的网络连接。 调查每个列出的节点是否存在其他可能问题。
 
-* **** SourceID：System.FM 或 System.FMM
-* **** 属性：重新生成。
-* **** 后续步骤：调查节点之间的网络连接，以及在运行状况报告的说明中列出的任何特定节点的状态。
+* **SourceID**：System.FM 或 System.FMM
+* **属性**：Rebuild。
+* **后续步骤**：调查节点之间的网络连接，以及在运行状况报告的说明中列出的任何特定节点的状态。
 
 ### <a name="seed-node-status"></a>发送节点状态
 **System.FM** 会在某些种子节点运行不正常的情况下报告群集级别的警告。 种子节点可以维护基础群集的可用性。 这些节点有助于通过在某些类型的网络故障期间，与其他节点建立租约并充当决胜属性来确保群集保持启动状态。 如果群集中的大部分种子节点故障并且无法将其恢复，则群集会自动关闭。 
@@ -69,15 +69,15 @@ Azure Service Fabric 组件提供有关现成群集中所有实体的系统运�
 如果种子节点的状态为“停机”、“已删除”或“未知”，则表明该节点运行不正常。
 种子节点状态的警告报告会列出所有运行不正常的种子节点及详细信息。
 
-* **来源 ID**： System.FM
-* **属性**： 种子节点状态
-* **后续步骤**：如果此警告在群集中显示，请按照以下说明进行修复：对于运行 Service Fabric 版本 6.5 或更高版本的群集：对于 Azure 上的 Service Fabric 群集，在种子节点关闭后，Service Fabric 将尝试将其自动更改为非种子节点。 若要实现这一点，请确保主节点类型中的非种子节点数大于或等于“发生故障”的种子节点数。 如果需要，请将更多节点添加到主节点类型以实现这一目标。
+* **SourceID**：System.FM
+* **属性**：SeedNodeStatus
+* **后续步骤**：如果此警告显示在群集中，请按以下说明来修复它：对于运行 Service Fabric 6.5 或更高版本的群集：对于 Azure 上的 Service Fabric 群集，当种子节点发生故障后，Service Fabric 会尝试自动将其更改为非种子节点。 若要实现这一点，请确保主节点类型中的非种子节点数大于或等于“发生故障”的种子节点数。 如果需要，请将更多节点添加到主节点类型以实现这一目标。
 根据群集状态，修复此问题可能需要一定的时间。 修复完以后，会自动清除警告报告。
 
 对于 Service Fabric 独立群集来说，所有种子节点必须变得正常才能清除警告报告。 需要根据种子节点运行不正常的原因采取不同的操作：如果种子节点状态为“停机”，则用户需启动该种子节点；如果种子节点状态为“已删除”或“未知”，则[需从群集中删除](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes)该种子节点。
 当所有种子节点变得正常以后，会自动清除警告报告。
 
-对于运行服务结构版本早于 6.5 的群集：在这种情况下，需要手动清除警告报告。 **用户在清除报告之前，应确保所有种子节点变得正常**：如果种子节点状态为“停机”，则用户需启动该种子节点；如果种子节点状态为“已删除”或“未知”，则需从群集中删除该种子节点。
+对于运行低于 6.5 版的 Service Fabric 的群集：在这种情况下，需手动清除警告报告。 **用户在清除报告之前，应确保所有种子节点变得正常**：如果种子节点状态为“停机”，则用户需启动该种子节点；如果种子节点状态为“已删除”或“未知”，则需从群集中删除该种子节点。
 在所有种子节点变得正常以后，请使用以下 Powershell 命令[清除警告报告](https://docs.microsoft.com/powershell/module/servicefabric/send-servicefabricclusterhealthreport)：
 
 ```powershell
@@ -126,7 +126,7 @@ HealthEvents          :
 如果 Service Fabric 负载均衡器检测到节点负载容量冲突，则报告警告。
 
 * **SourceId**：System.PLB
-* **属性**： 从**容量**开始。
+* **属性**：从**容量**开始。
 * **后续步骤**：检查已提供的指标，并查看节点上的当前容量。
 
 ### <a name="node-capacity-mismatch-for-resource-governance-metrics"></a>资源调控指标的节点容量不匹配
@@ -386,7 +386,7 @@ HealthEvents          :
 如果 **System.PLB** 检测到副本约束冲突并且无法放置所有分区副本，则报告警告。 报告详细信息会显示哪些约束和属性阻止了副本放置。
 
 * **SourceId**：System.PLB
-* **属性**： 从**副本约束冲突**开始 。
+* **属性**：以**ReplicaConstraintViolation**开头。
 
 ## <a name="replica-system-health-reports"></a>副本系统运行状况报告
 **System.RA** 表示重新配置代理组件，是用于处理副本状态的主管组件。
@@ -637,42 +637,42 @@ HealthEvents          :
                         
 ```
 
-属性和文本指明了哪些 API 无法运行。 对不同卡滞 API 采取的后续步骤是不同的。 *IStateserviceService 副本*或*无状态服务实例*上的任何 API 通常是服务代码中的一个错误。 以下部分介绍这些如何转换为[可靠服务模型](service-fabric-reliable-services-lifecycle.md)：
+属性和文本指明了哪些 API 无法运行。 对不同卡滞 API 采取的后续步骤是不同的。 *Istatefulservicereplica.changerole*或*IStatelessServiceInstance*上的任何 API 通常是服务代码中的一个 bug。 下一节将介绍这些如何转换为[Reliable Services 模型](service-fabric-reliable-services-lifecycle.md)：
 
-- **IStateservice 服务复制.打开**：此警告指示对`CreateServiceInstanceListeners`的`ICommunicationListener.OpenAsync`调用或重写的`OnOpenAsync`呼叫已卡住。
+- **Istatefulservicereplica.changerole**：此警告表明`CreateServiceInstanceListeners`，如果重写，则`ICommunicationListener.OpenAsync` `OnOpenAsync`会阻塞对、或的调用。
 
 - **IStatefulServiceReplica.Close** 和 **IStatefulServiceReplica.Abort**：最常见的情况是服务不履行传递给 `RunAsync` 的取消令牌。 也可能是无法调用 `ICommunicationListener.CloseAsync` 或 `OnCloseAsync`（若已重写）。
 
 - **IStatefulServiceReplica.ChangeRole(S)** 和 **IStatefulServiceReplica.ChangeRole(N)**：最常见的情况是服务不履行传递给 `RunAsync` 的取消令牌。 在这种情况下，最佳解决方案是重启副本。
 
-- **IStatestateService 复制.更改角色（P）：** 最常见的情况是服务尚未从`RunAsync`返回任务。
+- **Istatefulservicereplica.changerole. ChangeRole （P）**：最常见的情况是服务尚未从`RunAsync`返回任务。
 
-其他可能卡住的 API 调用位于**IReplicator**接口上。 例如：
+可能会停滞的其他 API 调用位于**IReplicator**接口上。 例如：
 
 - **IReplicator.CatchupReplicaSet**：此警告指明发生以下两个事件之一。 已启动的副本不足。 若要查看是否是这种情况，请查看分区中的副本的副本状态，或查看卡滞重新配置的 System.FM 运行状况报告。 或副本不确认操作。 PowerShell cmdlet `Get-ServiceFabricDeployedReplicaDetail` 可用于确定所有副本的进度。 问题在于，某些副本的 `LastAppliedReplicationSequenceNumber` 值落后于主要副本的 `CommittedSequenceNumber` 值。
 
-- **IReplicator.Buildreplica（\<远程复制id>）：** 此警告表示生成过程中存在问题。 有关详细信息，请参阅[副本生命周期](service-fabric-concepts-replica-lifecycle.md)。 这可能是由于复制器地址配置错误所致。 有关详细信息，请参阅[配置有状态可靠服务](service-fabric-reliable-services-configuration.md)和[在服务清单中指定资源](service-fabric-service-manifest-resources.md)。 也可能是远程节点有问题。
+- **IReplicator. ireplicator.buildreplica （\<远程 ReplicaId>）**：此警告表明生成过程中存在问题。 有关详细信息，请参阅[副本生命周期](service-fabric-concepts-replica-lifecycle.md)。 这可能是由于复制器地址配置错误所致。 有关详细信息，请参阅[配置有状态可靠服务](service-fabric-reliable-services-configuration.md)和[在服务清单中指定资源](service-fabric-service-manifest-resources.md)。 也可能是远程节点有问题。
 
 ### <a name="replicator-system-health-reports"></a>复制器系统运行状况报告
 **复制队列已满：**
-**系统.复制器**在复制队列已满时报告警告。 在主要副本上，由于一个或多个次要副本确认操作的速度较慢，复制队列通常会达到已满状态。 在辅助副本上，当服务应用操作的速度较慢时，通常会发生这种情况。 当队列不再满时，警告被清除。
+复制队列已满时，**系统**会报告警告。 在主要副本上，由于一个或多个次要副本确认操作的速度较慢，复制队列通常会达到已满状态。 在辅助副本上，当服务应用操作的速度较慢时，通常会发生这种情况。 当队列不再满时，警告被清除。
 
 * **SourceId**：System.Replicator
-* **属性**：**主复制队列状态**或**辅助复制队列状态**，具体取决于副本角色。
+* **属性**： **PrimaryReplicationQueueStatus**或**SecondaryReplicationQueueStatus**，具体取决于副本角色。
 * **后续步骤**：如果报告位于主要副本上，请检查群集中节点间的连接。 如果所有连接都正常，则可能至少有一个慢速次要副本在应用操作时具有高磁盘延迟。 如果报告位于次要副本上，则先检查节点上的磁盘使用情况和性能。 然后检查从慢速节点到主要副本的传出连接。
 
-**远程复制器连接状态：**
-**系统.主副本上的复制器**在连接到辅助（远程）复制器的连接不正常时报告警告。 报告的信息中会显示远程复制器的地址，这样可以更方便地检测是否传入了错误的配置，或者复制器之间是否存在网络问题。
+**RemoteReplicatorConnectionStatus：**
+如果与辅助（远程）复制器的连接不正常，主副本上的**系统**将报告警告。 报告的信息中会显示远程复制器的地址，这样可以更方便地检测是否传入了错误的配置，或者复制器之间是否存在网络问题。
 
 * **SourceId**：System.Replicator
 * **属性**：**RemoteReplicatorConnectionStatus**。
 * **后续步骤**：检查错误消息并确保已正确配置远程复制器地址。 例如，如果使用“localhost”侦听地址打开远程复制器，则无法从外部访问。 如果地址看上去正确，请检查主节点和远程地址间的连接，以找出任何潜在的网络问题。
 
 ### <a name="replication-queue-full"></a>复制队列已满
-如果复制队列已满，则 **System.Replicator** 报告警告。 在主要副本上，由于一个或多个次要副本确认操作的速度较慢，复制队列通常会达到已满状态。 在辅助副本上，当服务应用操作的速度较慢时，通常会发生这种情况。 当队列不再满时，警告被清除。
+如果复制队列已满，则 **System.Replicator** 报告警告。 在主要副本上，由于一个或多个次要副本确认操作的速度较慢，复制队列通常会达到已满状态。 辅助副本上服务应用操作的速度较慢时，通常会发生这种情况。 队列不再满时，警告会被清除。
 
 * **SourceId**：System.Replicator
-* **属性**：**主复制队列状态**或**辅助复制队列状态**，具体取决于副本角色。
+* **属性**：**PrimaryReplicationQueueStatus** 或 **SecondaryReplicationQueueStatus**，视副本角色而定。
 
 ### <a name="slow-naming-operations"></a>命名操作速度慢
 如果命名操作耗时超过可接受范围，System.NamingService**** 会报告主要副本的运行状况。 [CreateServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) 或 [DeleteServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync) 都是命名操作的示例。 可以在 FabricClient 下找到更多方法。 例如，可在[服务管理方法](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient)或[属性管理方法](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.propertymanagementclient)下找到更多方法。
@@ -787,7 +787,7 @@ HealthEvents                       :
 如果服务包在节点上成功激活，则 System.Hosting 报告正常。 否则报告错误。
 
 * **SourceId**：System.Hosting
-* **属性**： 激活。
+* **属性**：激活。
 * **后续步骤**：调查激活失败的原因。
 
 ### <a name="code-package-activation"></a>代码包激活
@@ -797,7 +797,7 @@ HealthEvents                       :
 * **属性**：使用前缀 CodePackageActivation，并包含 CodePackageActivation:CodePackageName:SetupEntryPoint/EntryPoint 形式的代码包名称和入口点******。 例如，CodePackageActivation:Code:SetupEntryPoint****。
 
 ### <a name="service-type-registration"></a>服务类型注册
-如果服务类型注册成功，System.Hosting 报告正常。 如果注册没有及时完成，则报告错误，使用**ServiceType 注册超时**进行配置。 如果运行时已关闭，服务类型会从节点取消注册，并且 Hosting 会报告警告。
+如果服务类型注册成功，System.Hosting 报告正常。 如果注册未按使用**ServiceTypeRegistrationTimeout**进行配置，则会报告错误。 如果运行时已关闭，服务类型会从节点取消注册，并且 Hosting 会报告警告。
 
 * **SourceId**：System.Hosting
 * **属性**：使用前缀 ServiceTypeRegistration****，并包含服务类型名称。 例如，ServiceTypeRegistration:FileStoreServiceType****。
@@ -862,7 +862,7 @@ HealthEvents               :
 如果升级期间验证失败或节点上的升级失败，System.Hosting 报告错误。
 
 * **SourceId**：System.Hosting
-* **属性**： 使用前缀**Fabric 升级验证**并包含升级版本。
+* **属性**：使用前缀**FabricUpgradeValidation** ，并包含升级版本。
 * **说明**：指向遇到的错误。
 
 ### <a name="undefined-node-capacity-for-resource-governance-metrics"></a>资源调控指标的节点容量未定义

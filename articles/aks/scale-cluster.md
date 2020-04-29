@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: iainfou
 ms.openlocfilehash: 55d7a00a0a8c0b655f06810f8bcea7126bb9167f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79368411"
 ---
 # <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>在 Azure Kubernetes 服务 (AKS) 群集中缩放节点数
@@ -19,13 +19,13 @@ ms.locfileid: "79368411"
 
 ## <a name="scale-the-cluster-nodes"></a>缩放群集节点
 
-首先，使用 [az aks show][az-aks-show] 命令获取节点池的名称**。 以下示例获取 myResourceGroup 资源组中名为 myAKSCluster 的群集的节点池名称****：
+首先，使用 [az aks show][az-aks-show] 命令获取节点池的名称  。 以下示例获取 myResourceGroup 资源组中名为 myAKSCluster 的群集的节点池名称   ：
 
 ```azurecli-interactive
 az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPoolProfiles
 ```
 
-以下示例输出表明名称为 nodepool1****：
+以下示例输出表明名称为 nodepool1   ：
 
 ```output
 [
@@ -41,13 +41,13 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPo
 ]
 ```
 
-使用 [az aks scale][az-aks-scale] 命令缩放群集节点。 以下示例将名为 *myAKSCluster* 的群集缩放为单个节点。 提供前一个命令中自己的 --nodepool-name，如 nodepool1****：
+使用 [az aks scale][az-aks-scale] 命令缩放群集节点。 以下示例将名为 *myAKSCluster* 的群集缩放为单个节点。 提供前一个命令中自己的 --nodepool-name，如 nodepool1   ：
 
 ```azurecli-interactive
 az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 1 --nodepool-name <your node pool name>
 ```
 
-以下示例输出显示群集已成功缩放为一个节点，如 agentPoolProfiles 部分中所示**：
+以下示例输出显示群集已成功缩放为一个节点，如 agentPoolProfiles 部分中所示  ：
 
 ```json
 {
@@ -71,7 +71,7 @@ az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 1
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，你手动缩放了 AKS 群集以增加或减少节点数量。 您还可以使用[群集自动缩放器][cluster-autoscaler]自动缩放群集。
+在本文中，你手动缩放了 AKS 群集以增加或减少节点数量。 你还可以使用[群集自动缩放程序][cluster-autoscaler]自动缩放群集。
 
 <!-- LINKS - external -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/

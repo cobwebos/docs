@@ -10,21 +10,21 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 2edd62825de08becf22f2f953a63a7f89f55e0a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79283051"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中为复杂数据类型建模
 
-用于填充 Azure 认知搜索索引的外部数据集可以采用多种形状。 有时它们包含分层或嵌套的子结构。 示例包括单个客户的多个地址、单个 SKU 的多个颜色和大小、一本书籍的多位作者等等。 在建模术语中，这些结构可能称作复杂、组合、复合或聚合数据类型。******** Azure 认知搜索对此概念使用的术语是“复杂类型”。**** 在 Azure 认知搜索中，复杂类型是使用**复杂字段**建模的。 复杂字段是包含子级（子字段）的字段，这些子级可以是任何数据类型（包括其他复杂类型）。 其工作原理类似于编程语言中的结构化数据类型。
+用于填充 Azure 认知搜索索引的外部数据集可以采用多种形状。 有时它们包含分层或嵌套的子结构。 示例包括单个客户的多个地址、单个 SKU 的多个颜色和大小、一本书籍的多位作者等等。 在建模术语中，这些结构可能称作复杂、组合、复合或聚合数据类型。     Azure 认知搜索对此概念使用的术语是“复杂类型”。  在 Azure 认知搜索中，复杂类型是使用**复杂字段**建模的。 复杂字段是包含子级（子字段）的字段，这些子级可以是任何数据类型（包括其他复杂类型）。 其工作原理类似于编程语言中的结构化数据类型。
 
 复杂字段表示文档中的单个对象，或对象的数组，具体取决于数据类型。 `Edm.ComplexType` 类型的字段表示单个对象，而 `Collection(Edm.ComplexType)` 类型的字段表示对象的数组。
 
 Azure 认知搜索原生支持复杂类型和集合。 使用这些类型几乎可为 Azure 认知搜索索引中的任何 JSON 结构建模。 在旧版的 Azure 认知搜索 API 中，只能导入平展的行集。 在最新版本中，索引可以更密切地对应于源数据。 换言之，如果源数据使用复杂类型，则索引也可以使用复杂类型。
 
-若要开始，我们建议使用 [Hotels 数据集](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md)，可以在 Azure 门户上“导入数据”向导中加载该数据集。**** 该向导会检测源中的复杂类型，并根据检测到的结构建议一个索引架构。
+若要开始，我们建议使用 [Hotels 数据集](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md)，可以在 Azure 门户上“导入数据”向导中加载该数据集。  该向导会检测源中的复杂类型，并根据检测到的结构建议一个索引架构。
 
 > [!Note]
 > `api-version=2019-05-06` 正式支持复杂类型。 
@@ -113,7 +113,7 @@ Azure 认知搜索原生支持复杂类型和集合。 使用这些类型几乎�
 
     search=Address/City:Portland AND Address/State:OR
 
-此类查询对于全文搜索是不相关联的，这与筛选器不同。** 在筛选器中，对复杂集合子字段的查询使用[`any`或`all`](search-query-odata-collection-operators.md)中的范围变量进行关联。 上述 Lucene 查询返回包含“Portland, Maine”和“Portland, Oregon”以及 Oregon 中其他城市的文档。 之所以返回此结果，是因为每个子句将应用到其在整个文档中的字段的所有值，因此没有“当前子文档”的概念。 有关此方面内容的详细信息，请参阅[了解 Azure 认知搜索中的 OData 集合筛选器](search-query-understand-collection-filters.md)。
+此类查询对于全文搜索是不相关联的，这与筛选器不同。  在筛选器中，基于复杂集合子字段的查询将通过 [`any` 或 `all`](search-query-odata-collection-operators.md) 中的范围变量相关联。 上述 Lucene 查询返回包含“Portland, Maine”和“Portland, Oregon”以及 Oregon 中其他城市的文档。 之所以返回此结果，是因为每个子句将应用到其在整个文档中的字段的所有值，因此没有“当前子文档”的概念。 有关此方面内容的详细信息，请参阅[了解 Azure 认知搜索中的 OData 集合筛选器](search-query-understand-collection-filters.md)。
 
 ## <a name="selecting-complex-fields"></a>选择复杂字段
 
@@ -145,7 +145,7 @@ Azure 认知搜索原生支持复杂类型和集合。 使用这些类型几乎�
 
     $filter=Address/Country eq 'Canada'
 
-若要根据复杂集合字段进行筛选，可以结合 [`any` 和 `all` 运算符](search-query-odata-collection-operators.md)使用 **Lambda 表达式**。 在这种情况下，Lambda 表达式的**范围变量**是包含子字段的对象。 可以使用标准 OData 路径语法来引用这些子字段。 例如，以下筛选器将返回至少提供一间豪华客房，且所有客房都禁止吸烟的所有酒店：
+若要根据复杂集合字段进行筛选，可以结合  和 [ 运算符`any`使用 `all`Lambda 表达式](search-query-odata-collection-operators.md)。 在这种情况下，Lambda 表达式的**范围变量**是包含子字段的对象。 可以使用标准 OData 路径语法来引用这些子字段。 例如，以下筛选器将返回至少提供一间豪华客房，且所有客房都禁止吸烟的所有酒店：
 
     $filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)
 
@@ -153,7 +153,7 @@ Azure 认知搜索原生支持复杂类型和集合。 使用这些类型几乎�
 
 ## <a name="next-steps"></a>后续步骤
 
-尝试在“导入数据”向导中练习 [Hotels 数据集](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md)。**** 需要使用自述文件中提供的 Cosmos DB 连接信息来访问这些数据。
+尝试在“导入数据”向导中练习 [Hotels 数据集](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md)。  需要使用自述文件中提供的 Cosmos DB 连接信息来访问这些数据。
 
 获取该信息后，向导中的第一步是创建新的 Azure Cosmos DB 数据源。 然后，在向导中进入目标索引页后，会看到使用复杂类型的索引。 请创建并加载此索引，然后执行查询来了解新结构。
 

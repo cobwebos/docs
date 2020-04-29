@@ -4,21 +4,21 @@ description: 本文介绍 Azure 备份服务如何备份 Azure 虚拟机，以�
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.openlocfilehash: f4b36f57362607a13c09896cd7109596aba0a852
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79415969"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>概要了解 Azure VM 备份
 
 本文介绍 [Azure 备份服务](backup-introduction-to-azure-backup.md)如何备份 Azure 虚拟机 (VM)。
 
-Azure 备份提供独立和隔离的备份，以防止 VM 上数据的意外破坏。 备份存储在提供恢复点内置管理的恢复服务保管库中。 配置和缩放非常简单，备份经过优化，您可以根据需要轻松进行还原。
+Azure 备份提供独立且独立的备份来防止 Vm 上数据的意外破坏。 备份存储在提供恢复点内置管理的恢复服务保管库中。 配置和缩放很简单，备份经过优化，可根据需要轻松还原。
 
-作为备份过程的一部分，[将拍摄快照](#snapshot-creation)，并将数据传输到恢复服务保管库，不会影响生产工作负载。 快照提供不同级别的一致性，[如下所述](#snapshot-consistency)。
+作为备份过程的一部分，将[创建快照](#snapshot-creation)，并将数据传输到恢复服务保管库，而不会影响生产工作负荷。 快照提供了不同的一致性级别[，如下所述。](#snapshot-consistency)
 
-Azure 备份还为数据库工作负载（如[SQL Server](backup-azure-sql-database.md)和[SAP HANA）](sap-hana-db-about.md)提供专用产品，这些工作负载具有工作负载感知性，提供 15 分钟的 RPO（恢复点目标），并允许备份和还原各个数据库。
+Azure 备份还为数据库工作负荷（如[SQL Server](backup-azure-sql-database.md)和[SAP HANA](sap-hana-db-about.md) ）提供专门的产品/服务，可提供15分钟的 RPO （恢复点目标），并允许备份和还原单个数据库。
 
 ## <a name="backup-process"></a>备份过程
 
@@ -26,8 +26,8 @@ Azure 备份还为数据库工作负载（如[SQL Server](backup-azure-sql-datab
 
 1. 对于选择进行备份的 Azure VM，Azure 备份服务将根据指定的备份计划启动备份作业。
 1. 首次备份期间，如果 VM 已运行，则会在 VM 上安装备份扩展。
-    - 对于 Windows VM，将安装[VMSnapshot 扩展](https://docs.microsoft.com/azure/virtual-machines/extensions/vmsnapshot-windows)。
-    - 对于 Linux VM，将安装[VMSnapshotLinux 扩展](https://docs.microsoft.com/azure/virtual-machines/extensions/vmsnapshot-linux)。
+    - 对于 Windows Vm，安装了[VMSnapshot 扩展](https://docs.microsoft.com/azure/virtual-machines/extensions/vmsnapshot-windows)。
+    - 对于 Linux Vm，安装了[VMSnapshotLinux 扩展](https://docs.microsoft.com/azure/virtual-machines/extensions/vmsnapshot-linux)。
 1. 对于正在运行的 Windows VM，备份服务将与卷影复制服务 (VSS) 互相配合，来创建 VM 的应用一致性快照。
     - 备份服务默认创建完整的 VSS 备份。
     - 如果备份服务无法创建应用一致性快照，则会创建基础存储的文件一致性快照（因为当 VM 停止时，不会发生应用程序写入）。
@@ -64,9 +64,9 @@ Azure 备份还为数据库工作负载（如[SQL Server](backup-azure-sql-datab
 
 Azure 备份根据备份计划创建快照。
 
-- **Windows VM：** 对于 Windows VM，备份服务与 VSS 协调，以拍摄 VM 磁盘的应用一致的快照。  默认情况下，Azure 备份需要完整的 VSS 备份（它在备份时会截取应用程序日志，如 SQL Server，以获得应用程序级别的一致备份）。  如果在 Azure VM 备份上使用 SQL Server 数据库，则可以修改设置以执行 VSS 复制备份（以保留日志）。 有关详细信息，请参阅[此文章](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues)。
+- **Windows vm：** 对于 Windows Vm，备份服务会与 VSS 协调使用 VM 磁盘的应用一致性快照。  默认情况下，Azure 备份会进行完整的 VSS 备份（它会在备份时截断应用程序的日志，如 SQL Server，以获取应用程序级别一致的备份）。  如果在 Azure VM 备份上使用 SQL Server 数据库，则可以修改设置以执行 VSS 副本备份（以保留日志）。 有关详细信息，请参阅[此文章](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues)。
 
-- **Linux VM：** 要获取 Linux VM 的应用一致性快照，请使用 Linux 预脚本和脚本后框架编写您自己的自定义脚本以确保一致性。
+- **Linux vm：** 若要获取 Linux Vm 的应用一致性快照，请使用 Linux 前脚本和后脚本框架编写你自己的自定义脚本，以确保一致性。
 
   - Azure 备份只调用你编写的前脚本/后脚本。
   - 如果前脚本和后脚本成功执行，Azure 备份会将恢复点标记为应用程序一致。 但是，在使用自定义脚本时，你最终需要为应用程序一致性负责。
@@ -78,8 +78,8 @@ Azure 备份根据备份计划创建快照。
 
 **快照** | **详细信息** | **恢复** | **注意事项**
 --- | --- | --- | ---
-**应用程序一致** | 应用一致性备份捕获内存内容和挂起的 I/O 操作。 应用一致性快照使用 VSS 编写器（或适用于 Linux 的前/后脚本）来确保备份之前的应用数据一致性。 | 使用应用一致性快照恢复 VM 时，VM 将会启动。 没有数据损坏或丢失。 应用以一致的状态启动。 | 窗口：所有 VSS 编写器都成功<br/><br/> Linux：预/后脚本已配置并成功
-**文件系统一致性** | 文件系统一致性备份通过同时创建所有文件的快照来提供一致性。<br/><br/> | 使用文件系统一致性快照恢复 VM 时，VM 将会启动。 没有数据损坏或丢失。 应用需要实现自己的“修复”机制以确保还原的数据一致。 | 窗口：某些 VSS 编写器失败 <br/><br/> Linux：默认值（如果预/后脚本未配置或失败）
+**应用程序一致** | 应用一致性备份捕获内存内容和挂起的 I/O 操作。 应用一致性快照使用 VSS 编写器（或适用于 Linux 的前/后脚本）来确保备份之前的应用数据一致性。 | 使用应用一致性快照恢复 VM 时，VM 将会启动。 没有数据损坏或丢失。 应用以一致的状态启动。 | Windows：所有 VSS 编写器均已成功<br/><br/> Linux：预/后脚本已配置且已成功
+**文件系统一致性** | 文件系统一致性备份通过同时创建所有文件的快照来提供一致性。<br/><br/> | 使用文件系统一致性快照恢复 VM 时，VM 将会启动。 没有数据损坏或丢失。 应用需要实现自己的“修复”机制以确保还原的数据一致。 | Windows：某些 VSS 编写器失败 <br/><br/> Linux：默认（如果预/后脚本未配置或失败）
 **崩溃一致性** | 如果在备份时 Azure VM 关闭，则往往会发生崩溃一致性快照。 仅会捕获和备份备份时磁盘上已存在的数据。 | 从 VM 启动过程开始，然后进行磁盘检查以修复损坏错误。 在崩溃之前未传输到磁盘的任何内存中数据或写入操作将会丢失。 应用实现自己的数据验证。 例如，数据库应用可以使用其事务日志进行验证。 如果事务日志中有条目不在数据库中，则数据库软件将回滚事务，直到数据一致。 | VM 处于关闭（已停止/已解除分配）状态。
 
 ## <a name="backup-and-restore-considerations"></a>备份和还原注意事项
@@ -87,7 +87,7 @@ Azure 备份根据备份计划创建快照。
 **注意事项** | **详细信息**
 --- | ---
 **磁盘** | 备份 VM 磁盘属于并行操作。 例如，如果 VM 有 4 个磁盘，则备份服务会尝试并行备份所有 4 个磁盘。 备份是增量式的（仅备份已更改的数据）。
-**调度** |  若要减少备份流量，请在一天的不同时间备份不同的 VM，并确保时间不重叠。 同时备份 VM 会导致流量拥塞。
+**日程安排** |  若要减少备份流量，请在一天的不同时间备份不同的 VM，并确保时间不重叠。 同时备份 VM 会导致流量拥塞。
 **准备备份** | 注意准备备份所需的时间。 准备时间包括安装或更新备份扩展，以及根据备份计划触发快照。
 **数据传输** | 考虑 Azure 备份识别上一备份中的增量更改所需的时间。<br/><br/> 在增量备份中，Azure 备份将通过计算块的校验和来确定更改。 如果某个块发生更改，则将该块标识为要传输到保管库。 该服务将分析已标识的块，以试图进一步地尽量减少要传输的数据量。 评估所有已更改的块后，Azure 备份会将更改传输到保管库。<br/><br/> 创建快照之后，可能要经过一段滞后时间才会将它复制到保管库。<br/><br/> 在高峰期，处理备份最长可能需要花费 8 个小时。 对于每日备份，VM 的备份时间小于 24 小时。
 **初始备份** | 增量备份的总备份时间不超过 24 小时，但是，首次备份可能并非如此。 初始备份所需的时间取决于数据大小和备份处理时间。
@@ -98,17 +98,17 @@ Azure 备份根据备份计划创建快照。
 
 这些常见的场景可能会影响总备份时间：
 
-- **将新磁盘添加到受保护的 Azure VM：** 如果 VM 正在进行增量备份并添加新磁盘，则备份时间将增加。 总备份时间可能会超过 24 小时，因为需要对新磁盘进行初始复制，并且需要对现有磁盘进行增量复制。
-- **碎片磁盘：** 当磁盘更改是连续的时，备份操作会更快。 如果更改分散在磁盘的各个位置并出现碎片，则备份会变慢。
-- **磁盘搅动：** 如果正在进行增量备份的受保护磁盘的每日改动量超过 200 GB，则备份可能需要很长时间（超过 8 小时）才能完成。
-- **备份版本：** 最新版本的备份（称为即时还原版本）使用比校验和比较更优化的过程来识别更改。 但是，如果使用即时还原并删除了备份快照，则备份将改用校验和比较。 在这种情况下，备份操作将超过 24 小时（或失败）。
+- **将新磁盘添加到受保护的 AZURE VM：** 如果 VM 正在进行增量备份，并且添加了新磁盘，则备份时间将会增加。 总备份时间可能会超过 24 小时，因为需要对新磁盘进行初始复制，并且需要对现有磁盘进行增量复制。
+- **碎片磁盘：** 磁盘更改连续时，备份操作的速度更快。 如果更改分散在磁盘的各个位置并出现碎片，则备份会变慢。
+- **磁盘改动：** 如果正在进行增量备份的受保护磁盘的每日改动超过 200 GB，则备份可能需要很长时间（超过8小时）才能完成。
+- **备份版本：** 最新版本的备份（称为即时还原版本）使用比校验和比较来识别更改的更优化的进程。 但是，如果使用即时还原并删除了备份快照，则备份将改用校验和比较。 在这种情况下，备份操作将超过 24 小时（或失败）。
 
 ## <a name="best-practices"></a>最佳做法
 
 我们建议在配置 VM 备份时遵循以下做法：
 
 - 修改策略中设置的默认计划时间。 例如，如果策略中的默认时间是凌晨 12:00，请将时间递增几分钟，确保以最佳方式使用资源。
-- 如果要从单个保管库还原 VM，我们强烈建议您使用不同的[通用 v2 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)，以确保目标存储帐户不会受到限制。 例如，每个 VM 必须具有不同的存储帐户。 例如，如果还原 10 个 VM，请使用 10 个不同的存储帐户。
+- 如果要从单个保管库还原 Vm，强烈建议你使用不同的[常规用途 v2 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)，以确保不会限制目标存储帐户。 例如，每个 VM 必须具有不同的存储帐户。 例如，如果还原 10 个 VM，请使用 10 个不同的存储帐户。
 - 若要通过 Instant Restore 备份使用高级存储的 VM，建议从总的已分配存储空间中分配 *50%* 的可用空间，这**只**在首次备份时是必需的。 首次备份完成后，50% 的可用空间不再是备份的要求
 - 每个存储帐户的磁盘数限制与基础结构即服务 (IaaS) VM 上运行的应用程序访问磁盘的大小有关。 通常情况下，如果单个存储帐户上存在 5 至 10 个或以上磁盘，则通过将一些磁盘移动到单独的存储帐户以均衡负载。
 
@@ -137,4 +137,4 @@ OS 磁盘 | 32 TB | 17 GB
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，[准备 Azure VM 备份](backup-azure-arm-vms-prepare.md)。
+现在，[准备 AZURE VM 备份](backup-azure-arm-vms-prepare.md)。

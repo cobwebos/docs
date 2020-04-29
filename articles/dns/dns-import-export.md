@@ -1,5 +1,5 @@
 ---
-title: 导入和导出域区域文件 - Azure CLI
+title: 导入和导出域区域文件-Azure CLI
 titleSuffix: Azure DNS
 description: 了解如何通过使用 Azure CLI 导入和导出 Azure DNS 的 DNS 区域文件
 services: dns
@@ -9,10 +9,10 @@ ms.date: 4/3/2019
 ms.author: rohink
 ms.topic: conceptual
 ms.openlocfilehash: a5c2fdde564eba2d95e7f14f4d47e4d381739d5d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79365162"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>使用 Azure CLI 导入和导出 DNS 区域文件
@@ -32,7 +32,7 @@ Azure CLI 是用于管理 Azure 服务的跨平台命令行工具。 它适用�
 将 DNS 区域文件导入 Azure DNS 之前，需要获取区域文件的副本。 此文件的来源取决于当前托管 DNS 区域的位置。
 
 * 如果 DNS 区域由合作伙伴服务（如域注册机构、专用的 DNS 托管提供商或备用云提供商）托管，则该服务应提供下载 DNS 区域文件的功能。
-* 如果 DNS 区域是在 Windows DNS 上托管的，则区域文件的默认文件夹是 **%systemroot%\system32\dns**。 每个区域文件的完整路径还会显示在 DNS 控制台的“常规”**** 选项卡上。
+* 如果 DNS 区域是在 Windows DNS 上托管的，则区域文件的默认文件夹是 **%systemroot%\system32\dns**。 每个区域文件的完整路径还会显示在 DNS 控制台的“常规”  选项卡上。
 * 如果 DNS 区域是通过使用 BIND 托管的，则在 BIND 配置文件 **named.conf** 中会指定每个区域的区域文件位置。
 
 ## <a name="import-a-dns-zone-file-into-azure-dns"></a>将 DNS 区域文件导入 Azure DNS
@@ -54,7 +54,7 @@ Azure CLI 是用于管理 Azure 服务的跨平台命令行工具。 它适用�
 * `$TTL` 指令是可选的并受支持。 如未提供 `$TTL` 指令，会导入没有显式 TTL 的记录，且其默认 TTL 设置为 3600 秒。 当同一个记录集的两个记录指定不同的 TTL 时，会使用较低的值。
 * `$ORIGIN` 指令是可选的并受支持。 如果未设置 `$ORIGIN`，则使用的默认值是在命令行上指定的区域名称（加上结尾 "."）。
 * `$INCLUDE` 和 `$GENERATE` 指令不受支持。
-* 支持这些记录类型：A、AAAA、CAA、CNAME、MX、NS、SOA、SRV 和 TXT。
+* 支持以下记录类型：A、AAAA、CAA、CNAME、MX、NS、SOA、SRV 和 TXT。
 * Azure DNS 会在创建区域时，自动创建 SOA 记录。 导入区域文件时，*除了*`host` 参数，所有的 SOA 参数都取自区域文件。 此参数会使用 Azure DNS 提供的值。 这是因为此参数必须引用 Azure DNS 提供的主名称服务器。
 * Azure DNS 在创建区域时，也会在区域顶点处自动创建名称服务器记录集。 仅导入此记录集的 TTL。 这些记录包含由 Azure DNS 提供的名称服务器名称。 导入的区域文件中包含的值不会覆盖记录数据。
 * 在公开预览版期间，Azure DNS 仅支持单字符串的 TXT 记录。 多字符串 TXT 记录会被连接在一起并截断为 255 个字符。

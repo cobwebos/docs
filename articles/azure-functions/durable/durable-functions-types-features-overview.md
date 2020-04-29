@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 35ef9d8731e169e890f5985ce01215fec5d6e3de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277877"
 ---
 # <a name="durable-functions-types-and-features"></a>Durable Functions 类型和功能
@@ -31,19 +31,19 @@ Azure Functions 中目前有四种持久函数类型：活动、业务流程协�
 
 活动函数是持久函数业务流程中的基本工作单元。 活动函数是在过程中协调的函数和任务。 例如，可以创建一个业务流程协调程序函数来处理订单。 任务涉及到检查库存、向客户收费和创建发货单。 每个任务都是一个单独的活动函数。 这些活动函数可以顺序执行，也可以并行执行，或按二者的某种组合来执行。
 
-与业务流程协调程序函数不同，活动函数对于可在其中执行的工作类型没有限制。 活动函数频繁用于进行网络调用，或运行 CPU 密集型操作。 活动函数还可以将数据返回到业务流程协调程序函数。 Durable Task Framework 可保证在业务流程执行期间每个调用的活动函数至少执行一次。**
+与业务流程协调程序函数不同，活动函数对于可在其中执行的工作类型没有限制。 活动函数频繁用于进行网络调用，或运行 CPU 密集型操作。 活动函数还可以将数据返回到业务流程协调程序函数。 Durable Task Framework 可保证在业务流程执行期间每个调用的活动函数至少执行一次。 
 
 > [!NOTE]
-> 由于活动函数只保证至少执行一次，** 因此建议你尽可能将活动函数逻辑设置为幂等。**
+> 由于活动函数只保证至少执行一次，  因此建议你尽可能将活动函数逻辑设置为幂等。 
 
-使用[活动触发器](durable-functions-bindings.md#activity-trigger)定义活动函数。 .NET 函数以参数的形式接收 `DurableActivityContext`。 还可以将触发器绑定到任何其他可进行 JSON 序列化的对象，将输入传递给函数。 在 JavaScript 中，您可以通过[`context.bindings`对象](../functions-reference-node.md#bindings)上的`<activity trigger binding name>`属性访问输入。 活动函数只能将单个值传递给它们。 若要传递多个值，必须使用元组、数组或复杂类型。
+使用[活动触发器](durable-functions-bindings.md#activity-trigger)定义活动函数。 .NET 函数以参数的形式接收 `DurableActivityContext`。 还可以将触发器绑定到任何其他可进行 JSON 序列化的对象，将输入传递给函数。 在 JavaScript 中，可以通过 [`context.bindings` 对象](../functions-reference-node.md#bindings)中的 `<activity trigger binding name>` 属性访问输入。 活动函数只能将单个值传递给它们。 若要传递多个值，必须使用元组、数组或复杂类型。
 
 > [!NOTE]
 > 只能从业务流程协调程序函数触发活动函数。
 
 ## <a name="entity-functions"></a>实体函数
 
-实体函数定义用于读取和更新较小状态片段的操作。 我们通常将此类有状态实体称为“持久实体”。** 与业务流程协调程序函数一样，实体函数是具有特殊触发器类型“实体触发器”的函数。** 它们也可以从客户端函数或业务流程协调程序函数调用。 与业务流程协调程序函数不同，实体函数没有任何特定的代码约束。 实体函数还会显式管理状态，而不是通过控制流隐式表示状态。
+实体函数定义用于读取和更新较小状态片段的操作。 我们通常将此类有状态实体称为“持久实体”。  与业务流程协调程序函数类似，实体函数是具有特殊触发器类型“实体触发器”的函数。  它们也可以从客户端函数或业务流程协调程序函数调用。 与业务流程协调程序函数不同，实体函数没有任何特定的代码约束。 实体函数还会显式管理状态，而不是通过控制流隐式表示状态。
 
 > [!NOTE]
 > 实体函数和相关功能仅在 Durable Functions 2.0 及更高版本中可用。
@@ -52,12 +52,12 @@ Azure Functions 中目前有四种持久函数类型：活动、业务流程协�
 
 ## <a name="client-functions"></a>客户端函数
 
-业务流程协调程序函数通过[业务流程触发器绑定](durable-functions-bindings.md#orchestration-trigger)触发，实体函数通过[实体触发器绑定](durable-functions-bindings.md#entity-trigger)触发。 这两个触发器在生效时，会响应在[任务中心](durable-functions-task-hubs.md)排队的消息。 若要传递这些消息，主要方式是在某个客户端函数中使用[业务流程协调程序客户端绑定](durable-functions-bindings.md#orchestration-client)或[实体客户端绑定](durable-functions-bindings.md#entity-client)。** 任何非业务流程协调程序函数都可以是客户端函数。** 例如，可以从 HTTP 触发的函数、Azure 事件中心触发函数等触发协调器。使函数成为*客户端函数*的是使用持久客户端输出绑定。
+业务流程协调程序函数通过[业务流程触发器绑定](durable-functions-bindings.md#orchestration-trigger)触发，实体函数通过[实体触发器绑定](durable-functions-bindings.md#entity-trigger)触发。 这两个触发器在生效时，会响应在[任务中心](durable-functions-task-hubs.md)排队的消息。 若要传递这些消息，主要方式是在某个客户端函数中使用[业务流程协调程序客户端绑定](durable-functions-bindings.md#orchestration-client)或[实体客户端绑定](durable-functions-bindings.md#entity-client)。  任何非业务流程协调程序函数都可以是客户端函数。  例如，可以从 HTTP 触发的函数、Azure 事件中心触发的函数等函数触发业务流程协调程序。如果某个函数使用持久客户端输出绑定，则可将其视为客户端函数。 
 
 > [!NOTE]
-> 与其他函数类型不同，业务流程协调程序函数和实体函数不能在 Azure 门户中使用按钮直接触发。 若要在 Azure 门户中测试某个业务流程协调程序函数或实体函数，必须改为运行一个客户端函数，该函数会在实现过程中启动业务流程协调程序函数或实体函数。** 若要获取最简单的测试体验，建议使用手动触发器函数。**
+> 与其他函数类型不同，业务流程协调程序函数和实体函数不能在 Azure 门户中使用按钮直接触发。 若要在 Azure 门户中测试某个业务流程协调程序函数或实体函数，必须改为运行一个客户端函数，该函数会在实现过程中启动业务流程协调程序函数或实体函数。  若要获取最简单的测试体验，建议使用手动触发器函数。 
 
-除了触发业务流程协调程序函数或实体函数，还可以使用持久客户端绑定与正在运行的业务流程和实体进行交互。** 例如，业务流程可以查询、可以终止，还可以引发事件。 若要详细了解如何管理业务流程和实体，请参阅[实例管理](durable-functions-instance-management.md)一文。
+除了触发业务流程协调程序函数或实体函数，还可以使用持久客户端绑定与正在运行的业务流程和实体进行交互。  例如，业务流程可以查询、可以终止，还可以引发事件。 若要详细了解如何管理业务流程和实体，请参阅[实例管理](durable-functions-instance-management.md)一文。
 
 ## <a name="next-steps"></a>后续步骤
 

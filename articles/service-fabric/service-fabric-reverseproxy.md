@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: bharatn
 ms.openlocfilehash: 4fa4c6e46dd786b833087f892d995e85b5d2ea47
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79282219"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric 中的反向代理
@@ -35,8 +35,8 @@ Service Fabric 中的微服务在群集中的部分节点上运行，可以出�
 > **支持的平台**
 >
 > Service Fabric 中的反向代理目前支持以下平台
-> * Windows 群集**：Windows 8 及更高版本，或 Windows Server 2012 及更高版本
-> * Linux 群集**：反向代理暂不适用于 Linux 群集
+> * Windows 群集  ：Windows 8 及更高版本，或 Windows Server 2012 及更高版本
+> * Linux 群集  ：反向代理暂不适用于 Linux 群集
 >
 
 ## <a name="reaching-microservices-from-outside-the-cluster"></a>从群集外部访问微服务
@@ -67,7 +67,7 @@ http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?
 
 * **http(s)：** 可以将反向代理配置为接受 HTTP 或 HTTPS 流量。 对于 HTTPS 转发，在设置反向代理侦听 HTTPS 后，请参阅[使用反向代理连接到安全服务](service-fabric-reverseproxy-configure-secure-communication.md)。
 * **群集的完全限定域名 (FQDN) | 内部 IP：** 对于外部客户端，可以配置反向代理，以便可以通过群集域（例如 mycluster.eastus.cloudapp.azure.com）访问反向代理。 默认情况下，反向代理在每个节点上运行。 对于内部流量，可在本地主机或任意内部节点 IP（例如 10.0.0.1）上访问反向代理。
-* Port：**** 为反向代理指定的端口，例如 19081。
+* Port：  为反向代理指定的端口，例如 19081。
 * **ServiceInstanceName：** 在不使用“fabric:/”方案的情况下尝试访问的已部署服务实例的完全限定名称。 例如，若要访问 *fabric:/myapp/myservice/* 服务，可以使用 *myapp/myservice*。
 
     服务实例名称要区分大小写。 若 URL 中的服务实例名称大小写不同，则会导致请求失败，并显示 404（未找到）。
@@ -147,7 +147,7 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 ```
 对于本地群集，`Fabric_NodeIPOrFQDN` 默认设置为“localhost”。 使用 `-UseMachineName` 参数启动本地群集，确保容器可访问节点上运行的反向代理。 有关详细信息，请参阅[配置开发人员环境以调试容器](service-fabric-how-to-debug-windows-containers.md#configure-your-developer-environment-to-debug-containers)。
 
-在 Docker Compose 容器中运行的 Service Fabric 服务需要特殊的 docker-compose.yml 端口部分 http: 或 https: 配置**。 有关详细信息，请参阅 [Azure Service Fabric 中的 Docker Compose 部署支持](service-fabric-docker-compose.md)。
+在 Docker Compose 容器中运行的 Service Fabric 服务需要特殊的 docker-compose.yml 端口部分 http: 或 https: 配置  。 有关详细信息，请参阅 [Azure Service Fabric 中的 Docker Compose 部署支持](service-fabric-docker-compose.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * [在群集上设置和配置反向代理](service-fabric-reverseproxy-setup.md)。

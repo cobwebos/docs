@@ -4,10 +4,10 @@ description: 本文介绍如何停止使用用于容器的 Azure Monitor 监视 
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.openlocfilehash: 618a4d7e10212dd2b042724b1ea11c97920dad57
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79275251"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>如何停止使用用于容器的 Azure Monitor 监视 Azure Kubernetes 服务 (AKS)
@@ -89,7 +89,7 @@ az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingMan
     }
     ```
 
-2. 将此文件以“OptOutTemplate.json”文件名保存到本地文件夹****。
+2. 将此文件以“OptOutTemplate.json”文件名保存到本地文件夹  。
 
 3. 将以下 JSON 语法粘贴到文件中：
 
@@ -115,15 +115,15 @@ az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingMan
     }
     ```
 
-4. 使用可在选定群集的“属性”页面上找到的 AKS 群集的值，编辑 **aksResourceId** 和 **aksResourceLocation** 的值****。
+4. 使用可在选定群集的“属性”页面上找到的 AKS 群集的值，编辑 **aksResourceId** 和 **aksResourceLocation** 的值  。
 
     ![容器属性页面](media/container-insights-optout/container-properties-page.png)
 
-    位于“属性”页时，还请复制“工作区资源 ID”********。 如果决定稍后删除 Log Analytics 工作区，则需要此值。 不在此流程中执行删除 Log Analytics 工作区的操作。
+    位于“属性”页时，还请复制“工作区资源 ID”   。 如果决定稍后删除 Log Analytics 工作区，则需要此值。 不在此流程中执行删除 Log Analytics 工作区的操作。
 
     编辑 **aksResourceTagValues** 的值，以匹配为 AKS 群集指定的现有标记值。
 
-5. 将此文件以“OptOutParam.json”文件名保存到本地文件夹****。
+5. 将此文件以“OptOutParam.json”文件名保存到本地文件夹  。
 
 6. 已做好部署此模板的准备。
 
@@ -164,4 +164,4 @@ ProvisioningState       : Succeeded
 
 ## <a name="next-steps"></a>后续步骤
 
-如果创建的工作区仅用于支持监视群集且不再被需要，则需要手动删除它。 如果不熟悉如何删除工作区，请参阅[使用 Azure 门户删除 Azure Log Analytics 工作区](../../log-analytics/log-analytics-manage-del-workspace.md)。 不要忘记之前在步骤 4 中复制的“工作区资源 ID”，稍后将会需要****。
+如果创建的工作区仅用于支持监视群集且不再被需要，则需要手动删除它。 如果不熟悉如何删除工作区，请参阅[使用 Azure 门户删除 Azure Log Analytics 工作区](../../log-analytics/log-analytics-manage-del-workspace.md)。 不要忘记之前在步骤 4 中复制的“工作区资源 ID”，稍后将会需要  。

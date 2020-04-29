@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: b31a4e40c1e9095499faf265673ab4213ad6bde0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79283064"
 ---
 # <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>如何通过 .NET 应用程序使用 Azure 认知搜索
@@ -27,18 +27,18 @@ SDK 包括一些客户端库。借助它，不仅可以管理索引、数据源�
 
 SDK 中的其他 NuGet 程序包有：
  
-  - `Microsoft.Azure.Search.Data`： 如果使用 Azure 认知搜索开发 .NET 应用程序，并且只需要查询或更新索引中的文档，请使用此包。 如果还需要创建或更新索引、同义词映射或其他服务级资源，请改用 `Microsoft.Azure.Search` 包。
-  - `Microsoft.Azure.Search.Service`： 如果在 .NET 中开发自动化来管理 Azure 认知搜索索引、同义词映射、索引器、数据源或其他服务级别资源，请使用此包。 如果只需要查询或更新索引中的文档，请改用 `Microsoft.Azure.Search.Data` 包。 如果需要 Azure 认知搜索的所有功能，请改用 `Microsoft.Azure.Search` 包。
-  - `Microsoft.Azure.Search.Common`：Azure 认知搜索 .NET 库所需的常见类型。 无需在应用程序中直接使用此包。 此包仅用作依赖项。
+  - `Microsoft.Azure.Search.Data`：如果使用 Azure 认知搜索开发 .NET 应用程序，则使用此包，并且只需查询或更新索引中的文档。 如果还需要创建或更新索引、同义词映射或其他服务级资源，请改用 `Microsoft.Azure.Search` 包。
+  - `Microsoft.Azure.Search.Service`：如果在 .NET 中开发自动化以管理 Azure 认知搜索索引、同义词映射、索引器、数据源或其他服务级资源，请使用此包。 如果只需要查询或更新索引中的文档，请改用 `Microsoft.Azure.Search.Data` 包。 如果需要 Azure 认知搜索的所有功能，请改用 `Microsoft.Azure.Search` 包。
+  - `Microsoft.Azure.Search.Common`：Azure 认知搜索 .NET 库需要的常见类型。 无需在应用程序中直接使用此包。 此包仅用作依赖项。
 
 各种客户端库定义 `Index`、`Field` 和 `Document` 等类，以及 `SearchServiceClient` 和 `SearchIndexClient` 类中的 `Indexes.Create` 和 `Documents.Search` 等操作。 这些类已组织成以下命名空间：
 
-* [微软.Azure.搜索](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
+* [Microsoft.Azure.Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
 * [Microsoft.Azure.Search.Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models)
 
-如果您想为 SDK 的未来更新提供反馈，请参阅我们[的反馈页面](https://feedback.azure.com/forums/263029-azure-search/)或在[GitHub](https://github.com/azure/azure-sdk-for-net/issues)上创建问题，并在问题标题中提及"Azure 认知搜索"。
+如果想要为 SDK 的未来更新提供反馈，请参阅我们的[反馈页](https://feedback.azure.com/forums/263029-azure-search/)，或者在 [GitHub](https://github.com/azure/azure-sdk-for-net/issues) 上创建问题并在问题标题中提到“Azure 认知搜索”。
 
-.NET SDK 支持版本 `2019-05-06` 的 [Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/)。 此版本包括对[复杂类型](search-howto-complex-data-types.md)[、AI 扩充](cognitive-search-concept-intro.md)、[自动完成](https://docs.microsoft.com/rest/api/searchservice/autocomplete)和[JonLines 解析模式](search-howto-index-json-blobs.md)的支持，用于索引 Azure Blob。 
+.NET SDK 支持版本 `2019-05-06` 的 [Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/)。 此版本包括在为 Azure Blob 编制索引时所需的对[复杂类型](search-howto-complex-data-types.md)、[AI 增强](cognitive-search-concept-intro.md)、[自动完成](https://docs.microsoft.com/rest/api/searchservice/autocomplete)和 [JsonLines 分析模式](search-howto-index-json-blobs.md)的支持。 
 
 此 SDK 不支持[管理操作](https://docs.microsoft.com/rest/api/searchmanagement/)（如创建和缩放搜索服务以及管理 API 密钥）。 如果需要从 .NET 应用程序管理搜索资源，可以使用 [Azure 认知搜索 .NET 管理 SDK](https://aka.ms/search-mgmt-sdk)。
 
@@ -169,7 +169,7 @@ private static SearchIndexClient CreateSearchIndexClient(string indexName, IConf
 
 这次我们使用查询密钥，因为我们不需要对索引进行写访问。 可以在[示例应用程序](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)的 `appsettings.json` 文件中输入此信息。
 
-如果使用有效的服务名称和 API 密钥运行此应用程序，则输出应如下所示：（某些控制台输出已替换为"..."用于说明目的。
+如果使用有效服务名称和 API 密钥运行此应用程序，输出应如以下示例所示：（为方便演示，某些控制台输出已替换为“...”。）
 
     Deleting index...
 
@@ -261,7 +261,7 @@ private static void CreateIndex(string indexName, SearchServiceClient serviceCli
 除了字段，还可以向索引添加计分配置文件、建议器或 CORS 选项（为简洁起见，示例中省略了这些参数）。 可在 [SDK 参考](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index)以及 [Azure 认知搜索 REST API 参考](https://docs.microsoft.com/rest/api/searchservice/)中，找到有关 Index 对象及其组成部分的详细信息。
 
 ### <a name="populating-the-index"></a>填充索引
-`Main` 中的下一步骤填充新建的索引。 此索引填充以以下方法完成：（某些代码替换为"..."用于说明目的。  有关完整的数据填充代码，请参阅完整的示例解决方案。）
+`Main` 中的下一步骤填充新建的索引。 此索引填充操作是通过以下方法完成的：（为方便演示，某些代码已替换为“...”。  有关完整的数据填充代码，请参阅完整的示例解决方案。）
 
 ```csharp
 private static void UploadDocuments(ISearchIndexClient indexClient)
@@ -386,10 +386,10 @@ private static void UploadDocuments(ISearchIndexClient indexClient)
 > 
 > 
 
-此方法的第三部分是处理索引重要错误情况的 catch 块。 如果 Azure 认知搜索服务无法为批中的某些文档编制索引，`Documents.Index` 将引发 `IndexBatchException`。 如果在服务负载过大时为文档编制索引，可能会发生此异常。 **强烈建议在代码中显式处理这种情况。**  可以延迟为失败的文档编制索引，并重试，也可以像此示例一样记录并继续执行，还可以执行其他操作，具体取决于应用程序对数据一致性的要求。
+此方法的第三部分是处理索引重要错误情况的 catch 块。 如果 Azure 认知搜索服务无法为批中的某些文档编制索引，`Documents.Index` 将引发 `IndexBatchException`。 如果在服务负载过大时为文档编制索引，可能会发生此异常。 **强烈建议在代码中显式处理这种情况。** 可以延迟为失败的文档编制索引，并重试，也可以像此示例一样记录并继续执行，还可以执行其他操作，具体取决于应用程序对数据一致性的要求。
 
 > [!NOTE]
-> 可以使用 方法[`FindFailedActionsToRetry`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception.findfailedactionstoretry)构造一个新批处理，其中仅包含对 的上一次调用 中失败的`Index`操作。 在 [StackOverflow](https://stackoverflow.com/questions/40012885/azure-search-net-sdk-how-to-use-findfailedactionstoretry) 上有如何正确使用该方法的讨论。
+> 可以使用 [`FindFailedActionsToRetry`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception.findfailedactionstoretry) 方法来构造一个新的批处理，其中仅包含上次调用 `Index` 时失败的操作。 在 [StackOverflow](https://stackoverflow.com/questions/40012885/azure-search-net-sdk-how-to-use-findfailedactionstoretry) 上有如何正确使用该方法的讨论。
 >
 >
 
@@ -556,7 +556,7 @@ namespace AzureSearch.SDKHowTo
 使用自己的类来与索引中的文档交互的功能可以朝两个方向进行；此外，还可以检索搜索结果，并使用 SDK 自动将结果反序列化为所选类型，我们会在下一节中对此进行介绍。
 
 > [!NOTE]
-> Azure 认知搜索 .NET SDK 还使用 `Document` 类支持动态类型化文档，该类是字段名称到字段值的键/值映射。 如果在设计时不知道索引架构，或者绑定到特定模型类不太方便，这很有用。 该 SDK 中处理文档的所有方法都有使用 `Document` 类的重载，以及采用泛型类型参数的强类型重载。 本教程中的示例代码仅使用后者。 [`Document`类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.document)从`Dictionary<string, object>`继承。
+> Azure 认知搜索 .NET SDK 还使用 `Document` 类支持动态类型化文档，该类是字段名称到字段值的键/值映射。 如果在设计时不知道索引架构，或者绑定到特定模型类不太方便，这很有用。 该 SDK 中处理文档的所有方法都有使用 `Document` 类的重载，以及采用泛型类型参数的强类型重载。 本教程中的示例代码仅使用后者。 [`Document` 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.document)继承自 `Dictionary<string, object>`。
 > 
 >
 
@@ -564,7 +564,7 @@ namespace AzureSearch.SDKHowTo
 
 设计自己的模型类以映射到 Azure 认知搜索索引时，建议将值类型的属性（如 `bool` 和 `int`）声明为可以为 null（例如，`bool?` 而不是 `bool`）。 如果使用不可为 null 属性，必须 **保证** 索引中的所有文档的对应字段都不包含 null 值。 该 SDK 和 Azure 认知搜索服务都不会帮助强制实施此检查。
 
-这不只是假想的问题：假设将新字段添加到 `Edm.Int32`类型的现有索引。 更新索引定义后，所有文档的该新字段都具有 null 值（因为 Azure 认知搜索中的所有类型都可以为 null）。 如果随后使用该字段具有不可为 null `int` 属性的模型类，则在尝试检索文档时会获得如下所示的 `JsonSerializationException`：
+这不只是假想的问题：假设将新字段添加到 `Edm.Int32` 类型的现有索引。 更新索引定义后，所有文档的该新字段都具有 null 值（因为 Azure 认知搜索中的所有类型都可以为 null）。 如果随后使用该字段具有不可为 null `int` 属性的模型类，则在尝试检索文档时会获得如下所示的 `JsonSerializationException`：
 
     Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
 

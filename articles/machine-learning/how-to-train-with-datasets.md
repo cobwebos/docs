@@ -12,22 +12,22 @@ manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.openlocfilehash: 401383f2d483836bf725051810d78167869f7b22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79283493"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>使用 Azure 机器学习中的数据集进行训练
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中，您将了解在远程实验培训运行中使用[Azure 机器学习数据集的](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py)两种方法，而无需担心连接字符串或数据路径。
+本文介绍两种使用远程试验训练运行中的[Azure 机器学习数据集](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py)的方式，无需担心连接字符串或数据路径。
 
-- 选项 1：如果您有结构化数据，请创建表格数据集，并直接在培训脚本中使用。
+- 选项 1：如果你有结构化数据，可以创建一个 TabularDataset，并直接在训练脚本中使用它。
 
-- 选项 2：如果您有非结构化数据，请创建文件数据集并将文件装载或下载到远程计算以进行培训。
+- 选项 2：如果你有非结构化数据，可以创建一个 FileDataset，并将文件装载或下载到远程计算机进行训练。
 
-Azure 机器学习数据集提供与 Azure 机器学习培训产品（如[脚本运行](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py)、[估计器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)[、HyperDrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py)和[Azure 机器学习管道）的无缝集成](how-to-create-your-first-pipeline.md)。
+Azure 机器学习数据集提供了与 Azure 机器学习训练产品（例如 [ScriptRun](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py)、[Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)、[HyperDrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py) 和 [Azure 机器学习管道](how-to-create-your-first-pipeline.md)）的无缝集成。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,9 +40,9 @@ Azure 机器学习数据集提供与 Azure 机器学习培训产品（如[脚本
 * [已安装适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)，其中包含 azureml-datasets 包。
 
 > [!Note]
-> 某些数据集类对[azureml 数据准备](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py)包具有依赖关系。 对于 Linux 用户，这些类仅支持以下发行版：红帽企业 Linux、Ubuntu、Fedora 和 CentOS。
+> 某些数据集类依赖于 [azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) 包。 对于 Linux 用户，只有以下分发版支持这些类：Red Hat Enterprise Linux、Ubuntu、Fedora 和 CentOS。
 
-## <a name="option-1-use-datasets-directly-in-training-scripts"></a>选项 1：在训练脚本中直接使用数据集
+## <a name="option-1-use-datasets-directly-in-training-scripts"></a>选项 1：直接在训练脚本中使用数据集
 
 在此示例中，你将创建一个 [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) 并将其用作 `estimator` 对象的直接输入来进行训练。 
 
@@ -61,7 +61,7 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path)
 
 TabularDataset 对象提供将数据加载到 pandas 或 spark 数据帧中的功能，以便你可以使用熟悉的数据准备和训练库。 若要利用此功能，可以在训练配置中传递 TabularDataset 作为输入，然后在脚本中检索它。
 
-为此，请通过训练脚本中[`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py)的对象访问输入数据集，并使用 方法。 [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) 
+为此，请通过训练脚本中的 [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py) 对象访问输入数据集，并使用 [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) 方法。 
 
 ```Python
 %%writefile $script_folder/train_titanic.py
@@ -83,7 +83,7 @@ df = dataset.to_pandas_dataframe()
 
 * 脚本的脚本目录。 此目录中的所有文件都上传到群集节点以便执行。
 * 训练脚本 *train_titanic.py*。
-* 用于训练的输入数据集 `titanic`。 `as_named_input()`是必需的，以便输入数据集可以由训练脚本中的指定名称引用。 
+* 用于训练的输入数据集 `titanic`。 必须使用 `as_named_input()`，以便在训练脚本中通过指定的名称引用输入数据集。 
 * 试验的计算目标。
 * 试验的环境定义。
 
@@ -105,15 +105,15 @@ experiment_run.wait_for_completion(show_output=True)
 
 如果要使数据文件可在计算目标上用于训练，请使用 [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) 装载或下载该数据集所引用的文件。
 
-### <a name="mount-vs-download"></a>安装与下载
+### <a name="mount-vs-download"></a>装载与下载
 
-对于从 Azure Blob 存储、Azure 文件、Azure 数据存储第 1 代、Azure 数据存储第 2 代、Azure SQL 数据库和用于 PostgreSQL 的 Azure 数据库创建的数据集，都支持安装或下载任何格式的文件。 
+对于从 Azure Blob 存储、Azure 文件存储、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL 数据库和 Azure Database for PostgreSQL 创建的数据集，可以装载或下载任何格式的文件。 
 
 装载数据集时，请将数据集引用的文件附加到目录（装入点），并使其在计算目标上可用。 基于 Linux 的计算支持装载，这些计算包括 Azure 机器学习计算、虚拟机和 HDInsight。 下载数据集时，数据集引用的所有文件都将下载到计算目标。 所有计算类型都支持下载。 
 
-如果脚本处理数据集引用的所有文件，并且计算磁盘可以适合您的完整数据集，建议下载以避免存储服务流数据开销。 如果数据大小超过计算磁盘大小，则无法下载。 对于此方案，我们建议安装，因为在处理时仅加载脚本使用的数据文件。
+如果脚本处理数据集引用的所有文件，并且计算磁盘可以容纳整个数据集，则建议下载，以避免从存储服务流式传输数据的开销。 如果数据大小超出计算磁盘大小，则无法下载。 对于此方案，我们建议装载，因为在处理时只会加载脚本使用的数据文件。
 
-以下代码装载`dataset`到临时目录，`mounted_path`
+以下代码将 `dataset` 装载到 `mounted_path` 的临时目录
 
 ```python
 import tempfile
@@ -147,7 +147,7 @@ mnist_ds = Dataset.File.from_files(path = web_paths)
 
 ### <a name="configure-the-estimator"></a>配置估算器
 
-除了通过估计器中的`inputs`参数传递数据集外，您还可以通过数据集传递`script_params`数据，并通过参数获取定型脚本中的数据路径（安装点）。 这样，就可以使训练脚本独立于 azureml-sdk。 换句话说，您将能够在任何云平台上使用相同的训练脚本进行本地调试和远程培训。
+除了在估算器中通过 `inputs` 参数传递数据集，还可以通过 `script_params` 传递数据集并在训练脚本中通过参数获取数据路径（装入点）。 这样就可以使训练脚本独立于 azureml-sdk。 换言之，可以在任何云平台上使用相同的训练脚本进行本地调试和远程训练。
 
 [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) 估算器对象用于为 scikit-learn 试验提交运行。 详细了解使用 [SKlearn 估算器](how-to-train-scikit-learn.md)进行训练。
 
@@ -213,8 +213,8 @@ y_test = load_data(y_test, True).reshape(-1)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用表格数据集自动训练机器学习模型](how-to-auto-train-remote.md)
+* 使用 TabularDataset [自动训练机器学习模型](how-to-auto-train-remote.md)
 
-* [使用文件数据集训练图像分类模型](https://aka.ms/filedataset-samplenotebook)
+* 使用 FileDataset [训练图像分类模型](https://aka.ms/filedataset-samplenotebook)
 
-* [使用管道使用数据集进行训练](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)
+* [通过管道使用数据集进行训练](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)

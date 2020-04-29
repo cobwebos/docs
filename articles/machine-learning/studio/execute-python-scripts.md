@@ -11,10 +11,10 @@ ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
 ms.openlocfilehash: c79f6bd63fa5d8d8c6b22ff271d8ca513a94fd64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79218079"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典版）中执行 Python 机器学习脚本
@@ -63,9 +63,9 @@ Python 模块的输入公开为 Pandas 数据帧。 `azureml_main` 函数最多�
 | Pandas "NA" | 转换为“缺失值” |
 | 索引向量 | 不支持* |
 | 非字符串列名 | 对列名调用 `str` |
-| 复制列名 | 添加数字后缀：（1）、（2）、（3）等。
+| 复制列名 | 添加数字后缀：(1)、(2)、(3) 等。
 
-**Python 函数中的所有输入数据帧始终具有从 0 到行数减去 1 的 64 位数字索引*
+Python 函数中的所有输入数据帧始终具有 64 位的数字索引，范围从 0 到行数减去 1 的值* 
 
 ## <a name="importing-existing-python-script-modules"></a><a id="import-modules"></a>导入现有的 Python 脚本模块
 
@@ -73,7 +73,7 @@ Python 模块的输入公开为 Pandas 数据帧。 `azureml_main` 函数最多�
 
 常见的用例是将现有 Python 脚本整合到工作室（经典版）试验中。 [执行 Python 脚本][execute-python-script]模块接受在第三个输入端口上使用包含 Python 模块的 zip 文件。 在运行时执行框架会解压缩该文件，内容将添加到 Python 解释器的库路径。 然后，`azureml_main` 入口点函数可直接导入这些模块。 
 
-例如，请考虑包含简单"你好，世界"功能的文件Hello.py。
+例如，请考虑包含简单“Hello, World”函数的 Hello.py 文件。
 
 ![Hello.py 文件中用户定义的函数](./media/execute-python-scripts/figure4.png)
 
@@ -81,7 +81,7 @@ Python 模块的输入公开为 Pandas 数据帧。 `azureml_main` 函数最多�
 
 ![包含用户定义的 Python 代码的 zip 文件](./media/execute-python-scripts/figure5.png)
 
-将 zip 文件作为数据集上传到工作室（经典版）中。 然后，创建使用 Hello.zip 文件中的 Python 代码的试验，并通过将此试验附加到“执行 Python 脚本”模块的第三个输入端口来运行此试验，如下图所示。****
+将 zip 文件作为数据集上传到工作室（经典版）中。 然后，创建使用 Hello.zip 文件中的 Python 代码的试验，并通过将此试验附加到“执行 Python 脚本”模块的第三个输入端口来运行此试验，如下图所示。 
 
 ![使用 Hello.zip 的示例试验，用作“执行 Python 脚本”模块的输入](./media/execute-python-scripts/figure6a.png)
 
@@ -106,13 +106,13 @@ from azure.storage.blob import BlockBlobService
 block_blob_service = BlockBlobService(account_name='account_name', account_key='account_key', protocol='http')
 ```
 
-1. 在存储的“配置”设置选项卡中禁用“需要安全传输”********
+1. 在存储的“配置”设置选项卡中禁用“需要安全传输”  
 
 ![在 Azure 门户中禁用“需要安全传输”](./media/execute-python-scripts/disable-secure-transfer-required.png)
 
 ## <a name="operationalizing-python-scripts"></a>实现 Python 脚本
 
-任何在评分实验中使用的[执行 Python 脚本][execute-python-script]模块在发布为 Web 服务时都将受到调用。 例如，下图显示了包含用于评估单个 Python 表达式的代码的评分试验。
+发布为 Web 服务时，将调用在评分试验中使用的任何[执行 Python 脚本][execute-python-script]模块。 例如，下图显示了包含用于评估单个 Python 表达式的代码的评分试验。
 
 ![Web 服务的工作室工作区](./media/execute-python-scripts/figure3a.png)
 
@@ -130,7 +130,7 @@ block_blob_service = BlockBlobService(account_name='account_name', account_key='
 
 若要从 MatplotLib 生成图像，必须执行以下步骤：
 
-1. 从默认基于 Qt 的渲染器将后端切换到"AGG"。
+1. 将后端由默认的基于 Qt 的呈现器切换为“AGG”。
 1. 创建新图形对象。
 1. 获取轴，并将所有绘图生成到其中。
 1. 将图形保存到 PNG 文件。
@@ -155,7 +155,7 @@ block_blob_service = BlockBlobService(account_name='account_name', account_key='
 
 ![按评分将特征排名的函数](./media/execute-python-scripts/figure8.png)
 
-然后，以下实验计算并返回 Azure 机器学习工作室中的"Pima 印度糖尿病"数据集中的特征的重要性分数（经典）：
+以下试验在 Azure 机器学习工作室（经典版）的“Pima Indian Diabetes”数据集中计算并返回特征的重要性评分：
 
 ![使用 Python 为 Pima Indian Diabetes 数据集中的特征排名的试验](./media/execute-python-scripts/figure9a.png)
 
@@ -175,7 +175,7 @@ Python 模块当前不支持诸如 intellisense 和调试等 IDE 功能。 此�
 
 ### <a name="single-data-frame-output"></a>单数据帧输出
 
-Python 入口点仅允许将单个数据帧返回为输出。 目前无法将诸如训练的模型等任意 Python 对象直接返回到工作室（经典版）运行时。 就像具有相同限制的[执行 R 脚本][execute-r-script]一样，在许多情况下可将对象转换为字节数组，并在数据帧中返回字节数组。
+Python 入口点仅允许将单个数据帧返回为输出。 目前无法将诸如训练的模型等任意 Python 对象直接返回到工作室（经典版）运行时。 就像存在相同限制的[执行 R 脚本][execute-r-script]一样，在许多情况下可将对象转换为字节数组，并在数据帧中返回该字节数组。
 
 ### <a name="inability-to-customize-python-installation"></a>无法自定义 Python 安装
 

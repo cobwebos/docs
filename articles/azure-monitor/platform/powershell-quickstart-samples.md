@@ -5,10 +5,10 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 2/14/2018
 ms.openlocfilehash: 9f039f71954998ef561d1efd1e559318740c86ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79274315"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure 监视器 PowerShell 快速入门示例
@@ -142,13 +142,13 @@ Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resou
 ## <a name="create-metric-alerts"></a>创建指标警报
 可使用 `Add-AlertRule` cmdlet 来创建、更新或禁用警报规则。
 
-可以分别使用 `New-AzAlertRuleEmail` 和 `New-AzAlertRuleWebhook` 创建电子邮件和 webhook 属性。 在警报规则 cmdlet 中，将这些属性作为操作分配给警报规则的“操作”属性****。
+可以分别使用 `New-AzAlertRuleEmail` 和 `New-AzAlertRuleWebhook` 创建电子邮件和 webhook 属性。 在警报规则 cmdlet 中，将这些属性作为操作分配给警报规则的“操作”属性  。
 
 下表描述了用于使用指标创建警报的参数和值。
 
-| 参数 (parameter) | value |
+| 参数 (parameter) | 值 |
 | --- | --- |
-| “属性” |simpletestdiskwrite |
+| 名称 |simpletestdiskwrite |
 | 此警报规则的位置 |美国东部 |
 | ResourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
@@ -236,7 +236,7 @@ Set-AzActivityLogAlert -Location 'Global' -Name 'alert on VM create' -ResourceGr
 $rule1 = New-AzAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -Operator GreaterThan -MetricStatistic Average -Threshold 60 -TimeGrain 00:01:00 -TimeWindow 00:10:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Increase -ScaleActionValue 1
 ```        
 
-随后，创建向内扩展规则，实例计数减少。
+随后，创建横向缩减规则，实例计数减少。
 
 ```powershell
 $rule2 = New-AzAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -Operator GreaterThan -MetricStatistic Average -Threshold 30 -TimeGrain 00:01:00 -TimeWindow 00:10:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Decrease -ScaleActionValue 1
@@ -306,7 +306,7 @@ Remove-AzAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting
 ```
 
 ## <a name="manage-log-profiles-for-activity-log"></a>管理活动日志的日志配置文件
-可以创建日志配置文件** 并将数据从活动日志中导出到存储帐户，并且可以为其配置数据保留期。 也可以选择将数据流式传输到事件中心。 目前仅预览版中具有此功能，并且每个订阅只能创建一个日志配置文件。 可以对当前订阅使用以下 cmdlet 来创建和管理日志配置文件。 也可以选择特定的订阅。 虽然 PowerShell 默认为当前订阅，但可以使用 `Set-AzContext` 随时对此进行更改。 可以配置活动日志以将数据路由到该订阅中的任何存储帐户或事件中心。 以 JSON 格式将数据写为 blob 文件。
+可以创建日志配置文件  并将数据从活动日志中导出到存储帐户，并且可以为其配置数据保留期。 也可以选择将数据流式传输到事件中心。 目前仅预览版中具有此功能，并且每个订阅只能创建一个日志配置文件。 可以对当前订阅使用以下 cmdlet 来创建和管理日志配置文件。 也可以选择特定的订阅。 虽然 PowerShell 默认为当前订阅，但可以使用 `Set-AzContext` 随时对此进行更改。 可以配置活动日志以将数据路由到该订阅中的任何存储帐户或事件中心。 以 JSON 格式将数据写为 blob 文件。
 
 ### <a name="get-a-log-profile"></a>获取日志配置文件
 若要提取现有日志配置文件，请使用 `Get-AzLogProfile` cmdlet。
@@ -385,7 +385,7 @@ Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-in
 
 ```
 
-请注意，WorkspaceId 属性采用** 工作区的“资源 ID”。 可以使用以下命令获取 Log Analytics 工作区的资源 ID：
+请注意，WorkspaceId 属性采用  工作区的“资源 ID”。 可以使用以下命令获取 Log Analytics 工作区的资源 ID：
 
 ```powershell
 (Get-AzOperationalInsightsWorkspace).ResourceId

@@ -1,6 +1,6 @@
 ---
 title: 使用企业安全性套餐的 Azure HDInsight 体系结构
-description: 了解如何使用企业安全包规划 Azure HDInsight 安全性。
+description: 了解如何通过企业安全性套餐规划 Azure HDInsight 安全性。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: omidm
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/11/2020
 ms.openlocfilehash: 452a3b04637126b40aca907178bebd6f74ec4481
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79365758"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>在 HDInsight 中使用企业安全性套餐
@@ -37,7 +37,7 @@ HDInsight 中的虚拟机 (VM) 将加入你提供的域。 因此，在 HDInsigh
 
 概而言之，需要在环境中设置以下项：
 
-- 一个 Active Directory 域（由 Azure AD DS 管理）。 **域名必须为 39 个字符或更少才能使用 Azure HDInsight。**
+- 一个 Active Directory 域（由 Azure AD DS 管理）。 **域名必须39个字符或更少才能使用 Azure HDInsight。**
 - 在 Azure AD DS 中启用的安全 LDAP (LDAPS)。
 - HDInsight 虚拟网络和 Azure AD DS 虚拟网络之间的正常网络连接（如果为这两者选择不同的虚拟网络）。 HDInsight 虚拟网络中的 VM 应通过虚拟网络对等互连与 Azure AD DS 连接。 如果 HDInsight 和 Azure AD DS 部署在同一虚拟网络中，则会自动提供此连接，不需要执行进一步操作。
 
@@ -59,19 +59,19 @@ HDInsight 当前仅支持将 Azure AD DS 用作群集用于与 Kerberos 进行�
 
 由于 Kerberos 依赖于密码哈希，因此必须[在 Azure AD DS 上启用密码哈希同步](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)。
 
-如果您正在与活动目录联合服务 （AD FS） 联合使用，则必须启用密码哈希同步。（有关建议的设置，请参阅[此视频](https://youtu.be/qQruArbu2Ew)。密码哈希同步有助于在 AD FS 基础结构发生故障时进行灾难恢复，它还有助于提供泄漏的凭据保护。 有关详细信息，请参阅[使用 Azure AD Connect 同步启用密码哈希同步](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)。
+如果使用与 Active Directory 联合身份验证服务（AD FS）的联合身份验证，则必须启用密码哈希同步。（对于推荐的设置，请参阅[此视频](https://youtu.be/qQruArbu2Ew)。）密码哈希同步有助于进行灾难恢复，以防 AD FS 基础结构出现故障，还有助于提供泄露凭据保护。 有关详细信息，请参阅[使用 Azure AD Connect 同步启用密码哈希同步](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)。
 
 在 IaaS VM 上单独使用本地 Active Directory 或 Active Directory 而不使用 Azure AD 和 Azure AD DS，这是使用 ESP 的 HDInsight 群集不支持的配置。
 
-如果使用联合身份验证，并且密码哈希正确同步，但您出现身份验证失败，请检查是否为 PowerShell 服务主体启用了云密码身份验证。 如果没有，则必须为你的 Azure AD 租户设置[主领域发现 (HRD) 策略](../../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md)。 若要检查和设置 HRD 策略，请执行以下操作：
+如果正在使用联合并且密码哈希已正确同步，但你收到身份验证失败，请检查是否为 PowerShell 服务主体启用了云密码身份验证。 如果没有，则必须为你的 Azure AD 租户设置[主领域发现 (HRD) 策略](../../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md)。 若要检查和设置 HRD 策略，请执行以下操作：
 
-1. 安装预览[Azure AD 电源外壳模块](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2)。
+1. 安装预览版[Azure AD PowerShell 模块](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2)。
 
    ```powershell
    Install-Module AzureAD
    ```
 
-2. 使用全局管理员（租户管理员）凭据进行连接。
+2. 使用全局管理员（租户管理员）凭据连接。
 
    ```powershell
    Connect-AzureAD
@@ -83,7 +83,7 @@ HDInsight 当前仅支持将 Azure AD DS 用作群集用于与 Kerberos 进行�
    Get-AzureADServicePrincipal -SearchString "Microsoft Azure Powershell"
    ```
 
-4. 如果不存在，则创建服务主体。
+4. 如果它不存在，请创建服务主体。
 
    ```powershell
    $powershellSPN = New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
@@ -115,4 +115,4 @@ HDInsight 当前仅支持将 Azure AD DS 用作群集用于与 Kerberos 进行�
 
 - [配置 ESP HDInsight 群集](apache-domain-joined-configure-using-azure-adds.md)
 - [为具有 ESP 的 HDInsight 群集配置 Apache Hive 策略](apache-domain-joined-run-hive.md)
-- [使用 ESP 管理 HDInsight 群集](apache-domain-joined-manage.md)
+- [管理 ESP HDInsight 群集](apache-domain-joined-manage.md)

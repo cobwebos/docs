@@ -1,16 +1,16 @@
 ---
 title: 排查 Azure Cache for Redis 服务器端问题
-description: 了解如何使用 Redis 的 Azure 缓存解决常见的服务器端问题，例如内存压力、CPU 高、长时间运行的命令或带宽限制。
+description: 了解如何解决用于 Redis 的 Azure 缓存的常见服务器端问题，例如内存压力、高 CPU、长时间运行的命令或带宽限制。
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.openlocfilehash: a68c27de304a0da6470745ee4abf69590d9bf78c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277929"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>排查 Azure Cache for Redis 服务器端问题
@@ -28,7 +28,7 @@ ms.locfileid: "79277929"
 
 ## <a name="memory-pressure-on-redis-server"></a>Redis 服务器上的内存压力
 
-服务器端的内存压力会导致各种性能问题，从而延缓对请求的处理。 出现内存压力时，系统可能会将数据分页到磁盘。 此分页错误__ 导致系统性能显著下降。 这种内存压力可能有多个原因：
+服务器端的内存压力会导致各种性能问题，从而延缓对请求的处理。 出现内存压力时，系统可能会将数据分页到磁盘。 此分页错误  导致系统性能显著下降。 这种内存压力可能有多个原因：
 
 - 缓存中填充的数据即将达到其最大容量。
 - Redis 出现大量内存碎片。 这种碎片往往是存储大型对象造成的，因为 Redis 已针对小型对象进行优化。

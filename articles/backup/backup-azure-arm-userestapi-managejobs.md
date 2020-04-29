@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
 ms.openlocfilehash: 628569c547aa776ec2fbb7ec7e32edad7c1fe7dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79273522"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>使用 REST API 跟踪备份和还原作业
@@ -17,7 +17,7 @@ Azure 备份服务会触发各种情况下在后台运行的作业，例如触�
 
 ## <a name="fetch-job-information-from-operations"></a>从操作中提取作业信息
 
-操作（例如触发备份）将始终返回 jobID。 例如：[触发器备份 REST API 操作](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3)的最终响应如下所示：
+操作（例如触发备份）将始终返回 jobID。 例如：[触发备份 REST API 操作](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3)的最终响应如下所示：
 
 ```http
 {
@@ -45,7 +45,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="response"></a>响应
 
-|“属性”  |类型  |说明  |
+|名称  |类型  |说明  |
 |---------|---------|---------|
 |200 正常     | [JobResource](https://docs.microsoft.com/rest/api/backup/jobdetails/get#jobresource)        | OK        |
 

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: seodec18
 ms.openlocfilehash: 0c77e9d0aa4f44f33b1345a6021fc0378459ee85
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79296959"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>监视 Azure ML 试验运行和指标
@@ -28,7 +28,7 @@ ms.locfileid: "79296959"
 > Azure 机器学习还可以在训练期间记录其他来源的信息，例如自动化机器学习运行或运行训练作业的 Docker 容器。 本文不介绍此类日志。 如果遇到问题且联系了 Microsoft 支持部门，他们可以在排除故障时使用这些日志。
 
 > [!TIP]
-> 本文档中的信息主要面向希望监视模型训练过程的数据科学家和开发人员。 如果你是一名管理员，希望监视 Azure 机器学习的资源使用情况和事件，例如配额、已完成的训练运行或已完成的模型部署，请参阅[监视 Azure 机器学习](monitor-azure-machine-learning.md)。
+> 本文档中的信息主要是为希望监视模型训练过程的数据科学家和开发人员提供的。 如果您是一名管理员，希望监视 Azure 机器学习的资源使用情况和事件，例如配额、已完成的训练运行或已完成的模型部署，请参阅[监视 Azure 机器学习](monitor-azure-machine-learning.md)。
 
 ## <a name="available-metrics-to-track"></a>可跟踪的指标
 
@@ -38,7 +38,7 @@ ms.locfileid: "79296959"
 |----|:----|:----|
 |标量值 |函数：<br>`run.log(name, value, description='')`<br><br>示例：<br>run.log("accuracy", 0.95) |使用给定名称将数值或字符串值记录到运行中。 在运行中记录某个指标会导致在试验中的运行记录中存储该指标。  可在一次运行中多次记录同一指标，其结果被视为该指标的一个矢量。|
 |列表|函数：<br>`run.log_list(name, value, description='')`<br><br>示例：<br>run.log_list("accuracies", [0.6, 0.7, 0.87]) | 使用给定名称将值列表记录到运行中。|
-|行|函数：<br>`run.log_row(name, description=None, **kwargs)`<br>示例：<br>run.log_row("Y over X", x=1, y=0.4) | 使用 log_row** 创建包含多个列的指标，如 kwargs 中所述。 每个命名的参数会生成一个具有指定值的列。  可调用 log_row** 一次，记录一个任意元组，或在一个循环中调用多次，生成一个完整表格。|
+|行|函数：<br>`run.log_row(name, description=None, **kwargs)`<br>示例：<br>run.log_row("Y over X", x=1, y=0.4) | 使用 log_row  创建包含多个列的指标，如 kwargs 中所述。 每个命名的参数会生成一个具有指定值的列。  可调用 log_row  一次，记录一个任意元组，或在一个循环中调用多次，生成一个完整表格。|
 |表|函数：<br>`run.log_table(name, value, description='')`<br><br>示例：<br>run.log_table("Y over X", {"x":[1, 2, 3], "y":[0.6, 0.7, 0.89]}) | 使用给定名称将字典对象记录到运行中。 |
 |映像|函数：<br>`run.log_image(name, path=None, plot=None)`<br><br>示例：<br>`run.log_image("ROC", plot=plt)` | 将图像记录到运行记录中。 使用 log_image 在运行中记录图像文件或 matplotlib 图。  运行记录中可显示和比较这些图像。|
 |标记一个运行|函数：<br>`run.tag(key, value=None)`<br><br>示例：<br>run.tag("selected", "yes") | 使用一个字符串键和可选字符串值标记运行。|
@@ -58,7 +58,7 @@ ms.locfileid: "79296959"
 
 1. 加载工作区。 若要详细了解如何设置工作区配置，请参阅[工作区配置文件](how-to-configure-environment.md#workspace)。
 
-[！笔记本-python]（*/机器学习笔记本/使用方式-azureml/培训/笔记本内训练/笔记本内训练。ipynb？name_load_ws）]
+[！笔记本-python [] （~/MachineLearningNotebooks/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb？ name = load_ws）]
 
 
 ## <a name="option-1-use-start_logging"></a>选项 1：使用 start_logging
@@ -69,39 +69,39 @@ ms.locfileid: "79296959"
 
 ### <a name="load-the-data"></a>加载数据
 
-此示例使用糖尿病数据集，这是一个众所周知的小数据集，随 scikit 学习一起。 此单元格加载数据集并将其拆分为随机训练和测试集。
+此示例使用 scikit-learn 提供的糖尿病数据集，这是一个众所周知的小型数据集。 此单元会加载数据集，并将其拆分为随机定型集和测试集。
 
-[！笔记本-python]（*/机器学习笔记本/使用方式-azureml/培训/笔记本内训练/笔记本内训练。ipynb？name_load_data）]
+[！笔记本-python [] （~/MachineLearningNotebooks/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb？ name = load_data）]
 
 ### <a name="add-tracking"></a>添加跟踪
 使用 Azure 机器学习 SDK 添加试验跟踪并将持久化模型上传到试验运行记录。 以下代码添加标记、日志，并将模型文件上传到试验运行。
 
-[！笔记本-python]（*/机器学习笔记本/使用方式-azureml/培训/笔记本内训练/笔记本内训练。ipynb？name_create_experiment）]
+[！笔记本-python [] （~/MachineLearningNotebooks/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb？ name = create_experiment）]
 
 脚本以 ```run.complete()``` 结束，将运行标记为已完成。  此函数通常用于交互式 Notebook 方案。
 
 ## <a name="option-2-use-scriptrunconfig"></a>选项 2：使用 ScriptRunConfig
 
-[**脚本 RunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py)是一个用于为脚本运行设置配置的类。 使用此选项，可添加监视代码，在运行完成时发出通知，或让视觉小组件执行监视操作。
+[**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py)是用于设置脚本运行配置的类。 使用此选项，可添加监视代码，在运行完成时发出通知，或让视觉小组件执行监视操作。
 
 此示例在上面的基本 sklearn 岭模型的基础上进行扩展。 它会对模型的 alpha 值执行简单的参数扫描以捕获指标，并通过在实验中运行来训练模型。 该示例在一个用户管理的环境中执行本地运行。 
 
 1. 创建定型脚本 `train.py`。
 
-   [！代码-python]（*/机器学习笔记本/使用方式-azureml/培训/本地培训/培训.py）]
+   [！代码-python [] （~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train.py）]
 
 2. `train.py` 脚本引用 `mylib.py`，通过后者，可获取要在岭模型中使用的 alpha 值的列表。
 
-   [！代码-python]（*/机器学习笔记本/使用方式-azureml/培训/本地培训/mylib.py）] 
+   [！代码-python [] （~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/mylib.py）] 
 
 3. 配置用户管理的本地环境。
 
-   [！笔记本-python]（*/机器学习笔记本/使用方式-azureml/培训/本地培训/本地培训.ipynb？name_user_managed_env）]
+   [！笔记本-python [] （~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb？ name = user_managed_env）]
 
 
 4. 提交要在用户管理的环境中运行的 ```train.py``` 脚本。 整个脚本文件夹都要提交以进行训练，包括 ```mylib.py``` 文件。
 
-   [！笔记本-python]（*/机器学习笔记本/使用方式-azureml/培训/本地培训/本地培训。ipynb？name_src）][！笔记本-python]（*/机器学习笔记本/使用方式-azureml/培训/本地培训/本地培训。ipynb？name_run）]
+   [！笔记本-python [] （~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb？ name = src）][！笔记本-python [] （~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-local/train-on-local.ipynb？ name = run）]
 
 
 
@@ -203,7 +203,7 @@ ms.locfileid: "79296959"
 下面的笔记本展示了本文中的概念：
 * [how-to-use-azureml/training/train-within-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
 * [how-to-use-azureml/training/train-on-local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
-* [如何使用-azureml/跟踪和监控-实验/日志记录-api](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/logging-api)
+* [如何使用-azureml/跟踪和监视-试验/记录-api](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/logging-api)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 

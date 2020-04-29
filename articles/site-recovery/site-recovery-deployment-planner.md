@@ -1,5 +1,5 @@
 ---
-title: 用于 VMware 灾难恢复的 Azure 站点恢复部署规划器
+title: VMware 灾难恢复 Azure Site Recovery 部署规划器
 description: 了解用于将 VMware VM 灾难恢复到 Azure 的 Azure Site Recovery 部署规划器。
 author: mayurigupta13
 manager: rochakm
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: mayg
 ms.openlocfilehash: 70d84516e2d7a42b1c6a3714d9060bedf6535f58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79366290"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>关于用于 VMware 到 Azure 部署的 Azure Site Recovery 部署规划器
@@ -39,7 +39,7 @@ ms.locfileid: "79366290"
 * 给定带宽可以实现的 RPO
 * 在预配较低带宽的情况下，对所需 RPO 的影响
 
-**Azure 基础结构需求**
+**Azure 基础结构要求**
 
 * 每个 VM 的存储类型（标准或高级存储）要求
 * 要为复制设置的标准和高级存储帐户总数（包括缓存存储帐户）
@@ -47,7 +47,7 @@ ms.locfileid: "79366290"
 * 针对订阅执行测试性故障转移或故障转移之前要设置的 Azure 核心数
 * 适用于每个本地 VM 的 Azure VM 建议大小
 
-**本地基础结构需求**
+**本地基础结构要求**
 * 需在本地部署的配置服务器和进程服务器数量
 
 **灾难恢复到 Azure 的估计成本**
@@ -71,12 +71,12 @@ ms.locfileid: "79366290"
 
 *此工具主要用于 Hyper-V 到 Azure 灾难恢复方案。 对于 Hyper-V 到辅助站点灾难恢复，只能将其用于了解源端建议，例如所需网络带宽、每个源 Hyper-V 服务器上需要的可用存储空间，以及初始复制批处理数和批次定义。 忽略报表中的 Azure 建议和成本。 另外，“获取吞吐量”操作不适用于 Hyper-V 到辅助站点灾难恢复方案。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 该工具的操作分两个主要阶段：分析和报告生成。 此外还有第三个选项，即仅计算吞吐量。 下表提供了可以进行分析和吞吐量测量的服务器的要求。
 
-| 服务器要求 | 描述|
+| 服务器要求 | 说明|
 |---|---|
-|分析和吞吐量测量| <ul><li>操作系统：Windows Server 2016 或 Windows Server 2012 R2<br>（理想情况下，至少符合[配置服务器的建议大小](https://aka.ms/asr-v2a-on-prem-components)）</li><li>计算机配置：8 个 vCPU，16 GB RAM，300 GB HDD</li><li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Visual C++ Redistributable for Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>从此服务器端口 443 访问 Azure （*.blob.core.windows.net）<br>*这是可选的。 您可以选择在生成报表期间手动提供可用带宽。</li><li>Azure 存储帐户</li><li>服务器上的管理员访问权限</li><li>至少 100 GB 的可用磁盘空间（假定有 1,000 个 VM，每个平均包含 3 个磁盘，分析时间为 30 天）</li><li>VMware vCenter 统计信息级别设置可以是 1 或更高级别</li><li>允许 vCenter 端口（默认为 443）：Site Recovery 部署规划器使用此端口连接到 vCenter 服务器/ESXi 主机</ul></ul>|
+|分析和吞吐量测量| <ul><li>操作系统：Windows Server 2016 或 Windows Server 2012 R2<br>（理想情况下，至少符合[配置服务器的建议大小](https://aka.ms/asr-v2a-on-prem-components)）</li><li>计算机配置：8 个 vCPU，16 GB RAM，300 GB HDD</li><li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Visual C++ Redistributable for Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>从该服务器到 Azure （*. blob.core.windows.net）的 Internet 访问，端口443<br>[这是可选的。 您可以选择在手动生成报表期间提供可用带宽。]</li><li>Azure 存储帐户</li><li>服务器上的管理员访问权限</li><li>至少 100 GB 的可用磁盘空间（假定有 1,000 个 VM，每个平均包含 3 个磁盘，分析时间为 30 天）</li><li>VMware vCenter 统计信息级别设置可以是 1 或更高级别</li><li>允许 vCenter 端口（默认为 443）：Site Recovery 部署规划器使用此端口连接到 vCenter 服务器/ESXi 主机</ul></ul>|
 | 报告生成 | 装有 Excel 2013 或更高版本的 Windows 电脑或 Windows Server。<li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Visual C++ Redistributable for Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>仅当你在报表生成命令中传递了 -User 选项来获取 VM 的最新 VM 配置信息时才需要 [VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)。 部署规划器连接到 vCenter 服务器。 允许 vCenter 端口（默认为 443）连接到 vCenter 服务器。</li>|
 | 用户权限 | 用于在分析期间访问 VMware vCenter 服务器/VMware vSphere ESXi 主机的用户帐户的只读权限 |
 

@@ -4,15 +4,15 @@ description: 了解如何通过使用静态连接客户端来避免 Azure Functi
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.openlocfilehash: 872ad9a1b8f0a7da6fe410e68f08469ac11045a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79276447"
 ---
 # <a name="manage-connections-in-azure-functions"></a>管理 Azure Functions 中的连接
 
-函数应用中的函数共享资源。 这些共享资源包括连接：HTTP 连接、数据库连接和与 Azure 存储等服务的连接。 当许多函数同时运行时，可能会耗尽可用的连接。 本文介绍如何编写函数，避免使用超出需要的连接数。
+函数应用中的函数共享资源。 这些共享的资源包括连接：HTTP 连接、数据库连接以及到 Azure 存储之类服务的连接。 当许多函数同时运行时，可能会耗尽可用的连接。 本文介绍如何编写函数，避免使用超出需要的连接数。
 
 ## <a name="connection-limit"></a>连接限制
 
@@ -20,7 +20,7 @@ ms.locfileid: "79276447"
 
 此限制是按实例施加的。 [缩放控制器添加函数应用实例](functions-scale.md#how-the-consumption-and-premium-plans-work)以处理更多请求时，每个实例都有单独的连接限制。 这意味着没有全局连接限制，你可以跨所有活动实例建立比 600 个活动连接多得多的连接。
 
-进行故障排除时，请确保已为函数应用启用了应用程序见解。 应用程序见解允许您查看函数应用的指标，如执行。 有关详细信息，请参阅[在应用程序见解中查看遥测](functions-monitoring.md#view-telemetry-in-application-insights)。  
+进行故障排除时，请确保已启用函数应用 Application Insights。 Application Insights 使你可以查看函数应用的指标，如执行。 有关详细信息，请参阅[在 Application Insights 中查看遥测](functions-monitoring.md#view-telemetry-in-application-insights)。  
 
 ## <a name="static-clients"></a>静态客户端
 
@@ -29,9 +29,9 @@ ms.locfileid: "79276447"
 
 在 Azure Functions 应用程序中使用特定于服务的客户端时，请遵循以下准则：
 
-- *不要*创建具有每个函数调用的新客户端。
+- *不要*使用每个函数调用创建新的客户端。
 - ** 应创建一个可在每次调用函数时使用的静态客户端。
-- 如果不同的函数使用相同的服务，*请考虑*在共享帮助器类中创建单个静态客户端。
+- 如果不同的函数使用同一个服务，*请考虑*在共享的帮助程序类中创建单个静态客户端。
 
 ## <a name="client-code-examples"></a>客户端代码示例
 
@@ -56,7 +56,7 @@ public static async Task Run(string input)
 
 ### <a name="http-agent-examples-javascript"></a>HTTP 代理示例 (JavaScript)
 
-因为它提供更好的连接管理选项，所以应该使用本机[`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent)类而不是非本机方法，如`node-fetch`模块。 连接参数通过 `http.agent` 类上的选项配置。 有关 HTTP 代理的可用详细选项，请参阅 [new Agent(\[options\])](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options)。
+由于它提供更好的连接管理选项，因此应使用[`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent)本机类，而不是使用非本机方法， `node-fetch`如模块。 连接参数通过 `http.agent` 类上的选项配置。 有关 HTTP 代理的可用详细选项，请参阅 [new Agent(\[options\])](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options)。
 
 `http.request()` 使用的全局 `http.globalAgent` 类将这些值全部设置为各自的默认值。 在 Functions 中配置连接限制的建议方法是全局设置一个最大数量。 以下示例为函数应用设置最大 socket 数量：
 
@@ -126,14 +126,14 @@ module.exports = async function (context) {
 
 ## <a name="sqlclient-connections"></a>SqlClient 连接
 
-函数代码可使用 SQL Server 的 .NET Framework 数据提供程序 ([SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx)) 连接到 SQL 关系数据库。 这也是依赖于ADO.NET的数据框架（如[实体框架](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx)）的基础提供程序。 与 [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) 和 [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+函数代码可使用 SQL Server 的 .NET Framework 数据提供程序 ([SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx)) 连接到 SQL 关系数据库。 这也是依赖于 ADO.NET 的数据框架的基础提供程序，如[实体框架](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx)。 与 [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) 和 [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
 ) 连接不同，ADO.NET 默认实现连接池。 但是，由于连接仍可能耗尽，因此应优化数据库连接。 有关详细信息，请参阅 [SQL Server 连接池 (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)。
 
 > [!TIP]
-> 某些数据框架（如实体框架）通常从配置文件的**ConnectStrings**部分获取连接字符串。 在这种情况下，必须将 SQL 数据库连接字符串显式添加到函数应用设置的连接字符串集合以及本地项目中的 [local.settings.json 文件](functions-run-local.md#local-settings-file)中****。 如果要在函数代码中创建 [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) 的实例，则应将连接字符串值与其他连接一起存储在应用程序设置中****。
+> 某些数据框架（如实体框架）通常从配置文件的**ConnectionStrings**节获取连接字符串。 在这种情况下，必须将 SQL 数据库连接字符串显式添加到函数应用设置的连接字符串集合以及本地项目中的 [local.settings.json 文件](functions-run-local.md#local-settings-file)中****。 如果要在函数代码中创建 [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) 的实例，则应将连接字符串值与其他连接一起存储在应用程序设置中****。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关我们推荐静态客户端的原因的详细信息，请参阅[不当实例化反模式](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/)。
+有关为何建议静态客户端的详细信息，请参阅不[正确的实例化对立模式](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/)。
 
 有关更多 Azure Functions 性能提示，请参阅[优化 Azure Functions 的性能和可靠性](functions-best-practices.md)。

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 管理 Azure 数据湖分析
+title: 使用 Azure CLI 管理 Azure Data Lake Analytics
 description: 本文介绍如何使用 Azure CLI 管理 Data Lake Analytics 作业、数据源和用户。
 services: data-lake-analytics
 author: jasonwhowell
@@ -9,10 +9,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.openlocfilehash: 69a48952ef273acb8cf7eb0ec5968e12b962b622
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79454357"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>使用 Azure 命令行接口 (CLI) 管理 Azure Data Lake Analytics
@@ -22,7 +22,7 @@ ms.locfileid: "79454357"
 了解如何使用 Azure CLI 管理 Azure Data Lake Analytics 帐户、数据源、用户和作业。 若要查看使用其他工具的管理主题，请单击上述选项卡选项。
 
 
-**先决条件**
+**必备条件**
 
 开始学习本教程之前，必须有以下资源：
 
@@ -90,7 +90,7 @@ ms.locfileid: "79454357"
 
 Data Lake Analytics 目前支持以下两个数据源：
 
-* [Azure 数据湖存储](../data-lake-store/data-lake-store-overview.md)
+* [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
 * [Azure 存储](../storage/common/storage-introduction.md)
 
 创建 Analytics 帐户时，必须指定一个 Azure Data Lake 存储帐户作为默认存储帐户。 默认 Data Lake 存储帐户用于存储作业元数据和作业审核日志。 创建 Analytics 帐户后，可添加其他 Data Lake 存储帐户和/或 Azure 存储帐户。 
@@ -211,9 +211,9 @@ az dla job recurrence list --account "<Data Lake Analytics Account Name>"
 az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recurrence-identity "<Recurrence ID>"
 ```
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 * [Microsoft Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)
-* [使用 Azure 门户开始使用数据湖分析](data-lake-analytics-get-started-portal.md)
+* [使用 Azure 门户 Data Lake Analytics 入门](data-lake-analytics-get-started-portal.md)
 * [使用 Azure 门户管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md)
-* [使用 Azure 门户监视 Azure 数据湖分析作业并排除故障](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+* [使用 Azure 门户监视 Azure Data Lake Analytics 作业并对其进行故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 

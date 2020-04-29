@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: srrengar
 ms.openlocfilehash: c3c1bf511f3313e7408d6ce90b73de60bd1309f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79366732"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>使用 Azure Monitor 日志进行性能监视
@@ -17,7 +17,7 @@ ms.locfileid: "79366732"
 本文介绍如何逐步将 Log Analytics 代理作为虚拟机规模集扩展添加到群集并将其连接到现有的 Azure Log Analytics 工作区。 这可收集关于容器、应用程序和性能监视的诊断数据。 通过将其作为扩展添加到虚拟机规模集资源，Azure 资源管理器可确保它安装在每个节点上，即使在缩放群集时也是如此。
 
 > [!NOTE]
-> 本文假定已设置了 Azure Log Analytics 工作区。 如果没有，则前往设置 Azure[监视器日志](service-fabric-diagnostics-oms-setup.md)
+> 本文假定已设置了 Azure Log Analytics 工作区。 如果没有，请转到[设置 Azure Monitor 日志](service-fabric-diagnostics-oms-setup.md)
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -33,7 +33,7 @@ ms.locfileid: "79366732"
 
 3. 若要建立 Windows 群集，请单击“Windows 服务器”；若要创建 Linux 群集，请单击“Linux 服务器”********。 此页将显示 `workspace ID` 和 `workspace key`（在门户中列为“主键”）。 下一步骤需要使用这两个值。
 
-4. 使用 API 运行命令以将日志分析代理安装到群集上`vmss extension set`：
+4. 运行命令，使用`vmss extension set` API 将 Log Analytics 代理安装到群集：
 
     对于 Windows 群集：
 
@@ -69,7 +69,7 @@ ms.locfileid: "79366732"
 
 1. 在 Azure 门户中，转到在其中创建 Service Fabric 分析解决方案的资源组。 选择 **ServiceFabric\<nameOfLog AnalyticsWorkspace\>**。
 
-2. 单击**日志分析**。
+2. 单击 " **Log Analytics**"。
 
 3. 单击“高级设置”****。
 
@@ -92,5 +92,5 @@ ms.locfileid: "79366732"
 ## <a name="next-steps"></a>后续步骤
 
 * 收集相关[性能计数器](service-fabric-diagnostics-event-generation-perf.md)。 若要配置 Log Analytics 代理以收集特定性能计数器，请查看[配置数据源](../azure-monitor/platform/agent-data-sources.md#configuring-data-sources)。
-* 配置 Azure 监视器日志以设置[自动警报](../log-analytics/log-analytics-alerts.md)以帮助检测和诊断
+* 配置 Azure Monitor 日志以设置[自动警报](../log-analytics/log-analytics-alerts.md)，以帮助检测和诊断
 * 作为替代方法，可以通过 [Azure 诊断扩展收集性能计数器并将其发送到 Application Insights](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)

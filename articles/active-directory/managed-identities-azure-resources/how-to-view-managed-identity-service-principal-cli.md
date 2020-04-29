@@ -1,5 +1,5 @@
 ---
-title: 查看托管标识的服务主体 - Azure CLI - Azure AD
+title: 查看托管标识的服务主体-Azure CLI-Azure AD
 description: 使用 Azure CLI 查看托管标识的服务主体的分步说明。
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 11/29/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6fedef003c6d4143d3ad1814081d55b61d5ee020
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79298693"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-using-azure-cli"></a>使用 Azure CLI 查看托管标识的服务主体
@@ -28,7 +28,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 本文将介绍如何使用 Azure CLI 查看托管标识的服务主体。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。
 - 如果还没有 Azure 帐户，请[注册免费帐户](https://azure.microsoft.com/free/)。

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 260811c4ae15b45de6f7bc1b22e3ed6dcea44259
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277903"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions 中的性能和缩放 (Azure Functions)
@@ -20,9 +20,9 @@ ms.locfileid: "79277903"
 
 ## <a name="history-table"></a>历史记录表
 
-“历史记录”表是一个 Azure 存储表，包含任务中心内所有业务流程实例的历史记录事件。**** 此表的名称采用 *TaskHubName*History 格式。 当实例运行时，会在此表中添加新行。 此表的分区键派生自业务流程的实例 ID。 实例 ID 在大多数情况下是随机的，确保在 Azure 存储中以最佳方式分配内部分区。
+“历史记录”表是一个 Azure 存储表，包含任务中心内所有业务流程实例的历史记录事件。  此表的名称采用 *TaskHubName*History 格式。 当实例运行时，会在此表中添加新行。 此表的分区键派生自业务流程的实例 ID。 实例 ID 在大多数情况下是随机的，确保在 Azure 存储中以最佳方式分配内部分区。
 
-需要运行业务流程实例时，会将“历史记录”表的相应行载入内存。 然后，这些历史记录事件将重播到业务流程协调程序函数代码中，使其恢复到以前的检查点状态。** 以这种方式使用执行历史记录来重新生成状态不受[事件溯源模式](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)的影响。
+需要运行业务流程实例时，会将“历史记录”表的相应行载入内存。 然后，这些历史记录事件将重播到业务流程协调程序函数代码中，使其恢复到以前的检查点状态。  以这种方式使用执行历史记录来重新生成状态不受[事件溯源模式](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)的影响。
 
 ## <a name="instances-table"></a>实例表
 
@@ -51,7 +51,7 @@ Durable Task 扩展实现了随机指数退让算法，以降低空闲队列轮�
 可以通过 [host.json 文件](../functions-host-json.md#durabletask)中的 `maxQueuePollingInterval` 属性配置最大轮询延迟。 将此属性设置为较高的值时，可能导致的消息处理延迟也越高。 只有在不活动的时间段过后，才会出现较高的延迟。 将此属性设置为较低的值时，可能导致的存储成本会较高，因为存储事务数增高。
 
 > [!NOTE]
-> 在 Azure 函数消耗和高级计划中运行时[，Azure 函数缩放控制器](../functions-scale.md#how-the-consumption-and-premium-plans-work)将每隔 10 秒轮询每个控件和工作项队列一次。 若要确定何时激活函数应用实例并进行缩放决策，这种额外的轮询是必需的。 在撰写本文时，这种 10 秒的时间间隔为常量，不能进行配置。
+> 在 Azure Functions 消耗量和高级计划中运行时， [Azure Functions 规模控制器](../functions-scale.md#how-the-consumption-and-premium-plans-work)将每10秒轮询一次每个控件和一次工作项队列。 若要确定何时激活函数应用实例并进行缩放决策，这种额外的轮询是必需的。 在撰写本文时，这种 10 秒的时间间隔为常量，不能进行配置。
 
 ## <a name="storage-account-selection"></a>存储帐户的选择
 
@@ -131,12 +131,12 @@ Durable Task 扩展实现了随机指数退让算法，以降低空闲队列轮�
 
 ## <a name="auto-scale"></a>自动缩放
 
-与消耗和弹性高级计划中运行的所有 Azure 函数一样，持久函数支持通过 Azure[函数缩放控制器](../functions-scale.md#runtime-scaling)自动缩放。 缩放控制器通过定期发出 _peek_ 命令来监视所有队列的延迟。 根据扫视消息的延迟，缩放控制器将决定是要添加还是删除 VM。
+与在使用和弹性高级计划中运行的所有 Azure Functions 一样，Durable Functions 通过[Azure Functions 缩放控制器](../functions-scale.md#runtime-scaling)支持自动缩放。 缩放控制器通过定期发出 _peek_ 命令来监视所有队列的延迟。 根据扫视消息的延迟，缩放控制器将决定是要添加还是删除 VM。
 
 如果缩放控制器确定控制队列消息延迟过高，则会添加 VM 实例，直到消息延迟下降到可接受的级别，或者达到控制队列分区计数。 同样，如果工作项队列延迟偏高，缩放控制器会不断地添加 VM 实例，而不管分区计数如何。
 
 > [!NOTE]
-> 从持久功能 2.0 开始，可以将函数应用配置为在弹性高级计划中受 VNET 保护的服务终结点内运行。 在此配置中，持久函数触发启动缩放请求，而不是缩放控制器。
+> 从 Durable Functions 2.0 开始，可以将函数应用配置为在弹性高级计划中的 VNET 保护的服务终结点中运行。 在此配置中，Durable Functions 触发器启动缩放请求，而不是缩放控制器。
 
 ## <a name="thread-usage"></a>线程用量
 
@@ -220,7 +220,7 @@ Azure Functions 支持在单个应用实例中并发执行多个函数。 这种
 
 ### <a name="orchestrator-function-replay"></a>业务流程协调程序函数重播
 
-如前所述，业务流程协调程序函数是使用“历史记录”表的内容重播的。**** 默认情况下，每当从控制队列中取消一批消息的排队时，都会重播业务流程协调程序函数代码。 即使您使用的是扇出、扇出模式，并且正在等待所有任务完成（例如，`Task.WhenAll`在 .NET 或`context.df.Task.all`JavaScript 中使用），也会随着任务响应的批处理而发生重播。 启用扩展会话后，业务流程协调程序函数实例将在内存中保存更长时间，同时，无需重播完整历史记录即可处理新消息。
+如前所述，业务流程协调程序函数是使用“历史记录”表的内容重播的。**** 默认情况下，每当从控制队列中取消一批消息的排队时，都会重播业务流程协调程序函数代码。 即使使用扇出，扇入模式并等待完成所有任务（例如，在 .NET 或`Task.WhenAll` `context.df.Task.all` JavaScript 中使用），在一段时间内处理任务响应的批处理时，也会发生重播。 启用扩展会话后，业务流程协调程序函数实例将在内存中保存更长时间，同时，无需重播完整历史记录即可处理新消息。
 
 对于以下情况，往往可以观测到扩展会话对性能的改进：
 

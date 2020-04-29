@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0082d841faf22745e609d38444f4a97553b3c867
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79365860"
 ---
 # <a name="how-to-configure-azure-ad-saml-token-encryption"></a>如何：配置 Azure AD SAML 令牌加密
@@ -56,7 +56,7 @@ Azure AD 使用 AES-256 加密 SAML 断言数据。
 
 可以在 Azure 门户中将公共证书添加到应用程序配置。
 
-1. 转到[Azure 门户](https://portal.azure.com)。
+1. 转到 [Azure 门户](https://portal.azure.com)。
 
 1. 转到“Azure Active Directory”>“企业应用程序”边栏选项卡，然后选择要为其配置令牌加密的应用程序。****
 
@@ -67,7 +67,7 @@ Azure AD 使用 AES-256 加密 SAML 断言数据。
     > [!NOTE]
     > “令牌加密”选项仅适用于已在 Azure 门户的“企业应用程序”边栏选项卡中设置的、来自应用程序库或非库应用的 SAML 应用程序。******** 对于其他应用程序，此菜单选项将会禁用。 对于通过 Azure 门户中的“应用注册”体验注册的应用程序，可以通过 Microsoft Graph 或 PowerShell 使用应用程序清单配置 SAML 令牌加密。****
 
-1. 在**令牌加密**页上，选择 **"导入证书"** 以导入包含公共 X.509 证书的 .cer 文件。
+1. 在 "**令牌加密**" 页上，选择 "**导入证书**" 以导入包含公共 x.509 证书的 .cer 文件。
 
     ![导入包含 X.509 证书的 .cer 文件](./media/howto-saml-token-encryption/import-certificate-small.png)
 
@@ -123,9 +123,9 @@ Azure AD 使用 AES-256 加密 SAML 断言数据。
 
 ### <a name="to-configure-token-encryption-using-powershell"></a>使用 PowerShell 配置令牌加密
 
-1. 使用最新的 Azure AD PowerShell 模块连接到租户。
+1. 使用最新 Azure AD PowerShell 模块连接到你的租户。
 
-1. 使用**["设置 Azure 应用程序"](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** 命令设置令牌加密设置。
+1. 使用**[azure 应用程序](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** 命令设置令牌加密设置。
 
     ```
     Set-AzureADApplication -ObjectId <ApplicationObjectId> -KeyCredentials "<KeyCredentialsObject>"  -TokenEncryptionKeyId <keyID>

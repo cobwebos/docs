@@ -4,10 +4,10 @@ description: 介绍如何使用 Azure 备份将 Azure VM 备份到恢复服务�
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.openlocfilehash: aeadd7bc798f690c67eef38c6dc645204ff39115
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79273509"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>将 Azure VM 备份到恢复服务保管库中
@@ -31,17 +31,17 @@ ms.locfileid: "79273509"
 
 * [查看](backup-architecture.md#architecture-built-in-azure-vm-backup) Azure VM 备份体系结构。
 * [了解](backup-azure-vms-introduction.md) Azure VM 备份和备份扩展。
-* 在配置备份之前[，请查看支持矩阵](backup-support-matrix-iaas.md)。
+* 在配置备份之前，请[查看支持矩阵](backup-support-matrix-iaas.md)。
 
 此外，在某些情况下，还需要完成几项操作：
 
-* **在 VM 上安装 VM 代理**：Azure 备份通过安装计算机上运行的 Azure VM 代理的扩展来备份 Azure VM。 如果 VM 是从 Azure 市场映像创建的，则代理已安装并正在运行。 如果创建了自定义 VM 或者迁移了本地计算机，则可能需要[手动安装代理](#install-the-vm-agent)。
+* 在**vm 上安装 vm 代理**： azure 备份通过将扩展安装到在计算机上运行的 Azure VM 代理来备份 azure vm。 如果 VM 是从 Azure 市场映像创建的，则代理已安装并正在运行。 如果创建了自定义 VM 或者迁移了本地计算机，则可能需要[手动安装代理](#install-the-vm-agent)。
 
 ## <a name="create-a-vault"></a>创建保管库
 
  保管库可以存储备份以及在不同时间创建的恢复点，并可以存储与备份的计算机相关联的备份策略。 按如下所述创建保管库：
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 在搜索框中键入“恢复服务”。**** 在“服务”下，单击“恢复服务保管库”********。
 
      ![搜索恢复服务保管库](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png)
@@ -91,7 +91,7 @@ ms.locfileid: "79273509"
 
    ![“备份”按钮](./media/backup-azure-arm-vms-prepare/backup-button.png)
 
-2. 在 **"备份目标** > "**中，工作负荷在何处运行？** 选择**Azure**。 在“要备份哪些内容?”中，选择“虚拟机” >  “确定”。************ 这会在保管库中注册 VM 扩展。
+2. 在**备份目标** > 中，**你的工作负载在哪里运行？** 选择**Azure**。 在“要备份哪些内容?”中，选择“虚拟机” >  “确定”。************ 这会在保管库中注册 VM 扩展。
 
    ![“备份”和“备份目标”窗格](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
 
@@ -101,7 +101,7 @@ ms.locfileid: "79273509"
 
       ![默认备份策略](./media/backup-azure-arm-vms-prepare/default-policy.png)
 
-4. 在“选择虚拟机”中，选择要使用该策略备份的 VM。**** 然后单击“确定”****。
+4. 在“选择虚拟机”中，选择要使用该策略备份的 VM。****  。
 
    * 随后将验证选定的 VM。
    * 只能选择与保管库位于同一区域中的 VM。
@@ -120,7 +120,7 @@ ms.locfileid: "79273509"
 * 运行备份时，请注意：
   * 正在运行的 VM 最有可能捕获应用程序一致的恢复点。
   * 但是，即使 VM 已关闭，也仍会将其备份。 此类 VM 称为脱机 VM。 在这种情况下，恢复点是崩溃一致的。
-* 允许备份 Azure VM 不需要显式出站连接。
+* 若要备份 Azure Vm，无需显式出站连接。
 
 ### <a name="create-a-custom-policy"></a>创建自定义策略
 
@@ -145,11 +145,11 @@ ms.locfileid: "79273509"
 初始备份将根据计划运行，但你可以按如下所述手动运行：
 
 1. 在保管库菜单中，单击“备份项”****。
-2. 在**备份项**中，单击**Azure 虚拟机**。
-3. 在 **"备份项目"** 列表中，单击省略号 （...）。
+2. 在 "**备份项**" 中，单击 " **Azure 虚拟机**"。
+3. 在 "**备份项**" 列表中，单击省略号（...）。
 4. 单击“立即备份”****。
-5. 在“立即备份”中，使用日历控件选择恢复点的最后保留日期****。 然后单击“确定”****。
-6. 监视门户通知。 您可以在保管库仪表板>**正在进行的备份作业** > **中**监视作业进度。 创建初始备份可能需要一些时间，具体取决于 VM 的大小。
+5. 在“立即备份”中，使用日历控件选择恢复点的最后保留日期****。  。
+6. 监视门户通知。 你可以在保管库仪表板中监视作业进度 >**备份作业** > **正在进行中**。 创建初始备份可能需要一些时间，具体取决于 VM 的大小。
 
 ## <a name="verify-backup-job-status"></a>验证备份作业状态
 
@@ -171,8 +171,8 @@ ms.locfileid: "79273509"
 已完成 | 正在进行 | 正在进行
 已完成 | 已跳过 | 已完成
 已完成 | 已完成 | 已完成
-已完成 | 失败 | 已完成，但出现警告
-失败 | 失败 | 失败
+已完成 | Failed | 已完成，但出现警告
+已失败 | 已失败 | Failed
 
 现在，借助此功能，对于相同的 VM，两个备份可以并行运行，但是，无论处于哪个阶段（“快照”、“将数据传输到保管库”），都只能有一个子任务处于运行状态。 因此，对于进行中的备份作业导致了第二天备份失败的情况，就会通过此分离功能加以避免。 如果以前某天的备份作业处于正在进行的状态，那么当“将数据传输到保管库”**** 阶段已跳过时，次日的备份快照可以被完成。
 在保管库中创建的增量恢复点将从在该保管库中创建的最后一个恢复点捕获所有的改动。 不会对用户产生任何成本影响。
@@ -183,7 +183,7 @@ ms.locfileid: "79273509"
 
 Azure 备份通过为在计算机上运行的 Azure VM 代理安装一个扩展来备份 Azure VM。 如果 VM 是从 Azure 市场映像创建的，则代理已安装并正在运行。 如果创建了自定义 VM 或者迁移了本地计算机，则可能需要根据下表中的摘要手动安装代理。
 
-**Vm** | **详细信息**
+**VM** | **详细信息**
 --- | ---
 **Windows** | 1.[下载并安装](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)代理 MSI 文件。<br/><br/> 2. 在计算机上安装具有管理员权限。<br/><br/> 3. 验证安装。 在 VM 上的“C:\WindowsAzure\Packages”中，右键单击“WaAppAgent.exe” >  选择“属性”。********** 在“详细信息”选项卡上，“产品版本”应为 2.6.1198.718 或更高。********<br/><br/> 若要更新代理，请确保没有备份操作正在运行，并[重新安装代理](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。
 **Linux** | 使用分发版包存储库中的 RPM 或 DEB 包安装代理。 这是安装和升级 Azure Linux 代理的首选方法。 所有[认可的分发版提供商](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)会将 Azure Linux 代理包集成到其映像和存储库。 [GitHub](https://github.com/Azure/WALinuxAgent) 上提供了该代理，但我们不建议从此处安装。<br/><br/> 若要更新代理，请确保没有备份操作正在运行，并更新二进制文件。
@@ -191,11 +191,11 @@ Azure 备份通过为在计算机上运行的 Azure VM 代理安装一个扩展�
 >[!NOTE]
 > **Azure 备份现在支持使用 Azure 虚拟机备份解决方案进行选择性磁盘备份和还原。**
 >
->如今，Azure 备份支持使用虚拟机备份解决方案一起备份 VM 中的所有磁盘（操作系统和数据）。 使用排除磁盘功能，您可以选择从 VM 中的许多数据磁盘备份一个或多个数据磁盘。 这为备份和恢复需求提供了高效且经济高效的解决方案。 每个恢复点都包含备份操作中包含的磁盘的数据，这进一步允许您在还原操作期间从给定恢复点还原磁盘子集。 这适用于从快照和保管库还原。
+>如今，Azure 备份支持使用虚拟机备份解决方案，将 VM 中的所有磁盘（操作系统和数据）备份到一起。 使用排除磁盘功能，你可以选择从 VM 的多个数据磁盘中备份一个或多个数据磁盘。 这为备份和还原需求提供高效且经济高效的解决方案。 每个恢复点都包含备份操作中包含的磁盘数据，在还原操作过程中，您还可以使用该数据的一个子集从给定的恢复点还原。 这适用于从快照和保管库还原。
 >
->**要注册预览版，请写信给我们：AskAzureBackupTeam@microsoft.com**
+>**若要注册预览版，请向我们写信AskAzureBackupTeam@microsoft.com**
 
 ## <a name="next-steps"></a>后续步骤
 
 * 排查 [Azure VM 代理](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)或 [Azure VM 备份](backup-azure-vms-troubleshoot.md)出现的任何问题。
-* [恢复](backup-azure-arm-restore-vms.md)Azure VM。
+* [还原](backup-azure-arm-restore-vms.md)Azure Vm。

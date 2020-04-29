@@ -8,10 +8,10 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 40d4dc898efe6b719ec5e1f1ec0471a9677d3c95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79371114"
 ---
 # <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>（已弃用）在容器服务中为 Kubernetes 群集设置 Azure AD 服务主体
@@ -61,7 +61,7 @@ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/<subscrip
 
 ![创建服务主体](./media/container-service-kubernetes-service-principal/service-principal-creds.png)
 
-突出显示的是客户端**ID** `appId`（ ） 和**客户端机密**（`password`），用作群集部署的服务主体参数。
+突出显示的是 "**客户端 ID** " （`appId`）和`password`"**客户端机密**" （），用作群集部署的服务主体参数。
 
 
 ### <a name="specify-service-principal-when-creating-the-kubernetes-cluster"></a>在创建 Kubernetes 群集时指定服务主体
@@ -78,7 +78,7 @@ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/<subscrip
 
 1. 从 GitHub [下载](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-acs-kubernetes/azuredeploy.parameters.json)模板参数文件 `azuredeploy.parameters.json`。
 
-2. 若要指定服务主体，请在文件中输入 `servicePrincipalClientId` 和 `servicePrincipalClientSecret` 的值。 （还需提供自己的适用于 `dnsNamePrefix` 和 `sshRSAPublicKey` 的值。 后者是访问群集的 SSH 公钥。保存文件。
+2. 若要指定服务主体，请在文件中输入 `servicePrincipalClientId` 和 `servicePrincipalClientSecret` 的值。 （还需提供自己的适用于 `dnsNamePrefix` 和 `sshRSAPublicKey` 的值。 后者是用于访问群集的 SSH 公钥。）保存该文件。
 
     ![传递服务主体参数](./media/container-service-kubernetes-service-principal/service-principal-params.png)
 
@@ -97,7 +97,7 @@ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/<subscrip
 
 ## <a name="option-2-generate-a-service-principal-when-creating-the-cluster-with-az-acs-create"></a>选项 2：在通过 `az acs create` 创建群集时生成服务主体
 
-如果运行[`az acs create`](/cli/azure/acs#az-acs-create)命令以创建 Kubernetes 群集，则可以选择自动生成服务主体。
+如果运行[`az acs create`](/cli/azure/acs#az-acs-create)命令来创建 Kubernetes 群集，则可以选择自动生成服务主体。
 
 与其他 Kubernetes 群集创建选项一样，可以在运行 `az acs create` 时指定现有服务主体的参数。 不过，在省略这些参数的情况下，Azure CLI 会自动创建一个适用于容器服务的服务主体。 该操作以透明方式在部署过程中进行。
 

@@ -7,17 +7,17 @@ author: bwren
 ms.author: bwren
 ms.date: 03/22/2019
 ms.openlocfilehash: 8d68a8d6d28d79c50a92cd2d18df2abab26c30ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79274718"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Azure Monitor 中的 Syslog 数据源
 Syslog 是普遍适用于 Linux 的事件日志记录协议。 应用程序将发送可能存储在本地计算机或传递到 Syslog 收集器的消息。 安装适用于 Linux 的 Log Analytics 代理后，它将配置本地 Syslog 后台程序，以将消息转发到此代理。 然后，此代理将消息发送到 Azure Monitor，将在后者中创建相应的记录。  
 
 > [!NOTE]
-> 当 rsyslog 为默认守护程序时，Azure Monitor 支持 rsyslog 或 syslog-ng 发送的消息集合。 不支持将 Red Hat Enterprise Linux 版本 5、CentOS 和 Oracle Linux 版本 (sysklog) 上的默认 syslog 守护程序用于 syslog 事件收集。 要从这些版本的分发中收集 syslog 数据，应安装[rsyslog 守护进程](http://rsyslog.com)并将其配置为替换 sysklog。
+> 当 rsyslog 为默认守护程序时，Azure Monitor 支持 rsyslog 或 syslog-ng 发送的消息集合。 不支持将 Red Hat Enterprise Linux 版本 5、CentOS 和 Oracle Linux 版本 (sysklog) 上的默认 syslog 守护程序用于 syslog 事件收集。 要从这些发行版的此版本中收集 syslog 数据，应安装并配置 [rsyslog 守护程序](http://rsyslog.com)以替换 sysklog。
 >
 >
 
@@ -47,11 +47,11 @@ Syslog 收集器支持以下功能：
 ### <a name="configure-syslog-in-the-azure-portal"></a>在 Azure 门户中配置 Syslog
 从[“高级设置”中的“数据”菜单](agent-data-sources.md#configuring-data-sources)配置 Syslog。 此配置将传递到每个 Linux 代理上的配置文件。
 
-可以通过以下方法添加新设施：首先选择选项“将下列配置应用到我的计算机”****，然后输入其名称并单击“+”****。 对于每个设施，将仅收集具有所选严重级别的消息。  检查要收集的特定设施的严重级别。 不能向筛选消息提供任何其他条件。
+可以通过以下方法添加新设施：首先选择选项“将下列配置应用到我的计算机”  ，然后输入其名称并单击“ **”+** 。 对于每个设施，将仅收集具有所选严重级别的消息。  检查要收集的特定设施的严重级别。 不能向筛选消息提供任何其他条件。
 
 ![配置 Syslog](media/data-sources-syslog/configure.png)
 
-默认情况下，所有配置更改均会自动推送到所有代理。 如果想在每个 Linux 代理上手动配置 Syslog，则取消选中“将下面的配置应用到我的计算机”** 框。
+默认情况下，所有配置更改均会自动推送到所有代理。 如果想在每个 Linux 代理上手动配置 Syslog，则取消选中“将下面的配置应用到我的计算机”  框。
 
 ### <a name="configure-syslog-on-linux-agent"></a>在 Linux 代理上配置 Syslog
 [Log Analytics 代理安装在 Linux 客户端上](../../azure-monitor/learn/quick-collect-linux-computer.md)后，它将安装可定义收集的消息的设施和严重级别的默认 syslog 配置文件。 可以修改此文件以更改配置。 此配置文件视客户端已安装的 Syslog 守护程序而异。
@@ -154,7 +154,7 @@ Log Analytics 代理在端口 25224 侦听本地客户端上的 Syslog 消息。
 
 可通过创建两个配置文件来更改端口号：FluentD 配置文件和 rsyslog-or-syslog-ng（取决于已安装的 Syslog 守护程序）。  
 
-* FluentD 配置文件应为新文件（位于 `/etc/opt/microsoft/omsagent/conf/omsagent.d`），同时用自定义端口号替换“端口”条目中的值****。
+* FluentD 配置文件应为新文件（位于 `/etc/opt/microsoft/omsagent/conf/omsagent.d`），同时用自定义端口号替换“端口”条目中的值  。
 
         <source>
           type syslog
@@ -179,7 +179,7 @@ Log Analytics 代理在端口 25224 侦听本地客户端上的 Syslog 消息。
         daemon.warning            @127.0.0.1:%SYSLOG_PORT%
         auth.warning              @127.0.0.1:%SYSLOG_PORT%
 
-* 若要修改 syslog-ng 配置，应复制下面显示的示例配置，然后将自定义修改设置添加到 syslog-ng.conf 配置文件（位于 `/etc/syslog-ng/`）的末尾。 不要使用默认标签 %WORKSPACE_ID%_oms 或 %WORKSPACE_ID_OMS，请定义自定义标签，以帮助区分你的更改。************  
+* 若要修改 syslog-ng 配置，应复制下面显示的示例配置，然后将自定义修改设置添加到 syslog-ng.conf 配置文件（位于 `/etc/syslog-ng/`）的末尾。 不要使用默认标签 %WORKSPACE_ID%_oms 或 %WORKSPACE_ID_OMS，请定义自定义标签，以帮助区分你的更改。     
 
     > [!NOTE]
     > 如果修改了配置文件中的默认值，代理应用默认配置时将覆盖这些值。
@@ -194,7 +194,7 @@ Log Analytics 代理在端口 25224 侦听本地客户端上的 Syslog 消息。
 ## <a name="syslog-record-properties"></a>Syslog 记录属性
 record 记录的类型为 **Syslog**，并且具有下表中的属性。
 
-| properties | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | Computer |从中收集事件的计算机。 |
 | 设施 |定义生成消息的系统部分。 |
@@ -208,7 +208,7 @@ record 记录的类型为 **Syslog**，并且具有下表中的属性。
 ## <a name="log-queries-with-syslog-records"></a>具有 Syslog 记录的日志查询
 下表提供了检索 Syslog 记录的不同日志查询示例。
 
-| 查询 | 描述 |
+| 查询 | 说明 |
 |:--- |:--- |
 | Syslog |所有 Syslog。 |
 | Syslog &#124; where SeverityLevel == "error" |具有错误严重级别的所有 Syslog 记录。 |

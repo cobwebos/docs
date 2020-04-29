@@ -5,10 +5,10 @@ tags: top-support-issue
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.openlocfilehash: b0f196f86bed05094b04bfc20c7cef2248a91c65
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79460290"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>使用 Azure 资源管理器查看部署历史记录
@@ -25,7 +25,7 @@ ms.locfileid: "79460290"
 
 1. 选择要检查的资源组。
 
-1. 选择“部署”下面的链接。****
+1. 选择“部署”下面的链接。 
 
    ![选择部署历史记录](./media/deployment-history/select-deployment-history.png)
 
@@ -37,7 +37,7 @@ ms.locfileid: "79460290"
 
     ![部署摘要](./media/deployment-history/show-correlation-id.png)
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 若要列出一个资源组的所有部署，请使用 [Get-AzResourceGroupDeployment](/powershell/module/az.resources/Get-AzResourceGroupDeployment) 命令。
 
@@ -59,13 +59,13 @@ Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName Ex
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-要列出资源组的部署，请使用 az[部署组列表](/cli/azure/group/deployment?view=azure-cli-latest#az-deployment-group-list)。
+若要列出资源组的部署，请使用[az deployment group list](/cli/azure/group/deployment?view=azure-cli-latest#az-deployment-group-list)。
 
 ```azurecli-interactive
 az deployment group list --resource-group ExampleGroup
 ```
 
-要获取特定部署，请使用[az 部署组显示](/cli/azure/group/deployment?view=azure-cli-latest#az-deployment-group-show)。
+若要获取特定部署，请使用[az deployment group show](/cli/azure/group/deployment?view=azure-cli-latest#az-deployment-group-show)。
 
 ```azurecli-interactive
 az deployment group show --resource-group ExampleGroup --name ExampleDeployment
@@ -115,7 +115,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 
-1. 在部署的摘要上，选择“操作详细信息”。****
+1. 在部署的摘要上，选择“操作详细信息”。 
 
     ![选择部署操作](./media/deployment-history/get-operation-details.png)
 
@@ -123,7 +123,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/
 
     ![显示操作详细信息](./media/deployment-history/see-operation-details.png)
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 若要查看部署到某个资源组时的部署操作，请使用 [Get-AzResourceGroupDeploymentOperation](/powershell/module/az.resources/get-azdeploymentoperation) 命令。
 
@@ -131,7 +131,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/
 Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeploy
 ```
 
-若要查看失败的操作，请使用“失败”状态筛选操作。****
+若要查看失败的操作，请使用“失败”状态筛选操作。 
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeploy).Properties | Where-Object ProvisioningState -eq Failed
@@ -145,13 +145,13 @@ Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -Deployme
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-要查看部署到资源组的部署操作，请使用[az 部署组操作列表](/cli/azure/group/deployment/operation?view=azure-cli-latest#az-deployment-group-operation-list)命令。
+若要查看部署对资源组的部署操作，请使用[az deployment group operation list](/cli/azure/group/deployment/operation?view=azure-cli-latest#az-deployment-group-operation-list)命令。
 
 ```azurecli-interactive
 az deployment group operation list --resource-group ExampleGroup --name ExampleDeployment
 ```
 
-若要查看失败的操作，请使用“失败”状态筛选操作。****
+若要查看失败的操作，请使用“失败”状态筛选操作。 
 
 ```azurecli-interactive
 az deployment group operation list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed']"

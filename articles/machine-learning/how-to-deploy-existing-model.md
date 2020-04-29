@@ -11,10 +11,10 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 03/17/2020
 ms.openlocfilehash: 924bd2fdba2359e6f1108c39802ad3ce95ebdf07
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79472369"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning"></a>通过 Azure 机器学习使用现有模型
@@ -31,7 +31,7 @@ ms.locfileid: "79472369"
 >
 > 有关部署流程的一般信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建工作区](how-to-manage-workspace.md)。
 
@@ -47,7 +47,7 @@ ms.locfileid: "79472369"
 * 定型的模型。 必须将模型保留到开发环境中的一个或多个文件中。
 
     > [!NOTE]
-    > 为了演示注册在 Azure 机器学习之外训练的模型，本文中的示例代码段使用 Paolo Ripamonti 的 Twitter 情绪分析项目创建的模型： [https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis)。
+    > 为了演示如何注册在 Azure 机器学习之外训练的模型，本文中的示例代码片段使用由 Paolo Ripamonti 的 Twitter 情绪分析项目创建的模型：[https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis)。
 
 ## <a name="register-the-models"></a>注册模型
 
@@ -70,7 +70,7 @@ az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
 ```
 
 > [!TIP]
-> 您还可以将添加`tags`和`properties`字典对象设置为已注册的模型。 这些值以后可用于帮助识别特定模型。 例如，所使用的框架、训练参数等。
+> 您还可以将 " `tags`添加`properties` " 和 "字典" 对象设置为已注册的模型。 以后可以使用这些值来帮助确定特定的模型。 例如，使用的框架、定型参数等。
 
 有关详细信息，请参阅 [](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-register) 参考。
 
@@ -111,7 +111,7 @@ inference_config = InferenceConfig(entry_script="score.py",
                                    environment=myenv)
 ```
 
-有关详细信息，请参阅以下文章：
+有关详细信息，请参阅下列文章：
 
 + [如何使用环境](how-to-use-environments.md)。
 + [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) 参考。
@@ -306,7 +306,7 @@ print(response.json())
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用应用程序见解监视 Azure 机器学习模型](how-to-enable-app-insights.md)
+* [用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)
 * [为生产环境中的模型收集数据](how-to-enable-data-collection.md)
 * [部署模型的方式和位置](how-to-deploy-and-where.md)
 * [如何为已部署的模型创建客户端](how-to-consume-web-service.md)

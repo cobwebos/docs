@@ -11,10 +11,10 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: fcaa7a0c44851d6b48b40b01af4c8ec992c330b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79283532"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>为 Azure 机器学习资源和工作流设置身份验证
@@ -32,9 +32,9 @@ ms.locfileid: "79283532"
 
 有关 Azure 机器学习内的安全性和身份验证的一般性概述，请参阅[概念文章](concept-enterprise-security.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* 创建[Azure 机器学习工作区](how-to-manage-workspace.md)。
+* 创建 [Azure 机器学习工作区](how-to-manage-workspace.md)。
 * [配置开发环境](how-to-configure-environment.md)以安装 Azure 机器学习 SDK，或使用已安装 SDK 的 [Azure 机器学习 Notebook VM](concept-azure-machine-learning-architecture.md#compute-instance)。
 
 ## <a name="interactive-authentication"></a>交互式身份验证
@@ -70,9 +70,9 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
 
 如果需要启用与特定用户登录相互独立的身份验证，则需要此流程，以便在自动化工作流中对 Azure 机器学习 Python SDK 进行身份验证。 服务主体身份验证还可[对 REST API 进行身份验证](#azure-machine-learning-rest-api-auth)。
 
-若要设置服务主体身份验证，首先请在 Azure Active Directory 中创建应用注册，然后向你的 ML 工作区授予应用基于角色的访问权限。 完成此设置的最简单方法是通过 Azure 门户中的[Azure 云外壳](https://azure.microsoft.com/features/cloud-shell/)。 登录门户后，单击靠近您姓名的`>_`页面右上角的图标以打开 shell。
+若要设置服务主体身份验证，首先请在 Azure Active Directory 中创建应用注册，然后向你的 ML 工作区授予应用基于角色的访问权限。 完成此设置的最简单方法是通过 Azure 门户中的[Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) 。 登录到门户后，单击 "名称" `>_`旁边的页右上角的图标以打开 shell。
 
-如果以前未在 Azure 帐户中使用云外壳，则需要创建存储帐户资源以存储写入的任何文件。 通常该存储帐户会产生每月成本，可忽略不计。 此外，如果之前并未按以下命令使用过机器学习扩展，请安装该扩展。
+如果尚未在 Azure 帐户中使用 cloud shell，则需要创建存储帐户资源来存储写入的任何文件。 通常该存储帐户会产生每月成本，可忽略不计。 此外，如果之前并未按以下命令使用过机器学习扩展，请安装该扩展。
 
 ```azurecli-interactive
 az extension add -n azure-cli-ml
@@ -171,7 +171,7 @@ ws.get_details()
 上述步骤中创建的服务主体也可以对 Azure 机器学习 [REST API](https://docs.microsoft.com/rest/api/azureml/) 进行身份验证。 如果使用 Azure Active Directory [客户端凭据授予流](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)，则可在自动化工作流中进行无外设身份验证的服务到服务调用。 这些示例都可通过 Python 和 Node.js 中的 [ADAL 库](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)实现，但你也可以使用任何支持 OpenID Connect 1.0 的开放源代码库。 
 
 > [!NOTE]
-> MSAL.js 是比 ADAL 更新的库，但无法使用 MSAL.js 的客户端凭据进行服务到服务身份验证，因为它主要是用于绑定到特定用户的交互式/UI 身份验证的客户端库。 我们建议使用如下所示的 ADAL，通过 REST API 创建自动化工作流。
+> MSAL 是一个比 ADAL 更高的库，但不能使用 MSAL 的客户端凭据执行服务到服务身份验证，因为它主要是一个客户端库，适用于与特定用户关联的交互/UI 身份验证。 我们建议使用如下所示的 ADAL，通过 REST API 创建自动化工作流。
 
 ### <a name="nodejs"></a>Node.js
 
@@ -269,7 +269,7 @@ aci_config = AciWebservice.deploy_configuration(cpu_cores = 1,
                                                 auth_enabled=True)
 ```
 
-然后，您可以使用`Model`类在部署中使用自定义 ACI 配置。
+然后，可以在部署中使用`Model`类来使用自定义 ACI 配置。
 
 ```python
 from azureml.core.model import Model, InferenceConfig
@@ -323,4 +323,4 @@ print(token)
 ## <a name="next-steps"></a>后续步骤
 
 * [训练并部署图像分类模型](tutorial-train-models-with-aml.md)。
-* [使用部署为 Web 服务的 Azure 机器学习模型](how-to-consume-web-service.md)。
+* [使用部署为 web 服务的 Azure 机器学习模型](how-to-consume-web-service.md)。

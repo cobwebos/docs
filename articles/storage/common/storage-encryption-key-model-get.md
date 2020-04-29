@@ -1,5 +1,5 @@
 ---
-title: 确定存储帐户正在使用哪个加密密钥模型
+title: 确定用于存储帐户的加密密钥模型
 titleSuffix: Azure Storage
 description: 使用 Azure 门户、PowerShell 或 Azure CLI 检查如何为存储帐户管理加密密钥。 密钥可能由 Microsoft 管理（默认设置），或由客户管理。 客户管理的密钥必须存储在 Azure Key Vault 中。
 services: storage
@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 0df0ba4ce76d249bcb4738b41c94677e061f14ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79409843"
 ---
 # <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>确定用于存储帐户的 Azure 存储加密密钥模型
@@ -37,17 +37,17 @@ ms.locfileid: "79409843"
 若要使用 Azure 门户检查存储帐户的加密模型，请执行以下步骤：
 
 1. 在 Azure 门户中导航到存储帐户。
-1. 选择“加密”**** 设置，并记下设置。
+1. 选择“加密”  设置，并记下设置。
 
-下图显示了使用 Microsoft 管理的密钥加密的存储帐户：
+下图显示了使用 Microsoft 托管密钥加密的存储帐户：
 
 ![查看使用 Microsoft 托管密钥加密的帐户](media/storage-encryption-key-model-get/microsoft-managed-encryption-key-setting-portal.png)
 
-下图显示了使用客户管理的密钥加密的存储帐户：
+下图显示了使用客户托管密钥加密的存储帐户：
 
 ![屏幕截图，显示 Azure 门户中的加密密钥设置](media/storage-encryption-key-model-get/customer-managed-encryption-key-setting-portal.png)
 
-# <a name="powershell"></a>[电源外壳](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 若要使用 PowerShell 检查存储帐户的加密模型，请调用 [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) 命令，然后检查该帐户的 **KeySource** 属性。
 
@@ -57,7 +57,7 @@ $account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
 $account.Encryption.KeySource
 ```
 
-如果**KeySource**属性的值是`Microsoft.Storage`，则帐户将使用 Microsoft 管理的密钥进行加密。 如果**KeySource**属性的值是`Microsoft.Keyvault`，则帐户将使用客户管理的密钥进行加密。
+如果 **KeySource** 属性的值为 `Microsoft.Storage`，则该帐户将通过 Microsoft 托管密钥进行加密。 如果 **KeySource** 属性的值为 `Microsoft.Keyvault`，则该帐户将通过客户托管密钥进行加密。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
@@ -78,4 +78,4 @@ key_source=$(az storage account show \
 ## <a name="next-steps"></a>后续步骤
 
 - [静态数据的 Azure 存储加密](storage-service-encryption.md)
-- [使用具有 Azure 密钥保管库的客户管理密钥来管理 Azure 存储加密](encryption-customer-managed-keys.md)
+- [在 Azure Key Vault 中使用客户托管密钥管理 Azure 存储加密](encryption-customer-managed-keys.md)

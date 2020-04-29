@@ -6,10 +6,10 @@ ms.topic: troubleshooting
 ms.date: 8/24/2018
 ms.author: pkc
 ms.openlocfilehash: 7494f0072f27f2c9b00db7070f19dfc05627eacf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79282089"
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric 支持选项
@@ -26,7 +26,7 @@ ms.locfileid: "79282089"
 - [Microsoft 顶级支持](https://support.microsoft.com/en-us/premier)。
 
 > [!Note]
-> 在青铜级可靠性层级或单节点群集上运行的群集只能用来运行测试性工作负荷。 如果您在青铜可靠性或单节点群集上运行群集时遇到问题，Microsoft 支持团队将协助您缓解此问题，但不会执行根本原因分析。 请参阅[群集的可靠性特征](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster)以获取更多详细信息。
+> 在青铜级可靠性层级或单节点群集上运行的群集只能用来运行测试性工作负荷。 如果在青铜色或单节点群集上运行的群集遇到问题，Microsoft 支持团队将会帮助你缓解问题，但不会执行根本原因分析。 请参阅[群集的可靠性特征](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster)以获取更多详细信息。
 >
 > 若要详细了解生产就绪性群集的必要信息，请参阅[生产就绪性核对清单](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)。
 
