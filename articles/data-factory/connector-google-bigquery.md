@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: 6751f64706444176f0df8f8fc0c6132e76b39b2d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417322"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Google BigQuery 复制数据
@@ -29,9 +29,9 @@ ms.locfileid: "81417322"
 以下活动支持此 Google BigQuery 连接器：
 
 - 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
-- [查找活动](control-flow-lookup-activity.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 
-可以将数据从 Google BigQuery 复制到任何支持的接收器数据存储。 有关复制活动支持为源或接收器的数据存储的列表，请参阅[支持数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
+可以将数据从 Google BigQuery 复制到任何支持的接收器数据存储。 有关复制活动支持作为源或接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
 数据工厂提供内置驱动程序以启用连接。 因此，无需要手动安装驱动程序即可使用此连接器。
 
@@ -48,7 +48,7 @@ ms.locfileid: "81417322"
 
 Google BigQuery 链接服务支持以下属性。
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **GoogleBigQuery**。 | 是 |
 | project | 针对其查询的默认 BigQuery 项目的项目 ID。  | 是 |
@@ -58,15 +58,15 @@ Google BigQuery 链接服务支持以下属性。
 
 ### <a name="using-user-authentication"></a>使用用户身份验证
 
-将“authenticationType”属性设置为“UserAuthentication”****，并指定以下属性及上节所述的泛型属性：
+将“authenticationType”属性设置为“UserAuthentication”  ，并指定以下属性及上节所述的泛型属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | clientId | 应用程序的 ID，用于生成刷新令牌。 | 否 |
 | clientSecret | 应用程序的机密，用于生成刷新令牌。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
 | refreshToken | 从 Google 获得的刷新令牌，用于授权访问 BigQuery。 从[获取 OAuth 2.0 访问令牌](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens)和[此社区博客](https://jpd.ms/getting-your-bigquery-refresh-token-for-azure-datafactory-f884ff815a59)了解如何获取刷新令牌。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
 
-**例子：**
+**示例：**
 
 ```json
 {
@@ -94,16 +94,16 @@ Google BigQuery 链接服务支持以下属性。
 
 ### <a name="using-service-authentication"></a>使用服务身份验证
 
-将“authenticationType”属性设置为“ServiceAuthentication”****，并指定以下属性及上节所述的泛型属性。 此身份验证类型只能在自承载 Integration Runtime 上使用。
+将“authenticationType”属性设置为“ServiceAuthentication”  ，并指定以下属性及上节所述的泛型属性。 此身份验证类型只能在自承载 Integration Runtime 上使用。
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | 电子邮件 | 用于 ServiceAuthentication 的服务帐户电子邮件 ID。 它只能在自承载集成运行时上使用。  | 否 |
 | keyFilePath | .p12 密钥文件的完整路径，该文件用于对服务帐户电子邮件地址进行身份验证。 | 否 |
-| trustedCertPath | .pem 文件的完整路径，其中包含受信任的 CA 证书，用于在通过 TLS 连接时验证服务器。 仅当在自托管集成运行时使用 TLS 时，才能设置此属性。 默认值是随集成运行时一起安装的 cacerts.pem 文件。  | 否 |
+| trustedCertPath | Pem 文件的完整路径，该文件包含在通过 TLS 进行连接时用于验证服务器的可信 CA 证书。 仅当在自承载 Integration Runtime 上使用 TLS 时，才能设置此属性。 默认值是随集成运行时一起安装的 cacerts.pem 文件。  | 否 |
 | useSystemTrustStore | 指定是使用系统信任存储中的 CA 证书还是使用指定 .pem 文件中的 CA 证书。 默认值是 **false**秒。  | 否 |
 
-**例子：**
+**示例：**
 
 ```json
 {
@@ -131,9 +131,9 @@ Google BigQuery 链接服务支持以下属性。
 
 要从 Google BigQuery 复制数据，请将数据集的 type 属性设置为 **GoogleBigQueryObject**。 支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 数据集的类型属性必须设置为 **：GoogleBigQueryObject** | 是 |
+| type | 数据集的 type 属性必须设置为：**GoogleBigQueryObject** | 是 |
 | dataset | Google BigQuery 数据集的名称。 |否（如果指定了活动源中的“query”）  |
 | 表 | 表的名称。 |否（如果指定了活动源中的“query”）  |
 | tableName | 表的名称。 支持此属性是为了向后兼容。 对于新的工作负荷，请使用 `dataset` 和 `table`。 | 否（如果指定了活动源中的“query”） |
@@ -161,14 +161,14 @@ Google BigQuery 链接服务支持以下属性。
 
 ### <a name="googlebigquerysource-as-a-source-type"></a>以 GoogleBigQuerySource 作为源类型
 
-要从 Google BigQuery 复制数据，请将复制活动中的源类型设置为“GoogleBigQuerySource”****。 复制活动的 **source** 节支持以下属性。
+要从 Google BigQuery 复制数据，请将复制活动中的源类型设置为“GoogleBigQuerySource”  。 复制活动的 **source** 节支持以下属性。
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **GoogleBigQuerySource**。 | 是 |
-| query | 使用自定义 SQL 查询读取数据。 示例为 `"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| 查询 | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
-**例子：**
+**示例：**
 
 ```json
 "activities":[

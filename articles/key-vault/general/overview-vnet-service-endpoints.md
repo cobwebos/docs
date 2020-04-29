@@ -10,10 +10,10 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 ms.openlocfilehash: 2a68a50a5d15b9f38407c19494a39a14abfa0a5a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81432068"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虚拟网络服务终结点
@@ -39,7 +39,7 @@ ms.locfileid: "81432068"
 
 以下是配置防火墙和虚拟网络所需的步骤。 无论使用的是 PowerShell、Azure CLI 还是 Azure 门户，上述步骤均适用。
 
-1. 启用[密钥保管库日志记录](logging.md)，以查看详细的访问日志。 当防火墙和虚拟网络规则阻止访问 Key Vault 时，此操作有助于进行诊断。 （此为可选步骤，但强烈建议你执行。）
+1. 启用[Key Vault 日志记录](logging.md)）以查看详细的访问日志。 当防火墙和虚拟网络规则阻止访问 Key Vault 时，此操作有助于进行诊断。 （此为可选步骤，但强烈建议你执行。）
 2. 为目标虚拟网络和子网启用“Key Vault 的服务终结点”****。
 3. 为 Key Vault 设置防火墙和虚拟网络规则，仅限特定虚拟网络、子网和 IPv4 地址范围能够访问该 Key Vault。
 4. 如果需要所有受信任的 Microsoft 服务都能够访问此 Key Vault，则启用该选项，允许“受信任的 Azure 服务”连接到 Key Vault。****
@@ -74,16 +74,16 @@ ms.locfileid: "81432068"
 |Azure 存储|[在 Azure Key Vault 中使用客户托管密钥进行存储服务加密](../../storage/common/storage-service-encryption-customer-managed-keys.md)。|
 |Azure Data Lake Store|[在 Azure Data Lake Store 中使用客户托管密钥进行数据加密](../../data-lake-store/data-lake-store-encryption.md)。|
 |Azure Databricks|[基于 Apache Spark 的快速、简单、协作分析服务](../../azure-databricks/what-is-azure-databricks.md)|
-|Azure API 管理|[使用 MSI 从密钥保管库部署自定义域的证书](../../api-management/api-management-howto-use-managed-service-identity.md#use-the-managed-service-identity-to-access-other-resources)|
-|Azure 数据工厂|[从数据工厂获取密钥保管库中的数据存储凭据](https://go.microsoft.com/fwlink/?linkid=2109491)|
-|Azure 事件中心|[允许访问客户管理密钥方案的密钥保管库](https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key)|
-|Azure 服务总线|[允许访问客户管理密钥方案的密钥保管库](https://docs.microsoft.com/azure/service-bus-messaging/configure-customer-managed-key)|
-|Azure 导入/导出| [在 Azure 密钥保管库中使用客户管理的密钥以进行导入/导出服务](https://docs.microsoft.com/azure/storage/common/storage-import-export-encryption-key-portal)
+|Azure API 管理|[使用 MSI 从 Key Vault 部署自定义域证书](../../api-management/api-management-howto-use-managed-service-identity.md#use-the-managed-service-identity-to-access-other-resources)|
+|Azure 数据工厂|[从数据工厂获取 Key Vault 中的数据存储凭据](https://go.microsoft.com/fwlink/?linkid=2109491)|
+|Azure 事件中心|[允许访问客户托管密钥方案的密钥保管库](https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key)|
+|Azure 服务总线|[允许访问客户托管密钥方案的密钥保管库](https://docs.microsoft.com/azure/service-bus-messaging/configure-customer-managed-key)|
+|Azure 导入/导出| [在导入/导出服务的 Azure Key Vault 中使用客户托管的密钥](https://docs.microsoft.com/azure/storage/common/storage-import-export-encryption-key-portal)
 
 > [!NOTE]
 > 必须设置相关 Key Vault 访问策略，才能允许相应的服务访问 Key Vault。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [保护您的密钥保管库](secure-your-key-vault.md)）
+* [保护密钥保管库](secure-your-key-vault.md)
 * [配置 Azure Key Vault 防火墙和虚拟网络](network-security.md)

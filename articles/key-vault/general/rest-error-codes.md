@@ -11,10 +11,10 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
 ms.openlocfilehash: bbb30c0ad41babca4158391c9e4e5c5d4d25cbf9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81432055"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API 错误代码
@@ -55,11 +55,11 @@ Content-Length: 31
 
 ### <a name="the-token-lacks-the-correct-resource-associated-with-it"></a>令牌缺少关联的适当资源。 
 
-从 Azure OAUTH 终结点请求访问令牌时，必须提供名为“resource”的参数。 该值对于令牌提供程序而言非常重要，因为它限定了令牌的目标使用范围。 访问密钥保管库**的所有**令牌的资源为*https：/vault.keyvault.net（\/* 没有尾随斜杠）。
+从 Azure OAUTH 终结点请求访问令牌时，必须提供名为“resource”的参数。 该值对于令牌提供程序而言非常重要，因为它限定了令牌的目标使用范围。 用于访问 Key Vault 的**所有**令牌的资源是*https：\//vault.keyvault.net* （无尾随斜杠）。
 
 ### <a name="the-token-is-expired"></a>令牌已过期
 
-令牌是基64编码的，可以在网站（如[http://jwt.calebb.net](http://jwt.calebb.net)） 解码值。 下面是上述令牌在解码后的情况：
+令牌采用 base64 编码，可以在 [http://jwt.calebb.net](http://jwt.calebb.net) 之类的网站中将值解码。 下面是上述令牌在解码后的情况：
 
 ```
     {
@@ -89,12 +89,12 @@ Content-Length: 31
 
 在此令牌中可以看到许多重要组成部分：
 
-- aud（访问者）：令牌的资源。 请注意，此资源为 <https://vault.azure.net>。 对于不显式匹配此值的任何资源（例如 Graph），此令牌将不适用。
-- iat（在））：自颁发令牌时开始的时代开始以来的刻度数。
-- nbf（以前）：自此令牌生效时，自纪元开始以来的刻度数。
-- exp（过期）：自此令牌过期时，自纪元开始以来的刻度数。
-- 应用程序 ID（应用程序 ID）：发出此请求的应用程序 ID 的 GUID。
-- tid（租户 ID）：发出此请求的委托人租户 ID 的 GUID
+- aud（受众）：令牌的资源。 请注意，此资源为 <https://vault.azure.net>。 对于不显式匹配此值的任何资源（例如 Graph），此令牌将不适用。
+- iat（颁发时间）：颁发令牌时距离纪元开始时间的计时周期数。
+- nbf（不早于）：此令牌生效时距离纪元开始时间的计时周期数。
+- exp（过期时间）：此令牌过期时距离纪元开始时间的计时周期数。
+- appid（应用程序 ID）：发出此请求的应用程序 ID 的 GUID。
+- tid（租户 ID）：发出此请求的主体的租户 ID 的 GUID
 
 必须在令牌中正确标识所有值才能使请求正常工作。 如果所有设置正确，则请求不会导致 401。
 
@@ -123,18 +123,18 @@ resource=https%3A%2F%2Fvault.azure.net&client_id=<registered-app-ID>&client_secr
 
 如果只能获取响应访问令牌，可将其解码（如上所示），以确保租户 ID、客户端 ID（应用 ID）和资源正确。
 
-## <a name="http-403-insufficient-permissions"></a>HTTP 403： 权限不足
+## <a name="http-403-insufficient-permissions"></a>HTTP 403：权限不足
 
 HTTP 403 表示请求已完成身份验证（知道请求方标识），但标识无权访问请求的资源。 此错误有两种原因：
 
 - 没有为标识设置访问策略。
-- 请求方资源的 IP 地址未列入 Key Vault 防火墙设置中的白名单。
+- 请求方资源的 IP 地址未列入 Key Vault 防火墙设置中的允许列表。
 
 如果客户的应用程序未使用客户端 ID，但客户认为已使用，则往往会出现 HTTP 403。 这通常意味着，未为实际调用方标识正确设置访问策略。
 
 ### <a name="troubleshooting-403"></a>排除故障 403
 
-首先启用日志记录。 有关如何执行此操作的说明，请参阅[Azure 密钥保管库日志记录](logging.md)。
+首先启用日志记录。 有关如何执行此操作的说明，请参阅[Azure Key Vault 日志记录](logging.md)）。
 
 启用日志记录后，可以确定 403 错误是由访问策略还是防火墙策略造成的。
 
@@ -142,7 +142,7 @@ HTTP 403 表示请求已完成身份验证（知道请求方标识），但标�
 
 “客户端地址(00.00.00.00)未获授权，调用方不是受信任的服务”
 
-有一个有限的“Azure 信任的服务”列表。 Azure 网站**不是**受信任的 Azure 服务。 有关详细信息，请参阅[由 Azure 应用服务访问密钥保管库防火墙的](https://azidentity.azurewebsites.net/post/2019/01/03/key-vault-firewall-access-by-azure-app-services)博客文章。
+有一个有限的“Azure 信任的服务”列表。 Azure 网站**不是**受信任的 Azure 服务。 有关详细信息，请参阅博客文章[Key Vault 防火墙访问 Azure 应用 Services](https://azidentity.azurewebsites.net/post/2019/01/03/key-vault-firewall-access-by-azure-app-services)。
 
 必须将 Azure 网站的 IP 地址添加到 Key Vault 才能使其正常工作。
 
@@ -151,7 +151,7 @@ HTTP 403 表示请求已完成身份验证（知道请求方标识），但标�
 此外，大多数访问策略不需要按门户中所示使用“已授权的应用程序”。 已授权的应用程序用于“代理”身份验证方案，而这种方案极少出现。 
 
 
-## <a name="http-429-too-many-requests"></a>HTTP 429： 请求太多
+## <a name="http-429-too-many-requests"></a>HTTP 429：请求太多
 
 当请求数超过时间范围规定的最大次数时，将发生限制。 如果发生限制，Key Vault 的响应将是 HTTP 429。 发出的不同类型的请求有规定的最大次数。 例如：创建 HSM 2048 位密钥的请求规定为每 10 秒最多 5 次，但所有其他 HSM 事务的限制为每 10 秒最多 1000 个请求。 因此，在确定限制的原因时，请务必了解所发出的调用类型。
 一般情况下，对 Key Vault 的请求数限制为每 10 秒 2000 个请求。 密钥操作除外，具体请参阅 [Key Vault 服务限制](service-limits.md)
@@ -161,10 +161,10 @@ HTTP 403 表示请求已完成身份验证（知道请求方标识），但标�
 
 - 确定所请求资源是否存在模式并尝试在调用方应用程序中缓存这些模式，以此减少对 Key Vault 发出的请求数。 
 
-- 发生 Key Vault 限制时，调整请求代码以使用指数退避进行重试。 此处解释了该算法：[如何限制应用](overview-throttling.md#how-to-throttle-your-app-in-response-to-service-limits)
+- 发生 Key Vault 限制时，调整请求代码以使用指数退避进行重试。 此算法在此处进行了说明：[如何限制应用](overview-throttling.md#how-to-throttle-your-app-in-response-to-service-limits)
 
 - 如果通过缓存无法减少请求数，并且计时退避不起作用，请考虑将密钥拆分到多个 Key Vault 中。 单个订阅的服务限制是单个 Key Vault 限制的 5 倍。 如果使用 5 个以上的 Key Vault，应考虑使用多个订阅。 
 
-详细指南，包括请求增加限制，可在此处找到：[密钥保管库限制指南](overview-throttling.md)
+可在此处找到包含增加限制的请求的详细指南： [Key Vault 限制指南](overview-throttling.md)
 
 

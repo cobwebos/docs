@@ -12,10 +12,10 @@ ms.author: daperlov
 manager: jroth
 ms.reviewer: maghan
 ms.openlocfilehash: e5bd3d10e4e43daf3031aae5083ee917cfe65ede
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417974"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Azure 数据工厂中的设置变量活动
@@ -29,13 +29,13 @@ properties | 说明 | 必选
 -------- | ----------- | --------
 name | 管道中活动的名称 | 是
 description | 描述活动用途的文本 | 否
-type | 必须设置为 **"设置变量"** | 是
-值 | 将变量分配给的字符串文本或表达式对象值 | 是
+type | 必须设置为**SetVariable** | 是
+值 | 变量将分配到的字符串文本或表达式对象值 | 是
 variableName | 此活动将设置的变量的名称 | 是
 
-## <a name="incrementing-a-variable"></a>增加变量
+## <a name="incrementing-a-variable"></a>递增变量
 
-Azure 数据工厂中涉及变量的常见方案是在每个活动之前或每个活动中使用变量作为迭代器。 在集变量活动中，不能引用字段中正在设置的`value`变量。 要解决此限制，请设置临时变量，然后创建第二个集变量活动。 第二组变量活动将迭代器的值设置为临时变量。 
+涉及 Azure 数据工厂中的变量的常见方案是使用变量作为 until 或 foreach 活动中的迭代器。 在 " `value`集变量" 活动中，无法引用字段中设置的变量。 若要解决此限制，请设置临时变量，然后创建第二个集变量活动。 第二个 "设置变量" 活动将迭代器的值设置为临时变量。 
 
 下面是此模式的示例：
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 9/03/2019
 ms.openlocfilehash: a0263880262da95f4d26ee8388da464e9a59efca
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416455"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>使用 Azure 数据工厂将数据从本地 Netezza 服务器迁移到 Azure 
@@ -53,7 +53,7 @@ Azure 数据工厂提供一个可在不同级别实现并行度的无服务器�
 
 在单个复制活动运行中，Azure 数据工厂具有内置的重试机制，因此，它可以处理数据存储或底层网络中特定级别的暂时性故障。
 
-使用 Azure 数据工厂复制活动在源与接收器数据存储之间复制数据时，可通过两种方式处理不兼容的行。 可以中止复制活动并使其失败，或者可以通过跳过不兼容的数据行来继续复制剩余的数据。 此外，要了解故障原因，可以在 Azure Blob 存储或 Azure 数据湖存储中记录不兼容的行，修复数据源上的数据，然后重试复制活动。
+使用 Azure 数据工厂复制活动在源与接收器数据存储之间复制数据时，可通过两种方式处理不兼容的行。 可以中止复制活动并使其失败，或者可以通过跳过不兼容的数据行来继续复制剩余的数据。 此外，若要了解失败的原因，可以在 Azure Blob 存储或 Azure Data Lake Store 中记录不兼容的行，修复数据源上的数据，并重试复制活动。
 
 ## <a name="network-security"></a>网络安全 
 
@@ -121,7 +121,7 @@ Azure 数据工厂提供一个可在不同级别实现并行度的无服务器�
 
 对于小型表（即，卷大小小于 100 GB，或者可以在两小时内迁移到 Azure 的表），可使每个复制作业加载每个表的数据。 若要提高吞吐量，可以运行多个 Azure 数据工厂复制作业来同时加载不同的表。 
 
-在每个复制作业中，要按分区运行并行查询和复制数据，还可以通过将[`parallelCopies`属性设置](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy)与以下数据分区选项之一一使用来达到一定程度的并行性：
+在每个复制作业中，若要运行并行查询并按分区复制数据，还可以通过将[ `parallelCopies`属性设置](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy)用于以下任一数据分区选项来达到一定程度的并行度：
 
 - 为帮助实现更高的效率，我们建议从数据切片开始。  确保 `parallelCopies` 设置中的值小于 Netezza 服务器上的表中的数据切片分区总数。  
 

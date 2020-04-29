@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 02e13ce81ed2f11c0bb69015a4864c4a1ad55593
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430963"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>监视和管理证书创建
@@ -291,7 +291,7 @@ StatusCode: 403, ReasonPhrase: 'Forbidden'
 
 |方法|请求 URI|
 |------------|-----------------|
-|PATCH|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
+|修补程序|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>请求
 PATCH `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
@@ -414,7 +414,7 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 |元素名称|必选|类型|版本|说明|
 |------------------|--------------|----------|-------------|-----------------|
-|x5c|是|array|\<引入版本>|Base 64 字符串数组形式的 X509 证书链。|
+|x5c|是|数组|\<引入版本>|Base 64 字符串数组形式的 X509 证书链。|
 
 ### <a name="response"></a>响应
 

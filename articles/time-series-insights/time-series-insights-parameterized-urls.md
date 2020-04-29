@@ -11,15 +11,15 @@ ms.workload: big-data
 ms.date: 04/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: 10616c8003d9bbbe42cb70bd1bac4193044907c0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416998"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>通过参数化 URL 共享自定义视图
 
-要在时间序列见解资源管理器中共享自定义视图，可以以编程方式创建自定义视图的参数化 URL。
+若要在时序见解资源管理器中共享自定义视图，可以通过编程方式创建自定义视图的参数化 URL。
 
 时序见解资源管理器支持使用 URL 查询参数，在 URL 中直接指定体验中的视图。 例如，只使用 URL 就可以指定目标环境、搜索谓词以及所需的时间跨度。 当用户选择自定义的 URL 时，界面会提供一个链接，直接指向时序见解门户中的相应资产。 数据访问策略适用。
 
@@ -29,7 +29,7 @@ ms.locfileid: "81416998"
 
 ## <a name="environment-id"></a>环境 ID
 
-`environmentId=<guid>` 参数指定目标环境 ID。 这是数据访问 FQDN 的一个组件，可以在 Azure 门户的环境概览的右上角找到。 这是之前的一`env.timeseries.azure.com`切。
+`environmentId=<guid>` 参数指定目标环境 ID。 这是数据访问 FQDN 的一个组件，可以在 Azure 门户的环境概览的右上角找到。 这就是之前`env.timeseries.azure.com`的所有内容。
 
 例如，`?environmentId=10000000-0000-0000-0000-100000000108` 是环境 ID 参数。
 
@@ -49,11 +49,11 @@ ms.locfileid: "81416998"
 
 ### <a name="relative-time-values"></a>相对时间值
 
-对于相对时间值，请使用 `relativeMillis=<value>`，其中“值”为从 API 收到的最近时间戳的 JavaScript 毫秒**。
+对于相对时间值，请使用 `relativeMillis=<value>`，其中“值”为从 API 收到的最近时间戳的 JavaScript 毫秒  。
 
 例如，`&relativeMillis=3600000` 显示最新的 60 分钟的数据。
 
-接受的值对应于时序见解资源管理器的“快速时间”菜单，其中包括：****
+接受的值对应于时序见解资源管理器的“快速时间”菜单，其中包括： 
 
 * `1800000`（过去 30 分钟）
 * `3600000`（过去 60 分钟）
@@ -70,14 +70,14 @@ ms.locfileid: "81416998"
 
 | 参数 | URL 项 | 说明 |
 | --- | --- | --- |
-| name  | `\<string>` | 术语的名称。** |
-| **拆分由** | `\<string>` | 要按其进行拆分的列名。** |
-| **度量值名称** | `\<string>` | 度量值的列名。** |
-| **谓词** | `\<string>` | 用于服务器端筛选的 ** where 子句。 |
+| name  | `\<string>` | 术语的名称。  |
+| **splitBy** | `\<string>` | 要按其进行拆分的列名。  |
+| **measureName** | `\<string>` | 度量值的列名。  |
+| **predicate** | `\<string>` | 用于服务器端筛选的  where 子句。 |
 | **useSum** | `true` | 一个可选参数，指定对度量值使用总和。 |
 
 > [!NOTE]
-> 如果所选 useSum 度量值为 `Events`，则默认选择计数****。  
+> 如果所选 useSum 度量值为 `Events`，则默认选择计数  。  
 > 如果未选择 `Events`，则默认选择平均值。 |
 
 * `multiChartStack=<true/false>` 键值对在图表中启用堆栈。
@@ -89,12 +89,12 @@ ms.locfileid: "81416998"
 | --- | --- |
 | `multiChartStack=false` | `true` 是默认启用的，因此请将 `false` 传递到堆栈。 |
 | `multiChartStack=false&multiChartSameScale=true` | 必须启用堆叠才能在不同的条件中使用同一 Y 轴比例。  它在默认情况下为 `false`，因此传递 `true` 即可启用此功能。 |
-| `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | 单位 = `days`、`hours`、`minutes`、`seconds`、`milliseconds`。  请始终将单位大写。 </br> 通过传递**时间存储量大小的**所需整数来定义单位数。  |
+| `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | 单位 = `days`、`hours`、`minutes`、`seconds`、`milliseconds`。  请始终将单位大写。 </br> 为 timeBucketSize 传递所需的整数即可定义单位数  。  |
 | `timezoneOffset=-<integer>` | 整数的单位始终为毫秒。 |
 
 > [!NOTE]
-> timeBucketUnit 值最多可以平滑为 7 天****。
-> timezoneOffset 值既不是 UTC 也不是本地时间****。
+> timeBucketUnit 值最多可以平滑为 7 天  。
+> timezoneOffset 值既不是 UTC 也不是本地时间  。
 
 ### <a name="examples"></a>示例
 
@@ -109,7 +109,7 @@ ms.locfileid: "81416998"
 
 * 环境 ID
 * 过去 60 分钟的数据
-* 构成可选参数的术语（F1PressureID、F2TempStation 和 F3VibrationPL）************
+* 构成可选参数的术语（F1PressureID、F2TempStation 和 F3VibrationPL）   
 
 可以为视图构造以下参数化 URL：
 
@@ -117,7 +117,7 @@ ms.locfileid: "81416998"
 https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]
 ```
 
-[![时间序列见解资源管理器参数化 URL](media/parameterized-url/share-parameterized-url.png)](media/parameterized-url/share-parameterized-url.png#lightbox)
+[![时序见解资源管理器参数化 URL](media/parameterized-url/share-parameterized-url.png)](media/parameterized-url/share-parameterized-url.png#lightbox)
 
 > [!TIP]
 > [使用 URL](https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]) 上方示例查看实时资源管理器。
@@ -126,7 +126,7 @@ https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0
 
 * 参数化谓词。
 
-  [![时间序列见解资源管理器参数化谓词。](media/parameterized-url/share-parameterized-url-predicates.png)](media/parameterized-url/share-parameterized-url-predicates.png#lightbox)
+  [![时序见解资源管理器参数化谓词。](media/parameterized-url/share-parameterized-url-predicates.png)](media/parameterized-url/share-parameterized-url-predicates.png#lightbox)
 
 * 共享的完整图表视图。
 

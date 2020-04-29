@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 9b491c4f0cc99395c44d989bf19fa2a7b03da696
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417171"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Azure 数据工厂中的 If Condition 活动
@@ -67,8 +67,8 @@ If Condition 活动可提供 if 语句在编程语言中提供相同的功能。
 
 properties | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
-name | if-condition 活动名称。 | 字符串 | 是
-type | 必须设置为“IfCondition”**** | 字符串 | 是
+name | if-condition 活动名称。 | String | 是
+type | 必须设置为“IfCondition”  | String | 是
 表达式 | 计算结果必须为 true 或 false 的表达式 | 具有结果类型布尔的表达式 | 是
 ifTrueActivities | 表达式计算结果为 `true` 时将执行的活动集。 | Array | 是
 ifFalseActivities | 表达式计算结果为 `false` 时将执行的活动集。 | Array | 是
@@ -205,7 +205,7 @@ ifFalseActivities | 表达式计算结果为 `false` 时将执行的活动集。
 ```
 
 ### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>参数化的 Azure Blob 数据集 (BlobDataset.json)
-管道将 folderPath **** 设置为管道参数 outputPath1 **** 或 outputPath2 **** 的值。 
+管道将 folderPath  设置为管道参数 outputPath1  或 outputPath2  的值。 
 
 ```json
 {
@@ -290,8 +290,8 @@ $result.Error -join "`r`n"
 ## <a name="next-steps"></a>后续步骤
 查看数据工厂支持的其他控制流活动： 
 
-- [执行管道活动](control-flow-execute-pipeline-activity.md)
+- [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md)
 - [For Each 活动](control-flow-for-each-activity.md)
-- [获取元数据活动](control-flow-get-metadata-activity.md)
-- [查找活动](control-flow-lookup-activity.md)
+- [Get Metadata 活动](control-flow-get-metadata-activity.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 - [Web 活动](control-flow-web-activity.md)

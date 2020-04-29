@@ -10,10 +10,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.openlocfilehash: 4f839de6e276727fa910f91eccc34601cf34f85c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417996"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Switch 活动
@@ -67,11 +67,11 @@ Switch 活动提供的功能与编程语言中 switch 语句提供的功能相�
 
 ## <a name="type-properties"></a>Type 属性
 
-properties | 说明 | 允许的值 | 必选
+属性 | 说明 | 允许的值 | 必须
 -------- | ----------- | -------------- | --------
-name | switch 活动的名称。 | 字符串 | 是
-type | 必须设置为 *"切换"** | 字符串 | 是
-表达式 | 必须评估为字符串值的表达式 | 具有结果类型字符串的表达式 | 是
+name | switch 活动的名称。 | String | 是
+type | 必须设置为 *Switch** | String | 是
+expression | 必须评估为字符串值的表达式 | 具有结果类型字符串的表达式 | 是
 cases | 一组 case，其中包含一个值和一组在该值与表达式求值匹配时要执行的活动。 必须至少提供一个 case。 最大限制为 25 个 case。 | Case 对象数组 | 是
 defaultActivities | 不满足表达式求值时执行的一组活动。 | 活动数组 | 是
 
@@ -246,7 +246,7 @@ defaultActivities | 不满足表达式求值时执行的一组活动。 | 活动
 
 ### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>参数化的 Azure Blob 数据集 (BlobDataset.json)
 
-管道将 folderPath **** 设置为管道参数 outputPath1 **** 或 outputPath2 **** 的值。 
+管道将 folderPath  设置为管道参数 outputPath1  或 outputPath2  的值。 
 
 ```json
 {
@@ -288,7 +288,7 @@ defaultActivities | 不满足表达式求值时执行的一组活动。 | 活动
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-这些命令假定您已将 JSON 文件保存到文件夹中：C：\ADF。 
+这些命令假设你已将 JSON 文件保存到文件夹：C:\ADF。 
 
 ```powershell
 Connect-AzAccount
@@ -334,8 +334,8 @@ $result.Error -join "`r`n"
 查看数据工厂支持的其他控制流活动： 
 
 - [If Condition 活动](control-flow-if-condition-activity.md)
-- [执行管道活动](control-flow-execute-pipeline-activity.md)
+- [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md)
 - [For Each 活动](control-flow-for-each-activity.md)
-- [获取元数据活动](control-flow-get-metadata-activity.md)
-- [查找活动](control-flow-lookup-activity.md)
+- [Get Metadata 活动](control-flow-get-metadata-activity.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 - [Web 活动](control-flow-web-activity.md)

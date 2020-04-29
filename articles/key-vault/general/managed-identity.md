@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: bb5288d043ab5638bb33c357cea55c64b03fcf1d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81432120"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>使用托管标识提供 Key Vault 身份验证
@@ -35,7 +35,7 @@ ms.locfileid: "81432120"
    - [使用 Azure PowerShell 创建 Key Vault](../secrets/quick-create-powershell.md)
    - [使用 Azure 门户创建 Key Vault](../secrets/quick-create-portal.md)
 - 一个现有的应用服务应用程序，需向其授予密钥保管库访问权限。 可以按[应用服务文档](../../app-service/overview.md)中的步骤快速创建一个。
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)或[Azure 电源外壳](/powershell/azure/overview)。 或者，可以使用 [Azure 门户](https://portal.azure.com)。
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 或 [Azure PowerShell](/powershell/azure/overview)。 或者，可以使用 [Azure 门户](https://portal.azure.com)。
 
 
 ## <a name="adding-a-system-assigned-identity"></a>添加系统分配的标识 
@@ -46,11 +46,11 @@ ms.locfileid: "81432120"
 
 要在门户中设置托管标识，需先按常规创建应用程序，然后启用该功能。 
 
-1. 如果使用函数应用，请导航到“平台功能”。**** 对于其他应用类型，请在左侧导航区域向下滚动到“设置”组。**** 
+1. 如果使用函数应用，请导航到“平台功能”。  对于其他应用类型，请在左侧导航区域向下滚动到“设置”组。  
 
-1. 选择**托管标识**。 
+1. 选择“托管标识”  。 
 
-1. 在“系统分配的”选项卡中，将“状态”切换为“启用”************。 单击“ **保存**”。 
+1. 在“系统分配的”选项卡中，将“状态”切换为“启用”    。 单击“保存”  。 
 
     ![](../media/managed-identity-system-assigned.png)
 
@@ -92,13 +92,13 @@ az functionapp identity assign --name myApp --resource-group myResourceGroup
 
 1.  导航到 Key Vault 资源。 
 
-1.  选择“访问策略”****，然后单击“添加访问策略”****。 
+1.  选择“访问策略”  ，然后单击“添加访问策略”  。 
 
-1.  在“机密权限”**** 中，选择“获取、列出”。**** 
+1.  在“机密权限”  中，选择“获取、列出”。  
 
-1.  选择“选择主体”****，并在搜索字段中输入应用的名称。  选择结果列表中的应用，并单击“选择”****。 
+1.  选择“选择主体”  ，并在搜索字段中输入应用的名称。  选择结果列表中的应用，并单击“选择”  。 
 
-1.  单击“添加”，完成添加新访问策略的操作****。
+1.  单击“添加”，完成添加新访问策略的操作  。
 
     ![](../media/managed-identity-access-policy.png)
 
@@ -112,8 +112,8 @@ az keyvault set-policy --name myKeyVault --object-id <PrincipalId> --secret-perm
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure 密钥保管库安全性：标识和访问管理](overview-security.md#identity-and-access-management)
+- [Azure Key Vault 安全性：标识和访问管理](overview-security.md#identity-and-access-management)
 - [使用访问控制策略提供 Key Vault 身份验证](group-permissions-for-apps.md)
-- [保护您的密钥保管库](secure-your-key-vault.md)。
-- [Azure 密钥保管库开发人员指南](developers-guide.md)
+- [保护密钥保管库](secure-your-key-vault.md)。
+- [Azure Key Vault 开发人员指南](developers-guide.md)
 - 查看 [Azure Key Vault 最佳做法](best-practices.md)

@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: f1f3667c088c5f7300317ea02ca19a72e4e62905
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431028"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>最大化列存储的行组质量
@@ -36,13 +36,13 @@ ms.locfileid: "81431028"
 
 批量加载或重建列存储索引期间，有时可能因内存不足而无法压缩为每个行组指定的所有行。 如果出现内存压力，列存储索引将修剪行组大小，以便能成功将行组压缩到列存储中。
 
-当内存不足，无法将至少 10，000 行压缩到每个行组中时，将生成错误。
+如果内存不足，无法将至少10000行压缩到每个行组中，则会生成错误。
 
 有关批量加载的详细信息，请参阅 [Bulk load into a clustered columnstore index](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#Bulk )（批量加载到聚集列存储索引中）。
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>如何监视行组质量
 
-DMV[sys.dm_pdw_nodes_db_column_store_row_group_physical_stats（sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)包含与 SQL DB 匹配的视图定义），它公开有用的信息，如行组中的行数以及如果存在修剪时修剪的原因。 可创建下列视图来轻松查询此 DMV，以便获得关于行组修整的信息。
+DMV sys.databases dm_pdw_nodes_db_column_store_row_group_physical_stats （[sys.databases dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)包含与 SQL db 匹配的视图定义），用于公开有用信息，如行组中的行数，以及在发生修整时进行修整的原因。 可创建下列视图来轻松查询此 DMV，以便获得关于行组修整的信息。
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -80,15 +80,15 @@ trim_reason_desc 指示行组是否已修整（trim_reason_desc = NO_TRIM 表示
 压缩单个行组所需的最大内存大约为
 
 - 72 MB +
-- \#行\*\#列\*8 字节 |
-- \#行\*\#短字符串列\*32 字节 |
+- \#rows \* \#columns \* 8 字节 +
+- \#行\* \#短字符串-列\* 32 字节 +
 - \#long-string-columns \* 16 MB 用于压缩字典
 
 其中，short-string-columns 使用 <= 32 字节的字符串数据类型，long-string-columns 使用 > 32 字节的字符串数据类型。
 
 使用专为压缩文本设计的压缩方法来压缩长字符串。 此压缩方法使用*字典*来存储文本模式。 字典最大大小为 16 MB。 行组中每个长字符串列只能有一个字典。
 
-有关列存储内存需求的深入讨论，请参阅视频[突触 SQL 缩放：配置和指导](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)。
+有关列存储内存需求的深入讨论，请参阅视频[SYNAPSE SQL 缩放：配置和指南](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)。
 
 ## <a name="ways-to-reduce-memory-requirements"></a>减少内存需求的方法
 
@@ -109,7 +109,7 @@ trim_reason_desc 指示行组是否已修整（trim_reason_desc = NO_TRIM 表示
 
 ### <a name="avoid-over-partitioning"></a>避免过度分区
 
-列存储索引会为每个分区创建一个或多个行组。 对于 Azure Synapse 分析中的数据仓库，分区数量会快速增长，因为数据是分布式的，并且每个分发都进行了分区。 如果表中分区过多，可能没有足够行来填充行组。 如果缺少行，在压缩过程中不会产生内存不足的情况，但是这会导致行组无法实现最佳列存储查询性能。
+列存储索引会为每个分区创建一个或多个行组。 对于 Azure Synapse 分析中的数据仓库，分区数量会迅速增长，因为数据会分布，并对每个分布进行分区。 如果表中分区过多，可能没有足够行来填充行组。 如果缺少行，在压缩过程中不会产生内存不足的情况，但是这会导致行组无法实现最佳列存储查询性能。
 
 要避免过度分区的另一个原因是，在分区表上将行加载到列存储索引中会产生内存开销。 在加载期间，多数分区可能会收到传入行，它们会保存在内存中，直到每个分区都有足够行可进行压缩。 如果分区过多，可能产生额外的内存压力。
 
@@ -141,6 +141,6 @@ DWU 大小和用户资源类共同确定用户查询可用的内存量。 若要
 
 ## <a name="next-steps"></a>后续步骤
 
-要找到更多方法提高 Synapse SQL 中的性能，请参阅[性能概述](../overview-cheat-sheet.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+若要了解更多提高 Synapse SQL 性能的方法，请参阅[性能概述](../overview-cheat-sheet.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
  

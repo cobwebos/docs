@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: yexu
 ms.openlocfilehash: 766520fe44047eee76029adf8ee1683c7b8008a1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417855"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure 数据工厂中复制活动的容错
@@ -33,15 +33,15 @@ ms.locfileid: "81417855"
 ## <a name="supported-scenarios"></a>支持的方案
 复制活动支持三种检测、跳过和记录不兼容数据的方案：
 
-- **源数据类型和接收器本机类型之间的不兼容**。 
+- **源数据类型与接收器本机类型不兼容**。 
 
     例如：将数据从 Blob 存储中的 CSV 文件复制到具有架构定义的包含三个 INT 类型列的 SQL 数据库。 包含数值数据的 CSV 文件行（如 123,456,789）成功复制到接收器存储。 但是，包含非数字值的行（如 123,456, abc ）检测为不兼容，并被跳过。
 
 - **源和接收器之间的列数不匹配**。
 
-    例如：使用包含六个列的架构定义，将数据从 Blob 存储中的 CSV 文件复制到 SQL 数据库。 包含六个列的 CSV 文件行会成功复制到接收器存储。 包含六列以上的 CSV 文件行将检测为不兼容，并跳过。
+    例如：使用包含六个列的架构定义，将数据从 Blob 存储中的 CSV 文件复制到 SQL 数据库。 包含六个列的 CSV 文件行会成功复制到接收器存储。 包含六个以上列的 CSV 文件行被检测为不兼容，并被跳过。
 
-- **写入 SQL 服务器/Azure SQL 数据库/Azure 宇宙数据库 时的主要密钥冲突**。
+- **写入 SQL Server/AZURE SQL 数据库/Azure Cosmos DB 时主键冲突**。
 
     例如：将数据从 SQL 服务器复制到 SQL 数据库。 接收器 SQL 数据库中定义了主键，但源 SQL 服务器中未定义此类主键。 源中的重复行无法复制到接收器。 复制活动仅将源数据的第一行复制到接收器。 包含重复主键值的后续源行会被检测为不兼容，并被跳过。
 
@@ -72,7 +72,7 @@ ms.locfileid: "81417855"
 }
 ```
 
-properties | 说明 | 允许的值 | 必选
+属性 | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | -------- 
 enableSkipIncompatibleRow | 指定是否在复制期间跳过不兼容的行。 | True<br/>False（默认值） | 否
 redirectIncompatibleRowSettings | 若要记录不兼容行，可以指定的一组属性。 | &nbsp; | 否

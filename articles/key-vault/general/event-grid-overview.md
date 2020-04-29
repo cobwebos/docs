@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: mbaldwin
 ms.openlocfilehash: cc12cc9a4828404e960aee239bd388af5b1ea3b7
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431899"
 ---
 # <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>通过 Azure 事件网格监视 Key Vault（预览版）
@@ -44,7 +44,7 @@ ms.locfileid: "81431899"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure 密钥保管库概述](overview.md)）
+- [Azure Key Vault 概述](overview.md)
 - [Azure 事件网格概述](../../event-grid/overview.md)
 - 如何：[将 Key Vault 事件路由到自动化 Runbook（预览版）](event-grid-tutorial.md)。
 - 如何：[Key Vault 机密发生更改时接收电子邮件](event-grid-logicapps.md)

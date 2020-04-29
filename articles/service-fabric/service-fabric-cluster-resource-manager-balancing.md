@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: b6df25b525975f2d4fe6a02064e81f359a804c58
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416266"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>均衡 Service Fabric 群集
@@ -74,12 +74,12 @@ ClusterManifest.xml：
 
 现在，群集资源管理器仅按顺序一次执行这些操作中的一个。 因此将这些计时器称为“最小间隔”，将计时器停止时可采取的操作称为“设置标志”。 例如，群集 Resource Manager 先处理挂起的创建服务的请求，再均衡群集。 如你所见，群集资源管理器根据指定的默认时间间隔扫描它需要频繁执行的任何操作。 通常这意味着在每个步骤中所采取的变更集很小。 通过频繁的小更改，群集资源管理器可以在群集中发生事件时迅速做出响应。 因为许多相同类型的事件往往同时发生，所以默认计时器会提供一些批处理。 
 
-例如，节点出现故障时，它们可以一次性地对整个容错域执行这样的操作。 会在 PLBRefreshGap 后的下一个状态更新过程中捕获所有这些故障**。 在以下放置、约束检查和均衡运行的过程中，确定要修正的内容。 默认情况下，群集 Resource Manager 不会扫描群集中数小时的更改，也不会尝试同时处理所有更改。 这会导致大量改动。
+例如，节点出现故障时，它们可以一次性地对整个容错域执行这样的操作。 会在 PLBRefreshGap 后的下一个状态更新过程中捕获所有这些故障  。 在以下放置、约束检查和均衡运行的过程中，确定要修正的内容。 默认情况下，群集 Resource Manager 不会扫描群集中数小时的更改，也不会尝试同时处理所有更改。 这会导致大量改动。
 
-群集 Resource Manager 还需要一些其他信息以确定群集是否不均衡。 为此，我们设置了其他两项配置：BalancingThresholds 和 ActivityThresholds****。
+群集 Resource Manager 还需要一些其他信息以确定群集是否不均衡。 为此，我们设置了其他两项配置：BalancingThresholds 和 ActivityThresholds   。
 
 ## <a name="balancing-thresholds"></a>均衡阈值
-均衡阈值是触发重新均衡的主要控件。 指标的平衡阈值是_比率_。 如果负载最重的节点上某个指标的负载除以负载最轻的节点的负载量超过指标的 BalancingThreshold，群集是不均衡的**。 因此，群集 Resource Manager 下次检查时会触发均衡。 MinLoadBalancingInterval 计时器定义群集资源管理器应检查是否需要重新均衡的频率**。 检查并不代表发生任何事件。 
+均衡阈值是触发重新均衡的主要控件。 指标的均衡阈值是一个_比率_。 如果负载最重的节点上某个指标的负载除以负载最轻的节点的负载量超过指标的 BalancingThreshold，群集是不均衡的  。 因此，群集 Resource Manager 下次检查时会触发均衡。 MinLoadBalancingInterval 计时器定义群集资源管理器应检查是否需要重新均衡的频率  。 检查并不代表发生任何事件。 
 
 均衡阈值根据每个指标定义为群集定义的一部分。 有关指标的详细信息，请参阅[此文](service-fabric-cluster-resource-manager-metrics.md)。
 
@@ -127,10 +127,10 @@ ClusterManifest.xml
 </center>
 
 > [!NOTE]
-> “均衡”会处理两种不同的策略，管理群集中的负载。 群集资源管理器使用的默认策略是在群集的节点间分发负载。 其他策略是[碎片整理](service-fabric-cluster-resource-manager-defragmentation-metrics.md)。 在同一均衡运行的过程中，执行碎片整理。 均衡和碎片整理策略可以用于同一群集中的不同指标。 一个服务可具有均衡和碎片整理两个指标。 对于碎片整理指标，群集中负载的比率低于均衡阈值时，会触发重新均衡__。 
+> “均衡”会处理两种不同的策略，管理群集中的负载。 群集资源管理器使用的默认策略是在群集的节点间分发负载。 其他策略是[碎片整理](service-fabric-cluster-resource-manager-defragmentation-metrics.md)。 在同一均衡运行的过程中，执行碎片整理。 均衡和碎片整理策略可以用于同一群集中的不同指标。 一个服务可具有均衡和碎片整理两个指标。 对于碎片整理指标，群集中负载的比率低于均衡阈值时，会触发重新均衡  。 
 >
 
-低于均衡阈值不是显式目标。 均衡阈值只是一个触发器**。 均衡运行时，群集资源管理器会确定它可进行哪些改进（如有）。 因为仅仅启动均衡搜索并不意味着会移动任何内容。 有时群集是不均衡的，但约束过度，就无法修正。 或者，改进需要[成本高昂](service-fabric-cluster-resource-manager-movement-cost.md)的移动）。
+低于均衡阈值不是显式目标。 均衡阈值只是一个触发器  。 均衡运行时，群集资源管理器会确定它可进行哪些改进（如有）。 因为仅仅启动均衡搜索并不意味着会移动任何内容。 有时群集是不均衡的，但约束过度，就无法修正。 或者，改进需要[成本高昂](service-fabric-cluster-resource-manager-movement-cost.md)的移动）。
 
 ## <a name="activity-thresholds"></a>活动阈值
 有时，虽然节点相对不均衡，但群集中的负载*总量*很低。 缺少负载可能是由于暂时下降，或由于群集是新的且刚刚启动。 在任一情况下，无需花时间均衡群集，因为效果微乎其微。 如果均衡群集，将耗费网络和计算资源进行移动操作，却不会产生任何大的绝对差异**。 为了避免不必要的移动，可使用名为“活动阈值”的另一种控件。 通过活动阈值，可指定活动的一些绝对下限。 如果没有节点超过此阈值，即使满足均衡阈值，也不会触发均衡。
@@ -202,10 +202,10 @@ ClusterManifest.xml
 </center>
 
 ## <a name="next-steps"></a>后续步骤
-* 指标是 Service Fabric 群集资源管理器在群集中管理消耗和容量的方式。 要了解有关指标以及如何配置指标的更多[，请查看本文](service-fabric-cluster-resource-manager-metrics.md)
+* 指标是 Service Fabric 群集资源管理器在群集中管理消耗和容量的方式。 若要详细了解指标及其配置方式，请查看[本文](service-fabric-cluster-resource-manager-metrics.md)
 * 移动成本是向群集 Resource Manager 发出信号，表示移动某些服务比移动其他服务会产生更高成本的方式之一。 若要了解有关移动成本的详细信息，请参阅[此文](service-fabric-cluster-resource-manager-movement-cost.md)
 * 群集 Resource Manager 提供多个限制机制，可以配置这些限制机制，以减慢群集中的流动。 这些限制通常不是必要的，但如果需要，可以在[此处](service-fabric-cluster-resource-manager-advanced-throttling.md)了解其相关信息
-* 群集资源管理器可以识别和处理子群集（有时在使用放置约束和平衡时出现这种情况）。 要了解子群集如何影响平衡以及如何处理平衡，请参阅[此处](cluster-resource-manager-subclustering.md)
+* 群集资源管理器可以识别并处理 subclustering （当你使用放置约束和平衡时，有时会出现这种情况）。 若要了解 subclustering 如何影响均衡以及如何处理它，请参阅[此处](cluster-resource-manager-subclustering.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resrouce-manager-balancing-thresholds.png
 [Image2]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-threshold-triggered-results.png

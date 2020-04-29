@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
 ms.openlocfilehash: 74e381a9ad32acdaa8cbb719824d74ca6d339f30
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418943"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
@@ -26,8 +26,8 @@ ms.locfileid: "81418943"
 
 在 Azure 数据工厂管道中可使用两类活动。
 
-- [数据移动活动](copy-activity-overview.md)，用于在[受支持的源和接收器数据存储](copy-activity-overview.md#supported-data-stores-and-formats)之间移动数据。
-- [数据转换活动](transform-data.md)，使用计算服务（如 Azure HDInsight、Azure 批处理和 Azure 机器学习）转换数据。
+- 用于在[支持的源和接收器数据存储](copy-activity-overview.md#supported-data-stores-and-formats)之间移动数据的[数据移动活动](copy-activity-overview.md)。
+- 使用计算服务（例如 Azure HDInsight、Azure Batch 和 Azure 机器学习）来转换数据的[数据转换活动](transform-data.md)。
 
 若要将数据移入/移出数据工厂不支持的数据存储，或者要以数据工厂不支持的方式转换/处理数据，可以使用你自己的数据移动或转换逻辑创建**自定义活动**，并在管道中使用该活动。 自定义活动在虚拟机的 **Azure Batch** 池上运行自定义代码逻辑。
 
@@ -100,7 +100,7 @@ ms.locfileid: "81418943"
 
 下表描述了此活动特有的属性的名称和描述。
 
-| properties              | 说明                              | 必选 |
+| 属性              | 说明                              | 必需 |
 | :-------------------- | :--------------------------------------- | :------- |
 | name                  | 管道中活动的名称     | 是      |
 | description           | 描述活动用途的文本。  | 否       |
@@ -306,7 +306,7 @@ Activity Error section:
 
 ## <a name="pass-outputs-to-another-activity"></a>将输出传递给另一个活动
 
-可以通过自定义活动中的代码将自定义值发送回 Azure 数据工厂。 可以通过从应用程序将自定义值写入 `outputs.json` 来完成此操作。 数据工厂复制 `outputs.json` 的内容，并将其作为 `customOutput` 属性的值追加到活动输出中。 （大小限制为 2MB。如果要使用下游活动中的内容`outputs.json`，可以使用 表达式`@activity('<MyCustomActivity>').output.customOutput`获取 值。
+可以通过自定义活动中的代码将自定义值发送回 Azure 数据工厂。 可以通过从应用程序将自定义值写入 `outputs.json` 来完成此操作。 数据工厂复制 `outputs.json` 的内容，并将其作为 `customOutput` 属性的值追加到活动输出中。 （大小限制为2MB。）如果要`outputs.json`在下游活动中使用的内容，则可以通过使用表达式`@activity('<MyCustomActivity>').output.customOutput`来获取值。
 
 ## <a name="retrieve-securestring-outputs"></a>检索 SecureString 输出
 
@@ -327,7 +327,7 @@ Activity Error section:
 
 ## <a name="compare-v2-custom-activity-and-version-1-custom-dotnet-activity"></a><a name="compare-v2-v1"></a>比较 v2 自定义活动和版本 1（自定义）DotNet 活动
 
-在 Azure 数据工厂版本 1 中，通过创建具有实现`Execute``IDotNetActivity`接口方法的类的 .NET 类库项目来实现（自定义）DotNet 活动。 （自定义）DotNet 活动的 JSON 负载中的链接服务、数据集和扩展属性作为强类型对象传递到执行方法。 有关版本 1 行为的详细信息，请参阅[版本 1 中的（自定义）DotNet](v1/data-factory-use-custom-activities.md)。 由于此实现，您的版本 1 DotNet 活动代码必须针对 .NET 框架 4.5.2。 版本 1 DotNet 活动还必须在基于 Windows 的 Azure Batch 池节点上执行。
+在 Azure 数据工厂版本1中，通过使用实现`Execute` `IDotNetActivity`接口的方法的类创建 .net 类库项目来实现（自定义） DotNet 活动。 （自定义）DotNet 活动的 JSON 负载中的链接服务、数据集和扩展属性作为强类型对象传递到执行方法。 有关版本 1 行为的详细信息，请参阅[版本 1 中的（自定义）DotNet](v1/data-factory-use-custom-activities.md)。 由于此实现，版本 1 DotNet 活动代码必须以 .NET Framework 4.5.2 为目标。 版本 1 DotNet 活动还必须在基于 Windows 的 Azure Batch 池节点上执行。
 
 在 Azure 数据工厂 V2 自定义活动中，不需要实现 .NET 接口。 现在可以直接运行命令、脚本和自己的已编译为可执行文件的自定义代码。 要配置该实现，请指定 `Command` 属性和 `folderPath` 属性。 自定义活动会将可执行文件及其依赖项上传到 `folderpath`，并执行命令。
 
@@ -340,16 +340,16 @@ Activity Error section:
 |差异      | 自定义活动      | 版本 1（自定义）DotNet 活动      |
 | ---- | ---- | ---- |
 |如何定义自定义逻辑      |通过提供可执行文件      |通过实现 .NET DLL      |
-|自定义逻辑的执行环境      |Windows 或 Linux      |窗口 （.NET 框架 4.5.2）      |
-|执行脚本      |直接支持执行脚本（如 Windows VM 上的“cmd /c echo hello world”）      |需要在 .NET DLL 中实现      |
+|自定义逻辑的执行环境      |Windows 或 Linux      |Windows （.NET Framework 4.5.2）      |
+|执行脚本      |直接支持执行脚本（如 Windows VM 上的“cmd /c echo hello world”）      |需要 .NET DLL 中的实现      |
 |所需数据集      |可选      |需要链接活动并传递信息      |
 |将信息从活动传递到自定义逻辑      |通过 ReferenceObjects（LinkedServices 和数据集）与 ExtendedProperties（自定义属性）      |通过 ExtendedProperties（自定义属性）、输入和输出数据集      |
-|在自定义逻辑中检索信息      |分析可执行文件所在文件夹中存储的 activity.json、linkedServices.json 和 datasets.json      |通过 .NET SDK （.NET 帧 4.5.2）      |
+|在自定义逻辑中检索信息      |分析可执行文件所在文件夹中存储的 activity.json、linkedServices.json 和 datasets.json      |通过 .NET SDK （.NET framework 4.5.2）      |
 |日志记录      |直接写入到 STDOUT      |在 .NET DLL 中实现记录器      |
 
-如果为版本 1（自定义）DotNet 活动编写了现有的 .NET 代码，则需要修改代码，以便它才能与自定义活动的当前版本一起工作。 按照以下高级准则更新代码：
+如果现有的 .NET 代码是针对版本1（自定义） DotNet 活动编写的，则需要修改代码，使其适用于自定义活动的当前版本。 按照以下高级准则更新代码：
 
-  - 将项目从 .NET 类库更改为控制台应用。
+  - 将项目从 .NET 类库更改为控制台应用程序。
   - 使用 `Main` 方法启动应用程序。 不再需要 `IDotNetActivity` 接口的 `Execute` 方法。
   - 使用 JSON 序列化程序并且不作为强类型对象读取和分析链接服务、数据集和活动。 将所需属性的值传递到主要自定义代码逻辑。 可将前面的 SampleApp.exe 代码作为示例进行参考。
   - 不再支持 Logger 对象。 可将可执行文件的输出打印到控制台并保存到 stdout.txt。
@@ -383,9 +383,9 @@ $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 
 * [U-SQL 活动](transform-data-using-data-lake-analytics.md)
 * [Hive 活动](transform-data-using-hadoop-hive.md)
-* [猪活动](transform-data-using-hadoop-pig.md)
+* [Pig 活动](transform-data-using-hadoop-pig.md)
 * [MapReduce 活动](transform-data-using-hadoop-map-reduce.md)
-* [Hadoop 流活动](transform-data-using-hadoop-streaming.md)
-* [火花活动](transform-data-using-spark.md)
+* [Hadoop 流式处理活动](transform-data-using-hadoop-streaming.md)
+* [Spark 活动](transform-data-using-spark.md)
 * [机器学习批处理执行活动](transform-data-using-machine-learning.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/20/2019
 ms.author: jingwang
 ms.openlocfilehash: ea68fa8d9326e6d9ebb4f475d16ac83959cae6e5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416875"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>使用 Azure 数据工厂将数据从 Office 365 复制到 Azure
@@ -28,12 +28,12 @@ Azure 数据工厂与 [Microsoft Graph 数据连接](https://docs.microsoft.com/
 ## <a name="supported-capabilities"></a>支持的功能
 使用 ADF Office 365 连接器和 Microsoft Graph 数据连接可以从已启用 Exchange 电子邮件的邮箱中大规模地引入不同类型的数据集，包括通讯簿联系人、示例事件、电子邮件、用户信息和邮箱设置等。  请参阅[此处](https://docs.microsoft.com/graph/data-connect-datasets)以查看可用数据集的完整列表。
 
-现在，在单个复制活动中，您只能将数据**从 Office 365 复制到[Azure Blob 存储](connector-azure-blob-storage.md)[、Azure 数据存储湖存储第 1 代](connector-azure-data-lake-store.md)和以 JSON 格式（类型集对象）的 Azure[数据存储第 2 代](connector-azure-data-lake-storage.md)**。 如果要将 Office 365 加载到其他类型的或其他格式的数据存储，可以将第一个副本活动与后续复制活动链接在一起，以进一步将数据加载到任何[支持的 ADF 目标存储](copy-activity-overview.md#supported-data-stores-and-formats)（请参阅“支持的数据存储和格式”表中的“作为接收器支持”列）。
+目前，在单个复制活动中，只能**将 Office 365 中的数据复制到[Azure Blob 存储](connector-azure-blob-storage.md)、 [AZURE DATA LAKE STORAGE GEN1](connector-azure-data-lake-store.md)，并以 JSON 格式[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) ** （键入 setOfObjects）。 如果要将 Office 365 加载到其他类型的或其他格式的数据存储，可以将第一个副本活动与后续复制活动链接在一起，以进一步将数据加载到任何[支持的 ADF 目标存储](copy-activity-overview.md#supported-data-stores-and-formats)（请参阅“支持的数据存储和格式”表中的“作为接收器支持”列）。
 
 >[!IMPORTANT]
 >- 包含数据工厂和接收器数据存储的 Azure 订阅必须位于与 Office 365 租户相同的 Azure Active Directory (Azure AD) 租户下。
 >- 确保用于复制活动的 Azure Integration Runtime 区域以及目标在 Office 365 租户用户邮箱所在的同一区域中。 若要了解如何确定 Azure IR 位置，请参阅[此处](concepts-integration-runtime.md#integration-runtime-location)。 有关受支持的 Office 区域和对应的 Azure 区域列表，请参阅[此处的表](https://docs.microsoft.com/graph/data-connect-datasets#regions)。
->- 服务主体身份验证是 Azure Blob 存储、Azure 数据湖存储第 1 代和 Azure 数据存储 Gen2 作为目标存储支持的唯一身份验证机制。
+>- 服务主体身份验证是唯一支持的身份验证机制，Azure Blob 存储、Azure Data Lake Storage Gen1 和 Azure Data Lake Storage Gen2 作为目标存储。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -77,9 +77,9 @@ Azure 数据工厂与 [Microsoft Graph 数据连接](https://docs.microsoft.com/
 
 Office 365 链接服务支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：Office 365**** | 是 |
+| type | type 属性必须设置为：**Office365** | 是 |
 | office365TenantId | Office 365 帐户所属的 Azure 租户 ID。 | 是 |
 | servicePrincipalTenantId | 指定 Azure AD Web 应用程序所在的租户信息。 | 是 |
 | servicePrincipalId | 指定应用程序的客户端 ID。 | 是 |
@@ -87,11 +87,11 @@ Office 365 链接服务支持以下属性：
 | connectVia | 用于连接到数据存储的 Integration Runtime。  如果未指定，则使用默认 Azure Integration Runtime。 | 否 |
 
 >[!NOTE]
-> office365TenantId**** 和 servicePrincipalTenantId**** 之间的差异和提供的相应值：
+> office365TenantId  和 servicePrincipalTenantId  之间的差异和提供的相应值：
 >- 如果你是一名企业开发人员，开发便于自己组织使用的针对 Office 365 数据的应用程序，则应该为这两个属性提供相同的租户 ID，即你的组织 AAD 租户 ID。
 >- 如果你是为客户开发应用程序的 ISV 开发人员，那么 office365TenantId 将是客户的（应用程序安装程序）AAD 租户 ID，servicePrincipalTenantId 则为公司的 AAD 租户 ID。
 
-**例子：**
+**示例：**
 
 ```json
 {
@@ -113,13 +113,13 @@ Office 365 链接服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的节和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Office 365 数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Office 365 数据集支持的属性列表。
 
 若要从 Office 365 复制数据，支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：Office365Table**** | 是 |
+| type | 数据集的 type 属性必须设置为：**Office365Table** | 是 |
 | tableName | 要从 Office 365 中提取的数据集的名称。 有关支持提取的 Office 365 数据集列表，请参阅[此处](https://docs.microsoft.com/graph/data-connect-datasets#datasets)。 | 是 |
 
 如果在数据集中设置了 `dateFilterColumn`、`startTime`、`endTime` 和 `userScopeFilterUri`，则仍按原样支持该数据集，但建议你以后在活动源中使用新模型。
@@ -151,9 +151,9 @@ Office 365 链接服务支持以下属性：
 
 为了从 Office 365 复制数据，复制活动的 **source** 节支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 必须将复制活动源的类型属性设置为 **：Office365Source** | 是 |
+| type | 复制活动 source 的 type 属性必须设置为：**Office365Source** | 是 |
 | allowedGroups | 组选择谓词。  可以使用此属性选择最多 10 个将为其检索数据的用户组。  如果未指定任何组，则会为整个组织返回数据。 | 否 |
 | userScopeFilterUri | 未指定 `allowedGroups` 属性时，可以使用在整个租户上应用的谓词表达式来筛选要从 Office 365 中提取的特定行。 谓词格式应当与 Microsoft Graph API 的查询格式匹配，例如 `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'`。 | 否 |
 | dateFilterColumn | 日期/时间筛选器列的名称。 可以使用此属性限制要提取 Office 365 数据的时间范围。 | 如果数据集有一个或多个日期/时间列，则为必需的。 有关需要此日期/时间筛选器的数据集的列表，请参阅[此处](https://docs.microsoft.com/graph/data-connect-filtering#filtering)。 |
@@ -161,7 +161,7 @@ Office 365 链接服务支持以下属性：
 | endTime | 筛选时所依据的结束日期/时间值。 | 如果指定了 `dateFilterColumn`，则为必需的 |
 | outputColumns | 要复制到接收器的列的数组。 | 否 |
 
-**例子：**
+**示例：**
 
 ```json
 "activities": [
@@ -304,4 +304,4 @@ Office 365 链接服务支持以下属性：
 ```
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动作为源和接收器支持的数据存储的列表，请参阅[受支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

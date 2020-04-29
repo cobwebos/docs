@@ -1,6 +1,6 @@
 ---
-title: 按选项分组
-description: 在 Synapse SQL 池中按选项实现组的技巧。
+title: 使用 group by 选项
+description: 用于在 Synapse SQL 池中实现 group by 选项的技巧。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,19 +12,19 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 5d8d4c6d47e33ca365415542c2da9779b4d7d1dd
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416200"
 ---
-# <a name="group-by-options-in-synapse-sql-pool"></a>按 Synapse SQL 池中的选项分组
+# <a name="group-by-options-in-synapse-sql-pool"></a>Synapse SQL 池中的 Group by 选项
 
-在本文中，您将在 SQL 池中找到按选项实现组的提示。
+在本文中，你将了解如何在 SQL 池中实现 group by 选项。
 
 ## <a name="what-does-group-by-do"></a>GROUP BY 的作用是什么？
 
-[GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 子句用于将数据聚合成摘要行集。 GROUP BY 具有 SQL 池不支持的一些选项。 这些选项具有解决方法，如下所示：
+[GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 子句用于将数据聚合成摘要行集。 "分组依据" 具有 SQL 池不支持的某些选项。 这些选项有解决方法，如下所示：
 
 * 带 ROLLUP 的 GROUP BY
 * GROUPING SETS
@@ -32,7 +32,7 @@ ms.locfileid: "81416200"
 
 ## <a name="rollup-and-grouping-sets-options"></a>Rollup 和 grouping sets 选项
 
-此处最简单的选项是使用 UNION ALL 执行汇总，而不是依赖显式语法。 结果完全相同。
+此处最简单的选项是使用 UNION ALL 来执行汇总，而不是依赖显式语法。 结果完全相同。
 
 下面的示例使用了具有 ROLLUP 选项的 GROUP BY 语句：
 
@@ -86,11 +86,11 @@ JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritor
 
 ## <a name="cube-options"></a>Cube 选项
 
-可以使用"全联盟"方法创建具有 CUBE 的组。 问题在于，代码可能很快就会变得庞大且失控。 要缓解此问题，可以使用此更高级的方法。
+可以使用 UNION ALL 方法创建 GROUP BY WITH CUBE。 问题在于，代码可能很快就会变得庞大且失控。 若要缓解此问题，可以使用这种更高级的方法。
 
-使用前面的示例，第一步是定义"多维数据集"，该"多维数据集"定义我们想要创建的所有聚合级别。
+使用上面的示例，第一步是定义 "cube"，它定义了要创建的所有聚合级别。
 
-请注意两个派生表的 CROSS JOIN，因为这为我们生成所有级别。 代码的其余部分用于格式化：
+记下两个派生表的交叉联接，因为这样会生成所有级别。 其余代码用于设置格式：
 
 ```sql
 CREATE TABLE #Cube
@@ -125,7 +125,7 @@ FROM GrpCube;
 
 ![按多维数据集分组](./media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png)
 
-第二步是指定用于存储中期结果的目标表：
+第二步是指定目标表用于存储临时结果：
 
 ```sql
 DECLARE
@@ -148,7 +148,7 @@ WITH
 ;
 ```
 
-第三步是是循环访问执行聚合的列 cube。 查询将针对临时表中的每一行运行一次#Cube。 结果存储在#Results临时表中：
+第三步是是循环访问执行聚合的列 cube。 查询将对 #Cube 临时表中的每一行运行一次。 结果存储在 #Results 临时表中：
 
 ```sql
 SET @nbr =(SELECT MAX(Seq) FROM #Cube);
@@ -172,7 +172,7 @@ BEGIN
 END
 ```
 
-最后，您可以通过从#Results临时表中读取来返回结果：
+最后，您可以通过读取 #Results 临时表来返回结果：
 
 ```sql
 SELECT *
@@ -181,7 +181,7 @@ ORDER BY 1,2,3
 ;
 ```
 
-通过将代码分解为多个部分并生成循环构造，代码变得更加可管理和可维护。
+通过将代码分解到各个部分并生成循环构造，代码将变得更易于管理和维护。
 
 ## <a name="next-steps"></a>后续步骤
 

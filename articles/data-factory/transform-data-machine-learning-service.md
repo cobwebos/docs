@@ -11,19 +11,19 @@ author: djpmsft
 manager: anandsub
 ms.date: 10/10/2019
 ms.openlocfilehash: f033651eb7e52ba60cce9b74941a4ef0eb376d2b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418994"
 ---
 # <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>在 Azure 数据工厂中执行 Azure 机器学习管道
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-在 Azure 数据工厂管道中运行 Azure 机器学习管道作为步骤。 机器学习执行管道活动支持批处理预测方案，例如识别可能的贷款默认值、确定情绪和分析客户行为模式。
+在 Azure 数据工厂管道中将 Azure 机器学习管道作为一个步骤运行。 机器学习执行管道活动可实现批预测方案，例如确定可能的贷款默认值、确定情绪并分析客户行为模式。
 
-以下视频包含 6 分钟的介绍和演示此功能。
+以下视频介绍了此功能的六分钟简介和演示。
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/How-to-execute-Azure-Machine-Learning-service-pipelines-in-Azure-Data-Factory/player]
 
@@ -50,16 +50,16 @@ ms.locfileid: "81418994"
 
 ## <a name="type-properties"></a>Type 属性
 
-properties | 说明 | 允许的值 | 必选
+属性 | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
 name | 管道中活动的名称 | 字符串 | 是
-type | 活动类型为"AzureML 执行管道" | 字符串 | 是
-linkedServiceName | 链接到 Azure 机器学习的服务 | 链接服务引用 | 是
-毫升里线Id | 已发布的 Azure 机器学习管道的 ID | 字符串（或带有 resultType 字符串的表达式） | 是
-实验名称 | 运行机器学习管道运行的历史实验名称 | 字符串（或带有 resultType 字符串的表达式） | 否
-mlPipeline 参数 | 键，要传递给已发布的 Azure 机器学习管道终结点的值对。 键必须与已发布的机器学习管道中定义的管道参数的名称匹配 | 具有键值对的对象（或具有结果类型对象的表达式） | 否
-毫升家长鲁尼 | 父 Azure 机器学习管道运行 ID | 字符串（或带有 resultType 字符串的表达式） | 否
-继续步进失败 | 如果步骤失败，是否继续执行机器学习管道中的其他步骤 | boolean | 否
+type | Activity 的类型为 "AzureMLExecutePipeline" | 字符串 | 是
+linkedServiceName | 链接服务到 Azure 机器学习 | 链接服务引用 | 是
+mlPipelineId | 已发布的 Azure 机器学习管道的 ID | 字符串（或带有 resultType 字符串的表达式） | 是
+experimentName | 运行历史记录试验机器学习管道运行的名称 | 字符串（或带有 resultType 字符串的表达式） | 否
+mlPipelineParameters | 要传递到已发布 Azure 机器学习管道终结点的键、值对。 键必须与已发布机器学习管道中定义的管道参数的名称匹配 | 具有键值对的对象（或具有 resultType 对象的表达式） | 否
+mlParentRunId | 父 Azure 机器学习管道运行 ID | 字符串（或带有 resultType 字符串的表达式） | 否
+continueOnStepFailure | 如果步骤失败，是否在机器学习管道中继续执行其他步骤 | boolean | 否
 
 ## <a name="next-steps"></a>后续步骤
 参阅以下文章了解如何以其他方式转换数据：
@@ -67,9 +67,9 @@ mlPipeline 参数 | 键，要传递给已发布的 Azure 机器学习管道终�
 * [执行数据流活动](control-flow-execute-data-flow-activity.md)
 * [U-SQL 活动](transform-data-using-data-lake-analytics.md)
 * [Hive 活动](transform-data-using-hadoop-hive.md)
-* [猪活动](transform-data-using-hadoop-pig.md)
+* [Pig 活动](transform-data-using-hadoop-pig.md)
 * [MapReduce 活动](transform-data-using-hadoop-map-reduce.md)
-* [Hadoop 流活动](transform-data-using-hadoop-streaming.md)
-* [火花活动](transform-data-using-spark.md)
+* [Hadoop 流式处理活动](transform-data-using-hadoop-streaming.md)
+* [Spark 活动](transform-data-using-spark.md)
 * [.NET 自定义活动](transform-data-using-dotnet-custom-activity.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)

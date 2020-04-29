@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jingwang
 ms.openlocfilehash: d47450f3252074d3bae8df97766bf8858fca5972
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416580"
 ---
 # <a name="managed-identity-for-data-factory"></a>数据工厂的托管标识
@@ -33,7 +33,7 @@ ms.locfileid: "81416580"
 
 - [在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)，在这种情况下，数据工厂托管标识用于 Azure Key Vault 身份验证。
 - 连接器包括 [Azure Blob 存储](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure SQL 数据库](connector-azure-sql-database.md)和 [Azure SQL 数据仓库](connector-azure-sql-data-warehouse.md)。
-- [网络活动](control-flow-web-activity.md).
+- [Web 活动](control-flow-web-activity.md)。
 
 ## <a name="generate-managed-identity"></a>生成托管标识
 
@@ -157,19 +157,19 @@ client.Factories.CreateOrUpdate(resourceGroup, dataFactoryName, dataFactory);
 
 ### <a name="retrieve-managed-identity-using-azure-portal"></a>使用 Azure 门户检索托管标识
 
-可以从 Azure 门户找到托管标识信息 ->数据工厂 -> 属性。
+可以从 Azure 门户 -> 数据工厂 ->“属性”找到托管标识信息。
 
 - 托管标识对象 ID
 - 托管标识租户
 - 托管标识应用程序 ID
 
-当您创建支持托管标识身份验证的链接服务（如 Azure Blob、Azure 数据湖存储、Azure 密钥保管库等）时，也会显示托管标识信息。
+当你创建支持托管标识身份验证的链接服务（如 Azure Blob、Azure Data Lake Storage、Azure Key Vault 等）时，托管标识信息也会显示。
 
 授予权限时，请使用对象 ID 或数据工厂名称（作为托管标识名称）来查找此标识。
 
 ### <a name="retrieve-managed-identity-using-powershell"></a>使用 PowerShell 检索托管标识
 
-当您获取特定数据工厂时，将返回托管标识主体 ID 和租户 ID，如下所示。 使用**主体 Id**授予访问权限：
+获取特定的数据工厂时，会返回托管标识主体 ID 和租户 ID，如下所示。 使用 **PrincipalId** 授予访问权限：
 
 ```powershell
 PS C:\WINDOWS\system32> (Get-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName>).Identity
@@ -179,7 +179,7 @@ PrincipalId                          TenantId
 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc 72f988bf-XXXX-XXXX-XXXX-2d7cd011db47
 ```
 
-可以通过复制上面的主体 ID，然后在 Azure 活动目录命令下方以主体 ID 作为参数来获取应用程序 ID。
+可以通过以下方法获取应用程序 ID：复制上面的主体 ID，然后以主体 ID 作为参数运行以下 Azure Active Directory 命令。
 
 ```powershell
 PS C:\WINDOWS\system32> Get-AzADServicePrincipal -ObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
@@ -194,7 +194,7 @@ Type                  : ServicePrincipal
 ## <a name="next-steps"></a>后续步骤
 参阅以下主题，其中介绍了何时以及如何使用数据工厂托管标识：
 
-- [在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)
+- [在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)
 - [使用 Azure 资源的托管标识身份验证从/向 Azure Data Lake Store 复制数据](connector-azure-data-lake-store.md)
 
 有关数据工厂托管标识所基于的 Azure 资源的托管标识的更多背景信息，请参阅 [Azure 资源的托管标识概述](/azure/active-directory/managed-identities-azure-resources/overview)。 

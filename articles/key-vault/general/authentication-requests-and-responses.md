@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 33e3bc13e67e268b82bf517033b4b1c7c51c361f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430885"
 ---
 # <a name="authentication-requests-and-responses"></a>身份验证、请求和响应
@@ -65,7 +65,7 @@ Azure Key Vault 支持 JSON 格式的请求和响应。 Azure Key Vault 请求�
 
 - 3xx - 重定向：可能返回 304“未修改”以满足条件性 GET。 未来可能会使用其他 3xx 代码，以指示 DNS 和路径更改。  
 
-- 4xx = 客户端错误：用于错误请求、缺少密钥、语法错误、无效参数、身份验证错误等。响应正文将包含详细的错误说明。  
+- 4xx - 客户端错误：用于错误请求、缺少密钥、语法错误、参数无效、身份验证错误等。响应正文包含详细的错误说明。  
 
 - 5xx - 服务器错误：用于内部服务器错误。 响应正文包含汇总的错误信息。  
 
@@ -113,5 +113,5 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
 -   authorization：可用于获取请求访问令牌的 OAuth2 授权服务的地址。  
 
--   资源：要在授权请求中使用的资源`https://vault.azure.net`的名称。  
+-   resource：要在授权请求中使用的资源 (`https://vault.azure.net`) 的名称。  
 

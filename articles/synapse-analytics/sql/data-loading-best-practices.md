@@ -1,6 +1,6 @@
 ---
 title: 数据加载最佳做法
-description: 用于将数据加载到 SynapsE SQL 的建议和性能优化
+description: 将数据加载到 Synapse SQL 的建议和性能优化
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,15 +12,15 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: b80fe79a2c27de7dbaaa2edccf7b4598c6c63f47
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431041"
 ---
-# <a name="best-practices-for-loading-data-for-data-warehousing"></a>加载数据仓库数据的最佳做法
+# <a name="best-practices-for-loading-data-for-data-warehousing"></a>为数据仓库加载数据的最佳做法
 
-加载数据的建议和性能优化
+有关加载数据的建议和性能优化
 
 ## <a name="preparing-data-in-azure-storage"></a>在 Azure 存储中准备数据
 
@@ -36,7 +36,7 @@ PolyBase 无法加载数据大小超过 1,000,000 字节的行。 将数据置�
 
 ## <a name="running-loads-with-enough-compute"></a>使用足够的计算资源运行负载
 
-若要尽量提高加载速度，请一次只运行一个加载作业。 如果这不可行，请将同时运行的负载的数量降至最低。 如果预期加载作业会很大，请考虑在加载之前向上扩展 SQL 池。
+若要尽量提高加载速度，请一次只运行一个加载作业。 如果这不可行，请将同时运行的负载的数量降至最低。 如果需要较大的加载作业，请考虑在负载前向上扩展 SQL 池。
 
 若要使用适当的计算资源运行负载，请创建指定运行负载的加载用户。 将每个加载用户分配给特定的资源类或工作负荷组。 若要运行负载，请以某个加载用户的身份登录，然后运行该负载。 该负载使用用户的资源类运行。  与尝试根据当前的资源类需求更改用户的资源类相比，此方法更简单。
 
@@ -90,7 +90,7 @@ PolyBase 无法加载数据大小超过 1,000,000 字节的行。 将数据置�
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>使用 SQLBulkCopy API 或 BCP 时增加批大小
 
-如前所述，使用 PolyBase 加载将提供使用 Synapse SQL 池的最高吞吐量。 如果无法使用 PolyBase 加载，并且必须使用 SQLBulkCopy API（或 BCP），则应考虑增加批处理大小以提供更好的吞吐量 - 一个很好的经验法则是 100K 到 1M 行之间的批处理大小。
+如前所述，通过 PolyBase 加载将提供 Synapse SQL 池的最高吞吐量。 如果无法使用 PolyBase 加载并且必须使用 SQLBulkCopy API （或 BCP），则应考虑增加批大小以提高吞吐量-较好的经验法则是10到1M 行之间的批大小。
 
 ## <a name="handling-loading-failures"></a>处理加载失败
 
@@ -126,7 +126,7 @@ create statistics [YearMeasured] on [Customer_Speed] ([YearMeasured]);
 
 对于每个已更改密钥的存储帐户，请发出 [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 命令。
 
-示例：
+例如：
 
 已创建原始密钥
 

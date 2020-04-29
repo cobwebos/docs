@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: 261bdedee56bb4de2dfbbef27358fae5ae8fdc3e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416743"
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Presto 复制数据
@@ -31,7 +31,7 @@ ms.locfileid: "81416743"
 以下活动支持此 Presto 连接器：
 
 - 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
-- [查找活动](control-flow-lookup-activity.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 
 可以将数据从 Presto 复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
@@ -47,24 +47,24 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 Presto 链接服务支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：**Presto** | 是 |
+| type | type 属性必须设置为：Presto  | 是 |
 | host | Presto 服务器的 IP 地址或主机名。 （即 192.168.222.160）  | 是 |
 | serverVersion | Presto 服务器的版本。 （即 0.148-t）  | 是 |
 | 目录 | 针对服务器的所有请求的目录上下文。  | 是 |
 | port | Presto 服务器用来侦听客户端连接的 TCP 端口。 默认值为 8080。  | 否 |
-| authenticationType | 用于连接到 Presto 服务器的身份验证机制。 <br/>允许的值为：Anonymous、LDAP******** | 是 |
+| authenticationType | 用于连接到 Presto 服务器的身份验证机制。 <br/>允许值包括：匿名、LDAP   | 是 |
 | username | 用于连接到 Presto 服务器的用户名。  | 否 |
 | password | 用户名所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
-| enableSsl | 指定与服务器的连接是否使用 TLS 进行加密。 默认值是 False。  | 否 |
-| trustedCertPath | 包含受信任 CA 证书的 .pem 文件的完整路径，用于在通过 TLS 连接时验证服务器。 仅当在自托管 IR 上使用 TLS 时，才能设置此属性。 默认值是随 IR 一起安装的 cacerts.pem 文件。  | 否 |
-| useSystemTrustStore | 指定是使用系统信任存储中的 CA 证书还是使用指定 PEM 文件中的 CA 证书。 默认值是 False。  | 否 |
-| allowHostNameCNMismatch | 指定在通过 TLS 连接时是否需要 CA 颁发的 TLS/SSL 证书名称与服务器的主机名匹配。 默认值是 False。  | 否 |
-| allowSelfSignedServerCert | 指定是否允许来自服务器的自签名证书。 默认值是 False。  | 否 |
+| enableSsl | 指定是否使用 TLS 对到服务器的连接进行加密。 默认值为 false。  | 否 |
+| trustedCertPath | Pem 文件的完整路径，该文件包含在通过 TLS 进行连接时用于验证服务器的受信任的 CA 证书。 仅当在自承载 IR 上使用 TLS 时，才能设置此属性。 默认值是随 IR 一起安装的 cacerts.pem 文件。  | 否 |
+| useSystemTrustStore | 指定是使用系统信任存储中的 CA 证书还是使用指定 PEM 文件中的 CA 证书。 默认值为 false。  | 否 |
+| allowHostNameCNMismatch | 指定在通过 TLS 连接时是否要求 CA 颁发的 TLS/SSL 证书名称与服务器的主机名相匹配。 默认值为 false。  | 否 |
+| allowSelfSignedServerCert | 指定是否允许来自服务器的自签名证书。 默认值为 false。  | 否 |
 | timeZoneID | 连接使用的本地时区。 IANA 时区数据库中指定了此选项的有效值。 默认值为系统时区。  | 否 |
 
-**例子：**
+**示例：**
 
 ```json
 {
@@ -90,13 +90,13 @@ Presto 链接服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的节和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Presto 数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Presto 数据集支持的属性列表。
 
-要从 Presto 复制数据，请将数据集的 type 属性设置为“PrestoObject”****。 支持以下属性：
+要从 Presto 复制数据，请将数据集的 type 属性设置为“PrestoObject”  。 支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 数据集的类型属性必须设置为 **：PrestoObject** | 是 |
+| type | 数据集的 type 属性必须设置为：PrestoObject  | 是 |
 | 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
 | 表 | 表的名称。 |否（如果指定了活动源中的“query”）  |
 | tableName | 具有架构的表的名称。 支持此属性是为了向后兼容。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 否（如果指定了活动源中的“query”） |
@@ -124,14 +124,14 @@ Presto 链接服务支持以下属性：
 
 ### <a name="presto-as-source"></a>以 Presto 作为源
 
-要从 Presto 复制数据，请将复制活动中的源类型设置为“PrestoSource”****。 复制活动**源**部分支持以下属性：
+要从 Presto 复制数据，请将复制活动中的源类型设置为“PrestoSource”  。 复制活动**source**部分支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：PrestoSource**** | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| type | 复制活动 source 的 type 属性必须设置为：PrestoSource  | 是 |
+| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
-**例子：**
+**示例：**
 
 ```json
 "activities":[
@@ -169,4 +169,4 @@ Presto 链接服务支持以下属性：
 
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动作为源和接收器支持的数据存储的列表，请参阅[受支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

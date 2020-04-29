@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: mbaldwin
 ms.openlocfilehash: 436b9c1569d7c33f79a126cd4d0513bac9385d8a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431912"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure 密钥保管库 .NET 2.0 - 发行说明和迁移指南
@@ -90,8 +90,8 @@ Key Vault 证书管理 x509 证书，并支持以下行为：
 
 ## <a name="class-changes"></a>类的更改
 
-* **UnixEpoch**类已被删除。
-* **Base64Url转换器**类被重命名为**Base64UrlJsonConverter。**
+* **UnixEpoch**类已被移除。
+* **Base64UrlConverter**类重命名为**Base64UrlJsonConverter**。
 
 ## <a name="other-changes"></a>其他更改
 
@@ -99,7 +99,7 @@ Key Vault 证书管理 x509 证书，并支持以下行为：
 
 ## <a name="microsoftazuremanagementkeyvault-nuget"></a>Microsoft.Azure.Management.KeyVault NuGet
 
-* 对于返回*保管库*的操作，返回类型是包含**保管库**属性的类。 返回类型现在是 *Vault*。
+* 对于返回*保管库*的操作，返回类型是包含**vault**属性的类。 返回类型现在是 *Vault*。
 * *PermissionsToKeys* 和 *PermissionsToSecrets* 现在是 *Permissions.Keys* 和 *Permissions.Secrets*
 * 某些返回类型的更改也适用于控制面板。
 

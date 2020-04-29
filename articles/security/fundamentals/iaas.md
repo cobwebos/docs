@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
 ms.openlocfilehash: 49a40d78b4ba3bc1e90bb341cca90bece0b998a8
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81450009"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure 中 IaaS 工作负荷的安全性最佳实践
@@ -33,14 +33,14 @@ ms.locfileid: "81450009"
 保护 VM 安全的第一步是确保只有授权用户才能设置新 VM 以及访问 VM。
 
 > [!NOTE]
-> 为了提高 Azure 上 Linux VM 的安全性，可以与 Azure AD 身份验证集成。 当您对[Linux VM](/azure/virtual-machines/linux/login-using-aad)使用 Azure AD 身份验证时，可以集中控制和强制实施允许或拒绝对 VM 的访问的策略。
+> 若要提高 Azure 上的 Linux Vm 的安全性，可以与 Azure AD 身份验证集成。 将[Azure AD 身份验证用于 Linux vm](/azure/virtual-machines/linux/login-using-aad)时，可以集中控制和强制允许或拒绝访问 vm 的策略。
 >
 >
 
 最佳做法：控制 VM 访问****。   
 详细信息：使用 [Azure 策略](/azure/azure-policy/azure-policy-introduction)建立组织中的资源约定和创建自定义策略****。 将这些策略应用于资源，如[资源组](/azure/azure-resource-manager/resource-group-overview)。 属于该资源组的 VM 将继承该组的策略。
 
-如果你的组织有多个订阅，则可能需要一种方法来高效地管理这些订阅的访问权限、策略和符合性。 [Azure 管理组](/azure/azure-resource-manager/management-groups-overview)提供订阅上的作用域级别。 可将订阅组织到管理组（容器）中，并将管理条件应用到该组。 管理组中的所有订阅都将自动继承应用于该组的条件。 不管使用什么类型的订阅，管理组都能提供大规模的企业级管理。
+如果你的组织有多个订阅，则可能需要一种方法来高效地管理这些订阅的访问权限、策略和符合性。 [Azure 管理组](/azure/azure-resource-manager/management-groups-overview)提供了高于订阅范围的范围。 可将订阅组织到管理组（容器）中，并将管理条件应用到该组。 管理组中的所有订阅都将自动继承应用于该组的条件。 不管使用什么类型的订阅，管理组都能提供大规模的企业级管理。
 
 最佳做法：减少 VM 的安装和部署的可变性****。   
 详细信息：使用 [Azure 资源管理器](/azure/azure-resource-manager/resource-group-authoring-templates)模板增强部署选项，使其更易理解并清点环境中的 VM****。
@@ -63,12 +63,12 @@ ms.locfileid: "81450009"
 控制 VM 访问和设置的组织可改善其整体 VM 安全性。
 
 ## <a name="use-multiple-vms-for-better-availability"></a>使用多个 VM 提高可用性
-如果 VM 运行需要具有高可用性的关键应用程序，我们强烈建议使用多个 VM。 为更好的可用性，请使用[可用性集](../../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)或可用性[区域](../../availability-zones/az-overview.md)。
+如果 VM 运行需要具有高可用性的关键应用程序，我们强烈建议使用多个 VM。 为了获得更好的可用性，请使用[可用性集](../../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)或可用性[区域](../../availability-zones/az-overview.md)。
 
 可用性集是一种逻辑分组功能，在 Azure 中使用它可以确保将 VM 资源部署在 Azure 数据中心后，这些资源相互隔离。 Azure 确保可用性集中部署的 VM 能够跨多个物理服务器、计算机架、存储单元和网络交换机运行。 如果出现硬件或 Azure 软件故障，只有一部分 VM 会受到影响，整体应用程序仍可供客户使用。 如果想要构建可靠的云解决方案，可用性集是一项关键功能。
 
 ## <a name="protect-against-malware"></a>防范恶意软件
-应安装反恶意软件保护，以帮助识别和删除病毒、间谍软件和其他恶意软件。 您可以安装[微软反恶意软件](antimalware.md)或微软合作伙伴的端点保护解决方案（[趋势微](https://help.deepsecurity.trendmicro.com/Welcome.html)[，Broadcom，](https://www.broadcom.com/products)[迈克菲](https://www.mcafee.com/us/products.aspx)[，Windows防御器](https://www.microsoft.com/windows/comprehensive-security)，[和系统中心端点保护](/configmgr/protect/deploy-use/endpoint-protection)）。
+应安装反恶意软件保护，以帮助识别和删除病毒、间谍软件和其他恶意软件。 你可以安装[Microsoft 反恶意软件](antimalware.md)或 microsoft 合作伙伴的 endpoint protection 解决方案（[走向微](https://help.deepsecurity.trendmicro.com/Welcome.html)、 [Broadcom](https://www.broadcom.com/products)、 [McAfee](https://www.mcafee.com/us/products.aspx)、 [Windows Defender](https://www.microsoft.com/windows/comprehensive-security)和[System Center Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)）。
 
 Microsoft 反恶意软件包括实时保护、计划扫描、恶意软件修正、签名更新、引擎更新、示例报告和排除事件收集等功能。 对于与生产环境分开托管的环境，可以使用反恶意软件扩展来帮助保护 VM 和云服务。
 
@@ -101,8 +101,8 @@ Microsoft 反恶意软件包括实时保护、计划扫描、恶意软件修正�
 最佳做法：定期重新部署 VM 以强制刷新操作系统版本****。   
 详细信息：使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)定义 VM，以便轻松地重新部署****。 使用模板可在需要时提供已修补且安全的 VM。
 
-**最佳实践**：快速将安全更新应用于 VM。   
-**详细信息**：启用 Azure 安全中心（免费层或标准层）[以识别缺少的安全更新并应用它们](../../security-center/security-center-apply-system-updates.md)。
+**最佳做法**：向 vm 快速应用安全更新。   
+**详细信息**：启用 Azure 安全中心（免费层或标准层）以[识别缺少的安全更新并应用这些更新](../../security-center/security-center-apply-system-updates.md)。
 
 最佳做法：安装最新的安全更新****。   
 详细信息：客户移到 Azure 的部分首批工作负载为实验室和面向外部的系统****。 如果 Azure VM 托管需要访问 Internet 的应用程序或服务，则需要警惕修补。 修补不仅仅包括操作系统。 合作伙伴应用程序上未修补的漏洞还可能导致一些问题，而如果实施良好的修补程序管理，就可以避免这些问题。
@@ -130,7 +130,7 @@ Microsoft 反恶意软件包括实时保护、计划扫描、恶意软件修正�
 
 安全中心可主动监视威胁，并通过“安全警报”公开潜在的威胁。 关联的威胁将合并到名为“安全事件”的单个视图中。
 
-安全中心将数据存储在[Azure 监视器日志](/azure/log-analytics/log-analytics-overview)中。 Azure 监视器日志提供了查询语言和分析引擎，使您能够深入了解应用程序和资源的操作。 数据也是从 [Azure Monitor](../../batch/monitoring-overview.md)、管理解决方案以及安装在虚拟机（云中或本地）上的代理收集的数据。 可以通过此共享功能全面了解自己的环境。
+安全中心将数据存储在[Azure Monitor 日志](/azure/log-analytics/log-analytics-overview)中。 Azure Monitor 日志提供了查询语言和分析引擎，可让你深入了解应用程序和资源的操作。 数据也是从 [Azure Monitor](../../batch/monitoring-overview.md)、管理解决方案以及安装在虚拟机（云中或本地）上的代理收集的数据。 可以通过此共享功能全面了解自己的环境。
 
 没有为 VM 实施强大安全措施的组织将意识不到未经授权的用户可能试图绕过安全控制机制。
 
@@ -147,18 +147,18 @@ Microsoft 反恶意软件包括实时保护、计划扫描、恶意软件修正�
 ## <a name="encrypt-your-virtual-hard-disk-files"></a>加密虚拟硬盘文件
 建议加密虚拟硬盘 (VHD)，以帮助保护存储中的静态启动卷和数据卷以及加密密钥和机密。
 
-[Azure 磁盘加密](../azure-security-disk-encryption-overview.md)可帮助您加密 Windows 和 Linux IaaS 虚拟机磁盘。 Azure 磁盘加密利用 Windows 的行业标准 [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 功能和 Linux 的 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能，为 OS 和数据磁盘提供卷加密。 该解决方案与[Azure 密钥保管库](https://azure.microsoft.com/documentation/services/key-vault/)集成，可帮助您控制和管理密钥保管库订阅中的磁盘加密密钥和机密。 此解决方案还可确保虚拟机磁盘上的所有数据在 Azure 存储中静态加密。
+[Azure 磁盘加密](../azure-security-disk-encryption-overview.md)有助于加密 Windows 和 Linux IaaS 虚拟机磁盘。 Azure 磁盘加密利用 Windows 的行业标准 [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 功能和 Linux 的 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能，为 OS 和数据磁盘提供卷加密。 此解决方案与[Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/)集成，可帮助你控制和管理密钥保管库订阅中的磁盘加密密钥和机密。 此解决方案还可确保虚拟机磁盘上的所有数据在 Azure 存储中静态加密。
 
 下面是使用 Azure 磁盘加密的最佳做法：
 
 最佳做法：在 VM 上启用加密****。   
-详细信息：Azure 磁盘加密将生成加密密钥并将其写入密钥保管库****。 在 Key Vault 中管理加密密钥需要 Azure AD 身份验证。 为此，请创建 Azure AD 应用程序。 出于身份验证目的，可以使用基于客户端密钥的身份验证或[基于客户端证书的 Azure AD 身份验证](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)。
+详细信息：Azure 磁盘加密将生成加密密钥并将其写入密钥保管库****。 在 Key Vault 中管理加密密钥需要 Azure AD 身份验证。 为此，请创建 Azure AD 应用程序。 对于身份验证，可以使用基于客户端机密的身份验证或[基于客户端证书的 Azure AD 身份验证](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)。
 
 最佳做法：使用密钥加密密钥 (KEK) 来为加密密钥提供附加的安全层****。 将 KEK 添加到密钥保管库。   
-**详细信息**：使用[Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet 在密钥保管库中创建密钥加密密钥。 还可从本地硬件安全模块 (HSM) 导入 KEK 以进行密钥管理。 有关详细信息，请参阅 [Key Vault 文档](../../key-vault/keys/hsm-protected-keys.md)。 指定密钥加密密钥后，Azure 磁盘加密会使用该密钥包装加密机密，然后将机密写入 Key Vault。 在本地密钥管理 HSM 中保留此密钥的托管副本，提供额外的保护，防止意外删除密钥。
+**详细信息**：使用[AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet 在 key vault 中创建密钥加密密钥。 还可从本地硬件安全模块 (HSM) 导入 KEK 以进行密钥管理。 有关详细信息，请参阅 [Key Vault 文档](../../key-vault/keys/hsm-protected-keys.md)。 指定密钥加密密钥后，Azure 磁盘加密会使用该密钥包装加密机密，然后将机密写入 Key Vault。 在本地密钥管理 HSM 中保留此密钥的托管副本，提供额外的保护，防止意外删除密钥。
 
 最佳做法：在加密磁盘之前创建[快照](../../virtual-machines/windows/snapshot-copy-managed-disk.md)和/或备份****。 如果加密期间发生意外故障，备份可提供恢复选项。   
-详细信息：加密之前，需要备份包含托管磁盘的 VM****。 进行备份后，可以使用**Set-AzVMDisk 加密扩展**cmdlet 通过指定 *-skipVmBackup*参数来加密托管磁盘。 有关如何备份和还原已加密 VM 的详细信息，请参阅 [Azure 备份](../../backup/backup-azure-vms-encryption.md)一文。
+详细信息：加密之前，需要备份包含托管磁盘的 VM****。 进行备份后，可以使用**AzVMDiskEncryptionExtension** cmdlet 通过指定 *-skipVmBackup*参数来加密托管磁盘。 有关如何备份和还原已加密 VM 的详细信息，请参阅 [Azure 备份](../../backup/backup-azure-vms-encryption.md)一文。
 
 最佳做法：为确保加密机密不会跨过区域边界，Azure 磁盘加密需要将 Key Vault 和 VM 共置在同一区域****。   
 详细信息：在要加密的 VM 所在的同一区域中创建并使用密钥保管库****。
@@ -168,21 +168,21 @@ Azure 磁盘加密可解决以下业务需求：
 - 使用行业标准的加密技术轻松保护 IaaS VM，满足组织的安全性与合规性要求。
 - IaaS VM 会根据客户控制的密钥和策略启动，客户可以在 Key Vault 中审核密钥和策略的使用方式。
 
-## <a name="restrict-direct-internet-connectivity"></a>限制直接互联网连接
-监视和限制 VM 直接互联网连接。 攻击者不断扫描公共云 IP 范围以访问开放管理端口，并尝试"简单"攻击，如常见密码和已知的未修补漏洞。 下表列出了帮助抵御这些攻击的最佳做法：
+## <a name="restrict-direct-internet-connectivity"></a>限制直接 internet 连接
+监视和限制 VM 直接 internet 连接。 攻击者会不断地扫描公共云 IP 范围，寻找开放管理端口，并尝试 "轻松" 的攻击，如常见密码和已知的修补漏洞。 下表列出了帮助防范这些攻击的最佳实践：
 
-**最佳实践**：防止无意中暴露网络路由和安全。   
-**详细信息**：使用 RBAC 确保只有中央网络组才具有网络资源的权限。
+**最佳做法**：防止网络路由和安全的意外泄露。   
+**详细信息**：使用 RBAC 确保只有中心网络组具有网络资源的权限。
 
-**最佳实践**：识别和修复允许从"任何"源 IP 地址访问的公开 VM。   
-**详细信息**：使用 Azure 安全中心。 如果任何网络安全组具有允许从"任何"源 IP 地址进行访问的入站规则，安全中心将建议您限制通过面向 Internet 的终结点进行访问。 安全中心将建议您编辑这些入站规则，以[限制](../../security-center/security-center-network-recommendations.md)对实际需要访问的源 IP 地址的访问。
+**最佳做法**：标识并修正允许从 "任何" 源 IP 地址进行访问的公开 vm。   
+**详细信息**：使用 Azure 安全中心。 如果你的任何网络安全组有一个或多个允许从 "任何" 源 IP 地址进行访问的入站规则，安全中心将建议你通过面向 internet 的终结点限制访问。 安全中心将建议你编辑这些入站规则，以限制对实际需要访问的源 IP 地址的[访问](../../security-center/security-center-network-recommendations.md)。
 
-**最佳实践**：限制管理端口（RDP、SSH）。   
-**详细信息**：[实时 （JIT） VM 访问](../../security-center/security-center-just-in-time.md)可用于锁定 Azure VM 的入站流量，从而减少攻击风险，同时在需要时轻松访问 VM。 启用 JIT 后，安全中心通过创建网络安全组规则来锁定 Azure VM 的入站流量。 你需要选择要锁定 VM 上的哪些端口的入站流量。 这些端口由 JIT 解决方案控制。
+**最佳做法**：限制管理端口（RDP、SSH）。   
+**详细信息**：实时[（JIT） VM 访问](../../security-center/security-center-just-in-time.md)可用于锁定到 Azure vm 的入站流量，降低攻击的暴露程度，同时提供在需要时轻松连接到 vm 的权限。 启用 JIT 后，安全中心会通过创建网络安全组规则来锁定发往 Azure Vm 的入站流量。 你需要选择要锁定 VM 上的哪些端口的入站流量。 这些端口由 JIT 解决方案控制。
 
 ## <a name="next-steps"></a>后续步骤
 有关通过 Azure 设计、部署和管理云解决方案时可以使用的更多安全最佳做法，请参阅 [Azure 安全最佳做法和模式](best-practices-and-patterns.md)。
 
 以下资源提供了有关 Azure 安全性及相关 Microsoft 服务的更多常规信息：
 * [Azure 安全团队博客](https://blogs.msdn.microsoft.com/azuresecurity/) - 随时掌握 Azure 安全性的最新信息
-* [Microsoft 安全响应中心](https://technet.microsoft.com/library/dn440717.aspx)- 可向其报告或通过电子邮件向secure@microsoft.com
+* [Microsoft 安全响应中心](https://technet.microsoft.com/library/dn440717.aspx)-可报告 microsoft 安全漏洞（包括 Azure 问题）或通过电子邮件发送到secure@microsoft.com

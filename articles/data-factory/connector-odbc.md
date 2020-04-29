@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: jingwang
 ms.openlocfilehash: da5c53f8953960c382070be658add2877fff3f8c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416896"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 ODBC 数据存储复制数据
@@ -37,12 +37,12 @@ ms.locfileid: "81416896"
 
 具体而言，此 ODBC 连接器支持使用 **Basic** 或 **Anonymous** 身份验证从/向任何与 ODBC 兼容的数据存储**** 复制数据。 需要**64 位 ODBC 驱动程序**。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要使用此 ODBC 连接器，需要：
 
-- 设置自承载集成运行时。 有关详细信息[，请参阅自托管集成运行时](create-self-hosted-integration-runtime.md)文章。
-- 为集成运行时计算机上的数据存储安装 64 位 ODBC 驱动程序。
+- 设置自承载集成运行时。 有关详细信息，请参阅[自承载 Integration Runtime](create-self-hosted-integration-runtime.md)文章。
+- 为 Integration Runtime 计算机上的数据存储安装64位 ODBC 驱动程序。
 
 ## <a name="getting-started"></a>入门
 
@@ -54,10 +54,10 @@ ms.locfileid: "81416896"
 
 ODBC 链接服务支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：Odbc**** | 是 |
-| connectionString | 不包括凭据部分的连接字符串。 可以使用类似 `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` 的模式指定连接字符串，也可以利用在 Integration Runtime 计算机上使用 `"DSN=<name of the DSN on IR machine>;"` 设置的系统 DSN（数据源名称）（仍需要相应地指定链接服务中的凭据部分）。<br>还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取  `password`  配置。有关详细信息，请参阅 [在 Azure 密钥保管库中](store-credentials-in-key-vault.md) 存储凭据。| 是 |
+| connectionString | 不包括凭据部分的连接字符串。 可以使用类似 `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` 的模式指定连接字符串，也可以利用在 Integration Runtime 计算机上使用 `"DSN=<name of the DSN on IR machine>;"` 设置的系统 DSN（数据源名称）（仍需要相应地指定链接服务中的凭据部分）。<br>还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取  `password`  配置。有关更多详细信息，请参阅  [在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。| 是 |
 | authenticationType | 用于连接 ODBC 数据存储的身份验证类型。<br/>允许的值是：Basic**** 和 Anonymous****。 | 是 |
 | userName | 如果使用基本身份验证，请指定用户名。 | 否 |
 | password | 指定为 userName 指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
@@ -113,13 +113,13 @@ ODBC 链接服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的节和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 ODBC 数据集支持的属性列表。
+有关可用于定义数据集的各节和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 ODBC 数据集支持的属性列表。
 
 若要从 ODBC 兼容的数据存储复制数据/将数据复制到 ODBC 兼容的数据存储，支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
-| type | 数据集的类型属性必须设置为 **：OdbcTable** | 是 |
+| type | 数据集的 type 属性必须设置为： **OdbcTable** | 是 |
 | tableName | ODBC 数据存储中表的名称。 | 源为否（如果指定了活动源中的“query”）；<br/>接收器为是 |
 
 **示例**
@@ -151,12 +151,12 @@ ODBC 链接服务支持以下属性：
 
 从 ODBC 兼容的数据存储复制数据时，复制活动的 **source** 节支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
-| type | 必须将复制活动源的类型属性设置为 **：OdbcSource** | 是 |
+| type | 复制活动源的 type 属性必须设置为： **OdbcSource** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
-**例子：**
+**示例：**
 
 ```json
 "activities":[
@@ -194,7 +194,7 @@ ODBC 链接服务支持以下属性：
 
 要向与 ODBC 兼容的数据存储复制数据，请将复制活动中的接收器类型设置为“OdbcSink”****。 复制活动接收器部分中支持以下属性****：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为：**OdbcSink** | 是 |
 | writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。<br/>允许的值为：timespan。 示例：“00:30:00”（30 分钟）。 |否 |
@@ -204,7 +204,7 @@ ODBC 链接服务支持以下属性：
 > [!NOTE]
 > 对于“writeBatchSize”，如果未设置（自动检测），则复制活动首先检测驱动程序是否支持批处理操作，如果支持，则将其设置为 10000，否则或将其设置为 1。 如果显式设置 0 以外的值，则复制活动遵循值，如果驱动程序不支持批处理操作，则会在运行时失败。
 
-**例子：**
+**示例：**
 
 ```json
 "activities":[
@@ -290,4 +290,4 @@ ODBC 链接服务支持以下属性：
 5. 单击“测试连接”**** 以测试数据存储的连接。
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动作为源和接收器支持的数据存储的列表，请参阅[受支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Azure 数据工厂中的复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

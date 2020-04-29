@@ -12,21 +12,21 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
 ms.openlocfilehash: db55e685fb50c89eb850e1b9ee9dcf13d20fb614
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417541"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure SQL 数据库中复制和转换数据
 
-> [!div class="op_single_selector" title1="选择正在使用的 Azure 数据工厂版本："]
+> [!div class="op_single_selector" title1="选择要使用的 Azure 数据工厂的版本："]
 > * [版本 1](v1/data-factory-azure-sql-connector.md)
 > * [当前版本](connector-azure-sql-database.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 Azure SQL 数据库复制数据，以及使用数据流转换 Azure SQL 数据库中的数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
+本文概述如何使用 Azure 数据工厂中的复制活动将数据从和复制到 Azure SQL 数据库，并使用数据流转换 Azure SQL 数据库中的数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -35,7 +35,7 @@ ms.locfileid: "81417541"
 - 带有[支持的源或接收器矩阵](copy-activity-overview.md)表的[复制活动](copy-activity-overview.md)
 - [映射数据流](concepts-data-flow-overview.md)
 - [查找活动](control-flow-lookup-activity.md)
-- [获取元数据活动](control-flow-get-metadata-activity.md)
+- [GetMetadata 活动](control-flow-get-metadata-activity.md)
 
 对于复制活动，此 Azure SQL 数据库连接器支持以下功能：
 
@@ -60,10 +60,10 @@ ms.locfileid: "81417541"
 
 Azure SQL 数据库链接服务支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
-| type | **类型**属性必须设置为**AzureSqlDatabase**。 | 是 |
-| connectionString | 指定连接到**连接String**属性的 Azure SQL 数据库实例所需的信息。 <br/>还可以将密码或服务主体密钥放在 Azure Key Vault 中。 如果使用 SQL 身份验证，请从连接字符串中提取 `password` 配置。 有关详细信息，请参阅表格后面的 JSON 示例，以及[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 | 是 |
+| type | **Type**属性必须设置为**AzureSqlDatabase**。 | 是 |
+| connectionString | 为**connectionString**属性指定连接到 Azure SQL 数据库实例所需的信息。 <br/>还可以将密码或服务主体密钥放在 Azure Key Vault 中。 如果使用 SQL 身份验证，请从连接字符串中提取 `password` 配置。 有关详细信息，请参阅表格后面的 JSON 示例，以及[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 | 是 |
 | servicePrincipalId | 指定应用程序的客户端 ID。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的 |
 | servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为 **SecureString**，以安全地将其存储在 Azure 数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的 |
 | tenant | 指定应用程序所在的租户的信息（例如域名或租户 ID）。 将鼠标悬停在 Azure 门户右上角进行检索。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的 |
@@ -98,7 +98,7 @@ Azure SQL 数据库链接服务支持以下属性：
 }
 ```
 
-**Azure 密钥保管库中的密码** 
+**Azure Key Vault 中的密码** 
 
 ```json
 {
@@ -134,7 +134,7 @@ Azure SQL 数据库链接服务支持以下属性：
     - 应用程序密钥
     - 租户 ID
 
-2. 如果尚未这样做，则在 Azure 门户上为 Azure SQL Server[预配 Azure 活动目录管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)。 Azure AD 管理员必须是 Azure AD 用户或 Azure AD 组，但不能是服务主体。 执行此步骤后，在下一步骤中便可使用 Azure AD 标识来为服务主体创建包含的数据库用户。
+2. 为 Azure Azure 门户 SQL Server[预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)（如果尚未这样做）。 Azure AD 管理员必须是 Azure AD 用户或 Azure AD 组，但不能是服务主体。 执行此步骤后，在下一步骤中便可使用 Azure AD 标识来为服务主体创建包含的数据库用户。
 
 3. 为服务主体[创建包含的数据库用户](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)。 使用 SQL Server Management Studio 等工具和至少具有 ALTER ANY USER 权限的 Azure AD 标识连接到要向其/从中复制数据的数据库。 运行以下 T-SQL： 
   
@@ -181,7 +181,7 @@ Azure SQL 数据库链接服务支持以下属性：
 
 若要使用托管标识身份验证，请执行以下步骤：
 
-1. 如果尚未这样做，则在 Azure 门户上为 Azure SQL Server[预配 Azure 活动目录管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)。 Azure AD 管理员可以是 Azure AD 用户，也可以是 Azure AD 组。 如果为具有托管标识的组授予管理员角色，请跳过步骤 3 和 4。 管理员拥有对数据库的完全访问权限。
+1. 为 Azure Azure 门户 SQL Server[预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)（如果尚未这样做）。 Azure AD 管理员可以是 Azure AD 用户，也可以是 Azure AD 组。 如果为具有托管标识的组授予管理员角色，请跳过步骤 3 和 4。 管理员拥有对数据库的完全访问权限。
 
 2. 为 Azure 数据工厂托管标识[创建包含的数据库用户](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)。 使用 SQL Server Management Studio 等工具和至少具有 ALTER ANY USER 权限的 Azure AD 标识连接到要向其/从中复制数据的数据库。 运行以下 T-SQL： 
   
@@ -221,9 +221,9 @@ Azure SQL 数据库链接服务支持以下属性：
 
 Azure SQL 数据库数据集支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
-| type | 数据集**的类型**属性必须设置为**AzureSqlTable**。 | 是 |
+| type | 数据集的**type**属性必须设置为**AzureSqlTable**。 | 是 |
 | 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
 | 表 | 表/视图的名称。 |对于源为“No”，对于接收器为“Yes”  |
 | tableName | 具有架构的表/视图的名称。 支持此属性是为了向后兼容。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 对于源为“No”，对于接收器为“Yes” |
@@ -257,18 +257,18 @@ Azure SQL 数据库数据集支持以下属性：
 
 若要从 Azure SQL 数据库复制数据，复制活动的 **source** 节需要支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **AzureSqlSource**。 为了向后兼容，仍然支持“SqlSource”类型。 | 是 |
 | sqlReaderQuery | 此属性使用自定义 SQL 查询来读取数据。 示例为 `select * from MyTable`。 | 否 |
 | sqlReaderStoredProcedureName | 从源表读取数据的存储过程的名称。 最后一个 SQL 语句必须是存储过程中的 SELECT 语句。 | 否 |
 | storedProcedureParameters | 存储过程的参数。<br/>允许的值为名称或值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 | 否 |
-| isolationLevel | 指定 SQL 源的事务锁定行为。 允许的值是：**已读提交**（默认）、**未提交**、**可重复读取**、**可序列化**、**快照**。 有关详细信息，请参阅[此文档](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel)。 | 否 |
+| isolationLevel | 指定 SQL 源的事务锁定行为。 允许的值为： **ReadCommitted** （默认值）、 **ReadUncommitted**、 **RepeatableRead**、 **Serializable**、 **Snapshot**。 有关更多详细信息，请参阅[此文档](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel)。 | 否 |
 
 **需要注意的要点：**
 
 - 如果为 **AzureSqlSource** 指定 **sqlReaderQuery**，则复制活动针对 Azure SQL 数据库源运行此查询可获取数据。 也可通过指定 sqlReaderStoredProcedureName 和 storedProcedureParameters 来指定存储过程，前提是存储过程使用参数********。
-- 如果不指定**sqlReaderQuery**或**sqlReader存储过程名称**，则数据集 JSON 的"结构"部分中定义的列用于构造查询。 查询 `select column1, column2 from mytable` 针对 Azure SQL 数据库运行。 如果数据集定义没有“structure”，则会从表中选择所有列。
+- 如果未指定**sqlReaderQuery**或**sqlReaderStoredProcedureName**，则使用在数据集 JSON 的 "结构" 部分定义的列来构造查询。 查询 `select column1, column2 from mytable` 针对 Azure SQL 数据库运行。 如果数据集定义没有“structure”，则会从表中选择所有列。
 
 #### <a name="sql-query-example"></a>SQL 查询示例
 
@@ -364,11 +364,11 @@ GO
 
 将数据复制到 Azure SQL 数据库时，复制活动的 **sink** 节支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 **type** 属性必须设置为 **AzureSqlSink**。 为了向后兼容，仍然支持“SqlSink”类型。 | 是 |
 | writeBatchSize | 每批要插入到 SQL 表中的行数。**<br/> 允许的值为 **integer**（行数）。 默认情况下，Azure 数据工厂会根据行大小动态确定适当的批大小。 | 否 |
-| writeBatchTimeout | 超时前等待批插入操作完成的时间。<br/> 允许的值是**时间跨度**。 例如“00:30:00”（30 分钟）。 | 否 |
+| writeBatchTimeout | 超时前等待批插入操作完成的时间。<br/> 允许的值为**timespan**。 例如“00:30:00”（30 分钟）。 | 否 |
 | preCopyScript | 将数据写入到 Azure SQL 数据库之前，指定复制活动要运行的 SQL 查询。 每次运行复制仅调用该查询一次。 使用此属性清理预加载的数据。 | 否 |
 | sqlWriterStoredProcedureName | 定义如何将源数据应用于目标表的存储过程的名称。 <br/>此存储过程由每个批处理调用**。 若要执行仅运行一次且与源数据无关的操作（例如删除或截断），请使用 `preCopyScript` 属性。 | 否 |
 | storedProcedureTableTypeParameterName |存储过程中指定的表类型的参数名称。  |否 |
@@ -377,7 +377,7 @@ GO
 | tableOption | 指定是否根据源架构自动创建接收器表（如果不存在）。 当接收器指定存储过程或在复制活动中配置了暂存复制时，不支持自动表创建。 允许的值为：`none`（默认值）、`autoCreate`。 |否 |
 | disableMetricsCollection | 数据工厂收集指标（如 Azure SQL 数据库 DTU），以获取复制性能优化和建议。 如果你担心此行为，请指定 `true` 将其关闭。 | 否（默认值为 `false`） |
 
-**示例 1：追加数据**
+**示例1：追加数据**
 
 ```json
 "activities":[
@@ -410,7 +410,7 @@ GO
 ]
 ```
 
-**示例 2：在复制期间调用存储过程**
+**示例2：在复制过程中调用存储过程**
 
 请参阅[调用 SQL 接收器的存储过程](#invoke-a-stored-procedure-from-a-sql-sink)，了解更多详细信息。
 
@@ -454,10 +454,10 @@ GO
 
 将数据复制到 Azure SQL 数据库时，可能需要不同的写入行为：
 
-- [追加：](#append-data)我的源数据只有新记录。
+- [追加](#append-data)：我的源数据只有新记录。
 - [Upsert](#upsert-data)：我的源数据同时包含插入和更新。
-- [覆盖](#overwrite-the-entire-table)：我想每次重新加载整个维度表。
-- [用自定义逻辑编写](#write-data-with-custom-logic)：在最终插入目标表之前，我需要额外的处理。
+- [覆盖](#overwrite-the-entire-table)：我想要每次重新加载整个维度表。
+- [用自定义逻辑编写](#write-data-with-custom-logic)：需要额外处理才能在目标表中执行最终插入操作。
 
 有关如何在 Azure 数据工厂中进行配置和最佳做法，请参阅相应的部分。
 
@@ -467,7 +467,7 @@ GO
 
 ### <a name="upsert-data"></a>更新插入数据
 
-**选项 1：** 当您有大量要复制的数据时，请使用以下方法执行 upsert： 
+**选项1：** 如果要复制大量数据，请使用以下方法执行 upsert： 
 
 - 首先，使用[数据库范围的临时表](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql?view=azuresqldb-current#database-scoped-global-temporary-tables-azure-sql-database)通过复制活动批量加载所有记录。 系统不会记录对数据库范围的临时表执行的操作，因此你可以在数秒内加载数百万条记录。
 - 在 Azure 数据工厂中运行存储过程活动，以应用 [MERGE](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) 或 INSERT/UPDATE 语句。 使用临时表作为源，以单个事务的形式执行所有更新或插入操作。 这样可以减少往返次数和日志操作次数。 在存储过程活动结束时，可以截断临时表，使之可以用于下一更新插入循环。
@@ -476,7 +476,7 @@ GO
 
 ![Upsert](./media/connector-azure-sql-database/azure-sql-database-upsert.png)
 
-在数据库中使用 MERGE 逻辑定义一个存储过程（如以下示例所示），以便从上述存储过程活动指向该过程。 假设目标是具有三列**的营销**表：**配置文件 ID、****状态**和**类别**。 根据 **ProfileID** 列执行更新插入。
+在数据库中使用 MERGE 逻辑定义一个存储过程（如以下示例所示），以便从上述存储过程活动指向该过程。 假定目标为包含三列的**营销**表：**配置文件 id**、 **State**和**Category**。 根据 **ProfileID** 列执行更新插入。
 
 ```sql
 CREATE PROCEDURE [dbo].[spMergeData]
@@ -495,7 +495,7 @@ BEGIN
 END
 ```
 
-**选项 2：** 您还可以选择[在复制活动中调用存储过程](#invoke-a-stored-procedure-from-a-sql-sink)。 此方法在源表中运行每个批处理（由`writeBatchSize`属性控制），而不是在复制活动中使用批量插入作为默认方法。
+**选项2：** 您还可以选择在[复制活动中调用存储过程](#invoke-a-stored-procedure-from-a-sql-sink)。 此方法运行源表中的每个批（ `writeBatchSize`由属性控制），而不是使用 bulk insert 作为复制活动中的默认方法。
 
 ### <a name="overwrite-the-entire-table"></a>覆盖整个表
 
@@ -510,13 +510,13 @@ END
 
 ## <a name="invoke-a-stored-procedure-from-a-sql-sink"></a><a name="invoke-a-stored-procedure-from-a-sql-sink"></a> 调用 SQL 接收器的存储过程
 
-将数据复制到 Azure SQL 数据库时，还可以配置和调用用户指定的存储过程，并在源表的每一批上使用其他参数。 存储过程功能利用了[表值参数](https://msdn.microsoft.com/library/bb675163.aspx)。
+将数据复制到 Azure SQL 数据库时，还可以使用每批源表的其他参数配置和调用用户指定的存储过程。 存储过程功能利用[表值参数](https://msdn.microsoft.com/library/bb675163.aspx)。
 
 当内置复制机制无法使用时，还可使用存储过程。 例如，在将源数据最终插入目标表之前应用额外的处理。 额外处理的示例包括合并列、查找其他值以及将数据插入多个表。
 
-以下示例演示如何使用存储过程在 Azure SQL 数据库数据库中的表内执行 upsert。 假设输入数据和接收器**市场营销**表各有三列：**配置文件 ID、****状态**和**类别**。 基于 ProfileID 列执行更新插入，并仅将其应用于名为“ProductA”的特定类别****。
+以下示例演示如何使用存储过程在 Azure SQL 数据库数据库中的表内执行 upsert。 假设输入数据和接收器**营销**表各有三列：**配置文件 id**、 **State**和**Category**。 基于 ProfileID 列执行更新插入，并仅将其应用于名为“ProductA”的特定类别****。
 
-1. 在数据库中，定义与**sqlWriterTableType**同名的表类型。 表类型的架构与输入数据返回的架构相同。
+1. 在数据库中，用与**sqlWriterTableType**相同的名称定义表类型。 表类型的架构与输入数据返回的架构相同。
 
     ```sql
     CREATE TYPE [dbo].[MarketingType] AS TABLE(
@@ -526,7 +526,7 @@ END
     )
     ```
 
-2. 在数据库中，定义与**sqlWriter存储过程名称**相同的存储过程。 它可处理来自指定源的输入数据，并将其合并到输出表中。 存储过程中的表类型的参数名称与数据集中定义的 **tableName** 相同。
+2. 在数据库中，用与**sqlWriterStoredProcedureName**相同的名称定义存储过程。 它可处理来自指定源的输入数据，并将其合并到输出表中。 存储过程中的表类型的参数名称与数据集中定义的 **tableName** 相同。
 
     ```sql
     CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @category varchar(256)
@@ -561,49 +561,49 @@ END
 
 ## <a name="mapping-data-flow-properties"></a>映射数据流属性
 
-在映射数据流中转换数据时，可以从 Azure SQL 数据库读取和写入表。 有关详细信息，请参阅映射数据流的[源转换](data-flow-source.md)和[接收器转换](data-flow-sink.md)。
+在映射数据流中转换数据时，可以在 Azure SQL 数据库中读取和写入表。 有关详细信息，请参阅映射数据流中的[源转换](data-flow-source.md)和[接收器转换](data-flow-sink.md)。
 
 ### <a name="source-transformation"></a>源转换
 
-特定于 Azure SQL 数据库的设置可在源转换的 **"源选项**"选项卡中提供。 
+源转换的 "**源选项**" 选项卡中提供了特定于 Azure SQL 数据库的设置。 
 
-**输入：** 选择是将源指向表（等效```Select * from <table-name>```项）还是输入自定义 SQL 查询。
+**输入：** 选择是将源指向表（等效于```Select * from <table-name>```）还是输入自定义 SQL 查询。
 
-**查询**：如果在输入字段中选择"查询"，请输入源的 SQL 查询。 此设置将覆盖您在数据集中选择的任何表。 **此处不支持"按订单"** 子句，但您可以设置完整的 SELECT FROM 语句。 您还可以使用用户定义的表函数。 **从 udfGetData（） 中选择 *** 是 SQL 中的 UDF，用于返回表。 此查询将生成一个源表，可用于数据流。 使用查询也是减少用于测试或查找的行的好方法。 
+**查询**：如果在输入字段中选择 "查询"，则输入源的 SQL 查询。 此设置将重写您在数据集中选择的任何表。 此处不支持**Order By**子句，但你可以设置完整的 SELECT FROM 语句。 你还可以使用用户定义的表函数。 **select * From udfGetData （）** 是返回表的 SQL 中的 UDF。 此查询将生成可以在数据流中使用的源表。 使用查询也是减少用于测试或查找的行的好方法。 
 
 * SQL 示例：```Select * from MyTable where customerId > 1000 and customerId < 2000```
 
-**批处理大小**：输入批处理大小以将大数据块块到读取中。
+**批大小**：输入用于将大型数据拆分为读取的批大小。
 
-**隔离级别**：映射数据流的 SQL 源的默认值为未提交。 您可以在此处将隔离级别更改为以下值之一：
+**隔离级别**：映射数据流中 SQL 源的默认值为 "未提交读"。 可以将此处的隔离级别更改为以下值之一：
 * 已提交读
-* 读取未提交
+* 未提交读
 * 可重复的读取
 * 可序列化
 * 无（忽略隔离级别）
 
 ![隔离级别](media/data-flow/isolationlevel.png "隔离级别")
 
-### <a name="sink-transformation"></a>水槽变换
+### <a name="sink-transformation"></a>接收器转换
 
-特定于 Azure SQL 数据库的设置可在接收器转换的 **"设置"** 选项卡中提供。
+特定于 Azure SQL 数据库的设置可在接收器转换的 "**设置**" 选项卡中找到。
 
-**更新方法：** 确定数据库目标上允许的操作。 默认值是仅允许插入。 要更新、更新或删除行，需要更改行转换来标记这些操作的行。 对于更新、升级和删除，必须设置键列或列以确定要更改的行。
+**更新方法：** 确定对数据库目标允许哪些操作。 默认值为仅允许插入。 若要更新、upsert 或删除行，需要更改行转换才能标记这些操作的行。 对于更新、upsert 和删除，必须设置一个或多个键列，以确定要更改的行。
 
 ![键列](media/data-flow/keycolumn.png "键列")
 
-此处选择作为键的列名称将由 ADF 用作后续更新、upsert、删除的一部分。 因此，必须选取"接收器"映射中存在的列。 如果不希望将值写入此键列，请单击"跳过写入键列"。
+ADF 将使用在此处选取为密钥的列名作为后续更新 upsert （删除）的一部分。 因此，你必须选择存在于接收器映射中的列。 如果您不希望将该值写入此键列，请单击 "跳过写入键列"。
 
-**表操作：** 确定在写入之前是从目标表重新创建或删除所有行。
-* 无：对表不执行任何操作。
-* 重新创建：该表将被删除并重新创建。 动态创建新表时是必需的。
-* 截取：将删除目标表中的所有行。
+**表操作：** 确定在写入之前是否在目标表中重新创建或删除所有行。
+* None：不会对表执行任何操作。
+* 重新创建：该表将被删除并重新创建。 如果动态创建新表，则为必需。
+* 截断：目标表中的所有行都将被删除。
 
-**批处理大小**：控制每个存储桶中写入的行数。 较大的批处理大小可改善压缩和内存优化，但在缓存数据时存在内存异常风险。
+**批大小**：控制正在每个存储桶中写入的行数。 较大的批处理大小会提高压缩和内存优化，但在缓存数据时可能会导致内存不足异常。
 
-**前 SQL 和后 SQL 脚本**：输入将在（预处理）和之后（后处理）数据写入 Sink 数据库之前执行的多行 SQL 脚本
+**Pre 和 POST sql 脚本**：输入将在之前（预处理）和之后（后处理）数据写入接收器数据库时执行的多行 sql 脚本
 
-![SQL 处理脚本的后处理脚本](media/data-flow/prepost1.png "SQL 处理脚本")
+![pre 和 post SQL 处理脚本](media/data-flow/prepost1.png "SQL 处理脚本")
 
 ## <a name="data-type-mapping-for-azure-sql-database"></a>Azure SQL 数据库的数据类型映射
 
@@ -613,7 +613,7 @@ END
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |Boolean |
+| bit |布尔值 |
 | char |String, Char[] |
 | date |DateTime |
 | Datetime |DateTime |

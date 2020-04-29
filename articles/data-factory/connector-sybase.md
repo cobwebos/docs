@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: 495d16efcc26fc336a87c0f2d88f5202ab0b4a3e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416619"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>使用 Azure 数据工厂从 Sybase 复制数据
@@ -40,11 +40,11 @@ ms.locfileid: "81416619"
 - SAP Sybase SQL 随处 (ASA)** 版本 16 和更高版本**；不支持智能和 ASE。
 - 使用**基本**或 **Windows** 身份验证复制数据。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要使用此 Sybase 连接器，需要：
 
-- 设置自承载集成运行时。 有关详细信息[，请参阅自托管集成运行时](create-self-hosted-integration-runtime.md)文章。
+- 设置自承载集成运行时。 有关详细信息，请参阅[自承载 Integration Runtime](create-self-hosted-integration-runtime.md)文章。
 - 在集成运行时计算机上安装 16 或更高版本的[适用于 Sybase iAnywhere.Data.SQLAnywhere 的数据提供程序](https://go.microsoft.com/fwlink/?linkid=324846)。
 
 ## <a name="getting-started"></a>入门
@@ -57,7 +57,7 @@ ms.locfileid: "81416619"
 
 Sybase 链接的服务支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Sybase** | 是 |
 | server | Sybase 服务器的名称。 |是 |
@@ -67,7 +67,7 @@ Sybase 链接的服务支持以下属性：
 | password | 指定为用户名指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如[先决条件](#prerequisites)中所述，需要自承载集成运行时。 |是 |
 
-**例子：**
+**示例：**
 
 ```json
 {
@@ -94,13 +94,13 @@ Sybase 链接的服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的节和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Sybase 数据集支持的属性列表。
+有关可用于定义数据集的各节和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Sybase 数据集支持的属性列表。
 
 若要从 Sybase 复制数据，支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
-| type | 数据集的类型属性必须设置为 **：SybaseTable** | 是 |
+| type | 数据集的 type 属性必须设置为： **SybaseTable** | 是 |
 | tableName | Sybase 数据库中的表名。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
@@ -130,12 +130,12 @@ Sybase 链接的服务支持以下属性：
 
 若要从 Sybase 复制数据，复制活动的 **source** 节支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
-| type | 必须将复制活动源的类型属性设置为 **：SybaseSource** | 是 |
+| type | 复制活动源的 type 属性必须设置为： **SybaseSource** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
-**例子：**
+**示例：**
 
 ```json
 "activities":[
@@ -182,4 +182,4 @@ Sybase 支持 T-SQL 类型。 有关从 SQL 类型到 Azure 数据工厂临时�
 
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动作为源和接收器支持的数据存储的列表，请参阅[受支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Azure 数据工厂中的复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

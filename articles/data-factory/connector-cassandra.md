@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
 ms.openlocfilehash: 4b7fd2de0762de147ad3ceae0d562a1c78b33dc2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417471"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>使用 Azure 数据工厂从 Cassandra 复制数据
@@ -44,7 +44,7 @@ ms.locfileid: "81417471"
 >[!NOTE]
 >对于自承载集成运行时上运行的活动，从 IR 版本 3.7 以及更高版本开始，Cassandra 3.x 受支持。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -60,20 +60,20 @@ ms.locfileid: "81417471"
 
 Cassandra 链接的服务支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type |type 属性必须设置为：**Cassandra** |是 |
 | host |Cassandra 服务器的一个或多个 IP 地址或主机名。<br/>指定以逗号分隔的 IP 地址或主机名列表，以同时连接到所有服务器。 |是 |
 | port |Cassandra 服务器用来侦听客户端连接的 TCP 端口。 |否（默认值为 9042） |
-| authenticationType | 用于连接 Cassandra 数据库的身份验证类型。<br/>允许的值是：**基本**和**匿名**。 |是 |
+| authenticationType | 用于连接 Cassandra 数据库的身份验证类型。<br/>允许的值为： **Basic**和**Anonymous**。 |是 |
 | username |为用户帐户指定用户名。 |是（如果 authenticationType 设置为 Basic）。 |
 | password |指定用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是（如果 authenticationType 设置为 Basic）。 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 >[!NOTE]
->当前不支持使用 TLS 连接到卡桑德拉。
+>当前不支持使用 TLS 连接到 Cassandra。
 
-**例子：**
+**示例：**
 
 ```json
 {
@@ -99,17 +99,17 @@ Cassandra 链接的服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的节和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Cassandra 数据集支持的属性列表。
+有关可用于定义数据集的各节和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Cassandra 数据集支持的属性列表。
 
 要从 Cassandra 复制数据，请将数据集的 type 属性设置为“CassandraTable”****。 支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**CassandraTable** | 是 |
 | keyspace |Cassandra 数据库中密钥空间或架构的名称。 |否（如果指定了“CassandraSource”的“query”） |
 | tableName |Cassandra 数据库中表的名称。 |否（如果指定了“CassandraSource”的“query”） |
 
-**例子：**
+**示例：**
 
 ```json
 {
@@ -138,13 +138,13 @@ Cassandra 链接的服务支持以下属性：
 
 要从 Cassandra 复制数据，请将复制活动中的源类型设置为“CassandraSource”****。 复制活动**源**部分支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：**CassandraSource** | 是 |
 | query |使用自定义查询读取数据。 SQL-92 查询或 CQL 查询。 请参阅 [CQL reference](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)（CQL 参考）。 <br/><br/>使用 SQL 查询时，请指定 keyspace name.table name 来表示要查询的表****。 |否（如果指定了数据集中的“tableName”和“keyspace”）。 |
 | consistencyLevel |一致性级别指定在将数据返回到客户端应用程序之前必须响应读取请求的副本的数量。 Cassandra 会检查指定数量的副本，以使数据满足读取请求。 有关详细信息，请参阅 [Configuring data consistency](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html)（配置数据一致性）。<br/><br/>允许的值为：ONE、TWO、THREE、QUORUM、ALL、LOCAL_QUORUM、EACH_QUORUM 和 LOCAL_ONE********************************。 |否（默认值为 `ONE`） |
 
-**例子：**
+**示例：**
 
 ```json
 "activities":[
@@ -185,7 +185,7 @@ Cassandra 链接的服务支持以下属性：
 | ASCII |字符串 |
 | BIGINT |Int64 |
 | BLOB |Byte[] |
-| BOOLEAN |Boolean |
+| BOOLEAN |布尔值 |
 | DECIMAL |Decimal |
 | DOUBLE |Double |
 | FLOAT |Single |
@@ -211,7 +211,7 @@ Cassandra 链接的服务支持以下属性：
 Azure 数据工厂使用内置的 ODBC 驱动程序连接到 Cassandra 数据库，并从其中复制数据。 对于包括映射、集和列表在内的集合类型，该驱动程序会将数据重新规范化到相应的虚拟表中。 具体而言，如果表中包含任何集合列，则该驱动程序会生成以下虚拟表：
 
 * 基表，其中包含与实际表相同的数据（集合列除外）****。 基表使用与其所表示的实际表相同的名称。
-* 对于每个集合列都会生成一个虚拟表，这会扩展嵌套数据****。 表示集合的虚拟表使用真实表的名称、分隔符 *"vt"* 和列的名称命名。
+* 对于每个集合列都会生成一个虚拟表，这会扩展嵌套数据****。 使用实际表名称、分隔符 "*vt*" 和列名称命名表示集合的虚拟表。
 
 虚拟表引用实际表中的数据，以使驱动程序能访问非规范化的数据。 有关详细信息，请参阅示例部分。 通过查询和联接虚拟表，可访问 Cassandra 集合的内容。
 
@@ -237,7 +237,7 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 Cassandra 数据库
 
 下表中显示的虚拟表会重新规范化列表、映射和 StringSet 列中的数据。 名称以“_index”或“_key”结尾的列指示数据在原始列表或映射中的位置。 名称以“_value”结尾的列包含从集合中展开的数据。
 
-**表"ExampleTable_vt_List"：**
+**表 "ExampleTable_vt_List"：**
 
 | pk_int | List_index | List_value |
 | --- | --- | --- |
@@ -249,7 +249,7 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 Cassandra 数据库
 | 3 |2 |102 |
 | 3 |3 |103 |
 
-**表"ExampleTable_vt_Map"：**
+**表 "ExampleTable_vt_Map"：**
 
 | pk_int | Map_key | Map_value |
 | --- | --- | --- |
@@ -257,7 +257,7 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 Cassandra 数据库
 | 1 |S2 |b |
 | 3 |S1 |t |
 
-**表"ExampleTable_vt_StringSet"：**
+**表 "ExampleTable_vt_StringSet"：**
 
 | pk_int | StringSet_value |
 | --- | --- |
@@ -272,4 +272,4 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 Cassandra 数据库
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动作为源和接收器支持的数据存储的列表，请参阅[受支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Azure 数据工厂中的复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

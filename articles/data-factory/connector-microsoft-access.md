@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/27/2019
 ms.openlocfilehash: fc2179efcda4ee11dda3b424b16a072a2bb2c26e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418178"
 ---
 # <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Microsoft Access 数据存储复制数据
@@ -28,7 +28,7 @@ ms.locfileid: "81418178"
 以下活动支持此 Microsoft Access 连接器：
 
 - 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
-- [查找活动](control-flow-lookup-activity.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 
 可将数据从 Microsoft Access 源复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
@@ -36,7 +36,7 @@ ms.locfileid: "81418178"
 
 要使用此 Microsoft Access 连接器，需要：
 
-- 设置自承载集成运行时。 有关详细信息[，请参阅自托管集成运行时](create-self-hosted-integration-runtime.md)文章。
+- 设置自承载集成运行时。 有关详细信息，请参阅[自承载集成运行时](create-self-hosted-integration-runtime.md)一文。
 - 在集成运行时计算机上安装数据存储的 Microsoft Access ODBC 驱动程序。
 
 >[!NOTE]
@@ -52,17 +52,17 @@ ms.locfileid: "81418178"
 
 Microsoft Access 链接服务支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 类型属性必须设置为：**微软访问** | 是 |
-| connectionString | 不包括凭据部分的 ODBC 连接字符串。 可以指定连接字符串，也可以利用在 Integration Runtime 计算机上设置的系统 DSN（数据源名称）（仍需要相应地指定链接服务中的凭据部分）。<br> 还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取  `password`  配置。有关详细信息，请参阅 [在 Azure 密钥保管库中](store-credentials-in-key-vault.md) 存储凭据。| 是 |
-| authenticationType | 用于连接 Microsoft Access 数据存储的身份验证类型。<br/>允许的值是：Basic**** 和 Anonymous****。 | 是 |
+| type | type 属性必须设置为：**MicrosoftAccess** | 是 |
+| connectionString | 不包括凭据部分的 ODBC 连接字符串。 可以指定连接字符串，也可以利用在 Integration Runtime 计算机上设置的系统 DSN（数据源名称）（仍需要相应地指定链接服务中的凭据部分）。<br> 还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取  `password`  配置。有关更多详细信息，请参阅  [在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。| 是 |
+| authenticationType | 用于连接 Microsoft Access 数据存储的身份验证类型。<br/>允许值包括：**Basic** 和 **Anonymous**。 | 是 |
 | userName | 如果使用基本身份验证，请指定用户名。 | 否 |
 | password | 指定为 userName 指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
 | credential | 连接字符串的访问凭据部分，采用特定于驱动程序的属性值格式指定。 将此字段标记为 SecureString。 | 否 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如[先决条件](#prerequisites)中所述，需要自承载集成运行时。 |是 |
 
-**例子：**
+**示例：**
 
 ```json
 {
@@ -88,13 +88,13 @@ Microsoft Access 链接服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的节和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Microsoft Access 数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Microsoft Access 数据集支持的属性列表。
 
 从 Microsoft Access 复制数据时，支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 数据集的类型属性必须设置为 **：MicrosoftAccessTable** | 是 |
+| type | 数据集的 type 属性必须设置为：**MicrosoftAccessTable** | 是 |
 | tableName | Microsoft Access 中的表名。 | 源为否（如果指定了活动源中的“query”）；<br/>接收器为是 |
 
 **示例**
@@ -123,12 +123,12 @@ Microsoft Access 链接服务支持以下属性：
 
 从 Microsoft Access 兼容的数据存储复制数据时，复制活动的 **source** 节支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 必须将复制活动源的类型属性设置为 **：MicrosoftAccessSource** | 是 |
-| query | 使用自定义查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| type | 复制活动 source 的 type 属性必须设置为：**MicrosoftAccessSource** | 是 |
+| 查询 | 使用自定义查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
-**例子：**
+**示例：**
 
 ```json
 "activities":[
@@ -165,4 +165,4 @@ Microsoft Access 链接服务支持以下属性：
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动作为源和接收器支持的数据存储的列表，请参阅[受支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.openlocfilehash: 764b41d1823e8edce134c5099e066486f4f08acc
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417923"
 ---
 # <a name="validation-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Validation 活动
@@ -60,14 +60,14 @@ ms.locfileid: "81417923"
 
 ## <a name="type-properties"></a>Type 属性
 
-properties | 说明 | 允许的值 | 必选
+属性 | 说明 | 允许的值 | 必须
 -------- | ----------- | -------------- | --------
-name | “Validation”活动的名称 | 字符串 | 是 |
-type | 必须设置为“验证”****。 | 字符串 | 是 |
+name | “Validation”活动的名称 | String | 是 |
+type | 必须设置为“验证”  。 | String | 是 |
 dataset | 活动将阻止执行，直到它验证此数据集引用存在并满足指定的条件，或者达到超时为止。 提供的数据集应支持“MinimumSize”或“ChildItems”属性。 | 数据集引用 | 是 |
-timeout | 指定活动运行的超时。 如果未指定值，则默认值为 7 天 ("7.00:00:00")。 格式为 d.hh:mm:ss | 字符串 | 否 |
+timeout | 指定活动运行的超时。 如果未指定值，则默认值为 7 天 ("7.00:00:00")。 格式为 d.hh:mm:ss | String | 否 |
 sleep | 验证尝试之间的延迟（以秒为单位）。 如果未指定值，则默认值为 10 秒。 | Integer | 否 |
-childItems | 检查文件夹是否包含子项目。 可以设置为 true：验证该文件夹是否存在，并且该文件夹是否具有项目。 块，直到文件夹中至少有一个项目或达到超时值。 一直阻止，直到文件夹为空或达到超时值为止。 如果未指定值，则活动将一直阻止，直到文件夹存在或达到超时为止。 | Boolean | 否 |
+childItems | 检查文件夹是否包含子项目。 可以设置为 -true：验证文件夹是否存在以及它是否包含项目。 一直阻止，直到文件夹中至少存在一个项目或达到超时值为止。-false：验证文件夹是否存在以及它是否为空。 一直阻止，直到文件夹为空或达到超时值为止。 如果未指定值，则活动将一直阻止，直到文件夹存在或达到超时为止。 | 布尔 | 否 |
 minimumSize | 文件的最小大小（以字节为单位）。 如果未指定值，则默认值为 0 字节 | Integer | 否 |
 
 
@@ -75,9 +75,9 @@ minimumSize | 文件的最小大小（以字节为单位）。 如果未指定�
 查看数据工厂支持的其他控制流活动：
 
 - [If Condition 活动](control-flow-if-condition-activity.md)
-- [执行管道活动](control-flow-execute-pipeline-activity.md)
+- [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md)
 - [For Each 活动](control-flow-for-each-activity.md)
-- [获取元数据活动](control-flow-get-metadata-activity.md)
-- [查找活动](control-flow-lookup-activity.md)
+- [Get Metadata 活动](control-flow-get-metadata-activity.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 - [Web 活动](control-flow-web-activity.md)
 - [Until 活动](control-flow-until-activity.md)

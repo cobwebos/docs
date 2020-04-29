@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 5881314f0d3c62e7d6181ebd7bb27a5e0e87729a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431938"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 证书入门
@@ -39,10 +39,10 @@ ms.locfileid: "81431938"
 **步骤 1** - 证书颁发机构 (CA) 提供者  
 -   对于任何给定公司（例如 Contoso）来说，以 IT 管理员、PKI 管理员或任何可以使用 CA 来管理帐户的人员的身份加入 是使用 Key Vault 证书的先决条件。  
     以下 CA 是目前可以与 Key Vault 配合使用的提供者：  
-    -   DigiCert - 密钥保管库提供带有 DigiCert 的 OV TLS/SSL 证书。  
-    -   全局标志 - 密钥保管库提供具有全局标志的 OV TLS/SSL 证书。  
+    -   DigiCert - Key Vault 提供 DigiCert 的 OV TLS/SSL 证书。  
+    -   GlobalSign - Key Vault 提供 GlobalSign 的 OV TLS/SSL 证书。  
 
-**步骤 2** - CA 提供商的帐户管理员创建凭据，供密钥保管库通过密钥保管库注册、续订和使用 TLS/SSL 证书。
+**步骤 2** - CA 提供商的帐户管理员创建可供 Key Vault 使用的凭据，以便通过 Key Vault 注册、续订和使用 TLS/SSL 证书。
 
 **步骤 3** - Contoso 管理员以及拥有证书（取决于 CA）的 Contoso 员工（Key Vault 用户）可以从管理员处获取证书，也可以直接从 CA 的帐户获取。  
 
@@ -53,7 +53,7 @@ ms.locfileid: "81431938"
 
     若要详细了解如何通过 CA 提供者来创建帐户，请参阅 [Key Vault 博客](https://aka.ms/kvcertsblog)上的相关文章。  
 
-**步骤 3.1** - 为通知设置[证书联系人](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts)。 这是 Key Vault 用户的联系人。 Key Vault 不强制执行此步骤。  
+**步骤 3.1** - 设置用于接收通知的[证书联系人](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts)。 这是 Key Vault 用户的联系人。 Key Vault 不强制执行此步骤。  
 
 注意 - 上述过程（一直到步骤 3.1）是一次性操作。  
 
@@ -63,9 +63,9 @@ ms.locfileid: "81431938"
 
 **步骤 4** - 以下说明对应于上图中绿色数字代表的步骤。  
   (1) - 在上图中，应用程序在创建证书时，是在内部以在密钥保管库中创建密钥开始的。  
-  （2） - 密钥保管库向 CA 发送 TLS/SSL 证书请求。  
+  (2) - Key Vault 向 CA 发送 TLS/SSL 证书请求。  
   (3) - 应用程序会在循环和等待过程中轮询 Key Vault 至证书完成。 当 Key Vault 通过 x509 证书收到 CA 的响应时，证书创建完成。  
-  （4） - CA 使用 X509 TLS/SSL 证书响应密钥保管库的 TLS/SSL 证书请求。  
+  (4) - CA 通过 X509 TLS/SSL 证书对 Key Vault 的 TLS/SSL 证书请求进行响应。  
   (5) - 与 CA 的 X509 证书合并以后，新证书的创建过程即告完成。  
 
   Key Vault 用户 - 通过指定策略来创建证书

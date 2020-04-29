@@ -12,13 +12,13 @@ ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
 ms.openlocfilehash: 5b1c985eeec9af25ec576f4e2375c417dc376f95
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81452751"
 ---
-# <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell 和 CLI：使用 Azure 密钥保管库的客户管理密钥启用透明数据加密
+# <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell 和 CLI：使用 Azure Key Vault 中由客户管理的密钥启用透明数据加密
 
 本文逐步介绍如何使用 Azure Key Vault 中的密钥对 SQL 数据库或数据仓库启用透明数据加密 (TDE)。 要了解更多关于 TDE 与 Azure Key Vault 集成（即自带密钥 (BYOK) 支持）的信息，请访问[使用 Azure Key Vault 中由客户管理的密钥进行 TDE](transparent-data-encryption-byok-azure-sql.md)。 
 
@@ -34,7 +34,7 @@ ms.locfileid: "81452751"
 - 密钥必须包含用于 TDE 的以下特性：
    - 无过期日期
    - 未禁用
-   - 能够执行“获取”、“包装密钥”和“解包密钥”操作******
+   - 能够执行“获取”、“包装密钥”和“解包密钥”操作   
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -80,7 +80,7 @@ ms.locfileid: "81452751"
 > Key Vault 名称和密钥名称的总长度不能超过 94 个字符。
 
 > [!TIP]
-> Key Vault 中的示例 KeyId：https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
+> Key Vault 中的示例 KeyId： https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
 
 ```powershell
 # add the key from Key Vault to the server
@@ -146,7 +146,7 @@ az keyvault set-policy --name <kvname>  --object-id <objectid> --resource-group 
 ```
 
 > [!TIP]
-> 保留新密钥的密钥 URI 或 keyID 以用于下一步，例如：https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
+> 保留新密钥的密钥 URI 或 keyID 以用于下一步，例如： https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
 
 ## <a name="add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>将 Key Vault 密钥添加到服务器并设置 TDE 保护器
 
@@ -215,7 +215,7 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
 
 * * *
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 如果出现问题，请查看以下内容：
 
@@ -237,9 +237,9 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
 
 - 如果无法将新密钥添加到服务器，或无法将新密钥更新为 TDE 保护器，请检查以下项：
    - 密钥不应有过期日期
-   - 密钥必须支持“获取”、“包装密钥”和“解包密钥”操作。******
+   - 密钥必须支持“获取”、“包装密钥”和“解包密钥”操作。   
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何旋转服务器的 TDE 保护程序以符合安全要求：[使用 PowerShell 旋转透明数据加密保护程序](transparent-data-encryption-byok-azure-sql-key-rotation.md)。
-- 如果存在安全风险，请了解如何删除可能受损的 TDE 保护器：[删除可能泄露的密钥](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md)。
+- 了解如何轮换服务器的 TDE 保护器以符合安全要求：[使用 PowerShell 轮换透明数据加密保护器](transparent-data-encryption-byok-azure-sql-key-rotation.md)。
+- 了解如何在出现安全风险的情况下，删除可能已泄漏的 TDE 保护器：[删除可能已泄漏的密钥](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md)。

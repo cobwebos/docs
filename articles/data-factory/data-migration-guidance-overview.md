@@ -1,5 +1,5 @@
 ---
-title: 将数据从数据湖和数据仓库迁移到 Azure
+title: 将数据从 data lake 和数据仓库迁移到 Azure
 description: 使用 Azure 数据工厂将数据从 Data Lake 和数据仓库迁移到 Azure。
 services: data-factory
 author: dearandyxu
@@ -12,17 +12,17 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/30/2019
 ms.openlocfilehash: 4408546c892299e5bbbc22b00a4b334c36eda616
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416428"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>使用 Azure 数据工厂将数据从 Data Lake 或数据仓库迁移到 Azure
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-如果要将数据湖或企业数据仓库 （EDW） 迁移到 Microsoft Azure，请考虑使用 Azure 数据工厂。 Azure 数据工厂非常适合以下场景：
+如果要将 data lake 或企业数据仓库（EDW）迁移到 Microsoft Azure，请考虑使用 Azure 数据工厂。 Azure 数据工厂非常适合以下场景：
 
 - 将大数据工作负荷从 Amazon 简单存储服务 (Amazon S3) 或本地 Hadoop 分布式文件系统 (HDFS) 迁移到 Azure
 - 将 EDW 从 Oracle Exadata、Netezza、Teradata 或 Amazon Redshift 迁移到 Azure
@@ -31,13 +31,13 @@ ms.locfileid: "81416428"
 
 ## <a name="why-azure-data-factory-can-be-used-for-data-migration"></a>为何可以使用 Azure 数据工厂来迁移数据
 
-- Azure 数据工厂可以轻松增大处理能力，能以无服务器方式移动数据，并保持较高的性能、复原能力和可伸缩性。 你只需为使用的资源付费。 另请注意下列事项： 
+- Azure 数据工厂可以轻松增大处理能力，能以无服务器方式移动数据，并保持较高的性能、复原能力和可伸缩性。 你只需为使用的资源付费。 另请注意以下几点： 
   - Azure 数据工厂对数据量或文件数没有限制。
   - Azure 数据工厂可以充分利用网络和存储带宽，在环境中实现最大的数据移动吞吐量。
-  - Azure 数据工厂使用即用即付方法，因此只需为实际用于运行数据迁移到 Azure 的时间付费。  
+  - Azure 数据工厂使用即用即付方法，只需为实际用于运行数据迁移到 Azure 的时间付费。  
 - Azure 数据工厂可以执行一次性的历史数据加载和计划的增量加载。
 - Azure 数据工厂使用 Azure 集成运行时 (IR) 在可公开访问的 Data Lake 与仓库终结点之间移动数据。 它还可以使用自承载 IR 来移动位于 Azure 虚拟网络 (VNet) 内部或防火墙后面的 Data Lake 和仓库终结点的数据。
-- Azure 数据工厂具有企业级安全性：可以使用 Windows 安装程序 （MSI） 或服务标识进行安全服务到服务集成，或使用 Azure 密钥保管库进行凭据管理。
+- Azure 数据工厂具有企业级安全性：可以使用 Windows Installer (MSI) 或服务标识进行安全的服务到服务集成，或使用 Azure Key Vault 进行凭据管理。
 - Azure 数据工厂提供无代码创作体验，以及丰富的内置监视仪表板。  
 
 ## <a name="online-vs-offline-data-migration"></a>联机与脱机数据迁移
@@ -50,7 +50,7 @@ Azure 数据工厂是用于通过网络（Internet、ER 或 VPN）传输数据�
 - 网络带宽
 - 迁移时限
 
-例如，假设你打算使用 Azure 数据工厂在两周（迁移时限）内完成数据迁移。** 请注意下表中的粉红色/蓝色切割线。 在任意给定列中，最下面的粉红色单元格显示其迁移时限最接近（但不到）两周的数据大小/网络带宽对。 （蓝色单元格中的任何大小/带宽对的联机迁移时限超过两周。） 
+例如，假设你打算使用 Azure 数据工厂在两周（迁移时限）内完成数据迁移。  请注意下表中的粉红色/蓝色切割线。 在任意给定列中，最下面的粉红色单元格显示其迁移时限最接近（但不到）两周的数据大小/网络带宽对。 （蓝色单元格中的任何大小/带宽对的联机迁移时限超过两周。） 
 
 ![联机与脱机迁移](media/data-migration-guidance-overview/online-offline.png)此表可帮助你根据数据大小和可用网络带宽，确定是否可以通过联机迁移（Azure 数据工厂）来满足预期的迁移时限。 如果联机迁移时限超过两周，则需要使用脱机迁移。
 
@@ -61,5 +61,5 @@ Azure 数据工厂是用于通过网络（Internet、ER 或 VPN）传输数据�
 ## <a name="next-steps"></a>后续步骤
 
 - [将数据从 AWS S3 迁移到 Azure](data-migration-guidance-s3-azure-storage.md)
-- [将数据从本地双有群集迁移到 Azure](data-migration-guidance-hdfs-azure-storage.md)
+- [将数据从本地 Hadoop 群集迁移到 Azure](data-migration-guidance-hdfs-azure-storage.md)
 - [将数据从本地 Netezza 服务器迁移到 Azure](data-migration-guidance-netezza-azure-sqldw.md)

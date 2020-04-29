@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.openlocfilehash: 2c8ada22b4492bef0239b6f811d5a7bd58e58510
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417208"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Filter 活动
@@ -39,14 +39,14 @@ ms.locfileid: "81417208"
 
 properties | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
-name | `Filter` 活动的名称。 | 字符串 | 是
-type | 必须设置为****“filter”。 | 字符串 | 是
+name | `Filter` 活动的名称。 | String | 是
+type | 必须设置为  “filter”。 | String | 是
 条件 (condition) | 要用于筛选输入的条件。 | 表达式 | 是
 items | 应该应用筛选器的输入数组。 | 表达式 | 是
 
 ## <a name="example"></a>示例
 
-在此示例中，管道有两个活动：Filter**** 和 ForEach****。 Filter 活动配置为筛选输入数组中值大于 3 的项。 然后，ForEach 活动会循环访问筛选的值，并将变量 **test** 设置为当前值。
+在此示例中，管道有两个活动：Filter  和 ForEach  。 Filter 活动配置为筛选输入数组中值大于 3 的项。 然后，ForEach 活动会循环访问筛选的值，并将变量 **test** 设置为当前值。
 
 ```json
 {
@@ -116,9 +116,9 @@ items | 应该应用筛选器的输入数组。 | 表达式 | 是
 查看数据工厂支持的其他控制流活动： 
 
 - [If Condition 活动](control-flow-if-condition-activity.md)
-- [执行管道活动](control-flow-execute-pipeline-activity.md)
+- [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md)
 - [For Each 活动](control-flow-for-each-activity.md)
-- [获取元数据活动](control-flow-get-metadata-activity.md)
-- [查找活动](control-flow-lookup-activity.md)
+- [Get Metadata 活动](control-flow-get-metadata-activity.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 - [Web 活动](control-flow-web-activity.md)
 - [Until 活动](control-flow-until-activity.md)

@@ -11,32 +11,32 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.openlocfilehash: 6a3235d5edc5249bbbdc2e79dac8575ad26fd5e1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417027"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>使用具体化视图优化性能
 
-Synapse SQL 池中的具体化视图为复杂的分析查询提供了一种低维护方法，无需任何查询更改即可获得快速性能。 本文提供有关使用具体化视图的一般性指导。
+Synapse SQL 池中的具体化视图为复杂的分析查询提供一种低维护方法，以实现快速性能，而无需更改任何查询。 本文提供有关使用具体化视图的一般性指导。
 
-SQL 池中的具体化视图为复杂的分析查询提供了一种低维护方法，无需任何查询更改即可获得快速性能。 本文提供有关使用具体化视图的一般性指导。
+SQL 池中的具体化视图为复杂的分析查询提供一种低维护方法，以实现快速性能，而无需任何查询更改。 本文提供有关使用具体化视图的一般性指导。
 
 ## <a name="materialized-views-vs-standard-views"></a>具体化视图与标准视图
 
-SQL 池支持标准和具体化视图。  两者都是使用 SELECT 表达式创建的虚拟表，作为逻辑表提供给查询。  视图封装了常见数据计算的复杂性，并为计算更改添加了抽象层，因此无需重写查询。  
+SQL 池支持标准视图和具体化视图。  两者都是使用 SELECT 表达式创建的虚拟表，作为逻辑表提供给查询。  视图封装了常见数据计算的复杂性，并为计算更改添加了抽象层，因此无需重写查询。  
 
 标准视图在每次使用视图时都会计算其数据。  磁盘上没有存储数据。 用户通常使用标准视图作为帮助组织数据库中的逻辑对象和查询的工具。  若要使用标准视图，查询需要直接引用它。
 
-具体化视图在 SQL 池中预先计算、存储和维护其数据，就像表一样。  每次使用具体化视图时都不需要重新计算。  正因如此，使用具体化视图中所有或一部分数据的查询可以获得更快的性能。  更有利的是，查询可以使用具体化视图而无需直接引用它，因此不需要更改应用程序代码。  
+像表一样，具体化视图预先计算、存储和维护 SQL 池中的数据。  每次使用具体化视图时都不需要重新计算。  正因如此，使用具体化视图中所有或一部分数据的查询可以获得更快的性能。  更有利的是，查询可以使用具体化视图而无需直接引用它，因此不需要更改应用程序代码。  
 
-对标准视图的大部分要求仍适用于具体化视图。 有关具体化视图语法和其他要求的详细信息，请参阅[创建重要性视图作为选择](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+对标准视图的大部分要求仍适用于具体化视图。 有关具体化视图语法和其他要求的详细信息，请参阅[CREATE 具体化视图为 SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 | 比较                     | 查看                                         | 具体化视图
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
 |查看定义                 | 存储在 SQL 池中。              | 存储在 SQL 池中。
-|视图内容                    | 每次使用视图时生成。   | 在创建视图期间预处理并存储在 SQL 池中。 随着在基础表中添加数据而不断更新。
+|视图内容                    | 每次使用视图时生成。   | 在创建视图期间，预先处理并存储在 SQL 池中。 随着在基础表中添加数据而不断更新。
 |数据刷新                    | 始终更新                               | 始终更新
 |从复杂查询检索视图数据的速度     | 较慢                                         | 快速  
 |额外的存储                   | 否                                           | 是
@@ -44,10 +44,10 @@ SQL 池支持标准和具体化视图。  两者都是使用 SELECT 表达式创
 
 ## <a name="benefits-of-using-materialized-views"></a>使用具体化视图的优势
 
-正确设计的具体化视图提供了以下好处：
+设计良好的具体化视图具有以下优势：
 
 - 减少包含 JOIN 和聚合函数的复杂查询的执行时间。 查询越复杂，节省执行时间的可能性就越大。 当查询的计算成本较高并且生成的数据集较小时优势最大。  
-- SQL 池中的优化程序可以自动使用已部署的实物视图来改进查询执行计划。  此过程对于用户是透明的，提供更快的查询性能，且不需要查询直接引用具体化视图。
+- SQL 池中的优化器可以自动使用已部署的具体化视图来改善查询执行计划。  此过程对于用户是透明的，提供更快的查询性能，且不需要查询直接引用具体化视图。
 - 对视图的维护需求较低。  基表中的所有增量数据更改将以同步方式自动添加到具体化视图。  借助这种设计，查询具体化视图返回的数据与直接查询基表相同。
 - 具体化视图中数据的分布方式可与基表不同。  
 - 具体化视图中数据的高可用性和复原能力与常规表中的数据相同。  
@@ -72,7 +72,7 @@ SQL 池支持标准和具体化视图。  两者都是使用 SELECT 表达式创
 
 **需要在不进行任何查询更改，或者只需进行最少量的更改的情况下提高性能**
 
-SQL 池中的架构和查询更改通常保持在最小，以支持常规 ETL 操作和报告。  如果视图产生的成本可以通过查询性能的提升来抵消，则用户可以使用具体化视图来优化查询性能。
+通常，SQL 池中的架构和查询更改通常会保持最小，以支持常规 ETL 操作和报告。  如果视图产生的成本可以通过查询性能的提升来抵消，则用户可以使用具体化视图来优化查询性能。
 
 与其他优化选项（例如缩放和统计信息管理）相比，创建和维护具体化视图带来的变化对生产造成的影响要小得多，并且性能提升的潜力也更高。
 
@@ -81,7 +81,7 @@ SQL 池中的架构和查询更改通常保持在最小，以支持常规 ETL �
 
 **需要使用不同的数据分布策略来加快查询性能**
 
-SQL 池是一个分布式大规模并行处理 （MPP） 系统。   SQL 池表中的数据使用三种[分发策略](sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)之一（哈希、round_robin或复制）分布在 60 个节点上。  
+SQL 池是一种分布式大规模并行处理（MPP）系统。   SQL pool 表中的数据使用三个[分发策略](sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)（哈希、round_robin 或复制）之一分布在60节点上。  
 
 数据分布方式在创建表时指定，在删除该表之前会一直保持不变。 具体化视图在支持哈希和 round_robin 数据分布的磁盘上以虚拟表的形式提供。  用户可以选择与基表不同的、但对于大多数使用视图的查询性能最有利的数据分布方式。  
 
@@ -99,7 +99,7 @@ SQL 池是一个分布式大规模并行处理 （MPP） 系统。   SQL 池表�
 
 **在查询速度与成本之间进行权衡**
 
-每个具体化视图都会产生数据存储成本以及维护该视图的成本。  随着基表中数据的更改，具体化视图的大小将会增大，其物理结构也会发生变化。  为了避免查询性能下降，每个具体化视图由 SQL 池引擎单独维护。  
+每个具体化视图都会产生数据存储成本以及维护该视图的成本。  随着基表中数据的更改，具体化视图的大小将会增大，其物理结构也会发生变化。  为了避免查询性能下降，每个具体化视图都由 SQL 池引擎单独维护。  
 
 当具体化视图的数量和基表的更改增多时，维护工作负荷就会增大。   用户应该检查查询性能的提升是否能够抵消所有具体化视图产生的成本。  
 
@@ -117,7 +117,7 @@ JOIN sys.indexes I ON V.object_id= I.object_id AND I.index_id < 2;
 
 - 删除使用率较低或不再需要的具体化视图。  已禁用的具体化视图不再受到维护，但仍会产生存储成本。  
 
-- 合并针对相同或类似基表创建的具体化视图，即使这些表中的数据不重叠。  合并具体化视图可能会导致比单独视图的总和更大的视图，但视图维护成本应降低。  例如：
+- 合并针对相同或类似基表创建的具体化视图，即使这些表中的数据不重叠。  结合使用实例化视图时，可能会产生比不同视图的大小大的视图，但应降低视图维护成本。  例如：
 
 ```sql
 
@@ -143,17 +143,17 @@ GROUP BY A, C
 
 **并非所有性能优化都需要更改查询**
 
-SQL 池优化器可以自动使用已部署的实物视图来提高查询性能。  此项支持以透明方式应用到不引用视图的查询，以及使用不支持用于创建具体化视图的聚合的查询。  无需进行任何查询更改。 可以检查查询的估计执行计划，以确认是否使用了具体化视图。  
+SQL 池优化器可以自动使用已部署的具体化视图来提高查询性能。  此项支持以透明方式应用到不引用视图的查询，以及使用不支持用于创建具体化视图的聚合的查询。  无需进行任何查询更改。 可以检查查询的估计执行计划，以确认是否使用了具体化视图。  
 
 **监视具体化视图**
 
-具体化视图存储在 SQL 池中，就像具有群集列存储索引 （CCI） 的表一样。  读取具体化视图中的数据涉及到扫描 CCI 索引段，并应用基表中的任何增量更改。 当增量更改数量过大时，从具体化视图求解查询所需的时间可能比直接查询基表更长。  
+具体化视图存储在 SQL 池中，就像具有聚集列存储索引（CCI）的表一样。  读取具体化视图中的数据涉及到扫描 CCI 索引段，并应用基表中的任何增量更改。 当增量更改数量过大时，从具体化视图求解查询所需的时间可能比直接查询基表更长。  
 
-为了避免查询性能下降，最好运行[DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)来监视视图overhead_ratio（total_rows / 最大（1，base_view_row）。  如果具体化视图的 overhead_ratio（开销比）过高，则用户应重新生成具体化视图。
+为了避免查询性能下降，最好运行[DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)来监视视图的 overhead_ratio （total_rows/max （1，base_view_row））。  如果具体化视图的 overhead_ratio（开销比）过高，则用户应重新生成具体化视图。
 
 **具体化视图和结果集缓存**
 
-这两个功能大约在同一时间在 SQL 池中引入，以便查询性能调优。  结果集缓存用于获得高并发性，使针对静态数据的重复查询快速返回响应。  
+这两个功能在 SQL 池中同时引入，用于查询性能优化。  结果集缓存用于获得高并发性，使针对静态数据的重复查询快速返回响应。  
 
 若要使用缓存的结果，缓存请求查询的形式必须与生成缓存的查询相匹配。  此外，缓存的结果必须应用于整个查询。  
 
@@ -368,4 +368,4 @@ GROUP BY c_customer_id
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更多开发提示，请参阅[Synapse SQL 池开发概述](sql-data-warehouse-overview-develop.md)。
+有关更多开发技巧，请参阅[SYNAPSE SQL pool 开发概述](sql-data-warehouse-overview-develop.md)。

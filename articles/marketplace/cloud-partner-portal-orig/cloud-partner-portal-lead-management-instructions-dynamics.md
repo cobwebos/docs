@@ -1,5 +1,5 @@
 ---
-title: 动态 CRM |Azure 应用商店
+title: Dynamics CRM |Azure Marketplace
 description: 为 Dynamics CRM 配置潜在顾客管理。
 author: dsindona
 ms.service: marketplace
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: dsindona
 ms.openlocfilehash: d64c8460f5653f28b96396025f29ea13af15c8c3
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416310"
 ---
 # <a name="configure-lead-management-for-dynamics-crm-online"></a>为 Dynamics CRM Online 配置潜在顾客管理
 
 本文介绍如何设置 Dynamics CRM Online 以处理销售潜在顾客。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本文中的步骤需要以下用户权限：
 - 需是 Dynamics CRM Online 实例上的管理员才能安装解决方案。
@@ -55,16 +55,16 @@ ms.locfileid: "81416310"
 
 1.  登录到 [Azure 门户](https://portal.azure.com/)，然后选择“Azure Active Directory”服务。
 
-2.  选择**属性**，然后复制**目录 ID**。这是需要在云合作伙伴门户中使用的租户帐户标识。
+2.  选择 "**属性**"，然后复制 "**目录 Id**"。这是你需要在云合作伙伴门户中使用的租户帐户标识。
 
     ![获取目录 ID](./media/cloud-partner-portal-lead-management-instructions-dynamics/directoryid.png)
 
-3.  选择**应用注册**，然后选择 **"新建应用程序注册**"。
+3.  选择 "**应用注册**"，然后选择 "**新应用程序注册**"。
 4.  输入应用程序名称。
 5.  对于“类型”，请选择“Web 应用/API”。****
 6.  提供 URL。 不需要为潜在顾客填写此字段，但若要创建应用程序，则必须填写。
-7. 选择“创建”  。
-8.  注册应用程序后，选择 **"属性"，** 然后选择**复制应用程序 ID**。您将在云合作伙伴门户中使用此连接信息。
+7. 选择“创建”。 
+8.  现在，已注册应用程序，选择 "**属性**"，然后选择 **"复制应用程序 Id"**。您将在云合作伙伴门户中使用此连接信息。
 9.  在“属性”中，将应用程序设置为“多租户”，然后选择“保存”。****
 
 10. 选择“密钥”，并创建“持续时间”设置为“永不过期”的新密钥。****** 选择“保存”以创建密钥****。 
@@ -91,21 +91,21 @@ ms.locfileid: "81416310"
 
 ### <a name="office-365"></a>Office 365
 
-如果不想使用 Azure 活动目录，可以在*Microsoft 365 管理中心*注册新用户。 必须每隔 90 天更新用户名/密码才能持续获取潜在顾客。
+如果不想使用 Azure Active Directory，则可以在*Microsoft 365 管理中心*注册新用户。 必须每隔 90 天更新用户名/密码才能持续获取潜在顾客。
 
 使用以下步骤为 Dynamics CRM 配置 Office 365。
 
 1. 登录 [Microsoft 365 管理中心](https://admin.microsoft.com)。
 
-2. 选择 **"管理"** 磁贴。
+2. 选择 "**管理员**" 磁贴。
 
-    ![办公室在线管理员](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline3.png)
+    ![Office Online 管理](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline3.png)
 
 3. 选择“添加用户”。****
 
     ![添加用户](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline4.png)
 
-4. 创建潜在客户编写器服务的新用户。 配置以下设置：
+4. 创建潜在客户编写器服务的新用户。 配置下列设置：
 
     -   提供密码，并取消选中“使此用户在首次登录时更改其密码”选项。
     -   选择“用户(无管理员权限)”作为用户的角色。
@@ -133,7 +133,7 @@ ms.locfileid: "81416310"
     
     ![配置安全潜在顾客写入者](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline10.jpg)\
 
-5. 选择 **"核心记录**"选项卡。为用户实体 UI 启用创建/读取/写入。
+5. 选择 "**核心记录**" 选项卡。启用用户实体 UI 的 "创建/读取/写入"。
 
     ![为用户启用创建/读取/写入权限](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline11.jpg)\
 
@@ -142,4 +142,4 @@ ms.locfileid: "81416310"
 将生成的帐户信息添加到云合作伙伴门户，完成 Dynamics CRM 的潜在顾客管理配置。 例如：
 
 -   **Azure Active Directory** - **应用程序 ID**（示例：*23456052-aaaa-bbbb-8662-1234df56788f*）、**目录 ID**（示例：*12345678-8af1-4asf-1234-12234d01db47*）和**应用程序密钥**（示例：*1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=*）。
--   **Office 365** - **Url（** 例如：）、**`https://contoso.crm4.dynamics.com`****用户名**（示例**`contoso\@contoso.onmicrosoft.com`**：）和**密码**（示例 *：P\@ssw0rd）。*
+-   **Office 365** - **Url** （示例： **`https://contoso.crm4.dynamics.com`**）、**用户名**（示例： **`contoso\@contoso.onmicrosoft.com`**）和**密码**（示例： *\@P ssw0rd*）。

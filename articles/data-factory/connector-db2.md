@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: jingwang
 ms.openlocfilehash: 2c2071e4b2a3daa528c7d01f64e38247b063e6f1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417415"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 DB2 复制数据
@@ -49,9 +49,9 @@ ms.locfileid: "81417415"
 * IBM DB2 for LUW 10.1
 
 >[!TIP]
->DB2 连接器构建在用于 DB2 的 Microsoft OLE DB 提供程序之上。 要排除 DB2 连接器错误，请参阅[数据提供程序错误代码](https://docs.microsoft.com/host-integration-server/db2oledbv/data-provider-error-codes#drda-protocol-errors)。
+>DB2 连接器建立在 DB2 的 Microsoft OLE DB 提供程序之上。 若要解决 DB2 连接器错误，请参阅[数据访问接口错误代码](https://docs.microsoft.com/host-integration-server/db2oledbv/data-provider-error-codes#drda-protocol-errors)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -67,7 +67,7 @@ ms.locfileid: "81417415"
 
 DB2 链接服务支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：Db2**** | 是 |
 | server |DB2 服务器的名称。 可以在冒号分隔的服务器名称后面指定端口号，例如 `server:port`。 |是 |
@@ -75,14 +75,14 @@ DB2 链接服务支持以下属性：
 | authenticationType |用于连接 DB2 数据库的身份验证类型。<br/>允许的值为：Basic****。 |是 |
 | username |指定用于连接到 DB2 数据库的用户名。 |是 |
 | password |指定为用户名指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
-| packageCollection | 在查询数据库时，在 ADF 自动创建所需包的位置下指定。 | 否 |
+| packageCollection | 指定在查询数据库时，ADF 自动创建所需的包的位置。 | 否 |
 | certificateCommonName | 使用安全套接字层 (SSL) 或传输层安全性 (TLS) 加密时，必须为“证书公用名称”输入值。 | 否 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 > [!TIP]
-> 如果收到一条错误消息，指出`The package corresponding to an SQL statement execution request was not found. SQLSTATE=51002 SQLCODE=-805`，原因是未为用户创建所需的包。 默认情况下，ADF 将尝试在集合下创建一个包，该包名为用于连接到 DB2 的用户。 指定包集合属性，以指示在查询数据库时希望 ADF 在何处创建所需的包。
+> 如果收到指出`The package corresponding to an SQL statement execution request was not found. SQLSTATE=51002 SQLCODE=-805`的错误消息，原因是没有为用户创建所需的包。 默认情况下，ADF 会尝试在集合下创建一个名为的包，并将其命名为用于连接到 DB2 的用户。 指定 "包集合" 属性，以指示在查询数据库时 ADF 要在何处创建所需的包。
 
-**例子：**
+**示例：**
 
 ```json
 {
@@ -109,13 +109,13 @@ DB2 链接服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的节和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 DB2 数据集支持的属性列表。
+有关可用于定义数据集的各节和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 DB2 数据集支持的属性列表。
 
 若要从 DB2 复制数据，需要支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
-| type | 数据集的类型属性必须设置为 **：Db2Table** | 是 |
+| type | 数据集的 type 属性必须设置为： **Db2Table** | 是 |
 | 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
 | 表 | 表的名称。 |否（如果指定了活动源中的“query”）  |
 | tableName | 具有架构的表的名称。 支持此属性是为了向后兼容。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 否（如果指定了活动源中的“query”） |
@@ -148,12 +148,12 @@ DB2 链接服务支持以下属性：
 
 若要从 DB2 复制数据，复制活动的 **source** 节需要支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
-| type | 必须将复制活动源的类型属性设置为 **：Db2Source** | 是 |
+| type | 复制活动源的 type 属性必须设置为： **Db2Source** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`。 | 否（如果指定了数据集中的“tableName”） |
 
-**例子：**
+**示例：**
 
 ```json
 "activities":[
@@ -198,10 +198,10 @@ DB2 链接服务支持以下属性：
 | Blob |Byte[] |
 | Char |字符串 |
 | Clob |字符串 |
-| Date |Datetime |
+| 日期 |Datetime |
 | DB2DynArray |字符串 |
 | DbClob |字符串 |
-| Decimal |Decimal |
+| 小数 |Decimal |
 | DecimalFloat |Decimal |
 | Double |Double |
 | Float |Double |
@@ -225,4 +225,4 @@ DB2 链接服务支持以下属性：
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动作为源和接收器支持的数据存储的列表，请参阅[受支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Azure 数据工厂中的复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

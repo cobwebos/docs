@@ -1,6 +1,6 @@
 ---
 title: 使用存储过程
-description: 用于开发解决方案的 Synapse SQL 池（数据仓库）中实现存储过程的提示。
+description: 有关在开发解决方案的 Synapse SQL 池中实现存储过程的技巧。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,29 +11,29 @@ ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: a431df1ff4ef0984d1197933e7ca78979fa23089
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430976"
 ---
-# <a name="using-stored-procedures-in-sql-pool"></a>在 SQL 池中使用存储过程
+# <a name="using-stored-procedures-in-sql-pool"></a>使用 SQL 池中的存储过程
 
-用于开发解决方案的 Synapse SQL 池（数据仓库）中实现存储过程的提示。
+有关在开发解决方案的 Synapse SQL 池中实现存储过程的技巧。
 
 ## <a name="what-to-expect"></a>期望
 
-SQL 池支持 SQL Server 中使用的许多 T-SQL 功能。 更重要的是，可使用特定的横向扩展功能将解决方案的性能最大化。
+SQL 池支持许多 SQL Server 中使用的 T-sql 功能。 更重要的是，可使用特定的横向扩展功能将解决方案的性能最大化。
 
-但是，为了保持 SQL 池的规模和性能，还有一些功能与行为差异以及不支持的其他特性和功能。
+但是，为了保持 SQL 池的缩放性和性能，还有一些具有行为差异的功能和其他不受支持的特性和功能。
 
 ## <a name="introducing-stored-procedures"></a>存储过程简介
 
 存储过程很适合用于封装 SQL 代码；将它存储在数据仓库中数据附近。 通过将代码封装成可管理的单位，促使代码有更大的可重复使用性，存储过程帮助开发人员将其解决方案模块化。 每个存储过程还可接受参数，使其更具弹性。
 
-SQL 池提供了简化和简化的存储过程实现。 相比于 SQL Server，最大差异是存储过程不是预先编译的代码。 在数据仓库中，与针对大型数据卷运行查询所用的时间相比，编译时间非常少。 保证存储过程代码针对大量查询正确优化更为重要。 目标是要节省时数、分钟数和秒数，而不是毫秒数。 因此，将存储过程视为 SQL 逻辑的容器更有帮助。
+SQL 池提供简化且简化的存储过程实现。 相比于 SQL Server，最大差异是存储过程不是预先编译的代码。 在数据仓库中，与针对大型数据卷运行查询所用的时间相比，编译时间非常少。 保证存储过程代码针对大量查询正确优化更为重要。 目标是要节省时数、分钟数和秒数，而不是毫秒数。 因此，将存储过程视为 SQL 逻辑的容器更有帮助。
 
-当 SQL 池执行存储过程时，SQL 语句将在运行时进行分析、转换和优化。 在此过程中，每个语句都转换为分布式查询。 针对数据执行的 SQL 代码与提交的查询不同。
+当 SQL 池执行您的存储过程时，SQL 语句在运行时进行分析、转换和优化。 在此过程中，每个语句都转换为分布式查询。 针对数据执行的 SQL 代码与提交的查询不同。
 
 ## <a name="nesting-stored-procedures"></a>嵌套存储过程
 
@@ -72,13 +72,13 @@ EXEC prc_nesting
 
 ## <a name="insertexecute"></a>INSERT..EXECUTE
 
-SQL 池不允许使用 INSERT 语句使用存储过程的结果集。 但是，可以使用替代方法。 有关示例，请参阅[临时表](develop-tables-temporary.md)上的文章。
+SQL 池不允许通过 INSERT 语句使用存储过程的结果集。 但是，可以使用替代方法。 有关示例，请参阅[临时表](develop-tables-temporary.md)上的文章。
 
 ## <a name="limitations"></a>限制
 
-Transact-SQL 存储过程的某些方面未在 SQL 池中实现。
+SQL 池中未实现 Transact-sql 存储过程的某些方面。
 
-它们分别是：
+它们是：
 
 * 临时存储过程
 * 编号的存储过程
