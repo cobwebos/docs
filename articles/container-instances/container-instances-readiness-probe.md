@@ -4,10 +4,10 @@ description: 了解如何配置探测，以确保 Azure 容器实例中的容器
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 64bb4a3e429ce820835abbf8e235600e592f7868
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76935684"
 ---
 # <a name="configure-readiness-probes"></a>配置就绪情况探测
@@ -19,11 +19,11 @@ ms.locfileid: "76935684"
 Azure 容器实例还支持[运行情况探测](container-instances-liveness-probe.md)，你可以配置该探测来使不正常的容器自动重启。
 
 > [!NOTE]
-> 当前，您不能在部署到虚拟网络的容器组中使用就绪探测。
+> 目前不能在部署到虚拟网络的容器组中使用准备情况探测。
 
 ## <a name="yaml-configuration"></a>YAML 配置
 
-例如，使用以下代码片段创建包含就绪情况探测的 `readiness-probe.yaml` 文件。 此文件定义一个容器组，其中包含运行小型 Web 应用的容器。 此应用是通过公共 `mcr.microsoft.com/azuredocs/aci-helloworld` 映像部署的。 此容器化应用在 Azure[中使用 Azure CLI](container-instances-quickstart.md)和其他快速启动部署容器实例中也进行了演示。
+例如，使用以下代码片段创建包含就绪情况探测的 `readiness-probe.yaml` 文件。 此文件定义一个容器组，其中包含运行小型 Web 应用的容器。 此应用是通过公共 `mcr.microsoft.com/azuredocs/aci-helloworld` 映像部署的。 此容器化应用还演示了如何使用 Azure CLI 和其他快速入门在[Azure 中部署容器实例](container-instances-quickstart.md)。
 
 ```yaml
 apiVersion: 2018-10-01
@@ -61,9 +61,9 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-### <a name="start-command"></a>启动命令
+### <a name="start-command"></a>“启动”命令
 
-部署包括定义`command`在容器首次开始运行时运行的启动命令的属性。 此属性接受字符串数组。 此命令模拟当 Web 应用运行但容器未准备就绪时的时间。 
+部署包含一个`command`属性，该属性定义在容器首次开始运行时运行的启动命令。 此属性接受字符串数组。 此命令模拟当 Web 应用运行但容器未准备就绪时的时间。 
 
 首先，它启动一个 shell 会话并运行 `node` 命令来启动 Web 应用。 它还启动一个命令来休眠 240 秒，经过此时间后，它将在 `/tmp` 目录中创建一个名为 `ready` 的文件：
 

@@ -5,16 +5,16 @@ ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.openlocfilehash: 7cf437c6b20ea6b688e8e93e401cf71ef0260888
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76705422"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>使用 Azure 备份即时还原功能获得更高的备份和还原性能
 
 > [!NOTE]
-> 根据用户的反馈，我们正在将“VM 备份堆栈 V2”**** 重命名为“即时还原”****，以减少与 Azure Stack 功能的混淆。
+> 根据用户的反馈，我们正在将“VM 备份堆栈 V2”  重命名为“即时还原”  ，以减少与 Azure Stack 功能的混淆。
 > 所有 Azure 备份用户现在已升级到**即时还原**。
 
 即时还原的新模型提供以下功能增强：
@@ -61,7 +61,7 @@ ms.locfileid: "76705422"
 
 ### <a name="using-azure-portal"></a>使用 Azure 门户
 
-在 Azure 门户中可以看到，“即时还原”部分下的“VM 备份策略”边栏选项卡中添加了一个字段。******** 可以从“VM 备份策略”边栏选项卡为与特定备份策略关联的所有 VM 更改快照保留期****。
+在 Azure 门户中可以看到，“即时还原”部分下的“VM 备份策略”边栏选项卡中添加了一个字段。   可以从“VM 备份策略”边栏选项卡为与特定备份策略关联的所有 VM 更改快照保留期  。
 
 ![即时还原功能](./media/backup-azure-vms/instant-restore-capability.png)
 
@@ -112,13 +112,13 @@ Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 
 如果恢复点包含快照并且存在最新可用的 RP，则该快照会一直保留到下一次成功备份为止。 这符合当前设计的“垃圾回收”(GC) 策略，该策略强制要求始终至少有一个最新的 RP，以防 VM 中的问题导致所有备份进一步出错。 正常情况下，在 RP 过期后，将在最多 24 小时内予以清理。
 
-### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>我不需要即时还原功能。 可以禁用它吗？
+### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>我不需要即时还原功能。 是否可以禁用它？
 
-为每个人启用即时还原功能，不能禁用。 您可以将快照保留时间减少到至少一天。
+为所有人启用了 "即时还原" 功能，并且无法禁用。 可以将快照保留时间减少到最少一天。
 
 >[!NOTE]
 > **Azure 备份现在支持使用 Azure 虚拟机备份解决方案进行选择性磁盘备份和还原。**
 >
->如今，Azure 备份支持使用虚拟机备份解决方案一起备份 VM 中的所有磁盘（操作系统和数据）。 使用排除磁盘功能，您可以选择从 VM 中的许多数据磁盘备份一个或多个数据磁盘。 这为备份和恢复需求提供了高效且经济高效的解决方案。 每个恢复点都包含备份操作中包含的磁盘的数据，这进一步允许您在还原操作期间从给定恢复点还原磁盘子集。 这适用于从快照和保管库还原。
+>如今，Azure 备份支持使用虚拟机备份解决方案，将 VM 中的所有磁盘（操作系统和数据）备份到一起。 使用排除磁盘功能，你可以选择从 VM 的多个数据磁盘中备份一个或多个数据磁盘。 这为备份和还原需求提供高效且经济高效的解决方案。 每个恢复点都包含备份操作中包含的磁盘数据，在还原操作过程中，您还可以使用该数据的一个子集从给定的恢复点还原。 这适用于从快照和保管库还原。
 >
->**要注册预览版，请写信给我们：AskAzureBackupTeam@microsoft.com**
+>**若要注册预览版，请向我们写信AskAzureBackupTeam@microsoft.com**

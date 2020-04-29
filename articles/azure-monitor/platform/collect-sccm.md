@@ -1,5 +1,5 @@
 ---
-title: 将配置管理器连接到 Azure 监视器 |微软文档
+title: 将 Configuration Manager 连接到 Azure Monitor |Microsoft Docs
 description: 本文介绍将 Configuration Manager 连接到 Azure Monitor 中的工作区以及开始分析数据的步骤。
 ms.subservice: logs
 ms.topic: conceptual
@@ -7,21 +7,21 @@ author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
 ms.openlocfilehash: 3140c0de6fbe090e3d040202cd581c455f03b6d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77655250"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>将 Configuration Manager 连接到 Azure Monitor
-您可以将 Microsoft 终结点配置管理器环境连接到 Azure 监视器，以同步设备集合数据，并在 Azure 监视器和 Azure 自动化中引用这些集合。  
+可将 Microsoft Endpoint Configuration Manager 环境连接到 Azure Monitor 以同步设备集合数据，并在 Azure Monitor 和 Azure 自动化中引用这些集合。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-Azure 监视器支持配置管理器当前分支、版本 1606 及更高版本。
+Azure Monitor 支持 Configuration Manager 当前分支（版本 1606 及更高版本）。
 
 >[!NOTE]
->将配置管理器与日志分析工作区连接的功能是可选的，默认情况下未启用。 必须在使用前启用此功能。 有关详细信息，请参阅 [Enable optional features from updates](https://docs.microsoft.com/configmgr/core/servers/manage/install-in-console-updates#bkmk_options)。
+>使用 Log Analytics 工作区连接 Configuration Manager 的功能是可选的，默认情况下不启用。 必须在使用前启用此功能。 有关详细信息，请参阅[启用更新中的可选功能](https://docs.microsoft.com/configmgr/core/servers/manage/install-in-console-updates#bkmk_options)。
 
 ## <a name="configuration-overview"></a>配置概述
 
@@ -47,7 +47,7 @@ Azure 监视器支持配置管理器当前分支、版本 1606 及更高版本�
 > 必须为 Configuration Manager 指定 Log Analytics 工作区中的权限。 否则，在配置管理器中使用配置向导时会收到一条错误消息。
 >
 
-1. 在 Azure 门户中，单击左上角的“所有服务”****。 在资源列表中，键入“Log Analytics”****。 开始键入时，会根据输入筛选该列表。 选择**日志分析**。
+1. 在 Azure 门户中，单击左上角的“所有服务”****。 在资源列表中，键入“Log Analytics”****。 开始键入时，会根据输入筛选该列表。 选择**Log Analytics**。
 
 2. 在 Log Analytics 工作区列表中，选择要修改的工作区。
 
@@ -79,14 +79,14 @@ Azure 监视器支持配置管理器当前分支、版本 1606 及更高版本�
 
 4. 在 Azure 服务向导的“Azure 服务”页上，执行以下操作：
 
-    1. 在 Configuration Manager 中指定对象的“名称”。****
-    2. 指定可选的“说明”****，方便你标识此服务。
+    1. 指定 Configuration Manager 中的对象名称  。
+    2. 指定可选说明以帮助标识服务  。
     3. 选择 Azure 服务 **OMS 连接器**
 
     >[!NOTE]
     >OMS 现在称为 Log Analytics，是 Azure Monitor 的一项功能。
 
-5. 选择“下一步”，转到 Azure 服务向导的“Azure 应用属性”页。****
+5. 选择“下一步”继续转至 Azure 服务向导的 Azure 应用属性页  。
 
 6. 在 Azure 服务向导的“应用”页上，首先从列表中选择 Azure 环境，然后单击“导入”。********
 
@@ -112,7 +112,7 @@ Azure 监视器支持配置管理器当前分支、版本 1606 及更高版本�
 
 9. 查看“确认设置”页上的选项，然后选择“下一步”，开始创建并配置连接。********
 
-10. 配置完成后，会显示“完成”页。**** 选择“关闭”。 
+10. 配置完成后，会显示“完成”页。**** 选择“关闭”  。 
 
 将 Configuration Manager 链接到 Azure Monitor 后，可以添加或删除集合，并查看连接的属性。
 
@@ -131,7 +131,7 @@ Azure 监视器支持配置管理器当前分支、版本 1606 及更高版本�
 
 1. 在 Azure 门户中，单击左上角的“所有服务”****。 在资源列表中，键入“Log Analytics”****。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics 工作区”****。
 2. 在 Log Analytics 工作区列表中，选择 Configuration Manager 注册到的工作区。  
-3. 选择“高级设置”****。
+3. 选择 "**高级设置**"。
 4. 依次选择“计算机组”、“SCCM”。********  
 5. 选择“导入 Configuration Manager 集合成员身份”****，并单击“保存”****。  
    

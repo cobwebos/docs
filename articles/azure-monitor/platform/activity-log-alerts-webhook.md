@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
 ms.openlocfilehash: c076b8dcea350f9ddd66977e89ce99b81f377b17
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77669040"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure 活动日志警报的 Webhook
@@ -254,7 +254,7 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 }
 ```
 
-| 元素名称 | 描述 |
+| 元素名称 | 说明 |
 | --- | --- |
 | status |用于度量值警报。 对于活动日志警报，始终设置为“已激活”。 |
 | 上下文 |事件的上下文。 |
@@ -287,8 +287,8 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 有关所有其他活动日志警报的特定架构的详细信息，请参阅 [Azure 活动日志概述](../../azure-monitor/platform/platform-logs-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
-* [了解有关活动日志 的更多内容](../../azure-monitor/platform/platform-logs-overview.md)。
-* [在 Azure 警报上执行 Azure 自动化脚本（Runbook）。](https://go.microsoft.com/fwlink/?LinkId=627081)
+* [了解有关活动日志的更多信息](../../azure-monitor/platform/platform-logs-overview.md)。
+* [对 Azure 警报执行 Azure 自动化脚本 (Runbook)](https://go.microsoft.com/fwlink/?LinkId=627081)。
 * [使用逻辑应用通过 Twilio 从 Azure 警报发送短信](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)。 本示例适用于度量值警报，但经过修改后可用于活动日志警报。
 * [使用逻辑应用从 Azure 警报发送 Slack 消息](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)。 本示例适用于度量值警报，但经过修改后可用于活动日志警报。
 * [使用逻辑应用从 Azure 警报将消息发送到 Azure 队列](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)。 本示例适用于度量值警报，但经过修改后可用于活动日志警报。

@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.subservice: alerts
 ms.openlocfilehash: 7b1956ad2bf9bf38ba9edc4c7234078557564071
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77667697"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>用于日志警报规则的 Webhook 操作
 [在 Azure 中创建日志警报](alerts-log.md)时，可以选择[使用操作组配置](action-groups.md)以执行一个或多个操作。 本文介绍可用的不同 Webhook 操作，以及如何配置基于 JSON 的自定义 Webhook。
 
 > [!NOTE]
-> 还可以使用[通用警报架构](https://aka.ms/commonAlertSchemaDocs)进行 Webhook 集成。 通用警报架构的优点是，在 Azure 监视器中的所有警报服务中具有单个可扩展和统一的警报负载。 请注意，通用警报架构不符合日志警报的自定义 JSON 选项。 如果选中了公共警报架构负载，则无论在警报规则级别执行的自定义，它都会服从公共警报架构负载。 [了解常见的警报架构定义。](https://aka.ms/commonAlertSchemaDefinitions)
+> 还可以使用[通用警报架构](https://aka.ms/commonAlertSchemaDocs)进行 Webhook 集成。 常见的警报架构提供了在 Azure Monitor 中的所有警报服务之间具有单个可扩展和统一的警报负载的优点。请注意，公用警报架构不会 honour 日志警报的自定义 JSON 选项。 如果选择了此选项，则它会与常见的警报架构负载相遵从，而不考虑在警报规则级别执行的自定义。 [了解常见的警报架构定义。](https://aka.ms/commonAlertSchemaDefinitions)
 
 ## <a name="webhook-actions"></a>Webhook 操作
 
@@ -26,7 +26,7 @@ ms.locfileid: "77667697"
 
 Webhook 操作需要下表中的属性。
 
-| properties | 描述 |
+| 属性 | 描述 |
 |:--- |:--- |
 | **Webhook URL** |Webhook 的 URL。 |
 | **自定义 JSON 负载** |如果在创建警报期间选择了此选项，请自定义要通过 webhook 发送的有效负载。 有关详细信息，请参阅[管理日志警报](alerts-log.md)。|
@@ -37,21 +37,21 @@ Webhook 操作需要下表中的属性。
 Webhooks 包括 URL 和 JSON 格式的有效负载（即发送到外部服务的数据）。 默认情况下，有效负载包括下表中的值。 可以选择将此负载替换成自己的自定义负载。 在这种情况下，可以使用下表中每个参数的变量，将其值包含在自定义有效负载中。
 
 
-| 参数 | 变量 | 描述 |
+| 参数 | 变量 | 说明 |
 |:--- |:--- |:--- |
-| *警报规则名称* |#alertrulename |警报规则的名称。 |
+| *AlertRuleName* |#alertrulename |警报规则的名称。 |
 | *严重性* |#severity |为触发的日志警报设置的严重性。 |
 | *AlertThresholdOperator* |#thresholdoperator |警报规则的阈值运算符，使用“大于”或“小于”。 |
 | *AlertThresholdValue* |#thresholdvalue |警报规则的阈值。 |
-| *链接搜索结果* |#linktosearchresults |指向 Analytics 门户的链接，该门户会从创建警报的查询返回记录。 |
+| *LinkToSearchResults* |#linktosearchresults |指向 Analytics 门户的链接，该门户会从创建警报的查询返回记录。 |
 | *ResultCount* |#searchresultcount |搜索结果中的记录数。 |
 | *搜索时间间隔结束时间* |#searchintervalendtimeutc |查询结束时间 (UTC)，格式为 mm/dd/yyyy HH:mm:ss AM/PM。 |
 | *搜索时间间隔* |#searchinterval |警报规则的时间范围，格式为 HH:mm:ss。 |
 | *搜索时间间隔开始时间* |#searchintervalstarttimeutc |查询开始时间 (UTC)，格式为 mm/dd/yyyy HH:mm:ss AM/PM。 
-| *搜索查询* |#searchquery |警报规则所使用的日志搜索查询。 |
+| *SearchQuery* |#searchquery |警报规则所使用的日志搜索查询。 |
 | *SearchResults* |"IncludeSearchResults": true|如果在自定义 JSON Webhook 定义中添加了 "IncludeSearchResults": true 作为顶级属性，则查询以 JSON 表形式返回的记录将限制为前 1,000 条记录。 |
 | *警报类型*| #alerttype | 配置为[指标度量](alerts-unified-log.md#metric-measurement-alert-rules) 或 [结果数](alerts-unified-log.md#number-of-results-alert-rules)的日志警报规则的类型。|
-| *工作区 ID* |#workspaceid |Log Analytics 工作区的 ID。 |
+| *WorkspaceID* |#workspaceid |Log Analytics 工作区的 ID。 |
 | *应用程序 ID* |#applicationid |Application Insights 应用的 ID。 |
 | *订阅 ID* |#subscriptionid |使用的 Azure 订阅的 ID。 
 
@@ -75,7 +75,7 @@ Webhooks 包括 URL 和 JSON 格式的有效负载（即发送到外部服务的
 ```
 由于自定义 Webhook 中的所有变量都必须在 JSON enclosure（如“#searchinterval”）内指定，因此生成的 Webhook 在 enclosure（如“00:05:00”）内也会有可变数据。
 
-要将搜索结果包括在自定义负载中，请确保将**IncludeSearch结果**设置为 JSON 负载中的顶级属性。 
+若要在自定义有效负载中包含搜索结果，请确保将**IncludeSearchResults**设置为 JSON 有效负载中的顶级属性。 
 
 ## <a name="sample-payloads"></a>示例有效负载
 本部分显示用于日志警报的 Webhook 的示例有效负载。 示例有效负载包括有效负载是标准有效负载时以及是自定义有效负载时的示例。
@@ -207,7 +207,7 @@ Webhooks 包括 URL 和 JSON 格式的有效负载（即发送到外部服务的
 ## <a name="next-steps"></a>后续步骤
 - 了解[Azure 警报中的日志警报](alerts-unified-log.md)。
 - 了解如何[管理 Azure 中的日志警报](alerts-log.md)。
-- 在 Azure 中创建和管理[操作组](action-groups.md)。
+- [在 Azure 中](action-groups.md)创建和管理操作组。
 - 详细了解 [Application Insights](../../azure-monitor/app/analytics.md)。
 - 了解有关[日志查询](../log-query/log-query-overview.md)的详细信息。 
 

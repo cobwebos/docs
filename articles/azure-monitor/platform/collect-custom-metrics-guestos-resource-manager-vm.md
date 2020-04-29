@@ -8,10 +8,10 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: e747ca89912c36538bfb9d02986629fe57c5adcb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77657361"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>使用 Windows 虚拟机的资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
@@ -24,15 +24,15 @@ ms.locfileid: "77657361"
 
 将它们存储在此位置可以访问平台指标的相同操作。 操作包括近实时警报、图表绘制、路由、从 REST API 访问，等等。 在过去，诊断扩展将数据写入 Azure 存储而不是 Azure Monitor 数据存储。
 
-如果您是资源管理器模板的新增功能，则了解[模板部署](../../azure-resource-manager/management/overview.md)及其结构和语法。
+如果你不熟悉资源管理器模板，请了解[模板部署](../../azure-resource-manager/management/overview.md)及其结构和语法。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-- 您的订阅必须注册到[Microsoft.Insights.](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)
+- 你的订阅必须已注册到 [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)。
 
 - 需要安装 [Azure PowerShell](/powershell/azure) 或 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。
 
-- 您的 VM 资源必须位于[支持自定义指标的区域](metrics-custom-overview.md#supported-regions)。 
+- VM 资源必须位于[支持自定义指标的区域](metrics-custom-overview.md#supported-regions)中。 
 
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>将 Azure Monitor 设置为数据接收器
@@ -50,7 +50,7 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 ### <a name="modify-azuredeployparametersjson"></a>修改 azuredeploy.parameters.json
 打开 *azuredeploy.parameters.json* 文件
 
-1. 输入 VM 的“adminUsername”和“adminPassword”的值********。 这些参数用于对 VM 进行远程访问。 为了避免 VM 被劫持，请勿使用此模板中的值。 机器人在 Internet 上扫描公共 GitHub 存储库中的用户名和密码。 它们可能会使用这些默认值测试 VM。
+1. 输入 VM 的“adminUsername”和“adminPassword”的值   。 这些参数用于对 VM 进行远程访问。 为了避免 VM 被劫持，请勿使用此模板中的值。 机器人在 Internet 上扫描公共 GitHub 存储库中的用户名和密码。 它们可能会使用这些默认值测试 VM。
 
 1. 为 VM 创建唯一 dnsname。
 
@@ -58,7 +58,7 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 
 打开 *azuredeploy.json* 文件
 
-在**存储帐户名称**条目后，将存储帐户 ID 添加到模板的**变量**部分。
+输入 **storageAccountName** 后，将存储帐户 ID 添加到模板的 **variables** 节。
 
 ```json
 // Find these lines.
@@ -69,7 +69,7 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
     "accountid": "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
 ```
 
-将此托管服务标识 （MSI） 扩展添加到**资源**部分顶部的模板。 该扩展可确保 Azure Monitor 接受所发出的指标。
+将此托管服务标识 (MSI) 扩展添加到 **resources** 节顶部的模板。 该扩展可确保 Azure Monitor 接受所发出的指标。
 
 ```json
 //Find this code.
@@ -234,7 +234,7 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 ## <a name="deploy-the-resource-manager-template"></a>部署资源管理器模板
 
 > [!NOTE]
-> 您必须运行 Azure 诊断扩展版本 1.5 或更高版本，并且在资源管理器模板中自动**升级 Minorversion：** 属性设置为"true"。 Azure 会在启动 VM 后加载适当的扩展。 如果模板中没有这些设置，请进行更改并重新部署模板。
+> 必须运行 Azure 诊断扩展 1.5 版或更高版本，并在资源管理器模板中将 **autoUpgradeMinorVersion**: 属性设置为“true”。 Azure 会在启动 VM 后加载适当的扩展。 如果模板中没有这些设置，请进行更改并重新部署模板。
 
 
 我们将利用 Azure PowerShell 部署资源管理器模板。
@@ -257,7 +257,7 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 
 1. 运行以下命令，使用资源管理器模板部署 VM。
    > [!NOTE]
-   > 如果要更新现有 VM，只需将“-Mode Incremental”添加到以下命令的末尾**。
+   > 如果要更新现有 VM，只需将“-Mode Incremental”添加到以下命令的末尾  。
 
    ```powershell
    New-AzResourceGroupDeployment -Name "<NameThisDeployment>" -ResourceGroupName "<Name of the Resource Group>" -TemplateFile "<File path of your Resource Manager template>" -TemplateParameterFile "<File path of your parameters file>"
@@ -272,19 +272,19 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 
 1. 登录到 Azure 门户。
 
-2. 在左侧菜单中，选择“监视”****。
+2. 在左侧菜单中，选择“监视”  。
 
-3. 在“监视”页上选择“指标”****。
+3. 在“监视”页上选择“指标”  。
 
    ![“指标”页](media/collect-custom-metrics-guestos-resource-manager-vm/metrics.png)
 
-4. 将聚合时限更改为“过去 30 分钟”****。
+4. 将聚合时限更改为“过去 30 分钟”  。
 
-5. 在资源下拉菜单中选择创建的 VM。 如果未更改模板中的名称，则名称应为“SimpleWinVM2”**。
+5. 在资源下拉菜单中选择创建的 VM。 如果未更改模板中的名称，则名称应为“SimpleWinVM2”  。
 
-6. 在命名空间下拉菜单中，选择“azure.vm.windows.guest”****
+6. 在命名空间下拉菜单中，选择“azure.vm.windows.guest” 
 
-7. 在指标下拉菜单中，选择“内存”\%“已提交的使用字节数”****。
+7. 在指标下拉菜单中，选择“内存” **“已提交的使用字节数”\%** 。
 
 
 ## <a name="next-steps"></a>后续步骤

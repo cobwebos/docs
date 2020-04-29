@@ -1,6 +1,6 @@
 ---
-title: Azure 快速路由：直接配置快速路由
-description: 此页面可帮助您配置快速路由直接。
+title: Azure ExpressRoute：配置 ExpressRoute 直接
+description: 此页可帮助你配置 ExpressRoute Direct。
 services: expressroute
 author: jaredr80
 ms.service: expressroute
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: jaredro
 ms.openlocfilehash: 2722a852b1119ef619bc414bce5cb3a8ff6f8f00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77031606"
 ---
-# <a name="how-to-configure-expressroute-direct"></a>如何配置快速路由直接
+# <a name="how-to-configure-expressroute-direct"></a>如何配置 ExpressRoute 直接
 
 使用 ExpressRoute Direct，可以直接连接到 Microsoft 战略性分布在全球的对等互连位置的的全球网络。 有关详细信息，请参阅[关于 ExpressRoute Direct](expressroute-erdirect-about.md)。
 
@@ -28,7 +28,7 @@ ms.locfileid: "77031606"
    Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
    ```
    
-2. 重新注册您的订阅到 Microsoft.Network 以访问快速路由端口定位和快速路由端口 API。
+2. 将你的订阅重新注册到 Microsoft 以访问 expressrouteportslocation 和 expressrouteport Api。
 
    ```powershell
    Register-AzResourceProvider -ProviderNameSpace "Microsoft.Network"
@@ -106,7 +106,7 @@ ms.locfileid: "77031606"
    > 封装属性还可以设置为 Dot1Q。 
    >
 
-   **输出示例：**
+   **示例输出：**
 
    ```powershell
    Name                       : Contoso-Direct
@@ -174,7 +174,7 @@ ms.locfileid: "77031606"
    $ERDirect.Links[1].AdminState = "Enabled"
    Set-AzExpressRoutePort -ExpressRoutePort $ERDirect
    ```
-   **输出示例：**
+   **示例输出：**
 
    ```powershell
    Name                       : Contoso-Direct
@@ -231,9 +231,9 @@ ms.locfileid: "77031606"
 
 有额外的线路带宽可以在 ExpressRoute Direct 上使用，仅用于支持上面概述的场景。 它们是：40Gbps 和 100Gbps。
 
-**SkuTier**可以是本地、标准版或高级版。
+**SkuTier**可以是本地、标准或高级。
 
-**SkuFamily**必须仅按流量计费数据，因为 ExpressRoute Direct 不支持无限制的数据。
+**SkuFamily**必须是 MeteredData，因为 ExpressRoute 直接不支持。
 
 在 ExpressRoute Direct 资源上创建一个线路。
 
@@ -243,7 +243,7 @@ ms.locfileid: "77031606"
 
   其他带宽包括：5.0、10.0 和 40.0
 
-  **输出示例：**
+  **示例输出：**
 
   ```powershell
   Name                             : ExpressRoute-Direct-ckt
@@ -277,4 +277,4 @@ ms.locfileid: "77031606"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关快速路由直接的详细信息，请参阅[概述](expressroute-erdirect-about.md)。
+有关 ExpressRoute Direct 的详细信息，请参阅[概述](expressroute-erdirect-about.md)。

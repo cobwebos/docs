@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
 ms.openlocfilehash: 9042ed8ddbb698192e638fa7538f74561574c262
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77668224"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>如何将常见警报架构与逻辑应用集成
@@ -20,7 +20,7 @@ ms.locfileid: "77668224"
 [常见警报架构](https://aka.ms/commonAlertSchemaDocs)跨各种不同警报类型提供一种标准化的可扩展 JSON 架构。 在通过 Webhook、Runbook 和逻辑应用以编程方式利用时，常见警报架构最有用。 本文演示如何编写单个逻辑应用以处理所有警报。 对于其他编程方法，可以运用相同的原则。 本文中所述的逻辑应用为[“重要”字段](alerts-common-schema-definitions.md#essentials)创建了明确定义的变量，并且还描述了如何处理特定于[警报类型](alerts-common-schema-definitions.md#alert-context)的逻辑。
 
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
 本文假设读者熟悉以下操作 
 * 设置警报规则（[指标](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric)、[日志](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)、[活动日志](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)）
@@ -109,7 +109,7 @@ ms.locfileid: "77668224"
         }
     ```
 
-1. 选择**+****"新建步骤**"，然后选择 **"添加操作**"。
+1. 选择**+** "**新建步骤**"，然后选择 "**添加操作**"。
 
     ![添加操作](media/action-groups-logic-app/add-action.png "添加操作")
 
@@ -137,6 +137,6 @@ ms.locfileid: "77668224"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解有关操作组 的更多。](../../azure-monitor/platform/action-groups.md)
+* [了解有关操作组的详细信息](../../azure-monitor/platform/action-groups.md)。
 * [详细了解常见警报架构](https://aka.ms/commonAlertSchemaDocs)。
 

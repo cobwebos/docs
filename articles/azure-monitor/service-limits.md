@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/10/2019
 ms.openlocfilehash: d2a2230613f9e4be3e0c9359a082843a4701b6f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77657905"
 ---
 # <a name="azure-monitor-service-limits"></a>Azure Monitor 服务限制
@@ -39,6 +39,6 @@ ms.locfileid: "77657905"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure 监视器定价](https://azure.microsoft.com/pricing/details/monitor/)
+- [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/)
 - [在 Azure Monitor 中监视使用情况和预估成本](platform/usage-estimated-costs.md)
 - [管理 Application Insights 的使用情况和成本](app/pricing.md)

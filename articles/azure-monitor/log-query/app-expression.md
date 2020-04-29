@@ -1,16 +1,16 @@
 ---
 title: Azure Monitor 日志查询中的 app() 表达式 | Microsoft Docs
-description: 应用表达式用于 Azure 监视器日志查询，用于从同一资源组、其他资源组或其他订阅中的特定应用程序见解应用检索数据。
+description: 在 Azure Monitor 日志查询中使用 app 表达式从同一资源组、另一个资源组或另一个订阅中的特定 Application Insights 应用检索数据。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/25/2019
 ms.openlocfilehash: 5502df1cd119c0f63c65945d73431a17282ebc0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670247"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>Azure Monitor 查询中的 app() 表达式
@@ -21,12 +21,12 @@ ms.locfileid: "77670247"
 
 ## <a name="syntax"></a>语法
 
-`app(`*标识符*`)`
+`app(`标识符  `)`
 
 
-## <a name="arguments"></a>自变量
+## <a name="arguments"></a>参数
 
-- 标识符：使用下表中的某种格式标识应用**。
+- 标识符：使用下表中的某种格式标识应用  。
 
 | 标识符 | 说明 | 示例
 |:---|:---|:---|

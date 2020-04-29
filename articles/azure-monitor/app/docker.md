@@ -4,10 +4,10 @@ description: Docker 性能计数器、事件和异常可连同容器化应用发
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 5ff3d6a2b31425a3fb6857c8c6aed45f7ef18d64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77669601"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>在 Application Insights 中监视 Docker 应用程序（已弃用）
@@ -81,7 +81,7 @@ ms.locfileid: "77669601"
 ### <a name="docker-context-added-to-app-telemetry"></a>已添加到应用遥测的 Docker 上下文
 从使用 AI SDK 检测的应用程序发送的请求遥测数据，已使用 Docker 上下文信息进行补充。
 
-## <a name="q--a"></a>问题解答
+## <a name="q--a"></a>问与答
 *Application Insights 提供 Docker 所不能提供的哪些功能？*
 
 * 按容器和映像提供性能计数器详细剖析。

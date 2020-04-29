@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/03/2018
 ms.openlocfilehash: ee7a2f49641eb0cfe1f8a4bffb44c7f8642408fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670638"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure Monitor 中的 Wire Data 2.0（预览版）解决方案
@@ -24,9 +24,9 @@ ms.locfileid: "77670638"
 除了 Log Analytics 代理之外，Wire Data 解决方案使用在 IT 基础结构中的计算机上安装的 Microsoft 依赖关系代理。 依赖关系代理将监视 [OSI 模型](https://en.wikipedia.org/wiki/OSI_model)中处于网络层 2-3 层中的计算机接收和发送的网络数据，包括使用的各种协议和端口。 然后，这些代理将数据发送到 Azure Monitor。  
 
 >[!NOTE]
->如果您已部署服务映射，或者正在考虑为 VM 部署服务映射或[Azure 监视器](../../azure-monitor/insights/vminsights-overview.md)，则在 Azure 监视器中收集和存储新的连接指标数据集，该数据集提供与有线数据类似的信息。
+>如果已部署服务映射或正在考虑服务映射或[用于 VM 的 Azure Monitor](../../azure-monitor/insights/vminsights-overview.md)，则会在为传输数据提供类似信息的 Azure Monitor 中收集并存储新的连接度量值数据集。
 
-默认情况下，Azure Monitor 从 Windows 和 Linux 中内置的计数器以及可以指定的其他性能计算器记录 CPU、内存和磁盘数据以及网络性能数据。 网络以及其他数据的收集针对每个代理实时执行，包括正在由计算机使用的子网和应用程序级协议。  Wire Data 查看应用程序层（而不是 TCP 传输层）的数据。 该解决方案不会查看单个 ACK 和 SYN。 完成握手后，该连接将被视作实时连接，并被标记为“已连接”。 只要双方同意开启套接字，并且数据可以在彼此之间来回传递，该实时连接就将保持不变。 只要有一方关闭连接，该连接就会被标记为“已断开连接”。  因此，它只对已成功完成数据包的带宽计数，而不会对重新发送或失败的数据包进行报告。
+默认情况下，Azure Monitor 从 Windows 和 Linux 中内置的计数器以及可以指定的其他性能计算器记录 CPU、内存和磁盘数据以及网络性能数据。 网络以及其他数据的收集针对每个代理实时执行，包括正在由计算机使用的子网和应用程序级协议。  Wire Data 查看应用程序层（而不是 TCP 传输层）的数据。  该解决方案不会查看单个 ACK 和 SYN。  完成握手后，该连接将被视作实时连接，并被标记为“已连接”。 只要双方同意开启套接字，并且数据可以在彼此之间来回传递，该实时连接就将保持不变。  只要有一方关闭连接，该连接就会被标记为“已断开连接”。  因此，它只对已成功完成数据包的带宽计数，而不会对重新发送或失败的数据包进行报告。
 
 如果使用过 [sFlow](http://www.sflow.org/) 或其他包含 [Cisco 的 NetFlow 协议](https://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/ios-netflow/prod_white_paper0900aecd80406232.html)的软件，则不会对来自线路数据的统计信息和数据感到陌生。
 
@@ -51,14 +51,14 @@ ms.locfileid: "77670638"
 
 Wire Data 从 Microsoft 依赖关系代理获取其数据。 Dependency Agent 依赖 Log Analytics 代理连接到 Azure Monitor。 这意味着服务器必须首先安装和配置 Log Analytics 代理，然后再安装 Dependency Agent。 下表介绍了 Wire Data 解决方案支持的连接的源。
 
-| **连接源** | **支持** | **说明** |
+| **连接的源** | **支持** | **说明** |
 | --- | --- | --- |
-| Windows 代理 | 是 | Wire Data 从 Windows 代理计算机分析和收集数据。 <br><br> 除了 Windows 的[日志分析代理](../platform/agent-windows.md)外，Windows 代理还需要 Microsoft 依赖项代理。 有关完整的操作系统版本列表，请参阅[支持的操作系统](vminsights-enable-overview.md#supported-operating-systems)。 |
-| Linux 代理 | 是 | Wire Data 从 Linux 代理计算机分析和收集数据。<br><br> 除了 Linux 的[日志分析代理](../learn/quick-collect-linux-computer.md)外，Linux 代理还需要微软依赖项代理。 有关完整的操作系统版本列表，请参阅[支持的操作系统](vminsights-enable-overview.md#supported-operating-systems)。 |
+| Windows 代理 | 是 | Wire Data 从 Windows 代理计算机分析和收集数据。 <br><br> 除了[适用于 windows 的 Log Analytics 代理](../platform/agent-windows.md)，windows 代理还需要 Microsoft 依赖关系代理。 有关完整的操作系统版本列表，请参阅[支持的操作系统](vminsights-enable-overview.md#supported-operating-systems)。 |
+| Linux 代理 | 是 | Wire Data 从 Linux 代理计算机分析和收集数据。<br><br> 除了[适用于 linux 的 Log Analytics 代理](../learn/quick-collect-linux-computer.md)，linux 代理还需要 Microsoft 依赖关系代理。 有关完整的操作系统版本列表，请参阅[支持的操作系统](vminsights-enable-overview.md#supported-operating-systems)。 |
 | System Center Operations Manager 管理组 | 是 | Wire Data 在所连接的 [System Center Operations Manager 管理组](../platform/om-agents.md)中从 Windows 和 Linux 代理分析和收集数据。 <br><br> 需要从 System Center Operations Manager 代理计算机直接连接到 Azure Monitor。 |
 | Azure 存储帐户 | 否 | Wire Data 从代理计算机中收集数据，因此Wire Data 中没有从 Azure 存储收集的数据。 |
 
-在 Windows 上，系统中心操作管理器和 Azure 监视器都使用 Microsoft 监视代理 （MMA） 来收集和发送数据。 根据上下文，可将此代理称为 System Center Operations Manager 代理、Log Analytics 代理、MMA 或直接代理。 System Center Operations Manager 和 Azure Monitor 提供略有不同的 MMA 版本。 这些版本每个都可向 System Center Operations Manager 报告，或向 Azure Monitor 报告，也可同时向两者报告。
+在 Windows 上，System Center Operations Manager 和 Azure Monitor 使用 Microsoft Monitoring Agent （MMA）来收集和发送数据。 根据上下文，可将此代理称为 System Center Operations Manager 代理、Log Analytics 代理、MMA 或直接代理。 System Center Operations Manager 和 Azure Monitor 提供略有不同的 MMA 版本。 这些版本每个都可向 System Center Operations Manager 报告，或向 Azure Monitor 报告，也可同时向两者报告。
 
 在 Linux 上，适用于 Linux 的 Log Analytics 代理收集数据并将其发送到 Azure Monitor。 可对具有直接连接到 Azure Monitor 的代理的服务器或通过 System Center Operations Manager 管理组连接到 Azure Monitor 的服务器使用 Wire Data。
 
@@ -73,7 +73,7 @@ Dependency Agent 本身不传输任何数据，它不需要对防火墙或端口
 
 如果 Windows 或 Linux 计算机无法直接连接到服务，则需要将 Log Analytics 代理配置为使用 Log Analytics 网关连接到 Azure Monitor。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=52666)下载 Log Analytics 网关。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 需要 [Insight and Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite-pricing) 解决方案产品/服务。
 - 如果正在使用以前版本的 Wire Data 解决方案，必须首先将其删除。 不过，通过原始 Wire Data 解决方案捕获的所有数据在 Wire Data 2.0 和日志搜索中仍然可用。
@@ -86,7 +86,7 @@ Dependency Agent 本身不传输任何数据，它不需要对防火墙或端口
 
 #### <a name="windows-server"></a>Windows Server
 
-- Windows Server 2019
+- Windows Server Standard 2012 R2
 - Windows Server 2016 1803
 - Windows Server 2016
 - Windows Server 2012 R2
@@ -153,14 +153,14 @@ Dependency Agent 本身不传输任何数据，它不需要对防火墙或端口
 
 ### <a name="dependency-agent-downloads"></a>Dependency Agent 下载
 
-| 文件 | OS | 版本 | SHA-256 |
+| 文件 | (OS) | Version | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.7.4 | A111B92AB6CF28EB68B696C60FE51F980BFDFF78C36A900575E17083972989E0 |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.7.4 | AB58F3DB8B1C3DEE7512690E5A65F1DFC41B43831543B5C040FCCE8390F2282C |
 
 
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 
 执行以下步骤，为工作区配置 Wire Data 解决方案。
 
@@ -257,7 +257,7 @@ sh InstallDependencyAgent-Linux64.bin -s
 
 ### <a name="desired-state-configuration"></a>Desired State Configuration
 
-要通过所需的状态配置部署依赖项代理，可以使用 xPS 希望状态配置模块和类似以下内容的代码位：
+若要通过所需状态配置部署依赖关系代理，可以使用 xPSDesiredStateConfiguration 模块和类似于下面的代码：
 
 ```powershell
 Import-DscResource -ModuleName xPSDesiredStateConfiguration
@@ -381,9 +381,9 @@ rpm -e dependency-agent dependency-agent-connector
 
 将为每种输入数据创建 _WireData_ 类型的记录。 WireData 记录具有下表中所示的属性：
 
-| properties | 描述 |
+| 属性 | 说明 |
 |---|---|
-| Computer | 从中收集了数据的计算机名称 |
+| 计算机 | 从中收集了数据的计算机名称 |
 | TimeGenerated | 记录的时间 |
 | LocalIP | 本地计算机的 IP 地址 |
 | SessionState | 已连接或已断开连接 |

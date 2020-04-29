@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
 ms.openlocfilehash: b9ca8a703ed8a84148abd23e90114402d8806bd6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77667187"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>使用 Azure Monitor 进行持续监视
@@ -50,7 +50,7 @@ ms.locfileid: "77667187"
 ##  <a name="combine-resources-in-azure-resource-groups"></a>在 Azure 资源组中合并资源
 当今 Azure 中的典型应用程序包含多个资源，例如，托管在云服务、AKS 群集中或 Service Fabric 中的 VM 和应用服务或微服务。 这些应用程序经常利用事件中心、存储、SQL 和服务总线等依赖项。
 
-- 合并 Azure 资源组中的资源，以便全面了解构成不同应用程序的所有资源。 使用[用于资源组的 Azure Monitor](../azure-monitor/insights/resource-group-insights.md) 可以方便地跟踪整个全堆栈应用程序的运行状况和性能，并可以出于任何调查或调试目的深入到相关组件。
+- 合并 Azure 资源组中的资源，以全面了解构成不同应用程序的所有资源。 使用[用于资源组的 Azure Monitor](../azure-monitor/insights/resource-group-insights.md) 可以方便地跟踪整个全堆栈应用程序的运行状况和性能，并可以出于任何调查或调试目的深入到相关组件。
 
 ## <a name="ensure-quality-through-continuous-deployment"></a>通过持续部署确保质量
 使用持续集成/持续部署可以根据自动测试的结果，将代码更改自动集成和部署到应用程序。 它简化了部署过程，并确保任何更改在转移到生产环境之前具有可靠的质量。
@@ -58,13 +58,13 @@ ms.locfileid: "77667187"
 
 - 使用 [Azure Pipelines](/azure/devops/pipelines) 可以实现持续部署，并可以根据 CI/CD 测试，自动化将代码提交到生产环境的整个流程。
 - 使用[质量门限](/azure/devops/pipelines/release/approvals/gates)可将监视功能集成到部署前或部署后的流程。 这可以确保应用程序从开发环境转移到生产环境时可以符合关键的运行状况/性能指标 (KPI)，并且基础结构环境或规模的任何差异不会对 KPI 造成负面影响。
-- 在不同的部署环境（如开发人员、测试、金丝雀和 Prod）之间[保持单独的监视实例](../azure-monitor/app/separate-resources.md)。这可确保收集的数据在整个关联的应用程序和基础结构中相关。 如果需要跨环境关联数据，可以使用[指标资源管理器中的多资源图表](../azure-monitor/platform/metrics-charts.md)，或者[在 Azure Monitor 中创建跨资源查询](log-query/cross-workspace-query.md)。
+- 在不同的部署环境之间[维护单独的监视实例](../azure-monitor/app/separate-resources.md)，如开发、测试、未部署和生产。这可确保收集的数据与关联的应用程序和基础结构相关。 如果需要跨环境关联数据，可以使用[指标资源管理器中的多资源图表](../azure-monitor/platform/metrics-charts.md)，或者[在 Azure Monitor 中创建跨资源查询](log-query/cross-workspace-query.md)。
 
 
 ## <a name="create-actionable-alerts-with-actions"></a>使用操作创建可操作警报
 监视的一个重要方面是将任何当前问题和预测到的问题主动通知给管理员。 
 
-- 基于日志和指标[在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-overview.md)可以识别到可预测的故障状态。 在使所有警报可操作方面应有一个目标，即，这些警报表示实际的关键状况，并且应该尽量减少误报。 使用[动态阈值](platform/alerts-dynamic-thresholds.md)自动计算指标数据的基线，而不是定义自己的静态阈值。 
+- 基于日志和指标[在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-overview.md)可以识别到可预测的故障状态。 在使所有警报可操作方面应有一个目标，即，这些警报表示实际的关键状况，并且应该尽量减少误报。 使用[动态阈值](platform/alerts-dynamic-thresholds.md)来自动计算指标数据的基线，而不是定义自己的静态阈值。 
 - 为警报定义操作可以使用最有效的方式来通知管理员。 可用的[通知操作](platform/action-groups.md#create-an-action-group-by-using-the-azure-portal)包括短信、电子邮件、推送通知或语音呼叫。
 - 使用更高级的操作可以通过 [Webhook](platform/activity-log-alerts-webhook.md)[连接到 ITSM 工具](platform/itsmc-overview.md)或其他警报管理系统。
 - 还可以使用 [Azure 自动化 Runbook](../automation/automation-webhooks.md) 或[逻辑应用](/connectors/custom-connectors/create-webhook-trigger)（可以通过 Webhook 从警报启动）来修正警报中识别到的问题。 
@@ -86,4 +86,4 @@ ms.locfileid: "77667187"
 ## <a name="next-steps"></a>后续步骤
 
 - 了解 [Azure Monitor](overview.md) 的不同组件。
-- [向发布管道添加连续监视](../azure-monitor/app/continuous-monitoring.md)。
+- [将持续监视添加](../azure-monitor/app/continuous-monitoring.md)到发布管道。

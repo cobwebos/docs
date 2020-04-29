@@ -1,6 +1,6 @@
 ---
 title: Azure 流量管理器中的指标和警报
-description: 在本文中，了解 Azure 中可用于流量管理器的指标和警报。
+description: 本文介绍适用于 Azure 中的流量管理器的指标和警报。
 services: traffic-manager
 author: rohinkoul
 ms.service: traffic-manager
@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: rohink
 ms.openlocfilehash: 521e6ac605d187c0f95545611a17a86cfda6e1dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76938582"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>流量管理器指标和警报

@@ -1,5 +1,5 @@
 ---
-title: Azure 监视器中的容器监视解决方案 |微软文档
+title: Azure Monitor 中的容器监视解决方案 |Microsoft Docs
 description: Azure Monitor 中的容器监视解决方案可帮助用户在单个位置查看和管理 Docker 和 Windows 容器主机。
 ms.subservice: logs
 ms.topic: conceptual
@@ -7,10 +7,10 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 07/22/2019
 ms.openlocfilehash: 171f897f6e110e8f759281c139addab477ecede3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77664688"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Azure Monitor 中的容器监视解决方案
@@ -29,7 +29,7 @@ ms.locfileid: "77664688"
 - Service Fabric
 - Red Hat OpenShift
 
-如果在 Azure Service [Fabric](../../service-fabric/service-fabric-overview.md)中部署了容器，我们建议启用[Service Fabric 解决方案](../../service-fabric/service-fabric-diagnostics-oms-setup.md)和此解决方案，以包括对群集事件的监视。 在启用 Service Fabric 解决方案之前，请查看[使用服务交换矩阵解决方案](../../service-fabric/service-fabric-diagnostics-event-analysis-oms.md)以了解它提供了什么以及如何使用它。
+如果在[Azure Service Fabric](../../service-fabric/service-fabric-overview.md)中部署了容器，则建议同时启用[Service Fabric 解决方案](../../service-fabric/service-fabric-diagnostics-oms-setup.md)和此解决方案，以包括对群集事件的监视。 在启用 Service Fabric 解决方案之前，请查看[使用 Service Fabric 解决方案](../../service-fabric/service-fabric-diagnostics-event-analysis-oms.md)了解其提供的内容以及如何使用它。
 
 若要监视部署到 Kubernetes 环境的工作负荷的性能，而该环境托管在 Azure Kubernetes 服务 (AKS) 上，请参阅[监视 Azure Kubernetes 服务](../../azure-monitor/insights/container-insights-overview.md)。 容器监视解决方案不支持监视该平台。  
 
@@ -45,7 +45,7 @@ ms.locfileid: "77664688"
 
 下表概括了 Azure Monitor 中容器清单、性能和日志的 Docker 业务流程和操作系统监视支持。   
 
-| | ACS | Linux | Windows | 容器<br>清单 | 图像<br>清单 | 节点<br>清单 | 容器<br>性能 | 容器<br>事件 | 事件<br>日志 | 容器<br>日志 |
+| | ACS | Linux | Windows | 容器<br>清单 | 映像<br>清单 | 节点<br>清单 | 容器<br>性能 | 容器<br>事件 | 事件<br>日志 | 容器<br>日志 |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
@@ -105,9 +105,9 @@ ms.locfileid: "77664688"
        - 查看[配置适用于 Kubernetes 的 Log Analytics Linux 代理](#configure-a-log-analytics-linux-agent-for-kubernetes)。
        - 查看[配置适用于 Kubernetes 的 Log Analytics Windows 代理](#configure-a-log-analytics-windows-agent-for-kubernetes)。
        - 查看“使用 Helm 在 Linux Kubernetes 上部署 Log Analytics 代理”。
-     - 如果您有 Azure 容器服务 DC/OS 群集，则在[使用 Azure 监视器 监视 Azure 容器服务 DC/OS 群集](../../container-service/dcos-swarm/container-service-monitoring-oms.md)时了解更多信息。
+     - 如果拥有 Azure 容器服务 DC/OS 群集，请在[使用 Azure Monitor 监视 Azure 容器服务 dc/os 群集](../../container-service/dcos-swarm/container-service-monitoring-oms.md)中了解详细信息。
      - 如果拥有 Docker Swarm 模式环境，请访问“配置适用于 Docker Swarm 的 Log Analytics 代理”了解更多信息。
-     - 如果您有服务结构群集，则在 Azure 监视器 的[监视器容器](../../service-fabric/service-fabric-diagnostics-oms-containers.md)上了解更多信息。
+     - 如果有 Service Fabric 群集，请在[具有 Azure Monitor 的监视器容器](../../service-fabric/service-fabric-diagnostics-oms-containers.md)中了解详细信息。
 
 请参阅 [Windows 上的 Docker 引擎](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon)一文，详细了解如何在运行 Windows 的计算机上安装和配置 Docker 引擎。
 
@@ -116,13 +116,13 @@ ms.locfileid: "77664688"
 
 ### <a name="install-and-configure-linux-container-hosts"></a>安装和配置 Linux 容器主机
 
-安装 Docker 之后，请使用以下容器主机设置来配置代理以供 Docker 使用。 首先，需要 Log Analytics 工作区 ID 和密钥，可在 Azure 门户中找到它们。 在工作区中，单击 **"快速启动** > **计算机**"以查看**工作区 ID**和**主键**。  将它们复制并粘贴到喜爱的编辑器中。
+安装 Docker 之后，请使用以下容器主机设置来配置代理以供 Docker 使用。 首先，需要 Log Analytics 工作区 ID 和密钥，可在 Azure 门户中找到它们。 在工作区中，单击 "**快速入门** > **计算机**" 查看**工作区 ID**和**主密钥**。  将它们复制并粘贴到喜爱的编辑器中。
 
 对于除了 CoreOS 之外的所有 Linux 容器主机：****
 
 - 有关如何安装适用于 Linux 的 Log Analytics 代理的详细信息和步骤，请参阅 [Log Analytics 代理概述](../../azure-monitor/platform/log-analytics-agent.md)。
 
-**对于所有 Linux 容器主机，包括 CoreOS：**
+**对于所有 Linux 容器主机（包括 CoreOS）：**
 
 启动要监视的容器。 修改并使用以下示例：
 
@@ -130,7 +130,7 @@ ms.locfileid: "77664688"
 sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/containers:/var/lib/docker/containers -e WSID="your workspace id" -e KEY="your key" -h=`hostname` -p 127.0.0.1:25225:25225 --name="omsagent" --restart=always microsoft/oms
 ```
 
-**对于所有 Azure 政府 Linux 容器主机，包括 CoreOS：**
+**对于所有 Azure 政府版 Linux 容器主机，包括 CoreOS：**
 
 启动要监视的容器。 修改并使用以下示例：
 
@@ -185,7 +185,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
 
 可通过三种方法将 Log Analytics 代理添加到 Red Hat OpenShift，以开始收集容器监视数据。
 
-* 直接在每个 OpenShift 节点上安装[Linux 的日志分析代理](../../azure-monitor/learn/quick-collect-linux-computer.md)  
+* 直接在每个 OpenShift 节点上[安装适用于 Linux 的 Log Analytics 代理](../../azure-monitor/learn/quick-collect-linux-computer.md)  
 * 在每个位于 Azure 中的 OpenShift 节点上[启用 Log Analytics VM 扩展](../../azure-monitor/learn/quick-collect-azurevm.md)  
 * 安装 Log Analytics 代理作为 OpenShift daemon-set  
 
@@ -528,7 +528,7 @@ Start-Service docker
 以下代理类型每 3 分钟收集一次数据。
 
 - [适用于 Linux 的 Log Analytics 代理](../../azure-monitor/learn/quick-collect-linux-computer.md)
-- [窗口代理](../../azure-monitor/platform/agent-windows.md)
+- [Windows 代理](../../azure-monitor/platform/agent-windows.md)
 - [Log Analytics VM 扩展](../../azure-monitor/learn/quick-collect-azurevm.md)
 
 ### <a name="container-records"></a>容器记录

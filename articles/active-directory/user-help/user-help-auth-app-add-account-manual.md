@@ -12,10 +12,10 @@ ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: b237f710866ad3960dd65902c0789228d8c391bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77062313"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>手动将帐户添加到应用
@@ -93,7 +93,7 @@ ms.locfileid: "77062313"
 
 5. 在计算机的“添加备份验证方法”页上，键入备份验证方法为 Amazon 帐户提供的六位数验证码，然后选择“验证验证码并继续”********。
 
-6. 在"几乎完成"页上，决定是否使计算机成为受信任的设备，然后选择 **"已将其打开"。打开两步验证**。
+6. 在 "几乎完成" 页上，决定是否将计算机设置为受信任的设备，然后选择 "**获取"。启用双重验证**。
 
     此时，“高级安全设置”**** 页显示，其中包含更新后的双因素验证详细信息。
 
@@ -104,6 +104,6 @@ ms.locfileid: "77062313"
 
 - 将帐户添加到应用后，可以在设备上使用 Microsoft Authenticator 应用登录。 有关详细信息，请参阅[使用应用登录](user-help-auth-app-sign-in.md)。
 
-- 如果您在获取个人 Microsoft 帐户的验证码时遇到问题，请参阅[Microsoft 帐户安全信息&验证码](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes)一文的**故障排除验证码问题**部分。
+- 如果在获取个人 Microsoft 帐户的验证代码时遇到问题，请参阅[Microsoft 帐户安全信息 & 验证](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes)代码一文中的 "**验证代码问题疑难解答**" 一节。
 
 - 对于运行 iOS 的设备，还可以将帐户凭据和相关的应用设置（如帐户顺序）备份到云中。 有关详细信息，请参阅 [Microsoft Authenticator 应用备份和恢复](user-help-auth-app-backup-recovery.md)。

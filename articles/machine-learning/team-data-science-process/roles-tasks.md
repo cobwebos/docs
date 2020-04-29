@@ -12,17 +12,17 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c1ed731943abf0efdd99ea54d2318fa402835e08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76720004"
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Team Data Science Process 角色和任务
 
 Team Data Science Process (TDSP) 是由 Microsoft 开发的一个框架，其提供的结构化方法可以有效地生成预测分析解决方案和智能应用程序。 本文概述了数据科学团队对此过程进行标准化的关键人员角色和关联任务。
 
-本介绍性文章链接到有关如何设置 TDSP 环境的教程。 这些教程提供了使用 Azure DevOps 项目、Azure 存储库和 Azure 板的详细指南。  激励目标是从概念到建模，转向部署。
+本文介绍了有关如何设置 TDSP 环境的教程的链接。 教程提供了有关使用 Azure DevOps Projects、Azure Repos 存储库和 Azure Boards 的详细指南。  激发目标是通过建模和部署来转变概念。
 
 教程使用了 Azure DevOps，因为这是 Microsoft 内部实现 TDSP 的方法。 Azure DevOps 通过集成基于角色的安全性、工作项管理和跟踪以及代码托管、共享和源代码管理来促进协作。 教程还使用 Azure [数据科学虚拟机](https://aka.ms/dsvm) (DSVM) 作为分析桌面，该桌面已预先配置了多个常用的数据科学工具，并集成了 Microsoft 软件和 Azure 服务。 
 
@@ -40,13 +40,13 @@ Team Data Science Process (TDSP) 是由 Microsoft 开发的一个框架，其提
 ## <a name="definition-and-tasks-for-the-four-tdsp-roles"></a>四个 TDSP 角色的定义和任务
 假设数据科学部门由一个组内的各团队构成，则 TDSP 人员有四种不同的职能角色：
 
-1. **集团经理**：管理企业中的全部数据科学单元。 数据科学部门可能有多个团队，每个团队都在不同的业务垂直领域开展多个数据科学项目。 组管理员可以将任务委托给代理，但与角色相关的任务不变。
+1. **组管理员**：管理企业中整个数据科学单元。 数据科学部门可能有多个团队，每个团队都在不同的业务垂直领域开展多个数据科学项目。 组管理员可以将任务委托给代理，但与角色相关的任务不变。
    
-2. **团队领导**：管理企业数据科学部门的团队。 团队由多个数据科学家组成。 对于小型数据科学部门，组管理员和团队主管可能是同一人。
+2. **团队主管**：管理企业数据科学单位的团队。 团队由多个数据科学家组成。 对于小型数据科学部门，组管理员和团队主管可能是同一人。
    
-3. **项目负责人**：管理单个数据科学家对特定数据科学项目的日常活动。
+3. **项目主管**：管理特定数据科学项目上各个数据科学家的日常活动。
    
-4. **项目个人贡献者**：数据科学家、业务分析师、数据工程师、架构师和执行数据科学项目的其他人。
+4. **项目各个参与者**：数据科学家、业务分析人员、数据工程师、架构师和执行数据科学项目的其他人。
 
 > [!NOTE]
 > 根据企业结构和规模，一个人可能会兼任多个角色，或者多个人可能担任一个角色的情况。
@@ -76,7 +76,7 @@ Team Data Science Process (TDSP) 是由 Microsoft 开发的一个框架，其提
 
 - 在组的 Azure DevOps 组织中创建团队“项目”****。
 - 在项目下创建“项目模板存储库”，通过组管理员或管理员委托人设置的组项目模板存储库将其设定为种子****。
-- 创建**团队实用程序存储库**，从组实用程序存储库中种子它，并将特定于团队的实用程序添加到存储库中。
+- 创建**团队实用工具存储库**，将其从组实用工具存储库中植入，并将特定于团队的实用程序添加到存储库。
 - 创建“Azure 文件存储”，为团队存储有用的数据资产（可选）[](https://azure.microsoft.com/services/storage/files/)。 其他团队成员可以在其分析桌面上装载这个共享的云文件存储。
 - 将 Azure 文件存储装载到团队的“DSVM”上，并向其中添加团队数据资产（可选）****。
 - 设置安全控制，方法是添加团队成员并配置其权限****。

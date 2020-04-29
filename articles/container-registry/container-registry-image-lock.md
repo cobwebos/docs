@@ -4,28 +4,28 @@ description: 设置容器映像或存储库的属性，使之不会在 Azure 容
 ms.topic: article
 ms.date: 09/30/2019
 ms.openlocfilehash: da84767523bb6d948b71b1c1ad2ddaffb628354a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77659690"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>锁定 Azure 容器注册表中的容器映像
 
 在 Azure 容器注册表中，可以锁定某个映像版本或存储库，使之不会被删除或更新。 若要锁定映像或存储库，可使用 Azure CLI 命令 [az acr repository update][az-acr-repository-update] 更新其属性。 
 
-本文要求您在 Azure 云外壳或本地（建议版本 2.0.55 或更高版本）中运行 Azure CLI。 运行 `az --version` 即可查找版本。 如果需要安装或升级，请参阅[安装 Azure CLI][azure-cli]。
+本文要求在 Azure Cloud Shell 或本地运行 Azure CLI （建议使用版本2.0.55 或更高版本）。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
 
 > [!IMPORTANT]
-> 本文不适用于锁定整个注册表，例如，在 Azure 门户中使用 **"设置>锁定**"或`az lock`Azure CLI 中的命令。 锁定注册表资源不会阻止你在存储库中创建、更新或删除数据。 锁定注册表只会影响管理操作，如添加或删除复制，或删除注册表本身。 有关详细信息，请参阅[锁定资源以防止意外更改](../azure-resource-manager/management/lock-resources.md)。
+> 本文不适用于锁定整个注册表，例如，使用 Azure 门户中的**设置 > 锁定**，或`az lock`在 Azure CLI 中使用命令。 锁定注册表资源不会阻止你在存储库中创建、更新或删除数据。 锁定注册表只会影响管理操作，如添加或删除复制，或删除注册表本身。 有关详细信息，请参阅[锁定资源以防止意外更改](../azure-resource-manager/management/lock-resources.md)。
 
 ## <a name="scenarios"></a>方案
 
-默认情况下，Azure 容器注册表中带标记的映像是可变的，因此，如果具有相应的权限，你可以反复更新带有相同标记的映像并将其推送到注册表。** 还可以根据需要[删除](container-registry-delete.md)容器映像。 开发映像并需要保持注册表的大小时，此行为很有用。
+默认情况下，Azure 容器注册表中带标记的映像是可变的，因此，如果具有相应的权限，你可以反复更新带有相同标记的映像并将其推送到注册表。  还可以根据需要[删除](container-registry-delete.md)容器映像。 开发映像并需要保持注册表的大小时，此行为很有用。
 
-但是，将容器映像部署到生产环境时，可能需要不可变的容器映像。** 不可变的映像是指不能意外删除或覆盖的映像。
+但是，将容器映像部署到生产环境时，可能需要不可变的容器映像。  不可变的映像是指不能意外删除或覆盖的映像。
 
-有关在注册表中标记和版本映像的策略，请参阅[有关标记和版本控制容器映像的建议](container-registry-image-tag-version.md)。
+有关在注册表中标记和版本映像的策略，请参阅标记[和版本控制容器映像的建议](container-registry-image-tag-version.md)。
 
 使用 [az acr repository update][az-acr-repository-update] 命令设置存储库属性，以便可以：
 

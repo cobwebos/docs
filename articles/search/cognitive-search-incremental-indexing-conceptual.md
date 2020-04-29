@@ -1,7 +1,7 @@
 ---
-title: 增量扩充（预览）
+title: 增量扩充（预览版）
 titleSuffix: Azure Cognitive Search
-description: 缓存 Azure 存储中的 AI 充实管道的中间内容和增量更改，以保留对现有已处理文档的投资。 此功能目前处于公开预览状态。
+description: 在 Azure 存储中缓存 AI 扩充管道的中间内容和增量更改，以保护对现有已处理文档的投资。 此功能目前处于公开预览状态。
 manager: nitinme
 author: Vkurpad
 ms.author: vikurpad
@@ -9,28 +9,28 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.openlocfilehash: 09003c26ead9108d07ae339fcf64235c246474a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77024137"
 ---
-# <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure 认知搜索中增量扩充和缓存简介
+# <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure 认知搜索中的增量扩充和缓存简介
 
 > [!IMPORTANT] 
-> 增量扩充当前处于公共预览版中。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供了此功能。 目前不支持门户或 .NET SDK。
+> 增量扩充目前以公共预览版提供。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供了此功能。 目前不支持门户或 .NET SDK。
 
-增量扩充增加了浓缩管道的缓存和状态，保留了对现有产出的投资，同时仅更改受特定修改影响的文档。 这不仅保留了您在处理（特别是 OCR 和图像处理）方面的货币投资，还使系统更加高效。 缓存结构和内容时，索引器可以确定哪些技能已更改，并且仅运行已修改的技能以及任何下游相关技能。 
+增量扩充将缓存和有状态添加到扩充管道，在现有输出中保留投资，同时更改受特定修改影响的文档。 这不仅会使你的资金投入处理（特别是 OCR 和图像处理），而且还可以提高系统的效率。 缓存结构和内容时，索引器可以确定哪些技能发生了变化，并且仅运行了已修改的技能以及任何下游相关技能。 
 
 ## <a name="indexer-cache"></a>索引器缓存
 
-增量富集向富集管道添加缓存。 索引器缓存文档开裂的结果以及每个文档的每个技能的输出。 更新技能集后，只会重新运行已更改的技能或下游技能。 更新的结果将写入缓存，并在搜索索引或知识存储中更新文档。
+增量扩充将缓存添加到扩充管道。 索引器将从文档破解和每个文档的每项技能的输出中缓存结果。 更新技能集后，只会重新运行已更改的技能或下游技能。 更新的结果将写入缓存，并在搜索索引或知识库中更新文档。
 
-在物理上，缓存存储在 Azure 存储帐户中的 Blob 容器中。 缓存还使用表存储进行处理更新的内部记录。 搜索服务中的所有索引可以共享索引器缓存的同一存储帐户。 为每个索引器为其使用的容器分配了一个唯一且不可变的缓存标识符。
+在物理上，缓存存储在 Azure 存储帐户中的 blob 容器中。 缓存还使用表存储来处理更新的内部记录。 搜索服务中的所有索引可以共享索引器缓存的同一存储帐户。 为每个索引器分配一个唯一且不可变的缓存标识符到它所使用的容器。
 
 ## <a name="cache-configuration"></a>缓存配置
 
-您需要在`cache`索引器上设置属性，以便开始从增量扩充中获益。 下面的示例演示了启用缓存的索引器。 此配置的特定部分在以下部分中介绍。 有关详细信息，请参阅[设置增量富集](search-howto-incremental-index.md)。
+需要在索引器上设置`cache`属性以从增量扩充启动受益。 下面的示例演示启用了缓存的索引器。 以下部分介绍了此配置的特定部分。 有关详细信息，请参阅[Set up 扩充](search-howto-incremental-index.md)。
 
 ```json
 {
@@ -48,38 +48,38 @@ ms.locfileid: "77024137"
 }
 ```
 
-在现有索引器上设置此属性需要重置和重新运行索引器，这将导致数据源中的所有文档再次被处理。 此步骤对于消除由技能集的早期版本所丰富的任何文档是必需的。 
+在现有索引器上设置此属性将要求你重置并重新运行索引器，这将导致再次处理数据源中的所有文档。 此步骤是消除以前版本的技能组合所丰富的任何文档所必需的。 
 
 ## <a name="cache-management"></a>缓存管理
 
-缓存的生命周期由索引器管理。 如果索引`cache`器上的属性设置为 null 或连接字符串已更改，则在下次索引器运行时将删除现有缓存。 缓存生命周期还与索引器生命周期相关联。 如果删除某个索引器，则也会删除关联的缓存。
+缓存的生命周期由索引器管理。 如果索引`cache`器上的属性设置为 null 或连接字符串已更改，则在下一次索引器运行时将删除现有缓存。 缓存生命周期还与索引器生命周期相关联。 如果删除某个索引器，则也会删除关联的缓存。
 
-虽然增量扩充旨在检测和响应更改，无需干预，但可以使用一些参数来覆盖默认行为：
+虽然增量扩充旨在检测并响应不需要干预的更改，但有一些参数可用于重写默认行为：
 
-+ 确定新文档的优先级
-+ 绕过技能集检查
++ 设置新文档的优先级
++ 绕过技能组合检查
 + 绕过数据源检查
-+ 部队技能集评估
++ 强制技能组合评估
 
-### <a name="prioritize-new-documents"></a>确定新文档的优先级
+### <a name="prioritize-new-documents"></a>设置新文档的优先级
 
-将`enableReprocessing`属性设置为控制对缓存中已表示的传入文档的处理。 当`true`（默认）时，在重新运行索引器时，将重新处理缓存中已有的文档，前提是您的技能更新会影响该文档。 
+将`enableReprocessing`属性设置为控制对缓存中已表示的传入文档进行处理。 如果`true`为（默认值），则重新运行索引器时，将重新处理缓存中已有的文档，前提是你的技能更新会影响该文档。 
 
-当`false`不重新处理 现有文档时，可以有效地将新传入内容优先于现有内容。 您只能临时设置`enableReprocessing``false`。 为了确保整个语料库的一致性`enableReprocessing`，在大多数情况下`true`，确保所有文档（无论是新的文档还是现有文档）都根据当前技能集定义有效。
+如果`false`为，则不重新处理现有文档，而是对现有内容的新的传入内容进行优先级排序。 你应仅临时`enableReprocessing`设置`false`为。 若要确保语料库之间的一致性`enableReprocessing` ，应`true`在大多数情况下，确保所有文档（无论是新的还是现有的）都按照当前技能组合定义有效。
 
-### <a name="bypass-skillset-evaluation"></a>旁路技能集评估
+### <a name="bypass-skillset-evaluation"></a>绕过技能组合评估
 
-修改技能集和重新处理该技能集通常齐头并进。 但是，对技能集的某些更改不应导致后处理（例如，将自定义技能部署到新位置或使用新的访问密钥）。 最有可能的是，这些是外围修改，对技能集本身的实质没有真正的影响。 
+修改该技能组合的技能组合和重新处理通常是非常好的。 但是，对技能组合进行的一些更改不会导致重新处理（例如，将自定义技能部署到新位置或使用新的访问密钥）。 大多数情况下，这些是对技能组合本身的实质没有真正影响的外围修改。 
 
-如果您知道对技能集的更改确实是肤浅的，则应通过将`disableCacheReprocessingChangeDetection`参数设置为`true`：
+如果你知道对技能组合的更改的确是表面，则应通过将`disableCacheReprocessingChangeDetection`参数设置为来`true`覆盖技能组合评估：
 
-1. 调用更新技能集并修改技能集定义。
-1. 在`disableCacheReprocessingChangeDetection=true`请求上追加参数。
+1. 调用 Update 技能组合并修改技能组合定义。
+1. 将`disableCacheReprocessingChangeDetection=true`参数追加到请求上。
 1. 提交更改。
 
-设置此参数可确保仅提交对技能集定义的更新，并且不会评估更改对现有语料库的影响。
+设置此参数可确保仅提交对技能组合定义的更新，并且不会对现有语料库的影响评估更改。
 
-下面的示例显示了具有参数的更新技能集请求：
+下面的示例演示具有参数的 Update 技能组合请求：
 
 ```http
 PUT https://customerdemos.search.windows.net/skillsets/callcenter-text-skillset?api-version=2019-05-06-Preview&disableCacheReprocessingChangeDetection=true
@@ -87,21 +87,21 @@ PUT https://customerdemos.search.windows.net/skillsets/callcenter-text-skillset?
 
 ### <a name="bypass-data-source-validation-checks"></a>绕过数据源验证检查
 
-对数据源定义的大多数更改将使缓存无效。 但是，对于您知道更改不应使缓存无效的情况（例如更改连接字符串或旋转存储帐户上的密钥）时，会追加数据源更新上的`ignoreResetRequirement`参数。 设置此参数以`true`允许提交通过，而不会触发重置条件，这将导致从头开始重新生成和填充所有对象。
+对数据源定义所做的大多数更改都将使缓存失效。 但是，对于知道更改不应使缓存失效的情况（例如，更改连接字符串或轮换存储帐户上的密钥），请将`ignoreResetRequirement`参数追加到数据源更新上。 如果将此参数`true`设置为，则允许提交，而不触发重置条件，这将导致重新生成所有对象并从头开始填充。
 
 ```http
 PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-version=2019-05-06-Preview&ignoreResetRequirement=true
 ```
 
-### <a name="force-skillset-evaluation"></a>部队技能集评估
+### <a name="force-skillset-evaluation"></a>强制技能组合评估
 
-缓存的目的是避免不必要的处理，但假设您对索引器未检测到的技能进行更改（例如，更改外部代码中的内容，如自定义技能）。
+缓存的目的是为了避免不必要的处理，但假设您对索引器未检测到的技能进行了更改（例如，在外部代码中更改了某些内容，如自定义技能）。
 
-在这种情况下，可以使用[重置技能](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills)强制重新处理特定技能，包括依赖于该技能输出的任何下游技能。 此 API 接受 POST 请求，该请求具有应失效并标记为后处理的技能列表。 重置技能后，运行索引器以调用管道。
+在这种情况下，您可以使用[重置技能](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills)来强制执行特定技能的重新处理，包括依赖于该技能的输出的任何下游技能。 此 API 接受 POST 请求，其中包含应失效并标记为要重新处理的技能列表。 重置技能后，运行索引器以调用管道。
 
 ## <a name="change-detection"></a>更改检测
 
-启用缓存后，索引器将评估管道组合中的更改，以确定哪些内容可以重复使用，哪些内容需要重新处理。 本节列举使缓存完全失效的更改，然后是触发增量处理的更改。 
+启用缓存后，索引器会评估管道组合中的更改，以确定可重用的内容和需要重新处理的内容。 此部分枚举了彻底使缓存无效的更改，以及触发增量处理的更改。 
 
 ### <a name="changes-that-invalidate-the-cache"></a>使缓存无效的更改
 
@@ -125,7 +125,7 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 
 ### <a name="changes-that-trigger-incremental-processing"></a>触发增量处理的更改
 
-增量处理评估技能集定义并确定要重新运行的技能，有选择地更新文档树的受影响部分。 下面是导致增量扩充的更改的完整列表：
+增量处理会评估技能组合定义，并确定重新运行的技能，并有选择地更新文档树的受影响部分。 下面是导致增量扩充的更改的完整列表：
 
 * 技能集中的技能具有不同的类型。 更新技能的 odata 类型
 * 更新特定于技能的参数，例如 URL、默认值或其他参数
@@ -138,25 +138,25 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 
 ## <a name="api-reference"></a>API 参考
 
-REST API`2019-05-06-Preview`版本通过索引器、技能集和数据源上的其他属性提供增量扩充。 除了参考文档之外，有关如何调用 API 的详细信息，请参阅[配置缓存以进行增量扩充](search-howto-incremental-index.md)。
+REST API 版本`2019-05-06-Preview`通过索引器、技能集和数据源的其他属性提供增量扩充。 除了参考文档以外，请参阅为[增量扩充配置缓存](search-howto-incremental-index.md)，详细了解如何调用 api。
 
-+ [创建索引器（api 版本=2019-05-06-预览版）](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer) 
++ [Create 索引器（api 版本 = 2019-05-06-01.5.1）](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer) 
 
-+ [更新索引器（api 版本=2019-05-06-预览版）](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-indexer) 
++ [Update 索引器（api 版本 = 2019-05-06-01.5.1）](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-indexer) 
 
-+ [更新技能集（api 版本=2019-05-06-预览版）（](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset)请求上的新 URI 参数）
++ [Update 技能组合（api 版本 = 2019-05-06-01.5.1）](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) （请求上的新 URI 参数）
 
 + [重置技能 (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills)
 
-+ 数据库索引器（Azure SQL、宇宙数据库）。 某些索引器通过查询检索数据。 对于检索数据的查询，[更新数据源](https://docs.microsoft.com/rest/api/searchservice/update-data-source)支持请求**忽略Reset要求**的新参数，该参数应设置为`true`更新操作不应使缓存无效时。 
++ 数据库索引器（Azure SQL、Cosmos DB）。 某些索引器通过查询检索数据。 对于检索数据的查询，[更新数据源](https://docs.microsoft.com/rest/api/searchservice/update-data-source)支持请求**ignoreResetRequirement**上的新参数，在更新操作不应使`true`缓存失效时，应将该参数设置为。 
 
-  使用**忽略 Reset 要求**，因为它可能会导致数据中意外的不一致，不容易检测到。
+  请慎用**ignoreResetRequirement** ，因为这可能会导致不容易检测到的数据发生意外的不一致。
 
 ## <a name="next-steps"></a>后续步骤
 
-增量扩充是一个强大的功能，可将更改跟踪扩展到技能集和 AI 充实。 增量扩充可在迭代技能集设计时重用现有已处理的内容。
+增量扩充是一项功能强大的功能，可将更改跟踪扩展到技能集和 AI 扩充。 当你遍历技能组合设计时，AIncremental 扩充允许重复使用现有已处理的内容。
 
-作为下一步，在现有索引器上启用缓存，或在定义新索引器时添加缓存。
+下一步，在现有索引器上启用缓存，或在定义新索引器时添加缓存。
 
 > [!div class="nextstepaction"]
-> [配置缓存以进行增量扩充](search-howto-incremental-index.md)
+> [为增量扩充配置缓存](search-howto-incremental-index.md)

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
 ms.openlocfilehash: 99d5594dd3ebe3750cb0a09ea803065e2aeb5ba2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77666631"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure Monitor 中的日志数据引入时间
@@ -79,10 +79,10 @@ Azure Monitor 的首要任务是确保不会丢失任何客户数据，因此系
 |:---|:---|:---|
 | 在数据源处创建的记录 | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>如果数据源未设置此值，则它将设置为与 _TimeReceived 相同的时间。 |
 | Azure Monitor 引入终结点收到的记录 | [_TimeReceived](log-standard-properties.md#_timereceived) | |
-| 存储在工作区中并可用于查询的记录 | [ingestion_time（）](/azure/kusto/query/ingestiontimefunction) | |
+| 存储在工作区中并可用于查询的记录 | [ingestion_time()](/azure/kusto/query/ingestiontimefunction) | |
 
 ### <a name="ingestion-latency-delays"></a>引入延迟延迟
-可以通过比较 [ingestion_time()](/azure/kusto/query/ingestiontimefunction) 函数的结果和 TimeGenerated 属性来测量特定记录的延迟__。 此数据可用于各种聚合，以查找引入延迟的行为方式。 检查引入时间的某些百分位数，以获取大量数据的见解。 
+可以通过比较 [ingestion_time()](/azure/kusto/query/ingestiontimefunction) 函数的结果和 TimeGenerated 属性来测量特定记录的延迟  。 此数据可用于各种聚合，以查找引入延迟的行为方式。 检查引入时间的某些百分位数，以获取大量数据的见解。 
 
 例如，以下查询将显示在前 8 小时内哪些计算机的引入时间最长： 
 
@@ -130,9 +130,9 @@ AzureDiagnostics
 ```
 
 ### <a name="resources-that-stop-responding"></a>停止响应的资源 
-在某些情况下，资源无法停止发送数据。 若要了解资源是否正在发送数据，请查看由标准 TimeGenerated 字段标识的最新记录__。  
+在某些情况下，资源无法停止发送数据。 若要了解资源是否正在发送数据，请查看由标准 TimeGenerated 字段标识的最新记录  。  
 
-使用检测信号表来检查 VM 的可用性，因为检测信号由代理每分钟发送一次__。 使用以下查询列出最近尚未报告过检测信号的活动计算机： 
+使用检测信号表来检查 VM 的可用性，因为检测信号由代理每分钟发送一次  。 使用以下查询列出最近尚未报告过检测信号的活动计算机： 
 
 ``` Kusto
 Heartbeat  

@@ -1,15 +1,15 @@
 ---
 title: Azure Service Fabric CLI- sfctl property
-description: 了解 sfctl，Azure 服务结构命令行接口。 包括用于存储和查询属性的命令列表。
+description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于存储和查询属性的命令列表。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: a9bd75e0b7f8bfceb50a71ca83b60ff1e7b45508
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76905826"
 ---
 # <a name="sfctl-property"></a>sfctl property
@@ -17,7 +17,7 @@ ms.locfileid: "76905826"
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|说明|
 | --- | --- |
 | delete | 删除指定的 Service Fabric 属性。 |
 | get | 获取指定的 Service Fabric 属性。 |
@@ -29,9 +29,9 @@ ms.locfileid: "76905826"
 
 删除给定名称下的指定 Service Fabric 属性。 只能删除已创建的属性。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --name-id       [必需] | Service Fabric 名称，不带“fabric\:”URI 方案。 |
 | --property-name [必需] | 指定要获取的属性的名称。 |
@@ -39,7 +39,7 @@ ms.locfileid: "76905826"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -52,9 +52,9 @@ ms.locfileid: "76905826"
 
 获取给定名称下的指定 Service Fabric 属性。 这将始终返回值和元数据。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --name-id       [必需] | Service Fabric 名称，不带“fabric\:”URI 方案。 |
 | --property-name [必需] | 指定要获取的属性的名称。 |
@@ -62,7 +62,7 @@ ms.locfileid: "76905826"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -75,9 +75,9 @@ ms.locfileid: "76905826"
 
 一个 Service Fabric 名称可具有一个或多个存储自定义信息的命名属性。 此操作将有关这些属性的信息获取到分页列表中。 信息包括有关其中每个属性的名称、值和元数据。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --name-id [必需] | Service Fabric 名称，不带“fabric\:”URI 方案。 |
 | --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则该继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
@@ -86,7 +86,7 @@ ms.locfileid: "76905826"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -99,19 +99,19 @@ ms.locfileid: "76905826"
 
 创建或更新给定名称下的指定 Service Fabric 属性。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --name-id       [必需] | Service Fabric 名称，不带“fabric\:”URI 方案。 |
 | --property-name [必需] | Service Fabric 属性的名称。 |
-| --value         [必需] | 介绍 Service Fabric 属性值。 这是一个 JSON 字符串。 <br><br> json 字符串有两个字段，即数据的"Kind"和作为数据的"数据"输入的值。 “Kind”的值必须是要出现在 JSON 字符串中的第一个项，并且可以是以下值：“Binary”、“Int64”、“Double”、“String”或“Guid”。 该值应当对给定的类型可序列化。 “Kind”和“Data”的值应以字符串形式提供。 |
+| --value         [必需] | 介绍 Service Fabric 属性值。 这是一个 JSON 字符串。 <br><br> json 字符串有两个字段，数据的“Kind”和数据的值（输入为“Data”）。 “Kind”的值必须是要出现在 JSON 字符串中的第一个项，并且可以是以下值：“Binary”、“Int64”、“Double”、“String”或“Guid”。 该值应当对给定的类型可序列化。 “Kind”和“Data”的值应以字符串形式提供。 |
 | --custom-id-type | 属性的自定义类型 ID。 使用此属性，用户就能够标记属性值的类型。 |
 | --timeout -t | 默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -121,5 +121,5 @@ ms.locfileid: "76905826"
 
 
 ## <a name="next-steps"></a>后续步骤
-- [设置](service-fabric-cli.md)服务结构 CLI。
+- [安装](service-fabric-cli.md) Service Fabric CLI。
 - 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。

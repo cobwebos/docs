@@ -4,10 +4,10 @@ description: 可以在 Power BI 中显示分析查询。
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.openlocfilehash: 0e17ca6e07ec76f0a7a1cb04f7aa13619fb9970c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77663991"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>从 Application Insights 向 Power BI 馈送数据
@@ -17,7 +17,7 @@ ms.locfileid: "77663991"
 
 * [**导出分析查询**](#export-analytics-queries)。 这是首选方法。 编写任何所需的查询，并将其导出到 Power BI。 可将此查询连同其他所有数据一起放置在仪表板上。
 * [**连续导出和 Azure 流分析**](../../azure-monitor/app/export-stream-analytics.md)。 如果希望长时间存储数据，则此方法非常有用。 如果没有较长的数据保留要求，请使用“导出 Analytics 查询”方法。 “连续导出和流分析”需要执行更多工作来进行设置，并且存储开销更大。
-* **电源 BI 适配器**。 图表集是预定义的，但可以从其他源任何添加自己的查询。
+* **Power BI 适配器**。 图表集是预定义的，但可以从其他源任何添加自己的查询。
 
 > [!NOTE]
 > Power BI 适配器现在**已弃用**。 此解决方案的预定义图表是由静态的不可编辑查询填充的。 你无法编辑这些查询，到 Power BI 的连接可能会成功但不会填充数据，具体取决于你的数据的某些属性。 这是由硬编码的查询中设置的排除条件导致的。 虽然此解决方案仍然适用于某些客户，但是由于缺少适配器的灵活性，建议的解决方案是使用[**导出 Analytics 查询**](#export-analytics-queries)功能。
@@ -28,7 +28,7 @@ ms.locfileid: "77663991"
 ### <a name="one-time-install-power-bi-desktop"></a>一次性操作：安装 Power BI Desktop
 若要导入 Application Insights 查询，可以使用 Power BI Desktop（桌面版）。 随后可以将其发布到 Web 或 Power BI 云工作区。 
 
-安装[电源 BI 桌面](https://powerbi.microsoft.com/en-us/desktop/)。
+安装[Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/)。
 
 ### <a name="export-an-analytics-query"></a>导出 Analytics 查询
 1. [打开 Analytics 并编写查询](../../azure-monitor/log-query/get-started-portal.md)。
@@ -36,17 +36,17 @@ ms.locfileid: "77663991"
 3. 在“导出”菜单中，选择“Power BI (M)”。******** 保存文本文件。
    
     ![Analytics 屏幕截图，其中突出显示了“导出”菜单](./media/export-power-bi/analytics-export-power-bi.png)
-4. 在 Power BI 桌面中，选择 **"获取数据** > **空白查询**"。 然后，在查询编辑器中的“视图”下面，选择“高级查询编辑器”。********
+4. 在 Power BI Desktop 中，选择 "**获取数据** > " "**空白查询**"。 然后，在查询编辑器中的“视图”下面，选择“高级查询编辑器”。********
 
     将导出的 M 语言脚本粘贴到高级编辑器中。
 
     ![Power BI Desktop 的屏幕截图，其中突出显示了“高级编辑器”](./media/export-power-bi/power-bi-import-analytics-query.png)
 
-5. 可能需要提供凭据才能让 Power BI 访问 Azure。 使用**组织帐户**使用 Microsoft 帐户登录。
+5. 可能需要提供凭据才能让 Power BI 访问 Azure。 使用**组织帐户**登录 Microsoft 帐户。
    
     ![Power BI“查询设置”对话框的屏幕截图](./media/export-power-bi/power-bi-import-sign-in.png)
 
-    如果需要验证凭据，请使用查询编辑器中的 **"数据源设置"** 菜单命令。 请务必指定用于 Azure 的凭据，它可能不同于用于 Power BI 的凭据。
+    如果需要验证凭据，请使用查询编辑器中的 "**数据源设置**" 菜单命令。 请务必指定用于 Azure 的凭据，它可能不同于用于 Power BI 的凭据。
 6. 选择查询的可视化效果并选择 X 轴、Y 轴和分段维度的字段。
    
     ![Power BI Desktop 可视化选项的屏幕截图](./media/export-power-bi/power-bi-analytics-visualize.png)
@@ -56,12 +56,12 @@ ms.locfileid: "77663991"
 8. 定期手动刷新报告，或者在选项页中设置按计划刷新。
 
 ### <a name="export-a-funnel"></a>导出漏斗图
-1. [让你的漏斗](../../azure-monitor/app/usage-funnels.md)。
+1. [创建漏斗](../../azure-monitor/app/usage-funnels.md)图。
 2. 选择“Power BI”。****
 
    ![Power BI 按钮的屏幕截图](./media/export-power-bi/button.png)
 
-3. 在 Power BI 桌面中，选择 **"获取数据** > **空白查询**"。 然后，在查询编辑器中的“视图”下面，选择“高级查询编辑器”。********
+3. 在 Power BI Desktop 中，选择 "**获取数据** > " "**空白查询**"。 然后，在查询编辑器中的“视图”下面，选择“高级查询编辑器”。********
 
    ![Power BI Desktop 的屏幕截图，其中突出显示了“空白查询”按钮](./media/export-power-bi/blankquery.png)
 
@@ -84,7 +84,7 @@ ms.locfileid: "77663991"
 ### <a name="unauthorized-401-or-403"></a>未授权（401 或 403）
 若未更新过刷新令牌，可能会出现此问题。 请尝试以下步骤，确保仍拥有访问权限：
 
-1. 登录到 Azure 门户，并确保可以访问资源。
+1. 登录到 Azure 门户，确保可以访问该资源。
 2. 尝试刷新仪表板的凭据。
 3. 尝试从 PowerBI 桌面清除缓存。
 
@@ -98,8 +98,8 @@ ms.locfileid: "77663991"
 
 1. 创建[API 密钥](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID)。
 2. 通过将 Azure 资源管理器 URL 替换为 Application Insights API，更新从分析中导出的 Power BI M 脚本。
-   * 替换**https：\//management.azure.com/subscriptions/...**
-   * 和， **https：\//api.applicationinsights.io/beta/apps/...**
+   * 替换**https：\//management.azure.com/subscriptions/**
+   * 替换为， **https\/：/api.applicationinsights.io/beta/apps/**
 3. 最后，将凭据更新为基本凭据，再使用 API 密钥。
 
 **现有脚本**

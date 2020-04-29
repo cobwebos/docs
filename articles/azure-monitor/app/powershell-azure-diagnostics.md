@@ -4,10 +4,10 @@ description: 自动配置 Azure 诊断，通过管道将数据发送到 Applicat
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.openlocfilehash: da1796c8af5b9463d8223615f4b0629ba65eb3e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77669797"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>使用 PowerShell 为 Azure 云服务设置 Application Insights
@@ -125,8 +125,8 @@ ms.locfileid: "77669797"
 ```
 
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 * [使用 Application Insights 监视 Azure Cloud Service 应用](../../azure-monitor/app/cloudservices.md)
-* [将 Azure 诊断发送到应用程序见解](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
+* [将 Azure 诊断发送到 Application Insights](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [自动配置警报](powershell-alerts.md)
 

@@ -1,6 +1,6 @@
 ---
 title: Azure 流量管理器中的真实用户度量
-description: 在本简介中，了解 Azure 流量管理器真实用户度量的工作原理。
+description: 在本简介中，了解 Azure 流量管理器真实用户度量的工作方式。
 services: traffic-manager
 documentationcenter: traffic-manager
 author: rohinkoul
@@ -13,10 +13,10 @@ ms.date: 03/16/2018
 ms.author: rohink
 ms.custom: ''
 ms.openlocfilehash: e38e1255b1a84ab5d3fd37e16eb65c76001dbfa1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76938435"
 ---
 # <a name="traffic-manager-real-user-measurements-overview"></a>流量管理器的实际用户度量概述

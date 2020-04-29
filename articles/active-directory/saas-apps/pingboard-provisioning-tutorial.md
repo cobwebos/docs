@@ -1,5 +1,5 @@
 ---
-title: 教程：Pingboard 的用户预配 - Azure AD
+title: 教程： Pingboard 的用户预配-Azure AD
 description: 了解如何将 Azure Active Directory 配置为自动将用户帐户预配到 Pingboard 和取消其预配。
 services: active-directory
 documentationcenter: ''
@@ -16,22 +16,22 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c64c40d93f9b525ac6adeca276797df65f32ef3e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77061269"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>教程：为 Pingboard 配置自动用户预配
 
 本教程的目的在于介绍将用户帐户从 Azure Active Directory (Azure AD) 自动预配到 Pingboard 和取消其预配时所要遵循的步骤。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在本教程中概述的方案假定您已具有以下各项：
 
 * Azure AD 租户
-* Pingboard 租户[专业帐户](https://pingboard.com/pricing)
+* Pingboard 租户[专业版帐户](https://pingboard.com/pricing)
 * Pingboard 中具有管理员权限的用户帐户
 
 > [!NOTE]
@@ -70,23 +70,23 @@ Azure AD 使用称为“分配”的概念来确定哪些用户应收到对所�
 
 1. 在“管理员凭据”**** 部分中，使用以下步骤：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“租户 URL”中，输入 `https://your_domain.pingboard.com/scim/v2` 并将 your_domain 替换为实际的域****
+    a. 在“租户 URL”中，输入 `https://your_domain.pingboard.com/scim/v2` 并将 your_domain 替换为实际的域****
 
-    b.保留“数据库类型”设置，即设置为“共享”。 使用管理员帐户登录到 [Pingboard](https://pingboard.com/)。
+    b. 使用管理员帐户登录到 [Pingboard](https://pingboard.com/)。
 
-    c. 选择**加载项** > **集成** > **Azure 活动目录**。
+    c. 选择 **"外接程序** > **集成** > "**Azure Active Directory**。
 
-    d.单击“下一步”。 单击“配置”选项卡并选择“从 Azure 启用用户预配”********。
+    d. 单击“配置”选项卡并选择“从 Azure 启用用户预配”********。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 复制中的令牌**OAuth 持有者令牌**，并在输入中**机密令牌**。
+    e. 复制中的令牌**OAuth 持有者令牌**，并在输入中**机密令牌**。
 
 1. 在 Azure 门户中，选择“测试连接”**** 以测试 Azure AD 可连接到 Pingboard 应用。 如果连接失败，请测试 Pingboard 帐户具有管理员权限，并重试“测试连接”**** 步骤。
 
 1. 在“通知电子邮件”字段中输入应接收预配错误通知的人员或组的电子邮件地址****。 然后选中复选框。
 
-1. 选择“保存”。****
+1. 选择“保存”  。
 
-1. 在 **"映射**"部分下，选择**将 Azure 活动目录用户同步到 Pingboard**。
+1. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 Pingboard**"。
 
 1. 在“属性映射”**** 部分中，查看将从 Azure AD 同步到 Pingboard 的用户属性。 选为“匹配”**** 属性的特性用于匹配 Pingboard 中的用户帐户以执行更新操作。 选择“保存”，提交所有更改****。 有关详细信息，请参阅[自定义用户预配属性映射](../app-provisioning/customize-application-attributes.md)。
 
@@ -101,5 +101,5 @@ Azure AD 使用称为“分配”的概念来确定哪些用户应收到对所�
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [什么是使用 Azure 活动目录的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 * [配置单一登录](pingboard-tutorial.md)

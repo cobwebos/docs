@@ -1,6 +1,6 @@
 ---
-title: 下载并安装微软身份验证器应用 - Azure AD
-description: 下载并安装 Microsoft 身份验证器应用，以验证您的身份，同时使用双重验证。
+title: 下载并安装 Microsoft Authenticator 应用-Azure AD
+description: 下载并安装 Microsoft Authenticator 应用，以便在使用双重验证时验证您的身份。
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,10 +13,10 @@ ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: 9d8ea02c91dc6aec41a1b548eff148e85111fc32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77063894"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>下载并安装 Microsoft Authenticator 应用
@@ -46,24 +46,24 @@ Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登�
 
 根据你的操作系统安装 Microsoft Authenticator 应用的最新版本：
 
-- **谷歌安卓。** 在 Android 设备上，转到 Google Play 来[下载并安装 Microsoft Authenticator 应用](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.azure.authenticator)。
+- **Google Android。** 在 Android 设备上，转到 Google Play 来[下载并安装 Microsoft Authenticator 应用](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.azure.authenticator)。
 
-- **苹果iOS。** 在 Apple iOS 设备上，转到 App Store 来[下载并安装 Microsoft Authenticator 应用](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458)。
+- **Apple iOS。** 在 Apple iOS 设备上，转到 App Store 来[下载并安装 Microsoft Authenticator 应用](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458)。
 
 >[!Important]
->如果您当前不在移动设备上，您仍可以通过从[Microsoft 身份验证器页面](https://www.microsoft.com/en-us/account/authenticator)向自己发送下载链接来获取 Microsoft 身份验证器应用。
+>如果你当前不在移动设备上，则仍可通过向自己发送[Microsoft Authenticator 页面](https://www.microsoft.com/en-us/account/authenticator)中的下载链接来获取 Microsoft Authenticator 应用。
 
 ## <a name="next-steps"></a>后续步骤
 
-下载并安装该应用后，必须添加各种帐户。 有关详细信息，请参阅：
+下载并安装该应用后，必须添加各种帐户。 有关详细信息，请参见:
 
-- **Authenticator 应用。** 下载并使用验证器应用，获取双重验证或密码重置的审批通知或随机生成的审核代码。 有关如何设置和使用 Microsoft Authenticator 应用的分步说明，请参阅[设置安全信息以使用验证器应用](security-info-setup-auth-app.md)。
+- **验证器应用。** 下载并使用验证器应用，获取双重验证或密码重置的审批通知或随机生成的审核代码。 有关如何设置和使用 Microsoft Authenticator 应用的分步说明，请参阅[设置安全信息以使用验证器应用](security-info-setup-auth-app.md)。
 
 - **移动设备短信。** 输入移动设备号码，获取将用于双重验证或密码重置的短信或代码。 有关如何通过短信 (SMS) 验证身份的分步说明，请参阅[设置安全信息以使用短信 (SMS)](security-info-setup-text-msg.md)。
 
 - **移动设备或工作电话。** 输入移动设备号码，获取将用于双重验证或密码重置的电话。 有关如何使用电话号码验证身份的分步说明，请参阅[设置安全信息以使用电话](security-info-setup-phone-number.md)。
 
-- **安全密钥。** 注册兼容 Microsoft 的安全密钥并将其与 PIN 一起用于两步验证或密码重置。 有关如何使用安全密钥验证身份的分步说明，请参阅[设置安全信息以使用安全密钥](security-info-setup-security-key.md)。
+- **安全密钥。** 注册与 Microsoft 兼容的安全密钥，并将其与用于双重验证或密码重置的 PIN 一起使用。 有关如何使用安全密钥验证身份的分步说明，请参阅[设置安全信息以使用安全密钥](security-info-setup-security-key.md)。
 
 - **电子邮件地址。** 输入工作或学校电子邮件地址，获取用于密码重置的电子邮件。 此选项不可用于双重验证。 有关如何设置电子邮件的分步说明，请参阅[设置安全信息以使用电子邮件](security-info-setup-email.md)。
 

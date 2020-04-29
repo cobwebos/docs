@@ -1,6 +1,6 @@
 ---
-title: Azure 服务的反向 DNS - Azure DNS
-description: 使用此学习路径，开始为 Azure 中托管的服务配置反向 DNS 查找。
+title: Azure 服务的反向 DNS-Azure DNS
+description: 利用此学习路径，开始为 Azure 中托管的服务配置反向 DNS 查找。
 services: dns
 documentationcenter: na
 author: rohinkoul
@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
 ms.openlocfilehash: 073e84ece11f6817bfe2c5a94735ec6e16dac4fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76932372"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>为 Azure 中托管的服务配置反向 DNS
@@ -46,7 +46,7 @@ Azure 应用服务目前不支持反向 DNS。
 * PublicIpAddress 的 DNS 名称 contosoapp1.northus.cloudapp.azure.com
 * 同一订阅中另一个 PublicIpAddress 的 DNS 名称，如 contosoapp2.westus.cloudapp.azure.com
 * 虚 DNS 名称（如 app1.contoso.com），只要此名称已提前配置为指向 contosoapp1.northus.cloudapp.azure.com 或同一订阅中另一个 PublicIpAddress 的 CNAME**。
-* 虚 DNS 名称（如 app1.contoso.com），只要此名称已提前配置为指向 IP 地址 23.96.52.53 或同一订阅中另一个 PublicIpAddress 的 IP 地址的 A 记录**。
+* 虚 DNS 名称（如 app1.contoso.com），只要此名称已提前配置为指向 IP 地址 23.96.52.53 或同一订阅中另一个 PublicIpAddress 的 IP 地址的 A 记录  。
 
 相同的约束也适用于云服务的反向 DNS。
 
@@ -212,7 +212,7 @@ Get-AzureService "contosoapp1"
 Set-AzureService –ServiceName "contosoapp1" –Description "App1 with Reverse DNS" –ReverseDnsFqdn ""
 ```
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>常见问题解答
 
 ### <a name="how-much-do-reverse-dns-records-cost"></a>反向 DNS 记录的费用如何？
 

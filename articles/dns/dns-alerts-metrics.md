@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: rohink
 ms.openlocfilehash: 42acbc0d32b3ce5de4befcf112b68f611ad70542
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76937452"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Azure DNS 指标和警报
@@ -47,7 +47,7 @@ Azure DNS 中的“查询量”指标显示 Azure DNS 接收到的 DNS 区域的
 图：Azure DNS 查询量指标**
 
 ### <a name="record-set-count"></a>记录集计数
-“记录集计数”指标显示 Azure DNS 中 DNS 区域的记录集数**。 对区域中定义的所有记录集进行计数。 度量单位是计数，聚合是所有记录集最大值。 要查看此指标，请从 Azure 门户中的 **"监视器"** 选项卡中选择 **"指标（预览）** 资源管理器"体验。 从“资源”下拉列表选择 DNS 区域，选择“记录集计数”指标，然后选择“最大值”作为“聚合”****************。 有关指标资源管理器体验和图表的详细信息，请参阅 [Azure Monitor 指标资源管理器](../azure-monitor/platform/metrics-charts.md)。 
+“记录集计数”指标显示 Azure DNS 中 DNS 区域的记录集数**。 对区域中定义的所有记录集进行计数。 度量单位是计数，聚合是所有记录集最大值。 若要查看此指标，请从 Azure 门户的 "**监视**" 选项卡中选择**指标（预览版）** 资源管理器体验。 从“资源”下拉列表选择 DNS 区域，选择“记录集计数”指标，然后选择“最大值”作为“聚合”****************。 有关指标资源管理器体验和图表的详细信息，请参阅 [Azure Monitor 指标资源管理器](../azure-monitor/platform/metrics-charts.md)。 
 
 ![记录集计数](./media/dns-alerts-metrics/dns-metrics-record-set-count.png)
 
@@ -65,4 +65,4 @@ Azure DNS 的“记录集容量使用率”指标显示 DNS 区域的记录集�
 Azure Monitor 提供针对可用指标值进行报警的功能。 新警报配置体验中提供 DNS 指标。 如 [Azure Monitor 警报文档](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)中所述，可以选择 DNS 区域作为资源，选择“指标”信号类型，并配置警报逻辑和其他参数（例如“周期”和“频率”）********。 满足警报条件时，可以进一步定义[操作组](../azure-monitor/platform/action-groups.md)，借此警报将通过所选操作传送。 有关如何配置 Azure Monitor 指标报警的详细信息，请参阅[使用 Azure Monitor 创建、查看和管理警报](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)。 
 
 ## <a name="next-steps"></a>后续步骤
-- 了解有关[Azure DNS](dns-overview.md)的更多详细信息。
+- 详细了解[Azure DNS](dns-overview.md)。

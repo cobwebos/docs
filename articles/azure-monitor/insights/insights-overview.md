@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/22/2019
 ms.openlocfilehash: 15ea7698c9e90fa8b0dfa20f71b552a2b0e9c7d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77657242"
 ---
 # <a name="overview-of-insights-in-azure-monitor"></a>Azure Monitor 中的 Insights 概述
@@ -46,8 +46,8 @@ Application Insights 是多个平台上面向 Web 开发人员的可扩展应用
 
 ![用于 VM 的 Azure Monitor](media/insights-overview/vm-insights.png)
 
-## <a name="azure-monitor-for-networks-preview"></a>网络 Azure 监视器（预览版）
-[网络 Azure 监视器](network-insights-overview.md)为所有网络资源提供运行状况和指标的全面视图。 高级搜索功能可帮助您识别资源依赖项，通过搜索网站名称，启用标识托管网站的资源等方案。
+## <a name="azure-monitor-for-networks-preview"></a>网络 Azure Monitor （预览）
+[网络 Azure Monitor](network-insights-overview.md)提供所有网络资源的运行状况和指标的综合视图。 "高级搜索" 功能可帮助你识别资源依赖关系，通过只需搜索你的网站名称来启用标识托管你的网站的资源等方案。
 
 ![用于网络的 Azure Monitor](media/insights-overview/network-insights.png)
 

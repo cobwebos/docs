@@ -1,5 +1,5 @@
 ---
-title: 使用 REST 将文件上载到 Azure 媒体服务 v3 帐户 |微软文档
+title: 使用 REST 将文件上传到 Azure 媒体服务 v3 帐户 | Microsoft Docs
 description: 了解如何通过创建和上传资产将媒体内容加入媒体服务。
 services: media-services
 documentationcenter: ''
@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
 ms.openlocfilehash: 38d46978e37ead59deb17a86f643df041452e497
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76705762"
 ---
-# <a name="upload-files-into-a-media-services-v3-account-using-rest"></a>使用 REST 将文件上载到媒体服务 v3 帐户
+# <a name="upload-files-into-a-media-services-v3-account-using-rest"></a>使用 REST 将文件上传到媒体服务 v3 帐户
 
-在媒体服务中，可以将数字文件上传到与资产关联的 blob容器中。 [资产](https://docs.microsoft.com/rest/api/media/operations/asset)实体可以包含视频、音频、图像、缩略图集合、文本轨道和隐藏字幕文件（以及有关这些文件的元数据）。 将文件上传到资产的容器中后，相关内容即安全地存储在云中供后续处理和流式传输。
+在媒体服务中，可以将数字文件上传到与资产关联的 blob容器中。 [资产](https://docs.microsoft.com/rest/api/media/operations/asset)实体可以包含视频、音频、图片、缩略图集合、文本轨道和隐藏式字幕文件（以及这些文件的相关元数据）。 将文件上传到资产的容器中后，相关内容即安全地存储在云中供后续处理和流式传输。
 
 本文介绍如何使用 REST 上传本地文件。
 
@@ -31,7 +31,7 @@ ms.locfileid: "76705762"
 若要完成本主题中所述的步骤，必须：
 
 - 查看[资产概念](assets-concept.md)。
-- [为 Azure 媒体服务 REST API 调用配置 Postman。](media-rest-apis-with-postman.md)
+- [配置 Postman 以便进行 Azure 媒体服务 REST API 调用](media-rest-apis-with-postman.md)。
     
     确保遵循[获取 Azure AD 令牌](media-rest-apis-with-postman.md#get-azure-ad-token)主题中的最后一步。 
 
@@ -39,8 +39,8 @@ ms.locfileid: "76705762"
 
 本部分介绍如何创建新的资产。
 
-1. 选择 **"资产** -> **创建或更新资产**"。
-2. 按“发送”。****
+1. 选择“资产” -> “创建或更新资产”   。
+2. 按“发送”。 
 
     ![创建资产](./media/upload-files/postman-create-asset.png)
 
@@ -50,8 +50,8 @@ ms.locfileid: "76705762"
 
 本部分介绍如何获取通过所创建资产生成的 SAS URL。 所创建的 SAS URL 具有读写权限，可用于将数字文件上传到资产容器。
 
-1. 选择 **"资产** -> **列表"资产 URL。**
-2. 按“发送”。****
+1. 选择“资产” -> “列出资产 URL”   。
+2. 按“发送”。 
 
     ![上传文件](./media/upload-files/postman-create-sas-locator.png)
 

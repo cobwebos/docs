@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 09/24/2018
 ms.openlocfilehash: d7077e51282864f1208080838a1bb94ddd773b7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77667459"
 ---
 # <a name="manage-smart-groups"></a>管理智能组
@@ -17,7 +17,7 @@ ms.locfileid: "77667459"
 
 1. 若要查看为警报实例创建的智能组，可以执行以下任一操作
 
-     1. 从“警报摘要”**** 页单击“智能组”****    
+     1. 从“警报摘要”  页单击“智能组”     
     ![Monitoring](./media/alerts-managing-smart-groups/sg-alerts-summary.jpg)
     
      1. 从“所有警报”页单击“警报(按智能组)”   

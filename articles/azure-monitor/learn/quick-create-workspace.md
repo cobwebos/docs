@@ -7,14 +7,14 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2019
 ms.openlocfilehash: 3c2e9d5634916c3713b7e3380c0496611d8f60a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77656273"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>在 Azure 门户中创建 Log Analytics 工作区
-使用“Log Analytics 工作区”菜单通过 Azure 门户创建 Log Analytics 工作区****。 Log Analytics 工作区是适用于 Azure Monitor 日志数据的唯一环境。 每个工作区都有其自己的数据存储库和配置，并且数据源和解决方案均配置为将其数据存储在特定工作区中。 如果打算从以下源收集数据，则需要 Log Analytics 工作区：
+使用“Log Analytics 工作区”菜单通过 Azure 门户创建 Log Analytics 工作区  。 Log Analytics 工作区是适用于 Azure Monitor 日志数据的唯一环境。 每个工作区都有其自己的数据存储库和配置，并且数据源和解决方案均配置为将其数据存储在特定工作区中。 如果打算从以下源收集数据，则需要 Log Analytics 工作区：
 
 * 订阅中的 Azure 资源
 * 受 System Center Operations Manager 监视的本地计算机
@@ -30,26 +30,26 @@ ms.locfileid: "77656273"
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="sign-in-to-azure-portal"></a>登录到 Azure 门户
-登录到 中的[https://portal.azure.com](https://portal.azure.com)Azure 门户。 
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。 
 
 ## <a name="create-a-workspace"></a>创建工作区
-1. 在 Azure 门户中，单击 **"所有服务**"。 在资源列表中，键入“Log Analytics”****。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics 工作区”****。
+1. 在 Azure 门户中，单击“所有服务”  。 在资源列表中，键入“Log Analytics”  。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics 工作区”  。
 
     ![Azure 门户](media/quick-create-workspace/azure-portal-01.png)
   
-2. 单击“添加”，然后为以下各项选择选项****：
+2. 单击“添加”，然后为以下各项选择选项  ：
 
-   * 为新的 Log Analytics 工作区**** 提供名称，如 DefaultLAWorkspace**。 此名称在所有 Azure Monitor 订阅中必须是全局唯一的。
-   * 选择要链接到的**订阅**，通过从下拉列表中选择（如果默认选择不合适）。
+   * 为新的 Log Analytics 工作区  提供名称，如 DefaultLAWorkspace  。 此名称在所有 Azure Monitor 订阅中必须是全局唯一的。
+   * 如果选择的默认值不合适，请从下拉列表中选择要链接到的**订阅**。
    * 对于**资源组**，选择要使用已设置的现有资源组，还是要创建一个新资源组。  
-   * 选择可用**位置**。  有关详细信息，请参阅日志[分析中哪些区域，](https://azure.microsoft.com/regions/services/)并从 **"搜索产品"** 字段中搜索 Azure 监视器。  
-   * 如果在 2018 年 4 月 2 日后创建的新订阅中创建工作区，则它将自动使用“每 GB”** 定价计划，并且不提供用于选择定价层的选项。  如果是为 4 月 2 日之前创建的现有订阅创建工作区，或者是为绑定到现有企业协议 (EA) 注册的订阅创建工作区，则可以选择首选定价层。  有关特定层的详细信息，请参阅 [Log Analytics 定价详细信息](https://azure.microsoft.com/pricing/details/log-analytics/)。
+   * 选择可用**位置**。  有关详细信息，请参阅[提供 Log Analytics 的区域](https://azure.microsoft.com/regions/services/)，然后在“搜索产品”字段中搜索“Azure Monitor”。   
+   * 如果在 2018 年 4 月 2 日后创建的新订阅中创建工作区，则它将自动使用“每 GB”  定价计划，并且不提供用于选择定价层的选项。  如果是为 4 月 2 日之前创建的现有订阅创建工作区，或者是为绑定到现有企业协议 (EA) 注册的订阅创建工作区，则可以选择首选定价层。  有关特定层的详细信息，请参阅 [Log Analytics 定价详细信息](https://azure.microsoft.com/pricing/details/log-analytics/)。
 
         ![创建 Log Analytics 资源边栏选项卡](media/quick-create-workspace/create-loganalytics-workspace-02.png)  
 
-3. 在“Log Analytics 工作区”窗格上提供所需信息后，单击“确定”********。  
+3. 在“Log Analytics 工作区”窗格上提供所需信息后，单击“确定”   。  
 
-在验证信息和创建工作区时，可以在菜单中的“通知”下面跟踪操作进度****。 
+在验证信息和创建工作区时，可以在菜单中的“通知”下面跟踪操作进度  。 
 
 ## <a name="next-steps"></a>后续步骤
 现在，你已有可用的工作区，可以配置监视遥测收集、运行日志搜索分析该数据，以及添加管理解决方案以提供其他数据和分析见解。 

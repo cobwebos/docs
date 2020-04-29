@@ -4,10 +4,10 @@ description: 使用 Azure Application Insights 和智能检测监视应用程序
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.openlocfilehash: b23ada6fe4596a2eee242cc9145789521caf697f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77669720"
 ---
 # <a name="application-security-detection-pack-preview"></a>应用程序安全检测包（预览版）
@@ -27,15 +27,15 @@ Application Insights 会自动分析应用程序生成的遥测数据并检测�
 
 ## <a name="how-do-i-fix-the-insecure-url-access-detection"></a>如何修复“不安全的 URL 访问”检测？
 1. **会审。** 该通知提供访问了不安全 URL 的用户数，以及受不安全访问影响最大的 URL。 这可以帮助你对问题分配优先级。
-2. **范围。** 访问了不安全 URL 的用户所占百分比是多少？ 受影响的 URL 有多少？ 可以从通知中获取此信息。
+2. **划分范围。** 访问了不安全 URL 的用户所占百分比是多少？ 受影响的 URL 有多少？ 可以从通知中获取此信息。
 3. **诊断。** 该检测提供不安全请求的列表，以及受影响的 URL 和用户的列表，以帮助你进一步诊断问题。
 
 ## <a name="how-do-i-fix-the-insecure-form-detection"></a>如何修复“不安全的窗体”检测？
 1. **会审。** 该通知提供不安全窗体的数量，以及其数据可能已受危害的用户数。 这可以帮助你对问题分配优先级。
-2. **范围。** 哪个窗体涉及的不安全传输数量最多？从时间方面来看，不安全传输是如何分布的？ 可以从通知中获取此信息。
+2. **划分范围。** 哪个窗体涉及的不安全传输数量最多？从时间方面来看，不安全传输是如何分布的？ 可以从通知中获取此信息。
 3. **诊断。** 该检测提供不安全窗体的列表以及每个窗体的不安全传输数量，以帮助你进一步诊断问题。
 
 ## <a name="how-do-i-fix-the-suspicious-user-activity-detection"></a>如何修复“可疑用户活动”检测？
 1. **会审。** 该通知提供表现出可疑行为的不同用户的数量。 这可以帮助你对问题分配优先级。
-2. **范围。** 可疑请求是从哪些国家/地区发起的？ 哪个用户最为可疑？ 可以从通知中获取此信息。
+2. **划分范围。** 可疑请求是从哪些国家/地区发起的？ 哪个用户最为可疑？ 可以从通知中获取此信息。
 3. **诊断。** 该检测提供可疑用户的列表以及每个用户的国家/地区列表，以帮助你进一步诊断问题。

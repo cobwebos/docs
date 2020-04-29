@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 站点恢复/PowerShell 将 Hyper-V（使用 VMM）灾难恢复设置为辅助站点
+title: 使用 Azure Site Recovery/PowerShell 设置到辅助站点的 Hyper-V（使用 VMM）灾难恢复
 description: 介绍如何使用 Azure Site Recovery 和 PowerShell 设置 VMM 云中的 Hyper-V VM 到辅助 VMM 站点的灾难恢复。
 services: site-recovery
 author: sujayt
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 1/10/2020
 ms.author: sutalasi
 ms.openlocfilehash: deef7bfdbc28d744cb81da59d3ffc13a1abee54d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77048618"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>使用 PowerShell（资源管理器）设置 Hyper-V VM 到辅助站点的灾难恢复
@@ -20,10 +20,10 @@ ms.locfileid: "77048618"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 查看[方案体系结构和组件](hyper-v-vmm-architecture.md)。
-- 查看所有组件[的支持要求](site-recovery-support-matrix-to-sec-site.md)。
+- 查看所有组件的[支持要求](site-recovery-support-matrix-to-sec-site.md)。
 - 确保 Virtual Machine Manager 服务器和 Hyper-V 主机符合[支持要求](site-recovery-support-matrix-to-sec-site.md)。
 - 确保要复制的 VM 符合[复制计算机支持](site-recovery-support-matrix-to-sec-site.md)。
 
@@ -89,7 +89,7 @@ ms.locfileid: "77048618"
    $vault = New-AzRecoveryServicesVault -Name #vaultname -ResourceGroupName #ResourceGroupName -Location #location
    ```
 
-   您可以使用`Get-AzRecoveryServicesVault`cmdlet 在创建保管库对象后检索它。
+   可以在创建保管库对象后使用 `Get-AzRecoveryServicesVault` cmdlet 来检索它。
 
 ## <a name="set-the-vault-context"></a>设置保管库上下文
 
@@ -210,7 +210,7 @@ ms.locfileid: "77048618"
 
 ##  <a name="configure-network-mapping"></a>配置网络映射
 
-1. 使用此命令检索当前保管库的服务器。 该命令将站点恢复服务器存储在数组变量`$Servers`中。
+1. 使用此命令检索当前保管库的服务器。 此命令将 Site Recovery 服务器存储在 `$Servers` 数组变量中。
 
    ```azurepowershell
    $Servers = Get-AzRecoveryServicesAsrFabric
@@ -227,7 +227,7 @@ ms.locfileid: "77048618"
    > [!NOTE]
    > 在服务器数组中，源 Virtual Machine Manager 服务器可以是一个，也可以是第二个。 检查 Virtual Machine Manager 服务器名称，并相应地检索网络。
 
-1. 此 cmdlet 在主网络与恢复网络之间创建映射。 它将主网络指定为`$PrimaryNetworks`的第一个元素。 它将恢复网络指定为`$RecoveryNetworks`的第一个元素。
+1. 此 cmdlet 在主网络与恢复网络之间创建映射。 它将主网络指定为 `$PrimaryNetworks` 的第一个元素。 它将恢复网络指定为 `$RecoveryNetworks` 的第一个元素。
 
    ```azurepowershell
    New-AzRecoveryServicesAsrNetworkMapping -PrimaryNetwork $PrimaryNetworks[0] -RecoveryNetwork $RecoveryNetworks[0]
@@ -256,12 +256,12 @@ ms.locfileid: "77048618"
    ```
 
 > [!NOTE]
-> 如果要复制到 Azure 中启用的 CMK 托管磁盘，请使用 Az PowerShell 3.3.0 执行以下步骤：
+> 如果希望复制到 Azure 中启用了 CMK 的托管磁盘，请使用 Az PowerShell 3.3.0 及更高版本执行以下步骤：
 >
-> 1. 通过更新 VM 属性，将故障转移启用托管磁盘
-> 1. 使用`Get-AzRecoveryServicesAsrReplicationProtectedItem`cmdlet 获取受保护项目的每个磁盘的磁盘 ID
-> 1. 使用`New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"`cmdlet 创建字典对象，以包含磁盘 ID 与磁盘加密集的映射。 这些磁盘加密集将由您在目标区域中预先创建。
-> 1. 通过在`Set-AzRecoveryServicesAsrReplicationProtectedItem`**DiskIdToDisk 加密集映射**参数中传递字典对象，使用 cmdlet 更新 VM 属性。
+> 1. 通过更新 VM 属性启用到托管磁盘的故障转移
+> 1. 使用 `Get-AzRecoveryServicesAsrReplicationProtectedItem` cmdlet 获取受保护项的每个磁盘的磁盘 ID
+> 1. 使用 `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` cmdlet 创建包含磁盘 ID 到磁盘加密集映射的字典对象。 这些磁盘加密集将由你在目标区域中预先创建。
+> 1. 通过在 `Set-AzRecoveryServicesAsrReplicationProtectedItem`DiskIdToDiskEncryptionSetMap**参数中传递字典对象，使用** cmdlet 更新 VM 属性。
 
 ## <a name="run-a-test-failover"></a>运行测试故障转移
 

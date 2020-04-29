@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 09/26/2019
 ms.openlocfilehash: 1e889aaef7cd01cd743e8063a8a1dd5138ba9d0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670587"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Azure Monitor 中的自定义日志
@@ -49,32 +49,32 @@ Azure Monitor 中的自定义日志数据源可以从 Windows 和 Linux 计算�
 ### <a name="step-1-open-the-custom-log-wizard"></a>步骤 1。 打开自定义日志向导
 自定义日志向导在 Azure 门户中运行，使用它可以定义要收集的新自定义日志。
 
-1. 在 Azure 门户中，选择“Log Analytics 工作区”> 你的工作区 >“高级设置”********。
-2. 单击**数据** > **自定义日志**。
+1. 在 Azure 门户中，选择“Log Analytics 工作区”> 你的工作区 >“高级设置”   。
+2. 单击“数据”   > “自定义日志”  。
 3. 默认情况下，所有配置更改均会自动推送到所有代理。 对于 Linux 代理，配置文件会发送到 Fluentd 数据收集器。
-4. 单击“添加+”****，打开自定义日志向导。
+4. 单击“添加+”  ，打开自定义日志向导。
 
 ### <a name="step-2-upload-and-parse-a-sample-log"></a>步骤 2. 上载和分析示例日志
 首先上载自定义日志示例。  该向导将分析并显示此文件中的条目，以便进行验证。  Azure Monitor 将使用指定的分隔符标识每个记录。
 
-“换行”**** 是默认分隔符，用于每行包含单个条目的日志文件。  如果行以日期和时间开头且格式符合要求，则可以指定“时间戳”**** 分隔符，它可支持跨多行的条目。
+“换行”  是默认分隔符，用于每行包含单个条目的日志文件。  如果行以日期和时间开头且格式符合要求，则可以指定“时间戳”  分隔符，它可支持跨多行的条目。
 
 如果使用时间戳分隔符，则存储在Azure Monitor 中的每个记录的 TimeGenerated 属性将填充为日志文件中为该条目指定的日期/时间。  如果使用换行分隔符，则 TimeGenerated 将填充为 Azure Monitor 收集此条目的日期和时间。
 
-1. 单击“浏览”****，浏览到示例文件。  请注意，此按钮在某些浏览器中可能标记为“选择文件”****。
-2. 单击“下一步”****。
+1. 单击“浏览”  ，浏览到示例文件。  请注意，此按钮在某些浏览器中可能标记为“选择文件”  。
+2. 单击“下一步”。 
 3. 自定义日志向导将上传文件，并列出其标识的记录。
 4. 更改用于标识新记录的分隔符。根据日志文件中的记录，选择标识效果最好的分隔符。
-5. 单击“下一步”****。
+5. 单击“下一步”。 
 
 ### <a name="step-3-add-log-collection-paths"></a>步骤 3. 添加日志集合路径
 必须在可查找自定义日志的代理上定义一个或多个路径；  可以提供日志文件的特定路径和名称，也可以使用通配符为名称指定路径。 这样，应用程序就可以每天创建新文件，或者在某个文件达到一定大小时创建新文件。 还可以为单个日志文件提供多个路径。
 
 例如，应用程序可能会每天创建日志文件，将日期包括在如 log20100316.txt 的名称中。 此类日志的模式可能是 *log\*.txt*，它将按照应用程序命名方案应用于任何日志文件。
 
-下表提供了有效模式示例，用来指定不同的日志文件。 
+下表提供了有效模式示例，用来指定不同的日志文件。
 
-| 描述 | 路径 |
+| 说明 | 路径 |
 |:--- |:--- |
 | Windows 代理上的 *C:\Logs* 中带 .txt 扩展名的所有文件 |C:\Logs\\\*.txt |
 | Windows 代理上的 *C:\Logs* 中具有以 log 开头的名称和 .txt 扩展名的所有文件 |C:\Logs\log\*.txt |
@@ -82,15 +82,15 @@ Azure Monitor 中的自定义日志数据源可以从 Windows 和 Linux 计算�
 | Linux 代理上的 */var/log/audit* 中名称以 log 开头并带 .txt 扩展名的所有文件 |/var/log/audit/log\*.txt |
 
 1. 选择 Windows 或 Linux，指定正在添加的路径格式。
-2. 键入路径并单击该**+** 按钮。
+2. 键入路径，并单击 **+** 按钮。
 3. 其他任何路径请重复此步骤。
 
 ### <a name="step-4-provide-a-name-and-description-for-the-log"></a>步骤 4. 提供日志名称及描述
 指定的名称用于日志类型，如上所述。  它将始终以 _CL 结尾，以将其与自定义日志区分开来。
 
-1. 为日志键入名称。  ** \_CL**后缀将自动提供。
-2. 添加可选“说明”****。
-3. 单击“下一步”****，保存自定义日志的定义。
+1. 为日志键入名称。  系统会自动提供 **\_CL** 后缀。
+2. 添加可选“说明”  。
+3. 单击“下一步”  ，保存自定义日志的定义。
 
 ### <a name="step-5-validate-that-the-custom-logs-are-being-collected"></a>步骤 5。 验证是否正在收集自定义日志
 新自定义日志的初始数据可能需要一个小时才能在 Azure Monitor 中出现。  它将从指定路径的日志中，收集在自定义日志的定义时间之后生成的条目。  它不会在自定义日志创建过程中保留上传的条目，但是它将收集它找到的日志文件中的现有条目。
@@ -106,8 +106,8 @@ Azure Monitor 开始从自定义日志收集后，它的记录将可用于日志
 ## <a name="removing-a-custom-log"></a>删除自定义日志
 在 Azure 门户中使用以下过程删除以前定义的自定义日志。
 
-1. 从工作区的“高级设置”中的“数据”**** 菜单**** 中选择“自定义日志”****，以便列出所有自定义日志。
-2. 单击要删除的自定义日志旁边的“删除”****。
+1. 从工作区的“高级设置”中的“数据”  菜单  中选择“自定义日志”  ，以便列出所有自定义日志。
+2. 单击要删除的自定义日志旁边的“删除”  。
 
 ## <a name="data-collection"></a>数据收集
 Azure Monitor 大概每隔 5 分钟就会从每个自定义日志中收集新条目。  代理会在从中进行收集的每个日志文件中记录其位置。  如果代理在一段时间内处于脱机状态，则 Azure Monitor 将从其上次脱机的位置收集条目，即使这些条目是在代理脱机期间创建的。
@@ -117,7 +117,7 @@ Azure Monitor 大概每隔 5 分钟就会从每个自定义日志中收集新条
 ## <a name="custom-log-record-properties"></a>自定义日志记录属性
 自定义日志记录的类型与提供的日志名称一致，且具有下表中的属性。
 
-| properties | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | TimeGenerated |Azure Monitor 收集该记录时的日期和时间。  如果日志使用基于时间的分隔符，则此时间是从条目中收集的时间。 |
 | SourceSystem |从中收集记录的代理类型。 <br> OpsManager – Windows 代理，直接连接或 System Center Operations Manager <br> Linux - 所有 Linux 代理 |
@@ -140,12 +140,12 @@ Azure Monitor 大概每隔 5 分钟就会从每个自定义日志中收集新条
 ![上载和分析示例日志](media/data-sources-custom-logs/delimiter.png)
 
 ### <a name="add-log-collection-paths"></a>添加日志集合路径
-日志文件位于 *C:\MyApp\Logs*。  每天将创建一个新文件，名称为包括日期的 *appYYYYMMDD.log* 模式。  此日志的足够模式是*\\\*C：\MyApp_Logs .log*。
+日志文件位于 *C:\MyApp\Logs*。  每天将创建一个新文件，名称为包括日期的 *appYYYYMMDD.log* 模式。  此日志的有效模式是 *C:\MyApp\Logs\\\*.log*。
 
 ![日志集合路径](media/data-sources-custom-logs/collection-path.png)
 
 ### <a name="provide-a-name-and-description-for-the-log"></a>提供日志名称及描述
-我们使用** 名称“MyApp_CL”，然后键入“说明”****。
+我们使用  名称“MyApp_CL”，然后键入“说明”  。
 
 ![日志名称](media/data-sources-custom-logs/log-name.png)
 

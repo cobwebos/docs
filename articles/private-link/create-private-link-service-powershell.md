@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure PowerShell* 创建 Azure 专用链接服务*微软文档
+title: 使用 Azure PowerShell 创建 Azure 专用链接服务 |Microsoft Docs
 description: 了解如何使用 Azure PowerShell 创建 Azure 专用链接服务
 services: private-link
 author: malopMSFT
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: 225ae9d07cc6df2fa809e250083ee6007ab2f945
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76932085"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>使用 Azure PowerShell 创建专用链接服务
@@ -23,7 +23,7 @@ ms.locfileid: "76932085"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-创建专用链接之前，必须使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建资源组。 下面的示例*在 WestCentralUS*位置创建名为*myResourceGroup*的资源组：
+创建专用链接之前，必须使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 创建资源组。 以下示例在 " *WestCentralUS* " 位置创建名为 " *myResourceGroup* " 的资源组：
 
 ```azurepowershell
 $location = "westcentralus"
@@ -109,13 +109,13 @@ $privateLinkService = New-AzPrivateLinkService `
 $pls = Get-AzPrivateLinkService -Name $plsName -ResourceGroupName $rgName 
 ```
 
-在此阶段，专用链接服务已成功创建，并已准备好接收流量。 请注意，上面的示例仅演示了如何使用 PowerShell 创建专用链接服务。  我们尚未配置负载均衡器后端池，也未在后端池上配置任何应用程序来侦听流量。 如果要查看端到端流量，强烈建议您在标准负载均衡器后面配置应用程序。 
+在此阶段，专用链接服务已成功创建，并已准备好接收流量。 请注意，上面的示例仅演示了如何使用 PowerShell 创建专用链接服务。  我们尚未配置负载均衡器后端池，也未在后端池上配置任何应用程序来侦听流量。 如果你想查看端到端通信流，强烈建议你在标准负载均衡器后面配置应用程序。 
 
 接下来，我们将演示如何使用 PowerShell 将此服务映射到不同 VNet 中的专用终结点。 同样，示例仅限于创建专用终结点并连接到上面创建的专用链接服务。 你可以在虚拟网络中创建虚拟机，来为用于构建你的方案的专用终结点发送/接收流量。 
 
 ## <a name="create-a-private-endpoint"></a>创建专用终结点
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
-使用[New-Az虚拟网络](/powershell/module/az.network/new-azvirtualnetwork)为您的专用终结点创建虚拟网络。 本示例在名为*myResourceGroup*的资源组中创建名为 *vnetPE* 的虚拟网络：
+使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 为专用终结点创建虚拟网络。 此示例在名为  *myResourceGroup* 的资源组中创建名为  vnetPE  的虚拟网络：
  
 ```azurepowershell
 $virtualNetworkNamePE = "vnetPE"
@@ -174,5 +174,5 @@ Approve-AzPrivateEndpointConnection -ResourceId $pls.PrivateEndpointConnections[
 ``` 
 
 ## <a name="next-steps"></a>后续步骤
-- 了解有关[Azure 专用链接](private-link-overview.md)的更多
+- 详细了解 [Azure 专用链接](private-link-overview.md)
  

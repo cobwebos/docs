@@ -6,10 +6,10 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 11/01/2018
 ms.openlocfilehash: dd04087db32f0bbfa75dafa7e12c355e5ab7b515
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670060"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>如何将 Micrometer 与 Azure Application Insights Java SDK 配合使用
@@ -58,7 +58,7 @@ Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码�
 
 * Application Insights Spring-boot-starter 2.1.2 或更高版本
 * Azure-spring-boot-metrics-starters 2.0.7 或更高版本
-* [应用程序见解资源](../../azure-monitor/app/create-new-resource.md )
+* [Application Insights 资源](../../azure-monitor/app/create-new-resource.md )
 
 步骤：
 
@@ -117,7 +117,7 @@ Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码�
 
 * Application Insights Web Auto 2.5.0 或更高版本
 * Micrometer Azure Registry 1.1.0 或更高版本
-* [应用程序见解资源](../../azure-monitor/app/create-new-resource.md )
+* [Application Insights 资源](../../azure-monitor/app/create-new-resource.md )
 
 步骤：
 
@@ -270,5 +270,5 @@ Micrometer 应用程序监视功能可以度量基于 JVM 的应用程序代码�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 要了解有关微米数的更多，请参阅官方[微数文档](https://micrometer.io/docs)。
-* 要了解 Azure 上的 Spring，请参阅[Azure 文档上的正式 Spring。](https://docs.microsoft.com/java/azure/spring-framework/?view=azure-java-stable)
+* 若要了解有关 Micrometer 的详细信息，请参阅官方[Micrometer 文档](https://micrometer.io/docs)。
+* 若要了解有关 Azure 的弹簧，请参阅[azure 上的官方春季文档](https://docs.microsoft.com/java/azure/spring-framework/?view=azure-java-stable)。

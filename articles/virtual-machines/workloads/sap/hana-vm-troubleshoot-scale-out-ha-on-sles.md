@@ -1,5 +1,5 @@
 ---
-title: SAP HANA 横向扩展 HSR-Pacemaker，在 Azure VM 故障排除上使用 SLES 进行故障排除*微软文档
+title: 在 Azure Vm 故障排除中 SAP HANA 向外扩展 HSR-PacemakerMicrosoft Docs
 description: 本指南介绍如何检查和排查基于 Azure 虚拟机上运行的 SAP HANA 系统复制 (HSR) 和 Pacemaker on SLES 12 SP3 的复杂 SAP HANA 横向扩展高可用性配置
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
 ms.openlocfilehash: e93b3412785817050ac53030be9ff2172a678c06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77617124"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>验证 SLES 12 SP3 上的 SAP HANA 横向扩展高可用性设置和排查其问题 
@@ -119,7 +119,7 @@ inet addr:10.0.2.42  Bcast:10.0.2.255  Mask:255.255.255.0
 select * from "SYS"."M_SYSTEM_OVERVIEW"
 </code></pre>
 
-要查找正确的端口号，例如，您可以在**配置**下的 HANA Studio 中或通过 SQL 语句查找：
+若要查找正确的端口号，可以在 HANA Studio 中的 "**配置**" 下或通过 SQL 语句查找：
 
 <pre><code>
 select * from M_INIFILE_CONTENTS WHERE KEY LIKE 'listen%'
@@ -451,15 +451,15 @@ node.startup = automatic
 在测试和验证期间，重启 VM 后，SBD 设备在有些情况下不再可见。 启动设置与 YaST2 显示的信息之间有差异。 若要检查设置，请执行以下步骤：
 
 1. 启动 YaST2。
-2. 选择左侧**的网络服务**。
-3. 向右向下滚动到**iSCSI 开始器**并选择它。
+2. 选择左侧的 "**网络服务**"。
+3. 向下滚动到 " **ISCSI 发起程序**"，然后选择它。
 4. 在下一个屏幕中的“服务”选项卡上，会看到节点的唯一发起程序名称****。
 5. 在发起程序名称的上面，确保“服务启动”值设置为“启动时”********。
 6. 如果尚未进行此设置，请将它设置为“启动时”而不是“手动”********。
-7. 接下来，将顶部选项卡切换到 **"已连接的目标**"。
-8. 在 **"已连接目标"** 屏幕上，您应该会看到 SBD 设备的条目，例如 **：10.0.0.19：3260 iqn.2006-04.dbhso.local：dbhso**。
+7. 接下来，将顶部的选项卡切换到**已连接目标**。
+8. 在 "**已连接目标**" 屏幕上，应会看到 SBD 设备的条目，如以下示例所示： **10.0.0.19： 3260 iqn. dbhso： dbhso**。
 9. 检查“启动”值是否设置为“onboot”********。
-10. 如果没有，请选择 **"编辑"** 并更改它。
+10. 否则，请选择 "**编辑**并更改"。
 11. 保存更改并退出 YaST2。
 
 
@@ -504,7 +504,7 @@ systemctl enable pacemaker
 crm status
 </code></pre>
 
-输出应如以下示例所示。 多数仲裁 VM (hso-hana-dm) 上的 cln 和 msl 资源显示为已停止，这是正常的************。 多数仲裁节点上未安装 SAP HANA。 因此 cln 和 msl 资源显示为已停止********。 重要的是，它显示正确的 VM 总数**7**。 群集中所有 VM 的列出状态必须是 Online****。 必须正确识别当前的主要主节点。 本示例中为 hso-hana-vm-s1-0****：
+输出应如以下示例所示。 多数仲裁 VM (hso-hana-dm) 上的 cln 和 msl 资源显示为已停止，这是正常的************。 多数仲裁节点上未安装 SAP HANA。 因此 cln 和 msl 资源显示为已停止********。 它必须显示正确的 Vm 总数**7**，这一点很重要。 群集中所有 VM 的列出状态必须是 Online****。 必须正确识别当前的主要主节点。 本示例中为 hso-hana-vm-s1-0****：
 
 <pre><code>
 Stack: corosync
@@ -682,7 +682,7 @@ watch SAPHanaSR-showAttr
 
 它会重试几次，以避免不必要的故障转移。 仅当状态从“正常”（返回值 4）更改为“错误”（返回值 1）时，群集才会做出反应****************。 因此，如果 SAPHanaSR showAttr 的输出显示了状态为 offline 的 VM，这便是正常状况********。 但是，没有任何活动能够切换主要站点和辅助站点。 只要 SAP HANA 不返回错误，就不会触发群集活动。
 
-您可以通过按如下方式调用 SAP Python 脚本来监视 SAP HANA 环境运行状况状态，作为用户**\<HANA SID\>adm。** 可能必须调整路径：
+可以通过调用 SAP Python 脚本，按如下所示来监视 SAP HANA 横向运行状况状态为用户** \<HANA SID\>adm** 。 可能必须调整路径：
 
 <pre><code>
 watch python /hana/shared/HSO/exe/linuxx86_64/HDB_2.00.032.00.1533114046_eeaf4723ec52ed3935ae0dc9769c9411ed73fec5/python_support/landscapeHostConfiguration.py
@@ -704,7 +704,7 @@ overall host status: ok
 </code></pre>
 
 
-还有另一个命令可以检查当前群集活动。 终止主站点的主节点后，请查看以下命令和输出尾部。 您可以看到转换操作的列表，例如**将**前辅助主节点**hso-hana-vm-s2-0**作为新的主主节点。 如果一切正常并且所有活动已完成，则此“转换摘要”列表必须为空****。
+还有另一个命令可以检查当前群集活动。 终止主站点的主节点后，请查看以下命令和输出尾部。 你可以看到转换操作列表，如将以前的辅助主节点（ **hso**）**升级**为新的主节点。 如果一切正常并且所有活动已完成，则此“转换摘要”列表必须为空****。
 
 <pre><code>
  crm_simulate -Ls
@@ -733,7 +733,7 @@ Transition Summary:
 
 - **在当前辅助站点上执行计划内维护**。 在这种情况下，只需将群集置于维护模式，并在辅助站点上执行工作，而不会影响群集。
 
-- **计划维护当前主**。 要使用户可在维护期间继续工作，需要强制故障转移。 采用这种做法时，必须通过 Pacemaker 触发群集故障转移，而不能仅仅在 SAP HANA HSR 级别触发。 Pacemaker 设置会自动触发 SAP HANA 接管。 还需要在将群集置于维护模式之前完成故障转移。
+- **当前主站点上的计划内维护**。 要使用户可在维护期间继续工作，需要强制故障转移。 采用这种做法时，必须通过 Pacemaker 触发群集故障转移，而不能仅仅在 SAP HANA HSR 级别触发。 Pacemaker 设置会自动触发 SAP HANA 接管。 还需要在将群集置于维护模式之前完成故障转移。
 
 当前辅助站点上的维护过程如下所示：
 
@@ -945,7 +945,7 @@ listeninterface = .internal
 ## <a name="hawk"></a>Hawk
 
 群集解决方案还提供浏览器界面，该界面为偏向于使用菜单和图形界面而不是 shell 级所有命令的用户提供 GUI。
-要使用浏览器界面，请将**\<节点\>** 替换为以下 URL 中的实际 SAP HANA 节点。 然后输入群集（用户群集）的凭据****：
+若要使用浏览器界面，请将** \<节点\> **替换为以下 URL 中的实际 SAP HANA 节点。 然后输入群集（用户群集）的凭据****：
 
 <pre><code>
 https://&ltnode&gt:7630

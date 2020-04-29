@@ -1,5 +1,5 @@
 ---
-title: 创建视图以分析 Azure 监视器中的日志数据 |微软文档
+title: 创建视图以分析 Azure Monitor 中的日志数据 |Microsoft Docs
 description: 可以通过 Azure Monitor 中的视图设计器创建自定义视图，此类视图在 Azure 门户中显示，包含 Log Analytics 工作区中的多种基于数据的可视化效果。 本文包含视图设计器的概述，并提供了创建和编辑自定义视图的过程。
 ms.subservice: logs
 ms.topic: conceptual
@@ -7,17 +7,17 @@ author: bwren
 ms.author: bwren
 ms.date: 02/10/2019
 ms.openlocfilehash: 9a7521f61dc59bd954629a05638c159ab0e70556
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77658483"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>在 Azure Monitor 中使用视图设计器创建自定义视图
 在 Azure Monitor 中使用视图设计器即可在 Azure 门户中创建各种自定义视图，使 Log Analytics 工作区中的数据可视化。 本文概述了视图设计器以及创建和编辑自定义视图的过程。
 
 > [!IMPORTANT]
-> Azure 监视器中的视图正在逐步淘汰，并替换为提供其他功能[的工作簿](workbooks-overview.md)。 有关将现有视图转换为工作簿的详细信息，请参阅[Azure 监视器视图设计器以了解工作簿过渡指南](view-designer-conversion-overview.md)。
+> Azure Monitor 中的视图被分段并替换为提供其他功能的[工作簿](workbooks-overview.md)。 有关将现有视图转换为工作簿的详细信息，请参阅[Azure Monitor 查看设计器到工作簿过渡指南](view-designer-conversion-overview.md)"。
 
 有关视图设计器的详细信息，请参阅：
 
@@ -32,7 +32,7 @@ ms.locfileid: "77658483"
 
 使用视图设计器创建的视图所包含的元素在下表中进行了说明：
 
-| 组成部分 | 描述 |
+| 组成部分 | 说明 |
 |:--- |:--- |
 | 磁贴 | 显示在 Azure Monitor“概述”**** 页上。 每个磁贴都会显示一个可视化摘要，其中包含磁贴所代表的自定义视图。 每个磁贴类型提供的记录可视化效果各不相同。 选择磁贴即可显示自定义视图。 |
 | 自定义视图 | 在选择磁贴时显示。 每个视图包含一个或多个可视化部件。 |
@@ -52,7 +52,7 @@ ms.locfileid: "77658483"
 | 选项 | 描述 |
 |:--|:--|
 | 刷新   | 使用最新数据刷新视图。 | 
-| 日志      | 打开[日志分析](../log-query/portals.md)以使用日志查询分析数据。 |
+| 日志      | 打开[Log Analytics](../log-query/portals.md)用日志查询分析数据。 |
 | 编辑       | 在视图设计器中打开视图，以便编辑其内容和配置。  |
 | 克隆      | 创建一个新视图，并在视图设计器中打开它。 新视图的名称与原始名称相同，但其末尾附加了 *Copy* 字样。 |
 | 日期范围 | 为视图中包含的数据设置日期和时间范围筛选器。 在视图中的查询中设置任何日期范围前，将应用此日期范围。  |
@@ -100,10 +100,10 @@ ms.locfileid: "77658483"
 | 保存        | 保存所做的更改并关闭视图。 |
 | 取消      | 放弃所做的更改并关闭视图。 |
 | 删除视图 | 删除视图。 |
-| Export      | 将视图导出至 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)，可将此模板导入其它工作区。 文件的名称为视图的名称，包含 *omsview* 扩展名。 |
-| Import      | 导入从另一个工作区中导出的 *omsview* 文件。 此操作覆盖现有视图的配置。 |
+| 导出      | 将视图导出至 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)，可将此模板导入其它工作区。 文件的名称为视图的名称，包含 *omsview* 扩展名。 |
+| 导入      | 导入从另一个工作区中导出的 *omsview* 文件。 此操作覆盖现有视图的配置。 |
 | 克隆       | 创建一个新视图，并在视图设计器中打开它。 新视图的名称与原始名称相同，但其末尾附加了 *Copy* 字样。 |
 
 ## <a name="next-steps"></a>后续步骤
 * 将[磁贴](view-designer-tiles.md)添加到自定义视图。
-* 将[可视化部分](view-designer-parts.md)添加到自定义视图。
+* 将[可视化部件](view-designer-parts.md)添加到自定义视图。

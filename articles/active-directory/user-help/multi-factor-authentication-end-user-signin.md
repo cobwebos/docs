@@ -14,10 +14,10 @@ ms.author: curtand
 ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
 ms.openlocfilehash: 33cf9e284d2206ea497af7a5da7c3cf4a890cc87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77064081"
 ---
 # <a name="sign-in-to-your-work-or-school-account-using-your-two-factor-verification-method"></a>使用双重验证方法登录到工作或学校帐户
@@ -59,7 +59,7 @@ ms.locfileid: "77064081"
 
    ![Microsoft 发送通知](./media/multi-factor-authentication-end-user-signin/notify.png)
 
-3. 打开手机上的通知，选择“验证”**** 键。 如果公司需要 PIN，请在此处输入。
+3. 打开手机上的通知，选择“验证”  键。 如果公司需要 PIN，请在此处输入。
 4. 现在你应已登录。
 
 ### <a name="to-sign-in-using-a-verification-code-with-the-microsoft-authenticator-app"></a>使用验证码通过 Microsoft Authenticator 应用登录
@@ -77,7 +77,7 @@ ms.locfileid: "77064081"
 有时，没有设为首选验证方法的手机或设备。 由于会有这种情况，因此我们建议为帐户设置备用方法。 以下部分介绍当主要方法不可用时如何使用替代方法进行登录。
 
 1. 使用用户名和密码登录到 Office 365 等应用程序或服务。
-2. 选择“使用其他验证选项”****。 此时会显示不同的验证选项，具体将取决于设置了多少个选项。
+2. 选择“使用其他验证选项”  。 此时会显示不同的验证选项，具体将取决于设置了多少个选项。
 3. 选择一种替代方法并登录。
 
    ![使用替代方法](./media/multi-factor-authentication-end-user-signin/alt.png)

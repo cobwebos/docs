@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 15d9d186ef36ee9181a6ce0386aa9cc5de7838e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76718644"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>使用 Spark 进行高级数据探索和建模
@@ -29,16 +29,16 @@ ms.locfileid: "76718644"
 
 **交叉验证 (CV)** 是评估在已知数据集上训练的模型对预测未经训练的数据集特征的一般化程度的技术。  此处使用的常见实现是将数据集划分为 K 折，然后以轮询机制方式在除一折以外的所有折上训练模型。 模型的准确预测能力在针对此不用来训练模型的折叠中的独立数据集进行测试时受到评估。
 
-**Hyper参数优化**是为学习算法选择一组超参数的问题，通常目的是在独立数据集上优化算法性能的度量。 **超参数**是必须在模型训练过程之外指定的值。 关于这些值的假设可能影响模型的灵活性和准确性。 例如，决策树具有超参数，如所需的深度和树中的树叶数量。 支持向量机 (SVM) 需要设置错误分类惩罚项。 
+**超参数优化**是为学习算法选择一组超参数的问题，通常目标是优化算法在独立数据集上的性能度量值。 **超参数**是必须在模型训练过程之外指定的值。 关于这些值的假设可能影响模型的灵活性和准确性。 例如，决策树具有超参数，如所需的深度和树中的树叶数量。 支持向量机 (SVM) 需要设置错误分类惩罚项。 
 
-执行此处使用的超参数优化的常用方法是网格搜索或**参数扫描**。 此搜索通过学习算法的超参数空间子集。 交叉验证可提供性能指标，用于为网格搜索算法生成的最佳结果排序。 与超参数扫描一起使用的 CV 有助于解决极限问题（如使模型过渡拟合训练数据），从而使模型保留适用于一般数据集（从中提取了训练数据）的能力。
+执行此处使用的超参数优化的常用方法是网格搜索或**参数扫描**。 此搜索将经历学习算法的超参数空间子集。 交叉验证可提供性能指标，用于为网格搜索算法生成的最佳结果排序。 与超参数扫描一起使用的 CV 有助于解决极限问题（如使模型过渡拟合训练数据），从而使模型保留适用于一般数据集（从中提取了训练数据）的能力。
 
 我们使用的模型包括逻辑和线性回归、随机林和梯度提升树：
 
 * [使用 SGD 的线性回归](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD)是使用随机梯度下降 (SGD) 方法进行优化和特征缩放的线性回归模型，以预测支付的小费金额。 
 * [使用 LBFGS 的逻辑回归](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS)或“logit”回归，是可在因变量分类时用于执行数据分类的回归模型。 LBFGS 是拟牛顿优化算法，近似于使用有限计算机内存量的 Broyden–Fletcher–Goldfarb–Shanno (BFGS) 算法，在机器学习中广泛使用。
 * [随机林](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests)是决策树的整体。  它们组合了许多决策树以降低过度拟合的风险。 随机林用于回归和分类，并且可处理分类特征，也可扩展到多类分类设置。 它们不需要特征缩放，并且能够捕获非线性和特征交互。 随机林是用于分类和回归的最成功的机器学习模型之一。
-* [渐变提升树](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts)（GBTS） 是决策树的合奏。 GBTS 以迭代方式训练决策树，以尽量减少损失函数。 GBTS 用于回归和分类，可以处理分类要素，不需要要素缩放，并且能够捕获非线性和要素交互。 它们还可以在多类分类设置中使用。
+* [梯度提升树](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts)（gbt）是决策树的整体。 GBT 以迭代方式定型决策树，以最大程度地降低损失函数。 GBT 用于回归和分类，可处理分类特征，不需要功能缩放，并且能够捕获非非线性和特征交互。 它们还可以在多类分类设置中使用。
 
 为二元分类问题显示了使用 CV 和超参数扫描的建模示例。 回归任务的主要主题中显示了更简单的示例（不使用参数扫描）。 但是在附录中，还显示了为线性回归使用弹性网络的验证和为随机林回归使用参数扫描的 CV。 **弹性网络**是用于拟合线性回归模型的正则化回归方法，该方法将 L1 和 L2 指标组合起来，作为 [lasso](https://en.wikipedia.org/wiki/Lasso%20%28statistics%29) 和 [ridge](https://en.wikipedia.org/wiki/Tikhonov_regularization) 方法的惩罚。   
 
@@ -84,7 +84,7 @@ Spark 能够读取和写入 Azure 存储 Blob（也称为 WASB）。 因此，�
     import datetime
     datetime.datetime.now()
 
-**输出**
+**OUTPUT**
 
 datetime.datetime(2016, 4, 18, 17, 36, 27, 832799)
 
@@ -187,7 +187,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**输出**
+**OUTPUT**
 
 执行以上单元格所花的时间：276.62 秒
 
@@ -198,7 +198,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 此代码和后续代码段使用 SQL magic 查询样本，使用本地 magic 绘制数据。
 
 * **SQL magic (`%%sql`)** HDInsight PySpark 内核支持针对 sqlContext 的轻松内联 HiveQL 查询。 (-o VARIABLE_NAME) 参数在 Jupyter 服务器上将 SQL 查询的输出保留为 Pandas 数据帧。 这意味着它在本地模式下可用。
-* **`%%local`魔术**用于在 Jupyter 服务器上本地运行代码，该服务器是 HDInsight 群集的头节点。 通常，在将 `%%sql -o` magic 用于运行查询后，使用 `%%local` magic。 -o 参数会在本地保留 SQL 查询的输出。 然后，`%%local` magic 触发下一组代码片段，以在本地针对已保留在本地的 SQL 查询输出运行。 该输出在运行代码后自动可视化。
+* **`%%local` magic** 用于在 Jupyter 服务器上本地运行代码，该服务器是 HDInsight 群集的头节点。 通常，在将 `%%local` magic 用于运行查询后，使用 `%%sql -o` magic。 -o 参数会在本地保留 SQL 查询的输出。 然后，`%%local` magic 触发下一组代码片段，以在本地针对已保留在本地的 SQL 查询输出运行。 该输出在运行代码后自动可视化。
 
 此查询通过乘客数检索行程。 
 
@@ -241,11 +241,11 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     fig.set_ylabel('Trip counts')
     plt.show()
 
-**输出**
+**OUTPUT**
 
 ![按乘客数的行程频率](./media/spark-advanced-data-exploration-modeling/frequency-of-trips-by-passenger-count.png)
 
-可通过使用笔记本中的“类型”**** 菜单按钮从多个不同类型的可视化（表、饼图、线图、面积图或条形图）中选择。 此处显示了条形图。
+可通过使用笔记本中的“类型”  菜单按钮从多个不同类型的可视化（表、饼图、线图、面积图或条形图）中选择。 此处显示了条形图。
 
 ### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts"></a>绘制小费金额以及小费金额如何随乘客数和车费金额变化的直方图。
 使用 SQL 查询为数据采样。
@@ -308,7 +308,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 * 通过将小时划分到交通时间箱来创建新特征
 * 为分类特征编制索引并进行独热编码
 * 创建标签点对象用于输入到 ML 函数中
-* 创建数据的随机子采样并将其拆分为训练和测试集
+* 创建数据的随机采样，并将其拆分为定型集和测试集
 * 特征缩放
 * 在内存中缓存对象
 
@@ -334,7 +334,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     taxi_df_train_with_newFeatures.cache()
     taxi_df_train_with_newFeatures.count()
 
-**输出**
+**OUTPUT**
 
 126050
 
@@ -385,12 +385,12 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**输出**
+**OUTPUT**
 
 执行以上单元格所花的时间：3.14 秒
 
 ### <a name="create-labeled-point-objects-for-input-into-ml-functions"></a>创建标签点对象用于输入到 ML 函数中
-本节包含的代码演示如何将分类文本数据索引为标签点数据类型以及如何对其进行编码。 此转换准备用于训练和测试 MLlib 逻辑回归和其他分类模型的文本数据。 标签点对象是弹性分布式数据集 (RDD)，格式化为 MLlib 中的大多数 ML 算法所需的输入数据。 [标签点](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point)是本地向量，可能密集，也可能稀疏，与标签/响应相关联。
+本节包含的代码演示如何将分类文本数据索引为标签点数据类型以及如何对其进行编码。 此转换准备要用于定型和测试 MLlib 逻辑回归和其他分类模型的文本数据。 标签点对象是弹性分布式数据集 (RDD)，格式化为 MLlib 中的大多数 ML 算法所需的输入数据。 [标签点](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point)是本地向量，可能密集，也可能稀疏，与标签/响应相关联。
 
 下面是用于针对二元分类为文本特征编制索引和编码的代码。
 
@@ -438,8 +438,8 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
         return  labPt
 
 
-### <a name="create-a-random-subsampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>创建数据的随机子采样并将其拆分为训练和测试集
-此代码创建数据的随机采样（此处使用 25%）。 尽管由于数据集的大小，本示例不需要此操作，但我们将演示如何在此处对数据采样。 然后，就会知道如何在需要时针对自己的问题使用它。 当样本较大时，采样可在训练模型时节省大量时间。 接下来我们将样本拆分为训练部分（此处为 75%）和测试部分（此处为 25%），用于分类和回归建模。
+### <a name="create-a-random-subsampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>创建数据的随机采样，并将其拆分为定型集和测试集
+此代码创建数据的随机采样（此处使用 25%）。 尽管由于数据集的大小，本示例不需要此操作，但我们将演示如何在此处对数据采样。 然后，就会知道如何在需要时针对自己的问题使用它。 当样本较大时，采样可节省大量时间，同时训练模型。 接下来我们将样本拆分为训练部分（此处为 75%）和测试部分（此处为 25%），用于分类和回归建模。
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -478,9 +478,9 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**输出**
+**OUTPUT**
 
-执行上述单元格所取的时间：0.31 秒
+执行以上单元格所花的时间：0.31 秒
 
 ### <a name="feature-scaling"></a>特征缩放
 特征缩放（也称为数据规范化）确保具有广泛分散的值的特征不在目标函数中得到过多权重。 用于特征缩放的代码使用 [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) 将特征缩放为单位差异。 它由 MLlib 提供，用于使用随机梯度下降 (SGD) 的线性回归。 SGD 是一种用于训练范围广泛的其他机器学习模型（如正则化回归或支持向量机 (SVM)）的流行算法。   
@@ -519,7 +519,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**输出**
+**OUTPUT**
 
 执行以上单元格所花的时间：11.67 秒
 
@@ -550,9 +550,9 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**输出** 
+**OUTPUT** 
 
-执行上述单元格所取的时间：0.13 秒
+执行以上单元格所花的时间：0.13 秒
 
 ## <a name="predict-whether-or-not-a-tip-is-paid-with-binary-classification-models"></a>通过二元分类模型预测是否支付小费
 本部分介绍如何将二元分类任务的三个模型用于预测是否为某个出租车行程支付小费。 显示的模型包括：
@@ -569,10 +569,10 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 
 我们介绍如何通过两种方法使用参数扫描进行交叉验证 (CV)：
 
-1. 使用**可**应用于 MLlib 中的任何算法和算法中的任何参数集的通用自定义代码。 
-2. 使用 **pySpark CrossValidator 管道函数**。 交叉验证器对 Spark 1.5.0 有一些限制： 
+1. 使用可应用于 MLlib 中的任何算法和算法中的任何参数集的**泛型**自定义代码。 
+2. 使用 **pySpark CrossValidator 管道函数**。 对于 Spark 1.5.0 的 CrossValidator 有几个限制： 
    
-   * 无法保存或持久保存管道模型以供将来使用。
+   * 无法保存或保留管道模型以供将来使用。
    * 无法用于模型中的每个参数。
    * 无法用于每个 MLlib 算法。
 
@@ -667,7 +667,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**输出**
+**OUTPUT**
 
 系数：[0.0082065285375, -0.0223675576104, -0.0183812028036, -3.48124578069e-05, -0.00247646947233, -0.00165897881503, 0.0675394837328, -0.111823113101, -0.324609912762, -0.204549780032, -1.36499216354, 0.591088507921, -0.664263411392, -1.00439726852, 3.46567827545, -3.51025855172, -0.0471341112232, -0.043521833294, 0.000243375810385, 0.054518719222]
 
@@ -720,7 +720,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**输出**
+**OUTPUT**
 
 PR = 0.985336538462 下的面积
 
@@ -773,7 +773,7 @@ F1 分数 = 0.984174341679
     plt.show()
 
 
-**输出**
+**OUTPUT**
 
 ![泛型方法的逻辑回归 ROC 曲线](./media/spark-advanced-data-exploration-modeling/logistic-regression-roc-curve.png)
 
@@ -800,7 +800,7 @@ F1 分数 = 0.984174341679
     print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 
-**输出**
+**OUTPUT**
 
 执行以上单元格所花的时间：34.57 秒
 
@@ -858,7 +858,7 @@ F1 分数 = 0.984174341679
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
-**输出**
+**OUTPUT**
 
 执行以上单元格所花的时间：107.98 秒
 
@@ -894,7 +894,7 @@ F1 分数 = 0.984174341679
     plt.show()
 
 
-**输出**
+**OUTPUT**
 
 ![使用 MLlib 的 CrossValidator 的逻辑回归 ROC 曲线](./media/spark-advanced-data-exploration-modeling/mllib-crossvalidator-roc-curve.png)
 
@@ -943,7 +943,7 @@ F1 分数 = 0.984174341679
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**输出**
+**OUTPUT**
 
 ROC = 0.985336538462 下的面积
 
@@ -987,7 +987,7 @@ ROC = 0.985336538462 下的面积
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**输出**
+**OUTPUT**
 
 ROC = 0.985336538462 下的面积
 
@@ -1066,7 +1066,7 @@ ROC = 0.985336538462 下的面积
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**输出**
+**OUTPUT**
 
 系数：[0.0141707753435, -0.0252930927087, -0.0231442517137, 0.247070902996, 0.312544147152, 0.360296120645, 0.0122079566092, -0.00456498588241, -0.0898228505177, 0.0714046248793, 0.102171263868, 0.100022455632, -0.00289545676449, -0.00791124681938, 0.54396316518, -0.536293513569, 0.0119076553369, -0.0173039244582, 0.0119632796147, 0.00146764882502]
 
@@ -1128,7 +1128,7 @@ R-sqr = 0.597963951127
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**输出**
+**OUTPUT**
 
 RMSE = 0.931981967875
 
@@ -1139,7 +1139,7 @@ R-sqr = 0.733445485802
 ### <a name="gradient-boosting-trees-regression"></a>梯度提升树回归
 本部分中的代码显示如何训练、评估和保存梯度提升树模型，该模型预测 NYC 出租车行程数据的小费金额。
 
-**培训和评估**
+**训练和评估**
 
     #PREDICT TIP AMOUNTS USING GRADIENT BOOSTING TREES
 
@@ -1179,7 +1179,7 @@ R-sqr = 0.733445485802
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**输出**
+**OUTPUT**
 
 RMSE = 0.928172197114
 
@@ -1187,7 +1187,7 @@ R-sqr = 0.732680354389
 
 执行以上单元格所花的时间：20.9 秒
 
-**情节**
+**图**
 
 *tmp_results* 在上一个单元格中注册为 Hive 表。 表中的结果输出到 *sqlResults* 数据帧中用于绘图。 代码如下
 
@@ -1276,7 +1276,7 @@ R-sqr = 0.732680354389
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**输出**
+**OUTPUT**
 
 执行以上单元格所花的时间：161.21 秒
 
@@ -1301,7 +1301,7 @@ R-sqr = 0.732680354389
     print("R-sqr = %s" % r2)
 
 
-**输出**
+**OUTPUT**
 
 R-sqr = 0.619184907088
 
@@ -1388,7 +1388,7 @@ R-sqr = 0.619184907088
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**输出**
+**OUTPUT**
 
 RMSE = 0.906972198262
 
@@ -1424,11 +1424,11 @@ R-sqr = 0.740751197012
     oneHotTESTregScaled.unpersist()
 
 
-**输出**
+**OUTPUT**
 
 PythonRDD[122] at RDD at PythonRDD.scala: 43
 
-•输出要在消耗笔记本中使用的模型文件的路径。 **若要使用独立数据集和为其评分，则需要在“使用笔记本”中复制并粘贴这些文件名。
+* * 要在使用笔记本中使用的模型文件的输出路径。 **若要使用独立数据集和为其评分，则需要在“使用笔记本”中复制并粘贴这些文件名。
 
     # PRINT MODEL FILE LOCATIONS FOR CONSUMPTION
     print "logisticRegFileLoc = modelDir + \"" + logisticregressionfilename + "\"";
@@ -1439,7 +1439,7 @@ PythonRDD[122] at RDD at PythonRDD.scala: 43
     print "BoostedTreeRegressionFileLoc = modelDir + \"" + btregressionfilename + "\"";
 
 
-**输出**
+**OUTPUT**
 
 logisticRegFileLoc = modelDir + "LogisticRegressionWithLBFGS_2016-05-0316_47_30.096528"
 

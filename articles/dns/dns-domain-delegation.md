@@ -8,10 +8,10 @@ ms.date: 2/19/2019
 ms.author: rohink
 ms.topic: conceptual
 ms.openlocfilehash: 9304556edb5e6207296d8ee4e8392e345869cb92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76939056"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>使用 Azure DNS 委托 DNS 区域
@@ -22,7 +22,7 @@ ms.locfileid: "76939056"
 
 ### <a name="domains-and-zones"></a>域和区域
 
-域名系统是域的层次结构。 层次结构从"root"域开始，其名称只是 **'.'。**  根域的下面是顶级域，例如“com”、“net”、“org”、“uk”或“jp”。  这些顶级域的下面是二级域，例如“org.uk”或“co.jp”。  依此类推。 DNS 层次结构中的域托管在不同的 DNS 区域。 这些区域遍布全球，由世界各地的 DNS 名称服务器托管。
+域名系统是域的层次结构。 该层次结构从名为“ **.** ”的“根”域开始。  根域的下面是顶级域，例如“com”、“net”、“org”、“uk”或“jp”。  这些顶级域的下面是二级域，例如“org.uk”或“co.jp”。  依此类推。 DNS 层次结构中的域托管在不同的 DNS 区域。 这些区域遍布全球，由世界各地的 DNS 名称服务器托管。
 
 **DNS 区域** - 域在域名系统中具有一个唯一名称，例如“contoso.com”。 DNS 区域用来托管某个特定域的 DNS 记录。 例如，域“contoso.com”可能包含几条 DNS 记录，如“mail.contoso.com”（用于邮件服务器）和“www.contoso.com”（用于网站）。
 
@@ -67,5 +67,5 @@ Azure DNS 提供权威 DNS 服务。  它不提供递归 DNS 服务。 Azure 中
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[将域委派给 Azure DNS](dns-delegate-domain-azure-dns.md)
+了解如何[将域委托给 Azure DNS](dns-delegate-domain-azure-dns.md)
 

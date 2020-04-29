@@ -4,10 +4,10 @@ description: 筛选出无需监视的事件，减少遥测流量。
 ms.topic: conceptual
 ms.date: 3/14/2019
 ms.openlocfilehash: 020e54132e0ca0a9f9ccf0236f94515877015637
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77659911"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>在 Java Web 应用中筛选遥测
@@ -188,7 +188,7 @@ ms.locfileid: "77659911"
 
 ## <a name="custom-filters"></a>自定义筛选器
 
-### <a name="1-code-your-filter"></a>1. 对过滤器进行编码
+### <a name="1-code-your-filter"></a>1.编写筛选器代码
 
 在代码中创建实现 `TelemetryProcessor` 的类：
 
@@ -227,7 +227,7 @@ ms.locfileid: "77659911"
 ```
 
 
-### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2. 在配置文件中调用筛选器
+### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2.在配置文件中调用筛选器
 
 在 ApplicationInsights.xml 中：
 
@@ -246,7 +246,7 @@ ms.locfileid: "77659911"
 
 ```
 
-### <a name="3-invoke-your-filter-java-spring"></a>3. 调用筛选器（Java 弹簧）
+### <a name="3-invoke-your-filter-java-spring"></a>3.调用筛选器 (Java Spring)
 
 对于基于 Spring 框架的应用程序，自定义遥测处理器必须在主应用程序类中注册为 bean。 然后，它们将在应用程序启动时自动连接。
 
@@ -260,9 +260,9 @@ public TelemetryProcessor successFilter() {
 你将需要在 `application.properties` 中创建自己的筛选器参数，并利用 Spring Boot 的外部化配置框架将这些参数传递到自定义筛选器。 
 
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
-我的筛选器不能正常工作**。
+我的筛选器不能正常工作  。
 
 * 请检查提供的参数值是否有效。 例如，持续时间应为整数。 无效值将导致筛选器被忽略。 如果自定义筛选器从构造函数或 set 方法中引发异常，它会被忽略。
 

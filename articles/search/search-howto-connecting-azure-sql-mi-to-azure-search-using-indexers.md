@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 65e483fd772e20daa73b465ea17dfa6ecde42233
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76964883"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>配置从 Azure 认知搜索索引器到 SQL 托管实例的连接
@@ -20,12 +20,12 @@ ms.locfileid: "76964883"
 如[使用索引器将 Azure SQL 数据库连接到 Azure 认知搜索](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)中所述，Azure 认知搜索通过公共终结点支持针对 **SQL 托管实例**创建索引器。
 
 ## <a name="create-azure-sql-managed-instance-with-public-endpoint"></a>通过公共终结点创建 Azure SQL 托管实例
-在选中“启用公共终结点”**** 选项的情况下创建 SQL 托管实例。
+在选中“启用公共终结点”  选项的情况下创建 SQL 托管实例。
 
    ![启用公共终结点](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/enable-public-endpoint.png "启用公共终结点")
 
 ## <a name="enable-azure-sql-managed-instance-public-endpoint"></a>启用 Azure SQL 托管实例公共终结点
-您还可以在**安全** > **虚拟网络** > **公共终结点** > 下在现有 SQL 托管实例上**启用**公共终结点。
+还可以在“安全性”   > “虚拟网络”   > “公共终结点”   > “启用”  下为现有 SQL 托管实例启用公共终结点。
 
    ![启用公共终结点](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-vnet.png "启用公共终结点")
 
@@ -35,14 +35,14 @@ ms.locfileid: "76964883"
    ![NSG 入站安全规则](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/nsg-rule.png "NSG 入站安全规则")
 
 > [!NOTE]
-> 索引器仍要求使用公共终结点配置 SQL 托管实例才能读取数据。
-> 但是，您可以选择通过用以下 2 个规则替换当前规则 （`public_endpoint_inbound`） 来限制对该公共终结点的入站访问：
+> 索引器仍要求使用公共终结点配置 SQL 托管实例以方便读取数据。
+> 但是，可以选择使用以下 2 个规则来替换当前规则 (`public_endpoint_inbound`)，以便限制对该公共终结点的入站访问：
 >
-> * 允许从`AzureCognitiveSearch`[服务标记](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags)（"SOURCE" ="NAME" `AzureCognitiveSearch`= `cognitive_search_inbound`） 进行入站访问
+> * 允许从 `AzureCognitiveSearch` [服务标记](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) ("SOURCE" = `AzureCognitiveSearch`, "NAME" = `cognitive_search_inbound`) 进行的入站访问
 >
-> * 允许从搜索服务的 IP 地址进行入站访问，可以通过 ping 其完全限定的域名（例如 ， `<your-search-service-name>.search.windows.net`） 获得访问。 （"源" `IP address`= "名称" `search_service_inbound`= ）
+> * 允许来自搜索服务的 IP 地址的入站访问，该 IP 地址可通过 ping 其完全限定的域名（例如 `<your-search-service-name>.search.windows.net`）来获取。 ("SOURCE" = `IP address`, "NAME" = `search_service_inbound`)
 >
-> 对于这两个规则中的每一个，设置"PORT" = `3342`"PROTOCOL" = `TCP` `Any`"目标" = "操作" |`Allow`
+> 对于这两个规则中的每一个，请设置 "PORT" = `3342`, "PROTOCOL" = `TCP`, "DESTINATION" = `Any`, "ACTION" = `Allow`
 
 ## <a name="get-public-endpoint-connection-string"></a>获取公共终结点连接字符串
 请确保使用**公共终结点**（端口 3342，而不是端口 1433）的连接字符串。

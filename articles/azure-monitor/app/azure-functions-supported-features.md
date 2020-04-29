@@ -7,10 +7,10 @@ ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: cf0c97fd65f9966bf42fa22e2c8f92263952cb7a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77655644"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>适用于 Azure Functions 的 Application Insights 支持功能
@@ -19,7 +19,7 @@ Azure Functions 提供与 Application Insights 的[内置集成](../../azure-fun
 
 有关函数运行时版本的详细信息，请参阅[此处](../../azure-functions/functions-versions.md)。
 
-有关兼容版本的应用程序见解的详细信息，请参阅[依赖项](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/)。
+有关 Application Insights 的兼容版本的详细信息，请参阅[依赖关系](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/)。
 
 ## <a name="supported-features"></a>支持的功能
 
@@ -42,7 +42,7 @@ Azure Functions 提供与 Application Insights 的[内置集成](../../azure-fun
 | &bull; 采样                     | 是             | 是               | 
 | &bull; 检测信号                   |                 | 是               | 
 | | | | 
-| **相关性**                       |                   |                   |               
+| **Correlation**                       |                   |                   |               
 | &bull; ServiceBus                     |                   | 是               | 
 | &bull; EventHub                       |                   | 是               | 
 | | | | 

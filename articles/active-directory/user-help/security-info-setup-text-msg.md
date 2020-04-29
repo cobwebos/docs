@@ -1,6 +1,6 @@
 ---
-title: 将短信设置为验证方法 - Azure AD
-description: 如何设置安全信息（预览）页面，以使用短信作为验证方法验证您的身份。
+title: 设置文本消息作为验证方法-Azure AD
+description: 如何设置安全信息（预览版）页，以使用短信作为验证方法来验证您的身份。
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: curtand
 ms.openlocfilehash: 0525ee6d0ac5df61113e5a97c9812394323ffb3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77062347"
 ---
-# <a name="set-up-text-messaging-as-your-verification-method"></a>将短信设置为验证方法
+# <a name="set-up-text-messaging-as-your-verification-method"></a>设置文本消息作为验证方法
 
 可遵循以下步骤添加双重验证和密码重置方法。 在首次设置此项后，可以返回到“安全信息”页以添加、更新或删除安全信息****。
 
@@ -27,7 +27,7 @@ ms.locfileid: "77062347"
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Note]
->如果您没有看到电话选项，则您的组织可能不允许使用此选项进行验证。 在这种情况下，您需要选择其他方法或联系组织的帮助台以获得更多帮助。
+>如果看不到电话选项，你的组织可能不允许你使用此选项进行验证。 在这种情况下，需要选择另一种方法或与组织的技术支持部门联系以获得更多帮助。
 
 ## <a name="set-up-text-messages-from-the-security-info-page"></a>从“安全信息”页设置文本消息
 
@@ -60,7 +60,7 @@ ms.locfileid: "77062347"
 
     此时，页面更改为显示成功。
 
-    ![成功通知、连接电话号码、接收短信的选择以及您的帐户](media/security-info/securityinfo-myprofile-phonetext-success.png)
+    ![成功通知，连接电话号码，接收短信的选项，以及你的帐户](media/security-info/securityinfo-myprofile-phonetext-success.png)
 
     安全信息已更新，你可以在使用双重验证或密码重置时使用短信验证身份。 如果要将短信作为默认方法，请参阅本文的[更改默认的安全信息方法](#change-your-default-security-info-method)部分。
 
@@ -81,7 +81,7 @@ ms.locfileid: "77062347"
 
 ## <a name="change-your-default-security-info-method"></a>更改默认的安全信息方法
 
-如果希望文本消息是使用双因素验证或密码重置请求登录工作或学校帐户时使用的默认方法，则可以从 **"安全信息**"页设置它。
+如果要在使用双因素验证或密码重置请求登录到工作或学校帐户时使用文本消息作为默认方法，则可以从 "**安全信息**" 页设置。
 
 ### <a name="to-change-your-default-security-info-method"></a>更改默认安全信息方法
 
@@ -99,11 +99,11 @@ ms.locfileid: "77062347"
 
 基于你想要执行的操作，还可以选择组织如何联系你以验证你的身份的其他选项。 选项包括：
 
-- **Authenticator 应用。** 下载并使用验证器应用，获取双重验证或密码重置的审批通知或随机生成的审核代码。 有关如何设置和使用 Microsoft Authenticator 应用的分步说明，请参阅[设置安全信息以使用验证器应用](security-info-setup-auth-app.md)。
+- **验证器应用。** 下载并使用验证器应用，获取双重验证或密码重置的审批通知或随机生成的审核代码。 有关如何设置和使用 Microsoft Authenticator 应用的分步说明，请参阅[设置安全信息以使用验证器应用](security-info-setup-auth-app.md)。
 
 - **移动设备或工作电话。** 输入移动设备号码，获取将用于双重验证或密码重置的电话。 有关如何使用电话号码验证身份的分步说明，请参阅[设置安全信息以使用电话](security-info-setup-phone-number.md)。
 
-- **安全密钥。** 注册兼容 Microsoft 的安全密钥并将其与 PIN 一起用于两步验证或密码重置。 有关如何使用安全密钥验证身份的分步说明，请参阅[设置安全信息以使用安全密钥](security-info-setup-security-key.md)。
+- **安全密钥。** 注册与 Microsoft 兼容的安全密钥，并将其与用于双重验证或密码重置的 PIN 一起使用。 有关如何使用安全密钥验证身份的分步说明，请参阅[设置安全信息以使用安全密钥](security-info-setup-security-key.md)。
 
 - **电子邮件地址。** 输入工作或学校电子邮件地址，获取用于密码重置的电子邮件。 此选项不可用于双重验证。 有关如何设置电子邮件的分步说明，请参阅[设置安全信息以使用电子邮件](security-info-setup-email.md)。
 

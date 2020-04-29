@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: pepogors
 ms.openlocfilehash: a61b0cf30ca46eb77837eb09d6a9a0b6f30e89a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77368580"
 ---
 # <a name="service-fabric-guardrails"></a>Service Fabric 准则 
@@ -60,28 +60,28 @@ Service Fabric 节点类型的持久性值在 Azure 资源管理器模板的两�
 * 虚拟机规模集持久性与目标 Service Fabric 节点类型持久性级别不匹配
 * 虚拟机规模集持久性与当前的 Service Fabric 持久性级别或目标 Service Fabric 节点类型持久性级别不匹配 
 
-### <a name="mitigation"></a>缓解操作
+### <a name="mitigation"></a>缓解措施
 若要修复上述任何错误消息所指示的持久性不匹配问题，请执行以下操作：
 1. 更新 Azure 资源管理器模板的虚拟机规模集扩展或 Service Fabric 节点类型部分中的持久性级别，确保这些值匹配。
 2. 使用更新的值重新部署 Azure 资源管理器模板。
 
 
-## <a name="seed-node-deletion"></a>种子节点删除 
+## <a name="seed-node-deletion"></a>删除种子节点 
 ### <a name="overview"></a>概述
-Service Fabric 群集具有[一个可靠性层](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster)属性，用于确定在群集的主节点类型上运行的系统服务的副本数。 所需的副本数将确定必须在群集的主节点类型中维护的最小节点数。 如果主节点类型中的节点数低于可靠性层所需的最小值，群集将变得不稳定。  
+Service Fabric 群集提供一个[可靠性层](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster)属性，用于确定主节点类型的群集上运行的系统服务副本数。 所需副本数将确定必须在主节点类型的群集中维护的最小节点数。 如果主节点类型中的节点数小于可靠性层所需的最小数目，则群集将变得不稳定。  
 
 ### <a name="error-messages"></a>错误消息 
-已检测到种子节点删除操作，并将被拒绝。 
-* 此操作将仅{0}导致潜在的种子节点保留在群集中，而{1}至少需要种子节点。
-* 删除{0}种子节点{1}将导致群集因种子节点仲裁丢失而关闭。 一次可以删除的最大种子节点数为{2}。
+已检测到种子节点删除操作，将拒绝该操作。 
+* 此操作会导致只有 {0} 个潜在种子节点保留在群集中，而所需的最小数目是 {1}。
+* 从 {1} 中删除 {0} 种子节点会导致群集因种子节点仲裁丢失而关闭。 每次最多可以删除的种子节点数为 {2} 个。
  
-### <a name="mitigation"></a>缓解操作 
-确保主节点类型有足够的虚拟机，以保证群集上指定的可靠性。 如果虚拟机将设置为低于给定可靠性层的最小节点数，则无法删除虚拟机。
-* 如果正确指定了可靠性层，请确保主节点类型中有足够的节点，这是可靠性层所需的。 
-* 如果可靠性层不正确，请先对 Service Fabric 资源启动更改以降低可靠性级别，然后再启动任何虚拟机缩放集操作，然后等待它完成。
-* 如果可靠性层为"青铜"，请按照[以下步骤](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#manually-remove-vms-from-a-node-typevirtual-machine-scale-set)正常缩小群集。
+### <a name="mitigation"></a>缓解措施 
+确保主节点类型具有足够的虚拟机，以实现群集中指定的可靠性。 如果删除某个虚拟机会导致虚拟机规模集的节点数小于给定可靠性层的最小节点数，将无法执行此删除操作。
+* 如果正确指定了可靠性层，请确保在主节点类型中提供可靠性层所需的足够节点。 
+* 如果可靠性层不正确，请在 Service Fabric 资源中发起更改以便先降低可靠性级别，然后启动任何虚拟机规模集操作并等待操作完成。
+* 如果可靠性层为“铜级”，请遵循[这些步骤](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#manually-remove-vms-from-a-node-typevirtual-machine-scale-set)适度缩减群集。
 
 ## <a name="next-steps"></a>后续步骤
 * 在运行 Windows Server 的 VM 或计算机上创建群集：[创建适用于 Windows Server 的 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)
 * 在运行 Linux 的 VM 或计算机上创建群集：[创建 Linux 群集](service-fabric-cluster-creation-via-portal.md)
-* 故障排除服务结构：[故障排除指南](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)
+* Service Fabric 故障排除：[故障排除指南](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)

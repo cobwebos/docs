@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: philmea
 ms.openlocfilehash: 5f88a21efd04c9dd24fe31e925a3b911b5ec9df2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77045892"
 ---
 # <a name="run-azure-iot-edge-on-windows-server-virtual-machines"></a>在 Windows Server 虚拟机上运行 Azure IoT Edge
@@ -27,16 +27,16 @@ ms.locfileid: "77045892"
 ## <a name="deploy-from-the-azure-marketplace"></a>从 Azure 市场部署
 
 1. 导航到 [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure 市场套餐，或者在 [Azure 市场](https://azuremarketplace.microsoft.com/)中搜索“Windows Server”
-2. 选择**立即获取它**
-3. 在“软件计划”中，找到“包含容器的 Windows Server 2019 Datacenter Server Core”，并在下一个对话框中选择“继续”。********
+2. 选择“立即获取” 
+3. 在“软件计划”中，找到“包含容器的 Windows Server 2019 Datacenter Server Core”，并在下一个对话框中选择“继续”。  
     * 对于其他版本包含容器的 Windows Server，也可以遵照这些说明
-4. 进入 Azure 门户后，选择“创建”并遵循向导部署 VM。****
+4. 进入 Azure 门户后，选择“创建”并遵循向导部署 VM。 
     * 首次试用 VM 时，在公共入站端口菜单中可以十分方便地使用密码和启用 RDP 与 SSH。
     * 如果你有资源密集型工作负荷，应通过添加更多 CPU 和/或内存来升级虚拟机大小。
 5. 部署虚拟机后，请将其配置为连接到 IoT 中心：
     1. 从在 IoT 中心中创建的 IoT Edge 设备复制设备连接字符串。 请参阅过程[在 Azure 门户中检索连接字符串](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal)。
-    1. 在 Azure 门户中选择新建的虚拟机资源，并打开“运行命令”选项****
-    1. 选择“RunPowerShellScript”选项****
+    1. 在 Azure 门户中选择新建的虚拟机资源，并打开“运行命令”选项 
+    1. 选择“RunPowerShellScript”选项 
     1. 将此脚本复制到包含你的设备连接字符串的命令窗口：
 
         ```powershell
@@ -44,13 +44,13 @@ ms.locfileid: "77045892"
         Install-IoTEdge -Manual -DeviceConnectionString '<connection-string>'
         ```
 
-    1. 选择“运行”来执行该脚本，以安装 IoT Edge 运行时并设置连接字符串****
+    1. 选择“运行”来执行该脚本，以安装 IoT Edge 运行时并设置连接字符串 
     1. 一两分钟后，将会看到一条消息，指出已成功安装并预配 Edge 运行时。
 
 ## <a name="deploy-from-the-azure-portal"></a>从 Azure 门户部署
 
-1. 在 Azure 门户中，搜索“Windows Server”并选择“Windows Server 2019 Datacenter”以开始运行 VM 创建工作流。****
-2. 在“选择软件计划”中，选择“包含容器的 Windows Server 2019 Datacenter Server Core”，然后选择“创建”********
+1. 在 Azure 门户中，搜索“Windows Server”并选择“Windows Server 2019 Datacenter”以开始运行 VM 创建工作流。 
+2. 在“选择软件计划”中，选择“包含容器的 Windows Server 2019 Datacenter Server Core”，然后选择“创建”  
 3. 完成上述“从 Azure 市场部署”说明中的步骤 5。
 
 ## <a name="deploy-from-azure-cli"></a>从 Azure CLI 部署
@@ -98,7 +98,7 @@ ms.locfileid: "77045892"
 
 ## <a name="next-steps"></a>后续步骤
 
-预配 IoT Edge 设备和安装运行后，现在可以[部署 IoT Edge 模块](how-to-deploy-modules-portal.md)。
+预配了安装运行时的 IoT Edge 设备后，现在可以[部署 IoT Edge 模块](how-to-deploy-modules-portal.md)。
 
 如果无法正确安装 Edge 运行时，请参阅[故障排除](troubleshoot.md)页。
 

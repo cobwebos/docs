@@ -1,15 +1,15 @@
 ---
 title: Azure Service Fabric CLI- sfctl settings telemetry
-description: 了解 sfctl，Azure 服务结构命令行接口。 包括用于配置 sfctl 遥测的命令列表。
+description: 了解 sfctl（Azure Service Fabric 命令行接口）。 包含用于配置 sfctl 遥测的命令列表。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 6af5fa944ef399756f9e890ddd77a7f5f32e2bfb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76903025"
 ---
 # <a name="sfctl-settings-telemetry"></a>sfctl settings telemetry
@@ -19,23 +19,23 @@ Sfctl 遥测收集未提供参数的命令名称或其值、sfctl 版本、OS �
 
 ## <a name="commands"></a>命令
 
-|命令|描述|
+|Command|说明|
 | --- | --- |
 | set-telemetry | 启用或禁用遥测。 |
 
 ## <a name="sfctl-settings-telemetry-set-telemetry"></a>sfctl settings telemetry set-telemetry
 启用或禁用遥测。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --off | 禁用遥测。 |
 | --on | 启用遥测。 这是默认值。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|描述|
+|参数|说明|
 | --- | --- |
 | --debug | 提高日志记录详细程度以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -59,5 +59,5 @@ sfctl settings telemetry set_telemetry --on
 
 
 ## <a name="next-steps"></a>后续步骤
-- [设置](service-fabric-cli.md)服务结构 CLI。
+- [安装](service-fabric-cli.md) Service Fabric CLI。
 - 了解如何通过[示例脚本](/azure/service-fabric/scripts/sfctl-upgrade-application)使用 Service Fabric CLI。

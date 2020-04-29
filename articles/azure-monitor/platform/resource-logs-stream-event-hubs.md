@@ -8,10 +8,10 @@ ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: ''
 ms.openlocfilehash: 72341b6da0068ba4b7e3f53b08e6015cafb70f09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77658908"
 ---
 # <a name="stream-azure-platform-logs-to-azure-event-hubs"></a>将 Azure 平台日志流式传输到 Azure 事件中心
@@ -25,7 +25,7 @@ Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日�
   
 * **生成自定义遥测和日志记录平台** - 可利用事件中心高度可缩放的发布-订阅功能，灵活地将平台日志引入自定义 teletry 平台。 有关详细信息，请参阅 [Designing and Sizing a Global Scale Telemetry Platform on Azure Event Hubs](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)（在 Azure 事件中心设计全球规模的遥测平台并设置其大小）。
 
-* **通过将数据流式传输到 Power BI 查看服务运行状况** - 通过事件中心、流分析和 Power BI 在 Azure 服务中将诊断数据转化成准实时见解。 有关此解决方案的详细信息[，请参阅流分析和 Power BI：有关流数据的实时分析仪表板](../../stream-analytics/stream-analytics-power-bi-dashboard.md)。
+* **通过将数据流式传输到 Power BI 查看服务运行状况** - 通过事件中心、流分析和 Power BI 在 Azure 服务中将诊断数据转化成准实时见解。 有关此解决方案的详细信息，请参阅[流分析和 Power BI：用于流式处理数据的实时分析仪表板](../../stream-analytics/stream-analytics-power-bi-dashboard.md)。
 
     以下 SQL 代码是一个流分析查询示例，可用于将所有日志数据解析成 Power BI 表：
     
@@ -39,8 +39,8 @@ Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日�
     CROSS APPLY GetArrayElements(e.records) AS records
     ```
 
-## <a name="prerequisites"></a>先决条件
-需[创建事件中心](../../event-hubs/event-hubs-create.md)（如果还没有）。 如果您已经使用此事件中心命名空间设置诊断设置，则将重用该事件中心。
+## <a name="prerequisites"></a>必备条件
+需[创建事件中心](../../event-hubs/event-hubs-create.md)（如果还没有）。 如果已有使用此事件中心命名空间的诊断设置，则将重复使用该事件中心。
 
 命名空间的共享访问策略定义流式处理机制具有的权限。 流式传输到事件中心需要“管理”、“发送”和“侦听”权限。 在 Azure 门户中事件中心命名空间的“配置”选项卡下，可以创建或修改共享访问策略。
 
@@ -56,7 +56,7 @@ Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日�
 ## <a name="consuming-log-data-from-event-hubs"></a>使用事件中心的日志数据
 事件中心的平台日志以 JSON 格式使用，其中包含下表中的元素。
 
-| 元素名称 | 描述 |
+| 元素名称 | 说明 |
 | --- | --- |
 | records |此有效负载中所有日志事件的数组。 |
 | time |发生事件的时间。 |
@@ -135,7 +135,7 @@ Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日�
 ## <a name="next-steps"></a>后续步骤
 
 * [详细阅读资源日志](platform-logs-overview.md)。
-* [创建诊断设置以在 Azure 中收集日志和指标](diagnostic-settings.md)。
-* [使用 Azure 监视器 流式传输 Azure 活动目录日志](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。
-* [开始使用事件中心](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)。
+* [创建诊断设置以收集 Azure 中的日志和指标](diagnostic-settings.md)。
+* [用 Azure Monitor 流式传输 Azure Active Directory 日志](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。
+* [事件中心入门](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)。
 

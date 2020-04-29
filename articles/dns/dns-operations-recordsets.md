@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: rohink
 ms.openlocfilehash: b9244d9b2bdc9cb20195bbc103c0b1eb48a9de63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76932535"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure DNS 中的 DNS 记录和记录集
@@ -27,7 +27,7 @@ ms.locfileid: "76932535"
 > * [Azure 门户](dns-operations-recordsets-portal.md)
 > * [Azure 经典 CLI](dns-operations-recordsets-cli-nodejs.md)
 > * [Azure CLI](dns-operations-recordsets-cli.md)
-> * [电源外壳](dns-operations-recordsets.md)
+> * [PowerShell](dns-operations-recordsets.md)
 
 本文介绍如何使用 Azure PowerShell 管理 DNS 区域的 DNS 记录。 也可使用跨平台的 [Azure CLI](dns-operations-recordsets-cli.md) 或 [Azure 门户](dns-operations-recordsets-portal.md)管理 DNS 记录。
 
@@ -35,7 +35,7 @@ ms.locfileid: "76932535"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 在 Azure DNS 中创建 DNS 记录之前，首先需了解 Azure DNS 如何将 DNS 记录组织到 DNS 记录集中。
 
@@ -46,7 +46,7 @@ ms.locfileid: "76932535"
 
 ## <a name="create-a-new-dns-record"></a>创建新的 DNS 记录
 
-如果新记录的名称和类型与现有记录相同，则需要[将其添加到现有记录集](#add-a-record-to-an-existing-record-set)。 如果新记录与所有现有记录的名称和类型都不同，则需创建新的记录集。 
+如果新记录与现有记录具有相同的名称和类型，则需[将其添加到现有记录集](#add-a-record-to-an-existing-record-set)。 如果新记录与所有现有记录的名称和类型都不同，则需创建新的记录集。 
 
 ### <a name="create-a-records-in-a-new-record-set"></a>在新的记录集中创建“A”记录
 
@@ -230,7 +230,7 @@ $recordsets = Get-AzDnsRecordSet -Zone $zone
     Set-AzDnsRecordSet -RecordSet $rs
     ```
 
-使用  可将 Azure DNS 中的现有记录集（及其包含的所有记录）替换`Set-AzDnsRecordSet` ** 为指定的记录集。 使用 [Etag 检查](dns-zones-records.md#etags)可确保不覆盖并发更改。 可以使用可选的 `-Overwrite` 开关取消这些检查。
+使用 `Set-AzDnsRecordSet` 可将 Azure DNS 中的现有记录集（及其包含的所有记录）替换为指定的记录集  。 使用 [Etag 检查](dns-zones-records.md#etags)可确保不覆盖并发更改。 可以使用可选的 `-Overwrite` 开关取消这些检查。
 
 此操作序列也可*通过管道传递*，即通过管道传递记录集对象，而不是将其作为参数传递：
 

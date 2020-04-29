@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
 ms.openlocfilehash: 112413720f969474369555a74bc89846666e2ef9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77663447"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>将 System Center Operations Manager 与用于 VM 的 Azure Monitor 的映射功能集成
@@ -20,12 +20,12 @@ ms.locfileid: "77663447"
 >[!NOTE]
 >如果已部署服务映射，可以在用于 VM 的 Azure Monitor 中查看映射，其中包括监视 VM 运行状况和性能的附加功能。 用于 VM 的 Azure Monitor 的映射功能旨在替代独立的服务映射解决方案。 若要了解详细信息，请参阅[面向 VM 的 Azure Monitor 概述](vminsights-overview.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * System Center Operations Manager 管理组（2012 R2 或更高版本）。
 * 经配置后支持用于 VM 的 Azure Monitor 的 Log Analytics 工作区。
 * 一个或多个受 Operations Manager 监视并将数据发送到 Log Analytics 工作区的 Windows 和 Linux 虚拟机或物理计算机。 需将向 Operations Manager 管理组报告的 Linux 服务器配置为直接连接到 Azure Monitor。 有关详细信息，请参阅[使用 Log Analytics 代理收集日志数据](../platform/log-analytics-agent.md)中的概述。
-* 对与 Log Analytics 工作区关联的 Azure 订阅具有访问权限的服务主体。 有关详细信息，请转到[创建服务主体](#create-a-service-principal)。
+* 对与 Log Analytics 工作区关联的 Azure 订阅具有访问权限的服务主体。 有关详细信息，请参阅[创建服务主体](#create-a-service-principal)。
 
 ## <a name="install-the-service-map-management-pack"></a>安装服务映射管理包
 
@@ -41,7 +41,7 @@ ms.locfileid: "77663447"
 安装服务映射管理包后，将在 Operations Manager Operations 控制台的“管理”**** 窗格中的“Operations Management Suite”**** 下显示新节点“服务映射”****。
 
 >[!NOTE]
->[操作管理套件是包含日志分析的服务的集合](../terminology.md#april-2018---retirement-of-operations-management-suite-brand)，现在是[Azure 监视器](../overview.md)的一部分。
+>[Operations Management Suite](../terminology.md#april-2018---retirement-of-operations-management-suite-brand)是包含 Log Analytics 的服务集合，现已成为[Azure Monitor](../overview.md)的一部分。
 
 若要配置用于 VM 的 Azure Monitor 的映射集成，请执行以下操作：
 
@@ -71,7 +71,7 @@ ms.locfileid: "77663447"
 
      ![Operations Manager 配置组](media/service-map-scom/scom-config-group.png)
 
-6. 可选：选择所有管理服务器资源池以与日志分析通信，然后单击"**添加工作区**"。
+6. 可选：选择要与 Log Analytics 通信的所有管理服务器资源池，然后单击 "**添加工作区**"。
 
     ![Operations Manager 配置资源池](media/service-map-scom/scom-config-pool.png)
 
@@ -87,20 +87,20 @@ ms.locfileid: "77663447"
 
 “服务映射”文件夹包含四个节点：
 
-* **活动警报**：列出有关操作管理器和 Azure 监视器之间通信的所有活动警报。  
+* **活动警报**：列出有关 Operations Manager 和 Azure Monitor 之间的通信的所有活动警报。  
 
   >[!NOTE]
   >这些警报不是与 Operations Manager 同步的 Log Analytics 警报，而是根据服务映射管理包中定义的工作流在管理组中生成的警报。
 
-* **服务器**：列出配置为从 Azure 监视器同步 VM 映射功能的受监视服务器。
+* "**服务器**"：列出已配置为从用于 VM 的 Azure Monitor 映射功能同步的受监视服务器。
 
     ![Operations Manager 的“监视服务器”窗格](media/service-map-scom/scom-monitoring-servers.png)
 
-* **计算机组依赖项视图**：列出从"地图"功能同步的所有计算机组。 可以单击任意组来查看其分布式应用程序关系图。
+* **计算机组依赖关系视图**：列出从映射功能同步的所有计算机组。 可以单击任意组来查看其分布式应用程序关系图。
 
     ![Operations Manager 分布式应用程序关系图](media/service-map-scom/scom-group-dad.png)
 
-* **服务器依赖项视图**：列出从映射功能同步的所有服务器。 可以单击任一服务器来查看其分布式应用程序关系图。
+* **服务器依赖关系视图**：列出从映射功能同步的所有服务器。 可以单击任一服务器来查看其分布式应用程序关系图。
 
     ![Operations Manager 分布式应用程序关系图](media/service-map-scom/scom-dad.png)
 
@@ -122,9 +122,9 @@ ms.locfileid: "77663447"
 ![Operations Manager 的“重写属性”窗口](media/service-map-scom/scom-overrides.png)
 
 * **Enabled**：启用/禁用自动更新。
-* **间隔分钟**：指定更新之间的时间。 默认间隔为 1 小时。 若要更频繁地同步映射，可以更改此值。
-* **超时秒**：指定请求超时前的时间长度。
-* **时间窗口分钟**：指定查询数据的时间窗口。 默认为 60 分钟，这是允许的最大时间间隔。
+* **IntervalMinutes**：指定更新之间的时间。 默认间隔为 1 小时。 若要更频繁地同步映射，可以更改此值。
+* **TimeoutSeconds**：指定请求超时前的时间长度。
+* **TimeWindowMinutes**：指定查询数据的时间范围。 默认为 60 分钟，这是允许的最大时间间隔。
 
 ## <a name="known-issues-and-limitations"></a>已知问题和限制
 
@@ -143,4 +143,4 @@ ms.locfileid: "77663447"
 * [使用 Azure 门户创建服务主体](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)
 
 ### <a name="feedback"></a>反馈
-您是否对 VM 地图功能的 Azure 监视器集成或本文档有任何反馈？ 请访问[用户之声页面](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)，可在此处推荐功能或对现有建议投票。
+对于与用于 VM 的 Azure Monitor 地图功能或本文档的集成，你是否有任何反馈？ 请访问[用户之声页面](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)，可在此处推荐功能或对现有建议投票。

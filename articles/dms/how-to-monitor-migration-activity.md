@@ -12,10 +12,10 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: 31b49cdd9e0e5569981b2a0b0c6efcab7239e019
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77648506"
 ---
 # <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>使用 Azure 数据库迁移服务监视迁移活动
@@ -34,7 +34,7 @@ ms.locfileid: "77648506"
 <table id='overview' class='overview'>
   <thead>
     <tr>
-      <th class="x-hidden-focus"><strong>字段名</strong></th>
+      <th class="x-hidden-focus"><strong>字段名称</strong></th>
       <th><strong>字段子状态</strong></th>
       <th><strong>说明</strong></th>
     </tr>
@@ -54,7 +54,7 @@ ms.locfileid: "77648506"
       <td>迁移失败。 选择迁移详细信息下的“查看错误详细信息”链接可以查看完整的错误消息。</td>
     </tr>
     <tr>
-      <td rowspan="4" class="Status"><strong>状态</strong></td>
+      <td rowspan="4" class="Status"><strong>Status</strong></td>
       <td>正在初始化</td>
       <td>DMS 正在设置迁移管道。</td>
     </tr>
@@ -92,7 +92,7 @@ ms.locfileid: "77648506"
       <td>单击该链接会显示错误详细信息。</td>
     </tr>
     <tr>
-      <td rowspan="1" class="duration"><strong>时间</strong></td>
+      <td rowspan="1" class="duration"><strong>Duration</strong></td>
       <td>空值</td>
       <td>从迁移活动初始化到迁移完成或迁移出错的总时间。</td>
     </tr>
@@ -108,7 +108,7 @@ ms.locfileid: "77648506"
 
 下表描述了表级别详细信息中显示的字段。
 
-| 字段名        | 描述       |
+| 字段名        | 说明       |
 | ------------- | ------------- |
 | **完整加载已完成**      | 已完成完整数据加载的表数。 |
 | **完整加载已排队**      | 正在排队等待完整加载的表数。      |
@@ -129,14 +129,14 @@ ms.locfileid: "77648506"
 
 下表描述了表级别迁移进度中显示的字段。
 
-| 字段名        | 描述       |
+| 字段名        | 说明       |
 | ------------- | ------------- |
 | **状态 - 正在同步**      | 连续同步正在运行。 |
 | **插入**      | 行中已应用到目标的 CDC 插入操作数目。      |
-| **更新** | 行中已应用到目标的 CDC 更新操作数目。      |
+| **Update** | 行中已应用到目标的 CDC 更新操作数目。      |
 | **删除**      | 行中已应用到目标的 CDC 删除操作数目。 |
 | **已应用的操作总数**      | 行中已应用到目标的 CDC 更新、插入和删除操作总数。 |
-| **数据错误** | 此表中发生的数据错误数。 部分错误示例包括：“511: 无法创建大小为 %d 的行，此大小超过了允许的最大行大小(%d)。8114: 将数据类型 %ls 转换为 %ls 时出错”。**  客户应查询 Azure 目标中的 dms_apply_exceptions 表，以查看错误详细信息。    |
+| **数据错误** | 此表中发生的数据错误数。 部分错误示例包括：“511: 无法创建大小为 %d 的行，此大小超过了允许的最大行大小(%d)。8114: 将数据类型 %ls 转换为 %ls 时出错”。   客户应查询 Azure 目标中的 dms_apply_exceptions 表，以查看错误详细信息。    |
 
 > [!NOTE]
 > 交接数据库或重新开始迁移后，“插入”、“更新”、“删除”和“已应用的操作总数”的 CDC 值可能会减小。

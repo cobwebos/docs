@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.reviewer: harelbr
 ms.openlocfilehash: 997c5e063c4181a597520e60e2a7669401b9677d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77669737"
 ---
 # <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>使用 Azure 诊断与 Azure Application Insights 的集成针对 Azure 云服务中的问题发出警报
@@ -80,38 +80,38 @@ EventLogs
 
 ## <a name="create-an-alert"></a>创建警报
 
-在 Application Insights 资源的导航菜单中，转到“警报”****，然后选择“新建警报规则”。****
+在 Application Insights 资源的导航菜单中，转到“警报”  ，然后选择“新建警报规则”。 
 
 ![创建规则时的屏幕截图](./media/proactive-cloud-services/001.png)
 
-在“创建规则”**** 窗口中，在“定义警报条件”**** 部分下，单击“添加条件”****，然后选择“自定义日志搜索”****。
+在“创建规则”  窗口中，在“定义警报条件”  部分下，单击“添加条件”  ，然后选择“自定义日志搜索”  。
 
 ![为警报定义条件时的屏幕截图](./media/proactive-cloud-services/002.png)
 
-在“搜索查询”**** 框中，粘贴你在前面的步骤中编制的组合查询。
+在“搜索查询”  框中，粘贴你在前面的步骤中编制的组合查询。
 
-然后，前进到“阈值”**** 框并将其值设置为 0。 还可以调整“期间”**** 和“频率”**** 字段。
-单击 **“完成”**。
+然后，前进到“阈值”  框并将其值设置为 0。 还可以调整“期间”  和“频率”  字段。
+单击“完成”  。
 
 ![配置信号逻辑查询的屏幕截图](./media/proactive-cloud-services/003.png)
 
-在“定义警报详细信息”**** 部分下，为警报规则提供**名称**和**说明**，并设置其**严重性**。
-另外，请确保将“创建后启用规则”**** 按钮设置为“是”****。
+在“定义警报详细信息”  部分下，为警报规则提供**名称**和**说明**，并设置其**严重性**。
+另外，请确保将“创建后启用规则”  按钮设置为“是”  。
 
 ![警报详细信息屏幕截图](./media/proactive-cloud-services/004.png)
 
-在“定义操作组”**** 部分下，可以选择一个现有**操作组**，也可以新建一个。
+在“定义操作组”  部分下，可以选择一个现有**操作组**，也可以新建一个。
 可以选择让操作组包含各种类型的多个操作。
 
 ![操作组屏幕截图](./media/proactive-cloud-services/005.png)
 
-定义操作组后，确认更改并单击“创建警报规则”****。
+定义操作组后，确认更改并单击“创建警报规则”  。
 
 ## <a name="next-steps"></a>后续步骤
 
 了解有关自动检测的详细信息：
 
 [故障异常](../../azure-monitor/app/proactive-failure-diagnostics.md)
-[内存泄漏](../../azure-monitor/app/proactive-potential-memory-leak.md)
+[内存泄露](../../azure-monitor/app/proactive-potential-memory-leak.md)
 [性能异常](../../azure-monitor/app/proactive-performance-diagnostics.md)
 

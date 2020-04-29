@@ -14,10 +14,10 @@ ms.date: 02/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a12c454906d6c6ff702b7f635a91361bbe3994c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77616886"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA（大型实例）存储体系结构
@@ -36,8 +36,8 @@ I 类 HANA 大型实例附带有四倍内存卷作为存储卷。 对于 II 类 
 | S192 | 4,608 GB | 1,024 GB | 1,536 GB | 1,024 GB |
 | S192m | 11,520 GB | 1,536 GB | 1,792 GB | 1,536 GB |
 | S192xm |  11,520 GB |  1,536 GB |  1,792 GB |  1,536 GB |
-| S224 |  4，224 GB |  512 GB |  1,024 GB |  512 GB |
-| S224m |  8，448 GB |  512 GB |  1,024 GB |  512 GB |
+| S224 |  4224 GB |  512 GB |  1,024 GB |  512 GB |
+| S224m |  8448 GB |  512 GB |  1,024 GB |  512 GB |
 | S384 | 11,520 GB | 1,536 GB | 1,792 GB | 1,536 GB |
 | S384m | 12,000 GB | 2,050 GB | 2,050 GB | 2,040 GB |
 | S384xm | 16,000 GB | 2,050 GB | 2,050 GB | 2,040 GB |
@@ -76,7 +76,7 @@ I 类 HANA 大型实例附带有四倍内存卷作为存储卷。 对于 II 类 
 
 - **S72、S72m、S96、S144、S192**：以 256 GB 为增量，且以 256 GB 为最小起始单位。 可以组合使用不同的增量（例如 256 GB、512 GB 等），但不得超出该单位的最大内存。
 - **S144m 和 S192m**：以 256 GB 为增量，以 512 GB 为最小单位。 可以组合使用不同的增量（例如 512 GB、768 GB 等），但不得超出该单位的最大内存。
-- **类型 II 类**：增量为 512 GB，起始单位最小为 2 TB。 可以组合使用不同的增量（例如 512 GB、1 TB 和 1.5 TB 等），但不得超出该单位的最大内存。
+- **类型 II 类**：增量为 512 GB，最小起始单位为 2 TB。 可以组合使用不同的增量（例如 512 GB、1 TB 和 1.5 TB 等），但不得超出该单位的最大内存。
 
 运行多个 SAP HANA 实例的部分示例如下。
 
@@ -91,20 +91,20 @@ I 类 HANA 大型实例附带有四倍内存卷作为存储卷。 对于 II 类 
 还有其他组合变化。 
 
 ## <a name="encryption-of-data-at-rest"></a>静态数据加密
-用于 HANA 大型实例的存储对数据使用透明加密，因为它自 2018 年底以来一直存储在磁盘上。 在早期部署中，您可以选择加密卷。 如果您决定不使用该选项，则可以请求在线加密卷。 将从非加密移动到加密卷是透明的并且不需要停机时间。 
+用于 HANA 大型实例的存储对数据使用透明加密，因为它是在2018年结束后存储在磁盘上。 在以前的部署中，你可以选择将卷加密。 如果你决定采用该选项，则可以请求获取联机加密的卷。 将从非加密移动到加密卷是透明的并且不需要停机时间。 
 
-使用 I 类 SKU 时，会加密存储启动 LUN 的卷。 在修订版 3 HANA 大型实例戳中，使用 HANA 大型实例的 SKU 类型 II 类，您需要使用操作系统方法加密引导 LUN。 在修订版 4 HANA 大型实例戳中，使用类型 II 单位存储引导 LUN 的卷，并在默认情况下在静态时加密。 
+使用 I 类 SKU 时，会加密存储启动 LUN 的卷。 在修订版 3 HANA 大型实例标记中，使用 HANA 大型实例 Sku 的类型 II 类，需要使用 OS 方法加密启动 LUN。 在版本4中，HANA 大型实例戳，使用类型 II 单位存储启动 LUN 的卷，默认情况下加密为静态。 
 
-## <a name="required-settings-for-larger-hana-instances-on-hana-large-instances"></a>HANA 大型实例上较大 HANA 实例所需的设置
-HANA 大型实例中使用的存储具有文件大小限制。 [每个文件的大小限制为 16 TB。](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) 与 EXT3 文件系统中的文件大小限制不同，HANA 隐式不知道 HANA 大型实例存储强制实施的存储限制。 因此，当文件大小限制达到 16TB 时，HANA 不会自动创建新的数据文件。 当 HANA 尝试将文件增长到 16 TB 以上时，HANA 将报告错误，索引服务器将在结束时崩溃。
+## <a name="required-settings-for-larger-hana-instances-on-hana-large-instances"></a>HANA 大型实例上较大 HANA 实例的必需设置
+HANA 大型实例中使用的存储具有文件大小限制。 [大小限制为](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html)每个文件 16 TB。 不同于 EXT3 文件系统中的文件大小限制，HANA 不会隐式识别 HANA 大型实例存储所强制执行的存储限制。 因此，当达到16TB 的文件大小限制时，HANA 不会自动创建新的数据文件。 由于 HANA 尝试将文件增长到超过 16 TB，因此，HANA 将报告错误，并且索引服务器将在结尾崩溃。
 
 > [!IMPORTANT]
-> 为了防止 HANA 尝试将数据文件增长到超过 HANA 大型实例存储的 16 TB 文件大小限制之外，您需要在 HANA 的 global.ini 配置文件中设置以下参数
+> 为了防止 HANA 尝试将数据文件增长到 HANA 大型实例存储的 16 TB 文件大小限制之外，你需要在 HANA 的全局 .ini 配置文件中设置以下参数
 > 
-> - datavolume_striping_true
+> - datavolume_striping = true
 > - datavolume_striping_size_gb = 15000
-> - 另请参阅 SAP 注释[#2400005](https://launchpad.support.sap.com/#/notes/2400005)
-> - 请注意 SAP 注释[#2631285](https://launchpad.support.sap.com/#/notes/2631285)
+> - 另请参阅 SAP 说明[#2400005](https://launchpad.support.sap.com/#/notes/2400005)
+> - 请注意 SAP 说明[#2631285](https://launchpad.support.sap.com/#/notes/2631285)
 
 
 

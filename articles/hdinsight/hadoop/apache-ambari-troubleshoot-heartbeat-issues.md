@@ -1,6 +1,6 @@
 ---
 title: Azure HDInsight 中的 Apache Ambari 检测信号问题
-description: 回顾 Azure HDInsight 中阿帕奇安巴里心跳问题的各种原因
+description: 查看 Azure HDInsight 中 Apache Ambari 检测信号问题的各种原因
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,17 +8,17 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/06/2020
 ms.openlocfilehash: ab88f65d535be2aef5f0b26fa1171c03276466e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77057067"
 ---
 # <a name="apache-ambari-heartbeat-issues-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Ambari 检测信号问题
 
 本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方案。
 
-## <a name="scenario-high-cpu-utilization"></a>方案：CPU 利用率高
+## <a name="scenario-high-cpu-utilization"></a>方案：CPU 利用率较高
 
 ### <a name="issue"></a>问题
 
@@ -61,7 +61,7 @@ Ambari 代理的 CPU 利用率很高，这会导致 Ambari UI 发出警报，即
 
 ### <a name="issue"></a>问题
 
-Ambari 代理尚未启动，导致来自 Ambari UI 的警报，即对于某些节点，Ambari 代理检测信号将丢失。
+Ambari 代理未启动，这会导致 Ambari UI 发出的针对某些节点的警报丢失 Ambari 代理检测信号。
 
 ### <a name="cause"></a>原因
 
@@ -81,22 +81,22 @@ Ambari 代理尚未启动，导致来自 Ambari UI 的警报，即对于某些�
     ps -ef | grep failover
     ```
 
-    如果故障转移控制器服务未运行，则可能是由于问题阻止 hdinsight 代理启动故障转移控制器。 通过 `/var/log/hdinsight-agent/hdinsight-agent.out` 文件检查 hdinsight 代理日志。
+    如果故障转移控制器服务未运行，则很可能是由于某个问题导致 hdinsight 代理无法启动故障转移控制器。 通过 `/var/log/hdinsight-agent/hdinsight-agent.out` 文件检查 hdinsight 代理日志。
 
-## <a name="scenario-heartbeat-lost-for-ambari"></a>场景：安巴里的心跳丢失
+## <a name="scenario-heartbeat-lost-for-ambari"></a>方案：Ambari 的检测信号丢失
 
 ### <a name="issue"></a>问题
 
-安巴里心跳剂丢失。
+Ambari 检测信号代理已丢失。
 
 ### <a name="cause"></a>原因
 
-OMS 日志导致 CPU 利用率高。
+OMS 日志导致 CPU 使用率高。
 
 ### <a name="resolution"></a>解决方法
 
-* 使用[禁用 AzHDInsight 监视](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightmonitoring)电源 Cmdlet 禁用 Azure 监视器日志记录。
-* 删除`mdsd.warn`日志文件
+* 使用 [Disable-AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) PowerShell cmdlet 禁用 Azure Monitor 日志记录。
+* 删除 `mdsd.warn` 日志文件
 
 ---
 
@@ -106,6 +106,6 @@ OMS 日志导致 CPU 利用率高。
 
 * 通过 [Azure 社区支持](https://azure.microsoft.com/support/community/)获取 Azure 专家的解答。
 
-* 与[@AzureSupport](https://twitter.com/azuresupport)- 正式的 Microsoft Azure 帐户连接 Azure 社区，以将 Azure 社区连接到正确的资源：答案、支持和专家，从而改善客户体验。
+* 与[@AzureSupport](https://twitter.com/azuresupport) -官方 Microsoft Azure 帐户联系，通过将 Azure 社区连接到适当的资源来改进客户体验：答案、支持和专家。
 
 * 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”****，或打开“帮助 + 支持”**** 中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅包含对订阅管理和计费支持的访问权限，并且通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。

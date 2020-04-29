@@ -1,14 +1,14 @@
 ---
-title: 使用实时指标流诊断 - Azure 应用程序见解
+title: 使用实时指标流进行诊断 - Azure Application Insights
 description: 通过自定义指标实时监视 Web 应用，使用实时失败、跟踪和事件源以诊断问题。
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
 ms.openlocfilehash: ea0d786d0b8b96941d791bcc8e92fad9a869c5f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670094"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>实时指标流：以 1 秒的延迟进行监视和诊断
@@ -153,7 +153,7 @@ using Microsoft.ApplicationInsights.Extensibility;
 
 从 Application Insights 资源中创建一个 API 密钥，并转到你的 Function App 的**应用程序设置**。 选择“添加新设置”**** 并输入名称 `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` 和与你的 API 密钥对应的值。
 
-### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-or-greater"></a>ASP.NET核心（需要应用程序洞察ASP.NET核心 SDK 2.3.0 或更高）
+### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-or-greater"></a>ASP.NET Core （需要 Application Insights ASP.NET Core SDK 2.3.0 或更高版本）
 
 如下所述修改 startup.cs 文件：
 
@@ -200,10 +200,10 @@ services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => mod
 
 ## <a name="troubleshooting"></a>疑难解答
 
-没有数据？ 如果应用程序处于受保护的网络中：实时指标流使用与其他应用程序见解遥测不同的 IP 地址。 请确保在防火墙中开放[这些 IP 地址](../../azure-monitor/app/ip-addresses.md)。
+没有数据？ 如果你的应用程序位于受保护的网络中：实时指标流使用不同于其他 Application Insights 遥测的 IP 地址。 请确保在防火墙中开放[这些 IP 地址](../../azure-monitor/app/ip-addresses.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * [使用 Application Insights 监视使用情况](../../azure-monitor/app/usage-overview.md)
 * [使用诊断搜索](../../azure-monitor/app/diagnostic-search.md)
-* [分析器](../../azure-monitor/app/profiler.md)
+* [探查器](../../azure-monitor/app/profiler.md)
 * [快照调试器](../../azure-monitor/app/snapshot-debugger.md)

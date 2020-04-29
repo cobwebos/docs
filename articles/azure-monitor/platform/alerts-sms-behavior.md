@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.subservice: alerts
 ms.openlocfilehash: b75bda626f887f1224c1b0f18a80887983a2367d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77665300"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>操作组中的短信通知行为
@@ -30,7 +30,7 @@ ms.locfileid: "77665300"
 * 此警报发送到的操作组的短名称
 * 警报的标题
 
-| 回复 | 描述 |
+| 回复 | 说明 |
 | ----- | ----------- |
 | DISABLE `<Action Group Short name>` | 禁用来自操作组的进一步短信 |
 | ENABLE `<Action Group Short name>` | 重新启用来自操作组的短信 |
@@ -44,5 +44,5 @@ ms.locfileid: "77665300"
 ## <a name="next-steps"></a>后续步骤
 获取[活动日志警报概述](alerts-overview.md)，了解如何接收警报  
 了解有关[短信速率限制](alerts-rate-limiting.md)的详细信息  
-了解有关[操作组](../../azure-monitor/platform/action-groups.md)详细信息
+详细了解[操作组](../../azure-monitor/platform/action-groups.md)
 

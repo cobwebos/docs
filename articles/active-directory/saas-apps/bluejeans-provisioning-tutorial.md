@@ -17,10 +17,10 @@ ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fcb3fe009a6482c8e512899a952694beaed361a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77058950"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>教程：为 BlueJeans 配置自动用户预配
@@ -30,7 +30,7 @@ ms.locfileid: "77058950"
 > [!NOTE]
 > 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本教程中所述的方案假定你已具备以下项：
 
@@ -47,19 +47,19 @@ ms.locfileid: "77058950"
 
 若要从 Azure AD 应用程序库中添加 BlueJeans，请执行以下步骤：****
 
-1. 在**[Azure 门户](https://portal.azure.com)** 中，在左侧导航面板中，选择**Azure 活动目录**。
+1. 在**[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，选择 " **Azure Active Directory**"。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用程序”，并选择“所有应用程序”。********
+2. 中转到 "**企业应用程序**"，然后选择 "**所有应用程序**"。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 要添加新应用程序，请选择窗格顶部的 **"新建应用程序**"按钮。
+3. 若要添加新应用程序，请选择窗格顶部的 "**新建应用程序**" 按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，在结果面板中选择**BlueJeans，** 然后选择**BlueJeans****"添加**"按钮以添加应用程序。
+4. 在搜索框中，输入 " **BlueJeans**"，在结果面板中选择 " **BlueJeans** "，然后选择 "**添加**" 按钮添加该应用程序。
 
     ![结果列表中的 BlueJeans](common/search-new-app.png)
 
@@ -75,7 +75,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 * 建议将单个 Azure AD 用户分配到 BlueJeans 以测试自动用户预配配置。 其他用户和/或组可以稍后分配。
 
-* 如果将用户分配到 BlueJeans，必须在分配对话框中选择任何特定于应用程序的有效角色（如果有）。 具有**默认访问权限**角色的用户从预配中排除。
+* 如果将用户分配到 BlueJeans，必须在分配对话框中选择任何特定于应用程序的有效角色（如果有）。 将从设置中排除具有**默认访问**角色的用户。
 
 ## <a name="configuring-automatic-user-provisioning-to-bluejeans"></a>配置 BlueJeans 的自动用户预配
 
@@ -86,7 +86,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 ### <a name="to-configure-automatic-user-provisioning-for-bluejeans-in-azure-ad"></a>若要在 Azure AD 中为 BlueJeans 配置自动用户预配，请执行以下操作：
 
-1. 登录到 Azure[门户](https://portal.azure.com)并选择**企业应用程序**，选择**所有应用程序**，然后选择**BlueJeans**。
+1. 登录到[Azure 门户](https://portal.azure.com)，选择 "**企业应用程序**"，选择 "**所有应用程序**"，然后选择 " **BlueJeans**"。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -98,7 +98,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
     ![BlueJeans 预配](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningTab.png)
 
-4. 将**预配模式**设置为 **"自动**"。
+4. 将**预配模式**设置为 "**自动**"。
 
     ![BlueJeans 预配](./media/bluejeans-provisioning-tutorial/Bluejeans1.png)
 
@@ -116,7 +116,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
     ![BlueJeans 预配](./media/bluejeans-provisioning-tutorial/BluejeansNotificationEmail.png)
 
-8. 单击“保存”。****
+8. 单击 **“保存”** 。
 
 9. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 BlueJeans”********。
 
@@ -151,7 +151,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [什么是使用 Azure 活动目录的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤
 

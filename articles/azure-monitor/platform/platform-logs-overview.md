@@ -8,10 +8,10 @@ ms.date: 12/19/2019
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: 89de6b3737c8a1e91832aba8f749078806b64e90
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77659314"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Azure 平台日志概述
@@ -20,10 +20,10 @@ ms.locfileid: "77659314"
 ## <a name="types-of-platform-logs"></a>平台日志的类型
 下表列出了在不同 Azure 层提供的特定的平台日志。
 
-| 日志 | 层 | 描述 |
+| 日志 | 层 | 说明 |
 |:---|:---|:---|
-| 资源日志 | Azure 资源 | 深入了解在 Azure 资源（数据平面）内执行的操作，例如，从 Key Vault 获取机密，或向数据库发出请求。** 资源日志的内容因 Azure 服务和资源类型而异。<br><br>资源日志以前称为诊断日志。**  |
-| 活动日志 | Azure 订阅 | 了解从外部（管理平台）** 对订阅中的每个 Azure 资源执行的操作，以及对服务运行状况事件进行的更新。 通过活动日志，可确定订阅中资源上进行的任何写入操作 (PUT, POST, DELETE) 的“什么操作、谁操作和操作时间”等信息。______ 还可以了解该操作和其他相关属性的状态。  每个 Azure 订阅都有一个活动日志。 |
+| 资源日志 | Azure 资源 | 深入了解在 Azure 资源（数据平面）内执行的操作，例如，从 Key Vault 获取机密，或向数据库发出请求。  资源日志的内容因 Azure 服务和资源类型而异。<br><br>资源日志以前称为诊断日志。   |
+| 活动日志 | Azure 订阅 | 了解从外部（管理平台）  对订阅中的每个 Azure 资源执行的操作，以及对服务运行状况事件进行的更新。 通过活动日志，可确定订阅中资源上进行的任何写入操作 (PUT, POST, DELETE) 的“什么操作、谁操作和操作时间”等信息。    还可以了解该操作和其他相关属性的状态。  每个 Azure 订阅都有一个活动日志。 |
 | Azure Active Directory 日志 | Azure 租户 |  包含特定租户的 Azure Active Directory 中的登录活动和更改审核日志的历史记录。 请参阅[什么是 Azure Active Directory 报表？](../../active-directory/reports-monitoring/overview-reports.md)，获取 Azure Active Directory 日志的完整说明。   |
 
 > [!NOTE]

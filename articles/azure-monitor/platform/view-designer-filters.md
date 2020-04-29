@@ -7,21 +7,21 @@ author: bwren
 ms.author: bwren
 ms.date: 06/22/2018
 ms.openlocfilehash: b4840ed30eb1f6dc8d6e6cef47da17807f9644d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77658568"
 ---
 # <a name="filters-in-azure-monitor-views"></a>Azure Monitor 视图中的筛选器
-[Azure 监视器视图中](view-designer.md)的**筛选器**允许用户按特定属性的值筛选视图中的数据，而无需修改视图本身。  例如，可以允许视图的用户在视图中筛选仅来自特定计算机或特定计算器组的数据。  可以在单个视图上创建多个筛选器，以便用户按多个属性筛选数据。  本文介绍如何使用筛选器并添加一个筛选器到自定义视图。
+[Azure Monitor 视图](view-designer.md)中的**筛选器**使得用户可以在不修改视图本身的情况下，以特定属性的值筛选视图中的数据。  例如，可以允许视图的用户在视图中筛选仅来自特定计算机或特定计算器组的数据。  可以在单个视图上创建多个筛选器，以便用户按多个属性筛选数据。  本文介绍如何使用筛选器并添加一个筛选器到自定义视图。
 
 ## <a name="using-a-filter"></a>使用筛选器
 单击视图顶部的日期时间范围以打开下拉列表，可以在其中更改视图的日期时间范围。
 
 ![筛选器示例](media/view-designer-filters/filters-example-time.png)
 
-单击**+** 以使用为视图定义的自定义筛选器添加筛选器。 从下拉列表中为筛选器选择一个值或键入一个值。 通过单击 继续**+** 添加筛选器。 
+单击 **+** 以添加为视图定义的使用自定义筛选器的筛选器。 从下拉列表中为筛选器选择一个值或键入一个值。 通过单击 **+** 来继续添加筛选器。 
 
 
 ![筛选器示例](media/view-designer-filters/filters-example-custom.png)
@@ -31,16 +31,16 @@ ms.locfileid: "77658568"
 
 ## <a name="creating-a-filter"></a>创建筛选器
 
-[编辑视图](view-designer.md)时，从“筛选器”选项卡创建筛选器。****  筛选器适用于视图全局并应用于视图的所有部分。  
+[编辑视图](view-designer.md)时，从“筛选器”选项卡创建筛选器。   筛选器适用于视图全局并应用于视图的所有部分。  
 
 ![筛选器设置](media/view-designer-filters/filters-settings.png)
 
 下表描述了筛选器的设置。
 
-| 设置 | 描述 |
+| 设置 | 说明 |
 |:---|:---|
-| 字段名称 | 用于筛选的字段的名称。  此字段必须与“查询值”中的汇总字段匹配****。 |
-| 查询值 | 运行查询以填充用户的筛选器下拉列表。  此查询必须使用 [summarize](/azure/kusto/query/summarizeoperator) 或 [distinct](/azure/kusto/query/distinctoperator) 提供特定字段的唯一值，且它必须与“字段名称”匹配。****  可以使用 [sort](/azure/kusto/query/sortoperator) 对显示给用户的值进行排序。 |
+| 字段名称 | 用于筛选的字段的名称。  此字段必须与“查询值”中的汇总字段匹配  。 |
+| 查询值 | 运行查询以填充用户的筛选器下拉列表。  此查询必须使用 [summarize](/azure/kusto/query/summarizeoperator) 或 [distinct](/azure/kusto/query/distinctoperator) 提供特定字段的唯一值，且它必须与“字段名称”匹配。   可以使用 [sort](/azure/kusto/query/sortoperator) 对显示给用户的值进行排序。 |
 | 标记 | 在支持筛选器的查询中使用同时向用户显示的字段的名称。 |
 
 ### <a name="examples"></a>示例
@@ -50,8 +50,8 @@ ms.locfileid: "77658568"
 | 字段名称 | 查询值 | 标记 |
 |:--|:--|:--|
 | Computer   | Heartbeat &#124; distinct Computer &#124; sort by Computer asc | 计算机 |
-| EventLevelName | Event &#124; distinct EventLevelName | 严重性 |
-| SeverityLevel | Syslog &#124; distinct SeverityLevel | 严重性 |
+| EventLevelName | Event &#124; distinct EventLevelName | severity |
+| SeverityLevel | Syslog &#124; distinct SeverityLevel | severity |
 | SvcChangeType | ConfigurationChange &#124; distinct svcChangeType | ChangeType |
 
 

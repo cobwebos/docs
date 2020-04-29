@@ -1,5 +1,5 @@
 ---
-title: 监视主题和事件订阅 - Azure 事件网格 IoT 边缘 |微软文档
+title: 监视主题和事件订阅-Azure 事件网格 IoT Edge |Microsoft Docs
 description: 监视主题和事件订阅
 author: banisadr
 ms.author: babanisa
@@ -9,19 +9,19 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: ce7c92f121fb458d528d63d0af0aad025b377386
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77086675"
 ---
 # <a name="monitor-topics-and-event-subscriptions"></a>监视主题和事件订阅
 
-边缘上的事件网格以[Prometheus 展示格式](https://prometheus.io/docs/instrumenting/exposition_formats/)公开主题和事件订阅的一些指标。 本文介绍了可用的指标以及如何启用它们。
+边缘的事件网格公开了多个[Prometheus 处于阐释格式](https://prometheus.io/docs/instrumenting/exposition_formats/)的主题和事件订阅的指标。 本文介绍可用的指标以及如何启用它们。
 
 ## <a name="enable-metrics"></a>启用指标
 
-通过将`metrics__reporterType`环境变量设置为容器创建选项`prometheus`，将模块配置为发出指标：
+将该模块配置为发出指标，方法`metrics__reporterType`是在容器`prometheus`创建选项中将环境变量设置为：
 
  ```json
         {
@@ -40,32 +40,32 @@ ms.locfileid: "77086675"
         }
  ```    
 
-指标将在模块中`5888/metrics`提供 http 和`4438/metrics`https。 例如，`http://<modulename>:5888/metrics?api-version=2019-01-01-preview`对于 http。 此时，指标模块可以轮询终结点以收集指标，如本[示例体系结构](https://github.com/veyalla/ehm)中所示。
+适用于 http 和`5888/metrics` `4438/metrics` https 的模块中提供了度量值。 例如， `http://<modulename>:5888/metrics?api-version=2019-01-01-preview`对于 http。 此时，指标模块可以轮询终结点以收集指标，如此[示例结构](https://github.com/veyalla/ehm)中所示。
 
 ## <a name="available-metrics"></a>可用指标
 
-主题和事件订阅都会发布指标，让您深入了解事件交付和模块性能。
+主题和事件订阅都发出指标，使你能够深入了解事件传递和模块性能。
 
 ### <a name="topic-metrics"></a>主题指标
 
-| 指标 | 描述 |
+| 指标 | 说明 |
 | ------ | ----------- |
-| 收到的事件 | 发布到主题的事件数
-| 不匹配的事件 | 发布到主题的事件数与事件订阅不匹配并被删除
-| 成功请求 | 主题收到的入站发布请求数
-| 系统错误请求 | 由于内部系统错误而失败的入站发布请求数
-| 用户错误请求 | 由于用户错误（如格式错误的 JSON），入站发布请求上的编号失败
-| 成功请求延迟M | 以毫秒为单位发布请求响应延迟
+| EventsReceived | 发布到主题的事件数
+| UnmatchedEvents | 已发布到与事件订阅不匹配并且被删除的主题的事件数
+| SuccessRequests | 主题收到的入站发布请求数
+| SystemErrorRequests | 由于内部系统错误，入站发布请求失败次数
+| UserErrorRequests | 由于用户错误（例如 JSON 格式错误）导致入站发布请求失败
+| SuccessRequestLatencyMs | 发布请求响应延迟时间（毫秒）
 
 
 ### <a name="event-subscription-metrics"></a>事件订阅指标
 
-| 指标 | 描述 |
+| 指标 | 说明 |
 | ------ | ----------- |
-| 交付成功计数 | 成功传递到配置的终结点的事件数
-| 交付失败计数 | 未能传递到配置的终结点的事件数
-| 交付成功延迟M | 以毫秒为单位成功交付的事件延迟
-| 交付失败延迟M | 事件传递失败的延迟（以毫秒为单位）
-| 系统延迟首次尝试 | 在第一次传递尝试之前的事件的系统延迟（以毫秒为单位）
-| 交付尝试计数 | 事件传递尝试次数 - 成功和失败
-| 过期计数 | 过期且未传递到配置的终结点的事件数
+| DeliverySuccessCounts | 成功传递到配置的终结点的事件数
+| DeliveryFailureCounts | 未能传递到配置的终结点的事件数
+| DeliverySuccessLatencyMs | 成功传递的事件滞后时间（毫秒）
+| DeliveryFailureLatencyMs | 事件传递失败的延迟时间（毫秒）
+| SystemDelayForFirstAttemptMs | 第一次传递尝试前事件的系统延迟（毫秒）
+| DeliveryAttemptsCount | 事件传递尝试次数-成功和失败
+| ExpiredCounts | 已过期并且未传递到配置的终结点的事件数

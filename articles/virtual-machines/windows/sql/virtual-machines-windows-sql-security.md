@@ -1,6 +1,6 @@
 ---
 title: Azure 中的 SQL Server 的安全注意事项 | Microsoft Docs
-description: 本主题提供有关保护 Azure 虚拟机中运行的 SQL Server 的一般指导。
+description: 本主题提供有关保护 Azure 虚拟机中运行的 SQL Server 的常规指南。
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -16,50 +16,50 @@ ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: f5ea0ddff38532b119d8d984f2dabd6d898b44a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77031350"
 ---
-# <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中的 SQL Server 的安全注意事项
+# <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中 SQL Server 的安全注意事项
 
-本主题包括用于帮助与 Azure 虚拟机 (VM) 中的 SQL Server 实例建立安全访问的总体安全准则。
+本主题包括总体安全指南，可帮助建立对 Azure 虚拟机 (VM) 中 SQL Server 实例的安全访问。
 
-Azure 遵守多个行业法规和标准，使你能够使用在虚拟机中运行的 SQL Server 构建合规的解决方案。 有关 Azure 合规性的信息，请参阅 [Azure 信任中心](https://azure.microsoft.com/support/trust-center/)。
+Azure 遵守多个行业法规和标准，使用户能够使用虚拟机中运行的 SQL Server 生成符合规定的解决方案。 有关 Azure 合规性的信息，请参阅 [Azure 信任中心](https://azure.microsoft.com/support/trust-center/)。
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="control-access-to-the-sql-vm"></a>控制对 SQL VM 的访问
 
-创建 SQL Server 虚拟机时，请考虑如何谨慎控制谁有权访问计算机和 SQL Server。 一般情况下，应该采取以下措施：
+创建 SQL Server 虚拟机时，请考虑如何谨慎控制有权访问虚拟机和 SQL Server 的人员。 通常，应执行以下操作：
 
-- 将 SQL Server 访问权限限制为需要它的应用程序和客户端。
-- 遵照最佳做法来管理用户帐户和密码。
+- 仅限对此有需要的应用程序和客户端拥有 SQL Server 访问权限。
+- 遵循管理用户帐户和密码的最佳做法。
 
-以下部分提供有关如何实施这些要点的建议。
+在考虑这些要点时，以下部分提供了相关建议。
 
 ## <a name="secure-connections"></a>安全连接
 
-使用库映像创建 SQL Server 虚拟机时，可以使用“SQL Server 连接”选项来选择“本地(VM 内部)”、“专用(虚拟网络内部)”或“公共(Internet)”。****************
+创建具有库映像的 SQL Server 虚拟机时，“SQL Server 连接”  选项提供以下选择：“本地（VM 内）”  、“专用（虚拟网络内）”  或“公共 (Internet)”  。
 
 ![SQL Server 连接](./media/virtual-machines-windows-sql-security/sql-vm-connectivity-option.png)
 
-为了获得最佳安全性，请为方案选择限制性最强的选项。 例如，如果要运行的应用程序需要访问同一个 VM 的 SQL Server，则“本地”是最安全的选项。**** 如果要运行的 Azure 应用程序需要访问 SQL Server，则“专用”选项只能保护与指定的 [Azure 虚拟网络](../../../virtual-network/virtual-networks-overview.md)中的 SQL Server 之间的通信。**** 如果需要使用“公共(Internet)”选项访问 SQL Server VM，请确保遵照本主题中的其他最佳做法，以减小受攻击面****。
+为了达到最佳安全性，请为方案选择最严格的选项。 例如，如果正在运行访问同一 VM 上的 SQL Server 的应用程序，则“本地”  选项最安全。 如果正在运行需要访问 SQL Server 的 Azure 应用程序，选择“专用”  选项可确保与 SQL Server 的通信仅在指定的 [Azure 虚拟网络](../../../virtual-network/virtual-networks-overview.md)内安全进行。 如果需要使用“公共(Internet)”选项访问 SQL Server VM，请确保遵照本主题中的其他最佳做法，以减小受攻击面  。
 
-在门户中选择的选项使用 VM [网络安全组](../../../virtual-network/security-overview.md) (NSG) 上的入站安全规则来允许或拒绝发往虚拟机的网络流量。 可以修改或创建新的入站 NSG 规则，以允许发往 SQL Server 端口（默认为 1433）的流量。 此外，还可以指定被允许通过此端口通信的特定 IP 地址。
+在门户中选择的选项使用 VM [网络安全组](../../../virtual-network/security-overview.md) (NSG) 上的入站安全规则来允许或拒绝发往虚拟机的网络流量。 可修改或创建新的入站 NSG 规则，允许到 SQL Server 端口（默认为 1433）的流量。 还可指定允许通过此端口进行通信的特定 IP 地址。
 
 ![网络安全组规则](./media/virtual-machines-windows-sql-security/sql-vm-network-security-group-rules.png)
 
-除了用于限制网络流量的 NSG 规则以外，还可以在虚拟机上使用 Windows 防火墙。
+除了使用 NSG 规则限制网络流量外，还可以对虚拟机使用 Windows 防火墙。
 
-如果在经典部署模型中使用终结点，可以在不需要使用时删除虚拟机上的任何终结点。 有关在终结点上使用 ACL 的说明，请参阅[管理终结点上的 ACL](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint)。 使用 Resource Manager 的 VM 并不需要 ACL。
+如果通过经典部署模型使用终结点，不使用它们时，请删除虚拟机上的所有终结点。 有关在终结点上使用 ACL 的说明，请参阅[管理终结点上的 ACL](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint)。 使用 Resource Manager 的 VM 并不需要 ACL。
 
 最后，请考虑针对 Azure 虚拟机中的 SQL Server 数据库引擎实例启用加密连接。 使用签名证书配置 SQL Server 实例。 有关详细信息，请参阅[为数据库引擎启用加密连接](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)和[连接字符串语法](https://msdn.microsoft.com/library/ms254500.aspx)。
 
 ## <a name="encryption"></a>加密
 
-托管磁盘提供服务器端加密和 Azure 磁盘加密。 [服务器端加密](/azure/virtual-machines/windows/disk-encryption)提供静态加密，并保护您的数据，以满足您的组织安全性和合规性承诺。 [Azure 磁盘加密](/azure/security/fundamentals/azure-disk-encryption-vms-vmss)使用 Bitlocker 或 DM-Crypt 技术，并与 Azure 密钥保管库集成以加密操作系统和数据磁盘。 
+托管磁盘提供服务器端加密和 Azure 磁盘加密。 [服务器端加密](/azure/virtual-machines/windows/disk-encryption)提供静态加密并保护数据，以满足组织的安全性和符合性承诺。 [Azure 磁盘加密](/azure/security/fundamentals/azure-disk-encryption-vms-vmss)使用 BITLOCKER 或 DM dm-crypt 技术，并与 Azure Key Vault 集成，以对 OS 和数据磁盘进行加密。 
 
 ## <a name="use-a-non-default-port"></a>使用非默认端口
 
@@ -69,7 +69,7 @@ SQL Server 默认在已知端口 1433 上侦听。 为了提高安全性，请�
 
 若要在预配后配置此端口，可以使用两个选项：
 
-- 对于资源管理器 VM，您可以从[SQL 虚拟机资源](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource)中选择 **"安全性**"。 这会提供一个用于更改端口的选项。
+- 对于资源管理器 Vm，你可以从[SQL 虚拟机资源](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource)中选择 "**安全性**"。 这会提供一个用于更改端口的选项。
 
   ![在门户中更改 TCP 端口](./media/virtual-machines-windows-sql-security/sql-vm-change-tcp-port.png)
 
@@ -99,11 +99,11 @@ SQL Server 默认在已知端口 1433 上侦听。 为了提高安全性，请�
 
 ## <a name="additional-best-practices"></a>其他最佳做法
 
-除了本主题中描述的实践外，我们建议您查看并实施传统本地安全实践和虚拟机安全最佳实践的安全最佳实践。 
+除了本主题中所述的做法之外，我们还建议你查看并实施传统的本地安全做法以及虚拟机安全最佳做法中的最佳安全方案。 
 
-有关本地安全实践的详细信息，请参阅[SQL 服务器安装](/sql/sql-server/install/security-considerations-for-a-sql-server-installation)[和安全中心](/sql/relational-databases/security/security-center-for-sql-server-database-engine-and-azure-sql-database)的安全注意事项。 
+有关本地安全做法的详细信息，请参阅 SQL Server 安装和[安全中心](/sql/relational-databases/security/security-center-for-sql-server-database-engine-and-azure-sql-database)的[安全注意事项](/sql/sql-server/install/security-considerations-for-a-sql-server-installation)。 
 
-有关虚拟机安全性的详细信息，请参阅[虚拟机安全概述](/azure/security/fundamentals/virtual-machines-overview)。
+有关虚拟机安全的详细信息，请参阅[虚拟机安全概述](/azure/security/fundamentals/virtual-machines-overview)。
 
 
 ## <a name="next-steps"></a>后续步骤

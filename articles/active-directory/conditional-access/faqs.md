@@ -12,19 +12,19 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6842338bd27e4bea3436f0b249380ab773d60de6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77368088"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory 条件访问常见问题解答
 
 ## <a name="which-applications-work-with-conditional-access-policies"></a>哪些应用程序使用条件访问策略？
 
-有关使用条件访问策略的应用程序的信息，请参阅[在 Azure 活动目录中使用条件访问规则的应用程序和浏览器](concept-conditional-access-cloud-apps.md)。
+有关使用条件性访问策略的应用程序的信息，请参阅[Azure Active Directory 中使用条件性访问规则的应用程序和浏览器](concept-conditional-access-cloud-apps.md)。
 
-## <a name="are-conditional-access-policies-enforced-for-b2b-collaboration-and-guest-users"></a>B2B 协作和来宾用户强制实施条件访问策略吗？
+## <a name="are-conditional-access-policies-enforced-for-b2b-collaboration-and-guest-users"></a>是否对 B2B 协作和来宾用户强制实施条件性访问策略？
 
 对企业到企业 (B2B) 协作用户执行策略。 但在某些情况下，用户可能无法满足策略要求。 例如，来宾用户的组织可能不支持多重身份验证。 
 
@@ -40,7 +40,7 @@ ms.locfileid: "77368088"
 
 条件访问策略适用于所有用户帐户， 其中包括用作服务帐户的用户帐户。 通常情况下，运行时无人参与的服务帐户无法满足条件访问策略的要求。 例如，可能需要多重身份验证。 可使用条件访问策略管理设置从策略中排除服务帐户。 
 
-## <a name="are-microsoft-graph-apis-available-for-configuring-conditional-access-policies"></a>Microsoft 图形 API 是否可用于配置条件访问策略？
+## <a name="are-microsoft-graph-apis-available-for-configuring-conditional-access-policies"></a>Microsoft Graph Api 是否可用于配置条件性访问策略？
 
 目前不可以。 
 
@@ -58,4 +58,4 @@ Microsoft Teams 还在 Azure Active Directory 条件访问策略中作为云应�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 要为环境配置条件访问策略，请参阅[Azure 活动目录中的条件访问最佳做法](best-practices.md)。 
+- 若要为环境配置条件访问策略，请参阅[Azure Active Directory 中条件性访问的最佳做法](best-practices.md)。 

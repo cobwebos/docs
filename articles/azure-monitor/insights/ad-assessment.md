@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 09/10/2019
 ms.openlocfilehash: 57c474c8391168702154b71e0c454253ab921dc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77667221"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>使用 Azure Monitor 中的 Active Directory 运行状况检查解决方案优化 Active Directory 环境
@@ -27,13 +27,13 @@ ms.locfileid: "77667221"
 
 可以选择对组织最重要的重点领域，并跟踪一个运行正常无风险环境的进度。
 
-在添加解决方案并完成检查后，会在环境中基础结构的“AD 运行状况检查”**** 仪表板上显示有关重点领域的摘要信息。 以下部分介绍如何使用“AD 运行状况检查”**** 仪表板上的信息，可以在其中查看并针对 Active Directory 服务器基础结构采取建议的操作。  
+在添加解决方案并完成检查后，会在环境中基础结构的“AD 运行状况检查”  仪表板上显示有关重点领域的摘要信息。 以下部分介绍如何使用“AD 运行状况检查”  仪表板上的信息，可以在其中查看并针对 Active Directory 服务器基础结构采取建议的操作。  
 
 ![AD 运行状况检查磁贴的图像](./media/ad-assessment/ad-healthcheck-summary-tile.png)
 
 ![AD 运行状况检查仪表板的图像](./media/ad-assessment/ad-healthcheck-dashboard-01.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Active Directory 运行状况检查解决方案要求在每台安装了适用于 Windows 的 Log Analytics 代理（也称为 Microsoft Monitoring Agent (MMA)）的计算机上安装受支持的 .NET Framework 4.6.2 或更高版本。  该代理由 System Center 2016 - Operations Manager、Operations Manager 2012 R2 和 Azure Monitor 使用。
 * 该解决方案支持运行 Windows Server 2008 和 2008 R2、Windows Server 2012 和 2012 R2 以及 Windows Server 2016 的域控制器。

@@ -8,29 +8,29 @@ ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
 ms.openlocfilehash: d30652d4e068cbceb79e6da60b48176b9de64647
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670434"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-resource-logs-archived-to-a-storage-account"></a>为存档到存储帐户的 Azure Monitor 资源日志的格式更改做准备
 
 > [!WARNING]
-> 如果使用[日志配置文件](./../../azure-monitor/platform/archive-activity-log.md)将[Azure 资源日志或指标发送到存储帐户](./../../azure-monitor/platform/archive-diagnostic-logs.md)，则存储帐户中的数据格式将在 2018 年 11 月 1 日更改为 JSON 行。 以下说明介绍了影响以及如何更新工具以处理新格式。 
+> 如果使用[日志配置文件](./../../azure-monitor/platform/archive-activity-log.md)将[Azure 资源资源日志或指标](./../../azure-monitor/platform/archive-diagnostic-logs.md)发送到存储帐户，则存储帐户中的数据格式将更改为2018年11月1日的 JSON 行。 以下说明介绍了影响以及如何更新工具以处理新格式。 
 >
 > 
 
 ## <a name="what-is-changing"></a>有什么变化
 
-Azure Monitor 提供的功能可将资源诊断数据和活动日志数据发送到 Azure 存储帐户、事件中心命名空间或 Azure Monitor 中的 Log Analytics 工作区。 为解决系统性能问题，发送到 blob 存储的日志数据格式将于 2018 年 11 月 1 日凌晨 12 点 (UTC) 发生更改****。 如果工具从 blob 存储中读取数据，则需要更新工具以了解新的数据格式。
+Azure Monitor 提供的功能可将资源诊断数据和活动日志数据发送到 Azure 存储帐户、事件中心命名空间或 Azure Monitor 中的 Log Analytics 工作区。 为解决系统性能问题，发送到 blob 存储的日志数据格式将于 2018 年 11 月 1 日凌晨 12 点 (UTC) 发生更改  。 如果工具从 blob 存储中读取数据，则需要更新工具以了解新的数据格式。
 
 * Blob 格式将于 2018 年 11 月 1 日星期四凌晨 12 点 (UTC) 更改为 [JSON Lines](http://jsonlines.org/)。 这意味着每个记录将由换行符分隔，JSON 记录之间没有外部记录数组和逗号。
 * 将同时更改所有订阅中所有诊断设置的 blob 格式。 11 月 1 日发出的第一个 PT1H.json 文件将使用此新格式。 Blob 和容器名称保持不变。
 * 从现在到 11 月 1 日之间设置诊断设置将继续以当前格式发出数据，直到 11 月 1 日为止。
 * 此更改将同时在所有公有云区域中发生。 但是，由世纪互联、Azure 德国或 Azure 政府云运营的 Microsoft Azure 不会进行此更改。
 * 此更改会影响以下数据类型：
-  * [Azure 资源日志](archive-diagnostic-logs.md)（[请参阅 此处的资源列表](diagnostic-logs-schema.md)）
+  * [Azure 资源资源日志](archive-diagnostic-logs.md)（[请参阅此处的资源列表](diagnostic-logs-schema.md)）
   * [由诊断设置导出的 Azure 资源指标](diagnostic-settings.md)
   * [由日志配置文件导出的 Azure 活动日志数据](archive-activity-log.md)
 * 此更改不会影响：
@@ -134,6 +134,6 @@ Azure blob 存储中 PT1H.json 文件的当前格式使用 JSON 数组记录。 
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解[将资源日志存档到存储帐户](./../../azure-monitor/platform/archive-diagnostic-logs.md)
+* 了解如何[将资源资源日志存档到存储帐户](./../../azure-monitor/platform/archive-diagnostic-logs.md)
 * 了解如何[将活动日志数据存档到存储帐户](./../../azure-monitor/platform/archive-activity-log.md)
 

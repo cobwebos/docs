@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
 ms.openlocfilehash: 2471c29f559df5c347c62ceb4c7fd9b4ae1e5eec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77657327"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>使用 DNS Analytics 预览解决方案收集有关 DNS 基础结构的见解
@@ -33,7 +33,7 @@ DNS Analytics 可帮助：
 
 下表介绍了该解决方案支持的连接的源：
 
-| **连接源** | **支持** | **说明** |
+| **连接的源** | **支持** | **说明** |
 | --- | --- | --- |
 | [Windows 代理](../platform/agent-windows.md) | 是 | 解决方案会从 Windows 代理收集 DNS 信息。 |
 | [Linux 代理](../learn/quick-collect-linux-computer.md) | 否 | 解决方案不会从直接 Linux 代理收集 DNS 信息。 |
@@ -44,7 +44,7 @@ DNS Analytics 可帮助：
 
 解决方案从安装有 Log Analytics 代理的 DNS 服务器收集 DNS 清单以及与 DNS 事件相关的数据。 此数据稍后将上传到 Azure Monitor，之后会显示在解决方案仪表板中。 通过运行 DNS PowerShell cmdlet 收集与清单相关的数据，如 DNS 服务器的数量、区域和资源记录。 该数据每两天更新一次。 与事件相关的数据几乎是从由 Windows Server 2012 R2 中增强的 DNS 日志记录和诊断提供的[分析和审核日志](https://technet.microsoft.com/library/dn800669.aspx#enhanc)中实时收集的。
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 
 使用以下信息配置解决方案：
 
@@ -163,9 +163,9 @@ DNS 磁贴包括在其中收集数据的 DNS 服务器的数量。 它还包括�
 
     ![DnsEvents 日志搜索](./media/dns-analytics/log-search-dnsevents.png)  
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 若要查看查找查询的日志数据，请在左侧的分面控件中选择“LookUpQuery”作为“子类型”筛选器。******** 此时会显示一个表格，其中列出了所选时间段内的所有查找查询事件。
+    a. 若要查看查找查询的日志数据，请在左侧的分面控件中选择“LookUpQuery”作为“子类型”筛选器。******** 此时会显示一个表格，其中列出了所选时间段内的所有查找查询事件。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 若要查看动态注册的日志数据，请在左侧的分面控件中选择“DynamicRegistration”作为“子类型”筛选器。******** 此时会显示一个表格，其中列出了所选时间段内的所有动态注册事件。
+    b. 若要查看动态注册的日志数据，请在左侧的分面控件中选择“DynamicRegistration”作为“子类型”筛选器。******** 此时会显示一个表格，其中列出了所选时间段内的所有动态注册事件。
 
     c. 若要查看配置更改的日志数据，请在左侧的分面控件中选择“ConfigurationChange”作为“子类型”筛选器。******** 此时会显示一个表格，其中列出了所选时间段内的所有配置更改事件。
 

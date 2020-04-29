@@ -1,13 +1,13 @@
 ---
-title: 监视 Azure VM 上的性能 - Azure 应用程序见解
+title: 监视 Azure VM 的性能 - Azure Application Insights
 description: 针对 Azure VM 和 Azure 虚拟机规模集进行应用程序性能监视 对加载和响应时间、依赖项信息绘制图表，并针对性能设置警报。
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.openlocfilehash: d75e14dccef565f0029d06583e74d5693726dd99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77661322"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>在 Azure 虚拟机和 Azure 虚拟机规模集上部署 Azure Monitor Application Insights 代理
@@ -46,7 +46,7 @@ ms.locfileid: "77661322"
 ## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machines-using-powershell"></a>使用 PowerShell 在 Azure 虚拟机上管理用于 .NET 应用程序的 Application Insights 代理
 
 > [!NOTE]
-> 在安装应用程序见解代理之前，您需要一个连接字符串。 [创建新的应用程序见解资源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)或从现有应用程序见解资源复制连接字符串。
+> 安装 Application Insights 代理之前，需要一个连接字符串。 [创建新的 Application Insights 资源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)，或者从现有的 application Insights 资源复制连接字符串。
 
 > [!NOTE]
 > 不熟悉 PowerShell？ 请查看[入门指南](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azps-2.5.0)。
@@ -99,10 +99,10 @@ Get-AzResource -ResourceId "/subscriptions/<mySubscriptionId>/resourceGroups/<my
 # Location          : southcentralus
 # ResourceId        : /subscriptions/<mySubscriptionId>/resourceGroups/<myVmResourceGroup>/providers/Microsoft.Compute/virtualMachines/<myVmName>/extensions/ApplicationMonitoring
 ```
-您还可以在门户中的[Azure 虚拟机边栏选项卡](https://docs.microsoft.com/azure/virtual-machines/extensions/overview)中查看已安装的扩展。
+你还可以在门户的 " [Azure 虚拟机" 边栏选项卡](https://docs.microsoft.com/azure/virtual-machines/extensions/overview)中查看已安装的扩展。
 
 > [!NOTE]
-> 通过单击与用于部署应用程序见解代理扩展的连接字符串关联的应用程序见解资源中的实时指标流来验证安装。 如果从多个虚拟机发送数据，请在“服务器名称”下选择目标 Azure 虚拟机。 可能需要等待长达一分钟的时间数据才会开始流动。
+> 通过单击与用于部署 Application Insights 代理扩展的连接字符串关联的 Application Insights 资源中的实时指标流来验证安装。 如果从多个虚拟机发送数据，请在“服务器名称”下选择目标 Azure 虚拟机。 可能需要等待长达一分钟的时间数据才会开始流动。
 
 ## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machine-scale-sets-using-powershell"></a>使用 PowerShell 在 Azure 虚拟机规模集上管理用于 .NET 应用程序的 Application Insights 代理
 

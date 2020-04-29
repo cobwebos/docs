@@ -1,5 +1,5 @@
 ---
-title: Azure 监视器中的代理运行状况解决方案 |微软文档
+title: Azure Monitor 中的代理运行状况解决方案 |Microsoft Docs
 description: 本文旨在帮助你了解如何使用此解决方案来监视代理的运行状况，这些代理直接向 Log Analytics 或 System Center Operations Manager 报告。
 ms.subservice: ''
 ms.topic: conceptual
@@ -7,16 +7,16 @@ author: bwren
 ms.author: bwren
 ms.date: 02/06/2020
 ms.openlocfilehash: 7093e20473b799a3f05ddf30803721636732241e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77663247"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Azure Monitor 中的代理运行状况解决方案
 Azure 中的代理运行状况解决方案有助于你了解，在所有直接向 Azure Monitor 中的 Log Analytics 工作区报告或向连接到 Azure Monitor 的 System Center Operations Manager 管理组报告的代理中，哪些不响应且提交的是操作数据。  也可跟踪所部署代理的数目及其地理分布情况，并通过执行其他查询来不断了解在 Azure 或其他云环境中或本地部署的代理的分布情况。    
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 在部署此解决方案之前，请确认你当前已安装受支持的 [Windows 代理](../../log-analytics/log-analytics-windows-agent.md)，此类代理向 Log Analytics 工作区报告或向与工作区集成的 [Operations Manager 管理组](../../azure-monitor/platform/om-agents.md)报告。
 
 ## <a name="solution-components"></a>解决方案组件
@@ -30,7 +30,7 @@ Azure 中的代理运行状况解决方案有助于你了解，在所有直接�
 
 有关如何更新解决方案管理包的详细信息，请参阅[将 Operations Manager 连接到 Log Analytics](../../azure-monitor/platform/om-agents.md)。
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 执行[添加解决方案](solutions.md)中所述的过程，将代理运行状况解决方案添加到 Log Analytics 工作区。 无需进一步的配置。
 
 
@@ -38,7 +38,7 @@ Azure 中的代理运行状况解决方案有助于你了解，在所有直接�
 ### <a name="supported-agents"></a>支持的代理
 下表介绍了该解决方案支持的连接的源。
 
-| 连接的源 | 支持 | 描述 |
+| 连接的源 | 支持 | 说明 |
 | --- | --- | --- |
 | Windows 代理 | 是 | 检测信号事件从直接的 Windows 代理收集。|
 | System Center Operations Manager 管理组 | 是 | 每 60 秒从向管理组报告的代理收集一次检测信号事件，然后将其转发到 Azure Monitor。 从 Operations Manager 代理到 Azure Monitor 的直接连接不是必需的。 检测信号事件数据从管理组转发到 Log Analytics 工作区。|
@@ -48,7 +48,7 @@ Azure 中的代理运行状况解决方案有助于你了解，在所有直接�
 
 单击“代理运行状况”磁贴可打开“代理运行状况”仪表板。********  仪表板包含下表中的列。 每个列按照指定时间范围内符合该列条件的计数列出了前十个事件。 可以通过在每一列右下方选择“查看全部”**** 或单击列标题来运行提供整个列表的日志搜索。
 
-| 列 | 描述 |
+| 列 | 说明 |
 |--------|-------------|
 | 某个时段的代理计数 | 在七天时段内的代理计数趋势（针对 Linux 和 Windows 代理）。|
 | 无响应代理的计数 | 在过去 24 小时内未发送检测信号的代理的列表。|
@@ -67,7 +67,7 @@ Azure 中的代理运行状况解决方案有助于你了解，在所有直接�
 ### <a name="heartbeat-records"></a>检测信号记录
 创建的是“Heartbeat”类型的记录。****  这些记录的属性在下表中列出。  
 
-| properties | 描述 |
+| 属性 | 描述 |
 | --- | --- |
 | `Type` | *检测信号*|
 | `Category` | 值为“Direct Agent”、“SCOM Agent”或“SCOM Management Server”。******|
@@ -77,8 +77,8 @@ Azure 中的代理运行状况解决方案有助于你了解，在所有直接�
 | `OSMinorVersion` | 操作系统次要版本。|
 | `Version` | Log Analytics 代理或 Operations Manager 代理版本。|
 | `SCAgentChannel` | 值为“Direct”和/或“SCManagementServer”。****|
-| `IsGatewayInstalled` | 如果安装了日志分析网关，则值*为 true，* 否则值为*false*。|
-| `ComputerIP` | 计算机的公共 IP 地址。 在 Azure VM 上，如果公共 IP 可用，则将显示公共 IP。 对于使用专用 IP 的 VM，这将显示 Azure SNAT 地址（而不是专用 IP 地址）。 |
+| `IsGatewayInstalled` | 如果安装 Log Analytics 网关，则值为*true*，否则值为*false*。|
+| `ComputerIP` | 计算机的公共 IP 地址。 在 Azure Vm 上，此项将显示公共 IP （如果有）。 对于使用专用 ip 的 Vm，这将显示 Azure SNAT 地址（而非专用 IP 地址）。 |
 | `RemoteIPCountry` | 已部署计算机所在的地理位置。|
 | `ManagementGroupName` | Operations Manager 管理组的名称。|
 | `SourceComputerId` | 计算机的唯一 ID。|
@@ -90,7 +90,7 @@ Azure 中的代理运行状况解决方案有助于你了解，在所有直接�
 ## <a name="sample-log-searches"></a>示例日志搜索
 下表提供了此解决方案收集的记录的示例日志搜索。
 
-| 查询 | 描述 |
+| 查询 | 说明 |
 |:---|:---|
 | Heartbeat &#124; distinct Computer |代理总数 |
 | Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(24h) |过去 24 小时内无响应代理的计数 |

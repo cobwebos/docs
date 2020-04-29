@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
 ms.openlocfilehash: 1d647ba7e8d4f0e29252dfff95099e39bab87895
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77662070"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure Monitor 日志的结构
@@ -26,11 +26,11 @@ Azure Monitor 日志中的数据存储在 Log Analytics 工作区或 Application
 ![表](media/logs-structure/queries-tables.png)
 
 ## <a name="log-analytics-workspace"></a>Log Analytics 工作区
-Azure Monitor 日志收集的所有数据（Application Insights 数据除外）存储在 [Log Analytics 工作区](../platform/manage-access.md)中。 你可以根据特定的要求创建一个或多个工作区。 [数据源](../platform/data-sources.md)（如 Azure 资源的活动日志和资源日志、虚拟机上的代理以及见解和监视解决方案中的数据）将将数据写入您作为载入的一部分配置的一个或多个工作区。 其他服务（例如 [Azure 安全中心](/azure/security-center/)和 [Azure Sentinel](/azure/sentinel/)）还会使用 Log Analytics 工作区来存储其数据，因此，可以使用日志查询结合来自其他源的数据对其进行分析。
+Azure Monitor 日志收集的所有数据（Application Insights 数据除外）存储在 [Log Analytics 工作区](../platform/manage-access.md)中。 你可以根据特定的要求创建一个或多个工作区。 [数据源](../platform/data-sources.md)（例如，来自 Azure 资源的活动日志和资源日志、虚拟机上的代理以及来自 insights 和监视解决方案的数据）会将数据写入你作为其载入部分配置的一个或多个工作区。 其他服务（例如 [Azure 安全中心](/azure/security-center/)和 [Azure Sentinel](/azure/sentinel/)）还会使用 Log Analytics 工作区来存储其数据，因此，可以使用日志查询结合来自其他源的数据对其进行分析。
 
 不同类型的数据存储在工作区中的不同表内，每个表具有独特的属性集。 创建工作区后，会将一组标准表添加到其中；加入不同的数据源、解决方案和服务后，将添加其新表。 还可以使用[数据收集器 API](../platform/data-collector-api.md) 创建自定义表。
 
-可以在工作区的 Log Analytics 中的“架构”选项卡上浏览工作区中的表及其架构。****
+可以在工作区的 Log Analytics 中的“架构”选项卡上浏览工作区中的表及其架构。 
 
 ![工作区架构](media/scope/workspace-schema.png)
 
@@ -42,7 +42,7 @@ union withsource = table *
 | summarize count() by table
 | sort by table asc
 ```
-有关每个数据源创建的表的详细信息，请参阅相应数据源的文档。 示例包括[代理数据源](../platform/agent-data-sources.md)、[资源日志](../platform/diagnostic-logs-schema.md)和[监视解决方案](../insights/solutions-inventory.md)的文章。
+有关每个数据源创建的表的详细信息，请参阅相应数据源的文档。 例如，参阅有关[代理数据源](../platform/agent-data-sources.md)、[资源日志](../platform/diagnostic-logs-schema.md)和[监视解决方案](../insights/solutions-inventory.md)的文章。
 
 ### <a name="workspace-permissions"></a>工作区权限
 请参阅[设计 Azure Monitor 日志部署](../platform/design-logs-deployment.md)，以了解访问控制策略和提供对工作区中数据的访问的建议。 除了授予对工作区本身的访问权限以外，还可以使用[表级别 RBAC](../platform/manage-access.md#table-level-rbac) 限制对单个表的访问。
@@ -52,7 +52,7 @@ union withsource = table *
 
 与 Log Analytics 工作区不同，Application Insights 应用程序具有固定的一组表。 无法将其他数据源配置为写入到应用程序，因此无法创建其他表。 
 
-| 表 | 描述 | 
+| 表 | 说明 | 
 |:---|:---|
 | availabilityResults | 可用性测试中的摘要数据。 |
 | browserTimings      | 有关客户端性能的数据，例如处理传入数据所用的时间。 |
@@ -65,14 +65,14 @@ union withsource = table *
 | 请求            | 每个应用程序请求的详细信息。  |
 | traces              | 分布式跟踪的结果。 |
 
-可以在应用程序的 Log Analytics 中的“架构”选项卡上查看每个表的架构。****
+可以在应用程序的 Log Analytics 中的“架构”选项卡上查看每个表的架构。 
 
 ![应用程序架构](media/scope/application-schema.png)
 
 ## <a name="standard-properties"></a>标准属性
 尽管 Azure Monitor 日志中的每个表具有自身的架构，但所有表共享某些标准属性。 有关详细信息，请参阅 [Azure Monitor 日志中的标准属性](../platform/log-standard-properties.md)。
 
-| Log Analytics 工作区 | Application Insights 应用程序 | 描述 |
+| Log Analytics 工作区 | Application Insights 应用程序 | 说明 |
 |:---|:---|:---|
 | TimeGenerated | timestamp  | 创建记录的日期和时间。 |
 | 类型          | itemType   | 从中检索到该记录的表的名称。 |
@@ -81,5 +81,5 @@ union withsource = table *
 | _BilledSize   |            | 指定要计费的数据大小（以字节为单位）。 |
 
 ## <a name="next-steps"></a>后续步骤
-- 了解如何使用[日志分析创建和编辑日志搜索](../log-query/portals.md)。
+- 了解如何使用 [Log Analytics 来创建并编辑日志搜索](../log-query/portals.md)。
 - 查看使用新查询语言的[查询编写教程](../log-query/get-started-queries.md)。

@@ -1,6 +1,6 @@
 ---
-title: 从安全信息（预览）页面创建应用密码 - Azure AD
-description: 创建自动生成的密码（应用密码），以便用于组织中的任何非浏览器应用或任何不支持双重验证的应用。 此应用密码有别于普通密码，可以从“安全信息”页面进行设置。
+title: 通过 "安全信息（预览版）" 页创建应用密码-Azure AD
+description: 创建自动生成的密码（应用密码）以用于任何非浏览器应用，或者组织中不支持双重验证的任何应用。 此应用密码有别于普通密码，可以从“安全信息”页面进行设置。
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: curtand
 ms.openlocfilehash: 787fa67ee77997fd1f9967db3abdbfc83d4ffad2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77064064"
 ---
-# <a name="create-app-passwords-from-the-security-info-preview-page"></a>从"安全信息（预览）"页面创建应用密码
+# <a name="create-app-passwords-from-the-security-info-preview-page"></a>通过 "安全信息（预览版）" 页创建应用密码
 
 某些应用（例如 Outlook 2010）不支持双重验证。 缺少这种支持意味着，如果你在组织中使用双重验证，该应用将不会正常工作。 若要解决此问题，可以创建一个与普通密码不同的自动生成的密码，并在每个非浏览器应用中使用该密码。
 
@@ -29,7 +29,7 @@ ms.locfileid: "77064064"
 
 使用应用密码时，请务必记住：
 
-- 应用密码是自动生成的，应创建并输入每个应用一次。
+- 应用密码是自动生成的，应为每个应用创建和输入一次。
 
 - 每个用户的密码限制为 40 个。 如果在达到该限制后尝试创建密码，系统会提示删除现有的密码，然后才能创建新密码。
 

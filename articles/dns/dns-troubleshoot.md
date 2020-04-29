@@ -1,6 +1,6 @@
 ---
-title: 故障排除指南 - Azure DNS
-description: 在此学习路径中，开始使用 Azure DNS 解决常见问题
+title: 故障排除指南-Azure DNS
+description: 在此学习路径中，开始对 Azure DNS 的常见问题进行故障排除
 services: dns
 author: rohinkoul
 ms.service: dns
@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 09/20/2019
 ms.author: rohink
 ms.openlocfilehash: b5e1624bf852256f6e8fb0b616258f932c5a8998
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76939032"
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS 疑难解答指南
 
 此文介绍有关 Azure DNS 常见问题的疑难解答信息。
 
-如果这些步骤未解决遇到的问题，还可以搜索 [MSDN 上的社区支持论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)或将问题发布在该论坛上。 或者，您可以打开 Azure 支持请求。
+如果这些步骤未解决遇到的问题，还可以搜索 [MSDN 上的社区支持论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)或将问题发布在该论坛上。 或者，你可以打开 Azure 支持请求。
 
 
 ## <a name="i-cant-create-a-dns-zone"></a>无法创建 DNS 区域
