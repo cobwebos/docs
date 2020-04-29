@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 2/24/2020
 ms.subservice: alerts
 ms.openlocfilehash: 02424d7df24305d6642c364f12e3ed6e8674a01d
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80677008"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 模板创建指标警报
@@ -21,13 +21,13 @@ ms.locfileid: "80677008"
 本文介绍如何在 Azure Monitor 中使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)配置[较新的指标警报](../../azure-monitor/platform/alerts-metric-near-real-time.md)。 使用资源管理器模板可以通过编程方式在多个环境中设置一致且可重现的警报。 较新的指标警报当前适用于[这套资源类型](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)。
 
 > [!IMPORTANT]
-> 用于为资源类型创建指标警报的资源模板：Azure 日志分析工作区（即），`Microsoft.OperationalInsights/workspaces`需要其他步骤。 有关详细信息，请参阅有关[日志指标警报 - 资源模板](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)的文章。
+> 用于针对资源类型创建指标警报的资源模板：Azure Log Analytics 工作区（即 `Microsoft.OperationalInsights/workspaces`）需要执行其他步骤。 有关详细信息，请参阅有关[日志指标警报 - 资源模板](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)的文章。
 
-基本步骤如下所述：
+基本步骤如下所示：
 
 1. 将以下某个模板用作描述如何创建警报的 JSON 文件。
-2. 编辑并使用相应的参数文件作为 JSON 来自定义警报。
-3. 有关参数`metricName`，请参阅[Azure 监视器支持的指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)中的可用指标。
+2. 编辑相应的参数文件并将其用作 JSON 来自定义警报。
+3. 有关 `metricName` 参数，请参阅 [Azure Monitor 支持的指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)中提供的指标。
 4. 使用[任意部署方法](../../azure-resource-manager/templates/deploy-powershell.md)部署模板。
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>用于简单静态阈值指标警报的模板
@@ -563,13 +563,13 @@ az group deployment create \
 
 ## <a name="template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria"></a>用于监视多个条件的静态阈值指标警报的模板
 
-较新的指标警报支持多维指标警报，并支持定义多个条件（每个警报规则最多 5 个条件）。 可以使用以下模板创建根据维度指标发出的更高级指标警报规则，并指定多个标准。
+较新的指标警报支持对多维指标发出警报，并支持定义多个条件（每个警报规则最多5个标准）。 可以使用以下模板创建根据维度指标发出的更高级指标警报规则，并指定多个标准。
 
 在包含多个条件的警报规则中使用维度时，请注意以下约束：
-- 在每个条件中，每个维度只能选择一个值。
-- 不能使用""\*作为维度值。
-- 当在不同条件中配置的指标支持同一维度时，必须以相同的方式显式设置配置的维度值（在相关条件中）。
-    - 在下面的示例中，由于**事务**和**成功E2E延迟**指标都具有**ApiName**维度，并且条件*1*指定**ApiName**维度的 *"GetBlob"* 值，因此*条件 2*还必须为**ApiName**维度设置 *"GetBlob"* 值。
+- 在每个条件中，只能为每个维度选择一个值。
+- 不能使用“\*”作为维度值。
+- 如果在不同标准中配置的度量值支持同一维度，则必须以相同方式为所有这些指标（在相关标准中）显式设置配置的维度值。
+    - 在下面的示例中，因为 **Transactions** 和 **SuccessE2ELatency** 指标都有 **ApiName** 维度，因此 *criterion1* 为 **ApiName** 维度指定 *"GetBlob"* 值，然后 *criterion2* 还必须为 **ApiName** 维度指定 *"GetBlob"* 值。
 
 
 为进行本次演练，请将下面的 json 保存为 advancedstaticmetricalert.json。
@@ -806,15 +806,15 @@ az group deployment create \
 
 单个警报规则可以一次监视多个指标时序，从而减少要管理的警报规则。
 
-在下面的示例中，警报规则监视“事务”指标的“ResponseType”和“ApiName”的维度值组合************：
-1. **ResponsType** - 使用“\*”通配符意味着对于“ResponseType”维度的每个值（包括未来值），将分别监视不同的时序****。
-2. **ApiName** - 只对“GetBlob”和“PutBlob”维度值监视不同的时序********。
+在下面的示例中，警报规则监视“事务”指标的“ResponseType”和“ApiName”的维度值组合    ：
+1. **ResponsType** - 使用“\*”通配符意味着对于“ResponseType”维度的每个值（包括未来值），将分别监视不同的时序  。
+2. **ApiName** - 只对“GetBlob”和“PutBlob”维度值监视不同的时序   。
 
 例如，该警报规则监视的几个潜在时序是：
-- Metric = 事务、ResponseType = 成功、ApiName = GetBlob******
-- Metric = 事务、ResponseType = 成功、ApiName = PutBlob******
-- Metric = 事务、ResponseType = 服务器超时、ApiName = GetBlob******
-- Metric = 事务、ResponseType = 服务器超时、ApiName = PutBlob******
+- Metric = 事务、ResponseType = 成功、ApiName = GetBlob   
+- Metric = 事务、ResponseType = 成功、ApiName = PutBlob   
+- Metric = 事务、ResponseType = 服务器超时、ApiName = GetBlob   
+- Metric = 事务、ResponseType = 服务器超时、ApiName = PutBlob   
 
 为进行本次演练，请将下面的 json 保存为 multidimensionalstaticmetricalert.json。
 
@@ -1026,15 +1026,15 @@ az group deployment create \
 
 单个动态阈值警报规则可以一次为数百个指标时序（甚至不同类型）创建定制阈值，从而减少需要管理的警报规则。
 
-在下面的示例中，警报规则监视“事务”指标的“ResponseType”和“ApiName”的维度值组合************：
-1. **ResponsType** - 对于“ResponseType”维度的每个值（包括未来值），将分别监视不同的时序****。
-2. **ApiName** - 只对“GetBlob”和“PutBlob”维度值监视不同的时序********。
+在下面的示例中，警报规则监视“事务”指标的“ResponseType”和“ApiName”的维度值组合    ：
+1. **ResponsType** - 对于“ResponseType”维度的每个值（包括未来值），将分别监视不同的时序  。
+2. **ApiName** - 只对“GetBlob”和“PutBlob”维度值监视不同的时序   。
 
 例如，该警报规则监视的几个潜在时序是：
-- Metric = 事务、ResponseType = 成功、ApiName = GetBlob******
-- Metric = 事务、ResponseType = 成功、ApiName = PutBlob******
-- Metric = 事务、ResponseType = 服务器超时、ApiName = GetBlob******
-- Metric = 事务、ResponseType = 服务器超时、ApiName = PutBlob******
+- Metric = 事务、ResponseType = 成功、ApiName = GetBlob   
+- Metric = 事务、ResponseType = 成功、ApiName = PutBlob   
+- Metric = 事务、ResponseType = 服务器超时、ApiName = GetBlob   
+- Metric = 事务、ResponseType = 服务器超时、ApiName = PutBlob   
 
 为进行本次演练，请将下面的 json 保存为 advanceddynamicmetricalert.json。
 
@@ -1250,7 +1250,7 @@ az group deployment create \
 
 若要详细了解 Azure Monitor 中的自定义指标，请参阅 [Azure Monitor 中的自定义指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview)。
 
-针对自定义指标创建警报规则时，需要同时指定指标名称和指标命名空间。 您还应确保自定义指标已报告，因为无法在尚不存在的自定义指标上创建警报规则。
+针对自定义指标创建警报规则时，需要同时指定指标名称和指标命名空间。 还应确保已报告自定义指标，因为无法针对尚不存在的自定义指标创建警报规则。
 
 为进行本次演练，请将下面的 json 保存为 customstaticmetricalert.json。
 
@@ -1509,15 +1509,15 @@ az group deployment create \
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>用于监视多个资源的指标警报的模板
 
-上一部分中已介绍了一些示例 Azure 资源管理器模板，它们用来创建用于监视单个资源的指标警报。 Azure 监视器现在支持使用单个指标警报规则监视同一 Azure 区域中存在的资源的多个资源（相同类型）。 此功能目前仅在 Azure 公共云中支持，仅适用于虚拟机、SQL 服务器数据库、SQL 服务器弹性池和 Databox 边缘设备。 此外，此功能仅适用于平台指标，并且不支持自定义指标。
+上一部分中已介绍了一些示例 Azure 资源管理器模板，它们用来创建用于监视单个资源的指标警报。 对于存在于同一 Azure 区域中的资源，Azure Monitor 现在支持使用一个指标警报规则监视多个资源（属于同一类型）。 该功能目前仅在 Azure 公有云中受支持，并且仅适用于虚拟机、SQL Server 数据库、SQL Server 弹性池和 Databox 边缘设备。 此外，此功能仅适用于平台指标，自定义指标不支持此功能。
 
 动态阈值警报规则还可以帮助一次为数百个指标系列（甚至不同类型）创建定制阈值，从而减少需要管理的警报规则。
 
 本部分将介绍适用于三种方案的 Azure 资源管理器模板，它们用于使用单个规则监视多个资源。
 
 - 监视一个或多个资源组中的所有虚拟机（在单个 Azure 区域中）。
-- 监视订阅中的所有虚拟机（在一个 Azure 区域中）。
-- 监视订阅中的虚拟机列表（在一个 Azure 区域中）。
+- 监视单个订阅中的所有虚拟机（在单个 Azure 区域中）。
+- 监视单个订阅中的一个虚拟机列表（在单个 Azure 区域中）。
 
 > [!NOTE]
 >

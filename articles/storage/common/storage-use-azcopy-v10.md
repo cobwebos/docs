@@ -8,10 +8,10 @@ ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
 ms.openlocfilehash: 8701fe6857e95334a5e1d24bfe70feb130d5512c
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80756024"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy 入门
@@ -21,7 +21,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 > [!NOTE]
 > AzCopy **V10** 是当前支持的 AzCopy 版本。
 >
-> 如果需要使用早期版本的 AzCopy，请参阅本文[的"使用早期版本的 AzCopy"](#previous-version)部分。
+> 如果需要使用早期版本的 AzCopy，请参阅本文的[使用 AzCopy 的早期版本](#previous-version)部分。
 
 <a id="download-and-install-azcopy" />
 
@@ -69,7 +69,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 |**Blob 存储（分层命名空间）** | Azure AD 和 SAS |
 |**文件存储** | 仅限 SAS |
 
-### <a name="option-1-use-azure-active-directory"></a>选项 1：使用 Azure 活动目录
+### <a name="option-1-use-azure-active-directory"></a>选项 1：使用 Azure Active Directory
 
 使用 Azure Active Directory 可以一次性提供凭据，而无需向每个命令追加 SAS 令牌。  
 
@@ -80,7 +80,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 
 如果你只想下载文件，请验证是否已将[存储 Blob 数据读取者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)角色分配到你的用户标识、托管标识或服务主体。
 
-> 用户标识、托管标识和服务主体都是安全主体的一种类型，因此本文的余下内容将使用“安全主体”这一术语。****
+> 用户标识、托管标识和服务主体都是安全主体的一种类型，因此本文的余下内容将使用“安全主体”这一术语。  
 
 若要上传文件，请验证是否已将以下角色之一分配到了你的安全主体：
 
@@ -117,9 +117,9 @@ azcopy login
 azcopy login --tenant-id=<tenant-id>
 ```
 
-请将 `<tenant-id>` 占位符替换为存储帐户所属组织的租户 ID。 若要查找租户 ID，请在 Azure 门户中选择“Azure Active Directory”>“属性”>“目录 ID”。****
+请将 `<tenant-id>` 占位符替换为存储帐户所属组织的租户 ID。 若要查找租户 ID，请在 Azure 门户中选择“Azure Active Directory”>“属性”>“目录 ID”。 
 
-此命令返回身份验证代码和网站的 URL。 打开网站，提供代码，然后选择“下一步”按钮。****
+此命令返回身份验证代码和网站的 URL。 打开网站，提供代码，然后选择“下一步”按钮。 
 
 ![创建容器](media/storage-use-azcopy-v10/azcopy-login.png)
 
@@ -135,7 +135,7 @@ azcopy login --tenant-id=<tenant-id>
 
 可以使用客户端机密或使用与服务主体应用注册关联的证书的密码登录到帐户。
 
-要了解有关创建服务主体的更多内容，请参阅[：使用门户创建可以访问资源的 Azure AD 应用程序和服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
+若要详细了解如何创建服务主体，请参阅[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
 
 若要了解有关服务主体的一般性详细信息，请参阅 [Azure Active Directory 中的应用程序和服务主体对象](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)。
 
@@ -161,7 +161,7 @@ $env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
 azcopy login --service-principal --application-id <application-id> --tenant-id=<tenant-id>
 ```
 
-请将 `<application-id>` 占位符替换为服务主体应用注册的应用程序 ID。 请将 `<tenant-id>` 占位符替换为存储帐户所属组织的租户 ID。 若要查找租户 ID，请在 Azure 门户中选择“Azure Active Directory”>“属性”>“目录 ID”。**** 
+请将 `<application-id>` 占位符替换为服务主体应用注册的应用程序 ID。 请将 `<tenant-id>` 占位符替换为存储帐户所属组织的租户 ID。 若要查找租户 ID，请在 Azure 门户中选择“Azure Active Directory”>“属性”>“目录 ID”。  
 
 ##### <a name="using-a-certificate"></a>使用证书
 
@@ -186,7 +186,7 @@ $env:AZCOPY_SPA_CERT_PASSWORD="$(Read-Host -prompt "Enter key")"
 azcopy login --service-principal --certificate-path <path-to-certificate-file> --tenant-id=<tenant-id>
 ```
 
-请将 `<path-to-certificate-file>` 占位符替换为证书文件的相对路径或完全限定的路径。 AzCopy 将保存此证书的路径，但并不会保存此证书的副本，因此，请务必将此证书放在原有位置。 请将 `<tenant-id>` 占位符替换为存储帐户所属组织的租户 ID。 若要查找租户 ID，请在 Azure 门户中选择“Azure Active Directory”>“属性”>“目录 ID”。****
+请将 `<path-to-certificate-file>` 占位符替换为证书文件的相对路径或完全限定的路径。 AzCopy 将保存此证书的路径，但并不会保存此证书的副本，因此，请务必将此证书放在原有位置。 请将 `<tenant-id>` 占位符替换为存储帐户所属组织的租户 ID。 若要查找租户 ID，请在 Azure 门户中选择“Azure Active Directory”>“属性”>“目录 ID”。 
 
 > [!NOTE]
 > 考虑使用本示例中所示的提示符。 这样，密码就不会显示在控制台的命令历史记录中。 
@@ -288,7 +288,7 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 ### <a name="escape-special-characters-in-sas-tokens"></a>转义 SAS 令牌中的特殊字符
 
-在扩展名为 `.cmd` 的批处理文件中，必须转义 SAS 令牌中显示的 `%` 字符。 可以通过在 SAS 令牌字符串`%`中现有`%`字符旁边添加一个附加字符来执行此操作。
+在扩展名为 `.cmd` 的批处理文件中，必须转义 SAS 令牌中显示的 `%` 字符。 可以通过在 SAS 令牌字符串中的`%`现有`%`字符旁添加其他字符来实现此目的。
 
 ### <a name="run-scripts-by-using-jenkins"></a>使用 Jenkins 运行脚本
 
@@ -308,11 +308,11 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 ## <a name="use-the-previous-version-of-azcopy"></a>使用旧版 AzCopy
 
-如果您需要使用早期版本的 AzCopy，请参阅以下任一链接：
+如果需要使用早期版本的 AzCopy，请参阅以下链接之一：
 
 - [Windows 上的 AzCopy (v8)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy)
 
-- [在 Linux 上使用 AzCopy （v7）](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux)
+- [Linux 上的 AzCopy （v7）](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux)
 
 ## <a name="configure-optimize-and-troubleshoot-azcopy"></a>对 AzCopy 进行配置、优化和故障排除
 

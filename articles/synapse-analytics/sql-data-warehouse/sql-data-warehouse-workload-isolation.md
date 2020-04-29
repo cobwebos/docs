@@ -1,6 +1,6 @@
 ---
 title: 工作负荷隔离
-description: 在 Azure 同步分析中设置与工作负荷组一起设置工作负载隔离的指南。
+description: 在 Azure Synapse Analytics 中通过工作负荷组设置工作负荷隔离的指南。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,13 +12,13 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 5d81dc1f4da6e952061496fa348d0f8e87b00b81
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80742972"
 ---
-# <a name="azure-synapse-analytics-workload-group-isolation-preview"></a>Azure 同步分析工作负荷组隔离（预览）
+# <a name="azure-synapse-analytics-workload-group-isolation-preview"></a>Azure Synapse 分析工作负荷组隔离（预览版）
 
 本文介绍如何使用工作负荷组来为查询执行配置工作负荷隔离、遏制资源和应用运行时规则。
 
@@ -32,7 +32,7 @@ ms.locfileid: "80742972"
 
 工作负荷隔离意味着资源保留给工作负荷组专用。  实现工作负荷隔离的方式是在 [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 语法中将 MIN_PERCENTAGE_RESOURCE 参数配置为大于零。  对于需要遵守严格 SLA 的连续执行工作负荷，隔离可确保资源始终可供工作负荷组使用。
 
-配置工作负荷隔离会隐式定义有保证的并发度。 例如，将设置为`MIN_PERCENTAGE_RESOURCE`30% 且`REQUEST_MIN_RESOURCE_GRANT_PERCENT`设置为 2% 的工作负载组保证 15 个并发性。  并发性级别得到保证，因为工作负载组中随时保留 15-2% 的资源插槽（无论配置方式如何`REQUEST_*MAX*_RESOURCE_GRANT_PERCENT`）。  如果`REQUEST_MAX_RESOURCE_GRANT_PERCENT`大于`REQUEST_MIN_RESOURCE_GRANT_PERCENT`和`CAP_PERCENTAGE_RESOURCE`大于每个请求`MIN_PERCENTAGE_RESOURCE`添加的其他资源。  如果`REQUEST_MAX_RESOURCE_GRANT_PERCENT``REQUEST_MIN_RESOURCE_GRANT_PERCENT`和 等于`CAP_PERCENTAGE_RESOURCE`且大于`MIN_PERCENTAGE_RESOURCE`，则可能增加并发。  假设使用以下方法来确定有保证的并发度：
+配置工作负荷隔离会隐式定义有保证的并发度。 例如，`MIN_PERCENTAGE_RESOURCE` 设置为 30% 且 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 设置为 2% 的工作负荷组可以保证并发度 15。  并发级别是有保证的，因为工作负荷组中始终保留 15-2% 的资源槽（无论如何配置 `REQUEST_*MAX*_RESOURCE_GRANT_PERCENT`）。  如果 `REQUEST_MAX_RESOURCE_GRANT_PERCENT` 大于 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 且 `CAP_PERCENTAGE_RESOURCE` 大于 `MIN_PERCENTAGE_RESOURCE`，则每个请求都会添加其他资源。  如果 `REQUEST_MAX_RESOURCE_GRANT_PERCENT` 相等 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 且 `CAP_PERCENTAGE_RESOURCE` 大于 `MIN_PERCENTAGE_RESOURCE`，则可能发生其他并发。  假设使用以下方法来确定有保证的并发度：
 
 [有保证的并发度] = [`MIN_PERCENTAGE_RESOURCE`] / [`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
 
@@ -43,7 +43,7 @@ ms.locfileid: "80742972"
 
 应该谨慎配置工作负荷隔离，因为即使工作负荷组中没有活动的请求，也会将资源分配到工作负荷组。 过度配置隔离可能导致总体系统利用率降低。
 
-用户应避免使用配置 100% 工作负载隔离的工作负载管理解决方案：当在所有工作负载组中配置的min_percentage_resource总和等于 100% 时，可实现 100% 隔离。  此类配置过于苛严，几乎不会给意外错误分类的资源请求留有余地。 有一项预配允许通过未配置隔离的工作负荷组执行一个请求。 分配给此请求的资源在系统 DMV 中显示为零，并从系统保留的资源借用 smallrc 级别的资源授予。
+用户应避免使用配置 100% 工作负荷隔离的工作负荷管理解决方案：如果在所有工作负荷组中配置的 min_percentage_resource 之和等于 100%，则会实现 100% 的隔离。  此类配置过于苛严，几乎不会给意外错误分类的资源请求留有余地。 有一项预配允许通过未配置隔离的工作负荷组执行一个请求。 分配给此请求的资源在系统 DMV 中显示为零，并从系统保留的资源借用 smallrc 级别的资源授予。
 
 > [!NOTE]
 > 为了确保最佳资源利用率，请考虑实施一个利用某种隔离来确保符合 SLA，以与基于[工作负荷重要性](sql-data-warehouse-workload-importance.md)访问的共享资源混合的工作负荷管理解决方案。
@@ -88,6 +88,6 @@ ms.locfileid: "80742972"
 ## <a name="next-steps"></a>后续步骤
 
 - [快速入门：配置工作负荷隔离](quickstart-configure-workload-isolation-tsql.md)
-- [创建工作负载组](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [将资源类转换为工作负荷组](sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md)。
-- [工作负载管理门户监视](sql-data-warehouse-workload-management-portal-monitor.md)。  
+- [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [将资源类转换为工作负荷组](sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md)
+- [工作负荷管理门户监视](sql-data-warehouse-workload-management-portal-monitor.md)。  

@@ -1,76 +1,76 @@
 ---
-title: 灯光
-description: 光源描述和属性
+title: 光
+description: 光源说明和属性
 author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.openlocfilehash: 0a4a226af1347b5302b0c3964889fc072f89e7f8
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680942"
 ---
-# <a name="lights"></a>灯光
+# <a name="lights"></a>光
 
-默认情况下，远程渲染的对象使用[天光](sky.md)点亮。 对于大多数应用程序，这已经足够了，但您可以向场景添加更多光源。
+默认情况下，远程呈现的对象将使用[天空](sky.md)亮起。 对于大多数应用程序，这已经足够，但您可以将更多的光源添加到场景中。
 
 > [!IMPORTANT]
-> 只有[PBR 材料](pbr-materials.md)受光源影响。 [颜色材料](color-materials.md)总是显得完全明亮。
+> 只有[.pbr 材料](pbr-materials.md)受光源的影响。 [颜色材料](color-materials.md)始终显示为非常明亮。
 
 > [!NOTE]
-> 当前不支持投射阴影。 Azure 远程呈现经过优化，可根据需要使用多个 GPU 来呈现大量几何体。 在这种情形下，传统的阴影投射方法效果不好。
+> 当前不支持强制转换阴影。 Azure 远程呈现经过优化，可呈现大量几何，如有必要，利用多个 Gpu。 在这种情况下，用于影子转换的传统方法并不能正常工作。
 
-## <a name="common-light-component-properties"></a>常见的光组件属性
+## <a name="common-light-component-properties"></a>常见轻型组件属性
 
-所有光类型都派生自抽象基类`LightComponent`并共享这些属性：
+所有光源类型都派生自抽象基类`LightComponent`并共享这些属性：
 
-* **颜色：**[伽玛空间](https://en.wikipedia.org/wiki/SRGB)中光的颜色。 阿尔法将被忽略。
+* **颜色：**[伽玛空间](https://en.wikipedia.org/wiki/SRGB)中的光的颜色。 忽略 Alpha。
 
-* **强度：** 光的亮度。 对于点灯和聚光灯，强度也定义光线的照射程度。
+* **亮度：** 光的亮度。 对于点光和投射光，强度还可定义光线的光线。
 
-## <a name="point-light"></a>点灯
+## <a name="point-light"></a>点光
 
-在 Azure 远程`PointLightComponent`渲染中，不仅可以从单个点发出光，还可以从小球体或小管中发出光，以模拟较柔和的光源。
+在 Azure 远程呈现中`PointLightComponent` ，不仅可以从单一点发出光，还可以从小球或小型电子管发出光，以模拟较轻的光源。
 
-### <a name="pointlightcomponent-properties"></a>点光组件属性
+### <a name="pointlightcomponent-properties"></a>PointLightComponent 属性
 
-* **半径：** 默认半径为零，在这种情况下，灯光充当点光。 如果半径大于零，则充当球形光源，从而更改镜面高光的外观。
+* **Radius：** 默认半径为零，在这种情况下，光用作点光。 如果半径大于零，则它将充当球面光源，这将更改反射高光的外观。
 
-* **长度：** 如果两`Length`者`Radius`均为非零，则光充当管灯。 这可用于模拟霓虹灯管。
+* **长度：** 如果`Length`和`Radius`都非零，则光源将作为电子管光。 这可用于模拟霓虹灯电子管。
 
-* **衰减截止：** 如果留给 （0，0） 则光的衰减仅取决于其`Intensity`。 但是，您可以提供自定义的最小/最大距离，光的强度会线性缩小到 0。 此功能可用于强制特定光的影响范围较小。
+* **AttenuationCutoff：** 如果左到（0，0），则光的衰减仅依赖于其`Intensity`。 不过，你可以提供自定义的最小/最大距离，将光线强度缩小到0。 此功能可用于对特定光源强制执行较小的影响范围。
 
-* **投影立方体图：** 如果设置为有效的[立方体贴图](../../concepts/textures.md)，则纹理将投影到灯光的周围几何体上。 立方体贴图的颜色使用灯光的颜色进行调制。
+* **ProjectedCubemap：** 如果设置为有效的[立方体贴图](../../concepts/textures.md)，纹理会投影到光源的周围几何。 立方体贴图的颜色是用光的颜色进行调制。
 
-## <a name="spot-light"></a>聚光灯
+## <a name="spot-light"></a>污点
 
-`SpotLightComponent`与 类似，`PointLightComponent`但光线被约束到圆锥体的形状。 圆锥的方向由*所有者实体的负 z 轴*定义。
+`SpotLightComponent`与类似， `PointLightComponent`但光源被约束为圆锥的形状。 圆锥的方向由*所有者实体的负 z 轴*定义。
 
-### <a name="spotlightcomponent-properties"></a>聚光灯组件属性
+### <a name="spotlightcomponent-properties"></a>SpotLightComponent 属性
 
-* **半径：** 与 相同`PointLightComponent`。
+* **Radius：** 与相同`PointLightComponent`。
 
-* **点角：** 此间隔定义锥体的内角和外角，以度为单位进行测量。 内角内的所有内容都以全亮度亮起。 衰落应用于产生五边形效果的外角。
+* **SpotAngleDeg：** 此间隔定义圆锥的内部和外部角度，以度为单位。 内径内的所有内容都以完全亮度来亮起。 衰减适用于产生类似于 penumbra 效果的外部角度。
 
-* **衰降指数：** 定义内锥角和外锥角之间的衰落过渡的剧烈程度。 值越高，转换越清晰。 默认值 1.0 会导致线性转换。
+* **FalloffExponent：** 定义在内部和外部锥角之间过渡的急剧度。 值越大，转换越清晰。 默认值为1.0 将导致线性转换。
 
-* **衰减截止：** 与 相同`PointLightComponent`。
+* **AttenuationCutoff：** 与相同`PointLightComponent`。
 
-* **投影2d纹理：** 如果设置为有效的[2D 纹理](../../concepts/textures.md)，则图像将投影到光线照射的几何体上。 纹理的颜色使用灯光的颜色进行调制。
+* **Projected2dTexture：** 如果设置为有效的[2d 纹理](../../concepts/textures.md)，则会将图像投影到光线在其上工作的几何。 纹理的颜色与光源颜色一起进行了调制。
 
 ## <a name="directional-light"></a>定向光
 
-模拟`DirectionalLightComponent`无限远的光源。 光线照射到*所有者实体的负 z 轴*的方向。 实体的位置将被忽略。
+`DirectionalLightComponent`模拟无限远的光源。 光将进入*所有者实体的负 z 轴*方向。 忽略实体的位置。
 
 没有其他属性。
 
 ## <a name="performance-considerations"></a>性能注意事项
 
-光源对渲染性能有显著影响。 仅在应用程序需要时才谨慎使用它们。 任何静态全局照明条件（包括静态方向组件）都可以通过[自定义天空纹理](sky.md)来实现，无需额外的渲染成本。
+光源对渲染性能有重大影响。 请谨慎使用，仅在应用程序需要时使用。 任何静态全局照明条件（包括静态方向组件）都可以通过[自定义天空纹理](sky.md)来实现，无需额外的呈现开销。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [材料](../../concepts/materials.md)
-* [天空](sky.md)
+* [昼](sky.md)

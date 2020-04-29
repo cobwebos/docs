@@ -1,6 +1,6 @@
 ---
 title: 控制入站流量 v1
-description: 了解如何控制到应用服务环境的入站流量。 此文档仅提供给使用旧版 v1 ASE 的客户。
+description: 了解如何控制到应用服务环境的入站流量。 此文档仅为使用旧版 v1 ASE 的客户提供。
 author: ccompy
 ms.assetid: 4cc82439-8791-48a4-9485-de6d8e1d1a08
 ms.topic: article
@@ -8,15 +8,15 @@ ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 857b2b00aadced567bc8ac191cdd9908f7bea7a3
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80804395"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>如何控制应用服务环境的入站流量
 ## <a name="overview"></a>概述
-可以在 Azure 资源管理器虚拟网络**或**经典部署模型[虚拟网络][virtualnetwork]**中创建**应用服务环境。  创建应用服务环境时，可以定义新的虚拟网络和新的子网。  或者，可以在预先存在的虚拟网络和预先存在的子网中创建应用服务环境。  2016 年 6 月进行更改以后，也可以将 ASE 部署到使用公用地址范围或 RFC1918 地址空间（即，专用地址）的虚拟网络。  有关创建应用服务环境的详细信息，请参阅[如何创建应用服务环境][HowToCreateAnAppServiceEnvironment]。
+可以**在 Azure**资源管理器虚拟网络**或**经典部署模型[虚拟网络][virtualnetwork]中创建应用服务环境。  创建应用服务环境时，可以定义新的虚拟网络和新的子网。  或者，可以在预先存在的虚拟网络和预先存在的子网中创建应用服务环境。  2016 年 6 月进行更改以后，也可以将 ASE 部署到使用公用地址范围或 RFC1918 地址空间（即，专用地址）的虚拟网络。  有关创建应用服务环境的详细信息，请参阅[如何创建应用服务环境][HowToCreateAnAppServiceEnvironment]。
 
 应用服务环境始终必须在子网中创建，由于子网提供网络边界用于锁定上游设备和服务后面的入站流量，因此只接受来自特定上游 IP 地址的 HTTP 和 HTTPS 流量。
 
@@ -31,10 +31,10 @@ ms.locfileid: "80804395"
 
 以下是应用服务环境使用的端口列表。 所有端口都是 **TCP**，除非另有明确的说明：
 
-* 454：Azure 基础结构用于通过 TLS 管理和维护应用服务环境**所需的端口**。  不要阻止发往此端口的流量。  此端口始终绑定到 ASE 的公共 VIP。
-* 455：Azure 基础结构用于通过 TLS 管理和维护应用服务环境**所需的端口**。  不要阻止发往此端口的流量。  此端口始终绑定到 ASE 的公共 VIP。
+* 454： Azure 基础结构用于通过 TLS 管理和维护应用服务环境的**必需端口**。  不要阻止发往此端口的流量。  此端口始终绑定到 ASE 的公共 VIP。
+* 455： Azure 基础结构用于通过 TLS 管理和维护应用服务环境的**必需端口**。  不要阻止发往此端口的流量。  此端口始终绑定到 ASE 的公共 VIP。
 * 80：用于将入站 HTTP 流量发往应用服务环境的应用服务计划中运行的应用的默认端口。  在启用 ILB 的 ASE 中，此端口绑定到 ASE 的 ILB 地址。
-* 443：用于在应用服务环境中在应用服务计划中运行的应用的入站 TLS 流量的默认端口。  在启用 ILB 的 ASE 中，此端口绑定到 ASE 的 ILB 地址。
+* 443：用于将入站 TLS 流量发送到应用服务环境中的应用服务计划中运行的应用的默认端口。  在启用 ILB 的 ASE 中，此端口绑定到 ASE 的 ILB 地址。
 * 21：FTP 的控制通道。  如果未使用 FTP，则可以安全地阻止此端口。  在启用 ILB 的 ASE 中，此端口可以绑定到 ASE 的 ILB 地址。
 * 990：FTPS 的控制通道。  如果未使用 FTPS，则可以安全地阻止此端口。  在启用 ILB 的 ASE 中，此端口可以绑定到 ASE 的 ILB 地址。
 * 10001-10020：FTP 的数据通道。  和控制通道一样，如果未使用 FTP，则可以放心地阻止这些端口。  在启用 ILB 的 ASE 中，此端口可以绑定到 ASE 的 ILB 地址。
@@ -62,7 +62,7 @@ ms.locfileid: "80804395"
 
 创建网络安全组后，将一个或多个网络安全规则添加到其中。  由于规则集会随时改变，因此建议对规则优先级使用单独的编号方案，以便陆续插入其他规则。
 
-以下示例显示的规则可显式授予 Azure 基础结构管理和维护应用服务环境所需的管理端口的访问权限。  请注意，所有管理流量都流经 TLS，并且由客户端证书保护，因此即使打开端口，Azure 管理基础结构以外的任何实体都无法访问这些流量。
+以下示例显示的规则可显式授予 Azure 基础结构管理和维护应用服务环境所需的管理端口的访问权限。  请注意，所有管理流量流经 TLS，并受客户端证书的保护，因此即使端口已打开，Azure 管理基础结构以外的任何实体也无法访问这些端口。
 
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "ALLOW AzureMngmt" -Type Inbound -Priority 100 -Action Allow -SourceAddressPrefix 'INTERNET'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '454-455' -Protocol TCP
 

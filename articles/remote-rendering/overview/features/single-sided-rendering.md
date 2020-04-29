@@ -1,43 +1,43 @@
 ---
 title: 单面渲染
-description: 描述单面渲染设置和用例
+description: 介绍单面呈现设置和用例
 author: florianborn71
 ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
 ms.openlocfilehash: 34ee5d4978c6476da407cde33598a5713177078e
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80682008"
 ---
 # <a name="single-sided-rendering"></a>单面渲染
 
-大多数渲染器使用[背面剔除](https://en.wikipedia.org/wiki/Back-face_culling)来提高性能。 然而，当用[切割平面](cut-planes.md)切开的网外时，用户通常会看到三角形的背面。 如果这些三角形被剔除，结果看起来并不令人信服。
+大多数呈现器使用[后端剔除](https://en.wikipedia.org/wiki/Back-face_culling)来提高性能。 但是，当网格[在剪切的情况下处于](cut-planes.md)打开状态时，用户通常会查看三角形的背面。 如果这些三角形剔除，结果将不会令人满意。
 
-可靠地防止此问题的方法是呈现双*面*三角形。 由于不使用背面剔除会影响性能，因此默认情况下，Azure 远程渲染仅切换到与切割平面相交的网间的双面渲染。
+可靠地避免此问题的一种方法是，呈现*两个*三角形。 由于不使用后面对剔除会影响性能，因此默认情况下，Azure 远程渲染仅会切换为与切口平面相交的网格的双面渲染。
 
 *单面呈现*设置允许您自定义此行为。
 
 > [!CAUTION]
-> 单面渲染设置是一个实验功能。 将来可能会再次删除它。 请不要更改默认设置，除非它确实解决了应用程序中的关键问题。
+> 单面呈现设置是一项实验性功能。 将来可能会再次将其删除。 请不要更改默认设置，除非它确实解决了应用程序中的关键问题。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-单面呈现设置仅对已[转换](../../how-tos/conversion/configure-model-conversion.md)选项`opaqueMaterialDefaultSidedness`设置为`SingleSided`的网件具有效果。 默认情况下，此选项设置为`DoubleSided`。
+单面呈现设置仅对已使用设置为`opaqueMaterialDefaultSidedness` `SingleSided`的选项进行[转换](../../how-tos/conversion/configure-model-conversion.md)的网格有效。 默认情况下，此选项设置`DoubleSided`为。
 
-## <a name="single-sided-rendering-setting"></a>单面渲染设置
+## <a name="single-sided-rendering-setting"></a>单面呈现设置
 
 有三种不同的模式：
 
-**正常：** 在此模式下，在转换这些模样时，始终呈现这些等点。 这意味着转换到`opaqueMaterialDefaultSidedness`的`SingleSided`模样将始终在启用背面剔除的情况下呈现，即使它们与切割平面相交也是如此。
+**正常：** 在此模式下，网格将始终在转换时呈现。 这意味着，使用`opaqueMaterialDefaultSidedness`设置为的`SingleSided`进行转换的网格将始终在启用后面对剔除时呈现，即使它们相交于切口平面也是如此。
 
-**动态双衬：** 在此模式下，当剪切平面与网格相交时，它会自动切换到双面渲染。 此模式为默认模式。
+**DynamicDoubleSiding：** 在此模式下，当切口平面与网格相交时，它会自动切换到双面渲染。 此模式是默认模式。
 
-**始终双面：** 强制所有单面几何体在任何时候呈现双面几何。 此模式大多公开，因此您可以轻松比较单面渲染和双面渲染之间的性能影响。
+**AlwaysDoubleSided：** 强制所有单面几何在任何时候都是双向的。 此模式主要是公开的，因此你可以轻松地比较单面和双面呈现之间的性能影响。
 
-更改单面渲染设置可以如下所示：
+可以按如下所示更改单面呈现设置：
 
 ``` cs
 void ChangeSingleSidedRendering(AzureSession session)
@@ -54,5 +54,5 @@ void ChangeSingleSidedRendering(AzureSession session)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [切割平面](cut-planes.md)
+* [剪切平面](cut-planes.md)
 * [配置模型转换](../../how-tos/conversion/configure-model-conversion.md)

@@ -1,6 +1,6 @@
 ---
-title: 适用于 Linux 的 Azure 密钥保管库 VM 扩展
-description: 使用虚拟机扩展在虚拟机上部署执行密钥保管库证书自动刷新的代理。
+title: 适用于 Linux 的 Azure Key Vault VM 扩展
+description: 部署代理使用虚拟机扩展在虚拟机上自动刷新 Key Vault 证书。
 services: virtual-machines-linux
 author: msmbaldwin
 tags: keyvault
@@ -9,33 +9,33 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
 ms.openlocfilehash: add2d515e4f8e8c56a98a7292e137e601332d10c
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80410868"
 ---
-# <a name="key-vault-virtual-machine-extension-for-linux"></a>Linux 密钥保管库虚拟机扩展
+# <a name="key-vault-virtual-machine-extension-for-linux"></a>适用于 Linux 的虚拟机扩展 Key Vault
 
-密钥保管库 VM 扩展可自动刷新 Azure 密钥保管库中存储的证书。 具体而言，扩展监视存储在密钥保管库中的观察证书的列表。  检测到更改后，扩展将检索并安装相应的证书。 密钥保管库 VM 扩展由 Microsoft 发布和支持，目前在 Linux VM 上。 本文档详细介绍了 Linux 密钥保管库 VM 扩展的支持平台、配置和部署选项。 
+密钥保管库 VM 扩展可自动刷新 Azure 密钥保管库中存储的证书。 具体而言，该扩展会监视存储在密钥保管库中的已观察证书的列表。  检测到更改后，扩展会检索并安装相应的证书。 当前在 Linux Vm 上发布并支持 Key Vault VM 扩展。 本文档详细介绍适用于 Linux 的 Key Vault VM 扩展的支持平台、配置和部署选项。 
 
 ### <a name="operating-system"></a>操作系统
 
-密钥保管库 VM 扩展支持以下 Linux 发行版：
+Key Vault VM 扩展支持以下 Linux 分发版：
 
-- 乌本图-1604
-- 乌本图-1804
+- Ubuntu-1604
+- Ubuntu-1804
 - Debian-9
-- 苏塞-15 
+- Suse-15 
 
-### <a name="supported-certificate-content-types"></a>受支持的证书内容类型
+### <a name="supported-certificate-content-types"></a>支持的证书内容类型
 
 - PKCS #12
-- Pem
+- .PEM
 
 ## <a name="extension-schema"></a>扩展架构
 
-以下 JSON 显示 Key Vault VM 代理扩展的架构。 该扩展不需要受保护的设置 - 其所有设置都被视为没有安全影响的信息。 该扩展需要受监视的密钥列表、轮询频率和目标证书存储。 具体来说：  
+以下 JSON 显示 Key Vault VM 代理扩展的架构。 该扩展不需要受保护的设置 - 其所有设置都被视为没有安全影响的信息。 该扩展需要受监视的密钥列表、轮询频率和目标证书存储。 具体而言：  
 ```json
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -67,7 +67,7 @@ ms.locfileid: "80410868"
 > [!NOTE]
 > 观察到的证书 URL 的格式应为 `https://myVaultName.vault.azure.net/secrets/myCertName`。
 > 
-> 这是因为 `/secrets` 路径将返回包含私钥的完整证书，而 `/certificates` 路径不会。 有关证书的详细信息，请参阅此处：[密钥保管库证书](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
+> 这是因为 `/secrets` 路径将返回包含私钥的完整证书，而 `/certificates` 路径不会。 可在此处找到有关证书的详细信息： [Key Vault 证书](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
 
 
 ### <a name="property-values"></a>属性值
@@ -75,8 +75,8 @@ ms.locfileid: "80410868"
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| 发布者 | Microsoft.Azure.KeyVault | 字符串 |
-| type | 密钥库福Linux | 字符串 |
+| publisher | Microsoft.Azure.KeyVault | 字符串 |
+| type | KeyVaultForLinux | 字符串 |
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | 字符串 |
 | certificateStoreName | MY | 字符串 |
@@ -215,4 +215,4 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 
 ### <a name="support"></a>支持
 
-如果本文中的任何一点都需要更多帮助，则可以在[MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上联系 Azure 专家。 或者，你也可以提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择"获取支持"。 有关使用 Azure 支持的信息，请阅读[Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果在本文的任何位置需要更多帮助，可以联系 MSDN Azure 上的 Azure 专家[并 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)。 或者，你也可以提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 "获取支持"。 有关使用 Azure 支持的信息，请阅读[Microsoft Azure 支持常见问题](https://azure.microsoft.com/support/faq/)。

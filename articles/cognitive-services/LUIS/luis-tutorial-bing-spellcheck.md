@@ -1,5 +1,5 @@
 ---
-title: 更正拼写错误的单词 - LUIS
+title: 更正拼写错误的单词-LUIS
 titleSuffix: Azure Cognitive Services
 description: 通过将必应拼写检查 API V7 添加到 LUIS 终结点查询来更正表述中拼写错误的字词。
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
 ms.openlocfilehash: a1e43cfc55611c432652055db2ac8411d835608b
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80396814"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>使用必应拼写检查更正拼写错误的字词
@@ -36,7 +36,7 @@ ms.locfileid: "80396814"
 ## <a name="create-endpoint-key"></a>创建终结点密钥
 如果免费密钥已过期，请创建一个终结点密钥。
 
-1. 登录到 Azure[门户](https://portal.azure.com)。 
+1. 登录到 [Azure 门户](https://portal.azure.com)。 
 
 2. 选择左上角的“创建资源”****。
 
@@ -100,8 +100,8 @@ There are two places in LUIS to use the key. The first is in the [test panel](lu
 
 两种解决方案是：
 
-* 标记具有所有不同拼写的示例陈述，以便 LUIS 可以学习正确的拼写以及拼写错误。 使用此选项比使用拼写检查器需要更多标记操作。
-* 创建包含单词所有变体的短语列表。 使用此解决方案，您无需在示例陈述中标记单词变体。 
+* 标签示例最谈话，其中包含所有不同的拼写，以便 LUIS 可以了解正确的拼写和打字错误。 使用此选项比使用拼写检查器需要更多标记操作。
+* 创建一个短语列表，其中包含该词的所有变体。 利用此解决方案，无需在示例最谈话中标记词变体。 
 
 ## <a name="publishing-page"></a>发布页面
 [发布](luis-how-to-publish-app.md)页面包含一个“启用必应拼写检查器”复选框****。 这便于创建密钥和了解终结点 URL 的更改。 为更正每个表述中的拼写，则仍必须使用正确的终结点参数。 

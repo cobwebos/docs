@@ -1,6 +1,6 @@
 ---
-title: 疑难解答
-description: 对 Azure 突触分析进行故障排除。
+title: 故障排除
+description: Azure Synapse Analytics 故障排除。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,13 +12,13 @@ ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 973d2339db1e55f2cca45025f2d678e5126f4317
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80743667"
 ---
-# <a name="troubleshooting-sql-analytics-in-azure-synapse"></a>在 Azure 突触中排除 SQL 分析的疑难解答
+# <a name="troubleshooting-sql-analytics-in-azure-synapse"></a>Azure Synapse 中的 SQL Analytics 疑难解答
 
 本文列出了常见的故障排除问题。
 
@@ -26,30 +26,30 @@ ms.locfileid: "80743667"
 
 | 问题                                                        | 解决方法                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| 用户 “NT AUTHORITY\ANONYMOUS LOGON” 登录失败。 (Microsoft SQL Server，错误: 18456) | 当 Azure AD 用户尝试连接到主数据库，但主数据库中没有用户时，将发生此错误。  要更正此问题，请指定要在连接时连接到的 SQL 池，或者将用户添加到主数据库。  有关更多详细信息，请参阅 [Security overview](sql-data-warehouse-overview-manage-security.md)（安全性概述）一文。 |
-| 服务器主体“MyUserName”无法在当前的安全上下文下访问数据库“master”。 无法打开用户默认数据库。 登录失败。 用户“MyUserName”的登录失败。 (Microsoft SQL Server，错误: 916) | 当 Azure AD 用户尝试连接到主数据库，但主数据库中没有用户时，将发生此错误。  要更正此问题，请指定要在连接时连接到的 SQL 池，或者将用户添加到主数据库。  有关更多详细信息，请参阅 [Security overview](sql-data-warehouse-overview-manage-security.md)（安全性概述）一文。 |
-| CTAIP 错误                                                  | 在 SQL 服务器主数据库上创建登录名，但在 SQL 数据库中未创建登录名时，可能会发生此错误。  如果遇到此错误，请参阅[安全性概述](sql-data-warehouse-overview-manage-security.md)一文。  本文介绍如何在主数据库上创建登录名和用户，以及如何在 SQL 数据库中创建用户。 |
-| 被防火墙阻止                                          | SQL 池受防火墙保护，以确保只有已知的 IP 地址才能访问数据库。 默认情况下，防火墙是安全的，这意味着，需要显式启用单个 IP 地址或地址范围才能进行连接。  若要配置用于访问的防火墙，请遵循[设置说明](create-data-warehouse-portal.md)中的[为客户端 IP 配置服务器防火墙访问](create-data-warehouse-portal.md)中的步骤。 |
-| 无法使用工具或驱动程序进行连接                           | Synapse SQL 池建议使用[SSMS、SSDT 用于可视化工作室](sql-data-warehouse-install-visual-studio.md)，或[sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)来查询您的数据。 [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 有关驱动程序和连接到 Azure 突触的详细信息，请参阅 Azure[突触的驱动程序](sql-data-warehouse-connection-strings.md)和[连接到 Azure 突触](sql-data-warehouse-connect-overview.md)的文章。 |
+| 用户 “NT AUTHORITY\ANONYMOUS LOGON” 登录失败。 (Microsoft SQL Server，错误: 18456) | 当 Azure AD 用户尝试连接到 master 数据库，但该用户在 master 数据库中没有用户时，会出现此错误。  若要更正此问题，请在连接时指定要连接到的 SQL 池，或者将该用户添加到 master 数据库中。  有关更多详细信息，请参阅 [Security overview](sql-data-warehouse-overview-manage-security.md)（安全性概述）一文。 |
+| 服务器主体“MyUserName”无法在当前的安全上下文下访问数据库“master”。 无法打开用户默认数据库。 登录失败。 用户“MyUserName”的登录失败。 (Microsoft SQL Server，错误: 916) | 当 Azure AD 用户尝试连接到 master 数据库，但该用户在 master 数据库中没有用户时，会出现此错误。  若要更正此问题，请在连接时指定要连接到的 SQL 池，或者将该用户添加到 master 数据库中。  有关更多详细信息，请参阅 [Security overview](sql-data-warehouse-overview-manage-security.md)（安全性概述）一文。 |
+| CTAIP 错误                                                  | 如果已在 SQL server master 数据库中创建登录名，但在 SQL 数据库中创建了该登录名，则会发生此错误。  如果遇到此错误，请参阅[安全性概述](sql-data-warehouse-overview-manage-security.md)一文。  本文介绍如何在 master 中创建登录名和用户，以及如何在 SQL 数据库中创建用户。 |
+| 被防火墙阻止                                          | SQL 池受防火墙保护，以确保只有已知的 IP 地址可以访问数据库。 默认情况下，防火墙是安全的，这意味着，需要显式启用单个 IP 地址或地址范围才能进行连接。  若要配置防火墙的访问权限，请遵循[预配说明](create-data-warehouse-portal.md)中的[为客户端 IP 配置服务器防火墙访问权限](create-data-warehouse-portal.md)中所述的步骤。 |
+| 无法使用工具或驱动程序进行连接                           | Synapse SQL 池建议使用[SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[用于 Visual Studio 的 SSDT](sql-data-warehouse-install-visual-studio.md)或[sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)来查询数据。 有关驱动程序和连接到 Azure Synapse 的详细信息，请参阅[Azure Synapse 的驱动程序](sql-data-warehouse-connection-strings.md)和[连接到 azure Synapse](sql-data-warehouse-connect-overview.md)文章。 |
 
 ## <a name="tools"></a>工具
 
 | 问题                                                        | 解决方法                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| 可视化工作室对象资源管理器缺少 Azure AD 用户           | 这是一个已知问题。  解决方法是在 [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 中查看这些用户。  请参阅[对 Azure Synaps 的身份验证](sql-data-warehouse-authentication.md)，了解有关将 Azure 活动目录与 Synapse SQL 池使用有关。 |
+| 缺少 Azure AD 用户的 Visual Studio 对象资源管理器           | 这是一个已知问题。  解决方法是在 [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 中查看这些用户。  请参阅[Azure Synapse 的身份验证](sql-data-warehouse-authentication.md)，了解有关将 Azure Active Directory 与 Synapse SQL 池配合使用的详细信息。 |
 | 使用脚本向导进行手动脚本编写或通过 SSMS 进行连接时出现缓慢、不响应或产生错误的情况 | 请确保已在 master 数据库中创建用户。 在脚本选项中，同时需确保引擎版本设置为“Microsoft Azure SQL 数据仓库版本”，且引擎类型为“Microsoft Azure SQL 数据库”。 |
-| 在 SSMS 中生成脚本失败                               | 如果选项"为从属对象生成脚本"选项设置为"True"，则为 Synapse SQL 池生成脚本将失败。 作为解决方法，用户必须手动转到**工具 -> 选项 ->SQL Server 对象资源管理器 ->生成从属选项的脚本，并将其设置为 false** |
+| 在 SSMS 中生成脚本失败                               | 如果 "生成依赖对象的脚本" 选项设置为 "True"，则为 Synapse SQL 池生成脚本失败。 解决方法是，用户必须手动转到 **“工具”->“选项”->“SQL Server 对象资源管理器”->“为从属选项生成脚本”并设置为 false** |
 
 ## <a name="performance"></a>性能
 
 | 问题                                                        | 解决方法                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | 查询性能故障排除                            | 如果要尝试对特定查询进行故障排除，请从 [Learning how to monitor your queries](sql-data-warehouse-manage-monitor.md#monitor-query-execution)（学习如何监视查询）开始。 |
-| TempDB 空间问题 | [监视 TempDB](sql-data-warehouse-manage-monitor.md#monitor-tempdb) 空间使用情况。  TempDB 空间耗尽的常见原因有：<br>- 分配给查询的资源不足，导致数据溢出到 TempDB。  请参阅[工作负荷管理](resource-classes-for-workload-management.md) <br>- 统计信息缺失或过期，导致数据移动过多。  有关如何创建统计信息的详细信息，请参阅[维护表统计信息](sql-data-warehouse-tables-statistics.md)<br>- TempDB 空间是按服务级别分配的。  [将 SQL 池缩放](sql-data-warehouse-manage-compute-overview.md#scaling-compute)到更高的 DWU 设置会分配更多的 TempDB 空间。|
-| 查询性能和计划不佳通常是由于缺少统计信息 | 性能不佳的最常见原因是缺少数据表的统计信息。  有关如何创建统计信息以及统计信息为何对性能至关重要的详细信息，请参阅[维护表的统计信息](sql-data-warehouse-tables-statistics.md)。 |
+| TempDB 空间问题 | [监视 TempDB](sql-data-warehouse-manage-monitor.md#monitor-tempdb) 空间使用情况。  TempDB 空间耗尽的常见原因有：<br>- 分配给查询的资源不足，导致数据溢出到 TempDB。  请参阅[工作负荷管理](resource-classes-for-workload-management.md) <br>- 统计信息缺失或过期，导致数据移动过多。  有关如何创建统计信息的详细信息，请参阅[维护表统计信息](sql-data-warehouse-tables-statistics.md)<br>- TempDB 空间是按服务级别分配的。  将[SQL 池缩放](sql-data-warehouse-manage-compute-overview.md#scaling-compute)为更高的 DWU 设置将分配更多 TempDB 空间。|
+| 查询性能和计划不佳通常是由于缺少统计信息 | 性能不佳的最常见原因是缺少数据表的统计信息。  有关如何创建统计信息以及统计信息为何对性能至关重要的详细信息，请参阅[维护表统计信息](sql-data-warehouse-tables-statistics.md)。 |
 | 低并发性/查询排队                             | 若要了解如何利用并发性平衡内存分配，了解[工作负荷管理](resource-classes-for-workload-management.md)很重要。 |
-| 如何实施最佳做法                              | 开始学习如何提高查询性能的最佳地点是[Synapse SQL 池最佳实践](sql-data-warehouse-best-practices.md)一文。 |
-| 如何通过缩放提高性能                      | 有时，提高性能的解决方案是简单地通过[缩放 SQL 池](sql-data-warehouse-manage-compute-overview.md)向查询添加更多的计算能力。 |
+| 如何实施最佳做法                              | 若要开始学习提高查询性能的方法，最好的方法是[Synapse](sql-data-warehouse-best-practices.md) 。 |
+| 如何通过缩放提高性能                      | 有时，改进性能的解决方案只是通过[缩放 SQL 池](sql-data-warehouse-manage-compute-overview.md)来向查询添加更多计算能力。 |
 | 由于索引质量不佳导致查询性能不佳     | 有时，由于[列存储索引质量不佳](sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality)，查询速度可能会减慢。  有关详细信息以及如何[重建索引以提高段质量](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)，请参阅本文。 |
 
 ## <a name="system-management"></a>系统管理
@@ -58,7 +58,7 @@ ms.locfileid: "80743667"
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | 消息 40847：无法执行操作，因为服务器将超过 45000 这一允许的数据库事务单元配额。 | 请减少要尝试创建的数据库的 [DWU](what-is-a-data-warehouse-unit-dwu-cdwu.md)，或者[请求增加配额](sql-data-warehouse-get-started-create-support-ticket.md)。 |
 | 调查空间使用率                              | 请参阅[表大小](sql-data-warehouse-tables-overview.md#table-size-queries)，了解系统的空间使用率。 |
-| 管理表的帮助                                    | 有关管理表的帮助，请参阅[表概述](sql-data-warehouse-tables-overview.md)一文。  本文还包含指向更详细主题的链接，如[表数据类型](sql-data-warehouse-tables-data-types.md)、[分布表](sql-data-warehouse-tables-distribute.md)、[为表编制索引](sql-data-warehouse-tables-index.md)、[将表分区](sql-data-warehouse-tables-partition.md)、[维护表统计信息](sql-data-warehouse-tables-statistics.md)和[临时表](sql-data-warehouse-tables-temporary.md)。 |
+| 管理表的帮助                                    | 有关管理表的帮助，请参阅[表概述](sql-data-warehouse-tables-overview.md)一文。  此文还包含指向更详细主题的链接，如[表数据类型](sql-data-warehouse-tables-data-types.md)、[分布表](sql-data-warehouse-tables-distribute.md)、[为表编制索引](sql-data-warehouse-tables-index.md)、[将表分区](sql-data-warehouse-tables-partition.md)、[维护表统计信息](sql-data-warehouse-tables-statistics.md)和[临时表](sql-data-warehouse-tables-temporary.md)。 |
 | 在 Azure 门户中，透明数据加密 (TDE) 进度栏不更新 | 可以通过 [powershell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 查看 TDE 的状态。 |
 
 ## <a name="differences-from-sql-database"></a>与 SQL 数据库的差异

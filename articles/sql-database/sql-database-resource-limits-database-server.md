@@ -12,15 +12,15 @@ ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
 ms.openlocfilehash: afb30a17d7a1450f169402c18f41ce249415e89d
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80804820"
 ---
-# <a name="sql-database-resource-limits-and-resource-governance"></a>SQL 数据库资源限制和资源治理
+# <a name="sql-database-resource-limits-and-resource-governance"></a>SQL 数据库资源限制和资源调控
 
-本文概述了管理单一数据库和弹性池的 SQL 数据库服务器的 SQL 数据库资源限制。 它提供有关命中或超出这些资源限制时会发生什么情况的信息，并描述了用于强制实施这些限制的资源治理机制。
+本文概述了管理单一数据库和弹性池的 SQL 数据库服务器的 SQL 数据库资源限制。 它提供有关在达到或超过这些资源限制时所发生情况的信息，并介绍用于强制执行这些限制的资源调控机制。
 
 > [!NOTE]
 > 有关托管实例限制，请参阅[托管实例的 SQL 数据库资源限制](sql-database-managed-instance-resource-limits.md)。
@@ -30,7 +30,7 @@ ms.locfileid: "80804820"
 | 资源 | 限制 |
 | :--- | :--- |
 | 每个服务器的数据库数 | 5000 |
-| 任意区域中每个订阅的服务器默认数量 | 20 |
+| 任意区域中每个订阅的服务器默认数量 | 20 个 |
 | 任意区域中每个订阅的服务器数上限 | 200 |  
 | 每个服务器的 DTU/eDTU 配额 | 54,000 |  
 | 每个服务器/实例的 vCore 配额 | 540 |
@@ -44,7 +44,7 @@ ms.locfileid: "80804820"
 > - 管理操作和呈现门户视点（涉及枚举服务器中的数据库）的延迟增加。
 
 > [!NOTE]
-> 要获取比默认数量更多的 DTU/eDTU 配额、vCore 配额或更多服务器，请在 Azure 门户中提交新的支持请求。 有关详细信息，请参阅请求[Azure SQL 数据库的配额增加](quota-increase-request.md)。
+> 若要获取更多 DTU/eDTU 配额、vCore 配额或超过默认数量的服务器，请在 Azure 门户中提交新的支持请求。 有关详细信息，请参阅[AZURE SQL 数据库的请求配额增加](quota-increase-request.md)。
 
 ### <a name="storage-size"></a>存储大小
 
@@ -54,11 +54,11 @@ ms.locfileid: "80804820"
 
 ### <a name="compute-dtus-and-edtus--vcores"></a>计算（DTU 和 eDTU/vCore）
 
-当数据库计算利用率（由 DT 和 eDUS 或 vCore 来衡量）变得高时，查询延迟会增加，查询甚至会超时。在这些情况下，查询可能由服务排队，并在资源空闲时提供执行资源。
+如果数据库计算资源利用率（衡量依据为 DTU 和 eDTU 或 vCore）变高，查询延迟会增加，甚至可能会出现查询超时的现象。在上述情况下，服务可能对查询排队，并在资源可用时向查询提供资源以用于执行。
 计算使用率变高时，风险缓解选项包括：
 
 - 提高数据库或弹性池的计算大小，为数据库提供更多计算资源。 请参阅[缩放单一数据库资源](sql-database-single-database-scale.md)和[缩放弹性池资源](sql-database-elastic-pool-scale.md)。
-- 优化查询以减少每个查询的资源利用率。 有关详细信息，请参阅[查询优化/提示](sql-database-performance-guidance.md#query-tuning-and-hinting)。
+- 优化查询，以减少每个查询的资源利用率。 有关详细信息，请参阅[查询优化/提示](sql-database-performance-guidance.md#query-tuning-and-hinting)。
 
 ### <a name="storage"></a>存储
 
@@ -72,54 +72,54 @@ ms.locfileid: "80804820"
 
 ### <a name="sessions-and-workers-requests"></a>会话和辅助角色（请求）
 
-会话和辅助工作的最大数量由服务层和计算大小（DTUs/eDT或 vCore）决定。 当到达会话或辅助角色上限时，新的请求将被拒绝，客户端将收到错误消息。 虽然应用程序可以轻松地控制可用的连接数，但并行辅助角色数通常更难以估计和控制。 在负荷高峰期，当数据库资源达到上限，辅助角色由于查询运行时间较长、阻塞链大或查询并行度过高而堆积时，这种情况尤其突出。
+会话和辅助进程的最大数量由服务层和计算大小（Dtu/Edtu 或 Vcore）决定。 当到达会话或辅助角色上限时，新的请求将被拒绝，客户端将收到错误消息。 虽然应用程序可以轻松地控制可用的连接数，但并行辅助角色数通常更难以估计和控制。 在负荷高峰期，当数据库资源达到上限，辅助角色由于查询运行时间较长、阻塞链大或查询并行度过高而堆积时，这种情况尤其突出。
 
 会话或辅助角色使用率变高时，风险缓解选项包括：
 
 - 提高数据库或弹性池的服务层级或计算大小。 请参阅[缩放单一数据库资源](sql-database-single-database-scale.md)和[缩放弹性池资源](sql-database-elastic-pool-scale.md)。
 - 如果争用计算资源造成了辅助角色使用率上升，请优化查询，以降低每项查询的资源使用率。 有关详细信息，请参阅[查询优化/提示](sql-database-performance-guidance.md#query-tuning-and-hinting)。
-- 减小[MAXDOP（](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines)最大并行度）设置。
-- 优化查询工作负载，以减少查询阻塞的次数和持续时间。
+- 减少[MAXDOP](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines) （最大并行度）设置。
+- 优化查询工作负荷以减少出现的次数和阻塞查询的持续时间。
 
-### <a name="resource-consumption-by-user-workloads-and-internal-processes"></a>按用户工作负载和内部进程消耗资源
+### <a name="resource-consumption-by-user-workloads-and-internal-processes"></a>用户工作负荷和内部进程的资源消耗
 
-每个数据库中按用户工作负载进行的 CPU 和内存消耗报告在[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current)和[sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database?view=azuresqldb-current) `avg_cpu_percent`视图`avg_memory_usage_percent`、中和列中。 对于弹性池，池级资源消耗报告在[sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)视图中。 用户工作负载 CPU 消耗也会通过`cpu_percent`Azure 监视器指标报告，用于池级别的[单个数据库](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserversdatabases)和[弹性池](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools)。
+每个数据库中的用户工作负荷的 CPU 和内存消耗情况都将在`avg_cpu_percent`和`avg_memory_usage_percent`列中报告[resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database?view=azuresqldb-current)视图[dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current)中。 对于弹性池，系统将在[sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)视图中报告池级别的资源消耗。 还可以通过`cpu_percent` Azure Monitor 指标为池级别的[单个数据库](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserversdatabases)和[弹性池](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools)报告用户工作负荷 CPU 消耗。
 
-Azure SQL 数据库需要计算资源来实现核心服务功能，如高可用性和灾难恢复、数据库备份和恢复、监视、查询存储、自动调优等。系统使用[资源治理](#resource-governance)机制为这些内部进程预留了一定有限部分的资源，使其余资源可用于用户工作负荷。 当内部进程不使用计算资源时，系统会向用户工作负载提供这些资源。
+Azure SQL Database 需要计算资源来实现核心服务功能，例如高可用性和灾难恢复、数据库备份和还原、监视、查询存储、自动优化等。系统使用[资源调控](#resource-governance)机制为这些内部过程留出一定部分的总体资源，从而使资源的剩余部分可用于用户工作负荷。 在内部进程不使用计算资源的情况下，系统会将其提供给用户工作负荷。
 
-在[系统dm_db_resource_stats和sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current)视图、输入[sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database?view=azuresqldb-current)`avg_instance_cpu_percent`和`avg_instance_memory_percent`列中报告承载单个数据库或弹性池的 SQL Server 实例上的用户工作负载和内部进程的总 CPU 和内存消耗。 此数据还通过`sqlserver_process_core_percent`和`sqlserver_process_memory_percent`Azure 监视器指标报告池级别的[单个数据库](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserversdatabases)和[弹性池](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools)。
+承载单一数据库或弹性池的 SQL Server 实例上的用户工作负荷和内部进程的 CPU 和内存消耗总计在`avg_instance_cpu_percent`和`avg_instance_memory_percent`列中[resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database?view=azuresqldb-current) [dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current)报告。 此数据也`sqlserver_process_core_percent`通过和`sqlserver_process_memory_percent` Azure Monitor 度量值报告，适用于池级别的[单个数据库](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserversdatabases)和[弹性池](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools)。
 
-[系统dm_resource_governor_resource_pools_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-history-ex-azure-sql-database)和[sys.dm_resource_governor_workload_groups_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-workload-groups-history-ex-azure-sql-database)视图中报告了按用户工作负载和内部进程划分的最新资源消耗的更详细细分。 有关这些视图中引用的资源池和工作负载组的详细信息，请参阅[资源治理](#resource-governance)。 这些视图报告用户工作负荷的资源利用率以及关联资源池和工作负荷组中的特定内部进程。
+[Sys. dm_resource_governor_resource_pools_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-history-ex-azure-sql-database)和[dm_resource_governor_workload_groups_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-workload-groups-history-ex-azure-sql-database)视图中报告了用户工作负荷和内部进程的最近资源消耗的详细细目。 有关这些视图中引用的资源池和工作负荷组的详细信息，请参阅[资源调控](#resource-governance)。 这些视图按用户工作负荷和关联资源池和工作负荷组中的特定内部过程报告资源利用率。
 
-在性能监视和故障排除的上下文中，考虑**用户 CPU 消耗**`avg_cpu_percent` `cpu_percent`（、 ） 以及用户工作负载和内部进程 （） 的总 CPU`avg_instance_cpu_percent``sqlserver_process_core_percent`**消耗**（）非常重要。
+在性能监视和故障排除的上下文中，请务必考虑用户的**cpu 消耗**（`avg_cpu_percent`、 `cpu_percent`）和用户工作负荷和内部进程的**总 CPU 使用率**（`avg_instance_cpu_percent`、`sqlserver_process_core_percent`）。
 
-**用户 CPU 消耗**量按每个服务目标中用户工作负载限制的百分比计算。 **100% 的用户 CPU 利用率**表示用户工作负载已达到服务目标的限制。 但是，当**总 CPU 消耗**率达到 70-100% 范围时，即使报告的**用户 CPU 消耗**率仍明显低于 100%，用户工作负载吞吐量也会展平，查询延迟也会增加。 当使用较小的服务目标，适度分配计算资源，但用户工作负载相对密集时，就会发生这种情况，例如[在密集的弹性池](sql-database-elastic-pool-resource-management.md)中。 当内部进程暂时需要额外的资源时，例如创建数据库的新副本时，也会发生较小的服务目标。"
+**用户 CPU 消耗**以每个服务目标的用户工作负荷限制的百分比计算。 100% 的**用户 CPU 使用率**表明用户工作负荷已达到服务目标的限制。 但是，当**总 CPU 使用率**达到70-100% 范围时，可以看到用户工作负荷吞吐量进行平展和查询延迟增加，即使报告的**用户 CPU 消耗**明显低于100%。 当使用较小的服务目标同时进行计算资源的中等分配，而不是相对重要的用户工作负荷（如[密集弹性池](sql-database-elastic-pool-resource-management.md)）时，更有可能出现这种情况。 当内部进程暂时需要其他资源时（例如，在创建数据库的新副本时），服务目标也可能发生这种情况。
 
-当**总 CPU 消耗**量高时，缓解选项与前面所述选项相同，包括服务目标增加和/或用户工作负载优化。
+如果**总 CPU 消耗**很高，则缓解选项与前面所述的相同，并且包括服务目标增加和/或用户工作负荷优化。
 
 ## <a name="resource-governance"></a>资源调控
 
-为了实施资源限制，Azure SQL 数据库使用基于 SQL Server[资源调控器](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor)的资源治理实现，该实现进行了修改并扩展，以在 Azure 中运行 SQL Server 数据库服务。 在服务中的每个 SQL Server 实例上，有多个[资源池](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor-resource-pool)和[工作负载组](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor-workload-group)，在池和组级别设置资源限制，以提供[平衡的数据库即服务](https://azure.microsoft.com/blog/resource-governance-in-azure-sql-database/)。 用户工作负荷和内部工作负荷分为单独的资源池和工作负载组。 主副本和可读辅助副本（包括地理副本）上的用户工作负荷被分类到`SloSharedPool1`资源池和`UserPrimaryGroup.DBId[N]`工作负载组中，其中`N`代表数据库 ID 值。 此外，还有多个资源池和工作负载组用于各种内部工作负荷。
+为了强制资源限制，Azure SQL Database 使用基于 SQL Server [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor)、已修改和扩展的资源调控实现在 Azure 中运行 SQL Server 的数据库服务。 在服务中的每个 SQL Server 实例上，都有多个[资源池](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor-resource-pool)和[工作负荷组](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor-workload-group)，同时将资源限制设置为池和组级别，以提供[均衡的数据库即服务](https://azure.microsoft.com/blog/resource-governance-in-azure-sql-database/)。 用户工作负荷和内部工作负荷归类为单独的资源池和工作负荷组。 主副本和可读辅助副本上的用户工作负荷（包括异地副本）归类为`SloSharedPool1`资源池和`UserPrimaryGroup.DBId[N]`工作负荷组， `N`其中代表数据库 ID 值。 此外，还有多个资源池和工作负荷组用于各种内部工作负荷。
 
-除了使用资源调控器来管理 SQL Server 进程中的资源外，Azure SQL 数据库还使用 Windows[作业对象](https://docs.microsoft.com/windows/win32/procthread/job-objects)进行进程级资源治理，使用 Windows[文件服务器资源管理器 （FSRM）](https://docs.microsoft.com/windows-server/storage/fsrm/fsrm-overview)进行存储配额管理。
+除了使用 Resource Governor 在 SQL Server 进程中控制资源以外，Azure SQL 数据库还使用 Windows[作业对象](https://docs.microsoft.com/windows/win32/procthread/job-objects)进行进程级别的资源调控，并使用 Windows[文件服务器资源管理器（FSRM）](https://docs.microsoft.com/windows-server/storage/fsrm/fsrm-overview)进行存储配额管理。
 
-Azure SQL 数据库资源治理本质上是分层的。 从上到下，使用操作系统资源治理机制和资源调控器在操作系统资源治理机制和资源调控器在操作系统级别和存储卷级别实施限制，然后在资源池级别使用资源调控器，然后在使用资源调控器在工作负载组级别实施限制。 当前数据库或弹性池有效的资源治理限制在[sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database)视图中显示。 
+Azure SQL 数据库资源调控本质上是分层的。 从上到下，将使用操作系统资源调控机制并 Resource Governor，并使用 Resource Governor，然后在使用 Resource Governor 的工作负荷组级别，在操作系统级别和存储卷级别强制实施限制。 当前数据库或弹性池生效的资源调控限制显示在[sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database)视图中。 
 
-### <a name="data-io-governance"></a>数据 IO 治理
+### <a name="data-io-governance"></a>数据 IO 管理
 
-数据 IO 治理是 Azure SQL 数据库中用于限制数据库数据文件的读取和写入物理 IO 的过程。 为每个服务级别设置 IOPS 限制，以尽量减少"嘈杂邻居"效果，在多租户服务中提供资源分配公平性，并保持在底层硬件和存储的功能范围内。
+数据 IO 管理是 Azure SQL 数据库中的一个过程，用于限制对数据库的数据文件的读取和写入物理 IO。 为每个服务级别设置 IOPS 限制，以最大程度地减少 "干扰邻居" 的效果，在多租户服务中提供资源分配公平，并保持在底层硬件和存储的功能中。
 
-对于单个数据库，工作负载组限制应用于针对数据库的所有存储 IO，而资源池限制适用于同一 SQL Server 实例上的所有数据库（包括`tempdb`数据库）上的所有存储 IO。 对于弹性池，工作负载组限制适用于池中的每个数据库，而资源池限制适用于整个弹性池，包括`tempdb`在池中的所有数据库之间共享的数据库。 通常，针对数据库（单个或池）的工作负载可能无法实现资源池限制，因为工作负载组限制低于资源池限制，并且更快地限制 IOPS/吞吐量。 但是，组合工作负载可能会针对同一 SQL Server 实例上的多个数据库达到池限制。
+对于单一数据库，工作负荷组限制适用于针对数据库的所有存储 IO，而资源池限制适用于同一 SQL Server 实例上的所有数据库（包括`tempdb`数据库）的所有存储 io。 对于弹性池，工作负荷组限制适用于池中的每个数据库，而资源池限制适用于整个弹性池，包括`tempdb`数据库，该数据库在池中的所有数据库之间共享。 通常，工作负载对数据库（单个或共用）的工作负荷可能无法实现资源池限制，因为工作负荷组限制低于资源池限制，并更快地限制 IOPS/吞吐量。 但是，对于同一 SQL Server 实例上的多个数据库，可以通过组合工作负荷达到池限制。
 
-例如，如果查询生成 1000 IOPS 而不进行任何 IO 资源治理，但工作负载组的最大 IOPS 限制设置为 900 IOPS，则查询将无法生成超过 900 个 IOPS。 但是，如果资源池的最大 IOPS 限制设置为 1500 IOPS，并且与资源池关联的所有工作负荷组的总 IO 超过 1500 IOPS，则同一查询的 IO 可能会减少到 900 IOPS 的工作组限制之下。
+例如，如果查询在没有任何 IO 资源调控的情况下生成 1000 IOPS，但工作负荷组的最大 IOPS 限制设置为 900 IOPS，则查询将无法生成超过900的 IOPS。 但是，如果将 "资源池最大 IOPS 限制" 设置为 1500 IOPS，并且与资源池关联的所有工作负荷组的 IO 总数超过 1500 IOPS，则相同查询的 IO 可能会降低到最大的工作组限制（以 900 IOPS 为限）。
 
-[sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database)视图返回的 IOPS 和吞吐量最小/最大值充当限制/上限，而不是保证。 此外，资源治理不保证任何特定的存储延迟。 给定用户工作负载的最佳可实现延迟、IOPS 和吞吐量不仅取决于 IO 资源治理限制，还取决于使用的 IO 大小组合以及基础存储的功能。 SQL Server 使用大小在 512 KB 和 4 MB 之间不同的 I。 为了实施 IOPS 限制，除 Azure 存储中具有数据文件的数据库外，都会考虑每个 IO 的大小。 在这种情况下，大于 256 KB 的 IO 将记为多个 256 KB IO，以便与 Azure 存储 IO 核算保持一致。
+[Sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database)视图返回的 IOPS 和吞吐量最小/最小值可用作限制/上限，而不是保证。 此外，资源调控不保证任何特定的存储延迟。 给定用户工作负荷最能实现的延迟、IOPS 和吞吐量不仅取决于 IO 资源调控限制，还取决于所使用的 IO 大小和基础存储的功能。 SQL Server 使用大小介于 512 KB 和 4 MB 之间的 Io。 出于强制 IOPS 限制的目的，将对每个 IO 进行考虑，而不考虑其大小，但 Azure 存储中包含数据文件的数据库除外。 在这种情况下，大于 256 KB 的 IOs 会被视为多个 256 KB Io，以与 Azure 存储 IO 记帐保持一致。
 
-对于在 Azure 存储中使用数据文件的基本、标准和通用数据库，如果数据库没有足够的数据`primary_group_max_io`文件来累积提供此数量的 IOPS，或者如果数据在文件之间分布不均匀，或者如果基础 blob 的性能层将 IOPS/吞吐量限制在资源治理限制以下，则可能无法实现该值。 同样，由于基础 Azure 存储 Blob 上的 IOPS 限制，`primary_max_log_rate`因此工作负荷可能无法实现小日志 I。
+对于 "基本"、"标准" 和 "常规用途" 数据库（使用 Azure 存储中`primary_group_max_io`的数据文件），如果数据库没有足够的数据文件来累积来提供此数量的 IOPS，或者如果数据未在文件之间均匀分布，或者基础 blob 的性能层限制了低于资源调控限制的 IOPS/吞吐量，则可能无法实现此值。 同样，对于频繁事务提交生成的小型日志 Io，工作`primary_max_log_rate`负荷可能无法实现该值，因为基础 Azure 存储 BLOB 的 IOPS 限制。
 
-在[sys.dm_db_resource_stats、sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)和[sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)视图中报告的资源利用率值（如[sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)`avg_data_io_percent`和`avg_log_write_percent`）按最大资源治理限制的百分比计算。 因此，当资源治理以外的因素限制 IOPS/吞吐量时，即使报告的资源利用率保持在 100% 以下，IOPS/吞吐量也会随着工作负载的增加而展平和延迟增加。 
+在[sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)、 `avg_data_io_percent` `avg_log_write_percent` [resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)和[sys.databases elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)视图中报告的资源利用率值（如和）是以最大资源调控限制的百分比来计算的。 因此，当资源管理限制 IOPS/吞吐量以外的其他因素时，如果工作负荷增加，则可以查看 IOPS/吞吐量修整和延迟增加，即使报告的资源利用率仍低于100%。 
 
-要查看每个数据库文件的读取和写入 IOPS、吞吐量和延迟，请使用[sys.dm_io_virtual_file_stats（）](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)函数。 此函数针对数据库显示所有 IO，包括未计入`avg_data_io_percent`的背景 IO，而是使用 IOPS 和基础存储的吞吐量，并可能影响观察到的存储延迟。 该函数还显示 IO 资源治理可能为读取和写入分别引入`io_stall_queued_read_ms``io_stall_queued_write_ms`的额外延迟。
+若要查看每个数据库文件的读取和写入 IOPS、吞吐量和延迟，请使用[sys. dm_io_virtual_file_stats （）](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)函数。 此函数对数据库的所有 IO （包括不`avg_data_io_percent`会进行的后台 io）进行图面，但使用基础存储的 IOPS 和吞吐量，并可能会影响观察到的存储延迟。 此函数还会在`io_stall_queued_read_ms`和`io_stall_queued_write_ms`列中分别为读取和写入提供 IO 资源调控所引入的其他延迟。
 
 ### <a name="transaction-log-rate-governance"></a>事务日志速率调控
 
@@ -134,20 +134,20 @@ Azure SQL 数据库资源治理本质上是分层的。 从上到下，使用操
 
 在运行时实施的实际日志生成速率还可能受到反馈机制（暂时降低允许的日志速率，使系统保持稳定）的影响。 日志文件空间管理可避免遇到日志空间不间的情况，可用性组复制机制可以暂时降低总体系统限制。
 
-日志速率调速器流量整形通过以下等待类型（在[sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql)和[sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)视图中公开） 浮出水面）：
+日志速率调控器流量造型通过以下等待类型（在[sys. dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql)和[dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)视图中公开）进行呈现：
 
-| Wait 类型 | 说明 |
+| Wait 类型 | 注意 |
 | :--- | :--- |
 | LOG_RATE_GOVERNOR | 数据库限制 |
 | POOL_LOG_RATE_GOVERNOR | 池限制 |
 | INSTANCE_LOG_RATE_GOVERNOR | 实例级限制 |  
 | HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | 反馈控制。高级/业务关键型工作负荷中的可用性组物理复制不会保持 |  
 | HADR_THROTTLE_LOG_RATE_LOG_SIZE | 反馈控制。限制速率可以避免出现日志空间不足的情况 |
-| HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO | 异地复制反馈控制，限制日志速率，以避免高数据延迟和异地秒数不可用|
+| HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO | 异地复制反馈控制，限制对数率以避免高数据延迟和异地辅助数据库不可用|
 |||
 
 当日志速率限制阻碍实现所需的可伸缩性时，请考虑以下选项：
-- 向上扩展到更高的服务级别，以获得最大 96 MB/s 的日志速率，或切换到其他服务层。 [超大规模](sql-database-service-tier-hyperscale.md)服务层提供 100 MB/s 的日志速率，而不考虑所选服务级别。
+- 向上缩放到更高的服务级别，以获取最大 96 MB/秒的对数率，或切换到不同的服务层。 无论选择哪种服务级别，[超大规模](sql-database-service-tier-hyperscale.md)服务层提供 100 MB/秒的日志速率。
 - 如果加载的数据是暂时性的（例如 ETL 过程中的暂存数据），可将其载入 tempdb（记录最少量的数据）。 
 - 对于分析方案，可将数据载入聚集列存储涵盖的表中。 这样，可以通过压缩来降低所需的日志速率。 此方法确实会增大 CPU 利用率，并且仅适用于可从聚集列存储索引受益的数据集。 
 

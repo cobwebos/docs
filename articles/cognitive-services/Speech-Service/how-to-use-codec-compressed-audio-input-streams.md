@@ -12,19 +12,19 @@ ms.date: 03/30/2020
 ms.author: amishu
 zone_pivot_groups: programming-languages-set-twelve
 ms.openlocfilehash: bd6b500a823bde654da4442704b75451806d6a46
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80637281"
 ---
-# <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>将编解码器压缩音频输入与语音 SDK 一起使用
+# <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>在语音 SDK 中使用编解码器压缩的音频输入
 
-语音服务 SDK**压缩音频输入流**API 提供了一种使用 或`PullStream`将压缩音频流式传输到语音服务`PushStream`的方法。
+语音服务 SDK 压缩音频输入流  API 提供了一种使用 `PullStream` 或 `PushStream` 将压缩音频流式传输到语音服务的方法。
 
-当前支持 C#、C++、Windows 上的 Java（不支持 UWP 应用程序）和 Linux（Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8）的流压缩输入音频。 Android 中的 Java 和 iOS 中的 Objective-C 平台也支持该功能。
-* RHEL 8 和 CentOS 8 需要语音 SDK 版本 1.10.0 或更高版本
-* Windows 需要语音 SDK 版本 1.11.0 或更高版本。
+当前支持对 c #、c + +、Windows 上的 Java （UWP 应用程序不受支持）和 Linux （Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8）进行流式处理压缩输入音频。 Android 中的 Java 和 iOS 平台中的 Objective-C 也支持该功能。
+* RHEL 8 和 CentOS 8 需要 Speech SDK 版本1.10.0 或更高版本
+* Windows 需要 Speech SDK 版本1.11.0 或更高版本。
 
 [!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 

@@ -1,7 +1,7 @@
 ---
-title: 如何指定检测模型 - 面
+title: 如何指定检测模型-人脸
 titleSuffix: Azure Cognitive Services
-description: 本文将介绍如何选择与 Azure Face 应用程序一起使用的人脸检测模型。
+description: 本文介绍如何选择要与 Azure 面部应用程序一起使用的面部检测模型。
 services: cognitive-services
 author: yluiu
 manager: nitinme
@@ -11,23 +11,23 @@ ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: yluiu
 ms.openlocfilehash: 40ca1dbf981c5a9025cf5a0bac6b007709d69a77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76934578"
 ---
 # <a name="specify-a-face-detection-model"></a>指定人脸检测模型
 
-本指南演示如何为 Azure 人脸服务指定人脸检测模型。
+本指南说明如何为 Azure 面部服务指定人脸检测模型。
 
-人脸服务使用机器学习模型在图像中对人脸执行操作。 我们将会根据客户反馈以及研究成果不断改进模型的准确度，并作为模型更新交付改进结果。 开发人员可以选择指定想要使用的人脸检测模型版本；他们可以选择最适合其用例的模型。
+人脸服务使用机器学习模型对图像中的人脸执行操作。 我们将会根据客户反馈以及研究成果不断改进模型的准确度，并作为模型更新交付改进结果。 开发人员可以选择指定想要使用的人脸检测模型版本；他们可以选择最适合其用例的模型。
 
-请继续了解如何在特定的人脸操作中指定人脸检测模型。 当人脸服务将人脸的图像转换为其他形式的数据时，它就会使用人脸检测。
+请继续了解如何在特定的人脸操作中指定人脸检测模型。 面部服务在将人脸转换为某种其他形式的数据时使用人脸检测。
 
 如果你不确定是否要切换到最新的模型，请跳转到[评估不同的模型](#evaluate-different-models)部分来评估新模型，并使用当前数据集比较结果。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 你应该熟悉 AI 人脸检测的概念。 如果你不熟悉，请参阅人脸检测的概念指南或操作指南：
 
@@ -56,7 +56,7 @@ var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, rec
 
 ## <a name="add-face-to-person-with-specified-model"></a>使用指定的模型将人脸添加到 Person
 
-人脸服务可以从图像中提取人脸数据，并通过["人组人员 - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)"API 将其与**人**对象关联。 在此 API 调用中，可以像在 [Face - Detect] 中一样指定检测模型。
+人脸服务可以提取图像中的人脸数据，并通过[Person group 人员-添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)API 将其与**person**对象相关联。 在此 API 调用中，可以像在 [Face - Detect] 中一样指定检测模型。
 
 请查看适用于 .NET 客户端库的以下代码示例。
 
@@ -109,9 +109,9 @@ await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: 
 
 本文已介绍如何指定要与不同人脸 API 配合使用的检测模型。 接下来，请遵循相应的快速入门开始使用人脸识别。
 
-* [面 .NET SDK](../Quickstarts/csharp-sdk.md)
-* [人脸 Python SDK](../Quickstarts/python-sdk.md)
-* [人脸去 SDK](../Quickstarts/go-sdk.md)
+* [面部 .NET SDK](../Quickstarts/csharp-sdk.md)
+* [面部 Python SDK](../Quickstarts/python-sdk.md)
+* [面部转向 SDK](../Quickstarts/go-sdk.md)
 
 [人脸 - 检测]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
 [Face - Find Similar]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237

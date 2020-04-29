@@ -1,6 +1,6 @@
 ---
-title: 升级到最新一代
-description: 将 Azure Synapse 分析 SQL 池升级到最新一代的 Azure 硬件和存储体系结构。
+title: 升级到最新版本
+description: 将 Azure Synapse Analytics SQL 池升级到最新一代的 Azure 硬件和存储体系结构。
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -12,31 +12,31 @@ ms.author: martinle
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 13b1f33ffe653627bcf45f6c995e82e741de32ea
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80742751"
 ---
-# <a name="optimize-performance-by-upgrading-azure-synapse-analytics-sql-pool"></a>通过升级 Azure 突触分析 SQL 池来优化性能
+# <a name="optimize-performance-by-upgrading-azure-synapse-analytics-sql-pool"></a>通过升级 Azure Synapse Analytics SQL 池优化性能
 
 将 SQL 池升级到最新一代的 Azure 硬件和存储体系结构。
 
 ## <a name="why-upgrade"></a>为什么升级？
 
-现在，您可以无缝升级到 Azure 门户中[支持区域](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)的 SQL 池计算优化第 2 代层。 如果你的区域不支持自助升级，则可以升级到受支持的区域，或者等待你的区域支持自助升级。 请立即升级来利用最新一代 Azure 硬件和增强的存储体系结构，包括更快的性能、更高的可伸缩性以及无限的列式存储。
+你现在可以无缝升级到[受支持区域](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)的 Azure 门户中的 SQL 池计算优化的 Gen2 层。 如果你的区域不支持自助升级，则可以升级到受支持的区域，或者等待你的区域支持自助升级。 请立即升级来利用最新一代 Azure 硬件和增强的存储体系结构，包括更快的性能、更高的可伸缩性以及无限的列式存储。
 
 > [!VIDEO https://www.youtube.com/embed/9B2F0gLoyss]
 
 > [!IMPORTANT]
-> 此升级适用于[受支持区域](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)中的计算优化第 1 代 SQL 池。
+> 此升级适用于[支持区域](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)中的计算优化 GEN1 层 SQL 池。
 
 ## <a name="before-you-begin"></a>在开始之前
 
 1. 检查你的[区域](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)是否支持从第 1 代到第 2 代迁移。 请注意自动迁移日期。 为了避免与自动化流程发生冲突，请在自动化流程开始日期之前计划手动迁移。
 2. 如果你所在的区域尚不受支持，请继续检查你的区域是否已添加到受支持的区域中，或者[使用还原来升级](#upgrade-from-an-azure-geographical-region-using-restore-through-the-azure-portal)到受支持的区域。
 3. 如果你的区域受支持，请[通过 Azure 门户进行升级](#upgrade-in-a-supported-region-using-the-azure-portal)
-4. 使用以下映射，根据计算优化第 1 代层上的当前性能级别选择 SQL 池**的建议性能级别**：
+4. 使用以下映射，基于计算优化的 Gen1 层上的当前性能级别，为 SQL 池**选择建议的性能级别**：
 
    | “计算优化第 1 代”层级 | “计算优化第 2 代”层级 |
    | :-------------------------: | :-------------------------: |
@@ -59,18 +59,18 @@ ms.locfileid: "80742751"
 ## <a name="upgrade-in-a-supported-region-using-the-azure-portal"></a>使用 Azure 门户在受支持的区域中进行升级
 
 - 通过 Azure 门户从第 1 代迁移到第 2 代是永久性的。 无法通过任何流程返回到第 1 代。
-- SQL 池必须运行才能迁移到第 2 代
+- 要迁移到 Gen2，必须运行 SQL 池
 
 ### <a name="before-you-begin"></a>在开始之前
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 - 登录 [Azure 门户](https://portal.azure.com/)。
-- 确保 SQL 池正在运行 - 必须迁移到第 2 代
+- 确保 SQL 池正在运行-它必须迁移到 Gen2
 
-### <a name="powershell-upgrade-commands"></a>电源外壳升级命令
+### <a name="powershell-upgrade-commands"></a>PowerShell 升级命令
 
-1. 如果要升级的计算优化第 1 层 SQL 池已暂停，[请继续 SQL 池](pause-and-resume-compute-portal.md)。
+1. 如果要升级的计算优化的 Gen1 层 SQL 池已暂停，请[恢复 sql 池](pause-and-resume-compute-portal.md)。
 
 2. 做好停机几分钟的准备。
 
@@ -89,7 +89,7 @@ ms.locfileid: "80742751"
    ```
 
    > [!NOTE]
-   > -RequestedServiceObjectiveName“DW300”更改为 - RequestedServiceObjectiveName“DW300c****”
+   > -RequestedServiceObjectiveName“DW300”更改为 - RequestedServiceObjectiveName“DW300c  ”
    >
 
    原始 Gen1 T-SQL 命令：
@@ -105,18 +105,18 @@ ms.locfileid: "80742751"
    ```
 
    > [!NOTE]
-   > SERVICE_OBJECTIVE = “DW300”更改为 SERVICE_OBJECTIVE = “DW300c”****
+   > SERVICE_OBJECTIVE = “DW300”更改为 SERVICE_OBJECTIVE = “DW300c” 
 
 ## <a name="start-the-upgrade"></a>开始升级
 
-1. 转到 Azure 门户中的计算优化第 1 代 SQL 池。 如果要升级的计算优化第 1 层 SQL 池已暂停，[请继续 SQL 池](pause-and-resume-compute-portal.md)。
-2. 在"任务"选项卡下选择 **"升级到 Gen2"** 卡：Upgrade_1 ![](./media/upgrade-to-latest-generation/upgrade-to-gen2-1.png)
+1. 在 Azure 门户中转到计算优化的 Gen1 SQL 池。 如果要升级的计算优化的 Gen1 层 SQL 池已暂停，请[恢复 sql 池](pause-and-resume-compute-portal.md)。
+2. 选择 "任务" 选项卡下的 "**升级到 Gen2**卡"： ![Upgrade_1](./media/upgrade-to-latest-generation/upgrade-to-gen2-1.png)
 
    > [!NOTE]
-   > 如果在“任务”选项卡下未看到“升级到第 2 代”**** 卡，则你的订阅类型在当前区域中受到限制。
+   > 如果在“任务”选项卡下未看到“升级到第 2 代”  卡，则你的订阅类型在当前区域中受到限制。
    > [提交支持票证](sql-data-warehouse-get-started-create-support-ticket.md)以便将你的订阅列入允许列表。
 
-3. 在升级之前，请确保工作负荷已完成运行并处于静止状态。 在 SQL 池作为计算优化 Gen2 层 SQL 池重新联机之前，您将遇到几分钟的停机时间。 选择“升级”****：
+3. 在升级之前，请确保工作负荷已完成运行并处于静止状态。 几分钟后，你将会经历几分钟的停机时间，然后将 SQL 池作为计算优化的 Gen2 层 SQL 池恢复联机状态。 选择“升级”  ：
 
    ![Upgrade_2](./media/upgrade-to-latest-generation/upgrade-to-gen2-2.png)
 
@@ -126,9 +126,9 @@ ms.locfileid: "80742751"
 
    升级过程的第一个步骤将经历缩放操作（“升级 - 脱机”），其中，所有会话都将终止并且连接将会断开。
 
-   升级过程的第二个步骤是数据迁移（“升级 - 联机”）。 数据迁移是一个联机缓慢执行的后台进程。 此进程使用本地 SSD 缓存，缓慢地将列式数据从旧的存储体系结构移动到新的存储体系结构。 在此期间，您的 SQL 池将联机以进行查询和加载。 你的数据将可供查询，无论它是否已迁移。 数据迁移以可变速率进行，具体取决于数据大小、性能级别和列存储段的数目。
+   升级过程的第二个步骤是数据迁移（“升级 - 联机”）。 数据迁移是一个联机缓慢执行的后台进程。 此进程使用本地 SSD 缓存，缓慢地将列式数据从旧的存储体系结构移动到新的存储体系结构。 在此期间，SQL 池将处于联机状态，以便进行查询和加载。 你的数据将可供查询，无论它是否已迁移。 数据迁移以可变速率进行，具体取决于数据大小、性能级别和列存储段的数目。
 
-5. **可选建议：** 缩放操作完成后，可以加快数据迁移后台进程。 可以通过以更大的 SLO 和资源类对要查询的所有主要列存储表运行 [Alter Index rebuild](sql-data-warehouse-tables-index.md) 来强制数据移动。 与缓慢执行的后台进程（可能需要数小时才能完成，具体取决于表的数量和大小）相对比，此操作是**脱机**的。 但是，一旦完成，数据迁移将更快，因为新的增强的存储体系结构具有高质量的行组。
+5. **可选建议**：在缩放操作完成后，你可以加速执行数据迁移后台进程。 可以通过以更大的 SLO 和资源类对要查询的所有主要列存储表运行 [Alter Index rebuild](sql-data-warehouse-tables-index.md) 来强制数据移动。 与缓慢执行的后台进程（可能需要数小时才能完成，具体取决于表的数量和大小）相对比，此操作是**脱机**的。 但是，一旦完成，数据迁移将更快，因为新的增强的存储体系结构具有高质量的行组。
 
 > [!NOTE]
 > Alter Index rebuild 是一项脱机操作，在重新生成完成之前，这些表将不可用。
@@ -182,11 +182,11 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 ## <a name="create-a-user-defined-restore-point-using-the-azure-portal"></a>使用 Azure 门户创建用户定义的还原点
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 2. 导航到要为其创建还原点的 SQL 池。
 
-3. 在“概述”部分的顶部，选择“+ 新建还原点”****。
+3. 在“概述”部分的顶部，选择“+ 新建还原点”  。
 
     ![新建还原点](./media/upgrade-to-latest-generation/creating_restore_point_0.png)
 
@@ -196,13 +196,13 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 ## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>使用 Azure 门户还原活动或暂停的数据库
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
-2. 导航到要还原的 SQL 池。
-3. 在“概述”部分的顶部，选择“还原”****。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
+2. 导航到要从中还原的 SQL 池。
+3. 在“概述”部分的顶部，选择“还原”  。
 
     ![ 还原概述](./media/upgrade-to-latest-generation/restoring_0.png)
 
-4. 选择**自动还原点**或**用户定义的还原点**。 对于用户定义的还原点，**请选择用户定义的还原点**或**创建新的用户定义的还原点**。 对于服务器，选择 **"新建"** 并选择 Gen2 支持的地理区域中的服务器。
+4. 选择 "**自动还原点**" 或 "**用户定义的还原点**"。 对于用户定义的还原点，请**选择用户定义的还原**点，或**创建新的用户定义的还原点**。 对于服务器，选择 "**新建**"，然后选择 Gen2 支持的地理区域中的服务器。
 
     ![自动还原点](./media/upgrade-to-latest-generation/restoring_1.png)
 
@@ -242,8 +242,8 @@ $GeoRestoredDatabase.status
 
 如果源数据库启用了 TDE，则已恢复的数据库将启用 TDE。
 
-如果 SQL 池遇到任何问题，请创建[支持请求](sql-data-warehouse-get-started-create-support-ticket.md)，并将"Gen2 升级"作为可能的原因。
+如果 SQL 池遇到任何问题，请创建[支持请求](sql-data-warehouse-get-started-create-support-ticket.md)，并将 "Gen2 upgrade" 引用为可能的原因。
 
 ## <a name="next-steps"></a>后续步骤
 
-升级后的 SQL 池处于联机状态。 若要利用增强的体系结构，请参阅[用于工作负荷管理的资源类](resource-classes-for-workload-management.md)。
+升级的 SQL 池处于联机状态。 若要利用增强的体系结构，请参阅[用于工作负荷管理的资源类](resource-classes-for-workload-management.md)。

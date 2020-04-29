@@ -1,7 +1,7 @@
 ---
-title: 参考：数据科学 虚拟机映像弃用
+title: 参考： Data Science Virtual Machine 图像弃用
 titleSuffix: Azure Data Science Virtual Machine
-description: 有关影响 Azure 数据科学虚拟机的弃用的详细信息
+description: 影响 Azure Data Science Virtual Machine 的弃用功能的详细信息
 author: lobrien
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -9,10 +9,10 @@ ms.author: laobri
 ms.date: 04/03/2020
 ms.topic: reference
 ms.openlocfilehash: 6004ae0c1fd2fa25a07ab84776ab74789f6e7da9
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80754768"
 ---
 # <a name="reference-deprecation-of-dsvm-images"></a>参考：DSVM 映像的弃用
@@ -29,4 +29,4 @@ ms.locfileid: "80754768"
 
 ## <a name="centos"></a>CentOS
 
-新用户应使用最新的 Ubuntu 或 Windows 映像。 CentOS 将继续可用于现有解决方案模板。
+新用户应使用最新的 Ubuntu 或 Windows 映像。 CentOS 仍可与现有解决方案模板一起使用。

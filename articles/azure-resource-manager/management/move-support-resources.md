@@ -1,17 +1,17 @@
 ---
 title: 资源类型支持的移动操作
-description: 列出了可移动到新资源组或订阅的 Azure 资源类型。
+description: 列出可移到新资源组或订阅的 Azure 资源类型。
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: 90fbec4dc076feb1fee8c38cf9757d3c5ddbafaf
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80804786"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
-本文列出了 Azure 资源类型是否支持移动操作。 它还提供了有关移动资源时要考虑的特殊条件的信息。
+本文列出某个 Azure 资源类型是否支持移动操作。 它还提供了有关移动资源时要考虑的特殊条件的信息。
 
 跳转到资源提供程序命名空间：
 > [!div class="op_single_selector"]
@@ -22,32 +22,32 @@ ms.locfileid: "80804786"
 > - [Microsoft.AnalysisServices](#microsoftanalysisservices)
 > - [Microsoft.ApiManagement](#microsoftapimanagement)
 > - [Microsoft.AppConfiguration](#microsoftappconfiguration)
-> - [微软.AppPlatform](#microsoftappplatform)
+> - [AppPlatform](#microsoftappplatform)
 > - [Microsoft.AppService](#microsoftappservice)
 > - [Microsoft.Authorization](#microsoftauthorization)
 > - [Microsoft.Automation](#microsoftautomation)
 > - [Microsoft.AzureActiveDirectory](#microsoftazureactivedirectory)
-> - [微软.Azure数据](#microsoftazuredata)
+> - [AzureData](#microsoftazuredata)
 > - [Microsoft.AzureStack](#microsoftazurestack)
-> - [微软.Batch](#microsoftbatch)
+> - [Microsoft. 批处理](#microsoftbatch)
 > - [Microsoft.BatchAI](#microsoftbatchai)
 > - [Microsoft.Billing](#microsoftbilling)
 > - [Microsoft.BingMaps](#microsoftbingmaps)
 > - [Microsoft.BizTalkServices](#microsoftbiztalkservices)
 > - [Microsoft.Blockchain](#microsoftblockchain)
-> - [微软.区块链令牌](#microsoftblockchaintokens)
+> - [BlockchainTokens](#microsoftblockchaintokens)
 > - [Microsoft.Blueprint](#microsoftblueprint)
 > - [Microsoft.BotService](#microsoftbotservice)
 > - [Microsoft.Cache](#microsoftcache)
 > - [Microsoft.Cdn](#microsoftcdn)
 > - [Microsoft.CertificateRegistration](#microsoftcertificateregistration)
-> - [微软.经典计算](#microsoftclassiccompute)
-> - [微软.经典网络](#microsoftclassicnetwork)
+> - [Microsoft.classiccompute](#microsoftclassiccompute)
+> - [Microsoft.classicnetwork](#microsoftclassicnetwork)
 > - [Microsoft.ClassicStorage](#microsoftclassicstorage)
-> - [微软.认知](#microsoftcognition)
-> - [微软.认知服务](#microsoftcognitiveservices)
+> - [认知](#microsoftcognition)
+> - [Cognitiveservices account](#microsoftcognitiveservices)
 > - [Microsoft.Compute](#microsoftcompute)
-> - [微软.消费](#microsoftconsumption)
+> - [Microsoft. 消耗](#microsoftconsumption)
 > - [Microsoft.Container](#microsoftcontainer)
 > - [Microsoft.ContainerInstance](#microsoftcontainerinstance)
 > - [Microsoft.ContainerRegistry](#microsoftcontainerregistry)
@@ -56,8 +56,8 @@ ms.locfileid: "80804786"
 > - [Microsoft.CortanaAnalytics](#microsoftcortanaanalytics)
 > - [Microsoft.CostManagement](#microsoftcostmanagement)
 > - [Microsoft.CustomerInsights](#microsoftcustomerinsights)
-> - [微软.自定义提供程序](#microsoftcustomproviders)
-> - [微软.DataBox](#microsoftdatabox)
+> - [CustomProviders](#microsoftcustomproviders)
+> - [DataBox](#microsoftdatabox)
 > - [Microsoft.DataBoxEdge](#microsoftdataboxedge)
 > - [Microsoft.Databricks](#microsoftdatabricks)
 > - [Microsoft.DataCatalog](#microsoftdatacatalog)
@@ -68,98 +68,98 @@ ms.locfileid: "80804786"
 > - [Microsoft.DataLakeAnalytics](#microsoftdatalakeanalytics)
 > - [Microsoft.DataLakeStore](#microsoftdatalakestore)
 > - [Microsoft.DataMigration](#microsoftdatamigration)
-> - [微软.数据保护](#microsoftdataprotection)
-> - [微软.数据共享](#microsoftdatashare)
+> - [DataProtection](#microsoftdataprotection)
+> - [DataShare](#microsoftdatashare)
 > - [Microsoft.DBforMariaDB](#microsoftdbformariadb)
 > - [Microsoft.DBforMySQL](#microsoftdbformysql)
 > - [Microsoft.DBforPostgreSQL](#microsoftdbforpostgresql)
 > - [Microsoft.DeploymentManager](#microsoftdeploymentmanager)
-> - [微软.桌面虚拟化](#microsoftdesktopvirtualization)
+> - [DesktopVirtualization](#microsoftdesktopvirtualization)
 > - [Microsoft.Devices](#microsoftdevices)
-> - [微软.DevOps](#microsoftdevops)
+> - [DevOps](#microsoftdevops)
 > - [Microsoft.DevSpaces](#microsoftdevspaces)
 > - [Microsoft.DevTestLab](#microsoftdevtestlab)
-> - [微软.数字双胞胎](#microsoftdigitaltwins)
+> - [DigitalTwins](#microsoftdigitaltwins)
 > - [Microsoft.DocumentDB](#microsoftdocumentdb)
 > - [Microsoft.DomainRegistration](#microsoftdomainregistration)
-> - [微软.企业知识图](#microsoftenterpriseknowledgegraph)
+> - [EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
 > - [Microsoft.EventGrid](#microsofteventgrid)
 > - [Microsoft.EventHub](#microsofteventhub)
-> - [微软.实验](#microsoftexperimentation)
-> - [微软.法尔肯](#microsoftfalcon)
+> - [Microsoft 试验](#microsoftexperimentation)
+> - [Falcon](#microsoftfalcon)
 > - [Microsoft.Genomics](#microsoftgenomics)
-> - [Microsoft.GuestConfiguration](#microsoftguestconfiguration)
+> -  Microsoft.GuestConfiguration
 > - [Microsoft.HanaOnAzure](#microsofthanaonazure)
 > - [Microsoft.HDInsight](#microsofthdinsight)
-> - [微软.医疗保健Apis](#microsofthealthcareapis)
-> - [](#microsofthybridcompute)Microsoft.HybridCompute
+> - [HealthcareApis](#microsofthealthcareapis)
+> -  Microsoft.HybridCompute
 > - [Microsoft.HybridData](#microsofthybriddata)
-> - [微软.海德拉](#microsofthydra)
+> - [Hydra](#microsofthydra)
 > - [Microsoft.ImportExport](#microsoftimportexport)
 > - [microsoft.insights](#microsoftinsights)
 > - [Microsoft.IoTCentral](#microsoftiotcentral)
 > - [Microsoft.IoTSpaces](#microsoftiotspaces)
-> - [微软.钥匙库](#microsoftkeyvault)
-> - [微软.库伯内斯](#microsoftkubernetes)
+> - [KeyVault](#microsoftkeyvault)
+> - [Kubernetes](#microsoftkubernetes)
 > - [Microsoft.Kusto](#microsoftkusto)
 > - [Microsoft.LabServices](#microsoftlabservices)
 > - [Microsoft.LocationBasedServices](#microsoftlocationbasedservices)
 > - [Microsoft.LocationServices](#microsoftlocationservices)
-> - [微软.逻辑](#microsoftlogic)
+> - [Microsoft. 逻辑](#microsoftlogic)
 > - [Microsoft.MachineLearning](#microsoftmachinelearning)
 > - [Microsoft.MachineLearningCompute](#microsoftmachinelearningcompute)
 > - [Microsoft.MachineLearningExperimentation](#microsoftmachinelearningexperimentation)
 > - [Microsoft.MachineLearningModelManagement](#microsoftmachinelearningmodelmanagement)
 > - [Microsoft.MachineLearningOperationalization](#microsoftmachinelearningoperationalization)
 > - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
-> - [微软.维护](#microsoftmaintenance)
+> - [Microsoft. 维护](#microsoftmaintenance)
 > - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
-> - [微软.托管网络](#microsoftmanagednetwork)
+> - [ManagedNetwork](#microsoftmanagednetwork)
 > - [Microsoft.ManagedServices](#microsoftmanagedservices)
 > - [Microsoft.Maps](#microsoftmaps)
 > - [Microsoft.MarketplaceApps](#microsoftmarketplaceapps)
 > - [Microsoft.Media](#microsoftmedia)
-> - [微软.微服务4春天](#microsoftmicroservices4spring)
+> - [Microservices4Spring](#microsoftmicroservices4spring)
 > - [Microsoft.Migrate](#microsoftmigrate)
 > - [Microsoft.NetApp](#microsoftnetapp)
-> - [微软.网络](#microsoftnetwork)
+> - [Microsoft 网络](#microsoftnetwork)
 > - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
-> - [微软.对象商店](#microsoftobjectstore)
-> - [微软.运营洞察](#microsoftoperationalinsights)
-> - [微软.运营管理](#microsoftoperationsmanagement)
-> - [微软.对等](#microsoftpeering)
+> - [ObjectStore](#microsoftobjectstore)
+> - [Microsoft.operationalinsights](#microsoftoperationalinsights)
+> - [为 microsoft.operationsmanagement](#microsoftoperationsmanagement)
+> - [Microsoft。对等互连](#microsoftpeering)
 > - [Microsoft.PolicyInsights](#microsoftpolicyinsights)
 > - [Microsoft.Portal](#microsoftportal)
 > - [Microsoft.PortalSdk](#microsoftportalsdk)
 > - [Microsoft.PowerBI](#microsoftpowerbi)
 > - [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated)
-> - [微软.项目巴比隆](#microsoftprojectbabylon)
+> - [ProjectBabylon](#microsoftprojectbabylon)
 > - [Microsoft.ProjectOxford](#microsoftprojectoxford)
-> - [微软.供应商中心](#microsoftproviderhub)
-> - [微软.昆腾](#microsoftquantum)
-> - [微软.恢复服务](#microsoftrecoveryservices)
-> - [微软.红帽开放移位](#microsoftredhatopenshift)
+> - [ProviderHub](#microsoftproviderhub)
+> - [Microsoft 量子](#microsoftquantum)
+> - [Microsoft.recoveryservices](#microsoftrecoveryservices)
+> - [RedHatOpenShift](#microsoftredhatopenshift)
 > - [Microsoft.Relay](#microsoftrelay)
 > - [Microsoft.ResourceGraph](#microsoftresourcegraph)
 > - [Microsoft.ResourceHealth](#microsoftresourcehealth)
 > - [Microsoft.Resources](#microsoftresources)
 > - [Microsoft.SaaS](#microsoftsaas)
-> - [微软.搜索](#microsoftsearch)
+> - [Microsoft. 搜索](#microsoftsearch)
 > - [Microsoft.Security](#microsoftsecurity)
 > - [Microsoft.SecurityInsights](#microsoftsecurityinsights)
 > - [Microsoft.ServerManagement](#microsoftservermanagement)
-> - [微软.服务总线](#microsoftservicebus)
+> - [Microsoft。](#microsoftservicebus)
 > - [Microsoft.ServiceFabric](#microsoftservicefabric)
 > - [Microsoft.ServiceFabricMesh](#microsoftservicefabricmesh)
-> - [微软.服务](#microsoftservices)
+> - [Microsoft. 服务](#microsoftservices)
 > - [Microsoft.SignalRService](#microsoftsignalrservice)
-> - [微软.软件计划](#microsoftsoftwareplan)
+> - [SoftwarePlan](#microsoftsoftwareplan)
 > - [Microsoft.Solutions](#microsoftsolutions)
-> - [微软.Sql](#microsoftsql)
+> - [Microsoft .Sql](#microsoftsql)
 > - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
 > - [Microsoft.SqlVM](#microsoftsqlvm)
 > - [Microsoft.Storage](#microsoftstorage)
-> - [微软.存储缓存](#microsoftstoragecache)
+> - [StorageCache](#microsoftstoragecache)
 > - [Microsoft.StorageSync](#microsoftstoragesync)
 > - [Microsoft.StorageSyncDev](#microsoftstoragesyncdev)
 > - [Microsoft.StorageSyncInt](#microsoftstoragesyncint)
@@ -167,18 +167,18 @@ ms.locfileid: "80804786"
 > - [Microsoft.StreamAnalytics](#microsoftstreamanalytics)
 > - [Microsoft.StreamAnalyticsExplorer](#microsoftstreamanalyticsexplorer)
 > - [Microsoft.Subscription](#microsoftsubscription)
-> - [微软.支持](#microsoftsupport)
-> - [微软.Synapse](#microsoftsynapse)
+> - [microsoft。支持](#microsoftsupport)
+> - [Synapse](#microsoftsynapse)
 > - [Microsoft.TerraformOSS](#microsoftterraformoss)
 > - [Microsoft.TimeSeriesInsights](#microsofttimeseriesinsights)
-> - [微软.令牌](#microsofttoken)
+> - [Microsoft Token](#microsofttoken)
 > - [Microsoft.VirtualMachineImages](#microsoftvirtualmachineimages)
 > - [microsoft.visualstudio](#microsoftvisualstudio)
-> - [微软.VMware云简单](#microsoftvmwarecloudsimple)
-> - [微软.Vnf管理器](#microsoftvnfmanager)
-> - [微软.VSOnline](#microsoftvsonline)
-> - [微软.Web](#microsoftweb)
-> - [微软.视窗](#microsoftwindowsesu)
+> - [VMwareCloudSimple](#microsoftvmwarecloudsimple)
+> - [VnfManager](#microsoftvnfmanager)
+> - [VSOnline](#microsoftvsonline)
+> - [Microsoft Web](#microsoftweb)
+> - [WindowsESU](#microsoftwindowsesu)
 > - [Microsoft.WindowsIoT](#microsoftwindowsiot)
 > - [Microsoft.WorkloadMonitor](#microsoftworkloadmonitor)
 
@@ -212,8 +212,8 @@ ms.locfileid: "80804786"
 > | ------------- | ----------- | ---------- |
 > | actionrules | 是 | 是 |
 > | alerts | 否 | 否 |
-> | 警报摘要 | 否 | 否 |
-> | 智能探测器警报规则 | 是 | 是 |
+> | alertssummary | 否 | 否 |
+> | smartdetectoralertrules | 是 | 是 |
 
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 
@@ -230,16 +230,16 @@ ms.locfileid: "80804786"
 > | 服务 | 是 | 是 |
 
 > [!IMPORTANT]
-> 无法移动设置为消耗 SKU 的 API 管理服务。
+> 无法移动设置为使用情况 SKU 的 API 管理服务。
 
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 配置存储 | 是 | 是 |
+> | configurationstores | 是 | 是 |
 
-## <a name="microsoftappplatform"></a>微软.AppPlatform
+## <a name="microsoftappplatform"></a>AppPlatform
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
@@ -263,17 +263,17 @@ ms.locfileid: "80804786"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 检查访问 | 否 | 否 |
-> | 拒绝分配 | 否 | 否 |
-> | 发现孤儿角色分配 | 否 | 否 |
+> | checkaccess | 否 | 否 |
+> | denyassignments | 否 | 否 |
+> | findorphanroleassignments | 否 | 否 |
 > | 锁定 | 否 | 否 |
 > | 权限 | 否 | 否 |
 > | policyassignments | 否 | 否 |
-> | 策略定义 | 否 | 否 |
-> | 策略集定义 | 否 | 否 |
-> | 角色分配 | 否 | 否 |
-> | 角色分配使用度量 | 否 | 否 |
-> | 角色定义 | 否 | 否 |
+> | policydefinitions | 否 | 否 |
+> | policysetdefinitions | 否 | 否 |
+> | roleassignments | 否 | 否 |
+> | roleassignmentsusagemetrics | 否 | 否 |
+> | roledefinitions | 否 | 否 |
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
@@ -294,15 +294,15 @@ ms.locfileid: "80804786"
 > | ------------- | ----------- | ---------- |
 > | b2cdirectories | 是 | 是 |
 
-## <a name="microsoftazuredata"></a>微软.Azure数据
+## <a name="microsoftazuredata"></a>AzureData
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 混合数据管理器 | 否 | 否 |
-> | 后实例 | 否 | 否 |
-> | 实例 | 否 | 否 |
-> | sqlserver 注册 | 是 | 是 |
+> | hybriddatamanagers | 否 | 否 |
+> | postgresinstances | 否 | 否 |
+> | sqlinstances | 否 | 否 |
+> | sqlserverregistrations | 是 | 是 |
 
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
 
@@ -333,11 +333,11 @@ ms.locfileid: "80804786"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 计费周期 | 否 | 否 |
-> | 计费权限 | 否 | 否 |
-> | 计费角色分配 | 否 | 否 |
-> | 计费角色定义 | 否 | 否 |
-> | 创建计费角色分配 | 否 | 否 |
+> | billingperiods | 否 | 否 |
+> | billingpermissions | 否 | 否 |
+> | billingroleassignments | 否 | 否 |
+> | billingroledefinitions | 否 | 否 |
+> | createbillingroleassignment | 否 | 否 |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 
@@ -359,15 +359,15 @@ ms.locfileid: "80804786"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | blockchainmembers | 否 | 否 |
-> | 脐带成员 | 否 | 否 |
-> | 观察家 | 否 | 否 |
+> | cordamembers | 否 | 否 |
+> | 人士 | 否 | 否 |
 
-## <a name="microsoftblockchaintokens"></a>微软.区块链令牌
+## <a name="microsoftblockchaintokens"></a>BlockchainTokens
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 令牌服务 | 否 | 否 |
+> | tokenservices | 否 | 否 |
 
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
 
@@ -400,7 +400,7 @@ ms.locfileid: "80804786"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | cdnwebapplicationfirewallpolicies | 是 | 是 |
-> | 配置文件 | 是 | 是 |
+> | profiles | 是 | 是 |
 > | profiles/endpoints | 是 | 是 |
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
@@ -446,19 +446,19 @@ ms.locfileid: "80804786"
 > [!IMPORTANT]
 > 请参阅[经典部署移动指南](./move-limitations/classic-model-move-limitations.md)。 可以使用特定于该方案的操作跨订阅移动经典部署资源。
 
-## <a name="microsoftcognition"></a>微软.认知
+## <a name="microsoftcognition"></a>认知
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 合成帐户 | 否 | 否 |
+> | syntheticsaccounts | 否 | 否 |
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | accounts | 是 | 是 |
+> | 帐户 | 是 | 是 |
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
@@ -476,11 +476,11 @@ ms.locfileid: "80804786"
 > | images | 是 | 是 |
 > | proximityplacementgroups | 是 | 是 |
 > | restorepointcollections | 否 | 否 |
-> | 共享vm扩展 | 否 | 否 |
+> | sharedvmextensions | 否 | 否 |
 > | sharedvmimages | 否 | 否 |
 > | sharedvmimages/versions | 否 | 否 |
 > | snapshots | 是 | 是 |
-> | sshpublickey | 否 | 否 |
+> | sshpublickeys | 否 | 否 |
 > | virtualmachines | 是 | 是 |
 > | virtualmachines/extensions | 是 | 是 |
 > | virtualmachinescalesets | 是 | 是 |
@@ -493,28 +493,28 @@ ms.locfileid: "80804786"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 聚合成本 | 否 | 否 |
+> | aggregatedcost | 否 | 否 |
 > | 平衡 | 否 | 否 |
 > | 预算 | 否 | 否 |
-> | 收费 | 否 | 否 |
-> | 成本标记 | 否 | 否 |
+> | 话费 | 否 | 否 |
+> | costtags | 否 | 否 |
 > | credits | 否 | 否 |
 > | 活动 | 否 | 否 |
 > | 预测 | 否 | 否 |
 > | lots | 否 | 否 |
 > | 市场 | 否 | 否 |
-> | 操作结果 | 否 | 否 |
-> | 操作状态 | 否 | 否 |
-> | 价格表 | 否 | 否 |
+> | operationresults | 否 | 否 |
+> | operationstatus | 否 | 否 |
+> | pricesheets | 否 | 否 |
 > | products | 否 | 否 |
-> | 预订详情 | 否 | 否 |
-> | 预订建议 | 否 | 否 |
-> | 预订摘要 | 否 | 否 |
-> | 预留交易 | 否 | 否 |
+> | reservationdetails | 否 | 否 |
+> | reservationrecommendations | 否 | 否 |
+> | reservationsummaries | 否 | 否 |
+> | reservationtransactions | 否 | 否 |
 > | 标记 | 否 | 否 |
 > | tenants | 否 | 否 |
 > | terms | 否 | 否 |
-> | 使用详细信息 | 否 | 否 |
+> | usagedetails | 否 | 否 |
 
 ## <a name="microsoftcontainer"></a>Microsoft.Container
 
@@ -529,7 +529,7 @@ ms.locfileid: "80804786"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | containergroups | 否 | 否 |
-> | 服务关联链接 | 否 | 否 |
+> | serviceassociationlinks | 否 | 否 |
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
@@ -537,10 +537,10 @@ ms.locfileid: "80804786"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | registries | 是 | 是 |
-> | 注册表/代理池 | 否 | 否 |
+> | 注册表/agentpools | 否 | 否 |
 > | registries/buildtasks | 是 | 是 |
 > | registries/replications | 是 | 是 |
-> | 注册表/任务运行 | 是 | 是 |
+> | 注册表/taskruns | 是 | 是 |
 > | registries/tasks | 是 | 是 |
 > | registries/webhooks | 是 | 是 |
 
@@ -565,7 +565,7 @@ ms.locfileid: "80804786"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | accounts | 否 | 否 |
+> | 帐户 | 否 | 否 |
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 
@@ -577,12 +577,12 @@ ms.locfileid: "80804786"
 > | 连接器 | 是 | 是 |
 > | 维数 | 否 | 否 |
 > | 导出 | 否 | 否 |
-> | 外部订阅 | 否 | 否 |
+> | externalsubscriptions | 否 | 否 |
 > | forecast | 否 | 否 |
 > | query | 否 | 否 |
-> | 报告配置 | 否 | 否 |
+> | reportconfigs | 否 | 否 |
 > | 报表 | 否 | 否 |
-> | 显示回向规则 | 否 | 否 |
+> | showbackrules | 否 | 否 |
 > | 视图 | 否 | 否 |
 
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
@@ -592,13 +592,13 @@ ms.locfileid: "80804786"
 > | ------------- | ----------- | ---------- |
 > | hubs | 否 | 否 |
 
-## <a name="microsoftcustomproviders"></a>微软.自定义提供程序
+## <a name="microsoftcustomproviders"></a>CustomProviders
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | 关联 | 否 | 否 |
-> | 资源提供者 | 是 | 是 |
+> | resourceproviders | 是 | 是 |
 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 
@@ -627,7 +627,7 @@ ms.locfileid: "80804786"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | catalogs | 是 | 是 |
-> | 数据目录 | 否 | 否 |
+> | datacatalogs | 否 | 否 |
 
 ## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
 
@@ -664,14 +664,14 @@ ms.locfileid: "80804786"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | accounts | 是 | 是 |
+> | 帐户 | 是 | 是 |
 
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | accounts | 是 | 是 |
+> | 帐户 | 是 | 是 |
 
 ## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
 
@@ -682,19 +682,19 @@ ms.locfileid: "80804786"
 > | services/projects | 否 | 否 |
 > | slots | 否 | 否 |
 
-## <a name="microsoftdataprotection"></a>微软.数据保护
+## <a name="microsoftdataprotection"></a>DataProtection
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 备份库 | 否 | 否 |
+> | backupvaults | 否 | 否 |
 
-## <a name="microsoftdatashare"></a>微软.数据共享
+## <a name="microsoftdatashare"></a>DataShare
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | accounts | 是 | 是 |
+> | 帐户 | 是 | 是 |
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 
@@ -718,7 +718,7 @@ ms.locfileid: "80804786"
 > | servergroups | 否 | 否 |
 > | servers | 是 | 是 |
 > | serversv2 | 是 | 是 |
-> | 单服务器 | 是 | 是 |
+> | singleservers | 是 | 是 |
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
 
@@ -728,17 +728,17 @@ ms.locfileid: "80804786"
 > | artifactsources | 是 | 是 |
 > | rollouts | 是 | 是 |
 > | servicetopologies | 是 | 是 |
-> | 服务/服务 | 是 | 是 |
-> | 服务/服务/服务单位 | 是 | 是 |
+> | servicetopologies/服务 | 是 | 是 |
+> | servicetopologies/services/serviceunits | 是 | 是 |
 > | steps | 是 | 是 |
 
-## <a name="microsoftdesktopvirtualization"></a>微软.桌面虚拟化
+## <a name="microsoftdesktopvirtualization"></a>DesktopVirtualization
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 应用程序组 | 否 | 否 |
-> | 主机池 | 否 | 否 |
+> | applicationgroups | 否 | 否 |
+> | hostpools | 否 | 否 |
 > | workspaces | 否 | 否 |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
@@ -751,12 +751,12 @@ ms.locfileid: "80804786"
 > | iothubs | 是 | 是 |
 > | provisioningservices | 是 | 是 |
 
-## <a name="microsoftdevops"></a>微软.DevOps
+## <a name="microsoftdevops"></a>DevOps
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 管道 | 是 | 是 |
+> | 段 | 是 | 是 |
 
 ## <a name="microsoftdevspaces"></a>Microsoft.DevSpaces
 
@@ -773,16 +773,16 @@ ms.locfileid: "80804786"
 > | labcenters | 否 | 否 |
 > | labs | 是 | 否 |
 > | 实验室/环境 | 是 | 是 |
-> | 实验室/服务运行者 | 是 | 是 |
-> | 实验室/虚拟机 | 是 | 否 |
+> | 实验室/servicerunners | 是 | 是 |
+> | 实验室/virtualmachines | 是 | 否 |
 > | schedules | 是 | 是 |
 
-## <a name="microsoftdigitaltwins"></a>微软.数字双胞胎
+## <a name="microsoftdigitaltwins"></a>DigitalTwins
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 数字双星实例 | 否 | 否 |
+> | digitaltwinsinstances | 否 | 否 |
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
@@ -798,7 +798,7 @@ ms.locfileid: "80804786"
 > | ------------- | ----------- | ---------- |
 > | domains | 是 | 是 |
 
-## <a name="microsoftenterpriseknowledgegraph"></a>微软.企业知识图
+## <a name="microsoftenterpriseknowledgegraph"></a>EnterpriseKnowledgeGraph
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
@@ -812,12 +812,12 @@ ms.locfileid: "80804786"
 > | ------------- | ----------- | ---------- |
 > | domains | 是 | 是 |
 > | eventSubscriptions | 否 - 无法独立移动，但会自动随已订阅的资源移动。 | 否 - 无法独立移动，但会自动随已订阅的资源移动。 |
-> | 事件订阅 | 否 - 无法独立移动，但会自动随已订阅的资源移动。 | 否 - 无法独立移动，但会自动随已订阅的资源移动。 |
-> | 扩展主题 | 否 | 否 |
-> | 合作伙伴命名空间 | 是 | 是 |
-> | 合作伙伴注册 | 否 | 否 |
-> | 合作伙伴主题 | 是 | 是 |
-> | 系统主题 | 是 | 是 |
+> | eventsubscriptions | 否 - 无法独立移动，但会自动随已订阅的资源移动。 | 否 - 无法独立移动，但会自动随已订阅的资源移动。 |
+> | extensiontopics | 否 | 否 |
+> | partnernamespaces | 是 | 是 |
+> | partnerregistrations | 否 | 否 |
+> | partnertopics | 是 | 是 |
+> | systemtopics | 是 | 是 |
 > | topics | 是 | 是 |
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
@@ -828,14 +828,14 @@ ms.locfileid: "80804786"
 > | clusters | 是 | 是 |
 > | namespaces | 是 | 是 |
 
-## <a name="microsoftexperimentation"></a>微软.实验
+## <a name="microsoftexperimentation"></a>Microsoft 试验
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 实验工作区 | 否 | 否 |
+> | experimentworkspaces | 否 | 否 |
 
-## <a name="microsoftfalcon"></a>微软.法尔肯
+## <a name="microsoftfalcon"></a>Falcon
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
@@ -847,19 +847,19 @@ ms.locfileid: "80804786"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | accounts | 否 | 否 |
+> | 帐户 | 否 | 否 |
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 自动管理帐户 | 否 | 否 |
-> | 自动托管vm配置文件 | 否 | 否 |
-> | 来宾配置分配 | 否 | 否 |
+> | automanagedaccounts | 否 | 否 |
+> | automanagedvmconfigurationprofiles | 否 | 否 |
+> | guestconfigurationassignments | 否 | 否 |
 > | software | 否 | 否 |
-> | 软件更新配置文件 | 否 | 否 |
-> | 软件更新 | 否 | 否 |
+> | softwareupdateprofile | 否 | 否 |
+> | softwareupdates | 否 | 否 |
 
 ## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
 
@@ -867,7 +867,7 @@ ms.locfileid: "80804786"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | hanainstances | 否 | 否 |
-> | 皂监测器 | 是 | 是 |
+> | sapmonitors | 是 | 是 |
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 
@@ -881,7 +881,7 @@ ms.locfileid: "80804786"
 >
 > 将 HDInsight 群集移到新的订阅时，首先移动其他资源（如存储帐户）。 然后移动 HDInsight 群集本身。
 
-## <a name="microsofthealthcareapis"></a>微软.医疗保健Apis
+## <a name="microsofthealthcareapis"></a>HealthcareApis
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
@@ -893,8 +893,8 @@ ms.locfileid: "80804786"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 机器 | 是 | 是 |
-> | 机器/扩展 | 否 | 否 |
+> | 造 | 是 | 是 |
+> | 计算机/扩展 | 否 | 否 |
 
 ## <a name="microsofthybriddata"></a>Microsoft.HybridData
 
@@ -903,13 +903,13 @@ ms.locfileid: "80804786"
 > | ------------- | ----------- | ---------- |
 > | datamanagers | 是 | 是 |
 
-## <a name="microsofthydra"></a>微软.海德拉
+## <a name="microsofthydra"></a>Hydra
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | components | 否 | 否 |
-> | 网络范围 | 否 | 否 |
+> | networkscopes | 否 | 否 |
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 
@@ -930,29 +930,29 @@ ms.locfileid: "80804786"
 > | baseline | 否 | 否 |
 > | calculatebaseline | 否 | 否 |
 > | components | 是 | 是 |
-> | 数据收集规则 | 否 | 否 |
-> | 诊断设置 | 否 | 否 |
-> | 诊断设置类别 | 否 | 否 |
+> | datacollectionrules | 否 | 否 |
+> | diagnosticsettings | 否 | 否 |
+> | diagnosticsettingscategories | 否 | 否 |
 > | eventtypes | 否 | 否 |
-> | 扩展诊断设置 | 否 | 否 |
+> | extendeddiagnosticsettings | 否 | 否 |
 > | guestdiagnosticsettings | 否 | 否 |
-> | 日志定义 | 否 | 否 |
+> | logdefinitions | 否 | 否 |
 > | 日志 | 否 | 否 |
 > | metricalerts | 否 | 否 |
-> | 公制基线 | 否 | 否 |
-> | 指标定义 | 否 | 否 |
-> | 指标命名空间 | 否 | 否 |
+> | metricbaselines | 否 | 否 |
+> | metricdefinitions | 否 | 否 |
+> | metricnamespaces | 否 | 否 |
 > | 指标 | 否 | 否 |
-> | 我的工作手册 | 否 | 否 |
+> | myworkbooks | 否 | 否 |
 > | notificationgroups | 否 | 否 |
-> | 私人链接镜 | 是 | 是 |
+> | privatelinkscopes | 是 | 是 |
 > | scheduledqueryrules | 是 | 是 |
 > | 拓扑 | 否 | 否 |
 > | 事务 | 否 | 否 |
-> | vminsights 上板状态 | 否 | 否 |
+> | vminsightsonboardingstatuses | 否 | 否 |
 > | webtests | 是 | 是 |
 > | workbooks | 是 | 是 |
-> | 工作簿模板 | 是 | 是 |
+> | workbooktemplates | 是 | 是 |
 
 > [!IMPORTANT]
 > 确保移到新订阅时，不会超出[订阅配额](azure-subscription-service-limits.md#azure-monitor-limits)。
@@ -983,12 +983,12 @@ ms.locfileid: "80804786"
 > [!IMPORTANT]
 > 用于磁盘加密的 Key Vault 不能移到同一订阅中的资源组，也不能跨订阅移动。
 
-## <a name="microsoftkubernetes"></a>微软.库伯内斯
+## <a name="microsoftkubernetes"></a>Kubernetes
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 连接的群集 | 否 | 否 |
+> | connectedclusters | 否 | 否 |
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
@@ -1009,14 +1009,14 @@ ms.locfileid: "80804786"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | accounts | 否 | 否 |
+> | 帐户 | 否 | 否 |
 
 ## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | accounts | 否 | 否 |
+> | 帐户 | 否 | 否 |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
@@ -1026,7 +1026,7 @@ ms.locfileid: "80804786"
 > | hostingenvironments | 否 | 否 |
 > | integrationaccounts | 是 | 是 |
 > | integrationserviceenvironments | 是 | 否 |
-> | 集成服务环境/托管 | 是 | 否 |
+> | integrationserviceenvironments / managedapis | 是 | 否 |
 > | isolatedenvironments | 否 | 否 |
 > | workflows | 是 | 是 |
 
@@ -1051,19 +1051,19 @@ ms.locfileid: "80804786"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | accounts | 否 | 否 |
+> | 帐户 | 否 | 否 |
 > | 帐户/工作区 | 否 | 否 |
-> | 帐户/ 工作区 / 项目 | 否 | 否 |
+> | 帐户/工作区/项目 | 否 | 否 |
 > | teamaccounts | 否 | 否 |
-> | 团队帐户/工作区 | 否 | 否 |
-> | 团队帐户 / 工作区 / 项目 | 否 | 否 |
+> | teamaccounts/工作区 | 否 | 否 |
+> | teamaccounts/工作区/项目 | 否 | 否 |
 
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | accounts | 否 | 否 |
+> | 帐户 | 否 | 否 |
 
 ## <a name="microsoftmachinelearningoperationalization"></a>Microsoft.MachineLearningOperationalization
 
@@ -1080,14 +1080,14 @@ ms.locfileid: "80804786"
 > | workspaces | 否 | 否 |
 > | 工作区/计算 | 否 | 否 |
 
-## <a name="microsoftmaintenance"></a>微软.维护
+## <a name="microsoftmaintenance"></a>Microsoft. 维护
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 应用更新 | 否 | 否 |
-> | 配置分配 | 否 | 否 |
-> | 维护配置 | 是 | 是 |
+> | applyupdates | 否 | 否 |
+> | configurationassignments | 否 | 否 |
+> | maintenanceconfigurations | 是 | 是 |
 > | 更新 | 否 | 否 |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
@@ -1098,14 +1098,14 @@ ms.locfileid: "80804786"
 > | 标识 | 否 | 否 |
 > | userassignedidentities | 否 | 否 |
 
-## <a name="microsoftmanagednetwork"></a>微软.托管网络
+## <a name="microsoftmanagednetwork"></a>ManagedNetwork
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 托管网络 | 否 | 否 |
-> | 托管网络/托管网络组 | 否 | 否 |
-> | 托管网络/托管网络对等策略 | 否 | 否 |
+> | managednetworks | 否 | 否 |
+> | managednetworks / managednetworkgroups | 否 | 否 |
+> | managednetworks / managednetworkpeeringpolicies | 否 | 否 |
 > | 通知 | 否 | 否 |
 
 ## <a name="microsoftmanagedservices"></a>Microsoft.ManagedServices
@@ -1113,16 +1113,16 @@ ms.locfileid: "80804786"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 注册分配 | 否 | 否 |
-> | 注册定义 | 否 | 否 |
+> | registrationassignments | 否 | 否 |
+> | registrationdefinitions | 否 | 否 |
 
 ## <a name="microsoftmaps"></a>Microsoft.Maps
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | accounts | 是 | 是 |
-> | 账户/私人地图集 | 是 | 是 |
+> | 帐户 | 是 | 是 |
+> | 帐户/privateatlases | 是 | 是 |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 
@@ -1140,12 +1140,12 @@ ms.locfileid: "80804786"
 > | mediaservices/liveevents | 是 | 是 |
 > | mediaservices/streamingendpoints | 是 | 是 |
 
-## <a name="microsoftmicroservices4spring"></a>微软.微服务4春天
+## <a name="microsoftmicroservices4spring"></a>Microservices4Spring
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 应用群集 | 否 | 否 |
+> | appclusters | 否 | 否 |
 
 ## <a name="microsoftmigrate"></a>Microsoft.Migrate
 
@@ -1154,7 +1154,7 @@ ms.locfileid: "80804786"
 > | ------------- | ----------- | ---------- |
 > | assessmentprojects | 是 | 是 |
 > | migrateprojects | 是 | 是 |
-> | 移动集合 | 否 | 否 |
+> | movecollections | 否 | 否 |
 > | projects | 否 | 否 |
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
@@ -1163,11 +1163,11 @@ ms.locfileid: "80804786"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | netappaccounts | 否 | 否 |
-> | 网络应用帐户/备份策略 | 否 | 否 |
-> | 网络应用帐户/容量池 | 否 | 否 |
-> | 网络应用帐户 / 容量池 / 卷 | 否 | 否 |
-> | 网络应用帐户 / 容量池 / 卷 / 装载目标 | 否 | 否 |
-> | 网络应用帐户 / 容量池 / 卷 / 快照 | 否 | 否 |
+> | netappaccounts / backuppolicies | 否 | 否 |
+> | netappaccounts / capacitypools | 否 | 否 |
+> | netappaccounts/capacitypools/卷 | 否 | 否 |
+> | netappaccounts/capacitypools/卷集/mounttargets | 否 | 否 |
+> | netappaccounts/capacitypools/卷/快照 | 否 | 否 |
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
@@ -1185,26 +1185,26 @@ ms.locfileid: "80804786"
 > | dnszones | 是 | 是 |
 > | expressroutecircuits | 否 | 否 |
 > | expressroutegateways | 否 | 否 |
-> | 防火墙策略 | 是 | 是 |
+> | firewallpolicies | 是 | 是 |
 > | frontdoors | 否 | 否 |
 > | frontdoorwebapplicationfirewallpolicies | 否 | 否 |
-> | ip组 | 是 | 是 |
+> | ipgroups | 是 | 是 |
 > | loadbalancers | 是 - 基本 SKU<br>否 - 标准 SKU | 是 - 基本 SKU<br>否 - 标准 SKU |
 > | localnetworkgateways | 是 | 是 |
 > | natgateways | 是 | 是 |
-> | 网络实验配置文件 | 是 | 是 |
+> | networkexperimentprofiles | 是 | 是 |
 > | networkintentpolicies | 是 | 是 |
 > | networkinterfaces | 是 | 是 |
 > | networkprofiles | 否 | 否 |
 > | networksecuritygroups | 是 | 是 |
 > | networkwatchers | 是 | 否 |
 > | networkwatchers/connectionmonitors | 是 | 否 |
-> | 网络观察器/流量日志 | 是 | 否 |
+> | networkwatchers / flowlogs | 是 | 否 |
 > | networkwatchers/pingmeshes | 是 | 否 |
 > | p2svpngateways | 否 | 否 |
 > | privatednszones | 是 | 是 |
 > | privatednszones/virtualnetworklinks | 是 | 是 |
-> | 私有端点重定向映射 | 否 | 否 |
+> | privateendpointredirectmaps | 否 | 否 |
 > | privateendpoints | 是 | 是 |
 > | privatelinkservices | 否 | 否 |
 > | publicipaddresses | 是 - 基本 SKU<br>否 - 标准 SKU | 是 - 基本 SKU<br>否 - 标准 SKU |
@@ -1217,10 +1217,10 @@ ms.locfileid: "80804786"
 > | virtualnetworkgateways | 是 | 是 |
 > | virtualnetworks | 是 | 是 |
 > | virtualnetworktaps | 否 | 否 |
-> | 虚拟路由器 | 是 | 是 |
+> | virtualrouters | 是 | 是 |
 > | virtualwans | 否 | 否 |
 > | vpngateways（虚拟 WAN） | 否 | 否 |
-> | vpnserver 配置 | 否 | 否 |
+> | vpnserverconfigurations | 否 | 否 |
 > | vpnsites（虚拟 WAN） | 否 | 否 |
 > | webapplicationfirewallpolicies | 是 | 是 |
 
@@ -1235,12 +1235,12 @@ ms.locfileid: "80804786"
 > | namespaces | 是 | 是 |
 > | namespaces/notificationhubs | 是 | 是 |
 
-## <a name="microsoftobjectstore"></a>微软.对象商店
+## <a name="microsoftobjectstore"></a>ObjectStore
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 名称空间 | 是 | 是 |
+> | osnamespaces | 是 | 是 |
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 
@@ -1248,7 +1248,7 @@ ms.locfileid: "80804786"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | clusters | 否 | 否 |
-> | 存储洞察配置 | 否 | 否 |
+> | storageinsightconfigs | 否 | 否 |
 > | workspaces | 是 | 是 |
 
 > [!IMPORTANT]
@@ -1264,22 +1264,22 @@ ms.locfileid: "80804786"
 > | solutions | 是 | 是 |
 > | 视图 | 是 | 是 |
 
-## <a name="microsoftpeering"></a>微软.对等
+## <a name="microsoftpeering"></a>Microsoft。对等互连
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | 对等互连 | 是 | 是 |
-> | 对等服务 | 否 | 否 |
+> | peeringservices | 否 | 否 |
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 策略事件 | 否 | 否 |
-> | 策略状态 | 否 | 否 |
-> | 策略跟踪资源 | 否 | 否 |
+> | policyevents | 否 | 否 |
+> | policystates | 否 | 否 |
+> | policytrackedresources | 否 | 否 |
 > | remediations | 否 | 否 |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
@@ -1310,28 +1310,28 @@ ms.locfileid: "80804786"
 > | ------------- | ----------- | ---------- |
 > | capacities | 是 | 是 |
 
-## <a name="microsoftprojectbabylon"></a>微软.项目巴比隆
+## <a name="microsoftprojectbabylon"></a>ProjectBabylon
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | accounts | 否 | 否 |
+> | 帐户 | 否 | 否 |
 
 ## <a name="microsoftprojectoxford"></a>Microsoft.ProjectOxford
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | accounts | 否 | 否 |
+> | 帐户 | 否 | 否 |
 
-## <a name="microsoftproviderhub"></a>微软.供应商中心
+## <a name="microsoftproviderhub"></a>ProviderHub
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | rollouts | 否 | 否 |
 
-## <a name="microsoftquantum"></a>微软.昆腾
+## <a name="microsoftquantum"></a>Microsoft 量子
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
@@ -1343,19 +1343,19 @@ ms.locfileid: "80804786"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 备份保护项目 | 否 | 否 |
-> | 复制资格结果 | 否 | 否 |
+> | backupprotecteditems | 否 | 否 |
+> | replicationeligibilityresults | 否 | 否 |
 > | vaults | 是 | 是 |
 
 > [!IMPORTANT]
 > 请参阅[恢复服务移动指南](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)。
 
-## <a name="microsoftredhatopenshift"></a>微软.红帽开放移位
+## <a name="microsoftredhatopenshift"></a>RedHatOpenShift
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 开放式移位群集 | 否 | 否 |
+> | openshiftclusters | 否 | 否 |
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
@@ -1376,9 +1376,9 @@ ms.locfileid: "80804786"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 可用性状态 | 否 | 否 |
-> | 儿童可用性状态 | 否 | 否 |
-> | 儿童资源 | 否 | 否 |
+> | availabilitystatuses | 否 | 否 |
+> | childavailabilitystatuses | 否 | 否 |
+> | childresources | 否 | 否 |
 > | 活动 | 否 | 否 |
 > | 通知 | 否 | 否 |
 
@@ -1387,8 +1387,8 @@ ms.locfileid: "80804786"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 部署脚本 | 否 | 否 |
-> | 链接 | 否 | 否 |
+> | deploymentscripts | 否 | 否 |
+> | links | 否 | 否 |
 > | 标记 | 否 | 否 |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
@@ -1413,18 +1413,18 @@ ms.locfileid: "80804786"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 自适应网络硬化 | 否 | 否 |
-> | 高级威胁保护设置 | 否 | 否 |
-> | 评估元数据 | 否 | 否 |
+> | adaptivenetworkhardenings | 否 | 否 |
+> | advancedthreatprotectionsettings | 否 | 否 |
+> | assessmentmetadata | 否 | 否 |
 > | assessments | 否 | 否 |
 > | automations | 是 | 是 |
-> | 合规结果 | 否 | 否 |
-> | 合规性 | 否 | 否 |
-> | 数据收集器 | 否 | 否 |
-> | 设备安全组 | 否 | 否 |
-> | 信息保护政策 | 否 | 否 |
+> | complianceresults | 否 | 否 |
+> | 符合性要求 | 否 | 否 |
+> | datacollectionagents | 否 | 否 |
+> | devicesecuritygroups | 否 | 否 |
+> | informationprotectionpolicies | 否 | 否 |
 > | iotsecuritysolutions | 是 | 是 |
-> | 服务器漏洞评估 | 否 | 否 |
+> | servervulnerabilityassessments | 否 | 否 |
 
 ## <a name="microsoftsecurityinsights"></a>Microsoft.SecurityInsights
 
@@ -1433,15 +1433,15 @@ ms.locfileid: "80804786"
 > | ------------- | ----------- | ---------- |
 > | aggregations | 否 | 否 |
 > | alertrules | 否 | 否 |
-> | 警报规则模板 | 否 | 否 |
+> | alertruletemplates | 否 | 否 |
 > | 书签 | 否 | 否 |
 > | cases | 否 | 否 |
-> | 数据连接器 | 否 | 否 |
-> | 数据连接器检查要求 | 否 | 否 |
+> | dataconnectors | 否 | 否 |
+> | dataconnectorscheckrequirements | 否 | 否 |
 > | 实体 | 否 | 否 |
-> | 实体查询 | 否 | 否 |
-> | 事件 | 否 | 否 |
-> | 办公室同意 | 否 | 否 |
+> | entityqueries | 否 | 否 |
+> | 发生 | 否 | 否 |
+> | officeconsents | 否 | 否 |
 > | 设置 | 否 | 否 |
 
 ## <a name="microsoftservermanagement"></a>Microsoft.ServerManagement
@@ -1487,7 +1487,7 @@ ms.locfileid: "80804786"
 > | 机密 | 是 | 是 |
 > | volumes | 是 | 是 |
 
-## <a name="microsoftservices"></a>微软.服务
+## <a name="microsoftservices"></a>Microsoft. 服务
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
@@ -1501,12 +1501,12 @@ ms.locfileid: "80804786"
 > | ------------- | ----------- | ---------- |
 > | signalr | 是 | 是 |
 
-## <a name="microsoftsoftwareplan"></a>微软.软件计划
+## <a name="microsoftsoftwareplan"></a>SoftwarePlan
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 杂交优势 | 否 | 否 |
+> | hybridusebenefits | 否 | 否 |
 
 ## <a name="microsoftsolutions"></a>Microsoft.Solutions
 
@@ -1528,8 +1528,8 @@ ms.locfileid: "80804786"
 > | servers | 是 | 是 |
 > | servers/databases | 是 | 是 |
 > | servers/elasticpools | 是 | 是 |
-> | 服务器/作业帐户 | 是 | 是 |
-> | 服务器/作业台 | 是 | 是 |
+> | 服务器/jobaccounts | 是 | 是 |
+> | 服务器/jobagents | 是 | 是 |
 > | virtualclusters | 是 | 是 |
 
 > [!IMPORTANT]
@@ -1557,7 +1557,7 @@ ms.locfileid: "80804786"
 > | ------------- | ----------- | ---------- |
 > | storageaccounts | 是 | 是 |
 
-## <a name="microsoftstoragecache"></a>微软.存储缓存
+## <a name="microsoftstoragecache"></a>StorageCache
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
@@ -1611,14 +1611,14 @@ ms.locfileid: "80804786"
 > | environments/eventsources | 否 | 否 |
 > | instances | 否 | 否 |
 > | 实例/环境 | 否 | 否 |
-> | 实例/环境/事件源 | 否 | 否 |
+> | 实例/环境/eventsources | 否 | 否 |
 
 ## <a name="microsoftsubscription"></a>Microsoft.Subscription
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 创建订阅 | 否 | 否 |
+> | createsubscription | 否 | 否 |
 
 ## <a name="microsoftsupport"></a>microsoft.support
 
@@ -1627,13 +1627,13 @@ ms.locfileid: "80804786"
 > | ------------- | ----------- | ---------- |
 > | supporttickets | 否 | 否 |
 
-## <a name="microsoftsynapse"></a>微软.Synapse
+## <a name="microsoftsynapse"></a>Synapse
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | workspaces | 否 | 否 |
-> | 工作区/大数据池 | 否 | 否 |
+> | 工作区/bigdatapools | 否 | 否 |
 > | 工作区/sqlpools | 否 | 否 |
 
 ## <a name="microsoftterraformoss"></a>Microsoft.TerraformOSS
@@ -1653,7 +1653,7 @@ ms.locfileid: "80804786"
 > | environments/eventsources | 是 | 是 |
 > | environments/referencedatasets | 是 | 是 |
 
-## <a name="microsofttoken"></a>微软.令牌
+## <a name="microsofttoken"></a>Microsoft Token
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
@@ -1674,34 +1674,34 @@ ms.locfileid: "80804786"
 > | ------------- | ----------- | ---------- |
 > | account | 否 | 否 |
 > | 帐户/扩展 | 是 | 是 |
-> | 帐户/ 项目 | 是 | 是 |
+> | 帐户/项目 | 是 | 是 |
 
 > [!IMPORTANT]
-> 要更改 Azure DevOps 的订阅，请参阅[更改用于计费 的 Azure 订阅](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)。
+> 若要更改 Azure DevOps 的订阅，请参阅[更改用于计费的 Azure 订阅](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)。
 
-## <a name="microsoftvmwarecloudsimple"></a>微软.VMware云简单
+## <a name="microsoftvmwarecloudsimple"></a>VMwareCloudSimple
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 专用云节点 | 否 | 否 |
-> | 专用云服务 | 否 | 否 |
+> | dedicatedcloudnodes | 否 | 否 |
+> | dedicatedcloudservices | 否 | 否 |
 > | virtualmachines | 否 | 否 |
 
-## <a name="microsoftvnfmanager"></a>微软.Vnf管理器
+## <a name="microsoftvnfmanager"></a>VnfManager
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | devices | 否 | 否 |
-> | 文夫斯 | 否 | 否 |
+> | 设备 | 否 | 否 |
+> | vnfs | 否 | 否 |
 
-## <a name="microsoftvsonline"></a>微软.VSOnline
+## <a name="microsoftvsonline"></a>VSOnline
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | accounts | 是 | 是 |
+> | 帐户 | 是 | 是 |
 > | plans | 是 | 是 |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
@@ -1714,22 +1714,22 @@ ms.locfileid: "80804786"
 > | connections | 是 | 是 |
 > | customapis | 是 | 是 |
 > | hostingenvironments | 否 | 否 |
-> | 库贝环境 | 是 | 是 |
+> | kubeenvironments | 是 | 是 |
 > | serverfarms | 是 | 是 |
 > | sites | 是 | 是 |
 > | sites/premieraddons | 是 | 是 |
 > | sites/slots | 是 | 是 |
-> | 静态站点 | 否 | 否 |
+> | staticsites | 否 | 否 |
 
 > [!IMPORTANT]
 > 请参阅[应用服务移动指南](./move-limitations/app-service-move-limitations.md)。
 
-## <a name="microsoftwindowsesu"></a>微软.视窗
+## <a name="microsoftwindowsesu"></a>WindowsESU
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 多活化密钥 | 否 | 否 |
+> | multipleactivationkeys | 否 | 否 |
 
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
 
@@ -1744,9 +1744,9 @@ ms.locfileid: "80804786"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | components | 否 | 否 |
-> | 监视器实例 | 否 | 否 |
+> | monitorinstances | 否 | 否 |
 > | monitors | 否 | 否 |
-> | 通知设置 | 否 | 否 |
+> | notificationsettings | 否 | 否 |
 
 ## <a name="third-party-services"></a>第三方服务
 

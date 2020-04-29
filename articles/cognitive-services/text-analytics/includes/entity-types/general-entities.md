@@ -1,5 +1,5 @@
 ---
-title: 一般命名实体
+title: 常规命名实体
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,96 +9,96 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
 ms.openlocfilehash: ba516a548fc8385ca86526a7f2dd082b27e53208
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77211426"
 ---
 ## <a name="general-entity-types"></a>常规实体类型：
 
 ### <a name="person"></a>人员
 
-在文本中识别人员姓名。
+识别文本中的人员姓名。
 
 语言：
-* 公共预览： `Arabic` `Czech`、 `Chinese-Simplified` `Danish`、 `Dutch` `English`、 `Finnish` `French` `German` `Hungarian` `Italian` `Japanese` `Korean` `Norwegian (Bokmål)` `Polish`、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 `Portuguese (Portugal)` `Portuguese (Brazil)` `Russian` `Spanish` `Swedish``Turkish`
+* 公共预览版： `Arabic`、 `Czech`、 `Chinese-Simplified`、 `Danish`、 `Dutch`、 `English` `Finnish` `French` `German` `Hungarian` `Italian` `Japanese` `Swedish` 、、 `Korean`、、、、、、、、、、、和`Norwegian (Bokmål)` `Polish` `Portuguese (Portugal)` `Portuguese (Brazil)` `Russian` `Spanish``Turkish`
 
-| 子类型名称 | 描述                                                      | 可从模型版本开始 |
+| 子类型名称 | 说明                                                      | 开始使用模型版本 |
 |--------------|------------------------------------------------------------------|---------------------------------------|
-| 空值          | 识别人员姓名，例如`Bill Gates`，`Marie Curie` | `2019-10-01`                          | 
+| 不可用          | 识别的人员姓名，例如`Bill Gates``Marie Curie` | `2019-10-01`                          | 
 
-### <a name="persontype"></a>人员类型
-工作类型或人员担任的角色。
+### <a name="persontype"></a>PersonType
+人员持有的作业类型或角色。
 
 语言：
-* 公共预览：`English`
+* 公共预览版：`English`
 
-| 子类型名称 | 描述                                                                                | 可从模型版本开始 |
+| 子类型名称 | 说明                                                                                | 开始使用模型版本 |
 |--------------|--------------------------------------------------------------------------------------------|----------------------------------------|
-| 空值          | 作业类型，例如`civil engineer` `salesperson`， `chef` `librarian`， ， 、 、 、`nursing aide` | `2020-02-01`                           |
+| 不可用          | `civil engineer`作业类型例如`salesperson`，、 `chef`、、 `librarian``nursing aide` | `2020-02-01`                           |
 
 ### <a name="location"></a>位置
 
-自然和人为的地标、结构、地理特征和地缘政治实体。
+自然和人工特征点、结构、地理功能和地缘政治实体。
 
 语言：
 
-* 公共预览： `Arabic` `Czech`、 `Chinese-Simplified` `Danish`、 `Dutch` `English`、 `Finnish` `French` `German` `Hungarian` `Italian` `Japanese` `Korean` `Norwegian (Bokmål)` `Polish`、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 `Portuguese (Portugal)` `Portuguese (Brazil)` `Russian` `Spanish` `Swedish``Turkish`
+* 公共预览版： `Arabic`、 `Czech`、 `Chinese-Simplified`、 `Danish`、 `Dutch`、 `English` `Finnish` `French` `German` `Hungarian` `Italian` `Japanese` `Swedish` 、、 `Korean`、、、、、、、、、、、和`Norwegian (Bokmål)` `Polish` `Portuguese (Portugal)` `Portuguese (Brazil)` `Russian` `Spanish``Turkish`
 
-| 子类型名称              | 描述                                                                              | 可从模型版本开始 |
+| 子类型名称              | 说明                                                                              | 开始使用模型版本 |
 |---------------------------|------------------------------------------------------------------------------------------|----------------------------------------|
-| 空值                       | 位置，例如`Atlantic Ocean`， `library` `Eiffel Tower`，`Statue of Liberty`  | `2019-10-01`                           |
-| 地缘政治实体 （GPE） - 仅限英语| 城市、国家/地区、州`Seattle`等`Pennsylvania` `South Africa`， 、`Tokyo` | `2020-02-01`                           |
+| 不可用                       | 位置，例如`Atlantic Ocean` `library`，、 `Eiffel Tower`、`Statue of Liberty`  | `2019-10-01`                           |
+| 地缘政治实体（GPE）-仅限英语| 城市、国家/地区、省`Seattle`/ `Pennsylvania`市`South Africa`/自治区，例如，、、`Tokyo` | `2020-02-01`                           |
 
 ### <a name="organization"></a>组织  
 
-公认的组织、公司、机构和其他群体。 例如：公司、政治团体、乐队、体育俱乐部、政府机构和公共组织。 民族和宗教不包括在此实体类型中。 
+认识到的组织、公司、机构和其他人组。 例如：公司、政治组、音乐带、运动俱乐部、政府机构和公共组织。 各族和 religions 不包含在此实体类型中。 
 
 语言： 
 
-* 公共预览： `Arabic` `Czech`、 `Chinese-Simplified` `Danish`、 `Dutch` `English`、 `Finnish` `French` `German` `Hungarian` `Italian` `Japanese` `Korean` `Norwegian (Bokmål)` `Polish`、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 、 `Portuguese (Portugal)` `Portuguese (Brazil)` `Russian` `Spanish` `Swedish``Turkish`
+* 公共预览版： `Arabic`、 `Czech`、 `Chinese-Simplified`、 `Danish`、 `Dutch`、 `English` `Finnish` `French` `German` `Hungarian` `Italian` `Japanese` `Swedish` 、、 `Korean`、、、、、、、、、、、和`Norwegian (Bokmål)` `Polish` `Portuguese (Portugal)` `Portuguese (Brazil)` `Russian` `Spanish``Turkish`
 
-| 子类型名称 | 描述                                                                                             | 可从模型版本开始 |
+| 子类型名称 | 说明                                                                                             | 开始使用模型版本 |
 |--------------|---------------------------------------------------------------------------------------------------------|----------------------------------------|
-| 空值          | 组织，例如`Microsoft`， `NASA` `National Oceanic and Atmospheric Administration``VOA` | `2019-10-01`                           |
+| 不可用          | 组织，例如`Microsoft` `NASA`，、 `National Oceanic and Atmospheric Administration`、`VOA` | `2019-10-01`                           |
 
 ### <a name="event"></a>事件  
 
-历史、社会和自然事件。  
+历史事件、社交事件和自然事件。  
 
 语言： 
 
-* 公共预览：`English`
+* 公共预览版：`English`
 
-| 子类型名称 | 描述                                                            | 可从模型版本开始 |
+| 子类型名称 | 说明                                                            | 开始使用模型版本 |
 |--------------|------------------------------------------------------------------------|----------------------------------------|
-| 空值          | 事件，如`wedding` `hurricane`， `car accident` `solar eclipse`， ，`American Revolution` | `2020-02-01`                           |
+| 不可用          | 事件`wedding`，例如、 `hurricane` `car accident`、、 `solar eclipse`、`American Revolution` | `2020-02-01`                           |
 
 ### <a name="product"></a>Products  
 
-不同类别的物理对象。  
+各种类别的物理对象。  
 
 语言： 
 
-* 公共预览：`English`
+* 公共预览版：`English`
 
-| 子类型名称 | 描述                                                                        | 可从模型版本开始 |
+| 子类型名称 | 说明                                                                        | 开始使用模型版本 |
 |--------------|------------------------------------------------------------------------------------|----------------------------------------|
-| 空值          | `Microsoft Surface laptop`例如， `sunglasses`、 `motorcycle`、 `bag`、 、`Xbox` | `2020-02-01`                           |
+| 不可用          | 例如`Microsoft Surface laptop` `sunglasses`，、、 `motorcycle`、、 `bag``Xbox` | `2020-02-01`                           |
 | 计算    | `Azure Cosmos DB`, `Azure Kubernetes Service`                                     | `2020-02-01`                           |
 
 ### <a name="skill"></a>技能  
 
-描述能力或专业知识的实体。  
+描述功能或专业知识的实体。  
 
 语言： 
 
-* 公共预览：`English`
+* 公共预览版：`English`
 
-| 子类型名称 | 描述                                                                 | 可从模型版本开始 |
+| 子类型名称 | 说明                                                                 | 开始使用模型版本 |
 |--------------|-----------------------------------------------------------------------------|----------------------------------------|
-| 空值          | `nursing`, `data mining`, `linguistics`, `critical thinking`, `photography` | `2020-02-01`                           |
+| 不可用          | `nursing`, `data mining`, `linguistics`, `critical thinking`, `photography` | `2020-02-01`                           |
 
 ### <a name="phone-number"></a>电话号码
 
@@ -106,11 +106,11 @@ ms.locfileid: "77211426"
 
 语言：
 
-* 公共预览：`English`
+* 公共预览版：`English`
 
-| 子类型名称 | 描述                                    | 可从模型版本开始 |
+| 子类型名称 | 说明                                    | 开始使用模型版本 |
 |--------------|------------------------------------------------|----------------------------------------|
-| 空值          | 美国电话号码，例如`(312) 555-0176` | `2019-10-01`                           |
+| 不可用          | 美国电话号码，例如`(312) 555-0176` | `2019-10-01`                           |
 
 ### <a name="email"></a>电子邮件
 
@@ -118,50 +118,50 @@ ms.locfileid: "77211426"
 
 语言：
 
-* 公共预览：`English`
+* 公共预览版：`English`
 
-| 子类型名称 | 描述                                      | 可从模型版本开始 |
+| 子类型名称 | 说明                                      | 开始使用模型版本 |
 |--------------|--------------------------------------------------|----------------------------------------|
-| 空值          | 电子邮件地址，例如`support@contoso.com` | `2019-10-01`                           |
+| 不可用          | 电子邮件地址，例如`support@contoso.com` | `2019-10-01`                           |
 
 ### <a name="url"></a>代码
 
-互联网网址。
+Internet Url。
 
 语言：
 
-* 公共预览：`English`
+* 公共预览版：`English`
 
-| 子类型名称 | 描述                                          | 可从模型版本开始 |
+| 子类型名称 | 说明                                          | 开始使用模型版本 |
 |--------------|------------------------------------------------------|----------------------------------------|
-| 空值          | 网址到网站，例如`https://www.bing.com` | `2019-10-01`                           |
+| 不可用          | 指向网站的 Url，例如`https://www.bing.com` | `2019-10-01`                           |
 
 ### <a name="ip-address"></a>IP 地址
 
-互联网协议地址
+Internet 协议地址
 
 语言：
 
-* 公共预览：`English`
+* 公共预览版：`English`
 
-| 子类型名称 | 描述                              | 可从模型版本开始 |
+| 子类型名称 | 说明                              | 开始使用模型版本 |
 |--------------|------------------------------------------|----------------------------------------|
-| 空值          | 例如网络地址`10.0.0.101` | `2019-10-01`                           |
+| 不可用          | 示例的网络地址`10.0.0.101` | `2019-10-01`                           |
 
 ###  <a name="datetime"></a>DateTime
 
 日期和时间实体。 
 
-* 可从模型版本开始`2019-10-01`
+* 开始使用模型版本`2019-10-01`
 
 语言：
 
-* 公共预览： `Chinese-Simplified` `English`、 `French` `German` 、 和`Spanish`
+* 公共预览版： `Chinese-Simplified`、 `English`、 `French` `German`和`Spanish`
 
 | 子类型名称    | 示例                     |
 |-------------|------------------------------|
-| 空值         | `6:30PM February 4, 2012`, `4/1/2011 2:45`                   |
-| Date  | `May 2nd, 2017`, `05/02/2017`       |
+| 不可用         | `6:30PM February 4, 2012`, `4/1/2011 2:45`                   |
+| 日期  | `May 2nd, 2017`, `05/02/2017`       |
 | 时间     | `8:15`, `6AM`              |
 | DateRange    | `August 2nd to August 5th`         |
 | TimeRange   | `4-6PM`, `10:00AM to Noon`          |
@@ -170,17 +170,17 @@ ms.locfileid: "77211426"
 
 ###  <a name="quantity"></a>数量
 
-数字和数字数量。 
+数字和数字。 
 
-* 可从模型版本开始`2019-10-01`
+* 开始使用模型版本`2019-10-01`
 
 语言：
 
-* 公共预览： `Chinese-Simplified` `English`、 `French` `German` 、 和`Spanish`
+* 公共预览版： `Chinese-Simplified`、 `English`、 `French` `German`和`Spanish`
 
 | 子类型名称    | 示例                     |
 |-------------|------------------------------|
-| Number         | `6`, `six`                   |
+| 数字         | `6`, `six`                   |
 | 百分比  | `50%`, `fifty percent`       |
 | Ordinal     | `2nd`, `second`              |
 | 年龄         | `90 day old`, `30 years old` |

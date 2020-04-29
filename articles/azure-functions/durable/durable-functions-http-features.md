@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
 ms.openlocfilehash: fece1155d2f707f11dda9f3896bd8a08deff1557
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80802377"
 ---
 # <a name="http-features"></a>HTTP 功能
@@ -89,7 +89,7 @@ Retry-After: 10
 
 ### <a name="async-operation-tracking"></a>异步操作跟踪
 
-前面提到的 HTTP 响应旨在通过 Durable Functions 实现长时间运行的 HTTP 异步 API。 此模式有时称为“轮询使用者模式”。** 客户端/服务器流工作方式如下：
+前面提到的 HTTP 响应旨在通过 Durable Functions 实现长时间运行的 HTTP 异步 API。 此模式有时称为“轮询使用者模式”。  客户端/服务器流工作方式如下：
 
 1. 客户端发出 HTTP 请求，以启动长时间运行的进程，例如业务流程协调程序函数。
 1. 目标 HTTP 触发器返回 HTTP 202 响应，其中包含值为“statusQueryGetUri”的 Location 标头。
@@ -112,7 +112,7 @@ Retry-After: 10
 
 从 Durable Functions 2.0 开始，业务流程原生可以通过[业务流程触发器绑定](durable-functions-bindings.md#orchestration-trigger)来使用 HTTP API。
 
-以下示例代码显示发出出站 HTTP 请求的协调器函数：
+以下示例代码演示了一个发出出站 HTTP 请求的业务流程协调程序函数：
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -258,7 +258,7 @@ module.exports = df.orchestrator(function*(context) {
 
 可以使用 [Azure Functions .NET 依赖项注入](https://docs.microsoft.com/azure/azure-functions/functions-dotnet-dependency-injection)来自定义业务流程内部 HTTP 客户端的行为。 此功能可用于做出轻微的行为更改。 使用此功能还可以通过注入 mock 对象，来对 HTTP 客户端进行单元测试。
 
-下面的示例演示使用依赖项注入来禁用对调用外部 HTTP 终结点的协调器函数的 TLS/SSL 证书验证。
+下面的示例演示如何使用依赖关系注入禁用调用外部 HTTP 终结点的业务流程协调程序函数的 TLS/SSL 证书验证。
 
 ```csharp
 public class Startup : FunctionsStartup

@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: e5c015751e8b0aeed7bd84086cc4f65c234fdb41
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745309"
 ---
 # <a name="connect-to-synapse-sql-pool"></a>连接到 Synapse SQL 池
@@ -24,10 +24,10 @@ ms.locfileid: "80745309"
 
 ## <a name="find-your-server-name"></a>查找服务器名称
 
-以下示例中的服务器名称sqlpoolservername.database.windows.net。 若要查找完全限定的服务器名称，请执行以下操作：
+以下示例中的服务器名称为 sqlpoolservername.database.windows.net。 若要查找完全限定的服务器名称，请执行以下操作：
 
 1. 转到 [Azure 门户](https://portal.azure.com)。
-2. 单击**Azure 同步分析**。
+2. 单击 " **Azure Synapse 分析**"。
 3. 单击要连接到的 SQL 池。
 4. 找到完整的服务器名称。
 
@@ -35,9 +35,9 @@ ms.locfileid: "80745309"
 
 ## <a name="supported-drivers-and-connection-strings"></a>支持的驱动程序和连接字符串
 
-SQL 池[ADO.NET](/dotnet/framework/data/adonet?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)支持[ADO.NET、ODBC、PHP](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)和[JDBC。](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [PHP](/sql/connect/php/overview-of-the-php-sql-driver?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 单击前述的某个驱动程序，查找最新版本和文档。
+SQL 池支持[ADO.NET](/dotnet/framework/data/adonet?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)、 [ODBC](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、 [PHP](/sql/connect/php/overview-of-the-php-sql-driver?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)和[JDBC](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。 单击前述的某个驱动程序，查找最新版本和文档。
 
-若要自动生成通过 Azure 门户使用的驱动程序的连接字符串，请单击前述示例中的“显示数据库连接字符串”****。 下面也是一些示例，说明了每个驱动程序的连接字符串的样式。
+若要自动生成通过 Azure 门户使用的驱动程序的连接字符串，请单击前述示例中的“显示数据库连接字符串”  。 下面也是一些示例，说明了每个驱动程序的连接字符串的样式。
 
 > [!NOTE]
 > 请考虑将连接超时值设置为 300 秒，以便连接可以经受住短时间内不可用。
@@ -68,15 +68,15 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="connection-settings"></a>连接设置
 
-SQL 池在连接和对象创建期间标准化某些设置。 这些设置不能重写，其中包括：
+SQL 池在连接和创建对象期间标准化一些设置。 这些设置不能重写，其中包括：
 
-| 数据库设置 | 值 |
+| 数据库设置 | Value |
 |:--- |:--- |
-| [ANSI_NULLS](/sql/t-sql/statements/set-ansi-nulls-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |ON |
-| [QUOTED_IDENTIFIERS](/sql/t-sql/statements/set-quoted-identifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |ON |
+| [ANSI_NULLS](/sql/t-sql/statements/set-ansi-nulls-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |开 |
+| [QUOTED_IDENTIFIERS](/sql/t-sql/statements/set-quoted-identifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |开 |
 | [DATEFORMAT](/sql/t-sql/statements/set-dateformat-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |mdy |
 | [DATEFIRST](/sql/t-sql/statements/set-datefirst-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |7 |
 
 ## <a name="next-steps"></a>后续步骤
 
-若要使用 Visual Studio 进行连接和查询，请参阅 [Query with Visual Studio](sql-data-warehouse-query-visual-studio.md)（使用 Visual Studio 进行查询）。 要了解有关身份验证选项的详细信息，请参阅[Azure 同步分析的身份验证](sql-data-warehouse-authentication.md)。
+若要使用 Visual Studio 进行连接和查询，请参阅[使用 Visual Studio 进行查询](sql-data-warehouse-query-visual-studio.md)。 若要详细了解身份验证选项，请参阅[Azure Synapse Analytics 身份验证](sql-data-warehouse-authentication.md)。

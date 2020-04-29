@@ -1,24 +1,24 @@
 ---
-title: 为统一设置远程渲染
+title: 为 Unity 设置远程渲染
 description: 如何在 Unity 项目中初始化 Azure 远程呈现
 author: jakrams
 ms.author: jakras
 ms.date: 02/27/2020
 ms.topic: how-to
 ms.openlocfilehash: 0415c0e7ee1432521c3cc2026feff5fc2a41d77e
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681137"
 ---
-# <a name="set-up-remote-rendering-for-unity"></a>为统一设置远程渲染
+# <a name="set-up-remote-rendering-for-unity"></a>为 Unity 设置远程渲染
 
-为了在 Unity 中启用 Azure 远程呈现 （ARR），我们提供专门的方法，用于处理一些特定于 Unity 的方面。
+若要在 Unity 中启用 Azure 远程呈现（ARR），我们提供了专门的方法来处理某些特定于 Unity 的方面。
 
 ## <a name="startup-and-shutdown"></a>启动和关闭
 
-要初始化远程渲染，`RemoteManagerUnity`请使用 。 此类调用泛型`RemoteManager`，但已为您实现特定于 Unity 的详细信息。 例如，Unity 使用特定的坐标系。 调用`RemoteManagerUnity.Initialize`时，将设置适当的约定。 该呼叫还要求您提供 Unity 摄像机，该摄像机应用于显示远程呈现的内容。
+若要初始化远程呈现， `RemoteManagerUnity`请使用。 此类调入到泛型`RemoteManager` ，但已经实现了 Unity 特定的详细信息。 例如，Unity 使用特定的坐标系统。 调用`RemoteManagerUnity.Initialize`时，将设置适当的约定。 调用还要求提供 Unity 摄像机，此照相机应用于显示远程呈现的内容。
 
 ```cs
 // initialize Azure Remote Rendering for use in Unity:
@@ -29,15 +29,15 @@ RemoteManagerUnity.InitializeManager(clientInit);
 
 对于关闭远程渲染，请调用`RemoteManagerStatic.ShutdownRemoteRendering()`。
 
-创建`AzureSession`并选择 作为主呈现会话后，必须将其注册到`RemoteManagerUnity`：
+`AzureSession`创建并选择作为主呈现会话之后，必须向注册它`RemoteManagerUnity`：
 
 ```cs
 RemoteManagerUnity.CurrentSession = ...
 ```
 
-### <a name="full-example-code"></a>完整示例代码
+### <a name="full-example-code"></a>完整的示例代码
 
-以下代码演示了在 Unity 中初始化 Azure 远程呈现所需的所有步骤：
+下面的代码演示了在 Unity 中初始化 Azure 远程呈现所需的所有步骤：
 
 ```cs
 // initialize Remote Rendering
@@ -62,21 +62,21 @@ session.ConnectToRuntime(new ConnectToRuntimeParams());
 RemoteManagerStatic.ShutdownRemoteRendering();
 ```
 
-## <a name="convenience-functions"></a>便利功能
+## <a name="convenience-functions"></a>便利性函数
 
 ### <a name="session-state-events"></a>会话状态事件
 
-`RemoteManagerUnity.OnSessionUpdate`发出会话状态更改时的事件，有关详细信息，请参阅代码文档。
+`RemoteManagerUnity.OnSessionUpdate`在事件的会话状态发生更改时发出事件，有关详细信息，请参阅代码文档。
 
-### <a name="arrserviceunity"></a>ARR服务团结
+### <a name="arrserviceunity"></a>ARRServiceUnity
 
-`ARRServiceUnity`是简化设置和会话管理的可选组件。 它包含在编辑器中退出应用程序或播放模式时自动停止其会话的选项，以及在需要时自动续订会话租约。 它缓存会话属性等数据（请参阅其`LastProperties`变量），并公开会话状态更改和会话错误的事件。
+`ARRServiceUnity`是一个可选组件，用于简化设置和会话管理。 它包含一些选项，可用于在应用程序退出时自动停止其会话，或者在编辑器中退出播放模式，以及在需要时自动续订会话租约。 它会缓存数据（例如会话属性`LastProperties` ），并为会话状态更改和会话错误公开事件。
 
-一次不能有多个实例`ARRServiceUnity`。 它旨在通过实现一些常见功能来加快您入门速度。 然而，对于一个更大的应用程序，最好自己做这些事情。
+一次不能有一个以上的`ARRServiceUnity`实例。 它旨在让你快速入门，因为它实现了一些通用功能。 对于更大的应用程序，可能更愿意自己执行这些操作。
 
 有关如何设置和使用`ARRServiceUnity`的示例，请参阅[教程：从头开始设置 Unity 项目](../../tutorials/unity/project-setup.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [安装远程呈现包以进行统一](install-remote-rendering-unity-package.md)
+* [安装 Unity 的远程渲染包](install-remote-rendering-unity-package.md)
 * [教程：从头开始设置 Unity 项目](../../tutorials/unity/project-setup.md)

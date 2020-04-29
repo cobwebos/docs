@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
 ms.openlocfilehash: 496ee1bc97f6b72e09a62ae3491af7ccc7328583
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80811109"
 ---
 # <a name="azure-network-security-overview"></a>Azure 网络安全概述
@@ -128,7 +128,7 @@ Azure 网络支持在虚拟网络上为流量自定义路由行为。 由此可�
 * 应用程序访问控制
 * 其他 DDoS 防护（除了 Azure 结构自身提供的 DDoS 防护以外）
 
-可以使用 Azure 合作伙伴解决方案访问这些增强的网络安全功能。 您可以通过访问[Azure 应用商店](https://azure.microsoft.com/marketplace/)和搜索"安全"和"网络安全"来查找最新的 Azure 合作伙伴网络安全解决方案。
+可以使用 Azure 合作伙伴解决方案访问这些增强的网络安全功能。 通过访问[Azure Marketplace](https://azure.microsoft.com/marketplace/)并搜索 "安全" 和 "网络安全"，可以找到最新的 azure 合作伙伴网络安全解决方案。
 
 ## <a name="azure-firewall"></a>Azure 防火墙
 
@@ -158,9 +158,9 @@ Azure 网络支持以下安全远程访问方案：
 
 你可能想要让各个开发者或操作人员在 Azure 中管理虚拟机和服务。 例如，假设需要访问虚拟网络上的虚拟机。 但你的安全策略不允许 RDP 或 SSH 远程访问单独的虚拟机。 在这种情况下，可以使用[点到站点 VPN](../../vpn-gateway/point-to-site-about.md) 连接。
 
-点到站点 VPN 连接允许你在用户和虚拟网络之间设置专用的安全连接。 建立 VPN 连接后，用户可通过 VPN 链接将 RDP 或 SSH 连接到虚拟网络上的任何虚拟机。 （这假定用户可以进行身份验证并授权。点到站点 VPN 支持：
+点到站点 VPN 连接允许你在用户和虚拟网络之间设置专用的安全连接。 建立 VPN 连接后，用户可通过 VPN 链接将 RDP 或 SSH 连接到虚拟网络上的任何虚拟机。 （假定用户可以进行身份验证和授权。）点到站点 VPN 支持：
 
-* 安全套接字隧道协议 (SSTP)，这是一种基于 SSL 的专属协议。 SSL VPN 解决方案可以穿透防火墙，因为大多数防火墙都打开 TCP 端口 443，TLS/SSL 使用。 只有 Windows 设备支持 SSTP。 Azure 支持所有采用 SSTP 的 Windows 版本（Windows 7 和更高版本）。
+* 安全套接字隧道协议 (SSTP)，这是一种基于 SSL 的专属协议。 SSL VPN 解决方案可以穿透防火墙，因为大多数防火墙都打开了 TLS/SSL 使用的 TCP 端口443。 只有 Windows 设备支持 SSTP。 Azure 支持所有采用 SSTP 的 Windows 版本（Windows 7 和更高版本）。
 
 * IKEv2 VPN，这是一种基于标准的 IPsec VPN 解决方案。 IKEv2 VPN 可用于从 Mac 设备进行连接（OSX 10.11 和更高版本）。
 
@@ -168,7 +168,7 @@ Azure 网络支持以下安全远程访问方案：
 
 了解详细信息：
 
-* [使用 PowerShell 配置指向虚拟网络的点对点连接](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
+* [使用 PowerShell 配置与虚拟网络的点到站点连接](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
 ### <a name="connect-your-on-premises-network-to-a-virtual-network-with-a-vpn"></a>通过 VPN 将本地网络连接到虚拟网络
 
@@ -178,7 +178,7 @@ Azure 网络支持以下安全远程访问方案：
 
 了解详细信息：
 
-* [使用 Azure 门户使用站点到站点 VPN 连接创建资源管理器 VNet](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [使用 Azure 门户创建具有站点到站点 VPN 连接的资源管理器 VNet](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 * [关于 VPN 网关](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
 
 ### <a name="connect-your-on-premises-network-to-a-virtual-network-with-a-dedicated-wan-link"></a>通过专用的 WAN 链接将本地网络连接到虚拟网络
@@ -202,7 +202,7 @@ Azure 网络支持以下安全远程访问方案：
 
 一个选择是通过 Internet 以“环回”方式将一个虚拟网络上的服务连接到另一个虚拟网络上的服务。 该连接将在一个虚拟网络上开始，通过 Internet，再回到目标虚拟网络。 此选项会导致连接存在任何基于 Internet 的通信所固有的安全问题。
 
-创建两个虚拟网络之间相互连接的站点到站点 VPN 可能是最佳选择。 此方法使用与上述跨站点到站点 VPN 连接相同的[IPSec 隧道模式](https://technet.microsoft.com/library/cc786385.aspx)协议。
+创建两个虚拟网络之间相互连接的站点到站点 VPN 可能是最佳选择。 此方法使用与上面提到的跨界站点到站点 VPN 连接相同的[IPSec 隧道模式](https://technet.microsoft.com/library/cc786385.aspx)协议。
 
 此方法的优点是通过 Azure 网络结构建立 VPN 连接，而不是通过 Internet 进行连接。 与通过 Internet 连接的站点到站点 VPN 相比，这提供了额外的安全层。
 
@@ -232,7 +232,7 @@ Azure 网络支持以下安全远程访问方案：
 Azure 应用程序网关为基于 Web 的服务提供了基于 HTTP 的负载均衡。 应用程序网关支持：
 
 * 基于 Cookie 的会话关联。 此功能可确保建立到负载均衡器后面的某个服务器的连接在客户端和服务器之间保持不变。 此操作确保了事务的稳定性。
-* TLS 卸载。 当客户端与负载均衡器连接时，该会话将使用 HTTPS （TLS） 协议进行加密。 但是，为了提高性能，可以使用 HTTP（未加密）协议在负载均衡器和该负载均衡器后面的 Web 服务器之间进行连接。 这称为"TLS 卸载"，因为负载均衡器后面的 Web 服务器不会遇到加密所涉及的处理器开销。 因此 Web 服务器可更快地为请求提供服务。
+* TLS 卸载。 当客户端与负载均衡器连接时，该会话将使用 HTTPS （TLS）协议进行加密。 但是，为了提高性能，可以使用 HTTP（未加密）协议在负载均衡器和该负载均衡器后面的 Web 服务器之间进行连接。 这称为 "TLS 卸载"，因为负载均衡器后面的 web 服务器不会遇到加密所涉及的处理器开销。 因此 Web 服务器可更快地为请求提供服务。
 * 基于 URL 的内容路由。 此功能可使负载均衡器决定在哪里转接基于目标 URL 的连接。 与基于 IP 地址做出负载均衡决策的解决方案相比，这提供了更多的灵活性。
 
 了解详细信息：
@@ -310,7 +310,7 @@ Azure 以 Azure DNS 的形式提供一个高可用性且高性能的外部 DNS �
 
 了解详细信息：
 
-* [微软云服务与网络安全](network-best-practices.md)
+* [Microsoft 云服务和网络安全](network-best-practices.md)
 
 ## <a name="azure-ddos-protection"></a>Azure DDoS 防护
 
@@ -322,10 +322,10 @@ Microsoft 提供“基本”DDoS 防护作为 Azure 平台的一部分。**** �
 * **始终可用的流量监控：** 应用程序流量模式将全天候受到监控，以寻找 DDoS 攻击的迹象。 将在超出保护策略范围时执行缓解措施。
 * **攻击缓解报表** 攻击缓解报表使用聚合的网络流数据提供有关针对你的资源的攻击的详细信息。
 * **攻击缓解流日志** 通过攻击缓解流日志，可在活动 DDoS 攻击期间近乎实时地查看丢弃的流量、转发的流量和其他攻击数据。
-* **自适应调谐：** 智能流量分析可以了解应用程序的流量，并选择和更新最适合您的服务的配置文件。 当流量随时间变化时，配置文件将进行调整。 第 3 层到第 7 层保护：与 Web 应用程序防火墙配合使用时，提供完整的堆栈 DDoS 保护。
+* **自适应优化：** 智能流量分析了解应用程序在一段时间内的流量，并选择和更新最适合服务的配置文件。 当流量随时间变化时，配置文件将进行调整。 第 3 层到第 7 层保护：与 Web 应用程序防火墙配合使用时，提供完整的堆栈 DDoS 保护。
 * **广泛的缓解规模：** 可以使用全球容量缓解超过 60 种不同攻击类型，从而防止最大的已知 DDoS 攻击。
 * **攻击指标：** 可以通过 Azure Monitor 访问每个攻击的汇总指标。
-* **攻击警报：** 警报可以在攻击的开始和停止以及攻击持续时间内使用内置攻击指标进行配置。 警报集成到操作软件中，如 Microsoft Azure 监视器日志、Splunk、Azure 存储、电子邮件和 Azure 门户。
+* **攻击警报：** 可以使用内置攻击指标在攻击开始和停止时以及攻击持续期间配置警报。 警报集成到操作软件，如 Microsoft Azure 监视日志、Splunk、Azure 存储、电子邮件和 Azure 门户。
 * **成本保证：** 记录的 DDoS 攻击的数据传输和应用程序横向扩展服务信用度。
 * **DDoS 快速响应** DDoS 防护标准版客户可以在攻击正在进行时联系“快速响应”团队。 DRR 可以帮助进行攻击调查，在攻击发生期间定制缓解措施以及进行攻击后分析。
 
@@ -336,7 +336,7 @@ Microsoft 提供“基本”DDoS 防护作为 Azure 平台的一部分。**** �
 
 ## <a name="azure-front-door"></a>Azure Front Door
 
-使用 Azure Front Door 服务，你可以定义、管理和监视 Web 流量的全局路由。 它可以优化流量的路由以实现最佳性能和高可用性。 Azure Front Door 允许编写自定义 Web 应用程序防火墙 (WAF) 规则进行访问控制，以基于客户端 IP 地址、国家/地区代码和 http 参数来防范 HTTP/HTTPS 工作负荷遭到恶意利用。 此外，前门还使您能够创建速率限制规则来打击恶意机器人流量，它包括 TLS 卸载和每个 HTTP/HTTPS 请求、应用程序层处理。
+使用 Azure Front Door 服务，你可以定义、管理和监视 Web 流量的全局路由。 它可以优化流量的路由以实现最佳性能和高可用性。 Azure Front Door 允许编写自定义 Web 应用程序防火墙 (WAF) 规则进行访问控制，以基于客户端 IP 地址、国家/地区代码和 http 参数来防范 HTTP/HTTPS 工作负荷遭到恶意利用。 此外，前门还允许您创建速率限制规则来分担恶意 bot 流量，包括 TLS 卸载和每个 HTTP/HTTPS 请求、应用层处理。
 
 Front Door 平台本身由 Azure DDoS 防护基本版提供保护。 若要进一步提供保护，可在 VNET 中启用 Azure DDoS 防护标准版，并通过自动优化和缓解措施来防范资源遭到网络层 (TCP/UDP) 攻击。 Front Door 是第 7 层反向代理，它仅允许 Web 流量通过后端服务器，默认会阻止其他类型的流量。
 
@@ -367,7 +367,7 @@ Azure 网络观察程序 可帮助进行排除故障，并提供一套全新的�
 若要深入了解网络观察程序以及如何开始测试实验室中的一些功能，请参阅 [Azure 网络观察程序监视概述](../../network-watcher/network-watcher-monitoring-overview.md)。
 
 > [!NOTE]
-> 有关此服务的可用性和状态的最新通知，请查看[Azure 更新页](https://azure.microsoft.com/updates/?product=network-watcher)。
+> 有关此服务可用性和状态的最新通知，请查看[Azure 更新页](https://azure.microsoft.com/updates/?product=network-watcher)。
 
 ### <a name="azure-security-center"></a>Azure 安全中心
 
@@ -402,4 +402,4 @@ Azure 安全中心帮助预防、检测和响应威胁，同时提高 Azure 资�
 还可以使用功能强大的数据可视化工具 [Microsoft Power BI](https://powerbi.microsoft.com/what-is-power-bi/) 来查看和分析这些日志。
 了解详细信息：
 
-* [网络安全组 （NSG） 的 Azure 监视器日志](../../virtual-network/virtual-network-nsg-manage-log.md)
+* [网络安全组（Nsg）的 Azure Monitor 日志](../../virtual-network/virtual-network-nsg-manage-log.md)

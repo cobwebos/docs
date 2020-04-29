@@ -1,6 +1,6 @@
 ---
 title: 工作负荷管理
-description: 在 Azure 同步分析中实现工作负载管理的指导。
+description: 在 Azure Synapse Analytics 中实施工作负荷管理的指南。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: dd867d4aa9a9ef5ed73e78a46826a8cd5239039b
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80744232"
 ---
 # <a name="what-is-workload-management"></a>什么是工作负荷管理？
@@ -38,11 +38,11 @@ ms.locfileid: "80744232"
 
 ## <a name="workload-management-concepts"></a>工作负荷管理的概念
 
-过去，对于 Azure Synaps 中的 SQL 分析，您可以通过[资源类](resource-classes-for-workload-management.md)管理查询性能。  使用资源类可以根据角色成员身份将内存分配给查询。  使用资源类的主要难题在于，一旦配置，就会缺少监管，或者无法控制工作负荷。  
+过去，对于 Azure Synapse 中的 SQL Analytics，你通过[资源类](resource-classes-for-workload-management.md)管理了查询性能。  使用资源类可以根据角色成员身份将内存分配给查询。  使用资源类的主要难题在于，一旦配置，就会缺少监管，或者无法控制工作负荷。  
 
 例如，如果将一个临时用户角色成员身份授予 smallrc，则允许该用户使用系统上的所有内存。  使用资源类时无法预留资源，也无法确保关键工作负荷有可用的资源。
 
-Azure Synapse 中的突触 SQL 池工作负载管理由三个高级概念组成：[工作负载分类](sql-data-warehouse-workload-classification.md)、[工作负载重要性](sql-data-warehouse-workload-importance.md)和[工作负载隔离](sql-data-warehouse-workload-isolation.md)。  这些功能可让你更好地控制工作负荷如何利用系统资源。
+Azure Synapse 中的 Synapse SQL 池工作负荷管理包括三个高级概念：[工作负荷分类](sql-data-warehouse-workload-classification.md)、[工作负荷重要性](sql-data-warehouse-workload-importance.md)和[工作负荷隔离](sql-data-warehouse-workload-isolation.md)。  这些功能可让你更好地控制工作负荷如何利用系统资源。
 
 工作负荷分类的概念是指将请求分配到工作负荷组并设置重要性级别。  过去，这种分配是使用 [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class) 通过角色成员身份实现的。  现在可以通过[创建工作负荷分类器](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)来实现。  分类功能提供更丰富的一组选项（例如标签、会话和时间）来对请求进行分类。
 
@@ -55,4 +55,4 @@ Azure Synapse 中的突触 SQL 池工作负载管理由三个高级概念组成�
 - 有关工作负荷分类的详细信息，请参阅[工作负荷分类](sql-data-warehouse-workload-classification.md)。  
 - 有关工作负荷隔离的详细信息，请参阅[工作负荷隔离](sql-data-warehouse-workload-isolation.md)。  
 - 有关工作负荷重要性的详细信息，请参阅[工作负荷重要性](sql-data-warehouse-workload-importance.md)。  
-- 有关工作负载管理监视的详细信息，请参阅[工作负载管理门户监视](sql-data-warehouse-workload-management-portal-monitor.md)。  
+- 有关工作负荷管理监视的详细信息，请参阅[工作负荷管理门户监视](sql-data-warehouse-workload-management-portal-monitor.md)。  

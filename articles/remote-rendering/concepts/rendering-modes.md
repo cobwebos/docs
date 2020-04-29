@@ -6,51 +6,51 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.openlocfilehash: 7f2b1031659864ae338bb0aa320c048ea23c21f3
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681696"
 ---
 # <a name="rendering-modes"></a>渲染模式
 
-远程渲染提供了两种主要操作模式：**基于切片的合成**模式和**深度合成**模式。 这些模式确定工作负载如何分布在服务器上的多个 GPU 中。 必须在连接时指定该模式，并且在运行时无法更改。
+远程呈现提供两种主要的操作模式： **TileBasedComposition**模式和**DepthBasedComposition**模式。 这些模式决定了如何在服务器上的多个 Gpu 之间分布工作负荷。 此模式必须在连接时指定，并且在运行时无法更改。
 
-这两种模式都有优势，但也具有固有的功能限制，因此选择最合适的模式是特定于用例的。
+这两种模式都具有优势，但也具有固有的功能限制，因此选择最适合的模式是使用方案特定的。
 
 ## <a name="modes"></a>模式
 
 现在更详细地讨论了这两种模式。
 
-### <a name="tilebasedcomposition-mode"></a>"基于"切片的合成"模式
+### <a name="tilebasedcomposition-mode"></a>\ "TileBasedComposition" 模式
 
-在**基于磁贴的合成**模式下，每个涉及的 GPU 都会在屏幕上渲染特定的子矩形（切片）。 主 GPU 在以视频帧形式发送到客户端之前，从切片中组成最终图像。 因此，所有 GPU 都需要具有相同的资源进行渲染，因此加载的资产需要适合单个 GPU 的内存。
+在**TileBasedComposition**模式下，每个涉及的 GPU 在屏幕上呈现特定 subrectangles （磁贴）。 主 GPU 在将磁贴作为视频帧发送到客户端之前，从磁贴中编写最终映像。 相应地，所有 Gpu 都需要有一组相同的资源用于呈现，因此，已加载的资产需要容纳到一个 GPU 的内存中。
 
-此模式下的渲染质量略好于**深度基合成**模式，因为 MSAA 可以针对每个 GPU 处理完整的几何集。 以下屏幕截图显示，防锯齿同样适用于两个边：
+在此模式下，呈现质量比在**DepthBasedComposition**模式下稍微好些，因为 MSAA 可对每个 GPU 使用整套几何。 以下屏幕截图显示了这两种边缘的抗锯齿操作：
 
-![基于切片的合成中的 MSAA](./media/service-render-mode-quality.png)
+![TileBasedComposition 中的 MSAA](./media/service-render-mode-quality.png)
 
-此外，在此模式下，每个部件都可以切换到透明材质，或通过[分层状态覆盖组件](../overview/features/override-hierarchical-state.md)切换到**透明**模式
+此外，在此模式下，每个部分都可以切换到透明材料，或通过[HierarchicalStateOverrideComponent](../overview/features/override-hierarchical-state.md)切换到**查看**模式。
 
-### <a name="depthbasedcomposition-mode"></a>"深度组合"模式
+### <a name="depthbasedcomposition-mode"></a>\ "DepthBasedComposition" 模式
 
-在**深度基于的合成**模式下，每个涉及的 GPU 以全屏分辨率呈现，但仅呈现一个网件的子集。 主 GPU 上的最终图像合成可注意根据零件的深度信息正确合并部件。 当然，内存负载分布在 GPU 中，因此允许渲染不适合单个 GPU 内存的模型。
+在**DepthBasedComposition**模式下，每个涉及的 GPU 都以全屏分辨率呈现，而只呈现网格的一部分。 主 GPU 上的最终映像组合会注意到部分按照其深度信息正确地进行了合并。 通常情况下，内存负载分布在 Gpu 上，因此允许呈现无法装入单个 GPU 内存的模型。
 
-每个 GPU 都使用 MSAA 来抗锯齿本地内容。 但是，不同 GPU 的边之间可能存在固有的混叠。 通过后处理最终图像来缓解此效果，但 MSAA 质量仍比**基于磁贴的合成**模式差。
+每个一个 GPU 都使用 MSAA 来消除本地内容。 但是，来自不同 Gpu 的边缘之间可能存在固有的别名。 通过后处理最终映像，但 MSAA 质量仍比在**TileBasedComposition**模式下更糟，这种效果会得到缓解。
 
-MSAA 工件图如下：![基于深度的 MSAA](./media/service-render-mode-balanced.png)
+下图演示了 MSAA 项目： ![DepthBasedComposition 中的 msaa](./media/service-render-mode-balanced.png)
 
-抗锯齿在雕塑和窗帘之间正常工作，因为这两个部分都在同一个 GPU 上渲染。 另一方面，窗帘和墙之间的边缘显示一些别名，因为这两个部分由不同的 GPU 组成。
+消除锯齿在 sculpture 和窗帘之间正常工作，因为这两个部分都呈现在同一 GPU 上。 另一方面，窗帘和墙壁之间的边缘会显示一些别名，因为这两个部分是由不同 Gpu 组成的。
 
-此模式的最大限制是几何零件不能动态切换到透明材质，**而透明**模式也不能适用于[分层状态覆盖组件](../overview/features/override-hierarchical-state.md)。 但是，其他状态覆盖功能（轮廓、颜色色调、...）确实可以正常工作。 此外，在转换时标记为透明的材料在此模式下正常工作。
+此模式的最大限制是，几何图形部分不能动态切换为透明材料，也不能对[HierarchicalStateOverrideComponent](../overview/features/override-hierarchical-state.md)使用 "**查看**" 模式。 不过，其他状态覆盖功能（轮廓、颜色淡色和 ...）确实有效。 此外，在转换时标记为透明的材料在此模式下可以正常工作。
 
 ### <a name="performance"></a>性能
 
-这两种模式的性能特性确实因用例而异，很难推理或提供一般性建议。 如果您不受上述限制（内存或透明度/查看）的限制，建议尝试这两种模式，并使用各种摄像机位置监控性能。
+这两种模式的性能特征根据用例的不同而不同，因此很难或提供一般建议。 如果你不受以上所述的限制（内存或透明度/查看）的约束，则建议尝试这两种模式并使用各种相机位置来监视性能。
 
-## <a name="setting-the-render-mode"></a>设置渲染模式
+## <a name="setting-the-render-mode"></a>设置呈现模式
 
-远程渲染 VM 上使用的渲染模式在`AzureSession.ConnectToRuntime`期间`ConnectToRuntimeParams`通过 指定。
+在中，通过在中`AzureSession.ConnectToRuntime`指定在远程呈现 VM 上使用的`ConnectToRuntimeParams`呈现模式。
 
 ```cs
 async void ExampleConnect(AzureSession session)

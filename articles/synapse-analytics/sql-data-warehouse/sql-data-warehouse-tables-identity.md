@@ -1,6 +1,6 @@
 ---
 title: 使用 IDENTITY 创建代理键
-description: 使用 IDENTITY 属性在 Synapse SQL 池中的表上创建代理项的建议和示例。
+description: 使用 IDENTITY 属性在 Synapse SQL 池中的表上创建代理键的建议和示例。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,15 +12,15 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: e681e8ad655c31d5078b56b8f1a49cfd7c664533
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80742638"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>使用 IDENTITY 在 Synapse SQL 池中创建代理项
+# <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>使用 IDENTITY 在 Synapse SQL 池中创建代理键
 
-使用 IDENTITY 属性在 Synapse SQL 池中的表上创建代理项的建议和示例。
+使用 IDENTITY 属性在 Synapse SQL 池中的表上创建代理键的建议和示例。
 
 ## <a name="what-is-a-surrogate-key"></a>什么是代理键
 
@@ -28,7 +28,7 @@ ms.locfileid: "80742638"
 
 ## <a name="creating-a-table-with-an-identity-column"></a>创建包含 IDENTITY 列的表
 
-IDENTITY 属性旨在横向扩展到 Synapse SQL 池中的所有分布，而不会影响负载性能。 因此，IDENTITY 的实现旨在实现这些目标。
+标识属性设计为在 Synapse SQL 池中的所有分发中横向扩展，而不会影响负载性能。 因此，IDENTITY 的实现旨在实现这些目标。
 
 在首次使用类似以下语句的语法创建表时，可以将表定义为具有 IDENTITY 属性：
 
@@ -50,7 +50,7 @@ WITH
 
 ### <a name="allocation-of-values"></a>值的分配
 
-IDENTITY 属性不保证分配代理值的顺序，这反映了 SQL Server 和 Azure SQL 数据库的行为。 但是，在 Synapse SQL 池中，缺少保证更为明显。
+IDENTITY 属性不保证分配代理值的顺序，这反映了 SQL Server 和 Azure SQL 数据库的行为。 但是，在 Synapse SQL 池中，缺少保证会更明显。
 
 下面的示例进行了说明：
 
@@ -100,7 +100,7 @@ CREATE TABLE AS SELECT (CTAS) 遵循 SELECT..INTO 中记录的相同 SQL Server 
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>将值显式插入到 IDENTITY 列
 
-突触 SQL 池支持`SET IDENTITY_INSERT <your table> ON|OFF`语法。 可以使用此语法将值显式插入 IDENTITY 列。
+Synapse SQL 池支持`SET IDENTITY_INSERT <your table> ON|OFF`语法。 可以使用此语法将值显式插入 IDENTITY 列。
 
 许多数据建模者喜欢在其维度中为某些行使用预定义的负值。 例如，-1 或“未知成员”行。
 
@@ -161,7 +161,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > 在将数据加载到包含 IDENTITY 列的表时，当前无法使用 `CREATE TABLE AS SELECT`。
 >
 
-有关加载数据的详细信息，请参阅为[Synapse SQL 池设计提取、加载和转换 （ELT）](design-elt-data-loading.md)和[加载最佳做法](guidance-for-loading-data.md)。
+有关加载数据的详细信息，请参阅[设计提取、加载和转换（ELT） SYNAPSE SQL 池](design-elt-data-loading.md)和[加载最佳实践](guidance-for-loading-data.md)。
 
 ## <a name="system-views"></a>系统视图
 
@@ -195,9 +195,9 @@ AND     tb.name = 'T1'
 - 当列也同样是分发键时
 - 当表是外部表时
 
-Synapse SQL 池不支持以下相关功能：
+Synapse SQL 池不支持以下相关函数：
 
-- [身份（）](/sql/t-sql/functions/identity-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [IDENTITY()](/sql/t-sql/functions/identity-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [SCOPE_IDENTITY](/sql/t-sql/functions/scope-identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [IDENT_CURRENT](/sql/t-sql/functions/ident-current-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -242,5 +242,5 @@ AND     tb.name = 'T1'
 ## <a name="next-steps"></a>后续步骤
 
 - [表概述](sql-data-warehouse-tables-overview.md)
-- [CREATE TABLE (Transact-SQL) IDENTITY（属性）](/sql/t-sql/statements/create-table-transact-sql-identity-property?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE (Transact-SQL) IDENTITY (Property)](/sql/t-sql/statements/create-table-transact-sql-identity-property?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [DBCC CHECKINDENT](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

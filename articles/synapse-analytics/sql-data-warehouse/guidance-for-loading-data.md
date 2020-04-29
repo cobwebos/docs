@@ -1,5 +1,5 @@
 ---
-title: Synapse SQL 池的数据加载最佳实践
+title: Synapse SQL 池的数据加载最佳做法
 description: 使用 Synapse SQL 池加载数据的建议和性能优化。
 services: synapse-analytics
 author: kevinvngo
@@ -12,23 +12,23 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: e170a789727fb0de36705895245cc638d30ee3d7
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745509"
 ---
 # <a name="best-practices-for-loading-data-using-synapse-sql-pool"></a>使用 Synapse SQL 池加载数据的最佳做法
 
-在本文中，您将了解使用 SQL 池加载数据的建议和性能优化。
+在本文中，你将了解有关使用 SQL 池加载数据的建议和性能优化。
 
 ## <a name="preparing-data-in-azure-storage"></a>在 Azure 存储中准备数据
 
-为了最大程度地减少延迟，请共同定位存储层和 SQL 池。
+若要最大程度地减少延迟，请将存储层和 SQL 池归置。
 
 将数据导出为 ORC 文件格式时，如果存在较大的文本列，可能会收到“Java 内存不足”错误。 若要解决此限制方面的问题，请仅导出列的一个子集。
 
-PolyBase 无法加载具有 1，000，000 字节以上数据的行。 将数据置于 Azure Blob 存储或 Azure Data Lake Store 的文本文件中时，这些数据必须少于 1,000,000 字节。 无论表架构如何，都有此字节限制。
+PolyBase 无法加载数据量超过1000000个字节的行。 将数据置于 Azure Blob 存储或 Azure Data Lake Store 的文本文件中时，这些数据必须少于 1,000,000 字节。 无论表架构如何，都有此字节限制。
 
 所有文件格式有不同的性能特征。 为实现最快加载，请使用压缩的分隔文本文件。 UTF-8 和 UTF-16 之间的性能差异是最小的。
 
@@ -36,7 +36,7 @@ PolyBase 无法加载具有 1，000，000 字节以上数据的行。 将数据�
 
 ## <a name="running-loads-with-enough-compute"></a>使用足够的计算资源运行负载
 
-若要尽量提高加载速度，请一次只运行一个加载作业。 如果不可行，则同时运行最小负载数。 如果预期加载作业会很大，请考虑在加载之前向上扩展 SQL 池。
+若要尽量提高加载速度，请一次只运行一个加载作业。 如果这不可行，请同时运行最小数量的加载。 如果需要较大的加载作业，请考虑在负载前向上扩展 SQL 池。
 
 若要使用适当的计算资源运行负载，请创建指定运行负载的加载用户。 将每个加载用户分配给特定的资源类或工作负荷组。 若要运行负载，请以某个加载用户的身份登录，然后运行该负载。 该负载使用用户的资源类运行。  
 
@@ -52,7 +52,7 @@ PolyBase 无法加载具有 1，000，000 字节以上数据的行。 将数据�
    CREATE LOGIN LoaderRC20 WITH PASSWORD = 'a123STRONGpassword!';
 ```
 
-连接到 SQL 池并创建用户。 以下代码假定您已连接到名为 mySampleDataWarehouse 的数据库。 它演示如何创建名为 LoaderRC20 的用户，并授予用户对数据库的控制权限。 然后，它将用户添加为 staticrc20 数据库角色的成员。  
+连接到 SQL 池并创建用户。 以下代码假定你已连接到名为 mySampleDataWarehouse 的数据库。 它演示如何创建名为 LoaderRC20 的用户，并向用户授予对数据库的 control 权限。 然后，将用户添加为 staticrc20 数据库角色的成员。  
 
 ```sql
    -- Connect to the database
@@ -69,7 +69,7 @@ PolyBase 无法加载具有 1，000，000 字节以上数据的行。 将数据�
 
 ## <a name="allowing-multiple-users-to-load"></a>允许多个用户进行加载
 
-通常需要让多个用户将数据加载到 SQL 池中。 使用 [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 进行加载需要数据库的“控制”权限。  “控制”权限允许对所有架构进行控制性访问。
+通常，需要让多个用户将数据加载到 SQL 池中。 使用 [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 进行加载需要数据库的“控制”权限。  “控制”权限允许对所有架构进行控制性访问。
 
 可能不需要让所有加载用户都具有对所有架构的控制访问权限。 若要限制权限，请使用 DENY CONTROL 语句。
 
@@ -84,9 +84,9 @@ PolyBase 无法加载具有 1，000，000 字节以上数据的行。 将数据�
 
 ## <a name="loading-to-a-staging-table"></a>加载到临时表
 
-要实现将数据移动到 SQL 池表中的最快加载速度，将数据加载到暂存表中。  将临时表定义为堆，并将轮循机制用于分发选项。
+要实现将数据移动到 SQL 池表的最快加载速度，请将数据加载到临时表中。  将临时表定义为堆，并将轮循机制用于分发选项。
 
-请考虑加载通常是一个两步过程，在此过程中，您首先加载到暂存表，然后将数据插入到生产 SQL 池表中。 如果生产表使用哈希分发，在在使用哈希分发来定义临时表的情况下，加载和插入的总时间可能会更短。
+请考虑加载通常是一个两步过程，在此过程中，首先将加载到临时表，然后将数据插入生产 SQL 池表中。 如果生产表使用哈希分发，在在使用哈希分发来定义临时表的情况下，加载和插入的总时间可能会更短。
 
 加载到临时表需要的时间较长，但第二步将行插入到生产表中不会导致数据跨分布区移动。
 
@@ -94,33 +94,33 @@ PolyBase 无法加载具有 1，000，000 字节以上数据的行。 将数据�
 
 列存储索引需要将数据压缩成高质量的行组，因此需要大量的内存。 若要最大程度地提高压缩和索引效率，列存储索引需将最多 1,048,576 行压缩到每个行组中。
 
-存在内存压力时，列存储索引可能无法达到最大压缩率。 此方案反过来会影响查询性能。 若要进行深入了解，请参阅[列存储内存优化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)。
+存在内存压力时，列存储索引可能无法达到最大压缩率。 这反过来会影响查询性能。 若要进行深入了解，请参阅[列存储内存优化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)。
 
 - 若要确保加载用户有足够的内存来实现最大压缩率，请使用属于中大型资源类的加载用户。
 - 加载足够的行，以便完全填充新的行组。 在大容量加载期间，数据会以 1,048,576 行为一个完整的行组直接压缩到列存储中。 不到 102,400 行的加载会将行发送到增量存储中以 B 树索引的形式保存。
 
 > [!NOTE]
-> 如果加载的行太少，则它们可能全部路由到增量存储，并且不会立即压缩为列存储格式。
+> 如果加载的行太少，则可能会路由到增量存储，而不会立即压缩为列存储格式。
 
-## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>使用 SqLBulkCopy API 或 bcp 时增加批处理大小
+## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>使用 SqLBulkCopy API 或 bcp 时增加批大小
 
-使用 PolyBase 加载将提供 SQL 池的最高吞吐量。 如果无法使用 PolyBase 加载，并且必须使用[SqLBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)或[bcp，](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)则应考虑增加批处理大小以提高吞吐量。
+通过 PolyBase 加载将提供 SQL 池的最高吞吐量。 如果无法使用 PolyBase 加载并且必须使用[SQLBULKCOPY API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)或[bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，应考虑增加批大小以提高吞吐量。
 
 > [!TIP]
-> 100 K 到 1M 行之间的批处理大小是确定最佳批处理大小容量的建议基线。
+> 批大小介于 100 K 到1M 行之间是建议用于确定最佳批大小容量的基线。
 
 ## <a name="handling-loading-failures"></a>处理加载失败
 
 使用外部表的加载可能因“查询已中止 -- 从外部源读取时已达最大拒绝阈值”错误而失败。** 此消息表示外部数据包含脏记录。
 
-如果数据记录满足以下条件之一，则视为脏记录：
+如果数据记录满足以下条件之一，则会将数据记录视为脏记录：
 
 - 数据类型和列数与外部表的列定义不匹配。
 - 数据不符合指定的外部文件格式。
 
 若要解决脏记录问题，请确保外部表和外部文件格式定义正确，并且外部数据符合这些定义。
 
-如果外部数据记录的子集是脏的，则可以选择使用["创建外部表"（Transact-SQL）](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)中的拒绝选项来拒绝这些查询记录。
+如果外部数据记录的子集是脏的，可以通过使用[CREATE EXTERNAL TABLE （transact-sql）](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)中的拒绝选项，选择拒绝这些查询记录。
 
 ## <a name="inserting-data-into-a-production-table"></a>将数据插入生产表
 
@@ -130,7 +130,7 @@ PolyBase 无法加载具有 1，000，000 字节以上数据的行。 将数据�
 
 ## <a name="creating-statistics-after-the-load"></a>创建加载后的统计信息
 
-为了改进查询性能，在首次加载数据或者在数据发生重大更改之后，必须针对所有表的所有列创建统计信息。 创建统计信息可以手动完成，也可以启用[AUTO_CREATE_STATISTICS](sql-data-warehouse-tables-statistics.md#automatic-creation-of-statistic)。
+为了改进查询性能，在首次加载数据或者在数据发生重大更改之后，必须针对所有表的所有列创建统计信息。 可以手动执行创建统计信息，也可以启用[AUTO_CREATE_STATISTICS](sql-data-warehouse-tables-statistics.md#automatic-creation-of-statistic)。
 
 有关统计信息的详细说明，请参阅[统计信息](sql-data-warehouse-tables-statistics.md)。 以下示例演示如何针对 Customer_Speed 表的五个列创建统计信息。
 
@@ -150,7 +150,7 @@ create statistics [YearMeasured] on [Customer_Speed] ([YearMeasured]);
 
 对于每个已更改密钥的存储帐户，请发出 [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 命令。
 
-示例：
+例如：
 
 已创建原始密钥
 

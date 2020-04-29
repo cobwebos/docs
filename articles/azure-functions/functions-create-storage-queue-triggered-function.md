@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 10/01/2018
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 98f0290aad9971bdb0c0b265d96e96d8ac34b99d
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80756520"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>创建由 Azure 队列存储触发的函数
@@ -70,7 +70,7 @@ ms.locfileid: "80756520"
 
     ![获取存储帐户连接凭据。](./media/functions-create-storage-queue-triggered-function/functions-storage-account-connection.png)
 
-1. 运行 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)工具，单击左侧的“连接”图标，选择“使用存储帐户名称和密钥”  ，并单击“下一步”  。
+1. 运行 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)工具，单击左侧的“连接”图标，选择“使用存储帐户名称和密钥”****，并单击“下一步”****。
 
     ![运行“存储帐户资源管理器”工具。](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-connect-1.png)
 

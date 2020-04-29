@@ -1,65 +1,65 @@
 ---
 title: 改进知识库 - QnA Maker
-description: 通过积极学习提高知识库的质量。 审核、接受或拒绝，添加而不删除或更改现有问题。
+description: 通过主动学习提高知识库的质量。 查看、接受或拒绝，添加时不删除或更改现有问题。
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: 7fafc23eaf21099ebb974da226d07c351fa19699
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80756745"
 ---
-# <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>在知识库中接受主动学习建议的问题
+# <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>接受知识库中的活动学习建议问题
 
 
 <a name="accept-an-active-learning-suggestion-in-the-knowledge-base"></a>
 
-"活动学习"在批准建议后更改知识库或搜索服务，然后保存并训练。 如果您批准该建议，它将作为备用问题添加。
+活动学习在批准建议后将更改知识库或搜索服务，并保存和训练。 如果你批准此建议，则会将其添加为替代问题。
 
 ## <a name="turn-on-active-learning"></a>启用主动学习
 
-要查看建议的问题，您必须为 QnA Maker 资源[打开主动学习](use-active-learning.md)。
+若要查看建议的问题，必须打开 QnA Maker 资源的[活动学习](use-active-learning.md)。
 
 ## <a name="view-suggested-questions"></a>查看建议的问题
 
-1. 要查看建议的问题，在 **"编辑**知识库"页上，选择 **"查看选项**"，然后选择 **"显示活动学习建议**"。
+1. 若要查看建议的问题，请在 "**编辑**知识库" 页上选择 "**查看选项**"，然后选择 "**显示活动的学习建议**"。
 
-    [![在门户的"编辑"部分，选择"显示建议"以查看活动学习的新问题备选方案。](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
+    [![在门户的 "编辑" 部分中，选择 "显示建议"，以查看活动学习的新问题备选方案。](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
-1. 使用问答对筛选知识库，通过选择 **"按建议筛选"** 来仅显示建议。
+1. 通过选择 "**按建议筛选**" 来使用问题和答案对筛选知识库，以便仅显示建议。
 
-    [![使用"按建议筛选"切换仅查看活动学习建议的问题备选方案。](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
+    [![使用 "按建议筛选" 切换来仅查看活动学习的建议问题备选方案。](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 
-1. 每个 QnA 对都建议使用复选标记的新问题备选方案`✔`，以接受问题或拒绝`x`建议。 选中复选标记可以添加问题。
+1. 每个 QnA 对用复选标记`✔`建议新的问题替代项，以接受问题或`x`拒绝建议。 选中复选标记可以添加问题。
 
-    [![通过选择绿色复选标记或红色删除标记，选择或拒绝活动学习建议的问题备选方案。](../media/improve-knowledge-base/accept-active-learning-suggestions-small.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
+    [![选择或拒绝活动学习的建议问题，方法是选择绿色复选标记或红色删除标记。](../media/improve-knowledge-base/accept-active-learning-suggestions-small.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
-    您可以通过选择 **"添加所有**"或 **"拒绝**上下文工具栏中的所有建议"来添加或删除_所有建议_。
+    您可以通过在上下文工具栏中选择 "**全部添加**" 或 "**全部拒绝**" 来添加或删除_所有建议_。
 
 1. 选择“保存并训练”****，将所做的更改保存到知识库。
 
-1. 选择 **"发布"** 以允许从[生成应答 API](metadata-generateanswer-usage.md#generateanswer-request-configuration)中提供更改。
+1. 选择 "**发布**" 以允许在[GenerateAnswer API](metadata-generateanswer-usage.md#generateanswer-request-configuration)中提供更改。
 
-    当 5 个或更多类似的查询被群集时，每 30 分钟，QnA Maker 会建议您接受或拒绝其他问题。
+    如果有5个或更多个类似查询被聚集，每30分钟 QnA Maker 建议要接受或拒绝的替代问题。
 
 
 <a name="#score-proximity-between-knowledge-base-questions"></a>
 
-### <a name="architectural-flow-for-using-generateanswer-and-train-apis-from-a-bot"></a>用于使用来自自动程序的生成应答和训练 API 的体系结构流
+### <a name="architectural-flow-for-using-generateanswer-and-train-apis-from-a-bot"></a>使用 GenerateAnswer 并通过 bot 训练 Api 的体系结构流
 
-自动程序或其他客户端应用程序应使用以下体系结构流来使用活动学习：
+机器人或其他客户端应用程序应使用以下体系结构流来使用活动学习：
 
-* Bot 使用生成应答 API[从知识库中获取答案](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)，使用`top`属性获取多个答案。
+* 机器人使用 GenerateAnswer API[从知识库获取答案](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)，并使用`top`属性获取多个答案。
 * 机器人确定显式反馈：
-    * 使用您自己的[自定义业务逻辑](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user)，过滤掉低分数。
-    * 在自动程序或客户端应用程序中，显示用户可能的答案列表，并获取用户选择的答案。
-* 机器人使用[训练 API](#train-api)[将选定的答案发送回 QnA 制造商](#bot-framework-sample-code)。
+    * 使用您自己的[自定义业务逻辑](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user)，筛选出低分数。
+    * 在机器人或客户端应用程序中，显示用户的可能答案列表，并获得用户选定的答案。
+* 机器人会[将选择的应答发送回 QnA Maker](#bot-framework-sample-code)的[训练 API](#train-api)。
 
 
-### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>使用"生成应答"请求中的顶部属性获取多个匹配的答案
+### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>使用 GenerateAnswer 请求中的 top 属性获取几个匹配的答案
 
-向 QnA Maker 提交问题以进行回答时，JSON`top`正文的属性将设置要返回的答案数。
+提交问题以 QnA Maker 获取答案时，JSON 正文的`top`属性将设置要返回的应答的数目。
 
 ```json
 {
@@ -69,9 +69,9 @@ ms.locfileid: "80756745"
 }
 ```
 
-### <a name="use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user"></a>使用分数属性以及业务逻辑获取答案列表以显示用户
+### <a name="use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user"></a>使用评分属性以及业务逻辑获取显示用户的答案列表
 
-当客户端应用程序（如聊天机器人）收到响应时，将返回前 3 个问题。 使用`score`属性分析分数之间的邻近程度。 此邻近范围由您自己的业务逻辑决定。
+当客户端应用程序（如聊天机器人）收到响应时，将返回前3个问题。 使用`score`属性可分析分数之间的邻近性。 此邻近范围取决于你自己的业务逻辑。
 
 ```json
 {
@@ -112,13 +112,13 @@ ms.locfileid: "80756745"
 
 ## <a name="client-application-follow-up-when-questions-have-similar-scores"></a>在问题具有相似的分数时的客户应用程序跟进
 
-客户端应用程序显示问题，并允许用户选择最代表其意图_的单一问题_。
+客户端应用程序显示问题，其中包含一个选项，让用户选择最能表示其意图的_单个问题_。
 
-用户选择现有问题之一后，客户端应用程序将使用 QnA Maker 的火车 API 将用户的选择作为反馈发送。 此反馈完成活动学习反馈循环。
+一旦用户选择了一个现有问题，客户端应用程序就会使用 QnA Maker 的训练 API 作为反馈发送用户的选择。 此反馈将完成活动的学习反馈循环。
 
 ## <a name="train-api"></a>训练 API
 
-主动学习反馈通过培训 API POST 请求发送给 QnA 制造商。 API 签名是：
+向训练 API POST 请求发送活动学习反馈 QnA Maker。 API 签名如下：
 
 ```http
 POST https://<QnA-Maker-resource-name>.azurewebsites.net/qnamaker/knowledgebases/<knowledge-base-ID>/train
@@ -130,21 +130,21 @@ Content-Type: application/json
 |HTTP 请求属性|名称|类型|目的|
 |--|--|--|--|
 |URL 路由参数|知识库 ID|字符串|知识库的 GUID。|
-|自定义子域|QnAMaker 资源名称|字符串|资源名称用作 QnA Maker 的自定义子域。 在发布知识库后，"设置"页上提供了此功能。 它被列为 。 `host`|
-|标头|Content-Type|字符串|发送到 API 的正文的媒体类型。 默认值为：`application/json`|
-|标头|授权|字符串|终结点密钥 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
+|自定义子域|QnAMaker 资源名称|字符串|资源名称用作 QnA Maker 的自定义子域。 发布知识库后，可以在 "设置" 页上找到此功能。 它作为列出`host`。|
+|Header|Content-Type|字符串|发送到 API 的正文的媒体类型。 默认值为：`application/json`|
+|Header|Authorization|字符串|终结点密钥 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
 |POST 正文|JSON 对象|JSON|培训反馈|
 
-JSON 正文具有多个设置：
+JSON 正文具有几个设置：
 
 |JSON 正文属性|类型|目的|
 |--|--|--|--|
-|`feedbackRecords`|array|反馈列表。|
-|`userId`|字符串|接受建议问题的人员的用户 ID。 用户 ID 格式由您决定。 例如，电子邮件地址可以是体系结构中的有效用户 ID。 可选。|
+|`feedbackRecords`|数组|反馈列表。|
+|`userId`|字符串|接受建议问题的人员的用户 ID。 用户 ID 格式由您来了解。 例如，电子邮件地址可以是体系结构中的有效用户 ID。 可选。|
 |`userQuestion`|字符串|用户查询的确切文本。 必需。|
-|`qnaID`|数字|问题的 ID，在[生成答案响应](metadata-generateanswer-usage.md#generateanswer-response-properties)中找到。 |
+|`qnaID`|数字|[GenerateAnswer 响应](metadata-generateanswer-usage.md#generateanswer-response-properties)中找到的问题 ID。 |
 
-JSON 正文的示例如下所示：
+示例 JSON 正文如下所示：
 
 ```json
 {
@@ -158,13 +158,13 @@ JSON 正文的示例如下所示：
 }
 ```
 
-成功响应返回状态为 204，没有 JSON 响应机构。
+成功的响应将返回状态204，并且不会返回 JSON 响应正文。
 
-### <a name="batch-many-feedback-records-into-a-single-call"></a>将许多反馈记录批处理为单个呼叫
+### <a name="batch-many-feedback-records-into-a-single-call"></a>成批发送多条反馈记录到一个调用中
 
-在客户端应用程序中（如自动程序），可以存储数据，然后在`feedbackRecords`数组中的单个 JSON 正文中发送许多记录。
+在客户端应用程序（如机器人）中，可以存储数据，然后在`feedbackRecords`数组中的一个 JSON 正文中发送多个记录。
 
-JSON 正文的示例如下所示：
+示例 JSON 正文如下所示：
 
 ```json
 {
@@ -194,16 +194,16 @@ JSON 正文的示例如下所示：
 
 ## <a name="bot-framework-sample-code"></a>机器人框架示例代码
 
-如果用户的查询应用于活动学习，则自动程序框架代码需要调用训练 API。 有两段代码要编写：
+如果用户的查询应该用于活动学习，则机器人框架代码需要调用训练 API。 需要编写两个代码片段：
 
-* 确定是否应将查询用于活动学习
-* 将查询发送回 QnA 制造商的列车 API 以进行主动学习
+* 确定是否应将查询用于主动学习
+* 将查询发送回用于活动学习 QnA Maker 的训练 API
 
-在[Azure 机器人示例中](https://aka.ms/activelearningsamplebot)，这两个活动都已编程。
+在[Azure 机器人示例](https://aka.ms/activelearningsamplebot)中，这两个活动都已进行了编程。
 
-### <a name="example-c-code-for-train-api-with-bot-framework-4x"></a>使用机器人框架 4.x 训练 API 的示例 C# 代码
+### <a name="example-c-code-for-train-api-with-bot-framework-4x"></a>用 Bot Framework 4.x 训练 API 的示例 c # 代码
 
-以下代码说明了如何使用训练 API 将信息发送回 QnA 制造商。
+下面的代码演示如何将信息与训练 API 一起发送回 QnA Maker。
 
 ```csharp
 public class FeedbackRecords
@@ -264,9 +264,9 @@ public async static void CallTrain(string endpoint, FeedbackRecords feedbackReco
 }
 ```
 
-### <a name="example-nodejs-code-for-train-api-with-bot-framework-4x"></a>带有 Bot 框架 4.x 的火车 API 的示例 Node.js 代码
+### <a name="example-nodejs-code-for-train-api-with-bot-framework-4x"></a>用于为 Bot Framework 4.x 定型 API 的示例 Node.js 代码
 
-以下代码说明了如何使用训练 API 将信息发送回 QnA 制造商。
+下面的代码演示如何将信息与训练 API 一起发送回 QnA Maker。
 
 ```javascript
 async callTrain(stepContext){
@@ -307,11 +307,11 @@ async callTrain(stepContext){
 }
 ```
 
-## <a name="active-learning-is-saved-in-the-exported-knowledge-base"></a>主动学习保存在导出的知识库中
+## <a name="active-learning-is-saved-in-the-exported-knowledge-base"></a>活动学习保存在导出的知识库中
 
-当应用启用了活动学习并导出应用时，tsv`SuggestedQuestions`文件中的列将保留活动学习数据。
+当你的应用启用了活动学习并导出应用后，tsv 文件`SuggestedQuestions`中的列将保留活动的学习数据。
 
-该`SuggestedQuestions`列是隐式、`autosuggested`显式反馈和显式`usersuggested`反馈信息的 JSON 对象。 对于单个用户提交的问题，此 JSON 对象的示例`help`是：
+此`SuggestedQuestions`列是隐式、 `autosuggested`和显式`usersuggested`反馈信息的 JSON 对象。 此 JSON 对象的一个示例`help`是，针对的单个用户提交的问题是：
 
 ```JSON
 [
@@ -330,12 +330,12 @@ async callTrain(stepContext){
 ]
 ```
 
-您还可以使用下载更改 API 使用 REST 或任何基于语言的 SDK 来查看这些更改：
+你还可以使用 "下载变更 API" 来查看这些改动，使用 REST 或任何基于语言的 Sdk：
 * [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc)
 * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.alterationsextensions.getasync?view=azure-dotnet)
 
 
-当您重新导入此应用程序时，活动学习将继续收集信息并为您的知识库提供建议。
+当您重新导入此应用程序时，主动学习将继续收集相关信息并为您的知识库提出建议。
 
 
 

@@ -1,7 +1,7 @@
 ---
 title: 命名实体识别支持的类型
 titleSuffix: Azure Cognitive Services
-description: 在文本分析 API 中了解受支持的实体类型。
+description: 了解文本分析 API 中支持的实体类型。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: aahi
 ms.openlocfilehash: 164e803a6af8a7d1ccdc9c70cc3e42b787857b3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77086872"
 ---
-# <a name="supported-types-for-named-entity-recognition-version-3-preview"></a>命名实体识别版本 3（预览）支持的类型
+# <a name="supported-types-for-named-entity-recognition-version-3-preview"></a>命名实体识别版本3支持的类型（预览）
 
-文本分析 API 提供了识别和消除文本中实体歧义的能力。 [命名实体识别](how-tos/text-analytics-how-to-entity-linking.md)（NER） 是识别文本中不同实体并将其分类为预定义类的能力。
+文本分析 API 提供识别和消除文本中的实体的功能。 [命名实体识别](how-tos/text-analytics-how-to-entity-linking.md)（NER）是一种能够识别文本中的不同实体并将它们分类为预定义类的功能。
 
 ## <a name="entity-types"></a>实体类型
 
-支持的实体类型和子类型（如果适用）如下：
+下面列出了支持的实体类型和子类型（如果适用）：
 
 #### <a name="general"></a>[常规](#tab/general)
 

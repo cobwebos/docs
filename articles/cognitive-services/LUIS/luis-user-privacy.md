@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 04/02/2019
 ms.author: diberry
 ms.openlocfilehash: 4e3e0d04b0086905b80e26fb4f838c36b5b5545e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78273359"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>在认知服务中的语言理解 (LUIS) 中导出和删除客户数据
@@ -37,22 +37,22 @@ ms.locfileid: "78273359"
 ## <a name="deleting-customer-data"></a>删除客户数据
 LUIS 用户具有完全控制权限，可通过 LUIS Web 门户或 LUIS 创作（也称“编程”）API 来删除任何用户内容。 下表显示了对这两种方式有帮助的链接：
 
-| | **用户帐户** | **应用程序** | **示例** | **最终用户查询** |
+| | **用户帐户** | **应用程序** | **示例话语** | **最终用户查询** |
 | --- | --- | --- | --- | --- |
-| **门户** | [链接](luis-concept-data-storage.md#delete-an-account) | [链接](luis-how-to-start-new-app.md#delete-app) | [链接](luis-concept-data-storage.md#utterances-in-an-intent) | [主动学习话语](luis-how-to-review-endpoint-utterances.md#disable-active-learning)<br>[记录的话语](luis-concept-data-storage.md#disable-logging-utterances) |
-| **Api** | [链接](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c4c) | [链接](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c39) | [链接](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0b) | [链接](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58b6f32139e2bb139ce823c9) |
+| **门户** | [链接](luis-concept-data-storage.md#delete-an-account) | [链接](luis-how-to-start-new-app.md#delete-app)。 | [链接](luis-concept-data-storage.md#utterances-in-an-intent) | [主动学习话语](luis-how-to-review-endpoint-utterances.md#disable-active-learning)<br>[记录的话语](luis-concept-data-storage.md#disable-logging-utterances) |
+| **API** | [链接](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c4c) | [链接](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c39) | [链接](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0b) | [链接](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58b6f32139e2bb139ce823c9) |
 
 
 ## <a name="exporting-customer-data"></a>导出客户数据
 LUIS 用户具有完全控制权限可在门户上查看数据，但是，若要导出数据，必须通过 LUIS 创作（也称为“编程”）API 进行。 下表显示了对通过 LUIS 创作（也称为“编程”）API 导出数据有帮助的链接：
 
-| | **用户帐户** | **应用程序** | **Utterance(s)** | **最终用户查询** |
+| | **用户帐户** | **应用程序** | **陈述** | **最终用户查询** |
 | --- | --- | --- | --- | --- |
-| **Api** | [链接](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c48) | [链接](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) | [链接](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0a) | [链接](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36) |
+| **API** | [链接](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c48) | [链接](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) | [链接](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0a) | [链接](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36) |
 
 ## <a name="location-of-active-learning"></a>主动学习的位置
 
-为了启用[主动学习](luis-how-to-review-endpoint-utterances.md#enable-active-learning)，在已发布的 LUIS 终结点接收的用户记录的话语存储在以下 Azure 地理位置中：
+若要启用[活动学习](luis-how-to-review-endpoint-utterances.md#enable-active-learning)，在已发布的 LUIS 终结点上收到的用户的已记录最谈话存储在以下 Azure 地理区域中：
 
 * [欧洲](#europe)
 * [澳大利亚](#australia)
@@ -62,29 +62,29 @@ LUIS 用户具有完全控制权限可在门户上查看数据，但是，若要
 
 ### <a name="europe"></a>欧洲
 
-[eu.luis.ai](https://eu.luis.ai)门户和欧洲创作（也称为编程 API）托管在 Azure 的欧洲地理中。 eu.luis.ai门户和欧洲创作（也称为编程 API）支持将终结点部署到以下 Azure 地理位置：
+[Eu.luis.ai](https://eu.luis.ai)门户和欧洲创作（也称为编程式 api）托管在 Azure 欧洲地区。 Eu.luis.ai 门户和欧洲创作（也称为编程 Api）支持将终结点部署到以下 Azure 地域：
 
 * 欧洲
 * 法国
 * United Kingdom
 
-部署到这些 Azure 地理位置时，从应用最终用户处接收的终结点接收的话语将存储在 Azure 的欧洲地理中以进行主动学习。 可以禁用主动学习，请参阅[禁用主动学习](luis-how-to-review-endpoint-utterances.md#disable-active-learning)。 若要管理存储的话语，请参阅[删除话语](luis-how-to-review-endpoint-utterances.md#delete-utterance)。
+部署到这些 Azure 地理位置时，终结点从应用的最终用户那里收到的最谈话将存储在 Azure 欧洲地区，以便进行主动学习。 可以禁用主动学习，请参阅[禁用主动学习](luis-how-to-review-endpoint-utterances.md#disable-active-learning)。 若要管理存储的话语，请参阅[删除话语](luis-how-to-review-endpoint-utterances.md#delete-utterance)。
 
 ### <a name="australia"></a>澳大利亚
 
-[au.luis.ai](https://au.luis.ai)门户和澳大利亚创作（也称为编程 API）托管在 Azure 的澳大利亚地理中。 au.luis.ai门户和澳大利亚创作（也称为编程 API）支持将终结点部署到以下 Azure 地理位置：
+[Au.luis.ai](https://au.luis.ai)门户和澳大利亚创作（也称为编程式 api）托管在 Azure 的澳大利亚地区。 Au.luis.ai 门户和澳大利亚创作（也称为编程 Api）支持将终结点部署到以下 Azure 地域：
 
 * 澳大利亚
 
-部署到这些 Azure 地理位置时，从应用最终用户处接收的终结点接收的话语将存储在 Azure 的澳大利亚地理中以进行主动学习。 可以禁用主动学习，请参阅[禁用主动学习](luis-how-to-review-endpoint-utterances.md#disable-active-learning)。 若要管理存储的话语，请参阅[删除话语](luis-how-to-review-endpoint-utterances.md#delete-utterance)。
+部署到这些 Azure 地理位置时，终结点从应用的最终用户那里收到的最谈话将存储在 Azure 的澳大利亚地区，以便进行主动学习。 可以禁用主动学习，请参阅[禁用主动学习](luis-how-to-review-endpoint-utterances.md#disable-active-learning)。 若要管理存储的话语，请参阅[删除话语](luis-how-to-review-endpoint-utterances.md#delete-utterance)。
 
 ### <a name="united-states"></a>United States
 
-[luis.ai](https://www.luis.ai)门户和美国创作（也称为编程 API）托管在 Azure 的美国地理位置中。 luis.ai门户和美国创作（也称为编程 API）支持将终结点部署到以下 Azure 地理位置：
+[Luis.ai](https://www.luis.ai)门户和美国创作（也称为编程式 api）托管在 Azure 美国地理位置。 Luis.ai 门户和美国创作（也称为编程 Api）支持将终结点部署到以下 Azure 地域：
 
-* 欧洲或澳大利亚创作区域不支持的 Azure 地理位置
+* 欧洲或澳大利亚的创作区域不支持 Azure 地理位置
 
-部署到这些 Azure 地理位置时，从应用最终用户处接收的终结点接收的话语将存储在 Azure 的美国地理位置中，以便进行主动学习。 可以禁用主动学习，请参阅[禁用主动学习](luis-how-to-review-endpoint-utterances.md#disable-active-learning)。 若要管理存储的话语，请参阅[删除话语](luis-how-to-review-endpoint-utterances.md#delete-utterance)。
+部署到这些 Azure 地理位置时，终结点从应用的最终用户那里收到的最谈话将存储在 Azure 美国地理位置，以便进行主动学习。 可以禁用主动学习，请参阅[禁用主动学习](luis-how-to-review-endpoint-utterances.md#disable-active-learning)。 若要管理存储的话语，请参阅[删除话语](luis-how-to-review-endpoint-utterances.md#delete-utterance)。
 
 
 ## <a name="next-steps"></a>后续步骤

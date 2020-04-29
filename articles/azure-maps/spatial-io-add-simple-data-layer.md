@@ -1,6 +1,6 @@
 ---
-title: 添加简单的数据层 |微软 Azure 地图
-description: 了解如何使用 Azure 地图 Web SDK 提供的空间 IO 模块添加简单的数据层。
+title: 添加简单的数据层 |Microsoft Azure 映射
+description: 了解如何使用 Azure Maps Web SDK 提供的空间 IO 模块添加简单的数据层。
 author: philmea
 ms.author: philmea
 ms.date: 02/29/2020
@@ -9,23 +9,23 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 8862c33b7660b8130f692dc4beea89a7b6b5f5ad
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80804480"
 ---
 # <a name="add-a-simple-data-layer"></a>添加简单的数据层
 
-空间 IO 模块提供`SimpleDataLayer`类。 此类使在地图上渲染样式要素变得容易。 它甚至可以渲染具有样式属性的数据集和包含混合几何类型的数据集。 简单数据层通过包装多个呈现图层并使用样式表达式来实现此功能。 样式表达式搜索这些包装图层内要素的常见样式属性。 函数`atlas.io.read`和`atlas.io.write`函数使用这些属性将样式读取和写入受支持的文件格式。 将属性添加到受支持的文件格式后，该文件可用于各种用途。 例如，该文件可用于在地图上显示样式特征。
+空间 IO 模块提供了一个`SimpleDataLayer`类。 通过此类可以轻松地在地图上呈现样式的功能。 它甚至可以呈现具有样式属性和包含混合几何图形类型的数据集的数据集。 简单数据层通过包装多个呈现层并使用样式表达式来实现此功能。 样式表达式搜索这些已包装层内功能的通用样式属性。 `atlas.io.read`函数和`atlas.io.write`函数使用这些属性来读写样式，并将其写入支持的文件格式。 将属性添加到支持的文件格式后，该文件可用于各种目的。 例如，该文件可用于显示地图上的样式功能。
 
-除了样式功能外，还提供`SimpleDataLayer`带有弹出模板的内置弹出窗口功能。 单击要素时，将显示弹出窗口。 如果需要，可以禁用默认弹出窗口功能。 此层还支持群集数据。 单击群集时，地图将放大到群集中，并将其扩展到单个点和子群集中。
+除了设置功能的`SimpleDataLayer`样式以外，还提供了一个带有 popup 模板的内置弹出功能。 单击该功能时，将显示弹出窗口。 如果需要，可以禁用默认的弹出功能。 该层还支持群集数据。 单击群集后，地图会放大到该群集，并将其扩展到各个点并 subclusters。
 
-该`SimpleDataLayer`类用于具有许多几何类型和许多应用于要素样式的大型数据集。 使用时，此类会增加六个包含样式表达式的图层的开销。 因此，在某些情况下，使用核心呈现图层的效率更高。 例如，使用核心图层在要素上呈现几个几何类型和几个样式
+`SimpleDataLayer`类可用于具有多个几何图形类型的大型数据集和应用于这些功能的多种样式。 使用此类时，会增加包含样式表达式的六个层的开销。 因此，在某些情况下，使用核心呈现层会更有效。 例如，使用核心层呈现几个几何图形类型和一个功能上的几个样式
 
 ## <a name="use-a-simple-data-layer"></a>使用简单的数据层
 
-类`SimpleDataLayer`的使用类似于使用其他呈现图层。 下面的代码显示了如何在地图中使用简单的数据图层：
+`SimpleDataLayer`类的使用方式类似于使用其他呈现层。 下面的代码演示如何在映射中使用简单的数据层：
 
 ```javascript
 //Create a data source and add it to the map.
@@ -37,7 +37,7 @@ var layer = new atlas.layer.SimpleDataLayer(datasource);
 map.layers.add(layer);
 ```
 
-向数据源添加要素。 然后，简单的数据层将找出如何最好地呈现要素。 单个要素的样式可以设置为要素上的属性。 以下代码显示属性设置为`color``red`的 GeoJSON 点要素。 
+向数据源中添加功能。 然后，简单的数据层将找出呈现功能的最佳方式。 单个功能的样式可设置为功能的属性。 下面的代码演示了一个 GeoJSON 点功能， `color`其属性设置`red`为。 
 
 ```json
 {
@@ -52,58 +52,58 @@ map.layers.add(layer);
 }
 ```
 
-以下代码使用简单的数据层呈现上述点要素。 
+下面的代码使用简单数据层呈现上述点功能。 
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="使用简单数据层" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true"> 请参阅笔 在<a href='https://codepen.io'>CodePen</a>上按 Azure<a href='https://codepen.io/azuremaps'>@azuremaps</a>映射 （）<a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>使用简单数据图层</a>。
+<iframe height="500" style="width: 100%;" scrolling="no" title="使用简单数据层" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true"> 请参阅<a href='https://codepen.io'>CodePen</a>上的 "通过 Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）<a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>使用简单数据层</a>。
 </iframe>
 
-当出现以下情况时，简单数据层的真正功能就来了：
+简单数据层的真正强大之处在于：
 
 - 数据源中有几种不同类型的功能;或
-- 数据集中的要素具有多个样式属性，分别设置它们;或
-- 您不确定数据集包含的内容。
+- 数据集中的功能分别设置了几个样式属性;或
+- 不确定数据集的确切包含内容。
 
-例如，在分析 XML 数据馈送时，您可能不知道要素的确切样式和几何类型。 下面的示例通过呈现 KML 文件的功能来显示简单数据层的强大功能。 它还演示了简单数据层类提供的各种选项。
+例如，在分析 XML 数据馈送时，您可能不知道这些功能的确切样式和几何图形类型。 下面的示例通过呈现 KML 文件的功能，显示了简单数据层的强大功能。 它还演示了简单数据层类提供的各种选项。
 
 <br/>
 
-<iframe height="700" style="width: 100%;" scrolling="no" title="简单的数据层选项" src="//codepen.io/azuremaps/embed/gOpRXgy/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true"> 在<a href='https://codepen.io'>CodePen</a>上按 Azure 映射<a href='https://codepen.io/azuremaps'>@azuremaps</a>（） 查看笔<a href='https://codepen.io/azuremaps/pen/gOpRXgy/'>简单数据图层选项</a>。
+<iframe height="700" style="width: 100%;" scrolling="no" title="简单的数据层选项" src="//codepen.io/azuremaps/embed/gOpRXgy/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true"> 请参阅<a href='https://codepen.io'>CodePen</a>上的 "笔<a href='https://codepen.io/azuremaps/pen/gOpRXgy/'>简单" 数据层选项</a>Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）。
 </iframe>
 
 
 > [!NOTE]
-> 此简单数据层使用[弹出模板](map-add-popup.md#add-popup-templates-to-the-map)类将 KML 气球或要素属性显示为表。 默认情况下，弹出窗口中呈现的所有内容都将作为安全功能在 iframe 内部装沙盒。 但是，存在限制：
+> 此简单数据层使用[popup 模板](map-add-popup.md#add-popup-templates-to-the-map)类以表的形式显示 KML 气球或功能属性。 默认情况下，弹出窗口中呈现的所有内容都将作为一项安全功能在 iframe 内进行沙盒处理。 但是，存在一些限制：
 >
-> - 禁用所有脚本、窗体、指针锁定和顶部导航功能。 单击时，允许在新选项卡中打开链接。 
-> - 不支持 iframe 上`srcdoc`参数的旧浏览器将仅限于呈现少量内容。
+> - 所有脚本、窗体、指针锁和顶部导航功能都处于禁用状态。 单击时，允许链接在新选项卡中打开。 
+> - 不支持 iframe 上的`srcdoc`参数的较早的浏览器将被限制为呈现少量内容。
 > 
-> 如果您信任加载到弹出窗口中的数据，并且可能希望加载到弹出窗口中的这些脚本能够访问您的应用程序，则可以通过将弹出窗口模板`sandboxContent`选项设置为 false 来禁用此功能。 
+> 如果信任加载到弹出窗口中的数据，并且可能希望将这些脚本加载到弹出窗口中才能访问应用程序，则可以通过将 popup 模板`sandboxContent`选项设置为 false 来禁用此设置。 
 
 ## <a name="default-supported-style-properties"></a>默认支持的样式属性
 
-如前所述，简单数据图层环绕多个核心呈现图层：气泡、符号、线、面和拉伸多边形。 然后，它使用表达式在单个要素上搜索有效的样式属性。
+如前文所述，简单的数据层包装多个核心呈现层：气泡图、符号图层、直线图、多边形和延伸多边形。 然后，它使用表达式搜索各个功能的有效样式属性。
 
-Azure 映射和 GitHub 样式属性是两种主要受支持的属性名称集。 不同 Azure 地图图层选项的大多数属性名称都支持为简单数据图层中要素的样式属性。 表达式已添加到某些图层选项中，以支持 GitHub 常用的样式属性名称。 这些属性名称由[GitHub 的 GeoJSON 地图支持](https://help.github.com/en/github/managing-files-in-a-repository/mapping-geojson-files-on-github)定义，它们用于设置在平台中存储和呈现的 GeoJSON 文件样式。 除了`marker-symbol`样式属性外，简单数据层中支持 GitHub 的所有样式属性。
+Azure Maps 和 GitHub 样式属性是受支持的两个属性名称集。 不同 azure 地图层选项的大多数属性名称都支持作为简单数据层中功能的样式属性。 已将表达式添加到一些层选项，以支持 GitHub 通常使用的样式属性名称。 这些属性名称由[GitHub 的 GeoJSON 映射支持](https://help.github.com/en/github/managing-files-in-a-repository/mapping-geojson-files-on-github)定义，它们用于对在平台中存储和呈现的 GeoJSON 文件进行样式。 除了`marker-symbol`样式属性以外，所有 GitHub 样式属性在简单数据层中都受支持。
 
-如果读取器遇到不太常见的样式属性，它将将其转换为最近的 Azure 地图样式属性。 此外，可以使用`getLayers`简单数据图层的功能并更新任何图层上的选项来重写默认样式表达式。
+如果读取器跨越了不太常见的样式属性，则会将其转换为最接近的 Azure Maps style 属性。 此外，使用简单数据层的`getLayers`函数和更新任何层上的选项，可以重写默认样式表达式。
 
-以下各节提供有关简单数据层支持的默认样式属性的详细信息。 支持的属性名称的顺序也是属性的优先级。 如果为同一图层选项定义了两个样式属性，则列表中的第一个样式属性具有更高的优先级。
+以下各节提供了有关简单数据层支持的默认样式属性的详细信息。 支持的属性名称的顺序也是属性的优先级。 如果为同一层选项定义了两个样式属性，则列表中第一个属性的优先级更高。
 
 ### <a name="bubble-layer-style-properties"></a>气泡图层样式属性
 
-如果要素`Point`为 或`MultiPoint`，并且该要素没有用作自定义图标以将`image`点呈现为符号的属性，则该要素将使用 呈现`BubbleLayer`。
+如果某个功能`Point`是或`MultiPoint`，且该功能没有可用作自定义`image`图标以将该点呈现为符号的属性，则该功能将使用呈现`BubbleLayer`。
 
-| 图层选项 | 支持的属性名称 | 默认值 |
+| 层选项 | 支持的属性名称 | 默认值 |
 |--------------|----------------------------|---------------|
 | `color` | `color`, `marker-color` | `'#1A73AA'` |
-| `radius` | `size`<sup>1</sup> `marker-size` <sup>2</sup>， `scale`2 ， <sup>1</sup> | `8` |
+| `radius` | `size`<sup>1</sup>， `marker-size` <sup>2</sup>， `scale` <sup>1</sup> | `8` |
 | `strokeColor` | `strokeColor`, `stroke` | `'#FFFFFF'` |
 
-\[1\] `size`和`scale`值被视为标量值，它们将乘以`8`
+\[1\]将`size`和`scale`值视为标量值，并将其乘以`8`
 
-\[2\]如果指定了`marker-size`GitHub 选项，则半径将使用以下值。
+\[2\]如果指定了`marker-size` GitHub 选项，则将为 radius 使用以下值。
 
 | 标记大小 | 半径 |
 |-------------|--------|
@@ -111,19 +111,19 @@ Azure 映射和 GitHub 样式属性是两种主要受支持的属性名称集。
 | `medium`    | `8`    |
 | `large`     | `12`   |
 
-群集也使用气泡图层呈现。 默认情况下，群集的半径设置为`16`。 群集的颜色因群集中的点数而异，如下所示：
+还会使用气泡层呈现分类。 默认情况下，群集的 radius 设置为`16`。 群集的颜色因群集中的点数而异，如下所示：
 
-| 积分 | Color    |
+| 点数 | 颜色    |
 |-------------|----------|
 | &gt;= 100   | `red`    |
 | &gt;= 10    | `yellow` |
-| &lt;10     | `green`  |
+| &lt;万     | `green`  |
 
 ### <a name="symbol-style-properties"></a>符号样式属性
 
-如果要素`Point`为 或`MultiPoint`，并且要素具有用作自定义图标以`image`将点呈现为符号的属性，则该要素将使用 呈现`SymbolLayer`。
+`Point`如果功能为`MultiPoint`或，并且具有将用作自定义图标以将`image`该点呈现为符号的属性，则该功能将使用呈现`SymbolLayer`。
 
-| 图层选项 | 支持的属性名称 | 默认值 |
+| 层选项 | 支持的属性名称 | 默认值 |
 |--------------|----------------------------|---------------|
 | `image` | `image` | ``none`` |
 | `size` | `size`， `marker-size` <sup>1</sup> | `1` |
@@ -131,7 +131,7 @@ Azure 映射和 GitHub 样式属性是两种主要受支持的属性名称集。
 | `offset` | `offset` | `[0, 0]` |
 | `anchor` | `anchor` | `'bottom'` |
 
-\[1\]如果指定了`marker-size`GitHub 选项，则以下值将用于图标大小选项。
+\[1\]如果指定了`marker-size` GitHub 选项，则以下值将用于 "图标大小" 选项。
 
 | 标记大小 | 符号大小 |
 |-------------|-------------|
@@ -139,13 +139,13 @@ Azure 映射和 GitHub 样式属性是两种主要受支持的属性名称集。
 | `medium`    | `1`         |
 | `large`     | `2`         |
 
-如果点要素是群集，则`point_count_abbreviated`该属性将呈现为文本标签。 不会渲染任何图像。
+如果点功能是一个分类，则该`point_count_abbreviated`属性将呈现为一个文本标签。 不会呈现图像。
 
 ### <a name="line-style-properties"></a>线条样式属性
 
-如果要素`LineString`为 、、`MultiLineString``Polygon`或`MultiPolygon`，则该要素将使用 呈现。 `LineLayer`
+如果此`LineString`功能为、 `MultiLineString`、 `Polygon`或`MultiPolygon`，则将使用呈现该功能。 `LineLayer`
 
-| 图层选项 | 支持的属性名称 | 默认值 |
+| 层选项 | 支持的属性名称 | 默认值 |
 |--------------|----------------------------|---------------|
 | `strokeColor` | `strokeColor`, `stroke` | `'#1E90FF'` |
 | `strokeWidth` | `strokeWidth`, `stroke-width`, `stroke-thickness` | `3` |
@@ -153,18 +153,18 @@ Azure 映射和 GitHub 样式属性是两种主要受支持的属性名称集。
 
 ### <a name="polygon-style-properties"></a>多边形样式属性
 
-`Polygon`如果要素为 或`MultiPolygon`，并且要素没有`height`属性，或者`height`该属性为零，则该要素将使用 呈现。 `PolygonLayer`
+如果`Polygon`该功能是或`MultiPolygon`，且该功能不具有`height`属性或`height`属性为零，则将使用呈现该功能。 `PolygonLayer`
 
-| 图层选项 | 支持的属性名称 | 默认值 |
+| 层选项 | 支持的属性名称 | 默认值 |
 |--------------|----------------------------|---------------|
 | `fillColor` | `fillColor`, `fill` | `'#1E90FF'` |
 | `fillOpacity` | `fillOpacity`, '`fill-opacity` | `0.5` |
 
-### <a name="extruded-polygon-style-properties"></a>拉伸多边形样式属性
+### <a name="extruded-polygon-style-properties"></a>延伸多边形样式属性
 
-如果要素`Polygon`为 或`MultiPolygon`，并且具有值大于`height`0 的属性，则该要素将使用 呈现`PolygonExtrusionLayer`。
+如果该功能`Polygon`是或`MultiPolygon`，且具有值大于 0 `height`的属性，则将使用呈现该功能`PolygonExtrusionLayer`。
 
-| 图层选项 | 支持的属性名称 | 默认值 |
+| 层选项 | 支持的属性名称 | 默认值 |
 |--------------|----------------------------|---------------|
 | `base` | `base` | `0` |
 | `fillColor` | `fillColor`, `fill` | `'#1E90FF'` |
@@ -175,10 +175,10 @@ Azure 映射和 GitHub 样式属性是两种主要受支持的属性名称集。
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [简单数据层](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
+> [SimpleDataLayer](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
 
 > [!div class="nextstepaction"]
-> [简单数据列表选项](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
+> [SimpleDataLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
 
 有关可向地图添加的更多代码示例，请参阅以下文章：
 
@@ -186,13 +186,13 @@ Azure 映射和 GitHub 样式属性是两种主要受支持的属性名称集。
 > [读取和写入空间数据](spatial-io-read-write-spatial-data.md)
 
 > [!div class="nextstepaction"]
-> [添加 OGC 地图图层](spatial-io-add-ogc-map-layer.md)
+> [添加 OGC 地图层](spatial-io-add-ogc-map-layer.md)
 
 > [!div class="nextstepaction"]
-> [连接到 WFS 服务](spatial-io-connect-wfs-service.md)
+> [连接到 WF 服务](spatial-io-connect-wfs-service.md)
 
 > [!div class="nextstepaction"]
-> [利用核心业务](spatial-io-core-operations.md)
+> [利用核心操作](spatial-io-core-operations.md)
 
 > [!div class="nextstepaction"]
 > [支持的数据格式详细信息](spatial-io-supported-data-format-details.md)

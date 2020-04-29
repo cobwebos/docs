@@ -1,6 +1,6 @@
 ---
 title: 工作负荷分类
-description: 使用分类来管理 Azure 突触分析中查询的并发性、重要性和计算资源的指导。
+description: 使用分类来管理 Azure Synapse 分析中查询的并发性、重要性和计算资源的指南。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,15 +12,15 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: e7aa0c402878c994aabe4e12d811a99e300d7e67
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80743653"
 ---
-# <a name="azure-synapse-analytics-workload-classification"></a>Azure 突触分析工作负荷分类
+# <a name="azure-synapse-analytics-workload-classification"></a>Azure Synapse 分析工作负荷分类
 
-本文介绍了分配工作负载组的工作负载分类过程，以及使用 Azure Synapse 中的 Synapse SQL 池对传入请求的重要性。
+本文介绍使用 Azure Synapse 中的 Synapse SQL 池为传入请求分配工作负荷组和重要性的工作负荷分类过程。
 
 ## <a name="classification"></a>分类
 
@@ -36,24 +36,24 @@ ms.locfileid: "80743653"
 
 ## <a name="classification-process"></a>分类过程
 
-Azure Synapse 中的 Synapse SQL 池的分类今天通过将用户分配给具有相应资源类的角色（使用[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)）来实现。 使用此功能时，将请求特征化，使之超出资源类登录范围的能力会受到限制。 现在，可以通过 [CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 语法来利用更丰富的分类方法。  使用此语法，Synapse SQL 池用户可以通过`workload_group`参数分配重要性以及将多少系统资源分配给请求。
+目前，Azure Synapse 中的 Synapse SQL 池分类是通过将用户分配到具有分配给它的对应资源类[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)的角色来完成的。 使用此功能时，将请求特征化，使之超出资源类登录范围的能力会受到限制。 现在，可以通过 [CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 语法来利用更丰富的分类方法。  使用此语法，Synapse SQL 池用户可以通过`workload_group`参数分配重要性和分配给请求的系统资源量。
 
 > [!NOTE]
 > 分类是按每个请求评估的。 可以不同的方式对单个会话中的多个请求进行分类。
 
-## <a name="classification-weighting"></a>分类加权
+## <a name="classification-weighting"></a>分类权重
 
-作为分类过程的一部分，已进行加权以确定分配了哪个工作负载组。  权重如下所示：
+在分类过程中，将使用权重来确定分配哪个工作负荷组。  权重如下所示：
 
 |分类器参数 |重量   |
 |---------------------|---------|
-|成员名称：用户      |64       |
-|成员名称：角色      |32       |
+|MEMBERNAME:USER      |64       |
+|MEMBERNAME:ROLE      |32       |
 |WLM_LABEL            |16       |
 |WLM_CONTEXT          |8        |
 |START_TIME/END_TIME  |4        |
 
-参数`membername`是必填项。  但是，如果指定的成员名称是数据库用户而不是数据库角色，则用户的权重更高，因此选择了该分类器。
+`membername` 参数是必需的。  但是，如果指定的 membername 是数据库用户而不是数据库角色，用户的权重更高，因此选择该分类器。
 
 如果用户是具有在多个分类器中分配或匹配的不同资源类的多个角色的成员，则会授予此用户最高的资源类分配。  此行为与现有的资源类分配行为保持一致。
 
@@ -69,7 +69,7 @@ SELECT * FROM sys.workload_management_workload_classifiers where classifier_id <
 
 使用自动创建的系统分类器能够轻松迁移到工作负荷分类。 开始创建具有重要性的新分类器时，使用具有分类优先顺序的资源类角色映射可能会导致错误分类。
 
-请参考以下方案：
+请考虑下列方案：
 
 - 某个现有的数据仓库包含已分配到 largerc 资源类角色的数据库用户 DBAUser。 资源类分配是使用 sp_addrolemember 进行的。
 - 现已使用工作负荷管理更新该数据仓库。
@@ -94,5 +94,5 @@ sp_droprolemember '[Resource Class]', membername
 
 - 若要详细了解如何创建分类器，请参阅 [CREATE WORKLOAD CLASSIFIER (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。  
 - 有关如何创建工作负荷分类器的信息，请参阅快速入门[创建工作负荷分类器](quickstart-create-a-workload-classifier-tsql.md)。
-- 请参阅[配置工作负载重要性](sql-data-warehouse-how-to-configure-workload-importance.md)的"如何"文章以及如何[管理和监视工作负载管理](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)。
+- 请参阅有关[配置工作负荷重要性](sql-data-warehouse-how-to-configure-workload-importance.md)以及如何[管理和监视工作负荷管理](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)的操作指南文章。
 - 参阅 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 以查看查询和分配的重要性。

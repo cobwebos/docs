@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
 ms.openlocfilehash: 18469c94b66acab27b58243e8d15eb924843319b
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80811117"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>在 Azure 门户中配置应用服务应用
@@ -19,19 +19,19 @@ ms.locfileid: "80811117"
 
 ## <a name="configure-app-settings"></a>配置应用设置
 
-在应用服务中，应用设置是作为环境变量传递给应用程序代码的变量。 对于 Linux 应用和自定义容器，应用服务使用`--env`标志将应用设置传递给容器，以在容器中设置环境变量。
+在应用服务中，应用设置是作为环境变量传递给应用程序代码的变量。 对于 Linux 应用和自定义容器，应用服务使用`--env`标志将应用设置传递到容器，以便在容器中设置环境变量。
 
 在 [Azure 门户]中搜索并选择“应用服务”****，然后选择应用。 
 
 ![搜索应用服务](./media/configure-common/search-for-app-services.png)
 
-在应用的左侧菜单中，选择 **"配置** > **应用程序"设置**。
+在应用程序的左侧菜单中，选择 "**配置** > **应用程序设置**"。
 
 ![应用程序设置](./media/configure-common/open-ui.png)
 
 对于 ASP.NET 和 ASP.NET Core 开发人员而言，在应用服务中设置应用设置类似于在 Web.config** 或 appsettings.json** 中的 `<appSettings>` 内进行设置，但应用服务中的值会替代 Web.config** 或 appsettings.json** 中的值。 可以在 Web.config** 或 appsettings.json** 中保留开发设置（例如，本地 MySQL 密码），但在应用服务中保留生产机密（例如 Azure MySQL 数据库密码）会更安全。 相同的代码在本地调试时使用开发设置，部署到 Azure 时使用生产机密。
 
-同样，其他语言堆栈在运行时将应用设置作为环境变量获取。 有关特定于语言堆栈的步骤，请参阅：
+同样，在运行时将应用设置作为环境变量获取。 有关特定语言堆栈的步骤，请参阅：
 
 - [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
 - [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
@@ -59,7 +59,7 @@ ms.locfileid: "80811117"
 完成后，单击“更新”。**** 别忘了返回“配置”页并单击“保存”。********
 
 > [!NOTE]
-> 在默认 Linux 容器或自定义 Linux 容器中，应用设置名称中任何嵌套的 JSON`ApplicationInsights:InstrumentationKey`密钥结构都需要在应用服务中`ApplicationInsights__InstrumentationKey`配置为密钥名称。 换句话说，任何一`:`个都应替换为`__`（双下划线）。
+> 在默认的 Linux 容器或自定义 Linux 容器中，应用设置名称中的任何嵌套 JSON 密钥结构`ApplicationInsights:InstrumentationKey`都需要在应用服务`ApplicationInsights__InstrumentationKey`中配置为密钥名称。 换句话说，any `:`应该替换为`__` （双下划线）。
 >
 
 ### <a name="edit-in-bulk"></a>批量编辑
@@ -86,23 +86,23 @@ ms.locfileid: "80811117"
 
 ## <a name="configure-connection-strings"></a>配置连接字符串
 
-在 [Azure 门户]中搜索并选择“应用服务”****，然后选择应用。 在应用的左侧菜单中，选择 **"配置** > **应用程序"设置**。
+在 [Azure 门户]中搜索并选择“应用服务”****，然后选择应用。 在应用程序的左侧菜单中，选择 "**配置** > **应用程序设置**"。
 
 ![应用程序设置](./media/configure-common/open-ui.png)
 
-对于ASP.NET和ASP.NET核心开发人员，在应用服务中设置连接字符串就像在`<connectionStrings>`*Web.config*中设置它们一样，但在应用服务中设置的值将覆盖*Web.config*中的值。您可以在应用服务中安全地将开发设置（例如数据库文件）保存在*Web.config*和生产机密（例如 SQL 数据库凭据）中。 相同的代码在本地调试时使用开发设置，部署到 Azure 时使用生产机密。
+对于 ASP.NET 和 ASP.NET Core 开发人员而言，在应用服务中设置连接字符串类似于`<connectionStrings>`在*web.config 中*设置连接字符串，但在应用服务中设置的值将替代*web.config*中的连接字符串。可以在应用服务中安全地保留 web.config 中的开发设置（例如，数据库文件 *）和生产*机密（例如，SQL 数据库凭据）。 相同的代码在本地调试时使用开发设置，部署到 Azure 时使用生产机密。
 
 对于其他语言堆栈，最好是改用[应用设置](#configure-app-settings)，因为连接字符串需要在变量键中使用特殊的格式才能访问值。 但以下情况例外：如果在应用中配置了相应的连接字符串，则某些 Azure 数据库类型会连同应用一起备份。 有关详细信息，请参阅[备份的内容](manage-backup.md#what-gets-backed-up)。 如果不需要这种自动化备份，请使用应用设置。
 
 在运行时，连接字符串可用作环境变量，其前缀为以下连接类型：
 
-* SQLServer：`SQLCONNSTR_`  
+* SQLServer`SQLCONNSTR_`  
 * MySQL：`MYSQLCONNSTR_` 
-* SQLAzure：`SQLAZURECONNSTR_` 
+* SQLAzure`SQLAZURECONNSTR_` 
 * 自定义：`CUSTOMCONNSTR_`
-* 后数SQL：`POSTGRESQLCONNSTR_`  
+* PostgreSQL`POSTGRESQLCONNSTR_`  
 
-例如，可以使用环境变量 `MYSQLCONNSTR_connectionString1` 的形式访问名为 *connectionstring1* 的 MySql 连接字符串。 有关特定于语言堆栈的步骤，请参阅：
+例如，可以使用环境变量 `MYSQLCONNSTR_connectionString1` 的形式访问名为 *connectionstring1* 的 MySql 连接字符串。 有关特定语言堆栈的步骤，请参阅：
 
 - [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
 - [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
@@ -158,32 +158,32 @@ ms.locfileid: "80811117"
 
 ## <a name="configure-general-settings"></a>配置常规设置
 
-在 [Azure 门户]中搜索并选择“应用服务”****，然后选择应用。 在应用的左侧菜单中，选择 **"配置** > **常规设置**"。
+在 [Azure 门户]中搜索并选择“应用服务”****，然后选择应用。 在应用程序的左侧菜单中，选择 "**配置** > **常规设置**"。
 
 ![常规设置](./media/configure-common/open-general.png)
 
 在此处可以配置应用的某些常用设置。 某些设置要求[纵向扩展到更高的定价层](manage-scale-up.md)。
 
-- **堆栈设置**：要运行应用的软件堆栈，包括语言和 SDK 版本。 对于 Linux 应用和自定义的容器应用，还可以设置可选的启动命令或文件。
-- **平台设置**：允许您为托管平台配置设置，包括：
-    - **位：** 32 位或 64 位。
-    - **WebSocket 协议**：例如[，对于ASP.NET信号R]或[socket.io。](https://socket.io/)
-    - **始终打开**：即使没有流量，也能保持应用程序加载。 对于连续性 WebJobs 或使用 CRON 表达式触发的 WebJobs，它是必需的。
+- **堆栈设置**：运行应用的软件堆栈，包括语言和 SDK 版本。 对于 Linux 应用和自定义的容器应用，还可以设置可选的启动命令或文件。
+- **平台设置**：允许你为托管平台配置设置，包括：
+    - **位数**：32位或64位。
+    - **WebSocket 协议**：对于[ASP.NET SignalR]或[socket.io](https://socket.io/)，例如。
+    - **Always On**：即使在没有流量的情况，也要加载应用。 对于连续性 WebJobs 或使用 CRON 表达式触发的 WebJobs，它是必需的。
       > [!NOTE]
-      > 使用"始终打开"功能时，无法控制终结点。 它始终向应用程序根发送请求。
-    - **托管管道版本**：IIS[管道模式]。 如果某个旧式应用需要旧版 IIS，请将此选项设置为“经典”。****
-    - **HTTP 版本**： 设置为**2.0**以启用对[HTTPS/2](https://wikipedia.org/wiki/HTTP/2)协议的支持。
+      > 利用 Always On 功能，无法控制终结点。 它始终向应用程序根发送请求。
+    - **托管管道版本**： IIS[管道模式]。 如果某个旧式应用需要旧版 IIS，请将此选项设置为“经典”。****
+    - **HTTP 版本**：设置为**2.0**以启用对[HTTPS/2](https://wikipedia.org/wiki/HTTP/2)协议的支持。
     > [!NOTE]
-    > 大多数新型浏览器仅支持通过 TLS 的 HTTP/2 协议，而非加密流量继续使用 HTTP/1.1。 为确保客户端浏览器使用 HTTP/2 连接到你的应用，请保护您的自定义 DNS 名称。 有关详细信息，请参阅在[Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
-    - **ARR 关联**：在多实例部署中，确保客户端在会话的生命周期内路由到同一实例。 对于无状态应用程序，请将此选项设置为“关闭”。****
-- **调试**：为[ASP.NET、ASP.NET核心](/visualstudio/debugger/remote-debugging-azure)应用或[ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug)[Node.js](containers/configure-language-nodejs.md#debug-remotely)应用启用远程调试。 此选项在 48 小时后会自动关闭。
+    > 大多数新型浏览器仅支持通过 TLS 的 HTTP/2 协议，而非加密流量继续使用 HTTP/1.1。 若要确保客户端浏览器通过 HTTP/2 连接到应用程序，请保护自定义 DNS 名称。 有关详细信息，请参阅[在 Azure App Service 中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
+    - **ARR 关联**：在多实例部署中，请确保将客户端路由到会话生存期内的同一实例。 对于无状态应用程序，请将此选项设置为“关闭”。****
+- **调试**：启用[ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug)、 [ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)或 node.js 应用的远程[调试。](containers/configure-language-nodejs.md#debug-remotely) 此选项在 48 小时后会自动关闭。
 - **传入的客户端证书**：要求在[相互身份验证](app-service-web-configure-tls-mutual-auth.md)中使用客户端证书。
 
 ## <a name="configure-default-documents"></a>配置默认文档
 
 此设置仅适用于 Windows 应用。
 
-在 [Azure 门户]中搜索并选择“应用服务”****，然后选择应用。 在应用的左侧菜单中，选择 **"配置** > **默认文档**"。
+在 [Azure 门户]中搜索并选择“应用服务”****，然后选择应用。 在应用程序的左侧菜单中，选择 "**配置** > **默认文档**"。
 
 ![默认文档](./media/configure-common/open-documents.png)
 
@@ -193,7 +193,7 @@ ms.locfileid: "80811117"
 
 ## <a name="configure-path-mappings"></a>配置路径映射
 
-在 [Azure 门户]中搜索并选择“应用服务”****，然后选择应用。 在应用的左侧菜单中，选择 **"配置** > **路径"映射**。
+在 [Azure 门户]中搜索并选择“应用服务”****，然后选择应用。 在应用程序的左侧菜单中，选择 "**配置** > **路径映射**"。
 
 ![路径映射](./media/configure-common/open-path.png)
 
@@ -205,9 +205,9 @@ ms.locfileid: "80811117"
 
 使用处理程序映射可以添加自定义脚本处理程序用于处理特定文件扩展名的请求。 若要添加自定义处理程序，请单击“新建处理程序”。**** 按如下所述配置处理程序：
 
-- **扩展**。 要处理的文件扩展名，如*\*.php*或*处理程序.fcgi*。
+- **扩展**。 要处理的文件扩展名，如* \*php*或*handler.fcgi*。
 - **脚本处理程序**。 脚本处理程序的绝对路径。 与文件扩展名匹配的文件请求由脚本处理程序处理。 使用路径 `D:\home\site\wwwroot` 表示应用的根目录。
-- **参数**. 脚本处理程序的可选命令行参数
+- **参数**。 脚本处理程序的可选命令行参数
 
 每个应用具有已映射到 `D:\home\site\wwwroot`（代码的默认部署位置）的默认根路径 (`/`)。 如果应用根位于其他文件夹中，或者存储库包含多个应用程序，则你可以在此处编辑或添加虚拟应用程序和目录。 单击“新建虚拟应用程序或目录”。****
 
@@ -215,18 +215,18 @@ ms.locfileid: "80811117"
 
 ### <a name="containerized-apps"></a>容器化应用
 
-您可以[为容器化应用添加自定义存储](containers/how-to-serve-content-from-azure-storage.md)。 容器化应用包括所有 Linux 应用，以及应用服务上运行的 Windows 和 Linux 自定义容器。 单击 **"新建 Azure 存储装载**"并按如下方式配置自定义存储：
+你可以[为容器化应用添加自定义存储](containers/how-to-serve-content-from-azure-storage.md)。 容器化应用包括所有 Linux 应用，还包括在应用服务上运行的 Windows 和 Linux 自定义容器。 单击 "**新建 Azure 存储**"，并按如下所示配置自定义存储：
 
 - **名称**：显示名称。
 - **配置选项**：**基本**或**高级**。
-- **存储帐户**：具有所需容器的存储帐户。
-- **存储类型** **：Azure Blob 或** **Azure 文件**。
+- **存储帐户**：包含所需容器的存储帐户。
+- **存储类型**： **Azure Blob**或**azure 文件**。
   > [!NOTE]
   > Windows 容器应用仅支持 Azure 文件。
-- **存储容器**：对于基本配置，所需的容器。
-- **共享名称**：对于高级配置，文件共享名称。
-- **访问密钥**：对于高级配置，访问密钥。
-- **装载路径**：用于装载自定义存储的容器中的绝对路径。
+- **存储容器**：对于基本配置，为所需的容器。
+- **共享名**：对于高级配置，为文件共享名称。
+- **访问密钥**：对于高级配置，为 "访问密钥"。
+- **装载路径**：容器中用于装载自定义存储的绝对路径。
 
 有关详细信息，请参阅[从 Linux 上的应用服务中的 Azure 存储提供内容](containers/how-to-serve-content-from-azure-storage.md)。
 
@@ -243,13 +243,13 @@ ms.locfileid: "80811117"
 
 ## <a name="configure-custom-containers"></a>配置自定义容器
 
-请参阅[为 Azure 应用服务配置自定义 Linux 容器](containers/configure-custom-container.md)
+请参阅[为 Azure App Service 配置自定义 Linux 容器](containers/configure-custom-container.md)
 
 ## <a name="next-steps"></a>后续步骤
 
 - [在 Azure 应用服务中配置自定义域名]
 - [设置 Azure 应用服务中的过渡环境]
-- [使用 Azure 应用服务中的 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)
+- [在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)
 - [启用诊断日志](troubleshoot-diagnostic-logs.md)
 - [在 Azure 应用服务中缩放应用]
 - [在 Azure 应用服务中监视基础知识]

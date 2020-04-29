@@ -1,6 +1,6 @@
 ---
 title: 设计表
-description: 在 Synapse SQL 池中设计表的简介。
+description: 介绍如何在 Synapse SQL 池中设计表。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,37 +12,37 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 2802c62acef0d78f8cfa7dd7f06bc34d8eecca4c
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80742626"
 ---
-# <a name="design-tables-in-synapse-sql-pool"></a>Synapse SQL 池中的设计表
+# <a name="design-tables-in-synapse-sql-pool"></a>在 Synapse SQL 池中设计表
 
-本文提供了用于在 SQL 池中设计表的关键介绍性概念。
+本文提供了有关在 SQL 池中设计表的关键介绍性概念。
 
 ## <a name="determine-table-category"></a>确定表类别
 
 [星型架构](https://en.wikipedia.org/wiki/Star_schema)将数据组织成事实数据表和维度表。 某些表在转移到事实数据表或维度表之前已用于集成或暂存数据。 设计某个表时，请确定该表的数据是属于事实数据表、维度表还是集成表。 此项决策可以明确相应的表结构和分布方式。
 
-- **事实表**包含通常在事务系统中生成的定量数据，然后加载到 SQL 池中。 例如，零售企业每天生成销售交易记录，然后将数据加载到 SQL 池事实表中进行分析。
+- **事实数据表**包含定量数据，这些数据通常在事务系统中生成，然后加载到 SQL 池中。 例如，零售企业每天会生成销售事务，然后将数据加载到 SQL 池事实数据表中进行分析。
 
-- **维度表**包含属性数据，这些数据可能会更改，但一般不会经常更改。 例如，客户的姓名和地址存储在维度表中，仅当客户的个人资料发生更改时，这些数据才会更新。 为了最小化大型事实表的大小，客户的姓名和地址不需要出现在事实数据表的每一行中。 事实数据表和维度表可以共享一个客户 ID。 查询可以联接两个表，以关联客户的个人资料和事务。
+- **维度表**包含属性数据，这些数据可能会更改，但一般不会经常更改。 例如，客户的姓名和地址存储在维度表中，仅当客户的个人资料发生更改时，这些数据才会更新。 若要最大程度地减少大型事实数据表的大小，客户的名称和地址不需要位于事实数据表的每一行。 事实数据表和维度表可以共享一个客户 ID。 查询可以联接两个表，以关联客户的个人资料和事务。
 
 - **集成表**为集成或暂存数据提供位置。 可以将集成表创建为常规表、外部表或临时表。 例如，可将数据加载到临时表，在暂存位置对数据执行转换，然后将数据插入生产表中。
 
 ## <a name="schema-and-table-names"></a>架构和表名称
 
-可通过架构将以相似方式使用的表组合在一起。  如果要将多个数据库从 prem 解决方案迁移到 SQL 池，最好将所有事实、维度和集成表迁移到 SQL 池中的一个架构。
+可通过架构将以相似方式使用的表组合在一起。  如果要将多个数据库从本地解决方案迁移到 SQL 池，最佳做法是将所有事实数据表、维度表和集成表迁移到 SQL 池中的一个架构。
 
-例如，您可以将[WideWorld 导入者DW](/sql/sample/world-wide-importers/database-catalog-wwi-olap?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)示例 SQL 池中的所有表存储在一个称为 wwi 的架构中。 以下代码创建名为 wwi 的[用户定义的架构](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+例如，可以将[WideWorldImportersDW](/sql/sample/world-wide-importers/database-catalog-wwi-olap?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)示例 SQL 池中的所有表都存储在一个名为 wwi 的架构内。 以下代码创建名为 wwi 的[用户定义的架构](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ```sql
 CREATE SCHEMA wwi;
 ```
 
-要在 SQL 池中显示表的组织，可以使用事实、暗和 int 作为表名称的前缀。 下表显示了 WideWorldImportersDW 的一些架构和表名称。  
+若要在 SQL 池中显示表的组织，可以使用事实、dim 和 int 作为表名称的前缀。 下表显示了 WideWorldImportersDW 的一些架构和表名称。  
 
 | WideWorldImportersDW 表  | 表类型 | SQL 池 |
 |:-----|:-----|:------|:-----|
@@ -51,11 +51,11 @@ CREATE SCHEMA wwi;
 
 ## <a name="table-persistence"></a>表暂留
 
-表将数据永久存储在 Azure 存储中、临时在 Azure 存储中或存储在 SQL 池外部的数据存储中。
+表将数据永久存储在 Azure 存储中，临时存储在 Azure 存储中，或存储在 SQL 池外部的数据存储中。
 
 ### <a name="regular-table"></a>常规表
 
-常规表将数据存储在 Azure 存储中作为 SQL 池的一部分。 不管是否打开了会话，表和数据都会持久保留。  下面的示例创建一个包含两列的常规表。
+常规表将 Azure 存储中的数据存储为 SQL 池的一部分。 不管是否打开了会话，表和数据都会持久保留。  下面的示例创建一个具有两列的正则表。
 
 ```sql
 CREATE TABLE MyTable (col1 int, col2 int );  
@@ -69,9 +69,9 @@ CREATE TABLE MyTable (col1 int, col2 int );
 
 ### <a name="external-table"></a>外部表
 
-外部表指向位于 Azure 存储 Blob 或 Azure Data Lake Store 中的数据。 当与"创建表作为选择"语句结合使用时，从外部表中选择将数据导入 SQL 池。
+外部表指向位于 Azure 存储 Blob 或 Azure Data Lake Store 中的数据。 与 CREATE TABLE 作为 SELECT 语句结合使用时，从外部表中进行选择会将数据导入到 SQL 池中。
 
-因此，外部表可用于加载数据。 有关加载教程，请参阅[使用 PolyBase 从 Azure Blob 存储加载数据](load-data-from-azure-blob-storage-using-polybase.md)。
+这种情况下，外部表对于加载数据非常有用。 有关加载教程，请参阅[使用 PolyBase 从 Azure Blob 存储加载数据](load-data-from-azure-blob-storage-using-polybase.md)。
 
 ## <a name="data-types"></a>数据类型
 
@@ -79,7 +79,7 @@ SQL 池支持最常用的数据类型。 有关受支持数据类型的列表，
 
 ## <a name="distributed-tables"></a>分布式表
 
-SQL 池的一个基本功能是它可以跨[分布](massively-parallel-processing-mpp-architecture.md#distributions)在表上存储和操作的方式。  SQL 池支持三种分发数据的方法：循环（默认）、哈希和复制。
+SQL 池的一项基本功能是它可以跨[分布](massively-parallel-processing-mpp-architecture.md#distributions)区存储和操作表。  SQL 池支持以下三种方法来分发数据：轮循机制（默认）、哈希和复制。
 
 ### <a name="hash-distributed-tables"></a>哈希分布表
 
@@ -89,7 +89,7 @@ SQL 池的一个基本功能是它可以跨[分布](massively-parallel-processin
 
 ### <a name="replicated-tables"></a>复制表
 
-复制表在每个计算节点上提供表的完整副本。 查询在复制的表上运行很快，因为复制表上的联接不需要数据移动。 但是，复制需要额外的存储，对于大型表来说并不实用。
+复制表在每个计算节点上提供表的完整副本。 查询在复制的表上快速运行，因为复制表上的联接不需要移动数据。 但复制需要额外的存储空间，但对于大型表并不可行。
 
 有关详细信息，请参阅[复制表的设计准则](design-guidance-for-replicated-tables.md)。
 
@@ -119,7 +119,7 @@ ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION
 
 ## <a name="columnstore-indexes"></a>列存储索引
 
-默认情况下，SQL 池将表存储为群集列存储索引。 对于大型表而言，这种数据存储形式可以实现较高的数据压缩率和查询性能。  
+默认情况下，SQL 池将表存储为聚集列存储索引。 对于大型表而言，这种数据存储形式可以实现较高的数据压缩率和查询性能。  
 
 聚集列存储索引通常是最佳选择，但在某些情况下，聚集索引或堆是适当的存储结构。  
 
@@ -134,7 +134,7 @@ ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION
 
 若要提高查询性能，必须有基于各个列（尤其是查询联接中使用的列）的统计信息。 [创建统计信息](sql-data-warehouse-tables-statistics.md#automatic-creation-of-statistic)的过程是自动发生的。  
 
-更新统计信息不会自动进行。 添加或更改了大量的行之后更新统计信息。 例如，在执行加载后更新统计信息。 有关详细信息，请参阅[统计信息指南](sql-data-warehouse-tables-statistics.md)。
+更新统计信息不会自动发生。 添加或更改了大量的行之后更新统计信息。 例如，在执行加载后更新统计信息。 有关详细信息，请参阅[统计信息指南](sql-data-warehouse-tables-statistics.md)。
 
 ## <a name="primary-key-and-unique-key"></a>主键和唯一键
 
@@ -153,13 +153,13 @@ ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION
 
 ## <a name="aligning-source-data-with-the-sql-pool"></a>将源数据与 SQL 池对齐
 
-SQL 池表通过从其他数据源加载数据来填充。 要执行成功的加载，源数据中的列的数量和数据类型必须与 SQL 池中的表定义一致。 使数据相符可能是设计表时的最难部分。
+通过从另一个数据源加载数据来填充 SQL 池表。 若要成功执行加载，源数据中列的数目和数据类型必须与 SQL 池中的表定义一致。 使数据相符可能是设计表时的最难部分。
 
-如果数据来自多个数据存储，则将数据加载到 SQL 池并将其存储在集成表中。 数据在集成表中后，可以使用 SQL 池的强大功能执行转换操作。 准备好数据后，可以将其插入到生产表中。
+如果数据来自多个数据存储，请将数据加载到 SQL 池中，并将其存储在集成表中。 数据在集成表中后，可以使用 SQL 池的强大功能来执行转换操作。 准备好数据后，可以将其插入到生产表中。
 
 ## <a name="unsupported-table-features"></a>不支持的表功能
 
-SQL 池支持其他数据库提供的许多（但不是全部）表功能。  下面的列表显示了 SQL 池中不支持的一些表功能：
+SQL 池支持许多（但不是全部）由其他数据库提供的表功能。  以下列表显示了 SQL 池不支持的某些表功能：
 
 - 外键，请查看[表约束](/sql/t-sql/statements/alter-table-table-constraint-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [计算列](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -170,7 +170,7 @@ SQL 池支持其他数据库提供的许多（但不是全部）表功能。  �
 - [同义词](/sql/t-sql/statements/create-synonym-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [触发器](/sql/t-sql/statements/create-trigger-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [唯一索引](/sql/t-sql/statements/create-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [用户定义类型](/sql/relational-databases/native-client/features/using-user-defined-types?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [用户定义的类型](/sql/relational-databases/native-client/features/using-user-defined-types?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="table-size-queries"></a>表大小查询
 
@@ -297,7 +297,7 @@ FROM size
 
 ### <a name="table-space-summary"></a>表空间摘要
 
-此查询返回行以及按表划分的空间。  它允许您查看哪些表是您最大的表，以及它们是循环、复制还是哈希分布。  对于哈希分布式表，此查询会显示分布列。  
+此查询返回行以及按表划分的空间。  它允许您查看哪些表是最大的表，以及这些表是轮循机制、复制还是哈希分布。  对于哈希分布式表，此查询会显示分布列。  
 
 ```sql
 SELECT
@@ -375,4 +375,4 @@ ORDER BY    distribution_id
 
 ## <a name="next-steps"></a>后续步骤
 
-为 SQL 池创建表后，下一步是将数据加载到表中。  有关加载教程，请参阅[将数据加载到 SQL 池](load-data-wideworldimportersdw.md)。
+为 SQL 池创建表后，下一步是将数据加载到表中。  有关加载教程，请参阅[将数据加载到 SQL 池中](load-data-wideworldimportersdw.md)。

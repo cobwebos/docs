@@ -12,37 +12,37 @@ ms.date: 04/03/2020
 ms.author: erhopf
 ms.custom: seodec18, seo-javascript-october2019
 ms.openlocfilehash: 4604bfe7c815f79733f99a1a3727e4c68527e7ec
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80656127"
 ---
-# <a name="try-the-speech-service-for-free"></a>免费试用语音服务'
+# <a name="try-the-speech-service-for-free"></a>免费试用语音服务
 
-在本文中，您可以选择一个选项，以便轻松免费测试语音服务，以便了解该服务可以做什么，并决定它是否适合您的需要。 根据您的情况和用例选择以下两个选项之一：
+在本文中，你将选择一个选项来轻松地免费测试语音服务，以便你能够发现服务的功能，并决定它是否适合你的需求。 选择以下两个选项之一，具体取决于你的情况和用例：
 
-- [选项 1：](#no-card)立即获取**免费试用**API 密钥，而无需提供任何信用卡信息（您需要具有现有的 Azure 帐户）。 **免费试用**将持续 30 天，数据在末尾被删除。 此选项最适合快速试验服务。
-- [选项 2：](#new-resource)使用**免费订阅**（需要信用卡信息）在 Azure 中免费创建新的语音资源。 **免费订阅**主要比付费订阅具有更严格的费率限制。 如果要测试服务，但计划将来升级到付费订阅，并且不想丢失数据，则此选项是最佳选择。
+- [选项 1](#no-card)：立即获取**免费试用版**API 密钥，而无需提供任何信用卡信息（需要具有现有的 Azure 帐户）。 **免费试用**期限为30天，数据将在结束时删除。 此选项最适合用于对服务的快速试验。
+- [选项 2](#new-resource)：在 Azure 中创建新的语音资源，**免费订阅**（需要信用卡信息）。 **免费订阅**主要具有比付费订阅更严格的速率限制。 如果你想要测试服务，并计划在将来升级到付费订阅，并且不希望丢失数据，则可以使用此选项。
 
-## <a name="try-the-speech-service-without-credit-card-info"></a><a id="no-card"></a>尝试没有信用卡信息的语音服务
+## <a name="try-the-speech-service-without-credit-card-info"></a><a id="no-card"></a>试用语音服务，无需信用卡信息
 
-完成以下步骤以激活 30 天的免费试用版并获得 API 密钥。 完成以下步骤后，试用期立即开始。
+完成以下步骤以激活30天免费试用版并获取 API 密钥。 在完成以下步骤后，你的试用期将立即开始。
 
-1. 转到[尝试认知服务](https://azure.microsoft.com/try/cognitive-services/)。
+1. 请[尝试 "试用认知服务](https://azure.microsoft.com/try/cognitive-services/)"。
 1. 选择“语音 API”选项卡。****
-1. 选择**获取 API 密钥**。
+1. 选择 "**获取 API 密钥**"。
 
-您将看到帐单选项。 选择免费选项，然后读取和批准用户协议。 您将获得可用于免费试用语音服务的密钥 30 天。
+系统会提供计费选项。 选择 "免费" 选项，然后阅读并批准用户协议。 你将看到可用于在30天内免费试用语音服务的密钥。
 
-## <a name="try-the-speech-service-by-creating-an-azure-resource"></a><a id="new-resource"></a>通过创建 Azure 资源尝试语音服务
+## <a name="try-the-speech-service-by-creating-an-azure-resource"></a><a id="new-resource"></a>通过创建 Azure 资源来试用语音服务
 
-对于以下步骤，您需要 Microsoft 帐户和 Azure 帐户。 如果您没有 Microsoft 帐户，则可以在[Microsoft 帐户门户](https://account.microsoft.com/account)免费注册一个帐户。 选择 **"使用 Microsoft 登录**"，然后，当被要求登录时，选择"**创建 Microsoft 帐户**"。 按步骤创建并验证新的 Microsoft 帐户。
+对于以下步骤，你需要 Microsoft 帐户和 Azure 帐户。 如果没有 Microsoft 帐户，则可以在[Microsoft 帐户门户](https://account.microsoft.com/account)上免费注册一个帐户。 选择**Microsoft 登录**然后在系统要求登录时，选择 "**创建 Microsoft 帐户**"。 按步骤创建并验证新的 Microsoft 帐户。
 
-拥有 Microsoft 帐户后，转到[Azure 注册页](https://azure.microsoft.com/free/ai/)，选择 **"免费开始"，** 并使用 Microsoft 帐户创建新的 Azure 帐户。
+拥有 Microsoft 帐户后，请在[Azure 注册页](https://azure.microsoft.com/free/ai/)上，选择 "**开始免费**"，然后使用 Microsoft 帐户创建新的 Azure 帐户。
 
 > [!NOTE]
-> 语音服务有两个服务层级：免费和订阅，它们具有不同的限制和优势。 当您注册免费 Azure 帐户时，它附带 200 美元的服务积分，您可以申请付费语音服务订阅，有效期最长为 30 天。
+> 语音服务有两个服务层级：免费和订阅，它们具有不同的限制和优势。 当你注册一个免费的 Azure 帐户时，它附带了 $200 服务信用额度，你可以将其应用于付费语音服务订阅，有效期为30天。
 >
 > 如果使用免费的低流量语音服务层级，即使是在免费试用帐户或服务额度过期之后，也仍可以保留此免费订阅。
 >
@@ -66,9 +66,9 @@ ms.locfileid: "80656127"
 
 1. 选择“创建”，然后：****
 
-   - 为新资源指定唯一的名称。 该名称可帮助您区分与同一服务关联的多个订阅。
+   - 为新资源指定唯一的名称。 该名称可帮助你区分绑定到同一个服务的多个订阅。
    - 选择新资源关联的 Azure 订阅，以确定计费方式。
-   - 选择将使用资源[的区域](regions.md)。
+   - 选择将使用该资源的[区域](regions.md)。
    - 选择免费 (F0) 或付费 (S0) 定价层。 若要查看每个层的定价和用量配额的完整信息，请选择“查看全部定价详细信息”****。
    - 为此“语音”订阅创建新的资源组或将订阅分配到现有资源组。 资源组有助于使多种 Azure 订阅保持有序状态。
    - 选择“创建”  。 系统随后会将你转到部署概述，并显示部署进度消息。
@@ -96,5 +96,5 @@ ms.locfileid: "80656127"
 完成我们的 10 分钟快速入门之一，或查看我们的 SDK 示例：
 
 > [!div class="nextstepaction"]
-> [快速入门：在 C#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
-> [语音 SDK 示例中识别语音](speech-sdk.md#sample-source-code)
+> [快速入门：在 c #](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+> [语音 SDK 示例](speech-sdk.md#sample-source-code)中识别语音

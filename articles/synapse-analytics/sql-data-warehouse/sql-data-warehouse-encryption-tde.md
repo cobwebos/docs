@@ -1,6 +1,6 @@
 ---
 title: 透明数据加密（门户）
-description: Azure 突触分析中的透明数据加密 （TDE）
+description: Azure Synapse Analytics 中的透明数据加密（TDE）
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -12,10 +12,10 @@ ms.author: jrasnick
 ms.reviewer: rortloff
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 247691326e3aa2c8027dd0318b23a2cbfcba1efe
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745228"
 ---
 # <a name="get-started-with-transparent-data-encryption-tde"></a>透明数据加密 (TDE) 入门
@@ -33,25 +33,25 @@ ms.locfileid: "80745228"
 
 ## <a name="enabling-encryption"></a>启用加密
 
-要启用 TDE，请按照以下步骤操作：
+若要启用 TDE，请执行以下步骤：
 
 1. 在 [Azure 门户](https://portal.azure.com)中打开数据库
 2. 在数据库边栏选项卡中，单击“设置”**** 按钮
-3. 选择 **"透明数据加密**选项![门户设置"](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings.png)
-4. 选择 **"打开**"![设置门户设置。](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-on.png)
-5. 选择 **"保存**
-   ![门户设置保存"](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-save.png)  
+3. 选择 "**透明数据加密**" ![选项门户设置](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings.png)
+4. 选择 "**在**上![设置门户网站设置"](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-on.png)
+5. 选择**保存**
+   ![门户设置保存](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-save.png)  
 
 ## <a name="disabling-encryption"></a>禁用加密
 
-要禁用 TDE，请按照以下步骤操作：
+若要禁用 TDE，请执行以下步骤：
 
 1. 在 [Azure 门户](https://portal.azure.com)中打开数据库
 2. 在数据库边栏选项卡中，单击“设置”**** 按钮
-3. 选择 **"透明数据加密**选项![门户设置"](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings.png)
+3. 选择 "**透明数据加密**" ![选项门户设置](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings.png)
 4. 选择**关闭**设置![门户设置](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-off.png)
-5. 选择 **"保存**
-   ![门户保存 2"](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-save2.png)  
+5. 选择**保存**
+   ![门户设置保存2](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-save2.png)  
 
 ## <a name="encryption-dmvs"></a>加密 DMV
 

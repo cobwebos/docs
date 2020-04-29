@@ -8,10 +8,10 @@ ms.date: 03/20/2020
 author: LuisBosquez
 ms.author: lbosq
 ms.openlocfilehash: c683ec0c4b3a536b0627a7c1c8abf28ee4f83663
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80757031"
 ---
 # <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>使用 MongoDB Compass 连接到 Azure Cosmos DB 的 API for MongoDB
@@ -22,13 +22,13 @@ Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可�
 
 ## <a name="pre-requisites"></a>先决条件
 
-要使用 MongoDB 指南针连接到 Cosmos DB 帐户，您必须：
+若要使用 MongoDB 罗盘连接到 Cosmos DB 帐户，必须执行以下操作：
 
 * 下载并安装 [Compass](https://www.mongodb.com/download-center/compass?jmp=hero)
 * 获得 Cosmos DB [连接字符串](connect-mongodb-account.md)信息
 
 > [!NOTE]
-> 目前，蒙戈DB指南针支持蒙戈DB服务器版本 3.2 的 Azure Cosmos DB API。
+> 目前，MongoDB 罗盘支持 MongoDB 服务器版本3.2 的 Azure Cosmos DB API。
 
 ## <a name="connect-to-cosmos-dbs-api-for-mongodb"></a>连接到 Cosmos DB 的 API for MongoDB
 
@@ -57,4 +57,4 @@ Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可�
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何将 [Studio 3T](mongodb-mongochef.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
-- 使用 Azure Cosmos DB 的用于 MongoDB 的 API 浏览 MongoDB [示例](mongodb-samples.md)。
+- 通过 Azure Cosmos DB 的用于 MongoDB 的 API 来浏览 MongoDB [示例](mongodb-samples.md)。

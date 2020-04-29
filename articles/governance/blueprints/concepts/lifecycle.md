@@ -1,13 +1,13 @@
 ---
 title: 了解蓝图的生命周期
-description: 了解蓝图定义的生命周期以及每个阶段的详细信息，包括更新和删除蓝图分配。
+description: 了解蓝图定义经历的生命周期，以及每个阶段的详细信息，包括更新和删除蓝图分配。
 ms.date: 07/30/2019
 ms.topic: conceptual
 ms.openlocfilehash: 46da42ec97f16af91ef8e41362a085d466bbb887
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80677373"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>了解 Azure 蓝图的生命周期
@@ -28,7 +28,7 @@ ms.locfileid: "80677373"
 
 创建蓝图时，请向其添加项目、将其保存到管理组或订阅，并提供唯一名称和唯一版本。 目前，蓝图处于“草稿”模式，尚不可分配****。 但在“草稿”模式下，仍可继续更新和更改此蓝图****。
 
-如果“草稿”模式下的某个蓝图从未发布过，则它在“蓝图定义”页面上显示的图标将与已发布的蓝图所显示的不同************。 **最新版本**显示为这些从未发布的蓝图的**草稿**。
+如果“草稿”模式下的某个蓝图从未发布过，则它在“蓝图定义”页面上显示的图标将与已发布的蓝图所显示的不同************。 对于这些从未发布蓝图，**最新版本**显示为**草稿**。
 
 使用 [Azure 门户](../create-blueprint-portal.md#create-a-blueprint)或 [REST API](../create-blueprint-rest-api.md#create-a-blueprint) 创建和编辑蓝图。
 
@@ -62,11 +62,11 @@ ms.locfileid: "80677373"
 
 1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”  。
 
-1. 从左侧的页面中选择**蓝图定义**，并使用筛选器选项查找要删除 的蓝图。 选择它以打开编辑页面。
+1. 从左侧页面中选择 "**蓝图定义**"，并使用筛选器选项查找要删除其版本的蓝图。 选择它以打开 "编辑" 页。
 
-1. 选择 **"已发布版本**"选项卡，然后找到要删除的版本。
+1. 选择 "**已发布版本**" 选项卡，然后找到要删除的版本。
 
-1. 右键单击要删除的版本，然后选择 **"删除此版本**"。
+1. 右键单击要删除的版本，然后选择 "**删除此版本**"。
 
 ## <a name="deleting-the-blueprint"></a>删除蓝图
 
@@ -93,21 +93,21 @@ ms.locfileid: "80677373"
 
 要了解操作方式，请参阅[更新现有分配](../how-to/update-existing-assignments.md)。
 
-### <a name="unassigning-assignments"></a>取消分配分配
+### <a name="unassigning-assignments"></a>取消分配赋值
 
-如果不再需要蓝图，则可以从管理组或订阅中取消分配它。 在取消分配蓝图期间，将发生以下情况：
+如果不再需要该蓝图，则可以将其从管理组或订阅中取消分配。 在蓝图取消分配期间，会发生以下情况：
 
 - 删除[蓝图资源锁定](resource-locking.md)
 - 删除蓝图分配对象
-- （有条件）如果使用**系统分配的托管标识**，也会删除
+- 增值税如果使用**系统分配的托管标识**，还会将其删除
 
 > [!NOTE]
-> 蓝图分配部署的所有资源都保留原位，但不再受 Azure 蓝图的保护。
+> 蓝图分配部署的所有资源都将保留原样，但不再受 Azure 蓝图的保护。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何使用[静态和动态参数](parameters.md)。
-- 学习自定义[蓝图排序顺序](sequencing-order.md)。
+- 了解如何自定义[蓝图排序顺序](sequencing-order.md)。
 - 了解如何利用[蓝图资源锁定](resource-locking.md)。
-- 了解如何[更新现有作业](../how-to/update-existing-assignments.md)。
-- 在分配蓝图期间使用[常规故障排除时](../troubleshoot/general.md)解决问题。
+- 了解如何[更新现有分配](../how-to/update-existing-assignments.md)。
+- 使用[一般故障排除](../troubleshoot/general.md)在蓝图的分配期间解决问题。

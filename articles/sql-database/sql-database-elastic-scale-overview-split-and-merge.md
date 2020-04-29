@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: c7eb1670ee911895bdba23921845b8795f4998af
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80811307"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>在扩展云数据库之间移动数据
@@ -33,12 +33,12 @@ ms.locfileid: "80811307"
 ## <a name="documentation"></a>文档
 
 1. [弹性数据库拆分 / 合并工具教程](sql-database-elastic-scale-configure-deploy-split-and-merge.md)
-2. [拆分合并安全配置](sql-database-elastic-scale-split-merge-security-configuration.md)
+2. [拆分 / 合并安全配置](sql-database-elastic-scale-split-merge-security-configuration.md)
 3. [拆分 / 合并安全注意事项](sql-database-elastic-scale-split-merge-security-configuration.md)
-4. [分片地图管理](sql-database-elastic-scale-shard-map-management.md)
-5. [迁移要扩展的现有数据库](sql-database-elastic-convert-to-use-elastic-tools.md)
+4. [分片映射管理](sql-database-elastic-scale-shard-map-management.md)
+5. [迁移要扩大的现有数据库](sql-database-elastic-convert-to-use-elastic-tools.md)
 6. [弹性数据库工具](sql-database-elastic-scale-introduction.md)
-7. [弹性数据库工具词汇表](sql-database-elastic-scale-glossary.md)
+7. [弹性数据库工具术语表](sql-database-elastic-scale-glossary.md)
 
 ## <a name="why-use-the-split-merge-tool"></a>为什么使用拆分/合并工具
 
@@ -48,11 +48,11 @@ ms.locfileid: "80811307"
 
 - **拆分以实现增长**
 
-  为了提高处理爆炸性增长的总体容量，需要通过对数据进行分片并将数据分发给越来越多的数据库来提供额外容量，直到满足容量需求。 这是“拆分”功能的一个典型示例****。
+  为了提高处理爆炸性增长的总体容量，需要通过对数据进行分片并将数据分发给越来越多的数据库来提供额外容量，直到满足容量需求。 这是“拆分”功能的一个典型示例  。
 
 - **合并以实现缩减**
 
-  由于业务的季节性，需要缩减容量。 当业务减少时，使用该工具可减少到更少的缩放单元。 弹性缩放拆分/合并服务的“合并”功能可以满足此要求。
+  由于业务的季节性，需要缩减容量。 当业务减少时，使用该工具可纵向缩减到更少的缩放单元。 弹性缩放拆分/合并服务的“合并”功能可以满足此要求。
 
 - **通过移动 Shardlet 管理热点**
 
@@ -62,7 +62,7 @@ ms.locfileid: "80811307"
 
 - **客户托管服务**
 
-  拆分/合并将作为客户托管服务交付。 必须在 Microsoft Azure 订阅中部署并托管该服务。 从 NuGet 下载的程序包将包含一个要使用特定部署信息完成的配置模板。 有关详细信息，请参阅[拆分 / 合并教程](sql-database-elastic-scale-configure-deploy-split-and-merge.md)。 Azure 订阅运行有该服务，可以控制和配置该服务的大多数安全设置。 默认模板包括配置 TLS 的选项、基于证书的客户端身份验证、存储凭据的加密、DoS 防护和 IP 限制。 可以在以下[拆分 / 合并安全配置](sql-database-elastic-scale-split-merge-security-configuration.md)文档中找到有关安全方面的详细信息。
+  拆分/合并将作为客户托管服务交付。 必须在 Microsoft Azure 订阅中部署并托管该服务。 从 NuGet 下载的程序包将包含一个要使用特定部署信息完成的配置模板。 有关详细信息，请参阅[拆分 / 合并教程](sql-database-elastic-scale-configure-deploy-split-and-merge.md)。 Azure 订阅运行有该服务，可以控制和配置该服务的大多数安全设置。 默认模板包括配置 TLS 的选项、基于证书的客户端身份验证、存储凭据的加密、DoS 保护和 IP 限制。 可以在以下[拆分 / 合并安全配置](sql-database-elastic-scale-split-merge-security-configuration.md)文档中找到有关安全方面的详细信息。
 
   默认部署的服务可与一个辅助角色和一个 Web 角色同时运行。 在 Azure 云服务中，每个角色都使用 A1 VM 大小。 虽然无法在部署程序包时修改这些设置，但是可以在运行的云服务中成功进行部署之后更改它们（通过 Azure 门户）。 请注意，出于技术方面的原因，不得为多个实例配置辅助角色。
 
@@ -173,7 +173,7 @@ ms.locfileid: "80811307"
 - 必须存在分片并且这些分片已在分片映射中注册，才可以对这些分片执行拆分/合并操作。
 - 该服务未将表或任何其他数据库对象的自动创建作为其操作的一部分。 这意味着在任何拆分/合并/移动操作之前，所有分片表和引用表的架构都需要存在于目标分片上。 在将通过拆分/合并/移动操作添加新的 shardlet 的范围中，尤其要求分片表为空。 否则，该操作将无法通过目标分片上的初始一致性检查。 此外，请注意，仅当引用表为空时才复制引用数据，而且对于引用表上的其他并发写入操作没有一致性保证。 我们建议，在运行拆分/合并操作的同时不要使其他写入操作对引用表做出更改。
 - 该服务依赖于行标识（由包含分片键的唯一索引或键构建）来提高较大 shardlet 的性能和可靠性。 这使该服务能够移动粒度比分片键值更加精细的数据。 这有助于减少操作过程中必需的日志空间和锁定的最大数量。 如果希望通过拆分/合并/移动请求使用给定表，请考虑在该表上创建一个包括分片键的唯一索引或主键。 出于性能原因，分片键应为键或索引中的起始列。
-- 在请求处理过程中，一些 shardlet 数据可能会同时存在于源分片和目标分片上。 为了防止在 shardlet 移动过程中出现故障，这是必需的。 拆分/合并服务与分片映射功能的集成可以确保在分片映射上使用“OpenConnectionForKey”方法通过依赖于数据的路由 API 建立的连接不会显示任何不一致的中间状态****。 但是，在不使用 **OpenConnectionForKey** 方法连接到源分片或目标分片时，如果正在执行拆分 / 合并/移动请求，则不一致的中间状态可能可见。 这些连接可能会显示部分或重复的结果，具体取决于时间设置或进行基础连接的分片。 此限制当前包括由 Elastic Scale 多分片查询建立的连接。
+- 在请求处理过程中，一些 shardlet 数据可能会同时存在于源分片和目标分片上。 为了防止在 shardlet 移动过程中出现故障，这是必需的。 拆分/合并服务与分片映射功能的集成可以确保在分片映射上使用“OpenConnectionForKey”方法通过依赖于数据的路由 API 建立的连接不会显示任何不一致的中间状态  。 但是，在不使用 **OpenConnectionForKey** 方法连接到源分片或目标分片时，如果正在执行拆分 / 合并/移动请求，则不一致的中间状态可能可见。 这些连接可能会显示部分或重复的结果，具体取决于时间设置或进行基础连接的分片。 此限制当前包括由 Elastic Scale 多分片查询建立的连接。
 - 不能在不同的角色之间共享用于拆分/合并服务的元数据数据库。 例如，在过渡环境中运行的拆分/合并服务的角色需要指向其他元数据数据库而不是生产角色。
 
 ## <a name="billing"></a>计费
@@ -186,15 +186,15 @@ ms.locfileid: "80811307"
 
 拆分 / 合并服务在元数据存储数据库中为已完成和正在进行的请求提供 **RequestStatus** 表。 该表将为已提交到拆分/合并服务的此实例的每个拆分/合并请求列出一行。 它将为每个请求提供以下信息：
 
-- **时间 戳**
+- **Timestamp**
 
   发起请求时的时间和日期。
 
-- **操作 Id**
+- **OperationId**
 
   唯一标识请求的 GUID。 此请求也可用于取消仍在进行的操作。
 
-- **状态**
+- **Status**
 
   该请求的当前状态。 对于正在进行的请求，它还会列出请求所在的当前阶段。
 
@@ -202,7 +202,7 @@ ms.locfileid: "80811307"
 
   用于指示是否已取消请求的标志。
 
-- **进展**
+- **进度**
 
   该操作完成过程的百分比估计。 值 50 指示该操作大约完成 50%。
 
@@ -249,7 +249,7 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext `
 
 上图中突出显示的 WADLogsTable 包含来自拆分/合并服务的应用程序日志的详细事件。 请注意，已下载包提供的默认配置面向生产部署。 因此，从服务实例中提取日志和计数器的时间间隔较大（5 分钟）。 对于测试和部署，可以通过按需调整 Web 或辅助角色的诊断设置来减少该时间间隔。 右键单击 Visual Studio 服务器资源管理器中的角色（如上所示），并在对话框中调整诊断配置设置的传输时间段：
 
-![Configuration][3]
+![配置][3]
 
 ## <a name="performance"></a>性能
 

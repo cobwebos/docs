@@ -1,43 +1,43 @@
 ---
 title: 材料
-description: 渲染材质描述和材质属性
+description: 呈现材料描述和材料属性
 author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: conceptual
 ms.openlocfilehash: 8551e17ddd71e76aca0c85b9768f564ae0e5f049
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681839"
 ---
 # <a name="materials"></a>材料
 
-材质是定义如何呈现[等同](meshes.md)的[共享资源](../concepts/lifetime.md)。 材质用于指定要应用的[纹理](textures.md)、是否使对象透明以及如何计算照明。
+材料是用于定义[网格](meshes.md)呈现方式的[共享资源](../concepts/lifetime.md)。 材料用于指定要应用的[纹理](textures.md)、是否使对象透明以及如何计算光照。
 
-材料在[模型转换](../how-tos/conversion/model-conversion.md)期间自动创建，并在运行时访问。 您还可以从代码创建自定义材料并替换现有材料。 如果要跨多个网点共享相同的材料，此方案尤其有意义。 由于材质的修改在引用材质的每个网格上都可见，因此此方法可用于轻松应用更改。
+材料是在[模型转换](../how-tos/conversion/model-conversion.md)期间自动创建的，并且可在运行时进行访问。 还可以通过代码创建自定义材料并替换现有材料。 如果您想要跨多个网格共享同一资料，此方案特别有用。 由于对材料的修改在每个引用它的网格上可见，因此此方法可用于轻松应用更改。
 
 > [!NOTE]
-> 某些用例（如突出显示选取的对象）可以通过修改材质来完成，但通过[分层状态覆盖组件](../overview/features/override-hierarchical-state.md)更容易实现。
+> 某些用例（例如突出显示的对象）可以通过修改材料来完成，但通过[HierarchicalStateOverrideComponent](../overview/features/override-hierarchical-state.md)实现起来要容易得多。
 
 ## <a name="material-types"></a>材料类型
 
-Azure 远程呈现有两种不同的材质类型：
+Azure 远程呈现具有两种不同的材料类型：
 
-* [PBR 材质](../overview/features/pbr-materials.md)用于应尽可能呈现为物理正确曲面。 使用*基于物理的渲染*（PBR） 计算这些材料的真实照明。 为了充分利用这种材料类型，提供高质量的输入数据（如粗糙度和法线贴图）非常重要。
+* 对于应尽可能以物理方式正确呈现的图面，将使用[.pbr 材料](../overview/features/pbr-materials.md)。 使用*基于物理的呈现*（.pbr）为这些材料计算现实照明。 若要充分利用这种材料类型，必须提供高质量的输入数据，如粗糙度和普通地图。
 
-* [颜色材料](../overview/features/color-materials.md)用于不需要额外照明的情况。 这些材料总是充满明亮，更容易设置。 颜色材料用于本应没有照明或已包含静态照明的数据，例如通过[摄影测量](https://en.wikipedia.org/wiki/Photogrammetry)获得的模型。
+* [颜色材料](../overview/features/color-materials.md)用于不需要其他照明的情况。 这些材料始终具有完整的亮点，更易于设置。 颜色材料用于应根本不使用光照或已合并静态照明的数据，例如通过[photogrammetry](https://en.wikipedia.org/wiki/Photogrammetry)获得的模型。
 
-## <a name="mesh-vs-meshcomponent-material-assignment"></a>网格与网格组件材料分配
+## <a name="mesh-vs-meshcomponent-material-assignment"></a>网格与 MeshComponent 材料分配
 
-[梅斯](meshes.md)有一个或多个子百年代。 每个子网格引用一个材质。 您可以更改材质以直接在网格上使用，也可以重写要用于[网格组件](meshes.md#meshcomponent)上的子网格的材料。
+[网格](meshes.md)有一个或多个 submeshes。 每个子网格都引用一个材料。 您可以更改要在网格上直接使用的材料，也可以在[MeshComponent](meshes.md#meshcomponent)上覆盖要用于子网格的材料。
 
-直接在网格资源上修改材质时，此更改会影响该网格的所有实例。 但是，在网格组件上更改它仅影响该网格实例。 哪种方法更合适取决于所需的行为，但修改 Mesh组件是更常见的方法。
+直接在网格资源上修改材料时，此更改会影响该网格的所有实例。 但在 MeshComponent 上更改它只会影响一个网格实例。 更合适的方法取决于所需的行为，但修改 MeshComponent 是更常见的方法。
 
 ## <a name="material-classes"></a>材料类
 
-API 提供的所有材料都派生自基类`Material`。 可通过`Material.MaterialSubType`或直接强制转换它们来查询其类型：
+API 提供的所有资料派生自基类`Material`。 可以通过`Material.MaterialSubType`或直接强制转换其类型来查询其类型：
 
 ``` cs
 void SetMaterialColorToGreen(Material material)

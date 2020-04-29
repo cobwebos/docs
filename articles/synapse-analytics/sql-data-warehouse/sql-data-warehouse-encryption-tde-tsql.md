@@ -1,6 +1,6 @@
 ---
-title: 透明数据加密 （T-SQL）
-description: Azure 突触分析 （T-SQL） 中的透明数据加密 （TDE）
+title: 透明数据加密（T-sql）
+description: Azure Synapse Analytics （T-sql）中的透明数据加密（TDE）
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -12,10 +12,10 @@ ms.author: jrasnick
 ms.reviewer: rortloff
 ms.custom: seo-lt-2019
 ms.openlocfilehash: ae751cc5b8e3ab67f3e65757724d0ebae1c45e02
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745248"
 ---
 # <a name="get-started-with-transparent-data-encryption-tde"></a>透明数据加密 (TDE) 入门
@@ -33,9 +33,9 @@ ms.locfileid: "80745248"
 
 ## <a name="enabling-encryption"></a>启用加密
 
-按照以下步骤启用 TDE：
+请按照以下步骤启用 TDE：
 
-1. 使用在 master 数据库中充当管理员或 **dbmanager** 角色成员的登录名，连接到托管数据库的服务器上的 *master* 数据库
+1. 使用在 master 数据库中充当管理员或 *dbmanager* 角色成员的登录名，连接到托管数据库的服务器上的 **master** 数据库
 2. 执行以下语句来加密数据库。
 
 ```sql
@@ -44,9 +44,9 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 
 ## <a name="disabling-encryption"></a>禁用加密
 
-按照以下步骤禁用 TDE：
+请按照以下步骤来禁用 TDE：
 
-1. 使用在 master 数据库中充当管理员或 **dbmanager** 角色成员的登录名，连接到 *master* 数据库
+1. 使用在 master 数据库中充当管理员或 *dbmanager* 角色成员的登录名，连接到 **master** 数据库
 2. 执行以下语句来加密数据库。
 
 ```sql
@@ -54,13 +54,13 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION OFF;
 ```
 
 > [!NOTE]
-> 在更改 TDE 设置之前，必须恢复已暂停的 SQL 池。
+> 在更改 TDE 设置之前，必须恢复暂停的 SQL 池。
 
 ## <a name="verifying-encryption"></a>验证加密
 
-要验证加密状态，请按照以下步骤操作：
+若要验证加密状态，请执行以下步骤：
 
-1. 使用在 master 数据库中充当管理员或 **dbmanager** 角色成员的登录名，连接到 *master* 数据库或实例数据库
+1. 使用在 master 数据库中充当管理员或 *dbmanager* 角色成员的登录名，连接到 **master** 数据库或实例数据库
 2. 执行以下语句来加密数据库。
 
 ```sql

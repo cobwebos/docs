@@ -11,10 +11,10 @@ author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 03/05/2020
 ms.openlocfilehash: 09164580b8bdb249fc12d14e827ad799d51cab34
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80756590"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>将模型部署到 Azure 机器学习计算实例
@@ -27,9 +27,9 @@ ms.locfileid: "80756590"
 - 正在测试一个开发中的模型。
 
 > [!TIP]
-> 将模型从计算实例上的 Jupyter Notebook 部署到同一 VM 上的 Web 服务是本地部署__。 在这种情况下，“本地”计算机是计算实例。 有关部署的详细信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。
+> 将模型从计算实例上的 Jupyter Notebook 部署到同一 VM 上的 Web 服务是本地部署  。 在这种情况下，“本地”计算机是计算实例。 有关部署的详细信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 一个有计算实例运行的 Azure 机器学习工作区。 有关详细信息，请参阅[设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)。
 
@@ -60,9 +60,9 @@ ms.locfileid: "80756590"
 若要将示例数据提交到正在运行的服务，请使用以下代码。 将 `service_url` 值替换为在上一步获取的 URL：
 
 > [!NOTE]
-> 验证到计算实例上的部署时，将使用 Azure 活动目录进行身份验证。 示例代码`interactive_auth.get_authentication_header()`中的调用将使用 AAD 对您进行身份验证，并返回一个标头，该标头随后可用于对计算实例上的服务进行身份验证。 有关详细信息，请参阅为[Azure 机器学习资源和工作流设置身份验证](how-to-setup-authentication.md#interactive-authentication)。
+> 对计算实例上的部署进行身份验证时，将使用 Azure Active Directory 进行身份验证。 对示例代码中 `interactive_auth.get_authentication_header()` 的调用将使用 AAD 对你进行身份验证，并返回一个标头，然后可使用该标头向计算实例上的服务进行身份验证。 有关详细信息，请参阅[为 Azure 机器学习资源和工作流设置身份验证](how-to-setup-authentication.md#interactive-authentication)。
 >
-> 验证到 Azure 库伯奈斯服务或 Azure 容器实例上的部署时，使用不同的身份验证方法。 有关详细信息，请参阅[为 Azure 机器学习资源和工作流设置身份验证](how-to-setup-authentication.md#web-service-authentication)。
+> 对 Azure Kubernetes 服务或 Azure 容器实例上的部署进行身份验证时，将使用不同的身份验证方法。 有关详细信息，请参阅[为 Azure 机器学习资源和工作流设置身份验证](how-to-setup-authentication.md#web-service-authentication)。
 
 ```python
 import requests
@@ -96,7 +96,7 @@ print("prediction:", resp.text)
 
 * [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
 * [部署疑难解答](how-to-troubleshoot-deployment.md)
-* [使用 TLS 通过 Azure 机器学习保护 Web 服务](how-to-secure-web-service.md)
+* [使用 TLS 通过 Azure 机器学习来保护 web 服务](how-to-secure-web-service.md)
 * [使用部署为 Web 服务的机器学习模型](how-to-consume-web-service.md)
-* [使用应用程序见解监视 Azure 机器学习模型](how-to-enable-app-insights.md)
+* [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)
 * [为生产环境中的模型收集数据](how-to-enable-data-collection.md)

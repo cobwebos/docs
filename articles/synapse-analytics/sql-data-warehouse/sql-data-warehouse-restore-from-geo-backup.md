@@ -1,6 +1,6 @@
 ---
 title: 从异地备份还原数据仓库
-description: 地理还原 SQL 池的指南。
+description: 异地还原 SQL 池的操作指南。
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -12,21 +12,21 @@ ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 7e0980a9142dc966916d5a4df898ea53b0ddeae5
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745074"
 ---
-# <a name="geo-restore-for-sql-pool"></a>SQL 池的地理还原
+# <a name="geo-restore-for-sql-pool"></a>SQL 池的异地还原
 
-在本文中，您将了解如何通过 Azure 门户和 PowerShell 从地理备份还原 SQL 池。
+本文介绍如何通过 Azure 门户和 PowerShell 从异地备份还原 SQL 池。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-**验证 DTU 容量。** 每个 SQL 池都由具有默认 DTU 配额的 SQL 服务器（例如myserver.database.windows.net）托管。 验证 SQL Server 的剩余 DTU 配额是否足够进行数据库还原。 若要了解如何计算所需 DTU 或请求更多的 DTU，请参阅[请求 DTU 配额更改](sql-data-warehouse-get-started-create-support-ticket.md)。
+**验证 DTU 容量。** 每个 SQL 池由一个具有默认 DTU 配额的 SQL 服务器（例如 myserver.database.windows.net）托管。 验证 SQL Server 的剩余 DTU 配额是否足够进行数据库还原。 若要了解如何计算所需 DTU 或请求更多的 DTU，请参阅[请求 DTU 配额更改](sql-data-warehouse-get-started-create-support-ticket.md)。
 
 ## <a name="restore-from-an-azure-geographical-region-through-powershell"></a>通过 PowerShell 从 Azure 地理区域还原
 
@@ -74,22 +74,22 @@ $GeoRestoredDatabase.status
 
 ## <a name="restore-from-an-azure-geographical-region-through-azure-portal"></a>通过 Azure 门户从 Azure 地理区域还原
 
-按照下面概述的步骤从异地备份还原 SQL 池：
+请按照下面概述的步骤从异地备份还原 SQL 池：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)帐户。
 2. 单击“+ 创建资源”****。
 
    ![新建 DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
 
-3. 单击 **"数据库**"，然后单击 [Azure 突触分析（以前的 SQL DW） *。
+3. 单击 "**数据库**"，然后选择 "Azure Synapse Analytics （以前称为 SQL DW）"。
 
    ![新 DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new-02.png)
 
-4. 填写"**基础知识"** 选项卡中请求的信息，然后单击"**下一步：其他设置**"。
+4. 填写 "**基本**信息" 选项卡中所需的信息，然后单击 "**下一步：其他设置**"。
 
    ![基础](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
 
-5. 对于“使用现有的数据”参数，**** 请选择“备份”，然后从向下滚动选项中选择适当的备份。**** 单击 **"审阅 + 创建**"。
+5. 对于“使用现有的数据”参数，**** 请选择“备份”，然后从向下滚动选项中选择适当的备份。**** 单击 "**查看 + 创建**"。
 
    ![备份 (backup)](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
 
@@ -97,5 +97,5 @@ $GeoRestoredDatabase.status
 
 ## <a name="next-steps"></a>后续步骤
 
-- [还原现有 SQL 池](sql-data-warehouse-restore-active-paused-dw.md)
+- [还原现有的 SQL 池](sql-data-warehouse-restore-active-paused-dw.md)
 - [还原已删除的 SQL 池](sql-data-warehouse-restore-deleted-dw.md)

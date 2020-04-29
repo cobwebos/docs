@@ -1,6 +1,6 @@
 ---
-title: LinkedIn帐户连接的管理员同意 - Azure AD |微软文档
-description: 说明如何在 Azure 活动目录中的 Microsoft 应用中启用或禁用LinkedIn集成帐户连接
+title: LinkedIn 帐户连接的管理员许可-Azure AD |Microsoft Docs
+description: 说明如何在 Azure Active Directory 中启用或禁用 Microsoft 应用中的 LinkedIn 集成帐户连接
 services: active-directory
 author: curtand
 manager: daveba
@@ -14,18 +14,18 @@ ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 54e3821d269d11397ec4f9f5833e33ac6b555abc
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80755118"
 ---
-# <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>在 Azure 活动目录中集成LinkedIn帐户连接
+# <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>在 Azure Active Directory 中集成 LinkedIn 帐户连接
 
-您可以允许组织中的用户访问其在某些 Microsoft 应用中LinkedIn连接。 在用户同意连接其帐户之前，不会共享任何数据。 您可以将您的组织集成到 Azure 活动目录 （Azure AD）[管理中心](https://aad.portal.azure.com)中。
+你可以允许组织中的用户在某些 Microsoft 应用中访问其 LinkedIn 连接。 在用户同意连接其帐户之前，不会共享数据。 你可以在 Azure Active Directory （Azure AD）[管理中心](https://aad.portal.azure.com)内集成你的组织。
 
 > [!IMPORTANT]
-> LinkedIn帐户连接设置当前正在向 Azure AD 组织推出。 当它被推出到您的组织时，默认情况下将启用它。
+> LinkedIn 帐户连接设置当前正在 Azure AD 组织中推出。 在将其推出给你的组织时，它会默认启用。
 >
 > 异常：
 >
@@ -33,43 +33,43 @@ ms.locfileid: "80755118"
 > * 对于在德国预配的租户，此设置默认为关闭。 请注意，此设置不适用于使用德国 Microsoft 云的客户。
 > * 对于在法国预配的租户，此设置默认为关闭。
 >
-> 为您的组织启用LinkedIn帐户连接后，在用户同意代表他们访问公司数据的应用后，帐户连接将起作用。 有关用户同意设置的信息，请参阅[如何删除用户对应用程序的访问](https://docs.microsoft.com/azure/active-directory/application-access-assignment-how-to-remove-assignment)。
+> 为你的组织启用 LinkedIn 帐户连接后，帐户连接将在用户同意应用代表他们访问公司数据的应用后工作。 有关用户同意设置的信息，请参阅[如何删除用户对应用程序的访问权限](https://docs.microsoft.com/azure/active-directory/application-access-assignment-how-to-remove-assignment)。
 
-## <a name="enable-linkedin-account-connections-in-the-azure-portal"></a>在 Azure 门户中启用LinkedIn帐户连接
+## <a name="enable-linkedin-account-connections-in-the-azure-portal"></a>在 Azure 门户中启用 LinkedIn 帐户连接
 
-您只能为希望访问的用户启用LinkedIn帐户连接，从整个组织仅对组织中选定的用户。
+你可以仅为你想要访问的用户（从整个组织到你组织中的选定用户）启用 LinkedIn 帐户连接。
 
-1. 使用 Azure [AD](https://aad.portal.azure.com/)组织的全局管理员的帐户登录到 Azure AD 管理中心。
+1. 使用 Azure AD 组织的全局管理员帐户登录到[Azure AD 管理中心](https://aad.portal.azure.com/)。
 1. 选择“用户”****。
-1. 在 **"用户"** 页上，选择 **"用户设置**"。
-1. 在**LinkedIn帐户连接**下，允许用户连接其帐户以访问某些 Microsoft 应用中LinkedIn连接。 在用户同意连接其帐户之前，不会共享任何数据。
+1. 在 "**用户**" 页上，选择 "**用户设置**"。
+1. 在 " **LinkedIn 帐户连接**" 下，允许用户连接其帐户以在某些 Microsoft 应用中访问其 LinkedIn 连接。 在用户同意连接其帐户之前，不会共享数据。
 
-    * 选择 **"是**"可为组织中的所有用户启用该服务
-    * 选择 **"选定"组**，仅为组织中一组选定的用户启用该服务
-    * 选择 **"否**"以撤销组织所有用户的同意
+    * 选择 **"是"** 可为组织中的所有用户启用该服务
+    * 选择 "**所选组**" 以仅为组织中的一组选定用户启用该服务
+    * 选择 "**否**" 以撤消组织中所有用户的同意
 
-    ![在组织中集成LinkedIn帐户连接](./media/linkedin-integration/linkedin-integration.png)
+    ![在组织中集成 LinkedIn 帐户连接](./media/linkedin-integration/linkedin-integration.png)
 
-1. 完成后，选择 **"保存"** 以保存设置。
+1. 完成后，选择 "**保存**" 以保存设置。
 
 > [!Important]
-> 在用户同意连接其帐户之前，不会完全启用LinkedIn集成。 为用户启用帐户连接时，不会共享任何数据。
+> 如果用户同意连接帐户，则不会为用户完全启用 LinkedIn 集成。 为用户启用帐户连接时，不会共享数据。
 
-### <a name="assign-selected-users-with-a-group"></a>使用组分配选定的用户
+### <a name="assign-selected-users-with-a-group"></a>向选定用户分配组
 
-我们已替换了"选择"选项，该选项指定用户列表，并选择一组用户，以便您可以启用连接单个组（而不是许多单个用户）LinkedIn和 Microsoft 帐户的能力。 如果未为选定的单个用户启用LinkedIn帐户连接，则无需执行任何操作。 如果您以前为选定的单个用户启用了LinkedIn帐户连接，则应：
+我们替换了 "选定" 选项，该选项指定一个用户列表，其中包含选择一组用户的选项，以便您可以为单个组（而不是多个单独的用户）连接 LinkedIn 和 Microsoft 帐户。 如果没有为选定的单个用户启用 LinkedIn 帐户连接，则无需执行任何操作。 如果以前为所选的单个用户启用了 LinkedIn 帐户连接，则应执行以下操作：
 
-1. 获取单个用户的当前列表
+1. 获取各个用户的当前列表
 1. 将当前启用的单个用户移动到组
-1. 在 Azure AD 管理中心中的LinkedIn帐户连接设置中，将上一个组用作所选组。
+1. 使用 "Azure AD 管理中心" 中 "LinkedIn 帐户连接" 设置中的 "组" 作为所选组。
 
 > [!NOTE]
-> 即使您未将当前选定的单个用户移动到组，他们仍可以在 Microsoft 应用中看到LinkedIn信息。
+> 即使不将当前选定的单个用户移至某个组，他们仍可以在 Microsoft 应用中看到 LinkedIn 信息。
 
-### <a name="move-currently-selected-users-to-a-group"></a>将当前选定的用户移动到组
+### <a name="move-currently-selected-users-to-a-group"></a>将当前选择的用户移到组
 
-1. 创建为LinkedIn帐户连接选择的用户的 CSV 文件。
-1. 使用管理员帐户登录 Microsoft 365。
+1. 创建为 LinkedIn 帐户连接选择的用户的 CSV 文件。
+1. 用管理员帐户登录 Microsoft 365。
 1. 启动 PowerShell。
 1. 通过运行安装 Azure AD 模块`Install-Module AzureAD`
 1. 运行以下脚本：
@@ -84,26 +84,26 @@ ms.locfileid: "80755118"
   foreach($user in $users} { Add-AzureADGroupMember -ObjectId $groupId -RefObjectId $user ; Write-Host $i Added $user ; $i++ ; Start-Sleep -Milliseconds 10 }
   ```
 
-要在 Azure AD 管理中心中的LinkedIn帐户连接设置中使用步骤 2 中的组作为所选组，请参阅[在 Azure 门户中启用LinkedIn帐户连接](#enable-linkedin-account-connections-in-the-azure-portal)。
+若要使用步骤2中的组作为 Azure AD 管理中心中 "LinkedIn 帐户连接" 设置中的选定组，请参阅[在 Azure 门户中启用 LinkedIn 帐户连接](#enable-linkedin-account-connections-in-the-azure-portal)。
 
-## <a name="use-group-policy-to-enable-linkedin-account-connections"></a>使用组策略启用LinkedIn帐户连接
+## <a name="use-group-policy-to-enable-linkedin-account-connections"></a>使用组策略启用 LinkedIn 帐户连接
 
 1. 下载 [Office 2016 管理模板文件 (ADMX/ADML)](https://www.microsoft.com/download/details.aspx?id=49030)
 1. 提取 ADMX 文件然后将其复制到中央存储****。
-1. 打开组策略管理。
-1. 创建具有以下设置的组策略对象：**用户配置** > **管理模板** > **Microsoft Office 2016** > **杂项** > **显示 office 应用程序中的LinkedIn功能**。
+1. 打开“组策略管理”。
+1. 使用以下设置创建组策略对象： "**用户配置** > **管理模板** > **Microsoft Office 2016** > **Miscellaneous** > **"在 Office 应用程序中显示 LinkedIn 功能**"。
 1. 选择“已启用”或“已禁用”。********
   
    状态 | 效果
    ------ | ------
-   **已启用** | Office 2016“选项”中的“在 Office 应用程序中显示领英功能”设置已启用。**** 组织中的用户可以在其 Office 2016 应用程序中使用LinkedIn功能。
+   **已启用** | Office 2016“选项”中的“在 Office 应用程序中显示领英功能”设置已启用。**** 你的组织中的用户可以在其 Office 2016 应用程序中使用 LinkedIn 功能。
    **已禁用** | Office 2016“选项”中的“在 Office 应用程序中显示领英功能”设置已禁用，最终用户不能更改此设置。**** 组织中的用户无法在其 Office 2016 应用程序中使用 LinkedIn 功能。
 
-此组策略只会影响本地计算机上的 Office 2016 应用。 如果用户在其 Office 2016 应用中禁用LinkedIn，他们仍然可以在 Office 365 中看到LinkedIn功能。
+此组策略只会影响本地计算机上的 Office 2016 应用。 如果用户在其 Office 2016 应用中禁用 LinkedIn，则他们仍可在 Office 365 中看到 LinkedIn 功能。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [LinkedIn的用户同意和数据共享](linkedin-user-consent.md)
+* [LinkedIn 的用户同意和数据共享](linkedin-user-consent.md)
 
 * [Microsoft 应用中的 LinkedIn 信息和功能](https://go.microsoft.com/fwlink/?linkid=850740)
 

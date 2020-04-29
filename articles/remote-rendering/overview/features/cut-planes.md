@@ -1,37 +1,37 @@
 ---
-title: 切割平面
-description: 解释什么是切割平面以及如何使用它们
+title: 剪切平面
+description: 说明什么是切削平面以及如何使用它们
 author: jakrams
 ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: article
 ms.openlocfilehash: 8075d9cd4530bafb12a338830baf0fe22eb03bce
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681020"
 ---
-# <a name="cut-planes"></a>切割平面
+# <a name="cut-planes"></a>剪切平面
 
-*剪切平面*是一种视觉特征，用于剪辑虚拟平面一侧的像素，揭示[网](../../concepts/meshes.md)内。
-下图演示了效果。 左侧显示原始网格，右侧可以查看网格内部：
+*切割平面*是一种视觉功能，它在虚拟平面的一侧剪辑像素，并显示[网格](../../concepts/meshes.md)内部。
+下图演示了该效果。 左侧显示了可在网格内查看的原始网格：
 
 ![切割平面](./media/cutplane-1.png)
 
 ## <a name="limitations"></a>限制
 
-* 目前，Azure 远程呈现最多支持八个**活动切割平面**。 您可以创建更多切割平面组件，但如果尝试同时启用更多，它将忽略激活。 如果要切换要影响场景的组件，请先禁用其他平面。
-* 每个切割平面都会影响所有远程渲染的对象。 目前无法排除特定对象或网格部分。
-* 剪切平面纯粹是视觉特征，它们不会影响[空间查询](spatial-queries.md)的结果。 如果确实希望将铸入剪切开放网格的光线，则可以调整光线的起始点以位于切割平面上。 这样，光线只能击中可见部分。
+* 目前，Azure 远程渲染**最多支持八个活动切削平面**。 你可以创建更多的 "剪切" 平面组件，但如果尝试同时启用，则会忽略激活。 如果要切换哪个组件会影响场景，请先禁用其他平面。
+* 每个切割平面都将影响所有远程呈现的对象。 目前没有办法排除特定的对象或网格部分。
+* 剪切平面只是一项视觉特征，它们不会影响[空间查询](spatial-queries.md)的结果。 如果您确实想要将光线转换为剪切打开的网格，则可以调整射线的起点，使其位于切削平面上。 这样一来，ray 只能命中可见部分。
 
 ## <a name="performance-considerations"></a>性能注意事项
 
-每个活动切割平面在渲染过程中会产生少量成本。 在不需要切割平面时禁用或删除它们。
+在呈现期间，每个活动的切削面都会产生较小的成本。 禁用或删除不需要的 "剪切" 平面。
 
-## <a name="cutplanecomponent"></a>切割平面组件
+## <a name="cutplanecomponent"></a>CutPlaneComponent
 
-通过创建*CutPlane 组件*，向场景添加剪切平面。 平面的位置和方向由组件的所有者[实体](../../concepts/entities.md)决定。
+您可以通过创建*CutPlaneComponent*向场景中添加一个切口平面。 平面的位置和方向由组件的所有者[实体](../../concepts/entities.md)确定。
 
 ```cs
 void CreateCutPlane(AzureSession session, Entity ownerEntity)
@@ -43,19 +43,19 @@ void CreateCutPlane(AzureSession session, Entity ownerEntity)
 }
 ```
 
-### <a name="cutplanecomponent-properties"></a>切割平面组件属性
+### <a name="cutplanecomponent-properties"></a>CutPlaneComponent 属性
 
-以下属性在切割平面组件上公开：
+以下属性在切口平面组件上公开：
 
-* **已启用：** 您可以通过禁用组件暂时关闭切割平面。 禁用的切割平面不会产生渲染开销，也不会计入全局切割平面限制。
+* **已启用：** 您可以通过禁用组件来暂时关闭切削平面。 禁用的 "剪切" 平面不会产生渲染开销，也不会根据全局切削平面限制进行计数。
 
-* **正常：** 指定使用哪个方向（+X、-X、+Y、Y、+Z、-Z）作为平面法线。 此方向与所有者实体的方向相关。 移动和旋转所有者实体以进行精确放置。
+* **正常：** 指定将哪个方向（+ X，-X，+ Y，-Y，+ Z，-Z）用作平面法线。 此方向相对于所有者实体的方向。 移动和旋转所有者实体以获得精确位置。
 
-* **淡入淡出颜色**和**淡入淡出长度：**
+* **FadeColor**和**FadeLength：**
 
-  如果*淡入淡出颜色*的 alpha 值是非零，则靠近剪切平面的像素将淡入淡入 FadeColor 的 RGB 部分。 Alpha 通道的强度决定了它是完全褪色还是仅部分淡入淡出。 *淡入淡出符定义*此淡入淡出将发生的距离。
+  如果*FadeColor*的 alpha 值为非零，则接近切削平面的像素将淡入 FADECOLOR 的 RGB 部分。 Alpha 通道的强度决定了它是完全淡入淡化色还是仅部分淡出。 *FadeLength*定义此淡化将发生的距离。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [单面渲染](single-sided-rendering.md)
+* [单面呈现](single-sided-rendering.md)
 * [空间查询](spatial-queries.md)

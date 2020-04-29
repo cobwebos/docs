@@ -1,28 +1,28 @@
 ---
-title: 模型转换期间覆盖材料
-description: 解释转换时材料重写工作流
+title: 在模型转换期间替代材料
+description: 介绍转换时重写工作流的材料
 author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: how-to
 ms.openlocfilehash: 90653db4c572877a728964851a99beebf2e823a4
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681475"
 ---
-# <a name="override-materials-during-model-conversion"></a>模型转换期间覆盖材料
+# <a name="override-materials-during-model-conversion"></a>在模型转换期间替代材料
 
-在转换过程中，源模型中的材料设置用于定义渲染器使用的[PBR 材质](../../overview/features/pbr-materials.md)。
-有时，[默认转换](../../reference/material-mapping.md)不会提供所需的结果，您需要进行更改。
-转换模型以在 Azure 远程渲染中使用时，可以提供材质覆盖文件，以自定义基于每个材质的材料转换方式。
-有关[配置模型转换](configure-model-conversion.md)的部分具有声明材质重写文件名的说明。
+在转换过程中，源模型中的材料设置用于定义呈现器使用的[.pbr 材料](../../overview/features/pbr-materials.md)。
+有时[默认转换](../../reference/material-mapping.md)不会提供所需的结果，需要进行更改。
+转换模型以便在 Azure 远程呈现中使用时，可以提供材料覆盖文件来自定义材料转换如何按每个材料进行。
+有关[配置模型转换](configure-model-conversion.md)的部分包含声明材料覆盖文件名的说明。
 
-## <a name="the-override-file-used-during-conversion"></a>转换期间使用的覆盖文件
+## <a name="the-override-file-used-during-conversion"></a>转换期间使用的替代文件
 
-作为一个简单的示例，假设一个框模型具有单个材质，称为"默认"。 需要调整色泽颜色以用于 ARR。
-在这种情况下，可以按照如下`box_materials_override.json`方式创建文件：
+举个简单的例子，假设方框模型有一个称为 "默认" 的材料。 需要调整 albedo 颜色以在 ARR 中使用。
+在这种情况下`box_materials_override.json` ，可以创建文件，如下所示：
 
 ```json
 [
@@ -38,7 +38,7 @@ ms.locfileid: "80681475"
 ]
 ```
 
-该文件`box_materials_override.json`放置在输入容器中，并在 旁边`ConversionSettings.json``box.fbx`添加 ， 告诉转换在哪里可以找到重写文件（请参阅[配置模型转换](configure-model-conversion.md)）：
+该`box_materials_override.json`文件放置在输入容器中，并在旁`ConversionSettings.json` `box.fbx`添加，这会告诉转换在何处找到替代文件（请参阅[配置模型转换](configure-model-conversion.md)）：
 
 ```json
 {
@@ -46,13 +46,13 @@ ms.locfileid: "80681475"
 }
 ```
 
-转换模型后，将应用新设置。
+转换模型时，将应用新设置。
 
 ### <a name="color-materials"></a>颜色材料
 
-[彩色材质](../../overview/features/color-materials.md)模型描述了独立于照明的不断着色表面。
-例如，这对于摄影测量算法所制作的资产很有用。
-在材质覆盖文件中，材质可以通过设置为`unlit`声明为颜色材质。 `true`
+[颜色材料](../../overview/features/color-materials.md)模型描述了与光照无关的持续着色的图面。
+例如，这对于 Photogrammetry 算法创建的资产很有用。
+在 "材料覆盖文件" 中，通过将设置`unlit`为`true`，可以将材料声明为颜色材料。
 
 ```json
 [
@@ -67,11 +67,11 @@ ms.locfileid: "80681475"
 ]
 ```
 
-### <a name="ignore-specific-texture-maps"></a>忽略特定的纹理贴图
+### <a name="ignore-specific-texture-maps"></a>忽略特定纹理映射
 
-有时，您可能希望转换过程忽略特定的纹理贴图。 当模型由生成渲染器无法正确理解的特殊贴图的工具生成时，可能就是这种情况。 例如，用于定义非数性以外的事物的"不一元性映射"或"正常映射"存储为"BumpMap"的模型。 （在后一种情况下，您希望忽略"正常映射"，这将导致转换器使用"BumpMap"作为"正常地图"。
+有时，您可能希望转换过程忽略特定纹理映射。 这种情况可能是由一个工具生成的，该工具生成的是由呈现器无法正确理解的特殊映射。 例如，用于定义不透明度的 "OpacityMap" 或 "NormalMap" 存储为 "BumpMap" 的模型。 （在后一种情况下，您需要忽略 "NormalMap"，这将导致转换器使用 "BumpMap" 作为 "NormalMap"。）
 
-原理很简单。 只需添加一个称为`ignoreTextureMaps`的属性并添加要忽略的任何纹理贴图：
+原则很简单。 只需添加一个名`ignoreTextureMaps`为的属性，并添加要忽略的纹理映射：
 
 ```json
 [
@@ -82,11 +82,11 @@ ms.locfileid: "80681475"
 ]
 ```
 
-有关可以忽略的纹理贴图的完整列表，请参阅下面的 JSON 架构。
+有关可忽略的纹理映射的完整列表，请参阅下面的 JSON 架构。
 
 ## <a name="json-schema"></a>JSON 架构
 
-此处给出了材质文件的完整 JSON 架构。 除`unlit`和`ignoreTextureMaps`外，可用的属性是[颜色材质](../../overview/features/color-materials.md)和[PBR 材质](../../overview/features/pbr-materials.md)模型部分中描述的属性的子集。
+此处提供了材料文件的完整 JSON 架构。 除了`unlit`和`ignoreTextureMaps`之外，"可用" 属性还是 "[颜色材料](../../overview/features/color-materials.md)" 和 " [.pbr" 材料](../../overview/features/pbr-materials.md)模型各部分中描述的属性的子集。
 
 ```json
 {

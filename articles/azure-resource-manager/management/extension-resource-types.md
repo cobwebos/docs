@@ -4,10 +4,10 @@ description: 列出用于扩展其他资源类型的功能的 Azure 资源类型
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: 3a3fbc531750bec4b16e38f1fe79f613c1b94f5e
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80754869"
 ---
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>用于扩展其他资源的功能的资源类型
@@ -23,14 +23,14 @@ ms.locfileid: "80754869"
 - Microsoft.AlertsManagement/alertsSummary
 - Microsoft.Authorization/checkAccess
 - Microsoft.Authorization/denyAssignments
-- 微软.授权/查找孤儿角色分配
+- Microsoft. Authorization/findOrphanRoleAssignments
 - Microsoft.Authorization/locks
 - Microsoft.Authorization/permissions
 - Microsoft.Authorization/policyAssignments
 - Microsoft.Authorization/policyDefinitions
 - Microsoft.Authorization/policySetDefinitions
 - Microsoft.Authorization/roleAssignments
-- 微软.授权/角色分配使用指标
+- Microsoft. Authorization/roleAssignmentsUsageMetrics
 - Microsoft.Authorization/roleDefinitions
 - Microsoft.Billing/billingPeriods
 - Microsoft.Billing/billingPermissions
@@ -83,7 +83,7 @@ ms.locfileid: "80754869"
 - Microsoft.GuestConfiguration/softwareUpdates
 - microsoft.insights/baseline
 - microsoft.insights/calculatebaseline
-- 微软.insights/数据收集规则协会
+- microsoft insights/dataCollectionRuleAssociations
 - microsoft.insights/diagnosticSettings
 - microsoft.insights/diagnosticSettingsCategories
 - microsoft.insights/eventtypes
@@ -96,8 +96,8 @@ ms.locfileid: "80754869"
 - microsoft.insights/metricbaselines
 - microsoft.insights/metrics
 - microsoft.insights/myWorkbooks
-- 微软.见解/拓扑
-- 微软.见解/交易
+- microsoft insights/拓扑
+- microsoft insights/事务
 - microsoft.insights/vmInsightsOnboardingStatuses
 - Microsoft.KubernetesConfiguration/sourceControlConfigurations
 - Microsoft.Maintenance/applyUpdates
@@ -113,7 +113,7 @@ ms.locfileid: "80754869"
 - Microsoft.PolicyInsights/policyTrackedResources
 - Microsoft.PolicyInsights/remediations
 - Microsoft.RecoveryServices/backupProtectedItems
-- 微软.恢复服务/复制资格结果    
+- Microsoft.recoveryservices/replicationEligibilityResults    
 - Microsoft.ResourceHealth/availabilityStatuses
 - Microsoft.ResourceHealth/childAvailabilityStatuses
 - Microsoft.ResourceHealth/childResources
@@ -139,10 +139,10 @@ ms.locfileid: "80754869"
 - Microsoft.SecurityInsights/bookmarks
 - Microsoft.SecurityInsights/cases
 - Microsoft.SecurityInsights/dataConnectors
-- 微软.安全洞察/数据连接器检查要求
+- SecurityInsights/dataConnectorsCheckRequirements
 - Microsoft.SecurityInsights/entities
 - Microsoft.SecurityInsights/entityQueries
-- 微软.安全见解/事件
+- SecurityInsights/事件
 - Microsoft.SecurityInsights/officeConsents
 - Microsoft.SecurityInsights/settings
 - Microsoft.SoftwarePlan/hybridUseBenefits

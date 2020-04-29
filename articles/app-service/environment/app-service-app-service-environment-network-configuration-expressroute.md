@@ -1,6 +1,6 @@
 ---
-title: 配置 Azure 快速路由 v1
-description: 使用 Azure ExpressRoute 为电源应用应用服务环境的网络配置。 此文档仅提供给使用旧版 v1 ASE 的客户。
+title: 配置 Azure ExpressRoute v1
+description: 适用于 PowerApps 和 Azure ExpressRoute 的应用服务环境网络配置。 此文档仅为使用旧版 v1 ASE 的客户提供。
 author: stefsch
 ms.assetid: 34b49178-2595-4d32-9b41-110c96dde6bf
 ms.topic: article
@@ -8,10 +8,10 @@ ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: fc11c6932d625b119ad933f5d4d128b4355530c5
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80804429"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>使用 Azure ExpressRoute 的 PowerApps 的应用服务环境网络配置详细信息
@@ -39,7 +39,7 @@ ms.locfileid: "80804429"
 
 * 与 Azure 管理平面终结点（Azure 经典部署模型和 Azure 资源管理器终结点）建立的出站网络连接。 与这些终结点建立的连接包括 management.core.windows.net 和 management.azure.com 域。 
 
-* 与 ocsp.msocsp.com、mscrl.microsoft.com 和 crl.microsoft.com 域建立的出站网络连接。 需要连接到这些域来支持 TLS 功能。
+* 与 ocsp.msocsp.com、mscrl.microsoft.com 和 crl.microsoft.com 域建立的出站网络连接。 需要连接到这些域以支持 TLS 功能。
 
 * 虚拟网络的 DNS 配置必须能够解析本文中所述的所有终结点和域。 如果无法解析这些终结点，创建应用服务环境将会失败。 任何现有的应用服务环境将被标记为不正常。
 
@@ -85,22 +85,22 @@ ms.locfileid: "80804429"
 
 本部分介绍应用服务环境的示例 UDR 配置。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
-* 从 [Azure 下载页][AzureDownloads]安装 Azure PowerShell。 请选择下载发布日期为 2015 年 6 月或更晚的版本。 在**命令行工具** > **Windows PowerShell**下，选择 **"安装**"以安装最新的 PowerShell cmdlet。
+* 从 [Azure 下载页][AzureDownloads]安装 Azure PowerShell。 请选择下载发布日期为 2015 年 6 月或更晚的版本。 在 "**命令行工具** > "、"**Windows PowerShell**" 下，选择 "**安装**" 以安装最新的 PowerShell cmdlet。
 
 * 创建专供应用服务环境使用的唯一子网。 该唯一子网确保应用到子网的 UDR 只会打开应用服务环境的出站流量。
 
 > [!IMPORTANT]
 > 只有在完成配置步骤之后，才能部署应用服务环境。 这些步骤确保在尝试部署应用服务环境之前出站网络连接可用。
 
-### <a name="step-1-create-a-route-table"></a>步骤 1：创建路由表
+### <a name="step-1-create-a-route-table"></a>步骤1：创建路由表
 
 如以下代码片段所示，在“美国西部”Azure 区域创建名为 **DirectInternetRouteTable** 的路由表：
 
 `New-AzureRouteTable -Name 'DirectInternetRouteTable' -Location uswest`
 
-### <a name="step-2-create-routes-in-the-table"></a>步骤 2：在表中创建路由
+### <a name="step-2-create-routes-in-the-table"></a>步骤2：在表中创建路由
 
 将路由添加到路由表，以启用出站 Internet 访问。  
 
@@ -119,13 +119,13 @@ ms.locfileid: "80804429"
 > 单个 UDR 的默认上限为 100 个路由。 需要“汇总”Azure IP 地址范围以符合 100 个路由的限制。 UDR 定义的路由需要比 ExpressRoute 连接播发的路由更具体。
 > 
 
-### <a name="step-3-associate-the-table-to-the-subnet"></a>步骤 3：将表关联到子网
+### <a name="step-3-associate-the-table-to-the-subnet"></a>步骤3：将表关联到子网
 
 将路由表关联到用于部署应用服务环境的子网。 此命令将 **DirectInternetRouteTable** 表关联到将要包含应用服务环境的 **ASESubnet** 子网。
 
 `Set-AzureSubnetRouteTable -VirtualNetworkName 'YourVirtualNetworkNameHere' -SubnetName 'ASESubnet' -RouteTableName 'DirectInternetRouteTable'`
 
-### <a name="step-4-test-and-confirm-the-route"></a>第 4 步：测试和确认路线
+### <a name="step-4-test-and-confirm-the-route"></a>步骤4：测试和确认路由
 
 将路由表绑定到子网后，请测试并确认路由。
 

@@ -1,15 +1,15 @@
 ---
-title: 对群集使用 Azure AD 和 RBAC
+title: 使用分类的 Azure AD 和 RBAC
 titleSuffix: Azure Kubernetes Service
 description: 了解如何使用 Azure Active Directory 组成员身份在 Azure Kubernetes 服务 (AKS) 中通过基于角色的访问控制 (RBAC) 来限制对群集资源的访问
 services: container-service
 ms.topic: article
 ms.date: 04/16/2019
 ms.openlocfilehash: ad195085c049776bf0db418c57f2c72830f1adff
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80803563"
 ---
 # <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes 服务中使用基于角色的访问控制和 Azure Active Directory 标识来控制对群集资源的访问
@@ -18,7 +18,7 @@ ms.locfileid: "80803563"
 
 本文介绍如何使用 Azure AD 组成员身份在 AKS 群集中通过 Kubernetes RBAC 来控制对命名空间和群集资源的访问。 将在 Azure AD 中创建示例组和用户，然后在 AKS 群集中创建角色和角色绑定，以授予创建和查看资源的相应权限。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 本文假设已有一个启用了 Azure AD 集成的现有 AKS 群集。 如需 AKS 群集，请参阅[将 Azure Active Directory 与 AKS 集成][azure-ad-aks-cli]。
 
@@ -50,7 +50,7 @@ AKS_ID=$(az aks show \
 APPDEV_ID=$(az ad group create --display-name appdev --mail-nickname appdev --query objectId -o tsv)
 ```
 
-现在，使用 [az role assignment create][az-role-assignment-create] 命令为 *appdev* 组创建 Azure 角色分配。 此分配可为该组的任何成员授予 Azure Kubernetes 服务群集用户角色，因此可让他们使用 `kubectl` 来与 AKS 群集交互。**
+现在，使用 [az role assignment create][az-role-assignment-create] 命令为 *appdev* 组创建 Azure 角色分配。 此分配可为该组的任何成员授予 Azure Kubernetes 服务群集用户角色，因此可让他们使用 `kubectl` 来与 AKS 群集交互。 
 
 ```azurecli-interactive
 az role assignment create \
@@ -68,7 +68,7 @@ az role assignment create \
 OPSSRE_ID=$(az ad group create --display-name opssre --mail-nickname opssre --query objectId -o tsv)
 ```
 
-同样，请创建 Azure 角色分配，以便为该组的成员授予 Azure Kubernetes 服务群集用户角色：**
+同样，请创建 Azure 角色分配，以便为该组的成员授予 Azure Kubernetes 服务群集用户角色： 
 
 ```azurecli-interactive
 az role assignment create \
@@ -117,7 +117,7 @@ az ad group member add --group opssre --member-id $AKSSRE_ID
 
 现在创建 Azure AD 组和用户。 之前已经为组成员创建了 Azure 角色分配，使他们能够以普通用户的身份连接到 AKS 群集。 现在，让我们配置 AKS 群集，以允许这些不同的组访问特定的资源。
 
-首先使用 [az aks get-credentials][az-aks-get-credentials] 命令获取群集管理员凭据。 在以下部分之一，你将获取普通用户群集凭据，以查看 Azure AD 身份验证流的运作方式。**
+首先使用 [az aks get-credentials][az-aks-get-credentials] 命令获取群集管理员凭据。 在以下部分之一，你将获取普通用户群集凭据，以查看 Azure AD 身份验证流的运作方式。 
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
@@ -129,7 +129,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --ad
 kubectl create namespace dev
 ```
 
-在 Kubernetes 中，角色定义要授予的权限，角色绑定将这些权限应用到所需的用户或组。**** 这些分配可应用于特定命名空间或整个群集。 有关详细信息，请参阅[使用 RBAC 授权][rbac-authorization]。
+在 Kubernetes 中，角色定义要授予的权限，角色绑定将这些权限应用到所需的用户或组。   这些分配可应用于特定命名空间或整个群集。 有关详细信息，请参阅[使用 RBAC 授权][rbac-authorization]。
 
 首先，为 *dev* 命名空间创建一个角色。 此角色授予对命名空间的完全权限。 在生产环境中，可为不同的用户或组指定更精细的权限。
 
@@ -158,7 +158,7 @@ rules:
 kubectl apply -f role-dev-namespace.yaml
 ```
 
-接下来，使用 [az ad group show][az-ad-group-show] 命令获取 appdev** 组的资源 ID。 此组将设置为在下一步骤中创建的角色绑定的使用者。
+接下来，使用 [az ad group show][az-ad-group-show] 命令获取 appdev  组的资源 ID。 此组将设置为在下一步骤中创建的角色绑定的使用者。
 
 ```azurecli-interactive
 az ad group show --group appdev --query objectId -o tsv
@@ -192,7 +192,7 @@ kubectl apply -f rolebinding-dev-namespace.yaml
 
 现在请重复上述步骤，为 SRE 创建命名空间、角色和角色绑定。
 
-首先，使用 [kubectl create namespace][kubectl-create] 命令为 sre** 创建一个命名空间：
+首先，使用 [kubectl create namespace][kubectl-create] 命令为 sre  创建一个命名空间：
 
 ```console
 kubectl create namespace sre
@@ -263,7 +263,7 @@ kubectl apply -f rolebinding-sre-namespace.yaml
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --overwrite-existing
 ```
 
-在 dev** 命名空间中使用 [kubectl run][kubectl-run] 命令计划一个基本的 NGINX Pod：
+在 dev  命名空间中使用 [kubectl run][kubectl-run] 命令计划一个基本的 NGINX Pod：
 
 ```console
 kubectl run --generator=run-pod/v1 nginx-dev --image=nginx --namespace dev
@@ -279,13 +279,13 @@ To sign in, use a web browser to open the page https://microsoft.com/devicelogin
 pod/nginx-dev created
 ```
 
-现在，请在 dev** 命名空间中使用 [kubectl get pods][kubectl-get] 命令查看 Pod。
+现在，请在 dev  命名空间中使用 [kubectl get pods][kubectl-get] 命令查看 Pod。
 
 ```console
 kubectl get pods --namespace dev
 ```
 
-如以下示例输出中所示，NGINX pod 已成功运行：**
+如以下示例输出中所示，NGINX pod 已成功运行： 
 
 ```console
 $ kubectl get pods --namespace dev
@@ -322,7 +322,7 @@ Error from server (Forbidden): pods is forbidden: User "aksdev@contoso.com" cann
 
 若要确认 Azure AD 组成员身份和 Kubernetes RBAC 是否可在不同的用户和组之间正常运行，请在以 *opssre* 用户身份登录后尝试运行前面的命令。
 
-使用 [az aks get-credentials][az-aks-get-credentials] 命令重置 *kubeconfig* 上下文，以清除前面为 aksdev** 用户缓存的身份验证令牌：
+使用 [az aks get-credentials][az-aks-get-credentials] 命令重置 *kubeconfig* 上下文，以清除前面为 aksdev  用户缓存的身份验证令牌：
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --overwrite-existing
@@ -390,7 +390,7 @@ az ad group delete --group opssre
 
 ## <a name="next-steps"></a>后续步骤
 
-有关如何保护 Kubernetes 群集的详细信息，请参阅[AKS 的访问和标识选项。][rbac-authorization]
+有关如何保护 Kubernetes 群集的详细信息，请参阅 [AKS 的访问和标识选项][rbac-authorization]。
 
 有关标识和资源控制的最佳做法，请参阅[有关 AKS 中的身份验证和授权的最佳做法][operator-best-practices-identity]。
 

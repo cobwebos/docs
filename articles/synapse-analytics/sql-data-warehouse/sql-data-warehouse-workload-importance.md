@@ -12,15 +12,15 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 43ee14784b6049e9b5c1a78e733e72bbc45f915d
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80744038"
 ---
-# <a name="azure-synapse-analytics-workload-importance"></a>Azure 突触分析工作负荷重要性
+# <a name="azure-synapse-analytics-workload-importance"></a>Azure Synapse 分析工作负荷重要性
 
-本文介绍工作负载重要性如何影响 Azure Synapse 中 Synapse SQL 池请求的执行顺序。
+本文介绍了工作负荷重要性如何影响 Azure Synapse 中 Synapse SQL 池请求的执行顺序。
 
 ## <a name="importance"></a>Importance
 
@@ -38,7 +38,7 @@ ms.locfileid: "80744038"
 
 ### <a name="locking"></a>锁定
 
-访问读取和写入活动锁是自然争用的一个方面。 [分区切换](sql-data-warehouse-tables-partition.md)或 [RENAME OBJECT](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 等活动需要权限提升的锁。  Azure Synapse 中的 Synapse SQL 池不具有工作负载重要性，可优化吞吐量。 针对吞吐量进行优化意味着，当正在运行的和排队的请求具有相同的锁定需求，并且资源可用时，排队的请求可能会绕过提前抵达请求队列的、具有更高锁定需求的请求。 将工作负荷重要性应用到具有较高锁定需求的请求后， 会先运行具有较高重要性的请求，然后再运行具有较低重要性的请求。
+访问读取和写入活动锁是自然争用的一个方面。 [分区切换](sql-data-warehouse-tables-partition.md)或 [RENAME OBJECT](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 等活动需要权限提升的锁。  如果没有工作负荷重要性，Azure Synapse 中的 Synapse SQL 池会优化吞吐量。 针对吞吐量进行优化意味着，当正在运行的和排队的请求具有相同的锁定需求，并且资源可用时，排队的请求可能会绕过提前抵达请求队列的、具有更高锁定需求的请求。 将工作负荷重要性应用到具有较高锁定需求的请求后， 会先运行具有较高重要性的请求，然后再运行具有较低重要性的请求。
 
 请考虑以下示例：
 
@@ -50,7 +50,7 @@ ms.locfileid: "80744038"
 
 ### <a name="non-uniform-requests"></a>非统一请求
 
-另一个可以借助重要性满足查询需求的场景是提交了具有不同资源类的请求。  如前所述，在同等重要性下，Azure 突触中的 Synapse SQL 池可优化吞吐量。 当混合大小请求（如小号或中型请求）排队时，Synapse SQL 池将选择适合可用资源的最早到达请求。 如果应用了工作负荷重要性，则计划执行的下一个请求是重要性最高的请求。
+另一个可以借助重要性满足查询需求的场景是提交了具有不同资源类的请求。  如前所述，在同一重要性下，Azure Synapse 中的 Synapse SQL 池会优化吞吐量。 当混合大小请求（如 smallrc 或 mediumrc）排队时，Synapse SQL 池会选择最早到达可用资源的请求。 如果应用了工作负荷重要性，则计划执行的下一个请求是重要性最高的请求。
   
 请考虑 DW500c 中的以下示例：
 

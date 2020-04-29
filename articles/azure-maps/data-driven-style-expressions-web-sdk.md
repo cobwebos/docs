@@ -1,6 +1,6 @@
 ---
-title: Azure 地图 Web SDK 中的数据驱动样式表达式 |微软 Azure 地图
-description: 在本文中，您将了解如何在 Microsoft Azure 地图 Web SDK 中使用数据驱动的样式表达式。
+title: Azure Maps Web SDK 中的数据驱动样式表达式 |Microsoft Azure 映射
+description: 在本文中，你将了解如何在 Microsoft Azure Map Web SDK 中使用数据驱动样式表达式。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 4/4/2019
@@ -10,25 +10,25 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen
 ms.openlocfilehash: d6009a655adcc26ebef31588eff2332a05f3a001
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80804718"
 ---
-# <a name="data-driven-style-expressions-web-sdk"></a>数据驱动的样式表达式（Web SDK）
+# <a name="data-driven-style-expressions-web-sdk"></a>数据驱动样式表达式（Web SDK）
 
-表达式使您能够将业务逻辑应用于样式选项，这些选项观察数据源中每个形状中定义的属性。 表达式可以筛选数据源或图层中的数据。 表达式可能由条件逻辑组成，如 if 语句。 并且，它们可用于使用字符串运算符、逻辑运算符和数学运算符来操作数据。
+使用表达式可以将业务逻辑应用到样式选项，这些选项可观察数据源中每个形状中定义的属性。 表达式可以筛选数据源或层中的数据。 表达式可以包含条件逻辑，如 if 语句。 而且，它们可用于使用：字符串运算符、逻辑运算符和数学运算符来操作数据。
 
-数据驱动的样式减少了围绕样式实现业务逻辑所需的代码量。 当与图层一起使用时，表达式将在单独的线程的渲染时计算。 与在 UI 线程上评估业务逻辑相比，此功能提供了更高的性能。
+数据驱动的样式可减少在样式设置周围实现业务逻辑所需的代码量。 与层一起使用时，将在单独的线程上的呈现时计算表达式。 与评估 UI 线程上的业务逻辑相比，此功能可提供更高的性能。
 
-此视频概述了 Azure 地图 Web SDK 中的数据驱动的样式。
+此视频概述了 Azure Maps Web SDK 中的数据驱动样式。
 
 <br/>
 
 <iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Data-Driven-Styling-with-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
-表达式表示为 JSON 数组。 数组中表达式的第一个元素是指定表达式运算符名称的字符串。 例如，"+"或"案例"。 下一个元素（如果有）是表达式的参数。 每个参数都是文本值（字符串、数字、布尔或 ）或其他`null`表达式数组。 以下伪代码定义表达式的基本结构。 
+表达式表示为 JSON 数组。 数组中表达式的第一个元素是一个字符串，该字符串指定表达式运算符的名称。 例如，"+" 或 "case"。 接下来的元素（如果有）是表达式的参数。 每个参数都是一个文本值（字符串、数字、布尔值或`null`）或另一个表达式数组。 以下伪代码定义表达式的基本结构。 
 
 ```javascript
 [ 
@@ -39,24 +39,24 @@ ms.locfileid: "80804718"
 ] 
 ```
 
-Azure 映射 Web SDK 支持多种类型的表达式。 表达式可以自行使用，也可以与其他表达式结合使用。
+Azure Maps Web SDK 支持多种类型的表达式。 表达式可以单独使用，也可以与其他表达式结合使用。
 
-| 表达式类型 | 说明 |
+| 表达式的类型 | 说明 |
 |---------------------|-------------|
-| [聚合表达式](#aggregate-expression) | 定义通过一组数据处理的计算的表达式，`clusterProperties`可以与 选项一`DataSource`起使用。 |
-| [布尔表达式](#boolean-expressions) | 布尔表达式提供了一组用于评估布尔比较的布尔运算符表达式。 |
-| [颜色表达式](#color-expressions) | 颜色表达式使创建和操作颜色值变得更加容易。 |
-| [条件表达式](#conditional-expressions) | 条件表达式提供的逻辑操作类似于 if 语句。 |
-| [数据表达式](#data-expressions) | 提供对要素中属性数据的访问。 |
-| [插值和步进表达式](#interpolate-and-step-expressions) | 插值和步进表达式可用于计算沿插值曲线或步进函数的值。 |
-| [特定于图层的表达式](#layer-specific-expressions) | 仅适用于单个图层的特殊表达式。 |
-| [数学表达式](#math-expressions) | 提供数学运算符，用于在表达式框架中执行数据驱动的计算。 |
-| [字符串运算符表达式](#string-operator-expressions) | 字符串运算符表达式对字符串执行转换操作，例如串联和转换大小写。 |
+| [聚合表达式](#aggregate-expression) | 一个表达式，该表达式定义对一组数据进行处理并可与`clusterProperties`选项一起使用的计算。 `DataSource` |
+| [布尔表达式](#boolean-expressions) | 布尔表达式提供一组用于计算布尔值比较的布尔运算符表达式。 |
+| [颜色表达式](#color-expressions) | 颜色表达式使您可以更轻松地创建和操作颜色值。 |
+| [条件表达式](#conditional-expressions) | 条件表达式提供类似于 if 语句的逻辑运算。 |
+| [数据表达式](#data-expressions) | 提供对功能中的属性数据的访问。 |
+| [内插和单步表达式](#interpolate-and-step-expressions) | 内插和单步表达式可用于沿内插曲线或单步执行函数计算值。 |
+| [层特定的表达式](#layer-specific-expressions) | 仅适用于单个层的特殊表达式。 |
+| [数学表达式](#math-expressions) | 提供数学运算符，用于在 expression framework 内执行数据驱动的计算。 |
+| [字符串运算符表达式](#string-operator-expressions) | 字符串运算符表达式对字符串执行转换操作，例如连接和转换大小写。 |
 | [类型表达式](#type-expressions) | 类型表达式提供了用于测试和转换不同数据类型（如字符串、数字和布尔值）的工具。 |
-| [变量绑定表达式](#variable-binding-expressions) | 变量绑定表达式将计算结果存储在变量中，并在表达式的其他位置多次引用，而无需重新计算存储的值。 |
-| [缩放表达式](#zoom-expression) | 在渲染时检索地图的当前缩放级别。 |
+| [变量绑定表达式](#variable-binding-expressions) | 变量绑定表达式将计算的结果存储在一个变量中，并多次引用表达式中的其他位置，而无需重新计算存储的值。 |
+| [Zoom 表达式](#zoom-expression) | 在呈现时检索地图的当前缩放级别。 |
 
-本文档中的所有示例都使用以下功能来演示使用不同类型的表达式的不同方式。 
+本文档中的所有示例都使用以下功能演示了不同类型的表达式的不同使用方式。 
 
 ```javascript
 {
@@ -79,24 +79,24 @@ Azure 映射 Web SDK 支持多种类型的表达式。 表达式可以自行使�
 
 ## <a name="data-expressions"></a>数据表达式
 
-数据表达式提供对要素中属性数据的访问。 
+数据表达式提供对功能中的属性数据的访问。 
 
 | 表达式 | 返回类型 | 说明 |
 |------------|-------------|-------------|
 | `['at', number, array]` | 对象 (object) | 从数组中检索项。 |
-| `['geometry-type']` | 字符串 | 获取要素的几何类型：点、多点、线串、多行串、多边形、多面形。 |
-| `['get', string]` | 值 | 从当前要素的属性获取属性值。 如果请求的属性丢失，则返回 null。 |
-| `['get', string, object]` | 值 | 从提供的对象的属性获取属性值。 如果请求的属性丢失，则返回 null。 |
-| `['has', string]` | boolean | 确定要素的属性是否具有指定的属性。 |
+| `['geometry-type']` | 字符串 | 获取功能的几何图形类型： Point、MultiPoint、LineString、MultiLineString、多边形、MultiPolygon。 |
+| `['get', string]` | value | 从当前功能的属性获取属性值。 如果缺少请求的属性，则返回 null。 |
+| `['get', string, object]` | value | 从提供的对象的属性获取属性值。 如果缺少请求的属性，则返回 null。 |
+| `['has', string]` | boolean | 确定功能的属性是否具有指定的属性。 |
 | `['has', string, object]` | boolean | 确定对象的属性是否具有指定的属性。 |
-| `['id']` | 值 | 如果要素有该功能的 ID，则获取该功能的 ID。 |
+| `['id']` | value | 获取功能的 ID （如果有）。 |
 | `['length', string | array]` | 数字 | 获取字符串或数组的长度。 |
-| `['in', boolean | string | number, array]` | boolean | 确定数组中是否存在项 |
-| `['in', substring, string]` | boolean | 确定子字符串是否存在于字符串中 |
+| `['in', boolean | string | number, array]` | boolean | 确定某一项是否存在于数组中 |
+| `['in', substring, string]` | boolean | 确定字符串中是否存在子字符串 |
 
 **示例**
 
-可以使用`get`表达式直接在表达式中访问要素的属性。 此示例使用要素的"区域颜色"值指定气泡图层的颜色属性。 
+通过使用`get`表达式，可以在表达式中直接访问功能的属性。 此示例使用功能的 "zoneColor" 值指定气泡图层的颜色属性。 
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -104,7 +104,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-如果所有点要素都具有该`zoneColor`属性，则上述示例将工作正常。 如果他们不这样做，颜色可能会回落到"黑色"。 要修改回退颜色，请使用`case`表达式与`has`表达式结合使用，以检查该属性是否存在。 如果属性不存在，则返回回退颜色。
+如果所有点功能都具有`zoneColor`属性，则上述示例将正常运行。 否则，颜色可能会回退到 "黑色"。 若要修改回退颜色，请将`case`表达式与`has`表达式结合使用以检查该属性是否存在。 如果该属性不存在，则返回回退颜色。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -119,7 +119,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-默认情况下，气泡和符号图层将呈现数据源中所有形状的坐标。 此行为可以突出显示多边形或线的顶点。 图层`filter`的选项可用于通过使用布尔表达式中的`['geometry-type']`表达式来限制其呈现的要素的几何类型。 下面的示例限制气泡图层，以便仅`Point`呈现要素。
+默认情况下，气泡图和符号层将呈现数据源中所有形状的坐标。 此行为可以突出显示多边形或线条的顶点。 通过`filter`使用布尔表达式中的`['geometry-type']`表达式，层的选项可用于限制其呈现的功能的几何类型。 下面的示例将限制气泡图层，以便`Point`仅呈现功能。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -127,7 +127,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-以下示例允许呈现和`Point``MultiPoint`特征。 
+下面的示例允许呈现`Point`和`MultiPoint`功能。 
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -135,90 +135,90 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-同样，多边形的轮廓将在线图层中呈现。 要在行图层中禁用此行为，请添加只允许`LineString`和`MultiLineString`功能的筛选器。  
+同样，多边形的轮廓将以线条层呈现。 若要在线条层中禁用此行为，请添加只允许`LineString`和`MultiLineString`功能的筛选器。  
 
 ## <a name="math-expressions"></a>数学表达式
 
-数学表达式提供数学运算符，用于在表达式框架中执行数据驱动的计算。
+数学表达式提供数学运算符，用于在 expression framework 内执行数据驱动的计算。
 
 | 表达式 | 返回类型 | 说明 |
 |------------|-------------|-------------|
-| `['+', number, number, …]` | 数字 | 计算指定数字的总和。 |
-| `['-', number]` | 数字 | 按指定数字减去 0。 |
-| `['-', number, number]` | 数字 | 将第一个数字减去第二个数字。 |
-| `['*', number, number, …]` | 数字 | 将指定的数字相乘在一起。 |
+| `['+', number, number, …]` | 数字 | 计算指定数字的和。 |
+| `['-', number]` | 数字 | 将0减去指定数字。 |
+| `['-', number, number]` | 数字 | 用第二个数字减去第一个数字。 |
+| `['*', number, number, …]` | 数字 | 将指定的数字相乘。 |
 | `['/', number, number]` | 数字 | 将第一个数字除以第二个数字。 |
-| `['%', number, number]` | 数字 | 将第一个数字除以第二个数字时计算余数。 |
-| `['^', number, number]` | 数字 | 计算第一个值的值，以第二个数字的功率提升。 |
+| `['%', number, number]` | 数字 | 计算第一个数字除以第二个数字时的余数。 |
+| `['^', number, number]` | 数字 | 计算第一个值的值，该值为第二个数字的幂。 |
 | `['abs', number]` | 数字 | 计算指定数字的绝对值。 |
-| `['acos', number]` | 数字 | 计算指定数字的弧形。 |
-| `['asin', number]` | 数字 | 计算指定数字的弧线。 |
-| `['atan', number]` | 数字 | 计算指定数字的弧形。 |
+| `['acos', number]` | 数字 | 计算指定数字的反余弦值。 |
+| `['asin', number]` | 数字 | 计算指定数字的反正弦值。 |
+| `['atan', number]` | 数字 | 计算指定数字的反正切值。 |
 | `['ceil', number]` | 数字 | 将数字向上舍入到下一个整数。 |
 | `['cos', number]` | 数字 | 计算指定数字的 cos。 |
 | `['e']` | 数字 | 返回数学常量`e`。 |
-| `['floor', number]` | 数字 | 将数字向下舍入到以前的整数。 |
+| `['floor', number]` | 数字 | 将数字向下舍入到上一个整数。 |
 | `['ln', number]` | 数字 | 计算指定数字的自然对数。 |
 | `['ln2']` | 数字 | 返回数学常量`ln(2)`。 |
-| `['log10', number]` | 数字 | 计算指定数字的基数 10 对数。 |
-| `['log2', number]` | 数字 | 计算指定数字的基数-二对数。 |
-| `['max', number, number, …]` | 数字 | 计算指定数字集中的最大数字。 |
-| `['min', number, number, …]` | 数字 | 计算指定数字集中的最小数字。 |
+| `['log10', number]` | 数字 | 计算指定数字的以10为底的对数。 |
+| `['log2', number]` | 数字 | 计算指定数字的以2为底的对数。 |
+| `['max', number, number, …]` | 数字 | 计算指定的一组数字中的最大数目。 |
+| `['min', number, number, …]` | 数字 | 计算指定的一组数字中的最小数目。 |
 | `['pi']` | 数字 | 返回数学常量`PI`。 |
-| `['round', number]` | 数字 | 将数字舍入到最接近的整数。 中间值从零四舍五入。 例如，`['round', -1.5]`计算为 -2。 |
-| `['sin', number]` | 数字 | 计算指定数字的子值。 |
+| `['round', number]` | 数字 | 将数字舍入到最接近的整数。 将值从零向外舍入。 例如， `['round', -1.5]`计算结果为-2。 |
+| `['sin', number]` | 数字 | 计算指定数字的正弦值。 |
 | `['sqrt', number]` | 数字 | 计算指定数字的平方根。 |
-| `['tan', number]` | 数字 | 计算指定数字的切线。 |
+| `['tan', number]` | 数字 | 计算指定数值的正切值。 |
 
 ## <a name="aggregate-expression"></a>聚合表达式
 
-聚合表达式定义通过一组数据处理的计算，`clusterProperties`并可与 选项一`DataSource`起使用。 这些表达式的输出必须是数字或布尔。 
+聚合表达式定义通过一组数据处理的计算，并可与`clusterProperties`选项一起使用。 `DataSource` 这些表达式的输出必须是数字或布尔值。 
 
-聚合表达式采用三个值：运算符值和初始值，以及用于从数据中的每个要素检索属性以应用聚合操作的表达式。 此表达式具有以下格式：
+聚合表达式采用三个值：运算符值和初始值，以及从数据中的每个功能检索属性以对其应用聚合运算的表达式。 此表达式的格式如下：
 
 ```javascript
 [operator: string, initialValue: boolean | number, mapExpression: Expression]
 ```
 
-- 运算符：表达式函数，然后应用于针对群集`mapExpression`中每个点计算的所有值。 支持的运算符： 
-    - 对于数字： `+` `*`， `max`， ， ，`min`
-    - 对于布尔斯： `all`，`any`
-- 初始值：聚合第一个计算值的初始值。
-- mapExpression：应用于数据集中每个点的表达式。
+- 运算符：一个表达式函数，然后将其应用于由`mapExpression`为分类中的每个点计算的所有值。 支持的运算符： 
+    - 对于数字： `+`、 `*`、 `max`、`min`
+    - 对于布尔值`all`：，`any`
+- initialValue：用于聚合第一个计算值的初始值。
+- mapExpression：应用于数据集中的每个点的表达式。
 
 **示例**
 
-如果数据集中的所有要素都有一个`revenue`属性，这是一个数字。 然后，可以计算从数据集创建的群集中所有点的总收入。 此计算使用以下聚合表达式完成：`['+', 0, ['get', 'revenue']]`
+如果数据集中的所有功能都有一个`revenue`数字属性，则为。 然后，可以计算群集中从数据集创建的所有点的总收入。 此计算使用以下聚合表达式完成：`['+', 0, ['get', 'revenue']]`
 
 ## <a name="boolean-expressions"></a>布尔表达式
 
-布尔表达式提供了一组用于评估布尔比较的布尔运算符表达式。
+布尔表达式提供一组用于计算布尔值比较的布尔运算符表达式。
 
-比较值时，将严格键入比较。 不同类型的值始终被视为不相等。 已知类型在分析时不同的情况被视为无效，并将生成分析错误。 
+比较值时，将严格类型化比较。 不同类型的值始终被视为不相等。 在分析时已知不同类型的情况被视为无效，并将生成分析错误。 
 
 | 表达式 | 返回类型 | 说明 |
 |------------|-------------|-------------|
-| `['! ', boolean]` | boolean | 逻辑否定。 如果`true`输入为`false`，则返回`false`，如果输入为`true`。 |
-| `['!= ', value, value]` | boolean | 如果`true`输入值不相等，则返回，`false`否则。 |
-| `['<', value, value]` | boolean | 如果`true`第一个输入严格小于第二个输入，`false`则返回，否则。 参数必须是字符串或两个数字。 |
-| `['<=', value, value]` | boolean | 如果`true`第一个输入小于或等于第二个输入，则`false`返回，否则。 参数必须是字符串或两个数字。 |
-| `['==', value, value]` | boolean | 如果`true`输入值相等，则返回，`false`否则。 参数必须是字符串或两个数字。 |
-| `['>', value, value]` | boolean | 如果`true`第一个输入严格大于第二个输入，`false`则返回，否则。 参数必须是字符串或两个数字。 |
-| `['>=' value, value]` | boolean | 如果`true`第一个输入大于或等于第二个输入，则`false`返回，否则。 参数必须是字符串或两个数字。 |
-| `['all', boolean, boolean, …]` | boolean | 如果`true`所有输入都是`true`，则`false`返回，否则。 |
-| `['any', boolean, boolean, …]` | boolean | 如果`true`任何输入为`true`，则返回`false`，否则。 |
+| `['! ', boolean]` | boolean | 逻辑求反。 如果`true`输入为`false`，则返回; `false`如果输入为`true`，则返回。 |
+| `['!= ', value, value]` | boolean | 如果`true`输入值不相等， `false`则返回; 否则返回。 |
+| `['<', value, value]` | boolean | 如果`true`第一个输入严格小于第二个输入， `false`则返回; 否则返回。 参数需要同时为字符串和/或数字。 |
+| `['<=', value, value]` | boolean | 如果`true`第一个输入小于或等于第二个输入， `false`则返回; 否则返回。 参数需要同时为字符串和/或数字。 |
+| `['==', value, value]` | boolean | 如果`true`输入值相等， `false`则返回; 否则返回。 参数需要同时为字符串和/或数字。 |
+| `['>', value, value]` | boolean | 如果`true`第一个输入严格大于第二个输入， `false`则返回; 否则返回。 参数需要同时为字符串和/或数字。 |
+| `['>=' value, value]` | boolean | 如果`true`第一个输入大于或等于第二个输入， `false`则返回; 否则返回。 参数需要同时为字符串和/或数字。 |
+| `['all', boolean, boolean, …]` | boolean | 如果`true`所有输入都为`true`， `false`则返回; 否则返回。 |
+| `['any', boolean, boolean, …]` | boolean | 如果`true`任何输入为`true`， `false`则返回; 否则返回。 |
 
 ## <a name="conditional-expressions"></a>条件表达式
 
-条件表达式提供的逻辑操作类似于 if 语句。
+条件表达式提供类似于 if 语句的逻辑运算。
 
-以下表达式对输入数据执行条件逻辑操作。 例如，`case`表达式提供"if/then/else"逻辑，`match`而表达式类似于"开关语句"。 
+以下表达式对输入数据执行条件逻辑操作。 例如， `case`表达式提供 "if/then/else" 逻辑，而`match`表达式就像 "switch 语句"。 
 
-### <a name="case-expression"></a>案例表达式
+### <a name="case-expression"></a>Case 表达式
 
-表达式`case`是提供"if/然后/else"逻辑的条件表达式的类型。 这种类型的表达式步步通过布尔条件列表。 它将第一个布尔条件的输出值返回以进行 true。
+`case`表达式是一种提供 "if/then/else" 逻辑的条件表达式。 此类型的表达式逐步完成布尔条件的列表。 它将返回第一个布尔条件的输出值，其计算结果为 true。
 
-以下伪代码定义表达式的结构`case`。 
+以下伪代码定义`case`表达式的结构。 
 
 ```javascript
 [
@@ -234,7 +234,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 **示例**
 
-下面的示例步步遍了不同的布尔条件，直到它找到一个计算到`true`的布尔条件，然后返回该关联值。 如果没有布尔条件计算到`true`，将返回回退值。 
+下面的示例单步执行不同的布尔条件，直到找到计算结果`true`为的值，然后返回该关联值。 如果没有布尔条件的计算`true`结果为，则返回回退值。 
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -255,11 +255,11 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-### <a name="match-expression"></a>匹配表达式
+### <a name="match-expression"></a>Match 表达式
 
-表达式`match`是提供开关语句（如逻辑）的条件表达式的类型。 输入可以是任何表达式，例如`['get', 'entityType']`返回字符串或数字的表达式。 每个标签必须是单个文本值或文本值数组，其值必须是所有字符串或所有数字。 如果数组中的任何值匹配，则输入匹配。 每个标签必须是唯一的。 如果输入类型与标签的类型不匹配，则结果将是回退值。
+`match`表达式是一种提供类似于逻辑的 switch 语句的条件表达式。 输入可以是任何表达式`['get', 'entityType']` ，如返回字符串或数字。 每个标签都必须是单个文本值或文本值的数组，其值必须是所有字符串或所有数字。 如果数组中的任何值匹配，则输入匹配。 每个标签都必须是唯一的。 如果输入类型与标签类型不匹配，则结果将为回退值。
 
-以下伪代码定义表达式的结构`match`。 
+以下伪代码定义`match`表达式的结构。 
 
 ```javascript
 [
@@ -276,7 +276,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 **示例**
 
-下面的示例查看气泡图层中`entityType`搜索匹配项的 Point 要素的属性。 如果找到匹配项，则返回该指定值或返回回退值。
+下面的示例在气泡图`entityType`层中查找点功能的属性搜索匹配项。 如果找到匹配项，则返回指定的值或返回回退值。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -296,7 +296,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-下面的示例使用数组列出一组标签，这些标签应全部返回相同的值。 此方法比单独列出每个标签更有效。 在这种情况下，`entityType`如果属性是"餐厅"或"grocery_store"，则返回颜色"红色"。
+下面的示例使用数组列出一组应返回相同值的标签。 此方法比单独列出每个标签要高效得多。 在这种情况下， `entityType`如果属性为 "餐馆" 或 "grocery_store"，则将返回颜色 "red"。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -317,7 +317,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-下面的示例使用匹配表达式执行"在数组"或"数组包含"类型筛选器。 在这种情况下，表达式筛选具有允许 ID 列表中的 ID 值的数据。 将表达式与筛选器一起使用时，结果需要为布尔值。
+下面的示例使用 match 表达式来执行 "in array" 或 "array contains" 类型筛选器。 在这种情况下，该表达式将筛选 ID 值位于允许 Id 列表中的数据。 使用带有筛选器的表达式时，结果必须是布尔值。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -339,11 +339,11 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-### <a name="coalesce-expression"></a>凝聚表达式
+### <a name="coalesce-expression"></a>合并表达式
 
-表达式`coalesce`步步遍一组表达式，直到获得第一个非空值并返回该值。 
+`coalesce`表达式逐句通过一组表达式，直到获取第一个非 null 值并返回该值。 
 
-以下伪代码定义表达式的结构`coalesce`。 
+以下伪代码定义`coalesce`表达式的结构。 
 
 ```javascript
 [
@@ -356,7 +356,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 **示例**
 
-下面的示例使用`coalesce`表达式设置符号图层`textField`的选项。 如果`title`属性从要素中丢失或设置为`null`，则表达式将尝试查找`subtitle`该属性（如果缺少该属性或`null`，则该属性将回退回空字符串）。 
+下面的示例使用`coalesce`表达式来设置符号层`textField`的选项。 如果特性`title`缺少该特性或将其设置为`null`，则该表达式将尝试查找`subtitle`属性（如果缺少或`null`，它将回退到空字符串）。 
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -377,7 +377,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 });
 ```
 
-下面的示例使用`coalesce`表达式从指定图像名称列表中检索地图子画面中可用的第一个可用图像图标。
+下面的示例使用`coalesce`表达式从指定的图像名称列表中检索 "映射" 子画面中可用的第一个可用图像图标。
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -401,16 +401,16 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 | 表达式 | 返回类型 | 说明 |
 |------------|-------------|-------------|
-| `['literal', array]`<br/><br/>`['literal', object]` | 数组\|对象 | 返回文本数组或对象值。 使用此表达式可防止将数组或对象计算为表达式。 当数组或对象需要由表达式返回时，这是必需的。 |
-| `['image', string]` | 字符串 | 检查是否将指定的图像 ID 加载到地图图像精灵中。 如果是，则返回 ID，否则返回 null。 |
-| `['to-boolean', value]` | boolean | 将输入值转换为布尔。 `false`结果是当输入为空字符串`0`时， 、 `false`、 `null`、 `NaN`否则其`true`。 |
-| `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | 将输入值转换为颜色。 如果提供了多个值，则按顺序计算每个值，直到获得第一个成功转换。 如果无法转换任何输入，则表达式是错误。 |
-| `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | 数字 | 如果可能，将输入值转换为数字。 如果输入为`null`或`false`，则结果为 0。 如果输入为`true`，则结果为 1。 如果输入是字符串，则使用 ECMAScript 语言规范的[ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type)字符串函数将其转换为数字。 如果提供了多个值，则按顺序计算每个值，直到获得第一个成功转换。 如果无法转换任何输入，则表达式是错误。 |
-| `['to-string', value]` | 字符串 | 将输入值转换为字符串。 如果输入为`null`，则结果为`""`。 如果输入是布尔，则结果是`"true"`或`"false"`。 如果输入是数字，则使用 ECMAScript 语言规范的[ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type)编号函数将其转换为字符串。 如果输入是一种颜色，则将其转换为 CSS RGBA 颜色字符串`"rgba(r,g,b,a)"`。 否则，使用 ECMAScript 语言规范的[JSON.stringify](https://tc39.github.io/ecma262/#sec-json.stringify)函数将输入转换为字符串。 |
-| `['typeof', value]` | 字符串 | 返回描述给定值类型的字符串。 |
+| `['literal', array]`<br/><br/>`['literal', object]` | array \|对象 | 返回文本数组或对象值。 使用此表达式可防止将数组或对象作为表达式进行计算。 当表达式需要返回数组或对象时，这是必需的。 |
+| `['image', string]` | 字符串 | 检查是否已将指定的映像 ID 加载到 maps 图像 sprite。 如果为，则返回 ID，否则返回 null。 |
+| `['to-boolean', value]` | boolean | 将输入值转换为布尔值。 当输入为`false`空字符串、 `0` `false` `null`、、或`NaN`时，结果为;否则为`true`。 |
+| `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | 将输入值转换为颜色。 如果提供了多个值，则将按顺序对每个值进行计算，直到获取第一个成功的转换。 如果没有任何输入可转换，则表达式为错误。 |
+| `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | 数字 | 如果可能，将输入值转换为数字。 如果输入为`null`或`false`，则结果为0。 如果输入为`true`，则结果为1。 如果输入是字符串，则使用 ECMAScript 语言规范的[ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type)字符串函数将其转换为数字。 如果提供了多个值，则将按顺序对每个值进行计算，直到获取第一个成功的转换。 如果没有任何输入可转换，则表达式为错误。 |
+| `['to-string', value]` | 字符串 | 将输入值转换为字符串。 如果输入为`null`，则结果为`""`。 如果输入为布尔值，则结果为`"true"`或。 `"false"` 如果输入是一个数字，则使用 ECMAScript 语言规范的[ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) number 函数将其转换为字符串。 如果输入是一种颜色，则将其转换为 CSS RGBA 颜色`"rgba(r,g,b,a)"`字符串。 否则，使用 ECMAScript 语言规范的[json.stringify](https://tc39.github.io/ecma262/#sec-json.stringify)函数将输入转换为字符串。 |
+| `['typeof', value]` | 字符串 | 返回一个字符串，该字符串描述给定值的类型。 |
 
 > [!TIP]
-> 如果浏览器控制台中出现类似于`Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].`的错误消息，则意味着代码中有一个表达式，该表达式具有第一个值没有字符串的数组。 如果希望表达式返回数组，则用`literal`表达式换行数组。 下面的示例设置符号图层的`offset`图标选项，该图标必须是包含两个数字的数组，通过使用表达式根据点要素`match``entityType`的属性的值在两个偏移值之间进行选择。
+> 如果浏览器控制台中出现`Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].`类似于的错误消息，则表示代码中的某个位置有一个数组，该表达式的第一个值没有字符串。 如果希望表达式返回数组，请使用`literal`表达式包装数组。 下面的示例通过使用`offset` `match`表达式，根据点功能的`entityType`属性的值在两个偏移值之间进行选择，设置符号层的图标选项，该选项必须是包含两个数字的数组。
 >
 > ```javascript
 > var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -433,17 +433,17 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 ## <a name="color-expressions"></a>颜色表达式
 
-颜色表达式使创建和操作颜色值变得更加容易。
+颜色表达式使您可以更轻松地创建和操作颜色值。
 
 | 表达式 | 返回类型 | 说明 |
 |------------|-------------|-------------|
-| `['rgb', number, number, number]` | color | 从*红色*、*绿色*和*蓝色*分量创建颜色值，这些分量必须在`0``255`和 和 之间范围`1`，以及 的 alpha 分量。 如果任何组件的范围不大，则表达式是错误。 |
-| `['rgba', number, number, number, number]` | color | 从*红色*、*绿色*、*蓝色*分量创建颜色值，这些分量`0`必须在`255`和 之间范围，并在`0`和`1`的范围内创建 alpha 分量。 如果任何组件的范围不大，则表达式是错误。 |
-| `['to-rgba']` | \[数字、数字、数字、数字\] | 按该顺序返回包含输入颜色*的红色*、*绿色*、*蓝色*和*alpha*分量的四元素数组。 |
+| `['rgb', number, number, number]` | color | 从*红色*、*绿色*和*蓝色*分量创建颜色值，该颜色值必须介于`0`和`255`之间，并具有的`1`alpha 分量。 如果任何组件超出范围，则表达式为错误。 |
+| `['rgba', number, number, number, number]` | color | 从*红色*、*绿色*、*蓝色*分量创建颜色值，这些分量必须介于`0`和`255`之间，并且在`0`和`1`范围内的 alpha 分量。 如果任何组件超出范围，则表达式为错误。 |
+| `['to-rgba']` | \[number、number、number、number\] | 返回一个由四个元素组成的数组，其中包含输入颜色的*红色*、*绿色*、*蓝色*和*alpha*分量，按顺序排列。 |
 
 **示例**
 
-下面的示例创建一个 RGB 颜色值，*red*该值的红色`255`值为 ，*绿色*和*蓝色*值通过乘以`2.5``temperature`属性的值来计算。 随着温度的变化，颜色将变为不同的*红色*色调。
+下面的示例创建一个 RGB 颜色值，其*红色*值`255`为，而*绿色*和*蓝色*值是通过与`2.5` `temperature`属性的值相乘计算得出的。 温度变化时，颜色将变为不同的*红色*阴影。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -461,17 +461,17 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 ## <a name="string-operator-expressions"></a>字符串运算符表达式
 
-字符串运算符表达式对字符串执行转换操作，例如串联和转换大小写。 
+字符串运算符表达式对字符串执行转换操作，例如连接和转换大小写。 
 
 | 表达式 | 返回类型 | 说明 |
 |------------|-------------|-------------|
-| `['concat', string, string, …]` | 字符串 | 将多个字符串串联在一起。 每个值都必须是一个字符串。 如果需要，`to-string`请使用类型表达式将其他值类型转换为字符串。 |
+| `['concat', string, string, …]` | 字符串 | 将多个字符串连接在一起。 每个值必须是字符串。 如果需要`to-string` ，请使用类型表达式将其他值类型转换为字符串。 |
 | `['downcase', string]` | 字符串 | 将指定的字符串转换为小写。 |
 | `['upcase', string]` | 字符串 | 将指定的字符串转换为大写。 |
 
 **示例**
 
-下面的示例将`temperature`点要素的属性转换为字符串，然后将"+F"串联到它的末尾。
+下面的示例将点`temperature`功能的属性转换为字符串，然后将 "° f" 连接到该字符串的末尾。
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -486,33 +486,33 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 });
 ```
 
-上面的表达式在地图上渲染一个图钉，上面覆盖着文本"64°F"，如下图所示。
+上面的表达式在地图上呈现文本 "64 ° F" 的 pin，如下图所示。
 
 <center>
 
 ![字符串运算符表达式示例](media/how-to-expressions/string-operator-expression.png)</center>
 
-## <a name="interpolate-and-step-expressions"></a>插值和步进表达式
+## <a name="interpolate-and-step-expressions"></a>内插和单步表达式
 
-插值和步进表达式可用于计算沿插值曲线或步进函数的值。 这些表达式采用返回数值作为输入的表达式，例如`['get',  'temperature']`。 根据输入和输出值对计算输入值，以确定最适合插值曲线或步进函数的值。 输出值称为"停止"。 每个停靠站的输入值必须为数字，并且按升序排列。 输出值必须是数字、数字数组或颜色。
+内插和单步表达式可用于沿内插曲线或单步执行函数计算值。 这些表达式采用返回数值作为输入的表达式，例如`['get',  'temperature']`。 根据输入和输出值对计算输入值，以确定最适合于内插曲线或单步执行函数的值。 输出值称为 "停止"。 每个停止的输入值必须是数字，并且必须是升序。 输出值必须是数字、数字数组或颜色。
 
-### <a name="interpolate-expression"></a>插值表达式
+### <a name="interpolate-expression"></a>内插表达式
 
-表达式`interpolate`可用于通过在停止值之间插值来计算连续、平滑的值集。 返回`interpolate`颜色值的表达式将生成颜色渐变，其中从中选择结果值。
+`interpolate`表达式可用于通过在 stop 值之间进行插值计算来计算连续平滑的值集。 返回`interpolate`颜色值的表达式将产生从中选择结果值的颜色渐变。
 
-有三种类型的插值方法可用于`interpolate`表达式：
+可在`interpolate`表达式中使用三种类型的内插方法：
  
-* `['linear']`- 插值在两个停止之间线性进行。
-* `['exponential', base]`- 插值在停靠点之间呈指数级。 该`base`值控制输出增加的速率。 值越高，输出会更多地向范围的高端增长。 接近`base`1 的值会产生线性增长较多的输出。
-* `['cubic-bezier', x1, y1, x2, y2]`- 使用由给定控制点定义的[立方贝塞尔曲线](https://developer.mozilla.org/docs/Web/CSS/timing-function)进行插值。
+* `['linear']`-在停止对之间的线性内插。
+* `['exponential', base]`-停止之间以指数方式插。 `base`值控制输出的增加速度。 值越大，输出就会增加到范围的高端。 接近`base` 1 的值将生成一个输出，该输出将增加线性增长。
+* `['cubic-bezier', x1, y1, x2, y2]`-使用由给定控制点定义的一[条三次方贝塞尔曲线](https://developer.mozilla.org/docs/Web/CSS/timing-function)。
 
-下面是这些不同类型的插值示例。 
+下面是这些不同类型的内插的示例。 
 
 | 线性  | 指数 | 三次方贝塞尔 |
 |---------|-------------|--------------|
-| ![线性插值图](media/how-to-expressions/linear-interpolation.png) | ![指数插值图](media/how-to-expressions/exponential-interpolation.png) | ![立方贝塞尔插值图](media/how-to-expressions/bezier-curve-interpolation.png) |
+| ![线性内插图](media/how-to-expressions/linear-interpolation.png) | ![指数内插关系图](media/how-to-expressions/exponential-interpolation.png) | ![三次方贝塞尔插值图](media/how-to-expressions/bezier-curve-interpolation.png) |
 
-以下伪代码定义表达式的结构`interpolate`。 
+以下伪代码定义`interpolate`表达式的结构。 
 
 ```javascript
 [
@@ -529,7 +529,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 **示例**
 
-下面的示例使用`linear interpolate`表达式根据点要素`color``temperature`的属性设置气泡图层的属性。 如果`temperature`值小于 60，则返回"蓝色"。 如果介于 60 和小于 70 之间，则黄色将返回。 如果介于 70 和小于 80 之间，则返回"橙色"。 如果为 80 或更高，则返回"红色"。
+下面的示例使用`linear interpolate`表达式基于点功能的`color` `temperature`属性设置气泡图层的属性。 如果`temperature`值小于60，则将返回 "blue"。 如果介于60到70之间，则将返回黄色。 如果介于70到80之间，则将返回 "橙色"。 如果为80或更高，则返回 "red"。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -549,17 +549,17 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-下图演示了如何为上述表达式选择颜色。
+下图演示了如何为上面的表达式选择颜色。
  
 <center>
 
-![插值表达式示例](media/how-to-expressions/interpolate-expression-example.png)</center>
+![内插表达式](media/how-to-expressions/interpolate-expression-example.png)示例</center>
 
 ### <a name="step-expression"></a>步骤表达式
 
-表达式`step`可用于通过计算由停靠点定义的[分段常数函数](http://mathworld.wolfram.com/PiecewiseConstantFunction.html)来计算离散的阶梯式结果值。 
+通过`step`计算由停止定义的[分段函数](http://mathworld.wolfram.com/PiecewiseConstantFunction.html)，表达式可用于计算离散的阶数结果值。 
 
-以下伪代码定义表达式的结构`step`。 
+以下伪代码定义`step`表达式的结构。 
 
 ```javascript
 [
@@ -574,11 +574,11 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 ]
 ```
 
-步长表达式返回在输入值之前的止损的输出值，或者如果输入小于第一个停止，则返回第一个输入值。 
+步骤表达式返回的输出值刚好早于输入值，或第一个输入值（如果输入小于第一次停止）。 
 
 **示例**
 
-下面的示例使用`step`表达式根据点要素`color``temperature`的属性设置气泡图层的属性。 如果`temperature`值小于 60，则返回"蓝色"。 如果介于 60 和小于 70 之间，则返回"黄色"。 如果介于 70 和小于 80 之间，则返回"橙色"。 如果为 80 或更高，则返回"红色"。
+下面的示例使用`step`表达式基于点功能的`color` `temperature`属性设置气泡图层的属性。 如果`temperature`值小于60，则将返回 "blue"。 如果介于60到70之间，则将返回 "黄色"。 如果介于70到80之间，则将返回 "橙色"。 如果为80或更高，则返回 "red"。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -596,27 +596,27 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-下图演示了如何为上述表达式选择颜色。
+下图演示了如何为上面的表达式选择颜色。
  
 <center>
 
 ![步骤表达式示例](media/how-to-expressions/step-expression-example.png)
 </center>
 
-## <a name="layer-specific-expressions"></a>特定于图层的表达式
+## <a name="layer-specific-expressions"></a>层特定的表达式
 
-仅适用于特定图层的特殊表达式。
+仅适用于特定层的特殊表达式。
 
-### <a name="heat-map-density-expression"></a>热图密度表达式
+### <a name="heat-map-density-expression"></a>热度地图密度表达式
 
-热图密度表达式检索热图图层中每个像素的热图密度值，并定义为`['heatmap-density']`。 此值是 和`0``1`之间的数字。 它与 或`interpolation``step`表达式结合使用，用于定义用于着色热图的颜色渐变。 此表达式只能在热图图层[的颜色选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest#color)中使用。
+热度地图密度表达式检索热度地图层中每个像素的热度地图密度值，并将其定义为`['heatmap-density']`。 此值是一个介于和`0` `1`之间的数字。 它与`interpolation` or `step`表达式结合使用来定义用于着色热度地图的颜色渐变。 此表达式只能用于热度地图层的 "[颜色" 选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest#color)。
 
 > [!TIP]
-> 索引 0 处的颜色（插值表达式中）或单步颜色的默认颜色定义没有数据的区域的颜色。 索引 0 处的颜色可用于定义背景颜色。 很多用户喜欢将此值设置为透明或半透明黑色。
+> 位于索引0、内插表达式或步骤颜色的默认颜色中的颜色定义了没有数据的区域的颜色。 索引0处的颜色可用于定义背景色。 很多用户喜欢将此值设置为透明或半透明黑色。
 
 **示例**
 
-本示例使用衬线插值表达式创建平滑的颜色渐变以渲染热图。 
+此示例使用 "内插内插" 表达式为呈现热度地图创建平滑颜色渐变。 
 
 ```javascript 
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
@@ -632,7 +632,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 });
 ```
 
-除了使用平滑渐变对热图着色外，还可以使用`step`表达式在一组范围内指定颜色。 使用`step`表达式对热图进行着色，直观地将密度分解为类似于轮廓或雷达样式图的范围。  
+除了使用平滑渐变来着色热度地图外，还可以使用`step`表达式在一组范围内指定颜色。 使用用于`step`着色热度地图的表达式直观地将密度分解为类似于等高线或雷达样式图的范围。  
 
 ```javascript 
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
@@ -649,18 +649,18 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 });
 ```
 
-有关详细信息，请参阅[添加热图图层](map-add-heat-map-layer.md)文档。
+有关详细信息，请参阅[添加热度地图层](map-add-heat-map-layer.md)文档。
 
 ### <a name="line-progress-expression"></a>行进度表达式
 
-行进度表达式检索沿线图层中的渐变线的进度，并定义为`['line-progress']`。 此值是介于 0 和 1 之间的数字。 它与 或`interpolation``step`表达式结合使用。 此表达式只能与线图层的[描边渐变选项]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest#strokegradient)一起使用。 
+行进度表达式在直线层中沿渐变线检索进度，并将其定义为`['line-progress']`。 此值是一个介于0到1之间的数字。 它与`interpolation` or `step`表达式结合使用。 此表达式只能与线条层的[strokeGradient 选项]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest#strokegradient)一起使用。 
 
 > [!NOTE]
-> 线`strokeGradient`图层的选项需要将数据源`lineMetrics`设置为`true`的选项。
+> 线条`strokeGradient`层的选项要求将数据源`lineMetrics`的选项设置为`true`。
 
 **示例**
 
-此示例使用`['line-progress']`表达式将颜色渐变应用于线条的描边。
+此示例使用`['line-progress']`表达式对线条的笔划应用颜色渐变。
 
 ```javascript
 var layer = new atlas.layer.LineLayer(datasource, null, {
@@ -682,11 +682,11 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
 
 ### <a name="text-field-format-expression"></a>文本字段格式表达式
 
-文本字段格式表达式可与符号图层`textField``textOptions`属性的选项一起使用，以提供混合文本格式。 此表达式允许指定一组输入字符串和格式选项。 可以为此表达式中的每个输入字符串指定以下选项。
+文本字段格式表达式可与 "符号层`textField` `textOptions` " 属性的选项一起使用，以提供混合文本格式。 此表达式允许指定一组输入字符串和格式设置选项。 可以为此表达式中的每个输入字符串指定以下选项。
 
- * `'font-scale'`- 指定字体大小的缩放因子。 如果指定，此值将覆盖`size`各个字符串的属性。 `textOptions`
- * `'text-font'`- 指定应用于此字符串的一个或多个字体系列。 如果指定，此值将覆盖`font`各个字符串的属性。 `textOptions`
- * `'text-color'`- 指定在渲染时要应用于文本的颜色。 
+ * `'font-scale'`-指定字体大小的缩放系数。 如果指定，此值将重写`size`单个字符串的`textOptions`的属性。
+ * `'text-font'`-指定应对此字符串使用的一个或多个字体系列。 如果指定，此值将重写`font`单个字符串的`textOptions`的属性。
+ * `'text-color'`-指定在呈现时要应用于文本的颜色。 
 
 以下伪代码定义文本字段格式表达式的结构。 
 
@@ -711,7 +711,7 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
 
 **示例**
 
-下面的示例通过添加粗体字体并缩小该功能`title`属性的字体大小来设置文本字段的格式。 此示例还会在`subtitle`newline 上添加该功能的属性，其字体大小缩小为红色。
+下面的示例通过添加粗体字体并放大功能的`title`属性的字体大小，设置文本字段的格式。 此示例还将功能`subtitle`的属性添加到新行上，并缩小字体大小和红色。
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -739,20 +739,20 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 });
 ```
 
-此图层将呈现点特征，如下图所示：
+此层将呈现点功能，如下图所示：
  
 <center>
 
-![具有格式化文本字段](media/how-to-expressions/text-field-format-expression.png)的点要素图像</center>
+![带格式文本字段](media/how-to-expressions/text-field-format-expression.png)的点功能图像</center>
 
 ### <a name="number-format-expression"></a>数字格式表达式
 
-表达式`number-format`只能与符号图层`textField`的选项一起使用。 此表达式将提供的号码转换为格式化字符串。 此表达式包装 JavaScript 的[编号.toLocalString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString)函数，并支持以下选项集。
+`number-format`表达式只能与符号层的`textField`选项一起使用。 此表达式将提供的数字转换为带格式的字符串。 此表达式包装 JavaScript 的[toLocalString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString)函数，并支持以下选项集。
 
- * `locale`- 指定此选项，用于以与指定语言对齐的方式将数字转换为字符串。 将[BCP 47 语言标记](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation)传递到此选项。
- * `currency`- 将数字转换为表示货币的字符串。 可能的值是[ISO 4217 货币代码](https://en.wikipedia.org/wiki/ISO_4217)，如美元的"美元"、欧元的"欧元"或人民币的"CNY"。
- * `'min-fraction-digits'`- 指定要包含在数字字符串版本中的小数位数的最小数。
- * `'max-fraction-digits'`- 指定要包含在数字字符串版本中的十进制位的最大数数。
+ * `locale`-指定此选项，以便将数字转换为字符串，使其与指定语言对齐。 将[BCP 47 语言标记](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation)传递到此选项。
+ * `currency`-将数字转换为表示货币的字符串。 可能的值为[ISO 4217 币种代码](https://en.wikipedia.org/wiki/ISO_4217)，如美元的美元 "USD"、欧元的 "EUR" 或中文 RMB 的 "CNY"。
+ * `'min-fraction-digits'`-指定要包含在数字的字符串版本中的最小小数位数。
+ * `'max-fraction-digits'`-指定要包含在数字字符串版本中的小数位数的最大位数。
 
 以下伪代码定义文本字段格式表达式的结构。 
 
@@ -771,7 +771,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 **示例**
 
-下面的示例使用`number-format`表达式修改点要素的属性在符号`revenue`图层`textField`选项中呈现的方式，使其显示为美元值。
+下面的示例使用`number-format`表达式来修改 "点" `revenue`功能的属性在符号层`textField`选项中的呈现方式，使其显示为美元值。
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -787,7 +787,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 });
 ```
 
-此图层将呈现点特征，如下图所示：
+此层将呈现点功能，如下图所示：
 
 <center>
 
@@ -795,11 +795,11 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 ### <a name="image-expression"></a>图像表达式
 
-图像表达式可与符号图层 和`image`多边`textField`形图层`fillPattern`的选项一起使用。 此表达式检查请求的图像是否存在样式，并将返回已解析的图像名称或`null`，具体取决于图像当前是否位于样式中。 此验证过程是同步的，要求在映像参数中请求映像之前将映像添加到样式中。
+图像表达式可与符号层的`image`和`textField`选项一起使用，以及多边形层的`fillPattern`选项。 此表达式将检查请求的图像是否存在于样式中，并将返回已解析的图像`null`名称或，这取决于图像当前是否为样式。 此验证过程是同步的，需要先将该图像添加到该样式，然后才能在 image 参数中请求它。
 
 **示例**
 
-下面的示例使用`image`表达式添加与符号图层中文本的内联图标。 
+下面的示例使用`image`表达式向符号层中的文本添加一个嵌入图标。 
 
 ```javascript
  //Load the custom image icon into the map resources.
@@ -825,19 +825,19 @@ map.imageSprite.add('wifi-icon', 'wifi.png').then(function () {
 });
 ```
 
-此图层将在符号图层中渲染文本字段，如下图所示：
+此层将呈现符号层中的文本字段，如下图所示：
 
 <center>
 
 ![图像表达式示例](media/how-to-expressions/image-expression.png)</center>
 
-## <a name="zoom-expression"></a>缩放表达式
+## <a name="zoom-expression"></a>Zoom 表达式
 
-表达式`zoom`用于在渲染时检索地图的当前缩放级别，并定义为`['zoom']`。 此表达式在地图的最小缩放级别和最大缩放级别范围之间返回一个数字。 Azure 地图 Web 和 Android 的交互式地图控件支持 25 个缩放级别，编号为 0 到 24。 使用表达式`zoom`允许在更改地图的缩放级别时动态修改样式。 表达式`zoom`只能与 和`interpolate``step`表达式一起使用。
+`zoom`表达式用于在呈现时检索地图的当前缩放级别，并定义为`['zoom']`。 此表达式在地图的最小和最大缩放级别范围之间返回一个数字。 适用于 web 和 Android 的 Azure Maps 交互式地图控件支持25个缩放级别，其编号为0到24。 通过使用`zoom`表达式，可以在更改地图的缩放级别时动态修改样式。 `zoom`表达式只能与`interpolate`和`step`表达式一起使用。
 
 **示例**
 
-默认情况下，热贴图图层中呈现的数据点的半径为所有缩放级别的固定像素半径。 放大地图时，数据聚合在一起，热图图层看起来不同。 表达式`zoom`可用于缩放每个缩放级别的半径，以便每个数据点覆盖地图的相同物理区域。 这将使热图图层看起来更静态且一致。 地图的每个缩放级别垂直和水平的像素数是上一个缩放级别的两倍。 缩放半径（使其与每个缩放级别加倍）将创建在所有缩放级别上看起来一致的热图。 可以使用具有`zoom``base 2 exponential interpolation`表达式的表达式完成，为最小缩放级别设置像素半径，并针对最大缩放级别的缩放半径（如下所示）`2 * Math.pow(2, minZoom - maxZoom)`计算。
+默认情况下，热度地图层中呈现的数据点的半径对于所有缩放级别都具有固定像素半径。 放大地图后，数据聚合在一起，热度地图层看起来不同。 `zoom`表达式可用于缩放每个缩放级别的半径，使每个数据点都涵盖地图的同一物理区域。 这会使热度地图层看起来更加静态和一致。 地图的每个缩放级别都具有两倍于与上一个缩放级别垂直和水平的像素。 缩放 radius，使其与每个缩放级别翻倍，将创建一个在所有缩放级别上都保持一致的热度地图。 可以使用`zoom`表达式和`base 2 exponential interpolation`表达式来实现此目的，并为最小缩放级别设置像素半径，并为计算`2 * Math.pow(2, minZoom - maxZoom)`的最大缩放级别设置缩放半径，如下所示。
 
 ```javascript 
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
@@ -859,16 +859,16 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 ## <a name="variable-binding-expressions"></a>变量绑定表达式
 
-变量绑定表达式将计算结果存储在变量中。 因此，计算结果可以在表达式的其他地方多次引用。 对于涉及许多计算的表达式，它是一种有用的优化。
+变量绑定表达式将计算结果存储在变量中。 因此，可以多次在表达式中的其他地方引用计算结果。 对于涉及许多计算的表达式，它是一个有用的优化。
 
 | 表达式 | 返回类型 | 说明 |
 |--------------|---------------|--------------|
-| \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"让我们"，<br/>&nbsp;&nbsp;&nbsp;&nbsp;名称1：字符串，<br/>&nbsp;&nbsp;&nbsp;&nbsp;值1：任何，<br/>&nbsp;&nbsp;&nbsp;&nbsp;名称2：字符串，<br/>&nbsp;&nbsp;&nbsp;&nbsp;值2：任何，<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;子表达式<br/>\] | | 将一个或多个值存储为变量，`var`供返回结果的子表达式中的表达式使用。 |
+| \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"let"，<br/>&nbsp;&nbsp;&nbsp;&nbsp;name1： string，<br/>&nbsp;&nbsp;&nbsp;&nbsp;value1： any、<br/>&nbsp;&nbsp;&nbsp;&nbsp;name2： string，<br/>&nbsp;&nbsp;&nbsp;&nbsp;value2： any，<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | 将一个或多个值作为变量存储，以`var`供返回结果的子表达式中的表达式使用。 |
 | `['var', name: string]` | any | 引用使用`let`表达式创建的变量。 |
 
 **示例**
 
-此示例使用一个表达式，该表达式计算收入相对于温度比，然后使用`case`表达式计算此值上的不同布尔操作。 该`let`表达式用于存储相对于温度比的收入，因此只需计算一次。 表达式`var`根据需要经常引用此变量，而无需重新计算它。
+此示例使用一个表达式，该表达式计算相对于温度比率的收入，并`case`使用表达式来计算对该值的不同布尔运算。 该`let`表达式用于存储相对于温度比率的收入，因此只需计算一次。 表达式`var`将根据需要经常引用此变量，而不必重新计算此变量。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -899,10 +899,10 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 有关实现表达式的更多代码示例，请参阅以下文章：
 
 > [!div class="nextstepaction"] 
-> [添加符号图层](map-add-pin.md)
+> [添加符号层](map-add-pin.md)
 
 > [!div class="nextstepaction"] 
-> [添加气泡图层](map-add-bubble-layer.md)
+> [添加气泡层](map-add-bubble-layer.md)
 
 > [!div class="nextstepaction"]
 > [添加线条层](map-add-line-layer.md)
@@ -913,7 +913,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 > [!div class="nextstepaction"] 
 > [添加热度地图层](map-add-heat-map-layer.md)
 
-详细了解支持表达式的图层选项：
+详细了解支持表达式的层选项：
 
 > [!div class="nextstepaction"] 
 > [BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions?view=azure-iot-typescript-latest)
@@ -922,10 +922,10 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 > [HeatMapLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"] 
-> [线图层选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest)
+> [LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"] 
-> [多边形图层选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest)
+> [PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"] 
 > [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest) 

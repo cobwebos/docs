@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 630304bec17dd34befab4e5bd9f1cfdfb6505645
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80811426"
 ---
 # <a name="azure-customer-data-protection"></a>Azure 客户数据保护   
@@ -45,12 +45,12 @@ Azure 按默认或者以客户选项的形式为客户提供可靠的数据安�
 - 客户与云。
 - Azure 系统和数据中心之间的内部通信。
 
-**加密**：作为确保数据保密性和完整性的最佳做法，客户可以部署存储中数据加密和传输中数据加密。 客户将 Azure 云服务配置为使用 TLS 来保护 Internet 通信，甚至 Azure 托管的 VM 之间的通信，这非常简单。
+**加密**：作为确保数据保密性和完整性的最佳做法，客户可以部署存储中数据加密和传输中数据加密。 客户可以直接将其 Azure 云服务配置为使用 TLS 来保护来自 internet 的通信，甚至可以在 Azure 托管的 Vm 之间进行通信。
 
 **数据冗余**：出现网络攻击或者数据中心遭到物理损坏时，Microsoft 可帮助确保数据受到保护。 客户可以选择：
 
-- 国内/区域内存储，考虑合规性或延迟。
-- 用于安全或灾难恢复目的的国外/区域外存储。
+- 用于符合性或延迟注意事项的国家/地区内存储。
+- 出于安全或灾难恢复目的而进行的国家/地区/区域外存储。
 
 数据可在选定的地理区域中进行复制以实现冗余，但不会传输到此区域以外。 客户可以使用多个选项来复制数据，包括指定副本数量，以及复制数据中心的数量和位置。
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 OAuth 2.0 与 AAD 和 API 管理一起保护 API
+title: 同时使用 OAuth 2.0 以及 AAD 和 API 管理来保护 API
 titleSuffix: Azure API Management
 description: 了解如何结合使用 Azure Active Directory 和 API 管理来保护 Web API 后端。
 services: api-management
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
 ms.openlocfilehash: 300f44daeeea5e8a774575dabcb00686906bb5de
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80804361"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>结合 Azure Active Directory 和 API 管理使用 OAuth 2.0 保护 API
@@ -25,9 +25,9 @@ ms.locfileid: "80804361"
 本指南介绍如何结合 Azure Active Directory (Azure AD) 使用 OAuth 2.0 协议配置 Azure API 管理实例，以保护 API。 
 
 > [!NOTE]
-> 此功能在 API 管理的“开发人员”****、“标准”**** 和“高级”**** 层中可用。
+> 此功能在 API 管理的“开发人员”  、“标准”  和“高级”  层中可用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要执行本文中的步骤，必须提供：
 * API 管理实例
 * 使用 API 管理实例发布的 API
@@ -47,67 +47,67 @@ ms.locfileid: "80804361"
 
 若要使用 Azure AD 保护 API，首先需要在 Azure AD 中注册一个表示该 API 的应用程序。 
 
-1. 转到[Azure 门户](https://portal.azure.com)以注册应用程序。 搜索并选择**APP 注册**。
+1. 转到 [Azure 门户](https://portal.azure.com)来注册应用程序。 搜索并选择 "**应用注册**"。
 
-1. 选择“新注册”。**** 
+1. 选择“新注册”。  
 
-1. 当 **"注册应用程序"页**出现时，输入应用程序的注册信息： 
-    - 在 **"名称"** 部分中，输入一个有意义的应用程序名称，该名称将显示给应用的用户，如*后端应用*。 
-    - 在“支持的帐户类型”部分，选择适合你的方案的选项。**** 
+1. 出现“注册应用程序”页后，请输入应用程序的注册信息：  
+    - 在“名称”  部分中，输入一个将显示给应用用户的有意义的应用程序名称，例如 *backend-app*。 
+    - 在“支持的帐户类型”部分，选择适合你的方案的选项。  
 
-1. 将“重定向 URI”部分留空。****
+1. 将“重定向 URI”部分留空。 
 
-1. 选择“注册”**** 以创建应用程序。 
+1. 选择“注册”  以创建应用程序。 
 
-1. 在应用的“概述”页上，找到“应用程序(客户端) ID”值，并记下该值以供后续使用********。
+1. 在应用的“概述”页上，找到“应用程序(客户端) ID”值，并记下该值以供后续使用   。
 
-1. 选择“公开 API”****，并将“应用程序 ID URI”**** 设为默认值。 记下此值以备将来使用。
+1. 选择“公开 API”  ，并将“应用程序 ID URI”  设为默认值。 记下此值以备将来使用。
 
-1. 选择"**添加范围**"按钮以显示"**添加范围"** 页。 然后创建一个由 API 支持的新作用域（例如， `Files.Read` 最后，选择 **"添加范围**"按钮以创建作用域。 重复此步骤以添加 API 支持的所有范围。
+1. 选择“添加作用域”  按钮以显示“添加作用域”  页面。 然后创建该 API 支持的一个新作用域（例如 `Files.Read`）。 最后，选择“添加作用域”  按钮来创建作用域。 重复此步骤以添加 API 支持的所有范围。
 
-1. 创建作用域时，记下它们，以便随后的步骤使用。 
+1. 创建作用域后，请记下它们，以便在后续步骤中使用。 
 
 ## <a name="register-another-application-in-azure-ad-to-represent-a-client-application"></a>在 Azure AD 中注册另一个应用程序用于表示客户端应用程序
 
 需要调用该 API 的每个客户端应用程序也必须注册到 Azure AD 中。 在本示例中，客户端应用程序是 API 管理开发人员门户中的开发人员控制台。 下面介绍如何在 Azure AD 中注册另一个应用程序用于表示开发人员控制台。
 
-1. 转到[Azure 门户](https://portal.azure.com)以注册应用程序。 搜索并选择**APP 注册**。
+1. 转到 [Azure 门户](https://portal.azure.com)来注册应用程序。 搜索并选择 "**应用注册**"。
 
-1. 选择“新注册”。****
+1. 选择“新注册”。 
 
-1. 当 **"注册应用程序"页**出现时，输入应用程序的注册信息： 
-    - 在 **"名称"** 部分中，输入一个有意义的应用程序名称，该名称将显示给应用的用户，如*客户端应用*。 
-    - 在 **"支持帐户类型"** 部分中，选择**任何组织目录中的帐户（任何 Azure AD 目录 - 多租户）。** 
+1. 出现“注册应用程序”页后，请输入应用程序的注册信息：  
+    - 在“名称”  部分中，输入一个将显示给应用用户的有意义的应用程序名称，例如 *client-app*。 
+    - 在“支持的帐户类型”部分中，选择“任何组织目录(任何 Azure AD 目录 - 多租户)中的帐户”。   
 
-1. 在 **"重定向 URI"** 部分中`Web`，选择并输入`https://contoso5.portal.azure-api.net/signin`URL 。
+1. 在“重定向 URI”  部分中，选择 `Web` 并输入 URL `https://contoso5.portal.azure-api.net/signin`。
 
-1. 选择“注册”**** 以创建应用程序。 
+1. 选择“注册”  以创建应用程序。 
 
-1. 在应用的“概述”页上，找到“应用程序(客户端) ID”值，并记下该值以供后续使用********。
+1. 在应用的“概述”页上，找到“应用程序(客户端) ID”值，并记下该值以供后续使用   。
 
-现在，创建一个客户端机密，供此应用程序在后续步骤中使用。
+现在，请为此应用程序创建客户端机密，以便在后续步骤中使用。
 
-1. 从客户端应用的页面列表中，选择“证书和机密”****，然后选择“新建客户端密码”****。
+1. 从客户端应用的页面列表中，选择“证书和机密”  ，然后选择“新建客户端密码”  。
 
-1. 在“添加客户端密码”**** 下，提供**说明**。 选择密钥过期时间，然后选择“添加”。****
+1. 在“添加客户端密码”  下，提供**说明**。 选择密钥过期时间，然后选择“添加”。 
 
-创建机密时，请注意用于后续步骤的键值。 
+创建机密后，请记下密钥值，以便在后续步骤中使用。 
 
 ## <a name="grant-permissions-in-azure-ad"></a>在 Azure AD 中授予权限
 
 注册用于表示 API 和开发人员控制台的两个应用程序之后，需要授予权限，使客户端应用能够调用后端应用。  
 
-1. 转到[Azure 门户](https://portal.azure.com)以向客户端应用程序授予权限。 搜索并选择**APP 注册**。
+1. 转到 [Azure 门户](https://portal.azure.com)来向客户端应用程序授予权限。 搜索并选择 "**应用注册**"。
 
-1. 选择客户端应用。 然后在应用的页面列表中，选择**API 权限**。
+1. 选择你的客户端应用程序。 然后，在应用的页面列表中，选择“API 权限”。 
 
-1. 选择 **"添加权限**"。
+1. 选择“添加权限”  。
 
-1. 在 **"选择 API"** 下，选择 **"我的 API"，** 然后查找并选择后端应用。
+1. 在“选择 API”  下，选择“我的 API”  ，然后找到并选择你的 backend-app。
 
-1. 在 **"委派权限**"下，选择要后端应用的适当权限，然后选择 **"添加权限**"。
+1. 在“委托的权限”下，选择对 backend-app 的适当权限，然后选择“添加权限”。  
 
-1. 或者，在**API 权限**页上，选择 **"授予管理员同意\<">** 代表此目录中的所有用户授予同意。 
+1. （可选）在“API 权限”页上，选择“授予对**你的租户名称>的管理员许可”，以代表此目录中的所有用户授予许可。** **\<** 
 
 ## <a name="enable-oauth-20-user-authorization-in-the-developer-console"></a>在开发人员门户中启用 OAuth 2.0 用户授权
 
@@ -115,29 +115,29 @@ ms.locfileid: "80804361"
 
 在本示例中，开发人员控制台是 client-app。 以下步骤说明如何在开发人员门户中启用 OAuth 2.0 用户授权 
 
-1. 在 Azure 门户中，浏览到 API 管理实例。
+1. 在 Azure 门户中，浏览找到你的 API 管理实例。
 
-1. 选择**OAuth 2.0** > **添加**。
+1. 选择“OAuth 2.0” **“添加”。**  >  
 
-1. 提供“显示名称”和“说明”。********
+1. 提供“显示名称”和“说明”。  
 
-1. 对于“客户端注册页 URL”，请输入占位符值，如 `http://localhost`。**** “客户端注册页 URL”指向供用户针对 OAuth 2.0 提供程序创建和配置其自己的帐户的页面。**** 在此示例中，用户不创建和配置自己的帐户，因此使用了占位符。
+1. 对于“客户端注册页 URL”，请输入占位符值，如 **。** `http://localhost` “客户端注册页 URL”指向供用户针对 OAuth 2.0 提供程序创建和配置其自己的帐户的页面。  在此示例中，用户不创建和配置自己的帐户，因此使用了占位符。
 
-1. 选择“授权代码”作为“授权类型”。********
+1. 选择“授权代码”作为“授权类型”。  
 
-1. 指定“授权终结点 URL”**** 和“令牌终结点 URL”****。 可以从 Azure AD 租户中的“终结点”页检索这些值。**** 再次浏览到“应用注册”页，并选择“终结点”。********
+1. 指定“授权终结点 URL”  和“令牌终结点 URL”  。 可以从 Azure AD 租户中的“终结点”页检索这些值。  再次浏览到“应用注册”页，并选择“终结点”。  
 
 
-1. 复制“OAuth 2.0 授权终结点”****，并将其粘贴到“授权终结点 URL”**** 文本框。 选择“授权”请求方法下的“POST”。****
+1. 复制“OAuth 2.0 授权终结点”  ，并将其粘贴到“授权终结点 URL”  文本框。 选择“授权”请求方法下的“POST”。 
 
-1. 复制“OAuth 2.0 令牌终结点”****，并将其粘贴到“令牌终结点 URL”**** 文本框。 
+1. 复制“OAuth 2.0 令牌终结点”  ，并将其粘贴到“令牌终结点 URL”  文本框。 
 
     >[!IMPORTANT]
     > 可以使用 **v1** 或 **v2** 终结点。 但是，根据所选的版本，以下步骤将有所不同。 我们建议使用 v2 终结点。 
 
-1. 如果使用 **v1** 终结点，请添加名为 **resource** 的主体参数。 使用后端应用的“应用程序 ID”作为此参数的值。**** 
+1. 如果使用 **v1** 终结点，请添加名为 **resource** 的主体参数。 使用后端应用的“应用程序 ID”作为此参数的值。  
 
-1. 如果使用 **v2** 终结点，请在“默认范围”字段中使用为后端应用创建的范围。**** 此外，请确保在[`accessTokenAcceptedVersion`](/azure/active-directory/develop/reference-app-manifest#accesstokenacceptedversion-attribute)`2`[应用程序清单](/azure/active-directory/develop/reference-app-manifest)中将属性的值设置为 。
+1. 如果使用 **v2** 终结点，请在“默认范围”字段中使用为后端应用创建的范围。  此外，请确保在[应用程序清单](/azure/active-directory/develop/reference-app-manifest)中将[`accessTokenAcceptedVersion`](/azure/active-directory/develop/reference-app-manifest#accesstokenacceptedversion-attribute)属性的`2`值设置为。
 
 1. 接下来，指定客户端凭据。 这是客户端应用的凭据。
 
@@ -147,7 +147,7 @@ ms.locfileid: "80804361"
 
 1. 紧接在客户端机密的后面，是授权代码授权类型的 **redirect_url**。 记下此 URL。
 
-1. 选择“创建”  。
+1. 选择“创建”。 
 
 1. 返回到客户端应用并选择“身份验证”****。
 
@@ -165,7 +165,7 @@ ms.locfileid: "80804361"
 
 4. 在“安全性”下，选择“OAuth 2.0”并选择前面配置的 OAuth 2.0 服务器。******** 
 
-5. 选择“保存”。 
+5. 选择“保存”  。
 
 ## <a name="successfully-call-the-api-from-the-developer-portal"></a>从开发人员门户成功调用 API
 
@@ -176,7 +176,7 @@ ms.locfileid: "80804361"
 
 1. 在开发人员门户中浏览到 API 下的任一操作，并选择“试用”。**** 随后会转到开发人员控制台。
 
-2. 请注意 **"授权"** 部分中的新项目，该项与您刚刚添加的授权服务器相对应。
+2. 请注意，"**授权**" 部分中的新项与刚添加的授权服务器对应。
 
 3. 从授权下拉列表中选择“授权代码”。系统会提示登录到 Azure AD 租户。**** 如果已使用帐户登录，则可能不会出现提示。
 
@@ -208,7 +208,7 @@ ms.locfileid: "80804361"
 </validate-jwt>
 ```
 > [!NOTE]
-> 此`openid-config`URL 对应于 v1 终结点。 对于 v2`openid-config`终结点，`https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration`请使用 。
+> 此`openid-config` URL 对应于 v1 终结点。 对于 v2 `openid-config`终结点，请`https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration`使用。
 
 ## <a name="build-an-application-to-call-the-api"></a>生成应用程序来调用 API
 
