@@ -11,10 +11,10 @@ ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 09/03/2019
 ms.openlocfilehash: 0dbed3db8e106b9bfe1b48ff2b9bc52840fc4c3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79256089"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>Azure SQL 数据库托管实例中的时区
@@ -193,7 +193,7 @@ ms.locfileid: "79256089"
 | 印度标准时间 | (UTC+05:30) 钦奈，加尔各答，孟买，新德里 |
 | 斯里兰卡标准时间 | (UTC+05:30) 斯里加亚渥登普拉 |
 | 尼泊尔标准时间 | (UTC+05:45) 加德满都 |
-| 亚标准时间 | (UTC+06:00) 阿斯塔纳 |
+| 中亚标准时间 | (UTC+06:00) 阿斯塔纳 |
 | 孟加拉标准时间 | (UTC+06:00) 达卡 |
 | 鄂木斯克标准时间 | (UTC+06:00) 鄂木斯克 |
 | 缅甸标准时间 | (UTC+06:30) 仰光 |
@@ -201,7 +201,7 @@ ms.locfileid: "79256089"
 | 阿尔泰标准时间 | (UTC+07:00) 巴尔瑙尔，戈尔诺-阿尔泰斯克 |
 | W. 蒙古标准时间 | (UTC+07:00) 科布多 |
 | 北亚标准时间 | (UTC+07:00) 克拉斯诺亚尔斯克 |
-| N. 亚标准时间 | (UTC+07:00) 新西伯利亚 |
+| N. 中亚标准时间 | (UTC+07:00) 新西伯利亚 |
 | 托木斯克标准时间 | (UTC+07:00) 托木斯克 |
 | 中国标准时间 | (UTC+08:00) 北京，重庆，香港特别行政区，乌鲁木齐 |
 | 东北亚标准时间 | (UTC+08:00) 伊尔库次克 |
@@ -240,7 +240,7 @@ ms.locfileid: "79256089"
 | 萨摩亚群岛标准时间 | (UTC+13:00) 萨摩亚 |
 | 莱恩群岛标准时间 | (UTC+14:00) 基里巴斯岛 |
 
-## <a name="see-also"></a>请参阅 
+## <a name="see-also"></a>另请参阅 
 
 - [CURRENT_TIMEZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql)
 - [AT TIME ZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)

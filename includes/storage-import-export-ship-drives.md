@@ -9,13 +9,13 @@ ms.date: 04/08/2019
 ms.author: alkohli
 ms.custom: include file
 ms.openlocfilehash: 7ecc36218df23d81c4646612b5474a1465f428eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80282471"
 ---
-可以使用 FedEx、UPS 或 DHL 将包裹寄送到 Azure 数据中心。 如果要使用 FedEx/DHL 以外的运营商，请与 Azure 数据盒操作团队联系：`adbops@microsoft.com`
+可以使用 FedEx、UPS 或 DHL 将包裹寄送到 Azure 数据中心。 如果要使用 FedEx/DHL 以外的运营商，请联系 Azure Data Box 运营团队，网址为：`adbops@microsoft.com`
 
 * 必须提供有效的 FedEx、UPS 或 DHL 承运商帐号，以便 Microsoft 可以寄回驱动器。
   * 必须有 FedEx、UPS 或 DHL 帐号，才能从美国和欧洲寄回驱动器。

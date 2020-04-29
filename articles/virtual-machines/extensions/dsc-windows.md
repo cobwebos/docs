@@ -1,5 +1,5 @@
 ---
-title: Azure 所需的状态配置扩展处理程序
+title: Azure 所需状态配置扩展处理程序
 description: 使用 DSC 扩展在 Azure VM 中上传和应用 PowerShell DSC 配置
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,10 +14,10 @@ ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
 ms.openlocfilehash: 592c731d1851ac36cf9b57864750df0603b6c3fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79253957"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC 扩展
@@ -26,13 +26,13 @@ ms.locfileid: "79253957"
 
 适用于 Windows 的 PowerShell DSC 扩展由 Microsoft 发布和提供支持。 扩展在 Azure VM 中上传和应用 PowerShell DSC 配置。 DSC 扩展可调用 PowerShell DSC，在 VM 上启用收到的 DSC 配置。 本文档详细介绍适用于 Windows 的 DSC 虚拟机扩展支持的平台、配置和部署选项。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="operating-system"></a>操作系统
 
 DSC 扩展支持以下 OS：
 
-Windows 服务器 2019， Windows 服务器 2016， Windows 服务器 2012R2， Windows 服务器 2012， Windows 服务器 2008 R2 SP1， Windows 客户端 7/8.1/10
+Windows Server 2019，Windows Server 2016，Windows Server 2012R2，Windows Server 2012，Windows Server 2008 R2 SP1，Windows 客户端 7/8.1/10
 
 ### <a name="internet-connectivity"></a>Internet 连接
 
@@ -97,7 +97,7 @@ Windows 服务器 2019， Windows 服务器 2016， Windows 服务器 2012R2， 
 
 ### <a name="property-values"></a>属性值
 
-| “属性” | 值/示例 | 数据类型 |
+| 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2018-10-01 | date |
 | 发布者 | Microsoft.Powershell.DSC | 字符串 |
@@ -106,7 +106,7 @@ Windows 服务器 2019， Windows 服务器 2016， Windows 服务器 2012R2， 
 
 ### <a name="settings-property-values"></a>设置属性值
 
-| “属性” | 数据类型 | 描述
+| 名称 | 数据类型 | 说明
 | ---- | ---- | ---- |
 | settings.wmfVersion | 字符串 | 指定应在 VM 上安装的 Windows Management Framework 版本。 将此属性设置为“latest”可安装最新版本的 WMF。 目前，此属性的可能值只有“4.0”、“5.0”和“latest”。 这些可能值将来可能会更新。 默认值为“latest”。 |
 | settings.configuration.url | 字符串 | 指定要从中下载 DSC 配置 zip 文件的 URL 位置。 如果提供的 URL 需要 SAS 令牌才能访问，必须将 protectedSettings.configurationUrlSasToken 属性设置为 SAS 令牌的值。 如果已定义 settings.configuration.script 和/或 settings.configuration.function，则需要此属性。
@@ -120,7 +120,7 @@ Windows 服务器 2019， Windows 服务器 2016， Windows 服务器 2012R2， 
 
 ### <a name="protected-settings-property-values"></a>受保护设置属性值
 
-| “属性” | 数据类型 | 描述
+| 名称 | 数据类型 | 说明
 | ---- | ---- | ---- |
 | protectedSettings.configurationArguments | 字符串 | 定义想要传递到 DSC 配置的任何参数。 将加密此属性。 |
 | protectedSettings.configurationUrlSasToken | 字符串 | 指定用于访问 configuration.url 所定义的 URL 的 SAS 令牌。 将加密此属性。 |
@@ -135,7 +135,7 @@ Windows 服务器 2019， Windows 服务器 2016， Windows 服务器 2012R2， 
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
-### <a name="troubleshoot"></a>疑难解答
+### <a name="troubleshoot"></a>故障排除
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure CLI 进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure CLI 运行以下命令。
 
@@ -172,4 +172,4 @@ C:\WindowsAzure\Logs\Plugins\{Extension_Name}\{Extension_Version}
 
 ### <a name="support"></a>支持
 
-如果本文中的任何一点都需要更多帮助，则可以在[MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上联系 Azure 专家。 或者，你也可以提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择"获取支持"。 有关使用 Azure 支持的信息，请阅读[Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果在本文的任何位置需要更多帮助，可以联系 MSDN Azure 上的 Azure 专家[并 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)。 或者，你也可以提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 "获取支持"。 有关使用 Azure 支持的信息，请阅读[Microsoft Azure 支持常见问题](https://azure.microsoft.com/support/faq/)。

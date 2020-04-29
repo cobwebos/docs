@@ -1,5 +1,5 @@
 ---
-title: 安装微软 Azure StorSimple 8600 设备
+title: 安装 Microsoft Azure StorSimple 8600 设备
 description: 介绍如何在部署和配置软件之前打开 StorSimple 8600 设备的包装并进行机架安装和布线。
 author: alkohli
 ms.assetid: 3d82ba5f-3e34-40dc-9c33-50f952bc6be8
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79254750"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>打开 StorSimple 8600 设备的包装并进行机架安装和布线
@@ -42,7 +42,7 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
    
     **存储设备解包后的视图**
    
-   | Label | 描述 |
+   | Label | 说明 |
    | --- | --- |
    |   1 |包装箱 |
    |   2 |SAS 电缆（位于配件和电缆槽中） |
@@ -106,7 +106,7 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
    
     **在机箱侧面安装导轨**
    
-   | Label | 描述 |
+   | Label | 说明 |
    | --- | --- |
    |  1 |M 3x4 圆头螺丝 |
    |  2 |底架滑轨 |
@@ -119,7 +119,7 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
    
     **将导轨组件固定到机架上**
    
-   | Label | 描述 |
+   | Label | 说明 |
    | --- | --- |
    |   1 |旋紧螺丝 |
    |   2 |方孔前机架立柱螺丝 |
@@ -145,7 +145,7 @@ Microsoft Azure StorSimple 8600 是一种双机箱设备，由主机箱和 EBOD 
    
     **安装法兰帽**
    
-   | Label | 描述 |
+   | Label | 说明 |
    | --- | --- |
    |   1 |机箱紧固螺丝 |
 
@@ -164,7 +164,7 @@ EBOD 机箱安装完成后，需按照相同步骤安装主机箱。
 ## <a name="cable-your-storsimple-8600-device"></a>进行 StorSimple 8600 设备布线
 以下过程阐释了如何针对电源、网络和串行连接进行 StorSimple 8600 设备布线。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 在开始设备布线之前，需要：
 
 * 主机箱和 EBOD 机箱（完全解包）
@@ -198,7 +198,7 @@ EBOD 机箱安装完成后，需按照相同步骤安装主机箱。
    
     **设备背面显示数据端口**
    
-   | Label | 描述 |
+   | Label | 说明 |
    | --- | --- |
    |   0,1,4,5 |1 GbE 网络接口 |
    |   2,3 |10 GbE 网络接口 |
@@ -209,7 +209,7 @@ EBOD 机箱安装完成后，需按照相同步骤安装主机箱。
 
 **设备网络布线**
 
-| Label | 描述 |
+| Label | 说明 |
 | --- | --- |
 | A |具有 Internet 访问的 LAN |
 | B |控制器 0 |

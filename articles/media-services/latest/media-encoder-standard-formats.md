@@ -15,10 +15,10 @@ ms.date: 02/10/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: f1d4d4f4006702ebe0d057e56cf24a022e73b83e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79251357"
 ---
 # <a name="standard-encoder-formats-and-codecs"></a>标准编码器格式和编解码器
@@ -82,9 +82,9 @@ ms.locfileid: "79251357"
 | MP3 (MPEG-1 Audio Layer 3) |是 |
 | Windows Media 音频 |是 |
 | WAV/PCM |是 |
-| [Flac](https://en.wikipedia.org/wiki/FLAC)</a> |是 |
+| [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |是 |
 | [Opus](https://go.microsoft.com/fwlink/?LinkId=822667) |是 |
-| [沃尔比斯](https://en.wikipedia.org/wiki/Vorbis)</a> |是 |
+| [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |是 |
 | AMR（自适应多速率） |是 |
 | AES（SMPTE 331M 和 302M、AES3-2003） |否 |
 | Dolby® E |否 |

@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: 32603f4ab33e020245861e5dc66d2ade545fa627
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79247483"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>什么是云服务模型以及如何将其打包？
-云服务由以下三个组件创建：服务定义 *(.csdef)*、服务配置 *(.cscfg)* 和服务包 *(.cspkg)*。 **ServiceDefinition.csdef** 和 **ServiceConfig.cscfg** 文件都基于 XML，同时介绍云服务的结构及其配置方式；统称为模型。 **ServicePackage.cspkg** 是基于 **ServiceDefinition.csdef** 和其他文件生成的 zip 文件，它包含所有必需的基于二进制的依赖项。 Azure 可从 **ServicePackage.cspkg** 和 **ServiceConfig.cscfg** 两者创建云服务。
+云服务由以下三个组件创建：服务定义 *(.csdef)* 、服务配置 *(.cscfg)* 和服务包 *(.cspkg)* 。 **ServiceDefinition.csdef** 和 **ServiceConfig.cscfg** 文件都基于 XML，同时介绍云服务的结构及其配置方式；统称为模型。 **ServicePackage.cspkg** 是基于 **ServiceDefinition.csdef** 和其他文件生成的 zip 文件，它包含所有必需的基于二进制的依赖项。 Azure 可从 **ServicePackage.cspkg** 和 **ServiceConfig.cscfg** 两者创建云服务。
 
 云服务在 Azure 中开始运行后，可以通 **ServiceConfig.cscfg** 文件重新进行配置，但不能更改定义。
 
@@ -83,9 +83,9 @@ ms.locfileid: "79247483"
 </ServiceDefinition>
 ```
 
-您可以参考[服务定义架构](/previous-versions/azure/reference/ee758711(v=azure.100))，以便更好地了解此处使用的 XML 架构，但是，下面是一些元素的快速说明：
+可以参阅[服务定义架构](/previous-versions/azure/reference/ee758711(v=azure.100))以更好地了解此处使用的 XML 架构，而以下是某些元素的快速说明：
 
-**网站**  
+**站点**  
 包含 IIS7 中承载的网站或 Web 应用程序的定义。
 
 **InputEndpoints**  
@@ -94,7 +94,7 @@ ms.locfileid: "79247483"
 **InternalEndpoints**  
 包含角色实例用于相互通信的终结点的定义。
 
-**配置设置**  
+**ConfigurationSettings**  
 包含特定角色功能的设置定义。
 
 **证书**  
@@ -103,7 +103,7 @@ ms.locfileid: "79247483"
 **LocalResources**  
 包含本地存储资源的定义。 本地存储资源是角色实例在其中运行的虚拟机的文件系统中的保留目录。
 
-**进口**  
+**导入**  
 包含已导入模块的定义。 前面的代码示例显示了远程桌面连接和 Azure Connect 的模块。
 
 **启动**  
@@ -136,10 +136,10 @@ ms.locfileid: "79247483"
 
 可以参考[服务配置架构](/previous-versions/azure/reference/ee758710(v=azure.100))更好了解此处使用的 XML 架构，不过以下是元素的快速说明：
 
-**实例数**  
+**实例**  
 为角色配置运行实例的数目。 若要防止云服务在升级期间可能变得不可用，建议部署面向 web 角色的多个实例。 部署多个实例即表示遵守 [Azure 计算服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/) 中的准则，此协议可以保证在为一个服务部署了两个或多个角色实例时，面向 Internet 的角色拥有 99.95% 的外部连接。
 
-**配置设置**  
+**ConfigurationSettings**  
 为角色配置运行实例的设置。 `<Setting>` 元素的名称必须与服务定义文件中的设置定义匹配。
 
 **证书**  
@@ -148,7 +148,7 @@ ms.locfileid: "79247483"
 <p/>
 
 > [!NOTE]
-> 通过使用文本编辑器，可以将证书的指纹添加到配置文件中。 或者，可以在 Visual Studio 中角色的“属性”**** 页的“证书”**** 选项卡上添加值。
+> 通过使用文本编辑器，可以将证书的指纹添加到配置文件中。 或者，可以在 Visual Studio 中角色的“属性”  页的“证书”  选项卡上添加值。
 > 
 > 
 
@@ -221,7 +221,7 @@ Azure 仅允许 Web 角色有一个入口点。 即所有通信都通过一个 I
 
 要将应用程序部署为 Azure 中的云服务，必须首先以适当的格式打包该应用程序。 可以使用 **CSPack** 命令行工具（与 [Azure SDK](https://azure.microsoft.com/downloads/) 一起安装）来创建包文件作为 Visual Studio 的替代。
 
-**CSPack** 使用服务定义文件和服务配置文件的内容来定义包的内容。 **CSPack** 生成可以使用 [Azure 门户](cloud-services-how-to-create-deploy-portal.md#create-and-deploy) 上传到 Azure 的应用程序包文件 (.cspkg)。 默认情况下，该应用程序包名为 `[ServiceDefinitionFileName].cspkg`，但可以通过使用 **CSPack** 的 `/out` 选项指定不同的名称。
+**CSPack** 使用服务定义文件和服务配置文件的内容来定义包的内容。 **CSPack** 生成可以使用 [Azure 门户](cloud-services-how-to-create-deploy-portal.md#create-and-deploy) 上传到 Azure 的应用程序包文件 (.cspkg)。 默认情况下，该应用程序包名为 `[ServiceDefinitionFileName].cspkg`，但可以通过使用 `/out`CSPack**的** 选项指定不同的名称。
 
 **CSPack** 位于  
 `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\[sdk-version]\bin\`
@@ -262,7 +262,7 @@ cspack [DirectoryName]\[ServiceDefinition]
 
 其中变量如下所示定义：
 
-| 变量 | “值” |
+| 变量 | 值 |
 | --- | --- |
 | \[DirectoryName\] |包含 Azure 项目 .csdef 文件的根项目目录下的子目录。 |
 | \[ServiceDefinition\] |服务定义文件的名称。 默认情况下，此文件名为 ServiceDefinition.csdef。 |

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 46c5e1ed0a1d0db100c3415c40f59d46f62b21f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79258936"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
@@ -18,7 +18,7 @@ Azure Service Fabric 命令行接口 (CLI) 是一个命令行实用程序，用�
 
 [!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-sfctl.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在安装之前，请确保环境中已安装 Python 和 pip。 有关详细信息，请参阅 [pip 快速入门文档](https://pip.pypa.io/en/latest/quickstart/)和官方的 [Python 安装文档](https://wiki.python.org/moin/BeginnersGuide/Download)。
 
@@ -30,7 +30,7 @@ Service Fabric CLI 旨在支持 Service Fabric SDK 的最新运行时版本。 �
 
 | CLI 版本   | 支持的运行时版本 |
 |---------------|---------------------------|
-| 最新 （+9）  | 最新版（不等于 7）              |
+| 最新 (~=9)  | 最新版（不等于 7）              |
 | 8.0.0         | 6.5                       |
 | 7.1.0         | 6.4                       |
 | 6.0.0         | 6.3                       |
@@ -61,9 +61,9 @@ pip install -I sfctl==1.1.0
 
 2. 启动安装程序。
 
-3. 在提示的底部，选择“将 Python 3.7 添加到路径”****。
+3. 在提示的底部，选择“将 Python 3.7 添加到路径”  。
 
-4. 选择“立即安装”****，并完成安装。
+4. 选择“立即安装”  ，并完成安装。
 
 现在可以打开新的命令窗口，获取 Python 和 pip 的版本。
 
@@ -99,7 +99,7 @@ sfctl -h
 
 `sfctl: command not found`
 
-请确保可从 `$PATH` 访问 `~/.local/bin`：
+请确保可从 `~/.local/bin` 访问 `$PATH`：
 
 ```bash
 export PATH=$PATH:~/.local/bin

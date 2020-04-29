@@ -11,10 +11,10 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.openlocfilehash: cc0efc0a076ddc3fc9425999f1e38b4a32dec7a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79477334"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>创建数据科学虚拟机共享池
@@ -53,7 +53,7 @@ az group deployment create --resource-group  [[NAME OF RESOURCE GROUP ABOVE]]  -
 
 GitHub 中的 Azure DataScienceVM 存储库也提供[装载 Azure 文件共享的脚本](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Extensions/General/mountazurefiles.sh)。 该脚本在参数文件的指定装载点装载 Azure 文件共享。 该脚本还在初始用户的主目录中创建指向已装载驱动器的软链接。 Azure 文件存储共享中的特定于用户的笔记本目录是指向 `$HOME/notebooks/remote` 目录的软链接，以便用户可以访问、运行和保存其 Jupyter 笔记本。 在 VM 上创建其他用户，以便将每个用户的 Jupyter 工作区指向 Azure 文件共享时，可以使用同一约定。
 
-虚拟机规模集支持自动缩放。 可以设置有关何时创建其他实例以及何时减小实例的规则。 例如，可以缩减至零个实例以在未使用任何 VM 的情况下节省云硬件的使用成本。 VM 规模集的文档页提供了有关[自动缩放](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview)的详细步骤。
+虚拟机规模集支持自动缩放。 可以设置有关何时创建其他实例以及何时减小实例的规则。 例如，可以纵向缩减至零个实例以在未使用任何 VM 的情况下节省云硬件的使用成本。 VM 规模集的文档页提供了有关[自动缩放](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview)的详细步骤。
 
 ## <a name="next-steps"></a>后续步骤
 

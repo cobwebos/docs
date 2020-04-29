@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.openlocfilehash: 61670d757611bd0c1dd11c389282b18edb3d7fa1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79247379"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>管理 Azure Cosmos 帐户
@@ -27,11 +27,11 @@ ms.locfileid: "79247379"
 
 请参阅[使用 Azure CLI 创建 Azure Cosmos DB 帐户](manage-with-cli.md#create-an-azure-cosmos-db-account)
 
-### <a name="azure-powershell"></a><a id="create-database-account-via-ps"></a>Azure 电源外壳
+### <a name="azure-powershell"></a><a id="create-database-account-via-ps"></a>Azure PowerShell
 
 请参阅[使用 Powershell 创建 Azure Cosmos DB 帐户](manage-with-powershell.md#create-account)
 
-### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Azure Resource Manager 模板
+### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Azure 资源管理器模板
 
 此 Azure 资源管理器模板将为 SQL API 创建一个 Azure Cosmos 帐户（配置有两个区域以及用于选择一致性级别、自动故障转移和多主数据库的选项）。 若要部署此模板，请在自述文件页[创建 Azure Cosmos 帐户](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-sql)上，单击“部署到 Azure”
 
@@ -39,11 +39,11 @@ ms.locfileid: "79247379"
 
 ### <a name="azure-portal"></a><a id="add-remove-regions-via-portal"></a>Azure 门户
 
-1. 登录到[Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 1. 导航到 Azure Cosmos 帐户，打开“全局复制数据”菜单****。
 
-1. 要添加区域，请选择地图上的六边形，**+** 其标签与所需区域相对应。 另外，若要添加某个区域，请选择“+ 添加区域”选项，然后从下拉菜单中选择一个区域。****
+1. 若要添加区域，请在地图上选择与**+** 所需区域相对应的六边形的六边形。 另外，若要添加某个区域，请选择“+ 添加区域”选项，然后从下拉菜单中选择一个区域。****
 
 1. 若要删除区域，请选择带对号的蓝色六边形以从地图中清除一个或多个区域。 或者选择右侧位于区域旁边的“废纸篓”(🗑) 图标。
 
@@ -59,7 +59,7 @@ ms.locfileid: "79247379"
 
 请参阅[使用 Azure CLI 添加或删除区域](manage-with-cli.md#add-or-remove-regions)
 
-### <a name="azure-powershell"></a><a id="add-remove-regions-via-ps"></a>Azure 电源外壳
+### <a name="azure-powershell"></a><a id="add-remove-regions-via-ps"></a>Azure PowerShell
 
 请参阅[使用 Powershell 添加或删除区域](manage-with-powershell.md#update-account)
 
@@ -75,7 +75,7 @@ ms.locfileid: "79247379"
 
 请参阅[使用 Azure CLI 启用多写入区域](manage-with-cli.md#enable-multiple-write-regions)
 
-### <a name="azure-powershell"></a><a id="configure-multiple-write-regions-ps"></a>Azure 电源外壳
+### <a name="azure-powershell"></a><a id="configure-multiple-write-regions-ps"></a>Azure PowerShell
 
 请参阅[使用 Powershell 启用多写入区域](manage-with-powershell.md#multi-master)
 
@@ -153,7 +153,7 @@ ms.locfileid: "79247379"
 
 3. 在“自动故障转移”窗格中，确保将“启用自动故障转移”设置为“开”。************ 
 
-4. 选择“保存”。****
+4. 选择“保存”  。
 
    ![自动故障转移门户菜单](./media/how-to-manage-database-account/automatic-failover.png)
 
@@ -161,7 +161,7 @@ ms.locfileid: "79247379"
 
 请参阅[使用 Azure CLI 启用自动故障转移](manage-with-cli.md#enable-automatic-failover)
 
-### <a name="azure-powershell"></a><a id="enable-automatic-failover-via-ps"></a>Azure 电源外壳
+### <a name="azure-powershell"></a><a id="enable-automatic-failover-via-ps"></a>Azure PowerShell
 
 请参阅[使用 Powershell 启用自动故障转移](manage-with-powershell.md#enable-automatic-failover)
 
@@ -184,7 +184,7 @@ Cosmos 帐户配置为自动故障转移后，可以更改区域的故障转移�
 
 4. 若要修改故障转移优先级，请将鼠标指针悬停在读取区域上，并通过在行左侧出现的三个点拖动读取区域。
 
-5. 选择“保存”。****
+5. 选择“保存”  。
 
    ![自动故障转移门户菜单](./media/how-to-manage-database-account/automatic-failover.png)
 
@@ -192,7 +192,7 @@ Cosmos 帐户配置为自动故障转移后，可以更改区域的故障转移�
 
 请参阅[使用 Azure CLI 设置故障转移优先级](manage-with-cli.md#set-failover-priority)
 
-### <a name="azure-powershell"></a><a id="set-failover-priorities-via-ps"></a>Azure 电源外壳
+### <a name="azure-powershell"></a><a id="set-failover-priorities-via-ps"></a>Azure PowerShell
 
 请参阅[使用 Powershell 设置故障转移优先级](manage-with-powershell.md#modify-failover-priority)
 
@@ -224,7 +224,7 @@ Cosmos 帐户配置为自动故障转移后，可以更改区域的故障转移�
 
 请参阅[使用 Azure CLI 触发手动故障转移](manage-with-cli.md#trigger-manual-failover)
 
-### <a name="azure-powershell"></a><a id="enable-manual-failover-via-ps"></a>Azure 电源外壳
+### <a name="azure-powershell"></a><a id="enable-manual-failover-via-ps"></a>Azure PowerShell
 
 请参阅[使用 Powershell 触发手动故障转移](manage-with-powershell.md#trigger-manual-failover)
 
