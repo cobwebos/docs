@@ -9,10 +9,10 @@ ms.date: 12/13/2019
 ms.author: jingwang
 ms.custom: include file
 ms.openlocfilehash: fb44f217b7a940bc07a164e482b67ddb53835715
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75440478"
 ---
 | 类别 | 数据存储 |
@@ -23,16 +23,16 @@ ms.locfileid: "75440478"
 | &nbsp; |[Azure Data Lake Storage Gen1](../articles/data-factory/connector-azure-data-lake-store.md) |
 | &nbsp; |[Azure Data Lake Storage Gen2](../articles/data-factory/connector-azure-data-lake-storage.md) |
 | &nbsp; |[Azure Database for MariaDB](../articles/data-factory/connector-azure-database-for-mariadb.md) |
-| &nbsp; |[MySQL 的 Azure 数据库](../articles/data-factory/connector-azure-database-for-mysql.md) |
+| &nbsp; |[Azure Database for MySQL](../articles/data-factory/connector-azure-database-for-mysql.md) |
 | &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |
 | &nbsp; |[Azure 文件](../articles/data-factory/connector-azure-file-storage.md) |
 | &nbsp; |[Azure SQL 数据库](../articles/data-factory/connector-azure-sql-database.md) |
 | &nbsp; |[Azure SQL 数据库托管实例](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |
-| &nbsp; |[Azure 突触分析（以前的 SQL 数据仓库）](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
+| &nbsp; |[Azure Synapse Analytics（以前称为 SQL 数据仓库）](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
 | &nbsp; |[Azure 表存储](../articles/data-factory/connector-azure-table-storage.md) |
-| **数据库** |[亚马逊红移](../articles/data-factory/connector-amazon-redshift.md) |
+| **Database** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |
 | &nbsp; |[DB2](../articles/data-factory/connector-db2.md) |
-| &nbsp; |[Drill](../articles/data-factory/connector-drill.md) |
+| &nbsp; |[钻取](../articles/data-factory/connector-drill.md) |
 | &nbsp; |[Google BigQuery](../articles/data-factory/connector-google-bigquery.md) |
 | &nbsp; |[Greenplum](../articles/data-factory/connector-greenplum.md) |
 | &nbsp; |[HBase](../articles/data-factory/connector-hbase.md) |
@@ -43,7 +43,7 @@ ms.locfileid: "75440478"
 | &nbsp; |[Microsoft Access](../articles/data-factory/connector-microsoft-access.md) |
 | &nbsp; |[MySQL](../articles/data-factory/connector-mysql.md) |
 | &nbsp; |[Netezza](../articles/data-factory/connector-netezza.md) |
-| &nbsp; |[甲骨文](../articles/data-factory/connector-oracle.md) |
+| &nbsp; |[Oracle](../articles/data-factory/connector-oracle.md) |
 | &nbsp; |[Phoenix](../articles/data-factory/connector-phoenix.md) |
 | &nbsp; |[PostgreSQL](../articles/data-factory/connector-postgresql.md) 
 | &nbsp; |[Presto（预览）](../articles/data-factory/connector-presto.md) |
@@ -56,9 +56,9 @@ ms.locfileid: "75440478"
 | &nbsp; |[Sybase](../articles/data-factory/connector-sybase.md) |
 | &nbsp; |[Teradata](../articles/data-factory/connector-teradata.md) |
 | &nbsp; |[Vertica](../articles/data-factory/connector-vertica.md) |
-| **Nosql** |[Cassandra](../articles/data-factory/connector-cassandra.md) |
+| **NoSQL** |[Cassandra](../articles/data-factory/connector-cassandra.md) |
 | &nbsp; |[Couchbase（预览）](../articles/data-factory/connector-couchbase.md) |
-| **文件** |[Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) |
+| **File** |[Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) |
 | &nbsp; |[文件系统](../articles/data-factory/connector-file-system.md) |
 | &nbsp; |[FTP](../articles/data-factory/connector-ftp.md) |
 | &nbsp; |[Google Cloud Storage](../articles/data-factory/connector-google-cloud-storage.md) |
@@ -81,9 +81,9 @@ ms.locfileid: "75440478"
 | &nbsp; |[Oracle Eloqua（预览）](../articles/data-factory/connector-oracle-eloqua.md) |
 | &nbsp; |[Oracle Responsys（预览）](../articles/data-factory/connector-oracle-responsys.md) |
 | &nbsp; |[Oracle 服务云（预览）](../articles/data-factory/connector-oracle-service-cloud.md) |
-| &nbsp; |[贝宝（预览）](../articles/data-factory/connector-paypal.md) |
+| &nbsp; |[PayPal （预览版）](../articles/data-factory/connector-paypal.md) |
 | &nbsp; |[QuickBooks（预览）](../articles/data-factory/connector-quickbooks.md) |
-| &nbsp; |[销售队伍](../articles/data-factory/connector-salesforce.md) |
+| &nbsp; |[Salesforce](../articles/data-factory/connector-salesforce.md) |
 | &nbsp; |[Salesforce 服务云](../articles/data-factory/connector-salesforce-service-cloud.md) |
 | &nbsp; |[Salesforce Marketing Cloud](../articles/data-factory/connector-salesforce-marketing-cloud.md) |
 | &nbsp; |[SAP Cloud for Customer (C4C)](../articles/data-factory/connector-sap-cloud-for-customer.md) |
