@@ -10,10 +10,10 @@ ms.author: dpalled
 manager: cshankar
 ms.custom: include file
 ms.openlocfilehash: 7bc6938523a6d66a2bc20b37c659568fc5ca494d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77123181"
 ---
 ### <a name="general-availability-and-preview-comparison"></a>正式版和预览版比较
@@ -50,7 +50,7 @@ ms.locfileid: "77123181"
 * 了解如何[添加事件中心源](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)。
 * 配置 [IoT 中心源](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)。
 
-默认情况下，[预览环境支持](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress#ingress-scale-and-preview-limitations)每个环境高达 1 **MB/秒 （MB/s）** 的入侵率。 如有必要，客户可能会将其预览环境扩展至**16 MB/s**吞吐量。 每个分区也有**0.5 MB/s**的限制。 
+默认情况下，[预览版环境支持](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress#ingress-scale-and-preview-limitations)**每秒 1 mb/秒（MB/s）每个环境**的入口速率。 如果需要，客户可以将其预览版环境扩展到**16 MB/秒**的吞吐量。 此外，每个分区的限制为**0.5 MB/s**。 
 
 ### <a name="api-limits"></a>API 限制
 

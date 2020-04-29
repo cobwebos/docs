@@ -1,6 +1,6 @@
 ---
-title: 搜索类别 |微软 Azure 地图
-description: 在本文中，您将了解 Microsoft Azure 地图中受支持的搜索类别。
+title: 搜索类别 |Microsoft Azure 映射
+description: 在本文中，你将了解 Microsoft Azure 映射中支持的搜索类别。
 author: sataneja
 ms.author: sataneja
 ms.date: 05/14/2018
@@ -9,15 +9,15 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 9dbcae6e3947576a7d2bc204c2a3a6fb2e95953d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76988274"
 ---
 # <a name="azure-maps-supported-categories"></a>Azure Maps 支持的类型
 
-执行兴趣点的[类别搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory)时，会涉及到 100 多个支持的类别。 下面是支持的类别名称的类别代码列表。 为顶级类别生成类别代码。 所有子类别共享相同的类别代码。 此类别列表可能会随着新的数据版本而更改。
+执行兴趣点的[类别搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory)时，会涉及到 100 多个支持的类别。 下面是支持的类别名称的类别代码列表。 为顶级类别生成类别代码。 所有子类别共享相同的类别代码。 此类别列表可能会随新数据发布而更改。
 
 <br/>
 
@@ -45,7 +45,7 @@ ms.locfileid: "76988274"
 | COLLEGE\_UNIVERSITY | 专科院校/社区学院、学院/大学、学院、大学预科中学、大学 |
 | COMMERCIAL\_BUILDING | 办公大楼、园区总部、商业建筑 |
 | COMMUNITY\_CENTER | 社区中心 |
-| COMPANY | 电子、制造、计算机数据服务、公共卫生技术、多元化金融、动物收容所、航空公司、设备租赁、服务、邮件/包裹/货运、公交线路、家电维修、清洁服务、oem、税务服务、石油天然气、法律服务、建筑、电信、运输、汽车制造、化学品、殡葬服务太平间、桥梁隧道运营、汽车、机械工程、服务、投资顾问、广告/营销、移动存储、储蓄机构、保险、计算机软件、制药、餐饮、婚礼服务、农业技术、房地产、出租车、豪华轿车穿梭服务、巴士包机租赁、采矿、出版技术、电缆电话、进出口分销、公司、庇护、煤矿、房地产、啤酒厂、金矿（） |
+| COMPANY | 电子产品、制造、计算机数据服务、公共运行状况技术、多样化财务、动物 e-shelter、航空公司、设备租赁、服务、邮件/包裹/货物交付、总线线路、家庭设备维修、清洗服务、oem、税务服务、石油天然气、法律服务、建设、电信、运输、汽车制造、交通、funeral 服务，投资顾问，广告/市场营销，移动存储，储蓄机构，保险，计算机软件，药品，餐，婚礼，计算机软件，农业技术，房地产，出租车，礼车快速导航服务，总线章程租赁，挖掘，发布技术，有线电话，导入/导出分发，公司，asylum，燃煤地雷，个房产，brewery，黄金地雷 |
 | COURTHOUSE | 法院 |
 | CULTURAL\_CENTER | 文化中心 |
 | DENTIST | 牙医 |
@@ -73,7 +73,7 @@ ms.locfileid: "76988274"
 | IMPORTANT\_TOURIST\_ATTRACTION | 建筑、天文台、拱门、隧道、雕像、塔、桥、天象馆、陵墓/墓穴、纪念碑、水洼、自然景观、重要旅游景点、海滨步道、金字塔、宝塔、城堡、宫殿、修道院、金字塔、城堡、大门、乡间别墅、堤坝、灯塔、墓穴 |
 | INDUSTRIAL\_BUILDING | 铸造厂、油库、工业建筑、工厂 |
 | LEISURE\_CENTER | 保龄球、斯诺克、台球、飞行俱乐部、舞蹈工作室、桑拿浴室、日光浴按摩中心、休闲中心、休闲健身中心 |
-| LIBRARY | 图书馆 |
+| LIBRARY | 库 |
 | MANUFACTURING\_FACILITY | 制造设施 |
 | MARINA | 游艇泊区、游艇停靠区 |
 | MARKET | 超市、大型超市、农民、公共、非正式、市场 |
@@ -105,7 +105,7 @@ ms.locfileid: "76988274"
 | REPAIR\_FACILITY | 车身维修厂、轮胎服务、维修店、汽车玻璃替换店、一般汽车维修服务、汽车配件销售安装、摩托车修理、卡车维修服务、维修设施 |
 | RESEARCH\_FACILITY | 研究设施 |
 | RESIDENTIAL\_ACCOMMODATION | 老年人社区、连栋房屋建筑群、公寓综合楼/公寓大楼、住宅小区、居民区 |
-| RESTAURANT | 德语， 克里奥尔卡琼， 荷兰语， 宴会厅， 小酒馆， 以色列， 斯洛伐克语， 牙买加， 素食， 海鲜， 越南语， 马耳他语， 四川， 威尔士， 中文， 日本人， 阿尔及利亚， 加州， 融合， 山东， 沙拉吧， 萨沃伊安， 西班牙， 埃塞俄比亚， 台湾， 甜甜圈， 伊朗， 加拿大， 美国， 挪威语， 法国， 湖南， 波利尼西亚， 阿富汗， 路边， 亚洲， 瑞士， 色情， 克里佩里， 苏里南， 埃及， 匈牙利， 尼泊尔， 烧烤， 火锅， 汉堡， 地中海， 地中海，， 广东， 亚洲 （其他）， 自助餐， 寿司， 蒙古语， 国际， 贝类， 泰国， 委内瑞拉， 鲁马尼亚， 鸡肉， 汤， 犹太， 牛排屋， 酸奶/果汁吧， 意大利， 韩国人， 塞浦路斯， 波斯尼亚， 玻利维亚， 多米尼加， 比利时， 突尼斯， 苏格兰， 英语， 巴基斯坦， 捷克， 夏威夷语， 马格里布， 西藏， 阿拉伯， 中东， 智利， 上海， 抛光， 菲律宾， 苏丹语， 缅甸语， 巴西， 斯堪的纳维亚， 保加利亚人， 灵魂食品， 哥伦比亚， 犹太人， 比萨饼， 西西里，乌拉圭人， 自助餐厅， 芬兰， 非洲， 科西嘉， 叙利亚， 加勒比， 东北， 俄罗斯， 烧烤， 带走， 快餐， 澳大利亚， 爱尔兰， 酒吧食品， 火锅， 黎巴嫩， 印度尼西亚， 丹麦， 普罗旺斯， 特帕尼亚基， 印度， 毛里求斯， 西部大陆， 秘鲁， 柬埔寨， 小吃， 瑞典， 大生物， 冰淇淋客厅， 斯拉夫语， 土耳其语， 阿根廷， 奥地利， 异国情调， 葡萄牙， 卢森堡， 卢森堡， 摩洛哥三明治 |
+| RESTAURANT | 德国，克里奥尔语-Cajun，荷兰语，banquet 房间，bistro，以色列，斯洛伐克语，牙买加，蔬菜，海鲜，越南语，马耳他语，Sichuan，威尔士语，中文，日语，阿尔及利亚，Californian，合成，Shandong，沙拉 bar，Savoy an，西班牙语，埃塞俄比亚，台湾，甜，伊朗，加拿大，美国，挪威语，法语，Hunan，Polynesian，阿富汗，有用，Erotic，crêperie，Surinamese，尼泊尔，barbecue，埃及，汉堡，地中海，tapas，广东核电集团，蒙古语，国际，mussels，泰语，委内瑞拉，Rumanian，小鸡，soup，计算机，steak 房子，yogurt/汁 bar，意大利语，韩语，Cypriot，波斯尼亚，玻利维亚，多米尼加，比利时，突尼斯，苏格兰，英语，巴基斯坦，捷克，夏威夷，Maghrib，藏语，阿拉伯中东，智利，上海，波兰语，菲律宾语，苏丹，亚美尼亚语，Barmština，巴西语，斯堪的纳维亚语，保加利亚语，灵魂食物，哥伦比亚，Jewish，比萨饼，Sicilian，随机，希腊语，巴斯克语，乌拉圭，cafeterias，芬兰语，科西嘉语，俄语，grill，take，fast 食物，澳大利亚，爱尔兰，pub 食物，fondue，，黎巴嫩，印度尼西亚，丹麦语，Provençal，teppanyaki，印第安，毛里求斯，西方大陆，秘鲁，Cambodian，辅料，瑞典语，macrobiotic，冰淇淋 parlor，斯拉夫语，土耳其语，Argentinean，奥地利，现，葡萄牙语，Luxembourgian，摩洛哥，南德 |
 | RESTAURANT\_AREA | 餐厅区域 |
 | REST\_AREA | 服务区、中途停靠站 |
 | SCENIC\_PANORAMIC\_VIEW | 景点/全景图、观测点 |

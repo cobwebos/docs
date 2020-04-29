@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: af0c72f0bc5dd8f3a3cbae7b82b1ac56447cbb08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77133293"
 ---
 # <a name="recover-a-deleted-dashboard-in-the-azure-portal"></a>在 Azure 门户中恢复删除的仪表板
 
-如果您在公共 Azure 云中，并且删除了 Azure 门户中_已发布的_仪表板，则可以在删除后的 14 天内恢复该仪表板。 如果您位于 Azure 政府云中或仪表板未发布，则无法恢复它，必须重新生成它。 有关发布仪表板的详细信息，请参阅[发布仪表板](azure-portal-dashboard-share-access.md#publish-dashboard)。 请按照以下步骤恢复已发布的仪表板：
+如果你在公共 Azure 云中，并在 Azure 门户中删除_已发布_的仪表板，则可以在删除的14天内恢复该仪表板。 如果你使用的是 Azure 政府版云或仪表板未发布，则无法恢复它，你必须重新生成它。 有关发布仪表板的详细信息，请参阅[发布仪表板](azure-portal-dashboard-share-access.md#publish-dashboard)。 请按照以下步骤恢复已发布的仪表板：
 
 1. 从 Azure 门户菜单中，选择“资源组”****，然后选择你在其中发布了仪表板的资源组（默认情况下，此资源组名为“仪表板”****）。
 

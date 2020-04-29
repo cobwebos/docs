@@ -5,31 +5,31 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: autoscale
 ms.openlocfilehash: c82b170bb3801bdc701ed84230db57f5691523ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77120687"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>使用自动缩放操作在 Azure 监视器中发送电子邮件和 webhook 警报通知
 本文演示如何设置触发器，以便可以在 Azure 中基于自动缩放操作调用特定 Web URL 或发送电子邮件。  
 
 ## <a name="webhooks"></a>Webhook
-通过 webhook 可以将 Azure 警报通知路由到其他系统以便用于后处理或自定义通知。 例如，将警报路由到可以处理传入 Web 请求以发送 SMS、记录 Bug、使用聊天或消息服务通知团队等的服务。Webhook URI 必须是有效的 HTTP 或 HTTPS 终结点。
+通过 webhook 可以将 Azure 警报通知路由到其他系统以便用于后处理或自定义通知。 例如，将警报路由到可以处理传入 web 请求的服务，以便使用聊天或消息服务等来发送 SMS、记录 bug、通知团队。Webhook URI 必须是有效 HTTP 或 HTTPS 终结点。
 
-## <a name="email"></a>电子邮件
+## <a name="email"></a>Email
 电子邮件可以发送到任何有效电子邮件地址。 还将通知运行规则的订阅的管理员和共同管理员。
 
 ## <a name="cloud-services-and-app-services"></a>云服务和应用服务
 可以从 Azure 门户选择加入云服务和服务器场（应用服务）。
 
-* 选择“缩放依据”**** 指标。
+* 选择“缩放依据”  指标。
 
 ![缩放依据](./media/autoscale-webhook-email/insights-autoscale-notify.png)
 
 ## <a name="virtual-machine-scale-sets"></a>虚拟机规模集
 对于使用 Resource Manager（虚拟机规模集）创建的较新虚拟机，可以使用REST API、Resource Manager 模板、PowerShell 和 CLI 进行配置。 门户界面尚不可用。
-使用 REST API 或资源管理器模板时，在[自动缩放设置](https://docs.microsoft.com/azure/templates/microsoft.insights/2015-04-01/autoscalesettings)中包括通知元素，并包含以下选项。
+使用 REST API 或资源管理器模板时，请在[autoscalesettings](https://docs.microsoft.com/azure/templates/microsoft.insights/2015-04-01/autoscalesettings)中包含以下选项的通知元素。
 
 ```
 "notifications": [
@@ -56,7 +56,7 @@ ms.locfileid: "77120687"
     ]
 ```
 
-| 字段 | 必需？ | 描述 |
+| 字段 | 必需？ | 说明 |
 | --- | --- | --- |
 | operation |是 |值必须是“规模” |
 | sendToSubscriptionAdministrator |是 |值必须是“true”或“false” |
@@ -67,7 +67,7 @@ ms.locfileid: "77120687"
 | properties |是 |值必须是空的 {}，也可以包含键值对 |
 
 ## <a name="authentication-in-webhooks"></a>webhook 中的身份验证
-webhook 可使用基于令牌的身份验证进行身份验证：将具有令牌 ID 的 webhook URI 保存为查询参数。 例如，https：\//mysamplealert/Webcallback？tokenid_某个tokenid&某个参数=某种值
+webhook 可使用基于令牌的身份验证进行身份验证：将具有令牌 ID 的 webhook URI 保存为查询参数。 例如，https：\//mysamplealert/webcallback？ tokenid = sometokenid&someparameter = somevalue
 
 ## <a name="autoscale-notification-webhook-payload-schema"></a>自动缩放通知 webhook 负载架构
 生成自动缩放通知时，以下元数据会包含在 webhook 负载中：
@@ -99,10 +99,10 @@ webhook 可使用基于令牌的身份验证进行身份验证：将具有令牌
 ```
 
 
-| 字段 | 必需？ | 描述 |
+| 字段 | 必需？ | 说明 |
 | --- | --- | --- |
-| status |是 |指示生成自动缩放操作的状态 |
-| operation |是 |对于实例的增加，它会是“Scale Out”，对于实例的减少，它会是“Scale In” |
+| 状态 |是 |指示生成自动缩放操作的状态 |
+| operation |是 |对于实例的增加，它会是“Scale Out”（横向扩展），对于实例的减少，它会是“Scale In”（横向缩减） |
 | 上下文 |是 |自动缩放操作上下文 |
 | timestamp |是 |触发自动缩放操作时的时间戳 |
 | id |是 |自动缩放设置的 Resource Manager ID |
@@ -112,7 +112,7 @@ webhook 可使用基于令牌的身份验证进行身份验证：将具有令牌
 | resourceGroupName |是 |所缩放的目标资源的资源组名 |
 | resourceName |是 |所缩放的目标资源的名称 |
 | resourceType |是 |三个支持的值是：“microsoft.classiccompute/domainnames/slots/roles” - 云服务角色、“microsoft.compute/virtualmachinescalesets” - 虚拟机规模集和“Microsoft.Web/serverfarms” - Web 应用 |
-| resourceId |是 |所缩放的目标资源的 Resource Manager ID |
+| ResourceId |是 |所缩放的目标资源的 Resource Manager ID |
 | portalLink |是 |指向目标资源摘要页的 Azure 门户链接 |
 | oldCapacity |是 |自动缩放执行缩放操作时的当前（旧）实例计数 |
 | newCapacity |是 |自动缩放将资源缩放到的新实例计数 |
