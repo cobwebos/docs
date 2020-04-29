@@ -9,10 +9,10 @@ ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1319583569a8abc619ad902a87ee551b476f88eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79254620"
 ---
 # <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>打开或关闭 StorSimple 8000 系列设备
@@ -146,7 +146,7 @@ StorSimple 8600 型号配有一个主机箱和一个 EBOD 机箱。 需要将这
 > [!IMPORTANT]
 > 请勿使用设备背面的电源按钮来关闭正在运行的设备。
 > 
-> 关闭设备之前，确保所有的设备组件都运行正常。 在 Azure 门户中，导航到**设备** > **监视器** > **硬件运行状况**，并验证所有组件的状态为绿色。 此方法仅适用于正常运行的系统。 如果要关闭系统以更换工作异常的组件，则 **“硬件状态”** 中将显示相应组件的故障（红色）或降级（黄色）状态。
+> 关闭设备之前，确保所有的设备组件都运行正常。 在 Azure 门户中，导航到 "**设备** > " "**监视器** > " "**硬件运行状况**"，并确认所有组件的状态都为绿色。 此方法仅适用于正常运行的系统。 如果要关闭系统以更换工作异常的组件，则 **“硬件状态”** 中将显示相应组件的故障（红色）或降级（黄色）状态。
 > 
 > 
 
@@ -154,7 +154,7 @@ StorSimple 8600 型号配有一个主机箱和一个 EBOD 机箱。 需要将这
 
 ### <a name="device-with-ebod-enclosure-a-name8600a"></a>配有 EBOD 机箱的设备 <a name="8600a">
 > [!IMPORTANT]
-> 在关闭主机箱和 EBOD 机箱之前，请确保所有的设备组件都正常工作。 在 Azure 门户中，导航到**设备** > **监视器** > **硬件运行状况**，并验证所有组件是否正常。
+> 在关闭主机箱和 EBOD 机箱之前，请确保所有的设备组件都正常工作。 在 Azure 门户中，导航到 "**设备** > " "**监视器** > " "**硬件运行状况**"，并确认所有组件都正常运行。
 
 
 #### <a name="to-shut-down-a-running-device-with-ebod-enclosure"></a>关闭正在运行的配有 EBOD 机箱的设备

@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad399fc24b2cdfbdc51e7feccba2c05786216b19
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79253229"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“审核活动”报告 
@@ -34,18 +34,18 @@ ms.locfileid: "79253229"
     - **登录** - [登录报告](concept-sign-ins.md)提供有关托管应用程序的使用情况和用户登录活动的信息。
     - **审核日志** - 通过日志为 Azure AD 中的各种功能所做的所有更改提供可跟踪性。 审核日志的示例包括对 Azure AD 中的任何资源（例如添加或删除用户、应用、组、角色和策略）所做的更改。
 - **安全性** 
-    - **风险**登录 -[风险登录](concept-risky-sign-ins.md)是登录尝试的指示器，该尝试可能由不是用户帐户的合法所有者的人员执行。 
+    - 有**风险的登录**-有[风险登录](concept-risky-sign-ins.md)是指可能由不是用户帐户合法所有者执行的登录尝试的指示符。 
     - **已标记为存在风险的用户** - [风险用户](concept-user-at-risk.md)是指可能已泄露的用户帐户。
 
 本文概述了审核报告。
  
 ## <a name="who-can-access-the-data"></a>谁可以访问该数据？
 
-* **安全管理员**、**安全读取器**、**报表阅读器**、**全局读取器**或**全局管理员**角色中的用户
+* **安全管理员**、**安全读者**、**报表读者**、**全局读者**或**全局管理员**角色中的用户
 
 ## <a name="audit-logs"></a>审核日志
 
-Azure AD 审核日志提供系统活动的记录以实现符合性。 要访问审核报告，请在**Azure 活动目录**的**监视**部分中选择**审核日志**。 请注意，审核日志的延迟可能长达一小时，因此在完成任务后，审核活动数据可能需要很长时间才能显示在门户中。
+Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访问审核报告，请在**Azure Active Directory**的 "**监视**" 部分选择 "**审核日志**"。 请注意，审核日志的滞后时间可能最长为一小时，因此，在完成任务后，在门户中显示审核活动数据可能需要较长时间。
 
 
 
@@ -60,7 +60,7 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 要访问�
 
 ![审核日志](./media/concept-audit-logs/listview.png "审核日志")
 
-您可以通过单击工具栏中的**列**来自定义列表视图。
+您可以通过单击工具栏中的 "**列**" 自定义列表视图。
 
 ![审核日志](./media/concept-audit-logs/columns.png "审核日志")
 
@@ -89,7 +89,7 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 要访问�
 
 使用“服务”**** 筛选器可以从以下服务的下拉列表中进行选择：
 
-- All
+- 全部
 - AAD 管理 UX
 - 访问评审
 - 帐户预配
@@ -103,7 +103,7 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 要访问�
 - 标识保护
 - 受邀用户
 - MIM 服务
-- 我的应用程序
+- MyApps
 - PIM
 - 自助服务组管理
 - 自助服务密码管理
@@ -111,7 +111,7 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 要访问�
 
 “类别”筛选器用于选择下述筛选器之一：****
 
-- All
+- 全部
 - AdministrativeUnit
 - ApplicationManagement
 - 身份验证
@@ -122,32 +122,32 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 要访问�
 - DirectoryManagement
 - EntitlementManagement
 - GroupManagement
-- 克伯罗斯域
-- 密钥管理
+- KerberosDomain
+- KeyManagement
 - Label
 - 其他
-- 权限授予政策
+- PermissionGrantPolicy
 - 策略
 - ResourceManagement
 - RoleManagement
 - UserManagement
 
-"**活动**"筛选器基于您选择的类别和活动资源类型。 可以选择要查看的特定活动，也可以全选。 
+**活动**筛选器基于所选的类别和活动资源类型。 可以选择要查看的特定活动，也可以全选。 
 
 可以使用图形 API 获取所有审核活动的列表：`https://graph.windows.net/<tenantdomain>/activities/auditActivityTypesV2?api-version=beta`
 
 可以使用“状态”筛选器根据审核操作的状态进行筛选。**** 状态可以是下列其中一项：
 
-- All
-- Success
+- 全部
+- 成功
 - 失败
 
-**目标**筛选器允许您通过名称或用户主体名称 （UPN） 的开头搜索特定目标。 目标名称和 UPN 区分大小写。 
+**目标**筛选器允许您通过名称或用户主体名称（UPN）搜索特定目标。 目标名称和 UPN 区分大小写。 
 
-通过筛选器**启动**，可以定义参与者的名称或通用主体名称 （UPN） 的开头。 名称和 UPN 区分大小写。
+通过筛选器**启动**的筛选器，您可以定义参与者名称或通用主体名称（UPN）的开头。 名称和 UPN 区分大小写。
 
-"**日期范围**"筛选器使您能够为返回的数据定义时间范围。  
-可能的值包括：
+使用 "**日期范围**" 筛选器可以定义返回的数据的时间范围。  
+可能的值为：
 
 - 7 天
 - 24 小时
@@ -186,11 +186,11 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 要访问�
 
 - 向组或用户分配了哪些许可证？
 
-如果只想查看与用户相关的审核数据，可以在 **"用户**"选项卡的 **"监视**"部分的**审核日志**下找到筛选的视图。此入口点将**用户管理**列为预选类别。
+如果只想查看与用户相关的审核数据，则可以在 "**用户**" 选项卡的 "**监视**" 部分中的 "**审核日志**" 下找到筛选视图。此入口点已将**UserManagement**作为预先选择的类别。
 
 ![审核日志](./media/concept-audit-logs/users.png "审核日志")
 
-如果只想查看与组相关的审核数据，可以在 **"组"** 选项卡的 **"监视**"部分的 **"审核日志**"下找到筛选的视图。此入口点将**组管理**列为预选类别。
+如果只想查看与组相关的审核数据，则可以在 "**组**" 选项卡的 "**监视**" 部分中的 "**审核日志**" 下找到筛选视图。此入口点已将**GroupManagement**作为预先选择的类别。
 
 ![审核日志](./media/concept-audit-logs/groups.png "审核日志")
 

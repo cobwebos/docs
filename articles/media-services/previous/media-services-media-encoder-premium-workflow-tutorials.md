@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: christoc
 ms.reviewer: xpouyat; juliako
 ms.openlocfilehash: 1ab70d56bd3def58d0e814035070cf027a88cd3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79251006"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>高级媒体编码器高级工作流教程
@@ -27,20 +27,20 @@ ms.locfileid: "79251006"
 本文档包含的演练说明如何使用**工作流设计器**自定义工作流。 可以在[此处](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/PremiumEncoderWorkflowSamples)找到实际的工作流文件。  
 
 ## <a name="toc"></a>目录
-所涉及的主题如下：
+本文涵盖以下主题：
 
-* [将 MXF 编码到单个比特率 MP4 中](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4)
+* [将 MXF 编码为单比特率 MP4](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4)
   * [启动新工作流](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_start_new)
   * [使用媒体文件输入](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_file_input)
   * [检查媒体流](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_streams)
-  * [添加 的视频编码器。MP4 文件生成](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_file_generation)
-  * [对音频流进行编码](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_audio)
-  * [多路复用音频和视频流入 MP4 容器](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_audio_and_fideo)
+  * [添加视频编码器用于生成 .MP4 文件](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_file_generation)
+  * [为音频流编码](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_audio)
+  * [将音频和视频流多路复用到 MP4 容器](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_audio_and_fideo)
   * [写入 MP4 文件](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_writing_mp4)
   * [从输出文件创建媒体服务资产](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_asset_from_output)
-  * [在本地测试已完成的工作流](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_test)
+  * [在本地测试完成的工作流](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_test)
 * [将 MXF 编码为多比特率 MP4 - 动态打包已启用](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging)
-  * [添加一个或多个附加 MP4 输出](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging_more_outputs)
+  * [添加一个或多个其他 MP4 输出](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging_more_outputs)
   * [配置文件输出名称](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging_conf_output_names)
   * [添加单独的音轨](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging_audio_tracks)
   * [添加“ISM”SMIL 文件](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging_ism_file)
@@ -48,22 +48,22 @@ ms.locfileid: "79251006"
   * 要增强的工作流概述
   * [文件命名约定](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4_file_naming)
   * [将组件属性发布到工作流根目录](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4_publishing)
-  * [已生成输出文件名依赖于已发布的属性值](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4_output_files)
-* [将缩略图添加到多比特 MP4 输出](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)
+  * [使生成的输出文件名依赖于发布的属性值](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4_output_files)
+* [将缩略图添加到多比特率 MP4 输出](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)
   * 要将缩略图添加到的工作流概述
   * [添加 JPG 编码](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4__with_jpg)
   * [处理颜色空间转换](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4_color_space)
   * [写入缩略图](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4_writing_thumbnails)
   * [在工作流中检测错误](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4_errors)
   * [已完成的工作流](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4_finish)
-* [多比特 MP4 输出的基于时间的修剪](media-services-media-encoder-premium-workflow-tutorials.md#time_based_trim)
+* [对多比特率 MP4 输出进行基于时间的修剪](media-services-media-encoder-premium-workflow-tutorials.md#time_based_trim)
   * [要在其中开始添加修剪的工作流概述](media-services-media-encoder-premium-workflow-tutorials.md#time_based_trim_start)
   * [使用流修剪器](media-services-media-encoder-premium-workflow-tutorials.md#time_based_trim_use_stream_trimmer)
   * [已完成的工作流](media-services-media-encoder-premium-workflow-tutorials.md#time_based_trim_finish)
 * [引入脚本组件](media-services-media-encoder-premium-workflow-tutorials.md#scripting)
-  * [工作流中的脚本：你好世界](media-services-media-encoder-premium-workflow-tutorials.md#scripting_hello_world)
+  * [在工作流中编写脚本：Hello World](media-services-media-encoder-premium-workflow-tutorials.md#scripting_hello_world)
 * [对多比特率 MP4 输出进行基于帧的修剪](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim)
-  * [蓝图概述，以开始向](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim_start)
+  * [要在其中开始添加修剪的蓝图概述](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim_start)
   * [使用剪辑列表 XML](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim_clip_list)
   * [通过脚本组件修改剪辑列表](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim_modify_clip_list)
   * [添加 ClippingEnabled 便利属性](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim_clippingenabled_prop)
@@ -74,7 +74,7 @@ ms.locfileid: "79251006"
 ### <a name="starting-a-new-workflow"></a><a id="MXF_to_MP4_start_new"></a>启动新工作流
 打开“工作流设计器”，并选择“文件”>“新建工作区”>“转码蓝图”
 
-新工作流显示了三个元素：
+此新工作流显示了 3 个元素：
 
 * 主源文件
 * 剪辑列表 XML
@@ -85,17 +85,17 @@ ms.locfileid: "79251006"
 *新编码工作流*
 
 ### <a name="using-the-media-file-input"></a><a id="MXF_to_MP4_with_file_input"></a>使用媒体文件输入
-为了接受输入媒体文件，请从添加媒体文件输入组件开始。 要将组件添加到工作流，请在“存储库”搜索框中查找它，然后将所需的项拖放到设计器窗格。 对“媒体文件输入”重复此操作，并将“主源文件”组件连接到“媒体文件输入”中的“文件名”输入插针。
+为了接受输入媒体文件，请从添加媒体文件输入组件开始。 如果要将组件添加到工作流，请在“存储库”搜索框中查找它，并将所需的项拖放到设计器窗格。 对“媒体文件输入”重复此操作，并将“主源文件”组件连接到“媒体文件输入”中的“文件名”输入插针。
 
 ![连接的媒体文件输入](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-file-input.png)
 
-连接的媒体文件输入**
+*连接的媒体文件输入*
 
 首先，确定在设计自定义工作流时要使用的合适示例文件。 为此，请单击设计器窗格背景，并在右侧属性窗格中找到“主源文件”属性。 单击文件夹图标，并选择测试工作流所需的文件。 媒体文件输入组件会检查文件，并填充其输出插针，以反映它检查的示例文件的详细信息。
 
 ![填充的媒体文件输入](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-populated-media-file-input.png)
 
-填充的媒体文件输入**
+*填充的媒体文件输入*
 
 现在，输入已填充，下一步是设置输出编码设置。 现在，请使用与配置主源文件类似的方式，紧靠在主源文件的下面配置“输出文件夹变量”属性。
 
@@ -108,7 +108,7 @@ ms.locfileid: "79251006"
 
 ![检查未压缩的视频输出插针](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-inspecting-uncompressed-video-output.png)
 
-检查未压缩的视频输出插针**
+*检查未压缩的视频输出插针*
 
 在本例中，它表明视频包含针对一段接近 2 分钟的视频以 4:2:2 采样率、每秒 24 帧的速率处理的 1920x1080 输入。
 
@@ -125,7 +125,7 @@ ms.locfileid: "79251006"
 
 * 输出宽度和输出高度：决定了编码视频的分辨率。 在本例中，640x360 是合适的设置。
 * 帧速率：设置为通过时，它只采用源帧速率，不过可以覆盖。 这种帧速率转换并未经过运动补偿。
-* 档次和级别：决定了 AVC 档次和级别。 要方利地获取不同级别和档次的详细信息，请单击“AVC 视频编码器”组件中的问号图标，帮助页面会显示有关每个级别的详细信息。 对于此示例，请使用级别为 3.2 的主档次（默认设置）。
+* 档次和级别：决定了 AVC 档次和级别。 要方便地获取不同级别和配置文件的详细信息，请单击“AVC 视频编码器”组件中的问号图标，帮助页面会显示有关每个级别的详细信息。 对于此示例，请使用级别为 3.2 的主档次（默认设置）。
 * 速率控制模式和比特率 (kbps)：在本例中，选择使用 1200 kbps 恒定比特率 (CBR) 输出
 * 视频格式：提供关于写入到 H.264 流的 VUI（视频可用性信息）的信息（编解码器可能用于增强显示、但对正确编解码并非必需的辅助信息）：
 * NTSC（一般用于美国或日本，使用 30 fps）
@@ -136,28 +136,28 @@ ms.locfileid: "79251006"
 
 ![连接的 AVC 编码器](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-connected-avc-encoder.png)
 
-连接的 AVC 主编码器**
+*连接的 AVC 主编码器*
 
 ### <a name="encoding-the-audio-stream"></a><a id="MXF_to_MP4_audio"></a>为音频流编码
 此时，仍需要压缩原始未压缩的音频流。 若要压缩音频流，请向工作流添加一个 AAC 编码器 (Dolby) 组件。
 
 ![未连接的 AVC 编码器](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-unconnected-aac-encoder.png)
 
-未连接的 AAC 编码器**
+*未连接的 AAC 编码器*
 
-目前不兼容性：AAC 编码器只有单个未压缩音频输入插针，而媒体文件输入可能有两个不同的未压缩音频流可用：一个用于左音频声道，一个用于右声道。 （如果您正在处理环绕声，则是六个声道。因此，无法将媒体文件输入源的音频直接连接到 AAC 音频编码器。 AAC 组件预期需要一个称为“交错”的音频流：具有左右声道并彼此交错的单一流。 一旦我们从源媒体文件知道哪一个音频数据轨在源中的哪个位置，我们可以使用正确分配的左右扬声器位置来生成此类交错音频流。
+目前不兼容性：AAC 编码器只有单个未压缩音频输入插针，而媒体文件输入可能有两个不同的未压缩音频流可用：一个用于左音频声道，一个用于右声道。 （如果要处理环绕音效，注意有六个声道。）因此，无法直接将音频从“媒体文件输入”源连接到 AAC 音频编码器。 AAC 组件预期需要一个称为“交错”的音频流：具有左右声道并彼此交错的单一流。 一旦我们从源媒体文件知道哪一个音频数据轨在源中的哪个位置，我们可以使用正确分配的左右扬声器位置来生成此类交错音频流。
 
 首先，用户想要从所需的源音频声道生成交错流。 音频流交错器组件将为我们进行处理。 将它添加到工作流，并从“媒体文件输入”将音频输出连接到它。
 
 ![连接的音频流交错器](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-connected-audio-stream-interleaver.png)
 
-连接的音频流交错器**
+*连接的音频流交错器*
 
 我们已有交错的音频流，但仍未分配左右扬声器的位置。 为了指定位置，我们可以利用“扬声器位置分配器”。
 
 ![添加扬声器位置分配器](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-adding-speaker-position-assigner.png)
 
-添加扬声器位置分配器**
+*添加扬声器位置分配器*
 
 配置“扬声器位置分配器”以配合使用通过“自定义”编码器预设过滤器和称为“2.0 (L,R)”的声道预设的立体声输入流。 （这会将左扬声器位置分配为声道 1，将右扬声器位置分配为声道 2。）
 
@@ -168,10 +168,10 @@ ms.locfileid: "79251006"
 
 ![连接的 MPEG4 多路复用器](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-connected-mpeg4-multiplexer.png)
 
-连接的 MPEG4 多路复用器**
+*连接的 MPEG4 多路复用器*
 
 ### <a name="writing-the-mp4-file"></a><a id="MXF_to_MP4_writing_mp4"></a>写入 MP4 文件
-写入输出文件时，将使用“文件输出”组件。 我们可以将它连接到 ISO MPEG-4 多路复用器的输出，让其将输出写入到磁盘。 为此，请将容器 (MPEG-4) 输出插针连接到“文件输出”的“写入”输入插针。
+写入输出文件时，使用“文件输出”组件。 我们可以将它连接到 ISO MPEG-4 多路复用器的输出，让其将输出写入到磁盘。 为此，请将容器 (MPEG-4) 输出插针连接到“文件输出”的“写入”输入插针。
 
 ![连接的文件输出](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-connected-file-output.png)
 
@@ -185,13 +185,13 @@ ms.locfileid: "79251006"
 
 *空白的表达式编辑器*
 
-表达式编辑器允许输入任何文本值以及一个或多个变量。 以货币符号开头的变量。 按 $ 键时，编辑器会显示一个下拉框，其中包含一系列可用变量。 在此例中，我们将使用输出目录变量与基本输入文件名变量的组合：
+表达式编辑器允许输入任何文本值以及一个或多个变量。 以货币符号开头的变量。 按 $ 键时，编辑器会显示一个下拉框，其中包含一系列可用变量。 在此例中，我们使用输出目录变量与基本输入文件名变量的组合：
 
     ${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}.MP4
 
 ![填充的表达式编辑器](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-expression-editor.png)
 
-填充的表达式编辑器**
+*填充的表达式编辑器*
 
 > [!NOTE]
 > 若要在 Azure 中查看编码作业的输出文件，必须在表达式编辑器中提供值。
@@ -202,7 +202,7 @@ ms.locfileid: "79251006"
 
 ![文件表达式解析输出目录](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-file-expression-resolves-output-dir.png)
 
-文件表达式解析输出目录**
+*文件表达式解析输出目录*
 
 ### <a name="creating-a-media-services-asset-from-the-output-file"></a><a id="MXF_to_MP4_asset_from_output"></a>从输出文件创建媒体服务资产
 尽管我们已编写一个 MP4 输出文件，我们仍需要指出此文件属于媒体服务因为执行此工作流生成的输出资产。 为此，请使用工作流画布上的“输出文件/资产”节点。 所有传入到此节点的文件将成为生成的 Azure 媒体服务资产的一部分。
@@ -216,10 +216,10 @@ ms.locfileid: "79251006"
 ### <a name="test-the-finished-workflow-locally"></a><a id="MXF_to_MP4_test"></a>在本地测试完成的工作流
 若要在本地测试工作流，请按顶部工具栏中的播放按钮。 工作流完成执行后，请检查配置的输出文件夹中生成的输出。 会看到从 MXF 输入源文件编码完成的 MP4 输出文件。
 
-## <a name="encoding-mxf-into-mp4---multibitrate-dynamic-packaging-enabled"></a><a id="MXF_to_MP4_with_dyn_packaging"></a>将 MXF 编码为 MP4 - 多比特率动态打包已启用
+## <a name="encoding-mxf-into-mp4---multibitrate-dynamic-packaging-enabled"></a><a id="MXF_to_MP4_with_dyn_packaging"></a>将 MXF 编码为多比特率 MP4 - 动态打包已启用
 在本演练中，我们将使用来自单个 .MXF 输入文件 AAC 编码的音频来创建一组多比特率 MP4 文件。
 
-想要将多比特率资产输出用于结合 Azure 媒体服务提供的动态打包功能时，需要对每个不同的比特率与分辨率生成多个 GOP 对齐的 MP4 文件。 为此，可以先完成[将 MXF 编码为单比特率 MP4](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4) 演练。
+想要将多比特率资产输出用于结合 Azure 媒体服务提供的动态打包功能时，需要对每个不同的比特率与分辨率生成多个 GOP 对齐的 MP4 文件。 为此，可以先完成 [将 MXF 编码为单比特率 MP4](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4) 演练部分。
 
 ![启动工作流](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-starting-workflow.png)
 
@@ -293,7 +293,7 @@ ms.locfileid: "79251006"
 
 *用于创建输出文件的音频多路复用器*
 
-### <a name="adding-the-ism-smil-file"></a><a id="MXF_to_MP4_with_dyn_packaging_ism_file"></a>添加 。ISM SMIL 文件
+### <a name="adding-the-ism-smil-file"></a><a id="MXF_to_MP4_with_dyn_packaging_ism_file"></a>添加 .ISM SMIL 文件
 为了让动态打包能在我们的媒体服务资产中结合这两个 MP4 文件（仅限音频的 MP4）运行，我们还需要一个清单文件（也称为“SMIL”文件：同步多媒体集成语言）。 此文件可向 Azure 媒体服务指出哪些 MP4 文件可供动态打包，以及要考虑进行音频流式处理的文件。 包含单个音频流的一组 MP4 的典型清单文件类似于下面：
 
 ```xml
@@ -325,7 +325,7 @@ ms.locfileid: "79251006"
 
 ![已完成 MXF 到多比特率 MP4 的工作流](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-finished-mxf-to-multibitrate-mp4-workflow.png)
 
-已完成 MXF 到多比特率 MP4 的工作流**
+*已完成 MXF 到多比特率 MP4 的工作流*
 
 ## <a name="encoding-mxf-into-multibitrate-mp4---enhanced-blueprint"></a><a id="MXF_to__multibitrate_MP4"></a>将 MXF 编码为多比特率 MP4 - 增强的蓝图
 在[前面的工作流演练](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging)中，我们已了解单个 MXF 输入资产如何转换成输出资产，其具有多比特率 MP4 文件、仅限音频的 MP4 文件和用于与 Azure 媒体服务动态打包结合使用的清单文件。
@@ -363,7 +363,7 @@ ms.locfileid: "79251006"
 
 ![发布比特率属性](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-publishing-dialog-for-bitrate-property.png)
 
-比特率属性发布对话框**
+*比特率属性发布对话框*
 
 对第二个 AVC 编码器的比特率属性重复相同的操作，并在相同的自定义组“流比特率”中将它命名为“video2bitrate”，以及显示名称“视频 2 比特率”。
 
@@ -397,7 +397,7 @@ ms.locfileid: "79251006"
 
 ![访问表达式中的参数](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-accessing-parameters-within-an-expression.png)
 
-访问表达式中的参数**
+*访问表达式中的参数*
 
 对第二个视频的文件输出执行相同的操作：
 
@@ -410,7 +410,7 @@ ms.locfileid: "79251006"
 如果我们现在更改任何视频或音频文件的比特率，将重新配置单个编码器，并对所有项目自动使用基于比特率的文件名约定。
 
 ## <a name="adding-thumbnails-to-multibitrate-mp4-output"></a><a id="thumbnails_to__multibitrate_MP4"></a>将缩略图添加到多比特率 MP4 输出
-从[通过 MXF 输入生成多比特率 MP4 输出](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging)的工作流开始，我们现在要将缩略图添加到输出。
+从 [通过 MXF 输入生成多比特率 MP4 输出](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging)的工作流开始，我们现在要将缩略图添加到输出。
 
 ### <a name="workflow-overview-to-add-thumbnails-to"></a><a id="thumbnails_to__multibitrate_MP4_overview"></a>要将缩略图添加到的工作流概述
 ![要从中开始的多比特率 MP4 工作流](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-multibitrate-mp4-workflow-to-start-from.png)
@@ -428,7 +428,7 @@ ms.locfileid: "79251006"
 
 ![将帧门限连接到 JPG 编码器](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-connect-frame-gate-to-jpg-encoder.png)
 
-将帧门限连接到 JPG 编码器**
+*将帧门限连接到 JPG 编码器*
 
 帧门限每隔许多秒或帧执行一次，可让视频帧传递。 发生的间隔和时间偏移可在属性中配置。
 
@@ -443,7 +443,7 @@ ms.locfileid: "79251006"
 
 ![输入颜色空间错误](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-input-color-space-error.png)
 
-输入颜色空间错误**
+*输入颜色空间错误*
 
 这是因为在我们原始原始未压缩的视频流（来自 MXF）中，颜色信息的表示方式与 JPG 编码器所预期的不同。 更具体地说，预期流入称为“RGB”或“灰阶”的“颜色空间”。 这意味着，视频帧门限的输入视频流需要首先应用有关其颜色空间的转换。
 
@@ -481,7 +481,7 @@ ms.locfileid: "79251006"
 
 ![颜色空间转换器错误](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-color-space-converter-error.png)
 
-颜色空间转换器错误**
+*颜色空间转换器错误*
 
 单击颜色空间转换器组件右上角的小型红色“E”图标，以查看编码尝试失败的原因。
 
@@ -502,18 +502,18 @@ ms.locfileid: "79251006"
 
 ![包含缩略图的多个 mp4 输出的已完成工作流](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-finished-workflow-for-multi-mp4-thumbnails.png)
 
-包含缩略图的多个 mp4 输出的已完成工作流**
+*包含缩略图的多个 mp4 输出的已完成工作流*
 
 ## <a name="time-based-trimming-of-multibitrate-mp4-output"></a><a id="time_based_trim"></a>对多比特率 MP4 输出进行基于时间的修剪
-从[通过 MXF 输入生成多比特率 MP4 输出](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging)的工作流开始，我们现在将基于时间戳修剪源视频。
+从 [通过 MXF 输入生成多比特率 MP4 输出](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging)的工作流开始，我们现在基于时间戳修剪源视频。
 
 ### <a name="workflow-overview-to-start-adding-trimming-to"></a><a id="time_based_trim_start"></a>要在其中开始添加修剪的工作流概述
 ![要在其中添加修剪的起始工作流](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-starting-workflow-to-add-trimming.png)
 
-要在其中添加修剪的起始工作流**
+*要在其中添加修剪的起始工作流*
 
 ### <a name="using-the-stream-trimmer"></a><a id="time_based_trim_use_stream_trimmer"></a>使用流修剪器
-流修剪器组件允许您根据计时信息（秒、分钟、...）修剪输入流基础的开始和结束。修剪器不支持基于帧的修剪。
+流修剪器组件允许根据计时信息（秒、分等等）修剪输入流的开头和末尾。修剪器不支持基于帧的修剪。
 
 ![流修剪器](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-stream-trimmer.png)
 
@@ -523,7 +523,7 @@ ms.locfileid: "79251006"
 
 ![在中间放入流修剪器](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-put-stream-trimmer-in-between.png)
 
-在中间放入流修剪器**
+*在中间放入流修剪器*
 
 让我们配置修剪器，以便只处理视频中 15 秒到 60 秒的视频和音频。
 
@@ -531,7 +531,7 @@ ms.locfileid: "79251006"
 
 ![从流修剪器发布开始时间属性](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-publish-start-time-from-stream-trimmer.png)
 
-从流修剪器发布开始时间属性**
+*从流修剪器发布开始时间属性*
 
 ![开始时间发布属性对话框](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-publish-dialog-for-start-time.png)
 
@@ -539,13 +539,13 @@ ms.locfileid: "79251006"
 
 ![结束时间发布属性对话框](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-publish-dialog-for-end-time.png)
 
-结束时间发布属性对话框**
+*结束时间发布属性对话框*
 
 如果我们现在检查工作流根目录，这两个属性将整齐地显示，且可从该处配置。
 
 ![已发布根目录中提供的属性](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-published-properties-available-on-root.png)
 
-已发布根目录中提供的属性**
+*已发布根目录中提供的属性*
 
 现在从音频修剪器打开修剪属性，并使用引用工作流根目录上所发布属性的表达式来配置开始和结束时间。
 
@@ -570,20 +570,20 @@ ms.locfileid: "79251006"
 * **processInputScript**
 * **lifeCycleScript**
 
-脚本组件的文档更详细说明了上述各个脚本。 在[下一部分](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim)，**realizeScript** 脚本组件用于在工作流启动时快速构造剪辑列表 xml。 在组件安装期间调用此脚本，这种情况在其生命周期中只发生一次。
+脚本组件的文档更详细说明了上述各个脚本。 在[下一部分](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim)， **realizeScript** 脚本组件用于在工作流启动时快速构造剪辑列表 XML。 在组件安装期间调用此脚本，这种情况在其生命周期中只发生一次。
 
-### <a name="scripting-within-a-workflow-hello-world"></a><a id="scripting_hello_world"></a>在工作流中编写脚本：hello world
+### <a name="scripting-within-a-workflow-hello-world"></a><a id="scripting_hello_world"></a>在工作流中编写脚本：Hello World
 将脚本组件拖放到设计器图面上，并重命名（例如，“SetClipListXML”）。
 
 ![添加脚本组件](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-add-scripted-comp.png)
 
-添加脚本组件**
+*添加脚本组件*
 
 检查脚本组件的属性时，会显示四种不同的脚本类型，而每种类型可配置到不同的脚本。
 
 ![脚本组件属性](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-scripted-comp-properties.png)
 
-脚本组件属性**
+*脚本组件属性*
 
 清除 processInputScript，并打开 realizeScript 的编辑器。 现在我们已完成设置并准备开始编写脚本。
 
@@ -599,7 +599,7 @@ ms.locfileid: "79251006"
 
 *Hello world 日志输出*
 
-调用日志方法所在的节点对象是指当前的“节点”或者我们正在编写脚本的组件。 每个组件都能够输出通过系统选项卡提供的日志记录数据。在这种情况下，我们输出字符串文本"hello world"。 在此处需要了解的是，这确实是非常重要的调试工具，可深入了解脚本实际上做些什么。
+调用日志方法所在的节点对象是指当前的“节点”或者我们正在编写脚本的组件。 每个组件因此具备可通过系统选项卡输出日志记录数据的能力。在此情况下，将输出字符串文本“Hello World”。 在此处需要了解的是这可以证明是非常重要的调试工具，让你深入了解脚本实际上做些什么。
 
 从脚本环境内，我们也可以访问其他组件的属性。 试试看：
 
@@ -623,10 +623,10 @@ ms.locfileid: "79251006"
 
 ![有关访问节点路径的日志输出](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-log-output2.png)
 
-有关访问节点路径的日志输出**
+*有关访问节点路径的日志输出*
 
 ## <a name="frame-based-trimming-of-multibitrate-mp4-output"></a><a id="frame_based_trim"></a>对多比特率 MP4 输出进行基于帧的修剪
-从[通过 MXF 输入生成多比特率 MP4 输出](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging)的工作流开始，我们现在将基于帧计数修剪源视频。
+从 [通过 MXF 输入生成多比特率 MP4 输出](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging)的工作流开始，我们现在基于帧计数修剪源视频。
 
 ### <a name="blueprint-overview-to-start-adding-trimming-to"></a><a id="frame_based_trim_start"></a>要在其中开始添加修剪的蓝图概述
 ![要在其中开始添加修剪的工作流](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-workflow-start-adding-trimming-to.png)
@@ -634,25 +634,25 @@ ms.locfileid: "79251006"
 *要在其中开始添加修剪的工作流*
 
 ### <a name="using-the-clip-list-xml"></a><a id="frame_based_trim_clip_list"></a>使用剪辑列表 XML
-在所有以前的工作流教程中，我们使用“媒体文件输入”组件作为视频输入源。 不过，在此特定方案中，我们将改为使用剪辑列表源组件。 这应该不是最好的工作方式；只在有实际原因这么做时才使用剪辑列表源（如同在以下情况下，我们使用剪辑列表修剪功能）。
+在所有以前的工作流教程中，我们使用“媒体文件输入”组件作为视频输入源。 不过，在此特定方案中，我们改为使用剪辑列表源组件。 这应该不是最好的工作方式；只在有实际原因这么做时才使用剪辑列表源（如同在以下情况下，我们使用剪辑列表修剪功能）。
 
 要从“媒体文件输入”切换到“剪辑列表源”，请将“剪辑列表源”组件拖放到设计图面，并将“剪辑列表 XML”插针连接到工作流设计器的“剪辑列表 XML”插针。 这会根据输入视频，以输出插针填充剪辑列表源。 现在，从剪辑列表源将“未压缩的视频”和“未压缩的音频”插针连接到相应的“AVC 编码器”和“音频流交错器”。 现在删除媒体文件输入。
 
 ![已将媒体文件输入替换为剪辑列表源](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-replaced-media-file-with-clip-source.png)
 
-已将媒体文件输入替换为剪辑列表源**
+*已将媒体文件输入替换为剪辑列表源*
 
 剪辑列表源组件接收“剪辑列表 XML”作为输入。 选择要在本地测试的源文件，自动填充此剪辑列表 XML。
 
 ![自动填充的剪辑列表 XML 属性](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-auto-populated-clip-list-xml-property.png)
 
-自动填充的剪辑列表 XML 属性**
+*自动填充的剪辑列表 XML 属性*
 
 仔细观察 XML，这是其外观：
 
 ![编辑剪辑列表对话框](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-edit-clip-list-dialog.png)
 
-编辑剪辑列表对话框**
+*编辑剪辑列表对话框*
 
 不过这未反映剪辑列表 XML 的功能。 我们拥有的其中一个选项是在视频和音频源下添加“修剪”元素，如下所示：
 
@@ -660,23 +660,23 @@ ms.locfileid: "79251006"
 
 *将修剪元素添加到剪辑列表*
 
-如果修改类似于上面的剪辑列表 XML 并执行本地测试回合，会看到视频已正确在视频中修剪为 10 到 20 秒。
+如果修改类似于上面的剪辑列表 XML 并执行本地测试回合，你会看到视频已正确在视频中修剪为 10 到 20 秒。
 
 不过，相对于当执行本地执行时发生的情况，在 Azure 媒体服务中执行的工作流中，此相同的剪辑列表 XML 将不有相同的效果。 Azure 高级编码器启动时，每次都会根据提供给编码作业的输入文件生成剪辑列表 XML。 这意味着，我们在 XML 上执行的任何更改不幸地被重写。
 
-若要避免剪辑列表 XML 在编码作业开始时被擦除，我们可以在工作流启动之后快速重新生成它。 通过称为“脚本组件”的组件即可以采取这种自定义操作。 有关详细信息，请参阅[引入脚本组件](media-services-media-encoder-premium-workflow-tutorials.md#scripting)。
+若要避免剪辑列表 XML 在编码作业开始时被擦除，我们可以在工作流启动之后快速重新生成它。 通过称为“脚本组件”的组件即可以采取这种自定义操作。 有关详细信息，请参阅 [引入脚本组件](media-services-media-encoder-premium-workflow-tutorials.md#scripting)。
 
 将脚本组件拖放到设计器图面上，并重命名为“SetClipListXML”。
 
 ![添加脚本组件](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-add-scripted-comp.png)
 
-添加脚本组件**
+*添加脚本组件*
 
 检查脚本组件的属性时，会显示四种不同的脚本类型，而每种类型可配置到不同的脚本。
 
 ![脚本组件属性](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-scripted-comp-properties.png)
 
-脚本组件属性**
+*脚本组件属性*
 
 ### <a name="modifying-the-clip-list-from-a-scripted-component"></a><a id="frame_based_trim_modify_clip_list"></a>通过脚本组件修改剪辑列表
 在我们可以重新写入工作流启动时生成的剪辑列表 XML 之前，需要访问剪辑列表 XML 属性和内容。 可按如下所示执行操作：
@@ -693,16 +693,16 @@ ms.locfileid: "79251006"
 
 首先，我们需要确定想要修剪视频的哪一个点到哪一个点。 为了让它方便工作流较不具技术性的用户，请将两个属性发布到图形的根目录。 为此，请右键单击设计器图面并选择“添加属性”：
 
-* 第一个属性：类型为“TIMECODE”的“ClippingTimeStart”
-* 第二个属性：类型为“TIMECODE”的“ClippingTimeEnd”
+* 第一个属性：“ClippingTimeStart”的类型："TIMECODE"
+* 第二个属性：“ClippingTimeEnd”的类型："TIMECODE"
 
 ![添加属性对话框中的剪辑开始时间](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-clip-start-time.png)
 
-添加属性对话框中的剪辑开始时间**
+*添加属性对话框中的剪辑开始时间*
 
 ![已发布工作流根目录中的剪辑时间属性](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-clip-time-props.png)
 
-已发布工作流根目录中的剪辑时间属性**
+*已发布工作流根目录中的剪辑时间属性*
 
 将这两个属性配置为适当的值：
 
@@ -747,7 +747,7 @@ ms.locfileid: "79251006"
 
 ![包含已分析时间代码输出的日志窗口](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-output-parsed-timecode.png)
 
-包含已分析时间代码输出的日志窗口**
+*包含已分析时间代码输出的日志窗口*
 
 准备好此信息后，接下来可以修改剪辑列表 XML 以反映所需的电影帧精确剪辑开始和结束时间。
 
@@ -755,11 +755,11 @@ ms.locfileid: "79251006"
 
 *用于添加修剪元素的脚本*
 
-这可以通过一般的字符串处理操作完成。 生成的经修改剪辑列表 XML 通过“setProperty”方法写回工作流根目录上的 clipListXML 属性。 在另一个测试回合之后日志窗口会显示以下内容：
+这可以通过一般的字符串处理操作完成。 生成的经修改剪辑列表 XML 通过“setProperty”方法写回工作流根目录上的 clipListXML 属性。 在另一个测试回合之后日志窗口显示以下内容：
 
 ![记录生成的剪辑列表](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-log-result-clip-list.png)
 
-记录生成的剪辑列表**
+*记录生成的剪辑列表*
 
 执行测试回合以查看视频和音频流剪辑的情况。 但是，随着你使用不同的值针对修剪点执行多个测试回合，会发现并未考虑到这些因素！ 这是因为设计器不同于 Azure 运行时，不会在每次执行时重写剪辑列表 XML。 这意味着，只有在第一次设置输入和输出点时导致 xml 转换，其他任何时候临界子句 (if(`clipListXML.indexOf("<trim>") == -1`)) 都会在已经存在一个元素时防止工作流添加另一个修剪元素。
 
@@ -825,7 +825,7 @@ ms.locfileid: "79251006"
 
 ![已发布用于启用剪辑的属性](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-enable-clip.png)
 
-已发布用于启用剪辑的属性**
+*已发布用于启用剪辑的属性*
 
 使用以下简单的成立条件子句可以检查是否需要修剪，并确定是否因此需要修改剪辑列表。
 
@@ -944,7 +944,7 @@ ms.locfileid: "79251006"
 
 [如何在 Azure 媒体服务中使用高级编码](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
 
-[使用 Azure 媒体服务对请求内容进行编码](media-services-encode-asset.md#media-encoder-premium-workflow)
+[使用 Azure 媒体服务对按需内容进行编码](media-services-encode-asset.md#media-encoder-premium-workflow)
 
 [Media Encoder Premium Workflow 格式和编解码器](media-services-premium-workflow-encoder-formats.md)
 

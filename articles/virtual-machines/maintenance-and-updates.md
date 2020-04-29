@@ -1,6 +1,6 @@
 ---
 title: 维护和更新
-description: 在 Azure 中运行的虚拟机的维护和更新概述。
+description: 概述在 Azure 中运行的虚拟机的维护和更新。
 author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
@@ -8,22 +8,22 @@ ms.topic: article
 ms.date: 11/18/2019
 ms.author: shants
 ms.openlocfilehash: eaf7616b3bd69828829342b4dca9247c009d3475
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79250226"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Azure 中虚拟机的维护
 
-Azure 定期更新其平台，以提高虚拟机的主机基础结构的可靠性、性能及安全性。 此类更新的用途包括修补宿主环境中的软件组件、升级网络组件或将硬件解除授权等。 
+Azure 定期更新其平台，以提高虚拟机的主机基础结构的可靠性、性能及安全性。 此类更新的目的包括修补托管环境中的软件组件、升级网络组件以及硬件解除授权，等等。 
 
 更新极少会影响到托管的 VM。 如果更新确实会造成影响，Azure 将选择影响最小的方法进行更新：
 
 - 如果更新不需要重新启动，则会在更新主机时暂停 VM，或者将 VM 实时迁移到已更新的主机。 
-- 如果维护需要重新启动，则你会收到计划内维护通知。 Azure 还会提供一个时间范围，方便你在合适的时间自行启动维护。 除非紧急执行维护，否则自我维护时限通常为 30 天。 Azure 正在投资相关技术，减少进行计划内平台维护时必须重新启动 VM 的情况。 有关管理计划维护的说明，请参阅使用 Azure [CLI、PowerShell](maintenance-notifications-cli.md)或[门户](maintenance-notifications-portal.md)处理计划维护通知。 [PowerShell](maintenance-notifications-powershell.md)
+- 如果维护需要重新启动，则你会收到计划内维护通知。 Azure 还会提供一个时间范围，方便你在合适的时间自行启动维护。 除非紧急执行维护，否则自我维护时限通常为 30 天。 Azure 正在投资相关技术，减少进行计划内平台维护时必须重新启动 VM 的情况。 有关管理计划内维护的说明，请参阅“使用 Azure [CLI](maintenance-notifications-cli.md)、[PowerShell](maintenance-notifications-powershell.md) 或[门户](maintenance-notifications-portal.md)处理计划内维护通知”。
 
-本页介绍 Azure 如何执行两种类型的维护。 有关非计划事件（服务中断）的详细信息，请参阅 [管理 Windows VM 的可用性](./windows/manage-availability.md)或适用于 [Linux](./linux/manage-availability.md) 的相应文章。
+本页介绍 Azure 如何执行上述两种类型的维护。 有关非计划事件（服务中断）的详细信息，请参阅 [管理 Windows VM 的可用性](./windows/manage-availability.md)或适用于 [Linux](./linux/manage-availability.md) 的相应文章。
 
 在 VM 中，可以使用适用于 [Windows](./windows/scheduled-events.md) 或 [Linux](./linux/scheduled-events.md) 的计划事件获取有关即将进行维护的通知。
 
@@ -35,18 +35,18 @@ Azure 定期更新其平台，以提高虚拟机的主机基础结构的可靠�
 
 大多数有影响的维护只会导致 VM 暂停 10 秒以下。 在某些情况下，Azure 使用内存预留维护机制。 这些机制最长会将 VM 暂停 30 秒，并在 RAM 中预留内存。 VM 随后会恢复，其时钟会自动同步。 
 
-内存预留维护适用于 90% 以上的 Azure VM。 它适用于 G、M、N 和 H 系列。 Azure 逐渐趋向于使用实时迁移技术并改进内存保留维护机制，目的是缩短暂停时间。  
+内存预留维护适用于 90% 以上的 Azure VM。 它不适用于 G、M、N 和 H 系列。 Azure 逐渐趋向于使用实时迁移技术并改进内存保留维护机制，目的是缩短暂停时间。  
 
 无需重新启动的维护操作每次应用到一个容错域。 如果出现任何警告运行状况信号，这些操作将会停止。 
 
 此类更新可能会影响某些应用程序。 将 VM 实时迁移到另一主机时，某些敏感的工作负荷可能会有几分钟出现导致 VM 暂停的性能略微下降情况。 若要准备 VM 维护并减小 Azure 维护期间造成的影响，请尝试使用此类应用程序的适用于 [Windows](./windows/scheduled-events.md) 或 [Linux](./linux/scheduled-events.md) 的计划事件。 
 
-在公共预览版中还有一项功能，即维护控制，可帮助管理不需要重新启动的维护。 您必须使用 Azure[专用主机](./linux/dedicated-hosts.md)或隔离[VM。](../security/fundamentals/isolation-choices.md) 通过维护控制，您可以选择跳过平台更新，并在 35 天的滚动窗口中在您选择的时间应用更新。 有关详细信息，请参阅[使用维护控制和 Azure CLI 进行的控制更新](maintenance-control-cli.md)。
+公共预览版中还提供了一项功能、维护控制，可帮助管理不需要重新启动的维护。 必须使用[Azure 专用主机](./linux/dedicated-hosts.md)或[独立 VM](../security/fundamentals/isolation-choices.md)。 维护控制允许在35天滚动窗口中选择跳过平台更新，并在选择的时间应用更新。 有关详细信息，请参阅[控制包含维护控制的更新和 Azure CLI](maintenance-control-cli.md)。
 
 
 ### <a name="live-migration"></a>实时迁移
 
-实时迁移是一个无需重新启动的操作，可为 VM 预留内存。 它会导致暂停或冻结，但持续时间通常不超过 5 秒。 除 G、M、N 和 H 系列外，所有基础设施作为服务 （IaaS） VM 均有资格进行实时迁移。 符合条件的 VM 代表了可部署到 Azure 机群的 90% 以上的 IaaS VM。 
+实时迁移是一个无需重新启动的操作，可为 VM 预留内存。 它会导致暂停或冻结，但持续时间通常不超过 5 秒。 除 G、M、N 和 H 系列外，所有基础结构即服务（IaaS） Vm 均适用于实时迁移。 符合条件的 VM 代表了可部署到 Azure 机群的 90% 以上的 IaaS VM。 
 
 出现以下情况时，Azure 平台将启动实时迁移：
 - 计划内维护
@@ -69,7 +69,7 @@ Azure 定期更新其平台，以提高虚拟机的主机基础结构的可靠�
 
 自助维护阶段结束时，计划内维护阶段随即开始。** 在此阶段，仍可以查询维护阶段，但无法自行启动维护。
 
-有关管理需要重新启动的维护的详细信息，请参阅使用 Azure [CLI、PowerShell](maintenance-notifications-cli.md)或[门户](maintenance-notifications-portal.md)**处理计划的维护通知**。 [PowerShell](maintenance-notifications-powershell.md) 
+有关管理需要重启的维护的详细信息，请参阅使用 Azure [CLI](maintenance-notifications-cli.md)、 [PowerShell](maintenance-notifications-powershell.md)或[门户](maintenance-notifications-portal.md)**处理计划内维护通知**。 
 
 ### <a name="availability-considerations-during-scheduled-maintenance"></a>计划内维护期间的可用性注意事项 
 
@@ -81,9 +81,9 @@ Azure 定期更新其平台，以提高虚拟机的主机基础结构的可靠�
 
 #### <a name="availability-sets-and-scale-sets"></a>可用性集和规模集
 
-在 Azure VM 上部署工作负荷时，可以在*可用性集中*创建 VM，以便为应用程序提供高可用性。 使用可用性集可以确保在发生服务中断或需要重新启动的维护事件期间，至少有一个 VM 可用。
+在 Azure Vm 上部署工作负荷时，可以在*可用性集中*创建 vm，以向应用程序提供高可用性。 使用可用性集可以确保在发生服务中断或需要重新启动的维护事件期间，至少有一个 VM 可用。
 
-在可用性集中，个别 VM 可分布在最多 20 个更新域中。 在计划维护期间，在任何给定时间仅更新一个更新域。 更新域不一定按顺序更新。 
+在可用性集中，个别 VM 可分布在最多 20 个更新域中。 在计划内维护期间，在任何给定时间只更新一个更新域。 更新域不一定按顺序更新。 
 
 虚拟机规模集是一种 Azure 计算资源，可用于将一组相同的 VM 作为单个资源进行部署和管理**。 规模集自动跨 UD 进行部署，此类更新域就像可用性集中的 VM 一样。 在计划内维护期间使用规模集时，就像使用可用性集一样，在任意给定时间只会更新一个 UD。
 
@@ -91,12 +91,12 @@ Azure 定期更新其平台，以提高虚拟机的主机基础结构的可靠�
 
 #### <a name="availability-zones"></a>可用性区域
 
-可用性区域是 Azure 区域中唯一的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的区域中必须至少有三个单独的区域。 
+可用性区域是 Azure 区域内的唯一物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的区域中必须至少有三个单独的区域。 
 
-可用性区域是容错域和更新域的组合。 如果在 Azure 区域中的三个区域中创建三个或多个 VM，则 VM 将有效地分布在三个容错域和三个更新域中。 Azure 平台会识别更新域上的此分布，以确保不同区域中的 VM 不会同时更新。
+可用性区域是容错域和更新域的组合。 如果在 Azure 区域中的三个区域之间创建三个或更多 Vm，则 Vm 会有效地分布在三个容错域和三个更新域中。 Azure 平台会识别更新域上的此分布，以确保不同区域中的 VM 不会同时更新。
 
-每个基础结构更新都会在单个区域内按区域展开。 但是，您可以在区域 1 中进行部署，同时在区域 2 中进行不同的部署。 部署并非全部序列化。 但是，单个部署一次只推出一个区域以降低风险。
+每个基础结构更新按区域在单个区域中推出。 不过，你可以在区域1中进行部署，并同时在不同的部署中区域2。 部署不是全部序列化。 不过，单个部署一次只推出一个区域来降低风险。
 
 ## <a name="next-steps"></a>后续步骤 
 
-您可以使用 Azure [CLI、Azure](maintenance-notifications-cli.md) [PowerShell](maintenance-notifications-powershell.md)或[门户](maintenance-notifications-portal.md)来管理计划维护。 
+您可以使用[Azure CLI](maintenance-notifications-cli.md)、 [Azure PowerShell](maintenance-notifications-powershell.md)或[门户](maintenance-notifications-portal.md)来管理计划内维护。 

@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 监视器中排除日志警报的故障 |微软文档
+title: Azure Monitor 中的日志警报进行故障排除 |Microsoft Docs
 description: Azure 中日志警报规则的常见问题、错误和解决方法。
 author: yanivlavi
 ms.author: yalavi
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
 ms.openlocfilehash: acb9784b745fa90fc9cd264162930020e6d64751
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79249030"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>在 Azure Monitor 中排查日志警报问题  
@@ -24,7 +24,7 @@ ms.locfileid: "79249030"
 
 ## <a name="log-alert-didnt-fire"></a>日志警报未激发
 
-下面 [Azure Monitor 中配置的日志警报规则](../platform/alerts-log.md)状态不按预期[显示为已激发](../platform/alerts-managing-alert-states.md)的部分常见原因。**
+下面 [Azure Monitor 中配置的日志警报规则](../platform/alerts-log.md)状态不按预期[显示为已激发](../platform/alerts-managing-alert-states.md)的部分常见原因。 
 
 ### <a name="data-ingestion-time-for-logs"></a>日志的数据引入时间
 
@@ -36,15 +36,15 @@ ms.locfileid: "79249030"
 
 根据[日志警报的术语](../platform/alerts-unified-log.md#log-search-alert-rule---definition-and-types)一文中所述，配置中规定的时间段指定查询的时间范围。 查询仅返回在此时间范围内创建的记录。
 
-时间段限制为日志查询提取的数据以防止滥用，并规避日志查询中使用的任何时间命令（例如 **ago**）。 例如，如果时间段设置为 60 分钟，且在下午 1:15 运行查询，则在中午 12:15 和下午 1:15 之间创建的记录将用于日志查询。 如果日志查询使用时间命令（如**前一时间命令 （1d），** 则查询仍仅使用 12：15 PM 和 1：15 PM 之间的数据，因为时间段设置为该间隔。
+时间段限制为日志查询提取的数据以防止滥用，并规避日志查询中使用的任何时间命令（例如 **ago**）。 例如，如果时间段设置为 60 分钟，且在下午 1:15 运行查询，则在中午 12:15 和下午 1:15 之间创建的记录将用于日志查询。 如果日志查询使用类似于 **ago (1d)** 的时间命令，则查询仍只使用在中午 12:15 和下午 1:15 之间的创建数据，因为时间段设置为该间隔。
 
-请检查配置中的时间段是否与查询匹配。 对于前面所述的示例，如果日志查询使用 **ago (1d)**（如绿色标记所示），则时间段应设置为 24 小时或 1440 分钟（如红色标记所示）。 此设置可确保查询按预期方式运行。
+请检查配置中的时间段是否与查询匹配。 对于前面所述的示例，如果日志查询使用 **ago (1d)** （如绿色标记所示），则时间段应设置为 24 小时或 1440 分钟（如红色标记所示）。 此设置可确保查询按预期方式运行。
 
 ![时间段](media/alert-log-troubleshoot/LogAlertTimePeriod.png)
 
 ### <a name="suppress-alerts-option-is-set"></a>设置“抑制警报”选项
 
-根据[在 Azure 门户中创建日志警报规则](../platform/alerts-log.md#managing-log-alerts-from-the-azure-portal)一文中的步骤 8 所述，日志警报提供一个“抑制警报”选项，用于在配置的一段时间内抑制触发和通知操作。**** 因此，你可能认为某个警报未激发， 但实际上它已激发，只不过是抑制了而已。  
+根据[在 Azure 门户中创建日志警报规则](../platform/alerts-log.md#managing-log-alerts-from-the-azure-portal)一文中的步骤 8 所述，日志警报提供一个“抑制警报”选项，用于在配置的一段时间内抑制触发和通知操作。  因此，你可能认为某个警报未激发， 但实际上它已激发，只不过是抑制了而已。  
 
 ![阻止警报](media/alert-log-troubleshoot/LogAlertSuppress.png)
 
@@ -60,25 +60,25 @@ ms.locfileid: "79249030"
 - 时间段为 6 小时
 - 阈值为 50
 - 警报逻辑为三次连续违规
-- **选择$table时聚合****$table**
+- 选择 **$table** 作为**聚合依据**
 
 由于命令中包含 **summarize … by**，并提供了两个变量（**timestamp** 和 **$table**），系统将选择 **$table** 作为**聚合依据**。 系统会按 **$table** 字段将结果表排序，如以下屏幕截图所示。 然后查看每个表类型（例如 **availabilityResults**）的多个 **AggregatedValue**，以确定是否发生了三次或更多次的连续违规。
 
 ![包含多个值的指标度量查询执行](media/alert-log-troubleshoot/LogMMQuery.png)
 
-由于**聚合依据**是基于 **$table** 定义的，因此数据已按 **$table** 列排序（如红框所示）。 然后我们进行分组并查看“聚合依据”字段的类型。****
+由于**聚合依据**是基于 **$table** 定义的，因此数据已按 **$table** 列排序（如红框所示）。 然后我们进行分组并查看“聚合依据”字段的类型。 
 
 例如，对于 **$table**，**availabilityResults** 的值将视为一个绘图/实体（如橙色框所示）。 在此绘图/实体值中，警报服务将检查三次连续违规（如绿框所示）。 违规时会对表值 **availabilityResults** 触发警报。
 
 同样，如果其他任何 **$table** 值发生三次连续违规，则会触发另一条警报通知。 警报服务自动按时间排序一个绘图/实体中的值（如橙色框所示）
 
-现在，假设指标度量日志警报的规则已修改，且查询为 `search *| summarize AggregatedValue = count() by bin(timestamp, 1h)`。 剩余的配置与前面相同，包括警报逻辑同样为三次连续违规。 在这种情况下，“聚合依据”选项默认为 **timestamp**。**** 在查询中只为 **summarize…by** 提供了一个值（即 **timestamp**）。 与前面的示例类似，在执行结束时，输出将如下所示。
+现在，假设指标度量日志警报的规则已修改，且查询为 `search *| summarize AggregatedValue = count() by bin(timestamp, 1h)`。 剩余的配置与前面相同，包括警报逻辑同样为三次连续违规。 在这种情况下，“聚合依据”选项默认为 **timestamp**。  在查询中只为 **summarize…by** 提供了一个值（即 **timestamp**）。 与前面的示例类似，在执行结束时，输出将如下所示。
 
    ![包含单个值的指标度量查询执行](media/alert-log-troubleshoot/LogMMtimestamp.png)
 
 由于**聚合依据**是基于 **timestamp** 定义的，因此数据已按 **timestamp** 列排序（如红框所示）。 然后我们按 **timestamp** 进行分组。 例如，`2018-10-17T06:00:00Z` 的值将视为一个绘图/实体（如橙色框所示）。 在此绘图/实体值中，警报服务找不到连续违规（因为每个 **timestamp** 值只包含一个条目）。 因此永远不会触发警报。 在这种情况下，用户必须：
 
-- 添加一个虚拟变量或现有变量（例如 **$table**），以使用“聚合依据”字段正确执行排序。****
+- 添加一个虚拟变量或现有变量（例如 **$table**），以使用“聚合依据”字段正确执行排序。 
 - 将警报规则重新配置为使用基于**违规总数**的警报逻辑。
 
 ## <a name="log-alert-fired-unnecessarily"></a>不必要地激发了日志警报
@@ -95,11 +95,11 @@ Log Analytics 和 Application Insights 可能会发生引入和处理延迟。 �
 
 ### <a name="alert-query-output-is-misunderstood"></a>警报查询输出令人误解
 
-你在分析查询中提供日志警报的逻辑。 分析查询可以使用各种大数据和数学函数。 警报服务使用指定时间段内的数据按指定的间隔运行查询。 警报服务根据警报类型对查询进行细微更改。 可以在“配置信号逻辑”屏幕上的“要执行的查询”部分查看此更改：********
+你在分析查询中提供日志警报的逻辑。 分析查询可以使用各种大数据和数学函数。 警报服务使用指定时间段内的数据按指定的间隔运行查询。 警报服务根据警报类型对查询进行细微更改。 可以在“配置信号逻辑”屏幕上的“要执行的查询”部分查看此更改：  
 
 ![要执行的查询](media/alert-log-troubleshoot/LogAlertPreview.png)
 
-“要执行的查询”框显示日志警报服务运行的操作。**** 如果要在创建警报之前了解警报查询输出可能是什么，可以通过[分析门户](../log-query/portals.md)或[分析 API](https://docs.microsoft.com/rest/api/loganalytics/)运行所述查询和时间跨度。
+“要执行的查询”框显示日志警报服务运行的操作。  若要在创建警报之前了解警报查询输出的内容，可以通过 [Analytics 门户](../log-query/portals.md)或 [Analytics API](https://docs.microsoft.com/rest/api/loganalytics/) 运行指定的查询及时间跨度。
 
 ## <a name="log-alert-was-disabled"></a>已禁用日志警报
 

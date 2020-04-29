@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
 ms.openlocfilehash: 80fd91106530c0150a85d508b24041b2263da925
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79250005"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM 上的 BitLocker 启动错误
@@ -31,7 +31,7 @@ ms.locfileid: "79250005"
 
 - 插入含 BitLocker 密钥的 USB 驱动程序
 
-- 你被锁定！ 输入恢复密钥，以便再次开始操作（键盘布局：美式键盘） 错误登录信息输入次数过多，因此，你的电脑被锁定以保护你的隐私。 若要检索恢复密钥，请从另一电脑或移动设备转到 https://windows.microsoft.com/recoverykeyfaq。 如果需要，密钥 ID 为 XXXXXXX。 或者，可以重置电脑。
+- 你被锁定！ 输入恢复密钥，以便再次开始操作（键盘布局：美式键盘）错误登录信息输入次数过多，因此，你的 PC 被锁定以保护你的隐私。 若要检索恢复密钥，请从另一电脑或移动设备转到 https://windows.microsoft.com/recoverykeyfaq 。 如果需要，密钥 ID 为 XXXXXXX。 或者，可以重置电脑。
 
 - 输入密码以解锁此驱动器 [ ] 按 Insert 键在键入时查看密码。
 - 输入恢复密钥 从 USB 设备加载恢复密钥。
@@ -47,7 +47,7 @@ ms.locfileid: "79250005"
 如果此方法未能解决此问题，请执行以下步骤，手动还原 BEK 文件：
 
 1. 拍摄受影响的 VM 的系统磁盘的快照作为备份。 有关详细信息，请参阅[拍摄磁盘快照](../windows/snapshot-copy-managed-disk.md)。
-2. [将系统磁盘附加到恢复 VM](troubleshoot-recovery-disks-portal-windows.md)。 若要在步骤 7 中运行 [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) 命令，必须在恢复 VM 中启用“BitLocker 驱动器加密”**** 功能。
+2. [将系统磁盘附加到恢复 VM](troubleshoot-recovery-disks-portal-windows.md)。 若要在步骤 7 中运行 [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) 命令，必须在恢复 VM 中启用“BitLocker 驱动器加密”  功能。
 
     附加托管磁盘时，可能会收到“包含加密设置，因此不能用作数据磁盘”错误消息。 在此情况下，运行以下脚本，重试附加磁盘：
 
@@ -103,7 +103,7 @@ ms.locfileid: "79250005"
 
     如果看到两个重复的卷，具有较新时间戳的卷为恢复 VM 使用的当前 BEK 文件。
 
-    如果“内容类型”**** 值为“包装的 BEK”****，请转到[密钥加密密钥 (KEK) 方案](#key-encryption-key-scenario)。
+    如果“内容类型”  值为“包装的 BEK”  ，请转到[密钥加密密钥 (KEK) 方案](#key-encryption-key-scenario)。
 
     获取驱动器的 BEK 文件名称后，须创建 secret-file-name.BEK 文件以解锁驱动器。
 
@@ -145,7 +145,7 @@ ms.locfileid: "79250005"
 
 对于密钥加密密钥方案，请执行以下步骤：
 
-1. 请确保登录的用户帐户需要“用户|密钥权限|加密操作|解包密钥”**** 中 Key Vault 访问策略中的“解包”权限。
+1. 请确保登录的用户帐户需要“用户|密钥权限|加密操作|解包密钥”  中 Key Vault 访问策略中的“解包”权限。
 2. 将以下脚本保存到 .PS1 文件：
 
     ```powershell
@@ -277,13 +277,13 @@ ms.locfileid: "79250005"
 
 也可搜索 `Az.Accounts` 文件夹来查找正确的路径。
 
-**错误：获取-AzKeyVault秘密或获取-AzKeyVault秘密不被识别为 cmdlet 的名称**
+**错误：Get-AzKeyVaultSecret 或 Get-AzKeyVaultSecret 无法识别为 cmdlet 的名称**
 
 如果使用旧的 AZ PowerShell 模块，则必须将这两个命令更改为 `Get-AzureKeyVaultSecret` 和 `Get-AzureKeyVaultSecret`。
 
 **参数示例**
 
-| 参数  | 值示例  |注释   |
+| parameters  | 值示例  |注释   |
 |---|---|---|
 |  $keyVaultName | myKeyVault2112852926  | 用于存储此密钥的密钥保管库的名称 |
 |$kekName   |mykey   | 用于加密 VM 的密钥的名称|

@@ -1,6 +1,6 @@
 ---
 title: Azure 经典 CLI 命令
-description: Azure 命令行接口 （CLI） 命令来管理资源。
+description: 用于管理资源的 Azure 命令行接口（CLI）命令。
 author: cynthn
 manager: gwallace
 ms.service: virtual-machines
@@ -9,21 +9,21 @@ ms.topic: article
 ms.date: 04/18/2017
 ms.author: cynthn
 ms.openlocfilehash: ad213cc02f707609a837ea66b79e51c6f2a617f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79250876"
 ---
 # <a name="azure-classic-cli-commands"></a>Azure 经典 CLI 命令 
 
 [!INCLUDE [classic-vm-deprecation](../../includes/classic-vm-deprecation.md)]
 
-本主题介绍如何安装 Azure 经典 CLI。 此经典 CLI 已弃用，只能与经典部署模型配合使用。 对于所有其他部署，请使用 Azure [CLI](https://docs.microsoft.com/cli/azure/)。
+本主题介绍如何安装 Azure 经典 CLI。 此经典 CLI 已弃用，只能与经典部署模型配合使用。 对于所有其他部署，使用[Azure CLI](https://docs.microsoft.com/cli/azure/)。
 
-本文提供了通常用于创建和管理 Azure 资源的 Azure 经典命令行接口 （CLI） 命令的语法和选项。 本参考内容并不完整，CLI 版本可能会显示略微不同的命令或参数。 
+本文提供了用于创建和管理 Azure 资源的 Azure 经典命令行接口（CLI）命令的语法和选项。 本参考内容并不完整，CLI 版本可能会显示略微不同的命令或参数。 
 
-要开始，请先[安装 Azure 经典 CLI](../cli-install-nodejs.md)并[连接到 Azure 订阅](/cli/azure/authenticate-azure-cli)。
+若要开始，请先[安装 azure 经典 CLI](../cli-install-nodejs.md)并[连接到 azure 订阅](/cli/azure/authenticate-azure-cli)。
 
 要在 Resource Manager 模式下在命令行中查看当前的命令语法和选项，请键入 `azure help`；要显示某个命令的帮助，请键入 `azure help [command]`。 还可以在创建和管理具体 Azure 服务的说明文档中找到 CLI 示例。
 
@@ -1503,7 +1503,7 @@ ms.locfileid: "79250876"
 
     network gateway list [options] <resource-group>
 
-## <a name="resource-provider-registrations"></a>资源提供商注册
+## <a name="resource-provider-registrations"></a>资源提供程序注册
 **列出 Resource Manager 中当前已注册的提供程序**
 
     provider list [options]

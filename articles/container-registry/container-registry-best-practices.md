@@ -4,17 +4,17 @@ description: 通过遵循这些最佳做法，了解如何有效使用 Azure 容
 ms.topic: article
 ms.date: 09/27/2018
 ms.openlocfilehash: 233d84b8bfa6f3d8c800e76032ef74a643db11ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79247067"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Azure 容器注册表的最佳做法
 
 通过遵循这些最佳做法，可帮助最大化性能并在 Azure 中经济、高效地利用私有 Docker 注册表。
 
-另请参阅[有关标记和版本控制容器映像的建议](container-registry-image-tag-version.md)，了解在注册表中标记和版本映像的策略。 
+另请参阅[用于标记和版本管理容器映像的建议](container-registry-image-tag-version.md)，了解如何在注册表中标记和版本映像。 
 
 ## <a name="network-close-deployment"></a>临近网络部署
 
@@ -33,7 +33,7 @@ ms.locfileid: "79247067"
 
 通过利用存储库命名空间，可以在组织中的多个组之间共享单个注册表。 可在部署和团队之间共享注册表。 Azure 容器注册表支持嵌套的命名空间，可实现组隔离。
 
-例如，考虑以下容器映像标记。 在全公司范围内使用的图像（如`aspnetcore`）放置在根命名空间中，而产品和营销组拥有的容器映像则使用它们自己的命名空间。
+例如，考虑以下容器映像标记。 企业范围内使用的映像（如`aspnetcore`）位于根命名空间中，而产品和市场营销组拥有的容器映像均使用其自己的命名空间。
 
 - *contoso.azurecr.io/aspnetcore:2.0*
 - *contoso.azurecr.io/products/widget/web:1*
@@ -52,7 +52,7 @@ Azure 容器注册表的身份验证有两种主要方案：单个身份验证�
 
 | 类型 | 示例方案 | 推荐的方法 |
 |---|---|---|
-| 单个标识 | 开发者从/向其开发计算机推送映像。 | [az acr 登录](/cli/azure/acr?view=azure-cli-latest#az-acr-login) |
+| 单个标识 | 开发者从/向其开发计算机推送映像。 | [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) |
 | 无外设/服务标识 | 用户未直接参与的生成和部署管道。 | [服务主体](container-registry-authentication.md#service-principal) |
 
 有关 Azure 容器注册表身份验证的详细信息，请参阅 [Azure 容器注册表的身份验证](container-registry-authentication.md)。

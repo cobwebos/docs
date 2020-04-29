@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
 ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79251461"
 ---
 # <a name="filters"></a>筛选器
@@ -47,7 +47,7 @@ ms.locfileid: "79251461"
 
 使用以下属性来描述筛选器。 
 
-|“属性”|描述|
+|名称|说明|
 |---|---|
 |firstQuality|筛选器的第一个质量比特率。|
 |presentationTimeRange|呈现时间范围。 此属性用于筛选清单起点/终点、呈现窗口长度和直播起始位置。 <br/>有关详细信息，请参阅 [PresentationTimeRange](#presentationtimerange)。|
@@ -57,7 +57,7 @@ ms.locfileid: "79251461"
 
 请将此属性用于**资产筛选器**。 不建议对**帐户筛选器**设置该属性。
 
-|“属性”|描述|
+|名称|说明|
 |---|---|
 |**endTimestamp**|适用于点播视频 (VoD)。<br/>对于实时传送视频流演播，将以静默方式忽略该属性；当呈现内容结束并且流变为 VoD 时，将应用该属性。<br/>这是一个长值，表示演播的绝对终点，舍入为最接近的下一个 GOP 起点。 单位是时间刻度，endTimestamp 1800000000 表示 3 分钟。<br/>使用 startTimestamp 和 endTimestamp 来修剪将播放列表（清单）中的片段。<br/>例如，在使用默认时间刻度的情况下指定 startTimestamp=40000000 和 endTimestamp=100000000 会生成一个播放列表，其中包含 VoD 演播内容第 4 秒到第 10 秒的片段。 如果某个段跨越边界，则整个段将包含在清单中。|
 |**forceEndTimestamp**|仅适用于实时传送视频流。<br/>指示 endTimestamp 属性是否必须存在。 如果为 true，则必须指定 endTimestamp，否则会返回“错误的请求”代码。<br/>允许的值：false、true。|
@@ -72,13 +72,13 @@ ms.locfileid: "79251461"
 
 筛选器轨迹属性条件描述轨迹类型、值（如下表所述）和运算（Equal、NotEqual）。 
 
-|“属性”|描述|
+|名称|说明|
 |---|---|
-|**比特率**|使用轨迹的比特率进行筛选。<br/><br/>建议的值为一系列比特率，以比特/秒为单位。 例如“0-2427000”。<br/><br/>注意：尽管可以使用特定的比特率值（例如 250000 比特/秒），但不建议使用此方法，因为确切的比特率可能根据资产的不同而波动。|
+|**Bitrate**|使用轨迹的比特率进行筛选。<br/><br/>建议的值为一系列比特率，以比特/秒为单位。 例如“0-2427000”。<br/><br/>注意：尽管可以使用特定的比特率值（例如 250000 比特/秒），但不建议使用此方法，因为确切的比特率可能根据资产的不同而波动。|
 |**FourCC**|使用轨迹的 FourCC 值进行筛选。<br/><br/>该值是 [RFC 6381](https://tools.ietf.org/html/rfc6381) 中指定的编解码器格式的第一个元素。 目前支持以下编解码器： <br/>视频：“avc1”、“hev1”、“hvc1”<br/>音频：“mp4a”、“ec-3”<br/><br/>若要确定资产中轨迹的 FourCC 值，请获取并检查清单文件。|
 |**语言**|使用轨迹的语言进行筛选。<br/><br/>该值是 RFC 5646 中指定的、要包含的语言的标记。 例如，“en”。|
 |**名称**|使用轨迹的名称进行筛选。|
-|**类型**|使用轨迹的类型进行筛选。<br/><br/>允许以下值：“video”、“audio”或“text”。|
+|类型 |使用轨迹的类型进行筛选。<br/><br/>允许以下值：“video”、“audio”或“text”。|
 
 ### <a name="example"></a>示例
 
@@ -139,7 +139,7 @@ ms.locfileid: "79251461"
 
 ## <a name="associating-filters-with-streaming-locator"></a>将筛选器与流定位符相关联
 
-可以在[流定位符](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)中指定[资产或帐户筛选器](filters-concept.md)列表。 [动态打包器](dynamic-packaging-overview.md)将此筛选器列表与客户端在 URL 中指定的筛选器一起应用。 此组合将生成[动态清单](filters-dynamic-manifest-overview.md)，该清单基于你在流定位符上指定的“URL + 筛选器”中的筛选器。 
+可以在[流定位符](filters-concept.md)中指定[资产或帐户筛选器](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)列表。 [动态打包器](dynamic-packaging-overview.md)将此筛选器列表与客户端在 URL 中指定的筛选器一起应用。 此组合将生成[动态清单](filters-dynamic-manifest-overview.md)，该清单基于你在流定位符上指定的“URL + 筛选器”中的筛选器。 
 
 请看以下示例：
 
@@ -150,7 +150,7 @@ ms.locfileid: "79251461"
  
 尽管筛选器可更新，但**流定位符**不可更新。 
 
-不建议更新与主动发布的**流式处理器**关联的筛选器的定义，尤其是在启用 CDN 时。 流式服务器和 CDN 可以具有内部缓存，可能导致要返回的陈旧缓存数据。 
+不建议更新与主动发布的**流式处理定位符**相关联的筛选器的定义，尤其是在启用 CDN 时。 流式处理服务器和 Cdn 可能有可能会导致返回过时缓存数据的内部缓存。 
 
 如果需要更改筛选器定义，请考虑创建一个新的筛选器，并将其添加到**流定位符** URL，或发布直接引用筛选器的新**流定位符**。
 

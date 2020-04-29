@@ -1,5 +1,5 @@
 ---
-title: 授予对具有共享访问签名 （SAS） 的数据的有限访问权限
+title: 使用共享访问签名 (SAS) 授予对数据的有限访问权限
 titleSuffix: Azure Storage
 description: 了解使用共享访问签名 (SAS) 委托对 Azure 存储资源（包括 Blob、队列、表和文件）的访问权限。
 services: storage
@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 7a5967f52a187fe289c6fb1ca72af2d5fd17f010
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79255231"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>使用共享访问签名 (SAS) 授予对 Azure 存储资源的受限访问权限
@@ -25,28 +25,28 @@ ms.locfileid: "79255231"
 
 Azure 存储支持三种类型的共享访问签名：
 
-- **用户委派 SAS。** 用户委托 SAS 使用 Azure Active Directory (Azure AD) 凭据以及为 SAS 指定的权限进行保护。 用户委派 SAS 仅适用于 Blob 存储。
+- **用户委托 SAS。** 用户委托 SAS 使用 Azure Active Directory (Azure AD) 凭据以及为 SAS 指定的权限进行保护。 用户委托 SAS 仅适用于 Blob 存储。
 
-    有关用户委派 SAS 的详细信息，请参阅[创建用户委派 SAS （REST API）。](/rest/api/storageservices/create-user-delegation-sas)
+    有关用户委托 SAS 的详细信息，请参阅[创建用户委托 sas （REST API）](/rest/api/storageservices/create-user-delegation-sas)。
 
-- **服务 SAS。** 使用存储帐户密钥保护的服务 SAS。 服务 SAS 仅委托访问其中一个 Azure 存储服务中的资源：Blob 存储、队列存储、表存储或 Azure 文件。 
+- **服务 SAS。** 使用存储帐户密钥保护的服务 SAS。 服务 SAS 仅委托 Azure 存储服务之一中的资源访问： Blob 存储、队列存储、表存储或 Azure 文件。 
 
     有关服务 SAS 的详细信息，请参阅[创建服务 SAS (REST API)](/rest/api/storageservices/create-service-sas)。
 
-- **帐户 SAS。** 帐户 SAS 使用存储帐户密钥进行保护。 帐户 SAS 可委派对一个或多个存储服务中的资源的访问权限。 通过服务或用户委派 SAS 提供的所有操作也可通过帐户 SAS 获得。 此外，使用帐户 SAS 还可以委托对在服务级别应用的操作（例如“获取/设置服务属性”和“获取服务统计信息”操作）的访问权限。******** 还可以委派对 blob 容器、表、队列和文件共享执行读取、写入和删除操作的访问权限，而这是服务 SAS 所不允许的。 
+- **帐户 SAS。** 帐户 SAS 使用存储帐户密钥进行保护。 帐户 SAS 可委派对一个或多个存储服务中的资源的访问权限。 通过服务或用户委托 SAS 提供的所有操作也可以通过帐户 SAS 提供。 此外，使用帐户 SAS 还可以委托对在服务级别应用的操作（例如“获取/设置服务属性”和“获取服务统计信息”操作）的访问权限。******** 还可以委派对 blob 容器、表、队列和文件共享执行读取、写入和删除操作的访问权限，而这是服务 SAS 所不允许的。 
 
     有关帐户 SAS 的详细信息，请参阅[创建帐户 SAS (REST API)](/rest/api/storageservices/create-account-sas)。
 
 > [!NOTE]
-> Microsoft 建议您尽可能使用 Azure AD 凭据作为安全最佳做法，而不是使用帐户密钥，因为帐户密钥更易于泄露。 当应用程序设计需要共享访问签名才能访问 Blob 存储时，请尽可能使用 Azure AD 凭据创建用户委派 SAS，以确保更高的安全性。
+> Microsoft 建议尽可能使用 Azure AD 凭据作为最佳安全方案，而不是使用帐户密钥，这样可以更容易地受到威胁。 当应用程序设计要求使用共享访问签名来访问 Blob 存储时，请使用 Azure AD 凭据创建用户委托 SAS （如果可能）以实现高级安全性。
 
 共享访问签名可以采取以下两种形式的一种：
 
-- **临时 SAS：** 创建临时 SAS 时，SAS 的开始时间、到期时间和权限都在 SAS URI 中指定（如果省略了开始时间，则隐含）。 任何类型的 SAS 都可以用作临时 SAS。
-- **具有存储访问策略的服务 SAS：** 存储的访问策略在资源容器上定义，该容器可以是 blob 容器、表、队列或文件共享。 可以使用存储访问策略来管理一个或多个服务共享访问签名的约束。 将某个服务 SAS 与某个存储访问策略关联时，该 SAS 将继承对该存储访问策略定义的约束 &mdash; 开始时间、过期时间和权限。
+- **即席 SAS：** 当你创建一个即席 SAS 时，该 SAS 的开始时间、到期时间和权限都在 SAS URI 中指定（如果省略了开始时间，则为默示的权限）。 任何类型的 SAS 都可以用作临时 SAS。
+- **具有存储访问策略的服务 SAS：** 存储访问策略在资源容器（可以是 blob 容器、表、队列或文件共享）上定义。 可以使用存储访问策略来管理一个或多个服务共享访问签名的约束。 将某个服务 SAS 与某个存储访问策略关联时，该 SAS 将继承对该存储访问策略定义的约束 &mdash; 开始时间、过期时间和权限。
 
 > [!NOTE]
-> 用户委派 SAS 或帐户 SAS 必须是临时 SAS。 用户委派 SAS 或帐户 SAS 不支持存储的访问策略。
+> 用户委托 SAS 或帐户 SAS 必须是一个临时 SAS。 用户委托 SAS 或帐户 SAS 不支持存储访问策略。
 
 ## <a name="how-a-shared-access-signature-works"></a>共享访问签名的工作方式
 
@@ -56,9 +56,9 @@ Azure 存储支持三种类型的共享访问签名：
 
 可通过以下两种方式之一对 SAS 进行签名：
 
-- 使用 Azure 活动目录 （Azure AD） 凭据创建*的用户委派密钥*。 用户委派 SAS 使用用户委派密钥进行签名。
+- 使用 Azure Active Directory （Azure AD）凭据创建的*用户委托密钥*。 用户委托 SAS 使用用户委托密钥进行签名。
 
-    要获取用户委派密钥并创建 SAS，必须为 Azure AD 安全主体分配一个基于角色的访问控制 （RBAC） 角色，该角色包括**Microsoft.存储/存储帐户/blob 服务/生成User委派键**操作。 有关具有获取用户委派密钥权限的 RBAC 角色的详细信息，请参阅[创建用户委派 SAS （REST API）。](/rest/api/storageservices/create-user-delegation-sas)
+    若要获取用户委托密钥并创建 SAS，必须为 Azure AD 安全主体分配一个基于角色的访问控制（RBAC）角色，其中包括 storageAccounts/ **/blobServices/generateUserDelegationKey**操作。 有关具有获取用户委托密钥权限的 RBAC 角色的详细信息，请参阅[创建用户委托 SAS （REST API）](/rest/api/storageservices/create-user-delegation-sas)。
 
 - 使用存储帐户密钥。 服务 SAS 和帐户 SAS 都是使用存储帐户密钥签名的。 若要创建使用帐户密钥签名的 SAS，应用程序必须有权访问该帐户密钥。
 
@@ -104,13 +104,13 @@ SAS 通常适用于用户需要在存储帐户中读取和写入其数据的服�
 下面这些针对使用共享访问签名的建议可帮助降低这些风险：
 
 - **始终使用 HTTPS** 创建或分发 SAS。 如果某一 SAS 通过 HTTP 传递并且被截取，则执行中间人攻击的攻击者能够读取 SAS、然后使用它，就像目标用户本可执行的操作一样，这可能会暴露敏感数据或者使恶意用户能够损坏数据。
-- **尽可能使用用户委派 SAS。** 用户委派 SAS 为服务 SAS 或帐户 SAS 提供卓越的安全性。 用户委派 SAS 使用 Azure AD 凭据进行保护，因此无需将帐户密钥与代码一起存储。
+- **尽可能使用用户委托 SAS。** 用户委托 SAS 为服务 SAS 或帐户 SAS 提供了高级安全。 使用 Azure AD 凭据保护用户委托 SAS，以便不需要将帐户密钥与代码一起存储。
 - **为 SAS 准备好吊销计划。** 确保已做好在 SAS 透露时的应对准备。
 - **定义服务 SAS 的存储访问策略。** 存储访问策略可让你选择撤消服务 SAS 的权限，且无需重新生成存储帐户密钥。 将针对 SAS 的到期时间设置为很久之后的某一时间（或者无限远），并且确保定期对其进行更新以便将到期时间移到将来的更远时间。
 - **对临时 SAS 服务 SAS 或帐户 SAS 使用短期过期时间。** 这样，即使某一 SAS 泄露，它也只会在短期内有效。 如果无法参照某一存储访问策略，该行为尤其重要。 临时到期时间还通过限制可用于上传到它的时间来限制可以写入 Blob 的数据量。
 - **如果需要，让客户端自动续订 SAS。** 客户端应在到期时间之前很久就续订 SAS，这样，即使提供 SAS 的服务不可用，客户端也有时间重试。 如果 SAS 旨在用于少量即时的短期操作，这些操作应在到期时间内完成，则上述做法可能是不必要的，因为不应续订 SAS。 但是，如果客户端定期通过 SAS 发出请求，则有效期可能就会起作用。 需要考虑的主要方面就是在以下两者间进行权衡：对短期 SAS 的需求（如前文所述）以及确保客户端尽早请求续订（以免在成功续订前因 SAS 到期而中断）。
 - **要注意 SAS 开始时间。** 如果将 SAS 的开始时间设置为**现在**，则由于时钟偏移（根据不同计算机，当前时间中的差异），在前几分钟会暂时观察到失败。 通常，将开始时间至少设置为 15 分钟前。 或者根本不设置，这会使它在所有情况下都立即生效。 同样此原则也适用于到期时间 - 请记住，对于任何请求，在任一方向你可能会观察到最多 15 分钟的时钟偏移。 对于使用 2012-02-12 之前的 REST 版本的客户端，未参照某一存储访问策略的 SAS 的最大持续时间是 1 小时，指定超过 1 小时持续时间的任何策略都会失败。
-- **小心使用 SAS 日期时间格式。** 如果为 SAS 设置开始时间和/或到期，则某些实用程序（例如，对于命令行实用程序 AzCopy）需要日期时间格式为"+%Y-%m-%dT%H：%M：%SZ"，具体包括秒，以便使用 SAS 令牌工作。  
+- **请注意 SAS 日期时间格式。** 如果为 SAS 设置了开始时间和/或过期时间（例如，命令行实用程序 AzCopy），则需要日期时间格式为 "+% Y-% m-% dT% H:%M：% SZ"，具体包括使用 SAS 令牌进行工作所需的秒数。  
 - **对要访问的资源要具体。** 一个安全性最佳实践是向用户提供所需最小权限。 如果某一用户仅需要对单个实体的读取访问权限，则向该用户授予对该单个实体的读取访问权限，而不要授予针对所有实体的读取/写入/删除访问权限。 如果 SAS 泄露，这也有助于降低损失，因为攻击者手中掌握的 SAS 的权限较为有限。
 - **知道每次使用都会对帐户收费，包括通过 SAS 使用。** 如果你提供某个 Blob 的写入访问权限，则用户可以选择上传 200 GB 的 Blob。 如果还向用户提供了对 Blob 的读访问权限，他们可能会选择下载 Blob 10 次，对你产生 2 TB 的传出费用。 此外，提供受限权限，帮助降低恶意用户的潜在操作威胁。 使用短期 SAS 以便减少这一威胁（但要注意结束时间上的时钟偏移）。
 - **验证使用 SAS 写入的数据。** 在某一客户端应用程序将数据写入存储帐户时，请记住对于这些数据可能存在问题。 如果应用程序要求在数据可供使用前对数据进行验证或授权，应该在写入数据后、但在应用程序使用这些数据前执行此验证。 这一实践还有助于防止损坏的数据或恶意数据写入帐户，这些数据可能是正常要求 SAS 的用户写入的，也可能是利用泄露的 SAS 的用户写入的。
@@ -121,11 +121,11 @@ SAS 通常适用于用户需要在存储帐户中读取和写入其数据的服�
 
 若要开始使用共享访问签名，请参阅以下适用于每种 SAS 类型的文章。
 
-### <a name="user-delegation-sas"></a>用户委派 SAS
+### <a name="user-delegation-sas"></a>用户委托 SAS
 
-- [使用 PowerShell 为容器或 Blob 创建用户委派 SAS](../blobs/storage-blob-user-delegation-sas-create-powershell.md)
-- [使用 Azure CLI 为容器或 Blob 创建用户委派 SAS](../blobs/storage-blob-user-delegation-sas-create-cli.md)
-- [为具有 .NET 的容器或 blob 创建用户委派 SAS](../blobs/storage-blob-user-delegation-sas-create-dotnet.md)
+- [使用 PowerShell 为容器或 blob 创建用户委托 SAS](../blobs/storage-blob-user-delegation-sas-create-powershell.md)
+- [为具有 Azure CLI 的容器或 blob 创建用户委托 SAS](../blobs/storage-blob-user-delegation-sas-create-cli.md)
+- [使用 .NET 为容器或 blob 创建用户委托 SAS](../blobs/storage-blob-user-delegation-sas-create-dotnet.md)
 
 ### <a name="service-sas"></a>服务 SAS
 

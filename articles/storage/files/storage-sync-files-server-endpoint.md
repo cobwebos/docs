@@ -8,20 +8,20 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 684b30a24e049722cb531cbc84e3a2cd90912ec8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79255101"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>添加/删除 Azure 文件同步服务器终结点
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 它通过将 Windows Server 转换为 Azure 文件共享的快速缓存来实现这一点。 你可以使用 Windows Server 上的任意可用协议在本地访问数据（包括 SMB、NFS 和 FTPS），并且可以在世界各地获取所需的缓存数。
 
-*服务器终结点*表示*已注册服务器上*的特定位置，例如服务器卷上的文件夹或卷的根。 如果命名空间不重叠（例如 F:\sync1 和 F:\sync2），多个服务器终结点可存在于同一个卷。 可为每个服务器终结点单独配置云分层策略。 如果将带一组现有文件的服务器位置作为服务器终结点添加到同步组，则这些文件将与同步组中其他终结点上已有的任何其他文件进行合并。
+*服务器终结点*表示*已注册服务器*上的特定位置，例如服务器卷上的文件夹或卷的根目录。 如果命名空间不重叠（例如 F:\sync1 和 F:\sync2），多个服务器终结点可存在于同一个卷。 可为每个服务器终结点单独配置云分层策略。 如果将带一组现有文件的服务器位置作为服务器终结点添加到同步组，则这些文件将与同步组中其他终结点上已有的任何其他文件进行合并。
 
 若要了解如何部署端到端的 Azure 文件同步，请参阅[如何部署 Azure 文件同步](storage-sync-files-deployment-guide.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要创建服务器终结点，必须首先确保满足以下条件： 
 - 服务器安装了 Azure 文件同步代理并已注册。 有关安装 Azure 文件同步代理的说明可以在[向 Azure 文件同步注册/注销服务器](storage-sync-files-server-registration.md)一文中找到。 
 - 确保已部署存储同步服务。 有关如何部署存储同步服务的详细信息，请参阅[如何部署 Azure 文件同步](storage-sync-files-deployment-guide.md)。 
@@ -54,11 +54,11 @@ ms.locfileid: "79255101"
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order CloudTieringPolicy
 ```
-指定`-Order CloudTieringPolicy`将首先调用最近修改的文件。
-需要考虑的其他可选但有用的参数包括：
-* `-ThreadCount`确定可以并行调用的文件数。
-* `-PerFileRetryCount`确定当前被阻止的文件的调用尝试频率。
-* `-PerFileRetryDelaySeconds`确定重试调用尝试之间的时间（以秒为单位），应始终与前面的参数结合使用。
+指定`-Order CloudTieringPolicy`将首先撤回最近修改的文件。
+需要考虑的其他可选但有用的参数是：
+* `-ThreadCount`确定可并行回调的文件数。
+* `-PerFileRetryCount`确定尝试重新调用当前被阻止的文件的频率。
+* `-PerFileRetryDelaySeconds`确定两次重试回调尝试之间的时间间隔（以秒为单位），并且应始终结合前面的参数使用。
 
 > [!Note]  
 > 如果承载服务器的本地卷没有足够可用空间可用于召回所有分层数据，则 `Invoke-StorageSyncFileRecall` cmdlet 会失败。  

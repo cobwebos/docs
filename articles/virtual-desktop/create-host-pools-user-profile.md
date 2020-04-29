@@ -1,5 +1,5 @@
 ---
-title: Windows 虚拟桌面 FSLogix 配置文件容器共享 - Azure
+title: Windows 虚拟桌面 FSLogix 配置文件容器共享-Azure
 description: 如何使用基于虚拟机的文件共享为 Windows 虚拟桌面主机池设置 FSLogix 配置文件容器。
 services: virtual-desktop
 author: Heidilohr
@@ -9,24 +9,24 @@ ms.date: 08/20/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 96b593f544aa4bbf126c06747a01902581f5ffb4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79250915"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>使用文件共享为主机池创建配置文件容器
 
-Windows 虚拟桌面服务提供 FSLogix 配置文件容器作为推荐的用户配置文件解决方案。 我们不建议使用用户配置文件磁盘 （UPD） 解决方案，该解决方案将在将来版本的 Windows 虚拟桌面中弃用。
+Windows 虚拟桌面服务提供 FSLogix 配置文件容器作为推荐的用户配置文件解决方案。 我们不建议使用用户配置文件磁盘（UPD）解决方案，该解决方案将在未来版本的 Windows 虚拟桌面中弃用。
 
-本文将介绍如何使用基于虚拟机的文件共享为主机池设置 FSLogix 配置文件容器共享。 有关更多 FSLogix 文档，请参阅[FSLogix 网站](https://docs.fslogix.com/)。
+本文将介绍如何使用基于虚拟机的文件共享为主机池设置 FSLogix 配置文件容器共享。 有关更多 FSLogix 文档，请参阅[FSLogix 站点](https://docs.fslogix.com/)。
 
 >[!NOTE]
->如果要查找有关 Azure 上不同 FSLogix 配置文件容器存储选项的比较材料，请参阅[FSLogix 配置文件容器的存储选项](store-fslogix-profile.md)。
+>如果正在查找有关 Azure 上不同 FSLogix 配置文件容器存储选项的比较资料，请参阅[FSLogix 配置文件容器的存储选项](store-fslogix-profile.md)。
 
-## <a name="create-a-new-virtual-machine-that-will-act-as-a-file-share"></a>创建新的虚拟机，该虚拟机将充当文件共享
+## <a name="create-a-new-virtual-machine-that-will-act-as-a-file-share"></a>创建将用作文件共享的新虚拟机
 
-创建虚拟机时，请确保将其放置在与主机池虚拟机相同的虚拟网络上，或者将其放置在与主机池虚拟机连接的虚拟网络上。 您可以通过多种方式创建虚拟机：
+创建虚拟机时，请确保将该虚拟机放置在与主机池虚拟机相同的虚拟网络中，或者放置到与主机池虚拟机连接的虚拟网络上。 可以通过多种方式创建虚拟机：
 
 - [从 Azure 库映像创建虚拟机](../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
 - [从托管映像创建虚拟机](../virtual-machines/windows/create-vm-generalized-managed.md)
@@ -34,42 +34,42 @@ Windows 虚拟桌面服务提供 FSLogix 配置文件容器作为推荐的用户
 
 创建虚拟机后，通过执行以下操作将其加入域：
 
-1. 使用创建虚拟机时提供的凭据[连接到虚拟机](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine)。
-2. 在虚拟机上，启动**控制面板**并选择 **"系统**"。
-3. 选择**计算机名称**，选择 **"更改设置**"，然后选择 **"更改..."**
-4. 选择 **"域**"，然后在虚拟网络上输入活动目录域。
-5. 使用具有域加入计算机权限的域帐户进行身份验证。
+1. 用在创建虚拟机时提供的凭据[连接到虚拟机](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine)。
+2. 在虚拟机上，启动 "**控制面板"** ，然后选择 "**系统**"。
+3. 选择 "**计算机名称**"，选择 "**更改设置**"，然后选择 "**更改 ...** "
+4. 选择 "**域**"，然后在虚拟网络上输入 Active Directory 域。
+5. 使用有权加入域的域帐户进行身份验证。
 
-## <a name="prepare-the-virtual-machine-to-act-as-a-file-share-for-user-profiles"></a>准备虚拟机作为用户配置文件的文件共享
+## <a name="prepare-the-virtual-machine-to-act-as-a-file-share-for-user-profiles"></a>准备虚拟机以用作用户配置文件的文件共享
 
-以下是有关如何准备虚拟机作为用户配置文件的文件共享的一般说明：
+下面是有关如何准备虚拟机以用作用户配置文件的文件共享的一般说明：
 
-1. 将 Windows 虚拟桌面活动目录用户添加到[活动目录安全组](/windows/security/identity-protection/access-control/active-directory-security-groups/)。 此安全组将用于将 Windows 虚拟桌面用户验证为您刚刚创建的文件共享虚拟机。
+1. 将 Windows 虚拟桌面 Active Directory 用户添加到[Active Directory 安全组](/windows/security/identity-protection/access-control/active-directory-security-groups/)。 此安全组将用于向你刚刚创建的文件共享虚拟机验证 Windows 虚拟桌面用户的身份。
 2. [连接到文件共享虚拟机](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine)。
-3. 在文件共享虚拟机上，在**C 驱动器**上创建一个文件夹，该文件夹将用作配置文件共享。
-4. 右键单击新文件夹，选择 **"属性**"，选择 **"共享**"，然后选择 **"高级共享..."。**
-5. 选择 **"共享此文件夹**"，选择 **"权限..."，** 然后选择 **"添加..."**
-6. 搜索添加到 Windows 虚拟桌面用户的安全组，然后确保该组具有**完全控制**。
-7. 添加安全组后，右键单击文件夹，选择 **"属性**"，选择 **"共享**"，然后向下复制 **"网络路径**"以用于以后。
+3. 在文件共享虚拟机上，在将用作配置文件共享的**C 驱动器**上创建一个文件夹。
+4. 右键单击新文件夹，选择 "**属性**"，选择 "**共享**"，然后选择 "**高级共享 ...**"。
+5. 选择 "**共享此文件夹**"，选择 "**权限 ...**"，然后选择 "**添加 ...**"。
+6. 搜索向其中添加了 Windows 虚拟桌面用户的安全组，并确保该组具有 "**完全控制**"。
+7. 添加安全组后，右键单击该文件夹，选择 "**属性**"，选择 "**共享**"，然后向下复制要用于稍后的**网络路径**。
 
 有关权限的详细信息，请参阅[FSLogix 文档](/fslogix/fslogix-storage-config-ht/)。
 
 ## <a name="configure-the-fslogix-profile-container"></a>配置 FSLogix 配置文件容器
 
-要使用 FSLogix 软件配置虚拟机，请对注册到主机池的每台计算机执行以下操作：
+若要配置具有 FSLogix 软件的虚拟机，请在注册到主机池的每个计算机上执行以下操作：
 
-1. 使用创建虚拟机时提供的凭据[连接到虚拟机](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine)。
-2. 启动互联网浏览器并导航到[此链接](https://go.microsoft.com/fwlink/?linkid=2084562)以下载 FSLogix 代理。
-3. 导航到\\\\.zip\\文件中的\\\\Win32 版本或 X64\\版本，并运行**FSLogixApps安装程序**以安装 FSLogix 代理。  要了解有关如何安装 FSLogix 的更多内容，请参阅[下载并安装 FSLogix](/fslogix/install-ht/)。
-4. 导航到**程序文件** > **FSLogix** > **应用**以确认已安装的代理。
-5. 从"开始"菜单中，以管理员身份运行**RegEdit。** 导航到**计算机\\HKEY_LOCAL_MACHINE\\软件\\FSLogix。**
-6. 创建名为**配置文件**的键。
-7. 为配置文件键创建以下值：
+1. 用在创建虚拟机时提供的凭据[连接到虚拟机](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine)。
+2. 启动 internet 浏览器并导航到[此链接](https://go.microsoft.com/fwlink/?linkid=2084562)，下载 FSLogix 代理。
+3. 在 .zip 文件\\ \\中\\导航到\\ \\Win32\\版本或 X64 版本，并运行**FSLogixAppsSetup**以安装 FSLogix 代理。  若要了解有关如何安装 FSLogix 的详细信息，请参阅[下载并安装 FSLogix](/fslogix/install-ht/)。
+4. 导航到**Program Files** > **FSLogix** > **Apps**以确认已安装代理。
+5. 从 "开始" 菜单中，以管理员身份运行**RegEdit** 。 导航到 **"\\计算机\\HKEY_LOCAL_MACHINE\\software FSLogix**"。
+6. 创建名为 "**配置文件**" 的密钥。
+7. 为配置文件密钥创建以下值：
 
-| “属性”                | 类型               | 数据/价值                        |
+| 名称                | 类型               | 数据/值                        |
 |---------------------|--------------------|-----------------------------------|
 | 已启用             | DWORD              | 1                                 |
-| VHD 位置        | 多字符串值 | "文件共享的网络路径"     |
+| VHDLocations        | 多字符串值 | "文件共享的网络路径"     |
 
 >[!IMPORTANT]
 >为了帮助保护 Azure 中的 Windows 虚拟桌面环境，我们建议你不要在 VM 上打开入站端口 3389。 Windows 虚拟机不需要打开入站端口 3389，用户就可以访问主机池的 VM。 如果必须打开端口 3389 以进行故障排除，我们建议你使用[实时 VM 访问](../security-center/security-center-just-in-time.md)。

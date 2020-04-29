@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: rohink
 ms.openlocfilehash: acdac6e3eafc5251ebd31a34bcb9a4db34f0ebbe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79254360"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>流量管理器常见问题解答 (FAQ)
@@ -24,7 +24,7 @@ ms.locfileid: "79254360"
 
 ### <a name="what-ip-address-does-traffic-manager-use"></a>流量管理器使用什么 IP 地址？
 
-如[流量管理器的工作原理](../traffic-manager/traffic-manager-how-it-works.md)中所述，流量管理器在 DNS 级别工作。 它会发送 DNS 响应，将客户端定向到相应的服务终结点。 然后，客户端直接连接到服务终结点，不通过流量管理器进行连接。
+如[流量管理器工作原理](../traffic-manager/traffic-manager-how-it-works.md)中所述，流量管理器在 DNS 级别工作。 它会发送 DNS 响应，将客户端定向到相应的服务终结点。 然后，客户端直接连接到服务终结点，不通过流量管理器进行连接。
 
 因此，流量管理器不提供供客户端连接的终结点或 IP 地址。 如果想要为服务使用静态 IP 地址，必须在服务而不是流量管理器中配置该地址。
 
@@ -33,13 +33,13 @@ ms.locfileid: "79254360"
 
 ### <a name="does-traffic-manager-support-sticky-sessions"></a>流量管理器是否支持“粘滞”会话？
 
-如[流量管理器的工作原理](../traffic-manager/traffic-manager-how-it-works.md)中所述，流量管理器在 DNS 级别工作。 它使用 DNS 响应将客户端引导到相应的服务终结点。 客户端直接连接到服务终结点，而不是通过流量管理器连接。 因此，流量管理器看不到客户端与服务器之间的 HTTP 流量。
+如[流量管理器工作原理](../traffic-manager/traffic-manager-how-it-works.md)中所述，流量管理器在 DNS 级别工作。 它使用 DNS 响应将客户端引导到相应的服务终结点。 客户端直接连接到服务终结点，而不是通过流量管理器连接。 因此，流量管理器看不到客户端与服务器之间的 HTTP 流量。
 
 此外，流量管理器收到的 DNS 查询的源 IP 地址属于递归 DNS 服务而不是客户端。 因此，流量管理器无法跟踪单个客户端，也无法实现“粘滞”会话。 这种限制在所有基于 DNS 的流量管理系统中很常见，并不是流量管理器特有的限制。
 
 ### <a name="why-am-i-seeing-an-http-error-when-using-traffic-manager"></a>使用流量管理器时为何出现 HTTP 错误？
 
-如[流量管理器的工作原理](../traffic-manager/traffic-manager-how-it-works.md)中所述，流量管理器在 DNS 级别工作。 它使用 DNS 响应将客户端引导到相应的服务终结点。 然后，客户端直接连接到服务终结点，不通过流量管理器进行连接。 流量管理器看不到客户端与服务器之间的 HTTP 流量。 因此，出现的任何 HTTP 错误必定来自应用程序。 要使客户端连接到应用程序，必须完成所有 DNS 解析步骤。 这包括流量管理器对应用程序流量流所做的任何交互。
+如[流量管理器工作原理](../traffic-manager/traffic-manager-how-it-works.md)中所述，流量管理器在 DNS 级别工作。 它使用 DNS 响应将客户端引导到相应的服务终结点。 然后，客户端直接连接到服务终结点，不通过流量管理器进行连接。 流量管理器看不到客户端与服务器之间的 HTTP 流量。 因此，出现的任何 HTTP 错误必定来自应用程序。 要使客户端连接到应用程序，必须完成所有 DNS 解析步骤。 这包括流量管理器对应用程序流量流所做的任何交互。
 
 因此，进一步的调查应着重于应用程序。
 
@@ -47,7 +47,7 @@ ms.locfileid: "79254360"
 
 ### <a name="what-is-the-performance-impact-of-using-traffic-manager"></a>使用流量管理器对性能有什么影响？
 
-如[流量管理器的工作原理](../traffic-manager/traffic-manager-how-it-works.md)中所述，流量管理器在 DNS 级别工作。 由于客户端直接连接到服务终结点，因此在使用流量管理器时，一旦建立连接就没有性能影响。
+如[流量管理器工作原理](../traffic-manager/traffic-manager-how-it-works.md)中所述，流量管理器在 DNS 级别工作。 由于客户端直接连接到服务终结点，因此在使用流量管理器时，一旦建立连接就没有性能影响。
 
 由于流量管理器在 DNS 级别与应用程序集成，因此需要将额外的 DNS 查找插入 DNS 解析链中。 流量管理器对 DNS 解析时间的影响微乎其微。 流量管理器使用全局性的名称服务器网络，并使用[任播](https://en.wikipedia.org/wiki/Anycast)网络来确保始终将 DNS 查询路由到最靠近的可用名称服务器。 此外，对 DNS 响应进行缓存意味着，因使用流量管理器而导致的额外的 DNS 延迟仅出现在部分会话中。
 
@@ -55,11 +55,11 @@ ms.locfileid: "79254360"
 
 ### <a name="what-application-protocols-can-i-use-with-traffic-manager"></a>流量管理器允许使用什么应用程序协议？
 
-如[流量管理器的工作原理](../traffic-manager/traffic-manager-how-it-works.md)中所述，流量管理器在 DNS 级别工作。 完成 DNS 查找以后，客户端会直接连接到应用程序终结点，不通过流量管理器进行连接。 因此，连接可以使用任何应用程序协议。 如果选择 TCP 作为监视协议，则无需使用任何应用程序协议，就可以完成对流量管理器终结点运行状况的监视。 如果选择使用应用程序协议来验证运行状况，则要求终结点能够响应 HTTP 或 HTTPS GET 请求。
+如[流量管理器工作原理](../traffic-manager/traffic-manager-how-it-works.md)中所述，流量管理器在 DNS 级别工作。 完成 DNS 查找以后，客户端会直接连接到应用程序终结点，不通过流量管理器进行连接。 因此，连接可以使用任何应用程序协议。 如果选择 TCP 作为监视协议，则无需使用任何应用程序协议，就可以完成对流量管理器终结点运行状况的监视。 如果选择使用应用程序协议来验证运行状况，则要求终结点能够响应 HTTP 或 HTTPS GET 请求。
 
-### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>我可以使用带有"裸"域名的流量管理器吗？
+### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>是否可以对“裸”域名使用流量管理器？
 
-是的。 要了解如何为域名顶点创建别名记录以引用 Azure 流量管理器配置文件，请参阅[使用流量管理器配置别名以支持顶点域名](../dns/tutorial-alias-tm.md)。
+是的。 若要了解如何创建域名顶点的别名记录以引用 Azure 流量管理器配置文件，请参阅[使用流量管理器配置别名记录以支持顶点域名](../dns/tutorial-alias-tm.md)。
 
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>处理 DNS 查询时流量管理器是否会考虑客户端子网地址？ 
 
@@ -242,11 +242,11 @@ ms.locfileid: "79254360"
 
 ### <a name="does-the-webpage-measuring-real-user-measurements-need-to-be-using-traffic-manager-for-routing"></a>测量真实用户度量的网页是否需要使用流量器以供路由使用？
 
-不，它不需要使用流量管理器。 流量管理器的路由端独立于真实用户测量部分运行，虽然将它们同时位于同一 Web 属性中是个好主意，但它们不需要。
+不需要，它不需要使用流量管理器。 流量管理器的路由端独立于实际用户测量部分进行操作，但在相同的 web 属性中有一个很好的想法，它们不需要。
 
 ### <a name="do-i-need-to-host-any-service-on-azure-regions-to-use-with-real-user-measurements"></a>是否需要在 Azure 区域托管任何服务才能使用真实用户度量？
 
-否，您无需在 Azure 上托管任何服务器端组件，以便实际用户度量才能正常工作。 度量 JavaScript 下载的单像素图像和在不同 Azure 区域运行它的服务是由 Azure 托管和管理的。 
+不需要，你无需在 Azure 上托管任何服务器端组件即可运行真实用户度量。 度量 JavaScript 下载的单像素图像和在不同 Azure 区域运行它的服务是由 Azure 托管和管理的。 
 
 ### <a name="will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements"></a>使用真实用户度量时，我的 Azure 带宽使用率是否会增加？
 
@@ -271,7 +271,7 @@ ms.locfileid: "79254360"
 
 ### <a name="how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor"></a>流量视图与 Azure 监视器提供的流量管理器指标有何不同？
 
-Azure 监视器可用于以聚合级别理解你的配置文件及其终结点收到的流量。 通过公开运行状况检查结果，还可以借助它跟踪终结点的运行状况。 当您需要超越这些并了解最终用户在区域级别连接到 Azure 的经验时，可以使用流量视图来实现这一点。
+Azure 监视器可用于以聚合级别理解你的配置文件及其终结点收到的流量。 通过公开运行状况检查结果，还可以借助它跟踪终结点的运行状况。 当你需要了解并了解最终用户在区域级别连接到 Azure 时的体验时，可以使用流量视图来实现此目的。
 
 ### <a name="does-traffic-view-use-edns-client-subnet-information"></a>流量视图是否使用 EDNS 客户端子网信息？
 
@@ -283,7 +283,7 @@ Azure 流量管理器提供的 DNS 查询考虑了 ECS 信息以提高路由的�
 
 ### <a name="how-does-traffic-view-handle-external-endpoints"></a>流量视图如何处理外部终结点？
 
-在流量管理器配置文件中使用托管在 Azure 区域外的外部终结点时，可以选择将其映射到 Azure 区域，该区域是其延迟特征的代理（如果使用性能路由方法，确实则需要使用此功能）。 如果具有此 Azure 区域映射，则创建流量视图输出时将使用该 Azure 区域的延迟指标。 如果未指定 Azure 区域，则延迟信息在这些外部终结点的数据中为空。
+在流量管理器配置文件中使用托管在 Azure 区域外的外部终结点时，可以选择将其映射到 Azure 区域，该区域是其延迟特征的代理（如果使用性能路由方法，确实则需要使用此功能）。 如果它具有此 Azure 区域映射，则将在创建流量视图输出时使用该 Azure 区域的延迟指标。 如果未指定 Azure 区域，则延迟信息在这些外部终结点的数据中为空。
 
 ### <a name="do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription"></a>是否需要对我的订阅中的每个配置文件启用流量视图？
 
@@ -416,10 +416,10 @@ Azure 资源管理器要求所有资源组指定一个位置，这决定了部�
 
 ### <a name="what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring"></a>使用 TCP 监视时，需要终结点的哪些特定响应？
 
-在使用 TCP 监视时，流量管理器向指定端口的终结点发送 SYN 请求，从而发起三次 TCP 握手。 然后，它会等待来自终结点的 SYN-ACK 响应一段时间（在超时设置中指定）。
+在使用 TCP 监视时，流量管理器向指定端口的终结点发送 SYN 请求，从而发起三次 TCP 握手。 然后，它将在一段时间内（在超时设置中指定）等待终结点的 SYN 确认响应。
 
-- 如果在监视设置中指定的超时期限内收到 SYN-ACK 响应，则该终结点被视为正常。 FIN 或 FIN-ACK 是流量管理器定期终止套接字时的预期响应。
-- 如果在指定超时后收到 SYN-ACK 响应，流量管理器将使用 RST 进行响应以重置连接。
+- 如果在 "监视" 设置中指定的超时期限内收到了 SYN ACK 响应，则该终结点将被视为正常。 当流量管理器定期终止套接字时，它是流量管理器的预期响应。
+- 如果在指定的超时后收到 SYN ACK 响应，则流量管理器将响应 RST 以重置连接。
 
 ### <a name="how-fast-does-traffic-manager-move-my-users-away-from-an-unhealthy-endpoint"></a>流量管理器将用户从不正常的终结点移走的速度有多快？
 
@@ -487,7 +487,7 @@ Azure 资源管理器要求所有资源组指定一个位置，这决定了部�
 
 ### <a name="is-there-a-performance-impact-for-nested-profiles"></a>嵌套式配置文件是否会造成性能影响？
 
-不是。 使用嵌套式配置文件不会造成性能影响。
+不能。 使用嵌套式配置文件不会造成性能影响。
 
 在处理每个 DNS 查询时，流量管理器名称服务器会在内部遍历配置文件层次结构。 对父配置文件执行 DNS 查询可能会收到终结点来自子配置文件的 DNS 响应。 不管使用的是单个配置文件还是嵌套式配置文件，都只使用一条 CNAME 记录。 不需要在层次结构中为每个配置文件创建一条 CNAME 记录。
 
@@ -497,7 +497,7 @@ Azure 资源管理器要求所有资源组指定一个位置，这决定了部�
 
 下表描述了针对嵌套式终结点执行的流量管理器运行状况检查的行为。
 
-| 子配置文件监视器状态 | 父级终结点监视器状态 | 说明 |
+| 子配置文件监视器状态 | 父级终结点监视器状态 | 注意 |
 | --- | --- | --- |
 | 已禁用。 子配置文件已禁用。 |已停止 |父级终结点状态为“已停止”，而不是“已禁用”。 “已禁用”状态保留用于指示已在父配置文件中禁用了终结点。 |
 | 已降级。 至少一个子配置文件终结点处于“已降级”状态。 |联机：子配置文件中处于“联机”状态的终结点的数目至少是 MinChildEndpoints 的值。<BR>正在检查终结点：子配置文件中处于“联机”和“正在检查终结点”状态的终结点的数目至少是 MinChildEndpoints 的值。<BR>已降级：其他。 |流量将路由到状态为“正在检查终结点”的终结点。 如果将 MinChildEndpoints 设置得过高，终结点将始终处于降级状态。 |

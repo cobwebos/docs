@@ -1,5 +1,5 @@
 ---
-title: SAP ASCS/SCS 多 SID HA，在 Azure 上&共享磁盘，具有 WSFC微软文档
+title: Azure 上的 SAP ASCS/SCS 多 SID HA 与 WSFC&共享磁盘 |Microsoft Docs
 description: 使用 Azure 上的 Windows Server 故障转移群集和共享磁盘实现 SAP ASCS/SCS 实例多 SID 高可用性
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 446091263596a1fd5503f38c6a60316f9b0b6843
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79245169"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
@@ -226,7 +226,7 @@ ms.locfileid: "79245169"
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 已配置 WSFC 群集，通过文件共享用于一个 SAP ASCS/SCS 实例，如下图所示****。
 
@@ -254,7 +254,7 @@ ms.locfileid: "79245169"
 
 若要准备基础结构，可以使用以下参数安装附加的 SAP ASCS/SCS 实例：
 
-| 参数名称 | “值” |
+| 参数名称 | 值 |
 | --- | --- |
 | SAP ASCS/SCS SID |pr1-lb-ascs |
 | SAP DBMS 内部负载均衡器 | PR5 |
@@ -405,7 +405,7 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 
 概要过程如下所述：
 
-1. [使用高可用性 ASCS/SCS 实例安装 SAP。][sap-high-availability-installation-wsfc-shared-disk-install-ascs]  
+1. [使用高可用性 ASCS/SCS 实例安装 SAP][sap-high-availability-installation-wsfc-shared-disk-install-ascs]。  
  此步骤在现有 WSFC 群集节点 1 上安装包含高可用性 ASCS/SCS 实例的 SAP 系统。
 
 2. [修改 ASCS/SCS 实例的 SAP 配置文件][sap-high-availability-installation-wsfc-shared-disk-modify-ascs-profile]。

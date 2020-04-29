@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1dac90053797caf66af79e458b9dbb95b682cd17
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79249576"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Azure API 管理中的问题模板
@@ -91,10 +91,10 @@ ms.locfileid: "79249576"
 </div>
 ```
   
-### <a name="controls"></a>控件  
+### <a name="controls"></a>控制  
  `Issue list` 模板可使用以下[页面控件](api-management-page-controls.md)。  
   
--   [分页控制](api-management-page-controls.md#paging-control)  
+-   [paging-control](api-management-page-controls.md#paging-control)  
   
 ### <a name="data-model"></a>数据模型  
   

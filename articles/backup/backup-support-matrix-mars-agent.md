@@ -4,10 +4,10 @@ description: 本文汇总了备份运行 Microsoft Azure 恢复服务 (MARS) 代
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.openlocfilehash: 6085bc647c06b5907282460a2d8706b8549e1bc2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79247860"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 恢复服务 (MARS) 代理进行备份的支持矩阵
@@ -45,8 +45,8 @@ Azure 备份使用 MARS 代理将本地计算机和 Azure VM 中的数据备份�
 --- | ---
 大小 |  缓存文件夹中的可用空间应至少为备份数据总大小的 5% 到 10%。
 位置 | 缓存文件夹必须存储在要备份的计算机本地，并且该计算机必须联机。 缓存文件夹不应位于网络共享、可移动媒体或脱机卷上。
-Folder | 缓存文件夹不应在重复数据副本的卷上或压缩的文件夹中加密，该文件夹是稀疏的，或者具有重解析点。
-位置更改 | 可以通过停止备份引擎 (`net stop bengine`)，并将缓存文件夹复制到新驱动器来更改缓存位置。 （确保新驱动器有足够的空间。然后，将**HKLM_SOFTWARE_Microsoft_Windows Azure 备份**（**配置/暂存位置**和**配置/云备份提供程序/暂存位置**）下的两个注册表项更新到新位置并重新启动引擎。
+文件夹 | 不应在已删除重复数据的卷、已压缩文件夹、稀疏文件夹或具有重分析点的文件夹中加密缓存文件夹。
+位置更改 | 可以通过停止备份引擎 (`net stop bengine`)，并将缓存文件夹复制到新驱动器来更改缓存位置。 （确保新驱动器有足够的空间。）然后，将 **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** 下的两个注册表项（**Config/ScratchLocation** 和 **Config/CloudBackupProvider/ScratchLocation**）更新为新位置，并重启引擎。
 
 ## <a name="networking-and-access-support"></a>网络和访问支持
 
@@ -85,7 +85,7 @@ MARS 代理需要以下 URL 的访问权限：
 - Microsoft Azure 区域（根据恢复服务保管库的位置）
 - Azure 存储（根据恢复服务保管库的位置）
 
-有关详细信息，请参阅[快速路由路由要求](https://docs.microsoft.com/azure/expressroute/expressroute-routing)。
+有关详细信息，请参阅[ExpressRoute 路由要求](https://docs.microsoft.com/azure/expressroute/expressroute-routing)。
 
 >[!NOTE]
 >对于新线路，公共对等互连已弃用。
@@ -122,19 +122,19 @@ Windows Server 2019（Standard、Datacenter、Essentials） | 是 | 是 | - .NET
 
 有关详细信息，请参阅[支持的 MABS 和 DPM 操作系统](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems)。
 
-### <a name="operating-systems-at-end-of-support"></a>支持结束时的操作系统
+### <a name="operating-systems-at-end-of-support"></a>支持的操作系统
 
-以下操作系统处于支持状态，强烈建议升级操作系统以继续受到保护。
+以下操作系统已结束支持，强烈建议升级操作系统以继续保持受保护状态。
 
-如果现有承诺阻止升级操作系统，请考虑将 Windows 服务器迁移到 Azure VM，并利用 Azure VM 备份继续受到保护。 有关迁移 Windows 服务器的详细信息，请访问[此处的迁移页面](https://azure.microsoft.com/migration/windows-server/)。
+如果现有承诺阻止升级操作系统，请考虑将 Windows 服务器迁移到 Azure Vm 并利用 Azure VM 备份来继续保护。 有关迁移 Windows server 的详细信息，请访问[此处的迁移页面](https://azure.microsoft.com/migration/windows-server/)。
 
-对于无法升级操作系统或迁移到 Azure 的本地或托管环境，请激活计算机的扩展安全更新，以便计算机继续受到保护和支持。 请注意，只有特定版本才有资格获得扩展安全更新。 请访问[常见问题页面](https://www.microsoft.com/cloud-platform/extended-security-updates)了解更多信息。
+对于本地或托管环境，在无法升级操作系统或迁移到 Azure 的情况下，请为计算机激活扩展的安全更新以继续保护并支持。 请注意，只有特定版本有资格进行扩展安全更新。 请访问[FAQ 页面](https://www.microsoft.com/cloud-platform/extended-security-updates)了解更多。
 
 | **操作系统**                                       | **文件/文件夹** | **系统状态** | **软件/模块要求**                           |
 | ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |
-| Windows 7（终极、企业版、专业版、家庭高级版/基本版、入门版） | 是               | 否                 | 检查相应的服务器版本，了解软件/模块要求 |
-| Windows 服务器 2008 R2（标准、企业、数据中心、基础） | 是               | 是                | - .NET 3.5， .NET 4.5 <br>  - Windows PowerShell <br>  - 兼容的 Microsoft VC++ 可再发行包 <br>  - Microsoft 管理控制台 (MMC) 3.0 <br>  - 部署映像服务和管理 (DISM.exe) |
-| Windows 服务器 2008 SP2 （标准， 数据中心， 基础）  | 是               | 否                 | - .NET 3.5， .NET 4.5 <br>  - Windows PowerShell <br>  - 兼容的 Microsoft VC++ 可再发行包 <br>  - Microsoft 管理控制台 (MMC) 3.0 <br>  - 部署映像服务和管理 (DISM.exe) <br>  - 虚拟服务器 2005 基础 = KB948515 |
+| Windows 7 （旗舰版、企业版、专业版、家庭高级版/基本版、初学者版） | 是               | 否                 | 检查软件/模块要求的相应服务器版本 |
+| Windows Server 2008 R2 （Standard、Enterprise、Datacenter、Foundation） | 是               | 是                | -.NET 3.5，.NET 4。5 <br>  - Windows PowerShell <br>  - 兼容的 Microsoft VC++ 可再发行包 <br>  - Microsoft 管理控制台 (MMC) 3.0 <br>  - 部署映像服务和管理 (DISM.exe) |
+| Windows Server 2008 SP2 （Standard、Datacenter、Foundation）  | 是               | 否                 | -.NET 3.5，.NET 4。5 <br>  - Windows PowerShell <br>  - 兼容的 Microsoft VC++ 可再发行包 <br>  - Microsoft 管理控制台 (MMC) 3.0 <br>  - 部署映像服务和管理 (DISM.exe) <br>  -Virtual Server 2005 base + KB KB948515 |
 
 ## <a name="backup-limits"></a>备份限制
 
@@ -152,13 +152,13 @@ Windows 7| 1,700 GB
 
 ### <a name="other-limitations"></a>其他限制
 
-- MARS 不支持对单个保管库保护同名的多台计算机。
+- MARS 不支持对单个保管库的多台计算机进行保护。
 
 ## <a name="supported-file-types-for-backup"></a>支持备份的文件类型
 
 **类型** | **支持**
 --- | ---
-加密<sup>*</sup>| 支持。
+过<sup>*</sup>| 支持。
 Compressed | 支持。
 稀疏 | 支持。
 压缩和稀疏 |支持。
@@ -168,9 +168,9 @@ Compressed | 支持。
 压缩流| 不支持。 跳过。
 稀疏流| 不支持。 跳过。
 OneDrive（同步的文件是稀疏流）| 不支持。
-启用了 DFS 复制的文件夹 | 不支持。
+已启用 DFS 复制的文件夹 | 不支持。
 
-\*确保 MARS 代理有权访问访问加密文件所需的证书。 将跳过无法访问的文件。
+\*确保 MARS 代理有权访问所需的证书来访问加密的文件。 将跳过不可访问的文件。
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>支持备份的驱动器或卷
 

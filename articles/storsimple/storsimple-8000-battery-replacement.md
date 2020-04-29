@@ -1,5 +1,5 @@
 ---
-title: 更换微软 Azure StorSimple 8000 系列设备上的电池
+title: 更换 Microsoft Azure StorSimple 8000 系列设备上的电池
 description: 介绍如何移除、替换和维护 StorSimple 设备上的备用电池模块。
 author: alkohli
 ms.service: storsimple
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: f21bbf4777aa74e84ffb8c1af903f90608d5551f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79255010"
 ---
 # <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>更换 StorSimple 设备上的备用电池模块
@@ -32,14 +32,14 @@ Microsoft Azure StorSimple 设备上的主机箱电源和散热模块 (PCM) 使�
 StorSimple 设备的备用电池模块是可现场更换的单元。 将其安装在 PCM 中之前，电池模块应存放在原包装中。 按以下步骤移除备用电池。
 
 #### <a name="to-remove-the-backup-battery-module"></a>移除备用电池模块
-1. 在 Azure 门户中，转到“StorSimple Device Manager 服务”边栏选项卡。 转到“设备”****，然后从设备列表中选择设备。 导航到**监视器** > **硬件运行状况**。 在 **“共享组件”** 下，查看电池的状态。
+1. 在 Azure 门户中，转到“StorSimple Device Manager 服务”边栏选项卡。 转到“设备”****，然后从设备列表中选择设备。 导航到 "**监视** > **硬件运行状况**"。 在 **“共享组件”** 下，查看电池的状态。
 2. 确定其中的电池发生故障的 PCM。 图 1 显示 StorSimple 设备的背面。
    
     ![设备主机箱模块底板](./media/storsimple-battery-replacement/IC740994.png)
    
     **图 1** 主设备的背面，显示 PCM 和控制器模块
    
-   | Label | 描述 |
+   | Label | 说明 |
    |:--- |:--- |
    | 1 |PCM 0 |
    | 2 |PCM 1 |
@@ -52,7 +52,7 @@ StorSimple 设备的备用电池模块是可现场更换的单元。 将其安�
    
     **图 2** PCM 的背面，显示监控指示灯 LED
    
-   | Label | 描述 |
+   | Label | 说明 |
    |:--- |:--- |
    | 1 |交流电源故障 |
    | 2 |风扇故障 |
@@ -76,7 +76,7 @@ StorSimple 设备的备用电池模块是可现场更换的单元。 将其安�
 1. 按正确方向将备用电池模块置于 PCM 中。
 2. 按下电池模块把手，直至连接器就位。
 3. 按[更换 StorSimple 设备上的电源和散热模块](storsimple-8000-power-cooling-module-replacement.md)中的指导更换主机箱中的 PCM。
-4. 更换完成后，转到设备，然后在 Azure 门户中转到**监视** > **硬件运行状况**。 验证电池的状态，确保安装成功。 状态为绿色表示电池功能正常。
+4. 替换完成后，请切换到你的设备，然后在 Azure 门户中进行 "**监视** > " "**硬件运行状况**"。 验证电池的状态，确保安装成功。 状态为绿色表示电池功能正常。
 
 ## <a name="maintain-the-backup-battery-module"></a>维护备用电池模块
 在 StorSimple 设备中，备用电池模块在断电时为控制器供电。 有了该模块，StorSimple 设备就可以以可控方式在关机前保存关键数据。 由于 PCM 中有两个完全充电的电池，因此系统可以应对连续断电两次的情况。

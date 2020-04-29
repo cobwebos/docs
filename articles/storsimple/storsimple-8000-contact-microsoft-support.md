@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 99de3a6fbbbb1c4324df1712a5e24fd334ca4977
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79254984"
 ---
 # <a name="contact-microsoft-support"></a>请联系 Microsoft 支持部门
@@ -37,7 +37,7 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
    1. 从“颁发类型”下拉列表中，选择“技术”。********
    2. 将自动选择当前**订阅**、**服务**类型和**资源**（StorSimple Device Manager 服务）。 
    3. 如果有多个计划与订阅相关联，请从下拉列表中选择一个**支持计划**。 需要付费的支持计划才能启用技术支持。
-   4. 单击“下一步”****。
+   4. 单击“下一步”。 
 
        ![通过新门户联系 MS 支持部门](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
 
@@ -49,15 +49,15 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
     4. 提供问题的开始日期和时间。
     5. 在“文件上传”中单击文件夹图标，浏览到支持包。****
     6. 选中“共享诊断信息”。****
-    7. 单击“下一步”****。
+    7. 单击“下一步”。 
 
        ![通过新门户联系 MS 支持部门](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
 
 4. 在“新建支持请求”**** 边栏选项卡中，单击“步骤 3: 联系人信息”****。 在“联系人信息”**** 边栏选项卡中，执行以下步骤：
 
    1. 在“联系人选项”中，提供首选的联系方式（电话或电子邮件）和语言。**** 系统会根据订阅计划自动选择响应时间。
-   2. 在联系信息中，提供您的姓名、电子邮件、可选联系人、国家/地区。 选中“保存联系人更改以便将其用于将来的支持请求”复选框。****
-   3. 单击 **“创建”**。
+   2. 在 "联系人信息" 中，提供你的姓名、电子邮件、可选联系人、国家/地区。 选中“保存联系人更改以便将其用于将来的支持请求”复选框。****
+   3. 单击 **“创建”** 。
    
        ![通过新门户联系 MS 支持部门](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 

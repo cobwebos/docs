@@ -15,10 +15,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 251bc1c2277f9e43543f95c49d0b730a5a41c3d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79253034"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>在 Azure Active Directory 中委托应用注册权限
@@ -54,14 +54,14 @@ ms.locfileid: "79253034"
 
 ### <a name="enterprise-application-owners"></a>企业应用程序所有者
 
-作为所有者，用户可以管理企业应用程序的特定于组织的配置，例如单一登录配置、预配和用户分配。 所有者还可以添加或删除其他所有者。 与全局管理员不同，所有者只能管理他们拥有的企业应用程序。
+作为所有者，用户可以管理企业应用程序的组织特定配置，例如单一登录配置、设置和用户分配。 所有者还可以添加或删除其他所有者。 与全局管理员不同，所有者只能管理他们拥有的企业应用程序。
 
 在某些情况下，从应用程序库创建的企业应用程序包括企业应用程序和应用程序注册。 如果存在这种情况，则将某个所有者添加到企业应用程序会自动将该所有者添加为相应应用程序注册的所有者。
 
 ### <a name="to-assign-an-owner-to-an-enterprise-application"></a>向企业应用程序分配所有者
 
-1. 使用符合组织应用程序管理员或云应用程序管理员资格的帐户登录到[Azure AD 组织](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) 。
-1. 在组织的 ["应用注册"页上](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) ，选择一个应用以打开应用的"概述"页。
+1. 使用有资格用于组织的应用程序管理员或云应用程序管理员的帐户登录到[Azure AD 组织](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) 。
+1. 在组织的 " [应用注册" 页](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) 上，选择一个应用以打开该应用的 "概述" 页。
 1. 选择“所有者”****，以查看应用所有者列表。
 1. 选择“添加”****，以选择一个或多个要添加到应用的所有者。
 
@@ -74,7 +74,7 @@ ms.locfileid: "79253034"
 
 Azure AD 提供一组内置的管理员角色，用于授予 Azure AD 中所有应用程序的配置管理访问权限。 建议使用这些角色向 IT 专家授予管理广泛应用程序配置权限的访问权限，这样就无需授予管理与应用程序配置无关的其他 Azure AD 部分的访问权限。
 
-- 应用程序管理员：此角色中的用户可以创建和管理企业应用程序、应用程序注册和应用程序代理设置的所有方面。 此角色还授予同意委派权限的权限的权限以及应用程序权限（不包括 Microsoft Graph）。 在创建新应用程序注册或企业应用程序时，不会将分配到此角色的用户添加为所有者。
+- 应用程序管理员：此角色中的用户可以创建和管理企业应用程序、应用程序注册和应用程序代理设置的所有方面。 此角色还授予同意委托权限的功能，以及不包括 Microsoft Graph 的应用程序权限。 在创建新应用程序注册或企业应用程序时，不会将分配到此角色的用户添加为所有者。
 - 云应用程序管理员：此角色中的用户具有与应用程序管理员角色相同的权限，但不包括管理应用程序代理的权限。 在创建新应用程序注册或企业应用程序时，不会将分配到此角色的用户添加为所有者。
 
 有关详细信息以及如何查看这些角色的说明，请参阅 [可用的角色](directory-assign-admin-roles.md#available-roles)。

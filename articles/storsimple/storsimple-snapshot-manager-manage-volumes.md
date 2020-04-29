@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: twooley
 ms.openlocfilehash: f09d4dd46a50f1794e51342a939b8919c5c523ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79254646"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>使用 StorSimple Snapshot Manager 查看和管理卷
@@ -87,13 +87,13 @@ ms.locfileid: "79254646"
 
 #### <a name="to-view-volume-information"></a>查看卷信息
 1. 单击桌面图标启动 StorSimple Snapshot Manager。 
-2. 在 **“作用域”** 窗格中，单击 **“卷”** 节点。 本地卷和已装入卷的列表（其中包括所有 Azure StorSimple 卷）会显示在“**结果**”窗格中。 **"结果"** 窗格中的列是可配置的。 （右键单击 **"卷"** 节点，选择 **"查看**"，然后选择 **"添加/删除列**"。
+2. 在 **“作用域”** 窗格中，单击 **“卷”** 节点。 本地卷和已装入卷的列表（其中包括所有 Azure StorSimple 卷）会显示在“**结果**”窗格中。 "**结果**" 窗格中的列是可配置的。 （右键单击 "**卷**" 节点，选择 "**查看**"，然后选择 "**添加/删除列**"。）
    
     ![配置列](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_View_volumes.png)
    
-   | 结果列 | 描述 |
+   | 结果列 | 说明 |
    |:--- |:--- |
-   |  “属性” |**“名称”** 列包含分配给每个已发现卷的驱动器号。 |
+   |  名称 |**“名称”** 列包含分配给每个已发现卷的驱动器号。 |
    |  设备 |“**设备**”列包含连接到主计算机的设备 IP 地址。 |
    |  设备卷名称 |**“设备卷名称”** 列包含选定卷所属的设备卷的名称。 这是在 Azure 门户中针对特定卷定义的卷名称。 |
    |  访问路径 |**“访问路径”** 列显示卷的访问路径。 这是在主计算机上可以访问该卷的驱动器号或装入点。 |
@@ -102,7 +102,7 @@ ms.locfileid: "79254646"
 使用以下过程从 StorSimple Snapshot Manager 中删除卷。
 
 > [!NOTE]
-> 如果该卷是任何卷组的一部分，则无法将其删除。 （删除选项不适用于卷组成员的卷。必须删除整个卷组才能删除该卷。
+> 如果该卷是任何卷组的一部分，则无法将其删除。 （"删除" 选项不可用于作为卷组的成员的卷。）必须删除整个卷组才能删除该卷。
 
 #### <a name="to-delete-a-volume"></a>删除卷
 1. 单击桌面图标启动 StorSimple Snapshot Manager。
@@ -130,11 +130,11 @@ ms.locfileid: "79254646"
 ## <a name="configure-and-back-up-a-basic-volume"></a>配置和备份基本卷
 使用以下过程配置基本卷的备份，并立即开始备份或创建已计划备份的策略。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 开始之前：
 
 * 请确保正确配置 StorSimple 设备和主计算机。 有关详细信息，请转到[部署本地 StorSimple 设备](storsimple-deployment-walkthrough-u2.md)。
-* 安装和配置 StorSimple Snapshot Manager。 有关详细信息，请访问[部署 StorSimple 快照管理器](storsimple-snapshot-manager-deployment.md)。
+* 安装和配置 StorSimple Snapshot Manager。 有关详细信息，请参阅[部署 StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md)。
 
 #### <a name="to-configure-backup-of-a-basic-volume"></a>配置基本卷的备份
 1. 在 StorSimple 设备上创建基本卷。
@@ -149,7 +149,7 @@ ms.locfileid: "79254646"
 8. 右键单击卷组名称。
    
    * 若要启动交互式（按需）备份作业，请单击 **“单次备份”**。 
-   * 若要计划自动备份，请单击 **“创建备份策略”**。 在 **“常规”** 页上，从列表中选择卷组。 在 **“计划”** 页上，输入计划详细信息。 完成后，单击 **“确定”**。 
+   * 若要计划自动备份，请单击 **“创建备份策略”**。 在 **“常规”** 页上，从列表中选择卷组。 在 **“计划”** 页上，输入计划详细信息。 完成后，单击“**确定**”。 
 9. 若要确认备份作业已启动，请展开 **“作用域”** 窗格中的 **“作业”** 节点，然后单击 **“正在运行”** 节点。 此时会在 **“结果”** 窗格中显示当前运行的作业列表。 
 
 ## <a name="configure-and-back-up-a-dynamic-mirrored-volume"></a>配置和备份动态镜像卷
@@ -158,11 +158,11 @@ ms.locfileid: "79254646"
 * 步骤 1：使用磁盘管理创建动态镜像的卷。 
 * 步骤 2：使用 StorSimple Snapshot Manager 配置备份。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 开始之前：
 
 * 请确保正确配置 StorSimple 设备和主计算机。 有关详细信息，请转到[部署本地 StorSimple 设备](storsimple-8000-deployment-walkthrough-u2.md)。
-* 安装和配置 StorSimple Snapshot Manager。 有关详细信息，请访问[部署 StorSimple 快照管理器](storsimple-snapshot-manager-deployment.md)。
+* 安装和配置 StorSimple Snapshot Manager。 有关详细信息，请参阅[部署 StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md)。
 * 在 StorSimple 设备上配置两个卷。 （在示例中，可用卷为 **“磁盘 1”** 和 **“磁盘 2”**。） 
 
 ### <a name="step-1-use-disk-management-to-create-a-dynamic-mirrored-volume"></a>步骤 1：使用磁盘管理创建动态镜像的卷
@@ -183,7 +183,7 @@ ms.locfileid: "79254646"
 6. 在“**分配驱动器号或路径**”页上，接受默认值，并单击“**下一步**”。 
 7. 在 **“格式化卷”** 页的 **“分配单元大小”** 框中，选择 **“64K”**。 选择 **“执行快速格式化”** 复选框，然后单击 **“下一步”**。 
 8. 在 **“正在完成新建镜像卷”** 页上，查看你的设置，然后单击 **“完成”**。 
-9. 此时会出现一条消息，指示基本磁盘将转换为动态磁盘。 单击“是”****。
+9. 此时会出现一条消息，指示基本磁盘将转换为动态磁盘。 单击 **“是”** 。
    
     ![动态磁盘转换消息](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Disk_management_msg.png) 
 10. 在“磁盘管理”中，验证磁盘 1 和磁盘 2 是否显示为动态镜像卷。 （“**动态**”应出现在状态列中，而且容量条颜色应变为红色，即表示镜像卷。） 
@@ -198,11 +198,11 @@ ms.locfileid: "79254646"
 2. 在 **“作用域”** 窗格中，右键单击 **“卷”** 节点，然后选择 **“重新扫描卷”**。 当扫描完成时，**“结果”** 窗格中会显示卷列表。 动态镜像卷被列为单个卷。 
 3. 在 **“结果”** 窗格中，右键单击动态镜像卷，然后单击 **“创建卷组”**。 
 4. 在 **“创建卷组”** 对话框中，键入卷组的名称，将动态镜像卷分配给该组，然后单击 **“确定”**。 
-5. 在 **“作用域”** 窗格中，展开 **“卷组”** 节点。 新的卷组应出现在 **"卷组**"节点下。 
+5. 在 **“作用域”** 窗格中，展开 **“卷组”** 节点。 新卷组应出现在 "**卷组**" 节点下。 
 6. 右键单击卷组名称。 
    
    * 若要启动交互式（按需）备份作业，请单击 **“单次备份”**。 
-   * 若要计划自动备份，请单击 **“创建备份策略”**。 在 **“常规”** 页上，从列表中选择卷组。 在 **“计划”** 页上，输入计划详细信息。 完成后，单击 **“确定”**。 
+   * 若要计划自动备份，请单击 **“创建备份策略”**。 在 **“常规”** 页上，从列表中选择卷组。 在 **“计划”** 页上，输入计划详细信息。 完成后，单击“**确定**”。 
 7. 可以在备份作业运行过程中进行监视。 在 **“作用域”** 窗格中，展开 **“作业”** 节点，然后单击 **“正在运行”**，此时会在 **“结果”** 窗格中显示作业详细信息。 备份作业完成后，详细信息会传输到“**过去 24 小时**”作业列表。 
 
 ## <a name="next-steps"></a>后续步骤

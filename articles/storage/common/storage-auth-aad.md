@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: b8a42723a9b56665160e660c0ea1451253c3d185
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79255361"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>使用 Azure Active Directory 授予对 Blob 和队列的访问权限
@@ -27,9 +27,9 @@ Azure 存储支持使用 Azure Active Directory (Azure AD) 授予对 Blob 和队
 
 Blob 存储还支持创建通过 Azure AD 凭据签名的共享访问签名 (SAS)。 有关详细信息，请参阅[向具有共享访问签名的数据授予有限的访问权限](storage-sas-overview.md)。
 
-Azure 文件支持仅通过 SMB 授权 AD（预览）或 Azure AD DS （GA） 以支持加入域的 VM。 要了解如何在 SMB 上使用 AD（预览）或 Azure AD DS （GA） 用于 Azure 文件，请参阅基于[SMB 访问的基于 Azure 文件的身份验证支持的概述](../files/storage-files-active-directory-overview.md)。
+Azure 文件仅支持通过 AD （预览版）或通过 SMB 为已加入域的 Vm Azure AD DS （GA）进行授权。 若要了解如何在 Azure 文件的 SMB 上使用 AD （预览版）或 Azure AD DS （GA），请参阅[smb 访问 Azure 文件基于标识的身份验证支持概述](../files/storage-files-active-directory-overview.md)。
 
-Azure 表存储不支持通过 Azure AD 进行授权。 使用共享密钥授权对表存储的请求。
+Azure 表存储不支持通过 Azure AD 进行授权。 使用共享密钥对表存储的请求进行授权。
 
 ## <a name="overview-of-azure-ad-for-blobs-and-queues"></a>适用于 Blob 和队列的 Azure AD 概述
 
@@ -45,7 +45,7 @@ Azure 表存储不支持通过 Azure AD 进行授权。 使用共享密钥授权
 
 Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 授权访问受保护的资源。 Azure 存储定义了一组内置的 RBAC 角色，它们包含用于访问 Blob 和队列数据的通用权限集。 还可以定义自定义角色来访问 Blob 和队列数据。
 
-将 RBAC 角色分配到 Azure AD 安全主体后，Azure 会向该安全主体授予对这些资源的访问权限。 可以将访问权限限定于订阅、资源组、存储帐户、单个容器或队列级别。 Azure AD 安全主体可以是 Azure 资源的用户、组、应用程序服务主体或[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。
+将 RBAC 角色分配到 Azure AD 安全主体后，Azure 会向该安全主体授予对这些资源的访问权限。 可以将访问权限限定于订阅、资源组、存储帐户、单个容器或队列级别。 Azure AD 安全主体可以是用户、组、应用程序服务主体或[Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。
 
 ### <a name="built-in-rbac-roles-for-blobs-and-queues"></a>适用于 Blob 和队列的内置 RBAC 角色
 
@@ -89,4 +89,4 @@ Azure CLI 和 PowerShell 支持使用 Azure AD 凭据登录。 登录后，会�
 
 - [使用 Azure 资源的 Azure Active Directory 和托管标识授予对 Blob 和队列的访问权限](storage-auth-aad-msi.md)
 - [从应用程序使用 Azure Active Directory 授权访问 Blob 和队列](storage-auth-aad-app.md)
-- [Azure 存储支持基于 Azure 活动目录的访问控件通常可用](https://azure.microsoft.com/blog/azure-storage-support-for-azure-ad-based-access-control-now-generally-available/)
+- [Azure 存储对基于 Azure Active Directory 的访问控制的支持现已正式发布](https://azure.microsoft.com/blog/azure-storage-support-for-azure-ad-based-access-control-now-generally-available/)

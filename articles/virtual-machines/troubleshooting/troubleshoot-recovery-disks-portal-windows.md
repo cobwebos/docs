@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 08/19/2018
 ms.author: genli
 ms.openlocfilehash: e76fc2da8da2325a8bb0cda47c4405c9eb03c8f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79249992"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>通过使用 Azure 门户将 OS 磁盘附加到恢复 VM，对 Windows VM 进行故障排除
@@ -36,21 +36,21 @@ ms.locfileid: "79249992"
 > [!NOTE]
 > 本文不适用于包含非托管磁盘的 VM。
 
-## <a name="take-a-snapshot-of-the-os-disk"></a>创建 OS 磁盘的快照
+## <a name="take-a-snapshot-of-the-os-disk"></a>拍摄 OS 磁盘的快照
 快照是虚拟硬盘 (VHD) 的完整只读副本。 建议在创建快照之前完全关闭 VM，以清除正在运行的所有进程。 若要创建 OS 磁盘的快照，请执行以下步骤：
 
-1. 转到[Azure 门户](https://portal.azure.com)。 在边栏中选择“虚拟机”，然后选择有问题的 VM。****
-1. 在左窗格中选择“磁盘”，然后选择 OS 磁盘的名称。****
+1. 转到 [Azure 门户](https://portal.azure.com)。 在边栏中选择“虚拟机”，然后选择有问题的 VM。 
+1. 在左窗格中选择“磁盘”，然后选择 OS 磁盘的名称。 
     ![有关 OS 磁盘名称的插图](./media/troubleshoot-recovery-disks-portal-windows/select-osdisk.png)
-1. 然后，在 OS 磁盘的“概述”页上，选择“创建快照”。********
+1. 然后，在 OS 磁盘的“概述”页上，选择“创建快照”。  
 1. 在 OS 磁盘所在位置创建快照。
 
 ## <a name="create-a-disk-from-the-snapshot"></a>从快照创建磁盘
 若要从快照创建磁盘，请执行以下步骤：
 
-1. 从 Azure 门户中选择**云外壳**。
+1. 从 Azure 门户中选择**Cloud Shell** 。
 
-    ![有关开放云外壳的图像](./media/troubleshoot-recovery-disks-portal-windows/cloud-shell.png)
+    ![有关打开 Cloud Shell 的图像](./media/troubleshoot-recovery-disks-portal-windows/cloud-shell.png)
 1. 运行以下 PowerShell 命令从快照创建托管磁盘。 应将这些示例名称替换为相应的名称。
 
     ```powershell
@@ -127,9 +127,9 @@ ms.locfileid: "79249992"
 
 ## <a name="swap-the-os-disk-for-the-vm"></a>交换 VM 的 OS 磁盘
 
-Azure 门户现在支持更改 VM 的 OS 磁盘。 为此，请按照下列步骤进行操作：
+Azure 门户现在支持更改 VM 的 OS 磁盘。 为此，请执行以下步骤：
 
-1. 转到[Azure 门户](https://portal.azure.com)。 在边栏中选择“虚拟机”，然后选择有问题的 VM。****
+1. 请参阅[Azure 门户](https://portal.azure.com)。 在边栏中选择“虚拟机”，然后选择有问题的 VM。****
 1. 在左窗格中选择“磁盘”，然后选择“交换 OS 磁盘”。********
         ![有关在 Azure 门户中交换 OS 磁盘的插图](./media/troubleshoot-recovery-disks-portal-windows/swap-os-ui.png)
 

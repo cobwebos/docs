@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/07/2019
 ms.openlocfilehash: 7c57755ae63f8af5a2a4faa4764bc6a9597e8c2d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79255881"
 ---
 # <a name="general-purpose-service-tier---azure-sql-database"></a>“常规用途”服务层级 - Azure SQL 数据库
@@ -50,5 +50,5 @@ Azure SQL 数据库基于 SQL Server 数据库引擎体系结构，该体系结�
 
 - 在[托管实例](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)中查找“常规用途/标准”层级的资源特征（核心数、IO 数、内存数），在 [vCore 模型](sql-database-vcore-resource-limits-single-databases.md#general-purpose---provisioned-compute---gen4)或 [DTU 模型](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)中查找单一数据库，在 [vCore 模型](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose---provisioned-compute---gen4)和 [DTU 模型](sql-database-dtu-resource-limits-elastic-pools.md#standard-elastic-pool-limits)中查找弹性池。
 - 了解[业务关键](sql-database-service-tier-business-critical.md)和[超大规模](sql-database-service-tier-hyperscale.md)层。
-- 了解[服务结构](../service-fabric/service-fabric-overview.md)。
+- 了解 [Service Fabric](../service-fabric/service-fabric-overview.md)。
 - 有关高可用性和灾难恢复的更多选项，请参阅[业务连续性](sql-database-business-continuity.md)。

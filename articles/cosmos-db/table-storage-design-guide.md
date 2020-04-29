@@ -1,6 +1,6 @@
 ---
 title: 设计可缩放的高性能 Azure Cosmos DB 表
-description: Azure 表存储设计指南：Azure Cosmos DB 和 Azure 表存储中的可扩展和执行表
+description: Azure 表存储设计指南：Azure Cosmos DB 和 Azure 表存储中可缩放的高性能表
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: conceptual
@@ -9,13 +9,13 @@ author: sakash279
 ms.author: akshanka
 ms.custom: seodec18
 ms.openlocfilehash: 166076d366cbbf7bef24648772beaba9b3a88253
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79246469"
 ---
-# <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure 表存储表设计指南：可扩展和执行表
+# <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure 表存储表设计指南：可缩放的高性能表
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
@@ -24,7 +24,7 @@ ms.locfileid: "79246469"
 表存储旨在支持云级别应用程序，这些应用程序可包含数十亿个实体（或关系数据库术语所称的行）的数据，或者用于必须支持高事务量的数据集。 因此，需要以不同方式考虑如何存储数据，并了解表存储的工作原理。 相对于使用关系数据库的解决方案而言，设计良好的 NoSQL 数据存储可以使解决方案更进一步的扩展（以更低的成本）。 本指南中介绍这些主题。  
 
 ## <a name="about-azure-table-storage"></a>关于 Azure 表存储
-本部分重点介绍表存储的一些主要功能，这些功能尤其与设计性能和可伸缩性相关。 如果您是 Azure 存储和表存储的新功能，请参阅[Microsoft Azure 存储简介](../storage/common/storage-introduction.md)，并在阅读本文的其余部分之前[使用 .NET 开始使用 Azure 表存储](table-storage-how-to-use-dotnet.md)。 尽管本指南的重点是介绍表服务，但它也包括对 Azure 队列存储和 Azure Blob 存储的论述，并介绍了如何在解决方案中将它们与表存储一起使用。  
+本部分重点介绍表存储的一些主要功能，这些功能尤其与设计性能和可伸缩性相关。 如果不熟悉 Azure 存储和表存储，请参阅本文[简介](../storage/common/storage-introduction.md)，了解本文的其余部分，了解 Microsoft Azure 存储和[azure 表存储入门](table-storage-how-to-use-dotnet.md)。 尽管本指南的重点是介绍表服务，但它也包括对 Azure 队列存储和 Azure Blob 存储的论述，并介绍了如何在解决方案中将它们与表存储一起使用。  
 
 表存储使用表格格式来存储数据。 在标准术语中，表的每一行表示一个实体，而列存储该实体的各种属性。 每个实体都有唯一地标识它的一对键，还有一个时间戳列，表存储使用该列来跟踪实体的最后更新时间。 时间戳字段是自动添加的，无法使用任意值手动覆盖它。 表存储使用此上次修改时间戳 (LMT) 来管理开放式并发。  
 
@@ -39,7 +39,7 @@ ms.locfileid: "79246469"
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>时间戳</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -51,8 +51,8 @@ ms.locfileid: "79246469"
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>年龄</th>
-<th>电子邮件</th>
+<th>Age</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Don</td>
@@ -71,11 +71,11 @@ ms.locfileid: "79246469"
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>年龄</th>
-<th>电子邮件</th>
+<th>Age</th>
+<th>Email</th>
 </tr>
 <tr>
-<td>六月</td>
+<td>Jun</td>
 <td>Cao</td>
 <td>47</td>
 <td>junc@contoso.com</td>
@@ -84,7 +84,7 @@ ms.locfileid: "79246469"
 </tr>
 <tr>
 <td>Marketing</td>
-<td>部门</td>
+<td>系</td>
 <td>2014-08-22T00:50:30Z</td>
 <td>
 <table>
@@ -108,8 +108,8 @@ ms.locfileid: "79246469"
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>年龄</th>
-<th>电子邮件</th>
+<th>Age</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Ken</td>
@@ -123,7 +123,7 @@ ms.locfileid: "79246469"
 </table>
 
 
-到目前为止，此设计看起来非常类似于关系数据库中的表。 主要区别是有必需的列，以及能够在同一个表中存储多种实体类型。 此外，每个用户定义的属性（如**NameName**或**Age）** 都有一个数据类型，如整数或字符串，就像关系数据库中的列一样。 但是，与关系数据库中不同，表存储的架构灵活性质意味着每个实体的属性不需要具有相同的数据类型。 若要在单个属性中存储复杂数据类型，必须使用序列化格式（例如，JSON 或 XML）。 有关详细信息，请参阅[了解表存储数据模型](https://msdn.microsoft.com/library/azure/dd179338.aspx)。
+到目前为止，此设计看起来非常类似于关系数据库中的表。 主要区别是有必需的列，以及能够在同一个表中存储多种实体类型。 此外，**FirstName** 或 **Age** 等用户定义的每个属性还具有数据类型（如 integer 或 string），就像关系数据库中的列一样。 但是，与关系数据库中不同，表存储的架构灵活性质意味着每个实体的属性不需要具有相同的数据类型。 若要在单个属性中存储复杂数据类型，必须使用序列化格式（例如，JSON 或 XML）。 有关详细信息，请参阅[了解表存储数据模型](https://msdn.microsoft.com/library/azure/dd179338.aspx)。
 
 对 `PartitionKey` 和 `RowKey` 的选择是实现良好的表设计的基础。 表中存储的每个实体都必须具有唯一的 `PartitionKey` 和 `RowKey`。 与关系数据库表中的键一样，将为 `PartitionKey` 和 `RowKey` 值编制索引来创建聚集索引以便快速地进行查找。 但是，表存储不创建任何辅助索引，因此，这些键是唯一具有索引的属性（稍后介绍的某些模式展示了可以如何解决此明确限制）。  
 
@@ -134,14 +134,14 @@ ms.locfileid: "79246469"
 
 在表存储中，单个节点为一个或多个完整的分区提供服务，并且该服务可通过对节点上的分区进行动态负载均衡来进行缩放。 如果某节点承受负载，表存储会将该节点服务的分区范围拆分到不同的节点。 流量下降时，表存储可将无操作的节点的分区范围合并到单个节点。  
 
-有关表存储的内部详细信息的详细信息，特别是它管理分区的方式，请参阅[Microsoft Azure 存储：具有强一致性的高可用性云存储服务](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)。  
+有关表存储的内部详细信息以及它如何管理分区的详细信息，请参阅[Microsoft Azure 存储：具有高度一致性的高可用性云存储服务](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)。  
 
 ### <a name="entity-group-transactions"></a>实体组事务
-在表存储中，实体组事务 (EGT) 是唯一内置机制，用于对多个实体执行原子更新。 EGT 也称为“批处理事务”**。 EGT 只能应用于存储在同一分区（共享特定表中的同一分区键）的实体，因此每当需要对多个实体执行原子事务行为时，都需要确保这些实体位于同一分区。 这通常是将多个实体类型保存在同一个表（和分区）中，而不是对不同实体类型使用多个表的原因。 单个 EGT 最多可应用于 100 个实体。  若要提交多个并发 EGT 进行处理，请务必确保不在 EGT 共用实体上操作这些 EGT。 否则可能会造成处理延迟。
+在表存储中，实体组事务 (EGT) 是唯一内置机制，用于对多个实体执行原子更新。 EGT 也称为“批处理事务”  。 EGT 只能应用于存储在同一分区（共享特定表中的同一分区键）的实体，因此每当需要对多个实体执行原子事务行为时，都需要确保这些实体位于同一分区。 这通常是将多个实体类型保存在同一个表（和分区）中，而不是对不同实体类型使用多个表的原因。 单个 EGT 最多可应用于 100 个实体。  若要提交多个并发 EGT 进行处理，请务必确保不在 EGT 共用实体上操作这些 EGT。 否则可能会造成处理延迟。
 
 EGT 还引入了一个在设计时需要评估的潜在权衡。 使用更多分区会提高应用程序的可伸缩性，因为 Azure 可以有更多的机会在各个节点之间对请求进行负载均衡。 但是，这可能会限制应用程序执行原子事务以及保持数据的强一致性的能力。 而且，在分区级别还有特定的可伸缩性目标，这些目标可能会限制预期单个节点可以实现的事务吞吐量。
 
-有关 Azure 存储帐户的可伸缩性目标的详细信息，请参阅[标准存储帐户的可伸缩性目标](../storage/common/scalability-targets-standard-account.md)。 有关表存储的可伸缩性目标的详细信息，请参阅[表存储的可伸缩性和性能目标](../storage/tables/scalability-targets.md)。 请参阅本指南的后面部分，了解帮助管理此类权衡的各种设计策略，并了解如何根据客户端应用程序的特定要求以最佳方式选择分区键。  
+有关 Azure 存储帐户的可伸缩性目标的详细信息，请参阅[标准存储帐户的可伸缩性目标](../storage/common/scalability-targets-standard-account.md)。 有关表存储的可伸缩性目标的详细信息，请参阅[表存储的可伸缩性和性能目标](../storage/tables/scalability-targets.md)。 本指南的后面部分将讨论各种设计策略，这些策略可帮助你管理此类权衡，并讨论如何根据客户端应用程序的特定要求最好地选择分区键。  
 
 ### <a name="capacity-considerations"></a>容量注意事项
 下表包括设计表存储解决方案时要注意的一些关键值：  
@@ -164,20 +164,20 @@ EGT 还引入了一个在设计时需要评估的潜在权衡。 使用更多分
 ## <a name="guidelines-for-table-design"></a>表设计准则
 这些列表汇总了一些设计表时需要牢记的一些重要准则。 本指南稍后会更详细地对其进行解释。 本指南的内容与设计关系数据库通常所遵循的指导原则不同。  
 
-将表存储设计为高效读取：**
+将表存储设计为高效读取： 
 
 * **专用于查询读取操作繁重的应用程序。** 设计表时，在考虑将如何更新实体之前，请先考虑要运行的查询（特别是延迟敏感的查询）。 这通常会产生一个高效且高性能的解决方案。  
-* **在查询中指定 `PartitionKey` 和 `RowKey`。** 点查询：此类查询是最高效的表存储查询。**  
+* **在查询中指定 `PartitionKey` 和 `RowKey`。** 点查询：此类查询是最高效的表存储查询。   
 * **请考虑存储实体的重复副本。** 表存储比较便宜，因此请考虑多次存储同一实体（使用不同键）以实现更高效的查询。  
 * **请考虑反规范化处理数据。** 表存储比较便宜，因此请考虑反规范化数据。 例如，存储摘要实体，以便对聚合数据的查询只需访问单个实体。  
 * **使用复合键值。** 具有的唯一键是 `PartitionKey` 和 `RowKey`。 例如，使用复合键值来启用对实体的备用键控访问路径。  
-* **使用查询投影。** 可使用仅选择所需字段的查询，减少网络上传输的数据量。  
+* **使用查询投影。** 可以通过使用只选择所需字段的查询来减少网络上传输的数据量。  
 
-将表存储设计为高效写入：**  
+将表存储设计为高效写入：   
 
 * **不要创建热分区。** 选择在任何时间点都能够将请求散布到多个分区的键。  
 * **避免出现流量高峰。** 在合理的时间段内分配流量，并避免出现流量高峰。
-* **不一定为每种类型的实体创建单独的表。** 当需要对多种实体类型执行原子事务操作时，可以将这些实体类型存储在同一个表的同一个分区中。
+* **无需为每种实体类型创建一个单独的表。** 当需要对多种实体类型执行原子事务操作时，可以将这些实体类型存储在同一个表的同一个分区中。
 * **请考虑必须实现的最大吞吐量。** 必须了解表存储的可伸缩性目标，并确保设计不会导致超出目标。  
 
 稍后在本指南时，会看到将所有这些原则付诸实践的示例。  
@@ -204,10 +204,10 @@ EGT 还引入了一个在设计时需要评估的潜在权衡。 使用更多分
 
 下面是有关设计表存储查询的一般准则。 下述示例中所用的筛选器语法源自表存储 REST API。 有关详细信息，请参阅[查询实体](https://msdn.microsoft.com/library/azure/dd179421.aspx)。  
 
-* 点查询是可用的最高效的一种查找方式，建议用于大容量查找或要求最低延迟的查找**。 通过指定 `PartitionKey` 和 `RowKey` 值，此类查询可以高效地利用索引查找单个实体。 例如：`$filter=(PartitionKey eq 'Sales') and (RowKey eq '2')`。  
-* 其次是范围查询**。 它使用 `PartitionKey` 并筛选 `RowKey` 值的范围，以返回多个实体。 `PartitionKey` 值确定特定分区，`RowKey` 值确定该分区中的实体子集。 例如：`$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'`。  
-* 然后是分区扫描**。 它使用 `PartitionKey` 并筛选另一个非键属性，可能会返回多个实体。 `PartitionKey` 值确定特定分区，而属性值会选择该分区中的实体子集。 例如：`$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'`。  
-* 表扫描不包括 `PartitionKey` 且效率较低，因为它会依次搜索构成表的所有分区，查找所有匹配的实体**。 它会执行表扫描而不管你的筛选器是否使用 `RowKey`。 例如：`$filter=LastName eq 'Jones'`。  
+* 点查询是可用的最高效的一种查找方式，建议用于大容量查找或要求最低延迟的查找  。 通过指定 `PartitionKey` 和 `RowKey` 值，此类查询可以高效地利用索引查找单个实体。 例如：`$filter=(PartitionKey eq 'Sales') and (RowKey eq '2')`。  
+* 其次是范围查询  。 它使用 `PartitionKey` 并筛选 `RowKey` 值的范围，以返回多个实体。 `PartitionKey` 值确定特定分区，`RowKey` 值确定该分区中的实体子集。 例如：`$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'`。  
+* 然后是分区扫描  。 它使用 `PartitionKey` 并筛选另一个非键属性，可能会返回多个实体。 `PartitionKey` 值确定特定分区，而属性值会选择该分区中的实体子集。 例如：`$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'`。  
+* 表扫描不包括 `PartitionKey` 且效率较低，因为它会依次搜索构成表的所有分区，查找所有匹配的实体  。 它会执行表扫描而不管你的筛选器是否使用 `RowKey`。 例如：`$filter=LastName eq 'Jones'`。  
 * 返回多个实体的 Azure 表存储查询将按 `PartitionKey` 和 `RowKey` 顺序为实体排序。 若要避免对客户端中的实体重新排序，请选择定义最常见排序顺序的 `RowKey`。 Azure Cosmos DB 中 Azure 表 API 返回的查询结果不按分区键或行键排序。 有关功能差异详细列表的信息，请参阅 [Azure Cosmos DB 和 Azure 表存储中的表 API 之间的差异](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)。
 
 使用“**or**”指定基于 `RowKey` 值的筛选器将导致分区扫描，而不会视为范围查询。 因此，请避免使用筛选器的查询，例如：`$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')`。  
@@ -241,9 +241,9 @@ EGT 还引入了一个在设计时需要评估的潜在权衡。 使用更多分
 
 许多设计必须满足要求，才能允许根据多个条件查找实体。 例如，根据电子邮件、员工 ID 或姓氏查找员工实体。 [表设计模式](#table-design-patterns)部分的以下模式解决了此类要求。 这些模式还介绍了如何解决表存储不提供辅助索引的事实。  
 
-* [分区内辅助索引模式](#intra-partition-secondary-index-pattern)：使用不同的`RowKey`值（在同一分区中）存储每个实体的多个副本。 这可以实现快速高效的查找，并使用不同的 `RowKey` 值替换排序顺序。  
-* [分区间辅助索引模式](#inter-partition-secondary-index-pattern)：在单独的分区或单独的表中使用不同的`RowKey`值来存储每个实体的多个副本。 这可以实现快速高效的查找，并使用不同的 `RowKey` 值替换排序顺序。  
-* [索引实体模式](#index-entities-pattern)：维护索引实体，以启用返回实体列表的有效搜索。  
+* [分区内辅助索引模式](#intra-partition-secondary-index-pattern)：使用（同一分区中的）`RowKey` 值存储每个实体的多个副本。 这可以实现快速高效的查找，并使用不同的 `RowKey` 值替换排序顺序。  
+* [分区间辅助索引模式](#inter-partition-secondary-index-pattern)：在单独的分区或表中使用不同的 `RowKey` 值存储每个实体的多个副本。 这可以实现快速高效的查找，并使用不同的 `RowKey` 值替换排序顺序。  
+* [索引实体模式](#index-entities-pattern)：维护索引实体以启用返回实体列表的高效搜索。  
 
 ### <a name="sort-data-in-table-storage"></a>对表存储中的数据进行排序
 
@@ -254,11 +254,11 @@ EGT 还引入了一个在设计时需要评估的潜在权衡。 使用更多分
 
 表存储中的键是字符串值。 为确保数字值正确排序，应将值转换为固定长度并使用零进行填充。 例如，如果用作 `RowKey` 的员工 ID 值是个整数值，则应将员工 ID **123** 转换为 **00000123**。 
 
-许多应用程序要求使用按不同顺序排序的数据：例如，按名称或按加入日期对员工进行排序。 ["表"部分中的](#table-design-patterns)以下模式涉及如何为实体交替排序顺序：  
+许多应用程序要求使用按不同顺序排序的数据：例如，按名称或按加入日期对员工进行排序。 [表设计模式](#table-design-patterns)部分的以下模式介绍了如何为实体替换排序顺序：  
 
-* [分区内辅助索引模式](#intra-partition-secondary-index-pattern)：使用不同的`RowKey`值（在同一分区中）存储每个实体的多个副本。 这可以实现快速高效的查找，并使用不同的 `RowKey` 值替换排序顺序。  
-* [分区间辅助索引模式](#inter-partition-secondary-index-pattern)：在单独的表中使用不同的分区中使用不同的`RowKey`值来存储每个实体的多个副本。 这可以实现快速高效的查找，并使用不同的 `RowKey` 值替换排序顺序。
-* [日志尾模式](#log-tail-pattern)：使用按*n*相反日期和时间顺序排序`RowKey`的值，检索最近添加到分区的 n 个实体。  
+* [分区内辅助索引模式](#intra-partition-secondary-index-pattern)：使用（同一分区中的）`RowKey` 值存储每个实体的多个副本。 这可以实现快速高效的查找，并使用不同的 `RowKey` 值替换排序顺序。  
+* [分区间辅助索引模式](#inter-partition-secondary-index-pattern)：在单独表中的单独分区内使用不同的 `RowKey` 值存储每个实体的多个副本。 这可以实现快速高效的查找，并使用不同的 `RowKey` 值替换排序顺序。
+* [日志尾部模式](#log-tail-pattern)：通过使用以日期时间倒序排序的 `RowKey` 值检索最近添加到分区中的 *n* 个实体。  
 
 ## <a name="design-for-data-modification"></a>针对数据修改的设计
 本部分重点介绍优化插入、更新和删除的设计注意事项。 在某些情况下，需要在针对查询优化的设计与针对数据修改优化的设计之间进行权衡。 这种权衡类似于在设计关系数据库时所做的那样（不过，在关系数据库中，管理设计权衡的方法是不同的）。 [表设计模式](#table-design-patterns)部分介绍了一些详细的表存储设计模式，着重阐释了其中的部分权衡。 在实践中，你会发现许多针对查询实体优化的设计对于修改实体也能很好地工作。  
@@ -268,41 +268,41 @@ EGT 还引入了一个在设计时需要评估的潜在权衡。 使用更多分
 
 [表设计模式](#table-design-patterns)部分的以下模式介绍了如何优化插入、更新和删除操作的性能：  
 
-* [大容量删除模式](#high-volume-delete-pattern)：通过将所有实体存储在自己的单独表中同时删除，从而启用删除大量实体。 通过删除表来删除实体。  
-* [数据系列模式](#data-series-pattern)：将完整的数据系列存储在单个实体中，以尽量减少发出的请求数。  
-* [宽实体模式](#wide-entities-pattern)：使用多个物理实体存储具有 252 个以上属性的逻辑实体。  
-* [大型实体模式](#large-entities-pattern)：使用 blob 存储存储大型属性值。  
+* [大量删除模式](#high-volume-delete-pattern)：通过将要同时删除的所有实体都存储在它们自己的单独表中来实现大量实体的删除。 通过删除表来删除实体。  
+* [数据系列模式](#data-series-pattern)：将完整的数据系列存储在单个实体中，以最大限度地减少发出请求的次数。  
+* [宽实体模式](#wide-entities-pattern)：使用多个物理实体来存储具有多于 252 个属性的逻辑实体。  
+* [大实体模式](#large-entities-pattern)：使用 blob 存储来存储大属性值。  
 
 ### <a name="ensure-consistency-in-your-stored-entities"></a>确保存储实体中的一致性
 影响你选择用于优化数据修改的键的其他关键因素是如何通过使用原子事务来确保一致性。 只能使用 EGT 作用于存储在同一个分区中的实体。  
 
-"[表"部分中的](#table-design-patterns)以下模式解决了管理一致性的问题：  
+[表设计模式](#table-design-patterns)部分的以下模式介绍了如何管理一致性：  
 
-* [分区内辅助索引模式](#intra-partition-secondary-index-pattern)：使用不同的`RowKey`值（在同一分区中）存储每个实体的多个副本。 这可以实现快速高效的查找，并使用不同的 `RowKey` 值替换排序顺序。  
-* [分区间辅助索引模式](#inter-partition-secondary-index-pattern)：在单独的分区或单独的表中使用不同的`RowKey`值来存储每个实体的多个副本。 这可以实现快速高效的查找，并使用不同的 `RowKey` 值替换排序顺序。  
-* [最终一致的事务模式](#eventually-consistent-transactions-pattern)：通过使用 Azure 队列，在分区边界或存储系统边界之间启用最终一致的行为。
-* [索引实体模式](#index-entities-pattern)：维护索引实体，以启用返回实体列表的有效搜索。  
-* [非规范化模式](#denormalization-pattern)：将相关数据合并到单个实体中，使您能够通过单个点查询检索所需的所有数据。  
-* [数据系列模式](#data-series-pattern)：将完整的数据系列存储在单个实体中，以尽量减少发出的请求数。  
+* [分区内辅助索引模式](#intra-partition-secondary-index-pattern)：使用（同一分区中的）`RowKey` 值存储每个实体的多个副本。 这可以实现快速高效的查找，并使用不同的 `RowKey` 值替换排序顺序。  
+* [分区间辅助索引模式](#inter-partition-secondary-index-pattern)：在单独的分区或表中使用不同的 `RowKey` 值存储每个实体的多个副本。 这可以实现快速高效的查找，并使用不同的 `RowKey` 值替换排序顺序。  
+* [最终一致性事务模式](#eventually-consistent-transactions-pattern)：通过使用 Azure 队列跨分区边界或存储系统边界启用最终一致的行为。
+* [索引实体模式](#index-entities-pattern)：维护索引实体以启用返回实体列表的高效搜索。  
+* [反规范模式](#denormalization-pattern)：将相关数据组合在一起放置在单个实体中，使你能够使用单个点查询检索所有所需的数据。  
+* [数据系列模式](#data-series-pattern)：将完整的数据系列存储在单个实体中，以最大限度地减少发出请求的次数。  
 
 有关详细信息，请参阅本文稍后的[实体组事务](#entity-group-transactions)。  
 
 ### <a name="ensure-your-design-for-efficient-modifications-facilitates-efficient-queries"></a>确保用于高效修改的设计便于高效查询
-在许多情况下，用于高效查询的设计会产生高效修改的效果，但你应始终评估这是否适用于特定方案。 [表设计模式](#table-design-patterns)中的一些模式显式评估查询和修改实体之间的权衡，并且应始终考虑每种操作类型的数量。  
+在许多情况下，用于高效查询的设计会产生高效修改的效果，但你应始终评估这是否适用于特定方案。 [表设计模式](#table-design-patterns)部分的某些模式显式评估了查询实体和修改实体之间的权衡利弊，应始终考虑到每种类型操作的数目。  
 
-["表"](#table-design-patterns)部分中的以下模式解决了高效查询设计和设计进行高效数据修改之间的权衡：  
+[表设计模式](#table-design-patterns)部分中的以下模式实施针对高效查询的设计与针对高效数据修改的设计之间的折衷方案：  
 
-* [复合键模式](#compound-key-pattern)：使用`RowKey`复合值使客户端能够使用单个点查询查找相关数据。  
-* [日志尾模式](#log-tail-pattern)：使用按*n*相反日期和时间顺序排序`RowKey`的值，检索最近添加到分区的 n 个实体。  
+* [复合键模式](#compound-key-pattern)：使用复合 `RowKey` 值可让客户端使用单个点查询查找相关数据。  
+* [日志尾部模式](#log-tail-pattern)：通过使用以日期时间倒序排序的 `RowKey` 值检索最近添加到分区中的 *n* 个实体。  
 
 ## <a name="encrypt-table-data"></a>对表数据进行加密
 .NET Azure 存储客户端库支持对插入和替换操作的字符串实体属性进行加密。 加密的字符串作为二进制属性存储在服务中，并在解密之后转换回字符串。    
 
-对于表，除了加密策略以外，用户还必须指定要加密的属性。 可以指定 `EncryptProperty` 特性（适用于从 `TableEntity` 派生的 POCO 实体），或在请求选项中指定加密解析程序。 加密解析程序是一个委托，它接受分区键、行键和属性名称并返回一个布尔值以指示是否应加密该属性。 在加密过程中，客户端库会使用此信息来确定是否应在写入到网络时加密属性。 该委托还可以围绕如何加密属性来实现逻辑的可能性。 （例如，如果 X，则加密属性 A;否则加密属性 A 和 B。读取或查询实体时不必提供此信息。
+对于表，除了加密策略以外，用户还必须指定要加密的属性。 可以指定 `EncryptProperty` 特性（适用于从 `TableEntity` 派生的 POCO 实体），或在请求选项中指定加密解析程序。 加密解析程序是一个委托，它接受分区键、行键和属性名称并返回一个布尔值以指示是否应加密该属性。 在加密过程中，客户端库会使用此信息来确定是否应在写入到网络时加密属性。 该委托还可以围绕如何加密属性实现逻辑的可能性。 （例如，如果 X，则加密属性 A，否则加密属性 A 和 B。）在读取或查询实体时，不需要提供此信息。
 
 目前不支持合并。 由于属性的子集可能以前已使用不同的密钥加密，因此只合并新属性和更新元数据会导致数据丢失。 合并需要进行额外的服务调用以从服务中读取预先存在的实体，或者需要为属性使用一个新密钥。 由于性能方面的原因，这两种方案都不适用。     
 
-有关加密表数据的信息，请参阅[客户端加密和用于 Microsoft Azure 存储的 Azure 密钥保管库](../storage/common/storage-client-side-encryption.md)。  
+有关对表数据进行加密的信息，请参阅[Microsoft Azure 存储的客户端加密和 Azure Key Vault](../storage/common/storage-client-side-encryption.md)。  
 
 ## <a name="model-relationships"></a>为关系建模
 构建域模型是复杂系统设计中的一个关键步骤。 通常情况下，使用建模流程确定实体及实体之间的关系，并以此作为了解业务域及获取系统设计信息的方式。 本部分重点介绍如何将域模型中找到的一些常见关系类型转换为表存储的设计。 从逻辑数据模型映射到基于 NoSQL 的物理数据模型的过程与在设计关系数据库时使用的过程不同。 关系型数据库设计通常采用数据规范化过程（针对最大限度减少冗余进行优化）。 此类设计还采用声明性查询功能来抽象化数据库工作原理的实现方式。  
@@ -322,7 +322,7 @@ EGT 还引入了一个在设计时需要评估的潜在权衡。 使用更多分
 
 ![员工实体的插图][2]
 
-有关详细信息，请参阅本指南后面的[反规范化模式](#denormalization-pattern)。  
+有关详细信息，请参阅本指南后面的 [反规范化模式](#denormalization-pattern) 。  
 
 下表汇总了每种方法对于存储具有一对多关系的员工和部门的优缺点。 还应考虑希望执行各种操作的频率。 如果设计中包含的代价高昂的操作很少发生，则这可能是可以接受的。  
 
@@ -382,11 +382,11 @@ EGT 还引入了一个在设计时需要评估的潜在权衡。 使用更多分
 如何在这些选项中进行选择，以及哪些优点和缺点最重要，取决于特定应用程序方案。 例如，修改部门实体的频率如何？ 所有员工查询是否都需要附加的部门信息？ 有多接近对分区或存储帐户的可伸缩性限制？  
 
 ### <a name="one-to-one-relationships"></a>一对一关系
-域模型可能包括实体之间的一对一关系。 如果需要在表存储中实现一对一关系，还必须选择在需要检索两个相关的实体时如何链接这两个实体。 此链接可为隐式或显式，前者基于键值中的约定，后者在每个实体中按 `PartitionKey` 和 `RowKey` 值的形式存储指向其相关实体的链接。 若要了解是否应在同一分区存储相关实体，请参阅[一对多关系](#one-to-many-relationships)部分。  
+域模型可能包括实体之间的一对一关系。 如果需要在表存储中实现一对一关系，还必须选择在需要检索两个相关的实体时如何链接这两个实体。 此链接可为隐式或显式，前者基于键值中的约定，后者在每个实体中按 `PartitionKey` 和 `RowKey` 值的形式存储指向其相关实体的链接。 有关是否应将相关实体存储在同一个分区中的讨论，请参阅[一对多关系](#one-to-many-relationships)这部分。  
 
 还有可能引导在表存储中实现一对一关系的实现注意事项：  
 
-* 处理大型实体（有关详细信息，请参阅[大型实体模式](#large-entities-pattern)）。  
+* 处理大型实体（有关详细信息，请参阅[大实体模式](#large-entities-pattern)）。  
 * 实施访问控制（有关详细信息，请参阅[使用共享访问签名控制访问权限](#control-access-with-shared-access-signatures)）。  
 
 ### <a name="join-in-the-client"></a>在客户端中联接
@@ -434,8 +434,8 @@ EGT 还引入了一个在设计时需要评估的潜在权衡。 使用更多分
 
 如果查询员工实体的范围，可以指定按员工 ID 顺序排序的范围，或按电子邮件地址顺序排序的范围。 使用 `RowKey` 中的相应前缀查询实体。  
 
-* 要查找销售部门中员工 ID 在 000100 到 000199 范围内的所有员工，请使用：$filter*（分区键 eq 'Sales'）和（RowKey ge'empid_000100'）和（RowKey le'empid_000199'）  
-* 要查找销售部门中所有具有以字母"a"开头的电子邮件地址的员工，请使用：$filter*（分区键 eq 'Sales'）和（RowKey ge'email_a'）和（RowKey lt'email_b'）  
+* 若要查找销售部门中员工 ID 介于000100到000199之间的所有员工，请使用： $filter = （PartitionKey eq ' Sales '） and （RowKey ge ' empid_000100 '） and （RowKey le ' empid_000199 '）  
+* 若要查找销售部门中以字母 "a" 开头的电子邮件地址的所有员工，请使用： $filter = （PartitionKey eq ' Sales '） and （RowKey ge ' email_a '） and （RowKey lt ' email_b '）  
   
 上述示例中所用的筛选器语法源自表存储 REST API。 有关详细信息，请参阅[查询实体](https://msdn.microsoft.com/library/azure/dd179421.aspx)。  
 
@@ -467,7 +467,7 @@ EGT 还引入了一个在设计时需要评估的潜在权衡。 使用更多分
 
 * [分区间辅助索引模式](#inter-partition-secondary-index-pattern)
 * [复合键模式](#compound-key-pattern)
-* [实体组交易记录](#entity-group-transactions)
+* [实体组事务](#entity-group-transactions)
 * [处理异类实体类型](#work-with-heterogeneous-entity-types)
 
 ### <a name="inter-partition-secondary-index-pattern"></a>分区间辅助索引模式
@@ -494,15 +494,15 @@ EGT 还引入了一个在设计时需要评估的潜在权衡。 使用更多分
 
 如果查询员工实体的范围，可以指定按员工 ID 顺序排序的范围，或按电子邮件地址顺序排序的范围。 使用 `RowKey` 中的相应前缀查询实体。  
 
-* 要查找销售部门中员工 ID 在**000100**到**000199**范围内的所有员工，按员工 ID 顺序排序，请使用：$filter*（分区键 eq'empid_Sales'）和（RowKey ge '000100'） 和 （RowKey le'000199'）  
-* 要查找销售部门中所有以"a"开头的电子邮件地址，按电子邮件地址顺序排序，请使用：$filter*（分区键 eq'email_Sales'）和（RowKey ge'a'）和（RowKey lt'b'）  
+* 若要查找销售部门中员工 ID 在**000100**到**000199**范围内的所有员工，按员工 id 顺序排序，请使用： $filter = （PartitionKey eq ' empid_Sales '） and （RowKey ge ' 000100 '） and （RowKey le ' 000199 '）  
+* 若要查找销售部门中的所有员工，其电子邮件地址以 "a" 开头，按电子邮件地址顺序排序，请使用： $filter = （PartitionKey eq ' email_Sales '） and （RowKey ge ' a '） and （RowKey lt ' b '）  
 
 请注意，上述示例中所用的筛选器语法源自表存储 REST API。 有关详细信息，请参阅[查询实体](https://msdn.microsoft.com/library/azure/dd179421.aspx)。  
 
 #### <a name="issues-and-considerations"></a>问题和注意事项
 在决定如何实现此模式时，请考虑以下几点：  
 
-* 可使用[最终一致的事务模式](#eventually-consistent-transactions-pattern)维护主辅索引实体，保证重复实体彼此间的最终一致性。  
+* 可以使用 [最终一致的事务模式](#eventually-consistent-transactions-pattern) 将重复的实体最终与彼此保持一致，以维护主辅索引实体。  
 * 使用表存储相对比较便宜，因此存储重复数据的成本开销不应是主要考虑因素。 但是，始终应根据预期的存储要求来评估设计成本，并且只通过添加重复的实体来支持客户端应用程序将运行的查询。  
 * 用于每个实体的 `RowKey` 的值必须唯一。 请考虑使用复合键值。  
 * 在 `RowKey` 中填充数字值（例如员工 ID 000223），实现正确排序并根据上下限进行筛选。  
@@ -526,10 +526,10 @@ EGT 还引入了一个在设计时需要评估的潜在权衡。 使用更多分
 * [最终一致的事务模式](#eventually-consistent-transactions-pattern)  
 * [分区内辅助索引模式](#intra-partition-secondary-index-pattern)  
 * [复合键模式](#compound-key-pattern)  
-* [实体组交易记录](#entity-group-transactions)  
+* [实体组事务](#entity-group-transactions)  
 * [处理异类实体类型](#work-with-heterogeneous-entity-types)  
 
-### <a name="eventually-consistent-transactions-pattern"></a>最终一致的事务模式
+### <a name="eventually-consistent-transactions-pattern"></a>最终一致性事务模式
 通过使用 Azure 队列跨分区边界或存储系统边界启用最终一致的行为。  
 
 #### <a name="context-and-problem"></a>上下文和问题
@@ -549,14 +549,14 @@ EGT 在多个共享同一分区键的实体之间启用原子事务。 由于性
 
 ![最终一致性的解决方案图示][12]
 
-客户端通过在 Azure 队列中放置一条消息来启动存档操作（在此示例中要将员工 #456 存档）。 辅助角色会在队列中轮询新消息；当它找到一个新消息时，将读取该消息，并在队列上保留一个隐藏的副本。 接下来，辅助角色从 **Current** 表中获取实体的副本，将该副本插入 **Archive** 表中，然后删除 **Current** 表中的原始实体。 最后，如果在前面的步骤中没有出现错误，辅助角色将从队列中删除隐藏的消息。  
+客户端通过在 Azure 队列中放置一条消息来启动存档操作（在此示例中要将员工 #456 存档）。 辅助角色在队列中轮询新消息；当它找到一个新消息时，会读取该消息，并在队列上保留一个隐藏的副本。 接下来，辅助角色从 **Current** 表中获取实体的副本，将该副本插入 **Archive** 表中，并删除 **Current** 表中的原始实体。 最后，如果在前面的步骤中没有出现错误，辅助角色将从队列中删除隐藏的消息。  
 
 在此示例中，图中的步骤 4 将该员工插入到 **Archive** 表中。 它可以将该员工添加到 Blob 存储中的 Blob 或文件系统中的文件。  
 
 #### <a name="recover-from-failures"></a>从故障中恢复
-为避免辅助角色需重启存档操作，必须确保图中步骤 4-5 中的操作为幂等操作**。 如果使用的是表存储，步骤 4 中应使用“插入或替换”操作；步骤 5 中应使用当前所用客户端库中的“如果存在则删除”操作。 如果使用的是其他存储系统，则必须使用相应的幂等操作。  
+为避免辅助角色需重启存档操作，必须确保图中步骤 4-5 中的操作为幂等操作  。 如果使用的是表存储，步骤 4 中应使用“插入或替换”操作；步骤 5 中应使用当前所用客户端库中的“如果存在则删除”操作。 如果使用的是其他存储系统，则必须使用相应的幂等操作。  
 
-如果辅助角色永远不会完成图中步骤 6，则在超时后该消息会重新出现在队列中，以供辅助角色尝试重新处理它。 辅助角色可以检查已读取队列中的某条消息多少次，如有必要，可通过将该消息发送到单独的队列来将其标记“坏”消息以供调查。 有关读取队列消息和检查取消队列计数的详细信息，请参阅[获取消息](https://msdn.microsoft.com/library/azure/dd179474.aspx)。  
+如果辅助角色永远不会完成图中步骤 6，则在超时后该消息会重新出现在队列中，以供辅助角色尝试重新处理它。 辅助角色可以检查已读取队列中的某条消息多少次，如有必要，可通过将该消息发送到单独的队列来将其标记“坏”消息以供调查。 若要深入了解如何读取队列消息和检查取消排队计数，请参阅[获取消息](https://msdn.microsoft.com/library/azure/dd179474.aspx)。  
 
 表存储和队列存储发生的一些错误是暂时性错误，客户端应用程序应包括适当的重试逻辑以处理这些错误。  
 
@@ -573,7 +573,7 @@ EGT 在多个共享同一分区键的实体之间启用原子事务。 由于性
 #### <a name="related-patterns-and-guidance"></a>相关模式和指南
 实施此模式时，可能也会与以下模式和指南相关：  
 
-* [实体组交易记录](#entity-group-transactions)  
+* [实体组事务](#entity-group-transactions)  
 * [合并或替换](#merge-or-replace)  
 
 > [!NOTE]
@@ -602,7 +602,7 @@ EGT 在多个共享同一分区键的实体之间启用原子事务。 由于性
 
 为每个唯一的姓氏创建一个 Blob，并在每个 Blob 中存储具有该姓氏的员工的 `PartitionKey`（部门）和 `RowKey`（员工 ID）值的列表。 在添加或删除员工时，请确保相关 blob 的内容与员工实体是最终一致的。  
 
-选项 2：在同一分区中创建索引实体  
+选项 2：在同一个分区中创建索引实体  
 
 使用存储以下数据的索引实体：  
 
@@ -624,7 +624,7 @@ EGT 在多个共享同一分区键的实体之间启用原子事务。 由于性
 2. 分析 `EmployeeIDs` 字段中的员工 ID 列表。  
 3. 如需了解其中每个员工的其他信息（如电子邮件地址），请通过 `PartitionKey` 值“Sales”和 `RowKey` 值，在步骤 2 中获得的员工列表中检索每个员工实体。  
 
-选项 3：在单独的分区或表中创建索引实体  
+选项 3：在不同分区或表中创建索引实体  
 
 对于此选项，请使用存储以下数据的索引实体：  
 
@@ -651,10 +651,10 @@ EGT 在多个共享同一分区键的实体之间启用原子事务。 由于性
 
 * [复合键模式](#compound-key-pattern)  
 * [最终一致的事务模式](#eventually-consistent-transactions-pattern)  
-* [实体组交易记录](#entity-group-transactions)  
+* [实体组事务](#entity-group-transactions)  
 * [处理异类实体类型](#work-with-heterogeneous-entity-types)  
 
-### <a name="denormalization-pattern"></a>非规范化模式
+### <a name="denormalization-pattern"></a>反规范模式
 将相关数据组合在一起放置在单个实体中，使你能够使用单个点查询检索所有所需的数据。  
 
 #### <a name="context-and-problem"></a>上下文和问题
@@ -682,10 +682,10 @@ EGT 在多个共享同一分区键的实体之间启用原子事务。 由于性
 实施此模式时，可能也会与以下模式和指南相关：  
 
 * [复合键模式](#compound-key-pattern)  
-* [实体组交易记录](#entity-group-transactions)  
+* [实体组事务](#entity-group-transactions)  
 * [处理异类实体类型](#work-with-heterogeneous-entity-types)
 
-### <a name="compound-key-pattern"></a>复合键模式
+### <a name="compound-key-pattern"></a>Compound key pattern
 使用复合 `RowKey` 值可让客户端使用单个点查询查找相关数据。  
 
 #### <a name="context-and-problem"></a>上下文和问题
@@ -725,15 +725,15 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 #### <a name="related-patterns-and-guidance"></a>相关模式和指南
 实施此模式时，可能也会与以下模式和指南相关：  
 
-* [实体组交易记录](#entity-group-transactions)  
+* [实体组事务](#entity-group-transactions)  
 * [处理异类实体类型](#work-with-heterogeneous-entity-types)  
 * [最终一致的事务模式](#eventually-consistent-transactions-pattern)  
 
-### <a name="log-tail-pattern"></a>记录结尾模式
+### <a name="log-tail-pattern"></a>日志结尾模式
 通过使用以日期时间倒序排序的 `RowKey` 值检索最近添加到分区中的 *n* 个实体。  
 
 > [!NOTE]
-> Azure Cosmos DB 中 Azure 表 API 返回的查询结果不按分区键或行键排序。 因此，虽然此模式适用于表存储，但不适用于 Azure Cosmos DB。 有关要素差异的详细列表，请参阅[Azure Cosmos DB 中的表 API 和 Azure 表存储 中的表 API 之间的差异](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)。
+> Azure Cosmos DB 中 Azure 表 API 返回的查询结果不按分区键或行键排序。 因此，虽然此模式适用于表存储，但不适用于 Azure Cosmos DB。 有关功能差异详细列表的信息，请参阅 [Azure Cosmos DB 和 Azure 表存储中的表 API 之间的差异](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)。
 
 #### <a name="context-and-problem"></a>上下文和问题
 一个常见的需求是能够检索最近创建的实体，例如某个员工提交的最近 10 个费用报销单。 表查询支持使用 `$top` 查询操作返回一个集中的前 *n* 个实体。 没有等效的查询操作可返回一个集中的最后 *n* 个实体。  
@@ -768,7 +768,7 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 * [前置/后置反模式](#prepend-append-anti-pattern)  
 * [检索实体](#retrieve-entities)  
 
-### <a name="high-volume-delete-pattern"></a>大量删除模式
+### <a name="high-volume-delete-pattern"></a>高容量删除模式
 通过将要同时删除的所有实体都存储在它们自己的单独表中来实现大量实体的删除。 通过删除表来删除实体。  
 
 #### <a name="context-and-problem"></a>上下文和问题
@@ -797,14 +797,14 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 #### <a name="related-patterns-and-guidance"></a>相关模式和指南
 实施此模式时，可能也会与以下模式和指南相关：  
 
-* [实体组交易记录](#entity-group-transactions)
+* [实体组事务](#entity-group-transactions)
 * [修改实体](#modify-entities)  
 
 ### <a name="data-series-pattern"></a>数据系列模式
 将完整的数据系列存储在单个实体中，以最大限度地减少发出请求的次数。  
 
 #### <a name="context-and-problem"></a>上下文和问题
-一个常见方案用于要存储一系列数据的应用程序，该应用程序通常需要一次检索所有这些数据。 例如，应用程序可能会记录每个员工每小时发送的 IM 消息数，并使用此信息来绘制每个用户在过去 24 小时内发送的消息数。 一个设计可以是为每个员工存储 24 个实体：  
+一个常见方案用于要存储一系列数据的应用程序，该应用程序通常需要一次检索所有这些数据。 例如，用户的应用程序可能会记录每个员工每小时发送的 IM 消息数，并使用此信息来绘制每个用户在过去 24 小时内发送的消息数。 一个设计可以是为每个员工存储 24 个实体：  
 
 ![消息统计实体的插图][22]
 
@@ -857,7 +857,7 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 #### <a name="related-patterns-and-guidance"></a>相关模式和指南
 实施此模式时，可能也会与以下模式和指南相关：  
 
-* [实体组交易记录](#entity-group-transactions)
+* [实体组事务](#entity-group-transactions)
 * [合并或替换](#merge-or-replace)
 
 ### <a name="large-entities-pattern"></a>大实体模式
@@ -916,7 +916,7 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 实施此模式时，可能也会与以下模式和指南相关：  
 
 * [复合键模式](#compound-key-pattern)  
-* [日志结尾模式](#log-tail-pattern)  
+* [记录结尾模式](#log-tail-pattern)  
 * [修改实体](#modify-entities)  
 
 ### <a name="log-data-anti-pattern"></a>日志数据反模式
@@ -959,7 +959,7 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 本部分讨论在实现前面的部分中所述的模式时，需要牢记的一些注意事项。 本部分的大部分内容使用以 C# 编写的示例，其中使用了存储客户端库（在撰写本文时为版本 4.3.0）。  
 
 ### <a name="retrieve-entities"></a>检索实体
-如[针对查询的设计](#design-for-querying)部分所述，最高效的查询是点查询。 但是，在某些情况下，可能需要检索多个实体。 本部分介绍使用存储客户端库检索实体的一些常用方法。  
+如 [针对查询的设计](#design-for-querying)部分所述，最高效的查询是点查询。 但是，在某些情况下，可能需要检索多个实体。 本部分介绍使用存储客户端库检索实体的一些常用方法。  
 
 #### <a name="run-a-point-query-by-using-the-storage-client-library"></a>使用存储客户端库运行点查询
 运行点查询的最简单方法是使用 **Retrieve** 表操作。 如以下 C# 代码片段中所示，此操作检索 `PartitionKey` 值为“Sales”并且 `RowKey` 值为“212”的实体：  
@@ -977,7 +977,7 @@ if (retrieveResult.Result != null)
 请注意此示例如何将它检索的实体要求为 `EmployeeEntity` 类型。  
 
 #### <a name="retrieve-multiple-entities-by-using-linq"></a>使用 LINQ 检索多个实体
-通过将 LINQ 与存储客户端库一起使用，以及使用**where**子句指定查询，可以检索多个实体。 若要避免表扫描，应始终在 where 子句中包括 `PartitionKey` 值，如有可能也包括 `RowKey` 值以避免表和分区扫描。 表存储支持一组有限的比较运算符（大于、大于等于、小于、小于等于、等于和不等于）可用于 where 子句。 下面的 C# 代码片段在销售部门（假设 `PartitionKey` 存储部门名称）中查找姓氏以“B”开头（假设 `RowKey` 存储姓氏）的所有员工：  
+可将 LINQ 和存储客户端库配合使用并为查询指定 **where** 子句，用以检索多个实体。 若要避免表扫描，应始终在 where 子句中包括 `PartitionKey` 值，如有可能也包括 `RowKey` 值以避免表和分区扫描。 表存储支持一组有限的比较运算符（大于、大于等于、小于、小于等于、等于和不等于）可用于 where 子句。 下面的 C# 代码片段在销售部门（假设 `PartitionKey` 存储部门名称）中查找姓氏以“B”开头（假设 `RowKey` 存储姓氏）的所有员工：  
 
 ```csharp
 TableQuery<EmployeeEntity> employeeQuery = employeeTable.CreateQuery<EmployeeEntity>();
@@ -1024,7 +1024,7 @@ var employees = employeeTable.ExecuteQuery(employeeQuery);
 - 查询未在 5 秒内完成。
 - 查询跨越分区边界。 
 
-有关延续令牌的工作原理的详细信息，请参阅[查询超时和暂停](https://msdn.microsoft.com/library/azure/dd135718.aspx)。  
+若要深入了解继续标记的工作方式，请参阅[查询超时和分页](https://msdn.microsoft.com/library/azure/dd135718.aspx)。  
 
 如果使用的是存储客户端库，当它从表存储返回实体时，可以自动处理继续标记。 例如，如果表存储在响应中返回继续标记，以下 C# 代码示例将自动处理继续标记：  
 
@@ -1107,10 +1107,10 @@ foreach (var e in entities)
 还应考虑设计如何影响客户端应用程序处理并发和更新操作的方式。  
 
 #### <a name="managing-concurrency"></a>管理并发
-默认情况下，尽管客户端可强制表存储跳过这些检查，表存储仍会在单个实体级别上执行插入、合并和删除操作的开放式并发检查。 有关详细信息，请参阅在[Microsoft Azure 存储中管理并发](../storage/common/storage-concurrency.md)。  
+默认情况下，尽管客户端可强制表存储跳过这些检查，表存储仍会在单个实体级别上执行插入、合并和删除操作的开放式并发检查。 有关详细信息，请参阅[Microsoft Azure 存储中的 "管理并发](../storage/common/storage-concurrency.md)"。  
 
 #### <a name="merge-or-replace"></a>合并或替换
-`TableOperation` 类的 `Replace` 方法始终替换表存储中的完整实体。 如果在存储实体中存在某个属性时请求中未包含该属性，则请求会从存储实体中删除该属性。 除非想要从存储实体中显式删除某一属性，否则必须在请求中包含每个属性。  
+`TableOperation` 类的 `Replace` 方法始终替换表存储中的完整实体。 如果在存储实体中存在某个属性时请求中未包含该属性，则请求会从存储实体中删除该属性。 除非你想要从存储实体中显式删除某一属性，否则必须在请求中包含每个属性。  
 
 要更新实体时，可使用 `TableOperation` 类的 `Merge` 方法减少发送到表存储的数据量。 `Merge` 方法将存储实体的所有属性替换为请求中所含实体的属性值。 此方法将请求中未包含的存储实体的所有属性保持不变。 如果使用大型实体并且只需在请求中更新少量属性，则此方法很有用。  
 
@@ -1120,13 +1120,13 @@ foreach (var e in entities)
 > 
 
 ### <a name="work-with-heterogeneous-entity-types"></a>处理异类实体类型
-表存储是无架构的表存储**。 这意味着单个表可以存储多种类型的实体，从而在设计中提供了极大的灵活性。 以下示例说明了同时存储员工实体和部门实体的表：  
+表存储是无架构的表存储  。 这意味着单个表可以存储多种类型的实体，从而在设计中提供了极大的灵活性。 以下示例说明了同时存储员工实体和部门实体的表：  
 
 <table>
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>时间戳</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -1138,8 +1138,8 @@ foreach (var e in entities)
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>年龄</th>
-<th>电子邮件</th>
+<th>Age</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1158,8 +1158,8 @@ foreach (var e in entities)
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>年龄</th>
-<th>电子邮件</th>
+<th>Age</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1195,8 +1195,8 @@ foreach (var e in entities)
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>年龄</th>
-<th>电子邮件</th>
+<th>Age</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1218,7 +1218,7 @@ foreach (var e in entities)
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>时间戳</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -1231,8 +1231,8 @@ foreach (var e in entities)
 <th>EntityType</th>
 <th>FirstName</th>
 <th>LastName</th>
-<th>年龄</th>
-<th>电子邮件</th>
+<th>Age</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Employee</td>
@@ -1253,8 +1253,8 @@ foreach (var e in entities)
 <th>EntityType</th>
 <th>FirstName</th>
 <th>LastName</th>
-<th>年龄</th>
-<th>电子邮件</th>
+<th>Age</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Employee</td>
@@ -1277,7 +1277,7 @@ foreach (var e in entities)
 <th>EmployeeCount</th>
 </tr>
 <tr>
-<td>部门</td>
+<td>系</td>
 <td></td>
 <td></td>
 </tr>
@@ -1294,8 +1294,8 @@ foreach (var e in entities)
 <th>EntityType</th>
 <th>FirstName</th>
 <th>LastName</th>
-<th>年龄</th>
-<th>电子邮件</th>
+<th>Age</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Employee</td>
@@ -1323,7 +1323,7 @@ foreach (var e in entities)
 #### <a name="retrieve-heterogeneous-entity-types"></a>检索异类实体类型
 如果使用存储客户端库，则有三个选项可处理多个实体类型。  
 
-如果知道使用特定 `RowKey` 和 `PartitionKey` 值存储的实体的类型，则在检索实体时可以指定该实体类型。 在前面两个检索类型`EmployeeEntity`实体的示例中，您看到了这一点：[使用存储客户端库运行点查询](#run-a-point-query-by-using-the-storage-client-library)，并使用[LINQ 检索多个实体](#retrieve-multiple-entities-by-using-linq)。  
+如果知道使用特定 `RowKey` 和 `PartitionKey` 值存储的实体的类型，则在检索实体时可以指定该实体类型。 前面两个检索 `EmployeeEntity` 类型的实体的示例对此做了演示：[使用存储客户端库运行点查询](#run-a-point-query-by-using-the-storage-client-library)和[使用 LINQ 检索多个实体](#retrieve-multiple-entities-by-using-linq)。  
 
 第二个选项是使用 `DynamicTableEntity` 类型（属性包）而不是具体的 POCO 实体类型。 此选项无需序列化实体和将实体反序列化为 .NET 类型，因此还可提升性能。 以下 C# 代码可能会从表中检索多个不同类型的实体，但会将所有实体作为 `DynamicTableEntity` 实例返回。 然后，它使用 `EntityType` 属性确定每个实体的类型：  
 
@@ -1437,7 +1437,7 @@ employeeTable.Execute(TableOperation.Merge(department));
 可以生成授权访问表中实体子集的 SAS 令牌。 默认情况下，将为整个表创建 SAS 令牌。 但是，也可以指定授权访问 `PartitionKey` 值范围或者 `PartitionKey` 和 `RowKey` 值范围的 SAS 令牌。 可以选择为单个系统用户生成 SAS 令牌，使每个用户的 SAS 令牌仅允许其访问表存储中其自己的实体。  
 
 ### <a name="asynchronous-and-parallel-operations"></a>异步和并行操作
-假设将请求分布到多个分区，可以通过使用异步或并行查询来提高吞吐量和客户端响应能力。
+假设你将请求分布到多个分区，可以通过使用异步或并行查询来提高吞吐量和客户端响应能力。
 例如，可以使用两个或更多个辅助角色实例并行访问表。 可以让单个辅助角色负责特定分区集，也可以直接使用多个辅助角色实例，每个辅助角色实例都能访问某个表中的所有分区。  
 
 在客户端实例中，可以通过以异步方式运行存储操作来提高吞吐量。 使用存储客户端库，可以轻松地编写异步查询和修改。 例如，可以从用于检索某个分区中的所有实体的同步方法开始，如以下 C# 代码中所示：  

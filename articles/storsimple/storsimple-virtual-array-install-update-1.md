@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/02/2017
 ms.author: alkohli
 ms.openlocfilehash: fa53213e577028628d48db91704578e23888f2a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79254503"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>在 StorSimple Virtual Array 上安装 Update 1.0
@@ -58,7 +58,7 @@ ms.locfileid: "79254503"
 * 安装更新或修补程序
 
 > [!IMPORTANT] 
-> **仅当运行更新 0.6 （10.0.10293.0） 时，才继续此更新。如果您正在运行早期版本，请先在设备上[安装更新 0.6，](storsimple-virtual-array-install-update-06.md)然后应用更新 1。**
+> **仅当你运行更新0.6 （10.0.10293.0）时，才继续执行此更新。如果你运行的是早期版本，请先在你的设备上[安装更新 0.6](storsimple-virtual-array-install-update-06.md) ，然后应用 update 1。**
 
 ### <a name="download-the-update-or-the-hotfix"></a>下载更新或修补程序
 
@@ -66,7 +66,7 @@ ms.locfileid: "79254503"
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>下载更新或修补程序
 
-1. 启动 Internet 资源管理器并[https://catalog.update.microsoft.com](https://catalog.update.microsoft.com)导航到 。
+1. 启动 Internet Explorer 并导航到[https://catalog.update.microsoft.com](https://catalog.update.microsoft.com)。
 
 2. 如果是首次在此计算机上使用 Microsoft 更新目录，请在系统提示是否安装 Microsoft 更新目录外接程序时单击“安装”****。
 
@@ -76,7 +76,7 @@ ms.locfileid: "79254503"
    
     ![搜索目录](./media/storsimple-virtual-array-install-update-1/download1.png)
 
-4. 单击“下载”****。
+4. 单击 **“下载”** 。
 
 5. 将这两个文件下载到一个文件夹中。 也可以将该文件夹复制到可通过设备访问的网络共享。
 
@@ -99,11 +99,11 @@ ms.locfileid: "79254503"
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>安装更新或修补程序
 
-1. 在本地 Web UI 中，转到**维护** > **软件更新**。 记下运行的软件版本。 **仅当运行更新 0.6 （10.0.10293.0） 时，才继续此更新。如果您正在运行早期版本，请先在设备上[安装更新 0.6，](storsimple-virtual-array-install-update-06.md)然后应用更新 1。**
+1. 在本地 web UI 中，请参阅**维护** > **软件更新**。 记下运行的软件版本。 **仅当你运行更新0.6 （10.0.10293.0）时，才继续执行此更新。如果你运行的是早期版本，请先在你的设备上[安装更新 0.6](storsimple-virtual-array-install-update-06.md) ，然后应用 update 1。**
    
     ![更新设备](./media/storsimple-virtual-array-install-update-1/update1m.png)
 
-2. 在“更新文件路径”**** 中，输入更新或修补程序的文件名。 也可以浏览到网络共享上的更新或修补程序安装文件。 单击 **“应用”**。
+2. 在“更新文件路径”**** 中，输入更新或修补程序的文件名。 也可以浏览到网络共享上的更新或修补程序安装文件。 单击“应用”  。
    
     ![更新设备](./media/storsimple-virtual-array-install-update-1/update2m.png)
 
@@ -115,7 +115,7 @@ ms.locfileid: "79254503"
    
     ![更新设备](./media/storsimple-virtual-array-install-update-1/update5m.png)
 
-5. 重新启动完成后，会转到“登录”**** 页。 要验证设备软件是否已更新，请转到**维护** > **软件更新**。 Update 1.0 显示的软件版本应为 10.0.0.0.0.10296****。
+5. 重新启动完成后，会转到“登录”**** 页。 若要验证是否已更新设备软件，请在本地 web UI 中，请参阅**维护** > **软件更新**。 Update 1.0 显示的软件版本应为 10.0.0.0.0.10296****。
    
    > [!NOTE]
    > 我们在本地 Web UI 和 Azure 门户中报告的软件版本稍有不同。 例如，针对同一版本，本地 Web UI 报告 10.0.0.0.0.10296，而 Azure 门户则报告 10.0.10296.0********。

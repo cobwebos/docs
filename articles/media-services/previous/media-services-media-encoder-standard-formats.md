@@ -1,6 +1,6 @@
 ---
 title: Media Encoder Standard 格式和编解码器 - Azure
-description: 本文概述了媒体编码器标准格式和编解码器。
+description: 本文提供 Media Encoder Standard 格式和编解码器的概述。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,17 +15,17 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: e2ccce13e4ef09426d0f3a02dcbce2f330b0ead8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79251019"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard 格式和编解码器
 
 > [!div class="op_single_selector" title1="选择所使用的媒体服务版本："]
-> * [版本 2](media-services-media-encoder-standard-formats.md)
-> * [版本 3](../latest/media-encoder-standard-formats.md)
+> * [第 2 版](media-services-media-encoder-standard-formats.md)
+> * [第 3 版](../latest/media-encoder-standard-formats.md)
 
 本文档包含最常见的导入和导出文件格式的列表，可以将这些格式与 Media Encoder Standard 配合使用。
 
@@ -89,9 +89,9 @@ Media Encoder Standard 支持在输入容器中带有以下音频格式：
 | MP3 (MPEG-1 Audio Layer 3) |是 |
 | Windows Media 音频 |是 |
 | WAV/PCM |是 |
-| [Flac](https://en.wikipedia.org/wiki/FLAC)</a> |是 |
+| [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |是 |
 | [Opus](https://go.microsoft.com/fwlink/?LinkId=822667) |是 |
-| [沃尔比斯](https://en.wikipedia.org/wiki/Vorbis)</a> |是 |
+| [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |是 |
 | AMR（自适应多速率） |是 |
 | AES（SMPTE 331M 和 302M、AES3-2003） |否 |
 | Dolby® E |否 |
@@ -112,7 +112,7 @@ Media Encoder Standard 支持在输入容器中带有以下音频格式：
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 [使用 Azure 媒体服务对按需内容进行编码](media-services-encode-asset.md)
 
 [如何使用 Media Encoder Standard 进行编码](media-services-dotnet-encode-with-media-encoder-standard.md)

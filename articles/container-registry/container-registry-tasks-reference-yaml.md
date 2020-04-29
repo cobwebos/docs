@@ -4,10 +4,10 @@ description: 有关在 YAML 中为 ACR 任务定义任务的参考，包括任�
 ms.topic: article
 ms.date: 10/23/2019
 ms.openlocfilehash: 9558f698b4a9dbca46431fc02ced6ae30de29121
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79246976"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR 任务参考：YAML
@@ -51,7 +51,7 @@ steps: # A collection of image or container actions.
 
 ### <a name="supported-task-filename-extensions"></a>支持的任务文件扩展名
 
-ACR 任务具有多个保留的文件扩展名（包括 `.yaml`），它将这些文件作为任务文件进行处理。 ACR 任务将以下列表中未列出的任何扩展名视为 Dockerfile：.yaml、.yml、.toml、.json、.sh、.bash、.zsh、.ps1、.ps、.cmd、.bat、.ts、.js、.php、.py、.rb、.lua**
+ACR 任务具有多个保留的文件扩展名（包括 `.yaml`），它将这些文件作为任务文件进行处理。 ACR 任务将以下列表中未列出的任何扩展名视为 Dockerfile：.yaml、.yml、.toml、.json、.sh、.bash、.zsh、.ps1、.ps、.cmd、.bat、.ts、.js、.php、.py、.rb、.lua 
 
 YAML 是 ACR 任务目前支持的唯一一种文件格式。 其他文件扩展名是保留的，将来可能受到支持。
 
@@ -63,7 +63,7 @@ YAML 是 ACR 任务目前支持的唯一一种文件格式。 其他文件扩展
 az acr run -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
 ```
 
-示例命令的格式假设已在 Azure CLI 中配置了默认注册表，因此省略了 `--registry` 参数。 若要配置默认注册表，请结合  参数（接受  值）使用 [az configure`--defaults``acr=REGISTRY_NAME`][az-configure] 命令。
+示例命令的格式假设已在 Azure CLI 中配置了默认注册表，因此省略了 `--registry` 参数。 若要配置默认注册表，请结合 [ 参数（接受 ][az-configure] 值）使用 `--defaults`az configure`acr=REGISTRY_NAME` 命令。
 
 例如，若要在 Azure CLI 中配置名为“myregistry”的默认注册表：
 
@@ -75,7 +75,7 @@ az configure --defaults acr=myregistry
 
 任务属性通常显示在 `acr-task.yaml` 文件的顶部，是在整个任务步骤执行中应用的全局属性。 其中的某些全局属性可在单个步骤中重写。
 
-| properties | 类型 | 可选 | 描述 | 支持的重写 | 默认值 |
+| properties | 类型 | 可选 | 说明 | 支持的重写 | 默认值 |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
 | `version` | 字符串 | 是 | ACR 任务服务分析的 `acr-task.yaml` 文件的版本。 ACR 任务致力于保持向后兼容性，而此值能使 ACR 任务与某个定义的版本保持兼容。 如果未指定，则默认为最新版本。 | 否 | 无 |
 | `stepTimeout` | 整数（秒） | 是 | 步骤可以运行的最大秒数。 如果在任务中指定该属性，则会设置所有步骤的默认 `timeout` 属性。 如果在步骤中指定 `timeout` 属性，则会替代任务提供的属性。 | 是 | 600（10 分钟） |
@@ -88,7 +88,7 @@ az configure --defaults acr=myregistry
 
 secret 对象具有以下属性。
 
-| properties | 类型 | 可选 | 描述 | 默认值 |
+| properties | 类型 | 可选 | 说明 | 默认值 |
 | -------- | ---- | -------- | ----------- | ------- |
 | `id` | 字符串 | 否 | 机密的标识符。 | 无 |
 | `keyvault` | 字符串 | 是 | Azure Key Vault 机密 URL。 | 无 |
@@ -98,7 +98,7 @@ secret 对象具有以下属性。
 
 network 对象具有以下属性。
 
-| properties | 类型 | 可选 | 描述 | 默认值 |
+| properties | 类型 | 可选 | 说明 | 默认值 |
 | -------- | ---- | -------- | ----------- | ------- | 
 | `name` | 字符串 | 否 | 网络的名称。 | 无 |
 | `driver` | 字符串 | 是 | 用于管理网络的驱动程序。 | 无 |
@@ -110,7 +110,7 @@ network 对象具有以下属性。
 
 ACR 任务支持三种步骤类型。 每种步骤类型支持多个属性，每个步骤类型的相关部分中会予以详述。
 
-| 步骤类型 | 描述 |
+| 步骤类型 | 说明 |
 | --------- | ----------- |
 | [`build`](#build) | 使用熟悉的 `docker build` 语法生成容器映像。 |
 | [`push`](#push) | 执行 `docker push`，将新生成或重新标记的映像推送到容器注册表。 支持 Azure 容器注册表、其他专用注册表和公共 Docker 中心。 |
@@ -131,7 +131,7 @@ steps:
 
 `build` 步骤类型支持下表中的参数。 `build` 步骤类型还支持 [docker build](https://docs.docker.com/engine/reference/commandline/build/) 命令的所有生成选项，例如 `--build-arg` 以设置生成时变量。
 
-| 参数 | 描述 | 可选 |
+| 参数 | 说明 | 可选 |
 | --------- | ----------- | :-------: |
 | `-t` &#124; `--image` | 定义所生成的映像的完全限定 `image:tag`。<br /><br />由于映像可用于内部任务验证（例如功能测试），并非所有映像都需要通过 `push` 推送到注册表。 但是，若要实例化任务执行中的某个映像，该映像确实需要引用某个名称。<br /><br />与 `az acr build` 不同，正在运行的 ACR 任务不提供默认的推送行为。 使用 ACR 任务时，默认方案假设能够生成、验证再推送映像。 请参阅 [push](#push)，了解如何选择性地推送所生成的映像。 | 是 |
 | `-f` &#124; `--file` | 指定要传递给 `docker build` 的 Dockerfile。 如果未指定，则假设使用上下文根目录中的默认 Dockerfile。 若要指定 Dockerfile，请传递相对于上下文根目录的文件名。 | 是 |
@@ -356,7 +356,7 @@ steps:
 
 每个步骤类型支持适用于其类型的多个属性。 下表定义了所有可用的步骤属性。 并非所有步骤类型都支持所有属性。 若要查看其中的哪些属性可用于每个步骤类型，请参阅 [cmd](#cmd)、[build](#build) 和 [push](#push) 步骤类型参考部分。
 
-| properties | 类型 | 可选 | 描述 | 默认值 |
+| properties | 类型 | 可选 | 说明 | 默认值 |
 | -------- | ---- | -------- | ----------- | ------- |
 | `detach` | bool | 是 | 在运行时是否应分离容器。 | `false` |
 | `disableWorkingDirectoryOverride` | bool | 是 | 是否禁用 `workingDirectory` 重写功能。 将此属性与 `workingDirectory` 结合使用可以全面控制容器的工作目录。 | `false` |
@@ -385,7 +385,7 @@ steps:
 
 #### <a name="example-id"></a>示例：id
 
-生成两个映像，并实例化功能测试映像。 每个步骤由任务中的其他步骤在其 `when` 属性中引用的唯一 `id` 进行标识。
+生成两个映像，并实例化功能测试映像。 每个步骤由任务中的其他步骤在其 `id` 属性中引用的唯一 `when` 进行标识。
 
 ```azurecli
 az acr run -f when-parallel-dependent.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -454,7 +454,7 @@ ACR 任务包含一组在执行时可供任务步骤使用的默认变量。 可
 * `Run.Branch`
 * `Run.TaskName`
 
-变量名称通常是自释性的。 常用的变量会附带详细信息。 从 YAML 版本 `v1.1.0` 开始，可以使用缩写的预定义[任务别名](#aliases)来代替大部分 run 变量。 例如，可以使用 `$Registry` 别名来代替 `{{.Run.Registry}}`。
+变量名称通常是自释性的。 常用的变量会附带详细信息。 从 YAML 版本 `v1.1.0` 开始，可以使用缩写的预定义[任务别名](#aliases)来代替大部分 run 变量。 例如，可以使用 `{{.Run.Registry}}` 别名来代替 `$Registry`。
 
 ### <a name="runid"></a>Run.ID
 
@@ -536,9 +536,9 @@ steps:
 
 ### <a name="image-aliases"></a>映像别名
 
-以下每个别名都指向 Microsoft 容器注册表 （MCR） 中的稳定映像。 可以在任务文件的 `cmd` 节中引用其中的每个别名，而无需使用指令。
+以下每个别名指向 Microsoft 容器注册表（MCR）中的稳定映像。 可以在任务文件的 `cmd` 节中引用其中的每个别名，而无需使用指令。
 
-| Alias | 图像 |
+| Alias | 映像 |
 | ----- | ----- |
 | `acr` | `mcr.microsoft.com/acr/acr-cli:0.1` |
 | `az` | `mcr.microsoft.com/acr/azure-cli:a80af84` |

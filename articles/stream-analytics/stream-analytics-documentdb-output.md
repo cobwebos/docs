@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
 ms.openlocfilehash: e58e36b3caa5a5ecd137cb9cb61dad7ddb95ff3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79254438"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Cosmos DB 的 Azure 流分析输出  
-Azure 流分析可以针对[Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/)进行 JSON 输出，从而启用对非结构化 JSON 数据的数据存档和低延迟查询。 本文档介绍有关实现此配置的一些最佳做法。
+Azure 流分析可将[Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/)用于 JSON 输出，从而支持对非结构化 JSON 数据进行数据存档和低延迟查询。 本文档介绍有关实现此配置的一些最佳做法。
 
-如果您不熟悉 Azure 宇宙数据库，请参阅[Azure Cosmos DB 文档](https://docs.microsoft.com/azure/cosmos-db/)以开始。 
+如果你不熟悉 Azure Cosmos DB，请参阅[Azure Cosmos DB 文档](https://docs.microsoft.com/azure/cosmos-db/)。 
 
 > [!Note]
-> 此时，流分析仅支持通过*SQL API*连接到 Azure 宇宙 DB。
-> 尚不支持使用其他 Azure Cosmos DB API。 如果将流分析指向使用其他 API 创建的 Azure Cosmos DB 帐户，则数据可能无法正确存储。 
+> 目前，流分析仅支持通过*SQL API*连接到 Azure Cosmos DB。
+> 尚不支持使用其他 Azure Cosmos DB API。 如果将流分析指向通过其他 Api 创建 Azure Cosmos DB 帐户，则数据可能无法正确存储。 
 
 ## <a name="basics-of-azure-cosmos-db-as-an-output-target"></a>作为输出目标的 Azure Cosmos DB 基础知识
 使用流分析中的 Azure Cosmos DB 输出可以将流处理结果作为 JSON 输出写入到 Azure Cosmos DB 容器中。 
@@ -41,7 +41,7 @@ Azure 流分析可以针对[Azure Cosmos DB](https://azure.microsoft.com/service
 
 另外，默认情况下，Azure Cosmos DB 对容器的每个 CRUD 操作启用了同步索引。 这是另一个有用选项，可控制 Azure Cosmos DB 中的读/写性能。 
 
-有关详细信息，请查看["更改数据库和查询一致性级别"](../cosmos-db/consistency-levels.md)一文。
+有关详细信息，请参阅[更改数据库和查询的一致性级别](../cosmos-db/consistency-levels.md)一文。
 
 ## <a name="upserts-from-stream-analytics"></a>从流分析进行 Upsert 操作
 由于流分析与 Azure Cosmos DB 集成，因此可以在容器中基于给定的“文档 ID”列插入或更新记录****。 这也称为“upsert”**。
@@ -105,7 +105,7 @@ Azure Cosmos DB 输出的吞吐量与版本 1.0 和 1.1 相同。 我们强烈�
 
 ![Azure Cosmos DB 输出流的信息字段](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-1.png)
 
-|字段           | 描述|
+|字段           | 说明|
 |-------------   | -------------|
 |输出别名    | 用于在流分析查询中引用此输出的别名。|
 |订阅    | Azure 订阅。|

@@ -1,5 +1,5 @@
 ---
-title: Azure 虚拟机缩放集实例的实例保护
+title: 针对 Azure 虚拟机规模集实例的实例保护
 description: 了解如何保护 Azure 虚拟机规模集实例，防止对其执行横向缩减操作和规模集操作。
 author: avirishuv
 tags: azure-resource-manager
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 02/26/2020
 ms.author: avverma
 ms.openlocfilehash: 021faad28fb575c4ffeb4d895ad451d8cd82b1a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79254113"
 ---
-# <a name="instance-protection-for-azure-virtual-machine-scale-set-instances"></a>Azure 虚拟机缩放集实例的实例保护
+# <a name="instance-protection-for-azure-virtual-machine-scale-set-instances"></a>针对 Azure 虚拟机规模集实例的实例保护
 
 Azure 虚拟机规模集可以通过[自动缩放](virtual-machine-scale-sets-autoscale-overview.md)提高工作负荷的弹性，让你可以配置何时对基础结构进行横向扩展，何时对其进行横向缩减。 规模集还可以让你通过不同的[升级策略](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)设置集中管理、配置和更新大量 VM。 可以针对规模集模型配置更新，此时如果已将升级策略设置为“自动”或“滚动”，则新配置会自动应用到每个规模集实例。
 
@@ -45,14 +45,14 @@ Azure 虚拟机规模集可以通过[自动缩放](virtual-machine-scale-sets-au
 
 ### <a name="azure-portal"></a>Azure 门户
 
-可以通过 Azure 门户将扩展保护应用于比例集中的实例。 不能一次调整多个实例。 对要保护的每个实例重复这些步骤。
+可以通过 Azure 门户对规模集中的实例应用横向缩减保护。 不能一次调整多个实例。 对要保护的每个实例重复以下步骤。
  
 1. 转到现有虚拟机规模集。
-1. 从左侧的菜单中选择"**设置**"下的**实例**。
+1. 从左侧菜单的“设置”  下选择“实例”  。
 1. 选择要保护的实例的名称。
-1. 选择 **"保护策略"** 选项卡。
-1. 在 **"保护策略"** 边栏选项卡中，选择"**防止放大"** 选项。
-1. 选择“保存”。**** 
+1. 选择“保护策略”  选项卡。
+1. 在“保护策略”  边栏选项卡中，选择“防止进行横向缩减”  选项。
+1. 选择“保存”。  
 
 ### <a name="rest-api"></a>REST API
 
@@ -113,14 +113,14 @@ az vmss update \
 
 ### <a name="azure-portal"></a>Azure 门户
 
-可以通过 Azure 门户将比例集操作的保护应用于比例集中的实例。 不能一次调整多个实例。 对要保护的每个实例重复这些步骤。
+可以通过 Azure 门户将“使其不受规模集操作的影响”应用到规模集中的一个实例。 不能一次调整多个实例。 对要保护的每个实例重复以下步骤。
  
 1. 转到现有虚拟机规模集。
-1. 从左侧的菜单中选择"**设置**"下的**实例**。
+1. 从左侧菜单的“设置”  下选择“实例”  。
 1. 选择要保护的实例的名称。
-1. 选择 **"保护策略"** 选项卡。
-1. 在 **"保护策略"** 边栏选项卡中，选择"**从规模设置操作中保护"** 选项。
-1. 选择“保存”。**** 
+1. 选择“保护策略”  选项卡。
+1. 在“保护策略”  边栏选项卡中，选择“使其不受规模集操作的影响”  选项。
+1. 选择“保存”。  
 
 ### <a name="rest-api"></a>REST API
 
@@ -176,7 +176,7 @@ az vmss update \
   --protect-from-scale-set-actions true
 ```
 
-## <a name="troubleshoot"></a>疑难解答
+## <a name="troubleshoot"></a>故障排除
 ### <a name="no-protectionpolicy-on-scale-set-model"></a>不能在规模集模型上设置 protectionPolicy
 只能在规模集实例上应用实例保护，不能在规模集模型上应用。
 

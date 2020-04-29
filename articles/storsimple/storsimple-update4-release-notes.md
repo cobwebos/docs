@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
 ms.openlocfilehash: ef95ca7b9f94690b607e37fbf5d9378c2f2bcfda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79254581"
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>StorSimple 8000 系列 Update 4 发行说明
@@ -66,7 +66,7 @@ Update 4 中进行了以下重大改进和 bug 修复。
 
 下表提供在 Update 4 中已修复问题的摘要。    
 
-| 否 | Feature | 问题 | 适用于物理设备 | 适用于虚拟设备 |
+| 否 | 功能 | 问题 | 适用于物理设备 | 适用于虚拟设备 |
 | --- | --- | --- | --- | --- |
 | 1 |故障转移 |在早期版本中，当故障转移后，会在客户站点观察到与清理相关的问题。 在此版本中已修复了此问题。 |是 |是 |
 | 2 |本地固定卷 |在之前版本中，为本地固定卷创建卷时会出现导致卷创建失败的问题。 在此版本中已找到此问题的根本原因并进行了修复。 |是 |否 |
@@ -88,7 +88,7 @@ Update 4 中没有任何新的已知问题。 有关从之前版本遗留至 Upd
 
 此更新不能应用于 StorSimple 云工具（也称为虚拟设备）。 将需要新建虚拟设备。 
 
-## <a name="next-step"></a>后续步骤
+## <a name="next-step"></a>下一步
 
 了解如何在 StorSimple 设备上[安装 Update 4](storsimple-install-update-4.md)。
 

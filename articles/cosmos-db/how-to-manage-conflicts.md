@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: mjbrown
 ms.openlocfilehash: 6d364f1a9974d6d638bb0f824e88ed3866644c15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79247405"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的冲突解决策略
@@ -107,10 +107,10 @@ udp_collection = self.try_create_document_collection(
 
 必须使用下面显示的函数签名实现自定义冲突解决存储过程。 函数名称不需要与使用容器注册存储过程时使用的名称匹配，但它确实可以简化命名。 下面介绍了此存储过程必须实现的参数。
 
-- **传入项**：在提交中插入或更新的生成冲突的项。 对于删除操作为 null。
-- **现有项目**：当前提交的项。 此值在更新中为非 null，对于插入或删除是 null。
-- **是墓碑**：布尔指示传入项目是否与以前删除的项目冲突。 如果为 true，existingItem 也为 null。
-- **冲突项**：容器中所有与 ID 上的传入项目或任何其他唯一索引属性冲突的容器中所有项的提交版本的数组。
+- **incomingItem**：在生成冲突的提交中插入或更新的项。 对于删除操作为 null。
+- **existingItem**：当前已提交的项。 此值在更新中为非 null，对于插入或删除是 null。
+- **isTombstone**：指示 incomingItem 是否与以前删除的项冲突的布尔值。 如果为 true，existingItem 也为 null。
+- **conflictingItems**：容器中所有项目的已提交版本的数组，与 ID 上的 incomingItem 或唯一索引属性冲突。
 
 > [!IMPORTANT]
 > 与任何存储过程一样，自定义冲突解决过程可以访问具有相同分区键的任何数据，并可以执行任何插入、更新或删除操作来解决冲突。
@@ -430,6 +430,6 @@ while conflict:
 - [如何在应用程序中配置多主数据库](how-to-multi-master.md)
 - [配置多宿主客户端](how-to-manage-database-account.md#configure-multiple-write-regions)
 - [在 Azure Cosmos DB 帐户中添加或删除区域](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
-- [如何在应用程序中配置多主机](how-to-multi-master.md)。
+- [如何配置应用程序中的多主数据库](how-to-multi-master.md)。
 - [分区和数据分布](partition-data.md)
 - [Azure Cosmos DB 中的索引](indexing-policies.md)

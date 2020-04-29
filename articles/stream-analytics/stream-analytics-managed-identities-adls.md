@@ -1,5 +1,5 @@
 ---
-title: 将 Azure 流分析验证为 Azure 数据存储第 1 代
+title: 向 Azure Data Lake Storage Gen1 进行 Azure 流分析身份验证
 description: 本文介绍如何使用托管标识在 Azure Data Lake Storage Gen1 输出中对 Azure 流分析作业进行身份验证。
 author: mamccrea
 ms.author: mamccrea
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: 01741ea56b9e6f55c1393e88fc7991d410c33119
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79254373"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>使用托管标识在 Azure Data Lake Storage Gen1 中对流分析进行身份验证
@@ -24,11 +24,11 @@ Azure 流分析支持使用 Azure Data Lake Storage (ADLS) Gen1 输出进行托�
 
 ## <a name="azure-portal"></a>Azure 门户
 
-1. 首先创建新的流分析作业，或在 Azure 门户中打开现有的作业。 在屏幕左侧的菜单栏中，选择“配置”下面的“托管标识”。********
+1. 首先创建新的流分析作业，或在 Azure 门户中打开现有的作业。 在屏幕左侧的菜单栏中，选择“配置”下面的“托管标识”。  
 
    ![配置流分析托管标识](./media/stream-analytics-managed-identities-adls/stream-analytics-managed-identity-preview.png)
 
-2. 在右侧显示的窗口中选择“使用系统分配的托管标识”。**** 单击“保存”，为 Azure Active Directory 中的流分析作业标识创建服务主体。**** 新建标识的生命周期将由 Azure 管理。 删除流分析作业时，Azure 会自动删除关联的标识（即服务主体）。
+2. 在右侧显示的窗口中选择“使用系统分配的托管标识”。  单击“保存”，为 Azure Active Directory 中的流分析作业标识创建服务主体。  新建标识的生命周期将由 Azure 管理。 删除流分析作业时，Azure 会自动删除关联的标识（即服务主体）。
 
    保存配置后，服务主体的对象 ID (OID) 将列为主体 ID，如下所示：
 
@@ -54,7 +54,7 @@ Azure 流分析支持使用 Azure Data Lake Storage (ADLS) Gen1 输出进行托�
 
    ![选择服务主体名称](./media/stream-analytics-managed-identities-adls/stream-analytics-service-principal-name.png)
  
-8. 在“权限”窗格中，选中“写入”和“执行”权限并将其分配到“此文件夹和所有子文件夹”。**************** 然后单击 **"确定**"。
+8. 在“权限”窗格中，选中“写入”和“执行”权限并将其分配到“此文件夹和所有子文件夹”。**************** 然后单击 **"确定"**。
 
    ![选择写入和执行权限](./media/stream-analytics-managed-identities-adls/stream-analytics-select-permissions.png)
  
@@ -176,11 +176,11 @@ Azure 流分析支持使用 Azure Data Lake Storage (ADLS) Gen1 输出进行托�
    若要详细了解上述 PowerShell 命令，请参阅 [Set-AzDataLakeStoreItemAclEntry](/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry) 文档。
 
 ## <a name="limitations"></a>限制
-此功能不支持以下内容：
+此功能不支持以下功能：
 
-1. **多租户访问**：为给定的流分析作业创建的服务主体将驻留在创建作业的 Azure 活动目录租户上，并且不能针对驻留在其他 Azure 活动目录租户上的资源使用。 因此，只能将 MSI 用在 ADLS Gen 1 资源上，且这些资源必须位于 Azure 流分析作业所在的 Azure Active Directory 租户中。 
+1. **多租户访问**：为给定流分析作业创建的服务主体将驻留在创建该作业的 Azure Active Directory 租户上，不能用于驻留在不同 Azure Active Directory 租户上的资源。 因此，只能将 MSI 用在 ADLS Gen 1 资源上，且这些资源必须位于 Azure 流分析作业所在的 Azure Active Directory 租户中。 
 
-2. **[不支持用户分配的身份](../active-directory/managed-identities-azure-resources/overview.md)**： 这意味着，用户不能输入自己的供流分析作业使用的服务主体。 服务主体由 Azure 流分析生成。
+2. **[用户分配的标识](../active-directory/managed-identities-azure-resources/overview.md)**：不受支持。 这意味着，用户不能输入自己的供流分析作业使用的服务主体。 服务主体由 Azure 流分析生成。
 
 ## <a name="next-steps"></a>后续步骤
 
