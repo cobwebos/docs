@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 80dba57d4fe05630eb5ae4f8fc96bd0aa214c6d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302264"
 ---
 # <a name="lower-azure-cosmos-db"></a>LOWER (Azure Cosmos DB)
@@ -25,7 +25,7 @@ LOWER 系统函数不使用索引。 如果计划频繁进行不区分大小写�
 LOWER(<str_expr>)  
 ```  
   
-## <a name="arguments"></a>自变量
+## <a name="arguments"></a>参数
   
 *str_expr*  
    是一个字符串表达式。  
@@ -51,10 +51,10 @@ SELECT LOWER("Abc") AS lower
 
 ## <a name="remarks"></a>备注
 
-此系统功能不会利用索引。
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [字符串函数 Azure Cosmos DB](sql-query-string-functions.md)
-- [系统功能 Azure 宇宙 DB](sql-query-system-functions.md)
-- [Azure 宇宙 DB 简介](introduction.md)
+- [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB 简介](introduction.md)

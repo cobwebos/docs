@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.openlocfilehash: 8466fbcb4325dc244551a3b84fc20581366b7071
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78851145"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>流分析和 Power BI：针对流数据的实时分析仪表板
@@ -23,7 +23,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 可观看演示此方案的[视频](https://www.youtube.com/watch?v=SGUpT-a99MA)。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保具有以下各项：
 
@@ -37,14 +37,14 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 
 1. 在 Azure 门户中，打开前面创建的流分析作业。 如果使用建议的名称，则作业名为 `sa_frauddetection_job_demo`。
 
-2. 在左侧菜单上，选择**作业拓扑**下的 **"输出**"。 然后，选择 **+ 添加**并从下拉菜单中选择 **"电源 BI"。**
+2. 在左侧菜单中，选择 "**作业拓扑**" 下的 "**输出**"。 然后，选择 " **+ 添加**"，并从下拉菜单中选择 " **Power BI** "。
 
-3. 选择 **= 添加** > **电源 BI**。 然后在窗体中填写以下详细信息并选择“授权”：****
+3. 选择 " **+ 添加** > **Power BI**"。 然后在窗体中填写以下详细信息并选择“授权”：****
 
    |**设置**  |**建议的值**  |
    |---------|---------|
-   |输出别名  |  呼叫流-电源BI  |
-   |数据集名称  |   sa 数据集  |
+   |输出别名  |  CallStream-PowerBI  |
+   |数据集名称  |   sa-数据集  |
    |表名称 |  欺诈性呼叫  |
 
    ![配置 Azure 流分析输出](media/stream-analytics-power-bi-dashboard/configure-stream-analytics-output.png)
@@ -56,12 +56,12 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 
 4. 选择“授权”以后，系统会打开一个弹出窗口，并要求你提供通过 Power BI 帐户进行身份验证所需的凭据。**** 授权成功以后，请单击“保存”以保存设置。****
 
-8. 单击 **“创建”**。
+8. 单击 **“创建”** 。
 
 数据集是使用以下设置创建的；
 
-* **默认保留策略：基本 FIFO** - 数据为 FIFO，最多 200，000 行。
-* **默认模式：推送流**- 数据集同时支持流式处理磁贴和基于报表的传统视觉对象（也称为推送）。
+* **其 defaultretentionpolicy 已： BasicFIFO** -数据为 FIFO，最多可包含200000行。
+* **defaultMode： pushStreaming** -数据集支持流式处理磁贴和传统的基于报表的视觉对象（也称为推送）。
 
 目前，无法其他标志创建数据集。
 
@@ -99,7 +99,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-4. 单击“保存”。****
+4. 单击 **“保存”** 。
 
 
 ## <a name="test-the-query"></a>测试查询
@@ -114,17 +114,17 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 
        `telcodatagen.exe 1000 .2 2`
 
-2. 在"流分析"作业的**查询**页上，单击`CallStream`输入旁边的点，然后**从输入中选择"示例数据**"。
+2. 在流分析作业的 "**查询**" 页上，单击输入旁边的点`CallStream` ，然后选择 "**来自输入的示例数据**"。
 
 3. 指定你需要 3 分钟的数据，然后单击“确定”****。 请等到出现数据已采样的通知。
 
-4. 单击 **"测试**"并查看结果。
+4. 单击 "**测试**" 并查看结果。
 
 ## <a name="run-the-job"></a>运行作业
 
-1. 确保 TelcoStreaming 应用正在运行。
+1. 请确保 TelcoStreaming 应用正在运行。
 
-2. 导航到"流分析"作业的 **"概述"** 页，然后选择 **"开始**"。
+2. 导航到流分析作业的 "**概述**" 页，然后选择 "**启动**"。
 
     ![启动流分析作业](./media/stream-analytics-power-bi-dashboard/stream-analytics-sa-job-start-output.png)
 
@@ -137,7 +137,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 
     ![Power BI 中的流式处理数据集位置](./media/stream-analytics-power-bi-dashboard/stream-analytics-streaming-dataset.png)
 
-2. 在工作区中，单击"**+&nbsp;创建**"。
+2. 在工作区中， ** + &nbsp;** 单击 "创建"。
 
     ![Power BI 工作区中的“创建”按钮](./media/stream-analytics-power-bi-dashboard/pbi-create-dashboard.png)
 
@@ -157,13 +157,13 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 
     ![新磁贴的可视化效果详细信息](./media/stream-analytics-power-bi-dashboard/add-fraudulent-calls-tile.png)
 
-7. 单击“下一步”****。
+7. 单击“下一步”。 
 
 8. 填写磁贴详细信息，例如标题和副标题。
 
     ![新磁贴的标题和副标题](./media/stream-analytics-power-bi-dashboard/pbi-new-tile-details.png)
 
-9. 单击 **“应用”**。
+9. 单击“应用”  。
 
     现已创建一个欺诈计数器！
 
@@ -235,11 +235,11 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 使用 Power BI 刷新授权后，授权区域中会出现一条绿色通知，指出问题已解决。
 
 ## <a name="get-help"></a>获取帮助
-有关进一步帮助，请尝试我们的[Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)
-* [使用 Azure 流分析开始](stream-analytics-real-time-fraud-detection.md)
+* [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
 * [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

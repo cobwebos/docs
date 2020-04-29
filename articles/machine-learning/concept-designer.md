@@ -10,16 +10,16 @@ ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
 ms.openlocfilehash: 78a6e7fa8d030185f537136a3a2124d8bc59d808
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79037624"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>什么是 Azure 机器学习设计器（预览版）？ 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-使用 Azure 机器学习设计器，能够在交互式画布上直观地连接[数据集](#datasets)和[模块](#module)，以创建机器学习模型。 要了解如何开始与设计师合作，请参阅[教程：与设计师一起预测汽车价格](tutorial-designer-automobile-price-train-score.md)
+使用 Azure 机器学习设计器，能够在交互式画布上直观地连接[数据集](#datasets)和[模块](#module)，以创建机器学习模型。 若要了解如何开始使用设计器，请参阅[教程：使用设计器预测汽车价格](tutorial-designer-automobile-price-train-score.md)
 
 ![Azure 机器学习设计器示例](./media/concept-designer/designer-drag-and-drop.gif)
 
@@ -39,11 +39,11 @@ ms.locfileid: "79037624"
 + 将[数据集](#datasets)和[模块](#module)拖放至画布上。
 + 将模块连接在一起以创建[管道草稿](#pipeline-draft)。
 + 使用 Azure 机器学习工作区中的计算资源提交[管道运行](#pipeline-run)。
-+ 将训练管道转换为推理管道********。
-+ 将管道[发布](#publish)到 REST 管道终结点，以提交具有不同参数和数据集的新管道运行****。
-    + 发布训练管道，在更改参数和数据集时重用单个管道训练多个模型****。
-    + 发布批量推理管道，通过使用以前训练的模型针对新数据进行预测****。
-+ 将实时推理管道[部署](#deploy)到实时终结点，以便针对新数据进行实时预测****。
++ 将训练管道转换为推理管道   。
++ 将管道[发布](#publish)到 REST 管道终结点，以提交具有不同参数和数据集的新管道运行  。
+    + 发布训练管道，在更改参数和数据集时重用单个管道训练多个模型  。
+    + 发布批量推理管道，通过使用以前训练的模型针对新数据进行预测  。
++ 将实时推理管道[部署](#deploy)到实时终结点，以便针对新数据进行实时预测  。
 
 ![设计器中的训练、批量推理和实时推理的工作流示意图](./media/concept-designer/designer-workflow-diagram.png)
 
@@ -53,7 +53,7 @@ ms.locfileid: "79037624"
 
 ### <a name="pipeline-draft"></a>管道草稿
 
-在设计器中编辑管道时，你的进度会保存为管道草稿****。 可以通过添加或删除模块、配置计算目标、创建参数等方式随时编辑管道草案。
+在设计器中编辑管道时，你的进度会保存为管道草稿  。 可以通过添加或删除模块、配置计算目标、创建参数等方式随时编辑管道草案。
 
 有效管道具有以下特征：
 
@@ -66,7 +66,7 @@ ms.locfileid: "79037624"
 
 ### <a name="pipeline-run"></a>管道运行
 
-每次运行管道时，管道及其结果的配置都作为管道运行存储在工作区中****。 出于故障排除或审核目的，可以返回任何管道运行以对其进行检查。 克隆管道运行，可创建新的管道草稿以供编辑****。
+每次运行管道时，管道及其结果的配置都作为管道运行存储在工作区中  。 出于故障排除或审核目的，可以返回任何管道运行以对其进行检查。 克隆管道运行，可创建新的管道草稿以供编辑  。
 
 管道运行被分入[试验](concept-azure-machine-learning-architecture.md#experiments)以整理运行历史记录。 可以为每个管道运行设置试验。 
 
@@ -84,7 +84,7 @@ ms.locfileid: "79037624"
 
 在浏览可用的机器学习算法库时如需帮助，请参阅[算法和模块参考概述](algorithm-module-reference/module-reference.md)
 
-## <a name="compute-resources"></a><a name="compute"></a>计算资源
+## <a name="compute-resources"></a><a name="compute"></a> 计算资源
 
 使用工作区中的计算资源来运行管道，并将已部署的模型作为实时终结点或管道终结点托管（用于批量推理）。 支持的计算目标为：
 
@@ -101,11 +101,11 @@ ms.locfileid: "79037624"
 
 必须将实时终结点部署到 Azure Kubernetes 服务群集。
 
-要了解如何部署模型，请参阅[教程：使用设计器部署机器学习模型](tutorial-designer-automobile-price-deploy.md)。
+若要了解如何部署模型，请参阅[教程：使用设计器部署机器学习模型](tutorial-designer-automobile-price-deploy.md)。
 
 ## <a name="publish"></a>发布
 
-还可以将管道发布到管道终结点****。 与实时终结点类似，借助管道终结点，可以使用 REST 调用从外部应用程序提交新的管道运行。 但是不能使用管道终结点实时发送或接收数据。
+还可以将管道发布到管道终结点  。 与实时终结点类似，借助管道终结点，可以使用 REST 调用从外部应用程序提交新的管道运行。 但是不能使用管道终结点实时发送或接收数据。
 
 已发布的管道是灵活的，它们可用于训练或重新训练模型、[执行批量推断](how-to-run-batch-predictions-designer.md)、处理新数据等。 可以将多个管道发布到单个管道终结点，并指定要运行的管道版本。
 
@@ -134,6 +134,6 @@ ms.locfileid: "79037624"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 通过教程了解预测分析和机器学习的基础知识[：与设计师一起预测汽车价格](tutorial-designer-automobile-price-train-score.md)
-* 了解如何修改现有[设计器示例](samples-designer.md)以使其适应您的需要。
+* 要了解预测分析和机器学习的基本知识，请参考[教程：使用设计器预测汽车价格](tutorial-designer-automobile-price-train-score.md)
+* 了解如何根据自己的需求修改现有的[设计器示例](samples-designer.md)。
 

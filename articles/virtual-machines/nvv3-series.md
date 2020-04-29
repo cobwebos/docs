@@ -1,6 +1,6 @@
 ---
-title: NVv3 系列 - Azure 虚拟机
-description: NVv3 系列 VM 的规格。
+title: NVv3 系列-Azure 虚拟机
+description: NVv3 系列 Vm 的规格。
 services: virtual-machines
 author: vikancha
 ms.service: virtual-machines
@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: d74b00a4bade956d3a511a47b0a6b0011b9fb212
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78267427"
 ---
 # <a name="nvv3-series"></a>NVv3 系列
 
-NVv3 系列虚拟机由[NVIDIA 特斯拉 M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU 和 NVIDIA GRID 技术提供动力，采用英特尔 E5-2690 v4 （Broadwell） CPU 和英特尔超线程技术。 此类虚拟机面向 GPU 加速图形应用程序和虚拟桌面，客户希望利用这些应用和桌面直观呈现数据、模拟要查看的结果、处理 CAD 或渲染和流式处理内容。 此外，这些虚拟机还能运行编码和渲染等单精度工作负荷。 NVv3 虚拟机支持高级存储，其系统内存 （RAM） 的容量是其前置 NV 系列内存的两倍。  
+NVv3 系列虚拟机由[NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU 和 nvidia GRID 技术提供支持，其中包含 intel E5-2690 V4 （Broadwell） Cpu 和 Intel 超线程技术。 此类虚拟机面向 GPU 加速图形应用程序和虚拟桌面，客户希望利用这些应用和桌面直观呈现数据、模拟要查看的结果、处理 CAD 或渲染和流式处理内容。 此外，这些虚拟机还能运行编码和渲染等单精度工作负荷。 NVv3 虚拟机支持高级存储，并在与其前置 NV 系列进行比较时提供系统内存（RAM）的两倍。  
 
-NVv3 实例中的每个 GPU 都附带网格许可证。 使用此许可证，可以灵活地将 NV 实例用作单个用户的虚拟工作站，或将 25 个并发用户都连接到用于虚拟应用程序方案的 VM。
+NVv3 实例中的每个 GPU 都附带了网格许可证。 使用此许可证，可以灵活地将 NV 实例用作单个用户的虚拟工作站，或将 25 个并发用户都连接到用于虚拟应用程序方案的 VM。
 
 高级存储缓存：支持
 
@@ -26,7 +26,7 @@ NVv3 实例中的每个 GPU 都附带网格许可证。 使用此许可证，可
 
 内存保留更新：不支持
 
-| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大未缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数 | 虚拟工作站 | 虚拟应用程序 |
+| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大非缓存磁盘吞吐量： IOPS/MBps | 最大 NIC 数 | 虚拟工作站 | 虚拟应用程序 |
 |---|---|---|---|---|---|---|---|---|---|---|
 | Standard_NV12s_v3 |12 | 112 | 320  | 1 | 8  | 12 | 20000/200 | 4 | 1 | 25  |
 | Standard_NV24s_v3 |24 | 224 | 640  | 2 | 16 | 24 | 40000/400 | 8 | 2 | 50  |
@@ -38,15 +38,15 @@ NVv3 实例中的每个 GPU 都附带网格许可证。 使用此许可证，可
 
 ## <a name="supported-operating-systems-and-drivers"></a>支持的操作系统和驱动程序
 
-要利用 Azure N 系列 VM 的 GPU 功能，必须安装 NVIDIA GPU 驱动程序。
+若要利用 Azure N 系列 Vm 的 GPU 功能，必须安装 NVIDIA GPU 驱动程序。
 
 [NVIDIA GPU 驱动程序扩展](./extensions/hpccompute-gpu-windows.md)可在 N 系列 VM 上安装适当的 NVIDIA CUDA 或 GRID 驱动程序。 请使用 Azure 门户或工具（例如 Azure PowerShell 或 Azure 资源管理器模板）安装或管理该扩展。 有关受支持的操作系统和部署步骤，请参阅 [NVIDIA GPU 驱动程序扩展文档](./extensions/hpccompute-gpu-windows.md)。 有关 VM 扩展的常规信息，请参阅 [Azure 虚拟机扩展和功能](./extensions/overview.md)。
 
-如果选择手动安装 NVIDIA GPU 驱动程序，请参阅适用于 Windows 的[N 系列 GPU 驱动程序设置](./windows/n-series-driver-setup.md)，或针对 Linux 的 N 系列 GPU[驱动程序设置](./linux/n-series-driver-setup.md)，了解支持的操作系统、驱动程序、安装和验证步骤。
+如果选择手动安装 NVIDIA GPU 驱动程序，请参阅适用于[Windows 的 n 系列 gpu 驱动程序设置](./windows/n-series-driver-setup.md)或适用于[Linux 的 n 系列 gpu 驱动程序设置](./linux/n-series-driver-setup.md)，以支持操作系统、驱动程序、安装和验证步骤。
 
 ## <a name="other-sizes"></a>其他大小
 
-- [一般用途](sizes-general.md)
+- [常规用途](sizes-general.md)
 - [内存优化](sizes-memory.md)
 - [存储优化](sizes-storage.md)
 - [GPU 优化](sizes-gpu.md)
@@ -55,4 +55,4 @@ NVv3 实例中的每个 GPU 都附带网格许可证。 使用此许可证，可
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助你跨 Azure SKU 比较计算性能的详细信息。
+了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。

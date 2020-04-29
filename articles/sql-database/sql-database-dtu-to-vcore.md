@@ -10,10 +10,10 @@ ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 03/09/2020
 ms.openlocfilehash: 693065046f92e0e9eade14c43e9942772440937d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78945404"
 ---
 # <a name="migrate-from-the-dtu-based-model-to-the-vcore-based-model"></a>从基于 DTU 的模型迁移到基于 vCore 的模型
@@ -45,7 +45,7 @@ ms.locfileid: "78945404"
 |常规用途|业务关键|升级|必须先迁移辅助数据库|
 ||||
 
-\*根据经验，标准层中每 100 个 DU 至少需要 1 个 vCore，而高级层中每 125 个 DTU 至少需要 1 个 vCore。 有关详细信息，请参阅[基于 vCore 的购买模型](https://docs.microsoft.com/azure/sql-database/sql-database-purchase-models#vcore-based-purchasing-model)。
+\* 根据经验法则，标准层中的每 100 个 DTU 至少需要 1 个 vCore，高级层中的每 125 个 DTU 至少需要 1 个 vCore。 有关详细信息，请参阅[基于 vCore 的购买模型](https://docs.microsoft.com/azure/sql-database/sql-database-purchase-models#vcore-based-purchasing-model)。
 
 ## <a name="migrate-failover-groups"></a>迁移故障转移组
 

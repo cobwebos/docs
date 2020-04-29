@@ -1,6 +1,6 @@
 ---
-title: 身份验证方法 - Azure 活动目录
-description: Azure AD 中可用于 MFA 和 SSPR 的身份验证方法
+title: 身份验证方法-Azure Active Directory
+description: MFA 和 SSPR 的 Azure AD 中可用的身份验证方法
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,23 +12,23 @@ manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5a82c69575e82a7cf397955f08c3f114e449ba6b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78968773"
 ---
 # <a name="what-are-authentication-methods"></a>有哪些身份验证方法？
 
-作为管理员，选择 Azure 多重身份验证和自助服务密码重置 （SSPR） 的身份验证方法，建议用户注册多种身份验证方法。 当用户不能使用身份验证方法时，他们可以选择使用另一种方法进行身份验证。
+以管理员身份选择 Azure 多重身份验证和自助密码重置（SSPR）的身份验证方法时，建议你要求用户注册多个身份验证方法。 如果用户无法使用身份验证方法，则可以选择使用其他方法进行身份验证。
 
-管理员可在策略中定义 SSPR 和 MFA 用户能够使用哪些身份验证方法。 某些身份验证方法不一定适用于所有功能。 有关配置策略的详细信息，请参阅[有关如何成功推出自助服务密码重置](howto-sspr-deployment.md)和[规划基于云的 Azure 多重身份验证](howto-mfa-getstarted.md)的文章
+管理员可在策略中定义 SSPR 和 MFA 用户能够使用哪些身份验证方法。 某些身份验证方法不一定适用于所有功能。 有关配置策略的详细信息，请参阅文章[如何成功推出自助服务密码重置](howto-sspr-deployment.md)和[规划基于云的 Azure 多重身份验证](howto-mfa-getstarted.md)
 
 Microsoft 强烈建议管理员允许用户选择超过最小所需数量的身份验证方法，以防他们无法使用其中的某个方法。
 
 |身份验证方法|使用情况|
 | --- | --- |
-| 密码 | MFA 和 SSPR |
+| Password | MFA 和 SSPR |
 | 安全提问 | 仅限 SSPR |
 | 电子邮件地址 | 仅限 SSPR |
 | Microsoft Authenticator 应用 | MFA 和 SSPR |
@@ -41,10 +41,10 @@ Microsoft 强烈建议管理员允许用户选择超过最小所需数量的身�
 
 |     |
 | --- |
-| MFA 和 SSPR 的 OATH 硬件令牌是 Azure 活动目录的公共预览功能。 有关预览的详细信息，请参阅 Microsoft [Azure 预览的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| 适用于 MFA 和 SSPR 的 OATH 硬件令牌是 Azure Active Directory 的公共预览功能。 有关预览的详细信息，请参阅[Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
-## <a name="password"></a>密码
+## <a name="password"></a>Password
 
 Azure AD 密码被视为身份验证方法。 它是唯一**不可禁用**的方法。
 
@@ -123,10 +123,10 @@ Microsoft 建议使用无需提供用户 Azure AD 密码即可访问的电子邮
 
 Microsoft Authenticator 应用为 Azure AD 工作或学校帐户或 Microsoft 帐户提供附加的安全级别。
 
-微软身份验证器应用程序可用于[安卓](https://go.microsoft.com/fwlink/?linkid=866594)[，iOS](https://go.microsoft.com/fwlink/?linkid=866594)和[Windows手机](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)。
+Microsoft Authenticator 应用可用于[Android](https://go.microsoft.com/fwlink/?linkid=866594)、 [iOS](https://go.microsoft.com/fwlink/?linkid=866594)和[Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)。
 
 > [!NOTE]
-> 用户在注册自助密码重置时，无法选择注册其移动应用。 相反，用户可以在 或 在[https://aka.ms/mfasetup](https://aka.ms/mfasetup)的安全信息注册预览版上[https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)注册其移动应用。
+> 用户在注册自助密码重置时，无法选择注册其移动应用。 相反，用户可以在[https://aka.ms/mfasetup](https://aka.ms/mfasetup)或的安全信息注册预览中注册其移动应用。 [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)
 >
 
 ### <a name="notification-through-mobile-app"></a>通过移动应用发送通知
@@ -142,27 +142,27 @@ Microsoft Authenticator 应用通过将通知推送到智能手机或平板电�
 如果你允许通过移动应用和移动应用的验证码使用通知，则使用通知注册 Microsoft Authenticator 应用的用户可以使用通知和代码来验证其身份。
 
 > [!NOTE]
-> 如果您的组织有工作人员在中国工作或前往中国，则**通过 Android 设备上****的移动应用方法通知**在该国不起作用。 应为这些用户提供替代方法。
+> 如果你的组织有员工在中国工作或出差，则通过**Android 设备**上的**移动应用方法发出的通知**在该国家/地区不起作用。 应为这些用户提供备用方法。
 
 ### <a name="verification-code-from-mobile-app"></a>通过移动应用发送验证码
 
 Microsoft Authenticator 应用或其他第三方应用可用作生成 OATH 验证码所需的软件令牌。 输入用户名和密码后，在登录屏幕中输入该应用提供的代码。 验证码提供了第二种形式的身份验证。
 
 > [!WARNING]
-> 对于自助服务密码重置，当只需一种方法来重置验证码是用户唯一可用的选项 **，以确保最高级别的安全性**。
+> 对于自动重置密码，仅当重置验证代码需要一个方法时，用户才可以使用此选项**来确保最高的安全级别**。
 >
 
-用户可能拥有最多五个 OATH 硬件令牌或身份验证器应用程序的组合，例如 Microsoft 身份验证器应用程序配置为随时使用。
+用户最多可将五个 OATH 硬件令牌或验证器应用程序（例如配置为使用的 Microsoft Authenticator 应用）组合到一起使用。
 
 ## <a name="oath-hardware-tokens-public-preview"></a>OATH 硬件令牌（公共预览版）
 
-OATH 是一个开放标准，用于指定如何生成一次性密码 (OTP) 代码。 Azure AD 将支持使用 30 秒或 60 秒的 OATH-TOTP SHA-1 令牌。 客户可以从所选的供应商处购买这些令牌。 密钥限制为 128 个字符，这可能与所有令牌兼容。 密钥只能包含*字符 a-z*或*A-Z*和数字*1-7，* 并且必须在 Base32 中编码。
+OATH 是一个开放标准，用于指定如何生成一次性密码 (OTP) 代码。 Azure AD 将支持使用 30 秒或 60 秒的 OATH-TOTP SHA-1 令牌。 客户可以从所选的供应商处购买这些令牌。 机密密钥限制为128个字符，它们可能与所有令牌都不兼容。 密钥只能*包含字符 a-z*或 a-z 以及数字*1-7* *，并且必须*在 Base32 中进行编码。
 
-![将 OATH 令牌上载到 MFA OATH 令牌刀片](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
+![将 OATH 令牌上传到 MFA OATH 令牌边栏选项卡](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 
-作为公共预览的一部分，支持 OATH 硬件令牌。 有关预览的详细信息，请参阅 Microsoft [Azure 预览的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+公共预览版中支持 OATH 硬件令牌。 有关预览的详细信息，请参阅[Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
-获取令牌后，必须以逗号分隔的值 （CSV） 文件格式上载令牌，包括 UPN、序列号、密钥、时间间隔、制造商和模型，如以下示例所示：
+获取令牌后，必须以逗号分隔值（CSV）文件格式（包括 UPN、序列号、密钥、时间间隔、制造商和型号）上传这些令牌，如以下示例中所示：
 
 ```csv
 upn,serial number,secret key,time interval,manufacturer,model
@@ -170,15 +170,15 @@ Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
 ```
 
 > [!NOTE]
-> 请确保在 CSV 文件中包含标头行。
+> 请确保 CSV 文件中包含标题行。
 
-将 CSV 文件正确格式化后，管理员可以登录到 Azure 门户，导航到 Azure**活动目录** > **安全** > **MFA** > **OATH 令牌**，并上载生成的 CSV 文件。
+格式化为 CSV 文件后，管理员可以登录到 Azure 门户，导航到**Azure Active Directory** > **安全** > **MFA** > **OATH 令牌**，并上传生成的 CSV 文件。
 
-根据 CSV 文件的大小，这可能需要花费几分钟来处理。 单击“刷新”按钮可获取当前状态****。 如果文件中有任何错误，可以选择下载 CSV 文件，其中列出了需要解决的所有错误。 下载的 CSV 文件中的字段名称与上载的版本不同。
+根据 CSV 文件的大小，这可能需要花费几分钟来处理。 单击“刷新”按钮可获取当前状态****。 如果文件中有任何错误，可以选择下载 CSV 文件，其中列出了需要解决的所有错误。 下载的 CSV 文件中的字段名称与上传的版本不同。
 
 解决所有错误后，管理员可以对要激活的令牌单击“激活”，然后输入令牌上显示的 OTP，以此来激活每个密钥****。
 
-用户可能拥有最多五个 OATH 硬件令牌或身份验证器应用程序的组合，例如 Microsoft 身份验证器应用程序配置为随时使用。
+用户最多可将五个 OATH 硬件令牌或验证器应用程序（例如配置为使用的 Microsoft Authenticator 应用）组合到一起使用。
 
 ## <a name="phone-options"></a>电话选项
 
@@ -195,7 +195,7 @@ Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
 >
 > 密码重置不支持电话分机。 即使采用“+1 4255551234X12345”格式，在拨出电话前也会删除分机。
 
-Microsoft 不保证相同号码传送的短信或基于语音的多重身份验证提示一致。 为了用户的利益，Microsoft 在做出路线调整期间可能随时添加或删除简短代码，以提高短信传送能力。 除美国和加拿大外，Microsoft 不支持国家/地区的短代码。
+Microsoft 不保证相同号码传送的短信或基于语音的多重身份验证提示一致。 为了用户的利益，Microsoft 在做出路线调整期间可能随时添加或删除简短代码，以提高短信传送能力。 除美国和加拿大以外，Microsoft 不支持国家/地区的短代码。
 
 #### <a name="text-message"></a>短信
 
@@ -228,20 +228,20 @@ Microsoft 不保证相同号码传送的短信或基于语音的多重身份验�
 
 使用电话号码的身份验证方法相关的常见问题：
 
-* 单个设备上的已阻止呼叫者 ID
-   * 设备故障
-* 电话号码错误、国家/地区代码不正确、家庭电话号码与工作电话号码
-   * 排除用户对象和配置的身份验证方法。 确保注册了正确的电话号码。
-* 输入错误的 PIN
-   * 确认用户已使用在 Azure MFA 服务器中注册的正确 PIN。
-* 呼叫转接到语音邮件
-   * 确保用户已打开电话，并且服务在其区域中可用或使用替代方法。
+* 单个设备上阻止的呼叫方 ID
+   * 排查设备问题
+* 错误的电话号码、国家/地区代码不正确、家庭电话号码与工作电话号码
+   * 排查用户对象和配置的身份验证方法。 确保注册了正确的电话号码。
+* 输入的 PIN 错误
+   * 确认用户使用了在 Azure MFA 服务器中注册的正确 PIN。
+* 呼叫转发到语音邮件
+   * 确保用户已打开手机并且该服务在其区域中可用或使用替代方法。
 * 用户被阻止
-   * 让管理员在 Azure 门户中取消阻止用户。
+   * 让管理员取消阻止 Azure 门户中的用户。
 * 设备上未订阅短信
-   * 让用户更改方法或在设备上激活 SMS。
-* 故障电信提供商（未检测到电话输入、缺少 DTMF 音色问题、多个设备上的呼叫者 ID 被阻止或跨多个设备阻止短信）
-   * Microsoft 使用多个电信提供商路由电话和短信进行身份验证。 如果您看到上述任何问题，用户尝试在 5 分钟内至少使用该方法 5 次，并且在联系 Microsoft 支持时可以使用该用户的信息。
+   * 让用户更改方法或激活设备上的 SMS。
+* 错误的电信提供商（检测不到电话输入，缺少 DTMF 音问题，在多台设备上阻止的呼叫方 ID，或跨多台设备阻止的短信）
+   * Microsoft 使用多个电信提供商路由电话呼叫和短信以进行身份验证。 如果你看到上述任何问题，则用户在5分钟内至少尝试使用方法5次，并在联系 Microsoft 支持部门时提供该用户的信息。
 
 ## <a name="app-passwords"></a>应用密码
 
@@ -263,6 +263,6 @@ Microsoft 不保证相同号码传送的短信或基于语音的多重身份验�
 
 [为组织启用 Azure 多重身份验证](howto-mfa-getstarted.md)
 
-[在租户中启用合并注册](howto-registration-mfa-sspr-combined.md)
+[启用租户中的组合注册](howto-registration-mfa-sspr-combined.md)
 
 [最终用户身份验证方法配置文档](https://aka.ms/securityinfoguide)

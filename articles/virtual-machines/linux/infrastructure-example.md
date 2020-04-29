@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: 6040bf8862131f5a8a5564cd2f5d845fa0490a95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78944908"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>适用于 Linux VM 的 Azure 示例基础结构演练
-本文将逐步讲述如何构建示例应用程序基础结构。 我们将详细介绍如何设计简单在线商店的基础结构，此在线商店可将关于命名约定、可用性集、虚拟网络及负载均衡器的所有准则和决策聚集在一起；以及如何实际部署虚拟机 (VM)。
+本文逐步讲述如何构建示例应用程序基础结构。 我们详细介绍如何设计简单在线商店的基础结构，此在线商店可将关于命名约定、可用性集、虚拟网络及负载均衡器的所有准则和决策聚集在一起；以及如何实际部署你的虚拟机 (VM)。
 
 ## <a name="example-workload"></a>示例工作负荷
-Adventure Works Cycles 想要在 Azure 中生成一个在线商店应用程序，该应用程序将包含：
+Adventure Works Cycles 想要在 Azure 中生成一个在线商店应用程序，该应用程序包含：
 
 * 两个在 Web 层中运行客户端前端的 nginx 服务器
 * 两个在应用程序层中处理数据和订单的 nginx 服务器
@@ -41,7 +41,7 @@ Adventure Works Cycles 想要在 Azure 中生成一个在线商店应用程序�
 * 具有类似角色的 VM 的可用性集
 * 虚拟机
 
-以上各项都将遵循以下命名约定：
+以上各项都会遵循以下命名约定：
 
 * Adventure Works Cycles 使用 **[IT 工作负荷]-[位置]-[Azure 资源]** 作为前缀
   * 在本示例中，IT 工作负荷名为 **azos** (Azure On-line Store)，位置为 **use**（美国东部 2）
@@ -67,10 +67,10 @@ Adventure Works Cycles 确定其应使用 Azure 托管磁盘。 创建 VM 时，
 * 位置：美国东部 2
 * 虚拟网络地址空间：10.0.0.0/8
 * 第一个子网：
-  * 名称：FrontEnd
+  * 姓名：FrontEnd
   * 地址空间：10.0.1.0/24
 * 第二个子网：
-  * 名称：BackEnd
+  * 姓名：BackEnd
   * 地址空间：10.0.2.0/24
 
 ## <a name="availability-sets"></a>可用性集

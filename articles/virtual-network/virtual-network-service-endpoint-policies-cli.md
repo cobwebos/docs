@@ -1,6 +1,6 @@
 ---
-title: 将数据外泄限制为 Azure 存储 - Azure CLI
-description: 在本文中，您将了解如何使用 Azure CLI 使用虚拟网络服务终结点策略限制和限制虚拟网络数据向 Azure 存储资源渗透。
+title: 将数据渗透限制为 Azure 存储-Azure CLI
+description: 本文介绍如何使用 Azure CLI 的虚拟网络服务终结点策略，将虚拟网络数据渗透限制和限制为 Azure 存储资源。
 services: virtual-network
 documentationcenter: virtual-network
 author: rdhillon
@@ -18,34 +18,34 @@ ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
 ms.openlocfilehash: e01af052a936403162115965f2dc5b3ad46dd9cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78271187"
 ---
-# <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-the-azure-cli"></a>使用 Azure CLI 使用虚拟网络服务终结点策略管理数据渗入到 Azure 存储帐户
+# <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-the-azure-cli"></a>使用 Azure CLI 的虚拟网络服务终结点策略管理数据渗透到 Azure 存储帐户
 
-虚拟网络服务终结点策略使您能够通过服务终结点从虚拟网络内对 Azure 存储帐户应用访问控制。 这是保护工作负载、管理允许哪些存储帐户以及允许数据渗漏的位置的关键。
+利用虚拟网络服务终结点策略，你可以通过服务终结点在虚拟网络中应用对 Azure 存储帐户的访问控制。 这是保护工作负荷的关键，管理允许的存储帐户和允许数据渗透的位置。
 在本文中，学习如何：
 
-* 创建虚拟网络并添加子网。
-* 为 Azure 存储启用服务终结点。
-* 创建两个 Azure 存储帐户，并允许从上面创建的子网进行网络访问。
-* 创建服务终结点策略，仅允许访问其中一个存储帐户。
-* 将虚拟机 （VM） 部署到子网。
-* 确认从子网对允许的存储帐户的访问。
-* 确认从子网对不允许的存储帐户的访问被拒绝。
+* 创建一个虚拟网络并添加一个子网。
+* 启用 Azure 存储的服务终结点。
+* 创建两个 Azure 存储帐户，并在上面创建的子网中允许对其进行网络访问。
+* 创建服务终结点策略，只允许访问其中一个存储帐户。
+* 将虚拟机（VM）部署到子网。
+* 从子网确认对允许的存储帐户的访问权限。
+* 确认拒绝从子网到不允许的存储帐户的访问。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.28 或更高版本。 要查找版本，请运行 `az --version`。 如果需要安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
+如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.28 或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。 
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
-创建虚拟网络之前，必须为虚拟网络创建资源组以及本文中创建的所有其他资源。 使用 [az group create](/cli/azure/group) 创建资源组。 下面的示例在*东部*位置创建名为*myResourceGroup*的资源组。
+创建虚拟网络之前，必须为虚拟网络创建资源组以及本文中创建的所有其他资源。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在“eastus”  位置创建名为“myResourceGroup”  的资源组。
 
 ```azurecli-interactive
 az group create \
@@ -66,7 +66,7 @@ az network vnet create \
 
 ## <a name="enable-a-service-endpoint"></a>启用服务终结点 
 
-在此示例中，为*Microsoft.存储*创建了一个服务终结点，用于子网*专用*： 
+在此示例中，为子网 "*专用*" 创建了*Microsoft*的服务终结点： 
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -150,11 +150,11 @@ az network nsg rule create \
 
 ## <a name="restrict-network-access-to-azure-storage-accounts"></a>限制对 Azure 存储帐户的网络访问
 
-本节列出了通过服务终结点限制 Azure 存储帐户从虚拟网络中的给定子网进行的网络访问的步骤。
+本部分列出了通过服务终结点限制虚拟网络中给定子网的 Azure 存储帐户的网络访问的步骤。
 
 ### <a name="create-a-storage-account"></a>创建存储帐户
 
-创建两个使用[az 存储帐户创建的](/cli/azure/storage/account)Azure 存储帐户。
+用[az storage account create](/cli/azure/storage/account)创建两个 Azure 存储帐户。
 
 ```azurecli-interactive
 storageAcctName1="allowedstorageacc"
@@ -174,7 +174,7 @@ az storage account create \
   --kind StorageV2
 ```
 
-创建存储帐户后，将存储帐户的连接字符串检索到具有[az 存储帐户显示连接字符串的](/cli/azure/storage/account)变量中。 在后面的步骤中将使用此连接字符串来创建文件共享。
+创建存储帐户后，使用[az storage account show-string](/cli/azure/storage/account)将存储帐户的连接字符串检索到变量中。 在后面的步骤中将使用此连接字符串来创建文件共享。
 
 ```azurecli-interactive
 saConnectionString1=$(az storage account show-connection-string \
@@ -230,7 +230,7 @@ az storage account update \
   --default-action Deny
 ```
 
-### <a name="enable-network-access-from-virtual-network-subnet"></a>启用从虚拟网络子网进行网络访问
+### <a name="enable-network-access-from-virtual-network-subnet"></a>从虚拟网络子网启用网络访问
 
 使用 [az storage account network-rule add](/cli/azure/storage/account/network-rule) 允许从 *Private* 子网对存储帐户进行网络访问。
 
@@ -250,9 +250,9 @@ az storage account network-rule add \
 
 ## <a name="apply-policy-to-allow-access-to-valid-storage-account"></a>应用策略以允许访问有效的存储帐户
 
-Azure 服务终结点策略仅适用于 Azure 存储。 因此，我们将为 Microsoft 启用服务终结点 *。* 此子网上的存储用于此示例设置。
+Azure 服务终结点策略仅适用于 Azure 存储。 因此，在此示例设置中，我们将为此子网启用服务终结点 *。*
 
-服务终结点策略应用于服务终结点。 我们将从创建服务终结点策略开始。 然后，我们将在此策略下创建策略定义，以便为此子网将 Azure 存储帐户列入白名单
+服务终结点策略应用于服务终结点。 首先，我们将创建服务终结点策略。 接下来，我们将为此子网将 Azure 存储帐户列入允许列表的策略定义
 
 创建服务终结点策略
 
@@ -263,13 +263,13 @@ az network service-endpoint policy create \
   --location eastus
 ```
 
-将允许的存储帐户的资源 URI 保存在变量中。 在执行以下命令之前，*\<请将订阅 id>* 替换为订阅 ID 的实际值。
+在变量中保存允许的存储帐户的资源 URI。 执行下面的命令之前，请* \<将订阅 id>* 替换为订阅 id 的实际值。
 
 ```azurecli-interactive
 $serviceResourceId="/subscriptions/<your-subscription-id>/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/allowedstorageacc"
 ```
 
-创建&添加策略定义，允许上述 Azure 存储帐户到服务终结点策略
+创建 & 为允许将上述 Azure 存储帐户添加到服务终结点策略的策略定义
 
 ```azurecli-interactive
 az network service-endpoint policy-definition create \
@@ -280,7 +280,7 @@ az network service-endpoint policy-definition create \
   --service-resources $serviceResourceId
 ```
 
-并更新虚拟网络子网以与其关联上一步中创建的服务终结点策略
+并更新虚拟网络子网，使其与上一步中创建的服务终结点策略关联
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -295,9 +295,9 @@ az network vnet subnet update \
 
 ### <a name="create-the-virtual-machine"></a>创建虚拟机
 
-要测试对存储帐户的网络访问，请将 VM 部署到子网。
+若要测试对存储帐户的网络访问，请将 VM 部署到子网。
 
-在*专用*子网中创建具有[az vm 的 VM。](/cli/azure/vm) 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。
+使用[az VM create](/cli/azure/vm)在*专用*子网中创建 VM。 如果默认密钥位置中尚不存在 SSH 密钥，该命令会创建它们。 若要使用特定的一组密钥，请使用 `--ssh-key-value` 选项。
 
 ```azurecli-interactive
 az vm create \
@@ -313,7 +313,7 @@ az vm create \
 
 ### <a name="confirm-access-to-storage-account"></a>确认对存储帐户的访问
 
-通过 SSH 登录到 *myVmPrivate* VM。 将*\<公共 Ip 地址>* 替换为*myVmPrivate VM*的公共 IP 地址。
+通过 SSH 登录到 *myVmPrivate* VM。 将* \<publicIpAddress>* 替换为*myVmPrivate* VM 的公共 IP 地址。
 
 ```bash 
 ssh <publicIpAddress>
@@ -325,7 +325,7 @@ ssh <publicIpAddress>
 sudo mkdir /mnt/MyAzureFileShare1
 ```
 
-将 Azure 文件共享装载到你创建的目录中。 在执行下面的命令之前，将*\<存储帐户密钥>* 替换为 **$saConnectionString1**中的*帐户密钥*值。
+将 Azure 文件共享装载到你创建的目录中。 执行下面的命令之前，请将* \<存储帐户密钥>* 替换为 **$saConnectionString 1**中的*AccountKey*值。
 
 ```bash
 sudo mount --types cifs //allowedstorageacc.file.core.windows.net/my-file-share /mnt/MyAzureFileShare1 --options vers=3.0,username=allowedstorageacc,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
@@ -335,21 +335,21 @@ sudo mount --types cifs //allowedstorageacc.file.core.windows.net/my-file-share 
 
 ### <a name="confirm-access-is-denied-to-storage-account"></a>确认已拒绝对存储帐户的访问
 
-从同一 VM *myVmPrivate*中，为装载点创建一个目录：
+在同一 VM *myVmPrivate*中，为装入点创建一个目录：
 
 ```bash
 sudo mkdir /mnt/MyAzureFileShare2
 ```
 
-尝试将 Azure 文件共享从*不允许存储帐户*装载到您创建的目录。 本文假定你已部署了 Ubuntu 的最新版本。 如果使用的是 Ubuntu 的早期版本，请参阅[在 Linux 上装载](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json)来了解有关装载文件共享的其他说明。 
+尝试将 Azure 文件共享从存储帐户*notallowedstorageacc*装载到你创建的目录中。 本文假定你已部署了 Ubuntu 的最新版本。 如果使用的是 Ubuntu 的早期版本，请参阅[在 Linux 上装载](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json)来了解有关装载文件共享的其他说明。 
 
-在执行下面的命令之前，请将*\<存储帐户密钥>* 替换为 **$saConnectionString2**中的*AccountKey*值。
+执行下面的命令之前，请将* \<存储帐户密钥>* 替换为 **$saConnectionString 2**中的*AccountKey*值。
 
 ```bash
 sudo mount --types cifs //notallowedstorageacc.file.core.windows.net/my-file-share /mnt/MyAzureFileShare2 --options vers=3.0,username=notallowedstorageacc,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
 ```
 
-访问被拒绝，您会收到错误`mount error(13): Permission denied`，因为此存储帐户不在我们应用于子网的服务终结点策略的允许列表中。 
+拒绝访问，并收到`mount error(13): Permission denied`错误，因为此存储帐户不在应用于子网的服务终结点策略的允许列表中。 
 
 退出与 *myVmPublic* VM 建立的 SSH 会话。
 
@@ -363,4 +363,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，您将服务终结点策略应用于 Azure 存储。" 您创建了 Azure 存储帐户，并且仅从虚拟网络子网对某些存储帐户（因此拒绝其他存储帐户）进行网络访问。 要了解有关服务终结点策略的详细信息，请参阅[服务终结点策略概述](virtual-network-service-endpoint-policies-overview.md)。
+本文介绍如何通过 Azure 虚拟网络服务终结点将服务终结点策略应用于 Azure 存储。 已创建 Azure 存储帐户，并且只能从虚拟网络子网访问特定存储帐户（并因此被拒绝其他存储帐户）。 若要详细了解服务终结点策略，请参阅[服务终结点策略概述](virtual-network-service-endpoint-policies-overview.md)。

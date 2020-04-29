@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 04c8e41f1a431b329f2093851e4430e69ab6aee3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78303777"
 ---
 # <a name="is_primitive-azure-cosmos-db"></a>IS_PRIMITIVE (Azure Cosmos DB)
@@ -23,7 +23,7 @@ ms.locfileid: "78303777"
 IS_PRIMITIVE(<expr>)  
 ```  
   
-## <a name="arguments"></a>自变量
+## <a name="arguments"></a>参数
   
 *expr*  
    是任何表达式。  
@@ -55,10 +55,10 @@ SELECT
 
 ## <a name="remarks"></a>备注
 
-该系统功能将受益于[范围索引](index-policy.md#includeexclude-strategy)。
+此系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中受益。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [类型检查功能 Azure 宇宙数据库](sql-query-type-checking-functions.md)
-- [系统功能 Azure 宇宙 DB](sql-query-system-functions.md)
-- [Azure 宇宙 DB 简介](introduction.md)
+- [类型检查函数 Azure Cosmos DB](sql-query-type-checking-functions.md)
+- [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB 简介](introduction.md)

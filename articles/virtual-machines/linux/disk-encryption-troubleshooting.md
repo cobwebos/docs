@@ -1,6 +1,6 @@
 ---
-title: 为 Linux VM 解决 Azure 磁盘加密的疑难解答
-description: 本文为 Linux VM 提供了 Microsoft Azure 磁盘加密的故障排除提示。
+title: Linux Vm 的 Azure 磁盘加密故障排除
+description: 本文提供了有关 Microsoft Azure Linux Vm 的磁盘加密的故障排除提示。
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: eeacea9e3305865881747801100dc17770b7df63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78970483"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure 磁盘加密故障排除指南
@@ -70,7 +70,7 @@ Microsoft.OSTCExtensions.AzureDiskEncryptionForLinux extension 扩展已弃用�
 
 Linux OS 磁盘加密序列暂时卸载 OS 驱动器。 然后，它将对整个 OS 磁盘进行逐块加密，然后再将其重新安装为加密状态。 Linux 磁盘加密不允许在加密的同时并发使用 VM。 VM 的性能特点会在完成加密所需的时间上产生显著差异。 这些特点包括磁盘大小以及存储帐户为标准还是高级 (SSD) 存储。
 
-若要检查加密状态，可以轮询 [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) 命令返回的 ProgressMessage**** 字段。 加密 OS 驱动器时，VM 会进入维护状态，同时会禁用 SSH，以防止对进行中的进程造成任何干扰。 进行加密时，EncryptionInProgress**** 消息大部分时间都在提供报告。 几个小时之后，VMRestartPending**** 消息会提示重新启动 VM。 例如：
+若要检查加密状态，可以轮询 [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) 命令返回的 ProgressMessage  字段。 加密 OS 驱动器时，VM 会进入维护状态，同时会禁用 SSH，以防止对进行中的进程造成任何干扰。 进行加密时，EncryptionInProgress  消息大部分时间都在提供报告。 几个小时之后，VMRestartPending  消息会提示重新启动 VM。 例如：
 
 
 ```azurepowershell
@@ -97,7 +97,7 @@ ProgressMessage            : OS disk successfully encrypted, please reboot the V
 
 ## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>防火墙保护下的 Azure 磁盘加密故障排除
 
-请参阅[隔离网络上的磁盘加密](disk-encryption-isolated-network.md)
+参阅[隔离网络上的磁盘加密](disk-encryption-isolated-network.md)
 
 ## <a name="troubleshooting-encryption-status"></a>加密状态故障排除 
 

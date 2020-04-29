@@ -10,38 +10,38 @@ ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.openlocfilehash: 7cc2e346a35cd1cdf1278b527dc451a903d60f89
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78402818"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure 机器学习的 Git 集成
 
-[Git](https://git-scm.com/)是一个流行的版本控制系统，允许您共享和协作您的项目。 
+[Git](https://git-scm.com/) 是一种常用的版本控制系统，可用于共享和协作处理项目。 
 
-Azure 机器学习完全支持 Git 存储库以进行跟踪工作 - 您可以将存储库直接克隆到共享工作区文件系统上，在本地工作站上使用 Git，或者从 CI/CD 管道中使用 Git。
+Azure 机器学习完全支持用于跟踪工作的 Git 存储库 - 你可以将存储库直接克隆到共享工作区文件系统上，在本地工作站上使用 Git，或者从 CI/CD 管道使用 Git。
 
-将作业提交到 Azure 机器学习时，如果源文件存储在本地 git 存储库中，则有关存储库的信息将作为培训过程的一部分进行跟踪。
+在向 Azure 机器学习提交作业时，如果源文件存储在本地 git 存储库中，那么系统会将有关存储库的信息作为训练过程的一部分进行跟踪。
 
 由于 Azure 机器学习会跟踪来自本地 git 存储库的信息，因此它不会绑定到任何特定的中心存储库。 可以从 GitHub、GitLab、Bitbucket、Azure DevOps 或任何其他与 git 兼容的服务克隆存储库。
 
-## <a name="clone-git-repositories-into-your-workspace-file-system"></a>将 Git 存储库克隆到工作区文件系统中
-Azure 机器学习为工作区中的所有用户提供了共享文件系统。
-要将 Git 存储库克隆到此文件共享中，我们建议您创建计算实例&打开终端。
-打开终端后，您可以访问完整的 Git 客户端，并可通过 Git CLI 体验克隆和使用 Git。
+## <a name="clone-git-repositories-into-your-workspace-file-system"></a>将 Git 存储库克隆到你的工作区文件系统
+Azure 机器学习为工作区中的所有用户提供了一个共享文件系统。
+若要将 Git 存储库克隆到此文件共享，我们建议你创建一个计算实例并打开终端。
+打开终端后，你可以访问完整的 Git 客户端，并可以通过 Git CLI 体验来克隆和使用 Git。
 
-我们建议您将存储库克隆到用户目录中，以便其他人不会直接在您的工作分支上发生冲突。
+我们建议你将存储库克隆到你的用户目录中，避免与其他人直接在你的工作分支上发生冲突。
 
-您可以克隆可以验证的任何 Git 存储库（GitHub、Azure 存储库、Bit Bucket 等）
+你可以克隆你能够向其证明身份的任何 Git 存储库（GitHub、Azure Repos、BitBucket 等）
 
-有关如何使用 Git CLI 的指南，[请阅读此处](https://guides.github.com/introduction/git-handbook/)。
+有关如何使用 Git CLI 的指南，请阅读[此处](https://guides.github.com/introduction/git-handbook/)。
 
 ## <a name="track-code-that-comes-from-git-repositories"></a>跟踪来自 Git 存储库的代码
 
 从 Python SDK 或机器学习 CLI 提交训练运行时，训练模型所需的文件将上传到工作区。 如果可在开发环境中使用 `git` 命令，则上传过程会使用该命令检查文件是否存储在 git 存储库中。 如果是，那么 git 存储库中的信息也会作为训练运行的一部分上传。 此信息存储在训练运行的以下属性中：
 
-| properties | 用于获取值的 Git 命令 | 描述 |
+| properties | 用于获取值的 Git 命令 | 说明 |
 | ----- | ----- | ----- |
 | `azureml.git.repository_uri` | `git ls-remote --get-url` | 从中克隆存储库的 URI。 |
 | `mlflow.source.git.repoURL` | `git ls-remote --get-url` | 从中克隆存储库的 URI。 |
@@ -56,13 +56,13 @@ Azure 机器学习为工作区中的所有用户提供了共享文件系统。
 如果训练文件不在开发环境的 git 存储库中，或者 `git` 命令不可用，则不会跟踪与 git 相关的信息。
 
 > [!TIP]
-> 要检查 git 命令在开发环境中是否可用，请打开 shell 会话、命令提示符、PowerShell 或其他命令行接口并键入以下命令：
+> 若要检查 git 命令在开发环境中是否可用，请打开 shell 会话、命令提示符、PowerShell 或其他命令行接口，并键入以下命令：
 >
 > ```
 > git --version
 > ```
 >
-> 如果已安装，并且在路径中，您将收到类似于`git version 2.4.1`的响应。 有关在开发环境中安装 git 的详细信息，请参阅[Git 网站](https://git-scm.com/)。
+> 如果已安装且在路径中，则会收到类似于 `git version 2.4.1` 的响应。 有关在开发环境中安装 git 的详细信息，请参阅 [Git 网站](https://git-scm.com/)。
 
 ## <a name="view-the-logged-information"></a>查看记录的信息
 
@@ -71,9 +71,9 @@ Git 信息存储在训练运行的属性中。 可以使用 Azure 门户、Pytho
 ### <a name="azure-portal"></a>Azure 门户
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择工作区。
-1. 选择“试验”，然后选择一个试验____。
-1. 从“运行号”列中选择一个运行____。
-1. 选择“日志”，然后展开“日志”和“azureml”条目____________。 选择以__###\_azure__开头的链接。
+1. 选择“试验”，然后选择一个试验  。
+1. 从“运行号”列中选择一个运行  。
+1. 选择“日志”，然后展开“日志”和“azureml”条目    。 选择以“ __###azure”开头的链接\___ 。
 
     ![门户中的 ###_azure 条目](./media/concept-train-model-git-integration/azure-machine-learning-logs.png)
 
@@ -116,4 +116,4 @@ az ml run list -e train-on-amlcompute --last 1 -w myworkspace -g myresourcegroup
 
 ## <a name="next-steps"></a>后续步骤
 
-* [设置和使用计算目标进行模型培训](how-to-set-up-training-targets.md)
+* [设置并使用模型训练的计算目标](how-to-set-up-training-targets.md)

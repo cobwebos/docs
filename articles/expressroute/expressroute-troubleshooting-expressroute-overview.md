@@ -1,5 +1,5 @@
 ---
-title: Azure 快速路由：验证连接 - 故障排除指南
+title: Azure ExpressRoute：验证连接 - 故障排除指南
 description: 本页说明如何对 ExpressRoute 线路的端到端连接进行故障排除和验证。
 services: expressroute
 author: rambk
@@ -9,10 +9,10 @@ ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
 ms.openlocfilehash: 58ae39e8dfdf918ae14ca9bb8dac28405828999e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78330951"
 ---
 # <a name="verifying-expressroute-connectivity"></a>验证 ExpressRoute 连接
@@ -23,14 +23,14 @@ ms.locfileid: "78330951"
 -   Microsoft 数据中心
 
 > [!NOTE]
-> 在 ExpressRoute 直接连接模型中（以 10/100 Gbps 带宽提供），客户可以直接连接到 Microsoft 企业边缘 （MSEE） 路由器的端口。 因此，直接连接模型中只有客户和 Microsoft 网络区域。
+> 在 ExpressRoute 直接连接模型（10/100 Gbps 带宽提供）中，客户可以直接连接到 Microsoft 企业边缘（MSEE）路由器的端口。 因此，直接连接模型中只有客户和 Microsoft 网络区域。
 >
 
 
-本文档旨在帮助用户确定是否存在连接问题，以及出现问题的位置。 因此，本文档可为相应的团队提供支持，帮助他们解决问题。 如果需要 Microsoft 的支持才能解决问题，请开具一张 [Microsoft 支持部门][Support]的支持票证。
+本文档旨在帮助用户确定是否存在连接问题，以及出现问题的位置。 因此，本文档可为相应的团队提供支持，帮助他们解决问题。 如果需要 Microsoft 的支持才能解决问题，请向 [Microsoft 支持部门][Support]提交支持票证。
 
 > [!IMPORTANT]
-> 本文档旨在帮助用户诊断和修复简单问题。 它不是为了替代 Microsoft 支持部门。 如果无法通过所提供的指南解决问题，则请开具一张 [Microsoft 支持部门][Support]的支持票证。
+> 本文档旨在帮助用户诊断和修复简单问题。 它不是为了替代 Microsoft 支持部门。 如果无法通过本文档提供的指导解决问题，请向 [Microsoft 支持部门][Support]提交支持票证。
 >
 >
 
@@ -42,8 +42,8 @@ ms.locfileid: "78330951"
 
 1.  客户计算设备（例如服务器或电脑）
 2.  CE：客户边缘路由器 
-3.  PE（面向 CE）：提供商边缘路由器/交换机，面向客户边缘路由器。 在本文档中称为 PE-CE。
-4.  PE（面向 MSEE）：提供商边缘路由器/交换机，面向 MSEE。 在本文档中称为 PE-MSEE。
+3.  PE（面向 CE）：提供商边缘路由器/交换机，面向客户边缘路由器。 本文档中称为“PE-CE”。
+4.  PE（面向 MSEE）：提供商边缘路由器/交换机，面向 MSEE。 本文档中称为“PE-MSEE”。
 5.  MSEE：Microsoft 企业边缘 (MSEE) ExpressRoute 路由器
 6.  虚拟网络 (VNet) 网关
 7.  Azure VNet 上的计算设备
@@ -71,7 +71,7 @@ ms.locfileid: "78330951"
 
 
 ## <a name="verify-circuit-provisioning-and-state"></a>验证线路预配和状态
-预配 ExpressRoute 线路可在 CE/PE-MSEE (2)/(4) 与 MSEE (5) 之间建立冗余的第 2 层连接。 如需详细了解如何创建、修改、预配和验证 ExpressRoute 线路，请参阅[创建和修改 ExpressRoute 线路][CreateCircuit]一文。
+预配 ExpressRoute 线路可在 CE/PE-MSEE (2)/(4) 与 MSEE (5) 之间建立冗余的第 2 层连接。 若要详细了解如何创建、修改、预配和验证 ExpressRoute 线路，请参阅[创建和修改 ExpressRoute 线路][CreateCircuit]一文。
 
 >[!TIP]
 >服务密钥可以唯一地标识 ExpressRoute 线路。 如果需要 Microsoft 或 ExpressRoute 合作伙伴的帮助来排查 ExpressRoute 问题，请提供服务密钥以识别线路。
@@ -83,12 +83,12 @@ ms.locfileid: "78330951"
 
 ![4][4]    
 
-在 ExpressRoute 的“概要”中，“线路状态”表示 Microsoft 这一侧线路的状态。** “提供商状态”** 表示线路在服务提供商这一侧的状态是“已预配”还是“未预配”。** 
+在 ExpressRoute 的“概要”中，“线路状态”表示 Microsoft 这一侧线路的状态  。 “提供商状态”表示线路在服务提供商这一侧的状态是“已预配”还是“未预配”   。 
 
-若要确保 ExpressRoute 线路正常运行，“线路状态”必须为“已启用”，“提供商状态”必须为“已预配”。********
+若要确保 ExpressRoute 线路正常运行，“线路状态”必须为“已启用”，“提供商状态”必须为“已预配”     。
 
 > [!NOTE]
-> 配置 ExpressRoute 线路后，如果“线路状态”停滞在“未启用”状态，请联系 [Microsoft 支持部门][Support]。** 另一方面，如果“提供商状态”停滞在“未预配”状态，请联系服务提供商。**
+> 配置 ExpressRoute 线路后，如果“线路状态”停滞在“未启用”状态，请联系 [Microsoft 支持部门][Support]。  另一方面，如果“提供商状态”停滞在“未预配”状态，请联系服务提供商。 
 >
 >
 
@@ -137,12 +137,12 @@ ms.locfileid: "78330951"
     ServiceProviderProvisioningState : Provisioned
 
 > [!NOTE]
-> 配置 ExpressRoute 线路后，如果“线路状态”停滞在“未启用”状态，请联系 [Microsoft 支持部门][Support]。** 另一方面，如果“提供商状态”停滞在“未预配”状态，请联系服务提供商。**
+> 配置 ExpressRoute 线路后，如果“线路状态”停滞在“未启用”状态，请联系 [Microsoft 支持部门][Support]。  另一方面，如果“提供商状态”停滞在“未预配”状态，请联系服务提供商。 
 >
 >
 
 ## <a name="validate-peering-configuration"></a>验证对等互连配置
-在服务提供商完成 ExpressRoute 线路的预配后，可以通过 CE/MSEE-PE (2)/(4) 与 MSEE (5) 之间的 ExpressRoute 线路创建多个基于 eBGP 的路由配置。 每个 ExpressRoute 电路可以具有：Azure 专用对等互连（Azure 中专用虚拟网络的流量）和/或 Microsoft 对等互连（PaS 和 SaaS 的公共终结点的流量）。 有关如何创建和修改路由配置的详细信息，请参阅[创建和修改 ExpressRoute 线路的路由][CreatePeering]一文。
+在服务提供商完成 ExpressRoute 线路的预配后，可以通过 CE/MSEE-PE (2)/(4) 与 MSEE (5) 之间的 ExpressRoute 线路创建多个基于 eBGP 的路由配置。 每条 ExpressRoute 线路可以使用：Azure 专用对等互连（将流量发送到 Azure 中的专用虚拟网络），和/或 Microsoft 对等互连（将流量发送到 PaaS 和 SaaS 的公共终结点）。 有关如何创建和修改路由配置的详细信息，请参阅[创建和修改 ExpressRoute 线路的路由][CreatePeering]一文。
 
 ### <a name="verification-via-the-azure-portal"></a>通过 Azure 门户进行验证
 
@@ -200,7 +200,7 @@ ms.locfileid: "78330951"
     $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
      Get-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
 
-如果未配置对等互连，则会出现错误信息。 当所述对等互连（本示例中为 Azure 公共对等互连）未在线路中配置时的示例响应如下：
+如果未配置对等互连，则会出现错误消息。 当所述对等互连（本示例中为 Azure 公共对等互连）未在线路中配置时，示例的响应如下：
 
     Get-AzExpressRouteCircuitPeeringConfig : Sequence contains no matching element
     At line:1 char:1
@@ -232,7 +232,7 @@ ARP 表为特定的对等互连提供 IP 地址和 MAC 地址的映射。 用于
 
 ## <a name="validate-bgp-and-routes-on-the-msee"></a>验证 BGP 以及 MSEE 上的路由
 
-对于“专用”路由上下文，若要获取“主要”路径上的 MSEE 的路由表，请使用以下命令：****
+对于“专用”路由上下文，若要获取“主要”路径上的 MSEE 的路由表，请使用以下命令：  
 
     Get-AzExpressRouteCircuitRouteTable -DevicePath Primary -ExpressRouteCircuitName ******* -PeeringType AzurePrivatePeering -ResourceGroupName ****
 
@@ -291,14 +291,14 @@ ARP 表为特定的对等互连提供 IP 地址和 MAC 地址的映射。 用于
 ## <a name="next-steps"></a>后续步骤
 有关详细信息或帮助，请查看以下链接：
 
-- [微软支持][Support]
+- [Microsoft 支持部门][Support]
 - [创建和修改 ExpressRoute 线路][CreateCircuit]
 - [创建和修改 ExpressRoute 线路的路由][CreatePeering]
 
 <!--Image References-->
 [1]: ./media/expressroute-troubleshooting-expressroute-overview/expressroute-logical-diagram.png "逻辑 ExpressRoute 连接"
-[2]: ./media/expressroute-troubleshooting-expressroute-overview/portal-all-resources.png "“所有资源”图标"
-[3]: ./media/expressroute-troubleshooting-expressroute-overview/portal-overview.png "“概述”图标"
+[2]: ./media/expressroute-troubleshooting-expressroute-overview/portal-all-resources.png "所有资源图标"
+[3]: ./media/expressroute-troubleshooting-expressroute-overview/portal-overview.png "概述图标"
 [4]: ./media/expressroute-troubleshooting-expressroute-overview/portal-circuit-status.png "ExpressRoute 概要示例屏幕截图"
 [5]: ./media/expressroute-troubleshooting-expressroute-overview/portal-private-peering.png "ExpressRoute 概要示例屏幕截图"
 

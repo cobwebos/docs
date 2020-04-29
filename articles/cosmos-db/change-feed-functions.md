@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 7a74635551d8416bf60689b1f1403f29883e81bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78851367"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB 和 Azure Functions 的基于事件的无服务器体系结构
@@ -29,22 +29,22 @@ Azure Functions 提供连接到[更改源](change-feed.md)的最简单方法。 
 
 若要实现基于事件的无服务器流，需要：
 
-* **受监视的容器**：受监视的容器是被监视的 Azure Cosmos 容器，它存储从中生成更改源的数据。 对受监视容器的任何插入、更新都会反映在容器的更改源中。
-* **租约容器**：租约容器在多个动态无服务器 Azure 函数实例中维护状态，并启用动态缩放。 可以通过适用于 Cosmos DB 的 Azure Functions 触发器手动或自动创建此租约容器。 若要自动创建租约容器，请在[配置](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)中设置 *CreateLeaseCollectionIfNotExists* 标记。 分区的租约容器需要包含 `/id` 分区键定义。
+* **受监视的容器**：受监视的容器是正在受到监视的 Azure Cosmos 容器，它存储生成了更改源的数据。 对受监视容器的任何插入、更新都会反映在容器的更改源中。
+* **租约容器**：租约容器维护多个动态无服务器 Azure 函数实例的状态，并启用动态缩放。 可以通过适用于 Cosmos DB 的 Azure Functions 触发器手动或自动创建此租约容器。 若要自动创建租约容器，请在[配置](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)中设置 *CreateLeaseCollectionIfNotExists* 标记。 分区的租约容器需要包含 `/id` 分区键定义。
 
 ## <a name="create-your-azure-functions-trigger-for-cosmos-db"></a>创建适用于 Cosmos DB 的 Azure Functions 触发器
 
 现在支持在所有 Azure Functions IDE 和 CLI 集成中创建包含适用于 Cosmos DB 的 Azure Functions 触发器的 Azure 函数：
 
 * 面向 Visual Studio 用户的 [Visual Studio 扩展](../azure-functions/functions-develop-vs.md)。
-* [可视化工作室代码扩展](/azure/javascript/tutorial-vscode-serverless-node-01)为可视化工作室代码用户。
+* Visual Studio Code 用户的[Visual Studio Code 扩展](/azure/javascript/tutorial-vscode-serverless-node-01)。
 * 最后是适用于跨平台 IDE 不可知体验的 [Core CLI 工具](../azure-functions/functions-run-local.md#create-func)。
 
 ## <a name="run-your-trigger-locally"></a>在本地运行触发器
 
 可以使用 [Azure Cosmos DB 模拟器](./local-emulator.md)[在本地运行 Azure 函数](../azure-functions/functions-develop-local.md)，以创建和开发基于事件的无服务器流，而无需使用 Azure 订阅，也不会产生任何费用。
 
-如果要在云中测试实时方案，可以[免费试用 Cosmos DB，](https://azure.microsoft.com/try/cosmosdb/)而无需任何信用卡或 Azure 订阅。
+如果要测试云中的实时方案，可以[免费试用 Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) ，无需任何信用卡或 Azure 订阅。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -52,6 +52,6 @@ Azure Functions 提供连接到[更改源](change-feed.md)的最简单方法。 
 
 * [更改源概述](change-feed.md)
 * [读取更改源的方式](read-change-feed.md)
-* [使用更改馈送处理器库](change-feed-processor.md)
+* [使用更改源处理器库](change-feed-processor.md)
 * [如何使用更改源处理器库](change-feed-processor.md)
 * [使用 Azure Cosmos DB 和 Azure Functions 的无服务器数据库计算](serverless-computing-database.md)

@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 07a339d82f5e4bea1ea0412a5d5b19522611b54a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78296110"
 ---
 # <a name="st_within-azure-cosmos-db"></a>ST_WITHIN (Azure Cosmos DB)
@@ -23,7 +23,7 @@ ms.locfileid: "78296110"
 ST_WITHIN (<spatial_expr>, <spatial_expr>)  
 ```  
   
-## <a name="arguments"></a>自变量
+## <a name="arguments"></a>参数
   
 *spatial_expr*  
    是 GeoJSON 点、多边形或 LineString 对象表达式。  
@@ -53,10 +53,10 @@ WHERE ST_WITHIN(f.location, {
 
 ## <a name="remarks"></a>备注
 
-该系统功能将受益于[地理空间索引](index-policy.md#spatial-indexes)。
+此系统函数将从[地理空间索引](index-policy.md#spatial-indexes)中受益。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [空间函数 Azure Cosmos DB](sql-query-spatial-functions.md)
-- [系统功能 Azure 宇宙 DB](sql-query-system-functions.md)
-- [Azure 宇宙 DB 简介](introduction.md)
+- [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB 简介](introduction.md)

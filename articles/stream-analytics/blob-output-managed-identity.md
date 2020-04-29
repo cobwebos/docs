@@ -7,25 +7,25 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: 13f48a9e0bc3ed8f8c4d5f1b7da4b6c03f54cdf8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79129972"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>使用托管标识将 Azure 流分析作业验证为 Azure Blob 存储输出
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>使用托管标识在 Azure Blob 存储输出中对 Azure 流分析作业进行身份验证
 
-用于输出到 Azure Blob 存储的[托管标识身份验证](../active-directory/managed-identities-azure-resources/overview.md)使流分析作业直接访问存储帐户，而不是使用连接字符串。 除了提高安全性以外，此功能还可让你将数据写入到 Azure 上的虚拟网络 (VNET) 中的存储帐户。
+用于 Azure Blob 存储输出的[托管标识身份验证](../active-directory/managed-identities-azure-resources/overview.md)允许流分析作业直接访问存储帐户，而不是使用连接字符串。 除了提高安全性以外，此功能还可让你将数据写入到 Azure 上的虚拟网络 (VNET) 中的存储帐户。
 
 本文介绍如何通过 Azure 门户以及通过 Azure 资源管理器部署，为流分析作业的 Blob 输出启用托管标识。
 
 ## <a name="create-the-stream-analytics-job-using-the-azure-portal"></a>使用 Azure 门户创建流分析作业
 
-1. 在 Azure 门户中创建新的流分析作业，或打开现有的作业。 在屏幕左侧的菜单栏中，选择“配置”下面的“托管标识”。******** 确保选择“使用系统分配的托管标识”，然后单击屏幕底部的“保存”按钮。****
+1. 在 Azure 门户中创建新的流分析作业，或打开现有的作业。 在屏幕左侧的菜单栏中，选择“配置”下面的“托管标识”。   确保选择“使用系统分配的托管标识”，然后单击屏幕底部的“保存”按钮。 
 
    ![配置流分析托管标识](./media/common/stream-analytics-enable-managed-identity.png)
 
-2. 在 Azure Blob 存储输出接收器的输出属性窗口中，选择“身份验证模式”下拉列表并选择“托管标识”。**** 有关其他输出属性的信息，请参阅[了解 Azure 流分析的输出](./stream-analytics-define-outputs.md)。 完成后，单击“保存”。****
+2. 在 Azure Blob 存储输出接收器的输出属性窗口中，选择“身份验证模式”下拉列表并选择“托管标识”。  有关其他输出属性的信息，请参阅[了解 Azure 流分析的输出](./stream-analytics-define-outputs.md)。 完成后，单击“保存”。 
 
    ![配置 Azure Blob 存储输出](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-blob-output-blade.png)
 
@@ -36,7 +36,7 @@ ms.locfileid: "79129972"
 使用 Azure 资源管理器可以完全自动化流分析作业的部署。 可以使用 Azure PowerShell 或 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 部署资源管理器模板。 以下示例使用 Azure CLI。
 
 
-1. 您可以通过在资源管理器模板的资源部分中包括以下属性来创建具有托管标识的**Microsoft.StreamAnalytics/流式作业**资源：
+1. 可以通过在资源管理器模板的 resource 节中包含以下属性，来创建带有托管标识的 **Microsoft.StreamAnalytics/streamingjobs** 资源：
 
     ```json
     "Identity": {
@@ -158,7 +158,7 @@ ms.locfileid: "79129972"
 1. **容器级访问权限**：使用此选项可为作业授予对现有特定容器的访问权限。
 2. **帐户级访问权限**：使用此选项可为作业授予对存储帐户的一般访问权限，包括创建新容器的能力。
 
-除非你需要作业代表你创建容器，否则应选择“容器级访问权限”，因为此选项将为作业授予所需的最低访问权限级别。**** 下面将会解释这两个选项在 Azure 门户和命令行中的用法。
+除非你需要作业代表你创建容器，否则应选择“容器级访问权限”，因为此选项将为作业授予所需的最低访问权限级别。  下面将会解释这两个选项在 Azure 门户和命令行中的用法。
 
 ### <a name="grant-access-via-the-azure-portal"></a>通过 Azure 门户授予访问权限
 
@@ -166,16 +166,16 @@ ms.locfileid: "79129972"
 
 1. 导航到存储帐户中的容器配置窗格。
 
-2. 在左侧选择“访问控制(IAM)”。****
+2. 在左侧选择“访问控制(IAM)”。 
 
-3. 在“添加角色分配”部分下，单击“添加”。****
+3. 在“添加角色分配”部分下，单击“添加”。 
 
 4. 在角色分配窗格中：
 
-    1. 将“角色”设置为“存储 Blob 数据参与者”****
-    2. 确保“将访问权限分配给”下拉列表设置为“Azure AD 用户、组或服务主体”。****
+    1. 将“角色”设置为“存储 Blob 数据参与者” 
+    2. 确保“将访问权限分配给”下拉列表设置为“Azure AD 用户、组或服务主体”。 
     3. 在搜索字段中键入流分析作业的名称。
-    4. 选择你的流分析作业，然后单击“保存”。****
+    4. 选择你的流分析作业，然后单击“保存”。 
 
    ![授予容器访问权限](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-container-access-portal.png)
 
@@ -183,16 +183,16 @@ ms.locfileid: "79129972"
 
 1. 导航到存储帐户。
 
-2. 在左侧选择“访问控制(IAM)”。****
+2. 在左侧选择“访问控制(IAM)”。 
 
-3. 在“添加角色分配”部分下，单击“添加”。****
+3. 在“添加角色分配”部分下，单击“添加”。 
 
 4. 在角色分配窗格中：
 
-    1. 将“角色”设置为“存储 Blob 数据参与者”****
-    2. 确保“将访问权限分配给”下拉列表设置为“Azure AD 用户、组或服务主体”。****
+    1. 将“角色”设置为“存储 Blob 数据参与者” 
+    2. 确保“将访问权限分配给”下拉列表设置为“Azure AD 用户、组或服务主体”。 
     3. 在搜索字段中键入流分析作业的名称。
-    4. 选择你的流分析作业，然后单击“保存”。****
+    4. 选择你的流分析作业，然后单击“保存”。 
 
    ![授予帐户访问权限](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-account-access-portal.png)
 
@@ -220,7 +220,7 @@ ms.locfileid: "79129972"
 
 1.  在存储帐户的配置窗格中导航到“防火墙和虚拟网络”窗格。
 2.  确保启用“允许受信任的 Microsoft 服务访问此存储帐户”选项。
-3.  如果已启用此选项，请单击“保存”。****
+3.  如果已启用此选项，请单击“保存”。 
 
    ![启用 VNET 访问权限](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-vnet-exception.png)
 
@@ -238,4 +238,4 @@ ms.locfileid: "79129972"
 ## <a name="next-steps"></a>后续步骤
 
 * [了解 Azure 流分析的输出](./stream-analytics-define-outputs.md)
-* [Azure 流分析自定义 blob 输出分区](./stream-analytics-custom-path-patterns-blob-storage-output.md)
+* [Azure 流分析自定义 Blob 输出分区](./stream-analytics-custom-path-patterns-blob-storage-output.md)

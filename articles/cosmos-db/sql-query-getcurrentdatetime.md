@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: d50b08ab85c7e299c465c3eb6f34e867d6634006
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78303896"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
@@ -33,10 +33,10 @@ GetCurrentDateTime ()
   |MM|两位数的月份（01 = 1 月，依此类推。）|
   |DD|两位数的月份日期（01 到 31）|
   |T|时间元素开头的符号|
-  |hh|两位数小时（00 至 23）|
-  |mm|两位数分钟（00 到 59）|
-  |ss|两位数秒 （00 到 59）|
-  |.fffffff|七位小数秒|
+  |hh|两位数的小时数（00到23）|
+  |mm|两位数分钟（00到59）|
+  |ss|两位数秒（00到59）|
+  |。 fffffff|七位数的秒小数部分|
   |Z|UTC（协调世界时）指示符||
   
   有关 ISO 8601 格式的详细信息，请参阅 [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -47,7 +47,7 @@ GetCurrentDateTime ()
   
   返回的结果为 UTC。
 
-  精度为 7 位数字，精度为 100 纳秒。
+  精度为7位，准确度为100毫微秒。
 
 ## <a name="examples"></a>示例
   
@@ -68,5 +68,5 @@ SELECT GetCurrentDateTime() AS currentUtcDateTime
 ## <a name="next-steps"></a>后续步骤
 
 - [日期和时间函数 Azure Cosmos DB](sql-query-date-time-functions.md)
-- [系统功能 Azure 宇宙 DB](sql-query-system-functions.md)
-- [Azure 宇宙 DB 简介](introduction.md)
+- [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB 简介](introduction.md)

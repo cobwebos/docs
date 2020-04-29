@@ -16,19 +16,19 @@ ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
 ms.openlocfilehash: fd094e35ceaa718ec1b258d74106b39744cbd16f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79087830"
 ---
-# <a name="media-services-v2-vs-v3"></a>媒体服务 v2 vs. v3
+# <a name="media-services-v2-vs-v3"></a>媒体服务 v2 与 v3
 
 本文介绍了 Azure 媒体服务 v3 中引入的更改，并说明了两个版本之间的差异。
 
-## <a name="general-changes-from-v2"></a>v2 的一般更改
+## <a name="general-changes-from-v2"></a>v2 中的常规更改
 
-* 对于使用 v3 创建的资产，媒体服务仅支持[Azure 存储服务器端存储加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)。
+* 对于通过 v3 创建的资产，媒体服务仅支持 [Azure 存储服务器端存储加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)。
     * 对于通过 v2 API 创建的，并采用媒体服务提供的[存储加密](../previous/media-services-rest-storage-encryption.md) (AES 256) 的资产，可以使用 v3 API。
     * 无法使用 v3 API 创建采用旧版 AES 256 [存储加密](../previous/media-services-rest-storage-encryption.md)的新资产。
 * v3 中[资产](assets-concept.md)的属性与 v2 不同，请参阅[属性如何映射](#map-v3-asset-properties-to-v2)。
@@ -46,7 +46,7 @@ ms.locfileid: "79087830"
 * 实时输出在创建时启动，在删除后停止。 v2 API 中的节目以不同的方式工作，它们必须在创建后启动。
 * 若要获取有关作业的信息，需要知道创建作业时使用的转换名称。 
 * 在 v2 中，XML [输入](../previous/media-services-input-metadata-schema.md)和[输出](../previous/media-services-output-metadata-schema.md)元数据文件将作为编码作业的结果生成。 在 v3 中，元数据格式已从 XML 更改为 JSON。 
-* 在媒体服务 v2 中，可以指定初始化向量 （IV）。 在媒体服务 v3 中，无法指定公平播放 IV。 虽然它不会影响使用媒体服务进行打包和许可证交付的客户，但当使用第三方 DRM 系统交付 FairPlay 许可证（混合模式）时，可能会出现问题。 在这种情况下，请务必知道 FairPlay IV 派生自 cbcs 密钥 ID，并可使用此公式检索：
+* 在 Media Services v2 中，可以指定初始化向量（IV）。 在媒体服务 v3 中，无法指定 FairPlay IV。 尽管这不会影响使用媒体服务进行打包和许可证传递的客户，但在使用第三方 DRM 系统提供 FairPlay 许可证（混合模式）时可能会遇到问题。 在这种情况下，请务必知道，FairPlay IV 派生自 cbc 密钥 ID，可以使用以下公式检索：
 
     ```
     string cbcsIV =  Convert.ToBase64String(HexStringToByteArray(cbcsGuid.ToString().Replace("-", string.Empty)));
@@ -64,7 +64,7 @@ ms.locfileid: "79087830"
     }
     ```
 
-    有关详细信息，请参阅[实时和 VOD 操作混合模式下的媒体服务 v3](https://github.com/Azure-Samples/media-services-v3-dotnet-core-functions-integration/tree/master/LiveAndVodDRMOperationsV3)的 Azure 函数 C# 代码。
+    有关详细信息，请参阅[适用于实时和 VOD 操作的混合模式下的媒体服务 v3 Azure Functions c # 代码](https://github.com/Azure-Samples/media-services-v3-dotnet-core-functions-integration/tree/master/LiveAndVodDRMOperationsV3)。
  
 > [!NOTE]
 > 查看适用于[媒体服务 v3 资源](media-services-apis-overview.md#naming-conventions)的命名约定。 还要查看[命名 Blob](assets-concept.md#naming)。
@@ -74,7 +74,7 @@ ms.locfileid: "79087830"
 与 v2 API 相比，v3 API 存在以下功能差距。 我们正在弥补这些差距。
 
 * [Premium Encoder](../previous/media-services-premium-workflow-encoder-formats.md) 和旧版[媒体分析处理器](../previous/media-services-analytics-overview.md)（Azure 媒体服务索引器 2 预览版、Face Redactor 等）不可通过 v3 访问。<br/>想要从媒体索引器 1 或 2 预览版迁移的客户可以立即使用 v3 API 中的 AudioAnalyzer 预设。  此新预设包含的功能比旧版媒体索引器 1 或 2 更多。 
-* v2 API[中的媒体编码器标准的许多高级功能](../previous/media-services-advanced-encoding-with-mes.md)目前不在 v3 中，例如：
+* [V2 api 中 Media Encoder Standard 的许多高级功能](../previous/media-services-advanced-encoding-with-mes.md)当前在 v3 中不可用，例如：
   
     * 资产拼接
     * 叠加
@@ -84,7 +84,7 @@ ms.locfileid: "79087830"
     * 在输入不包含视频时插入视频轨道
 * 包含转码的直播活动目前不支持静态图像插入中间流，以及通过 API 调用执行的广告标记插入。 
  
-## <a name="asset-specific-changes"></a>特定于资产的更改
+## <a name="asset-specific-changes"></a>资产特定更改
 
 ### <a name="map-v3-asset-properties-to-v2"></a>将 v3 资产属性映射到 v2
 
@@ -107,11 +107,11 @@ ms.locfileid: "79087830"
 
 若要保护静态资产，应通过存储端加密对资产进行加密。 下表显示了存储端加密在媒体服务中的工作方式：
 
-|加密选项|描述|媒体服务 v2|媒体服务 v3|
+|加密选项|说明|媒体服务 v2|媒体服务 v3|
 |---|---|---|---|
 |媒体服务存储加密|AES-256 加密，媒体服务管理的密钥。|支持<sup>(1)</sup>|不支持<sup>(2)</sup>|
-|[静态数据的存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Azure 存储提供的服务器端加密，由 Azure 或客户管理密钥。|支持|支持|
-|[存储客户端加密](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Azure 存储提供的客户端加密，密钥由密钥保管库中的客户管理。|不支持|不支持|
+|[静态数据的存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Azure 存储提供的服务器端加密、由 Azure 或客户管理的密钥。|支持|支持|
+|[存储客户端加密](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Azure 存储提供的客户端加密，Key Vault 中的客户管理的密钥。|不支持|不支持|
 
 <sup>1</sup> 虽然媒体服务确实支持处理明文形式（未经过任何形式的加密）的内容，但不建议这样做。
 
@@ -125,7 +125,7 @@ ms.locfileid: "79087830"
 |---|---|---|
 |创建资产并上传文件 |[v2 .NET 示例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[v3 .NET 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
 |提交作业|[v2 .NET 示例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>演示如何先创建转换，再提交作业。|
-|发布使用 AES 加密的资产 |1. 创建内容密钥授权策略选项<br/>2. 创建内容密钥授权策略<br/>3. 创建资产交付政策<br/>4. 创建资产并上传内容或提交作业并使用输出资产<br/>5. 将资产交付政策与资产关联<br/>6. 创建内容键<br/>7. 将内容密钥附加到资产<br/>8. 创建访问策略<br/>9. 创建定位器<br/><br/>[v2 .NET 示例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. 创建内容密钥策略<br/>2. 创建资产<br/>3. 上传内容或使用资产作为作业输出<br/>4. 创建流式处理器<br/><br/>[v3 .NET 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
+|发布使用 AES 加密的资产 |1. 创建 ContentKeyAuthorizationPolicyOption<br/>2. 创建 ContentKeyAuthorizationPolicy<br/>3. 创建 AssetDeliveryPolicy<br/>4. 创建资产并上传内容或提交作业并使用输出资产<br/>5. 将 AssetDeliveryPolicy 与资产关联<br/>6. 创建 ContentKey<br/>7. 将 ContentKey 附加到资产<br/>8. 创建 AccessPolicy<br/>9. 创建定位符<br/><br/>[v2 .NET 示例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. 创建内容密钥策略<br/>2. 创建资产<br/>3. 上传内容或使用资产作为 JobOutput<br/>4. 创建流式处理定位符<br/><br/>[v3 .NET 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
 |获取作业详细信息和管理作业 |[使用 v2 管理作业](../previous/media-services-dotnet-manage-entities.md#get-a-job-reference) |[使用 v3 管理作业](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L546)|
 
 > [!NOTE]

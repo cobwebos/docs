@@ -5,18 +5,18 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.reviewer: olegan
 ms.openlocfilehash: cbda252fece638393ee7757dc165c4b009a0195e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79136717"
 ---
 # <a name="supported-languages"></a>支持的语言
 
 * [C#|VB (.NET)](../../azure-monitor/app/asp-net.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
-* [Javascript](../../azure-monitor/app/javascript.md)
-* [节点.JS](../../azure-monitor/app/nodejs.md)
+* [JavaScript](../../azure-monitor/app/javascript.md)
+* [Node.JS](../../azure-monitor/app/nodejs.md)
 * [Python](../../azure-monitor/app/opencensus-python.md)
 
 ## <a name="supported-platforms-and-frameworks"></a>支持的平台和框架
@@ -33,7 +33,7 @@ ms.locfileid: "79136717"
 * [Android](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [iOS](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [Java EE](../../azure-monitor/app/java-get-started.md)
-* [节点.JS](https://www.npmjs.com/package/applicationinsights)
+* [NODE.JS](https://www.npmjs.com/package/applicationinsights)
 * [Python](../../azure-monitor/app/opencensus-python.md)
 * [通用 Windows 应用](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [Windows 桌面应用程序、服务和辅助角色](../../azure-monitor/app/windows-desktop.md)
@@ -50,4 +50,4 @@ ms.locfileid: "79136717"
 * [流分析](../../azure-monitor/app/export-power-bi.md)
 
 ## <a name="unsupported-sdks"></a>不受支持的 SDK
-我们知道还有其他几个社区支持的 SDK。 但是，Azure Monitor 仅在使用此页上列出的受支持 SDK 时提供支持。 我们不断评估机会，以扩大对其他语言的支持，因此请按照[我们的 GitHub 公告](https://github.com/microsoft/ApplicationInsights-Announcements/issues)页面接收最新的 SDK 新闻。 
+我们知道还有其他几个社区支持的 SDK。 但是，Azure Monitor 仅在使用此页上列出的受支持 SDK 时提供支持。 我们正在不断地评估增加对其他语言的支持的机会，因此请按照[GitHub 公告](https://github.com/microsoft/ApplicationInsights-Announcements/issues)页面，接收最新的 SDK 新闻。 

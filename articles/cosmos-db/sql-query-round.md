@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: b6aac5a963d0f58a3b21b9fb0958793169a3d444
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302111"
 ---
 # <a name="round-azure-cosmos-db"></a>ROUND (Azure Cosmos DB)
@@ -23,7 +23,7 @@ ms.locfileid: "78302111"
 ROUND(<numeric_expr>)  
 ```  
   
-## <a name="arguments"></a>自变量
+## <a name="arguments"></a>参数
   
 *numeric_expr*  
    为数值表达式。  
@@ -59,10 +59,10 @@ SELECT ROUND(2.4) AS r1, ROUND(2.6) AS r2, ROUND(2.5) AS r3, ROUND(-2.4) AS r4, 
 
 ## <a name="remarks"></a>备注
 
-该系统功能将受益于[范围索引](index-policy.md#includeexclude-strategy)。
+此系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中受益。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [数学函数 Azure 宇宙 DB](sql-query-mathematical-functions.md)
-- [系统功能 Azure 宇宙 DB](sql-query-system-functions.md)
-- [Azure 宇宙 DB 简介](introduction.md)
+- [数学函数 Azure Cosmos DB](sql-query-mathematical-functions.md)
+- [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB 简介](introduction.md)

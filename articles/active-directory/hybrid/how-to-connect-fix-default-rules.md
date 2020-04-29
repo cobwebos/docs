@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4626e0149028a140d143fb8d0969a03b732201fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79036976"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>在 Azure AD Connect 中修复已修改的默认规则
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) Connect 使用默认规则进行同步。  遗
 > 不支持通过修改现有默认规则来实现所需的自定义。 如果这样做，会导致无法将这些规则更新到将来发行版中的最新版本。 无法获取所需的 bug 修复或新功能。 本文档将介绍在不修改现有默认规则的情况下，如何实现相同的结果。 
 
 ## <a name="how-to-identify-modified-default-rules"></a>如何识别已修改的默认规则
-从 Azure AD Connect 版本 1.3.7.0 开始，可能轻松识别已修改的默认规则。 转到“桌面上的应用”，然后选择“同步规则编辑器”即可。********
+从 Azure AD Connect 版本 1.3.7.0 开始，可能轻松识别已修改的默认规则。 转到“桌面上的应用”，然后选择“同步规则编辑器”即可。  
 
 ![Azure AD Connect，其中突出显示了“同步规则编辑器”](media/how-to-connect-fix-default-rules/default1.png)
 
@@ -65,34 +65,34 @@ Azure Active Directory (Azure AD) Connect 使用默认规则进行同步。  遗
 可以在不更改标准默认规则的情况下执行这些操作。
 
 ### <a name="add-a-new-attribute"></a>添加新属性
-如果发现属性未从源目录流向目标目录，请使用[Azure AD 连接同步：目录扩展](how-to-connect-sync-feature-directory-extensions.md)来解决此问题。
+如果你发现某个属性不会从源目录流向目标目录，请使用 [Azure AD Connect 同步：目录扩展](how-to-connect-sync-feature-directory-extensions.md)来解决此问题。
 
 如果不适合使用扩展，请尝试按照以下部分所述添加两个新的同步规则。
 
 
 #### <a name="add-an-inbound-sync-rule"></a>添加入站同步规则
-入站同步规则表示属性的源是连接器空间，目标是 Metaverse。 例如，若要将本地 Active Directory 中的某个新属性流送到 Azure Active Directory，请创建一个新的入站同步规则。 启动“同步规则编辑器”，选择“入站”作为方向，然后选择“添加新规则”。************ 
+入站同步规则表示属性的源是连接器空间，目标是 Metaverse。 例如，若要将本地 Active Directory 中的某个新属性流送到 Azure Active Directory，请创建一个新的入站同步规则。 启动“同步规则编辑器”，选择“入站”作为方向，然后选择“添加新规则”。    
 
  ![同步规则编辑器](media/how-to-connect-fix-default-rules/default3a.png)
 
-遵循自己的命名约定为规则命名。 此处我们使用了“Custom In from AD - User”。**** 这表示该规则是自定义规则，并且是从 Active Directory 连接器空间到 Metaverse 的入站规则。   
+遵循自己的命名约定为规则命名。 此处我们使用了“Custom In from AD - User”。  这表示该规则是自定义规则，并且是从 Active Directory 连接器空间到 Metaverse 的入站规则。   
 
  ![创建入站同步规则](media/how-to-connect-fix-default-rules/default3b.png)
 
 为规则提供自己的说明，以方便将来对其进行维护。 例如，可以根据此规则的目标以及为何需要它来提供说明。
 
-在“连接的系统”、“连接的系统对象类型”和“Metaverse 对象类型”字段中做出选择。************
+在“连接的系统”、“连接的系统对象类型”和“Metaverse 对象类型”字段中做出选择。   
 
-指定 0 到 99 的优先顺序值（数字越小，优先顺序越高）。 对于“标记”、“启用密码同步”和“已禁用”字段，请使用默认选项。************
+指定 0 到 99 的优先顺序值（数字越小，优先顺序越高）。 对于“标记”、“启用密码同步”和“已禁用”字段，请使用默认选项。   
 
-将“范围筛选器”保留为空。**** 这表示该规则将应用到在 Active Directory 连接的系统与 Metaverse 之间联接的所有对象。
+将“范围筛选器”保留为空。  这表示该规则将应用到在 Active Directory 连接的系统与 Metaverse 之间联接的所有对象。
 
-将“联接规则”保留为空。**** 这表示此规则将使用标准默认规则中定义的联接条件。 这是不禁用或删除标准默认规则的另一个原因。 如果没有联接条件，属性不会流动。 
+将“联接规则”保留为空。  这表示此规则将使用标准默认规则中定义的联接条件。 这是不禁用或删除标准默认规则的另一个原因。 如果没有联接条件，属性不会流动。 
 
 为属性添加适当的转换。 可以分配一个常量用于将常量值流送到目标属性。 可以在源或目标属性之间使用直接映射。 或者，可对属性使用表达式。 下面是可以使用的各种[表达式函数](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-functions-reference)。
 
 #### <a name="add-an-outbound-sync-rule"></a>添加出站同步规则
-若要将属性链接到目标目录，需要创建出站规则。 这表示源是 Metaverse，目标是连接的系统。 若要创建出站规则，请启动“同步规则编辑器”，将“方向”更改为“出站”，然后选择“添加新规则”。**************** 
+若要将属性链接到目标目录，需要创建出站规则。 这表示源是 Metaverse，目标是连接的系统。 若要创建出站规则，请启动“同步规则编辑器”，将“方向”更改为“出站”，然后选择“添加新规则”。     
 
 ![同步规则编辑器](media/how-to-connect-fix-default-rules/default3c.png)
 
@@ -100,7 +100,7 @@ Azure Active Directory (Azure AD) Connect 使用默认规则进行同步。  遗
 
 ![创建出站同步规则](media/how-to-connect-fix-default-rules/default3d.png)
 
-将“范围筛选器”和“联接规则”保留为空。******** 填写“常量”、“直接”或表达式作为转换。 
+将“范围筛选器”和“联接规则”保留为空。   填写“常量”、“直接”或表达式作为转换。 
 
 现在，你已了解如何将 Active Directory 中某个用户对象的新属性流送到 Azure Active Directory。 可以使用这些步骤将任意对象中的任意属性映射到源和目标。 有关详细信息，请参阅[创建自定义同步规则](how-to-connect-create-custom-sync-rule.md)和[准备预配用户](https://docs.microsoft.com/office365/enterprise/prepare-for-directory-synchronization)。
 
@@ -111,11 +111,11 @@ Azure Active Directory (Azure AD) Connect 使用默认规则进行同步。  遗
 > 在本例中，请使用 `AuthoritativeNull` 而不是 `Null`。 这是因为，非 Null 值将取代 Null 值，即使前者的优先顺序更低（在规则中的优先顺序数字值更大）。 另一方面，其他规则不会将 `AuthoritativeNull` 替换为非 null 值。 
 
 ### <a name="dont-sync-existing-attribute"></a>不同步现有属性
-若要从同步中排除某个属性，请使用 Azure AD Connect 中提供的属性筛选功能。 从桌面图标启动“Azure AD Connect”，然后选择“自定义同步选项”。********
+若要从同步中排除某个属性，请使用 Azure AD Connect 中提供的属性筛选功能。 从桌面图标启动“Azure AD Connect”，然后选择“自定义同步选项”。  
 
 ![Azure AD Connect 中的其他任务选项](media/how-to-connect-fix-default-rules/default4.png)
 
- 确保“Azure AD 应用和属性筛选”已选中，然后选择“下一步”。********
+ 确保“Azure AD 应用和属性筛选”已选中，然后选择“下一步”。  
 
 ![Azure AD Connect 可选功能](media/how-to-connect-fix-default-rules/default5.png)
 
@@ -137,7 +137,7 @@ Azure AD Sync 负责处理大部分对象。 你可以缩小对象的范围，�
 > 不建议增大 Azure AD Connect 配置的对象范围。 如果你这样做，Microsoft 支持团队将难以了解你的自定义操作。 如果必须增大对象的范围，请编辑现有规则，克隆它，然后禁用原始规则。 
 
 ### <a name="cloudfiltered-attribute"></a>cloudFiltered 属性
-无法在 Active Directory 中设置此属性。 需要通过添加新的入站规则来设置此属性的值。 可以使用“转换”和“表达式”在 Metaverse 中设置此属性。******** 在以下示例场景中，你不想要同步其部门名称以 **HRD**（不区分大小写）开头的所有用户：
+无法在 Active Directory 中设置此属性。 需要通过添加新的入站规则来设置此属性的值。 可以使用“转换”和“表达式”在 Metaverse 中设置此属性。   在以下示例场景中，你不想要同步其部门名称以 **HRD**（不区分大小写）开头的所有用户：
 
 `cloudFiltered <= IIF(Left(LCase([department]), 3) = "hrd", True, NULL)`
 
@@ -146,7 +146,7 @@ Azure AD Sync 负责处理大部分对象。 你可以缩小对象的范围，�
 ![创建入站同步规则的选项](media/how-to-connect-fix-default-rules/default7a.png)
 
 ### <a name="organizational-unit-filtering"></a>组织单位筛选
-可以创建一个或多个组织单位 (OU)，并将你不想要同步的对象移到这些 OU。 然后在 Azure AD Connect 中配置 OU 筛选。 从桌面图标启动“Azure AD Connect”，并选择以下选项。**** 也可以在安装 Azure AD Connect 时配置 OU 筛选。 
+可以创建一个或多个组织单位 (OU)，并将你不想要同步的对象移到这些 OU。 然后在 Azure AD Connect 中配置 OU 筛选。 从桌面图标启动“Azure AD Connect”，并选择以下选项。  也可以在安装 Azure AD Connect 时配置 OU 筛选。 
 
 ![Azure AD Connect 中的其他任务](media/how-to-connect-fix-default-rules/default8.png)
 
@@ -158,23 +158,23 @@ Azure AD Sync 负责处理大部分对象。 你可以缩小对象的范围，�
 使用 Azure AD Connect 配置的默认联接条件。 如果你更改默认联接条件，Microsoft 支持部门将难以了解自定义操作以及为产品提供支持。
 
 ## <a name="validate-sync-rule"></a>验证同步规则
-可以在不运行整个同步周期的情况下，使用预览功能来验证新添加的同步规则。 在 Azure AD Connect 中选择“同步服务”。****
+可以在不运行整个同步周期的情况下，使用预览功能来验证新添加的同步规则。 在 Azure AD Connect 中选择“同步服务”。 
 
 ![Azure AD Connect，其中突出显示了“同步服务”](media/how-to-connect-fix-default-rules/default10.png)
 
-选择“Metaverse 搜索”。**** 选择“person”作为范围对象，选择“添加子句”，并指定搜索条件。******** 接下来，选择“搜索”并在搜索结果中双击该对象。**** 在运行此步骤之前，请先对林运行导入和同步，以确保 Azure AD Connect 中的数据对于该对象而言是最新的。
+选择“Metaverse 搜索”。  选择“person”作为范围对象，选择“添加子句”，并指定搜索条件。   接下来，选择“搜索”并在搜索结果中双击该对象。  在运行此步骤之前，请先对林运行导入和同步，以确保 Azure AD Connect 中的数据对于该对象而言是最新的。
 
 ![Synchronization Service Manager](media/how-to-connect-fix-default-rules/default11.png)
 
-在“Metaverse 对象属性”中选择“连接器”，在相应的连接器（林）中选择该对象，然后选择“属性...”。************
+在“Metaverse 对象属性”中选择“连接器”，在相应的连接器（林）中选择该对象，然后选择“属性...”。   
 
 ![Metaverse 对象属性](media/how-to-connect-fix-default-rules/default12.png)
 
-选择**预览..."**
+选择“预览...” 
 
 ![连接器空间对象属性](media/how-to-connect-fix-default-rules/default13a.png)
 
-在“预览”窗口的左窗格中选择“生成预览”和“导入属性流”。********
+在“预览”窗口的左窗格中选择“生成预览”和“导入属性流”。  
 
 ![预览](media/how-to-connect-fix-default-rules/default14.png)
  

@@ -8,10 +8,10 @@ ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
 ms.openlocfilehash: 001dfbc78c0027249143e933684523d47af383d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79096774"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>为存档到存储帐户的 Azure Monitor 平台日志的格式更改做准备
@@ -22,7 +22,7 @@ ms.locfileid: "79096774"
 
 ## <a name="what-changed"></a>更改内容
 
-Azure Monitor 提供了一项功能，可用于将资源日志和活动日志发送到 Azure 存储帐户、事件中心命名空间或 Azure Monitor 的 Log Analytics 工作区。 为解决系统性能问题，发送到 blob 存储的日志数据格式已于 2018 年 11 月 1 日凌晨 12 点 (UTC) 更改****。 如果工具从 blob 存储中读取数据，则需要更新工具以了解新的数据格式。
+Azure Monitor 提供了一项功能，可用于将资源日志和活动日志发送到 Azure 存储帐户、事件中心命名空间或 Azure Monitor 的 Log Analytics 工作区。 为解决系统性能问题，发送到 blob 存储的日志数据格式已于 2018 年 11 月 1 日凌晨 12 点 (UTC) 更改  。 如果工具从 blob 存储中读取数据，则需要更新工具以了解新的数据格式。
 
 * 在 2018 年 11 月 1 日星期四凌晨 12 点 (UTC)，blob 格式已更改为 [JSON Lines](http://jsonlines.org/)。 这意味着每个记录将由换行符分隔，JSON 记录之间没有外部记录数组和逗号。
 * 已同时更改所有订阅中所有诊断设置的 blob 格式。 11 月 1 日发出的第一个 PT1H.json 文件已使用此新格式。 Blob 和容器名称保持不变。
@@ -43,7 +43,7 @@ Azure Monitor 提供了一项功能，可用于将资源日志和活动日志发
 1. 使用诊断设置将日志数据发送到 Azure 存储帐户，以及
 2. 拥有依赖于存储中这些日志的 JSON 结构的工具。
  
-若要确定是否具有将数据发送到 Azure 存储帐户的诊断设置，可导航到门户的“监视”部分，单击“诊断设置”，并识别所有将“诊断状态”设置为“已启用”的资源****************：
+若要确定是否具有将数据发送到 Azure 存储帐户的诊断设置，可导航到门户的“监视”部分，单击“诊断设置”，并识别所有将“诊断状态”设置为“已启用”的资源     ：
 
 ![“Azure Monitor 诊断设置”边栏选项卡](media/diagnostic-logs-append-blobs/portal-diag-settings.png)
 
@@ -133,6 +133,6 @@ Azure blob 存储中 PT1H.json 文件的当前格式使用 JSON 数组记录。 
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解[将资源日志存档到存储帐户](./../../azure-monitor/platform/archive-diagnostic-logs.md)
+* 了解如何[将资源日志存档到存储帐户](./../../azure-monitor/platform/archive-diagnostic-logs.md)
 * 了解如何[将活动日志数据存档到存储帐户](./../../azure-monitor/platform/archive-activity-log.md)
 

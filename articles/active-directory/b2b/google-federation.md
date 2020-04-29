@@ -1,5 +1,5 @@
 ---
-title: 添加 Google 作为 B2B - Azure AD 的标识提供商
+title: 添加 Google 作为 B2B Azure AD 的标识提供者
 description: 与 Google 联合，使来宾用户能够使用其自己的 Gmail 帐户登录到你的 Azure AD 应用
 services: active-directory
 ms.service: active-directory
@@ -13,18 +13,18 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 72c18e48c27942c7bea47931ec79a31af941064e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79126654"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>将 Google 添加为 B2B 来宾用户的标识提供者
 
-通过与 Google 建立联合，您可以允许受邀用户使用自己的 Gmail 帐户登录共享应用和资源，而无需创建 Microsoft 帐户 （MSA）。 
+通过设置与 Google 的联合身份验证，你可以允许受邀用户使用其自己的 Gmail 帐户登录到你的共享应用和资源，而无需创建 Microsoft 帐户（Msa）。 
 
 > [!NOTE]
-> Google 联盟专为 Gmail 用户而设计。 要与 G Suite 域联合，请使用[直接联合功能](direct-federation.md)。
+> Google federation 专为 Gmail 用户设计。 若要与 G Suite 域联合，请使用[直接联合身份验证功能](direct-federation.md)。
 
 ## <a name="what-is-the-experience-for-the-google-user"></a>Google 用户体验是什么？
 向某个 Google Gmail 用户发送邀请时，该来宾用户应使用包含租户上下文的链接来访问你的共享应用或资源。 他们的体验根据是否已登录到 Google 而异：
@@ -33,44 +33,44 @@ ms.locfileid: "79126654"
 
 如果来宾用户看到“标头过长”错误，可以尝试清除其 Cookie，或者打开私用或 incognito 窗口，然后尝试登录。
 
-![显示 Google 登录页面的屏幕截图](media/google-federation/google-sign-in.png)
+![显示 Google 登录页的屏幕截图](media/google-federation/google-sign-in.png)
 
 ## <a name="limitations"></a>限制
 
-团队在所有设备上完全支持 Google 访客用户。 Google 用户可以从常见的终结点（如`https://teams.microsoft.com`）登录到 Teams。
+团队完全支持所有设备上的 Google guest 用户。 Google 用户可以使用类似`https://teams.microsoft.com`的常见终结点登录到团队。
 
-其他应用程序的常见终结点可能不支持 Google 用户。 Google 来宾用户必须使用包含租户信息的链接登录。 下面是一些示例：
+其他应用程序的常见终结点可能不支持 Google 用户。 Google guest 用户必须使用包含租户信息的链接登录。 下面是一些示例：
   * `https://myapps.microsoft.com/?tenantid=<your tenant id>`
   * `https://portal.azure.com/<your tenant id>`
   * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
 
-   如果 Google 来宾用户尝试使用链接，如`https://myapps.microsoft.com``https://portal.azure.com`或 ，他们会收到错误。
+   如果 Google guest 用户尝试使用链接（如`https://myapps.microsoft.com`或`https://portal.azure.com`），则会收到错误。
 
-您还可以向 Google 来宾用户提供指向应用程序或资源的直接链接，只要此链接包含您的租户信息，例如`https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>`。 
+你还可以为 Google guest 用户提供指向应用程序或资源的直接链接，前提是此链接包含你的租户信息，例如`https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>`。 
 
 ## <a name="step-1-configure-a-google-developer-project"></a>步骤 1：配置 Google 开发人员项目
 首先，在 Google Developers Console 中创建一个新项目，以获取稍后要添加到 Azure AD 的客户端 ID 和客户端机密。 
 1. 转到 Google API (https://console.developers.google.com)，并使用 Google 帐户登录。 我们建议使用共享团队 Google 帐户。
 2. 创建新项目：在仪表板上，依次选择“Create Project”（创建项目）、“Create”（创建）。******** 在“New Project”（新建项目）页上输入**项目名称**，然后选择“Create”（创建）。****
    
-   ![显示 Google 新项目页面的屏幕截图](media/google-federation/google-new-project.png)
+   ![显示 Google 的新项目页的屏幕截图](media/google-federation/google-new-project.png)
 
-3. 确保已在项目菜单中选择该新项目。 然后在**API & 服务**下，选择**OAuth 同意屏幕**。
+3. 确保已在项目菜单中选择该新项目。 然后，在 " **api & Services**" 下，选择 " **OAuth 许可屏幕**"。
 
-4. 选择 **"外部**"，然后选择 **"创建**"。 
-5. 在**OAuth 同意屏幕上**，输入**应用程序名称**。 （保留其他设置。）
+4. 选择 "**外部**"，然后选择 "**创建**"。 
+5. 在**OAuth 许可屏幕**上，输入**应用程序名称**。 （保留其他设置。）
 
-   ![显示 Google OAuth 同意屏幕选项的屏幕截图](media/google-federation/google-oauth-consent-screen.png)
+   ![显示 Google OAuth 许可屏幕选项的屏幕截图](media/google-federation/google-oauth-consent-screen.png)
 
 6. 滚动到“授权域”**** 部分，然后输入microsoftonline.com。
 
    ![显示授权域部分的屏幕截图](media/google-federation/google-oauth-authorized-domains.png)
 
-7. 选择“保存”。****
+7. 选择“保存”  。
 
-8. 选择**凭据**。 在“Create credentials”（创建凭据）菜单中，选择“OAuth client ID”（OAuth 客户端 ID）。********
+8. 选择 "**凭据**"。 在“Create credentials”（创建凭据）菜单中，选择“OAuth client ID”（OAuth 客户端 ID）。********
 
-   ![显示 Google API 创建凭据选项的屏幕截图](media/google-federation/google-api-credentials.png)
+   ![显示 Google Api 创建凭据选项的屏幕截图](media/google-federation/google-api-credentials.png)
 
 9. 在“Application type”（应用程序类型）下，选择“Web application”（Web 应用程序），然后在“Authorized redirect URIs”（已授权的重定向 URI）下输入以下 URI：************
    - `https://login.microsoftonline.com` 
@@ -79,22 +79,22 @@ ms.locfileid: "79126654"
      > [!NOTE]
      > 若要查找自己的目录 ID，请转到 https://portal.azure.com，然后在“Azure Active Directory”下选择“Properties”（属性）并复制“Directory ID”（目录 ID）。************
 
-   ![显示授权重定向 URI 部分的屏幕截图](media/google-federation/google-create-oauth-client-id.png)
+   ![显示 "授权重定向 Uri" 部分的屏幕截图](media/google-federation/google-create-oauth-client-id.png)
 
-10. 选择 **“创建”**。 复制客户端 ID 和客户端机密，稍后在 Azure AD 门户中添加标识提供者时需要用到。
+10. 选择“创建”  。 复制客户端 ID 和客户端机密，稍后在 Azure AD 门户中添加标识提供者时需要用到。
 
-   ![显示 OAuth 客户端 ID 和客户端机密的屏幕截图](media/google-federation/google-auth-client-id-secret.png)
+   ![显示 OAuth 客户端 ID 和客户端密钥的屏幕截图](media/google-federation/google-auth-client-id-secret.png)
 
 ## <a name="step-2-configure-google-federation-in-azure-ad"></a>步骤 2：在 Azure AD 中配置 Google 联合 
 现在请设置 Google 客户端 ID 和客户端机密：在 Azure AD 门户中输入，或者使用 PowerShell 进行设置。 请务必测试 Google 联合配置，方法是使用 Gmail 地址邀请自己，然后尝试使用受邀的 Google 帐户根据邀请操作。 
 
 #### <a name="to-configure-google-federation-in-the-azure-ad-portal"></a>在 Azure AD 门户中配置 Google 联合 
-1. 转到[Azure 门户](https://portal.azure.com)。 在左窗格中选择“Azure Active Directory”****。 
+1. 转到 [Azure 门户](https://portal.azure.com)。 在左窗格中选择“Azure Active Directory”****。 
 2. 选择“组织关系”。****
 3. 选择“标识提供者”，单击“Google”按钮。********
-4. 输入名称。 然后输入前面获取的客户端 ID 和客户端机密。 选择“保存”。**** 
+4. 输入名称。 然后输入前面获取的客户端 ID 和客户端机密。 选择“保存”  。 
 
-   ![显示添加 Google 标识提供商页面的屏幕截图](media/google-federation/google-identity-provider.png)
+   ![显示 "添加 Google 标识提供程序" 页的屏幕截图](media/google-federation/google-identity-provider.png)
 
 #### <a name="to-configure-google-federation-by-using-powershell"></a>使用 PowerShell 配置 Google 联合
 1. 安装最新版本的 Azure AD PowerShell for Graph 模块 ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview))。
@@ -111,12 +111,12 @@ ms.locfileid: "79126654"
 可以删除 Google 联合设置。 如果删除，则已按邀请操作的 Google 来宾用户将无法登录，但你可以通过从目录中删除然后重新邀请他们，使他们再次能够访问你的资源。 
  
 ### <a name="to-delete-google-federation-in-the-azure-ad-portal"></a>在 Azure AD 门户中删除 Google 联合： 
-1. 转到[Azure 门户](https://portal.azure.com)。 在左窗格中选择“Azure Active Directory”****。 
+1. 转到 [Azure 门户](https://portal.azure.com)。 在左窗格中选择“Azure Active Directory”****。 
 2. 选择“组织关系”。****
-3. 选择**标识提供程序**。
-4. 在**Google**行上，选择上下文菜单 **（...），** 然后选择 **"删除**"。 
+3. 选择 "**标识提供者**"。
+4. 在**Google**行上，选择上下文菜单（**...**），然后选择 "**删除**"。 
    
-   ![显示社交标识提供程序的"删除"选项的屏幕截图](media/google-federation/google-social-identity-providers.png)
+   ![显示社交标识提供程序的删除选项的屏幕截图](media/google-federation/google-social-identity-providers.png)
 
 1. 选择“是”**** 以确认删除。 
 

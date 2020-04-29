@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 监视器集成 Splunk |微软文档
-description: 了解如何使用 Azure 监视器将 Azure 活动目录日志与相扑逻辑集成
+title: 使用 Azure Monitor 集成 Splunk |Microsoft Docs
+description: 了解如何使用 Azure Monitor 将 Azure Active Directory 日志与 SumoLogic 集成
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,25 +18,25 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2eda3643a7b1a341c7ed664dbfea933145f1f927
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78968713"
 ---
-# <a name="how-to-integrate-azure-active-directory-logs-with-splunk-using-azure-monitor"></a>如何：使用 Azure 监视器将 Azure 活动目录日志与 Splunk 集成
+# <a name="how-to-integrate-azure-active-directory-logs-with-splunk-using-azure-monitor"></a>如何：使用 Azure Monitor 将 Azure Active Directory 日志与 Splunk 集成
 
 本文介绍如何使用 Azure Monitor 将 Azure Active Directory (Azure AD) 日志与 Splunk 集成。 首先将日志路由到 Azure 事件中心，然后将事件中心与 Splunk 集成。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要使用此功能，需满足以下条件:
 
 - 包含 Azure AD 活动日志的 Azure 事件中心。 了解如何[将活动日志流式传输到事件中心](quickstart-azure-monitor-stream-logs-to-event-hub.md)。 
 
--  [微软 Azure 为 Splunk 添加](https://splunkbase.splunk.com/app/3757/)。 
+-  [针对 Splunk 的 Microsoft Azure 添加](https://splunkbase.splunk.com/app/3757/)。 
 
-## <a name="integrate-azure-active-directory-logs"></a>集成 Azure 活动目录日志 
+## <a name="integrate-azure-active-directory-logs"></a>集成 Azure Active Directory 日志 
 
 1. 打开 Splunk 实例，并选择“数据摘要”****。
 
@@ -56,6 +56,6 @@ ms.locfileid: "78968713"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [解释 Azure 监视器中的审核日志架构](reference-azure-monitor-audit-log-schema.md)
-* [在 Azure 监视器中解释登录日志架构](reference-azure-monitor-sign-ins-log-schema.md)
+* [解释 Azure Monitor 中的审核日志架构](reference-azure-monitor-audit-log-schema.md)
+* [解释 Azure Monitor 中的登录日志架构](reference-azure-monitor-sign-ins-log-schema.md)
 * [常见问题解答和已知的问题](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

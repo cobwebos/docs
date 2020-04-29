@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
 ms.openlocfilehash: df3c8d2abf59de6c9f685ad8d93e6689738df8e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302519"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>使用 Azure CLI 配置 IoT 中心文件上传
@@ -23,13 +23,13 @@ ms.locfileid: "78302519"
 
 要完成本教程，需要以下各项：
 
-* 有效的 Azure 帐户。 如果您没有帐户，只需几分钟即可创建[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
+* 有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-* Azure IoT 中心。 如果没有 IoT 中心，则可以使用[`az iot hub create`命令](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create)创建一个或[使用门户创建 IoT 中心](iot-hub-create-through-portal.md)。
+* Azure IoT 中心。 如果没有 IoT 中心，可以使用 [`az iot hub create` 命令](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create)创建一个，或[使用门户创建 IoT 中心](iot-hub-create-through-portal.md)。
 
-* 一个 Azure 存储帐户。 如果没有 Azure 存储帐户，则可以使用 Azure CLI 创建一个帐户。 有关详细信息，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md)。
+* 一个 Azure 存储帐户。 如果没有 Azure 存储帐户，可以使用 Azure CLI 创建一个。 有关详细信息，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md)。
 
 ## <a name="sign-in-and-set-your-azure-account"></a>登录并设置 Azure 帐户
 

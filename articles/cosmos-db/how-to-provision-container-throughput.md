@@ -7,29 +7,29 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: mjbrown
 ms.openlocfilehash: e416501cb3c532b3ba0a262442b35b236875a463
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78273299"
 ---
 # <a name="provision-throughput-on-an-azure-cosmos-container"></a>在 Azure Cosmos 容器上预配吞吐量
 
-本文介绍如何在 Azure Cosmos DB 中为容器（集合、图形或表）预配吞吐量。 您可以在单个容器上预配吞吐量，也可以[在数据库上预配吞吐量](how-to-provision-database-throughput.md)，并在数据库中的容器之间共享吞吐量。 可以使用 Azure 门户、Azure CLI 或 Azure Cosmos DB SDK 为容器预配吞吐量。
+本文介绍如何在 Azure Cosmos DB 中为容器（集合、图形或表）预配吞吐量。 可以为单个容器预配吞吐量，也可以[为数据库预配吞吐量](how-to-provision-database-throughput.md)，并在数据库中的容器之间共享。 可以使用 Azure 门户、Azure CLI 或 Azure Cosmos DB SDK 为容器预配吞吐量。
 
 ## <a name="azure-portal"></a>Azure 门户
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 1. [创建新的 Azure Cosmos 帐户](create-sql-api-dotnet.md#create-account)，或选择现有的 Azure Cosmos 帐户。
 
-1. 打开“数据资源管理器”窗格，然后选择“新建集合”********。 接下来，请提供以下详细信息：
+1. 打开“数据资源管理器”窗格，然后选择“新建集合”   。 接下来，请提供以下详细信息：
 
    * 表明要创建新数据库还是使用现有数据库。
    * 输入容器（或表或图）ID。
    * 输入分区键值（例如 `/userid`）。
    * 输入要预配的吞吐量（例如，1000 RU）
-   * 选择“确定”。
+   * 选择“确定”  。
 
     ![数据资源管理器的屏幕截图，突出显示“新建集合”](./media/how-to-provision-container-throughput/provision-container-throughput-portal-all-api.png)
 
@@ -96,7 +96,7 @@ offer.content.offerThroughput = 2000;
 await client.offer(offer.id).replace(offer);
 ```
 
-### <a name="cassandra-api"></a><a id="dotnet-cassandra"></a>卡桑德拉 API
+### <a name="cassandra-api"></a><a id="dotnet-cassandra"></a>Cassandra API
 
 类似的命令可以通过任何 CQL 兼容的驱动程序发出。
 

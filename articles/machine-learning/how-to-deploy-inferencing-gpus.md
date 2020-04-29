@@ -11,10 +11,10 @@ author: csteegz
 ms.reviewer: larryfr
 ms.date: 03/05/2020
 ms.openlocfilehash: b0fd537d1930e7c9d5f7a33f56ec5d00b1556562
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78398337"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>使用 GPU 为推理部署深度学习模型
@@ -25,15 +25,15 @@ ms.locfileid: "78398337"
 推理（模型评分）是使用部署的模型进行预测的阶段。 使用 GPU 代替 CPU 可为高度并行化的计算提供性能优势。
 
 > [!IMPORTANT]
-> 对于 Web 服务部署，只有 Azure Kubernetes 服务支持 GPU 推理。 对于使用机器学习管道进行的推理，只有 Azure 机器学习计算支持 GPU____。 有关使用机器学习管道的详细信息，请参阅[运行批量预测](how-to-use-parallel-run-step.md)。 
+> 对于 Web 服务部署，只有 Azure Kubernetes 服务支持 GPU 推理。 对于使用机器学习管道进行的推理，只有 Azure 机器学习计算支持 GPU  。 有关使用机器学习管道的详细信息，请参阅[运行批量预测](how-to-use-parallel-run-step.md)。 
 
 > [!TIP]
-> 尽管本文中的代码段使用 TensorFlow 模型，但您可以将信息应用于支持 GPU 的任何机器学习框架。
+> 尽管本文中的代码片段使用了 TensorFlow 模型，但你可以将这些信息应用于任何支持 GPU 的机器学习框架。
 
 > [!NOTE]
 > 本文中的信息基于[如何部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)一文中的信息。 那篇文章总体上说的是在 AKS 上部署，本文介绍的是特定于 GPU 的部署。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 

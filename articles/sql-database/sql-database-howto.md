@@ -12,15 +12,15 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 11/14/2019
 ms.openlocfilehash: c3f7b33e4b42b08334cfb687024985c878dc3713
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79209431"
 ---
 # <a name="how-to-use-azure-sql-database"></a>如何使用 Azure SQL 数据库
 
-在本部分中，你可以找到可帮助你管理和配置 Azure SQL 数据库的各种指南、脚本和说明。 您还可以查找[单个数据库](sql-database-howto-single-database.md)和[托管实例](sql-database-howto-managed-instance.md)的具体使用指南。
+在本部分中，你可以找到可帮助你管理和配置 Azure SQL 数据库的各种指南、脚本和说明。 还可以找到具体的[单一数据库](sql-database-howto-single-database.md)和[托管实例](sql-database-howto-managed-instance.md)操作指南。
 
 ## <a name="load-data"></a>加载数据
 
@@ -50,7 +50,7 @@ ms.locfileid: "79209431"
 
 ### <a name="extended-events"></a>扩展的事件
 
-- [扩展事件](sql-database-xevent-db-diff-from-svr.md)
+- [扩展的事件](sql-database-xevent-db-diff-from-svr.md)
 - [将扩展的事件存储到事件文件](sql-database-xevent-code-event-file.md)
 - [将扩展的事件存储到环形缓冲区](sql-database-xevent-code-ring-buffer.md)
 
@@ -83,7 +83,7 @@ ms.locfileid: "79209431"
 ## <a name="design-applications"></a>设计应用程序
 
 - [灾难恢复设计](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-- [设计弹性池](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)
+- [弹性池设计](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)
 - [应用升级设计](sql-database-manage-application-rolling-upgrade.md)
 
 ### <a name="design-multi-tenant-saas-applications"></a>设计多租户 SaaS 应用程序
@@ -95,4 +95,4 @@ ms.locfileid: "79209431"
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解[托管实例操作指南](sql-database-howto-managed-instance.md)。
-- 详细了解[单个数据库的"如何"指南](sql-database-howto-single-database.md)。
+- 了解有关[单一数据库的操作方法指南的](sql-database-howto-single-database.md)详细信息。

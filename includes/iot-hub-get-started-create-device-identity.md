@@ -9,17 +9,17 @@ ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 68260bf8aafbbe5afd46ec7dfb763eb88ee2123e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78893335"
 ---
 在本部分中，将使用 Azure CLI 为本文创建设备标识。 设备 ID 区分大小写。
 
-1. 打开[Azure 云外壳](https://shell.azure.com/)。
+1. 打开 [Azure Cloud Shell](https://shell.azure.com/)。
 
-1. 在 Azure 云外壳中，运行以下命令以安装 Azure CLI 的 Microsoft Azure IoT 扩展：
+1. 在 Azure Cloud Shell 中运行以下命令，安装用于 Azure CLI 的 Microsoft Azure IoT 扩展：
 
     ```azurecli-interactive
     az extension add --name azure-iot

@@ -1,5 +1,5 @@
 ---
-title: 用于 Azure Linux 虚拟机的临时操作系统磁盘
+title: Azure Linux 虚拟机的临时 OS 磁盘
 description: 详细了解用于 Azure VM 的临时 OS 磁盘。
 author: cynthn
 ms.service: virtual-machines-linux
@@ -9,10 +9,10 @@ ms.date: 07/01/2019
 ms.author: cynthn
 ms.subservice: disks
 ms.openlocfilehash: 971461f33b3a80363ffb0835ddc74f46d1a34fb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78945202"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>用于 Azure VM 的临时 OS 磁盘

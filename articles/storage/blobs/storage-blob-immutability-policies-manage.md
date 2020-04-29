@@ -9,10 +9,10 @@ ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 05a155584f0cb69191883cb82b3db0af435ccc12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78970103"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>为 Blob 存储设置和管理不可变性策略
@@ -27,11 +27,11 @@ Azure Blob 存储的不可变存储可让用户以 WORM（一次写入，多次�
 
 1. 请创建新的容器或选择现有容器，以便存储需要保持不可变状态的 Blob。 容器必须位于常规用途 v2 或 Blob 存储帐户中。
 
-2. 在容器设置中选择“访问策略”****。 然后选择“不可变 Blob 存储”下的“添加策略”。********
+2. 在容器设置中选择“访问策略”  。 然后选择“不可变 Blob 存储”下的“添加策略”。  
 
     ![门户中的容器设置](media/storage-blob-immutability-policies-manage/portal-image-1.png)
 
-3. 若要启用基于时间的保留，请从下拉菜单中选择“基于时间的保留”。****
+3. 若要启用基于时间的保留，请从下拉菜单中选择“基于时间的保留”。 
 
     ![在“策略类型”下选择“基于时间的保留”](media/storage-blob-immutability-policies-manage/portal-image-2.png)
 
@@ -41,15 +41,15 @@ Azure Blob 存储的不可变存储可让用户以 WORM（一次写入，多次�
 
     策略的初始状态为“未锁定”，在此状态下可以先测试该功能，并在锁定之前对策略进行更改。 必须锁定策略才能符合 SEC 17a-4 等法规的要求。
 
-5. 锁定策略。 右键单击省略号 (**...**)，此时会显示以下包含附加操作的菜单：
+5. 锁定策略。 右键单击省略号 ( **...** )，此时会显示以下包含附加操作的菜单：
 
     ![菜单中的“锁定策略”](media/storage-blob-immutability-policies-manage/portal-image-4-lock-policy.png)
 
-6. 选择“锁定策略”并确认锁定。**** 现已锁定该策略，无法将其删除，只允许延长保留时间间隔。 不允许删除和替代 Blob。 
+6. 选择“锁定策略”并确认锁定。  现已锁定该策略，无法将其删除，只允许延长保留时间间隔。 不允许删除和替代 Blob。 
 
     ![在菜单中确认“锁定策略”](media/storage-blob-immutability-policies-manage/portal-image-5-lock-policy.png)
 
-7. 若要启用法定保留，请选择“添加策略”。**** 从下拉菜单中选择“法定保留”****。
+7. 若要启用法定保留，请选择“添加策略”。  从下拉菜单中选择“法定保留”  。
 
     ![菜单中“策略类型”下面的“法定保留”](media/storage-blob-immutability-policies-manage/portal-image-legal-hold-selection-7.png)
 
@@ -63,7 +63,7 @@ Azure Blob 存储的不可变存储可让用户以 WORM（一次写入，多次�
 
 以下命令组包含该功能：`az storage container immutability-policy` 和 `az storage container legal-hold`。 对这些命令运行 `-h` 可查看命令。
 
-### <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -116,7 +116,7 @@ Remove-AzRmStorageContainerLegalHold -ResourceGroupName $resourceGroup `
     -StorageAccountName $storageAccount -Name $container -Tag <tag3>
 ```
 
-创建或更新基于时间的不变性策略：
+创建或更新基于时间的不可变策略：
 
 ```powershell
 # Create a time-based immutablity policy
@@ -166,7 +166,7 @@ Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 
 ---
 
-## <a name="enabling-allow-protected-append-blobs-writes"></a>启用允许受保护的追加 Blob 写入
+## <a name="enabling-allow-protected-append-blobs-writes"></a>允许受保护的追加 Blob 写入
 
 ### <a name="portal"></a>[门户](#tab/azure-portal)
 
@@ -176,7 +176,7 @@ Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 
 以下命令组包含该功能：`az storage container immutability-policy` 和 `az storage container legal-hold`。 对这些命令运行 `-h` 可查看命令。
 
-### <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```powershell
 # Create an immutablity policy with appends allowed
@@ -188,4 +188,4 @@ Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用不可变的存储来存储业务关键型 Blob 数据](storage-blob-immutable-storage.md)
+[使用不可变存储存储业务关键型 Blob 数据](storage-blob-immutable-storage.md)

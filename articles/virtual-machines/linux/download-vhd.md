@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: cynthn
 ms.openlocfilehash: 02c3ee483e6a31960fd5123070a49f568ac4c690
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78968795"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>从 Azure 下载 Linux VHD
@@ -48,8 +48,8 @@ ms.locfileid: "78968795"
 
 若要使用 VHD 作为现有 VM 的新实例的磁盘或数据磁盘，请完成以下步骤：
 
-1.  登录到 Azure[门户](https://portal.azure.com/)。
-2.  在左侧菜单中，选择 **"虚拟机**"。
+1.  登录 [Azure 门户](https://portal.azure.com/)。
+2.  在左侧菜单中，选择 "**虚拟机**"。
 3.  从列表中选择 VM。
 4.  在 VM 的页面上，选择“停止”****。
 

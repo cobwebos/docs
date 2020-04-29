@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.author: cynthn
 ms.openlocfilehash: 1594c030839cccdd48c4b032c6ad92f746f78e26
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78970279"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>使用 REST API 创建使用 SSH 身份验证的 Linux 虚拟机
@@ -26,7 +26,7 @@ Azure 中的 Linux 虚拟机 (VM) 包含各种资源（例如磁盘和网络接�
 在创建并提交请求之前，你需要具有以下项：
 
 * 你的订阅的 `{subscription-id}`
-  * 如果您有多个订阅，请参阅[处理多个订阅](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)
+  * 如果你有多个订阅，请参阅[使用多个订阅](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)
 * 提前创建的 `{resourceGroupName}`
 * 位于同一资源组中的[虚拟网络接口](../../virtual-network/virtual-network-network-interface.md)
 * SSH 密钥对（如果还没有，可以[生成一个新的](mac-create-ssh-keys.md)）
@@ -43,10 +43,10 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 以下标头是必需的：
 
-| 请求标头   | 描述 |
+| 请求标头   | 说明 |
 |------------------|-----------------|
-| Content-Type：**  | 必需。 设置为 `application/json`。 |
-| *授权：* | 必需。 设置为有效的`Bearer` [访问令牌](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)。 |
+| Content-Type：   | 必需。 设置为 `application/json`。 |
+| Authorization：  | 必需。 设置为有效的`Bearer` [访问令牌](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)。 |
 
 有关使用 REST API 请求的一般信息，请参阅 [REST API 请求/响应的组件](/rest/api/azure/#components-of-a-rest-api-requestresponse)。
 
@@ -54,7 +54,7 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 下面的通用定义用来构建请求正文：
 
-| “属性”                       | 必选 | 类型                                                                                | 说明  |
+| 名称                       | 必选 | 类型                                                                                | 说明  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True     | 字符串                                                                              | 资源位置。 |
 | name                       |          | 字符串                                                                              | 虚拟机的名称。 |
@@ -63,7 +63,7 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | 指定虚拟机的操作系统设置。 |
 | properties.networkProfile  |          | [NetworkProfile](/rest/api/compute/virtualmachines/createorupdate#networkprofile)   | 指定虚拟机的网络接口。 |
 
-下面是一个示例请求正文。 请确保在 `{computerName}` 和 `{name}` 参数中指定 VM 名称，在 `networkInterfaces` 下指定你创建的网络接口的名称，在 `adminUsername` 和 `path` 中指定用户名，在 `keyData` 中指定 SSH 密钥的公共** 部分（例如位于 `~/.ssh/id_rsa.pub` 中）。 你可能希望更改的其他参数包括 `location` 和 `vmSize`。  
+下面是一个示例请求正文。 请确保在 `{computerName}` 和 `{name}` 参数中指定 VM 名称，在 `networkInterfaces` 下指定你创建的网络接口的名称，在 `adminUsername` 和 `path` 中指定用户名，在  *中指定 SSH 密钥的公共*`~/.ssh/id_rsa.pub`部分（例如位于 `keyData` 中）。 你可能希望更改的其他参数包括 `location` 和 `vmSize`。  
 
 ```json
 {
@@ -122,13 +122,13 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 ## <a name="sending-the-request"></a>发送请求
 
-可以使用你喜欢使用的客户端发送此 HTTP 请求。 还可以通过单击“试用”按钮使用某个[浏览器中工具](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate)。****
+可以使用你喜欢使用的客户端发送此 HTTP 请求。 还可以通过单击“试用”按钮使用某个[浏览器中工具](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate)。 
 
 ### <a name="responses"></a>响应
 
 对于要创建或更新虚拟机的操作，有两个成功响应：
 
-| “属性”        | 类型                                                                              | 说明 |
+| 名称        | 类型                                                                              | 说明 |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 正常      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
 | 201 Created | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | 创建     |

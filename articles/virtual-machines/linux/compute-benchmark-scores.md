@@ -1,15 +1,15 @@
 ---
-title: 计算 Azure Linux VM 的基准分数
+title: Azure Linux Vm 的计算基准测试分数
 description: 比较运行 Linux 的 Azure VM 的 CoreMark 计算基准测试分数。
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 04/09/2018
 ms.reviewer: davberg
 ms.openlocfilehash: 71413e9a1e0b368bf5d3ae26bbc97d7d78da9422
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78969753"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Linux VM 的计算基准测试分数
@@ -42,7 +42,7 @@ ms.locfileid: "78969753"
 | Standard_A8m_v2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 8 | 1 | 62.9 | 49,838 | 633 | 1.27% | 182 |
 | Standard_A8m_v2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 8 | 1 | 62.9 | 49,123 | 2,483 | 5.05% | 259 |
 
-注意：Av2 系列 VM 可以部署在各种硬件类型和处理器上（如上图所示）。 Av2 系列 VM 具有 CPU 性能和内存配置，最适合入门级工作负载，如开发和测试。 无论部署在哪个硬件上，都会限制大小，以为正在运行的实例提供相对一致的处理器性能;但是，利用特定较新的处理器优化的软件可能会看到处理器类型之间的更多显著变化。
+注意： Av2 系列 Vm 可以部署在各种不同的硬件类型和处理器上（如上所示）。 Av2 系列 Vm 具有最适合于入门级工作负荷（如开发和测试）的 CPU 性能和内存配置。 大小被限制为为正在运行的实例提供相对一致的处理器性能，而不考虑部署它的硬件;但是，利用特定的较新处理器优化的软件可能会发现跨处理器类型的更大变化。
 
 ## <a name="b---burstable"></a>B - 可迸发
 (3/15/2019 12:27:08 AM pbi 3897709)
@@ -62,9 +62,9 @@ ms.locfileid: "78969753"
 | Standard_B8ms | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 8 | 1 | 31.4 | 111,929 | 1,562 | 1.40% | 35 |
 | Standard_B8ms | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 8 | 1 | 31.4 | 109,537 | 1,354 | 1.24% | 665 |
 
-注意：B 系列 VM 适用于具有可突发性能要求的工作负载。 当使用少于其基线时，VM 实例会累积积分。 当 VM 累积了信用时，VM 可以使用高达 100% 的时间在基线上方突发，以满足简短的 CPU 突发要求。 突发时间取决于可用积分，这是 VM 大小和时间的函数。  
+注意： B 系列 Vm 适用于具有可突增性能要求的工作负荷。 当使用小于基线时，VM 实例累积了信用额度。 当 VM 具有累积信用额度时，VM 可能会在基线之上使用最多100% 的流量，以满足短 CPU 突发要求。 突发时间取决于可用信用额度，它是 VM 大小和时间的函数。  
 
-CoreMark 是一个短运行测试，通常在可用的突发积分内完成。  因此，上述数字通常表示 VM 的突发性能，反映了短、突发式工作负载（典型的 B 系列）性能通常看到的情况。
+CoreMark 是一种短暂运行的测试，通常在可用的突发信用额度内完成。  因此，以上数字通常表示 VM 的突发性能，反映了通常会看到的 short、突发、工作负荷（通常在 B 系列上）性能。
 
 ## <a name="dsv3---general-compute--premium-storage"></a>DSv3 - 通用计算 + 高级存储
 (3/12/2019 6:52:03 PM pbi 3897709)
@@ -264,63 +264,63 @@ CoreMark 是一个短运行测试，通常在可用的突发积分内完成。  
 | Standard_F16 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 16 | 1 | 31.4 | 228,592 | 2,371 | 1.04% | 392 |
 
 ## <a name="gs---storage-optimized"></a>GS - 存储优化
-（2019/3/12 10：22：33 PM pbi 3897709）
+（3/12/2019 10:22:33 PM pbi 3897709）
 
 | VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Standard_GS1 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 2 | 1 | 27.5 | 28,835 | 2,222 | 7.71% | 287 |
-| Standard_GS2 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 4 | 1 | 55.0 | 55,568 | 3,139 | 5.65% | 287 |
-| Standard_GS3 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 8 | 1 | 110.2 | 106,567 | 2,188 | 2.05% | 287 |
-| Standard_GS4 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 16 | 1 | 220.4 | 210,586 | 4,130 | 1.96% | 287 |
-| Standard_GS4-4 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 4 | 1 | 220.4 | 58,598 | 2,670 | 4.56% | 287 |
-| Standard_GS4-8 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 8 | 1 | 220.4 | 108,234 | 2,392 | 2.21% | 287 |
-| Standard_GS5 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 32 | 2 | 440.9 | 399,835 | 8,694 | 2.17% | 287 |
-| Standard_GS5-8 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 8 | 2 | 440.9 | 116,643 | 2,354 | 2.02% | 287 |
-| Standard_GS5-16 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 16 | 2 | 440.9 | 210,984 | 2,995 | 1.42% | 287 |
+| Standard_GS1 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 2 | 1 | 27.5 | 28835 | 2222 | 7.71% | 287 |
+| Standard_GS2 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 4 | 1 | 55.0 | 55568 | 3139 | 5.65% | 287 |
+| Standard_GS3 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 8 | 1 | 110.2 | 106567 | 2188 | 2.05% | 287 |
+| Standard_GS4 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 16 | 1 | 220.4 | 210586 | 4130 | 1.96% | 287 |
+| Standard_GS4-4 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 4 | 1 | 220.4 | 58598 | 2,670 | 4.56% | 287 |
+| Standard_GS4-8 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 8 | 1 | 220.4 | 108234 | 2392 | 2.21% | 287 |
+| Standard_GS5 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 32 | 2 | 440.9 | 399835 | 8694 | 2.17% | 287 |
+| Standard_GS5-8 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 8 | 2 | 440.9 | 116643 | 2354 | 2.02% | 287 |
+| Standard_GS5-16 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 16 | 2 | 440.9 | 210984 | 2995 | 1.42% | 287 |
 
 ## <a name="g---compute-optimized"></a>G - 计算优化
-（2019/3/12 10：23：51 下午 pbi 3897709）
+（3/12/2019 10:23:51 PM pbi 3897709）
 
 | VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Standard_G1 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 2 | 1 | 27.5 | 32,808 | 2,679 | 8.17% | 287 |
-| Standard_G2 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 4 | 1 | 55.0 | 62,907 | 4,465 | 7.10% | 287 |
-| Standard_G3 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 8 | 1 | 110.2 | 113,471 | 4,346 | 3.83% | 287 |
-| Standard_G4 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 16 | 1 | 220.4 | 212,092 | 2,857 | 1.35% | 287 |
-| Standard_G5 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 32 | 2 | 440.9 | 403,315 | 6,947 | 1.72% | 273 |
+| Standard_G1 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 2 | 1 | 27.5 | 32808 | 2679 | 8.17% | 287 |
+| Standard_G2 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 4 | 1 | 55.0 | 62907 | 4465 | 7.10% | 287 |
+| Standard_G3 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 8 | 1 | 110.2 | 113471 | 4,346 | 3.83% | 287 |
+| Standard_G4 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 16 | 1 | 220.4 | 212092 | 2857 | 1.35% | 287 |
+| Standard_G5 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 32 | 2 | 440.9 | 403315 | 6947 | 1.72% | 273 |
 
 ## <a name="h---high-performance-compute-hpc"></a>H - 高性能计算 (HPC)
-（2019/3/12 10：50：51 下午 pbi 3897709）
+（3/12/2019 10:50:51 PM pbi 3897709）
 
 | VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Standard_H8 | Intel(R) Xeon(R) CPU E5-2667 v3 @ 3.20GHz | 8 | 1 | 55.0 | 149,859 | 734 | 0.49% | 175 |
-| Standard_H8m | Intel(R) Xeon(R) CPU E5-2667 v3 @ 3.20GHz | 8 | 1 | 110.2 | 149,931 | 657 | 0.44% | 147 |
-| Standard_H16 | Intel(R) Xeon(R) CPU E5-2667 v3 @ 3.20GHz | 16 | 2 | 110.2 | 282,083 | 6,738 | 2.39% | 84 |
-| Standard_H16m | Intel(R) Xeon(R) CPU E5-2667 v3 @ 3.20GHz | 16 | 2 | 220.4 | 282,106 | 7,013 | 2.49% | 84 |
-| Standard_H16mr | Intel(R) Xeon(R) CPU E5-2667 v3 @ 3.20GHz | 16 | 2 | 220.4 | 282,167 | 6,889 | 2.44% | 84 |
-| Standard_H16r | Intel(R) Xeon(R) CPU E5-2667 v3 @ 3.20GHz | 16 | 2 | 110.2 | 280,837 | 6,587 | 2.35% | 84 |
+| Standard_H8 | Intel(R) Xeon(R) CPU E5-2667 v3 @ 3.20GHz | 8 | 1 | 55.0 | 149859 | 734 | 0.49% | 175 |
+| Standard_H8m | Intel(R) Xeon(R) CPU E5-2667 v3 @ 3.20GHz | 8 | 1 | 110.2 | 149931 | 657 | 0.44% | 147 |
+| Standard_H16 | Intel(R) Xeon(R) CPU E5-2667 v3 @ 3.20GHz | 16 | 2 | 110.2 | 282083 | 6738 | 2.39% | 84 |
+| Standard_H16m | Intel(R) Xeon(R) CPU E5-2667 v3 @ 3.20GHz | 16 | 2 | 220.4 | 282106 | 7013 | 2.49% | 84 |
+| Standard_H16mr | Intel(R) Xeon(R) CPU E5-2667 v3 @ 3.20GHz | 16 | 2 | 220.4 | 282167 | 6889 | 2.44% | 84 |
+| Standard_H16r | Intel(R) Xeon(R) CPU E5-2667 v3 @ 3.20GHz | 16 | 2 | 110.2 | 280837 | 6587 | 2.35% | 84 |
 
-## <a name="lv2---storage-optimized"></a>Lv2 - 存储优化
-（2019/3/14 下午 5：49：04 下午 pbi 3897709）
+## <a name="lv2---storage-optimized"></a>Lv2-优化存储
+（3/14/2019 5:49:04 PM pbi 3897709）
 
 | VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Standard_L8s_v2 | AMD EPYC 7551 32 核处理器 | 8 | 1 | 62.9 | 80,528 | 404 | 0.50% | 119 |
-| Standard_L16s_v2 | AMD EPYC 7551 32 核处理器 | 16 | 2 | 125.9 | 154,829 | 3,708 | 2.40% | 119 |
-| Standard_L32s_v2 | AMD EPYC 7551 32 核处理器 | 32 | 4 | 251.9 | 310,811 | 7,751 | 2.49% | 119 |
-| Standard_L64s_v2 | AMD EPYC 7551 32 核处理器 | 64 | 8 | 503.9 | 595,140 | 14,572 | 2.45% | 112 |
-| Standard_L80s_v2 | AMD EPYC 7551 32 核处理器 | 80 | 10 | 629.9 | 773,171 | 19,559 | 2.53% | 119 |
+| Standard_L8s_v2 | AMD EPYC 7551 32-核处理器 | 8 | 1 | 62.9 | 80528 | 404 | 0.50% | 119 |
+| Standard_L16s_v2 | AMD EPYC 7551 32-核处理器 | 16 | 2 | 125.9 | 154829 | 3708 | 2.40% | 119 |
+| Standard_L32s_v2 | AMD EPYC 7551 32-核处理器 | 32 | 4 | 251.9 | 310811 | 7751 | 2.49% | 119 |
+| Standard_L64s_v2 | AMD EPYC 7551 32-核处理器 | 64 | 8 | 503.9 | 595140 | 14572 | 2.45% | 112 |
+| Standard_L80s_v2 | AMD EPYC 7551 32-核处理器 | 80 | 10 | 629.9 | 773171 | 19559 | 2.53% | 119 |
 
 ## <a name="ls---storage-optimized"></a>Ls - 存储优化
-（2019/3/12 10：22：29 下午 pbi 3897709）
+（3/12/2019 10:22:29 PM pbi 3897709）
 
 | VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Standard_L4s | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 4 | 1 | 31.4 | 56,488 | 2,916 | 5.16% | 287 |
-| Standard_L8s | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 8 | 1 | 62.9 | 107,017 | 2,323 | 2.17% | 287 |
-| Standard_L16s | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 16 | 1 | 125.9 | 210,865 | 3,653 | 1.73% | 280 |
-| Standard_L32s | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 32 | 2 | 251.9 | 399,963 | 9,254 | 2.31% | 287 |
+| Standard_L4s | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 4 | 1 | 31.4 | 56488 | 2916 | 5.16% | 287 |
+| Standard_L8s | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 8 | 1 | 62.9 | 107017 | 2323 | 2.17% | 287 |
+| Standard_L16s | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 16 | 1 | 125.9 | 210865 | 3653 | 1.73% | 280 |
+| Standard_L32s | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 32 | 2 | 251.9 | 399963 | 9254 | 2.31% | 287 |
 
 ## <a name="m---memory-optimized"></a>M - 内存优化
 (4/11/2019 7:30:39 PM pbi 3897709)
@@ -363,44 +363,44 @@ CoreMark 是一个短运行测试，通常在可用的突发积分内完成。  
 | Standard_NC24rs_v3 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 24 | 2 | 440.9 | 403,554 | 6,705 | 1.66% | 42 |
 | Standard_NC24s_v3 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 24 | 2 | 440.9 | 403,874 | 7,603 | 1.88% | 42 |
 
-## <a name="ncsv2---gpu-enabled"></a>NCSv2 - 启用 GPU
-（2019/3/12 11：19：19 下午 pbi 3897709）
+## <a name="ncsv2---gpu-enabled"></a>NCSv2-已启用 GPU
+（3/12/2019 11:19:19 PM pbi 3897709）
 
 | VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Standard_NC6s_v2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 6 | 1 | 110.2 | 107,115 | 321 | 0.30% | 63 |
-| Standard_NC12s_v2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 12 | 1 | 220.4 | 213,814 | 656 | 0.31% | 63 |
-| Standard_NC24rs_v2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 24 | 2 | 440.9 | 401,728 | 6,995 | 1.74% | 63 |
-| Standard_NC24s_v2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 24 | 2 | 440.9 | 402,808 | 7,923 | 1.97% | 63 |
+| Standard_NC6s_v2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 6 | 1 | 110.2 | 107115 | 321 | 0.30% | 63 |
+| Standard_NC12s_v2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 12 | 1 | 220.4 | 213814 | 656 | 0.31% | 63 |
+| Standard_NC24rs_v2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 24 | 2 | 440.9 | 401728 | 6995 | 1.74% | 63 |
+| Standard_NC24s_v2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 24 | 2 | 440.9 | 402808 | 7923 | 1.97% | 63 |
 
-## <a name="nc---gpu-enabled"></a>NC - 启用 GPU
-（2019/3/12 11：08：03 PM pbi 3897709）
-
-| VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
-| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Standard_NC6 | 英特尔（R） Xeon（R） CPU E5-2690 v3 = 2.60GHz | 6 | 1 | 55.0 | 102,211 | 658 | 0.64% | 259 |
-| Standard_NC12 | 英特尔（R） Xeon（R） CPU E5-2690 v3 = 2.60GHz | 12 | 1 | 110.2 | 203,523 | 2,293 | 1.13% | 259 |
-| Standard_NC24 | 英特尔（R） Xeon（R） CPU E5-2690 v3 = 2.60GHz | 24 | 2 | 220.4 | 382,897 | 8,712 | 2.28% | 259 |
-| Standard_NC24r | 英特尔（R） Xeon（R） CPU E5-2690 v3 = 2.60GHz | 24 | 2 | 220.4 | 383,171 | 9,166 | 2.39% | 259 |
-
-## <a name="nds--gpu-enabled"></a>已启用 ND- GPU
-（2019/3/12 11：19：10 下午 pbi 3897709）
+## <a name="nc---gpu-enabled"></a>NC-已启用 GPU
+（3/12/2019 11:08:03 PM pbi 3897709）
 
 | VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Standard_ND6s | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 6 | 1 | 110.2 | 107,095 | 353 | 0.33% | 63 |
-| Standard_ND12s | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 12 | 1 | 220.4 | 212,298 | 3,457 | 1.63% | 63 |
-| Standard_ND24rs | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 24 | 2 | 440.9 | 402,749 | 7,838 | 1.95% | 56 |
-| Standard_ND24s | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 24 | 2 | 440.9 | 401,822 | 7,776 | 1.94% | 63 |
+| Standard_NC6 | Intel （R）强® CPU E5-2690 v3 @ 2.60 GHz | 6 | 1 | 55.0 | 102211 | 658 | 0.64% | 259 |
+| Standard_NC12 | Intel （R）强® CPU E5-2690 v3 @ 2.60 GHz | 12 | 1 | 110.2 | 203523 | 2293 | 1.13% | 259 |
+| Standard_NC24 | Intel （R）强® CPU E5-2690 v3 @ 2.60 GHz | 24 | 2 | 220.4 | 382897 | 8712 | 2.28% | 259 |
+| Standard_NC24r | Intel （R）强® CPU E5-2690 v3 @ 2.60 GHz | 24 | 2 | 220.4 | 383171 | 9166 | 2.39% | 259 |
 
-## <a name="nv---gpu-enabled"></a>NV - 启用 GPU
-（2019/3/12 11：08：13 下午 pbi 3897709）
+## <a name="nds--gpu-enabled"></a>已启用 NDs-GPU
+（3/12/2019 11:19:10 PM pbi 3897709）
 
 | VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Standard_NV6 | 英特尔（R） Xeon（R） CPU E5-2690 v3 = 2.60GHz | 6 | 1 | 55.0 | 101,728 | 2,094 | 2.06% | 259 |
-| Standard_NV12 | 英特尔（R） Xeon（R） CPU E5-2690 v3 = 2.60GHz | 12 | 1 | 110.2 | 203,903 | 1,724 | 0.85% | 252 |
-| Standard_NV24 | 英特尔（R） Xeon（R） CPU E5-2690 v3 = 2.60GHz | 24 | 2 | 220.4 | 379,879 | 8,737 | 2.30% | 259 |
+| Standard_ND6s | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 6 | 1 | 110.2 | 107095 | 353 | 0.33% | 63 |
+| Standard_ND12s | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 12 | 1 | 220.4 | 212298 | 3457 | 1.63% | 63 |
+| Standard_ND24rs | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 24 | 2 | 440.9 | 402749 | 7838 | 1.95% | 56 |
+| Standard_ND24s | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 24 | 2 | 440.9 | 401822 | 7776 | 1.94% | 63 |
+
+## <a name="nv---gpu-enabled"></a>NV-已启用 GPU
+（3/12/2019 11:08:13 PM pbi 3897709）
+
+| VM 大小 | CPU | vCPU | NUMA 节点 | Memory(GiB) | 平均分数 | 标准偏差 | StdDev% | 运行次数 |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Standard_NV6 | Intel （R）强® CPU E5-2690 v3 @ 2.60 GHz | 6 | 1 | 55.0 | 101728 | 2094 | 2.06% | 259 |
+| Standard_NV12 | Intel （R）强® CPU E5-2690 v3 @ 2.60 GHz | 12 | 1 | 110.2 | 203903 | 1,724 | 0.85% | 252 |
+| Standard_NV24 | Intel （R）强® CPU E5-2690 v3 @ 2.60 GHz | 24 | 2 | 220.4 | 379879 | 8737 | 2.30% | 259 |
 
 
 ## <a name="about-coremark"></a>关于 CoreMark

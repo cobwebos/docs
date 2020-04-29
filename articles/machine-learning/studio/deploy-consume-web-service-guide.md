@@ -11,10 +11,10 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/19/2017
 ms.openlocfilehash: ff6ae0de0bbd8c47b81fa5066a97eb0b3e0cf6bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79204386"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure 机器学习工作室（经典）Web 服务：部署和使用
@@ -35,7 +35,7 @@ ms.locfileid: "79204386"
 
 * 有关如何部署基于 Azure 资源管理器的新 Web 服务的概述，请参阅[部署新 Web 服务](deploy-a-machine-learning-web-service.md)。
 * 有关如何部署 Web 服务的演练，请参阅[部署 Azure 机器学习 Web 服务](deploy-a-machine-learning-web-service.md)。
-* 有关如何创建和部署 Web 服务的完整演练，请从[教程 1：预测信用风险](tutorial-part1-credit-risk.md)开始。
+* 有关如何创建和部署 Web 服务的完整演练，请从[教程 1：预测信贷风险](tutorial-part1-credit-risk.md)。
 * 有关部署 Web 服务的特定示例，请参阅：
 
   * [教程 3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)
@@ -98,8 +98,8 @@ ms.locfileid: "79204386"
 可以下载使用 Web 服务的 Excel 模板：
 
 * [从 Excel 使用 Azure 机器学习 Web 服务](consuming-from-excel.md)
-* [Azure 机器学习 Web 服务的 Excel 外接程序](excel-add-in-for-web-services.md)
+* [适用于 Azure 机器学习 Web 服务的 Excel 加载项](excel-add-in-for-web-services.md)
 
 ### <a name="from-a-rest-based-client"></a>从基于 REST 的客户端
 
-Azure 机器学习 Web 服务是 RESTful API。 可以从各种平台（如 .NET、Python、R、Java 等）使用这些 API。[Microsoft Azure 机器学习 Web 服务门户](https://services.azureml.net)上的 Web 服务的**使用**页具有可帮助您入门的示例代码。 有关详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](consume-web-services.md)。
+Azure 机器学习 Web 服务是 RESTful API。 可以从各种平台使用这些 API，例如 .NET、Python、R、Java 等。[Microsoft Azure 机器学习 Web 服务门户](https://services.azureml.net)上的 Web 服务“使用”  页提供示例代码，从而有助于开始操作。 有关详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](consume-web-services.md)。

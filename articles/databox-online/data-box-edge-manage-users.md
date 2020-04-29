@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: alkohli
 ms.openlocfilehash: 443ed983a0eec5dfd8f7a917fbc1440cd66c3db3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78946143"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-edge"></a>使用 Azure 门户管理 Azure Data Box Edge 上的用户
@@ -33,7 +33,7 @@ ms.locfileid: "78946143"
  - **全权用户** - 拥有完全访问权限的本地用户。
  - **只读用户** - 拥有只读访问权限的本地用户。 这些用户与允许只读操作的共享相关联。
 
-在创建共享期间创建用户时，首先会定义用户权限。 当前不支持修改共享级别权限。
+在创建共享期间创建用户时，首先会定义用户权限。 当前不支持修改共享级权限。
 
 ## <a name="add-a-user"></a>添加用户
 

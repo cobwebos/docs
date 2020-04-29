@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 03/05/2020
 ms.openlocfilehash: 73b9ae6bc3c15526bfdafd74330c7b86286631b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78396139"
 ---
 # <a name="enable-logging-in-azure-machine-learning"></a>在 Azure 机器学习中启用日志记录
@@ -31,7 +31,7 @@ ms.locfileid: "78396139"
 
 ## <a name="training-models-and-compute-target-logging"></a>训练模型和计算目标日志记录
 
-在模型训练过程中，可通过多种方法启用日志记录，示例将演示常用设计模式。 可以使用 `Experiment` 类中的 `start_logging` 函数，将运行相关的数据轻松记录到云中的工作区。
+在模型训练过程中，可通过多种方法启用日志记录，示例将演示常用设计模式。 可以使用 `start_logging` 类中的 `Experiment` 函数，将运行相关的数据轻松记录到云中的工作区。
 
 ```python
 from azureml.core import Experiment
@@ -58,7 +58,7 @@ run = experiment.submit(config=run_config_object, show_output=True)
 run.wait_for_completion(show_output=True)
 ```
 
-在某些训练场景中，SDK 还支持使用默认的 Python 日志记录包。 以下示例在 `AutoMLConfig` 对象中启用日志记录级别 `INFO`。
+在某些训练场景中，SDK 还支持使用默认的 Python 日志记录包。 以下示例在 `INFO` 对象中启用日志记录级别 `AutoMLConfig`。
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -101,7 +101,7 @@ logs = service.get_logs()
 service.update(enable_app_insights=True)
 ```
 
-有关详细信息，请参阅[监视和从 ML Web 服务终结点收集数据](how-to-enable-app-insights.md)。
+有关详细信息，请参阅[监视机器学习 Web 服务终结点并从中收集数据](how-to-enable-app-insights.md)。
 
 ## <a name="python-native-logging-settings"></a>Python 本机日志记录设置
 
@@ -114,4 +114,4 @@ logging.basicConfig(level=logging.DEBUG)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [监视机器学习 Web 服务终结点以及从中收集数据](how-to-enable-app-insights.md)
+* [监视 ML Web 服务终结点并从中收集数据](how-to-enable-app-insights.md)

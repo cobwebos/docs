@@ -13,10 +13,10 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
 ms.openlocfilehash: 4f30bf112175742566c2957d78154e5a7abd1733
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79096859"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>使用 Azure SQL 数据库确保业务连续性的相关概述
@@ -46,9 +46,9 @@ SQL 数据库还提供多种业务连续性功能，用于缓解各种计划外�
 
 - 使用[时态表](sql-database-temporal-tables.md)可以从任意时间点还原行版本。
 - 使用[内置自动备份](sql-database-automated-backups.md)和[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)可将整个数据库还原到已配置保留期（最长为 35 天）内的某个时间点。
-- 如果 **SQL 数据库服务器尚未删除**，可将[已删除的数据库还原](sql-database-recovery-using-backups.md#deleted-database-restore)到删除时的时间点。
+- 如果 [SQL 数据库服务器尚未删除](sql-database-recovery-using-backups.md#deleted-database-restore)，可将**已删除的数据库还原**到删除时的时间点。
 - 使用[长期备份保留](sql-database-long-term-retention.md)可将备份保留长达 10 年之久。
-- [活动异地复制](sql-database-active-geo-replication.md)使您能够创建可读副本，并在数据中心中断或应用程序升级时手动故障转移到任何副本。
+- 使用[活动异地复制](sql-database-active-geo-replication.md)，可以创建可读取的副本，并且在发生数据中心中断或应用程序升级期间手动故障转移到任何副本。
 - 发生数据中心中断时，应用程序可以通过[自动故障转移组](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities)自动恢复。
 
 ## <a name="recover-a-database-within-the-same-azure-region"></a>恢复同一 Azure 区域内的数据库
@@ -92,7 +92,7 @@ Azure 数据中心会罕见地发生中断。 发生中断时，业务可能仅�
 | 手动数据库故障转移 | 30 秒 | 5 秒 |
 
 > [!NOTE]
-> “手动数据库故障转移”** 是指使用[计划外模式](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities)将单一数据库故障转移到其异地复制的辅助数据库。
+> “手动数据库故障转移”  是指使用[计划外模式](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities)将单一数据库故障转移到其异地复制的辅助数据库。
 有关自动故障转移 RTO 和 RPO 的详细信息，请参阅本文中前面的表。
 
 
@@ -154,4 +154,4 @@ Azure 数据中心会罕见地发生中断。 发生中断时，业务可能仅�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关独立数据库和弹性池的应用程序设计注意事项的讨论，请参阅[设计云灾难恢复](sql-database-designing-cloud-solutions-for-disaster-recovery.md)和[弹性池灾难恢复策略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)的应用程序。
+若要探讨为独立数据库和弹性池设计应用程序时的注意事项，请参阅[设计用于云灾难恢复的应用程序](sql-database-designing-cloud-solutions-for-disaster-recovery.md)和[弹性池灾难恢复策略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)。

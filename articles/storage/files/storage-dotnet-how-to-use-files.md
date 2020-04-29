@@ -9,10 +9,10 @@ ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 4d8be13a75e276d5be6ec71141a13f95601869f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78301431"
 ---
 # <a name="develop-for-azure-files-with-net"></a>使用 .NET 针对 Azure 文件进行开发
@@ -22,7 +22,7 @@ ms.locfileid: "78301431"
 本教程演示通过 .NET 开发应用程序的基础知识，此类应用程序使用 [Azure 文件](storage-files-introduction.md)来存储文件数据。 本教程将创建一个简单的控制台应用程序，用于通过 .NET 和 Azure 文件存储执行基本的操作：
 
 * 获取文件内容。
-* 设置文件共享的最大大小或配额。**
+* 设置文件共享的最大大小或配额。 
 * 若一个文件使用在共享中定义的存储访问策略，则为该文件创建一个共享访问签名（SAS 密钥）。
 * 将文件复制到同一存储帐户中的另一个文件。
 * 将文件复制到同一存储帐户中的一个 Blob。
@@ -45,11 +45,11 @@ API | 何时使用 | 说明
 
 在 Visual Studio 中创建新的 Windows 控制台应用程序。 以下步骤演示了如何在 Visual Studio 2019 中创建控制台应用程序。 在其他版本的 Visual Studio 中，这些步骤是类似的。
 
-1. 启动 Visual Studio 并选择“创建新项目”。****
-1. 在“创建新项目”**** 中，选择用于 C# 的“控制台应用(.NET Framework)”****，然后选择“下一步”****。
-1. 在“配置新项目”中输入应用的名称，然后选择“创建”。********
+1. 启动 Visual Studio 并选择“创建新项目”。 
+1. 在“创建新项目”  中，选择用于 C# 的“控制台应用(.NET Framework)”  ，然后选择“下一步”  。
+1. 在“配置新项目”中输入应用的名称，然后选择“创建”。  
 
-可将本教程中的所有代码示例添加到控制台应用程序的 `Program.cs` 文件中的 `Main()` 方法。
+可将本教程中的所有代码示例添加到控制台应用程序的 `Main()` 文件中的 `Program.cs` 方法。
 
 可以在任意类型的 .NET 应用程序中使用 Azure 存储客户端库。 这些类型包括 Azure 云服务或 Web 应用，以及桌面和移动应用程序。 为简单起见，我们在本指南中使用控制台应用程序。
 
@@ -66,14 +66,14 @@ API | 何时使用 | 说明
 * [适用于 .NET 的 Microsoft Azure 存储文件库](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/)
 
   使用此包能够以编程方式访问存储帐户中的文件资源。
-* [.NET 的 Microsoft Azure 配置管理器库](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)
+* [适用于 .NET 的 Microsoft Azure 配置管理器库](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)
 
   此包提供用于分析配置文件中连接字符串的类，而不管应用程序在何处运行。
 
 可以使用 NuGet 获取这两个包。 执行以下步骤:
 
-1. 在**解决方案资源管理器**中，右键单击您的项目并选择 **"管理 NuGet 包**"。
-1. 在“NuGet 包管理器”中选择“浏览”。******** 搜索并选择“Microsoft.Azure.Storage.Blob”，然后选择“安装”。********
+1. 在“解决方案资源管理器”中，右键单击你的项目并选择“管理 NuGet 包”   。
+1. 在“NuGet 包管理器”中选择“浏览”。   搜索并选择“Microsoft.Azure.Storage.Blob”，然后选择“安装”。  
 
    此步骤将安装该包及其依赖项。
 1. 搜索并安装以下包：
@@ -84,7 +84,7 @@ API | 何时使用 | 说明
 
 ## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>将存储帐户凭据保存到 App.config 文件
 
-接下来，将凭据保存到项目的 `App.config` 文件中。 在“解决方案资源管理器”中，双击 `App.config` 并编辑该文件，使其类似于以下示例。**** 请将 `myaccount` 替换为你的存储帐户名，将 `mykey` 替换为你的存储帐户密钥。
+接下来，将凭据保存到项目的 `App.config` 文件中。 在“解决方案资源管理器”中，双击  **并编辑该文件，使其类似于以下示例。** `App.config` 请将 `myaccount` 替换为你的存储帐户名，将 `mykey` 替换为你的存储帐户密钥。
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -103,7 +103,7 @@ API | 何时使用 | 说明
 
 ## <a name="add-using-directives"></a>添加 using 指令
 
-在“解决方案资源管理器”中打开 `Program.cs` 文件，并在该文件顶部添加以下 using 指令。****
+在“解决方案资源管理器”中打开  **文件，并在该文件顶部添加以下 using 指令。** `Program.cs`
 
 ```csharp
 using Microsoft.Azure; // Namespace for Azure Configuration Manager
@@ -424,7 +424,7 @@ CloudFileShare mySnapshot = fClient.GetShareReference(baseShareName, snapshotTim
 
 Azure 存储分析现在支持用于 Azure 文件的指标。 使用指标数据，可以跟踪请求和诊断问题。
 
-可以从[Azure 门户](https://portal.azure.com)启用 Azure 文件的指标。 还可以通过 REST API 或存储客户端库中的类似物之一调用“设置文件服务属性”操作，以编程方式启用指标。
+可以从[Azure 门户](https://portal.azure.com)为 Azure 文件启用指标。 还可以通过 REST API 或存储客户端库中的类似物之一调用“设置文件服务属性”操作，以编程方式启用指标。
 
 以下代码示例演示如何使用适用于 .NET 的存储客户端库启用 Azure 文件的指标。
 
@@ -435,7 +435,7 @@ using Microsoft.Azure.Storage.File.Protocol;
 using Microsoft.Azure.Storage.Shared.Protocol;
 ```
 
-尽管 Azure Blob、Azure 表和 Azure 队列使用 `Microsoft.Azure.Storage.Shared.Protocol` 命名空间中的共享 `ServiceProperties` 类型，但 Azure 文件存储使用其自身的类型，即 `Microsoft.Azure.Storage.File.Protocol` 命名空间中的 `FileServiceProperties` 类型。 但是，必须在代码中引用这两个命名空间才能编译后续代码。
+尽管 Azure Blob、Azure 表和 Azure 队列使用 `ServiceProperties` 命名空间中的共享 `Microsoft.Azure.Storage.Shared.Protocol` 类型，但 Azure 文件存储使用其自身的类型，即 `FileServiceProperties` 命名空间中的 `Microsoft.Azure.Storage.File.Protocol` 类型。 但是，必须在代码中引用这两个命名空间才能编译后续代码。
 
 ```csharp
 // Parse your storage connection string from your application's configuration file.
@@ -503,5 +503,5 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 
 * [Azure 文件存储现已推出正式版](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
 * [在 Azure 文件存储中](https://azure.microsoft.com/blog/inside-azure-file-storage/)
-* [介绍微软 Azure 文件服务](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+* [Microsoft Azure 文件服务简介](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 * [将连接保存到 Microsoft Azure 文件中](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)

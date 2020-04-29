@@ -1,6 +1,6 @@
 ---
 title: 在 Linux VM 上扩展虚拟硬盘
-description: 了解如何使用 Azure CLI 在 Linux VM 上扩展虚拟硬盘。
+description: 了解如何使用 Azure CLI 扩展 Linux VM 上的虚拟硬盘。
 author: roygara
 ms.service: virtual-machines-linux
 ms.topic: conceptual
@@ -8,10 +8,10 @@ ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 1295c5276f0f342323acf8d86eaaf9f785af3e9f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78945187"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>使用 Azure CLI 扩展 Linux VM 上的虚拟硬盘
@@ -28,7 +28,7 @@ ms.locfileid: "78945187"
 
 在以下示例中，请将示例参数名称（例如 *myResourceGroup* 和 *myVM*）替换成自己的值。
 
-1. 当 VM 正在运行时，无法在虚拟硬盘上执行操作。 使用 [az vm deallocate](/cli/azure/vm#az-vm-deallocate) 解除分配 VM。 以下示例在名为 myResourceGroup 的资源组中释放名为 myVM 的 VM：****
+1. 当 VM 正在运行时，无法在虚拟硬盘上执行操作。 使用 [az vm deallocate](/cli/azure/vm#az-vm-deallocate) 解除分配 VM。 以下示例在名为 myResourceGroup 的资源组中释放名为 myVM 的 VM：  
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
@@ -37,7 +37,7 @@ ms.locfileid: "78945187"
     > [!NOTE]
     > 只有释放 VM 才能扩展虚拟硬盘。 使用 `az vm stop` 停止 VM 不会释放计算资源。 若要释放计算资源，请使用 `az vm deallocate`。
 
-1. 使用 [az disk list](/cli/azure/disk#az-disk-list) 查看资源组中的托管磁盘列表。 以下示例显示 myResourceGroup 资源组中托管磁盘的列表：**
+1. 使用 [az disk list](/cli/azure/disk#az-disk-list) 查看资源组中的托管磁盘列表。 以下示例显示 myResourceGroup 资源组中托管磁盘的列表： 
 
     ```azurecli
     az disk list \
@@ -58,7 +58,7 @@ ms.locfileid: "78945187"
     > [!NOTE]
     > 扩展托管磁盘时，更新的大小将向上舍入到最接近的托管磁盘大小。 有关可用托管磁盘大小和层的表，请参阅 [Azure 托管磁盘概述 - 定价和计费](../windows/managed-disks-overview.md)。
 
-1. 使用 [az vm start](/cli/azure/vm#az-vm-start) 启动 VM。 以下示例在名为 myResourceGroup 的资源组中启动名为 myVM 的 VM：****
+1. 使用 [az vm start](/cli/azure/vm#az-vm-start) 启动 VM。 以下示例在名为 myResourceGroup 的资源组中启动名为 myVM 的 VM：  
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
@@ -76,13 +76,13 @@ ms.locfileid: "78945187"
 
 1. 扩展基础分区和文件系统。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 如果磁盘已装载，请将其卸载：
+    a. 如果磁盘已装载，请将其卸载：
 
     ```bash
     sudo umount /dev/sdc1
     ```
 
-    b.保留“数据库类型”设置，即设置为“共享”。 使用 `parted` 查看磁盘信息并重设分区大小：
+    b. 使用 `parted` 查看磁盘信息并重设分区大小：
 
     ```bash
     sudo parted /dev/sdc
@@ -105,7 +105,7 @@ ms.locfileid: "78945187"
         1      0.00B  107GB  107GB  ext4
     ```
 
-    c. 使用 `resizepart` 展开分区。 输入分区号 1** 以及新分区的大小：
+    c. 使用 `resizepart` 展开分区。 输入分区号 1  以及新分区的大小：
 
     ```bash
     (parted) resizepart
@@ -113,7 +113,7 @@ ms.locfileid: "78945187"
     End?  [107GB]? 215GB
     ```
 
-    d.单击“下一步”。 若要退出，请输入 `quit`。
+    d. 若要退出，请输入 `quit`。
 
 1. 重设分区大小后，请使用 `e2fsck` 验证分区一致性：
 

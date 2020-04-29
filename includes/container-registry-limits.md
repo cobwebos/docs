@@ -9,13 +9,13 @@ ms.date: 03/11/2020
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 0090f02382e024e5539383328b55d58798002d63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79117141"
 ---
-| 资源 | Basic | Standard | Premium |
+| 资源 | 基本 | Standard | Premium |
 |---|---|---|---|
 | 存储<sup>1</sup> | 10 GiB | 100 GiB| 500 GiB |
 | 最大映像层大小 | 200 GiB | 200 GiB | 200 GiB |
@@ -27,12 +27,12 @@ ms.locfileid: "79117141"
 | 异地复制 | 空值 | 空值 | [支持][geo-replication] |
 | 内容信任 | 空值 | 空值 | [支持][content-trust] |
 | 虚拟网络访问 | 空值 | 空值 | [预览][vnet] |
-| 专用链路集成 | 空值 | 空值 | [预览][plink] |
+| 私有链接集成 | 空值 | 空值 | [预览][plink] |
 | 客户管理的密钥 | 空值 | 空值 | [预览][cmk] |
-| 存储库范围权限 | 空值 | 空值 | [预览][token]|
-| &bull;令 牌 | 空值 | 空值 | 20,000 |
+| 存储库范围内的权限 | 空值 | 空值 | [预览][token]|
+| &bull;令牌 | 空值 | 空值 | 20,000 |
 | &bull;范围映射 | 空值 | 空值 | 20,000 |
-| &bull;每个范围映射的存储库 | 空值 | 空值 | 500 |
+| &bull;按范围映射的存储库 | 空值 | 空值 | 500 |
 
 
 <sup>1</sup> 指定的存储上限是每层包含** 的存储量。 对于超出这些限制的图像存储，将每日针对每 GiB 进行额外收费。 有关费率的信息，请参阅 [Azure 容器注册表定价][pricing]。

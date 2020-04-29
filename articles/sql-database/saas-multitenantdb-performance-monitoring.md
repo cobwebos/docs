@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 0af476b69f2effd836fe76d62059259076c16f53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79214155"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>在多租户 SaaS 应用中监视和管理分片多租户 Azure SQL 数据库的性能
@@ -35,7 +35,7 @@ Wingtip Tickets SaaS 多租户数据库应用使用分片多租户数据模型�
 
 若要完成本教程，请确保已完成了以下先决条件：
 
-* 已部署 Wingtip Tickets SaaS 多租户数据库应用。 要在五分钟内部署，请参阅[部署和浏览翼尖票证 SaaS 多租户数据库应用程序](saas-multitenantdb-get-started-deploy.md)
+* 已部署 Wingtip Tickets SaaS 多租户数据库应用。 若要在五分钟内进行部署，请参阅[部署和浏览 Wingtip 票证 SaaS 多租户数据库应用程序](saas-multitenantdb-get-started-deploy.md)
 * Azure PowerShell 已安装。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 
 ## <a name="introduction-to-saas-performance-management-patterns"></a>SaaS 性能管理模式简介
@@ -47,11 +47,11 @@ Wingtip Tickets SaaS 多租户数据库应用使用分片多租户数据模型�
 * 若不希望手动监视性能，那么最有效的方式就是设置警报，在数据库的性能不在正常范围内时触发该警报****。
 * **** 可以上下缩放 DTU 级别，以应对数据库计算大小的短期波动。 如果该波动定期发生或者发生时间可以预见，则可让数据库按计划自动缩放****。 例如，如果知道工作负荷在夜间或周末会减轻，则可向下缩放。
 * 若要应对较长期的波动，或者应对租户中的变化，可将单个租户移至其他数据库****。
-* 若要应对单个** 租户负载的短期增加，可将单个租户移出数据库，并为其分配单独的计算大小****。 一旦负载降低，则可让该租户返回多租户数据库中。 当事先知道这一点时，可以先发制人地移动租户，以确保数据库始终具有所需的资源，并避免对多租户数据库中的其他租户产生影响。 如果此类需求是可以预测的（例如某个地点因举行热门活动而导致售票剧增），则可将这种管理行为集成到应用程序中。
+* 若要应对单个** 租户负载的短期增加，可将单个租户移出数据库，并为其分配单独的计算大小****。 一旦负载降低，则可让该租户返回多租户数据库中。 如果事先知道这种情况，可以提前迁移租户，以确保数据库始终具有它需要的资源，并避免对多租户数据库中的其他租户产生影响。 如果此类需求是可以预测的（例如某个地点因举行热门活动而导致售票剧增），则可将这种管理行为集成到应用程序中。
 
 [Azure 门户](https://portal.azure.com)提供内置的监视和警报功能，可以监视大多数资源。 对于 SQL 数据库，在数据库上提供了监视和警报功能。 这种内置的监视和警报功能是特定于资源的，因此，对于使用少量资源的方案比较方便，但在处理大量资源时就不太适用了。
 
-对于使用许多资源的高容量方案，可以使用[Azure 监视器日志](https://azure.microsoft.com/services/log-analytics/)。 这是一个单独的 Azure 服务，该服务对日志分析工作区中收集的已发出日志进行分析。 Azure 监视器日志可以从许多服务收集遥测数据，并用于查询和设置警报。
+对于大容量方案，使用多个资源时，可以使用[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)。 这是单独的 Azure 服务，可针对 Log Analytics 工作区中收集的发出的日志提供分析。 Azure Monitor 日志可以收集来自多个服务的遥测数据，并用于查询和设置警报。
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>获取 Wingtip Tickets SaaS 多租户数据库应用程序源代码和脚本
 
@@ -65,7 +65,7 @@ Wingtip Tickets SaaS 多租户数据库应用使用分片多租户数据模型�
 
 1. 在 PowerShell ISE **** 中，打开…\\Learning Modules\\Performance Monitoring and Management\\*Demo-PerformanceMonitoringAndManagement.ps1*。 请让该脚本保持打开状态，因为在本教程中，将要运行多个方案。
 1. 设置 **$DemoScenario** = **1**，_预配一批租户_
-1. 按**F5**以运行脚本。
+1. 按**F5**运行该脚本。
 
 该脚本可在几分钟内将 17 位租户部署到多租户数据库。 
 
@@ -79,8 +79,8 @@ Wingtip Tickets SaaS 多租户数据库应用使用分片多租户数据模型�
 |:--|:--|
 | 2 | 生成正常强度负载（约 30 DTU） |
 | 3 | 生成单个租户的突发时间更长的负载|
-| 4 | 生成负载时每个租户的 DTU 突发数较高（大约 70 DTU）|
-| 5 | 在单个租户上生成高强度（约 90 DTU），以及所有其他租户的正常强度负载 |
+| 4 | 为每个租户生成具有更高 DTU 猝发负载的负载（大约 70 DTU）|
+| 5 | 在单个租户上生成高强度（约 90 DTU），并在所有其他租户上生成正常强度负载 |
 
 负载生成器向每个租户数据库应用仅限 CPU 的综合负载。** 该生成器为每个租户数据库启动一个作业，以便定期调用生成负载的存储过程。 负载级别（以 DTU 计）、持续时间和间隔在各个数据库之间都是不同的，用以模拟不可预测的租户活动。
 
@@ -133,7 +133,7 @@ Wingtip Tickets SaaS 多租户数据库是一个 SaaS 应用，SaaS 应用上的
 
 你可以通过增加生成器生成的负载来模拟忙碌的数据库。 促使租户数据库突发更频繁且更长时间地负载，在不更改单个租户需求的情况下，增加多租户数据库的负载。 可以通过门户或 PowerShell 轻松地扩展数据库。 本演练使用门户。
 
-1. 设置 *$DemoScenario* = **3**，_生成每个数据库更长、更频繁的突发的负载_，以提高数据库上的聚合负载强度，而无需更改每个租户所需的峰值负载。
+1. 设置 *$DemoScenario* = **3**，_生成负载时每个数据库的突发时间更长且频率更高_，从而提高数据库的聚合负载强度，而不会更改每个租户所需的峰值负载。
 1. 按 **F5** 将负载应用到所有租户数据库。
 1. 在 Azure 门户中转到“tenants1”**** 数据库。
 
@@ -143,20 +143,20 @@ Wingtip Tickets SaaS 多租户数据库是一个 SaaS 应用，SaaS 应用上的
 1. 将 **DTU** 设置调整为 **100**。 
 1. 单击“应用”**** 提交扩展数据库的请求。
 
-返回**租户1** > **概述**以查看监视图表。 监视为数据库提供更多资源后的效果（当然，在租户较少且负载为随机的情况下，除非先运行一段时间，否则并不是很容易就能看出结果）。 在查看图表时请注意，在上方的图表中，100% 现在代表 100 个 DTU，而在下方的图表中，100% 仍代表 50 个 DTU。
+返回到**tenants1** > **概述**以查看监视图表。 监视为数据库提供更多资源后的效果（当然，在租户较少且负载为随机的情况下，除非先运行一段时间，否则并不是很容易就能看出结果）。 在查看图表时请注意，在上方的图表中，100% 现在代表 100 个 DTU，而在下方的图表中，100% 仍代表 50 个 DTU。
 
 在整个过程中，数据库始终联机且完全可用。 应始终编写在连接断开后进行重试的应用程序代码，以便重新连接到数据库。
 
 ## <a name="provision-a-new-tenant-in-its-own-database"></a>在其自己数据库中预配新租户 
 
-分片多租户模型允许选择是与其他租户一起在多租户数据库中预配新租户，还是在其自己的数据库中预配租户。 通过在自己的数据库中预配租户，它受益于单独数据库中固有的隔离，允许您独立于其他租户管理该租户的性能，独立于其他租户还原该租户，等等。例如，您可以选择将免费试用或常规客户放在多租户数据库中，将高级客户放在各个数据库中。  如果创建了独立的单租户数据库，则仍可在弹性池中集中管理它们，以优化资源成本。
+分片多租户模型允许选择是与其他租户一起在多租户数据库中预配新租户，还是在其自己的数据库中预配租户。 通过在其自己的数据库中预配租户，它可从单独数据库中固有的隔离中获益，使你能够独立于其他租户管理该租户的性能、独立于其他租户还原该租户，等等。例如，可以选择将免费试用版或常规客户放入多租户数据库中，并将高级客户放在单独的数据库中。  如果创建了独立的单租户数据库，则仍可在弹性池中集中管理它们，以优化资源成本。
 
 如果已在其自己的数据库中预配了新租户，则可跳过以下几个步骤。
 
 1. 在 PowerShell ISE **** 中，打开…\\Learning Modules\\ProvisionTenants\\*Demo-ProvisionTenants.ps1*。 
 1. 修改 $TenantName = "Salix Salsa"**** 和 $VenueType  = "dance"****
 1. 设置 **$Scenario** = **2**，_在新的单租户数据库中预配租户_
-1. 按**F5**以运行脚本。
+1. 按**F5**运行该脚本。
 
 脚本将在单独的数据库中预配此租户，在目录中注册数据库和租户，然后在浏览器中打开租户的“事件”页。 刷新“事件中心”页，将看到已将“Salix Salsa”添加为场地。
 
@@ -167,11 +167,11 @@ Wingtip Tickets SaaS 多租户数据库是一个 SaaS 应用，SaaS 应用上的
 本练习模拟 Salix Salsa 在销售热门活动票时遇到的负载过高的情况。
 
 1. 打开 …\\Demo-PerformanceMonitoringAndManagement.ps1 脚本**。
-1. 设置 **$DemoScenario = 5**，_生成正常负载加上单个租户（大约 90 DTU）上的高负载。_
+1. 设置 **$DemoScenario = 5**，_在单个租户上生成正常负载加上高负载（大约 90 DTU）。_
 1. 设置 $SingleTenantName = Salix Salsa****
 1. 使用 **F5** 执行该脚本。
 
-转到门户并导航到**salixsalsa** > **概述**以查看监视图表。 
+转到门户并导航到**salixsalsa** > **概述**，查看监视图表。 
 
 ## <a name="other-performance-management-patterns"></a>其他性能管理模式
 

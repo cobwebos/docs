@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 分析服务模型的逻辑应用刷新 |微软文档
+title: 刷新 Azure Analysis Services 模型的逻辑应用 |Microsoft Docs
 description: 本文介绍如何使用 Azure 逻辑应用对 Azure Analysis Services 的异步刷新进行编码。
 author: chrislound
 ms.service: analysis-services
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.openlocfilehash: 78bc629598c0635b7760285d0507b7a85a4ab551
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79127046"
 ---
 # <a name="refresh-with-logic-apps"></a>使用逻辑应用进行刷新
@@ -19,16 +19,16 @@ ms.locfileid: "79127046"
 
 若要详细了解如何将 REST API 与 Azure Analysis Services 配合使用，请参阅[使用 REST API 执行异步刷新](analysis-services-async-refresh.md)。
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 所有调用必须使用有效的 Azure Active Directory (OAuth 2) 令牌进行身份验证。  本文中的示例将使用服务主体 (SPN) 对 Azure Analysis Services 进行身份验证。 有关详细信息，请参阅[使用 Azure 门户创建服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。
 
 ## <a name="design-the-logic-app"></a>设计逻辑应用
 
 > [!IMPORTANT]
-> 以下示例假设已禁用 Azure Analysis Services 防火墙。 如果启用了防火墙，则必须在 Azure 分析服务防火墙中白名单请求开始器的公共 IP 地址。 要了解有关每个区域的 Azure 逻辑应用 IP 范围的详细信息，请参阅[Azure 逻辑应用的限制和配置信息](../logic-apps/logic-apps-limits-and-config.md#configuration)。
+> 以下示例假设已禁用 Azure Analysis Services 防火墙。 如果启用了防火墙，则必须将请求发起程序的公共 IP 地址加入 Azure Analysis Services 防火墙的允许列表。 若要详细了解每个区域的 Azure 逻辑应用 IP 范围，请参阅 [Azure 逻辑应用的限制和配置信息](../logic-apps/logic-apps-limits-and-config.md#configuration)。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 #### <a name="create-a-service-principal-spn"></a>创建服务主体 (SPN)
 
@@ -44,7 +44,7 @@ ms.locfileid: "79127046"
 
 创建逻辑应用后：
 
-1. 在逻辑应用设计器中，选择“收到 HTTP 请求时”作为第一个操作。****
+1. 在逻辑应用设计器中，选择“收到 HTTP 请求时”作为第一个操作。 
 
    ![添加已收到 HTTP 请求时的活动](./media/analysis-services-async-refresh-logic-app/1.png)
 
@@ -56,38 +56,38 @@ ms.locfileid: "79127046"
 
    ![添加 HTTP 活动](./media/analysis-services-async-refresh-logic-app/10.png)
 
-3. 选择“HTTP”以添加此操作。****
+3. 选择“HTTP”以添加此操作。 
 
    ![添加 HTTP 活动](./media/analysis-services-async-refresh-logic-app/2.png)
 
 按如下所示配置 HTTP 活动：
 
-|properties  |“值”  |
+|properties  |值  |
 |---------|---------|
 |**方法**     |POST         |
-|**URI**     | https://服务器区域**/servers/aas 服务器名称**/models/数据库名称**/refreshes <br /> <br /> 例如： https：\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes|
-|**头**     |   Content-Type、application/json <br /> <br />  ![标头](./media/analysis-services-async-refresh-logic-app/6.png)    |
+|**URI**     | https://服务器区域  /servers/aas 服务器名称  /models/数据库名称  /refreshes <br /> <br /> 例如： https：\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes|
+|**标头**     |   Content-Type、application/json <br /> <br />  ![标头](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**正文**     |   若要详细了解如何构建请求正文，请参阅[使用 REST API - POST /refreshes 执行异步刷新](analysis-services-async-refresh.md#post-refreshes)。 |
 |**身份验证**     |Active Directory OAuth         |
 |**租户**     |填写你的 Azure Active Directory 租户 ID         |
-|**观众**     |https：//.asazure.windows.net         |
+|**受众**     |https：//*. asazure         |
 |**客户端 ID**     |输入你的服务主体名称客户端 ID         |
 |**凭据类型**     |机密         |
-|**秘密**     |输入你的服务主体名称机密         |
+|**机密**     |输入你的服务主体名称机密         |
 
 示例：
 
 ![已完成 HTTP 活动](./media/analysis-services-async-refresh-logic-app/7.png)
 
-现在请测试该逻辑应用。  在逻辑应用设计器中单击“运行”。****
+现在请测试该逻辑应用。  在逻辑应用设计器中单击“运行”。 
 
 ![测试逻辑应用](./media/analysis-services-async-refresh-logic-app/8.png)
 
-## <a name="consume-the-logic-app-with-azure-data-factory"></a>使用 Azure 数据工厂的逻辑应用
+## <a name="consume-the-logic-app-with-azure-data-factory"></a>通过 Azure 数据工厂使用逻辑应用
 
-保存逻辑应用后，查看**何时收到 HTTP 请求**的活动，然后复制现在生成的 HTTP POST **URL。**  这是 Azure 数据工厂可用于进行异步调用以触发逻辑应用的 URL。
+保存逻辑应用后，请查看**收到 HTTP 请求时**活动，然后复制现在生成的 **HTTP POST URL**。  Azure 数据工厂可以使用此 URL 发出异步调用来触发逻辑应用。
 
-下面是执行此操作的 Azure 数据工厂 Web 活动示例。
+下面是执行此操作的示例 Azure 数据工厂 Web 活动。
 
 ![数据工厂 Web 活动](./media/analysis-services-async-refresh-logic-app/11.png)
 
@@ -95,15 +95,15 @@ ms.locfileid: "79127046"
 
 如果你不打算使用数据工厂等业务流程工具来触发模型刷新，可将逻辑应用设置为按计划触发刷新。
 
-沿用上面的示例，请删除第一个活动，并将其替换为“计划”活动。****
+沿用上面的示例，请删除第一个活动，并将其替换为“计划”活动。 
 
 ![计划活动](./media/analysis-services-async-refresh-logic-app/12.png)
 
 ![计划活动](./media/analysis-services-async-refresh-logic-app/13.png)
 
-本示例将使用“重复周期”。****
+本示例将使用“重复周期”。 
 
-添加活动后，配置“间隔”和“频率”，然后添加新参数并选择“在这些时间”。****
+添加活动后，配置“间隔”和“频率”，然后添加新参数并选择“在这些时间”。 
 
 ![计划活动](./media/analysis-services-async-refresh-logic-app/16.png)
 

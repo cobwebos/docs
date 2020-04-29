@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: 9e499d609a3f78dc5f422b9ed90df09be30f2e7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79080405"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>在云中使用自动化机器学习对模型进行训练
@@ -40,9 +40,9 @@ ws = Workspace.from_config()
 
 ## <a name="create-resource"></a>创建资源
 
-如果目标[`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py)不存在，则在工作区`ws`中创建目标 。
+在工作区 (`ws`) 中创建 [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py) 目标（如果它尚不存在）。
 
-**时间估计**： 创建 Aml 计算目标大约需要 5 分钟。
+**时间估计**：创建 AmlCompute 目标需要大约 5 分钟。
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -83,13 +83,13 @@ else:
 
 群集名称限制包括：
 + 必须小于 64 个字符。
-+ 不得包含以下任何字符：`\` ~ ! [ % % ] & * [ ] \\ \\ * * * * * * * * * * * *："， < > /？。 \' \\`
++ 不得包含以下任何字符：`\` ~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \\\\ | ; : \' \\" , < > / ?.`
 
 ## <a name="access-data-using-tabulardataset-function"></a>使用 TabularDataset 函数访问数据
 
-定义为[`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py)和 标签training_data，该标签在 中传递给自动[`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)ML。 默认情况下`TabularDataset`，`from_delimited_files`该方法将`infer_column_types`设置为 true，这将自动推断列类型。 
+将 training_data 定义为 [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) 和标签，并将其传递给 [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) 中的自动 ML。 默认情况下，`TabularDataset` 方法 `from_delimited_files` 将 `infer_column_types` 设置为 true，这将自动推断列类型。 
 
-如果确实希望手动设置列类型，可以将`set_column_types`参数设置为手动设置每列的类型。 在下面的代码示例中，数据来自 sklearn 包。
+如果确实希望手动设置列类型，可以设置 `set_column_types` 参数来手动设置每个列的类型。 在下面的代码示例中，数据来自 sklearn 包。
 
 ```python
 from sklearn import datasets

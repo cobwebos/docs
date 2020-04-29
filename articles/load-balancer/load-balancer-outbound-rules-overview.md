@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 7/17/2019
 ms.author: allensu
 ms.openlocfilehash: d419c213b3bcfef3631d68eb9d4cb485291bed31
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78304185"
 ---
 # <a name="load-balancer-outbound-rules"></a>负载均衡器出站规则
@@ -34,17 +34,17 @@ ms.locfileid: "78304185"
 - 应如何分配[出站 SNAT 端口](load-balancer-outbound-connections.md#snat)。
 - 要为哪些协议提供出站转换。
 - 用于出站连接空闲超时的持续时间（4-120 分钟）。
-- 是否在空闲超时时发送 TCP 重置
+- 是否要在空闲超时时发送 TCP Reset
 
-出站规则扩展了[出站连接](load-balancer-outbound-connections.md)一文中所述的[方案 2](load-balancer-outbound-connections.md#lb)，方案优先顺序保持不变。
+出站规则扩展了[出站连接](load-balancer-outbound-connections.md#lb)一文中所述的[方案 2](load-balancer-outbound-connections.md)，方案优先顺序保持不变。
 
 ## <a name="outbound-rule"></a>出站规则
 
 与所有负载均衡器规则一样，出站规则遵循负载均衡和入站 NAT 规则的类似语法：
 
-**前端** + **parameters**参数 + **后端池**
+**前端** + **参数** + **后端池**
 
-出站规则为后端池识别的、要转换为前端的所有虚拟机配置出站 NAT。____  参数针对出站 NAT 算法提供更精细的控制。__
+出站规则为后端池识别的、要转换为前端的所有虚拟机配置出站 NAT。    参数针对出站 NAT 算法提供更精细的控制。 
 
 API 版本“2018-07-01”允许按如下所示构建出站规则定义：
 
@@ -95,7 +95,7 @@ API 版本“2018-07-01”允许按如下所示构建出站规则定义：
 
           "idleTimeoutInMinutes": 60
 
-### <a name="enable-tcp-reset-on-idle-timeout"></a><a name="tcprst"></a><a name="tcpreset"></a>在空闲超时时启用 TCP 重置
+### <a name="enable-tcp-reset-on-idle-timeout"></a><a name="tcprst"></a> <a name="tcpreset"></a> 在空闲超时时启用 TCP 重置
 
 负载均衡器的默认行为是在达到出站空闲超时时以静默方式丢弃流。  使用 enableTCPReset 参数可以启用更有预测性的应用程序行为，并控制在发生出站空闲超时时，是否要发送双向 TCP 重置 (TCP RST)。 
 
@@ -103,7 +103,7 @@ API 版本“2018-07-01”允许按如下所示构建出站规则定义：
 
            "enableTcpReset": true
 
-查看[空闲超时时的 TCP 重置](https://aka.ms/lbtcpreset)，了解包括区域可用性在内的详细信息。
+查看[在空闲超时时 TCP 重置](https://aka.ms/lbtcpreset)，了解详细信息，包括区域可用性。
 
 ### <a name="support-both-tcp-and-udp-transport-protocols-with-a-single-rule"></a><a name="proto"></a>支持具有单个规则的 TCP 和 UDP 传输协议
 
@@ -210,7 +210,7 @@ disableOutboundSNAT 参数默认为 false，这意味着，负载均衡规则**�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[将负载均衡器用于出站连接](load-balancer-outbound-connections.md)。
+- 了解如何[对出站连接使用负载均衡器](load-balancer-outbound-connections.md)。
 - 了解[标准负载均衡器](load-balancer-standard-overview.md)。
 - 了解[空闲超时时的双向 TCP 重置](load-balancer-tcp-reset.md)。
 - [使用 Azure CLI 2.0 配置出站规则](configure-load-balancer-outbound-cli.md)。

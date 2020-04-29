@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
 ms.openlocfilehash: 597964914f4022899ab027b735ec6932105497b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78273633"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure 应用服务中的 OS 和运行时修补
@@ -51,7 +51,7 @@ Azure 管理两个级别的 OS 修补：运行应用服务资源的物理服务�
 
 ### <a name="new-patch-updates"></a>新的修补更新
 
-对 .NET、PHP、Java SDK 或 Tomcat/Jetty 版本所做的修补更新会通过将现有版本覆盖为新版本来自动应用。 Node.js 修补更新将与现有版本一并安装（类似于下一部分中的主要版本和次要版本）。 新的 Python 修补程序版本可以通过[站点扩展](https://azure.microsoft.com/blog/azure-web-sites-extensions/)手动安装，与内置的 Python 安装并排安装。
+对 .NET、PHP、Java SDK 或 Tomcat/Jetty 版本所做的修补更新会通过将现有版本覆盖为新版本来自动应用。 Node.js 修补更新将与现有版本一并安装（类似于下一部分中的主要版本和次要版本）。 新的 Python 修补程序版本可以通过[站点扩展](https://azure.microsoft.com/blog/azure-web-sites-extensions/)，与内置的 Python 安装一起手动安装。
 
 ### <a name="new-major-and-minor-versions"></a>新的主要版本和次要版本
 

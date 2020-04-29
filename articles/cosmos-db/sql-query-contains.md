@@ -8,10 +8,10 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: c0c25b63fb6a7bf42bd2ec5b9503cac2cce7583f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302587"
 ---
 # <a name="contains-azure-cosmos-db"></a>CONTAINS (Azure Cosmos DB)
@@ -23,7 +23,7 @@ ms.locfileid: "78302587"
 CONTAINS(<str_expr1>, <str_expr2>)  
 ```  
   
-## <a name="arguments"></a>自变量
+## <a name="arguments"></a>参数
   
 *str_expr1*  
    是要搜索的字符串表达式。  
@@ -51,10 +51,10 @@ SELECT CONTAINS("abc", "ab") AS c1, CONTAINS("abc", "d") AS c2
 
 ## <a name="remarks"></a>备注
 
-此系统功能不会利用索引。
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [字符串函数 Azure Cosmos DB](sql-query-string-functions.md)
-- [系统功能 Azure 宇宙 DB](sql-query-system-functions.md)
-- [Azure 宇宙 DB 简介](introduction.md)
+- [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB 简介](introduction.md)

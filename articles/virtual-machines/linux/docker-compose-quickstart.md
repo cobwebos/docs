@@ -1,39 +1,39 @@
 ---
 title: 使用 Docker Compose
-description: 如何使用 Azure CLI 在 Linux 虚拟机上安装和使用 Docker 和合成。
+description: 如何使用 Azure CLI 在 Linux 虚拟机上安装和使用 Docker 并进行撰写。
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 02/14/2019
 ms.author: cynthn
 ms.openlocfilehash: 434a3ef8c9bc1738252d59a5dca5bec16d85e45e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78970308"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>使用 Docker 和 Compose 在 Azure 中定义和运行多容器应用程序入门
-使用[Compose](https://github.com/docker/compose)，您可以使用简单的文本文件来定义由多个 Docker 容器组成的应用程序。 然后使用单个命令启动应用程序，该命令会执行部署定义的环境所需的所有操作。 作为示例，本文说明如何在 Ubuntu VM 上使用后端 MariaDB SQL 数据库快速设置 WordPress 博客。 也可以使用 Compose 设置更复杂的应用程序。
+借助 [Compose](https://github.com/docker/compose)，可以使用简单的文本文件定义由多个 Docker 容器组成的应用程序。 然后使用单个命令启动应用程序，该命令会执行部署定义的环境所需的所有操作。 作为示例，本文说明如何在 Ubuntu VM 上使用后端 MariaDB SQL 数据库快速设置 WordPress 博客。 也可以使用 Compose 设置更复杂的应用程序。
 
 本文最后一次使用 [Azure Cloud Shell](https://shell.azure.com/bash) 和 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 版本 2.0.58 在 2019 年 2 月 14 日进行了测试。
 
 ## <a name="create-docker-host-with-azure-cli"></a>使用 Azure CLI 创建 Docker 主机
 安装最新的 [Azure CLI](/cli/azure/install-az-cli2) 并使用 [az login](/cli/azure/reference-index) 登录到 Azure 帐户。
 
-首先，使用 [az group create](/cli/azure/group) 为 Docker 环境创建资源组。 下面的示例在*东部*位置创建名为*myResourceGroup*的资源组：
+首先，使用 [az group create](/cli/azure/group) 为 Docker 环境创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
 
 ```azurecli-interactive
 az group create --name myDockerGroup --location eastus
 ```
 
-创建名为“cloud-init.txt”的文件并粘贴下面的配置**。 输入 `sensible-editor cloud-init.txt` 以创建文件并查看可用编辑器的列表。 
+创建名为“cloud-init.txt”的文件并粘贴下面的配置  。 输入 `sensible-editor cloud-init.txt` 以创建文件并查看可用编辑器的列表。 
 
 ```yaml
 #include https://get.docker.com
 ```
 
-现使用 [az vm create](/cli/azure/vm#az-vm-create) 创建 VM。 使用 `--custom-data` 参数传递到 cloud-init 配置文件中。 如果未将 cloud-init.txt** 配置文件保存在现有工作目录中，请提供该文件的完整路径。 下面的示例创建了名为 myDockerVM 的 VM 并打开了 Web 流量端口 80**。
+现使用 [az vm create](/cli/azure/vm#az-vm-create) 创建 VM。 使用 `--custom-data` 参数传递到 cloud-init 配置文件中。 如果未将 cloud-init.txt  配置文件保存在现有工作目录中，请提供该文件的完整路径。 下面的示例创建了名为 myDockerVM 的 VM 并打开了 Web 流量端口 80  。
 
 ```azurecli-interactive
 az vm create \
@@ -71,13 +71,13 @@ sudo apt install docker-compose
 ## <a name="create-a-docker-composeyml-configuration-file"></a>创建 docker-compose.yml 配置文件
 创建 `docker-compose.yml` 配置文件，用于定义要在 VM 上运行的 Docker 容器。 该文件指定要在每个容器中运行的映像、必要的环境变量和依赖关系、端口以及容器之间的链接。 有关 yml 文件语法的详细信息，请参阅 [Compose 文件参考](https://docs.docker.com/compose/compose-file/)。
 
-创建 docker-compose.yml** 文件。 使用最喜欢的文本编辑器将一些数据添加到文件。 以下示例创建带有 `sensible-editor` 提示的文件，以便选择要使用的编辑器。
+创建 docker-compose.yml  文件。 使用最喜欢的文本编辑器将一些数据添加到文件。 以下示例创建带有 `sensible-editor` 提示的文件，以便选择要使用的编辑器。
 
 ```bash
 sensible-editor docker-compose.yml
 ```
 
-将以下示例粘贴到 Docker Compose 文件中。 此配置将使用 [DockerHub 注册表](https://registry.hub.docker.com/_/wordpress/)中的映像安装 WordPress（开源博客和内容管理系统）和链接的后端 MariaDB SQL 数据库。 输入自己的 MYSQL_ROOT_PASSWORD**。
+将以下示例粘贴到 Docker Compose 文件中。 此配置将使用 [DockerHub 注册表](https://registry.hub.docker.com/_/wordpress/)中的映像安装 WordPress（开源博客和内容管理系统）和链接的后端 MariaDB SQL 数据库。 输入自己的 MYSQL_ROOT_PASSWORD  。
 
 ```yml
 wordpress:
@@ -94,13 +94,13 @@ db:
 ```
 
 ## <a name="start-the-containers-with-compose"></a>使用 Compose 启动容器
-在 docker-compose.yml 文件所在的目录中，运行以下命令（可能需要使用 `sudo` 运行 `docker-compose`，具体取决于用户环境）：**
+在 docker-compose.yml 文件所在的目录中，运行以下命令（可能需要使用 *运行*，具体取决于用户环境）：`docker-compose``sudo`
 
 ```bash
 sudo docker-compose up -d
 ```
 
-此命令启动 docker-compose.yml 中指定的 Docker 容器。** 完成此步骤需要一两分钟时间。 将显示类似于下面的输出：
+此命令启动 docker-compose.yml 中指定的 Docker 容器。  完成此步骤需要一两分钟时间。 将显示类似于下面的输出：
 
 ```
 Creating wordpress_db_1...

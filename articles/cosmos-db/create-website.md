@@ -1,62 +1,62 @@
 ---
 title: 使用模板部署 Web 应用 - Azure Cosmos DB
-description: 了解如何使用 Azure 资源管理器模板部署 Azure Cosmos DB 帐户、Azure 应用服务 Web 应用以及示例 Web 应用程序。
+description: 了解如何使用 Azure Resource Manager 模板部署 Azure Cosmos DB 帐户、Azure 应用服务 Web 应用以及示例 Web 应用程序。
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: sngun
 ms.openlocfilehash: 2306dbe234e171ac613c33458df1990b767637df
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79128368"
 ---
-# <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板部署 Azure Cosmos DB 和 Azure 应用服务 Web 应用
-本教程演示如何使用 Azure 资源管理器模板来部署和集成[Microsoft Azure Cosmos DB、Azure](https://azure.microsoft.com/services/cosmos-db/)[应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)Web 应用和示例 Web 应用程序。
+# <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板部署 Azure Cosmos DB 和 Azure 应用服务 Web 应用
+本教程介绍如何使用 Azure 资源管理器模板来部署和集成[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)、 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) web 应用和示例 web 应用程序。
 
-使用 Azure 资源管理器模板，可以轻松自动化 Azure 资源的部署和配置。  本教程演示如何部署 Web 应用程序，以及自动配置 Azure Cosmos DB 帐户的连接信息。
+使用 Azure Resource Manager 模板，可以轻松自动化 Azure 资源的部署和配置。  本教程演示如何部署 Web 应用程序，以及自动配置 Azure Cosmos DB 帐户的连接信息。
 
-完成本教程后，能够回答以下问题：  
+完成本教程后，你能够回答以下问题：  
 
-* 如何使用 Azure 资源管理器模板部署和集成 Azure Cosmos DB 帐户与 Azure 应用服务中的 Web 应用？
-* 如何使用 Azure 资源管理器模板部署和集成 Azure Cosmos DB 帐户、应用服务 Web 应用中的 Web 应用以及 Webdeploy 应用程序？
+* 如何使用 Azure Resource Manager 模板来部署和集成 Azure Cosmos DB 帐户与 Azure 应用服务中的 Web 应用？
+* 如何使用 Azure Resource Manager 模板来部署和集成 Azure Cosmos DB 帐户、应用服务 Web 应用中的 Web 应用以及 Webdeploy 应用程序？
 
 <a id="Prerequisites"></a>
 
 ## <a name="prerequisites"></a>先决条件
 > [!TIP]
-> 虽然本教程不会假设先前有使用 Azure 资源管理器模板或 JSON 的经验，但是，如果想修改引用的模板或部署选项，则需要掌握有关其中每个领域的知识。
+> 虽然本教程不会假设先前有使用 Azure 资源管理器模板或 JSON 的经验，但是，如果想修改引用的模板或部署选项，则需要有其中每个领域的知识。
 > 
 > 
 
-在按照本教程中的说明操作之前，请确保具有 Azure 订阅。 Azure 是基于订阅的平台。  有关获取订阅的详细信息，请参阅[购买选项](https://azure.microsoft.com/pricing/purchase-options/)、[会员套餐](https://azure.microsoft.com/pricing/member-offers/)或[免费试用](https://azure.microsoft.com/pricing/free-trial/)。
+在按照本教程中的说明操作之前，请确保已有 Azure 订阅。 Azure 是基于订阅的平台。  有关获取订阅的详细信息，请参阅[购买选项](https://azure.microsoft.com/pricing/purchase-options/)、[会员套餐](https://azure.microsoft.com/pricing/member-offers/)或[免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="step-1-download-the-template-files"></a><a id="CreateDB"></a>步骤 1：下载模板文件
-首先，让我们下载本教程所需的模板文件。
+让我们从下载本教程所需的模板文件开始。
 
-1. 将[创建 Azure Cosmos DB 帐户、Web 应用和部署演示应用程序示例](https://portalcontent.blob.core.windows.net/samples/DocDBWebsiteTodo.json)模板下载到本地文件夹（例如 C:\Azure Cosmos DBTemplates）。 此模板将部署 Azure Cosmos DB 帐户、应用服务 Web 应用和 Web 应用程序。  它还会自动配置 Web 应用程序，以连接到 Azure Cosmos DB 帐户。
-2. 将[创建 Azure Cosmos DB 帐户和 Web 应用示例](https://portalcontent.blob.core.windows.net/samples/DocDBWebSite.json)模板下载到本地文件夹（例如 C:\Azure Cosmos DBTemplates）。 此模板将部署 Azure Cosmos DB 帐户、应用服务 Web 应用，并修改站点的应用程序设置以便轻松地呈现 Azure Cosmos DB 连接信息，但不包含 Web 应用程序。  
+1. 将[创建 Azure Cosmos DB 帐户、Web 应用和部署演示应用程序示例](https://portalcontent.blob.core.windows.net/samples/DocDBWebsiteTodo.json)模板下载到本地文件夹（例如 C:\Azure Cosmos DBTemplates）。 此模板会部署 Azure Cosmos DB 帐户、应用服务 Web 应用和 Web 应用程序。  它还会自动配置 Web 应用程序，以连接到 Azure Cosmos DB 帐户。
+2. 将[创建 Azure Cosmos DB 帐户和 Web 应用示例](https://portalcontent.blob.core.windows.net/samples/DocDBWebSite.json)模板下载到本地文件夹（例如 C:\Azure Cosmos DBTemplates）。 此模板将部署 Azure Cosmos DB 帐户、应用服务 Web 应用，并修改站点的应用程序设置以便轻松地显示 Azure Cosmos DB 连接信息，但不包含 Web 应用程序。  
 
 <a id="Build"></a>
 
 ## <a name="step-2-deploy-the-azure-cosmos-db-account-app-service-web-app-and-demo-application-sample"></a>步骤 2：部署 Azure Cosmos DB 帐户、应用服务 Web 应用和演示应用程序示例
-现在，让我们来部署第一个模板。
+现在让我们来部署第一个模板。
 
 > [!TIP]
-> 该模板不会验证在下面的模板中输入的 Web 应用名称和 Azure Cosmos DB 帐户名称是否 a) 有效以及 b) 可用。  强烈建议在提交部署之前，先确认打算提供的名称的可用性。
+> 该模板不会验证在以下模板中输入的 Web 应用名称和 Azure Cosmos DB 帐户名称是否：a) 有效和 b) 可用。  强烈建议在提交部署之前，先确认你打算提供的名称的可用性。
 > 
 > 
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，单击“新建”并搜索“模板部署”。
     ![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment1.png)
-2. 选择模板部署项目，并单击“创建”**** ![模板部署 UI 的屏幕快照](./media/create-website/TemplateDeployment2.png)
-3. 单击“编辑模板”****，粘贴 DocDBWebsiteTodo.json 模板文件的内容，并单击“保存”****。
+2. 选择模板部署项目，然后单击“创建”  ![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment2.png)
+3. 单击“编辑模板”  ，粘贴 DocDBWebsiteTodo.json 模板文件的内容，并单击“保存”  。
    ![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment3.png)
 4. 单击“编辑参数”****，为每个必需参数提供值，并单击“确定”****。  参数如下：
    
-   1. SITENAME：指定应用服务 Web 应用名称，用于构造用于访问 Web 应用的 URL（例如，如果您指定"mydemodocdbwebapp"，则访问 Web 应用的 URL 为`mydemodocdbwebapp.azurewebsites.net`）。
+   1. SITENAME：指定应用服务 web 应用名称，并用来构造用于访问 web 应用的 URL （例如，如果指定 "mydemodocdbwebsite"，则用于访问 web 应用的 URL 为`mydemodocdbwebapp.azurewebsites.net`）。
    2. HOSTINGPLANNAME：指定要创建的应用服务托管计划的名称。
    3. LOCATION：指定要在其中创建 Azure Cosmos DB 和 Web 应用资源的 Azure 位置。
    4. DATABASEACCOUNTNAME：指定要创建的 Azure Cosmos DB 帐户的名称。   

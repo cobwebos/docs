@@ -5,14 +5,14 @@ author: lisaguthrie
 ms.author: lcozzens
 ms.date: 01/28/2019
 ms.topic: conceptual
-description: 了解如何使用 Azure 开发空间和 Azure 库伯奈斯服务来提供业务连续性并为灾难恢复做好准备
+description: 了解如何使用 Azure Dev Spaces 和 Azure Kubernetes 服务提供业务连续性并为灾难恢复做好准备
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
 manager: gwallace
 ms.openlocfilehash: 37c0048bfa7e72b25eb56603fc027045eba25cea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78295821"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Azure Dev Spaces 的业务连续性和灾难恢复
@@ -29,7 +29,7 @@ Azure Dev Spaces 是 Azure Kubernetes 服务 (AKS) 的一项功能。 应了解 
 
 ### <a name="enable-dev-spaces-via-the-azure-portal"></a>通过 Azure 门户启用 Dev Spaces
 
-在 Azure 门户中每个群集的设置下选择 **"开发空间"** 菜单项。 然后选择启用开发空间并保存的选项。
+在 Azure 门户中每个分类的设置下，选择 " **Dev Spaces** " 菜单项。 然后选择选项以启用 Dev 空格并保存。
 
 ![通过 Azure 门户启用 Dev Spaces](../media/common/enable-dev-spaces.jpg)
 
@@ -51,7 +51,7 @@ az aks use-dev-spaces -g <resource group name> -n <cluster name>
 
 ## <a name="select-the-correct-aks-cluster-to-use-for-dev-spaces"></a>选择用于 Dev Spaces 的正确 AKS 群集
 
-一旦正确配置运行团队基线的备份群集，就可以随时快速切换到备份群集。 然后，您可以重新运行在子开发空间中处理的单个服务。
+一旦正确配置运行团队基线的备份群集，就可以随时快速切换到备份群集。 然后，你可以在子开发人员空间中重新运行正在处理的单个服务。
 
 使用以下 CLI 命令选择不同的群集：
 

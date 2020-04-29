@@ -1,5 +1,5 @@
 ---
-title: 使用 SCP 将文件移入和移入 Azure Linux VM
+title: 通过 SCP 将文件移入和移出 Azure Linux Vm
 description: 使用 SCP 和 SSH 密钥对安全地将文件移到 Azure Linux VM 和从 Azure Linux VM 移动文件。
 author: cynthn
 ms.service: virtual-machines-linux
@@ -9,10 +9,10 @@ ms.date: 07/12/2017
 ms.author: cynthn
 ms.subservice: disks
 ms.openlocfilehash: a0837790b70de42073338bf085ee0f3976b866f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78969607"
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>使用 SCP 将文件移到 Linux VM 和从 Linux VM 移动文件
@@ -49,7 +49,7 @@ SCP 将 SSH 用于传输层。 SSH 处理目标主机上的身份验证，同时
 
 在第一个示例中，我们将 Azure 配置文件向上复制到用于部署自动化的 Linux VM。 由于此文件包含 Azure API 凭据，其中包括机密，因此安全性非常重要。 SSH 提供的加密隧道可保护文件的内容。
 
-以下命令通过 FQDN myserver.eastus.cloudapp.azure.com 将本地 .azure/config 文件复制到 Azure VM****。 Azure VM 上的管理员用户名为 azureuser**。 该文件指向 /home/azureuser/directory**。 在此命令中替换自己的值。
+以下命令通过 FQDN myserver.eastus.cloudapp.azure.com 将本地 .azure/config 文件复制到 Azure VM****。 Azure VM 上的管理员用户名为 azureuser  。 该文件指向 /home/azureuser/directory  。 在此命令中替换自己的值。
 
 ```bash
 scp ~/.azure/config azureuser@myserver.eastus.cloudapp.com:/home/azureuser/config
@@ -59,13 +59,13 @@ scp ~/.azure/config azureuser@myserver.eastus.cloudapp.com:/home/azureuser/confi
 
 在此示例中，我们将日志文件的目录从 Linux VM 复制到工作站。 日志文件可能或可能不包含敏感或机密数据。 但是，使用 SCP 可确保加密日志文件内容。 使用 SCP 传输文件是将日志目录和文件获取到工作站上同时确保安全的最简单方法。
 
-以下命令可将 Azure VM 上位于 /home/azureuser/log/ 目录中的文件复制到本地 /tmp 目录中**：
+以下命令可将 Azure VM 上位于 /home/azureuser/log/ 目录中的文件复制到本地 /tmp 目录中  ：
 
 ```bash
 scp -r azureuser@myserver.eastus.cloudapp.com:/home/azureuser/logs/. /tmp/
 ```
 
-该`-r`标志指示 SCP 从命令中列出的目录点递归地复制文件和目录。  另请注意，命令行语法类似于 `cp` 复制命令。
+`-r`标志指示 SCP 从命令中列出的目录点以递归方式复制文件和目录。  另请注意，命令行语法类似于 `cp` 复制命令。
 
 ## <a name="next-steps"></a>后续步骤
 

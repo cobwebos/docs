@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 0eac35a91e4d5158335d6797d49a09f8f6f391e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78303743"
 ---
 # <a name="left-azure-cosmos-db"></a>LEFT (Azure Cosmos DB)
@@ -23,7 +23,7 @@ ms.locfileid: "78303743"
 LEFT(<str_expr>, <num_expr>)  
 ```  
   
-## <a name="arguments"></a>自变量
+## <a name="arguments"></a>参数
   
 *str_expr*  
    要从中提取字符的字符串表达式。  
@@ -51,10 +51,10 @@ SELECT LEFT("abc", 1) AS l1, LEFT("abc", 2) AS l2
 
 ## <a name="remarks"></a>备注
 
-该系统功能将受益于[范围索引](index-policy.md#includeexclude-strategy)。
+此系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中受益。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [字符串函数 Azure Cosmos DB](sql-query-string-functions.md)
-- [系统功能 Azure 宇宙 DB](sql-query-system-functions.md)
-- [Azure 宇宙 DB 简介](introduction.md)
+- [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB 简介](introduction.md)

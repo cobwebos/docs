@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: b-juche
 ms.openlocfilehash: 48055a774808aea86452e8410b7e717f5019d172
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78267904"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>使用 Azure NetApp 文件管理快照
@@ -41,7 +41,7 @@ ms.locfileid: "78267904"
 
     ![新建快照](../media/azure-netapp-files/azure-netapp-files-new-snapshot.png)
 
-4. 单击“确定”。 
+4. 单击" **确定**"。 
 
 ## <a name="restore-a-snapshot-to-a-new-volume"></a>将快照还原到新卷
 
@@ -53,7 +53,7 @@ ms.locfileid: "78267904"
     ![将快照还原到新卷](../media/azure-netapp-files/azure-netapp-files-snapshot-restore-to-new-volume.png)
 
 4. 在“新建卷”窗口中，提供新卷的信息：  
-    * **名字**   
+    * **路径名**   
         指定要创建的卷的名称。  
         
         名称在资源组中必须唯一。 它的长度必须至少为三个字符。  它可以使用任何字母数字字符。
@@ -65,23 +65,23 @@ ms.locfileid: "78267904"
         
         文件路径名只能包含字母、数字和连字符 ("-")。 它的长度必须介于 16 到 40 个字符之间。 
 
-    * **配额**  
+    * **限制**  
         指定分配给卷的逻辑存储量。  
 
         “可用配额”**** 字段显示了所选容量池中可以用来创建新卷的未使用空间量。 新卷的大小不能超过可用配额。
 
     *   **虚拟网络**  
         指定要从中访问卷的 Azure 虚拟网络 (Vnet)。  
-        你指定的 Vnet 必须已将子网委托给 Azure NetApp 文件。 只能从同一 Vnet 或者从与卷位于同一区域的 Vnet 通过 Vnet 对等互连来访问 Azure NetApp 文件。 您可以通过快速路由从本地网络访问卷。 
+        你指定的 Vnet 必须已将子网委托给 Azure NetApp 文件。 只能从同一 Vnet 或者从与卷位于同一区域的 Vnet 通过 Vnet 对等互连来访问 Azure NetApp 文件。 可以通过 Express Route 从本地网络访问该卷。 
 
-    * **子**  
+    * **子网**  
         指定要用于卷的子网。  
         你指定的子网必须已委托给 Azure NetApp 文件服务。 可以通过选择“子网”字段下的“新建”**** 来创建新子网。  
    <!--
     ![Restored new volume](../media/azure-netapp-files/azure-netapp-files-snapshot-new-volume.png) 
    -->
 
-5. 单击“确定”。   
+5. 单击" **确定**"。   
     快照还原到的新卷将显示在“卷”边栏选项卡中。
 
 ## <a name="next-steps"></a>后续步骤

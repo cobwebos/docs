@@ -9,10 +9,10 @@ ms.date: 08/16/2018
 ms.author: clemensv
 ms.custom: include file
 ms.openlocfilehash: ce29cd03de46e1d93d7f1f28f9f5184cd59a57e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79200247"
 ---
 ### <a name="create-a-console-application"></a>创建控制台应用程序
@@ -23,7 +23,7 @@ ms.locfileid: "79200247"
 
 ### <a name="add-the-relay-nuget-package"></a>添加中继 NuGet 包
 
-1. 右键单击新创建的项目，然后选择“管理 NuGet 包”****。
+1. 右键单击新创建的项目，然后选择“管理 NuGet 包”  。
 2. 选择“包括预发行版”选项。**** 
 3. 选择“浏览”，然后搜索 **Microsoft.Azure.Relay**。**** 在搜索结果中，选择“Microsoft Azure 中继”。****
 4. 对于版本，选择 **2.0.0-preview1-20180523**。 

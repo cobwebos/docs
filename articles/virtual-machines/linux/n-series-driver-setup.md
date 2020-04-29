@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: cynthn
 ms.openlocfilehash: b424361f318504f96a57ee67722e725fbafc6561
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78944562"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>在运行 Linux 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序
@@ -163,9 +163,9 @@ sudo reboot
 
 * **基于 CentOS 的 7.4 HPC** - 在 VM 上安装 RDMA 驱动程序和 Intel MPI 5.1。
 
-## <a name="install-grid-drivers-on-nv-or-nvv3-series-vms"></a>在 NV 或 NVv3 系列 VM 上安装 GRID 驱动程序
+## <a name="install-grid-drivers-on-nv-or-nvv3-series-vms"></a>在 NV 或 NVv3 系列 Vm 上安装网格驱动程序
 
-要在 NV 或 NVv3 系列 VM 上安装 NVIDIA GRID 驱动程序，请将 SSH 连接到每个 VM，然后按照 Linux 发行版的步骤操作。 
+若要在 NV 或 NVv3 系列 Vm 上安装 NVIDIA GRID 驱动程序，请与每个 VM 建立 SSH 连接，并按照 Linux 分发的步骤进行操作。 
 
 ### <a name="ubuntu"></a>Ubuntu 
 
@@ -184,7 +184,7 @@ sudo reboot
    
    sudo apt-get install linux-azure -y
    ```
-3. 禁用 Nouveau 内核驱动程序，该驱动程序与 NVIDIA 驱动程序不兼容。 （仅在 NV 或 NVv2 VM 上使用 NVIDIA 驱动程序。为此，请创建`/etc/modprobe.d`一个带有以下内容`nouveau.conf`的命名文件：
+3. 禁用 Nouveau 内核驱动程序，该驱动程序与 NVIDIA 驱动程序不兼容。 （仅在 NV 或 NVv2 Vm 上使用 NVIDIA 驱动程序。）为此，请在中`/etc/modprobe.d`创建一个名`nouveau.conf`为的文件，其中包含以下内容：
 
    ```
    blacklist nouveau
@@ -224,7 +224,7 @@ sudo reboot
    EnableUI=FALSE
    ```
    
-9. 如果存在以下操作，`/etc/nvidia/gridd.conf`请从中删除以下内容：
+9. 如果存在以下情况`/etc/nvidia/gridd.conf` ，请从中删除以下内容：
  
    ```
    FeatureType=0
@@ -248,7 +248,7 @@ sudo reboot
    sudo yum install hyperv-daemons
    ```
 
-2. 禁用 Nouveau 内核驱动程序，该驱动程序与 NVIDIA 驱动程序不兼容。 （仅在 NV 或 NV2 VM 上使用 NVIDIA 驱动程序。为此，请创建`/etc/modprobe.d`一个带有以下内容`nouveau.conf`的命名文件：
+2. 禁用 Nouveau 内核驱动程序，该驱动程序与 NVIDIA 驱动程序不兼容。 （仅在 NV 或 NV2 Vm 上使用 NVIDIA 驱动程序。）为此，请在中`/etc/modprobe.d`创建一个名`nouveau.conf`为的文件，其中包含以下内容：
 
    ```
    blacklist nouveau
@@ -296,7 +296,7 @@ sudo reboot
    IgnoreSP=FALSE
    EnableUI=FALSE 
    ```
-9. 如果存在以下操作，`/etc/nvidia/gridd.conf`请从中删除以下内容：
+9. 如果存在以下情况`/etc/nvidia/gridd.conf` ，请从中删除以下内容：
  
    ```
    FeatureType=0

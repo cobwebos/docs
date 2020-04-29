@@ -4,15 +4,15 @@ description: 本教程介绍如何通过设置一个或多个计时器触发器�
 ms.topic: article
 ms.date: 06/27/2019
 ms.openlocfilehash: 3202b5d8c426165d81129f1affa69b3a3d515ce9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78402885"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>按定义的计划运行 ACR 任务
 
-本教程介绍如何按计划运行 [ACR 任务](container-registry-tasks-overview.md)。 通过设置一个或多个计时器触发器来计划任务。** 计时器触发器可以单独使用，也可以与其他任务触发器结合使用。
+本教程介绍如何按计划运行 [ACR 任务](container-registry-tasks-overview.md)。 通过设置一个或多个计时器触发器来计划任务。  计时器触发器可以单独使用，也可以与其他任务触发器结合使用。
 
 本教程介绍如何计划任务及完成以下任务：
 
@@ -25,12 +25,12 @@ ms.locfileid: "78402885"
 * 运行容器工作负荷来执行计划性维护操作。 例如，运行容器化应用以从注册表中删除不需要的映像。
 * 在工作日针对要在现场监视的生产映像运行一组测试。
 
-可以使用 Azure 云外壳或 Azure CLI 的本地安装来运行本文中的示例。 若要在本地使用 Azure CLI，需要安装 2.0.68 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+您可以使用 Azure CLI 的 Azure Cloud Shell 或本地安装来运行本文中的示例。 若要在本地使用 Azure CLI，需要安装 2.0.68 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 
 ## <a name="about-scheduling-a-task"></a>关于计划任务
 
-* **使用 cron 表达式的触发器** - 任务的计时器触发器使用 cron 表达式。** 该表达式是包含五个字段的字符串，这些字段指定要触发任务的分钟、小时、日期、月份和星期。 支持的最高频率为每分钟一次。
+* **使用 cron 表达式的触发器** - 任务的计时器触发器使用 cron 表达式。  该表达式是包含五个字段的字符串，这些字段指定要触发任务的分钟、小时、日期、月份和星期。 支持的最高频率为每分钟一次。
 
   例如，表达式 `"0 12 * * Mon-Fri"` 在每个工作日的中午（UTC 时间）触发任务。 请参阅本文稍后所述的[详细信息](#cron-expressions)。
 * **多个计时器触发器** - 允许将多个计时器添加到g wh 任务，前提是计划不同。
@@ -202,7 +202,7 @@ cron 表达式使用的时区为协调世界时 (UTC)。 时间为 24 小时制�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-要删除在本教程系列中创建的所有资源，包括容器注册表或注册表、容器实例、密钥保管库和服务主体，请发出以下命令：
+若要删除在本系列教程中创建的所有资源，包括容器注册表、注册表、容器实例、key vault 和服务主体，请发出以下命令：
 
 ```azurecli
 az group delete --resource-group $RES_GROUP
@@ -211,9 +211,9 @@ az ad sp delete --id http://$ACR_NAME-pull
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，您学习了如何创建由计时器自动触发的 Azure 容器注册表任务。 
+本教程介绍了如何创建由计时器自动触发的 Azure 容器注册表任务。 
 
-有关使用计划任务清理注册表中的存储库的示例，请参阅[从 Azure 容器注册表中自动清除图像](container-registry-auto-purge.md)。
+有关使用计划任务清理注册表中的存储库的示例，请参阅[自动清除 Azure 容器注册表](container-registry-auto-purge.md)中的映像。
 
 有关由源代码提交或基本映像更新触发的任务的示例，请参阅[ACR 任务教程系列](container-registry-tutorial-quick-task.md)中的其他文章。
 

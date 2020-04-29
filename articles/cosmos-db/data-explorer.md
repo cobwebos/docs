@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: dech
 ms.openlocfilehash: 57ba647ade45928f03cd7fb2b037642d5e4d52cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79096818"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>使用 Azure Cosmos 资源管理器处理数据 
@@ -47,7 +47,7 @@ Azure Cosmos DB 资源管理器是基于 Web 的独立界面，允许查看和�
 
 Azure Cosmos DB Gremlin 和 Table API 帐户目前尚不支持允许共享临时读写或读取权限的“全屏打开”体验****。 通过将连接字符串传递给 Azure Cosmos DB 资源管理器，仍然可以查看 Gremlin 和 Table API 帐户。 
 
-目前，数据资源管理器中不支持查看包含 UUID 的文档。 这不会影响加载集合，仅查看包含这些文档的各个文档或查询。 要查看和管理这些文档，用户应继续使用最初用于创建这些文档的工具。
+目前数据资源管理器中不支持查看包含 UUID 的文档。 这不会影响加载集合，只查看包含这些文档的单个文档或查询。 若要查看和管理这些文档，用户应继续使用最初用于创建这些文档的工具。
 
 ## <a name="next-steps"></a>后续步骤
 现已了解了如何开始使用 Azure Cosmos DB 资源管理器来管理数据，接下来可以：

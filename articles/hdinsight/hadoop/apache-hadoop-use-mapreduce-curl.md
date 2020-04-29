@@ -9,26 +9,26 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
 ms.openlocfilehash: abc3cc8c526e37e18f1e67b109a9a8e15ff8c989
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302706"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>使用 REST 通过 HDInsight 上的 Apache Hadoop 运行 MapReduce 作业
 
-了解如何使用 Apache Hive WebHCat REST API 在 HDInsight 群集上的 Apache Hadoop 上运行 MapReduce 作业。 本文档使用 Curl 演示如何通过使用原始 HTTP 请求来与 HDInsight 交互，以便运行 MapReduce 作业。
+了解如何使用 Apache Hive WebHCat REST API 在 Apache Hadoop on HDInsight 群集上运行 MapReduce 作业。 本文档使用 Curl 演示如何通过使用原始 HTTP 请求来与 HDInsight 交互，以便运行 MapReduce 作业。
 
 > [!NOTE]  
 > 如果已熟悉如何使用基于 Linux 的 Hadoop 服务器，但刚接触 HDInsight，请参阅 [HDInsight 上的基于 Linux 的 Apache Hadoop 须知信息](../hdinsight-hadoop-linux-information.md)文档。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * HDInsight 中的 Apache Hadoop 群集。 请参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)。
 
 以下两个因素中的任一个：
-  * Windows PowerShell 或，
-  * [卷曲](https://curl.haxx.se/)与[jq](https://stedolan.github.io/jq/)
+  * Windows PowerShell 或
+  * [Curl](https://curl.haxx.se/) 与 [jq](https://stedolan.github.io/jq/)
 
 ## <a name="run-a-mapreduce-job"></a>运行 MapReduce 作业
 
@@ -39,7 +39,7 @@ ms.locfileid: "78302706"
 
 ### <a name="curl"></a>Curl
 
-1. 为便于使用，设置下面的变量。 此示例基于 Windows 环境，根据需要修改环境。
+1. 为方便使用，请设置以下变量。 此示例基于 Windows 环境，请根据环境需要进行修订。
 
     ```cmd
     set CLUSTERNAME=
@@ -65,7 +65,7 @@ ms.locfileid: "78302706"
     {"version":"v1","status":"ok"}
     ```
 
-1. 要提交 MapReduce 作业，请使用以下命令。 根据需要修改到**jq**的路径。
+1. 若要提交 MapReduce 作业，请使用以下命令。 根据需要修改 **jq** 的路径。
 
     ```cmd
     curl -u admin:%PASSWORD% -d user.name=admin ^
@@ -77,7 +77,7 @@ ms.locfileid: "78302706"
 
     URI 的末尾 (/mapreduce/jar) 告知 WebHCat，此请求从 jar 文件中的类启动 MapReduce 作业。 此命令中使用的参数如下：
 
-   * **-d** `-G` ： 不使用，因此请求默认为 POST 方法。 `-d` 指定与请求一起发送的数据值。
+   * **-d**：由于不使用 `-G`，因此请求默认为使用 POST 方法。 `-d` 指定与请求一起发送的数据值。
      * **user.name**：正在运行命令的用户
      * **jar**：包含要运行的类的 jar 文件所在位置
      * **class**：包含 MapReduce 逻辑的类
@@ -87,7 +87,7 @@ ms.locfileid: "78302706"
 
        job_1415651640909_0026
 
-1. 若要检查作业的状态，请使用以下命令。 将 的值`JOBID`替换为上一步骤中返回**的实际**值。 根据需要修改**jq**的位置。
+1. 若要检查作业的状态，请使用以下命令。 将 `JOBID` 的值替换为上一步返回的**实际**值。 根据需要修改 **jq** 的位置。
 
     ```cmd
     set JOBID=job_1415651640909_0026
@@ -98,14 +98,14 @@ ms.locfileid: "78302706"
 
 ### <a name="powershell"></a>PowerShell
 
-1. 为便于使用，设置下面的变量。 替换为`CLUSTERNAME`实际的群集名称。 执行命令并在提示时输入群集登录密码。
+1. 为方便使用，请设置以下变量。 将 `CLUSTERNAME` 替换为实际群集名称。 执行命令，并在出现提示时输入群集登录密码。
 
     ```powershell
     $clusterName="CLUSTERNAME"
     $creds = Get-Credential -UserName admin -Message "Enter the cluster login password"
     ```
 
-1. 使用以下命令验证是否可以连接到 HDInsight 群集：
+1. 使用以下命令验证你是否可以连接到 HDInsight 群集。
 
     ```powershell
     $resp = Invoke-WebRequest -Uri "https://$clustername.azurehdinsight.net/templeton/v1/status" `
@@ -171,7 +171,7 @@ ms.locfileid: "78302706"
 
 1. 在作业的状态更改为 `SUCCEEDED` 后，可以从 Azure Blob 存储中检索作业的结果。 随查询一起传递的 `statusdir` 参数包含输出文件的位置。 在本示例中，位置为 `/example/curl`。 此地址在群集默认存储的 `/example/curl` 中存储作业的输出。
 
-可以使用 [Azure CLI](/cli/azure/install-azure-cli) 列出并下载这些文件。 有关使用 Azure CLI 处理 Azure Blob 存储的详细信息，请参阅[快速入门：使用 Azure CLI 创建、下载和列出 Blob。](../../storage/blobs/storage-quickstart-blobs-cli.md)
+可以使用 [Azure CLI](/cli/azure/install-azure-cli) 列出并下载这些文件。 有关使用 Azure CLI 来处理 Azure Blob 存储的详细信息，请参阅[快速入门：使用 Azure CLI 创建、下载和列出 blob](../../storage/blobs/storage-quickstart-blobs-cli.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

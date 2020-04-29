@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
 ms.openlocfilehash: ad6d3992f03802174eb03aa30b57b8d3dac1d6c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78942953"
 ---
 # <a name="azure-sql-database-security-features"></a>Azure SQL 数据库安全功能    
@@ -75,7 +75,7 @@ Azure 生产网络在逻辑上分离成三个主要 VLAN：
 ### <a name="types-of-rules-on-firewalls"></a>防火墙上的规则类型
 规则定义为：
 
-[Src IP， Src 端口， 目标 IP， 目标端口， 目标协议， 进出， 状态/无状态， 状态流超时] 。
+{Src IP、Src 端口、目标 IP、目标端口、目标协议、传入/传出、有状态/无状态、有状态流超时}。
 
 仅当受任一规则的允许时，才允许传入或传出同步空闲字符 (SYN) 数据包。 对于 TCP，Azure 使用无状态规则，其中的原则是，只允许所有非 SYN 数据包传入或传出 VM。 安全性的前提是，如果任何主机堆栈以前未发现 SYN 数据包，则灵活忽略非 SYN 数据包。 TCP 协议本身是有状态的，与无状态的基于 SYN 的规则相结合，实现有状态实施方案的整体行为。
 
