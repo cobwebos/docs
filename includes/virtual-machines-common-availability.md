@@ -9,23 +9,23 @@ ms.date: 11/04/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 4860dcac666f790fed199536338e50a967113c20
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76748914"
 ---
 本文概述了 Azure 虚拟机 (VM) 的可用性功能。
 
 ## <a name="high-availability"></a>高可用性
 
-工作负载通常分布在不同的虚拟机中，以获得高吞吐量、高性能，并在 VM 因更新或其他事件而受到影响时创建冗余。 
+工作负荷通常分布在不同的虚拟机上，以获得高吞吐量、高性能并提供冗余，以防虚拟机由于更新或其他事件而受到影响。 
 
-Azure 提供的选项很少，以实现高可用性。 首先，让我们来谈谈基本构造。 
+Azure 提供了几个选项来实现高可用性。 首先，让我们谈一谈基本构造。 
 
 ### <a name="availability-zones"></a>可用性区域
 
-[可用性区域](../articles/availability-zones/az-overview.md)扩展了保持 VM 上应用程序和数据的可用性所必须的控制级别。 可用性区域是 Azure 区域内的物理独立区域。 每个受支持的 Azure 区域有三个可用性区域。 
+"[可用性区域](../articles/availability-zones/az-overview.md)" 展开控制级别，你必须在 vm 上维护应用程序和数据的可用性。 可用性区域是 Azure 区域中物理上独立的区域。 每个受支持的 Azure 区域有三个可用性区域。 
 
 每个可用性区域有独立的电源、网络和散热设备。 通过将解决方案构建为使用区域中复制的 VM，可以在数据中心服务中断时保护应用和数据。 如果一个区域发生故障，另一个区域会立即提供复制的应用和数据。 
 
@@ -42,33 +42,33 @@ Azure 提供的选项很少，以实现高可用性。 首先，让我们来谈�
 
 更新域是可以同时维护或重新启动的基础硬件逻辑组。 
 
-Azure 平台进行定期维护时，此方法可确保至少有一个应用程序实例始终保持运行状态。 在维护期间，正在重新启动的更新域的顺序可能不会按顺序进行，但一次只重新启动一个更新域。
+Azure 平台进行定期维护时，此方法可确保至少有一个应用程序实例始终保持运行状态。 在维护期间，重新启动更新域的顺序可能不会按序进行，但一次只能重启一个更新域。
 
 
 ## <a name="virtual-machines-scale-sets"></a>虚拟机规模集 
 
-Azure 虚拟机扩展集允许您创建和管理一组负载平衡 VM。 可以根据需求或定义的计划自动增减 VM 实例的数目。 缩放集为应用程序提供高可用性，并允许您集中管理、配置和更新许多 VM。 我们建议在规模集中创建两个或多个 VM，以提供高可用性的应用程序并满足[99.95% Azure SLA。](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 规模集本身无需支付任何费用，只需为创建的每个 VM 实例付费。 当单个 VM 使用 [Azure 高级 SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) 时，Azure SLA 适用于计划外维护事件。 规模集中的虚拟机可以跨多个更新域和容错域部署，以最大限度地提高可用性和抵御数据中心中断以及计划内或计划外维护事件造成的中断的能力。 规模集中的虚拟机也可以部署到单个可用性区域或区域。 可用性区域部署选项可能因业务流程模式而异。
+使用 Azure 虚拟机规模集，可以创建和管理一组负载均衡的 Vm。 可以根据需求或定义的计划自动增减 VM 实例的数目。 规模集为应用程序提供高可用性，并允许你集中管理、配置和更新多个虚拟机。 建议在规模集中创建两个或更多 Vm，以提供高度可用的应用程序并满足[99.95% 的 AZURE SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)要求。 规模集本身无需支付费用，只需为创建的每个 VM 实例付费。 当单个 VM 使用 [Azure 高级 SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) 时，Azure SLA 适用于计划外维护事件。 规模集中的虚拟机可以跨多个更新域和容错域部署，以最大程度地提高可用性和可复原性，因为数据中心中断、计划内或计划外维护事件。 规模集中的虚拟机也可以部署到单个可用性区域或突破中。 可用性区域部署选项可能因业务流程模式而异。
 
 ### <a name="preview-orchestration-mode-preview"></a>预览：业务流程模式预览
-虚拟机缩放集允许您指定业务流程模式。  使用虚拟机缩放集业务流程模式（预览），现在可以选择规模集是否应协调在规模集配置模型之外显式创建的虚拟机，还是隐式创建的虚拟机实例基于配置模型。 选择 VM 业务流程模型允许您在区域或可用性区域中将显式定义的虚拟机分组在一起的业务流程模式。 部署在可用性区域中的虚拟机向 VM 提供区域隔离，因为它们绑定到可用性区域边界，并且不会受到该区域其他可用性区域中可能发生的任何故障的影响。 
+虚拟机规模集允许指定业务流程模式。  利用虚拟机规模集业务流程模式（预览版），你现在可以选择规模集是否应协调在规模集配置模型之外显式创建的虚拟机，或者是否需要基于配置模型隐式创建的虚拟机实例。 选择 "业务流程" 模式： VM 业务流程模型允许您将显式定义的虚拟机组合到一个区域或某个可用性区域中。 在可用性区域中部署的虚拟机为 Vm 提供了区域隔离，它们被绑定到可用性区域边界，而不是在区域的其他可用性区域中可能发生的任何故障。 
 
-|   | "编排模式"："虚拟机"（虚拟机）| "编排模式"："缩放集VM"（虚拟机缩放设置VM） |
+|   | "orchestrationMode"： "VM" （VirtualMachine）| "orchestrationMode": "ScaleSetVM" (VirtualMachineScaleSetVM) |
 |----|----|----|
-| VM 配置模型| 无。 虚拟机配置文件在比例集模型中未定义。 | 必需。 虚拟机配置文件填充在比例集模型中。 |
-| 将新 VM 添加到规模集| 创建 VM 时，会显式将 VM 添加到规模集。 | VM 会根据 VM 配置模型、实例计数和自动缩放规则隐式创建并添加到缩放集。 |
-| 可用性区域| 在一个可用性区域中支持区域部署或 VM| 支持区域部署或多个可用区域;可以定义区域平衡策略 |
-| 容错域| 可以定义容错域计数。 2 或 3 基于区域支持，5 个用于可用区域。 分配的 VM 容错域将保留 VM 生命周期，包括取消分配和重新启动。 | 可以为非区域部署定义 1、2 或 3 个容错域，为可用性区域部署定义 5 个容错域。 分配的 VM 故障域不会保留 VM 生命周期，虚拟机在分配时分配了一个容错域。 |
+| VM 配置模型| 无。 规模集模型中未定义 VirtualMachineProfile。 | 必需。 VirtualMachineProfile 在规模集模型中填充。 |
+| 将新 VM 添加到规模集| 创建 VM 时，会显式将 VM 添加到规模集。 | Vm 基于 VM 配置模型、实例计数和自动缩放规则进行隐式创建并添加到规模集。 |
+| 可用性区域| 支持一个可用性区域中的区域部署或 Vm| 支持区域部署或多个可用性区域;可以定义区域平衡策略 |
+| 容错域| 可定义容错域计数。 2或3，基于区域支持，5用于可用性区域。 已分配的 VM 容错域将保留 VM 生命周期，包括解除分配和重新启动。 | 可为非区域性部署定义1、2或3个容错域，并为可用性区域部署定义5个。 分配的 VM 容错域不会保留在 VM 的生命周期中，在分配时，会为虚拟机分配一个容错域。 |
 | 更新域| 不适用。 更新域会自动映射到容错域| 不适用。 更新域会自动映射到容错域 |
 
-**故障域和更新域**
+**容错域和更新域**
 
-虚拟机规模集通过对齐容错域和更新域来简化高可用性设计。 您只需要为比例集定义容错域计数。 缩放集可用的容错域数可能因区域而异。 请参阅[管理 Azure 中的虚拟机的可用性](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)。
+虚拟机规模集通过协调容错域和更新域简化了高可用性设计。 只需为规模集定义容错域计数。 规模集可用的容错域的数量可能因区域而异。 请参阅[在 Azure 中管理虚拟机的可用性](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)。
 
 
 ## <a name="availability-sets"></a>可用性集
 可用性集是数据中心内的 VM 的逻辑分组，可让 Azure 了解应用程序的构建方式，以便提供冗余和可用性。 建议在可用性集内创建两个或多个 VM，提供高度可用的应用程序，并满足 [99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 的要求。 可用性集本身是免费的，只需为创建的每个 VM 实例付费。 当单个 VM 使用 [Azure 高级 SSD](../articles/virtual-machines/windows/disks-types.md#premium-ssd) 时，Azure SLA 适用于计划外维护事件。
 
-在可用性集中，VM 会自动分布在这些容错域中。 此方法可限制潜在物理硬件故障、网络中断或断电的影响。
+在可用性集中，Vm 自动分布到这些容错域中。 此方法可限制潜在物理硬件故障、网络中断或断电的影响。
 
 对于使用 [Azure 托管磁盘](../articles/virtual-machines/windows/faq-for-disks.md)的 VM，在使用托管可用性集时，VM 与托管磁盘容错域一致。 该一致性可确保附加到 VM 的所有托管磁盘都在同一托管磁盘容错域内。 
 
@@ -77,7 +77,7 @@ Azure 虚拟机扩展集允许您创建和管理一组负载平衡 VM。 可以�
 ![托管可用性集](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
 
 
-可用性集中的 VM 也会在更新域之间自动分发。 
+可用性集中的 Vm 也会自动分布在更新域中。 
 
 ![可用性集](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
 
