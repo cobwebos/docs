@@ -15,10 +15,10 @@ ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: ae283529abb3b71ee50fc710dd1ebe0d17a12be0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80154825"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory 代码示例（v1.0 终结点）
@@ -40,7 +40,7 @@ ms.locfileid: "80154825"
 
 此示例展示了如何编写受 Azure AD 保护的单页应用程序。
 
- Platform | 调用自身的 API | 调用其他 Web API
+ 平台 | 调用自身的 API | 调用其他 Web API
  -------- |  --------------------- | ------------------ 
 ![此图显示了 JavaScript 徽标](media/sample-v2-code/logo-js.png) | [javascript-singlepageapp](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |
 ![此图显示了 Angular JS 徽标](media/sample-v2-code/logo-angular.png) | [angularjs-singlepageapp](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) | [angularjs-singlepageapp-cors](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp-dotnet-webapi)
@@ -51,10 +51,10 @@ ms.locfileid: "80154825"
 
 以下示例说明了 Web 应用程序签名用户。 其中一些应用程序还以已登录用户的名义调用 Microsoft Graph 或你自己的 Web API。
 
- Platform | 仅让用户登录 | 调用 Microsoft Graph | 调用另一个 ASP.NET 或 ASP.NET Core 2.0 Web API
+ 平台 | 仅让用户登录 | 调用 Microsoft Graph | 调用另一个 ASP.NET 或 ASP.NET Core 2.0 Web API
  -------- | ------------------- | --------------------- | -------------------------
 ![此图显示了 ASP.NET 徽标](media/sample-v2-code/logo-netcore.png)</p>ASP.NET Core 2.0 | [dotnet-webapp-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [webapp-webapi-multitenant-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) </p>(AAD Graph) | [dotnet-webapp-webapi-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore)
-![此图显示了 ASP.NET 徽标](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 |  </p> [网络应用-WS联邦点网](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [dotnet-webapp-webapi-oauth2-useridentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [dotnet-webapp-multitenant-openidconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (AAD Graph) |
+![此图显示了 ASP.NET 徽标](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 |  </p> [webapp-WSFederation-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [dotnet-webapp-webapi-oauth2-useridentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [dotnet-webapp-multitenant-openidconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (AAD Graph) |
 ![此图显示了 Python 徽标](media/sample-v2-code/logo-python.png) | | [python-webapp-graphapi](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi)  |
 ![此图显示了 Java 日志](media/sample-v2-code/logo-java.png)  | | [java-webapp-openidconnect](https://github.com/azure-samples/active-directory-java-webapp-openidconnect)  |
 ![此图显示了 PHP 徽标](media/sample-v2-code/logo-php.png) | | [php-graphapi-web](https://github.com/Azure-Samples/active-directory-php-graphapi-web)  |
@@ -63,7 +63,7 @@ ms.locfileid: "80154825"
 
 以下示例演示如何实现基于角色的访问控制 (RBAC)。 RBAC 用于将 Web 应用中某些功能的权限限制为某些用户。 系统将根据用户是属于 **Azure AD 组**还是拥有一个给定的应用程序**角色**，对其进行授权。
 
-Platform | 示例 |
+平台 | 示例 |
  -------- | ------------------- |
 ![此图显示了 ASP.NET 徽标](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [dotnet-webapp-groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) </p>  [dotnet-webapp-roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | 使用 Azure AD **角色**进行授权的 .NET 4.5 MVC Web 应用
 
@@ -75,13 +75,13 @@ Platform | 示例 |
 - 无提示方式（使用 Windows 上集成的 Windows 身份验证或用户名/密码）
 - 通过将交互式登录委托给另一个设备（在不提供 Web 控件的设备上使用的设备代码流）
 
-客户端应用程序 | Platform | 流/授权 | 调用 Microsoft Graph | 调用 ASP.NET 或 ASP.NET Core 2.x Web API
+客户端应用程序 | 平台 | 流/授权 | 调用 Microsoft Graph | 调用 ASP.NET 或 ASP.NET Core 2.x Web API
 ------------------ | -------- | ---------- | -------------------- | -------------------------
 桌面 (WPF)           | ![此图显示了 .NET/C# 徽标](media/sample-v2-code/logo-net.png)  | 交互 | [dotnet-native-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) 的一部分 | [Dotnet-native-desktop](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [dotnet-native-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore/)</p> [dotnet-webapi-manual-jwt-validation](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation)
-移动 (UWP)            | .![此图显示了 .NET/C#/UWP](media/sample-v2-code/logo-windows.png)   | 交互 | [dotnet-native-uwp-wam](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) </p> 此示例使用 [WAM](/windows/uwp/security/web-account-manager)，而不是 [ADAL.NET](https://aka.ms/adalnet)|  [dotnet-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-windows-store)（使用 ADAL.NET 调用单租户 Web API 的 UWP 应用程序） </p> [dotnet-webapi-multite nant-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store)（使用 ADAL.NET 调用多租户 Web API 的 UWP 应用程序）|
+移动 (UWP)            | 。![此图显示了 .NET/C#/UWP](media/sample-v2-code/logo-windows.png)   | 交互 | [dotnet-native-uwp-wam](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) </p> 此示例使用 [WAM](/windows/uwp/security/web-account-manager)，而不是 [ADAL.NET](https://aka.ms/adalnet)|  [dotnet-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-windows-store)（使用 ADAL.NET 调用单租户 Web API 的 UWP 应用程序） </p> [dotnet-webapi-multite nant-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store)（使用 ADAL.NET 调用多租户 Web API 的 UWP 应用程序）|
 移动（Android、iOS、UWP）   | ![此图显示了 .NET/C# (Xamarin)](media/sample-v2-code/logo-xamarin.png) | 交互 | [dotnet-native-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) |
 移动 (Android)           | ![此图显示了 Android 徽标](media/sample-v2-code/logo-android.png) | 交互 |   [android](https://github.com/Azure-Samples/active-directory-android) |
-移动 (iOS)           | ![此图显示了 iOS/Objective C 或 Swift](media/sample-v2-code/logo-ios.png) | 交互 |   [本机客户端-iOS](https://github.com/azureadquickstarts/nativeclient-ios) |
+移动 (iOS)           | ![此图显示了 iOS/Objective C 或 Swift](media/sample-v2-code/logo-ios.png) | 交互 |   [nativeClient-iOS](https://github.com/azureadquickstarts/nativeclient-ios) |
 桌面（控制台）          | ![此图显示了 .NET/C# 徽标](media/sample-v2-code/logo-net.png) | 用户名/密码 </p>  Windows 集成身份验证 | | [dotnet-native-headless](https://github.com/azure-samples/active-directory-dotnet-native-headless)
 桌面（控制台）          | ![此图显示了 Java 徽标](media/sample-v2-code/logo-java.png) | 用户名/密码 | | [java-native-headless](https://github.com/Azure-Samples/active-directory-java-native-headless)
 桌面（控制台）           | ![此图显示了 .NET Core/C# 徽标](media/sample-v2-code/logo-netcore.png) | 设备代码流 | | [dotnet-deviceprofile](https://github.com/Azure-Samples/active-directory-dotnet-deviceprofile)
@@ -90,7 +90,7 @@ Platform | 示例 |
 
 以下示例展示了可在无用户的情况下（使用应用程序标识）访问 Microsoft Graph 或 Web API 的桌面或 Web 应用程序。
 
-客户端应用程序 | Platform | 流/授权 | 调用 ASP.NET 或 ASP.NET Core 2.0 Web API
+客户端应用程序 | 平台 | 流/授权 | 调用 ASP.NET 或 ASP.NET Core 2.0 Web API
 ------------------ | -------- | ---------- | -------------------- 
 守护程序应用（控制台）          | ![此图显示了 .NET 徽标](media/sample-v2-code/logo-netframework.png) | 使用应用密码或证书的客户端凭据 | [dotnet-daemon](https://github.com/azure-samples/active-directory-dotnet-daemon)</p> [dotnet-daemon-certificate-credential](https://github.com/azure-samples/active-directory-dotnet-daemon-certificate-credential)
 守护程序应用（控制台）         | ![此图显示了 .NET 徽标](media/sample-v2-code/logo-netcore.png) | 使用证书的客户端凭据| [dotnetcore-daemon-certificate-credential](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-certificate-credential)
@@ -104,7 +104,7 @@ ASP.NET Web 应用  | ![此图显示了 .NET 徽标](media/sample-v2-code/logo-n
 
 在本文的前几部分中，还可以找到其他示例，这些示例演示了一个**调用** ASP.NET 或 ASP.NET Core **Web API** 的客户端应用程序。 本部分不再提及这些示例，但你可以在上表或下表的最后一列中找到它们
 
-| Platform | 示例 |
+| 平台 | 示例 |
 |--------|-------------------|
 | ![此图显示了 Node.js 徽标](media/sample-v2-code/logo-nodejs.png)  | [node-webapi](https://github.com/Azure-Samples/active-directory-node-webapi) |
 
@@ -112,7 +112,7 @@ ASP.NET Web 应用  | ![此图显示了 .NET 徽标](media/sample-v2-code/logo-n
 
 以下示例展示了调用另一个 Web API 的 Web API。 第二个示例演示了如何处理条件访问。
 
-| Platform |  调用 Microsoft Graph | 调用另一个 ASP.NET 或 ASP.NET Core 2.0 Web API |
+| 平台 |  调用 Microsoft Graph | 调用另一个 ASP.NET 或 ASP.NET Core 2.0 Web API |
 | -------- |  --------------------- | ------------------------- |
 | ![此图显示了 ASP.NET 徽标](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [dotnet-webapi-onbehalfof](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) </p> [dotnet-webapi-onbehalfof-ca](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca) | [dotnet-webapi-onbehalfof](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof) </p> [dotnet-webapi-onbehalfof-ca](https://github.com/azure-samples/active-directory-dotnet-webapi-onbehalfof-ca) |
 
@@ -120,8 +120,8 @@ ASP.NET Web 应用  | ![此图显示了 .NET 徽标](media/sample-v2-code/logo-n
 
 有关演示 Microsoft Graph API 的各种使用模式（包括向 Azure AD 进行身份验证）的示例和教程，请参阅 [Microsoft Graph Community Samples & Tutorials](https://github.com/microsoftgraph/msgraph-community-samples)（Microsoft Graph 社区示例和教程）。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
-- [Azure 活动目录开发人员指南](v1-overview.md)
+- [Azure Active Directory 开发人员指南](v1-overview.md)
 - [Azure Active Directory 身份验证库](active-directory-authentication-libraries.md)
-- [微软图形 API 概念和参考](https://docs.microsoft.com/graph/use-the-api)
+- [Microsoft Graph API 概念和参考](https://docs.microsoft.com/graph/use-the-api)

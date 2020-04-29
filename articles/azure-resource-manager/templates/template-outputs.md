@@ -4,10 +4,10 @@ description: 介绍如何在 Azure 资源管理器模板中定义输出值。
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.openlocfilehash: 203bfc66e9515ef14a5fe1315ef5b9ee07075041
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79460018"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Azure 资源管理器模板中的输出
@@ -43,9 +43,9 @@ ms.locfileid: "79460018"
 
 有关条件输出的简单示例，请参阅[条件输出模板](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json)。
 
-## <a name="dynamic-number-of-outputs"></a>动态输出数
+## <a name="dynamic-number-of-outputs"></a>动态输出数量
 
-在某些情况下，您不知道创建模板时需要返回的值的实例数。 可以使用**复制**元素返回可变值数。
+在某些情况下，创建模板时你不知道需要返回的值的实例数量。 可以使用 **copy** 元素返回可变的值数。
 
 ```json
 "outputs": {
@@ -59,7 +59,7 @@ ms.locfileid: "79460018"
 }
 ```
 
-有关详细信息，请参阅[Azure 资源管理器模板中的输出迭代](copy-outputs.md)。
+有关详细信息，请参阅 [Azure 资源管理器模板中的输出迭代](copy-outputs.md)。
 
 ## <a name="linked-templates"></a>链接模板
 
@@ -79,7 +79,7 @@ ms.locfileid: "79460018"
 }
 ```
 
-不能在[嵌套模板](linked-templates.md#nested-template)的 outputs 节中使用 `reference` 函数。 若要返回嵌套模板中部署的资源的值，请将嵌套模板转换为链接模板。
+不能在`reference`嵌套模板[的 outputs 节中使用 ](linked-templates.md#nested-template) 函数。 若要返回嵌套模板中部署的资源的值，请将嵌套模板转换为链接模板。
 
 ## <a name="get-output-values"></a>获取输出值
 
@@ -87,7 +87,7 @@ ms.locfileid: "79460018"
 
 若要从部署历史记录中获取输出值，可以使用脚本。
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeployment `
@@ -110,7 +110,7 @@ az deployment group show \
 
 以下示例演示了使用输出的方案。
 
-|模板  |描述  |
+|模板  |说明  |
 |---------|---------|
 |[复制变量](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | 创建复杂变量，并输出这些值。 不部署任何资源。 |
 |[公共 IP 地址](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | 创建公共 IP 地址并输出资源 ID。 |

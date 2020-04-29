@@ -1,53 +1,53 @@
 ---
-title: Azure 函数自定义处理程序（预览）
-description: 了解如何将 Azure 函数与任何语言或运行时版本一起使用。
+title: Azure Functions 自定义处理程序（预览版）
+description: 了解如何在任何语言或运行时版本中使用 Azure Functions。
 author: craigshoemaker
 ms.author: cshoe
 ms.date: 3/18/2020
 ms.topic: article
 ms.openlocfilehash: 5abc216e182d7becd9d6f42e0f566ee96d09c2a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79479249"
 ---
-# <a name="azure-functions-custom-handlers-preview"></a>Azure 函数自定义处理程序（预览）
+# <a name="azure-functions-custom-handlers-preview"></a>Azure Functions 自定义处理程序（预览版）
 
-每个函数应用都由特定于语言的处理程序执行。 虽然默认情况下 Azure 函数支持许多[语言处理程序](./supported-languages.md)，但在某些情况下，您可能需要对应用执行环境进行额外控制。 自定义处理程序为您提供此附加控件。
+每个函数应用由特定于语言的处理程序执行。 尽管 Azure Functions 默认支持许多[语言处理程序](./supported-languages.md)，但在某些情况下，你可能想要对应用执行环境进行额外的控制。 自定义处理程序能够提供这种额外的控制。
 
-自定义处理程序是从函数主机接收事件的轻量级 Web 服务器。 任何支持 HTTP 基元的语言都可以实现自定义处理程序。
+自定义处理程序是可以从 Functions 主机接收事件的轻型 Web 服务器。 支持 HTTP 基元的任何语言都可以实现自定义处理程序。
 
-自定义处理程序最适合您希望：
+自定义处理程序最适合用于以下场合：
 
-- 在官方支持的语言之外，使用语言实现函数应用
-- 在语言版本或运行时中实现默认情况下不支持的功能应用
+- 在超出官方支持语言范畴的某种语言中实现函数应用
+- 在默认不支持的某个语言版本或运行时中实现函数应用
 - 对应用执行环境进行精细控制
 
-对于自定义处理程序，所有[触发器以及输入和输出绑定](./functions-triggers-bindings.md)都通过[扩展包](./functions-bindings-register.md)支持。
+使用自定义处理程序时，将通过[扩展绑定](./functions-triggers-bindings.md)来支持所有[触发器以及输入和输出绑定](./functions-bindings-register.md)。
 
 ## <a name="overview"></a>概述
 
-下图显示了函数主机和作为自定义处理程序实现的 Web 服务器之间的关系。
+下图显示了 Functions 主机与作为自定义处理程序实现的 Web 服务器之间的关系。
 
-![Azure 函数自定义处理程序概述](./media/functions-custom-handlers/azure-functions-custom-handlers-overview.png)
+![Azure Functions 自定义处理程序概述](./media/functions-custom-handlers/azure-functions-custom-handlers-overview.png)
 
-- 事件触发发送到函数主机的请求。 该事件携带原始 HTTP 负载（对于没有绑定的 HTTP 触发函数）或保存函数的输入绑定数据的有效负载。
-- 然后，函数主机通过发出[请求负载](#request-payload)将请求代理到 Web 服务器。
-- Web 服务器执行单个函数，并将[响应负载](#response-payload)返回给函数主机。
-- 函数主机将响应代理为目标的输出绑定负载。
+- 事件触发发送到 Functions 主机的请求。 事件携带原始 HTTP 有效负载（适用于不带绑定的 HTTP 触发函数），或携带包含函数输入绑定数据的有效负载。
+- 然后，Functions 主机通过发出[请求有效负载](#request-payload)，以代理身份将请求发送到 Web 服务器。
+- Web 服务器执行单个函数，并向 Functions 主机返回[响应有效负载](#response-payload)。
+- Functions 主机以代理身份将输出绑定有效负载形式的响应发送到目标。
 
-作为自定义处理程序实现的 Azure 函数应用必须根据几个约定配置*host.json*和*函数.json*文件。
+作为自定义处理程序实现的 Azure Functions 应用必须根据几条约定配置 host.json 和 function.json 文件。  
 
 ## <a name="application-structure"></a>应用程序结构
 
-要实现自定义处理程序，需要应用程序中的以下几个方面：
+若要实现自定义处理程序，需要准备好应用程序的以下方面的内容：
 
-- 应用根目录的*host.json*文件
-- 每个*函数的函数.json*文件（在与函数名称匹配的文件夹中）
-- 运行 Web 服务器的命令、脚本或可执行文件
+- 位于应用根目录的 host.json 文件 
+- 每个函数有一个 function.json 文件（位于与函数名称匹配的文件夹中） 
+- 用于运行 Web 服务器的命令、脚本或可执行文件
 
-下图显示了这些文件在文件系统上查找名为"order"的函数的方式。
+下图显示了名为“order”的函数的这些文件在文件系统中的结构。
 
 ```bash
 | /order
@@ -56,11 +56,11 @@ ms.locfileid: "79479249"
 | host.json
 ```
 
-### <a name="configuration"></a>Configuration
+### <a name="configuration"></a>配置
 
-应用程序通过*主机.json*文件进行配置。 此文件通过指向能够处理 HTTP 事件的 Web 服务器告诉函数主机发送请求的位置。
+应用程序是通过 host.json 文件配置的。  此文件指向能够处理 HTTP 事件的 Web 服务器，以此告知 Functions 主机要将请求发送到哪个位置。
 
-自定义处理程序是通过配置*host.json*文件来定义的，该文件包含有关如何通过`httpWorker`该部分运行 Web 服务器的详细信息。
+自定义处理程序的定义方式是通过  *节在 host.json 文件中配置有关如何运行 Web 服务器的详细信息。* `httpWorker`
 
 ```json
 {
@@ -73,9 +73,9 @@ ms.locfileid: "79479249"
 }
 ```
 
-该`httpWorker`节指向 由 定义的目标`defaultExecutablePath`。 执行目标可以是命令、可执行文件或实现 Web 服务器的文件。
+`httpWorker` 节指向 `defaultExecutablePath` 定义的目标。 执行目标可以某个命令、可执行文件，或实现 Web 服务器的文件。
 
-对于脚本化应用，`defaultExecutablePath`指向脚本语言的运行时并`defaultWorkerPath`指向脚本文件位置。 下面的示例显示了 Node.js 中的 JavaScript 应用如何配置为自定义处理程序。
+对于脚本化应用，`defaultExecutablePath` 指向脚本语言的运行时，`defaultWorkerPath` 指向脚本文件位置。 以下示例演示如何将 Node.js 中的 JavaScript 应用配置为自定义处理程序。
 
 ```json
 {
@@ -89,7 +89,7 @@ ms.locfileid: "79479249"
 }
 ```
 
-您还可以使用`arguments`数组传递参数：
+也可以使用 `arguments` 数组传递参数：
 
 ```json
 {
@@ -104,32 +104,32 @@ ms.locfileid: "79479249"
 }
 ```
 
-许多调试设置都有必要使用参数。 有关详细信息，请参阅[调试](#debugging)部分。
+许多调试设置都需要参数。 有关更多详细信息，请参阅[调试](#debugging)部分。
 
 > [!NOTE]
-> *host.json*文件必须与正在运行的 Web 服务器处于目录结构中的同一级别。 默认情况下，某些语言和工具链可能不会将此文件放在应用程序根目录。
+> *host.json* 文件在目录结构中的级别必须与正在运行的 Web 服务器的级别相同。 某些语言和工具链默认可能不会将此文件放在应用程序根目录中。
 
 #### <a name="bindings-support"></a>绑定支持
 
-标准触发器以及输入和输出绑定可通过引用*host.json*文件中[的扩展包](./functions-bindings-register.md)来获取。
+可以通过在 host.json 文件中引用[扩展捆绑](./functions-bindings-register.md)来使用标准触发器以及输入和输出绑定。 
 
 ### <a name="function-metadata"></a>函数元数据
 
-当与自定义处理程序一起使用时，*函数.json*内容与在任何其他上下文中定义函数的方式没有什么不同。 唯一的要求是*函数.json*文件必须位于命名的文件夹中，以匹配函数名称。
+与自定义处理程序配合使用时，function.json 的内容与在任何其他上下文中定义函数时包含的内容没有什么不同。  唯一的要求是 function.json 文件必须位于名称与函数名称匹配的文件夹中。 
 
 ### <a name="request-payload"></a>请求有效负载
 
-纯 HTTP 函数的请求负载是原始 HTTP 请求负载。 纯 HTTP 函数定义为没有输入或输出绑定的函数，这些函数返回 HTTP 响应。
+纯 HTTP 函数的请求有效负载是原始 HTTP 请求有效负载。 纯 HTTP 函数定义为不带输入或输出绑定的、返回 HTTP 响应的函数。
 
-任何包含输入、输出绑定或通过 HTTP 以外的事件源触发的其他类型的函数都有自定义请求负载。
+包含输入、输出绑定的，或者通过非 HTTP 的事件源触发的任何其他类型的函数具有自定义请求有效负载。
 
-以下代码表示示例请求负载。 有效负载包括一个 JSON 结构，`Data`其中包含`Metadata`两个成员：和 。
+以下代码是一个示例请求有效负载。 该有效负载中的 JSON 结构包含以下两个成员：`Data` 和 `Metadata`。
 
-成员`Data`包括匹配*函数.json*文件中绑定数组中定义的输入和触发器名称的键。
+`Data` 成员包含与 function.json 文件中的绑定数组内定义的输入和触发器名称匹配的键。 
 
-该`Metadata`成员包括[从事件源生成的元数据](./functions-bindings-expressions-patterns.md#trigger-metadata)。
+`Metadata` 成员包含[从事件源生成的元数据](./functions-bindings-expressions-patterns.md#trigger-metadata)。
 
-给定以下*函数.json*文件中定义的绑定：
+假设以下 function.json 文件中定义的绑定是： 
 
 ```json
 {
@@ -152,7 +152,7 @@ ms.locfileid: "79479249"
 }
 ```
 
-返回与此示例类似的请求负载：
+将返回类似于以下示例的请求有效负载：
 
 ```json
 {
@@ -177,28 +177,28 @@ ms.locfileid: "79479249"
 
 ### <a name="response-payload"></a>响应有效负载
 
-按照惯例，函数响应格式化为键/值对。 支持的密钥包括：
+根据约定，函数响应采用键/值对格式。 支持的键包括：
 
 | <nobr>有效负载键</nobr>   | 数据类型 | 备注                                                      |
 | ------------- | --------- | ------------------------------------------------------------ |
-| `Outputs`     | JSON      | 保存`bindings`*函数.json*文件数组定义的响应值。<br /><br />例如，如果函数配置了名为"blob"的 Blob 存储输出绑定，则`Outputs`包含名为 的键`blob`，该键设置为 blob 的值。 |
-| `Logs`        | array     | 消息将显示在函数调用日志中。<br /><br />在 Azure 中运行时，消息将显示在应用程序见解中。 |
-| `ReturnValue` | 字符串    | 用于在将输出配置为`$return`*函数.json*文件中时提供响应。 |
+| `Outputs`     | JSON      | 保存 function.json 文件中 `bindings` 数组定义的响应值。 <br /><br />例如，如果为某个函数定义了名为“blob”的 blob 存储输出绑定，则 `Outputs` 将包含名为 `blob` 的键，此键设置为 blob 的值。 |
+| `Logs`        | array     | 消息将显示在 Functions 调用日志中。<br /><br />在 Azure 中运行时，消息显示在 Application Insights 中。 |
+| `ReturnValue` | 字符串    | 用于在`$return` *函数 json*文件中配置输出时提供响应。 |
 
-有关[示例有效负载，请参阅示例](#bindings-implementation)。
+[有关示例负载](#bindings-implementation)，请参阅示例。
 
 ## <a name="examples"></a>示例
 
-自定义处理程序可以使用支持 HTTP 事件的任何语言实现。 虽然 Azure 函数[完全支持 JavaScript 和 Node.js，](./functions-reference-node.md)但以下示例演示如何在 Node.js 中使用 JavaScript 实现自定义处理程序以进行教学。
+自定义处理程序可以采用任何支持 HTTP 事件的语言来实现。 尽管 Azure Functions[完全支持 JavaScript 和 node.js](./functions-reference-node.md)，但下面的示例演示如何在 node.js 中使用 JavaScript 来实现自定义处理程序，以便进行说明。
 
 > [!TIP]
-> 作为学习如何以其他语言实现自定义处理程序的指南，如果希望在不支持的 Node.js 版本中运行函数应用，则此处显示的基于 Node.js 的示例可能也很有用。
+> 尽管是学习如何在其他语言中实现自定义处理程序的指南，但是，如果想要在不支持的 node.js 版本中运行函数应用，则此处所示的基于 node.js 的示例也可能会很有用。
 
 ## <a name="http-only-function"></a>仅 HTTP 函数
 
-下面的示例演示如何配置没有附加绑定或输出的 HTTP 触发函数。 在此示例中实现的方案具有一个名为 的`http`函数，该函数`GET`接受`POST`或 。
+下面的示例演示如何配置没有其他绑定或输出的 HTTP 触发的函数。 本示例中实现的方案具有一个名为`http`的函数， `GET`该`POST`函数接受或。
 
-以下代码段表示如何组成对函数的请求。
+下面的代码片段表示如何编写对函数的请求。
 
 ```http
 POST http://127.0.0.1:7071/api/hello HTTP/1.1
@@ -213,7 +213,7 @@ content-type: application/json
 
 ### <a name="implementation"></a>实现
 
-在名为*http*的文件夹中，*函数.json*文件配置 HTTP 触发的功能。
+在名为*http*的文件夹中，*函数 JSON*文件配置 http 触发的函数。
 
 ```json
 {
@@ -233,9 +233,9 @@ content-type: application/json
 }
 ```
 
-该函数配置为接受 和`GET``POST`请求，结果值通过名为 的`res`参数提供。
+该函数配置为接受`GET`和`POST`请求，结果值通过名为`res`的参数提供。
 
-在应用的根目录 *，host.json*文件配置为运行 Node.js 并指向`server.js`该文件。
+在应用程序的根目录中，将*host json*文件配置为运行 node.js 并指向该`server.js`文件。
 
 ```json
 {
@@ -249,7 +249,7 @@ content-type: application/json
 }
 ```
 
-文件*服务器.js*文件实现 Web 服务器和 HTTP 功能。
+文件*服务器 .js*文件实现 web 服务器和 HTTP 函数。
 
 ```javascript
 const express = require("express");
@@ -274,18 +274,18 @@ app.post("/hello", (req, res) => {
 });
 ```
 
-在此示例中，Express 用于创建 Web 服务器来处理 HTTP 事件，并设置为通过 侦听请求`FUNCTIONS_HTTPWORKER_PORT`。
+在此示例中，Express 用于创建 web 服务器来处理 HTTP 事件，并设置为通过侦听请求`FUNCTIONS_HTTPWORKER_PORT`。
 
-函数在 的路径上定义`/hello`。 `GET`请求通过返回一个简单的 JSON 对象进行处理`POST`，并且请求可以通过`req.body`访问请求正文。
+函数在的`/hello`路径中定义。 `GET`通过返回一个简单的 JSON 对象来处理请求， `POST`并且请求可以通过`req.body`访问请求正文。
 
-此处的 order 函数的路由`/hello`是，`/api/hello`而不是因为函数主机将请求代理到自定义处理程序。
+此处的 order 函数的路由为， `/hello`而不`/api/hello`是因为函数主机将请求代理到自定义处理程序。
 
 >[!NOTE]
->`FUNCTIONS_HTTPWORKER_PORT`不是用于调用函数的面向公共端口。 函数主机使用此端口调用自定义处理程序。
+>不`FUNCTIONS_HTTPWORKER_PORT`是用于调用函数的面向公众的端口。 函数主机使用此端口调用自定义处理程序。
 
-## <a name="function-with-bindings"></a>带绑定的功能
+## <a name="function-with-bindings"></a>带有绑定的函数
 
-在此示例中实现的方案具有一个名为 的`order`函数，该函数接受`POST`具有表示产品订单的有效负载的 函数。 当订单过帐到函数时，将创建队列存储消息并返回 HTTP 响应。
+本示例中实现的方案提供了一个名`order`为的函数`POST` ，该函数接受一个表示产品订单的有效负载。 在将订单发送到函数时，将创建队列存储消息并返回 HTTP 响应。
 
 ```http
 POST http://127.0.0.1:7071/api/order HTTP/1.1
@@ -302,7 +302,7 @@ content-type: application/json
 
 ### <a name="implementation"></a>实现
 
-在名为*顺序*的文件夹中，*函数.json*文件配置 HTTP 触发的功能。
+在名为*order*的文件夹中，*函数 JSON*文件配置 HTTP 触发的函数。
 
 ```json
 {
@@ -331,9 +331,9 @@ content-type: application/json
 
 ```
 
-此功能定义为[HTTP 触发函数](./functions-bindings-http-webhook-trigger.md)，该函数返回[HTTP 响应](./functions-bindings-http-webhook-output.md)并输出[队列存储](./functions-bindings-storage-queue-output.md)消息。
+此函数定义为[http 触发函数](./functions-bindings-http-webhook-trigger.md)，该函数返回[http 响应](./functions-bindings-http-webhook-output.md)并输出[队列存储](./functions-bindings-storage-queue-output.md)消息。
 
-在应用的根目录 *，host.json*文件配置为运行 Node.js 并指向`server.js`该文件。
+在应用程序的根目录中，将*host json*文件配置为运行 node.js 并指向该`server.js`文件。
 
 ```json
 {
@@ -347,7 +347,7 @@ content-type: application/json
 }
 ```
 
-文件*服务器.js*文件实现 Web 服务器和 HTTP 功能。
+文件*服务器 .js*文件实现 web 服务器和 HTTP 函数。
 
 ```javascript
 const express = require("express");
@@ -379,24 +379,24 @@ app.post("/order", (req, res) => {
 });
 ```
 
-在此示例中，Express 用于创建 Web 服务器来处理 HTTP 事件，并设置为通过 侦听请求`FUNCTIONS_HTTPWORKER_PORT`。
+在此示例中，Express 用于创建 web 服务器来处理 HTTP 事件，并设置为通过侦听请求`FUNCTIONS_HTTPWORKER_PORT`。
 
-函数在 的路径上定义`/order`。  此处的 order 函数的路由`/order`是，`/api/order`而不是因为函数主机将请求代理到自定义处理程序。
+函数在的`/order`路径中定义。  此处的 order 函数的路由为， `/order`而不`/api/order`是因为函数主机将请求代理到自定义处理程序。
 
-当`POST`请求发送到此函数时，数据将通过几个点公开：
+当`POST`向此函数发送请求时，将通过几个点公开数据：
 
 - 请求正文可通过`req.body`
 - 发布到函数的数据可通过`req.body.Data.req.Body`
 
-函数的响应格式化为键/值对，`Outputs`其中成员持有 JSON 值，其中键与*函数.json*文件中定义的输出匹配。
+函数的响应被格式化为一个键/值对，其中`Outputs`成员保存一个 json 值，其中的键与*函数 json*文件中定义的输出相匹配。
 
-通过设置`message`等于来自请求的消息和`res`预期的 HTTP 响应，此函数将消息输出到队列存储并返回 HTTP 响应。
+通过将`message`等于从请求传入的消息和`res`预期 HTTP 响应，此函数会将消息输出到队列存储并返回 HTTP 响应。
 
 ## <a name="debugging"></a>调试
 
-要调试函数自定义处理程序应用，您需要添加适合语言和运行时的参数以启用调试。
+若要调试函数自定义处理程序应用，需要添加适用于语言和运行时的参数来启用调试。
 
-例如，要调试 Node.js 应用程序，标志`--inspect`将作为*host.json*文件中的参数传递。
+例如，若要调试 node.js 应用程序， `--inspect`标志将作为参数传递到*host json*文件中。
 
 ```json
 {
@@ -412,7 +412,7 @@ app.post("/order", (req, res) => {
 ```
 
 > [!NOTE]
-> 调试配置是*host.json*文件的一部分，这意味着您可能需要在部署到生产之前删除某些参数。
+> 调试配置是您的*host json*文件的一部分，这意味着在部署到生产环境之前，您可能需要删除一些参数。
 
 使用此配置，可以使用以下命令启动函数的主机进程：
 
@@ -420,13 +420,13 @@ app.post("/order", (req, res) => {
 func host start
 ```
 
-启动该过程后，可以附加调试器并命中断点。
+启动进程后，可以附加调试器并命中断点。
 
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
-下面的示例配置演示如何设置*启动.json*文件，将应用连接到 Visual Studio 代码调试器。
+下面的示例演示如何设置*启动 json*文件，以便将应用程序连接到 Visual Studio Code 调试器。
 
-此示例适用于 Node.js，因此您可能需要更改其他语言或运行时的此示例。
+此示例适用于 node.js，因此你可能需要为其他语言或运行时更改此示例。
 
 ```json
 {
@@ -445,13 +445,13 @@ func host start
 
 ## <a name="deploying"></a>正在部署
 
-自定义处理程序可以部署到几乎每个 Azure 函数托管选项（请参阅[限制](#restrictions)）。 如果处理程序需要自定义依赖项（如语言运行时），则可能需要使用[自定义容器](./functions-create-function-linux-custom-image.md)。
+可以将自定义处理程序部署到几乎每个 Azure Functions 承载选项（请参阅[限制](#restrictions)）。 如果处理程序需要自定义依赖项（如语言运行时），则可能需要使用[自定义容器](./functions-create-function-linux-custom-image.md)。
 
 ## <a name="restrictions"></a>限制
 
-- Linux 消费计划中不支持自定义处理程序。
-- Web 服务器需要在 60 秒内启动。
+- Linux 消耗计划不支持自定义处理程序。
+- Web 服务器需要在60秒内启动。
 
 ## <a name="samples"></a>示例
 
-有关如何在各种不同语言中实现函数的示例，请参阅[自定义处理程序示例 GitHub 存储库](https://github.com/Azure-Samples/functions-custom-handlers)。
+有关如何使用各种不同的语言实现函数的示例，请参阅[自定义处理程序示例 GitHub](https://github.com/Azure-Samples/functions-custom-handlers)存储库。

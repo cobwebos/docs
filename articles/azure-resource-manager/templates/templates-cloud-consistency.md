@@ -7,22 +7,22 @@ ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
 ms.openlocfilehash: c5095efef5d4bef44993bdd9cd52dbdef17378a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80156100"
 ---
-# <a name="develop-arm-templates-for-cloud-consistency"></a>开发针对云一致性的 ARM 模板
+# <a name="develop-arm-templates-for-cloud-consistency"></a>为云一致性开发 ARM 模板
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
-Azure 的主要优势是一致性。 一个位置的开发投入可在另一个位置重复使用。 Azure 资源管理器 （ARM） 模板使部署跨环境（包括全局 Azure、Azure 主权云和 Azure 堆栈）保持一致且可重复。 若要在各种云中重复使用模板，需要参照本指南的说明，考虑特定于云的依赖关系。
+Azure 的主要优势是一致性。 一个位置的开发投入可在另一个位置重复使用。 Azure 资源管理器（ARM）模板使你的部署在不同的环境（包括全球 Azure、Azure 主权云和 Azure Stack）之间保持一致且可重复。 若要在各种云中重复使用模板，需要参照本指南的说明，考虑特定于云的依赖关系。
 
 Microsoft 在很多位置提供了面向企业的智能云服务，其中包括：
 
 * 全球 Azure 平台，该平台由全球各区域不断扩大的 Microsoft 托管数据中心的网络提供支持。
-* 孤立的主权云，如 Azure 德国、Azure 政府和 Azure 中国 21Vianet。 主权云提供具有大部分相同的强大功能的一致平台，全球 Azure 客户均有权访问。
+* 独立的主权云，如 Azure 德国、Azure 政府和 Azure 中国世纪互联。 主权云提供具有大部分相同的强大功能的一致平台，全球 Azure 客户均有权访问。
 * Azure Stack，一种混合云平台，可从组织数据中心提供 Azure 服务。 企业可以在自己的数据中心中设置 Azure Stack，或者使用服务提供商提供的 Azure 服务，在他们的设施（有时称为托管区域）中运行 Azure Stack。
 
 在所有这些云的核心，Azure 资源管理器提供一个 API，用于实现各种用户界面与 Azure 平台的通信。 此 API 提供了强大的基础结构即代码功能。 使用 Azure 资源管理器可以部署和配置 Azure 云平台上提供的任何类型的资源。 只用一个模板即可将完整的应用程序部署和配置为操作结束状态。
@@ -33,7 +33,7 @@ Microsoft 在很多位置提供了面向企业的智能云服务，其中包括�
 
 然而，即使全球云、主权云、托管云和混合云提供一致的服务，也不是所有云都相同。 因此，可以创建对仅特定云可以提供的功能具有依赖关系的模板。
 
-本指南的其余部分介绍了在计划为 Azure Stack 开发新 ARM 模板时要考虑的领域。 一般情况下，注意事项应包括以下各项：
+本指南的其余部分介绍计划开发新的或更新 Azure Stack 现有 ARM 模板时要考虑的领域。 一般情况下，注意事项应包括以下各项：
 
 * 验证模板中的函数、终结点、服务和其他资源在目标部署位置是否可用。
 * 将嵌套模板和配置项目存储在可访问的位置，确保可以跨云访问。
@@ -45,13 +45,13 @@ Microsoft 在很多位置提供了面向企业的智能云服务，其中包括�
 
 ## <a name="ensure-template-functions-work"></a>确保模板函数可用
 
-ARM 模板的基本语法是 JSON。 模板使用 JSON 的超集，通过表达式和函数扩展语法。 模板语言处理器经常更新以支持附加的模板函数。 有关可用模板函数的详细说明，请参阅 ARM[模板函数](template-functions.md)。
+ARM 模板的基本语法为 JSON。 模板使用 JSON 的超集，通过表达式和函数扩展语法。 模板语言处理器经常更新以支持附加的模板函数。 有关可用模板函数的详细说明，请参阅[ARM 模板函数](template-functions.md)。
 
 Azure 资源管理器中引入的新模板函数在主权云或 Azure Stack 中不会立即可用。 要成功部署模板，模板中引用的所有函数都必须在目标云中可用。
 
 Azure 资源管理器的功能始终会首先引入到全球 Azure。 使用以下 PowerShell 脚本可以验证新引入的模板函数在 Azure Stack 中是否可用：
 
-1. 克隆 GitHub 存储库： [https://github.com/marcvaneijk/arm-template-functions](https://github.com/marcvaneijk/arm-template-functions)。
+1. 克隆 GitHub 存储库：[https://github.com/marcvaneijk/arm-template-functions](https://github.com/marcvaneijk/arm-template-functions)
 
 1. 本地克隆存储库后，使用 PowerShell 连接到目标的 Azure 资源管理器。
 
@@ -295,7 +295,7 @@ Get-AzureRmResourceProvider | select-object ProviderNamespace -ExpandProperty Re
 
 ### <a name="track-versions-using-api-profiles"></a>使用 API 配置文件跟踪版本
 
-跟踪所有可用资源提供程序和 Azure Stack 中存在的相关 API 版本非常具有挑战性。 例如，在撰写本文时，Azure 中 Microsoft.Compute/availabilitySets 的最新 API 版本为 `2018-04-01`，而 Azure 和 Azure Stack 的通用 API 版本为 `2016-03-30`****。 在所有 Azure 和 Azure Stack 位置之间共享的 Microsoft.Storage/storageAccounts 的通用 API 版本为 `2016-01-01`，而在 Azure 中的最新 API 版本为 `2018-02-01`****。
+跟踪所有可用资源提供程序和 Azure Stack 中存在的相关 API 版本非常具有挑战性。 例如，在撰写本文时，Azure 中 Microsoft.Compute/availabilitySets 的最新 API 版本为 **，而 Azure 和 Azure Stack 的通用 API 版本为** `2018-04-01``2016-03-30`。 在所有 Azure 和 Azure Stack 位置之间共享的 Microsoft.Storage/storageAccounts 的通用 API 版本为 **，而在 Azure 中的最新 API 版本为** `2016-01-01``2018-02-01`。
 
 为此，资源管理器在模板中引入了 API 配置文件的概念。 使用 API 配置文件，模板中的每个资源都配置了 `apiVersion` 元素，用于描述该特定资源的 API 版本。
 
@@ -443,8 +443,8 @@ API 配置文件可确保 API 版本可跨位置使用，因此不需要手动�
 
 一般情况下，请避免在模板中使用硬编码终结点。 最佳做法是使用引用模板函数动态检索终结点。 例如，最常进行硬编码的终结点是存储帐户的终结点命名空间。 每个存储帐户均有唯一的 FQDN，它通过连接存储帐户的名称与终结点命名空间来构造。 名为 mystorageaccount1 的 blob 存储帐户会因为云的不同而产生不同的 FQDN：
 
-* 在全球 Azure 云上创建时会产生 mystorageaccount1.blob.core.windows.net****。
-* 在 Azure 中国 21Vianet 云中创建时**mystorageaccount1.blob.core.chinacloudapi.cn。**
+* 在全球 Azure 云上创建时会产生 mystorageaccount1.blob.core.windows.net  。
+* 在 Azure 中国世纪互联云创建时会产生 mystorageaccount1.blob.core.chinacloudapi.cn  。
 
 以下引用模板函数从存储资源提供程序中检索终结点命名空间：
 
@@ -467,7 +467,7 @@ API 配置文件可确保 API 版本可跨位置使用，因此不需要手动�
 }
 ```
 
-然后，可以使用 `reference` 模板函数中的 `resourceId` 函数检索数据库的属性。 返回对象包含保留完整终结点值的 `fullyQualifiedDomainName` 属性。 该值在运行时检索，并提供特定于云环境的终结点命名空间。 若要在不对终结点命名空间硬编码的情况下定义连接字符串，可以直接引用连接字符串中返回对象的属性，如下所示：
+然后，可以使用 `resourceId` 模板函数中的 `reference` 函数检索数据库的属性。 返回对象包含保留完整终结点值的 `fullyQualifiedDomainName` 属性。 该值在运行时检索，并提供特定于云环境的终结点命名空间。 若要在不对终结点命名空间硬编码的情况下定义连接字符串，可以直接引用连接字符串中返回对象的属性，如下所示：
 
 ```json
 "[concat('Server=tcp:', reference(resourceId('sql', 'Microsoft.Sql/servers', parameters('test')), '2015-05-01-preview').fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('database'),';User ID=', parameters('username'), ';Password=', parameters('pass'), ';Encrypt=True;')]"
@@ -497,7 +497,7 @@ Get-AzureRmVMImagePublisher -Location "West Europe" | Get-AzureRmVMImageOffer | 
 
 如果向 Azure Stack 提供这些 VM 映像，则会占用所有可用的存储。 为了可以容纳最小的缩放单元，Azure Stack 允许选择所需的映像添加到环境。
 
-以下代码示例显示了一种一致的方法，用于在 ARM 模板中引用发布者、产品/服务参数和 SKU 参数：
+下面的代码示例演示了一种一致的方法来引用 ARM 模板中的发布者、产品/服务和 SKU 参数：
 
 ```json
 "storageProfile": {
@@ -611,7 +611,7 @@ Get-AzureRmVmImagePublisher -Location myLocation | Get-AzureRmVMExtensionImageTy
 
 VM 扩展资源的 API 版本必须存在于你模板中计划的所有目标位置。 位置依赖关系的作用类似于之前在“验证所有资源类型的版本”部分讨论的资源提供程序 API 版本的可用性。
 
-要检索 VM 扩展资源的可用 API 版本列表，请将 [Get-AzureRmResourceProvider](/powershell/module/az.resources/get-azresourceprovider) cmdlet 与 Microsoft.Compute 资源提供程序结合使用，如下所示****：
+要检索 VM 扩展资源的可用 API 版本列表，请将 [Get-AzureRmResourceProvider](/powershell/module/az.resources/get-azresourceprovider) cmdlet 与 Microsoft.Compute 资源提供程序结合使用，如下所示  ：
 
 ```azurepowershell-interactive
 Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Compute" | Select-Object -ExpandProperty ResourceTypes | Select ResourceTypeName, Locations, ApiVersions | where {$_.ResourceTypeName -eq "virtualMachines/extensions"}
@@ -641,7 +641,7 @@ Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Compute" | Select-Obje
         ...
 ```
 
-要检索特定 VM 扩展的可用版本列表，请使用 [Get AzureRmVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) cmdlet。 以下示例从 myLocation 检索 PowerShell DSC（所需状态配置）VM 扩展的可用版本****：
+要检索特定 VM 扩展的可用版本列表，请使用 [Get AzureRmVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) cmdlet。 以下示例从 myLocation 检索 PowerShell DSC（所需状态配置）VM 扩展的可用版本  ：
 
 ```azurepowershell-interactive
 Get-AzureRmVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerShell -Type DSC | FT

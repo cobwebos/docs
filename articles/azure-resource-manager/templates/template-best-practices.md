@@ -4,17 +4,17 @@ description: 介绍创作 Azure 资源管理器模板的建议方法。 提供�
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: 870636d6457d842c89f261c2537644c17a335294
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80156406"
 ---
 # <a name="arm-template-best-practices"></a>ARM 模板最佳实践
 
-本文提供有关如何构造 Azure 资源管理器 （ARM） 模板的建议。 这些建议可帮助您避免使用 ARM 模板部署解决方案时的常见问题。
+本文提供了有关如何构造 Azure 资源管理器（ARM）模板的建议。 这些建议可帮助你避免使用 ARM 模板部署解决方案时遇到的常见问题。
 
-有关如何管理 Azure 订阅的建议，请参阅[Azure 企业基架：规范订阅治理](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)。
+有关如何管理 Azure 订阅的建议，请参阅[azure 企业基架：规范性订阅管理](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)。
 
 有关如何生成在所有 Azure 云环境中工作的模板的建议，请参阅[开发用于实现云一致性的 Azure 资源管理器模板](templates-cloud-consistency.md)。
 
@@ -162,7 +162,7 @@ ms.locfileid: "80156406"
 
 ## <a name="resource-dependencies"></a>资源依赖关系
 
-在决定要设置的依赖[项](define-resource-dependency.md)时，请使用以下准则：
+决定要设置的[依赖项](define-resource-dependency.md)时，请使用以下准则：
 
 * 使用 reference 函数并传入资源名称以在需要共享属性的资源之间设置隐式依赖项****。 在已定义隐式依赖项的情况下，请勿添加显式 `dependsOn` 元素。 此方法降低了设置不必要依赖项的风险。
 
@@ -279,5 +279,5 @@ ms.locfileid: "80156406"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关模板文件结构的信息，请参阅了解 ARM[模板的结构和语法](template-syntax.md)。
-* 有关如何构建适用于所有 Azure 云环境中的模板的建议，请参阅[为云一致性开发 ARM 模板](templates-cloud-consistency.md)。
+* 有关模板文件的结构的信息，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+* 有关如何生成可在所有 Azure 云环境中使用的模板的建议，请参阅[为云一致性开发 ARM 模板](templates-cloud-consistency.md)。

@@ -9,20 +9,20 @@ ms.date: 07/09/2019
 ms.topic: how-to
 manager: peterpr
 ms.openlocfilehash: 6499c9c29d10a2056b0af5499b68b5edd67d82cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80158412"
 ---
 # <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>构建 IoT Central 设备网桥以将其他 IoT 云连接到 IoT Central
 
 *本主题适用于管理员。*
 
-IoT Central 设备网桥是一个开源解决方案，可将 Sigfox、Particle、The Things Network 和其他云连接到你的 IoT Central 应用。 无论您是使用连接到 Sigfox 低功耗范围区域网络的资产跟踪设备，还是使用粒子设备云上的空气质量监控设备，还是使用 TTN 上的土壤湿度监测设备，您都可以直接利用 IoT 的强大功能使用 IoT 中央设备网桥进行中心。 设备网桥通过将设备发送到其他云的数据转发到 IoT Central 应用，使其他 IoT 云可连接到 IoT Central。 在 IoT Central 应用中，可以生成规则并对该数据运行分析、在 Microsoft Flow 和 Azure 逻辑应用中创建工作流、导出该数据，等等。 从 GitHub 获取[IoT 中央设备桥接](https://aka.ms/iotcentralgithubdevicebridge)
+IoT Central 设备网桥是一个开源解决方案，可将 Sigfox、Particle、The Things Network 和其他云连接到你的 IoT Central 应用。 无论是使用连接到 Sigfox 低功耗广域网的资产跟踪设备，还是使用 Particle Device Cloud 中的空气质量监测设备，还是使用 TTN 中的土壤湿度监测设备，你都可以通过 IoT Central 设备网桥直接利用 IoT Central 的强大功能。 设备网桥通过将设备发送到其他云的数据转发到 IoT Central 应用，使其他 IoT 云可连接到 IoT Central。 在 IoT Central 应用中，可以生成规则并对该数据运行分析、在 Microsoft Flow 和 Azure 逻辑应用中创建工作流、导出该数据，等等。 从 GitHub 获取 [IoT Central 设备网桥](https://aka.ms/iotcentralgithubdevicebridge)
 
 ## <a name="what-is-it-and-how-does-it-work"></a>设备网桥及其工作原理是什么？
-IoT Central 设备网桥是 GitHub 中的一个开源解决方案。 它可以使用"部署到 Azure"按钮，该按钮将包含多个 Azure 资源的自定义 Azure 资源管理器模板部署到 Azure 订阅中。 资源包括：
+IoT Central 设备网桥是 GitHub 中的一个开源解决方案。 随时可以使用“部署到 Azure”按钮将包含多个 Azure 资源的自定义 Azure 资源管理器模板部署到 Azure 订阅。 资源包括：
 -    Azure 函数应用
 -    Azure 存储帐户
 -    消耗计划
@@ -33,7 +33,7 @@ IoT Central 设备网桥是 GitHub 中的一个开源解决方案。 它可以�
 
 ![Azure Functions 屏幕截图](media/howto-build-iotc-device-bridge/azfunctions.png)
 
-如果 IoT Central 应用可按转发消息中的设备 ID 识别设备，将显示该设备的新度量值。 如果您的 IoT Central 应用从未看到设备 ID，则功能应用将尝试使用该设备 ID 注册新设备，并且它将在 IoT Central 应用中显示为"未关联的设备"。 
+如果 IoT Central 应用可按转发消息中的设备 ID 识别设备，将显示该设备的新度量值。 如果 IoT Central 应用从未看到该设备 ID，则函数应用会尝试使用该设备 ID 注册一个新设备，该设备在 IoT Central 应用中显示为“未关联的设备”。 
 
 ## <a name="how-do-i-set-it-up"></a>如何设置设备网桥？
 GitHub 存储库中的自述文件详细列出了说明。 

@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2910933e2c57a8bc80a220726462b02915c4a8eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80246511"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
@@ -30,14 +30,14 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 - **活动** 
     - **登录** - 有关托管应用程序的使用情况和用户登录活动的信息。
-    - **审核日志** - [审核日志](concept-audit-logs.md)提供有关用户和组管理、托管应用程序和目录活动的系统活动信息。
+    - **审核日志** - [审核日志](concept-audit-logs.md) - 有关用户和组管理、托管应用程序和目录活动的系统活动信息。
 - **安全性** 
-    - **风险**登录 -[风险登录](concept-risky-sign-ins.md)是非用户帐户合法所有者的用户尝试登录的指示器。
+    - 有**风险的登录**-有[风险的登录](concept-risky-sign-ins.md)是指不是用户帐户合法所有者的登录尝试。
     - **已标记为存在风险的用户** - [风险用户](concept-user-at-risk.md)是指可能已泄露的用户帐户。
 
 本文概述了登录报告。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="who-can-access-the-data"></a>谁可以访问该数据？
 
@@ -47,9 +47,9 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>访问登录活动需要什么 Azure AD 许可证？
 
-- 登录活动报告在所有[版本的 Azure AD](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data)中都有可用。
+- "登录活动" 报告可用于[所有版本的 Azure AD](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data)。
 
-- 如果要使用 API 访问登录数据，租户必须具有与其关联的[Azure 活动目录高级](../fundamentals/active-directory-get-started-premium.md)许可证。
+- 如果要使用 API 访问登录数据，则租户必须具有与之关联的[Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md)许可证。
 
 
 
@@ -63,7 +63,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 在 [Azure 门户](https://portal.azure.com)菜单中，选择“Azure Active Directory”，或从任意页搜索并选择“Azure Active Directory”********。
 
-![选择“Azure Active Directory”](./media/concept-sign-ins/select-azure-active-directory.png "Azure Active Directory")
+![选择 Azure Active Directory](./media/concept-sign-ins/select-azure-active-directory.png "Azure Active Directory")
 
 在“监视”**** 下，选择“登录”**** 以打开[登录报告](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)。
 
@@ -85,7 +85,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 ![登录活动](./media/concept-sign-ins/sign-in-activity.png "登录活动")
 
-您可以通过单击工具栏中的**列**来自定义列表视图。
+您可以通过单击工具栏中的 "**列**" 自定义列表视图。
 
 ![登录活动](./media/concept-sign-ins/19.png "登录活动")
 
@@ -98,93 +98,93 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 ![登录活动](./media/concept-sign-ins/basic-sign-in.png "登录活动")
 
 > [!NOTE]
-> 客户现在可以通过所有登录报告对条件访问策略进行故障排除。 通过单击登录记录的 **"条件访问**"选项卡，客户可以查看条件访问状态，并深入了解应用于登录的策略的详细信息以及每个策略的结果。
+> 客户现在可以通过所有登录报告对条件访问策略进行故障排除。 通过单击登录记录的 "**条件访问**" 选项卡，客户可以查看条件访问状态，并深入了解应用于登录的策略的详细信息以及每个策略的结果。
 > 有关详细信息，请参阅[有关所有登录中 CA 信息的常见问题解答](reports-faq.md#conditional-access)。
 
 
 
 ## <a name="filter-sign-in-activities"></a>筛选登录活动
 
-首先，将所报告数据的范围缩小到适当的级别。 接下来，使用充当默认筛选器的日期字段筛选登录数据。 Azure AD 为您提供了可以设置的各种附加筛选器：
+首先，将所报告数据的范围缩小到适当的级别。 接下来，使用充当默认筛选器的日期字段筛选登录数据。 Azure AD 提供了可设置的各种附加筛选器：
 
 ![登录活动](./media/concept-sign-ins/04.png "登录活动")
 
-**请求 ID** - 您关心的请求的 ID。
+**请求 id** -你关心的请求的 id。
 
-**用户**- 您关心的用户的名称或用户主体名称 （UPN）。
+**User** -你关注的用户的名称或用户主体名称（UPN）。
 
-**应用程序**- 目标应用程序的名称。
+**应用程序**-目标应用程序的名称。
  
-**状态**- 您关心的登录状态：
+**状态**-你关注的登录状态：
 
-- Success
+- 成功
 
 - 失败
 
-- 打断
+- 中断
 
 
-**IP 地址**- 用于连接到租户的设备的 IP 地址。
+**Ip 地址**-用于连接到租户的设备的 ip 地址。
 
-**位置**- 连接从以下位置启动的位置：
+**位置**-启动连接的位置：
 
 - 城市
 
-- 州/省
+- 省/市/自治区
 
 - 国家/地区
 
 
-**资源**- 用于登录的服务的名称。
+**资源**-用于登录的服务的名称。
 
 
-**资源 ID** - 用于登录的服务的 ID。
+**资源 id** -用于登录的服务的 ID。
 
 
-**客户端应用**- 用于连接到租户的客户端应用的类型：
+**客户端应用**-用于连接到租户的客户端应用的类型：
 
 ![客户端应用筛选器](./media/concept-sign-ins/client-app-filter.png)
 
 
-|“属性”|现代身份验证|描述|
+|名称|新式身份验证|说明|
 |---|:-:|---|
-|经过身份验证的 SMTP| |POP 和 IMAP 客户端用于发送电子邮件。|
-|自动发现| |Outlook 和 EAS 客户端用于查找和连接到联机交换中的邮箱。|
-|Exchange ActiveSync| |此筛选器显示尝试 EAS 协议的所有登录尝试。|
-|浏览者|![勾选标记](./media/concept-sign-ins/check.png)|显示使用 Web 浏览器的用户的所有登录尝试|
-|Exchange ActiveSync| | 使用 Exchange ActiceSync 显示使用客户端应用的用户连接到在线交换的所有登录尝试|
-|Exchange Online PowerShell| |用于使用远程 PowerShell 连接到联机交换。 如果阻止 Exchange 在线 PowerShell 的基本身份验证，则需要使用 Exchange 在线 PowerShell 模块进行连接。 有关说明，请参阅[使用多重身份验证连接到交换在线 PowerShell。](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)|
-|Exchange Web 服务| |Outlook、Mac Outlook 和第三方应用使用的编程界面。|
+|经过身份验证的 SMTP| |由 POP 和 IMAP 客户端用于发送电子邮件。|
+|自动| |由 Outlook 和 EAS 客户端用于查找和连接到 Exchange Online 中的邮箱。|
+|Exchange ActiveSync| |此筛选器显示已尝试 EAS 协议的所有登录尝试。|
+|浏览器|![检查](./media/concept-sign-ins/check.png)|显示用户使用 web 浏览器进行的所有登录尝试|
+|Exchange ActiveSync| | 显示用户具有使用 Exchange ActiceSync 连接到 Exchange Online 的客户端应用的所有登录尝试|
+|Exchange Online PowerShell| |用于通过远程 PowerShell 连接到 Exchange Online。 如果阻止 Exchange Online PowerShell 的基本身份验证，则需要使用 Exchange Online PowerShell 模块进行连接。 有关说明，请参阅[使用多重身份验证连接到 Exchange Online PowerShell](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。|
+|Exchange Web 服务| |Outlook、Outlook for Mac 和第三方应用程序使用的编程接口。|
 |IMAP4| |使用 IMAP 检索电子邮件的旧版邮件客户端。|
-|通过 HTTP 的 MAPI| |由 Outlook 2010 及更高版本使用。|
-|移动应用和桌面客户端|![勾选标记](./media/concept-sign-ins/check.png)|显示使用移动应用和桌面客户端的用户的所有登录尝试。|
-|离线通讯簿| |Outlook 下载和使用的地址列表集合的副本。|
-|随时随地进行展望（通过 HTTP 进行 RPC）| |由 Outlook 2016 及更早版本使用。|
-|展望服务| |由 Windows 10 的邮件和日历应用使用。|
+|HTTP 上的 MAPI| |由 Outlook 2010 和更高版本使用。|
+|移动应用和桌面客户端|![检查](./media/concept-sign-ins/check.png)|显示用户使用移动应用和桌面客户端进行的所有登录尝试。|
+|脱机通讯簿| |Outlook 下载并使用的地址列表集合的副本。|
+|Outlook Anywhere （RPC over HTTP）| |由 Outlook 2016 和更早版本使用。|
+|Outlook 服务| |由适用于 Windows 10 的邮件和日历应用程序使用。|
 |POP3| |使用 POP3 检索电子邮件的旧版邮件客户端。|
-|报告 Web 服务| |用于在"联机交换"中检索报表数据。|
-|其他客户端| |显示未包含客户端应用或未知用户的所有登录尝试。|
+|报表 Web 服务| |用于在 Exchange Online 中检索报表数据。|
+|其他客户端| |显示用户的所有登录尝试，其中客户端应用不包括或未知。|
 
 
 
-**操作系统**- 设备上运行的操作系统使用登录到租户。 
+**操作系统**-在设备上运行的用于登录租户的操作系统。 
 
 
-**设备浏览器**- 如果连接是从浏览器启动的，则此字段允许您按浏览器名称进行筛选。
+**设备浏览器**-如果连接是从浏览器启动的，则可以使用此字段通过浏览器名称进行筛选。
 
 
-**关联 ID** - 活动的相关 ID。
+**相关性 id** -活动的相关性 id。
 
 
 
 
-**条件访问**- 应用的条件访问规则的状态
+**条件性访问**-应用的条件性访问规则的状态
 
-- **未应用**：在登录期间未应用于用户和应用程序的策略。
+- **未应用**：登录期间未向用户和应用程序应用策略。
 
-- **成功**：在登录期间应用于用户和应用程序（但不一定是其他条件）的一个或多个条件访问策略。 
+- **成功**：在登录期间应用于用户和应用程序的一个或多个条件性访问策略（但不一定是其他条件）。 
 
-- **失败**：应用了一个或多个条件访问策略，但在登录期间未满足。
+- **失败**：在登录过程中应用了一个或多个条件性访问策略，但未满足。
 
 
 
@@ -215,7 +215,7 @@ Azure AD 和 Azure 门户都提供登录数据的其他入口点：
 
 ### <a name="users-sign-ins-data-in-identity-security-protection"></a>标识安全保护中的用户登录数据
 
-**标识安全保护**概述页中的用户登录图显示登录的每周聚合。时间段的默认值为 30 天。
+"**标识安全保护**概述" 页中的用户登录图显示了每周的登录聚合。时间段的默认值为30天。
 
 ![登录活动](./media/concept-sign-ins/06.png "登录活动")
 
@@ -231,14 +231,14 @@ Azure AD 和 Azure 门户都提供登录数据的其他入口点：
 单击某个项即可获得有关登录操作的更多详情：
 
 - 用户 ID
-- 用户
+- User
 - 用户名
 - 应用程序 ID
 - 应用程序
 - 客户端
 - 位置
 - IP 地址
-- Date
+- 日期
 - 需要 MFA
 - 登录状态
 
@@ -267,7 +267,7 @@ Azure AD 和 Azure 门户都提供登录数据的其他入口点：
 
 如果需要，可以将焦点设置在特定应用程序上。
 
-![报告](./media/concept-sign-ins/single-app-usage-graph.png "报表")
+![报表](./media/concept-sign-ins/single-app-usage-graph.png "报表")
 
 单击应用程序使用情况图中的某一天时，可以获取登录活动的详细列表。
 

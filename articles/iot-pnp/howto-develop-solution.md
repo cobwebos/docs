@@ -10,10 +10,10 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
 ms.openlocfilehash: e349aadfd629202b1c8cdb5c53a88e0a6c2e06de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80159211"
 ---
 # <a name="connect-to-and-interact-with-an-iot-plug-and-play-preview-device"></a>连接到 IoT 即插即用预览版设备并与之交互
@@ -87,11 +87,11 @@ select * from devices where HAS_CAPABILITYMODEL('id without version', version)
 若要创建数字孪生路由：
 
 1. 在 Azure 门户中，转到你的 IoT 中心资源。
-1. 选择**消息路由**。
+1. 选择 "**消息路由**"。
 1. 在“路由”选项卡上，选择“添加”。********
 1. 在“名称”字段中输入一个值，然后选择一个**终结点**。**** 如果尚未配置终结点，请选择“添加终结点”。****
 1. 在“数据源”下拉列表中，选择“数字孪生更改事件”。********
-1. 选择“保存”。****
+1. 选择“保存”  。
 
 以下 JSON 显示了数字孪生更改事件的示例：
 

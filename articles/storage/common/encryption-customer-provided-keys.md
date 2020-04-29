@@ -1,7 +1,7 @@
 ---
-title: 在请求 Blob 存储时提供加密密钥
+title: 在对 Blob 存储的请求中提供加密密钥
 titleSuffix: Azure Storage
-description: 针对 Azure Blob 存储发出请求的客户端可以选择根据请求（预览）提供加密密钥。 在请求中包含加密密钥可以精细控制 Blob 存储操作的加密设置。
+description: 针对 Azure Blob 存储发出请求的客户端可以选择基于每个请求提供加密密钥（预览版）。 在请求中包含加密密钥可以精细控制 Blob 存储操作的加密设置。
 services: storage
 author: tamram
 ms.service: storage
@@ -11,15 +11,15 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: c8a5555c5c33255fdc5902a115e7e9103a4e936f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79410059"
 ---
-# <a name="provide-an-encryption-key-on-a-request-to-blob-storage-preview"></a>在请求 Blob 存储时提供加密密钥（预览）
+# <a name="provide-an-encryption-key-on-a-request-to-blob-storage-preview"></a>在对 Blob 存储的请求中提供加密密钥（预览版）
 
-针对 Azure Blob 存储发出请求的客户端可以选择根据请求（预览）提供加密密钥。 在请求中包含加密密钥可以精细控制 Blob 存储操作的加密设置。 客户提供的密钥可以存储在 Azure 密钥保管库或其他密钥存储中。
+针对 Azure Blob 存储发出请求的客户端可以选择基于每个请求提供加密密钥（预览版）。 在请求中包含加密密钥可以精细控制 Blob 存储操作的加密设置。 客户提供的密钥可以存储在 Azure Key Vault 或其他密钥存储中。
 
 ## <a name="encrypting-read-and-write-operations"></a>加密读取和写入操作
 
@@ -27,7 +27,7 @@ ms.locfileid: "79410059"
 
 Azure 存储不会存储或管理客户端连同请求一起发送的加密密钥。 加密或解密过程完成后，会立即以安全方式丢弃该密钥。
 
-当客户端使用客户提供的密钥在请求上创建或更新 Blob 时，该 blob 的后续读取和写入请求也必须提供该密钥。 如果在针对已使用客户提供的密钥加密的 Blob 的请求中未提供该密钥，则请求将会失败并返回错误代码 409（冲突）。
+当客户端使用请求中客户提供的密钥创建或更新 Blob 时，针对该 Blob 的后续读取和写入请求也必须提供该密钥。 如果在针对已使用客户提供的密钥加密的 Blob 的请求中未提供该密钥，则请求将会失败并返回错误代码 409（冲突）。
 
 如果客户端应用程序在请求中发送加密密钥，同时使用 Microsoft 托管密钥或客户托管密钥加密了存储帐户，则 Azure 存储将使用请求中提供的密钥进行加密和解密。
 
@@ -39,7 +39,7 @@ Azure 存储不会存储或管理客户端连同请求一起发送的加密密�
 
 对于 REST 调用，客户端可以使用以下标头在请求中向 Blob 存储安全传递加密密钥信息：
 
-|请求标头 | 描述 |
+|请求标头 | 说明 |
 |---------------|-------------|
 |`x-ms-encryption-key` |对于写入和读取请求都是必需的。 Base64 编码的 AES-256 加密密钥值。 |
 |`x-ms-encryption-key-sha256`| 对于写入和读取请求都是必需的。 加密密钥的 Base64 编码 SHA256。 |
@@ -67,7 +67,7 @@ Azure 存储不会存储或管理客户端连同请求一起发送的加密密�
 
 ## <a name="rotate-customer-provided-keys"></a>轮换客户提供的密钥
 
-要旋转用于加密 Blob 的加密密钥，请下载 Blob，然后使用新的加密密钥重新上载它。
+若要轮换用于加密 blob 的加密密钥，请下载该 Blob，并使用新的加密密钥重新上传该 Blob。
 
 > [!IMPORTANT]
 > 无法使用 Azure 门户来读取或写入通过请求中提供的密钥加密的容器或 Blob。

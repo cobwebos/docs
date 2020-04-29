@@ -9,10 +9,10 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 73181222bf3f15bbbac24fc253eddfea1c57bc6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80247089"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 存储指标
@@ -23,7 +23,7 @@ Azure Monitor 提供统一的用户界面用于监视不同的 Azure 服务。 �
 
 ## <a name="access-metrics"></a>访问指标
 
-Azure Monitor 提供多种访问指标的方法。 可以从[Azure 门户](https://portal.azure.com)、Azure 监视器 API（REST 和 .NET）和分析解决方案（如事件中心）访问它们。 有关详细信息，请参阅 [Azure Monitor 指标](../../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
+Azure Monitor 提供多种访问指标的方法。 可从 [Azure 门户](https://portal.azure.com)、Azure Monitor API（REST 和 .NET）以及分析解决方案（例如事件中心）访问指标。 有关详细信息，请参阅 [Azure Monitor 指标](../../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
 
 默认情况下，已启用指标，并且可访问过去 93 天的数据。 如需将数据保留更长一段时间，可将指标数据存档到 Azure 存储帐户。 可在 Azure Monitor 的 [诊断设置](../../azure-monitor/platform/platform-logs-overview.md) 中完成这种配置。
 
@@ -33,7 +33,7 @@ Azure Monitor 提供多种访问指标的方法。 可以从[Azure 门户](https
 
 ![在 Azure 门户中访问指标的屏幕截图](./media/storage-metrics-in-azure-monitor/access-metrics-in-portal.png)
 
-对于支持维度的指标，可使用所需的维度值筛选指标。 下面的示例演示了如何通过选择“API 名称”维度的值，在特定操作上查看帐户级别的“事务”********。
+对于支持维度的指标，可使用所需的维度值筛选指标。 下面的示例演示了如何通过选择“API 名称”维度的值，在特定操作上查看帐户级别的“事务”   。
 
 ![在 Azure 门户中访问包含维度的指标的屏幕截图](./media/storage-metrics-in-azure-monitor/access-metrics-in-portal-with-dimension.png)
 
@@ -136,7 +136,7 @@ Azure Monitor 提供 [REST API](/rest/api/monitor/) 用于读取指标定义和�
 
 ### <a name="access-metrics-with-the-net-sdk"></a>使用 .NET SDK 访问指标
 
-Azure 监视器提供[.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)来读取指标定义和值。 [示例代码](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)演示如何通过不同的参数来使用 SDK。 对于存储指标，需使用 `0.18.0-preview` 或更高版本。 资源 ID 用在 .NET SDK 中。 有关详细信息，请阅读“了解存储中服务的资源 ID”。
+Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)，用于读取指标定义和值。 [示例代码](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)演示如何通过不同的参数来使用 SDK。 对于存储指标，需使用 `0.18.0-preview` 或更高版本。 资源 ID 用在 .NET SDK 中。 有关详细信息，请阅读“了解存储中服务的资源 ID”。
 
 以下示例说明了如何使用 Azure Monitor .NET SDK 来读取存储指标。
 
@@ -334,70 +334,70 @@ Azure 存储在 Azure Monitor 中提供以下容量指标。
 
 ### <a name="account-level"></a>帐户级别
 
-| 标准名称 | 描述 |
+| 指标名称 | 说明 |
 | ------------------- | ----------------- |
-| UsedCapacity | 存储帐户使用的存储量。 对于标准存储帐户，该指标是 Blob、表、文件和队列使用的容量总和。 对于高级存储帐户和 Blob 存储帐户，它与 BlobCapacity 相同。 <br/><br/> 单元：字节 <br/> 聚合类型：平均 <br/> 值示例：1024 |
+| UsedCapacity | 存储帐户使用的存储量。 对于标准存储帐户，该指标是 Blob、表、文件和队列使用的容量总和。 对于高级存储帐户和 Blob 存储帐户，它与 BlobCapacity 相同。 <br/><br/> 单位：字节 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
 
 ### <a name="blob-storage"></a>Blob 存储
 
-| 标准名称 | 描述 |
+| 指标名称 | 说明 |
 | ------------------- | ----------------- |
-| BlobCapacity | 存储帐户中使用的 Blob 存储总计。 <br/><br/> 单元：字节 <br/> 聚合类型：平均 <br/> 值示例：1024 <br/> 尺寸 **：Blob 类型**和**BlobTier** （[定义](#metrics-dimensions)） |
-| BlobCount    | 在存储帐户中存储的 Blob 对象数。 <br/><br/> 单位：计数 <br/> 聚合类型：平均 <br/> 值示例：1024 <br/> 尺寸 **：Blob 类型**和**BlobTier** （[定义](#metrics-dimensions)） |
-| ContainerCount    | 存储帐户中的容器数。 <br/><br/> 单位：计数 <br/> 聚合类型：平均 <br/> 值示例：1024 |
-| IndexCapacity     | ADLS Gen2 分层索引所使用的存储量 <br/><br/> 单元：字节 <br/> 聚合类型：平均 <br/> 值示例：1024 |
+| BlobCapacity | 存储帐户中使用的 Blob 存储总计。 <br/><br/> 单位：字节 <br/> 聚合类型：平均值 <br/> 值示例：1024 <br/> 尺寸：**BlobType** 和 **BlobTier**（[定义](#metrics-dimensions)） |
+| BlobCount    | 在存储帐户中存储的 Blob 对象数。 <br/><br/> 单位：计数 <br/> 聚合类型：平均值 <br/> 值示例：1024 <br/> 尺寸：**BlobType** 和 **BlobTier**（[定义](#metrics-dimensions)） |
+| ContainerCount    | 存储帐户中的容器数。 <br/><br/> 单位：计数 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
+| IndexCapacity     | ADLS Gen2 分层索引所使用的存储量 <br/><br/> 单元：字节 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
 
 ### <a name="table-storage"></a>表存储
 
-| 标准名称 | 描述 |
+| 指标名称 | 说明 |
 | ------------------- | ----------------- |
-| TableCapacity | 存储帐户使用的表存储量。 <br/><br/> 单元：字节 <br/> 聚合类型：平均 <br/> 值示例：1024 |
-| TableCount   | 存储帐户中的表数目。 <br/><br/> 单位：计数 <br/> 聚合类型：平均 <br/> 值示例：1024 |
-| TableEntityCount | 存储帐户中的表实体数目。 <br/><br/> 单位：计数 <br/> 聚合类型：平均 <br/> 值示例：1024 |
+| TableCapacity | 存储帐户使用的表存储量。 <br/><br/> 单位：字节 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
+| TableCount   | 存储帐户中的表数目。 <br/><br/> 单位：计数 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
+| TableEntityCount | 存储帐户中的表实体数目。 <br/><br/> 单位：计数 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
 
 ### <a name="queue-storage"></a>队列存储
 
-| 标准名称 | 描述 |
+| 指标名称 | 说明 |
 | ------------------- | ----------------- |
-| QueueCapacity | 存储帐户使用的队列存储量。 <br/><br/> 单元：字节 <br/> 聚合类型：平均 <br/> 值示例：1024 |
-| QueueCount   | 存储帐户中的队列数目。 <br/><br/> 单位：计数 <br/> 聚合类型：平均 <br/> 值示例：1024 |
-| QueueMessageCount | 存储帐户中未失效的队列消息数目。 <br/><br/>单位：计数 <br/> 聚合类型：平均 <br/> 值示例：1024 |
+| QueueCapacity | 存储帐户使用的队列存储量。 <br/><br/> 单位：字节 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
+| QueueCount   | 存储帐户中的队列数目。 <br/><br/> 单位：计数 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
+| QueueMessageCount | 存储帐户中未失效的队列消息数目。 <br/><br/>单位：计数 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
 
 ### <a name="file-storage"></a>文件存储
 
-| 标准名称 | 描述 |
+| 指标名称 | 说明 |
 | ------------------- | ----------------- |
-| FileCapacity | 存储帐户使用的文件存储量。 <br/><br/> 单元：字节 <br/> 聚合类型：平均 <br/> 值示例：1024 |
-| FileCount   | 存储帐户中的文件数目。 <br/><br/> 单位：计数 <br/> 聚合类型：平均 <br/> 值示例：1024 |
-| FileShareCount | 存储帐户中的文件共享数目。 <br/><br/> 单位：计数 <br/> 聚合类型：平均 <br/> 值示例：1024 |
+| FileCapacity | 存储帐户使用的文件存储量。 <br/><br/> 单位：字节 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
+| FileCount   | 存储帐户中的文件数目。 <br/><br/> 单位：计数 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
+| FileShareCount | 存储帐户中的文件共享数目。 <br/><br/> 单位：计数 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
 
-## <a name="transaction-metrics"></a>事务度量值
+## <a name="transaction-metrics"></a>事务指标
 
 从 Azure 存储到 Azure Monitor 的每个存储帐户请求都会发出事务指标。 如果存储帐户中没有任何活动，则在此期间不会有关于事务指标的数据。 所有事务指标在帐户和服务级别（Blob 存储、表存储、Azure 文件和队列存储）提供。 时间粒度定义呈现指标值的时间间隔。 所有事务指标的受支持时间粒度为 PT1H 和 PT1M。
 
 Azure 存储在 Azure Monitor 中提供以下事务指标。
 
-| 标准名称 | 描述 |
+| 指标名称 | 说明 |
 | ------------------- | ----------------- |
-| 事务 | 向存储服务或指定的 API 操作发出的请求数。 此数字包括成功和失败的请求数，以及引发错误的请求数。 <br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 适用维度：ResponseType、GeoType、ApiName 和 Authentication（[定义](#metrics-dimensions)）<br/> 值示例：1024 |
-| 流入量 | 流入数据量。 此数字包括从外部客户端到 Azure 存储流入的数据量，以及流入 Azure 中的数据量。 <br/><br/> 单元：字节 <br/> 聚合类型：总计 <br/> 适用维度：GeoType、ApiName 和 Authentication（[定义](#metrics-dimensions)） <br/> 值示例：1024 |
-| 流出量 | 流出数据量。 此数字包括从 Azure 存储向外部客户端的出口以及 Azure 中的出口。 因此，此数字不反映计费的流出量。 <br/><br/> 单元：字节 <br/> 聚合类型：总计 <br/> 适用维度：GeoType、ApiName 和 Authentication（[定义](#metrics-dimensions)） <br/> 值示例：1024 |
-| SuccessServerLatency | Azure 存储处理成功请求所用的平均时间。 此值不包括 SuccessE2ELatency 中指定的网络延迟。 <br/><br/> 单位：毫秒 <br/> 聚合类型：平均 <br/> 适用维度：GeoType、ApiName 和 Authentication（[定义](#metrics-dimensions)） <br/> 值示例：1024 |
-| SuccessE2ELatency | 向存储服务或指定的 API 操作发出的成功请求的平均端到端延迟。 此值包括在 Azure 存储中读取请求、发送响应和接收响应确认所需的处理时间。 <br/><br/> 单位：毫秒 <br/> 聚合类型：平均 <br/> 适用维度：GeoType、ApiName 和 Authentication（[定义](#metrics-dimensions)） <br/> 值示例：1024 |
-| 可用性 | 存储服务或指定的 API 操作的可用性百分比。 可用性通过由“计费请求总数”值除以适用的请求数（包括引发意外错误的请求）计算得出。 所有意外错误都会导致存储服务或指定的 API 操作的可用性下降。 <br/><br/> 单位：百分比 <br/> 聚合类型：平均 <br/> 适用维度：GeoType、ApiName 和 Authentication（[定义](#metrics-dimensions)） <br/> 值示例：99.99 |
+| 事务 | 向存储服务或指定的 API 操作发出的请求数。 此数字包括成功和失败的请求数，以及引发错误的请求数。 <br/><br/> 单位：计数 <br/> 聚合类型：总计 <br/> 适用的维度：ResponseType、GeoType、ApiName 和 Authentication（[定义](#metrics-dimensions)）<br/> 值示例：1024 |
+| 流入量 | 流入数据量。 此数字包括从外部客户端到 Azure 存储流入的数据量，以及流入 Azure 中的数据量。 <br/><br/> 单位：字节 <br/> 聚合类型：总计 <br/> 适用的维度：GeoType、ApiName 和 Authentication（[定义](#metrics-dimensions)） <br/> 值示例：1024 |
+| 流出量 | 流出数据量。 此数量包括从 Azure 存储传出到外部客户端以及 Azure 中的出口。 因此，此数字不反映计费的流出量。 <br/><br/> 单位：字节 <br/> 聚合类型：总计 <br/> 适用的维度：GeoType、ApiName 和 Authentication（[定义](#metrics-dimensions)） <br/> 值示例：1024 |
+| SuccessServerLatency | Azure 存储处理成功请求所用的平均时间。 此值不包括 SuccessE2ELatency 中指定的网络延迟。 <br/><br/> 单位：毫秒 <br/> 聚合类型：平均值 <br/> 适用的维度：GeoType、ApiName 和 Authentication（[定义](#metrics-dimensions)） <br/> 值示例：1024 |
+| SuccessE2ELatency | 向存储服务或指定的 API 操作发出的成功请求的平均端到端延迟。 此值包括在 Azure 存储中读取请求、发送响应和接收响应确认所需的处理时间。 <br/><br/> 单位：毫秒 <br/> 聚合类型：平均值 <br/> 适用的维度：GeoType、ApiName 和 Authentication（[定义](#metrics-dimensions)） <br/> 值示例：1024 |
+| 可用性 | 存储服务或指定的 API 操作的可用性百分比。 可用性通过由“计费请求总数”值除以适用的请求数（包括引发意外错误的请求）计算得出。 所有意外错误都会导致存储服务或指定的 API 操作的可用性下降。 <br/><br/> 单位：百分比 <br/> 聚合类型：平均值 <br/> 适用的维度：GeoType、ApiName 和 Authentication（[定义](#metrics-dimensions)） <br/> 值示例：99.99 |
 
 ## <a name="metrics-dimensions"></a>指标维度
 
 Azure 存储支持对 Azure Monitor 中的指标使用以下维度。
 
-| 维度名称 | 描述 |
+| 维度名称 | 说明 |
 | ------------------- | ----------------- |
-| **Blob 类型** | 仅限 Blob 指标的 Blob 类型。 支持的值为 **BlockBlob**、**PageBlob** 和 **Azure Data Lake Storage**。 BlockBlob 中包含追加 Blob。 |
-| **BlobTier** | Azure 存储提供了不同的访问层，允许以最具成本效益的方式存储 Blob 对象数据。 请在 [Azure 存储 Blob 层](../blobs/storage-blob-storage-tiers.md)中查看详细信息。 支持的值包括： <br/> <li>**热门**： 热层</li> <li>**酷**： 酷层</li> <li>**存档**： 存档层</li> <li>**高级**：块 Blob 的高级层</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**：高级页面 blob 的层类型</li> <li>**标准**：标准页面 Blob 的层类型</li> <li>**未分层**：通用 v1 存储帐户的层类型</li> |
-| **GeoType** | 来自主要或辅助群集的事务。 可用值包括**主**值和**辅助**值 。 从辅助租户读取对象时，该维度会应用到读取访问异地冗余存储 (RA-GRS)。 |
-| **响应类型** | 事务响应类型。 可用的值包括： <br/><br/> <li>**服务器其他错误**：除所述错误外，所有其他服务器端错误 </li> <li>**服务器忙错误**：已验证的请求，返回 HTTP 503 状态代码。 </li> <li>**服务器超时错误**：已超时身份验证的请求，该请求返回了 HTTP 500 状态代码。 由于服务器错误而发生超时。 </li> <li>**授权错误**：由于未经授权访问数据或授权失败而失败的已身份验证请求。 </li> <li>**网络错误**：由于网络错误而失败的已身份验证请求。 往往发生于客户端在超时失效之前提前关闭了连接时。 </li>  <li>**客户端帐户带宽限制错误**： 请求被限制的带宽超过[存储帐户可伸缩性限制](scalability-targets-standard-account.md).</li><li>**客户端帐户请求限制错误**： 请求被限制的请求速率超过[存储帐户可伸缩性限制](scalability-targets-standard-account.md).<li>**客户端限制错误**：其他客户端限制错误。 排除客户端帐户带宽限制错误和客户端帐户请求限制错误。</li> <li>**客户端超时错误**：已超时身份验证的请求，该请求返回了 HTTP 500 状态代码。 如果将客户端的网络超时或请求超时设置为比存储服务预期值更小的值，则预期会发生此超时。 否则，会报告为 ServerTimeoutError。</li> </li> <li>**客户端其他错误**：除所述错误外，所有其他客户端错误。 </li> <li>**成功**：成功请求</li> <li> **成功与限制**： 成功请求时，SMB 客户端在第一次尝试中受到限制，但在重试后成功。</li> |
-| **阿皮名称** | 操作的名称。 例如： <br/> <li>**创建容器**</li> <li>**DeleteBlob**</li> <li>**获取Blob**</li> 有关所有操作名称，请参阅[文档](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。 |
-| **身份验证** | 事务中所用的身份验证类型。 可用的值包括： <br/> <li>**帐户密钥**：使用存储帐户密钥对事务进行身份验证。</li> <li>**SAS**： 事务使用共享访问签名进行身份验证。</li> <li>**OAuth**：事务使用 OAuth 访问令牌进行身份验证。</li> <li>**匿名**：交易是匿名请求的。 它不包括预检请求。</li> <li>**匿名预检**：交易是预检请求。</li> |
+| **BlobType** | 仅限 Blob 指标的 Blob 类型。 支持的值为 **BlockBlob**、**PageBlob** 和 **Azure Data Lake Storage**。 BlockBlob 中包含追加 Blob。 |
+| **BlobTier** | Azure 存储提供了不同的访问层，允许以最具成本效益的方式存储 Blob 对象数据。 请在 [Azure 存储 Blob 层](../blobs/storage-blob-storage-tiers.md)中查看详细信息。 支持的值包括： <br/> <li>**Hot**：热层</li> <li>**Cool**：冷层</li> <li>**存档**：存档层</li> <li>**Premium**：块 Blob 的高级层</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**：高级页 Blob 的层类型</li> <li>**标准**：标准页 Blob 的层类型</li> <li>**Untiered**：常规用途 v1 存储帐户的层类型</li> |
+| **GeoType** | 来自主要或辅助群集的事务。 可用值包括 **Primary** 和 **Secondary**。 从辅助租户读取对象时，该维度会应用到读取访问异地冗余存储 (RA-GRS)。 |
+| **ResponseType** | 事务响应类型。 可用的值包括： <br/><br/> <li>**ServerOtherError**：除描述的错误以外的其他所有服务器端错误 </li> <li>**ServerBusyError**：返回了 HTTP 503 状态代码的经过身份验证的请求。 </li> <li>**ServerTimeoutError**：返回了 HTTP 500 状态代码的已超时身份验证请求。 由于服务器错误而发生超时。 </li> <li>**Authorizationerror)**：由于未经授权的数据访问或授权失败而失败的经过身份验证的请求。 </li> <li>**NetworkError**：因网络错误而失败的经过身份验证的请求。 往往发生于客户端在超时失效之前提前关闭了连接时。 </li>  <li>**ClientAccountBandwidthThrottlingError**：对超出[存储帐户可伸缩性限制](scalability-targets-standard-account.md)的带宽限制请求。</li><li>**ClientAccountRequestThrottlingError**：按请求速率限制请求，超过[存储帐户的可伸缩性限制](scalability-targets-standard-account.md)。<li>**ClientThrottlingError**：其他客户端限制错误。 排除 ClientAccountBandwidthThrottlingError 和 ClientAccountRequestThrottlingError。</li> <li>**ClientTimeoutError**：返回了 HTTP 500 状态代码的已超时身份验证请求。 如果将客户端的网络超时或请求超时设置为比存储服务预期值更小的值，则预期会发生此超时。 否则，会报告为 ServerTimeoutError。</li> </li> <li>**ClientOtherError**：除描述的所有其他客户端错误。 </li> <li>**成功**：请求成功</li> <li> **SuccessWithThrottling**：在首次尝试时，SMB 客户端被阻止但在重试后成功的请求成功。</li> |
+| **ApiName** | 操作的名称。 例如： <br/> <li>**CreateContainer**</li> <li>**DeleteBlob**</li> <li>**GetBlob**</li> 有关所有操作名称，请参阅[文档](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。 |
+| **身份验证** | 事务中所用的身份验证类型。 可用的值包括： <br/> <li>**AccountKey**：通过存储帐户密钥对事务进行身份验证。</li> <li>**SAS**：使用共享访问签名对事务进行身份验证。</li> <li>**Oauth**：使用 oauth 访问令牌对事务进行身份验证。</li> <li>**匿名**：以匿名方式请求事务。 它不包含预检请求。</li> <li>**AnonymousPreflight**：事务为预检请求。</li> |
 
 对于支持维度的指标，需要指定维度值才能查看相应的指标值。 例如，如果查看成功响应的 **Transactions** 值，需要使用 **Success** 筛选 **ResponseType** 维度。 或者，如果查看块 Blob 的 **BlobCount** 值，需要使用 **BlockBlob** 筛选 **BlobType** 维度。
 

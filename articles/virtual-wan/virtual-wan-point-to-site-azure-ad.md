@@ -1,6 +1,6 @@
 ---
-title: 为用户 VPN 连接配置 Azure AD 身份验证：虚拟 WAN
-description: 了解如何为用户 VPN 配置 Azure 活动目录身份验证。
+title: 为用户 VPN 连接配置 Azure AD 身份验证：虚拟广域网
+description: 了解如何为用户 VPN 配置 Azure Active Directory 身份验证。
 services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: alzam
 ms.openlocfilehash: 703b832d58f2374eac131cfd380ba27f2c890618
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80059489"
 ---
-# <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>为用户 VPN 配置 Azure 活动目录身份验证
+# <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>为用户 VPN 配置 Azure Active Directory 身份验证
 
-本文介绍如何为虚拟 WAN 中的用户 VPN 配置 Azure AD 身份验证，以便通过 OpenVPN VPN 连接连接到 Azure 中的资源。 Azure Active Directory 身份验证仅适用于使用 OpenVPN 协议的网关以及运行 Windows 的客户端。
+本文介绍如何为虚拟 WAN 中的用户 VPN 配置 Azure AD 身份验证，以通过 OpenVPN VPN 连接连接到 Azure 中的资源。 Azure Active Directory 身份验证仅适用于使用 OpenVPN 协议的网关以及运行 Windows 的客户端。
 
 此类连接要求在客户端计算机上配置一个客户端。 有关虚拟 WAN 的详细信息，请参阅[虚拟 WAN 概述](virtual-wan-about.md)。
 
@@ -38,35 +38,35 @@ ms.locfileid: "80059489"
 
 在开始配置之前，请验证你是否符合以下条件：
 
-* 你拥有一个要连接到的虚拟网络。 确认本地网络的任何子网都不会与要连接到的虚拟网络重叠。 要在 Azure 门户中创建虚拟网络，请参阅[快速入门](../virtual-network/quick-create-portal.md)。
+* 你拥有一个要连接到的虚拟网络。 确认本地网络的任何子网都不会与要连接到的虚拟网络重叠。 若要在 Azure 门户中创建虚拟网络，请参阅[快速入门](../virtual-network/quick-create-portal.md)。
 
 * 虚拟网络不包含任何虚拟网络网关。 如果虚拟网络包含网关（VPN 或 ExpressRoute），则必须删除所有网关。 此配置要求将虚拟网络改为连接到虚拟 WAN 中心网关。
 
 * 获取中心区域的 IP 地址范围。 该中心是虚拟 WAN 创建和使用的虚拟网络。 为中心指定的地址范围不能与要连接到的任何现有虚拟网络重叠。 此外，它也不能与本地连接到的地址范围重叠。 如果不熟悉本地网络配置中的 IP 地址范围，则咨询能够提供此类详细信息的人员。
 
-* 如果没有 Azure 订阅，请创建[一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="create-a-virtual-wan"></a><a name="wan"></a>创建虚拟 WAN
 
 从浏览器导航到 [Azure 门户](https://portal.azure.com)并使用 Azure 帐户登录。
 
-1. 导航到“虚拟 WAN”页。 在门户中，单击“+创建资源”****。 在搜索框中键入“虚拟 WAN”****，然后选择 Enter。
-2. 从结果中选择“虚拟 WAN”****。 在“虚拟 WAN”页上，单击“创建”以打开“创建 WAN”页****。
-3. 在“创建 WAN”页的“基本信息”选项卡上，填写以下字段********：
+1. 导航到“虚拟 WAN”页。 在门户中，单击“+创建资源”  。 在搜索框中键入“虚拟 WAN”  ，然后选择 Enter。
+2. 从结果中选择“虚拟 WAN”  。 在“虚拟 WAN”页上，单击“创建”以打开“创建 WAN”页  。
+3. 在“创建 WAN”页的“基本信息”选项卡上，填写以下字段   ：
 
    ![虚拟 WAN](./media/virtual-wan-point-to-site-azure-ad/vwan.png)
 
    * **订阅** - 选择要使用的订阅。
-   * **资源组**- 创建新或使用现有资源。
+   * **资源组** - 新建资源组或使用现有的资源组。
    * **资源组位置** - 从下拉列表中选择资源位置。 WAN 是一个全局资源，不会驻留在某个特定区域。 但是，必须选择一个区域才能更轻松地管理和查找所创建的 WAN 资源。
    * **名称** - 键入要用于称呼 WAN 的名称。
    * **类型：** 标准。 如果创建基本 WAN，则只能创建基本中心。 基本中心仅支持 VPN 站点到站点连接。
-4. 填写完字段后，单击“审阅 + 创建”****。
+4. 填写完字段后，单击“审阅 + 创建”  。
 5. 验证通过后，选择“创建”以创建虚拟 WAN****。
 
 ## <a name="create-an-empty-virtual-hub"></a><a name="site"></a>创建空虚拟中心
 
-1. 在虚拟 WAN 下选择“中心”，然后单击“+新建中心”。****
+1. 在虚拟 WAN 下，选择 "中心"，然后单击 " **+ 新建中心**"。
 
    ![新建站点](media/virtual-wan-point-to-site-azure-ad/hub1.jpg)
 2. 在“创建虚拟中心”页上，请填写以下字段。
@@ -78,8 +78,8 @@ ms.locfileid: "80059489"
    **中心专用地址空间** - 用 CIDR 表示法来表示的中心地址范围。
 
    ![新建站点](media/virtual-wan-point-to-site-azure-ad/hub2.jpg)  
-3. 单击 **"审阅" = 创建**。
-4. 在“验证已通过”页上，单击“创建”。********
+3. 单击“查看 + 创建”  。
+4. 在 "已**通过验证**" 页上，单击 "**创建**"。
 
 ## <a name="create-a-new-p2s-configuration"></a><a name="site"></a>创建新的 P2S 配置
 
@@ -99,24 +99,24 @@ P2S 配置定义连接远程客户端的参数。
 
 ## <a name="edit-hub-assignment"></a><a name="hub"></a>编辑中心分配
 
-1. 导航到虚拟 WAN 下的“中心”边栏选项卡。****
+1. 导航到虚拟 WAN 下的 "**中心**" 边栏选项卡。
 2. 选择要将 VPN 服务器配置关联到的中心，然后单击省略号图标 (...)。
 
    ![新建站点](media/virtual-wan-point-to-site-azure-ad/p2s4.jpg)
-3. 单击“编辑虚拟中心”****。
-4. 选中“包括点到站点网关”**** 复选框，然后选择所需的网关缩放单元****。
+3. 单击“编辑虚拟中心”  。
+4. 选中“包括点到站点网关”  复选框，然后选择所需的网关缩放单元  。
 
    ![新建站点](media/virtual-wan-point-to-site-azure-ad/p2s2.jpg)
-5. 输入用于为 VPN 客户端分配 IP 地址的“地址池”****。
-6. 单击 **"确认**"。
+5. 输入用于为 VPN 客户端分配 IP 地址的“地址池”  。
+6. 单击 "**确认**"。
 7. 完成此操作最多需要 30 分钟。
 
 ## <a name="download-vpn-profile"></a><a name="device"></a>下载 VPN 配置文件
 
 使用 VPN 配置文件来配置客户端。
 
-1. 在虚拟 WAN 的页面上，单击“用户 VPN 配置”****。
-2. 在页面顶部，单击“下载用户 VPN 配置”****。
+1. 在虚拟 WAN 的页面上，单击“用户 VPN 配置”  。
+2. 在页面顶部，单击“下载用户 VPN 配置”  。
 3. 完成创建文件后，可以单击相应的链接下载该文件。
 4. 使用此配置文件配置 VPN 客户端。
 
@@ -125,7 +125,7 @@ P2S 配置定义连接远程客户端的参数。
 若要进行连接，需要下载 Azure VPN 客户端，并在要连接到 VNet 的每台计算机上导入在前面步骤中下载的 VPN 客户端配置文件。
 
 > [!NOTE]
-> Azure AD 身份验证仅支持 OpenVPN&reg;协议连接。
+> 仅 OpenVPN&reg;协议连接支持 Azure AD 身份验证。
 >
 
 #### <a name="to-download-the-azure-vpn-client"></a>下载 Azure VPN 客户端
@@ -158,29 +158,29 @@ P2S 配置定义连接远程客户端的参数。
 
 1. 选择要删除的客户端配置文件旁边的省略号图标 (...)。 然后选择“删除”****。
 
-    ![delete](./media/virtual-wan-point-to-site-azure-ad/delete/delete1.jpg)
+    ![“删除”](./media/virtual-wan-point-to-site-azure-ad/delete/delete1.jpg)
 
 2. 选择“删除”以删除配置文件。****
 
-    ![delete](./media/virtual-wan-point-to-site-azure-ad/delete/delete2.jpg)
+    ![“删除”](./media/virtual-wan-point-to-site-azure-ad/delete/delete2.jpg)
 
 #### <a name="diagnose-connection-issues"></a><a name="diagnose"></a>诊断连接问题
 
 1. 若要诊断连接问题，可以使用“诊断”工具。**** 选择要诊断的 VPN 连接旁边的省略号图标 (...) 以显示菜单。 然后选择“诊断”。****
 
-    ![诊断](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose1.jpg)
+    ![diagnose](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose1.jpg)
 
 2. 在“连接属性”页上，选择“运行诊断”。********
 
-    ![诊断](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose2.jpg)
+    ![diagnose](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose2.jpg)
 
 3. 使用凭据登录。
 
-    ![诊断](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose3.jpg)
+    ![diagnose](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose3.jpg)
 
 4. 查看诊断结果。
 
-    ![诊断](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose4.jpg)
+    ![diagnose](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose4.jpg)
 
 ## <a name="view-your-virtual-wan"></a><a name="viewwan"></a>查看虚拟 WAN
 

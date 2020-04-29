@@ -1,6 +1,6 @@
 ---
-title: Azure 应用商店的云合作伙伴门户导航
-description: Azure 应用商店云合作伙伴门户中的导航说明。
+title: Azure Marketplace 云合作伙伴门户导航
+description: Azure Marketplace 云合作伙伴门户中的导航说明。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dsindona
 ms.openlocfilehash: 2c1d0eafe96d6e1533bb980ae0e4fd3c43f0e56b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80278410"
 ---
 # <a name="cloud-partner-portal-navigation"></a>云合作伙伴门户导航
@@ -77,7 +77,7 @@ ms.locfileid: "80278410"
 | ![所有发布者项](./media/left-navbar4.png) | [所有发布者](./cpp-all-publishers-page.md)页，列出了所有当前注册的云合作伙伴发布者。 |
 | ![用户项](./media/left-navbar5.png) | [用户](./cpp-users-page.md)页，列出了与注册的云合作伙伴相关联的所有当前用户帐户。 |
 | ![历史记录项](./media/left-navbar6.png) | [历史记录](./cpp-history-page.md)页，列出了所有发布者的产品/服务发布和修改事件。 |
-| ![见解项](./media/left-navbar7.png) | [见解](./cpp-insights-page.md)页包含构成此门户的*卖家见解*功能的各种仪表板。 |
+| ![见解项](./media/left-navbar7.png) | [insights](./cpp-insights-page.md)页面包含了包含此门户的*卖方 insights*功能的各个仪表板。 |
 | ![文档项](./media/left-navbar8.png) | 启用一个新的选项卡以转到云合作伙伴门户的文档主页（复制“帮助”菜单中的条目）****。 |
 | ![论坛项](./media/left-navbar9.png)  | 启用一个新的选项卡以转到 AppSource 和 Azure 市场的合作伙伴社区的文档主页（复制“帮助”菜单中的条目）****。 |
 |  |  |

@@ -1,5 +1,5 @@
 ---
-title: Azure 资源管理器测试驱动器 |Azure 应用商店
+title: Azure 资源管理器试用版驱动器 |Azure Marketplace
 description: 使用 Azure 资源管理器生成市场体验版
 author: dsindona
 ms.service: marketplace
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
 ms.openlocfilehash: 6125aa010d8676518b84f866343b01f95246160f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80275928"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure 资源管理器体验版
 
 本文适用于有产品/服务在 Azure 市场上或使用 AppSource 但只想使用 Azure 资源构建体验版的发布者。
 
-Azure 资源管理器（资源管理器）模板是 Azure 资源的编码容器，您设计为最能表示解决方案。 如果您不熟悉资源管理器模板是什么，请阅读[了解资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)并[创作资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)，以确保知道如何构建和测试自己的模板。
+Azure 资源管理器（资源管理器）模板是你设计以最好地表示你的解决方案的 Azure 资源的编码容器。 如果不熟悉资源管理器模板的功能，请阅读[了解资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)并[创作资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)，确保了解如何生成和测试自己的模板。
 
 体验版的作用是利用所提供的资源管理器模板，将从资源管理器模板中获得的全部资源部署到资源组。
 
@@ -30,25 +30,25 @@ Azure 资源管理器（资源管理器）模板是 Azure 资源的编码容器�
 
 ## <a name="how-to-build-an-azure-resource-manager-test-drive"></a>如何构建 Azure 资源管理器体验版
 
-以下是构建 Azure 资源管理器测试驱动器的过程：
+下面是构建 Azure 资源管理器试用驱动器的过程：
 
-1. 在流程图中设计您希望客户执行的内容。
-1. 定义您希望客户构建的体验。
-1. 根据上述定义，确定客户完成此类体验所需的部分和资源：例如，D365 实例或具有数据库的网站。
-1. 在本地构建设计，并测试体验。
-1. 打包 ARM 模板部署中的体验，并从那里开始：
+1. 设计希望客户在流程图中执行的操作。
+1. 定义希望客户生成的体验。
+1. 根据上述定义，确定客户完成此类体验所需的部分和资源：例如，D365 实例或包含数据库的网站。
+1. 在本地构建设计并测试体验。
+1. 在 ARM 模板部署中打包体验，并将其放在此处：
     1. 定义资源的哪些部分是输入参数;
     1. 什么是变量;
-    1. 给客户体验的产出。
+    1. 为客户体验提供的输出。
 1. 发布、测试和上线。
 
 构建 Azure 资源管理器体验版的最重要环节是定义要让客户体验的方案。 这是一款防火墙产品吗？你是要演示它处理脚本注入攻击的功能多么强大吗？ 这是一款存储产品吗？你是要演示此解决方案压缩文件的功能是多么快速简捷吗？
 
-确保花足够的时间评估展示产品的最佳方式。 具体而言，您需要的所有所需资源，因为它使打包资源管理器模板变得足够容易。
+请确保花费足够的时间来评估哪种方法最适合显示你的产品。 专门围绕需要的所有所需资源，因为它可以更轻松地打包资源管理器模板。
 
 要具备以下体系结构才能继续进行防火墙示例：需要一个公共 IP URL 供服务使用，及另外一个公共 IP URL 供防火墙所保护的网站使用。 每个 IP 都部署在虚拟机上，并通过网络安全组和网络接口连接在一起。
 
-设计所需资源包后，现在开始编写和构建测试驱动器资源管理器模板。
+一旦设计了所需的资源包，现在就可以资源管理器模板编写和构建测试驱动器。
 
 ## <a name="writing-test-drive-resource-manager-templates"></a>编写体验版资源管理器模板
 
@@ -77,18 +77,18 @@ Azure 资源管理器（资源管理器）模板是 Azure 资源的编码容器�
 }
 ```
 
-请务必注意，**所有参数都是可选**的，因此，如果您\'不想使用任何参数，\'则不必使用。
+另外，请务必注意，**所有参数都是可选**的，因此，如果\'您不想使用任何参数，就\'不必这样做。
 
 ### <a name="accepted-parameter-metadata-types"></a>接受的参数元数据类型
 
-| 元数据类型   | 参数类型  | 描述     | 示例值    |
+| 元数据类型   | 参数类型  | 说明     | 示例值    |
 |---|---|---|---|
-| **巴库里**     | 字符串          | 部署包的基 URI| https：\//\<\..\>.blob.core.windows.net/\<\..\> |
-| **用户**    | 字符串          | 随机的新用户名。| admin68876      |
-| **密码**    | 安全字符串    | 随机的新密码 | Lp!ACS\^2kh     |
+| **baseuri**     | 字符串          | 部署包的基 URI| https：\//\<。\.\>. blob.core.windows.net/\<\.。\> |
+| **用户名**    | 字符串          | 随机的新用户名。| admin68876      |
+| password     | 安全字符串    | 随机的新密码 | Lp!ACS\^2kh     |
 | **会话 ID**   | 字符串          | 唯一的体验版会话 ID (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
 
-#### <a name="baseuri"></a>巴库里
+#### <a name="baseuri"></a>baseuri
 
 体验版使用部署包的基 URI 初始化此参数，因此，可以使用此参数构造包含到包内的任意文件的 URI。****
 
@@ -191,7 +191,7 @@ Azure 资源管理器（资源管理器）模板是 Azure 资源的编码容器�
 
 一些 Azure 资源（如存储帐户或 DNS 名称）需要具有全局唯一的名称。
 
-这意味着每次测试驱动器部署资源管理器模板时，它都会创建一\'**个新资源组，其所有资源都具有唯一的名称**。 因此，需要将 [uniquestring](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions#uniquestring) 函数与资源组 ID 上的变量名称连接在一起使用，以生成随机的唯一值：
+这意味着每次测试驱动器部署资源管理器模板时，都会创建一个**新的资源组**，其所有\'资源都具有唯一的名称。 因此，需要将 [uniquestring](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions#uniquestring) 函数与资源组 ID 上的变量名称连接在一起使用，以生成随机的唯一值：
 
 ```json
 "variables": {
@@ -264,7 +264,7 @@ Azure 资源管理器（资源管理器）模板是 Azure 资源的编码容器�
 
 对于模板输出，没有任何限制。 只需记住，体验版会将所有输出值转换为字符串，因此，如果将对象发送到输出，用户会看到 JSON 字符串。****
 
-示例：
+例如：
 
 ```json
 "outputs": {
@@ -299,9 +299,9 @@ Azure 资源管理器（资源管理器）模板是 Azure 资源的编码容器�
 
 | package.zip                       | 体验版 blob 容器         |
 |---|---|
-| main-template.json                | https：\//\<\..\>.blob.core.windows.net/\<\.. . .\>/主模板.json  |
-| templates/solution.json           | https：\//\<\..\>.blob.core.windows.net/\<\.. . .\>/模板/解决方案.json |
-| scripts/warmup.ps1                | https：\//\<\..\>.blob.core.windows.net/\<\.. . .\>/脚本/预热.ps1  |
+| main-template.json                | https：\//\<..\.\>. blob.core.windows.net/\<\..。\>/main-template.json  |
+| templates/solution.json           | https：\//\<..\.\>. blob.core.windows.net/\<\..。\>/templates/solution.json |
+| scripts/warmup.ps1                | https：\//\<..\.\>. blob.core.windows.net/\<\..。\>/scripts/warmup.ps1  |
 
 
 我们将此 blob 容器的 URI 称为基 URI。 实验室的每个修订版有其自己的 blob 容器，因此，实验室的每个修订版有其自己的基 URI。 体验版可以通过模板参数将未解压的部署包的基 URI 传递到模板。
@@ -316,7 +316,7 @@ Azure 资源管理器（资源管理器）模板是 Azure 资源的编码容器�
 
 ![在用户界面中启用体验版](./media/azure-resource-manager-test-drive/howtopub1.png)
 
-第一个字段（也是最重要的字段）是切换是否要为产品/服务启用体验版。 选择 **"是"时，** 将显示带有所有所需字段的窗体的其余部分，供您填写。选择 **"否"时，** 窗体将禁用，如果禁用"测试驱动器"重新发布，则"测试驱动器"将从生产中删除。
+第一个字段（也是最重要的字段）是切换是否要为产品/服务启用体验版。 选择 **"是" 时，** 将显示窗体的其余部分，其中包含所有必填字段。如果你选择 "**否"，** 则窗体将被禁用，如果你重新发布了已禁用的测试驱动器，则会从生产中删除你的测试驱动器。
 
 注意：如果用户正在活跃地使用任何体验版，则这些体验版将继续运行，直到用户的会话过期。
 
@@ -357,7 +357,7 @@ Azure 资源管理器（资源管理器）模板是 Azure 资源的编码容器�
 
 ****（选定区域数 x “热”实例数）+（选定区域数 x “暖”实例数）+（选定区域数 x “冷”实例数）
 
-**试驾持续时间（小时） -** 测试驱动器将保持活动状态（以小时数为\#*）的所需*持续时间。 此时间段结束后，体验版会自动终止。
+**测试驱动器持续时间（小时）-** 测试驱动器保持活动状态*的时间*（以\#小时为单位）。 此时间段结束后，体验版会自动终止。
 
 **体验版资源管理器模板 - ** ** 必填。在此处上传资源管理器模板。 这是指在上一个部分中生成的文件。 将主模板文件命名为“main-template.json”，并确保资源管理器模板包含所需的关键变量的输出参数。 （必须是 .zip 文件）
 
@@ -381,7 +381,7 @@ Azure 资源管理器（资源管理器）模板是 Azure 资源的编码容器�
 
 ![Azure Active Directory 租户列表](./media/azure-resource-manager-test-drive/subdetails4.png)
 
-![定义 Azure AD 租户的组织、域和国家/区域](./media/azure-resource-manager-test-drive/subdetails5.png)
+![为 Azure AD 租户定义组织、域和国家/地区](./media/azure-resource-manager-test-drive/subdetails5.png)
 
 ![确认所选内容](./media/azure-resource-manager-test-drive/subdetails6.png)
 
@@ -402,13 +402,13 @@ Azure 资源管理器（资源管理器）模板是 Azure 资源的编码容器�
 由于我们要使用该应用程序部署到订阅，因此，需将该应用程序添加为订阅中的参与者。 下面是操作说明：
 
 1. 导航到“订阅”边栏选项卡，并选择专门用于体验版的相应订阅。
-1. 单击**访问控制 （IAM）。**
-1. 单击 **"角色分配**"选项卡。 ![添加新的访问控制主体](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
-1. 单击 **"添加角色分配**"。
+1. 单击 "**访问控制（IAM）**"。
+1. 单击 "**角色分配**" 选项卡。 ![添加新的访问控制主体](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
+1. 单击“添加角色分配”  。
 1. 将角色设置为“参与者”****。
 1. 键入 Azure AD 应用程序的名称，并选择要向其分配该角色的应用程序。
     ![添加权限](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
-1. 单击“保存”。****
+1. 单击 **“保存”** 。
 
 **Azure AD 应用密钥 - 必填。最终的字段将会生成身份验证密钥。** ** 在密钥下添加密钥说明，将持续时间设置为永不过期，然后选择“保存”。 **** 必须避免使用已过期的密钥，否则，在生产环境中体验版将会中断。 复制此值，并将其粘贴到所需的体验版字段中。
 
@@ -422,6 +422,6 @@ Azure 资源管理器（资源管理器）模板是 Azure 资源的编码容器�
 
 请务必注意，不要删除为客户预配的任何体验版实例，在客户用完体验版之后，体验版服务将自动清理这些资源组。
 
-一旦你感到舒适的预览产品，现在是时候**上线**了！ 发布产品/服务后，Microsoft 会完成最终评审过程，以仔细检查完整的端到端体验。 如果出于某种原因拒绝了该产品/服务，我们会向产品/服务的工程联系人发送通知，解释需要解决哪些问题。
+一旦你对预览版产品感到满意，现在就可以**开始**了！ 发布产品/服务后，Microsoft 会完成最终评审过程，以仔细检查完整的端到端体验。 如果出于某种原因拒绝了该产品/服务，我们会向产品/服务的工程联系人发送通知，解释需要解决哪些问题。
 
 如果有其他问题、寻求故障排除建议，或想要让体验版获得更大的成功，请访问[常见问题解答、故障排除和最佳做法](./marketing-and-best-practices.md)。

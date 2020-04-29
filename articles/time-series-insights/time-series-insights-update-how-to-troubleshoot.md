@@ -11,23 +11,23 @@ ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: seodec18
 ms.openlocfilehash: 667dee6365f38ae058e91c61c24838d8912df26a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80152634"
 ---
 # <a name="diagnose-and-troubleshoot-a-preview-environment"></a>对预览版环境进行诊断和故障排除
 
 本文汇总了在使用 Azure 时序见解预览版环境时可能会遇到的多个常见问题。 本文还介绍了每个问题的可能原因和解决方案。
 
-## <a name="problem-i-cant-find-my-environment-in-the-preview-explorer"></a>问题：我在预览资源管理器中找不到我的环境
+## <a name="problem-i-cant-find-my-environment-in-the-preview-explorer"></a>问题：在预览版资源管理器中找不到环境
 
-如果无权访问时序见解环境，则可能会发生此问题。 用户需要读者级别访问角色才能查看其时序见解环境。 若要验证当前访问级别并授予其他访问权限，请在 [Azure 门户](https://portal.azure.com/)中转到时序见解资源上的“数据访问策略”部分。****
+如果无权访问时序见解环境，则可能会发生此问题。 用户需要读者级别访问角色才能查看其时序见解环境。 若要验证当前访问级别并授予其他访问权限，请在 [Azure 门户](https://portal.azure.com/)中转到时序见解资源上的“数据访问策略”部分。 
 
   [![验证数据访问策略。](media/preview-troubleshoot/verify-data-access-policies.png)](media/preview-troubleshoot/verify-data-access-policies.png#lightbox)
 
-## <a name="problem-no-data-is-seen-in-the-preview-explorer"></a>问题：预览资源管理器中看不到任何数据
+## <a name="problem-no-data-is-seen-in-the-preview-explorer"></a>问题：预览版资源管理器中未显示数据
 
 有几种常见原因导致数据可能不会出现在 [Azure 时序见解预览版资源管理器](https://insights.timeseries.azure.com/preview)中。
 
@@ -43,17 +43,17 @@ ms.locfileid: "80152634"
 
 - 事件源密钥缺少所需权限。
 
-  * 对于 IoT 中心，需提供具有“服务连接”**** 权限的密钥。
+  * 对于 IoT 中心，需提供具有“服务连接”  权限的密钥。
 
     [![验证 IoT 中心权限。](media/preview-troubleshoot/verify-correct-permissions.png)](media/preview-troubleshoot/verify-correct-permissions.png#lightbox)
 
-    * “iothubowner”和“服务”策略均可使用，因为两者都具有“服务连接”权限************。
+    * “iothubowner”和“服务”策略均可使用，因为两者都具有“服务连接”权限    。
 
-  * 对于事件中心，需提供具有“侦听”**** 权限的密钥。
+  * 对于事件中心，需提供具有“侦听”  权限的密钥。
   
     [![查看事件中心权限。](media/preview-troubleshoot/verify-eh-permissions.png)](media/preview-troubleshoot/verify-eh-permissions.png#lightbox)
 
-    * “读取”和“管理”策略均可使用，因为两者都具有“侦听”权限************。
+    * “读取”和“管理”策略均可使用，因为两者都具有“侦听”权限    。
 
 - 提供的使用者组并非时序见解所独有。
 
@@ -63,27 +63,27 @@ ms.locfileid: "80152634"
 
     如果在预配环境时时序 ID 属性配置不正确，则可能会发生此问题。 有关详细信息，请阅读[选择时序 ID 的最佳做法](./time-series-insights-update-how-to-id.md)。 目前无法更新现有时序见解环境来使用其他时序 ID。
 
-## <a name="problem-some-data-shows-but-some-is-missing"></a>问题：显示某些数据，但缺少一些数据
+## <a name="problem-some-data-shows-but-some-is-missing"></a>问题：显示了一些数据，但是还有一些数据缺失
 
 可能在发送数据时没有提供时序 ID。
 
-- 如果在发送事件时有效负载中没有时序 ID 字段，则可能会发生此问题。 有关详细信息，请阅读支持的[JSON 形状](./how-to-shape-query-json.md)。
+- 如果在发送事件时有效负载中没有时序 ID 字段，则可能会发生此问题。 有关详细信息，请阅读[支持的 JSON 形状](./how-to-shape-query-json.md)。
 - 可能因环境受限而发生此问题。
 
     > [!NOTE]
     > 目前，时序见解支持的最大引入速率为 6 Mbps。
 
-## <a name="problem-data-was-showing-but-now-ingestion-has-stopped"></a>问题：数据显示，但现在摄入已停止
+## <a name="problem-data-was-showing-but-now-ingestion-has-stopped"></a>问题：以前可以显示数据，但引入现已停止
 
-- 事件源密钥可能已重新生成，并且预览环境需要新的事件源密钥。
+- 可能已重新生成事件源密钥，但预览版环境需要新的事件源密钥。
 
-当创建事件源时提供的密钥不再有效时，将发生此问题。 您将在中心看到遥测数据，但在时间序列见解中看不到入口接收的消息。 如果您不确定密钥是否已重新生成，则可以搜索事件中心的活动日志以查找"创建或更新命名空间授权规则"，或搜索 IoT 中心"创建或更新 IotHub 资源"。 
+如果创建事件源时提供的密钥不再有效，则会出现此问题。 你会在中心看到遥测数据，但不会在时序见解中收到入口接收的消息。 如果不确定是否重新生成了密钥，可以在事件中心的活动日志中搜索“创建或更新命名空间授权规则”或“为 IoT 中心创建或更新 IotHub 资源”。 
 
-使用新键在 Azure 门户中打开中心资源并复制新密钥，更新时间序列见解预览环境。 导航到 TSI 资源，然后单击事件源。 
+若要使用新密钥更新时序见解预览版环境，请在 Azure 门户中打开中心资源并复制新密钥。 导航到 TSI 资源，单击“事件源”。 
 
    [![更新密钥。](media/preview-troubleshoot/update-hub-key-step-1.png)](media/preview-troubleshoot/update-hub-key-step-1.png#lightbox)
 
-选择已停止引入的事件源，粘贴到新键中，然后单击"保存"。
+选择已停止从其引入的事件源，粘贴新密钥，然后单击“保存”。
 
    [![更新密钥。](media/preview-troubleshoot/update-hub-key-step-2.png)](media/preview-troubleshoot/update-hub-key-step-2.png#lightbox)
 
@@ -94,7 +94,7 @@ ms.locfileid: "80152634"
 * Timestamp 属性名称区分大小写。
 * 来自事件源的 Timestamp 属性值（采用 JSON 字符串形式）的格式为 `yyyy-MM-ddTHH:mm:ss.FFFFFFFK`。 `“2008-04-12T12:53Z”` 是此类字符串的一个示例。
 
-若要确保捕获 Timestamp 属性名称并让其正常运行，最简单的方法是使用时序见解预览版资源管理器。 在时序见解预览版资源管理器中使用此图表，在提供 Timestamp 属性名称以后选择一个时间段。 右键单击所做的选择，然后选择“浏览事件”选项。**** 第一个列标头为 Timestamp 属性名称。 它应该有 `($ts)` 位于 `Timestamp` 一词的旁边，而不是：
+若要确保捕获 Timestamp 属性名称并让其正常运行，最简单的方法是使用时序见解预览版资源管理器。 在时序见解预览版资源管理器中使用此图表，在提供 Timestamp 属性名称以后选择一个时间段。 右键单击所做的选择，然后选择“浏览事件”选项。  第一个列标头为 Timestamp 属性名称。 它应该有 `($ts)` 位于 `Timestamp` 一词的旁边，而不是：
 
 * `(abc)`，指示时序见解将数据值作为字符串来读取。
 * **日历**图标，指示时序见解将数据值作为日期/时间来读取。
@@ -102,12 +102,12 @@ ms.locfileid: "80152634"
 
 如果 Timestamp 属性未显式指定，则会将事件的 IoT 中心或事件中心的“排队时间”用作默认的时间戳。
 
-## <a name="problem-i-cant-view-data-from-my-warm-store-in-the-explorer"></a>问题：我无法查看资源管理器中暖存储的数据
+## <a name="problem-i-cant-view-data-from-my-warm-store-in-the-explorer"></a>问题：我无法在资源管理器中查看我的暖存储中的数据
 
 - 你可能最近预配了你的暖存储，数据仍在流入。
 - 你可能已删除了暖存储，这种情况下，你已经丢失了数据。
 
-## <a name="problem-i-cant-view-or-edit-my-time-series-model"></a>问题：无法查看或编辑时间序列模型
+## <a name="problem-i-cant-view-or-edit-my-time-series-model"></a>问题：无法查看或编辑时序模型
 
 - 你可能在访问时序见解 S1 或 S2 环境。
 
@@ -119,11 +119,11 @@ ms.locfileid: "80152634"
 
    用户需要有参与者级别访问权限才能编辑和查看其时序模型。 若要验证当前访问级别并授予其他访问权限，请在 Azure 门户中转到时序见解资源上的“数据访问策略”部分。****
 
-## <a name="problem-all-my-instances-in-the-preview-explorer-lack-a-parent"></a>问题：预览资源管理器中的所有实例都缺少父实例
+## <a name="problem-all-my-instances-in-the-preview-explorer-lack-a-parent"></a>问题：预览资源管理器中的所有实例都缺少父项
 
-如果环境未定义时序模型层次结构，则可能会发生此问题。 有关详细信息，请阅读[使用时间序列模型](./time-series-insights-update-how-to-tsm.md)。
+如果环境未定义时序模型层次结构，则可能会发生此问题。 有关详细信息，请阅读[使用时序模型](./time-series-insights-update-how-to-tsm.md)。
 
-  [![未父级实例将显示警告。](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
+  [![Unparented 实例将显示警告。](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
 
 ## <a name="next-steps"></a>后续步骤
 

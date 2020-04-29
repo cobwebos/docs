@@ -4,10 +4,10 @@ description: Azure 资源运行状况概述
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.openlocfilehash: 7a1dfe5e93d0e19aeb343d113a24ed882a5b3f69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80159245"
 ---
 # <a name="resource-health-overview"></a>资源运行状况概述
@@ -38,7 +38,7 @@ Azure 资源运行状况有助于在服务问题影响到 Azure 资源时进行�
 
 #### <a name="platform-events"></a>平台事件
 
-平台事件是由 Azure 基础结构的多个组件触发的。 它们包括计划操作（例如，计划维护）和意外事件（例如，计划外主机重新启动或降级的主机硬件，预计在指定的时间窗口后将失败）。
+平台事件是由 Azure 基础结构的多个组件触发的。 它们包括计划的操作（例如计划内维护）和意外事件（例如，在指定的时间范围内预测为失败的计划外主机重启或降级主机硬件）。
 
 资源运行状况提供了有关事件和恢复过程的更多详细信息。 还可以通过它联系 Microsoft 支持人员，即使你没有有效的支持协议。
 
@@ -50,7 +50,7 @@ Azure 资源运行状况有助于在服务问题影响到 Azure 资源时进行�
 
 ![由于非平台事件虚拟机显示“不可用”状态](./media/resource-health-overview/Unavailable_NonPlatform.png)
 
-### <a name="unknown"></a>未知
+### <a name="unknown"></a>Unknown
 
 “未知”表示资源运行状况未收到此资源的相关信息已超过 10 分钟**。 尽管此状态不是资源状态的最终指示，但它是故障排除过程中一个重要的数据点。
 
@@ -76,7 +76,7 @@ Azure 资源运行状况有助于在服务问题影响到 Azure 资源时进行�
 
 ## <a name="history-information"></a>历史记录信息
 
-您可以在"资源运行状况**的运行状况历史记录**"部分访问最多 30 天的历史记录。
+可以在资源运行状况的 "**运行状况历史记录**" 部分中访问最多30天的历史记录。
 
 ![过去两周内的“资源运行状况”事件列表](./media/resource-health-overview/history-blade.png)
 
@@ -84,7 +84,7 @@ Azure 资源运行状况有助于在服务问题影响到 Azure 资源时进行�
 
 若要为某个资源打开“资源运行状况”，请执行以下操作：
 
-1. 登录到 Azure 门户。  
+1. 登录到 Azure 门户。
 2. 浏览资源。
 3. 在左窗格中的资源菜单上，选择“资源运行状况”****。
 

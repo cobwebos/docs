@@ -1,5 +1,5 @@
 ---
-title: 管理防火墙规则 - Azure 门户 - MySQL 的 Azure 数据库
+title: 管理防火墙规则-Azure 门户-Azure Database for MySQL
 description: 使用 Azure 门户创建和管理 Azure Database for MySQL 防火墙规则
 author: ajlam
 ms.author: andrela
@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: edd6403ed3d7607eb96bc7c6a603c3fef8a4f99e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80063550"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>使用 Azure 门户创建和管理 Azure Database for MySQL 防火墙规则
@@ -41,7 +41,7 @@ ms.locfileid: "80063550"
    ![Azure 门户 - 单击“保存”](./media/howto-manage-firewall-using-portal/5-save-firewall-rule.png)
 
 ## <a name="connecting-from-azure"></a>从 Azure 连接
-若要允许来自 Azure 的应用程序连接到 Azure Database for MySQL 服务器，必须启用 Azure 连接。 例如，为了托管“Azure Web 应用”应用程序或 Azure VM 中运行的应用程序，或者为了从 Azure 数据工厂数据管理网关进行连接。 资源无需在同一虚拟网络 (VNet) 或资源组中，即可使用防火墙规则启用这些连接。 在应用程序尝试从 Azure 连接到数据库服务器时，防火墙会验证是否允许 Azure 连接。 有几种方法可启用这些类型的连接。 如果防火墙设置的开始地址和结束地址都等于 0.0.0.0，则表示允许这些连接。 或者，可以从连接安全窗格将"**允许访问 Azure 服务**"选项设置为 **"打开****"，** 然后点击 **"保存**"。 如果不允许该连接尝试，则该请求将不会访问 Azure Database for MySQL 服务器。
+若要允许来自 Azure 的应用程序连接到 Azure Database for MySQL 服务器，必须启用 Azure 连接。 例如，为了托管“Azure Web 应用”应用程序或 Azure VM 中运行的应用程序，或者为了从 Azure 数据工厂数据管理网关进行连接。 资源无需在同一虚拟网络 (VNet) 或资源组中，即可使用防火墙规则启用这些连接。 在应用程序尝试从 Azure 连接到数据库服务器时，防火墙会验证是否允许 Azure 连接。 有几种方法可启用这些类型的连接。 如果防火墙设置的开始地址和结束地址都等于 0.0.0.0，则表示允许这些连接。 或者，可以在门户中从 "**连接安全性**" 窗格将 "**允许访问 Azure 服务**" 选项设置为 **"打开**"，然后单击 "**保存**"。 如果不允许该连接尝试，则该请求将不会访问 Azure Database for MySQL 服务器。
 
 > [!IMPORTANT]
 > 该选项将防火墙配置为允许来自 Azure 的所有连接，包括来自其他客户的订阅的连接。 选择该选项时，请确保登录名和用户权限将访问权限限制为仅已授权用户使用。
@@ -51,8 +51,8 @@ ms.locfileid: "80063550"
 重复这些步骤来管理防火墙规则。
 * 若要添加当前计算机，请单击“+ 添加我的 IP”****。 单击 **“确定”**，保存这些更改。
 * 若要添加其他 IP 地址，请键入“规则名称”****、“起始 IP”**** 和“结束 IP”****。 单击 **“确定”**，保存这些更改。
-* 若要修改现有规则，单击规则中的任意字段并修改。 单击 **“确定”**，保存这些更改。
-* 若要删除现有规则，请单击省略号 […]，然后单击“删除”****。 单击 **“确定”**，保存这些更改。
+* 若要修改现有规则，单击规则中的任意字段并修改。 单击“保存”  以保存更改。
+* 若要删除现有规则，请单击省略号 […]，然后单击“删除”****。 单击“保存”  以保存更改。
 
 
 ## <a name="next-steps"></a>后续步骤

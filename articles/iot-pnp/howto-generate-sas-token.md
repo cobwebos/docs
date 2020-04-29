@@ -1,6 +1,6 @@
 ---
-title: 生成安全令牌以访问 IoT 即插即用预览存储库 |微软文档
-description: 生成共享访问签名令牌，以便以编程方式访问 IoT 即插即用预览模型存储库时使用。
+title: 生成安全令牌以访问 IoT 即插即用预览存储库 |Microsoft Docs
+description: 在以编程方式访问 IoT 即插即用预览模型存储库时，生成要使用的共享访问签名令牌。
 author: Philmea
 ms.author: philmea
 ms.date: 12/27/2019
@@ -9,19 +9,19 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
 ms.openlocfilehash: f008627317588467d731ccc03aec7738f58e46e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80159194"
 ---
 # <a name="generate-sas-token"></a>生成 SAS 令牌
 
-此操作指南演示如何以编程方式生成共享访问签名 （SAS） 令牌，以便与 IoT 即插即用模型存储库 API 一起使用。
+本操作方法指南演示了如何以编程方式生成用于 IoT 即插即用预览模型存储库 Api 的共享访问签名（SAS）令牌。
 
 ## <a name="python"></a>Python
 
-以下代码段演示如何使用 Python 生成 SAS 令牌：
+以下代码片段演示如何使用 Python 生成 SAS 令牌：
 
 ```python
 from base64 import b64decode, b64encode
@@ -46,7 +46,7 @@ def calculate_sas_token(hostname, repo_id, key_name, key, expiry_in_second):
 
 ## <a name="c"></a>C\#
 
-以下代码段演示如何使用 C\#生成 SAS 令牌：
+以下代码片段演示了如何使用 C\#生成 SAS 令牌：
 
 ```csharp
 public static string generateSasToken(string hostName, string repoId, string key, string keyName, int expiryInSeconds = 3600)
@@ -80,8 +80,8 @@ public static string generateSasToken(string hostName, string repoId, string key
 POST https:///models/{modelId}?repositoryId={repositoryId}&api-version=2019-07-01-preview
 ```
 
-如果向客户端提供 SAS 令牌，则客户端没有资源的主密钥，并且无法反转哈希以获取它。 SAS 令牌允许您控制客户端可以访问的内容以及多长时间。 更改策略中的主键时，从策略创建的任何 SAS 令牌将失效。
+如果为客户端分配 SAS 令牌，则客户端不会具有该资源的主键，并且不能反向哈希来获取它。 SAS 令牌使你可以控制客户端可以访问的内容以及多长时间。 当你更改策略中的主密钥时，从该密钥创建的所有 SAS 令牌都将失效。
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，您已经了解了生成安全令牌以用于访问模型 IoT 即插即用预览模型存储库，建议的下一步是在[IoT 即插即用预览建模开发人员指南](concepts-developer-guide.md)中了解更多信息。
+现在，你已了解如何生成用于访问模型 IoT 的安全令牌即插即用预览模型存储库，建议下一步是在[IoT 即插即用预览版建模开发人员指南](concepts-developer-guide.md)中了解详细信息。

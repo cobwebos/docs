@@ -4,21 +4,21 @@ description: 使用受 SAS 令牌保护的 Azure 资源管理器模板将资源�
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.openlocfilehash: 42eaae316d4fd0575102323933f849a3058228a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80156389"
 ---
-# <a name="deploy-private-arm-template-with-sas-token"></a>使用 SAS 令牌部署专用 ARM 模板
+# <a name="deploy-private-arm-template-with-sas-token"></a>部署具有 SAS 令牌的专用 ARM 模板
 
-当 Azure 资源管理器 （ARM） 模板位于存储帐户中时，可以限制对模板的访问，以避免公开公开模板。 访问受保护模板的方法是：为模板创建一个共享访问签名 (SAS) 令牌，在部署时提供该令牌。 本文介绍如何使用 Azure PowerShell 或 Azure CLI 通过 SAS 令牌来部署模板。
+当 Azure 资源管理器（ARM）模板位于存储帐户中时，你可以限制对该模板的访问，以避免公开公开。 访问受保护模板的方法是：为模板创建一个共享访问签名 (SAS) 令牌，在部署时提供该令牌。 本文介绍如何使用 Azure PowerShell 或 Azure CLI 通过 SAS 令牌来部署模板。
 
 ## <a name="create-storage-account-with-secured-container"></a>使用受保护的容器创建存储帐户
 
 以下脚本创建一个存储帐户和容器，其中的公共访问权限已禁用。
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -65,7 +65,7 @@ az storage container create \
 
 现在可以将模板上传到存储帐户了。 提供要使用的模板的路径。
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Set-AzStorageBlobContent `
@@ -90,10 +90,10 @@ az storage blob upload \
 要在存储帐户中部署专用模板，请生成 SAS 令牌，并将其包括在模板的 URI 中。 设置到期时间以允许足够的时间来完成部署。
 
 > [!IMPORTANT]
-> 只有帐户所有者可以访问包含模板的 Blob。 但是，如果为 blob 创建 SAS 令牌，则拥有该 URI 的任何人都可以访问 blob。 如果其他用户截获了该 URI，则此用户可以访问该模板。 SAS 令牌是限制对模板的访问的好方法，但不应直接在模板中包括密码等敏感数据。
+> 只有帐户所有者才能访问包含该模板的 Blob。 但是，如果为 blob 创建 SAS 令牌，则拥有该 URI 的任何人都可以访问 blob。 如果其他用户截获了该 URI，则此用户可以访问该模板。 使用 SAS 令牌是限制对模板的访问的好办法，但不应直接在模板中包括密码等敏感数据。
 >
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 # get the URI with the SAS token
@@ -140,5 +140,5 @@ az deployment group create \
 
 
 ## <a name="next-steps"></a>后续步骤
-* 有关部署模板的简介，请参阅[使用 ARM 模板和 Azure PowerShell 部署资源](deploy-powershell.md)。
+* 有关部署模板的简介，请参阅[使用 ARM 模板部署资源和 Azure PowerShell](deploy-powershell.md)。
 * 若要在模板中定义参数，请参阅[创作模板](template-syntax.md#parameters)。

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
 ms.openlocfilehash: 9608b02869b1d41d901ec77a42cfaa6d882040e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80131817"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>使用 PowerShell 备份和还原 Azure VM 中的 SQL 数据库
@@ -60,7 +60,7 @@ ms.locfileid: "80131817"
 5. 在出现的网页上，系统会提示你输入帐户凭据。
 
     * 或者，可以结合 **-Credential** 在 **Connect-AzAccount** cmdlet 中将帐户凭据包含为参数。
-    * 如果你是为某个租户工作的 CSP 合作伙伴，则需使用 tenantID 或租户主域名将客户指定为一名租户。 例如，Connect-AzAccount -Tenant fabrikam.com****。
+    * 如果你是为某个租户工作的 CSP 合作伙伴，则需使用 tenantID 或租户主域名将客户指定为一名租户。 例如，Connect-AzAccount -Tenant fabrikam.com  。
 
 6. 由于一个帐户可以有多个订阅，因此请将要使用的订阅与帐户关联在一起。
 
@@ -68,7 +68,7 @@ ms.locfileid: "80131817"
     Select-AzSubscription -SubscriptionName $SubscriptionName
     ```
 
-7. 首次使用 Azure 备份时，请使用 Register-AzResourceProvider cmdlet 将 Azure 恢复服务提供程序注册到订阅****。
+7. 首次使用 Azure 备份时，请使用 Register-AzResourceProvider cmdlet 将 Azure 恢复服务提供程序注册到订阅  。
 
     ```powershell
     Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
@@ -86,7 +86,7 @@ ms.locfileid: "80131817"
 
 请按照以下步骤创建恢复服务保管库。
 
-恢复服务保管库是一种资源管理器资源，因此必须将其放在资源组中。 可以使用现有资源组，也可以使用 New-AzResourceGroup cmdlet 创建资源组****。 创建资源组时，请指定资源组的名称和位置。
+恢复服务保管库是一种资源管理器资源，因此必须将其放在资源组中。 可以使用现有资源组，也可以使用 New-AzResourceGroup cmdlet 创建资源组  。 创建资源组时，请指定资源组的名称和位置。
 
 1. 保管库放在资源组中。 如果没有现有的资源组，请使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-1.4.0) 新建一个。 此示例在美国西部区域创建一个新的资源组。
 
@@ -112,7 +112,7 @@ ms.locfileid: "80131817"
 
 ### <a name="view-the-vaults-in-a-subscription"></a>在订阅中查看保管库
 
-若要查看订阅中的所有保管库，请使用“Get-AzRecoveryServicesVault”[](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault?view=azps-1.4.0)。
+若要查看订阅中的所有保管库，请使用 [Get-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault?view=azps-1.4.0)。
 
 ```powershell
 Get-AzRecoveryServicesVault
@@ -137,7 +137,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 * 许多 Azure 备份 cmdlet 要求将恢复服务保管库对象用作输入，因此可以方便地在变量中存储保管库对象。
 * 保管库上下文是在保管库中受保护的数据的类型。 可以使用 [Set-AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext?view=azps-1.4.0) 设置它。 设置上下文后，它将应用于所有后续 cmdlet。
 
-以下示例为 testvault 设置保管库上下文****。
+以下示例为 testvault 设置保管库上下文  。
 
 ```powershell
 Get-AzRecoveryServicesVault -Name "testvault" | Set-AzRecoveryServicesVaultContext
@@ -193,7 +193,7 @@ NewSQLPolicy         MSSQL              AzureWorkload        3/15/2019 01:30:00 
 
 ### <a name="registering-the-sql-vm"></a>注册 SQL VM
 
-对于 Azure VM 备份和 Azure 文件共享，备份服务可以连接到这些 Azure 资源管理器资源并提取相关的详细信息。 由于 SQL 是 Azure VM 内部的一个应用程序，因此备份服务需要有权访问该应用程序并提取所需的详细信息。 为此，需要将包含 SQL 应用程序的 Azure VM“注册”到恢复服务保管库。** 将 SQL VM 注册到保管库后，可以仅在该保管库中保护 SQL 数据库。 使用 [Register-AzRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/az.recoveryservices/Register-AzRecoveryServicesBackupContainer?view=azps-1.5.0) PS cmdlet 注册 VM。
+对于 Azure VM 备份和 Azure 文件共享，备份服务可以连接到这些 Azure 资源管理器资源并提取相关的详细信息。 由于 SQL 是 Azure VM 内部的一个应用程序，因此备份服务需要有权访问该应用程序并提取所需的详细信息。 为此，需要将包含 SQL 应用程序的 Azure VM“注册”到恢复服务保管库。  将 SQL VM 注册到保管库后，可以仅在该保管库中保护 SQL 数据库。 使用 [Register-AzRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/az.recoveryservices/Register-AzRecoveryServicesBackupContainer?view=azps-1.5.0) PS cmdlet 注册 VM。
 
 ```powershell
  $myVM = Get-AzVM -ResourceGroupName <VMRG Name> -Name <VMName>
@@ -333,7 +333,7 @@ SQL 数据库还原支持以下还原方案。
 * 使用其他恢复点中的数据替代已备份的 SQL 数据库 - OriginalWorkloadRestore
 * 将 SQL 数据库还原为同一 SQL 实例中的新数据库 - AlternateWorkloadRestore
 * 将 SQL 数据库还原为另一 SQL VM 上另一 SQL 实例中的新数据库 - AlternateWorkloadRestore
-* 将 SQL DB 还原为 .bak 文件 - 还原AsFiles
+* 将 SQL 数据库还原为 .bak 文件-RestoreAsFiles
 
 提取相关的恢复点（不同的时间点或日志时间点）后，使用 [Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupWorkloadRecoveryConfig?view=azps-1.5.0) PS cmdlet 根据所需的恢复计划提取恢复配置对象。
 
@@ -378,9 +378,9 @@ $AnotherInstanceWithFullConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryCon
 $AnotherInstanceWithLogConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -PointInTime $PointInTime -Item $bkpItem -AlternateWorkloadRestore -VaultId $targetVault.ID
 ```
 
-##### <a name="restore-as-files"></a>恢复为文件
+##### <a name="restore-as-files"></a>还原为文件
 
-要将备份数据还原为 .bak 文件而不是数据库，请选择"**还原为文件**"选项。 备份的 SQL DB 可以还原到注册到此保管库的任何目标 VM。
+若要将备份数据还原为 .bak 文件而不是数据库，请选择 "**还原为文件**" 选项。 已备份的 SQL 数据库可以还原到任何已注册到此保管库的目标 VM。
 
 ```powershell
 $TargetContainer= Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName "VM name" -VaultId $vaultID
@@ -392,15 +392,15 @@ $TargetContainer= Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAp
 $FileRestoreWithFullConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -RecoveryPoint $FullRP -TargetContainer $TargetContainer -RestoreAsFiles -FilePath "<>" -VaultId $targetVault.ID
 ```
 
-##### <a name="restore-as-files-with-log-point-in-time-from-latest-full"></a>使用最新的完整日志点还原为文件
+##### <a name="restore-as-files-with-log-point-in-time-from-latest-full"></a>从最新完整的日志时间点还原为文件
 
 ```powershell
 $FileRestoreWithLogConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -PointInTime $PointInTime -TargetContainer $TargetContainer -RestoreAsFiles -FilePath "<>" -VaultId $targetVault.ID
 ```
 
-##### <a name="restore-as-files-with-log-point-in-time-from-a-specified-full"></a>使用指定的完整日志点还原为文件
+##### <a name="restore-as-files-with-log-point-in-time-from-a-specified-full"></a>使用日志时间点作为文件从指定的完整还原
 
-如果要提供应用于还原的特定完整，请使用以下命令：
+如果希望提供应该用于还原的特定完整的，请使用以下命令：
 
 ```powershell
 $FileRestoreWithLogAndSpecificFullConfig = Get-AzRecoveryServicesBackupWorkloadRecoveryConfig -PointInTime $PointInTime -FromFull $FullRP -TargetContainer $TargetContainer -RestoreAsFiles -FilePath "<>" -VaultId $targetVault.ID

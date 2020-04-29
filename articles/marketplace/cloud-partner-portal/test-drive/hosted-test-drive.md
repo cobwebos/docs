@@ -1,5 +1,5 @@
 ---
-title: 托管试驾 |Azure 应用商店
+title: 托管的测试驱动器 |Azure Marketplace
 description: 如何设置和维护市场托管体验版
 author: dsindona
 ms.service: marketplace
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
 ms.openlocfilehash: 6d054064e236e121e02bf58a0eb73b5a62f24a09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80278257"
 ---
 # <a name="hosted-test-drive"></a>托管体验版
@@ -46,7 +46,7 @@ ms.locfileid: "80278257"
 - **Azure AD 应用 ID**：在步骤 7 中创建的 Azure AD 应用的 ID。\示例值：53852862-a2ae-4e43-9461-faa49650a096
 - **Azure AD 应用密钥**：在步骤 7 中创建的 Azure AD 应用的机密。\示例值：IJUgaIOfq9b9LbUjeQmzNBW4VGn6grr1l/n3aMrnfdk=
 - **Azure AD 租户名称**：提供 Dynamics 365 实例的 Azure 租户名称。 使用 \<tenantname.\>onmicrosoft.com 格式。 示例值：testdrive.onmicrosoft.com
-- **实例 Web API URL**：提供 Dynamics 365 实例的 Web API URL。 可以登录到 Microsoft Dynamics 365 实例，并导航“设置”-\>“自定义”-\>“开发人员资源”-\>“实例 Web API”（复制此 URL）来检索此值。 示例值： https：\//testdrive.crm.dynamics.com/api/data/v9.0
+- **实例 Web API URL**：提供 Dynamics 365 实例的 Web API URL。 可以登录到 Microsoft Dynamics 365 实例，并导航“设置”-\>“自定义”-\>“开发人员资源”-\>“实例 Web API”（复制此 URL）来检索此值。 示例值： https：\//testdrive.crm.dynamics.com/api/data/v9。0
 - **角色名称**：提供为体验版创建的自定义 Dynamics 365 安全角色的名称。 这是在用户使用体验版期间为其分配的角色。 示例值：testdriverole
 
 ## <a name="next-steps"></a>后续步骤

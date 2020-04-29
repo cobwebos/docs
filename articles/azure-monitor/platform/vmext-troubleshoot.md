@@ -1,5 +1,5 @@
 ---
-title: 排除 Azure 日志分析 VM 扩展的故障
+title: Azure Log Analytics VM 扩展故障排除
 description: 针对 Windows 和 Linux Azure VM 的 Log Analytics VM 扩展的最常见问题，描述症状、原因和解决方法。
 ms.subservice: logs
 ms.topic: conceptual
@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/06/2019
 ms.openlocfilehash: e16531484505f055c1383aff5adb40518719d98a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80054579"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension-in-azure-monitor"></a>Azure Monitor 中的 Log Analytics VM 扩展故障排除
@@ -18,10 +18,10 @@ ms.locfileid: "80054579"
 
 若要验证扩展的状态，请从 Azure 门户执行以下步骤。
 
-1. 登录到[Azure 门户](https://portal.azure.com)。
-2. 在 Azure 门户中，单击 **"所有服务**"。 在资源列表中，键入“虚拟机”****。 开始键入时，会根据输入筛选该列表。 选择**虚拟机**。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 在 Azure 门户中，单击“所有服务”  。 在资源列表中，键入“虚拟机”  。 开始键入时，会根据输入筛选该列表。 选择“虚拟机”。 
 3. 在虚拟机列表中，找到并选择该虚拟机。
-3. 在虚拟机上，单击“扩展”。****
+3. 在虚拟机上，单击“扩展”。 
 4. 从列表中，查看是否已启用 Log Analytics 扩展。  对于 Linux，代理列出为 **OMSAgentforLinux**；对于 Windows，代理列出为 **MicrosoftMonitoringAgent**。
 
    ![VM 扩展视图](./media/vmext-troubleshoot/log-analytics-vmview-extensions.png)
@@ -48,9 +48,9 @@ ms.locfileid: "80054579"
 
 ## <a name="troubleshooting-linux-vm-extension"></a>Linux VM 扩展故障排除
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
-如果 Log Analytics Linux 代理** VM 扩展未安装或未报告，可以执行以下步骤来解决此问题。
+如果 Log Analytics Linux 代理  VM 扩展未安装或未报告，可以执行以下步骤来解决此问题。
 
-1. 如果扩展状态为“未知”**，则查看 VM 代理日志文件 `/var/log/waagent.log`，检查 Azure VM 代理是否已安装且可正常工作
+1. 如果扩展状态为“未知”  ，则查看 VM 代理日志文件 `/var/log/waagent.log`，检查 Azure VM 代理是否已安装且可正常工作
    * 如果此日志不存在，则未安装 VM 代理。
    * [在 Linux VM 上安装 Azure VM 代理](../../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
 2. 对于其他不正常状态，请查看 `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` 和 `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log` 中的 Log Analytics Linux VM 代理扩展日志文件

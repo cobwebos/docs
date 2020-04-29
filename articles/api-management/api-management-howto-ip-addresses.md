@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
 ms.openlocfilehash: 45501fee9ae6ff47643a1ed197a07c4ba598e981
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80047742"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>Azure API 管理的 IP 地址
@@ -61,9 +61,9 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 
 如果 API 管理服务位于虚拟网络中，则有两种类型的 IP 地址：公共和专用。
 
-公共 IP 地址用于端口 `3443` 上的内部通信 - 用于管理配置（例如，通过 Azure 资源管理器）。 在外部 VNet 配置中，它们还用于运行时 API 流量。 将请求从 API 管理发送到面向公众（面向 Internet）的后端时，公共 IP 地址将显示为请求来源。
+公共 IP 地址用于端口 `3443` 上的内部通信 - 用于管理配置（例如，通过 Azure 资源管理器）。 在外部 VNet 配置中，它们也用于运行时 API 流量。 将请求从 API 管理发送到面向公众（面向 Internet）的后端时，公共 IP 地址将显示为请求来源。
 
-专用虚拟 IP （VIP） 地址**仅在**内部[VNet 模式下](api-management-using-with-internal-vnet.md)可用，用于从网络内部连接到 API 管理终结点 - 网关、开发人员门户和管理平面，以便直接访问 API。 可以使用 VIP 在网络内部设置 DNS 记录。
+专用虚拟 IP （VIP）地址**仅**适用于[内部 VNet 模式](api-management-using-with-internal-vnet.md)，用于从网络内部连接到 API 管理终结点-网关、开发人员门户和用于直接 API 访问的管理平面。 可以使用 VIP 在网络内部设置 DNS 记录。
 
 Azure 门户和 API 调用响应中会显示两种类型的地址：
 
@@ -89,7 +89,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 }
 ```
 
-API 管理使用公共 IP 地址进行 VNet 外部的连接，使用专用 IP 地址进行 VNet 中的连接。
+API 管理对 VPN 外部的连接使用公共 IP 地址，对 VPN 内的连接使用专用 IP 地址。
 
 ## <a name="ip-addresses-of-consumption-tier-api-management-service"></a>“消耗”层 API 管理服务的 IP 地址
 
@@ -104,6 +104,6 @@ API 管理使用公共 IP 地址进行 VNet 外部的连接，使用专用 IP �
 * 服务被删除，然后重新创建。
 * 服务订阅被[暂停](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states)或[警告](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states)（例如，由于未付款），然后恢复。
 * 在该服务中添加或删除 Azure 虚拟网络。
-* API 管理服务在外部和内部 VNet 部署模式之间切换。
+* API 管理服务在外部和内部 VNet 部署模式间切换。
 
 在[多区域部署](api-management-howto-deploy-multi-region.md)中，如果某个区域搬迁然后重建，则区域 IP 地址将发生变化。

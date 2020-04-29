@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f5d63577cbdbdf18cb17618bdb5c9e3b5de0e44a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79245975"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management 中 Azure AD 角色的管理功能
@@ -32,7 +32,7 @@ Privileged Identity Management 中 Azure AD 角色的管理体验已更新，以
 
 ## <a name="time-bound-assignments"></a>时限性分配
 
-以前在 Azure AD 角色的特权标识管理中，您熟悉具有两种可能状态的角色分配 -*合格*和*永久*。 现在，你可为每种类型的分配设置开始时间和结束时间。 此新增功能提供了四种可能的状态，你可以在这些状态下进行分配：
+以前在 Azure AD 角色 Privileged Identity Management 中，你熟悉了具有两种可能状态的角色分配：有*资格*且是*永久性*的。 现在，你可为每种类型的分配设置开始时间和结束时间。 此新增功能提供了四种可能的状态，你可以在这些状态下进行分配：
 
 - 永久合格
 - 永久活动
@@ -49,8 +49,8 @@ Privileged Identity Management 中 Azure AD 角色的管理体验已更新，以
 
 在理解了有时限的分配后，你可能会问的第一个问题是，角色过期后会出现什么情况？ 在此新版本中，我们针对此情况提供了两个选项：
 
-- 扩展 — 当角色分配接近其到期时，用户可以使用特权标识管理请求该角色分配的扩展
-- 续订 - 角色分配过期后，用户可以使用特权标识管理请求该角色分配的续订
+- 扩展–当角色分配接近其过期时间时，用户可以使用 Privileged Identity Management 来请求该角色分配的扩展
+- 续订–角色分配过期后，用户可以使用 Privileged Identity Management 来请求续订该角色分配
 
 这两个用户发起的操作都需要全局管理员或特权角色管理员的批准。 管理员将不再需要管理这些过期的分配。 他们只需要等待延期或续订请求，并在请求有效的情况下批准它们即可。
 
@@ -62,7 +62,7 @@ Privileged Identity Management 中 Azure AD 角色的管理体验已更新，以
 
 ## <a name="powershell-change"></a>PowerShell 更改
 
-对于使用 Azure AD 角色的 Privileged Identity Management PowerShell 模块的客户，PowerShell 将停止更新。 必须使用 Azure AD 预览 PowerShell 模块中的 Privileged Identity Management cmdlet 来替换以前的 cmdlet。 安装 [PowerShell 库](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17)中的 Azure AD PowerShell 模块。 现在，您可以在[此 PowerShell 模块中阅读 PIM 操作的文档和示例](powershell-for-azure-ad-roles.md)。
+对于使用 Azure AD 角色的 Privileged Identity Management PowerShell 模块的客户，PowerShell 将停止更新。 必须使用 Azure AD 预览 PowerShell 模块中的 Privileged Identity Management cmdlet 来替换以前的 cmdlet。 安装 [PowerShell 库](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17)中的 Azure AD PowerShell 模块。 现在，可以[在此 PowerShell 模块中阅读 PIM 操作的文档和示例](powershell-for-azure-ad-roles.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

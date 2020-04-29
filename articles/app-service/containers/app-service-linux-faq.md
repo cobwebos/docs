@@ -1,6 +1,6 @@
 ---
-title: 运行内置容器常见问题解答
-description: 查找有关 Azure 应用服务中内置 Linux 容器的常见问题的解答。
+title: 运行内置容器常见问题
+description: 查找有关 Azure App Service 中内置 Linux 容器的常见问题的解答。
 keywords: Azure 应用服务, Web 应用, 常见问题解答, Linux, oss, 用于容器的 Web 应用, 多容器, 多容器
 author: msangapu-msft
 ms.topic: article
@@ -8,10 +8,10 @@ ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: f0a8b1758571a9473402d11a4d5141a11f76504d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80245814"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 上的 Azure 应用服务常见问题解答
@@ -22,7 +22,7 @@ ms.locfileid: "80245814"
 
 ## <a name="built-in-images"></a>内置映像
 
-**我想分叉平台提供的内置 Docker 容器。我在哪里可以找到这些文件？**
+**我想要分叉平台提供的内置 Docker 容器。在哪里可以找到这些文件？**
 
 可以在 [GitHub](https://github.com/azure-app-service) 上找到所有 Docker 文件。 可以在 [Docker Hub](https://hub.docker.com/u/appsvc/) 上找到所有 Docker 容器。
 
@@ -32,13 +32,13 @@ ms.locfileid: "80245814"
 
 | 堆栈           | 预期值                                                                         |
 |-----------------|----------------------------------------------------------------------------------------|
-| Java SE         | 启动 JAR 应用的命令（例如， `java -jar /home/site/wwwroot/app.jar --server.port=80` |
-| Tomcat          | 用于执行任何必要配置的脚本的位置（例如， `/home/site/deployments/tools/startup_script.sh`          |
+| Java SE         | 用于启动 JAR 应用的命令（例如`java -jar /home/site/wwwroot/app.jar --server.port=80`） |
+| Tomcat          | 用于执行任何所需配置的脚本的位置（例如， `/home/site/deployments/tools/startup_script.sh`）          |
 | Node.js         | PM2 配置文件或脚本文件                                |
-| .NET Core       | 编译的 DLL 名称为`dotnet <myapp>.dll`                                 |
-| Ruby            | 要使用                     |
+| .NET Core       | 已编译的 DLL 名称`dotnet <myapp>.dll`                                 |
+| Ruby            | 要用于初始化应用的 Ruby 脚本                     |
 
-这些命令或脚本是在启动内置 Docker 容器后，但在应用程序代码启动之前执行的。
+这些命令或脚本在内置 Docker 容器启动后，但在启动应用程序代码之前执行。
 
 ## <a name="management"></a>管理
 
@@ -56,11 +56,11 @@ ms.locfileid: "80245814"
 
 **如何通过 SDK 或 Azure 资源管理器模板创建 Linux 应用服务计划？**
 
-将应用服务的**保留**字段设置为*true*。
+将应用服务的 "**保留**" 字段设置为 " *true*"。
 
-## <a name="continuous-integration-and-deployment"></a>持续集成和部署
+## <a name="continuous-integration-and-deployment"></a>持续集成和持续部署
 
-**在 Docker Hub 上更新映像后，我的 Web 应用仍使用旧的 Docker 容器映像。您是否支持自定义容器的连续集成和部署？**
+**更新 Docker Hub 上的映像后，我的 web 应用仍使用旧的 Docker 容器映像。是否支持自定义容器的持续集成和部署？**
 
 支持，若要设置 Azure 容器注册表或 DockerHub 的持续集成/部署，请查阅以下文章：[使用用于容器的 Web 应用进行持续部署](./app-service-linux-ci-cd.md)。 对于专用注册表，可以通过先停止然后启动 Web 应用来刷新容器。 或者，可以更改或添加虚拟应用程序设置，从而强制刷新容器。
 
@@ -72,11 +72,11 @@ ms.locfileid: "80245814"
 
 可以，需要将名为 `WEBSITE_WEBDEPLOY_USE_SCM` 的应用设置设置为 *false*。
 
-**使用 Linux Web 应用时，应用程序的 Git 部署失败。如何解决此问题？**
+**使用 Linux web 应用时，应用程序的 Git 部署失败。如何解决此问题？**
 
 如果 Linux Web 应用的 Git 部署失败，可选择以下选项之一部署应用程序代码：
 
-- 使用连续传递（预览）功能：您可以将应用的源代码存储在 Azure DevOps Git 存储库或 GitHub 存储库中，以使用 Azure 连续传递。 有关详细信息，请参阅[如何为 Linux Web 应用配置持续交付](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/)。
+- 使用持续交付（预览）功能：可以将应用的源代码存储在 Azure DevOps Git 存储库或 GitHub 存储库中，以使用 Azure 持续交付。 有关详细信息，请参阅[如何为 Linux Web 应用配置持续交付](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/)。
 
 - 使用 [ZIP 部署 API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)：若要使用此 API，请[通过 SSH 连接到 Web 应用](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support)，并转到要在其中部署代码的文件夹。 运行以下代码：
 
@@ -108,9 +108,9 @@ const io = require('socket.io')(server,{
 
 ## <a name="custom-containers"></a>自定义容器
 
-**我使用自己的自定义容器。我希望平台将 SMB 共享装载到`/home/`目录中。**
+**我使用的是我自己的自定义容器。我希望平台将 SMB 共享装载到`/home/`目录中。**
 
-如果`WEBSITES_ENABLE_APP_SERVICE_STORAGE`设置**未指定**或设置为*true，* 则`/home/`目录将在缩放实例之间**共享**，写入的文件将在重新启动期间**保留**。 显式设置为`WEBSITES_ENABLE_APP_SERVICE_STORAGE` *false*将禁用装载。
+如果`WEBSITES_ENABLE_APP_SERVICE_STORAGE` **未指定**设置或将其*true*设置为 true `/home/` ，则将跨缩放实例**共享**该目录，并且写入**的文件将**在重新启动后保持。 显式设置`WEBSITES_ENABLE_APP_SERVICE_STORAGE`为*false*将禁用装入。
 
 **自定义容器需要很长时间才能启动，并且平台在它完成启动之前便重启了容器。**
 
@@ -122,7 +122,7 @@ const io = require('socket.io')(server,{
 
 **专用注册表选项中的映像名称的格式是什么？**
 
-添加完整映像名称，包括专用注册表 URL（例如 myacr.azurecr.io/dotnet:latest）。 使用自定义端口的映像名称[无法通过门户输入](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650)。 要设置`docker-custom-image-name`，请使用[`az`命令行工具](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)。
+添加完整映像名称，包括专用注册表 URL（例如 myacr.azurecr.io/dotnet:latest）。 使用自定义端口的映像名称[无法通过门户输入](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650)。 若要`docker-custom-image-name`设置，请使用[ `az`命令行工具](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)。
 
 **是否可以在自定义容器映像上公开多个端口？**
 
@@ -136,7 +136,7 @@ const io = require('socket.io')(server,{
 
 SCM 站点在单独的容器中运行。 用户无法查看应用容器的文件系统或正在运行的进程。
 
-**我的自定义容器侦听端口 80 以外的端口。如何配置应用以将请求路由到该端口？**
+**自定义容器侦听端口80以外的端口。如何将应用配置为将请求路由到该端口？**
 
 我们提供自动端口检测。 也可以指定名为 *WEBSITES_PORT* 的应用设置，并为其提供所需的端口号值。 以前，平台使用 *PORT* 应用设置。 我们计划弃用此应用设置，改为独占使用 *WEBSITES_PORT*。
 
@@ -144,16 +144,16 @@ SCM 站点在单独的容器中运行。 用户无法查看应用容器的文件
 
 不需要，平台会处理共享前端上的 HTTPS 终止。
 
-## <a name="multi-container-with-docker-compose"></a>带 Docker 组合的多容器
+## <a name="multi-container-with-docker-compose"></a>多容器与 Docker Compose
 
 **如何将 Azure 容器注册表 (ACR) 配置为用于多容器？ **
 
-若要将 ACR 用于多容器，**所有容器映像**都必须托管在同一台 ACR 注册表服务器上。 一旦他们在同一注册表服务器上，您将需要创建应用程序设置，然后更新 Docker Compose 配置文件以包括 ACR 映像名称。
+若要将 ACR 用于多容器，**所有容器映像**都必须托管在同一台 ACR 注册表服务器上。 一旦它们位于同一注册表服务器上，你将需要创建应用程序设置，然后更新 Docker Compose 配置文件以包含 ACR 映像名称。
 
 创建以下应用程序设置：
 
 - DOCKER_REGISTRY_SERVER_USERNAME
-- DOCKER_REGISTRY_SERVER_URL（完整 URL，前`https://<server-name>.azurecr.io`： ）
+- DOCKER_REGISTRY_SERVER_URL （完整 URL，例如： `https://<server-name>.azurecr.io`）
 - DOCKER_REGISTRY_SERVER_PASSWORD（在 ACR 设置中启用管理员访问权限）
 
 在配置文件内引用 ACR 映像，如下例所示：
@@ -179,19 +179,19 @@ image: <server-name>.azurecr.io/<image-name>:<tag>
 Linux 应用程序支持 Web 套接字。
 
 > [!IMPORTANT]
-> 免费应用服务计划上的 Linux 应用当前不支持 Web 套接字。 我们正在努力消除此限制，并计划在免费应用服务计划中支持多达 5 个 Web 套接字连接。
+> 免费应用服务计划中的 Linux 应用当前不支持 Web 套接字。 我们正在致力于消除此限制，并计划最多支持5个免费应用服务计划上的 web 套接字连接。
 
 ## <a name="pricing-and-sla"></a>定价和 SLA
 
 **服务正式版的定价是多少？**
 
-定价因 SKU 和地区而异，但您可以在我们的定价页面：[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/linux/)上看到更多详细信息。
+定价因 SKU 和区域而异，但你可以在定价页上查看更多详细信息：[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/linux/)。
 
 ## <a name="other-questions"></a>其他问题
 
-**"请求的功能在资源组中不可用"是什么意思？**
+**"请求的功能在资源组中不可用" 是什么意思？**
 
-使用 Azure 资源管理器 （ARM） 创建 Web 应用时，可能会看到此消息。 根据当前限制，对于同一资源组，不能在同一区域中混合 Windows 和 Linux 应用。
+使用 Azure 资源管理器（ARM）创建 web 应用时，可能会看到此消息。 根据当前的限制，对于同一资源组，不能在同一区域中混合使用 Windows 和 Linux 应用程序。
 
 **应用程序设置名称中支持的字符有哪些？**
 

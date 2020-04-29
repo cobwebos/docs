@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
 ms.openlocfilehash: b17e4031edaedc6b0a63d305d20a77e5b58f91ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80247378"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>在 Azure VM 中运行的 SQL Server 的 Azure 备份
@@ -20,7 +20,7 @@ ms.locfileid: "80247378"
 除了其他产品/服务，Azure 备份还提供在 Azure VM 中运行的 SQL Server 等工作负荷的备份支持。 由于 SQL 应用程序在 Azure VM 中运行，因此备份服务需要有权访问该应用程序并提取必需的详细信息。
 为此，Azure 备份会在用户触发的注册过程中在 SQL Server 运行时所在的 VM 上安装 **AzureBackupWindowsWorkload** 扩展。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 有关支持的方案的列表，请参阅 Azure 备份支持的[可支持性矩阵](../../backup/sql-support-matrix.md#scenario-support)。
 
@@ -85,7 +85,7 @@ Azure 备份支持 NSG 标记，可以部署代理服务器或列出的 IP 范�
 
 ### <a name="property-values"></a>属性值
 
-“属性” | 值/示例 | 数据类型
+名称 | 值/示例 | 数据类型
  --- | --- | ---
 区域设置 | zh-cn  |  字符串
 taskId | "1c0ae461-9d3b-418c-a505-bb31dfe2095d"  | 字符串
@@ -109,7 +109,7 @@ $myVM = Get-AzVM -ResourceGroupName <VMRG Name> -Name <VMName>
 Register-AzRecoveryServicesBackupContainer -ResourceId $myVM.ID -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $targetVault.ID -Force
 ```
 
-此命令会返回此资源的“备份容器”，状态将为“已注册”。********
+此命令会返回此资源的“备份容器”，状态将为“已注册”。  
 
 ## <a name="next-steps"></a>后续步骤
 

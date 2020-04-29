@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 数据湖存储 Gen2 中对文件& ACL 使用 JavaScript
-description: 使用 JavaScript 的 Azure 存储数据湖客户端库管理已启用分层命名空间 （HNS） 的存储帐户中的目录、文件和目录访问控制列表 （ACL）。
+title: 将 JavaScript 用于文件 & Azure Data Lake Storage Gen2 中的 Acl
+description: 使用适用于 JavaScript 的 Azure Storage Data Lake 客户端库在启用了分层命名空间 (HNS) 的存储帐户中管理目录和文件以及目录访问控制列表 (ACL)。
 author: normesta
 ms.service: storage
 ms.date: 03/20/2020
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.openlocfilehash: 04d0d23bdbdaeda6a4823c900badb3133ba9eeae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80061542"
 ---
-# <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 JavaScript 管理 Azure 数据存储库 Gen2 中的目录、文件和 ACL
+# <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 JavaScript 管理 Azure Data Lake Storage Gen2 中的目录、文件和 Acl
 
-本文介绍如何使用 JavaScript 在已启用分层命名空间 （HNS） 的存储帐户中创建和管理目录、文件和权限。 
+本文介绍了如何使用 JavaScript 在启用了分层命名空间 (HNS) 的存储帐户中创建和管理目录、文件与权限。 
 
 [包（节点包管理器）](https://www.npmjs.com/package/@azure/storage-file-datalake) | [示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples) | [提供反馈](https://github.com/Azure/azure-sdk-for-java/issues)
 
@@ -26,17 +26,17 @@ ms.locfileid: "80061542"
 > [!div class="checklist"]
 > * Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 > * 一个已启用分层命名空间 (HNS) 的存储帐户。 按[这些](data-lake-storage-quickstart-create-account.md)说明创建一个。
-> * 如果在 Node.js 应用程序中使用此包，则需要 Node.js 8.0.0 或更高版本。
+> * 如果在 node.js 应用程序中使用此包，则需要 node.js 8.0.0 或更高版本。
 
 ## <a name="set-up-your-project"></a>设置项目
 
-通过打开终端窗口，然后键入以下命令，为 JavaScript 安装数据湖客户端库。
+通过打开终端窗口，然后键入以下命令，安装适用于 JavaScript 的 Data Lake 客户端库。
 
 ```javascript
 npm install @azure/storage-file-datalake
 ```
 
-通过将此`storage-file-datalake`语句放在代码文件的顶部来导入包。 
+将此`storage-file-datalake`语句放置在代码文件的顶部，以导入包。 
 
 ```javascript
 const AzureStorageDataLake = require("@azure/storage-file-datalake");
@@ -50,7 +50,7 @@ const AzureStorageDataLake = require("@azure/storage-file-datalake");
 
 这是连接到帐户的最简单方法。 
 
-本示例使用帐户密钥创建**DataLakeServiceClient**实例。
+此示例使用帐户密钥创建一个**DataLakeServiceClient**实例。
 
 ```javascript
 
@@ -67,13 +67,13 @@ function GetDataLakeServiceClient(accountName, accountKey) {
 
 ```
 > [!NOTE]
-> 这种授权方法仅适用于 Node.js 应用程序。 如果计划在浏览器中运行代码，则可以使用 Azure 活动目录 （AD） 进行授权。 
+> 此授权方法仅适用于 Node.js 应用程序。 如果打算在浏览器中运行代码，则可以使用 Azure Active Directory (AD) 进行授权。 
 
-### <a name="connect-by-using-azure-active-directory-ad"></a>使用 Azure 活动目录 （AD） 进行连接
+### <a name="connect-by-using-azure-active-directory-ad"></a>使用 Azure Active Directory （AD）进行连接
 
-可以使用 JS[的 Azure 标识客户端库](https://www.npmjs.com/package/@azure/identity)使用 Azure AD 对应用程序进行身份验证。
+可以使用适用于[JS 的 Azure 标识客户端库](https://www.npmjs.com/package/@azure/identity)通过 Azure AD 对应用程序进行身份验证。
 
-本示例使用客户端 ID、客户端机密和租户 ID 创建**DataLakeServiceClient**实例。  要获取这些值，请参阅[从 Azure AD 获取令牌以授权来自客户端应用程序的请求](../common/storage-auth-aad-app.md)。
+此示例使用客户端 ID、客户端机密和租户 ID 创建一个**DataLakeServiceClient**实例。  若要获取这些值，请参阅[从 Azure AD 获取用于从客户端应用程序授权请求的令牌](../common/storage-auth-aad-app.md)。
 
 ```javascript
 function GetDataLakeServiceClientAD(accountName, clientID, clientSecret, tenantID) {
@@ -88,11 +88,11 @@ function GetDataLakeServiceClientAD(accountName, clientID, clientSecret, tenantI
 ```
 
 > [!NOTE]
-> 有关详细信息，请参阅 Azure[标识客户端库，了解 JS](https://www.npmjs.com/package/@azure/identity)文档。
+> 有关更多示例，请参阅[适用于 JS 的 Azure 标识客户端库](https://www.npmjs.com/package/@azure/identity)文档。
 
 ## <a name="create-a-file-system"></a>创建文件系统
 
-文件系统充当文件的容器。 您可以通过获取**文件系统客户端**实例，然后调用**FileSystemClient.Create**方法来创建一个实例。
+文件系统充当文件的容器。 可以通过获取**FileSystemClient**实例，然后调用**FileSystemClient**方法来创建一个。
 
 此示例创建名为 `my-file-system` 的文件系统。 
 
@@ -110,7 +110,7 @@ async function CreateFileSystem(datalakeServiceClient) {
 
 ## <a name="create-a-directory"></a>创建目录
 
-通过获取**目录客户端**实例，然后调用**目录客户端.create**方法，创建目录引用。
+通过获取**DirectoryClient**实例，然后调用**DirectoryClient**方法来创建目录引用。
 
 此示例将名为 `my-directory` 的目录添加到文件系统。 
 
@@ -126,7 +126,7 @@ async function CreateDirectory(fileSystemClient) {
 
 ## <a name="rename-or-move-a-directory"></a>重命名或移动目录
 
-通过调用**DirectoryClient.重命名**方法重命名或移动目录。 以参数形式传递所需目录的路径。 
+通过调用**DirectoryClient**方法重命名或移动目录。 以参数形式传递所需目录的路径。 
 
 此示例将某个子目录重命名为名称 `my-directory-renamed`。
 
@@ -152,7 +152,7 @@ async function MoveDirectory(fileSystemClient) {
 
 ## <a name="delete-a-directory"></a>删除目录
 
-通过调用**目录客户端.delete**方法删除目录。
+通过调用**DirectoryClient**方法删除目录。
 
 此示例删除名为 `my-directory` 的目录。   
 
@@ -221,7 +221,7 @@ async function ManageDirectoryACLs(fileSystemClient) {
 
 ## <a name="upload-a-file-to-a-directory"></a>将文件上传到目录
 
-首先，读取文件。 此示例使用 Node.js`fs`模块。 然后，通过创建**FileClient**实例，然后调用**FileClient.create**方法，在目标目录中创建文件引用。 通过调用**FileClient.append**方法上载文件。 请确保通过调用**FileClient.flush**方法完成上载。
+首先，请阅读文件。 此示例使用 node.js `fs`模块。 然后，通过创建**FileClient**实例，然后调用**FileClient**方法，在目标目录中创建文件引用。 通过调用**FileClient**方法上传文件。 请确保通过调用**FileClient**方法完成上传。
 
 此示例将文本文件上传到名为 `my-directory` 的目录。
 
@@ -303,10 +303,10 @@ await fileClient.setAccessControl(acl);
 
 ## <a name="download-from-a-directory"></a>从目录下载
 
-首先，创建一个表示要下载的文件的**FileSystemClient**实例。 使用**FileSystemClient.read**方法读取该文件。 然后，编写文件。 此示例使用 Node.js`fs`模块执行此操作。 
+首先，创建表示要下载的文件的**FileSystemClient**实例。 使用**FileSystemClient**方法读取该文件。 然后写入文件。 此示例使用 node.js `fs`模块来执行此操作。 
 
 > [!NOTE]
-> 这种下载文件的方法仅适用于 Node.js 应用程序。 如果计划在浏览器中运行代码，请参阅 JavaScript readme 文件的[Azure 存储文件数据湖客户端库](https://www.npmjs.com/package/@azure/storage-file-datalake)，了解如何在浏览器中执行此操作。 
+> 此下载文件的方法仅适用于 node.js 应用程序。 如果计划在浏览器中运行代码，请参阅[Azure 存储文件 Data Lake 适用于 JavaScript 的客户端库](https://www.npmjs.com/package/@azure/storage-file-datalake)自述文件，了解如何在浏览器中执行此操作的示例。 
 
 ```javascript
 async function DownloadFile(fileSystemClient) {
@@ -341,7 +341,7 @@ async function DownloadFile(fileSystemClient) {
 
 ## <a name="list-directory-contents"></a>列出目录内容
 
-此示例打印位于名为`my-directory`的目录中的每个目录和文件的名称。
+此示例将打印位于名为`my-directory`的目录中的每个目录和文件的名称。
 
 ```javascript
 async function ListFilesInDirectory(fileSystemClient) {
@@ -358,7 +358,7 @@ async function ListFilesInDirectory(fileSystemClient) {
 }
 ```
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [包（节点包管理器）](https://www.npmjs.com/package/@azure/storage-file-datalake)
 * [示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)

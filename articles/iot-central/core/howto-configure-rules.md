@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 509f9557a8128df12353ad02a7c7db02b7b42631
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80158435"
 ---
 # <a name="configure-rules"></a>配置规则
@@ -25,7 +25,7 @@ IoT Central 中的规则充当一种可自定义的响应手段，它们是基�
 
 ## <a name="select-target-devices"></a>选择目标设备
 
-使用“目标设备”部分选择要对哪种类型的设备应用此规则。 使用筛选器可以进一步具体化要包含的设备。 筛选器使用设备模板中的属性来筛选设备集。 筛选器本身不会触发操作。 在以下屏幕截图中，目标设备的设备模板类型为“冰箱”。**** 该筛选器指出，规则只能包含“制造地所在州”属性为“华盛顿”的“冰箱”。************
+使用“目标设备”部分选择要对哪种类型的设备应用此规则。 使用筛选器可以进一步具体化要包含的设备。 筛选器使用设备模板中的属性来筛选设备集。 筛选器本身不会触发操作。 在以下屏幕截图中，目标设备的设备模板类型为“冰箱”。  该筛选器指出，规则只能包含“制造地所在州”属性为“华盛顿”的“冰箱”。   
 
 ![条件](media/howto-configure-rules/filters.png)
 
@@ -33,7 +33,7 @@ IoT Central 中的规则充当一种可自定义的响应手段，它们是基�
 
 条件是规则的触发依据。 目前，在将多个条件添加到规则时，这些条件将以逻辑 AND 运算符联接到一起。 换言之，必须满足所有条件才会将规则评估为 true。  
 
-在下面的屏幕截图中，当温度大于 70&deg; F 且湿度小于 10 时，条件将检查。 如果这两个语句均为 true，则规则将评估为 true 并触发操作。
+在下面的屏幕截图中，当温度大于 70&deg; F 并且湿度小于10时，将检查条件。 如果这两个语句均为 true，则规则将评估为 true 并触发操作。
 
 ![条件](media/howto-configure-rules/conditions.png)
 

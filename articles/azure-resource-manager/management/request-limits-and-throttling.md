@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/24/2020
 ms.custom: seodec18
 ms.openlocfilehash: 4d387749261747eb9ea1ea26629ade4fe8729856
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80239365"
 ---
 # <a name="throttling-resource-manager-requests"></a>限制 Resource Manager 请求
@@ -64,7 +64,7 @@ Microsoft.Network 资源提供程序应用以下限制：
 
 ### <a name="azure-resource-graph-throttling"></a>Azure Resource Graph 限制
 
-[Azure 资源图](../../governance/resource-graph/overview.md)将请求数限制为其操作。 本文所述的用于确定剩余请求数以及在达到限制时如何采取应对措施的步骤同样适用于 Resource Graph。 但是，Resource Graph 设置了自身的限制和重置速率。 有关详细信息，请参阅 [Resource Graph 限制标头](../../governance/resource-graph/concepts/guidance-for-throttled-requests.md#understand-throttling-headers)。
+[Azure 资源图](../../governance/resource-graph/overview.md)限制对其操作的请求数。 本文所述的用于确定剩余请求数以及在达到限制时如何采取应对措施的步骤同样适用于 Resource Graph。 但是，Resource Graph 设置了自身的限制和重置速率。 有关详细信息，请参阅 [Resource Graph 限制标头](../../governance/resource-graph/concepts/guidance-for-throttled-requests.md#understand-throttling-headers)。
 
 ## <a name="error-code"></a>错误代码
 
@@ -80,7 +80,7 @@ Microsoft.Network 资源提供程序应用以下限制：
 
 可以通过检查响应标头来确定剩余的请求数。 读取请求在标头中返回一个值，表示剩余读取请求的数目。 写入请求包含的值表示剩余写入请求的数目。 下表描述了可在其中检查这些值的标头：
 
-| 响应标头 | 描述 |
+| 响应标头 | 说明 |
 | --- | --- |
 | x-ms-ratelimit-remaining-subscription-reads |划归到订阅的剩余读取数。 执行读取操作时返回此值。 |
 | x-ms-ratelimit-remaining-subscription-writes |划归到订阅的剩余写入数。 执行写入操作时返回此值。 |
@@ -110,7 +110,7 @@ $r = Invoke-WebRequest -Uri https://management.azure.com/subscriptions/{guid}/re
 $r.Headers["x-ms-ratelimit-remaining-subscription-reads"]
 ```
 
-有关完整的 PowerShell 示例，请参阅[检查订阅的资源管理器限制](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)。
+有关完整的 PowerShell 示例，请参阅[检查订阅资源管理器限制](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)。
 
 如果想要查看剩余的调试请求数，可以在“PowerShell”cmdlet 中提供“-Debug”参数********。
 
@@ -191,6 +191,6 @@ msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-writes': '1199'
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关完整的 PowerShell 示例，请参阅[检查订阅的资源管理器限制](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)。
+* 有关完整的 PowerShell 示例，请参阅[检查订阅资源管理器限制](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)。
 * 有关限制和配额的详细信息，请参阅[Azure 订阅和服务限制、配额和约束](../../azure-resource-manager/management/azure-subscription-service-limits.md)。
-* 要了解如何处理异步 REST 请求，请参阅[跟踪异步 Azure 操作](async-operations.md)。
+* 若要了解如何处理异步 REST 请求，请参阅[跟踪异步 Azure 操作](async-operations.md)。

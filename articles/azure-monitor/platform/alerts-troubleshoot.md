@@ -1,246 +1,246 @@
 ---
-title: 排除 Azure 监视器警报和通知的故障
-description: Azure 监视器警报和可能的解决方案的常见问题。
+title: Azure Monitor 警报和通知疑难解答
+description: Azure Monitor 警报和可能的解决方案的常见问题。
 author: ofirmanor
 ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
 ms.openlocfilehash: beb47f961c6f24453bd49aa5807c9d801fc199a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80132329"
 ---
-# <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>在 Azure 监视器警报中排除问题 
+# <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>排查 Azure Monitor 警报中的问题 
 
-本文讨论 Azure 监视器警报中的常见问题。
+本文讨论 Azure Monitor 警报中的常见问题。
 
-Azure 监视器警报会在监视数据中找到重要条件时主动通知您。 有了警报，你就可以在系统的用户注意到问题之前确定和解决这些问题。 有关警报的详细信息，请参阅 Microsoft [Azure 中的警报概述](alerts-overview.md)。
+当在监视数据中发现重要条件时，Azure Monitor 警报会主动通知你。 有了警报，你就可以在系统的用户注意到问题之前确定和解决这些问题。 有关警报的详细信息，请参阅[Microsoft Azure 中的警报概述](alerts-overview.md)。
 
-## <a name="action-or-notification-on-my-alert-did-not-work-as-expected"></a>警报上的操作或通知未按预期工作
+## <a name="action-or-notification-on-my-alert-did-not-work-as-expected"></a>警报上的操作或通知未按预期方式工作
 
-如果在 Azure 门户中可以看到已触发的警报，但某些操作或通知出现问题，请参阅以下部分。
+如果你可以在 Azure 门户中看到触发的警报，但某些操作或通知有问题，请参阅以下部分。
 
 ## <a name="did-not-receive-expected-email"></a>未收到预期电子邮件
 
-如果在 Azure 门户中可以看到已触发警报，但没有收到已配置的电子邮件，请按照以下步骤操作： 
+如果你可以在 Azure 门户中看到已激发的警报，但未收到你已配置的电子邮件，请执行以下步骤： 
 
-1. **电子邮件被[操作规则](alerts-action-rules.md)抑制吗**？ 
+1. **[操作规则](alerts-action-rules.md)是否取消了电子邮件**？ 
 
-    通过单击门户中的触发警报进行检查，并查看已抑制[操作组的](action-groups.md)历史记录选项卡： 
+    在门户中单击触发的警报，并查看取消[操作组](action-groups.md)的 "历史记录" 选项卡： 
 
-    ![警报操作规则抑制历史记录](media/alerts-troubleshoot/history-action-rule.png)
+    ![警报操作规则禁止显示历史记录](media/alerts-troubleshoot/history-action-rule.png)
 
-1. **操作类型是否"通过电子邮件发送 Azure 资源管理器角色"？**
+1. **操作类型是 "电子邮件 Azure 资源管理器角色" 吗？**
 
-    此操作仅查看订阅范围内的 Azure 资源管理器角色分配和*类型"用户*"。  请确保在订阅级别分配了角色，而不是在资源级别或资源组级别分配了角色。
+    此操作仅查看 Azure 资源管理器在订阅作用域和类型为*User*的角色分配。  请确保已在订阅级别分配角色，而不是在资源级别或资源组级别分配角色。
 
-1. **您的电子邮件服务器和邮箱是否接受外部电子邮件？**
+1. **电子邮件服务器和邮箱是否接受外部电子邮件？**
 
-    验证以下三个地址的电子邮件是否未被阻止：
+    验证来自这三个地址的电子邮件是否未被阻止：
       - azure-noreply@microsoft.com  
       - azureemail-noreply@microsoft.com
       - alerts-noreply@mail.windowsazure.com
 
-    通常，内部邮件列表或通讯组列表会阻止来自外部电子邮件地址的电子邮件。 您需要将上述电子邮件地址列入白名单。  
-    要进行测试，请向操作组添加常规工作电子邮件地址（而不是邮件列表），并查看警报是否到达该电子邮件。 
+    内部邮件列表或通讯组列表通常会阻止来自外部电子邮件地址的电子邮件。 需要将上述电子邮件地址列入允许列表。  
+    若要进行测试，请将常规工作电子邮件地址（而非邮件列表）添加到操作组，并查看警报是否到达该电子邮件。 
 
-1. **电子邮件是由收件箱规则还是垃圾邮件筛选器处理？** 
+1. **电子邮件是否由收件箱规则或垃圾邮件筛选器处理？** 
 
-    验证没有删除这些电子邮件或将其移动到侧文件夹的收件箱规则。 例如，收件箱规则可以捕获主题中的特定发件人或特定单词。
+    验证没有删除这些电子邮件或将其移动到侧文件夹的收件箱规则。 例如，收件箱规则可能会捕捉特定发件人或主题中的特定词。
 
-    此外，请检查：
+    另外，请检查：
     
-      - 电子邮件客户端的垃圾邮件设置（如 Outlook、Gmail）
+      - 电子邮件客户端（如 Outlook、Gmail）的垃圾邮件设置
       - 电子邮件服务器的发件人限制/垃圾邮件设置/隔离设置（如 Exchange、Office 365、G 套件）
-      - 电子邮件安全设备的设置（如果有）（如梭子鱼、思科）。 
+      - 电子邮件安全设备（如 Barracuda、Cisco）的设置。 
 
-1. **您是否意外取消订阅操作组？** 
+1. **是否意外取消了操作组的订阅？** 
 
-    警报电子邮件提供取消订阅操作组的链接。 要检查是否意外取消订阅此操作组，请执行以下操作：
+    警报电子邮件提供从操作组取消订阅的链接。 若要检查是否已从该操作组中意外取消订阅，请执行以下操作之一：
 
-    1. 打开门户中的操作组并检查"状态"列：
+    1. 在门户中打开操作组，并检查 "状态" 列：
 
     ![操作组状态列](media/alerts-troubleshoot/action-group-status.png)
 
-    2. 搜索您的电子邮件以查找取消订阅确认：
+    2. 搜索电子邮件中的取消订阅确认：
 
-    ![取消订阅警报操作组](media/alerts-troubleshoot/unsubscribe-action-group.png)
+    ![从警报操作组取消订阅](media/alerts-troubleshoot/unsubscribe-action-group.png)
 
-    要再次订阅 - 要么使用您收到的取消订阅确认电子邮件中的链接，要么从操作组中删除电子邮件地址，然后再次添加。 
+    若要再次订阅，请使用收到的取消订阅确认电子邮件中的链接，或从操作组中删除电子邮件地址，然后再重新添加。 
  
-1. **您是否因许多电子邮件访问单个电子邮件地址而被评为受限？** 
+1. **由于很多电子邮件都发送到一个电子邮件地址，你的评级是否有限？** 
 
-    电子邮件[的速率限制](alerts-rate-limiting.md)为每小时不超过 100 封电子邮件到每个电子邮件地址。 如果通过此阈值，将删除其他电子邮件通知。  检查您是否收到一条消息，指出您的电子邮件地址已暂时限制费率： 
+    每隔一小时向每个电子邮件地址发送电子邮件[速率限制](alerts-rate-limiting.md)为100个电子邮件。 如果你传递此阈值，则会删除其他电子邮件通知。  检查是否已收到一条消息，指出你的电子邮件地址已暂时达到限制： 
  
-   ![电子邮件速率受限](media/alerts-troubleshoot/email-paused.png)
+   ![电子邮件费率限制](media/alerts-troubleshoot/email-paused.png)
 
-   如果要在不限制速率的情况下接收大量通知，请考虑使用不同的操作，如 Webhook、逻辑应用、Azure 函数或自动化 Runbook，这些操作都不是速率限制的。 
+   如果你想要在没有速率限制的情况下接收大量通知，请考虑使用不同的操作，如 webhook、逻辑应用、Azure 函数或自动化 runbook，两者都没有速率限制。 
 
 ## <a name="did-not-receive-expected-sms-voice-call-or-push-notification"></a>未收到预期的短信、语音呼叫或推送通知
 
-如果在门户中可以看到已触发的警报，但没有收到已配置的 SMS、语音呼叫或推送通知，请按照以下步骤操作： 
+如果你可以在门户中看到触发的警报，但未收到你已配置的 SMS、语音呼叫或推送通知，请执行以下步骤： 
 
-1. **[操作规则抑制了该操作吗](alerts-action-rules.md)？** 
+1. **操作[规则](alerts-action-rules.md)是否取消了操作？** 
 
-    通过单击门户中的触发警报进行检查，并查看已抑制[操作组的](action-groups.md)历史记录选项卡： 
+    在门户中单击触发的警报，并查看取消[操作组](action-groups.md)的 "历史记录" 选项卡： 
 
-    ![警报操作规则抑制历史记录](media/alerts-troubleshoot/history-action-rule.png)
+    ![警报操作规则禁止显示历史记录](media/alerts-troubleshoot/history-action-rule.png)
 
-   如果这是无意的，您可以修改、禁用或删除操作规则。
+   如果无意间，可以修改、禁用或删除操作规则。
  
-1. **短信/语音：您的电话号码是否正确？**
+1. **短信/语音：电话号码是否正确？**
 
-   检查 SMS 操作中有关国家/地区代码或电话号码中的拼写错误。 
+   在国家/地区代码或电话号码中检查 SMS 操作是否有拼写错误。 
  
-1. **短信/语音：你被限制率吗？** 
+1. **短信/语音：你的速率是否有限制？** 
 
-    短信和语音通话的速率限制为每个电话号码每五分钟不超过一次通知。 如果通过此阈值，通知将被删除。 
+    对于每个电话号码，短信和语音呼叫的速率限制为每五分钟一次。 如果传递此阈值，则将删除通知。 
 
-      - 语音呼叫 – 检查呼叫历史记录，并查看前五分钟是否有来自 Azure 的不同呼叫。 
-      - 短信 - 检查您的短信历史记录，以显示您的电话号码已受到限制的短信。 
+      - 语音呼叫–查看呼叫历史记录，并查看你在过去五分钟内是否有不同的 Azure 呼叫。 
+      - SMS-检查 SMS 历史记录中是否存在消息，指示你的电话号码已得到评级。 
 
-    如果要在不限制速率的情况下接收大量通知，请考虑使用不同的操作，如 Webhook、逻辑应用、Azure 函数或自动化 Runbook，这些操作都不是速率限制的。 
+    如果你想要在没有速率限制的情况下接收大量通知，请考虑使用不同的操作，如 webhook、逻辑应用、Azure 函数或自动化 runbook，两者都没有速率限制。 
  
-1. **短信：您是否意外取消订阅操作组？**
+1. **SMS：是否意外取消了从操作组的订阅？**
 
-    打开 SMS 历史记录，并检查您是否选择退出此特定操作组（使用禁用action_group_short_name回复）或所有操作组（使用停止回复）发送短信。 要再次订阅，请发送相关的 SMS 命令（启用action_group_short_name或 START），或从操作组中删除 SMS 操作，然后再次添加它。  有关详细信息，请参阅[操作组中的 SMS 警报行为](alerts-sms-behavior.md)。
+    打开 SMS 历史记录，并检查是否已选择不使用此特定操作组（使用 "禁用" action_group_short_name "答复"）或 "所有操作" 组中的 SMS 传递（使用 "停止" 答复）。 若要再次订阅，请发送相关 SMS 命令（启用 action_group_short_name 或启动），或从操作组中删除 SMS 操作，然后重新添加。  有关详细信息，请参阅[操作组中的短信警报行为](alerts-sms-behavior.md)。
 
-1. **您是否不小心阻止了手机上的通知？**
+1. **你的手机上是否意外阻止了通知？**
 
-   大多数移动电话都允许您阻止来自特定电话号码或短代码的呼叫或短信，或阻止来自特定应用（如 Azure 移动应用）的推送通知。 要检查是否意外阻止了手机上的通知，请搜索特定于手机操作系统和型号的文档，或使用其他电话和电话号码进行测试。 
+   大多数移动电话允许阻止呼叫或短信的电话号码或短信，或阻止来自特定应用（如 Azure 移动应用）的推送通知。 若要检查你的手机上是否意外阻止了通知，请搜索特定于你的手机操作系统和型号的文档，或使用其他电话号码和电话号码进行测试。 
 
-## <a name="expected-another-type-of-action-to-trigger-but-it-did-not"></a>预期将触发另一种类型的操作，但它没有 
+## <a name="expected-another-type-of-action-to-trigger-but-it-did-not"></a>需要触发另一种类型的操作，但它不是 
 
-如果在门户中可以看到已触发的警报，但其配置的操作未触发，请按照以下步骤操作： 
+如果你可以在门户中看到触发的警报，但其配置的操作未触发，请执行以下步骤： 
 
-1. **操作规则抑制了该操作吗？** 
+1. **操作规则是否取消了操作？** 
 
-    通过单击门户中的触发警报进行检查，并查看已抑制[操作组的](action-groups.md)历史记录选项卡： 
+    在门户中单击触发的警报，并查看取消[操作组](action-groups.md)的 "历史记录" 选项卡： 
 
-    ![警报操作规则抑制历史记录](media/alerts-troubleshoot/history-action-rule.png)
+    ![警报操作规则禁止显示历史记录](media/alerts-troubleshoot/history-action-rule.png)
  
-    如果这是无意的，您可以修改、禁用或删除操作规则。 
+    如果无意间，可以修改、禁用或删除操作规则。 
 
-1. **网钩没有触发吗？**
+1. **Webhook 是否触发？**
 
-    1. **源 IP 地址已被阻止吗？**
+    1. **是否已阻止源 IP 地址？**
     
-       将网络钩子的[IP 地址](action-groups.md#action-specific-information)列入白名单。
+       将从其调用 webhook 的[IP 地址](action-groups.md#action-specific-information)列入允许列表。
 
-    1. **Webhook 终结点是否正常工作？**
+    1. **你的 webhook 终结点是否正常工作？**
 
-       验证已配置的 Webhook 终结点正确且终结点工作正常。 检查 Webhook 日志或检测其代码，以便进行调查（例如，记录传入的有效负载）。 
+       验证配置的 webhook 终结点是否正确，终结点是否正常工作。 检查 webhook 日志或检测其代码，以便进行调查（例如，记录传入有效负载）。 
 
-    1. **你是在给Slack或微软团队打电话？**  
-    每个终结点都需要特定的 JSON 格式。 请按照[这些说明](action-groups-logic-app.md)配置逻辑应用操作。
+    1. **你是在调用可宽延时间还是 Microsoft 团队？**  
+    其中每个终结点都需要一个特定的 JSON 格式。 请遵照[这些说明](action-groups-logic-app.md)来配置逻辑应用操作。
 
-    1. **您的 Webhook 是否变得无响应或返回错误？** 
+    1. **Webhook 是无响应还是返回错误？** 
 
-        我们 Webhook 响应的超时时间是 10 秒。 返回以下 HTTP 状态代码时，最多重试两次 Webhook 调用：408、429、503、504 或 HTTP 终结点未响应。 首次重试在 10 秒后发生。 第二次也是最后一次重试在 100 秒后进行。 如果第二次重试失败，则在 30 分钟内不会再次调用该终结点，不管执行什么操作。
+        Webhook 响应的超时期限为10秒。 返回以下 HTTP 状态代码时，webhook 调用将重试最多两次：408、429、503、504或 HTTP 终结点未响应。 首次重试在 10 秒后发生。 第二次和最后一次重试在100秒后发生。 如果第二次重试失败，则在 30 分钟内不会再次调用该终结点，不管执行什么操作。
 
-## <a name="action-or-notification-happened-more-than-once"></a>多次执行操作或通知 
+## <a name="action-or-notification-happened-more-than-once"></a>发生了多次操作或通知 
 
-如果您多次收到警报通知（如电子邮件或 SMS），或者警报的操作（如 Webhook 或 Azure 函数）已多次触发，请按照以下步骤操作： 
+如果多次收到警报（如电子邮件或短信）的通知，或者触发了多次警报操作（如 webhook 或 Azure function），请遵循以下步骤： 
 
-1. **真的是同一个警报吗？** 
+1. **是否确实是相同的警报？** 
 
-    在某些情况下，大约同时触发多个类似的警报。 因此，它可能只是像同一个警报触发了它的行动多次。 例如，活动日志警报规则可能配置为在事件启动时和事件完成（成功或失败）时触发，因为不筛选事件状态字段。 
+    在某些情况下，会同时触发多个类似的警报。 因此，它可能看似同一警报多次触发了其操作。 例如，可以将活动日志警报规则配置为在事件启动时以及在已完成（成功或失败）时，通过不筛选事件状态字段来激发。 
 
-    要检查这些操作或通知是否来自不同警报，请检查警报详细信息，例如其时间戳和警报 ID 或其相关 ID。或者，检查门户中已触发警报的列表。 如果是这种情况，则需要调整警报规则逻辑或以其他方式配置警报源。 
+    若要检查这些操作或通知是否来自不同警报，请检查警报详细信息，如警报时间戳以及警报 id 或相关 id。或者，在门户中检查触发的警报的列表。 如果是这种情况，则需要调整警报规则逻辑或配置警报源。 
 
-1. **该操作是否在多个操作组中重复？** 
+1. **此操作是否在多个操作组中重复？** 
 
-    触发警报时，将独立处理其每个操作组。 因此，如果操作（如电子邮件地址）出现在多个触发的操作组中，则每个操作组将调用一次。 
+    触发警报时，将单独处理其每个操作组。 因此，如果某个操作（如电子邮件地址）出现在多个触发的操作组中，则会对每个操作组调用一次操作。 
 
-    要检查触发了哪些操作组，请检查警报历史记录选项卡。您将看到警报规则中定义的操作组和按操作规则添加到警报的操作组： 
+    若要检查触发了哪些操作组，请检查 "警报历史记录" 选项卡。您将看到在警报规则中定义的操作组以及通过操作规则添加到警报的操作组： 
 
     ![在多个操作组中重复的操作](media/alerts-troubleshoot/action-repeated-multi-action-groups.png)
 
 ## <a name="action-or-notification-has-an-unexpected-content"></a>操作或通知具有意外内容
 
-如果您已收到警报，但认为其某些字段丢失或不正确，请按照以下步骤操作： 
+如果收到警报，但相信其某些字段缺失或不正确，请执行以下步骤： 
 
-1. **您是否为操作选择了正确的格式？** 
+1. **是否为操作选择了正确的格式？** 
 
-    每个操作类型（电子邮件、Webhook 等）有两种格式 - 默认格式、旧格式和[较新的通用架构格式](alerts-common-schema.md)。 创建操作组时，可以指定每个操作所需的格式 - 操作组中的不同操作可能具有不同的格式。 
+    每个操作类型（电子邮件、webhook 等）都有两种格式–默认格式、旧格式和[较新的通用架构格式](alerts-common-schema.md)。 创建操作组时，请指定每个操作所需的格式–操作组中的不同操作可能具有不同的格式。 
 
-    例如，对于 Webhook 操作： 
+    例如，对于 webhook 操作： 
 
     ![webhook 操作架构选项](media/alerts-troubleshoot/webhook.png)
 
-    检查在操作级别指定的格式是否达到预期。 例如，您可能已经开发了响应警报（Webhook、函数、逻辑应用等）的代码，期望使用一种格式，但在稍后的操作中，您或其他人指定了不同的格式。  
+    检查在操作级别指定的格式是否与预期的相同。 例如，你可能已开发用于响应警报（webhook、函数、逻辑应用等）的代码，这些代码应为一种格式，但稍后在操作中或其他人指定了不同的格式。  
 
-    此外，检查活动[日志警报](activity-log-alerts-webhook.md)的有效负载格式 （JSON），检查[日志搜索警报](alerts-log-webhook.md)（应用程序见解和日志分析）、[指标警报](alerts-metric-near-real-time.md#payload-schema)、[常见警报架构](alerts-common-schema-definitions.md)以及弃用[的经典指标警报](alerts-webhooks.md)。
+    此外，请检查[活动日志警报](activity-log-alerts-webhook.md)的负载格式（JSON），查看[是否有用于](alerts-log-webhook.md)[指标警报](alerts-metric-near-real-time.md#payload-schema)的事件日志警报（适用于 "Application Insights" 和 "log analytics"）、"[常见警报架构](alerts-common-schema-definitions.md)" 和 "弃用的[经典指标警报](alerts-webhooks.md)"。
 
  
-1. **活动日志警报：活动日志中的信息是否可用？** 
+1. **活动日志警报：活动日志中是否提供了信息？** 
 
-    [活动日志警报](activity-log-alerts.md)是基于写入 Azure 活动日志的事件的警报，例如有关创建、更新或删除 Azure 资源的事件、服务运行状况和资源运行状况事件，或 Azure 顾问和 Azure 策略的调查结果。 如果收到基于活动日志的警报，但需要的某些字段丢失或不正确，请先检查活动日志本身中的事件。 如果 Azure 资源未在其活动日志事件中写入要查找的字段，则这些字段将不会包含在相应的警报中。 
+    [活动日志警报](activity-log-alerts.md)是基于写入到 Azure 活动日志的事件的警报，如有关创建、更新或删除 azure 资源、服务运行状况和资源运行状况事件，或者从 azure Advisor 和 azure 策略中发现的事件。 如果收到基于活动日志的警报，但所需的某些字段缺失或不正确，请首先检查活动日志本身中的事件。 如果 Azure 资源未写入正在其活动日志事件中查找的字段，则这些字段将不会包含在相应的警报中。 
 
-## <a name="action-rule-is-not-working-as-expected"></a>操作规则未按预期工作 
+## <a name="action-rule-is-not-working-as-expected"></a>操作规则未按预期方式工作 
 
-如果在门户中可以看到已触发的警报，但相关操作规则未按预期工作，请按照以下步骤操作： 
+如果你可以在门户中看到触发的警报，但相关操作规则没有按预期方式工作，请执行以下步骤： 
 
-1. **操作规则是否启用？** 
+1. **操作规则是否已启用？** 
 
-    检查操作规则状态列以验证是否启用了相关操作角色。 
+    检查 "操作规则状态" 列以验证是否已启用相关操作角色。 
 
     ![图形](media/alerts-troubleshoot/action-rule-status.png) 
 
-    如果未启用，则可以通过选择操作规则并单击"启用"来启用该操作规则。 
+    如果未启用，则可以通过选择操作规则并单击 "启用" 来启用它。 
 
-1. **是服务运行状况警报吗？** 
+1. **它是否为服务运行状况警报？** 
 
-    服务运行状况警报（监视器服务 ="服务运行状况"）不受操作规则的影响。 
+    服务运行状况警报（监视器服务 = "服务运行状况"）不受操作规则影响。 
 
-1. **操作规则对警报起作用了吗？** 
+1. **操作规则对你的警报是否起作用？** 
 
-    通过单击门户中的已触发警报，检查操作规则是否处理了警报，并查看历史记录选项卡。
+    通过在门户中单击触发的警报，查看操作规则是否已处理警报，并查看 "历史记录" 选项卡。
 
-    下面是禁止所有操作组的操作规则的示例： 
+    下面是禁止显示所有操作组的操作规则的示例： 
  
-     ![警报操作规则抑制历史记录](media/alerts-troubleshoot/history-action-rule.png)
+     ![警报操作规则禁止显示历史记录](media/alerts-troubleshoot/history-action-rule.png)
 
     下面是添加另一个操作组的操作规则的示例：
 
     ![在多个操作组中重复的操作](media/alerts-troubleshoot/action-repeated-multi-action-groups.png)
  
 
-1. **操作规则范围和筛选器是否与触发的警报匹配？** 
+1. **操作规则的作用域和筛选器是否与触发的警报相符？** 
 
-    如果您认为操作规则应该已触发，但未触发，或者它不应触发，但确实触发了，请仔细检查操作规则范围和筛选条件与触发警报的属性。 
+    如果你认为操作规则应该已激发但不应触发，但它不应被激发但确实如此，请仔细检查操作规则作用域和筛选条件与触发的警报的属性。 
 
 
-## <a name="how-to-find-the-alert-id-of-a-fired-alert"></a>如何查找已触发警报的警报 ID
+## <a name="how-to-find-the-alert-id-of-a-fired-alert"></a>如何查找触发的警报的警报 id
 
-打开有关特定触发警报的案例时（例如，如果您未收到其电子邮件通知），则需要提供警报 ID。 
+当打开有关特定触发的警报的事例时（例如，如果你未收到其电子邮件通知），你将需要提供警报 id。 
 
-要找到它，请按照以下步骤操作：
+若要找到它，请执行以下步骤：
 
-1. 在 Azure 门户中，导航到已触发警报的列表，并查找该特定警报。 您可以使用筛选器来帮助找到它。 
+1. 在 Azure 门户中，导航到触发的警报的列表，并找到该特定警报。 您可以使用筛选器来帮助您找到它。 
 
 1. 单击警报以打开警报详细信息。 
 
-1. 向下滚动到第一个选项卡（摘要选项卡）的警报字段中，直到找到它，然后复制它。 该字段还包括一个"复制到剪贴板"帮助器按钮，您可以使用。  
+1. 在第一个选项卡（"摘要" 选项卡）的警报字段中向下滚动，直到找到它并复制它。 该字段还包括可以使用的 "复制到剪贴板" 帮助器按钮。  
 
-    ![查找警报 ID](media/alerts-troubleshoot/get-alert-id.png)
+    ![查找警报 id](media/alerts-troubleshoot/get-alert-id.png)
 
-## <a name="problem-creating-updating-or-deleting-action-rules-in-the-azure-portal"></a>在 Azure 门户中创建、更新或删除操作规则时遇到问题
+## <a name="problem-creating-updating-or-deleting-action-rules-in-the-azure-portal"></a>在 Azure 门户中创建、更新或删除操作规则时出现问题
 
-如果在尝试创建、更新或删除[操作规则](alerts-action-rules.md)时收到错误，请按照以下步骤操作： 
+如果尝试创建、更新或删除[操作规则](alerts-action-rules.md)时收到错误，请执行以下步骤： 
 
-1. **您是否收到权限错误？**  
+1. **您是否收到了权限错误？**  
 
-    您应该具有 [监视参与者内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)，或者具有与操作规则和警报相关的特定权限。
+    应具有 " [监视参与者" 内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)，或与操作规则和警报相关的特定权限。
 
-1. **是否验证操作规则参数？**  
+1. **验证了操作规则参数吗？**  
 
-    检查[操作规则文档](alerts-action-rules.md)，或[操作规则 PowerShell 集-AzActionRule 命令](https://docs.microsoft.com/powershell/module/az.alertsmanagement/Set-AzActionRule?view=azps-3.5.0)。 
+    检查[操作规则文档](alerts-action-rules.md)或[操作规则 PowerShell AzActionRule](https://docs.microsoft.com/powershell/module/az.alertsmanagement/Set-AzActionRule?view=azps-3.5.0)命令。 
 
 
 ## <a name="next-steps"></a>后续步骤
-- 如果使用日志警报，请参阅[故障排除日志警报](alert-log-troubleshoot.md)。
-- 返回 Azure[门户](https://portal.azure.com)，检查是否通过上述指南解决了问题 
+- 如果使用日志警报，还应参阅[疑难解答日志警报](alert-log-troubleshoot.md)。
+- 返回[Azure 门户](https://portal.azure.com)，检查以上指导是否已解决问题 

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ffb8243041bb93ba8be6a65bb83df6f84affaee3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80049662"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>混合 Azure AD 加入所需的配置后任务
@@ -31,41 +31,41 @@ ms.locfileid: "80049662"
 完成所有配置步骤后，运行 Windows 10 和 Windows Server 2016 的所有已加入域的设备会自动注册到 Azure AD。 如果你希望进行受控的实施而不是执行这种自动注册，可以使用组策略有选择地启用或禁用自动实施。  在开始其他配置步骤之前，应设置此组策略：
 * 在 Active Directory 中创建组策略对象。
 * 将其命名为 (ex- Hybrid Azure AD join)。
-* 编辑并转到：计算机配置>策略>管理模板> Windows 组件>设备注册。
+* 编辑并定位到：计算机配置 > 策略 > 管理模板 > Windows 组件 > 设备注册。
 
 >[!NOTE]
 >对于 2012R2，请通过“计算机配置”>“策略”>“管理模板”>“Windows 组件”>“工作区加入”>“自动工作区加入客户端计算机”完成策略设置****
 
-* 启用此设置：将加入域的计算机注册为设备。
+* 启用此设置：将已加入域的计算机注册为设备。
 * 依次单击“应用”、“确定”。
 * 将 GPO 链接到所选的位置（组织单位、安全组或所有设备的域）。
 
-## <a name="2-configure-network-with-device-registration-endpoints"></a>2. 使用设备注册终结点配置网络
+## <a name="2-configure-network-with-device-registration-endpoints"></a>2. 用设备注册终结点配置网络
 确保可从组织网络中的计算机访问以下 URL，以便注册到 Azure AD：
 
 * `https://enterpriseregistration.windows.net`
 * `https://login.microsoftonline.com`
 * `https://device.login.microsoftonline.com` 
 
-## <a name="3-implement-wpad-for-windows-10-devices"></a>3. 为 Windows 10 设备实现 WPAD
+## <a name="3-implement-wpad-for-windows-10-devices"></a>3. 实现适用于 Windows 10 设备的 WPAD
 如果组织通过出站代理访问 Internet，请实现 Web 代理自动发现 (WPAD)，使 Windows 10 计算机能够注册到 Azure AD。
 
-## <a name="4-configure-the-scp-in-any-forests-that-were-not-configured-by-azure-ad-connect"></a>4. 在 Azure AD 连接未配置的任何林中配置 SCP 
+## <a name="4-configure-the-scp-in-any-forests-that-were-not-configured-by-azure-ad-connect"></a>4. 在未配置的任何林中配置 SCP Azure AD Connect 
 
 服务连接点 (SCP) 包含设备用来自动注册的 Azure AD 租户信息。  运行从 Azure AD Connect 下载的 PowerShell 脚本 ConfigureSCP.ps1。
 
-## <a name="5-configure-any-federation-service-that-was-not-configured-by-azure-ad-connect"></a>5. 配置 Azure AD 连接未配置的任何联合身份验证服务
+## <a name="5-configure-any-federation-service-that-was-not-configured-by-azure-ad-connect"></a>5. 配置未配置的任何联合身份验证服务 Azure AD Connect
 
 如果组织使用联合身份验证服务登录到 Azure AD，则 Azure AD 信赖方信任中的声明规则必须允许设备身份验证。 如果将联合身份验证与 AD FS 配合使用，请转到 [AD FS 帮助](https://aka.ms/aadrptclaimrules)以生成声明规则。 如果使用非 Microsoft 联合身份验证解决方案，该联系相关的提供商获得指导。  
 
 >[!NOTE]
 >如果使用了 Windows 下层设备，在接收发往 Azure AD 信任的请求时，该服务必须支持颁发 authenticationmethod 和 wiaormultiauthn 声明。 在 AD FS 中，应添加一个用于传递身份验证方法的颁发转换规则。
 
-## <a name="6-enable-azure-ad-seamless-sso-for-windows-down-level-devices"></a>6. 为 Windows 低级设备启用 Azure AD 无缝 SSO
+## <a name="6-enable-azure-ad-seamless-sso-for-windows-down-level-devices"></a>6. 为 Windows 下层设备启用 Azure AD 无缝 SSO
 
 如果组织使用密码哈希同步或直通身份验证登录到 Azure AD，请使用该登录方法启用 Azure AD 无缝 SSO，以便对 Windows 下层设备进行身份验证：https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso。 
 
-## <a name="7-set-azure-ad-policy-for-windows-down-level-devices"></a>7. 为 Windows 低级设备设置 Azure AD 策略
+## <a name="7-set-azure-ad-policy-for-windows-down-level-devices"></a>7. 为 Windows 下层设备设置 Azure AD 策略
 
 若要注册 Windows 下层设备，需确保 Azure AD 策略允许用户注册设备。 
 
@@ -74,13 +74,13 @@ ms.locfileid: "80049662"
 * 将“用户可以向 Azure AD 注册其设备”设置为“全部”。
 * 点击“保存”
 
-## <a name="8-add-azure-ad-endpoint-to-windows-down-level-devices"></a>8. 将 Azure AD 终结点添加到 Windows 低级设备
+## <a name="8-add-azure-ad-endpoint-to-windows-down-level-devices"></a>8. 将 Azure AD 终结点添加到 Windows 下层设备
 
 将 Azure AD 设备身份验证终结点添加到 Windows 下层设备上的本地 Intranet 区域，避免对设备进行身份验证时出现证书提示：`https://device.login.microsoftonline.com` 
 
 如果使用[无缝 SSO](how-to-connect-sso.md)，另请在该区域中启用“允许通过脚本更新状态栏”，并添加以下终结点：`https://autologon.microsoftazuread-sso.com` 
 
-## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9. 在 Windows 低级设备上安装 Microsoft 工作区加入
+## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9. 在 Windows 下层设备上安装 Microsoft Workplace Join
 
 安装程序会在设备系统上创建一个在用户上下文中运行的计划任务。 当用户登录到 Windows 时触发该任务。 使用 Windows 集成身份验证完成身份验证后，该任务将使用用户凭据以静默方式将设备联接到 Azure AD。 下载中心的网址为 https://www.microsoft.com/download/details.aspx?id=53554。 
 

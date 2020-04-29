@@ -1,15 +1,15 @@
 ---
-title: 使用应用程序见解监视 Azure 库伯奈斯服务 （AKS） 或其他库伯奈斯托管应用程序 - Azure 监视器 |微软文档
+title: 使用 Application Insights 来监视 Azure Kubernetes 服务（AKS）或其他 Kubernetes 托管的应用程序-Azure Monitor |Microsoft Docs
 description: Azure Monitor 使用 Kubernetes 群集上的服务网格技术 Istio 提供针对任何 Kubernetes 托管应用程序的监视。 这样，就可以收集传入和传出群集中运行的 pod 的请求的 Application Insights 相关遥测数据。
 ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
 ms.openlocfilehash: 56a0cb66f5b54c817067970ab369d7ca471a1696
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80132341"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Kubernetes 托管应用程序的零检测应用程序监视
@@ -24,7 +24,7 @@ Azure Monitor 现在使用 Kubernetes 群集上的服务网格技术提供针对
 > [!NOTE]
 > 这是在 Kubernetes 上执行应用程序监视的多种方法之一。还可以使用 [Application Insights SDK](../../azure-monitor/azure-monitor-app-hub.yml) 来检测 Kubernetes 中托管的任何应用，而无需使用服务网格。 若要监视 Kubernetes 且不使用 SDK 检测应用程序，可以使用以下方法。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 一个 [Kubernetes 群集](https://docs.microsoft.com/azure/aks/concepts-clusters-workloads)。
 - 可在控制台中访问群集，以运行 *kubectl*。
@@ -37,7 +37,7 @@ Azure Monitor 现在使用 Kubernetes 群集上的服务网格技术提供针对
 
 - [应用程序地图](../../azure-monitor/app/app-map.md)
 - [实时流指标](../../azure-monitor/app/live-stream.md)
-- [仪表 板](../../azure-monitor/app/overview-dashboard.md)
+- [仪表板](../../azure-monitor/app/overview-dashboard.md)
 - [指标资源管理器](../../azure-monitor/platform/metrics-getting-started.md)
 - [分布式跟踪](../../azure-monitor/app/distributed-tracing.md)
 - [端到端的事务监视](../../azure-monitor/learn/tutorial-performance.md#identify-slow-server-operations)
@@ -59,7 +59,7 @@ kubectl label namespace <my-app-namespace> istio-injection=enabled
 ```
 
 > [!NOTE]
-> 由于服务网格会从线路中提取数据，因此我们无法截获加密的流量。 对于不会离开群集的流量，可使用未加密的协议（例如 HTTP）。 对于必须加密的外部流量，请考虑在入口控制器[设置 TLS 端接](https://kubernetes.io/docs/concepts/services-networking/ingress/#tls)。
+> 由于服务网格会从线路中提取数据，因此我们无法截获加密的流量。 对于不会离开群集的流量，可使用未加密的协议（例如 HTTP）。 对于必须加密的外部通信，请考虑在入口控制器上[设置 TLS 终止](https://kubernetes.io/docs/concepts/services-networking/ingress/#tls)。
 
 在服务网格外部运行的应用程序不受影响。
 

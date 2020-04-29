@@ -1,6 +1,6 @@
 ---
 title: 将 Microsoft Dynamics 365 Business Central 应用带入 Microsoft AppSource
-description: 弃用文章，提供指向 PC 文章的链接;是"将动态 365 商业中心应用程序发布到 Microsoft AppSource 的概述。
+description: 弃用的文章，提供了指向电脑文章的链接;"是" 将 Dynamics 365 Business Central 应用程序发布到 Microsoft AppSource 的概述。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: dsindona
 ms.openlocfilehash: 5e9e62989f10e047afb8ac8d2c599bdff1af2c62
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80276013"
 ---
 # <a name="bring-your-microsoft-dynamics-365-business-central-app-into-microsoft-appsource"></a>将 Microsoft Dynamics 365 Business Central 应用带入 Microsoft AppSource
 
-[云合作伙伴门户](https://cloudpartner.azure.com/)不再支持创建和管理 Dynamics 365 业务中心产品/ 相反，此功能已移动到 Microsoft[合作伙伴中心门户](https://partner.microsoft.com/)。 有关详细信息，请参阅[创建新的 Dynamics 365 业务中心产品/](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer)
+[云合作伙伴门户](https://cloudpartner.azure.com/)不再支持创建和管理 Dynamics 365 Business Central 产品/服务。 相反，此功能已移动到 Microsoft[合作伙伴中心门户](https://partner.microsoft.com/)。 有关详细信息，请参阅[创建新的 Dynamics 365 Business Central 产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer)。
 
 ## <a name="next-steps"></a>后续步骤
 
-在创建新的 Dynamics 365 商业中心产品/服务之前，应阅读["创建合作伙伴中心"帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)，然后在选中 **"概览"** 页后打开["商业市场"仪表板](https://partner.microsoft.com/dashboard/directory)。 按照[创建新动态 365 商业中心产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer)中的说明创建您的产品/服务。
+在创建新的 Dynamics 365 业务中心产品/服务之前，应阅读[创建合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)，然后在选中 "**概述**" 页的情况下打开 "[商业市场" 仪表板](https://partner.microsoft.com/dashboard/directory)。 按照[创建新的 Dynamics 365 Business Central 产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer)中的说明创建产品/服务。

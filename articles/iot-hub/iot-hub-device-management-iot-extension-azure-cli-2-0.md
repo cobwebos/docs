@@ -11,10 +11,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
 ms.openlocfilehash: 88c3d1f4213b161d5e322349a7f0e1bc1dd952e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80239647"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>针对 Azure IoT 中心设备管理，使用适用于 Azure CLI 的 IoT 扩展
@@ -23,7 +23,7 @@ ms.locfileid: "80239647"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)是一个开源 IoT 扩展，它增加了[Azure CLI](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest)的功能。 Azure CLI 包含用于与 Azure 资源管理器和管理终结点交互的命令。 例如，可使用 Azure CLI 创建 Azure VM 或 IoT 中心。 CLI 扩展使 Azure 服务能够扩展 Azure CLI，从而可访问其他特定于服务的功能。 IoT 扩展允许 IoT 开发人员命令行访问所有 IoT 中心、IoT 边缘和 IoT 中心设备配置服务功能。
+[适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)是一个开放源代码 IoT 扩展，它增强了 [Azure CLI](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest) 的功能。 Azure CLI 包含用于与 Azure 资源管理器和管理终结点进行交互的命令。 例如，可使用 Azure CLI 创建 Azure VM 或 IoT 中心。 CLI 扩展使 Azure 服务能够扩展 Azure CLI，从而可访问其他特定于服务的功能。 IoT 扩展为 IoT 开发人员提供了对所有 IoT 中心、IoT Edge 和 IoT 中心设备预配服务功能的命令行访问。
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
@@ -61,7 +61,7 @@ ms.locfileid: "80239647"
 
 * [Python 2.7x 或 Python 3.x](https://www.python.org/downloads/)
 
-* Azure CLI。 如需进行安装，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 至少，Azure CLI 版本必须为 2.0.70 或以上。 请使用 `az –version` 验证版本。
+* Azure CLI。 如需进行安装，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 Azure CLI 版本至少必须是2.0.70 或更高版本。 请使用 `az –version` 验证版本。
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
@@ -103,7 +103,7 @@ az iot hub device-twin update -n <your hub name> \
 az iot hub device-twin show -n <your hub name> -d <your device id>
 ```
 
-孪生报告的属性之一为 $metadata.$lastUpdated，它显示了设备应用上次更新其报告的属性集的时间。
+其中一个克隆的已报告属性是 $metadata。 $lastUpdated，它显示设备应用程序更新其报告属性集的最后时间。
 
 ## <a name="device-twin-tags"></a>设备孪生标记
 

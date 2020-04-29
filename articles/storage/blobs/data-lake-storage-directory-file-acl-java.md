@@ -1,5 +1,5 @@
 ---
-title: Azure 数据存储 Gen2 Java SDK，用于文件& ACL
+title: Azure Data Lake Storage Gen2 Java SDK for files & Acl
 description: 使用用于 Java 的 Azure 存储库在启用了分层命名空间 (HNS) 的存储帐户中管理目录和文件以及目录访问控制列表 (ACL)。
 author: normesta
 ms.service: storage
@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.openlocfilehash: 45870dd7d3035b6b49340fd6e8016794088e775a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80061557"
 ---
-# <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 Java 管理 Azure 数据存储库第 2 代中的目录、文件和 ACL
+# <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 Java 管理 Azure Data Lake Storage Gen2 中的目录、文件和 Acl
 
 本文介绍了如何使用 Java 在启用了分层命名空间 (HNS) 的存储帐户中创建和管理目录、文件与权限。 
 
-[包（Maven）](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake) | [样本](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake) | [API 参考](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.1/index.html) | [第 1 代到第 2 代映射](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [提供反馈](https://github.com/Azure/azure-sdk-for-java/issues)
+[包（Maven）](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake) | [示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake) | [API 参考](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.1/index.html) | [Gen1 to Gen2 mapping](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [提供反馈](https://github.com/Azure/azure-sdk-for-java/issues)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,7 +31,7 @@ ms.locfileid: "80061557"
 
 若要开始，请打开[此页](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake)，找到最新版本的 Java 库。 然后，在文本编辑器中打开 pom.xml 文件**。 添加引用该版本的依赖项元素。
 
-如果计划使用 Azure 活动目录 （AD） 对客户端应用程序进行身份验证，则向 Azure 密钥客户端库添加依赖项。 请参阅[将机密客户端库包添加到您的项目](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity#adding-the-package-to-your-project)。
+如果计划使用 Azure Active Directory （AD）对客户端应用程序进行身份验证，则将依赖项添加到 Azure 机密客户端库。 请参阅[将机密客户端库包添加到项目](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity#adding-the-package-to-your-project)。
 
 接下来，将这些 import 语句添加到代码文件。
 
@@ -59,7 +59,7 @@ import com.azure.storage.file.datalake.models.RolePermissions;
 
 这是连接到帐户的最简单方法。 
 
-本示例使用帐户密钥创建**DataLakeServiceClient**实例。
+此示例使用帐户密钥创建一个**DataLakeServiceClient**实例。
 
 ```java
 
@@ -78,11 +78,11 @@ static public DataLakeServiceClient GetDataLakeServiceClient
 }      
 ```
 
-### <a name="connect-by-using-azure-active-directory-azure-ad"></a>使用 Azure 活动目录 （Azure AD） 进行连接
+### <a name="connect-by-using-azure-active-directory-azure-ad"></a>使用 Azure Active Directory （Azure AD）进行连接
 
-可以使用 Java[的 Azure 标识客户端库](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity)使用 Azure AD 对应用程序进行身份验证。
+可以使用适用于[Java 的 Azure 标识客户端库](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity)通过 Azure AD 对应用程序进行身份验证。
 
-本示例使用客户端 ID、客户端机密和租户 ID 创建**DataLakeServiceClient**实例。  要获取这些值，请参阅[从 Azure AD 获取令牌以授权来自客户端应用程序的请求](../common/storage-auth-aad-app.md)。
+此示例使用客户端 ID、客户端机密和租户 ID 创建一个**DataLakeServiceClient**实例。  若要获取这些值，请参阅[从 Azure AD 获取用于从客户端应用程序授权请求的令牌](../common/storage-auth-aad-app.md)。
 
 ```java
 static public DataLakeServiceClient GetDataLakeServiceClient
@@ -102,12 +102,12 @@ static public DataLakeServiceClient GetDataLakeServiceClient
 ```
 
 > [!NOTE]
-> 有关详细信息，请参阅 Azure[标识客户端库以了解 Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity)文档。
+> 有关更多示例，请参阅[适用于 Java 的 Azure 标识客户端库](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity)文档。
 
 
 ## <a name="create-a-file-system"></a>创建文件系统
 
-文件系统充当文件的容器。 您可以通过调用**DataLakeServiceClient.createSystem**方法来创建一个。
+文件系统充当文件的容器。 可以通过调用**DataLakeServiceClient. createFileSystem**方法来创建一个。
 
 此示例创建名为 `my-file-system` 的文件系统。 
 
@@ -260,13 +260,13 @@ static public void UploadFile(DataLakeFileSystemClient fileSystemClient)
 ```
 
 > [!TIP]
-> 如果文件大小较大，则代码必须对**DataLakeFileClient.append**方法进行多次调用。 请考虑使用**DataLakeFileClient.上传从文件**的方法。 这样，您可以在单个调用中上载整个文件。 
+> 如果文件太大，则代码必须对**DataLakeFileClient**方法进行多次调用。 请考虑改用**DataLakeFileClient. uploadFromFile**方法。 这样一来，您就可以在单个调用中上载整个文件。 
 >
 > 有关示例，请参阅下一部分。
 
-## <a name="upload-a-large-file-to-a-directory"></a>将大型文件上载到目录
+## <a name="upload-a-large-file-to-a-directory"></a>将大型文件上传到目录
 
-使用**DataLakeFileClient.uploadFromFile**方法上载大型文件，而无需对**DataLakeFileClient.append**方法进行多次调用。
+使用**DataLakeFileClient. uploadFromFile**方法上传大文件，而无需多次调用**DataLakeFileClient**方法。
 
 ```java
 static public void UploadFileBulk(DataLakeFileSystemClient fileSystemClient) 
@@ -390,11 +390,11 @@ static public void ListFilesInDirectory(DataLakeFileSystemClient fileSystemClien
 }
 ```
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [API 参考文档](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.1/index.html)
 * [包 (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake)
 * [示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake)
-* [第 1 代到第 2 代映射](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
+* [Gen1 到 Gen2 的映射](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
 * [已知问题](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 * [提供反馈](https://github.com/Azure/azure-sdk-for-java/issues)

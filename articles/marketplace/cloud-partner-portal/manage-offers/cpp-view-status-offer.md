@@ -1,5 +1,5 @@
 ---
-title: 查看市场优惠的状态 |Azure 应用商店
+title: 查看 marketplace 产品/服务的状态 |Azure Marketplace
 description: 使用云合作伙伴门户查看 Azure 和 AppSource 市场中套餐的状态
 author: dsindona
 ms.service: marketplace
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: dsindona
 ms.openlocfilehash: 0cbe6a45ba205f32a764bdadb021dc0dcf5bf0cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80275962"
 ---
 # <a name="view-the-publishing-status-of-azure-marketplace-and-appsource-offers"></a>查看 Azure 市场和 AppSource 套餐的发布状态
 
 创建套餐之后，尤其是在发布过程中，可以在云合作伙伴门户中查看该套餐的状态。  门户的[**所有套餐**](../portal-tour/cpp-all-offers-page.md)和[**审批**](../portal-tour/cpp-approvals-page.md)页中会提供总体发布状态。  对于每个套餐，应会显示以下状态指示器之一。  
 
-|            状态              |   描述                                                           |
+|            状态              |   说明                                                           |
 |            ------              |   -----------                                                           |
 | **-**                          | 套餐已创建，但发布过程尚未开始。            |
 | **发布正在进行**        | 套餐正在经历发布过程的各个步骤。   |
@@ -39,7 +39,7 @@ ms.locfileid: "80275962"
 
 ![显示了错误的咨询服务“状态”选项卡](./media/consulting-service-error.png)
 
-最后一个 Azure 应用程序状态示例显示严重的 Microsoft 评审问题。  它包含指向 Azure DevOps 项的热链接，其中包含有关此审核问题的详细信息。  有关详细信息，请参阅 [发布 Azure 应用程序套餐](cpp-publish-offer.md)。
+最后一个 Azure 应用程序状态示例显示严重的 Microsoft 评审问题。  它包含 Azure DevOps 项的热链接，其中包含有关此审查问题的详细信息。  有关详细信息，请参阅 [发布 Azure 应用程序套餐](cpp-publish-offer.md)。
 
 ![显示了评审问题的 Azure 应用“状态”选项卡](../azure-applications/media/status-tab-ms-review.png)
 

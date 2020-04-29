@@ -1,5 +1,5 @@
 ---
-title: 管理防火墙规则 - Azure CLI - MariaDB 的 Azure 数据库
+title: 管理防火墙规则-Azure CLI-Azure Database for MariaDB
 description: 本文介绍如何使用 Azure CLI 命令行创建和管理 Azure Database for MariaDB 防火墙规则。
 author: ajlam
 ms.author: andrela
@@ -8,20 +8,20 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 898b65f07140bca04bd97ff7314b01920b783914
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79530625"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-cli"></a>使用 Azure CLI 创建和管理 Azure Database for MariaDB 防火墙规则
-可以使用服务器级防火墙规则，管理从特定的 IP 地址或某个范围的 IP 地址对 Azure Database for MariaDB 服务器的访问。 使用便捷的 Azure CLI 命令，可创建、更新、删除、列出和显示防火墙规则，用于管理服务器。 有关 MariaDB 防火墙的 Azure 数据库概述，请参阅[MariaDB 服务器防火墙规则的 Azure 数据库](./concepts-firewall-rules.md)。
+可以使用服务器级防火墙规则，管理从特定的 IP 地址或某个范围的 IP 地址对 Azure Database for MariaDB 服务器的访问。 使用便捷的 Azure CLI 命令，可创建、更新、删除、列出和显示防火墙规则，用于管理服务器。 有关 Azure Database for MariaDB 的概述，请参阅 [Azure Database for MariaDB 服务器防火墙规则](./concepts-firewall-rules.md)。
 
 也可使用虚拟网络 (VNet) 规则来保护对服务器进行的访问。 详细了解如何[使用 Azure CLI 创建和管理虚拟网络服务终结点和规则](howto-manage-vnet-cli.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
-* [MariaDB 服务器和数据库的 Azure 数据库](quickstart-create-mariadb-server-database-using-azure-cli.md)。
+* [Azure Database for MariaDB 服务器和数据库](quickstart-create-mariadb-server-database-using-azure-cli.md)。
 
 ## <a name="firewall-rule-commands"></a>防火墙规则命令：
 在 Azure CLI 中使用 **az mariadb server firewall-rule** 命令创建、删除、列出、显示和更新防火墙规则。
@@ -34,7 +34,7 @@ ms.locfileid: "79530625"
 - **update**：更新 Azure MariaDB 服务器防火墙规则。
 
 ## <a name="sign-in-to-azure-and-list-your-azure-database-for-mariadb-servers"></a>登录到 Azure，并列出你的 Azure Database for MariaDB 服务器
-使用 az login **** 命令通过 Azure 帐户安全连接到 Azure CLI。
+使用 az login  命令通过 Azure 帐户安全连接到 Azure CLI。
 
 1. 从命令行运行以下命令：
    ```azurecli
@@ -42,7 +42,7 @@ ms.locfileid: "79530625"
    ```
    此命令将输出要在下一步骤中使用的代码。
 
-2. 使用 Web 浏览器打开页面[https://aka.ms/devicelogin](https://aka.ms/devicelogin)，然后输入代码。
+2. 使用 Web 浏览器打开页面 [https://aka.ms/devicelogin](https://aka.ms/devicelogin)，再输入代码。
 
 3. 出现提示时，请使用 Azure 凭据登录。
 
@@ -64,11 +64,11 @@ ms.locfileid: "79530625"
    ```
 
 ## <a name="list-firewall-rules-on-azure-database-for-mariadb-server"></a>列出 Azure Database for MariaDB 服务器上的防火墙规则 
-使用服务器名称和资源组名称，列出服务器上现有的服务器防火墙规则。 使用 [az mariadb server firewall list](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-list) 命令。  请注意，应在“--server”开关（而不是在“--name”开关）中指定服务器名称属性********。 
+使用服务器名称和资源组名称，列出服务器上现有的服务器防火墙规则。 使用 [az mariadb server firewall list](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-list) 命令。  请注意，应在“--server”开关（而不是在“--name”开关）中指定服务器名称属性   。 
 ```azurecli-interactive
 az mariadb server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver
 ```
-输出会默认采用 JSON 格式列出规则（如果有）。 可使用“--output table”**** 开关，以更具可读性的表格格式输出结果。
+输出会默认采用 JSON 格式列出规则（如果有）。 可使用“--output table”  开关，以更具可读性的表格格式输出结果。
 ```azurecli-interactive
 az mariadb server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver --output table
 ```

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 6a3fa40eaae174d3616fd0318f81576b7c59eac7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80067700"
 ---
 # <a name="azure-database-for-mysql-management-stored-procedures"></a>Azure Database for MySQL 管理存储过程
@@ -25,13 +25,13 @@ Azure Database for MySQL 服务器上提供了可帮助管理 MySQL 服务器的
 
 |**存储过程名称**|**输入参数**|**输出参数**|**用法说明**|
 |-----|-----|-----|-----|
-|*mysql.az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|空值|要使用 SSL 模式传输数据，应将 CA 证书的上下文传递到master_ssl_ca参数中。 </br><br>若要不使用 SSL 模式传输数据，请将空字符串传递到 master_ssl_ca 参数中。|
+|*mysql.az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|空值|若要用 SSL 模式传输数据，请将 CA 证书的上下文传入到 master_ssl_ca 参数中。 </br><br>若要不使用 SSL 模式传输数据，请将空字符串传递到 master_ssl_ca 参数中。|
 |mysql.az_replication _start**|空值|空值|开始复制。|
 |mysql.az_replication _stop**|空值|空值|停止复制。|
 |*mysql.az_replication _remove_master*|空值|空值|删除主体和副本之间的复制关系。|
 |mysql.az_replication_skip_counter**|空值|空值|跳过一个复制错误。|
 
-要在 MySQL Azure 数据库中的主数据库和副本之间设置数据内复制，请参阅[如何配置数据内复制](howto-data-in-replication.md)。
+若要设置 Azure Database for MySQL 中的主副本和副本之间的数据传入复制，请参阅[如何配置数据传入复制](howto-data-in-replication.md)。
 
 ## <a name="other-stored-procedures"></a>其他存储过程
 
@@ -44,5 +44,5 @@ Azure Database for MySQL 中提供了以下用于管理服务器的存储过程�
 |*mysql.az_load_timezone*|空值|空值|加载时区表以允许将 `time_zone` 参数设置为命名值（例如， “US/Pacific”）。|
 
 ## <a name="next-steps"></a>后续步骤
-- 了解如何设置[数据内复制](howto-data-in-replication.md)
+- 了解如何设置[数据传入复制](howto-data-in-replication.md)
 - 了解如何使用[时区表](howto-server-parameters.md#working-with-the-time-zone-parameter)

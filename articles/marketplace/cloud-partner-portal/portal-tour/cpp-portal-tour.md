@@ -1,6 +1,6 @@
 ---
-title: Azure 云合作伙伴门户教程 |Azure 应用商店
-description: Azure 应用商店云合作伙伴门户的用户体验概述。
+title: Azure 云合作伙伴门户教程 |Azure Marketplace
+description: Azure Marketplace 云合作伙伴门户的用户体验概述。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dsindona
 ms.openlocfilehash: 53378be9b72792b320699341e4b6b16b20217687
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80278308"
 ---
 # <a name="cloud-partner-portal-tour"></a>云合作伙伴门户教程
 
 本文介绍[云合作伙伴门户](https://cloudpartner.azure.com)：其内容、导航机制和功能。   借助此门户，已注册的合作伙伴可以针对 [Azure 市场](https://azuremarketplace.microsoft.com)和 [AppSource 市场](https://azuremarketplace.microsoft.com)创建新的产品/服务以及管理现有产品/服务。  仅已注册的合作伙伴才可访问云合作伙伴门户；有关详细信息，请参阅[成为云市场发布者](https://docs.microsoft.com/azure/marketplace/become-publisher)。
 
-[![云合作伙伴门户显示配置文件页面](./media/portal-window_001a.png)](./media/portal-window_001b.png#lightbox)
+[![云合作伙伴门户显示配置文件页](./media/portal-window_001a.png)](./media/portal-window_001b.png#lightbox)
 <br/>   （*单击图像可放大。*）
 
 

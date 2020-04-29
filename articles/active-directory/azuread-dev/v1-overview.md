@@ -14,10 +14,10 @@ ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: ade350c91ebd2f3a68b52011e598f739a14c220f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80154485"
 ---
 # <a name="azure-active-directory-for-developers-v10-overview"></a>适用于开发人员的 Azure Active Directory (v1.0) 概述
@@ -32,7 +32,7 @@ Azure Active Directory (Azure AD) 是一个云标识服务，开发人员可以�
 | | |
 | --- | --- |
 |[身份验证基础知识](v1-authentication-scenarios.md) | 使用 Azure AD 进行身份验证简介 |
-|[应用程序类型](app-types.md) | Azure AD 支持的身份验证方案概述。 |
+|[应用程序的类型](app-types.md) | Azure AD 支持的身份验证方案概述。 |
 | | |
 
 ## <a name="get-started"></a>入门
@@ -50,12 +50,12 @@ v1.0 快速入门和教程将逐步讲解如何使用 Azure AD 身份验证库 (
 |                                                                                   | |
 | ----------------------------------------------------------------------------------| --- |
 | [身份验证库 (ADAL)](active-directory-authentication-libraries.md)   | Azure AD 提供的库和 SDK 的概述。 |
-| [代码示例](sample-v1-code.md)                                  | 所有 Azure AD 代码示例的列表。 |
-| [词汇表](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)                                      | 本文档通篇使用的术语和单词定义。 |
+| [示例代码](sample-v1-code.md)                                  | 所有 Azure AD 代码示例的列表。 |
+| [术语表](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)                                      | 本文档通篇使用的术语和单词定义。 |
 |  |  |
 
 ## <a name="videos"></a>视频
 
-有关迁移到新的 Microsoft 标识平台的帮助，请参阅[Azure 活动目录开发人员平台视频](videos.md)。
+请参阅[Azure Active Directory 开发人员平台视频](videos.md)，帮助迁移到新的 Microsoft 标识平台。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

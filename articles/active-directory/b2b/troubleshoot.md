@@ -1,5 +1,5 @@
 ---
-title: 排除 B2B 协作故障 - Azure 活动目录 |微软文档
+title: B2B 协作故障排除-Azure Active Directory |Microsoft Docs
 description: Azure Active Directory B2B 协作的常见问题的补救措施
 services: active-directory
 ms.service: active-directory
@@ -15,10 +15,10 @@ ms.custom:
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5f8bafb04d0a5d9c6d25a7ed7e155888d492e9fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80050778"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B 协作故障排除
@@ -26,7 +26,7 @@ ms.locfileid: "80050778"
 以下是 Azure Active Directory (Azure AD) B2B 协作的常见问题的一些补救措施。
 
    > [!IMPORTANT]
-   > **从 2021 年 3 月 31 日起**，Microsoft 将不再支持为 B2B 协作方案创建非托管 Azure AD 帐户和租户来兑换邀请。 在准备中，我们鼓励客户选择[电子邮件一次性密码身份验证](one-time-passcode.md)。 我们欢迎您对此公共预览功能的反馈，并兴奋地创建更多协作方式。
+   > **从2021年3月31日起**，Microsoft 将不再支持通过创建用于 B2B 协作方案的非托管 Azure AD 帐户和租户进行邀请兑换。 为准备工作，我们鼓励客户选择[电子邮件一次性密码身份验证](one-time-passcode.md)。 我们欢迎你提供有关此公共预览版功能的反馈，并且很高兴创建更多的协作方式。
 
 ## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>我已添加外部用户，但在全局通讯簿或人员选取器中看不到这些用户
 
@@ -40,7 +40,7 @@ ms.locfileid: "80050778"
 
 ## <a name="invitations-have-been-disabled-for-directory"></a>已对目录禁用邀请
 
-如果收到通知您没有邀请用户的权限，请验证您的用户帐户是否有权在 Azure 活动目录>用户设置下邀请外部用户>外部用户>管理外部协作设置：
+如果通知你无权邀请用户，请验证你的用户帐户是否有权邀请外部用户 Azure Active Directory > 用户设置 > 外部用户 > 管理外部协作设置：
 
 ![显示外部用户设置的屏幕截图](media/troubleshoot/external-user-settings.png)
 
@@ -54,7 +54,7 @@ ms.locfileid: "80050778"
 
 受邀用户所在组织正在使用 Azure Active Directory，但其中不存在特定用户帐户（例如，用户不存在于 AAD contoso.comAzure AD contoso.com 中）。 contoso.com 的管理员可能会设置一个策略以阻止创建用户。 用户必须向其管理员进行核实以确定是否允许外部用户。 外部用户的管理员可能需要在其域中允许电子邮件验证的用户（请参阅有关允许电子邮件验证的用户的此[文章](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)）。
 
-![声明租户的错误不允许通过电子邮件发送已验证的用户](media/troubleshoot/allow-email-verified-users.png)
+![指出租户不允许电子邮件验证的用户的错误](media/troubleshoot/allow-email-verified-users.png)
 
 ### <a name="external-user-does-not-exist-already-in-a-federated-domain"></a>外部用户尚未存在于联合域中
 
@@ -83,15 +83,15 @@ ms.locfileid: "80050778"
 
 如果此方案非常重要，则可取消 API 邀请电子邮件，并通过所选的电子邮件机制发送邮件。 请咨询所属组织的法律顾问，确保通过这种方式发送的任何电子邮件均符合隐私法规。
 
-## <a name="you-receive-an-aadsts65005-error-when-you-try-to-log-in-to-an-azure-resource"></a>当您尝试登录到 Azure 资源时，您会收到"AADSTS65005"错误
+## <a name="you-receive-an-aadsts65005-error-when-you-try-to-log-in-to-an-azure-resource"></a>尝试登录到 Azure 资源时收到 "AADSTS65005" 错误
 
-具有来宾帐户的用户无法登录，并且正在收到以下错误消息：
+具有来宾帐户的用户无法登录，并收到以下错误消息：
 
     AADSTS65005: Using application 'AppName' is currently not supported for your organization contoso.com because it is in an unmanaged state. An administrator needs to claim ownership of the company by DNS validation of contoso.com before the application AppName can be provisioned.
 
-用户具有 Azure 用户帐户，并且是已放弃或非托管的病毒租户。 此外，租户中没有全局或公司管理员。
+用户具有 Azure 用户帐户，并且是已被放弃或非托管的病毒租户。 此外，租户中没有全局或公司管理员。
 
-要解决此问题，您必须接管已放弃的租户。 请参阅[在 Azure 活动目录中以管理员身份接管非托管目录](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover)。 您还必须访问相关域后缀的面向 Internet 的 DNS，以便提供直接证据证明您控制了命名空间。 在租户返回到托管状态后，请与客户讨论离开用户和验证的域名是否是其组织的最佳选择。
+若要解决此问题，必须接管放弃的租户。 请参阅[在 Azure Active Directory 中以管理员身份接管非托管目录](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover)。 您还必须访问面向 internet 的 DNS 以获得相关的域后缀，以便提供您控制的命名空间的直接证据。 将租户返回到托管状态后，请与客户讨论是否将用户和验证的域名作为其组织的最佳选择。
 
 ## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>具有实时或“病毒性”租户的来宾用户无法重置其密码
 
@@ -99,11 +99,11 @@ ms.locfileid: "80050778"
 
 ## <a name="a-guest-user-is-unable-to-use-the-azuread-powershell-v1-module"></a>来宾用户无法使用 AzureAD PowerShell V1 模块
 
-自 2019 年 11 月 18 日起，目录中的来宾用户（定义为**用户类型**属性等于**来宾**的用户帐户）被阻止使用 AzureAD PowerShell V1 模块。 今后，用户需要是成员用户（**用户类型**等于**成员**），或者使用 AzureAD PowerShell V2 模块。
+截至2019年11月18日，你的目录中的来宾用户（定义为**userType**属性等于**guest**的用户帐户）被阻止使用 AzureAD PowerShell V1 模块。 今后，用户需要是成员用户（其中**userType**等于**成员**）或使用 AzureAD PowerShell V2 模块。
 
-## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>在 Azure 美国政府租户中，我无法邀请 B2B 协作来宾用户
+## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>在 Azure 美国政府租户中，无法邀请 B2B 协作来宾用户
 
-在 Azure 美国政府云中，B2B 协作目前仅在 Azure 美国政府云中同时支持并且都支持 B2B 协作的租户之间提供支持。 如果邀请不属于 Azure 美国政府云或尚不支持 B2B 协作的租户中的用户，则将出错。 有关详细信息和限制，请参阅[Azure 活动目录高级 P1 和 P2 变体](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2)。
+在 Azure 美国政府版云中，当前仅支持在 Azure 美国政府云中的租户之间进行 B2B 协作，并且两者都支持 B2B 协作。 如果你邀请不属于 Azure 美国政府云的租户中的用户，或者不支持 B2B 协作，则会出现错误。 有关详细信息和限制，请参阅[Azure Active Directory Premium P1 和 P2 变体](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2)。
 
 ## <a name="next-steps"></a>后续步骤
 

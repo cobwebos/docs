@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
 ms.openlocfilehash: 8a4579e092bbc4fd58954f1ce1f1dad3a8ddbbba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80133161"
 ---
 # <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>使用 Windows 上的 IoT Edge 运行 Linux 容器
@@ -26,7 +26,7 @@ ms.locfileid: "80133161"
 
 有关最新 IoT Edge 版本包含的功能的信息，请参阅 [Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 参考本部分检查你的 Windows 设备是否支持 IoT Edge，并在安装之前为容器引擎准备好该设备。
 
@@ -59,7 +59,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 
    * [Azure 门户](how-to-register-device.md#register-in-the-azure-portal)
    * [Azure CLI](how-to-register-device.md#register-with-the-azure-cli)
-   * [视觉工作室代码](how-to-register-device.md#register-with-visual-studio-code)
+   * [Visual Studio Code](how-to-register-device.md#register-with-visual-studio-code)
 
 2. 以管理员身份运行 PowerShell。
 
@@ -79,7 +79,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 
 4. 此时，IoT Core 设备可能会自动重启。 其他 Windows 10 或 Windows Server 设备可能会提示你重启。 如果是这样，请立即重启设备。 设备准备就绪后，再次以管理员身份运行 PowerShell。
 
-5. Initialize-IoTEdge 命令在计算机上配置 IoT Edge 运行时****。 该命令默认为使用设备连接字符串进行手动预配。 再次将 Linux 声明为所需的容器操作系统。
+5. Initialize-IoTEdge 命令在计算机上配置 IoT Edge 运行时  。 该命令默认为使用设备连接字符串进行手动预配。 再次将 Linux 声明为所需的容器操作系统。
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
@@ -118,7 +118,7 @@ iotedge list
 
 ## <a name="next-steps"></a>后续步骤
 
-预配 IoT Edge 设备和安装运行后，现在可以[部署 IoT Edge 模块](how-to-deploy-modules-portal.md)。
+预配了安装运行时的 IoT Edge 设备后，现在可以[部署 IoT Edge 模块](how-to-deploy-modules-portal.md)。
 
 如果无法正常安装 IoT Edge，请查看[故障排除](troubleshoot.md)页。
 

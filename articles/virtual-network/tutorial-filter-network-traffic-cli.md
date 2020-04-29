@@ -18,10 +18,10 @@ ms.date: 03/30/2018
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: 72c8b4d57b5064af34665cff1386179e62324938
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80235079"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>在 Azure CLI 中使用网络安全组筛选网络流量
@@ -37,7 +37,7 @@ ms.locfileid: "80235079"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0.28 或更高版本。 要查找版本，请运行 `az --version`。 如果需要安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
+如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0.28 或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
 
 
 ## <a name="create-a-network-security-group"></a>创建网络安全组
@@ -119,7 +119,7 @@ az network nsg rule create \
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
-创建具有 az[网络 vnet 创建的](/cli/azure/network/vnet)虚拟网络。 以下示例创建名为 *myVirtualNetwork* 的虚拟网络：
+使用 [az network vnet create](/cli/azure/network/vnet) 创建虚拟网络。 以下示例创建名为 *myVirtualNetwork* 的虚拟网络：
 
 ```azurecli-interactive 
 az network vnet create \
@@ -143,7 +143,7 @@ az network vnet subnet create \
 
 在虚拟网络中创建两个 VM，以便在后续步骤中可以验证流量筛选。 
 
-创建具有[az vm 的](/cli/azure/vm)VM。 以下示例创建充当 Web 服务器的 VM。 `--asgs myAsgWebServers` 选项导致 Azure 将它为 VM 创建的网络接口设置为 *myAsgWebServers* 应用程序安全组的成员。
+使用 [az vm create](/cli/azure/vm) 创建 VM。 以下示例创建充当 Web 服务器的 VM。 `--asgs myAsgWebServers` 选项导致 Azure 将它为 VM 创建的网络接口设置为 *myAsgWebServers* 应用程序安全组的成员。
 
 指定 `--nsg ""` 选项可防止 Azure 为创建 VM 时创建的网络接口创建默认的网络安全组。 为了简化本文的内容，此处使用了密码。 在生产部署中通常使用密钥。 如果使用密钥，还必须配置 SSH 代理转发才能完成剩余步骤。 有关详细信息，请参阅 SSH 客户端的文档。 将以下命令中的 `<replace-with-your-password>` 替换为所选的密码。
 
@@ -177,7 +177,7 @@ az vm create \
 }
 ```
 
-记下 publicIpAddress。**** 在后面的步骤中会使用此地址通过 Internet 访问 VM。  创建充当管理服务器的 VM：
+记下 publicIpAddress。  在后面的步骤中会使用此地址通过 Internet 访问 VM。  创建充当管理服务器的 VM：
 
 ```azurecli-interactive
 az vm create \
@@ -196,7 +196,7 @@ az vm create \
 
 ## <a name="test-traffic-filters"></a>测试流量筛选器
 
-使用以下命令来与 *myVmMgmt* VM 建立 SSH 会话。 将*\<公共 Ip 地址>* 替换为 VM 的公共 IP 地址。 在上面的示例中，IP 地址为 *13.90.242.231*。
+使用以下命令来与 *myVmMgmt* VM 建立 SSH 会话。 将 *publicIpAddress>\<* 替换为 VM 的公共 IP 地址。 在上面的示例中，IP 地址为 *13.90.242.231*。
 
 ```bash 
 ssh azureuser@<publicIpAddress>
@@ -224,13 +224,13 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 ```
 
-允许 *myVmWeb* VM 向 Internet 发送出站流量以检索 nginx，因为默认安全规则允许发往 Internet 的所有出站流量。 退出 *myVmWeb* SSH 会话。随即会在 *myVmMgmt* VM 的 `username@myVmMgmt:~$` 提示符下退出。 若要从 *myVmWeb* VM 检索 nginx 欢迎屏幕，请输入以下命令：
+允许 *myVmWeb* VM 向 Internet 发送出站流量以检索 nginx，因为默认安全规则允许发往 Internet 的所有出站流量。 退出 *myVmWeb* SSH 会话。随即会在 `username@myVmMgmt:~$`myVmMgmt*VM 的* 提示符下退出。 若要从 *myVmWeb* VM 检索 nginx 欢迎屏幕，请输入以下命令：
 
 ```bash
 curl myVmWeb
 ```
 
-从 *myVmMgmt* VM 注销。 若要确认是否可以从 Azure 外部访问 *myVmWeb* Web 服务器，请在自己的计算机上输入 `curl <publicIpAddress>`。 连接成功，因为端口 80 允许从 Internet 进入*连接到连接到 myVmWeb* VM 的网络接口的*myAsgWebServer*应用程序安全组。
+从 *myVmMgmt* VM 注销。 若要确认是否可以从 Azure 外部访问 *myVmWeb* Web 服务器，请在自己的计算机上输入 `curl <publicIpAddress>`。 连接将会成功，因为允许通过端口 80 将入站流量从 Internet 发往已附加到 *myVmWeb* VM 的网络接口所在的 *myAsgWebServers* 应用程序安全组。
 
 ## <a name="clean-up-resources"></a>清理资源
 

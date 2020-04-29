@@ -1,5 +1,5 @@
 ---
-title: 教程：将单个数据库添加到故障转移组
+title: 教程：将单一数据库添加到故障转移组
 description: 使用 Azure 门户、PowerShell 或 Azure CLI 将 Azure SQL 数据库单一数据库添加到故障转移组。
 services: sql-database
 ms.service: sql-database
@@ -12,40 +12,40 @@ ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
 ms.openlocfilehash: c5ce6a1c2f231d372a2a8113eb9043a236090388
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80061694"
 ---
-# <a name="tutorial-add-an-azure-sql-database-single-database-to-a-failover-group"></a>教程：将 Azure SQL 数据库单个数据库添加到故障转移组
+# <a name="tutorial-add-an-azure-sql-database-single-database-to-a-failover-group"></a>教程：将 Azure SQL 数据库单一数据库添加到故障转移组
 
-[故障转移组](sql-database-auto-failover-group.md)是一个声明性抽象层，允许您对多维复制的数据库进行分组。 了解如何为 Azure SQL 数据库单个数据库配置故障转移组，并使用 Azure 门户、PowerShell 或 Azure CLI 测试故障转移。  在本教程中，您将学习如何执行以下操作：
+[故障转移组](sql-database-auto-failover-group.md)是一种声明性抽象层，可用于对每个异地复制的数据库进行分组。 了解如何配置 Azure SQL 数据库单一数据库的故障转移组，以及如何使用 Azure 门户、PowerShell 或 Azure CLI 测试故障转移。  在本教程中，您将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > - 创建 Azure SQL 数据库单一数据库。
 > - 在两个逻辑 SQL 服务器之间创建单一数据库的故障转移组。
 > - 测试故障转移。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 若要完成本教程，请确保做好以下准备： 
 
-- Azure 订阅。 如果您还没有[一个免费帐户，请创建一个免费帐户](https://azure.microsoft.com/free/)。
+- Azure 订阅。 如果还没有帐户，请[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 若要完成本教程，请确保准备好以下各项：
 
-- Azure 订阅。 如果您还没有[一个免费帐户，请创建一个免费帐户](https://azure.microsoft.com/free/)。
-- [Azure 电源外壳](/powershell/azureps-cmdlets-docs)
+- Azure 订阅。 如果还没有帐户，请[创建一个免费帐户](https://azure.microsoft.com/free/)。
+- [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 若要完成本教程，请确保准备好以下各项：
 
-- Azure 订阅。 如果您还没有[一个免费帐户，请创建一个免费帐户](https://azure.microsoft.com/free/)。
+- Azure 订阅。 如果还没有帐户，请[创建一个免费帐户](https://azure.microsoft.com/free/)。
 - 最新版本的 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 
 
 ---
@@ -60,9 +60,9 @@ ms.locfileid: "80061694"
 # <a name="portal"></a>[门户](#tab/azure-portal)
 使用 Azure 门户创建故障转移组，并将单一数据库添加到其中。 
 
-1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”****。 如果**Azure SQL**不在列表中，请选择 **"所有服务**"，然后在搜索框中键入 Azure SQL。 （可选）选择“Azure SQL”**** 旁边的星号将其收藏并将其添加为左侧导航栏中的项。 
-1. 选择在第 1 节中创建的单个数据库，如`mySampleDatabase`。 
-1. 故障转移组可以在服务器级别配置。 在**服务器名称**下选择服务器的名称以打开服务器的设置。
+1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”****。 如果**AZURE sql**不在列表中，请选择 "**所有服务**"，然后在搜索框中键入 "Azure sql"。 （可选）选择“Azure SQL”**** 旁边的星号将其收藏并将其添加为左侧导航栏中的项。 
+1. 选择在第1部分中创建的单一数据库， `mySampleDatabase`例如。 
+1. 可以在服务器级别 configurd 故障转移组。 在**服务器名称**下选择服务器的名称以打开服务器的设置。
 
    ![打开单一数据库的服务器](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
 
@@ -71,24 +71,24 @@ ms.locfileid: "80061694"
     ![添加新的故障转移组](media/sql-database-single-database-failover-group-tutorial/sqldb-add-new-failover-group.png)
 
 1. 在“故障转移组”页上输入或选择以下值，然后选择“创建”：********
-    - **故障转移组名称**：键入唯一故障转移组名称，如`failovergrouptutorial`。 
-    - **辅助服务器**：选择*用于配置所需设置*的选项，然后选择**创建新服务器**。 或者，可以选择现有的服务器作为辅助服务器。 输入以下值后，选择“选择”。**** 
-        - **服务器名称**： 键入辅助服务器的唯一名称，如`mysqlsecondary`。 
-        - **服务器管理员登录**： 类型`azureuser`
-        - **密码**：键入满足密码要求的复杂密码。
-        - **位置**：从下拉列表中选择位置，例如`East US`。 此位置不能与主服务器的位置相同。
+    - **故障转移组名称**：键入唯一的故障转移组名称，如`failovergrouptutorial`。 
+    - **辅助服务器**：选择 "*配置所需设置*" 选项，然后选择 "**创建新服务器**"。 或者，可以选择现有的服务器作为辅助服务器。 输入以下值后，选择“选择”。**** 
+        - **服务器名称**：键入辅助服务器的唯一名称，例如`mysqlsecondary`。 
+        - **服务器管理员登录名**：类型`azureuser`
+        - **密码**：键入符合密码要求的复杂密码。
+        - **位置**：从下拉项中选择一个位置，例如`East US`。 此位置不能与主服务器的位置相同。
 
     > [!NOTE]
     > 服务器登录名和防火墙设置必须与主服务器相匹配。 
     
       ![为故障转移组创建辅助服务器](media/sql-database-single-database-failover-group-tutorial/create-secondary-failover-server.png)
 
-   - **组中的数据库**：选择辅助服务器后，此选项将解锁。 使用该选项来**选择要添加的数据库**：请选择在第 1 部分创建的数据库。 将数据库添加到故障转移组的操作会自动启动异地复制过程。 
+   - **组中的数据库**：选择辅助服务器后，此选项将处于解锁状态。 使用该选项来**选择要添加的数据库**：请选择在第 1 部分创建的数据库。 将数据库添加到故障转移组的操作会自动启动异地复制过程。 
         
     ![将 SQL 数据库添加到故障转移组](media/sql-database-single-database-failover-group-tutorial/add-sqldb-to-failover-group.png)
         
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 使用 PowerShell 创建故障转移组，并将单一数据库添加到其中。 
 
    > [!NOTE]
@@ -157,11 +157,11 @@ ms.locfileid: "80061694"
 
 本教程部分使用以下 PowerShell cmdlet：
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
-| [新-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 创建托管单一数据库和弹性池的 SQL 数据库服务器。 |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 创建托管单一数据库和弹性池的 SQL 数据库服务器。 |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | 为逻辑服务器创建防火墙规则。 | 
-| [新-AzSql 数据库](/powershell/module/az.sql/new-azsqldatabase) | 新建 Azure SQL 数据库单一数据库。 | 
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | 新建 Azure SQL 数据库单一数据库。 | 
 | [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | 新建故障转移组。 |
 | [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | 获取一个或更多个 SQL 数据库。 |
 | [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | 将一个或更多个 Azure SQL 数据库添加到故障转移组。 |
@@ -188,7 +188,7 @@ ms.locfileid: "80061694"
 
 本教程的此部分使用以下 Az CLI cmdlet：
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | 创建托管单一数据库和弹性池的 SQL 数据库服务器。 |
 | [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule) | 创建服务器的防火墙规则。 | 
@@ -202,8 +202,8 @@ ms.locfileid: "80061694"
 # <a name="portal"></a>[门户](#tab/azure-portal)
 使用 Azure 门户测试故障转移。 
 
-1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”****。 如果**Azure SQL**不在列表中，请选择 **"所有服务**"，然后在搜索框中键入 Azure SQL。 （可选）选择“Azure SQL”**** 旁边的星号将其收藏并将其添加为左侧导航栏中的项。 
-1. 选择在第 2 节（如`mySampleDatbase`）中创建的单个数据库。 
+1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”****。 如果**AZURE sql**不在列表中，请选择 "**所有服务**"，然后在搜索框中键入 "Azure sql"。 （可选）选择“Azure SQL”**** 旁边的星号将其收藏并将其添加为左侧导航栏中的项。 
+1. 选择在第2部分中创建的单一数据库，例如`mySampleDatbase`。 
 1. 在**服务器名称**下选择服务器的名称以打开服务器的设置。
 
    ![打开单一数据库的服务器](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
@@ -221,7 +221,7 @@ ms.locfileid: "80061694"
 1. 查看哪个服务器现在是主服务器，哪个服务器是辅助服务器。 如果故障转移成功，这两个服务器的角色应会交换。 
 1. 再次选择“故障转移”以将服务器故障回复到其初始角色。**** 
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 使用 PowerShell 测试故障转移。 
 
 
@@ -277,7 +277,7 @@ ms.locfileid: "80061694"
 
 本教程部分使用以下 PowerShell cmdlet：
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | 获取或列出 Azure SQL 数据库故障转移组。 |
 | [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| 执行 Azure SQL 数据库故障转移组的故障转移。 |
@@ -313,7 +313,7 @@ ms.locfileid: "80061694"
 
 本教程的此部分使用以下 Az CLI cmdlet：
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az sql failover-group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | 列出服务器中的故障转移组。 |
 | [az sql failover-group set-primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | 通过对当前主服务器上的所有数据库进行故障转移来设置故障转移组的主服务器。 | 
@@ -330,7 +330,7 @@ ms.locfileid: "80061694"
 1. 选择“删除资源组”即可删除该资源组中的所有资源以及该组本身。**** 
 1. 在文本框中键入资源组的名称 `myResourceGroup`，然后选择“删除”以删除该资源组。****  
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 删除资源组。 
 
@@ -346,7 +346,7 @@ ms.locfileid: "80061694"
 
 本教程部分使用以下 PowerShell cmdlet：
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组 | 
 
@@ -363,7 +363,7 @@ ms.locfileid: "80061694"
 
 本教程的此部分使用以下 Az CLI cmdlet：
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | 删除资源组，包括所有嵌套的资源。 |
 
@@ -376,18 +376,18 @@ ms.locfileid: "80061694"
 
 ## <a name="full-scripts"></a>完整脚本
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-single-db-to-failover-group-az-ps.ps1 "Add single database to a failover group")]
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
-| [新-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 创建托管单一数据库和弹性池的 SQL 数据库服务器。 |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 创建托管单一数据库和弹性池的 SQL 数据库服务器。 |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | 为逻辑服务器创建防火墙规则。 | 
-| [新-AzSql 数据库](/powershell/module/az.sql/new-azsqldatabase) | 新建 Azure SQL 数据库单一数据库。 | 
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | 新建 Azure SQL 数据库单一数据库。 | 
 | [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | 新建故障转移组。 |
 | [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | 获取一个或更多个 SQL 数据库。 |
 | [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | 将一个或更多个 Azure SQL 数据库添加到故障转移组。 |
@@ -401,7 +401,7 @@ ms.locfileid: "80061694"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | 将订阅设置为当前的活动订阅。 | 
 | [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
@@ -418,7 +418,7 @@ ms.locfileid: "80061694"
  
 ---
 
-您可以在此处找到其他 Azure SQL 数据库脚本[：Azure PowerShell](sql-database-powershell-samples.md)和[Azure CLI](sql-database-cli-samples.md)。 
+可在此处找到其他 Azure SQL 数据库脚本： [Azure PowerShell](sql-database-powershell-samples.md)和[Azure CLI](sql-database-cli-samples.md)。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,15 +4,15 @@ description: 介绍如何在 Azure 资源管理器模板中有条件地部署资
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.openlocfilehash: f170710118c0e3de6f3643b6216ed55b83b5c7df
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80153414"
 ---
 # <a name="conditional-deployment-in-arm-templates"></a>ARM 模板中的条件部署
 
-有时，您需要在 Azure 资源管理器 （ARM） 模板中选择部署资源。 使用 `condition` 元素指定是否部署资源。 此元素的值解析为 true 或 false。 如果值为 true，则创建了该资源。 如果值为 false，则未创建该资源。 值只能应用到整个资源。
+有时，你需要根据需要在 Azure 资源管理器（ARM）模板中部署资源。 使用 `condition` 元素指定是否部署资源。 此元素的值解析为 true 或 false。 如果值为 true，则创建了该资源。 如果值为 false，则未创建该资源。 值只能应用到整个资源。
 
 ## <a name="new-or-existing-resource"></a>新资源或现有资源
 
@@ -88,4 +88,4 @@ ms.locfileid: "80153414"
 ## <a name="next-steps"></a>后续步骤
 
 * 有关创建模板的建议，请参阅[ARM 模板最佳实践](template-best-practices.md)。
-* 要创建资源的多个实例，请参阅 ARM[模板中的资源迭代](copy-resources.md)。
+* 若要创建资源的多个实例，请参阅[ARM 模板中的资源迭代](copy-resources.md)。

@@ -1,7 +1,7 @@
 ---
-title: 已知问题：从 PostgreSQL 到 Azure 数据库的在线迁移，用于 PostgreSQL
+title: 已知问题：从 PostgreSQL 联机迁移到 Azure Database for PostgreSQL
 titleSuffix: Azure Database Migration Service
-description: 使用 Azure 数据库迁移服务从 PostgreSQL 到 Azure 数据库的 PostgreSQL 在线迁移，了解已知问题和迁移限制。
+description: 了解使用 Azure 数据库迁移服务从 PostgreSQL 到 Azure Database for PostgreSQL 的联机迁移的已知问题和迁移限制。
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -15,26 +15,26 @@ ms.custom:
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: 3d1bc627ccb8814ab2dfb61fb0653ef0ac644038
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80235269"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>从 PostgreSQL 到 Azure DB 的联机迁移的已知问题/迁移限制，用于 PostgreSQL
+# <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>从 PostgreSQL 联机迁移到 Azure DB for PostgreSQL 时的已知问题/迁移限制
 
 以下部分描述了在从 PostgreSQL 联机迁移到 Azure Database for PostgreSQL 时存在的已知问题和限制。
 
 ## <a name="online-migration-configuration"></a>联机迁移配置
 
 - 源 PostgreSQL 服务器必须运行版本 9.4、9.5、9.6、10 或 11。 有关详细信息，请参阅[支持的 PostgreSQL 数据库版本](../postgresql/concepts-supported-versions.md)一文。
-- 仅支持对相同版本或更高版本的迁移。 例如，支持将 PostgreSQL 9.5 迁移到用于 PostgreSQL 9.6 或 10 的 Azure 数据库，但不支持从 PostgreSQL 11 迁移到 PostgreSQL 9.6。
-- 若要在源 PostgreSQL postgresql.config 文件中启用逻辑复制，请设置以下参数****：
-  - **wal_level** = 逻辑
-  - **max_replication_slots** = [至少用于迁移的数据库数量];如果要迁移四个数据库，请将该值设置为至少 4。
-  - max_wal_senders = [并发运行的数据库数]；建议值为 10****
+- 仅支持迁移到同一版本或更高版本。 例如，支持将 PostgreSQL 9.5 迁移到 Azure Database for PostgreSQL 9.6 或 10，但不支持从 PostgreSQL 11 迁移到 PostgreSQL 9.6。
+- 若要在源 PostgreSQL postgresql.config 文件中启用逻辑复制，请设置以下参数  ：
+  - wal_level = logical 
+  - **max_replication_slots** = [要迁移的数据库最大数目的下限]；如果要迁移四个数据库，请将该值设置为至少为 4。
+  - max_wal_senders = [并发运行的数据库数]；建议值为 10 
 - 向源 PostgreSQL pg_hba.conf 添加 DMS 代理 IP
-  1. 完成 Azure 数据库迁移服务实例的预配后，记下 DMS IP 地址。
+  1. 预配 Azure 数据库迁移服务后，记下 DMS IP 地址。
   2. 向 pg_hba.conf 文件添加 IP 地址，如下所示：
 
       ```
@@ -42,8 +42,8 @@ ms.locfileid: "80235269"
           host  replication postgres    172.16.136.18/10    md5
       ```
 
-- 用户必须在承载源数据库的服务器上具有复制角色。
-- 源数据库和目标数据库架构必须匹配。
+- 用户必须在托管源数据库的服务器上具有“复制”角色。
+- 源数据库架构和目标数据库架构必须匹配。
 - 目标 Azure Database for PostgreSQL 单一服务器中的架构不能包含外键。 使用以下查询来删除外键：
 
     ```
@@ -83,34 +83,34 @@ ms.locfileid: "80235269"
 
 ## <a name="datatype-limitations"></a>数据类型限制
 
-  **限制**：如果表上没有主键，则更改可能不会同步到目标数据库。
+  **限制**：如果表中没有主键，则所做的更改可能不会同步到目标数据库。
 
-  **解决方法**：暂时为表设置一个主键，使迁移能够继续。 数据迁移完成后，可以删除该主键。
+  **解决方法**：暂时为表设置一个主键，以便迁移能够继续。 数据迁移完成后，可以删除该主键。
 
 ## <a name="limitations-when-migrating-online-from-aws-rds-postgresql"></a>从 AWS RDS PostgreSQL 联机迁移时的限制
 
 尝试从 AWS RDS PostgreSQL 联机迁移到 Azure Database for PostgreSQL 时，你可能会遇到以下错误。
 
-- **错误**： 数据库"{数据库}"表中表"{\table}"中的"\c]"的默认值在源服务器和目标服务器上不同。 在源服务器上，值为“{value on source}”，而在目标服务器上，值则为“{value on target}”。
+- **错误**：数据库“{database}”的表“{table}”中的列“{column}”的默认值在源服务器和目标服务器上有所不同。 在源服务器上，值为“{value on source}”，而在目标服务器上，值则为“{value on target}”。
 
-  **限制**：当列架构上的默认值在源数据库和目标数据库之间不同时，将发生此错误。
+  **限制**：如果列架构上的默认值在源数据库与目标数据库之间有所不同，则会出现此错误。
   **解决方法**：确保目标上的架构与源上的架构匹配。 有关迁移架构的详细信息，请参阅 [Azure PostgreSQL 联机迁移文档](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)。
 
-- **错误**：目标数据库"{数据库}"具有"表数"表，其中源数据库"{数据库"具有"{表数"表。 源数据库和目标数据库中表的数目应当匹配。
+- **错误**：目标数据库“{database}”包含“{number of tables}”个表，而源数据库“{database}”包含“{number of tables}”个表。 源数据库和目标数据库中表的数目应当匹配。
 
-  **限制**：当源数据库和目标数据库之间的表数不同时，将发生此错误。
+  **限制**：当源数据库与目标数据库的表数不同时，将出现此错误。
 
   **解决方法**：确保目标上的架构与源上的架构匹配。 有关迁移架构的详细信息，请参阅 [Azure PostgreSQL 联机迁移文档](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)。
 
-- **错误：** 源数据库 [数据库] 为空。
+- **错误：** 源数据库 {database} 为空
 
-  **限制**：当源数据库为空时，将发生此错误。 这很可能是因为您选择的数据库错误作为源。
+  **限制**：当源数据库为空时，会出现此错误。 这最有可能是因为你选择了错误的数据库作为源数据库。
 
-  **解决方法**：仔细检查为迁移选择的源数据库，然后重试。
+  **解决方法**：反复检查选择迁移的源数据库，然后重试。
 
-- **错误：** 目标数据库 [数据库] 为空。 请迁移架构。
+- **错误：** 目标数据库 {database} 为空。 请迁移架构。
 
-  **限制**：当目标数据库上没有架构时，将发生此错误。 确保目标上的架构与源上的架构匹配。
+  **限制**：当目标数据库上没有架构时，会出现此错误。 确保目标上的架构与源上的架构匹配。
   **解决方法**：确保目标上的架构与源上的架构匹配。 有关迁移架构的详细信息，请参阅 [Azure PostgreSQL 联机迁移文档](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)。
 
 ## <a name="other-limitations"></a>其他限制
@@ -119,5 +119,5 @@ ms.locfileid: "80235269"
 - 已捕获的表必须包含主键。 如果某个表没有主键，则删除和更新记录操作的结果将不可预测。
 - 忽略更新主键段。 在这种情况下，应用此类更新将被目标标识为未更新任何行的更新，并且将导致向异常表写入记录。
 - 迁移名称相同但包含不同案例（例如，table1、TABLE1 和 Table1）的多个表可能导致不可预测的行为，因此不支持。
-- [创建] 的更改处理更改 |掉落 |不支持 TRUNCATE_ 表 DDL。
+- 不支持更改 [CREATE | ALTER | DROP | TRUNCATE] table DDL 的处理。
 - 在 Azure 数据库迁移服务中，单个迁移活动最多只能容纳四个数据库。

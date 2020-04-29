@@ -4,10 +4,10 @@ description: 介绍如何解决这样一个错误：在资源组历史记录中�
 ms.topic: troubleshooting
 ms.date: 10/04/2019
 ms.openlocfilehash: 919cd9a3482401cd47516e2677b0bf58387488b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80245083"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>解决部署计数超出 800 的错误
@@ -22,7 +22,7 @@ ms.locfileid: "80245083"
 
 ### <a name="azure-cli"></a>Azure CLI
 
-使用[az 部署组删除](/cli/azure/group/deployment)命令从历史记录中删除部署。
+使用[az deployment group delete](/cli/azure/group/deployment)命令删除历史记录中的部署。
 
 ```azurecli-interactive
 az deployment group delete --resource-group exampleGroup --name deploymentName

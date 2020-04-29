@@ -4,15 +4,15 @@ description: 介绍如何使用 Azure 资源管理器模板中的链接模板创
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.openlocfilehash: 322797383ee865ceb66c44793387da827aeb8879
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80131931"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接模版和嵌套模版
 
-若要部署复杂的解决方案，可以将模板分解为许多相关模板，然后通过主模板将它们一起部署。 相关模板可以是嵌入在主模板内的单独文件或模板语法。 本文使用术语**链接模板**来引用通过主模板链接引用的单独模板文件。 它使用术语**嵌套模板**指代主模板内嵌套的模板语法。
+若要部署复杂的解决方案，可以将模板分解为许多相关模板，然后通过主模板将它们一起部署。 相关模板可以是嵌入在主模板内的单独文件或模板语法。 本文使用术语 "**链接模板**" 引用通过主模板的链接引用的单独模板文件。 它使用术语**嵌套模板**指代主模板内嵌套的模板语法。
 
 对于中小型解决方案，单个模板更易于理解和维护。 可以查看单个文件中的所有资源和值。 对于高级方案，使用链接模板可将解决方案分解为目标组件。 可以轻松地将这些模板重复用于其他方案。
 
@@ -24,7 +24,7 @@ ms.locfileid: "80131931"
 
 ## <a name="nested-template"></a>嵌套模板
 
-要嵌套模板，请向主模板添加[部署资源](/azure/templates/microsoft.resources/deployments)。 在 **template** 属性中，指定模板语法。
+若要嵌套模板，请将[部署资源](/azure/templates/microsoft.resources/deployments)添加到主模板。 在 **template** 属性中，指定模板语法。
 
 ```json
 {
@@ -92,11 +92,11 @@ ms.locfileid: "80131931"
 }
 ```
 
-### <a name="expression-evaluation-scope-in-nested-templates"></a>嵌套模板中的表达式评估范围
+### <a name="expression-evaluation-scope-in-nested-templates"></a>嵌套模板中的表达式计算范围
 
 使用嵌套模板时，可以指定是在父模板的作用域内还是在嵌套模板的作用域内计算模板表达式。 作用域决定了如何对参数、变量和函数（例如 [resourceGroup](template-functions-resource.md#resourcegroup) 和 [subscription](template-functions-resource.md#subscription)）进行求解。
 
-可以通过 `expressionEvaluationOptions` 属性设置作用域。 默认情况下，`expressionEvaluationOptions` 属性设置为 `outer`，这意味着它使用父模板作用域。 将值设置为`inner`使表达式在嵌套模板的作用域内计算。
+可以通过 `expressionEvaluationOptions` 属性设置作用域。 默认情况下，`expressionEvaluationOptions` 属性设置为 `outer`，这意味着它使用父模板作用域。 将值设置为`inner` ，使表达式在嵌套模板范围内进行计算。
 
 ```json
 {
@@ -158,14 +158,14 @@ ms.locfileid: "80131931"
 }
 ```
 
-根据 中`exampleVar``scope``expressionEvaluationOptions`的属性的值更改的值。 下表显示了这两个作用域的结果。
+的值会`exampleVar`根据中`scope` `expressionEvaluationOptions`属性的值发生变化。 下表显示了这两个作用域的结果。
 
 | `expressionEvaluationOptions` `scope` | 输出 |
 | ----- | ------ |
 | 内部 | from nested template |
 | outer（或默认值） | from parent template |
 
-下面的示例部署一个 SQL Server，并检索要用于密码的密钥保管库机密。 作用域设置为`inner`，因为它动态地创建密钥保管库 ID（请参阅`adminPassword.reference.keyVault`外部模板`parameters`），并将其作为参数传递给嵌套模板。
+下面的示例部署一个 SQL Server，并检索要用于密码的密钥保管库机密。 作用域设置为， `inner`因为它会动态创建密钥保管库 ID （ `adminPassword.reference.keyVault`请参阅外部模板`parameters`中），并将其作为参数传递到嵌套模板。
 
 ```json
 {
@@ -277,11 +277,11 @@ ms.locfileid: "80131931"
 
 > [!NOTE]
 >
-> 当作用域设置为 `outer` 时，对于已在嵌套模板中部署的资源，无法在嵌套模板的 outputs 节中使用 `reference` 函数。 要返回嵌套模板中已部署资源的值，请使用`inner`作用域或将嵌套模板转换为链接模板。
+> 当作用域设置为 `outer` 时，对于已在嵌套模板中部署的资源，无法在嵌套模板的 outputs 节中使用 `reference` 函数。 若要返回嵌套模板中已部署资源的值，请使用`inner` "作用域" 或 "将嵌套模板转换为链接模板"。
 
 ## <a name="linked-template"></a>链接模板
 
-要链接模板，请将[部署资源](/azure/templates/microsoft.resources/deployments)添加到主模板。 在 **templateLink** 属性中，指定要包括的模板的 URI。 以下示例链接到部署新存储帐户的模板。
+若要链接模板，请将[部署资源](/azure/templates/microsoft.resources/deployments)添加到主模板。 在 **templateLink** 属性中，指定要包括的模板的 URI。 以下示例链接到部署新存储帐户的模板。
 
 ```json
 {
@@ -308,15 +308,15 @@ ms.locfileid: "80131931"
 }
 ```
 
-引用链接模板时，的值`uri`不能是本地文件或仅在本地网络上可用的文件。 您必须提供可下载为**http**或**https 的**URI 值。 
+引用链接模板时，的值`uri`不能是本地文件，也不能是只能在本地网络上使用的文件。 必须提供可下载为**http**或**https**的 URI 值。 
 
 > [!NOTE]
 >
-> 您可以使用最终解析为使用 http 或`_artifactsLocation`**https**的参数引用模板**https**，例如，使用如下所示的参数：`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
+> 您可以使用最终解析为使用**http**或**https**的参数（例如，使用如下所示的`_artifactsLocation`参数）来引用模板：`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
 
 
 
-资源管理器必须能够访问模板。 一种做法是将链接模板放入存储帐户，并对该项使用 URI。
+资源管理器必须能够访问该模板。 一种做法是将链接模板放入存储帐户，并对该项使用 URI。
 
 ### <a name="parameters-for-linked-template"></a>链接模板的参数
 
@@ -369,11 +369,11 @@ ms.locfileid: "80131931"
 
 ## `contentVersion`
 
-您不必为`contentVersion``templateLink`或`parametersLink`属性提供属性。 如果未提供 ，`contentVersion`则部署模板的当前版本。 如果提供内容版本值，它必须与链接的模板中的版本相匹配；否则，部署失败并产生错误。
+无需为`templateLink`或`parametersLink`属性提供`contentVersion`属性。 如果未提供`contentVersion`，则部署当前版本的模板。 如果提供内容版本值，它必须与链接的模板中的版本相匹配；否则，部署失败并产生错误。
 
 ## <a name="using-variables-to-link-templates"></a>使用变量来链接模板
 
-前面的示例演示了用于模板链接的硬编码 URL 值。 此方法可能适用于简单的模板，但它对一组大型模块化模板不起作用。 相反，可以创建一个存储主模板的基 URL 的静态变量，并从基 URL 动态创建用于链接模板的 URL。 此方法的好处是可以轻松地移动或分叉模板，因为您只需更改主模板中的静态变量。 主模板会在整个分解后的模板中传递正确的 URI。
+前面的示例演示了用于模板链接的硬编码 URL 值。 此方法可能适用于简单的模板，但它不适用于大型模块化模板。 相反，可以创建一个存储主模板的基 URL 的静态变量，并从基 URL 动态创建用于链接模板的 URL。 此方法的好处是可以轻松地移动或派生模板，因为只需更改主模板中的静态变量。 主模板会在整个分解后的模板中传递正确的 URI。
 
 以下示例演示如何使用基 URL 来创建两个用于链接模板的 URL（**sharedTemplateUrl** 和 **vmTemplate**）。
 
@@ -393,7 +393,7 @@ ms.locfileid: "80131931"
 }
 ```
 
-最终，您将在`uri``templateLink`属性的属性中使用变量。
+最终，将在`uri` `templateLink`属性的属性中使用该变量。
 
 ```json
 "templateLink": {
@@ -455,7 +455,7 @@ ms.locfileid: "80131931"
 
 若要从链接模板中获取输出值，请使用如下所示的语法检索属性值：`"[reference('deploymentName').outputs.propertyName.value]"`。
 
-从链接模板获取输出属性时，属性名称不能包含破折号。
+从链接模板获取输出属性时，属性名称不能包含短划线。
 
 以下示例演示如何引用链接模板和检索输出值。 链接模板返回一条简单的消息。  首先，链接的模板：
 
@@ -506,9 +506,9 @@ ms.locfileid: "80131931"
 }
 ```
 
-与其他资源类型一样，您可以设置链接模板和其他资源之间的依赖关系。 当其他资源需要链接模板的输出值时，请确保在部署这些资源之前部署链接模板。 或者，当链接模板依赖于其他资源时，请确保在部署链接模板之前部署其他资源。
+与其他资源类型一样，可以设置链接模板和其他资源之间的依赖关系。 当其他资源需要链接模板的输出值时，请确保在部署这些资源之前部署链接模板。 或者，当链接模板依赖于其他资源时，请确保在部署链接模板之前部署其他资源。
 
-下面的示例显示了一个模板，该模板部署公共 IP 地址并返回该公共 IP 的 Azure 资源的资源 ID：
+下面的示例演示了一个模板，该模板部署一个公共 IP 地址并返回该公共 IP 的 Azure 资源的资源 ID：
 
 ```json
 {
@@ -543,7 +543,7 @@ ms.locfileid: "80131931"
 }
 ```
 
-在部署负载均衡器时，请使用上述模板中的公共 IP 地址，请将链接到模板并声明对`Microsoft.Resources/deployments`资源的依赖项。 负载均衡器上的公共 IP 地址设置为链接模板的输出值。
+若要在部署负载平衡器时使用上述模板中的公共 IP 地址，请链接到该模板，并声明对`Microsoft.Resources/deployments`资源的依赖项。 负载均衡器上的公共 IP 地址设置为链接模板的输出值。
 
 ```json
 {
@@ -787,15 +787,15 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 以下示例演示了链接模板的常见用法。
 
-|主模板  |链接模板 |描述  |
+|主模板  |链接模板 |说明  |
 |---------|---------| ---------|
-|[世界您好](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[链接模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | 从链接模板返回字符串。 |
+|[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[链接模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | 从链接模板返回字符串。 |
 |[使用公共 IP 地址的负载均衡器](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[链接模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |从链接模板返回公共 IP 地址，并在负载均衡器中设置该值。 |
 |[多个 IP 地址](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) | [链接模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json) |在链接模板中创建多个公共 IP 地址。  |
 
 ## <a name="next-steps"></a>后续步骤
 
 * 若要浏览教程，请参阅[教程：创建链接的 Azure 资源管理器模板](template-tutorial-create-linked-templates.md)。
-* 要了解定义资源的部署顺序，请参阅[在 Azure 资源管理器模板中定义依赖项](define-resource-dependency.md)。
+* 若要了解如何为资源定义部署顺序，请参阅[在 Azure 资源管理器模板中定义依赖项](define-resource-dependency.md)。
 * 若要了解如何定义一个资源而创建多个实例，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
 * 有关在存储帐户中设置模板和生成 SAS 令牌的步骤，请参阅[使用 Resource Manager 模板和 Azure PowerShell 部署资源](deploy-powershell.md)或[使用 Resource Manager 模板和 Azure CLI 部署资源](deploy-cli.md)。

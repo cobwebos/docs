@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: 5f7611fd9df207df51fa0e51218d8a234583b1f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79529777"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>通过自定义 MES 预设执行高级编码 
@@ -248,7 +248,7 @@ ms.locfileid: "79529777"
 * 需要显式提供每个图像格式的输出格式：Jpg/Png/BmpFormat。 MES 会将 JpgVideo（如果已指定）与 JpgFormat 进行匹配，依此类推。 OutputFormat 引入了新的图像编解码器特定宏 {Index}，需要为图像输出格式提供该宏一次（且只需一次）。
 
 ## <a name="trim-a-video-clipping"></a><a id="trim_video"></a>剪裁视频（剪切）
-本部分说明如何修改编码器预设，以裁剪或修剪其输入为所谓的夹层文件或按需文件的输入视频。 编码器还可用于剪辑或修剪从实时流捕获或存档的资产 - 此详细信息[可在此博客](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)中提供。
+本部分说明如何修改编码器预设，以裁剪或修剪其输入为所谓的夹层文件或按需文件的输入视频。 编码器还可用于剪辑或剪裁从实时流捕获或存档的资产–此[博客](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)提供了有关此功能的详细信息。
 
 若要裁剪视频，可以使用[此部分](media-services-mes-presets-overview.md)所述的任何 MES 预设，并修改 **Sources** 元素（如下所示）。 StartTime 的值需与输入视频的绝对时间戳匹配。 例如，如果输入视频第一帧的时间戳为 12:00:10.000，则 StartTime 应大于或等于 12:00:10.000。 在以下示例中，假设输入视频的起始时间戳为零。 **Sources** 应位于预设的开始处。
 
@@ -495,7 +495,7 @@ Media Encoder Standard 允许在现有视频上覆盖图像。 目前支持以�
 
 除了定义预设文件外，还必须让媒体服务知道资产中的哪个文件是覆盖层图像，哪个文件是你要在其上覆盖图像的源视频。 视频文件必须是**主**文件。
 
-如果使用 .NET，请将以下两个函数添加到[此主题](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet)中定义的 .NET 示例。 **"上传媒体文件从文件夹"** 功能从文件夹上传文件（例如，BigBuckBunny.mp4 和 Image001.png），并将 mp4 文件集为资产中的主要文件。 **EncodeWithOverlay** 函数使用传递给它的自定义预设文件（例如，下面的预设）来创建编码任务。
+如果使用 .NET，请将以下两个函数添加到[此主题](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet)中定义的 .NET 示例。 **UploadMediaFilesFromFolder** 函数从文件夹上传文件（例如 BigBuckBunny.mp4 和 Image001.png），并将 mp4 文件设置为资产中的主文件。 **EncodeWithOverlay** 函数使用传递给它的自定义预设文件（例如，下面的预设）来创建编码任务。
 
 
     static public IAsset UploadMediaFilesFromFolder(string folderPath)
@@ -907,7 +907,7 @@ Media Encoder Standard 允许在现有视频上覆盖图像。 目前支持以�
 ## <a name="crop-videos-with-media-encoder-standard"></a><a id="crop"></a>使用 Media Encoder Standard 裁剪视频
 请参阅[使用 Media Encoder Standard 剪辑视频](media-services-crop-video.md)主题。
 
-## <a name="insert-a-video-track-when-input-has-no-video"></a><a id="no_video"></a>在输入不包含视频时插入视频轨迹
+## <a name="insert-a-video-track-when-input-has-no-video"></a><a id="no_video"></a>在输入不包含视频时插入视频轨
 
 默认情况下，如果要向编码器发送仅包含音频而不包含视频的输入，则输出资产将包含仅有音频数据的文件。 某些播放器（包括 Azure 媒体播放器）（请参阅[此处](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/8082468-audio-only-scenarios)）可能无法处理这样的流。 对于这种方案，可使用此设置来强制编码器将单色视频轨迹添加到输出。
 
@@ -917,7 +917,7 @@ Media Encoder Standard 允许在现有视频上覆盖图像。 目前支持以�
 
 ### <a name="inserting-video-at-only-the-lowest-bitrate"></a>仅以最低比特率插入视频
 
-假设您正在使用多个比特率编码预设（如["H264 多比特率 720p"）](media-services-mes-preset-h264-multiple-bitrate-720p.md)对流式处理的整个输入目录进行编码，其中包含视频文件和仅音频文件的组合。 在此方案中，如果输入不包含视频，用户可能想要强制编码器仅以最低比特率插入单色视频轨迹，而不是按每个输出比特率插入视频。 为此，需要使用“InsertBlackIfNoVideoBottomLayerOnly”**** 标志。
+假设要使用多比特率编码预设（如[“H264 多比特率 720p”](media-services-mes-preset-h264-multiple-bitrate-720p.md)）对整个输入目录进行编码以实现流式处理，且输入目录中混合了视频文件和仅音频文件。 在此方案中，如果输入不包含视频，用户可能想要强制编码器仅以最低比特率插入单色视频轨迹，而不是按每个输出比特率插入视频。 为此，需要使用“InsertBlackIfNoVideoBottomLayerOnly”  标志。
 
 可使用[此部分](media-services-mes-presets-overview.md)中所述的任何 MES 预设，并进行以下修改：
 
@@ -933,7 +933,7 @@ Media Encoder Standard 允许在现有视频上覆盖图像。 目前支持以�
 
 #### <a name="xml-preset"></a>XML 预设
 
-使用 XML 时，请使用 Condition="InsertBlackIfNoVideoBottomLayerOnly" 作为“H264Video”**** 元素的属性，并使用 Condition="InsertSilenceIfNoAudio" 作为“AACAudio”**** 的属性。
+使用 XML 时，请使用 Condition="InsertBlackIfNoVideoBottomLayerOnly" 作为“H264Video”  元素的属性，并使用 Condition="InsertSilenceIfNoAudio" 作为“AACAudio”  的属性。
 
 ```
 . . .
@@ -976,7 +976,7 @@ Media Encoder Standard 允许在现有视频上覆盖图像。 目前支持以�
 
 #### <a name="xml-preset"></a>XML 预设
 
-使用 XML 时，请使用 Condition="InsertBlackIfNoVideo" 作为“H264Video”**** 元素的属性，并使用 Condition="InsertSilenceIfNoAudio" 作为“AACAudio”**** 的属性。
+使用 XML 时，请使用 Condition="InsertBlackIfNoVideo" 作为“H264Video”  元素的属性，并使用 Condition="InsertSilenceIfNoAudio" 作为“AACAudio”  的属性。
 
 ```
 . . .

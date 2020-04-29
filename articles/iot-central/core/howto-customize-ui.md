@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 8f76f143b6c6a26b88b78e20d8d5d8ae1ae48553
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80157963"
 ---
 # <a name="customize-the-azure-iot-central-ui"></a>自定义 Azure IoT Central UI
@@ -31,7 +31,7 @@ ms.locfileid: "80157963"
 
 ## <a name="create-theme"></a>创建主题
 
-若要创建自定义主题，请在“管理”部分导航到“自定义应用程序”页：********
+若要创建自定义主题，请在“管理”部分导航到“自定义应用程序”页：  
 
 ![IoT Central 主题](./media/howto-customize-ui/themes.png)
 
@@ -52,17 +52,17 @@ ms.locfileid: "80157963"
 可以更改页头的颜色，以及用于突出按钮和其他强调内容的颜色。 请使用 `##ff6347` 格式的六个字符十六进制颜色值。 有关**十六进制值**颜色表示法的详细信息，请参阅 [HTML 颜色](https://www.w3schools.com/html/html_colors.asp)。
 
 > [!NOTE]
-> 始终可以还原为“自定义应用程序”页上的默认选项。****
+> 始终可以还原为“自定义应用程序”页上的默认选项。 
 
 ### <a name="changes-for-operators"></a>面向操作员的更改
 
-如果管理员创建了自定义主题，则应用程序的操作员和其他用户不再可以在“设置”中选择主题。****
+如果管理员创建了自定义主题，则应用程序的操作员和其他用户不再可以在“设置”中选择主题。 
 
 ## <a name="replace-help-links"></a>替换帮助链接
 
-若要为操作员和其他用户提供自定义帮助信息，可以修改应用程序“帮助”菜单中的链接。****
+若要为操作员和其他用户提供自定义帮助信息，可以修改应用程序“帮助”菜单中的链接。 
 
-若要修改帮助链接，请在“管理”部分导航到“自定义帮助”页：********
+若要修改帮助链接，请在“管理”部分导航到“自定义帮助”页：  
 
 ![自定义 IoT Central 帮助链接](./media/howto-customize-ui/help-links.png)
 
@@ -71,7 +71,7 @@ ms.locfileid: "80157963"
 ![自定义 IoT Central 帮助](./media/howto-customize-ui/custom-help.png)
 
 > [!NOTE]
-> 始终可以还原为“自定义帮助”页上的默认帮助链接。****
+> 始终可以还原为“自定义帮助”页上的默认帮助链接。 
 
 ## <a name="next-steps"></a>后续步骤
 

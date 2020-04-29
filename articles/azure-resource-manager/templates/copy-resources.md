@@ -4,23 +4,23 @@ description: 在 Azure 资源管理器模板中使用复制操作和数组多次
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.openlocfilehash: e65ab93c21daffa0053e53d953fe95fa9f28e2a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80153312"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>ARM 模板中的资源迭代
 
-本文介绍如何在 Azure 资源管理器 （ARM） 模板中创建多个资源的实例。 通过将**复制**元素添加到模板的资源部分，可以动态设置要部署的资源数。 您还避免重复模板语法。
+本文介绍如何在 Azure 资源管理器（ARM）模板中创建多个资源实例。 通过将 **copy** 元素添加到模板的 resources 节，可以动态设置要部署的资源数。 还可以避免重复模板语法。
 
-您还可以使用与[属性](copy-properties.md)、[变量](copy-variables.md)和[输出一](copy-outputs.md)起复制。
+还可以将 copy 用于 [properties](copy-properties.md)、[variables](copy-variables.md) 和 [outputs](copy-outputs.md)。
 
 如需指定究竟是否部署资源，请参阅 [condition 元素](conditional-resource-deployment.md)。
 
 ## <a name="resource-iteration"></a>资源迭代
 
-复制元素具有以下常规格式：
+copy 元素采用以下常规格式：
 
 ```json
 "copy": {
@@ -31,11 +31,11 @@ ms.locfileid: "80153312"
 }
 ```
 
-**名称**属性是标识循环的任何值。 **count**属性指定所需的资源类型的迭代次数。
+**name** 属性是标识循环的任何值。 **count** 属性指定要对该资源类型进行的迭代次数。
 
-使用**模式**和**batchSize**属性指定资源是并行部署还是按顺序部署。 这些属性在[串行或并行](#serial-or-parallel)中描述。
+使用 **mode** 和 **batchSize** 属性指定是并行还是按顺序部署资源。 [串行或并行](#serial-or-parallel)中介绍了这些属性。
 
-下面的示例创建**存储Count**参数中指定的存储帐户数。
+以下示例创建在 **storageCount** 参数中指定的存储帐户数目。
 
 ```json
 {
@@ -94,7 +94,7 @@ ms.locfileid: "80153312"
 
 当使用数组时，copy 操作十分有用，因为这样可以迭代数组中的每个元素。 可以对数组使用 `length` 函数来指定迭代计数，并使用 `copyIndex` 来检索数组中的当前索引。
 
-下面的示例为参数中提供的每个名称创建一个存储帐户。
+以下示例为参数中提供的每个名称创建一个存储帐户。
 
 ```json
 {
@@ -131,13 +131,13 @@ ms.locfileid: "80153312"
 }
 ```
 
-如果要从已部署的资源返回值，可以在[输出部分中使用复制](copy-outputs.md)。
+如果要从已部署的资源返回值，可以使用[在输出部分中复制](copy-outputs.md)。
 
 ## <a name="serial-or-parallel"></a>串行或并行
 
 默认情况下，资源管理器将并行创建资源。 除了模板中 800 个资源的总限制外，它对并行部署的资源数量没有限制。 不会保证它们的创建顺序。
 
-但是，可能需要指定按顺序部署资源。 例如，在更新生产环境时，可能需要错开更新，使得任何一次仅更新一定数量。 若要按顺序部署多个资源实例，请将 `mode` 设置为“串行”，并将 `batchSize` 设置为一次要部署的实例数量****。 在串行模式下，资源管理器会在循环中创建早前实例的依赖项，以便在前一个批处理完成之前它不会启动一个批处理。
+但是，可能需要指定按顺序部署资源。 例如，在更新生产环境时，可能需要错开更新，使得任何一次仅更新一定数量。 若要按顺序部署多个资源实例，请将 `mode` 设置为“串行”，并将  **设置为一次要部署的实例数量**`batchSize`。 在串行模式下，资源管理器会在循环中创建早前实例的依赖项，以便在前一个批处理完成之前它不会启动一个批处理。
 
 例如，若要按顺序一次部署两个存储帐户，请使用：
 
@@ -172,7 +172,7 @@ mode 属性也接受 **parallel**（它是默认值）。
 
 ## <a name="depend-on-resources-in-a-loop"></a>依赖于循环中的资源
 
-然后使用 `dependsOn` 元素指定部署一个资源后再部署另一个资源。 若要部署的资源依赖于循环中的资源集合，请在 dependsOn 元素中提供 copy 循环的名称。 下面的示例演示如何在部署虚拟机之前部署三个存储帐户。 未显示完整的虚拟机定义。 请注意，复制元素的名称设置为`storagecopy`，虚拟机的 dependsOn 元素也设置为`storagecopy`。
+然后使用 `dependsOn` 元素指定部署一个资源后再部署另一个资源。 若要部署的资源依赖于循环中的资源集合，请在 dependsOn 元素中提供 copy 循环的名称。 以下示例演示了如何在部署虚拟机之前部署三个存储帐户。 此处并未显示完整的虚拟机定义。 请注意，copy 元素的名称设置为 `storagecopy`，而虚拟机的 dependsOn 元素也设置为 `storagecopy`。
 
 ```json
 {
@@ -270,7 +270,7 @@ count 不能为负数。 如果使用 Azure PowerShell 2.6 或更高版本、Azu
 
 以下示例展示了创建资源或属性的多个实例的常见方案。
 
-|模板  |描述  |
+|模板  |说明  |
 |---------|---------|
 |[复制存储](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |部署名称中带索引号的多个存储帐户。 |
 |[串行的复制存储](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |一次部署多个存储帐户。 名称中包含索引号。 |
@@ -280,12 +280,12 @@ count 不能为负数。 如果使用 Azure PowerShell 2.6 或更高版本、Azu
 
 ## <a name="next-steps"></a>后续步骤
 
-* 要浏览教程，请参阅[教程：使用 ARM 模板创建多个资源实例](template-tutorial-create-multiple-instances.md)。
-* 有关复制元素的其他用途，请参阅：
+* 若要学习教程，请参阅[教程：使用 ARM 模板创建多个资源实例](template-tutorial-create-multiple-instances.md)。
+* 有关 copy 元素的其他用法，请参阅：
   * [ARM 模板中的属性迭代](copy-properties.md)
-  * [ARM 模板中的可变迭代](copy-variables.md)
+  * [ARM 模板中的变量迭代](copy-variables.md)
   * [ARM 模板中的输出迭代](copy-outputs.md)
 * 有关将副本与嵌套的模板配合使用的信息，请参阅[使用副本](linked-templates.md#using-copy)。
-* 如果要了解模板的各个部分，请参阅[创作 ARM 模板](template-syntax.md)。
-* 要了解如何部署模板，请参阅[使用 ARM 模板部署应用程序](deploy-powershell.md)。
+* 如果要了解有关模板的部分，请参阅[创作 ARM 模板](template-syntax.md)。
+* 若要了解如何部署模板，请参阅[使用 ARM 模板部署应用程序](deploy-powershell.md)。
 

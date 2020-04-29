@@ -4,10 +4,10 @@ description: '针对以下常见问题的解答：包括恢复服务保管库在
 ms.topic: conceptual
 ms.date: 07/07/2019
 ms.openlocfilehash: 039666c4b54da6ac5444f5aa5acda5f1bb438782
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80156049"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 备份 - 常见问题
@@ -22,7 +22,7 @@ ms.locfileid: "80156049"
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>可针对每个保管库注册的服务器/计算机数量是否有限制？
 
-每个保管库最多可以注册 1000 个 Azure 虚拟机。 如果使用 Microsoft Azure 备份代理，则每个保管库最多可以注册 50 个 MARS 代理。 您还可以将 50 台 MABS 服务器/DPM 服务器注册到保管库。
+每个保管库最多可以注册 1000 个 Azure 虚拟机。 如果你使用的是 Microsoft Azure 备份代理，则每个保管库最多可以注册 50 MARS 代理。 并且可以向保管库注册 50 MABS server/DPM 服务器。
 
 ### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>可以在保管库中保护多少数据源/项？
 
@@ -75,14 +75,14 @@ ms.locfileid: "80156049"
 
 Azure 备份支持操作系统对文件和文件夹以及使用 Azure 备份服务器和 DPM 保护的工作负载应用程序进行备份。
 
-**操作系统** | **Sku** | **详细信息**
+操作系统  | **SKU** | **详细信息**
 --- | --- | ---
 工作站 | |
 Windows 10 64 位 | Enterprise、Pro、Home | 计算机应运行最新服务包和更新。
 Windows 8.1 64 位 | Enterprise、Pro | 计算机应运行最新服务包和更新。
 Windows 8 64 位 | Enterprise、Pro | 计算机应运行最新服务包和更新。
 Windows 7 64 位 | Ultimate、Enterprise、Professional、Home Premium、Home Basic、Starter | 计算机应运行最新服务包和更新。
-服务器 | |
+Server (服务器) | |
 Windows Server 2019 64 位 | Standard、Datacenter、Essentials | 使用最新服务包/更新。
 Windows Server 2016 64 位 | Standard、Datacenter、Essentials | 使用最新服务包/更新。
 Windows Server 2012 R2 64 位 | Standard、Datacenter、Foundation | 使用最新服务包/更新。
@@ -123,7 +123,7 @@ BMR/系统状态 |正在备份计算机的 BMR 或系统状态的每个副本。
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>使用恢复服务保管库备份的数据量是否有限制？
 
-您可以使用恢复服务保管库备份的数据总量没有限制。 单个数据源（Azure VM 以外的）的大小最多可为 54，400 GB。 有关限制的详细信息，请参阅[支持矩阵 中的保管库限制部分](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support)。
+可以使用恢复服务保管库备份的总数据量没有限制。 单个数据源（Azure Vm 除外）的大小最大可为 54400 GB。 有关限制的详细信息，请参阅[支持矩阵中的保管库限制部分](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support)。
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>为什么传输到恢复服务保管库的数据的大小小于选择进行备份的数据？
 
@@ -135,7 +135,7 @@ BMR/系统状态 |正在备份计算机的 BMR 或系统状态的每个副本。
 
 ### <a name="if-i-cancel-a-backup-job-after-it-starts-is-the-transferred-backup-data-deleted"></a>如果在备份作业开始后取消，是否会删除已传输的备份数据？
 
-不是。 在备份作业取消之前传输到保管库中的所有数据将保留在保管库中。
+不能。 在备份作业取消之前传输到保管库中的所有数据将保留在保管库中。
 
 - Azure 备份使用检查点机制，在备份过程中偶尔要对备份数据添加检查点。
 - 由于备份数据中有检查点，下次备份过程可以验证文件的完整性。
@@ -155,20 +155,20 @@ BMR/系统状态 |正在备份计算机的 BMR 或系统状态的每个副本。
 
 ### <a name="can-i-use-different-times-for-backup-scheduling-and-retention-policies"></a>是否可以对备份计划和保留策略使用不同时间？
 
-不是。 只能在备份时间点应用保留策略。 例如，此图显示了午夜 12 点和下午 6 点创建的备份的保留策略。
+不能。 只能在备份时间点应用保留策略。 例如，此图显示了午夜 12 点和下午 6 点创建的备份的保留策略。
 
 ![计划备份和保持](./media/backup-azure-backup-faq/Schedule.png)
 
 ### <a name="if-a-backup-is-kept-for-a-long-time-does-it-take-more-time-to-recover-an-older-data-point"></a>如果备份保留了很长一段时间，是否需要更多时间才能恢复较旧的数据点？
 
-不是。 恢复最旧或最新时间点所需的时间相同。 每个恢复点的行为类似一个完整的点。
+不能。 恢复最旧或最新时间点所需的时间相同。 每个恢复点的行为类似一个完整的点。
 
 ### <a name="if-each-recovery-point-is-like-a-full-point-does-it-impact-the-total-billable-backup-storage"></a>如果每个恢复点相当于完整的点，它会影响总体可计费备份存储吗？
 
 典型的长期保留点产品将备份数据存储为完整的点。
 
 - 完整点的存储 *效率不高* ，但能使还原变得更方便和快速。
-- 增量副本具有存储*效率*，但需要还原数据链，这会影响您的恢复时间
+- 增量复制是*高效*存储，但要求你还原数据链，这会影响恢复时间
 
 Azure 备份存储体系结构提供这两个领域的最佳产品，它以最佳方式用于快速恢复的数据存储中，产生较低的存储成本。 这种方法可确保提高（入口和出口）带宽使用效率。 数据存储量和恢复数据所需的时间都会尽量减少。 了解有关[增量备份](https://azure.microsoft.com/blog/microsoft-azure-backup-save-on-long-term-storage/)的更多信息。
 
@@ -184,7 +184,7 @@ Azure 备份存储体系结构提供这两个领域的最佳产品，它以最�
 
 ### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure"></a>还原数据时，Azure 的出口流量是否需要付费？
 
-不是。 恢复是免费的，不收取传出流量费。
+不能。 恢复是免费的，不收取传出流量费。
 
 ### <a name="what-happens-when-i-change-my-backup-policy"></a>如果更改备份策略，会发生什么情况？
 

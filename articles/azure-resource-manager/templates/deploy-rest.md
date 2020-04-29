@@ -4,15 +4,15 @@ description: 使用 Azure Resource Manager 和 Resource Manager REST API 将资�
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.openlocfilehash: 9cdb7b668e5170917b41ef49639bd9a17e538766
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80153227"
 ---
-# <a name="deploy-resources-with-arm-templates-and-resource-manager-rest-api"></a>使用 ARM 模板和资源管理器 REST API 部署资源
+# <a name="deploy-resources-with-arm-templates-and-resource-manager-rest-api"></a>利用 ARM 模板和资源管理器部署资源 REST API
 
-本文介绍如何使用资源管理器 REST API 与 Azure 资源管理器 （ARM） 模板一起将资源部署到 Azure。
+本文介绍如何使用 Azure 资源管理器（ARM）模板的资源管理器 REST API 将资源部署到 Azure。
 
 可以在请求正文中包含模板或链接到文件。 使用文件时，它可以是本地文件，也可以是通过 URI 提供的外部文件。 如果模板位于存储帐户中，可以限制对该模板的访问，并在部署过程中提供共享访问签名 (SAS) 令牌。
 
@@ -75,7 +75,7 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 
    在请求正文中，提供指向模板和参数文件的链接。 有关参数文件的详细信息，请参阅[创建资源管理器参数文件](parameter-files.md)。
 
-   请注意，**mode** 设置为 **Incremental**。 要运行完全部署，将**模式**设置为 **"完成**"。 使用完整模式时要小心，因为可能会无意中删除不在模板中的资源。
+   请注意，**mode** 设置为 **Incremental**。 要运行完整部署，请将 **mode** 设置为 **Complete**。 使用完整模式时要小心，因为可能会无意中删除不在模板中的资源。
 
    ```json
    {
@@ -189,8 +189,8 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要在出错时回退到成功的部署，请参阅[出错时回退到成功的部署](rollback-on-error.md)。
+- 若要在出错时回滚到成功的部署，请参阅[出错时回滚到成功的部署](rollback-on-error.md)。
 - 若要指定如何处理存在于资源组中但未在模板中定义的资源，请参阅 [Azure 资源管理器部署模式](deployment-modes.md)。
 - 若要了解如何处理异步 REST 操作，请参阅[跟踪异步 Azure 操作](../management/async-operations.md)。
-- 要了解有关模板的更多信息，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+- 若要了解有关模板的详细信息，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
 
