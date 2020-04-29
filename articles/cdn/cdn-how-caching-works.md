@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
 ms.openlocfilehash: d0c438aee7f56e96feb7167fad718fd9519a9f76
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81253707"
 ---
 # <a name="how-caching-works"></a>缓存工作原理
@@ -86,7 +86,7 @@ Azure CDN 支持以下 HTTP 缓存指令标头，它们定义了缓存持续时�
 - 类似于 `Cache-Control: max-age`。
 - 当 `Cache-Control` 不存在时使用。
 
-**普拉格马：**
+**杂**
    - Azure CDN 默认情况下未采用。
    - HTTP 1.0 中引入的旧标头支持向后兼容性。
    - 用作具有以下指令的客户端请求标头：`no-cache`。 此指令指示服务器提供新的资源版本。
@@ -96,7 +96,7 @@ Azure CDN 支持以下 HTTP 缓存指令标头，它们定义了缓存持续时�
 
 当缓存过时时，使用 HTTP 缓存验证程序将文件的缓存版本与源服务器上的版本进行比较。 **Verizon 推出的 Azure CDN 标准版/高级版**默认支持 `ETag` 和 `Last-Modified` 验证程序，而 **Microsoft 推出的 Azure CDN 标准版**和 **Akamai 推出的 Azure CDN 标准版**默认仅支持 `Last-Modified`。
 
-**ETag：**
+**ETag**
 - **Verizon 推出的 Azure CDN 标准版/高级版**默认支持 `ETag`，而 **Microsoft 推出的 Azure CDN 标准版**和 **Akamai 推出的 Azure CDN 标准版**则不。
 - `ETag` 为每个文件和文件版本定义唯一字符串。 例如，`ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"` 。
 - 在 HTTP 1.1 中引入，并且比 `Last-Modified` 更新。 当很难确定上次修改日期时，会非常有用。
@@ -126,8 +126,8 @@ Azure CDN 支持以下 HTTP 缓存指令标头，它们定义了缓存持续时�
 
 |    | Microsoft：常规 Web 分发 | Verizon：常规 Web 分发 | Verizon：DSA | Akamai：常规 Web 分发 | Akamai：DSA | Akamai：大型文件下载 | Akamai：常规或 VOD 媒体流式处理 |
 |------------------------|--------|-------|------|--------|------|-------|--------|
-| **荣誉起源**       | 是    | 是   | 否   | 是    | 否   | 是   | 是    |
-| **CDN 缓存持续时间** | 2 天 |7 天 | None | 7 天 | None | 1 天 | 1 年 |
+| **荣誉**       | 是    | 是   | 否   | 是    | 否   | 是   | 是    |
+| **CDN 缓存持续时间** | 2 天 |7 天 | 无 | 7 天 | 无 | 1 天 | 1 年 |
 
 **优先处理源**：指定是否优先处理支持的缓存指令标头（如果它们存在于源服务器的 HTTP 响应中）。
 

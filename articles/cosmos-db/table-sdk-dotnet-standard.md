@@ -9,10 +9,10 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
 ms.openlocfilehash: f7c6829d858e36b55f079f8ee03e431f67995e66
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81272570"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB 表 .NET Standard API：下载和发行说明
@@ -34,30 +34,30 @@ ms.locfileid: "81272570"
 |**报告问题**|[报告问题](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
 
 ## <a name="release-notes-for-200-series"></a>2.0.0 系列的发行说明
-2.0.0 系列依赖于[Microsoft.Azure.Cosmos，](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)性能改进和命名空间合并到 Cosmos DB 终结点。
+2.0.0 系列采用[Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)的依赖项，并对 Cosmos DB 终结点执行性能改进和命名空间合并。
 
 ### <a name="200-preview"></a><a name="2.0.0-preview"/>2.0.0-preview
-* 2.0.0 表 SDK 的初始预览，它依赖于[Microsoft.Azure.Cosmos，](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)性能改进和命名空间合并到 Cosmos DB 终结点。 公共 API 保持不变。
+* 2.0.0 表 SDK 的初始预览，它依赖于[Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)的性能改进和命名空间合并，以 Cosmos DB 端点。 公共 API 保持不变。
 
-## <a name="release-notes-for-100-series"></a>1.0.0 系列的发行说明
-1.0.0 系列依赖于[Microsoft.Azure.DocumentDB.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)。
+## <a name="release-notes-for-100-series"></a>1.0.0 系列发行说明
+1.0.0 系列依赖于[Microsoft. Azure](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)。
 
 ### <a name="107"></a><a name="1.0.7"/>1.0.7
-* 通过将表 SDK 默认跟踪级别设置为 SourceLevels.off，可通过应用选择，从而提高性能。
+* 通过将表 SDK 默认跟踪级别设置为 SourceLevels，提高性能，可通过 app.config 选择加入
 
 ### <a name="105"></a><a name="1.0.5"/>1.0.5
-* 在表客户端配置下引入新的配置，以使用休息执行器与 Cosmos DB 表 API 进行通信
+* 在 TableClientConfiguration 下引入新配置，以使用 Rest 执行器与 Cosmos DB 进行通信表 API
 
-### <a name="105-preview"></a><a name="1.0.5-preview"/>1.0.5 预览版
+### <a name="105-preview"></a><a name="1.0.5-preview"/>1.0.5-预览
 * Bug 修复
 
 ### <a name="104"></a><a name="1.0.4"/>1.0.4
 * Bug 修复
-* 为休息执行器配置提供 HttpClient 超时选项。
+* 提供 RestExecutorConfiguration 的 HttpClientTimeout 选项。
 
-### <a name="104-preview"></a><a name="1.0.4-preview"/>1.0.4 预览
+### <a name="104-preview"></a><a name="1.0.4-preview"/>1.0.4-预览
 * Bug 修复
-* 为休息执行器配置提供 HttpClient 超时选项。
+* 提供 RestExecutorConfiguration 的 HttpClientTimeout 选项。
 
 ### <a name="101"></a><a name="1.0.1"/>1.0.1
 * Bug 修复
@@ -88,30 +88,30 @@ ms.locfileid: "81272570"
 ## <a name="release-and-retirement-dates"></a>发布日期和停用日期
 Microsoft 至少会在停用 SDK 前提前 12 个月**** 发出通知，以便顺利转换为更高版本/受支持版本。
 
-这个跨平台.NET标准库[微软.Azure.Cosmos.表](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)将取代.NET框架库[微软.Azure.CosmosDB.表](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)。
+这种跨平台 .NET Standard 库将替换 .NET Framework 库[Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) 。）将替换[CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)。
 
 ### <a name="200-series"></a>2.0.0 系列
-| Version | 发布日期 | 停用日期 |
+| 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
-| [2.0.0-preview](#2.0.0-preview) |奥客 22， 2019 |--- |
+| [2.0.0-preview](#2.0.0-preview) |Auguest 22，2019 |--- |
 
 ### <a name="100-series"></a>1.0.0 系列
-| Version | 发布日期 | 停用日期 |
+| 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
 | [1.0.5](#1.0.5) |2019 年 9 月 13 日 |--- |
-| [1.0.5 预览版](#1.0.5-preview) |奥客 20， 2019 |--- |
-| [1.0.4](#1.0.4) |奥Guest 12， 2019 |--- |
-| [1.0.4 预览](#1.0.4-preview) |2019 年 6 月 26 日 |--- |
-| 1.0.2 预览 |2019年5月2日 |--- |
+| [1.0.5-预览](#1.0.5-preview) |Auguest 20，2019 |--- |
+| [1.0.4](#1.0.4) |Auguest 12，2019 |--- |
+| [1.0.4-预览](#1.0.4-preview) |2019 年 6 月 26 日 |--- |
+| 1.0.2-预览 |5月2日，2019 |--- |
 | [1.0.1](#1.0.1) |2019年4月19日 |--- |
 | [1.0.0](#1.0.0) |2019 年 3 月 13 日 |--- |
 | [0.11.0-preview](#0.11.0-preview) |2019 年 3 月 5 日 |--- |
 | [0.10.1 预览版](#0.10.1-preview) |2019 年 1 月 22 日 |--- |
 | [0.10.0 预览版](#0.10.0-preview) |2018 年 12 月 18 日 |--- |
-| [0.9.1 预览](#0.9.1-preview) |2018 年 10 月 18 日 |--- |
+| [0.9.1-预览](#0.9.1-preview) |2018 年 10 月 18 日 |--- |
 
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>FAQ
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

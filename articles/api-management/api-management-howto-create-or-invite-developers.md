@@ -13,19 +13,19 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
 ms.openlocfilehash: 672f145b638fa6b85f7139f2edb4fc41bb2855d9
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81260966"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>如何在 Azure API 管理中管理用户帐户
 
-在 API 管理（预览版）中，开发人员是公开使用 API 管理的 API 的用户。 本指南演示如何进行创建并邀请开发人员使用 API 和产品，向 API 管理实例提供。 有关以编程方式管理用户帐户的信息，请参阅 [API 管理 REST](/rest/api/apimanagement/)参考中的[用户实体](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user)文档。
+在 API 管理（预览版）中，开发人员是公开使用 API 管理的 API 的用户。 本指南演示如何进行创建并邀请开发人员使用 API 和产品，向 API 管理实例提供。 有关以编程方式管理用户帐户的信息，请参阅 [API 管理 REST](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user)参考中的[用户实体](/rest/api/apimanagement/)文档。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成此文中的任务：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
 
@@ -35,20 +35,20 @@ ms.locfileid: "81260966"
 
 若要添加新用户，请执行本部分中的步骤：
 
-1. 选择屏幕左侧的“用户”**** 选项卡。
-2. 按 **+添加**。
+1. 选择屏幕左侧的“用户”  选项卡。
+2. 按“+添加”  。
 3. 输入用户的相应信息。
-4. 按“添加”****。
+4. 按“添加”  。
 
     ![添加新用户](./media/api-management-howto-create-or-invite-developers/api-management-create-developer.png)
 
-默认情况下，新创建的开发人员帐户处于“活动”**** 状态，并且与“开发人员”**** 组相关联。 处于“活动”**** 状态的开发人员帐户可用于访问它们具有订阅的所有 API。 要将新创建的开发人员与其他组相关联，请参阅[如何将组与开发人员关联][How to associate groups with developers]。
+默认情况下，新创建的开发人员帐户处于“活动”  状态，并且与“开发人员”  组相关联。 处于“活动”  状态的开发人员帐户可用于访问它们具有订阅的所有 API。 要将新创建的开发人员与其他组相关联，请参阅[如何将组与开发人员关联][How to associate groups with developers]。
 
 ## <a name="invite-a-developer"></a><a name="invite-developer"> </a>邀请开发人员
 若要邀请开发人员，请执行本部分中的步骤：
 
-1. 选择屏幕左侧的“用户”**** 选项卡。
-2. 按“+邀请”****。
+1. 选择屏幕左侧的“用户”  选项卡。
+2. 按“+邀请”  。
 
 将显示一条确认消息，但新受邀请的开发人员之后不会出现在列表中，直到他们接受邀请。 
 
@@ -56,15 +56,15 @@ ms.locfileid: "81260966"
 
 一旦接受邀请，该帐户将变为活动状态。
 
-## <a name="deactivate-or-reactivate-a-developer-account"></a><a name="block-developer"> </a>停用或重新激活开发人员帐户
+## <a name="deactivate-or-reactivate-a-developer-account"></a><a name="block-developer"> </a> 停用或重新激活开发人员帐户
 
-默认情况下，新创建的或受邀请的开发人员帐户处于“活动”**** 状态。 若要停用开发人员帐户，请单击“阻止”****。 若要重新激活阻止的开发人员帐户，请单击“激活”****。 阻止的开发人员帐户不能访问开发人员门户或调用任何 API。 若要删除用户帐户，请单击“删除”****。
+默认情况下，新创建的或受邀请的开发人员帐户处于“活动”  状态。 若要停用开发人员帐户，请单击“阻止”  。 若要重新激活阻止的开发人员帐户，请单击“激活”  。 阻止的开发人员帐户不能访问开发人员门户或调用任何 API。 若要删除用户帐户，请单击“删除”  。
 
 若要阻止用户，请执行以下步骤。
 
-1. 选择屏幕左侧的“用户”**** 选项卡。
+1. 选择屏幕左侧的“用户”  选项卡。
 2. 单击想要阻止的用户。
-3. 按“阻止”****。
+3. 按“阻止”  。
 
 ## <a name="reset-a-user-password"></a>重置用户密码
 

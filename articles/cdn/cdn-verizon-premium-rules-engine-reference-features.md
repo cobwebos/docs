@@ -1,6 +1,6 @@
 ---
-title: 来自 Verizon 高级规则引擎功能的 Azure CDN |微软文档
-description: 来自 Verizon 高级规则引擎功能的 Azure CDN 参考文档。
+title: 从 Verizon 高级规则引擎功能 Azure CDN |Microsoft Docs
+description: Verizon Premium 规则引擎功能 Azure CDN 的参考文档。
 services: cdn
 author: asudbring
 ms.service: azure-cdn
@@ -8,13 +8,13 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: allensu
 ms.openlocfilehash: 373e7838327d11b1b54278ee0c16c6e6ae554b0b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81253486"
 ---
-# <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>来自 Verizon 高级规则引擎功能的 Azure CDN
+# <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>从 Verizon 高级规则引擎功能 Azure CDN
 
 本文列出 Azure 内容分发网络 (CDN) [规则引擎](cdn-verizon-premium-rules-engine.md)的可用功能的详细说明。
 
@@ -51,7 +51,7 @@ ms.locfileid: "81253486"
 [外部最大有效期](#external-max-age) | 确定在进行从浏览器到 POP 的缓存重新验证时的最大有效期时间间隔。
 [强制内部最大有效期](#force-internal-max-age) | 确定在进行从 POP 到源服务器的缓存重新验证时的最大有效期时间间隔。
 [H.264 支持（HTTP 渐进式下载）](#h264-support-http-progressive-download) | 确定适用于流式处理内容的 H.264 文件格式的类型。
-[荣誉无缓存请求](#honor-no-cache-request) | 确定是否将 HTTP 客户端的 no-cache 请求转发到源服务器。
+[接受非缓存请求](#honor-no-cache-request) | 确定是否将 HTTP 客户端的 no-cache 请求转发到源服务器。
 [忽略源服务器 No-Cache](#ignore-origin-no-cache) | 确定 CDN 是否会忽略源服务器提供的某些指令。
 [忽略无法满足的范围](#ignore-unsatisfiable-ranges) | 确定当请求生成“416 无法满足请求的范围”状态代码时，会为客户端返回的响应。
 [内部最大过时期限](#internal-max-stale) | 控制在 POP 无法重新验证源服务器的缓存资产的情况下，允许 POP 在正常到期时间过后多长时间内提供缓存资产。
@@ -165,7 +165,7 @@ If the desired site does not appear in the list, then you should edit its config
 [URL 重定向](#url-redirect) | 通过 Location 标头重定向请求。
 [URL 重写](#url-rewrite)  | 重写请求 URL。
 
-## <a name="azure-cdn-from-verizon-premium-rules-engine-features-reference"></a>来自 Verizon 高级规则引擎的 Azure CDN 功能引用
+## <a name="azure-cdn-from-verizon-premium-rules-engine-features-reference"></a>Verizon Premium 规则引擎功能参考中的 Azure CDN
 
 ---
 
@@ -173,14 +173,14 @@ If the desired site does not appear in the list, then you should edit its config
 
 **目的**：确定是否会在发送给请求者的响应中包括 Age 响应标头。
 
-值|结果
+“值”|结果
 --|--
 已启用 | 将在发送给请求者的响应中包括 Age 响应标头。
-已禁用 | 将在发送给请求者的响应中排除 Age 响应标头。
+禁用 | 将在发送给请求者的响应中排除 Age 响应标头。
 
-**默认行为**：已禁用。
+**默认行为**：禁用。
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -192,14 +192,14 @@ If the desired site does not appear in the list, then you should edit its config
 
 带宽限制参数决定了客户端请求的数据传输速率是否受自定义速率限制。
 
-值|结果
+“值”|结果
 --|--
 已启用|允许 POP 遵循带宽限制请求。
-已禁用|导致 POP 忽略带宽限制参数。 请求的内容将正常提供（即没有带宽限制）。
+禁用|导致 POP 忽略带宽限制参数。 请求的内容将正常提供（即没有带宽限制）。
 
 **默认行为：** 启用。
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -216,9 +216,9 @@ If the desired site does not appear in the list, then you should edit its config
 每秒千字节数|将此选项设置为可以用来提供响应的最大带宽 (Kb/s)。
 预缓存秒数|将此选项设置为在限制带宽之前 POP 要等待的秒数。 在此时间段内不限制带宽，目的是防止媒体播放器因带宽限制而出现中断或缓冲问题。
 
-**默认行为：** 禁用。
+**默认行为：** Disabled.
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -228,10 +228,10 @@ If the desired site does not appear in the list, then you should edit its config
 
 **目的：** 确定请求是否应绕过缓存。
 
-值|结果
+“值”|结果
 --|--
 已启用|导致所有请求被转到源服务器，即使此前已在 POP 上缓存了内容。
-已禁用|导致 POP 根据响应标头中定义的缓存策略缓存资产。
+禁用|导致 POP 根据响应标头中定义的缓存策略缓存资产。
 
 **默认行为：**
 
@@ -242,7 +242,7 @@ If the desired site does not appear in the list, then you should edit its config
 
 --->
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -260,7 +260,7 @@ If the desired site does not appear in the list, then you should edit its config
 
 **默认行为：** 仅缓存 GET 响应。
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -284,7 +284,7 @@ If the desired site does not appear in the list, then you should edit its config
 
 **默认行为：** 14 Kb
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -296,16 +296,16 @@ If the desired site does not appear in the list, then you should edit its config
 
 要实现此类配置，最简单的方式是将“外部最大有效期”和“Cache-Control 标头处理”功能置于同一语句中。
 
-值|结果
+“值”|结果
 --|--
 Overwrite|确保会执行以下操作：<br/> - 覆盖源服务器生成的 `Cache-Control` 标头。 <br/>- 向响应添加“外部最大有效期”功能生成的 `Cache-Control` 标头。
 传递|确保不向响应添加“外部最大有效期”功能生成的 `Cache-Control` 标头。 <br/> 如果源服务器生成 `Cache-Control` 标头，该标头会传递给最终用户。 <br/> 如果源服务器不生成 `Cache-Control` 标头，则此选项可能会导致响应标头不包含 `Cache-Control` 标头。
 缺失情况下添加|如果 `Cache-Control` 标头不是从源服务器接收的，则此选项会添加“外部最大有效期”功能生成的 `Cache-Control` 标头。 此选项用于确保为所有资产分配 `Cache-Control` 标头。
 删除| 此选项可确保标头响应不包括 `Cache-Control` 标头。 如果已分配 `Cache-Control` 标头，则会将其从标头响应中删除。
 
-**默认行为：** 覆盖。
+**默认行为：** 覆盖.
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -367,7 +367,7 @@ Overwrite|确保会执行以下操作：<br/> - 覆盖源服务器生成的 `Cac
 示例配置：
 
 - **类型：** 排除
-- **参数：** 已会话的使用
+- **参数：** sessioned userid
 
 此类配置会生成以下查询字符串参数 cache-key：
 
@@ -383,7 +383,7 @@ Overwrite|确保会执行以下操作：<br/> - 覆盖源服务器生成的 `Cac
 
     /800001/Origin/folder/asset.htm
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -400,11 +400,11 @@ cache-key 是一个相对路径，用于确定缓存的资产。 换言之，服
 选项|说明
 --|--
 原始路径| 定义要重新写入其 cache-key 的请求类型的相对路径。 可以先选择基础源路径，然后定义一个正则表达式模式，从而定义相对路径。
-新建路径|定义新 cache-key 的相对路径。 可以先选择基础源路径，然后定义一个正则表达式模式，从而定义相对路径。 此相对路径可以通过[使用 HTTP 变量](cdn-http-variables.md)进行动态构造。
+新建路径|定义新 cache-key 的相对路径。 可以先选择基础源路径，然后定义一个正则表达式模式，从而定义相对路径。 可以通过使用[HTTP 变量](cdn-http-variables.md)来动态构造此相对路径。
 
 **默认行为：** 请求的 cache-key 取决于请求 URI。
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -422,7 +422,7 @@ cache-key 是一个相对路径，用于确定缓存的资产。 换言之，服
 - 仅使用字母数字字符。
 - 此功能不影响规则的行为。 它只是用于为未来的引用提供信息，或者用于对规则进行故障诊断。
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -441,10 +441,10 @@ This feature is not available for the ADN platform. The typical traffic on this 
 
 保留 HTTP Large 平台的默认配置，因为这样会减少客户源服务器的负载，提高客户下载内容的速度。
 
-值|结果
+“值”|结果
 --|--
 已启用|还原默认行为。 默认行为是强制 POP 启动对源服务器中资产的后台获取。 然后，资产将位于 POP 的本地缓存中。
-已禁用|防止 POP 执行资产的后台获取操作。 结果是，下次从该区域请求此资产时，会导致 POP 从客户源服务器请求此资产。
+禁用|防止 POP 执行资产的后台获取操作。 结果是，下次从该区域请求此资产时，会导致 POP 从客户源服务器请求此资产。
 
 **默认行为：** 启用。
 
@@ -458,7 +458,7 @@ This feature is not available for the ADN platform. The typical traffic on this 
 - Cookie 参数正则表达式
 - 国家/地区
 - 设备
-- 微软边缘 Cname
+- Microsoft Edge Cname
 - 引用域
 - 请求标头文本
 - 请求标头正则表达式
@@ -470,7 +470,7 @@ This feature is not available for the ADN platform. The typical traffic on this 
 - URL 查询通配符
 - URL 查询参数
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -498,7 +498,7 @@ application/javascript|Javascript
 - 不支持通配符，例如星号。
 - 向规则添加此功能之前，请确保在要应用此规则的平台的“压缩”页上设置“禁用压缩”选项。
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -516,7 +516,7 @@ application/javascript|Javascript
 
 标头类型|格式|示例
 -|-|-
-请求标头|`%{[RequestHeader]()}[i]()` | %{Accept-Encoding}i <br/> {参考 <br/> %{Authorization}i
+请求标头|`%{[RequestHeader]()}[i]()` | %{Accept-Encoding}i <br/> {引用网站} i <br/> %{Authorization}i
 响应标头|`%{[ResponseHeader]()}[o]()`| %{Age}o <br/> %{Content-Type}o <br/> %{Cookie}o
 
 重要信息：
@@ -529,7 +529,7 @@ application/javascript|Javascript
 
 **默认值：** -
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -547,18 +547,18 @@ application/javascript|Javascript
 
 `X-EC-Debug: _&lt;Directive1&gt;_,_&lt;Directive2&gt;_,_&lt;DirectiveN&gt;_`
 
-**例子：**
+**示例：**
 
 X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
-值|结果
+“值”|结果
 -|-
 已启用|请求调试缓存响应标头时，会返回包括 X-EC-Debug 标头的响应。
-已禁用|X-EC-Debug 响应标头将不包括在响应中。
+禁用|X-EC-Debug 响应标头将不包括在响应中。
 
-**默认行为：** 禁用。
+**默认行为：** Disabled.
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -602,7 +602,7 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 - URL 查询通配符
 - URL 查询参数
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -612,17 +612,17 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 **目的**：通过“403 禁止访问”响应确定是否拒绝了所有请求。
 
-值 | 结果
+“值” | 结果
 ------|-------
 已启用| 导致系统发送“403 禁止访问”响应，拒绝满足匹配条件的所有请求。
-已禁用| 还原默认行为。 默认行为是允许源服务器确定将返回的响应类型。
+禁用| 还原默认行为。 默认行为是允许源服务器确定将返回的响应类型。
 
 **默认行为**：禁用
 
 > [!TIP]
    > 此功能的一项可能用途是将其与“请求标头”匹配条件关联，阻止访问那些使用内联链接访问用户内容的 HTTP 引用站点。
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -634,7 +634,7 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 要实现此类配置，最简单的方式是将“外部最大有效期”和“Expires 标头处理”功能置于同一语句中。
 
-值|结果
+“值”|结果
 --|--
 Overwrite|确保会执行以下操作：<br/>- 覆盖源服务器生成的 `Expires` 标头。<br/>- 向响应添加“外部最大有效期”功能生成的 `Expires` 标头。
 传递|确保不向响应添加“外部最大有效期”功能生成的 `Expires` 标头。 <br/> 如果源服务器生成 `Expires` 标头，该标头会传递给最终用户。 <br/>如果源服务器不生成 `Expires` 标头，则此选项可能会导致响应标头不包含 `Expires` 标头。
@@ -643,7 +643,7 @@ Overwrite|确保会执行以下操作：<br/>- 覆盖源服务器生成的 `Expi
 
 **默认行为：** 覆盖
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -664,7 +664,7 @@ Overwrite|确保会执行以下操作：<br/>- 覆盖源服务器生成的 `Expi
 
 **默认行为：** 关
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -678,14 +678,14 @@ Overwrite|确保会执行以下操作：<br/>- 覆盖源服务器生成的 `Expi
 
 - 只能将请求重定向到与同一平台相对应的边缘 CNAME。
 
-值|结果
+“值”|结果
 -|-
 已启用|可以重定向请求。
-已禁用|不会重定向请求。
+禁用|不会重定向请求。
 
-**默认行为：** 禁用。
+**默认行为：** Disabled.
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -729,7 +729,7 @@ Overwrite|确保会执行以下操作：<br/>- 覆盖源服务器生成的 `Expi
 - URL 查询通配符
 - URL 查询参数
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -746,7 +746,7 @@ Overwrite|确保会执行以下操作：<br/>- 覆盖源服务器生成的 `Expi
 
 **默认行为：** HTTP 渐进式下载默认支持 MP4 和 F4V 媒体。
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -758,18 +758,18 @@ Overwrite|确保会执行以下操作：<br/>- 覆盖源服务器生成的 `Expi
 
 当 HTTP 客户端在 HTTP 请求中发送 `Cache-Control: no-cache` 和/或 `Pragma: no-cache` 标头时，就会出现 no-cache 请求。
 
-值|结果
+“值”|结果
 --|--
 已启用|允许将 HTTP 客户端的 no-cache 请求转发给源服务器，然后源服务器就会将响应标头和正文通过 POP 返回给 HTTP 客户端。
-已禁用|还原默认行为。 默认行为是为了防止系统将 no-cache 请求转发到源服务器。
+禁用|还原默认行为。 默认行为是为了防止系统将 no-cache 请求转发到源服务器。
 
 对于所有生产流量，强烈建议将此功能保留为默认禁用状态。 否则，如果最终用户在刷新网页时无意触发多个 no-cache 请求，或者多个常用媒体播放器根据编码在每次进行视频请求时都发送 no-cache 标头，源服务器就会受到影响。 尽管如此，仍可将此功能应用到某些非生产性的分段或测试目录，以便根据需要从源服务器拉取全新的内容。
 
 对于由于此功能而允转发到源服务器的请求，为其报告的状态为 `TCP_Client_Refresh_Miss`。 核心报告模块中提供的缓存状态报告按缓存状态提供统计信息。 用户可以通过此报告跟踪由于此功能而需要转发到源服务器的请求的数目和百分比。
 
-**默认行为：** 禁用。
+**默认行为：** Disabled.
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -813,7 +813,7 @@ Overwrite|确保会执行以下操作：<br/>- 覆盖源服务器生成的 `Expi
 - URL 查询通配符
 - URL 查询参数
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -825,14 +825,14 @@ Overwrite|确保会执行以下操作：<br/>- 覆盖源服务器生成的 `Expi
 
 默认情况下，当 POP 无法满足指定的 byte-range 请求时，以及当 If-Range 请求标头字段未被指定时，会返回此状态代码。
 
-值|结果
+“值”|结果
 -|-
 已启用|防止 POP 使用“416 无法满足请求的范围”状态代码响应无效的 byte-range 请求。 服务器会改为交付请求的资产并为客户端返回“200 正常”。
-已禁用|还原默认行为。 默认行为是遵循“416 无法满足请求的范围”状态代码。
+禁用|还原默认行为。 默认行为是遵循“416 无法满足请求的范围”状态代码。
 
-**默认行为：** 禁用。
+**默认行为：** Disabled.
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -881,7 +881,7 @@ Overwrite|确保会执行以下操作：<br/>- 覆盖源服务器生成的 `Expi
 - URL 查询通配符
 - URL 查询参数
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -891,14 +891,14 @@ Overwrite|确保会执行以下操作：<br/>- 覆盖源服务器生成的 `Expi
 
 **目的：** 确定是否会将查询字符串和 URL 一起存储在访问日志中。
 
-值|结果
+“值”|结果
 -|-
 已启用|在访问日志中记录 URL 时，允许存储查询字符串。 如果 URL 中不含查询字符串，则此选项无效。
-已禁用|还原默认行为。 默认行为是将 URL 记录到访问日志中时忽略查询字符串。
+禁用|还原默认行为。 默认行为是将 URL 记录到访问日志中时忽略查询字符串。
 
-**默认行为：** 禁用。
+**默认行为：** Disabled.
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -917,7 +917,7 @@ Overwrite|确保会执行以下操作：<br/>- 覆盖源服务器生成的 `Expi
 
 **默认值：** 10,000 个请求
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -957,7 +957,7 @@ Overwrite|请求标头值将设置为指定的值。|**请求标头值（客户�
     - x-forwarded-for
     - 所有以“x-ec”开头的标头名称均为保留名称。
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -991,7 +991,7 @@ Overwrite|响应标头值将设置为指定的值。|**响应标头值（客户�
 - 以下标头为保留标头，不能通过此功能进行修改：
     - accept-encoding
     - age
-    - 连接
+    - connection
     - content-encoding
     - content-length
     - content-range
@@ -1005,7 +1005,7 @@ Overwrite|响应标头值将设置为指定的值。|**响应标头值（客户�
     - warning
     - 所有以“x-ec”开头的标头名称均为保留名称。
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -1017,14 +1017,14 @@ Overwrite|响应标头值将设置为指定的值。|**响应标头值（客户�
 
 然后，可以使用这个部分缓存履行对该内容的新请求，直到所请求的内容完全缓存。
 
-值|结果
+“值”|结果
 -|-
 已启用|请求可以生成部分缓存的内容。
-已禁用|请求只能生成所请求内容的完全缓存版本。
+禁用|请求只能生成所请求内容的完全缓存版本。
 
-**默认行为：** 禁用。
+**默认行为：** Disabled.
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -1040,9 +1040,9 @@ Overwrite|响应标头值将设置为指定的值。|**响应标头值（客户�
 
 - 选择“关”作为时间单位时，需在缓存内容的 TTL 到期之后重新进行验证。 不应指定时间，时间会被忽略。
 
-**默认行为：** 关闭。 只能在缓存内容的 TTL 到期后，才能重新进行验证。
+**默认行为：** 非. 只能在缓存内容的 TTL 到期后，才能重新进行验证。
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -1069,7 +1069,7 @@ Overwrite|响应标头值将设置为指定的值。|**响应标头值（客户�
 
 **默认行为：** 所有特定于 CDN 的请求标头都会转发给源服务器。
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -1081,16 +1081,16 @@ Overwrite|响应标头值将设置为指定的值。|**响应标头值（客户�
 
 有效值是：
 
-值|结果
+“值”|结果
 --|--
 已启用|导致 POP 重新获取源服务器的资产。
-已禁用|还原默认行为。 默认行为是在收到请求后提供有效的缓存资产。
+禁用|还原默认行为。 默认行为是在收到请求后提供有效的缓存资产。
 
-此功能不是正确地进行缓存和内容交付所必需的，但可用作一种解决方法。 例如，源服务器上的动态内容生成器可能会意外地导致 0 字节响应被发送到 POP。 这些类型的响应通常由 POP 缓存。 如果您知道 0 字节响应从来就不是此类内容的有效响应，则此功能可以防止这些类型的资产提供给客户端。
+此功能不是正确地进行缓存和内容交付所必需的，但可用作一种解决方法。 例如，源服务器上的动态内容生成器可能会意外地导致 0 字节响应被发送到 POP。 这些类型的响应通常由 POP 缓存。 如果你知道0字节响应永远不是对此类内容的有效响应，则此功能可阻止将这些类型的资产提供给客户端。
 
-**默认行为：** 禁用。
+**默认行为：** Disabled.
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -1112,7 +1112,7 @@ Overwrite|响应标头值将设置为指定的值。|**响应标头值（客户�
 
 **默认行为：** 仅为生成“200 正常”状态代码的响应启用缓存。
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -1138,7 +1138,7 @@ Overwrite|响应标头值将设置为指定的值。|**响应标头值（客户�
     - x-forwarded-for
     - 所有以“x-ec”开头的标头名称均为保留名称。
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -1148,14 +1148,14 @@ Overwrite|响应标头值将设置为指定的值。|**响应标头值（客户�
 
 **目的：** 确定在缓存重新验证时出错或者在从客户源服务器检索请求内容时出错的情况下，是否交付到期的缓存内容。
 
-值|结果
+“值”|结果
 -|-
 已启用|如果在连接到源服务器的过程中发生错误，则会向请求者提供过时的内容。
-已禁用|源服务器的错误将转发给请求者。
+禁用|源服务器的错误将转发给请求者。
 
-**默认行为：** 禁用
+**默认行为：** Disabled
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -1168,13 +1168,13 @@ Overwrite|响应标头值将设置为指定的值。|**响应标头值（客户�
 重要信息：
 
 - 此功能的行为因所选时间单位而异。
-    - **时间单位：** 指定时间长度并选择时间单位（例如秒、分钟、小时等），以便交付过时的内容。 这种类型的设置允许 CDN 延长在根据以下公式需要验证之前提供内容的时间长度 + **：TTL 过时，同时重新验证时间****TTL**
+    - **时间单位：** 指定时间长度并选择时间单位（例如秒、分钟、小时等），以便交付过时的内容。 这种类型的安装程序允许 CDN 在要求验证前延长其发送内容的时间长度，在要求验证之前，请执行以下操作： **TTL** + 在重新验证**时过期**
     - **关：** 选择“关”表示在处理针对过时内容的请求之前需重新验证。
         - 请勿指定时间长度，因为时间长度不适用，会被系统忽略。
 
-**默认行为：** 关闭。 在提交请求的内容之前，必须重新进行验证。
+**默认行为：** 非. 在提交请求的内容之前，必须重新进行验证。
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -1188,20 +1188,20 @@ Overwrite|响应标头值将设置为指定的值。|**响应标头值（客户�
 
 将用于加密和解密令牌值的加密密钥取决于“令牌身份验证”页上的“主密钥”和“备份密钥”选项。 请注意，加密密钥特定于平台。
 
-**默认行为：** 禁用。
+**默认行为：** Disabled.
 
 除了 URL 重写功能之外，此功能优先于大多数功能。
 
-值 | 结果
+“值” | 结果
 ------|---------
 已启用 | 通过基于令牌的身份验证保护请求的内容。 只遵循客户端发出的提供了有效令牌且符合其要求的请求。 FTP 事务不进行基于令牌的身份验证。
-已禁用| 还原默认行为。 默认行为是允许基于令牌的身份验证配置，以便确定是否要对请求进行保护。
+禁用| 还原默认行为。 默认行为是允许基于令牌的身份验证配置，以便确定是否要对请求进行保护。
 
 #### <a name="compatibility"></a>兼容性
 
 不要将令牌身份验证与“始终”匹配条件一起使用。
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -1252,7 +1252,7 @@ URL 重定向仅适用于 3xx 响应代码。
 
 WWW-Authenticate 标头仅适用于 401 响应代码。
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -1270,14 +1270,14 @@ WWW-Authenticate 标头仅适用于 401 响应代码。
 
 有效值是：
 
-值|结果
+“值”|结果
 ---|----
 已启用|导致 POP 在比较基于令牌的身份验证参数的 URL 时忽略大小写。
-已禁用|还原默认行为。 默认行为是在针对令牌身份验证进行 URL 比较时区分大小写。
+禁用|还原默认行为。 默认行为是在针对令牌身份验证进行 URL 比较时区分大小写。
 
-**默认行为：** 禁用。
+**默认行为：** Disabled.
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -1293,14 +1293,14 @@ WWW-Authenticate 标头仅适用于 401 响应代码。
 - 无法将“值”选项设置为“ec_token”。
 - 确保“值”选项中定义的名称只包含有效的 URL 字符。
 
-值|结果
+“值”|结果
 ----|----
 已启用|“值”选项所定义的查询字符串参数名称应该用于定义令牌。
-已禁用|可将令牌指定为请求 URL 中未定义的查询字符串参数。
+禁用|可将令牌指定为请求 URL 中未定义的查询字符串参数。
 
-**默认行为：** 禁用。 可将令牌指定为请求 URL 中未定义的查询字符串参数。
+**默认行为：** Disabled. 可将令牌指定为请求 URL 中未定义的查询字符串参数。
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -1344,7 +1344,7 @@ WWW-Authenticate 标头仅适用于 401 响应代码。
 - “目标”选项中利用了请求方案 (%{scheme}) 变量，这可以确保请求的方案在重定向后保持不变。
 - 从请求中捕获的 URL 段通过“$1”追加到新的 URL。
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -1360,8 +1360,8 @@ WWW-Authenticate 标头仅适用于 401 响应代码。
 
 选项|说明
 -|-
- 源和模式 | 这些设置定义的请求 URI 模式用于标识可重写请求的类型。 只会重写其 URL 同时满足下述两个条件的请求： <br/><br/>  - **源（或内容访问点）：** 选择标识源服务器的相对路径。 该路径是 _/XXXX/_ 部分和终结点名称。 <br/><br/> - **源（模式）：** 必须定义一个可通过相对路径标识请求的模式。 此正则表达式模式必须定义一个路径，该路径直接开始于以前选择的内容访问点（见上）之后。 <br/> 确认上面定义的请求 URI 条件（即源和模式）不与为此功能定义的任何匹配条件冲突。 指定模式；如果使用空白值作为模式，则匹配所有字符串。
- 目标  |定义要通过其将上述请求重写的相对 URL： <br/>    1. 选择标识源服务器的内容访问点。 <br/>    2. 使用： <br/>        - 正则表达式模式 <br/>        - [HTTP 变量](cdn-http-variables.md) <br/> <br/> 使用 $_n_ 将源模式中捕获的值替换到目标模式中，其中 _n_ 用于按捕获顺序来标识值。 例如，$1 代表按源模式捕获的第一个值，而 $2 则代表第二个值。
+ 源和模式 | 这些设置定义的请求 URI 模式用于标识可重写请求的类型。 只会重写其 URL 同时满足下述两个条件的请求： <br/><br/>  - **源（或内容访问点）：** 选择用于标识源服务器的相对路径。 该路径是 _/XXXX/_ 部分和终结点名称。 <br/><br/> - **源（模式）：** 必须定义一个可通过相对路径标识请求的模式。 此正则表达式模式必须定义一个路径，该路径直接开始于以前选择的内容访问点（见上）之后。 <br/> 确认上面定义的请求 URI 条件（即源和模式）不与为此功能定义的任何匹配条件冲突。 指定模式；如果使用空白值作为模式，则匹配所有字符串。
+ 目标  |定义要通过其将上述请求重写的相对 URL： <br/>    1. 选择用于标识源服务器的内容访问点。 <br/>    2. 使用以下内容定义相对路径： <br/>        - 正则表达式模式 <br/>        - [HTTP 变量](cdn-http-variables.md) <br/> <br/> 使用 $_n_ 将源模式中捕获的值替换到目标模式中，其中 _n_ 用于按捕获顺序来标识值。 例如，$1 代表按源模式捕获的第一个值，而 $2 则代表第二个值。
 
  此功能允许 POP 重写 URL，而不需执行传统的重定向。 也就是说，请求者会收到与已请求了重写 URL 时相同的响应代码。
 
@@ -1405,7 +1405,7 @@ WWW-Authenticate 标头仅适用于 401 响应代码。
 - URL 查询正则表达式
 - URL 查询通配符
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 
@@ -1415,7 +1415,7 @@ WWW-Authenticate 标头仅适用于 401 响应代码。
 
 **目的：** 仅供内部使用。
 
-[返回顶部](#azure-cdn-from-verizon-premium-rules-engine-features)
+[返回页首](#azure-cdn-from-verizon-premium-rules-engine-features)
 
 </br>
 

@@ -1,16 +1,16 @@
 ---
 title: 缓存 ASP.NET 会话状态提供程序
-description: 了解如何使用 Redis 的 Azure 缓存存储ASP.NET会话状态。
+description: 了解如何使用 Azure Cache for Redis 将 ASP.NET 会话状态存储在内存中。
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/01/2017
 ms.openlocfilehash: 8083efe833ec80290713fc14d9cb89acd8263fa2
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81010896"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Azure Redis 缓存的 ASP.NET 会话状态提供程序
@@ -21,7 +21,7 @@ Azure Redis 缓存提供了一个会话状态提供程序，可使用该提供�
 
 ## <a name="store-aspnet-session-state-in-the-cache"></a>在缓存中存储 ASP.NET 会话状态
 
-要使用 Azure Redis 缓存会话状态 NuGet 包在 Visual Studio 中配置客户端应用程序，请在“工具”菜单中依次单击“NuGet 包管理器”和“包管理器控制台”************。
+要使用 Azure Redis 缓存会话状态 NuGet 包在 Visual Studio 中配置客户端应用程序，请在“工具”菜单中依次单击“NuGet 包管理器”和“包管理器控制台”    。
 
 从 `Package Manager Console` 窗口运行以下命令。
     
@@ -82,10 +82,10 @@ Redis 会话状态提供程序 NuGet 包依赖于 StackExchange.Redis.StrongName
 在 Microsoft Azure 门户中使用缓存边栏选项卡中的值配置属性，并根据需要配置其他值。 有关访问缓存属性的说明，请参阅[配置 Azure Redis 缓存设置](cache-configure.md#configure-azure-cache-for-redis-settings)。
 
 * **host** - 指定缓存终结点。
-* **端口**– 使用非 TLS/SSL 端口或 TLS/SSL 端口，具体取决于 TLS 设置。
+* **端口**–使用非 TLS/ssl 端口或 TLS/ssl 端口，具体取决于 tls 设置。
 * **accessKey** - 使用缓存的主密钥或辅助密钥。
-* **ssl** = 如果要使用 TLS 保护缓存/客户端通信，则为 true;否则是虚假的。 请务必指定正确的端口。
-  * 默认情况下，新缓存将禁用非 TLS 端口。 为此设置指定 true 以使用 TLS 端口。 有关启用非 TLS 端口的详细信息，请参阅["配置缓存](cache-configure.md)"主题中的["访问端口](cache-configure.md#access-ports)"部分。
+* **ssl** –如果要保护与 TLS 的缓存/客户端通信，则为 true;否则为 false。 请务必指定正确的端口。
+  * 默认情况下，为新缓存禁用非 TLS 端口。 如果此设置为 "true"，则将其指定为。 有关启用非 TLS 端口的详细信息，请参阅[配置缓存](cache-configure.md)主题中的[访问端口](cache-configure.md#access-ports)部分。
 * **throwOnError** - 如果希望在失败时引发异常，则为 true；如果希望操作以静默方式失败，则为 false。 可以通过检查静态 Microsoft.Web.Redis.RedisSessionStateProvider.LastException 属性来检查失败。 默认值为 true。
 * **retryTimeoutInMilliseconds** - 会在此时间间隔内重试失败的操作，以毫秒为单位指定。 首次重试在 20 毫秒后进行，然后重试每隔一秒进行，直到 retryTimeoutInMilliseconds 间隔到期。 在此时间间隔过后，将立即重试操作最后一次。 如果操作仍失败，则会将异常返回给调用方，具体取决于 throwOnError 设置。 默认值为 0，这意味着不重试。
 * **databaseId** - 指定要用于缓存输出数据的数据库。 如果未指定，则使用默认值 0。
@@ -122,14 +122,14 @@ Redis 会话状态提供程序 NuGet 包依赖于 StackExchange.Redis.StrongName
 
 * 内存中会话状态提供程序 - 此提供程序会话状态存储在内存中。 使用此提供程序的好处是它简单且快速。 但是，如果使用内存中提供程序，由于它不是分布式的，因此不能缩放 Web 应用。
 * SQL Server 会话状态提供程序 - 此提供程序会话状态存储在 SQL Server 中。 如果要在持久性存储区中存储会话状态，请使用此提供程序。 可以缩放 Web 应用，但将 SQL Server 用于会话将对 Web 应用造成性能影响。 还可以将此提供程序与[内存中 OLTP 配置](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/11/28/asp-net-session-state-with-sql-server-in-memory-oltp/)一起使用来帮助提高性能。
-* 分布式内存中会话状态提供程序（如 Azure Redis 缓存会话状态提供程序） - 此提供程序提供两全其美的功能。 Web 应用可以使用简单、快速且可缩放的会话状态提供程序。 因为此提供程序会话状态存储在缓存中，因此应用必须考虑到在与分布式内存中缓存通信时关联的所有特征，如暂时性网络故障。 有关使用缓存的最佳实践，请参阅 Microsoft 模式和实践 [Azure 云应用程序设计和实现指南](https://github.com/mspnp/azure-guidance)中的[缓存指南](../best-practices-caching.md)。
+* 分布式内存中会话状态提供程序（如 Azure Redis 缓存会话状态提供程序） - 此提供程序提供两全其美的功能。 Web 应用可以使用简单、快速且可缩放的会话状态提供程序。 因为此提供程序会话状态存储在缓存中，因此应用必须考虑到在与分布式内存中缓存通信时关联的所有特征，如暂时性网络故障。 有关使用缓存的最佳实践，请参阅 Microsoft 模式和实践 [Azure 云应用程序设计和实现指南](../best-practices-caching.md)中的[缓存指南](https://github.com/mspnp/azure-guidance)。
 
 有关会话状态和其他最佳实践的详细信息，请参阅 [Web Development Best Practices (Building Real-World Cloud Apps with Azure)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices)（Web 开发最佳做法（使用 Azure 构建实际的云应用））。
 
 ## <a name="third-party-session-state-providers"></a>第三方会话状态提供程序
 
 * [NCache](https://www.alachisoft.com/ncache/session-index.html)
-* [阿帕奇点燃](https://apacheignite-net.readme.io/docs/aspnet-session-state-caching)
+* [Apache ignite](https://apacheignite-net.readme.io/docs/aspnet-session-state-caching)
 
 ## <a name="next-steps"></a>后续步骤
 

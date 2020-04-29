@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: allensu
 ms.openlocfilehash: 2931dffaaab2d06b2c06f03770a66d78d6466787
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81260454"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>通过 Azure CDN 进行媒体流式处理优化 
@@ -79,7 +79,7 @@ ms.locfileid: "81260454"
 
 ### <a name="caching"></a>Caching
 
-如果 **Akamai 的 Azure CDN 标准版**检测到资产属于流式处理清单或片段，则使用与常规 Web 交付不同的缓存到期时间。 （请参阅下表中的完整列表。与往常一样，将尊重从源发送的缓存控制或过期标头。 如果该资产不是媒体资产，则通过用于常规 Web 交付的过期时间进行缓存。
+如果 **Akamai 的 Azure CDN 标准版**检测到资产属于流式处理清单或片段，则使用与常规 Web 交付不同的缓存到期时间。 （请参阅下表中的完整列表。）与往常一样，会遵守从来源发送的缓存控制或过期标头。 如果该资产不是媒体资产，则通过用于常规 Web 交付的过期时间进行缓存。
 
 如果多个用户请求尚不存在的片段，较短的负缓存时间对于源卸载很有用。 例如，在那一秒无法从源获取实时流的数据包。 较长的缓存间隔时间还有助于从源卸载请求，因为通常不会修改视频内容。
  
@@ -87,7 +87,7 @@ ms.locfileid: "81260454"
 |   | 常规 Web 传送 | 常规媒体流式处理 | 点播视频媒体流式处理  
 --- | --- | --- | ---
 缓存：正 <br> HTTP 200、203、300、 <br> 301、302 和 410 | 7 天 |365 天 | 365 天   
-缓存：负 <br> HTTP 204、305、404 <br> 和 405 | None | 1 秒 | 1 秒
+缓存：负 <br> HTTP 204、305、404 <br> 和 405 | 无 | 1 秒 | 1 秒
  
 ### <a name="deal-with-origin-failure"></a>处理源故障  
 

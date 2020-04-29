@@ -1,43 +1,43 @@
 ---
-title: 在 Azure 库伯奈斯服务中使用 Azure AD
-description: 了解如何在 Azure 库伯奈斯服务 （AKS） 中使用 Azure AD
+title: 在 Azure Kubernetes 服务中使用 Azure AD
+description: 了解如何使用 Azure Kubernetes Service （AKS）中的 Azure AD
 services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 03/24/2020
 ms.openlocfilehash: b121830192a2b88185bbbbc9a92934e51b32a61c
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81114647"
 ---
-# <a name="integrate-azure-ad-in-azure-kubernetes-service-preview"></a>在 Azure 库伯奈斯服务中集成 Azure AD（预览版）
+# <a name="integrate-azure-ad-in-azure-kubernetes-service-preview"></a>集成 Azure Kubernetes Service （预览版）中的 Azure AD
 
 > [!Note]
 > 具有 AD 集成的现有 AKS v1 群集不受新的 AKS v2 体验的影响。
 
-Azure AD 与 AKS v2 集成旨在简化 Azure AD 与 AKS v1 体验的集成，其中用户需要创建客户端应用、服务器应用，并要求 Azure AD 租户授予目录读取权限。 在新版本中，AKS 资源提供程序为您管理客户端和服务器应用。
+Azure AD 与 AKS v2 的集成旨在简化与 AKS v1 体验的 Azure AD 集成，用户需要在其中创建客户端应用、服务器应用，并要求 Azure AD 租户授予目录读取权限。 在新版本中，AKS 资源提供程序管理客户端和服务器应用。
 
 ## <a name="limitations"></a>限制
 
-* 当前无法将启用 Azure AD 的 AKS v1 群集升级到 v2 体验。
+* 目前无法将 AKS v1 群集的现有 Azure AD 升级到 v2 体验。
 
 > [!IMPORTANT]
-> AKS 预览功能提供自助服务、选择加入功能。 预览版提供"根据"和"可用"，并且不在服务级别协议和有限保修中。 客户支持会尽力而为，部分涵盖 AKS 预览。 因此，这些功能不应用于生产。 有关详细信息，请参阅以下支持文章：
+> AKS 预览版功能提供自助服务，可选择使用。 预览按 "原样" 提供，并从服务级别协议和有限担保中排除。 AKS 预览版是一项尽力的客户支持部分。 因此，这些功能不应用于生产。 有关详细信息，请参阅以下支持文章：
 >
 > - [AKS 支持策略](support-policies.md)
 > - [Azure 支持常见问题](faq.md)
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
-您必须安装以下资源：
+必须安装下列资源：
 
-- Azure CLI，版本 2.2.0 或更高版本
-- aks 预览 0.4.38 扩展
-- 库布克特尔最低版本为[1.18 beta](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#client-binaries)
+- Azure CLI 2.2.0 或更高版本
+- Aks-preview 0.4.38 扩展
+- Kubectl，最低版本为[1.18 beta](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#client-binaries)
 
-要安装/更新 aks 预览扩展或更高版本，请使用以下 Azure CLI 命令：
+若要安装/更新 aks 或更高版本，请使用以下 Azure CLI 命令：
 
 ```azurecli
 az extension add --name aks-preview
@@ -49,39 +49,39 @@ az extension update --name aks-preview
 az extension list
 ```
 
-要安装 kubectl，请使用以下操作：
+若要安装 kubectl，请使用以下内容：
 
 ```azurecli
 sudo az aks install-cli
 kubectl version --client
 ```
 
-[将这些说明](https://kubernetes.io/docs/tasks/tools/install-kubectl/)用于其他操作系统。
+对于其他操作系统，请使用[这些说明](https://kubernetes.io/docs/tasks/tools/install-kubectl/)。
 
 > [!CAUTION]
-> 在订阅上注册功能后，当前无法取消注册该功能。 启用某些预览功能时，可能会将默认值用于订阅中以后创建的所有 AKS 群集。 不要在生产订阅上启用预览功能。 相反，请使用单独的订阅来测试预览功能并收集反馈。
+> 在订阅上注册功能后，当前无法取消注册该功能。 启用某些预览功能后，默认值可用于在订阅中创建的所有 AKS 群集。 不要对生产订阅启用预览功能。 请改用单独的订阅来测试预览功能并收集反馈。
 
 ```azurecli-interactive
 az feature register --name AAD-V2 --namespace Microsoft.ContainerService
 ```
 
-状态可能需要几分钟才能显示为 **"已注册**"。 您可以使用[az 要素列表](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-list)命令检查注册状态：
+状态显示为 "**已注册**" 可能需要几分钟时间。 您可以使用[az feature list](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-list)命令检查注册状态：
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AAD-V2')].{Name:name,State:properties.state}"
 ```
 
-当状态显示为已注册时，请使用 az`Microsoft.ContainerService`提供程序寄存器命令刷新资源提供程序[的注册](https://docs.microsoft.com/cli/azure/provider?view=azure-cli-latest#az-provider-register)：
+当状态显示为 "已注册" 时，使用`Microsoft.ContainerService` [az provider register](https://docs.microsoft.com/cli/azure/provider?view=azure-cli-latest#az-provider-register)命令刷新资源提供程序的注册：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
 
-## <a name="create-an-aks-cluster-with-azure-ad-enabled"></a>创建启用 Azure AD 的 AKS 群集
+## <a name="create-an-aks-cluster-with-azure-ad-enabled"></a>创建启用了 Azure AD 的 AKS 群集
 
-现在，您可以使用以下 CLI 命令创建 AKS 群集。
+现在可以使用以下 CLI 命令来创建 AKS 群集。
 
-首先，创建 Azure 资源组：
+首先，创建一个 Azure 资源组：
 
 ```azurecli-interactive
 # Create an Azure resource group
@@ -93,20 +93,20 @@ az group create --name myResourceGroup --location centralus
 ```azurecli-interactive
 az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad
 ```
-上述命令创建一个三个节点 AKS 群集，但默认情况下创建群集的用户不是有权访问此群集的组的成员。 此用户需要创建 Azure AD 组，将自己添加为组的成员，然后按如下所示更新群集。 在此处[按照说明](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal)操作
+上述命令将创建一个三节点 AKS 群集，但默认情况下，创建该群集的用户不是有权访问此群集的组的成员。 此用户需要创建一个 Azure AD 组，将自己添加为组的成员，然后更新该群集，如下所示。 按照[此处](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal)的说明操作
 
-创建组并添加自己作为成员（和其他人）后，可以使用以下命令使用 Azure AD 组更新群集
+创建组并将自己（和其他）作为成员添加后，可以使用以下命令通过 Azure AD 组更新群集。
 
 ```azurecli-interactive
 az aks update -g MyResourceGroup -n MyManagedCluster [--aad-admin-group-object-ids <id>] [--aad-tenant-id <id>]
 ```
-或者，如果首先创建组并添加成员，则可以使用以下命令在创建时间启用 Azure AD 组，
+或者，如果你首次创建组并添加成员，则可以使用以下命令在 create time 启用 Azure AD 组：
 
 ```azurecli-interactive
 az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-group-object-ids <id>] [--aad-tenant-id <id>]
 ```
 
-成功创建 Azure AD v2 群集在响应正文中具有以下部分
+成功创建 Azure AD v2 群集的响应正文中包含以下部分
 ```
 "Azure ADProfile": {
     "adminGroupObjectIds": null,
@@ -118,15 +118,15 @@ az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-g
   }
 ```
 
-群集在几分钟内创建。
+群集是在几分钟内创建的。
 
 ## <a name="access-an-azure-ad-enabled-cluster"></a>访问启用 Azure AD 的群集
-要获取访问群集的管理员凭据，可以执行以下操作：
+获取用于访问群集的管理员凭据：
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster --admin
 ```
-现在使用 kubectl 获取节点命令查看群集中的节点：
+现在，使用 kubectl get 节点命令查看群集中的节点：
 
 ```azurecli-interactive
 kubectl get nodes
@@ -137,20 +137,20 @@ aks-nodepool1-15306047-1   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-2   Ready    agent   102m   v1.15.10
 ```
 
-要获取访问群集的用户凭据，可以：
+获取用户凭据以访问群集：
  
 ```azurecli-interactive
  az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster
 ```
-按照说明登录。
+按照说明进行操作以登录。
 
-您收到：**您必须登录到服务器（未经授权）**
+你会收到：**你必须登录到服务器（未授权）**
 
-上述用户会收到错误，因为用户不是有权访问群集的组的一部分。
+上面的用户将收到错误，因为该用户不是有权访问群集的组的一部分。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解[Azure AD 角色访问控制][azure-ad-rbac]。
+了解[Azure AD 基于角色的访问控制][azure-ad-rbac]。
 
 <!-- LINKS - Internal -->
 [azure-ad-rbac]: azure-ad-rbac.md

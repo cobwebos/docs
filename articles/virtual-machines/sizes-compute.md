@@ -1,6 +1,6 @@
 ---
-title: Azure VM 大小 - 计算优化 |微软文档
-description: 列出 Azure 中虚拟机可用的不同计算优化大小。 列出有关此系列中大小的数据 CPU、数据磁盘和 NIC 的数量以及存储吞吐量和网络带宽的信息。
+title: Azure VM 大小-计算优化 |Microsoft Docs
+description: 列出了 Azure 中虚拟机可用的不同计算优化大小。 列出了有关此系列中各大小的 vCPU 数、数据磁盘数和 NIC 数以及存储吞吐量和网络带宽的信息。
 services: virtual-machines
 documentationcenter: ''
 author: mimckitt
@@ -15,17 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
 ms.openlocfilehash: e08d593f641c42f9ad605fda013206e70a34e52f
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81269629"
 ---
 # <a name="compute-optimized-virtual-machine-sizes"></a>计算优化虚拟机大小
 
-计算优化的 VM 大小具有较高的 CPU 内存比。 这些大小适用于中流量 Web 服务器、网络设备、批处理和应用程序服务器。 本文提供有关 vCPU、数据磁盘和 NIC 的数量的信息。 它还包括有关此分组中每个大小的存储吞吐量和网络带宽的信息。
+计算优化 VM 大小具有较高的 CPU 与内存之比。 这些大小适用于中等流量的 Web 服务器、网络设备、批处理和应用程序服务器。 本文提供了有关 vCPU、数据磁盘和 NIC 的数量的信息。 它还介绍了此分组中每个大小的存储吞吐量和网络带宽。
 
-[Fsv2 系列](fsv2-series.md)基于英特尔® Xeon ®白金 8168 处理器。 它具有持续全芯涡轮时钟速度为 3.4 GHz 和最大单核涡轮频率为 3.7 GHz。 英特尔® AVX-512 指令是英特尔可扩展处理器上的新指令。 这些指令在单精度和双精度浮点操作上为矢量处理工作负载提供高达 2 倍的性能提升。 换句话说，对于任何计算工作负载来说，它们都非常快。
+[Fsv2 系列](fsv2-series.md)基于 Intel® Xeon® Platinum 8168 处理器。 它具有稳定的 3.4 GHz 的全核 Turbo 时钟速度和最大为 3.7 GHz 的单核 Turbo 频率。 Intel 可扩展处理器上提供了全新的 Intel® AVX-512 指令。 对于单精度和双精度浮点运算，这些指令可为向量处理工作负荷提供高达 2 倍的性能提升。 换而言之，对于任何计算工作负荷，它们的处理速度相当快。
 
 凭借较低的每小时定价，Fsv2 系列在基于每个 vCPU 的 Azure 计算单位 (ACU) 的 Azure 产品组合中具有最高性价比。
 
@@ -40,4 +40,4 @@ ms.locfileid: "81269629"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助你跨 Azure SKU 比较计算性能的详细信息。
+了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。

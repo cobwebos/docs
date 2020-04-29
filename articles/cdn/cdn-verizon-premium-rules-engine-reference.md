@@ -8,13 +8,13 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: allensu
 ms.openlocfilehash: bda817712faf1f54287e880dc62ef2b08273ff42
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81253384"
 ---
-# <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>来自 Verizon 高级规则引擎引用的 Azure CDN
+# <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>从 Verizon 高级规则引擎引用 Azure CDN
 
 本文列出了 Azure 内容分发网络 (CDN) [规则引擎](cdn-verizon-premium-rules-engine.md)的可用匹配条件和功能的详细说明。
 
@@ -37,7 +37,7 @@ ms.locfileid: "81253384"
 
 特殊字符的处理方式取决于匹配条件或功能处理文本值的方式。 匹配条件或功能可能会以下述某种方式解释文本：
 
-1. [**文字值**](#literal-values)
+1. [**文本值**](#literal-values)
 2. [**通配符值**](#wildcard-values)
 3. [**正则表达式**](#regular-expressions)
 
@@ -71,7 +71,7 @@ Space | 空格字符表示某个匹配条件可以由指定的值或模式满足
 Space | 通常将空格字符视为文本字符。
 '值' | 可将单引号视为文本字符。 一组单引号没有特殊含义。
 
-匹配支持正则表达式的条件和功能接受 Perl 兼容正则表达式 （PCRE） 定义的模式。
+支持正则表达式的匹配条件和功能接受由 Perl 兼容的正则表达式（PCRE）定义的模式。
 
 ## <a name="next-steps"></a>后续步骤
 

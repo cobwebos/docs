@@ -1,25 +1,25 @@
 ---
-title: 如何使用 Redis 的 Azure 缓存使用 Redis-cli
-description: 了解如何使用*Redis-cli.exe*作为命令行工具，以便作为客户端与 Redis 的 Azure 缓存进行交互。
+title: 如何将 redis 与用于 Redis 的 Azure 缓存配合使用
+description: 了解如何使用*redis-cli.exe*作为一个命令行工具，用于与用于 Redis 的 Azure 缓存作为客户端进行交互。
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.openlocfilehash: bd2da798cae92a7e47bd879b69dd108618463402
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81010760"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>如何将 Redis 命令行工具与 Azure Redis 缓存配合使用
 
-redis-cli.exe 是一种常用的命令行工具，可作为客户端与 Azure Redis 缓存进行交互**。 此工具也可与 Azure Redis 缓存一起使用。
+redis-cli.exe 是一种常用的命令行工具，可作为客户端与 Azure Redis 缓存进行交互  。 此工具也可与 Azure Redis 缓存一起使用。
 
 下载[用于 Windows 的 Redis 命令行工具](https://github.com/MSOpenTech/redis/releases/) 后，即可在 Windows 平台上使用此工具。 
 
-如果要在另一个平台上运行命令行工具，请从[https://redis.io/download](https://redis.io/download)下载 Azure 缓存以进行 Redis。
+如需在其他平台上运行该命令行工具，请从 [https://redis.io/download](https://redis.io/download) 下载 Azure Redis 缓存。
 
 ## <a name="gather-cache-access-information"></a>收集缓存访问信息
 
@@ -38,19 +38,19 @@ redis-cli.exe 是一种常用的命令行工具，可作为客户端与 Azure Re
 
 ## <a name="enable-access-for-redis-cliexe"></a>为 redis-cli.exe 启用访问权限
 
-使用 Redis 的 Azure 缓存时，默认情况下仅启用 TLS 端口 （6380）。 命令`redis-cli.exe`行工具不支持 TLS。 可通过两种配置方式使用该命令行工具：
+使用用于 Redis 的 Azure 缓存，默认情况下仅启用 TLS 端口（6380）。 `redis-cli.exe`命令行工具不支持 TLS。 可通过两种配置方式使用该命令行工具：
 
-1. [启用非 TLS 端口 （6379）](cache-configure.md#access-ports) - **不建议使用此配置**，因为在此配置中，访问密钥通过 TCP 以明文形式发送。 这种更改可能会影响对缓存的访问。 仅当访问测试缓存时才考虑选择此配置。
+1. [启用非 TLS 端口（6379）](cache-configure.md#access-ports) - **不建议使用此配置**，因为在此配置中，通过 TCP 以明文形式发送访问密钥。 这种更改可能会影响对缓存的访问。 仅当访问测试缓存时才考虑选择此配置。
 
 2. 下载并安装 [stunnel](https://www.stunnel.org/downloads.html)。
 
-    运行 stunnel GUI Start 以启动服务器****。
+    运行 stunnel GUI Start 以启动服务器  。
 
-    右键单击 stunnel 服务器的任务栏图标，然后单击“显示日志窗口”****。
+    右键单击 stunnel 服务器的任务栏图标，然后单击“显示日志窗口”  。
 
-    在隧道日志窗口菜单上，单击 **"配置** > **编辑配置**"以打开当前配置文件。
+    在 stunnel“日志窗口”菜单上，单击“配置” **“编辑配置”，打开当前配置文件** >   。
 
-    在“服务定义”部分下向 redis-cli.exe 添加以下项******。 将 `yourcachename` 替换为实际缓存名称。 
+    在“服务定义”部分下向 redis-cli.exe 添加以下项   。 将 `yourcachename` 替换为实际缓存名称。 
 
     ```
     [redis-cli]
@@ -61,12 +61,12 @@ redis-cli.exe 是一种常用的命令行工具，可作为客户端与 Azure Re
 
     保存并关闭配置文件。 
   
-    在隧道日志窗口菜单上，单击"**配置** > **重新加载配置**"。
+    在 stunnel“日志窗口”菜单中，单击“配置” **“重新加载配置”**  >   。
 
 
 ## <a name="connect-using-the-redis-command-line-tool"></a>使用 Redis 命令行工具进行连接。
 
-使用 stunnel 时，运行 redis-cli.exe，并仅传递端口和访问密钥（主要或次要）以连接到缓存******。
+使用 stunnel 时，运行 redis-cli.exe，并仅传递端口和访问密钥（主要或次要）以连接到缓存    。
 
 ```
 redis-cli.exe -p 6380 -a YourAccessKey
@@ -74,7 +74,7 @@ redis-cli.exe -p 6380 -a YourAccessKey
 
 ![在 stunnel 中运行 redis-cli](media/cache-how-to-redis-cli-tool/cache-redis-cli-stunnel.png)
 
-如果使用具有**不安全**非 TLS 端口的测试缓存，请`redis-cli.exe`运行并传递*主机名*、*端口*和*访问密钥*（主或辅助）以连接到测试缓存。
+如果你使用的是包含不**安全**的非 TLS 端口的测试缓存， `redis-cli.exe`请运行并传递*主机名*、*端口*和*访问密钥*（主要或辅助）以连接到测试缓存。
 
 ```
 redis-cli.exe -h yourcachename.redis.cache.windows.net -p 6379 -a YourAccessKey

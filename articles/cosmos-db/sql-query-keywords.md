@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: tisande
 ms.openlocfilehash: 069548b9b69ef6f7f6bde85ede830d97f3d312db
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81261561"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB 中的关键字
@@ -19,7 +19,7 @@ ms.locfileid: "81261561"
 
 ## <a name="between"></a>BETWEEN
 
-可以使用 关键字`BETWEEN`对字符串或数值的范围表示查询。 例如，以下查询返回其中第一个孩子的年级为 1-5（含）的所有项。
+您可以使用`BETWEEN`关键字来针对字符串或数值范围表达查询。 例如，以下查询返回其中第一个孩子的年级为 1-5（含）的所有项。
 
 ```sql
     SELECT *
@@ -27,7 +27,7 @@ ms.locfileid: "81261561"
     WHERE c.grade BETWEEN 1 AND 5
 ```
 
-您还可以在`BETWEEN``SELECT`子句中使用关键字，如以下示例所示。
+还可以在`SELECT`子句中`BETWEEN`使用关键字，如下面的示例中所示。
 
 ```sql
     SELECT (c.grade BETWEEN 0 AND 10)
@@ -37,13 +37,13 @@ ms.locfileid: "81261561"
 与 ANSI SQL 不同，在 SQL API 中，可以针对混合类型的属性表达范围查询。 例如，在某些项中，`grade` 可能是类似于 `5` 的数字；而在其他一些项中，它可能是类似于 `grade4` 的字符串。 在这些情况下（与在 JavaScript 中一样），两个不同类型之间的比较会生成 `Undefined`，因此会跳过该项。
 
 > [!TIP]
-> 为了加快查询执行时间，请创建索引策略，该策略对`BETWEEN`子句筛选的任何数值属性或路径使用范围索引类型。
+> 为获得更快的查询执行时间，请创建索引策略，该策略对`BETWEEN`子句筛选的任何数值属性或路径使用范围索引类型。
 
 ## <a name="distinct"></a>DISTINCT
 
-关键字`DISTINCT`消除了查询投影中的重复项。
+`DISTINCT`关键字可消除查询投影中的重复项。
 
-在此示例中，查询对每个姓氏的值进行项目：
+在此示例中，查询将为每个姓氏输入值：
 
 ```sql
 SELECT DISTINCT VALUE f.lastName
@@ -103,7 +103,7 @@ FROM f
 ]
 ```
 
-不支持具有聚合系统函数的查询和具有 子`DISTINCT`查询的查询。 例如，不支持以下查询：
+不支持使用聚合系统函数和子查询`DISTINCT`的查询。 例如，不支持以下查询：
 
 ```sql
 SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
@@ -129,11 +129,11 @@ SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 
 SQL API 支持[循环访问 JSON 数组](sql-query-object-array.md#Iteration)，它可以通过 FROM 源中的 IN 关键字添加一个新的构造。
 
-如果在`IN`筛选器中包含分区键，则查询将自动筛选为仅相关分区。
+如果在`IN`筛选器中包含分区键，则查询将自动仅筛选相关的分区。
 
 ## <a name="top"></a>TOP
 
-TOP 关键字以未定义的顺序返回前 `N` 个查询结果。 最佳做法是，将 TOP 与`ORDER BY`子句一起限制为第`N`一个排序值数。 要预见性地指示哪些行受到 TOP 的影响，只能结合使用这两个子句。
+TOP 关键字以未定义的顺序返回前 `N` 个查询结果。 最佳做法是将 TOP 与`ORDER BY`子句结合使用，以将结果限制为有`N`序值的第一个数。 要预见性地指示哪些行受到 TOP 的影响，只能结合使用这两个子句。
 
 可以结合一个常量值使用 TOP（如以下示例中所示），或者在参数化查询中结合一个变量值使用 TOP。
 

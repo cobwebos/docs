@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/06/2018
 ms.author: allensu
 ms.openlocfilehash: 35d028a38e6ac19f270abcc8708a532b3749eb39
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81254795"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 诊断日志
@@ -35,7 +35,7 @@ ms.locfileid: "81254795"
 
 - 将数据导出到 Blob 存储、导出为CSV，并在 Excel 中生成图形。
 - 将数据导出到事件中心，并关联到其他 Azure 服务的数据。
-- 将数据导出到 Azure 监视器日志并在您自己的日志分析工作区中查看数据
+- 将数据导出到 Azure Monitor 日志，并在自己的 Log Analytics 工作区中查看数据
 
 下图显示了一个典型的 CDN 核心分析数据视图。
 
@@ -87,15 +87,15 @@ ms.locfileid: "81254795"
 
 5. 完成诊断日志设置后，选择“保存”。****
 
-### <a name="logging-with-azure-monitor"></a>使用 Azure 监视器进行日志记录
+### <a name="logging-with-azure-monitor"></a>记录 Azure Monitor
 
-要使用 Azure 监视器存储日志，请按照以下步骤操作：
+若要使用 Azure Monitor 来存储日志，请执行以下步骤：
 
 1. 从“诊断日志”页面中，选择“发送到 Log Analytics”********。 
 
     ![门户 - 诊断日志](./media/cdn-diagnostics-log/05_Ready-to-Configure.png)    
 
-2. 选择 **"配置**以配置 Azure 监视器日志记录"。 
+2. 选择 "**配置**" 以配置 Azure Monitor 日志记录。 
 
    此时将显示“Log Analytics 工作区”**** 页。
 
@@ -117,7 +117,7 @@ ms.locfileid: "81254795"
 
 5. 对于“订阅”，从下拉列表中选择一个现有的订阅。**** 
 
-6. 对于“资源组”****，创建一个新资源组或选择现有的资源组。
+6. 对于“资源组”  ，创建一个新资源组或选择现有的资源组。
 
 7. 对于“位置”****，从下拉列表中选择一个位置。
 
@@ -135,7 +135,7 @@ ms.locfileid: "81254795"
 
     ![门户 - 诊断日志](./media/cdn-diagnostics-log/cdn-core-analytics-page.png) 
 
-    Log Analytics 工作区现在已经可以用来记录数据日志。 为了使用这些数据，必须使用本文后面介绍的[Azure 监视器日志解决方案](#consuming-diagnostics-logs-from-a-log-analytics-workspace)。
+    Log Analytics 工作区现在已经可以用来记录数据日志。 若要使用这些数据，您必须使用[Azure Monitor 日志解决方案](#consuming-diagnostics-logs-from-a-log-analytics-workspace)，本文稍后将对此进行介绍。
 
 有关日志数据延迟的详细信息，请参阅[日志数据延迟](#log-data-delays)。
 
@@ -172,7 +172,7 @@ ms.locfileid: "81254795"
 ### <a name="using-microsoft-azure-storage-explorer"></a>使用 Microsoft Azure 存储资源管理器
 首先需要一款可访问存储帐户内容的工具，才可从 Azure 存储帐户访问核心分析数据。 市场上有多种可用的工具，但推荐使用 Microsoft Azure 存储资源管理器。 若要下载该工具，请参阅 [Azure 存储资源管理器](https://storageexplorer.com/)。 下载并安装软件后，请将其配置为使用已配置为 CDN 诊断日志目标的同一 Azure 存储帐户。
 
-1.  打开**微软 Azure 存储资源管理器**
+1.  打开**Microsoft Azure 存储资源管理器**
 2.  找到存储帐户
 3.  展开该存储帐户下的“Blob 容器”节点。****
 4.  选择名为 *insights-logs-coreanalytics* 的容器。
@@ -195,8 +195,8 @@ ms.locfileid: "81254795"
 |资源组名称 |CDN 资源所属资源组的名称。|
 |配置文件名称 |CDN 配置文件的名称|
 |终结点名称 |CDN 终结点的名称|
-|年龄|  年份的四位数表示形式，例如 2017|
-|月份| 月份的两位数表示形式。 01_1月...12_12月|
+|年|  年份的四位数表示形式，例如 2017|
+|月份| 月份的两位数表示形式。 01 = 一月 .。。12 = 12 月|
 |日期|   月份中日的两位数表示形式|
 |PT1H.json| 实际存储分析数据的 JSON 文件|
 
@@ -209,13 +209,13 @@ ms.locfileid: "81254795"
 1.  访问 GitHub 链接：[https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
 2.  下载代码。
 3.  遵照说明进行编译和配置。
-4.  运行工具。
+4.  运行该工具。
 5.  生成的 CSV 文件以简单的平面层次结构显示分析数据。
 
 ## <a name="consuming-diagnostics-logs-from-a-log-analytics-workspace"></a>从 Log Analytics 工作区使用诊断日志
-Azure 监视器是一种 Azure 服务，用于监视云和本地环境，以保持其可用性和性能。 它可以收集云和本地环境中的资源生成的数据以及其他监视工具的数据，针对多个源提供分析。 
+Azure Monitor 是一项 Azure 服务，用于监视云和本地环境，使其保持其可用性和性能。 它可以收集云和本地环境中的资源生成的数据以及其他监视工具的数据，针对多个源提供分析。 
 
-要使用 Azure 监视器，必须[启用登录到](#enable-logging-with-azure-storage)Azure 日志分析工作区，本文前面将对此进行讨论。
+若要使用 Azure Monitor，你必须对 Azure Log Analytics 工作区[启用日志记录](#enable-logging-with-azure-storage)，本文前面将对此进行讨论。
 
 ### <a name="using-the-log-analytics-workspace"></a>使用 Log Analytics 工作区
 
@@ -227,11 +227,11 @@ Azure 监视器是一种 Azure 服务，用于监视云和本地环境，以保�
 
 使用管理解决方案可通过各种方式显示数据。 可从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions)获取管理解决方案。
 
-您可以通过选择每个解决方案底部的"**立即获取解决方案"** 链接，从 Azure 应用商店安装监视解决方案。
+可以通过选择每个解决方案底部的 "**立即获取**" 链接从 Azure marketplace 安装监视解决方案。
 
-### <a name="add-an-azure-monitor-cdn-monitoring-solution"></a>添加 Azure 监视器 CDN 监视解决方案
+### <a name="add-an-azure-monitor-cdn-monitoring-solution"></a>添加 Azure Monitor CDN 监视解决方案
 
-按照以下步骤添加 Azure 监视器监视解决方案：
+按照以下步骤添加 Azure Monitor 监视解决方案：
 
 1.   使用你的 Azure 订阅登录到 Azure 门户并转到你的仪表板。
     ![Azure 仪表板](./media/cdn-diagnostics-log/13_Azure-dashboard.png)

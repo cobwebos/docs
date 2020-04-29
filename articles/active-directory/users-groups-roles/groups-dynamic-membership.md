@@ -1,5 +1,5 @@
 ---
-title: 动态填充的组成员身份的规则 - Azure AD |微软文档
+title: 动态填充组成员身份的规则 Azure AD |Microsoft Docs
 description: 如何创建成员资格规则以自动填充组和规则引用。
 services: active-directory
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6f8237ac13744e56baa8551f8cced12b2785a48
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81114737"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory 中的动态组成员资格规则
@@ -32,7 +32,7 @@ ms.locfileid: "81114737"
 
 > [!NOTE]
 > 对于每一个作为一个或多个动态组成员的唯一用户，此功能需要 Azure AD Premium P1 许可证。 无需将许可证分配给用户使其成为动态组成员，但必须在租户中具有涵盖所有此类用户所需的最小许可证数。 例如：如果在租户的所有动态组中总共拥有 1,000 个唯一用户，则需要至少具有 1,000 个 Azure AD Premium P1 版的许可证，才能满足许可证要求。
-> 对于是动态设备组成员的设备，不需要许可证。
+> 如果设备是动态设备组的成员，则不需要许可证。
 
 ## <a name="rule-builder-in-the-azure-portal"></a>Azure 门户中的规则生成器
 
@@ -48,7 +48,7 @@ Azure AD 提供了一个规则生成器，以便更快地创建和更新重要�
 > [!NOTE]
 > 规则生成器可能无法显示在文本框中构造的某些规则。 当规则生成器无法显示规则时，可能会显示一条消息。 规则生成器不会以任何方式更改动态组规则支持的语法、验证或处理。
 
-有关更多分步说明，请参阅[创建或更新动态组](groups-create-rule.md)。
+有关分步说明，请参阅[创建或更新动态组](groups-create-rule.md)。
 
 ![为动态组添加成员身份规则](./media/groups-dynamic-membership/update-dynamic-group-rule.png)
 
@@ -68,7 +68,7 @@ user.department -eq "Sales"
 
 使用用户或设备自动填充组的成员资格规则是一个二进制表达式，会生成 true 或 false 结果。 一个简单的规则包含三个部分：
 
-- Property
+- 属性
 - 操作员
 - 值
 
@@ -78,7 +78,7 @@ user.department -eq "Sales"
 
 有三种类型的属性可用于构建成员资格规则。
 
-- Boolean
+- 布尔值
 - 字符串
 - 字符串集合
 
@@ -100,11 +100,11 @@ user.department -eq "Sales"
 | companyName | 任何字符串值或*null* | (user.companyName -eq "value") |
 | department |任何字符串值或*null* |(user.department -eq "value") |
 | displayName |任意字符串值 |(user.displayName -eq "value") |
-| employeeId |任意字符串值 |(user.employeeId -eq "value")<br>（用户.员工Id -ne *null）* |
+| employeeId |任意字符串值 |(user.employeeId -eq "value")<br>（用户 Id-ne *null*） |
 | facsimileTelephoneNumber |任何字符串值或*null* |(user.facsimileTelephoneNumber -eq "value") |
 | givenName |任何字符串值或*null* |(user.givenName -eq "value") |
 | jobTitle |任何字符串值或*null* |(user.jobTitle -eq "value") |
-| mail |任何字符串值或*null（* 用户的 SMTP 地址） |(user.mail -eq "value") |
+| mail |任何字符串值或*null* （用户的 SMTP 地址） |(user.mail -eq "value") |
 | mailNickName |任意字符串值（用户的邮件别名） |(user.mailNickName -eq "value") |
 | mobile |任何字符串值或*null* |(user.mobile -eq "value") |
 | objectId |用户对象的 GUID。 |(user.objectId -eq "11111111-1111-1111-1111-111111111111") |
@@ -120,7 +120,7 @@ user.department -eq "Sales"
 | telephoneNumber |任何字符串值或*null* |(user.telephoneNumber -eq "value") |
 | usageLocation |双字母国家/地区代码 |(user.usageLocation -eq "US") |
 | userPrincipalName |任意字符串值 |(user.userPrincipalName -eq "alias@domain") |
-| userType |成员来宾*空* |(user.userType -eq "Member") |
+| userType |成员来宾*null* |(user.userType -eq "Member") |
 
 ### <a name="properties-of-type-string-collection"></a>字符串集合类型的属性
 
@@ -323,7 +323,7 @@ Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
 ```
 user.objectId -ne null
 ```
-如果希望组排除来宾用户，并且仅包括租户的成员，则可以使用以下语法：
+如果你希望组排除来宾用户并且只包括你的租户的成员，则可以使用以下语法：
 
 ```
 (user.objectId -ne null) -and (user.userType -eq "Member")
@@ -341,13 +341,13 @@ device.objectId -ne null
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>扩展属性和自定义扩展属性
 
-支持扩展属性和自定义扩展属性作为动态成员资格规则中的字符串属性。 [扩展属性](https://docs.microsoft.com/graph/api/resources/onpremisesextensionattributes?view=graph-rest-1.0)从本地窗口服务器 AD 同步，并采用"扩展属性X"的格式，其中 X 等于 1 - 15。 以下是使用扩展属性作为属性的规则示例：
+支持扩展属性和自定义扩展属性作为动态成员资格规则中的字符串属性。 [扩展属性](https://docs.microsoft.com/graph/api/resources/onpremisesextensionattributes?view=graph-rest-1.0)从本地 WINDOW Server AD 同步，采用 "ExtensionAttributeX" 格式，其中 X 等于 1-15。 以下是使用扩展属性作为属性的规则示例：
 
 ```
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-[自定义扩展属性](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions)从本地 Windows Server AD 或连接的 SaaS 应用程序同步，其格式为`user.extension_[GUID]_[Attribute]`：
+[自定义扩展属性](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions)从本地 WINDOWS Server AD 或从连接的 SaaS 应用程序同步`user.extension_[GUID]_[Attribute]`，其格式为，其中：
 
 * [GUID] 是 Azure AD 中用于在 Azure AD 中创建属性的应用程序的唯一标识符
 * [Attribute] 是属性创建时的名称
@@ -370,7 +370,7 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
 > [!NOTE]
 > systemlabels 是不能与 Intune 一起设置的只读属性。
 >
-> 对于 Windows 10，设备OSVersion属性的正确格式如下：（设备.设备OSVersion -eq"10.0.17763"）。 可以通过 Get-MsolDevice PowerShell cmdlet 验证格式设置。
+> 对于 Windows 10，deviceOSVersion 属性的正确格式如下：（deviceOSVersion-eq "10.0.17763"）。 可以通过 Get-MsolDevice PowerShell cmdlet 验证格式设置。
 
 可以使用以下设备属性。
 
@@ -389,7 +389,7 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
  managementType | MDM（适用于移动设备）<br>电脑（适用于由 Intune 电脑代理管理的计算机） | (device.managementType -eq "MDM")
  deviceId | 有效的 Azure AD 设备 ID | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  objectId | 有效的 Azure AD 对象 ID |  (device.objectId -eq "76ad43c9-32c5-45e8-a272-7b58b58f596d")
- devicePhysicalIds | 自动驾驶仪使用的任何字符串值，如所有自动驾驶仪设备、订单 ID 或采购订单ID  | （设备.设备物理 ID - 任何 + 包含"[ZTDId]"）（设备.设备物理 Ids - 任何 * -eq [OrderID]：1798871111881"）（设备.设备物理 Ids - 任何 * -eq [采购订单Id]：76222342342"）
+ devicePhysicalIds | Autopilot 使用的任何字符串值，如所有 Autopilot 设备、订单 Id 或 PurchaseOrderID  | （devicePhysicalIDs-任意 _-包含 "[ZTDId]"）（devicePhysicalIds-任意 _-eq "[订单 Id]： 179887111881"）（devicePhysicalIds-任意 _-eq "[PurchaseOrderId]： 76222342342"）
  systemLabels | 任何与 Intune 设备属性匹配的字符串，用于标记现代工作区设备 | (device.systemLabels -contains "M365Managed")
 
 > [!Note]  

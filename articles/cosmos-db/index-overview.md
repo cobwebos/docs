@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: thweiss
 ms.openlocfilehash: 684799ee12715c789910accf80aa5b4afec763d4
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81273233"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 中的索引 - 概述
 
 Azure Cosmos DB 是一种架构不可知的数据库，使你能够迭代应用程序，而无需处理架构或索引管理。 默认情况下，Azure Cosmos DB 将自动为[容器](databases-containers-items.md#azure-cosmos-containers)中所有项的每个属性编制索引，而无需定义任何架构或配置辅助索引。
 
-本文的目的是说明 Azure Cosmos DB 如何为数据编制索引以及如何使用索引来提高查询性能。 建议在探讨如何自定义[索引策略](index-policy.md)之前，先浏览本节。
+本文的目的是说明 Azure Cosmos DB 如何为数据编制索引以及如何使用索引来提高查询性能。 在探索如何自定义[索引策略](index-policy.md)之前，建议先阅读本部分。
 
 ## <a name="from-items-to-trees"></a>从项到树
 
@@ -164,7 +164,7 @@ Azure Cosmos DB 目前支持三种类型的索引。
  SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
 ```
 
-只要一个筛选器谓词使用索引类型之一，查询引擎将首先在扫描其余内容之前对其进行计算。 例如，如果你有一个 SQL 查询，如 `SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
+只要一个筛选器谓词使用某一索引类型，查询引擎就会在扫描其余部分之前计算。 例如，如果你有一个 SQL 查询，如 `SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
 
 * 上面的查询将首先使用索引筛选 firstName = "Andrew" 的条目。 然后，它通过后续管道传递所有 firstName = "Andrew" 条目，以评估 CONTAINS 筛选器谓词。
 
@@ -180,7 +180,7 @@ Azure Cosmos DB 目前支持三种类型的索引。
 ![匹配树中的特定路径](./media/index-overview/matching-path.png)
 
 > [!NOTE]
-> 按单个属性排序的 `ORDER BY` 子句始终需要一个范围索引，如果它引用的路径不包含范围索引，则会失败。** 同样，按多个属性排序的 `ORDER BY` 查询始终** 需要组合索引。
+> 按单个属性排序的 `ORDER BY` 子句始终需要一个范围索引，如果它引用的路径不包含范围索引，则会失败。  同样，按多个属性排序的 `ORDER BY` 查询始终  需要组合索引。
 
 ## <a name="next-steps"></a>后续步骤
 

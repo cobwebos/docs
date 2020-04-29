@@ -1,5 +1,5 @@
 ---
-title: 迁移 Azure 监视器警报规则
+title: 迁移 Azure Monitor 预警规则
 description: 了解如何使用自愿性迁移工具迁移经典警报规则。
 author: yanivlavi
 ms.author: yalavi
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
 ms.openlocfilehash: ab5c16995a2d2bad6e44f0f9d1187ca3d66be1b6
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81114255"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>使用自愿性迁移工具迁移经典警报规则
@@ -52,7 +52,7 @@ ms.locfileid: "81114255"
 
 1. 选择“迁移到新规则”转到迁移登陆页。**** 此页显示所有订阅的列表及其迁移状态：
 
-    ![迁移登陆](media/alerts-migration/migration-landing.png "迁移规则")
+    ![迁移-登陆](media/alerts-migration/migration-landing.png "迁移规则")
 
     可以使用该工具迁移的所有订阅已标记为“准备好迁移”。****
 
@@ -63,7 +63,7 @@ ms.locfileid: "81114255"
 
     生成的页将显示每次要为一个订阅迁移的经典警报规则的详细信息。 还可以选择“下载此订阅的迁移详细信息”，以获取 CSV 格式的详细信息。****
 
-    ![迁移预览](media/alerts-migration/migration-preview.png "预览迁移")
+    ![迁移-预览](media/alerts-migration/migration-preview.png "预览迁移")
 
 1. 指定用于接收迁移状态通知的一个或多个电子邮件地址。 迁移完成或者需要你采取任何措施时，你会收到电子邮件。
 
@@ -72,11 +72,11 @@ ms.locfileid: "81114255"
     > [!IMPORTANT]
     > 启动订阅迁移后，无法编辑或创建该订阅的经典警报规则。 这种限制可以确保在迁移到新规则期间，不会丢失对经典警报规则所做的任何更改。 尽管无法更改经典警报规则，但在完成迁移之前，这些规则仍会继续运行并提供警报。 完成订阅的迁移后，不再可以使用经典警报规则。
 
-    ![迁移确认](media/alerts-migration/migration-confirm.png "确认启动迁移")
+    ![迁移-确认](media/alerts-migration/migration-confirm.png "确认开始迁移")
 
 1. 迁移完成或者需要你采取措施时，前面提供的地址会收到电子邮件。 也可以在门户中的迁移登陆页上定期检查状态。
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 
 ### <a name="why-is-my-subscription-listed-as-not-ready-for-migration"></a>我的订阅为何列为未准备好迁移？
 

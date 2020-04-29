@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure CDN 覆盖 HTTP 行为 - Verizon 高级规则引擎
-description: 规则引擎允许您自定义 Azure CDN 从 Verizon 高级版处理 HTTP 请求的方式，例如阻止某些类型的内容的传递、定义缓存策略和修改 HTTP 标头。
+title: 用 Azure CDN Verizon Premium 规则引擎重写 HTTP 行为
+description: 规则引擎允许你自定义 Verizon Premium Azure CDN 如何处理 HTTP 请求，例如阻止传递某些类型的内容、定义缓存策略以及修改 HTTP 标头。
 services: cdn
 author: asudbring
 ms.service: azure-cdn
@@ -8,13 +8,13 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: allensu
 ms.openlocfilehash: 2e5e4265f30631f8e68d8f9e7156ea578ae85e7a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81253469"
 ---
-# <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>使用 Verizon 高级规则引擎中的 Azure CDN 覆盖 HTTP 行为
+# <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>使用 Verizon 高级规则引擎中的 Azure CDN 重写 HTTP 行为
 
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
@@ -42,7 +42,7 @@ Azure CDN 规则引擎允许你自定义处理 HTTP 请求的方式。 例如，
 
 ## <a name="tutorial"></a>教程
 
-1. 在**CDN 配置文件**页中，选择 **"管理**"。
+1. 从 " **CDN 配置文件**" 页中，选择 "**管理**"。
    
     ![CDN 配置文件管理按钮](./media/cdn-rules-engine/cdn-manage-btn.png)
    
@@ -73,7 +73,7 @@ Azure CDN 规则引擎允许你自定义处理 HTTP 请求的方式。 例如，
    >
    >
 
-5. 要添加新功能，请选择 **"要素**"**+** 旁边的按钮。  在左侧的下拉列表中，选择“**强制内部最长时间**”。  在显示的文本框中，输入 **300**。 不要更改剩余的默认值。
+5. 若要添加新功能，请选择**+** "**功能**" 旁边的按钮。  在左侧的下拉列表中，选择“**强制内部最长时间**”。  在显示的文本框中，输入 **300**。 不要更改剩余的默认值。
    
    ![CDN 规则功能](./media/cdn-rules-engine/cdn-new-feature.png)
    

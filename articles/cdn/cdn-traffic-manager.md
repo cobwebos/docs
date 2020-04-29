@@ -1,5 +1,5 @@
 ---
-title: 使用流量管理器跨多个 Azure CDN 终结点进行故障转移
+title: 通过流量管理器跨多个 Azure CDN 终结点进行故障转移
 description: 了解如何使用 Azure 流量管理器对 Azure CDN 终结点进行设置。
 services: cdn
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: allensu
 ms.custom: ''
 ms.openlocfilehash: 3d4f77a0fb9b8005729a6e9d35f254eb522b690e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81259844"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>使用 Azure 流量管理器跨多个 Azure CDN 终结点设置故障转移
@@ -77,12 +77,12 @@ ms.locfileid: "81259844"
     >
 
 
-2.  在 Azure CDN 配置文件中，选择第一个 CDN 终结点 (Akamai)。 选择**添加自定义域**并输入*cdndemo101.dddogpetcare.online*. 确认表示验证自定义域的复选标记是否显示为绿色。 
+2.  在 Azure CDN 配置文件中，选择第一个 CDN 终结点 (Akamai)。 选择 "**添加自**定义域" 并输入*cdndemo101*。 确认表示验证自定义域的复选标记是否显示为绿色。 
 
     Azure CDN 使用 *cdnverify* 子域来验证 DNS 映射，以完成此注册过程。 有关详细信息，请参阅[创建 CNAME DNS 记录](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record)。 此步骤使 Azure CDN 能够识别自定义域，以便对其请求做出响应。
     
     > [!NOTE]
-    > 要从 Akamai 配置文件在**Azure CDN**上启用 TLS，必须直接将自定义域命名为终结点。 尚未支持启用 TLS 的 cdn 验证。 
+    > 若要**从 Akamai**配置文件中的 Azure CDN 上启用 TLS，必须直接将自定义域 cname 到你的终结点。 尚不支持用于启用 TLS 的 cdnverify。 
     >
 
 3.  返回自定义域提供商的网站，并更新创建的第一个 DNS 映射，以便将自定义域映射到第二个 CDN 终结点。
@@ -91,7 +91,7 @@ ms.locfileid: "81259844"
 
     `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101verizon.azureedge.net`  
 
-4. 在 Azure CDN 配置文件中，选择第二个 CDN 终结点 (Verizon) 并重复步骤 2。 选择 **"添加自定义域**"，然后输入*cdndemo101.dddogpetcare.online*.
+4. 在 Azure CDN 配置文件中，选择第二个 CDN 终结点 (Verizon) 并重复步骤 2。 选择 "**添加自**定义域"，然后输入*cdndemo101*。
  
 完成这些步骤后，即已使用 Azure 流量管理器设置了具有故障转移功能的多 CDN 服务。 你可以从自定义域访问测试 URL。 若要测试功能，请禁用主要 CDN 终结点，并验证是否能够正确地将请求转移到辅助 CDN 终结点。 
 

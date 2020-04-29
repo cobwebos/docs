@@ -1,5 +1,5 @@
 ---
-title: 创建或修改产品/服务 |Azure 应用商店
+title: 创建或修改产品/服务 |Azure Marketplace
 description: 用于创建新的产品/服务或更新现有产品/服务的 API。
 author: dsindona
 ms.service: marketplace
@@ -8,17 +8,17 @@ ms.topic: reference
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: 66e640ab199a884ebfab69cbe7db7f562d848720
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81256342"
 ---
 <a name="create-or-modify-an-offer"></a>创建或修改产品/服务
 =========================
 
 > [!NOTE]
-> 云合作伙伴门户 API 与合作伙伴中心集成，在您的产品/服务迁移到合作伙伴中心后将继续工作。 集成引入了小更改。 查看[云合作伙伴门户 API 参考](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)中列出的更改，以确保代码在迁移到合作伙伴中心后继续工作。
+> 云合作伙伴门户 Api 与合作伙伴中心集成，并在将产品/服务迁移到合作伙伴中心后继续工作。 集成引入了少量更改。 查看[云合作伙伴门户 API 参考](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)中列出的更改，以确保你的代码在迁移到合作伙伴中心后仍能正常工作。
 
 此调用更新发布者命名空间中的特定产品/服务，或创建新的产品/服务。
 
@@ -28,17 +28,17 @@ ms.locfileid: "81256342"
 <a name="uri-parameters"></a>URI 参数
 --------------
 
-|  **名称**         |  **说明**                      |  **数据类型**  |
+|  **名称**         |  **描述**                      |  **数据类型**  |
 |  --------         |  ----------------                     |  -------------  |
 | publisherId       |  发布者标识符，例如 `contoso` |   字符串 |
 | offerId           |  产品/服务标识符                     |   字符串        |
-| api-version       |  API 最新版本            |   Date           |
+| api-version       |  API 最新版本            |   日期           |
 |  |  |  |
 
-<a name="header"></a>标头
+<a name="header"></a>Header
 ------
 
-|  **名称**        |  **价值**               |
+|  **Name**        |  **值**               |
 |  ---------       |  ----------              | 
 | Content-Type     | `application/json`       |
 | 授权    | `Bearer YOUR_TOKEN`      |
@@ -247,7 +247,7 @@ ms.locfileid: "81256342"
 
 ### <a name="response-status-codes"></a>响应状态代码
 
-| **代码**  |  **说明**                                                                            |
+| **编写**  |  **说明**                                                                            |
 | --------  |  ---------------                                                                            |
 |  200      | `OK`. 请求已成功处理，并且已成功修改产品/服务。           |
 |  201      | `Created`. 请求已成功处理，并且已成功创建产品/服务。   |

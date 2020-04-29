@@ -1,5 +1,5 @@
 ---
-title: 检索优惠 API |Azure 应用商店
+title: 检索提供 API |Azure Marketplace
 description: API 检索发布者命名空间下的产品/服务汇总列表。
 author: dsindona
 ms.service: marketplace
@@ -8,17 +8,17 @@ ms.topic: reference
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: 0413bc71c113bf1eef9f761dbeed4c0d0afe735c
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81255951"
 ---
 <a name="retrieve-offers"></a>检索产品/服务
 ===============
 
 > [!NOTE]
-> 云合作伙伴门户 API 与合作伙伴中心集成，在您的产品/服务迁移到合作伙伴中心后将继续工作。 集成引入了小更改。 查看[云合作伙伴门户 API 参考](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)中列出的更改，以确保代码在迁移到合作伙伴中心后继续工作。
+> 云合作伙伴门户 Api 与合作伙伴中心集成，并在将产品/服务迁移到合作伙伴中心后继续工作。 集成引入了少量更改。 查看[云合作伙伴门户 API 参考](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)中列出的更改，以确保你的代码在迁移到合作伙伴中心后仍能正常工作。
 
 检索发布者命名空间下的产品/服务汇总列表。
 
@@ -27,17 +27,17 @@ ms.locfileid: "81255951"
 <a name="uri-parameters"></a>URI 参数
 --------------
 
-| **名称**         |  **说明**                         |  **数据类型** |
+| **名称**         |  **描述**                         |  **数据类型** |
 | -------------    |  ------------------------------------    |  -----------   |
 |  publisherId     | 发布者标识符，例如 `contoso` |   字符串    |
-|  api-version     | API 的最新版本                    |    Date        |
+|  api-version     | API 的最新版本                    |    日期        |
 |  |  |
 
 
-<a name="header"></a>标头
+<a name="header"></a>Header
 ------
 
-|  **名称**        |         **价值**       |
+|  **Name**        |         **值**       |
 |  --------------- |       ----------------  |
 |  Content-Type    | `application/json`      |
 |  授权   | `Bearer YOUR_TOKEN`     |
@@ -68,7 +68,7 @@ ms.locfileid: "81255951"
 
 ### <a name="response-body-properties"></a>响应正文属性
 
-|  **名称**       |       **说明**                                                                                                  |
+|  **名称**       |       **描述**                                                                                                  |
 |  -------------  |      --------------------------------------------------------------------------------------------------------------    |
 |  offerTypeId    | 标识产品/服务的类型                                                                                           |
 |  publisherId    | 唯一标识发布者的标识符                                                                      |
@@ -82,7 +82,7 @@ ms.locfileid: "81255951"
 
 ### <a name="response-status-codes"></a>响应状态代码
 
-| **代码**  |  **说明**                                                                                                   |
+| **编写**  |  **说明**                                                                                                   |
 | -------   |  ----------------------------------------------------------------------------------------------------------------- |
 |  200      | `OK` - 已成功处理请求，发布者下的所有产品/服务都已返回给客户端。  |
 |  400      | `Bad/Malformed request` - 错误响应正文可能包含更多信息。                                    |
@@ -93,13 +93,13 @@ ms.locfileid: "81255951"
 
 ### <a name="offer-status"></a>产品/服务状态
 
-|  **名称**                    | **说明**                                  |
+|  **名称**                    | **描述**                                  |
 |  ------------------------    | -----------------------------------------------  |
 |  NeverPublished              | 产品/服务从未发布过。                  |
 |  NotStarted                  | 产品/服务是新的，但未启动。                 |
 |  WaitingForPublisherReview   | 产品/服务正在等待发布者批准。         |
 |  运行                     | 正在处理产品/服务提交。             |
-|  已成功                   | 产品/服务提交已完成处理。       |
+|  成功                   | 产品/服务提交已完成处理。       |
 |  已取消                    | 产品/服务提交已取消。                   |
-|  失败                      | 产品/服务提交失败。                         |
+|  Failed                      | 产品/服务提交失败。                         |
 |  |  |

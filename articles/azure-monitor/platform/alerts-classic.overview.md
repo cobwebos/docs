@@ -1,20 +1,20 @@
 ---
-title: Azure 监视器中经典警报概述
+title: Azure Monitor 中的经典警报概述
 description: 经典警报将被弃用。 使用警报可以监视 Azure 资源指标、事件或日志，并在符合指定的条件时接收通知。
 ms.topic: conceptual
 ms.date: 05/19/2018
 ms.subservice: alerts
 ms.openlocfilehash: e9c269db870f582c176783a4654b5de251e24412
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81114501"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Microsoft Azure 中的经典警报是什么？
 
 > [!NOTE]
-> 本文介绍了如何创建旧式经典指标警报。 Azure 监视器现在支持[较新的近实时指标警报和新的警报体验](../../azure-monitor/platform/alerts-overview.md)。 经典警报[已停用](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement)，但仍对不支持新警报的资源使用有限。 
+> 本文介绍了如何创建旧式经典指标警报。 Azure Monitor 现在支持[较新的近实时指标警报和新的警报体验](../../azure-monitor/platform/alerts-overview.md)。 经典警报已[停](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement)用，但对于尚不支持新警报的资源仍有限制。 
 >
 
 警报允许配置数据条件，并在条件与最新监视数据匹配时发出通知。
@@ -29,9 +29,9 @@ ms.locfileid: "81114501"
 
 与经典警报体验相比，新式警报用户体验具有以下优点：
 - **更好的通知系统** - 所有新式警报均使用操作组，这些组是命名的通知和操作组，可以在多个警报中重复使用。 经典指标警报和旧版 Log Analytics 警报不使用操作组。
-- **统一的创作体验**- Azure 监视器、日志分析和应用程序见解的指标、日志和活动日志的所有警报创建都在一个位置。
+- **统一的创作体验**-跨 Azure Monitor、Log Analytics 和 Application Insights 的指标、日志和活动日志创建所有警报。
 - **在 Azure 门户中查看触发的 Log Analytics 警报** - 现在还可以在订阅中查看触发的 Log Analytics 警报。 以前这些警报在单独的门户中。
-- **已触发警报和警报规则的分离**- 警报规则（触发警报的条件的定义）和触发警报（警报规则触发的实例）是区分的，因此操作视图和配置视图被分开。
+- **分离触发的警报和警报规则**-警报规则（触发警报的条件的定义）和触发的警报（警报规则触发的实例）有差异，因此，操作和配置视图是分开的。
 - **更好的工作流** - 全新警报创作体验引导用户完成警报规则配置过程，因此发现需要发出警报的事项变得更容易了。
 - **智能警报整合**和**设置警报状态** - 新式警报包括了自动分组功能，它将类似的警报显示在一起以降低用户界面中的开销。 
 
@@ -51,7 +51,7 @@ ms.locfileid: "81114501"
 
 * **经典活动日志警报** - 当某个活动日志事件条目与筛选条件匹配时将触发的流式处理日志警报。 这些警报只有一个状态，即“已激活”。 警报引擎只是简单地将筛选条件应用于任何新事件。 它不会进行搜索来查找更早的条目。 出现新的服务运行状况事件时，或用户或应用程序在订阅中执行操作（例如“删除虚拟机”）时，这些警报可发出通知。
 
-对于通过 Azure Monitor 提供的资源日志数据，请将数据路由到 Log Analytics 并使用日志查询警报。 日志分析现在使用[新的警报方法](../../azure-monitor/platform/alerts-overview.md) 
+对于通过 Azure Monitor 提供的资源日志数据，请将数据路由到 Log Analytics 并使用日志查询警报。 Log Analytics 现在使用[新的警报方法](../../azure-monitor/platform/alerts-overview.md) 
 
 下图总结了 Azure Monitor 中的数据源，从概念上总结了从数据取消警报的方法。
 
@@ -85,14 +85,14 @@ Webhook 可实现自动化和修复，例如使用：
 ## <a name="next-steps"></a>后续步骤
 了解警报规则以及如何使用以下工具来配置这些规则：
 
-* 了解有关[指标](data-platform.md)的更多
+* 了解有关[指标](data-platform.md)的详细信息
 * [通过 Azure 门户配置经典指标警报](alerts-classic-portal.md)
 * 配置[经典指标警报 PowerShell](alerts-classic-portal.md)
 * 配置[经典指标警报命令行接口 (CLI)](alerts-classic-portal.md)
 * 配置[经典指标警报 Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
-* 了解有关[活动日志的更多内容](platform-logs-overview.md)
+* 了解有关[活动日志](platform-logs-overview.md)的详细信息
 * [通过 Azure 门户配置活动日志警报](activity-log-alerts.md)
 * [通过 Resource Manager 配置活动日志警报](alerts-activity-log.md)
-* 查看[活动日志警报 Webhook 架构](activity-log-alerts-webhook.md)
+* 查看[活动日志警报 webhook 架构](activity-log-alerts-webhook.md)
 * 详细了解[操作组](action-groups.md)
-* 配置[较新的警报](alerts-metric.md)
+* 配置[较新警报](alerts-metric.md)

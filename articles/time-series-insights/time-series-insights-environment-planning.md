@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: seodec18
 ms.openlocfilehash: 85910ee5467ecc9f4fe3c1a8bc13110b6f218e5c
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81272706"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>规划 Azure 时序见解正式版环境
@@ -24,15 +24,15 @@ ms.locfileid: "81272706"
 
 ## <a name="video"></a>视频
 
-**观看此视频，了解有关 Azure 时间序列见解中的数据保留以及如何规划数据保留的更多详细信息**：<br /><br />
+**观看此视频，了解有关 Azure 时序见解中的数据保留的详细信息，以及如何对其进行规划**：<br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
 ## <a name="best-practices"></a>最佳做法
 
-要开始使用 Azure 时间序列见解，最好知道您希望按分钟推送多少数据以及存储数据所需的时间。  
+若要开始使用 Azure 时序见解，最好知道要在一分钟内推送的数据量以及存储数据所需的时间。  
 
-有关两个时间序列见解 SKU 的容量和保留的详细信息，请阅读[时序见解定价](https://azure.microsoft.com/pricing/details/time-series-insights/)。
+有关时序见解 Sku 的容量和保留期的详细信息，请参阅[时序见解定价](https://azure.microsoft.com/pricing/details/time-series-insights/)。
 
 若要最合理地规划时序见解环境以取得长期成功，请考虑以下属性：
 
@@ -48,14 +48,14 @@ ms.locfileid: "81272706"
 
 ## <a name="data-retention"></a>数据保留
 
-您可以在 Azure 时间序列见解环境中更改**数据保留时间**设置。 可以启用最长 400 天的保留期。 
+可以在 Azure 时序见解环境中更改 "**数据保留时间**" 设置。 可以启用最长 400 天的保留期。 
 
 Azure 时序见解具有两种模式：
 
 * 一种模式针对最新数据进行了优化。 它强制执行**清除旧数据**的策略，使实例可以使用最新数据。 此模式默认已启用。 
-* 其他模式将优化数据，使其保持低于配置的保留限制。 **暂停入口**可防止在选择新数据时进入该数据，因为**存储限制超出行为**。
+* 其他模式将优化数据，使其保持低于配置的保留限制。 如果将新数据选作**超出存储限制的行为**，**暂停入口**会阻止引入新数据。
 
-您可以在 Azure 门户中的环境配置页上的两种模式之间调整保留和切换。
+可以在 Azure 门户中环境配置页上的两种模式之间进行调整和切换。
 
 > [!IMPORTANT]
 > 可在 Azure 时序见解 GA 环境中配置最长 400 天的数据保留。
@@ -71,7 +71,7 @@ Azure 时序见解具有两种模式：
    [![配置保留期](media/data-retention/configure-data-retention.png)](media/data-retention/configure-data-retention.png#lightbox)
 
 > [!TIP]
-> 要了解有关如何实现适当的数据保留策略的更多内容，请阅读[如何配置保留](./time-series-insights-how-to-configure-retention.md)。
+> 若要了解有关如何实现适当的数据保留策略的详细信息，请参阅[如何配置保留期](./time-series-insights-how-to-configure-retention.md)。
 
 ## <a name="ingress-capacity"></a>入口容量
 
@@ -79,7 +79,7 @@ Azure 时序见解具有两种模式：
 
 ### <a name="environment-planning"></a>环境规划
 
-在规划时序见解环境时，需要重点考虑的第二个方面是流入容量。 每日入口存储和事件容量按每分钟 1 KB 块为单位进行测量。 允许的最大数据包大小为 32 KB。 大于 32 KB 的数据包将被截断。
+在规划时序见解环境时，需要重点考虑的第二个方面是流入容量。 每日入口存储和事件容量每分钟测量一次，采用 1 KB 的块。 允许的最大数据包大小为 32 KB。 大于 32 KB 的数据包将被截断。
 
 可以在单一环境中，将 S1 或 S2 SKU 的容量增加到 10 个单位。 无法从 S1 环境迁移到 S2 环境。 无法从 S2 环境迁移到 S1 环境。
 
@@ -101,11 +101,11 @@ Azure 时序见解具有两种模式：
 
 ### <a name="mitigate-throttling-and-latency"></a>缓解限制和延迟
 
-有关如何防止限制和延迟的信息，请阅读["缓解延迟和限制](time-series-insights-environment-mitigate-latency.md)"。
+有关如何防止限制和延迟的信息，请参阅[缓解延迟和限制](time-series-insights-environment-mitigate-latency.md)。
 
 ## <a name="shape-your-events"></a>塑造事件
 
-必须确保向时序见解发送事件的方式支持预配的环境大小。 （相反，您可以将环境的大小映射到时间序列见解读取的事件数和每个事件的大小。在查询数据时，考虑可能要使用的属性进行切片和筛选也很重要。
+必须确保向时序见解发送事件的方式支持预配的环境大小。 （相反，你可以将环境的大小映射到事件时序见解的数量以及每个事件的大小。）还需要考虑在查询数据时可能想要用来进行切片和筛选的属性。
 
 > [!TIP]
 > 请查看[发送事件](time-series-insights-send-events.md)中的 JSON 塑形文档。
@@ -117,7 +117,7 @@ Azure 时序见解具有两种模式：
 > [!NOTE]
 > 参考数据不以追溯方式进行联接。 在配置并上传参考数据集后，只会将当前和将来的流入数据与参考数据集相匹配并联接到其中。 如果你打算将大量的历史数据发送到时序见解，但未事先在时序见解中上传或创建参考数据，到时可能需要从头开始，这是一件很麻烦的事。  
 
-要了解有关如何在时间序列见解中创建、上传和管理参考数据的更多内容，请阅读我们的[参考数据集文档](time-series-insights-add-reference-data-set.md)。
+若要详细了解如何在时序见解中创建、上传和管理引用数据，请阅读我们的[参考数据集文档](time-series-insights-add-reference-data-set.md)。
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 

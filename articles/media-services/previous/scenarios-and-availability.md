@@ -14,22 +14,22 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: fa0cf5d698bc2186928e0db19be173ec725485e8
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80985926"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>媒体服务功能的跨数据中心方案和可用性
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本，[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本的[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 可以使用 Microsoft Azure 媒体服务 (AMS) 安全地上传、存储、编码和打包视频或音频内容，以便通过点播和实时流形式传送到各种客户端（例如，电视、电脑和移动设备）。
 
 AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地理区域，让用户可灵活选择构建应用程序的位置。 可查看[区域及其位置的列表](https://azure.microsoft.com/regions/)。 
 
-本主题显示用于[实时](#live_scenarios)或按需交付内容的常见方案。 本主题还详细说明了媒体功能和服务的跨数据中心可用性。
+本主题演示了[实时](#live_scenarios)交付内容或按需交付内容的常见方案。 本主题还详细说明了媒体功能和服务的跨数据中心可用性。
 
 ## <a name="overview"></a>概述
 
@@ -41,7 +41,7 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 * Azure 媒体服务帐户。 有关详细信息，请参阅[创建帐户](media-services-portal-create-account.md)。
 * 要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。****
 
-    创建 AMS 帐户时，默认**流式**处理终结点将添加到处于 **"已停止"** 状态的帐户。 若要开始流式传输内容并利用动态打包和动态加密，流式处理终结点必须处于“正在运行”状态。****
+    创建 AMS 帐户后，会将**默认**的流式处理终结点添加到帐户的 "**已停止**" 状态。 若要开始流式传输内容并利用动态打包和动态加密，流式处理终结点必须处于“正在运行”状态。****
 
 ### <a name="commonly-used-objects-when-developing-against-the-ams-odata-model"></a>针对 AMS OData 模型进行开发时的常用对象
 
@@ -153,7 +153,7 @@ AMS 客户可以缩放其 AMS 帐户中的流式处理终结点、媒体处理�
 
 * 媒体服务帐户与预留单位类型关联，后者决定了编码处理任务的处理速度。 可以在以下预留单位类型中进行选择：**S1**、**S2** 或 **S3**。 例如，与 **S1** 预留单位类型相比，使用 **S2** 预留单位类型时，同一编码作业运行速度更快。
 
-    除了指定预留单位类型外，还可以指定使用**预留单位**（R） 预配您的帐户。 预配的 RU 数决定了给定帐户中可并发处理的媒体任务数。
+    除了指定保留单位类型之外，还可以指定为帐户预配**保留单位**（ru）。 预配的 RU 数决定了给定帐户中可并发处理的媒体任务数。
 
     >[!NOTE]
     >RU 可用于并行化所有媒体处理，包括使用 Azure Media Indexer 为作业编制索引。 但是，与编码不同，索引作业使用更快的预留单位并不能更快地完成处理。
@@ -169,7 +169,7 @@ AMS 客户可以缩放其 AMS 帐户中的流式处理终结点、媒体处理�
 
 #### <a name="availability"></a>可用性
 
-使用[按区域的 Azure 产品](https://azure.microsoft.com/global-infrastructure/services/?products=media-services&regions=all)来确定媒体服务在特定数据中心中是否可用。
+使用[Azure 产品（按区域](https://azure.microsoft.com/global-infrastructure/services/?products=media-services&regions=all)）确定媒体服务是否在特定数据中心内可用。
 
 ### <a name="streaming-endpoints"></a>流式处理终结点 
 
@@ -204,7 +204,7 @@ AMS 提供两个按需编码器：**** Media Encoder Standard 和 **** Media Enc
 媒体分析是语音和视觉组件的集合，便于组织和企业从视频文件中汲取可以实施的见解。 有关详细信息，请参阅 [Azure 媒体服务分析概述](media-services-analytics-overview.md)。
 
 > [!NOTE]
-> 某些分析媒体处理器将停用。 有关停用日期，请参阅[旧组件](legacy-components.md)主题。
+> 将停用一些分析媒体处理器。 有关停用日期，请参阅[旧组件](legacy-components.md)主题。
 
 #### <a name="availability"></a>可用性
 

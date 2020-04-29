@@ -9,10 +9,10 @@ ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.openlocfilehash: 93c21656a768ae458572e0b4917412c8103b2f2d
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80992209"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的访问控制
@@ -23,9 +23,9 @@ Azure Data Lake Storage Gen2 实现了一个访问控制模型，该模型支持
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 
-RBAC 使用角色分配对服务主体有效地应用权限集。** 安全主体是一个对象，表示 Azure Active Directory (AD) 中定义的用于请求访问 Azure 资源的用户、组、服务主体或托管标识。**
+RBAC 使用角色分配对服务主体有效地应用权限集。  安全主体是一个对象，表示 Azure Active Directory (AD) 中定义的用于请求访问 Azure 资源的用户、组、服务主体或托管标识。 
 
-通常，这些 Azure 资源受限制为顶级资源（例如：Azure 存储帐户）。 就 Azure 存储以及随后的 Azure Data Lake Storage Gen2 而言，此机制已扩展到容器（文件系统）资源。
+一般情况下，这些 Azure 资源限制为顶级资源（例如：Azure 存储帐户）。 就 Azure 存储以及随后的 Azure Data Lake Storage Gen2 而言，此机制已扩展到容器（文件系统）资源。
 
 若要了解如何为存储帐户范围内的安全主体分配角色，请参阅[在 Azure 门户中使用 RBAC 授予对 Azure blob 和队列数据的访问权限](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
@@ -36,7 +36,7 @@ RBAC 使用角色分配对服务主体有效地应用权限集。** 安全主体
 
 虽然使用 RBAC 角色分配是一种强大的访问权限控制机制，但对 ACL 而言，这种机制并不精细。 RBAC 的最小粒度在容器级别，其评估优先级高于 ACL。 因此，如果将角色分配给容器范围内的某个安全主体，则无论 ACL 分配如何，该安全主体对于该容器中的所有目录和文件都具有与该角色关联的授权级别。
 
-当安全主体通过[内置角色](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)或通过自定义角色被授予 RBAC 数据权限时，这些权限首先在请求的授权时进行评估。 如果请求的操作由安全主体的 RBAC 分配授权，则立即解析授权，不执行额外的 ACL 检查。 或者，如果安全主体没有 RBAC 分配，或请求的操作与分配的权限不匹配，则会执行 ACL 检查来确定是否已授权安全主体执行请求的操作。
+通过[内置角色](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)或自定义角色向安全主体授予 RBAC 数据权限时，将首先评估请求的授权。 如果请求的操作由安全主体的 RBAC 分配授权，则立即解析授权，不执行额外的 ACL 检查。 或者，如果安全主体没有 RBAC 分配，或请求的操作与分配的权限不匹配，则会执行 ACL 检查来确定是否已授权安全主体执行请求的操作。
 
 > [!NOTE]
 > 如果为安全主体分配了“存储 Blob 数据所有者”内置角色，则会将安全主体视为“超级用户”并向其授予对所有转变操作（包括设置目录或文件的所有者，以及设置他们不是所有者的目录或文件的 ACL）的完全访问权限。** 超级用户访问是唯一获准的更改资源所有者的方式。
@@ -54,7 +54,7 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 可将安全主体关联到文件和目录的访问级别。 这些关联在访问控制列表 (ACL) 中捕获。** 存储帐户中的每个文件和目录都有一个访问控制列表。
 
 > [!NOTE]
-> ACL 仅适用于同一租户中的安全主体。 
+> Acl 仅适用于同一租户中的安全主体。 
 
 如果在存储帐户级别将角色分配到某个安全主体，则可以使用访问控制列表授予该安全主体对特定文件和目录的提升访问权限。
 
@@ -68,11 +68,11 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 |||
 |--------|-----------|
 |Azure 存储资源管理器 |[使用 Azure 存储资源管理器管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-explorer.md#managing-access)|
-|.NET |[使用 .NET 管理 Azure 数据存储单元 2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-dotnet.md)|
-|Java|[使用 Java 管理 Azure 数据存储库第 2 代中的目录、文件和 ACL](data-lake-storage-directory-file-acl-java.md)|
-|Python|[使用 Python 管理 Azure 数据湖存储 Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-python.md)|
-|PowerShell|[使用 PowerShell 管理 Azure 数据存储库第 2 代中的目录、文件和 ACL](data-lake-storage-directory-file-acl-powershell.md)|
-|Azure CLI|[使用 Azure CLI 管理 Azure 数据存储湖存储 Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-cli.md)|
+|.NET |[使用 .NET 管理 Azure Data Lake Storage Gen2 中的目录、文件和 Acl](data-lake-storage-directory-file-acl-dotnet.md)|
+|Java|[使用 Java 管理 Azure Data Lake Storage Gen2 中的目录、文件和 Acl](data-lake-storage-directory-file-acl-java.md)|
+|Python|[使用 Python 管理 Azure Data Lake Storage Gen2 中的目录、文件和 Acl](data-lake-storage-directory-file-acl-python.md)|
+|PowerShell|[使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的目录、文件和 Acl](data-lake-storage-directory-file-acl-powershell.md)|
+|Azure CLI|[使用 Azure CLI 管理 Azure Data Lake Storage Gen2 中的目录、文件和 Acl](data-lake-storage-directory-file-acl-cli.md)|
 |REST API |[路径 - 更新](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
@@ -162,12 +162,12 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 
 #### <a name="the-owning-group"></a>拥有组
 
-在 POSIX ACL 中，每个用户都与*主组*相关联。 例如，用户“Alice”可能属于“finance”组。 Alice 还可能属于多个组，但始终有一个组指定为她的主组。 在 POSIX 中，当 Alice 创建文件时，该文件的拥有组设置为她的主组，在本例中为“finance”。 否则，所有者组的行为类似于为其他用户/组分配的权限。
+在 POSIX Acl 中，每个用户都与某个*主要组*相关联。 例如，用户“Alice”可能属于“finance”组。 Alice 还可能属于多个组，但始终有一个组指定为她的主组。 在 POSIX 中，当 Alice 创建文件时，该文件的拥有组设置为她的主组，在本例中为“finance”。 否则，所有者组的行为类似于为其他用户/组分配的权限。
 
 ##### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>为新的文件或目录分配拥有组
 
-* **案例 1**： 根目录 "/"。 此目录是在创建 Data Lake Storage Gen2 容器时创建的。 在这种情况下，如果容器是使用 OAuth 创建的，则拥有组将设置为创建容器的用户。 如果容器是使用共享密钥、帐户 SAS 或服务 SAS 创建的，则所有者和拥有组将设置为 $superuser****。
-* **案例 2（** 所有其他情况）：创建新项时，将从父目录复制所属组。
+* **情况 1**：根目录 "/"。 此目录是在创建 Data Lake Storage Gen2 容器时创建的。 在这种情况下，如果容器是使用 OAuth 创建的，则拥有组将设置为创建容器的用户。 如果容器是使用共享密钥、帐户 SAS 或服务 SAS 创建的，则所有者和拥有组将设置为 $superuser****。
+* **案例 2** （每个其他情况）：创建新项时，将从父目录中复制拥有的组。
 
 ##### <a name="changing-the-owning-group"></a>更改拥有组
 
@@ -281,7 +281,7 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>是否必须启用 ACL 的支持？
 
-不是。 只要开启了分层命名空间 (HNS) 功能，存储帐户就能通过 ACL 进行访问控制。
+不能。 只要开启了分层命名空间 (HNS) 功能，存储帐户就能通过 ACL 进行访问控制。
 
 即使关闭了 HNS 功能，Azure RBAC 授权规则仍适用。
 
@@ -348,6 +348,6 @@ ACL 不支持继承。 但是，可以使用默认 ACL 来设置父目录下创�
 * [Ubuntu 上的 POSIX ACL](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [使用 Linux 上的访问控制列表的 ACL](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [Azure Data Lake Storage Gen2 概述](../blobs/data-lake-storage-introduction.md)

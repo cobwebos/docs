@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: allensu
 ms.openlocfilehash: 26559adf183a5e008d77b87654a1bd4dabebbca0
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81253826"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>通过 Azure CDN 进行动态站点加速
@@ -27,7 +27,7 @@ ms.locfileid: "81253826"
 
 标准内容分发网络 (CDN) 功能包括更接近于最终用户缓存文件，以加快静态文件的分发这一功能。 但是，使用动态 web 应用程序无法在边缘位置缓存该内容，因为服务器将生成内容以响应用户行为。 加快此类内容交付比传统边缘缓存更加复杂，需要沿着从开始到交付的整个数据路径微调每个元素的端到端解决方案。 通过 Azure CDN 动态站点加速 (DSA) 优化，显著改进了包含动态内容的网页性能。
 
-在终结点创建期间，Akamai 的 Azure CDN 和 Verizon 的 Azure CDN 都通过“优化对象”菜单提供 DSA 优化************。 微软的动态站点加速是通过 Azure[前门服务](https://docs.microsoft.com/azure/frontdoor/front-door-overview)提供的。
+在终结点创建期间，Akamai 的 Azure CDN 和 Verizon 的 Azure CDN 都通过“优化对象”菜单提供 DSA 优化************。 Microsoft 提供的动态站点加速通过[Azure 前门服务](https://docs.microsoft.com/azure/frontdoor/front-door-overview)提供。
 
 > [!Important]
 > 对于“Akamai 的 Azure CDN”**** 配置文件，可以在创建 CDN 终结点后更改其优化设置。
@@ -169,7 +169,7 @@ JPEG 压缩 | .jpg、.jpeg、.jpe、.jig、.jgig、.jgi
 
 访问规则引擎：
     
-1. 在**CDN 配置文件**页中，选择 **"管理**"。  
+1. 从 " **CDN 配置文件**" 页中，选择 "**管理**"。  
     
     ![CDN 配置文件管理按钮](./media/cdn-dynamic-site-acceleration/cdn-manage-btn.png)
 

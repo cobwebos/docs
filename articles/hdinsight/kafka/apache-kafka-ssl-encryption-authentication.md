@@ -1,6 +1,6 @@
 ---
-title: 阿帕奇卡夫卡TLS加密&认证 - Azure HDInsight
-description: 设置TLS加密，用于卡夫卡客户与卡夫卡经纪人之间以及卡夫卡经纪人之间的通信。 设置客户端的 SSL 身份验证。
+title: Apache Kafka TLS 加密 & 身份验证-Azure HDInsight
+description: 为 Kafka 客户端和 Kafka 代理之间以及 Kafka 代理之间的通信设置 TLS 加密。 设置客户端的 SSL 身份验证。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,25 +9,25 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 05/01/2019
 ms.openlocfilehash: 02b64d77a4fb1af25e1022de3ac8e4775f916d9e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81261765"
 ---
 # <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>在 Azure HDInsight 中为 Apache Kafka 设置 TLS 加密和身份验证
 
-本文介绍如何在 Apache Kafka 客户端和 Apache Kafka 代理之间设置传输层安全 （TLS） 加密（以前称为安全套接字层 （SSL） 加密。 它还演示如何设置客户端的身份验证（有时称为双向 TLS）。
+本文介绍如何在 Apache Kafka 客户端与 Apache Kafka 代理之间设置传输层安全性（TLS）加密（以前称为安全套接字层（SSL）加密）。 还介绍了如何设置客户端的身份验证（有时称为双向 TLS）。
 
 > [!Important]
-> 有两个客户端可用于 Kafka 应用程序：一个 Java 客户端和一个控制台客户端。 只有 Java`ProducerConsumer.java`客户端可以使用 TLS 来生成和使用。 控制台生成器客户端`console-producer.sh`不适用于 TLS。
+> 有两个客户端可用于 Kafka 应用程序：一个 Java 客户端和一个控制台客户端。 只有 Java 客户端`ProducerConsumer.java`可以使用 TLS 来生成和使用。 控制台生成方客户`console-producer.sh`端不能与 TLS 一起使用。
 
 > [!Note]
-> HDInsight Kafka 控制台制作器版本 1.1 不支持 SSL。
+> 版本 1.1 的 HDInsight Kafka 控制台生成方不支持 SSL。
 
-## <a name="apache-kafka-broker-setup"></a>阿帕奇卡夫卡经纪人设置
+## <a name="apache-kafka-broker-setup"></a>Apache Kafka 代理设置
 
-Kafka TLS 代理设置将采用以下方式使用四个 HDInsight 群集 VM：
+Kafka TLS broker 安装程序将按以下方式使用四个 HDInsight 群集 Vm：
 
 * 头节点 0 - 证书颁发机构 (CA)
 * 工作器节点 0、1 和 2 - 代理
@@ -52,7 +52,7 @@ Kafka TLS 代理设置将采用以下方式使用四个 HDInsight 群集 VM：
 遵照以下详细说明完成代理设置：
 
 > [!Important]
-> 在以下代码片段中，wnX 是三个工作器节点中某个节点的缩写，应该相应地将其替换为 `wn0`、`wn1` 或 `wn2`。 `WorkerNode0_Name`并`HeadNode0_Name`应用相关机器的名称替换。
+> 在以下代码片段中，wnX 是三个工作器节点中某个节点的缩写，应该相应地将其替换为 `wn0`、`wn1` 或 `wn2`。 应将 `WorkerNode0_Name` 和 `HeadNode0_Name` 替换为相应计算机的名称。
 
 1. 在头节点 0 上执行初始设置，使 HDInsight 填充证书颁发机构 (CA) 的角色。
 
@@ -120,24 +120,24 @@ Kafka TLS 代理设置将采用以下方式使用四个 HDInsight 群集 VM：
 
     ```
 
-## <a name="update-kafka-configuration-to-use-tls-and-restart-brokers"></a>更新卡夫卡配置以使用 TLS 并重新启动代理
+## <a name="update-kafka-configuration-to-use-tls-and-restart-brokers"></a>更新 Kafka 配置以使用 TLS 并重新启动代理
 
-现在，您已经使用密钥库和信任存储为每个 Kafka 代理设置，并导入了正确的证书。 接下来，请使用 Ambari 修改相关的 Kafka 配置属性，然后重启 Kafka 代理。
+现在，你已设置了包含密钥存储和 truststore 的每个 Kafka 代理，并导入了正确的证书。 接下来，请使用 Ambari 修改相关的 Kafka 配置属性，然后重启 Kafka 代理。
 
 若要完成配置修改，请按照以下步骤操作：
 
 1. 登录到 Azure 门户，并选择你的 Azure HDInsight Apache Kafka 群集。
-1. 单击**群集仪表板**下面的“Ambari 主页”转到 Ambari UI。****
-1. 在“Kafka 代理”下，将 **listeners** 属性设置为 `PLAINTEXT://localhost:9092,SSL://localhost:9093`****
-1. 在“高级 kafka-broker”下，将 **security.inter.broker.protocol** 属性设置为 `SSL`****
+1. 单击**群集仪表板**下面的“Ambari 主页”转到 Ambari UI。 
+1. 在“Kafka 代理”下，将 **listeners** 属性设置为  `PLAINTEXT://localhost:9092,SSL://localhost:9093`
+1. 在“高级 kafka-broker”下，将 **security.inter.broker.protocol** 属性设置为  `SSL`
 
     ![在 Ambari 中编辑 Kafka ssl 配置属性](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari.png)
 
-1. 在“自定义 kafka-broker”下，将 **ssl.client.auth** 属性设置为 `required`。**** 仅当同时设置了身份验证和加密时，才需要执行此步骤。
+1. 在“自定义 kafka-broker”下，将 **ssl.client.auth** 属性设置为 **。** `required` 仅当同时设置了身份验证和加密时，才需要执行此步骤。
 
     ![在 Ambari 中编辑 kafka ssl 配置属性](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
 
-1. 对于 HDI 版本 3.6，转到 Ambari UI，并在**高级 kafka-env**和**kafka-env 模板**属性下添加以下配置。
+1. 对于 HDI 版本3.6，请在 "**高级 kafka** " 和 " **kafka 模板**" 属性下，中转到 Ambari UI 并添加以下配置。
 
     ```bash
     # Configure Kafka to advertise IP addresses instead of FQDN
@@ -152,7 +152,7 @@ Kafka TLS 代理设置将采用以下方式使用四个 HDInsight 群集 VM：
     echo "ssl.truststore.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-1. 下面是显示 Ambari 配置 UI 的屏幕截图，这些更改。
+1. 以下屏幕截图显示了具有这些更改的 Ambari 配置 UI。
 
     对于 HDI 版本 3.6：
 
@@ -160,21 +160,21 @@ Kafka TLS 代理设置将采用以下方式使用四个 HDInsight 群集 VM：
 
     对于 HDI 版本 4.0：
 
-     ![在 Ambari 四中编辑 kafka-env 模板属性](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env-four.png)
+     ![在 Ambari 4 中编辑“kafka-env template”属性](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env-four.png)
 
 1. 重启所有 Kafka 代理。
 
 ## <a name="client-setup-without-authentication"></a>客户端设置（不使用身份验证）
 
-如果不需要身份验证，则仅设置 TLS 加密的步骤摘要包括：
+如果不需要身份验证，则仅设置 TLS 加密的步骤摘要为：
 
-1. 登录到 CA（活动头节点）。
-1. 从 CA 计算机 （wn0） 将 CA 证书复制到客户端计算机。
-1. 登录到客户端计算机 （hn1） 并导航到`~/ssl`文件夹。
-1. 将 CA 证书导入信任存储。
-1. 将 CA 证书导入密钥存储。
+1. 登录到 CA （活动头节点）。
+1. 从 CA 计算机将 CA 证书复制到客户端计算机（wn0）。
+1. 登录到客户端计算机（hn1），并导航到该`~/ssl`文件夹。
+1. 将 CA 证书导入到 truststore。
+1. 将 CA 证书导入到密钥存储。
 
-这些步骤在以下代码段中进行了详细说明。
+以下代码片段详细说明了这些步骤。
 
 1. 登录到 CA 节点。
 
@@ -183,7 +183,7 @@ Kafka TLS 代理设置将采用以下方式使用四个 HDInsight 群集 VM：
     cd ssl
     ```
 
-1. 将 ca-cert 复制到客户端计算机
+1. 将 ca 证书复制到客户端计算机
 
     ```bash
     scp ca-cert sshuser@HeadNode1_Name:~/ssl/ca-cert
@@ -196,19 +196,19 @@ Kafka TLS 代理设置将采用以下方式使用四个 HDInsight 群集 VM：
     cd ssl
     ```
 
-1. 将 CA 证书导入信任存储。
+1. 将 CA 证书导入 truststore。
 
     ```bash
     keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
     ```
 
-1. 将 CA 证书导入密钥存储。
+1. 将 CA 证书导入到密钥存储。
     
     ```bash
     keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
     ```
 
-1. 在客户端计算机`client-ssl-auth.properties`（hn1） 上创建文件。 该文件应包含以下行：
+1. 在客户端`client-ssl-auth.properties`计算机（hn1）上创建文件。 该文件应包含以下行：
 
     ```config
     security.protocol=SSL
@@ -216,19 +216,19 @@ Kafka TLS 代理设置将采用以下方式使用四个 HDInsight 群集 VM：
     ssl.truststore.password=MyClientPassword123
     ```
 
-1. 使用生成方和使用方选项启动管理客户端，以验证生成方和使用方是否在端口 9093 上运行。 有关使用控制台生产者/使用者验证设置所需的步骤，请参阅下面的[验证](apache-kafka-ssl-encryption-authentication.md#verification)部分。
+1. 使用生成方和使用方选项启动管理客户端，以验证生成方和使用方是否在端口 9093 上运行。 请参阅下面的[验证](apache-kafka-ssl-encryption-authentication.md#verification)部分，了解使用控制台制造者/使用者验证设置所需的步骤。
 
 ## <a name="client-setup-with-authentication"></a>客户端设置（使用身份验证）
 
 > [!Note]
-> 仅当同时设置 TLS 加密**和**身份验证时，才需要以下步骤。 如果只是设置加密，请参阅[没有身份验证的客户端设置](apache-kafka-ssl-encryption-authentication.md#client-setup-without-authentication)。
+> 仅当设置 TLS 加密**和**身份验证时，才需要执行以下步骤。 如果只是要设置加密，请参阅[客户端安装（不进行身份验证](apache-kafka-ssl-encryption-authentication.md#client-setup-without-authentication)）。
 
-以下四个步骤总结了完成客户端设置所需的任务：
+以下四个步骤汇总了完成客户端安装所需的任务：
 
 1. 登录到客户端计算机（备用头节点）。
 1. 创建 Java 密钥存储并获取代理的已签名证书。 然后将该证书复制到运行 CA 的 VM。
 1. 切换到 CA 计算机（活动头节点）以对客户端证书进行签名。
-1. 转到客户端计算机（备用头节点）并导航到`~/ssl`文件夹。 将已签名的证书复制到客户端计算机。
+1. 转到客户端计算机（备用头节点）并导航到该`~/ssl`文件夹。 将已签名的证书复制到客户端计算机。
 
 下面给出了每个步骤的详细信息。
 
@@ -246,7 +246,7 @@ Kafka TLS 代理设置将采用以下方式使用四个 HDInsight 群集 VM：
     cd ssl
     ```
 
-1. 创建 java 密钥库并创建证书签名请求。 
+1. 创建 java 密钥存储并创建证书签名请求。 
 
     ```bash
     keytool -genkey -keystore kafka.client.keystore.jks -validity 365 -storepass "MyClientPassword123" -keypass "MyClientPassword123" -dname "CN=HEADNODE1_FQDN" -storetype pkcs12
@@ -260,7 +260,7 @@ Kafka TLS 代理设置将采用以下方式使用四个 HDInsight 群集 VM：
     scp client-cert-sign-request sshuser@HeadNode0_Name:~/ssl/client-cert-sign-request
     ```
 
-1. 切换到 CA 计算机（活动头节点）并签署客户端证书。
+1. 切换到 CA 计算机（活动头节点），并对客户端证书进行签名。
 
     ```bash
     ssh sshuser@HeadNode0_Name
@@ -268,26 +268,26 @@ Kafka TLS 代理设置将采用以下方式使用四个 HDInsight 群集 VM：
     openssl x509 -req -CA ca-cert -CAkey ca-key -in ~/ssl/client-cert-sign-request -out ~/ssl/client-cert-signed -days 365 -CAcreateserial -passin pass:MyClientPassword123
     ```
 
-1. 将签名的客户端证书从 CA（活动头节点）复制到客户端计算机。
+1. 将签名的客户端证书从 CA （活动头节点）复制到客户端计算机。
 
     ```bash
     scp client-cert-signed sshuser@HeadNode1_Name:~/ssl/client-signed-cert
     ```
 
-1. 将 ca-cert 复制到客户端计算机
+1. 将 ca 证书复制到客户端计算机
 
     ```bash
     scp ca-cert sshuser@HeadNode1_Name:~/ssl/ca-cert
     ```
 
-    1. 登录到客户端计算机（备用头节点）并导航到 ssl 目录。
+    1. 登录到客户端计算机（备用头节点），并导航到 "ssl 目录"。
 
     ```bash
     ssh sshuser@HeadNode1_Name
     cd ssl
     ```
 
-1. 使用签名证书创建客户端存储，并将 ca cert 导入客户端计算机上的密钥库和信任存储 （hn1）：
+1. 创建带签名证书的客户端存储，并将 ca 证书导入到客户端计算机上的密钥存储和 truststore （hn1）：
 
     ```bash
     keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
@@ -297,7 +297,7 @@ Kafka TLS 代理设置将采用以下方式使用四个 HDInsight 群集 VM：
     keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
     ```
 
-1. 在客户端计算机`client-ssl-auth.properties`（hn1） 上创建文件。 该文件应包含以下行：
+1. 在客户端`client-ssl-auth.properties`计算机（hn1）上创建文件。 该文件应包含以下行：
 
     ```bash
     security.protocol=SSL
@@ -313,43 +313,43 @@ Kafka TLS 代理设置将采用以下方式使用四个 HDInsight 群集 VM：
 在客户端计算机上运行这些步骤。
 
 > [!Note]
-> 如果安装了 HDInsight 4.0 和 Kafka 2.1，则可以使用控制台制作者/使用者来验证您的设置。 如果没有，请运行端口 9092 上的 Kafka 生成器并将消息发送到主题，然后在使用 TLS 的端口 9093 上使用 Kafka 使用者。
+> 如果安装了 HDInsight 4.0 和 Kafka 2.1，则可以使用控制台制造者/使用者来验证你的设置。 如果没有，请在端口9092上运行 Kafka 生成程序并向主题发送消息，然后在使用 TLS 的端口9093上使用 Kafka 使用者。
 
-### <a name="kafka-21-or-above"></a>卡夫卡 2.1 或以上
+### <a name="kafka-21-or-above"></a>Kafka 2.1 或更高版本
 
-1. 如果主题不存在，则创建主题。
+1. 如果主题尚不存在，请创建一个。
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --zookeeper <ZOOKEEPER_NODE>:2181 --create --topic topic1 --partitions 2 --replication-factor 2
     ```
 
-1. 启动控制台生成器，并提供作为`client-ssl-auth.properties`生成器的配置文件的路径。
+1. 启动控制台制造者，并将路径`client-ssl-auth.properties`作为制造者的配置文件提供。
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list <FQDN_WORKER_NODE>:9093 --topic topic1 --producer.config ~/ssl/client-ssl-auth.properties
     ```
 
-1. 打开另一个连接到客户端计算机并启动控制台使用者的 ssh 连接`client-ssl-auth.properties`，并为使用者提供作为配置文件的路径。
+1. 打开到客户端计算机的另一个 ssh 连接并启动控制台使用者， `client-ssl-auth.properties`并将路径作为使用者的配置文件提供。
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server <FQDN_WORKER_NODE>:9093 --topic topic1 --consumer.config ~/ssl/client-ssl-auth.properties --from-beginning
     ```
 
-### <a name="kafka-11"></a>卡夫卡 1.1
+### <a name="kafka-11"></a>Kafka 1。1
 
-1. 如果主题不存在，则创建主题。
+1. 如果主题尚不存在，请创建一个。
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --zookeeper <ZOOKEEPER_NODE_0>:2181 --create --topic topic1 --partitions 2 --replication-factor 2
     ```
 
-1. 启动控制台生成器，并提供客户端-ssl-auth.属性的路径，作为生产者的配置文件。
+1. 启动控制台制造者，并提供客户端 ssl 身份验证的路径作为制造者的配置文件。
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --broker-list <FQDN_WORKER_NODE>:9092 --topic topic1 
     ```
 
-1. 打开另一个连接到客户端计算机并启动控制台使用者的 ssh 连接`client-ssl-auth.properties`，并为使用者提供作为配置文件的路径。
+1. 打开到客户端计算机的另一个 ssh 连接并启动控制台使用者， `client-ssl-auth.properties`并将路径作为使用者的配置文件提供。
 
     ```bash
     $ /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server <FQDN_WORKER_NODE>:9093 --topic topic1 --consumer.config ~/ssl/client-ssl-auth.properties --from-beginning

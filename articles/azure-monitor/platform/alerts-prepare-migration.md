@@ -1,5 +1,5 @@
 ---
-title: 更新逻辑应用&警报迁移的 Runbook
+title: 更新逻辑应用 & 警报迁移 runbook
 description: 了解如何修改 Webhook、逻辑应用和 Runbook，以准备自愿性迁移。
 author: yanivlavi
 ms.author: yalavi
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
 ms.openlocfilehash: f31fcc07bed0287c2f86ca4fe52bf02a2a1d2a71
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81114413"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>准备逻辑应用和 Runbook 以迁移经典警报规则
@@ -30,7 +30,7 @@ ms.locfileid: "81114413"
 
 |         |经典警报  |新指标警报 |
 |---------|---------|---------|
-|REST API     | [微软.insights/警报规则](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [微软.insights/指标警报](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
+|REST API     | [microsoft insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [microsoft insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
 |Azure CLI     | [az monitor alert](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [az monitor metrics alert](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
 |PowerShell      | [参考](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [参考](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
 | Azure 资源管理器模板 | [经典警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-enable-template)|[新指标警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)|
@@ -43,7 +43,7 @@ ms.locfileid: "81114413"
 
 |  |经典警报  |新指标警报 |
 |---------|---------|---------|
-|警报是否已激活或解决？    | **状态**       | **data.status** |
+|警报是否已激活或解决？    | **status**       | **data.status** |
 |有关警报的上下文信息     | **上下文**        | **data.context**        |
 |激活或解决警报时的时间戳     | **context.timestamp**       | **data.context.timestamp**        |
 | 警报规则 ID | **context.id** | **data.context.id** |
@@ -51,7 +51,7 @@ ms.locfileid: "81114413"
 | 警报规则的说明 | **context.description** | **data.context.description** |
 | 警报规则条件 | **context.condition** | **data.context.condition** |
 | 指标名称 | **context.condition.metricName** | **data.context.condition.allOf[0].metricName** |
-| 时间聚合（在评估期限内聚合指标的方式）| **上下文.条件.时间聚合** | **上下文.条件.时间聚合** |
+| 时间聚合（在评估期限内聚合指标的方式）| **timeAggregation** | **timeAggregation** |
 | 评估期 | **context.condition.windowSize** | **data.context.condition.windowSize** |
 | 运算符（如何将聚合指标值与阈值进行比较） | **context.condition.operator** | **data.context.condition.operator** |
 | 阈值 | **context.condition.threshold** | **data.context.condition.allOf[0].threshold** |
@@ -62,7 +62,7 @@ ms.locfileid: "81114413"
 | 受影响资源的类型 | **context.resourceType** | **data.context.resourceType** |
 | 受影响资源的资源 ID | **context.resourceId** | **data.context.resourceId** |
 | 门户资源摘要页的直接链接 | **context.portalLink** | **data.context.portalLink** |
-| 要传递给 Webhook 或逻辑应用的自定义有效负载字段 | **性能** | **data.properties** |
+| 要传递给 Webhook 或逻辑应用的自定义有效负载字段 | **properties** | **data.properties** |
 
 可以看到，有效负载是类似的。 以下部分提供：
 
@@ -77,7 +77,7 @@ ms.locfileid: "81114413"
 
 1. 使用“Azure Monitor - 指标警报处理程序”模板。 此模板包含一个定义了相应架构的 **HTTP 请求**触发器。
 
-    ![逻辑应用模板](media/alerts-migration/logic-app-template.png "指标警报模板")
+    ![逻辑应用-模板](media/alerts-migration/logic-app-template.png "指标警报模板")
 
 1. 添加用于托管处理逻辑的操作。
 

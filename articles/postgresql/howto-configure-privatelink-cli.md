@@ -1,24 +1,24 @@
 ---
-title: 专用链路 - Azure CLI - 用于 PostgreSQL 的 Azure 数据库 - 单个服务器
-description: 了解如何为 Azure CLI 的 PostgreSQL- 单一服务器配置 Azure 数据库的专用链接
+title: 专用链接-Azure CLI-Azure Database for PostgreSQL-单一服务器
+description: 了解如何从 Azure CLI 配置 Azure Database for PostgreSQL 单服务器的专用链接
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.openlocfilehash: a6baf8b4609382be4a5a31d12cac581da2c17de6
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81011661"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>创建和管理 Azure 数据库的专用链接，用于 PostgreSQL - 使用 CLI 创建单个服务器
+# <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>使用 CLI 创建和管理 Azure Database for PostgreSQL 单服务器的专用链接
 
-专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。 在本文中，您将学习如何使用 Azure CLI 在 Azure 虚拟网络中创建 VM，以及使用 Azure 专用终结点的 PostgreSQL 单一服务器的 Azure 数据库。
+专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。 在本文中，你将了解如何使用 Azure CLI 在 Azure 虚拟网络中创建 VM 和使用 Azure 专用终结点 Azure Database for PostgreSQL 单一服务器。
 
 > [!NOTE]
-> 此功能在所有 Azure 区域都可用，其中 Azure 数据库适用于 PostgreSQL - 单个服务器支持通用和内存优化定价层。
+> 此功能在所有 Azure Database for PostgreSQL 单服务器支持常规用途和内存优化定价层的 Azure 区域中均可用。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -32,14 +32,14 @@ ms.locfileid: "81011661"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-在创建任何资源之前，必须创建一个资源组以托管虚拟网络。 使用 [az group create](/cli/azure/group) 创建资源组。 本示例*在西欧*位置创建名为*myResourceGroup*的资源组：
+在创建任何资源之前，必须创建一个资源组以托管虚拟网络。 使用 [az group create](/cli/azure/group) 创建资源组。 此示例在 " *westeurope* " 位置创建名为 " *myResourceGroup* " 的资源组：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
 ```
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
-使用 [az network vnet create](/cli/azure/network/vnet) 创建虚拟网络。 此示例创建名为 *myVirtualNetwork* 的默认虚拟网络，它具有一个名为 *mySubnet* 的子网：
+使用[az Network vnet create](/cli/azure/network/vnet)创建虚拟网络。 此示例创建名为 *myVirtualNetwork* 的默认虚拟网络，它具有一个名为 *mySubnet* 的子网：
 
 ```azurecli-interactive
 az network vnet create \
@@ -68,8 +68,8 @@ az vm create \
 ```
  记下 VM 的公共 IP 地址。 在下一步中，此地址将用于从 Internet 连接到 VM。
 
-## <a name="create-an-azure-database-for-postgresql---single-server"></a>为 PostgreSQL - 单个服务器创建 Azure 数据库 
-使用 az postgres 服务器创建命令为 PostgreSQL 创建 Azure 数据库。 请记住，PostgreSQL Server 的名称必须在 Azure 中是唯一的，因此请将括号中的占位符值替换为您自己的唯一值： 
+## <a name="create-an-azure-database-for-postgresql---single-server"></a>创建 Azure Database for PostgreSQL 单服务器 
+使用 az postgres server create 命令创建 Azure Database for PostgreSQL。 请记住，PostgreSQL 服务器的名称必须在 Azure 中是唯一的，因此请将占位符中的占位符值替换为你自己的唯一值： 
 
 ```azurecli-interactive
 # Create a logical server in the resource group 
@@ -82,10 +82,10 @@ az postgres server create \
 --sku-name GP_Gen5_2
 ```
 
-请注意，PostgreSQL 服务器 ID ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/servername.```类似于您将在下一步中使用 PostgreSQL 服务器 ID。 
+请注意，PostgreSQL 服务器 ID 类似于 ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/servername.```你将在下一步中使用 POSTGRESQL 服务器 id。 
 
 ## <a name="create-the-private-endpoint"></a>创建专用终结点 
-为虚拟网络中的 PostgreSQL 服务器创建专用终结点： 
+在虚拟网络中创建 PostgreSQL 服务器的专用终结点： 
 ```azurecli-interactive
 az network private-endpoint create \  
     --name myPrivateEndpoint \  
@@ -98,7 +98,7 @@ az network private-endpoint create \
  ```
 
 ## <a name="configure-the-private-dns-zone"></a>配置专用 DNS 区域 
-为 PostgreSQL 服务器域创建专用 DNS 区域，并与虚拟网络创建关联链接。 
+为 PostgreSQL server 域创建专用 DNS 区域，并使用虚拟网络创建关联链接。 
 ```azurecli-interactive
 az network private-dns zone create --resource-group myResourceGroup \ 
    --name  "privatelink.postgres.database.azure.com" 
@@ -122,7 +122,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 ```
 
 > [!NOTE] 
-> 客户 DNS 设置中的 FQDN 不会解析为配置的专用 IP。 您必须为配置的 FQDN 设置 DNS 区域，[如下所示](../dns/dns-operations-recordsets-portal.md)。
+> "Customer DNS" 设置中的 FQDN 不会解析为配置的专用 IP。 需要为配置的 FQDN 设置 DNS 区域[，如下所示。](../dns/dns-operations-recordsets-portal.md)
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
 
@@ -164,26 +164,26 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
     Address:  10.1.3.4
     ```
 
-3. 使用任何可用的客户端测试 PostgreSQL 服务器的专用链路连接。 在下面的示例中，我使用[Azure 数据工作室](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15)来执行此操作。
+3. 使用任何可用的客户端测试 PostgreSQL 服务器的专用链接连接。 在下面的示例中，我使用[Azure Data studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15)执行此操作。
 
-4. 在 **"新建连接**"中，输入或选择此信息：
+4. 在 "**新建连接**" 中，输入或选择以下信息：
 
     | 设置 | 值 |
     | ------- | ----- |
     | 服务器类型| 选择**PostgreSQL**。|
     | 服务器名称| 选择*mydemopostgresserver.privatelink.postgres.database.azure.com* |
-    | 用户名 | 输入在username@servernamePostgreSQL 服务器创建期间提供的用户名。 |
-    |密码 |输入 PostgreSQL 服务器创建期间提供的密码。 |
-    |SSL|选择 **"必需**"。|
+    | 用户名 | 输入在 PostgreSQL username@servername服务器创建过程中提供的用户名。 |
+    |Password |输入在创建 PostgreSQL 服务器期间提供的密码。 |
+    |SSL|选择 "**必需**"。|
     ||
 
 5. 选择“连接”。
 
 6. 浏览左侧菜单中的数据库。
 
-7. （可选）从后格雷SQL服务器创建或查询信息。
+7. 同时创建或查询来自 postgreSQL 服务器的信息。
 
-8. 关闭远程桌面连接到 myVm。
+8. 关闭与 myVm 的远程桌面连接。
 
 ## <a name="clean-up-resources"></a>清理资源 
 如果不再需要资源组及其所有资源，可以使用 az group delete 将其删除： 
@@ -193,4 +193,4 @@ az group delete --name myResourceGroup --yes
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- 了解有关什么是[Azure 专用终结点](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)
+- 了解[什么是 Azure 专用终结点的](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)详细信息

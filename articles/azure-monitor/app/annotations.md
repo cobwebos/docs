@@ -4,15 +4,15 @@ description: 为 Application Insights 中的指标资源管理器图表添加部
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.openlocfilehash: 0ad773ca6a7102ac718d43dfbbf6a4f834e681a0
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81010695"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>为 Application Insights 中的指标图表添加批注
 
-注释显示部署新生成或其他重大事件的位置。 使用批注可让轻松查看更改是否对应用程序的性能产生了任何影响。 [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/tasks/) 生成系统可自动创建批注。 也可以通过 PowerShell 创建批注，用于标记所要处理的任何事件。
+批注显示部署新生成的位置或其他重要事件。 使用批注可让轻松查看更改是否对应用程序的性能产生了任何影响。 [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/tasks/) 生成系统可自动创建批注。 也可以通过 PowerShell 创建批注，用于标记所要处理的任何事件。
 
 ## <a name="release-annotations-with-azure-pipelines-build"></a>Azure Pipelines 生成中的版本批注
 
@@ -47,7 +47,7 @@ ms.locfileid: "81010695"
    ![选择“添加任务”，然后选择“Application Insights 版本批注”。](./media/annotations/3-add-task.png)
 
    > [!NOTE]
-   > 发布注释任务当前仅支持基于 Windows 的代理;它不会在 Linux、macOS 或其他类型的代理上运行。
+   > 发布批注任务当前仅支持基于 Windows 的代理;它不会在 Linux、macOS 或其他类型的代理上运行。
    
 1. 在“应用程序 ID”下，粘贴从“API 访问”选项卡复制的 Application Insights ID。********
    
@@ -73,23 +73,23 @@ ms.locfileid: "81010695"
 
 
    > [!NOTE]
-   > 发布注释当前不在"应用程序见解的指标"窗格中提供
+   > 版本批注当前在 Application Insights 的 "度量值" 窗格中不可用
 
-现在，每当使用发布模板部署新版本时，就会将批注发送到 Application Insights。 注释可以在以下位置查看：
+现在，每当使用发布模板部署新版本时，就会将批注发送到 Application Insights。 可在以下位置查看批注：
 
-使用窗格，您还可以手动创建发布注释：
+使用情况窗格，还可以手动创建版本批注：
 
-![条形图的屏幕截图，显示用户访问量，持续数小时。 发布注释在图表上方显示为绿色复选标记，指示发布发生的瞬间](./media/annotations/usage-pane.png)
+![显示一段时间内显示的用户访问数的条形图的屏幕截图。 版本批注在图表上方显示为绿色复选标记，指示发布发生的时间](./media/annotations/usage-pane.png)
 
-在任何基于日志的工作簿查询中，可视化效果显示沿 x 轴的时间。
+在任何基于日志的工作簿查询中，可视化效果沿 x 轴显示时间。
 
-![工作簿窗格的屏幕截图，显示注释，包含基于时间序列日志的查询](./media/annotations/workbooks-annotations.png)
+![工作簿窗格的屏幕截图，其中显示了带批注的时序记录查询](./media/annotations/workbooks-annotations.png)
 
-要在工作簿中启用批注，请转到 **"高级设置"** 并选择 **"显示批注**"。
+若要在工作簿中启用批注，请单击 "**高级设置**"，然后选择 "**显示批注**"。
 
-![带有单词的高级设置菜单的屏幕截图显示注释突出显示，设置旁边有复选标记以启用它。](./media/annotations/workbook-show-annotations.png)
+!["高级设置" 菜单的屏幕截图，其中的单词显示批注突出显示批注，设置旁边有一个选中标记，以启用它。](./media/annotations/workbook-show-annotations.png)
 
-选择任何注释标记以打开有关发布的详细信息，包括请求器、源代码管理分支、发布管道和环境。
+选择任何批注标记以打开有关版本的详细信息，包括请求者、源代码管理分支、发布管道和环境。
 
 ## <a name="create-custom-annotations-from-powershell"></a>通过 PowerShell 创建自定义批注
 可以使用 GitHub 中的 [CreateReleaseAnnotation](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) PowerShell 脚本，通过所需的任何流程创建批注，而无需使用 Azure DevOps。 

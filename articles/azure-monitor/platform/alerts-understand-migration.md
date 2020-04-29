@@ -1,5 +1,5 @@
 ---
-title: 了解 Azure 监视器警报的迁移工具
+title: 了解 Azure Monitor 警报的迁移工具
 description: 了解警报迁移工具的工作原理和如何排查问题。
 ms.topic: conceptual
 ms.date: 07/10/2019
@@ -7,10 +7,10 @@ ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
 ms.openlocfilehash: d31c856e17348c23ad61130869af6ae440d3050d
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81114304"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>了解迁移工具的工作原理
@@ -33,12 +33,12 @@ ms.locfileid: "81114304"
 - 针对经典存储指标的经典警报规则。 请参阅[有关监视经典存储帐户的指导](https://azure.microsoft.com/blog/modernize-alerting-using-arm-storage-accounts/)。
 - 针对某些存储帐户指标的经典警报规则。 请参阅本文稍后所述的[详细信息](#storage-account-metrics)。
 - 针对某些 Cosmos DB 指标的经典警报规则。 请参阅本文稍后所述的[详细信息](#cosmos-db-metrics)。
-- 所有经典虚拟机和云服务指标（Microsoft.经典计算/虚拟机和微软.经典计算/域名/插槽/角色）的经典警报规则。 请参阅本文稍后所述的[详细信息](#classic-compute-metrics)。
+- 针对所有经典虚拟机和云服务指标（Microsoft.classiccompute/virtualMachines 和 Microsoft.classiccompute/domainNames/个角色）的经典警报规则。 请参阅本文稍后所述的[详细信息](#classic-compute-metrics)。
 
-如果你的订阅包含任何此类经典规则，必须手动迁移。 由于我们无法提供自动迁移，任何此类现有经典指标警报会继续运行到 2020 年 6 月。 此缓冲期可让你从容地迁移到新警报。 您还可以继续在上述异常上创建新的经典警报，直到 2020 年 6 月。 但是，对于其他所有内容，在 2019 年 8 月之后无法创建新的经典警报。
+如果你的订阅包含任何此类经典规则，必须手动迁移。 由于我们无法提供自动迁移，任何此类现有经典指标警报会继续运行到 2020 年 6 月。 此缓冲期可让你从容地迁移到新警报。 还可以继续在2020年6月之前的列出异常上创建新的经典警报。 但对于其他所有内容，2019年8月后将不能创建新的经典警报。
 
 > [!NOTE]
-> 除了上述例外情况外，如果您的经典警报规则无效，即它们位于已删除[的弃用指标](#classic-alert-rules-on-deprecated-metrics)或资源上，则它们将不会迁移，并且在停用服务后将不可用。
+> 除了以上列出的异常，如果经典警报规则无效（即它们处于[弃用的指标](#classic-alert-rules-on-deprecated-metrics)或已删除的资源），则它们将不会迁移，并且在服务停用后将无法使用。
 
 ### <a name="guest-metrics-on-virtual-machines"></a>虚拟机上的来宾指标
 
@@ -70,7 +70,7 @@ ms.locfileid: "81114304"
 
 ### <a name="cosmos-db-metrics"></a>Cosmos DB 指标
 
-除以下指标上的警报外，可以迁移 Cosmos DB 指标上的所有经典警报：
+可以迁移 Cosmos DB 指标的所有经典警报，但这些指标的警报除外：
 
 - 每秒平均请求数
 - 一致性级别
@@ -79,16 +79,16 @@ ms.locfileid: "81114304"
 - Http 400
 - Http 401
 - 内部服务器错误
-- 每分钟消耗的最大 RUPM
-- 每秒最大鲁斯
-- 蒙戈计数失败请求
-- 蒙戈删除失败的请求
-- 蒙戈插入失败的请求
-- 蒙戈其他失败请求
-- 蒙戈其他请求费用
-- 蒙戈其他请求率
-- 蒙戈查询失败请求
-- 蒙戈更新失败请求
+- 每分钟使用的最大 RUPM
+- 最大每秒 ru 数
+- Mongo Count 失败请求数
+- Mongo 删除失败的请求
+- Mongo 插入失败的请求
+- Mongo 其他失败的请求
+- 其他请求费用 Mongo
+- Mongo 其他请求速率
+- Mongo 查询失败的请求数
+- Mongo 更新失败请求数
 - 观察到的读取延迟
 - 观察到的写入延迟
 - 服务可用性
@@ -96,15 +96,15 @@ ms.locfileid: "81114304"
 - 限制的请求数
 - 请求总数
 
-每秒平均请求数、一致性级别、每分钟消耗的最大 RUPM、每秒最大 RU、观察到的读取延迟、观察到的写入延迟、存储容量当前在新[系统中](metrics-supported.md#microsoftdocumentdbdatabaseaccounts)不可用。
+每秒平均请求数，一致性级别，每分钟使用的最大 RUPM 数，最大每秒的每秒，观察到的读取延迟，观察到的写入延迟，存储容量目前在[新系统](metrics-supported.md#microsoftdocumentdbdatabaseaccounts)中不可用。
 
-不会迁移请求指标（如 Http 2xx、Http 3xx、Http 400、Http 401、内部服务器错误、服务可用性、限制请求和总请求）的警报，因为计算请求的方式在经典指标和新指标之间是不同的。 需要手动重新创建这些警报，并调整阈值。
+不会迁移 http 2xx、Http 3xx、Http 400、Http 401、内部服务器错误、服务可用性、受限请求和请求总数等请求指标的警报，因为在经典指标和新指标之间对请求进行计数的方式不同。 需要手动重新创建这些警报，并调整阈值。
 
-Mongo 失败请求指标上的警报必须拆分为多个警报，因为没有提供相同功能的组合指标。 需要相应地调整阈值。
+Mongo 失败请求的警报必须拆分为多个警报，因为没有提供相同功能的组合指标。 需要相应地调整阈值。
 
-### <a name="classic-compute-metrics"></a>经典计算指标
+### <a name="classic-compute-metrics"></a>典型计算指标
 
-经典计算指标上的任何警报将不会使用迁移工具迁移，因为新警报还不支持经典计算资源。 将来将添加对这些资源类型的新警报的支持。 一旦可用，客户必须在 2020 年 6 月之前根据其经典警报规则重新创建新的等效警报规则。
+对于经典计算指标的任何警报都不会使用迁移工具迁移，因为新警报尚不支持经典计算资源。 将来会添加对这些资源类型的新警报的支持。 一旦可用，客户必须根据2020年6月之前的经典警报规则重新创建新的等效警报规则。
 
 ### <a name="classic-alert-rules-on-deprecated-metrics"></a>针对已弃用指标的经典警报规则
 
@@ -123,10 +123,10 @@ Mongo 失败请求指标上的警报必须拆分为多个警报，因为没有�
 
 迁移工具可将经典警报规则转换为等效的新警报规则和操作组。 对于大多数经典警报规则，等效的新警报规则将应用于包含 `windowSize` 和 `aggregationType` 等相同属性的相同指标。 但是，某些经典警报规则应用于新系统中包含不同但等效的指标的指标。 除非以下部分另有说明，否则，以下原则适用于经典警报的迁移：
 
-- **频率**：定义经典或新警报规则检查条件的频率。 经典警报规则中的 `frequency` 不可由用户配置，对于所有资源类型，其值始终为 5 分钟，不过，对于 Application Insights 组件，其值为 1 分钟。因此，等效规则的频率也分别设置为 5 分钟和 1 分钟。
-- **聚合类型**：定义指标在感兴趣窗口的聚合方式。 对于大多数指标而言，使用经典警报和新警报时，`aggregationType` 也是相同的。 在某些情况下，由于经典警报和新警报的指标不同，将使用为指标定义的等效 `aggregationType` 或 `primary Aggregation Type`。
-- **单位**： 创建警报的指标的属性。 某些等效指标具有不同的单位。 可根据需要相应地调整阈值。 例如，如果原始指标以秒为单位，但等效的新指标以毫秒为单位，则原始阈值将乘以 1000，以确保相同的行为。
-- **窗口大小**：定义聚合指标数据以与阈值进行比较的窗口。 等效的新警报规则同样可以使用 5 分钟、15 分钟、30 分钟、1 小时、3 小时、 6 小时、12 小时、1 天等标准的 `windowSize` 值。 如果使用其他值，将选择使用最接近的 `windowSize`。 大多数客户不受此项更改的影响。 少量的客户可能需要调整阈值才能获得完全相同的行为。
+- **Frequency**：定义经典或新警报规则检查条件的频率。 经典警报规则中的 `frequency` 不可由用户配置，对于所有资源类型，其值始终为 5 分钟，不过，对于 Application Insights 组件，其值为 1 分钟。因此，等效规则的频率也分别设置为 5 分钟和 1 分钟。
+- "**聚合类型**"：定义度量值在相关窗口中的聚合方式。 对于大多数指标而言，使用经典警报和新警报时，`aggregationType` 也是相同的。 在某些情况下，由于经典警报和新警报的指标不同，将使用为指标定义的等效 `aggregationType` 或 `primary Aggregation Type`。
+- **单元**：在其上创建警报的指标的属性。 某些等效指标具有不同的单位。 可根据需要相应地调整阈值。 例如，如果原始指标以秒为单位，但等效的新指标以毫秒为单位，则原始阈值将乘以 1000，以确保相同的行为。
+- **窗口大小**：定义汇总度量值数据以与阈值进行比较的窗口。 等效的新警报规则同样可以使用 5 分钟、15 分钟、30 分钟、1 小时、3 小时、 6 小时、12 小时、1 天等标准的 `windowSize` 值。 如果使用其他值，将选择使用最接近的 `windowSize`。 大多数客户不受此项更改的影响。 少量的客户可能需要调整阈值才能获得完全相同的行为。
 
 以下部分详细介绍了新系统中包含不同但等效的指标的指标。 对于经典和新警报规则保持不变的任何指标未列出。 可在[此处](metrics-supported.md)找到新系统中支持的指标列表。
 
@@ -134,7 +134,7 @@ Mongo 失败请求指标上的警报必须拆分为多个警报，因为没有�
 
 对于 Blob、表、文件和队列等存储帐户服务，以下指标将映射到等效的指标，如下所示：
 
-| 经典警报中的指标 | 新警报中的等效指标 | 注释|
+| 经典警报中的指标 | 新警报中的等效指标 | 说明|
 |--------------------------|---------------------------------|---------|
 | AnonymousAuthorizationError| 包含维度 "ResponseType"="AuthorizationError" 和 "Authentication"="Anonymous" 的事务指标| |
 | AnonymousClientOtherError | 包含维度 "ResponseType"="ClientOtherError" 和 "Authentication"="Anonymous" 的事务指标 | |
@@ -161,7 +161,7 @@ Mongo 失败请求指标上的警报必须拆分为多个警报，因为没有�
 | SASSuccess | 包含维度 "ResponseType"="Success" 和 "Authentication"="SAS" 的事务指标 | |
 | ServerOtherError | 包含维度 "ResponseType"="ServerOtherError" 的事务指标 | |
 | ServerTimeOutError | 包含维度 "ResponseType"="ServerTimeOutError" 的事务指标  | |
-| Success | 包含维度 "ResponseType"="Success" 的事务指标 | |
+| 成功 | 包含维度 "ResponseType"="Success" 的事务指标 | |
 | TotalBillableRequests| 事务 | |
 | TotalEgress | 流出量 | |
 | TotalIngress | 流入量 | |
@@ -171,7 +171,7 @@ Mongo 失败请求指标上的警报必须拆分为多个警报，因为没有�
 
 对于 Application Insights，等效的指标如下所示：
 
-| 经典警报中的指标 | 新警报中的等效指标 | 注释|
+| 经典警报中的指标 | 新警报中的等效指标 | 说明|
 |--------------------------|---------------------------------|---------|
 | availability.availabilityMetric.value | availabilityResults/availabilityPercentage|   |
 | availability.durationMetric.value | availabilityResults/duration| 将原始阈值乘以 1000，因为经典指标的单位为秒，而新指标的单位为毫秒。  |
@@ -201,21 +201,21 @@ Mongo 失败请求指标上的警报必须拆分为多个警报，因为没有�
 
 对于 Cosmos DB，等效指标如下所示：
 
-| 经典警报中的指标 | 新警报中的等效指标 | 注释|
+| 经典警报中的指标 | 新警报中的等效指标 | 说明|
 |--------------------------|---------------------------------|---------|
 | AvailableStorage     |AvailableStorage|   |
 | 数据大小 | DataUsage| |
 | 文档计数 | DocumentCount||
 | 索引大小 | IndexUsage||
-| 蒙戈计数请求费用| 带有维度"命令名称"和"计数"的 Mongo 请求Charge||
-| 蒙戈计数请求率 | 具有维度"命令名称"和"计数"的 Mongo请求计数||
-| 蒙戈删除请求费用 | 带有维度"命令名称"的 Mongo 请求Charge ="删除"||
-| Mongo 删除请求速率 | 具有维度"命令名称"和"删除"的 Mongo请求计数||
-| 蒙戈插入请求费用 | 带有维度"命令名称"的 Mongo 请求Charge = "插入"||
-| Mongo 插入请求速率 | 带有维度"命令名称"和"插入"的 Mongo请求计数||
-| 蒙戈查询请求费用 | 带有维度"命令名称"的 Mongo 请求Charge = "查找"||
-| Mongo 查询请求速率 | 具有维度"命令名称"和"查找"的 Mongo请求计数||
-| 蒙戈更新请求费用 | 带有维度"命令名称"的 Mongo 请求Charge ="更新"||
+| Mongo Count 请求费用| MongoRequestCharge 维度 "CommandName" = "count"||
+| Mongo 计数请求速率 | MongoRequestsCount 维度 "CommandName" = "count"||
+| Mongo 删除请求费用 | MongoRequestCharge 维度 "CommandName" = "delete"||
+| Mongo 删除请求速率 | MongoRequestsCount 维度 "CommandName" = "delete"||
+| Mongo 插入请求费用 | MongoRequestCharge 维度 "CommandName" = "insert"||
+| Mongo 插入请求速率 | MongoRequestsCount 维度 "CommandName" = "insert"||
+| Mongo 查询请求费用 | MongoRequestCharge 维度 "CommandName" = "find"||
+| Mongo 查询请求速率 | MongoRequestsCount 维度 "CommandName" = "find"||
+| Mongo 更新请求费用 | MongoRequestCharge 维度 "CommandName" = "update"||
 | 服务不可用| ServiceAvailability||
 | TotalRequestUnits | TotalRequestUnits||
 
@@ -224,7 +224,7 @@ Mongo 失败请求指标上的警报必须拆分为多个警报，因为没有�
 经典警报规则中的电子邮件、Webhook、逻辑应用和 Runbook 操作已绑定到警报规则本身。 新警报规则使用可在多个警报规则之间重用的操作组。 不管有多少警报规则正在使用操作，迁移工具都会为相同的操作创建一个操作组。 迁移工具创建的操作组使用命名格式“Migrated_AG*”。
 
 > [!NOTE]
-> 经典警报在用于通知经典管理员角色时，根据经典管理员的区位设置发送本地化电子邮件。 新的警报电子邮件通过行动组发送，并且仅以英语发送。
+> 经典警报在用于通知经典管理员角色时，根据经典管理员的区域设置发送本地化电子邮件。 新警报电子邮件是通过操作组发送的，并且仅以英语表示。
 
 ## <a name="rollout-phases"></a>推出阶段
 
@@ -259,16 +259,16 @@ Mongo 失败请求指标上的警报必须拆分为多个警报，因为没有�
 
 由于最近对订阅中的经典警报规则做了某些更改，无法迁移该订阅。 此问题是暂时性的。 几天后当迁移状态恢复为“准备好迁移”时，可以重新开始迁移。****
 
-### <a name="scope-lock-preventing-us-from-migrating-your-rules"></a>范围锁阻止我们迁移您的规则
+### <a name="scope-lock-preventing-us-from-migrating-your-rules"></a>范围锁阻止我们迁移规则
 
-在迁移过程中，将会创建新的指标警报和新的操作组，然后删除经典警报规则。 但是，作用域锁可能会阻止我们创建或删除资源。 根据范围锁，无法迁移部分或全部规则。 您可以通过删除[在迁移工具](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)中列出的订阅、资源组或资源的范围锁定来解决此问题，然后再次触发迁移。 无法禁用范围锁，必须在迁移过程中删除。 [了解有关管理作用域锁的更多详细信息](../../azure-resource-manager/management/lock-resources.md#portal)。
+在迁移过程中，将会创建新的指标警报和新的操作组，然后删除经典警报规则。 但是，范围锁可防止我们创建或删除资源。 根据范围锁，无法迁移部分或全部规则。 若要解决此问题，可以删除[迁移工具](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)中列出的订阅、资源组或资源的作用域锁定，并再次触发迁移。 在迁移过程中，不能禁用作用域锁定，必须将其删除。 [详细了解如何管理范围锁](../../azure-resource-manager/management/lock-resources.md#portal)。
 
-### <a name="policy-with-deny-effect-preventing-us-from-migrating-your-rules"></a>具有"拒绝"效果的政策阻止我们迁移您的规则
+### <a name="policy-with-deny-effect-preventing-us-from-migrating-your-rules"></a>具有 "拒绝" 影响的策略阻止我们迁移你的规则
 
-在迁移过程中，将会创建新的指标警报和新的操作组，然后删除经典警报规则。 但是，策略可能会阻止我们创建资源。 根据策略，无法迁移部分或全部规则。 阻止进程的策略列在[迁移工具](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)中。 通过：
+在迁移过程中，将会创建新的指标警报和新的操作组，然后删除经典警报规则。 但是，策略可以阻止我们创建资源。 根据策略，无法迁移部分或全部规则。 [迁移工具](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)中列出了阻止进程的策略。 通过以下方法之一解决此问题：
 
-- 从策略分配中排除迁移过程中的订阅或资源组。 [详细了解如何管理策略排除范围](../../governance/policy/tutorials/create-and-manage.md#exempt-a-non-compliant-or-denied-resource-using-exclusion)。
-- 删除或更改效果为"审核"或"追加"（例如，可以解决与缺少标记相关的问题）。 [详细了解管理策略效果](../../governance/policy/concepts/definition-structure.md#policy-rule)。
+- 从策略分配中排除在迁移过程中的订阅或资源组。 [了解有关管理策略排除范围的详细信息](../../governance/policy/tutorials/create-and-manage.md#exempt-a-non-compliant-or-denied-resource-using-exclusion)。
+- 删除或更改 "audit" 或 "append" 的效果（例如，可以解决与缺少标记相关的问题）。 [了解有关管理策略的详细信息](../../governance/policy/concepts/definition-structure.md#policy-rule)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
 ms.openlocfilehash: 809fbe85a9783777d5dbef86357bd5a386bd6f81
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81261216"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>删除与 Azure Cache for Redis 配合使用的 TLS 1.0 和 1.1
@@ -19,8 +19,8 @@ ms.locfileid: "81261216"
 
 作为此项工作的一部分，我们将对 Azure Cache for Redis 进行以下更改：
 
-* **第 1 阶段：** 我们将新创建的缓存实例的默认最小 TLS 版本配置为 1.2。 （这以前是 TLS 1.0。此时不会更新现有缓存实例。 如果需要，可以将[最低 TLS 版本更改](cache-configure.md#access-ports)回 1.0 或1.1，以实现后向兼容性。 此更改可以通过 Azure 门户或其他管理 API 来完成。
-* **第 2 阶段：** 我们将停止支持 TLS 版本 1.0 和 1.1。 在此更改之后，应用程序需要使用 TLS 1.2 或更高版本才能与缓存通信。
+* **阶段 1：** 对于新创建的缓存实例，我们会将默认的最低 TLS 版本配置为 1.2。 （此项以前为 TLS 1.0。）此时不会更新现有的缓存实例。 如果需要，可以将[最低 TLS 版本更改](cache-configure.md#access-ports)回 1.0 或1.1，以实现后向兼容性。 此更改可以通过 Azure 门户或其他管理 API 来完成。
+* **阶段 2：** 我们将停止支持 TLS 版本 1.0 和 1.1。 在此更改之后，应用程序需要使用 TLS 1.2 或更高版本才能与缓存通信。
 
 另外，作为此更改的一部分，我们将删除对较旧的不安全的加密套件的支持。  如果为缓存配置最低 TLS 版本 (1.2)，则受支持的加密套件会受到以下限制。
 
@@ -33,25 +33,25 @@ ms.locfileid: "81261216"
 
 | 云               | 阶段 1 开始日期 | 阶段 2 开始日期      |
 |---------------------|--------------------|-------------------------|
-| Azure（公有云）      |  2020 年 1 月 13 日  | 2020年5月11日（扩展） |
+| Azure（公有云）      |  2020 年 1 月 13 日  | 2020 年 5 月 11 日（已延长） |
 | Azure Government    |  2020 年 3 月 13 日    | 2020 年 5 月 11 日            |
 | Azure 德国       |  2020 年 3 月 13 日    | 2020 年 5 月 11 日            |
 | Azure 中国         |  2020 年 3 月 13 日    | 2020 年 5 月 11 日            |
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>检查应用程序是否已合规
 
-确定应用程序是否能够使用 TLS 1.2 的最简单方法是，在应用程序使用的测试或过渡缓存中将“最低 TLS 版本”值设置为 TLS 1.2。**** “最低 TLS 版本”设置位于Azure 门户的缓存实例的[高级设置](cache-configure.md#advanced-settings)中。**** 如果做出此项更改后，应用程序可继续按预期方式运行，则应用程序可能是合规的。 可能需要专门将应用程序使用的某些 Redis 客户端库配置为启用 TLS 1.2，使之能够通过该安全协议连接到 Azure Cache for Redis。
+确定应用程序是否能够使用 TLS 1.2 的最简单方法是，在应用程序使用的测试或过渡缓存中将“最低 TLS 版本”值设置为 TLS 1.2。  “最低 TLS 版本”设置位于Azure 门户的缓存实例的[高级设置](cache-configure.md#advanced-settings)中。  如果做出此项更改后，应用程序可继续按预期方式运行，则应用程序可能是合规的。 可能需要专门将应用程序使用的某些 Redis 客户端库配置为启用 TLS 1.2，使之能够通过该安全协议连接到 Azure Cache for Redis。
 
 ## <a name="configure-your-application-to-use-tls-12"></a>将应用程序配置为使用 TLS 1.2
 
 大多数应用程序使用 Redis 客户端库来处理与缓存的通信。 这里说明了如何将以各种编程语言和框架编写的某些流行客户端库配置为使用 TLS 1.2。
 
-### <a name="net-framework"></a>.NET Framework
+### <a name="net-framework"></a>.NET framework
 
 在 .NET Framework 4.5.2 或更低版本上，Redis .NET 客户端默认使用最低的 TLS 版本；在 .NET Framework 4.6 或更高版本上，则使用最新的 TLS 版本。 如果使用较低版本的 .NET Framework，可以手动启用 TLS 1.2：
 
-* **堆栈交换.Redis：** 在`ssl=true`连接`sslprotocols=tls12`字符串中设置和。
-* **服务堆栈.Redis：** 按照[服务堆栈.Redis](https://github.com/ServiceStack/ServiceStack.Redis#servicestackredis-ssl-support)说明操作，至少需要服务堆栈.Redis v5.6。
+* **StackExchange.Redis：** 在连接字符串中设置 `ssl=true` 和 `sslprotocols=tls12`。
+* **ServiceStack. Redis：** 请按照[ServiceStack. Redis](https://github.com/ServiceStack/ServiceStack.Redis#servicestackredis-ssl-support)说明进行操作，至少需要 ServiceStack。 Redis 5.6。
 
 ### <a name="net-core"></a>.NET Core
 
@@ -87,11 +87,11 @@ Node Redis 和 IORedis 默认使用 TLS 1.2。
 
 ### <a name="php"></a>PHP
 
-#### <a name="predis"></a>普雷迪斯
+#### <a name="predis"></a>Predis
  
-* 比 PHP 7 早的版本：Predis 仅支持 TLS 1.0。 这些版本不工作与 TLS 1.2;您必须升级才能使用 TLS 1.2。
+* 低于 PHP 7 的版本：Predis 仅支持 TLS 1.0。 这些版本不支持 TLS 1.2；必须升级才能使用 TLS 1.2。
  
-* PHP 7.0 到 PHP 7.2.1：默认情况下，Predis 仅使用 TLS 1.0 或 1.1。 您可以使用以下解决方法使用 TLS 1.2。 创建客户端实例时指定 TLS 1.2：
+* PHP 7.0 到 PHP 7.2.1：默认情况下，Predis 仅使用 TLS 1.0 或 TLS 1.1。 可以通过以下变通办法来使用 TLS 1.2。 在创建客户端实例时指定 TLS 1.2：
 
   ``` PHP
   $redis=newPredis\Client([
@@ -121,4 +121,4 @@ Redigo 默认使用 TLS 1.2。
 
 ## <a name="additional-information"></a>其他信息
 
-- [如何配置 Azure Redis 缓存](cache-configure.md)
+- [如何配置 Azure Cache for Redis](cache-configure.md)

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
 ms.openlocfilehash: c28872e6cffa973f01b3f5a87c423d9dd93a2aa5
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81259096"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>如何委派用户注册和产品订阅
@@ -37,18 +37,18 @@ ms.locfileid: "81259096"
 3. 委派终结点反过来会重定向到 UI 或呈现 UI，要求用户登录或注册
 4. 成功后，用户会重定向回一开始使用的 API 管理开发人员门户页
 
-一开始需先将 API 管理设置为通过委派终结点路由请求。 在 Azure 门户的 API 管理资源中搜索“安全性”****，然后单击“委派”**** 项。 单击用于启用“委派登录和注册”的复选框。
+一开始需先将 API 管理设置为通过委派终结点路由请求。 在 Azure 门户的 API 管理资源中搜索“安全性”  ，然后单击“委派”  项。 单击用于启用“委派登录和注册”的复选框。
 
 ![“委派”页][api-management-delegation-signin-up]
 
-* 确定特殊委派终结点的 URL，将其输入“委派终结点 URL”字段中。**** 
-* 在”委派身份验证密钥”字段中输入一个密钥，该密钥用于计算提供给用户进行验证的签名，确保请求确实来自 Azure API 管理。 可以单击“生成”按钮让 API 管理随机生成一个密钥。****
+* 确定特殊委派终结点的 URL，将其输入“委派终结点 URL”字段中。  
+* 在”委派身份验证密钥”字段中输入一个密钥，该密钥用于计算提供给用户进行验证的签名，确保请求确实来自 Azure API 管理。 可以单击“生成”按钮让 API 管理随机生成一个密钥。 
 
-现在需创建“委派终结点”。**** 该终结点需执行多项操作：
+现在需创建“委派终结点”。  该终结点需执行多项操作：
 
 1. 接收以下形式的请求：
    
-   > *http：\//www.yourwebsite.com/apimdelegation?operation=SignIn&返回Url_源页 URL[&salt_字符串[&sig_string]*
+   > *http:\//www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={源页的 URL}&salt={字符串}&sig={字符串}*
    > 
    > 
    
@@ -74,7 +74,7 @@ ms.locfileid: "81259096"
    * 通过 API 管理 REST API [请求单一登录 (SSO) 令牌]
    * 将 returnUrl 查询参数追加到从上述 API 调用接收的 SSO URL：
      
-     > 例如，https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url 
+     > 例如， https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url 
      > 
      > 
    * 将用户重定向到上述生成的 URL
@@ -88,7 +88,7 @@ ms.locfileid: "81259096"
 若要进行帐户管理操作，必须传递以下查询参数。
 
 * **operation**：确定委派请求的类型（ChangePassword、ChangeProfile 或 CloseAccount）
-* **用户 ID**：要管理的帐户的用户 ID
+* **userId**：要管理的帐户的用户 ID
 * **salt**：用于计算安全哈希的特殊 salt 字符串
 * **sig**：计算的安全哈希，用于与用户自行计算的哈希进行比较
 
@@ -99,13 +99,13 @@ ms.locfileid: "81259096"
 2. 浏览器将重定向到委托终结点。
 3. 委托终结点执行所需的产品订阅步骤。 具体的步骤由你设计。 步骤可以包括重定向到另一个用于请求计费信息的页面、提出更多提问，或者只是存储信息而不要求执行任何用户操作
 
-若要启用此功能，请在“委派”页上单击“委派产品订阅”。********
+若要启用此功能，请在“委派”页上单击“委派产品订阅”。  
 
 接下来，确保委托终结点执行以下操作：
 
 1. 接收以下形式的请求：
    
-   > *http：\//www.yourweb.com/apim 委派？操作{操作{操作{&产品 Id_产品订阅[&用户 Id_用户 Id_&salt_&s_ssig_string}*
+   > *http:\//www.yourwebsite.com/apimdelegation?operation={操作}&productId={要订阅的产品}&userId={提出请求的用户}&salt={字符串}&sig={字符串}*
    >
    
     产品订阅示例的查询参数：
@@ -122,7 +122,7 @@ ms.locfileid: "81259096"
 
 2. 验证请求是否来自 Azure API 管理（可选，但强烈推荐执行以确保安全）
    
-   * 根据产品**Id、userId**和**salt**查询参数计算**productId**字符串的 HMAC-SHA512：
+   * 根据 **productId**、**userId** 和 **salt** 查询参数计算字符串的 HMAC-SHA512：
      
      > HMAC(**salt** + '\n' + **productId** + '\n' + **userId**)
      > 
@@ -131,11 +131,11 @@ ms.locfileid: "81259096"
 3. 根据在 **operation** 中请求的操作类型（例如请求计费信息、提问更多问题，等等）处理产品订阅。
 4. 在这一端成功为用户订阅产品以后，即可[调用订阅 REST API] 为用户订阅 API 管理产品。
 
-## <a name="example-code"></a><a name="delegate-example-code"> </a>示例代码
+## <a name="example-code"></a><a name="delegate-example-code"> </a> 示例代码
 
 这些代码示例演示如何：
 
-* 提取发布者门户的“委托”屏幕中设置的委托验证密钥**
+* 提取发布者门户的“委托”屏幕中设置的委托验证密钥 
 * 创建 HMAC，随后它将用于验证签名，以证实所传递的 returnUrl 的有效性。
 
 同样的代码也适用于 productId 和 userId，只需进行轻微修改。

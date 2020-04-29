@@ -1,5 +1,5 @@
 ---
-title: 检索操作 API |Azure 应用商店
+title: 检索操作 API |Azure Marketplace
 description: 检索针对产品/服务的所有操作或获取指定 operationId 所对应的特定操作。
 author: dsindona
 ms.service: marketplace
@@ -8,16 +8,16 @@ ms.topic: reference
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: 93b2ca700a987b86aedfdae55d58540c8ffe84ed
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81255866"
 ---
 # <a name="retrieve-operations"></a>检索操作
 
 > [!NOTE]
-> 云合作伙伴门户 API 与合作伙伴中心集成，在您的产品/服务迁移到合作伙伴中心后将继续工作。 集成引入了小更改。 查看[云合作伙伴门户 API 参考](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)中列出的更改，以确保代码在迁移到合作伙伴中心后继续工作。
+> 云合作伙伴门户 Api 与合作伙伴中心集成，并在将产品/服务迁移到合作伙伴中心后继续工作。 集成引入了少量更改。 查看[云合作伙伴门户 API 参考](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)中列出的更改，以确保你的代码在迁移到合作伙伴中心后仍能正常工作。
 
 检索针对产品/服务的所有操作或获取指定 operationId 所对应的特定操作。 客户端可以使用查询参数来筛选正在运行的操作。
 
@@ -32,18 +32,18 @@ ms.locfileid: "81255866"
 
 ## <a name="uri-parameters"></a>URI 参数
 
-|  **名称**          |      **说明**                                                                                           | **数据类型** |
+|  **名称**          |      **描述**                                                                                           | **数据类型** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
 |  publisherId       |  发布者标识符，例如 `Contoso`                                                                   |  字符串       |
 |  offerId           |  产品/服务标识符                                                                                              |  字符串       |
 |  operationId       |  唯一标识针对产品/服务的操作的 GUID。 可以使用此 API 检索 operationId，并且对于任何长时间运行的操作（如[发布产品/服务](./cloud-partner-portal-api-publish-offer.md) API），也会在响应的 HTTP 标头中返回 operationId。  |   Guid   |
-|  api-version       | API 的最新版本 |    Date      |
+|  api-version       | API 的最新版本 |    日期      |
 |  |  |  |
 
-## <a name="header"></a>标头
+## <a name="header"></a>Header
 
 
-|  **名称**          |  **价值**           |
+|  **Name**          |  **值**           |
 |  ---------------   | -------------------- |
 |  Content-Type      | `application/json`   |
 |  授权     | `Bearer YOUR_TOKEN`  |
@@ -172,32 +172,32 @@ ms.locfileid: "81255866"
 
 ### <a name="response-body-properties"></a>响应正文属性
 
-|  **名称**                    |  **说明**                                                                                  |
+|  **名称**                    |  **描述**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 |  id                          | 唯一标识操作的 GUID                                                       |
 |  submissionType              | 标识为产品/服务报告的操作类型，例如 `Publish/GoLive`      |
 |  createdDateTime             | 创建操作时的 UTC 日期/时间                                                       |
 |  lastActionDateTime          | 上次更新操作时的 UTC 日期/时间                                       |
-|  status                      | `not started`\|`running`\|操作的状态`failed`。 \| `completed` 一次只能有一个操作具有状态 `running`。 |
+|  status                      | `not started` \|操作`running` `completed`的状态`failed` 。 \| \| 一次只能有一个操作具有状态 `running`。 |
 |  error                       | 操作失败的错误消息                                                               |
 |  |  |
 
 ### <a name="response-step-properties"></a>响应步骤属性
 
-|  **名称**                    |  **说明**                                                                                  |
+|  **名称**                    |  **描述**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 | estimatedTimeFrame | 此操作的估计持续时间 |
 | id | 步骤过程的唯一标识符 |
 | description | 步骤的说明 |
 | stepName | 步骤的友好名称 |
-| status | `notStarted`\|步骤\|的状态`running``failed`\|`completed` |
-| messages | 步骤期间遇到的任何通知或警告。 字符串数组 |
-| 进度百分比 | 从 0 到 100 的整数，指示步骤的进度 |
+| status | 步骤的状态，可以是`notStarted` \| `running` \| `failed` \|`completed` |
+| messages | 在此步骤中遇到的任何通知或警告。 字符串数组 |
+| System.componentmodel.progresschangedeventargs.progresspercentage | 0到100之间的一个整数，用于指示步骤的进度 |
 | | |
 
 ### <a name="response-status-codes"></a>响应状态代码
 
-| **代码**  |   **说明**                                                                                  |
+| **编写**  |   **说明**                                                                                  |
 |  -------- |   -------------------------------------------------------------------------------------------------|
 |  200      | `OK` - 请求已成功处理，并返回了请求的操作。        |
 |  400      | `Bad/Malformed request` - 错误响应正文可能包含更多信息。                    |

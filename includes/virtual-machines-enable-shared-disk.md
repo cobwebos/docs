@@ -9,10 +9,10 @@ ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 0df74b82c847c9738d97d2001573666714c17672
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81008316"
 ---
 ## <a name="limitations"></a>限制
@@ -27,12 +27,12 @@ ms.locfileid: "81008316"
 
 ### <a name="deploy-a-premium-ssd-as-a-shared-disk"></a>将高级 SSD 部署为共享磁盘
 
-要部署启用共享磁盘功能的托管磁盘，请使用新属性`maxShares`并定义大于 1 的值。 这使得磁盘可跨多个 VM 共享。
+若要部署启用了共享磁盘功能的托管磁盘，请使用新属性`maxShares`并定义大于1的值。 这会使该磁盘可在多个 Vm 间共享。
 
 > [!IMPORTANT]
-> 仅当从所有`maxShares`VM 卸载磁盘时，才能设置或更改 的值。 有关 的允许值，请参阅[磁盘大小](#disk-sizes)`maxShares`。
+> 仅当从`maxShares`所有 vm 中卸载磁盘时，才能设置或更改的值。 请参阅[磁盘大小](#disk-sizes)以了解的允许值`maxShares`。
 
-在使用以下模板之前，请`[parameters('dataDiskName')]``[parameters('maxShares')]`用`[resourceGroup().location]`您自己的`[parameters('dataDiskSizeGB')]`值替换 、和。
+使用以下模板之前，请将`[parameters('dataDiskName')]`、 `[resourceGroup().location]` `[parameters('dataDiskSizeGB')]`、和`[parameters('maxShares')]`替换为自己的值。
 
 ```json
 { 
@@ -77,10 +77,10 @@ ms.locfileid: "81008316"
 
 #### <a name="cli"></a>CLI
 
-要部署启用共享磁盘功能的托管磁盘，请将`maxShares`参数更改为大于 1 的值。 这使得磁盘可跨多个 VM 共享。
+若要部署启用了共享磁盘功能的托管磁盘，请将`maxShares`参数更改为大于1的值。 这会使该磁盘可在多个 Vm 间共享。
 
 > [!IMPORTANT]
-> 仅当从所有`maxShares`VM 卸载磁盘时，才能设置或更改 的值。 有关 的允许值，请参阅[磁盘大小](#disk-sizes)`maxShares`。
+> 仅当从`maxShares`所有 vm 中卸载磁盘时，才能设置或更改的值。 请参阅[磁盘大小](#disk-sizes)以了解的允许值`maxShares`。
 
 ```azurecli
 #Creating an Ultra shared Disk 
@@ -95,12 +95,12 @@ az disk show -g rg1 -n clidisk
 
 #### <a name="azure-resource-manager"></a>Azure 资源管理器
 
-要部署启用共享磁盘功能的托管磁盘，请使用 该属性`maxShares`并定义大于 1 的值。 这使得磁盘可跨多个 VM 共享。
+若要部署启用了共享磁盘功能的托管磁盘，请使用属性`maxShares`并定义大于1的值。 这会使该磁盘可在多个 Vm 间共享。
 
 > [!IMPORTANT]
-> 仅当从所有`maxShares`VM 卸载磁盘时，才能设置或更改 的值。 有关 的允许值，请参阅[磁盘大小](#disk-sizes)`maxShares`。
+> 仅当从`maxShares`所有 vm 中卸载磁盘时，才能设置或更改的值。 请参阅[磁盘大小](#disk-sizes)以了解的允许值`maxShares`。
 
-在使用以下`[parameters('dataDiskName')]`模板之前，`[resourceGroup().location]``[parameters('dataDiskSizeGB')]``[parameters('maxShares')]``[parameters('diskIOPSReadWrite')]``[parameters('diskMBpsReadWrite')]``[parameters('diskIOPSReadOnly')]`请用您自己的值替换 、 、 、 、 、 、 、 、 `[parameters('diskMBpsReadOnly')]`
+使用以下模板之前，请将`[parameters('dataDiskName')]`、 `[resourceGroup().location]` `[parameters('dataDiskSizeGB')]` `[parameters('maxShares')]` `[parameters('diskIOPSReadWrite')]` `[parameters('diskMBpsReadWrite')]` `[parameters('diskIOPSReadOnly')]`、、、、、和`[parameters('diskMBpsReadOnly')]`替换为自己的值。
 
 ```json
 {
@@ -168,12 +168,12 @@ az disk show -g rg1 -n clidisk
 }
 ```
 
-### <a name="using-azure-shared-disks-with-your-vms"></a>将 Azure 共享磁盘与 VM 一起使用
+### <a name="using-azure-shared-disks-with-your-vms"></a>将 Azure 共享磁盘与 Vm 配合使用
 
-使用`maxShares>1`中部署了共享磁盘后，可以将磁盘装载到一个或多个 VM。
+使用`maxShares>1`部署共享磁盘后，可以将该磁盘装载到一台或多台 vm。
 
 > [!IMPORTANT]
-> 共享磁盘的所有 VM 都必须部署在同一[接近放置组中](../articles/virtual-machines/windows/proximity-placement-groups.md)。
+> 共享磁盘的所有 Vm 都必须部署在同一[邻近位置组](../articles/virtual-machines/windows/proximity-placement-groups.md)中。
 
 ```azurepowershell-interactive
 
@@ -197,9 +197,9 @@ update-AzVm -VM $vm -ResourceGroupName $resourceGroup
 
 ## <a name="supported-scsi-pr-commands"></a>支持的 SCSI PR 命令
 
-将共享磁盘安装到群集中的 VM 后，可以使用 SCSI PR 建立仲裁并读取/写入磁盘。 使用 Azure 共享磁盘时，可以使用以下 PR 命令：
+将共享磁盘装载到群集中的 Vm 后，可以使用 SCSI PR 建立仲裁和对磁盘的读/写。 使用 Azure 共享磁盘时，可以使用以下 PR 命令：
 
-要与磁盘进行交互，从持久保留操作列表开始：
+若要与磁盘进行交互，请从持久保留操作列表开始：
 
 ```
 PR_REGISTER_KEY 
@@ -217,7 +217,7 @@ PR_CLEAR_RESERVATION
 PR_RELEASE_RESERVATION 
 ```
 
-使用PR_RESERVE、PR_PREEMPT_RESERVATION或PR_RELEASE_RESERVATION时，提供以下持久保留类型之一：
+使用 PR_RESERVE、PR_PREEMPT_RESERVATION 或 PR_RELEASE_RESERVATION 时，请提供以下持久性保留类型之一：
 
 ```
 PR_NONE 
@@ -235,9 +235,9 @@ PR_WRITE_EXCLUSIVE_ALL_REGISTRANTS
 PR_EXCLUSIVE_ACCESS_ALL_REGISTRANTS 
 ```
 
-使用PR_RESERVE、PR_REGISTER_AND_IGNORE、PR_REGISTER_KEY、PR_PREEMPT_RESERVATION、PR_CLEAR_RESERVATION或PR_RELEASE-保留时，还需要提供持久保留密钥。
+当使用 PR_RESERVE、PR_REGISTER_AND_IGNORE、PR_REGISTER_KEY、PR_PREEMPT_RESERVATION、PR_CLEAR_RESERVATION 或 PR_RELEASE 保留时，还需要提供永久性保留密钥。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-如果您有兴趣尝试共享磁盘，[请注册我们的预览](https://aka.ms/AzureSharedDiskPreviewSignUp)版。
+如果你对尝试共享磁盘感兴趣，请[注册预览](https://aka.ms/AzureSharedDiskPreviewSignUp)。

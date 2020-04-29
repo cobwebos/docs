@@ -1,6 +1,6 @@
 ---
 title: 主键、外键和唯一键
-description: Azure 突触分析中的 Synapse SQL 池中的表约束支持
+description: Azure Synapse Analytics 中 Synapse SQL 池中的表约束支持
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,32 +12,32 @@ ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: f97163d02836442430037e18439bcf0724046332
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80990763"
 ---
 # <a name="primary-key-foreign-key-and-unique-key-in-synapse-sql-pool"></a>Synapse SQL 池中的主键、外键和唯一键
 
-了解 Synapse SQL 池中的表约束，包括主键、外键和唯一键。
+了解 Synapse SQL 池中的表约束，包括 primary key、foreign key 和 unique key。
 
 ## <a name="table-constraints"></a>表约束
 
-突触 SQL 池支持以下表约束： 
+Synapse SQL 池支持以下表约束： 
 - 仅当同时使用 NONCLUSTERED 和 NOT ENFORCED 时才支持 PRIMARY KEY。    
 - 仅在使用 NOT ENFORCED 时才支持 UNIQUE 约束。
 
-有关语法，请检查["更改表"](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql)和["创建表](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)"。 
+对于语法，请检查[ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql)和[CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)。 
 
-Synapse SQL 池中不支持外键约束。  
+Synapse SQL 池不支持外键约束。  
 
 
 ## <a name="remarks"></a>备注
 
-具有主键和/或唯一键允许 Synapse SQL 池引擎为查询生成最佳执行计划。  主键列或唯一约束列中的所有值都应独一无二。
+具有主键和/或唯一键后，Synapse SQL 池引擎便可生成查询的最佳执行计划。  主键列或唯一约束列中的所有值都应独一无二。
 
-在 Synapse SQL 池中创建具有主键或唯一约束的表后，用户需要确保这些列中的所有值都是唯一的。  违反这一点可能会导致查询返回不准确的结果。  此示例表明，如果主键或唯一约束列包含重复值，查询可能返回不准确的结果。  
+在 Synapse SQL 池中创建具有 primary key 或 unique 约束的表后，用户需要确保这些列中的所有值都是唯一的。  违反这一点可能会导致查询返回不准确的结果。  此示例表明，如果主键或唯一约束列包含重复值，查询可能返回不准确的结果。  
 
 ```sql
  -- Create table t1
@@ -169,7 +169,7 @@ a1          total
 ```sql 
 CREATE TABLE mytable (c1 INT PRIMARY KEY NONCLUSTERED NOT ENFORCED, c2 INT);
 ```
-创建具有唯一约束的 Synapse SQL 池表：
+创建具有 unique 约束的 Synapse SQL 池表：
 
 ```sql
 CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
@@ -177,4 +177,4 @@ CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
 
 ## <a name="next-steps"></a>后续步骤
 
-为 Synapse SQL 池创建表后，下一步是将数据加载到表中。 有关加载教程，请参阅[将数据加载到 Synapse SQL 池](load-data-wideworldimportersdw.md)。
+为 Synapse SQL 池创建表后，下一步是将数据加载到表中。 有关加载教程，请参阅[将数据加载到 SYNAPSE SQL 池](load-data-wideworldimportersdw.md)。

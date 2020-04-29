@@ -1,18 +1,18 @@
 ---
-title: 备份文件和文件夹 - 常见问题
+title: 备份文件和文件夹-常见问题
 description: 解决与使用 Azure 备份对文件和文件夹进行备份相关的常见问题。
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.openlocfilehash: 6e9f265672ff15e40444a46a3e440e73a0051a5b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81254744"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>与对文件和文件夹进行备份相关的常见问题
 
-本文在[Azure 备份](backup-overview.md)服务中使用 Microsoft Azure 恢复服务 （MARS） 代理大量备份文件和文件夹的常见问题。
+本文解答了 abound 在[Azure 备份](backup-overview.md)服务中备份文件和文件夹和 MICROSOFT AZURE 恢复服务（MARS）代理的常见问题。
 
 ## <a name="configure-backups"></a>配置备份
 
@@ -22,22 +22,22 @@ ms.locfileid: "81254744"
 
 ### <a name="how-long-are-vault-credentials-valid"></a>保管库凭据的有效期是多长时间？
 
-保管库凭据将在 10 天后过期。 如果凭据文件过期，请重新从 Azure 门户下载该文件。
+保管库凭据会在10天后过期。 如果凭据文件过期，请重新从 Azure 门户下载该文件。
 
 ### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>可以从哪些驱动器备份文件和文件夹？
 
 无法备份以下类型的驱动器/卷：
 
-* 可移动介质：所有备份项源都必须报告为固定。
-* 只读卷：卷卷必须可写，卷卷卷复制服务 （VSS） 才能正常工作。
-* 脱机卷：卷必须联机才能 VSS 正常工作。
-* 网络共享：卷必须是服务器的本地，才能使用联机备份进行备份。
-* BitLocker 保护的卷：必须先解锁卷，然后才能进行备份。
+* 可移动媒体：所有备份项源必须报告为固定。
+* 只读卷：要使卷影复制服务（VSS）正常工作，卷必须可写。
+* 脱机卷：若要运行 VSS，卷必须处于联机状态。
+* 网络共享：要使用联机备份进行备份的服务器的本地卷必须是本地的。
+* 受 BitLocker 保护的卷：必须先解锁卷，然后才能进行备份。
 * 文件系统标识：NTFS 是受支持的唯一文件系统。
 
 ### <a name="what-file-and-folder-types-are-supported"></a>支持哪些文件和文件夹类型？
 
-[详细了解](backup-support-matrix-mars-agent.md#supported-file-types-for-backup)支持备份的文件和文件夹类型。
+[详细了解](backup-support-matrix-mars-agent.md#supported-file-types-for-backup)支持备份的文件和文件夹的类型。
 
 ### <a name="can-i-use-the-mars-agent-to-back-up-files-and-folders-on-an-azure-vm"></a>是否可以使用 MARS 代理在 Azure VM 上备份文件和文件夹？  
 
@@ -47,20 +47,20 @@ ms.locfileid: "81254744"
 
 是的。 安装 MARS 代理，将来宾 Windows 操作系统上的文件和文件夹备份到临时存储。
 
-* 清除临时存储数据时，备份作业将失败。
+* 擦除临时存储数据后，备份作业将失败。
 * 如果临时存储数据被删除，则你只能还原到非易失性存储。
 
 ### <a name="how-do-i-register-a-server-to-another-region"></a>如何将服务器注册到其他区域？
 
-备份数据会发送到服务器注册到的保管库的数据中心。 更改数据中心的最简单方法是卸载并重新安装代理，然后将计算机注册到所需的区域中的新保管库。
+备份数据会发送到服务器注册到的保管库的数据中心。 更改数据中心的最简单方法是卸载并重新安装代理，然后将该计算机注册到所需的区域中的新保管库。
 
 ### <a name="does-the-mars-agent-support-windows-server-2012-deduplication"></a>MARS 代理是否支持 Windows Server 2012 重复数据删除？
 
 是的。 MARS 代理在准备备份操作时会将消除了重复的数据转换为常规数据。 然后，它将对数据进行优化以便备份、对数据进行加密，然后将已加密的数据发送到保管库。
 
-### <a name="do-i-need-administrator-permissions-to-install-and-configure-the-mars-agent"></a>安装和配置 MARS 代理是否需要管理员权限？
+### <a name="do-i-need-administrator-permissions-to-install-and-configure-the-mars-agent"></a>是否需要管理员权限才能安装和配置 MARS 代理？
 
-是的，使用 MARS 控制台安装 MARS 代理和配置备份需要用户成为受保护服务器上的本地管理员。
+是的，使用 MARS 控制台安装 MARS 代理和配置需要用户是受保护服务器上的本地管理员。
 
 ## <a name="manage-backups"></a>管理备份
 
@@ -80,9 +80,9 @@ MARS 代理依赖于 NTFS，并使用受 [Windows API](/windows/desktop/FileIO/n
 
 MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](/windows/desktop/FileIO/naming-a-file#naming-conventions)。
 
-### <a name="the-warning-azure-backups-have-not-been-configured-for-this-server-appears"></a>出现警告"尚未为此服务器配置 Azure 备份"
+### <a name="the-warning-azure-backups-have-not-been-configured-for-this-server-appears"></a>此时将显示警告 "尚未为此服务器配置 Azure 备份"
 
-即使您配置了备份策略，当存储在本地服务器上的备份计划设置与存储在备份保管库中的设置不同时，也会显示此警告。
+即使在本地服务器上存储的备份计划设置与备份保管库中存储的设置不相同，也会出现此警告。
 
 * 当服务器或设置恢复为已知良好状态后，备份计划可能会变得不同步。
 * 如果收到此警告，请重新[配置](backup-azure-manage-windows-server.md)备份策略，并立即运行按需备份，以便将本地服务器与 Azure 重新同步。
@@ -94,13 +94,13 @@ MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](
 缓存文件夹的大小由你正在备份的数据量确定。
 
 * 缓存文件夹卷的可用空间应当至少为备份数据总大小的 5-10%。
-* 如果卷的可用空间小于 5%，请增加卷大小，或者按照[以下步骤](#how-do-i-change-the-cache-location-for-the-mars-agent)将缓存文件夹移动到具有足够空间的卷。
-* 如果备份 Windows 系统状态，则需要在包含缓存文件夹的卷中增加 30-35 GB 的可用空间。
+* 如果卷的可用空间少于5%，请按以下[步骤操作](#how-do-i-change-the-cache-location-for-the-mars-agent)，增加卷大小或将缓存文件夹移动到具有足够空间的卷。
+* 如果备份 Windows 系统状态，则在包含缓存文件夹的卷中将需要额外的 30-35 GB 可用空间。
 
-### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>如何检查临时文件夹是否有效且可访问？
+### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>如何检查暂存文件夹是否有效并可访问？
 
 1. 默认情况下，暂存文件夹位于`\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
-2. 确保暂存文件夹位置的路径与下面所示的注册表键条目的值匹配：
+2. 确保暂存文件夹位置的路径与下面显示的注册表项项的值匹配：
 
     | 注册表路径 | 注册表项 | 值 |
     | --- | --- | --- |
@@ -112,15 +112,15 @@ MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](
 1. 通过在权限提升的命令提示符下运行以下命令来停止备份引擎：
 
     ```Net stop obengine```
-2. 如果已配置系统状态备份，则打开磁盘管理并卸载具有格式`"CBSSBVol_<ID>"`名称的磁盘。
-3. 默认情况下，临时文件夹位于`\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
-4. 将整个`\Scratch`文件夹复制到具有足够空间的不同驱动器。 确保复制内容，而不是移动内容。
-5. 使用新移动的暂存文件夹的路径更新以下注册表项。
+2. 如果已配置系统状态备份，请打开 "磁盘管理"，然后卸载其名称采用格式`"CBSSBVol_<ID>"`的磁盘。
+3. 默认情况下，暂存文件夹位于`\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
+4. 将整个`\Scratch`文件夹复制到具有足够空间的其他驱动器。 确保内容已复制，而不是移动。
+5. 更新以下注册表项，并将其替换为新移动的暂存文件夹的路径。
 
     | 注册表路径 | 注册表项 | 值 |
     | --- | --- | --- |
-    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*新的临时文件夹位置* |
-    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*新的临时文件夹位置* |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*新的暂存文件夹位置* |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*新的暂存文件夹位置* |
 
 6. 在提升的命令提示符下重启备份引擎：
 
@@ -136,8 +136,8 @@ MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](
 
 不建议缓存文件夹的以下位置：
 
-* 网络共享/可移动媒体：缓存文件夹必须是需要使用联机备份进行备份的服务器的本地文件夹。 不支持网络位置或可移动媒体（如 USB 驱动器）。
-* 脱机卷：缓存文件夹必须联机才能使用 Azure 备份代理进行预期备份
+* 网络共享/可移动媒体：缓存文件夹必须位于需要使用联机备份进行备份的服务器本地。 不支持网络位置或可移动介质（如 USB 驱动器）。
+* 脱机卷：缓存文件夹必须联机才能使用 Azure 备份代理执行预期的备份
 
 ### <a name="are-there-any-attributes-of-the-cache-folder-that-arent-supported"></a>缓存文件夹是否有任何不受支持的属性？
 
@@ -149,7 +149,7 @@ MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](
 * 稀疏
 * 重分析点
 
-缓存文件夹和元数据 VHD 没有 Azure 备份代理的必要属性。
+缓存文件夹和元数据 VHD 没有 Azure 备份代理所需的属性。
 
 ### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>是否有办法调整用于备份的带宽量？
 
@@ -159,42 +159,42 @@ MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](
 
 ### <a name="manage"></a>管理
 
-**如果我忘记了密码，我可以恢复吗？**
-Azure 备份代理需要密码（您在注册期间提供）才能在还原期间解密备份数据。 查看以下方案以了解处理丢失密码的选项：
+**如果我忘记了密码，可以恢复吗？**
+Azure 备份代理需要密码（在注册过程中提供），以便在还原过程中对备份的数据进行解密。 查看以下方案，了解用于处理丢失的密码的选项：
 
-| 原始机器 <br> *（执行备份的源计算机）* | 通行短语 | 可用选项 |
+| 原始计算机 <br> *（执行备份的源计算机）* | 通行短语 | 可用选项 |
 | --- | --- | --- |
-| 可用 |Lost |如果原始计算机（执行备份的位置）可用，并且仍注册在同一恢复服务保管库中，则可以按照[以下步骤](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#re-generate-passphrase)重新生成密码。  |
+| 可用 |Lost |如果原始计算机（在其中创建了备份）可用且仍注册到同一个恢复服务保管库，则可以通过执行以下[步骤](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#re-generate-passphrase)来重新生成该通行短语。  |
 | Lost |Lost |无法恢复数据或数据不可用 |
 
 考虑以下情况：
 
-* 如果在同一原始计算机上卸载和重新注册代理，
-  * *相同的密码，* 然后您将能够恢复备份的数据。
-  * *不同的密码*，那么你将无法恢复备份的数据。
-* 如果将代理安装在*其他计算机上*，
-  * *相同的密码（* 在原始计算机中使用），然后您将能够还原备份的数据。
-  * *不同的密码，* 您将无法还原备份的数据。
-* 如果原始计算机已损坏（阻止您通过 MARS 控制台重新生成密码），但您可以还原或访问 MARS 代理使用的原始暂存文件夹，则您可能能够还原（如果您忘记了密码）。 如需更多帮助，请联系客户支持。
+* 如果在同一台原始计算机上卸载并重新注册代理
+  * *相同的密码*，你将能够还原已备份的数据。
+  * *不同密码*，则将无法还原已备份的数据。
+* 如果在*另一台计算机*上安装代理
+  * *同一密码*（在原始计算机上使用），则可以还原已备份的数据。
+  * *不同密码*，将无法还原已备份的数据。
+* 如果原始计算机已损坏（阻止你通过 MARS 控制台重新生成通行短语），但你可以还原或访问 MARS 代理使用的原始暂存文件夹，则可能可以还原（如果你忘记了密码）。 若要获得更多帮助，请与客户支持联系。
 
-**如果我丢失了原始计算机（备份所在的位置），如何恢复？**
+**如果丢失原来的计算机（在何处进行备份），如何实现恢复？**
 
-如果原始计算机具有相同的密码（注册期间提供），则可以将备份的数据还原到备用计算机。 查看以下方案以了解还原选项。
+如果在原始计算机的注册过程中提供了相同的密码，则可以将备份的数据还原到备用计算机。 请查看以下方案了解还原选项。
 
-| 原始机器 | 通行短语 | 可用选项 |
+| 原始计算机 | 通行短语 | 可用选项 |
 | --- | --- | --- |
-| Lost |可用 |您可以在另一台计算机上安装和注册 MARS 代理，其密码与注册原始计算机时提供的相同密码相同。 选择 **"恢复选项** > **""其他位置**以执行还原。 有关详细信息，请参阅[本文](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine)。
+| Lost |可用 |你可以在另一台计算机上安装和注册 MARS 代理，该计算机具有你在注册原始计算机期间提供的相同密码。 选择另一个要执行还原的**位置**。 **Recovery Option** >  有关详细信息，请参阅此[文](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine)。
 | Lost |Lost |无法恢复数据或数据不可用 |
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>如果取消正在进行的还原作业，会发生什么情况？
 
 如果取消正在进行的还原作业，则还原过程会停止。 在取消之前还原的所有文件将保留在已配置的目标位置（原始位置或备用位置），而不进行任何回退。
 
-### <a name="does-the-mars-agent-back-up-and-restore-acls-set-on-files-folders-and-volumes"></a>MARS 代理是否备份和恢复在文件、文件夹和卷上设置的 ACL？
+### <a name="does-the-mars-agent-back-up-and-restore-acls-set-on-files-folders-and-volumes"></a>MARS 代理是否备份并还原在文件、文件夹和卷上设置的 Acl？
 
-* MARS 代理备份在文件、文件夹和卷上设置的 ACL
-* 对于卷还原恢复选项，MARS 代理提供了一个选项，用于跳过对正在恢复的文件或文件夹还原 ACL 权限
-* 对于单个文件和文件夹恢复选项，MARS 代理将使用 ACL 权限进行还原（没有跳过 ACL 还原的选项）。
+* MARS 代理备份在文件、文件夹和卷上设置的 Acl
+* 对于卷还原恢复选项，MARS 代理提供了一个选项，用于跳过对要恢复的文件或文件夹的 ACL 权限的还原。
+* 对于 "单个文件和文件夹" 恢复选项，MARS 代理将还原为 ACL 权限（没有用于跳过 ACL 还原的选项）。
 
 ## <a name="next-steps"></a>后续步骤
 

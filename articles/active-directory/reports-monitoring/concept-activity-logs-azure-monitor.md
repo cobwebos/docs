@@ -1,6 +1,6 @@
 ---
-title: Azure 活动目录活动日志在 Azure 监视器 |微软文档
-description: Azure 监视器中的 Azure 活动目录活动日志简介
+title: Azure Monitor 中的 Azure Active Directory 活动日志 |Microsoft Docs
+description: Azure Active Directory 中的活动日志简介 Azure Monitor
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,15 +18,15 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0822bdd886a9a29f2cdb6843d3dc4404d7360f32
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81261017"
 ---
-# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure 监视中的 Azure AD 活动日志
+# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD 中的活动日志 Azure Monitor
 
-您可以将 Azure 活动目录 （Azure AD） 活动日志路由到多个终结点，以便进行长期保留和数据洞察。 可以使用此功能实现以下操作：
+可以将 Azure Active Directory （Azure AD）活动日志路由到多个终结点，以实现长期保留和数据见解。 可以使用此功能实现以下操作：
 
 * 将 Azure AD 活动日志存档到 Azure 存储帐户，以便长期保留数据
 * 使用常用的安全信息和事件管理 (SIEM) 工具（例如 Splunk 和 QRadar）将 Azure AD 活动日志流式传输到 Azure 事件中心进行分析。
@@ -48,7 +48,7 @@ ms.locfileid: "81261017"
 > 目前不支持 B2C 相关的审核和登录活动日志。
 >
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要使用此功能，需满足以下条件:
 
@@ -98,23 +98,23 @@ ms.locfileid: "81261017"
 
 例如，对于用户数超出 100,000 的大型租户来说，通常情况下每秒大约有 18 个事件，该频率相当于每五分钟 5,400 个事件。 由于审核日志大约每个事件 2 KB，上述事件相当于 10.8 MB 的数据， 因此会在五分钟的时间间隔内向事件中心发送 43 条消息。 
 
-下表包含美国西部基本事件中心每月的估计成本，具体取决于事件数据的数量，根据用户登录行为等许多因素，事件数据可能因租户而异。要准确估计应用程序的预期数据量，请使用[事件中心定价计算器](https://azure.microsoft.com/pricing/details/event-hubs/)。
+下表包含在美国西部的基本事件中心每月估计的成本，具体取决于每个因素（如用户登录行为等）不同于租户的事件数据量。若要计算对应用程序预期的数据量的准确估计值，请使用[事件中心定价计算器](https://azure.microsoft.com/pricing/details/event-hubs/)。
 
 | 日志类别 | 用户数 | 每秒事件数 | 每五分钟时间间隔的事件数 | 每个时间间隔的数据量 | 每个时间间隔的消息数 | 每月消息数 | 每月成本（估算） |
 |--------------|-----------------|-------------------------|----------------------------------------|---------------------|---------------------------------|------------------------------|----------------------------|
 | 审核 | 100,000 | 18 | 5,400 | 10.8 MB | 43 | 371,520 | $10.83 |
 | 审核 | 1,000 | 0.1 | 52 | 104 KB | 1 | 8,640 | $10.80 |
-| 登录 | 100,000 | 18000 | 5,400,000 | 10.8 GB | 42188 | 364,504,320 | $23.9 |  
+| 登录 | 100,000 | 18000 | 5400000 | 10.8 GB | 42188 | 364504320 | $23.9 |  
 | 登录 | 1,000 | 178 | 53,400 | 106.8&nbsp;MB | 418 | 3,611,520 | $11.06 |  
 
 ### <a name="azure-monitor-logs-cost-considerations"></a>Azure Monitor 日志成本注意事项
 
 
 
-| 日志类别       | 用户数 | 每日事件数 | 每月活动（30天） | 每月成本（美元）（最） |
+| 日志类别       | 用户数 | 每日事件数 | 每月事件数（30天） | 每月成本（est） |
 | :--                | ---             | ---            | ---                        | --:                          |
-| 审核和登录 | 100,000         | 16,500,000     | 495,000,000                |  $1093.00                       |
-| 审核              | 100,000         | 1,500,000      | 45,000,000                 |  $246.66                     |
+| 审核和登录 | 100,000         | 16500000     | 495000000                |  $1093.00                       |
+| 审核              | 100,000         | 1500000      | 45,000,000                 |  $246.66                     |
 | 登录           | 100,000         | 15,000,000     | 450,000,000                |  $847.28                     |
 
 
@@ -128,7 +128,7 @@ ms.locfileid: "81261017"
 
 若要查看与管理 Azure Monitor 日志相关的成本，请参阅[通过在 Azure Monitor 日志中控制数据量和保留期管理成本](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-cost-storage)。
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 
 此部分回答 Azure Monitor 中 Azure AD 日志的常见问题并讨论其已知问题。
 
@@ -150,9 +150,9 @@ ms.locfileid: "81261017"
 
 ---
 
-**问：如果管理员更改诊断设置的保留期，会发生什么情况？**
+**问：如果管理员更改了诊断设置的保持期，会发生什么情况？**
 
-**A**： 新的保留策略将应用于更改后收集的日志。 策略更改前收集的日志将不会受到影响。
+**答**：新的保留策略将应用于更改后收集的日志。 策略更改前收集的日志将不会受到影响。
 
 ---
 
@@ -180,7 +180,7 @@ ms.locfileid: "81261017"
 
 **问: 目前支持哪些 SIEM 工具？** 
 
-**A** **A**： 目前，Azure 监视器由[Splunk、IBM](tutorial-integrate-activity-logs-with-splunk.md)QRadar、[相扑逻辑](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory)[、ArcSight、LogRhythm](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-arcsight)和Logz.io支持。 若要详细了解连接器的工作方式，请参阅[将 Azure 监视数据流式传输到事件中心供外部工具使用](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md)。
+**答**：**答**：目前， [Splunk](tutorial-integrate-activity-logs-with-splunk.md)、IBM QRadar、 [sumo logic 逻辑](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory)、 [ArcSight](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-arcsight)、LogRhythm 和 Logz.io 支持 Azure Monitor。 若要详细了解连接器的工作方式，请参阅[将 Azure 监视数据流式传输到事件中心供外部工具使用](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md)。
 
 ---
 
@@ -198,7 +198,7 @@ ms.locfileid: "81261017"
 
 **问: 是否可以在不使用外部 SIEM 工具的情况下，从事件中心访问数据？** 
 
-**答**：是的。 若要通过自定义应用程序来访问日志，可以使用[事件中心 API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)。 
+**答**：是。 若要通过自定义应用程序来访问日志，可以使用[事件中心 API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)。 
 
 ---
 

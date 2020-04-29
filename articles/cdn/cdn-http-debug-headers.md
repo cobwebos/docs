@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/12/2018
 ms.author: allensu
 ms.openlocfilehash: 52aae3bdd2fe82eea6cbd500723192c88c293a1e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81260490"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>Azure CDN 规则引擎的 X-EC-Debug HTTP 标头
@@ -54,7 +54,7 @@ X-EC-Debug: x-ec-cache-state | [缓存状态](#cache-state-response-header)
 ## <a name="cache-status-code-information"></a>缓存状态代码信息
 X-EC-Debug 响应标头可以标识服务器及其如何通过以下指令处理了响应：
 
-标头 | 说明
+Header | 说明
 -------|------------
 X-EC-Debug: x-ec-cache | 每当通过 CDN 路由内容时，都会报告此标头。 此标头标识完成请求的 POP 服务器。
 X-EC-Debug: x-ec-cache-remote | 仅当请求的内容已缓存在来源防护服务器或 ADN 网关服务器上时，才报告此标头。
@@ -151,7 +151,7 @@ UNKNOWN | 指示服务器无法评估请求的资产是否可缓存。 如果由
 
 - MATimePeriod：将最大期限值（即 MASeconds）转换为单位更大（例如，天）的近似等效值。 
 
-- UnixTime：指示在 Unix 时间（也称为 POSIX 时间或 Unix 纪元）中请求内容的缓存时间戳。 缓存时间戳指示计算资产 TTL 的起始日期/时间。 
+- UnixTime：指示 Unix 时间（也称为 POSIX 时间或 Unix epoch）中请求的内容的缓存时间戳。 缓存时间戳指示计算资产 TTL 的起始日期/时间。 
 
     如果源服务器不使用第三方 HTTP 缓存服务器或该服务器不返回 Age 响应标头，则缓存时间戳始终为检索或重新验证资产时的日期/时间。 否则，POP 服务器将使用 Age 字段计算资产的 TTL，如下所示：Retrieval/RevalidateDateTime - Age。
 

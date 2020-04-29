@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: tisande
 ms.openlocfilehash: 8a3cbbafc066747b62f79934f2cd12301aa1ba17
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81261595"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 GROUP BY 子句
@@ -53,7 +53,7 @@ GROUP BY 子句按照一个或多个指定属性的值来拆分查询的结果�
 - 子查询
 - 聚合系统函数（在 SELECT 子句中，仍然允许这些函数）
 
-不支持具有聚合系统函数的查询和具有 子`GROUP BY`查询的查询。 例如，不支持以下查询：
+不支持使用聚合系统函数和子查询`GROUP BY`的查询。 例如，不支持以下查询：
 
 ```sql
 SELECT COUNT(UniqueLastNames) FROM (SELECT AVG(f.age) FROM f GROUP BY f.lastName) AS UniqueLastNames
@@ -180,5 +180,5 @@ GROUP BY ARRAY_CONTAINS(f.tags, {name: 'orange'}), f.version BETWEEN 0 AND 2
 ## <a name="next-steps"></a>后续步骤
 
 - [入门](sql-query-getting-started.md)
-- [选择子句](sql-query-select.md)
+- [SELECT 子句](sql-query-select.md)
 - [聚合函数](sql-query-aggregates.md)

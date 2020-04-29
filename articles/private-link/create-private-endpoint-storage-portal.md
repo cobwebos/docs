@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: 111e6e2f80c3460f363c496b7b32befdca16250d
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81115104"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>使用 Azure 专用终结点以私密方式连接到存储帐户
@@ -32,21 +32,21 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
 在本部分中，你需要将步骤中的以下参数替换为以下信息：
 
-| 参数                   | 值                |
+| 参数                   | Value                |
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroup |
 | **\<virtual-network-name>** | myVirtualNetwork          |
 | **\<region-name>**          | 美国中西部      |
-| **\<IPv4-address-space>**   | 10.1.0.0\16          |
+| **\<IPv4-address-space>**   | 10.1.0.0 \ 16          |
 | **\<subnet-name>**          | mySubnet        |
-| **\<subnet-address-range>** | 10.1.0.0\24          |
+| **\<subnet-address-range>** | 10.1.0.0 \ 24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 
 ### <a name="create-virtual-machine"></a>创建虚拟机
 
-1. 在 Azure 门户中屏幕的左上角，选择 **"创建资源** > **计算** > **虚拟机**"。
+1. 在 Azure 门户屏幕的左上方，选择 "**创建资源** > " "**计算** > " "**虚拟机**"。
 
 1. 在“创建虚拟机 - 基本信息”  中，输入或选择以下信息：
 
@@ -94,7 +94,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 ## <a name="create-your-private-endpoint"></a>创建专用终结点
 在本部分中，你将使用专用终结点创建一个专用存储帐户。 
 
-1. 在 Azure 门户中屏幕的左上角，选择 **"创建资源** > **存储** > **存储帐户**"。
+1. 在 Azure 门户屏幕的左上方，选择 "**创建资源** > " "**存储** > " "存储**帐户**"。
 
 1. 在“创建存储帐户 - 基本信息”中，输入或选择以下信息****：
 
@@ -111,7 +111,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
     | 复制 | 选择“读取访问异地冗余存储 (RA-GRS)”****。 |
     |||
   
-3. 选择**下一个：网络**。
+3. 在完成时选择“下一步:  网络”。
 4. 在“创建存储帐户 - 网络”**** 中，在连接方法中，选择“专用终结点”****。
 5. 在“创建存储帐户 - 网络”**** 中，选择“添加专用终结点”****。 
 6. 在“创建专用终结点”**** 中，输入或选择以下信息：
@@ -125,11 +125,11 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
     |名称|输入“myPrivateEndpoint”  。  |
     |存储子资源|保留默认值“Blob”****。 |
     | **网络** |  |
-    | 虚拟网络  | 从资源组 *"我的资源组"* 中选择*我的虚拟网络*。 |
+    | 虚拟网络  | 从资源组*myResourceGroup*中选择 " *MyVirtualNetwork* "。 |
     | 子网 | 选择“mySubnet”  。 |
     | **专用 DNS 集成**|  |
     | 与专用 DNS 区域集成  | 保留默认值“是”****。 |
-    | 专用 DNS 区域  | 将默认 **（新建） privatelink.blob.core.windows.net**。 |
+    | 专用 DNS 区域  | 保留默认值 " **privatelink.blob.core.windows.net**"。 |
     |||
 7. 选择“确定”  。 
 8. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置  。 
@@ -168,7 +168,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 在本部分中，你将使用专用终结点私密地连接到存储帐户。
 
 1. 在 *myVM* 的远程桌面中，打开 PowerShell。
-2. 输入`nslookup mystorageaccount.blob.core.windows.net`您将收到类似于此消息的消息：
+2. 输入`nslookup mystorageaccount.blob.core.windows.net`将收到类似于下面的消息：
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -181,25 +181,25 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 4. 通过右键单击选择“存储帐户”。****
 5. 选择“连接到 Azure 存储”****。
 6. 选择“使用连接字符串”****。
-7. 选择“**下一页**”。
+7. 选择“下一步”  。
 8. 通过粘贴之前复制的信息来输入连接字符串。
-9. 选择“**下一页**”。
+9. 选择“下一步”  。
 10. 选择“连接”  。
 11. 浏览 mystorageaccount 中的 Blob 容器 
 12. （可选）创建文件夹并/或将文件上传到 *mystorageaccount*。 
-13. 关闭远程桌面连接到*myVM。* 
+13. 关闭与*myVM*的远程桌面连接。 
 
 用于访问存储帐户的其他选项：
-- Microsoft Azure 存储资源管理器是 Microsoft 的一个独立免费应用，使您能够在 Windows、macOS 和 Linux 上直观地处理 Azure 存储数据。 你可以安装应用程序来以私密方式浏览存储帐户内容。 
+- Microsoft Azure 存储资源管理器是 Microsoft 提供的独立免费应用程序，可用于在 Windows、macOS 和 Linux 上以可视方式处理 Azure 存储数据。 你可以安装应用程序来以私密方式浏览存储帐户内容。 
  
-- AzCopy 实用程序是 Azure 存储高性能可脚本数据传输的另一个选项。 使用 AzCopy 将数据传输到 Blob、文件和表存储或将数据从其中传出。 
+- AzCopy 实用工具是适用于 Azure 存储的高性能脚本数据传输的另一个选项。 使用 AzCopy 将数据传输到 Blob、文件和表存储或将数据从其中传出。 
 
 
 ## <a name="clean-up-resources"></a>清理资源 
 用完专用终结点、存储帐户和 VM 之后，请删除资源组及其包含的所有资源： 
 1. 在门户顶部的“搜索”框中输入“myResourceGroup”，并从搜索结果中选择“myResourceGroup”    。 
 2. 选择“删除资源组”  。 
-3. 输入 *"资源组***"以键入资源组名称**，然后选择 **"删除**"。 
+3. 输入*myResourceGroup*作为 **"资源组名称"** ，然后选择 "**删除**"。 
 
 ## <a name="next-steps"></a>后续步骤
-在本快速入门中，你在虚拟网络上创建了一个 VM、一个存储帐户和一个专用终结点。 你已从 Internet 连接到一个 VM，并使用专用链接安全地与存储帐户进行通信。 要了解有关私有终结点的更多内容，请参阅[什么是 Azure 专用终结点？](private-endpoint-overview.md)
+在本快速入门中，你在虚拟网络上创建了一个 VM、一个存储帐户和一个专用终结点。 你已从 Internet 连接到一个 VM，并使用专用链接安全地与存储帐户进行通信。 若要了解有关专用终结点的详细信息，请参阅[什么是 Azure 专用终结点？](private-endpoint-overview.md)。

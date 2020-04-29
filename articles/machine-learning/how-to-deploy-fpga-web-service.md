@@ -12,10 +12,10 @@ author: jpe316
 ms.date: 03/05/2020
 ms.custom: seodec18
 ms.openlocfilehash: 870f7b0ab0f1d7b247435cdbb74e21801b3b052a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81257175"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>什么是现场可编程门阵列 (FPGA) 以及如何部署
@@ -25,7 +25,7 @@ ms.locfileid: "81257175"
 
 FPGA 包含一组可编程的逻辑块以及由可反复配置的互连组成的层次结构。 这种互连可以在生产之后以不同方式来配置块。 与其他芯片相比，FPGA 既有可编程性，又有很好的性能。
 
-## <a name="fpgas-vs-cpu-gpu-and-asic"></a>FPGA 与 CPU、GPU 和 ASIC
+## <a name="fpgas-vs-cpu-gpu-and-asic"></a>Fpga 与 CPU、GPU 和 ASIC
 
 下面的示意图和表将 FPGA 与其他处理器进行了比较。
 
@@ -61,7 +61,7 @@ Azure 上的 FPGA 支持：
   - VGG-16
   - SSD-VGG
 
-FPGA 在这些 Azure 区域中可用：
+以下 Azure 区域提供 Fpga：
   - 美国东部
   - 东南亚
   - 西欧
@@ -77,11 +77,11 @@ Azure VM 的 PBS 系列包含 Intel Arria 10 FPGA****。 查看 Azure 配额分�
 Azure FPGA 与 Azure 机器学习集成。 Microsoft 使用 FPGA 进行 DNN 评估、必应搜索排名、软件定义网络 (SDN) 加速，以便将 CPU 解放出来完成其他任务，同时降低延迟。
 
 在以下情况下，请使用 FPGA：
-+ [自动光学检测系统](https://blogs.microsoft.com/ai/build-2018-project-brainwave/)
++ [自动光纤检查系统](https://blogs.microsoft.com/ai/build-2018-project-brainwave/)
 
-+ [土地覆盖图](https://blogs.technet.microsoft.com/machinelearning/2018/05/29/how-to-use-fpgas-for-deep-learning-inference-to-perform-land-cover-mapping-on-terabytes-of-aerial-images/)
++ [土地覆盖贴图](https://blogs.technet.microsoft.com/machinelearning/2018/05/29/how-to-use-fpgas-for-deep-learning-inference-to-perform-land-cover-mapping-on-terabytes-of-aerial-images/)
 
-## <a name="example-deploy-models-on-fpgas"></a>示例：在 FPGA 上部署模型
+## <a name="example-deploy-models-on-fpgas"></a>示例：在 Fpga 上部署模型
 
 可以使用 Azure 机器学习硬件加速模型将模型部署为 FPGA 上的 Web 服务。 使用 FPGA 可实现超低的延迟推理，即使只有一个批数据大小。 推理或模型评分是将部署的模型用于预测（通常针对生产数据）的阶段。
 
@@ -96,7 +96,7 @@ Azure FPGA 与 Azure 机器学习集成。 Microsoft 使用 FPGA 进行 DNN 评�
     ```
 
     > [!TIP]
-    > 其他可能的位置是``southeastasia``和``westeurope``。 ``westus2``
+    > 其他可能的位置为``southeastasia``、 ``westeurope``和``westus2``。
 
     此命令会返回如下所示的文本：
 
@@ -108,7 +108,7 @@ Azure FPGA 与 Azure 机器学习集成。 Microsoft 使用 FPGA 进行 DNN 评�
 
     确保在 CurrentValue 下至少有 6 个 vCPU____。
 
-    如果没有配额，请在 上[https://aka.ms/accelerateAI](https://aka.ms/accelerateAI)提交请求。
+    如果没有配额，则提交请求[https://aka.ms/accelerateAI](https://aka.ms/accelerateAI)。
 
 - 已安装 Azure 机器学习工作区以及用于 Python 的 Azure 机器学习 SDK。 有关详细信息，请参阅[创建工作区](how-to-manage-workspace.md)。
  
@@ -118,7 +118,7 @@ Azure FPGA 与 Azure 机器学习集成。 Microsoft 使用 FPGA 进行 DNN 评�
     pip install --upgrade azureml-accel-models[cpu]
     ```
 
-## <a name="1-create-and-containerize-models"></a>1. 创建模型并将其容器化
+## <a name="1-create-and-containerize-models"></a>1. 创建模型并容器化
 
 本文档将介绍如何创建 TensorFlow 图来预处理输入图像，在 FPGA 上使用 ResNet 50 对其进行特征化，然后通过在 ImageNet 数据集上训练的分类器来运行这些功能。
 
@@ -242,7 +242,7 @@ print(output_tensors)
 
 ### <a name="register-model"></a>注册模型
 
-使用 SDK 与 Azure Blob 存储中的 ZIP 文件一起[注册](concept-model-management-and-deployment.md)模型。 添加模型的标记和其他元数据有助于跟踪已训练的模型。
+在 Azure Blob 存储中结合使用 SDK 和 ZIP 文件来[注册](concept-model-management-and-deployment.md)模型。 添加模型的标记和其他元数据有助于跟踪已训练的模型。
 
 ```python
 from azureml.core.model import Model
@@ -430,7 +430,7 @@ converted_model.delete()
 
 + 若干[示例笔记本](https://aka.ms/aml-accel-models-notebooks)
 
-+ [超大规模硬件：在 Azure 和 FPGA 之上的放大 ML：构建 2018（视频）](https://channel9.msdn.com/events/Build/2018/BRK3202)
++ [超大规模硬件：大规模在 Azure + FPGA 之上的 ML：内部版本2018（视频）](https://channel9.msdn.com/events/Build/2018/BRK3202)
 
 + [Inside the Microsoft FPGA-based configurable cloud (video)](https://channel9.msdn.com/Events/Build/2017/B8063)（深入了解基于 Microsoft FPGA 的可配置云（视频））
 

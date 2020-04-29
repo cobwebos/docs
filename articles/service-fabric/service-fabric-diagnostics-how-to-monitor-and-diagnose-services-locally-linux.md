@@ -4,10 +4,10 @@ description: 了解如何在本地 Linux 开发计算机上监视和诊断 Servi
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: fa8c4053a348c539c2e9e7a87d002d0fcf4a4d52
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80991324"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>在本地 Linux 计算机开发设置中监视和诊断服务
@@ -40,7 +40,7 @@ java.util.logging.FileHandler.count = 10
 java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log
 ```
 
-`app.properties` 文件指向的文件夹必须存在。 创建 `app.properties` 文件后，还需要修改 `<applicationfolder>/<servicePkg>/Code/` 文件夹中的入口点脚本 `entrypoint.sh`，将属性 `java.util.logging.config.file` 设置为 `app.properties` 文件。 该入口点应如以下代码片段中所示：
+`app.properties` 文件指向的文件夹必须存在。 创建 `app.properties` 文件后，还需要修改 `entrypoint.sh` 文件夹中的入口点脚本 `<applicationfolder>/<servicePkg>/Code/`，将属性 `java.util.logging.config.file` 设置为 `app.properties` 文件。 该入口点应如以下代码片段中所示：
 
 ```sh
 java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path to app.properties> -jar <service name>.jar
@@ -53,13 +53,13 @@ java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path 
 
 默认情况下，如果未显式配置处理程序，会注册控制台处理程序。 可以在 /var/log/syslog 下查看 syslog 中的日志。
 
-有关详细信息，请参阅[GitHub 中的代码示例](https://github.com/Azure-Samples/service-fabric-java-getting-started)。
+有关详细信息，请参阅 [GitHub 中的代码示例](https://github.com/Azure-Samples/service-fabric-java-getting-started)。
 
 
 ## <a name="debugging-service-fabric-c-applications"></a>调试 Service Fabric C# 应用程序
 
 
-可以使用多个框架在 Linux 上跟踪 CoreCLR 应用程序。 有关详细信息，请参阅[.NET 日志记录扩展](https://github.com/dotnet/extensions/tree/master/src/Logging)。  由于 C# 开发者熟悉 EventSource，因此本文使用 EventSource 在 Linux 上跟踪 CoreCLR 示例。
+可以使用多个框架在 Linux 上跟踪 CoreCLR 应用程序。 有关详细信息，请参阅[用于日志记录的 .Net 扩展](https://github.com/dotnet/extensions/tree/master/src/Logging)。  由于 C# 开发者熟悉 EventSource，因此本文使用 EventSource 在 Linux 上跟踪 CoreCLR 示例。
 
 第一步是添加 System.Diagnostics.Tracing，以便可以将日志写入内存、输出流或控制台文件。  要使用 EventSource 进行日志记录，请将以下项目添加到 project.json 中：
 

@@ -4,10 +4,10 @@ description: 获取使用 Azure Site Recovery 将本地 VMware VM 灾难恢复�
 ms.date: 11/14/2019
 ms.topic: conceptual
 ms.openlocfilehash: d551cef7037c0b6d7286cbb4b70d8f7a8f7f5cae
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81259504"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>有关 VMware 到 Azure 的复制的常见问题
@@ -83,7 +83,7 @@ Site Recovery 已通过 ISO 27001:2013、27018、HIPAA 和 DPA 认证， 目前�
 
 ### <a name="is-there-any-difference-in-cost-when-replicating-to-general-purpose-v2-storage-account"></a>复制到常规用途 v2 存储帐户时，开销是否有什么不同？
 
-你通常会发现 GPv2 存储帐户产生的事务成本增加，因为 Azure Site Recovery 的事务量很大。 [详细了解](../storage/common/storage-account-upgrade.md#pricing-and-billing)如何估算费用。
+你通常会发现 GPv2 存储帐户产生的事务成本增加，因为 Azure Site Recovery 的事务量很大。 [阅读更多信息](../storage/common/storage-account-upgrade.md#pricing-and-billing)以估计更改。
 
 ## <a name="mobility-service"></a>移动服务
 
@@ -97,7 +97,7 @@ Site Recovery 已通过 ISO 27001:2013、27018、HIPAA 和 DPA 认证， 目前�
 
 - [推送安装](vmware-physical-mobility-service-overview.md#push-installation)
 - 从 UI 或 PowerShell [手动安装](vmware-physical-mobility-service-overview.md#install-the-mobility-service-using-ui)
-- 使用部署工具（如[配置管理器](vmware-azure-mobility-install-configuration-mgr.md)）进行部署
+- 使用 [Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md) 等部署工具进行部署
 
 ## <a name="managed-disks"></a>托管磁盘
 
@@ -124,7 +124,7 @@ Site Recovery 将本地 VMware VM 和物理服务器复制到 Azure 中的托管
 
 是的，可以轻松针对正在进行的复制[更改托管磁盘的类型](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage)。 在更改类型之前，请确保未在托管磁盘上生成任何共享访问签名 URL：
 
-1. 在 Azure 门户中转到“托管磁盘”资源，并检查“概述”边栏选项卡上是否出现了共享访问签名 URL 横幅。********
+1. 在 Azure 门户中转到“托管磁盘”资源，并检查“概述”边栏选项卡上是否出现了共享访问签名 URL 横幅。  
 1. 如果出现了横幅，请选择它以取消正在进行的导出。
 1. 在接下来的几分钟内更改磁盘类型。 如果更改了托管磁盘类型，需要等待 Azure Site Recovery 生成全新的恢复点。
 1. 对将来的任何测试故障转移或故障转移使用新恢复点。
@@ -176,7 +176,7 @@ Site Recovery 将本地 VMware VM 和物理服务器复制到 Azure 中的托管
 
 ### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-server-without-impacting-ongoing-replication"></a>是否可以在不影响进行中复制的情况下将本地计算机迁移到新的 vCenter Server？
 
-不是。 更改 VMware Vcenter 或迁移将影响正在进行的复制。 对新的 vCenter Server 设置 Site Recovery，并为计算机重新启用复制。
+不能。 更改 VMware Vcenter 或迁移将影响正在进行的复制。 对新的 vCenter Server 设置 Site Recovery，并为计算机重新启用复制。
 
 ### <a name="can-i-replicate-to-a-cache-or-target-storage-account-that-has-a-virtual-network-with-azure-firewalls-configured-on-it"></a>是否可以复制到在其上配置了虚拟网络（具有 Azure 防火墙）的缓存或目标存储帐户？
 
@@ -222,7 +222,7 @@ Site Recovery 遵循 N-4 支持模型。 [详细了解](https://aka.ms/asr_suppo
 
 ### <a name="what-do-i-need-for-the-configuration-server"></a>配置服务器需要满足哪些条件？
 
-请查看[先决条件](vmware-azure-deploy-configuration-server.md#prerequisites)。
+查看[必备组件](vmware-azure-deploy-configuration-server.md#prerequisites)。
 
 ### <a name="can-i-manually-set-up-the-configuration-server-instead-of-using-a-template"></a>是否可以手动设置配置服务器，而不使用模板进行设置？
 
@@ -230,7 +230,7 @@ Site Recovery 遵循 N-4 支持模型。 [详细了解](https://aka.ms/asr_suppo
 
 ### <a name="can-a-configuration-server-replicate-to-more-than-one-region"></a>是否可将配置服务器复制到多个区域？
 
-不是。 若要复制到多个区域，需在每个区域中设置一个配置服务器。
+不能。 若要复制到多个区域，需在每个区域中设置一个配置服务器。
 
 ### <a name="can-i-host-a-configuration-server-in-azure"></a>是否可以在 Azure 中托管配置服务器？
 
@@ -241,7 +241,7 @@ Site Recovery 遵循 N-4 支持模型。 [详细了解](https://aka.ms/asr_suppo
 [了解](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)如何更新配置服务器。
 
 - 可以在 [Azure 更新页](https://azure.microsoft.com/updates/?product=site-recovery)中找到最新的更新信息。
-- 可从门户下载最新版本。 或者，您可以直接从[Microsoft 下载中心](https://aka.ms/asrconfigurationserver)下载最新版本的配置服务器。
+- 可从门户下载最新版本。 或者，你可以直接从[Microsoft 下载中心](https://aka.ms/asrconfigurationserver)下载最新版本的配置服务器。
 - 如果你的版本比当前版本低 4 个版本，请参阅[支持声明](https://aka.ms/asr_support_statement)获取升级指导。
 
 ### <a name="should-i-back-up-the-configuration-server"></a>是否应备份配置服务器？
@@ -262,15 +262,15 @@ Site Recovery 遵循 N-4 支持模型。 [详细了解](https://aka.ms/asr_suppo
 
 ### <a name="can-i-use-the-configuration-server-vm-for-anything-else"></a>是否可以将配置服务器 VM 用于任何其他项？
 
-不是。 请仅将 VM 用于配置服务器。
+不能。 请仅将 VM 用于配置服务器。
 
 ### <a name="can-i-clone-a-configuration-server-and-use-it-for-orchestration"></a>是否可以克隆配置服务器并将其用于业务流程？
 
-不是。 请设置新配置服务器以避免注册问题。
+不能。 请设置新配置服务器以避免注册问题。
 
 ### <a name="can-i-change-the-vault-in-which-the-configuration-server-is-registered"></a>是否可以更改配置服务器注册到的保管库？
 
-不是。 将某个保管库关联到配置服务器后，无法更改该保管库。 [了解](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault)如何将配置服务器注册到不同的保管库。
+不能。 将某个保管库关联到配置服务器后，无法更改该保管库。 [了解](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault)如何将配置服务器注册到不同的保管库。
 
 ### <a name="can-i-use-the-same-configuration-server-for-disaster-recovery-of-both-vmware-vms-and-physical-servers"></a>是否可以将同一配置服务器同时用于 VMware VM 和物理服务器的灾难恢复？
 
@@ -286,7 +286,7 @@ Site Recovery 遵循 N-4 支持模型。 [详细了解](https://aka.ms/asr_suppo
 
 ### <a name="can-a-single-configuration-server-be-used-to-protect-multiple-vcenter-instances"></a>是否可以使用单个配置服务器来保护多个 vCenter 实例？
 
-是的，单个配置服务器可以保护跨多个 vCenter 的 VM。  对于可以添加到配置服务器的 vCenter 实例的数量没有限制，但是对于单个配置服务器可以保护的 VM 数量的限制确实适用。
+是，单个配置服务器可以保护多个 Vcenter 中的 Vm。  对于可以添加到配置服务器的 vCenter 实例的数量没有限制，但是对于单个配置服务器可以保护的 VM 数量的限制确实适用。
 
 ### <a name="can-a-single-configuration-server-protect-multiple-clusters-within-vcenter"></a>单个配置服务器是否可以保护 vCenter 中的多个群集？
 
@@ -304,7 +304,7 @@ Site Recovery 遵循 N-4 支持模型。 [详细了解](https://aka.ms/asr_suppo
 
 ### <a name="how-can-i-ensure-high-availability-of-the-process-server"></a>如何确保进程服务器的高可用性？
 
-通过配置多个进程服务器，该设计提供了将受保护的计算机从不正常的进程服务器移动到工作进程服务器的灵活性。 必须通过此处定义的步骤显式/手动启动计算机从一个进程服务器到另一个进程服务器的[移动：在进程服务器之间移动 VM。](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load)
+通过配置多个进程服务器，设计可以灵活地将受保护的计算机从不正常的进程服务器移动到工作进程服务器。 若要将计算机从一个进程服务器移动到另一个进程服务器，则必须通过此处定义的步骤显式/手动启动：在[进程服务器之间移动虚拟](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load)机。
 
 ## <a name="failover-and-failback"></a>故障转移和故障回复
 
@@ -334,7 +334,7 @@ Azure 具有复原能力。 Site Recovery 能够根据 Azure 服务级别协议 
 
 ### <a name="is-failover-automatic"></a>故障转移是自动发生的吗？
 
-[故障转移](site-recovery-failover.md)不是自动的。 可以在门户中单击一下鼠标来启动故障转移，或者使用 [PowerShell](/powershell/module/az.recoveryservices) 来触发故障转移。
+[故障转移](site-recovery-failover.md)不是自动进行的。 可以在门户中单击一下鼠标来启动故障转移，或者使用 [PowerShell](/powershell/module/az.recoveryservices) 来触发故障转移。
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>是否可以故障回复到不同位置？
 

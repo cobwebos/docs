@@ -1,5 +1,5 @@
 ---
-title: API 先决条件 |Azure 应用商店
+title: API 先决条件 |Azure Marketplace
 description: 使用云合作伙伴门户 API 的先决条件。
 author: dsindona
 ms.service: marketplace
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: df94cba1f77ae3ea8cf595e7c651af7a69108bb6
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81255968"
 ---
 <a name="api-prerequisites"></a>API 先决条件
 ================
 
 > [!NOTE]
-> 云合作伙伴门户 API 与合作伙伴中心集成，在您的产品/服务迁移到合作伙伴中心后将继续工作。 集成引入了小更改。 查看[云合作伙伴门户 API 参考](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)中列出的更改，以确保代码在迁移到合作伙伴中心后继续工作。
+> 云合作伙伴门户 Api 与合作伙伴中心集成，并在将产品/服务迁移到合作伙伴中心后继续工作。 集成引入了少量更改。 查看[云合作伙伴门户 API 参考](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)中列出的更改，以确保你的代码在迁移到合作伙伴中心后仍能正常工作。
 
 使用云合作伙伴门户 API 时需要两个必需的编程资产：服务主体和 Azure Active Directory (Azure AD) 访问令牌。
 
@@ -44,7 +44,7 @@ ms.locfileid: "81255968"
 3. 从“类型”**** 下拉列表中，选择“服务主体”**** 并添加以下详细信息：
 
 -   服务主体的**友好名称**，例如 `spAccount`。
--   **应用程序 ID**。 要查找此标识符，请转到[Azure 门户](https://portal.azure.com)，单击**Azure 活动目录**，选择**应用注册**，然后单击应用。
+-   **应用程序 ID**。 若要查找此标识符，请依次单击 " [Azure 门户](https://portal.azure.com)"、" **Azure Active Directory**"、"**应用注册**"，然后单击你的应用程序。
 -   你的 Azure AD 租户的**租户 ID**，也称为**目录 ID**。 在 [Azure 门户](https://portal.azure.com)中，可以在 Azure Active Directory 页面上的“属性”**** 下找到此标识符。
 -   你的服务主体对象的**对象 ID**。 可以从 Azure 门户获取此标识符。 转到“Azure Active Directory”****，选择“应用注册”****，在“本地目录中的托管应用程序”下单击你的应用并单击应用名称。**** 然后，转到“属性”**** 页来查找对象 ID。 请确保不是获取你的应用上的初始对象 ID，而是获取托管应用程序中的对象 ID。
 -   与帐户关联的**角色**，它将用于 RBAC。

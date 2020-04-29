@@ -1,5 +1,5 @@
 ---
-title: 使用虚拟机缩放集进行自动缩放故障解答
+title: 排查虚拟机规模集的自动缩放问题
 description: 疑难解答使用虚拟机规模集的自动缩放问题。 了解遇到的典型问题以及如何解决这些问题。
 author: mimckitt
 tags: azure-resource-manager
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/16/2017
 ms.author: mimckitt
 ms.openlocfilehash: 4bc5e66f5b0759bdb5fe34276369161200bd5442
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81273369"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>疑难解答使用虚拟机规模集的自动缩放问题
@@ -26,7 +26,7 @@ ms.locfileid: "81273369"
   上面的 Azure 快速入门模板示例具有 do_work.php 脚本，它可以加载单个 vCPU。 如果正在使用比单 vCPU VM 大小（如 Standard_A1 或 D1）更大的 VM，则需要多次运行此加载过程。 通过查看 [Azure 中 Windows 虚拟机的大小](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)检查 VM 中有多少个 vCPU
 * 虚拟机规模集中有多少个 VM，正在处理每个 VM 吗？
   
-    仅当规模集中所有**** VM 的平均 CPU 在自动缩放规则中定义的内部时间之内超出阈值时，才会发生横向扩展事件。
+    仅当规模集中所有  VM 的平均 CPU 在自动缩放规则中定义的内部时间之内超出阈值时，才会发生横向扩展事件。
 * 是否遗漏任何缩放事件？
   
     查看 Azure 门户中的审核日志以查找缩放事件。 或许遗漏了一个纵向扩展事件和一个纵向缩减事件。 可以通过“缩放”进行筛选。
@@ -34,11 +34,11 @@ ms.locfileid: "81273369"
     ![审核日志][audit]
 * 缩小和扩大阈值的差值是否足够大？
   
-    假设你设置了一个规则，指示当平均 CPU 在 5 分钟内超过 50% 时扩大，当平均 CPU 低于 50% 时缩小。 在 CPU 使用率接近此阈值时，此设置会导致“摇摆”问题，缩放操作不断地增加和减少集的大小。 由于此设置，自动缩放服务会尝试防止“摇摆”的发生，这可能表现为不缩放。 因此，请确保扩大和缩小阈值的差值要足够大，以允许在缩放之间存在一些空间。
+    假设你设置了一个规则，指示当平均 CPU 在 5 分钟内超过 50% 时横向扩展，当平均 CPU 低于 50% 时横向缩减。 在 CPU 使用率接近此阈值时，此设置会导致“摇摆”问题，缩放操作不断地增加和减少集的大小。 由于此设置，自动缩放服务会尝试防止“摇摆”的发生，这可能表现为不缩放。 因此，请确保扩大和缩小阈值的差值要足够大，以允许在缩放之间存在一些空间。
 * 是否编写过自己的 JSON 模板？
   
     编写时很容易犯错，因此可使用如上述的久经验证的模板来开始编写，并进行微小的增量更改。 
-* 可以手动缩小或扩大吗？
+* 可以手动横向缩减或扩展吗？
   
     请尝试使用不同的“容量”设置重新部署虚拟机规模集资源，以手动更改 VM 的数目。 此处是一个示例模板： https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing – 你可能需要编辑该模板以确保它与缩放集所用的计算机大小相同。 如果成功手动更改 VM 数目，则可知该问题与自动缩放无关。
 * 检查 Microsoft.Compute/virtualMachineScaleSet 和 [Azure Resource Explorer](https://resources.azure.com/) 中的 Microsoft.Insights 资源
@@ -64,7 +64,7 @@ ms.locfileid: "81273369"
     
     此外，还可以自己查看数据。 使用云资源管理器查看 Azure 存储帐户。 例如，使用 [Visual Studio Cloud Explorer](https://visualstudiogallery.msdn.microsoft.com/aaef6e67-4d99-40bc-aacf-662237db85a2) 登录，并选择正在使用的 Azure 订阅。 然后，查看部署模板中的诊断扩展定义引用的诊断存储帐户名称。
     
-    ![云资源管理器][explorer]
+    ![Cloud Explorer][explorer]
     
     你将看到许多表，其中存储着每个 VM 的数据。 以 Linux 和 CPU 指标为例，查看最近的行。 Visual Studio Cloud Explorer 支持查询语言，因此，你可以运行查询。 例如，可以针对“Timestamp gt datetime’2016-02-02T21:20:00Z’”运行查询，以确保获得最近的事件。 时区对应 UTC。 在此处看到的数据是否符合设置的缩放规则？ 在下面的示例中，虚拟机 20 的 CPU 在过去 5 分钟内开始增加到 100%。
     

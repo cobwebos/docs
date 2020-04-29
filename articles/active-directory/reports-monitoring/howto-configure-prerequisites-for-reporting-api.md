@@ -1,5 +1,5 @@
 ---
-title: Azure 活动目录报告 API 的先决条件 |微软文档
+title: Azure Active Directory 报告 API 的先决条件 | Microsoft Docs
 description: 了解有关访问 Azure AD 报告 API 的先决条件
 services: active-directory
 documentationcenter: ''
@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7fd3580ca03fa49d428904c6da78fdf9cda202c7
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80991256"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>访问 Azure Active Directory 报告 API 的先决条件
@@ -50,14 +50,14 @@ ms.locfileid: "80991256"
 
 ## <a name="license-requirements"></a>许可证要求
 
-为了访问租户的登录报告，Azure AD 租户必须具有关联的 Azure AD 高级许可证。 Azure AD 高级 P1（或以上）许可证需要访问任何 Azure AD 租户的登录报告。 或者，如果目录类型是 Azure AD B2C，则登录报告可通过 API 访问，而无需任何其他许可证要求。 
+为了访问租户的登录报告，Azure AD 租户必须具有关联的 Azure AD Premium 许可证。 若要访问任何 Azure AD 租户的登录报告，需要 Azure AD Premium P1 （或更高版本）许可证。 或者，如果目录类型为 Azure AD B2C，则无需任何其他许可证要求即可通过 API 访问登录报告。 
 
 
 ## <a name="register-an-application"></a>注册应用程序
 
 即使是在使用脚本来访问报告 API，也需要注册。 注册会提供一个**应用程序 ID**，该 ID 是进行授权调用所必需的，代码也通过该 ID 来接收令牌。
 
-要将目录配置为访问 Azure AD 报告 API，必须使用 Azure 管理员帐户登录到[Azure 门户](https://portal.azure.com)，该帐户也是 Azure AD 租户中的**全局管理员**目录角色的成员。
+若要配置目录以访问 Azure AD 报告 API，必须使用 Azure 管理员帐户登录[Azure 门户](https://portal.azure.com)，该帐户也是 Azure AD 租户中的**全局管理员**目录角色的成员。
 
 > [!IMPORTANT]
 > 在具有管理员权限的凭据下运行的应用程序可能具有非常强大的功能，因此请务必将应用程序的 ID 和机密凭据放置在一个安全的位置。
@@ -107,7 +107,7 @@ ms.locfileid: "80991256"
 **若要授予应用程序使用 API 的权限，请执行以下操作：**
 
 
-1. 选择**API 权限**，然后**添加权限**。 
+1. 依次选择 " **API 权限**" 和 "**添加权限**"。 
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/05.png)
 
@@ -115,7 +115,7 @@ ms.locfileid: "80991256"
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/06.png)
 
-3. 在“所需权限”页上选择“应用程序权限”，******** 展开“目录”复选框******Directory.ReadAll**。  选择“添加权限”****。
+3. 在“所需权限”页上选择“应用程序权限”，******** 展开“目录”复选框******Directory.ReadAll**。  选择“添加权限”  。
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/07.png)
 
@@ -123,7 +123,7 @@ ms.locfileid: "80991256"
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/08.png)
 
-5. 注意：**默认情况下**在 API 注册期间添加 Microsoft 图形。
+5. 注意：默认情况下，在 API 注册过程中会添加**Microsoft Graph** 。
 
     ![注册应用程序](./media/howto-configure-prerequisites-for-reporting-api/15.png)
 
@@ -194,21 +194,21 @@ ms.locfileid: "80991256"
 
 ## <a name="troubleshoot-errors-in-the-reporting-api"></a>排查报告 API 中的错误
 
-本节列出了在使用 Microsoft 图形 API 访问活动报告时可能会遇到的常见错误消息及其解决方法的步骤。
+本部分列出了使用 Microsoft Graph API 访问活动报告时可能会遇到的常见错误消息，以及解决方法的步骤。
 
-### <a name="error-failed-to-get-user-roles-from-microsoft-graph"></a>错误：无法从 Microsoft 图形获取用户角色
+### <a name="error-failed-to-get-user-roles-from-microsoft-graph"></a>错误：未能从 Microsoft Graph 获取用户角色
 
- 使用图形资源管理器 UI 中的两个登录按钮登录您的帐户，以避免在尝试使用图形资源管理器登录时出错。 
+ 使用图形资源管理器 UI 中的登录按钮登录到你的帐户，以避免尝试使用图形资源管理器登录时出现错误。 
 
 ![Graph 浏览器](./media/troubleshoot-graph-api/graph-explorer.png)
 
-### <a name="error-failed-to-do-premium-license-check-from-microsoft-graph"></a>错误：无法从 Microsoft 图形执行高级许可证检查 
+### <a name="error-failed-to-do-premium-license-check-from-microsoft-graph"></a>错误：未能从 Microsoft Graph 进行高级许可证检查 
 
 如果尝试使用 Graph 浏览器访问登录时收到此错误消息，请在左侧导航栏中选择帐户下方的“修改权限”，然后选择“Tasks.ReadWrite”和“Directory.Read.All”************。 
 
 ![修改权限 UI](./media/troubleshoot-graph-api/modify-permissions.png)
 
-### <a name="error-tenant-is-not-b2c-or-tenant-doesnt-have-premium-license"></a>错误：租户不是 B2C，或者租户没有高级许可证
+### <a name="error-tenant-is-not-b2c-or-tenant-doesnt-have-premium-license"></a>错误：租户不是 B2C 或租户没有高级版许可证
 
 访问登录报告需要 Azure Active Directory Premium 1 (P1) 许可证。 如果访问登录时看到此错误消息，请确保你的租户已获得 Azure AD P1 许可证。
 
@@ -218,7 +218,7 @@ ms.locfileid: "80991256"
 
 ### <a name="error-application-missing-aad-read-directory-data-permission"></a>错误: 应用程序缺少 AAD“读取目录数据”权限 
 
-### <a name="error-application-missing-microsoft-graph-api-read-all-audit-log-data-permission"></a>错误：应用程序缺少 Microsoft 图形 API"读取所有审核日志数据"权限
+### <a name="error-application-missing-microsoft-graph-api-read-all-audit-log-data-permission"></a>错误：应用程序缺少 Microsoft Graph API "读取所有审核日志数据" 权限
 
 按照[访问 Azure Active Directory 报告 API 的先决条件](howto-configure-prerequisites-for-reporting-api.md)中的步骤操作，确保应用程序使用正确的权限集运行。 
 

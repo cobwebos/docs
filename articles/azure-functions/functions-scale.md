@@ -1,20 +1,20 @@
 ---
 title: Azure Functions 的缩放和托管
-description: 了解如何在 Azure 函数消耗计划和高级计划之间进行选择。
+description: 了解如何在 Azure Functions 消耗计划和高级计划之间进行选择。
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3b000776c04550e1deb883039d94deeb735061ce
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80985875"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管
 
-在 Azure 中创建函数应用时，必须为应用选择托管计划。 Azure 函数有三个托管计划：[消耗计划](#consumption-plan)、[高级计划和](#premium-plan)[专用（应用服务）计划](#app-service-plan)。
+在 Azure 中创建函数应用时，必须为应用选择托管计划。 有三种托管计划可用于 Azure Functions：[消耗计划](#consumption-plan)、[高级计划](#premium-plan)和[专用（应用服务）计划](#app-service-plan)。
 
 选择的托管计划决定了以下行为：
 
@@ -22,11 +22,11 @@ ms.locfileid: "80985875"
 * 每个函数应用实例可用的资源。
 * 对 Azure 虚拟网络连接等高级功能的支持。
 
-当代码运行时，消耗计划和高级计划都会自动增加计算能力。 应用在需要处理负载时会横向扩展，在代码停止运行时会缩小。 此外，对于消耗计划，无需提前支付空闲 VM 或预留容量的费用。  
+当代码运行时，消耗和高级计划会自动添加计算能力。 应用在需要处理负载时会横向扩展，在代码停止运行时会缩小。 此外，对于消耗计划，无需提前支付空闲 VM 或预留容量的费用。  
 
-高级计划提供其他功能，如高级计算实例、无限期保持实例温暖的能力以及 VNet 连接。
+高级计划提供了额外的功能，如高级计算实例、使实例始终处于热热和 VNet 连接的能力。
 
-选择应用服务计划可以利用你管理的专用基础结构。 函数应用不会根据事件进行缩放，这意味着永远不会缩放为零。 （要求启用 [Always On](#always-on)。）
+选择应用服务计划可以利用你管理的专用基础结构。 函数应用不会基于事件进行缩放，这意味着从不会缩放到零。 （要求启用 [Always On](#always-on)。）
 
 ## <a name="hosting-plan-support"></a>托管计划支持
 
@@ -53,34 +53,34 @@ ms.locfileid: "80985875"
 * 仅当函数正在运行时才产生费用
 * 可自动扩展，即使是在负载较高期间
 
-可将同一区域中的函数应用分配到同一个消耗计划。 在同一个消耗计划中运行多个应用不会产生负面影响。 将多个应用分配给同一消费计划不会影响每个应用的恢复能力、可扩展性或可靠性。
+可将同一区域中的函数应用分配到同一个消耗计划。 在同一个消耗计划中运行多个应用不会产生负面影响。 将多个应用分配到相同的消耗计划不会影响每个应用的复原能力、可伸缩性或可靠性。
 
 若要详细了解在消耗计划中运行时如何估算成本，请参阅[了解消耗计划成本](functions-consumption-costs.md)。
 
 ## <a name="premium-plan"></a><a name="premium-plan"></a>高级计划
 
-使用高级计划时，将根据传入事件的数量（如消耗计划）添加和删除 Azure 函数主机的实例。  高级计划支持以下功能：
+使用高级计划时，会根据传入事件的数目，添加和删除 Azure Functions 主机的实例，就像消耗计划一样。  高级计划支持以下功能：
 
-* 永久温暖实例，以避免任何冷启动
+* 永久温实例，以避免任何冷启动
 * VNet 连接
-* 无限制的执行持续时间（保证 60 分钟）
-* 高级实例大小（一个核心实例、两个核心实例和四个核心实例）
+* 无限制的执行持续时间（保证为60分钟）
+* 高级实例大小（一个核心、两个核心和四个核心实例）
 * 更可预测的定价
-* 具有多个功能应用的计划的高密度应用分配
+* 针对具有多个 function app 的计划的高密度应用分配
 
-有关如何配置这些选项的信息，请参阅[Azure 函数高级计划文档](functions-premium-plan.md)。
+有关如何配置这些选项的信息，请参阅[Azure Functions 高级计划文档](functions-premium-plan.md)。
 
-高级计划的计费不是按执行和消耗的内存计费，而是基于在需要和预热的实例中使用的核心秒数和内存数。 每个计划必须始终至少有一个实例是温暖的。 这意味着每个活动计划每月最低成本，而不考虑执行次数。 请记住，高级计划中的所有功能应用都共享预热的和活动实例。
+高级计划的计费不是每次执行和内存计费，而是基于所需和预准备好实例使用的核心秒数和内存。 每个计划至少必须有一个实例处于热状态。 这意味着，每个活动计划的每月最低开销，而不考虑执行次数。 请记住，高级计划中的所有 function app 共享准备好和活动实例。
 
-在以下情况下考虑 Azure 函数高级计划：
+在以下情况下，请考虑 Azure Functions 高级计划：
 
 * 函数应用持续或几乎持续运行。
-* 您有大量的小执行，并且执行账单高，但在消耗计划中 GB 第二个帐单较低。
-* 您需要更多的 CPU 或内存选项，而不是消耗计划提供的选项。
-* 代码的运行时间需要超过消耗计划[允许的最大执行时间](#timeout)。
-* 您需要仅在高级计划上可用的功能，例如虚拟网络连接。
+* 您的小型执行数量很大，并且在消耗计划中的执行费用较高，但费用较低。
+* 你需要比消耗计划提供的更多的 CPU 或内存选项。
+* 你的代码所需的运行时间超过消耗计划[允许的最长执行时间](#timeout)。
+* 你需要只能在高级计划（如虚拟网络连接）上使用的功能。
 
-在高级计划上运行 JavaScript 函数时，应选择 vCPU 较少的实例。 有关详细信息，请参阅[选择单核高级计划](functions-reference-node.md#considerations-for-javascript-functions)。  
+对高级计划运行 JavaScript 函数时，应选择具有较少个 vcpu 的实例。 有关详细信息，请参阅[选择单核高级计划](functions-reference-node.md#considerations-for-javascript-functions)。  
 
 ## <a name="dedicated-app-service-plan"></a><a name="app-service-plan"></a>专用（应用服务）计划
 
@@ -98,9 +98,9 @@ ms.locfileid: "80985875"
 在应用服务计划上运行 JavaScript 函数时，应选择具有较少 vCPU 的计划。 有关详细信息，请参阅[选择单核应用服务计划](functions-reference-node.md#choose-single-vcpu-app-service-plans)。 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 
-### <a name="always-on"></a><a name="always-on"></a> 始终可用
+### <a name="always-on"></a><a name="always-on"></a>Always On
 
-如果运行在应用服务计划上，则应启用 **"始终打开**"设置，以便函数应用正常运行。 在应用服务计划中，如果函数运行时处于不活动状态，几分钟后就会进入空闲状态，因此只有 HTTP 触发器才能“唤醒”函数。 只能对应用服务计划使用始终可用。 在消耗计划中，平台会自动激活函数应用。
+如果在应用服务计划上运行，应该启用 " **Always on** " 设置，使函数应用正常运行。 在应用服务计划中，如果函数运行时处于不活动状态，几分钟后就会进入空闲状态，因此只有 HTTP 触发器才能“唤醒”函数。 只能对应用服务计划使用始终可用。 在消耗计划中，平台会自动激活函数应用。
 
 [!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
@@ -134,9 +134,9 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 
 若要了解有关存储帐户类型的详细信息，请参阅 [Azure 存储服务简介](../storage/common/storage-introduction.md#core-storage-services)。
 
-## <a name="how-the-consumption-and-premium-plans-work"></a>消费和保费计划如何运作
+## <a name="how-the-consumption-and-premium-plans-work"></a>消耗量和高级计划的工作原理
 
-在消耗和高级计划中，Azure 函数基础结构会根据其函数触发的事件数添加函数主机的其他实例来扩展 CPU 和内存资源。 消耗计划中的函数主机的每个实例都限制为 1.5 GB 内存和一个 CPU。  主机实例是整个函数应用，这意味着函数应用中的所有函数共享某个实例中的资源并同时缩放。 共享同一消耗计划的函数应用单独缩放。  在高级计划中，计划大小将确定该实例上该计划中所有应用的可用内存和 CPU。  
+在消耗和高级计划中，Azure Functions 基础结构通过基于其函数触发的事件数来添加其他函数主机实例，从而缩放 CPU 和内存资源。 消耗计划中托管的每个函数实例限制为 1.5 GB 的内存和一个 CPU。  主机实例是整个函数应用，这意味着函数应用中的所有函数共享某个实例中的资源并同时缩放。 共享同一消耗计划的函数应用单独缩放。  在高级计划中，计划大小将确定该实例上该计划中的所有应用程序的可用内存和 CPU。  
 
 函数代码文件存储在函数主要存储帐户中的 Azure 文件共享上。 删除函数应用的主存储帐户时，函数代码文件将被删除并且无法恢复。
 
@@ -152,24 +152,24 @@ Azure Functions 的缩放单位为函数应用。 横向扩展函数应用时，
 
 缩放可根据多种因素而异，可根据选定的触发器和语言以不同的方式缩放。 需要注意缩放行为的以下几个细节：
 
-* 单个函数应用仅扩展到最多 200 个实例。 不过，单个实例每次可以处理多个消息或请求，因此，对并发执行数没有规定的限制。
-* 对于 HTTP 触发器，最多每秒分配一次新实例。
-* 对于非 HTTP 触发器，最多每 30 秒分配一次新实例。 在[高级计划中](#premium-plan)运行时，缩放速度更快。
-* 对于服务总线触发器，请使用_资源管理_权限进行最有效的缩放。 使用_侦听_权限时，缩放不太准确，因为队列长度不能用于通知缩放决策。 要了解有关在服务总线访问策略中设置权限的更多信息，请参阅[共享访问授权策略](../service-bus-messaging/service-bus-sas.md#shared-access-authorization-policies)。
+* 单函数应用仅可扩大到最多200个实例。 不过，单个实例每次可以处理多个消息或请求，因此，对并发执行数没有规定的限制。
+* 对于 HTTP 触发器，每秒最多分配一个新实例。
+* 对于非 HTTP 触发器，每隔30秒分配最多一个新实例。 在[高级计划](#premium-plan)中运行时，缩放速度会更快。
+* 对于服务总线触发器，使用对资源的_管理_权限，以实现最有效的缩放。 使用_侦听_权限，缩放并不太准确，因为队列长度不能用于通知缩放决定。 若要详细了解如何在服务总线访问策略中设置权限，请参阅[共享访问授权策略](../service-bus-messaging/service-bus-sas.md#shared-access-authorization-policies)。
 * 有关事件中心触发器，请参阅参考文章中的[缩放指南](functions-bindings-event-hubs-trigger.md#scaling)。 
 
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>可缩放应用的最佳做法和模式
 
 函数应用的许多方面会影响其缩放，包括主机配置、运行时占用空间和资源效率。  有关详细信息，请查看[性能注意事项一文的“可扩展”部分](functions-best-practices.md#scalability-best-practices)。 还要注意随着函数应用的扩展，连接是如何实施的。 有关详细信息，请参阅[如何在 Azure Functions 中管理连接](manage-connections.md)。
 
-有关在 Python 和 Node.js 中缩放的其他信息，请参阅[Azure 函数 Python 开发人员指南 - 缩放和并发和并发](functions-reference-python.md#scaling-and-concurrency)和[Azure 函数 Node.js 开发人员指南 - 缩放和并发](functions-reference-node.md#scaling-and-concurrency)。
+有关 Python 和 node.js 中的缩放的其他信息，请参阅[Azure Functions Python 开发人员指南-缩放和并发性](functions-reference-python.md#scaling-and-concurrency)和[Azure Functions node.js 开发人员指南-缩放和并发](functions-reference-node.md#scaling-and-concurrency)。
 
 ### <a name="billing-model"></a>计费模式
 
 不同计划的计费在 [Azure Functions 定价页](https://azure.microsoft.com/pricing/details/functions/)中有详细介绍。 使用量在 Function App 级别聚合，只会统计函数代码的执行时间。 以下是计费单位：
 
 * 以千兆字节/秒 (GB-s) 计量的资源消耗量****。 根据内存大小和函数应用中所有函数的执行时间组合计算得出。 
-* **执行**。 每次为响应事件触发而执行函数时记为一次。
+* **Executions**执行。 每次为响应事件触发而执行函数时记为一次。
 
 在[帐单常见问题解答](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ)中可以找到有关如何了解消费帐单的有用查询和信息。
 

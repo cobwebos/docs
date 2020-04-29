@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
 ms.openlocfilehash: 295141dfd9b84428e2ee69354ab0c249fa46d1b6
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80998891"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>使用 Azure PowerShell cmdlet 监视和管理流分析作业
@@ -50,7 +50,7 @@ New-AzResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
 
 
 > [!NOTE]
-> 以编程方式创建的流分析作业默认情况下并不启用监视功能。  您可以通过导航到作业的"监视器"页并单击"启用"按钮在 Azure 门户中手动启用监视，也可以按照[Azure 流分析 - 以编程方式监视流分析作业的步骤](stream-analytics-monitor-jobs.md)以编程方式执行此操作。
+> 以编程方式创建的流分析作业默认情况下并不启用监视功能。  可以在 Azure 门户中手动启用监视功能，只需导航到作业的“监视”页，并单击“启用”按钮即可；也可以通过编程方式来执行此操作，只需按照 [Azure 流分析 - 以编程方式监视流分析作业](stream-analytics-monitor-jobs.md)中的步骤操作即可。
 > 
 > 
 
@@ -198,7 +198,7 @@ Get-AzStreamAnalyticsQuota -Location "Central US"
 
 此 PowerShell 命令返回有关美中地区配额和流式处理单位使用情况的信息。
 
-### <a name="get-azurestreamanalyticstransformation--get-azstreamanalyticstransformation"></a>获取 Azure 流分析转换 |获取阿兹特流分析转型
+### <a name="get-azurestreamanalyticstransformation--get-azstreamanalyticstransformation"></a>Get-azurestreamanalyticstransformation |AzStreamAnalyticsTransformation
 获取在流分析作业中定义的特定转换的相关信息。
 
 **示例 1**
@@ -226,7 +226,7 @@ Get-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-C
 
 如果指定了 -Force 参数，同时又指定了一个现有的输入名称，则会在不进行确认的情况下替换该输入。
 
-有关 JSON 文件结构和内容的详细信息，请参阅[流分析管理 REST API 参考库][stream.analytics.rest.api.reference]的[创建输入（Azure 流分析）][msdn-rest-api-create-stream-analytics-input]部分。
+有关 JSON 文件结构和内容的详细信息，请参阅[流分析管理 REST API 参考库][msdn-rest-api-create-stream-analytics-input]的[创建输入（Azure 流分析）][stream.analytics.rest.api.reference]部分。
 
 **示例 1**
 
@@ -285,7 +285,7 @@ New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US
 
 如果指定了 -Force 参数，同时又指定了一个现有的作业名称，则会在不进行确认的情况下替换作业定义。
 
-有关 JSON 文件结构和内容的详细信息，请参阅[流分析管理 REST API 参考库][stream.analytics.rest.api.reference]的[创建流分析作业][msdn-rest-api-create-stream-analytics-job]部分。
+有关 JSON 文件结构和内容的详细信息，请参阅[流分析管理 REST API 参考库][msdn-rest-api-create-stream-analytics-job]的[创建流分析作业][stream.analytics.rest.api.reference]部分。
 
 **示例 1**
 
@@ -328,7 +328,7 @@ New-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -
 
 如果指定了 -Force 参数，同时又指定了一个现有的输出名称，则会在不进行确认的情况下替换该输出。
 
-有关 JSON 文件结构和内容的详细信息，请参阅[流分析管理 REST API 参考库][stream.analytics.rest.api.reference]的[创建输出（Azure 流分析）][msdn-rest-api-create-stream-analytics-output]部分。
+有关 JSON 文件结构和内容的详细信息，请参阅[流分析管理 REST API 参考库][msdn-rest-api-create-stream-analytics-output]的[创建输出（Azure 流分析）][stream.analytics.rest.api.reference]部分。
 
 **示例 1**
 
@@ -371,7 +371,7 @@ New-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-U
 
 如果指定了 -Force 参数，同时又指定了一个现有的转换名称，则会在不进行确认的情况下替换转换。
 
-有关 JSON 文件结构和内容的详细信息，请参阅[流分析管理 REST API 参考库][stream.analytics.rest.api.reference]的[创建转换（Azure 流分析）][msdn-rest-api-create-stream-analytics-transformation]部分。
+有关 JSON 文件结构和内容的详细信息，请参阅[流分析管理 REST API 参考库][msdn-rest-api-create-stream-analytics-transformation]的[创建转换（Azure 流分析）][stream.analytics.rest.api.reference]部分。
 
 **示例 1**
 
@@ -542,11 +542,11 @@ Test-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-
 此 PowerShell 命令测试 StreamingJob 中输出 Output 的连接状态。  
 
 ## <a name="get-support"></a>获取支持
-有关进一步帮助，请尝试我们的[Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。 
+如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。 
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)
-* [使用 Azure 流分析开始](stream-analytics-real-time-fraud-detection.md)
+* [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
 * [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

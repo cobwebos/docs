@@ -11,10 +11,10 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.openlocfilehash: ad365c2d4c171105d8dec89d818ef481361d1ff8
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81272587"
 ---
 # <a name="moderate-text-from-the-api-console"></a>从 API 控制台审查文本
@@ -23,44 +23,44 @@ ms.locfileid: "81272587"
 
 ## <a name="get-your-api-key"></a>获取 API 密钥
 
-必须有订阅密钥，才能在联机控制台中试用 API。 订阅密钥位于“设置”**** 选项卡上的“Ocp-Apim-Subscription-Key”**** 框中。 有关详细信息，请参阅[概述](overview.md)。
+必须有订阅密钥，才能在联机控制台中试用 API。 订阅密钥位于“设置”  选项卡上的“Ocp-Apim-Subscription-Key”  框中。 有关详细信息，请参阅[概述](overview.md)。
 
 ## <a name="navigate-to-the-api-reference"></a>导航到 API 参考
 
 转到[文本审查 API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f)。 
 
-  “文本 - 屏幕”**** 页随即打开。
+  “文本 - 屏幕”  页随即打开。
 
 ## <a name="open-the-api-console"></a>打开 API 控制台
 
-对于“开放 API 测试控制台”****，选择与所在位置最相关的区域。 
+对于“开放 API 测试控制台”  ，选择与所在位置最相关的区域。 
 
   ![“文本 - 屏幕”页区域选择](images/test-drive-region.png)
 
-  文本 - 屏幕**** API 控制台随即打开。
+  文本 - 屏幕  API 控制台随即打开。
 
 ## <a name="select-the-inputs"></a>选择输入
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-在文本屏幕中选择要使用的查询参数。 在本例中，使用语言**** 的默认值。 也可以将其留空，因为作为其执行的一部分，该操作将自动检测可能的语言。
+在文本屏幕中选择要使用的查询参数。 在本例中，使用语言  的默认值。 也可以将其留空，因为作为其执行的一部分，该操作将自动检测可能的语言。
 
 > [!NOTE]
 > 对于 **language** 参数，请分配 `eng` 或将其留空以查看机器辅助的**分类**响应（预览功能）。 **此功能仅支持英语**。
 >
-> 对于不雅用语**** 检测，请使用本文所列的支持语言的 [ISO 639-3 代码](http://www-01.sil.org/iso639-3/codes.asp)或留空。
+> 对于不雅用语  检测，请使用本文所列的支持语言的 [ISO 639-3 代码](http://www-01.sil.org/iso639-3/codes.asp)或留空。
 
-对于“自动更正”****、“PII”**** 和“分类（预览）”****，请选择“true”****。 将“ListId”**** 字段保留空白。
+对于“自动更正”  、“PII”  和“分类（预览）”  ，请选择“true”  。 将“ListId”  字段保留空白。
 
   ![文本 - 屏幕控制台查询参数](images/text-api-console-inputs.PNG)
 
 ### <a name="content-type"></a>内容类型
 
-有关 **Content-Type**，选择你想要显示的内容类型。 在本例中，使用默认的 text/plain**** 内容类型。 在“Ocp-Apim-Subscription-Key”框中，输入订阅密钥****。
+有关 **Content-Type**，选择你想要显示的内容类型。 在本例中，使用默认的 text/plain  内容类型。 在“Ocp-Apim-Subscription-Key”框中，输入订阅密钥  。
 
 ### <a name="sample-text-to-scan"></a>要扫描的示例文本
 
-在“请求正文”**** 框中，输入一些文本。 以下示例显示文本中的有意拼写错误。
+在“请求正文”  框中，输入一些文本。 以下示例显示文本中的有意拼写错误。
 
 ```
 Is this a grabage or crap email abcdef@abcd.com, phone: 4255550111, IP: 
@@ -137,4 +137,4 @@ Is this a grabage or crap email abcdef@abcd.com, phone: 4255550111, IP:
 
 ## <a name="next-steps"></a>后续步骤
 
-在代码中使用 REST API，或按照[.NET SDK 快速入门](dotnet-sdk-quickstart.md)与应用程序集成。
+请在代码中使用 REST API，或按照[.NET SDK 快速入门](dotnet-sdk-quickstart.md)与应用程序集成。

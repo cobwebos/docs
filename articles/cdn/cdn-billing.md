@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/13/2019
 ms.author: allensu
 ms.openlocfilehash: d3a2dfba98f83d34c3e83ec865e3b692f7dbacd2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81254217"
 ---
 # <a name="understanding-azure-cdn-billing"></a>了解 Azure CDN 计费
@@ -62,7 +62,7 @@ Azure CDN 计费区域取决于将内容分发到最终用户的源服务器的�
 - 以 GB 为单位的传输量：通过传输来填充 CDN 缓存的数据量。
 
 > [!NOTE]
-> 从 2019 年 10 月开始，如果您使用 Microsoft 的 Azure CDN，则从 Azure 中托管的源到 CDN POP 的数据传输成本是免费的。 来自 Verizon 的 Azure CDN 和 Akamai 的 Azure CDN 受以下描述费率的约束。
+> 从10月2019开始，如果你使用的是 Microsoft 的 Azure CDN，则从 Azure 托管的数据传输到 CDN Pop 的成本是免费的。 来自 Verizon 和 Akamai 的 Azure CDN 的 Azure CDN 服从下面所述的费率。
 
 有关 Azure 存储计费的详细信息，请参阅 [Understanding Azure Storage Billing – Bandwidth, Transactions, and Capacity](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/)（了解 Azure 存储计费 - 带宽、事务和容量）。
 
@@ -87,8 +87,8 @@ CDN POP 会在每次需要填充其缓存时向要缓存的对象的源提出请
 
 - TTL 影响：对象的 TTL 越高，意味着需要从源提取该对象的频率越低， 同时还意味着客户端（例如浏览器）能够缓存该对象的时间越长，因此可以减少 CDN 的事务。
 
-## <a name="which-origin-services-are-eligible-for-free-data-transfer-with-azure-cdn-from-microsoft"></a>哪些源服务有资格使用 Microsoft 的 Azure CDN 进行免费数据传输？ 
-如果使用以下 Azure 服务之一作为 CDN 源，则从源到 CDN POP 的数据传输不会向您收费。 
+## <a name="which-origin-services-are-eligible-for-free-data-transfer-with-azure-cdn-from-microsoft"></a>哪些源服务有资格通过 Microsoft Azure CDN 进行免费数据传输？ 
+如果使用以下 Azure 服务之一作为 CDN 源，则不会向 CDN Pop 发送数据传输费用。 
 
 - Azure 存储
 - Azure 媒体服务

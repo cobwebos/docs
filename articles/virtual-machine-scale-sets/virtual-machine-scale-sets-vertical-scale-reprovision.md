@@ -1,5 +1,5 @@
 ---
-title: 垂直缩放 Azure 虚拟机缩放集
+title: 垂直缩放 Azure 虚拟机规模集
 description: 如何使用 Azure 自动化垂直缩放虚拟机以响应监视警报
 author: mimckitt
 tags: azure-resource-manager
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mimckitt
 ms.openlocfilehash: c28c50ef78f67daa6adc4022d8feb559f5c1c1f0
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81273352"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>使用虚拟机规模集垂直自动缩放
@@ -38,7 +38,7 @@ ms.locfileid: "81273352"
 4. 将警报添加到使用 Webhook 通知的虚拟机规模集。
 
 > [!NOTE]
-> 由于第一个虚拟机的大小有限制，它可以调整到的大小可能会由于当前虚拟机部署到的群集的其他大小而受到限制。 在本文中使用的已发布自动化 Runbook 中，我们将遵循这种限制，只在以下 VM 大小对的范围内进行缩放。 这意味着，Standard_D1v2 虚拟机不会突然间扩展到 Standard_G5，或者突然间缩减到 Basic_A0。 此外，不支持限制虚拟机大小向上/向下扩展。 可以选择在以下大小对之间缩放：
+> 由于第一个虚拟机的大小有限制，它可以调整到的大小可能会由于当前虚拟机部署到的群集的其他大小而受到限制。 在本文中使用的已发布自动化 Runbook 中，我们将遵循这种限制，只在以下 VM 大小对的范围内进行缩放。 这意味着，Standard_D1v2 虚拟机不会突然间扩展到 Standard_G5，或者突然间缩减到 Basic_A0。 还不支持约束的虚拟机大小增加/减少。 可以选择在以下大小对之间缩放：
 > 
 > | VM 大小缩放对 |  |
 > | --- | --- |
@@ -88,7 +88,7 @@ ms.locfileid: "81273352"
 > 
 
 ## <a name="create-an-azure-automation-account-with-run-as-capability"></a>使用运行时功能创建 Azure 自动化帐户
-需要做的第一件事是创建一个 Azure 自动化帐户来托管用于缩放虚拟机规模集实例的 Runbook。 最近，[Azure 自动化](https://azure.microsoft.com/services/automation/)引入了“运行方式帐户”功能，使用该功能可以代表用户设置服务主体来自动运行 Runbook。 有关详细信息，请参阅：
+需要做的第一件事是创建一个 Azure 自动化帐户来托管用于缩放虚拟机规模集实例的 Runbook。 最近，[Azure 自动化](https://azure.microsoft.com/services/automation/)引入了“运行方式帐户”功能，使用该功能可以代表用户设置服务主体来自动运行 Runbook。 有关详细信息，请参见:
 
 * [使用 Azure 运行方式帐户进行 Runbook 身份验证](../automation/automation-sec-configure-azure-runas-account.md)
 
@@ -157,7 +157,7 @@ Add-AzMetricAlertRule  -Name  $alertName `
 * [Azure Monitor PowerShell 快速入门示例](../azure-monitor/platform/powershell-quickstart-samples.md)
 * [Azure Monitor 跨平台 CLI 快速入门示例](../azure-monitor/platform/cli-samples.md)
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>“摘要”
 
 本文对简单的垂直缩放示例进行了介绍。 借助这些构建基块 - 自动化帐户、Runbook、Webhook、警报，可以使用一组自定义操作连接各种事件。
 
