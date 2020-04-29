@@ -1,7 +1,7 @@
 ---
 title: 文本合并认知技能
 titleSuffix: Azure Cognitive Search
-description: 将字段集合中的文本合并到合并字段中。 在 Azure 认知搜索中的 AI 丰富管道中使用此认知技能。
+description: 将字段集合中的文本合并到合并字段中。 在 Azure 认知搜索中的 AI 扩充管道中使用此认知技能。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,15 +9,15 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 98ea416305f080850d85498f74693eb2d45b0944
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77162338"
 ---
 #   <a name="text-merge-cognitive-skill"></a>文本合并认知技能
 
-文本合并**** 技能会将字段集合中的文本合并到单个字段中。 
+文本合并  技能会将字段集合中的文本合并到单个字段中。 
 
 > [!NOTE]
 > 此技能未绑定到认知服务 API，你使用它无需付费。 但是，你仍然应该[附加认知服务资源](cognitive-search-attach-cognitive-services.md)，以覆盖**免费**资源选项，该选项限制你每天进行少量的每日扩充。
@@ -29,10 +29,10 @@ Microsoft.Skills.Text.MergeSkill
 
 参数区分大小写。
 
-| 参数名称     | 描述 |
+| 参数名称     | 说明 |
 |--------------------|-------------|
-| insertPreTag  | 每次插入之前要包含的字符串。 默认值为 `" "`。 要忽略空格，请将值设置为 `""`。  |
-| insertPostTag | 每次插入后要包含的字符串。 默认值为 `" "`。 要忽略空格，请将值设置为 `""`。  |
+| insertPreTag  | 每次插入之前要包含的字符串。 默认值是 `" "`。 要忽略空格，请将值设置为 `""`。  |
+| insertPostTag | 每次插入后要包含的字符串。 默认值是 `" "`。 要忽略空格，请将值设置为 `""`。  |
 
 
 ##  <a name="sample-input"></a>示例输入
@@ -55,7 +55,7 @@ Microsoft.Skills.Text.MergeSkill
 ```
 
 ##  <a name="sample-output"></a>示例输出
-此示例显示之前输入的输出，假设将 insertPreTag** 设置为 `" "`并将 insertPostTag** 设置为 `""`。 
+此示例显示之前输入的输出，假设将 insertPreTag  设置为 `" "`并将 insertPostTag  设置为 `""`。 
 
 ```json
 {
@@ -75,7 +75,7 @@ Microsoft.Skills.Text.MergeSkill
 
 使用文本合并的一个常见场景是将图像的文本表示形式（OCR 技能中的文本或图像的描述文字）合并到文档的内容字段中。 
 
-以下示例技能使用 OCR 技能从文档中嵌入的图像中提取文本。 接下来，它会创建 merged_text** 字段以包含每个图像的原始和 OCRed 文本。 可在[此处](https://docs.microsoft.com/azure/search/cognitive-search-skill-ocr)了解有关 OCR 技能的详细信息。
+以下示例技能使用 OCR 技能从文档中嵌入的图像中提取文本。 接下来，它会创建 merged_text  字段以包含每个图像的原始和 OCRed 文本。 可在[此处](https://docs.microsoft.com/azure/search/cognitive-search-skill-ocr)了解有关 OCR 技能的详细信息。
 
 ```json
 {
@@ -126,7 +126,7 @@ Microsoft.Skills.Text.MergeSkill
   ]
 }
 ```
-以上示例假设存在规范化的图像字段。 要获取规范化的图像字段，请将索引器定义中的 imageAction** 配置设置为 generateNormalizedImages**，如下所示：
+以上示例假设存在规范化的图像字段。 要获取规范化的图像字段，请将索引器定义中的 imageAction  配置设置为 generateNormalizedImages  ，如下所示：
 
 ```json
 {
@@ -140,7 +140,7 @@ Microsoft.Skills.Text.MergeSkill
 }
 ```
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 + [内置技能](cognitive-search-predefined-skills.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)

@@ -1,6 +1,6 @@
 ---
 title: 多 DRM 内容保护系统 - Azure 媒体服务 v3
-description: 本文详细介绍了如何使用 Azure 媒体服务设计多 DRM 内容保护系统。
+description: 本文详细说明了如何使用 Azure 媒体服务设计多 DRM 内容保护系统。
 services: media-services
 documentationcenter: ''
 author: willzhan
@@ -15,10 +15,10 @@ ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
 ms.openlocfilehash: fbc6d6fa8f9a3b424eaec1f04a61b5ca24fe14fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77161777"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>设计带访问控制的多 DRM 内容保护系统 
@@ -49,7 +49,7 @@ ms.locfileid: "77161777"
 | --- | --- | --- |
 | **智能电视、STB** | PlayReady、Widevine 和/或其他 | 适用于 PlayReady 和/或 Widevine 的嵌入式浏览器/EME|
 | **Windows 10** | PlayReady | 适用于 PlayReady 的 Microsoft Edge/IE11|
-| **安卓设备（手机、平板电脑、电视）** |Widevine |适用于 Widevine 的 Chrome |
+| **Android 设备（手机、平板电脑、电视）** |Widevine |适用于 Widevine 的 Chrome |
 | **iOS** | FairPlay | 适用于 FairPlay 的 Safari（自 iOS 11.2 起） |
 | **macOS** | FairPlay | 适用于 FairPlay 的 Safari（自 Mac OS X 10.11 + El Capitan 版 Safari 9+ 起）|
 | **tvOS** | FairPlay | |
@@ -103,7 +103,7 @@ DRM 子系统可能包含以下组件：
 
 以下部分介绍密钥管理的设计。
 
-| **内容关键到资产** | **方案** |
+| **ContentKey** | **方案** |
 | --- | --- |
 | 一对一 |最简单的情况。 它提供最精细的控制。 但是，此排列方式通常产生最高的许可证传送成本。 每个受保护的资产需要至少一个许可证请求。 |
 | 一对多 |可以对多个资产使用相同的内容密钥。 例如，对于如流派或流派子集（或电影基因）的逻辑组中的所有资产，可以使用单个内容密钥。 |
@@ -133,11 +133,11 @@ DRM 子系统可能包含以下组件：
 
 | **构建基块** | **技术** |
 | --- | --- |
-| **播放器** |[Azure 媒体播放器](https://azure.microsoft.com/services/media-services/media-player/) |
-| **身份提供者（IDP）** |Azure Active Directory (Azure AD) |
+| **播放器** |[Azure Media Player](https://azure.microsoft.com/services/media-services/media-player/) |
+| **标识提供者（IDP）** |Azure Active Directory (Azure AD) |
 | **安全令牌服务 (STS)** |Azure AD |
 | **DRM 保护工作流** |Azure 媒体服务动态保护 |
-| **DRM 许可证交付** |* 媒体服务许可证传送（PlayReady、Widevine、FairPlay） <br/>* Axinom 许可证服务器 <br/>* 自定义 PlayReady 许可证服务器 |
+| **DRM 许可证传送** |* 媒体服务许可证传送（PlayReady、Widevine、FairPlay） <br/>* Axinom 许可证服务器 <br/>* 自定义 PlayReady 许可证服务器 |
 | **源** |Azure 媒体服务流式处理终结点 |
 | **密钥管理** |不需要参考实现 |
 | **内容管理** |一个 C# 控制台应用程序 |
@@ -176,7 +176,7 @@ DRM 子系统可能包含以下组件：
 ### <a name="implementation-procedures"></a>实现过程
 实现包括下列步骤：
 
-1. 准备测试资产。 将测试视频编码/打包为媒体服务中的多比特率分段 MP4。 此资产*不受*DRM 保护。 DRM 保护稍后由动态保护完成。
+1. 准备测试资产。 将测试视频编码/打包为媒体服务中的多比特率分段 MP4。 此资产*不*受 DRM 保护。 DRM 保护稍后由动态保护完成。
 
 2. 创建密钥 ID 和内容密钥（可以选择从密钥种子中获取）。 在此情况下，不需要密钥管理系统，因为只需要对一些测试资产使用单个密钥 ID 和内容密钥。
 
@@ -200,7 +200,7 @@ DRM 子系统可能包含以下组件：
 
 9. 下表显示了测试矩阵。
 
-    | **DRM** | **浏览器** | **已获授权用户的结果** | **无权限用户的结果** |
+    | **DRM** | **浏览器** | **已获授权用户的结果** | **未获授权用户的结果** |
     | --- | --- | --- | --- |
     | **PlayReady** |Windows 10 上的 Microsoft Edge 或 Internet Explorer 11 |成功 |失败 |
     | **Widevine** |Chrome、Firefox、Opera |成功 |失败 |
@@ -276,7 +276,7 @@ DRM 子系统可能包含以下组件：
 
 由于 Azure AD 信任 Microsoft 帐户域，因此可以将以下任何域的任何帐户添加到自定义 Azure AD 租户，并使用该帐户登录：
 
-| **域名** | **域** |
+| **域名** | **Domain** |
 | --- | --- |
 | **自定义 Azure AD 租户域** |somename.onmicrosoft.com |
 | **企业域** |microsoft.com |
@@ -352,6 +352,6 @@ Widevine 不会阻止对受保护的视频进行屏幕截图。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [常见问题](frequently-asked-questions.md)
+* [常见问题解答](frequently-asked-questions.md)
 * [内容保护概述](content-protection-overview.md)
 * [使用 DRM 保护内容](protect-with-drm.md)

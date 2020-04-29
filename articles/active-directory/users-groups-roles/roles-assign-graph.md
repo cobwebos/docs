@@ -1,5 +1,5 @@
 ---
-title: 使用 Microsoft 图形 API 分配 Azure AD 管理员角色 |微软文档
+title: 使用 Microsoft Graph API 分配 Azure AD 管理员角色 | Microsoft Docs
 description: 在 Azure Active Directory 中使用 Graph API 分配和删除 Azure AD 管理员角色
 services: active-directory
 author: curtand
@@ -14,15 +14,15 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3632f8a360df8837569104232b7380fdc8383953
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77559141"
 ---
-# <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>使用 Azure 活动目录中的 Microsoft 图形 API 分配自定义管理员角色 
+# <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>使用 Microsoft Graph API 在 Azure Active Directory 中分配自定义管理员角色 
 
-您可以使用 Microsoft 图形 API 自动分配角色的方式。 本文介绍在 roleAssignments 上进行的 POST、GET 和 DELETE 操作。
+可以使用 Microsoft Graph API 自动将角色分配给用户帐户。 本文介绍在 roleAssignments 上进行的 POST、GET 和 DELETE 操作。
 
 ## <a name="required-permissions"></a>所需的权限
 

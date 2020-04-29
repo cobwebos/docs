@@ -7,10 +7,10 @@ ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.openlocfilehash: 73905483850a47a9d036bef1b9e1ee60d3484555
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77484581"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>在 Azure 流分析中分析 JSON 和 Avro 数据
@@ -18,7 +18,7 @@ ms.locfileid: "77484581"
 Azure 流分析支持处理采用 CSV、JSON 和 Avro 数据格式的事件。 JSON 和 Avro 数据都可以结构化，并包含一些复杂类型，例如嵌套对象（记录）和数组。 
 
 >[!NOTE]
->事件中心捕获创建的 AVRO 文件使用特定的格式，要求您使用*自定义反序列化功能*。 有关详细信息，请参阅使用[.NET 自定义反序列化器 以任何格式读取输入](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples)。
+>事件中心捕获创建的 AVRO 文件使用特定的格式，该格式要求你使用*自定义反序列*化功能。 有关详细信息，请参阅[使用 .net 自定义反以任意格式读取输入](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples)。
 
 
 
@@ -69,7 +69,7 @@ FROM input
 
 
 ### <a name="select-all-properties"></a>选择所有属性
-可以使用“*”通配符选择嵌套记录的所有属性。 请考虑以下示例：
+可以使用“*”通配符选择嵌套记录的所有属性。 请看下面的示例：
 
 ```SQL
 SELECT
@@ -87,7 +87,7 @@ FROM input
 
 ### <a name="access-nested-fields-when-property-name-is-a-variable"></a>当属性名称是变量时访问嵌套字段
 
-如果属性名称是变量，请使用[GetRecord属性值](https://docs.microsoft.com/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics)函数。 这允许生成动态查询，而无需硬编码属性名称。
+如果属性名称是变量，请使用[GetRecordPropertyValue](https://docs.microsoft.com/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics)函数。 这允许在不硬编码属性名称的情况下生成动态查询。
 
 例如，假设示例数据流需要**与包含各设备传感器阈值的参考数据联接**。 下面显示了此类参考数据的片段。
 
@@ -125,7 +125,7 @@ WHERE
 
 |DeviceID|SensorName|AlertMessage|
 |-|-|-|
-|12345|湿度|警报 ： 高于阈值的传感器|
+|12345|湿度|警报：传感器超出阈值|
 
 ### <a name="convert-record-fields-into-separate-events"></a>将记录字段转换为单独的事件
 
@@ -169,15 +169,15 @@ SELECT DeviceID, PropertyValue AS Temperature INTO TemperatureOutput FROM Stage0
 SELECT DeviceID, PropertyValue AS Humidity INTO HumidityOutput FROM Stage0 WHERE PropertyName = 'Humidity'
 ```
 
-### <a name="parse-json-record-in-sql-reference-data"></a>在 SQL 引用数据中分析 JSON 记录
-在作业中使用 Azure SQL 数据库作为参考数据时，可以有一个包含 JSON 格式数据的列。 下面显示了一个示例。
+### <a name="parse-json-record-in-sql-reference-data"></a>分析 SQL 引用数据中的 JSON 记录
+使用 Azure SQL 数据库作为作业中的引用数据时，可能会有一个数据采用 JSON 格式的列。 下面显示了一个示例。
 
 |DeviceID|数据|
 |-|-|
-|12345|{"键"："值 1"}|
-|54321|{"键"："值 2"}|
+|12345|{"key"： "value1"}|
+|54321|{"key"： "value2"}|
 
-您可以通过编写简单的 JavaScript 用户定义的函数来分析*数据*列中的 JSON 记录。
+可以通过编写简单的 JavaScript 用户定义函数来分析*数据*列中的 JSON 记录。
 
 ```javascript
 function parseJson(string) {
@@ -185,7 +185,7 @@ return JSON.parse(string);
 }
 ```
 
-然后，您可以在流分析查询中创建一个步骤，如下所示，以访问 JSON 记录的字段。
+然后，你可以在流分析查询中创建一个步骤，如下所示，访问 JSON 记录的字段。
 
  ```SQL
  WITH parseJson as

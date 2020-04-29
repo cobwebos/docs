@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 管理 Apache Hadoop 群集 - Azure HDInsight
+title: 通过 PowerShell 管理 Apache Hadoop 群集-Azure HDInsight
 description: 了解如何使用 Azure PowerShell 针对 HDInsight 中的 Apache Hadoop 群集执行管理任务。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/13/2020
 ms.openlocfilehash: 104975e6424ed96d43434a588997957033c31d93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77560348"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>使用 Azure PowerShell 管理 HDInsight 中的 Apache Hadoop 群集
@@ -21,7 +21,7 @@ ms.locfileid: "77560348"
 
 Azure PowerShell 可用于在 Azure 中控制和自动执行工作负荷的部署和管理。 本文介绍了如何使用 Azure PowerShell Az 模块管理 Azure HDInsight 中的 [Apache Hadoop](https://hadoop.apache.org/) 群集。 有关 HDInsight PowerShell cmdlet 的列表，请查看 [Az.HDInsight 参考](https://docs.microsoft.com/powershell/module/az.hdinsight)。
 
-如果没有 Azure 订阅，请先创建[一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。"
+如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -57,7 +57,7 @@ Get-AzHDInsightCluster -ClusterName <Cluster Name>
 Remove-AzHDInsightCluster -ClusterName <Cluster Name>
 ```
 
-还可通过删除包含该群集的资源组删除群集。 删除资源群将删除组中的所有资源（包括默认存储帐户）。
+还可以通过删除包含群集的资源组来删除群集。 删除资源群将删除组中的所有资源（包括默认存储帐户）。
 
 ```powershell
 Remove-AzResourceGroup -Name <Resource Group Name>
@@ -65,7 +65,7 @@ Remove-AzResourceGroup -Name <Resource Group Name>
 
 ## <a name="scale-clusters"></a>缩放群集
 
-使用群集缩放功能可更改 Azure HDInsight 中运行的群集使用的工作节点数，而无需重新创建群集。 若要使用 Azure PowerShell 更改 Hadoop 群集大小，请从客户端计算机运行以下命令：
+使用群集缩放功能，可更改 Azure HDInsight 中运行的群集使用的辅助节点数，而无需重新创建群集。 若要使用 Azure PowerShell 更改 Hadoop 群集大小，请从客户端计算机运行以下命令：
 
 ```powershell
 Set-AzHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <NewSize>
@@ -75,7 +75,7 @@ Set-AzHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <New
 
 ## <a name="update-http-user-credentials"></a>更新 HTTP 用户凭据
 
-[设置-AzHDInsight网关凭据](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightgatewaycredential)设置 Azure HDInsight 群集的网关 HTTP 凭据。
+[Set-AzHDInsightGatewayCredential](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightgatewaycredential) 设置 Azure HDInsight 群集的网关 HTTP 凭据。
 
 ```powershell
 $clusterName = "CLUSTERNAME"
@@ -151,4 +151,4 @@ $resourceGroupName = $cluster.ResourceGroup
 * [使用命令行接口管理 HDInsight](hdinsight-administer-use-command-line.md)
 * [创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)
 * [以编程方式提交 Apache Hadoop 作业](hadoop/submit-apache-hadoop-jobs-programmatically.md)
-* [开始使用 Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
+* [Azure HDInsight 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)

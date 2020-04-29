@@ -5,15 +5,15 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: d61600801286126ea6ffb9a97bc5655b6f233816
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77562184"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Durable Functions 中的扇出/扇入方案 - 云备份示例
 
-“扇出/扇入”是指同时执行多个函数，然后针对结果执行某种聚合的模式。** 本文讲解一个使用 [Durable Functions](durable-functions-overview.md) 实现扇入/扇出方案的示例。 该示例是一个持久函数，可将应用的全部或部分站点内容备份到 Azure 存储中。
+“扇出/扇入”是指同时执行多个函数，然后针对结果执行某种聚合的模式。  本文讲解一个使用 [Durable Functions](durable-functions-overview.md) 实现扇入/扇出方案的示例。 该示例是一个持久函数，可将应用的全部或部分站点内容备份到 Azure 存储中。
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -21,7 +21,7 @@ ms.locfileid: "77562184"
 
 在此示例中，函数会将指定目录下的所有文件以递归方式上传到 Blob 存储。 它们还会统计已上传的字节总数。
 
-可以编写单个函数来处理所有这些操作。 会遇到的主要问题是**可伸缩性**。 单个函数执行只能在单个虚拟机上运行，因此吞吐量将受到该单个 VM 的吞吐量的限制。 另一个问题是**可靠性**。 如果中途失败或者整个过程花费的时间超过 5 分钟，则备份可能以部分完成状态失败。 然后，需要重新开始备份。
+可以编写单个函数来处理所有这些操作。 会遇到的主要问题是**可伸缩性**。 单个函数执行只能在单个虚拟机上运行，因此，吞吐量会受到该 VM 的吞吐量限制。 另一个问题是**可靠性**。 如果中途失败或者整个过程花费的时间超过 5 分钟，则备份可能以部分完成状态失败。 然后，需要重新开始备份。
 
 更可靠的方法是编写两个正则函数：一个函数枚举文件并将文件名添加到队列，另一个函数从队列读取数据并将文件上传到 Blob 存储。 此方法可以提高吞吐量和可靠性，但需要预配和管理队列。 更重要的是，如果想要执行其他任何操作，例如报告已上传的字节总数，则这种做法会明显增大**状态管理**和**协调**的复杂性。
 
@@ -31,11 +31,11 @@ Durable Functions 方法提供前面所述的所有优势，并且其系统开�
 
 本文介绍示例应用中的以下函数：
 
-* `E2_BackupSiteContent`：一个[协调器函数](durable-functions-bindings.md#orchestration-trigger)，`E2_GetFileList`用于调用以获取要备份的文件列表，然后调用`E2_CopyFileToBlob`备份每个文件。
-* `E2_GetFileList`：返回目录中文件列表[的活动函数](durable-functions-bindings.md#activity-trigger)。
-* `E2_CopyFileToBlob`： 将单个文件备份到 Azure Blob 存储的活动函数。
+* `E2_BackupSiteContent`：一个[业务流程协调程序函数](durable-functions-bindings.md#orchestration-trigger)，它调用 `E2_GetFileList` 来获取要备份的文件列表，然后调用 `E2_CopyFileToBlob` 来备份每个文件。
+* `E2_GetFileList`：一个[活动函数](durable-functions-bindings.md#activity-trigger)，它返回目录中的文件列表。
+* `E2_CopyFileToBlob`：将单个文件备份到 Azure Blob 存储的一个活动函数。
 
-### <a name="e2_backupsitecontent-orchestrator-function"></a>E2_BackupSiteContent协调器功能
+### <a name="e2_backupsitecontent-orchestrator-function"></a>E2_BackupSiteContent 业务流程协调程序函数
 
 本质上，该业务流程协调程序函数执行以下操作：
 
@@ -51,13 +51,13 @@ Durable Functions 方法提供前面所述的所有优势，并且其系统开�
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs?range=16-42)]
 
-请注意 `await Task.WhenAll(tasks);` 行。 对 `E2_CopyFileToBlob` 函数的所有单个调用都未处于等待状态，这使它们可以并行运行。** 将此任务数组传递给 `Task.WhenAll` 时，会获得所有复制操作完成之前不会完成的任务。** 如果熟悉 .NET 中的任务并行库 (TPL) 的话，则对此过程也不会陌生。 区别在于，这些任务可以同时在多个虚拟机上运行，而持久功能扩展可确保端到端执行具有对进程回收的弹性。
+请注意 `await Task.WhenAll(tasks);` 行。 对 `E2_CopyFileToBlob` 函数的所有单个调用都未处于等待状态，这使它们可以并行运行。  将此任务数组传递给 `Task.WhenAll` 时，会获得所有复制操作完成之前不会完成的任务。  如果熟悉 .NET 中的任务并行库 (TPL) 的话，则对此过程也不会陌生。 差别在于，这些任务可在多个虚拟机上同时运行，Durable Functions 扩展可确保端到端执行能够弹性应对进程回收。
 
 完成 `Task.WhenAll` 并进入等待中状态后，我们知道所有函数调用都已完成，并已收到返回值。 每次调用 `E2_CopyFileToBlob` 都会返回已上传字节数，因此，将所有这些返回值相加就能计算出字节数总和。
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-函数使用标准*函数.json*进行协调器函数。
+此函数为业务流程协调程序函数使用标准的 *function.json*。
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/function.json)]
 
@@ -65,12 +65,12 @@ Durable Functions 方法提供前面所述的所有优势，并且其系统开�
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/index.js)]
 
-请注意 `yield context.df.Task.all(tasks);` 行。 `E2_CopyFileToBlob`*未*产生对函数的所有单个调用，从而允许它们并行运行。 将此任务数组传递给 `context.df.Task.all` 时，会获得所有复制操作完成之前不会完成的任务。** 如果您[`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)熟悉 JavaScript，那么这对您并不新鲜。 区别在于，这些任务可以同时在多个虚拟机上运行，而持久功能扩展可确保端到端执行具有对进程回收的弹性。
+请注意 `yield context.df.Task.all(tasks);` 行。 对 `E2_CopyFileToBlob` 函数的所有单个调用都未暂停，这使它们可以并行运行。  将此任务数组传递给 `context.df.Task.all` 时，会获得所有复制操作完成之前不会完成的任务。  如果你熟悉 JavaScript 中的 [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)，则这对你来说并不陌生。 差别在于，这些任务可在多个虚拟机上同时运行，Durable Functions 扩展可确保端到端执行能够弹性应对进程回收。
 
 > [!NOTE]
 > 虽然任务在概念上类似于 JavaScript 承诺，但业务流程协调程序函数应使用 `context.df.Task.all` 和 `context.df.Task.any`（而不是 `Promise.all` 和 `Promise.race`）来管理任务并行化。
 
-从`context.df.Task.all`屈服后，我们知道所有函数调用都已完成，并且将值返回给我们。 每次调用 `E2_CopyFileToBlob` 都会返回已上传字节数，因此，将所有这些返回值相加就能计算出字节数总和。
+完成 `context.df.Task.all` 并进入暂停状态后，我们知道所有函数调用都已完成，并已收到返回值。 每次调用 `E2_CopyFileToBlob` 都会返回已上传字节数，因此，将所有这些返回值相加就能计算出字节数总和。
 
 ---
 
@@ -78,15 +78,15 @@ Durable Functions 方法提供前面所述的所有优势，并且其系统开�
 
 与其他示例一样，帮助器活动函数无非是使用 `activityTrigger` 触发器绑定的正则函数。
 
-#### <a name="e2_getfilelist-activity-function"></a>E2_GetFileList活动功能
+#### <a name="e2_getfilelist-activity-function"></a>E2_GetFileList 活动函数
 
 # <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs?range=44-54)]
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-函数 *.json*文件`E2_GetFileList`如下所示：
+`E2_GetFileList` 的 *function.json* 文件如下所示：
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/function.json)]
 
@@ -94,31 +94,31 @@ Durable Functions 方法提供前面所述的所有优势，并且其系统开�
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/index.js)]
 
-函数使用`readdirp`模块（版本 2.x）递归读取目录结构。
+此函数使用 `readdirp` 模块（版本 2.x）以递归方式读取目录结构。
 
 ---
 
 > [!NOTE]
-> 你可能会疑惑，为何不直接将此代码放入业务流程协调程序函数？ 可以这样做，不过，这会破坏业务流程协调程序函数的基本规则，即，它们不得执行 I/O，包括本地文件系统的访问。 有关详细信息，请参阅[协调器函数代码约束](durable-functions-code-constraints.md)。
+> 你可能会疑惑，为何不直接将此代码放入业务流程协调程序函数？ 可以这样做，不过，这会破坏业务流程协调程序函数的基本规则，即，它们不得执行 I/O，包括本地文件系统的访问。 有关详细信息，请参阅[业务流程协调程序函数代码约束](durable-functions-code-constraints.md)。
 
-#### <a name="e2_copyfiletoblob-activity-function"></a>E2_CopyFileToBlob活动功能
+#### <a name="e2_copyfiletoblob-activity-function"></a>E2_CopyFileToBlob 活动函数
 
 # <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs?range=56-81)]
 
 > [!NOTE]
-> 您需要安装`Microsoft.Azure.WebJobs.Extensions.Storage`NuGet 包才能运行示例代码。
+> 需要安装 `Microsoft.Azure.WebJobs.Extensions.Storage` NuGet 包才能运行示例代码。
 
-函数使用 Azure 函数绑定的一些高级功能（即参数[`Binder`的使用），但](../functions-dotnet-class-library.md#binding-at-runtime)在本演练中，您无需担心这些详细信息。
+此函数使用了 Azure Functions 绑定的某些高级功能（即使用了 [`Binder` 参数](../functions-dotnet-class-library.md#binding-at-runtime)），但对于本演练，无需考虑这些细节。
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 `E2_CopyFileToBlob` 的 *function.json* 文件同样也很简单：
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E2_CopyFileToBlob/function.json)]
 
-JavaScript 实现使用[节点的 Azure 存储 SDK](https://github.com/Azure/azure-storage-node)将文件上载到 Azure Blob 存储。
+JavaScript 实现使用[适用于 Node 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-node) 将文件上传到 Azure Blob 存储。
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_CopyFileToBlob/index.js)]
 
@@ -127,7 +127,7 @@ JavaScript 实现使用[节点的 Azure 存储 SDK](https://github.com/Azure/azu
 实现从磁盘加载文件，并以异步方式将内容流式传输到“backups”容器中同名的 Blob。 返回值为已复制到存储的字节数，业务流程协调程序函数随后会使用此数字来计算总和。
 
 > [!NOTE]
-> 这是一个演示如何将 I/O 操作移入 `activityTrigger` 函数的极佳示例。 工作不仅可以分布在许多不同的计算机中，还可以从检查进度中获益。 如果主机进程出于任何原因终止，你就知道哪些上传操作已完成。
+> 这是一个演示如何将 I/O 操作移入 `activityTrigger` 函数的极佳示例。 这样，不仅可以在许多不同的计算机上分配工作，而且还能获得设置进度检查点的优势。 如果主机进程出于任何原因终止，你就知道哪些上传操作已完成。
 
 ## <a name="run-the-sample"></a>运行示例
 

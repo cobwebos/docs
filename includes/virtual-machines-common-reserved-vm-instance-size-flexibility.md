@@ -5,24 +5,24 @@ ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 02-18-2020
 ms.openlocfilehash: aebe8f05bd1a3607da6d1153c87490891fc6b299
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77471443"
 ---
-购买预留 VM 实例时，可以选择优化实例大小灵活性或容量优先级。 有关设置或更改保留 VM 实例的优化设置的详细信息，请参阅[更改保留 VM 实例的优化设置](../articles/cost-management-billing/reservations/manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances)。
+购买保留 VM 实例时，可以选择优化实例大小的灵活性或容量优先级。 有关设置或更改保留 VM 实例的优化设置的详细信息，请参阅[更改保留 vm 实例的优化设置](../articles/cost-management-billing/reservations/manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances)。
 
-通过针对实例大小灵活性进行优化的预留虚拟机实例，您购买的预留可以应用于相同实例大小灵活地组中的虚拟机 （VM） 大小。 例如，如果您为 DSv2 系列中列出的 VM 大小（如Standard_DS5_v2）购买预留，则预留折扣可以应用于同一实例大小灵活地组中列出的其他四种大小：
+使用为实例大小灵活性优化的保留虚拟机实例，你购买的预订可应用于同一实例大小灵活性组中的虚拟机（Vm）大小。 例如，如果购买了 DSv2 系列中列出的 VM 大小的保留，如 Standard_DS5_v2，则预订折扣可以应用于同一实例大小灵活性组中列出的其他四种大小：
 
 - Standard_DS1_v2
 - Standard_DS2_v2
 - Standard_DS3_v2
 - Standard_DS4_v2
 
-但是，预订折扣不适用于在不同实例大小灵活地组中列出的 VM 大小，如 DSv2 系列高内存中的 SKU：Standard_DS11_v2、Standard_DS12_v2等。
+但预订折扣不适用于不同实例大小灵活性组中列出的 Vm 大小，如 DSv2 系列中的 Sku 高内存： Standard_DS11_v2、Standard_DS12_v2 等。
 
-在实例大小灵活性组中，预留折扣适用的 VM 数量取决于您在购买预留时选择的 VM 大小。 也取决于运行的 VM 的大小。 比率列比较该实例大小灵活性组中每个 VM 大小的相对占用空间。 请使用比率值来计算如何将预留折扣应用到运行的 VM。
+在 "实例大小" 灵活性组内，预订折扣适用的 Vm 数取决于你在购买预订时选择的 VM 大小。 也取决于运行的 VM 的大小。 比值列比较该实例大小灵活性组中每个 VM 大小的相对占用量。 请使用比率值来计算如何将预留折扣应用到运行的 VM。
 
 ## <a name="examples"></a>示例
 
@@ -36,10 +36,10 @@ ms.locfileid: "77471443"
 
 以下部分介绍了在购买优化的可以灵活调整实例大小的虚拟机预留实例时，同一大小系列组中有哪些大小。
 
-## <a name="instance-size-flexibility-ratio-for-vms"></a>VM 的实例大小灵活性比 
+## <a name="instance-size-flexibility-ratio-for-vms"></a>Vm 的实例大小灵活性比率 
 
 下面的 CSV 具有实例大小灵活性组、ArmSkuName 和比率。  
 
-[实例大小灵活性比](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv)
+[实例大小灵活性比率](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv)
 
-我们将保持文件 URL 和架构固定，以便您可以以编程方式使用此文件。 数据也将很快通过 API 提供。
+我们会保持文件 URL 和架构是固定的，以便可以通过编程方式使用此文件。 此外，还可以通过 API 获取数据。

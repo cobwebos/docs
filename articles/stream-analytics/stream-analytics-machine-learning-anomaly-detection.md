@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.openlocfilehash: 51b9c827d453eef2e2e75e1aa5222204eaa38d0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77525526"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure 流分析中的异常情况检测
@@ -117,7 +117,7 @@ FROM AnomalyDetectionStep
 * **历史记录大小** - 这些模型的性能与**历史记录大小**呈线性关系。 历史记录越长，模型为新事件评分所需的时间就越长。 这是因为，这些模型会将新事件与历史缓冲区中的每个以往事件进行比较。
 * **窗口持续时间** - **窗口持续时间**应反映接收历史记录大小指定的事件数所花费的时间。 如果窗口中没有这么多事件，Azure 流分析会插补缺失值。 因此，CPU 消耗量取决于历史记录大小。
 * **事件负载** - **事件负载**越大，模型执行的工作就越多，因而会影响 CPU 消耗量。 假设易并行有利于业务逻辑利用更多的输入分区，则可以通过易并行来横向扩展作业。
-* **函数级分区** - **功能级别分区**是在异常检测函数调用```PARTITION BY```中使用来完成的。 此类分区会增大开销，因为需要同时保留多个模型的状态。 函数级分区在设备级分区等方案中使用。
+* **函数级别分区** - **函数级别分区**是通过在异常```PARTITION BY```检测函数调用中使用来完成的。 此类分区会增大开销，因为需要同时保留多个模型的状态。 函数级分区在设备级分区等方案中使用。
 
 ### <a name="relationship"></a>关系
 历史记录大小、窗口持续时间和总事件负载之间的关系如下：
@@ -157,7 +157,7 @@ Azure 示例[大规模流式处理存储库](https://github.com/Azure-Samples/st
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure 流分析简介](stream-analytics-introduction.md)
-* [使用 Azure 流分析开始](stream-analytics-real-time-fraud-detection.md)
+* [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
 * [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

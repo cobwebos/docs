@@ -16,10 +16,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 987c3ee7c90eb0bb793b96eb2771efbb258f16a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77565496"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>使用 Azure AD 共享帐户
@@ -47,11 +47,11 @@ Azure AD 提供使用共享帐户的新方法，从而可以消除这些缺点�
 
 通过使用访问面板并选择最适合该应用程序的单一登录类型，Azure AD 管理员可以配置用户可访问的应用程序。 在这些类型中，基于密码的单一登录** 可在登录该应用的过程中，让 Azure AD 充当某种“代理”。
 
-用户使用组织帐户登录一次。 此帐户与他们平时用来访问桌面或电子邮件的帐户相同。 他们只能发现和访问分配给他们的那些应用程序。 使用共享帐户时，此应用程序列表可以包含任意数目的共享凭据。 最终用户不需要记住或写下他们可能要使用的多个帐户。
+用户通过其组织帐户登录一次。 此帐户与他们平时用来访问桌面或电子邮件的帐户相同。 他们只能发现和访问分配给他们的那些应用程序。 使用共享帐户时，此应用程序列表可以包含任意数目的共享凭据。 最终用户不需要记住或写下他们可能要使用的多个帐户。
 
 共享帐户不仅提高了监管力度和可用性，也增强了安全性。 有权使用凭据的用户看不到共享密码，而是通过协调的身份验证流程获取密码的使用权限。 此外，使用某些密码 SSO 应用程序可以选择让 Azure AD 定期滚动更新（更新）密码。 系统使用复杂的长密码来提高帐户安全性。 管理员可以轻松授予或吊销对应用程序的访问权限，还知道谁有权访问帐户以及谁曾经访问了帐户。
 
-Azure AD 支持针对所有类型的密码单一登录应用程序的任何企业移动套件 （EMS） 或 Azure AD 高级许可证计划的共享帐户。 可以共享应用库中数千个预先集成的应用程序的帐户，并可使用[自定义 SSO 应用](../manage-apps/configure-single-sign-on-non-gallery-applications.md)自己的密码身份验证应用程序。
+对于所有类型的密码单一登录应用程序，Azure AD 支持任何企业移动性套件（EMS）或 Azure AD Premium 许可计划的共享帐户。 可以共享应用库中数千个预先集成的应用程序的帐户，并可使用[自定义 SSO 应用](../manage-apps/configure-single-sign-on-non-gallery-applications.md)自己的密码身份验证应用程序。
 
 支持帐户共享的 Azure AD 功能包括：
 
@@ -77,5 +77,5 @@ Azure AD 支持针对所有类型的密码单一登录应用程序的任何企�
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure Active Directory 中的应用程序管理](../manage-apps/what-is-application-management.md)
-* [使用条件访问保护应用](../active-directory-conditional-access-azure-portal.md)
+* [使用条件性访问保护应用](../active-directory-conditional-access-azure-portal.md)
 * [自助服务组管理/SSAA](groups-self-service-management.md)

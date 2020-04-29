@@ -12,10 +12,10 @@ ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 3/14/2019
 ms.openlocfilehash: daca108cfc8bb2e5b2a068170a4a0244c72c9592
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77462592"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>在 Azure SQL 数据库中缩放弹性池资源
@@ -47,9 +47,9 @@ ms.locfileid: "77462592"
 
 |服务层|基本单一数据库，</br>标准 (S0-S1)|基本弹性池，</br>标准 (S2-S12)， </br>超大规模， </br>常规用途单一数据库或弹性池|高级或业务关键型单一数据库或弹性池|
 |:---|:---|:---|:---|
-|**基本单一数据库，</br>标准 (S0-S1)**|&bull;&nbsp;恒定时间延迟，与使用的空间无关</br>&bull;&nbsp;通常，少于 5 分钟|&bull;&nbsp;与数据复制导致使用的数据库空间成比例的延迟</br>&bull;&nbsp;通常，每 GB 使用空间少于 1 分钟|&bull;&nbsp;与数据复制导致使用的数据库空间成比例的延迟</br>&bull;&nbsp;通常，每 GB 使用空间少于 1 分钟|
-|**基本弹性池、</br>标准 (S2-S12)、</br>超大规模、</br>常规用途单一数据库或弹性池**|&bull;&nbsp;与数据复制导致使用的数据库空间成比例的延迟</br>&bull;&nbsp;通常，每 GB 使用空间少于 1 分钟|&bull;&nbsp;恒定时间延迟，与使用的空间无关</br>&bull;&nbsp;通常，少于 5 分钟|&bull;&nbsp;与数据复制导致使用的数据库空间成比例的延迟</br>&bull;&nbsp;通常，每 GB 使用空间少于 1 分钟|
-|**高级或业务关键型单一数据库或弹性池**|&bull;&nbsp;与数据复制导致使用的数据库空间成比例的延迟</br>&bull;&nbsp;通常，每 GB 使用空间少于 1 分钟|&bull;&nbsp;与数据复制导致使用的数据库空间成比例的延迟</br>&bull;&nbsp;通常，每 GB 使用空间少于 1 分钟|&bull;&nbsp;与数据复制导致使用的数据库空间成比例的延迟</br>&bull;&nbsp;通常，每 GB 使用空间少于 1 分钟|
+|**基本单一数据库，</br>标准 (S0-S1)**|&bull; &nbsp;延迟时间较为恒定，与已用空间无关</br>&bull; &nbsp;通常小于 5 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|
+|**基本弹性池、</br>标准 (S2-S12)、</br>超大规模、</br>常规用途单一数据库或弹性池**|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;延迟时间较为恒定，与已用空间无关</br>&bull; &nbsp;通常小于 5 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|
+|**高级或业务关键型单一数据库或弹性池**|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|
 
 > [!NOTE]
 >
@@ -57,7 +57,7 @@ ms.locfileid: "77462592"
 > - 如果向/从弹性池移动数据库，则只有数据库使用的空间会影响延迟，弹性池使用的空间不会影响延迟。
 >
 > [!TIP]
-> 要监视正在进行的操作，请参阅：使用[SQL REST API 管理操作](https://docs.microsoft.com/rest/api/sql/operations/list)，[使用 CLI 管理操作](/cli/azure/sql/db/op)，[使用 T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database)监视操作，并监视这两个 PowerShell 命令：[获取 AzSql 数据库活动](/powershell/module/az.sql/get-azsqldatabaseactivity)和[停止-AzSql数据库活动](/powershell/module/az.sql/stop-azsqldatabaseactivity)。
+> 若要监视正在进行的操作，请参阅：[使用 SQL REST API 管理操作](https://docs.microsoft.com/rest/api/sql/operations/list)、[使用 CLI 管理操作](/cli/azure/sql/db/op)、[使用 T-SQL 监视操作](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database)及以下两个 PowerShell 命令：[Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) 和 [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity)。
 
 ### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>更改服务层级或重新缩放计算大小时的其他注意事项
 
@@ -66,12 +66,12 @@ ms.locfileid: "77462592"
 
 ### <a name="billing-during-rescaling"></a>重新缩放期间的计费
 
-将根据使用最高服务层级的数据库存在的每个小时 + 在该小时适用的计算大小进行计费，无论使用方式或数据库处于活动状态是否少于一小时。 例如，如果创建了单一数据库，五分钟后删除了它，则将按该数据库存在一小时收费。
+将根据使用最高服务层级的数据库存在的每个小时 + 在该小时适用的计算大小进行计费，无论使用方式或数据库处于活动状态是否少于一小时。 例如，如果创建了单一数据库，并在五分钟后将其删除，则将按该数据库存在一小时收费。
 
 ## <a name="change-elastic-pool-storage-size"></a>更改弹性池存储大小
 
 > [!IMPORTANT]
-> 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅在[Azure SQL 数据库中管理文件空间](sql-database-file-space-management.md)。
+> 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](sql-database-file-space-management.md)。
 
 ### <a name="vcore-based-purchasing-model"></a>基于 vCore 的购买模型
 
@@ -83,7 +83,7 @@ ms.locfileid: "77462592"
 - 弹性池的存储价格等于存储量乘以服务层级的存储单价。 有关额外存储价格的详细信息，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。
 
 > [!IMPORTANT]
-> 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅在[Azure SQL 数据库中管理文件空间](sql-database-file-space-management.md)。
+> 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](sql-database-file-space-management.md)。
 
 ### <a name="dtu-based-purchasing-model"></a>基于 DTU 的购买模型
 
@@ -92,7 +92,7 @@ ms.locfileid: "77462592"
 - 弹性池的额外存储价格等于额外存储量乘以服务层级的额外存储单价。 有关额外存储价格的详细信息，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)。
 
 > [!IMPORTANT]
-> 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅在[Azure SQL 数据库中管理文件空间](sql-database-file-space-management.md)。
+> 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](sql-database-file-space-management.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -14,20 +14,20 @@ ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
 ms.openlocfilehash: 792b95b120f67afcd360730acbd783a3071388b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77431479"
 ---
-# <a name="protect-your-network-resources"></a>保护您的网络资源
+# <a name="protect-your-network-resources"></a>保护网络资源
 Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安全最佳做法。 在安全中心识别出潜在的安全漏洞时，它会创建一些建议，指导完成配置所需控件以强化和保护资源的过程。
 
-本文介绍了安全中心资源安全部分**的网络页面。**
+本文介绍安全中心的 "资源安全性" 部分的 "**网络**" 页。
 
 有关网络建议的完整列表，请参阅[网络建议](recommendations-reference.md#recs-network)。
 
-本文从网络安全角度介绍适用于 Azure 资源的建议。 网络建议围绕下一代防火墙、网络安全组、JIT VM 访问、过度宽松的入站流量规则等进行。 有关网络建议和修复操作的列表，请参阅[管理 Azure 安全中心的安全建议](security-center-recommendations.md)。
+本文从网络安全角度介绍适用于 Azure 资源的建议。 网络建议中心围绕下一代防火墙、网络安全组、JIT VM 访问、过度许可的入站流量规则等。 有关网络建议和修复操作的列表，请参阅[管理 Azure 安全中心的安全建议](security-center-recommendations.md)。
 
 > [!NOTE]
 > 借助“网络”页，可从网络角度深入了解 Azure 资源运行状况****。 网络映射和自适应网络控制仅适用于 Azure 安全中心标准层。 [如果使用免费层，则可以单击按钮查看旧网络并接收网络资源建议](#legacy-networking)****。
@@ -53,8 +53,8 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
 拓扑图的默认视图显示：
 
 - 在 Azure 中选择的订阅。 该图支持多个订阅。
-- 资源管理器资源类型的 VM、子网和 VNet（不支持经典 Azure 资源）
-- 对等 VNet
+- 资源管理器资源类型的 Vm、子网和 Vnet （不支持经典 Azure 资源）
+- 对等互连 Vnet
 - 仅限具有高或中等严重性的[网络建议](security-center-recommendations.md)的资源  
 - 面向 Internet 的资源
 - 该映射针对在 Azure 中选择的订阅进行了优化。 如果修改了选择，则会根据新设置重新计算并重新优化映射。  
@@ -107,7 +107,7 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
 向下钻取资源：
 
 1. 在映射上选择特定资源时，右侧窗格将打开，并提供有关资源、连接的安全解决方案（如果有）以及与资源相关的建议的常规信息。 对于选择的每种资源，它都是相同类型的行为。 
-2. 单击“流量”以查看资源上可能的出站和入站流量列表 - 这是一个全面的列表，列出谁可以与资源进行通信、可以与谁通信以及通过哪些协议和端口进行通信****。 例如，当您选择 VM 时，将显示它可以通信的所有 VM，并且当您选择子网时，将显示它可以与其通信的所有子网。
+2. 单击“流量”以查看资源上可能的出站和入站流量列表 - 这是一个全面的列表，列出谁可以与资源进行通信、可以与谁通信以及通过哪些协议和端口进行通信****。 例如，当你选择某个 VM 时，它可以与之通信的所有 Vm 都将显示出来，并且当你选择一个子网时，将显示它可以与之通信的所有子网。
 
 此数据基于对网络安全组的分析以及分析多个规则以了解其交叉和交互的高级机器学习算法****。 
 
@@ -120,7 +120,7 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
 
 要访问此信息，请在“网络”边栏选项卡中单击“查看旧网络”****。 
 
-[![传统网络](./media/security-center-network-recommendations/legacy-networking.png)](./media/security-center-network-recommendations/legacy-networking.png#lightbox)
+[![旧网络](./media/security-center-network-recommendations/legacy-networking.png)](./media/security-center-network-recommendations/legacy-networking.png#lightbox)
 
 ### <a name="internet-facing-endpoints-section"></a>面向 Internet 的终结点部分
 在“面向 Internet 的终结点”部分中，可以查看当前配置了面向 Internet 的终结点的虚拟机及其状态****。
@@ -132,9 +132,9 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
 
 此表按严重性排序（虚拟机和子网）。
 
-在此拓扑视图中，第一层级显示 Vnets。 第二层显示子网，第三级显示属于这些子网的虚拟机。 右侧一栏显示网络安全组对这些资源的建议的当前状态。
+在此拓扑视图中，第一层级显示 Vnets。 第二个显示子网，第三个级别显示属于这些子网的虚拟机。 右侧一栏显示网络安全组对这些资源的建议的当前状态。
 
-第三层级显示虚拟机，与前面的描述类似。 您可以单击任何资源以了解更多信息或应用所需的安全控制或配置。
+第三层级显示虚拟机，与前面的描述类似。 您可以单击任何资源来了解详细信息或应用所需的安全控制或配置。
 
 ## <a name="next-steps"></a>后续步骤
 

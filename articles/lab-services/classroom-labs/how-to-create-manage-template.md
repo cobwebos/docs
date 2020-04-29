@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
 ms.openlocfilehash: fcf31fcc266358911612c25e0b73a0a9de696b1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77539004"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>在 Azure 实验室服务中创建和管理课堂模板
@@ -28,26 +28,26 @@ ms.locfileid: "77539004"
 ## <a name="set-or-update-template-title-and-description"></a>设置或更新模板标题和说明
 使用以下步骤来首次设置标题和说明，并在之后更新。 
 
-1. 在 **"模板"** 页上，输入实验室的新**标题**。  
-2. 输入模板的新**说明**。 当您将焦点移出文本框时，它会自动保存。 
+1. 在 "**模板**" 页上，输入实验室的新**标题**。  
+2. 输入模板的新**说明**。 将焦点移出文本框时，它会自动保存。 
 
     ![模板名称和说明](../media/how-to-create-manage-template/template-name-description.png)
 
 ## <a name="update-a-template-vm"></a>更新模板 VM
 使用以下步骤更新模板 VM。  
 
-1. 等待模板 VM 启动，然后选择工具栏上的 **"连接到模板**"以连接到模板 VM，然后按照说明操作。 如果是 Windows 计算机，您将看到下载 RDP 文件的选项。 
-1. 连接到模板并进行更改后，该模板将不再具有与上次发布到用户的虚拟机相同的设置。 模板更改不会反映在用户的现有虚拟机上，直到您再次发布之后。
+1. 等待模板 VM 开始，然后选择工具栏上的 "**连接到模板**" 以连接到模板 vm，并按照说明进行操作。 如果是 Windows 计算机，你将看到一个用于下载 RDP 文件的选项。 
+1. 一旦你连接到模板并进行了更改，它将不再与上次发布到用户的虚拟机具有相同的设置。 在再次发布后，模板更改将不会反映在用户的现有虚拟机上。
 
     ![连接到模板 VM](../media/how-to-create-manage-template/connect-template-vm.png)
     
 1. 安装学生进行实验室操作所需的任何软件（例如，Visual Studio、Azure 存储资源管理器，等等）。 
 1. 断开与模板 VM 的连接（关闭远程桌面会话）。 
-1. 通过选择 **"停止"模板**停止模板，**停止**模板 VM。 
-1. 按照下一节中的步骤**发布**更新的模板 VM。 
+1. 通过选择 "**停止模板**"**停止**模板 VM。 
+1. 按照下一节中的步骤来**发布**更新的模板 VM。 
 
 ## <a name="publish-the-template-vm"></a>发布模板 VM  
-在此步骤中，我们发布模板 VM。 发布模板 VM 时，Azure 实验室服务使用模板在实验室中创建 VM。 所有虚拟机的配置都与模板相同。
+在此步骤中，我们发布模板 VM。 发布模板 VM 时，Azure 实验室服务使用模板在实验室中创建 Vm。 所有虚拟机的配置都与模板相同。
 
 
 1. 在“模板”页上的工具栏中选择“发布”****。**** 

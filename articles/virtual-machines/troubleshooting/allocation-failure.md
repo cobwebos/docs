@@ -13,23 +13,23 @@ ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: cjiang
 ms.openlocfilehash: b4750ad9fdfa214aa4d7b6a0355c319e7eb1d9c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77484394"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>在 Azure 中创建、重启 VM 或重设其大小时排查分配失败
 
 创建虚拟机 (VM)、重新启动已停止（解除分配）的 VM 和重设 VM 大小时，Microsoft Azure 会为订阅分配计算资源。 我们会不断投入其他基础结构和功能，确保始终提供可用于支持客户需求的所有 VM 类型。 但是，偶尔可能因特定区域中前所未有的 Azure 服务需求增长而遇到资源分配失败的情况。 当尝试在区域中创建或启动 VM，同时 VM 显示以下错误代码和消息时，会出现此问题：
 
-错误代码：AllocationFailed 或 ZonalAllocationFailed****
+错误代码：AllocationFailed 或 ZonalAllocationFailed 
 
-错误消息：“分配失败****。 对于此区域中请求的 VM 大小，我们的容量不够。 在 https:\//aka.ms/allocation-guidance 阅读有关提高分配成功可能性的详细信息”
+错误消息：“分配失败  。 对于此区域中请求的 VM 大小，我们的容量不够。 在 https:\//aka.ms/allocation-guidance 阅读有关提高分配成功可能性的详细信息”
 
 本文说明一些常见分配故障的原因，并建议可能的补救方法。
 
-如果本文未解决 Azure 问题，请访问[MSDN 和堆栈溢出上的 Azure 论坛](https://azure.microsoft.com/support/forums/)。 可以将问题发布到这些论坛上，或者发布到 Twitter 上的 @AzureSupport。 此外，还可以通过在 [Azure 支持](https://azure.microsoft.com/support/options/)站点上选择“获取支持”来发出 Azure 支持请求。
+如果本文未解决你的 Azure 问题，请访问[MSDN 上的 azure 论坛并 Stack Overflow](https://azure.microsoft.com/support/forums/)。 可以将问题发布到这些论坛上，或者发布到 Twitter 上的 @AzureSupport。 此外，还可以通过在 [Azure 支持](https://azure.microsoft.com/support/options/)站点上选择“获取支持”来发出 Azure 支持请求。
 
 在你首选的 VM 类型在首选区域中提供前，建议遇到部署问题的客户考虑下表中的指南，作为临时解决办法。 
 
@@ -79,13 +79,13 @@ ms.locfileid: "77484394"
 
 如果分配请求较大（超过 500 个内核），请参阅下节中的指南，将请求分解为较小的部署。
 
-尝试[重新部署 VM](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/redeploy-to-new-node-windows)。 重新部署 VM 会将 VM 分配给区域内的新群集。
+请尝试重新[部署 VM](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/redeploy-to-new-node-windows)。 重新部署 VM 会将 VM 分配到该区域中的新群集。
 
 ## <a name="allocation-failures-for-older-vm-sizes-av1-dv1-dsv1-d15v2-ds15v2-etc"></a>针对较旧 VM 大小（Av1、Dv1、DSv1、D15v2、DS15v2 等）的分配失败
 
 随着我们扩展 Azure 基础结构，会部署旨在支持最新虚拟机类型的更高版本硬件。 某些较旧 VM 系列不在我们最新的基础结构上运行。 为此，客户偶尔可能遇到这些旧版 SKU 的分配失败。 若要避免此问题，鼓励使用旧版虚拟机系列的客户考虑根据以下建议移动到等效的新版 VM：这些 VM 针对最新硬件进行了优化，让你感受更高的性价比。 
 
-|旧版 VM 系列/大小|建议使用新版 VM 系列/大小|详细信息|
+|旧版 VM 系列/大小|建议使用新版 VM 系列/大小|更多信息|
 |----------------------|----------------------------|--------------------|
 |Av1 系列|[Av2 系列](../av2-series.md)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
 |Dv1 或 DSv1 系列（D1 到 D5）|[Dv3 或 DSv3 系列](../dv3-dsv3-series.md)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/

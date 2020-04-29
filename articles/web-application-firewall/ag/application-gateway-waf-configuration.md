@@ -1,5 +1,5 @@
 ---
-title: Azure 应用程序网关的 Web 应用程序防火墙请求大小限制和排除列表 - Azure 门户
+title: Azure 应用程序网关中的 Web 应用程序防火墙请求大小限制和排除列表 - Azure 门户
 description: 本文将提供 Azure 门户的应用程序网关中 Web 应用程序防火墙请求大小限制和排除列表配置的相关信息。
 services: web-application-firewall
 author: vhorne
@@ -8,15 +8,15 @@ ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 7244788bbc7431c7f26363b2852babb72d5697e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77526784"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web 应用程序防火墙请求大小限制和排除列表
 
-Azure 应用程序网关 Web 应用程序防火墙 (WAF) 可为 Web 应用程序提供保护。 本文介绍了 WAF 请求大小限制和排除列表配置。 这些设置位于与应用程序网关关联的 WAF 策略中。 要了解有关 WAF 策略的信息，请参阅[Azure 应用程序网关上的 Azure Web 应用程序防火墙](ag-overview.md)，并为[应用程序网关创建 Web 应用程序防火墙策略](create-waf-policy-ag.md)
+Azure 应用程序网关 Web 应用程序防火墙 (WAF) 可为 Web 应用程序提供保护。 本文介绍了 WAF 请求大小限制和排除列表配置。 这些设置位于与应用程序网关关联的 WAF 策略中。 若要了解有关 WAF 策略的详细信息，请参阅[Azure 应用程序网关上的 Azure Web 应用程序防火墙](ag-overview.md)和[创建应用程序网关的 Web 应用程序防火墙策略](create-waf-policy-ag.md)
 
 ## <a name="waf-exclusion-lists"></a>WAF 排除列表
 
@@ -39,11 +39,11 @@ WAF 排除列表允许你忽略 WAF 评估中的某些请求属性。 常见示�
 
 下面是受支持的匹配条件运算符：
 
-- **等于**：此运算符用于完全匹配。 例如，要选择名为“bearerToken”的标头，请结合使用等号运算符和设为“bearerToken”的选择器********。
-- **开头**：此运算符与以指定选择器值开头的所有字段匹配。
-- **结尾**：此运算符与以指定选择器值结尾的所有请求字段匹配。
+- **等于**：此运算符用于完全匹配。 例如，要选择名为“bearerToken”的标头，请结合使用等号运算符和设为“bearerToken”的选择器   。
+- **开头为**：此运算符与以指定选择器值开头的所有字段匹配。
+- **结尾为**：此运算符与以指定选择器值结尾的所有请求字段匹配。
 - **包含**：此运算符与包含指定选择器值的所有请求字段匹配。
-- **等于任何**：此运算符匹配所有请求字段。 * 将是选择器值。
+- **等于任何值**：此运算符与所有请求字段匹配。 * 将是选择器值。
 
 在所有情况下，匹配不区分大小写，并且正则表达式不允许作为选择器。
 
@@ -91,11 +91,11 @@ $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
 Web 应用程序防火墙允许你在下限和上限内配置请求大小限制。 有以下两个大小限制配置可用：
 
 - 最大请求正文大小字段以 KB 为单位进行指定并控制整个请求大小限制（不包括任何文件上传）。 此字段的最小值可以为 1 KB，最大值可以为 128 KB。 请求正文大小的默认值为 128 KB。
-- 文件上传限制字段以 MB 为单位进行指定并控制允许的最大文件上传大小。 此字段的最小值为 1 MB，最大值为：
+- 文件上传限制字段以 MB 为单位进行指定并控制允许的最大文件上传大小。 此字段的最小值可以为 1 MB，最大值可以为：
 
-   - 100 MB 用于 v1 中型 WAF 网关
-   - 500 MB 用于 v1 大型 WAF 网关
-   - 750 MB 用于 v2 WAF 网关 
+   - 对于 v1 中型 WAF 网关为 100 MB
+   - 对于 v1 大型 WAF 网关为 500 MB
+   - 对于 v2 WAF 网关为 750 MB 
 
  文件上传限制的默认值为 100 MB。
 

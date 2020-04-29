@@ -1,5 +1,5 @@
 ---
-title: 故障转移和灾难恢复到 StorSimple 云设备
+title: 到 StorSimple 云设备的故障转移和灾难恢复
 description: 了解如何将 StorSimple 8000 系列物理设备故障转移到云设备。
 services: storsimple
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 347b899608d4322a7873b9f80f38ca1c767194d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77468739"
 ---
 # <a name="fail-over-to-your-storsimple-cloud-appliance"></a>故障转移到 StorSimple 云设备
@@ -31,7 +31,7 @@ ms.locfileid: "77468739"
 
 若要将一个 StorSimple 物理设备故障转移到另一个物理设备的，请转到[故障转移到 StorSimple 物理设备](storsimple-8000-device-failover-physical-device.md)。 若要将某个设备故障转移到其自身，请参阅[故障转移到同一 StorSimple 物理设备](storsimple-8000-device-failover-same-device.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 确保已查看有关设备故障转移的注意事项。 有关详细信息，请参阅[有关设备故障转移的一般注意事项](storsimple-8000-device-failover-disaster-recovery.md)。
 

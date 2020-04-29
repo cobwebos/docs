@@ -9,15 +9,15 @@ ms.date: 02/21/2018
 ms.author: nzthiago
 ms.custom: include file
 ms.openlocfilehash: eca2d3359614875e5bff0c9bb67f006f0a8cdba1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77198320"
 ---
 ## <a name="function-app-timeout-duration"></a><a name="timeout"></a>函数应用超时持续时间 
 
-函数应用的超时持续时间通过 [host.json](../articles/azure-functions/functions-host-json.md#functiontimeout) 项目文件中的 `functionTimeout` 属性进行定义。 下表显示了两种计划和不同运行时版本的默认值和最大值（以分钟为单位）：
+函数应用的超时持续时间通过 `functionTimeout`host.json[ 项目文件中的 ](../articles/azure-functions/functions-host-json.md#functiontimeout) 属性进行定义。 下表显示了两种计划和不同运行时版本的默认值和最大值（以分钟为单位）：
 
 | 计划 | 运行时版本 | 默认 | 最大值 |
 |------|---------|---------|---------|

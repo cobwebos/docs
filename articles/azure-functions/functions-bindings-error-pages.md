@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: cshoe
 ms.openlocfilehash: befdb4a8cceaef18961c1e9297e23ed5d405ff50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77586183"
 ---
 # <a name="azure-functions-error-handling"></a>Azure Functions 错误处理
@@ -32,7 +32,7 @@ ms.locfileid: "77586183"
 
 + [事件中心](functions-bindings-event-hubs-output.md#exceptions-and-return-codes)
 
-+ [物联网中心](functions-bindings-event-iot-output.md#exceptions-and-return-codes)
++ [IoT 中心](functions-bindings-event-iot-output.md#exceptions-and-return-codes)
 
 + [通知中心](functions-bindings-notification-hubs.md#exceptions-and-return-codes)
 

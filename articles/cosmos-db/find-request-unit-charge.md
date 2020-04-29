@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: thweiss
 ms.openlocfilehash: c5699bb851bd0a818a987228155c62683e93f51a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77585894"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中查找请求单位费用
@@ -25,17 +25,17 @@ ms.locfileid: "77585894"
 
 目前，在 Azure 门户中只能查找 SQL 查询的请求费用。
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 1. [创建新的 Azure Cosmos 帐户](create-sql-api-dotnet.md#create-account)并在其中植入数据，或选择一个已包含数据的现有 Azure Cosmos 帐户。
 
-1. 转到“数据资源管理器”窗格，然后选择要处理的容器。****
+1. 转到“数据资源管理器”窗格，然后选择要处理的容器。 
 
-1. 选择“新建 SQL 查询”。****
+1. 选择“新建 SQL 查询”。 
 
-1. 输入有效的查询，然后选择“执行查询”****。
+1. 输入有效的查询，然后选择“执行查询”  。
 
-1. 选择“查询统计信息”，以显示执行的请求的实际请求费用。****
+1. 选择“查询统计信息”，以显示执行的请求的实际请求费用。 
 
 ![Azure 门户中的 SQL 查询请求费用屏幕截图](./media/find-request-unit-charge/portal-sql-query.png)
 
@@ -81,7 +81,7 @@ while (query.HasMoreResults)
 
 [!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/CustomDocsSampleCode.cs?name=GetRequestCharge)]
 
-有关详细信息，请参阅[快速入门：使用 Azure Cosmos DB 中的 SQL API 帐户构建 .NET Web 应用](create-sql-api-dotnet.md)。
+有关详细信息，请参阅[快速入门：在 Azure Cosmos DB 中使用 SQL API 帐户生成 .NET Web 应用](create-sql-api-dotnet.md)。
 
 ### <a name="use-the-java-sdk"></a>使用 Java SDK
 
@@ -172,17 +172,17 @@ RU 费用由名为 `getLastRequestStatistics` 的自定义[数据库命令](http
 
 目前，在 Azure 门户中只能查找查询的请求费用。
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 1. [创建新的 Azure Cosmos 帐户](create-mongodb-dotnet.md#create-a-database-account)并在其中植入数据，或选择一个已包含数据的现有帐户。
 
-1. 转到“数据资源管理器”窗格，然后选择要处理的容器。****
+1. 转到“数据资源管理器”窗格，然后选择要处理的容器。 
 
-1. 选择“新建查询”****。
+1. 选择“新建查询”  。
 
-1. 输入有效的查询，然后选择“执行查询”****。
+1. 输入有效的查询，然后选择“执行查询”  。
 
-1. 选择“查询统计信息”，以显示执行的请求的实际请求费用。****
+1. 选择“查询统计信息”，以显示执行的请求的实际请求费用。 
 
 ![Azure 门户中的 MongoDB 查询请求费用屏幕截图](./media/find-request-unit-charge/portal-mongodb-query.png)
 
@@ -203,7 +203,7 @@ Dictionary<string, object> stats = database.RunCommand(new GetLastRequestStatist
 double requestCharge = (double)stats["RequestCharge"];
 ```
 
-有关详细信息，请参阅[快速入门：通过使用 MongoDB 的 Azure Cosmos DB API 构建 .NET Web 应用](create-mongodb-dotnet.md)。
+有关详细信息，请参阅[快速入门：使用 Azure Cosmos DB API for MongoDB 生成 .NET Web 应用](create-mongodb-dotnet.md)。
 
 ### <a name="use-the-mongodb-java-driver"></a>使用 MongoDB Java 驱动程序
 
@@ -215,7 +215,7 @@ Document stats = database.runCommand(new Document("getLastRequestStatistics", 1)
 Double requestCharge = stats.getDouble("RequestCharge");
 ```
 
-有关详细信息，请参阅[快速入门：通过使用 MongoDB 的 Azure Cosmos DB API 和 Java SDK 构建 Web 应用](create-mongodb-java.md)。
+有关详细信息，请参阅[快速入门：使用 Azure Cosmos DB API for MongoDB 和 Java SDK 生成 Web 应用](create-mongodb-java.md)。
 
 ### <a name="use-the-mongodb-nodejs-driver"></a>使用 MongoDB Node.js 驱动程序
 
@@ -243,7 +243,7 @@ RowSet rowSet = session.Execute("SELECT table_name FROM system_schema.tables;");
 double requestCharge = BitConverter.ToDouble(rowSet.Info.IncomingPayload["RequestCharge"].Reverse().ToArray(), 0);
 ```
 
-有关详细信息，请参阅[快速入门：使用 .NET SDK 和 Azure 宇宙数据库生成 Cassandra 应用](create-cassandra-dotnet.md)。
+有关详细信息，请参阅[快速入门：使用 .NET SDK 和 Azure Cosmos DB 生成 Cassandra 应用](create-cassandra-dotnet.md)。
 
 ### <a name="use-the-java-sdk"></a>使用 Java SDK
 
@@ -254,7 +254,7 @@ ResultSet resultSet = session.execute("SELECT table_name FROM system_schema.tabl
 Double requestCharge = resultSet.getExecutionInfo().getIncomingPayload().get("RequestCharge").getDouble();
 ```
 
-有关详细信息，请参阅[快速入门：使用 Java SDK 和 Azure 宇宙 DB 构建 Cassandra 应用](create-cassandra-java.md)。
+有关详细信息，请参阅[快速入门：使用 Java SDK 和 Azure Cosmos DB 生成 Cassandra 应用](create-cassandra-java.md)。
 
 ## <a name="gremlin-api"></a>Gremlin API
 
@@ -273,7 +273,7 @@ ResultSet<dynamic> results = client.SubmitAsync<dynamic>("g.V().count()").Result
 double requestCharge = (double)results.StatusAttributes["x-ms-request-charge"];
 ```
 
-有关详细信息，请参阅[快速入门：通过使用 Azure Cosmos DB Gremlin API 帐户构建 .NET 框架或核心应用程序](create-graph-dotnet.md)。
+有关详细信息，请参阅[快速入门：使用 Azure Cosmos DB Gremlin API 帐户生成 .NET Framework 或 Core 应用程序](create-graph-dotnet.md)。
 
 ### <a name="use-the-java-sdk"></a>使用 Java SDK
 
@@ -299,7 +299,7 @@ if (tableResult.RequestCharge.HasValue) // would be false when using Azure Stora
 }
 ```
 
-有关详细信息，请参阅[快速入门：使用 .NET SDK 和 Azure 宇宙数据库生成表 API 应用](create-table-dotnet.md)。
+有关详细信息，请参阅[快速入门：使用 .NET SDK 和 Azure Cosmos DB 生成表 API 应用](create-table-dotnet.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

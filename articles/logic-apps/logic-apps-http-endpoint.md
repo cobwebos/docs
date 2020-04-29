@@ -7,10 +7,10 @@ ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 11/04/2019
 ms.openlocfilehash: d5b5a69c7927d07c0ae6b3b56ec97b6551e5d46b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77191333"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-http-endpoints-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 HTTP 终结点调用、触发或嵌套逻辑应用
@@ -26,7 +26,7 @@ ms.locfileid: "77191333"
 > [!NOTE]
 > 这些示例使用“请求”触发器，但你可以使用上面列出的任何基于 HTTP 请求的触发器。 所有原则同样适用于其他这些触发器类型。
 
-如果您对逻辑应用是新应用，请参阅[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+如果你不熟悉逻辑应用，请参阅[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -36,11 +36,11 @@ ms.locfileid: "77191333"
 
 ## <a name="create-a-callable-endpoint"></a>创建可调用的终结点
 
-1. 登录到 Azure[门户](https://portal.azure.com)。 在逻辑应用设计器中创建并打开一个空白逻辑应用。
+1. 登录 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中创建并打开一个空白逻辑应用。
 
    本示例使用“请求”触发器，但你可以使用任何可接收传入 HTTP 请求的触发器。 所有原则同样适用于这些触发器。 有关“请求”触发器的详细信息，请参阅[使用 Azure 逻辑应用接收和响应传入的 HTTPS 调用](../connectors/connectors-native-reqres.md)。
 
-1. 在搜索框下，选择“内置”。**** 在搜索框中，输入 `request` 作为筛选器。 从触发器列表中，选择**何时收到 HTTP 请求**。
+1. 在搜索框下，选择“内置”。**** 在搜索框中，输入 `request` 作为筛选器。 从 "触发器" 列表中，选择**接收 HTTP 请求的时间**。
 
    ![找到并选择“请求”触发器](./media/logic-apps-http-endpoint/find-and-select-request-trigger.png)
 
@@ -79,7 +79,7 @@ ms.locfileid: "77191333"
 
    或者，可以通过提供示例有效负载来生成 JSON 架构：
 
-   1. 在**请求**触发器中，选择**使用示例有效负载生成架构**。
+   1. 在**请求**触发器中，选择 "**使用示例有效负载生成架构**"。
 
    1. 在“输入或粘贴示例 JSON 有效负载”框中输入示例有效负载，例如：****
 
@@ -152,7 +152,7 @@ ms.locfileid: "77191333"
 
 1. 若要使用参数，请找到“响应”操作并将其添加到逻辑应用。****
 
-   1. 在"请求触发器"下，选择 **"新建步骤** > **添加操作**"。
+   1. 在请求触发器下，选择 "**新建步骤** > " "**添加操作**"。
 
    1. 在“选择操作”**** 下的搜索框中，输入 `response` 作为筛选器。
 
@@ -226,7 +226,7 @@ ms.locfileid: "77191333"
 
 通过添加可接收请求的其他逻辑应用，可以在逻辑应用中嵌套工作流。 若要包含这些逻辑应用，请执行以下步骤：
 
-1. 在要调用另一个逻辑应用的步骤下，选择 **"新建步骤** > **添加操作**"。
+1. 在要调用另一个逻辑应用的步骤下，选择 "**新建步骤** > " "**添加操作**"。
 
 1. 在“选择操作”下，选择“内置”。******** 在搜索框中，输入 `logic apps` 作为筛选器。 在操作列表中，选择“选择逻辑应用工作流”。****
 
@@ -242,9 +242,9 @@ ms.locfileid: "77191333"
 
 如果传入请求的内容类型为 `application/json`，则可以在传入请求中引用属性。 否则，此内容被视为可以传递给其他 API 的单个二进制单元。 若要在逻辑应用的工作流内部引用此内容，首先需要转换此内容。
 
-例如，如果要传递具有`application/xml`类型的内容，则可以使用[`@xpath()`表达式](../logic-apps/workflow-definition-language-functions-reference.md#xpath)执行 XPath 提取，或使用[`@json()`表达式](../logic-apps/workflow-definition-language-functions-reference.md#json)将 XML 转换为 JSON。 详细了解如何处理支持的[内容类型](../logic-apps/logic-apps-content-type.md)。
+例如，如果要传递具有`application/xml`类型的内容，则可以使用[ `@xpath()`表达式](../logic-apps/workflow-definition-language-functions-reference.md#xpath)来执行 XPath 提取，或使用[ `@json()`表达式](../logic-apps/workflow-definition-language-functions-reference.md#json)将 XML 转换为 JSON。 详细了解如何处理支持的[内容类型](../logic-apps/logic-apps-content-type.md)。
 
-要从传入请求获取输出，可以使用[`@triggerOutputs`表达式](../logic-apps/workflow-definition-language-functions-reference.md#triggerOutputs)。 例如，假设输出如以下示例所示：
+若要获取传入请求的输出，可以使用[ `@triggerOutputs`表达式](../logic-apps/workflow-definition-language-functions-reference.md#triggerOutputs)。 例如，假设输出如以下示例所示：
 
 ```json
 {
@@ -257,7 +257,7 @@ ms.locfileid: "77191333"
 }
 ```
 
-要专门访问属性`body`，可以使用[`@triggerBody()`表达式](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody)作为快捷方式。
+若要专门访问`body`属性，可以将[ `@triggerBody()`表达式](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody)用作快捷方式。
 
 ## <a name="respond-to-requests"></a>对请求的响应
 
@@ -275,11 +275,11 @@ ms.locfileid: "77191333"
 
 响应具有以下属性：
 
-| 属性（显示值） | 属性 (JSON) | 描述 |
+| 属性（显示值） | 属性 (JSON) | 说明 |
 |--------------------|-----------------|-------------|
 | **状态代码** | `statusCode` | 要在传入请求的响应中使用的 HTTP 状态代码。 该代码可以是以 2xx、4xx 或 5xx 开头的任何有效状态代码。 但是，不允许使用 3xx 状态代码。 |
-| **头** | `headers` | 要包含在响应中的一个或多个标头 |
-| **正文** | `body` | 正文对象，可以是字符串、JSON 对象甚至是从上一步引用的二进制内容 |
+| **标头** | `headers` | 要包含在响应中的一个或多个标头 |
+| **大量** | `body` | 正文对象，可以是字符串、JSON 对象甚至是从上一步引用的二进制内容 |
 ||||
 
 若要查看“响应”操作的 JSON 定义以及逻辑应用的完整 JSON 定义，请在逻辑应用设计器工具栏上选择“代码视图”。****
@@ -302,21 +302,21 @@ ms.locfileid: "77191333"
 }
 ```
 
-## <a name="q--a"></a>问题解答
+## <a name="q--a"></a>问与答
 
 #### <a name="q-what-about-url-security"></a>问：URL 的安全性如何？
 
-**A**： Azure 使用[共享访问签名 （SAS）](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature)安全地生成逻辑应用回调 URL。 此签名以查询参数的形式传递，在运行逻辑应用之前必须先验证此签名。 Azure 使用每个逻辑应用的机密密钥、触发器名称和执行的操作的唯一组合生成签名。 因此，除非用户对机密逻辑应用密钥拥有访问权限，否则他们无法生成有效的签名。
+**答**： Azure 通过使用[共享访问签名（SAS）](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature)安全地生成逻辑应用回调 url。 此签名以查询参数的形式传递，在运行逻辑应用之前必须先验证此签名。 Azure 使用每个逻辑应用的机密密钥、触发器名称和执行的操作的唯一组合生成签名。 因此，除非用户对机密逻辑应用密钥拥有访问权限，否则他们无法生成有效的签名。
 
 > [!IMPORTANT]
-> 对于生产和更高的安全系统，出于以下原因，我们强烈建议不要直接从浏览器调用逻辑应用：
+> 对于生产和更高版本的安全系统，强烈建议不要直接从浏览器调用逻辑应用，原因如下：
 >
 > * URL 中会出现共享访问密钥。
 > * 由于 Azure 逻辑应用客户之间的共享域，因此无法管理安全内容策略。
 
 #### <a name="q-can-i-configure-http-endpoints-further"></a>问：是否可以进一步配置 HTTP 终结点？
 
-**答**：是的，HTTP 终结点支持通过 Azure API 管理进行更高级[的配置](../api-management/api-management-key-concepts.md)。 此服务还提供相应的功能，使你能够以一致的方式管理所有 API（包括逻辑应用）、设置自定义域名和使用其他身份验证方法等等，例如：
+**答**：是的，HTTP 端点通过[Azure API 管理](../api-management/api-management-key-concepts.md)支持更高级的配置。 此服务还提供相应的功能，使你能够以一致的方式管理所有 API（包括逻辑应用）、设置自定义域名和使用其他身份验证方法等等，例如：
 
 * [更改请求方法](../api-management/api-management-advanced-policies.md#SetRequestMethod)
 * [更改请求的 URL 段](../api-management/api-management-transformation-policies.md#RewriteURL)

@@ -1,22 +1,22 @@
 ---
 title: 适用于 Azure Functions 的 Azure IoT 中心绑定
-description: 了解如何响应发送到 Azure 函数中的 IoT 中心事件流的事件。
+description: 了解如何在 Azure Functions 中响应发送到 IoT 中心事件流的事件。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: f63fe965b3f37add8ddf9d262f1ef1dae9fff966
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77589722"
 ---
-# <a name="azure-iot-hub-trigger-for-azure-functions"></a>Azure IoT 中心触发器用于 Azure 函数
+# <a name="azure-iot-hub-trigger-for-azure-functions"></a>Azure Functions 的 Azure IoT 中心触发器
 
 本文介绍如何使用 IoT 中心的 Azure Functions 绑定。 IoT 中心支持基于 [Azure 事件中心绑定](functions-bindings-event-hubs.md)。
 
-有关设置和配置详细信息的信息，请参阅[概述](functions-bindings-event-iot.md)。
+若要了解设置和配置详细信息，请参阅[概述](functions-bindings-event-iot.md)。
 
 > [!IMPORTANT]
 > 虽然下述代码示例使用事件中心 API，但给定的语法适用于 IoT 中心函数。

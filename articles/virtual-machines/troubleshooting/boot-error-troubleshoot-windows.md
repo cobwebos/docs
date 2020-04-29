@@ -1,6 +1,6 @@
 ---
-title: Azure 虚拟机关闭在"重新启动、关闭"或"停止服务"时卡住 |微软文档
-description: 本文可帮助您解决 Azure Windows 虚拟机中的服务错误。
+title: Azure 虚拟机关机停滞在重启、关闭或停止服务 |Microsoft Docs
+description: 本文帮助你排查 Azure Windows 虚拟机中的服务错误。
 services: virtual-machines-windows
 documentationCenter: ''
 author: v-miegge
@@ -13,37 +13,37 @@ ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
 ms.openlocfilehash: 5d6396efc9ab25baa0d32e7c33c7715863516249
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77371358"
 ---
-# <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Azure Windows VM 关机停留在"重新启动"、"关闭"或"停止服务"上
+# <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Azure Windows VM 关机停滞在 "正在重新启动"、"正在关闭" 或 "正在停止服务"
 
-本文提供了解决在 Microsoft Azure 中重新启动 Windows 虚拟机 （VM） 时可能会遇到的"重新启动"、"关闭"或"停止服务"消息的步骤。
+本文提供了解决在 Microsoft Azure 中重新启动 Windows 虚拟机（VM）时可能遇到的 "重新启动"、"关闭" 或 "停止服务" 消息问题的步骤。
 
 ## <a name="symptoms"></a>症状
 
-当您使用[引导诊断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)来查看 VM 的屏幕截图时，您可能会看到屏幕截图显示消息"重新启动"、"关闭"或"停止服务"。
+使用 "[启动诊断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)" 查看 VM 的屏幕截图时，可能会看到屏幕截图显示消息 "正在重新启动"、"正在关闭" 或 "正在停止服务"。
 
-![重新启动、关闭和停止服务屏幕](./media/boot-error-troubleshooting-windows/restart-shut-down-stop-service.png)
+![“正在重启”、“正在关闭”或“正在停止服务”屏幕](./media/boot-error-troubleshooting-windows/restart-shut-down-stop-service.png)
  
 ## <a name="cause"></a>原因
 
-Windows 使用关机过程执行系统维护操作，并处理更新、角色和功能等更改。 不建议在完成之前中断此关键过程。 根据更新/更改的数量和 VM 大小，该过程可能需要很长时间。 如果进程停止，操作系统可能会损坏。 仅当进程时间过长时才会中断。
+Windows 使用关闭进程来执行系统维护操作，并处理更新、角色和功能等方面的更改。 建议不要中断此关键进程，而是让它完成。 根据更新/更改数量和 VM 大小，此进程可能会花费较长的时间。 如果停止该进程，OS 可能会损坏。 仅当该进程耗时过长时才将其中断。
 
 ## <a name="solution"></a>解决方案
 
 ### <a name="collect-a-process-memory-dump"></a>收集进程内存转储
 
-1. 将[Procdump 工具](http://download.sysinternals.com/files/Procdump.zip)下载到新的或现有的数据磁盘中，该磁盘从同一区域连接到工作 VM。
+1. 将[Procdump 工具](http://download.sysinternals.com/files/Procdump.zip)下载到新的或现有的数据磁盘，该磁盘已附加到同一区域中的工作 VM。
 
-2. 从工作 VM 分离包含所需文件的磁盘，并将磁盘附加到损坏的 VM。 我们称此磁盘为**实用程序磁盘**。
+2. 从工作 VM 分离包含所需文件的磁盘，并将该磁盘附加到损坏的 VM。 我们将在此磁盘上调用**实用工具磁盘**。
 
 使用[串行控制台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows)完成以下步骤：
 
-1. 打开管理电源shell 并检查停止时挂起的服务。
+1. 打开管理 Powershell 并检查停止时挂起的服务。
 
    ``
    Get-Service | Where-Object {$_.Status -eq "STOP_PENDING"}
@@ -61,29 +61,29 @@ Windows 使用关机过程执行系统维护操作，并处理更新、角色和
    procdump.exe -s 5 -n 3 -ma <PID>
    ``
 
-4. 现在终止挂起的进程以解锁关机过程。
+4. 现在终止挂起的进程以解锁关闭进程。
 
    ``
    taskkill /PID <PID> /t /f
    ``
 
-操作系统再次启动后，如果启动正常，则只需确保操作系统的一致性正常。 如果报告损坏，则运行以下命令，直到磁盘无损坏：
+操作系统重新启动后，如果它正常启动，只需确保 OS 一致性正常。 如果报告损坏，请运行以下命令，直到磁盘出现损坏：
 
 ``
 dism /online /cleanup-image /restorehealth
 ``
 
-如果您无法收集进程内存转储，或者此问题是递归的，并且需要根本原因分析，请继续收集下面的 OS 内存转储，然后继续打开支持请求。
+如果无法收集进程内存转储，或此问题是递归的，并且你需要根本原因分析，请继续收集下面的 OS 内存转储，然后继续打开支持请求。
 
 ### <a name="collect-an-os-memory-dump"></a>收集 OS 内存转储
 
 如果等待更改处理后问题仍未解决，则需要收集内存转储文件并与支持部门联系。 若要收集转储文件，请执行以下步骤：
 
-**将操作系统磁盘连接到恢复 VM**
+**将 OS 磁盘附加到恢复 VM**
 
 1. 拍摄受影响的 VM 的 OS 磁盘的快照作为备份。 有关详细信息，请参阅[拍摄磁盘快照](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk)。
 
-2. [将操作系统磁盘附加到恢复 VM。](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal)
+2. [将 OS 磁盘附加到恢复 VM](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal)。
 
 3. 通过远程桌面连接到恢复 VM。
 
@@ -105,7 +105,7 @@ dism /online /cleanup-image /restorehealth
 
 2. 运行以下脚本：
 
-   在此脚本中，我们假定分配给附加 OS 磁盘的驱动器号为 F. 将其替换为 VM 中的相应值。
+   在此脚本中，我们假设分配给附加 OS 磁盘的驱动器号为 F。请将其替换为 VM 中的相应值。
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -129,9 +129,9 @@ dism /online /cleanup-image /restorehealth
    reg unload HKLM\BROKENSYSTEM
    ```
 
-3. 验证磁盘上有足够的空间来分配与 RAM 相同的内存，具体取决于您为此 VM 选择的大小。
+3. 验证磁盘上是否有足够的空间来分配尽可能多的内存作为 RAM，具体取决于为此 VM 选择的大小。
 
-4. 如果没有足够的空间或 VM 很大（G、GS 或 E 系列），则可以更改将创建此文件的位置，并将其引用到连接到 VM 的任何其他数据磁盘。 要更改位置，必须更改以下键：
+4. 如果空间不足或 VM 太大（G、GS 或 E 系列），可以更改创建此文件的位置，并将其指向附加到 VM 的任何其他数据磁盘。 若要更改位置，必须更改以下项：
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -142,16 +142,16 @@ dism /online /cleanup-image /restorehealth
    reg unload HKLM\BROKENSYSTEM
    ```
 
-5. [分离 OS 磁盘，然后将 OS 磁盘重新连接到受影响的 VM。](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal)
+5. [分离 os 磁盘，然后将 os 磁盘重新连接到受影响的 VM](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal)。
 
 6. 启动 VM 并访问串行控制台。
 
-7. 选择"发送不可屏蔽中断 （NMI））"以触发内存转储。
+7. 选择 "发送不可屏蔽中断（NMI）" 以触发内存转储。
 
-   ![发送不可屏蔽的中断](./media/boot-error-troubleshooting-windows/send-nonmaskable-interrupt.png)
+   ![发送不可屏蔽中断](./media/boot-error-troubleshooting-windows/send-nonmaskable-interrupt.png)
 
 8. 再次将 OS 磁盘附加到恢复 VM，收集转储文件。
 
 ## <a name="contact-microsoft-support"></a>请与 Microsoft 支持部门联系
 
-收集转储文件后，请与 Microsoft 支持部门联系以确定根本原因。
+收集转储文件后，请联系 Microsoft 支持部门以确定根本原因。

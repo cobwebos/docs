@@ -8,10 +8,10 @@ ms.date: 02/20/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: f65d8fa2c2e522c718c637e32defc4c56fca8364
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77461651"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支持的数据源
@@ -23,59 +23,59 @@ ms.locfileid: "77461651"
 |数据源  |内存中  |DirectQuery  |说明 |
 |---------|---------|---------|---------|
 |Azure SQL 数据库      |   是      |    是      |<sup>[2](#azprovider)</sup>、<sup>[3](#azsqlmanaged)</sup>|
-|Azure 突触分析（SQL 数据仓库）      |   是      |   是       |<sup>[2](#azprovider)</sup>|
+|Azure Synapse Analytics（SQL 数据仓库）      |   是      |   是       |<sup>[2](#azprovider)</sup>|
 |Azure Blob 存储      |   是       |    否      | <sup>[1](#tab1400a)</sup> |
 |Azure 表存储     |   是       |    否      | <sup>[1](#tab1400a)</sup>|
 |Azure Cosmos DB     |  是        |  否        |<sup>[1](#tab1400a)</sup> |
-|Azure 数据湖存储第 1 代      |   是       |    否      |<sup>[1](#tab1400a)</sup> |
-|Azure 数据湖存储第 2 代       |   是       |    否      |<sup>[1](#tab1400a)</sup>， <sup> [5](#gen2)</sup>|
-|Azure HDInsight HDFS    |     是     |   否       |<sup>[1](#tab1400a)</sup> |
+|Azure Data Lake Store Gen1      |   是       |    否      |<sup>[1](#tab1400a)</sup> |
+|Azure Data Lake Store Gen2       |   是       |    否      |<sup>[1](#tab1400a)</sup>、 <sup> [5](#gen2)</sup>|
+|Azure HDInsight HDFS    |     是     |   否       |<sup>[2](#tab1400a)</sup> |
 |Azure HDInsight Spark     |   是       |   否       |<sup>[1](#tab1400a)</sup>， <sup> [4](#databricks)</sup>|
 ||||
 
-**笔记：**   
+**本票**   
 <a name="tab1400a">1</a> - 仅限表格 1400 和更高模型。  
 <a name="azprovider">2</a> - 在表格 1200 和更高版本的模型中指定为“提供程序”** 数据源时，内存中模型和 DirectQuery 模型都需要 Microsoft OLE DB Driver for SQL Server MSOLEDBSQL（推荐）、SQL Server Native Client 11.0 或 .NET Framework Data Provider for SQL Server。    
 <a name="azsqlmanaged">3</a> - 支持 Azure SQL 数据库托管实例。 由于托管实例使用专用 IP 地址在 Azure VNet 中运行，因此必须在实例上启用公共终结点。 如果未启用，则需要[本地数据网关](analysis-services-gateway.md)。    
-<a name="databricks">4</a> - 当前不支持使用 Spark 连接器的 Azure 数据砖。   
-<a name="gen2">5</a> - ADLS Gen2 连接器目前不受支持，但是，Azure Blob 存储连接器可以与 ADLS Gen2 数据源一起使用。   
+<a name="databricks">4</a> -当前不支持使用 Spark 连接器 Azure Databricks。   
+<a name="gen2">5</a> ADLS Gen2 连接器目前不受支持，但是，可以将 Azure Blob 存储连接器与 ADLS Gen2 数据源一起使用。   
 
 ## <a name="other-data-sources"></a>其他数据源
 
-|数据源 | 内存中 | DirectQuery |说明   |
+|数据源 | 内存中 | DirectQuery |注意   |
 |  --- | --- | --- | --- |
 |Access 数据库     |  是 | 否 |  |
-|Active Directory     |  是 | 否 | <sup>[6](#tab1400b)</sup>  |
+|Active Directory     |  是 | 否 | <sup>[共](#tab1400b)</sup>  |
 |Analysis Services     |  是 | 否 |  |
 |分析平台系统     |  是 | 否 |  |
 |CSV 文件  |是 | 否 |  |
-|Dynamics 365     |  是 | 否 | <sup>[6](#tab1400b)</sup> |
+|Dynamics 365     |  是 | 否 | <sup>[共](#tab1400b)</sup> |
 |Excel 工作簿     |  是 | 否 |  |
-|Exchange      |  是 | 否 | <sup>[6](#tab1400b)</sup> |
-|Folder      |是 | 否 | <sup>[6](#tab1400b)</sup> |
+|Exchange      |  是 | 否 | <sup>[共](#tab1400b)</sup> |
+|Folder      |是 | 否 | <sup>[共](#tab1400b)</sup> |
 |IBM Informix  |是 | 否 |  |
-|JSON 文档      |  是 | 否 | <sup>[6](#tab1400b)</sup> |
-|二进制文件中的行      | 是 | 否 | <sup>[6](#tab1400b)</sup> |
+|JSON 文档      |  是 | 否 | <sup>[共](#tab1400b)</sup> |
+|二进制文件中的行      | 是 | 否 | <sup>[共](#tab1400b)</sup> |
 |MySQL 数据库     | 是 | 否 |  |
-|OData 源      |  是 | 否 | <sup>[6](#tab1400b)</sup> |
+|OData 源      |  是 | 否 | <sup>[共](#tab1400b)</sup> |
 |ODBC 查询     | 是 | 否 |  |
 |OLE DB     |   是 | 否 |  |
-|Oracle  | 是  |是  | <sup>[9](#oracle)</sup> |
-|PostgreSQL 数据库   | 是 | 否 | <sup>[6](#tab1400b)</sup> |
-|Salesforce 对象|  是 | 否 | <sup>[6](#tab1400b)</sup> |
-|Salesforce 报表 |是 | 否 | <sup>[6](#tab1400b)</sup> |
+|Oracle  | 是  |是  | <sup>[900](#oracle)</sup> |
+|PostgreSQL 数据库   | 是 | 否 | <sup>[共](#tab1400b)</sup> |
+|Salesforce 对象|  是 | 否 | <sup>[共](#tab1400b)</sup> |
+|Salesforce 报表 |是 | 否 | <sup>[共](#tab1400b)</sup> |
 |SAP HANA     |  是 | 否 |  |
-|SAP Business Warehouse    |  是 | 否 | <sup>[6](#tab1400b)</sup> |
+|SAP Business Warehouse    |  是 | 否 | <sup>[共](#tab1400b)</sup> |
 |SharePoint 列表      |   是 | 否 | <sup>[6](#tab1400b)</sup>、<sup>[11](#filesSP)</sup> |
-|SQL Server |是   | 是  | <sup>[7](#sqlim)</sup>， <sup> [8](#instgw)</sup> | 
-|SQL Server 数据仓库 |是   | 是  | <sup>[7](#sqlim)</sup>， <sup> [8](#instgw)</sup> |
+|SQL Server |是   | 是  | <sup>[7](#sqlim)</sup>、 <sup> [8](#instgw)</sup> | 
+|SQL Server 数据仓库 |是   | 是  | <sup>[7](#sqlim)</sup>、 <sup> [8](#instgw)</sup> |
 |Sybase 数据库     |  是 | 否 |  |
-|Teradata | 是  | 是  | <sup>[10](#teradata)</sup> |
+|Teradata | 是  | 是  | <sup>[万](#teradata)</sup> |
 |TXT 文件  |是 | 否 |  |
-|XML 表    |  是 | 否 | <sup>[6](#tab1400b)</sup> |
+|XML 表    |  是 | 否 | <sup>[共](#tab1400b)</sup> |
 | | | |
 
-**笔记：**   
+**本票**   
 <a name="tab1400b">6</a> - 仅限表格 1400 和更高版本的模型。  
 <a name="sqlim">7</a> - 在表格 1200 和更高版本的模型中指定为“提供程序”** 数据源时，请指定 Microsoft OLE DB Driver for SQL Server MSOLEDBSQL（推荐）、SQL Server Native Client 11.0 或 .NET Framework Data Provider for SQL Server。  
 <a name="instgw">8</a> - 如果指定 MSOLEDBSQL 作为数据提供程序，则可能需要在本地数据网关所在的同一计算机上下载并安装 [Microsoft OLE DB Driver for SQL Server](https://docs.microsoft.com/sql/connect/oledb/oledb-driver-for-sql-server)。  
@@ -93,7 +93,7 @@ ms.locfileid: "77461651"
 
 ### <a name="specify-provider-data-sources-in-tabular-1400-and-higher-model-projects"></a>在表格 1400 和更高版本的模型项目中指定提供程序数据源
 
-要启用提供程序数据源，请在 Visual Studio 中单击 **"工具** > **选项** > **分析服务表格数据** > **导入**"，选择**启用旧数据源**。
+若要启用提供程序数据源，请在 Visual Studio 中，单击 "**工具** > **选项** > "**Analysis Services 表格** > **数据导入**"，选择"**启用旧数据源**"。
 
 ![启用旧数据源](media/analysis-services-datasource/aas-enable-legacy-datasources.png)
 
@@ -120,7 +120,7 @@ ms.locfileid: "77461651"
 
 ## <a name="oauth-credentials"></a>OAuth 凭据
 
-对于使用内存中模式的 1400 和更高兼容性级别的表格模型，Azure SQL 数据库、Azure 突触分析（SQL 数据仓库）、动态 365 和 SharePoint 列表支持 OAuth 凭据。 Azure Analysis Services 管理 OAuth 数据源的令牌刷新，以避免长时间运行的刷新操作超时。 若要生成有效的令牌，请使用 SSMS 设置凭据。
+对于1400和更高兼容级别的表格模型，使用内存中模式，Azure SQL 数据库、Azure Synapse Analytics （SQL 数据仓库）、Dynamics 365 和 SharePoint List 支持 OAuth 凭据。 Azure Analysis Services 管理 OAuth 数据源的令牌刷新，以避免长时间运行的刷新操作超时。 若要生成有效的令牌，请使用 SSMS 设置凭据。
 
 OAuth 凭据不支持直接查询模式。
 

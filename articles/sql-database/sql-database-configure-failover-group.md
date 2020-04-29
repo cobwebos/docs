@@ -12,10 +12,10 @@ ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
 ms.openlocfilehash: 3b423a25b6b13ad543ef4a74bc0335ce19f5766d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77461794"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>为 Azure SQL 数据库配置故障转移组
@@ -33,27 +33,27 @@ ms.locfileid: "77461794"
 
 ### <a name="create-failover-group"></a>创建故障转移组
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 使用 Azure 门户创建故障转移组，并将单一数据库添加到其中。
 
 
-1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”****。 如果**Azure SQL**不在列表中，请选择 **"所有服务**"，然后在搜索框中键入 Azure SQL。 （可选）选择“Azure SQL”**** 旁边的星号将其收藏并将其添加为左侧导航栏中的项。 
+1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”  。 如果 **Azure SQL** 不在列表中，请选择“所有服务”  ，然后在搜索框中键入 Azure SQL。 （可选）选择“Azure SQL”  旁边的星号将其收藏并将其添加为左侧导航栏中的项。 
 1. 选择要添加到故障转移组中的单一数据库。 
 1. 在**服务器名称**下选择服务器的名称以打开服务器的设置。
 
    ![打开单一数据库的服务器](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
 
-1. 在“设置”窗格下选择“故障转移组”，然后选择“添加组”以创建新的故障转移组。************ 
+1. 在“设置”窗格下选择“故障转移组”，然后选择“添加组”以创建新的故障转移组。    
 
     ![添加新的故障转移组](media/sql-database-single-database-failover-group-tutorial/sqldb-add-new-failover-group.png)
 
-1. 在“故障转移组”页上输入或选择所需的值，然后选择“创建”。********
+1. 在“故障转移组”页上输入或选择所需的值，然后选择“创建”。  
 
-   - **组中的数据库**：选择要添加到故障转移组的数据库。 将数据库添加到故障转移组的操作会自动启动异地复制过程。 
+   - **组中的数据库**：选择要添加到故障转移组中的数据库。 将数据库添加到故障转移组的操作会自动启动异地复制过程。 
         
     ![将 SQL 数据库添加到故障转移组](media/sql-database-single-database-failover-group-tutorial/add-sqldb-to-failover-group.png)
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 使用 PowerShell 创建故障转移组，并将单一数据库添加到其中。 
 
    ```powershell-interactive
@@ -107,29 +107,29 @@ ms.locfileid: "77461794"
 
 使用 Azure 门户或 PowerShell 测试故障转移组的故障转移。 
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 使用 Azure 门户测试故障转移组的故障转移。 
 
-1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”****。 如果**Azure SQL**不在列表中，请选择 **"所有服务**"，然后在搜索框中键入 Azure SQL。 （可选）选择“Azure SQL”**** 旁边的星号将其收藏并将其添加为左侧导航栏中的项。 
+1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”  。 如果 **Azure SQL** 不在列表中，请选择“所有服务”  ，然后在搜索框中键入 Azure SQL。 （可选）选择“Azure SQL”  旁边的星号将其收藏并将其添加为左侧导航栏中的项。 
 1. 选择要添加到故障转移组中的单一数据库。 
 
    ![打开单一数据库的服务器](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
 
-1. 在“设置”窗格下选择“故障转移组”，然后选择刚刚创建的故障转移组。******** 
+1. 在“设置”窗格下选择“故障转移组”，然后选择刚刚创建的故障转移组。   
   
    ![在门户中选择故障转移组](media/sql-database-single-database-failover-group-tutorial/select-failover-group.png)
 
 1. 查看哪个服务器是主服务器，哪个服务器是辅助服务器。 
-1. 在“任务”窗格中选择“故障转移”，以故障转移包含你的单一数据库的故障转移组。**** 
-1. 在告知将会断开 TDS 会话连接的警告中选择“是”。**** 
+1. 在“任务”窗格中选择“故障转移”，以故障转移包含你的单一数据库的故障转移组。  
+1. 在告知将会断开 TDS 会话连接的警告中选择“是”。  
 
    ![故障转移包含 SQL 数据库的故障转移组](media/sql-database-single-database-failover-group-tutorial/failover-sql-db.png)
 
 1. 查看哪个服务器现在是主服务器，哪个服务器是辅助服务器。 如果故障转移成功，这两个服务器的角色应会交换。 
-1. 再次选择“故障转移”以将服务器故障回复到其初始角色。**** 
+1. 再次选择“故障转移”以将服务器故障回复到其初始角色。  
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 测试故障转移组的故障转移。  
 
@@ -165,7 +165,7 @@ ms.locfileid: "77461794"
    Write-host "Failed failover group to successfully to" $drServerName 
    ```
 
-将故障转移组还原为主服务器：
+将故障转移组还原到主服务器：
 
    ```powershell-interactive
    # Set variables
@@ -200,28 +200,28 @@ ms.locfileid: "77461794"
 
 使用 Azure 门户或 PowerShell 为弹性池创建故障转移组。 
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 使用 Azure 门户创建故障转移组，并将弹性池添加到其中。
 
-1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”****。 如果**Azure SQL**不在列表中，请选择 **"所有服务**"，然后在搜索框中键入 Azure SQL。 （可选）选择“Azure SQL”**** 旁边的星号将其收藏并将其添加为左侧导航栏中的项。 
+1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”  。 如果 **Azure SQL** 不在列表中，请选择“所有服务”  ，然后在搜索框中键入 Azure SQL。 （可选）选择“Azure SQL”  旁边的星号将其收藏并将其添加为左侧导航栏中的项。 
 1. 选择要添加到故障转移组中的弹性池。 
-1. 在“概述”**** 窗格上，选择**服务器名称**下的服务器名称以打开服务器的设置。
+1. 在“概述”  窗格上，选择**服务器名称**下的服务器名称以打开服务器的设置。
   
     ![打开弹性池的服务器](media/sql-database-elastic-pool-failover-group-tutorial/server-for-elastic-pool.png)
 
-1. 在“设置”窗格下选择“故障转移组”，然后选择“添加组”以创建新的故障转移组。************ 
+1. 在“设置”窗格下选择“故障转移组”，然后选择“添加组”以创建新的故障转移组。    
 
     ![添加新的故障转移组](media/sql-database-single-database-failover-group-tutorial/sqldb-add-new-failover-group.png)
 
-1. 在“故障转移组”页上输入或选择所需的值，然后选择“创建”。******** 创建新的辅助服务器，或选择现有的辅助服务器。 
+1. 在“故障转移组”页上输入或选择所需的值，然后选择“创建”。   创建新的辅助服务器，或选择现有的辅助服务器。 
 
-1. 选择“组中的数据库”，然后选择要添加到故障转移组中的弹性池。**** 如果辅助服务器上没有弹性池，则会出现一条警告，提示你在辅助服务器上创建弹性池。 选择该警告，然后选择“确定”以在辅助服务器上创建弹性池。**** 
+1. 选择“组中的数据库”，然后选择要添加到故障转移组中的弹性池。  如果辅助服务器上没有弹性池，则会出现一条警告，提示你在辅助服务器上创建弹性池。 选择该警告，然后选择“确定”以在辅助服务器上创建弹性池。  
         
     ![将弹性池添加到故障转移组中](media/sql-database-elastic-pool-failover-group-tutorial/add-elastic-pool-to-failover-group.png)
         
-1. 选择“选择”以将弹性池设置应用到故障转移组，然后选择“创建”以创建故障转移组。******** 将弹性池添加到故障转移组的操作会自动启动异地复制过程。 
+1. 选择“选择”以将弹性池设置应用到故障转移组，然后选择“创建”以创建故障转移组。   将弹性池添加到故障转移组的操作会自动启动异地复制过程。 
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 创建故障转移组，并将弹性池添加到其中。 
 
@@ -271,29 +271,29 @@ ms.locfileid: "77461794"
 
 使用 Azure 门户或 PowerShell 测试弹性池的故障转移。 
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 将故障转移组故障转移到辅助服务器，然后使用 Azure 门户故障回复。 
 
-1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”****。 如果**Azure SQL**不在列表中，请选择 **"所有服务**"，然后在搜索框中键入 Azure SQL。 （可选）选择“Azure SQL”**** 旁边的星号将其收藏并将其添加为左侧导航栏中的项。 
+1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”  。 如果 **Azure SQL** 不在列表中，请选择“所有服务”  ，然后在搜索框中键入 Azure SQL。 （可选）选择“Azure SQL”  旁边的星号将其收藏并将其添加为左侧导航栏中的项。 
 1. 选择要添加到故障转移组中的弹性池。 
-1. 在“概述”**** 窗格上，选择**服务器名称**下的服务器名称以打开服务器的设置。
+1. 在“概述”  窗格上，选择**服务器名称**下的服务器名称以打开服务器的设置。
   
     ![打开弹性池的服务器](media/sql-database-elastic-pool-failover-group-tutorial/server-for-elastic-pool.png)
-1. 在“设置”窗格下选择“故障转移组”，然后选择在第 2 部分创建的故障转移组。******** 
+1. 在“设置”窗格下选择“故障转移组”，然后选择在第 2 部分创建的故障转移组。   
   
    ![在门户中选择故障转移组](media/sql-database-single-database-failover-group-tutorial/select-failover-group.png)
 
 1. 查看哪个服务器是主服务器，哪个服务器是辅助服务器。 
-1. 在“任务”窗格中选择“故障转移”，以故障转移包含弹性池的故障转移组。**** 
-1. 在告知将会断开 TDS 会话连接的警告中选择“是”。**** 
+1. 在“任务”窗格中选择“故障转移”，以故障转移包含弹性池的故障转移组。  
+1. 在告知将会断开 TDS 会话连接的警告中选择“是”。  
 
    ![故障转移包含 SQL 数据库的故障转移组](media/sql-database-single-database-failover-group-tutorial/failover-sql-db.png)
 
 1. 查看哪个服务器是主服务器，哪个服务器是辅助服务器。 如果故障转移成功，这两个服务器的角色应会交换。 
-1. 再次选择“故障转移”，将故障转移组故障回复到原始设置。**** 
+1. 再次选择“故障转移”，将故障转移组故障回复到原始设置。  
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 测试故障转移组的故障转移。
 
@@ -353,16 +353,16 @@ ms.locfileid: "77461794"
 
 如果尚未配置 [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)，则可使用 Azure 门户或 PowerShell 创建主虚拟网关。 
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 使用 Azure 门户创建主虚拟网络网关。 
 
-1. 在 [Azure 门户](https://portal.azure.com)中转到你的资源组，并选择主托管实例的“虚拟网络”资源。**** 
-1. 在“设置”下选择“子网”，然后选择添加新的“网关子网”。************ 保留默认值。 
+1. 在 [Azure 门户](https://portal.azure.com)中转到你的资源组，并选择主托管实例的“虚拟网络”资源。  
+1. 在“设置”下选择“子网”，然后选择添加新的“网关子网”。    保留默认值。 
 
    ![为主托管实例添加网关](media/sql-database-managed-instance-failover-group-tutorial/add-subnet-gateway-primary-vnet.png)
 
-1. 创建子网网关后，在左侧导航窗格中选择“创建资源”，然后在搜索框中键入 `Virtual network gateway`。**** 选择“Microsoft”发布的“虚拟网络网关”资源。******** 
+1. 创建子网网关后，在左侧导航窗格中选择“创建资源”，然后在搜索框中键入 `Virtual network gateway`。  选择“Microsoft”发布的“虚拟网络网关”资源。   
 
    ![创建新的虚拟网络网关](media/sql-database-managed-instance-failover-group-tutorial/create-virtual-network-gateway.png)
 
@@ -370,27 +370,27 @@ ms.locfileid: "77461794"
 
    下表显示了主托管实例的网关所需的值：
  
-    | **字段** | “值” |
+    | **字段** | Value |
     | --- | --- |
     | **订阅** |  主托管实例所在的订阅。 |
     | **名称** | 虚拟网络网关的名称。 | 
-    | **地区** | 辅助托管实例所在的区域。 |
-    | **网关类型** | 选择**VPN**。 |
-    | **VPN 类型** | 选择**基于路由** |
-    | **Sku**| 保留默认值 `VpnGw1`。 |
+    | **区域** | 辅助托管实例所在的区域。 |
+    | **网关类型** | 选择“VPN”。  |
+    | **VPN 类型** | 选择“基于路由”  |
+    | **SKU**| 保留默认值 `VpnGw1`。 |
     | **位置**| 辅助托管实例和辅助虚拟网络所在的位置。   |
     | **虚拟网络**| 为辅助托管实例选择虚拟网络。 |
-    | **公共 IP 地址**| 选择“新建”。**** |
+    | **公共 IP 地址**| 选择“新建”。  |
     | **公共 IP 地址名称**| 输入 IP 地址的名称。 |
     | &nbsp; | &nbsp; |
 
-1. 将其他值保留为默认值，然后选择“查看 + 创建”以检查虚拟网络网关的设置。****
+1. 将其他值保留为默认值，然后选择“查看 + 创建”以检查虚拟网络网关的设置。 
 
    ![主网关设置](media/sql-database-managed-instance-failover-group-tutorial/settings-for-primary-gateway.png)
 
-1. 选择“创建”以创建新的虚拟网络网关。**** 
+1. 选择“创建”以创建新的虚拟网络网关。  
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 创建主虚拟网络网关。 
 
@@ -426,28 +426,28 @@ ms.locfileid: "77461794"
 
 使用 Azure 门户或 PowerShell 创建辅助虚拟网络网关。 
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 重复上一部分中的步骤，为辅助托管实例创建虚拟网络子网和网关。 填写必填字段，为辅助托管实例配置网关。 
 
    下表显示了辅助托管实例的网关所需的值：
 
-   | **字段** | “值” |
+   | **字段** | Value |
    | --- | --- |
    | **订阅** |  辅助托管实例所在的订阅。 |
    | **名称** | 虚拟网络网关的名称，例如 `secondary-mi-gateway`。 | 
-   | **地区** | 辅助托管实例所在的区域。 |
-   | **网关类型** | 选择**VPN**。 |
-   | **VPN 类型** | 选择**基于路由** |
-   | **Sku**| 保留默认值 `VpnGw1`。 |
+   | **区域** | 辅助托管实例所在的区域。 |
+   | **网关类型** | 选择“VPN”。  |
+   | **VPN 类型** | 选择“基于路由”  |
+   | **SKU**| 保留默认值 `VpnGw1`。 |
    | **位置**| 辅助托管实例和辅助虚拟网络所在的位置。   |
    | **虚拟网络**| 选择在第 2 部分创建的虚拟网络，例如 `vnet-sql-mi-secondary`。 |
-   | **公共 IP 地址**| 选择“新建”。**** |
+   | **公共 IP 地址**| 选择“新建”。  |
    | **公共 IP 地址名称**| 输入 IP 地址的名称，例如 `secondary-gateway-IP`。 |
    | &nbsp; | &nbsp; |
 
    ![辅助网关设置](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 创建辅助虚拟网络网关。 
 
@@ -488,29 +488,29 @@ ms.locfileid: "77461794"
 
 对两个连接使用的共享密钥应该相同。 
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 使用 Azure 门户在两个网关之间创建连接。 
 
-1. 在 [Azure 门户](https://portal.azure.com)中选择“创建资源”。****
-1. 在搜索框中键入 `connection`，然后按 Enter 进行搜索；随后你会转到 Microsoft 发布的“连接”资源。****
-1. 选择“创建”以创建连接。**** 
-1. 在“基本信息”选项卡上选择以下值，然后选择“确定”。******** 
-    1. 为“连接类型”选择 `VNet-to-VNet`。**** 
+1. 在 [Azure 门户](https://portal.azure.com)中选择“创建资源”。 
+1. 在搜索框中键入 `connection`，然后按 Enter 进行搜索；随后你会转到 Microsoft 发布的“连接”资源。 
+1. 选择“创建”以创建连接。  
+1. 在“基本信息”选项卡上选择以下值，然后选择“确定”。   
+    1. 为“连接类型”选择 `VNet-to-VNet`。  
     1. 从下拉列表中选择订阅。 
     1. 在下拉列表中选择托管实例的资源组。 
     1. 在下拉列表中选择主托管实例的位置。 
-1. 在“设置”选项卡上选择或输入以下值，然后选择“确定”：********
-    1. 为“第一个虚拟网络网关”选择主网络网关，例如 `Primary-Gateway`。****  
-    1. 为“第二个虚拟网络网关”选择辅助网络网关，例如 `Secondary-Gateway`。**** 
-    1. 选中“建立双向连接”旁边的复选框。**** 
+1. 在“设置”选项卡上选择或输入以下值，然后选择“确定”：  
+    1. 为“第一个虚拟网络网关”选择主网络网关，例如 `Primary-Gateway`。   
+    1. 为“第二个虚拟网络网关”选择辅助网络网关，例如 `Secondary-Gateway`。  
+    1. 选中“建立双向连接”旁边的复选框。  
     1. 保留默认的主连接名称，或将其重命名为所选的值。 
-    1. 提供连接的“共享密钥(PSK)”，例如 `mi1m2psk`。**** 
+    1. 提供连接的“共享密钥(PSK)”，例如 `mi1m2psk`。  
 
    ![创建网关连接](media/sql-database-managed-instance-failover-group-tutorial/create-gateway-connection.png)
 
-1. 在“摘要”选项卡上查看双向连接的设置，然后选择“确定”以创建连接。******** 
+1. 在“摘要”选项卡上查看双向连接的设置，然后选择“确定”以创建连接。   
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 在两个网关之间创建连接。 
 
@@ -546,23 +546,23 @@ ms.locfileid: "77461794"
 ### <a name="create-the-failover-group"></a>创建故障转移组 
 使用 Azure 门户或 PowerShell 为托管实例创建故障转移组。 
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 使用 Azure 门户为托管实例创建故障转移组。 
 
-1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”****。 如果**Azure SQL**不在列表中，请选择 **"所有服务**"，然后在搜索框中键入 Azure SQL。 （可选）选择“Azure SQL”**** 旁边的星号将其收藏并将其添加为左侧导航栏中的项。 
+1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”  。 如果 **Azure SQL** 不在列表中，请选择“所有服务”  ，然后在搜索框中键入 Azure SQL。 （可选）选择“Azure SQL”  旁边的星号将其收藏并将其添加为左侧导航栏中的项。 
 1. 选择要添加到故障转移组中的主托管实例。  
-1. 在“设置”下，导航到“实例故障转移组”，然后选择“添加组”打开“实例故障转移组”页。**************** 
+1. 在“设置”下，导航到“实例故障转移组”，然后选择“添加组”打开“实例故障转移组”页。     
 
    ![添加故障转移组](media/sql-database-managed-instance-failover-group-tutorial/add-failover-group.png)
 
-1. 在“实例故障转移组”页上键入故障转移组的名称，然后从下拉列表中选择辅助托管实例。**** 选择“创建”以创建故障转移组。**** 
+1. 在“实例故障转移组”页上键入故障转移组的名称，然后从下拉列表中选择辅助托管实例。  选择“创建”以创建故障转移组。  
 
    ![创建故障转移组](media/sql-database-managed-instance-failover-group-tutorial/create-failover-group.png)
 
-1. 故障转移组部署完成后，你将返回到“故障转移组”页。**** 
+1. 故障转移组部署完成后，你将返回到“故障转移组”页。  
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 为托管实例创建故障转移组。 
 
@@ -588,13 +588,13 @@ ms.locfileid: "77461794"
 
 使用 Azure 门户或 PowerShell 测试故障转移组的故障转移。 
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 使用 Azure 门户测试故障转移组的故障转移。 
 
-1. 导航到[Azure 门户](https://portal.azure.com)中的_辅助_托管实例，并在设置下选择**实例故障转移组**。 
+1. 在 [Azure 门户](https://portal.azure.com)中导航到你的辅助托管实例，然后在“设置”下选择“实例故障转移组”   。 
 1. 查看哪个托管实例是主实例，哪个托管实例是辅助实例。 
-1. 选择“故障转移”，然后在有关正在断开 TDS 会话的警告中选择“是”。******** 
+1. 选择“故障转移”，然后在有关正在断开 TDS 会话的警告中选择“是”。   
 
    ![将故障转移组故障转移](media/sql-database-managed-instance-failover-group-tutorial/failover-mi-failover-group.png)
 
@@ -602,9 +602,9 @@ ms.locfileid: "77461794"
 
    ![故障转移后托管实例的角色已交换](media/sql-database-managed-instance-failover-group-tutorial/mi-switched-after-failover.png)
 
-1. 转到新的_辅助_托管实例，并再次选择**故障转移**，使主实例故障回主角色。 
+1. 转到新的_辅助_托管实例，再次选择“故障转移”，将主实例故障回复为主角色  。 
 
-# <a name="powershell"></a>[电源外壳](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 测试故障转移组的故障转移。 
 

@@ -10,10 +10,10 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.openlocfilehash: 03bc49c24e3c2d32e97f3e5e03bd39da63428a6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77505571"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什么是 Azure 机器学习工作区？
@@ -79,7 +79,7 @@ ms.locfileid: "77505571"
 | 创建笔记本 VM |   | **&check;** | |     |
 
 > [!WARNING]
-> 不支持将 Azure 机器学习工作区移动到其他订阅，或将所属订阅移动到新租户。 这样做可能会导致错误。
+> 不支持将 Azure 机器学习工作区移动到不同的订阅，或将拥有的订阅移动到新租户。 这样做可能会导致错误。
 
 ## <a name="create-a-workspace"></a><a name='create-workspace'></a>创建工作区
 
@@ -95,7 +95,7 @@ ms.locfileid: "77505571"
 > [!NOTE]
 > 工作区名称不区分大小写。
 
-## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a>升级到企业版
+## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a>升级到 Enterprise edition
 
 可使用 Azure 门户将[工作区从基本版升级到企业版](how-to-manage-workspace.md#upgrade)。 不能将企业版工作区降级为基本版工作区。 
 
@@ -103,10 +103,10 @@ ms.locfileid: "77505571"
 
 创建新工作区时，它会自动创建工作区使用的几个 Azure 资源：
 
-+ [Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)：注册在训练期间和部署模型时使用的 Docker 容器。 要最大程度地降低成本，ACR 在创建部署映像之前会“延迟加载”****。
++ [Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)：注册在训练和部署模型时使用的 docker 容器。 要最大程度地降低成本，ACR 在创建部署映像之前会“延迟加载”****。
 + [Azure 存储帐户](https://azure.microsoft.com/services/storage/)：用作工作区的默认数据存储。  与 Azure 机器学习计算实例一起使用的 Jupyter 笔记本也存储在此处。
-+ [Azure 应用程序见解](https://azure.microsoft.com/services/application-insights/)：存储有关模型的监视信息。
-+ [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)：存储计算目标使用的秘密以及工作区需要的其他敏感信息。
++ [Azure 应用程序 Insights](https://azure.microsoft.com/services/application-insights/)：存储有关模型的监视信息。
++ [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)：存储工作区所需的计算目标和其他敏感信息所使用的机密。
 
 > [!NOTE]
 > 除创建新版本以外，还可以使用现有的 Azure 服务。
@@ -118,7 +118,7 @@ ms.locfileid: "77505571"
 + [Azure 机器学习概述](overview-what-is-azure-ml.md)
 + [创建工作区](how-to-manage-workspace.md)
 + [管理工作区](how-to-manage-workspace.md)
-+ [教程：开始使用 Python SDK 创建第一个 ML 实验](tutorial-1st-experiment-sdk-setup.md)
-+ [教程：使用 R SDK 开始使用 Azure 机器学习](tutorial-1st-r-experiment.md)
-+ [教程：使用自动机器学习创建第一个分类模型](tutorial-first-experiment-automated-ml.md)（仅适用于[企业版](overview-what-is-azure-ml.md#sku)工作区）
-+ [教程：与设计师一起预测汽车价格](tutorial-designer-automobile-price-train-score.md)（仅适用于[企业版](overview-what-is-azure-ml.md#sku)工作区）
++ [教程：开始使用 Python SDK 创建第一个 ML 试验](tutorial-1st-experiment-sdk-setup.md)
++ [教程：通过 R SDK 开始 Azure 机器学习](tutorial-1st-r-experiment.md)
++ [教程：使用自动机器学习创建您的第一个分类模型](tutorial-first-experiment-automated-ml.md)（仅适用于[企业版](overview-what-is-azure-ml.md#sku)工作区）
++ [教程：使用设计器预测汽车价格](tutorial-designer-automobile-price-train-score.md)（仅适用于[企业版](overview-what-is-azure-ml.md#sku)工作区）

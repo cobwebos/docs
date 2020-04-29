@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: girobins
 ms.openlocfilehash: 013ebdcdbac41825c10a1362f73ab4c94052400d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77469929"
 ---
 # <a name="select-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 SELECT 子句
@@ -32,7 +32,7 @@ SELECT <select_specification>
   
 ```  
   
-## <a name="arguments"></a>自变量
+## <a name="arguments"></a>参数
   
 - `<select_specification>`  
 
@@ -78,7 +78,7 @@ SELECT <select_specification>
   
 ## <a name="examples"></a>示例
 
-以下 SELECT 查询示例从 `id` 匹配 `AndersenFamily` 的 `Families` 中返回 `address`：
+以下 SELECT 查询示例从 `address` 匹配 `Families` 的 `id` 中返回 `AndersenFamily`：
 
 ```sql
     SELECT f.address
@@ -171,9 +171,9 @@ SELECT <select_specification>
 ```
 ## <a name="reserved-keywords-and-special-characters"></a>保留关键字和特殊字符
 
-如果数据包含与保留关键字（如"订单"或"组"）相同的名称的属性，则对这些文档的查询将导致语法错误。 应显式在字符中`[]`包含该属性以成功运行查询。
+如果数据包含的属性的名称与保留关键字（如 "order" 或 "Group"）相同，则对这些文档的查询将导致语法错误。 应将属性显式包含在字符`[]`中，以便成功运行查询。
 
-例如，下面是一个带有名为`order`属性的文档，`price($)`并且属性包含特殊字符：
+例如，下面是一个文档，其中包含一个名`order`为的属性`price($)`和一个包含特殊字符的属性：
 
 ```json
 {
@@ -190,7 +190,7 @@ SELECT <select_specification>
 }
 ```
 
-如果运行包含属性或`order``price($)`属性的查询，您将收到语法错误。
+如果运行包含`order`属性或`price($)`属性的查询，您将收到语法错误。
 
 ```sql
 SELECT * FROM c where c.order.orderid = "12345"
@@ -204,7 +204,7 @@ SELECT * FROM c where c.order.price($) > 50
 Syntax error, incorrect syntax near 'order'
 `
 
-应重写与以下内容相同的查询：
+应重写相同的查询，如下所示：
 
 ```sql
 SELECT * FROM c WHERE c["order"].orderId = "12345"
@@ -216,6 +216,6 @@ SELECT * FROM c WHERE c["order"]["price($)"] > 50
 
 ## <a name="next-steps"></a>后续步骤
 
-- [开始](sql-query-getting-started.md)
+- [入门](sql-query-getting-started.md)
 - [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
-- [WHERE 条款](sql-query-where.md)
+- [WHERE 子句](sql-query-where.md)

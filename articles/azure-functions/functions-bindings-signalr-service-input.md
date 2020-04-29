@@ -1,24 +1,24 @@
 ---
-title: Azure 函数信令器服务输入绑定
-description: 了解如何在 Azure 函数中返回 SignalR 服务终结点 URL 和访问令牌。
+title: Azure Functions SignalR 服务输入绑定
+description: 了解如何在 Azure Functions 中返回 SignalR 服务终结点 URL 和访问令牌。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: 53d336aff3177a76c5e02266ffb8484bd9945119
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77530258"
 ---
-# <a name="signalr-service-input-binding-for-azure-functions"></a>用于 Azure 函数的 SignalR 服务输入绑定
+# <a name="signalr-service-input-binding-for-azure-functions"></a>Azure Functions 的 SignalR 服务输入绑定
 
 客户端在连接到 Azure SignalR 服务之前，必须检索服务终结点 URL 和有效的访问令牌。 *SignalRConnectionInfo* 输入绑定生成 SignalR 服务终结点 URL 和有效的令牌，这两者可以用来连接到服务。 由于此令牌有时间限制，并且可以用来对需要连接的特定用户进行身份验证，因此不应缓存此令牌，也不应在客户端之间共享它。 使用此绑定的 HTTP 触发器可供客户端用来检索连接信息。
 
 若要详细了解如何使用此绑定来创建一个可以由 SignalR 客户端 SDK 使用的“协商”函数，请参阅 SignalR 服务概念文档中的[“Azure Functions 开发和配置”一文](../azure-signalr/signalr-concept-serverless-development-config.md)。
 
-有关设置和配置详细信息的信息，请参阅[概述](functions-bindings-signalr-service.md)。
+有关设置和配置详细信息，请参阅[概述](functions-bindings-signalr-service.md)。
 
 ## <a name="example"></a>示例
 
@@ -38,7 +38,7 @@ public static SignalRConnectionInfo Negotiate(
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-以下示例演示 function.json** 文件中的一个 SignalR 连接信息输入绑定，以及使用该绑定来返回连接信息的 [C# Script 函数](functions-reference-csharp.md)。
+以下示例演示 function.json  文件中的一个 SignalR 连接信息输入绑定，以及使用该绑定来返回连接信息的 [C# Script 函数](functions-reference-csharp.md)。
 
 下面是 *function.json* 文件中的绑定数据：
 
@@ -66,7 +66,7 @@ public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo c
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 以下示例演示 *function.json* 文件中的一个 SignalR 连接信息输入绑定，以及使用该绑定来返回连接信息的 [JavaScript 函数](functions-reference-node.md)。
 
@@ -94,7 +94,7 @@ module.exports = async function (context, req, connectionInfo) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-下面的示例显示*函数.json*文件中的 SignalR 连接信息输入绑定，以及使用绑定返回连接信息的[Python 函数](functions-reference-python.md)。
+下面的示例演示了*函数 json*文件中的 SignalR 连接信息输入绑定，以及使用绑定返回连接信息的[Python 函数](functions-reference-python.md)。
 
 下面是 *function.json* 文件中的绑定数据：
 
@@ -151,7 +151,7 @@ public SignalRConnectionInfo negotiate(
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-可以使用[绑定表达式](./functions-bindings-expressions-patterns.md)`{headers.x-ms-client-principal-id}` `UserId` ： 或`{headers.x-ms-client-principal-name}`，从标题将绑定的属性设置为值。
+您可以使用[绑定表达式](./functions-bindings-expressions-patterns.md)将绑定的`UserId`属性设置为任一标头的值： `{headers.x-ms-client-principal-id}`或`{headers.x-ms-client-principal-name}`。
 
 ```cs
 [FunctionName("negotiate")]
@@ -166,9 +166,9 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
 
-可以使用[绑定表达式](./functions-bindings-expressions-patterns.md)`{headers.x-ms-client-principal-id}` `userId` ： 或`{headers.x-ms-client-principal-name}`，从标题将绑定的属性设置为值。
+您可以使用[绑定表达式](./functions-bindings-expressions-patterns.md)将绑定的`userId`属性设置为任一标头的值： `{headers.x-ms-client-principal-id}`或`{headers.x-ms-client-principal-name}`。
 
 示例 function.json：
 
@@ -197,9 +197,9 @@ public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo c
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-可以使用[绑定表达式](./functions-bindings-expressions-patterns.md)`{headers.x-ms-client-principal-id}` `userId` ： 或`{headers.x-ms-client-principal-name}`，从标题将绑定的属性设置为值。
+您可以使用[绑定表达式](./functions-bindings-expressions-patterns.md)将绑定的`userId`属性设置为任一标头的值： `{headers.x-ms-client-principal-id}`或`{headers.x-ms-client-principal-name}`。
 
 示例 function.json：
 
@@ -226,7 +226,7 @@ module.exports = async function (context, req, connectionInfo) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-可以使用[绑定表达式](./functions-bindings-expressions-patterns.md)`{headers.x-ms-client-principal-id}` `userId` ： 或`{headers.x-ms-client-principal-name}`，从标题将绑定的属性设置为值。
+您可以使用[绑定表达式](./functions-bindings-expressions-patterns.md)将绑定的`userId`属性设置为任一标头的值： `{headers.x-ms-client-principal-id}`或`{headers.x-ms-client-principal-name}`。
 
 示例 function.json：
 
@@ -258,7 +258,7 @@ def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-可以使用[绑定表达式](./functions-bindings-expressions-patterns.md)`{headers.x-ms-client-principal-id}` `userId` ： 或`{headers.x-ms-client-principal-name}`，从标题将绑定的属性设置为值。
+您可以使用[绑定表达式](./functions-bindings-expressions-patterns.md)将绑定的`userId`属性设置为任一标头的值： `{headers.x-ms-client-principal-id}`或`{headers.x-ms-client-principal-name}`。
 
 ```java
 @FunctionName("negotiate")
@@ -279,4 +279,4 @@ public SignalRConnectionInfo negotiate(
 
 ## <a name="next-steps"></a>后续步骤
 
-- [发送信号器服务消息（输出绑定）](./functions-bindings-signalr-service-output.md) 
+- [发送 SignalR 服务消息（输出绑定）](./functions-bindings-signalr-service-output.md) 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
 ms.openlocfilehash: e1157a695d34c75b237391427b37365421366ef8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77523164"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>使用 Azure SignalR 服务进行 Azure Functions 开发和配置
@@ -21,9 +21,9 @@ Azure Functions 应用程序可以利用 [Azure SignalR 服务绑定](../azure-f
 
 ## <a name="signalr-service-configuration"></a>SignalR 服务配置
 
-可以不同的模式配置 Azure SignalR 服务。 与 Azure Functions 一起使用时，必须以“无服务器”模式配置服务。**
+可以不同的模式配置 Azure SignalR 服务。 与 Azure Functions 一起使用时，必须以“无服务器”模式配置服务。 
 
-在 Azure 门户中，找到 SignalR 服务资源的“设置”页。** 将“服务模式”设置为“无服务器”。****
+在 Azure 门户中，找到 SignalR 服务资源的“设置”页。  将“服务模式”设置为“无服务器”。  
 
 ![SignalR 服务模式](media/signalr-concept-azure-functions/signalr-service-mode.png)
 
@@ -64,8 +64,8 @@ SignalR 客户端应用程序可利用以多种语言之一编写的 SignalR 客
 
 若要连接到 SignalR 服务，客户端必须成功完成连接协商，具体包括以下步骤：
 
-1. 向上述 HTTP 协商终结点发出请求，以获取有效的连接信息**
-1. 使用服务终结点 URL 以及从协商终结点获取的访问令牌连接到 SignalR 服务**
+1. 向上述 HTTP 协商终结点发出请求，以获取有效的连接信息 
+1. 使用服务终结点 URL 以及从协商终结点获取的访问令牌连接到 SignalR 服务 
 
 SignalR 客户端 SDK 已包含执行协商握手所需的逻辑。 将协商终结点的 URL（不包括 `negotiate` 段）传递给 SDK 的 `HubConnectionBuilder`。 下面是一个 JavaScript 示例：
 
@@ -83,7 +83,7 @@ SDK 根据约定自动将 `/negotiate` 追加到 URL，然后使用该 URL 开�
 有关如何使用 SignalR 客户端 SDK 的详细信息，请参阅适用于所用语言的文档：
 
 * [.NET Standard](https://docs.microsoft.com/aspnet/core/signalr/dotnet-client)
-* [Javascript](https://docs.microsoft.com/aspnet/core/signalr/javascript-client)
+* [JavaScript](https://docs.microsoft.com/aspnet/core/signalr/javascript-client)
 * [Java](https://docs.microsoft.com/aspnet/core/signalr/java-client)
 
 ### <a name="sending-messages-from-a-client-to-the-service"></a>将消息从客户端发送到服务
@@ -92,7 +92,7 @@ SDK 根据约定自动将 `/negotiate` 追加到 URL，然后使用该 URL 开�
 
 ## <a name="azure-functions-configuration"></a>Azure Functions 配置
 
-与 Azure SignalR 服务集成的 Azure 函数应用可以像任何典型的 Azure 函数应用一样部署，使用[连续部署](../azure-functions/functions-continuous-deployment.md)[、zip 部署](../azure-functions/deployment-zip-push.md)和[从包运行](../azure-functions/run-functions-from-deployment-package.md)等技术。
+与 Azure SignalR 服务集成的 azure Function apps 可以像使用[持续部署](../azure-functions/functions-continuous-deployment.md)、 [zip 部署](../azure-functions/deployment-zip-push.md)和[从包运行](../azure-functions/run-functions-from-deployment-package.md)这样的技术一样部署，如任何典型的 azure function app。
 
 但是，对于使用 SignalR 服务绑定的应用，需要注意几个特殊事项。 如果客户端在浏览器中运行，则必须启用 CORS。 如果应用需要身份验证，则你可以将协商终结点与应用服务身份验证集成。
 
@@ -124,10 +124,10 @@ JavaScript/TypeScript 客户端向 negotiate 函数发出 HTTP 请求，以启�
 
 #### <a name="cloud---azure-functions-cors"></a>云 - Azure Functions CORS
 
-若要在 Azure 函数应用中启用 CORS，请在 Azure 门户中函数应用的“平台功能”选项卡下，转到 CORS 配置屏幕。**
+若要在 Azure 函数应用中启用 CORS，请在 Azure 门户中函数应用的“平台功能”选项卡下，转到 CORS 配置屏幕。 
 
 > [!NOTE]
-> CORS 配置在 Azure 函数 Linux 使用计划中尚不可用。 使用[Azure API 管理](#cloud---azure-api-management)启用 CORS。
+> CORS 配置在 Azure Functions Linux 消耗计划中尚不可用。 使用[AZURE API 管理](#cloud---azure-api-management)启用 CORS。
 
 必须启用支持 Access-Control-Allow-Credentials 的 CORS 才能让 SignalR 客户端调用 negotiate 函数。 选中相应的复选框以启用 CORS。
 
@@ -163,7 +163,7 @@ Azure API 管理提供一个可向现有后端服务添加功能的 API 网关�
 
 ### <a name="using-app-service-authentication"></a>使用应用服务身份验证
 
-Azure 功能具有内置身份验证，支持 Facebook、Twitter、微软帐户、Google 和 Azure 活动目录等热门提供商。 此功能可与 *SignalRConnectionInfo* 绑定集成，以便与已使用用户 ID 进行身份验证的 Azure SignalR 服务建立连接。 应用程序可以使用 *SignalR* 输出绑定来发送以该用户 ID 为目标的消息。
+Azure Functions 提供内置身份验证，支持 Facebook、Twitter、Microsoft 帐户、Google 和 Azure Active Directory 等常用访问接口。 此功能可与 *SignalRConnectionInfo* 绑定集成，以便与已使用用户 ID 进行身份验证的 Azure SignalR 服务建立连接。 应用程序可以使用 *SignalR* 输出绑定来发送以该用户 ID 为目标的消息。
 
 在 Azure 门户中函数应用的“平台功能”选项卡上，打开“身份验证/授权”设置窗口。**** 遵循[应用服务身份验证](../app-service/overview-authentication-authorization.md)文档使用所选的标识提供者配置身份验证。
 

@@ -1,5 +1,5 @@
 ---
-title: 斯托简单虚拟阵列的故障转移和灾难恢复
+title: StorSimple 虚拟阵列的故障转移和灾难恢复
 description: 了解有关如何对 StorSimple Virtual Array 进行故障转移的详细信息。
 services: storsimple
 documentationcenter: NA
@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 464fa05f658dd6e6e25d79f8840ceeb939383149
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77467209"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>通过 Azure 门户进行 StorSimple 虚拟阵列的灾难恢复和设备故障转移
@@ -40,11 +40,11 @@ ms.locfileid: "77467209"
 > 
 > 
 
-灾难恢复通过设备故障转移功能进行编排，并从 **"设备"** 边栏选项卡启动。 此边栏选项卡以表格形式列出与 StorSimple Device Manager 服务连接的所有 StorSimple 设备。 对于每台设备，可以看到友好名称、状态、预配容量和最大容量、类型以及型号。
+灾难恢复通过设备故障转移功能进行协调，并且是从 "**设备**" 边栏选项卡启动的。 此边栏选项卡以表格形式列出与 StorSimple Device Manager 服务连接的所有 StorSimple 设备。 对于每台设备，可以看到友好名称、状态、预配容量和最大容量、类型以及型号。
 
 ## <a name="prerequisites-for-device-failover"></a>设备故障转移先决条件
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 对于设备故障转移，请确保满足以下先决条件：
 
@@ -57,12 +57,12 @@ ms.locfileid: "77467209"
   > 
 * 目标设备不能具有与源设备相同的名称。
 * 源和目标设备的类型必须相同。 只能将配置为文件服务器的虚拟阵列故障转移到另一个文件服务器。 这同样适用于 iSCSI 服务器。
-* 对于文件服务器 DR，我们建议将目标设备加入到与源相同的域。 此配置可确保自动解决共享权限问题。 仅支持对同一域中的目标设备的故障转移。
+* 对于文件服务器 DR，我们建议将目标设备加入到与源相同的域。 此配置可确保自动解决共享权限问题。 仅支持故障转移到同一个域中的目标设备。
 * DR 的可用目标设备是所含容量等于或大于源设备的设备。 已连接到服务，但没有足够空间的设备不能用作目标设备。
 
 ### <a name="other-considerations"></a>其他注意事项
 
-* 对于计划故障转移：
+* 对于计划的故障转移：
   
   * 建议使所有卷或共享在源设备上脱机。
   * 建先进行设备备份，再继续执行故障转移以最大程度减少数据丢失。
@@ -138,7 +138,7 @@ ms.locfileid: "77467209"
 
     3. 选中“我了解此操作会将数据故障转移到目标设备”****。 
 
-    4. 单击 **"故障转移**"。
+    4. 单击 "**故障转移**"。
     
         ![](./media/storsimple-virtual-array-failover-dr/failover4.png)
 11. 故障转移作业将启动，将收到通知。 转到“设备”>“作业”**** 以监视故障转移。
@@ -162,7 +162,7 @@ ms.locfileid: "77467209"
 
 **在 DR 期间出现云连接中断问题**
 
-如果云连接在 DR 启动后和设备还原完成之前中断，DR 会失败。 您会收到故障通知。 用于 DR 的目标设备将标记为“不可用”**。 不能将同一目标设备用于将来的 DR。
+如果云连接在 DR 启动后和设备还原完成之前中断，DR 会失败。 收到失败通知。 用于 DR 的目标设备将标记为“不可用”**。 不能将同一目标设备用于将来的 DR。
 
 **没有兼容的目标设备**
 

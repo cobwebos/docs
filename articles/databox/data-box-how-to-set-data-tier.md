@@ -1,5 +1,5 @@
 ---
-title: 通过 Azure 数据框/Azure 数据框重重将数据发送到热、冷、存档 blob 层
+title: 通过 Azure Data Box/Azure Data Box Heavy 将数据发送到 "热"、"冷"、"存档" blob 层
 description: 介绍如何使用 Azure Data Box 或 Azure Data Box Heavy 将数据发送到合适的块 Blob 存储层（如热、冷或存档存储层）
 services: databox
 author: alkohli
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/24/2019
 ms.author: alkohli
 ms.openlocfilehash: 31178284313ad7dafb094b109a75d4550cabd39c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77560365"
 ---
 # <a name="use-azure-data-box-or-azure-data-box-heavy-to-send-data-to-appropriate-azure-storage-blob-tier"></a>使用 Azure Data Box 或 Azure Data Box Heavy 将数据发送到合适的 Azure 存储 Blob 层
@@ -33,7 +33,7 @@ Azure 存档存储层是脱机的，其存储成本最低，但访问成本最�
 
 Data Box 或 Data Box Heavy 中的数据会上传到与存储帐户关联的存储层。 创建存储帐户时，可以将访问层指定为“热”或“冷”。 根据工作负荷和成本的访问模式，可以将数据从默认层级移动到另一个存储层。
 
-只能在 Blob 存储或常规用途 v2 (GPv2) 帐户中对对象存储数据分层。 常规用途 v1 (GPv1) 帐户不支持分层。 要为数据选择正确的存储层，请查看 Azure Blob 存储中详述[的注意事项：高级、热、酷和存档存储层](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)。
+只能在 Blob 存储或常规用途 v2 (GPv2) 帐户中对对象存储数据分层。 常规用途 v1 (GPv1) 帐户不支持分层。 若要为数据选择适当的存储层，请查看 [Azure Blob 存储：高级、热、冷和存档存储层](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)中详细介绍的注意事项。
 
 ## <a name="set-a-default-blob-tier"></a>设置默认 Blob 层
 
@@ -47,14 +47,14 @@ Data Box 或 Data Box Heavy 中的数据会上传到与存储帐户关联的存�
 
 Data Box 设备中的数据上传到默认层后，可能需要将数据移到非默认层。 可通过两种方法将数据移动到非默认层。
 
-- Azure Blob 存储生命周期管理 - 可以使用基于策略的方法自动将数据分层，或使其在生命周期结束时过期****。 有关详细信息，请转到[管理 Azure Blob 存储生命周期](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts)。
-- 脚本 - 可以通过 Azure PowerShell 使用脚本的方法来启用 Blob 级别分层****。 可以调用 `SetBlobTier` 操作在 Blob 上设置层。
+- Azure Blob 存储生命周期管理 - 可以使用基于策略的方法自动将数据分层，或使其在生命周期结束时过期  。 有关详细信息，请转到[管理 Azure Blob 存储生命周期](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts)。
+- 脚本 - 可以通过 Azure PowerShell 使用脚本的方法来启用 Blob 级别分层  。 可以调用 `SetBlobTier` 操作在 Blob 上设置层。
 
 ## <a name="use-azure-powershell-to-set-the-blob-tier"></a>使用 Azure PowerShell 设置 Blob 层
 
 以下步骤介绍如何使用 Azure PowerShell 脚本将 Blob 层设置为存档存储层。
 
-1. 打开已提升的 Windows PowerShell 会话。 请确保运行的是 PowerShell 5.0 或更高版本。 键入：
+1. 打开提升的 Windows PowerShell 会话。 请确保运行的是 PowerShell 5.0 或更高版本。 键入：
 
    `$PSVersionTable.PSVersion`     
 

@@ -17,10 +17,10 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 68aa62ad34f8db531d439a581ef024862da0f90c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77162304"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>设置 Azure 事件中心的诊断日志
@@ -71,7 +71,7 @@ ms.locfileid: "77162304"
 
 存档日志 JSON 字符串包括下表列出的元素：
 
-“属性” | 描述
+名称 | 说明
 ------- | -------
 TaskName | 失败的任务的说明。
 ActivityId | 用于跟踪的内部 ID。
@@ -83,7 +83,7 @@ archiveStep | ArchiveFlushWriter
 startTime | 失败开始时间。
 失败 | 发生失败的次数。
 durationInSeconds | 失败持续时间。
-message | 错误消息。
+消息 | 错误消息。
 category | ArchiveLogs
 
 以下代码是存档日志 JSON 字符串的示例：
@@ -109,7 +109,7 @@ category | ArchiveLogs
 
 运行日志 JSON 字符串包括下表列出的元素：
 
-“属性” | 描述
+名称 | 说明
 ------- | -------
 ActivityId | 用于跟踪目的的内部 ID。
 EventName | 操作名称。  
@@ -145,4 +145,4 @@ Example:
     - [.NET Core](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)
     - [Python](get-started-python-send-v2.md)
-    - [Javascript](get-started-java-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/02/2018
 ms.author: tagore
 ms.openlocfilehash: 3b4028a09f69acd5d7a6579b4610785ed32e227d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77469521"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>收集 Azure 云服务的性能计数器
@@ -99,11 +99,11 @@ Get-Counter -ListSet * | Where-Object CounterSetName -eq "Processor" | Select -E
 <!-- ... cut to save space ... -->
 ```
 
-每个性能计数器在 `<Counters>` 下表示为 `<Add>` 元素。 `PerformanceCounter` 属性定义要收集的性能计数器。 `ReportAs` 属性是在 Azure 门户中针对性能计数器显示的标题。 收集的任何性能计数器将在门户中放入名为“自定义”的类别中。**** 与 Azure 诊断不同，无法设置收集这些性能计数器并将其发送到 Azure 的间隔。 使用 Application Insights 时，每隔一分钟收集和发送性能计数器一次。 
+每个性能计数器在 `<Counters>` 下表示为 `<Add>` 元素。 `PerformanceCounter` 属性定义要收集的性能计数器。 `ReportAs` 属性是在 Azure 门户中针对性能计数器显示的标题。 收集的任何性能计数器将在门户中放入名为“自定义”的类别中。  与 Azure 诊断不同，无法设置收集这些性能计数器并将其发送到 Azure 的间隔。 使用 Application Insights 时，每隔一分钟收集和发送性能计数器一次。 
 
 Application Insights 会自动收集以下性能计数器：
 
-* *进程（？？APP_WIN32_PROC？）\%处理器时间
+* \Process(??APP_WIN32_PROC??)\%处理器时间
 * \Memory\Available Bytes
 * \.NET CLR Exceptions(??APP_CLR_PROC??)\# of Exceps Thrown / sec
 * \Process(??APP_WIN32_PROC??)\Private Bytes
@@ -115,17 +115,17 @@ Application Insights 会自动收集以下性能计数器：
 ### <a name="azure-diagnostics"></a>Azure 诊断
 
 > [!IMPORTANT]
-> 虽然所有这些数据都聚合到存储帐户中，但门户**不**提供绘制数据的本机方法。 我们强烈建议将另一个诊断服务（如 Application Insights）集成到应用程序中。
+> 尽管所有这些数据都会聚合到存储帐户中，但门户**不**提供绘制数据图表的本机方法。 我们强烈建议将另一个诊断服务（如 Application Insights）集成到应用程序中。
 
 使用适用于云服务的 Azure 诊断扩展可以指定要收集的性能计数器。 若要设置 Azure 诊断，请参阅[云服务监视概述](cloud-services-how-to-monitor.md#setup-diagnostics-extension)。
 
-要收集的性能计数器在 **diagnostics.wadcfgx** 文件中定义。 在 Visual Studio 中打开此文件（按角色定义），并找到**诊断配置** > **公共配置** > **WadCfg** > **诊断监视器配置** > **性能计数器**元素。 将新的 **PerformanceCounterConfiguration** 元素添加为子级。 此元素有两个属性：`counterSpecifier` 和 `sampleRate`。 `counterSpecifier` 属性定义要收集的系统性能计数器集（请参阅上一部分）。 `sampleRate` 值指示轮询值的频率。 将会根据父 `PerformanceCounters` 元素的 `scheduledTransferPeriod` 属性值，将所有性能计数器作为一个整体传输到 Azure。
+要收集的性能计数器在 **diagnostics.wadcfgx** 文件中定义。 请在 Visual Studio 中打开此文件（为每个角色定义了此文件），并找到 **DiagnosticsConfiguration** > **PublicConfig** > **WadCfg** > **DiagnosticMonitorConfiguration** > **PerformanceCounters** 元素。 将新的 **PerformanceCounterConfiguration** 元素添加为子级。 此元素有两个属性：`counterSpecifier` 和 `sampleRate`。 `counterSpecifier` 属性定义要收集的系统性能计数器集（请参阅上一部分）。 `sampleRate` 值指示轮询值的频率。 将会根据父 `PerformanceCounters` 元素的 `scheduledTransferPeriod` 属性值，将所有性能计数器作为一个整体传输到 Azure。
 
 有关 `PerformanceCounters` 架构元素的详细信息，请参阅 [Azure 诊断架构](../azure-monitor/platform/diagnostics-extension-schema-windows.md#performancecounters-element)。
 
 `sampleRate` 属性定义的时间段使用 XML 持续时间数据类型来指示轮询性能计数器的频率。 在以下示例中，频率设置为 `PT3M`，表示 `[P]eriod[T]ime[3][M]inutes`：每隔 3 分钟。
 
-有关 `sampleRate` 和 `scheduledTransferPeriod` 定义方式的详细信息，请参阅 [W3 XML 日期和时间日期类型](https://www.w3schools.com/XML/schema_dtypes_date.asp)教程中的“持续时间数据类型”部分。****
+有关 `sampleRate` 和 `scheduledTransferPeriod` 定义方式的详细信息，请参阅 [W3 XML 日期和时间日期类型](https://www.w3schools.com/XML/schema_dtypes_date.asp)教程中的“持续时间数据类型”部分。 
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -259,7 +259,7 @@ counterServiceUsed.Increment();
 
 ### <a name="azure-diagnostics"></a>Azure 诊断
 
-如前所述，要收集的性能计数器在 **diagnostics.wadcfgx** 文件中定义。 在 Visual Studio 中打开此文件（按角色定义），并找到**诊断配置** > **公共配置** > **WadCfg** > **诊断监视器配置** > **性能计数器**元素。 将新的 **PerformanceCounterConfiguration** 元素添加为子级。 将 `counterSpecifier` 属性设置为代码中创建的性能计数器的类别和名称。 
+如前所述，要收集的性能计数器在 **diagnostics.wadcfgx** 文件中定义。 请在 Visual Studio 中打开此文件（为每个角色定义了此文件），并找到 **DiagnosticsConfiguration** > **PublicConfig** > **WadCfg** > **DiagnosticMonitorConfiguration** > **PerformanceCounters** 元素。 将新的 **PerformanceCounterConfiguration** 元素添加为子级。 将 `counterSpecifier` 属性设置为代码中创建的性能计数器的类别和名称。 
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

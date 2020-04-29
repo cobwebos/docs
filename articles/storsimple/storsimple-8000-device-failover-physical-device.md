@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 9e4e890ab5491e46ffe5ea0e1c168d168f9cc729
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77468603"
 ---
 # <a name="fail-over-to-a-storsimple-8000-series-physical-device"></a>故障转移到 StorSimple 8000 系列物理设备
@@ -32,7 +32,7 @@ ms.locfileid: "77468603"
 若要将一个 StorSimple 物理设备故障转移到 StorSimple 云设备，请参阅[故障转移到 StorSimple 云设备](storsimple-8000-device-failover-cloud-appliance.md)。 若要将某个物理设备故障转移到其自身，请参阅[故障转移到同一 StorSimple 物理设备](storsimple-8000-device-failover-same-device.md)。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 确保已查看有关设备故障转移的注意事项。 有关详细信息，请参阅[有关设备故障转移的一般注意事项](storsimple-8000-device-failover-disaster-recovery.md)。
 
@@ -61,7 +61,7 @@ ms.locfileid: "77468603"
 
         ![选择目标](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev6.png)
 
-   3. 最后，查看“摘要”下面的所有故障转移设置。**** 查看设置后，请选中指示所选卷容器中的卷已脱机的复选框。 单击“确定”。
+   3. 最后，查看“摘要”下面的所有故障转移设置。**** 查看设置后，请选中指示所选卷容器中的卷已脱机的复选框。 单击" **确定**"。
 
        ![查看故障转移设置](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev8.png)
   

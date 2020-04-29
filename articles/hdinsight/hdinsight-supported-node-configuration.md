@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.openlocfilehash: e75146266568001d8fee7be26898ac8bdfffb7fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77484780"
 ---
 # <a name="what-are-the-default-and-recommended-node-configurations-for-azure-hdinsight"></a>Azure HDInsight 的默认的和建议的节点配置是什么？
@@ -30,7 +30,7 @@ ms.locfileid: "77484780"
 
 下表总结了本文档中使用的所有最低建议 VM 类型的规格。
 
-| 大小              | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 临时存储的最大吞吐量：IOPS/读取 MBps/写入 MBps | 最大的数据磁盘/吞吐量：IOPS | 最大 NIC 数/预期网络带宽 (MBps) |
+| 大小              | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大的数据磁盘/吞吐量：IOPS | 最大 NIC 数/预期网络带宽 (Mbps) |
 |-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_D3_v2 | 4    | 14          | 200                    | 12000/187/93                                           | 16             / 16x500           | 4 / 3000                                       |
 | Standard_D4_v2 | 8    | 28          | 400                    | 24000/375/187                                          | 32            / 32x500           | 8 / 6000                                       |
@@ -38,15 +38,15 @@ ms.locfileid: "77484780"
 | Standard_D12_v2   | 4         | 28          | 200            | 12000/187/93                                         | 16/16x500                         | 4 / 3000                     |
 | Standard_D13_v2   | 8         | 56          | 400            | 24000/375/187                                        | 32/32x500                       | 8 / 6000                     |
 | Standard_D14_v2   | 16        | 112         | 800            | 48000/750/375                                        | 64/64x500                       | 8 / 12000          |
-| Standard_A1_v2  | 1         | 2           | 10             | 1000/20/10                                           | 2/2x500               | 2 / 250                 |
-| Standard_A2_v2  | 2         | 4           | 20             | 2000/40/20                                           | 4/4x500               | 2 / 500                 |
+| Standard_A1_v2  | 1         | 2           | 10 个             | 1000/20/10                                           | 2/2x500               | 2 / 250                 |
+| Standard_A2_v2  | 2         | 4           | 20 个             | 2000/40/20                                           | 4/4x500               | 2 / 500                 |
 | Standard_A4_v2  | 4         | 8           | 40             | 4000/80/40                                           | 8/8x500               | 4 / 1000                     |
 
 有关每种 VM 类型的规格的更多详细信息，请参阅以下文档：
 
-* [通用虚拟机尺寸：Dv2 系列 1-5](../virtual-machines/dv2-dsv2-series.md)
-* [内存优化的虚拟机尺寸：Dv2 系列 11-15](../virtual-machines/dv2-dsv2-series-memory.md)
-* [通用虚拟机尺寸：Av2 系列 1-8](../virtual-machines/av2-series.md)
+* [常规用途虚拟机大小：Dv2 系列 1-5](../virtual-machines/dv2-dsv2-series.md)
+* [内存优化虚拟机大小：Dv2 系列 11-15](../virtual-machines/dv2-dsv2-series-memory.md)
+* [常规用途虚拟机大小：Av2 系列 1-8](../virtual-machines/av2-series.md)
 
 ### <a name="all-supported-regions-except-brazil-south-and-japan-west"></a>除巴西南部和日本西部外的所有受支持区域
 
