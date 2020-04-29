@@ -7,16 +7,16 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: 2dace6968fbbe69f806c27fb7a46e60c63f78b4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670196"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的联接
 
 > [!NOTE]
-> 在完成本课程之前，应完成[Azure 监视器日志分析和](get-started-portal.md) [Azure 监视器日志查询](get-started-queries.md)。
+> 在完成本课程之前，应先完成 [Azure Monitor Log Analytics 入门](get-started-portal.md)和 [Azure Monitor 日志查询](get-started-queries.md)。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -37,9 +37,9 @@ SecurityEvent
 | top 10 by Duration desc
 ```
 
-在本例中，第一个数据集筛选所有登录事件。 这与筛选所有注销事件的第二个数据集进行联接。 投影列包括计算机、帐户、TargetLogonId 和 TimeGenerated________。 数据集由共享列 TargetLogonId 进行关联__。 输出实为具有登录时间和注销时间的记录，每个关联对应一条记录。
+在本例中，第一个数据集筛选所有登录事件。 这与筛选所有注销事件的第二个数据集进行联接。 投影列包括计算机、帐户、TargetLogonId 和 TimeGenerated     。 数据集由共享列 TargetLogonId 进行关联  。 输出实为具有登录时间和注销时间的记录，每个关联对应一条记录。
 
-如果这两个数据集具有名称相同的列，则右侧数据集的列将附加索引号，因此本例中，结果显示为 TargetLogonId 具有左侧表的值，而 TargetLogonId1 具有右侧表的值____。 在此情况下，已使用 `project-away` 运算符删除第二个 _TargetLogonId1_。
+如果这两个数据集具有名称相同的列，则右侧数据集的列将附加索引号，因此本例中，结果显示为 TargetLogonId 具有左侧表的值，而 TargetLogonId1 具有右侧表的值   。 在此情况下，已使用 _运算符删除第二个_TargetLogonId1`project-away`。
 
 > [!NOTE]
 > 为提高性能，请使用 `project` 运算符仅保留已联接的数据集的相关列。
@@ -77,9 +77,9 @@ SecurityEvent
 ![与数据表联接](media/joins/dim-table.png)
 
 ## <a name="join-kinds"></a>联接类型
-使用 kind 参数来指定联接类型__。 如下表所述，每种类型在给定表的记录之间执行不同的匹配。
+使用 kind 参数来指定联接类型  。 如下表所述，每种类型在给定表的记录之间执行不同的匹配。
 
-| 联接类型 | 描述 |
+| 联接类型 | 说明 |
 |:---|:---|
 | innerunique | 这是默认的联接模式。 首先找到左表中匹配列的值，并删除重复值。  然后将该组唯一值集与右表匹配。 |
 | 内部 | 结果中只包括在两个表中匹配的记录。 |
