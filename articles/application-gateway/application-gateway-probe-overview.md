@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: victorh
 ms.openlocfilehash: c5a53167c6a4ca6c886b858a1608eaa173185bd8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335858"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>应用程序网关运行状况监视概述
@@ -59,12 +59,12 @@ $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 
 ### <a name="default-health-probe-settings"></a>默认的运行状况探测设置
 
-| 探测属性 | “值” | 描述 |
+| 探测属性 | 值 | 说明 |
 | --- | --- | --- |
 | 探测 URL |http://127.0.0.1:\<port\>/ |URL 路径 |
 | 时间间隔 |30 |发送下一个运行状况探测前需要等待的时间（以秒为单位）。|
 | 超时 |30 |将探测标记为不正常前，应用程序网关等待探测响应的时间（以秒为单位）。 如果探测返回为正常，则相应的后端立即被标记为正常。|
-| 不正常阈值 |3 |控制在定期运行状况探测出现故障的情况下要发送的探测数。 快速连续发送这些额外的运行状况探测，以快速确定后端的运行状况，并且无需等待探测时间间隔。 这个海涡只是v1 SKU。 在 v2 SKU 的情况下，运行状况探测器等待间隔。 连续探测失败计数达到不正常阈值后，将后端服务器标记为故障。 |
+| 不正常阈值 |3 |控制在定期运行状况探测出现故障的情况下要发送的探测数。 快速连续发送这些额外的运行状况探测，以快速确定后端的运行状况，并且无需等待探测时间间隔。 此行为仅适用于 v1 SKU。 对于 v2 SKU，运行状况探测会等待时间间隔。 连续探测失败计数达到不正常阈值后，将后端服务器标记为故障。 |
 
 > [!NOTE]
 > 该端口与后端 HTTP 设置的端口相同。
@@ -85,9 +85,9 @@ $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 
 下表提供自定义运行状况探测的属性的定义。
 
-| 探测属性 | 描述 |
+| 探测属性 | 说明 |
 | --- | --- |
-| “属性” |探测的名称。 此名称用于在后端 HTTP 设置中引用探测。 |
+| 名称 |探测的名称。 此名称用于在后端 HTTP 设置中引用探测。 |
 | 协议 |用于发送探测的协议。 探测使用后端 HTTP 设置中定义的协议 |
 | 主机 |用于发送探测的主机名。 仅在应用程序网关上配置了多站点的情况下适用，否则使用“127.0.0.1”。 此值与 VM 主机名不同。 |
 | 路径 |探测的相对路径。 有效路径以“/”开头。 |
@@ -103,7 +103,7 @@ $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 
 对于应用程序网关 v1 SKU，必须允许 TCP 端口 65503-65534 上的传入 Internet 流量，对于目标子网为 **Any** 且源为 **GatewayManager** 服务标记的 v2 SKU，必须允许 TCP 端口 65200-65535 上的传入 Internet 流量。 此端口范围是进行 Azure 基础结构通信所必需的。
 
-此外，无法阻止出站 Internet 连接，必须允许来自**AzureLoadBalancer**代码的入站流量。
+此外，不能阻止出站 Internet 连接，并且必须允许来自 **AzureLoadBalancer** 标记的入站流量。
 
 有关详细信息，请参阅[应用程序网关配置概述](configuration-overview.md#network-security-groups-on-the-application-gateway-subnet)。
 

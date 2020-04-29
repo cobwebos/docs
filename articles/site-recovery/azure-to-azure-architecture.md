@@ -1,6 +1,6 @@
 ---
-title: Azure 到 Azure 灾难恢复体系结构在 Azure 站点恢复中
-description: 使用 Azure 站点恢复服务在 Azure 区域之间设置灾难恢复时使用的体系结构概述。
+title: 使用 Azure Site Recovery 执行 Azure 到 Azure 的灾难恢复体系结构
+description: 概述了使用 Azure Site Recovery 服务为 Azure VM 设置 Azure 区域之间的灾难恢复时使用的体系结构。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
 ms.openlocfilehash: 94da1639b5398a03b36fba3ff88877468a97ec36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80294118"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 到 Azure 的灾难恢复体系结构
@@ -26,7 +26,7 @@ ms.locfileid: "80294118"
 
 下表汇总了 Azure VM 灾难恢复所涉及的组件。
 
-**组件** | **要求**
+组件  | **要求**
 --- | ---
 **源区域中的 VM** | [受支持源区域](azure-to-azure-support-matrix.md#region-support)中的一个或多个 Azure VM。<br/><br/> VM 可以运行任何[受支持的操作系统](azure-to-azure-support-matrix.md#replicated-machine-operating-systems)。
 **源 VM 存储** | 可以管理 Azure VM；它们还可以包含分散在不同存储帐户之间的非托管磁盘。<br/><br/>[了解](azure-to-azure-support-matrix.md#replicated-machines---storage)支持的 Azure 存储。
@@ -65,8 +65,8 @@ ms.locfileid: "80294118"
 
 **策略设置** | **详细信息** | **默认**
 --- | --- | ---
-**恢复点保留** | 指定 Site Recovery 保留恢复点的时间长短 | 24 小时
-**应用一致的快照频率** | Site Recovery 创建应用一致性快照的频率。 | 每 4 小时
+**恢复点保留期** | 指定 Site Recovery 保留恢复点的时间长短 | 24 小时
+**应用一致性快照频率** | Site Recovery 创建应用一致性快照的频率。 | 每 4 小时
 
 ### <a name="managing-replication-policies"></a>管理复制策略
 
@@ -129,14 +129,14 @@ Site Recovery 按如下所述创建快照：
 
 如果使用 URL 控制 VM 的出站访问，请允许这些 URL。
 
-| **Url** | **详细信息** |
+| **URL** | **详细信息** |
 | ------- | ----------- |
-| * .blob.core.windows.net | 允许将数据从 VM 写入源区域中的缓存存储帐户。 |
+| \* .blob.core.windows.net | 允许将数据从 VM 写入源区域中的缓存存储帐户。 |
 | login.microsoftonline.com | 向 Site Recovery 服务 URL 提供授权和身份验证。 |
 | *.hypervrecoverymanager.windowsazure.com | 允许 VM 与 Site Recovery 服务进行通信。 |
 | *.servicebus.windows.net | 允许 VM 写入 Site Recovery 监视和诊断数据。 |
-| *.vault.azure.net | 允许访问通过门户启用启用 ADE 的虚拟机的复制
-| *.automation.ext.azure.com | 允许通过门户自动升级复制的项目的移动代理
+| *.vault.azure.net | 允许访问通过门户为启用了 ADE 的虚拟机启用复制
+| *. automation.ext.azure.com | 允许通过门户为复制的项启用移动代理自动升级
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 地址范围的出站连接
 
@@ -145,25 +145,25 @@ Site Recovery 按如下所述创建快照：
 
 #### <a name="source-region-rules"></a>源区域规则
 
-**规则** |  **详细信息** | **服务标签**
+**线** |  **详细信息** | **服务标记**
 --- | --- | --- 
-允许 HTTPS 出站通信：端口 443 | 允许对应于源区域中存储帐户的范围 | 存储。\<区域名称>
-允许 HTTPS 出站通信：端口 443 | 允许与 Azure 活动目录（Azure AD）对应的范围  | AzureActiveDirectory
-允许 HTTPS 出站通信：端口 443 | 允许与目标区域中的事件中心相对应的范围。 | 事件中心。\<区域名称>
-允许 HTTPS 出站通信：端口 443 | 允许与 Azure 站点恢复对应的范围  | Azure 网站恢复
-允许 HTTPS 出站通信：端口 443 | 允许与 Azure 密钥保管库对应的范围（这仅适用于通过门户启用 ADE 的虚拟机复制） | Azure 密钥库
-允许 HTTPS 出站通信：端口 443 | 允许与 Azure 自动化控制器对应的范围（这仅适用于通过门户为复制的项目启用移动代理的自动升级） | 宾客和混合管理
+允许 HTTPS 出站通信：端口 443 | 允许对应于源区域中存储帐户的范围 | 储存.\<区域名称>
+允许 HTTPS 出站通信：端口 443 | 允许与 Azure Active Directory （Azure AD）对应的范围  | AzureActiveDirectory
+允许 HTTPS 出站通信：端口 443 | 允许与目标区域中的事件中心对应的范围。 | EventsHub.\<区域名称>
+允许 HTTPS 出站通信：端口 443 | 允许与 Azure Site Recovery 相对应的范围  | AzureSiteRecovery
+允许 HTTPS 出站通信：端口 443 | 允许与 Azure Key Vault 相对应的范围（这只是通过门户启用启用了 ADE 的虚拟机的复制所必需的） | AzureKeyVault
+允许 HTTPS 出站通信：端口 443 | 允许与 Azure 自动化控制器对应的范围（仅当通过门户为复制的项启用移动代理自动升级时才需要） | GuestAndHybridManagement
 
 #### <a name="target-region-rules"></a>目标区域规则
 
-**规则** |  **详细信息** | **服务标签**
+**线** |  **详细信息** | **服务标记**
 --- | --- | --- 
-允许 HTTPS 出站通信：端口 443 | 允许与目标区域中的存储帐户对应的范围 | 存储。\<区域名称>
-允许 HTTPS 出站通信：端口 443 | 允许与 Azure AD 对应的范围  | AzureActiveDirectory
-允许 HTTPS 出站通信：端口 443 | 允许与源区域中的事件中心相对应的范围。 | 事件中心。\<区域名称>
-允许 HTTPS 出站通信：端口 443 | 允许与 Azure 站点恢复对应的范围  | Azure 网站恢复
-允许 HTTPS 出站通信：端口 443 | 允许与 Azure 密钥保管库对应的范围（这仅适用于通过门户启用 ADE 的虚拟机复制） | Azure 密钥库
-允许 HTTPS 出站通信：端口 443 | 允许与 Azure 自动化控制器对应的范围（这仅适用于通过门户为复制的项目启用移动代理的自动升级） | 宾客和混合管理
+允许 HTTPS 出站通信：端口 443 | 允许与目标区域中的存储帐户相对应的范围 | 储存.\<区域名称>
+允许 HTTPS 出站通信：端口 443 | 允许与 Azure AD 相对应的范围  | AzureActiveDirectory
+允许 HTTPS 出站通信：端口 443 | 允许与源区域中的事件中心对应的范围。 | EventsHub.\<区域名称>
+允许 HTTPS 出站通信：端口 443 | 允许与 Azure Site Recovery 相对应的范围  | AzureSiteRecovery
+允许 HTTPS 出站通信：端口 443 | 允许与 Azure Key Vault 相对应的范围（这只是通过门户启用启用了 ADE 的虚拟机的复制所必需的） | AzureKeyVault
+允许 HTTPS 出站通信：端口 443 | 允许与 Azure 自动化控制器对应的范围（仅当通过门户为复制的项启用移动代理自动升级时才需要） | GuestAndHybridManagement
 
 
 #### <a name="control-access-with-nsg-rules"></a>使用 NSG 规则控制访问

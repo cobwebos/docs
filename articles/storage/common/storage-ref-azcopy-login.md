@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: d07d1a706635a7f269a9a51769ae6f8bbf57df3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80295412"
 ---
 # <a name="azcopy-login"></a>azcopy login
@@ -23,14 +23,14 @@ ms.locfileid: "80295412"
 
 登录到 Azure Active Directory 以访问 Azure 存储资源。
 
-若要获得访问 Azure 存储帐户的授权，必须在存储帐户、父资源组或父订阅的上下文中为用户帐户分配“存储 Blob 数据参与者”角色。****
+若要获得访问 Azure 存储帐户的授权，必须在存储帐户、父资源组或父订阅的上下文中为用户帐户分配“存储 Blob 数据参与者”角色。 
 
 此命令会通过 OS 内置机制缓存当前用户的已加密登录信息。
 
 有关详细信息，请参阅示例。
 
 > [!IMPORTANT]
-> 如果使用命令行设置环境变量，则可以在命令行历史记录中读取该变量。 请考虑从命令行历史记录中清除包含凭据的变量。 要防止变量出现在历史记录中，可以使用脚本提示用户输入凭据，并设置环境变量。
+> 如果使用命令行设置环境变量，则可以在命令行历史记录中读取该变量。 请考虑从命令行历史记录中清除包含凭据的变量。 若要防止变量出现在历史记录中，可以使用脚本提示用户输入凭据，并设置环境变量。
 
 ```azcopy
 azcopy login [flags]
@@ -99,9 +99,9 @@ azcopy login --service-principal --certificate-path /path/to/my/cert
 
 ## <a name="options"></a>选项
 
-|选项|描述|
+|选项|说明|
 |--|--|
-|--aad-endpoint|要使用的 Azure Active Directory 终结点。 默认 （`https://login.microsoftonline.com`） 对于公共 Azure 云是正确的。 在国家云中进行身份验证时设置此参数。 请参阅 [Azure AD 身份验证终结点](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints)。
+|--aad-endpoint|要使用的 Azure Active Directory 终结点。 对于公有 Azure`https://login.microsoftonline.com`云，默认值（）是正确的。 在国家云中进行身份验证时设置此参数。 请参阅 [Azure AD 身份验证终结点](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints)。
 托管服务标识不需要此标志。|
 |--application-id string|用户分配标识的应用程序 ID。 服务主体身份验证所需。|
 |--certificate-path string|用于 SPN 身份验证的证书的路径。 基于证书的服务主体身份验证所需。|
@@ -115,11 +115,11 @@ azcopy login --service-principal --certificate-path /path/to/my/cert
 
 ## <a name="options-inherited-from-parent-commands"></a>从父命令继承的选项
 
-|选项|描述|
+|选项|说明|
 |---|---|
 |--cap-mbps uint32|以兆位/秒为单位限制传输速率。 瞬间吞吐量可能与上限略有不同。 如果此选项设置为零，或者省略，则吞吐量不受限制。|
 |--output-type string|命令输出的格式。 选项包括：text、json。 默认值为“text”。|
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
-- [阿兹比贝](storage-ref-azcopy.md)
+- [azcopy](storage-ref-azcopy.md)

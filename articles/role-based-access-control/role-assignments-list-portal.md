@@ -15,10 +15,10 @@ ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 03a3d3c7d572d7ec5b8d3ac3d527d0d59e649bc2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80062249"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>使用 Azure RBAC 和 Azure 门户列出角色分配
@@ -26,7 +26,7 @@ ms.locfileid: "80062249"
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] 本文介绍如何使用 Azure 门户列出角色分配。
 
 > [!NOTE]
-> 如果您的组织将管理功能外包给使用[Azure 委派资源的](../lighthouse/concepts/azure-delegated-resource-management.md)服务提供商，则该服务提供商授权的角色分配将不会在此处显示。
+> 如果你的组织对使用[Azure 委托资源管理](../lighthouse/concepts/azure-delegated-resource-management.md)的服务提供商具有外包管理功能，则此处将不会显示该服务提供商授权的角色分配。
 
 ## <a name="list-role-assignments-for-a-user-or-group"></a>列出用户或组的角色分配
 
@@ -52,7 +52,7 @@ ms.locfileid: "80062249"
 
 1. 单击要列出其所有者的订阅。
 
-1. 单击**访问控制 （IAM）。**
+1. 单击 "**访问控制（IAM）**"。
 
 1. 单击“角色分配”选项卡以查看此订阅的所有角色分配****。
 
@@ -66,7 +66,7 @@ ms.locfileid: "80062249"
 
 1. 单击特定的资源。
 
-1. 单击**访问控制 （IAM）。**
+1. 单击 "**访问控制（IAM）**"。
 
 1. 单击“角色分配”选项卡以查看在此范围内的所有角色分配****。
 
@@ -82,7 +82,7 @@ ms.locfileid: "80062249"
 
 1. 单击特定的资源。
 
-1. 单击**访问控制 （IAM）。**
+1. 单击 "**访问控制（IAM）**"。
 
 1. 单击“检查访问权限”选项卡****。
 
@@ -128,11 +128,11 @@ ms.locfileid: "80062249"
 
 ## <a name="list-number-of-role-assignments"></a>列出角色分配数
 
-每个订阅中最多可以分配**2000**个角色。 为了帮助您跟踪此限制，"**角色分配**"选项卡包含一个图表，其中列出了当前订阅的角色分配数。
+每个订阅最多可以有**2000**个角色分配。 为了帮助您跟踪此限制，"**角色分配**" 选项卡包含一个图表，其中列出了当前订阅的角色分配数。
 
 ![访问控制 - 角色分配数目图表](./media/role-assignments-list-portal/access-control-role-assignments-chart.png)
 
-如果在快要到达最大数量时尝试添加更多角色分配，则会在“添加角色分配”**** 窗格中看到一条警告。 有关减少角色分配数量的方法，请参阅[排除 Azure RBAC 故障](troubleshooting.md#azure-role-assignments-limit)。
+如果在快要到达最大数量时尝试添加更多角色分配，则会在“添加角色分配”**** 窗格中看到一条警告。 有关可减少角色分配数量的方法，请参阅[AZURE RBAC 故障排除](troubleshooting.md#azure-role-assignments-limit)。
 
 ![访问控制 - 添加角色分配警告](./media/role-assignments-list-portal/add-role-assignment-warning.png)
 

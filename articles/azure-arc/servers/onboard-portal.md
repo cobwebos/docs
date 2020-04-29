@@ -9,10 +9,10 @@ ms.author: magoedte
 ms.date: 03/24/2020
 ms.topic: conceptual
 ms.openlocfilehash: 40885e1de4ff4c16d2a50399c654d8596396ab53
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80366378"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>从 Azure 门户将混合计算机连接到 Azure
@@ -43,11 +43,11 @@ Azure 门户中提供了用于自动下载和安装以及与 Azure Arc 建立连
     >- 西欧
     >- 西亚
     >
-    >在"概述"一文中[在此处](overview.md#supported-regions)选择区域时，请查看其他注意事项。
+    >在概述[文章中选择区域时，请](overview.md#supported-regions)查看其他注意事项。
 
 1. 在“生成脚本”页上的“操作系统”下拉列表中，选择运行脚本的操作系统。********
 
-1. 如果计算机正在通过代理服务器进行通信以连接到互联网，请选择"**下一步：代理服务器**"。 
+1. 如果计算机通过代理服务器进行通信以连接到 internet，请选择 "**下一步：代理服务器**"。 
 1. 在“代理服务器”选项卡上，指定计算机用来与代理服务器通信的代理服务器 IP 地址或名称以及端口号。**** 按格式 `http://<proxyURL>:<proxyport>` 输入值。 
 1. 选择“查看 + 生成”。****
 
@@ -65,21 +65,21 @@ Azure 门户中提供了用于自动下载和安装以及与 Azure Arc 建立连
 
 如果计算机需要通过代理服务器来与服务进行通信，则在安装代理后，需要运行本文稍后所述的某个命令。 此命令将设置代理服务器系统环境变量 `https_proxy`。
 
-如果您不熟悉 Windows 安装程序包的命令行选项，请查看[Msiexec 标准命令行选项](https://docs.microsoft.com/windows/win32/msi/standard-installer-command-line-options)和[Msiexec 命令行选项](https://docs.microsoft.com/windows/win32/msi/command-line-options)。
+如果不熟悉 Windows Installer 包的命令行选项，请查看[Msiexec 标准命令行选项](https://docs.microsoft.com/windows/win32/msi/standard-installer-command-line-options)和[Msiexec 命令行选项](https://docs.microsoft.com/windows/win32/msi/command-line-options)。
 
-例如，使用`/?`参数运行安装程序以查看帮助和快速参考选项。 
+例如，运行带有`/?`参数的安装程序以查看帮助和快速参考选项。 
 
 ```dos
 msiexec.exe /i AzureConnectedMachineAgent.msi /?
 ```
 
-要静默安装代理并在文件夹中创建设置日志文件，`C:\Support\Logs`请运行以下命令。
+若要以无提示方式安装代理并在`C:\Support\Logs`文件夹中创建安装日志文件，请运行以下命令。
 
 ```dos
 msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
 ```
 
-默认情况下，已连接的计算机代理的文件安装在*C：*程序文件_Azure连接计算机代理*中。 如果完成安装后代理无法启动，请检查日志以获取详细的错误信息。 日志目录为 *%Programfiles%\AzureConnectedMachineAgentAgent\logs*。
+默认情况下，将在*C:\Program Files\AzureConnectedMachineAgent*中安装连接的计算机代理的文件。 如果完成安装后代理无法启动，请检查日志以获取详细的错误信息。 日志目录为 *%Programfiles%\AzureConnectedMachineAgentAgent\logs*。
 
 ### <a name="install-with-the-scripted-method"></a>使用脚本方法安装
 
@@ -156,6 +156,6 @@ bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何使用[Azure 策略](../../governance/policy/overview.md)管理计算机，用于 VM[来宾配置](../../governance/policy/concepts/guest-configuration.md)、验证计算机是否报告到预期的日志分析工作区、使用 VM 启用 Azure[监视器](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)等操作。
+- 了解如何使用[Azure 策略](../../governance/policy/overview.md)管理计算机，例如 VM[来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否向预期的 Log Analytics 工作区进行报告，使用[vm Azure Monitor](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)启用监视等操作。
 
-- 了解有关[日志分析代理](../../azure-monitor/platform/log-analytics-agent.md)的更多信息。 若要主动监视计算机上运行的 OS 和工作负荷、使用自动化 Runbook 或更新管理等解决方案对其进行管理，或使用其他 Azure 服务（例如 [Azure 安全中心](../../security-center/security-center-intro.md)），需要安装适用于 Windows 和 Linux 的 Log Analytics 代理。
+- 详细了解[Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)。 若要主动监视计算机上运行的 OS 和工作负荷、使用自动化 Runbook 或更新管理等解决方案对其进行管理，或使用其他 Azure 服务（例如 [Azure 安全中心](../../security-center/security-center-intro.md)），需要安装适用于 Windows 和 Linux 的 Log Analytics 代理。

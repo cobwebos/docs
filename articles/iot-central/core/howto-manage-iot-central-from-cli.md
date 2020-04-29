@@ -1,6 +1,6 @@
 ---
 title: 从 Azure CLI 管理 IoT Central | Microsoft Docs
-description: 本文介绍如何使用 CLI 创建和管理 IoT Central 应用程序。 您可以使用 CLI 查看、修改和删除应用程序。
+description: 本文介绍如何使用 CLI 创建和管理 IoT Central 应用程序。 可以使用 CLI 查看、修改和删除应用程序。
 services: iot-central
 ms.service: iot-central
 author: dominicbetts
@@ -9,10 +9,10 @@ ms.date: 03/27/2020
 ms.topic: how-to
 manager: philmea
 ms.openlocfilehash: df24a2dc6e9bd058a2f8b1355b8760653ed3128a
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80365524"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>从 Azure CLI 管理 IoT Central
@@ -21,7 +21,7 @@ ms.locfileid: "80365524"
 
 如果不在 [Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站上创建和管理 IoT Central 应用程序，可以使用 [Azure CLI](/cli/azure/) 来管理应用程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -59,15 +59,15 @@ az iotcentral app create \
   --display-name "My Custom Display Name"
 ```
 
-这些命令首先在美国东部区域为应用程序创建资源组。 下表描述了与 **az iotcentral app create** 命令结合使用的参数：
+这些命令首先在 "美国东部" 区域中为应用程序创建一个资源组。 下表描述了与 **az iotcentral app create** 命令结合使用的参数：
 
-| 参数         | 描述 |
+| 参数         | 说明 |
 | ----------------- | ----------- |
 | resource-group    | 包含该应用程序的资源组。 此资源组必须已存在于订阅中。 |
-| location          | 此命令默认使用资源组中的位置。 目前，您可以在**澳大利亚**、**亚太地区**、**欧洲**、**美国**、**英国****和日本**地区创建 IoT 中心应用程序。 |
+| location          | 此命令默认使用资源组中的位置。 目前，可以在**澳大利亚**、**亚太**、**欧洲**、**美国**、**英国**和**日本**地区创建 IoT Central 应用程序。 |
 | name              | 应用程序在 Azure 门户中的名称。 |
 | subdomain         | 应用程序 URL 中的子域。 在该示例中，应用程序 URL 为 `https://mysubdomain.azureiotcentral.com`。 |
-| sku               | 目前，您可以使用**ST1**或**ST2**。 请参阅 [Azure IoT Central 定价](https://azure.microsoft.com/pricing/details/iot-central/)。 |
+| sku               | 目前，可以使用**ST1**或**ST2**。 请参阅 [Azure IoT Central 定价](https://azure.microsoft.com/pricing/details/iot-central/)。 |
 | template          | 要使用的应用程序模板。 有关详细信息，请参阅下表。 |
 | display-name      | UI 中显示的应用程序名称。 |
 

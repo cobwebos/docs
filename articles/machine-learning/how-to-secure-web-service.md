@@ -1,7 +1,7 @@
 ---
-title: 使用 TLS 保护 Web 服务
+title: 使用 TLS 保护 web 服务
 titleSuffix: Azure Machine Learning
-description: 了解如何启用 HTTPS 以保护通过 Azure 机器学习部署的 Web 服务。 Azure 机器学习使用 TLS 版本 1.2 来保护作为 Web 服务部署的模型。
+description: 了解如何启用 HTTPS，以保护通过 Azure 机器学习部署的 Web 服务。 Azure 机器学习使用 TLS 版本1.2 来保护部署为 web 服务的模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,13 +12,13 @@ author: aashishb
 ms.date: 03/05/2020
 ms.custom: seodec18
 ms.openlocfilehash: a58b0120feaba907c62bc646f4f85d9185227fed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80287333"
 ---
-# <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>使用 TLS 通过 Azure 机器学习保护 Web 服务
+# <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>使用 TLS 通过 Azure 机器学习来保护 web 服务
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本文介绍如何保护通过 Azure 机器学习部署的 Web 服务。
@@ -28,7 +28,7 @@ ms.locfileid: "80287333"
 > [!TIP]
 > Azure 机器学习 SDK 使用术语“SSL”表示与安全通信相关的属性。 这并不意味着 Web 服务不会使用 TLS**。 SSL 只是更广泛公认的术语。
 >
-> 具体而言，通过 Azure 机器学习部署的 Web 服务仅支持 TLS 版本 1.2。
+> 具体而言，通过 Azure 机器学习部署的 web 服务仅支持 TLS 版本1.2。
 
 TLS 和 SSL 均依赖数字证书，这有助于加密和身份验证**。 有关数字证书工作原理的详细信息，请参阅维基百科主题[公钥基础结构](https://en.wikipedia.org/wiki/Public_key_infrastructure)。
 
@@ -43,12 +43,12 @@ TLS 和 SSL 均依赖数字证书，这有助于加密和身份验证**。 有�
 
 2. 获取数字证书。
 
-3. 启用 TLS 后部署或更新 Web 服务。
+3. 部署或更新启用了 TLS 的 web 服务。
 
 4. 更新 DNS，使其指向该 Web 服务。
 
 > [!IMPORTANT]
-> 如果要部署到 Azure Kubernetes 服务 (AKS)，可以购买属于自己的证书或使用 Microsoft 提供的证书。 如果您使用 Microsoft 的证书，则无需获取域名或 TLS/SSL 证书。 有关详细信息，请参阅本文的[启用 TLS 和部署](#enable)部分。
+> 如果要部署到 Azure Kubernetes 服务 (AKS)，可以购买属于自己的证书或使用 Microsoft 提供的证书。 如果使用 Microsoft 的证书，则无需获取域名或 TLS/SSL 证书。 有关详细信息，请参阅本文的[启用 TLS 和部署](#enable)部分。
 
 跨[部署目标](how-to-deploy-and-where.md)进行保护时，步骤稍有不同。
 
@@ -58,7 +58,7 @@ TLS 和 SSL 均依赖数字证书，这有助于加密和身份验证**。 有�
 
 ## <a name="get-a-tlsssl-certificate"></a>获取 TLS/SSL 证书
 
-有许多方法可以获取 TLS/SSL 证书（数字证书）。 最常见的是从*证书颁发机构*（CA） 购买。 无论证书来自哪里，都需要以下文件：
+有多种方法可获取 TLS/SSL 证书（数字证书）。 最常见的是从*证书颁发机构*（CA）购买证书。 无论证书来自哪里，都需要以下文件：
 
 * 证书****。 证书必须包含完整的证书链，并必须使用“PEM 编码”。
 * 密钥****。 密钥也必须使用 PEM 编码。
@@ -73,7 +73,7 @@ TLS 和 SSL 均依赖数字证书，这有助于加密和身份验证**。 有�
 
 ## <a name="enable-tls-and-deploy"></a><a id="enable"></a>启用 TLS 并部署
 
-要部署（或重新部署）启用 TLS 的服务，请将*ssl_enabled*参数设置为"True"，只要适用。 将 ssl_certificate 参数设置为证书文件的值****。 将 ssl_key 设置为密钥文件的值****。
+若要部署（或重新部署）启用了 TLS 的服务，请将*ssl_enabled*参数设置为 "True"，任何位置适用。 将 ssl_certificate 参数设置为证书文件的值****。 将 ssl_key 设置为密钥文件的值****。
 
 ### <a name="deploy-on-aks-and-field-programmable-gate-array-fpga"></a>在 AKS 和现场可编程门阵列 (FPGA) 上进行部署
 
@@ -82,19 +82,19 @@ TLS 和 SSL 均依赖数字证书，这有助于加密和身份验证**。 有�
 
 部署到 AKS 时，可以创建新的 AKS 群集或附加现有群集。 有关创建或附加群集的详细信息，请参阅[将模型部署到 Azure Kubernetes 服务群集](how-to-deploy-azure-kubernetes-service.md)。
   
--  如果创建新群集，请使用**[AksCompute.provisioning_configuration（）](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)**。
+-  如果创建新群集，请使用**[Provisioning_configuration AksCompute （）](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)**。
 - 如果附加现有群集，请使用 **[AksCompute.attach_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)**。 这两个方法都返回包含 enable_ssl 方法的配置对象****。
 
 enable_ssl 方法可以使用 Microsoft 提供的证书或你购买的证书****。
 
   * 使用 Microsoft 的证书时，必须使用 leaf_domain_label 参数**。 此参数生成服务的 DNS 名称。 例如，使用值“contoso”将创建域名“contoso\<六个随机字符>.\<azureregion>.cloudapp.azure.com”，其中 \<azureregion> 是包含该服务的区域。 或者，可使用 overwrite_existing_domain 参数覆盖现有的 leaf_domain_label****。
 
-    要部署（或重新部署）启用 TLS 的服务，请将*ssl_enabled*参数设置为"True"，只要适用。 将 ssl_certificate 参数设置为证书文件的值****。 将 ssl_key 设置为密钥文件的值****。
+    若要部署（或重新部署）启用了 TLS 的服务，请将*ssl_enabled*参数设置为 "True"，任何位置适用。 将 ssl_certificate 参数设置为证书文件的值****。 将 ssl_key 设置为密钥文件的值****。
 
     > [!IMPORTANT]
     > 如果使用 Microsoft 的证书，则无需购买属于自己的证书或域名。
 
-    以下示例演示如何创建启用 Microsoft TLS/SSL 证书的配置：
+    下面的示例演示如何创建一个配置，以启用 Microsoft 的 TLS/SSL 证书：
 
     ```python
     from azureml.core.compute import AksCompute
@@ -115,7 +115,7 @@ enable_ssl 方法可以使用 Microsoft 提供的证书或你购买的证书****
     attach_config.enable_ssl(leaf_domain_label = "contoso")
     ```
 
-  * 使用你购买的证书 时，请使用 ssl_cert_pem_file、ssl_key_pem_file、ssl_cname 参数********。 以下示例演示如何使用 *.pem*文件创建使用您购买的 TLS/SSL 证书的配置：
+  * 使用你购买的证书 时，请使用 ssl_cert_pem_file、ssl_key_pem_file、ssl_cname 参数********。 下面的示例演示如何使用*pem*文件创建一个配置，该配置使用您购买的 TLS/SSL 证书：
 
     ```python
     from azureml.core.compute import AksCompute
@@ -134,7 +134,7 @@ enable_ssl 方法可以使用 Microsoft 提供的证书或你购买的证书****
 
 ### <a name="deploy-on-azure-container-instances"></a>在 Azure 容器实例上进行部署
 
-部署到 Azure 容器实例时，为与 TLS 相关的参数提供值，如以下代码段所示：
+部署到 Azure 容器实例时，需要提供 TLS 相关参数的值，如以下代码片段所示：
 
 ```python
 from azureml.core.webservice import AciWebservice
@@ -160,9 +160,9 @@ aci_config = AciWebservice.deploy_configuration(
   > [!WARNING]
   > 如果使用了 leaf_domain_label 通过 Microsoft 的证书创建服务，请不要手动更新群集的 DNS 值**。 应自动设置该值。
 
-  在左侧窗格中“设置”下的“配置”选项卡上更新 AKS 群集公共 IP 地址 DNS********。 （请参阅下图。公共 IP 地址是在包含 AKS 代理节点和其他网络资源的资源组下创建的资源类型。
+  在左侧窗格中“设置”下的“配置”选项卡上更新 AKS 群集公共 IP 地址 DNS********。 （请参阅下图。）公共 IP 地址是一种资源类型，它是在包含 AKS 代理节点和其他网络资源的资源组下创建的。
 
-  [![Azure 机器学习：使用 TLS 保护 Web 服务](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
+  [![Azure 机器学习：通过 TLS 保护 web 服务](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
 ## <a name="update-the-tlsssl-certificate"></a>更新 TLS/SSL 证书
 
@@ -241,7 +241,7 @@ az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n 
 
 ## <a name="disable-tls"></a>禁用 TLS
 
-要禁用部署到 Azure 库伯奈斯服务的模型的 TLS，请`SslConfiguration`创建`status="Disabled"`
+若要为部署到 Azure Kubernetes 服务的模型禁用 TLS，请`SslConfiguration`创建`status="Disabled"`一个，然后执行更新：
 
 ```python
 from azureml.core.compute import AksCompute

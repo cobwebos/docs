@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: eb5ba99133f5726c44164b0ba45b7ab5d94e292f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80292361"
 ---
 # <a name="network-security-groups-with-azure-site-recovery"></a>将网络安全组与 Azure Site Recovery 配合使用
@@ -39,13 +39,13 @@ ms.locfileid: "80292361"
 
 设置此类 NSG 配置时，请确保将正确的优先级应用于[安全规则](../virtual-network/security-overview.md#security-rules)。 规则按优先顺序进行处理。先处理编号较小的规则，因为编号越小，优先级越高。 一旦流量与某个规则匹配，处理即会停止。 因此，不会处理优先级较低（编号较大）的、其属性与高优先级规则相同的所有规则。
 
-将网络安全组同时应用到网络接口和子网时，你不一定总能察觉得到。 可通过查看网络接口的[有效安全规则](../virtual-network/virtual-network-network-interface.md#view-effective-security-rules)，验证已应用到网络接口的聚合规则。 您还可以使用[Azure 网络观察程序](../network-watcher/network-watcher-monitoring-overview.md)中的[IP 流验证](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md)功能来确定是允许通信进入网络接口还是允许从网络接口进行通信。 该工具会告知通信是否受允许，以及哪个网络安全规则允许或拒绝流量。
+将网络安全组同时应用到网络接口和子网时，你不一定总能察觉得到。 可通过查看网络接口的[有效安全规则](../virtual-network/virtual-network-network-interface.md#view-effective-security-rules)，验证已应用到网络接口的聚合规则。 还可使用 [Azure 网络观察程序](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md)中的 [IP 流验证](../network-watcher/network-watcher-monitoring-overview.md)功能来确定是否允许发往或发自网络接口的通信。 该工具会告知通信是否受允许，以及哪个网络安全规则允许或拒绝流量。
 
 ## <a name="on-premises-to-azure-replication-with-nsg"></a>使用 NSG 进行从本地到 Azure 的复制
 
 Azure Site Recovery 支持从本地 [Hyper-V 虚拟机](hyper-v-azure-architecture.md)、[VMware 虚拟机](vmware-azure-architecture.md)和[物理服务器](physical-azure-architecture.md)向 Azure 进行灾难恢复和迁移。 对于所有本地到 Azure 的方案，复制数据都发送到 Azure 存储帐户并存储在其中。 在复制期间，无需支付任何虚拟机费用。 故障转移到 Azure 时，Site Recovery 会自动创建 Azure IaaS 虚拟机。
 
-如果 VM 在故障转移到 Azure 后创建，则可使用 NSG 限制发往虚拟网络和 VM 的网络流量。 Site Recovery 不会在故障转移操作中创建 NSG。 建议在启动故障转移前创建所需的 Azure NSG。 然后，您可以使用具有站点恢复的强大[恢复计划的](site-recovery-create-recovery-plans.md)自动化脚本将 NSG 自动关联到故障转移期间通过 VM 故障。
+如果 VM 在故障转移到 Azure 后创建，则可使用 NSG 限制发往虚拟网络和 VM 的网络流量。 Site Recovery 不会在故障转移操作中创建 NSG。 建议在启动故障转移前创建所需的 Azure NSG。 然后即可将自动化脚本与 Site Recovery 的强大[恢复计划](site-recovery-create-recovery-plans.md)配合使用，通过关联 NSG 在故障转移期间自动进行 VM 故障转移。
 
 例如，如果故障转移后的 VM 配置与上文详述的[示例方案](concepts-network-security-group-with-site-recovery.md#using-network-security-groups)类似：
 -    作为目标 Azure 区域灾难恢复计划的一部分，可以创建 **Contoso VNet** 和 **Contoso 子网**。
@@ -61,7 +61,7 @@ Azure Site Recovery 支持对 [Azure 虚拟机](azure-to-azure-architecture.md)�
 
 对于 Azure VM 复制，请确保源 Azure 区域的 NSG 规则允许复制流量的[出站连接](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)。 还可通过此 [NSG 配置示例](azure-to-azure-about-networking.md#example-nsg-configuration)来测试和验证这些必需的规则。
 
-Site Recovery 不会在故障转移操作中创建或复制 NSG。 建议在启动故障转移前，在目标 Azure 区域中创建所需的 NSG。 然后，您可以使用具有站点恢复的强大[恢复计划的](site-recovery-create-recovery-plans.md)自动化脚本将 NSG 自动关联到故障转移期间通过 VM 故障。
+Site Recovery 不会在故障转移操作中创建或复制 NSG。 建议在启动故障转移前，在目标 Azure 区域中创建所需的 NSG。 然后即可将自动化脚本与 Site Recovery 的强大[恢复计划](site-recovery-create-recovery-plans.md)配合使用，通过关联 NSG 在故障转移期间自动进行 VM 故障转移。
 
 请考虑之前介绍的[示例方案](concepts-network-security-group-with-site-recovery.md#using-network-security-groups)：
 -    如果为 VM 启用复制功能，Site Recovery 可以在目标 Azure 区域中创建 **Contoso VNet** 和 **Contoso 子网**的副本。

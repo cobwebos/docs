@@ -1,6 +1,6 @@
 ---
-title: Azure 应用商店的新产品/服务菜单
-description: Azure 应用商店云合作伙伴门户中"新产品/服务"菜单的概述。
+title: Azure Marketplace 的新产品/服务菜单
+description: Azure Marketplace 云合作伙伴门户中 "新的产品/服务" 菜单的概述。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: dsindona
 ms.openlocfilehash: 3e56fbbab144dd99d18f63a3dfc2318db0306acd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80288914"
 ---
 # <a name="new-offer-menu"></a>“新产品/服务”菜单
@@ -22,12 +22,12 @@ ms.locfileid: "80288914"
 |    -----------------------     |     -----------------------------                       |
 | ![Azure 应用程序菜单项](./media/new-offer-menu1.png) |  [Azure 应用程序产品/服务](../azure-applications/cpp-azure-app-offer.md) |
 | ![咨询服务菜单项](./media/new-offer-menu2.png) | [咨询服务产品/服务](./../../cloud-partner-portal-orig/cloud-partner-portal-consulting-services-publishing-offer.md) |
-| ![容器菜单项](./media/new-offer-menu3.png) | [集装箱提供](./../containers/cpp-containers-offer.md) |
+| ![容器菜单项](./media/new-offer-menu3.png) | [容器套餐](./../containers/cpp-containers-offer.md) |
 | ![Dynamics 365 Business Central 菜单项](./media/new-offer-menu4.png) | [Dynamics 365 Business Central 套餐](./../../cloud-partner-portal-orig/cpp-business-central-offer.md) |
 | ![Dynamics 365 for Customer Engagement 菜单项](./media/new-offer-menu5.png) | [Dynamics 365 for Customer Engagement 产品/服务](./../../cloud-partner-portal-orig/cpp-customer-engagement-offer.md) |
-| ![Dynamics 365 for Operations 菜单项](./media/new-offer-menu6.png) | [Dynamics 365 for Operations 产品/服务](./../../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) |
-| ![IoT Edge 模块菜单项](./media/new-offer-menu7.png) | [IoT 边缘模块产品](./../iot-edge-module/cpp-offer-process-parts.md) |
-| ![Power BI 应用菜单项](./media/new-offer-pbi.png)   |  [Power BI 应用产品/服务](../power-bi/cpp-power-bi-offer.md)  |
+| ![Dynamics 365 for Operations 菜单项](./media/new-offer-menu6.png) | [Dynamics 365 for Operations 套餐](./../../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) |
+| ![IoT Edge 模块菜单项](./media/new-offer-menu7.png) | [IoT Edge 模块套餐](./../iot-edge-module/cpp-offer-process-parts.md) |
+| ![Power BI 应用菜单项](./media/new-offer-pbi.png)   |  [Power BI 应用套餐](../power-bi/cpp-power-bi-offer.md)  |
 | ![ SasS 应用程序菜单项](./media/new-offer-menu8.png) | [SasS 应用程序产品/服务](../saas-app/cpp-saas-offer.md) |
 | ![ 虚拟机菜单项](./media/new-offer-menu9.png) | [虚拟机产品/服务](./../virtual-machine/cpp-virtual-machine-offer.md) |
 |  |  |

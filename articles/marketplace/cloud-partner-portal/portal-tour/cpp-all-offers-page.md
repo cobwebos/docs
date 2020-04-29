@@ -1,6 +1,6 @@
 ---
-title: Azure 应用商店的所有优惠页面
-description: Azure 应用商店云合作伙伴门户中"所有产品/服务"页的概述。
+title: Azure Marketplace 的所有产品/服务页
+description: Azure Marketplace 的云合作伙伴门户中的 "所有产品/服务" 页面的概述。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: dsindona
 ms.openlocfilehash: e4001651d422d9197a849be5e7985107f9bf43dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80288982"
 ---
 # <a name="all-offers-page"></a>全部产品/服务页

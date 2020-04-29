@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: dsindona
 ms.openlocfilehash: 57bc370fd160b8b3d6d7941ea28cd460c99f3d96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80285361"
 ---
 <a name="store-your-appsource-package-to-azure-storage-and-generate-a-url-with-sas-key"></a>将 AppSource 包存储到 Azure 存储中并使用 SAS 密钥生成 URL
@@ -23,7 +23,7 @@ ms.locfileid: "80285361"
 
 1. 转到 <https://azure.microsoft.com> 并创建一个免费试用版或收费帐户。
 
-2. 登录到 Azure[门户](https://portal.azure.com/)。
+2. 登录 [Azure 门户](https://portal.azure.com/)。
 
 3. 通过单击“+ 新建”并转到“数据 + 存储”帐户来创建一个新的存储帐户。********
 

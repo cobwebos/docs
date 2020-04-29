@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
 ms.openlocfilehash: 90b3c3fd18bc9211c731ccf16dd646a64a4a1116
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80133092"
 ---
 # <a name="application-gateway-components"></a>应用程序网关组件
@@ -48,7 +48,7 @@ V1 SKU 可以配置为支持静态或动态内部 IP 地址和动态公共 IP �
 
 ### <a name="protocols"></a>协议
 
-应用程序网关支持四个协议：HTTP、HTTPS、HTTP/2 和 WebSocket：
+应用程序网关支持四种协议：HTTP、HTTPS、HTTP/2 和 WebSocket：
 >[!NOTE]
 >仅针对连接到应用程序网关侦听程序的客户端提供了 HTTP/2 协议支持。 与后端服务器池的通信始终通过 HTTP/1.1 进行。 默认情况下，HTTP/2 支持处于禁用状态。 可以选择启用该协议。
 
@@ -111,7 +111,7 @@ V1 SKU 可以配置为支持静态或动态内部 IP 地址和动态公共 IP �
 
 应用程序网关使用此组件中详细指定的端口号、协议和其他设置，将流量路由到后端服务器（在包含 HTTP 设置的请求路由规则中指定）。
 
-HTTP 设置中使用的端口和协议确定应用程序网关和后端服务器之间的流量是加密（提供端到端 TLS）还是未加密。
+HTTP 设置中使用的端口和协议确定应用程序网关与后端服务器之间的通信已加密（提供端到端 TLS）还是未加密。
 
 此组件还用于：
 
@@ -154,4 +154,4 @@ HTTP 设置中使用的端口和协议确定应用程序网关和后端服务器
 
 * [在 Azure 门户中](quick-create-portal.md)
 * [使用 Azure PowerShell](quick-create-powershell.md)
-* [通过使用 Azure CLI](quick-create-cli.md)
+* [使用 Azure CLI](quick-create-cli.md)

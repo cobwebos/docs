@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
 ms.openlocfilehash: 857a4da0b24d600ecc572933af578e2e8faf501a
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80366328"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>在 Service Fabric 群集中修补 Windows 操作系统
@@ -28,7 +28,7 @@ ms.locfileid: "80366328"
 > 从 2019 年 4 月 30 日起，修补业务流程应用程序版本 1.2.* 不再受支持。 请务必升级到最新版本。
 
 > [!NOTE]
-> [在虚拟机规模集中获取自动操作系统映像升级](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)是使操作系统在 Azure 中进行修补的最佳做法。 基于虚拟机缩放集的自动操作系统映像升级将需要银或更大的耐用性。
+> 若要在[虚拟机规模集上进行自动 OS 映像升级](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)，最佳做法是保持操作系统在 Azure 中进行修补。 基于虚拟机规模集的自动 OS 映像升级需要在规模集上具有白银或更高的持久性。
 >
 
  修补业务流程应用程序 (POA) 是围绕 Azure Service Fabric 修复管理器服务的包装器，可为非 Azure 托管群集启用基于配置的 OS 修补计划。 非 Azure 托管群集不需要 POA，但需要按更新域计划修补程序安装，以便在不停机的情况下修补 Service Fabric 群集主机。
@@ -63,7 +63,7 @@ POA 由以下子组件构成：
 > [!NOTE]
 > POA 使用 Service Fabric 的修复管理器服务来禁用/启用节点和执行运行状况检查。 POA 创建的修复任务跟踪每个节点的 Windows 更新进度。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 > [!NOTE]
 > 所需的最低 .NET Framework 版本为 4.6。
@@ -82,7 +82,7 @@ POA 要求在群集上启用修复管理器服务。
 ![从 Azure 门户启用修复管理器的插图](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
 
 ##### <a name="the-azure-resource-manager-deployment-model"></a>Azure 资源管理器部署模型
-或者，可以使用 Azure[资源管理器部署模型](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)在新和现有服务结构群集上启用修复管理器服务。 获取要部署的群集的模板。 可以使用示例模板，或者创建自定义 Azure 资源管理器部署模型模板。 
+或者，你可以使用[Azure 资源管理器部署模型](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)在新的和现有 Service Fabric 群集上启用修复管理器服务。 获取要部署的群集的模板。 可以使用示例模板，或者创建自定义 Azure 资源管理器部署模型模板。 
 
 若要使用 [Azure 资源管理器部署模型模板](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)启用修复管理器服务，请执行以下操作：
 
@@ -145,7 +145,7 @@ POA 要求在群集上启用修复管理器服务。
 
 ### <a name="configure-windows-updates-for-all-nodes"></a>为所有节点配置 Windows 更新
 
-自动 Windows 更新可能导致失去可用性，因为多个群集节点可能同时重启。 POA 默认会尝试在每个群集节点上禁用自动 Windows 更新。 但是，如果设置由管理员或组策略管理，我们建议将 Windows 更新策略设置为"下载前通知"。
+自动 Windows 更新可能导致失去可用性，因为多个群集节点可能同时重启。 POA 默认会尝试在每个群集节点上禁用自动 Windows 更新。 但是，如果设置由管理员或组策略进行管理，我们建议将 Windows 更新策略设置为 "下载之前通知"。
 
 ## <a name="download-the-application-package"></a>下载应用程序包
 
@@ -158,15 +158,15 @@ POA 要求在群集上启用修复管理器服务。
 | 参数        | 类型                          | 详细信息 |
 |:-|-|-|
 |MaxResultsToCache    |Long                              | 应缓存的 Windows 更新结果的最大数目。 <br><br>在假定以下情况时，默认值为 3000： <br> &nbsp;&nbsp;- 节点数为 20。 <br> &nbsp;&nbsp;- 节点上每月发生的更新次数为 5。 <br> &nbsp;&nbsp;- 每个操作的结果数可为 10。 <br> &nbsp;&nbsp;- 应存储过去三个月的结果。 |
-|TaskApprovalPolicy   |枚举 <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy 指示协调器服务用于跨 Service Fabric 群集节点安装 Windows 更新的策略。<br><br>允许的值为： <br>*NodeWise*： 一次安装一个节点的 Windows 更新。 <br> *升级域：* 一次安装一个更新域的 Windows 更新。 （在最大程度情况下，属于更新域的所有节点都可进行 Windows 更新。）<br><br> 若要帮助确定哪种策略最适合你的群集，请参阅[常见问题解答](#frequently-asked-questions)部分。
+|TaskApprovalPolicy   |枚举 <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy 指示协调器服务用于跨 Service Fabric 群集节点安装 Windows 更新的策略。<br><br>允许的值为： <br>*NodeWise*：每次一个节点安装 Windows 更新。 <br> *UpgradeDomainWise*：每次安装一个更新域的 Windows 更新。 （在最大程度情况下，属于更新域的所有节点都可进行 Windows 更新。）<br><br> 若要帮助确定哪种策略最适合你的群集，请参阅[常见问题解答](#frequently-asked-questions)部分。
 |LogsDiskQuotaInMB   |Long  <br> （默认值： *1024*）               | 可在节点本地持久保存的修补业务流程应用日志的最大大小，以 MB 为单位。
-| WUQuery               | 字符串<br>（默认值：*已安装=0*）                | 用于获取 Windows 更新的查询。 有关详细信息，请参阅 [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)。
-| InstallWindowsOSOnlyUpdates | *布尔* <br> （默认值：false）                 | 使用此标志来控制应当下载并安装哪些更新。 允许以下值 <br>true - 仅安装 Windows 操作系统更新。<br>false - 在计算机上安装所有可用的更新。          |
+| WUQuery               | 字符串<br>（默认值： *IsInstalled = 0*）                | 用于获取 Windows 更新的查询。 有关详细信息，请参阅 [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)。
+| InstallWindowsOSOnlyUpdates | *布尔值* <br> （默认值：false）                 | 使用此标志来控制应当下载并安装哪些更新。 允许以下值 <br>true - 仅安装 Windows 操作系统更新。<br>false - 在计算机上安装所有可用的更新。          |
 | WUOperationTimeOutInMinutes | Int <br>（默认值： *90*）                   | 指示任何 Windows 更新操作（搜索、下载或安装）的超时。 在指定的超时内未完成的操作会被中止。       |
 | WURescheduleCount     | Int <br> （默认值： *5*）                  | 在操作持续失败的情况下，服务重新计划 Windows 更新的最大次数。          |
 | WURescheduleTimeInMinutes | Int <br>（默认值： *30*） | 在持续失败的情况下，服务重新计划 Windows 更新的间隔。 |
-| WUFrequency           | 逗号分隔字符串（默认：*每周，星期三，7：00：00）*     | 安装 Windows 更新的频率。 其格式和可能的值包括： <br>&nbsp;&nbsp;- 每月：DD，HH：MM：SS（例如，*每月，5，12：22：32）*<br>字段 DD（日）允许的值为范围 1 到 28 中的数字和“last”。 <br> &nbsp;&nbsp;- 每周，天，HH：MM：SS（例如，*每周，星期二，12：22：32）*  <br> &nbsp;&nbsp;- 每日，HH：MM：SS（例如，*日报，12：22：32*）  <br> &nbsp;&nbsp;-  *None* 表示不应执行 Windows 更新。  <br><br> 时间为 UTC 时间。|
-| AcceptWindowsUpdateEula | Boolean <br>（默认值 *：true）* | 通过设置此标志，该应用程序将代表计算机所有者接受 Windows 更新的最终用户许可协议。              |
+| WUFrequency           | 逗号分隔的字符串（默认值：*每周、星期三、7:00:00*）     | 安装 Windows 更新的频率。 其格式和可能的值包括： <br>&nbsp;&nbsp;-月度： DD，HH： MM： SS （例如，*月度，5，12：22： 32*）<br>字段 DD（日）允许的值为范围 1 到 28 中的数字和“last”。 <br> &nbsp;&nbsp;-周历，DAY，HH： MM： SS （例如，*每周、星期二、12:22:32*）  <br> &nbsp;&nbsp;-每天，HH： MM： SS （例如*每日、12:22:32*）  <br> &nbsp;&nbsp;-  *None* 表示不应执行 Windows 更新。  <br><br> 时间为 UTC 时间。|
+| AcceptWindowsUpdateEula | 布尔值 <br>（默认值： *true*） | 通过设置此标志，该应用程序将代表计算机所有者接受 Windows 更新的最终用户许可协议。              |
 
 > [!TIP]
 > 若要立即进行 Windows 更新，请依据应用程序部署时间设置 `WUFrequency`。 例如，假设拥有一个 5 节点测试群集，并计划在大约 UTC 下午 5:00 部署应用。 如果假定应用程序升级或部署最多需要 30 分钟，请将 WUFrequency 设置为 *Daily, 17:30:00*。
@@ -181,7 +181,7 @@ POA 要求在群集上启用修复管理器服务。
     - 结合相应的 `ApplicationParameter` 值执行 PowerShell 脚本 Deploy.ps1。
 
 > [!NOTE]
-> 将脚本和应用程序文件夹 *"修补程序应用程序"* 保留在同一目录中。
+> 将脚本和应用程序文件夹*PatchOrchestrationApplication*在同一目录中。
 
 ## <a name="upgrade-poa"></a>升级 POA
 
@@ -197,7 +197,7 @@ POA 要求在群集上启用修复管理器服务。
   - 执行 PowerShell 脚本 Undeploy.ps1。
 
 > [!NOTE]
-> 将脚本和应用程序文件夹 *"修补程序应用程序"* 保留在同一目录中。
+> 将脚本和应用程序文件夹*PatchOrchestrationApplication*在同一目录中。
 
 ## <a name="view-the-windows-update-results"></a>查看 Windows 更新结果
 
@@ -250,13 +250,13 @@ HResult | 0 - 成功<br> 其他 - 失败| 指示 Windows 更新失败并出现 u
 
 请登录到群集以查询 Windows 更新结果。 找出协调器服务的主要地址的副本 IP 地址，并在浏览器中打开以下 URL：http://&lt;REPLICA-IP&gt;:&lt;ApplicationPort&gt;/PatchOrchestrationApplication/v1/GetWindowsUpdateResults。
 
-协调器服务的 REST 终结点有一个动态端口。 若要查看确切的 URL，请参考 Service Fabric Explorer。 例如，结果在 上*http://10.0.0.7:20000/PatchOrchestrationApplication/v1/GetWindowsUpdateResults*可用。
+协调器服务的 REST 终结点有一个动态端口。 若要查看确切的 URL，请参考 Service Fabric Explorer。 例如，可在处*http://10.0.0.7:20000/PatchOrchestrationApplication/v1/GetWindowsUpdateResults*获取结果。
 
 ![REST 终结点的插图](media/service-fabric-patch-orchestration-application/Rest_Endpoint.png)
 
 如果在群集上启用了反向代理，则也可从群集外部访问该 URL。
 
-您需要命中的终结点是*http://&lt;SERVERURL：&gt;&lt;反向代理&gt;/修补应用程序/协调服务/v1/获取Windows更新结果*。
+需要命中的终结点是*http://&lt;SERVERURL&gt;&lt;： REVERSEPROXYPORT&gt;/PatchOrchestrationApplication/CoordinatorService/v1/GetWindowsUpdateResults*。
 
 若要在群集上启用反向代理，请按照 [Azure Service Fabric 中的反向代理](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy)中的说明操作。 
 
@@ -285,7 +285,7 @@ HResult | 0 - 成功<br> 其他 - 失败| 指示 Windows 更新失败并出现 u
 
    POA 1.4.0 和更高版本使用 CoordinatorService 上的 ClusterPatchingStatus 属性发布事件，以显示正在修补的节点。 更新将在 _poanode_0 上安装，如下图所示：
 
-    [![群集修补状态的图像](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png)](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png#lightbox)
+    [![群集修补状态的映像](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png)](media/service-fabric-patch-orchestration-application/clusterpatchingstatus.png#lightbox)
 
 1. 禁用该节点后，修复任务将转到 *Executing* 状态。 
    
@@ -313,7 +313,7 @@ HResult | 0 - 成功<br> 其他 - 失败| 指示 Windows 更新失败并出现 u
 
    如果仍会出现更多问题，请登录到虚拟机 (VM)，并使用 Windows 事件日志来了解相关信息。 上述修复任务只能在以下执行程序子状态下存在：
 
-      ExecutorSubState | 描述
+      ExecutorSubState | 说明
     -- | -- 
       None=1 |  表示节点上没有正在进行的操作。 状态可能正在过渡。
       DownloadCompleted=2 | 表示下载操作已完成，状态为成功、部分失败或失败。
@@ -353,11 +353,11 @@ HResult | 0 - 成功<br> 其他 - 失败| 指示 Windows 更新失败并出现 u
 
    如果在群集上找不到修复管理器服务，将会针对协调器服务生成警告级别的运行状况报告。
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 
-**问：为什么在 POA 运行时，为什么我会看到我的群集处于错误状态？**
+**问：当 POA 正在运行时，为什么会看到群集处于错误状态？**
 
-答：在安装过程中，POA 禁用或重新启动节点，这可能会导致群集不正常。
+答：在安装过程中，POA 将禁用或重新启动节点，这可能会暂时导致群集不正常。
 
 根据应用程序的策略，执行修补操作期间可以让一个节点关闭，或者可以让整个更新域完全关闭。**
 
@@ -371,15 +371,15 @@ HResult | 0 - 成功<br> 其他 - 失败| 指示 Windows 更新失败并出现 u
 
 **问：如果 POA 处于警告状态，我该怎么办？**
 
-答：检查针对应用程序发布的运行状况报告是否指示根本原因。 通常，警告中会包含问题的详细信息。 如果该问题是暂时性的，则应用程序预期会自动恢复。
+答：检查是否已针对应用程序发布的运行状况报告指示根本原因。 通常，警告中会包含问题的详细信息。 如果该问题是暂时性的，则应用程序预期会自动恢复。
 
-**问：如果我的群集不正常，并且需要执行紧急操作系统更新，该怎么办？**
+**问：如果群集运行不正常，需要进行紧急的操作系统更新，该怎么办？**
 
 答：当群集不正常时，POA 不会安装更新。 请尝试将群集恢复正常状态，以取消阻止 POA 工作流。
 
-**问：我应该将任务审批策略设置为群集的"NodeWise"还是"升级域Wise"？**
+**问：我是否应该为群集将 TaskApprovalPolicy 设置为 "NodeWise" 或 "UpgradeDomainWise"？**
 
-答："升级域Wise"设置通过并行修补属于更新域的所有节点来加快群集整体修复。 在此过程中，属于整个更新域的节点将不可用（处于 [*Disabled* 状态](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled)）。
+答：通过以并行方式修补属于更新域的所有节点，"UpgradeDomainWise" 设置加速总体群集修复。 在此过程中，属于整个更新域的节点将不可用（处于 [*Disabled* 状态](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled)）。
 
 相比之下，“NodeWise”设置每次只修补一个节点，这意味着，总体群集修补可能需要更长时间。 但是，在修补过程中最多只有一个节点不可用（处于 *Disabled* 状态）。
 
@@ -387,7 +387,7 @@ HResult | 0 - 成功<br> 其他 - 失败| 指示 Windows 更新失败并出现 u
 
 **问：修补节点需要多长时间？**
 
-答：修补节点可能需要几分钟（例如[，Windows Defender 定义更新](https://www.microsoft.com/en-us/wdsi/definitions)）到小时（例如[，Windows 累积更新](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)）。 修补一个节点所需的时间主要取决于： 
+答：修补节点可能需要几分钟（例如， [Windows Defender 定义更新](https://www.microsoft.com/en-us/wdsi/definitions)）到几小时（例如， [windows 累积更新](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)）。 修补一个节点所需的时间主要取决于： 
  - 更新的大小。
  - 必须在修补窗口中应用的更新数。
  - 安装更新、重新启动节点（如果需要）以及完成重新启动后安装步骤所需的时间。
@@ -401,7 +401,7 @@ HResult | 0 - 成功<br> 其他 - 失败| 指示 Windows 更新失败并出现 u
 
 - 协调器服务的策略。 如果使用默认策略“NodeWise”，则每次只会修补一个节点，这种方法比使用“UpgradeDomainWise”要慢。 
 
-   例如：如果节点需要 +1 小时进行修补，则修补包含 5 个更新域（每个包含 4 个节点）的 20 节点（相同类型节点）群集需要：
+   例如：如果某个节点要修补大约1小时，则修补包含5个更新域（每个都包含4个节点）的20节点（相同类型的节点）群集需要：
     - 使用“NodeWise”时：大约 20 小时。
     - 使用“UpgradeDomainWise”时：大约 5 小时。
 
@@ -409,33 +409,33 @@ HResult | 0 - 成功<br> 其他 - 失败| 指示 Windows 更新失败并出现 u
 
 - 修补期间的群集运行状况错误。 [群集运行状况](https://docs.microsoft.com/azure/service-fabric/service-fabric-health-introduction)出现任何[降级](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet#System_Fabric_Health_HealthState_Error)都会中断修补过程。 此问题会增加修补整个群集所需的总时间。
 
-**问：为什么我在 Windows 更新结果中看到一些更新是通过 REST API 获得的，但不是在计算机上的 Windows 更新历史记录下获得的？**
+**问：为什么在 Windows 更新的结果中看到一些更新，这些更新是通过 REST API 获取的，而不是在计算机上的 Windows 更新历史记录下？**
 
-答：某些产品更新仅出现在其自己的更新或修补程序历史记录中。 例如，Windows Defender 更新不一定会显示在 Windows Server 2016 上的 Windows 更新历史记录中。
+答：某些产品更新仅在其自己的更新或修补程序历史记录中出现。 例如，Windows Defender 更新不一定会显示在 Windows Server 2016 上的 Windows 更新历史记录中。
 
-**问：POA 能否用于修补我的开发群集（单节点群集）？**
+**问：是否可以使用 POA 修补我的开发群集（单节点群集）？**
 
-答：否，POA 不能用于修补单节点群集。 此限制是设计使然，因为 [Service Fabric 系统服务](https://docs.microsoft.com/azure/service-fabric/service-fabric-technical-overview#system-services)或其他客户应用会造成停机。 因此，修复管理器永远不会批准修补修复作业。
+答：不可以，POA 不能用于修补单节点群集。 此限制是设计使然，因为 [Service Fabric 系统服务](https://docs.microsoft.com/azure/service-fabric/service-fabric-technical-overview#system-services)或其他客户应用会造成停机。 因此，修复管理器永远不会批准修补修复作业。
 
-**问：如何在 Linux 上修补群集节点？**
+**问：在 Linux 上如何实现修补群集节点？**
 
-答：要了解如何在 Linux 上协调更新，请参阅[Azure 虚拟机缩放集自动操作系统映像升级](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)。
+答：若要了解如何在 Linux 上协调更新，请参阅[Azure 虚拟机规模集自动 OS 映像升级](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)。
 
-**问：为什么更新周期需要这么长时间？**
+**问：为什么更新循环需要花费很长时间？**
 
-答：查询结果 JSON，输入所有节点的更新周期，然后可以使用"操作开始时间和操作完成时间"尝试找出在每个节点上更新安装所占用的时间。 
+答：查询结果 JSON，为所有节点输入更新循环，然后可以使用 OperationStartTime 和 OperationTime （OperationCompletionTime）尝试查找每个节点上安装更新所需的时间。 
 
 如果在某个较长时间段内未进行更新，原因可能是群集处于错误状态，因此，修复管理器无法批准任何 POA 修复任务。 如果任一节点上的更新安装花费了较长时间，原因可能是该节点有一段时间未曾更新过。 可能有大量的更新正在等待安装，因此导致了延迟。 
 
 此外，可能该节点停滞在 *Disabling* 状态，因此其修补被阻止。 这种情况往往是禁用节点导致仲裁或数据丢失造成的。
 
-**问：为什么在 POA 修补节点时必须禁用节点？**
+**问：为什么在 POA 修补节点时，该节点必须处于禁用状态？**
 
-答：POA 禁用具有 *"重新启动*"意图的节点，该意图将停止或重新分配在节点上运行的所有服务交换矩阵服务。 POA 这样做的目的是确保应用程序最终不会混用新的和旧的 DLL，因此，我们不建议在未禁用节点的情况下对其进行修补。
+答： POA 使用*重启*意向禁用节点，该节点停止或重新分配节点上运行的所有 Service Fabric 服务。 POA 这样做的目的是确保应用程序最终不会混用新的和旧的 DLL，因此，我们不建议在未禁用节点的情况下对其进行修补。
 
-**问：使用 POA 可以更新的最大节点数是多少？**
+**问：可以使用 POA 更新的最大节点数是多少？**
 
-答：POA 使用服务交换矩阵修复管理器为更新节点创建修复任务。 但是，可以同时存在不超过 250 个维修任务。 目前，POA 同时为每个节点创建修复任务，因此 POA 可以更新群集中的不超过 250 个节点。 
+答： POA 使用 Service Fabric 修复管理器为用于更新的节点创建修复任务。 但是，不能同时存在250个以上的修复任务。 目前，POA 会同时为每个节点创建修复任务，因此 POA 可以更新群集中的节点数不超过250个。 
 
 ## <a name="disclaimers"></a>免责声明
 
@@ -480,7 +480,7 @@ Windows 更新发生故障时，会使特定节点或更新域上的应用程序
 ## <a name="poa-release-notes"></a>POA 发行说明
 
 >[!NOTE]
-> 对于 POA 版本 1.4.0 及更高版本，您可以在 GitHub 上的[修补程序业务流程应用程序发布页面上](https://github.com/microsoft/Service-Fabric-POA/releases/)找到发行说明和版本。
+> 对于 POA 版本1.4.0 及更高版本，你可以在 GitHub 上的[修补业务流程应用程序版本页](https://github.com/microsoft/Service-Fabric-POA/releases/)上找到发行说明和发布。
 
 ### <a name="version-110"></a>版本 1.1.0
 - 公开发布的版本
@@ -492,7 +492,7 @@ Windows 更新发生故障时，会使特定节点或更新域上的应用程序
 
 - 系统重启工作流中的 Bug 修复。
 - 由于修复任务准备过程中的运行状况检查，RM 任务创建过程中的 Bug 修复未能按预期方式进行。
-- 将 Windows 服务的启动模式从自动更改为延迟自动。
+- 已将 Windows service POANodeSvc 的启动模式从自动更改为延迟-自动。
 
 ### <a name="version-121"></a>版本 1.2.1
 
@@ -508,12 +508,12 @@ Windows 更新发生故障时，会使特定节点或更新域上的应用程序
 
 - 将 InstallWindowsOSOnlyUpdates 设置为 false 现在会安装所有可用的更新。
 - 更改了禁用自动更新的逻辑。 这修复了在 Server 2016 及更高版本上不会禁用自动更新的 bug。
-- 适用于高级用例的 POA 微服务的参数化放置约束。
+- 用于高级用例的 POA 的微服务的参数化放置约束。
 
 ### <a name="version-131"></a>版本 1.3.1
-- 修复了由于禁用自动更新失败而在 Windows Server 2012 R2 上或更早版本无法正常工作的 POA 1.3.0 的回归。 
+- 解决 POA 1.3.0 在 Windows Server 2012 R2 或更早版本上无法运行的回归，因为禁用自动更新时失败。 
 - 修复了 InstallWindowsOSOnlyUpdates 配置总是被选为 True 的 bug。
 - 将 InstallWindowsOSOnlyUpdates 的默认值更改为 False。
 
 ### <a name="version-132"></a>版本 1.3.2
-- 修复了影响节点上的修补生命周期的问题，如果有名称是当前节点名称的子集的节点。 对于此类节点，可能错过修补或重新启动挂起。
+- 修复影响节点上的修补生命周期的问题（如果有名称是当前节点名称子集的节点）。 对于此类节点，可能会丢失修补程序或等待重启。

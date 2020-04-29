@@ -4,14 +4,14 @@ description: 将诊断和使用情况数据导出到 Microsoft Azure 中的存�
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.openlocfilehash: f6afe42e483ab7ad5810169fc301946c75308c29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80298287"
 ---
 # <a name="export-telemetry-from-application-insights"></a>从 Application Insights 导出遥测数据
-想要将遥测数据保留超过标准保留期限？ 或者要以某种专业方式处理这些数据？ 连续导出很适合此目的。 可以使用 JSON 格式将 Application Insights 门户中显示的事件导出到 Microsoft Azure 中的存储。 从那里，您可以下载数据并编写处理数据所需的任何代码。  
+想要将遥测数据保留超过标准保留期限？ 或者要以某种专业方式处理这些数据？ 连续导出很适合此目的。 可以使用 JSON 格式将 Application Insights 门户中显示的事件导出到 Microsoft Azure 中的存储。 你可以从此处下载数据，并编写处理该数据所需的任何代码。  
 
 在设置连续导出之前，请考虑一些备选方法：
 
@@ -32,7 +32,7 @@ ms.locfileid: "80298287"
 
 * Azure Blob 存储的[不可变存储](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage)。
 
-* [Azure 数据存储第 2 代](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)。
+* [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)。
 
 ## <a name="create-a-continuous-export"></a><a name="setup"></a> 创建连续导出
 
@@ -40,7 +40,7 @@ ms.locfileid: "80298287"
 
 2. 选择要导出的遥测数据类型。
 
-3. 创建或选择要用于存储数据的 [Azure 存储帐户](../../storage/common/storage-introduction.md)。 有关存储定价选项的详细信息，请访问[官方定价页面](https://azure.microsoft.com/pricing/details/storage/)。
+3. 创建或选择要用于存储数据的 [Azure 存储帐户](../../storage/common/storage-introduction.md)。 有关存储定价选项的详细信息，请访问[官方定价页](https://azure.microsoft.com/pricing/details/storage/)。
 
      单击“添加”、“导出目标”、“存储帐户”，并创建新存储或选择现有存储。
 
@@ -53,17 +53,17 @@ ms.locfileid: "80298287"
 
 数据出现在存储中之前可能有大约一小时的延迟。
 
-第一个导出完成后，您将在 Azure Blob 存储容器中找到类似于以下内容的结构：（这将因收集的数据而异。
+第一次导出完成后，你将在 Azure Blob 存储容器中找到如下所示的结构：（这会因你收集的数据而异。）
 
-|“属性” | 描述 |
+|名称 | 说明 |
 |:----|:------|
 | [可用性](export-data-model.md#availability) | 报告[可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)。  |
 | [事件](export-data-model.md#events) | [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) 生成的自定义事件。 
 | [异常](export-data-model.md#exceptions) |报告服务器和浏览器中发生的[异常](../../azure-monitor/app/asp-net-exceptions.md)。
 | [消息](export-data-model.md#trace-messages) | 由 [TrackTrace](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) 和[日志记录适配器](../../azure-monitor/app/asp-net-trace-logs.md)发送。
-| [指标](export-data-model.md#metrics) | 由公制 API 调用生成。
-| [PerformanceCounters](export-data-model.md) | 应用程序见解收集的性能计数器。
-| [Requests](export-data-model.md#requests)| 由 [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) 发送。 标准模块使用此属性报告在服务器上测量的服务器响应时间。| 
+| [指标](export-data-model.md#metrics) | 由指标 API 调用生成。
+| [PerformanceCounters](export-data-model.md) | Application Insights 收集的性能计数器。
+| [请求](export-data-model.md#requests)| 由 [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) 发送。 标准模块使用此属性报告在服务器上测量的服务器响应时间。| 
 
 ### <a name="to-edit-continuous-export"></a>编辑连续导出
 
@@ -88,7 +88,7 @@ ms.locfileid: "80298287"
 该数据还包含已设置的任何[可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)的结果。
 
 > [!NOTE]
-> **采样。** 如果应用程序发送大量数据，采样功能可能会运行，并只发送一小部分生成的遥测数据。 [了解有关采样的更多详细信息。](../../azure-monitor/app/sampling.md)
+> **样本.** 如果应用程序发送大量数据，采样功能可能会运行，并只发送一小部分生成的遥测数据。 [了解有关采样的详细信息。](../../azure-monitor/app/sampling.md)
 >
 >
 
@@ -107,9 +107,9 @@ ms.locfileid: "80298287"
 
     $"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}/{ blobDeliveryTimeUtc:HH}/{blobId}_{blobCreationTimeUtc:yyyyMMdd_HHmmss}.blob"
 
-其中
+Where
 
-* `blobCreationTimeUtc`是在内部暂存存储中创建 Blob 的时间
+* `blobCreationTimeUtc`在内部暂存存储中创建 blob 的时间
 * `blobDeliveryTimeUtc` 是将 Blob 复制到导出目标存储的时间
 
 ## <a name="data-format"></a><a name="format"></a>数据格式
@@ -166,7 +166,7 @@ ms.locfileid: "80298287"
 
 如果数据规模较大，可以考虑 [HDInsight](https://azure.microsoft.com/services/hdinsight/) - 云中的 Hadoop 群集。 HDInsight 提供多种技术用于管理和分析大数据。可以使用 HDInsight 来处理从 Application Insights 导出的数据。
 
-## <a name="q--a"></a>问题解答
+## <a name="q--a"></a>问与答
 * *我想要一次性下载某个图表。*  
 
     没问题，可以这样做。 在选项卡顶部单击“导出数据”。****
@@ -181,14 +181,14 @@ ms.locfileid: "80298287"
     很抱歉，不可以。 我们的导出引擎目前仅适用于 Azure 存储。  
 * *放置在存储中的数据量是否有任何限制？*
 
-    不是。 我们将持续推送数据，直到删除了导出。 如果达到 Blob 存储的外在限制，推送会停止，但那个限制极大。 可以自行控制使用的存储量。  
+    不能。 我们将持续推送数据，直到删除了导出。 如果达到 Blob 存储的外在限制，推送会停止，但那个限制极大。 可以自行控制使用的存储量。  
 * *存储中应会出现多少个 Blob？*
 
   * 对于选择要导出的每种数据类型，将每隔分钟创建一个新 Blob（如果有可用的数据）。
   * 此外，对于高流量应用程序，将分配额外的分区单元。 在此情况下，每个单元每隔一分钟创建一个 Blob。
 * *我为存储重新生成了密钥或更改了容器的名称，但现在导出不能正常进行。*
 
-    编辑导出并打开导出目标选项卡。保留与以前相同的存储，然后单击"确定"以确认。 导出将重新开始。 如果更改是在最近几天内做出的，则不会丢失数据。
+    编辑导出并打开 "导出目标" 选项卡。保留选定的相同存储，然后单击 "确定" 进行确认。 导出将重新开始。 如果更改是在最近几天内做出的，则不会丢失数据。
 * *是否可以暂停导出？*
 
     是的。 单击“禁用”即可。

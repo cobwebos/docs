@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
 ms.openlocfilehash: 2956c76f5bec353639b39228b982db21b6932deb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80294890"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>适合 Azure 托管应用程序的创建体验的 CreateUiDefinition.json
@@ -96,6 +96,6 @@ createUiDefinition.json 文件本身具有一个简单的架构。 它的实际�
 - [元素](create-uidefinition-elements.md)
 - [函数](create-uidefinition-functions.md)
 
-此处提供了 createUiDefinition 的当前 JSON 架构：`https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json`。
+此处提供了 createUiDefinition 的当前 JSON 架构： `https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json` 。
 
 有关用户界面文件示例，请参阅 [createUiDefinition.json](https://github.com/Azure/azure-managedapp-samples/blob/master/Managed%20Application%20Sample%20Packages/201-managed-app-using-existing-vnet/createUiDefinition.json)。

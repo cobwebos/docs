@@ -11,10 +11,10 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.openlocfilehash: f1541c177cea2d223a5e7df576d95fab7eafb310
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80296939"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>重新生成存储帐户访问密钥
@@ -33,7 +33,7 @@ ms.locfileid: "80296939"
 * [Azure 机器学习 CLI 扩展](reference-azure-machine-learning-cli.md)。
 
 > [!NOTE]
-> 本文档中的代码段使用 Python SDK 的版本 1.0.83 进行了测试。
+> 本文档中的代码片段已使用 Python SDK 版本 1.0.83 进行测试。
 
 <a id="whattoupdate"></a> 
 
@@ -68,7 +68,7 @@ for name, ds in datastores.items():
 
 此代码查找使用 Azure 存储的任何已注册数据存储，并列出以下信息：
 
-* 数据存储名称：存储帐户注册下的数据存储的名称。
+* 数据存储名称：在其下注册存储帐户的数据存储的名称。
 * 存储帐户名称：Azure 存储帐户的名称。
 * 容器：此注册使用的存储帐户中的容器。
 
@@ -129,4 +129,4 @@ for name, ds in datastores.items():
 
 ## <a name="next-steps"></a>后续步骤
 
-有关注册数据存储的详细信息，请参阅[`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py)类引用。
+有关注册数据存储的详细信息，请参阅 [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) 类参考。

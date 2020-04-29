@@ -11,17 +11,17 @@ ms.reviewer: billgib, sstein
 ms.date: 01/25/2019
 ms.custom: seoapril2019
 ms.openlocfilehash: 956d74467c69d9924d26f9cae8d902a6ddd84496
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80067492"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>多租户 SaaS 数据库租户模式
 
-本文介绍了适用于多租户 SaaS 应用程序的各种租赁模型。
+本文介绍可用于多租户 SaaS 应用程序的各种租户模型。
 
-在设计多租户 SaaS 应用程序时，必须慎重选择最符合应用程序需要的租户模型。  租赁模型确定每个租户的数据如何映射到存储。  所选的租户模型会影响应用程序设计和管理。  今后改用不同的模型可能需要付出一定的代价。
+在设计多租户 SaaS 应用程序时，必须慎重选择最符合应用程序需要的租户模型。  租户模型确定如何将每个租户的数据映射到存储。  所选的租户模型会影响应用程序设计和管理。  今后改用不同的模型可能需要付出一定的代价。
 
 ## <a name="a-saas-concepts-and-terminology"></a>A. SaaS 概念和术语
 
@@ -31,23 +31,23 @@ ms.locfileid: "80067492"
 
 术语*租户模型*是指租户存储数据的组织方式：
 
-- *单租户：*&nbsp;每个数据库仅存储来自一个租户的数据。
-- *多租户：*&nbsp;每个数据库存储来自多个独立租户的数据（具有保护数据隐私的机制）。
+- *单租户：* &nbsp;每个数据库仅存储一个租户的数据。
+- *多租户：* &nbsp;每个数据库都存储来自多个单独租户的数据（包含用于保护数据隐私的机制）。
 - 混合租户模式也可用。
 
 ## <a name="b-how-to-choose-the-appropriate-tenancy-model"></a>B. 如何选择适当的租户模型
 
 一般情况下，租户模型不会影响应用程序的功能，但可能会影响总体解决方案的其他方面。  以下条件用于评估每个模型：
 
-- **可 伸缩 性：**
+- **能力**
     - 租户数目。
     - 每个租户的存储量。
     - 总存储量。
     - 工作负荷。
 
-- **租户隔离：**&nbsp;数据隔离和性能（一个租户的工作量是否影响其他租户）。
+- **租户隔离：** &nbsp;数据隔离和性能（一个租户的工作负荷是否会影响其他人）。
 
-- **每租户成本：**&nbsp;数据库成本。
+- **每租户成本：** &nbsp;数据库成本。
 
 - **开发复杂性：**
     - 架构更改。
@@ -59,7 +59,7 @@ ms.locfileid: "80067492"
     - 还原租户。
     - 灾难恢复。
 
-- **可自定义性：**&nbsp;易于支持特定于租户的架构自定义或特定于租户类的架构自定义。
+- **可定制性：** &nbsp;支持特定于租户或特定于租户的架构自定义。
 
 有关租户的讨论侧重于数据层。**  但是，请花费片刻时间思考一下应用程序层。**  应用程序层被视为单一实体。  如果将应用程序划分成多个小型组件，所选的租户模型可能会更改。  在所用的租户和存储技术或平台方面，可以不同的方式对待某些组件。
 
@@ -97,7 +97,7 @@ ms.locfileid: "80067492"
 
 ![使用弹性池设计采用“每个租户各有数据库”模型的多租户应用。][image-mt-app-db-per-tenant-pool-153p]
 
-Azure SQL 数据库提供所需的工具用于配置、监视和管理共享。  池级和数据库级性能指标在 Azure 门户中以及通过 Azure 监视器日志都可用。  指标可以提供聚合性能和租户特定性能的深入见解。  可以在池之间移动单个数据库，以便向特定的租户提供保留的资源。  使用这些工具可确保以经济高效的方式获得良好性能。
+Azure SQL 数据库提供所需的工具用于配置、监视和管理共享。  池级和数据库级性能指标都在 Azure 门户中提供，并且通过 Azure Monitor 日志提供。  指标可以提供聚合性能和租户特定性能的深入见解。  可以在池之间移动单个数据库，以便向特定的租户提供保留的资源。  使用这些工具可确保以经济高效的方式获得良好性能。
 
 #### <a name="operations-scale-for-database-per-tenant"></a>“每个租户各有数据库”模型的操作规模
 
@@ -124,9 +124,9 @@ Azure SQL 数据库平台提供多种管理功能，用于大规模管理大量�
 
 #### <a name="tenant-isolation-is-sacrificed"></a>丧失租户隔离性
 
-*数据：*&nbsp;多租户数据库必然牺牲租户隔离。  多个租户的数据统一存储在一个数据库中。  在开发期间，需确保查询永远不会公开多个租户中的数据。  SQL 数据库支持[行级安全性][docu-sql-svr-db-row-level-security-947w]，这种安全性可以强制某个查询返回的数据划归到单个租户。
+*数据：* &nbsp;多租户数据库一定 sacrifices 租户隔离。  多个租户的数据统一存储在一个数据库中。  在开发期间，需确保查询永远不会公开多个租户中的数据。  SQL 数据库支持[行级安全性][docu-sql-svr-db-row-level-security-947w]，这种安全性可以强制某个查询返回的数据划归到单个租户。
 
-*处理：*&nbsp;多租户数据库共享其所有租户的计算和存储资源。  可将数据库作为一个整体进行监视，确保其性能可接受。  但是，Azure 系统不提供内置的方式来监视或管理单个租户对这些资源的使用。  因此，多租户数据库增大了遇到干扰性邻居的风险：一个过度活跃的租户的工作负荷影响同一数据库中其他租户的性能体验。  其他应用程序级监视可以监视租户级性能。
+*处理：* &nbsp;多租户数据库在其所有租户之间共享计算和存储资源。  可将数据库作为一个整体进行监视，确保其性能可接受。  但是，Azure 系统不提供内置的方式来监视或管理单个租户对这些资源的使用。  因此，多租户数据库增大了遇到干扰性邻居的风险：一个过度活跃的租户的工作负荷影响同一数据库中其他租户的性能体验。  其他应用程序级监视可以监视租户级性能。
 
 #### <a name="lower-cost"></a>成本更低
 
@@ -184,7 +184,7 @@ SQL 数据库提供一个可与分片库和目录数据库结合使用的拆分/
 
 | 度量 | 独立应用 | 每个租户各有数据库 | 分片多租户 |
 | :---------- | :------------- | :------------------ | :------------------- |
-| 缩放 | 中型<br />1 到数百个 | 很高<br />1 到数十万个 | 无限制<br />1 到数百万个 |
+| 缩放 | 中<br />1 到数百个 | 很高<br />1 到数十万个 | 无限制<br />1 到数百万个 |
 | 租户隔离 | 很高 | 高 | 低；任何单租户（即独自在 MT 数据库中的租户）除外。 |
 | 每个租户的数据库成本 | 高；大小根据峰值而定。 | 低；使用池。 | 最低，适用于 MT 数据库中的小租户。 |
 | 性能监视和管理 | 仅限每租户 | 聚合 + 每租户 | 聚合；不过，对于单租户，将应用“仅限每租户”模式。 |
@@ -213,11 +213,11 @@ SQL 数据库提供一个可与分片库和目录数据库结合使用的拆分/
 
 <!--  Image references.  -->
 
-[image-standalone-app-st-db-111a]: media/saas-tenancy-app-design-patterns/saas-standalone-app-single-tenant-database-11.png "使用一个单租户数据库设计独立应用程序。"
+[image-standalone-app-st-db-111a]: media/saas-tenancy-app-design-patterns/saas-standalone-app-single-tenant-database-11.png "只包含一个单租户数据库的独立应用程序的设计。"
 
 [image-mt-app-db-per-tenant-132d]: media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-database-per-tenant-13.png "设计采用“每个租户各有数据库”模型的多租户应用。"
 
 [image-mt-app-db-per-tenant-pool-153p]: media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-database-per-tenant-pool-15.png "使用弹性池设计采用“每个租户各有数据库”模型的多租户应用。"
 
-[image-mt-app-sharded-mt-db-174s]: media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-sharded-multi-tenant-databases-17.png "使用分片多租户数据库设计多租户应用。"
+[image-mt-app-sharded-mt-db-174s]: media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-sharded-multi-tenant-databases-17.png "设计包含分片多租户数据库的多租户应用。"
 

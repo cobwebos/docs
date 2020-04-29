@@ -1,6 +1,6 @@
 ---
-title: SaaS 履行 API v1 |Azure 应用商店
-description: 说明如何使用关联的履行 v1 API 在 Azure 应用商店中创建和管理 SaaS 产品/
+title: SaaS 履单 Api v1 |Azure Marketplace
+description: 介绍如何使用关联的履行 v1 Api 在 Azure Marketplace 上创建和管理 SaaS 产品/服务。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -9,18 +9,18 @@ ms.date: 05/23/2019
 ms.author: dsindona
 ROBOTS: NOINDEX
 ms.openlocfilehash: 3ec8373288a2ea5809ee5d349c52c57051586035
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80288336"
 ---
-# <a name="saas-fulfillment-apis-version-1-deprecated"></a>SaaS 履行 API 版本 1（已弃用）
+# <a name="saas-fulfillment-apis-version-1-deprecated"></a>SaaS 履单 Api 版本1（不推荐使用）
 
-本文介绍如何使用 API 创建 SaaS 套餐。 API 由 REST 方法和终结点组成，如果选择了 Azure 销售，则允许订阅 SaaS 产品/服务所必需的。  
+本文介绍如何使用 API 创建 SaaS 套餐。 如果已选择 "通过 Azure 进行销售"，则需要使用由 REST 方法和终结点组成的 Api 来允许订阅 SaaS 产品。  
 
 > [!WARNING]
-> 此初始版本的 SaaS 履行 API 被弃用;相反，使用[SaaS 履行 API V2](./pc-saas-fulfillment-api-v2.md)。  目前仅维护 API 的此初始版本，以服务现有发布商。 
+> 此初始版本的 SaaS 履单 API 已弃用;请改用[SaaS 履单 API V2](./pc-saas-fulfillment-api-v2.md)。  此 API 的初始版本当前仅为提供给现有发布者提供服务。 
 
 以下 API 可帮助你将 SaaS 服务与 Azure 相集成：
 
@@ -46,7 +46,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 用户针对解析终结点执行 POST 操作可将市场令牌解析为永久性资源 ID。  资源 ID 是 SAAS 订阅的唯一标识符。 
 
-当用户重定向到 ISV 网站时，URL 在查询参数中包含令牌。 ISV 应当使用此令牌，并发出请求来解析它。 响应包含资源的唯一 SAAS 订阅 ID、名称、产品/服务 ID 和计划。 此令牌的有效期仅为一小时。
+将用户重定向到 ISV 的网站时，URL 在查询参数中包含一个令牌。 ISV 应当使用此令牌，并发出请求来解析它。 响应包含资源的唯一 SAAS 订阅 ID、名称、产品/服务 ID 和计划。 此令牌的有效期仅为一小时。
 
 *请求*
 
@@ -60,15 +60,15 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 |  |  |
 
 
-*头*
+*标头*
 
-| **标题键**     | **必需** | **说明**                                                                                                                                                                                                                  |
+| **标头键**     | **必需** | **说明**                                                                                                                                                                                                                  |
 |--------------------|--------------|-----------------------------------------------------------|
 | x-ms-requestid     | 否           | 唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。  |
-| x-ms-correlationid | 否           | 在客户端上执行的操作的唯一字符串值。 此字段将客户端操作中的所有事件与服务器端的事件相关联。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
+| x-ms-correlationid | 否           | 在客户端上执行的操作的唯一字符串值。 此字段将客户端操作的所有事件与服务器端上的事件关联起来。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
 | Content-type       | 是          | `application/json`                                        |
-| authorization      | 是          | JSON Web 令牌 (JWT) 持有者令牌。                    |
-| x-ms-marketplace-token| 是| 当用户从 Azure 重定向到 SaaS ISV 网站时，URL 中的令牌查询参数。 **注：** 此令牌仅有效 1 小时。 此外，URL 会对来自浏览器的令牌值进行解码，然后再使用它。|
+| 授权      | 是          | JSON Web 令牌 (JWT) 持有者令牌。                    |
+| x-ms-marketplace-token| 是| 当用户从 Azure 重定向到 SaaS ISV 的网站时，URL 中的令牌查询参数。 **注意：** 此令牌的有效时间仅为1小时。 此外，URL 会对来自浏览器的令牌值进行解码，然后再使用它。|
 |  |  |  |
   
 
@@ -85,10 +85,10 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 | **参数名称** | **数据类型** | **说明**                       |
 |--------------------|---------------|---------------------------------------|
-| id                 | String        | SaaS 订阅的 ID。          |
-| subscriptionName| String| 用户订阅 SaaS 服务时在 Azure 中设置的 SaaS 订阅名称。|
-| OfferId            | String        | 用户订阅的套餐 ID。 |
-| planId             | String        | 用户订阅的计划 ID。  |
+| id                 | 字符串        | SaaS 订阅的 ID。          |
+| subscriptionName| 字符串| 用户订阅 SaaS 服务时在 Azure 中设置的 SaaS 订阅名称。|
+| OfferId            | 字符串        | 用户订阅的套餐 ID。 |
+| planId             | 字符串        | 用户订阅的计划 ID。  |
 |  |  |  |
 
 
@@ -106,7 +106,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 *响应标头*
 
-| **头键**     | **必需** | **说明**                                                                                        |
+| **标头键**     | **必需** | **说明**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | 是          | 从客户端收到的请求 ID。                                                                   |
 | x-ms-correlationid | 是          | 如果由客户端传递，则为关联 ID，否则此值为服务器关联 ID。                   |
@@ -119,29 +119,29 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 订阅终结点允许用户开始订阅给定计划的 SaaS 服务，并在商务系统中启用计费。
 
-**把**
+**PUT**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*[订阅 Id]*？api 版本 =2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*？ api 版本 = 2017-04-15**
 
 | **参数名称**  | **说明**                                       |
 |---------------------|-------------------------------------------------------|
-| subscriptionId      | 通过解析 API 解析令牌后获取的 SaaS 订阅的唯一 ID。                              |
+| subscriptionId      | 在通过解析 API 解析令牌后获取的 SaaS 订阅的唯一 ID。                              |
 | api-version         | 用于此请求的操作的版本。 |
 |  |  |
 
-*头*
+*标头*
 
-|  **标题键**        | **必需** |  **说明**                                                  |
+|  **标头键**        | **必需** |  **说明**                                                  |
 | ------------------     | ------------ | --------------------------------------------------------------------------------------- |
 | x-ms-requestid         |   否         | 唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
 | x-ms-correlationid     |   否         | 在客户端上执行的操作的唯一字符串值。 此值用于将客户端操作生成的所有事件与服务器端的事件相关联。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
 | If-Match/If-None-Match |   否         |   强验证程序 ETag 值。                                                          |
 | content-type           |   是        |    `application/json`                                                                   |
-|  authorization         |   是        |    JSON Web 令牌 (JWT) 持有者令牌。                                               |
-| x-ms-marketplace-session-mode| 否 | 订阅 SaaS 套餐时用于启用试运行模式的标志。 如果已设置，则订阅是免费的。 此值可用于 ISV 测试方案。 请将其设置为 **"干运行"**|
+|  授权         |   是        |    JSON Web 令牌 (JWT) 持有者令牌。                                               |
+| x-ms-marketplace-session-mode| 否 | 订阅 SaaS 套餐时用于启用试运行模式的标志。 如果已设置，则订阅是免费的。 此值可用于 ISV 测试方案。 请将其设置为 **"dryrun"**|
 |  |  |  |
 
-*正文*
+*大量*
 
 ``` json
 {
@@ -151,7 +151,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 | **元素名称** | **数据类型** | **说明**                      |
 |------------------|---------------|--------------------------------------|
-| planId           | （必需）字符串        | 正在订阅 SaaS 服务用户的计划 ID。  |
+| planId           | （必需）字符串        | SaaS 服务用户正在订阅的计划 ID。  |
 |  |  |  |
 
 响应代码**
@@ -167,11 +167,11 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | 503                  | `ServiceUnavailable` | 服务暂时关闭，请稍后重试。                          |
 |  |  |  |
 
-对于 202 响应，请在"操作位置"标头上跟进请求操作的状态。 身份验证与其他市场 API 相同。
+对于202响应，请在 "操作位置" 标头上跟进请求操作的状态。 身份验证与其他市场 API 相同。
 
 *响应标头*
 
-| **头键**     | **必需** | **说明**                                                                                        |
+| **标头键**     | **必需** | **说明**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | 是          | 从客户端收到的请求 ID。                                                                   |
 | x-ms-correlationid | 是          | 如果由客户端传递，则为关联 ID，否则此值为服务器关联 ID。                   |
@@ -184,9 +184,9 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 用户可以使用更改终结点将其当前已订阅的计划转换为新计划。
 
-**PATCH**
+**修补程序**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*[订阅 Id]*？api 版本 =2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*？ api 版本 = 2017-04-15**
 
 | **参数名称**  | **说明**                                       |
 |---------------------|-------------------------------------------------------|
@@ -194,18 +194,18 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | api-version         | 用于此请求的操作的版本。 |
 |  |  |
 
-*头*
+*标头*
 
-| **标题键**          | **必需** | **说明**                                                                                                                                                                                                                  |
+| **标头键**          | **必需** | **说明**                                                                                                                                                                                                                  |
 |-------------------------|--------------|---------------------------------------------------------------------------------------------------------------------|
 | x-ms-requestid          | 否           | 唯一的字符串值，用于跟踪来自客户端的请求。 建议使用 GUID。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。   |
 | x-ms-correlationid      | 否           | 在客户端上执行的操作的唯一字符串值。 此值用于将客户端操作生成的所有事件与服务器端的事件相关联。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
 | If-Match /If-None-Match | 否           | 强验证程序 ETag 值。                              |
 | content-type            | 是          | `application/json`                                        |
-| authorization           | 是          | JSON Web 令牌 (JWT) 持有者令牌。                    |
+| 授权           | 是          | JSON Web 令牌 (JWT) 持有者令牌。                    |
 |  |  |  |
 
-*正文*
+*大量*
 
 ```json
 {
@@ -215,7 +215,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 |  **元素名称** |  **数据类型**  | **说明**                              |
 |  ---------------- | -------------   | --------------------------------------       |
-|  planId           |  （必需）字符串         | 正在订阅 SaaS 服务用户的计划 ID。          |
+|  planId           |  （必需）字符串         | SaaS 服务用户正在订阅的计划 ID。          |
 |  |  |  |
 
 响应代码**
@@ -233,7 +233,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 *响应标头*
 
-| **头键**     | **必需** | **说明**                                                                                        |
+| **标头键**     | **必需** | **说明**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | 是          | 从客户端收到的请求 ID。                                                                   |
 | x-ms-correlationid | 是          | 如果由客户端传递，则为关联 ID，否则此值为服务器关联 ID。                   |
@@ -248,9 +248,9 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 *请求*
 
-**删除**
+**DELETE**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*[订阅 Id]*？api 版本 =2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*？ api 版本 = 2017-04-15**
 
 | **参数名称**  | **说明**                                       |
 |---------------------|-------------------------------------------------------|
@@ -258,13 +258,13 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | api-version         | 用于此请求的操作的版本。 |
 |  |  |
 
-*头*
+*标头*
 
-| **标题键**     | **必需** | **说明**                                                                                                                                                                                                                  |
+| **标头键**     | **必需** | **说明**                                                                                                                                                                                                                  |
 |--------------------|--------------| ----------------------------------------------------------|
 | x-ms-requestid     | 否           | 唯一的字符串值，用于跟踪来自客户端的请求。 建议使用 GUID。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。                                                           |
 | x-ms-correlationid | 否           | 在客户端上执行的操作的唯一字符串值。 此值用于将客户端操作生成的所有事件与服务器端的事件相关联。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
-| authorization      | 是          | JSON Web 令牌 (JWT) 持有者令牌。                    |
+| 授权      | 是          | JSON Web 令牌 (JWT) 持有者令牌。                    |
 |  |  |  |
 
 响应代码**
@@ -279,11 +279,11 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | 503                  | `ServiceUnavailable` | 服务暂时关闭。 请稍后重试。                          |
 |  |  |  |
 
-对于 202 响应，请在"操作位置"标头上跟进请求操作的状态。 身份验证与其他市场 API 相同。
+对于202响应，请在 "操作位置" 标头上跟进请求操作的状态。 身份验证与其他市场 API 相同。
 
 *响应标头*
 
-| **头键**     | **必需** | **说明**                                                                                        |
+| **标头键**     | **必需** | **说明**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | 是          | 从客户端收到的请求 ID。                                                                   |
 | x-ms-correlationid | 是          | 如果由客户端传递，则为关联 ID，否则此值为服务器关联 ID。                   |
@@ -300,7 +300,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 **获取**
 
-**https://marketplaceapi.microsoft.com/api/saas/operations/*[操作 Id]*？api 版本=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/operations/*{operationId}*？ api 版本 = 2017-04-15**
 
 | **参数名称**  | **说明**                                       |
 |---------------------|-------------------------------------------------------|
@@ -308,13 +308,13 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | api-version         | 用于此请求的操作的版本。 |
 |  |  |
 
-*头*
+*标头*
 
-| **标题键**     | **必需** | **说明**                                                                                                                                                                                                                  |
+| **标头键**     | **必需** | **说明**                                                                                                                                                                                                                  |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | 否           | 唯一的字符串值，用于跟踪来自客户端的请求。 建议使用 GUID。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。   |
 | x-ms-correlationid | 否           | 在客户端上执行的操作的唯一字符串值。 此值用于将客户端操作生成的所有事件与服务器端的事件相关联。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。  |
-| authorization      | 是          | JSON Web 令牌 (JWT) 持有者令牌。                    |
+| 授权      | 是          | JSON Web 令牌 (JWT) 持有者令牌。                    |
 |  |  |  | 
 
 *响应正文*
@@ -331,9 +331,9 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 | **参数名称** | **数据类型** | **说明**                                                                                                                                               |
 |--------------------|---------------|-------------------------------------------------------------------------------------------|
-| id                 | String        | 操作的 ID。                                                                      |
+| id                 | 字符串        | 操作的 ID。                                                                      |
 | status             | 枚举          | 操作状态，值为下列其中一项：`In Progress`、`Succeeded` 或 `Failed`。          |
-| resourceLocation   | String        | 链接到已创建或修改的订阅。 这可以帮助客户端获取更新的状态发布操作。 不会对 `Unsubscribe` 操作设置此值。 |
+| resourceLocation   | 字符串        | 链接到已创建或修改的订阅。 这可以帮助客户端获取更新的状态发布操作。 不会对 `Unsubscribe` 操作设置此值。 |
 | created            | DateTime      | 操作创建时间 (UTC)。                                                           |
 | lastModified       | DateTime      | 上次更新操作的时间 (UTC)。                                                      |
 |  |  |  |
@@ -345,14 +345,14 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | 200                  | `OK`                 | 已成功解析 Get 请求，且正文包含响应。    |
 | 400                  | `BadRequest`         | 缺少必需的标头，或指定了无效的 api-version。 |
 | 403                  | `Forbidden`          | 调用方无权执行此操作。                      |
-| 404                  | `NotFound`           | 找不到给定 ID 的订阅。                                     |
+| 404                  | `NotFound`           | 找不到具有给定 ID 的订阅。                                     |
 | 429                  | `RequestThrottleId`  | 服务正忙于处理请求，请稍后重试。                     |
 | 503                  | `ServiceUnavailable` | 服务暂时关闭，请稍后重试。                             |
 |  |  |  |
 
 *响应标头*
 
-| **头键**     | **必需** | **说明**                                                                                        |
+| **标头键**     | **必需** | **说明**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | 是          | 从客户端收到的请求 ID。                                                                   |
 | x-ms-correlationid | 是          | 如果由客户端传递，则为关联 ID，否则此值为服务器关联 ID。                   |
@@ -368,7 +368,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 **获取**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*[订阅 Id]*？api 版本 =2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*？ api 版本 = 2017-04-15**
 
 | **参数名称**  | **说明**                                       |
 |---------------------|-------------------------------------------------------|
@@ -376,13 +376,13 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | api-version         | 用于此请求的操作的版本。 |
 |  |  |
 
-*头*
+*标头*
 
-| **标题键**     | **必需** | **说明**                                                                                           |
+| **标头键**     | **必需** | **说明**                                                                                           |
 |--------------------|--------------|-----------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | 否           | 唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。                                                           |
 | x-ms-correlationid | 否           | 在客户端上执行的操作的唯一字符串值。 此值用于将客户端操作生成的所有事件与服务器端的事件相关联。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
-| authorization      | 是          | JSON Web 令牌 (JWT) 持有者令牌。                                                                    |
+| 授权      | 是          | JSON Web 令牌 (JWT) 持有者令牌。                                                                    |
 |  |  |  |
 
 *响应正文*
@@ -401,10 +401,10 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 | **参数名称**     | **数据类型** | **说明**                               |
 |------------------------|---------------|-----------------------------------------------|
-| id                     | String        | Azure 中 SaaS 订阅资源的 ID。    |
-| offerId                | String        | 用户订阅的套餐 ID。         |
-| planId                 | String        | 用户订阅的计划 ID。          |
-| saasSubscriptionName   | String        | SaaS 订阅的名称。                |
+| id                     | 字符串        | Azure 中 SaaS 订阅资源的 ID。    |
+| offerId                | 字符串        | 用户订阅的套餐 ID。         |
+| planId                 | 字符串        | 用户订阅的计划 ID。          |
+| saasSubscriptionName   | 字符串        | SaaS 订阅的名称。                |
 | saasSubscriptionStatus | 枚举          | 操作状态。  下列类型作之一：  <br/> - `Subscribed`：订阅处于活动状态。  <br/> - `Pending`：用户创建了资源，但 ISV 尚未激活该资源。   <br/> - `Unsubscribed`：用户已取消订阅。   <br/> - `Suspended`：用户已暂停订阅。   <br/> - `Deactivated`：Azure 订阅已暂停。  |
 | created                | DateTime      | 订阅创建时间戳值 (UTC)。 |
 | lastModified           | DateTime      | 订阅修改时间戳值 (UTC)。 |
@@ -424,7 +424,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 *响应标头*
 
-| **头键**     | **必需** | **说明**                                                                                        |
+| **标头键**     | **必需** | **说明**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | 是          | 从客户端收到的请求 ID。                                                                   |
 | x-ms-correlationid | 是          | 如果由客户端传递，则为关联 ID，否则此值为服务器关联 ID。                   |
@@ -448,13 +448,13 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | api-version         | 用于此请求的操作的版本。 |
 |  |  |
 
-*头*
+*标头*
 
-| **标题键**     | **必需** | **说明**                                           |
+| **标头键**     | **必需** | **说明**                                           |
 |--------------------|--------------|-----------------------------------------------------------|
 | x-ms-requestid     | 否           | 唯一的字符串值，用于跟踪来自客户端的请求。 建议使用 GUID。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。             |
 | x-ms-correlationid | 否           | 在客户端上执行的操作的唯一字符串值。 此值用于将客户端操作生成的所有事件与服务器端的事件相关联。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。 |
-| authorization      | 是          | JSON Web 令牌 (JWT) 持有者令牌。                    |
+| 授权      | 是          | JSON Web 令牌 (JWT) 持有者令牌。                    |
 |  |  |  |
 
 *响应正文*
@@ -473,13 +473,13 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 | **参数名称**     | **数据类型** | **说明**                               |
 |------------------------|---------------|-----------------------------------------------|
-| id                     | String        | Azure 中 SaaS 订阅资源的 ID    |
-| offerId                | String        | 用户订阅的优惠 ID         |
-| planId                 | String        | 用户订阅的计划 ID          |
-| saasSubscriptionName   | String        | SaaS 订阅的名称                |
+| id                     | 字符串        | Azure 中的 SaaS 订阅资源的 ID    |
+| offerId                | 字符串        | 用户订阅的产品 ID         |
+| planId                 | 字符串        | 用户订阅的计划 ID          |
+| saasSubscriptionName   | 字符串        | SaaS 订阅的名称                |
 | saasSubscriptionStatus | 枚举          | 操作状态。  下列类型作之一：  <br/> - `Subscribed`：订阅处于活动状态。  <br/> - `Pending`：用户创建了资源，但 ISV 尚未激活该资源。   <br/> - `Unsubscribed`：用户已取消订阅。   <br/> - `Suspended`：用户已暂停订阅。   <br/> - `Deactivated`：Azure 订阅已暂停。  |
-| created                | DateTime      | 订阅创建时间戳值（UTC） |
-| lastModified           | DateTime      | 订阅修改的时间戳值（UTC） |
+| created                | DateTime      | UTC 格式的订阅创建时间戳值 |
+| lastModified           | DateTime      | 订阅修改了 UTC 格式的时间戳值 |
 |  |  |  |
 
 响应代码**
@@ -496,7 +496,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 *响应标头*
 
-| **头键**     | **必需** | **说明**                                                                                        |
+| **标头键**     | **必需** | **说明**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | 是          | 从客户端收到的请求 ID。                                                                   |
 | x-ms-correlationid | 是          | 如果由客户端传递，则为关联 ID，否则此值为服务器关联 ID。                   |
@@ -508,7 +508,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 
 SaaS webhook 用于主动将更改通知给 SaaS 服务。 此 POST API 应当不进行身份验证并由 Microsoft 服务调用。 在对 webhook 通知采取操作之前，SaaS 服务应当调用操作 API 来进行验证和授权。 
 
-*正文*
+*大量*
 
 ``` json
   {
@@ -523,17 +523,17 @@ SaaS webhook 用于主动将更改通知给 SaaS 服务。 此 POST API 应当�
 
 | **参数名称**     | **数据类型** | **说明**                               |
 |------------------------|---------------|-----------------------------------------------|
-| id  | String       | 触发的操作的唯一 ID。                |
-| activityId   | String        | 唯一的字符串值，用于跟踪来自服务的请求。 此值用于任何核对操作。               |
-| subscriptionId                     | String        | Azure 中 SaaS 订阅资源的 ID。    |
-| offerId                | String        | 用户订阅的套餐 ID。 仅随“Update”操作提供。        |
-| publisherId                | String        | SaaS 产品/服务的发布者 ID         |
-| planId                 | String        | 用户订阅的计划 ID。 仅随“Update”操作提供。          |
-| action                 | String        | 触发此通知的操作。 可能的值 - Activate、Delete、Suspend、Reinstate、Update          |
-| timeStamp                 | String        | 此通知的触发时间的时间戳值（采用 UTC 格式）。          |
+| id  | 字符串       | 触发的操作的唯一 ID。                |
+| activityId   | 字符串        | 唯一的字符串值，用于跟踪来自服务的请求。 此值用于任何核对操作。               |
+| subscriptionId                     | 字符串        | Azure 中 SaaS 订阅资源的 ID。    |
+| offerId                | 字符串        | 用户订阅的套餐 ID。 仅随“Update”操作提供。        |
+| publisherId                | 字符串        | SaaS 产品/服务的发布者 ID         |
+| planId                 | 字符串        | 用户订阅的计划 ID。 仅随“Update”操作提供。          |
+| action                 | 字符串        | 触发此通知的操作。 可能的值 - Activate、Delete、Suspend、Reinstate、Update          |
+| timeStamp                 | 字符串        | 此通知的触发时间的时间戳值（采用 UTC 格式）。          |
 |  |  |  |
 
 
 ## <a name="next-steps"></a>后续步骤
 
-开发人员还可以使用[云合作伙伴门户 REST API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)以编程方式检索和操作工作负载、产品/服务以及发布者配置文件。
+开发人员还可以使用[云合作伙伴门户 REST api](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)以编程方式检索和操作工作负荷、产品/服务和发布者配置文件。

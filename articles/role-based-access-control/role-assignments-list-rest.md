@@ -16,10 +16,10 @@ ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: a494e7fd4c9fb79faa6a1d8cb2c3c871796ccdc5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80062159"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-rest-api"></a>使用 Azure RBAC 和 REST API 列出角色分配
@@ -27,7 +27,7 @@ ms.locfileid: "80062159"
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] 本文介绍如何使用 REST API 列出角色分配。
 
 > [!NOTE]
-> 如果您的组织将管理功能外包给使用[Azure 委派资源的](../lighthouse/concepts/azure-delegated-resource-management.md)服务提供商，则该服务提供商授权的角色分配将不会在此处显示。
+> 如果你的组织对使用[Azure 委托资源管理](../lighthouse/concepts/azure-delegated-resource-management.md)的服务提供商具有外包管理功能，则此处将不会显示该服务提供商授权的角色分配。
 
 ## <a name="list-role-assignments"></a>列出角色分配
 
@@ -54,11 +54,11 @@ ms.locfileid: "80062159"
 1. 将“{filter}”** 替换为筛选角色分配列表时要应用的条件。
 
     > [!div class="mx-tableFixed"]
-    > | “筛选器” | 描述 |
+    > | 筛选器 | 说明 |
     > | --- | --- |
     > | `$filter=atScope()` | 只列出指定范围内的角色分配，而不包括子范围内的角色分配。 |
     > | `$filter=assignedTo('{objectId}')` | 列出指定用户或服务主体的角色分配。<br/>如果用户是具有角色分配的组的成员，则该角色分配也会列出。 此筛选器对于组是可传递的，这意味着如果用户是组的成员，并且该组是具有角色分配的另一个组的成员，则该角色分配也会列出。<br/>此筛选器仅接受用户或服务主体的对象 ID。 不能传递组的对象 ID。 |
-    > | `$filter=atScope()+and+assignedTo('{objectId}')` | 列出指定用户或服务主体和指定作用域的角色分配。 |
+    > | `$filter=atScope()+and+assignedTo('{objectId}')` | 列出指定用户或服务主体在指定范围内的角色分配。 |
     > | `$filter=principalId+eq+'{objectId}'` | 列出指定用户、组或服务主体的角色分配。 |
 
 ## <a name="next-steps"></a>后续步骤

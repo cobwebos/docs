@@ -1,5 +1,5 @@
 ---
-title: 备份和还原 - Azure 门户 - MySQL 的 Azure 数据库
+title: 备份和还原-Azure 门户-Azure Database for MySQL
 description: 本文介绍如何使用 Azure 门户在 Azure Database for MySQL 中还原服务器。
 author: ajlam
 ms.author: andrela
@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.openlocfilehash: 619dc05d709f41941d16764bf32b49a0d2a11958
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80372993"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MySQL 中备份和还原服务器
@@ -18,9 +18,9 @@ ms.locfileid: "80372993"
 ## <a name="backup-happens-automatically"></a>自动进行备份
 Azure Database for MySQL 服务器定期进行备份以便启用还原功能。 通过此功能，用户可将服务器及其所有数据库还原到新服务器上的某个较早时间点。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要完成本操作指南，需要：
-- [MySQL 服务器和数据库的 Azure 数据库](quickstart-create-mysql-server-database-using-azure-portal.md)
+- [Azure Database for MySQL 服务器和数据库](quickstart-create-mysql-server-database-using-azure-portal.md)
 
 ## <a name="set-backup-configuration"></a>设置备份配置
 
@@ -37,7 +37,7 @@ Azure Database for MySQL 服务器定期进行备份以便启用还原功能。 
 有关在创建过程中设置这些值的详细信息，请参阅 [Azure Database for MySQL 服务器快速入门](quickstart-create-mysql-server-database-using-azure-portal.md)。
 
 可以通过以下步骤更改服务器上的备份保留期：
-1. 登录到[Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 选择 Azure Database for MySQL 服务器。 此操作将打开“概述”**** 页。
 3. 在“设置”**** 下，从菜单中选择“定价层”****。 使用滑块可以根据需要更改**备份保留期**（7 天到 35 天）。
 在下面的屏幕截图中，该项已增加到 34 天。
@@ -73,12 +73,12 @@ Azure Database for MySQL 服务器定期进行备份以便启用还原功能。 
 
 通过时间点还原创建的新服务器具有在所选时间点对现有服务器有效的相同服务器管理员登录名和密码。 可以从新服务器的“概述”**** 页更改密码。
 
-还原期间创建的新服务器没有原始服务器上存在的 VNet 服务终结点。 需要为此新服务器单独设置这些规则。 将还原原始服务器中的防火墙规则。
+在还原过程中创建的新服务器没有原始服务器上存在的 VNet 服务终结点。 需要为此新服务器单独设置这些规则。 还原原始服务器的防火墙规则。
 
 ## <a name="geo-restore"></a>异地还原
 如果为服务器配置了异地冗余备份，则可以从该现有服务器的备份创建新服务器。 可以在 Azure Database for MySQL 可用的任何区域中创建此新服务器。  
 
-1. 选择门户左上角的 **"创建资源**按钮 （+）。 为**MySQL**选择**数据库** > Azure 数据库。
+1. 选择门户左上角的 "**创建资源**" 按钮（+）。 选择“数据库”   >   “Azure Database for MySQL”。
 
    ![“Azure Database for MySQL”选项](./media/howto-restore-server-portal/2_navigate-to-mysql.png)
 
@@ -93,9 +93,9 @@ Azure Database for MySQL 服务器定期进行备份以便启用还原功能。 
 
 通过异地还原创建的新服务器具有在启动还原时对现有服务器有效的相同服务器管理员登录名和密码。 可以从新服务器的“概述”**** 页更改密码。
 
-还原期间创建的新服务器没有原始服务器上存在的 VNet 服务终结点。 需要为此新服务器单独设置这些规则。 将还原原始服务器中的防火墙规则。
+在还原过程中创建的新服务器没有原始服务器上存在的 VNet 服务终结点。 需要为此新服务器单独设置这些规则。 还原原始服务器的防火墙规则。
 
 ## <a name="next-steps"></a>后续步骤
-- 了解有关服务[备份](concepts-backup.md)的更多
+- 详细了解服务的[备份](concepts-backup.md)
 - 了解[副本](concepts-read-replicas.md)
-- 了解有关[业务连续性](concepts-business-continuity.md)选项的详细信息
+- 详细了解[业务连续性](concepts-business-continuity.md)选项

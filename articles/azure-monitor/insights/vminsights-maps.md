@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 监视器查看 VM 的应用依赖项
+title: 使用用于 VM 的 Azure Monitor 查看应用依赖项
 description: 映射是用于 VM 的 Azure Monitor 的一项功能。 它可以自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 本文提供有关如何在各种方案中使用映射功能的详细信息。
 ms.subservice: ''
 ms.topic: conceptual
@@ -7,19 +7,19 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
 ms.openlocfilehash: acb96984a49e4ad8535f87a41da11b3b63ae207b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80283848"
 ---
-# <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>使用 VM Azure 监视器的映射功能了解应用程序组件
+# <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>使用用于 VM 的 Azure Monitor 的地图功能来了解应用程序组件
 在用于 VM 的 Azure Monitor 中，可以查看在 Azure 或你的环境中运行的 Windows 和 Linux 虚拟机 (VM) 上发现的应用程序组件。 可通过两种方式观察 VM。 查看直接从 VM 建立的映射，或查看从 Azure Monitor 建立的映射，以查看各个 VM 组中的组件。 本文将帮助你了解这两种查看方法，以及如何使用映射功能。 
 
 有关配置用于 VM 的 Azure Monitor 的信息，请参阅[启用用于 VM 的 Azure Monitor](vminsights-enable-overview.md)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
-登录到 Azure[门户](https://portal.azure.com)。
+登录 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="introduction-to-the-map-experience"></a>映射体验简介
 在深入了解映射体验之前，应该了解它如何显示和可视化信息。 无论是直接从 VM 还是从 Azure Monitor 选择映射功能，它都能提供一致的体验。 唯一的区别是，通过 Azure Monitor 使用时，一个映射会显示多层应用程序或群集的所有成员。
@@ -49,7 +49,7 @@ ms.locfileid: "80283848"
 - 包含一个子句，以按计算机将警报分组（例如“by Computer interval 1 minute”****）。
 - 使警报基于指标。
 
-有关 Azure 警报和创建警报规则的详细信息，请参阅[Azure 监视器 中的统一警报](../../azure-monitor/platform/alerts-overview.md)。
+有关 Azure 警报和创建警报规则的详细信息，请参阅[Azure Monitor 中的统一警报](../../azure-monitor/platform/alerts-overview.md)。
 
 右上角的“图例”选项描述映射中的符号和角色****。 要深入了解映射并将其四处移动，请使用右下角的缩放控件。 可以设置缩放级别，并使映射适合页面大小。  
 
@@ -87,8 +87,8 @@ ms.locfileid: "80283848"
 
 若要直接从 VM 访问用于 VM 的 Azure Monitor：
 
-1. 在 Azure 门户中，选择**虚拟机**。 
-2. 在列表中选择一个 VM。 在 **"监视**"部分中，选择 **"见解**"。  
+1. 在 Azure 门户中，选择 "**虚拟机**"。 
+2. 在列表中选择一个 VM。 在 "**监视**" 部分，选择 "**见解**"。  
 3. 选择“映射”选项卡****。
 
 映射将发现在指定时间范围内已建立有效网络连接的正在运行的进程组和进程，以此将 VM 的依赖项可视化。  
@@ -102,7 +102,7 @@ ms.locfileid: "80283848"
 若要直接从虚拟机规模集访问用于 VM 的 Azure Monitor：
 
 1. 在 Azure 门户中选择“虚拟机规模集”****。
-2. 在列表中选择一个 VM。 然后在 **"监视**"部分中，选择 **"见解**"。  
+2. 在列表中选择一个 VM。 然后在 "**监视**" 部分选择 "**见解**"。  
 3. 选择“映射”选项卡****。
 
 映射会将规模集中的所有实例可视化为组节点，并可视化该组的依赖项。 展开的节点将列出规模集中的实例。 每次可以滚动浏览其中的 10 个实例。 
@@ -114,14 +114,14 @@ ms.locfileid: "80283848"
 ![直接 VM 映射概述](./media/vminsights-maps/map-direct-vmss-01.png)
 
 >[!NOTE]
->也可以从虚拟机规模集的“实例”视图访问特定实例的映射。**** 在 **"设置"** 部分中，**转到实例见解** > **Insights**。
+>也可以从虚拟机规模集的“实例”视图访问特定实例的映射。**** 在 "**设置**" 部分中，请参阅**实例** > **见解**。
 
 ## <a name="view-a-map-from-azure-monitor"></a>从 Azure Monitor 查看映射
 
 在 Azure Monitor 中，映射功能将提供 VM 及其依赖项的全局视图。 若要在 Azure Monitor 中访问映射功能：
 
-1. 在 Azure 门户中，选择 **"监视器**"。 
-2. 在 **"见解"** 部分中，选择**虚拟机**。
+1. 在 Azure 门户中，选择 "**监视器**"。 
+2. 在 "**见解**" 部分，选择 "**虚拟机**"。
 3. 选择“映射”选项卡****。
 
    ![多个 VM 的 Azure Monitor 概述映射](./media/vminsights-maps/map-multivm-azure-monitor-01.png)

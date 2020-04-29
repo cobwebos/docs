@@ -13,23 +13,23 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 7a69610d1ac176354a9d7e388a12ccc7f064d848
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80382709"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>通过 Azure CLI 使用 Azure 网络观察程序管理数据包捕获
 
 > [!div class="op_single_selector"]
 > - [Azure 门户](network-watcher-packet-capture-manage-portal.md)
-> - [电源外壳](network-watcher-packet-capture-manage-powershell.md)
+> - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
 > - [Azure CLI](network-watcher-packet-capture-manage-cli.md)
 > - [Azure REST API](network-watcher-packet-capture-manage-rest.md)
 
 使用网络观察程序数据包捕获，可以创建捕获会话以跟踪进出虚拟机的流量。 为捕获会话提供了筛选器以确保仅捕获所需的流量。 数据包捕获有助于以主动和被动方式诊断网络异常。 其他用途包括收集网络统计信息，获得网络入侵信息，调试客户端与服务器之间的通信，等等。 由于能够远程触发数据包捕获，此功能可减轻手动运行数据包捕获的负担，并可在所需计算机上运行，从而可节省宝贵的时间。
 
-要执行本文中的步骤，您需要[安装适用于 Mac、Linux 和 Windows （Azure CLI） 的 Azure 命令行界面](/cli/azure/install-azure-cli)。
+若要执行本文中的步骤，需要[安装适用于 Mac、Linux 和 Windows 的 Azure 命令行接口 (Azure CLI)](/cli/azure/install-azure-cli)。
 
 本文将引导完成当前可用于数据包捕获的不同管理任务。
 
@@ -179,7 +179,7 @@ roviders/microsoft.compute/virtualmachines/{vmName}/2017/05/25/packetcapture_16_
 
 ## <a name="get-a-packet-capture"></a>获取数据包捕获
 
-运行该`az network watcher packet-capture show-status`命令、检索当前正在运行的状态或已完成的数据包捕获。
+运行 `az network watcher packet-capture show-status` 命令，检索当前正在运行的或已完成的数据包捕获的状态。
 
 ```azurecli-interactive
 az network watcher packet-capture show-status --name packetCaptureName --location {networkWatcherLocation}
@@ -204,14 +204,14 @@ cketCaptures/packetCaptureName",
 
 ## <a name="stop-a-packet-capture"></a>停止数据包捕获
 
-通过运行该`az network watcher packet-capture stop`命令，如果捕获会话正在进行，则停止该会话。
+运行 `az network watcher packet-capture stop` 命令后，如果捕获会话正在进行，它将停止。
 
 ```azurecli-interactive
 az network watcher packet-capture stop --name packetCaptureName --location westcentralus
 ```
 
 > [!NOTE]
-> 在当前正在运行的捕获会话或已停止的现有会话上运行时，该命令不会返回任何响应。
+> 该命令在当前正在运行的捕获会话或已停止的现有会话中运行时，将不返回任何响应。
 
 ## <a name="delete-a-packet-capture"></a>删除数据包捕获
 
@@ -236,6 +236,6 @@ https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscrip
 
 查看[创建警报触发的数据包捕获](network-watcher-alert-triggered-packet-capture.md)，了解如何利用虚拟机警报自动执行数据包捕获
 
-通过访问[检查 IP 流验证](diagnose-vm-network-traffic-filtering-problem.md)，查找是否允许某些流量进入或退出 VM
+访问[检查 IP 流验证](diagnose-vm-network-traffic-filtering-problem.md)，查找是否允许某些流量传入或传出 VM
 
 <!-- Image references -->

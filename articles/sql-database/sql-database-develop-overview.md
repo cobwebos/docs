@@ -10,10 +10,10 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 11/14/2019
 ms.openlocfilehash: 741906bbe9de68459b2e4a704a243fde4771b3a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80067328"
 ---
 # <a name="sql-database-application-development-overview"></a>SQL 数据库应用程序开发概述
@@ -30,7 +30,7 @@ ms.locfileid: "80067328"
 
 你可以利用类似 [cheetah](https://github.com/wunderlist/cheetah)、[sql-cli](https://www.npmjs.com/package/sql-cli)、[VS Code](https://code.visualstudio.com/) 的开源工具。 此外，Azure SQL 数据库可与 Microsoft 工具（如 [Visual Studio](https://www.visualstudio.com/downloads/) 和 [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx)）配合使用。 还可以使用 Azure 门户、PowerShell 和 REST API 帮助提高工作效率。
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 对 Azure SQL 数据库的访问使用登录名和防火墙进行保护。 Azure SQL 数据库支持 SQL Server 和 [Azure Active Directory (AAD) 身份验证](sql-database-aad-authentication.md)用户和登录名。 AAD 登录名仅在托管实例中可用。 
 
@@ -54,9 +54,9 @@ Azure SQL 数据库是一种云服务，在其中可能会遇到在底层基础�
 
 - 在托管客户端程序的计算机上，确保防火墙允许端口 1433 上的传出 TCP 通信。  详细信息：[配置 Azure SQL 数据库防火墙](sql-database-configure-firewall-settings.md)。
 - 客户端在 Azure 虚拟机 (VM) 上运行时，如果客户端程序连接到 SQL 数据库，则必须打开 VM 上的某些端口范围。 详细信息：[用于 ADO.NET 4.5 和 SQL 数据库的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)。
-- 与 Azure SQL 数据库建立的客户端连接有时会绕过代理直接与数据库交互。 除 1433 以外的端口变得非常重要。 有关详细信息，请参阅 [Azure SQL 数据库连接体系结构](sql-database-develop-direct-route-ports-adonet-v12.md)和[用于 ADO.NET 4.5 和 SQL 数据库的非 1433 端口](sql-database-connectivity-architecture.md)。
+- 与 Azure SQL 数据库建立的客户端连接有时会绕过代理直接与数据库交互。 除 1433 以外的端口变得非常重要。 有关详细信息，请参阅 [Azure SQL 数据库连接体系结构](sql-database-connectivity-architecture.md)和[用于 ADO.NET 4.5 和 SQL 数据库的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)。
 - 有关托管实例的网络配置，请参阅[托管实例的网络配置](sql-database-howto-managed-instance.md#network-configuration)。
 
 ## <a name="next-steps"></a>后续步骤
 
-浏览[SQL 数据库的所有功能](sql-database-technical-overview.md)。
+浏览所有 [SQL 数据库的功能](sql-database-technical-overview.md)。

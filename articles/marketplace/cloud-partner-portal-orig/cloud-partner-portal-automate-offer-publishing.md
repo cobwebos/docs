@@ -1,5 +1,5 @@
 ---
-title: 自动发布产品/Azure 应用商店
+title: 自动提供发布 |Azure Marketplace
 description: 说明如何以编程方式自动执行虚拟机发布工作流。
 author: dsindona
 ms.service: marketplace
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
 ms.openlocfilehash: 25c7429dc369fb8fc70a135950b16c0a5997656b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80280331"
 ---
 <a name="automate-offer-publishing"></a>自动执行产品/服务发布

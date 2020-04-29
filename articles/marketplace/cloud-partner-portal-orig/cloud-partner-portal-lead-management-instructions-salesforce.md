@@ -1,6 +1,6 @@
 ---
-title: 配置销售队伍的潜在客户管理 |Azure 应用商店
-description: 为 Azure 应用商店客户配置销售队伍上的潜在顾客管理。
+title: 配置 Salesforce 的潜在客户管理 |Azure Marketplace
+description: 为 Azure Marketplace 客户配置 Salesforce 的潜在客户管理。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: dsindona
 ms.openlocfilehash: 4261f16cbe76a788f8a8a91445d432f2f810c4ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80280246"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>为 Salesforce 配置潜在顾客管理
@@ -31,4 +31,4 @@ ms.locfileid: "80280246"
 5. 在“创建 Web-to-Lead 窗体”**** 上，选择“生成”**** ![Salesforce 生成](./media/cloud-partner-portal-lead-management-instructions-salesforce/salesforce4.png)
 
 6. 复制示例中的 OID 并保存。 将 OID 粘贴到云合作伙伴门户上的“对象标识符”**** 字段中。
-![销售队伍获取 OID](./media/cloud-partner-portal-lead-management-instructions-salesforce/salesforce5.png)
+![Salesforce 获取 OID](./media/cloud-partner-portal-lead-management-instructions-salesforce/salesforce5.png)

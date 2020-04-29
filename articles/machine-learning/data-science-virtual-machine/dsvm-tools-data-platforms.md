@@ -11,10 +11,10 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: cd787881957d78f179107e46b2650de4618c7724
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80282318"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine 支持的数据平台
@@ -28,24 +28,24 @@ DSVM 支持以下数据平台工具。
 | | |
 | ------------- | ------------- |
 | 它是什么？   | 本地关系数据库实例      |
-| 支持的 DSVM 版本      | Windows 2016： SQL 服务器 2017， Windows 2019： SQL Server 2019      |
+| 支持的 DSVM 版本      | Windows 2016： SQL Server 2017，Windows 2019： SQL Server 2019      |
 | 典型用途      | 使用小型数据集在本地进行快速开发 <br/> 运行数据库内 R   |
 | 指向示例的链接      |    将 New York City 数据集加载进 SQL 数据库的小型示例：<br/>  `nyctaxi` <br/> 可在以下位置找到显示 Microsoft Machine Learning Server 和数据库内分析的 Jupyter 示例：<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`  |
 | DSVM 上的相关工具       | SQL Server Management Studio <br/> ODBC/JDBC 驱动程序<br/> pyodbc, RODBC<br />Apache Drill      |
 
 > [!NOTE]
-> SQL 服务器开发人员版本只能用于开发和测试目的。 需要许可证或一个 SQL Server VM 才能在生产中运行。
+> SQL Server Developer Edition 只能用于开发和测试。 需要许可证或一个 SQL Server VM 才能在生产中运行。
 
 
 ### <a name="setup"></a>设置
 
-数据库服务器已预先配置，与 SQL Server 相关的 Windows 服务（例如 `SQL Server (MSSQLSERVER)`）设置为自动运行。 唯一的手动步骤涉及使用 Microsoft Machine Learning Server 启用数据库内分析。 通过在 SQL 服务器管理工作室 （SSMS） 中作为一次性操作运行以下命令来启用分析。 先以计算机管理员身份登录，然后运行此命令，在 SSMS 中打开一个新查询，并确保选择的是 `master` 数据库：
+数据库服务器已预先配置，与 SQL Server 相关的 Windows 服务（例如 `SQL Server (MSSQLSERVER)`）设置为自动运行。 唯一的手动步骤涉及使用 Microsoft Machine Learning Server 启用数据库内分析。 要启用分析，可在 SQL Server Management Studio (SSMS) 中一次性运行以下命令。 先以计算机管理员身份登录，然后运行此命令，在 SSMS 中打开一个新查询，并确保选择的是 `master` 数据库：
 
         CREATE LOGIN [%COMPUTERNAME%\SQLRUserGroup] FROM WINDOWS 
 
         (Replace %COMPUTERNAME% with your VM name.)
        
-若要运行 SQL Server Management Studio，可在程序列表中搜索“SQL Server Management Studio”，或使用 Windows 搜索来查找并运行它。 系统提示输入凭据时，请选择“Windows 身份验证”，然后使用计算机名称或 SQL Server 名称字段中的 ```localhost```********。
+若要运行 SQL Server Management Studio，可在程序列表中搜索“SQL Server Management Studio”，或使用 Windows 搜索来查找并运行它。 系统提示输入凭据时，请选择“Windows 身份验证”，然后使用计算机名称或 SQL Server 名称字段中的 ```localhost```  。
 
 ### <a name="how-to-use-and-run-it"></a>如何使用和运行它
 
@@ -90,7 +90,7 @@ ODBC 驱动程序和 JDBC 驱动程序随附的 DSVM 还会通过使用多种语
 
 
 ### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>如何在 DSVM 上配置和安装它？ 
-|Platform|安装位置 ($SPARK_HOME)|
+|平台|安装位置 ($SPARK_HOME)|
 |:--------|:--------|
 |Linux   | /dsvm/tools/spark-X.X.X-bin-hadoopX.X|
 

@@ -1,5 +1,5 @@
 ---
-title: 在云合作伙伴门户上管理用户 |Azure 应用商店
+title: 在云合作伙伴门户中管理用户 |Azure Marketplace
 description: 管理云合作伙伴门户上的用户
 author: qianw211
 ms.service: marketplace
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
 ms.openlocfilehash: 441f466fcbeb05d06d565dbe1af237d01554d844
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80280212"
 ---
 <a name="managing-users-on-cloud-partner-portal"></a>管理云合作伙伴门户上的用户
@@ -26,7 +26,7 @@ ms.locfileid: "80280212"
 
 ![“用户”选项卡](./media/cloud-partner-portal-how-to-manage-users/userstab.png)
 
-<a name="step-2-click-add-user"></a>步骤 2. 单击“添加用户”。
+<a name="step-2-click-add-user"></a>步骤 2。 单击“添加用户”。
 -----------------------
 
 ![选择“添加用户”](./media/cloud-partner-portal-how-to-manage-users/adduser.png)
@@ -53,7 +53,7 @@ o 确保监视云合作伙伴门户上提供的电子邮件 ID，以获取任何
 ----------------------------------------------------------------------------------------------------------------------------
 
 > [!NOTE]
-> 将电子邮件添加为所有者或参与者的"发布者名称"将显示在发布者列表的下拉列表中供选择。
+> 电子邮件作为所有者或参与者添加的 "发布者名称" 将显示在 "发布者" 下拉列表中选择的下拉列表中。
 
 ![分配角色 - 选择发布者](./media/cloud-partner-portal-how-to-manage-users/assignselectpublisher.png)
 

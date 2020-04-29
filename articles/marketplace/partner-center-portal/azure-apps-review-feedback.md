@@ -1,6 +1,6 @@
 ---
-title: 处理商业应用商店中 Azure 应用提供的审核反馈
-description: 如何使用 Microsoft 合作伙伴中心的商业应用商店门户处理 Azure 应用商店、AppSource 或通过云解决方案提供商 （CSP） 计划列出或销售的 Azure 应用产品/服务的审核反馈。
+title: 为商业应用商店中的 Azure 应用服务提供处理评审反馈
+description: 如何在 Azure Marketplace、AppSource 或通过云解决方案提供商（CSP）计划使用 Microsoft 合作伙伴中心上的商业 Marketplace 门户来处理查看或销售 Azure 应用的查看反馈。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,10 +8,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.openlocfilehash: 3932f3fc71dc6427b6cdf93d3a7bc58534a9981c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80279787"
 ---
 # <a name="handling-review-feedback"></a>处理评审反馈
@@ -20,15 +20,15 @@ ms.locfileid: "80279787"
 
 ![查看反馈流程](./media/review-feedback-process.png)
 
-通常，评审问题引用为拉取请求 (PR)。 每个 PR 链接到一个联机 [Azure DevOps](https://azure.microsoft.com/services/devops/)（以前称为 Visual Studio Team Services (VSTS)）项，该项包含有关问题的详细信息。 下图显示了合作伙伴中心体验的示例，如果在审核期间发现问题。 
+通常，评审问题引用为拉取请求 (PR)。 每个 PR 链接到一个联机 [Azure DevOps](https://azure.microsoft.com/services/devops/)（以前称为 Visual Studio Team Services (VSTS)）项，该项包含有关问题的详细信息。 下图显示了在评审过程中发现问题时合作伙伴中心体验的示例。 
 
 ![发布状态](./media/publishing-status.png)
 
-包含提交详细信息的 PR 将在"查看认证报告"链接中提及。 对于更复杂的情况，评审和支持团队还可能会向你发送电子邮件。
+包含有关提交的特定详细信息的 PR 将在 "查看认证报告" 链接中提到。 对于更复杂的情况，评审和支持团队还可能会向你发送电子邮件。
 
 ## <a name="azure-devops-access"></a>Azure DevOps 访问
 
-有权访问合作伙伴中心中"开发人员"角色的所有用户都有权访问审核反馈中引用的 PR 项目。
+有权访问合作伙伴中心的 "开发人员" 角色的所有用户都有权查看查看反馈中引用的 PR 项。
 
 <!---
 To view the PR items referenced in review feedback, publishers must first be granted proper authorization. Otherwise, new publishers receive a 401 - Not Authorized response page when trying to view PRs. To request access to this Azure DevOps repository, perform the following steps:
@@ -52,12 +52,12 @@ If the incident creation was successful, a confirmation page is displayed. Save 
 
 使用以下过程查看拉取请求中所述的问题。
 
-1. 在"发布步骤"窗体的**Microsoft 审核**部分中，单击 PR 链接以启动浏览器并导航到此 PR 的 **"概述**（主页）"页面。 下图描述了 Contoso 示例应用产品/服务的关键问题主页的示例。 此页包含有关在 Azure 应用中找到的评审问题的有用摘要信息。
+1. 在**Microsoft 查看**发布步骤窗体部分中，单击 "pr" 链接以启动浏览器并导航到此 PR 的 "**概述**" （主页）页面。 下图描绘了 Contoso 示例应用程序产品/服务的关键问题主页的示例。 此页包含有关在 Azure 应用中找到的评审问题的有用摘要信息。
 
     [![拉取请求主页](./media/pr-home-page-thumb.png)](./media/pr-home-page.png)
     <br/> 单击图像展开内容。**
 
-1. （可选）在窗口的右侧，在 **"策略"** 部分中，单击问题消息（在此示例中：**策略验证失败**），以调查问题的低级详细信息，包括关联的日志文件。 错误通常显示在日志文件的底部。
+1. 可有可无在窗口右侧的 "**策略**" 部分中，单击 "问题" 消息（在本示例中为 "**策略验证失败**"）以调查问题的低级详细信息，包括关联的日志文件。 错误通常显示在日志文件的底部。
 1. 在主页左侧的菜单中，选择“文件”以显示构成此套餐的技术资产的列表文件。**** Microsoft 评审者应已添加了备注来描述所发现的严重问题。 在以下示例中发现了两个问题。
 
     [![拉取请求主页](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)

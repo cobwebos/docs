@@ -8,43 +8,43 @@ ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
 ms.openlocfilehash: 085280a8064e4d12ac63939ada7cdb296d47dc70
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80365773"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>为基于证书的身份验证配置 Azure AD 标识以从 Azure Cosmos DB 帐户访问密钥
 
 基于证书的身份验证让你可以使用 Azure Active Directory (Azure AD) 和客户端证书对客户端应用程序进行身份验证。 你可以在需要身份的计算机（例如本地计算机或 Azure 中的虚拟机）上执行基于证书的身份验证。 然后，无需在应用程序中直接提供密钥，应用程序就能读取 Azure Cosmos DB 密钥。 本文介绍如何创建一个示例 Azure AD 应用程序，将其配置为使用基于证书的身份验证，使用新应用程序标识登录到 Azure，然后从 Azure Cosmos 帐户检索密钥。 本文使用 Azure PowerShell 设置标识，并提供一个可以执行身份验证并从 Azure Cosmos 帐户访问密钥的 C# 示例应用。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 安装[最新版本](/powershell/azure/install-az-ps)的 Azure PowerShell。
 
-* 如果没有[Azure 订阅](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)，请先创建[一个免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。然后开始。
+* 如果还没有 [Azure 订阅](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 ## <a name="register-an-app-in-azure-ad"></a>在 Azure AD 中注册应用
 
 此步骤在 Azure AD 帐户中注册一个示例 Web 应用程序。 稍后将使用此应用程序从 Azure Cosmos DB 帐户读取密钥。 使用以下步骤注册应用程序： 
 
-1. 登录到[Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 打开“Azure Active Directory”窗格，转到“应用注册”窗格，然后选择“新建注册”。************ 
+1. 打开“Azure Active Directory”窗格，转到“应用注册”窗格，然后选择“新建注册”。    
 
    ![在 Active Directory 中新建应用程序注册](./media/certificate-based-authentication/new-app-registration.png)
 
-1. 在“注册应用程序”表单中填写以下详细信息：****  
+1. 在“注册应用程序”表单中填写以下详细信息：   
 
-   * **名称**= 为应用程序提供名称，可以是任何名称，如"示例应用"。
-   * **支持的帐户类型**–**仅选择此组织目录中的帐户（默认目录），** 以允许当前目录中的资源访问此应用程序。 
-   * **重定向 URL** - 选择**Web**类型的应用程序并提供托管应用程序的 URL，它可以是任何 URL。 在此示例中，可以提供类似于 `https://sampleApp.com` 的测试 URL，即使该应用不存在，也没有关系。
+   * **名称**-提供应用程序的名称，可以是任意名称，如 "sampleapp.exe"。
+   * **受支持的帐户类型**–选择 **"仅此组织目录中的帐户" （默认目录）** ，以允许当前目录中的资源访问此应用程序。 
+   * **重定向 URL** -选择类型为 " **Web** " 的应用程序并提供托管应用程序的 url，可以是任何 url。 在此示例中，可以提供类似于 `https://sampleApp.com` 的测试 URL，即使该应用不存在，也没有关系。
 
    ![注册示例 Web 应用程序](./media/certificate-based-authentication/register-sample-web-app.png)
 
-1. 填写表单后，选择“注册”。****
+1. 填写表单后，选择“注册”。 
 
-1. 注册应用后，记下“应用程序(客户端) ID”和“对象 ID”，在后面的步骤中需要用到这些详细信息。******** 
+1. 注册应用后，记下“应用程序(客户端) ID”和“对象 ID”，在后面的步骤中需要用到这些详细信息。   
 
    ![获取应用程序 ID 和对象 ID](./media/certificate-based-authentication/get-app-object-ids.png)
 
@@ -103,15 +103,15 @@ New-AzureADApplicationKeyCredential -ObjectId $application.ObjectId -CustomKeyId
 
 ## <a name="configure-your-azure-cosmos-account-to-use-the-new-identity"></a>将 Azure Cosmos 帐户配置为使用新标识
 
-1. 登录到[Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 导航到你的 Azure Cosmos 帐户，打开“访问控制(IAM)”边栏选项卡。****
+1. 导航到你的 Azure Cosmos 帐户，打开“访问控制(IAM)”边栏选项卡。 
 
-1. 依次选择“添加”、“添加角色分配”。******** 添加上一步骤中创建的具有“参与者”角色的 sampleApp，如以下屏幕截图所示：****
+1. 依次选择“添加”、“添加角色分配”。   添加上一步骤中创建的具有“参与者”角色的 sampleApp，如以下屏幕截图所示： 
 
    ![将 Azure Cosmos 帐户配置为使用新标识](./media/certificate-based-authentication/configure-cosmos-account-with-identify.png)
 
-1. 填写表单后，选择“保存”****
+1. 填写表单后，选择“保存” 
 
 ## <a name="register-your-certificate-with-azure-ad"></a>使用 Azure AD 注册证书
 
@@ -119,13 +119,13 @@ New-AzureADApplicationKeyCredential -ObjectId $application.ObjectId -CustomKeyId
 
 在客户端应用程序的 Azure 应用注册中：
 
-1. 登录到[Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 打开“Azure Active Directory”窗格，转到“应用注册”窗格，然后打开在上一步创建的示例应用。******** 
+1. 打开“Azure Active Directory”窗格，转到“应用注册”窗格，然后打开在上一步创建的示例应用。   
 
-1. 选择“证书和机密”，然后选择“上传证书”。******** 浏览在上一步创建的需上传的证书文件。
+1. 选择“证书和机密”，然后选择“上传证书”。   浏览在上一步创建的需上传的证书文件。
 
-1. 选择“添加”****。 上传证书后，将显示指纹、开始日期和到期日期值。
+1. 选择 **添加** 。 上传证书后，将显示指纹、开始日期和到期日期值。
 
 ## <a name="access-the-keys-from-powershell"></a>从 PowerShell 访问密钥
 
@@ -247,4 +247,4 @@ namespace TodoListDaemonWithCert
 
 * [使用 Azure Key Vault 保护 Azure Cosmos 密钥](access-secrets-from-keyvault.md)
 
-* [Azure 宇宙数据库的安全基线](security-baseline.md)
+* [Azure Cosmos DB 的安全基线](security-baseline.md)

@@ -1,5 +1,5 @@
 ---
-title: 有关使用 Azure 站点恢复在 Azure VM 灾难恢复中的网络
+title: 关于如何使用 Azure Site Recovery 在 Azure VM 灾难恢复中联网
 description: 概述了使用 Azure Site Recovery 复制 Azure 虚拟机的网络。
 services: site-recovery
 author: sujayt
@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 3/13/2020
 ms.author: sutalasi
 ms.openlocfilehash: 58348c9aed14a5cc9126be780fe01817274a0b47
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80283253"
 ---
-# <a name="about-networking-in-azure-vm-disaster-recovery"></a>关于 Azure VM 灾难恢复中的网络
+# <a name="about-networking-in-azure-vm-disaster-recovery"></a>关于如何在 Azure VM 灾难恢复中联网
 
 
 
@@ -46,14 +46,14 @@ ms.locfileid: "80283253"
 如果使用基于 URL 的防火墙代理来控制出站连接，请允许以下 Site Recovery URL：
 
 
-**Url** | **详细信息**
+**URL** | **详细信息**
 --- | ---
-* .blob.core.windows.net | 必需，以便从 VM 将数据写入到源区域中的缓存存储帐户。 如果您知道 VM 的所有缓存存储帐户，则可以允许访问特定的存储帐户 URL（Ex：cache1.blob.core.windows.net和cache2.blob.core.windows.net），而不是 *.blob.core.windows.net
+\* .blob.core.windows.net | 必需，以便从 VM 将数据写入到源区域中的缓存存储帐户。 如果你知道 Vm 的所有缓存存储帐户，则可以允许访问特定的存储帐户 Url （例如： cache1.blob.core.windows.net 和 cache2.blob.core.windows.net），而不是 blob.core.windows.net。
 login.microsoftonline.com | 必需，用于向 Site Recovery 服务 URL 进行授权和身份验证。
 *.hypervrecoverymanager.windowsazure.com | 必需，以便从 VM 进行 Site Recovery 服务通信。
 *.servicebus.windows.net | 必需，以便从 VM 写入 Site Recovery 监视和诊断数据。
-*.vault.azure.net | 允许访问通过门户启用启用 ADE 的虚拟机的复制
-*.automation.ext.azure.com | 允许通过门户自动升级复制的项目的移动代理
+*.vault.azure.net | 允许访问，以便通过门户为支持 ADE 的虚拟机启用复制
+*.automation.ext.azure.com | 允许通过门户为复制项启用移动代理自动升级
 
 ## <a name="outbound-connectivity-using-service-tags"></a>使用服务标记的出站连接
 
@@ -63,10 +63,10 @@ login.microsoftonline.com | 必需，用于向 Site Recovery 服务 URL 进行�
     - 为源区域创建基于[存储服务标记](../virtual-network/security-overview.md#service-tags)的 NSG 规则。
     - 允许这些地址，才能从 VM 将数据写入到缓存存储帐户。
 - 创建一个基于 [Azure Active Directory (AAD) 服务标记](../virtual-network/security-overview.md#service-tags)的 NSG 规则以允许访问与 AAD 对应的所有 IP 地址
-- 为目标区域创建基于事件Hub服务标记的 NSG 规则，允许访问站点恢复监视。
-- 创建基于 AzureSite 恢复服务标记的 NSG 规则，以允许访问任何区域中的站点恢复服务。
-- 创建基于 AzureKeyVault 服务标记的 NSG 规则。 这仅适用于通过门户启用 ADE 的虚拟机复制。
-- 创建基于来宾和混合管理服务标记的 NSG 规则。 这仅适用于通过门户为复制的项目启用移动代理的自动升级。
+- 为目标区域创建基于 EventsHub 服务标记的 NSG 规则，这样就可以访问 Site Recovery 监视功能。
+- 创建基于 AzureSiteRecovery 服务标记的 NSG 规则，以允许访问任何区域中的 Site Recovery 服务。
+- 创建基于 AzureKeyVault 服务标记的 NSG 规则。 这只是通过门户启用启用了 ADE 的虚拟机的复制所必需的。
+- 创建基于 GuestAndHybridManagement 服务标记的 NSG 规则。 只有通过门户为复制的项启用移动代理自动升级时才需要此选项。
 - 在生产 NSG 中创建所需的 NSG 规则之前，建议先在测试 NSG 中创建这些规则，并确保没有任何问题。
 
 ## <a name="example-nsg-configuration"></a>NSG 配置示例
@@ -86,9 +86,9 @@ login.microsoftonline.com | 必需，用于向 Site Recovery 服务 URL 进行�
 
       ![aad-tag](./media/azure-to-azure-about-networking/aad-tag.png)
 
-3. 与上述安全规则类似，在 NSG 上为对应于目标位置的 NSG 上创建出站 HTTPS （443） 安全规则。 这允许访问站点恢复监视。
+3. 与上述安全规则类似，为 NSG 上的 "CentralUS" 创建出站 HTTPS （443）安全规则，该规则对应于目标位置。 这允许 Site Recovery 监视的访问。
 
-4. 为 NSG 上的"AzureSite 恢复"创建出站 HTTPS （443） 安全规则。 这允许访问任何区域中的站点恢复服务。
+4. 为 NSG 上的 "AzureSiteRecovery" 创建出站 HTTPS （443）安全规则。 这允许访问任何区域中的 Site Recovery 服务。
 
 ### <a name="nsg-rules---central-us"></a>NSG 规则 - 美国中部
 
@@ -98,9 +98,9 @@ login.microsoftonline.com | 必需，用于向 Site Recovery 服务 URL 进行�
 
 2. 基于 NSG 规则为“AzureActiveDirectory”创建出站 HTTPS (443) 安全规则。
 
-3. 与上述安全规则类似，在 NSG 上为对应于源位置的"EventHub.EastUS"创建出站 HTTPS （443） 安全规则。 这允许访问站点恢复监视。
+3. 与上述安全规则类似，为 NSG 上的 "EastUS" 创建出站 HTTPS （443）安全规则，该规则对应于源位置。 这允许 Site Recovery 监视的访问。
 
-4. 为 NSG 上的"AzureSite 恢复"创建出站 HTTPS （443） 安全规则。 这允许访问任何区域中的站点恢复服务。
+4. 为 NSG 上的 "AzureSiteRecovery" 创建出站 HTTPS （443）安全规则。 这允许访问任何区域中的 Site Recovery 服务。
 
 ## <a name="network-virtual-appliance-configuration"></a>网络虚拟设备配置
 
@@ -124,6 +124,6 @@ login.microsoftonline.com | 必需，用于向 Site Recovery 服务 URL 进行�
 对 0.0.0.0/0 地址前缀，可将 Azure 默认系统路由重写为[自定义路由](../virtual-network/virtual-networks-udr-overview.md#custom-routes)，并将 VM 流量转换为本地网络虚拟设备 (NVA)，但不建议对 Site Recovery 复制使用此配置。 如果使用自定义路由，则应在虚拟网络中为“存储”[创建一个虚拟网络服务终结点](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage)，这样复制流量就不会离开 Azure 边界。
 
 ## <a name="next-steps"></a>后续步骤
-- 通过[复制 Azure 虚拟机](site-recovery-azure-to-azure.md)开始保护您的工作负荷。
+- 通过[复制 Azure 虚拟机](site-recovery-azure-to-azure.md)开始保护工作负荷。
 - 详细了解为 Azure 虚拟机故障转移[保留 IP 地址](site-recovery-retain-ip-azure-vm-failover.md)。
 - 详细了解[使用 ExpressRoute 的 Azure 虚拟机](azure-vm-disaster-recovery-with-expressroute.md)的灾难恢复。

@@ -1,5 +1,5 @@
 ---
-title: 使用可视化工作室，为角色启用远程桌面（Azure 云服务）
+title: 使用 Visual Studio 为角色（Azure 云服务）启用远程桌面
 description: 如何配置 Azure 云服务应用程序以允许远程桌面连接
 services: cloud-services
 author: ghogen
@@ -13,17 +13,17 @@ ms.workload: azure-vs
 ms.date: 03/06/2018
 ms.author: ghogen
 ms.openlocfilehash: f4622e44c795182ee68c617f335c9e1651d3adcc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80294390"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>使用 Visual Studio 为 Azure 云服务中的角色启用远程桌面连接
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](cloud-services-role-enable-remote-desktop-new-portal.md)
-> * [电源外壳](cloud-services-role-enable-remote-desktop-powershell.md)
+> * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
 可以通过远程桌面访问在 Azure 中运行的角色的桌面。 可以使用远程桌面连接，在应用程序正在运行时排查和诊断其问题。
@@ -34,40 +34,40 @@ Visual Studio 为云服务提供的发布向导中包括一个选项，用于在
 
 ## <a name="configure-remote-desktop-through-visual-studio-2017-version-154-and-earlier"></a>通过 Visual Studio 2017 版本 15.4 和更低版本配置远程桌面
 
-使用 Visual Studio 2017 版本 15.4 和更低版本时，可以使用发布向导中的“为所有角色启用远程桌面”选项。**** 在 Visual Studio 2017 版本 15.5 和更高版本中仍可以使用该向导，但不要使用“远程桌面”选项。
+使用 Visual Studio 2017 版本 15.4 和更低版本时，可以使用发布向导中的“为所有角色启用远程桌面”选项。  在 Visual Studio 2017 版本 15.5 和更高版本中仍可以使用该向导，但不要使用“远程桌面”选项。
 
-1. 在 Visual Studio 的“解决方案资源管理器”中，右键单击云服务项目并选择“发布”以启动发布向导。****
+1. 在 Visual Studio 的“解决方案资源管理器”中，右键单击云服务项目并选择“发布”以启动发布向导。 
 
-2. 根据需要登录到 Azure 订阅，并选择“下一步”。****
+2. 根据需要登录到 Azure 订阅，并选择“下一步”。 
 
-3. 在“设置”页上选择“为所有角色启用远程桌面”，然后选择“设置...”链接打开“远程桌面配置”对话框。****************
+3. 在“设置”页上选择“为所有角色启用远程桌面”，然后选择“设置...”链接打开“远程桌面配置”对话框。    
 
-4. 在对话框底部，选择“更多选项”。**** 此命令会显示一个下拉列表框，可在其中创建或选择证书，以便在通过远程桌面连接时可以加密凭据信息。
+4. 在对话框底部，选择“更多选项”。  此命令会显示一个下拉列表框，可在其中创建或选择证书，以便在通过远程桌面连接时可以加密凭据信息。
 
    > [!Note]
    > 用于建立远程桌面连接的证书与用于其他 Azure 操作的证书不同。 远程访问证书必须有一个私钥。
 
-5. 从列表中选择证书或选择**&lt;"创建..."&gt;**. 如果创建新证书，请在出现提示时提供新证书的友好名称，并选择“确定”。**** 新证书将显示在下拉列表框中。
+5. 从列表中选择一个证书，或选择“**创建...&lt;”。&gt;** 如果创建新证书，请在出现提示时提供新证书的友好名称，并选择“确定”。  新证书将显示在下拉列表框中。
 
 6. 提供用户名和密码。 不能使用现有帐户。 请不要使用“Administrator”作为新帐户的用户名。
 
 7. 选择帐户的过期日期，在此日期之后，远程桌面连接会被阻止。
 
-8. 提供全部所需的信息后，选择“确定”。**** Visual Studio 会将远程桌面设置（包括使用所选证书加密的密码）添加到项目的 `.cscfg` 和 `.csdef` 文件。
+8. 提供全部所需的信息后，选择“确定”。  Visual Studio 会将远程桌面设置（包括使用所选证书加密的密码）添加到项目的 `.cscfg` 和 `.csdef` 文件。
 
-9. 使用“下一步”按钮完成所有剩余步骤，准备好发布云服务时，选择“发布”。******** 如果未准备好发布，请选择“取消”，并在系统提示是否保存更改时选择“是”。******** 以后可以使用这些设置发布云服务。
+9. 使用“下一步”按钮完成所有剩余步骤，准备好发布云服务时，选择“发布”。   如果未准备好发布，请选择“取消”，并在系统提示是否保存更改时选择“是”。   以后可以使用这些设置发布云服务。
 
 ## <a name="configure-remote-desktop-when-using-visual-studio-2017-version-155-and-later"></a>使用 Visual Studio 2017 版本 15.5 和更高版本时配置远程桌面
 
-使用 Visual Studio 2017 版本 15.5 和更高版本时，仍可以使用发布向导来处理云服务项目。 如果你是以独立的开发人员身份工作，则也可以使用“为所有角色启用远程桌面”选项。****
+使用 Visual Studio 2017 版本 15.5 和更高版本时，仍可以使用发布向导来处理云服务项目。 如果你是以独立的开发人员身份工作，则也可以使用“为所有角色启用远程桌面”选项。 
 
 如果你是团队的一分子，则应使用 [Azure 门户](cloud-services-role-enable-remote-desktop-new-portal.md)或 [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md) 在 Azure 云服务中启用远程桌面。
 
 推出此建议的原因是 Visual Studio 2017 版本 15.5 和更高版本与云服务 VM 的通信方式发生了变化。 通过发布向导启用远程桌面时，早期版本的 Visual Studio 通过所谓的“RDP 插件”来与 VM 通信。 而 Visual Studio 2017 版本 15.5 和更高版本则是使用更安全且更灵活的“RDP 扩展”进行通信。 此项变化也符合这一事实：用于启用远程桌面的 Azure 门户和 PowerShell 方法也使用 RDP 扩展。
 
-当 Visual Studio 与 RDP 扩展通信时，它会通过 TLS 传输纯文本密码。 但是，项目的配置文件只存储加密的密码，而该密码只能使用最初加密时所用的本地证书解密成纯文本。
+当 Visual Studio 与 RDP 扩展通信时，会通过 TLS 传输纯文本密码。 但是，项目的配置文件只存储加密的密码，而该密码只能使用最初加密时所用的本地证书解密成纯文本。
 
-如果每次都从同一台开发计算机部署云服务项目，则可以使用该本地证书。 在这种情况下，仍可以使用发布向导中的“为所有角色启用远程桌面”选项。****
+如果每次都从同一台开发计算机部署云服务项目，则可以使用该本地证书。 在这种情况下，仍可以使用发布向导中的“为所有角色启用远程桌面”选项。 
 
 但是，如果你或其他开发人员想要从不同的计算机部署云服务项目，则其他这些计算机无法提供所需的证书来解密密码。 因此，会出现以下错误消息：
 
@@ -93,11 +93,11 @@ Certificate with thumbprint [thumbprint] doesn't exist.
         /p:SkipInvalidConfigurations=true /p:ForceRDPExtensionOverPlugin=true
     ```
 
-1. 在生成步骤的后面，添加“Azure 云服务部署”步骤并设置其属性。****
+1. 在生成步骤的后面，添加“Azure 云服务部署”步骤并设置其属性。 
 
-1. 在部署步骤的后面，添加“Azure Powershell”步骤，将其“显示名称”属性设置为“Azure 部署: 启用 RDP 扩展”（或其他适当的名称），然后选择相应的 Azure订阅。********
+1. 在部署步骤的后面，添加“Azure Powershell”步骤，将其“显示名称”属性设置为“Azure 部署: 启用 RDP 扩展”（或其他适当的名称），然后选择相应的 Azure订阅。  
 
-1. 将“脚本类型”设置为“内联”，并在“内联脚本”字段中粘贴以下代码。******** （也可以使用此脚本在项目中创建 `.ps1` 文件，将“脚本类型”设置为“脚本文件路径”，并将“脚本路径”设置为指向该文件。）********
+1. 将“脚本类型”设置为“内联”，并在“内联脚本”字段中粘贴以下代码。   （也可以使用此脚本在项目中创建 `.ps1` 文件，将“脚本类型”设置为“脚本文件路径”，并将“脚本路径”设置为指向该文件。）  
 
     ```ps
     Param(
@@ -140,9 +140,9 @@ Certificate with thumbprint [thumbprint] doesn't exist.
 
 在 Azure 上发布云服务并启用远程桌面后，可以使用 Visual Studio 服务器资源管理器登录到云服务 VM：
 
-1. 在服务器资源管理器中，展开“Azure”节点，然后展开云服务及其角色之一的节点，以显示实例列表。****
+1. 在服务器资源管理器中，展开“Azure”节点，然后展开云服务及其角色之一的节点，以显示实例列表。 
 
-2. 右键单击某个实例节点，并选择“使用远程桌面进行连接”。****
+2. 右键单击某个实例节点，并选择“使用远程桌面进行连接”。 
 
 3. 输入前面创建的用户名和密码。 现在已登录到远程会话。
 

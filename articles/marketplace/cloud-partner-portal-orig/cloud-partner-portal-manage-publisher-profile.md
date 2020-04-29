@@ -1,6 +1,6 @@
 ---
-title: 管理 Azure 应用商店和 AppSource 发布者配置文件
-description: 管理 Azure 应用商店和 AppSource 发布者配置文件
+title: 管理 Azure Marketplace 和 AppSource 发布者配置文件
+description: 管理 Azure Marketplace 和 AppSource 发布者配置文件
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: dsindona
 ms.openlocfilehash: 9b89ff803e08d0ca929eea913be9a1c87664b124
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80280229"
 ---
 # <a name="manage-azure-marketplace-and-appsource-publisher-profile"></a>管理“Azure 市场”和“AppSource”发布者个人资料

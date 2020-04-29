@@ -1,5 +1,5 @@
 ---
-title: 创建微软开发人员帐户 |Azure 应用商店
+title: 创建 Microsoft 开发人员帐户 |Azure Marketplace
 description: 创建 Microsoft 开发人员帐户的要求和步骤。
 author: dsindona
 ms.service: marketplace
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
 ms.openlocfilehash: 161abde1ef0dfd86842fb56afe699fa632e0d9ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80280365"
 ---
 <a name="create-a-microsoft-developer-account"></a>创建 Microsoft 开发人员帐户
@@ -70,7 +70,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
 >[!IMPORTANT]
 >必须填写以下开发人员个人资料，才能进入产品/服务创建和部署的各个阶段。
 
-| 开发人员个人资料     | 开始起草    | 过渡       | 发布免费模板和解决方案模板   | 发布商业广告   |
+| 开发人员个人资料     | 开始起草    | 分步       | 发布免费模板和解决方案模板   | 发布商业广告   |
 |---------------------- |----------------   |-----------    |-------------------------------------  |---------------------  |
 | 公司注册  | 必须具有         | 必须具有     | 必须具有                             | 必须具有             |
 | 税务配置文件 ID        | 可选          | 可选      | 可选                              | 必须具有             |
@@ -99,7 +99,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
    ![选择国家/地区](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_04.png)
 
     >[!WARNING]
-    >"销售"国家/地区：为了在 Azure 应用商店中销售服务，您的注册实体必须来自下拉列表中显示的已批准的"销售"国家/地区之一。 此限制是出于付款和税务的原因。 有关详细信息，请参阅“市场参与策略”。
+    >"销售" 国家/地区：若要在 Azure Marketplace 上销售你的服务，你的已注册实体需要从下拉列表中显示的已批准的 "销售" 国家/地区之一。 此限制是出于付款和税务的原因。 有关详细信息，请参阅“市场参与策略”。
 
 5. 选择“公司”作为“帐户类型”，然后选择“下一步”。********
 
@@ -162,7 +162,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
     >
     >更改付款帐户可能会推迟付款（最多一个付款周期）。 出现此推迟的原因是我们需要验证帐户更改，正如首次设置付款帐户时我们会进行验证。 帐户通过验证后，仍会收到全额款项；当前付款周期应得的任何付款将添加到下一个付款周期。
 
-4.  选择“下一步”。
+4.  选择“下一步”  。
 
 **提供税务信息**
 
@@ -171,7 +171,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
 3.  在“设置税务表单”页上：****
     - 选择你永久居留的国家或地区。
     - 选择你拥有主要国籍的国家或地区。
-    - 选择“下一步”。
+    - 选择“下一步”  。
 4.  输入税务详细信息，然后选择“下一步”****。
 
 >[!WARNING]
@@ -181,7 +181,7 @@ Microsoft 开发人员中心用于注册一次公司信息。 注册者必须是
 
 如果执行开发人员中心注册时遇到问题，请使用以下步骤开具支持票证。
 
-1.  转到[支持链接](https://developer.microsoft.com/windows/support)。
+1.  请参阅[支持链接](https://developer.microsoft.com/windows/support)。
 2.  在“联系我们”下，选择“提交事件”。********
     ![开具票证](./media/cloud-partner-portal-create-dev-center-registration/imgAddTax_02.png)
 3.  选择“开发人员中心帮助”作为“问题类型”，选择“发布和管理应用”作为“类别”。******** 选择“启动电子邮件”。****

@@ -1,6 +1,6 @@
 ---
 title: 下载作业结果 - Azure 媒体服务
-description: 本文演示如何下载作业的结果。
+description: 本文演示如何下载作业结果。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,21 +12,21 @@ ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
 ms.openlocfilehash: bae7104eaded8c2ed153bc141faf7eba0bb86bae
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80346306"
 ---
 # <a name="download-the-results-of-a-job"></a>下载作业结果
 
-在 Azure 媒体服务中，在处理视频（例如编码或分析）时，需要创建输出[资产](assets-concept.md)来存储[作业](transforms-jobs-concept.md)的结果。 然后，您可以使用媒体服务和存储 API 将这些结果下载到本地文件夹。 
+在 Azure 媒体服务中，处理视频（例如编码或分析）时，需要创建一个输出[资产](assets-concept.md)来存储[作业](transforms-jobs-concept.md)结果。 然后，可以使用媒体服务和存储 API 将这些结果下载到本地文件夹。 
 
 本文演示如何使用 Java 和 .NET SDK 下载结果。
 
 ## <a name="prerequisites"></a>先决条件 
 
-审核[管理资产](manage-asset-concept.md)。
+查看[管理资产](manage-asset-concept.md)。
 
 ## <a name="java"></a>Java
 
@@ -71,7 +71,7 @@ private static void downloadResults(MediaManager manager, String resourceGroup, 
 }
 ```
 
-请参阅完整的代码示例：[使用预定义预设进行编码](https://github.com/Azure-Samples/media-services-v3-java/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/src/main/java/sample/EncodingWithMESPredefinedPreset.java)
+请参阅完整代码示例：[EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-java/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/src/main/java/sample/EncodingWithMESPredefinedPreset.java)
 
 ## <a name="net"></a>.NET
 
@@ -120,7 +120,7 @@ private async static Task DownloadResults(IAzureMediaServicesClient client, stri
 }
 ```
 
-请参阅完整的代码示例：[使用预定义预设进行编码](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/Program.cs)
+请参阅完整代码示例：[EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/Program.cs)
 
 ## <a name="next-steps"></a>后续步骤
 

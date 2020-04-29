@@ -1,6 +1,6 @@
 ---
 title: 创建 ILB ASE v1
-description: 使用 ILB 创建和使用 ASE。 此文档仅提供给使用旧版 v1 ASE 的客户。
+description: 创建和使用 ILB 的 ASE。 此文档仅为使用旧版 v1 ASE 的客户提供。
 author: ccompy
 ms.assetid: ad9a1e00-d5e5-413e-be47-e21e5b285dbf
 ms.topic: article
@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 0c03905017629e28e41cce2adaa65eac347b8185
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80294721"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>搭配应用服务环境使用内部负载均衡器
@@ -50,7 +50,7 @@ ms.locfileid: "80294721"
 3. 选择或创建资源组。
 4. 选择或创建 VNet。
 5. 创建子网（如果选择 VNet）。
-6. 选择**虚拟网络/位置 -> VNet 配置**并将 VIP 类型设置为内部。
+6. 选择 "**虚拟网络/位置-> VNet 配置**"，并将 "VIP 类型" 设置为 "内部"。
 7. 提供子域名称（此名称是一个子域，用于此 ASE 中创建的应用）。
 8. 选择“确定”，然后选择“创建”。********
 
@@ -68,7 +68,7 @@ ms.locfileid: "80294721"
 3. 选择订阅。
 4. 选择或创建资源组。
 5. 选择或创建应用服务计划 (ASP)。 如果创建新的 ASP，请选择 ASE 作为位置并选择希望在其中创建 ASP 的工作线程池。 创建该 ASP 时，请选择 ASE 作为位置并选择工作线程池。 指定应用的名称时，会看到应用名称下面的子域替换为 ASE 的子域。 
-6. 选择 **“创建”**。 如果希望应用显示在仪表板上，请确保选中“固定到仪表板”复选框。**** 
+6. 选择“创建”。  如果希望应用显示在仪表板上，请确保选中“固定到仪表板”复选框。**** 
 
 ![][2]
 

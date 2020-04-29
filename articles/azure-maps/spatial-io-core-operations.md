@@ -1,6 +1,6 @@
 ---
-title: 核心 IO 操作 |微软 Azure 地图
-description: 了解如何使用空间 IO 模块中的核心库高效地读取和写入 XML 和分隔数据。
+title: 核心 IO 操作 |Microsoft Azure 映射
+description: 了解如何使用空间 IO 模块中的核心库有效地读取和写入 XML 数据和分隔数据。
 author: philmea
 ms.author: philmea
 ms.date: 03/03/2020
@@ -9,54 +9,54 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 0b8fe1b319dc480879944d28f10645025a8cb38e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80371444"
 ---
 # <a name="core-io-operations"></a>核心 IO 操作
 
-除了提供读取空间数据文件的工具外，空间 IO 模块还公开核心基础库以快速高效地读取和写入 XML 和分隔数据。
+除了提供读取空间数据文件的工具外，空间 IO 模块还公开核心基础库，以便快速高效地读取和写入 XML 数据和分隔的数据。
 
-命名`atlas.io.core`空间包含两个低级类，可以快速读取和写入 CSV 和 XML 数据。 这些基类为空间 IO 模块中的空间数据读取器和编写器提供动力。 随意使用它们为 CSV 或 XML 文件添加额外的读取和写入支持。
+`atlas.io.core`命名空间包含两个可快速读取和写入 CSV 和 XML 数据的低级别类。 这些基类使空间数据读取器和编写器在空间 IO 模块中供电。 可随意使用它们为 CSV 或 XML 文件添加额外的读取和写入支持。
  
-## <a name="read-delimited-files"></a>读取已分隔的文件
+## <a name="read-delimited-files"></a>读取分隔文件
 
-类`atlas.io.core.CsvReader`读取包含分隔数据集的字符串。 此类提供两种读取数据的方法：
+`atlas.io.core.CsvReader`类读取包含分隔数据集的字符串。 此类提供两种方法来读取数据：
 
-- 该`read`函数将读取完整数据集，并返回表示分隔数据集的所有单元格的二维字符串数组。
-- 函数`getNextRow`读取分隔数据集中的每行文本，并返回表示该数据集中所有单元格的字符串数组。 在处理下一行之前，用户可以处理该行并释放该行中不需要的任何内存。 因此，函数更具有内存效率。
+- `read`函数将读取完整的数据集，并返回表示分隔数据集的所有单元格的字符串的二维数组。
+- `getNextRow`函数读取分隔数据集中的每一行文本，并返回一个字符串数组，该数组表示该数据集行中的所有单元格。 在处理下一行之前，用户可以处理行并释放该行中的任何不需要的内存。 因此，函数的内存效率更高。
 
-默认情况下，读取器将使用逗号字符作为分隔符。 但是，分隔符可以更改为任何单个字符或设置为`'auto'`。 `'auto'`设置为 时，读取器将分析字符串中的第一行文本。 然后，它将从下表中选择最常用的字符作为分隔符使用。
+默认情况下，读取器将使用逗号字符作为分隔符。 但是，分隔符可以更改为任意单个字符或设置为`'auto'`。 当设置为`'auto'`时，读取器将分析字符串中的第一行文本。 然后，它将从下表中选择最常见的字符作为分隔符。
 
 | | |
 | :-- | :-- |
 | 逗号 | `,` |
 | 选项卡 | `\t` |
-| Pipe | `|` |
+| 管道 | `|` |
 
-此读取器还支持用于处理包含分隔符字符的单元格的文本限定符。 引号`'"'`（ ） 字符是默认文本限定符，但可以更改为任何单个字符。
+此读取器还支持用于处理包含分隔符字符的单元格的文本限定符。 引号（`'"'`）字符是默认文本限定符，但可以更改为任意单个字符。
 
 ## <a name="write-delimited-files"></a>写入分隔文件
 
-将`atlas.io.core.CsvWriter`对象数组写入分隔字符串。 任何单个字符都可以用作分隔符或文本限定符。 默认分隔符为逗号 （`','`）， 默认文本限定符是引号`'"'`（ ） 字符。
+以`atlas.io.core.CsvWriter`带分隔符的字符串形式写入对象数组。 任何单个字符均可用作分隔符或文本限定符。 默认分隔符为逗号（`','`），默认文本限定符为引号（`'"'`）字符。
 
-要使用此类，请按照以下步骤操作：
+若要使用此类，请按照以下步骤操作：
 
-- 创建类的实例，并可以选择设置自定义分隔符或文本限定符。
-- 使用`write`函数或`writeRow`函数将数据写入类。 对于函数`write`，传递表示多个行和单元格的对象的二维数组。 要使用`writeRow`函数，传递表示具有多列的数据行的对象数组。
-- 调用函数`toString`以检索分隔字符串。 
-- 任由选择，`clear`调用方法以使编写器可重用并减少其资源分配，或调用`delete`方法以释放编写器实例。
+- 创建类的实例，并根据需要设置自定义分隔符或文本限定符。
+- 使用`write`函数或`writeRow`函数将数据写入类。 对于`write`函数，传递一个二维数组，其中的对象表示多个行和多个单元格。 若要使用`writeRow`函数，请传递对象数组，该数组表示包含多个列的数据行。
+- 调用`toString`函数以检索分隔的字符串。 
+- （可选）调用`clear`方法以使编写器可重用并减小其资源分配，或调用`delete`方法以释放写入器实例。
 
 > [!Note]
-> 写入的列数将限制为传递给写入器的数据的第一行中的单元格数。
+> 写入的列数将被限制为传递给写入器的数据的第一行中的单元格的数目。
 
 ## <a name="read-xml-files"></a>读取 XML 文件
 
-与`atlas.io.core.SimpleXmlReader`分析 XML 文件相比`DOMParser`，该类在解析 XML 文件时速度更快。 但是，`atlas.io.core.SimpleXmlReader`该类要求 XML 文件格式设置好。 格式不好的 XML 文件（例如缺少关闭标记）可能会导致错误。
+在`atlas.io.core.SimpleXmlReader`分析 XML 文件时，类的速度`DOMParser`要快于。 但是， `atlas.io.core.SimpleXmlReader`类要求 XML 文件的格式正确。 格式不正确的 XML 文件（如缺少结束标记）可能会导致错误。
 
-以下代码演示如何使用 类`SimpleXmlReader`将 XML 字符串解析为 JSON 对象并将其序列化为所需的格式。
+下面的代码演示如何使用`SimpleXmlReader`类将 XML 字符串分析为 JSON 对象并将其序列化为所需的格式。
 
 ```javascript
 //Create an instance of the SimpleXmlReader and parse an XML string into a JSON object.
@@ -80,9 +80,9 @@ if (xmlDoc && xmlDoc.root && xmlDoc.root.tagName && xmlDoc.root.tagName === '<Yo
 
 ## <a name="write-xml-files"></a>写入 XML 文件
 
-该`atlas.io.core.SimpleXmlWriter`类以高效内存的方式编写格式良好的 XML。
+`atlas.io.core.SimpleXmlWriter`类以内存有效的方式写入格式正确的 XML。
 
-以下代码演示如何使用 类`SimpleXmlWriter`生成格式良好的 XML 字符串。
+下面的代码演示如何使用`SimpleXmlWriter`类生成格式正确的 XML 字符串。
 
 ```javascript
 //Create an instance of the SimpleXmlWriter class.
@@ -115,7 +115,7 @@ writer.writeEndElement().writeEndDocument();
 var xmlString = writer.toString();
 ```
 
-从上述代码生成的 XML 如下所示。
+以上代码中生成的 XML 将如下所示。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -137,10 +137,10 @@ var xmlString = writer.toString();
 > [CsvWriter](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.csvwriter)
 
 > [!div class="nextstepaction"]
-> [简单Xml阅读器](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.simplexmlreader)
+> [SimpleXmlReader](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.simplexmlreader)
 
 > [!div class="nextstepaction"]
-> [简单XmlWriter](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.simplexmlwriter)
+> [SimpleXmlWriter](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.simplexmlwriter)
 
 有关可向地图添加的更多代码示例，请参阅以下文章：
 

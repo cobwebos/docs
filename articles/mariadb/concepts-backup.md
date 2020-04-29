@@ -1,5 +1,5 @@
 ---
-title: 备份和还原 - MariaDB 的 Azure 数据库
+title: 备份和还原-Azure Database for MariaDB
 description: 了解如何自动备份和还原 Azure Database for MariaDB 服务器。
 author: ajlam
 ms.author: andrela
@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.openlocfilehash: c4d5a9ca85237bde1277904a478a0b8828fc2b08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80369241"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>在 Azure Database for MariaDB 中进行备份和还原
@@ -21,7 +21,7 @@ Azure Database for MariaDB 可自动创建服务器备份并将其存储在用�
 
 Azure Database for MariaDB 可以进行完整备份、差异备份和事务日志备份。 可以通过这些备份将服务器还原到所配置的备份保留期中的任意时间点。 默认的备份保留期为七天。 可以选择将其配置为长达 35 天。 所有备份都使用 AES 256 位加密进行加密。
 
-这些备份文件不公开用户，无法导出。 这些备份只能用于 MariaDB 的 Azure 数据库中的还原操作。 您可以使用[mysqldump](howto-migrate-dump-restore.md)复制数据库。
+这些备份文件不是用户公开的，无法导出。 这些备份仅可用于 Azure Database for MariaDB 中的还原操作。 您可以使用[mysqldump](howto-migrate-dump-restore.md)来复制数据库。
 
 ### <a name="backup-frequency"></a>备份频率
 
@@ -44,17 +44,17 @@ Azure Database for MariaDB 最高可以提供 100% 的已预配服务器存储�
 
 ## <a name="restore"></a>还原
 
-在 MariaDB 的 Azure 数据库中，执行还原会从原始服务器的备份创建新服务器，并还原服务器中包含的所有数据库。
+在 Azure Database for MariaDB 中，执行还原将从原始服务器的备份创建新的服务器，并还原服务器中包含的所有数据库。
 
 可以使用两种类型的还原：
 
-- **时间点还原**可通过备份冗余选项提供，并利用完整和事务日志备份的组合，在与原始服务器相同的区域中创建新服务器。
-- 仅当将服务器配置为异地冗余存储，并且它允许使用最近进行的备份将服务器还原到其他区域时，**地理还原**才可用。
+- **时间点还原**适用于备份冗余选项，并在与原始服务器相同的区域中创建一个新服务器，该服务器使用完整备份和事务日志备份的组合。
+- 仅当你为异地冗余存储配置了服务器，并且它允许你将服务器恢复到使用最新备份的其他区域时，**地域还原**才可用。
 
 估计的恢复时间取决于若干因素，包括数据库大小、事务日志大小、网络带宽，以及在同一区域同时进行恢复的数据库总数。 恢复时间通常少于 12 小时。
 
 > [!IMPORTANT]
-> 删除的服务器无法还原****。 如果删除服务器，则属于该服务器的所有数据库也会被删除且不可恢复。为了防止服务器资源在部署后遭意外删除或意外更改，管理员可以利用[管理锁](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)。
+> 删除的服务器无法还原  。 如果删除服务器，则属于该服务器的所有数据库也会被删除且不可恢复。为了防止服务器资源在部署后遭意外删除或意外更改，管理员可以利用[管理锁](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)。
 
 ### <a name="point-in-time-restore"></a>时点还原
 
@@ -66,7 +66,7 @@ Azure Database for MariaDB 最高可以提供 100% 的已预配服务器存储�
 
 ### <a name="geo-restore"></a>地域恢复
 
-如果已将服务器配置为进行异地冗余备份，则可将服务器还原到另一 Azure 区域，只要服务在该区域可用即可。 当服务器因其所在的区域发生事故而不可用时，异地还原是默认的恢复选项。 如果区域中出现的大规模事件导致数据库应用程序不可用，可以根据异地冗余备份将服务器还原到任何其他区域中的服务器。 地理还原利用服务器的最新备份。 提取备份后，会延迟一段时间才会将其复制到其他区域中。 此延迟可能长达一小时，因此发生灾难时，会有长达 1 小时的数据丢失风险。
+如果已将服务器配置为进行异地冗余备份，则可将服务器还原到另一 Azure 区域，只要服务在该区域可用即可。 当服务器因其所在的区域发生事故而不可用时，异地还原是默认的恢复选项。 如果区域中出现的大规模事件导致数据库应用程序不可用，可以根据异地冗余备份将服务器还原到任何其他区域中的服务器。 异地还原利用服务器的最新备份。 提取备份后，会延迟一段时间才会将其复制到其他区域中。 此延迟可能长达一小时，因此发生灾难时，会有长达 1 小时的数据丢失风险。
 
 在异地还原过程中，可以更改的服务器配置包括计算的代、vCore、备份保持期和备份冗余选项。 不支持在异地还原过程中更改定价层（“基本”、“常规用途”或“内存优化”）或存储大小。
 
@@ -75,12 +75,12 @@ Azure Database for MariaDB 最高可以提供 100% 的已预配服务器存储�
 从任一恢复机制还原后，都应执行以下任务，然后用户和应用程序才能重新运行：
 
 - 如果需要使用新服务器来替换原始服务器，则请将客户端和客户端应用程序重定向到新服务器
-- 确保为用户提供适当的 VNet 规则进行连接。 这些规则不会从原始服务器复制。
+- 确保用户可以连接到适当的 VNet 规则。 不会从原始服务器复制这些规则。
 - 确保设置适当的登录名和数据库级权限
 - 视情况配置警报
 
 ## <a name="next-steps"></a>后续步骤
 
 - 若要详细了解业务连续性，请参阅 [业务连续性概述](concepts-business-continuity.md)。
-- 要使用 Azure 门户还原到时间点，请参阅 [使用 Azure 门户将服务器还原到时间点](howto-restore-server-portal.md)。
-- 要使用 Azure CLI 还原到时间点，请参阅 [使用 CLI 将服务器还原到时间点](howto-restore-server-cli.md)。
+- 若要使用 Azure 门户还原到某个时间点，请参阅 [使用 Azure 门户将服务器还原到某个时间点](howto-restore-server-portal.md)。
+- 若要使用 Azure CLI 还原到某个时间点，请参阅 [使用 CLI 将服务器还原到某个时间点](howto-restore-server-cli.md)。

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/04/2019
 ms.openlocfilehash: 63d8d8d3701a9adca4bd01e6e061877f5d0bd245
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80333363"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics 数据安全
@@ -43,14 +43,14 @@ Log Analytics 服务使用以下方法安全地管理你基于云的数据：
 | --- | --- | --- |
 |Linux | Linux 分发版往往依赖于 [OpenSSL](https://www.openssl.org) 来提供 TLS 1.2 支持。  | 请检查 [OpenSSL 变更日志](https://www.openssl.org/news/changelog.html)，确认你的 OpenSSL 版本是否受支持。|
 | Windows 8.0 - 10 | 受支持，并且默认已启用。 | 确认是否仍在使用[默认设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)。  |
-| Windows Server 2012 - 2016 | 受支持，并且默认已启用。 | 确认您仍在使用[默认设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
+| Windows Server 2012 - 2016 | 受支持，并且默认已启用。 | 确认是否仍在使用[默认设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
 | Windows 7 SP1 和 Windows Server 2008 R2 SP1 | 受支持，但默认未启用。 | 有关启用方法的详细信息，请参阅[传输层安全性 (TLS) 注册表设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)页。  |
 
 ## <a name="data-segregation"></a>数据隔离
 Log Analytics 服务引入数据后，数据将在该服务的每个组件上都保持逻辑隔离。 所有数据按工作区进行标记。 此标记方式贯穿数据的整个生命周期，在服务的每个层强制实施。 数据存储在所选区域的群集存储中的专用数据库内。
 
 ## <a name="data-retention"></a>数据保留
-编入索引的日志搜索数据基于定价计划进行存储和保留。 有关详细信息，请参阅[日志分析定价](https://azure.microsoft.com/pricing/details/log-analytics/)。
+编入索引的日志搜索数据基于定价计划进行存储和保留。 有关详细信息，请参阅 [Log Analytics 定价](https://azure.microsoft.com/pricing/details/log-analytics/)。
 
 在履行[订阅协议](https://azure.microsoft.com/support/legal/subscription-agreement/)的过程中，Microsoft 会根据协议条款保留数据。  在删除客户数据时，不会销毁任何物理驱动器。  
 
@@ -66,12 +66,12 @@ Log Analytics 服务引入数据后，数据将在该服务的每个组件上都
 
 下表显示了数据类型的示例：
 
-| **数据类型** | **字段** |
+| **数据类型** | **Fields** |
 | --- | --- |
 | 警报 |Alert Name、Alert Description、BaseManagedEntityId、Problem ID、IsMonitorAlert、RuleId、ResolutionState、Priority、Severity、Category、Owner、ResolvedBy、TimeRaised、TimeAdded、LastModified、LastModifiedBy、LastModifiedExceptRepeatCount、TimeResolved、TimeResolutionStateLastModified、TimeResolutionStateLastModifiedInDB、RepeatCount |
-| Configuration |CustomerID、AgentID、EntityID、 ManagedTypeID、ManagedTypePropertyID、CurrentValue、ChangeDate |
+| 配置 |CustomerID、AgentID、EntityID、 ManagedTypeID、ManagedTypePropertyID、CurrentValue、ChangeDate |
 | 事件 |EventId、EventOriginalID、BaseManagedEntityInternalId、RuleId、PublisherId、PublisherName、FullNumber、Number、Category、ChannelLevel、LoggingComputer、EventData、EventParameters、TimeGenerated、TimeAdded <br>**注意：** 当将具有自定义字段的事件写入到 Windows 事件日志中时，Log Analytics 会收集它们。 |
-| 元数据 |BaseManagedEntityId、ObjectStatus、OrganizationalUnit、ActiveDirectoryObjectSid、PhysicalProcessors、NetworkName、IPAddress、ForestDNSName、NetbiosComputerName、VirtualMachineName、LastInventoryDate、HostServerNameIsVirtualMachine、IP Address、NetbiosDomainName、LogicalProcessors、DNSName、DisplayName、DomainDnsName、ActiveDirectorySite、PrincipalName、OffsetInMinuteFromGreenwichTime |
+| Metadata |BaseManagedEntityId、ObjectStatus、OrganizationalUnit、ActiveDirectoryObjectSid、PhysicalProcessors、NetworkName、IPAddress、ForestDNSName、NetbiosComputerName、VirtualMachineName、LastInventoryDate、HostServerNameIsVirtualMachine、IP Address、NetbiosDomainName、LogicalProcessors、DNSName、DisplayName、DomainDnsName、ActiveDirectorySite、PrincipalName、OffsetInMinuteFromGreenwichTime |
 | 性能 |ObjectName、CounterName、PerfmonInstanceName、PerformanceDataId、PerformanceSourceInternalID、SampleValue、TimeSampled、TimeAdded |
 | 状态 |StateChangeEventId、StateId、NewHealthState、OldHealthState、Context、TimeGenerated、TimeAdded、StateId2、BaseManagedEntityId、MonitorId、HealthState、LastModified、LastGreenAlertGenerated、DatabaseTimeModified |
 
@@ -136,7 +136,7 @@ Azure Log Analytics 满足以下要求：
 
 ![Log Analytics 数据收集和安全性的图像](./media/data-security/log-analytics-data-security-diagram.png)
 
-## <a name="1-sign-up-for-log-analytics-and-collect-data"></a>1. 注册日志分析并收集数据
+## <a name="1-sign-up-for-log-analytics-and-collect-data"></a>1. 注册 Log Analytics 并收集数据
 要使组织能够将数据发送到 Log Analytics，请配置在 Azure 虚拟机中运行的，或者在自己环境或其他云提供程序中的虚拟机或物理机上运行的 Windows/Linux 代理。  如果使用 Operations Manager，请通过管理组配置 Operations Manager 代理。 用户（可能是你、其他个别用户，也可能是一组用户）会创建一个或多个 Log Analytics 工作区，并使用以下帐户之一注册代理：
 
 * [组织 ID](../../active-directory/fundamentals/sign-up-organization.md)
@@ -151,7 +151,7 @@ Azure Log Analytics 满足以下要求：
 每种类型的代理都会收集 Log Analytics 的数据。 收集的数据类型取决于所用解决方案的类型。 可以查看[从解决方案库中添加 Log Analytics 解决方案](../../azure-monitor/insights/solutions.md)中的数据收集的摘要。 此外，会针对大多数解决方案提供更详细的收集信息。 解决方案包含一组预定义的视图、日志搜索查询、数据收集规则和处理逻辑。 只有管理员可以使用 Log Analytics 导入解决方案。 解决方案完成导入后，会将它移到 Operations Manager 管理服务器（如果使用），再移到你选定的任何代理。 然后，该代理收集数据。
 
 ## <a name="2-send-data-from-agents"></a>2.从代理发送数据
-使用注册密钥注册所有代理类型，并使用基于证书的身份验证和带端口 443 的 TLS 在代理和日志分析服务之间建立安全连接。 Log Analytics 使用机密存储生成和维护密钥。 私钥每隔 90 天会进行轮换、存储在 Azure 中，并受遵循严格的法规和合规性操作的 Azure Operations 管理。
+使用注册密钥注册所有代理类型，并使用基于证书的身份验证和带端口443的 TLS 在代理与 Log Analytics 服务之间建立安全连接。 Log Analytics 使用机密存储生成和维护密钥。 私钥每隔 90 天会进行轮换、存储在 Azure 中，并受遵循严格的法规和合规性操作的 Azure Operations 管理。
 
 借助 Operations Manager，注册到 Log Analytics 工作区的管理组可与 Operations Manager 管理服务器建立安全 HTTPS 连接。
 
@@ -161,14 +161,14 @@ Azure Log Analytics 满足以下要求：
 
 Windows 或管理服务器代理缓存的数据受操作系统的凭据存储的保护。 如果服务在两小时后无法处理数据，代理会将该数据加入队列。 如果队列已满，代理会开始丢弃数据类型，从性能数据开始。 代理队列限制是一个注册表项，因此必要时可以对它进行修改。 向服务发送（绕过 Operations Manager 管理组数据库）已收集的数据时会先对数据进行压缩，因此不会向数据库添加任何负载。 已收集的数据完成发送后，会从缓存中删除它。
 
-如上所述，来自管理服务器或直接连接的代理的数据通过 TLS 发送到 Microsoft Azure 数据中心。 可以选择使用 ExpressRoute 为数据提供额外的安全性。 借助 ExpressRoute，可以从网络服务提供商提供的现有 WAN 网络（例如多协议标签交换 (MPLS) VPN）直接连接到 Azure。 有关详细信息，请参阅 [ExpressRoute](https://azure.microsoft.com/services/expressroute/)。
+如上所述，管理服务器或直接连接的代理中的数据通过 TLS 发送到 Microsoft Azure 数据中心。 可以选择使用 ExpressRoute 为数据提供额外的安全性。 借助 ExpressRoute，可以从网络服务提供商提供的现有 WAN 网络（例如多协议标签交换 (MPLS) VPN）直接连接到 Azure。 有关详细信息，请参阅 [ExpressRoute](https://azure.microsoft.com/services/expressroute/)。
 
-## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. 日志分析服务接收和处理数据
+## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. Log Analytics 服务接收和处理数据
 Log Analytics 服务通过使用 Azure 身份验证对证书和数据完整性进行验证，来确保传入数据来自受信任的源。 然后，将未处理的原始数据存储在区域中的 Azure 事件中心，并最终存储静态数据。 存储的数据类型取决于导入的并用于收集数据的解决方案的类型。 然后，Log Analytics 服务处理原始数据并将其引入数据库。
 
 存储在数据库中的已收集数据的保留期取决于所选的定价计划。 对于“免费”层，收集的数据可以使用 7 天**。 对于*付费*层，收集的数据默认情况下可以使用 31 天，但可以延长到 730 天。 数据在 Azure 存储中采用静态加密存储，以确保数据机密性，并且数据通过本地冗余存储 (LRS) 在本地区域内进行复制。 过去两周的数据也存储在基于 SSD 的缓存中，此缓存未加密。
 
-## <a name="4-use-log-analytics-to-access-the-data"></a>4. 使用日志分析访问数据
+## <a name="4-use-log-analytics-to-access-the-data"></a>4. 使用 Log Analytics 访问数据
 若要访问 Log Analytics 工作区，请使用组织帐户或先前设置的 Microsoft 帐户登录到 Azure 门户。 门户与 Log Analytics 服务之间的所有流量通过安全 HTTPS 通道发送。 使用门户时，会在用户客户端（Web 浏览器）上生成会话 ID，会将数据存储在本地缓存中，直到该会话终止。 终止后，会删除该缓存。 不会自动删除不包含个人身份信息的客户端 Cookie。 会话 Cookie 标记为 HTTPOnly，并且受到保护。 在预先确定的空闲期过后，会终止 Azure 门户会话。
 
 ## <a name="next-steps"></a>后续步骤

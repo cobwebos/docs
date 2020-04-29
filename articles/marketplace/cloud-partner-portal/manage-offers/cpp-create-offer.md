@@ -1,5 +1,5 @@
 ---
-title: 创建市场优惠 |Azure 应用商店
+title: 创建 Marketplace 产品/服务 |Azure Marketplace
 description: 使用云合作伙伴门户在 Azure 和 AppSource 市场中创建套餐
 author: dsindona
 ms.service: marketplace
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: dsindona
 ms.openlocfilehash: d14940eff569a80759e9db0bfa2d6d1541a01377
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80286466"
 ---
 # <a name="create-azure-marketplace-and-appsource-offers"></a>创建 Azure 市场和 AppSource 套餐
@@ -47,8 +47,8 @@ ms.locfileid: "80286466"
 |      选项卡名称       |   目的                                                            |
 |      --------       |   -------                                                            |
 | **产品/服务设置**  | 收集套餐信息和发布者身份信息。                    |
-| **SKU**            | 定义套餐的每个存货单位 (SKU) 版本的技术和业务特征 |
-| **试驾**      | 对于支持此可选功能的类型，请定义套餐的演示。  有关详细信息，请参阅[什么是体验版？](../test-drive/what-is-test-drive.md)  |
+| **Sku**            | 定义套餐的每个存货单位 (SKU) 版本的技术和业务特征 |
+| **体验版**      | 对于支持此可选功能的类型，请定义套餐的演示。  有关详细信息，请参阅[什么是体验版？](../test-drive/what-is-test-drive.md)  |
 | “市场”或“店面”******** | 收集文本字符串、文档和图像用于列出市场中的套餐 |
 | **支持**         | 收集客户、工程人员和在线支持人员的联系信息  |
 |  |  |

@@ -1,6 +1,6 @@
 ---
-title: 将 Azure 管理解决方案发布到 Azure 应用商店
-description: 将 Azure 管理解决方案发布到 Azure 应用商店
+title: 将 Azure 管理解决方案发布到 Azure Marketplace
+description: 将 Azure 管理解决方案发布到 Azure Marketplace
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
 ms.openlocfilehash: a477cae563fc05324d6a05f99d0c08dd3eaa3e0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80280178"
 ---
-<a name="publish-an-azure-management-solution-to-azure-marketplace"></a>将 Azure 管理解决方案发布到 Azure 应用商店 
+<a name="publish-an-azure-management-solution-to-azure-marketplace"></a>将 Azure 管理解决方案发布到 Azure Marketplace 
 ========================================================
 
 > [!IMPORTANT]

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: f54381ddcd11a2e4a24d30d812468da85b5403de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335827"
 ---
 # <a name="annotations-for-application-gateway-ingress-controller"></a>应用程序网关入口控制器的批注 
@@ -107,8 +107,8 @@ spec:
 
 ## <a name="connection-draining"></a>连接清空
 
-`connection-draining`：此注释允许用户指定是否启用连接耗尽。
-`connection-draining-timeout`：此注释允许用户指定超时，之后应用程序网关将终止对排水后端终结点的请求。
+`connection-draining`：此批注可让用户指定是否启用连接清空。
+`connection-draining-timeout`：此批注可让用户指定超时，在此超时过后，应用程序网关将终止对清空后端终结点的请求。
 
 ### <a name="usage"></a>使用情况
 

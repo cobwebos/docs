@@ -1,28 +1,28 @@
 ---
-title: 在 Azure 应用程序见解中设置警报
+title: 在 Azure Application Insights 中设置警报
 description: 响应速度变慢、发生异常以及 Web 应用中出现其他性能或用法变化时接收通知。
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.reviewer: lagayhar
 ms.subservice: alerts
 ms.openlocfilehash: 28fd59556a586b85a6d3caf188d9e02c11d31e3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80295080"
 ---
 # <a name="set-alerts-in-application-insights"></a>在 Application Insights 中设置警报
 
-当 Web 应用中的性能或用法指标发生变化时，[Azure Application Insights][start] 可发出警报。 
+当 Web 应用中的性能或使用情况指标发生变化时，[Azure Application Insights][start] 可发出警报。 
 
 Application Insights 在[各种平台][platforms]上监视实时应用，帮助诊断性能问题和了解使用模式。
 
 有多种类型的警报：
 
-* [**指标警报**](../../azure-monitor/platform/alerts-metric-overview.md)告诉您指标在某些时间段内何时超过阈值 -例如响应时间、异常计数、CPU 使用率或页面视图。
+* [**指标警报**](../../azure-monitor/platform/alerts-metric-overview.md)：某一指标（例如响应时间、异常计数、CPU 使用率或页面视图）超过某个阈值有一些时间时，此类警报会发出通知。
 * [**日志警报**](../../azure-monitor/platform/alerts-unified-log.md)用于描述警报，其中的警报信号基于自定义的 Kusto 查询。
-* [**Web 测试**][availability]：当站点在 Internet 上不可用或响应缓慢时，它会向用户发送通知。 [了解详情][availability]。
+* [**Web 测试**][availability]：当站点在 Internet 上不可用或响应缓慢时，它会通知你。 [了解详细信息][availability]。
 * [**主动诊断**](../../azure-monitor/app/proactive-diagnostics.md)：由系统自动配置，通知出现了异常的性能模式。
 
 ## <a name="how-to-set-an-exception-alert-using-custom-log-search"></a>如何使用自定义日志搜索设置异常警报
@@ -68,7 +68,7 @@ Application Insights 在[各种平台][platforms]上监视实时应用，帮助�
 
     ![在“警报逻辑”下，选择根据所选依据和条件提供的选项，然后键入阈值](./media/alerts/6alertlogic.png)
 
-8. 在“评估依据”下，设置时段和频率。 此处的时段必须与在上述查询中输入的时段值匹配。 然后单击 **"完成**"。
+8. 在“评估依据”下，设置时段和频率。 此处的时段必须与在上述查询中输入的时段值匹配。 然后单击 "**完成**"。
 
     ![在底部设置时段和频率，然后单击“完成”](./media/alerts/7evaluate.png)
 
@@ -100,7 +100,7 @@ Application Insights 在[各种平台][platforms]上监视实时应用，帮助�
 
 ## <a name="who-receives-the-classic-alert-notifications"></a>谁会收到（经典）警报通知？
 
-本节仅适用于经典警报，并将帮助优化警报通知以确保只有预期的接收人能收到通知。 要了解有关[经典警报](../platform/alerts-classic.overview.md)和新警报体验之间的区别的详细信息，请参阅[警报概述文章](../platform/alerts-overview.md)。 要控制新警报体验中的警报通知，请使用[操作组](../platform/action-groups.md)。
+本节仅适用于经典警报，并将帮助优化警报通知以确保只有预期的接收人能收到通知。 若要详细了解[经典警报](../platform/alerts-classic.overview.md)与新警报体验之间的差异，请参阅[警报概述一文](../platform/alerts-overview.md)。 若要在新的警报体验中控制警报通知，请使用[操作组](../platform/action-groups.md)。
 
 * 建议将经典警报通知用于特定接收人。
 
@@ -115,7 +115,7 @@ Application Insights 在[各种平台][platforms]上监视实时应用，帮助�
 * [使用 PowerShell 自动设置警报](../../azure-monitor/app/powershell-alerts.md)
 * [使用 Webhook 自动响应警报](../../azure-monitor/platform/alerts-webhooks.md)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 * [可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)
 * [自动设置警报](../../azure-monitor/app/powershell-alerts.md)
 * [主动诊断](../../azure-monitor/app/proactive-diagnostics.md) 

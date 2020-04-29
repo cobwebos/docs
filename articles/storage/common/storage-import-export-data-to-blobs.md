@@ -9,17 +9,17 @@ ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 570c663861361a19190f6fb5d608b6aa029a0885
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80282488"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>使用 Azure 导入/导出服务将数据导入到 Azure Blob 存储
 
 本文提供了有关如何使用 Azure 导入/导出服务安全地将大量数据导入到 Azure Blob 存储的分步说明。 若要将数据导入到 Azure Blob，此服务要求你将包含数据的已加密磁盘驱动器寄送到某个 Azure 数据中心。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在创建导入作业来将数据传输到 Azure Blob 存储之前，请仔细查看并完成此服务的以下先决条件列表。
 必须：
@@ -31,10 +31,10 @@ ms.locfileid: "80282488"
 * 拥有足够数量的[受支持类型](storage-import-export-requirements.md#supported-disks)的磁盘。
 * 拥有运行[受支持 OS 版本](storage-import-export-requirements.md#supported-operating-systems)的 Windows 系统。
 * 在 Windows 系统上启用 BitLocker。 请参阅[如何启用 BitLocker](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/)。
-* 在 Windows 系统上[下载最新的 WAImportExport 版本 1。](https://www.microsoft.com/download/details.aspx?id=42659) 该工具的最新版本具有安全更新，允许 BitLocker 密钥的外部保护器，以及更新的解锁模式功能。
+* 在 Windows 系统上[下载最新的 WAImportExport 版本 1](https://www.microsoft.com/download/details.aspx?id=42659) 。 此工具的最新版本包含安全更新以允许对 BitLocker 密钥使用外部保护程序，以及更新的解锁模式功能。
 
   * 解压缩到默认文件夹 `waimportexportv1`。 例如，`C:\WaImportExportV1` 。
-* 具有 FedEx/DHL 帐户。 如果要使用 FedEx/DHL 以外的运营商，请在 上`adbops@microsoft.com`与 Azure 数据框操作团队联系。  
+* 具有 FedEx/DHL 帐户。 如果要使用 FedEx/DHL 以外的运营商，请联系 Azure Data Box 运营团队`adbops@microsoft.com`。  
   * 该帐户必须是有余额的有效帐户，且有退货功能。
   * 生成导出作业的跟踪号。
   * 每个作业都应有一个单独的跟踪号。 不支持多个作业共享相同跟踪号。
@@ -51,13 +51,13 @@ ms.locfileid: "80282488"
 1. 通过 SATA 连接器将磁盘驱动器连接到 Windows 系统。
 2. 在每个驱动器上创建一个 NTFS 卷。 为卷分配驱动器号。 不要使用装入点。
 3. 在 NTFS 卷上启用 BitLocker 加密。 如果使用某个 Windows Server 系统，请使用[如何在 Windows Server 2012 R2 上启用 BitLocker](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/) 中的说明。
-4. 将数据复制到加密的卷。 可使用拖放或 Robocopy 或任何类似的复制工具。 日志 （*.jrn*） 文件在运行该工具的同一文件夹中创建。
+4. 将数据复制到加密的卷。 可使用拖放或 Robocopy 或任何类似的复制工具。 在运行该工具的同一文件夹中创建一个日志文件（*. .jrn*）。
 
-   如果驱动器已锁定，并且您需要解锁驱动器，则解锁步骤可能因使用情况而异。
+   如果驱动器已锁定并且需要解锁驱动器，则取消锁定的步骤可能会有所不同，具体取决于你的使用情况。
 
-   * 如果将数据添加到预加密驱动器（WAImportExport 工具未用于加密），请使用弹出窗口中的 BitLocker 密钥（您指定的数字密码）解锁驱动器。
+   * 如果已将数据添加到预加密的驱动器（WAImportExport 工具未用于加密），请使用弹出窗口中的 BitLocker 密钥（指定的数字密码）对驱动器进行解锁。
 
-   * 如果将数据添加到由 WAImportExport 工具加密的驱动器，请使用以下命令解锁驱动器：
+   * 如果已将数据添加到由 WAImportExport 工具加密的驱动器，请使用以下命令解锁驱动器：
 
         `WAImportExport Unlock /externalKey:<BitLocker key (base 64 string) copied from journal (*.jrn*) file>`
 
@@ -77,7 +77,7 @@ ms.locfileid: "80282488"
 
     下表介绍了所使用的参数：
 
-    |选项  |描述  |
+    |选项  |说明  |
     |---------|---------|
     |/j:     |带有 .jrn 扩展名的日志文件的名称。 会为每个驱动器生成一个日志文件。 建议使用磁盘序列号作为日志文件名。         |
     |/id:     |会话 ID。 请为该命令的每个实例使用唯一的会话编号。      |
@@ -102,7 +102,7 @@ ms.locfileid: "80282488"
 
     ![转到导入/导出作业](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
 
-3. 单击"**创建导入/导出作业**"。
+3. 单击 "**创建导入/导出作业**"。
 
     ![单击“创建导入/导出作业”](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
 
@@ -127,7 +127,7 @@ ms.locfileid: "80282488"
 
 6. 在“回寄信息”中****：
 
-   * 从下拉列表中选择承运商。 如果要使用联邦快递/DHL 以外的运营商，请从下拉列表中选择现有选项。 请与 Azure 数据框`adbops@microsoft.com`操作团队联系，了解有关计划使用的运营商的信息。
+   * 从下拉列表中选择承运商。 如果要使用 FedEx/DHL 以外的电信公司，请从下拉列表中选择现有的选项。 请与 Azure Data Box 运营团队`adbops@microsoft.com`联系，并提供有关计划使用的电信公司的信息。
    * 输入你已在该承运商那里创建的有效承运商帐户编号。 导入作业完成后，Microsoft 使用此帐户寄回驱动器。 如果还没有帐户编号，请创建一个 [FedEx](https://www.fedex.com/us/oadr/) 或 [DHL](https://www.dhl.com/) 承运商帐户。
    * 提供完整、有效的联系人姓名、电话号码、电子邮件地址、街道地址、城市、邮政编码、省/自治区/直辖市和国家/地区。
 
@@ -143,19 +143,19 @@ ms.locfileid: "80282488"
 
      ![创建导入作业 - 步骤 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
-## <a name="step-3-optional-configure-customer-managed-key"></a>步骤 3（可选）：配置客户托管密钥
+## <a name="step-3-optional-configure-customer-managed-key"></a>步骤3（可选）：配置客户管理的密钥
 
-如果要使用 Microsoft 托管密钥来保护驱动器的 BitLocker 密钥，请跳过此步骤，然后转到下一步。 要配置自己的密钥以保护 BitLocker 密钥，请按照[Azure 门户中使用 Azure 导入/导出 Azure 密钥保管库配置客户管理密钥的说明进行](storage-import-export-encryption-key-portal.md)操作
+如果要使用 Microsoft 托管密钥来保护驱动器的 BitLocker 密钥，请跳过此步骤并转到下一步。 若要配置你自己的密钥来保护 BitLocker 密钥，请按照在[Azure 门户中配置用于 Azure 导入/导出的客户托管密钥](storage-import-export-encryption-key-portal.md)中的说明进行操作 Azure Key Vault
 
-## <a name="step-4-ship-the-drives"></a>第 4 步：运送驱动器
+## <a name="step-4-ship-the-drives"></a>步骤4：发运驱动器
 
 [!INCLUDE [storage-import-export-ship-drives](../../../includes/storage-import-export-ship-drives.md)]
 
-## <a name="step-5-update-the-job-with-tracking-information"></a>第 5 步：使用跟踪信息更新作业
+## <a name="step-5-update-the-job-with-tracking-information"></a>步骤5：更新包含跟踪信息的作业
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
-## <a name="step-6-verify-data-upload-to-azure"></a>第 6 步：验证将数据上载到 Azure
+## <a name="step-6-verify-data-upload-to-azure"></a>步骤6：验证数据上传到 Azure
 
 跟踪作业直至完成。 作业完成后，验证数据已上传到 Azure。 仅在已确认上传成功后才删除本地数据。
 

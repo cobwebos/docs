@@ -1,5 +1,5 @@
 ---
-title: 斯特里姆快速启动
+title: Striim 快速入门
 description: 快速开始使用 Striim 和 Azure SQL 数据仓库。
 services: synapse-analytics
 author: mlee3gsd
@@ -12,10 +12,10 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: e963d62df8d2c416726852ee3d46daf1cd22936e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80349944"
 ---
 # <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>Striim Azure SQL DW 市场产品/服务安装指南
@@ -30,7 +30,7 @@ ms.locfileid: "80349944"
 
 ![配置 Striim][configure]
 
-部署后，单击\<Azure 门户中的 VM 名称>主节点，单击"连接"并使用 VM 本地帐户复制登录 
+部署后，在 Azure 门户\<中单击 "VM 名称">-masternode "，单击" 连接 "，然后使用 VM 本地帐户复制登录名 
 
 ![将 Striim 连接到 SQL 数据仓库][connect]
 
@@ -56,7 +56,7 @@ ms.locfileid: "80349944"
 
 ![Start the Striim cluster][start-striim]
 
-现在，打开您最喜爱的浏览器并导航到\<DNS 名称>：9080
+现在，打开你喜爱的浏览器并\<导航到 DNS 名称>：9080
 
 ![导航到登录屏幕][navigate]
 

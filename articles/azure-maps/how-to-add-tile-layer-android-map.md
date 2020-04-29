@@ -1,6 +1,6 @@
 ---
-title: 向 Android 地图添加切片图层 |微软 Azure 地图
-description: 在本文中，您将学习如何使用 Microsoft Azure 地图 Android SDK 在地图上呈现切片图层。
+title: 向 Android 地图添加图块层 |Microsoft Azure 映射
+description: 本文介绍如何使用 Microsoft Azure 地图 Android SDK 在地图上呈现图块层。
 author: philmea
 ms.author: philmea
 ms.date: 04/26/2019
@@ -9,17 +9,17 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: f98598bd1307bb1b46ff23814780c5f809b9ac90
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335568"
 ---
-# <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>使用 Azure 地图 Android SDK 将切片图层添加到地图
+# <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>使用 Azure Maps 向地图添加图块层 Android SDK
 
-本文演示如何使用 Azure 地图 Android SDK 在地图上呈现切片图层。 通过图块层可以在 Azure Maps 基本地图图块顶部附加图像。 可在[缩放级别和图块网格](zoom-levels-and-tile-grid.md)文档中找到有关 Azure Maps 图块系统的详细信息。
+本文介绍如何使用 Azure Maps Android SDK 在地图上呈现图块层。 通过图块层可以在 Azure Maps 基本地图图块顶部附加图像。 可在[缩放级别和图块网格](zoom-levels-and-tile-grid.md)文档中找到有关 Azure Maps 图块系统的详细信息。
 
-磁贴图层从服务器加载切片。 这些图像可以像服务器上的任何其他图像一样，使用切片层可以理解的命名约定进行预渲染和存储。 或者，这些图像可以使用动态服务进行渲染，该服务可近乎实时地生成图像。 Azure 地图切片层类支持三种不同的切片服务命名约定：
+图块层从服务器的磁贴中加载。 可以使用图块层所理解的命名约定，预先呈现这些图像并将其存储为服务器上的任何其他图像。 或者，可以使用动态服务呈现这些图像，这种动态服务会近乎实时生成图像。 Azure Maps TileLayer 类支持三个不同的平铺服务命名约定：
 
 * X、Y、缩放表示法 - 基于缩放级别，x 是列，y 是图块网格中图块的行位置。
 * Quadkey 表示法 - 将 x、y、缩放信息合并到单个字符串值（即图块的唯一标识符）中。
@@ -35,20 +35,20 @@ ms.locfileid: "80335568"
 * `{z}` - 图块的缩放级别。 还需要 `{x}` 和 `{y}`。
 * `{quadkey}` - 基于必应地图图块系统命名约定的图块 quadkey 标识符。
 * `{bbox-epsg-3857}` - EPSG 3857 空间引用系统中格式为 `{west},{south},{east},{north}` 的边界框字符串。
-* `{subdomain}`- 如果指定子域值，则子域值的占位符。
+* `{subdomain}`-子域值的占位符（如果指定了子域值）。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-要完成本文中的过程，您需要安装[Azure 地图 Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)来加载地图。
+若要完成本文中的过程，需要安装[Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)来加载地图。
 
 
-## <a name="add-a-tile-layer-to-the-map"></a>向地图添加切片图层
+## <a name="add-a-tile-layer-to-the-map"></a>向地图添加图块层
 
- 此示例演示如何创建指向一组切片的切片图层。 这些切片使用"x、y、缩放"切片系统。 此图块层源自[爱荷华州立大学的 Iowa Environmental Mesonet](https://mesonet.agron.iastate.edu/ogc/) 的气象雷达图覆盖。 
+ 此示例演示如何创建指向一组图块的图块层。 这些磁贴使用 "x，y，zoom" 平铺系统。 此图块层源自[爱荷华州立大学的 Iowa Environmental Mesonet](https://mesonet.agron.iastate.edu/ogc/) 的气象雷达图覆盖。 
 
-您可以按照以下步骤向地图添加切片图层。
+可以按照以下步骤向地图中添加图块层。
 
-1. **>activity_main.xml 编辑>布局**，以便它看起来像下面的布局：
+1. 编辑**res > 布局 > activity_main** ，使其看起来像下面这样：
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -71,7 +71,7 @@ ms.locfileid: "80335568"
     </FrameLayout>
     ```
 
-2. 将以下代码段复制到类`MainActivity.java`的**onCreate（）** 方法中。
+2. 将以下代码片段复制到`MainActivity.java`类的**onCreate （）** 方法。
 
     ```Java
     mapControl.onReady(map -> {
@@ -84,9 +84,9 @@ ms.locfileid: "80335568"
     });
     ```
     
-    上面的代码段首先使用**onReady（）** 回调方法获取 Azure 地图映射控件实例。 然后，它创建`TileLayer`一个对象，并将格式化的**xyz**磁贴`tileUrl`URL 传递到该选项中。 图层的不极性设置为`0.8`，并且由于正在使用的磁贴服务的切片为 256 像素切片，因此此信息将传递到选项中。 `tileSize` 然后，切片图层将传递到地图图层管理器中。
+    上面的代码段首先使用**onReady （）** 回调方法获取 Azure Maps 映射控件实例。 然后，它创建`TileLayer`一个对象，并将带格式的**XYZ**磁`tileUrl`贴 URL 传递到选项中。 层的不透明度设置为`0.8` ，因为正在使用的磁贴服务中的磁贴为256像素磁贴，此信息将传递`tileSize`到选项中。 然后，将图块层传递到地图层管理器中。
 
-    添加上面的代码段后，应`MainActivity.java`如下所示：
+    添加上述代码片段后， `MainActivity.java`应如下所示：
     
     ```Java
     package com.example.myapplication;
@@ -168,15 +168,15 @@ ms.locfileid: "80335568"
     }
     ```
 
-如果现在运行应用程序，您应该在地图上看到一条线，如下所示：
+如果现在运行应用程序，应在图上看到一条线，如下所示：
 
 <center>
 
-![安卓地图线](./media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)</center>
+![Android 地图线条](./media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)</center>
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅以下文章，了解有关设置地图样式的方法
+请参阅以下文章，了解有关如何设置地图样式的详细信息
 
 > [!div class="nextstepaction"]
-> [更改 Android 地图中的地图样式](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [更改 Android maps 中的地图样式](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)

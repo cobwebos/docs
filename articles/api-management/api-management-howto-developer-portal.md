@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/15/2020
 ms.author: apimpm
 ms.openlocfilehash: fefa5ff5d112b479110d484ee0ea4c358b5c88a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335912"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API 管理开发人员门户概述
@@ -35,7 +35,7 @@ ms.locfileid: "80335912"
 可通过两种方式构建开发人员门户：
 
 - **托管版本** - 通过编辑和自定义 API 管理实例中内置的、可通过 URL `<your-api-management-instance-name>.developer.azure-api.net` 访问的门户。 请参阅[此文档](api-management-howto-developer-portal-customize.md)了解如何访问和自定义托管门户。
-- **自承载版本** - 通过在 API 管理实例外部部署和自承载门户。 此方法允许您编辑门户的代码库并扩展提供的核心功能 - 例如，实现自定义小部件以便与第三方系统集成。 在这种情况下，您是门户的维护者，您负责将门户升级到最新版本。 有关详细信息和说明，请参阅[包含门户源代码的 GitHub 存储库][1]以及[有关实现小部件的教程][3]。 [托管版本的教程](api-management-howto-developer-portal-customize.md)将介绍门户的管理面板，这是托管版本和自托管版本常见的。
+- **自承载版本** - 通过在 API 管理实例外部部署和自承载门户。 此方法允许你编辑门户的基本代码并扩展提供的核心功能，例如，实现自定义小组件以便与第三方系统集成。 在此方案中，你是门户的 maintainer，负责将门户升级到最新版本。 有关详细信息和说明，请参阅[GitHub 存储库中的门户源代码][1]和[实现小组件教程][3]。 [托管版本教程](api-management-howto-developer-portal-customize.md)介绍门户的管理面板，这对于托管版本和自承载版本很常见。
 
 ## <a name="portal-architectural-concepts"></a>门户体系结构概念
 
@@ -66,7 +66,7 @@ API 管理内容包括 API、操作、产品和订阅等实体。**
 
 ## <a name="frequently-asked-questions"></a><a name="faq"></a>常见问题
 
-在本节中，我们将回答有关开发人员门户的常见问题，这些问题具有一般性质。 有关自承载版本的特定问题，请参阅 [GitHub 存储库的 wiki 部分](https://github.com/Azure/api-management-developer-portal/wiki)。
+在本部分中，我们回答了有关开发人员门户的常见问题，这些问题是一般的。 有关自承载版本的特定问题，请参阅 [GitHub 存储库的 wiki 部分](https://github.com/Azure/api-management-developer-portal/wiki)。
 
 ### <a name="how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"/> 如何从门户预览版迁移？
 
@@ -82,7 +82,7 @@ API 管理内容包括 API、操作、产品和订阅等实体。**
 
 如果门户是宣布推出正式版后预配的，则它应已具有新的默认内容。 你无需在自己的一端执行任何操作。
 
-### <a name="how-can-i-migrate-from-the-old-developer-portal-to-the-developer-portal"></a>如何从旧的开发人员门户迁移到开发人员门户？
+### <a name="how-can-i-migrate-from-the-old-developer-portal-to-the-developer-portal"></a>如何从旧开发人员门户迁移到开发人员门户？
 
 这两个门户不兼容，需要手动迁移内容。
 
@@ -98,27 +98,27 @@ API 管理内容包括 API、操作、产品和订阅等实体。**
 
 旧门户弃用时，我们会另行通告。 若有问题、疑虑或意见，请提出[相关的 GitHub 问题](https://github.com/Azure/api-management-developer-portal/issues/121)。
 
-### <a name="functionality-i-need-isnt-supported-in-the-portal"></a>门户不支持我需要的功能
+### <a name="functionality-i-need-isnt-supported-in-the-portal"></a>门户中不支持我需要的功能
 
-您可以打开[功能请求](https://aka.ms/apimwish)或[自行实现缺少的功能][3]。 如果自己实现该功能，则可以自行托管开发人员门户，或在 GitHub 上打开拉取请求，以在托管版本中包含更改。
+您可以自行打开[功能请求](https://aka.ms/apimwish)或[实现缺少的功能][3]。 如果自行实现此功能，则可以自行承载开发人员门户，或在 GitHub 上打开拉取请求，以在托管版本中包含更改。
 
 ### <a name="how-can-i-automate-portal-deployments"></a>如何自动部署门户？
 
 不管使用的是托管版本还是自承载版本，都可以通过 REST API 以编程方式访问和管理开发人员门户的内容。
 
-[GitHub 存储库的 Wiki 部分][2]介绍了该 API。 它可用于自动在环境之间迁移门户内容，例如，从测试环境到生产环境。 可以在 GitHub 上的[此文档](https://aka.ms/apimdocs/migrateportal)中详细了解此过程。
+[GitHub 存储库的 Wiki 部分][2]介绍了该 API。 它可用于在环境之间自动迁移门户内容（例如，从测试环境到生产环境）。 可以在 GitHub 上的[此文档](https://aka.ms/apimdocs/migrateportal)中详细了解此过程。
 
 ### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>门户是否支持 Azure 资源管理器模板，和/或是否与 API 管理 DevOps 资源工具包兼容？
 
-不是。
+不能。
 
-### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-managed-portal-dependencies"></a>是否需要为托管门户依赖项启用其他 VNet 连接？
+### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-managed-portal-dependencies"></a>是否需要为托管门户依赖项启用附加 VNet 连接？
 
 大多数情况下是不需要的。
 
 如果 API 管理服务位于内部 VNet 中，则只能从网络内部访问开发人员门户。 管理终结点的主机名必须解析成用于访问门户管理界面的计算机中的服务的内部 VIP。 请确保管理终结点已在 DNS 中注册。 如果配置不当，将会出现以下错误：`Unable to start the portal. See if settings are specified correctly in the configuration (...)`。
 
-如果您的 API 管理服务位于内部 VNet 中，并且您正在通过 Internet 应用程序网关访问该服务，请确保启用与开发人员门户和 API 管理管理终结点的连接。
+如果你的 API 管理服务在内部 VNet 中，并且你是通过 Internet 上的应用程序网关访问它，请确保启用到开发人员门户和 API 管理的管理终结点的连接。
 
 ### <a name="i-have-assigned-a-custom-api-management-domain-and-the-published-portal-doesnt-work"></a>我已分配一个自定义 API 管理域，但发布的门户无法正常工作
 
@@ -136,28 +136,28 @@ API 管理内容包括 API、操作、产品和订阅等实体。**
 
 大多数配置更改（例如，VNet、登录和产品条款）都需要[重新发布门户](api-management-howto-developer-portal-customize.md#publish)。
 
-### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a><a name="cors"></a>使用交互式控制台时，我收到 CORS 错误
+### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a><a name="cors"></a>使用交互式控制台时遇到 CORS 错误
 
-交互式控制台从浏览器发出客户端 API 请求。 通过在 API 上添加[CORS 策略来解决 CORS](api-management-cross-domain-policies.md#CORS)问题。
+交互式控制台从浏览器发出客户端 API 请求。 通过在 API 上添加[CORS 策略](api-management-cross-domain-policies.md#CORS)来解决 CORS 问题。
 
-您可以在 Azure 门户中的 API 管理服务的**门户概述**部分中检查 CORS 策略的状态。 警告框指示策略不存在或配置错误。
+你可以在 API 管理服务的 "**门户概述**" 部分的 "Azure 门户中检查 CORS 策略的状态。 警告框指示缺少或配置不正确的策略。
 
 ![API 管理开发人员门户](media/api-management-howto-developer-portal/cors-azure-portal.png)
 
-单击启用 CORS 按钮，自动应用**CORS**策略。
+通过单击 "**启用 cors** " 按钮自动应用 CORS 策略。
 
-您还可以手动启用 CORS。
+你还可以手动启用 CORS。
 
-1. 单击"**手动将其应用于全局级别**"链接以查看生成的策略代码。
-2. 导航到 Azure 门户中 API 管理服务**API**部分中的所有**API。**
-3. 单击**</>****"入站处理**"部分中的图标。
-4. 将策略插入 XML**<inbound>** 文件部分。 确保**<origin>** 该值与开发人员门户的域匹配。
+1. 单击 "在**全局级别上手动应用**" 链接以查看生成的策略代码。
+2. 在 Azure 门户中，导航到 API 管理服务的 " **api** " 部分中的**所有 api** 。
+3. 单击 " **</>** **入站处理**" 部分中的图标。
+4. 在 XML 文件的**<inbound>** 部分中插入策略。 请确保**<origin>** 该值与开发人员门户的域相匹配。
 
 > [!NOTE]
 > 
 > 如果在产品范围而不是 API 范围内应用 CORS 策略，并且 API 通过标头使用订阅密钥身份验证，则控制台无法正常工作。
 >
-> 浏览器会自动发出选项 HTTP 请求，该请求不包含包含订阅密钥的标头。 由于缺少订阅密钥，API 管理无法将 OPTIONS 调用与产品相关联，因此无法应用 CORS 策略。
+> 浏览器自动发出 HTTP 请求选项，该请求不包含带有订阅密钥的标头。 由于缺少订阅密钥，API 管理无法将选项调用与产品相关联，因此不能应用 CORS 策略。
 >
 > 解决方法之一是在查询参数中传递订阅密钥。
 
@@ -199,11 +199,11 @@ New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM N
 
 如果 API 管理服务位于 VNet 中，请参阅前面的 VNet 连接问题。
 
-呼叫失败也可能由 TLS/SSL 证书引起，该证书分配给自定义域，并且不受浏览器信任。 作为缓解措施，可以删除管理终结点自定义域 - API 管理将回退到包含受信任证书的默认终结点。
+调用失败也可能由将分配给自定义域且不受浏览器信任的 TLS/SSL 证书引起。 作为缓解措施，可以删除管理终结点自定义域 - API 管理将回退到包含受信任证书的默认终结点。
 
-### <a name="whats-the-browser-support-for-the-portal"></a>浏览器对门户的支持是什么？
+### <a name="whats-the-browser-support-for-the-portal"></a>门户的浏览器支持有哪些？
 
-| 浏览者                     | 支持       |
+| 浏览器                     | 支持       |
 |-----------------------------|-----------------|
 | Apple Safari                | 是<sup>1</sup> |
 | Google Chrome               | 是<sup>1</sup> |
@@ -211,7 +211,7 @@ New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM N
 | Microsoft Internet Explorer | 否              |
 | Mozilla Firefox             | 是<sup>1</sup> |
 
- <small><sup>1</sup>在两个最新的生产版本中支持。</small>
+ <small><sup>1</sup>在两个最新的生产版本中受支持。</small>
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -219,7 +219,7 @@ New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM N
 
 - [访问和自定义托管开发人员门户](api-management-howto-developer-portal-customize.md)
 - [设置自承载版本的门户][2]
-- [实现您自己的小部件][3]
+- [实现自己的小组件][3]
 
 浏览其他资源：
 

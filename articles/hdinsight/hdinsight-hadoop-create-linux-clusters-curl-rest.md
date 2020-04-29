@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure REST API 创建 Apache Hadoop 群集 - Azure
-description: 了解如何通过将 Azure 资源管理器模板提交到 Azure REST API 来创建 HDInsight 群集。
+description: 了解如何通过将 Azure Resource Manager 模板提交到 Azure REST API 来创建 HDInsight 群集。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,28 +9,28 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
 ms.openlocfilehash: 2680304bd73bdbae35b29b89f38ae2665615f5e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80239917"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>使用 Azure REST API 创建 Apache Hadoop 群集
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-了解如何使用 Azure 资源管理器模板和 Azure REST API 创建 HDInsight 群集。
+了解如何使用 Azure Resource Manager 模板和 Azure REST API 创建 HDInsight 群集。
 
-Azure REST API 允许对托管在 Azure 平台中的服务执行管理操作，包括创建新资源（例如 HDInsight 群集）。
+使用 Azure REST API，可以对托管在 Azure 平台中的服务执行管理操作，包括创建新资源（例如 HDInsight 群集）。
 
 > [!NOTE]  
 > 本文档中的步骤使用 [curl (https://curl.haxx.se/)](https://curl.haxx.se/) 实用工具与 Azure REST API 进行通信。
 
 ## <a name="create-a-template"></a>创建模板
 
-Azure 资源管理器模板是 JSON 文档，用于描述**资源组**及其中的所有资源（如 HDInsight）。此基于模板的方法允许您在一个模板中定义 HDInsight 所需的资源。
+Azure Resource Manager 模板是描述**资源组**及其包含的所有资源（例如 HDInsight）的 JSON 文档。此基于模板的方法允许在一个模板中定义 HDInsight 所需的资源。
 
-以下 JSON 文档是从 的模板和参数文件合并，[https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password)它使用密码创建基于 Linux 的群集来保护 SSH 用户帐户。
+下面的 JSON 文档是来自 [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password) 的模板与参数文件的组合形式，它将创建基于 Linux 的群集，并使用密码保护 SSH 用户帐户。
 
    ```json
    {
@@ -205,7 +205,7 @@ Azure 资源管理器模板是 JSON 文档，用于描述**资源组**及其中�
    }
    ```
 
-本文档中的步骤会使用此示例。 将 Parameters** 部分中的示例值**** 替换为用于群集的值。
+本文档中的步骤使用了此示例。 将“参数”  部分中的示例值  替换为群集的值。
 
 > [!IMPORTANT]  
 > 此模板对 HDInsight 群集使用默认数目（4 个）的辅助角色节点。 如果计划使用 32 个以上的辅助角色节点，则必须选择至少具有 8 个核心和 14 GB ram 的头节点大小。
@@ -219,7 +219,7 @@ Azure 资源管理器模板是 JSON 文档，用于描述**资源组**及其中�
 ## <a name="create-a-service-principal"></a>创建服务主体
 
 > [!NOTE]  
-> 这些步骤是[使用 Azure CLI 创建服务主体以访问资源](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md)文档的“使用密码创建服务主体”** 部分的缩减版本。 这些步骤创建用于向 Azure REST API 进行身份验证的服务主体。
+> 这些步骤是[使用 Azure CLI 创建服务主体以访问资源](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md)文档的“使用密码创建服务主体”  部分的缩减版本。 这些步骤创建用于向 Azure REST API 进行身份验证的服务主体。
 
 1. 从命令行使用以下命令列出 Azure 订阅。
 
@@ -235,22 +235,22 @@ Azure 资源管理器模板是 JSON 文档，用于描述**资源组**及其中�
    az ad app create --display-name "exampleapp" --homepage "https://www.contoso.org" --identifier-uris "https://www.contoso.org/example" --password <Your password> --query 'appId'
    ```
 
-    将 `--display-name`、`--homepage` 和 `--identifier-uris` 的值替换成自己的值。 为新的 Active Directory 条目提供密码。
+    将 `--display-name`、`--homepage` 和 `--identifier-uris` 的值替换为自己的值。 为新的 Active Directory 条目提供密码。
 
    > [!NOTE]  
-   > `--home-page` 和 `--identifier-uris` 值无需引用在 Internet 上承载的实际网页。 它们必须是唯一的 URI。
+   > `--home-page` 和 `--identifier-uris` 值无需引用 Internet 上托管的实际网页。 它们必须是唯一 URI。
 
-   此命令返回的值是新应用程序的__应用 ID__。 保存此值。
+   此命令返回的值是新应用程序的 __应用 ID__ 。 保存此值。
 
-3. 通过以下命令使用**应用 ID** 创建服务主体。
+3. 通过以下命令使用 **应用 ID**创建服务主体。
 
    ```azurecli
    az ad sp create --id <App ID> --query 'objectId'
    ```
 
-     此命令返回的值是__对象 ID__。 保存此值。
+     此命令返回的值是 __对象 ID__。 保存此值。
 
-4. 使用**对象 ID** 值向服务主体分配**所有者**角色。 使用前面获取的**订阅 ID**。
+4. 使用**对象 ID** 值向服务主体分配**所有者**角色。 使用前面获取的 **订阅 ID** 。
 
    ```azurecli
    az role assignment create --assignee <Object ID> --role Owner --scope /subscriptions/<Subscription ID>/
@@ -272,9 +272,9 @@ curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
 
 将 `$TENANTID`、`$APPID` 和 `$PASSWORD` 设置为以前获取或使用的值。
 
-如果此请求成功，将收到 200 系列响应，且响应正文包含一个 JSON 文档。
+如果此请求成功，你将收到 200 系列响应，且响应正文包含一个 JSON 文档。
 
-此请求返回的 JSON 文档包含一个名为 **access_token** 的元素。 **access_token** 的值用来对针对 REST API 的请求进行身份验证。
+此请求返回的 JSON 文档包含一个名为 **access_token** 的元素。 **access_token** 的值用来对向 REST API 发出的请求进行身份验证。
 
 ```json
 {
@@ -293,7 +293,7 @@ curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
 * 将 `$SUBSCRIPTIONID` 设置为创建服务主体时收到的订阅 ID。
 * 将 `$ACCESSTOKEN` 设置为在上一步骤中收到的访问令牌。
 * 将 `DATACENTERLOCATION` 替换为要在其中创建资源组和资源的数据中心。 例如，“美国中南部”。
-* 将 `$RESOURCEGROUPNAME` 设置为要为此组使用的名称：
+* 将 `$RESOURCEGROUPNAME` 设置为要用于此组的名称：
 
 ```bash
 curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME?api-version=2015-01-01" \
@@ -304,13 +304,13 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 }'
 ```
 
-如果此请求成功，会收到 200 系列响应，且响应正文包含一个 JSON 文档，其中包含有关组的信息。 `"provisioningState"` 元素包含 `"Succeeded"` 的值。
+如果此请求成功，将收到 200 系列响应，且响应正文包含一个 JSON 文档，其中包含有关该组的信息。 `"provisioningState"` 元素包含值 `"Succeeded"`。
 
 ## <a name="create-a-deployment"></a>创建部署
 
 使用以下命令将模板部署到资源组。
 
-* 将 `$DEPLOYMENTNAME` 设置为要为此部署使用的名称：
+* 将 `$DEPLOYMENTNAME` 设置为要用于此部署的名称。
 
 ```bash
 curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME/providers/microsoft.resources/deployments/$DEPLOYMENTNAME?api-version=2015-01-01" \
@@ -324,14 +324,14 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 >
 > `--data-binary "@/path/to/file.json"`
 
-如果此请求成功，会收到 200 系列响应，且响应正文包含一个 JSON 文档，其中包含有关部署操作的信息。
+如果此请求成功，将收到 200 系列响应，且响应正文包含一个 JSON 文档，其中包含有关部署操作的信息。
 
 > [!IMPORTANT]  
 > 部署已提交，但尚未完成。 部署通常需要大约 15 分钟才能完成。
 
 ## <a name="check-the-status-of-a-deployment"></a>检查部署状态
 
-若要检查部署的状态，请使用以下命令：
+若要检查部署状态，请使用以下命令：
 
 ```bash
 curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME/providers/microsoft.resources/deployments/$DEPLOYMENTNAME?api-version=2015-01-01" \
@@ -339,15 +339,15 @@ curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 -H "Content-Type: application/json"
 ```
 
-此命令会返回包含有关部署操作的信息的 JSON 文档。 `"provisioningState"` 元素包含部署的状态。 如果此元素包含 `"Succeeded"` 值，则部署已成功完成。
+此命令返回包含有关部署操作的信息的 JSON 文档。 `"provisioningState"` 元素包含部署的状态。 如果此元素包含 `"Succeeded"` 值，则部署已成功完成。
 
-## <a name="troubleshoot"></a>疑难解答
+## <a name="troubleshoot"></a>故障排除
 
 如果在创建 HDInsight 群集时遇到问题，请参阅[访问控制要求](./hdinsight-hadoop-customize-cluster-linux.md#access-control)。
 
 ## <a name="next-steps"></a>后续步骤
 
-现在您已成功创建了 HDInsight 群集，请使用以下内容了解如何使用群集。
+现在已成功创建 HDInsight 群集，请使用以下方法了解如何使用群集。
 
 ### <a name="apache-hadoop-clusters"></a>Apache Hadoop 群集
 

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: rohink
 ms.openlocfilehash: 4863ffd383cfcd46bad462156e26293d145fd418
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80294859"
 ---
 # <a name="how-traffic-manager-works"></a>流量管理器的工作原理
@@ -25,7 +25,7 @@ ms.locfileid: "80294859"
 
 流量管理器具有两大优势：
 
-- 根据几种[流量路由方法](traffic-manager-routing-methods.md)之一分布流量
+- 根据某个[流量路由方法](traffic-manager-routing-methods.md)对流量进行分布
 - [连续监视终结点运行状况](traffic-manager-monitoring.md)，在终结点发生故障时自动进行故障转移
 
 当客户端尝试连接到某个服务时，必须先将该服务的 DNS 名称解析成 IP 地址。 然后，客户端就可以连接到该 IP 地址以访问相关服务。
@@ -34,7 +34,7 @@ ms.locfileid: "80294859"
 
 ## <a name="traffic-manager-example"></a>流量管理器示例
 
-Contoso Corp 开发了一个新的合作伙伴门户。 此门户的 URL 为 `https://partners.contoso.com/login.aspx`。 该应用程序托管在三个 Azure 区域中。 为了改善可用性并在全球最大程度地提高性能，他们使用流量管理器将客户端流量分布到最靠近的可用终结点。
+Contoso Corp 开发了一个新的合作伙伴门户。 此门户的 URL 为 `https://partners.contoso.com/login.aspx` 。 该应用程序托管在三个 Azure 区域中。 为了改善可用性并在全球最大程度地提高性能，他们使用流量管理器将客户端流量分布到最靠近的可用终结点。
 
 为了实现此配置，他们完成以下步骤：
 
@@ -75,7 +75,7 @@ Contoso Corp 开发了一个新的合作伙伴门户。 此门户的 URL 为 `ht
 
 * [可以使用流量管理器路由什么类型的流量？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-types-of-traffic-can-be-routed-using-traffic-manager)
 
-* [流量管理器是否支持"粘性"会话？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-support-sticky-sessions)
+* [流量管理器是否支持“粘滞”会话？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-support-sticky-sessions)
 
 * [使用流量管理器时为何出现 HTTP 错误？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-am-i-seeing-an-http-error-when-using-traffic-manager)
 
@@ -83,13 +83,13 @@ Contoso Corp 开发了一个新的合作伙伴门户。 此门户的 URL 为 `ht
 
 * [流量管理器允许使用什么应用程序协议？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-application-protocols-can-i-use-with-traffic-manager)
 
-* [我可以使用带有"裸"域名的流量管理器吗？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-a-naked-domain-name)
+* [是否可以对“裸”域名使用流量管理器？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-a-naked-domain-name)
 
 * [处理 DNS 查询时流量管理器是否会考虑客户端子网地址？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries)
 
 * [什么是 DNS TTL，它如何影响我的用户？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-is-dns-ttl-and-how-does-it-impact-my-users)
 
-* [可如何设置流量管理器响应的 TTL 范围？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses)
+* [可将流量管理器响应的 TTL 设置为多高或多低？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses)
 
 * [如何了解传入到我的配置文件的查询数量？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-understand-the-volume-of-queries-coming-to-my-profile)
 

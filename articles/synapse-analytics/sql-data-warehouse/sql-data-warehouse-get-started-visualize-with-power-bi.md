@@ -1,5 +1,5 @@
 ---
-title: 使用 Power BI 微软 Azure 可视化数据
+title: 利用 Power BI Microsoft Azure 实现数据的可视化
 description: 使用 Power BI 可视化 SQL 数据仓库数据
 services: synapse-analytics
 author: mlee3gsd
@@ -12,10 +12,10 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 7e764eeab6f681d90e1a602f02cdb03330d6fd3d
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80350946"
 ---
 # <a name="visualize-data-with-power-bi"></a>使用 Power BI 可视化数据
@@ -25,7 +25,7 @@ ms.locfileid: "80350946"
 > 
 > 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 要逐步完成本教程，需要以下各项：
 
 * 已随 AdventureWorksDW 数据库预先加载的 SQL 数据仓库。 若要完成数据仓库预配，请参阅[创建 SQL 数据仓库](create-data-warehouse-portal.md)，并选择加载示例数据。 如果已有数据仓库但没有示例数据，可以[加载 WideWorldImportersDW](load-data-wideworldimportersdw.md)。
@@ -33,7 +33,7 @@ ms.locfileid: "80350946"
 ## <a name="1-connect-to-your-database"></a>1. 连接到数据库
 若要打开 Power BI 并连接到 AdventureWorksDW 数据库，请执行以下操作：
 
-1. 登录到[Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 单击“SQL 数据库”****，并选择 AdventureWorks SQL 数据仓库数据库。
    
     ![查找数据库](./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-find-database.png)
@@ -94,4 +94,4 @@ ms.locfileid: "80350946"
 随着体验的改善，这些限制和说明可能会更改。
 
 ## <a name="next-steps"></a>后续步骤
-现在，我们已经给了您一些时间来预热示例数据，看看如何[开发](sql-data-warehouse-overview-develop.md)或[加载](design-elt-data-loading.md)。 或浏览 [Power BI 网站](https://www.powerbi.com/)。
+现在，我们已向你提供了一些时间来处理示例数据，请参阅如何[开发](sql-data-warehouse-overview-develop.md)或[加载](design-elt-data-loading.md)。 或浏览 [Power BI 网站](https://www.powerbi.com/)。

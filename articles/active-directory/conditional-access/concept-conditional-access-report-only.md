@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bd41e79a1e08c57e806f6ada32faccfa5fdf5792
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80295289"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>什么是条件访问仅限报告模式？
@@ -38,11 +38,11 @@ ms.locfileid: "80295289"
 
 如果针对给定登录评估仅限报告模式下的策略，则有四个新的可能结果值：
 
-| 结果 | 描述 |
+| 结果 | 说明 |
 | --- | --- |
-| 仅限报告：成功 | 满足所有配置的策略条件、所需的非交互式授权控制和会话控制。 例如，通过令牌中已经存在的 MFA 声明来满足多重身份验证要求，或者通过在符合的设备上执行设备检查来满足符合设备策略。 |
+| 仅报告：成功 | 满足所有配置的策略条件、所需的非交互式授权控制和会话控制。 例如，通过令牌中已经存在的 MFA 声明来满足多重身份验证要求，或者通过在符合的设备上执行设备检查来满足符合设备策略。 |
 | 仅报告：失败 | 满足所有配置的策略条件，但并未满足所有所需的非交互式授权控制或会话控制。 例如，策略适用于配置了阻止控制的用户，或者未通过符合设备策略的设备。 |
-| 仅报告：需要用户操作 | 满足所有配置的策略条件，但需要用户操作来满足所需的授权控制或会话控制。 对于仅限报告模式，系统不会提示用户满足所需的控制。 例如，系统不会提示用户提供多重身份验证质询或使用条款。   |
+| 仅限报表：所需的用户操作 | 满足所有配置的策略条件，但需要用户操作来满足所需的授权控制或会话控制。 对于仅限报告模式，系统不会提示用户满足所需的控制。 例如，系统不会提示用户提供多重身份验证质询或使用条款。   |
 | 仅报告：未应用 | 并非满足所有配置的策略条件。 例如，从策略中排除用户或策略仅适用于某些受信任的命名位置。 |
 
 ## <a name="conditional-access-insights-workbook"></a>条件访问见解工作簿
@@ -51,4 +51,4 @@ ms.locfileid: "80295289"
  
 ## <a name="next-steps"></a>后续步骤
 
-[在条件访问策略上配置仅报告模式](howto-conditional-access-report-only.md)
+[在条件性访问策略中配置仅报告模式](howto-conditional-access-report-only.md)

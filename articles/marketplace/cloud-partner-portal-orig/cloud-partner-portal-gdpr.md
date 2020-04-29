@@ -1,5 +1,5 @@
 ---
-title: GDPR 合规性 |Azure 应用商店
+title: GDPR 符合性 |Azure Marketplace
 description: 云合作伙伴门户和 GDPR。
 author: dsindona
 ms.service: marketplace
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
 ms.openlocfilehash: f09bc60a59ff2a6e21d0cdae1917a1faed072ea4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80280280"
 ---
 <a name="cloud-partner-portal-gdpr-compliance"></a>云合作伙伴门户 GDPR 符合性
@@ -24,12 +24,12 @@ ms.locfileid: "80280280"
 <a name="discover"></a>发现
 --------
 
-云合作伙伴门户允许访问"用户"选项卡中的所有数据。您可以在那里识别您的个人数据。 若要了解如何添加/删除用户，请参阅我们的[文档](./cloud-partner-portal-manage-users.md)。
+云合作伙伴门户在 "用户" 选项卡中提供对所有数据的访问权限。您可以在那里标识您的个人数据。 若要了解如何添加/删除用户，请参阅我们的[文档](./cloud-partner-portal-manage-users.md)。
 
 <a name="manage"></a>管理
 ------
 
-您可以通过在"用户"选项卡中按"用户帐户上的删除"来管理您的个人数据。我们拥有**所有者**的角色和**参与者**，可以分配给每个特定用户，并且可以分配/复制/更新/删除。
+可以通过在用户帐户的 "用户" 选项卡上按 "删除" 来管理你的个人数据。我们拥有一个**所有者**和**参与者**的角色，可将其分配给每个特定用户，并且两者都可以分配/复制/更新/删除。
 
 <a name="consent"></a>同意
 -------
@@ -39,8 +39,8 @@ ms.locfileid: "80280280"
 <a name="related-links"></a>相关链接
 -------------
 
--   [Microsoft 向客户发送\'数据的方式和位置，包括地理位置](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)
--   [有权访问客户\'数据的分包商](https://aka.ms/Online_Serv_Subcontractor_List)
+-   [Microsoft 发送客户\'数据的方式和位置，包括地理位置](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)
+-   [有权访问客户\'数据的子承包商](https://aka.ms/Online_Serv_Subcontractor_List)
 -   [有关 Microsoft 管理的 Azure 安全措施的详细信息](https://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
--   [有关针对\'所有产品（包括所有 Azure 服务）进行的隐私审查流程的详细信息](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards)
+-   [有关 Microsoft\'的隐私审查过程的详细信息，适用于所有产品，包括所有 Azure 服务](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards)
 -   [Microsoft 从客户系统和最终用户收集和处理的数据](https://www.microsoft.com/trustcenter/privacy/you-own-your-data)

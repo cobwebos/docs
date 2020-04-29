@@ -8,24 +8,24 @@ ms.date: 03/11/2020
 ms.author: amsriva
 ms.topic: conceptual
 ms.openlocfilehash: 4d945a255dacd35c61c3c80574b7d46b56de4aab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80257404"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>应用程序网关的多站点托管功能
 
-使用多站点托管功能可以在应用程序网关的同一端口上配置多个 Web 应用程序。 此功能可以将多达 100 个网站添加到一个应用程序网关中，从而为部署配置更有效的拓扑。 每个网站都可以定向到自己的后端池。 在下面的示例中，应用程序网关为两个后端`contoso.com`服务器`fabrikam.com`池（称为 ContosoServerPool 和 FabrikamServerPool）提供流量。
+使用多站点托管功能可以在应用程序网关的同一端口上配置多个 Web 应用程序。 此功能可以将多达 100 个网站添加到一个应用程序网关中，从而为部署配置更有效的拓扑。 每个网站都可以定向到自己的后端池。 在以下示例中，应用程序网关从两个后端服务器池（称为 ContosoServerPool 和 FabrikamServerPool）为 `contoso.com` 和 `fabrikam.com` 提供流量。
 
 ![imageURLroute](./media/multiple-site-overview/multisite.png)
 
 > [!IMPORTANT]
-> 规则按在 v1 SKU 门户中列出的顺序进行处理。 对于 v2 SKU，精确匹配具有更高的优先级。 我们强烈建议先配置多站点侦听器，然后再配置基本侦听器。  这可以确保将流量路由到适当的后端。 如果基本侦听器先列出并且与传入的请求匹配，则该侦听器将处理该请求。
+> 对于 v1 SKU，规则按照它们在门户中列出的顺序进行处理。 对于 v2 SKU，完全匹配具有更高的优先级。 我们强烈建议先配置多站点侦听器，然后再配置基本侦听器。  这可以确保将流量路由到适当的后端。 如果基本侦听器先列出并且与传入的请求匹配，则该侦听器将处理该请求。
 
 对 `http://contoso.com` 的请求路由到 ContosoServerPool，对 `http://fabrikam.com` 的请求路由到 FabrikamServerPool。
 
-同样，您可以在同一应用程序网关部署上承载同一父域的多个子域。 例如，您可以托管`http://blog.contoso.com`单个应用程序网关`http://app.contoso.com`部署和单个应用程序网关部署。
+同样，可以在同一应用程序网关部署中托管同一父域的多个子域。 例如，可以在单个应用程序网关部署中托管 `http://blog.contoso.com` 和 `http://app.contoso.com`。
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>主机标头和服务器名称指示 (SNI)
 
@@ -35,17 +35,17 @@ ms.locfileid: "80257404"
 2. 使用主机名在同一 IP 地址上托管多个 Web 应用程序。
 3. 使用不同的端口在同一 IP 地址上托管多个 Web 应用程序。
 
-目前，应用程序网关支持单个公共 IP 地址，在其中侦听流量。 因此，目前不支持多个应用程序，每个应用程序都有自己的 IP 地址。 
+当前，应用程序网关支持一个公共 IP 地址，用于侦听流量。 因此，目前不支持多个有自己的 IP 地址的应用程序。 
 
-应用程序网关支持多个应用程序，每个应用程序侦听在不同的端口上，但此方案要求应用程序接受非标准端口上的流量。 这通常不是您想要的配置。
+应用程序网关支持多个应用程序，每个应用程序侦听不同的端口，但此方案要求应用程序接受非标准端口上的流量。 这通常不是所需的配置。
 
-应用程序网关需要使用 HTTP 1.1 主机标头才能在相同的公共 IP 地址和端口上托管多个网站。 应用程序网关上托管的站点还可以通过服务器名称指示 （SNI） TLS 扩展支持 TLS 卸载。 这种情况意味着，客户端浏览器和后端 Web 场必须支持 RFC 6066 中定义的 HTTP/1.1 和 TLS 扩展。
+应用程序网关需要使用 HTTP 1.1 主机标头才能在相同的公共 IP 地址和端口上托管多个网站。 在应用程序网关上托管的站点也可以通过服务器名称指示 (SNI) TLS 扩展来支持 TLS 卸载。 这种情况意味着，客户端浏览器和后端 Web 场必须支持 RFC 6066 中定义的 HTTP/1.1 和 TLS 扩展。
 
 ## <a name="listener-configuration-element"></a>侦听器配置元素
 
-对现有 HTTPListener 配置元素进行增强，以支持主机名和服务器名称指示元素。 它由应用程序网关用于将流量路由到相应的后端池。 
+现有的 HTTPListener 配置元素得到了增强，以支持主机名和服务器名称指示元素。 应用程序网关使用此配置元素将流量路由到相应的后端池。 
 
-以下代码示例是模板文件中 HttpListeners 元素的代码段：
+以下代码示例是模板文件中 HttpListeners 元素的代码片段：
 
 ```json
 "httpListeners": [
@@ -87,7 +87,7 @@ ms.locfileid: "80257404"
 
 ## <a name="routing-rule"></a>路由规则
 
-路由规则不需要更改。 应继续选择“基本”路由规则，以便将适当的站点侦听器绑定到相应的后端地址池。
+不需更改路由规则。 应继续选择“基本”路由规则，以便将适当的站点侦听器绑定到相应的后端地址池。
 
 ```json
 "requestRoutingRules": [

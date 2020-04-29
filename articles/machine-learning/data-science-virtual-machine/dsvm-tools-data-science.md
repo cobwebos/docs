@@ -11,10 +11,10 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: c414087270558e21340e50114c0563ff7e50064c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80282301"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Azure Data Science Virtual Machine 上的机器学习和数据科学工具
@@ -32,7 +32,7 @@ Azure Data Science Virtual Machine (DSVM) 拥有丰富的用于机器学习的�
 | 支持的版本     | Windows（conda 环境：AzureML）、Linux（conda 环境：py36）    |
 | 典型用途      | 常规机器学习平台      |
 | 如何配置或安装它？      |  使用 GPU 支持安装   |
-| 如何使用或运行它      | 作为 Python SDK 在 Azure CLI 中使用。 激活到 Windows 版本上的 conda 环境 `AzureML` 或 Linux 版本上的 `py36`。**      |
+| 如何使用或运行它      | 作为 Python SDK 在 Azure CLI 中使用。 激活到 Windows 版本上的 conda 环境 `AzureML` 或 Linux 版本上的 *。* `py36`      |
 | 指向示例的链接      | Notebook 下的 `AzureML` 目录中包含了示例 Jupyter Notebook。  |
 | 相关工具      | Visual Studio Code、Jupyter   |
 
@@ -58,7 +58,7 @@ DSVM 上还有其他几个机器学习库，如适用于 DSVM 的 Anaconda Pytho
 | 支持的版本      | Windows、Linux    |
 | 典型用途      | 常规用途的梯度提升框架      |
 | 如何配置或安装它？      | 在 Windows 上，LightGBM 作为 Python 程序包安装。 在 Linux 上，命令行可执行文件位于 `/opt/LightGBM/lightgbm` 中，安装了 R 程序包，并安装了 Python 程序包。     |
-| 指向示例的链接      | [光GBM指南](https://github.com/Microsoft/LightGBM/tree/master/examples/python-guide)   |
+| 指向示例的链接      | [LightGBM 指南](https://github.com/Microsoft/LightGBM/tree/master/examples/python-guide)   |
 | 相关工具      | MXNet、XgBoost  |
 
 ## <a name="rattle"></a>Rattle
@@ -68,7 +68,7 @@ DSVM 上还有其他几个机器学习库，如适用于 DSVM 的 Anaconda Pytho
 | 支持的版本     | Windows、Linux     |
 | 典型用途      | R 适用的常规 UI 数据挖掘工具    |
 | 如何使用或运行它      | 作为 UI 工具使用。 在 Windows 上，启动命令提示符，运行 R，然后在 R 中运行 `rattle()`。 在 Linux 上，使用 X2Go 连接，启动终端，运行 R，然后在 R 中运行 `rattle()`。 |
-| 指向示例的链接      | [拨浪鼓](https://togaware.com/onepager/) |
+| 指向示例的链接      | [Rattle](https://togaware.com/onepager/) |
 | 相关工具      |LightGBM、Weka、XGBoost   |
 
 ## <a name="vowpal-wabbit"></a>Vowpal Wabbit
@@ -89,7 +89,7 @@ DSVM 上还有其他几个机器学习库，如适用于 DSVM 的 Anaconda Pytho
 | 它是什么？   |  适用于数据挖掘任务的机器学习算法的集合。 这些算法可以直接应用于数据集，也可以从你自己的 Java 代码中调用。 Weka 包含用于数据预处理、分类、回归、群集、关联规则和可视化的工具。 |
 | 支持的版本     | Windows、Linux     |
 | 典型用途      | 常规机器学习工具     |
-| 如何使用或运行它      | 在 Windows 上，在 **"开始"** 菜单上搜索 Weka。 在 Linux 上，使用 X2Go 登录，然后转到**应用程序** > **开发** > **Weka**。 |
+| 如何使用或运行它      | 在 Windows 上，在“开始”菜单中搜索 Weka  。 在 Linux 上，使用 X2Go 进行登录，然后转到“应用程序” **“开发”** “Weka”。 >    >   |
 | 指向示例的链接      | [Weka 示例](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
 | 相关工具      |LightGBM、Rattle、XGBoost   |
 
@@ -108,7 +108,7 @@ DSVM 上还有其他几个机器学习库，如适用于 DSVM 的 Anaconda Pytho
 |    |           |
 | ------------- | ------------- |
 | 它是什么？   | 大数据的开放源代码 SQL 查询引擎    |
-| 支持的 DSVM 版本      | 视窗 2019， Linux  |
+| 支持的 DSVM 版本      | Windows 2019，Linux  |
 | 如何在 DSVM 上配置和安装它？      |  仅以嵌入模式安装在 `/dsvm/tools/drill*` 中   |
 | 典型用途      |  用于在不提取、转换、加载 (ETL) 数据的情况下进行原状数据探索。 查询不同的数据源和格式，包括 CSV、JSON、关系表和 Hadoop。     |
 | 如何使用和运行它      | 桌面快捷方式  <br/> [10 分钟后即可开始钻取](https://drill.apache.org/docs/drill-in-10-minutes/)  |

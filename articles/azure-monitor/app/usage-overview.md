@@ -4,10 +4,10 @@ description: 了解用户，以及他们将应用用于哪些目的。
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.openlocfilehash: e964b1b5b9d5500f2d9f24ed765299389e6dbbb9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80283950"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights 使用分析
@@ -20,9 +20,9 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 1. **服务器代码：** 为 [ASP.NET](../../azure-monitor/app/asp-net.md)、[Azure](../../azure-monitor/app/app-insights-overview.md)、[Java](../../azure-monitor/app/java-get-started.md)、[Node.js](../../azure-monitor/app/nodejs.md) 或[其他](../../azure-monitor/app/platforms.md)应用安装适当的模块。
 
-    * *不想安装服务器代码？只需[创建 Azure 应用程序见解资源](../../azure-monitor/app/create-new-resource.md )。*
+    * 不想安装服务器代码？  只需[创建 Azure Application Insights 资源](../../azure-monitor/app/create-new-resource.md )。
 
-2. **网页代码：** 在结束``</head>``之前将以下脚本添加到您的网页。 将检测密钥替换为 Application Insights 资源的相应值：
+2. **网页代码**：将以下脚本添加到网页的结束标记 ``</head>`` 之前。 将检测密钥替换为 Application Insights 资源的相应值：
     
     ```html
     <script type="text/javascript">
@@ -56,8 +56,8 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 右侧的见解指出了数据集中的相关模式。  
 
-* “用户”报告统计所选时间段内访问页面的唯一用户数目。**** 对于 Web 应用，将使用 Cookie 统计用户。 如果某个用户使用不同的浏览器或客户端计算机访问站点或者清除了其 Cookie，该用户会被统计多次。
-* “会话”报告统计访问站点的用户会话数。**** 会话是指某个用户的活动时段，如果有半个小时以上处于非活动状态，会话会被终止。
+* “用户”报告统计所选时间段内访问页面的唯一用户数目。  对于 Web 应用，将使用 Cookie 统计用户。 如果某个用户使用不同的浏览器或客户端计算机访问站点或者清除了其 Cookie，该用户会被统计多次。
+* “会话”报告统计访问站点的用户会话数。  会话是指某个用户的活动时段，如果有半个小时以上处于非活动状态，会话会被终止。
 
 [有关用户、会话和事件工具的详细信息](usage-segmentation.md)  
 
@@ -123,7 +123,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 为此，请[设置遥测初始值设定项](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)：
 
-**ASP.NET应用**
+**ASP.NET 应用**
 
 ```csharp
     // Telemetry initializer class
@@ -173,7 +173,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 ## <a name="next-steps"></a>后续步骤
    - [用户、会话、事件](usage-segmentation.md)
    - [漏斗图](usage-funnels.md)
-   - [保留](usage-retention.md)
+   - [保留期](usage-retention.md)
    - [用户流](usage-flows.md)
-   - [练习 册](../../azure-monitor/app/usage-workbooks.md)
+   - [工作簿](../../azure-monitor/app/usage-workbooks.md)
    - [添加用户上下文](usage-send-user-context.md)

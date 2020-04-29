@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: d6a63b6276c07b1fe6487b97f5c7fc255b6d3411
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335799"
 ---
 # <a name="what-is-application-gateway-ingress-controller"></a>什么是应用程序网关入口控制器？
@@ -40,6 +40,6 @@ AGIC 能够处理多个命名空间并有 ProhibitedTargets，这意味着 AGIC 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [**绿地部署**](ingress-controller-install-new.md)：有关在空白板式基础结构上安装 AGIC、AKS 和应用程序网关的说明。
-- [**布朗菲尔德部署**](ingress-controller-install-existing.md)：在现有 AKS 和应用程序网关上安装 AGIC。
+- [ **“绿色地带”部署**](ingress-controller-install-new.md)：有关如何在白板基础结构上安装 AGIC、AKS 和应用程序网关的说明。
+- [ **“棕色地带”部署**](ingress-controller-install-existing.md)：在现有的 AKS 和应用程序网关上安装 AGIC。
 

@@ -7,17 +7,17 @@ ms.author: bfung
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 8af688e38003e0613a06d7d8622ce279a3838589
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80298272"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>在 Azure 应用服务中为 .NET 应用启用快照调试器
 
 快照调试器当前适用于按 Windows 服务计划在 Azure 应用服务上运行的 ASP.NET 和 ASP.NET Core 应用。
 
-## <a name="enable-snapshot-debugger"></a><a id="installation"></a>启用快照调试器
+## <a name="enable-snapshot-debugger"></a><a id="installation"></a>启用 Snapshot Debugger
 若要为应用启用快照调试器，请遵循下面的说明。 如果你在运行另一种类型的 Azure 服务，则下面提供了用于在其他受支持平台上启用快照调试器的说明：
 * [Azure 云服务](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric 服务](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
@@ -28,12 +28,12 @@ ms.locfileid: "80298272"
 
 预安装 Application Insights 快照调试器作为应用程序服务运行时的一部分，但需启用它才能获得适用于应用服务应用的快照。 部署应用后，即使在源代码中包括了 Application Insights SDK，也要执行以下步骤来启用快照调试器。
 
-1. **** 转到 Azure 门户中的“应用服务”窗格。
-2. 导航到“设置”>“Application Insights”窗格****。
+1.  转到 Azure 门户中的“应用服务”窗格。
+2. 导航到“设置”>“Application Insights”窗格  。
 
    ![在应用服务门户上启用 App Insights](./media/snapshot-debugger/applicationinsights-appservices.png)
 
-3. 按窗格中的说明创建新资源，或者选择现有的 App Insights 资源，以便监视应用。 另外，请确保快照调试器的两个开关都为“开”****。
+3. 按窗格中的说明创建新资源，或者选择现有的 App Insights 资源，以便监视应用。 另外，请确保快照调试器的两个开关都为“开”  。
 
    ![添加 App Insights 站点扩展][Enablement UI]
 
@@ -43,12 +43,12 @@ ms.locfileid: "80298272"
 
 ## <a name="disable-snapshot-debugger"></a>禁用快照调试器
 
-执行与**启用快照调试器**相同的步骤，但将快照调试器的两个开关都切换到“关”****。
+执行与**启用快照调试器**相同的步骤，但将快照调试器的两个开关都切换到“关”  。
 我们建议在所有应用上启用快照调试器，以简化对应用程序异常的诊断。
 
 ## <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
 
-对于 Azure 应用服务，可以在 Azure 资源管理器模板中设置应用设置，以启用快照调试器和探查器。 添加包含应用设置作为网站的子资源的配置资源：
+对于 Azure App Service，可以在 Azure 资源管理器模板中设置应用设置，以启用 Snapshot Debugger 和探查器。 将包含应用设置的配置资源添加为网站的子资源：
 
 ```json
 {

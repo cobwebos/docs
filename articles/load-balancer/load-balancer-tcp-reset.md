@@ -1,7 +1,7 @@
 ---
 title: Azure 中的负载均衡器空闲情况下的 TCP 重置
 titleSuffix: Azure Load Balancer
-description: 通过本文，了解在空闲超时时使用双向 TCP RST 数据包的 Azure 负载均衡器。
+description: 本文介绍具有空闲超时情况下发送双向 TCP RST 数据包功能的负载均衡器。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.date: 05/03/2019
 ms.author: allensu
 ms.openlocfilehash: d3d836ddea8d07a25ad09e6f19d9f17a680decd6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80294406"
 ---
-# <a name="load-balancer-with-tcp-reset-on-idle"></a>在空闲时使用 TCP 重置的负载均衡器
+# <a name="load-balancer-with-tcp-reset-on-idle"></a>在空闲时发送 TCP 重置的负载均衡器
 
 可以使用[标准负载均衡器](load-balancer-standard-overview.md)，通过为给定规则启用“空闲时执行 TCP 重置”，为方案创建可预测度更高的应用程序行为。 负载均衡器的默认行为是当达到流的空闲超时的情况下，以静默方式删除流。  启用此功能将导致负载均衡器在空闲超时情况下发送双向 TCP 重置（TCP RST 包）。  这将通知应用程序终结点，连接已超时且不再可用。  终结点可以视需要立即建立新连接。
 
@@ -76,4 +76,4 @@ ms.locfileid: "80294406"
 
 - 了解[标准负载均衡器](load-balancer-standard-overview.md)。
 - 了解[出站规则](load-balancer-outbound-rules-overview.md)。
-- [在空闲超时时配置 TCP RST](load-balancer-tcp-idle-timeout.md)
+- [配置在空闲超时时 TCP RST](load-balancer-tcp-idle-timeout.md)

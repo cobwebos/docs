@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: 97a466ab033a42016c0d82465d1f98e2dcae8080
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80297182"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-database-managed-instance"></a>将 SQL Server Integration Services 包迁移到 Azure SQL 数据库托管实例
@@ -37,8 +37,8 @@ ms.locfileid: "80297182"
 
 若要完成这些步骤，需满足以下条件：
 
-* 通过使用 Azure 资源管理器部署模型为 Azure 数据库迁移服务创建 Microsoft Azure 虚拟网络，该模型通过使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)提供到本地源服务器的站点到站点的连接。 有关详细信息，请参阅[使用 Azure 数据库迁移服务迁移 Azure SQL 数据库托管实例的网络拓扑]( https://aka.ms/dmsnetworkformi)一文。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
-* 为确保虚拟网络网络安全组规则不会阻止以下到 Azure 数据库迁移服务的入站通信端口：443、53、9354、445、12000。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)一文。
+* 若要使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，可以使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)为本地源服务器提供站点到站点连接。 有关详细信息，请参阅[使用 Azure 数据库迁移服务迁移 Azure SQL 数据库托管实例的网络拓扑]( https://aka.ms/dmsnetworkformi)一文。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
+* 确保虚拟网络网络安全组规则未阻止到 Azure 数据库迁移服务的以下入站通信端口：443、53、9354、445、12000。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)一文。
 * 配置[针对源数据库引擎访问的 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access?view=sql-server-2017)。
 * 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 SQL Server（默认情况下为 TCP 端口 1433）。
 * 如果使用动态端口运行多个命名 SQL Server 实例，则可能需要启用 SQL Browser 服务并允许通过防火墙访问 UDP 端口 1434，以便 Azure 数据库迁移服务可连接到源服务器上的命名实例。
@@ -53,29 +53,29 @@ ms.locfileid: "80297182"
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>注册 Microsoft.DataMigration 资源提供程序
 
-1. 登录到 Azure 门户，选择“所有服务”****，然后选择“订阅”****。
+1. 登录到 Azure 门户，选择“所有服务”  ，然后选择“订阅”  。
 
     ![显示门户订阅](media/how-to-migrate-ssis-packages-mi/portal-select-subscriptions.png)
 
-2. 选择要在其中创建 Azure 数据库迁移服务实例的订阅，再选择“资源提供程序”****。
+2. 选择要在其中创建 Azure 数据库迁移服务实例的订阅，再选择“资源提供程序”  。
 
     ![显示资源提供程序](media/how-to-migrate-ssis-packages-mi/portal-select-resource-provider.png)
 
-3. 搜索迁移，然后搜索 Microsoft 的右侧 **。** **Register**
+3. 搜索 "迁移"，然后在 " **microsoft.datamigration**" 右侧选择 "**注册**"。
 
     ![注册资源提供程序](media/how-to-migrate-ssis-packages-mi/portal-register-resource-provider.png)
 
 ## <a name="create-an-azure-database-migration-service-instance"></a>创建 Azure 数据库迁移服务实例
 
-1. 在 Azure 门户中，选择 "**创建资源**"，搜索**Azure 数据库迁移服务**，然后从下拉列表中选择**Azure 数据库迁移服务**。
+1. 在 Azure 门户中，选择“+ 创建资源”，搜索“Azure 数据库迁移服务”，然后从下拉列表选择“Azure 数据库迁移服务”    。
 
      ![Azure 市场](media/how-to-migrate-ssis-packages-mi/portal-marketplace.png)
 
-2. 在“Azure 数据库迁移服务”屏幕上，选择“创建”********。
+2. 在“Azure 数据库迁移服务”屏幕上，选择“创建”   。
 
     ![创建 Azure 数据库迁移服务实例](media/how-to-migrate-ssis-packages-mi/dms-create1.png)
 
-3. 在“创建迁移服务”屏幕上，为服务、订阅以及新的或现有资源组指定名称****。
+3. 在“创建迁移服务”屏幕上，为服务、订阅以及新的或现有资源组指定名称  。
 
 4. 选择要在其中创建 DMS 实例的位置。
 
@@ -93,52 +93,52 @@ ms.locfileid: "80297182"
 
     ![创建 DMS 服务](media/how-to-migrate-ssis-packages-mi/dms-create-service2.png)
 
-7. 选择“创建”**** 来创建服务。
+7. 选择“创建”  来创建服务。
 
 ## <a name="create-a-migration-project"></a>创建迁移项目
 
 创建服务实例后，在 Azure 门户中找到并打开它，然后创建一个新的迁移项目。
 
-1. 在 Azure 门户中，选择“所有服务”****，搜索 Azure 数据库迁移服务，然后选择“Azure 数据库迁移服务”****。
+1. 在 Azure 门户中，选择“所有服务”  ，搜索 Azure 数据库迁移服务，然后选择“Azure 数据库迁移服务”  。
 
     ![查找 Azure 数据库迁移服务的所有实例](media/how-to-migrate-ssis-packages-mi/dms-search.png)
 
-2. 在“Azure 数据库迁移服务”屏幕上，搜索创建的实例名称，然后选择该实例****。
+2. 在“Azure 数据库迁移服务”屏幕上，搜索创建的实例名称，然后选择该实例  。
 
-3. 选择 =**新迁移项目**。
+3. 选择“+ 新建迁移项目”  。
 
-4. 在“新建迁移项目”屏幕上指定项目名称，在“源服务器类型”文本框中选择“SQL Server”，在“目标服务器类型”文本框中选择“Azure SQL 数据库托管实例”，然后在“选择活动类型”中选择“SSIS 包迁移”。****************************
+4. 在“新建迁移项目”屏幕上指定项目名称，在“源服务器类型”文本框中选择“SQL Server”，在“目标服务器类型”文本框中选择“Azure SQL 数据库托管实例”，然后在“选择活动类型”中选择“SSIS 包迁移”。       
 
    ![创建 DMS 项目](media/how-to-migrate-ssis-packages-mi/dms-create-project2.png)
 
-5. 选择“创建”**** 来创建项目。
+5. 选择“创建”  来创建项目。
 
 ## <a name="specify-source-details"></a>指定源详细信息
 
-1. 在“迁移源详细信息”**** 屏幕上，指定源 SQL Server 的连接详细信息。
+1. 在“迁移源详细信息”  屏幕上，指定源 SQL Server 的连接详细信息。
 
-2. 如果尚未在服务器上安装受信任的证书，请选中“信任服务器证书”复选框****。
+2. 如果尚未在服务器上安装受信任的证书，请选中“信任服务器证书”复选框  。
 
     如果没有安装受信任的证书，SQL Server 会在实例启动时生成自签名证书。 此证书用于加密客户端连接的凭据。
 
     > [!CAUTION]
-    > 使用自签名证书加密的 TLS 连接不提供强大的安全性。 它们易遭受中间人攻击。 不应依赖 TLS 在生产环境中或连接到 Internet 的服务器上使用自签名证书。
+    > 使用自签名证书加密的 TLS 连接不提供强安全性。 它们易遭受中间人攻击。 不应在生产环境中或在连接到 internet 的服务器上使用自签名证书依赖于 TLS。
 
    ![源详细信息](media/how-to-migrate-ssis-packages-mi/dms-source-details1.png)
 
-3. 选择“保存”。****
+3. 选择“保存”  。
 
 ## <a name="specify-target-details"></a>指定目标详细信息
 
-1. 在“迁移目标详细信息”**** 屏幕上，指定目标的连接详细信息。
+1. 在“迁移目标详细信息”  屏幕上，指定目标的连接详细信息。
 
      ![目标详细信息](media/how-to-migrate-ssis-packages-mi/dms-target-details2.png)
 
-2. 选择“保存”。****
+2. 选择“保存”  。
 
 ## <a name="review-the-migration-summary"></a>查看迁移摘要
 
-1. 在“迁移摘要”屏幕的“活动名称”文本框中指定迁移活动的名称。********
+1. 在“迁移摘要”屏幕的“活动名称”文本框中指定迁移活动的名称。  
 
 2. 对于 **SSIS 项目和环境覆盖选项**，请指定是覆盖还是忽略现有的 SSIS 项目和环境。
 
@@ -148,7 +148,7 @@ ms.locfileid: "80297182"
 
 ## <a name="run-the-migration"></a>运行迁移
 
-* 选择“运行迁移”****。
+* 选择“运行迁移”  。
 
 ## <a name="next-steps"></a>后续步骤
 

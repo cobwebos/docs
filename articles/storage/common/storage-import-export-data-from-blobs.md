@@ -9,17 +9,17 @@ ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: a5afa6439caa6b7c1572447e3b212f3357bf296a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80282505"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>使用 Azure 导入/导出服务从 Azure Blob 存储导出数据
 
 本文分步说明如何使用 Azure 导入/导出服务从 Azure Blob 存储安全地导出大量数据。 该服务要求你将空驱动器寄送到 Azure 数据中心。 该服务将数据从存储帐户导出到驱动器，然后将驱动器寄回。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在创建导出作业以从 Azure Blob 存储传输数据之前，请仔细查看并完成以下此服务的先决条件列表。
 必须：
@@ -27,7 +27,7 @@ ms.locfileid: "80282505"
 - 拥有可用于导入/导出服务的有效 Azure 订阅。
 - 拥有至少一个 Azure 存储帐户。 请参阅[导入/导出服务支持的存储帐户和存储类型](storage-import-export-requirements.md)的列表。 有关创建新存储帐户的信息，请参阅[如何创建存储帐户](storage-account-create.md)。
 - 拥有足够数量的[受支持类型](storage-import-export-requirements.md#supported-disks)的磁盘。
-- 具有 FedEx/DHL 帐户。 如果要使用 FedEx/DHL 以外的运营商，请在 上`adbops@microsoft.com`与 Azure 数据框操作团队联系。
+- 具有 FedEx/DHL 帐户。 如果要使用 FedEx/DHL 以外的运营商，请联系 Azure Data Box 运营团队`adbops@microsoft.com`。
   - 该帐户必须是有余额的有效帐户，且有退货功能。
   - 生成导出作业的跟踪号。
   - 每个作业都应有一个单独的跟踪号。 不支持多个作业共享相同跟踪号。
@@ -44,7 +44,7 @@ ms.locfileid: "80282505"
 
     ![转到导入/导出作业](./media/storage-import-export-data-from-blobs/export-from-blob1.png)
 
-3. 单击"**创建导入/导出作业**"。
+3. 单击 "**创建导入/导出作业**"。
 
     ![单击导入/导出作业](./media/storage-import-export-data-from-blobs/export-from-blob2.png)
 
@@ -83,8 +83,8 @@ ms.locfileid: "80282505"
 
 6. 在“回寄信息”中****：
 
-    - 从下拉列表中选择承运商。 如果要使用联邦快递/DHL 以外的运营商，请从下拉列表中选择现有选项。 请与 Azure 数据框`adbops@microsoft.com`操作团队联系，了解有关计划使用的运营商的信息。
-    - 输入你已在该承运商那里创建的有效承运商帐户编号。 导出作业完成后，Microsoft 使用此帐户将驱动器运回您。
+    - 从下拉列表中选择承运商。 如果要使用 FedEx/DHL 以外的电信公司，请从下拉列表中选择现有的选项。 请与 Azure Data Box 运营团队`adbops@microsoft.com`联系，并提供有关计划使用的电信公司的信息。
+    - 输入你已在该承运商那里创建的有效承运商帐户编号。 导出作业完成后，Microsoft 将使用此帐户寄回驱动器。
     - 提供完整、有效的联系人姓名、电话号码、电子邮件地址、街道地址、城市、邮政编码、省/自治区/直辖市和国家/地区。
 
         > [!TIP]
@@ -117,7 +117,7 @@ ms.locfileid: "80282505"
 当仪表板报告作业已完成时，会将磁盘寄送给你，并且门户上会提供货件的跟踪号。
 
 1. 收到包含导出数据的驱动器后，你需要获取 BitLocker 密钥才能解锁驱动器。 转到 Azure 门户中的导出作业。 单击“导入/导出”选项卡****。
-2. 从列表中选择并单击导出作业。 转到**加密**并复制密钥。
+2. 从列表中选择并单击导出作业。 中转到 "**加密**" 并复制密钥。
 
    ![查看导出作业的 BitLocker 密钥](./media/storage-import-export-service/export-job-bitlocker-keys-02.png)
 
@@ -125,15 +125,15 @@ ms.locfileid: "80282505"
 
 导出已完成。
 
-## <a name="step-5-unlock-the-disks"></a>第 5 步：解锁磁盘
+## <a name="step-5-unlock-the-disks"></a>步骤5：解锁磁盘
 
-如果使用 WAImportExport 工具的版本 1.4.0.300，请使用以下命令解锁驱动器：
+如果使用 WAImportExport 工具的版本1.4.0.300，请使用以下命令解锁驱动器：
 
     `WAImportExport Unlock /externalKey:<BitLocker key (base 64 string) copied from journal (*.jrn*) file>`  
 
 如果使用该工具的早期版本，请使用 BitLocker 对话框解锁驱动器。
 
-此时，您可以删除作业或离开它。 作业在 90 天后自动删除。
+此时，你可以删除该作业或将其保留。 作业将在90天后自动删除。
 
 ## <a name="check-the-number-of-drives"></a>检查驱动器数量
 
@@ -151,11 +151,11 @@ ms.locfileid: "80282505"
 
     下表介绍了这些参数：
 
-    |命令行参数|描述|  
+    |命令行参数|说明|  
     |--------------------------|-----------------|  
-    |**/logdir：**|可选。 日志目录。 详细日志文件将写入此目录。 如果未指定，则使用当前目录作为日志目录。|  
-    |**/sn：**|必需。 导出作业的存储帐户的名称。|  
-    |**/sk：**|仅当未指定容器 SAS 时才是必需的。 导出作业的存储帐户的帐户密钥。|  
+    |**/logdir**|可选。 日志目录。 详细日志文件将写入此目录。 如果未指定，则使用当前目录作为日志目录。|  
+    |**/sn**|必需。 导出作业的存储帐户的名称。|  
+    |**/sk**|仅当未指定容器 SAS 时才是必需的。 导出作业的存储帐户的帐户密钥。|  
     |**/csas:**|仅当未指定存储帐户密钥时才是必需的。 用于列出要在导出作业中导出的 Blob 的容器 SAS。|  
     |**/ExportBlobListFile:**|必需。 包含要导出的 Blob 的 Blob 路径列表或 Blob 路径前缀的 XML 文件的路径。 导入/导出服务 REST API 的[放置作业](/rest/api/storageimportexport/jobs)操作的 `BlobListBlobPath` 元素中使用的文件格式。|  
     |**/DriveSize:**|必需。 用于导出作业的驱动器大小，*例如* 500 GB、1.5 TB。|  
@@ -205,7 +205,7 @@ Number of drives needed:        3
 
 下表显示有效 Blob 路径的示例：
 
-   | 选择器 | Blob 路径 | 描述 |
+   | 选择器 | Blob 路径 | 说明 |
    | --- | --- | --- |
    | 开头为 |/ |导出存储帐户中的所有 Blob |
    | 开头为 |/$root/ |导出根容器中的所有 Blob |

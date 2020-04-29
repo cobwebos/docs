@@ -1,6 +1,6 @@
 ---
 title: 视频
-description: 指向 Azure 同步分析的各种视频播放列表的链接。
+description: Azure Synapse Analytics 的各种视频播放列表的链接。
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -12,17 +12,17 @@ ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 0ac17579a1afedc3391b20f336ea9563b1c2d8f9
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80350130"
 ---
-# <a name="azure-synapse-analytics---sql-pool-videos"></a>Azure 突触分析 - SQL 池视频
+# <a name="azure-synapse-analytics---sql-pool-videos"></a>Azure Synapse 分析-SQL 池视频
 
-观看最新的 Azure 同步 SQL 池视频，了解新功能和性能改进。 
+观看最新的 Azure Synapse SQL pool 视频，了解新功能和性能改进。 
 
-要开始，请选择下面的概述视频，以了解 Azure Synapse SQL 池的新更新。 此外，了解如何使用现代数据仓库模式来处理现实世界中的情况，如网络犯罪。
+若要开始，请选择下面的概述视频，了解 Azure Synapse SQL 池的新更新。 另外，了解如何使用新式数据仓库模式来应对网络犯罪等真实情况。
 </br>
 
 <a href="https://www.youtube.com/watch?v=7MDCWgxPnVY&list=PLXtHYVsvn_b_v4EKljH6dGo9qJ7JjItWL&index=2">
@@ -31,8 +31,8 @@ ms.locfileid: "80350130"
   </div>
 </a>
 
-可在以下任何方面观看描述特定功能的其他视频： 
-- [YouTube：使用 Azure 的高级分析](https://www.youtube.com/playlist?list=PLLasX02E8BPClOvjNV9bXk3LUuf3nQiS2)
+可以在上查看有关描述特定功能的其他视频： 
+- [YouTube： Azure 的高级分析](https://www.youtube.com/playlist?list=PLLasX02E8BPClOvjNV9bXk3LUuf3nQiS2)
 - [Azure 视频](https://azure.microsoft.com/resources/videos/index/?services=sql-data-warehouse)
 
 

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 907ad8705742e4b2e38b13c3c675ebd333bd27d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80295327"
 ---
 # <a name="building-a-conditional-access-policy"></a>生成条件访问策略
@@ -32,19 +32,19 @@ ms.locfileid: "80295327"
 
 ### <a name="users-and-groups"></a>用户和组
 
-[用户和组](concept-conditional-access-users-groups.md)分配策略将包含或排除谁。 该分配可以包括所有用户、特定的用户组、目录角色或外部来宾用户。 
+[用户和组](concept-conditional-access-users-groups.md)指定该策略将包含或排除的对象。 该分配可以包括所有用户、特定的用户组、目录角色或外部来宾用户。 
 
 ### <a name="cloud-apps-or-actions"></a>云应用或操作
 
-[云应用或操作](concept-conditional-access-cloud-apps.md)可以包括或排除受该政策约束的云应用程序或用户操作。
+[云应用或操作](concept-conditional-access-cloud-apps.md)可以包括或排除将受该策略约束的云应用程序或用户操作。
 
 ### <a name="conditions"></a>条件
 
-策略可以包含多个[条件](concept-conditional-access-conditions.md)。
+一个策略可以包含多个[条件](concept-conditional-access-conditions.md)。
 
 #### <a name="sign-in-risk"></a>登录风险
 
-对于具有[Azure AD 标识保护](../identity-protection/overview.md)的组织，在那里生成的风险检测可能会影响条件访问策略。
+对于具有[Azure AD Identity Protection](../identity-protection/overview.md)的组织而言，生成的风险检测可能会影响你的条件访问策略。
 
 #### <a name="device-platforms"></a>设备平台
 
@@ -72,7 +72,7 @@ ms.locfileid: "80295327"
 
 ### <a name="grant"></a>授予
 
-[授予](concept-conditional-access-grant.md)为管理员提供了一种策略实施方法，他们可以阻止或授予访问权限。
+[Grant](concept-conditional-access-grant.md)为管理员提供了一种策略实施方法，可在其中阻止或授予访问权限。
 
 #### <a name="block-access"></a>阻止访问
 
@@ -85,7 +85,7 @@ ms.locfileid: "80295327"
 - 要求进行多重身份验证（Azure 多重身份验证）
 - 要求将设备标记为合规 (Intune)
 - 要求使用加入混合 Azure AD 的设备
-- 需要批准的客户端应用
+- 需要已批准的客户端应用
 - 需要应用保护策略
 
 管理员可以使用以下选项选择是需要上述控制之一还是所有已选控制。 多项控制的默认值为全部需要。
@@ -95,7 +95,7 @@ ms.locfileid: "80295327"
 
 ### <a name="session"></a>会话
 
-[会话控件](concept-conditional-access-session.md)可以限制体验 
+[会话控制](concept-conditional-access-session.md)可限制体验 
 
 - 使用应用所强制实施的限制
    - 目前仅适用于 Exchange Online 和 SharePoint Online。
@@ -118,19 +118,19 @@ ms.locfileid: "80295327"
 - **分配**
    - 要应用策略的**用户和/或组**。
    - 要应用策略的**云应用或操作**。
-- 访问控制****
+- **访问控制**
    - **授予**或**阻止**控制
 
 ![空白条件访问策略](./media/concept-conditional-access-policies/conditional-access-blank-policy.png)
 
-文章["通用条件访问"策略](concept-conditional-access-policy-common.md)包括我们认为对大多数组织有用的一些策略。
+本文[常见的条件性访问策略](concept-conditional-access-policy-common.md)包括一些我们认为对大多数组织有用的策略。
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用条件访问"如果"工具模拟登录行为](troubleshoot-conditional-access-what-if.md)
+[使用条件性访问 What If 工具模拟登录行为](troubleshoot-conditional-access-what-if.md)
 
 [规划基于云的 Azure 多重身份验证部署](../authentication/howto-mfa-getstarted.md)
 
-[管理设备符合 Intune](/intune/device-compliance-get-started)
+[用 Intune 管理设备符合性](/intune/device-compliance-get-started)
 
 [Microsoft Cloud App Security 和条件访问](/cloud-app-security/proxy-intro-aad)

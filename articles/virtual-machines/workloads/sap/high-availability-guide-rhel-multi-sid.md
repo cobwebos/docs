@@ -1,5 +1,5 @@
 ---
-title: RHEL 多 SID 指南上的 SAP NW 的 Azure VM 高可用性 |微软文档
+title: RHEL 上的 SAP NW 的 Azure Vm 高可用性多 SID 指南 |Microsoft Docs
 description: Azure 虚拟机在 Red Hat Enterprise Linux 上为 SAP NetWeaver 提供的高可用性
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -15,13 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 03/24/2020
 ms.author: radeltch
 ms.openlocfilehash: 4f1bfd58e27f0cd677980ff9351d32d91a68e3e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80247429"
 ---
-# <a name="high-availability-for-sap-netweaver-on-azure-vms-on-red-hat-enterprise-linux-for-sap-applications-multi-sid-guide"></a>用于 SAP 应用程序多 SID 指南的红帽企业 Linux 上的 Azure VM 上的 SAP NetWeaver 的高可用性
+# <a name="high-availability-for-sap-netweaver-on-azure-vms-on-red-hat-enterprise-linux-for-sap-applications-multi-sid-guide"></a>适用于 SAP 应用程序的 Azure Red Hat Enterprise Linux Vm 上的 SAP NetWeaver 高可用性多 SID 指南
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
@@ -49,29 +49,29 @@ ms.locfileid: "80247429"
 [sap-hana-ha]:sap-hana-high-availability-rhel.md
 [glusterfs-ha]:high-availability-guide-rhel-glusterfs.md
 
-本文介绍如何在 Azure VM 上的两个节点群集中部署多个 SAP NetWeaver 高度可用的系统（即多 SID），以及用于 SAP 应用程序的红帽企业 Linux 的两个节点群集。  
+本文介绍如何使用适用于 SAP 应用程序的 Red Hat Enterprise Linux 在 Azure Vm 的两个节点群集中部署多个 SAP NetWeaver 高度可用系统（即多 SID）。  
 
-在示例配置中，安装命令等三个 SAP NetWeaver 7.50 系统部署在一个、两个节点的高可用性群集中。 SAP 系统 S 是：
-* **NW1：ASCS**实例编号**00**和虚拟主机名**msnw1ascs;** ERS 实例编号**02**和虚拟主机名**msnw1ers**。  
-* **NW2：ASCS**实例编号**10**和虚拟主机名**msnw2ascs;** ERS实例编号**12**和虚拟主机名**msnw2ers。**  
-* **NW3**：ASCS 实例编号**20**和虚拟主机名**msnw3ascs;** ERS实例编号**22**和虚拟主机名**msnw3ers。**  
+在示例配置中，安装命令等是三个 SAP NetWeaver 7.50 系统部署在单个双节点高可用性群集中。 SAP 系统 Sid 包括：
+* **NW1**： ASCS 实例编号**00**和虚拟主机名**msnw1ascs**;ERS 实例编号**02** ，虚拟主机名为**msnw1ers**。  
+* **NW2**： ASCS 实例编号**10**和虚拟主机名**msnw2ascs**;ERS 实例编号**12** ，虚拟主机名为**msnw2ers**。  
+* **NW3**： ASCS 实例编号**20**和虚拟主机名**msnw3ascs**;ERS 实例编号**22**且虚拟主机名为**msnw3ers**。  
 
-本文不介绍数据库层和 SAP NFS 共享的部署。 在本文中的示例中，我们使用[Azure NetApp 文件](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)卷**sapMSID**用于 NFS 共享，前提是该卷已部署。 我们还假设，Azure NetApp 文件卷是使用 NFSv3 协议部署的，并且 SAP 系统 NW1、NW2 和 NW3 的 ASCS 和 ERS 实例的群集资源存在以下文件路径：  
+本文不涉及 SAP NFS 共享的数据库层和部署。 在本文的示例中，我们将使用[Azure NetApp 文件](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)volume **sapMSID** for NFS 共享，前提是该卷已部署。 我们也假设，Azure NetApp 文件卷是用 NFSv3 协议部署的，并且 SAP 系统 NW1、NW2 和 NW3 的 ASCS 和 ERS 实例的群集资源存在以下文件路径：  
 
-* 体积汁液 （nfs://10.42.0.4/sapmnt<b>NW1</b>）
-* 体积液化（nfs://10.42.0.4/usrsap<b>NW1</b>ascs）
-* 体积汁液（nfs://10.42.0.4/usrsap<b>NW1</b>系统）
-* 体积汁液（nfs://10.42.0.4/usrsap<b>NW1</b>ers）
-* 体积汁液 （nfs://10.42.0.4/sapmnt<b>NW2</b>）
-* 体积液化（nfs://10.42.0.4/usrsap<b>NW2</b>ascs）
-* 体积汁液（nfs://10.42.0.4/usrsap<b>NW2</b>系统）
-* 体积汁液（nfs://10.42.0.4/usrsap<b>NW2</b>ers）
-* 体积液塞<b>（nfs://10.42.0.4/sapmntNW3）</b>
-* 体积液化（nfs://10.42.0.4/usrsap<b>NW3</b>ascs）
-* 体积汁液（nfs://10.42.0.4/usrsap<b>NW3</b>系统）
-* 体积汁液（nfs://10.42.0.4/usrsap<b>NW3</b>ers）
+* volume sapMSID （nfs://10.42.0.4/sapmnt<b>NW1</b>）
+* volume sapMSID （nfs://10.42.0.4/usrsap<b>NW1</b>ascs）
+* volume sapMSID （nfs://10.42.0.4/usrsap<b>NW1</b>sys）
+* volume sapMSID （nfs://10.42.0.4/usrsap<b>NW1</b>ers）
+* volume sapMSID （nfs://10.42.0.4/sapmnt<b>NW2</b>）
+* volume sapMSID （nfs://10.42.0.4/usrsap<b>NW2</b>ascs）
+* volume sapMSID （nfs://10.42.0.4/usrsap<b>NW2</b>sys）
+* volume sapMSID （nfs://10.42.0.4/usrsap<b>NW2</b>ers）
+* volume sapMSID （nfs://10.42.0.4/sapmnt<b>NW3</b>）
+* volume sapMSID （nfs://10.42.0.4/usrsap<b>NW3</b>ascs）
+* volume sapMSID （nfs://10.42.0.4/usrsap<b>NW3</b>sys）
+* volume sapMSID （nfs://10.42.0.4/usrsap<b>NW3</b>ers）
 
-在开始之前，请先参考以下 SAP 说明和论文：
+在开始之前，请先参阅以下 SAP 说明和文章：
 
 * SAP 说明 [1928533]，其中包含：
   * SAP 软件部署支持的 Azure VM 大小的列表
@@ -96,49 +96,49 @@ ms.locfileid: "80247429"
   * [High Availability Add-On Administration](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)（高可用性附加产品管理）
   * [High Availability Add-On 参考](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
   * [Configuring ASCS/ERS for SAP Netweaver with standalone resources in RHEL 7.5](https://access.redhat.com/articles/3569681)（使用 RHEL 7.5 中的独立资源为 SAP NetWeaver 配置 ASCS/ERS）
-  * [在 RHEL 上使用独立队列服务器 2 （ENSA2） 配置 SAP S/4HANA ASCS/ERS](https://access.redhat.com/articles/3974941)
-* 特定于 Azure 的 RHEL 文档：
+  * [在 RHEL 上的 Pacemaker 中，通过独立的排队服务器2（ENSA2）配置 SAP S/4HANA ASCS/ERS](https://access.redhat.com/articles/3974941)
+* Azure 特定的 RHEL 文档：
   * [Support Policies for RHEL High Availability Clusters - Microsoft Azure Virtual Machines as Cluster Members](https://access.redhat.com/articles/3131341)（RHEL 高可用性群集的支持策略 - Microsoft Azure 虚拟机作为群集成员）
   * [Installing and Configuring a Red Hat Enterprise Linux 7.4 (and later) High-Availability Cluster on Microsoft Azure](https://access.redhat.com/articles/3252491)（在 Microsoft Azure 上安装和配置 Red Hat Enterprise Linux 7.4 [及更高版本] 高可用性群集）
-* [使用 Azure NetApp 文件在 Microsoft Azure 上使用 NetApp SAP 应用程序][anf-sap-applications-azure]
+* [使用 Azure NetApp 文件 Microsoft Azure 上的 NetApp SAP 应用程序][anf-sap-applications-azure]
 
 ## <a name="overview"></a>概述
 
-参与群集的虚拟机必须调整大小才能运行所有资源，以防发生故障转移。 在多 SID 高可用性群集中，每个 SAP SID 可以独立地进行故障转移。  
+在发生故障转移时，必须调整加入群集的虚拟机的大小，使其能够运行所有资源。 在多 SID 高可用性群集中，每个 SAP SID 都可以相互独立地进行故障转移。  
 
-为了实现高可用性，SAP NetWeaver 需要高可用性股票。 在本文档中，我们将使用[Azure NetApp 文件 NFS 卷](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)上部署的 SAP 共享来演示示例。 也可以托管在高可用[GlusterFS 群集](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)上的共享，该群集可供多个 SAP 系统使用。  
+为了实现高可用性，SAP NetWeaver 需要高度可用的共享。 在本文档中，我们介绍了部署在[Azure NetApp 文件 NFS 卷](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)上的 SAP 共享的示例。 还可以在高度可用的[GlusterFS 群集](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)上托管共享，多个 SAP 系统可以使用这些共享。  
 
 ![SAP NetWeaver 高可用性概述](./media/high-availability-guide-rhel/ha-rhel-multi-sid.png)
 
 > [!IMPORTANT]
-> 在 Azure VM 中，支持将带有红帽 Linux 的 SAP ASCS/ERS 作为来宾操作系统的多 SID 群集仅限于同一群集上的**五**个 SAP SID。 每个新的 SID 都会增加复杂性。 不支持将 SAP 队列复制服务器 1 和同一群集上的队列复制服务器 2 混合**在**一起。 多 SID 群集描述在一个起搏器群集中安装多个具有不同 SID 的 SAP ASCS/ERS 实例。 目前，仅支持 ASCS/ERS 的多 SID 群集。  
+> 在 Azure Vm 中，支持将 SAP ASCS/ERS 与 Red Hat Linux 作为来宾操作系统进行多 SID 群集，限制为同一群集上的**五个**sap sid。 每个新 SID 都增加了复杂性。 **不支持**在同一个群集中混合使用 SAP 排队复制服务器1和排队复制服务器2。 多 SID 群集介绍了如何在一个 Pacemaker 群集中安装具有不同 Sid 的多个 SAP ASCS/ERS 实例。 目前仅支持 ASCS/ERS 的多 SID 群集。  
 
 > [!TIP]
-> SAP ASCS/ERS 的多 SID 群集是一种具有更高复杂性的解决方案。 实施工作更为复杂。 在执行维护活动（如操作系统修补）时，它还涉及更高的管理工作量。 在开始实际实现之前，请花些时间仔细规划部署以及所有相关组件，如 VM、NFS 装载、VIP、负载均衡器配置等。  
+> SAP ASCS/ERS 的多 SID 群集是复杂性更高的解决方案。 实现起来更为复杂。 执行维护活动（如 OS 修补）时，它还涉及更高的管理工作量。 在开始实际实施之前，请花些时间仔细规划部署和所有涉及的组件，如 Vm、NFS 装载、Vip、负载平衡器配置等。  
 
-SAP NetWeaver ASCS、SAP NetWeaver SCS 和 SAP NetWeaver ERS 使用虚拟主机名和虚拟 IP 地址。 在 Azure 上，需要负载均衡器才能使用虚拟 IP 地址。 我们建议使用[标准负载均衡器](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)。  
+SAP NetWeaver ASCS、SAP NetWeaver SCS 和 SAP NetWeaver ERS 使用虚拟主机名和虚拟 IP 地址。 在 Azure 上，需要负载均衡器才能使用虚拟 IP 地址。 建议使用[标准负载均衡器](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)。  
 
-下面的列表显示了此多 SID 群集示例（具有三个 SAP 系统的）A）SCS 和 ERS 负载均衡器的配置。 对于每个 ASCS 和 ERS 实例，您将需要单独的前端 IP、运行状况探测器和负载平衡规则。 将所有作为 ASCS/ASCS 群集一部分的 VM 分配给单个 ILB 的一个后端池。  
+以下列表显示了此多 SID 群集示例（包含三个 SAP 系统）的（A） SCS 和 ERS 负载均衡器的配置。 每个 Sid 的每个 ASCS 和 ERS 实例需要单独的前端 IP、运行状况探测和负载均衡规则。 将属于 ASCS/ASCS 群集的所有 Vm 分配给单个 ILB 的后端池。  
 
 ### <a name="ascs"></a>(A)SCS
 
 * 前端配置
-  * NW1 的 IP 地址： 10.3.1.50
-  * NW2 的 IP 地址： 10.3.1.52
-  * NW3 的 IP 地址： 10.3.1.54
+  * NW1 的 IP 地址：10.3.1.50
+  * NW2 的 IP 地址：10.3.1.52
+  * NW3 的 IP 地址：10.3.1.54
 
-* 探头端口
-  * 端口 620<strong>&lt;&gt;nr</strong>，因此用于 NW1、NW2 和 NW3 探头端口 620**00、620****10**和 620**20**
-* 负载平衡规则 - 为每个实例创建一个实例，即 NW1/ASCS、NW2/ASCS 和 NW3/ASCS。
-  * 如果使用标准负载均衡器，请选择**HA 端口**
-  * 如果使用基本负载平衡器，请为以下端口创建负载平衡规则
-    * 32<strong>&lt;&gt; nr</strong> TCP
-    * 36<strong>&lt;&gt; nr</strong> TCP
-    * 39<strong>&lt;&gt; nr</strong> TCP
-    * 81<strong>&lt;&gt; nr</strong> TCP
-    * 5<strong>&lt;&gt;nr</strong>13 TCP
-    * 5<strong>&lt;&gt;nr</strong>14 TCP
-    * 5<strong>&lt;&gt;nr</strong>16 TCP
+* 探测端口
+  * 端口 620<strong>&lt;nr&gt;</strong>，因此适用于 NW1、NW2 和 NW3 探测端口 620**00**，620**10**和 620**20**
+* 负载均衡规则-为每个实例创建一个规则，即 NW1/ASCS、NW2/ASCS 和 NW3/ASCS。
+  * 如果使用标准负载均衡器，请选择 " **HA 端口**"
+  * 如果使用基本负载均衡器，则为以下端口创建负载均衡规则
+    * 32<strong>&lt;nr&gt; </strong> TCP
+    * 36<strong>&lt;nr&gt; </strong> TCP
+    * 39<strong>&lt;nr&gt; </strong> TCP
+    * 81<strong>&lt;nr&gt; </strong> TCP
+    * 5<strong>&lt;nr&gt;</strong>13 TCP
+    * 5<strong>&lt;nr&gt;</strong>14 TCP
+    * 5<strong>&lt;nr&gt;</strong>16 TCP
 
 ### <a name="ers"></a>ERS
 
@@ -148,65 +148,65 @@ SAP NetWeaver ASCS、SAP NetWeaver SCS 和 SAP NetWeaver ERS 使用虚拟主机�
   * NW3 10.3.1.55 的 IP 地址
 
 * 探测端口
-  * 端口 621<strong>&lt;&gt;nr</strong>，因此用于 NW1、NW2 和 N3 探头端口 621**02、621****12**和 621**22**
-* 负载平衡规则 - 为每个实例创建一个实例，即 NW1/ERS、NW2/ERS 和 NW3/ERS。
-  * 如果使用标准负载均衡器，请选择**HA 端口**
-  * 如果使用基本负载平衡器，请为以下端口创建负载平衡规则
-    * 32<strong>&lt;&gt; nr</strong> TCP
-    * 33<strong>&lt;&gt; nr</strong> TCP
-    * 5<strong>&lt;&gt;nr</strong>13 TCP
-    * 5<strong>&lt;&gt;nr</strong>14 TCP
-    * 5<strong>&lt;&gt;nr</strong>16 TCP
+  * 端口 621<strong>&lt;nr&gt;</strong>，因此适用于 NW1、NW2 和 N3 探测端口 621**02**，621**12** ，621**22**
+* 负载均衡规则-为每个实例创建一个规则，即 NW1/ERS、NW2/ERS 和 NW3/ERS。
+  * 如果使用标准负载均衡器，请选择 " **HA 端口**"
+  * 如果使用基本负载均衡器，则为以下端口创建负载均衡规则
+    * 32<strong>&lt;nr&gt; </strong> TCP
+    * 33<strong>&lt;nr&gt; </strong> TCP
+    * 5<strong>&lt;nr&gt;</strong>13 TCP
+    * 5<strong>&lt;nr&gt;</strong>14 TCP
+    * 5<strong>&lt;nr&gt;</strong>16 TCP
 
 * 后端配置
   * 连接到所有虚拟机（这些虚拟机应为 (A)SCS/ERS 群集的一部分）的主网络接口
 
 > [!Note]
-> 当没有公共 IP 地址的 VM 放置在内部（无公共 IP 地址）标准 Azure 负载均衡器的后端池中时，将没有出站互联网连接，除非执行其他配置以允许路由到公共终结点。 有关如何实现出站连接的详细信息，请参阅[在 SAP 高可用性方案中使用 Azure 标准负载均衡器的虚拟机的公共终结点连接](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)。  
+> 如果没有公共 IP 地址的 Vm 放在内部（无公共 IP 地址）标准 Azure 负载均衡器的后端池中，则不会有出站 internet 连接，除非执行其他配置以允许路由到公共终结点。 有关如何实现出站连接的详细信息，请参阅[使用 Azure 标准负载均衡器在 SAP 高可用性方案中的虚拟机的公共终结点连接](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)。  
 
 > [!IMPORTANT]
-> 请勿在位于 Azure 负载均衡器后面的 Azure VM 上启用 TCP 时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数**net.ipv4.tcp_timestamps**设置为**0**。 有关详细信息，请参阅[负载均衡器运行状况探测器](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
+> 不要在 azure 负载均衡器后面的 Azure Vm 上启用 TCP 时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数**tcp_timestamps**设置为**0**。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
 
-## <a name="sap-shares"></a>SAP 股份
+## <a name="sap-shares"></a>SAP 共享
 
-SAP NetWeaver 需要传输、配置文件目录等的共享存储。 对于高可用的 SAP 系统，拥有高可用共享非常重要。 您需要决定 SAP 共享的体系结构。 一个选项是在[Azure NetApp 文件 NFS 卷](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)上部署共享。  使用 Azure NetApp 文件，SAP NFS 共享将获得内置的高可用性。
+SAP NetWeaver 要求传输、配置文件目录等共享存储。 对于高度可用的 SAP 系统，具有高度可用的共享很重要。 需要确定 SAP 共享的体系结构。 一种选择是在[Azure NetApp 文件 NFS 卷](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)上部署共享。  对于 Azure NetApp 文件，你将获得 SAP NFS 共享的内置高可用性。
 
-另一个选项是在[红帽企业Linux上的 Azure VM 上为 SAP NetWeaver 构建 GlusterFS，](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)可在多个 SAP 系统之间共享。 
+另一种做法是在[Azure vm Red Hat Enterprise Linux 上构建 GlusterFS，用于 SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)，可在多个 SAP 系统之间共享。 
 
-## <a name="deploy-the-first-sap-system-in-the-cluster"></a>部署群集中的第一个 SAP 系统
+## <a name="deploy-the-first-sap-system-in-the-cluster"></a>在群集中部署第一个 SAP 系统
 
-现在，您已经决定了 SAP 共享的体系结构，按照相应的文档部署群集中的第一个 SAP 系统。
+现在，你已决定 SAP 共享的体系结构，请按照相应的文档在群集中部署第一个 SAP 系统。
 
-* 如果使用 Azure NetApp 文件 NFS 卷，请按照 Azure VM 在[红帽企业 Linux 上使用用于 SAP 应用程序的 Azure NetApp 文件，在红帽企业 Linux 上为 SAP NetWeaver 提供高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)  
-* 如果使用 GlusterFS 群集，请按照[红帽企业 Linux 上的 Azure VM 上的 GlusterFS 进行 SAP NetWeaver。](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)  
+* 如果使用 Azure NetApp 文件 NFS 卷，请[在 Azure 虚拟机上使用适用于 sap 应用程序的 Azure Netapp 文件 Red Hat Enterprise Linux 的 Azure vm 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)  
+* 如果使用的是 GlusterFS 群集，请遵循[Azure vm 上的 GlusterFS Red Hat Enterprise Linux FOR SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)。  
 
-上面列出的文档将指导您完成准备必要基础结构、构建群集、准备操作系统以运行 SAP 应用程序的步骤。  
+以上列出的文档将指导你完成准备所需的基础结构、构建群集、为运行 SAP 应用程序准备 OS 的步骤。  
 
 > [!TIP]
-> 在部署第一个系统后，始终测试群集的故障转移功能，然后再向群集添加其他 SAP S。" 这样，在将其他 SAP 系统的复杂性添加到群集之前，您就知道群集功能有效。   
+> 在将其他 SAP Sid 添加到群集之前，请始终测试群集的故障转移功能。 这样，在将其他 SAP 系统的复杂性添加到群集之前，就可以了解群集功能的工作原理。   
 
 ## <a name="deploy-additional-sap-systems-in-the-cluster"></a>在群集中部署其他 SAP 系统
 
-在此示例中，我们假设系统**NW1**已部署在群集中。 我们将演示如何在群集 SAP 系统**NW2**和**NW3**中部署。 
+在此示例中，我们假定已在群集中部署了系统**NW1** 。 我们将演示如何在群集 SAP 系统**NW2**和**NW3**中进行部署。 
 
 以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2************。
 
-### <a name="prerequisites"></a>先决条件 
+### <a name="prerequisites"></a>必备条件 
 
 > [!IMPORTANT]
-> 在按照在群集中部署其他 SAP 系统的说明之前，请按照说明在群集中部署第一个 SAP 系统，因为有些步骤仅在第一个系统部署期间是必需的。  
+> 在按照说明在群集中部署其他 SAP 系统之前，请按照说明在群集中部署第一个 SAP 系统，因为在第一次部署系统的过程中，只需要执行一些步骤。  
 
 本文档假定：
-* 起搏器群集已配置并运行。  
-* 至少有一个 SAP 系统（ASCS / ERS 实例）已在群集中部署并运行。  
-* 群集故障转移功能已过测试。  
-* 部署了所有 SAP 系统的 NFS 共享。  
+* Pacemaker 群集已配置且正在运行。  
+* 至少一个 SAP 系统（ASCS/ERS 实例）已部署并且正在群集中运行。  
+* 已测试群集故障转移功能。  
+* 部署所有 SAP 系统的 NFS 共享。  
 
-### <a name="prepare-for-sap-netweaver-installation"></a>为 SAP 网织机安装做好准备
+### <a name="prepare-for-sap-netweaver-installation"></a>准备 SAP NetWeaver 安装
 
-1. 按照指示通过[Azure 门户手动部署 Azure 负载均衡器](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files#deploy-linux-manually-via-azure-portal)，将新部署的系统（即**NW2、NW3）** 的配置添加到现有的 Azure 负载均衡器。 **NW3** 调整配置的 IP 地址、运行状况探测端口和负载平衡规则。  
+1. 按照说明[通过 Azure 门户手动部署 Azure 负载均衡器](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files#deploy-linux-manually-via-azure-portal)，将新部署的系统（即**NW2**、 **NW3**）的配置添加到现有的 azure 负载均衡器。 调整配置的 IP 地址、运行状况探测端口和负载均衡规则。  
 
-2. **[A]** 其他 SAP 系统的设置名称解析。 您可以使用 DNS 服务器或修改`/etc/hosts`所有节点。 此示例演示如何使用该文件`/etc/hosts`。  根据环境调整 IP 地址和主机名。 
+2. **[A]** 为其他 SAP 系统设置名称解析。 可以在所有节点上使用 DNS 服务器`/etc/hosts`或修改。 此示例演示如何使用`/etc/hosts`文件。  根据你的环境调整 IP 地址和主机名。 
 
     ```
     sudo vi /etc/hosts
@@ -243,16 +243,16 @@ SAP NetWeaver 需要传输、配置文件目录等的共享存储。 对于高�
     sudo chattr +i /usr/sap/NW3/ERS22
    ```
 
-4. **[A]** 为要部署到群集的其他 SAP 系统添加 /sapmnt/SID 和 /usr/sap/SID/SYS 文件系统的装载条目。 在此示例中 **，NW2**和**NW3**。  
+4. **[A]** 为要部署到群集的其他 sap 系统添加/Sapmnt/SID 和/usr/sap/SID/SYS 文件系统的装载条目。 在此示例中， **NW2**和**NW3**。  
 
-   使用文件系统`/etc/fstab`更新要部署到群集的其他 SAP 系统的文件。  
+   针对要`/etc/fstab`部署到群集的其他 SAP 系统，用文件系统更新文件。  
 
-   * 如果使用 Azure NetApp 文件，请按照[此处](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files#prepare-for-sap-netweaver-installation)的说明操作  
-   * 如果使用 GlusterFS 群集，请按照[此处](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel#prepare-for-sap-netweaver-installation)的说明操作  
+   * 如果使用 Azure NetApp 文件，请按照[此处](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files#prepare-for-sap-netweaver-installation)的说明进行操作  
+   * 如果使用 GlusterFS 群集，请按照[此处](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel#prepare-for-sap-netweaver-installation)的说明进行操作  
 
-### <a name="install-ascs--ers"></a>安装 ASCS / ERS
+### <a name="install-ascs--ers"></a>安装 ASCS/ERS
 
-1. 为要部署到群集的其他 SAP 系统的 ASCS 实例创建虚拟 IP 和运行状况探测群集资源。 此处显示的示例适用于**NW2**和**NW3** ASCS，使用具有 NFSv3 协议的 Azure NetApp 文件卷上的 NFS。  
+1. 为要部署到群集的其他 SAP 系统的 ASCS 实例创建虚拟 IP 和运行状况探测群集资源。 此处所示的示例针对的是**NW2**和**NW3** ASCS，在 Azure NetApp 文件卷上使用带有 NFSv3 协议的 NFS。  
 
     ```
     sudo pcs resource create fs_NW2_ASCS Filesystem device='10.42.0.4:/sapMSIDR/usrsapNW2ascs' \
@@ -280,13 +280,13 @@ SAP NetWeaver 需要传输、配置文件目录等的共享存储。 对于高�
     --group g-NW3_ASCS
     ```
 
-   确保群集状态正常，并且所有资源都已启动。 资源在哪个节点上运行并不重要。  
+   请确保群集状态为 "正常"，并且所有资源均已启动。 资源在哪个节点上运行并不重要。  
 
 2. [1] 安装 SAP NetWeaver ASCS****  
 
-   使用映射到 ASCS 负载均衡器前端配置的 IP 地址的虚拟主机名，将 SAP NetWeaver ASCS 安装为根。 例如，对于系统**NW2，** 虚拟主机名为 msnw2ascs，10.3.1.52 和用于负载均衡器探测的实例编号，例如<b>10</b>。 <b>msnw2ascs</b> <b>10.3.1.52</b> 对于系统**NW3，** 虚拟主机名是 msnw3ascs，10.3.1.54 和用于负载均衡器探测的实例编号，例如<b>msnw3ascs</b><b>20</b>。 <b>10.3.1.54</b> 请记下为每个 SAP SID 安装 ASCS 的群集节点。  
+   使用映射到 ASCS 的负载均衡器前端配置的 IP 地址的虚拟主机，以 root 身份安装 SAP NetWeaver ASCS。 例如，对于 system **NW2**，虚拟主机名为<b>msnw2ascs</b>、 <b>10.3.1.52</b>和用于探测负载均衡器的实例号，例如<b>10</b>。 对于 system **NW3**，虚拟主机名为<b>msnw3ascs</b>、 <b>10.3.1.54</b>和用于探测负载均衡器的实例号，例如<b>20</b>。 记下在哪个群集节点上安装了每个 SAP SID 的 ASCS。  
 
-   可以使用 sapinst 参数 SAPINST_REMOTE_ACCESS_USER 允许非根用户连接到 sapinst。 您可以使用参数SAPINST_USE_HOSTNAME使用虚拟主机名安装 SAP。  
+   可以使用 sapinst 参数 SAPINST_REMOTE_ACCESS_USER 允许非根用户连接到 sapinst。 可以使用参数 SAPINST_USE_HOSTNAME 使用虚拟主机名安装 SAP。  
 
     ```
     # Allow access to SWPM. This rule is not permanent. If you reboot the machine, you have to run the command again
@@ -294,9 +294,9 @@ SAP NetWeaver 需要传输、配置文件目录等的共享存储。 对于高�
     sudo swpm/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=virtual_hostname
     ```
 
-   如果安装未能在 /usr/sap/SID /ASCS**SID****实例*** 中创建子文件夹，请尝试将所有者设置为**sid**adm 和组以 SCS**实例*** 的 sapsys 进行重试。
+   如果安装无法在/usr/sap/**SID**/ASCS**instance #** 中创建子文件夹，请尝试将所有者设置为**SID**ADM 并将组设置为 ASCS**实例 #** 的 sapsys，然后重试。
 
-3. **[1]** 为要部署到群集的其他 SAP 系统的 ERS 实例创建虚拟 IP 和运行状况探测群集资源。 此处显示的示例适用于**NW2**和**NW3** ERS，使用具有 NFSv3 协议的 Azure NetApp 文件卷上的 NFS。  
+3. **[1]** 为要部署到群集的其他 SAP 系统的 ERS 实例创建虚拟 IP 和运行状况探测群集资源。 此处所示的示例针对的是**NW2**和**NW3** ERS，在 Azure NetApp 文件卷上使用带有 NFSv3 协议的 NFS。  
 
     ```
     sudo pcs resource create fs_NW2_AERS Filesystem device='10.42.0.4:/sapMSIDR/usrsapNW2ers' \
@@ -324,9 +324,9 @@ SAP NetWeaver 需要传输、配置文件目录等的共享存储。 对于高�
      --group g-NW3_AERS
    ```
 
-   确保群集状态正常，并且所有资源都已启动。  
+   请确保群集状态为 "正常"，并且所有资源均已启动。  
 
-   接下来，确保新创建的 ERS 组的资源在群集节点上运行，与安装同一 SAP 系统的 ASCS 实例的群集节点相反。  例如，如果 NW2 ASCS 安装在`rhelmsscl1`上，则请确保 NW2 ERS 组`rhelmsscl2`在 上运行。  您可以通过为组中的一个群集资源运行`rhelmsscl2`以下命令，将 NW2 ERS 组迁移到： 
+   接下来，请确保新创建的 ERS 组的资源在群集节点上运行，这与安装了同一 SAP 系统的 ASCS 实例的群集节点相反。  例如，如果在上`rhelmsscl1`安装了 NW2 ASCS，请确保 NW2 ERS 组在上`rhelmsscl2`运行。  若要将 NW2 ERS 组迁移到`rhelmsscl2` ，可以为组中的其中一个群集资源运行以下命令： 
 
     ```
       pcs resource move fs_NW2_AERS rhelmsscl2
@@ -334,9 +334,9 @@ SAP NetWeaver 需要传输、配置文件目录等的共享存储。 对于高�
 
 4. [2] 安装 SAP Netweaver ERS****
 
-   使用虚拟主机名将 SAP NetWeaver ERS 作为根安装到 ERS 的负载均衡器前端配置的 IP 地址。 例如，对于系统**NW2，** 虚拟主机名将是 msnw2ers，10.3.1.53 和用于负载均衡器探测的实例编号，例如<b>msnw2ers</b><b>12</b>。 <b>10.3.1.53</b> 对于系统**NW3，** 虚拟主机名<b>msnw3ers</b> <b>，10.3.1.55</b>和用于负载均衡器探测的实例编号，例如<b>22</b>。 
+   使用映射到 ERS 的负载均衡器前端配置的 IP 地址的虚拟主机名，在另一个节点上以 root 身份安装 SAP NetWeaver ERS。 例如，对于 system **NW2**，虚拟主机名为<b>msnw2ers</b>、 <b>10.3.1.53</b>和用于探测负载均衡器的实例号，例如<b>12</b>。 对于 system **NW3**，为用于探测负载均衡器的虚拟主机名<b>msnw3ers</b>、 <b>10.3.1.55</b>和实例编号（例如<b>22</b>）。 
 
-   可以使用 sapinst 参数 SAPINST_REMOTE_ACCESS_USER 允许非根用户连接到 sapinst。 您可以使用参数SAPINST_USE_HOSTNAME使用虚拟主机名安装 SAP。  
+   可以使用 sapinst 参数 SAPINST_REMOTE_ACCESS_USER 允许非根用户连接到 sapinst。 可以使用参数 SAPINST_USE_HOSTNAME 使用虚拟主机名安装 SAP。  
 
     ```
     # Allow access to SWPM. This rule is not permanent. If you reboot the machine, you have to run the command again
@@ -347,16 +347,16 @@ SAP NetWeaver 需要传输、配置文件目录等的共享存储。 对于高�
    > [!NOTE]
    > 使用 SWPM SP 20 PL 05 或更高版本。 较低版本不会正确设置权限，安装将失败。
 
-   如果安装未能在 /usr/sap/**NW2**/ERS**实例*** 中创建子文件夹，请尝试将所有者设置为**sid**adm，并将组设置为 ERS**实例*** 文件夹的 sapsys 并重试。
+   如果安装无法在/usr/sap/**NW2**/ERS**实例 #** 中创建**子文件夹，** 请尝试将 "所有者" 设置为 " **sid**adm"，将 "组" 设置为 "sapsys"，然后重试。
 
-   如果需要将新部署的 SAP 系统的 ERS 组迁移到其他群集节点，不要忘记删除 ERS 组的位置约束。 可以通过运行以下命令来删除约束（为 SAP 系统**NW2**和**NW3**提供了示例）。 请确保删除用于移动 ERS 群集组的命令中使用的同一资源的临时约束。
+   如果需要将新部署的 SAP 系统的 ERS 组迁移到另一个群集节点，请不要忘记删除 ERS 组的位置约束。 可以通过运行以下命令来删除约束（该示例是针对 SAP systems **NW2**和**NW3**提供的）。 请确保删除在命令中用于移动 ERS 群集组的同一资源的临时约束。
 
     ```
       pcs resource clear fs_NW2_AERS
       pcs resource clear fs_NW3_AERS
     ```
 
-5. **[1]** 为新安装的 SAP 系统调整 ASCS/SCS 和 ERS 实例配置文件。 下面显示的示例用于 NW2。 您需要调整添加到群集的所有 SAP 实例的 ASCS/SCS 和 ERS 配置文件。  
+5. **[1]** 改编新安装的 SAP 系统的 ASCS/SCS 和 ERS 实例配置文件。 下面显示的示例适用于 NW2。 你将需要为添加到群集中的所有 SAP 实例调整 ASCS/SCS 和 ERS 配置文件。  
  
    * ASCS/SCS 配置文件
 
@@ -386,7 +386,7 @@ SAP NetWeaver 需要传输、配置文件目录等的共享存储。 对于高�
 
 6. **[A]** 更新 /usr/sap/sapservices 文件
 
-   为了防止 sapinit 启动脚本启动实例，必须从`/usr/sap/sapservices`文件中注释掉 Pacemaker 管理的所有实例。  下面所示的示例适用于 SAP 系统**NW2**和**NW3**。  
+   若要防止 sapinit 启动脚本启动实例，必须从文件中`/usr/sap/sapservices`注释掉 Pacemaker 管理的所有实例。  下面显示的示例适用于 SAP 系统**NW2**和**NW3**。  
 
    ```
     # On the node where ASCS was installed, comment out the line for the ASCS instacnes
@@ -398,9 +398,9 @@ SAP NetWeaver 需要传输、配置文件目录等的共享存储。 对于高�
     #LD_LIBRARY_PATH=/usr/sap/NW3/ERS22/exe:$LD_LIBRARY_PATH; export LD_LIBRARY_PATH; /usr/sap/NW3/ERS22/exe/sapstartsrv pf=/usr/sap/NW3/ERS22/profile/NW3_ERS22_msnw3ers -D -u nw3adm
    ```
 
-7. **[1]** 为新安装的 SAP 系统创建 SAP 群集资源。  
+7. **[1]** 创建新安装的 sap 系统的 sap 群集资源。  
 
-   如果使用排队服务器 1 体系结构 （ENSA1），请定义 SAP 系统**NW2**和**NW3**的资源，如下所示：
+   如果使用 "排队服务器1体系结构" （ENSA1），请按如下所示定义 SAP systems **NW2**和**NW3**的资源：
 
     ```
      sudo pcs property set maintenance-mode=true
@@ -444,8 +444,8 @@ SAP NetWeaver 需要传输、配置文件目录等的共享存储。 对于高�
     sudo pcs property set maintenance-mode=false
     ```
 
-   SAP 引入了对自 SAP NW 7.52 起对排队服务器 2（包括复制）的支持。 从 ABAP 平台 1809 开始，默认情况下安装排队服务器 2。 有关排队服务器 2 支持，请参阅 SAP 注释[2630416。](https://launchpad.support.sap.com/#/notes/2630416)
-   如果使用排队服务器 2 体系结构[（ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)），请定义 SAP 系统**NW2**和**NW3**的资源，如下所示：
+   SAP 在 SAP NW 7.52 中引入了对排队服务器2（包括复制）的支持。 从 ABAP 平台1809开始，默认情况下会安装排队服务器2。 有关排队服务器2支持，请参阅 SAP 说明[2630416](https://launchpad.support.sap.com/#/notes/2630416) 。
+   如果使用 "排队服务器2体系结构" （[ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)），请按如下所示定义 SAP systems **NW2**和**NW3**的资源：
 
     ```
      sudo pcs property set maintenance-mode=true
@@ -489,13 +489,13 @@ SAP NetWeaver 需要传输、配置文件目录等的共享存储。 对于高�
     sudo pcs property set maintenance-mode=false
     ```
 
-   如果要从旧版本升级到排队服务器 2，请参阅 SAP 注释[2641019](https://launchpad.support.sap.com/#/notes/2641019)。 
+   如果从较旧版本升级并切换到排队服务器2，请参阅 SAP 说明[2641019](https://launchpad.support.sap.com/#/notes/2641019)。 
 
    > [!NOTE]
    > 上述配置中的超时只是示例，可能需要适应特定的 SAP 设置。 
 
    请确保群集状态正常，并且所有资源都已启动。 资源在哪个节点上运行并不重要。
-   下面的示例显示 SAP 系统**NW2**和**NW3**添加到群集后群集资源状态。 
+   以下示例显示了在 SAP 系统**NW2**和**NW3**添加到群集后，群集资源的状态。 
 
     ```
      sudo pcs status
@@ -537,7 +537,7 @@ SAP NetWeaver 需要传输、配置文件目录等的共享存储。 对于高�
         rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started rhelmsscl1
     ```
 
-8. **[A]** 在两个节点上添加 ASCS 和 ERS 的防火墙规则。  下面的示例显示了 SAP 系统**NW2**和**NW3**的防火墙规则。  
+8. **[A]** 为两个节点上的 ASCS 和 ERS 添加防火墙规则。  以下示例显示了适用于 SAP 系统**NW2**和**NW3**的防火墙规则。  
 
    ```
     # NW2 - ASCS
@@ -598,26 +598,26 @@ SAP NetWeaver 需要传输、配置文件目录等的共享存储。 对于高�
     sudo firewall-cmd --zone=public --add-port=52216/tcp
    ```
 
-### <a name="proceed-with-the-sap-installation"></a>继续 SAP 安装 
+### <a name="proceed-with-the-sap-installation"></a>继续进行 SAP 安装 
 
-通过：
+通过以下方式完成 SAP 安装：
 
 * [准备 SAP NetWeaver 应用程序服务器](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files#2d6008b0-685d-426c-b59e-6cd281fd45d7)
 * [安装 DBMS 实例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files#install-database)
 * [安装主 SAP 应用程序服务器](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files#sap-netweaver-application-server-installation)
-* 安装一个或多个附加的 SAP 应用程序实例
+* 安装一个或多个其他 SAP 应用程序实例
 
 ## <a name="test-the-multi-sid-cluster-setup"></a>测试多 SID 群集设置
 
-以下测试是红帽最佳实践指南中的测试用例的子集。 它们包含在您的方便。 有关群集测试的完整列表，请参阅以下文档：
+以下测试是 Red Hat 的最佳实践指南中的测试用例的子集。 为了方便起见，已将其包含在内。 有关群集测试的完整列表，请参阅以下文档：
 
-* 如果使用 Azure NetApp 文件 NFS 卷，请关注[AZURE VM 在 RHEL 上为 SAP NetWeaver 提供高可用性，以及用于 SAP 应用程序的 Azure NetApp 文件](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
-* 如果使用高可用性`GlusterFS`，请按照[AZURE VM 在 RHEL 上的 SAP NetWeaver 的高可用性进行 SAP 应用程序](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)操作。  
+* 如果使用 Azure NetApp 文件 NFS 卷，请遵循[适用于 sap 应用程序的 Azure Netapp 文件的 Azure vm 高可用性 Sap NetWeaver ON RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
+* 如果使用高可用性`GlusterFS`，请遵循[RHEL for sap 应用程序上的 Sap NetWeaver 的 Azure vm 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)。  
 
-始终阅读红帽最佳实践指南，并执行可能添加的所有其他测试。  
-提供的测试位于两个节点多 SID 群集中，安装了三个 SAP 系统。  
+请始终阅读 Red Hat 最佳实践指南，并执行可能已添加的所有其他测试。  
+所呈现的测试位于两个节点，多 SID 群集中安装了三个 SAP 系统。  
 
-1. 手动迁移 ASCS 实例。 该示例显示迁移 SAP 系统 NW3 的 ASCS 实例。
+1. 手动迁移 ASCS 实例。 该示例演示了如何迁移 SAP system NW3 的 ASCS 实例。
 
    开始测试之前的资源状态：
 
@@ -659,7 +659,7 @@ SAP NetWeaver 需要传输、配置文件目录等的共享存储。 对于高�
         rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started rhelmsscl1
    ```
 
-   将以下命令作为根运行以迁移 NW3 ASCS 实例。
+   以 root 身份运行以下命令，以迁移 NW3 ASCS 实例。
 
    ```
     pcs resource move rsc_sap_NW3_ASCS200
@@ -752,13 +752,13 @@ SAP NetWeaver 需要传输、配置文件目录等的共享存储。 对于高�
         rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started rhelmsscl2
    ```
 
-   在节点上运行以下命令作为根，其中至少有一个 ASCS 实例正在运行。 在此示例中，我们在 上`rhelmsscl1`执行命令，其中 NW1、NW2 和 NW3 的 ASCS 实例正在运行。  
+   在节点上以 root 身份运行以下命令，其中至少有一个 ASCS 实例正在运行。 在此示例中，我们在上`rhelmsscl1`执行了命令，其中 NW1、NW2 和 NW3 的 ASCS 实例正在运行。  
 
    ```
    echo c > /proc/sysrq-trigger
    ```
 
-   测试后的状态，以及节点之后，已崩溃的再次启动，应如下所示。
+   已崩溃的测试后和节点之后的状态将再次开始，应如下所示。
 
    ```
     Full list of resources:

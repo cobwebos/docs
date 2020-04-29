@@ -13,10 +13,10 @@ ms.date: 06/18/2018
 ms.author: apimpm
 ms.custom: fasttrack-edit
 ms.openlocfilehash: b6d949b50be348e72cedfc3710383308b04de106
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80336010"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Azure API 管理实例的容量
@@ -26,7 +26,7 @@ ms.locfileid: "80336010"
 本文介绍**容量**的定义及其行为。 其中介绍了如何在 Azure 门户中访问**容量**指标，并建议何时应考虑扩展或升级 API 管理实例。
 
 > [!IMPORTANT]
-> 本文介绍如何基于容量指标来监视和缩放 Azure API 管理实例。 但是，同样重要的是要了解当单个 API 管理实例实际上*达到*其容量时会发生什么情况。 Azure API 管理不会应用任何服务级别限制来防止实例的物理过载。 当实例达到其物理容量时，其行为将类似于无法处理传入请求的任何重载 Web 服务器：延迟将增加，连接将被丢弃，超时错误发生等。这意味着 API 客户端应准备好处理与任何其他外部服务类似的这种可能性（例如，通过应用重试策略）。
+> 本文介绍如何基于容量指标来监视和缩放 Azure API 管理实例。 但是，同样重要的是要了解当单个 API 管理实例实际上*达到*其容量时会发生什么情况。 Azure API 管理不会应用任何服务级别限制来防止实例的物理过载。 当实例达到其物理容量时，它的行为将类似于任何无法处理传入请求的过载 Web 服务器：延迟将增加，连接将丢弃，将发生超时错误，等等。这意味着 API 客户端应该准备好处理这种可能性，就像处理任何其他外部服务一样（例如，通过应用重试策略）。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -48,7 +48,7 @@ ms.locfileid: "80336010"
 
 + API 管理数据平面服务（如请求处理）可以包括转发请求或运行策略。
 + API 管理管理平面服务，例如通过 Azure 门户或 ARM 应用的管理操作，或者来自[开发人员门户](api-management-howto-developer-portal.md)的负载。
-+ 选定的操作系统进程，包括涉及在新连接上握手成本的进程。
++ 选择的操作系统进程，包括涉及新连接上的 TLS 握手开销的进程。
 
 总**容量**是 API 管理实例的每个单元中容量自有值的平均值。
 
@@ -77,14 +77,14 @@ ms.locfileid: "80336010"
   
 ![容量指标](./media/api-management-capacity/capacity-metric.png)  
 
-1. 导航到[Azure 门户](https://portal.azure.com/)中的 APIM 实例。
-2. 选择“指标”****。
-3. 在紫色部分，从可用指标中选择“容量”，并保留默认的“平均值”聚合。********
+1. 在 [Azure 门户](https://portal.azure.com/)中导航到自己的 APIM 实例。
+2. 选择“指标”  。
+3. 在紫色部分，从可用指标中选择“容量”，并保留默认的“平均值”聚合。  
 
     > [!TIP]
     > 为避免解释错误，**容量**指标始终按位置分解。
 
-4. 在绿色部分选择“位置”，以便按维度拆分指标。****
+4. 在绿色部分选择“位置”，以便按维度拆分指标。 
 5. 从该部分的顶部栏中选择所需的时间范围。
 
     可以设置指标警报，以便在发生意外的情况时收到通知。 例如，当 APIM 实例超出预期峰值容量有 20 分钟以上时收到通知。

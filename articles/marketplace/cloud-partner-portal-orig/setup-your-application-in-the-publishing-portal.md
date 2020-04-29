@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
 ms.openlocfilehash: 2676dbf72309eeb51be1f08e7bae2c1502cc671e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80280195"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>在发布门户中设置应用程序
@@ -29,7 +29,7 @@ ms.locfileid: "80280195"
 
 ![“新建套餐”屏幕](./media/CRMScreenShot15.png)
 
-1. 需要填写的“窗体”显示在“编辑器”视图中的左侧。 每个"窗体"由一组要填写的字段组成。所需字段用红色星号 （ ）\*标记。
+1. 需要填写的“窗体”显示在“编辑器”视图中的左侧。 每个 "窗体" 包含一组要填写的字段。必填字段用红色星号（\*）标记。
 
 有四个主窗体用于创作 Dynamics 365 for Customer Engagement 套餐
 
@@ -46,13 +46,13 @@ ms.locfileid: "80280195"
 
 这是发布者个人资料内产品/服务的唯一标识符。 此 ID 将显示在产品 URL 中。 它只能由小写字母数字字符或短划线 (-) 组成。 ID 不能以短划线结束，并且不能超过 50 个字符。 此字段在套餐推出后处于锁定状态。
 
-例如，如果发布商 **"contoso"** 发布者创建报价**ID"示例 WebApp"** 的要约，它将在 AppSource 中显示为"https：/appsource.microsoft.com/marketplace/apps/contoso.sample-WebApp?tab=Overview"\/
+例如，如果发布者 **"contoso"** 发布者创建了产品/服务 ID 为 **"WebApp"** 的产品/服务，则它将在 AppSource 中显示\/为 "https：/appsource.microsoft.com/marketplace/apps/contoso.sample-WebApp?tab=Overview"
 
 ### <a name="publisher-id"></a>发布者 ID
 
 通过此下拉列表，可以选择要在其下发布此产品/服务的发布者个人资料。 此字段在套餐推出后处于锁定状态。
 
-### <a name="name"></a>“属性”
+### <a name="name"></a>名称
 
 这是产品/服务的显示名称。 这是将在[AppSource](https://appsource.microsoft.com/)中显示的名称。 该名称不能超过 50 个字符。
 
@@ -77,11 +77,11 @@ ms.locfileid: "80280195"
 
 * 包的文件名：在上述步骤中创建 CRM AppSource 包的 zip 文件时创建的文件名。 在上述示例中，文件名为“Microsoft\_SamplePackage.zip”。
 * 包位置的 URL：这是包含上面指定的包文件名的 Azure 存储帐户的 URL。 它是在上述部分的“步骤 9”中创建的 URL。
-* 包文件中是否包含多个 CRM 包：**仅当**支持多个版本的、包含不同包的 CRM 时，才选择“是”。 大多数合作伙伴会选择“否”。 如果选择“是”，则需要为每个版本的解决方案创建 AppSource 包。 _注意：这不是问你是否有多个**zip**文件。如果您有多个解决方案.zip 文件，但只有一个版本，您仍应选择"否"。包装工具会自动将这些组合在一起。_
+* 包文件中是否包含多个 CRM 包：**仅当**支持多个版本的、包含不同包的 CRM 时，才选择“是”。 大多数合作伙伴会选择“否”。 如果选择“是”，则需要为每个版本的解决方案创建 AppSource 包。 _注意：这不会询问你是否有多个**zip**文件。如果有多个解决方案 .zip 文件，但只有一个版本，则仍应选择 "否"。打包工具会自动将这些组合在一起。_
 
 ### <a name="crm-package-availability"></a>CRM 包可用性
 
-在此部分，选择可以使用该包的 CRM 区域。 有关哪些 CRM 区域服务于哪些国家/地区的信息，请参阅链接：[https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
+在此部分，选择可以使用该包的 CRM 区域。 有关哪些 CRM 区域提供哪些国家/地区的信息，请参阅以下链接：[https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
 
 注意：部署到德国主权云和 US Gov 主权云需要特殊权限，且在认证期间需要验证
 
@@ -117,7 +117,7 @@ ms.locfileid: "80280195"
 
 ### <a name="supported-languages"></a>支持的语言
 
-选择应用支持的语言。 如果您的应用支持此列表中未包含的其他语言，请继续发布您的优惠，并发送电子邮件至：[appsource@microsoft.com](mailto:appsource@microsoft.com)告知我们。
+选择应用支持的语言。 如果你的应用程序支持不在此列表中的其他语言，请继续发布你的产品/服务[appsource@microsoft.com](mailto:appsource@microsoft.com)并向我们发送电子邮件，告知我们。
 
 ### <a name="app-version"></a>应用版本
 
@@ -182,7 +182,7 @@ AppSource 允许客户基于关键字执行搜索。 可以输入关键字集，
 * [Azure 表](./cloud-partner-portal-lead-management-instructions-azure-table.md)
 * [Marketo](./cloud-partner-portal-lead-management-instructions-marketo.md)
 * [Microsoft Dynamics CRM](./cloud-partner-portal-lead-management-instructions-dynamics.md)
-* [销售队伍](./cloud-partner-portal-lead-management-instructions-salesforce.md)
+* [Salesforce](./cloud-partner-portal-lead-management-instructions-salesforce.md)
 
 ## <a name="storefront-details"></a>店面详细信息
 

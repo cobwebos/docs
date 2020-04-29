@@ -1,5 +1,5 @@
 ---
-title: 删除市场优惠 |Azure 应用商店
+title: 删除 marketplace 产品/服务 |Azure Marketplace
 description: 使用云合作伙伴门户删除 Azure 和 AppSource 市场中的套餐
 author: dsindona
 ms.service: marketplace
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: dsindona
 ms.openlocfilehash: fa8ee834bd6d9261c47c540e9517c200c894b6c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80286449"
 ---
 # <a name="delete-azure-marketplace-and-appsource-offers-or-skus"></a>删除 Azure 市场和 AppSource 套餐或 SKU
@@ -19,9 +19,9 @@ ms.locfileid: "80286449"
 出于各种原因，你可能想要从 Microsoft 市场中撤下套餐，此操作采用两种形式：
 
 - “套餐删除”可确保新客户不再能够购买或部署该套餐，但对现有客户不起作用，因为仍然必须根据许可协议和相关法律为现有客户提供支持。** 
-- *终止产品/服务*的过程是终止您与现有客户之间的服务和/或许可协议的过程。 
+- *产品*/服务终止是终止您和您的现有客户之间的服务和/或许可协议的过程。 
 
-与产品/服务删除和终止相关的指导和政策受[Microsoft 应用商店发布商协议](https://go.microsoft.com/fwlink/?LinkID=699560)[和参与政策](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)（[提供暂停和删除](https://docs.microsoft.com/legal/marketplace/participation-policy#offering-suspension-and-removal)部分）的约束。 
+与产品/服务删除和终止相关的指南和策略受到[Microsoft 市场发行者协议](https://go.microsoft.com/fwlink/?LinkID=699560)和[参与策略](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)的管辖（本部分[提供挂起和删除](https://docs.microsoft.com/legal/marketplace/participation-policy#offering-suspension-and-removal)）。 
 
 本文探讨支持的不同删除方案，以及执行每种方案所要采取的步骤。  
 
@@ -36,7 +36,7 @@ ms.locfileid: "80286449"
 1.  登录到[云合作伙伴门户](https://cloudpartner.azure.com/)。
 2.  在“所有套餐”页中选择你的套餐。****  该套餐应会显示在“编辑器”选项卡中。****
 3.  在左侧工具栏中选择“SKU”选项卡。**** 
-4.  选择要删除的 SKU，然后单击 **"删除**"按钮。
+4.  选择要删除的 SKU，然后单击 "**删除**" 按钮。
 5.  将产品/服务[重新发布](./cpp-publish-offer.md)到 Azure 市场。
 
 将修改的套餐发布到 Azure 市场后，选定的 SKU 不再显示在 Azure 市场和 Azure 门户中。

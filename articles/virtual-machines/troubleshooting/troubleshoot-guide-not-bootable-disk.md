@@ -1,6 +1,6 @@
 ---
-title: 启动错误 = "这不是可引导磁盘"
-description: 本文提供了解决磁盘在 Azure 虚拟机中无法启动的问题的步骤
+title: 启动错误– "这不是可启动磁盘"
+description: 本文提供了一些步骤，用于解决无法在 Azure 虚拟机中启动磁盘的问题
 services: virtual-machines-windows
 documentationcenter: ''
 author: v-miegge
@@ -15,99 +15,99 @@ ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: v-mibufo
 ms.openlocfilehash: 9f0c6350b89dcfecefcadcc166f7af35abc4b128
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80300974"
 ---
-# <a name="boot-error--this-is-not-a-bootable-disk"></a>启动错误 = 这不是可引导磁盘
+# <a name="boot-error--this-is-not-a-bootable-disk"></a>启动错误-这不是可启动磁盘
 
-本文提供了解决磁盘在 Azure 虚拟机 （VM） 中无法启动的问题的步骤。
+本文介绍了在 Azure 虚拟机（VM）中无法启动磁盘的问题的步骤。
 
 ## <a name="symptoms"></a>症状
 
-当您使用[Boot 诊断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)来查看 VM 的屏幕截图时，您将看到屏幕截图显示提示，提示显示消息"这不是可引导磁盘"。 请插入可启动软盘，然后按任意键重试..."。
+使用 "[启动诊断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)" 查看 VM 的屏幕截图时，你会看到屏幕截图显示一条消息 "此不是可启动磁盘" 的提示。 请插入可启动软盘，并按任意键重试 ... "。
 
    图 1
 
-   ![图 1 显示了消息 #"这不是可引导磁盘。 请插入可启动软盘，然后按任意键重试..."。](media/troubleshoot-guide-not-bootable-disk/1.jpg)
+   ![图1显示消息 * "这不是可启动磁盘。 请插入可启动软盘，并按任意键重试 ... "*](media/troubleshoot-guide-not-bootable-disk/1.jpg)
 
 ## <a name="cause"></a>原因
 
-此错误消息表示操作系统启动进程找不到活动系统分区。 此错误还可能意味着启动配置数据 （BCD） 存储中缺少引用，从而阻止它定位 Windows 分区。
+此错误消息表示 OS 引导过程找不到活动的系统分区。 此错误还可能表示引导配置数据（BCD）存储中缺少引用，从而导致它无法定位 Windows 分区。
 
 ## <a name="solution"></a>解决方案
 
 ### <a name="process-overview"></a>流程概述
 
 1. 创建和访问修复 VM。
-2. 将分区状态设置为"活动"。
+2. 将分区状态设置为 "活动"。
 3. 修复磁盘分区。
-4. **建议**：在重建 VM 之前，请启用串行控制台和内存转储集合。
-5. 重建原始 VM。
+4. **建议**：在重建 VM 之前，启用串行控制台和内存转储收集。
+5. 重新生成原始 VM。
 
    > [!NOTE]
-   > 遇到此启动错误时，来宾操作系统无法运行。 您将在脱机模式下进行故障排除以解决此问题。
+   > 如果遇到此启动错误，来宾操作系统将无法正常运行。 你将在脱机模式下进行故障排除，以解决此问题。
 
 ### <a name="create-and-access-a-repair-vm"></a>创建和访问修复 VM
 
-1. 使用[VM 修复命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)的步骤 1-3 准备修复 VM。
+1. 使用[VM 修复命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)的步骤1-3 来准备修复 VM。
 2. 使用远程桌面连接连接到修复 VM。
 
 ### <a name="set-partition-status-to-active"></a>将分区状态设置为活动
 
-第 1 代 VM 应首先验证保存 BCD 存储的操作系统分区是否标记为*活动*。 如果您有第 2 代 VM，请跳到修复[磁盘分区](#fix-the-disk-partition)，因为*状态*标志在后一代中被弃用。
+第1代 Vm 应首先验证包含 BCD 存储的 OS 分区是否被标记为 "*活动*"。 如果有第2代 VM，请跳到[修复磁盘分区](#fix-the-disk-partition)，因为在以后的版本中不推荐使用*状态*标志。
 
-1. 打开提升的命令提示*符 （cmd.exe）。*
-2. 输入*磁盘部分*以启动 DISKPART 工具。
-3. 输入*列表磁盘*以列出系统上的磁盘并标识附加的 OS VHD。
-4. 找到连接的 OS VHD 后，输入*sel 磁盘 +* 以选择磁盘。  参见图 2，其中磁盘 1 是附加的 OS VHD。
+1. 打开提升的命令提示符 *（cmd.exe）*。
+2. 输入*diskpart*启动 diskpart 工具。
+3. 输入*list disk*列出系统上的磁盘，并识别连接的操作系统 VHD。
+4. 找到附加的 OS VHD 后，输入 " *sel disk #* " 以选择该磁盘。  请参阅图2，其中磁盘1是附加的操作系统 VHD。
 
    图 2
 
-   ![图 2 显示了表中显示列表磁盘命令、磁盘 0 和磁盘 1 的输出的 [DISKPART] 窗口。  还显示 sel 磁盘 1 命令的输出，磁盘 1 是所选磁盘](media/troubleshoot-guide-not-bootable-disk/2.jpg)
+   ![图2显示了 * DISKPART * 窗口，其中显示了表中显示的 "列出磁盘" 命令、"磁盘 0" 和 "磁盘 1" 的输出。  还显示 sel disk 1 命令的输出，磁盘1是所选磁盘](media/troubleshoot-guide-not-bootable-disk/2.jpg)
 
-5. 选择磁盘后，输入*列表分区*以列出所选磁盘的分区。
-6. 识别引导分区后，输入*sel 分区 +* 以选择分区。  通常引导分区的大小约为 350 MB。  参见图 3，其中分区 1 是引导分区。
+5. 选择磁盘后，输入 "*列表分区*" 以列出所选磁盘的分区。
+6. 确定启动分区后，输入*sel partition #* 以选择分区。  通常，启动分区的大小大约为 350 MB。  请参阅图3，其中分区1是启动分区。
 
    图 3
 
-   ![图 3 显示了具有 [列表分区] 命令输出的 [DISKPART] 窗口。 分区 1 和分区 2 显示在表中。 当分区 1 是所选磁盘时，它还显示 [sel 分区 1] 命令的输出。](media/troubleshoot-guide-not-bootable-disk/3.jpg)
+   ![图3显示了 * DISKPART * 窗口，其中包含 * list partition * 命令的输出。 分区1和分区2显示在表中。 它还显示 * sel partition 1 * 命令的输出（当分区1是选定磁盘时）。](media/troubleshoot-guide-not-bootable-disk/3.jpg)
 
-7. 输入"详细分区"以检查分区的状态。 参见图 4，其中分区为 *"活动：否*"或图 5，其中分区为"活动：是"。
+7. 输入 "详细信息分区" 以检查分区的状态。 请参阅图4，其中分区处于*活动状态： No*或图5，其中分区为 "活动：是"。
 
    图 4
 
-   ![图 4 显示了 [详细分区] 命令的输出的 [DISKPART] 窗口，当分区 1 设置为 [活动：否] 时](media/troubleshoot-guide-not-bootable-disk/4.jpg)
+   ![图4显示了 * DISKPART * 窗口，其中包含 * detail partition * 命令的输出（当分区1设置为 * 活动： No *](media/troubleshoot-guide-not-bootable-disk/4.jpg)
 
    图 5
 
-   ![图 5 显示了 [磁盘部分] 窗口，其中输出了 [详细分区] 命令，当分区 1 设置为 [活动：是]时。](media/troubleshoot-guide-not-bootable-disk/5.jpg)
+   ![图5显示了 * DISKPART * 窗口，其中包含 * detail partition * 命令的输出（当分区1设置为 * 活动： Yes * 时）。](media/troubleshoot-guide-not-bootable-disk/5.jpg)
 
-8. 如果分区**未处于活动状态**，请输入*活动*以更改*活动*标志。
-9. 通过键入*详细信息分区*，检查状态更改是否正确完成。
+8. 如果该分区**不处于活动状态**，请输入 "*活动*" 以更改*活动*标志。
+9. 通过键入*详细信息分区*来检查状态更改是否已正确完成。
 
    图 6
 
-   ![图 6 显示了具有 [详细分区] 命令输出的磁盘部分窗口，当分区 1 设置为 [活动：是]](media/troubleshoot-guide-not-bootable-disk/6.jpg)
+   ![图6显示了当分区1设置为 * Active： Yes * 时输出为 * 详细信息 partition * 命令的 diskpart 窗口](media/troubleshoot-guide-not-bootable-disk/6.jpg)
 
-10. 输入*退出*以关闭 DISKPART 工具并保存配置更改。
+10. 输入*exit*关闭 DISKPART 工具并保存配置更改。
 
 ### <a name="fix-the-disk-partition"></a>修复磁盘分区
 
-1. 打开提升的命令提示符 （cmd.exe）。
+1. 打开提升的命令提示符（cmd.exe）。
 2. 使用以下命令在磁盘上运行*CHKDSK*并修复错误：
 
    `chkdsk <DRIVE LETTER>: /f`
 
-   添加"/f"命令选项将修复磁盘上的任何错误。 请确保替换为<DRIVE LETTER>随附的 OS VHD 的字母。
+   添加 "/f" 命令选项将修复磁盘上的任何错误。 请确保将替换<DRIVE LETTER>为附加 OS VHD 的盘符。
 
-### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>建议：在重建 VM 之前，请启用串行控制台和内存转储集合
+### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>建议：在重建 VM 之前，启用串行控制台和内存转储收集
 
-要启用内存转储集合和串行控制台，请运行以下脚本：
+若要启用内存转储收集和串行控制台，请运行以下脚本：
 
-1. 打开提升的命令提示会话（以管理员身份运行）。
+1. 打开提升的命令提示符会话（以管理员身份运行）。
 2. 运行以下命令：
 
    启用串行控制台
@@ -116,9 +116,9 @@ ms.locfileid: "80300974"
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 
-3. 验证 OS 磁盘上的可用空间是否与 VM 上的内存大小 （RAM） 相同。
+3. 验证 OS 磁盘上的可用空间是否与 VM 上的内存大小（RAM）一样多。
 
-   如果 OS 磁盘上没有足够的空间，则应更改将创建内存转储文件的位置，并将其引用到连接到具有足够可用空间的 VM 的任何数据磁盘。 要更改位置，请将"%SystemRoot%"替换为以下命令中数据磁盘的驱动器号（例如"F："）。
+   如果 OS 磁盘上没有足够的空间，则应更改内存转储文件的创建位置，并将其引用到任何附加到具有足够可用空间的 VM 的数据磁盘。 要更改位置，请在以下命令中将 "% SystemRoot%" 替换为数据磁盘的驱动器号（例如，"F："）。
 
 #### <a name="suggested-configuration-to-enable-os-dump"></a>启用 OS 转储的建议配置
 
@@ -146,6 +146,6 @@ ms.locfileid: "80300974"
 
 `REG UNLOAD HKLM\BROKENSYSTEM`
 
-### <a name="rebuild-the-original-vm"></a>重建原始 VM
+### <a name="rebuild-the-original-vm"></a>重新生成原始 VM
 
-使用[VM 修复命令的步骤 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example)重新组装 VM。
+使用[Vm 修复命令的步骤 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example)重新组装 vm。

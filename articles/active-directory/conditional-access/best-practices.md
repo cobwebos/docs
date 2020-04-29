@@ -12,22 +12,22 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f4560a514ddb9949c8cc07864b2319a5878b245e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80295361"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中条件访问的最佳做法
 
-使用[Azure 活动目录 （Azure AD） 条件访问](../active-directory-conditional-access-azure-portal.md)，可以控制授权用户访问云应用的方式。 本文提供以下事项的信息：
+使用 [Azure Active Directory (Azure AD) 条件访问](../active-directory-conditional-access-azure-portal.md)，可以控制授权用户访问云应用程序的方式。 本文提供以下事项的信息：
 
 - 应了解的内容 
 - 在配置条件访问策略时应避免的操作。 
 
 本文假定你熟悉 [Azure Active Directory 中的条件访问是什么？](../active-directory-conditional-access-azure-portal.md)中所述的概念和术语
 
-## <a name="whats-required-to-make-a-policy-work"></a>使策略发挥作用需要什么？
+## <a name="whats-required-to-make-a-policy-work"></a>要使策略发挥作用，需要执行哪些操作？
 
 新建策略时，未选择任何用户、组、应用或访问控制。
 
@@ -35,11 +35,11 @@ ms.locfileid: "80295361"
 
 若要使策略发挥作用，必须进行下列配置：
 
-| 对象           | 方式                                  | Why |
+| 对象           | 方式                                  | 原因 |
 | :--            | :--                                  | :-- |
-| **云应用** |选择一个或多个应用。  | 条件访问策略的目标是使你能够控制已授权用户访问云应用的方式。|
-| **用户和组** | 至少选择一个已经授权的用户或组来访问所选云应用。 | 未在其中分配任何用户和组的条件访问策略永远不会触发。 |
-| 访问控制**** | 至少选择一个访问控制。 | 策略处理器需要知道条件满足时需要执行的操作。 |
+| 云应用  |选择一个或多个应用。  | 条件访问策略的目标是使你能够控制已授权用户访问云应用的方式。|
+| 用户和组  | 至少选择一个已经授权的用户或组来访问所选云应用。 | 未在其中分配任何用户和组的条件访问策略永远不会触发。 |
+| 访问控制  | 至少选择一个访问控制。 | 策略处理器需要知道条件满足时需要执行的操作。 |
 
 ## <a name="what-you-should-know"></a>要点
 
@@ -50,11 +50,11 @@ ms.locfileid: "80295361"
 所有策略都是在两个阶段中强制实施的：
 
 - 阶段 1： 
-   - 详细信息集合：收集详细信息以确定已满足的策略。
+   - 收集详细信息：收集详细信息以确定已符合的策略。
    - 在此阶段，如果设备符合性是条件访问策略的一部分，用户可能会看到证书提示。 如果设备操作系统不是 Windows 10，浏览器应用可能会显示此提示。
    - 针对所有已启用的策略和[仅限报告模式](concept-conditional-access-report-only.md)下的策略执行策略评估的第 1 阶段。
 - 阶段 2：
-   - 实施：考虑到第 1 阶段收集的详细信息，请用户满足尚未满足的任何其他要求。
+   - 强制实施：考虑到第 1 阶段收集的详细信息，要求用户满足尚未满足的任何其他要求。
    - 将结果应用于会话。 
    - 针对所有已启用的策略执行策略评估的第 2 阶段。
 
@@ -98,7 +98,7 @@ ms.locfileid: "80295361"
 
 常见的相互连接的应用程序包括 Microsoft Flow、Microsoft Planner、Microsoft Teams、Office 365 Exchange Online、Office 365 SharePoint Online 和 Office 365 Yammer。
 
-如果访问权限是在会话或任务的开始时控制的，则这对需要用户交互（例如多重身份验证）的策略来说很重要。 如果没有，用户将无法在应用中完成某些任务。 例如，如果您在非托管设备上需要多重身份验证才能访问 SharePoint，但不需要发送电子邮件，则在其电子邮件中工作的用户将无法将 SharePoint 文件附加到邮件。 有关详细信息，可参阅此文：[Azure Active Directory 条件访问中的服务依赖项是什么？](service-dependencies.md)。
+如果访问权限是在会话或任务的开始时控制的，则这对需要用户交互（例如多重身份验证）的策略来说很重要。 如果不这样做，用户将无法在应用内完成一些任务。 例如，如果在非托管设备上需要多重身份验证来访问 SharePoint 而不是电子邮件，则使用电子邮件的用户将无法将 SharePoint 文件附加到邮件中。 有关详细信息，可参阅此文：[Azure Active Directory 条件访问中的服务依赖项是什么？](service-dependencies.md)。
 
 ## <a name="what-you-should-avoid-doing"></a>应避免的操作
 
@@ -147,5 +147,5 @@ ms.locfileid: "80295361"
 
 如果希望了解：
 
-- 如何配置条件访问策略，请参阅使用[Azure 活动目录条件访问的特定应用需要 MFA。](app-based-mfa.md)
-- 如何规划条件访问策略，请参阅如何在[Azure 活动目录中规划条件访问部署](plan-conditional-access.md)。
+- 如何配置条件访问策略，请参阅[通过 Azure Active Directory 条件访问要求特定应用必须使用 MFA](app-based-mfa.md)。
+- 若要了解如何规划条件访问策略，请参阅[如何在 Azure Active Directory 中规划条件访问部署](plan-conditional-access.md)。

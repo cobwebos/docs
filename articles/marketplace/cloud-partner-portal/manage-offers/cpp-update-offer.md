@@ -1,5 +1,5 @@
 ---
-title: 更新市场优惠 |Azure 应用商店
+title: 更新 marketplace 产品/服务 |Azure Marketplace
 description: 使用云合作伙伴门户更新 Azure 和 AppSource 市场中的套餐
 author: dsindona
 ms.service: marketplace
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: dsindona
 ms.openlocfilehash: 101369a050770be3acd9534cef6229037fe1c366
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80288506"
 ---
 # <a name="update-azure-marketplace-and-appsource-offers"></a>更新 Azure 市场和 AppSource 套餐
@@ -46,8 +46,8 @@ ms.locfileid: "80288506"
 
 使用以下步骤更新产品/服务的支持联系人。
 1. 在“所有套餐”页中选择套餐。****
-2. 选择 **"联系人"** 选项卡。更新联系人。
-3. 选择"**保存**"按钮。
+2. 选择 "**联系人**" 选项卡。更新联系人。
+3. 选择“保存”按钮  。
 4. 选择“发布”启动发布过程。****
 
 
@@ -61,7 +61,7 @@ ms.locfileid: "80288506"
 
 对于 Azure 市场套餐：
 
-1. 选择**SKU**选项卡。 选择要修改的 SKU。
+1. 选择 " **sku** " 选项卡。 选择要修改的 SKU。
 1. 单击“适用国家/地区”**** 字段下的“选择国家/地区”**** 按钮。
 1. 在“适用区域”对话框中，添加或删除此 SKU 的适用区域。
 
@@ -90,7 +90,7 @@ ms.locfileid: "80288506"
 
 ### <a name="update-offer-marketplace-assets"></a>更新套餐市场资产
 
-您可能有需要更新市场文本和图像资产的方案，例如公司徽标、产品/服务说明等。使用以下步骤更新这些资产。
+在某些情况下，你需要更新基于文本和图像资产的 marketplace，如公司徽标、产品/服务说明等。使用以下步骤更新这些资产。
 
 1. 在“所有套餐”页中找到你的套餐。**** 
 2. 选择“市场”选项卡，然后遵照套餐的“市场”选项卡主题中的说明操作。******
@@ -103,7 +103,7 @@ ms.locfileid: "80288506"
 
 1. 选择要降低其定价的 SKU。
 2. 必须通过最初所用的同一机制来降低价格：直接在门户 UI 设置价格，或者使用导入/导出电子表格设置价格。
-3. 单击“保存”。****
+3. 单击 **“保存”** 。
 4. 单击“发布”启动发布过程。****
 
 套餐在市场中上线后，新客户会看到该定价，而所有新客户将按已降低的新价格付费。  在降价生效期间，计费周期开始时，将以回溯的方式向现有客户反映降价情况。  如果在降价时所处的周期内已对他们计费，则在下一个计费周期，他们会收到一笔退款，以冲抵降价。

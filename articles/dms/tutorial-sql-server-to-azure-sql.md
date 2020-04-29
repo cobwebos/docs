@@ -1,5 +1,5 @@
 ---
-title: 教程：脱机将 SQL 服务器迁移到 SQL 单个数据库
+title: 教程：将 SQL Server 脱机迁移到 SQL 单一数据库
 titleSuffix: Azure Database Migration Service
 description: 了解如何使用 Azure 数据库迁移服务从本地 SQL Server 脱机迁移到 Azure SQL 数据库中的单一数据库或共用数据库。
 services: dms
@@ -13,17 +13,17 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
 ms.openlocfilehash: ff47246482bd0712ea4e741d44b12f2c6767380b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80298917"
 ---
-# <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-offline-using-dms"></a>教程：使用 DMS 脱机将 SQL 服务器迁移到 Azure SQL 数据库中的单个数据库或池数据库
+# <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-offline-using-dms"></a>教程：使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库中的单一数据库或共用数据库
 
-可以使用 Azure 数据库迁移服务将数据库从本地 SQL Server 实例迁移到 [Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/)。 在本教程中，将通过使用 Azure 数据库迁移服务，将还原到 SQL Server 2016（或更高版本）本地实例的 Adventureworks2012 数据库迁移到 Azure SQL 数据库中的单一数据库或共用数据库****。
+可以使用 Azure 数据库迁移服务将数据库从本地 SQL Server 实例迁移到 [Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/)。 在本教程中，将通过使用 Azure 数据库迁移服务，将还原到 SQL Server 2016（或更高版本）本地实例的 Adventureworks2012 数据库迁移到 Azure SQL 数据库中的单一数据库或共用数据库  。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 > [!div class="checklist"]
 >
 > - 通过使用数据迁移助手来评估本地数据库。
@@ -50,10 +50,10 @@ ms.locfileid: "80298917"
     > 如果你使用 SQL Server Integration Services (SSIS) 并且希望将 SSIS 项目/包的目录数据库 (SSISDB) 从 SQL Server 迁移到 Azure SQL 数据库，则当你在 Azure 数据工厂 (ADF) 中预配 SSIS 时，系统会代表你自动创建和管理目标 SSISDB。 有关如何迁移 SSIS 包的详细信息，请参阅[将 SQL Server Integration Services 包迁移到 Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages)。
   
 - 下载并安装[数据迁移助手](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 或更高版本。
-- 通过使用 Azure 资源管理器部署模型为 Azure 数据库迁移服务创建 Microsoft Azure 虚拟网络，该模型通过使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)提供到本地源服务器的站点到站点的连接。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
+- 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，该模型通过使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)为本地源服务器提供站点到站点连接。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/)，尤其是提供了分步详细信息的快速入门文章。
 
     > [!NOTE]
-    > 在虚拟网络设置期间，如果将 ExpressRoute 与网络对等互连到 Microsoft，则向将服务预配的子网添加以下服务[终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)：
+    > 在虚拟网络安装期间，如果将 ExpressRoute 与 Microsoft 的网络对等互连一起使用，请将以下服务[终结点](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)添加到将在其中预配服务的子网中：
     >
     > - 目标数据库终结点（例如，SQL 终结点、Cosmos DB 终结点等）
     > - 存储终结点
@@ -63,7 +63,7 @@ ms.locfileid: "80298917"
     >
     >如果在本地网络与 Azure 之间没有站点到站点连接，或者站点到站点连接带宽有限，请考虑在混合模式下使用 Azure 数据库迁移服务（预览版）。 混合模式利用本地迁移工作线程以及云中运行的 Azure 数据库迁移服务的实例。 若要在混合模式下创建 Azure 数据库迁移服务的实例，请参阅[使用 Azure 门户在混合模式下创建 Azure 数据库迁移服务的实例](https://aka.ms/dms-hybrid-create)一文。
 
-- 确保虚拟网络网络安全组规则不会阻止以下到 Azure 数据库迁移服务的入站通信端口：443、53、9354、445、12000。 有关 Azure 虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
+- 确保虚拟网络安全组规则不会阻止以下到 Azure 数据库迁移服务的入站通信端口：443、53、9354、445、12000。 有关 Azure 虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
 - 配置[针对数据库引擎访问的 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 - 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 SQL Server（默认情况下为 TCP 端口 1433）。
 - 如果使用动态端口运行多个命名 SQL Server 实例，则可能需要启用 SQL Browser 服务并允许通过防火墙访问 UDP 端口 1434，以便 Azure 数据库迁移服务可连接到源服务器上的命名实例。
@@ -129,7 +129,7 @@ ms.locfileid: "80298917"
 
     ![数据迁移助手源连接详细信息](media/tutorial-sql-server-to-azure-sql/dma-source-connect.png)
 
-6. 选择 **"下一步**"，在 **"连接到目标服务器**"下，指定 Azure SQL 数据库的目标连接详细信息，选择 **"连接**"，然后选择在 Azure SQL 数据库中预先预配的**AdventureWorksAzure**数据库。
+6. 选择 "**下一步**"，在 "**连接到目标服务器**" 下，指定 azure sql 数据库的目标连接详细信息，选择 "**连接**"，然后选择在 Azure Sql 数据库中预配的**AdventureWorksAzure**数据库。
 
     ![数据迁移助手目标连接详细信息](media/tutorial-sql-server-to-azure-sql/dma-target-connect.png)
 
@@ -149,7 +149,7 @@ ms.locfileid: "80298917"
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>注册 Microsoft.DataMigration 资源提供程序
 
-1. 登录到 Azure 门户。   搜索并选择“订阅”****。
+1. 登录到 Azure 门户。 搜索并选择“订阅”****。
 
    ![显示门户订阅](media/tutorial-sql-server-to-azure-sql/portal-select-subscription1.png)
 
@@ -220,7 +220,7 @@ ms.locfileid: "80298917"
     如果没有安装受信任的证书，SQL Server 会在实例启动时生成自签名证书。 此证书用于加密客户端连接的凭据。
 
     > [!CAUTION]
-    > 使用自签名证书加密的 TLS 连接不提供强大的安全性。 它们易遭受中间人攻击。 不应依赖 TLS 在生产环境中或连接到 Internet 的服务器上使用自签名证书。
+    > 使用自签名证书加密的 TLS 连接不提供强安全性。 它们易遭受中间人攻击。 不应在生产环境中或在连接到 internet 的服务器上使用自签名证书依赖于 TLS。
 
    ![源详细信息](media/tutorial-sql-server-to-azure-sql/dms-source-details2.png)
 
@@ -259,7 +259,7 @@ ms.locfileid: "80298917"
 
 - 选择“运行迁移”****。
 
-    将显示迁移活动窗动**的状态**为**挂起**。
+    "迁移活动" 窗口随即出现，并且活动的**状态**为 "**挂起**"。
 
     ![活动状态](media/tutorial-sql-server-to-azure-sql/dms-activity-status1.png)
 

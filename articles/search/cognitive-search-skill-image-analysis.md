@@ -1,7 +1,7 @@
 ---
 title: 图像分析认知技能
 titleSuffix: Azure Cognitive Search
-description: 在 Azure 认知搜索中的 AI 扩充管道中使用图像分析认知技能通过图像分析提取语义文本。
+description: 在 Azure 认知搜索中的 AI 扩充管道中，使用 ImageAnalysis 认知技能通过图像分析来提取语义文本。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 4ff6972e2f7ea219a1c8c8dbabbf9fe12a8fa59e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80369472"
 ---
 # <a name="image-analysis-cognitive-skill"></a>图像分析认知技能
 
-**图像分析**技能根据图像内容提取一组丰富的视觉要素。 例如，可从图像生成标题栏、生成标记或识别名人和地标。 此技能使用认知服务中的[计算机视觉](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)提供的机器学习模型。 
+图像分析技能根据图像内容提取一组丰富的可视特征  。 例如，可从图像生成标题栏、生成标记或识别名人和地标。 此技能使用认知服务中的[计算机视觉](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)提供的机器学习模型。 
 
 > [!NOTE]
-> 小卷（20 个事务以下）可以在 Azure 认知搜索中免费执行，但较大的工作负载需要[附加计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API 以及在 Azure 认知搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
+> 如果事务量较少（不到 20 个事务），则这些事务可以在 Azure 认知搜索中免费执行，但较大的工作负荷需要[附加可计费认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API 以及在 Azure 认知搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
 >
 > 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 图像提取定价如 [Azure 认知搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)所述。
 
@@ -32,15 +32,15 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 参数区分大小写。
 
-| 参数名称     | 描述 |
+| 参数名称     | 说明 |
 |--------------------|-------------|
-| defaultLanguageCode   |  表示要返回的语言的字符串。 该服务以指定的语言返回识别结果。 如果未指定此属性，则默认值为“en”。 <br/><br/>支持的语言为： <br/>en - 英语（默认）** <br/> *es* - 西班牙语 <br/> *ja* - 日语 <br/> *pt* - 葡萄牙语 <br/> zh - 简体中文**|
-| visualFeatures |  表示要返回的可视特征类型的一组字符串。 有效的可视特征类型包括：  <ul><li>*成人*- 检测图像是否具有色情性质（描绘裸体或性行为），或血腥（描绘极端暴力或血腥）。 还检测到性暗示内容（又名淫秽内容）。</li><li>*品牌*- 检测图像内的各种品牌，包括大致位置。 *品牌*视觉功能仅提供英文版本。</li><li> *categories* - 根据认知服务[计算机视觉文档](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)中定义的分类对图像内容进行分类。 </li><li>*描述*- 用支持的语言描述带有完整句子的图像内容。</li><li>*面*- 检测是否存在面。 如果存在，则生成坐标、性别和年龄。</li><li> *对象*- 检测图像内的各种对象，包括近似位置。 *对象*可视功能仅提供英文版本。</li><li> tags - 使用与图像内容相关字词的详细列表来标记图像**。</li></ul> 可视特征的名称区分大小写。 请注意，*颜色*和*图像类型*视觉功能已被弃用，但此功能仍可以通过[自定义技能](https://go.microsoft.com/fwlink/?linkid=2121117)访问。|
-| 详细信息   | 表示要返回的特定于域的详细信息的一组字符串。 有效的可视特征类型包括： <ul><li>*名人*- 识别名人，如果检测到在图像。</li><li>*地标*- 识别在图像中检测到的地标。 </li></ul> |
+| defaultLanguageCode   |  表示要返回的语言的字符串。 该服务以指定的语言返回识别结果。 如果未指定此属性，则默认值为“en”。 <br/><br/>支持的语言为： <br/>en - 英语（默认）  <br/> *es* - 西班牙语 <br/> *ja* - 日语 <br/> *pt* - 葡萄牙语 <br/> zh - 简体中文 |
+| visualFeatures |  表示要返回的可视特征类型的一组字符串。 有效的可视特征类型包括：  <ul><li>*adult* - 检测图片是否具有色情性质（描绘裸体或性行为），以及是否具有血腥内容（描绘极端暴力或血腥）。 还会检测性暗示内容（即不雅内容）。</li><li>*brands* - 检测图像中的各种品牌，包括大致位置。 *brands* 视觉功能仅在英文版本中提供。</li><li> *categories* - 根据认知服务[计算机视觉文档](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)中定义的分类对图像内容进行分类。 </li><li>*description* - 用受支持的语言以完整的句子描述图像内容。</li><li>*faces* - 检测人脸是否存在。 如果存在，则生成坐标、性别和年龄。</li><li> *objects* - 检测图像中的各种对象，包括大致位置。 *objects* 视觉功能仅在英文版本中提供。</li><li> tags - 使用与图像内容相关字词的详细列表来标记图像  。</li></ul> 可视特征的名称区分大小写。 请注意，color  和 imageType  视觉特征已弃用，但仍可通过[自定义技能](https://go.microsoft.com/fwlink/?linkid=2121117)来访问此功能。|
+| 详细信息   | 表示要返回的特定于域的详细信息的一组字符串。 有效的可视特征类型包括： <ul><li>*celebrities* - 识别在图像中检测到的名人。</li><li>*landmarks* - 识别在图像中检测到的地标。 </li></ul> |
 
 ## <a name="skill-inputs"></a>技能输入
 
-| 输入名称      | 描述                                          |
+| 输入名称      | 说明                                          |
 |---------------|------------------------------------------------------|
 | image         | 复杂类型。 当前仅适用于“/document/normalized_images”字段，当 ```imageAction``` 设置为非 ```none``` 值时由 Azure Blob 索引器生成。 请参阅[此示例](#sample-output)获取详细信息。|
 
@@ -512,7 +512,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 ## <a name="error-cases"></a>错误案例
 在以下错误案例中，未提取任何元素。
 
-| 错误代码 | 描述 |
+| 错误代码 | 说明 |
 |------------|-------------|
 | NotSupportedLanguage | 不支持提供的语言。 |
 | InvalidImageUrl | 图片 URL 格式不正确或无法访问。|
@@ -538,7 +538,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
             ]
 ```
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 + [内置技能](cognitive-search-predefined-skills.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)

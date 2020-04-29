@@ -8,10 +8,10 @@ ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
 ms.openlocfilehash: 2df1e0bb7d586edb13dc86e163f0e5728608d2a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80371600"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Azure 指标资源管理器的高级功能
@@ -35,14 +35,14 @@ ms.locfileid: "80371600"
 
 ### <a name="multiple-metrics-on-the-same-chart"></a>同一图表上的多个指标
 
-首先，[创建新图表](metrics-getting-started.md#create-your-first-metric-chart)。 单击“添加指标”，然后通过同样的步骤在同一图表上添加另一指标。****
+首先，[创建新图表](metrics-getting-started.md#create-your-first-metric-chart)。 单击“添加指标”，然后通过同样的步骤在同一图表上添加另一指标。 
 
    > [!NOTE]
    > 通常情况下，你不会想要在一个图表上拥有度量单位不同（即“毫秒”和“千字节”）或刻度差异显著的多个指标。 此时，可考虑使用多个图表。 单击“添加图表”按钮，即可在指标资源管理器中创建多个图表。
 
 ### <a name="multiple-charts"></a>多个图表
 
-单击“添加图表”，使用另一指标创建另一图表。****
+单击“添加图表”，使用另一指标创建另一图表。 
 
 ### <a name="order-or-delete-multiple-charts"></a>将多个图表排序或将其删除
 
@@ -54,7 +54,7 @@ ms.locfileid: "80371600"
 
 ### <a name="to-add-a-filter"></a>添加筛选器
 
-1. 选择图表上方的“添加筛选器”****
+1. 选择图表上方的“添加筛选器” 
 
 2. 选择想要筛选的维度（属性）
 
@@ -78,7 +78,7 @@ ms.locfileid: "80371600"
 
 ### <a name="apply-splitting"></a>应用拆分
 
-1. 单击图表上方的“应用拆分”****。
+1. 单击图表上方的“应用拆分”  。
  
    > [!NOTE]
    > 不能对包含多个指标的图表使用拆分。 另外，你可以有多个筛选器，但只能对任何单个图表应用一个拆分维度。
@@ -91,7 +91,7 @@ ms.locfileid: "80371600"
 
    ![图表上的](./media/metrics-charts/00012.png)
 
-3. 在“分组选择器”**** 之外单击以将其关闭。
+3. 在“分组选择器”  之外单击以将其关闭。
 
    > [!NOTE]
    > 在同一个维度上同时使用筛选和拆分，可以隐藏与你的方案无关的部分，使图表更易读取。
@@ -104,23 +104,23 @@ ms.locfileid: "80371600"
 
 另一个示例是可用内存的波动，其中的值在技术上永远不会达到 0。 将范围固定到一个较高的值可以使可用内存的降低更容易被发现。 
 
-若要控制 y 轴范围，请使用 “…” 图表菜单，并选择“编辑图表”**** 以访问高级图表设置。 修改“Y 轴范围”部分中的值，或者使用“自动”**** 按钮恢复为默认值。
+若要控制 y 轴范围，请使用 “…” 图表菜单，并选择“编辑图表”  以访问高级图表设置。 修改“Y 轴范围”部分中的值，或者使用“自动”  按钮恢复为默认值。
 
 ![图表上的](./media/metrics-charts/00014-manually-set-granularity.png)
 
 > [!WARNING]
 > 如果图表用于跟踪一段时间内的各种计数或合计（并因此使用计数、求和、最小值或最大值聚合），要锁定这类图表的 y 轴边界，通常需要指定一个固定的时间粒度，而不是依赖于自动默认值。 这是必要的，因为当用户通过调整浏览器窗口大小或者通过更改屏幕分辨率来自动修改时间粒度时，图表上的值也会发生更改。 时间粒度发生的更改会影响图表的外观，导致当前选择的 y 轴范围失效。
 
-## <a name="change-colors-of-chart-lines"></a>更改图表线的颜色
+## <a name="change-colors-of-chart-lines"></a>更改图表线条的颜色
 
-配置图表后，图表线将自动从默认调色板中分配颜色。 您可以更改这些颜色。
+配置图表后，会自动从默认调色板中为图表线条分配颜色。 您可以更改这些颜色。
 
-要更改图表线的颜色，请单击与图表对应的图例中的彩色条形。 颜色选取器对话框将打开。 使用颜色选取器配置线条的颜色。
+若要更改图表线条的颜色，请在与图表相对应的图例中单击彩色条。 "颜色选取器" 对话框将打开。 使用颜色选取器配置线条的颜色。
 
-配置图表颜色后，当您将图表固定到仪表板时，它们将保持这种状态。 以下部分介绍如何固定图表。
+图表颜色配置完成后，当您将图表固定到仪表板时，它们将保持为这种方式。 以下部分说明如何固定图表。
 
 > [!NOTE]
-> 由于发布和发布计划的限制，更改图表线的颜色暂时需要在启动 Azure 门户[https://portal.azure.com/?feature.colorpicker=true](https://portal.azure.com/?feature.colorpicker=true)时传递特殊参数 **"功能.颜色选取器_true"。** 此限制很快就会取消。 
+> 由于发布和发布计划有限制，因此，在开始 Azure 门户[https://portal.azure.com/?feature.colorpicker=true](https://portal.azure.com/?feature.colorpicker=true)时，更改图表线颜色会暂时要求传递特殊参数 **？ colorpicker = true** 。 此限制很快就会取消。 
 
 ![图表上的](./media/metrics-charts/018.png)
 
