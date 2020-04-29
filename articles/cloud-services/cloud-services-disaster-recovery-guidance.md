@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: memccror
 ms.openlocfilehash: e3f0fd88eb302dac208f43d0622ae28b31dcddc2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77157500"
 ---
 # <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>发生影响 Azure 云服务的 Azure 服务中断时该怎么办
@@ -46,7 +46,7 @@ Azure 已在平台中内置多种功能，用于支持高度可用的应用程�
 
 根据应用程序数据源，可能需要检查应用程序数据源的恢复过程。
 
-* 有关 Azure 存储数据源，请参阅[Azure 存储冗余](../storage/common/storage-redundancy.md)，以根据为应用程序选择的冗余模型检查可用的选项。
+* 对于 Azure 存储数据源，请参阅 [Azure 存储冗余](../storage/common/storage-redundancy.md)，以根据为应用程序选择的冗余模型检查可用的选项。
 * 对于 SQL 数据库源，请阅读[概述：云业务连续性与使用 SQL 数据库进行数据库灾难恢复](../sql-database/sql-database-business-continuity.md)以了解基于所选复制模型而可用于应用程序的选项。
 
 

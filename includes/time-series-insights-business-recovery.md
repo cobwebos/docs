@@ -6,26 +6,26 @@ ms.author: dpalled
 manager: cshankar
 ms.date: 02/03/2020
 ms.openlocfilehash: 6a3837d01815306e469a684404ab76506f547f43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77013726"
 ---
 ## <a name="business-disaster-recovery"></a>业务灾难恢复
 
-本部分介绍即使发生了灾难，也能使应用和服务保持正常运行的 Azure 时序见解功能（称为“业务灾难恢复”）。**
+本部分介绍即使发生了灾难，也能使应用和服务保持正常运行的 Azure 时序见解功能（称为“业务灾难恢复”）。 
 
 ### <a name="high-availability"></a>高可用性
 
-作为一项 Azure 服务，时序见解使用 Azure 区域级别的冗余提供某些高可用性功能。** 例如，Azure 支持通过其跨区域可用性功能来实现 灾难恢复功能。**
+作为一项 Azure 服务，时序见解使用 Azure 区域级别的冗余提供某些高可用性功能。  例如，Azure 支持通过其跨区域可用性功能来实现 灾难恢复功能。 
 
 通过 Azure 提供的其他高可用性功能（以及同样适用于任何时序见解实例的功能）包括：
 
-- **故障转移**：Azure 提供[异地复制和负载平衡](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)。
-- **数据恢复**和**存储恢复**：Azure 提供了[几个选项来保存和恢复数据](https://docs.microsoft.com/azure/architecture/resiliency/recovery-data-corruption)。
-- **Azure 站点恢复**：Azure 通过[Azure 站点恢复](https://docs.microsoft.com/azure/site-recovery/)提供站点恢复功能。
-- **Azure 备份** [：Azure 备份](https://docs.microsoft.com/azure/backup/backup-architecture)支持 Azure VM 的本地备份和云内备份。
+- **故障转移**：Azure 提供[异地复制和负载均衡](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)。
+- **数据恢复**和**存储恢复**：Azure 提供[多个用于保留和恢复数据的选项](https://docs.microsoft.com/azure/architecture/resiliency/recovery-data-corruption)。
+- **Azure Site Recovery**： Azure 通过[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/)提供 Site Recovery 功能。
+- **Azure 备份**： [Azure 备份](https://docs.microsoft.com/azure/backup/backup-architecture)支持 azure vm 的本地和云中备份。
 
 请务必启用相关的 Azure 功能，以便为设备和用户提供全局跨区域高可用性。
 
@@ -55,7 +55,7 @@ ms.locfileid: "77013726"
 
 若要创建副本环境：
 
-1. 在另一个区域中创建环境。 有关详细信息，请阅读[Azure 门户中创建新的时序见解环境](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started)。
+1. 在另一个区域中创建环境。 有关详细信息，请参阅[在 Azure 门户中创建新的时序见解环境](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started)。
 1. 为事件源创建另一个专用使用者组。
 1. 将该事件源连接到新环境。 请确保指定第二个专用使用者组。
 1. 查看时序见解 [IoT 中心](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)和[事件中心](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access)文档。
@@ -71,5 +71,5 @@ ms.locfileid: "77013726"
 > * 也可能会发生延迟。
 > * 由于需要重新路由操作，还可能会出现短暂的消息处理高峰。
 > 
-> 有关详细信息，请阅读["时间序列见解"中缓解延迟](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency)。
+> 有关详细信息，请参阅[缓解时序见解中的延迟](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency)。
 

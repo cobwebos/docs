@@ -15,10 +15,10 @@ ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
 ms.openlocfilehash: 68f42aa13288c2416257f3ba6c0b6072c1572977
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77162984"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>使用 Azure 媒体服务设计带访问控制的内容保护系统 
@@ -58,11 +58,11 @@ Microsoft 已成为 DASH 和 CENC 与其他一些主要行业播放器的积极�
 
 下表汇总了每个 DRM 支持的原生平台/原生应用和浏览器。
 
-| **客户端平台** | **本机 DRM 支持** | **浏览器/应用程序** | **流式处理格式** |
+| **客户端平台** | **本机 DRM 支持** | **浏览器/应用** | **流式处理格式** |
 | --- | --- | --- | --- |
 | **智能电视、操作员 STB、OTT STB** |主要为 PlayReady，和/或 Widevine，和/或其他 DRM |Linux、Opera、WebKit 及其他 |各种格式 |
-| **Windows 10 设备（Windows 电脑、Windows 平板电脑、Windows 手机、Xbox）** |PlayReady |Microsoft Edge/IE11/EME<br/><br/><br/>通用 Windows 平台 |DASH（对于 HLS，不支持 PlayReady）<br/><br/>DASH、平滑流式处理（对于 HLS，不支持 PlayReady） |
-| **安卓设备（手机、平板电脑、电视）** |Widevine |Chrome/EME |DASH、HLS |
+| **Windows 10 设备（Windows 电脑、Windows 平板电脑、Windows Phone、Xbox）** |PlayReady |Microsoft Edge/IE11/EME<br/><br/><br/>通用 Windows 平台 |DASH（对于 HLS，不支持 PlayReady）<br/><br/>DASH、平滑流式处理（对于 HLS，不支持 PlayReady） |
+| **Android 设备（手机、平板电脑、电视）** |Widevine |Chrome/EME |DASH、HLS |
 | **iOS（iPhone、iPad）、OS X 客户端和 Apple 电视** |FairPlay |Safari 8+/EME |HLS |
 
 就目前每种 DRM 的部署状态而言，服务通常需要实现两到三个 DRM，以确保能以最佳方式处理所有类型的终结点。
@@ -118,7 +118,7 @@ DRM 子系统可能包含以下组件：
 
 以下部分介绍密钥管理的设计。
 
-| **内容关键到资产** | **方案** |
+| **ContentKey** | **方案** |
 | --- | --- |
 | 一对一 |最简单的情况。 它提供最精细的控制。 但是，此排列方式通常产生最高的许可证传送成本。 每个受保护的资产需要至少一个许可证请求。 |
 | 一对多 |可以对多个资产使用相同的内容密钥。 例如，对于如流派或流派子集（或电影基因）的逻辑组中的所有资产，可以使用单个内容密钥。 |
@@ -148,11 +148,11 @@ DRM 子系统可能包含以下组件：
 
 | **构建基块** | **技术** |
 | --- | --- |
-| **播放器** |[Azure 媒体播放器](https://azure.microsoft.com/services/media-services/media-player/) |
+| **播放器** |[Azure Media Player](https://azure.microsoft.com/services/media-services/media-player/) |
 | **标识提供者 (IDP)** |Azure Active Directory (Azure AD) |
 | **安全令牌服务 (STS)** |Azure AD |
 | **DRM 保护工作流** |媒体服务动态保护 |
-| **DRM 许可证交付** |* 媒体服务许可证传送（PlayReady、Widevine、FairPlay） <br/>* Axinom 许可证服务器 <br/>* 自定义 PlayReady 许可证服务器 |
+| **DRM 许可证传送** |* 媒体服务许可证传送（PlayReady、Widevine、FairPlay） <br/>* Axinom 许可证服务器 <br/>* 自定义 PlayReady 许可证服务器 |
 | **源** |媒体服务流式处理终结点 |
 | **密钥管理** |不需要参考实现 |
 | **内容管理** |一个 C# 控制台应用程序 |
@@ -189,7 +189,7 @@ DRM 子系统可能包含以下组件：
 ### <a name="implementation-procedures"></a>实现过程
 实现包括下列步骤：
 
-1. 准备测试资产。 将测试视频编码/打包为媒体服务中的多比特率分段 MP4。 此资产*不受*DRM 保护。 DRM 保护稍后由动态保护完成。
+1. 准备测试资产。 将测试视频编码/打包为媒体服务中的多比特率分段 MP4。 此资产*不*受 DRM 保护。 DRM 保护稍后由动态保护完成。
 
 2. 创建密钥 ID 和内容密钥（可以选择从密钥种子中获取）。 在此情况下，不需要密钥管理系统，因为只需要对一些测试资产使用单个密钥 ID 和内容密钥。
 
@@ -213,7 +213,7 @@ DRM 子系统可能包含以下组件：
 
 9. 下表显示了测试矩阵。
 
-    | **DRM** | **浏览器** | **已获授权用户的结果** | **无权限用户的结果** |
+    | **DRM** | **浏览器** | **已获授权用户的结果** | **未获授权用户的结果** |
     | --- | --- | --- | --- |
     | **PlayReady** |Windows 10 上的 Microsoft Edge 或 Internet Explorer 11 |成功 |失败 |
     | **Widevine** |Chrome、Firefox、Opera |成功 |失败 |
@@ -398,7 +398,7 @@ Azure AD 颁发的 JWT 是用于访问此指针资源的访问令牌。
 
 由于 Azure AD 信任 Microsoft 帐户域，因此可以将以下任何域的任何帐户添加到自定义 Azure AD 租户，并使用该帐户登录：
 
-| **域名** | **域** |
+| **域名** | **Domain** |
 | --- | --- |
 | **自定义 Azure AD 租户域** |somename.onmicrosoft.com |
 | **企业域** |microsoft.com |
@@ -462,7 +462,7 @@ Widevine 不会阻止对受保护的视频进行屏幕截图。
 
 在上述两个方案中，用户身份验证相同。 身份验证是通过 Azure AD 发生的。 唯一的差别在于，JWT 由自定义 STS 而不是 Azure AD 颁发。 配置动态 CENC 保护时，许可证传送服务的限制将指定 JWT 的类型是对称还是非对称密钥。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>“摘要”
 
 本文档讨论了使用多重原生 DRM 的 CENC 以及通过令牌身份验证进行访问控制：它的设计和实现使用了 Azure、媒体服务和媒体播放器。
 
