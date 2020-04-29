@@ -1,28 +1,28 @@
 ---
 title: Azure Service Fabric 群集缩放
-description: 了解如何横向或纵向扩展、放大或缩减 Azure Service Fabric 群集。 随着应用程序需求的变化，服务结构群集也会发生变化。
+description: 了解如何横向或纵向扩展、放大或缩减 Azure Service Fabric 群集。 随着应用程序需求变化，Service Fabric 群集也会发生变化。
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: atsenthi
 ms.openlocfilehash: 9dd60a5898b648215fc8b26e49a706a7b19dfeeb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79258689"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>缩放 Azure Service Fabric 群集
-Service Fabric 群集是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。 属于群集一部分的计算机或 VM 称为节点。 群集可以包含数千个节点。 创建 Service Fabric 群集后，可以群集横向缩放（更改节点数）或纵向缩放（更改节点资源）该群集。  随时可以缩放群集，即使该群集上正在运行工作负荷。  在缩放群集的同时，应用程序也会随之自动缩放。
+Service Fabric 群集是通过网络连接在一起的一组虚拟机或物理机，可在其中部署和管理微服务。 属于群集一部分的计算机或 VM 称为节点。 群集可以包含数千个节点。 创建 Service Fabric 群集后，可以群集横向缩放（更改节点数）或纵向缩放（更改节点资源）该群集。  随时可以缩放群集，即使该群集上正在运行工作负荷。  在缩放群集的同时，应用程序也会随之自动缩放。
 
 为何缩放群集？ 应用程序的需求会不断变化。  可能需要增加群集资源来满足更多的应用程序工作负荷或网络流量，或者在需求下降时减少群集资源。
 
 ## <a name="scaling-in-and-out-or-horizontal-scaling"></a>横向扩展和缩减
 更改群集中的节点数。  新节点加入群集后，[群集资源管理器](service-fabric-cluster-resource-manager-introduction.md)会将服务移到其中，导致现有节点上的总负载减少。  此外，如果群集的资源未被有效利用，可以减少节点数量。  节点退出群集后，服务会移出这些节点，剩余节点上的负载会增大。  减少 Azure 中运行的群集的节点数可以节省资金，因为我们是根据 VM 的数量付费，而不是根据这些 VM 上的工作负荷付费。  
 
-- 优势：理论上无限缩放。  如果应用程序采用可伸缩性设计，则可以通过添加更多节点来实现无限扩充。  使用云环境中的工具可以轻松添加或删除节点，因此可以方便地调整容量，并且只需为使用的资源付费。  
-- 劣势：应用程序必须采用[可伸缩性设计](service-fabric-concepts-scalability.md)。  应用程序数据库和持久性可能需要更多的体系结构工作才能正常缩放。  但是，Service Fabric 有状态服务中的[可靠集合](service-fabric-reliable-services-reliable-collections.md)能够大大简化应用程序数据的缩放。
+- 优点：理论上无限缩放。  如果应用程序采用可伸缩性设计，则可以通过添加更多节点来实现无限扩充。  使用云环境中的工具可以轻松添加或删除节点，因此可以方便地调整容量，并且只需为使用的资源付费。  
+- 缺点：应用程序必须采用[可伸缩性设计](service-fabric-concepts-scalability.md)。  应用程序数据库和持久性可能需要更多的体系结构工作才能正常缩放。  但是，Service Fabric 有状态服务中的[可靠集合](service-fabric-reliable-services-reliable-collections.md)能够大大简化应用程序数据的缩放。
 
-虚拟机规模集是一种 Azure 计算资源，可用于将一组 VM 作为一个集进行部署和管理。 Azure 群集中定义的每个节点类型[设置为独立的规模集](service-fabric-cluster-nodetypes.md)。 然后，每个节点类型可以独立扩展或缩减、打开不同的端口集，并可以有不同的容量指标。 
+虚拟机规模集是一种 Azure 计算资源，可用于将一组虚拟机作为一个集进行部署和管理。 Azure 群集中定义的每个节点类型[设置为独立的规模集](service-fabric-cluster-nodetypes.md)。 然后，每个节点类型可以独立缩减或扩展、打开不同的端口集，并可以有不同的容量指标。 
 
 缩放 Azure 群集时，请记住以下准则：
 - 运行生产工作负荷的主节点类型应始终具有五个或更多个节点。
@@ -46,9 +46,9 @@ Service Fabric 群集是一组通过网络连接在一起的虚拟机或物理�
 
 Azure API 可让应用程序以编程方式使用虚拟机规模集和 Service Fabric 群集。 如果现有的自动缩放选项不适用于方案，可通过这些 API 实现自定义的缩放逻辑。 
 
-实现这种“定制”自动缩放功能的方法之一是，将一个新的无状态服务添加到 Service Fabric 应用程序来管理缩放操作。 创建自己的缩放服务可以针对应用程序的缩放行为实现最大控制度和定制性。 这对于需要精确控制应用程序何时或如何扩展的方案非常有用。但是，此控件附带代码复杂性的权衡。 使用这种方法意味着需要拥有缩放代码，而这并不是一个简单的任务。 在服务的 `RunAsync` 方法中，有一组触发器可以确定是否需要缩放（包括检查最大群集大小等参数，以及缩放减缓）。   
+实现这种“定制”自动缩放功能的方法之一是，将一个新的无状态服务添加到 Service Fabric 应用程序来管理缩放操作。 创建自己的缩放服务可以针对应用程序的缩放行为实现最大控制度和定制性。 在需要精确何时或者如何缩减或扩展应用程序的方案中，这种方法非常有效。但是，这种控制也附带了代码复杂性方面的弊端。 使用这种方法意味着需要拥有缩放代码，而这并不是一个简单的任务。 在服务的 `RunAsync` 方法中，有一组触发器可以确定是否需要缩放（包括检查最大群集大小等参数，以及缩放减缓）。   
 
-用于虚拟机缩放集交互（用于检查当前虚拟机实例数并对其进行修改）的 API 是[流畅的 Azure 管理计算库](https://www.nuget.org/packages/Microsoft.Azure.Management.Compute.Fluent/)。 fluent 计算库提供一个易用的 API 来与虚拟机规模集交互。  若要与 Service Fabric 群集本身交互，可使用 [System.Fabric.FabricClient](/dotnet/api/system.fabric.fabricclient)。
+适用于虚拟机规模集交互的 API（用于确定和修改当前虚拟机实例数量）为 [Fluent Azure 管理计算库](https://www.nuget.org/packages/Microsoft.Azure.Management.Compute.Fluent/)。 fluent 计算库提供一个易用的 API 来与虚拟机规模集交互。  若要与 Service Fabric 群集本身交互，可使用 [System.Fabric.FabricClient](/dotnet/api/system.fabric.fabricclient)。
 
 不过，缩放代码无需在群集中以服务的形式运行即可缩放。 `IAzure` 和 `FabricClient` 均可远程连接到其关联的 Azure 资源，因此，缩放服务可以单纯地是一个控制台应用程序，或者是从 Service Fabric 应用程序外部运行的 Windows 服务。
 
@@ -56,10 +56,10 @@ Azure API 可让应用程序以编程方式使用虚拟机规模集和 Service F
 
 ## <a name="scaling-up-and-down-or-vertical-scaling"></a>纵向扩展和缩减 
 更改群集中节点的资源（CPU、内存或存储）。
-- 优势：软件和应用程序体系结构保持不变。
-- 劣势：有限缩放，因为在单个节点上增加的资源量有限制。 会造成停机，因为需要使物理机或虚拟机脱机才能添加或删除资源。
+- 优点：软件和应用程序体系结构保持不变。
+- 缺点：有限缩放，因为在单个节点上增加的资源量有限制。 会造成停机，因为需要使物理机或虚拟机脱机才能添加或删除资源。
 
-虚拟机规模集是一种 Azure 计算资源，可用于将一组 VM 作为一个集进行部署和管理。 Azure 群集中定义的每个节点类型[设置为独立的规模集](service-fabric-cluster-nodetypes.md)。 然后可以单独管理每个节点类型。  纵向扩展或缩减节点类型涉及到更改规模集中虚拟机实例的 SKU。 
+虚拟机规模集是一种 Azure 计算资源，可用于将一组虚拟机作为一个集进行部署和管理。 Azure 群集中定义的每个节点类型[设置为独立的规模集](service-fabric-cluster-nodetypes.md)。 然后可以单独管理每个节点类型。  纵向扩展或缩减节点类型涉及到更改规模集中虚拟机实例的 SKU。 
 
 > [!WARNING]
 > 我们建议不要更改规模集/节点类型的 VM SKU，除非它在[银级持久性或更高的级别](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)运行。 更改 VM SKU 大小是一种破坏数据的就地基础结构操作。 由于无法延迟或监视此更改，此操作可能会导致有状态服务的数据丢失或其他意外操作问题（甚至可能影响无状态工作负载）。 

@@ -11,10 +11,10 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: d86858f8d7f09628457b718ca3c481934d720081
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79270051"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>数据科学虚拟机数据引入工具
@@ -54,7 +54,7 @@ ms.locfileid: "79270051"
 | 支持的 DSVM 版本      | Windows      |
 | 典型用途      | 将文件复制到 Azure Blob 存储以及在帐户之间复制 Blob。      |
 |  如何使用/运行它？    |   打开命令提示符，键入 `azcopy` 可获取帮助。    |
-| 指向示例的链接      | [AzCopy on Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)      |
+| 指向示例的链接      | [Windows 上的 AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)      |
 | DSVM 上的相关工具      | AdlCopy     |
 
 
@@ -66,7 +66,7 @@ ms.locfileid: "79270051"
 | 支持的 DSVM 版本      | Windows      |
 | 典型用途      | 将文件从虚拟机导入 CosmosDB，将数据从 Azure 表存储导入 CosmosDB 以及将数据从 Microsoft SQL Server 数据库导入到 CosmosDB。     |
 |  如何使用/运行它？    |   要使用命令行版本，请打开命令提示符，键入 `dt`。 要使用 GUI 工具，请打开命令提示符，键入 `dtui`。    |
-| 指向示例的链接      | [宇宙DB导入数据](https://docs.microsoft.com/azure/cosmos-db/import-data)      |
+| 指向示例的链接      | [CosmosDB 导入数据](https://docs.microsoft.com/azure/cosmos-db/import-data)      |
 | DSVM 上的相关工具      | AzCopy、AdlCopy      |
 
 ## <a name="azure-storage-explorer"></a>Azure 存储资源管理器
@@ -77,7 +77,7 @@ ms.locfileid: "79270051"
 | 支持的 DSVM 版本      | Windows      |
 | 典型用途      | 从 DSVM 导出数据或将数据导入其中。    |
 |  如何使用/运行它？    | 在“开始”菜单中搜索“Azure 存储资源管理器”。 |
-| 指向示例的链接      | [Azure 存储资源管理器](vm-do-ten-things.md#access-azure-data-and-analytics-services)      |
+| 指向示例的链接      | [Azure 存储浏览器](vm-do-ten-things.md#access-azure-data-and-analytics-services)      |
 
 
 ## <a name="bcp"></a>bcp
@@ -88,7 +88,7 @@ ms.locfileid: "79270051"
 | 支持的 DSVM 版本      | Windows      |
 | 典型用途      | 将 CSV 文件导入到 SQL Server 表中以及将 SQL Server 表导出到文件。      |
 |  如何使用/运行它？    |   打开命令提示符，键入 `bcp` 可获取帮助。    |
-| 指向示例的链接      | [bcp 实用程序](https://docs.microsoft.com/sql/tools/bcp-utility)      |
+| 指向示例的链接      | [bcp 实用工具](https://docs.microsoft.com/sql/tools/bcp-utility)      |
 | DSVM 上的相关工具      | SQL Server、sqlcmd      |
 
 ## <a name="blobfuse"></a>blobfuse

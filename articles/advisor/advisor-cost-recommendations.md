@@ -4,19 +4,19 @@ description: 使用 Azure 顾问优化 Azure 部署的成本。
 ms.topic: article
 ms.date: 01/29/2019
 ms.openlocfilehash: 0237feab59551ecab87d78b0d4d66b9fc7b47e90
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79259690"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>使用 Azure 顾问降低服务成本
 
-通过识别闲置和未充分利用的资源，顾问有助于优化和降低 Azure 总支出。可在顾问仪表板的“成本”**** 选项卡获取成本建议。
+通过识别闲置和未充分利用的资源，顾问有助于优化和降低 Azure 总支出。 可在顾问仪表板的“成本”  选项卡获取成本建议。
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>通过调整或关闭未充分利用的实例来优化虚拟机花费 
 
-虽然某些应用程序方案有意使虚拟机利用率较低，但通过管理虚拟机大小和数量通常可降低成本。 Advisor 高级评估模型考虑在 CPU 利用率最大值的 P95 小于 3% 且网络利用率低于 2% 时关闭虚拟机。 如果可以在较小的 SKU 中（在同一 SKU 系列中）适应当前负荷，或者可以在减少实例数的情况下这样做，使得当前的负荷在不是面向用户的工作负荷的情况下不超出 80% 的使用率，在是面向用户的工作负荷的情况下不超出 40% 的使用率，则可认为虚拟机的大小合适。 在这里，可以通过分析工作负荷的 CPU 使用率特征来确定工作负荷的类型。
+虽然某些应用程序方案有意使虚拟机利用率较低，但通过管理虚拟机大小和数量通常可降低成本。 当 CPU 使用率的最大值为 P95th 3% 且网络使用率低于7天的2% 时，顾问高级评估模型会将虚拟机视为关机。 如果可以在较小的 SKU 中（在同一 SKU 系列中）适应当前负荷，或者可以在减少实例数的情况下这样做，使得当前的负荷在不是面向用户的工作负荷的情况下不超出 80% 的使用率，在是面向用户的工作负荷的情况下不超出 40% 的使用率，则可认为虚拟机的大小合适。 在这里，可以通过分析工作负荷的 CPU 使用率特征来确定工作负荷的类型。
 
 建议的操作是关机或重设大小，具体取决于这种情况下建议使用的资源。 顾问显示了与建议的操作（重设大小或关机）相对应的成本节省估算值。 另外，对于重设大小这种建议的操作，顾问提供了当前 SKU 信息和目标 SKU 信息。 
 
@@ -24,7 +24,7 @@ ms.locfileid: "79259690"
 
 ## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>通过消除未设置的 ExpressRoute 线路来降低成本
 
-顾问将识别提供程序状态为“未设置”长达一个月以上的 ExpressRoute 线路将被顾问标识，如果没有使用连接性提供程序配置该线路的计划，顾问将建议删除它**。
+顾问将识别提供程序状态为“未设置”长达一个月以上的 ExpressRoute 线路将被顾问标识，如果没有使用连接性提供程序配置该线路的计划，顾问将建议删除它  。
 
 ## <a name="reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways"></a>通过删除或重新配置空闲虚拟网络网关来降低成本
 
@@ -48,15 +48,15 @@ Azure 顾问会检测到反复发生故障的 Azure 数据工厂管道，并建�
 为了节省 60% 的成本，我们建议将快照存储在标准存储中，无论父磁盘的存储类型是什么，都是如此。 此选项是托管磁盘快照的默认选项。 Azure 顾问会标识存储在高级存储中的快照，并建议你将快照从高级存储迁移到标准存储。 [详细了解托管磁盘的定价](https://aka.ms/aa_manageddisksnapshot_learnmore)
 
 ## <a name="utilize-lifecycle-management"></a>利用生命周期管理
-Azure Advisor 将利用有关 Azure Blob 存储对象计数、总大小和事务的情报来检测一个或多个存储帐户是否最适合启用分层数据的生命周期管理。 它将提示您创建生命周期管理规则，以自动将数据分层到 Cool 或 Archive，以优化存储成本，同时将数据保留在 Azure Blob 存储中以进行应用程序兼容性。
+Azure 顾问将利用有关 Azure blob 存储对象计数、总大小和事务的智能，以检测是否有一个或多个存储帐户最适合用于对数据进行数据的生命周期管理。 它将提示你创建生命周期管理规则，以便将你的数据自动分层为 "冷" 或 "存档"，以优化存储成本，同时保留 Azure blob 存储中的数据以实现应用程序兼容性。
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>如何访问 Azure 顾问中的成本建议
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
-1. 从任何页面搜索并选择[**顾问**](https://aka.ms/azureadvisordashboard)。
+1. 从任意页面搜索并选择 "[**顾问**](https://aka.ms/azureadvisordashboard)"。
 
-1. 在 **"顾问**"仪表板上，选择 **"成本**"选项卡。
+1. 在**顾问**仪表板上，选择 "**成本**" 选项卡。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -66,4 +66,4 @@ Azure Advisor 将利用有关 Azure Blob 存储对象计数、总大小和事务
 * [顾问性能建议](advisor-performance-recommendations.md)
 * [顾问高可用性建议](advisor-high-availability-recommendations.md)
 * [顾问安全性建议](advisor-security-recommendations.md)
-* [顾问卓越运营建议](advisor-operational-excellence-recommendations.md)
+* [顾问操作优秀建议](advisor-operational-excellence-recommendations.md)

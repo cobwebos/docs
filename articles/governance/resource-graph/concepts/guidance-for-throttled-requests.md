@@ -4,10 +4,10 @@ description: 了解如何进行分组、错开、分页和并行查询，以避�
 ms.date: 12/02/2019
 ms.topic: conceptual
 ms.openlocfilehash: fbd4bec715b187bcc643fe32b8452b0e062e7713
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79259846"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>有关 Azure Resource Graph 中受限请求的指南
@@ -27,19 +27,19 @@ Azure Resource Graph 根据时间范围为每个用户分配配额数。 例如�
 
 在每个查询响应中，Azure Resource Graph 会添加两个限制标头：
 
-- `x-ms-user-quota-remaining`（int）：用户的剩余资源配额。 此值映射到查询计数。
-- `x-ms-user-quota-resets-after`（hh：mm：ss）：重置用户配额消耗的持续时间。
+- `x-ms-user-quota-remaining` (int)：用户的剩余资源配额。 此值映射到查询计数。
+- `x-ms-user-quota-resets-after` (hh:mm:ss)：在用户的配额消耗量重置之前的持续时间。
 
 为了演示标头的工作原理，让我们看看一个包含标头以及值 `x-ms-user-quota-remaining: 10` 和 `x-ms-user-quota-resets-after: 00:00:03` 的查询响应。
 
 - 在接下来的 3 秒内，最多可以提交 10 个查询，这不会受到限制。
 - 3 秒后，`x-ms-user-quota-remaining` 和 `x-ms-user-quota-resets-after` 的值将分别重置为 `15` 和 `00:00:05`。
 
-有关演示如何使用标头回退查询请求的示例，请参阅[并行查询](#query-in-parallel)中的示例。__
+有关演示如何使用标头回退查询请求的示例，请参阅[并行查询](#query-in-parallel)中的示例。 
 
 ## <a name="grouping-queries"></a>分组查询
 
-按订阅、资源组或单个资源分组查询比并行化查询更为有效。 较大查询的配额成本通常小于众多有针对性的小型查询的配额成本。 建议使组大小小于 300__。
+按订阅、资源组或单个资源分组查询比并行化查询更为有效。 较大查询的配额成本通常小于众多有针对性的小型查询的配额成本。 建议使组大小小于 300  。
 
 - 优化不当的方法示例
 
@@ -153,7 +153,7 @@ while (/* Need to query more? */)
 
 ### <a name="query-in-parallel"></a>并行查询
 
-尽管我们建议使用分组而不是并行化，但有时，并不能轻松地分组查询。 在这些情况下，可能需要通过并行发送多个查询来查询 Azure Resource Graph。 以下示例演示在这种情况下如何基于限制标头进行回退：__
+尽管我们建议使用分组而不是并行化，但有时，并不能轻松地分组查询。 在这些情况下，可能需要通过并行发送多个查询来查询 Azure Resource Graph。 以下示例演示在这种情况下如何基于限制标头进行回退： 
 
 ```csharp
 IEnumerable<IEnumerable<string>> queryGroup = /* Groups of queries  */
@@ -228,7 +228,7 @@ async Task ExecuteQueries(IEnumerable<string> queries)
 
 ## <a name="still-get-throttled"></a>仍然受到限制？
 
-如果您在执行上述建议后受到限制，请与 团队联系[resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com)。
+如果在运用上述建议后仍然受到限制，请联系支持团队 ([resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com))。
 
 请提供以下详细信息：
 
@@ -239,6 +239,6 @@ async Task ExecuteQueries(IEnumerable<string> queries)
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅[初学者查询](../samples/starter.md)中正在使用的语言。
-- 请参阅[高级查询](../samples/advanced.md)中的高级用途。
+- 在[初学者查询](../samples/starter.md)中了解使用的语言。
+- 在[高级查询](../samples/advanced.md)中了解高级用法。
 - 详细了解如何[浏览资源](explore-resources.md)。

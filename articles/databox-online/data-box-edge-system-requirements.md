@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 458c062eef011363724cb894ce67ba75181ba8ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260223"
 ---
-# <a name="azure-data-box-edge-system-requirements"></a>Azure 数据框边缘系统要求
+# <a name="azure-data-box-edge-system-requirements"></a>Azure Data Box Edge 系统要求
 
 本文介绍 Microsoft Azure Data Box Edge 解决方案以及连接到 Azure Data Box Edge 的客户端的重要系统要求。 我们建议在部署 Data Box Edge 之前仔细查看这些信息。 在部署和执行后续操作期间，如有必要，可以回来参考此信息。
 
@@ -86,53 +86,53 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 | https://\*.azurecr.io                     | 个人和第三方容器注册表（可选） | 
 | https://\*.azure-devices.net              | Iot 中心访问权限（必填）                             | 
 
-### <a name="url-patterns-for-gateway-for-azure-government"></a>Azure 政府网关的 URL 模式
+### <a name="url-patterns-for-gateway-for-azure-government"></a>适用于 Azure 政府的网关的 URL 模式
 
 [!INCLUDE [Azure Government URL patterns for firewall](../../includes/data-box-edge-gateway-gov-url-patterns-firewall.md)]
 
-### <a name="url-patterns-for-compute-for-azure-government"></a>用于 Azure 政府计算的 URL 模式
+### <a name="url-patterns-for-compute-for-azure-government"></a>Azure 政府版计算的 URL 模式
 
 | URL 模式                      | 组件或功能                     |  
 |----------------------------------|---------------------------------------------|
-| https：\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.com | Microsoft 容器注册表（必填）               |
-| https://\*.azure-devices.us              | Iot 中心访问权限（必填）           |
-| https://\*.azurecr.us                    | 个人和第三方容器注册表（可选） | 
+| https：\//mcr.microsoft.com<br></br>https://\*. cdn.mscr.com | Microsoft 容器注册表（必填）               |
+| https://\*. azure-devices.us              | Iot 中心访问权限（必填）           |
+| https://\*. azurecr.us                    | 个人和第三方容器注册表（可选） | 
 
 ## <a name="internet-bandwidth"></a>Internet 带宽
 
 [!INCLUDE [Internet bandwidth](../../includes/data-box-edge-gateway-internet-bandwidth.md)]
 
-## <a name="compute-sizing-considerations"></a>计算大小调整注意事项
+## <a name="compute-sizing-considerations"></a>计算大小注意事项
 
-在开发和测试解决方案时使用您的体验，以确保数据盒边缘设备上有足够的容量，并从设备获得最佳性能。
+在开发和测试解决方案时使用体验，以确保 Data Box Edge 设备上有足够的容量，并获得设备的最佳性能。
 
 应考虑的因素包括：
 
-- **容器细节**- 考虑以下事项。
+- **容器详细信息**-请考虑以下内容。
 
-    - 您的工作负载中有多少个容器？ 您可以有很多轻量级容器，而不是一些资源密集型容器。
-    - 分配给这些容器的资源与它们消耗的资源相比，哪些资源？
-    - 您的容器共享多少层？
-    - 是否有未使用的容器？ 已停止的容器仍占用磁盘空间。
-    - 你的容器是用哪种语言写的？
-- **处理的数据大小**- 您的容器将处理多少数据？ 此数据会占用磁盘空间，还是数据将在内存中处理？
-- **预期性能**- 解决方案所需的性能特征是什么？ 
+    - 工作负荷中有多少容器？ 你可能有大量轻型容器，而不是占用大量资源的容器。
+    - 分配给这些容器的资源有哪些，以及它们消耗的资源是多少？
+    - 容器共享多少层？
+    - 是否存在未使用的容器？ 已停止的容器仍占用磁盘空间。
+    - 你的容器在哪种语言中编写？
+- 已**处理的数据大小**-容器处理的数据量是多少？ 此数据是否会占用磁盘空间，否则数据将在内存中进行处理吗？
+- **预期的性能**-你的解决方案所需的性能特征是什么？ 
 
-要了解并优化解决方案的性能，可以使用：
+若要了解和优化解决方案的性能，可以使用：
 
-- Azure 门户中可用的计算指标。 转到数据框边缘资源，然后转到**监视>指标**。 查看**边缘计算 - 内存使用情况**和**边缘计算 - CPU 百分比**以了解可用资源以及如何消耗资源。
-- 可通过设备的 PowerShell 接口提供的监视命令，例如：
+- Azure 门户中可用的计算指标。 中转到 Data Box Edge 资源，然后开始**监视 > 指标**。 查看**边缘计算内存使用情况**和**边缘计算百分比 CPU** ，了解可用资源以及资源的使用情况。
+- 可通过设备的 PowerShell 接口使用的监视命令，例如：
 
-    - `dkrdbe stats`获取容器资源使用情况统计信息的实时流。 该命令支持 CPU、内存使用情况、内存限制和网络 IO 指标。
+    - `dkrdbe stats`获取容器资源使用情况统计信息的实时流。 命令支持 CPU、内存使用量、内存限制和网络 IO 指标。
     - `dkrdbe system df`获取有关使用的磁盘空间量的信息。 
-    - `dkrdbe image prune`清理未使用的图像并释放空间。
-    - `dkrdbe ps --size`以查看正在运行的容器的近似大小。 
+    - `dkrdbe image prune`清除未使用的映像并释放空间。
+    - `dkrdbe ps --size`查看正在运行的容器的近似大小。 
 
-    有关可用命令的详细信息，请访问[监视和排除计算模块的故障](data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules)。
+    有关可用命令的详细信息，请参阅对[计算模块进行监视和故障排除](data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules)。
 
-最后，请确保在数据集中验证解决方案，并在在生产中部署之前量化数据框边缘的性能。
+最后，请确保在数据集上验证解决方案并量化 Data Box Edge 上的性能，然后再在生产环境中进行部署。
 
 
-## <a name="next-step"></a>后续步骤
+## <a name="next-step"></a>下一步
 
 - [部署 Azure Data Box Edge](data-box-edge-deploy-prep.md)

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 01153317b49e4543f10faa517bce7bcc01ce22d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79269726"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>使用 AES-128 动态加密和密钥传递服务
@@ -29,15 +29,15 @@ ms.locfileid: "79269726"
 >  
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本，[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
-借助媒体服务，可以传送使用 AES 加密的 HTTP Live Streaming (HLS) 和平滑流（使用 128 位加密密钥）。 媒体服务还提供密钥传送服务，将加密密钥传送给已授权的用户。 如果需要媒体服务来加密资产，则需要将加密密钥与资产相关联，并配置密钥的授权策略。 当播放器请求流时，媒体服务将使用指定的密钥通过 AES 加密来动态加密内容。 为解密流，播放器从密钥传送服务请求密钥。 为了确定用户是否被授权获取密钥，服务将评估你为密钥指定的授权策略。
+借助媒体服务，可以传送使用 AES 加密的 HTTP Live Streaming (HLS) 和平滑流（使用 128 位加密密钥）。 媒体服务还提供密钥传送服务，将加密密钥传送给已授权的用户。 如果需要媒体服务来加密资产，则需要将加密密钥与资产相关联，并配置密钥的授权策略。 当播放器请求流时，媒体服务将使用指定的密钥通过 AES 加密来动态加密内容。 为了解密流，播放器将从密钥传送服务请求密钥。 为了确定用户是否被授权获取密钥，服务将评估你为密钥指定的授权策略。
 
-媒体服务支持通过多种方式对发出密钥请求的用户进行身份验证。 内容密钥授权策略可能有一种或多种授权限制：开放或令牌限制。 令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持简单 Web[令牌](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)（SWT） 和[JSON Web 令牌](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3)（JWT） 格式的令牌。 有关详细信息，请参阅[配置内容密钥的授权策略](media-services-protect-with-aes128.md#configure_key_auth_policy)。
+媒体服务支持通过多种方式对发出密钥请求的用户进行身份验证。 内容密钥授权策略可能有一种或多种授权限制：开放或令牌限制。 令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持采用[简单 Web 令牌](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2) (SWT) 格式和 [JSON Web 令牌](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) (JWT) 格式的令牌。 有关详细信息，请参阅[配置内容密钥授权策略](media-services-protect-with-aes128.md#configure_key_auth_policy)。
 
 为了充分利用动态加密，资产必须包含一组多码率 MP4 文件或多码率平滑流源文件。 还需要为资产配置传送策略（在本文后面部分介绍）。 然后，根据在流式处理 URL 中指定的格式，按需流式处理服务器会确保使用选定的协议来传送流。 因此，需要存储只使用单一存储格式的文件并为其付费。 媒体服务会根据客户端的请求生成并提供适当的响应。
 
-本文适合开发受保护媒体传送应用程序的开发人员。 本文介绍如何使用授权策略来配置密钥传送服务，确保只有经过授权的客户端才能接收加密密钥。 此外还介绍如何使用动态加密。
+本文适合开发受保护媒体传送应用程序的开发人员。 本文介绍如何使用授权策略来配置密钥传送服务，确保只有经过授权的客户端才能接收加密密钥。 此外还会介绍如何使用动态加密。
 
 有关如何使用高级加密标准 (AES) 加密内容并传送到 macOS 上的 Safari 的信息，请参阅[此博客文章](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)。
 有关如何使用 AES 加密保护媒体内容的概述，请参阅[此视频](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-Protecting-your-Media-Content-with-AES-Encryption)。
@@ -47,17 +47,17 @@ ms.locfileid: "79269726"
 
 使用媒体服务密钥传送服务和动态加密通过 AES 来加密资产时，请执行下述常规步骤：
 
-1. [创建资产，并将文件上载到资产](media-services-protect-with-aes128.md#create_asset)中。
+1. [创建资产，并将文件上传到资产](media-services-protect-with-aes128.md#create_asset)中。
 
-2. [将包含该文件的资产编码到自适应比特率 MP4 集](media-services-protect-with-aes128.md#encode_asset)。
+2. 将[包含文件的资产编码为自适应比特率文件集](media-services-protect-with-aes128.md#encode_asset)。
 
-3. [创建内容键，并将其与编码的资产相关联](media-services-protect-with-aes128.md#create_contentkey)。 在媒体服务中，内容密钥包含资产的加密密钥。
+3. [创建内容密钥，并将其与编码资产相关联](media-services-protect-with-aes128.md#create_contentkey)。 在媒体服务中，内容密钥包含资产的加密密钥。
 
 4. [配置内容密钥的授权策略](media-services-protect-with-aes128.md#configure_key_auth_policy)。 必须配置内容密钥授权策略。 客户端必须符合该策略才能将内容密钥传送到客户端。
 
-5. [为资产配置传送策略](media-services-protect-with-aes128.md#configure_asset_delivery_policy)。 传送策略配置包括密钥获取 URL 和初始化矢量 (IV)。 （AES-128 需要相同的 IV 进行加密和解密。配置还包括传递协议（例如，MPEG-DASH、HLS、平滑流式处理或全部）和动态加密类型（例如，信封或无动态加密）。
+5. [为资产配置传送策略](media-services-protect-with-aes128.md#configure_asset_delivery_policy)。 传送策略配置包括密钥获取 URL 和初始化矢量 (IV)。 （AES-128 需要相同的 IV 进行加密和解密。）此配置还包括传送协议（例如，MPEG-短线、HLS、平滑流式处理或全部）和动态加密类型（例如信封或无动态加密）。
 
-    可以对同一资产上的不同协议应用不同的策略。 例如，可以将 PlayReady 加密应用到平滑流/DASH，将 AES 信封应用到 HLS。 将阻止流式处理传送策略中未定义的任何协议。 （例如，如果添加仅指定 HLS 作为协议的单个策略。例外情况是，如果您根本没有定义资产交付策略。 此时，允许所有明文形式的协议。
+    可以对同一资产上的不同协议应用不同的策略。 例如，可以将 PlayReady 加密应用到平滑流/DASH，将 AES 信封应用到 HLS。 将阻止流式处理传送策略中未定义的任何协议。 （例如，如果添加一个仅将 HLS 指定为协议的策略，则为。）如果根本没有定义任何资产传送策略，则例外。 此时，允许所有明文形式的协议。
 
 6. [创建 OnDemand 定位符](media-services-protect-with-aes128.md#create_locator)以获取流式处理 URL。
 
@@ -159,7 +159,7 @@ ms.locfileid: "79269726"
 
 对于 HLS，根清单将划分成段文件。 
 
-例如，根清单是：http：\//test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/清单（格式=m3u8-aapl）。 它包含段文件名的列表。
+例如，根清单是： http：\//test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest （format = m3u8-aapl-v3-流式处理 m3u8-aapl-v3）。 它包含段文件名的列表。
 
     . . . 
     #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=630133,RESOLUTION=424x240,CODECS="avc1.4d4015,mp4a.40.2",AUDIO="audio"
@@ -168,7 +168,7 @@ ms.locfileid: "79269726"
     QualityLevels(842459)/Manifest(video,format=m3u8-aapl)
     …
 
-如果在文本编辑器中打开其中一个段文件（例如， http：\//test001.origin.mediaservices.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/质量级别（514369）/清单（视频，格式=m3u8-aapl），它包含#EXT-X-KEY，这表明该文件已加密。
+如果在文本编辑器中打开某个段文件（例如，http：\//test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels （514369）/Manifest （视频，格式 = m3u8-aapl-v3-流式处理 m3u8-aapl-v3），则它将包含 #EXT X 键，这表示该文件已加密。
 
     #EXTM3U
     #EXT-X-VERSION:4

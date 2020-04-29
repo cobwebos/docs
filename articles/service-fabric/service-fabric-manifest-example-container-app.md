@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: pepogors
 ms.openlocfilehash: 5efdbd17db20e69ace33b379ddbb99b2c4a20e69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79258390"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>多容器应用程序和服务清单示例
@@ -342,7 +342,7 @@ EntryPoint 指定的可执行文件通常是长时间运行的服务主机。 �
  有关详细信息，请参阅 [ContainerHost 元素](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
 ### <a name="imagename-element"></a>ImageName 元素
-上的回购和映像[https://hub.docker.com](https://hub.docker.com)或 Azure 容器注册表。 有关详细信息，请参阅 [ImageName 元素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+[https://hub.docker.com](https://hub.docker.com) 或 Azure 容器注册表上的存储库和映像。 有关详细信息，请参阅 [ImageName 元素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
 ### <a name="environmentvariables-element"></a>EnvironmentVariables 元素
 将环境变量传递给容器或 exe。  有关详细信息，请参阅 [EnvironmentVariables 元素](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)
@@ -386,7 +386,7 @@ EntryPoint 指定的可执行文件通常是长时间运行的服务主机。 �
 有关详细信息，请参阅 [ContainerHost 元素](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
 ### <a name="imagename-element"></a>ImageName 元素
-上的回购和映像[https://hub.docker.com](https://hub.docker.com)或 Azure 容器注册表。 有关详细信息，请参阅 [ImageName 元素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+[https://hub.docker.com](https://hub.docker.com) 或 Azure 容器注册表上的存储库和映像。 有关详细信息，请参阅 [ImageName 元素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
 ### <a name="commands-element"></a>Commands 元素
 将以逗号分隔的命令列表传递给容器。 有关详细信息，请参阅 [Commands 元素](service-fabric-service-model-schema-elements.md#CommandsElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)

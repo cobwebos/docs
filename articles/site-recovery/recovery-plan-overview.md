@@ -4,10 +4,10 @@ description: 了解 Azure Site Recovery 中的恢复计划。
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.openlocfilehash: beb92bd62d011ef8aaf304dbb769e7694e6d7e60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79257766"
 ---
 # <a name="about-recovery-plans"></a>关于恢复计划
@@ -17,7 +17,7 @@ ms.locfileid: "79257766"
 恢复计划将计算机收集到恢复组中，以便进行故障转移。 恢复计划通过创建可以进行故障转移的较小独立单元来帮助你定义系统性的恢复流程。 一个单元通常表示你的环境中的一个应用。
 
 - 恢复计划定义计算机如何进行故障转移，以及它们在故障转移后按什么顺序启动。
-- 恢复计划用于故障转移到 Azure，但不能用于从 Azure 进行故障倒正。
+- 恢复计划用于故障转移到 Azure，但不能用于从 Azure 进行故障回复。
 - 最多可将 100 个受保护的实例添加到一个恢复计划。
 - 可以通过向计划中添加顺序、说明和任务来自定义计划。
 - 在定义计划后，可以根据它运行故障转移。
@@ -85,7 +85,7 @@ ms.locfileid: "79257766"
 
 ## <a name="watch-a-recovery-plan-video"></a>观看恢复计划视频
 
-观看快速示例视频，显示双层 WordPress 应用的恢复计划的点击故障转移。
+观看快速示例视频，其中显示了针对两层 WordPress 应用的恢复计划的单击时故障转移。
     
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]
 

@@ -4,10 +4,10 @@ description: 通过为每个节点类型/虚拟机规模集设置自动缩放规
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.openlocfilehash: 26ef13f38d525e4e493ad933bfb906dd36ed0070
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79258728"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>缩小或扩大群集
@@ -49,10 +49,10 @@ Get-AzVmss -ResourceGroupName <RGname> -VMScaleSetName <virtual machine scale se
 
 当前，自动缩放功能不受应用程序可能向 Service Fabric 报告的负荷所影响。 因此当前获得的自动缩放纯粹受每个虚拟机规模集实例发出的性能计数器所影响。  
 
-按照这些说明[为每个虚拟机规模集设置自动缩放](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md)。
+按照以下说明[为每个虚拟机规模集设置自动缩放](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md)。
 
 > [!NOTE]
-> 在缩减方案中，除非您的节点类型具有金或银的[持久性级别][durability]，否则您需要使用适当的节点名称调用[删除服务FabricNodeState cmdlet。](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate) 对于青铜持久性，不建议一次缩小多个节点。
+> 在缩减方案中，除非节点类型具有金级或银级[持续性级别][durability]，否则需要使用相应节点名称来调用 [Remove-ServiceFabricNodeState cmdlet](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate)。 对于铜牌持久性，不建议一次缩小多个节点。
 > 
 > 
 
@@ -68,7 +68,7 @@ Get-AzVmss -ResourceGroupName <RGname> -VMScaleSetName <virtual machine scale se
 根据[快速入门模板库](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing)中的示例/说明更改每个节点类型的 VM 数目。 
 
 ### <a name="add-vms-using-powershell-or-cli-commands"></a>使用 PowerShell 或 CLI 命令添加 VM
-以下代码按名称获取规模集，并使规模集的容量增加 1。****
+以下代码按名称获取规模集，并使规模集的容量增加 1。 
 
 ```powershell
 $scaleset = Get-AzVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm
@@ -96,7 +96,7 @@ Service Fabric 系统服务在群集中以主节点类型运行。 缩小主节�
 
 ### <a name="remove-the-service-fabric-node"></a>删除 Service Fabric 节点
 
-手动删除节点状态的步骤仅适用于具有“铜”** 持续性层的节点类型。  对于*银*和*金*的耐久性层，这些步骤由平台自动完成。 有关持续性的详细信息，请参阅 [Service Fabric 群集容量规划][durability]。
+手动删除节点状态的步骤仅适用于具有“铜”  持续性层的节点类型。  对于“白银”和“黄金”持续性层，平台会自动完成上述步骤。   有关持续性的详细信息，请参阅 [Service Fabric 群集容量规划][durability]。
 
 为了使群集节点均匀地分布在升级域和容错域中，从而使它们的利用均匀，应该首先删除最近创建的节点。 换句话说，应该按照创建节点的相反顺序删除节点。 最近创建的节点是具有最大 `virtual machine scale set InstanceId` 属性值的节点。 下面的代码示例返回最近创建的节点。
 
@@ -122,7 +122,7 @@ sfctl：`sfctl node transition --node-transition-type Stop`
 PowerShell：`Remove-ServiceFabricNodeState`  
 sfctl：`sfctl node remove-state`
 
-对节点执行这三个步骤后，即可将其从规模集中移除。 如果使用除 [bronze][durability] 以外的任意持续性层，在移除规模集实例时会完成这些步骤。
+对节点执行这三个步骤后，即可将其从规模集中移除。 如果使用除[铜][durability]以外的任意持续性层，在移除规模集实例时会完成这些步骤。
 
 以下代码块获取最近创建的节点，禁用、停止并将节点从群集中移除。
 
@@ -184,7 +184,7 @@ else
 }
 ```
 
-在下面的“sfctl”代码中，使用以下命令获取最近创建的节点 `sfctl node list --query "sort_by(items[*], &name)[-1].name"` 的 “node-name”值：********
+在下面的“sfctl”代码中，使用以下命令获取最近创建的节点  **的 “node-name”值：**  `sfctl node list --query "sort_by(items[*], &name)[-1].name"`
 
 ```shell
 # Inform the node that it is going to be removed
@@ -198,7 +198,7 @@ sfctl node remove-state --node-name _nt1vm_5
 ```
 
 > [!TIP]
-> 使用以下“sfctl”查询检查每个步骤的状态。****
+> 使用以下“sfctl”查询检查每个步骤的状态。 
 >
 > **检查停用状态**
 > `sfctl node list --query "sort_by(items[*], &name)[-1].nodeDeactivationInfo"`
@@ -207,7 +207,7 @@ sfctl node remove-state --node-name _nt1vm_5
 > `sfctl node list --query "sort_by(items[*], &name)[-1].isStopped"`
 >
 
-### <a name="scale-in-the-scale-set"></a>缩小规模集
+### <a name="scale-in-the-scale-set"></a>横向缩减规模集
 
 将 Service Fabric 节点从群集中删除后，即可缩小虚拟机规模集。 在下面的示例中，规模集容量缩小了 1。
 
@@ -237,7 +237,7 @@ Service Fabric Explorer 中列出的节点是 Service Fabric 系统服务（特�
 
 若要确保在删除 VM 时删除节点，有两个选项：
 
-1. 为群集中的节点类型选择金级或银级持续性级别，这会提供基础结构集成。 这随后会在进行减少时自动从我们的系统服务 (FM) 状态中删除节点。
+1. 为群集中的节点类型选择金级或银级持续性级别，这会提供基础结构集成。 这随后会在进行纵向缩减时自动从我们的系统服务 (FM) 状态中删除节点。
 在[此处](service-fabric-cluster-capacity.md)了解有关持续性级别的详细信息
 
 2. 减少 VM 实例之后，需要调用 [Remove-ServiceFabricNodeState cmdlet](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate)。

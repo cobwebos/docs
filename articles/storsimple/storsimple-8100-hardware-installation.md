@@ -1,5 +1,5 @@
 ---
-title: 安装微软 Azure StorSimple 8100 设备
+title: 安装 Microsoft Azure StorSimple 8100 设备
 description: 介绍如何在部署和配置软件之前打开 StorSimple 8100 设备的包装并进行机架安装和布线。
 author: alkohli
 ms.assetid: 6098a01e-c031-488a-a8d7-0b607ce665e1
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79267581"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>打开 StorSimple 8100 设备的包装并进行机架安装和布线
@@ -42,7 +42,7 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
    
     **存储设备解包后的视图**
    
-   | Label | 描述 |
+   | Label | 说明 |
    | --- | --- |
    |   1 |包装箱 |
    |   2 |底部泡沫 |
@@ -104,7 +104,7 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
 
     **在机箱侧面安装内部导轨**
    
-    Label | 描述
+    Label | 说明
     ----- | -----------
     1     | M 3x4 圆头螺丝
     2     | 底架滑轨
@@ -118,7 +118,7 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
    
     **将外部导轨组件固定到机架上**
    
-   | Label | 描述 |
+   | Label | 说明 |
    | --- | --- |
    |   1 |旋紧螺丝 |
    |   2 |方孔前机架立柱螺丝 |
@@ -144,7 +144,7 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
    
     **安装法兰帽**
    
-   | Label | 描述 |
+   | Label | 说明 |
    | --- | --- |
    |   1 |机箱紧固螺丝 |
 
@@ -153,7 +153,7 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
 ## <a name="cable-your-storsimple-8100-device"></a>进行 StorSimple 8100 设备布线
 以下过程阐释了如何针对电源、网络和串行连接进行 StorSimple 8100 设备布线。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 在开始进行设备布线之前，需要：
 
 * 存储设备已完全打开包装并已完成机架安装。
@@ -184,7 +184,7 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
    
     **显示数据端口的设备背面**
    
-   | Label | 描述 |
+   | Label | 说明 |
    | --- | --- |
    |   0,1,4,5 |1 GbE 网络接口 |
    |   2,3 |10 GbE 网络接口 |
@@ -195,7 +195,7 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
 
     **设备网络布线**
 
-   |Label | 描述 |
+   |Label | 说明 |
    |----- | ----------- |
    | A    | 具有 Internet 访问的 LAN |
    | B    | 控制器 0 |
@@ -236,7 +236,7 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
 6. 在控制台中按 Enter 键确认连接是否正常。 将出现串行控制台菜单。
 
 > [!NOTE]
-> **熄灯管理**：当设备安装在远程数据中心或访问受限的计算机室中时，请确保与两个控制器的串行连接始终连接到串行控制台交换机或类似设备。 如果出现网络中断或意外故障，这可实现带外远程控制和支持操作。
+> 无人**值守管理**：当设备安装在远程数据中心或具有有限访问权限的计算机机房中时，请确保与两个控制器的串行连接始终连接到串行控制台交换机或类似设备。 如果出现网络中断或意外故障，这可实现带外远程控制和支持操作。
 > 
 > 
 

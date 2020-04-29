@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 05/08/2019
 ms.author: alkohli
 ms.openlocfilehash: e8932097bcdef782b1a551d386c2872e02d8abfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260184"
 ---
-# <a name="azure-data-box-gateway-system-requirements"></a>Azure 数据盒网关系统要求
+# <a name="azure-data-box-gateway-system-requirements"></a>Azure Data Box Gateway 系统要求
 
 本文介绍了 Microsoft Azure Data Box Gateway 解决方案以及连接到 Azure Data Box Gateway 的客户端的重要系统要求。 建议在部署 Data Box Gateway 之前仔细查看信息，然后在部署和后续操作期间根据需要重新参考。
 
@@ -29,7 +29,7 @@ Data Box Gateway 虚拟设备的系统要求包括：
 
 Data Box Gateway 的基础主机系统可以提供以下资源来预配虚拟设备：
 
-| 规范                                          | 描述              |
+| 规范                                          | 说明              |
 |---------------------------------------------------------|--------------------------|
 | 虚拟处理器（核心数）   | 最低为 4 核 |
 | 内存  | 最低为 8 GB|
@@ -85,7 +85,7 @@ Data Box Gateway 的基础主机系统可以提供以下资源来预配虚拟设
 
 [!INCLUDE [URL patterns for firewall](../../includes/data-box-edge-gateway-url-patterns-firewall.md)]
 
-### <a name="url-patterns-for-azure-government"></a>Azure 政府的 URL 模式
+### <a name="url-patterns-for-azure-government"></a>Azure 政府版的 URL 模式
 
 [!INCLUDE [Azure Government URL patterns for firewall](../../includes/data-box-edge-gateway-gov-url-patterns-firewall.md)]
 
@@ -93,7 +93,7 @@ Data Box Gateway 的基础主机系统可以提供以下资源来预配虚拟设
 
 [!INCLUDE [Internet bandwidth](../../includes/data-box-edge-gateway-internet-bandwidth.md)]
 
-## <a name="next-step"></a>后续步骤
+## <a name="next-step"></a>下一步
 
 * [部署 Azure Data Box Gateway](data-box-gateway-deploy-prep.md)
 

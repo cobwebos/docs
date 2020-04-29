@@ -1,6 +1,6 @@
 ---
 title: 连接到 Azure 媒体服务 v3 API - .NET
-description: 本文演示如何使用 .NET 连接到媒体服务 v3 API。
+description: 本文演示如何通过 .NET 连接到媒体服务 v3 API。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
 ms.openlocfilehash: b8f4de1a5b9d8216ae2442631f5f9135c3c72d0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79269804"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>连接到媒体服务 v3 API - .NET
@@ -35,17 +35,17 @@ ms.locfileid: "79269804"
 ## <a name="create-a-console-application"></a>创建控制台应用程序
 
 1. 启动 Visual Studio。 
-1. 在“文件”菜单中，单击“新建” > “项目”。************ 
-1. 创建 **.NET 核心**控制台应用程序。
+1. 在“文件”菜单中，单击“新建” > “项目”。    
+1. 创建 **.NET Core** 控制台应用程序。
 
 本主题中的示例应用面向 `netcoreapp2.0`。 代码使用从 C# 7.1 开始提供的“async main”。 有关更多详细信息，请参阅[此博客](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/)。
 
 ## <a name="add-required-nuget-packages"></a>添加所需的 NuGet 包
 
-1. 在可视化工作室中，选择**工具** > **NuGet 包管理器** > **Nuget 管理器控制台**。
-2. 在“包管理器控制台”窗口中，使用 `Install-Package` 命令添加以下 NuGet 包。**** 例如，`Install-Package Microsoft.Azure.Management.Media` 。
+1. 在 Visual Studio 中，选择“工具” > “NuGet 包管理器” > “NuGet 管理器控制台”。   
+2. 在“包管理器控制台”窗口中，使用 `Install-Package` 命令添加以下 NuGet 包。  例如，`Install-Package Microsoft.Azure.Management.Media`。
 
-|程序包|描述|
+|程序包|说明|
 |---|---|
 |`Microsoft.Azure.Management.Media`|Azure 媒体服务 SDK。 <br/>为确保使用最新的 Azure 媒体服务包，请选中 [Microsoft.Azure.Management.Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media)。|
 |`Microsoft.Rest.ClientRuntime.Azure.Authentication`|适用于 Azure SDK for NET 的 ADAL 身份验证库|
@@ -57,7 +57,7 @@ ms.locfileid: "79269804"
 
 ### <a name="create-appsettingsjson"></a>创建 appsettings.json
 
-1. 转到**常规** > **文本文件**。
+1. 转到“常规” > “文本文件”。  
 1. 将其命名为“appsettings.json”。
 1. 将此 .json 文件的“复制到输出目录”属性设置为“如果较新则复制”（使应用程序能够在发布时访问此文件）。
 
@@ -143,7 +143,7 @@ namespace ConsoleApp1
 
 ## <a name="connect-to-the-net-client"></a>连接到 .NET 客户端
 
-若要开始将媒体服务 API 与 .NET 结合使用，需要创建 AzureMediaServicesClient 对象****。 若要创建对象，需要提供客户端所需凭据以使用 Azure AD 连接到 Azure。 在以下代码中，GetCredentialsAsync 函数根据本地配置文件中提供的凭据创建 ServiceClientCredentials 对象。
+若要开始将媒体服务 API 与 .NET 结合使用，需要创建 AzureMediaServicesClient 对象  。 若要创建对象，需要提供客户端所需凭据以使用 Azure AD 连接到 Azure。 在以下代码中，GetCredentialsAsync 函数根据本地配置文件中提供的凭据创建 ServiceClientCredentials 对象。
 
 1. 打开 `Program.cs`。
 1. 粘贴以下代码：
@@ -228,9 +228,9 @@ namespace ConsoleApp1
 
 ## <a name="next-steps"></a>后续步骤
 
-- [教程：上传、编码和流式传输视频 - .NET](stream-files-tutorial-with-api.md) 
-- [教程： 流实时与媒体服务 v3 - .NET](stream-live-tutorial-with-api.md)
-- [教程：使用媒体服务 v3 分析视频 - .NET](analyze-videos-tutorial-with-api.md)
+- [教程：对视频进行上传、编码和流式处理 - .NET](stream-files-tutorial-with-api.md) 
+- [教程：通过媒体服务 v3 进行实时流式传输 - .NET](stream-live-tutorial-with-api.md)
+- [教程：使用媒体服务 v3 来分析视频 - .NET](analyze-videos-tutorial-with-api.md)
 - [从本地文件创建作业输入 - .NET](job-input-from-local-file-how-to.md)
 - [从 HTTPS URL 创建作业输入 - .NET](job-input-from-http-how-to.md)
 - [对自定义转换进行编码 - .NET](customize-encoder-presets-how-to.md)
@@ -240,7 +240,7 @@ namespace ConsoleApp1
 - [使用媒体服务创建筛选器 - .NET](filters-dynamic-manifest-dotnet-howto.md)
 - [使用媒体服务 v3 的 Azure Functions v2 的高级视频点播示例](https://aka.ms/ams3functions)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [.NET 参考](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
 * 有关更多代码示例，请参阅 [.NET SDK 示例](https://github.com/Azure-Samples/media-services-v3-dotnet)存储库。

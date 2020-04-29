@@ -1,5 +1,5 @@
 ---
-title: 在单租户应用中管理架构
+title: 在单租户应用程序中管理架构
 description: 在使用 Azure SQL 数据库的单租户应用中管理多个租户的架构
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: billgib
 ms.date: 09/19/2018
 ms.openlocfilehash: b6802d97b964b8863f6c2fce0cebfe16782b46fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79269206"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>通过将“租户各有数据库”模式与 Azure SQL 数据库配合使用，在 SaaS 应用程序中管理架构
@@ -36,7 +36,7 @@ ms.locfileid: "79269206"
 
 若要完成本教程，请确保满足以下先决条件：
 
-* 已部署 Wingtip Tickets SaaS Database Per Tenant 应用。 要在五分钟内部署，请参阅[部署和浏览每个租户应用程序的翼尖票证 SaaS 数据库](saas-dbpertenant-get-started-deploy.md)
+* 已部署 Wingtip Tickets SaaS Database Per Tenant 应用。 若要在五分钟内进行部署，请参阅[部署和浏览 Wingtip 票证 SaaS 数据库每个租户应用程序](saas-dbpertenant-get-started-deploy.md)
 * Azure PowerShell 已安装。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 * 已安装最新版的 SQL Server Management Studio (SSMS)。 [下载并安装 SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
 
@@ -59,14 +59,14 @@ ms.locfileid: "79269206"
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>获取 Wingtip Tickets SaaS“租户各有数据库”应用程序脚本
 
-应用程序源代码和管理脚本在[WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub 存储库中提供。 有关下载和取消阻止 Wingtip Tickets SaaS 脚本的步骤，请参阅[常规指南](saas-tenancy-wingtip-app-guidance-tips.md)。
+[Wingtipticketssaas-dbpertenant 提供了-Wingtipticketssaas-dbpertenant-master](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub 存储库中提供了应用程序源代码和管理脚本。 有关下载和取消阻止 Wingtip Tickets SaaS 脚本的步骤，请参阅[常规指南](saas-tenancy-wingtip-app-guidance-tips.md)。
 
 ## <a name="create-a-job-agent-database-and-new-job-agent"></a>创建作业代理数据库和新的作业代理
 
 本教程要求使用 PowerShell 来创建作业代理及其充当支持的作业代理数据库。 作业代理数据库存储作业定义、作业状态和历史记录。 创建作业代理及其数据库后，即可立刻创建和监视作业。
 
-1. **在电源壳 ISE**中，打开 ...\\学习模块\\架构管理\\*演示-架构管理.ps1*。
-1. 按**F5**以运行脚本。
+1. **在 POWERSHELL ISE 中**打开 .。。\\学习模块\\架构管理\\*demo-schemamanagement.ps1*。
+1. 按**F5**运行该脚本。
 
 Demo-SchemaManagement.ps1** 脚本调用 Deploy-SchemaManagement.ps1** 脚本，目的是在编录服务器上创建名为 *osagent* 的 SQL 数据库。 然后该脚本创建作业代理，将数据库用作参数。
 
@@ -105,12 +105,12 @@ Demo-SchemaManagement.ps1** 脚本调用 Deploy-SchemaManagement.ps1** 脚本，
 使用相同的作业“系统”存储过程创建作业。
 
 1. 打开 SSMS 并连接到 _catalog-dpt-&lt;user&gt;.database.windows.net_ 服务器
-1. 打开文件 _...学习模块\\架构管理\\在线重新索引\\.sql_
+1. 打开文件 _.。。学习模块\\架构管理\\ \\_
 1. 通过右键单击选择“连接”，连接到 _catalog-dpt-&lt;user&gt;.database.windows.net_ 服务器（如果尚未连接）
 1. 确保已连接到 _jobagent_ 数据库，然后按 **F5** 运行该脚本
 
 在 _OnlineReindex.sql_ 脚本中观察以下元素：
-* **sp\_\_添加作业**创建名为"在线重新索引 PK\_\_场地类型\_\_265E44FD7FD4C885" 的新作业
+* **sp\_add\_job**创建名为 "联机索引索引\_\_VenueTyp\_\_265E44FD7FD4C885" 的新作业
 * sp\_add\_jobstep**** 创建包含 T-SQL 命令文本的作业步骤，以更新索引
 * 脚本监视器作业执行中的剩余视图。 使用这些查询查看“生命周期”列中的状态值，确定何时作业成功地在目标组会员上完成****。
 
@@ -126,10 +126,10 @@ Demo-SchemaManagement.ps1** 脚本调用 Deploy-SchemaManagement.ps1** 脚本，
 > * 更新所有租户数据库中的引用数据
 > * 在所有租户数据库中的表上创建索引
 
-接下来，请尝试[临时报告教程](saas-tenancy-cross-tenant-reporting.md)，以探索跨租户数据库运行分布式查询。
+接下来，请尝试[即席报表教程](saas-tenancy-cross-tenant-reporting.md)，了解如何跨租户数据库运行分布式查询。
 
 
 ## <a name="additional-resources"></a>其他资源
 
-* [基于每个租户应用程序部署的翼尖票证 SaaS 数据库构建的其他教程](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
+* [基于 Wingtip 票证 SaaS 每个租户应用程序部署构建的其他教程](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [管理扩大的云数据库](elastic-jobs-overview.md)

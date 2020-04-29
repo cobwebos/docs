@@ -12,10 +12,10 @@ ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
 ms.openlocfilehash: ba7976d602412037578d0a324916718b2d515aac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79269960"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>使用 Azure 机器学习训练和注册 Keras 分类模型
@@ -35,8 +35,8 @@ Keras 是一种高级神经网络 API，能够基于其他常用 DNN 框架运�
 
 - Azure 机器学习计算实例 - 无需下载或安装
 
-     - 完成[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)，以创建预加载 SDK 和示例存储库的专用笔记本服务器。
-    - 在笔记本服务器上的示例文件夹中，导航到以下目录，查找已完成且已展开的笔记本：how-to-use-azureml > training-with-deep-learning > train-hyperparameter-tune-deploy-with-keras 文件夹****。
+     - 在开始本教程之前完成[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)创建预先装载了 SDK 和示例存储库的专用笔记本服务器。
+    - 在笔记本服务器上的示例文件夹中，导航到以下目录，查找已完成且已展开的笔记本：how-to-use-azureml > training-with-deep-learning > train-hyperparameter-tune-deploy-with-keras 文件夹  。
 
  - 你自己的 Jupyter 笔记本服务器
 
@@ -50,7 +50,7 @@ Keras 是一种高级神经网络 API，能够基于其他常用 DNN 框架运�
 
 本部分将准备训练实验，包括加载所需 python 包、初始化工作区、创建实验以及上传训练数据和训练脚本。
 
-### <a name="import-packages"></a>导入包
+### <a name="import-packages"></a>导入程序包
 
 首先，导入必需的 Python 库。
 
@@ -65,7 +65,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>初始化工作区
 
-[Azure 机器学习工作区](concept-workspace.md)是服务的顶级资源。 它提供了一个集中的位置来处理创建的所有项目。 在 Python SDK 中，您可以通过创建[`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)对象来访问工作区项目。
+[Azure 机器学习工作区](concept-workspace.md)是服务的顶级资源。 它提供了一个集中的位置来处理创建的所有项目。 在 Python SDK 中，可以通过创建 [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) 对象来访问工作区项目。
 
 根据在[先决条件部分](#prerequisites)中创建的 `config.json` 文件创建工作区对象。
 
@@ -142,7 +142,7 @@ dataset = Dataset.get_by_name(ws, 'mnist dataset')
 dataset.to_path()
 ```
 
-TensorFlow 估计器通过泛型[`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py)类实现，该类可用于支持任何框架。 另外，创建包含 DNN 超参数设置的字典 `script_params`。 有关使用泛型估算器训练模型的详细信息，请参阅[通过估算器使用 Azure 机器学习训练模型](how-to-train-ml-models.md)
+TensorFlow 估计器是通过泛型 [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) 类实现的，可用于支持任何框架。 另外，创建包含 DNN 超参数设置的字典 `script_params`。 有关使用泛型估计器训练模型的详细信息，请参阅[配合使用估计器和 Azure 机器学习以训练模型](how-to-train-ml-models.md)
 
 ```python
 from azureml.train.dnn import TensorFlow
@@ -174,17 +174,17 @@ run.wait_for_completion(show_output=True)
 
 执行运行时，会经历以下阶段：
 
-- **准备**： 根据 TensorFlow 估计器创建 docker 映像。 将映像上传到工作区的容器注册表，缓存以用于后续运行。 还会将日志流式传输到运行历史记录，可以查看日志以监视进度。
+- **准备**：根据 TensorFlow 估算器创建 Docker 映像。 将映像上传到工作区的容器注册表，缓存以用于后续运行。 还会将日志流式传输到运行历史记录，可以查看日志以监视进度。
 
-- **缩放**：如果 Batch AI 群集需要比当前可用的节点更多的节点来执行运行，群集将尝试向上扩展。
+- **缩放**：如果 Batch AI 群集执行运行所需的节点多于当前可用节点，则群集将尝试纵向扩展。
 
-- **正在运行**：脚本文件夹中的所有脚本都将上载到计算目标，将装载或复制数据存储，并执行entry_script。 将 stdout 和 ./logs 文件夹中的输出流式传输到运行历史记录，可将其用于监视运行。
+- **正在运行**：将脚本文件夹中的所有脚本上传到计算目标，装载或复制数据存储，然后执行 entry_script。 将 stdout 和 ./logs 文件夹中的输出流式传输到运行历史记录，可将其用于监视运行。
 
-- **后处理**：运行的 ./输出文件夹将复制到运行历史记录。
+- **后期处理**：将运行的 ./outputs 文件夹复制到运行历史记录。
 
 ## <a name="register-the-model"></a>注册模型
 
-训练 DNN 模型后，可以将其注册到工作区。 凭借模型注册，可以在工作区中存储模型并对其进行版本控制，从而简化[模型管理和部署](concept-model-management-and-deployment.md)。
+训练 DNN 模型后，可以将其注册到工作区。 凭借模型注册，可以在工作区中存储模型并对模型进行版本管理，从而简化[模型管理和部署](concept-model-management-and-deployment.md)。
 
 ```Python
 model = run.register_model(model_name='keras-dnn-mnist', model_path='outputs/model')
@@ -214,5 +214,5 @@ for f in run.get_file_names():
 > [部署模型的方式和位置](how-to-deploy-and-where.md)
 * [在训练期间跟踪运行指标](how-to-track-experiments.md)
 * [优化超参数](how-to-tune-hyperparameters.md)
-* [部署训练的模型](how-to-deploy-and-where.md)
+* [部署定型的模型](how-to-deploy-and-where.md)
 * [Azure 中分布式深度学习训练的参考体系结构](/azure/architecture/reference-architectures/ai/training-deep-learning)

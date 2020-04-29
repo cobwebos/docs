@@ -1,5 +1,5 @@
 ---
-title: B2B 协作 API 和自定义 - Azure 活动目录
+title: B2B 协作 API 和自定义-Azure Active Directory
 description: Azure Active Directory B2B 协作可让业务合作伙伴有选择性地访问本方的企业应用程序，为跨公司合作关系提供支持
 services: active-directory
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3a090ee3f9588ff6bff01e12db469bf04407a7fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79263460"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B 协作 API 和自定义
@@ -115,9 +115,9 @@ Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Proper
 > [!NOTE]
 > 确保拥有最新版本的 AzureAD PowerShell 模块或 AzureADPreview PowerShell 模块。 
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
-在 中[https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)查看邀请 API 引用。
+请在中[https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)查看邀请 API 参考。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,6 +1,6 @@
 ---
-title: 应用程序和数据库的性能调优指南
-description: 了解如何调整数据库应用程序和数据库以在 Azure SQL 数据库中进行性能调整。
+title: 应用程序和数据库的性能优化指南
+description: 了解如何在 Azure SQL 数据库中优化数据库应用程序和数据库以提高性能。
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -12,13 +12,13 @@ ms.author: carlrab
 ms.reviewer: carlrab; jrasnick
 ms.date: 03/10/2020
 ms.openlocfilehash: 4f30ebe39d86db7076baa8c29b2a5cf060b07bf5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79255946"
 ---
-# <a name="tune-applications-and-databases-for-performance-in-azure-sql-database"></a>调整应用程序和数据库以在 Azure SQL 数据库中执行性能
+# <a name="tune-applications-and-databases-for-performance-in-azure-sql-database"></a>在 Azure SQL 数据库中优化应用程序和数据库以提高性能
 
 如果你确定遇到了与 SQL 数据库相关的性能问题，则以下文章可为你提供帮助：
 
@@ -39,7 +39,7 @@ ms.locfileid: "79255946"
 
   闲聊应用程序会进行过多的对网络延迟敏感的数据访问操作。 可能需要修改这些类型的应用程序，以减少对 SQL 数据库进行的数据访问操作的数量。 例如，可使用将即席查询成批处理或将查询移至存储过程等方法，提高应用程序性能。 有关详细信息，请参阅[批处理查询](#batch-queries)。
 
-- **具有整个单台计算机无法支持的密集型工作负载的数据库**
+- **具有不受整台计算机支持的密集型工作负荷的数据库**
 
    超过最高“高级”计算大小的资源的数据库可能受益于横向扩展工作负荷。 有关详细信息，请参阅[跨数据库分片](#cross-database-sharding)和[功能分区](#functional-partitioning)。
 
@@ -232,9 +232,9 @@ ORDER BY start_time DESC
 
 如果工作负荷由一组重复的查询组成，则捕获并验证这些计划选择的最优性通常有意义，因为这样做会使托管数据库所需的资源大小单位降至最低。 对其进行验证后，应偶尔重新检查计划，帮助确保它未降级。 可以详细了解[查询提示 (TRANSACT-SQL)](https://msdn.microsoft.com/library/ms181714.aspx)。
 
-### <a name="very-large-database-architectures"></a>非常大的数据库体系结构
+### <a name="very-large-database-architectures"></a>特大型数据库体系结构
 
-在 Azure SQL 数据库中单个数据库发布[超大规模](sql-database-service-tier-hyperscale.md)服务层之前，客户曾用于达到单个数据库的容量限制。 这些容量限制仍然存在，用于弹性池中的池数据库和托管实例中的实例数据库。 以下两节将讨论两个选项，用于在无法使用超大规模服务层时解决 Azure SQL 数据库中非常大的数据库的问题。
+在用于 Azure SQL 数据库中单一数据库的[超大规模](sql-database-service-tier-hyperscale.md)服务层级发布之前，客户过去常达到单个数据库的容量限制。 弹性池中的共用数据库和托管实例中的实例数据库仍然存在这些容量限制。 以下两节介绍了在无法使用“超大规模”服务层级时解决 Azure SQL 数据库中特大型数据库问题的两个选项。
 
 ### <a name="cross-database-sharding"></a>跨数据库分片
 

@@ -1,5 +1,5 @@
 ---
-title: 在多租户应用中管理架构
+title: 管理多租户应用中的架构
 description: 在使用 Azure SQL 数据库的多租户应用程序中为多个租户管理架构
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 6f660426c41b37dd27438c28cbf603bdbf1e58b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79269193"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>在使用分片多租户 SQL 数据库的 SaaS 应用程序中管理架构
@@ -40,7 +40,7 @@ ms.locfileid: "79269193"
 > * 更新所有租户数据库中的引用数据。
 > * 在所有租户数据库中的表上创建索引。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 须已部署 Wingtip Tickets 多租户数据库应用：
     - 有关说明，请参阅第一篇教程，其中介绍了 Wingtip Tickets SaaS 多租户数据库应用：<br />[部署和浏览使用 Azure SQL 数据库的分片多租户应用程序](saas-multitenantdb-get-started-deploy.md)。
@@ -49,10 +49,10 @@ ms.locfileid: "79269193"
 
 - 必须已安装最新版本的 SQL Server Management Studio (SSMS)。 [下载并安装 SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
 
-- 必须已安装 Azure PowerShell。 有关详细信息，请参阅[使用 Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
+- 必须已安装 Azure PowerShell。 有关详细信息，请参阅[Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)入门。
 
 > [!NOTE]
-> 本教程使用的是有限预览版（[弹性数据库作业](sql-database-elastic-database-client-library.md)）中 Azure SQL 数据库服务的功能。 如果要执行本教程，请通过主题_弹性作业预览向*SaaSFeedbackmicrosoft.com\@* 提供订阅 ID。 收到订阅已启用的确认邮件后，即可[下载并安装最新的预发行作业 cmdlet](https://github.com/jaredmoo/azure-powershell/releases)。 此预览版有限，因此请联系*SaaSFeedbackmicrosoft.com\@* 有关问题或支持。
+> 本教程使用的是有限预览版（[弹性数据库作业](sql-database-elastic-database-client-library.md)）中 Azure SQL 数据库服务的功能。 若要执行本教程，请将订阅 ID 提供给*SaaSFeedback\@microsoft.com* With Subject = 弹性作业预览。 收到订阅已启用的确认邮件后，即可[下载并安装最新的预发行作业 cmdlet](https://github.com/jaredmoo/azure-powershell/releases)。 此预览版受到限制，请联系*SaaSFeedback\@microsoft.com*以获取相关问题或支持。
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>SaaS 架构管理模式简介
 
@@ -74,8 +74,8 @@ ms.locfileid: "79269193"
 
 本教程要求使用 PowerShell 来创建作业代理数据库和作业代理。 与 SQL 代理使用的 MSDB 一样，作业代理使用 Azure SQL 数据库来存储作业定义、作业状态和历史记录。 创建作业代理后，即可立刻创建和监视作业。
 
-1. 在**电源壳 ISE**中，打开 *...学习模块\\架构管理\\演示-架构管理.ps1 \\*。
-2. 按**F5**以运行脚本。
+1. 在**POWERSHELL ISE**中打开 *.。。学习模块\\架构管理\\ \\*
+2. 按**F5**运行该脚本。
 
 Demo-SchemaManagement.ps1** 脚本调用 Deploy-SchemaManagement.ps1** 脚本，目的是在编录服务器上创建名为 _jobagent_ 的数据库。 然后该脚本创建作业代理，将 _jobagent_ 数据库作为参数传递。
 
@@ -83,7 +83,7 @@ Demo-SchemaManagement.ps1** 脚本调用 Deploy-SchemaManagement.ps1** 脚本，
 
 #### <a name="prepare"></a>准备
 
-每个租户的数据库在 VenueType 表中包括一组**场地类型**。 每个地点类型用于定义可在某个地点托管的事件种类。 这些地点类型对应于在租户事件应用中看到的背景图。  在本练习中，将一个更新部署到所有数据库，以便添加两种额外的地点类型：“赛车”和“游泳俱乐部”****。
+每个租户的数据库在**VenueTypes**表中包含一组地点类型。 每个地点类型用于定义可在某个地点托管的事件种类。 这些地点类型对应于在租户事件应用中看到的背景图。  在本练习中，将一个更新部署到所有数据库，以便添加两种额外的地点类型：“赛车”和“游泳俱乐部”****。
 
 首先，查看每个租户数据库中包含的地点类型。 连接 SQL Server Management Studio (SSMS) 中的一个租户数据库，并检查 VenueTypes 表。  还可在通过数据库页访问的 Azure 门户的查询编辑器中查询此表。
 
@@ -108,11 +108,11 @@ Demo-SchemaManagement.ps1** 脚本调用 Deploy-SchemaManagement.ps1** 脚本，
 
 5. 连接到目录服务器中的 _jobagent_ 数据库。
 
-6. 在 SSMS 中，打开文件 *...学习模块\\架构管理\\部署参考数据.sql \\*.
+6. 在 SSMS 中，打开文件 *.。。学习模块\\架构管理\\ \\*
 
 7. 修改语句：set @User = &lt;user&gt;，并将其替换为部署 Wingtip 票证 SaaS 多租户数据库应用程序时所用的用户值。
 
-8. 按**F5**以运行脚本。
+8. 按**F5**运行该脚本。
 
 #### <a name="observe"></a>观察
 
@@ -127,7 +127,7 @@ Demo-SchemaManagement.ps1** 脚本调用 Deploy-SchemaManagement.ps1** 脚本，
     - 位于 catalog-mt-&lt;user&gt;** 服务器上的模板数据库 (basetenantdb**) 的 database** 目标成员类型，
     - *database* 目标成员类型，用于包含本教程稍后使用的 *adhocreporting* 数据库。
 
-- **sp\_\_添加作业**创建名为*参考数据部署*的作业。
+- **sp\_add\_job**创建一个名为 "*引用数据部署*" 的作业。
 
 - **sp\_add\_jobstep** 创建包含 T-SQL 命令文本的作业步骤，该文本用于更新引用表 VenueTypes。
 
@@ -141,17 +141,17 @@ Demo-SchemaManagement.ps1** 脚本调用 Deploy-SchemaManagement.ps1** 脚本，
 
 1. 在 SSMS 中，连接到 catalog-mt-&lt;User&gt;.database.windows.net** 服务器中的 _jobagent_ 数据库。
 
-2. 在 SSMS 中，打开 *...学习模块\\架构管理\\在线重新索引.sql \\*.
+2. 在 SSMS 中，打开 *.。。学习模块\\架构管理\\ \\*
 
-3. 按**F5**以运行脚本。
+3. 按**F5**运行该脚本。
 
 #### <a name="observe"></a>观察
 
 在 *OnlineReindex.sql* 脚本中观察以下项：
 
-* **sp\_\_添加作业**创建一个新作业，称为*在线重新\_\_索引\_\_PK 场地Typ 265E44FD7FD4FD4C885*。
+* **sp\_add\_job**创建一个名为 "*联机索引索引\_\_VenueTyp\_\_265E44FD7FD4C885*" 的新作业。
 
-* **sp\_\_添加作业步骤**将创建包含 T-SQL 命令文本的作业步骤以更新索引。
+* **sp\_add\_jobstep**创建包含 t-sql 命令文本的作业步骤以更新索引。
 
 * 脚本监视器作业执行中的剩余视图。 使用这些查询查看“生命周期”列中的状态值，确定何时作业成功地在目标组会员上完成****。
 
@@ -171,5 +171,5 @@ Demo-SchemaManagement.ps1** 脚本调用 Deploy-SchemaManagement.ps1** 脚本，
 > * 更新所有租户数据库中的引用数据
 > * 在所有租户数据库中的表上创建索引
 
-接下来，请尝试[临时报告教程](saas-multitenantdb-adhoc-reporting.md)，以探索跨租户数据库运行分布式查询。
+接下来，请尝试[即席报表教程](saas-multitenantdb-adhoc-reporting.md)，了解如何跨租户数据库运行分布式查询。
 

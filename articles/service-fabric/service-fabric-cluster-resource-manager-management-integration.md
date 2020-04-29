@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 50751c7d23797a597dc5e2d209c1e3eecf6f7a40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79258741"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>群集 Resource Manager 与 Service Fabric 群集管理的集成
@@ -68,7 +68,7 @@ HealthEvents          :
 2. 当前违反了升级域分发约束。 这表示特定的升级域在此分区中拥有的副本数超出了预期。
 3. 哪些节点包含会引起违规的副本。 在这种情况下，是名为“Node.8”的节点
 4. 此分区中是否正在进行升级（“当前正在升级 -- false”）
-5. 此服务的分发策略：“分发策略 -- 打包”。 这受`RequireDomainDistribution` [放置策略](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)管制。 “打包”指示在此情况下不需要 DomainDistribution，从而使我们知道未对此服务指定放置策略__。 
+5. 此服务的分发策略：“分发策略 -- 打包”。 这受 `RequireDomainDistribution` [放置策略](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)的控制。 “打包”指示在此情况下不需要 DomainDistribution，从而使我们知道未对此服务指定放置策略  。 
 6. 报告发生时间 -- 2015/8/10 晚上 7:13:02
 
 此类信息丰富了生产环境中触发的警报，可让用户知道某个地方出错了，还可用于检测和暂停错误升级。 在此情况下，我们可以调查 Resource Manager 为何必须将副本打包到升级域。 例如，打包通常是暂时的，因为其他升级域中的节点已关闭。
@@ -83,7 +83,7 @@ HealthEvents          :
 ## <a name="constraint-types"></a>约束类型
 接下来，我们讨论一下这些运行状况报告中的各种约束。 不能放置副本时，将看到与这些约束相关的运行状况消息。
 
-* ReplicaExclusionStatic 和 ReplicaExclusionDynamic：这些约束指示系统拒绝某解决方案是由于同一分区中的两个服务对象必须放置在同一节点上********。 不允许这样操作，因为该节点的失败会过度地影响该分区。 ReplicaExclusionStatic 和 ReplicaExclusionDynamic 遵循几乎相同的规则，有所差别也无关紧要。 如果看到的约束消除序列包含 ReplicaExclusionStatic 或 ReplicaExclusionDynamic 约束，群集资源管理器就会认为没有足够的节点。 这要求剩余的解决方案能够使用这些不允许使用的无效放置。 序列中的其他约束通常会告诉我们首先要消除节点的原因。
+* ReplicaExclusionStatic 和 ReplicaExclusionDynamic：这些约束指示系统拒绝某解决方案是由于同一分区中的两个服务对象必须放置在同一节点上   。 不允许这样操作，因为该节点的失败会过度地影响该分区。 ReplicaExclusionStatic 和 ReplicaExclusionDynamic 遵循几乎相同的规则，有所差别也无关紧要。 如果看到的约束消除序列包含 ReplicaExclusionStatic 或 ReplicaExclusionDynamic 约束，群集资源管理器就会认为没有足够的节点。 这要求剩余的解决方案能够使用这些不允许使用的无效放置。 序列中的其他约束通常会告诉我们首先要消除节点的原因。
 * **PlacementConstraint**：如果看到此消息，表示已消除了一些节点，因为它们不符合服务的放置约束。 我们在此消息中描绘当前配置的放置约束。 如果定义了放置约束，则这种情况是正常的。 但是，如果放置约束错误地导致消除了过多的节点，则会看到这种结果。
 * **** NodeCapacity：此约束表示群集资源管理器无法将副本放在指定的节点上，因为这样放置会超出容量。
 * **Affinity**：此约束表示无法将副本放在受影响的节点上，因为这会导致违反相关性约束。 [此文](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)介绍了有关相关性的详细信息。
@@ -116,7 +116,7 @@ HealthEvents          :
 
 更改约束的优先级并不常见。 有时需要更改约束优先级，通常是为了解决已影响环境的其他 bug 或行为。 一般而言，约束优化级基础结构的弹性可以应对各种问题，但我们并不经常需要利用这种弹性。 在大部分时间内，每个组成部分使用其默认优先级就能正常运作。 
 
-优先级别不表示会违反给定的约束，也不表示会始终满足给定约束__。 约束优先级定义强制执行约束的顺序。 优先级定义无法满足所有约束时的折衷方案。 通常可以满足所有约束，除非环境中还有其他要求。 一些将导致约束冲突的方案示例包括违反约束或大量的并发故障。
+优先级别不表示会违反给定的约束，也不表示会始终满足给定约束  。 约束优先级定义强制执行约束的顺序。 优先级定义无法满足所有约束时的折衷方案。 通常可以满足所有约束，除非环境中还有其他要求。 一些将导致约束冲突的方案示例包括违反约束或大量的并发故障。
 
 在某些高级场合中，可以更改约束优先级。 例如，假如希望确保有必要解决节点容量问题时始终违反相关性。 为此，可将相关性约束的优先级设置为“软”(1)，将容量约束保持设置为“硬”(0)。
 
@@ -174,12 +174,12 @@ ClusterManifest.xml
 ## <a name="fault-domain-and-upgrade-domain-constraints"></a>容错域和升级域约束
 群集资源管理器要保留在容错域和升级域之间分布的服务。 它会将此作为群集资源管理器引擎内的约束进行建模。 有关其具体用法和特定行为的详细信息，请参阅有关[群集配置](service-fabric-cluster-resource-manager-cluster-description.md#fault-and-upgrade-domain-constraints-and-resulting-behavior)的文章。
 
-群集资源管理器可能需要将一些副本打包到升级域，处理升级、故障或其他约束违规。 通常，仅当系统中的多种故障或其他扰乱因素阻止正确放置时，才会打包到故障或升级域。 若要在这些情况下防止打包，可以利用`RequireDomainDistribution` [放置策略](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)。 请注意，作为副作用，这可能会影响服务可用性和可靠性，因此请仔细考虑。
+群集资源管理器可能需要将一些副本打包到升级域，处理升级、故障或其他约束违规。 通常，仅当系统中的多种故障或其他扰乱因素阻止正确放置时，才会打包到故障或升级域。 若要在这些情况下防止打包，可以利用 `RequireDomainDistribution` [放置策略](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)。 请注意，作为副作用，这可能会影响服务可用性和可靠性，因此请仔细考虑。
 
 如果已正确配置环境，则即使在升级期间，也会完全遵循所有约束。 关键的一点是，群集资源管理器会自动监视约束。 检测到违规时，它会立即报告并尝试解决问题。
 
 ## <a name="the-preferred-location-constraint"></a>首选位置约束
-PreferredLocation 约束稍有不同，因为它具有两种不同的用法。 此约束的一个用法是在应用程序升级过程中使用。 群集资源管理器在升级过程中自动管理此约束。 它用于确保升级完成时该副本返回到其初始位置。 首选位置约束的另一个用途是[`PreferredPrimaryDomain`放置策略](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)。 这两种用法都是优化，因此 PreferredLocation 约束是唯一默认设置为“Optimization”的约束。
+PreferredLocation 约束稍有不同，因为它具有两种不同的用法。 此约束的一个用法是在应用程序升级过程中使用。 群集资源管理器在升级过程中自动管理此约束。 它用于确保升级完成时该副本返回到其初始位置。 PreferredLocation 约束的另一种用法是用于[`PreferredPrimaryDomain`放置策略](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)。 这两种用法都是优化，因此 PreferredLocation 约束是唯一默认设置为“Optimization”的约束。
 
 ## <a name="upgrades"></a>升级
 在应用程序和群集升级期间，群集 Resource Manager 也会提供帮助，在此过程中它会执行两个作业：

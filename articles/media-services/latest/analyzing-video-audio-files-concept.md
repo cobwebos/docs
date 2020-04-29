@@ -13,17 +13,17 @@ ms.topic: article
 ms.date: 01/30/2020
 ms.author: juliako
 ms.openlocfilehash: 1d28fc37b98493322b9e201ac899b7911dd1d705
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79269882"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>使用 Azure 媒体服务分析视频和音频文件
 
-在 Azure 媒体服务 v3 中，可以使用视频索引器从视频和音频文件中提取见解。 本文介绍用于提取这些见解的媒体服务 v3 分析器预设。 如果需要更详细的见解，请直接使用视频索引器。 要了解何时使用视频索引器与媒体服务分析器预设，请查看[比较文档](../video-indexer/compare-video-indexer-with-media-services-presets.md)。
+在 Azure 媒体服务 v3 中，可以使用视频索引器从视频和音频文件中提取见解。 本文介绍用于提取这些见解的媒体服务 v3 分析器预设。 如果需要更详细的见解，请直接使用视频索引器。 若要了解何时使用视频索引器与媒体服务分析器预设，请查看[比较文档](../video-indexer/compare-video-indexer-with-media-services-presets.md)。
 
-要使用媒体服务 v3 预设分析内容，请创建**一个转换**并提交使用这些预设之一的**作业**：[视频分析器预设](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)或**音频分析预设**。 有关演示如何使用 **VideoAnalyzerPreset** 的教程，请参阅[使用 Azure 媒体服务分析视频](analyze-videos-tutorial-with-api.md)。
+若要使用媒体服务 v3 预设来分析内容，请创建一个**转换**，并提交使用以下预设之一的**作业**： [VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)或**AudioAnalyzerPreset**。 有关演示如何使用 **VideoAnalyzerPreset** 的教程，请参阅[使用 Azure 媒体服务分析视频](analyze-videos-tutorial-with-api.md)。
 
 > [!NOTE]
 > 使用视频或音频分析器预设时，请通过 Azure 门户将帐户设置为具有 10 个 S3 媒体预留单位。 有关详细信息，请参阅[缩放媒体处理](media-reserved-units-cli-how-to.md)。
@@ -46,20 +46,20 @@ ms.locfileid: "79269882"
 
 使用此预设，可以从音频或视频文件中提取多个音频见解。 输出包括一个 JSON 文件（包含所有见解）和该音频脚本的 VTT 文件。 此预设接受 [BCP47](https://tools.ietf.org/html/bcp47) 字符串格式的属性，该属性用于指定输入文件的语言。 音频见解包括：
 
-* **音频转录**：带时间戳的口语的脚本。 支持多种语言。
-* **扬声器索引**：扬声器和相应口语的映射。
-* **言语情绪分析**：对音频转录进行情绪分析的输出。
-* **关键字**：从音频转录中提取的关键字。
+* **音频**脚本：带有时间戳的口述字词的脚本。 支持多种语言。
+* **演讲者索引**：扬声器的映射和相应的口述字词。
+* **语音情绪分析**：对音频操作执行的情绪分析的输出。
+* **关键字**：从音频脚本中提取的关键字。
 
 ### <a name="videoanalyzerpreset"></a>VideoAnalyzerPreset
 
 使用此预设，可以从视频中提取多个音频和视频见解。 输出包括一个 JSON 文件（包含所有见解）、该视频脚本的 VTT 文件以及视频缩略图集合。 此预设还接受 [BCP47](https://tools.ietf.org/html/bcp47) 字符串格式的属性，该属性表示视频的语言。 视频见解包括上述所有音频见解，此外还包含以下项：
 
-* **人脸跟踪**：视频中存在人脸的时间。 每张人脸都有一个面部 ID 和对应的视频缩略图集合。
-* **可视文本**：通过光学字符识别检测到的文本。 该文本带有时间戳，也用于提取关键字（以及音频脚本）。
+* **面部跟踪**：视频中出现面部的时间。 每张人脸都有一个面部 ID 和对应的视频缩略图集合。
+* **视觉对象文本**：通过光学字符识别检测到的文本。 该文本带有时间戳，也用于提取关键字（以及音频脚本）。
 * **关键帧**：从视频中提取的关键帧的集合。
-* **视觉内容适度**：在本质上标记为成人或花哨的视频部分。
-* **注释**：基于预定义对象模型对视频进行批注的结果
+* **视觉对象内容裁决**：本质上标记为成人或猥亵的视频部分。
+* **批注**：基于预定义的对象模型对视频进行批注的结果
 
 ## <a name="insightsjson-elements"></a>insights.json 元素
 
@@ -67,14 +67,14 @@ ms.locfileid: "79269882"
 
 ### <a name="transcript"></a>脚本
 
-|“属性”|描述|
+|名称|说明|
 |---|---|
-|id|行 ID。|
+|ID|行 ID。|
 |text|脚本本身。|
 |语言|脚本语言。 旨在支持每行语言不同的脚本。|
 |instances|出现该行的时间范围列表。 如果实例是脚本，则只有 1 个实例。|
 
-示例：
+例如：
 
 ```json
 "transcript": [
@@ -105,9 +105,9 @@ ms.locfileid: "79269882"
 
 ### <a name="ocr"></a>ocr
 
-|“属性”|描述|
+|名称|说明|
 |---|---|
-|id|OCR 行 ID。|
+|ID|OCR 行 ID。|
 |text|OCR 文本。|
 |confidence|识别置信度。|
 |语言|OCR 语言。|
@@ -148,9 +148,9 @@ ms.locfileid: "79269882"
 
 ### <a name="faces"></a>人脸
 
-|“属性”|描述|
+|名称|说明|
 |---|---|
-|id|人脸 ID。|
+|ID|人脸 ID。|
 |name|人脸姓名。 可以为“Unknown #0”、公认的名人或经过客户培训的人员。|
 |confidence|人脸识别置信度。|
 |description|名人的说明。 |
@@ -193,9 +193,9 @@ ms.locfileid: "79269882"
 
 ### <a name="shots"></a>截图
 
-|“属性”|描述|
+|名称|说明|
 |---|---|
-|id|截图 ID。|
+|ID|截图 ID。|
 |keyFrames|截图内的关键帧列表（每个关键帧都有一个 ID 和实例时间范围列表）。 关键帧实例具有一个 thumbnailId 字段，该字段包含关键帧的缩略图 ID。|
 |instances|此截图的时间范围列表（截图仅有 1 个实例）。|
 
@@ -250,7 +250,7 @@ ms.locfileid: "79269882"
 
 ### <a name="statistics"></a>statistics
 
-|“属性”|描述|
+|名称|说明|
 |---|---|
 |CorrespondenceCount|视频中对应关系的数目。|
 |WordCount|每个发言人的单词数。|
@@ -263,9 +263,9 @@ ms.locfileid: "79269882"
 
 情绪依据其 sentimentType 字段得出（积极/中立/消极）。 例如：0-0.1、0.1-0.2。
 
-|“属性”|描述|
+|名称|说明|
 |---|---|
-|id|情绪 ID。|
+|ID|情绪 ID。|
 |averageScore |该情绪类型的所有实例的所有分数的均值 - 积极/中立/消极|
 |instances|出现此情绪的时间范围列表。|
 |sentimentType |类型可以是“Positive”、“Neutral”或“Negative”。|
@@ -298,9 +298,9 @@ ms.locfileid: "79269882"
 
 ### <a name="labels"></a>标签
 
-|“属性”|描述|
+|名称|说明|
 |---|---|
-|id|标签 ID。|
+|ID|标签 ID。|
 |name|标签名称（例如“计算机”、“电视”）。|
 |语言|标签名称语言（转换后）。 BCP-47|
 |instances|出现此标签的时间范围列表（一个标签可重复多次出现）。 每个实例都有置信度字段。 |
@@ -356,9 +356,9 @@ ms.locfileid: "79269882"
 
 ### <a name="keywords"></a>关键字
 
-|“属性”|描述|
+|名称|说明|
 |---|---|
-|id|关键字 ID。|
+|ID|关键字 ID。|
 |text|关键字文本。|
 |confidence|关键字的识别置信度。|
 |语言|关键字语言（转换后）。|
@@ -407,9 +407,9 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 被确定包含成人或不雅内容的视频可能仅可供私人观看。 用户可以请求人工审查内容，在这种情况下，`IsAdult` 属性将包含人工审查的结果。
 
-|“属性”|描述|
+|名称|说明|
 |---|---|
-|id|视觉内容审核 ID。|
+|ID|视觉内容审核 ID。|
 |adultScore|成人内容评分（由内容审核员提供）。|
 |racyScore|不雅内容评分（由内容审核员提供）。|
 |instances|显示此视觉内容审核的时间范围列表。|

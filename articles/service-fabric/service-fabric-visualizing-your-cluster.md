@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: mikhegn
 ms.openlocfilehash: 80e3d990b6e8026c57ffff0048d0447a95529564
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79258182"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>使用 Service Fabric Explorer 可视化群集
@@ -47,7 +47,7 @@ Service Fabric Explorer 同时在 Service Fabric 群集的 HTTP 管理终结点�
 >
 
 ## <a name="connect-to-a-service-fabric-cluster"></a>连接到 Service Fabric 群集
-若要连接到 Service Fabric 群集，需要群集管理终结点 (FQDN/IP) 和 HTTP 管理终结点端口（默认情况下为 19080）。 例如 https\:/mysfcluster.westus.cloudapp.azure.com:19080。 使用“连接到 localhost”复选框，连接到工作站上的本地群集。
+若要连接到 Service Fabric 群集，需要群集管理终结点 (FQDN/IP) 和 HTTP 管理终结点端口（默认情况下为 19080）。 例如，https\://mysfcluster.westus.cloudapp.azure.com:19080。 使用“连接到 localhost”复选框，连接到工作站上的本地群集。
 
 ### <a name="connect-to-a-secure-cluster"></a>连接到安全群集
 可以使用证书或 Azure Active Directory (AAD) 控制客户端对 Service Fabric 群集的访问。
@@ -83,7 +83,7 @@ Service Fabric 群集中的节点横跨容错域和升级域的二维网格放�
 ## <a name="actions"></a>操作
 Service Fabric Explorer 提供用于对群集中的节点、应用程序和服务快速调用操作的方式。
 
-例如，要删除应用程序实例，请从左侧的树中选择应用程序，然后选择 **"操作** > **删除应用程序**"。
+例如，要删除某应用程序实例，只需从左侧树中选择该应用程序，并选择“操作”   > “删除应用程序”  。
 
 ![Service Fabric Explorer 中删除应用程序][sfx-delete-application]
 
@@ -104,7 +104,7 @@ Service Fabric Explorer 提供用于对群集中的节点、应用程序和服�
 >
 
 ## <a name="event-store"></a>事件存储
-EventStore 是该平台提供的一项功能，它通过 REST API 提供可在 Service Fabric Explorer 中使用的 Service Fabric 平台事件。 可以查看群集中每个实体的动态快照视图，例如节点、服务、应用程序和基于事件时间的查询。 您还可以在[事件商店概述中阅读有关事件存储的详细信息](service-fabric-diagnostics-eventstore.md)。   
+EventStore 是该平台提供的一项功能，它通过 REST API 提供可在 Service Fabric Explorer 中使用的 Service Fabric 平台事件。 可以查看群集中每个实体的动态快照视图，例如节点、服务、应用程序和基于事件时间的查询。 还可以从 [EventStore 概述](service-fabric-diagnostics-eventstore.md)了解有关 EventStore 的详细信息。   
 
 ![EventStore][sfx-eventstore]
 

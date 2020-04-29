@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: e5463a32e299d9d4d151049ab5afffd4975d5182
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79265436"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>使用 Azure 门户管理 Azure Data Box Gateway 上的共享 
@@ -50,7 +50,7 @@ ms.locfileid: "79265436"
 5. 从块 Blob、页 Blob 或文件中选择“存储服务”。**** 所选服务的类型取决于数据需要以何种格式驻留在 Azure 中。 例如，在此实例中，我们希望数据以 Blob 块的形式驻留在 Azure 中，因此选择“块 Blob”。**** 如果选择“页 Blob”，必须确保数据按 512 字节对齐。**** 例如，VHDX 始终按 512 字节对齐。
 
    > [!IMPORTANT]
-   > 如果要将其与 Azure 堆栈边缘或数据盒网关设备一起使用，请确保使用的 Azure 存储帐户上未设置不变性策略。 有关详细信息，请参阅[设置和管理 blob 存储的不变性策略](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)。
+   > 如果你使用的 Azure 存储帐户与 Azure Stack 边缘或 Data Box Gateway 设备一起使用，请确保该帐户不会对其设置永久性策略。 有关详细信息，请参阅[设置和管理 blob 存储的不可变性策略](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)。
 
 6. 此步骤取决于你是创建 SMB 共享还是 NFS 共享。
     - **如果创建 SMB 共享** - 在“所有特权本地用户”字段中，选择“新建”或“使用现有”。************ 如果创建新的本地用户，请提供**用户名**、**密码**和确认密码。 这样就会为本地用户分配权限。 在此处分配权限以后，即可使用文件资源管理器修改这些权限。
@@ -72,7 +72,7 @@ ms.locfileid: "79265436"
 
     ![选择共享](media/data-box-gateway-manage-shares/delete-1.png)
 
-2. 单击“删除”****。 
+2. 单击 **“删除”** 。 
 
     ![单击“删除”](media/data-box-gateway-manage-shares/delete-2.png)
 
@@ -122,7 +122,7 @@ ms.locfileid: "79265436"
 在 Azure 门户中执行以下步骤，以同步存储访问密钥。
 
 1. 在资源中转到“概述”。**** 
-2. 从共享列表中，选择并单击与需要同步的存储帐户关联的共享。单击 **"同步存储密钥**"。 
+2. 在共享列表中，选择并单击与需要同步的存储帐户关联的共享。单击 "**同步存储密钥**"。 
 
      ![同步存储密钥 1](media/data-box-gateway-manage-shares/sync-storage-key-1.png)
 

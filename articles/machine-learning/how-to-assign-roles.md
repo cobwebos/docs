@@ -12,10 +12,10 @@ author: Blackmist
 ms.date: 03/06/2020
 ms.custom: seodec18
 ms.openlocfilehash: 127a0a2b7f7573db91df9347169e90de3e14c4c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79270090"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理对 Azure 机器学习工作区的访问权限
@@ -25,13 +25,13 @@ ms.locfileid: "79270090"
 
 ## <a name="default-roles"></a>默认角色
 
-Azure 机器学习工作区是一种 Azure 资源。 与其他 Azure 资源一样，当创建新的 Azure 机器学习工作区时，它附带三个默认角色。 可以将用户添加到工作区，并将他们分配给这些内置角色之一。
+Azure 机器学习工作区是一种 Azure 资源。 与其他 Azure 资源一样，创建新的 Azure 机器学习工作区时，它附带三个默认角色。 可以将用户添加到工作区，并将他们分配给这些内置角色之一。
 
 | 角色 | 访问级别 |
 | --- | --- |
-| **读者** | 工作区中的只读操作。 读者可以在工作区中列出和查看资产，但不能创建或更新这些资产。 |
-| **参与者** | 在工作区中查看、创建、编辑或删除（如果适用）资产。 例如，参与者可以创建试验、创建或附加计算群集、提交运行和部署 Web 服务。 |
-| **所有者** | 对工作区的完全访问权限，包括能够在工作区中查看、创建、编辑或删除（如果适用）资产。 此外，还可以更改角色分配。 |
+| **读取者** | 工作区中的只读操作。 读者可以列出和查看工作区中的资产，但不能创建或更新这些资产。 |
+| **参与者** | 查看、创建、编辑或删除（如果适用）工作区中的资产。 例如，参与者可以创建试验、创建或附加计算群集、提交运行和部署 Web 服务。 |
+| **所有者** | 对工作区的完全访问权限，包括可以查看、创建、编辑或删除（如果适用）工作区中的资产。 此外，可以更改角色分配。 |
 
 > [!IMPORTANT]
 > 在 Azure 中，角色访问的作用域可以限定为多个级别。 例如，对工作区具有所有者访问权限的人可能没有对包含工作区的资源组的所有者访问权限。 有关详细信息信息，请参阅 [RBAC 工作原理](/azure/role-based-access-control/overview#how-rbac-works)。
@@ -40,9 +40,9 @@ Azure 机器学习工作区是一种 Azure 资源。 与其他 Azure 资源一�
 
 ## <a name="manage-workspace-access"></a>管理工作区访问权限
 
-如果你是工作区的所有者，则可以为工作区添加和删除角色。 还可以将角色分配给用户。 使用以下链接了解如何管理访问权限：
+如果你是工作区的所有者，则可以为工作区添加和删除角色。 还可以为用户分配角色。 请通过以下链接了解如何管理访问权限：
 - [Azure 门户 UI](/azure/role-based-access-control/role-assignments-portal)
-- [电源外壳](/azure/role-based-access-control/role-assignments-powershell)
+- [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 - [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
 - [REST API](/azure/role-based-access-control/role-assignments-rest)
 - [Azure 资源管理器模板](/azure/role-based-access-control/role-assignments-template)
@@ -61,14 +61,14 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 
 ## <a name="create-custom-role"></a>创建自定义角色
 
-如果内置角色不够，可以创建自定义角色。 自定义角色可能具有该工作区中的读取、写入、删除和计算资源权限。 可以使角色在特定工作区级别、特定资源组级别或特定订阅级别可用。
+如果内置角色不足，可以创建自定义角色。 自定义角色可能具有该工作区中的读取、写入、删除和计算资源权限。 可以使角色在特定工作区级别、特定资源组级别或特定订阅级别可用。
 
 > [!NOTE]
 > 必须是该级别资源的所有者，才能在该资源中创建自定义角色。
 
 要创建自定义角色，请首先构造角色定义 JSON 文件，指定角色的权限和作用域。 以下示例定义了名为“数据科学家”的自定义角色，其作用域为特定工作区级别：
 
-`data_scientist_role.json` :
+`data_scientist_role.json`：
 ```json
 {
     "Name": "Data Scientist",
@@ -116,30 +116,30 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 ## <a name="frequently-asked-questions"></a>常见问题
 
 
-### <a name="q-what-are-the-permissions-needed-to-perform-various-actions-in-the-azure-machine-learning-service"></a>Q. 在 Azure 机器学习服务中执行各种操作所需的权限是什么？
+### <a name="q-what-are-the-permissions-needed-to-perform-various-actions-in-the-azure-machine-learning-service"></a>Q. 在 Azure 机器学习服务中执行各种操作需要哪些权限？
 
-下表是 Azure 机器学习活动的摘要，以及至少执行这些活动所需的权限。 例如，如果可以使用工作区作用域（列 4）执行活动，则具有该权限的所有较高作用域也将自动工作。 此表中的所有路径都是 到`Microsoft.MachineLearningServices/`**的相对路径**。
+下表汇总了 Azure 机器学习活动以及在最小作用域内执行它们所需的权限。 例如，如果可以使用工作区作用域（第 4 列）执行某个活动，则具有该权限的所有更高作用域也将自动工作。 此表中的所有路径都是相对于  **的**相对路径`Microsoft.MachineLearningServices/`。
 
-| 活动 | 订阅级别范围 | 资源组级作用域 | 工作区级作用域 |
+| 活动 | 订阅级作用域 | 资源组级作用域 | 工作区级作用域 |
 |---|---|---|---|
-| 创建新工作区 | 不是必需 | 所有者或贡献者 | 不适用（创建后成为所有者或继承更高作用域的角色） |
-| 创建新的计算群集 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色，允许：`workspaces/computes/write` |
-| 创建新的笔记本 VM | 不是必需 | 所有者或贡献者 | 不可用 |
-| 创建新的计算实例 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色，允许：`workspaces/computes/write` |
-| 数据平面活动，如提交运行、访问数据、部署模型或发布管道 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色，允许：`workspaces/*/write` <br/> 请注意，您还需要注册到工作区的数据存储，以便 MSI 访问存储帐户中的数据。 |
+| 创建新工作区 | 不是必需 | 所有者或参与者 | 不适用（在创建后成为所有者或继承更高作用域角色） |
+| 新建计算群集 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`workspaces/computes/write` |
+| 新建笔记本 VM | 不是必需 | 所有者或参与者 | 不可能 |
+| 新建计算实例 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`workspaces/computes/write` |
+| 数据平面活动，例如提交运行、访问数据、部署模型或发布管道 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`workspaces/*/write` <br/> 请注意，你还需要有一个已注册到工作区的数据存储，以允许 MSI 访问你的存储帐户中的数据。 |
 
 
-### <a name="q-how-do-i-list-all-the-custom-roles-in-my-subscription"></a>Q. 如何列出订阅中的所有自定义角色？
+### <a name="q-how-do-i-list-all-the-custom-roles-in-my-subscription"></a>Q. 如何列出我的订阅中的所有自定义角色？
 
-在 Azure CLI 中，运行以下命令。
+在 Azure CLI 中运行以下命令。
 
 ```azurecli-interactive
 az role definition list --subscription <sub-id> --custom-role-only true
 ```
 
-### <a name="q-how-do-i-find-the-role-definition-for-a-role-in-my-subscription"></a>Q. 如何查找订阅中角色的角色定义？
+### <a name="q-how-do-i-find-the-role-definition-for-a-role-in-my-subscription"></a>Q. 如何查找我的订阅中某个角色的角色定义？
 
-在 Azure CLI 中，运行以下命令。 请注意，`<role-name>`该格式应与上述命令返回的相同格式。
+在 Azure CLI 中运行以下命令。 请注意，`<role-name>` 的格式应与上述命令返回的格式相同。
 
 ```azurecli-interactive
 az role definition list -n <role-name> --subscription <sub-id>
@@ -147,30 +147,30 @@ az role definition list -n <role-name> --subscription <sub-id>
 
 ### <a name="q-how-do-i-update-a-role-definition"></a>Q. 如何更新角色定义？
 
-在 Azure CLI 中，运行以下命令。
+在 Azure CLI 中运行以下命令。
 
 ```azurecli-interactive
 az role definition update --role-definition update_def.json --subscription <sub-id>
 ```
 
-请注意，您需要对新角色定义的整个范围具有权限。 例如，如果此新角色具有跨三个订阅的范围，则需要对所有三个订阅具有权限。 
+请注意，你需要对新角色定义的整个作用域具有权限。 例如，如果此新角色的作用域跨三个订阅，则你需要对所有三个订阅都具有权限。 
 
 > [!NOTE]
-> 角色更新可能需要 15 分钟到 1 小时才能应用于该范围内的所有角色分配。
+> 角色更新可能需要花费 15 分钟到一小时才能应用于该作用域中的所有角色分配。
 ### <a name="q-can-i-define-a-role-that-prevents-updating-the-workspace-edition"></a>Q. 是否可以定义阻止更新工作区版本的角色？ 
 
-可以，您可以定义一个阻止更新工作区版本的角色。 由于工作区更新是工作区对象的 PATCH 调用，因此通过在 JSON 定义中将以下操作放在`"NotActions"`数组中来执行此操作： 
+是，你可以定义阻止更新工作区版本的角色。 由于工作区更新是对工作区对象的 PATCH 调用，因此可以通过在 JSON 定义中的 `"NotActions"` 数组中放置以下操作来实现此目的： 
 
 `"Microsoft.MachineLearningServices/workspaces/write"`
 
 ### <a name="q-what-permissions-are-needed-to-perform-quota-operations-in-a-workspace"></a>Q. 在工作区中执行配额操作需要哪些权限？ 
 
-您需要订阅级别权限才能在工作区中执行任何与配额相关的操作。 这意味着，只有在订阅作用域具有写入权限时，才能为托管计算资源设置订阅级别配额或工作区级别配额。 
+要在工作区中执行任何与配额相关的操作，你需要具有订阅级权限。 这意味着，只有当你在订阅作用域具有写入权限时，才能为你的托管计算资源设置订阅级配额或工作区级配额。 
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [企业安全概述](concept-enterprise-security.md)
+- [企业安全性概述](concept-enterprise-security.md)
 - [在虚拟网络中安全运行试验和推理/评分](how-to-enable-virtual-network.md)
 - [教程：定型模型](tutorial-train-models-with-aml.md)
 - [资源提供程序操作](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)

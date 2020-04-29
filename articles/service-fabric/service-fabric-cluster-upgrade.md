@@ -1,14 +1,14 @@
 ---
 title: 升级 Azure Service Fabric 群集
-description: 了解如何升级 Azure Service Fabric 群集的版本或配置 — 设置群集更新模式、升级证书、添加应用程序端口、执行 OS 修补程序，以及执行升级时可以期待的内容。
+description: 了解如何升级 Azure Service Fabric 群集的版本或配置 - 设置群集更新模式、升级证书、添加应用程序端口、执行 OS 修补程序以及执行升级时可预期的内容。
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.custom: sfrev
 ms.openlocfilehash: 6897854820339fc78dd9083c82147dce95ab68b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79258650"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>升级和更新 Azure Service Fabric 群集
@@ -17,7 +17,7 @@ ms.locfileid: "79258650"
 
 ## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>控制在群集上运行的结构版本
 
-确保群集始终运行[受支持的结构版本](service-fabric-versions.md)。 每次 Microsoft 宣布发布新版本的 Service Fabric 时，都会将以前的版本标记为自该日期起至少 60 天后终止支持。 新版本在[服务结构团队博客上](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)公布。
+请确保群集始终运行[受支持的 Fabric 版本](service-fabric-versions.md)。 每次 Microsoft 宣布发布新版本的 Service Fabric 时，以前的版本将标记为在该日期后的最小60天后结束支持。 新版本将[在 Service Fabric 团队博客](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)中宣布。
 
 群集运行的版本到期之前的 14 天内，生成运行状况事件，将群集置于警告运行状况状态。 群集将继续处于警告状态，直至升级至支持的结构版本。
 
@@ -25,21 +25,21 @@ ms.locfileid: "79258650"
 
 ## <a name="fabric-upgrade-behavior-during-automatic-upgrades"></a>自动升级期间的结构升级行为
 
-Microsoft 将维护 Azure 群集中运行的结构代码和配置。 我们会根据需要，对软件执行受监视的自动升级。 升级的部分可能是代码和/或配置。 为了确保应用程序不会由于这些升级而受到影响或影响最小，升级将在以下阶段执行：
+Microsoft 将维护 Azure 群集中运行的结构代码和配置。 我们会根据需要，对软件执行受监视的自动升级。 升级的部分可能是代码和/或配置。 为了确保应用程序不受这些升级的影响或者将影响降到最低，将按以下阶段执行升级：
 
 ### <a name="phase-1-an-upgrade-is-performed-by-using-all-cluster-health-policies"></a>阶段 1：使用所有群集运行状况策略执行升级
 
-在此阶段，升级过程将每次升级一个升级域，已在群集中运行的应用程序继续运行，而不会造成任何停机时间。 在升级期间，将遵循群集运行状况策略（用于节点运行状况和应用程序运行状况）。
+在此阶段，升级过程将每次升级一个升级域，已在群集中运行的应用程序继续运行，而不会造成任何停机时间。 升级过程中遵守群集运行状况策略（适用于节点运行状况和应用程序运行状况）。
 
-如果未满足群集运行状况策略，则回滚升级，并将电子邮件发送给订阅的所有者。 电子邮件中包含以下信息：
+如果不符合现行的群集运行状况策略，则回退升级，并将电子邮件发送给订阅的所有者。 电子邮件中包含以下信息：
 
 * 有关必须回滚群集升级的通知。
 * 建议的补救措施（如果有）。
-* 直到我们执行阶段 2 的天数 （*n*）
+* 距离执行阶段 2 的天数 (*n*)。
 
-如果有任何升级因为基础结构方面的原因而失败，我们将尝试多次执行同一升级。 从发送电子邮件之日起的*n*天之后，我们继续阶段 2。
+如果有任何升级因为基础结构方面的原因而失败，我们将尝试多次执行同一升级。 自电子邮件发送日期的 *n* 天之后，我们将继续执行阶段 2。
 
-如果符合群集运行状况策略，则升级被视为成功并标记为完成。 在此阶段进行初始升级或重新运行任何升级期间，可能发生这种情形。 如果运行成功，将不发送任何电子邮件确认。 这是为了避免向您发送太多的电子邮件;接收电子邮件应视为正常异常。 大多数群集升级预期都会成功，且不影响应用程序可用性。
+如果符合群集运行状况策略，则升级被视为成功并标记为完成。 在此阶段进行初始升级或重新运行任何升级期间，可能发生这种情形。 如果运行成功，将不发送任何电子邮件确认。 这是为了避免发送过多的电子邮件；收到电子邮件则表示出现异常。 大多数群集升级预期都会成功，且不影响应用程序可用性。
 
 ### <a name="phase-2-an-upgrade-is-performed-by-using-default-health-policies-only"></a>阶段 2：仅使用默认运行状况策略执行升级
 

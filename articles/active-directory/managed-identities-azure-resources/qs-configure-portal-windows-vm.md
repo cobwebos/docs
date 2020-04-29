@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 门户配置托管标识 - Azure AD
+title: 使用 Azure 门户 Azure AD 配置托管标识
 description: 分步说明如何使用 Azure 门户在 Azure VM 上配置 Azure 资源托管标识。
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 11/10/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 75971dbd35a6b29306bc87988423ab662a343705
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79266658"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-vm-using-the-azure-portal"></a>使用 Azure 门户在 VM 上配置 Azure 资源托管标识
@@ -30,7 +30,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 本文介绍如何使用 Azure 门户为 Azure 虚拟机 (VM) 启用和禁用系统和用户分配的托管标识。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
@@ -59,7 +59,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 1. 使用已与包含 VM 的 Azure 订阅关联的帐户登录 [Azure 门户](https://portal.azure.com)。
 
-2. 导航到所需的虚拟机，然后选择“标识”。****
+2. 导航到所需的虚拟机，然后选择“标识”。 
 
 3. 在“系统分配”****、“状态”**** 下，选择“开启”****，然后单击“保存”****：
 

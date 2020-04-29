@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 01/24/2019
 ms.author: aschhab
 ms.openlocfilehash: a2c353d612280981a83b32463d34efdc70878495
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260990"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>消息传输、锁定和处置
 
 消息代理（如服务总线）的最核心功能是将消息接受到队列或主题中以及保存它们以用于将来检索。 *发送*是常用于指消息传输到消息代理中的术语。 *接收*是常用于指将消息传输到检索客户端的术语。
 
-当客户端发送消息时，它通常希望了解消息是否正确传输到代理并由代理接受，或是否发生某种形式的错误。 这种肯定或否定确认会使客户端和代理了解消息传输状态，因而称为**。
+当客户端发送消息时，它通常希望了解消息是否正确传输到代理并由代理接受，或是否发生某种形式的错误。 这种肯定或否定确认会使客户端和代理了解消息传输状态，因而称为  。
 
 同样，当中转站向客户端传输消息时，中转站和客户端都希望了解消息是已成功处理（因而可以删除消息），还是消息传递或处理失败（因而可能需要再次传递消息）。
 
@@ -96,7 +96,7 @@ for (int i = 0; i < 100; i++)
 
 ## <a name="settling-receive-operations"></a>处置接收操作
 
-对于接收操作，服务总线 API 客户端启用两种不同的显式模式：接收并删除** 和扫视锁定**。
+对于接收操作，服务总线 API 客户端启用两种不同的显式模式：接收并删除  和扫视锁定  。
 
 ### <a name="receiveanddelete"></a>ReceiveAndDelete
 

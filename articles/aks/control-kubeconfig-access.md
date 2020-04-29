@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 01/28/2020
 ms.openlocfilehash: 25c710cce2855d6af985d3f46082f47573bbc101
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79259547"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>使用 Azure 基于角色的访问控制定义对 Azure Kubernetes 服务 (AKS) 中的 Kubernetes 配置文件的访问
@@ -17,15 +17,15 @@ ms.locfileid: "79259547"
 
 本文介绍如何分配 RBAC 角色用于限制谁可以获取 AKS 群集的配置信息。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
-本文还要求运行 Azure CLI 2.0.65 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+本文还要求运行 Azure CLI 2.0.65 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 ## <a name="available-cluster-roles-permissions"></a>可用的群集角色权限
 
-使用 `kubectl` 工具与 AKS 群集交互时，将使用一个定义了群集连接信息的配置文件。 此配置文件通常存储在 *+/.kube/config*中。可以在此*kubeconfig 文件中*定义多个群集。 使用 [kubectl config use-context][kubectl-config-use-context] 命令在群集之间切换。
+使用 `kubectl` 工具与 AKS 群集交互时，将使用一个定义了群集连接信息的配置文件。 此配置文件通常存储在 *~/.kube/config* 中。可在此 *kubeconfig* 文件中定义多个群集。 使用 [kubectl config use-context][kubectl-config-use-context] 命令在群集之间切换。
 
 使用 [az aks get-credentials][az-aks-get-credentials] 命令可以获取 AKS 群集的访问凭据，并将其合并到 *kubeconfig* 文件中。 可以使用 Azure 基于角色的访问控制 (RBAC) 来控制对这些凭据的访问。 使用这些 Azure RBAC 角色可以定义谁能够检索 *kubeconfig* 文件，以及他们在群集中拥有的权限。
 
@@ -40,19 +40,19 @@ ms.locfileid: "79259547"
 
 这些 RBAC 角色可以应用到 Azure Active Directory (AD) 用户或组。
 
-> ![注意]在使用 Azure AD 的群集上，具有*群集用户*角色的用户具有一个空*库贝康菲格*文件，该文件提示登录。 登录后，用户可根据其 Azure AD 用户或组设置进行访问权限。 具有*群集管理员*角色的用户具有管理员访问权限。
+> ![NOTE] 在使用 Azure AD 的群集上，具有 clusterUser  角色的用户有一个提示登录的空 kubeconfig  文件。 登录后，用户可以根据其 Azure AD 用户或组设置进行访问。 具有 clusterAdmin  角色的用户拥有管理员访问权限。
 >
-> 不使用 Azure AD 的群集仅使用*群集管理员*角色。
+> 不使用 Azure AD 的群集仅使用 clusterAdmin  角色。
 
 ## <a name="assign-role-permissions-to-a-user-or-group"></a>将角色权限分配给用户或组
 
 若要分配某个可用角色，需要获取 AKS 群集的资源 ID 以及 Azure AD 用户帐户或组的 ID。 以下示例命令：
 
 * 使用 [az aks show][az-aks-show] 命令获取 *myResourceGroup* 资源组中名为 *myAKSCluster* 的群集的群集资源 ID。 请根据需要提供自己的群集和资源组名称。
-* 使用[az 帐户显示][az-account-show]和[az 广告用户显示][az-ad-user-show]命令获取用户 ID。
-* 最后，使用[az 角色分配创建][az-role-assignment-create]命令分配角色。
+* 使用 [az account show][az-account-show] 和 [az ad user show][az-ad-user-show] 命令获取用户 ID。
+* 最后，使用 [az role assignment create][az-role-assignment-create] 命令分配角色。
 
-以下示例将 Azure Kubernetes 服务群集管理员角色分配给单个用户帐户：**
+以下示例将 Azure Kubernetes 服务群集管理员角色分配给单个用户帐户： 
 
 ```azurecli-interactive
 # Get the resource ID of your AKS cluster
@@ -70,9 +70,9 @@ az role assignment create \
 ```
 
 > [!TIP]
-> 若要将权限分配给 Azure AD 组，请使用组而不是用户的对象 ID 更新在上一示例中显示的 `--assignee` 参数。**** 若要获取组的对象 ID，请使用 [az ad group show][az-ad-group-show] 命令。 以下示例获取名为*appdev*的 Azure AD 组的对象 ID ：`az ad group show --group appdev --query objectId -o tsv`
+> 若要将权限分配给 Azure AD 组，请使用组而不是用户的对象 ID 更新在上一示例中显示的 `--assignee` 参数。   若要获取组的对象 ID，请使用 [az ad group show][az-ad-group-show] 命令。 以下示例获取名为 *appdev* 的 Azure AD 组的对象 ID：`az ad group show --group appdev --query objectId -o tsv`
 
-可根据需要将上述分配更改为“群集用户角色”。**
+可根据需要将上述分配更改为“群集用户角色”。 
 
 以下示例输出显示已成功创建角色分配：
 
@@ -91,13 +91,13 @@ az role assignment create \
 
 ## <a name="get-and-verify-the-configuration-information"></a>获取并验证配置信息
 
-分配 RBAC 角色后，使用 [az aks get-credentials][az-aks-get-credentials] 命令获取 AKS 群集的 *kubeconfig* 定义。 以下示例获取 *--admin* 凭据，如果为用户分配了“群集管理员角色”，则这些凭据可正常运行：**
+分配 RBAC 角色后，使用 [az aks get-credentials][az-aks-get-credentials] 命令获取 AKS 群集的 *kubeconfig* 定义。 以下示例获取 *--admin* 凭据，如果为用户分配了“群集管理员角色”，则这些凭据可正常运行： 
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
 ```
 
-然后，可以使用 [kubectl config view][kubectl-config-view] 命令来验证群集上下文是否显示已应用管理员配置信息：**
+然后，可以使用 [kubectl config view][kubectl-config-view] 命令来验证群集上下文是否显示已应用管理员配置信息： 
 
 ```
 $ kubectl config view

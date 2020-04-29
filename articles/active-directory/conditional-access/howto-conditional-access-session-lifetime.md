@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6e9c0c88064c00c97de7dc58a500910e81c04eef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79263278"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>使用条件访问配置身份验证会话管理
@@ -53,20 +53,20 @@ Azure Active Directory (Azure AD) 的默认用户登录频率配置为 90 天滚
 
 ### <a name="user-sign-in-frequency-and-device-identities"></a>用户登录频率和设备标识
 
-如果已加入 Azure AD、混合 Azure AD 加入或 Azure AD 注册设备，当用户以交互方式解锁其设备或标志时，此事件也将满足登录频率策略。 在以下 2 个示例中，用户登录频率设置为 1 小时：
+如果已 Azure AD 联接、混合 Azure AD 加入或 Azure AD 注册的设备，则当用户以交互方式解锁其设备或登录时，此事件也将满足登录频率策略。 在以下2个示例中，用户登录频率设置为1小时：
 
 示例 1：
 
-- 00：00，用户登录到其 Windows 10 Azure AD 加入设备，并开始处理存储在 SharePoint Online 上的文档。
-- 用户在其设备上继续处理同一文档一小时。
-- 在 01：00 时，系统会提示用户根据管理员配置的条件访问策略中的登录频率要求再次登录。
+- 在00:00，用户登录到其 Windows 10 Azure AD 联接的设备，并开始在存储在 SharePoint Online 上的文档。
+- 用户将在其设备上继续使用同一文档一小时。
+- 在01:00，系统会根据管理员配置的条件访问策略中的登录频率要求，提示用户重新登录。
 
 示例 2：
 
-- 00：00，用户登录到其 Windows 10 Azure AD 加入设备，并开始处理存储在 SharePoint Online 上的文档。
-- 在 00：30 时，用户起身并休息锁定设备。
-- 在 00：45 时，用户从中断中返回并解锁设备。
-- 在 01：45 时，系统会提示用户根据管理员配置的条件访问策略中的登录频率要求再次登录，因为上次登录发生在 00：45。
+- 在00:00，用户登录到其 Windows 10 Azure AD 联接的设备，并开始在存储在 SharePoint Online 上的文档。
+- 在00:30 时，用户会获得，并在锁定其设备时进行中断。
+- 在00:45 时，用户将从其中断返回，并解锁设备。
+- 在01:45，系统会提示用户根据管理员配置的条件访问策略中的登录频率要求再次登录，因为上次登录时间为00:45。
 
 ## <a name="persistence-of-browsing-sessions"></a>浏览会话的持久性
 
@@ -77,12 +77,12 @@ Azure Active Directory (Azure AD) 的默认用户登录频率配置为 90 天滚
 
 ## <a name="configuring-authentication-session-controls"></a>配置身份验证会话控制
 
-条件访问是一项 Azure AD Premium 功能，要求安装高级版许可证。 如果要了解有关条件访问的更多内容，请参阅[Azure 活动目录中的条件访问是什么？](overview.md#license-requirements)
+条件访问是一项 Azure AD Premium 功能，要求安装高级版许可证。 如果要了解有关条件性访问的详细信息，请参阅[什么是 Azure Active Directory 中的条件性访问？](overview.md#license-requirements)
 
 > [!WARNING]
-> 如果您当前在公共预览版中使用[可配置的令牌生存期](../develop/active-directory-configurable-token-lifetimes.md)功能，请注意，我们不支持为同一用户或应用组合创建两个不同的策略：一个具有此功能，另一个具有可配置令牌生存期功能。 Microsoft 计划在 2020 年 5 月 1 日停用可配置的令牌生存期功能，并将其替换为条件访问身份验证会话管理功能。  
+> 如果使用的是公共预览版中的[可配置令牌生存期](../develop/active-directory-configurable-token-lifetimes.md)功能，请注意，我们不支持为同一用户或应用组合创建两种不同的策略：一个使用此功能，另一个具有可配置的令牌生存期功能。 Microsoft 计划在 2020 5 月1日停用可配置的令牌生存期功能，并将其替换为条件访问身份验证会话管理功能。  
 
-### <a name="policy-1-sign-in-frequency-control"></a>策略 1：登录频率控制
+### <a name="policy-1-sign-in-frequency-control"></a>策略1：登录频率控制
 
 1. 创建新策略
 1. 选择客户环境所需的所有条件，包括目标云应用。
@@ -90,7 +90,7 @@ Azure Active Directory (Azure AD) 的默认用户登录频率配置为 90 天滚
    > [!NOTE]
    > 建议为 Exchange Online 和 SharePoint Online 等重要 Microsoft Office 应用设置相同的身份验证提示频率，以获得最佳用户体验。
 
-1. 转到**访问控制** > **会话**，然后单击**登录频率**
+1. 中转到 "**访问控制** > "**会话**，并单击 "**登录频率**"
 1. 在第一个文本框中输入所需的天数和小时值
 1. 从下拉列表中选择“小时”或“天”的值********
 1. 保存策略
@@ -101,7 +101,7 @@ Azure Active Directory (Azure AD) 的默认用户登录频率配置为 90 天滚
 
 如果为同一浏览器会话中运行的不同 Web 应用配置了不同的登录频率，最严格的策略将应用到这两个应用，因为在同一浏览器会话中运行的所有应用共享一个会话令牌。
 
-### <a name="policy-2-persistent-browser-session"></a>策略 2：持久浏览器会话
+### <a name="policy-2-persistent-browser-session"></a>策略2：持久性浏览器会话
 
 1. 创建新策略
 1. 选择所有所需的条件。
@@ -109,7 +109,7 @@ Azure Active Directory (Azure AD) 的默认用户登录频率配置为 90 天滚
    > [!NOTE]
    > 请注意，此控制措施要求选择“所有云应用”作为条件。 浏览器会话持久性由身份验证会话令牌控制。 浏览器会话中的所有标签页共享一个会话令牌，因此它们都必须共享持久性状态。
 
-1. 转到**访问控制** > **会话**，然后单击 **"持久浏览器会话"**
+1. 中转到 "**访问控制** > "**会话**，然后单击 "**持久浏览器会话**"
 1. 从下拉列表中选择一个值
 1. 保存策略
 

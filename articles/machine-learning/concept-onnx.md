@@ -12,15 +12,15 @@ author: prasanthpul
 ms.date: 08/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 98aebb4733c2aa2a6d0b0217f1f437bcea1992e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79270168"
 ---
-# <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX 和 Azure 机器学习：创建并加速 ML 模型
+# <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX 和 Azure 机器学习：创建和加速 ML 模型
 
-了解使用[开放神经网络交换](https://onnx.ai)（ONNX） 如何帮助优化机器学习模型的推理。 推理或模型评分是将部署的模型用于预测（通常针对生产数据）的阶段。 
+了解如何使用 [Open Neural Network Exchange](https://onnx.ai) (ONNX) 来帮助优化机器学习模型的推理。 推理或模型评分是将部署的模型用于预测（通常针对生产数据）的阶段。 
 
 优化用于推理（或模型评分）的机器学习模型非常困难，因为需要调整模型和推理库，充分利用硬件功能。 如果想要在不同类型的平台（云/Edge、CPU/GPU 等）上获得最佳性能，实现起来会异常困难，因为每个平台都有不同的功能和特性。 如果模型来自需要在各种平台上运行的多种框架，会极大增加复杂性。 优化框架和硬件的所有不同组合非常耗时。 这就需要一种解决方案，在首选框架中训练一次后能在云或 Edge 上的任意位置运行。 此时 ONNX 便派上了用场。
 
@@ -28,9 +28,9 @@ Microsoft 和合作伙伴社区创建了 ONNX 作为表示机器学习模型的�
 
 [ONNX 运行时](https://github.com/Microsoft/onnxruntime)是一种用于将 ONNX 模型部署到生产环境的高性能推理引擎。 它针对云和 Edge 进行了优化，适用于 Linux、Windows 和 Mac。 它以 C++ 编写，还具有 C、Python 和 C# API。 ONNX 运行时为所有 ONNX 机器学习规范提供支持，并与不同硬件（如 NVidia GPU 上的 TensorRT）上的加速器集成。
 
-ONNX 运行时用于大规模 Microsoft 服务，如必应、Office 和认知服务。 性能提升取决于许多因素，但这些 Microsoft 服务的 CPU 性能平均提高了 2 倍____。 ONNX 运行时同时作为 Windows 机器学习的一部分应用于数亿台设备。 可以将运行时与 Azure 机器学习配合使用。 通过使用 ONNX 运行时，可以从大量的生产级优化、测试和不断改进中受益。
+ONNX 运行时用于大规模 Microsoft 服务，如必应、Office 和认知服务。 性能提升取决于许多因素，但这些 Microsoft 服务的 CPU 性能平均提高了 2 倍  。 ONNX 运行时同时作为 Windows 机器学习的一部分应用于数亿台设备。 可以将运行时与 Azure 机器学习配合使用。 通过使用 ONNX 运行时，可以从大量的生产级优化、测试和不断改进中受益。
 
-[![ONNX 流程图，显示培训、转换器和部署](./media/concept-onnx/onnx.png)](././media/concept-onnx/onnx.png#lightbox)
+[![ONNX 流程图，其中显示了训练、转换器和部署](./media/concept-onnx/onnx.png)](././media/concept-onnx/onnx.png#lightbox)
 
 ## <a name="get-onnx-models"></a>获取 ONNX 模型
 

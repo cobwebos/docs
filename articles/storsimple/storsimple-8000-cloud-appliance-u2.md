@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 01ce952ea774ba852c83d0d6aa3fe38d5dfd677e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79267984"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>在 Azure 中部署和管理 StorSimple 云设备（Update 3 及更高版本）
@@ -46,7 +46,7 @@ StorSimple 云设备以两种型号提供：标准 8010（前身为 1100）和�
 | --- | --- | --- |
 | **最大容量** |30 TB |64 TB |
 | **Azure VM** |Standard_A3（4 核，7 GB 内存）| Standard_DS3（4 核，14 GB 内存）|
-| **区域可用性** |所有 Azure 区域 |支持高级存储和 DS3 Azure VM 的 Azure 区域<br></br>请使用[此列表](https://azure.microsoft.com/regions/services/)，看“虚拟机”>“DS 系列”和“存储”>“磁盘存储”在区域是否均可用。******** |
+| **上市区域** |所有 Azure 区域 |支持高级存储和 DS3 Azure VM 的 Azure 区域<br></br>请使用[此列表](https://azure.microsoft.com/regions/services/)，看“虚拟机”>“DS 系列”和“存储”>“磁盘存储”在区域是否均可用。******** |
 | **存储类型** |为本地磁盘使用 Azure 标准存储<br></br> 了解如何 [创建标准存储帐户](../storage/common/storage-create-storage-account.md) |为本地磁盘使用 Azure 高级存储<sup>2</sup> <br></br> |
 | **工作负荷指导** |在级别从备份中检索文件 |云开发和测试方案 <br></br>低延迟和更高性能工作负载<br></br>用于灾难恢复的辅助设备 |
 
@@ -81,7 +81,7 @@ StorSimple 云设备是软件形式的 StorSimple，在 Microsoft Azure 虚拟�
 在预配云设备之前，需要在 Azure 环境中做好以下准备：
 
 * 确保在数据中心部署并运行 StorSimple 8000 系列物理设备（型号为 8100 或 8600）。 将此设备注册到要为其创建 StorSimple 云设备的 StorSimple 设备管理器服务。
-* 对于云设备，[在 Azure 中配置虚拟网络](../virtual-network/manage-virtual-network.md#create-a-virtual-network)。 如果使用高级存储，必须在支持高级存储的 Azure 区域中创建虚拟网络。 高级存储区域是对应于[Azure 服务列表中的](https://azure.microsoft.com/regions/services/)磁盘存储行的区域。
+* 对于云设备，[在 Azure 中配置虚拟网络](../virtual-network/manage-virtual-network.md#create-a-virtual-network)。 如果使用高级存储，必须在支持高级存储的 Azure 区域中创建虚拟网络。 高级存储区域是对应于[按区域列出的 Azure 服务](https://azure.microsoft.com/regions/services/)的磁盘存储行的区域。
 * 建议使用 Azure 提供的默认 DNS 服务器，而不要指定自己的 DNS 服务器名称。 如果 DNS 服务器名称无效，或者 DNS 服务器无法正确解析 IP 地址，则创建云设备会失败。
 * 点到站点和站点到站点连接是可选的，而不是必需的。 如果需要，可以针对更高级方案配置这些选项。
 * 可以在可使用云设备公开的卷的虚拟网络中创建 [Azure 虚拟机](../virtual-machines/virtual-machines-windows-quick-create-portal.md)（主机服务器）。 这些服务器必须满足以下要求：

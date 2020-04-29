@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: eee95a2b6acde3ad3b7d94cf5cdd0f74f9f09fd9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79265956"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API 管理中的 API 模板
@@ -28,12 +28,12 @@ ms.locfileid: "79265956"
   
 -   [API 列表](#APIList)  
 -   [操作](#Product)  
--   [代码示例](#CodeSamples)  
-    -   [卷曲](#Curl)  
+-   [示例代码](#CodeSamples)  
+    -   [Curl](#Curl)  
     -   [C#](#CSharp)  
     -   [Java](#Stub)  
-    -   [Javascript](#JavaScript)  
-    -   [目标C](#ObjectiveC)  
+    -   [JavaScript](#JavaScript)  
+    -   [Objective C](#ObjectiveC)  
     -   [PHP](#PHP)  
     -   [Python](#Python)  
     -   [Ruby](#Ruby)  
@@ -80,12 +80,12 @@ ms.locfileid: "79265956"
 </div>  
 ```  
   
-### <a name="controls"></a>控件  
+### <a name="controls"></a>控制  
  `API list` 模板可使用以下[页面控件](api-management-page-controls.md)。  
   
--   [分页控制](api-management-page-controls.md#paging-control)  
+-   [paging-control](api-management-page-controls.md#paging-control)  
   
--   [搜索控制](api-management-page-controls.md#search-control)  
+-   [search-control](api-management-page-controls.md#search-control)  
   
 ### <a name="data-model"></a>数据模型  
   
@@ -113,7 +113,7 @@ ms.locfileid: "79265956"
 }  
 ```  
   
-## <a name="operation"></a><a name="Product"></a> 操作  
+## <a name="operation"></a><a name="Product"></a>运作  
  **操作**模板可用于自定义开发人员门户中操作页的正文。  
   
  ![开发人员门户操作页](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "APIM 开发人员门户模板操作页")  
@@ -344,7 +344,7 @@ ms.locfileid: "79265956"
   
 ### <a name="data-model"></a>数据模型  
   
-|properties|类型|说明|  
+|属性|类型|说明|  
 |--------------|----------|-----------------|  
 |`apiId`|字符串|当前 API 的 ID。|  
 |`apiName`|字符串|API 的名称。|  
@@ -643,20 +643,20 @@ ms.locfileid: "79265956"
 }  
 ```  
   
-## <a name="code-samples"></a><a name="CodeSamples"></a> 代码示例  
+## <a name="code-samples"></a><a name="CodeSamples"></a>代码示例  
  以下模板用于在操作页上自定义各个代码示例的正文。  
   
  ![开发人员门户模板代码示例](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "APIM 开发人员门户模板代码示例")  
   
--   [卷曲](#Curl)  
+-   [Curl](#Curl)  
   
 -   [C#](#CSharp)  
   
 -   [Java](#Stub)  
   
--   [Javascript](#JavaScript)  
+-   [JavaScript](#JavaScript)  
   
--   [目标C](#ObjectiveC)  
+-   [目标 C](#ObjectiveC)  
   
 -   [PHP](#PHP)  
   
@@ -664,7 +664,7 @@ ms.locfileid: "79265956"
   
 -   [Ruby](#Ruby)  
   
-### <a name="curl"></a><a name="Curl"></a>卷曲  
+### <a name="curl"></a><a name="Curl"></a>Curl  
  **DocumentationSamplesCurl** 模板用于在操作页的代码示例部分自定义该代码示例。  
   
 #### <a name="default-template"></a>默认模板  
@@ -717,7 +717,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 }  
 ```  
   
-### <a name="c"></a><a name="CSharp"></a>C#  
+### <a name="c"></a><a name="CSharp"></a>Ansi-c#  
  **DocumentationSamplesCsharp** 模板用于在操作页的代码示例部分自定义该代码示例。  
   
 #### <a name="default-template"></a>默认模板  
@@ -896,7 +896,7 @@ namespace CSHttpClientSample
 }  
 ```  
   
-### <a name="java"></a><a name="Stub"></a>Java  
+### <a name="java"></a><a name="Stub"></a>.Java  
  **DocumentationSamplesJava** 模板用于在操作页的代码示例部分自定义该代码示例。  
   
 #### <a name="default-template"></a>默认模板  
@@ -992,7 +992,7 @@ public class JavaSample
 }  
 ```  
   
-### <a name="javascript"></a><a name="JavaScript"></a>Javascript  
+### <a name="javascript"></a><a name="JavaScript"></a>JavaScript  
  **DocumentationSamplesJs** 模板用于在操作页的代码示例部分自定义该代码示例。  
   
 #### <a name="default-template"></a>默认模板  
@@ -1193,7 +1193,7 @@ int main(int argc, const char * argv[])
 }  
 ```  
   
-### <a name="php"></a><a name="PHP"></a>Php  
+### <a name="php"></a><a name="PHP"></a>PHP  
  **DocumentationSamplesPhp** 模板用于在操作页的代码示例部分自定义该代码示例。  
   
 #### <a name="default-template"></a>默认模板  
@@ -1401,7 +1401,7 @@ except Exception as e:
 }  
 ```  
   
-### <a name="ruby"></a><a name="Ruby"></a>红宝石  
+### <a name="ruby"></a><a name="Ruby"></a>拼音  
  **DocumentationSamplesRuby** 模板用于在操作页的代码示例部分自定义该代码示例。  
   
 #### <a name="default-template"></a>默认模板  

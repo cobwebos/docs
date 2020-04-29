@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
 ms.openlocfilehash: 8046e4f42db50db15c840a13b95ae1f3620a8c7f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79266918"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>尝试通过远程桌面连接到 Azure VM 时发生内部错误
@@ -158,7 +158,7 @@ RDP 客户端使用 TLS 1.0 作为默认协议。 但是，可将此协议更改
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>将 OS 磁盘附加到恢复 VM
 
-1. [将操作系统磁盘附加到恢复 VM。](../windows/troubleshoot-recovery-disks-portal.md)
+1. [将 OS 磁盘附加到恢复 VM](../windows/troubleshoot-recovery-disks-portal.md)。
 2. 将 OS 磁盘附加到恢复 VM 后，请确保磁盘在磁盘管理控制台中标记为“联机”****。 请注意分配给附加的 OS 磁盘的驱动器号。
 3. 开始与恢复 VM 建立远程桌面连接。
 
@@ -166,7 +166,7 @@ RDP 客户端使用 TLS 1.0 作为默认协议。 但是，可将此协议更改
 
 若要启用转储日志和串行控制台，请运行以下脚本。
 
-1. 打开提升的命令提示会话 （**以管理员身份运行**）。
+1. 打开提升的命令提示符会话（**以管理员身份运行**）。
 2. 运行以下脚本：
 
     对于此脚本，我们假设分配给附加 OS 磁盘的驱动器号为 F。请将此驱动器号替换为 VM 中的相应值。
@@ -195,7 +195,7 @@ RDP 客户端使用 TLS 1.0 作为默认协议。 但是，可将此协议更改
 
 #### <a name="reset-the-permission-for-machinekeys-folder"></a>重置 MachineKeys 文件夹的权限
 
-1. 打开提升的命令提示会话 （**以管理员身份运行**）。
+1. 打开提升的命令提示符会话（**以管理员身份运行**）。
 2. 运行以下脚本。 对于此脚本，我们假设分配给附加 OS 磁盘的驱动器号为 F。请将此驱动器号替换为 VM 中的相应值。
 
         Md F:\temp

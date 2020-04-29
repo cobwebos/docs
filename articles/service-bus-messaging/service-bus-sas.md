@@ -14,23 +14,23 @@ ms.workload: na
 ms.date: 12/20/2019
 ms.author: aschhab
 ms.openlocfilehash: c381d9413c4003bc2ab9a9357ff2769e84d14c3e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79259469"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>使用共享访问签名进行服务总线访问控制
 
-共享访问签名** (SAS) 是服务总线消息传送的主要安全机制。 本文介绍 SAS、其工作原理以及如何以平台无关的方式使用它们。
+共享访问签名  (SAS) 是服务总线消息传送的主要安全机制。 本文介绍 SAS、其工作原理以及如何以平台无关的方式使用它们。
 
 SAS 可以根据授权规则来保护对服务总线的访问。 可以在命名空间或消息传递实体（中继、队列或主题）中配置这些保护。 授权规则具有与特定权限关联的名称，并包含一个加密密钥对。 通过服务总线 SDK 或者在自己的代码中使用规则名称和密钥可以生成 SAS 令牌。 然后，客户端可将令牌传递给服务总线，以证明请求的操作获得授权。
 
 > [!NOTE]
-> Azure 服务总线支持使用 Azure 活动目录 （Azure AD） 授权访问服务总线命名空间及其实体。 使用 Azure AD 返回的 OAuth 2.0 令牌授权用户或应用程序可提供比共享访问签名 (SAS) 更高的安全性和易用性。 使用 Azure AD，不需要在代码中存储令牌，也不需要冒潜在的安全漏洞风险。
+> Azure 服务总线支持使用 Azure Active Directory （Azure AD）授权对服务总线命名空间及其实体的访问权限。 使用 Azure AD 返回的 OAuth 2.0 令牌授权用户或应用程序可提供比共享访问签名 (SAS) 更高的安全性和易用性。 使用 Azure AD，不需要在代码中存储令牌，也不需要冒潜在的安全漏洞风险。
 >
-> Microsoft 建议尽可能将 Azure AD 与 Azure 服务总线应用程序一起使用。 有关详细信息，请参阅以下文章：
-> - [使用 Azure 活动目录对应用程序进行身份验证和授权以访问 Azure 服务总线实体](authenticate-application.md)。
+> Microsoft 建议尽可能将 Azure AD 用于 Azure 服务总线应用程序。 有关详细信息，请参阅下列文章：
+> - [使用 Azure Active Directory 访问 Azure 服务总线实体，对应用程序进行身份验证和授权](authenticate-application.md)。
 > - [使用 Azure Active Directory 对托管标识进行身份验证，以便访问 Azure 服务总线资源](service-bus-managed-service-identity.md)
 
 ## <a name="overview-of-sas"></a>SAS 概述
@@ -77,12 +77,12 @@ SAS 可以根据授权规则来保护对服务总线的访问。 可以在命名
 SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-encoded-resourceURI>
 ```
 
-* **`se`**- 令牌到期瞬间。 一个整数，反映自 1970 年 1 月 1 日令牌过期的时期 `00:00:00 UTC`（UNIX 时期）以来的秒数。
-* **`skn`**- 授权规则的名称。
-* **`sr`**- 正在访问的资源的 URI。
-* **`sig`**-签名
+* **`se`**-令牌过期即时。 一个整数，反映自 1970 年 1 月 1 日令牌过期的时期 `00:00:00 UTC`（UNIX 时期）以来的秒数。
+* **`skn`**-授权规则的名称。
+* **`sr`**-要访问的资源的 URI。
+* **`sig`** 信号.
 
-是`signature-string`通过资源 URI 计算的 SHA-256 哈希（如上一节所述**的范围**）和令牌过期即时的字符串表示形式，由 LF 分隔。
+`signature-string`是根据资源 URI （上一节中所述的**作用域**）和令牌过期的字符串表示形式（以 LF 分隔）来计算的 256 sha-1 哈希。
 
 哈希计算方式如以下虚拟代码所示，返回 256 位/32 字节哈希值。
 
@@ -94,7 +94,7 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 资源 URI 是向其声明访问权限的服务总线资源的完整 URI。 例如，`http://<namespace>.servicebus.windows.net/<entityPath>` 或 `sb://<namespace>.servicebus.windows.net/<entityPath>`；即，`http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3`。 
 
-**URI 必须以[百分比编码](https://msdn.microsoft.com/library/4fkewx0t.aspx)。**
+**URI 必须按[百分比编码](https://msdn.microsoft.com/library/4fkewx0t.aspx)。**
 
 用于签名的共享访问授权规则必须在此 URI 指定的实体上，或由其分层父级之一进行配置。 例如，前面的示例中的 `http://contoso.servicebus.windows.net/contosoTopics/T1` 或 `http://contoso.servicebus.windows.net`。
 
@@ -191,7 +191,7 @@ ContentType: application/atom+xml;type=entry;charset=utf-8
 
 开始将数据发送到服务总线之前，发布者必须将 AMQP 消息中的 SAS 令牌发送到正确定义的名为 $cbs**** 的 AMQP 节点（可以将它视为一个由服务使用的“特殊”队列，用于获取和验证所有 SAS 令牌）。 发布者必须在 AMQP 消息中指定 **ReplyTo** 字段；这是服务向发布者回复令牌验证结果（发布者与服务之间的简单请求/回复模式）时所在的节点。 根据 AMQP 1.0 规范中有关“动态创建远程节点”的论述，此回复节点是“在运行中”创建的。 在检查 SAS 令牌有效之后，发布者可以继续将数据发送到服务。
 
-以下步骤演示如何使用[AMQP.NET Lite](https://github.com/Azure/amqpnetlite)库使用 AMQP 协议发送 SAS 令牌。 如果无法使用官方的服务总线 SDK（例如，在 WinRT、.NET Compact Framework、.NET Micro Framework 和 Mono 中）进行 C\# 开发，则这很有用。 当然，此库对于帮助了解基于声明的安全性如何在 AMQP 级别工作非常有用，就如同可以了解它如何在 HTTP 级别工作一样（使用 HTTP POST 请求并在“Authorization”标头内部发送 SAS 令牌）。 如果不需要此类有关 AMQP 的深入知识，可以将官方的服务总线 SDK 用于 .NET Framework 应用程序，该 SDK 会为你执行此操作。
+以下步骤演示如何使用[AMQP.NET Lite](https://github.com/Azure/amqpnetlite)库通过 AMQP 协议发送 SAS 令牌。 如果无法使用官方的服务总线 SDK（例如，在 WinRT、.NET Compact Framework、.NET Micro Framework 和 Mono 中）进行 C\# 开发，则这很有用。 当然，此库对于帮助了解基于声明的安全性如何在 AMQP 级别工作非常有用，就如同可以了解它如何在 HTTP 级别工作一样（使用 HTTP POST 请求并在“Authorization”标头内部发送 SAS 令牌）。 如果不需要此类有关 AMQP 的深入知识，可以将官方的服务总线 SDK 用于 .NET Framework 应用程序，该 SDK 会为你执行此操作。
 
 ### <a name="c35"></a>C&#35;
 
@@ -269,7 +269,7 @@ AMQP 消息包含一组属性，比简单消息包含更多信息。 SAS 令牌�
 | 枚举私有策略 |管理 |任何命名空间地址 |
 | 开始在命名空间上侦听 |侦听 |任何命名空间地址 |
 | 将消息发送到命名空间中的侦听器 |Send |任何命名空间地址 |
-| **队列** | | |
+| **使** | | |
 | 创建队列 |管理 |任何命名空间地址 |
 | 删除队列 |管理 |任何有效队列地址 |
 | 枚举队列 |管理 |/$Resources/Queues |

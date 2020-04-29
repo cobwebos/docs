@@ -3,13 +3,13 @@ title: 如何升级 Azure Dev Spaces 工具
 services: azure-dev-spaces
 ms.date: 07/03/2018
 ms.topic: conceptual
-description: 了解如何升级 Azure 开发人员空间命令行工具、可视化工作室代码扩展和可视化工作室扩展
+description: 了解如何升级 Azure Dev Spaces 命令行工具、Visual Studio Code 扩展和 Visual Studio 扩展
 keywords: Docker, Kubernetes, Azure, AKS, Azure 容器服务, 容器
 ms.openlocfilehash: 748ed4699591a21a5a09da924e093011b0813b46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79265228"
 ---
 # <a name="how-to-upgrade-azure-dev-spaces-tools"></a>如何升级 Azure Dev Spaces 工具

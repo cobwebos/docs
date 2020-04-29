@@ -9,24 +9,24 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 43955950b2fc0544b149c67e3f8df7ca905fafed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79268283"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>监视 Azure 门户中的存储帐户
 
 [Azure 存储分析](storage-analytics.md)提供所有存储服务的指标，以及 Blob、队列和表的日志。 可以使用 [Azure 门户](https://portal.azure.com)来配置要为帐户记录哪些指标和日志，并配置图表来提供指标数据的可视表示形式。 
 
-我们建议您查看[Azure 监视器的存储](../../azure-monitor/insights/storage-insights-overview.md)（预览）。 它是 Azure 监视器的一项功能，通过提供 Azure 存储服务性能、容量和可用性的统一视图，提供 Azure 存储帐户的全面监视。 它不需要您启用或配置任何内容，您可以立即从预定义的交互式图表和包含的其他可视化效果中查看这些指标。
+建议查看存储（预览版） [Azure Monitor](../../azure-monitor/insights/storage-insights-overview.md) 。 它是 Azure Monitor 的一项功能，通过提供 Azure 存储服务性能、容量和可用性的统一视图，提供对 Azure 存储帐户的全面监视。 它不要求你启用或配置任何内容，你可以立即从预定义的交互式图表和包含的其他可视化效果中查看这些度量值。
 
 > [!NOTE]
 > 在 Azure 门户中检查监视数据会产生相关的费用。 有关详细信息，请参阅[存储分析](storage-analytics.md)。
 >
 > Azure 文件目前支持存储分析指标，但尚不支持日志记录。
 >
-> 高级性能阻止 Blob 存储帐户不支持存储分析指标，但它们确实支持日志记录。 您可以通过 REST API 或客户端库以编程方式启用日志记录。 如果要查看具有高级性能 blob 存储帐户的指标，请考虑[在 Azure 监视器 中使用 Azure 存储指标](storage-metrics-in-azure-monitor.md)。
+> 高级性能块 blob 存储帐户不支持存储分析指标，但支持日志记录。 可以通过 REST API 或客户端库以编程方式启用日志记录。 若要查看高级性能 blob blob 存储帐户的指标，请考虑[在 Azure Monitor 中使用 Azure 存储度量值](storage-metrics-in-azure-monitor.md)。
 >
 > 有关使用存储分析及其他工具来识别、诊断和排查 Azure 存储相关问题的深入指导，请参阅[监视、诊断和排查 Microsoft Azure 存储问题](storage-monitoring-diagnosing-troubleshooting.md)。
 >
@@ -88,7 +88,7 @@ ms.locfileid: "79268283"
 
 ### <a name="metrics-resolution"></a>指标解析
 
-您在**诊断**中选择的指标决定了可用于您的帐户的指标的分辨率：
+在**诊断**中选择的指标决定了可用于帐户的指标的解析：
 
 * “聚合”监视提供入口/出口、可用性、延迟和成功百分比等指标。**** 系统将从 Blob、表、文件和队列服务聚合这些指标。
 * “按 API”除了提供服务级别的聚合外，还提供更精细的解析，包括可用于单个存储操作的指标。****
@@ -112,7 +112,7 @@ ms.locfileid: "79268283"
 
 1. 在 [Azure 门户](https://portal.azure.com)中查看仪表板的同时单击“编辑仪表板”。****
 1. 在“磁贴库”中，选择“查找磁贴，依据” > “类型”。************
-1. 选择 **"类型** > **存储帐户**"。
+1. 选择 "**类型** > " "**存储帐户**"。
 1. 在“资源”中，选择要将其指标添加到仪表板的存储帐户。****
 1. 选择**类别** > **监视**。
 1. 将图表磁贴拖放到要显示的指标所在的仪表板中。 针对要在仪表板上显示的所有指标重复上述步骤。 在下图中，为了方便演示，已突出显示“Blob - 请求总数”图表，但可将所有图表放置在仪表板上。
@@ -131,14 +131,14 @@ ms.locfileid: "79268283"
 >
 
 1. 在 [Azure 门户](https://portal.azure.com)中选择“存储帐户”，并单击存储帐户的名称打开存储帐户边栏选项卡。****
-1. 在菜单边栏选项卡的 **"监视（经典）"** 部分中选择**诊断设置（经典**）。
+1. 在菜单边栏选项卡的 "**监视（经典）** " 部分中选择 "**诊断设置（经典）** "。
 
     ![Azure 门户中“监视”下面的诊断菜单项。](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
 
 1. 确保“状态”设置为“打开”，选择要为其启用日志记录的**服务**。********
 
     ![在 Azure 门户中配置日志记录](./media/storage-monitor-storage-account/enable-diagnostics.png)
-1. 单击“保存”。****
+1. 单击 **“保存”** 。
 
 诊断日志保存在存储帐户中名为 *$logs*的 blob 容器中。 可以使用 [Microsoft 存储资源管理器](https://storageexplorer.com)等存储资源管理器，或者使用存储客户端库或 PowerShell 以编程方式来查看日志数据。
 

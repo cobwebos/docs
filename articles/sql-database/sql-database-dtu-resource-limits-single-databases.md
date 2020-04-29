@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
 ms.openlocfilehash: a4c435b4874301fe6fb804085c5b265954cd4f5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79256310"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model"></a>使用 DTU 购买模型的单一数据库的资源限制
@@ -33,7 +33,7 @@ ms.locfileid: "79256310"
 
 ### <a name="basic-service-tier"></a>“基本”服务层级
 
-| **计算大小** | **Basic** |
+| **计算大小** | **基本** |
 | :--- | --: |
 | 最大 DTU 数 | 5 |
 | 包含的存储 (GB) | 2 |
@@ -69,7 +69,7 @@ ms.locfileid: "79256310"
 
 ### <a name="standard-service-tier-continued"></a>“标准”服务层级（续）
 
-| **计算大小** | **S4** | **S6** | **** S7 | **** S9 | **** S12 |
+| **计算大小** | **S4** | **S6** |  S7 |  S9 |  S12 |
 | :--- |---:| ---:|---:|---:|---:|
 | 最大 DTU 数 | 200 | 400 | 800 | 1600 | 3000 |
 | 包含的存储 (GB) | 250 | 250 | 250 | 250 | 250 |
@@ -94,7 +94,7 @@ ms.locfileid: "79256310"
 \* 从 1024 GB 到 4096 GB，以 256 GB 为增量
 
 > [!IMPORTANT]
-> 除中国东部、华北、德国中部、德国东北部、美国中西部、美国 DoD 地区和美国政府中心外，高级级别中目前所有区域都提供超过 1 TB 的存储。 在这些区域，高级层中的最大存储限制为 1 TB。  有关详细信息，请参阅[P11-P15 当前限制](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)。  
+> 高级层中的存储空间超过 1 TB 目前在除：中国东部、中国北部、德国中部、德国北部、美国中部、US DoD 地区和美国政府中心以外的所有地区都可用。 在这些区域，高级层中的最大存储限制为 1 TB。  有关详细信息，请参阅[P11-P15 当前限制](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)。  
 > [!NOTE]
 > 有关 `tempdb` 限制，请参阅 [tempdb 限制](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database)。
 

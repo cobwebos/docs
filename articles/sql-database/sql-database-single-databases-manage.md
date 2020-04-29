@@ -1,5 +1,5 @@
 ---
-title: 创建、管理服务器和单个数据库
+title: 创建、管理服务器和单一数据库
 description: 了解如何创建和管理 SQL 数据库服务器和单一数据库。
 services: sql-database
 ms.service: sql-database
@@ -12,17 +12,17 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 02c4d7ba545282e3654f3889dd8000af33c728c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79268543"
 ---
 # <a name="create-and-manage-sql-database-servers-and-single-databases-in-azure-sql-database"></a>在 Azure SQL 数据库中创建和管理 SQL 数据库服务器和单一数据库
 
 可使用 Azure 门户、PowerShell、Azure CLI、REST API 和 Transact-SQL 创建和管理 SQL 数据库服务器和单一数据库。
 
-## <a name="azure-portal-manage-sql-database-servers-and-single-databases"></a>Azure 门户：管理 SQL 数据库服务器和单个数据库
+## <a name="azure-portal-manage-sql-database-servers-and-single-databases"></a>Azure 门户：管理 SQL 数据库服务器和单一数据库
 
 可以提前创建 Azure SQL 数据库的资源组，也可以在创建服务器本身期间创建。 转到新 SQL 服务器表单的方法有多种，可以通过新建 SQL 服务器，也可以在新建数据库期间。
 
@@ -43,9 +43,9 @@ ms.locfileid: "79268543"
 
 ## <a name="manage-an-existing-sql-database-server"></a>管理现有 SQL 数据库服务器
 
-若要管理现有 SQL 数据库服务器，请使用多种方法转到服务器，如通过特定 SQL 数据库页、“SQL 服务器”**** 页或“所有资源”**** 页。
+若要管理现有 SQL 数据库服务器，请使用多种方法转到服务器，如通过特定 SQL 数据库页、“SQL 服务器”  页或“所有资源”  页。
 
-若要管理现有数据库，请转到“SQL 数据库”**** 页，再单击要管理的数据库。 下面的屏幕截图展示了如何通过数据库的“概述”**** 页开始为数据库设置服务器级防火墙。
+若要管理现有数据库，请转到“SQL 数据库”  页，再单击要管理的数据库。 下面的屏幕截图展示了如何通过数据库的“概述”  页开始为数据库设置服务器级防火墙。
 
    ![服务器防火墙规则](./media/sql-database-get-started-portal/server-firewall-rule.png)
 
@@ -54,7 +54,7 @@ ms.locfileid: "79268543"
 > [!TIP]
 > 有关 Azure 门户快速入门，请参阅[在 Azure 门户中创建 Azure SQL 数据库](sql-database-single-database-get-started.md)。
 
-## <a name="powershell-manage-sql-database-servers-and-single-databases"></a>PowerShell：管理 SQL 数据库服务器和单个数据库
+## <a name="powershell-manage-sql-database-servers-and-single-databases"></a>PowerShell：管理 SQL 数据库服务器和单一数据库
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -65,14 +65,14 @@ ms.locfileid: "79268543"
 > [!TIP]
 > 有关 PowerShell 示例脚本，请参阅[使用 PowerShell 创建 Azure SQL 单一数据库和配置 SQL 数据库服务器防火墙规则](scripts/sql-database-create-and-configure-database-powershell.md)和[使用 PowerShell 监视和缩放 SQL 单一数据库](scripts/sql-database-monitor-and-scale-database-powershell.md)。
 
-| Cmdlet | 描述 |
+| Cmdlet | 说明 |
 | --- | --- |
-|[新-AzSql 数据库](/powershell/module/az.sql/new-azsqldatabase)|创建数据库 |
+|[New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)|创建数据库 |
 |[Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase)|获取一个或多个数据库|
 |[Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase)|设置数据库的属性，或将现有数据库移到弹性池中|
 |[Remove-AzSqlDatabase](/powershell/module/az.sql/remove-azsqldatabase)|删除数据库|
 |[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)|创建资源组|
-|[新-AzSqlServer](/powershell/module/az.sql/new-azsqlserver)|创建服务器|
+|[New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver)|创建服务器|
 |[Get-AzSqlServer](/powershell/module/az.sql/get-azsqlserver)|返回服务器的相关信息|
 |[Set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver)|修改服务器的属性|
 |[Remove-AzSqlServer](/powershell/module/az.sql/remove-azsqlserver)|删除服务器|
@@ -82,7 +82,7 @@ ms.locfileid: "79268543"
 |[Remove-AzSqlServerFirewallRule](/powershell/module/az.sql/remove-azsqlserverfirewallrule)|从服务器中删除防火墙规则。|
 | New-AzSqlServerVirtualNetworkRule | 基于作为虚拟网络服务终结点的子网创建[*虚拟网络规则*](sql-database-vnet-service-endpoint-rule-overview.md)。 |
 
-## <a name="azure-cli-manage-sql-database-servers-and-single-databases"></a>Azure CLI：管理 SQL 数据库服务器和单个数据库
+## <a name="azure-cli-manage-sql-database-servers-and-single-databases"></a>Azure CLI：管理 SQL 数据库服务器和单一数据库
 
 若要使用 [Azure CLI](/cli/azure) 创建并管理 Azure SQL 服务器、数据库和防火墙，请使用以下 [Azure CLI SQL 数据库](/cli/azure/sql/db)命令。 使用 [Cloud Shell](/azure/cloud-shell/overview) 在浏览器中运行 CLI，或者在 macOS、Linux 或 Windows 上[安装](/cli/azure/install-azure-cli)它。 若要创建并管理弹性池，请参阅[弹性池](sql-database-elastic-pool.md)。
 
@@ -90,11 +90,11 @@ ms.locfileid: "79268543"
 > 有关 Azure CLI 快速入门，请参阅[使用 Azure CLI 创建 Azure SQL 单一数据库](sql-database-cli-samples.md)。 有关 Azure CLI 示例脚本，请参阅[使用 CLI 创建 Azure SQL 单一数据库和配置 SQL 数据库防火墙规则](scripts/sql-database-create-and-configure-database-cli.md)和[使用 CLI 监视和缩放 Azure SQL 单一数据库](scripts/sql-database-monitor-and-scale-database-cli.md)。
 >
 
-| Cmdlet | 描述 |
+| Cmdlet | 说明 |
 | --- | --- |
 |[az sql db create](/cli/azure/sql/db#az-sql-db-create) |创建数据库|
 |[az sql db list](/cli/azure/sql/db#az-sql-db-list)|列出某台服务器中的所有数据库和数据仓库，或者列出弹性池中的所有数据库|
-|[az sql db list-editions](/cli/azure/sql/db#az-sql-db-list-editions)|列出可用的服务目标和存储上限|
+|[az sql db list-editions](/cli/azure/sql/db#az-sql-db-list-editions)|列出可用的服务目标和存储限制|
 |[az sql db list-usages](/cli/azure/sql/db#az-sql-db-list-usages)|返回数据库使用情况|
 |[az sql db show](/cli/azure/sql/db#az-sql-db-show)|获取数据库或数据仓库|
 |[az sql db update](/cli/azure/sql/db#az-sql-db-update)|更新数据库|
@@ -110,9 +110,9 @@ ms.locfileid: "79268543"
 |[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|列出服务器上的防火墙规则|
 |[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-show)|显示防火墙规则的详细信息|
 |[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|更新防火墙规则|
-|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|删除防火墙规则|
+|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|删除防火墙规则。|
 
-## <a name="transact-sql-manage-sql-database-servers-and-single-databases"></a>交易-SQL：管理 SQL 数据库服务器和单个数据库
+## <a name="transact-sql-manage-sql-database-servers-and-single-databases"></a>Transact-SQL：管理 SQL 数据库服务器和单一数据库
 
 若要使用 Transact-SQL 创建并管理 Azure SQL 服务器、数据库和防火墙，请运行以下 T-SQL 命令。 可以使用 Azure 门户、[SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio)、[Visual Studio Code](https://code.visualstudio.com/docs) 或可以连接到 Azure SQL 数据库服务器并传递 Transact-SQL 命令的其他任何程序来发出这些命令。 若要管理弹性池，请参阅[弹性池](sql-database-elastic-pool.md)。
 
@@ -121,28 +121,28 @@ ms.locfileid: "79268543"
 > [!IMPORTANT]
 > 无法使用 Transact-SQL 创建或删除服务器。
 
-| 命令 | 描述 |
+| 命令 | 说明 |
 | --- | --- |
-|[创建数据库](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)|新建单一数据库。 您必须连接到 master 数据库才能创建新的数据库。|
+|[CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)|新建单一数据库。 必须连接到 master 数据库才能新建数据库。|
 | [ALTER DATABASE（Azure SQL 数据库）](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |修改 Azure SQL 数据库。 |
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|删除数据库。|
-|[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|返回 Azure SQL 数据库或 Azure SQL 数据仓库的版本（服务层级）、服务目标（定价层）和弹性池名称（若有）。 如果已登录到 Azure SQL 数据库服务器中的 master 数据库，则会返回所有数据库的相关信息。 对于 Azure SQL 数据仓库，必须连接到 master 数据库。|
-|[sys.dm_db_resource_stats（Azure SQL 数据库）](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| 返回 Azure SQL 数据库中数据库的 CPU、IO 和内存消耗量。 每隔 15 秒会显示一行，即使该数据库中没有任何活动也是如此。|
-|[sys.resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|返回 Azure SQL 数据库的 CPU 使用率和存储数据。 在五分钟的间隔内收集和聚合数据。|
-|[sys.database_connection_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|包含 SQL 数据库的数据库连接事件的统计信息，并提供数据库连接成功和失败的概述。 |
-|[sys.event_log (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|返回成功的 Azure SQL 数据库的数据库连接数、连接失败数和死锁数。 可以使用此信息跟踪或排查 SQL 数据库的数据库活动。|
-|[sp_set_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database)|创建或更新 SQL 数据库服务器的服务器级防火墙设置。 此存储过程只在 master 数据库中适用于服务器级主体登录名。 只有在拥有 Azure 级权限的用户创建首个服务器级防火墙规则后，才能使用 Transact-SQL 创建服务器级防火墙规则|
-|[sys.firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database)|返回与 Microsoft Azure SQL 数据库关联的服务器级防火墙设置的相关信息。|
-|[sp_delete_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-firewall-rule-azure-sql-database)|从 SQL 数据库服务器中删除服务器级防火墙设置。 此存储过程只在 master 数据库中适用于服务器级主体登录名。|
-|[sp_set_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)|创建或更新 Azure SQL 数据库或 SQL 数据仓库的数据库级防火墙规则。 可以为 master 数据库以及 SQL 数据库上的用户数据库配置数据库防火墙规则。 使用包含的数据库用户时，数据库防火墙规则非常有用。 |
-|[sys.database_firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|返回与 Microsoft Azure SQL 数据库关联的数据库级防火墙设置的相关信息。 |
-|[sp_delete_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|从 Azure SQL 数据库或 SQL 数据仓库中删除数据库级防火墙规则设置。 |
+|[sys.database_service_objectives（Azure SQL 数据库）](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|返回 Azure SQL 数据库或 Azure SQL 数据仓库的版本（服务层级）、服务目标（定价层）和弹性池名称（若有）。 如果已登录到 Azure SQL 数据库服务器中的 master 数据库，则会返回所有数据库的相关信息。 对于 Azure SQL 数据仓库，必须连接到 master 数据库。|
+|[sys.dm_db_resource_stats（Azure SQL 数据库）](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| 返回 Azure SQL 数据库中数据库的 CPU、IO 和内存消耗量。 即使数据库中没有活动，也会每隔 15 秒返回一行数据。|
+|[sys.resource_stats（Azure SQL 数据库）](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|返回 Azure SQL 数据库的 CPU 使用率和存储数据。 在五分钟间隔内收集并聚合数据。|
+|[sys.database_connection_stats（Azure SQL 数据库）](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|包含“SQL 数据库”数据库连接事件的统计信息，提供数据库连接成功和失败状态的概述。 |
+|[sys.event_log（Azure SQL 数据库）](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|返回成功的“Azure SQL 数据库”数据库连接数、连接失败次数和死锁数。 可以使用此信息跟踪 SQL 数据库的数据库活动并排查其问题。|
+|[sp_set_firewall_rule（Azure SQL 数据库）](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database)|创建或更新 SQL 数据库服务器的服务器级防火墙设置。 此存储过程仅在服务器级别主体登录名的 master 数据库中可用。 只有在拥有 Azure 级权限的用户创建首个服务器级防火墙规则后，才能使用 Transact-SQL 创建服务器级防火墙规则|
+|[sys.firewall_rules（Azure SQL 数据库）](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database)|返回与 Microsoft Azure SQL 数据库关联的服务器级防火墙设置的相关信息。|
+|[sp_delete_firewall_rule（Azure SQL 数据库）](/sql/relational-databases/system-stored-procedures/sp-delete-firewall-rule-azure-sql-database)|从 SQL 数据库服务器中删除服务器级防火墙设置。 此存储过程仅在服务器级别主体登录名的 master 数据库中可用。|
+|[sp_set_database_firewall_rule（Azure SQL 数据库）](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)|创建或更新 Azure SQL 数据库或 SQL 数据仓库的数据库级防火墙规则。 可以为 master 数据库以及 SQL 数据库上的用户数据库配置数据库防火墙规则。 使用包含的数据库用户时，数据库防火墙规则非常有用。 |
+|[sys.database_firewall_rules（Azure SQL 数据库）](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|返回与 Microsoft Azure SQL 数据库关联的数据库级防火墙设置的相关信息。 |
+|[sp_delete_database_firewall_rule（Azure SQL 数据库）](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|从 Azure SQL 数据库或 SQL 数据仓库中删除数据库级防火墙规则设置。 |
 
-## <a name="rest-api-manage-sql-database-servers-and-single-databases"></a>REST API：管理 SQL 数据库服务器和单个数据库
+## <a name="rest-api-manage-sql-database-servers-and-single-databases"></a>REST API：管理 SQL 数据库服务器和单一数据库
 
 若要创建并管理 Azure SQL 服务器、数据库和防火墙，请使用以下 REST API 请求。
 
-| 命令 | 描述 |
+| 命令 | 说明 |
 | --- | --- |
 |[服务器 - 创建或更新](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|创建或更新新服务器。|
 |[Servers - Delete](https://docs.microsoft.com/rest/api/sql/servers/delete)|删除 SQL Server。|
@@ -164,4 +164,4 @@ ms.locfileid: "79268543"
 ## <a name="next-steps"></a>后续步骤
 
 - 若要详细了解如何将 SQL Server 数据库迁移到 Azure，请参阅[迁移到 Azure SQL 数据库](sql-database-single-database-migrate.md)。
-- 有关支持的功能的信息，请参阅[功能](sql-database-features.md)。
+- 有关受支持功能的信息，请参阅[功能](sql-database-features.md)。

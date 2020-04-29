@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 6097dba9193fce4c8158137b488080107881994a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260067"
 ---
 # <a name="azure-data-box-heavy-system-requirements"></a>Azure Data Box Heavy 系统要求
@@ -54,7 +54,7 @@ ms.locfileid: "79260067"
 
 ### <a name="port-requirements"></a>端口要求
 
-下表列出了需要在防火墙中打开以允许 SMB 或 NFS 流量的端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 “传出”或“出站”表示 Data Box Heavy 设备从外部（超出部署范围）发送数据的方向：例如，向 Internet 发送出站数据。****
+下表列出了需要在防火墙中打开以允许 SMB 或 NFS 流量的端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 “传出”或“出站”表示 Data Box Heavy 设备从外部（超出部署范围）发送数据的方向：例如，向 Internet 发送出站数据。  
 
 [!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 

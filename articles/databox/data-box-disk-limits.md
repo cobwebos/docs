@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
 ms.openlocfilehash: 1bb8300f1e54cf03563704cf00549ce9e09a3916
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260158"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box 磁盘限制
@@ -37,7 +37,7 @@ ms.locfileid: "79260158"
 
 - [命名和引用容器](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
 - [命名和引用共享](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
-- [阻止 Blob 和页面 blob 约定](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
+- [块 blob 和页 blob 约定](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
 
 > [!IMPORTANT]
 > 如果有任何文件或目录超出了 Azure 存储服务限制，或者不符合 Azure 文件/Blob 命名约定，则这些文件或目录不会通过 Data Box 服务引入到 Azure 存储中。
@@ -50,7 +50,7 @@ ms.locfileid: "79260158"
 - 写入到 *BlockBlob* 和 *PageBlob* 共享中的每个文件将分别上传为块 blob 和页 blob。
 - 在 *BlockBlob* 和 *PageBlob* 文件夹下创建的任何空目录层次结构（没有任何文件）都不会上传。
 - 如果将数据上传到 Azure 时发生任何错误，则会在目标存储帐户中创建一个错误日志。 当上传完成时，可以在门户中找到此错误日志的路径，你可以查看此日志来采取纠正措施。 在验证上传的数据之前，不要删除源中的数据。
-- 将数据上传到 Azure 文件存储时，不会保留文件元数据和 NTFS 权限。 例如，复制数据时，不会保留文件的 *"上次修改*"属性。
+- 将数据上传到 Azure 文件存储时，不会保留文件元数据和 NTFS 权限。 例如，复制数据时，不会保留文件的“上次修改时间”属性  。
 - 如果在订单中指定了托管磁盘，请查看以下其他注意事项：
 
     - 在所有预先创建的文件夹和所有 Data Box Disk 中，一个资源组只能包含一个具有给定名称的托管磁盘。 这意味着，上传到预先创建的文件夹的 VHD 应具有唯一的名称。 确保给定的名称与资源组中现有的托管磁盘不匹配。 如果 VHD 具有相同的名称，则只有一个 VHD 将转换为具有该名称的托管磁盘。 其他 VHD 作为页 blob 上传到临时存储帐户。

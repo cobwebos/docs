@@ -16,10 +16,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9d3f4f4ab6cc1c928761fce740d39f3f73426e62
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79267529"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>部署 StorSimple 虚拟阵列 - 在 Hyper-V 中预配
@@ -88,7 +88,7 @@ ms.locfileid: "79267529"
 
 #### <a name="to-provision-a-virtual-array"></a>预配虚拟阵列
 1. 在 Windows Server 主机上，将虚拟阵列映像复制到本地驱动器。 通过 Azure 门户已下载该映像（VHD 或 VHDX）。 记下复制映像的位置，因为在以后的过程中将使用此映像。
-2. 打开**服务器管理器**。 单击右上角的“工具”，并选择“Hyper-V 管理器”。********
+2. 打开 **“服务器管理器”** 。 单击右上角的“工具”，并选择“Hyper-V 管理器”。********
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image1.png)  
 
@@ -97,7 +97,7 @@ ms.locfileid: "79267529"
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image2.png)
 4. 在新建虚拟机向导的“准备工作”页上，单击“下一步”。********
-5. 在“指定名称和位置”页上，提供虚拟阵列的“名称”。******** 单击“下一步”****。
+5. 在“指定名称和位置”页上，提供虚拟阵列的“名称”。******** 单击“下一步”。 
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image4.png)
 6. 在“指定代数”页上选择设备映像类型，并单击“下一步”。******** 如果使用的是 Windows Server 2008 R2，则不显示此页。
@@ -121,7 +121,7 @@ ms.locfileid: "79267529"
 11. 满足最低要求需 4 个核心。 若要添加 4 个虚拟处理器，请在“Hyper-V 管理器”**** 窗口中选择主机系统。 在“虚拟机”**** 列表下的右窗格中，找到刚创建的虚拟机。 选择计算机名称，右键单击该名称后选择“设置”。****
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image10.png)
-12. 在“设置”页的左窗格中，单击“处理器”。******** 在右窗格中，将“虚拟处理器数目”设置为 4（或 4 以上）。**** 单击 **“应用”**。
+12. 在“设置”页的左窗格中，单击“处理器”。******** 在右窗格中，将“虚拟处理器数目”设置为 4（或 4 以上）。**** 单击“应用”  。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image11.png)
 13. 若要满足最低要求，还需添加 500 GB 的虚拟数据磁盘。 在“设置”页中：****
@@ -134,16 +134,16 @@ ms.locfileid: "79267529"
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image13.png)
 15. 在新建虚拟硬盘向导的“准备工作”页上，单击“下一步”。********
-16. 在“选择磁盘格式”页上，接受默认选项：“VHDX”格式。******** 单击“下一步”****。 如果运行的是 Windows Server 2008 R2，则不会显示此屏幕。
+16. 在“选择磁盘格式”页上，接受默认选项：“VHDX”格式。******** 单击“下一步”。  如果运行的是 Windows Server 2008 R2，则不会显示此屏幕。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image15.png)
-17. 在“选择磁盘类型”页上，将虚拟硬盘类型设置为“动态扩展”（推荐）。******** 也可以选择“固定大小”磁盘，但可能需等待很长时间。**** 建议不要使用“差异”选项。**** 单击“下一步”****。 在 Windows Server 2012 R2 和 Windows Server 2012 中，“动态扩展”**** 是默认选项，而在 Windows Server 2008 R2 中，默认值是“固定大小”****。
+17. 在“选择磁盘类型”页上，将虚拟硬盘类型设置为“动态扩展”（推荐）。******** 也可以选择“固定大小”磁盘，但可能需等待很长时间。**** 建议不要使用“差异”选项。**** 单击“下一步”。  在 Windows Server 2012 R2 和 Windows Server 2012 中，“动态扩展”**** 是默认选项，而在 Windows Server 2008 R2 中，默认值是“固定大小”****。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image16.png)
-18. 在“指定名称和位置”页上，提供数据磁盘的“名称”和“位置”（可以通过浏览选择一个）。************ 单击“下一步”****。
+18. 在“指定名称和位置”页上，提供数据磁盘的“名称”和“位置”（可以通过浏览选择一个）。************ 单击“下一步”。 
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image17.png)
-19. 在“配置磁盘”页上，选择“新建空白虚拟硬盘”选项，将大小指定为“500 GB”（或 500 GB 以上）。************ 500 GB 为最低要求，可以预配更大的磁盘。 请注意，不能扩展或压缩已预配的磁盘。 有关要预配的磁盘大小的详细信息，请查看[最佳实践文档中](storsimple-ova-best-practices.md)的大小调整部分。 单击“下一步”****。
+19. 在“配置磁盘”页上，选择“新建空白虚拟硬盘”选项，将大小指定为“500 GB”（或 500 GB 以上）。************ 500 GB 为最低要求，可以预配更大的磁盘。 请注意，不能扩展或压缩已预配的磁盘。 有关要预配的磁盘的大小的详细信息，请查看[最佳实践文档](storsimple-ova-best-practices.md)中的 "调整大小" 部分。 单击“下一步”。 
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image18.png)
 20. 在“摘要”页上查看虚拟数据磁盘的详细信息，如果一切符合要求，则请单击“完成”创建该磁盘。******** 此时会关闭向导并向虚拟机添加虚拟硬盘。
@@ -214,7 +214,7 @@ ms.locfileid: "79267529"
 
 若在使用本地 Web UI 进行初始配置期间遇到其他错误，请参阅以下工作流：
 
-* 运行诊断测试以[排除 Web UI 设置故障](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors)。
+* 运行诊断测试以对[WEB UI 设置进行故障排除](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors)。
 * [生成日志包并查看日志文件](storsimple-ova-web-ui-admin.md#generate-a-log-package)。
 
 ## <a name="next-steps"></a>后续步骤

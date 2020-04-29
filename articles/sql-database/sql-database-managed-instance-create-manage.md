@@ -1,5 +1,5 @@
 ---
-title: 托管实例的管理 API 引用
+title: 托管实例的管理 API 参考
 description: 了解如何创建和管理 Azure SQL 数据库托管实例。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 713217a933c646cc4d04759f5697bbc0312827ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79268855"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Azure SQL 数据库托管实例的托管 API 引用
@@ -35,9 +35,9 @@ ms.locfileid: "79268855"
 若要使用 Azure PowerShell 创建并管理托管实例，请使用以下 PowerShell cmdlet。 如果需要安装或升级 PowerShell，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
 
 > [!TIP]
-> 有关 PowerShell 示例脚本，请参阅[快速入门脚本：使用 PowerShell 库创建 Azure SQL 托管实例](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../quick-start-script-create-azure-sql-managed-instance-using-powershell/)。
+> 有关 PowerShell 示例脚本，请参阅[快速启动脚本：使用 PowerShell 库创建 Azure SQL 托管实例](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../quick-start-script-create-azure-sql-managed-instance-using-powershell/)。
 
-| Cmdlet | 描述 |
+| Cmdlet | 说明 |
 | --- | --- |
 |[New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)|创建 Azure SQL 数据库托管实例 |
 |[Get-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstance)|退回有关 Azure SQL 数据库托管实例的详细信息|
@@ -55,7 +55,7 @@ ms.locfileid: "79268855"
 > [!TIP]
 > 有关 Azure CLI 快速入门，请参阅[使用 Azure CLI 处理 SQL 托管实例](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)。
 
-| Cmdlet | 描述 |
+| Cmdlet | 说明 |
 | --- | --- |
 |[az sql mi create](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) |创建托管实例|
 |[az sql mi list](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-list)|列出可用的托管实例|
@@ -67,25 +67,25 @@ ms.locfileid: "79268855"
 |[az sql midb restore](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-restore)|还原托管数据库|
 |[az sql midb delete](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-delete)|删除托管数据库|
 
-## <a name="transact-sql-create-and-manage-instance-databases"></a>交易-SQL：创建和管理实例数据库
+## <a name="transact-sql-create-and-manage-instance-databases"></a>Transact-SQL：创建并管理实例数据库
 
 要在创建托管实例后创建和管理实例数据库，请使用以下 T-SQL 命令。 可以使用 Azure 门户、[SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio) 和 [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) 来发出这些命令。 [Visual Studio Code](https://code.visualstudio.com/docs) 或可以连接到 Azure SQL 数据库服务器，传递 Transact-SQL 命令的任何其他程序。
 
 > [!TIP]
-> 有关必须使用 Microsoft Windows 上的 SQL 服务器管理工作室配置和连接到托管实例的快速入门，请参阅[快速入门：配置 Azure VM 以连接到 Azure SQL 数据库托管实例](sql-database-managed-instance-configure-vm.md)和[快速入门：从本地配置到 Azure SQL 数据库托管实例的点到站点连接](sql-database-managed-instance-configure-p2s.md)。
+> 有关介绍必须使用 Microsoft Windows 上的 SQL Server Management Studio 配置和连接到托管实例的快速入门，请参阅[快速入门：配置 Azure VM 以连接到 Azure SQL 数据库托管实例](sql-database-managed-instance-configure-vm.md)和[快速入门：配置从本地到 Azure SQL 数据库托管实例的点到站点连接](sql-database-managed-instance-configure-p2s.md)。
 > [!IMPORTANT]
 > 无法使用 Transact-SQL 创建或删除托管实例。
 
-| 命令 | 描述 |
+| 命令 | 说明 |
 | --- | --- |
-|[创建数据库](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current)|创建新的托管实例数据库。 您必须连接到 master 数据库才能创建新的数据库。|
-| [更改数据库](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) |修改 Azure SQL 托管实例数据库。|
+|[CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current)|创建新的托管实例数据库。 必须连接到 master 数据库才能新建数据库。|
+| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) |修改 Azure SQL 托管实例数据库。|
 
 ## <a name="rest-api-create-and-manage-managed-instances"></a>REST API：创建和管理托管实例
 
 要创建并管理托管实例，请使用以下 REST API 请求。
 
-| 命令 | 描述 |
+| 命令 | 说明 |
 | --- | --- |
 |[托管实例 - 创建或更新](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)|创建或更新托管实例。|
 |[托管实例 - 删除](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)|删除托管实例。|
@@ -97,4 +97,4 @@ ms.locfileid: "79268855"
 ## <a name="next-steps"></a>后续步骤
 
 - 若要详细了解如何将 SQL Server 数据库迁移到 Azure，请参阅[迁移到 Azure SQL 数据库](sql-database-single-database-migrate.md)。
-- 有关支持的功能的信息，请参阅[功能](sql-database-features.md)。
+- 有关受支持功能的信息，请参阅[功能](sql-database-features.md)。

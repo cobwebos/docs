@@ -4,24 +4,24 @@ description: 准备好在故障转移后使用 Azure Site Recovery 故障回复 
 ms.topic: conceptual
 ms.date: 12/24/2019
 ms.openlocfilehash: 5a330f8cba31640d0116ca3d5ccab352ce5b3509
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79257181"
 ---
 # <a name="prepare-for-reprotection-and-failback-of-vmware-vms"></a>为 VMware VM 的重新保护和故障回复做好准备
 
 将本地 VMware VM 或物理服务器[故障转移](site-recovery-failover.md)到 Azure 后，可以重新保护故障转移后创建的 Azure VM，以便将其复制回到本地站点。 启用从 Azure 到本地的复制后，可以在准备就绪时通过运行从 Azure 到本地的故障转移来进行故障回复。
 
-在继续之前，请快速浏览此视频，了解如何从 Azure 故障回本地站点。<br /><br />
+继续之前，请先了解此视频，了解如何从 Azure 故障回复到本地站点。<br /><br />
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/VMware-to-Azure-with-ASR-Video5-Failback-from-Azure-to-On-premises/player]
 
 ## <a name="reprotectionfailback-components"></a>重新保护/故障回复组件
 
 在重新保护并从 Azure 故障回复之前，需要准备好多个组件和设置。
 
-**组件**| **详细信息**
+组件 | **详细信息**
 --- | ---
 **本地配置服务器** | 本地配置服务器必须正在运行且已连接到 Azure。<br/><br/> 要故障回复到的 VM 必须在配置服务器数据库中存在。 如果灾难影响了配置服务器，请使用相同的 IP 地址还原该服务器，以确保故障回复正常工作。<br/><br/>  如果故障转移时保留了复制的计算机的 IP 地址，则应在 Azure VM 计算机与配置服务器的故障回复 NIC 之间建立站点到站点连接（或 ExpressRoute 连接）。 对于保留的 IP 地址，配置服务器需要两个 NIC - 一个用于源计算机连接，另一个用于 Azure 故障回复连接。 这可以避免源 VM 与故障转移的 VM 的子网地址范围重叠。
 **Azure 中的进程服务器** | 在故障回复到本地站点之前，需在 Azure 中部署一个进程服务器。<br/><br/> 进程服务器从受保护的 Azure VM 接收数据，并将其发送到本地站点。<br/><br/> 需在进程服务器与受保护 VM 之间使用低延迟网络，因此，我们建议在 Azure 中部署进程服务器以提高复制性能。<br/><br/> 如需概念证明，可将本地进程服务器与 ExpressRoute 一起用于专用对等互连。<br/><br/> 进程服务器应位于故障转移的 VM 所在的 Azure 网络中。 进程服务器还必须能够与本地配置服务器和主目标服务器通信。
@@ -39,7 +39,7 @@ ms.locfileid: "79257181"
 
 ## <a name="deploy-a-process-server-in-azure"></a>在 Azure 中部署进程服务器
 
-1. 在 Azure 中[设置进程服务器](vmware-azure-set-up-process-server-azure.md)以进行故障倒机。
+1. 在 Azure 中[设置进程服务器](vmware-azure-set-up-process-server-azure.md)进行故障回复。
 2. 确保 Azure VM 可以访问进程服务器。 
 3. 确保站点到站点 VPN 连接或 ExpressRoute 专用对等网络提供足够的带宽，可将数据从进程服务器发送到本地站点。
 
@@ -72,4 +72,4 @@ ms.locfileid: "79257181"
 
 ## <a name="next-steps"></a>后续步骤
 
-[重新保护](vmware-azure-reprotect.md)VM。
+[Reprotect](vmware-azure-reprotect.md)重新保护 VM。

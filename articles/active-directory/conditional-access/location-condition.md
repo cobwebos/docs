@@ -13,15 +13,15 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 915675af1e646f2cb77e36c0018ed372ff9496fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79263226"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的位置条件是什么？ 
 
-使用[Azure 活动目录 （Azure AD） 条件访问](../active-directory-conditional-access-azure-portal.md)，可以控制授权用户可以如何访问云应用。 使用条件访问策略的位置条件可将访问控制设置绑定到用户的网络位置。
+使用 [Azure Active Directory (Azure AD) 条件访问](../active-directory-conditional-access-azure-portal.md)，可以控制授权用户访问云应用的方式。 使用条件访问策略的位置条件可将访问控制设置绑定到用户的网络位置。
 
 本文提供配置位置条件所需的信息。
 
@@ -38,7 +38,7 @@ Azure AD 允许从公共 Internet 上的任何位置单一登录到设备、应�
 
 使用命名位置可以创建 IP 地址范围或者国家和地区的逻辑分组。
 
-您可以在"条件访问 **"页的"管理**"部分中访问命名位置。
+可在条件访问页的“管理”部分中访问命名位置  。
 
 ![条件访问中的命名位置](./media/location-condition/02.png)
 
@@ -52,7 +52,7 @@ Azure AD 允许从公共 Internet 上的任何位置单一登录到设备、应�
    > [!NOTE]
    > IPv6 地址范围目前无法包含在命名位置中。 这意味着无法从“条件访问”策略中排除 IPv6 范围。
 
-- **标记为可信位置** - 可为命名位置设置标志，以指示它是可信的位置。 通常，可信位置是由 IT 部门控制的网络区域。 除了条件访问之外，Azure 标识保护和 Azure AD 安全报告还使用受信任的命名位置来减少[误报](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1)。
+- **标记为可信位置** - 可为命名位置设置标志，以指示它是可信的位置。 通常，可信位置是由 IT 部门控制的网络区域。 除了条件性访问以外，Azure Identity Protection 还会使用受信任的命名位置，并 Azure AD 安全报告来减少[误报](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1)。
 - **国家/地区** - 使用此选项可以选择一个或多个国家或地区，以定义命名位置。
 - **包含未知区域** - 某些 IP 地址未映射到特定的国家或地区。 使用此选项可以选择这些 IP 地址是否应包含在命名位置中。 如果使用命名位置的策略需要应用到未知位置，则使用此设置。
 
@@ -70,13 +70,13 @@ Azure AD 允许从公共 Internet 上的任何位置单一登录到设备、应�
 
 ## <a name="trusted-ips"></a>受信任的 IP
 
-还可以在[多重身份验证服务设置](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx)中配置 IP 地址范围，用于表示组织的本地 Intranet。 使用此功能最多可以配置 50 个 IP 地址范围。 IP 地址范围采用 CIDR 格式。 有关详细信息，请参阅受信任的[IP](../authentication/howto-mfa-mfasettings.md#trusted-ips)。  
+还可以在[多重身份验证服务设置](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx)中配置 IP 地址范围，用于表示组织的本地 Intranet。 使用此功能最多可以配置 50 个 IP 地址范围。 IP 地址范围采用 CIDR 格式。 有关详细信息，请参阅[受信任的 ip](../authentication/howto-mfa-mfasettings.md#trusted-ips)。  
 
-如果配置了受信任的 IP，则它们在位置条件的位置列表中显示为**MFA 受信任的 IPS。**
+如果已配置受信任的 Ip，它们会在位置条件的位置列表中显示为 " **MFA 受信任的 ip** "。
 
 ### <a name="skipping-multi-factor-authentication"></a>跳过多重身份验证
 
-在多重身份验证服务设置页中，可以通过选择“跳过多重身份验证以适用于我的 Intranet 上的联合用户发出的请求”，来标识企业 Intranet 用户。**** 此设置指示 AD FS 颁发的内部企业网络声明应受信任，并且应该用于将用户标识为位于企业网络中。 有关详细信息，请参阅[使用条件访问启用受信任的 IP 功能](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access)。
+在多重身份验证服务设置页中，可以通过选择“跳过多重身份验证以适用于我的 Intranet 上的联合用户发出的请求”，来标识企业 Intranet 用户。**** 此设置指示 AD FS 颁发的内部企业网络声明应受信任，并且应该用于将用户标识为位于企业网络中。 有关详细信息，请参阅[使用条件访问启用受信任的 ip 功能](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access)。
 
 选中此选项之后，“MFA 受信任的 IP”（包括命名位置）将应用到已选择此选项的所有策略。****
 
@@ -112,7 +112,7 @@ Azure AD 允许从公共 Internet 上的任何位置单一登录到设备、应�
 
 使用此选项可以选择一个或多个命名位置。 对于要应用此设置的策略，用户需要从任一选定位置建立连接。 单击“选择”时，将会打开显示命名网络列表的命名网络选择控件。**** 此列表还显示网络位置是否已标记为可信。 名为“MFA 受信任的 IP”的命名位置用于包含可在多重身份验证服务设置页中配置的 IP 设置。****
 
-## <a name="what-you-should-know"></a>要点
+## <a name="what-you-should-know"></a>应了解的内容
 
 ### <a name="when-is-a-location-evaluated"></a>何时评估位置？
 
@@ -149,4 +149,4 @@ API 和 PowerShell 尚不支持命名位置或条件访问策略。
 ## <a name="next-steps"></a>后续步骤
 
 - 若要了解如何配置条件访问策略，请参阅[通过 Azure Active Directory 条件访问要求特定应用必须使用 MFA](app-based-mfa.md)。
-- 如果已准备好为环境配置条件访问策略，请参阅[Azure 活动目录中的条件访问最佳做法](best-practices.md)。
+- 如果已准备好为环境配置条件访问策略，请参阅[Azure Active Directory 中条件性访问的最佳做法](best-practices.md)。

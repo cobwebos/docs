@@ -1,5 +1,5 @@
 ---
-title: 数据处理和用户定义的功能 - Azure 数字双子星*微软文档
+title: 数据处理和用户定义的函数-Azure 数字孪生 |Microsoft Docs
 description: 概述 Azure 数字孪生中的数据处理、匹配程序和用户定义的函数。
 ms.author: alinast
 author: alinamstanciu
@@ -9,10 +9,10 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
 ms.openlocfilehash: 75ed2029582438ede43687addfd54c0a187e0120
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79265176"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>数据处理和用户定义的函数
@@ -21,7 +21,7 @@ Azure 数字孪生提供高级计算功能。 开发人员可以针对传入的�
 
 ## <a name="data-processing-flow"></a>数据处理流
 
-在设备向 Azure 数字孪生发送遥测数据后，开发人员可以分四个阶段处理数据：*验证*、*匹配*、*计算*和*调度*。
+设备将遥测数据发送到 Azure 数字孪生后，开发人员可以通过四个阶段来处理数据：*验证*、*匹配*、*计算*和*调度*。
 
 [![Azure 数字孪生数据处理流](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
 
@@ -32,7 +32,7 @@ Azure 数字孪生提供高级计算功能。 开发人员可以针对传入的�
 
 ## <a name="data-processing-objects"></a>数据处理对象
 
-Azure 数字孪生中的数据处理包括定义三个对象：*匹配器*、*用户定义的函数*和*角色分配*。
+Azure 数字孪生中的数据处理包括定义三个对象：*匹配程序*、*用户定义函数*和*角色分配*。
 
 [![Azure 数字孪生数据处理对象](media/concepts/digital-twins-user-defined-functions.png)](media/concepts/digital-twins-user-defined-functions.png#lightbox)
 
@@ -44,7 +44,7 @@ Azure 数字孪生中的数据处理包括定义三个对象：*匹配器*、*�
 - 其端口中包含 `01`
 - 属于扩展属性键 **Manufacturer** 设置为转义字符串值 `\"Contoso\"` 的设备
 - 属于转义字符串 `\"Venue\"` 指定的类型的空间
-- 这些是父**SpaceId**的后代`DE8F06CA-1138-4AD7-89F4-F782CC6F69FD`
+- 父**SpaceId**的后代`DE8F06CA-1138-4AD7-89F4-F782CC6F69FD`
 
 ```JSON
 {
@@ -104,7 +104,7 @@ Azure 数字孪生中的数据处理包括定义三个对象：*匹配器*、*�
 - 在传入的传感器读数满足特定条件时创建通知。
 - 在发出通知之前将图形元数据附加到传感器读数。
 
-有关详细信息，请阅读[如何使用用户定义的函数](./how-to-user-defined-functions.md)。
+有关详细信息，请参阅[如何使用用户定义的函数](./how-to-user-defined-functions.md)。
 
 #### <a name="examples"></a>示例
 
@@ -114,7 +114,7 @@ Azure 数字孪生中的数据处理包括定义三个对象：*匹配器*、*�
 
 ### <a name="role-assignment"></a>角色分配
 
-用户定义的函数的操作受 Azure 数字孪生[基于角色的访问控制](./security-role-based-access-control.md)的约束，以保护服务中的数据。 角色分配定义哪些用户定义的函数具有与空间图形及其实体交互的适当权限。 例如，用户定义的函数可能具有在给定空间创建、读取、更新或删除图形数据的功能和权限。******** 当用户定义的函数向图形请求数据或尝试执行操作时，系统会检查用户定义的函数的访问级别。 有关详细信息，请阅读[基于角色的访问控制](./security-create-manage-role-assignments.md)。
+用户定义的函数的操作受 Azure 数字孪生[基于角色的访问控制](./security-role-based-access-control.md)的约束，以保护服务中的数据。 角色分配定义哪些用户定义的函数具有与空间图形及其实体交互的适当权限。 例如，用户定义的函数可能具有在给定空间创建、读取、更新或删除图形数据的功能和权限。******** 当用户定义的函数向图形请求数据或尝试执行操作时，系统会检查用户定义的函数的访问级别。 有关详细信息，请参阅[基于角色的访问控制](./security-create-manage-role-assignments.md)。
 
 匹配程序有可能触发没有角色分配的用户定义的函数。 在这种情况下，用户定义的函数无法从图形中读取任何数据。
 
