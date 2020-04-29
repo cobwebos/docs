@@ -4,22 +4,22 @@ description: 介绍如何通过 Azure 资源管理器模板在管理组范围部
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.openlocfilehash: 863d1330412fa238b820eb0f1f05351fc723de6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79460307"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>在管理组级别创建资源
 
-随着组织的成熟，您可能需要为管理组定义和分配[策略](../../governance/policy/overview.md)或[基于角色的访问控制](../../role-based-access-control/overview.md)。 使用管理组级别模板，您可以声明性地应用策略并在管理组级别分配角色。
+随着组织的成熟，你能需要为管理组定义和分配[策略](../../governance/policy/overview.md)或[基于角色的访问控制](../../role-based-access-control/overview.md)。 使用管理组级别的模板，可以声明方式在管理组级别应用策略和分配角色。
 
 ## <a name="supported-resources"></a>支持的资源
 
 可以在管理组级别部署以下资源类型：
 
-* [部署](/azure/templates/microsoft.resources/deployments)- 用于部署到订阅或资源组的嵌套模板。
-* [策略分配](/azure/templates/microsoft.authorization/policyassignments)
+* [部署](/azure/templates/microsoft.resources/deployments)-适用于部署到订阅或资源组的嵌套模板。
+* [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
@@ -35,7 +35,7 @@ ms.locfileid: "79460307"
 https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#
 ```
 
-对于所有部署作用域，参数文件的架构都相同。 对于参数文件，请使用：
+对于所有部署范围，参数文件的架构都相同。 对于参数文件，请使用：
 
 ```json
 https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
@@ -45,7 +45,7 @@ https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json
 
 管理组部署的命令与资源组部署的命令不同。
 
-对于 Azure CLI，使用[az 部署 mg 创建](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-create)：
+对于 Azure CLI，请使用[az deployment mg create](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-create)：
 
 ```azurecli-interactive
 az deployment mg create \
@@ -55,7 +55,7 @@ az deployment mg create \
   --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/management-level-deployment/azuredeploy.json"
 ```
 
-对于 Azure 电源外壳，请使用[新 Az 管理组部署](/powershell/module/az.resources/new-azmanagementgroupdeployment)。
+对于 Azure PowerShell，请使用[AzManagementGroupDeployment](/powershell/module/az.resources/new-azmanagementgroupdeployment)。
 
 ```azurepowershell-interactive
 New-AzManagementGroupDeployment `
@@ -82,9 +82,9 @@ New-AzManagementGroupDeployment `
 * 不支持 [resourceGroup()](template-functions-resource.md#resourcegroup) 函数。****
 * **不**支持 [subscription()](template-functions-resource.md#subscription) 函数。
 * 支持 [reference()](template-functions-resource.md#reference) 和 [list()](template-functions-resource.md#list) 函数。
-* 支持 [resourceId()](template-functions-resource.md#resourceid) 函数。 可以使用它获取在管理组级别部署中使用的资源的资源 ID。 不为资源组参数提供值。
+* 支持 [resourceId()](template-functions-resource.md#resourceid) 函数。 可以使用它获取在管理组级别部署中使用的资源的资源 ID。 不要为资源组参数提供值。
 
-  例如，要获取策略定义的资源 ID，请使用：
+  例如，若要获取策略定义的资源 ID，请使用：
   
   ```json
   resourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
@@ -174,4 +174,4 @@ New-AzManagementGroupDeployment `
 
 * 若要了解如何分配角色，请参阅[使用 RBAC 和 Azure 资源管理器模板管理对 Azure 资源的访问权限](../../role-based-access-control/role-assignments-template.md)。
 * 若要通过示例来了解如何为 Azure 安全中心部署工作区设置，请参阅 [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)。
-* 您还可以在[订阅级别](deploy-to-subscription.md)和[租户级别](deploy-to-tenant.md)部署模板。
+* 你还可以在[订阅级别](deploy-to-subscription.md)和[租户级别](deploy-to-tenant.md)部署模板。
