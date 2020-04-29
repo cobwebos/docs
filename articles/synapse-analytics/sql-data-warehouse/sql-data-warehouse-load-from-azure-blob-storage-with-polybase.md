@@ -1,6 +1,6 @@
 ---
 title: 将 Contoso 零售数据加载到 Synapse SQL 数据仓库
-description: 使用 PolyBase 和 T-SQL 命令将 Contoso 零售数据的两个表加载到 Synapse SQL 中。
+description: 使用 PolyBase 和 T-sql 命令可将两个表从 Contoso 零售数据加载到 Synapse SQL。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,35 +12,35 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 118653efc8829ac5ef6287bb36fb5595cff1147b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416130"
 ---
-# <a name="load-contoso-retail-data-to-synapse-sql"></a>将 Contoso 零售数据加载到同步 SQL 
+# <a name="load-contoso-retail-data-to-synapse-sql"></a>将 Contoso 零售数据加载到 Synapse SQL 
 
-在本教程中，您将学习使用 PolyBase 和 T-SQL 命令将 Contoso 零售数据的两个表加载到 Synapse SQL 数据仓库中。
+本教程介绍如何使用 PolyBase 和 T-sql 命令将两个表从 Contoso 零售数据加载到 Synapse SQL 数据仓库。
 
-在本教程中，将：
+在本教程中，你会：
 
 1. 配置 PolyBase 以从 Azure Blob 存储加载数据
-2. 将公共数据载入数据库
+2. 将公共数据加载到数据库
 3. 完成加载后执行优化。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
-要运行本教程，您需要一个已具有 Synapse SQL 数据仓库的 Azure 帐户。 如果没有预配数据仓库，请参阅[创建数据仓库并设置服务器级防火墙规则](create-data-warehouse-portal.md)。
+若要运行本教程，需要一个已包含 Synapse SQL 数据仓库的 Azure 帐户。 如果尚未预配数据仓库，请参阅[创建数据仓库并设置服务器级防火墙规则](create-data-warehouse-portal.md)。
 
 ## <a name="configure-the-data-source"></a>配置数据源
 
-PolyBase 使用 T-SQL 外部对象来定义外部数据的位置和属性。 外部对象定义存储在 Synapse SQL 数据仓库中。 数据存储在外部。
+PolyBase 使用 T-SQL 外部对象，定义外部数据的位置和属性。 外部对象定义存储在 Synapse SQL 数据仓库中。 数据存储在外部。
 
 ## <a name="create-a-credential"></a>创建凭据
 
-如果要加载 Contoso 公共数据，请**跳过此步骤**。 不需要以安全方式访问公共数据，因为它已经可供任何人访问。
+如果要加载 Contoso 公共数据，**请跳过此步骤**。 不需要以安全方式访问公共数据，因为它已经可供任何人访问。
 
-如果使用本教程作为加载自己数据的模板，请**不要跳过此步骤**。 要通过凭据访问数据，请使用以下脚本创建数据库范围的凭据。 然后，在定义数据源的位置时使用它。
+如果使用本教程作为加载自己数据的模板，请**不要跳过此步骤**。 若要通过凭据访问数据，请使用以下脚本创建数据库范围的凭据。 然后在定义数据源的位置时使用。
 
 ```sql
 -- A: Create a master key.
@@ -77,7 +77,7 @@ WITH (
 
 ## <a name="create-the-external-data-source"></a>创建外部数据源
 
-使用此["创建外部数据源"](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)命令可存储数据的位置和数据类型。
+使用[CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)命令存储数据的位置和数据类型。
 
 ```sql
 CREATE EXTERNAL DATA SOURCE AzureStorage_west_public
@@ -107,9 +107,9 @@ WITH
 );
 ```
 
-## <a name="create-the-schema-for-the-external-tables"></a>为外部表创建架构
+## <a name="create-the-schema-for-the-external-tables"></a>创建外部表的架构
 
-现在，您已经指定了数据源和文件格式，现在可以为外部表创建架构了。
+现在您已经指定了数据源和文件格式，接下来可以创建外部表的架构。
 
 若要创建一个位置用于存储数据库中的 Contoso 数据，请创建架构。
 
@@ -120,7 +120,7 @@ GO
 
 ## <a name="create-the-external-tables"></a>创建外部表
 
-运行以下脚本以创建 DimProduct 和 FactOnlineSales 外部表。 在此处，只需定义列名和数据类型，并以 Azure blob 存储文件的格式将其绑定到这些文件的位置。 定义存储在数据仓库中，数据仍在 Azure 存储 Blob 中。
+运行以下脚本以创建 DimProduct 和 FactOnlineSales 外部表。 在此处，只需定义列名和数据类型，并以 Azure blob 存储文件的格式将其绑定到这些文件的位置。 定义存储在数据仓库中，数据仍位于 Azure 存储 Blob 中。
 
 **LOCATION** 参数是 Azure 存储 Blob 中根文件夹下的文件夹。 每个表位于不同的文件夹中。
 
@@ -221,7 +221,7 @@ GO
 
 ### <a name="load-the-data-into-new-tables"></a>将数据载入新表
 
-若要将 Azure Blob 存储中的数据载入数据仓库表，请使用 [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 语句。 使用[CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)加载利用您创建的强类型外部表。 若要将数据载入新表，请对每个表使用一个 CTAS 语句。
+若要将 Azure Blob 存储中的数据载入数据仓库表，请使用 [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 语句。 通过[CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)加载将利用已创建的强类型化外部表。 若要将数据载入新表，请对每个表使用一个 CTAS 语句。
 
 CTAS 将创建新表，并在该表中填充 select 语句的结果。 CTAS 将新表定义为包含与 select 语句结果相同的列和数据类型。 如果选择了外部表中的所有列，新表将是外部表中的列和数据类型的副本。
 
@@ -235,7 +235,7 @@ CREATE TABLE [cso].[DimProduct]            WITH (DISTRIBUTION = HASH([ProductKey
 CREATE TABLE [cso].[FactOnlineSales]       WITH (DISTRIBUTION = HASH([ProductKey]  ) ) AS SELECT * FROM [asb].[FactOnlineSales]        OPTION (LABEL = 'CTAS : Load [cso].[FactOnlineSales]        ');
 ```
 
-### <a name="track-the-load-progress"></a>跟踪负载进度
+### <a name="track-the-load-progress"></a>跟踪加载进度
 
 可使用动态管理视图 (DMV) 跟踪加载操作的进度。
 
@@ -274,7 +274,7 @@ ORDER BY
 
 ## <a name="optimize-columnstore-compression"></a>优化列存储压缩
 
-默认情况下，Synapse SQL 数据仓库将表存储为群集列存储索引。 加载完成后，某些数据行可能未压缩到列存储中。  有不同的原因会导致发生此问题： 若要了解详细信息，请参阅[管理列存储索引](sql-data-warehouse-tables-index.md)。
+默认情况下，Synapse SQL 数据仓库将表存储为聚集列存储索引。 加载完成后，某些数据行可能未压缩到列存储中。  有不同的原因会导致发生此问题： 若要了解详细信息，请参阅[管理列存储索引](sql-data-warehouse-tables-index.md)。
 
 若要在加载后优化查询性能和列存储压缩，请重新生成表，以强制列存储索引压缩所有行。
 
@@ -340,7 +340,7 @@ CREATE STATISTICS [stat_cso_FactOnlineSales_StoreKey] ON [cso].[FactOnlineSales]
 
 ## <a name="achievement-unlocked"></a>大功告成！
 
-您已成功将公共数据加载到数据仓库中。 干得不错！
+已成功将公共数据加载到数据仓库中。 干得不错！
 
 现在可以开始查询表以探索数据。 运行以下查询，找出每个品牌的总销售额：
 
@@ -354,5 +354,5 @@ GROUP BY p.[BrandName]
 
 ## <a name="next-steps"></a>后续步骤
 
-要加载完整数据集，运行示例从 Microsoft SQL Server 示例存储库[加载完整的 Contoso 零售数据仓库](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md)。
-有关更多开发提示，请参阅[数据仓库的设计决策和编码技术](sql-data-warehouse-overview-develop.md)。
+若要加载完整的数据集，请运行示例从 Microsoft SQL Server 示例存储库[加载完整的 Contoso 零售数据仓库](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md)。
+有关更多开发技巧，请参阅[数据仓库的设计决策和编码技术](sql-data-warehouse-overview-develop.md)。

@@ -4,13 +4,13 @@ description: 本文介绍如何使用用户分配的托管标识部署 Service F
 ms.topic: article
 ms.date: 12/09/2019
 ms.openlocfilehash: 9aef81db7a455b72c83cf96898a0c228f1c382fd
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415632"
 ---
-# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity"></a>使用用户分配的托管标识部署服务结构应用程序
+# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity"></a>使用用户分配的托管标识部署 Service Fabric 应用程序
 
 若要使用托管标识部署 Service Fabric 应用程序，需通过 Azure 资源管理器部署应用程序，通常需要使用 Azure 资源管理器模板。 若要详细了解如何通过 Azure 资源管理器部署 Service Fabric 应用程序，请参阅[将应用程序和服务作为 Azure 资源管理器资源进行管理](service-fabric-application-arm-resource.md)。
 
@@ -62,7 +62,7 @@ ms.locfileid: "81415632"
 
 ### <a name="application-package"></a>应用程序包
 
-1. 对于在 Azure 资源管理器模板的 `managedIdentities` 节中定义的每个标识，请在应用程序清单的 **Principals** 节下添加 `<ManagedIdentity>` 标记。 `Name` 属性需与 `managedIdentities` 节中定义的 `name` 属性匹配。
+1. 对于在 Azure 资源管理器模板的 `managedIdentities` 节中定义的每个标识，请在应用程序清单的 `<ManagedIdentity>`Principals**节下添加** 标记。 `Name` 属性需与 `name` 节中定义的 `managedIdentities` 属性匹配。
 
     **ApplicationManifest.xml**
 
@@ -86,7 +86,7 @@ ms.locfileid: "81415632"
       </ServiceManifestImport>
     ```
 
-3. 更新服务清单，将 **ManagedIdentity** 添加到 **Resources** 节中，其名称与应用程序清单的 `IdentityBindingPolicy` 中的 `ServiceIdentityRef` 匹配：
+3. 更新服务清单，将 **ManagedIdentity** 添加到 **Resources** 节中，其名称与应用程序清单的 `ServiceIdentityRef` 中的 `IdentityBindingPolicy` 匹配：
 
     **ServiceManifest.xml**
 

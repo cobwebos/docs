@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: vturecek
 ms.openlocfilehash: 4d2138935122b9e08b21963519fce3f72466ab1f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414519"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>管理 Service Fabric 应用程序中的已加密机密
@@ -28,7 +28,7 @@ ms.locfileid: "81414519"
 ## <a name="specify-encrypted-secrets-in-an-application"></a>在应用程序中指定加密的机密
 上一步骤介绍了如何使用证书来加密机密，并生成要在应用程序中使用的 base-64 编码的字符串。 可以在服务的 Settings.xml 中将此 base-64 编码的字符串指定为加密的[参数][parameters-link]，也可以在服务的 ServiceManifest.xml 中将其指定为加密的[环境变量][environment-variables-link]。
 
-通过在服务的 Settings.xml 配置文件中将  属性设置为  来指定加密的[参数`IsEncrypted``true`][parameters-link]：
+通过在服务的 Settings.xml 配置文件中将 [ 属性设置为 ][parameters-link] 来指定加密的`IsEncrypted`参数`true`：
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -38,7 +38,7 @@ ms.locfileid: "81414519"
   </Section>
 </Settings>
 ```
-通过在服务的 ServiceManifest.xml 文件中将  属性设置为  来指定加密的[环境变量`Type``Encrypted`][environment-variables-link]：
+通过在服务的 ServiceManifest.xml 文件中将 [ 属性设置为 ][environment-variables-link] 来指定加密的`Type`环境变量`Encrypted`：
 ```xml
 <CodePackage Name="Code" Version="1.0.0">
   <EnvironmentVariables>
@@ -58,9 +58,9 @@ ms.locfileid: "81414519"
 </ApplicationManifest>
 ```
 > [!NOTE]
-> 激活指定机密证书的应用程序后，Service Fabric 将查找匹配的证书，并将应用程序在证书私钥完全权限下运行的标识授予。 Service Fabric 还将监视证书的更改，并相应地重新应用权限。 要检测由通用名称声明的证书的更改，Service Fabric 会运行一个定期任务，该任务查找所有匹配的证书，并将其与缓存的指纹列表进行比较。 检测到新的指纹时，这意味着该主题的证书已续订。 任务每分钟在群集的每个节点上运行一次。
+> 激活指定了 SecretsCertificate 的应用程序后，Service Fabric 会找到匹配的证书，并向该应用程序运行的标识授予对该证书的私钥的完全权限。 Service Fabric 还会监视证书的更改，并相应地重新应用权限。 若要检测公用名声明的证书更改，Service Fabric 会运行定期任务，该任务将查找所有匹配的证书，并将其与指纹的缓存列表进行比较。 检测到新指纹时，表示已续订该使用者的证书。 该任务每分钟在群集的每个节点上运行一次。
 >
-> 虽然机密证书确实允许基于主题的声明，但请注意，加密的设置绑定到用于加密客户端上的设置的密钥对。 必须确保原始加密证书（或等效证书）与基于主题的声明匹配，并确保在可以承载应用程序的群集的每个节点上安装该证书（包括相应的私钥）。 与基于主题的声明匹配且从与原始加密证书相同的密钥对构建的所有时间有效证书都被视为等效证书。
+> 尽管 SecretsCertificate 确实允许使用基于使用者的声明，但请注意，加密的设置会绑定到用于对客户端上的设置进行加密的密钥对。 你必须确保原始加密证书（或等效项）与基于使用者的声明相匹配，并确保在可承载应用程序的群集的每个节点上安装该证书（包括其相应的私钥）。 与基于使用者的声明匹配的所有时间有效的证书和从与原始加密证书相同的密钥对中生成的证书被认为是等效的。
 >
 
 ### <a name="inject-application-secrets-into-application-instances"></a>将应用程序机密插入应用程序实例
@@ -143,7 +143,7 @@ string MyEnvVariable = Environment.GetEnvironmentVariable("MyEnvVariable");
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* 服务结构[机密存储](service-fabric-application-secret-store.md) 
+* Service Fabric[密钥存储](service-fabric-application-secret-store.md) 
 * 深入了解[应用程序和服务安全性](service-fabric-application-and-service-security.md)
 
 <!-- Links -->

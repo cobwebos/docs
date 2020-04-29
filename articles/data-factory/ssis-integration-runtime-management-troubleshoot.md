@@ -12,10 +12,10 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
 ms.openlocfilehash: 0324044d93f12f6ac6ec96ff1a31be8ee02ada41
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414702"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>在 Azure 数据工厂中排查 SSIS Integration Runtime 管理问题
@@ -43,7 +43,7 @@ ms.locfileid: "81414702"
 * 网络连接问题。 检查 SQL Server 或托管实例主机名是否可访问。 同时，确保没有防火墙或网络安全组 (NSG) 阻止 SSIS IR 访问服务器。
 * SQL 身份验证期间登录失败。 提供的帐户无法登录 SQL Server 数据库。 请确保提供正确的用户帐户。
 * Microsoft Azure Active Directory (Azure AD) 身份验证（托管标识）期间登录失败。 将工厂的托管标识添加到 AAD 组，并确保托管标识具有对目录数据库服务器的访问权限。
-* 连接超时。 此错误始终是由与安全相关的配置引起的。 我们建议：
+* 连接超时。 此错误始终是由与安全相关的配置引起的。 建议：
   1. 创建新 VM。
   1. 如果 IR 在虚拟网络中，请将 VM 加入相同的 IR Microsoft Azure 虚拟网络。
   1. 安装 SSMS 并检查 Azure SQL Database 服务器或托管实例状态。
@@ -54,7 +54,7 @@ ms.locfileid: "81414702"
 
 ### <a name="catalogcapacitylimiterror"></a>CatalogCapacityLimitError
 
-以下是此类错误消息的外观："数据库'SSISDB'已达到其大小配额。 请将数据分区或删除、删除索引，或查阅文档以找到可能的解决方法。” 
+这种错误消息可能如下所示：“数据库 'SSISDB' 已达到大小配额。 请将数据分区或删除、删除索引，或查阅文档以找到可能的解决方法。” 
 
 可能的解决方法包括：
 * 增加 SSISDB 的配额大小。
@@ -78,7 +78,7 @@ ms.locfileid: "81414702"
 
 ### <a name="invalidcatalogdb"></a>InvalidCatalogDb
 
-此类错误消息如下所示："无效对象名称'目录.catalog_properties'"。在此情况下，您已经拥有名为 SSISDB 的数据库，但它不是由 SSIS IR 创建的，或者数据库处于无效状态，该状态由上次 SSIS IR 预配中的错误引起。 可以删除名称为 SSISDB 的现有数据库，也可以为 IR 配置新的 Azure SQL Database 服务器或托管实例。
+这种错误消息如下所示：“对象名称 'catalog.catalog_properties' 无效。”在这种情况下，已经有一个名为 SSISDB 的数据库，但它不是由 SSIS IR 创建的，或者该数据库处于无效状态，这是由上一个 SSIS IR 预配中的错误引起的。 可以删除名称为 SSISDB 的现有数据库，也可以为 IR 配置新的 Azure SQL Database 服务器或托管实例。
 
 ## <a name="custom-setup-issues"></a>自定义安装问题
 
@@ -124,7 +124,7 @@ ms.locfileid: "81414702"
 
 ### <a name="forbidden"></a>禁止
 
-此类错误可能类似于这种情况："未为往来帐户启用子网Id。 Microsoft.Batch 资源提供程序未在 VNet 的同一订阅下注册。”
+这种错误可能与以下情况类似：“当前帐户不支持 SubnetId。 Microsoft.Batch 资源提供程序未在 VNet 的同一订阅下注册。”
 
 这些详细信息表示 Azure Batch 无法访问虚拟网络。 在与虚拟网络相同的订阅下注册 Microsoft.Batch 资源提供程序。
 
@@ -139,7 +139,7 @@ ms.locfileid: "81414702"
 
 ### <a name="misconfigureddnsserverornsgsettings"></a>MisconfiguredDnsServerOrNsgSettings
 
-此类错误消息可能如下所示："在 VNet 中预配集成运行时失败。 如果配置了 DNS 服务器或 NSG 设置，请确保 DNS 服务器可访问，并且 NSG 配置正确。”
+这种错误消息可能与以下情况类似：“未能在 VNet 中预配 Integration Runtime。 如果配置了 DNS 服务器或 NSG 设置，请确保 DNS 服务器可访问，并且 NSG 配置正确。”
 
 在这种情况下，你可能有一个自定义的 DNS 服务器或 NSG 设置配置，这将阻止解析或访问 SSIS IR 所需的 Azure 服务器名称。 有关详细信息，请参阅 [SSIS IR 虚拟网络配置](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。 如果仍有问题，请联系 Azure 数据工厂支持团队。
 
@@ -172,7 +172,7 @@ SSIS IR 将定期自动更新。 升级期间将创建一个新的 Azure Batch �
 | 错误消息 | 解决方案|
 |:--- |:--- |
 | 提供的静态公共 IP 地址已被使用，请为你的 Azure-SSIS Integration Runtime 提供两个未使用的静态公共 IP 地址。 | 你应当选择两个未使用的静态公共 IP 地址，或者删除对指定公共 IP 地址的当前引用，然后重启 Azure-SSIS IR。 |
-| 提供的静态公共 IP 地址没有 DNS 名称，请为你的 Azure-SSIS Integration Runtime 提供两个具有 DNS 名称的静态公共 IP 地址。 | 可以在 Azure 门户中设置公共 IP 地址的 DNS 名称，如下图所示。 具体步骤如下：（1） 打开 Azure 门户并转到此公共 IP 地址的资源页;（2） 选择 **"配置**"部分并设置 DNS 名称，然后单击 **"保存**"按钮;（3） 重新启动 Azure-SIS IR。 |
+| 提供的静态公共 IP 地址没有 DNS 名称，请为你的 Azure-SSIS Integration Runtime 提供两个具有 DNS 名称的静态公共 IP 地址。 | 可以在 Azure 门户中设置公共 IP 地址的 DNS 名称，如下图所示。 具体步骤如下所述：(1) 打开 Azure 门户并转到此公共 IP 地址的资源页；(2) 选择“配置”  部分并设置 DNS 名称，然后单击“保存”  按钮；(3) 重启你的 Azure-SSIS IR。 |
 | 为 Azure-SSIS Integration Runtime 提供的 VNet 和静态公共 IP 地址必须位于同一位置。 | 根据 Azure 网络的要求，静态公共 IP 地址和虚拟网络应当位于同一位置和订阅中。 请提供两个有效的静态公共 IP 地址，然后重启 Azure-SSIS IR。 |
 | 提供的静态公共 IP 地址是一个基本地址，请为你的 Azure-SSIS Integration Runtime 提供两个标准静态公共 IP 地址。 | 有关帮助信息，请参阅[公共 IP 地址的 SKU](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku)。 |
 
@@ -188,7 +188,7 @@ SSIS IR 将定期自动更新。 升级期间将创建一个新的 Azure Batch �
 
 ### <a name="publicipresourcegrouplockedduringupgrade"></a>PublicIPResourceGroupLockedDuringUpgrade
 
-Azure-SSIS IR 将定期自动更新。 升级期间会创建新的 IR 节点，而旧节点将被删除。 此外，将会删除旧节点的已创建网络资源（例如负载均衡器和网络安全组），并在你的订阅下创建新的网络资源。 此错误意味着，由于在订阅或资源组（包含你的静态公共 IP 地址）级别存在删除锁，删除旧节点的网络资源失败。 请移除删除锁，以便可以清理旧节点并释放旧节点的静态公共 IP 地址。 否则，将无法释放静态公共 IP 地址，无法进一步升级 IR。
+Azure-SSIS IR 会定期自动更新。 升级期间会创建新的 IR 节点，而旧节点将被删除。 此外，将会删除旧节点的已创建网络资源（例如负载均衡器和网络安全组），并在你的订阅下创建新的网络资源。 此错误意味着，由于在订阅或资源组（包含你的静态公共 IP 地址）级别存在删除锁，删除旧节点的网络资源失败。 请移除删除锁，以便可以清理旧节点并释放旧节点的静态公共 IP 地址。 否则，将无法释放静态公共 IP 地址，无法进一步升级 IR。
 
 ### <a name="publicipnotusableduringupgrade"></a>PublicIPNotUsableDuringUpgrade
 

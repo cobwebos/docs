@@ -1,6 +1,6 @@
 ---
 title: 复制活动性能优化功能
-description: 了解可帮助您优化 Azure 数据工厂中的复制活动性能的关键功能。
+description: 了解有助于优化 Azure 数据工厂中复制活动性能的重要功能
 services: data-factory
 documentationcenter: ''
 ms.author: jingwang
@@ -13,36 +13,36 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/09/2020
 ms.openlocfilehash: fd7844340553809e1429097a9dda70f6bdb3e075
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414189"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>复制活动性能优化功能
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述了可在 Azure 数据工厂中利用的复制活动性能优化功能。
+本文概述可在 Azure 数据工厂中利用的复制活动性能优化功能。
 
 ## <a name="data-integration-units"></a>数据集成单元
 
 数据集成单元是一种度量单位，代表单个单位在 Azure 数据工厂中的能力（包含 CPU、内存、网络资源分配）。 数据集成单元仅适用于 [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime)，而不适用于[自承载集成运行时](concepts-integration-runtime.md#self-hosted-integration-runtime)。
 
-允许用来为复制活动运行提供支持的 DIU 数为 **2 到 256 个**。 如果未指定或在 UI 上选择"自动"，数据工厂会根据您的源接收器对和数据模式动态应用最佳 DIU 设置。 下表列出了不同复制方案中支持的 DIU 范围和默认行为：
+允许用来为复制活动运行提供支持的 DIU 数为 **2 到 256 个**。 如果未指定或在用户界面上选择 "自动"，则数据工厂会根据源接收器对和数据模式动态应用最佳 DIU 设置。 下表列出了不同复制方案中支持的 DIU 范围和默认行为：
 
-| 复制方案 | 支持的 DIU 系列 | 服务决定的默认 DIU 数目 |
+| 复制方案 | 支持的 DIU 范围 | 服务决定的默认 DIU 数目 |
 |:--- |:--- |---- |
-| 文件存储之间 |- **从文件复制或复制到单个文件**：2-4 <br>- **从多个文件复制和复制到多个文件**：2-256 取决于文件的数量和大小 <br><br>例如，如果从包含 4 个大型文件的文件夹中复制数据并选择保留层次结构，则最大有效 DIU 为 16;如果从包含 4 个大型文件的文件夹中复制数据，则最大有效 DIU 为 16;如果从具有 4 个大型文件的文件夹中复制数据，则最大有效 DIU 为 16。当您选择合并文件时，最大有效 DIU 为 4。 |4 到 32 个，具体取决于文件的数量和大小 |
-| 从文件存储到非文件存储 |- **从单个文件复制**： 2-4 <br/>- **从多个文件复制**： 2-256 取决于文件的数量和大小 <br/><br/>例如，如果从包含 4 个大型文件的文件夹中复制数据，则最大有效 DIU 为 16。 |- **复制到 Azure SQL 数据库或 Azure Cosmos DB：** 根据接收器层 （DTUs/RUs） 和源文件模式，在 4 和 16 之间<br>- 使用 PolyBase 或 COPY 语句**复制到 Azure 同步分析**：2<br>- 其他方案： 4 |
-| 从非文件存储到文件存储 |- **从支持分区选项的数据存储**（包括[Oracle](connector-oracle.md#oracle-as-source)/[Netezza](connector-netezza.md#netezza-as-source)/[Teradata）](connector-teradata.md#teradata-as-source)复制：写入文件夹时为 2-256，写入单个文件时为 2-4。 请注意，每个源数据分区最多可以使用 4 个 DIDI。<br>- **其他方案**： 2-4 |- **从 REST 或 HTTP 复制**： 1<br/>- 使用 UnLOAD**从亚马逊红移复制**： 2<br>- **其他方案**： 4 |
-| 在非文件存储之间 |- **从支持分区选项的数据存储**（包括[Oracle](connector-oracle.md#oracle-as-source)/[Netezza](connector-netezza.md#netezza-as-source)/[Teradata）](connector-teradata.md#teradata-as-source)复制：写入文件夹时为 2-256，写入单个文件时为 2-4。 请注意，每个源数据分区最多可以使用 4 个 DIDI。<br/>- **其他方案**： 2-4 |- **从 REST 或 HTTP 复制**： 1<br>- **其他方案**： 4 |
+| 文件存储之间 |- **从/向单一文件复制**：2-4 <br>- **从/向多个文件复制**：2-256 个，具体取决于文件的数量和大小 <br><br>例如，如果从包含 4 个大文件的文件夹复制数据并选择保留层次结构，则最大有效 DIU 为 16；选择合并文件时，最大有效 DIU 为 4。 |4 到 32 个，具体取决于文件的数量和大小 |
+| 从文件存储到非文件存储 |- **从单个文件复制**：2-4 <br/>- **从多个文件复制**：2-256 个，具体取决于文件的数量和大小 <br/><br/>例如，如果从包含 4 个大文件的文件夹复制数据，则最大有效 DIU 为 16。 |- **复制到 Azure SQL 数据库或 Azure Cosmos DB**：4-16 个，具体取决于接收器层 (DTU/RU) 和源文件模式<br>- 使用 PolyBase 或 COPY 语句**复制到 Azure Synapse Analytics**：2<br>- 其他方案：4 |
+| 从非文件存储到文件存储 |- **从启用分区选项的数据存储复制**（包括 [Oracle](connector-oracle.md#oracle-as-source)/[Netezza](connector-netezza.md#netezza-as-source)/[Teradata](connector-teradata.md#teradata-as-source)）：写入文件夹时为 2-256 个，写入单个文件时为 2-4 个。 请注意，每个源数据分区最多可以使用 4 个 DIU。<br>- **其他方案**：2-4 |- **从 REST 或 HTTP 复制**：1<br/>- 使用 UNLOAD **从 Amazon Redshift 复制**：2<br>- **其他方案**：4 |
+| 非文件存储之间 |- **从启用分区选项的数据存储复制**（包括 [Oracle](connector-oracle.md#oracle-as-source)/[Netezza](connector-netezza.md#netezza-as-source)/[Teradata](connector-teradata.md#teradata-as-source)）：写入文件夹时为 2-256 个，写入单个文件时为 2-4 个。 请注意，每个源数据分区最多可以使用 4 个 DIU。<br/>- **其他方案**：2-4 |- **从 REST 或 HTTP 复制**：1<br>- **其他方案**：4 |
 
-您可以在复制活动监视视图或活动输出中查看用于每次运行副本的 DIU。 有关详细信息，请参阅[复制活动监视](copy-activity-monitoring.md)。 要覆盖此默认值，请指定`dataIntegrationUnits`属性的值，如下所示。 复制操作在运行时使用的*实际 DIU 数*等于或小于配置的值，具体取决于数据模式。
+可以在复制活动监视视图或活动输出中查看用于每个复制运行的 DIU。 有关详细信息，请参阅[复制活动监视](copy-activity-monitoring.md)。 若要替代此默认值，请按如下所示指定 `dataIntegrationUnits` 属性的值。 复制操作在运行时使用的*实际 DIU 数*等于或小于配置的值，具体取决于数据模式。
 
-计费公式为 (已用 DIU 数) \* (复制持续时间) \* (单价/DIU 小时数)。**** [此网页](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)上提供了当前价格。 可能会按订阅类型应用本地货币和不同的折扣。
+计费公式为 (已用 DIU 数) \* (复制持续时间) \* (单价/DIU 小时数)。  [此网页](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)上提供了当前价格。 可能会按订阅类型应用本地货币和不同的折扣。
 
-**例子：**
+**示例：**
 
 ```json
 "activities":[
@@ -64,43 +64,43 @@ ms.locfileid: "81414189"
 ]
 ```
 
-## <a name="self-hosted-integration-runtime-scalability"></a>自托管集成运行时可扩展性
+## <a name="self-hosted-integration-runtime-scalability"></a>自承载集成运行时可伸缩性
 
-如果要实现更高的吞吐量，可以向上扩展或扩展自承载的 IR：
+若要实现更高的吞吐量，可以纵向扩展或横向扩展自承载 IR：
 
-- 如果未充分利用自承载 IR 节点上的 CPU 和可用内存，但并发作业的执行达到限制，则应通过增加可在节点上运行的并发作业数来向上扩展。  有关说明，请参阅[此文](create-self-hosted-integration-runtime.md#scale-up)。
-- 另一方面，如果自承载的 IR 节点上的 CPU 较高或可用内存不足，则可以添加新节点以帮助跨多个节点扩展负载。  有关说明，请参阅[此文](create-self-hosted-integration-runtime.md#high-availability-and-scalability)。
+- 如果自承载 IR 节点上的 CPU 和可用内存未充分利用，但并发作业执行即将达到限制，应通过增加节点上可运行的并发作业数进行纵向扩展。  有关说明，请参阅[此文](create-self-hosted-integration-runtime.md#scale-up)。
+- 另一方面，如果 CPU 利用率在自承载 IR 节点上较高，或者可用内存较低，你可以添加新节点，以帮助在多个节点之间横向扩展负载。  有关说明，请参阅[此文](create-self-hosted-integration-runtime.md#high-availability-and-scalability)。
 
-请注意，在以下方案中，单个复制活动执行可以利用多个自承载的 IR 节点：
+请注意，在以下情况下，单个复制活动执行可以利用多个自承载 IR 节点：
 
-- 根据文件的数量和大小，从基于文件的存储复制数据。
-- 根据数据分区的数量，从支持分区选项的数据存储（包括[Oracle、Netezza、Teradata、SAP](connector-netezza.md#netezza-as-source) [Oracle](connector-oracle.md#oracle-as-source) [HANA、SAP](connector-sap-hana.md#sap-hana-as-source)[表](connector-sap-table.md#sap-table-as-source)和[SAP 开放集线器](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)）复制数据。 [Teradata](connector-teradata.md#teradata-as-source)
+- 从基于文件的存储中复制数据。使用的节点数取决于文件的数量和大小。
+- 从启用分区选项的数据存储（包括 [Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[Teradata](connector-teradata.md#teradata-as-source)、[SAP HANA](connector-sap-hana.md#sap-hana-as-source)、[SAP Table](connector-sap-table.md#sap-table-as-source) 和 [SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)）复制数据。使用的节点数取决于数据分区数。
 
 ## <a name="parallel-copy"></a>并行复制
 
-您可以在复制活动上设置并行`parallelCopies`复制 （属性），以指示您希望复制活动使用的并行性。 可以将此属性视为复制活动中从源读取或并行写入接收器数据存储的最大线程数。
+可以在复制活动中设置并行复制（`parallelCopies` 属性）来指示希望复制活动使用的并行度。 可将此属性视为复制活动内，可从源并行读取或并行写入接收器数据存储的最大线程数。
 
-并行副本是数据[集成单元](#data-integration-units)或[自承载的 IR 节点的](#self-hosted-integration-runtime-scalability)正交。 它跨所有 DIA 或自承载的 IR 节点计数。
+并行复制独立于[数据集成单元](#data-integration-units)或[自承载 IR 节点](#self-hosted-integration-runtime-scalability)。 它是根据所有 DIU 或自承载 IR 节点统计的。
 
-对于运行的每个复制活动，默认情况下，Azure 数据工厂会基于源接收器对和数据模式动态应用最佳并行复制设置。 
+对于每个复制活动运行，Azure 数据工厂默认会根据源-接收器对和数据模式动态应用最佳的并行复制设置。 
 
 > [!TIP]
-> 并行复制的默认行为通常为您提供最佳吞吐量，这是 ADF 根据源接收器对、数据模式和 DIA 数或自承载 IR 的 CPU/内存/节点计数自动确定的。 请参阅在何时调整并行[副本时对复制活动性能进行故障排除](copy-activity-performance-troubleshooting.md)。
+> 并行复制的默认行为通常可以提供最佳吞吐量，该吞吐量是 ADF 根据源-接收器对、数据模式，以及 DIU 数目或自承载 IR 的 CPU/内存/节点计数自动确定的。 有关何时优化并行复制的信息，请参阅[排查复制活动性能问题](copy-activity-performance-troubleshooting.md)。
 
 下表列出了并行复制行为：
 
 | 复制方案 | 并行复制行为 |
 | --- | --- |
-| 文件存储之间 | `parallelCopies`确定**文件级别的**并行性。 每个文件中的分块自动和透明地发生在下面。 它旨在对给定数据存储类型使用最佳合适的块大小来并行加载数据。 <br/><br/>活动在运行时使用的并行副本活动的实际数量不超过您拥有的文件数。 如果复制行为将**File合并**到文件接收器中，则复制活动无法利用文件级并行性。 |
-| 从文件存储到非文件存储 | - 将数据复制到 Azure SQL 数据库或 Azure Cosmos DB 时，默认并行副本还取决于接收器层（DTUs/RUs 的数量）。<br>- 将数据复制到 Azure 表时，默认并行副本为 4。 |
-| 从非文件存储到文件存储 | - 从支持分区选项的数据存储（包括[Oracle](connector-oracle.md#oracle-as-source)Oracle、Netezza、Teradata、SAP [Netezza](connector-netezza.md#netezza-as-source) [HANA、SAP](connector-sap-hana.md#sap-hana-as-source)[表](connector-sap-table.md#sap-table-as-source)和 SAP[开放集线器](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)）复制数据时，默认并行复制为 4。 [Teradata](connector-teradata.md#teradata-as-source) 运行时使用的并行副本活动的实际数量不超过您拥有的数据分区数。 当使用自托管集成运行时并复制到 Azure Blob/ADLS Gen2 时，请注意最大有效并行副本是每个 IR 节点 4 或 5。<br>- 对于其他方案，并行副本不会生效。 即使指定了并行性，也不会应用它。 |
-| 在非文件存储之间 | - 将数据复制到 Azure SQL 数据库或 Azure Cosmos DB 时，默认并行副本还取决于接收器层（DTUs/RUs 的数量）。<br/>- 从支持分区选项的数据存储（包括[Oracle](connector-oracle.md#oracle-as-source)Oracle、Netezza、Teradata、SAP [Netezza](connector-netezza.md#netezza-as-source) [HANA、SAP](connector-sap-hana.md#sap-hana-as-source)[表](connector-sap-table.md#sap-table-as-source)和 SAP[开放集线器](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)）复制数据时，默认并行复制为 4。 [Teradata](connector-teradata.md#teradata-as-source)<br>- 将数据复制到 Azure 表时，默认并行副本为 4。 |
+| 文件存储之间 | `parallelCopies` 确定文件级别的并行度。  每个文件内的区块化会自动透明地在该级别下进行。 它旨在对给定数据存储类型使用最佳区块大小，以并行加载数据。 <br/><br/>复制活动在运行时使用的实际并行副本数不超过现有的文件数。 如果复制行为是在文件接收器中执行 **mergeFile**，则复制活动无法利用文件级并行度。 |
+| 从文件存储到非文件存储 | - 在将数据复制到 Azure SQL 数据库或 Azure Cosmos DB 时，默认的并行副本数还取决于接收器层（DTU/RU 数目）。<br>- 在将数据复制到 Azure 表时，默认的并行副本数为 4 个。 |
+| 从非文件存储到文件存储 | - 从启用分区选项的数据存储（包括 [Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[Teradata](connector-teradata.md#teradata-as-source)、[SAP HANA](connector-sap-hana.md#sap-hana-as-source)、[SAP Table](connector-sap-table.md#sap-table-as-source) 和 [SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)）复制数据时，默认的并行副本数为 4 个。 复制活动在运行时使用的实际并行副本数不超过现有的数据分区数。 使用自承载集成运行时并复制到 Azure Blob/ADLS Gen2 时请注意，每个 IR 节点的最大有效并行副本数为 4 或 5 个。<br>- 对于其他方案，并行复制不起作用。 即使指定了并行度，也不会应用并行复制。 |
+| 非文件存储之间 | - 在将数据复制到 Azure SQL 数据库或 Azure Cosmos DB 时，默认的并行副本数还取决于接收器层（DTU/RU 数目）。<br/>-从分区启用选项的数据存储（包括[Oracle](connector-oracle.md#oracle-as-source)、 [Netezza](connector-netezza.md#netezza-as-source)、 [Teradata](connector-teradata.md#teradata-as-source)、 [SAP HANA](connector-sap-hana.md#sap-hana-as-source)、 [SAP 表](connector-sap-table.md#sap-table-as-source)和[sap 开放式集线器](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)）复制数据时，默认的并行复制为4。<br>-在将数据复制到 Azure 表时，默认的并行复制为4。 |
 
-要控制托管数据存储的计算机上负载，或调整复制性能，可以重写默认值并为属性`parallelCopies`指定值。 该值必须是大于或等于 1 的整数。 在运行时，为了获得最佳性能，复制活动使用小于或等于所设置的值。
+若要控制托管数据存储的计算机上的负载或优化复制性能，可以覆盖默认值并指定`parallelCopies`属性的值。 该值必须是大于或等于 1 的整数。 在运行时，为了获得最佳性能，复制活动使用小于或等于所设置的值。
 
-指定`parallelCopies`属性的值时，将源和接收器数据存储的负载增加考虑在内。 如果复制活动受其授权，请考虑对自托管集成运行时的负载增加。 尤其在有多个活动或针对同一数据存储运行的相同活动有并发运行时，会发生这种负载增加的情况。 如果您注意到数据存储或自托管集成运行时因负载而不堪重负，请减小`parallelCopies`该值以释放负载。
+如果为`parallelCopies`属性指定值，请在源和接收器数据存储中考虑负载增加。 如果复制活动可供其使用，还应考虑到自承载集成运行时的负载增加。 尤其在有多个活动或针对同一数据存储运行的相同活动有并发运行时，会发生这种负载增加的情况。 如果注意到数据存储或自承载集成运行时占用负载，则减小`parallelCopies`该值以减轻负载。
 
-**例子：**
+**示例：**
 
 ```json
 "activities":[
@@ -126,9 +126,9 @@ ms.locfileid: "81414189"
 
 将数据从源数据存储复制到接收器数据存储时，可能会选择使用 Blob 存储作为过渡暂存存储。 暂存在以下情况下特别有用：
 
-- **您希望通过 PolyBase 将数据从各种数据存储引入 SQL 数据仓库。** SQL 数据仓库使用 PolyBase 作为高吞吐量机制，将大量数据加载到 SQL 数据仓库中。 源数据必须位于 Blob 存储或 Azure 数据湖存储中，并且必须满足其他条件。 从 Blob 存储或 Azure Data Lake Store 以外的数据存储加载数据时，可通过过渡暂存 Blob 存储激活数据复制。 在这种情况下，Azure 数据工厂会执行所需的数据转换，确保其满足 PolyBase 的要求。 然后，它使用 PolyBase 将数据高效加载到 SQL 数据仓库。 有关详细信息，请参阅[使用 PolyBase 将数据加载到 Azure SQL 数据仓库](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)。
-- **有时，通过缓慢的网络连接执行混合数据移动（即从本地数据存储复制到云数据存储）需要一段时间。** 为了提高性能，可以使用暂存复制来压缩本地数据，缩短将数据移动到云中的暂存数据存储的时间。 然后，可先在暂存存储中解压缩数据，再将它们加载到目标数据存储。
-- **由于公司 IT 策略，您不希望在防火墙中打开端口 80 和端口 443 以外的端口。** 例如，将数据从本地数据存储复制到 Azure SQL 数据库接收器或 Azure SQL 数据仓库接收器时，需要对 Windows 防火墙和公司防火墙激活端口 1433 上的出站 TCP 通信。 在这种情况下，暂存复制可以利用自承载集成运行时首先在端口 443 上通过 HTTP 或 HTTPS 将数据复制到 Blob 存储暂存实例。 然后，它可以将数据从 Blob 暂存存储加载到 SQL 数据库或 SQL 数据仓库中。 在此流中，不需要启用端口 1433。
+- **需要通过 PolyBase 将数据从各种数据存储引入 SQL 数据仓库。** SQL 数据仓库使用 PolyBase 作为高吞吐量机制，将大量数据加载到 SQL 数据仓库中。 源数据必须位于 Blob 存储或 Azure Data Lake Store 中，并且必须满足其他条件。 从 Blob 存储或 Azure Data Lake Store 以外的数据存储加载数据时，可通过过渡暂存 Blob 存储激活数据复制。 在这种情况下，Azure 数据工厂会执行所需的数据转换，确保其满足 PolyBase 的要求。 然后，它使用 PolyBase 将数据高效加载到 SQL 数据仓库。 有关详细信息，请参阅[使用 PolyBase 将数据加载到 Azure SQL 数据仓库](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)。
+- **有时，通过慢速网络连接执行混合数据移动（即从本地数据存储复制到云数据存储）需要一段时间。** 为了提高性能，可以使用暂存复制来压缩本地数据，缩短将数据移动到云中的暂存数据存储的时间。 然后，可先在暂存存储中解压缩数据，再将它们加载到目标数据存储。
+- **不需要在防火墙中打开端口80和端口443之外的端口，因为有企业 IT 策略。** 例如，将数据从本地数据存储复制到 Azure SQL 数据库接收器或 Azure SQL 数据仓库接收器时，需要对 Windows 防火墙和公司防火墙激活端口 1433 上的出站 TCP 通信。 在这种情况下，暂存复制可以利用自承载集成运行时首先在端口 443 上通过 HTTP 或 HTTPS 将数据复制到 Blob 存储暂存实例。 然后，它可以将数据从 Blob 暂存存储加载到 SQL 数据库或 SQL 数据仓库中。 在此流中，不需要启用端口 1433。
 
 ### <a name="how-staged-copy-works"></a>暂存复制的工作原理
 
@@ -142,9 +142,9 @@ ms.locfileid: "81414189"
 
 ### <a name="configuration"></a>配置
 
-在复制活动中配置 **enableStaging** 设置，指定在将数据加载到目标数据存储之前是否要在 Blob 存储中暂存。 将 **enableStaging** 设置为 `TRUE` 时，请指定下表中列出的其他属性。 如果没有，还需要创建 Azure 存储或存储共享访问签名链接服务进行暂存。
+在复制活动中配置 **enableStaging** 设置，指定在将数据加载到目标数据存储之前是否要在 Blob 存储中暂存。 将 **enableStaging** 设置为 `TRUE` 时，请指定下表中列出的其他属性。 还需要为过渡创建 Azure 存储或存储共享访问签名链接服务（如果没有）。
 
-| properties | 描述 | 默认值 | 必选 |
+| 属性 | 说明 | 默认值 | 必选 |
 | --- | --- | --- | --- |
 | enableStaging |指定是否要通过过渡暂存存储复制数据。 |False |否 |
 | linkedServiceName |指定 [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) 链接服务的名称，这指用作过渡暂存存储的存储实例。 <br/><br/> 无法使用具有共享访问签名的存储通过 PolyBase 将数据加载到 SQL 数据仓库。 可在其他任何情况下使用它。 |空值 |将 **enableStaging** 设置为 TRUE 时，则为是 |
@@ -196,6 +196,6 @@ ms.locfileid: "81414189"
 
 - [复制活动概述](copy-activity-overview.md)
 - [复制活动性能和可伸缩性指南](copy-activity-performance.md)
-- [排除复制活动性能的故障](copy-activity-performance-troubleshooting.md)
+- [复制活动性能疑难解答](copy-activity-performance-troubleshooting.md)
 - [使用 Azure 数据工厂将数据从 Data Lake 或数据仓库迁移到 Azure](data-migration-guidance-overview.md)
 - [将数据从 Amazon S3 迁移到 Azure 存储](data-migration-guidance-s3-azure-storage.md)

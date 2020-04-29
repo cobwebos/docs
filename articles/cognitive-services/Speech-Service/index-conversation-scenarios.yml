@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: 对话方案文档
-summary: 浏览各种对话方案。 了解如何在会议方案中使用对话转录或多设备对话，并在呼叫中心方案中使用转录。
+summary: 浏览各种会话方案。 了解如何在会议方案中使用对话脚本或多设备对话，并在调用中心方案中进行对话。
 metadata:
-  title: 对话方案文档 - 教程，API 参考 - Azure 认知服务 |微软文档
+  title: 会话方案文档-教程、API 参考-Azure 认知服务 |Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -12,25 +12,25 @@ metadata:
   ms.date: 03/16/2020
   ms.author: trbye
   ms.openlocfilehash: 1766174d053b480674da26ef3e915bcf3fdf280a
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: MT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/16/2020
+  ms.lasthandoff: 04/29/2020
   ms.locfileid: "81401464"
 landingContent:
-- title: 关于对话转录（会议场景）
+- title: 关于对话脚本（会议方案）
   linkLists:
   - linkListType: overview
     links:
-    - text: 什么是会议中的对话转录？
+    - text: 会议中的对话操作是什么？
       url: conversation-transcription.md
   - linkListType: how-to-guide
     links:
-    - text: 实时对话转录
+    - text: 实时对话脚本
       url: how-to-use-conversation-transcription.md
     - text: 异步对话听录
       url: how-to-async-conversation-transcription.md
-- title: 关于多设备对话（会议方案）
+- title: 关于多设备会话（会议方案）
   linkLists:
   - linkListType: overview
     links:
@@ -40,7 +40,7 @@ landingContent:
     links:
     - text: 启动和加入对话
       url: quickstarts/multi-device-conversation.md
-- title: 呼叫中心转录（自定义/代理方案）
+- title: 呼叫中心脚本（自定义/代理方案）
   linkLists:
   - linkListType: overview
     links:
@@ -50,9 +50,9 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: 对话转录语言支持
+    - text: 会话脚本语言支持
       url: conversation-transcription.md#language-support
-    - text: 多设备会话语言支持
+    - text: 多设备对话语言支持
       url: multi-device-conversation.md#language-support
-    - text: 语音转录定价
+    - text: 语音脚本定价
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/

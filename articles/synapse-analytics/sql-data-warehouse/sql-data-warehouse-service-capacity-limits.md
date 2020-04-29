@@ -12,10 +12,10 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: fbdf0fda51ae35fac4f3f8ae45bfcd788fc406ae
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414004"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Azure Synapse Analytics（以前称为 SQL DW）容量限制
@@ -27,19 +27,19 @@ Azure Synapse 的各种组件允许的最大值。
 | 类别 | 说明 | 最大值 |
 |:--- |:--- |:--- |
 | [数据仓库单位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |单个 SQL 池（数据仓库）单元的最大 DWU | 第 1 代：DW6000<br></br>第 2 代：DW30000c |
-| [数据仓库单位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |每个服务器的默认 DTU |54,000<br></br>默认情况下，每个 SQL 服务器（例如myserver.database.windows.net）的 DTU 配额为 54，000，允许高达 DW5000c。 此配额仅仅只是安全限制。 您可以通过[创建支持票证](sql-data-warehouse-get-started-create-support-ticket.md)并选择 *"配额*"作为请求类型来增加配额。  要计算 DTU 需求，请将所需的 DWU 总数乘以 7.5 或将所需的 cDWU 总数乘以 9.5。 例如：<br></br>DW6000 x 7.5 = 45,000 DTU<br></br>DW5000c x 9.5 = 47,500 DTU。<br></br>可以在门户中的 SQL Server 选项中查看当前 DTU 消耗量。 已暂停和未暂停的数据库都计入 DTU 配额。 |
+| [数据仓库单位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |每个服务器的默认 DTU |54,000<br></br>默认情况下，每个 SQL server （例如 myserver.database.windows.net）的 DTU 配额为54000，这允许最多 DW5000c。 此配额仅仅只是安全限制。 可以通过[创建支持票证](sql-data-warehouse-get-started-create-support-ticket.md)并选择“配额”  作为请求类型来增加配额。  要计算 DTU 需求，请将所需的 DWU 总数乘以 7.5 或将所需的 cDWU 总数乘以 9.5。 例如：<br></br>DW6000 x 7.5 = 45,000 DTU<br></br>DW5000c x 9.5 = 47,500 DTU。<br></br>可以在门户中的 SQL Server 选项中查看当前 DTU 消耗量。 已暂停和未暂停的数据库都计入 DTU 配额。 |
 | 数据库连接 |并发打开的最大会话数 |1024<br/><br/>并发打开的会话数因所选 DWU 而异。 DWU600c 及更高版本支持最多 1024 个打开的会话。 DWU500c 及更低版本支持最多 512 个并发打开的会话。 请注意，可并发执行的查询数量是有限制的。 当超出并发限制时，请求将进入内部队列等待处理。 |
 | 数据库连接 |预处理语句的最大内存 |20 MB |
 | [工作负荷管理](resource-classes-for-workload-management.md) |最大并行查询 |128<br/><br/>  最多可执行 128 个并发查询，其余查询将排队。<br/><br/>将用户分配到更高的资源类或降低[数据仓库单位](memory-concurrency-limits.md)设置时，并发查询的数量可能会减少。 某些查询（例如 DMV 查询）始终允许运行，并且不会影响并发查询限制。 有关并发查询执行的更多详细信息，请参阅[并发最大值](memory-concurrency-limits.md)一文。 |
-| [tempdb](sql-data-warehouse-tables-temporary.md) |最大 GB |每 DW100c 399 GB。 因此，在 DWU1000c 时，tempdb 大小为 3.99 TB。 |
+| [tempdb](sql-data-warehouse-tables-temporary.md) |最大 GB |每 DW100c 399 GB。 因此，在 DWU1000c，tempdb 的大小调整为 3.99 TB。 |
 ||||
 
 ## <a name="database-objects"></a>数据库对象
 
 | 类别 | 说明 | 最大值 |
 |:--- |:--- |:--- |
-| 数据库 |最大大小 | 第 1 代：磁盘压缩后为 240TB。 此空间与 tempdb 或日志空间无关，因此，此空间专用于永久表。  聚集列存储压缩率估计为 5 倍。  此压缩率允许数据库在所有表都为聚集列存储（默认表类型）的情况下增长到大约 1 PB。 <br/><br/> 第 2 代：列存储表的无限存储。  数据库的行存储部分仍限制为磁盘上压缩的 240 TB。 |
-| 表 |最大大小 |列存储表的大小不受限制。 <br>60 TB 用于磁盘上压缩的行存储表。 |
+| 数据库 |最大大小 | 第 1 代：磁盘压缩后为 240TB。 此空间与 tempdb 或日志空间无关，因此，此空间专用于永久表。  聚集列存储压缩率估计为 5 倍。  此压缩率允许数据库在所有表都为聚集列存储（默认表类型）的情况下增长到大约 1 PB。 <br/><br/> Gen2：列存储表的无限制存储。  数据库的行存储部分仍限制为在磁盘上压缩 240 TB。 |
+| 表 |最大大小 |列存储表的大小不受限制。 <br>磁盘上压缩的行存储表的 60 TB。 |
 | 表 |每个数据库的表数 | 100,000 |
 | 表 |每个表的列数 |1024 个列 |
 | 表 |每个列的字节数 |取决于列[数据类型](sql-data-warehouse-tables-data-types.md)。 char 数据类型的限制为 8000，nvarchar 数据类型的限制为 4000，MAX 数据类型的限制为 2 GB。 |
@@ -57,7 +57,7 @@ Azure Synapse 的各种组件允许的最大值。
 | 查看 |每个视图的列数 |1,024 |
 ||||
 
-## <a name="loads"></a>加载
+## <a name="loads"></a>负载
 
 | 类别 | 说明 | 最大值 |
 |:--- |:--- |:--- |

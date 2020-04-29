@@ -1,5 +1,5 @@
 ---
-title: 将数据加载到 Azure 数据存储第 1 代
+title: 将数据加载到 Azure Data Lake Storage Gen1
 description: 使用 Azure 数据工厂将数据复制到 Azure Data Lake Storage Gen1 中
 services: data-factory
 ms.author: jingwang
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/17/2018
 ms.openlocfilehash: 1b1b19814709451bdbbea97462c459149484e71f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415852"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>使用 Azure 数据工厂向 Azure Data Lake Storage Gen1 加载数据
@@ -29,7 +29,7 @@ Azure 数据工厂是一个完全托管的基于云的数据集成服务。 该�
 Azure 数据工厂在将数据加载到 Data Lake Storage Gen1 方面提供以下优点：
 
 * **轻松设置**：无需脚本的 5 步直观的向导。
-* **丰富的数据存储支持**：对丰富的本地数据存储和基于云的数据存储的内置支持。 有关详细列表，请参阅表[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+* **丰富的数据存储支持**：内置支持一组丰富的本地和基于云的数据存储。 有关详细列表，请参阅表[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
 * **安全且合规**：通过 HTTPS 或 ExpressRoute 传输数据。 存在全局服务可确保数据永远不会离开地理边界。
 * **高性能**：向 Data Lake Storage Gen1 加载数据的速度高达 1-GB/秒。 有关详细信息，请参阅[复制活动性能](copy-activity-performance.md)。
 
@@ -38,15 +38,15 @@ Azure 数据工厂在将数据加载到 Data Lake Storage Gen1 方面提供以�
 > [!NOTE]
 > 有关详细信息，请参阅[使用 Azure 数据工厂向/从 Data Lake Storage Gen1 复制数据](connector-azure-data-lake-store.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* Azure 订阅：如果没有 Azure 订阅，请先创建一个[免费帐户](https://azure.microsoft.com/free/)。
+* Azure 订阅：如果没有 Azure 订阅，请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 * Data Lake Storage Gen1 帐户：如果没有 Data Lake Storage Gen1 帐户，请参阅[创建 Data Lake Storage Gen1 帐户](../data-lake-store/data-lake-store-get-started-portal.md#create-a-data-lake-storage-gen1-account)中的说明。
 * Amazon S3：本文介绍如何从 Amazon S3 复制数据。 可以按类似步骤使用其他数据存储。
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
-1. 在左侧菜单上，选择 **"创建资源** > **分析** > **数据工厂**"：
+1. 在左侧菜单中，选择 "**创建资源** > **分析** > **数据工厂**"：
    
    ![在“新建”窗格中选择“数据工厂”](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -60,7 +60,7 @@ Azure 数据工厂在将数据加载到 Data Lake Storage Gen1 方面提供以�
     * **版本**：选择“V2”****.
     * **位置**：选择数据工厂所在的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储可以在其他位置和区域中。 这些数据存储包括 Azure Data Lake Storage Gen1、Azure 存储、Azure SQL 数据库，等等。
 
-3. 选择“创建”  。
+3. 选择“创建”。 
 4. 创建操作完成后，请转到数据工厂。 此时会看到“数据工厂”**** 主页，如下图所示： 
    
    ![数据工厂主页](./media/load-data-into-azure-data-lake-store/data-factory-home-page.png)
@@ -90,7 +90,7 @@ Azure 数据工厂在将数据加载到 Data Lake Storage Gen1 方面提供以�
    
       ![指定 Amazon S3 帐户](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
    
-   4. 随即显示新的连接。 选择“**下一页**”。
+   4. 随即显示新的连接。 选择“下一步”  。
    
    ![指定 Amazon S3 帐户](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
    
@@ -110,7 +110,7 @@ Azure 数据工厂在将数据加载到 Data Lake Storage Gen1 方面提供以�
 
    1. 为“Data Lake Store 帐户名”选择 Data Lake Storage Gen1 帐户****。
    2. 指定“租户”并选择“完成”****。
-   3. 选择“**下一页**”。
+   3. 选择“下一步”  。
    
    > [!IMPORTANT]
    > 在本演练中，使用 Azure 资源的托管标识来对 Data Lake Storage Gen1 帐户进行身份验证。 请务必按照[这些说明](connector-azure-data-lake-store.md#managed-identity)授予 MSI 在 Data Lake Storage Gen1 中的适当权限。
@@ -129,7 +129,7 @@ Azure 数据工厂在将数据加载到 Data Lake Storage Gen1 方面提供以�
 12. 在“部署”页中，选择“监视”可以监视管道（任务）********：
 
     ![“部署”页](./media/load-data-into-azure-data-lake-store/deployment-page.png)
-13. 请注意，界面中已自动选择左侧的“监视”选项卡。**** "**操作"** 列包含用于查看活动运行详细信息和重新运行管道的链接：
+13. 请注意，界面中已自动选择左侧的“监视”选项卡。**** "**操作**" 列包含用于查看活动运行详细信息的链接以及用于重新运行管道的链接：
 
     ![监视管道运行](./media/load-data-into-azure-data-lake-store/monitor-pipeline-runs.png)
 14. 若要查看与管道运行关联的活动运行，请选择“操作”列中的“查看活动运行”链接。******** 该管道只包含一个活动（复制活动），因此只显示了一个条目。 若要切换回到管道运行视图，请选择顶部的“管道”链接****。 选择“刷新”可刷新列表。**** 

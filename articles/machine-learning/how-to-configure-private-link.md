@@ -1,7 +1,7 @@
 ---
 title: 配置 Azure 专用链接
 titleSuffix: Azure Machine Learning
-description: 使用 Azure 专用链接从虚拟网络安全地访问 Azure 机器学习工作区。
+description: 使用 Azure 专用链接从虚拟网络安全访问 Azure 机器学习工作区。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,67 +11,67 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
 ms.openlocfilehash: 8140fc4286ac97260e0b23ea700a70303ec69e2e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81411205"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>为 Azure 机器学习工作区配置 Azure 专用链接（预览）
 
-在本文档中，您将了解如何将 Azure 私有链接与 Azure 机器学习工作区一起使用。 此功能目前处于预览状态，在美国东部、美国西部 2、美国中南部区域提供。 
+本文档介绍如何将 Azure 私有链接与 Azure 机器学习工作区结合使用。 此功能目前以预览版提供，可在美国东部、美国西部2、美国中南部地区获得。 
 
-Azure 专用链接使您能够使用专用终结点连接到工作区。 专用终结点是虚拟网络中的一组专用 IP 地址。 然后，您可以将对工作区的访问限制为仅通过专用 IP 地址进行。 专用链路有助于减少数据渗漏的风险。 要了解有关私有终结点的更多详细信息，请参阅[Azure 专用链接](/azure/private-link/private-link-overview)一文。
+使用 Azure 专用链接，可以使用专用终结点连接到工作区。 专用终结点是虚拟网络中的一组专用 IP 地址。 然后，你可以将对工作区的访问权限限制为仅在专用 IP 地址上进行。 私有链接有助于降低数据渗透的风险。 若要了解有关专用终结点的详细信息，请参阅[Azure 专用链接](/azure/private-link/private-link-overview)一文。
 
 > [!IMPORTANT]
-> Azure 专用链接不会影响 Azure 控制平面（管理操作），例如删除工作区或管理计算资源。 例如，创建、更新或删除计算目标。 这些操作正常地通过公共互联网执行。
+> Azure 专用链接不会影响 Azure 控制平面（管理操作），例如删除工作区或管理计算资源。 例如，创建、更新或删除计算目标。 这些操作是在公共 Internet 上按正常方式执行的。
 >
-> 启用专用链接的工作区不支持 Azure 机器学习计算实例预览。
+> 在启用了 "专用" 链接的工作区中不支持 Azure 机器学习计算实例预览。
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>创建使用专用终结点的工作区
 
-目前，我们仅在创建新的 Azure 机器学习工作区时支持启用专用终结点。 以下模板适用于几种常用配置：
+目前，仅支持在创建新 Azure 机器学习工作区时启用专用终结点。 为几个常用配置提供以下模板：
 
 > [!TIP]
-> 自动审批控制对启用专用链接资源的自动访问。 有关详细信息，请参阅什么是[Azure 专用链接服务](../private-link/private-link-service-overview.md)。
+> 自动批准控制对启用了专用链接的资源的自动访问。 有关详细信息，请参阅[什么是 Azure 专用链接服务](../private-link/private-link-service-overview.md)。
 
-* [具有客户管理的密钥和专用链接的自动审批工作区](#cmkaapl)
-* [具有客户管理的密钥和手动批准专用链接的工作区](#cmkmapl)
-* [具有 Microsoft 管理的密钥的工作区和私有链接的自动审批](#mmkaapl)
-* [具有 Microsoft 管理的密钥和手动批准专用链接的工作区](#mmkmapl)
+* [包含客户管理的密钥并自动批准专用链接的工作区](#cmkaapl)
+* [工作区，其中包含客户管理的密钥和手动批准专用链接](#cmkmapl)
+* [包含 Microsoft 托管密钥的工作区和专用链接的自动批准](#mmkaapl)
+* [工作区与 Microsoft 托管的密钥和手动批准专用链接](#mmkmapl)
 
 部署模板时，必须提供以下信息：
 
 * 工作区名称
-* Azure 区域以在
+* 要在其中创建资源的 Azure 区域
 * 工作区版本（基本版或企业版）
-* 如果应启用工作区的高机密性设置
-* 如果应启用具有客户托管密钥的工作区的加密，并且应启用密钥的关联值
+* 如果应启用工作区的高保密性设置
+* 如果应启用使用客户托管密钥的工作区加密以及密钥的关联值
 * 虚拟网络和子网名称，模板将创建新的虚拟网络和子网
 
-提交模板并完成预配后，包含工作区的资源组将包含与专用链接相关的三个新项目类型：
+提交模板并完成设置后，包含工作区的资源组将包含三个与专用链接相关的新项目类型：
 
 * 专用终结点
 * 网络接口
 * 专用 DNS 区域
 
-工作区还包含一个 Azure 虚拟网络，该网络可以通过专用终结点与工作区通信。
+工作区还包含可通过专用终结点与工作区通信的 Azure 虚拟网络。
 
 ### <a name="deploy-the-template-using-the-azure-portal"></a>使用 Azure 门户部署模板
 
-1. 遵循[从自定义模板部署资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)中的步骤。 到达 __"编辑"模板__屏幕时，请粘贴到本文档末尾的模板之一。
+1. 遵循[从自定义模板部署资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)中的步骤。 当你到达 "__编辑模板__" 屏幕时，请粘贴到本文档末尾的模板之一。
 1. 选择“保存”以使用该模板。____ 提供以下信息并同意列出的条款和条件：
 
    * 订阅：选择要用于这些资源的 Azure 订阅。
-   * 资源组：选择或创建资源组以包含服务。
-   * 工作区名称：要用于要创建的 Azure 机器学习工作区的名称。 工作区名称的长度必须为 3 到 33 个字符。 只能包含字母数字字符和“-”。
-   * 位置：选择将创建资源的位置。
+   * 资源组：选择或创建一个包含服务的资源组。
+   * 工作区名称：要创建的 Azure 机器学习工作区的名称。 工作区名称的长度必须为 3 到 33 个字符。 只能包含字母数字字符和“-”。
+   * 位置：选择将在其中创建资源的位置。
 
 有关详细信息，请参阅[从自定义模板部署资源](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)。
 
 ### <a name="deploy-the-template-using-azure-powershell"></a>使用 Azure PowerShell 部署模板
 
-此示例假定您已将其中一个模板从本文档的末尾保存到当前目录中指定的`azuredeploy.json`文件中：
+此示例假设你已将本文档末尾的一个模板保存到当前目录中名为`azuredeploy.json`的文件：
 
 ```powershell
 New-AzResourceGroup -Name examplegroup -Location "East US"
@@ -84,7 +84,7 @@ new-azresourcegroupdeployment -name exampledeployment `
 
 ### <a name="deploy-the-template-using-the-azure-cli"></a>使用 Azure CLI 部署模板
 
-此示例假定您已将其中一个模板从本文档的末尾保存到当前目录中指定的`azuredeploy.json`文件中：
+此示例假设你已将本文档末尾的一个模板保存到当前目录中名为`azuredeploy.json`的文件：
 
 ```azurecli-interactive
 az group create --name examplegroup --location "East US"
@@ -97,44 +97,44 @@ az group deployment create \
 
 有关详细信息，请参阅[使用资源管理器模板和 Azure CLI 部署资源](../azure-resource-manager/templates/deploy-cli.md)和[使用 SAS 令牌和 Azure CLI 部署专用资源管理器模板](../azure-resource-manager/templates/secure-template-with-sas-token.md)。
 
-## <a name="using-a-workspace-over-a-private-endpoint"></a>在专用终结点上使用工作区
+## <a name="using-a-workspace-over-a-private-endpoint"></a>通过专用终结点使用工作区
 
-由于仅允许从虚拟网络与工作区通信，因此使用工作区的任何开发环境都必须是虚拟网络的成员。 例如，虚拟网络中的虚拟机或使用 VPN 网关连接到虚拟网络的计算机。
+由于仅允许从虚拟网络通信到工作区，因此使用该工作区的任何开发环境都必须是虚拟网络的成员。 例如，虚拟网络中的虚拟机或使用 VPN 网关连接到虚拟网络的计算机。
 
 > [!IMPORTANT]
-> 为了避免连接暂时中断，Microsoft 建议在启用专用链接后在连接到工作区的计算机上刷新 DNS 缓存。 
+> 为了避免暂时中断连接，Microsoft 建议在启用 "专用" 链接后，在连接到工作区的计算机上刷新 DNS 缓存。 
 
 有关 Azure 虚拟机的信息，请参阅[虚拟机文档](/azure/virtual-machines/)。
 
-有关 VPN 网关的信息，请参阅[什么是 VPN 网关](/azure/vpn-gateway/vpn-gateway-about-vpngateways)。
+有关 VPN 网关的信息，请参阅[什么是 vpn 网关](/azure/vpn-gateway/vpn-gateway-about-vpngateways)。
 
 ## <a name="using-azure-storage"></a>使用 Azure 存储
 
-要保护工作区使用的 Azure 存储帐户，请将其放入虚拟网络中。
+若要保护工作区使用的 Azure 存储帐户，请将其放在虚拟网络中。
 
-有关将存储帐户放入虚拟网络的信息，请参阅[为工作区使用存储帐户](how-to-enable-virtual-network.md#use-a-storage-account-for-your-workspace)。
+有关将存储帐户放在虚拟网络中的信息，请参阅对[工作区使用存储帐户](how-to-enable-virtual-network.md#use-a-storage-account-for-your-workspace)。
 
 ## <a name="using-azure-key-vault"></a>使用 Azure Key Vault
 
-要保护工作区使用的 Azure 密钥保管库，可以将其放入虚拟网络或为其启用专用链接。
+若要保护你的工作区使用的 Azure Key Vault，你可以将其放在虚拟网络中，或者为其启用 "专用" 链接。
 
-有关将密钥保管库放入虚拟网络的信息，请参阅[将密钥保管库实例与工作区一起使用](how-to-enable-virtual-network.md#use-a-key-vault-instance-with-your-workspace)。
+有关将密钥保管库放入虚拟网络的信息，请参阅在[工作区中使用密钥保管库实例](how-to-enable-virtual-network.md#use-a-key-vault-instance-with-your-workspace)。
 
-有关为密钥保管库启用专用链接的信息，请参阅[将密钥保管库与 Azure 专用链接集成](/azure/key-vault/private-link-service)。
+有关启用密钥保管库专用链接的信息，请参阅将[Key Vault 与 Azure Private 链接集成](/azure/key-vault/private-link-service)。
 
-## <a name="using-azure-kubernetes-services"></a>使用 Azure 库伯奈斯服务
+## <a name="using-azure-kubernetes-services"></a>使用 Azure Kubernetes 服务
 
-要保护工作区使用的 Azure Kubernetes 服务，请将其放入虚拟网络中。 有关详细信息，请参阅将[Azure 库伯内斯服务与工作区一起使用](how-to-enable-virtual-network.md#aksvnet)。
+若要保护工作区使用的 Azure Kubernetes 服务，请将其放在虚拟网络中。 有关详细信息，请参阅[将 Azure Kubernetes 服务与工作区配合使用](how-to-enable-virtual-network.md#aksvnet)。
 
 > [!WARNING]
-> Azure 机器学习不支持使用启用专用链接的 Azure 库伯奈斯服务。
+> Azure 机器学习不支持使用启用了专用链接的 Azure Kubernetes 服务。
 
 ## <a name="azure-container-registry"></a>Azure 容器注册表
 
-有关在虚拟网络内保护 Azure 容器注册表的信息，请参阅[使用 Azure 容器注册表](how-to-enable-virtual-network.md#use-azure-container-registry)。
+有关在虚拟网络中保护 Azure 容器注册表的信息，请参阅[使用 Azure 容器注册表](how-to-enable-virtual-network.md#use-azure-container-registry)。
 
 > [!IMPORTANT]
-> 如果对 Azure 机器学习工作区使用专用链接，并将工作区的 Azure 容器注册表放在虚拟网络中，则还必须应用以下 Azure 资源管理器模板。 此模板使工作区能够通过专用链路与 ACR 通信。
+> 如果为 Azure 机器学习工作区使用专用链接，并在虚拟网络中放置工作区的 Azure 容器注册表，则还必须应用以下 Azure 资源管理器模板。 此模板允许你的工作区通过专用链接与 ACR 通信。
 
 ```json
 {
@@ -189,7 +189,7 @@ az group deployment create \
 ## <a name="azure-resource-manager-templates"></a>Azure 资源管理器模板
 
 <a id="cmkaapl"></a>
-### <a name="workspace-with-customer-managed-keys-and-auto-approval-for-private-link"></a>具有客户管理的密钥和专用链接的自动审批工作区
+### <a name="workspace-with-customer-managed-keys-and-auto-approval-for-private-link"></a>包含客户管理的密钥并自动批准专用链接的工作区
 
 ```json
 {
@@ -492,7 +492,7 @@ az group deployment create \
 ```
 
 <a id="cmkmapl"></a>
-### <a name="workspace-with-customer-managed-keys-and-manual-approval-for-private-link"></a>具有客户管理的密钥和手动批准专用链接的工作区
+### <a name="workspace-with-customer-managed-keys-and-manual-approval-for-private-link"></a>工作区，其中包含客户管理的密钥和手动批准专用链接
 
 ```json
 {
@@ -718,7 +718,7 @@ az group deployment create \
 ```
 
 <a id="mmkaapl"></a>
-### <a name="workspace-with-microsoft-managed-keys-and-auto-approval-for-private-link"></a>具有 Microsoft 管理的密钥的工作区和私有链接的自动审批
+### <a name="workspace-with-microsoft-managed-keys-and-auto-approval-for-private-link"></a>包含 Microsoft 托管密钥的工作区和专用链接的自动批准
 
 ```json
 {
@@ -979,7 +979,7 @@ az group deployment create \
 ```
 
 <a id="mmkmapl"></a>
-### <a name="workspace-with-microsoft-managed-keys-and-manual-approval-for-private-link"></a>具有 Microsoft 管理的密钥和手动批准专用链接的工作区
+### <a name="workspace-with-microsoft-managed-keys-and-manual-approval-for-private-link"></a>工作区与 Microsoft 托管的密钥和手动批准专用链接
 
 ```json
 {
@@ -1164,4 +1164,4 @@ az group deployment create \
 
 ## <a name="next-steps"></a>后续步骤
 
-有关保护 Azure 机器学习工作区的详细信息，请参阅[企业安全](concept-enterprise-security.md)一文。
+有关保护 Azure 机器学习工作区的详细信息，请参阅[企业安全性](concept-enterprise-security.md)一文。

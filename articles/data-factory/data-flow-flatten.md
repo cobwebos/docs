@@ -1,6 +1,6 @@
 ---
-title: 映射数据流中的扁平转换
-description: 使用拼合转换使分层数据非规范化
+title: 在映射数据流中平展转换
+description: 使用平展转换非规范化分层数据
 author: kromerm
 ms.author: makromer
 ms.review: daperlov
@@ -8,41 +8,41 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: a0e75957a0ab49394dab56f2b7fb847dee4b43cb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81413680"
 ---
-# <a name="flatten-transformation-in-mapping-data-flow"></a>映射数据流中的扁平转换
+# <a name="flatten-transformation-in-mapping-data-flow"></a>在映射数据流中平展转换
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-使用拼合变换在分层结构（如 JSON）中获取数组值，并将其展开到单独的行中。 此过程称为非规范化。
+使用平展转换在层次结构（如 JSON）中获取数组值，并将其展开到各个行。 此过程称为非规范化。
 
 ## <a name="configuration"></a>配置
 
-扁平转换包含以下配置设置
+平展转换包含以下配置设置
 
-![拼合设置](media/data-flow/flatten1.png "拼合设置")
+![平展设置](media/data-flow/flatten1.png "平展设置")
 
-### <a name="unroll-by"></a>展开者
+### <a name="unroll-by"></a>展开
 
-选择要展开的数组。 每个数组中每个项的输出数据将具有一行。 如果输入行中的按数组展开为空，则将有一个输出行，其中未滚动的值为空。
+选择要展开的数组。 每个数组中的每个项的输出数据都占一行。 如果输入行中的展开数组为 null 或为空，则会有一个输出行的 unrolled 值为 null。
 
 ### <a name="unroll-root"></a>展开根
 
-默认情况下，拼合转换将数组解压到它存在的层次结构的顶部。 您可以选择数组作为展开根。 展开根必须是复杂对象的数组，这些对象是或包含按数组展开的。 如果选择了未卷根，则输出数据将包含卷根中每个项至少包含一行。 如果输入行在未滚动根中没有任何项，它将从输出数据中删除。 选择未卷根始终输出的行数小于或等于默认行为。
+默认情况下，平展转换 unrolls 将数组置于其中存在的层次结构的顶部。 你可以选择将数组选择为展开根。 展开根必须是复杂对象的数组，这些对象要么为，要么包含展开 by 数组。 如果选择了展开根，则输出数据将在展开根中的每个项中至少包含一行。 如果输入行没有展开根中的任何项，则会将其从输出数据中删除。 选择展开根将始终输出小于或等于默认行为的行数。
 
-### <a name="flatten-mapping"></a>拼合映射
+### <a name="flatten-mapping"></a>平展映射
 
-与选择转换类似，从传入字段和非规范化数组中选择新结构的投影。 如果映射了非规范化数组，则输出列将与数组的数据类型相同。 如果按数组展开是包含子数组的复杂对象的数组，则映射该 subarry 的项将输出数组。
+类似于 "选择转换"，从传入字段和非规范化数组中选择新结构的投影。 如果映射了非规范化数组，则输出列的数据类型将与数组的数据类型相同。 如果展开 by 数组是包含子的复杂对象数组，则映射该 subarry 的项将输出一个数组。
 
-请参阅检查选项卡和数据预览以验证映射输出。
+请参阅检查选项卡和数据预览，验证映射输出。
 
 ## <a name="examples"></a>示例
 
-有关压平变换的以下示例，请参阅以下 JSON 对象
+有关平展转换的以下示例，请参阅以下 JSON 对象
 
 ``` json
 {
@@ -64,11 +64,11 @@ ms.locfileid: "81413680"
 {"name": "Company3", "location": "Kirkland"}
 ```
 
-### <a name="no-unroll-root-with-string-array"></a>没有带字符串数组的解卷根
+### <a name="no-unroll-root-with-string-array"></a>没有带字符串数组的展开根
 
-| 展开者 | 展开根 | 投影 |
+| 展开 | 展开根 | 投影 |
 | --------- | ----------- | ---------- |
-| 货物.客户 | 无 | name <br> 客户 = 货物。 |
+| 商品。客户 | 无 | name <br> customer = 客户 |
 
 #### <a name="output"></a>输出
 
@@ -82,11 +82,11 @@ ms.locfileid: "81413680"
 { 'Company3', null}
 ```
 
-### <a name="no-unroll-root-with-complex-array"></a>没有具有复杂数组的卷根
+### <a name="no-unroll-root-with-complex-array"></a>没有包含复杂数组的展开根
 
-| 展开者 | 展开根 | 投影 |
+| 展开 | 展开根 | 投影 |
 | --------- | ----------- | ---------- |
-| 货物.订单.发货.订单项目 | 无 | name <br> 订单 Id = 货物.订单.订单Id <br> 项目名称 = 货物.订单.发货.订单项目.项目名称 <br> 物料数量 = 货物.订单.发货.订单项目.项目数量 <br> 位置 = 位置 |
+| 发货。 orderItems | 无 | name <br> 订单 Id = 发货情况订单 Id <br> 命令% = orderItems。 <br> itemQty = orderItems. itemQty <br> 位置 = 位置 |
 
 #### <a name="output"></a>输出
 
@@ -103,11 +103,11 @@ ms.locfileid: "81413680"
 { 'Company3', null, null, null, 'Kirkland'}
 ```
 
-### <a name="same-root-as-unroll-array"></a>与卷外卷阵列相同的根
+### <a name="same-root-as-unroll-array"></a>与展开数组相同的根
 
-| 展开者 | 展开根 | 投影 |
+| 展开 | 展开根 | 投影 |
 | --------- | ----------- | ---------- |
-| 货物.订单 | 货物.订单 | name <br> 货物.订单.发货.订单项目.项目名称 <br> 货物.客户 <br> location |
+| 货物订单 | 货物订单 | name <br> orderItems..。 <br> 商品。客户 <br> location |
 
 #### <a name="output"></a>输出
 
@@ -119,11 +119,11 @@ ms.locfileid: "81413680"
 { 'Company2', null, ['Bank'], 'Bellevue'}
 ```
 
-### <a name="unroll-root-with-complex-array"></a>使用复杂数组展开根
+### <a name="unroll-root-with-complex-array"></a>带有复杂数组的展开根
 
-| 展开者 | 展开根 | 投影 |
+| 展开 | 展开根 | 投影 |
 | --------- | ----------- | ---------- |
-| 货物.订单.发货.订单项目 | 货物.订单 |name <br> 订单 Id = 货物.订单.订单Id <br> 项目名称 = 货物.订单.发货.订单项目.项目名称 <br> 物料数量 = 货物.订单.发货.订单项目.项目数量 <br> 位置 = 位置 |
+| 发货。 orderItem | 货物订单 |name <br> 订单 Id = 发货情况订单 Id <br> 命令% = orderItems。 <br> itemQty = orderItems. itemQty <br> 位置 = 位置 |
 
 #### <a name="output"></a>输出
 
@@ -171,5 +171,5 @@ source foldDown(unroll(goods.orders.shipped.orderItems, goods.orders),
 
 ## <a name="next-steps"></a>后续步骤
 
-* 使用[数据透视转换](data-flow-pivot.md)将行透视到列。
-* 使用["取消透视"转换](data-flow-unpivot.md)将列透视到行。
+* 使用[透视转换](data-flow-pivot.md)将行透视到列。
+* 使用[逆透视转换](data-flow-unpivot.md)将列透视到行。

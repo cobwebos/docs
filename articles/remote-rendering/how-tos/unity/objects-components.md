@@ -1,30 +1,30 @@
 ---
 title: Unity 游戏对象和组件
-description: 描述用于远程渲染实体和组件的 Unity 特定方法。
+description: 介绍使用远程呈现实体和组件的 Unity 特定方法。
 author: jakrams
 ms.author: jakras
 ms.date: 02/28/2020
 ms.topic: how-to
 ms.openlocfilehash: a34276c73211c1d9bea291f449cbc7041a3e78a2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81409860"
 ---
 # <a name="interact-with-unity-game-objects-and-components"></a>与 Unity 游戏对象和组件交互
 
-Azure 远程呈现 （ARR） 针对大量对象进行了优化（请参阅[限制](../../reference/limits.md)）。 虽然可以在主机上管理大型和复杂的层次结构，但在低功率设备上在 Unity 中复制它们是不可行的。
+Azure 远程呈现（ARR）针对大量对象进行了优化（请参阅[限制](../../reference/limits.md)）。 尽管可以在主机上管理大型和复杂的层次结构，但在低功率设备上，在 Unity 中复制它们都是不可行的。
 
-因此，在主机上加载模型时，Azure 远程呈现会镜像有关客户端设备上模型结构的信息（这将产生网络流量），但不会复制 Unity 中的对象和组件。 相反，它期望您手动请求所需的 Unity 游戏对象和组件，以便可以将开销限制为实际需要的内容。 这样，您可以对客户端性能进行更多控制。
+因此，当在主机上加载模型时，Azure 远程呈现会镜像客户端设备上有关模型结构的信息（这会产生网络流量），但不会复制 Unity 中的对象和组件。 相反，它要求您手动请求所需的 Unity 游戏对象和组件，以便您可以将系统开销限制在实际所需的范围之外。 这样，就可以更好地控制客户端性能。
 
-因此，Azure 远程呈现的统一集成附带了可按需复制远程呈现结构的其他功能。
+因此，Azure 远程呈现的 Unity 集成附带了附加功能，可根据需要复制远程呈现结构。
 
 ## <a name="load-a-model-in-unity"></a>在 Unity 中加载模型
 
-加载模型时，您将获得对加载模型的根对象的引用。 此引用不是 Unity 游戏对象，但您可以使用扩展方法`Entity.GetOrCreateGameObject()`将其转换为一个。 该函数需要类型`UnityCreationMode`参数。 如果通过`CreateUnityComponents`，则新创建的 Unity 游戏对象将另外使用主机上存在的所有远程呈现组件的代理组件填充。 不过，建议您选择`DoNotCreateUnityComponents`，以尽量少用开销。
+在加载模型时，将获取对已加载模型的根对象的引用。 此引用不是 Unity 游戏对象，但您可以使用扩展方法`Entity.GetOrCreateGameObject()`将其转换为一个对象。 该函数需要类型`UnityCreationMode`为的参数。 如果传递`CreateUnityComponents`，则新创建的 Unity 游戏对象将另外用代理组件填充主机上存在的所有远程呈现组件。 但`DoNotCreateUnityComponents`建议使用此选项，以将开销降到最低。
 
-### <a name="load-model-with-task"></a>带任务的加载模型
+### <a name="load-model-with-task"></a>加载包含任务的模型
 
 ```cs
 LoadModelAsync _pendingLoadTask = null;
@@ -50,7 +50,7 @@ void LoadModelWithTask()
 }
 ```
 
-### <a name="load-model-with-unity-coroutines"></a>具有 Unity 协同例程的加载模型
+### <a name="load-model-with-unity-coroutines"></a>具有 Unity 协同程序的负载模型
 
 ```cs
 IEnumerator LoadModelWithCoroutine()
@@ -72,7 +72,7 @@ IEnumerator LoadModelWithCoroutine()
 }
 ```
 
-### <a name="load-model-with-await-pattern"></a>具有等待模式的加载模型
+### <a name="load-model-with-await-pattern"></a>采用 await 模式的负载模型
 
 ```cs
 async void LoadModelWithAwait()
@@ -82,33 +82,33 @@ async void LoadModelWithAwait()
 }
 ```
 
-上述代码示例通过 SAS 使用模型加载路径，因为已加载内置模型。 通过 blob 容器（使用`LoadModelAsync`和`LoadModelParams`） 寻址模型的工作方式完全类似。
+上面的代码示例通过 SAS 使用模型加载路径，因为内置模型已加载。 通过 blob 容器（使用`LoadModelAsync`和`LoadModelParams`）对模型进行寻址完全类似。
 
-## <a name="remoteentitysyncobject"></a>远程实体同步对象
+## <a name="remoteentitysyncobject"></a>RemoteEntitySyncObject
 
-创建 Unity 游戏对象隐式`RemoteEntitySyncObject`地向游戏对象添加组件。 此组件用于将实体转换同步到服务器。 默认情况下`RemoteEntitySyncObject`，要求用户显式调用`SyncToRemote()`以将本地 Unity 状态同步到服务器。 启用`SyncEveryFrame`将自动同步对象。
+创建 Unity 游戏对象会将`RemoteEntitySyncObject`组件隐式添加到游戏对象。 此组件用于将实体转换同步到服务器。 默认情况`RemoteEntitySyncObject`下，要求用户显式调用`SyncToRemote()`以将本地 Unity 状态同步到服务器。 启用`SyncEveryFrame`将自动同步对象。
 
-具有 的`RemoteEntitySyncObject`对象的远程子级可以实例化，并通过 **"显示子级**"按钮在 Unity 编辑器中显示。
+具有的`RemoteEntitySyncObject`对象可以通过 "**显示子元素**" 按钮在 Unity 编辑器中实例化并显示其远程子。
 
-![远程实体同步对象](media/remote-entity-sync-object.png)
+![RemoteEntitySyncObject](media/remote-entity-sync-object.png)
 
-## <a name="wrapper-components"></a>包装组件
+## <a name="wrapper-components"></a>包装器组件
 
-附加到远程渲染实体的[组件](../../concepts/components.md)通过代理`MonoBehavior`s 向 Unity 公开。 这些代理表示 Unity 中的远程组件，并将所有修改转发到主机。
+附加到远程呈现实体的[组件](../../concepts/components.md)通过代理`MonoBehavior`向 Unity 公开。 这些代理表示 Unity 中的远程组件，并将所有修改转发到主机。
 
-要创建代理远程呈现组件，请使用扩展方法`GetOrCreateArrComponent`：
+若要创建代理远程呈现组件，请使用扩展`GetOrCreateArrComponent`方法：
 
 ```cs
 var cutplane = gameObject.GetOrCreateArrComponent<ARRCutPlaneComponent>(RemoteManagerUnity.CurrentSession);
 ```
 
-## <a name="coupled-lifetimes"></a>耦合寿命
+## <a name="coupled-lifetimes"></a>耦合生存期
 
-远程[实体](../../concepts/entities.md)和 Unity 游戏对象的生存期在通过 绑定时耦合`RemoteEntitySyncObject`。 如果使用此类游戏`UnityEngine.Object.Destroy(...)`对象进行调用，则远程实体也将被删除。
+远程[实体](../../concepts/entities.md)和 Unity 游戏对象的生存期是耦合的，而是通过绑定`RemoteEntitySyncObject`。 如果调用`UnityEngine.Object.Destroy(...)`此类游戏对象，也会删除远程实体。
 
-要销毁 Unity 游戏对象，在不影响远程实体的情况下，首先需要调用`Unbind()`。 `RemoteEntitySyncObject`
+若要销毁 Unity 游戏对象，而不影响远程实体，首先需要对调用`Unbind()` `RemoteEntitySyncObject`。
 
-所有代理组件也是如此。 要仅销毁客户端表示形式，需要首先调用`Unbind()`代理组件：
+对于所有代理组件都是如此。 若要仅销毁客户端表示形式，需要首先在代理`Unbind()`组件上调用：
 
 ```cs
 var cutplane = gameObject.GetComponent<ARRCutPlaneComponent>();

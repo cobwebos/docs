@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 站点恢复扩展 VMware/物理灾难恢复
+title: 使用 Azure Site Recovery 缩放 VMware/物理灾难恢复
 description: 了解如何使用 Azure Site Recovery 将大量本地 VMware VM 或物理服务器设置为灾难恢复到 Azure。
 author: rayne-wiselman
 manager: carmonm
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: a3a2317554f02dc1f1198d8019bbfdb50e3cc71c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81409768"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>为 VMware VM/物理服务器设置大规模灾难恢复
@@ -26,16 +26,16 @@ ms.locfileid: "81409768"
 - 在规划 VMware VM 的大规模灾难恢复以及测算所需的 Azure 资源时，可以指定用于容量计算的 RTO 值。
 
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
 适用于大规模灾难恢复的一些常规最佳做法。 本文档的后续几个部分将更详细地讨论这些最佳做法。
 
-- **确定目标要求**：在设置灾难恢复之前，估计 Azure 中的容量和资源需求。
-- **规划站点恢复组件**：找出需要满足估计容量的站点恢复组件（配置服务器、进程服务器）。
+- **确定目标要求**：在设置灾难恢复之前，估算出 Azure 中的容量和资源需求。
+- **规划 Site Recovery 组件**：确定需要提供哪些 Site Recovery 组件（配置服务器、进程服务器）才能符合估算的容量。
 - **设置一个或多个横向扩展进程服务器**：不要使用配置服务器上默认运行的进程服务器。 
-- **运行最新更新**：站点恢复团队定期发布新版本的网站恢复组件，并且应确保运行最新版本。 为帮助做到这一点，请在[新增功能](site-recovery-whats-new.md)中跟踪更新，在发布后[启用并安装更新](service-updates-how-to.md)。
-- **主动监视**：在启动和运行灾难恢复时，应主动监视复制计算机以及基础结构资源的状态和运行状况。
-- **灾难恢复演练**：应定期进行灾难恢复演练。 这些演练不会影响生产环境，但有助于确保在必要时可按预期故障转移到 Azure。
+- **运行最新的更新**：Site Recovery 团队定期发布 Site Recovery 组件的新版本，你应确保运行最新版本。 为帮助做到这一点，请在[新增功能](site-recovery-whats-new.md)中跟踪更新，在发布后[启用并安装更新](service-updates-how-to.md)。
+- **主动监视**：正常运行灾难恢复后，应主动监视复制的计算机以及基础结构资源的状态和运行状况。
+- **灾难恢复演练**：应定期运行灾难恢复演练。 这些演练不会影响生产环境，但有助于确保在必要时可按预期故障转移到 Azure。
 
 
 
@@ -70,12 +70,12 @@ ms.locfileid: "81409768"
 
 使用收集的估算值和建议，可以规划目标资源和容量。 如果已运行适用于 VMware VM 的部署规划器，可以借助许多的[报告建议](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations)。
 
-- **兼容 VM**：使用此编号可以标识准备好向 Azure 进行灾难恢复的 VM 数。 有关网络带宽和 Azure 核心数的建议基于此数字。
+- **兼容的 VM 数**：使用此数字来识别已准备好灾难恢复到 Azure 的 VM 数目。 有关网络带宽和 Azure 核心数的建议基于此数字。
 - **所需的网络带宽**：注意兼容 VM 的增量复制所需的带宽。 
     - 运行规划器时，应指定所需的 RPO（以分钟为单位）。 建议中会显示符合该 RPO 时间的 100% 和 90% 所需的带宽。 
     - 网络带宽建议考虑到了规划器中建议的所有配置服务器和进程服务器所需的带宽。
-- **必需的 Azure 内核**：根据兼容 VM 的数量，记下目标 Azure 区域中所需的内核数。 如果没有足够的核心，在故障转移时，Site Recovery 将无法创建所需的 Azure VM。
-- **建议的 VM 批处理大小**：建议的批处理大小基于在默认情况下在 72 小时内完成批处理的初始复制的能力，同时满足 100% 的 RPO。 可以修改小时值。
+- **所需的 Azure 核心数**：注意目标 Azure 区域中所需的核心数，该数字基于兼容的 VM 数。 如果没有足够的核心，在故障转移时，Site Recovery 将无法创建所需的 Azure VM。
+- **建议的 VM 批大小**：建议的批大小基于在默认 72 小时内完成该批的初始复制，同时满足 100% 的 RPO 的能力。 可以修改小时值。
 
 使用这些建议可以规划 Azure 资源、网络带宽和 VM 批处理。
 
@@ -83,9 +83,9 @@ ms.locfileid: "81409768"
 
 我们希望确保目标订阅中的可用配额足以应对故障转移。
 
-**任务** | **详细信息** | **操作**
+**Task** | **详细信息** | **操作**
 --- | --- | ---
-**检查核心数** | 如果可用配额中的核心数少于故障转移时的目标总数，故障转移将会失败。 | 对于 VMware VM，请检查目标订阅中是否有足够的核心，与部署规划器的核心建议相符。<br/><br/> 对于物理服务器，请检查 Azure 核心数是否符合人工估算结果。<br/><br/> 若要检查配额，请在 Azure 门户中依次单击“订阅”、“用量 + 配额”。********<br/><br/> [详细了解](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)如何提高配额。
+**检查核心数** | 如果可用配额中的核心数少于故障转移时的目标总数，故障转移将会失败。 | 对于 VMware VM，请检查目标订阅中是否有足够的核心，与部署规划器的核心建议相符。<br/><br/> 对于物理服务器，请检查 Azure 核心数是否符合人工估算结果。<br/><br/> 若要检查配额，请在 Azure 门户中依次单击“订阅”、“用量 + 配额”。  <br/><br/> [详细了解](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)如何提高配额。
 **检查故障转移限制** | 故障转移次数不得超过 Site Recovery 的故障转移限制。 |  如果故障转移次数超过限制，你可以添加订阅并故障转移到多个订阅，或者提高订阅的配额。 
 
 
@@ -127,7 +127,7 @@ ms.locfileid: "81409768"
  
 配置服务器容量受启用复制的计算机数目的影响，而不受数据变动率的影响。 若要确定是否需要更多的配置服务器，请参考定义的这些 VM 限制。
 
-CPU**** | **内存** | **缓存磁盘** | **复制的计算机限制**
+**CPU** | **内存** | 缓存磁盘  | **复制的计算机限制**
  --- | --- | --- | ---
 8 个 vCPU<br> 2 个插槽 * 4 个核心 @ 2.5 GHz | 16 GB | 600 GB | 最多 550 台计算机<br> 假设每台计算机有 3 个 100 GB 的磁盘。
 
@@ -153,7 +153,7 @@ CPU**** | **内存** | **缓存磁盘** | **复制的计算机限制**
 - 我们建议添加最高规格的服务器。 
 
 
-CPU**** | **内存** | **缓存磁盘** | **变动率**
+**CPU** | **内存** | 缓存磁盘  | **变动率**
  --- | --- | --- | --- 
 12 个 vCPU<br> 2 个插槽 * 6 个核心 @ 2.5 GHz | 24 GB | 1 GB | 每天最大 2 TB
 
@@ -200,7 +200,7 @@ CPU**** | **内存** | **缓存磁盘** | **变动率**
 
 - [准备基础结构和 VM](#plan-infrastructure-and-vm-connectivity)，以便在故障转移后工作负荷可用，并且用户可以访问 Azure VM。
 - 请注意本文档前面所述的[故障转移限制](#failover-limits)。 确保故障转移在这些限制范围内进行。
-- 定期运行[灾难恢复演习](site-recovery-test-failover-to-azure.md)。 演练可以帮助：
+- 定期运行[灾难恢复演练](site-recovery-test-failover-to-azure.md)。 演练可以帮助：
     - 在故障转移之前发现部署中的不足。
     - 估算应用的端到端 RTO。
     - 估算工作负荷的端到端 RPO。
@@ -210,7 +210,7 @@ CPU**** | **内存** | **缓存磁盘** | **变动率**
 若要运行大规模故障转移，我们建议：
 
 1. 为工作负荷故障转移创建恢复计划。
-    - 每个恢复计划可以触发多达 100 台计算机的故障转移。
+    - 每个恢复计划最多可触发100台计算机的故障转移。
     - [详细了解](recovery-plan-overview.md)恢复计划。
 2. 将 Azure 自动化 Runbook 脚本添加到恢复计划，以将 Azure 上的任何手动任务自动化。 典型的任务包括配置负载均衡器、更新 DNS，等等。 [了解详细信息](site-recovery-runbook-automation.md)
 2. 在故障转移之前，请准备好 Windows 计算机，使之符合 Azure 环境的条件。 符合条件的计算机的[故障转移限制](#plan-azure-subscriptions-and-quotas)更高。 [详细了解](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010) Runbook。

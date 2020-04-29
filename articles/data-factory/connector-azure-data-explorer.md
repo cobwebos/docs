@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2020
 ms.openlocfilehash: 12bf807f5866567508b644105f377cfde1494250
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81410777"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure 数据资源管理器复制数据
@@ -33,7 +33,7 @@ ms.locfileid: "81410777"
 以下活动支持此 Azure 数据资源管理器连接器：
 
 - 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
-- [查找活动](control-flow-lookup-activity.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 
 可以将数据从任何受支持的源数据存储复制到 Azure 数据资源管理器。 可以将数据从 Azure 数据资源管理器复制到任何受支持的接收器数据存储。 有关复制活动支持作为源或接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
@@ -67,17 +67,17 @@ Azure 数据资源管理器连接器使用服务主体身份验证。 遵循以�
 
 2. 在 Azure 数据资源管理器中为服务主体授予正确的权限。 有关角色和权限以及管理权限的详细信息，请参阅[管理 Azure 数据资源管理器数据库权限](/azure/data-explorer/manage-database-permissions)。 一般情况下，必须授予以下权限：
 
-    - **作为源**：至少向数据库授予“数据库查看者”角色****
-    - **作为接收器**：至少向数据库授予“数据库引入者”角色****
+    - **作为源**：至少向数据库授予“数据库查看者”角色 
+    - **作为接收器**：至少向数据库授予“数据库引入者”角色 
 
 >[!NOTE]
->使用数据工厂 UI 创作时，登录用户帐户用于列出 Azure 数据资源管理器群集、数据库和表。 如果您没有这些操作的权限，请手动输入名称。
+>使用数据工厂 UI 创作时，登录用户帐户用于列出 Azure 数据资源管理器群集、数据库和表。 如果没有这些操作的权限，请手动输入名称。
 
 Azure 数据资源管理器链接服务支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | **类型**属性必须设置为 Azure**数据资源管理器**。 | 是 |
+| type | **type** 属性必须设置为 **AzureDataExplorer**。 | 是 |
 | endpoint | Azure 数据资源管理器群集的终结点 URL，格式为 `https://<clusterName>.<regionName>.kusto.windows.net`。 | 是 |
 | database | 数据库的名称。 | 是 |
 | tenant | 指定应用程序的租户信息（域名或租户 ID）。 此 ID 在 [Kusto 连接字符串](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)中称为“颁发机构 ID”。 将鼠标指针悬停在 Azure 门户右上角进行检索。 | 是 |
@@ -113,9 +113,9 @@ Azure 数据资源管理器链接服务支持以下属性：
 
 支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | **类型**属性必须设置为**AzureDataExplorerTable**。 | 是 |
+| type | **type** 属性必须设置为 **AzureDataExplorerTable**。 | 是 |
 | 表 | 链接服务引用的表的名称。 | 对于接收器为必需的，对于源不是必需的 |
 
 **数据集属性示例：**
@@ -143,19 +143,19 @@ Azure 数据资源管理器链接服务支持以下属性：
 
 ### <a name="azure-data-explorer-as-source"></a>Azure 数据资源管理器作为源
 
-若要从 Azure 数据资源管理器复制数据，请将复制活动源中的 **type** 属性设置为 **AzureDataExplorerSource**。 复制活动**源**部分支持以下属性：
+若要从 Azure 数据资源管理器复制数据，请将复制活动源中的 **type** 属性设置为 **AzureDataExplorerSource**。 复制活动**source**部分支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 必须将复制活动源**的类型**属性设置为 **：AzureDataExplorerSource** | 是 |
-| query | 以 [KQL 格式](/azure/kusto/query/)指定的只读请求。 使用自定义 KQL 查询作为参考。 | 是 |
-| queryTimeout | 查询请求超时前的等待时间。默认值为 10 分钟（00：10：00）;允许的最大值为 1 小时（01：00：00）。 | 否 |
+| type | 复制活动源的 **type** 属性必须设置为：**AzureDataExplorerSource** | 是 |
+| 查询 | 以 [KQL 格式](/azure/kusto/query/)指定的只读请求。 使用自定义 KQL 查询作为参考。 | 是 |
+| queryTimeout | 查询请求超时前的等待时间。默认值是 10 分钟 (00:10:00)；允许的最大值是 1 小时 (01:00:00)。 | 否 |
 | noTruncation | 指示是否截断返回的结果集。 默认情况下，结果在出现 500,000 条记录或达到 64 MB 之后将被截断。 强烈建议将其截断，以确保活动的正确行为。 |否 |
 
 >[!NOTE]
 >默认情况下，Azure 数据资源管理器源的大小限制为 500,000 条记录或 64 MB。 若要检索所有记录而不截断，可以在查询的开头指定 `set notruncation;`。 有关详细信息，请参阅[查询限制](https://docs.microsoft.com/azure/kusto/concepts/querylimits)。
 
-**例子：**
+**示例：**
 
 ```json
 "activities":[
@@ -190,15 +190,15 @@ Azure 数据资源管理器链接服务支持以下属性：
 
 ### <a name="azure-data-explorer-as-sink"></a>Azure 数据资源管理器作为接收器
 
-若要将数据复制到 Azure 数据资源管理器，请将复制活动接收器中的 type 属性设置为 **AzureDataExplorerSink**。 复制活动接收器部分中支持以下属性****：
+若要将数据复制到 Azure 数据资源管理器，请将复制活动接收器中的 type 属性设置为 **AzureDataExplorerSink**。 复制活动接收器部分中支持以下属性  ：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 必须将复制活动接收器**的类型**属性设置为 **：AzureDataExplorerSink**。 | 是 |
+| type | 复制活动接收器的 **type** 属性必须设置为：**AzureDataExplorerSink**。 | 是 |
 | ingestionMappingName | 基于 Kusto 表预先创建的[映射](/azure/kusto/management/mappings#csv-mapping)的名称。 若要将源中的列映射到 Azure 数据资源管理器（适用于[所有支持的源存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)，包括 CSV/JSON/Avro 格式），可以使用复制活动[列映射](copy-activity-schema-and-type-mapping.md)（按名称隐式映射或按配置显式映射）和/或 Azure 数据资源管理器映射。 | 否 |
-| 其他属性 | 属性包，可用于指定 Azure 数据资源管理器接收器尚未设置的任何引入属性。 具体来说，它可用于指定引入标记。 从[Azure 数据浏览数据引入文档](https://kusto.azurewebsites.net/docs/management/data-ingestion/index.html)中了解更多信息。 | 否 |
+| additionalProperties | 可用于指定任何未由 Azure 数据资源管理器接收器设置的引入属性的属性包。 具体来说，它可用于指定引入标记。 从 [Azure 数据资源管理器数据引入文档](https://kusto.azurewebsites.net/docs/management/data-ingestion/index.html)了解更多信息。 | 否 |
 
-**例子：**
+**示例：**
 
 ```json
 "activities":[
@@ -231,7 +231,7 @@ Azure 数据资源管理器链接服务支持以下属性：
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Lookup 活动属性
+## <a name="lookup-activity-properties"></a>查找活动属性
 
 有关属性的详细信息，请参阅[查找活动](control-flow-lookup-activity.md)。
 

@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 数据工厂中排除自托管集成运行时故障
-description: 了解如何在 Azure 数据工厂中解决自托管的集成运行时问题。
+title: 在 Azure 数据工厂中排查自承载集成运行时问题
+description: 了解如何在 Azure 数据工厂中排查自承载集成运行时问题。
 services: data-factory
 author: nabhishek
 ms.service: data-factory
@@ -8,56 +8,56 @@ ms.topic: troubleshooting
 ms.date: 11/07/2019
 ms.author: abnarain
 ms.openlocfilehash: f298b331d53eb8bab67a6f99194065dc5f889236
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414891"
 ---
-# <a name="troubleshoot-self-hosted-integration-runtime"></a>排除自托管集成运行时故障
+# <a name="troubleshoot-self-hosted-integration-runtime"></a>排查自承载集成运行时问题
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文探讨了 Azure 数据工厂中自托管集成运行时的常见故障排除方法。
+本文探讨 Azure 数据工厂中的自承载集成运行时的常用故障排除方法。
 
-## <a name="common-errors-and-resolutions"></a>常见错误和解决方法
+## <a name="common-errors-and-resolutions"></a>常见错误和解决方案
 
-### <a name="error-message-self-hosted-integration-runtime-cant-connect-to-cloud-service"></a>错误消息：自托管集成运行时无法连接到云服务
+### <a name="error-message-self-hosted-integration-runtime-cant-connect-to-cloud-service"></a>错误消息：自承载集成运行时无法连接到云服务
 
-![自托管 IR 连接问题](media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png)
+![自承载 IR 连接问题](media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png)
 
 #### <a name="cause"></a>原因 
 
-自托管的集成运行时无法连接到数据工厂服务（后端）。 此问题通常是由防火墙中的网络设置引起的。
+自承载集成运行时无法连接到数据工厂服务（后端）。 此问题通常是防火墙中的网络设置导致的。
 
 #### <a name="resolution"></a>解决方法
 
 1. 检查集成运行时服务是否正在运行。
     
-   ![自托管 IR 服务运行状态](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-running-status.png)
+   ![自承载 IR 服务运行状态](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-running-status.png)
     
-1. 如果服务正在运行，则继续执行步骤 3。
+1. 如果服务正在运行，请转到步骤 3。
 
-1. 如果在自托管集成运行时（默认设置）上未配置代理，则在安装自托管集成运行时的计算机上运行以下 PowerShell 命令：
+1. 如果自承载集成运行时上没有配置代理（这是默认设置），请在安装了自承载集成运行时的计算机上运行以下 PowerShell 命令：
 
     ```powershell
     (New-Object System.Net.WebClient).DownloadString("https://wu2.frontend.clouddatahub.net/")
     ```
         
    > [!NOTE]     
-   > 服务 URL 可能因数据工厂位置而异。 您可以在**ADF UI** > **连接** > **集成运行时** > 下找到服务 URL**编辑自托管的 IR** > **节点** > **查看服务 URL**。
+   > 服务 URL 可能会有所不同，具体取决于数据工厂位置。 可以在“ADF UI”   > “连接”   >   “集成运行时” > “编辑自承载 IR”   > “节点”   >   “查看服务 URL”下找到服务 URL。
             
-    以下是预期的响应：
+    下面是预期的响应：
             
     ![PowerShell 命令响应](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
             
-1. 如果您没有收到预期的响应，请使用以下方法之一，以适合您的情况：
+1. 如果未收到预期的响应，请根据情况使用以下方法之一：
             
-    * 如果您收到"远程名称无法解决"消息，则存在域名系统 （DNS） 问题。 请与您的网络团队联系以解决此问题。
-    * 如果收到"ssl/tls 证书不受信任"消息，请检查 其https://wu2.frontend.clouddatahub.net/证书在计算机上是否受信任，然后使用证书管理器安装公共证书。 此操作应缓解此问题。
-    * 转到**Windows** > **事件查看器（日志）** > **应用程序和服务日志** > **集成运行时**，并检查由 DNS、防火墙规则或公司网络设置引起的任何故障。 （如果您发现此类故障，则强制关闭连接。由于每个公司都有自定义的网络设置，请与网络团队联系以解决这些问题。
+    * 如果收到“无法解析远程名称”消息，则表明存在域名系统 (DNS) 问题。 请与网络团队联系以解决此问题。
+    * 如果收到“ssl/tls 证书不受信任”消息，请检查 https://wu2.frontend.clouddatahub.net/ 的证书在计算机上是否受信任，然后使用证书管理器安装公共证书。 此操作应该会缓解此问题。
+    * 转到“Windows”   >   “事件查看器(日志)” >   “应用程序和服务日志” >   “Integration Runtime”，检查是否存在由 DNS、防火墙规则或公司网络设置导致的故障。 （如果发现此类故障，请强行关闭连接。）由于每个公司都有自定义的网络设置，因此请与网络小组联系以排查这些问题。
 
-1. 如果在自托管集成运行时配置了"代理"，请验证代理服务器是否可以访问服务终结点。 有关示例命令，请参阅[PowerShell、Web 请求和代理](https://stackoverflow.com/questions/571429/powershell-web-requests-and-proxies)。    
+1. 如果在自承载集成运行时上配置了“代理”，请验证代理服务器是否可以访问服务终结点。 有关示例命令，请参阅 [PowerShell, web requests, and proxies](https://stackoverflow.com/questions/571429/powershell-web-requests-and-proxies)（PowerShell、Web 请求和代理）。    
                 
     ```powershell
     $user = $env:username
@@ -76,29 +76,29 @@ ms.locfileid: "81414891"
     $string
     ```
 
-以下是预期的响应：
+下面是预期的响应：
             
-![电源壳命令响应 2](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
+![PowerShell 命令响应 2](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
 
 > [!NOTE] 
 > 代理注意事项：
-> *    检查是否需要将代理服务器放在安全收件人列表中。 如果是这样，请确保[这些域](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network)位于安全收件人列表中。
-> *    检查 TLS/SSL 证书"wu2.frontend.clouddatahub.net/"是否受代理服务器上信任。
-> *    如果您在代理上使用 Active Directory 身份验证，请将服务帐户更改为可以访问代理的用户帐户，作为"集成运行时服务"。
+> *    检查是否需要将代理服务器放在“安全接收方”列表中。 如果需要，请确保[这些域](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network)在“安全接收方”列表中。
+> *    检查 TLS/SSL 证书 "wu2.frontend.clouddatahub.net/" 是否在代理服务器上受信任。
+> *    如果在代理上使用 Active Directory 身份验证，请将服务帐户更改为可作为“Integration Runtime 服务”访问该代理的用户帐户。
 
-### <a name="error-message-self-hosted-integration-runtime-node-logical-shir-is-in-inactive-running-limited-state"></a>错误消息：自托管集成运行时节点/逻辑 SHIR 处于非活动/"正在运行（受限）"状态
+### <a name="error-message-self-hosted-integration-runtime-node-logical-shir-is-in-inactive-running-limited-state"></a>错误消息：自承载集成运行时节点/逻辑 SHIR 处于“非活动”/“正在运行(受限)”状态
 
 #### <a name="cause"></a>原因 
 
-自托管的集成运行时节点可能具有**非活动**状态，如下图所示：
+自承载集成运行时节点的状态可能为“非活动”  ，如以下屏幕截图所示：
 
-![非活动自托管红外节点](media/self-hosted-integration-runtime-troubleshoot-guide/inactive-self-hosted-ir-node.png)
+![非活动的自承载 IR 节点](media/self-hosted-integration-runtime-troubleshoot-guide/inactive-self-hosted-ir-node.png)
 
-当节点无法相互通信时，将发生此行为。
+当节点无法相互通信时，会出现此行为。
 
 #### <a name="resolution"></a>解决方法
 
-1. 登录到节点托管的 VM。 在**应用程序和服务日志** > **集成运行时**、打开事件查看器和筛选所有错误日志下。
+1. 登录到节点托管的 VM。 在“应用程序和服务日志”   >   “Integration Runtime”下，打开事件查看器并筛选所有错误日志。
 
 1. 检查错误日志是否包含以下错误： 
     

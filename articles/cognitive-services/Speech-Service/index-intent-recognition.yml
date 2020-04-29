@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: 意向识别文档
-summary: 使用语音和语言理解 （LUIS） 服务进行意向识别，可实时将音频流转录到文本中，同时识别意图和实体。
+summary: 借助语音和语言理解（LUIS）服务的意向识别，可在识别意向和实体的同时，将音频流实时传输到文本中。
 metadata:
-  title: 意向识别文档 - 教程，API 参考 - Azure 认知服务 |微软文档
+  title: 意向识别文档-教程、API 参考-Azure 认知服务 |Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -12,10 +12,10 @@ metadata:
   ms.date: 03/10/2020
   ms.author: trbye
   ms.openlocfilehash: 65b3f2322c4683eedef8cdfbc328664d4597df58
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: MT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/16/2020
+  ms.lasthandoff: 04/29/2020
   ms.locfileid: "81401488"
 landingContent:
 - title: 关于意向识别
@@ -24,7 +24,7 @@ landingContent:
     links:
     - text: 识别语音、意向和实体
       url: quickstarts/intent-recognition.md
-- title: 意图识别
+- title: 通过意向识别进行开发
   linkLists:
   - linkListType: how-to-guide
     links:

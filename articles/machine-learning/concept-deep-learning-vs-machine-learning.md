@@ -10,10 +10,10 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 03/05/2020
 ms.openlocfilehash: b024010583ba1c6e0ffdf663f7335011ce212bf1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414578"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>深度学习与机器学习
@@ -22,13 +22,13 @@ ms.locfileid: "81414578"
 
 ## <a name="deep-learning-machine-learning-and-ai"></a>深度学习、机器学习和 AI
 
-![关系图：AI 与机器学习与深度学习](./media/concept-deep-learning-vs-machine-learning/ai-vs-machine-learning-vs-deep-learning.png)
+![关系图：AI、深度学习与机器学习](./media/concept-deep-learning-vs-machine-learning/ai-vs-machine-learning-vs-deep-learning.png)
 
-请考虑以下定义，以了解深度学习与机器学习与 AI：
+请查看以下定义来了解深度学习、机器学习与AI：
 
-- **深度学习**是机器学习的子集，它基于人工神经网络。 学习过程之所以是深度性的，是因为人工神经网络的结构由多个输入、输出和隐藏层构成。____ 每个层包含的单元可将输入数据转换为信息，供下一层用于特定的预测任务。 得益于这种结构，机器可以通过自身的数据处理进行学习。
+- **深度学习**是机器学习的子集，它基于人工神经网络。 学习过程之所以是深度性的，是因为人工神经网络的结构由多个输入、输出和隐藏层构成。   每个层包含的单元可将输入数据转换为信息，供下一层用于特定的预测任务。 得益于这种结构，机器可以通过自身的数据处理进行学习。
 
-- **机器学习**是人工智能的子集，它采用可让机器凭借经验在任务中做出改善的技术（例如深度学习）。 学习过程基于以下步骤：__
+- **机器学习**是人工智能的子集，它采用可让机器凭借经验在任务中做出改善的技术（例如深度学习）。 学习过程基于以下步骤： 
 
    1. 将数据馈送到算法中。 （在此步骤中，可向模型提供更多信息，例如，通过执行特征提取。）
    1. 使用此数据训练模型。
@@ -66,7 +66,7 @@ ms.locfileid: "81414578"
 
 ### <a name="object-detection"></a>对象检测
 
-深度学习已应用于许多对象检测用例。 对象检测包括两个组成部分：图像分类和图像定位。 图像分类识别图像的对象，例如汽车或人。__ 图像定位提供这些对象的具体位置。__ 
+深度学习已应用于许多对象检测用例。 对象检测包括两个组成部分：图像分类和图像定位。 图像分类识别图像的对象，例如汽车或人。  图像定位提供这些对象的具体位置。  
 
 对象检测已在游戏、零售、旅游和自动驾驶汽车等行业中使用。
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/07/2019
 ms.openlocfilehash: 23d799f84cb3ac3ca911a5669041b0a25394a7ff
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414760"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>将数据从 Amazon S3 迁移到 Azure Data Lake Storage Gen2
@@ -35,10 +35,10 @@ ms.locfileid: "81414760"
 
 ### <a name="for-the-template-to-migrate-historical-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>用于将历史数据从 Amazon S3 迁移到 Azure Data Lake Storage Gen2 的模板
 
-此模板（模板名称：将历史数据从 AWS S3 迁移到 Azure Data Lake Storage Gen2）假设已在 Azure SQL 数据库中的某个外部控制表内编写了分区列表。** 因此，它将使用 *Lookup* 活动从外部控制表检索分区列表，遍历每个分区，并使每个 ADF 复制作业一次复制一个分区。 完成任一复制作业后，它将使用 *Stored Procedure* 活动来更新在控制表中复制每个分区的操作状态。
+此模板（模板名称：将历史数据从 AWS S3 迁移到 Azure Data Lake Storage Gen2）假设已在 Azure SQL 数据库中的某个外部控制表内编写了分区列表。  因此，它将使用 *Lookup* 活动从外部控制表检索分区列表，遍历每个分区，并使每个 ADF 复制作业一次复制一个分区。 完成任一复制作业后，它将使用 *Stored Procedure* 活动来更新在控制表中复制每个分区的操作状态。
 
 该模板包含五个活动：
-- **Lookup** 从外部控制表中检索尚未复制到 Azure Data Lake Storage Gen2 的分区。 表名称为 *s3_partition_control_table*，用于从表中加载数据的查询为 *"SELECT PartitionPrefix FROM s3_partition_control_table WHERE SuccessOrFailure = 0"*。
+- **Lookup** 从外部控制表中检索尚未复制到 Azure Data Lake Storage Gen2 的分区。 表名称为 *s3_partition_control_table*，用于从表中加载数据的查询为 *"SELECT PartitionPrefix FROM s3_partition_control_table WHERE SuccessOrFailure = 0"* 。
 - **ForEach** 获取 *Lookup* 活动检索到的分区列表，然后将每个分区迭代到 *TriggerCopy* 活动。 可以设置 *batchCount* 以同时运行多个 ADF 复制作业。 我们在此模板中设置了 2。
 - **ExecutePipeline** 执行 *CopyFolderPartitionFromS3* 管道。 我们之所以创建另一个管道来使每个复制作业复制一个分区，是因为这样可以轻松地重新运行失败的复制作业，以便再次从 AWS S3 中重新加载该特定分区。 加载其他分区的所有其他复制作业不受影响。
 - **Copy** 将 AWS S3 中的每个分区复制到 Azure Data Lake Storage Gen2。
@@ -50,13 +50,13 @@ ms.locfileid: "81414760"
 
 ### <a name="for-the-template-to-copy-changed-files-only-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>用于仅将已更改的文件从 Amazon S3 复制到 Azure Data Lake Storage Gen2 的模板
 
-此模板（模板名称：将增量数据从 AWS S3 复制到 Azure Data Lake Storage Gen2）使用每个文件的 LastModifiedTime，仅将新的或已更新的文件从 AWS S3 复制到 Azure。** 请注意，如果 AWS S3 上的文件或文件夹已经过时间分区并在文件或文件夹名称中包含时间切片信息（例如 /yyyy/mm/dd/file.csv），可以转到[此教程](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)获取增量加载新文件的更高效方法。 此模板假设已在 Azure SQL 数据库中的外部控制表内编写了分区列表。 因此，它将使用 *Lookup* 活动从外部控制表检索分区列表，遍历每个分区，并使每个 ADF 复制作业一次复制一个分区。 当每个复制作业开始从 AWS S3 复制文件时，它依赖于使用 LastModifiedTime 属性来识别并仅复制新的或已更新的文件。 完成任一复制作业后，它将使用 *Stored Procedure* 活动来更新在控制表中复制每个分区的操作状态。
+此模板（模板名称：将增量数据从 AWS S3 复制到 Azure Data Lake Storage Gen2）使用每个文件的 LastModifiedTime，仅将新的或已更新的文件从 AWS S3 复制到 Azure。  请注意，如果 AWS S3 上的文件或文件夹已经过时间分区并在文件或文件夹名称中包含时间切片信息（例如 /yyyy/mm/dd/file.csv），可以转到[此教程](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)获取增量加载新文件的更高效方法。 此模板假设已在 Azure SQL 数据库中的外部控制表内编写了分区列表。 因此，它将使用 *Lookup* 活动从外部控制表检索分区列表，遍历每个分区，并使每个 ADF 复制作业一次复制一个分区。 当每个复制作业开始从 AWS S3 复制文件时，它依赖于使用 LastModifiedTime 属性来识别并仅复制新的或已更新的文件。 完成任一复制作业后，它将使用 *Stored Procedure* 活动来更新在控制表中复制每个分区的操作状态。
 
 该模板包含七个活动：
-- **Lookup** 从外部控制表检索分区。 表名称为 *s3_partition_delta_control_table*，用于从表中加载数据的查询为 *"select distinct PartitionPrefix from s3_partition_delta_control_table"*。
+- **Lookup** 从外部控制表检索分区。 表名称为 *s3_partition_delta_control_table*，用于从表中加载数据的查询为 *"select distinct PartitionPrefix from s3_partition_delta_control_table"* 。
 - **ForEach** 获取 *Lookup* 活动检索到的分区列表，然后将每个分区迭代到 *TriggerDeltaCopy* 活动。 可以设置 *batchCount* 以同时运行多个 ADF 复制作业。 我们在此模板中设置了 2。
 - **ExecutePipeline** 执行 *DeltaCopyFolderPartitionFromS3* 管道。 我们之所以创建另一个管道来使每个复制作业复制一个分区，是因为这样可以轻松地重新运行失败的复制作业，以便再次从 AWS S3 中重新加载该特定分区。 加载其他分区的所有其他复制作业不受影响。
-- **Lookup** 从外部控制表检索上次复制作业的运行时间，以便可以通过 LastModifiedTime 识别新的或已更新的文件。 表名称为 *s3_partition_delta_control_table*，用于从表中加载数据的查询为 *"select max(JobRunTime) as LastModifiedTime from s3_partition_delta_control_table where PartitionPrefix = '@{pipeline().parameters.prefixStr}' and SuccessOrFailure = 1"*。
+- **Lookup** 从外部控制表检索上次复制作业的运行时间，以便可以通过 LastModifiedTime 识别新的或已更新的文件。 表名称为 *s3_partition_delta_control_table*，用于从表中加载数据的查询为 *"select max(JobRunTime) as LastModifiedTime from s3_partition_delta_control_table where PartitionPrefix = '@{pipeline().parameters.prefixStr}' and SuccessOrFailure = 1"* 。
 - **Copy** 仅将 AWS S3 中每个分区的新文件或已更改的文件复制到 Azure Data Lake Storage Gen2。 *modifiedDatetimeStart* 的属性设置为上次复制作业的运行时间。 *modifiedDatetimeEnd* 的属性设置为当前复制作业的运行时间。 请注意，该时间采用 UTC 时区。
 - **SqlServerStoredProcedure** 更新在控制表中复制每个分区的操作状态以及复制运行时间（如果操作成功）。 SuccessOrFailure 的列设置为 1。
 - **SqlServerStoredProcedure** 更新在控制表中复制每个分区的操作状态以及复制运行时间（如果操作失败）。 SuccessOrFailure 的列设置为 0。
@@ -73,7 +73,7 @@ ms.locfileid: "81414760"
 
     > [!NOTE]
     > 表名称为 s3_partition_control_table。
-    > 控制表的架构是分区前缀和成功或失败，其中分区前缀是 S3 中的前缀设置，用于按名称筛选 Amazon S3 中的文件夹和文件，而成功失败是复制每个分区的状态：0 表示此分区尚未复制到 Azure，1 表示此分区已成功复制到 Azure。
+    > 控制表的架构为 PartitionPrefix 和 SuccessOrFailure，其中，PartitionPrefix 是 S3 中的前缀设置，用于按名称筛选 Amazon S3 中的文件夹和文件；SuccessOrFailure 是复制每个分区的操作状态：0 表示此分区尚未复制到 Azure，1 表示此分区已成功复制到 Azure。
     > 控制表中定义了 5 个分区，复制每个分区的默认操作状态为 0。
 
     ```sql
@@ -107,11 +107,11 @@ ms.locfileid: "81414760"
     GO
     ```
 
-3. 转到“将历史数据从 AWS S3 迁移到 Azure Data Lake Storage Gen2”模板。**** 输入与外部控制表的连接，并输入 AWS S3 作为数据源存储，输入 Azure Data Lake Storage Gen2 作为目标存储。 请注意，外部控制表和存储过程引用同一连接。
+3. 转到“将历史数据从 AWS S3 迁移到 Azure Data Lake Storage Gen2”模板。  输入与外部控制表的连接，并输入 AWS S3 作为数据源存储，输入 Azure Data Lake Storage Gen2 作为目标存储。 请注意，外部控制表和存储过程引用同一连接。
 
     ![创建新连接](media/solution-template-migration-s3-azure/historical-migration-s3-azure1.png)
 
-4. 选择“使用此模板”****。
+4. 选择“使用此模板”  。
 
     ![使用此模板](media/solution-template-migration-s3-azure/historical-migration-s3-azure2.png)
     
@@ -119,7 +119,7 @@ ms.locfileid: "81414760"
 
     ![查看管道](media/solution-template-migration-s3-azure/historical-migration-s3-azure3.png)
 
-6. 选择“调试”，输入**参数**，然后选择“完成”。********
+6. 选择“调试”，输入**参数**，然后选择“完成”。  
 
     ![单击“调试”****](media/solution-template-migration-s3-azure/historical-migration-s3-azure4.png)
 
@@ -134,7 +134,7 @@ ms.locfileid: "81414760"
 
     > [!NOTE]
     > 表名称为 s3_partition_delta_control_table。
-    > 控制表的架构是分区前缀、作业运行时间和成功失败，其中分区前缀是 S3 中按名称筛选 Amazon S3 中的文件夹和文件的前缀设置，JobRunTime 是运行复制作业时的日期时间值，成功失败是复制每个分区的状态：0 表示此分区尚未复制到 Azure，1 表示此分区已成功复制到 Azure。
+    > 控制表的架构为 PartitionPrefix、JobRunTime SuccessOrFailure，其中，PartitionPrefix 是 S3 中的前缀设置，用于按名称筛选 Amazon S3 中的文件夹和文件；JobRunTime 是运行复制作业时的日期时间值；SuccessOrFailure 是复制每个分区的操作状态：0 表示此分区尚未复制到 Azure，1 表示此分区已成功复制到 Azure。
     > 控制表中定义了 5 个分区。 JobRunTime 的默认值可以是启动一次性历史数据迁移时的时间。 ADF 复制活动将复制 AWS S3 上的、在该时间后已修改过的文件。 复制每个分区的默认操作状态为 1。
 
     ```sql
@@ -170,11 +170,11 @@ ms.locfileid: "81414760"
     ```
 
 
-3. 转到“将增量数据从 AWS S3 复制到 Azure Data Lake Storage Gen2”模板。**** 输入与外部控制表的连接，并输入 AWS S3 作为数据源存储，输入 Azure Data Lake Storage Gen2 作为目标存储。 请注意，外部控制表和存储过程引用同一连接。
+3. 转到“将增量数据从 AWS S3 复制到 Azure Data Lake Storage Gen2”模板。  输入与外部控制表的连接，并输入 AWS S3 作为数据源存储，输入 Azure Data Lake Storage Gen2 作为目标存储。 请注意，外部控制表和存储过程引用同一连接。
 
     ![创建新连接](media/solution-template-migration-s3-azure/delta-migration-s3-azure1.png)
 
-4. 选择“使用此模板”****。
+4. 选择“使用此模板”  。
 
     ![使用此模板](media/solution-template-migration-s3-azure/delta-migration-s3-azure2.png)
     
@@ -182,7 +182,7 @@ ms.locfileid: "81414760"
 
     ![查看管道](media/solution-template-migration-s3-azure/delta-migration-s3-azure3.png)
 
-6. 选择“调试”，输入**参数**，然后选择“完成”。********
+6. 选择“调试”，输入**参数**，然后选择“完成”。  
 
     ![单击“调试”****](media/solution-template-migration-s3-azure/delta-migration-s3-azure4.png)
 

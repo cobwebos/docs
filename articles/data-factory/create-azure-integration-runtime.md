@@ -11,10 +11,10 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.openlocfilehash: e32530ece3626807b199850a2b4af5461ff51cde
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414063"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>如何创建和配置 Azure 集成运行时
@@ -33,10 +33,10 @@ Azure IR 提供完全托管的计算，以本机执行数据移动和调度数�
 
 ## <a name="create-azure-ir"></a>创建 Azure IR
 
-要创建和设置 Azure IR，可以使用以下过程。
+若要创建和设置 Azure IR，可以使用以下过程。
 
-### <a name="create-an-azure-ir-via-azure-powershell"></a>通过 Azure 电源外壳创建 Azure IR
-可以使用 **Set-AzDataFactoryV2IntegrationRuntime** PowerShell cmdlet 创建集成运行时。 要创建 Azure IR，请为命令指定名称、位置和类型。 下面的示例命令创建了位置设为“西欧”的 Azure IR。
+### <a name="create-an-azure-ir-via-azure-powershell"></a>通过 Azure PowerShell 创建 Azure IR
+可以使用 **Set-AzDataFactoryV2IntegrationRuntime** PowerShell cmdlet 创建集成运行时。 若要创建 Azure IR，请指定命令的名称、位置和类型。 下面的示例命令创建了位置设为“西欧”的 Azure IR。
 
 ```powershell
 Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName "SampleV2DataFactory1" -Name "MySampleAzureIR" -ResourceGroupName "ADFV2SampleRG" -Type Managed -Location "West Europe"
@@ -46,25 +46,25 @@ Azure IR 的类型必须设置为**托管**。 无需指定计算详细信息，
 可以使用 Set-AzDataFactoryV2IntegrationRuntime PowerShell cmdlet 来配置现有 Azure IR 以更改其位置。 有关 Azure IR 的位置的详细信息，请参阅[集成运行时简介](concepts-integration-runtime.md)。
 
 ### <a name="create-an-azure-ir-via-azure-data-factory-ui"></a>通过 Azure 数据工厂 UI 创建 Azure IR
-使用以下步骤使用 Azure 数据工厂 UI 创建 Azure IR。
+使用以下步骤创建使用 Azure 数据工厂 UI 的 Azure IR。
 
-1. 在 Azure 数据工厂 UI 的 **"让我们开始"** 页上，选择左侧窗格上的 **"作者"** 选项卡。
+1. 在 Azure 数据工厂 UI 的 "**入门**" 页上，选择左窗格中的 "**创作**" 选项卡。
 
    ![主页上的“创作”按钮](media/doc-common-process/get-started-page-author-button.png)
 
-1. 选择左侧窗格底部的 **"连接"，** 并在 **"连接"** 窗口中选择 **"集成"运行时**。 选择 **"新建**"。
+1. 选择左侧窗格底部的 "**连接**"，然后在 "**连接**" 窗口中选择 "**集成运行时**"。 选择 " **+ 新建**"。
 
    ![创建集成运行时](media/create-azure-integration-runtime/new-integration-runtime.png)
 
-1. 在 **"集成运行时设置"** 页上，选择**Azure、自托管**，然后选择"**继续**"。 
+1. 在 "**集成运行时安装**" 页上，选择 " **Azure"、"自承载**"，然后选择 "**继续**"。 
 
-1. 在以下页上，选择**Azure**以创建 Azure IR，然后选择"**继续**"。
+1. 在以下页面上，选择 " **Azure** " 创建 Azure IR，然后选择 "**继续**"。
    ![创建集成运行时](media/create-azure-integration-runtime/new-azure-ir.png)
 
-1. 输入 Azure IR 的名称，然后选择 **"创建**"。
+1. 输入 Azure IR 的名称，然后选择 "**创建**"。
    ![创建 Azure IR](media/create-azure-integration-runtime/create-azure-ir.png)
 
-1. 创建完成后，您将看到一个弹出通知。 在 **"集成运行时"** 页上，请确保在列表中看到新创建的 IR。
+1. 创建完成后，将显示一个弹出通知。 在 "**集成运行时**" 页上，确保在列表中看到新创建的 IR。
 
 ## <a name="use-azure-ir"></a>使用 Azure IR
 
@@ -90,6 +90,6 @@ Azure IR 的类型必须设置为**托管**。 无需指定计算详细信息，
 ## <a name="next-steps"></a>后续步骤
 有关如何创建其他类型的集成运行时，请参阅以下文章：
 
-- [创建自托管集成运行时](create-self-hosted-integration-runtime.md)
+- [创建自承载集成运行时](create-self-hosted-integration-runtime.md)
 - [创建 Azure-SSIS 集成运行时](create-azure-ssis-integration-runtime.md)
  

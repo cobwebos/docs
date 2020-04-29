@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
 ms.openlocfilehash: aedb3df69821d1436b03b2eb1f12873b624d426e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414173"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>复制活动性能和可伸缩性指南
 
-> [!div class="op_single_selector" title1="选择正在使用的 Azure 数据工厂版本："]
+> [!div class="op_single_selector" title1="选择要使用的 Azure 数据工厂的版本："]
 > * [版本 1](v1/data-factory-copy-activity-performance.md)
 > * [当前版本](copy-activity-performance.md)
 
@@ -67,37 +67,37 @@ ADF 副本可在不同的级别缩放：
 
 请执行以下步骤，通过复制活动优化 Azure 数据工厂服务的性能。
 
-1. **选取测试数据集并建立基线。** 在开发阶段，通过对代表性数据示例使用复制活动来测试管道。 您选择的数据集应表示典型的数据模式（文件夹结构、文件模式、数据架构等），并且足够大，足以评估复制性能，例如，完成复制活动需要 10 分钟或更长时间。 在[复制活动监视](copy-activity-monitoring.md)后收集执行详细信息和性能特征。
+1. **选取测试数据集并建立基线。** 在开发阶段，通过对代表性数据示例使用复制活动来测试管道。 你选择的数据集应表示典型的数据模式（文件夹结构、文件模式、数据架构等），并且足够大以评估复制性能，例如，复制活动需要10分钟或更长时间才能完成。 收集[复制活动监视](copy-activity-monitoring.md)后的执行详细信息和性能特征。
 
 2. **如何最大化单个复制活动的性能**：
 
    首先，我们建议使用单个复制活动来最大化性能。
 
-   - **如果在 Azure 集成运行时执行复制活动：** 从[数据集成单元 （DIU）](#data-integration-units)和[并行复制](#parallel-copy)设置的默认值开始。 
+   - **如果复制活动正在 Azure Integration Runtime 上执行：** 以[数据集成单元（DIU）](#data-integration-units)的默认值和[并行复制](#parallel-copy)设置开始。 
 
-   - **如果在自托管的集成运行时执行复制活动：** 我们建议您使用独立于托管数据存储的服务器的专用计算机来承载集成运行时。 一开始对[并行复制](#parallel-copy)设置使用默认值，并对自承载 IR 使用单个节点。  
+   - **如果复制活动是在自承载 Integration Runtime 上执行的：** 我们建议你使用独立于托管数据存储的服务器的专用计算机来承载集成运行时。 一开始对[并行复制](#parallel-copy)设置使用默认值，并对自承载 IR 使用单个节点。  
 
-   执行性能测试运行，并记下已实现的性能以及使用的实际值（如 DIA 和并行副本）。 有关如何收集使用的运行结果和性能设置的[复制活动监视](copy-activity-monitoring.md)，并了解如何[对复制活动性能进行故障排除](copy-activity-performance-troubleshooting.md)，以识别和解决瓶颈。 
+   执行性能测试运行，并记下实现的性能以及使用的实际值，如 DIUs 和并行副本。 请参阅[复制活动监视](copy-activity-monitoring.md)，了解如何收集所使用的运行结果和性能设置，并了解如何对[复制活动性能进行故障排除](copy-activity-performance-troubleshooting.md)，确定并解决瓶颈问题。 
 
-   在故障排除和调优指导之后，迭代以执行其他性能测试运行。 一旦单个复制活动运行无法实现更好的吞吐量，请考虑通过同时引用步骤 3 运行多个副本来最大化聚合吞吐量。
+   按照故障排除和优化指南进行迭代，执行其他性能测试。 一旦单个复制活动运行无法获得更好的吞吐量，请考虑通过运行同时引用步骤3的多个副本来最大程度地提高聚合吞吐量。
 
 
 3. **如何通过并行运行多项复制来最大化聚合吞吐量：**
 
-   最大化单个复制活动的性能后，如果尚未实现环境（网络、源数据存储和目标数据存储）的吞吐量上限，可以使用 ADF 控制流构造（例如 [For Each 循环](control-flow-for-each-activity.md)）并行运行多个复制活动。 请参阅[从多个容器复制文件](solution-template-copy-files-multiple-containers.md)、[将数据从 Amazon S3 迁移到 ADLS Gen2，](solution-template-migration-s3-azure.md)或[使用控制表](solution-template-bulk-copy-with-control-table.md)解决方案模板进行批量复制作为一般示例。
+   最大化单个复制活动的性能后，如果尚未实现环境（网络、源数据存储和目标数据存储）的吞吐量上限，可以使用 ADF 控制流构造（例如 [For Each 循环](control-flow-for-each-activity.md)）并行运行多个复制活动。 请参阅[从多个容器复制文件、将](solution-template-copy-files-multiple-containers.md)[数据从 Amazon S3 迁移到 ADLS Gen2](solution-template-migration-s3-azure.md)或[使用控制表解决方案模板进行大容量复制](solution-template-bulk-copy-with-control-table.md)（如一般示例）。
 
 5. **将配置扩展至整个数据集。** 对执行结果和性能满意时，可以扩展定义和管道以覆盖整个数据集。
 
-## <a name="troubleshoot-copy-activity-performance"></a>排除复制活动性能的故障
+## <a name="troubleshoot-copy-activity-performance"></a>复制活动性能疑难解答
 
-按照[性能调优步骤](#performance-tuning-steps)为方案规划和执行性能测试。 了解如何从["疑难解答复制活动性能"](copy-activity-performance-troubleshooting.md)中解决 Azure 数据工厂中每个复制活动运行的性能问题。
+按照[性能优化步骤](#performance-tuning-steps)来规划和执行适用于你的方案的性能测试。 了解如何对 Azure 数据工厂中的每个复制活动运行性能问题进行故障排除，以[解决复制活动性能](copy-activity-performance-troubleshooting.md)问题。
 
 ## <a name="copy-performance-optimization-features"></a>复制性能优化功能
 
 Azure 数据工厂提供以下性能优化功能：
 
 - [数据集成单元](#data-integration-units)
-- [自托管集成运行时可扩展性](#self-hosted-integration-runtime-scalability)
+- [自承载集成运行时可伸缩性](#self-hosted-integration-runtime-scalability)
 - [并行复制](#parallel-copy)
 - [暂存复制](#staged-copy)
 
@@ -105,13 +105,13 @@ Azure 数据工厂提供以下性能优化功能：
 
 数据集成单元是一种度量单位，代表单个单位在 Azure 数据工厂中的能力（包含 CPU、内存、网络资源分配）。 数据集成单元仅适用于 [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime)，而不适用于[自承载集成运行时](concepts-integration-runtime.md#self-hosted-integration-runtime)。 [了解详细信息](copy-activity-performance-features.md#data-integration-units)。
 
-### <a name="self-hosted-integration-runtime-scalability"></a>自托管集成运行时可扩展性
+### <a name="self-hosted-integration-runtime-scalability"></a>自承载集成运行时可伸缩性
 
-要承载不断增加的并发工作负载或实现更高的性能，可以向上扩展或扩展自托管的集成运行时。 [了解详细信息](copy-activity-performance-features.md#self-hosted-integration-runtime-scalability)。
+若要托管不断增加的并发工作负荷或实现更高的性能，可以增加或横向扩展自承载 Integration Runtime。 [了解详细信息](copy-activity-performance-features.md#self-hosted-integration-runtime-scalability)。
 
 ### <a name="parallel-copy"></a>并行复制
 
-您可以设置并行复制以指示您希望复制活动使用的并行性。 可以将此属性视为复制活动中从源读取或并行写入接收器数据存储的最大线程数。 [了解详细信息](copy-activity-performance-features.md#parallel-copy)。
+你可以设置并行复制，以指示你希望复制活动使用的并行度。 可以将此属性视为复制活动中的最大线程数，这些线程从源读取数据或将数据写入接收器数据存储。 [了解详细信息](copy-activity-performance-features.md#parallel-copy)。
 
 ### <a name="staged-copy"></a>暂存复制
 
@@ -121,7 +121,7 @@ Azure 数据工厂提供以下性能优化功能：
 请参阅其他复制活动文章：
 
 - [复制活动概述](copy-activity-overview.md)
-- [排除复制活动性能的故障](copy-activity-performance-troubleshooting.md)
+- [复制活动性能疑难解答](copy-activity-performance-troubleshooting.md)
 - [复制活动性能优化功能](copy-activity-performance-features.md)
 - [使用 Azure 数据工厂将数据从 Data Lake 或数据仓库迁移到 Azure](data-migration-guidance-overview.md)
 - [将数据从 Amazon S3 迁移到 Azure 存储](data-migration-guidance-s3-azure-storage.md)

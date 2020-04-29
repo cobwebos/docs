@@ -10,10 +10,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.openlocfilehash: 8d0b49b73ef6b67653fbf32db1174880a51d432d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81412943"
 ---
 # <a name="azure-data-factory-faq"></a>Azure 数据工厂常见问题解答
@@ -25,7 +25,7 @@ ms.locfileid: "81412943"
 ## <a name="what-is-azure-data-factory"></a>什么是 Azure 数据工厂？ 
 数据工厂是一项完全托管的、基于云的数据集成 ETL 服务，可以自动移动和转换数据。 如同工厂运转设备将原材料转换为成品一样，Azure 数据工厂可协调现有的服务，收集原始数据并将其转换为随时可用的信息。 
 
-使用 Azure 数据工厂可以创建数据驱动的工作流，用于在本地与云数据存储之间移动数据。 您还可以使用数据流处理和转换数据。 ADF 还通过使用计算服务（如 Azure HDInsight、Azure 数据块和 SQL 服务器集成服务 （SSIS） 集成运行时）支持用于手动编码转换的外部计算引擎。 
+使用 Azure 数据工厂可以创建数据驱动的工作流，用于在本地与云数据存储之间移动数据。 您可以处理数据并将数据转换为数据流。 ADF 还支持使用计算服务（例如 Azure HDInsight、Azure Databricks 和 SQL Server Integration Services （SSIS）集成运行时）进行手动编码转换的外部计算引擎。 
 
 使用数据工厂，可在基于 Azure 的云服务或自己的自承载计算环境（例如 SSIS、SQL Server 或 Oracle）中执行数据处理。 创建用于执行所需操作的管道后，可将它计划为定期运行（例如每小时、每天或每周）、按时间范围运行或者在发生某个事件时触发。 有关详细信息，请参阅 [Azure 数据工厂简介](introduction.md)。
 
@@ -65,7 +65,7 @@ ms.locfileid: "81412943"
 用户还能利用已记录的 REST API 来与数据工厂 V2 交互。
 
 ### <a name="iterative-development-and-debugging-by-using-visual-tools"></a>使用可视化工具进行迭代开发和调试
-使用 Azure 数据工厂可视化工具可进行迭代开发和调试。 可使用管道画布中的“调试”功能创建管道并测试运行情况，无需编写任何代码****。 您可以在管道画布的 **"输出"** 窗口中查看测试结果。 在测试运行成功后，可向管道中添加更多活动并继续以迭代方式进行调试。 还可以“取消”正在进行的测试运行。 
+使用 Azure 数据工厂可视化工具可进行迭代开发和调试。 可使用管道画布中的“调试”功能创建管道并测试运行情况，无需编写任何代码****。 可以在管道画布的 "**输出**" 窗口中查看测试运行的结果。 在测试运行成功后，可向管道中添加更多活动并继续以迭代方式进行调试。 还可以“取消”正在进行的测试运行。 
 
 在选择“调试”之前，不需要将所做的更改发布至数据工厂服务。**** 在开发、测试或生产环境中更新数据工厂工作流之前，如果想确保新添加的内容或更改能按预期工作，这一点就很有帮助。 
 
@@ -95,9 +95,9 @@ ms.locfileid: "81412943"
 ## <a name="what-is-the-integration-runtime"></a>什么是 Integration Runtime？
 集成运行时是 Azure 数据工厂用于在各种网络环境之间提供以下数据集成功能的计算基础结构：
 
-- **数据移动**：对于数据移动，集成运行时在源数据存储和目标数据存储之间移动数据，同时支持内置连接器、格式转换、列映射以及执行和可扩展的数据传输。
-- **调度活动**：对于转换，集成运行时提供了本机执行 SSIS 包的功能。
-- **执行 SSIS 包**：集成运行时本机在托管 Azure 计算环境中执行 SSIS 包。 集成运行时还支持在各种计算服务（如 Azure HDInsight、Azure 机器学习、SQL 数据库和 SQL Server）上运行的调度和监视转换活动。
+- **数据移动**：对于数据移动，集成运行时在源和目标数据存储之间移动数据，同时为内置连接器、格式转换、列映射和高性能和可缩放的数据传输提供支持。
+- **调度活动**：对于转换，集成运行时提供本机执行 SSIS 包的能力。
+- **执行 SSIS 包**：集成运行时在托管的 Azure 计算环境中本机执行 SSIS 包。 集成运行时还支持调度和监视在各种计算服务（例如 Azure HDInsight、Azure 机器学习、SQL 数据库和 SQL Server）上运行的转换活动。
 
 可以按需部署一个或多个集成运行时实例来移动和转换数据。 集成运行时可以在 Azure 公用网络或专用网络（本地、Azure 虚拟网络或 Amazon Web Services 虚拟私有云 [VPC]）中运行。 
 
@@ -113,7 +113,7 @@ ms.locfileid: "81412943"
 数据工厂可以包含一个或多个数据管道。 管道是执行任务单元的活动的逻辑分组。 管道中的活动可以共同执行一项任务。 例如，一个管道可以包含一组活动，这些活动从 Azure Blob 引入数据，并在 HDInsight 群集上运行 Hive 查询，以便对数据分区。 优点在于，可以使用管道以集的形式管理活动，而无需单独管理每个活动。 管道中的活动可以链接在一起来按顺序运行，也可以独立并行运行。
 
 ### <a name="data-flows"></a>数据流
-数据流是在数据工厂中直观地构建的对象，用于在后端 Spark 服务上大规模转换数据。 您无需了解编程或 Spark 内部。 只需使用图形（映射）或电子表格（Wrangling）设计数据转换意图。
+数据流是在数据工厂中直观地生成的对象，可在后端 Spark 服务大规模转换数据。 不需要了解编程或 Spark 内部机制。 只需使用图形（映射）或电子表格（整理）设计数据转换方法。
 
 ### <a name="activities"></a>活动
 活动表示管道中的处理步骤。 例如，可以使用复制活动将数据从一个数据存储复制到另一个数据存储。 同样，可以使用在 Azure HDInsight 群集上运行 Hive 查询的 Hive 活动来转换或分析数据。 数据工厂支持三种类型的活动：数据移动活动、数据转换活动和控制活动。
@@ -122,7 +122,7 @@ ms.locfileid: "81412943"
 数据集代表数据存储中的数据结构，这些结构直接指向需要在活动中使用的数据，或者将其作为输入或输出引用。 
 
 ### <a name="linked-services"></a>链接服务
-链接的服务类似于连接字符串，它定义数据工厂连接到外部资源时所需的连接信息。 这样可以这样考虑：链接的服务定义与数据源的连接，数据集表示数据的结构。 例如，Azure 存储链接服务指定连接到 Azure 存储帐户所需的连接字符串。 Azure Blob 数据集指定 Blob 容器以及包含数据的文件夹。
+链接的服务类似于连接字符串，它定义数据工厂连接到外部资源时所需的连接信息。 以这种方式思考：链接服务定义到数据源的连接，数据集表示数据的结构。 例如，Azure 存储链接服务指定连接到 Azure 存储帐户所需的连接字符串。 Azure Blob 数据集指定 Blob 容器以及包含数据的文件夹。
 
 数据工厂中的链接服务有两个用途：
 
@@ -184,28 +184,28 @@ ms.locfileid: "81412943"
 
 ## <a name="mapping-data-flows"></a>映射数据流
 
-### <a name="i-need-help-troubleshooting-my-data-flow-logic-what-info-do-i-need-to-provide-to-get-help"></a>我需要帮助解决数据流逻辑。 需要提供哪些信息才能获得帮助？
+### <a name="i-need-help-troubleshooting-my-data-flow-logic-what-info-do-i-need-to-provide-to-get-help"></a>我需要帮助排查我的数据流逻辑问题。 若要获取帮助，需要提供哪些信息？
 
-当 Microsoft 提供数据流的帮助或故障排除时，请提供数据流脚本。 这是数据流图中的代码后面脚本。 从 ADF UI 打开数据流，然后单击右上角的"脚本"按钮。 复制并粘贴此脚本或将其保存在文本文件中。
+当 Microsoft 为数据流提供帮助或故障排除时，请提供数据流脚本。 这是来自数据流图形的代码隐藏脚本。 在 ADF UI 中，打开数据流，然后单击右上角的 "脚本" 按钮。 复制并粘贴此脚本或将其保存在文本文件中。
 
-### <a name="how-do-i-access-data-by-using-the-other-90-dataset-types-in-data-factory"></a>如何使用数据工厂中的其他 90 种数据集类型访问数据？
+### <a name="how-do-i-access-data-by-using-the-other-90-dataset-types-in-data-factory"></a>使用数据工厂中的其他90数据集类型如何实现访问数据？
 
-映射数据流功能当前允许 Azure SQL 数据库、Azure SQL 数据仓库、从 Azure Blob 存储或 Azure 数据存储库第 2 代中分隔文本文件，以及从 Blob 存储或数据湖存储 Gen2 中限定文本文件，用于源和接收器。 
+映射数据流功能目前允许 Azure SQL 数据库、Azure SQL 数据仓库、来自 Azure Blob 存储或 Azure Data Lake Storage Gen2 的带分隔符的文本文件，以及从 Blob 存储或本机 Data Lake Storage Gen2 的 Parquet 文件用于源和接收器。 
 
-使用 Copy 活动暂存来自任何其他连接器的数据，然后在暂存数据后执行数据流活动以转换数据。 例如，管道将首先复制到 Blob 存储中，然后数据流活动将使用源中的数据集来转换该数据。
+使用复制活动可从任何其他连接器暂存数据，然后执行数据流活动，在暂存数据后对其进行转换。 例如，管道将首先复制到 Blob 存储，然后数据流活动将使用源中的数据集来转换该数据。
 
-### <a name="is-the-self-hosted-integration-runtime-available-for-data-flows"></a>自托管的集成运行时是否可用于数据流？
+### <a name="is-the-self-hosted-integration-runtime-available-for-data-flows"></a>是否可用于数据流的自承载集成运行时？
 
-自承载 IR 是 ADF 管道构造，可用于复制活动，以获取或移动数据，以及从基于 VM 的数据源和接收器。 首先使用 Copy 暂行数据，然后使用数据流进行转换，然后进行后续复制（如果需要将转换的数据移回 onprem 存储）。
+自承载 IR 是一种 ADF 管道构造，可与复制活动一起使用，以便在本地或基于 VM 的数据源和接收器之间获取或移动数据。 首先使用副本来暂存数据，然后使用数据流进行转换，然后将转换后的数据移回本地存储。
 
 ### <a name="does-the-data-flow-compute-engine-serve-multiple-tenants"></a>数据流计算引擎是否为多个租户提供服务？
-群集永远不会共享。 我们保证在生产运行中运行的每个作业都隔离。 在调试方案的情况下，一个人得到一个群集，并且所有调试都将转到该用户启动的群集。
+不共享群集。 我们保证在生产运行中运行的每个作业的隔离。 在调试方案中，一个人获取一个群集，并且所有调试都将发送到该用户启动的群集。
 
-## <a name="wrangling-data-flows"></a>旋转数据流
+## <a name="wrangling-data-flows"></a>整理数据流
 
-### <a name="what-are-the-supported-regions-for-wrangling-data-flow"></a>用于争论数据流的支持区域是什么？
+### <a name="what-are-the-supported-regions-for-wrangling-data-flow"></a>整理数据流支持哪些区域？
 
-在以下区域创建的数据工厂中，当前支持争鸣数据流：
+当前在以下区域中创建的数据工厂中支持整理数据流：
 
 * 澳大利亚东部
 * 加拿大中部
@@ -222,32 +222,32 @@ ms.locfileid: "81412943"
 * 美国西部
 * 美国西部 2
 
-### <a name="what-are-the-limitations-and-constraints-with-wrangling-data-flow"></a>在争论数据流方面有哪些限制和约束？
+### <a name="what-are-the-limitations-and-constraints-with-wrangling-data-flow"></a>整理数据流有哪些限制和约束？
 
 数据集名称只能包含字母数字字符。 支持以下数据存储：
 
-* 使用帐户密钥身份验证在 Azure Blob 存储中分隔文本数据集
-* 使用帐户密钥或服务主体身份验证在 Azure 数据湖存储第 2 代中分隔文本数据集
-* 使用服务主体身份验证在 Azure 数据湖存储第 1 代中分隔文本数据集
-* 使用 sql 身份验证的 Azure SQL 数据库和数据仓库。 请参阅下面的受支持的 SQL 类型。 没有对数据仓库的 PolyBase 或暂存支持。
+* 使用帐户密钥身份验证 DelimitedText Azure Blob 存储中的数据集
+* 使用帐户密钥或服务主体身份验证 Azure Data Lake Storage gen2 中的 DelimitedText 数据集
+* 使用服务主体身份验证 Azure Data Lake Storage gen1 中的 DelimitedText 数据集
+* 使用 SQL 身份验证的 Azure SQL 数据库和数据仓库。 请参阅下面支持的 SQL 类型。 对于数据仓库，无 PolyBase 或过渡支持。
 
-此时，链接服务密钥保管库集成不支持在争用数据流中。
+目前，整理数据流不支持链接服务 Key Vault 集成。
 
-### <a name="what-is-the-difference-between-mapping-and-wrangling-data-flows"></a>映射和争论数据流之间的区别是什么？
+### <a name="what-is-the-difference-between-mapping-and-wrangling-data-flows"></a>映射和整理数据流之间的区别是什么？
 
-映射数据流提供了一种在不需要任何编码的情况下大规模转换数据的方法。 您可以通过构造一系列转换在数据流画布中设计数据转换作业。 从任意数量的源转换开始，然后是数据转换步骤。 使用接收器完成数据流，将结果放在目的地。 映射数据流非常擅长使用接收器和源中的已知和未知架构映射和转换数据。
+映射数据流提供了一种无需任何编码即可大规模转换数据的方法。 可以通过构造一系列转换在数据流画布中设计数据转换作业。 从任意数量的源转换开始，然后是数据转换步骤。 使用接收器完成数据流，以将结果置于目标位置。 映射数据流非常适合于在接收器和源中映射和转换已知和未知架构的数据。
 
-通过火花执行，通过动态查询在线混搭编辑器，通过动态数据流进行敏捷数据准备和探索。 随着数据湖的兴起，有时您只需探索数据集或在湖中创建数据集。 您没有映射到已知目标。 争用数据流用于不太正式和基于模型的分析方案。
+通过整理数据流，可通过 spark 执行大规模执行敏捷数据准备和浏览（通过使用 Power Query Online 混合编辑器）。 随着数据 lake 的增长，有时你只需浏览数据集或在 lake 中创建数据集。 你不会映射到已知目标。 整理数据流用于不太正式和基于模型的分析方案。
 
-### <a name="what-is-the-difference-between-power-platform-dataflows-and-wrangling-data-flows"></a>电源平台数据流和争鸣数据流之间的区别是什么？
+### <a name="what-is-the-difference-between-power-platform-dataflows-and-wrangling-data-flows"></a>Power Platform 数据流和整理数据流之间的区别是什么？
 
-Power 平台数据流允许用户将来自各种数据源的数据导入和转换到公共数据服务和 Azure 数据湖中，以构建 PowerApps 应用程序、Power BI 报告或流自动化。 Power 平台数据流使用已建立的电源查询数据准备体验，类似于 Power BI 和 Excel。 Power 平台数据流还便于在组织内重用，并自动处理业务流程（例如，在刷新前一个数据流时自动刷新依赖于另一个数据流的数据流）。
+使用 Power Platform 数据流，用户可以将各种数据源中的数据导入和转换到 Common Data Service，并 Azure Data Lake 生成 PowerApps 应用程序、Power BI 报表或流自动化。 Power Platform 数据流使用已建立的 Power Query 数据准备体验，与 Power BI 和 Excel 类似。 使用 Power Platform 数据流，还可以轻松地在组织中重用，并自动处理业务流程（例如，在刷新前一数据流时，自动刷新依赖于其他数据流的数据流）。
 
-Azure 数据工厂 （ADF） 是一个托管数据集成服务，允许数据工程师和公民数据集成商创建复杂的混合数据转换加载 （ETL） 和数据转换 （ELT） 工作流。 ADF 中Wrangrang）数据流为用户提供了无代码、无服务器环境，可简化云中的数据准备，并扩展到任何数据大小，无需进行基础架构管理。 它使用 Power 查询数据准备技术（也用于电源平台数据流、Excel、Power BI）来准备和塑造数据。 为了处理大数据集成的所有复杂性和规模挑战，争鸣的数据流允许用户通过火花执行快速大规模准备数据。 用户可以使用基于浏览器的界面在可访问的可视环境中构建弹性数据管道，让 ADF 处理 Spark 执行的复杂性。 为管道生成计划，并从 ADF 监视门户监视数据流执行。 借助 ADF 丰富的可用性监视和警报，轻松管理数据可用性 SL，并利用内置的持续集成和部署功能在托管环境中保存和管理流。 建立警报并查看执行计划，以验证逻辑在调整数据流时是否按计划执行。
+Azure 数据工厂（ADF）是一个托管数据集成服务，它允许数据工程师和公民数据集成器创建复杂的混合提取-转换-加载（ETL）和提取-加载转换（ELT）工作流。 ADF 中的整理数据流为用户提供了一个无代码的无服务器环境，该环境可简化云中的数据准备并扩展到任何数据大小，无需基础结构管理。 它使用 Power Query 数据准备技术（在 Power Platform 数据流、Excel 和 Power BI 中也使用）来准备和调整数据。 整理数据流允许用户通过 spark 执行以大规模方式快速准备数据，旨在处理大数据集成的所有复杂和规模挑战。 用户可以使用基于浏览器的界面在可访问的视觉对象环境中构建可复原的数据管道，并让 ADF 处理 Spark 执行的复杂性。 生成管道的计划，并从 ADF 监视门户监视数据流的执行情况。 使用 ADF 丰富的可用性监视和警报轻松管理数据可用性 Sla，并利用内置的持续集成和部署功能在托管环境中保存和管理流。 建立警报并查看执行计划，以验证你的逻辑在你调整数据流时是否按计划执行。
 
-### <a name="supported-sql-types"></a>受支持的 SQL 类型
+### <a name="supported-sql-types"></a>支持的 SQL 类型
 
-旋转数据流支持 SQL 中的以下数据类型。 对于使用不支持的数据类型，您将获得验证错误。
+整理数据流支持 SQL 中的以下数据类型。 使用不受支持的数据类型时，将会收到验证错误。
 
 * short
 * double
@@ -257,7 +257,7 @@ Azure 数据工厂 （ADF） 是一个托管数据集成服务，允许数据工
 * nchar
 * varchar
 * nvarchar
-* integer
+* 整数
 * int
 * bit
 * boolean
@@ -274,7 +274,7 @@ Azure 数据工厂 （ADF） 是一个托管数据集成服务，允许数据工
 * uniqueidentifier
 * xml
 
-将来将支持其他数据类型。
+以后将支持其他数据类型。
 
 ## <a name="next-steps"></a>后续步骤
 有关创建数据工厂的分步说明，请参阅以下教程：

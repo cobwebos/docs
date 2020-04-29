@@ -1,21 +1,21 @@
 ---
-title: 使用系统分配的 MI 部署服务结构应用
+title: 使用系统分配的 MI 部署 Service Fabric 应用
 description: 本文介绍如何将系统分配的托管标识分配给 Azure Service Fabric 应用程序
 ms.topic: article
 ms.date: 07/25/2019
 ms.openlocfilehash: c5c7a17c51eee18d9b7276f2c57289a5de5c8181
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415652"
 ---
-# <a name="deploy-service-fabric-application-with-system-assigned-managed-identity"></a>使用系统分配的托管标识部署服务结构应用程序
+# <a name="deploy-service-fabric-application-with-system-assigned-managed-identity"></a>部署包含系统分配的托管标识的 Service Fabric 应用程序
 
-若要访问 Azure Service Fabric 应用程序的托管标识功能，必须先在群集上启用托管标识令牌服务。 此服务负责使用 Service Fabric 应用程序的托管标识对这些应用程序进行身份验证，以及代表它们获取访问令牌。 启用此服务以后，即可在 Service Fabric Explorer 中左侧窗格的“系统”部分**** 下看到它，它在其他系统服务旁边以 **fabric:/System/ManagedIdentityTokenService** 名称运行。
+若要访问 Azure Service Fabric 应用程序的托管标识功能，必须先在群集上启用托管标识令牌服务。 此服务负责使用 Service Fabric 应用程序的托管标识对这些应用程序进行身份验证，以及代表它们获取访问令牌。 启用此服务以后，即可在 Service Fabric Explorer 中左侧窗格的“系统”部分  看到它，它在其他系统服务旁边以 **fabric:/System/ManagedIdentityTokenService** 名称运行。
 
 > [!NOTE] 
-> 从 API 版本 `"2019-06-01-preview"` 开始，我们就支持使用托管标识部署 Service Fabric 应用程序。 另外，不管应用程序类型、应用程序类型版本和服务资源如何，你都可以使用同一 API 版本。 支持的最低 Service Fabric 运行时为 6.5 CU2。 在附加项中，生成/包环境还应具有 CU2 或更高版本中的 SF .Net SDK
+> 从 API 版本 `"2019-06-01-preview"` 开始，我们就支持使用托管标识部署 Service Fabric 应用程序。 另外，不管应用程序类型、应用程序类型版本和服务资源如何，你都可以使用同一 API 版本。 支持的最低 Service Fabric 运行时为 6.5 CU2。 在 additoin 中，生成/包环境还应具有 SF .Net SDK CU2 或更高版本
 
 ## <a name="system-assigned-managed-identity"></a>系统分配的托管标识
 
@@ -90,8 +90,8 @@ ms.locfileid: "81415652"
 
 ## <a name="next-steps"></a>后续步骤
 * 查看 Azure Service Fabric 中的[托管标识支持](./concepts-managed-identity.md)
-* [部署新](./configure-new-azure-service-fabric-enable-managed-identity.md)具有托管标识支持的 Azure 服务结构群集 
+* [部署](./configure-new-azure-service-fabric-enable-managed-identity.md)支持托管标识的新 Azure Service Fabric 群集 
 * 在现有 Azure Service Fabric 群集中[启用托管标识](./configure-existing-cluster-enable-managed-identity-token-service.md)
-* 在源代码中利用 Service Fabric 应用程序的[托管标识](./how-to-managed-identity-service-fabric-app-code.md)
+* 利用 Service Fabric 应用程序的[托管标识（来自源代码）](./how-to-managed-identity-service-fabric-app-code.md)
 * [使用用户分配的托管标识部署 Azure Service Fabric 应用程序](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [为 Azure Service Fabric 应用程序授予对其他 Azure 资源的访问权限](./how-to-grant-access-other-resources.md)

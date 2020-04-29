@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/14/2018
 ms.openlocfilehash: d6d634d9a32ae1728e1122d863ddabd94f73ee27
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414830"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>使用控制表从数据库进行大容量复制
@@ -39,7 +39,7 @@ ms.locfileid: "81414830"
 - *Control_Table_Schema_PartitionID* 是外部控制表中用于存储每个分区 ID 的列名。 请确保源数据库中每个分区的分区 ID 都是独一无二的。
 - *Control_Table_Schema_SourceTableName* 是外部控制表，用于存储源数据库中的每个表名。
 - *Control_Table_Schema_FilterQuery* 是外部控制表中的列名，用于存储筛选器查询以从源数据库中的每个分区获取数据。 例如，如果按年份对数据进行分区，则存储在每一行中的查询可能类似于“select * from datasource where LastModifytime >= ''2015-01-01 00:00:00'' and LastModifytime <= ''2015-12-31 23:59:59.999''”。
-- *Data_Destination_Folder_Path*是将数据复制到目标存储的路径（当您选择的目标是"文件系统"或"Azure 数据存储第 1 代"时适用）。 
+- *Data_Destination_Folder_Path*是将数据复制到目标存储中的路径（适用于所选目标是 "文件系统" 或 "Azure Data Lake Storage Gen1"）。 
 - *Data_Destination_Container* 是将数据复制到目标存储时使用的根文件夹路径。 
 - *Data_Destination_Directory* 是将数据复制到目标存储中时使用的根下的目录路径。 
 
@@ -67,7 +67,7 @@ ms.locfileid: "81414830"
             (5, 'project_table','select * from project_table where ID >= 1000 and ID < 2000');
     ```
 
-2. 转到“从数据库大容量复制”模板。**** 创建与在步骤 1 中创建的外部控制表的**新**连接。
+2. 转到“从数据库大容量复制”模板。  创建与在步骤 1 中创建的外部控制表的**新**连接。
 
     ![与控制表建立新的连接](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable2.png)
 
@@ -79,13 +79,13 @@ ms.locfileid: "81414830"
 
     ![与目标存储建立新的连接](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable4.png)
 
-5. 选择“使用此模板”****。
+5. 选择“使用此模板”  。
 
 6. 可以看到管道，如以下示例所示：
 
     ![查看管道](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png)
 
-7. 选择“调试”，输入**参数**，然后选择“完成”。********
+7. 选择“调试”，输入**参数**，然后选择“完成”。  
 
     ![单击“调试”****](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable7.png)
 

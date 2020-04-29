@@ -1,5 +1,5 @@
 ---
-title: 使用数据砖 Python 转换数据
+title: 用 Databricks Python 转换数据
 description: 了解如何通过运行 Databricks Python 处理或转换数据。
 services: data-factory
 documentationcenter: ''
@@ -12,17 +12,17 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: anandsub
 ms.openlocfilehash: e102b14d8471a19564f66edc27cc328c2a789c98
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414601"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>通过运行 Azure Databricks 中的 Python 活动转换数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 
-[数据工厂管道](concepts-pipelines-activities.md)中的 Azure Databricks Python 活动在 Azure Databricks 群集中运行 Python 文件。 本文以 [数据转换活动](transform-data.md) 一文为基础，其中概述了数据转换和支持的转换活动。Azure Databricks 是一个用于运行 Apache Spark 的托管平台。
+[数据工厂管道](concepts-pipelines-activities.md)中的 Azure Databricks Python 活动在 Azure Databricks 群集中运行 Python 文件。 本文基于 [数据转换活动](transform-data.md) 一文，其中概述了数据转换和受支持的转换活动。Azure Databricks 是一个用于运行 Apache Spark 的托管平台。
 
 有关此功能的十一分钟介绍和演示，请观看以下视频：
 
@@ -63,12 +63,12 @@ ms.locfileid: "81414601"
 
 下表描述了 JSON 定义中使用的 JSON 属性：
 
-|properties|说明|必选|
+|属性|说明|必需|
 |---|---|---|
 |name|管道中活动的名称。|是|
 |description|描述活动用途的文本。|否|
 |type|对于 Databricks Python 活动，活动类型是 DatabricksSparkPython。|是|
-|linkedServiceName|Databricks 链接服务的名称，Python 活动在其上运行。 要了解此链接服务，请参阅 [计算链接服务](compute-linked-services.md) 一文。|是|
+|linkedServiceName|Databricks 链接服务的名称，Python 活动在其上运行。 若要了解此链接服务，请参阅 [计算链接服务](compute-linked-services.md) 一文。|是|
 |pythonFile|要执行的 Python 文件的 URI。 仅支持 DBFS 路径。|是|
 |parameters|将传递到 Python 文件的命令行参数。 这是一个字符串数组。|否|
 |库|要安装在将执行作业的群集上的库列表。 它可以是 <string, object> 数组|否|
@@ -117,7 +117,7 @@ ms.locfileid: "81414601"
 
 若要获取使用 UI 添加的库的 dbfs 路径，可以使用 [Databricks CLI（安装）](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli)。 
 
-使用 UI 时，Jar 库通常存储在 dbfs:/FileStore/jars 下。 您可以通过 CLI 列出所有：*数据砖块 fs ls dbfs：/FileStore/jars* 
+使用 UI 时，Jar 库通常存储在 dbfs:/FileStore/jars 下。 可以通过 CLI 来列出所有内容： *databricks fs ls dbfs：//jar* 
 
 
 

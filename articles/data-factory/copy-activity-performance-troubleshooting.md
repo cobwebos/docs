@@ -1,6 +1,6 @@
 ---
-title: 排除复制活动性能的故障
-description: 了解如何在 Azure 数据工厂中排除复制活动性能的疑难解答。
+title: 排查复制活动的性能问题
+description: 了解如何排查 Azure 数据工厂中复制活动的性能问题。
 services: data-factory
 documentationcenter: ''
 ms.author: jingwang
@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
 ms.openlocfilehash: 6df1903e828c0c4cafa6589d4a85f4016bed893e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414143"
 ---
-# <a name="troubleshoot-copy-activity-performance"></a>排除复制活动性能的故障
+# <a name="troubleshoot-copy-activity-performance"></a>排查复制活动的性能问题
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述了如何在 Azure 数据工厂中解决复制活动性能问题。 
+本文概述如何排查 Azure 数据工厂中复制活动的性能问题。 
 
 运行复制活动后，可以在[复制活动监视](copy-activity-monitoring.md)视图中收集运行结果和性能统计信息。 下面是一个示例。
 
@@ -31,158 +31,158 @@ ms.locfileid: "81414143"
 
 ## <a name="performance-tuning-tips"></a>性能优化提示
 
-在某些情况下，在数据工厂中运行复制活动时，您将在顶部看到 **"性能调优提示"，** 如上例所示。 这些提示告诉您 ADF 为此特定副本运行确定的瓶颈，以及如何提高复制吞吐量的建议。 尝试进行重新命令的更改，然后再次运行副本。
+在某些情况下，当你运行数据工厂中的复制活动时，将在顶部看到“性能优化提示”，如上面的示例中所示。  这些提示告知 ADF 针对此特定复制运行识别到的瓶颈，并建议如何提升复制吞吐量。 请尝试根据建议进行更改，然后再次运行复制。
 
-作为参考，当前性能调优提示为以下情况提供建议：
+作为参考，当前性能优化提示针对以下情况提供了建议：
 
-| 类别              | 性能优化提示                                      |
+| Category              | 性能优化提示                                      |
 | --------------------- | ------------------------------------------------------------ |
-| 数据存储特定   | 将数据加载到**Azure Synpase 分析（以前 SQL DW）** 中：建议在不使用 PolyBase 或 COPY 语句时使用它。 |
-| &nbsp;                | 将数据从/复制到**Azure SQL 数据库**：当 DTU 处于高利用率时，建议升级到更高层。 |
-| &nbsp;                | 将数据从/复制到**Azure Cosmos DB：** 当 RU 被高度利用时，建议升级到更大的 RU。 |
-| &nbsp;                | 从**亚马逊红移**引入数据：建议使用UNLOAD，如果它不使用。 |
-| 数据存储限制 | 如果在复制过程中数据存储限制了多个读/写操作，建议检查和提高数据存储的允许请求速率，或减少并发工作负载。 |
-| 集成运行时  | 如果使用**自托管集成运行时 （IR）** 并在队列中等待很长时间，直到 IR 具有可用资源执行，建议向外/上扩展 IR。 |
-| &nbsp;                | 如果使用的**Azure 集成运行时**位于不理想区域中，导致读取/写入速度慢，建议配置以在另一个区域中使用 IR。 |
-| 容错       | 如果配置容错和跳过不兼容行会导致性能降低，建议确保源和接收器数据兼容。 |
-| 暂存复制           | 如果已配置暂存副本，但对源接收器对没有帮助，建议将其删除。 |
-| 恢复                | 当复制活动从上次失败点恢复，但您碰巧在原始运行后更改 DIU 设置时，请注意新的 DIU 设置不起作用。 |
+| 特定于数据存储   | 将数据载入 **Azure Synpase Analytics（前称为 SQL 数据仓库）** ：建议使用 PolyBase；如果 PolyBase 不可用，则使用 COPY 语句。 |
+| &nbsp;                | 从/向 **Azure SQL 数据库**复制数据：当 DTU 的利用率较高时，建议升级到更高的层。 |
+| &nbsp;                | 从/向 **Azure Cosmos DB** 复制数据：当 RU 的利用率较高时，建议升级到更大的 RU。 |
+| &nbsp;                | 从 **Amazon Redshift** 引入数据：如果未使用 UNLOAD，建议使用它。 |
+| 数据存储限制 | 如果在复制期间数据存储限制了一些读/写操作，则建议检查并增大数据存储允许的请求速率，或减小并发工作负荷。 |
+| 集成运行时  | 如果使用了**自承载集成运行时 (IR)** ，而复制活动在队列中长时间等待，直到 IR 提供了用于执行该活动的资源，则建议横向/纵向扩展 IR。 |
+| &nbsp;                | 如果使用了非最佳区域中的 **Azure Integration Runtime**，导致读/写速度缓慢，则建议配置为使用另一区域中的 IR。 |
+| 容错       | 如果配置了容错并跳过不兼容的行，导致性能变慢，则建议确保源和接收器数据兼容。 |
+| 暂存复制           | 如果配置了分阶段复制，但此方法对于源-接收器对不起作用，则建议删除此方法。 |
+| 恢复                | 如果复制活动已从上一故障点恢复，但你在完成原始运行后正好更改了 DIU 设置，请注意，新的 DIU 设置不会生效。 |
 
 ## <a name="understand-copy-activity-execution-details"></a>了解复制活动执行详细信息
 
-复制活动监视视图底部的执行详细信息和持续时间描述了复制活动经历的关键阶段（请参阅本文开头的示例），这对于解决复制性能的疑难问题特别有用。 复制运行的瓶颈是持续时间最长的瓶颈。 请参阅每个阶段定义的下表，了解如何[对 Azure IR 上的复制活动进行故障排除](#troubleshoot-copy-activity-on-azure-ir)，以及如何使用此类信息[对自托管 IR 上的复制活动进行故障排除](#troubleshoot-copy-activity-on-self-hosted-ir)。
+复制活动监视视图底部的执行详细信息和持续时间描述了复制活动所要经历的重要阶段（请参阅本文开头的示例），这对于排查复制性能问题特别有用。 复制运行的瓶颈就是持续时间最长的那个运行。 请参阅下表中每个阶段的定义，并了解如何使用此类信息[排查 Azure IR 中的复制活动的问题](#troubleshoot-copy-activity-on-azure-ir)和[排查自承载 IR 中的复制活动的问题](#troubleshoot-copy-activity-on-self-hosted-ir)。
 
 | 阶段           | 说明                                                  |
 | --------------- | ------------------------------------------------------------ |
-| 队列           | 在集成运行时实际启动复制活动之前已过的时间。 |
-| 预拷贝脚本 | 从 IR 开始开始复制活动到在接收器数据存储中完成执行预复制脚本的复制活动之间的运行时间。 在为数据库接收器配置预复制脚本时应用，例如将数据写入 Azure SQL 数据库时，在复制新数据之前请清理。 |
-| 传输        | 上一步骤结束和红外从源传输到接收器之间的运行时间。 "传输"下的子步骤并行运行。<br><br>- **第一个字节的时间：** 从上一步骤的结束到 IR 从源数据存储接收第一个字节的时间之间的时间。 适用于不是基于文件的源。<br>- **列表来源：** 枚举源文件或数据分区所花费的时间量。 当您为数据库源配置分区选项时，例如从 Oracle/SAP HANA/Teradata/Netezza/等数据库复制数据时，则适用后者。<br/>-**从源读取：** 从源数据存储检索数据所花费的时间量。<br/>- **写入接收器：** 用于将数据写入接收器数据存储所花费的时间。 |
+| 队列           | 复制活动在集成运行时中实际启动之前所消逝的时间。 |
+| 复制前脚本 | 复制活动在 IR 中启动之后、在接收器数据存储中执行完复制前脚本之前所消逝的时间。 为数据库接收器配置复制前脚本时适用，例如，将数据写入 Azure SQL 数据库会在复制新数据之前执行清理。 |
+| 传输        | 完成前一步骤之后、在 IR 将所有数据从源传输到接收器之前所消逝的时间。 “传输”下的子步骤将并行运行。<br><br>- **距第一字节的时间：** 在前一步骤结束之后、IR 从源数据存储收到第一个字节之前所经过的时间。 适用于不是基于文件的源。<br>- **列出源：** 枚举源文件或数据分区所花费的时间。 后者适用于为数据库源配置分区选项时，例如，从 Oracle/SAP HANA/Teradata/Netezza 等数据库复制数据时。<br/>-**从源中读取：** 从源数据存储检索数据所花费的时间。<br/>- **写入接收器：** 将数据写入接收器数据存储所花费的时间。 |
 
-## <a name="troubleshoot-copy-activity-on-azure-ir"></a>在 Azure IR 上排除复制活动故障
+## <a name="troubleshoot-copy-activity-on-azure-ir"></a>排查 Azure IR 中的复制活动的问题
 
-按照[性能调优步骤](copy-activity-performance.md#performance-tuning-steps)为方案规划和执行性能测试。 
+遵循[性能优化步骤](copy-activity-performance.md#performance-tuning-steps)为方案规划并执行性能测试。 
 
-当复制活动性能不符合预期时，要对 Azure 集成运行时上运行的单个复制活动进行故障排除，如果看到复制监视视图中显示[的性能调优提示](#performance-tuning-tips)，请应用建议，然后重试。 否则，[了解复制活动执行详细信息](#understand-copy-activity-execution-details)，检查哪个阶段持续时间**最长**，并应用以下指南以提高复制性能：
+当复制活动性能不符合预期时，若要排查 Azure Integration Runtime 中运行的单个复制活动的问题，在看到复制监视视图中显示了[性能优化提示](#performance-tuning-tips)的情况下，请应用建议并重试。 否则，请[了解复制活动执行详细信息](#understand-copy-activity-execution-details)，检查哪个阶段的持续时间**最长**，并应用以下指导以提升复制性能：
 
-- **"预复制脚本"经历了长时间的运行：** 这意味着在接收器数据库上运行的预复制脚本需要很长时间才能完成。 调整指定的预复制脚本逻辑以提高性能。 如果您需要改进脚本的进一步帮助，请与数据库团队联系。
+- **“复制前脚本”的持续时间较长：** 表示接收器数据库中运行的复制前脚本花费了较长时间来完成。 优化指定的复制前脚本逻辑，以增强性能。 如果在改进脚本方面需要更多的帮助，请与数据库团队联系。
 
-- **"传输 - 第一字节的时间"经历了很长的工作持续时间**：这意味着源查询返回任何数据需要很长时间。 检查并优化查询或服务器。 如果您需要进一步帮助，请联系数据存储团队。
+- **“传输 - 距第一字节的时间”的工作持续时间较长：** 表示源查询花费了较长时间来返回任何数据。 检查并优化查询或服务器。 如需更多帮助，请与数据存储团队联系。
 
-- **"传输 - 列表源"经历了长时间的工作**：这意味着枚举源文件或源数据库数据分区很慢。
+- **“传输 - 列出源”的工作持续时间较长：** 表示枚举源文件或源数据库数据分区的速度缓慢。
 
-  - 从基于文件的源复制数据时，如果在文件夹路径或文件名 （`wildcardFolderPath``wildcardFileName`或 ） 上使用**通配符筛选器**，或使用**文件上次修改的时间筛选器**（`modifiedDatetimeStart`或`modifiedDatetimeEnd`），请注意，此类筛选器将导致将指定文件夹下的所有文件列表的副本活动添加到客户端，然后应用筛选器。 此类文件枚举可能成为瓶颈，尤其是当只有少量文件满足筛选器规则时。
+  - 从基于文件的源复制数据时，如果对文件夹路径或文件名使用**通配符筛选器**（`wildcardFolderPath` 或 `wildcardFileName`），或使用**文件上次修改时间筛选器**（`modifiedDatetimeStart` 或 `modifiedDatetimeEnd`），请注意，此类筛选器会导致复制活动在客户端中列出指定文件夹下的所有文件，然后应用筛选器。 此类文件枚举可能会变成瓶颈，尤其是只有少量的文件符合筛选规则时。
 
-    - 检查是否可以[根据日期时间分区的文件路径或名称复制文件](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)。 这种方式不会给上市来源带来负担。
+    - 检查是否可以[基于按日期时间分区的文件路径或名称复制文件](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)。 这不会在“列出源”端带来负担。
 
-    - 检查是否可以使用数据存储的本机筛选器，特别是 Amazon S3 和 Azure Blob 的"**前缀**"。 前缀筛选器是数据存储服务器端筛选器，性能会好得多。
+    - 检查是否可以改用数据存储的本机筛选器，具体而言，是否可以使用 Amazon S3 和 Azure Blob 的“**前缀**”。 前缀筛选器是一个数据存储服务器端筛选器，其性能要好得多。
 
-    - 请考虑将单个大型数据集拆分为多个较小的数据集，并让这些复制作业同时运行，每个数据处理部分。 您可以使用查找/获取元数据 = 每个内容 = 复制来执行此操作。 请参阅[从多个容器复制文件](solution-template-copy-files-multiple-containers.md)或[将数据从 Amazon S3 迁移到 ADLS Gen2](solution-template-migration-s3-azure.md)解决方案模板作为一般示例。
+    - 考虑将单个大型数据集拆分为多个小型数据集，并让每个并发运行的复制作业处理一部分数据。 为此，可以使用 Lookup/GetMetadata + ForEach + Copy。 请参阅[从多个容器复制文件](solution-template-copy-files-multiple-containers.md)或[将数据从 Amazon S3 迁移到 ADLS Gen2](solution-template-migration-s3-azure.md) 解决方案模板，其中提供了一般性的示例。
 
-  - 检查 ADF 是否报告源上有任何限制错误，或者数据存储是否处于高利用率状态。 如果是这样，请减少数据存储上的工作负载，或者尝试联系数据存储管理员以增加限制限制或可用资源。
+  - 检查 ADF 是否报告了源中的任何限制错误，或者数据存储是否处于高利用率状态。 如果是，请减少数据存储中的工作负荷，或者尝试联系数据存储管理员来提高限制或增加可用资源。
 
-  - 在源数据存储区域的相同或附近使用 Azure IR。
+  - 使用同一源数据存储区域或者与之靠近的区域中的 Azure IR。
 
-- **"从源转移阅读"经历了长时间的工作：** 
+- **“传输 - 从源读取”的工作持续时间较长：** 
 
-  - 如果适用，采用特定于连接器的数据加载最佳做法。 例如，从[Amazon Redshift](connector-amazon-redshift.md)复制数据时，配置为使用红移 UNLOAD。
+  - 采用特定于连接器的数据加载最佳做法（如果适用）。 例如，从 [Amazon Redshift](connector-amazon-redshift.md) 复制数据时，请配置为使用 Redshift UNLOAD。
 
-  - 检查 ADF 是否报告源上有任何限制错误，或者您的数据存储是否被高利用率。 如果是这样，请减少数据存储上的工作负载，或者尝试联系数据存储管理员以增加限制限制或可用资源。
-
-  - 检查复制源和接收器模式： 
-
-    - 如果您的复制模式支持大于 4 个数据集成单元 （DIUs） - 请参阅[本节](copy-activity-performance-features.md#data-integration-units)的详细信息，通常您可以尝试增加 DIA 以获得更好的性能。 
-
-    - 否则，请考虑将单个大型数据集拆分为多个较小的数据集，并让这些复制作业同时运行，每个数据处理部分。 您可以使用查找/获取元数据 = 每个内容 = 复制来执行此操作。 请参阅[从多个容器复制文件](solution-template-copy-files-multiple-containers.md)、[将数据从 Amazon S3 迁移到 ADLS Gen2，](solution-template-migration-s3-azure.md)或[使用控制表](solution-template-bulk-copy-with-control-table.md)解决方案模板进行批量复制作为一般示例。
-
-  - 在源数据存储区域的相同或附近使用 Azure IR。
-
-- **"转移-写作到水槽"经历了漫长的工作时间**：
-
-  - 如果适用，采用特定于连接器的数据加载最佳做法。 例如，将数据复制到[Azure 突触分析](connector-azure-sql-data-warehouse.md)（以前的 SQL DW）时，请使用 PolyBase 或 COPY 语句。 
-
-  - 检查 ADF 是否报告接收器上有任何限制错误，或者您的数据存储是否被高利用率。 如果是这样，请减少数据存储上的工作负载，或者尝试联系数据存储管理员以增加限制限制或可用资源。
+  - 检查 ADF 是否报告了源中的任何限制错误，或者数据存储是否处于高利用率状态。 如果是，请减少数据存储中的工作负荷，或者尝试联系数据存储管理员来提高限制或增加可用资源。
 
   - 检查复制源和接收器模式： 
 
-    - 如果您的复制模式支持大于 4 个数据集成单元 （DIUs） - 请参阅[本节](copy-activity-performance-features.md#data-integration-units)的详细信息，通常您可以尝试增加 DIA 以获得更好的性能。 
+    - 如果复制模式支持 4 个以上的数据集成单位 (DIU) - 请参阅[此部分](copy-activity-performance-features.md#data-integration-units)中的详细信息，一般情况下，可以尝试增加 DIU 以获得更好的性能。 
 
-    - 否则，逐渐调整[并行副本](copy-activity-performance-features.md)，注意太多并行副本甚至可能损害性能。
+    - 否则，请考虑将单个大型数据集拆分为多个小型数据集，并让每个并发运行的复制作业处理一部分数据。 为此，可以使用 Lookup/GetMetadata + ForEach + Copy。 请参阅[从多个容器复制文件](solution-template-copy-files-multiple-containers.md)、[将数据从 Amazon S3 迁移到 ADLS Gen2](solution-template-migration-s3-azure.md) 或[使用控制表进行批量复制](solution-template-bulk-copy-with-control-table.md)解决方案模板，其中提供了一般性的示例。
 
-  - 在同一或靠近接收器数据存储区域时使用 Azure IR。
+  - 使用同一源数据存储区域中或者与之靠近的区域中的 Azure IR。
 
-## <a name="troubleshoot-copy-activity-on-self-hosted-ir"></a>在自托管 IR 上排除复制活动故障
+- **“传输 - 写入接收器”的工作持续时间较长：**
 
-按照[性能调优步骤](copy-activity-performance.md#performance-tuning-steps)为方案规划和执行性能测试。 
+  - 采用特定于连接器的数据加载最佳做法（如果适用）。 例如，将数据复制到 [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md)（前称为 SQL 数据仓库）时，请使用 PolyBase 或 COPY 语句。 
 
-当复制性能不符合预期时，要对 Azure 集成运行时上运行的单个复制活动进行故障排除，如果看到复制监视视图中显示[的性能调优提示](#performance-tuning-tips)，请应用建议，然后重试。 否则，[了解复制活动执行详细信息](#understand-copy-activity-execution-details)，检查哪个阶段持续时间**最长**，并应用以下指南以提高复制性能：
-
-- **"队列"经历了长时间的持续时间：** 这意味着复制活动在队列中等待很长时间，直到您的自托管 IR 具有要执行的资源。 检查红外容量和使用情况，并根据工作负载[向上或扩展](create-self-hosted-integration-runtime.md#high-availability-and-scalability)。
-
-- **"传输 - 第一字节的时间"经历了很长的工作持续时间**：这意味着源查询返回任何数据需要很长时间。 检查并优化查询或服务器。 如果您需要进一步帮助，请联系数据存储团队。
-
-- **"传输 - 列表源"经历了长时间的工作**：这意味着枚举源文件或源数据库数据分区很慢。
-
-  - 检查自承载的 IR 计算机是否具有连接到源数据存储的低延迟。 如果源位于 Azure 中，则可以使用[此工具](http://www.azurespeed.com/Azure/Latency)检查从自托管 IR 计算机到 Azure 区域的延迟，越少越好。
-
-  - 从基于文件的源复制数据时，如果在文件夹路径或文件名 （`wildcardFolderPath``wildcardFileName`或 ） 上使用**通配符筛选器**，或使用**文件上次修改的时间筛选器**（`modifiedDatetimeStart`或`modifiedDatetimeEnd`），请注意，此类筛选器将导致将指定文件夹下的所有文件列表的副本活动添加到客户端，然后应用筛选器。 此类文件枚举可能成为瓶颈，尤其是当只有少量文件满足筛选器规则时。
-
-    - 检查是否可以[根据日期时间分区的文件路径或名称复制文件](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)。 这种方式不会给上市来源带来负担。
-
-    - 检查是否可以使用数据存储的本机筛选器，特别是 Amazon S3 和 Azure Blob 的"**前缀**"。 前缀筛选器是数据存储服务器端筛选器，性能会好得多。
-
-    - 请考虑将单个大型数据集拆分为多个较小的数据集，并让这些复制作业同时运行，每个数据处理部分。 您可以使用查找/获取元数据 = 每个内容 = 复制来执行此操作。 请参阅[从多个容器复制文件](solution-template-copy-files-multiple-containers.md)或[将数据从 Amazon S3 迁移到 ADLS Gen2](solution-template-migration-s3-azure.md)解决方案模板作为一般示例。
-
-  - 检查 ADF 是否报告源上有任何限制错误，或者数据存储是否处于高利用率状态。 如果是这样，请减少数据存储上的工作负载，或者尝试联系数据存储管理员以增加限制限制或可用资源。
-
-- **"从源转移阅读"经历了长时间的工作：** 
-
-  - 检查自承载的 IR 计算机是否具有连接到源数据存储的低延迟。 如果源位于 Azure 中，则可以使用[此工具](http://www.azurespeed.com/Azure/Latency)检查从自托管 IR 计算机到 Azure 区域的延迟，越少越好。
-
-  - 检查自承载的 IR 计算机是否有足够的入站带宽来高效地读取和传输数据。 如果源数据存储位于 Azure 中，则可以使用[此工具](https://www.azurespeed.com/Azure/Download)检查下载速度。
-
-  - 在 Azure 门户中检查自托管 IR 的 CPU 和内存使用趋势 ->数据工厂 ->概述页。 如果 CPU 使用率高或可用内存不足，请考虑[向上/缩小 IR。](create-self-hosted-integration-runtime.md#high-availability-and-scalability)
-
-  - 如果适用，采用特定于连接器的数据加载最佳做法。 例如：
-
-    - 从[Oracle](connector-oracle.md#oracle-as-source)Oracle、Netezza、Teradata、SAP [Netezza](connector-netezza.md#netezza-as-source) [HANA、SAP](connector-sap-hana.md#sap-hana-as-source)[表](connector-sap-table.md#sap-table-as-source)和[SAP 开放集线器](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)复制数据时，启用数据分区选项以并行复制数据。 [Teradata](connector-teradata.md#teradata-as-source)
-
-    - 从[HDFS](connector-hdfs.md)复制数据时 ，配置为使用 DistCp。
-
-    - 从[亚马逊红移](connector-amazon-redshift.md)复制数据时，配置为使用红移卸载。
-
-  - 检查 ADF 是否报告源上有任何限制错误，或者您的数据存储是否被高利用率。 如果是这样，请减少数据存储上的工作负载，或者尝试联系数据存储管理员以增加限制限制或可用资源。
+  - 检查 ADF 是否报告了接收器中的任何限制错误，或者数据存储是否处于高利用率状态。 如果是，请减少数据存储中的工作负荷，或者尝试联系数据存储管理员来提高限制或增加可用资源。
 
   - 检查复制源和接收器模式： 
 
-    - 如果从支持分区选项的数据存储复制数据，请考虑逐步调整[并行副本](copy-activity-performance-features.md)，请注意，太多的并行副本甚至可能损害性能。
+    - 如果复制模式支持 4 个以上的数据集成单位 (DIU) - 请参阅[此部分](copy-activity-performance-features.md#data-integration-units)中的详细信息，一般情况下，可以尝试增加 DIU 以获得更好的性能。 
 
-    - 否则，请考虑将单个大型数据集拆分为多个较小的数据集，并让这些复制作业同时运行，每个数据处理部分。 您可以使用查找/获取元数据 = 每个内容 = 复制来执行此操作。 请参阅[从多个容器复制文件](solution-template-copy-files-multiple-containers.md)、[将数据从 Amazon S3 迁移到 ADLS Gen2，](solution-template-migration-s3-azure.md)或[使用控制表](solution-template-bulk-copy-with-control-table.md)解决方案模板进行批量复制作为一般示例。
+    - 否则，请逐步优化[并行复制](copy-activity-performance-features.md)，同时请注意，过多的并行复制可能会进一步损害性能。
 
-- **"转移-写作到水槽"经历了漫长的工作时间**：
+  - 使用同一接收器数据存储区域中或者与之靠近的区域中的 Azure IR。
 
-  - 如果适用，采用特定于连接器的数据加载最佳做法。 例如，将数据复制到[Azure 突触分析](connector-azure-sql-data-warehouse.md)（以前的 SQL DW）时，请使用 PolyBase 或 COPY 语句。 
+## <a name="troubleshoot-copy-activity-on-self-hosted-ir"></a>排查自承载 IR 中的复制活动的问题
 
-  - 检查自承载的 IR 计算机是否具有连接到接收器数据存储的低延迟。 如果接收器位于 Azure 中，则可以使用[此工具](http://www.azurespeed.com/Azure/Latency)检查从自承载的 IR 计算机到 Azure 区域的延迟，越少越好。
+遵循[性能优化步骤](copy-activity-performance.md#performance-tuning-steps)为方案规划并执行性能测试。 
 
-  - 检查自承载的 IR 计算机是否有足够的出站带宽来高效地传输和写入数据。 如果接收器数据存储在 Azure 中，则可以使用[此工具](https://www.azurespeed.com/Azure/UploadLargeFile)检查上载速度。
+当复制性能不符合预期时，若要排查 Azure Integration Runtime 中运行的单个复制活动的问题，在看到复制监视视图中显示了[性能优化提示](#performance-tuning-tips)的情况下，请应用建议并重试。 否则，请[了解复制活动执行详细信息](#understand-copy-activity-execution-details)，检查哪个阶段的持续时间**最长**，并应用以下指导以提升复制性能：
 
-  - 检查 Azure 门户中的自托管 IR 的 CPU 和内存使用趋势 ->数据工厂 -> 概览页。 如果 CPU 使用率高或可用内存不足，请考虑[向上/缩小 IR。](create-self-hosted-integration-runtime.md#high-availability-and-scalability)
+- **“队列”持续时间较长：** 表示复制活动在队列中长时间等待，直到自承载 IR 提供了用于执行该活动的资源。 检查 IR 容量和使用率，并根据工作负荷进行[纵向或横向扩展](create-self-hosted-integration-runtime.md#high-availability-and-scalability)。
 
-  - 检查 ADF 是否报告接收器上有任何限制错误，或者您的数据存储是否被高利用率。 如果是这样，请减少数据存储上的工作负载，或者尝试联系数据存储管理员以增加限制限制或可用资源。
+- **“传输 - 距第一字节的时间”的工作持续时间较长：** 表示源查询花费了较长时间来返回任何数据。 检查并优化查询或服务器。 如需更多帮助，请与数据存储团队联系。
 
-  - 考虑逐渐调整[并行副本](copy-activity-performance-features.md)，请注意，太多的并行副本甚至可能损害性能。
+- **“传输 - 列出源”的工作持续时间较长：** 表示枚举源文件或源数据库数据分区的速度缓慢。
+
+  - 检查自承载 IR 计算机是否以较低的延迟连接到源数据存储。 如果源位于 Azure 中，你可以使用[此工具](http://www.azurespeed.com/Azure/Latency)检查自承载 IR 计算机与 Azure 区域之间的连接延迟，延迟值越小越好。
+
+  - 从基于文件的源复制数据时，如果对文件夹路径或文件名使用**通配符筛选器**（`wildcardFolderPath` 或 `wildcardFileName`），或使用**文件上次修改时间筛选器**（`modifiedDatetimeStart` 或 `modifiedDatetimeEnd`），请注意，此类筛选器会导致复制活动在客户端中列出指定文件夹下的所有文件，然后应用筛选器。 此类文件枚举可能会变成瓶颈，尤其是只有少量的文件符合筛选规则时。
+
+    - 检查是否可以[基于按日期时间分区的文件路径或名称复制文件](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)。 这不会在“列出源”端带来负担。
+
+    - 检查是否可以改用数据存储的本机筛选器，具体而言，是否可以使用 Amazon S3 和 Azure Blob 的“**前缀**”。 前缀筛选器是一个数据存储服务器端筛选器，其性能要好得多。
+
+    - 考虑将单个大型数据集拆分为多个小型数据集，并让每个并发运行的复制作业处理一部分数据。 为此，可以使用 Lookup/GetMetadata + ForEach + Copy。 请参阅[从多个容器复制文件](solution-template-copy-files-multiple-containers.md)或[将数据从 Amazon S3 迁移到 ADLS Gen2](solution-template-migration-s3-azure.md) 解决方案模板，其中提供了一般性的示例。
+
+  - 检查 ADF 是否报告了源中的任何限制错误，或者数据存储是否处于高利用率状态。 如果是，请减少数据存储中的工作负荷，或者尝试联系数据存储管理员来提高限制或增加可用资源。
+
+- **“传输 - 从源读取”的工作持续时间较长：** 
+
+  - 检查自承载 IR 计算机是否以较低的延迟连接到源数据存储。 如果源位于 Azure 中，你可以使用[此工具](http://www.azurespeed.com/Azure/Latency)检查自承载 IR 计算机与 Azure 区域之间的连接延迟，延迟值越小越好。
+
+  - 检查自承载 IR 计算机是否具有足够的入站带宽，可以有效地读取和传输数据。 如果源数据存储位于 Azure 中，你可以使用[此工具](https://www.azurespeed.com/Azure/Download)检查下载速度。
+
+  - 在 Azure 门户 -> 数据工厂 -> 概述页中检查自承载 IR 的 CPU 和内存使用趋势。 如果 CPU 使用率较高或可用内存不足，请考虑[纵向/横向扩展 IR](create-self-hosted-integration-runtime.md#high-availability-and-scalability)。
+
+  - 采用特定于连接器的数据加载最佳做法（如果适用）。 例如：
+
+    - 从 [Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[Teradata](connector-teradata.md#teradata-as-source)、[SAP HANA](connector-sap-hana.md#sap-hana-as-source)、[SAP Table](connector-sap-table.md#sap-table-as-source) 和 [SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source) 复制数据时，请启用数据分区选项以并行复制数据。
+
+    - 从 [HDFS](connector-hdfs.md)复制数据时，请配置为使用 DistCp。
+
+    - 从 [Amazon Redshift](connector-amazon-redshift.md) 复制数据时，请配置为使用 Redshift UNLOAD。
+
+  - 检查 ADF 是否报告了源中的任何限制错误，或者数据存储是否处于高利用率状态。 如果是，请减少数据存储中的工作负荷，或者尝试联系数据存储管理员来提高限制或增加可用资源。
+
+  - 检查复制源和接收器模式： 
+
+    - 如果从已启用分区选项的数据存储复制数据，请考虑逐步优化[并行复制](copy-activity-performance-features.md)，同时请注意，过多的并行复制可能会进一步损害性能。
+
+    - 否则，请考虑将单个大型数据集拆分为多个小型数据集，并让每个并发运行的复制作业处理一部分数据。 为此，可以使用 Lookup/GetMetadata + ForEach + Copy。 请参阅[从多个容器复制文件](solution-template-copy-files-multiple-containers.md)、[将数据从 Amazon S3 迁移到 ADLS Gen2](solution-template-migration-s3-azure.md) 或[使用控制表进行批量复制](solution-template-bulk-copy-with-control-table.md)解决方案模板，其中提供了一般性的示例。
+
+- **“传输 - 写入接收器”的工作持续时间较长：**
+
+  - 采用特定于连接器的数据加载最佳做法（如果适用）。 例如，将数据复制到 [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md)（前称为 SQL 数据仓库）时，请使用 PolyBase 或 COPY 语句。 
+
+  - 检查自承载 IR 计算机是否以较低的延迟连接到接收器数据存储。 如果接收器位于 Azure 中，你可以使用[此工具](http://www.azurespeed.com/Azure/Latency)检查自承载 IR 计算机与 Azure 区域之间的连接延迟，延迟值越小越好。
+
+  - 检查自承载 IR 计算机是否具有足够的出站带宽，可以有效地传输和写入数据。 如果接收器数据存储位于 Azure 中，你可以使用[此工具](https://www.azurespeed.com/Azure/UploadLargeFile)检查上传速度。
+
+  - 在 Azure 门户 -> 数据工厂 -> 概述页中检查自承载 IR 的 CPU 和内存使用趋势。 如果 CPU 使用率较高或可用内存不足，请考虑[纵向/横向扩展 IR](create-self-hosted-integration-runtime.md#high-availability-and-scalability)。
+
+  - 检查 ADF 是否报告了接收器中的任何限制错误，或者数据存储是否处于高利用率状态。 如果是，请减少数据存储中的工作负荷，或者尝试联系数据存储管理员来提高限制或增加可用资源。
+
+  - 考虑逐步优化[并行复制](copy-activity-performance-features.md)，同时请注意，过多的并行复制可能会进一步损害性能。
 
 ## <a name="other-references"></a>其他参考资料
 
 下面是有关一些受支持数据存储的性能监视和优化参考：
 
-* Azure Blob 存储[：Blob 存储的可伸缩性和性能目标](../storage/blobs/scalability-targets.md)，[以及 Blob 存储的性能以及可伸缩性检查表](../storage/blobs/storage-performance-checklist.md)。
-* Azure 表存储：[表存储的可伸缩性和性能目标](../storage/tables/scalability-targets.md)表[存储的性能以及可伸缩性检查表](../storage/tables/storage-performance-checklist.md)。
-* Azure SQL 数据库：您可以[监视性能](../sql-database/sql-database-single-database-monitor.md)并检查数据库事务单元 （DTU） 百分比。
-* Azure SQL 数据仓库：其功能以数据仓库单位 （DWU） 度量。 请参阅[管理 Azure SQL 数据仓库中的计算能力（概述）](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)。
-* Azure 宇宙[DB：Azure 宇宙 DB 中的性能级别](../cosmos-db/performance-levels.md)。
-* 本地 SQL 服务器：[监视和调整性能](https://msdn.microsoft.com/library/ms189081.aspx)。
-* 本地文件服务器：[文件服务器的性能调优](https://msdn.microsoft.com/library/dn567661.aspx)。
+* Azure Blob 存储：[Blob 存储的可伸缩性和性能目标](../storage/blobs/scalability-targets.md)和 [Blob 存储的性能与可伸缩性查检表](../storage/blobs/storage-performance-checklist.md)。
+* Azure 表存储：[表存储的可伸缩性和性能目标](../storage/tables/scalability-targets.md)和[表存储的性能与可伸缩性查检表](../storage/tables/storage-performance-checklist.md)。
+* Azure SQL 数据库：可[监视性能](../sql-database/sql-database-single-database-monitor.md)并检查数据库事务单位 (DTU) 百分比。
+* Azure SQL 数据仓库：其功能以数据仓库单位 (DWU) 衡量。 请参阅[管理 Azure SQL 数据仓库中的计算能力（概述）](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)。
+* Azure Cosmos DB：[Azure Cosmos DB 中的性能级别](../cosmos-db/performance-levels.md)。
+* 本地 SQL Server：[性能监视和优化](https://msdn.microsoft.com/library/ms189081.aspx)。
+* 本地文件服务器：[文件服务器性能优化](https://msdn.microsoft.com/library/dn567661.aspx)。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅其他复制活动文章：

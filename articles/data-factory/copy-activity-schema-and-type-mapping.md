@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: jingwang
 ms.openlocfilehash: 9f04955fb910a6159dc09ac40a87a398e67d59d6
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414114"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>复制活动中的架构映射
@@ -25,7 +25,7 @@ ms.locfileid: "81414114"
 
 ## <a name="schema-mapping"></a>架构映射
 
-将数据从源复制到接收器时，适用列映射。 复制活动默认按列名称将源数据映射到接收器****。 可以指定[显式映射](#explicit-mapping)，根据需要自定义列映射。 更具体地说，复制活动包含以下内容：
+将数据从源复制到接收器时，适用列映射。 复制活动默认按列名称将源数据映射到接收器  。 可以指定[显式映射](#explicit-mapping)，根据需要自定义列映射。 更具体地说，复制活动包含以下内容：
 
 1. 从源中读取数据并确定源架构
 2. 使用默认列映射按名称映射列，或者应用显式列映射（如果已指定）。
@@ -88,7 +88,7 @@ ms.locfileid: "81414114"
 
 以下属性在 `translator` -> `mappings` 下带 `source` 和 `sink` 的对象中受支持：
 
-| properties | 说明                                                  | 必选 |
+| 属性 | 说明                                                  | 必须 |
 | -------- | ------------------------------------------------------------ | -------- |
 | name     | 源或接收器列的名称。                           | 是      |
 | 序号  | 列索引。 从 1 开始。 <br>在使用带分隔符的文本但没有标头行时应用，为必填项。 | 否       |
@@ -99,13 +99,13 @@ ms.locfileid: "81414114"
 
 以下属性在 `translator` -> `mappings` 下带 `source` 和 `sink` 的对象中受支持：
 
-| properties            | 说明                                                  | 必选 |
+| 属性            | 说明                                                  | 必须 |
 | ------------------- | ------------------------------------------------------------ | -------- |
 | collectionReference | 仅当分层数据（例如 MongoDB/REST）为源时，才支持此项。<br>若要进行迭代操作，以同一模式从**数组字段中**的对象提取数据并按行和对象进行转换，请指定要进行交叉应用的该数组的 JSON 路径。 | 否       |
 
 ### <a name="alternative-column-mapping"></a>备用列映射
 
-可以指定复制活动 -> `translator` -> `columnMappings`，在表格形式的数据之间进行映射。 在这种情况下，输入和输出数据集都需要“structure”节。 列映射支持将源数据集“structure”中的所有列或列子集接收器数据集“structure”中的所有列****。 以下是导致异常的错误条件：
+可以指定复制活动 -> `translator` -> `columnMappings`，在表格形式的数据之间进行映射。 在这种情况下，输入和输出数据集都需要“structure”节。 列映射支持将源数据集“structure”中的所有列或列子集接收器数据集“structure”中的所有列  。 以下是导致异常的错误条件：
 
 * 源数据存储查询结果中没有输入数据集“structure”部分中指定的列名称。
 * 接收器数据存储（如果具有预定义架构）没有输出数据集“structure”部分中指定的列名称。
@@ -160,7 +160,7 @@ ms.locfileid: "81414114"
 }
 ```
 
-以下 JSON 定义管道中的复制活动。 使用 **"翻译器** -> **"列映射**属性将源映射到接收器中的列的列。
+以下 JSON 定义管道中的复制活动。 使用 **translator** -> **columnMappings** 属性将源中的列映射到接收器中的列。
 
 ```json
 {
@@ -201,9 +201,9 @@ ms.locfileid: "81414114"
 
 可以指定复制活动 -> `translator` -> `schemaMapping`，以便在分层数据和表格形式的数据之间进行映射（例如，将数据从 MongoDB/REST 复制到文本文件以及从 Oracle 复制到 Auzre Cosmos DB 的 API for MongoDB）。 复制活动 `translator` 部分支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 必须将复制活动转换器的类型属性设置为：**表格翻译器** | 是 |
+| type | 复制活动转换器的 type 属性必须设置为：**TabularTranslator** | 是 |
 | schemaMapping | 键值对的集合，代表**从源端到接收器端**的映射关系。<br/>- **键：** 代表源。 对于**表格源**，指定数据集结构中定义的列名称；对于**分层源**，指定要提取和映射的每个字段的 JSON 路径表达式。<br>- **值：** 代表接收器。 对于**表格接收器**，指定数据集结构中定义的列名称；对于**分层接收器**，指定要提取和映射的每个字段的 JSON 路径表达式。 <br>在使用分层数据时，对于根对象下的字段，JSON 路径以根 $ 开头；对于按 `collectionReference` 属性选择的数组中的字段，JSON 路径以数组元素开头。  | 是 |
 | collectionReference | 若要进行迭代操作，以同一模式从**数组字段中**的对象提取数据并按行和对象进行转换，请指定要进行交叉应用的该数组的 JSON 路径。 仅当分层数据为源时，才支持此属性。 | 否 |
 
@@ -236,13 +236,13 @@ ms.locfileid: "81414114"
 }
 ```
 
-而你需要按以下格式通过平展数组中数据（order_pd 和 order_price）的方式将其复制到 Azure SQL 表中，并使用常见的根信息（数字、日期和城市）** 进行交叉联接：**
+而你需要按以下格式通过平展数组中数据（order_pd 和 order_price）的方式将其复制到 Azure SQL 表中，并使用常见的根信息（数字、日期和城市）  进行交叉联接： 
 
 | orderNumber | orderDate | order_pd | order_price | city |
 | --- | --- | --- | --- | --- |
-| 01 | 20170122 | P1 | 23 | Seattle |
-| 01 | 20170122 | P2 | 13 | Seattle |
-| 01 | 20170122 | P3 | 231 | Seattle |
+| 01 | 20170122 | P1 | 23 | 西雅图 |
+| 01 | 20170122 | P2 | 13 | 西雅图 |
+| 01 | 20170122 | P3 | 231 | 西雅图 |
 
 将架构映射规则配置为以下复制活动 JSON 示例：
 
@@ -282,7 +282,7 @@ ms.locfileid: "81414114"
 复制活动支持以下临时数据类型： 
 
 * Byte[]
-* Boolean
+* 布尔值
 * Datetime
 * Datetimeoffset
 * Decimal

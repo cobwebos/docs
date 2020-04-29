@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
 ms.openlocfilehash: 383b70bbb02e7a200c7ec0a994f7cf11e9b9520e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414821"
 ---
 # <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>使用 Azure 数据工厂复制多个容器中的文件
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文介绍一种解决方案模板，可用于从文件存储之间的多个容器复制文件。 例如，可以使用它将数据湖从 AWS S3 迁移到 Azure 数据湖存储。 或者，您可以使用模板将从一个 Azure Blob 存储帐户到另一个帐户的所有内容复制。
+本文介绍一种解决方案模板，可用于从文件存储之间的多个容器复制文件。 例如，可以使用它将 data lake 从 AWS S3 迁移到 Azure Data Lake Store。 或者，可以使用模板将所有内容从一个 Azure Blob 存储帐户复制到另一个。
 
 > [!NOTE]
 > 若要复制单个容器中的文件，使用[复制数据工具](copy-data-tool.md)通过单个复制活动创建管道的做法会更有效。 本文中的模板超出了你对该简单方案的需求。
@@ -47,7 +47,7 @@ ms.locfileid: "81414821"
 
     ![与源建立新的连接](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image1.png)
 
-2. 创建到目标存储存储**的新**连接。
+2. 创建到目标存储存储的**新**连接。
 
     ![与目标建立新的连接](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image2.png)
 

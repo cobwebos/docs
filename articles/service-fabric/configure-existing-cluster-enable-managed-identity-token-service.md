@@ -1,30 +1,30 @@
 ---
-title: 在现有服务结构群集中配置托管标识支持
-description: 下面了解如何在现有 Azure 服务结构群集中启用托管标识支持
+title: 在现有 Service Fabric 群集中配置托管标识支持
+description: 下面介绍如何在现有 Azure Service Fabric 群集中启用托管标识支持
 ms.topic: article
 ms.date: 03/11/2019
 ms.custom: sfrev
 ms.openlocfilehash: 73c890e960f26b8e0e3fa924d9ff6b7a4cd4a4dc
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415689"
 ---
-# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>在现有服务结构群集中配置托管标识支持
+# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>在现有 Service Fabric 群集中配置托管标识支持
 
-要在 Service Fabric 应用程序中[对 Azure 资源使用托管标识](../active-directory/managed-identities-azure-resources/overview.md)，请首先在群集上启用*托管标识令牌服务*。 此服务负责使用 Service Fabric 应用程序的托管标识对这些应用程序进行身份验证，以及代表它们获取访问令牌。 启用此服务以后，即可在 Service Fabric Explorer 中左侧窗格的“系统”部分**** 看到它，它以 **fabric:/System/ManagedIdentityTokenService** 名称运行。
+若要在 Service Fabric 应用程序中对[Azure 资源使用托管标识](../active-directory/managed-identities-azure-resources/overview.md)，请首先在群集上启用*托管标识令牌服务*。 此服务负责使用 Service Fabric 应用程序的托管标识对这些应用程序进行身份验证，以及代表它们获取访问令牌。 启用此服务以后，即可在 Service Fabric Explorer 中左侧窗格的“系统”部分  看到它，它以 **fabric:/System/ManagedIdentityTokenService** 名称运行。
 
 > [!NOTE]
 > 若要启用**托管标识令牌服务**，必须使用 Service Fabric 运行时 6.5.658.9590 或更高版本。  
 >
-> 可以在 Azure 门户中查找 Service Fabric 版群集，方法是：打开群集资源，然后在“基本信息”部分查找“Service Fabric 版本”属性。********
+> 可以在 Azure 门户中查找 Service Fabric 版群集，方法是：打开群集资源，然后在“基本信息”部分查找“Service Fabric 版本”属性。  
 >
-> 如果群集处于“手动”升级模式，则需先将其升级到**** 6.5.658.9590 或更高版本。
+> 如果群集处于“手动”升级模式，则需先将其升级到  6.5.658.9590 或更高版本。
 
 ## <a name="enable-managed-identity-token-service-in-an-existing-cluster"></a>在现有群集中启用*托管标识令牌服务*
 
-要在现有群集中启用托管标识令牌服务，您需要启动群集升级，指定两个更改：（1） 启用托管标识令牌服务，以及 （2） 请求重新启动每个节点。 首先，添加群集 Azure 资源管理器模板的以下代码段：
+若要在现有群集中启用托管标识令牌服务，你将需要启动指定两个更改的群集升级：（1）启用托管标识令牌服务，（2）请求重新启动每个节点。 首先，将以下代码片段添加到群集 Azure 资源管理器模板：
 
 ```json
 "fabricSettings": [
@@ -40,7 +40,7 @@ ms.locfileid: "81415689"
 ]
 ```
 
-若要让更改生效，还需更改升级策略，指定在升级进展到群集时，在每个节点上以强制方式重启 Service Fabric 运行时。 此重启确保新启用的系统服务在每个节点上启动并运行。 在下面的代码段中`forceRestart`，是启用重新启动的基本设置。 对于其余参数，请使用下面描述的值或使用为群集资源指定的现有自定义值。 通过在服务交换矩阵资源或resources.azure.com上选择"交换矩阵升级"选项，可以从 Azure 门户查看结构升级策略的自定义设置（"升级说明"）。 升级策略（"升级描述"）的默认选项无法从电源壳或resources.azure.com查看。 有关详细信息，请参阅[群集升级策略](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet)。  
+若要让更改生效，还需更改升级策略，指定在升级进展到群集时，在每个节点上以强制方式重启 Service Fabric 运行时。 此重启确保新启用的系统服务在每个节点上启动并运行。 在下面的代码片段`forceRestart`中，是启用重启的基本设置。 对于剩余的参数，请使用下面描述的值或使用已为群集资源指定的现有自定义值。 可以通过在 Service Fabric 资源或 resources.azure.com 上选择 "结构升级" 选项，从 Azure 门户查看构造升级策略（"upgradeDescription"）的自定义设置。 不能从 powershell 或 resources.azure.com 查看升级策略（"upgradeDescription"）的默认选项。 有关其他信息，请参阅[ClusterUpgradePolicy](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet) 。  
 
 ```json
 "upgradeDescription": {

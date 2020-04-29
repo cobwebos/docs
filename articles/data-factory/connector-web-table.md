@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
 ms.openlocfilehash: 0eb4d37342685c13027a69bb6cb85f618fa63f20
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81410218"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Web 表复制数据
@@ -29,7 +29,7 @@ ms.locfileid: "81410218"
 此 Web 表连接器、[REST 连接器](connector-rest.md)和 [HTTP 连接器](connector-http.md)之间的区别如下：
 
 - **Web 表连接器**用于从 HTML 网页中提取表内容。
-- **REST 连接器**特别支持从 RESTful API 复制数据。
+- **REST 连接器**专门支持从 RESTful api 复制数据。
 - **HTTP 连接器**是通用的，可从任何 HTTP 终结点检索数据，以执行文件下载等操作。 
 
 ## <a name="supported-capabilities"></a>支持的功能
@@ -43,9 +43,9 @@ ms.locfileid: "81410218"
 
 具体而言，此 Web 表连接器支持**从 HTML 页提取表内容**。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-若要使用此 Web 表连接器，需要设置自托管集成运行时。 有关详细信息[，请参阅自托管集成运行时](create-self-hosted-integration-runtime.md)文章。
+若要使用此 Web 表连接器，需要设置自托管集成运行时。 有关详细信息，请参阅[自承载 Integration Runtime](create-self-hosted-integration-runtime.md)文章。
 
 ## <a name="getting-started"></a>入门
 
@@ -57,14 +57,14 @@ ms.locfileid: "81410218"
 
 Web 表链接的服务支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Web** |是 |
 | url | Web 源的 URL |是 |
 | authenticationType | 允许的值为：Anonymous****。 |是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如[先决条件](#prerequisites)中所述，需要自承载集成运行时。 |是 |
 
-**例子：**
+**示例：**
 
 ```json
 {
@@ -85,17 +85,17 @@ Web 表链接的服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的节和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Web 表数据集支持的属性列表。
+有关可用于定义数据集的各节和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Web 表数据集支持的属性列表。
 
 要从 Web 表复制数据，请将数据集的 type 属性设置为“WebTable”****。 支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**WebTable** | 是 |
-| path |包含表的资源的相对 URL。 |不是。 未指定路径时，仅使用链接服务定义中指定的 URL。 |
-| 索引 |资源中表的索引。 有关在 HTML 页中获取表索引的步骤，请参阅[获取 HTML 页部分中的表索引](#get-index-of-a-table-in-an-html-page)。 |是 |
+| path |包含表的资源的相对 URL。 |不能。 未指定路径时，仅使用链接服务定义中指定的 URL。 |
+| 索引 |资源中表的索引。 请参阅[获取 html 页中表的索引](#get-index-of-a-table-in-an-html-page)部分，了解获取 html 页中表的索引的步骤。 |是 |
 
-**例子：**
+**示例：**
 
 ```json
 {
@@ -123,7 +123,7 @@ Web 表链接的服务支持以下属性：
 
 要从 Web 表复制数据，请将复制活动中的源类型设置为“WebSource”****，不支持任何其他属性。
 
-**例子：**
+**示例：**
 
 ```json
 "activities":[
@@ -188,4 +188,4 @@ Web 表链接的服务支持以下属性：
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动作为源和接收器支持的数据存储的列表，请参阅[受支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Azure 数据工厂中的复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

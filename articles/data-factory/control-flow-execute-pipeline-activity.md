@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 4bd667a2302136b5e12d2e4e548c9e8863715621
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415278"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Execute Pipeline 活动
@@ -66,8 +66,8 @@ Execute Pipeline 活动允许一个数据工厂管道调用另一个管道。
 
 properties | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
-name | Execute Pipeline 活动的名称。 | 字符串 | 是
-type | 必须设置为：**ExecutePipeline**。 | 字符串 | 是
+name | Execute Pipeline 活动的名称。 | String | 是
+type | 必须设置为：**ExecutePipeline**。 | String | 是
 管道 | 管道引用此管道调用的依赖管道。 管道引用对象具有两个属性：**referenceName** 和 **type**。 referenceName 属性指定引用管道的名称。 type 属性必须设置为 PipelineReference。 | PipelineReference | 是
 parameters | 传递给已调用管道的参数 | 将参数名映射为自变量值的 JSON 对象 | 否
 waitOnCompletion | 定义活动执行是否等待从属管道执行完成。 默认值为 false。 | Boolean | 否
@@ -260,6 +260,6 @@ waitOnCompletion | 定义活动执行是否等待从属管道执行完成。 默
 查看数据工厂支持的其他控制流活动： 
 
 - [For Each 活动](control-flow-for-each-activity.md)
-- [获取元数据活动](control-flow-get-metadata-activity.md)
-- [查找活动](control-flow-lookup-activity.md)
+- [Get Metadata 活动](control-flow-get-metadata-activity.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 - [Web 活动](control-flow-web-activity.md)

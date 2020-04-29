@@ -1,6 +1,6 @@
 ---
-title: 使用 DMV 监视 SQL 池工作负载
-description: 了解如何使用 DMV 监视 Azure 突触分析 SQL 池工作负荷和查询执行。
+title: 使用 Dmv 监视 SQL 池工作负荷
+description: 了解如何使用 Dmv 监视 Azure Synapse Analytics SQL 池工作负荷和查询执行情况。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,19 +12,19 @@ ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: synapse-analytics
 ms.openlocfilehash: 5360d91a17a7eee2dd0373ac311c79d22e085939
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416101"
 ---
-# <a name="monitor-your-azure-synapse-analytics-sql-pool-workload-using-dmvs"></a>使用 DMV 监视 Azure 同步分析 SQL 池工作负荷
+# <a name="monitor-your-azure-synapse-analytics-sql-pool-workload-using-dmvs"></a>使用 Dmv 监视 Azure Synapse Analytics SQL 池工作负荷
 
-本文介绍如何使用动态管理视图 （DMV） 来监视工作负荷，包括调查 SQL 池中的查询执行。
+本文介绍如何使用动态管理视图（Dmv）监视工作负荷，包括调查 SQL 池中的查询执行情况。
 
 ## <a name="permissions"></a>权限
 
-要查询本文中的 DMV，您需要**查看数据库状态**或**控制**权限。 通常，授予**视图数据库状态**是首选权限，因为它限制性大得多。
+若要查询本文中的 Dmv，你需要 "**查看数据库状态**" 或 "**控制**" 权限。 通常，授予**VIEW DATABASE 状态**是首选权限，因为它的限制更多。
 
 ```sql
 GRANT VIEW DATABASE STATE TO myuser;
@@ -32,7 +32,7 @@ GRANT VIEW DATABASE STATE TO myuser;
 
 ## <a name="monitor-connections"></a>监视连接
 
-所有对数据仓库的登录都记录到[sys.dm_pdw_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-sessions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。  此 DMV 包含最后 10,000 个登录。  session_id 是主键，每次进行新的登录时按顺序分配。
+数据仓库的所有登录名都将记录到[sys.databases. dm_pdw_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-sessions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。  此 DMV 包含最后 10,000 个登录。  session_id 是主键，每次进行新的登录时按顺序分配。
 
 ```sql
 -- Other Active Connections
@@ -41,7 +41,7 @@ SELECT * FROM sys.dm_pdw_exec_sessions where status <> 'Closed' and session_id <
 
 ## <a name="monitor-query-execution"></a>监视查询执行
 
-在 SQL 池上执行的所有查询都记录到[sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。  此 DMV 包含最后 10,000 个执行的查询。  request_id 对每个查询进行唯一标识，并且为此 DMV 的主键。  request_id 在每次进行新的查询时按顺序分配，并会加上前缀 QID，代表查询 ID。  针对给定 session_id 查询此 DMV 会显示给定登录的所有查询。
+在 SQL 池上执行的所有查询都记录到[sys.databases. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。  此 DMV 包含最后 10,000 个执行的查询。  request_id 对每个查询进行唯一标识，并且为此 DMV 的主键。  request_id 在每次进行新的查询时按顺序分配，并会加上前缀 QID，代表查询 ID。  针对给定 session_id 查询此 DMV 会显示给定登录的所有查询。
 
 > [!NOTE]
 > 存储过程使用多个请求 ID。  按先后顺序分配请求 ID。
@@ -67,9 +67,9 @@ ORDER BY total_elapsed_time DESC;
 
 从前面的查询结果中，记下想要调查的查询的**请求 ID**。
 
-由于存在大量活动的运行查询，因此处于“挂起”**** 状态的查询可以排队。 这些查询也显示在[系统dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)等待查询与一种类型的 UserConcurrencyResourceType。 有关并发限制的信息，请参阅[内存和并发限制](memory-concurrency-limits.md)或[工作负载管理的资源类](resource-classes-for-workload-management.md)。 查询也可能因其他原因（如对象锁定）处于等待状态。  如果查询正在等待资源，请参阅本文后面的[调查等待资源的查询](#monitor-waiting-queries)。
+由于存在大量活动的运行查询，因此处于“挂起”**** 状态的查询可以排队。 这些查询还会出现在 UserConcurrencyResourceType 类型的 " [sys. dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)等待查询中。 有关并发限制的信息，请参阅[内存和并发限制](memory-concurrency-limits.md)或[用于工作负荷管理的资源类](resource-classes-for-workload-management.md)。 查询也可能因其他原因（如对象锁定）处于等待状态。  如果查询正在等待资源，请参阅本文后面的[调查等待资源的查询](#monitor-waiting-queries)。
 
-要简化[sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)表中查询的查找，请使用[LABEL](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)为查询分配注释，该注释可以在 sys.dm_pdw_exec_requests 视图中查找。
+若要简化对[sys.databases. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)表中的查询的查找，请使用 "[标签](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)" 为查询指定注释，该注释可以在 sys.databases. dm_pdw_exec_requests 视图中查找。
 
 ```sql
 -- Query with Label
@@ -87,7 +87,7 @@ WHERE   [label] = 'My Query';
 
 ### <a name="step-2-investigate-the-query-plan"></a>步骤 2：调查查询计划
 
-使用请求 ID 从[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)检索查询的分布式 SQL （DSQL） 计划
+使用请求 ID 从 DSQL 检索查询的分布式 SQL （）计划[dm_pdw_request_steps。](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ```sql
 -- Find the distributed query plan steps for a specific query.
@@ -98,14 +98,14 @@ WHERE request_id = 'QID####'
 ORDER BY step_index;
 ```
 
-当 DSQL 计划的执行时间超出预期时，原因可能是计划很复杂，包含许多 DSQL 步骤，也可能是一个步骤占用很长的时间。  如果计划有很多步骤，包含多个移动操作，可考虑优化表分布，减少数据移动。 ["表分发"](sql-data-warehouse-tables-distribute.md)一文解释了为什么必须移动数据来解决查询。 本文还解释了一些分配策略，以尽量减少数据移动。
+当 DSQL 计划的执行时间超出预期时，原因可能是计划很复杂，包含许多 DSQL 步骤，也可能是一个步骤占用很长的时间。  如果计划有很多步骤，包含多个移动操作，可考虑优化表分布，减少数据移动。 [表分布](sql-data-warehouse-tables-distribute.md)一文说明了为何必须移动数据才能解决查询。 本文还介绍了一些用于最大程度减少数据移动的分发策略。
 
 若要进一步调查单个步骤的详细信息，可检查长时间运行的查询步骤的 *operation_type* 列并记下**步骤索引**：
 
 * 针对以下 **SQL 操作**继续执行步骤 3a：OnOperation、RemoteOperation、ReturnOperation。
 * 针对以下**数据移动操作**继续执行步骤 3b：ShuffleMoveOperation、BroadcastMoveOperation、TrimMoveOperation、PartitionMoveOperation、MoveOperation、CopyOperation。
 
-### <a name="step-3-investigate-sql-on-the-distributed-databases"></a>第 3 步：调查分布式数据库上的 SQL
+### <a name="step-3-investigate-sql-on-the-distributed-databases"></a>步骤3：调查分布式数据库上的 SQL
 
 使用请求 ID 和步骤索引从 [sys.dm_pdw_sql_requests](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 中检索详细信息，其中包含所有分布式数据库上的查询步骤的执行信息。
 
@@ -126,7 +126,7 @@ WHERE request_id = 'QID####' AND step_index = 2;
 DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
-### <a name="step-4-investigate-data-movement-on-the-distributed-databases"></a>第 4 步：调查分布式数据库上的数据移动
+### <a name="step-4-investigate-data-movement-on-the-distributed-databases"></a>步骤4：调查分布式数据库上的数据移动
 
 使用请求 ID 和步骤索引检索在 [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 中的每个分布上运行的数据移动步骤的相关信息。
 
@@ -141,7 +141,7 @@ WHERE request_id = 'QID####' AND step_index = 2;
 * 检查 *total_elapsed_time* 列，以查看是否有特定分布在数据移动上比其他分布花费了更多时间。
 * 对于长时间运行的分布，请检查 *rows_processed* 列，以查看从该分布移动的行数是否远远多于其他分布。 如果是这样，此发现可能指示基础数据倾斜。
 
-如果查询正在运行，则可以使用[DBCC PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)从特定分发中当前正在运行的 SQL 步骤的 SQL Server 计划缓存中检索 SQL Server 估计计划。
+如果查询正在运行，则可以使用[DBCC PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)从 SQL Server 计划缓存中检索特定分发中当前正在运行的 SQL 步骤的 SQL Server 估算计划。
 
 ```sql
 -- Find the SQL Server estimated plan for a query running on a specific SQL pool Compute or control node.
@@ -180,11 +180,11 @@ ORDER BY waits.object_name, waits.object_type, waits.state;
 
 ## <a name="monitor-tempdb"></a>监视 tempdb
 
-tempdb 用于在查询执行期间保存临时结果。 重度使用 tempdb 数据库可能会导致查询性能变慢。 对于配置的每个 DW100c，都会分配 399 GB 的 tempdb 空间（DW1000c 的总天分贝空间为 3.99 TB）。  下面是有关监视 tempdb 用量以及在查询中减少 tempdb 用量的提示。
+tempdb 用于在查询执行期间保存临时结果。 重度使用 tempdb 数据库可能会导致查询性能变慢。 对于配置的每个 DW100c，将分配 399 GB 的 tempdb 空间（DW1000c 的总 tempdb 空间为 3.99 TB）。  下面是有关监视 tempdb 用量以及在查询中减少 tempdb 用量的提示。
 
 ### <a name="monitoring-tempdb-with-views"></a>使用视图监视 tempdb
 
-要监视 tempdb 使用情况，请先从 SQL 池的[Microsoft 工具包](https://github.com/Microsoft/sql-data-warehouse-samples/tree/master/solutions/monitoring)安装[microsoft.vw_sql_requests](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/solutions/monitoring/scripts/views/microsoft.vw_sql_requests.sql)视图。 然后可执行以下查询，以查看在每个节点中执行的所有查询所消耗的 tempdb 用量：
+若要监视 tempdb 使用情况，请首先从适用于 SQL 的[Microsoft 工具包](https://github.com/Microsoft/sql-data-warehouse-samples/tree/master/solutions/monitoring)安装[vw_sql_requests](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/solutions/monitoring/scripts/views/microsoft.vw_sql_requests.sql)视图。 然后可执行以下查询，以查看在每个节点中执行的所有查询所消耗的 tempdb 用量：
 
 ```sql
 -- Monitor tempdb
@@ -283,7 +283,7 @@ GROUP BY t.pdw_node_id, nod.[type]
 
 ## <a name="monitor-polybase-load"></a>监视 PolyBase 负载
 
-以下查询提供负载进度的近似估计值。 查询仅显示当前正在处理的文件。
+下面的查询对负载进度进行了大致估计。 查询仅显示当前正在处理的文件。
 
 ```sql
 

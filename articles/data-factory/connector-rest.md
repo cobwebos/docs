@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: jingwang
 ms.openlocfilehash: 2657f1998e3ca908bc52166154ac3353e1e5a66b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415046"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 REST 终结点复制数据
@@ -36,8 +36,8 @@ ms.locfileid: "81415046"
 具体而言，此泛型 REST 连接器支持：
 
 - 使用 **GET** 或 **POST** 方法从 REST 终结点检索数据。
-- 使用以下身份验证之一检索数据 **：Azure**资源的匿名身份验证、**基本**身份验证 **、AAD 服务主体**和**托管标识**。
-- REST API 中的**[分页](#pagination-support)**。
+- 使用以下身份验证方法之一检索数据：“匿名”、“基本”、“AAD 服务主体”和“Azure 资源的托管标识”。    
+- REST API 中的 **[分页](#pagination-support)** 。
 - [按原样](#export-json-response-as-is)复制 REST JSON 响应，或使用[架构映射](copy-activity-schema-and-type-mapping.md#schema-mapping)对其进行分析。 仅支持 **JSON** 格式的响应有效负载。
 
 > [!TIP]
@@ -57,11 +57,11 @@ ms.locfileid: "81415046"
 
 REST 链接服务支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为 **RestService******。 | 是 |
+| type | type 属性必须设置为 **RestService**  。 | 是 |
 | url | REST 服务的基 URL。 | 是 |
-| enableServerCertificateValidation | 在连接到终结点时是否验证服务器端 TLS/SSL 证书。 | 否<br /> （默认值为**true）** |
+| enableServerCertificateValidation | 连接到终结点时是否验证服务器端 TLS/SSL 证书。 | 否<br /> （默认值为 true）  |
 | authenticationType | 用于连接到 REST 服务的身份验证类型。 允许的值为 **Anonymous**、**Basic**、**AadServicePrincipal** 和 **ManagedServiceIdentity**。 有关其他属性和示例，请参阅下面的相应部分。 | 是 |
 | connectVia | 用于连接到数据存储的 [ Integration Runtime](concepts-integration-runtime.md)。 从[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则此属性使用默认 Azure Integration Runtime。 |否 |
 
@@ -69,10 +69,10 @@ REST 链接服务支持以下属性：
 
 将 **authenticationType** 属性设置为 **Basic**。 除了前面部分所述的通用属性，还指定以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | userName | 用于访问 REST 终结点的用户名。 | 是 |
-| password | 用户（userName 值）的密码****。 将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中****。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 是 |
+| password | 用户（userName 值）的密码  。 将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中  。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 是 |
 
 **示例**
 
@@ -102,10 +102,10 @@ REST 链接服务支持以下属性：
 
 将 **authenticationType** 属性设置为 **AadServicePrincipal**。 除了前面部分所述的通用属性，还指定以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | servicePrincipalId | 指定 Azure Active Directory 应用程序的客户端 ID。 | 是 |
-| servicePrincipalKey | 指定 Azure Active Directory 应用程序的密钥。 将此字段标记为**SecureString，** 以将其安全地存储在数据工厂中，或[引用存储在 Azure 密钥保管库中的机密](store-credentials-in-key-vault.md)。 | 是 |
+| servicePrincipalKey | 指定 Azure Active Directory 应用程序的密钥。 将此字段标记为 **SecureString** 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | tenant | 指定应用程序的租户信息（域名或租户 ID）。 将鼠标悬停在 Azure 门户右上角进行检索。 | 是 |
 | aadResourceId | 指定请求授权的 AAD 资源，例如 `https://management.core.windows.net`。| 是 |
 
@@ -139,7 +139,7 @@ REST 链接服务支持以下属性：
 
 将 **authenticationType** 属性设置为 **ManagedServiceIdentity**。 除了前面部分所述的通用属性，还指定以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | aadResourceId | 指定请求授权的 AAD 资源，例如 `https://management.core.windows.net`。| 是 |
 
@@ -171,14 +171,14 @@ REST 链接服务支持以下属性：
 
 若要从 REST 复制数据，支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 **type** 属性必须设置为 **RestResource**。 | 是 |
 | relativeUrl | 包含数据的资源的相对 URL。 未指定此属性时，仅使用链接服务定义中指定的 URL。 HTTP 连接器从以下组合 URL 复制数据：`[URL specified in linked service]/[relative URL specified in dataset]`。 | 否 |
 
 如果在数据集中设置了 `requestMethod`、`additionalHeaders`、`requestBody` 和 `paginationRules`，则仍按原样支持该数据集，但建议你以后在活动源中使用新模型。
 
-**例子：**
+**示例：**
 
 ```json
 {
@@ -205,22 +205,22 @@ REST 链接服务支持以下属性：
 
 ### <a name="rest-as-source"></a>REST 作为源
 
-复制活动**源**部分支持以下属性：
+复制活动**source**部分支持以下属性：
 
-| properties | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **RestSource**。 | 是 |
-| requestMethod | HTTP 方法。 允许的值为 Get（默认值）和 Post********。 | 否 |
+| requestMethod | HTTP 方法。 允许的值为 Get（默认值）和 Post   。 | 否 |
 | additionalHeaders | 附加的 HTTP 请求标头。 | 否 |
 | requestBody | HTTP 请求的正文。 | 否 |
 | paginationRules | 用于撰写下一页请求的分页规则。 有关详细信息，请参阅[分页支持](#pagination-support)部分。 | 否 |
-| httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）****。 该值是获取响应而不是读取响应数据的超时。 默认值为 00:01:40****。  | 否 |
+| httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）  。 该值是获取响应而不是读取响应数据的超时。 默认值为 00:01:40  。  | 否 |
 | requestInterval | 发送下一页请求之前等待的时间。 默认值为 **00:00:01** |  否 |
 
 >[!NOTE]
 >REST 连接器会忽略 `additionalHeaders` 中指定的任何“Accept”标头。 由于 REST 连接器仅支持 JSON 中的响应，它会自动生成 `Accept: application/json` 标头。
 
-**示例 1：将 Get 方法与分形一起使用**
+**示例 1：对分页使用 Get 方法**
 
 ```json
 "activities":[
@@ -258,7 +258,7 @@ REST 链接服务支持以下属性：
 ]
 ```
 
-**示例 2：使用 POST 方法**
+**示例 2：使用 Post 方法**
 
 ```json
 "activities":[
@@ -309,7 +309,7 @@ REST 链接服务支持以下属性：
 
 分页规则中**支持的键**：
 
-| 密钥 | 说明 |
+| 键 | 说明 |
 |:--- |:--- |
 | AbsoluteUrl | 指示用于发出下一个请求的 URL。 它可以是**绝对 URL 或相对 URL**。 |
 | QueryParameters.*request_query_parameter* 或 QueryParameters['request_query_parameter'] | “request_query_parameter”由用户定义，引用下一个 HTTP 请求 URL 中的一个查询参数名称。 |
@@ -317,12 +317,12 @@ REST 链接服务支持以下属性：
 
 分页规则中**支持的值**：
 
-| 值 | 描述 |
+| Value | 说明 |
 |:--- |:--- |
 | Headers.*response_header* 或 Headers['response_header'] | “response_header”由用户定义，引用当前 HTTP 响应中的一个标头名称，其值用于发出下一个请求。 |
 | 以“$”（表示响应正文的根）开头的 JSONPath 表达式 | 响应正文应只包含一个 JSON 对象。 JSONPath 表达式应返回单个基元值，该值用于发出下一个请求。 |
 
-**例子：**
+**示例：**
 
 Facebook 图形 API 返回采用以下结构的响应，在此情况下，下一页的 URL 将在 ***paging.next*** 中表示：
 
@@ -374,51 +374,51 @@ Facebook 图形 API 返回采用以下结构的响应，在此情况下，下一
 ```
 
 ## <a name="use-oauth"></a>使用 OAuth
-本节介绍如何使用解决方案模板使用 OAuth 将数据从 REST 连接器复制到以 JSON 格式复制到 Azure 数据湖存储中。 
+本部分介绍如何使用解决方案模板，以使用 OAuth 将数据从 REST 连接器复制到使用 JSON 格式 Azure Data Lake Storage。 
 
 ### <a name="about-the-solution-template"></a>关于解决方案模板
 
 该模板包含两个活动：
-- **Web**活动检索无记名令牌，然后将其作为授权传递给后续复制活动。
-- **将**活动复制数据从 REST 复制到 Azure 数据湖存储。
+- **Web**活动检索持有者令牌，并将其作为授权传递到后续的复制活动。
+- **复制**活动将数据从 REST 复制到 Azure Data Lake Storage。
 
 该模板定义两个参数：
-- **Sink 容器**是将数据复制到 Azure 数据湖存储中的根文件夹路径。 
-- **SinkDirectory**是根目录下的目录路径，将数据复制到 Azure 数据湖存储中。 
+- **SinkContainer**是将数据复制到 Azure Data Lake Storage 的根文件夹路径。 
+- **SinkDirectory**是根下的目录路径，在该目录中的数据将复制到 Azure Data Lake Storage 中。 
 
 ### <a name="how-to-use-this-solution-template"></a>如何使用此解决方案模板
 
-1. **使用 OAuth**模板转到从 REST 或 HTTP 复制。 为源连接创建新连接。 
+1. 请**从 REST 或使用 OAuth 的 HTTP**模板中转到该副本。 为源连接创建新连接。 
     ![创建新连接](media/solution-template-copy-from-rest-or-http-using-oauth/source-connection.png)
 
-    以下是新链接服务 （REST） 设置的关键步骤：
+    下面是新链接服务（REST）设置的关键步骤：
     
-     1. 在**基本 URL**下 ，指定您自己的源 REST 服务的 URL 参数。 
-     2. 对于**身份验证类型**，请选择 *"匿名*"。
-        ![新的 REST 连接](media/solution-template-copy-from-rest-or-http-using-oauth/new-rest-connection.png)
+     1. 在 "**基本 url**" 下，为自己的源 REST 服务指定 URL 参数。 
+     2. 对于 "**身份验证类型**"，选择 "*匿名*"。
+        ![新建 REST 连接](media/solution-template-copy-from-rest-or-http-using-oauth/new-rest-connection.png)
 
 2. 为目标连接创建新连接。  
-    ![新第 2 代连接](media/solution-template-copy-from-rest-or-http-using-oauth/destination-connection.png)
+    ![新建 Gen2 连接](media/solution-template-copy-from-rest-or-http-using-oauth/destination-connection.png)
 
 3. 选择“使用此模板”****。
     ![使用此模板](media/solution-template-copy-from-rest-or-http-using-oauth/use-this-template.png)
 
-4. 您将看到创建的管道，如以下示例所示：![管道](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
+4. 你会看到创建的管道，如以下示例中所示![：管道](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
 
-5. 选择**Web**活动。 在 **"设置"中**，指定相应的**URL、****方法**、**标题**和**正文**，以便从要从中复制数据的服务的登录 API 中检索 OAuth 承载令牌。 模板中的占位符显示 Azure 活动目录 （AAD） OAuth 的示例。 注意 AAD 身份验证由 REST 连接器本机支持，这里只是 OAuth 流的示例。 
+5. 选择 " **Web**活动"。 在 "**设置**" 中，指定相应的**URL**、**方法**、**标头**和**正文**，以便从要从中复制数据的服务的登录 API 中检索 OAuth 持有者令牌。 模板中的占位符展示 Azure Active Directory （AAD） OAuth 的示例。 注意： AAD 身份验证是 REST 连接器的本机支持，这里只是 OAuth flow 的示例。 
 
-    | properties | 说明 |
+    | 属性 | 描述 |
     |:--- |:--- |:--- |
-    | 代码 |指定要从中检索 OAuth 承载令牌的 URL。 在样品中，它https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |. 
-    | 方法 | HTTP 方法。 允许的值是 **"过帐"** 和"**获取**"。 | 
-    | 头文件 | 标头是用户定义的，它引用 HTTP 请求中的一个标头名称。 | 
+    | URL |指定要从中检索 OAuth 持有者令牌的 url。 例如，在示例中，它是https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |. 
+    | 方法 | HTTP 方法。 允许的值为**Post**和**Get**。 | 
+    | 头文件 | 标头是用户定义的，它引用 HTTP 请求中的标头名称。 | 
     | Body | HTTP 请求的正文。 | 
 
     ![管道](media/solution-template-copy-from-rest-or-http-using-oauth/web-settings.png)
 
-6. 在 **"复制数据**活动"中，选择 *"源*"选项卡，您可以看到从上一步中检索的无记名令牌 （access_token） 将作为"其他标头下**的授权"** 传递给复制数据活动。 在启动管道运行之前，确认以下属性的设置。
+6. 在 "**复制数据**" 活动中，选择 "*源*" 选项卡，可以看到从上一步检索到的持有者令牌（access_token）将传递到 "在其他标头下作为**授权**复制数据" 活动。 启动管道运行之前，请确认以下属性的设置。
 
-    | properties | 说明 |
+    | 属性 | 说明 |
     |:--- |:--- |:--- | 
     | 请求方法 | HTTP 方法。 允许的值为 Get（默认值）和 Post********。 | 
     | 其他标头 | 附加的 HTTP 请求标头。| 
@@ -428,18 +428,18 @@ Facebook 图形 API 返回采用以下结构的响应，在此情况下，下一
 7. 选择“调试”，输入**参数**，然后选择“完成”。********
    ![管道运行](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline-run.png) 
 
-8. 当管道运行成功完成时，您将看到类似于以下示例的结果：![管道运行结果](media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png) 
+8. 管道运行成功完成后，会看到类似于以下示例的结果： ![管道运行结果](media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png) 
 
-9. 单击 **"操作**中 Web 活动"的"输出"图标，您将看到服务返回access_token。
+9. 单击 "**操作**" 列中的 WebActivity 的 "输出" 图标，你会看到该服务返回的 access_token。
 
    ![令牌输出](media/solution-template-copy-from-rest-or-http-using-oauth/token-output.png) 
 
-10. 单击 **"操作**中复制活动"的"输入"图标，您将看到 WebActivity 检索access_token传递给复制活动进行身份验证。 
+10. 在 "**操作**" 列中单击 "CopyActivity" 的 "输入" 图标，你会看到 WebActivity 检索到的 access_token 传递到 CopyActivity 进行身份验证。 
 
     ![令牌输入](media/solution-template-copy-from-rest-or-http-using-oauth/token-input.png)
         
     >[!CAUTION] 
-    >为避免以纯文本记录令牌，请在 Web 活动中启用"安全输出"，在"复制"活动中启用"安全输入"。
+    >若要避免以纯文本格式记录令牌，请在 Web 活动中启用 "安全输出"，并在复制活动中启用 "安全输入"。
 
 
 ## <a name="export-json-response-as-is"></a>按原样导出 JSON 响应

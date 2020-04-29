@@ -12,10 +12,10 @@ manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 01/04/2019
 ms.openlocfilehash: 14f1d3b58996d438279bfa2a234c754a6d840c79
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414731"
 ---
 # <a name="templates"></a>模板
@@ -27,11 +27,11 @@ ms.locfileid: "81414731"
 
 可通过以下两种方式，开始从模板创建数据工厂管道：
 
-1.  在“概述”页上选择“从模板创建管道”打开模板库。****
+1.  在“概述”页上选择“从模板创建管道”打开模板库。 
 
     ![从“概述”页打开模板库](media/solution-templates-introduction/templates-intro-image1.png)
 
-1.  在"资源资源管理器"中的"作者"**+** 选项卡上，选择"**从模板中获取管道**以打开模板库"。
+1.  在资源浏览器中的“创作”选项卡上选择 **+** ，然后选择“模板中的管道”打开模板库。 
 
     ![从“创作”页打开模板库](media/solution-templates-introduction/templates-intro-image2.png)
 
@@ -41,11 +41,11 @@ ms.locfileid: "81414731"
 
 ### <a name="out-of-the-box-data-factory-templates"></a>现成的数据工厂模板
 
-数据工厂使用 Azure 资源管理器模板来保存数据工厂管道模板。 您可以在正式的[Azure 数据工厂 GitHub 存储库](https://github.com/Azure/Azure-DataFactory/tree/master/templates)中查看所有资源管理器模板以及用于开箱即用数据工厂模板的清单文件。 Microsoft 提供的预定义模板包括但不限于以下各项：
+数据工厂使用 Azure 资源管理器模板来保存数据工厂管道模板。 在[官方 Azure 数据工厂 GitHub 存储库](https://github.com/Azure/Azure-DataFactory/tree/master/templates)中，可以看到所有资源管理器模板，以及现成数据工厂模板使用的清单文件。 Microsoft 提供的预定义模板包括但不限于以下各项：
 
 -   复制模板：
 
-    -   [从数据库批量复制](solution-template-bulk-copy-with-control-table.md)
+    -   [从数据库进行批量复制](solution-template-bulk-copy-with-control-table.md)
     
     -   [按 LastModifiedDate 复制新文件](solution-template-copy-new-files-lastmodifieddate.md)
 
@@ -53,7 +53,7 @@ ms.locfileid: "81414731"
 
     -   [移动文件](solution-template-move-files.md)
 
-    -   [来自数据库的增量副本](solution-template-delta-copy-with-control-table.md)
+    -   [从数据库进行增量复制](solution-template-delta-copy-with-control-table.md)
 
     -   从 \<源\> 复制到 \<目标\>
 
