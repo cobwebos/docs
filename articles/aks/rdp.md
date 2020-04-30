@@ -1,38 +1,36 @@
 ---
-title: RDP 到 AKS Windows 服务器节点
+title: RDP 到 AKS Windows Server 节点
 titleSuffix: Azure Kubernetes Service
-description: 了解如何使用 Azure Kubernetes 服务 （AKS） 群集 Windows 服务器节点创建 RDP 连接，以便执行故障排除和维护任务。
+description: 了解如何创建与 Azure Kubernetes Service （AKS）群集 Windows Server 节点的 RDP 连接，以便进行故障排除和维护任务。
 services: container-service
 ms.topic: article
 ms.date: 06/04/2019
-ms.openlocfilehash: 140d59894b38c7f07f16b0ac3cf99316c201d120
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: ed849ec928cc09cd0e8911929c4abc6ae54b1536
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886783"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208034"
 ---
-# <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>使用 RDP 连接到 Azure 库伯奈斯服务 （AKS） 群集 Windows 服务器节点，以便进行维护或故障排除
+# <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>通过 RDP 连接到 Azure Kubernetes Service （AKS）群集 Windows Server 节点进行维护或故障排除
 
-在 Azure 库伯内斯服务 （AKS） 群集的整个生命周期中，您可能需要访问 AKS Windows 服务器节点。 进行这种访问的原因包括维护、日志收集或其他故障排除操作。 您可以使用 RDP 访问 AKS Windows 服务器节点。 或者，如果要使用 SSH 访问 AKS Windows 服务器节点，并且可以访问群集创建期间使用的相同密钥对，则可以按照 SSH 中的步骤[进入 Azure Kubernetes 服务 （AKS） 群集节点][ssh-steps]。 出于安全考虑，AKS 节点不会在 Internet 中公开。
+在 Azure Kubernetes 服务（AKS）群集的整个生命周期内，可能需要访问 AKS Windows Server 节点。 进行这种访问的原因包括维护、日志收集或其他故障排除操作。 你可以使用 RDP 访问 AKS Windows Server 节点。 或者，如果你想要使用 SSH 访问 AKS Windows Server 节点，并且你有权访问在群集创建过程中使用的相同的密钥，则可以按照 SSH 中的步骤连接[到 Azure Kubernetes Service （AKS）群集节点][ssh-steps]。 出于安全考虑，AKS 节点不会在 Internet 中公开。
 
-Windows 服务器节点支持当前处于 AKS 中的预览版。
-
-本文介绍如何使用 AKS 节点的专用 IP 地址创建 RDP 连接。
+本文介绍如何使用 AKS 节点通过其专用 IP 地址创建 RDP 连接。
 
 ## <a name="before-you-begin"></a>在开始之前
 
-本文假定您具有具有 Windows 服务器节点的现有 AKS 群集。 如果需要 AKS 群集，请参阅有关[使用 Azure CLI 使用 Windows 容器创建 AKS 群集][aks-windows-cli]的文章。 您需要要排除故障的 Windows 服务器节点的 Windows 管理员用户名和密码。 您还需要一个RDP客户端，如[微软远程桌面][rdp-mac]。
+本文假设你有一个包含 Windows Server 节点的现有 AKS 群集。 如果需要 AKS 群集，请参阅[使用 Azure CLI 创建包含 Windows 容器的 AKS 群集][aks-windows-cli]一文。 你需要用于排查 Windows Server 节点的 Windows 管理员用户名和密码。 还需要一个 RDP 客户端，例如[Microsoft 远程桌面][rdp-mac]。
 
-您还需要 Azure CLI 版本 2.0.61 或更高版本安装和配置。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+还需要安装并配置 Azure CLI 版本2.0.61 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
 ## <a name="deploy-a-virtual-machine-to-the-same-subnet-as-your-cluster"></a>将虚拟机部署到与群集相同的子网
 
-AKS 群集的 Windows 服务器节点没有外部可访问的 IP 地址。 要建立 RDP 连接，可以将具有可公开访问的 IP 地址的虚拟机部署到与 Windows Server 节点相同的子网。
+AKS 群集的 Windows Server 节点没有外部访问的 IP 地址。 若要进行 RDP 连接，可以将具有可公开访问的 IP 地址的虚拟机部署到与你的 Windows Server 节点相同的子网。
 
-下面的示例在*myResourceGroup 资源*组中创建名为*myVM*的虚拟机。
+以下示例在*myResourceGroup*资源组中创建名为*myVM*的虚拟机。
 
-首先，获取 Windows Server 节点池使用的子网。 要获取子网 ID，您需要子网的名称。 要获取子网的名称，您需要 vnet 的名称。 通过查询群集的网络列表来获取 vnet 名称。 要查询群集，您需要其名称。 通过在 Azure 云外壳中运行以下内容，可以获取所有这些功能：
+首先，获取 Windows Server 节点池使用的子网。 若要获取子网 id，需要子网名称。 若要获取子网的名称，需要 vnet 的名称。 通过向群集查询其网络列表来获取 vnet 名称。 若要查询群集，需要该群集的名称。 可以通过在 Azure Cloud Shell 中运行以下内容来获取所有这些内容：
 
 ```azurecli-interactive
 CLUSTER_RG=$(az aks show -g myResourceGroup -n myAKSCluster --query nodeResourceGroup -o tsv)
@@ -41,7 +39,7 @@ SUBNET_NAME=$(az network vnet subnet list -g $CLUSTER_RG --vnet-name $VNET_NAME 
 SUBNET_ID=$(az network vnet subnet show -g $CLUSTER_RG --vnet-name $VNET_NAME --name $SUBNET_NAME --query id -o tsv)
 ```
 
-现在，您已经SUBNET_ID了，请在同一 Azure 云外壳窗口中运行以下命令以创建 VM：
+现在，你已有了 SUBNET_ID，请在相同的 Azure Cloud Shell 窗口中运行以下命令以创建 VM：
 
 ```azurecli-interactive
 az vm create \
@@ -54,23 +52,23 @@ az vm create \
     --query publicIpAddress -o tsv
 ```
 
-以下示例输出显示 VM 已成功创建并显示虚拟机的公共 IP 地址。
+以下示例输出显示 VM 已成功创建，并显示虚拟机的公共 IP 地址。
 
 ```console
 13.62.204.18
 ```
 
-记录虚拟机的公共 IP 地址。 您将在后面的步骤中使用此地址。
+记录虚拟机的公共 IP 地址。 稍后的步骤中会用到此地址。
 
 ## <a name="allow-access-to-the-virtual-machine"></a>允许访问虚拟机
 
-默认情况下，AKS 节点池子网受 NSG（网络安全组）保护。 要访问虚拟机，您必须在 NSG 中启用访问权限。
+默认情况下，AKS 节点池子网使用 Nsg （网络安全组）进行保护。 若要获取对虚拟机的访问权限，必须在 NSG 中启用访问权限。
 
 > [!NOTE]
-> NSG 由 AKS 服务控制。 您对 NSG 的任何更改将随时被控制平面覆盖。
+> Nsg 由 AKS 服务控制。 您对 NSG 所做的任何更改都将在控制平面随时被覆盖。
 >
 
-首先，获取 nsg 的资源组和 nsg 名称，以将规则添加到：
+首先，获取要将规则添加到的 nsg 的资源组和 nsg 名称：
 
 ```azurecli-interactive
 CLUSTER_RG=$(az aks show -g myResourceGroup -n myAKSCluster --query nodeResourceGroup -o tsv)
@@ -97,13 +95,13 @@ az aks install-cli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-使用[kubectl get][kubectl-get]命令列出 Windows 服务器节点的内部 IP 地址：
+使用[kubectl get][kubectl-get]命令列出 Windows Server 节点的内部 IP 地址：
 
 ```console
 kubectl get nodes -o wide
 ```
 
-以下示例输出显示群集中所有节点（包括 Windows Server 节点）的内部 IP 地址。
+以下示例输出显示群集中所有节点的内部 IP 地址，包括 Windows Server 节点。
 
 ```console
 $ kubectl get nodes -o wide
@@ -112,27 +110,27 @@ aks-nodepool1-42485177-vmss000000   Ready    agent   18h   v1.12.7   10.240.0.4 
 aksnpwin000000                      Ready    agent   13h   v1.12.7   10.240.0.67   <none>        Windows Server Datacenter   10.0.17763.437
 ```
 
-记录要排除故障的 Windows 服务器节点的内部 IP 地址。 您将在后面的步骤中使用此地址。
+记录要进行故障排除的 Windows Server 节点的内部 IP 地址。 稍后的步骤中会用到此地址。
 
 ## <a name="connect-to-the-virtual-machine-and-node"></a>连接到虚拟机和节点
 
-连接到您之前使用 RDP 客户端（如[Microsoft 远程桌面][rdp-mac]）创建的虚拟机的公共 IP 地址。
+使用 RDP 客户端（如[Microsoft 远程桌面][rdp-mac]）连接到之前创建的虚拟机的公共 IP 地址。
 
-![使用 RDP 客户端连接到虚拟机的图像](media/rdp/vm-rdp.png)
+![使用 RDP 客户端连接到虚拟机的映像](media/rdp/vm-rdp.png)
 
-连接到虚拟机后，请连接到要使用虚拟机内 RDP 客户端进行故障排除的 Windows Server 节点*的内部 IP 地址*。
+连接到虚拟机后，请使用虚拟机中的 RDP 客户端连接到要进行故障排除的 Windows Server 节点的*内部 IP 地址*。
 
-![使用 RDP 客户端连接到 Windows 服务器节点的图像](media/rdp/node-rdp.png)
+![使用 RDP 客户端连接到 Windows Server 节点的图像](media/rdp/node-rdp.png)
 
-您现在已连接到 Windows 服务器节点。
+你现在已连接到 Windows Server 节点。
 
-![Windows 服务器节点中的 cmd 窗口图像](media/rdp/node-session.png)
+![Windows Server 节点中 cmd 窗口的图像](media/rdp/node-session.png)
 
-您现在可以在*cmd*窗口中运行任何故障排除命令。 由于 Windows 服务器节点使用 Windows 服务器核心，因此当您通过 RDP 连接到 Windows Server 节点时，没有完整的 GUI 或其他 GUI 工具。
+你现在可以在*cmd*窗口中运行任何疑难解答命令。 由于 Windows Server 节点使用 Windows Server Core，因此在通过 RDP 连接到 Windows Server 节点时，没有完整的 GUI 或其他 GUI 工具。
 
-## <a name="remove-rdp-access"></a>删除 RDP 访问权限
+## <a name="remove-rdp-access"></a>删除 RDP 访问
 
-完成后，退出 RDP 连接到 Windows 服务器节点，然后将 RDP 会话退出虚拟机。 退出两个 RDP 会话后，使用 az [vm 删除][az-vm-delete]命令删除虚拟机：
+完成后，退出与 Windows Server 节点的 RDP 连接，并退出与虚拟机的 RDP 会话。 退出这两个 RDP 会话后，请删除包含[az vm delete][az-vm-delete]命令的虚拟机：
 
 ```azurecli-interactive
 az vm delete --resource-group myResourceGroup --name myVM
@@ -151,7 +149,7 @@ az network nsg rule delete --resource-group $CLUSTER_RG --nsg-name $NSG_NAME --n
 
 ## <a name="next-steps"></a>后续步骤
 
-如果需要其他故障排除数据，可以[查看库伯奈斯主节点日志][view-master-logs]或[Azure 监视器][azure-monitor-containers]。
+如果需要其他故障排除数据，可以[查看 Kubernetes 主节点日志][view-master-logs]或[Azure Monitor][azure-monitor-containers]。
 
 <!-- EXTERNAL LINKS -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/

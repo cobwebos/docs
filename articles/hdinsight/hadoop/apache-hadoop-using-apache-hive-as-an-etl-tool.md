@@ -1,31 +1,31 @@
 ---
 title: 将 Apache Hive 用作 ETL 工具 - Azure HDInsight
 description: 使用 Apache Hive 提取、转换和加载 (ETL) Azure HDInsight 中的数据。
-ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/22/2019
-ms.openlocfilehash: be331f36a6305b05ce83a2b2d5fdfb73a154ce3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/28/2020
+ms.openlocfilehash: c289892246cfce3ffac3f668577073a2af92511f
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77623120"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509544"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>将 Apache Hive 用作提取、转换和加载 (ETL) 工具
 
-通常需要先将传入的数据清理并转换，才能将它载入适合用于分析的目标。 提取、转换和加载 (ETL) 操作可用于准备数据并将其载入数据目标。  HDInsight 上的 Apache Hive 可以读入非结构化数据、根据需要处理该数据，然后将该数据载入关系数据仓库，供决策支持系统使用。 此方法从源提取数据并将其存储在可缩放的存储（例如 Azure 存储 Blob 或 Azure Data Lake Storage）中。 然后，使用一系列 Hive 查询来转换该数据，最后将其暂存在 Hive 中，为批量载入目标数据存储做好准备。
+通常需要先将传入的数据清理并转换，才能将它载入适合用于分析的目标。 提取、转换和加载 (ETL) 操作可用于准备数据并将其载入数据目标。  HDInsight 上的 Apache Hive 可以读入非结构化数据、根据需要处理该数据，然后将该数据载入关系数据仓库，供决策支持系统使用。 在此方法中，将从源中提取数据。 然后存储在自适应存储中，例如 Azure 存储 blob 或 Azure Data Lake Storage。 然后，将使用一系列 Hive 查询来转换数据。 然后在 Hive 中暂存，为大容量加载到目标数据存储区做好准备。
 
 ## <a name="use-case-and-model-overview"></a>用例和模型概述
 
-下图提供 ETL 自动化用例和模型的概述。 将转换输入数据以生成适当的输出。  在转换期间，数据可以更改形状、数据类型甚至语言。  ETL 过程可将英制转换为公制、更改时区和提高精确度，以便与目标中现有的数据相符。  ETL 进程还可以将新的数据与现有数据组合在一起，以保持报表的最新状态，或进一步了解现有数据。  然后，应用程序（例如报告工具和服务）能以所需的格式使用此数据。
+下图提供 ETL 自动化用例和模型的概述。 将转换输入数据以生成适当的输出。  在转换过程中，数据会改变形状、数据类型甚至是语言。  ETL 过程可将英制转换为公制、更改时区和提高精确度，以便与目标中现有的数据相符。 ETL 进程还可以将新的数据与现有数据组合在一起，以保持报表的最新状态，或进一步了解现有数据。 然后，诸如报告工具和服务之类的应用程序可以使用所需的格式的数据。
 
 ![Apache Hive 为 ETL 体系结构](./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png)
 
-在导入大量文本文件（例如 CSV）或数量较少但经常更改的文本文件或上述两者兼具的 ETL 过程中，通常使用 Hadoop。  Hive 是一个很好的工具，可以在将数据载入数据目标之前先准备好数据。  在 Hive 中，可以基于 CSV 创建架构，然后使用类似于 SQL 的语言来生成与数据交互的 MapReduce 程序。
+Hadoop 通常用于导入大量文本文件（如 Csv）的 ETL 进程。 或更小但经常更改的文本文件数量，或同时使用这两种方法。  Hive 是一个很好的工具，可以在将数据载入数据目标之前先准备好数据。  在 Hive 中，可以基于 CSV 创建架构，然后使用类似于 SQL 的语言来生成与数据交互的 MapReduce 程序。
 
 使用 Hive 执行 ETL 的典型步骤如下：
 
@@ -34,7 +34,7 @@ ms.locfileid: "77623120"
 3. 创建 HDInsight 群集并连接数据存储。
 4. 定义要在读取阶段应用到数据存储中的数据的架构：
 
-    ```
+    ```hql
     DROP TABLE IF EXISTS hvac;
 
     --create the hvac table on comma-separated sensor data stored in Azure Storage blobs
@@ -66,30 +66,28 @@ ms.locfileid: "77623120"
 
 ## <a name="output-targets"></a>输出目标
 
-可以使用 Hive 将数据输出到各种目标，包括：
+可以使用 Hive 将数据输出到不同种类的目标，其中包括：
 
 * 关系数据库，例如 SQL Server 或 Azure SQL 数据库。
 * 数据仓库，例如 Azure SQL 数据仓库。
 * Excel。
 * Azure 表和 Blob 存储。
 * 要求将数据处理成特定格式或处理成包含特定类型的信息结构的应用程序或服务。
-* JSON 文档存储，如[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)。
+* JSON 文档存储，如 Azure Cosmos DB。
 
 ## <a name="considerations"></a>注意事项
 
 有以下需要时，通常可以使用 ETL 模型：
 
-* 将流数据或大量半结构化或非结构化数据从外部源载入现有数据库或信息系统。
-* 在加载数据之前，先清理、转换和验证这些数据（也许是通过群集使用多个转换阶段执行此操作）。
-* 生成定期更新的报表和可视化效果。 例如，如果在日间生成报表耗时太长，可以安排在夜间运行报告。 若要自动运行 Hive 查询，可以使用 [Azure 逻辑应用](../../logic-apps/logic-apps-overview.md)和 PowerShell。
+`*`将流数据或大量半结构化或非结构化数据从外部源加载到现有数据库或信息系统中。
+`*`在加载数据之前对其进行清理、转换和验证，可能通过群集使用多个转换。
+`*`生成定期更新的报表和可视化效果。 例如，如果在日间生成报表耗时太长，可以安排在夜间运行报告。 若要自动运行 Hive 查询，可以使用[Azure 逻辑应用](../../logic-apps/logic-apps-overview.md)和 PowerShell。
 
 如果数据的目标不是数据库，则可以在查询中以适当的格式（例如 CSV）生成文件。 然后，可将此文件导入 Excel 或 Power BI。
 
-如果需要在 ETL 过程中对数据执行多个操作，请考虑如何管理这些操作。 如果操作由外部程序而不是解决方案中的工作流控制，则需要确定某些操作是否可以并行运行，并检测每项操作何时完成。 与使用外部脚本或自定义程序来尝试协调一系列操作相比，使用工作流机制（例如 Hadoop 中的 Oozie）可能更方便。 有关 Oozie 的详细信息，请参阅[工作流和作业业务流程](https://msdn.microsoft.com/library/dn749829.aspx)。
+如果需要在 ETL 过程中对数据执行多个操作，请考虑如何管理这些操作。 使用由外部程序控制的操作，而不是作为解决方案中的工作流，决定是否可以并行执行某些操作。 并检测每个作业完成的时间。 与使用外部脚本或自定义程序来尝试协调一系列操作相比，使用工作流机制（例如 Hadoop 中的 Oozie）可能更方便。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [大规模 ETL](apache-hadoop-etl-at-scale.md)
-* [使数据管道可操作化](../hdinsight-operationalize-data-pipeline.md)
-
-<!-- * [ETL Deep Dive](../hdinsight-etl-deep-dive.md) -->
+* [`Operationalize a data pipeline`](../hdinsight-operationalize-data-pipeline.md)

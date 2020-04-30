@@ -1,7 +1,7 @@
 ---
-title: 定义自定义 R 模块
+title: 创建 & 部署自定义 R 模块
 titleSuffix: ML Studio (classic) - Azure
-description: 本主题介绍如何创作和部署自定义 R 工作室（经典版）。 解释什么是自定义 R 模块以及要使用什么文件来定义此类模块，
+description: 了解如何在机器学习工作室（经典）中创作和部署自定义 R 模块。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,22 +10,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 5b8dab14a9416795eccef1f71988a048c8bedb48
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5fb628b1730f0811debf0ff8a6cd517b96f8ef53
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218164"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208425"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>定义 Azure 机器学习工作室（经典版）的自定义 R 模块
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
-
 本主题介绍如何创作和部署自定义 R 工作室（经典版）。 解释什么是自定义 R 模块以及要使用什么文件来定义此类模块， 并举例说明如何构建定义模块的文件以及如何在机器学习工作区中进行模块部署注册。 随后本主题会详细说明用于定义自定义模块的元素和属性。 本主题还会讨论如何使用辅助功能和文件以及多个输出。 
 
-
-
-## <a name="what-is-a-custom-r-module"></a>什么是自定义 R 模块？
 自定义模块是用户定义的模块，可上传至工作区并在 Azure 机器学习工作室（经典版）实验中运行****。 **自定义 R 模块**是一种可执行用户定义的 R 函数的自定义模块。 **R** 是一种用于统计计算和图形的编程语言，统计和科学工作者将其广泛用于运行算法。 目前，R 是自定义模块支持的唯一语言；但根据计划，未来发布的版本会支持其他语言。
 
 自定义模型在 Azure 机器学习工作室（经典版）中具有优先地位，因为你可以像使用任何其他模块一样使用自定义模块****。 它们可与其他模块一起运行，可包含在已发布实验或可视化中。 可控制模块实施的算法、使用的输入和输出端口、建模参数以及各种其他运行时行为。 包含自定义模块的实验也可发布到 Azure AI 库，以实现轻松共享。
@@ -173,7 +168,7 @@ XML 定义文件中的 **Language** 元素用于指定自定义模块的语言�
 * **Input** 元素的 **isOptional** 属性值并非必须指定（且未指定时，默认为 false **）；但如果指定，则属性值必须为 true ** 或 false**。
 
 ### <a name="output-elements"></a>输出元素
-**标准输出端口：** 输出端口被映射到 R 函数返回的值上，可用于后续模块。 DataTable** 是当前支持的唯一标准输出端口类型。 （即将支持*学员*和*转型*。*数据表*输出定义为：
+**标准输出端口：** 输出端口被映射到 R 函数返回的值上，可用于后续模块。 DataTable** 是当前支持的唯一标准输出端口类型。 （即将提供对*学员*和*转换*的支持。）*DataTable*输出定义为：
 
     <Output id="dataset" name="Dataset" type="DataTable">
         <Description>Combined dataset</Description>
@@ -202,7 +197,7 @@ XML 定义文件中的 **Language** 元素用于指定自定义模块的语言�
     </Ports> 
 
 
-并在"自定义 AddRows.R"中按正确顺序返回列表中的对象列表：
+并按 "Customaddrows.xml" 中的正确顺序返回列表中的对象的列表：
 
     CustomAddRows <- function(dataset1, dataset2, swap=FALSE) { 
         if (swap) { dataset <- rbind(dataset2, dataset1)) } 
@@ -224,7 +219,7 @@ XML 定义文件中的 **Language** 元素用于指定自定义模块的语言�
 * **Output** 元素的 **name** 属性值不可超过 64个字符。
 * **Output** 元素的 **type** 属性值必须是 *Visualization*。
 
-### <a name="arguments"></a>自变量
+### <a name="arguments"></a>参数
 通过在 **Arguments** 元素中定义的模块参数可向 R 函数传送其他数据。 选择该模块时，这些参数将出现在机器学习 UI 最右侧的“属性”窗格中。 参数可以是任何受支持的类型，或者可按需创建自定义枚举。 与 **Ports** 元素相似，**Arguments** 元素可拥有一个可选 **Description** 元素，该元素可指定鼠标悬停在参数名上时会出现的文本。
 可将 defaultValue、minValue 和 maxValue 等模块可选属性作为 **Properties** 元素的属性添加到任意参数。 **Properties** 元素的有效属性取决于参数类型，这些属性将在下一节的受支持参数中进行说明。 对于 **isOptional** 属性设置为 **"true"** 的参数，用户无需输入值。 如果未向参数提供值，那么不会将该参数传送到入口点函数。 函数需要对入口点函数的可选参数进行显式处理，例如，向入口点函数定义分配一个默认的 NULL 值。 如果用户提供了值，可选参数仅会执行其他参数约束，即最小或最大。
 与输入和输出一样，每个参数必须有与其关联的唯一 ID 值。 在快速入门示例中，关联的 ID/参数为 swap**。
@@ -250,7 +245,7 @@ XML 定义文件中的 **Language** 元素用于指定自定义模块的语言�
     </Arg>
 
 
-* 可选属性**：**min**，**max**，**default** 和 **isOptional**
+* 可选属性  ：**min**，**max**，**default** 和 **isOptional**
 
 **bool** – 由 UX 中复选框表示的布尔参数。
 
@@ -272,7 +267,7 @@ XML 定义文件中的 **Language** 元素用于指定自定义模块的语言�
 
 * 可选属性**：**default** 和 **isOptional**
 
-**ColumnPicker**：列选择参数。 此类型在 UX 中显示为列选择器。 **属性**元素用于指定从中选择列的端口的 ID，其中目标端口类型必须为*DataTable*。 列选择结果以字符串列表的形式传送到 R 函数，其中包含选中的列的名称。 
+**ColumnPicker**：列选择参数。 此类型在 UX 中显示为列选择器。 此处使用**属性**元素指定从中选择列的端口的 ID，其中目标端口类型必须为*DataTable*。 列选择结果以字符串列表的形式传送到 R 函数，其中包含选中的列的名称。 
 
         <Arg id="colset" name="Column set" type="ColumnPicker">      
           <Properties portId="datasetIn1" allowedTypes="Numeric" default="NumericAll"/>
@@ -280,19 +275,19 @@ XML 定义文件中的 **Language** 元素用于指定自定义模块的语言�
         </Arg>
 
 
-* *必需属性*： **portId** - 将输入元素的 ID 与类型*DataTable*匹配。
+* *必需属性*： **portId** -与类型为*DATATABLE*的输入元素的 ID 匹配。
 * 可选属性**：
   
   * **allowedTypes** - 筛选可选的列类型。 有效值包括： 
     
     * Numeric
-    * Boolean
+    * 布尔值
     * 分类
-    * String
+    * 字符串
     * Label
-    * Feature
-    * Score
-    * All
+    * 功能
+    * 分数
+    * 全部
   * **default** - 列选择器的有效默认选择包括： 
     
     * 无
@@ -315,7 +310,7 @@ XML 定义文件中的 **Language** 元素用于指定自定义模块的语言�
     * AllLabel
     * AllFeature
     * AllScore
-    * All
+    * 全部
 
 **DropDown**：用户指定的枚举（下拉）列表。 使用 **Item** 元素在 **Properties** 元素中指定下拉列表项。 每个 **Item** 的 **ID** 必须是唯一的有效 R变量 **Item** 的 **name** 值既是显示的文本，也是传送到 R 函数的值。
 
@@ -329,17 +324,17 @@ XML 定义文件中的 **Language** 元素用于指定自定义模块的语言�
     </Arg>    
 
 * 可选属性**：
-  * **默认值**- 默认属性的值必须与**其中一个 Item**元素的 ID 值对应。
+  * **默认**值-默认属性的值必须与某个**项**元素的 ID 值相对应。
 
 ### <a name="auxiliary-files"></a>辅助文件
 放置在自定义模块 ZIP 文件中的所有文件都可以在执行期间使用。 所有存在的目录结构都将保留。 这意味着本地和 Azure 机器学习工作室（经典版）执行中的文件寻源方式相同。 
 
 > [!NOTE]
-> 请注意，所有文件都提取到"src"目录，因此所有路径都应具有"src/"前缀。
+> 请注意，所有文件都提取到 "src" 目录中，因此所有路径都应具有 "src/" 前缀。
 > 
 > 
 
-例如，假设您要从数据集中删除任何带有 NA 的行，并在将其放入 CustomAddRows 之前删除任何重复的行，并且您已经编写了一个 R 函数，该函数在文件 RemoveDupNARows.R 中进行了这样做：
+例如，假设你想要从数据集中删除包含 NAs 的任何行，还需要删除任何重复的行，然后将其输出到 Customaddrows.xml 中，并且已经编写了一个在 Removedupnarows.r 文件中执行该操作的 R 函数：
 
     RemoveDupNARows <- function(dataFrame) {
         #Remove Duplicate Rows:
@@ -361,7 +356,7 @@ XML 定义文件中的 **Language** 元素用于指定自定义模块的语言�
         return (dataset)
     }
 
-接下来，上传包含"自定义 AddRows.R"、"自定义 AddRows.xml"和"删除 DupNARows.R"作为自定义 R 模块的 zip 文件。
+接下来，将包含 "Customaddrows.xml"、"Customaddrows.xml" 和 "Removedupnarows.r" 的 zip 文件上传为自定义 R 模块。
 
 ## <a name="execution-environment"></a>执行环境
 R 脚本的执行环境使用与**执行 R 脚本**模块相同的 R 版本，且可以使用相同的默认包。 还可以将 R 包加入自定义模块 zip 文件，将其添加到自定义模块。 只需像在自己的 R 环境中一样将其加载到 R 脚本中。 

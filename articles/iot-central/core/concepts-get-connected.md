@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 1398169c44dadcd11ad037e4e3a1cc0132e21f13
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: b66f5a7d85eb91970d5f551b010dd512b216b9c6
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024687"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509510"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>连接到 Azure IoT Central
 
@@ -42,7 +42,7 @@ IoT Central 使用[Azure IoT 中心设备预配服务（DPS）](../../iot-dps/ab
 - [使用 x.509 证书大规模连接设备](#connect-devices-using-x509-certificates)-建议用于生产环境的方法。
 - [连接设备而不先注册设备](#connect-without-registering-devices)
 - [连接使用 DPS 单个注册的设备](#individual-enrollment-based-device-connectivity)
-- [使用 IoT 即插即用（预览版）功能连接设备](#connect-devices-with-iot-plug-and-play-preview)
+- [自动将设备与设备模板关联](#automatically-associate-with-a-device-template)
 
 ## <a name="connect-a-single-device"></a>连接单个设备
 
@@ -139,7 +139,7 @@ IoT Central 使用[Azure IoT 中心设备预配服务（DPS）](../../iot-dps/ab
     在 "**管理 > 设备连接**" 页上，"**自动批准**" 选项控制是否需要在设备开始发送数据之前手动批准。
 
     > [!NOTE]
-    > 若要了解如何自动将设备与设备模板关联，请参阅[使用 IoT 即插即用（预览版）连接设备](#connect-devices-with-iot-plug-and-play-preview)。
+    > 若要了解如何自动将设备与设备模板关联，请参阅[自动将设备与设备模板关联](#automatically-associate-with-a-device-template)。
 
 ### <a name="connect-devices-that-use-x509-certificates-without-registering"></a>连接使用 x.509 证书的设备而不注册
 
@@ -156,7 +156,7 @@ IoT Central 使用[Azure IoT 中心设备预配服务（DPS）](../../iot-dps/ab
     在 "**管理 > 设备连接**" 页上，"**自动批准**" 选项控制是否需要在设备开始发送数据之前手动批准。
 
     > [!NOTE]
-    > 若要了解如何自动将设备与设备模板关联，请参阅[使用 IoT 即插即用（预览版）连接设备](#connect-devices-with-iot-plug-and-play-preview)。
+    > 若要了解如何自动将设备与设备模板关联，请参阅[自动将设备与设备模板关联](#automatically-associate-with-a-device-template)。
 
 ## <a name="individual-enrollment-based-device-connectivity"></a>基于注册的单个设备连接
 
@@ -165,7 +165,7 @@ IoT Central 使用[Azure IoT 中心设备预配服务（DPS）](../../iot-dps/ab
 > [!NOTE]
 > 为设备创建单个注册时，其优先级高于 IoT Central 应用程序中的默认组注册选项。
 
-### <a name="creating-individual-enrollments"></a>创建单独注册
+### <a name="create-individual-enrollments"></a>创建单个注册
 
 IoT Central 支持用于单个注册的以下证明机制：
 
@@ -181,14 +181,22 @@ IoT Central 支持用于单个注册的以下证明机制：
 
 - **受信任的平台模块（TPM）证明：**[TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation)是一种硬件安全模块。 使用 TPM 是连接设备的最安全方式之一。 本文假设使用的是独立的、固件或集成的 TPM。 软件仿真 Tpm 非常适合用于原型制作或测试，但它们不提供与离散、固件或集成 Tpm 相同的安全性级别。 请勿在生产环境中使用软件 Tpm。 若要创建使用 TPM 的单个注册，请打开 "**设备连接**" 页，选择 "**单个注册**" 作为 "连接方法"，选择 " **TPM** " 作为机制。 输入 TPM 认可密钥并保存设备连接信息。
 
-## <a name="connect-devices-with-iot-plug-and-play-preview"></a>将设备连接到 IoT 即插即用（预览版）
+## <a name="automatically-associate-with-a-device-template"></a>自动与设备模板关联
 
-具有 IoT Central 的 IoT 即插即用（预览版）的主要功能之一是能够在设备连接上自动关联设备模板。 除了设备凭据，设备现在可以将**CapabilityModelId**作为设备注册呼叫的一部分发送。 此功能使 IoT Central 可以发现设备模板并将其与设备相关联。 发现过程的工作方式如下：
+IoT Central 的主要功能之一是能够在设备连接上自动关联设备模板。 设备还可以将**CapabilityModelId**作为设备注册呼叫的一部分发送。 **CapabilityModelID**是用于标识设备实现的功能模型的 URN。 IoT Central 应用程序可以使用**CapabilityModelID**来标识要使用的设备模板，然后自动将设备与设备模板关联。 发现过程的工作方式如下：
 
-1. 关联设备模板（如果该模板已在 IoT Central 应用程序中发布）。
-1. 从已发布且认证的功能模型的公共存储库中提取数据。
+1. 如果设备模板已在 IoT Central 应用程序中发布，则设备将与设备模板关联。
+1. 对于预认证的 IoT 即插即用设备，如果设备模板尚未在 IoT Central 应用程序中发布，则从公共存储库中获取设备模板。
 
-下面是 DPS 注册调用期间设备要发送的其他有效负载的格式
+以下代码片段显示了在 DPS 注册呼叫过程中设备必须发送的其他有效负载的格式，以使自动关联能够正常工作。
+
+这是使用不支持 IoT 即插即用的已正式提供设备 SDK 的设备的格式：
+
+```javascript
+    iotcModelId: '< this is the URN for the capability model>';
+```
+
+这是使用公共预览版设备 SDK 但支持 IoT 即插即用的设备的格式：
 
 ```javascript
 '__iot:interfaces': {
@@ -197,7 +205,7 @@ IoT Central 支持用于单个注册的以下证明机制：
 ```
 
 > [!NOTE]
-> 请注意，必须为设备启用 "**管理 >** **自动批准**" 选项才能自动连接设备、发现设备模板并开始发送数据。
+> 若要使设备自动连接，请启用 "**管理 >** 的**自动批准**" 选项，然后发现设备模板并开始发送数据。
 
 ## <a name="device-status-values"></a>设备状态值
 
@@ -246,7 +254,7 @@ Azure 设备 SDK 为实现设备代码提供最简便的方法。 以下设备 S
 | Azure IoT Central | Azure IoT 中心 |
 | ----------- | ------- |
 | 遥测技术 | 设备到云的消息传递 |
-| 属性 | 设备孪生报告属性 |
+| properties | 设备孪生报告属性 |
 | 属性（可写） | 设备孪生所需的和报告的属性 |
 | Command | 直接方法 |
 

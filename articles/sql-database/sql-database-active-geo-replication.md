@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 04/06/2020
-ms.openlocfilehash: cc9d129894cefaf2fab853d2099d754d68238e5f
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.date: 04/28/2020
+ms.openlocfilehash: 5c55c8076e41f2c4ae19bce5f75600b5872722f6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887344"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231996"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>创建并使用活动异地复制
 
@@ -25,7 +25,12 @@ ms.locfileid: "80887344"
 > [!NOTE]
 > 托管实例不支持活动异地复制。 对于托管实例的地理故障转移，请使用[自动故障转移组](sql-database-auto-failover-group.md)。
 
-活动异地复制旨在充当业务连续性解决方案，允许应用程序在发生区域性灾难或大规模中断时执行各个数据库的快速灾难恢复。 如果启用了异地复制，则应用程序可以向其他 Azure 区域中的辅助数据库启动故障转移。 在相同或不同的区域中最多支持四个辅助数据库，并且辅助数据库也可以用于只读访问查询。 故障转移必须由应用程序或用户手动启动。 故障转移后，新的主数据库具有不同的连接终结点。 下图演示了使用活动异地复制的异地冗余云应用程序的典型配置。
+活动异地复制旨在充当业务连续性解决方案，允许应用程序在发生区域性灾难或大规模中断时执行各个数据库的快速灾难恢复。 如果启用了异地复制，则应用程序可以向其他 Azure 区域中的辅助数据库启动故障转移。 在相同或不同的区域中最多支持四个辅助数据库，并且辅助数据库也可以用于只读访问查询。 故障转移必须由应用程序或用户手动启动。 故障转移后，新的主数据库具有不同的连接终结点。 
+
+> [!NOTE]
+> 活动异地复制通过流式处理数据库事务日志来复制更改。 它与[事务复制](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication)无关，后者通过执行 DML （INSERT、UPDATE、DELETE）命令复制更改。
+
+下图演示了使用活动异地复制的异地冗余云应用程序的典型配置。
 
 ![活动异地复制](./media/sql-database-active-geo-replication/geo-replication.png )
 
@@ -58,10 +63,10 @@ ms.locfileid: "80887344"
 
 除了灾难恢复外，活动异地复制还可用于以下情况：
 
-- **数据库迁移**：您可以使用活动异地复制将数据库从一台服务器迁移到另一台联机服务器，但停机时间最小。
+- **数据库迁移**：可以使用活动异地复制将数据库从一台服务器联机迁移到另一台服务器，但停机时间最短。
 - **应用程序升级**：可以在应用程序升级期间创建额外的辅助数据库作为故障回复副本。
 
-若要真正实现业务连续性，只需添加数据中心之间的数据库冗余即可，这只是该解决方案的一部分功能。 在发生灾难性故障后，端对端地恢复应用程序（服务）需要恢复构成该服务的所有组件以及所有依赖服务。 这些组件的示例包括客户端软件（例如，使用自定义 JavaScript 的浏览器）、Web 前端、存储和 DNS。 所有组件必须能够弹性应对相同的故障，并在应用程序的恢复时间目标 (RTO) 值内变为可用，这一点非常关键。 因此，需要识别所有依赖服务，并了解它们提供的保证和功能。 然后，必须执行适当的步骤来确保对服务所依赖的服务执行故障转移期间，服务能够正常运行。 有关为灾难恢复设计解决方案的详细信息，请参阅[使用活动异地复制设计用于灾难恢复的云解决方案](sql-database-designing-cloud-solutions-for-disaster-recovery.md)。
+若要真正实现业务连续性，只需添加数据中心之间的数据库冗余即可，这只是该解决方案的一部分功能。 在发生灾难性故障后，端对端地恢复应用程序（服务）需要恢复构成该服务的所有组件以及所有依赖服务。 这些组件的示例包括客户端软件（例如，使用自定义 JavaScript 的浏览器）、Web 前端、存储和 DNS。 所有组件必须能够弹性应对相同的故障，并在应用程序的恢复时间目标 (RTO) 值内变为可用，这一点非常关键。 因此，需要识别所有依赖服务，并了解它们提供的保证和功能。 然后，必须执行适当的步骤来确保对服务所依赖的服务执行故障转移期间，服务能够正常运行。 有关设计灾难恢复解决方案的详细信息，请参阅[使用活动异地复制设计灾难恢复的云解决方案](sql-database-designing-cloud-solutions-for-disaster-recovery.md)。
 
 ## <a name="active-geo-replication-terminology-and-capabilities"></a>活动异地复制术语和功能
 
@@ -76,7 +81,7 @@ ms.locfileid: "80887344"
 > [!NOTE]
 > 如果主数据库上有架构更新，则日志重播会在辅助数据库上延迟。 因为架构更新需要在辅助数据库上有架构锁。
 > [!IMPORTANT]
-> 可以使用异地复制在与主数据库相同的区域中创建辅助数据库。 可以使用此辅助数据库对同一区域中的只读工作负荷进行负载均衡。 但是，同一区域中的辅助数据库不能提供额外的故障恢复能力，因此不适合用作灾难恢复的故障转移目标。 它还不能保证可用性区域隔离。 使用具有[区域冗余配置](sql-database-high-availability.md#zone-redundant-configuration)的业务关键或高级服务层来实现可用性区域隔离。   
+> 可以使用异地复制在与主数据库相同的区域中创建辅助数据库。 可以使用此辅助数据库对同一区域中的只读工作负荷进行负载均衡。 但是，同一区域中的辅助数据库不能提供额外的故障恢复能力，因此不适合用作灾难恢复的故障转移目标。 它也不保证可用性区域的隔离。 使用具有[区域冗余配置](sql-database-high-availability.md#zone-redundant-configuration)的业务关键或高级服务层来实现可用性区域隔离。   
 >
 
 - **计划的故障转移**
@@ -113,45 +118,45 @@ ms.locfileid: "80887344"
 
 ## <a name="configuring-secondary-database"></a>配置辅助数据库
 
-主数据库和辅助数据库都需要有相同的服务层级。 另外，强烈建议创建与主数据库具有相同计算大小（DTU 或 vCore）的辅助数据库。 如果主数据库遇到繁重的写入工作负载，则计算大小较低的辅助数据库可能无法跟上它。 这将导致辅助数据库的重做延迟，并且可能不可用辅助数据库。 为了减轻这些风险，活动异地复制将限制主的事务日志速率（如有必要），以便其辅助数据库赶上。 
+主数据库和辅助数据库都需要有相同的服务层级。 另外，强烈建议创建与主数据库具有相同计算大小（DTU 或 vCore）的辅助数据库。 如果主数据库遇到大量写入工作负荷，则计算大小较小的辅助数据库可能无法跟上它。 这将导致辅助数据库上的重做延迟，并可能导致辅助数据库不可用。 为了降低这些风险，活动异地复制会根据需要限制主副本的事务日志率，以允许其辅助数据库保持同步。 
 
-辅助配置不平衡的另一个后果是，在故障转移后，应用程序性能可能会因新主服务器的计算能力不足而受到影响。 在这种情况下，有必要将数据库服务目标扩展到必要的级别，这可能需要大量时间和计算资源，并且需要在扩展过程结束时[进行高可用性](sql-database-high-availability.md)故障转移。
+不均衡辅助配置的另一个结果是，在故障转移后，应用程序性能可能会因为新的主数据库的计算能力不足而受到影响。 在这种情况下，需要将数据库服务目标向上扩展到所需的级别，这可能会占用大量时间和计算资源，并将在扩展过程结束时要求[高可用性](sql-database-high-availability.md)故障转移。
 
-如果决定创建计算大小较低的辅助数据库，Azure 门户中的日志 IO 百分比图表提供了一种估计辅助数据库的最小计算大小的好方法，该次表是维持复制负载所必需的。 例如，如果主数据库为 P6 （1000 DTU），其日志写入百分比为 50%，则辅助数据库至少需要 P4 （500 DTU）。 若要检索历史日志 IO 数据，请使用[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)视图。 若要检索具有更高粒度、更好地反映日志速率中短期峰值的最近日志写入数据，请使用[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)视图。
+如果决定使用较小的计算大小创建辅助数据库，Azure 门户中的日志 IO 百分比图表提供了一种更好的方法来估算维护复制负载所需的辅助数据库的最小计算大小。 例如，如果主数据库是 P6 （1000 DTU），其日志写入百分比为50%，则辅助数据库至少需要为 P4 （500 DTU）。 若要检索历史日志 IO 数据，请使用[sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)视图。 若要以更高粒度检索最新的日志写入数据，以更好地反映对数率的短期峰值，请使用[sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)视图。
 
-主数据库上的事务日志速率限制由于辅助数据库的计算大小较低，使用HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO等待类型报告，该等待类型在[sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql)和[sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)数据库视图中可见。 
+由于辅助数据库上的计算大小较低，因此主副本上的事务日志速率限制会使用 "HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO 等待类型" 进行报告，在 " [sys. dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) " [dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)和 "数据库" 视图中可见。 
 
 > [!NOTE]
-> 由于与辅助数据库上较低的计算大小无关的原因，主数据库上的事务日志速率可能会受到限制。 即使辅助项的计算大小与主级相同或更高，也可能发生此类限制。 有关详细信息（包括不同类型的日志速率限制的等待类型），请参阅[事务日志速率治理](sql-database-resource-limits-database-server.md#transaction-log-rate-governance)。
+> 由于与辅助数据库上的计算大小不相关的原因，主数据库上的事务日志率可能会受到限制。 即使辅助数据库具有与主数据库相同或更高的计算大小，也可能会发生这种限制。 有关详细信息（包括不同类型的日志速率限制的等待类型），请参阅[事务日志速率管理](sql-database-resource-limits-database-server.md#transaction-log-rate-governance)。
 
 有关 SQL 数据库计算大小的详细信息，请参阅[什么是 SQL 数据库服务层级](sql-database-purchase-models.md)。
 
-## <a name="cross-subscription-geo-replication"></a>交叉订阅异地复制
+## <a name="cross-subscription-geo-replication"></a>跨订阅异地复制
 
-要在属于不同订阅的两个数据库之间设置活动异地复制（无论是否在同一租户下），必须遵循本节中描述的特殊过程。  该过程基于 SQL 命令，需要： 
+若要在属于不同订阅的两个数据库之间设置活动异地复制（无论是在同一个租户下），必须遵循本部分中所述的特殊步骤。  此过程基于 SQL 命令，要求： 
 
-- 在两台服务器上创建特权登录
-- 将 IP 地址添加到在两台服务器上执行更改的客户端的允许列表（例如运行 SQL Server 管理工作室的主机的 IP 地址）。 
+- 在两个服务器上创建特权登录
+- 将 IP 地址添加到在两个服务器上执行更改的客户端（例如运行 SQL Server Management Studio 的主机的 IP 地址）的允许列表。 
 
-执行更改的客户端需要对主服务器进行网络访问。 尽管必须将客户端的相同 IP 地址添加到辅助服务器上的允许列表中，但严格来说，与辅助服务器的网络连接并不严格。 
+执行更改的客户端需要对主服务器的网络访问。 尽管客户端的相同 IP 地址必须添加到辅助服务器上的允许列表中，但并不严格要求与辅助服务器建立网络连接。 
 
 ### <a name="on-the-master-of-the-primary-server"></a>在主服务器的主服务器上
 
-1. 将 IP 地址添加到执行更改的客户端的允许列表中（有关详细信息，请参阅[配置防火墙](sql-database-firewall-configure.md)）。 
+1. 将 IP 地址添加到执行更改的客户端允许列表（有关详细信息，请参阅[配置防火墙](sql-database-firewall-configure.md)）。 
 1. 创建专用于设置活动异地复制的登录名（并根据需要调整凭据）：
 
    ```sql
    create login geodrsetup with password = 'ComplexPassword01'
    ```
 
-1. 创建相应的用户并将其分配给 dbManager 角色： 
+1. 创建相应的用户并将其分配给 dbmanager 角色： 
 
    ```sql
    create user geodrsetup for login geodrsetup
    alter role dbmanager add member geodrsetup
    ```
 
-1. 使用此查询记下新登录的 SID： 
+1. 使用此查询记下新登录名的 SID： 
 
    ```sql
    select sid from sys.sql_logins where name = 'geodrsetup'
@@ -159,28 +164,28 @@ ms.locfileid: "80887344"
 
 ### <a name="on-the-source-database-on-the-primary-server"></a>在主服务器上的源数据库上
 
-1. 为同一登录创建用户：
+1. 为同一个登录名创建一个用户：
 
    ```sql
    create user geodrsetup for login geodrsetup
    ```
 
-1. 将用户添加到db_owner角色：
+1. 将用户添加到 db_owner 角色：
 
    ```sql
    alter role db_owner add member geodrsetup
    ```
 
-### <a name="on-the-master-of-the-secondary-server"></a>在辅助服务器的主服务器上 
+### <a name="on-the-master-of-the-secondary-server"></a>辅助服务器的主服务器上 
 
-1. 将 IP 地址添加到执行更改的客户端的允许列表中。 它必须与主服务器完全相同的 IP 地址相同。 
-1. 使用相同的用户名密码创建与主服务器上相同的登录名，以及 SID： 
+1. 将 IP 地址添加到执行更改的客户端允许列表中。 它必须与主服务器的 IP 地址完全相同。 
+1. 使用相同的用户名密码和 SID，在主服务器上创建相同的登录名： 
 
    ```sql
    create login geodrsetup with password = 'ComplexPassword01', sid=0x010600000000006400000000000000001C98F52B95D9C84BBBA8578FACE37C3E
    ```
 
-1. 创建相应的用户并将其分配给 dbManager 角色：
+1. 创建相应的用户并将其分配给 dbmanager 角色：
 
    ```sql
    create user geodrsetup for login geodrsetup;
@@ -196,7 +201,7 @@ ms.locfileid: "80887344"
    alter database dbrep add secondary on server <servername>
    ```
 
-初始设置后，可以删除创建的用户、登录名和防火墙规则。 
+初始设置之后，可以删除创建的用户、登录名和防火墙规则。 
 
 
 ## <a name="keeping-credentials-and-firewall-rules-in-sync"></a>保持凭据和防火墙规则同步
@@ -237,12 +242,12 @@ ms.locfileid: "80887344"
 
 如上所述，也可以使用 Azure PowerShell 和 REST API 以编程方式管理活动异地复制。 下表描述了可用的命令集。 活动异地复制包括一组用于管理的 Azure 资源管理器 API，其中包括 [Azure SQL 数据库 REST API](https://docs.microsoft.com/rest/api/sql/) 和 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview)。 这些 API 需要使用资源组，并支持基于角色的安全性 (RBAC)。 有关如何实现访问角色的详细信息，请参阅[Azure 基于角色的访问控制](../role-based-access-control/overview.md)。
 
-### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-SQL：管理单个数据库和池数据库的故障转移
+### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-sql：管理单个和共用数据库的故障转移
 
 > [!IMPORTANT]
 > 这些 Transact-SQL 命令仅适用于活动异地复制，不适用于故障转移组。 因此，它们也不适用于托管实例，因为它们仅支持故障转移组。
 
-| 命令 | 说明 |
+| Command | 说明 |
 | --- | --- |
 | [更改数据库](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |使用 ADD SECONDARY ON SERVER 参数为现有数据库创建辅助数据库，并开始数据复制 |
 | [更改数据库](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |使用 FAILOVER 或 FORCE_FAILOVER_ALLOW_DATA_LOSS 将辅助数据库切换为主数据库，启动故障转移 |
@@ -253,13 +258,13 @@ ms.locfileid: "80887344"
 | [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |使应用程序等待，直到所有提交的事务已复制，并由活动辅助数据库确认。 |
 |  | |
 
-### <a name="powershell-manage-failover-of-single-and-pooled-databases"></a>PowerShell：管理单个数据库和池数据库的故障转移
+### <a name="powershell-manage-failover-of-single-and-pooled-databases"></a>PowerShell：管理单个和共用数据库的故障转移
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
 > PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
-| Cmdlet | 说明 |
+| Cmdlet | 描述 |
 | --- | --- |
 | [Get-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabase) |获取一个或多个数据库。 |
 | [New-AzSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasesecondary) |为现有数据库创建辅助数据库，并开始数据复制。 |
@@ -271,9 +276,9 @@ ms.locfileid: "80887344"
 > [!IMPORTANT]
 > 有关示例脚本，请参阅[配置单一数据库并使用活动异地复制对其进行故障转移](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)和[配置共用数据库并使用活动异地复制对其进行故障转移](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)。
 
-### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST API：管理单个数据库和池数据库的故障转移
+### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST API：管理单个和共用数据库的故障转移
 
-| API | 说明 |
+| API | 描述 |
 | --- | --- |
 | [创建或更新数据库 (createMode=Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |创建、更新或还原主数据库或辅助数据库。 |
 | [获取创建或更新数据库状态](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |返回创建操作过程中的状态。 |
@@ -288,9 +293,9 @@ ms.locfileid: "80887344"
 
 - 示例脚本请参阅：
   - [配置单一数据库并使用活动异地复制对其进行故障转移](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
-  - [使用活动异地复制配置和故障转移池数据库](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
+  - [配置共用数据库并使用活动异地复制对其进行故障转移](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
 - SQL 数据库还支持自动故障转移组。 有关详细信息，请参阅[自动故障转移组](sql-database-auto-failover-group.md)。
 - 有关业务连续性概述和应用场景，请参阅[业务连续性概述](sql-database-business-continuity.md)
 - 若要了解 Azure SQL 数据库的自动备份，请参阅 [SQL 数据库自动备份](sql-database-automated-backups.md)。
-- 要了解如何使用自动备份进行恢复，请参阅[从服务启动的备份还原数据库](sql-database-recovery-using-backups.md)。
+- 若要了解如何使用自动备份进行恢复，请参阅[从服务启动的备份中还原数据库](sql-database-recovery-using-backups.md)。
 - 若要了解新主服务器和数据库的身份验证要求，请参阅[灾难恢复后的 SQL 数据库安全性](sql-database-geo-replication-security-config.md)。

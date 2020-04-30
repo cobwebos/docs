@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: ''
-ms.date: 02/04/2020
+ms.date: 04/27/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: d3d1b9af0b26fa775beb78b313937890cb9287b3
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 99c64e703158c40c2cc110a18be7b8c8d3800ff0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633762"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82207796"
 ---
 # <a name="quickstart-configure-workload-isolation-using-t-sql"></a>快速入门：使用 T-SQL 配置工作负荷隔离
 
@@ -30,10 +30,6 @@ ms.locfileid: "80633762"
 ## <a name="prerequisites"></a>先决条件
 
 本快速入门假定你已在 Azure Synapse 中有 SQL Analytics 实例，并且具有 CONTROL DATABASE 权限。 如果需要创建一个 SQL 数据仓库，可使用[创建并连接 - 门户](create-data-warehouse-portal.md)创建名为“mySampleDataWarehouse”的数据仓库  。
-
-## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
-
-登录 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="create-login-for-dataloads"></a>为 DataLoads 创建登录名
 
@@ -111,20 +107,6 @@ DROP USER [ELTLogin]
 
 - 如果想要将数据保留在存储中，可以在不使用 SQL 池时暂停计算。 如果暂停计算资源，则你只需支付数据存储费用。 准备好处理数据时，可以恢复计算。
 - 如果不想支付将来的费用，则可以删除数据仓库。
-
-遵循以下步骤清理资源。
-
-1. 登录到 [Azure 门户](https://portal.azure.com)，选择你的数据仓库。
-
-    ![清理资源](./media/quickstart-configure-workload-isolation-tsql/clean-up-resources.png)
-
-2. 若要暂停计算，请选择“暂停”  按钮。 暂停数据仓库后，可看到“启动”  按钮。  若要恢复计算，请选择“启动”  。
-
-3. 若要删除数据仓库以免产生计算或存储费用，请选择“删除”  。
-
-4. 要删除所创建的 SQL 服务器，请选择上图所示的“mynewserver-20180430.database.windows.net”，然后选择“删除”   。  请谨慎执行此删除操作，因为删除服务器的同时也会删除分配给该服务器的所有数据库。
-
-5. 若要删除资源组，请选择“myResourceGroup”  ，然后选择“删除资源组”  。
 
 ## <a name="next-steps"></a>后续步骤
 

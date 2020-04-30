@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 02/27/2020
+ms.date: 04/28/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 3fe13dcb35e6985d160f52b7ee3f9da4accd7806
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: f9558431d65a9c0f4fecf34141d9148afa514d86
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756663"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208561"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure 机器学习部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 了解如何将机器学习模型作为 Web 服务部署在 Azure 云或 Azure IoT Edge 设备中。
 
-无论您[在何处部署](#target)模型，工作流都是类似的：
+无论在哪里[部署模型](#target)，工作流都是类似的：
 
 1. 注册模型。
 1. 准备部署。 （指定资产、使用情况、计算目标。）
@@ -36,7 +36,7 @@ ms.locfileid: "80756663"
 
 - Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
-- 模型。 如果没有经过训练的模型，则可以使用[本教程](https://aka.ms/azml-deploy-cloud)中提供的模型和依赖项文件。
+- 模型。 如果没有已训练的模型，则可以使用[此教程](https://aka.ms/azml-deploy-cloud)中提供的模型和依赖项文件。
 
 - [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 或 [Azure 机器学习 Visual Studio Code 扩展](tutorial-setup-vscode-extension.md)。
 
@@ -59,16 +59,16 @@ ms.locfileid: "80756663"
 
 + **使用 Visual Studio Code**
 
-   使用可视化工作室代码时，可以使用图形界面选择工作区。 有关详细信息，请参阅在可视化工作室代码扩展文档中[部署和管理模型](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)。
+   使用 Visual Studio Code 时，可以使用图形界面选择工作区。 有关详细信息，请参阅 Visual Studio Code 扩展文档中的 "[部署和管理模型](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)"。
 
-## <a name="register-your-model"></a><a id="registermodel"></a>注册您的模型
+## <a name="register-your-model"></a><a id="registermodel"></a> 注册模型
 
-已注册的模型是构成模型的一个或多个文件的逻辑容器。 例如，如果有一个存储在多个文件中的模型，则可以在工作区中将这些文件注册为单个模型。 注册这些文件后，可以下载或部署已注册的模型，并接收注册的所有文件。
+已注册的模型是组成模型的一个或多个文件的逻辑容器。 例如，如果有一个存储在多个文件中的模型，则可以在工作区中将这些文件注册为单个模型。 注册这些文件后，可以下载或部署已注册的模型，并接收注册的所有文件。
 
 > [!TIP]
 > 注册模型时，请提供云位置（来自训练运行）或本地目录的路径。 此路径仅用于在注册过程中查找要上传的文件。 它不需要与入口脚本中使用的路径匹配。 有关详细信息，请参阅[在入口脚本中查找模型文件](#load-model-files-in-your-entry-script)。
 
-机器学习模型会注册到 Azure 机器学习工作区中。 模型可以来自 Azure 机器学习或其他位置。 注册模型时，可以选择提供有关模型的元数据。 然后`tags`，`properties`可用于筛选模型的和字典。
+机器学习模型会注册到 Azure 机器学习工作区中。 模型可以来自 Azure 机器学习或其他位置。 注册模型时，可以选择提供有关模型的元数据。 然后`tags` ， `properties`可以使用应用于模型注册的和词典来筛选模型。
 
 以下示例演示如何注册模型。
 
@@ -106,7 +106,7 @@ ms.locfileid: "80756663"
 
     在此示例中，未指定 `metric` 和 `iteration` 参数，因此将注册具有最佳主要指标的迭代。 不会使用模型名称，而是使用从运行返回的 `model_id` 值。
 
-    有关详细信息，请参阅[AutoMLRun.register_model](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-)文档。
+    有关详细信息，请参阅[Register_model AutoMLRun](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-)文档。
 
 + **使用 CLI**
 
@@ -120,7 +120,7 @@ ms.locfileid: "80756663"
 
 + **使用 Visual Studio Code**
 
-  使用[Visual Studio 代码](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)扩展名使用任何模型文件或文件夹注册模型。
+  使用任何模型文件或文件夹，通过使用[Visual Studio Code](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)扩展插件来注册模型。
 
 ### <a name="register-a-model-from-a-local-file"></a>通过本地文件注册模型
 
@@ -156,7 +156,7 @@ ms.locfileid: "80756663"
 
   若要在模型注册中包含多个文件，请将 `-p` 设置为包含文件的文件夹的路径。
 
-**时间估计**：大约10秒。
+**估计时间**：约10秒。
 
 有关详细信息，请参阅关于[模型类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py)的文档。
 
@@ -164,28 +164,28 @@ ms.locfileid: "80756663"
 
 <a name="target"></a>
 
-## <a name="single-versus-multi-model-endpoints"></a>单模型与多模型端点
-Azure ML 支持在单个终结点后面部署单个或多个模型。
+## <a name="single-versus-multi-model-endpoints"></a>单个和多模型终结点
+Azure ML 支持在单个终结点后部署单个或多个模型。
 
-多模型终结点使用共享容器承载多个模型。 这有助于降低间接费用，提高利用率，并使您能够将模块链接到一起到集合中。 在部署脚本中指定的模型将装载并在服务容器的磁盘上可用 - 您可以按需将它们加载到内存中，并根据评分时请求的特定模型进行评分。
+多模型终结点使用共享容器来承载多个模型。 这有助于降低开销、改善利用率，并使你能够将模块组合到整体中。 在部署脚本中指定的模型将装载并在服务容器的磁盘上提供，你可以按需将其加载到内存中，并基于在评分时间请求的特定模型进行评分。
 
-有关 E2E 示例（该示例演示如何在单个容器化终结点后面使用多个模型），请参阅[此示例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-multi-model)
+对于 E2E 示例，该示例演示如何使用单个容器化终结点后面的多个模型，请参阅[此示例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-multi-model)
 
 ## <a name="prepare-to-deploy"></a>准备部署
 
-要将模型部署为服务，您需要以下组件：
+若要将模型部署为服务，需要以下组件：
 
 * **定义推理环境**。 此环境封装运行模型进行推理所需的依赖项。
-* **定义计分代码**。 此脚本接受请求、使用模型为请求评分并返回结果。
-* **定义推理配置**。 推理配置指定将模型作为服务运行所需的环境配置、条目脚本和其他组件。
+* **定义评分代码**。 此脚本接受请求、使用模型为请求评分并返回结果。
+* **定义推理配置**。 推理配置指定以服务形式运行模型所需的环境配置、入口脚本和其他组件。
 
-获得必要的组件后，可以分析部署模型以了解其 CPU 和内存要求后将创建的服务。
+获得必要的组件后，可以分析将创建的服务，该服务将作为部署模型的结果来了解其 CPU 和内存要求。
 
 ### <a name="1-define-inference-environment"></a>1. 定义推理环境
 
-推理配置描述如何设置包含模型的 Web 服务。 此配置稍后在部署模型时使用。
+推理配置描述了如何设置包含模型的 web 服务。 此配置稍后在部署模型时使用。
 
-推理配置使用 Azure 机器学习环境来定义部署所需的软件依赖项。 利用环境，你可以创建、管理和重复使用训练和部署所需的软件依赖项。 可以从自定义依赖项文件创建环境，或使用精心策划的 Azure 机器学习环境之一。 以下 YAML 是用于推理的 Conda 依赖项文件的一个示例。 请注意，必须指示 azureml 默认值，其中 veriver >= 1.0.45 作为点依赖项，因为它包含将模型托管为 Web 服务所需的功能。 如果要使用自动架构生成，则输入脚本还必须导入`inference-schema`包。
+推理配置使用 Azure 机器学习环境来定义部署所需的软件依赖项。 利用环境，你可以创建、管理和重复使用训练和部署所需的软件依赖项。 你可以从自定义依赖项文件创建环境，或使用特选 Azure 机器学习环境之一。 以下 YAML 是用于推理的 Conda 依赖项文件的一个示例。 请注意，必须使用版本 >= 1.0.45 作为 pip 依赖项指示 azureml 默认值，因为它包含将模型托管为 web 服务所需的功能。 如果要使用自动生成架构，则输入脚本必须同时导入`inference-schema`包。
 
 ```YAML
 name: project_environment
@@ -203,7 +203,7 @@ dependencies:
 >
 > 有关详细信息，请参阅[了解 Conda 和 Pip](https://www.anaconda.com/understanding-conda-and-pip/)。
 >
-> 要检查依赖项是否可通过 Conda 可用，请使用`conda search <package-name>`命令，或使用 和[https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo)[https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo)上的包索引。
+> 若要通过 Conda 检查依赖关系是否可用，请使用`conda search <package-name>`命令，或使用[https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo)和[https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo)中的包索引。
 
 您可以使用依赖项文件创建环境对象并将其保存到工作区以供将来使用：
 
@@ -220,15 +220,15 @@ myenv.register(workspace=ws)
 
 该脚本包含两个用于加载和运行模型的函数：
 
-* `init()`通常，此函数将模型加载到全局对象中。 此函数只能在 Web 服务的 Docker 容器启动时运行一次。
+* `init()`：通常，此函数将模型加载到全局对象。 此函数只能在 Web 服务的 Docker 容器启动时运行一次。
 
-* `run(input_data)`： 此函数使用模型预测基于输入数据的值。 运行的输入和输出通常使用 JSON 进行序列化和反序列化。 也可以处理原始二进制数据。 可以先转换数据，然后再将数据发送到模型或返回给客户端。
+* `run(input_data)`：此函数使用模型根据输入数据来预测值。 运行的输入和输出通常使用 JSON 进行序列化和反序列化。 也可以处理原始二进制数据。 可以先转换数据，然后再将数据发送到模型或返回给客户端。
 
 #### <a name="load-model-files-in-your-entry-script"></a>在输入脚本中加载模型文件
 
 可以通过两种方法在入口脚本中查找模型：
-* `AZUREML_MODEL_DIR`：包含到模型位置的路径的环境变量。
-* `Model.get_model_path`：使用已注册的模型名称将路径返回到模型文件的 API。
+* `AZUREML_MODEL_DIR`：包含模型位置路径的环境变量。
+* `Model.get_model_path`：一个 API，该 API 使用注册的模型名称返回模型文件的路径。
 
 ##### <a name="azureml_model_dir"></a>AZUREML_MODEL_DIR
 
@@ -241,9 +241,9 @@ AZUREML_MODEL_DIR 是在服务部署过程中创建的环境变量。 可以使�
 | 单个模型 | 包含模型的文件夹的路径。 |
 | 多个模型 | 包含所有模型的文件夹的路径。 各个模型按名称和版本放置在此文件夹中 (`$MODEL_NAME/$VERSION`) |
 
-在模型注册和部署期间，模型被放置在AZUREML_MODEL_DIR路径中，并保留其原始文件名。
+在模型注册和部署过程中，会将模型放置在 AZUREML_MODEL_DIR 路径中，并保留它们的原始文件名。
 
-要获取条目脚本中模型文件的路径，请将环境变量与要查找的文件路径合并。
+若要获取条目脚本中的模型文件的路径，请将环境变量与要查找的文件路径组合在一起。
 
 **单个模型示例**
 ```python
@@ -266,7 +266,7 @@ model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model', '1', 
 
 注册模型时，请为其指定一个名称。 该名称对应于模型的放置位置（本地位置或在服务部署过程中指定的位置）。
 
-#### <a name="optional-define-model-web-service-schema"></a>（可选）定义模型 Web 服务架构
+#### <a name="optional-define-model-web-service-schema"></a>可有可无定义模型 web 服务架构
 
 若要为 Web 服务自动生成架构，请在一个已定义的类型对象的构造函数中提供输入和/或输出的示例。 该类型和示例用于自动创建架构。 Azure 机器学习随后会在部署过程中创建 Web 服务的 [OpenAPI](https://swagger.io/docs/specification/about/) (Swagger) 规范。
 
@@ -277,7 +277,7 @@ model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model', '1', 
 * `pyspark`
 * 标准 Python 对象
 
-要使用架构生成，请在依赖项文件中包括`inference-schema`开源包。 有关此包的详细信息，请参阅[https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema)。 定义 `input_sample` 和 `output_sample` 变量中的输入和输出示例格式，它们表示 Web 服务的请求和响应格式。 在 `run()` 函数的输入和输出函数修饰器中使用这些示例。 以下 scikit-learn 示例使用架构生成功能。
+若要使用架构生成，请在依赖项`inference-schema`文件中包括开放源包。 有关此包的详细信息，请[https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema)参阅。 定义 `input_sample` 和 `output_sample` 变量中的输入和输出示例格式，它们表示 Web 服务的请求和响应格式。 在 `run()` 函数的输入和输出函数修饰器中使用这些示例。 以下 scikit-learn 示例使用架构生成功能。
 
 ##### <a name="example-entry-script"></a>入口脚本示例
 
@@ -378,7 +378,7 @@ def run(data):
 * [Keras](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras)
 * [自动化 ML](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features)
 * [ONNX](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/)
-* [二进制数据](#binary)
+* [Binary Data](#binary)
 * [CORS](#cors)
 
 ### <a name="3-define-inference-configuration"></a><a id="script"></a>3. 定义推理配置
@@ -419,19 +419,19 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 
 若要详细了解如何将自定义 Docker 映像与推理配置结合使用，请参阅[如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)。
 
-### <a name="4-optional-profile-your-model-to-determine-resource-utilization"></a><a id="profilemodel"></a>4. （可选） 分析模型以确定资源利用率
+### <a name="4-optional-profile-your-model-to-determine-resource-utilization"></a><a id="profilemodel"></a>4. （可选）分析模型以确定资源利用率
 
-注册模型并准备了部署模型所需的其他组件后，可以确定部署的服务所需的 CPU 和内存。 分析测试运行模型的服务，并返回 CPU 使用率、内存使用情况和响应延迟等信息。 它还根据资源使用情况为 CPU 和内存提供建议。
+注册模型并准备好部署所需的其他组件后，可以确定部署的服务将需要的 CPU 和内存。 分析测试运行模型并返回诸如 CPU 使用情况、内存使用情况和响应延迟等信息的服务。 它还提供基于资源使用情况的 CPU 和内存的建议。
 
-为了分析您的模型，您需要：
+为了分析你的模型，你将需要：
 * 已注册的模型。
-* 基于条目脚本和推理环境定义的推理配置。
-* 单列表格数据集，其中每行包含一个表示示例请求数据的字符串。
+* 基于输入脚本和推理环境定义的推理配置。
+* 单列表格数据集，其中每行都包含一个表示示例请求数据的字符串。
 
 > [!IMPORTANT]
-> 此时，我们仅支持分析预期其请求数据为字符串的服务，例如：字符串序列化 json、文本、字符串序列化映像等。数据集的每一行（字符串）的内容将放入 HTTP 请求的正文中，并发送到封装模型以进行评分的服务。
+> 此时，我们仅支持分析预期其请求数据为字符串的服务，例如：字符串序列化的 json、文本、字符串序列化图像等。数据集的每一行的内容（字符串）都将放入 HTTP 请求的正文中，并将其发送到该服务，以对模型进行评分。
 
-下面是如何构造输入数据集来分析期望其传入请求数据包含序列化 json 的服务的示例。 在这种情况下，我们创建了一个基于相同请求数据内容的一百个实例的数据集。 在现实世界中，我们建议您使用包含各种输入的较大数据集，尤其是在模型资源使用情况/行为与输入相关的情况下。
+下面是一个示例，说明如何构造一个输入数据集来分析一种服务，该服务要求其传入请求数据包含序列化 json。 在这种情况下，我们创建了一个基于数据集的同一请求数据内容的100实例。 在实际方案中，我们建议你使用包含各种输入的更大数据集，尤其是在模型资源使用/行为是依赖于输入的情况下。
 
 ```python
 import json
@@ -466,7 +466,7 @@ sample_request_data = sample_request_data.register(workspace=ws,
                                                    create_new_version=True)
 ```
 
-准备好包含示例请求数据的数据集后，创建推理配置。 推理配置基于score.py和环境定义。 以下示例演示如何创建推理配置和运行分析：
+拥有包含示例请求数据的数据集后，创建推理配置。 推理配置基于 score.py 和环境定义。 下面的示例演示如何创建推理配置和运行分析：
 
 ```python
 from azureml.core.model import InferenceConfig, Model
@@ -496,7 +496,7 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 ```
 
 > [!TIP]
-> 要保留通过分析返回的信息，请使用模型的标记或属性。 使用标记或属性在模型注册表中存储与模型的数据。 以下示例演示添加了包含`requestedCpu`和`requestedMemoryInGb`的信息的新标记：
+> 若要保存由分析返回的信息，请使用模型的标记或属性。 使用标记或属性会将数据与模型存储在模型注册表中。 下面的示例演示如何添加包含`requestedCpu`和`requestedMemoryInGb`信息的新标记：
 >
 > ```python
 > model.add_tags({'requestedCpu': details['requestedCpu'],
@@ -527,7 +527,7 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 
 | 计算目标 | 部署配置示例 |
 | ----- | ----- |
-| Local | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
+| 本地 | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
 | Azure 容器实例 | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes 服务 | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
@@ -537,9 +537,9 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
 
-### <a name="securing-deployments-with-tls"></a>使用 TLS 保护部署
+### <a name="securing-deployments-with-tls"></a>通过 TLS 保护部署
 
-有关如何保护 Web 服务部署的详细信息，请参阅[启用 TLS 和部署](how-to-secure-web-service.md#enable)。
+有关如何保护 web 服务部署的详细信息，请参阅[启用 TLS 和部署](how-to-secure-web-service.md#enable)。
 
 ### <a name="local-deployment"></a><a id="local"></a>本地部署
 
@@ -572,17 +572,17 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 
 ### <a name="understanding-service-state"></a>了解服务状态
 
-在模型部署期间，您可能会在服务状态完全部署时看到更改。
+在模型部署过程中，你可能会在服务状态发生更改的情况下进行完全部署。
 
 下表描述了不同的服务状态：
 
-| Web 服务状态 | 说明 | 最终状态？
+| Webservice 状态 | 说明 | 最终状态？
 | ----- | ----- | ----- |
-| 过渡 | 该服务正在部署中。 | 否 |
-| 不正常 | 该服务已部署，但当前无法访问。  | 否 |
-| 不可舍尔 | 由于缺乏资源，此时无法部署该服务。 | 否 |
-| 失败 | 由于错误或崩溃，服务无法部署。 | 是 |
-| 正常 | 该服务是正常运行的，并且终结点可用。 | 是 |
+| 转为 | 服务正在部署过程中。 | 否 |
+| Unhealthy | 该服务已部署，但当前无法访问。  | 否 |
+| 主机设 | 由于缺少资源，此时无法部署该服务。 | 否 |
+| Failed | 由于出现错误或崩溃，服务部署失败。 | 是 |
+| Healthy | 服务正常，终结点可用。 | 是 |
 
 ### <a name="compute-instance-web-service-devtest"></a><a id="notebookvm"></a> 计算实例 Web 服务（开发/测试）
 
@@ -597,7 +597,7 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 请参阅[部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)。
 
 ### <a name="ab-testing-controlled-rollout"></a>A/B 测试（受控推出）
-有关详细信息[，请参阅 ML 模型的受控推出](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview)。
+有关详细信息，请参阅[ML 模型的受控推出](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview)。
 
 ## <a name="consume-web-services"></a>使用 Web 服务
 
@@ -642,7 +642,7 @@ print(response.json())
 
 ### <a name="web-service-schema-openapi-specification"></a>Web 服务架构（OpenAPI 规范）
 
-如果在部署中使用了自动生成架构，则可以通过使用 [swagger_uri 属性](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)获取服务的 OpenAPI 规范的地址。 （例如.） `print(service.swagger_uri)`使用 GET 请求或在浏览器中打开 URI 以检索规范。
+如果在部署中使用了自动生成架构，则可以通过使用 [swagger_uri 属性](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)获取服务的 OpenAPI 规范的地址。 （例如， `print(service.swagger_uri)`。）使用 GET 请求，或在浏览器中打开 URI 以检索该规范。
 
 以下 JSON 文档是为部署生成的架构（OpenAPI 规范）示例：
 
@@ -882,7 +882,7 @@ service_name = 'onnx-mnist-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
-如果您使用的是 Pytorch，[则将模型从 PyTorch 导出到 ONNX](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb)时，有转换和限制的详细信息。 
+如果你使用的是 Pytorch，则[从 Pytorch 将模型导出到 ONNX](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb)具有有关转换和限制的详细信息。 
 
 ### <a name="scikit-learn-models"></a>Scikit-learn 模型
 
@@ -907,7 +907,7 @@ service_name = 'my-sklearn-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
-注： 默认情况下，支持predict_proba的模型将使用该方法。 要重写此内容以使用预测，可以修改 POST 正文，如下所示：
+注意：支持 predict_proba 的模型在默认情况下将使用该方法。 若要将此重写为使用 predict，可以按如下所示修改 POST 正文：
 ```python
 import json
 
@@ -925,7 +925,7 @@ output = service.run(input_payload)
 print(output)
 ```
 
-注： 这些依赖项包含在预构建的 sk学习推理容器中：
+注意：这些依赖项包含在预生成的 spark-sklearn 推理容器中：
 
 ```yaml
     - azureml-defaults
@@ -940,9 +940,9 @@ print(output)
 
 这些工作都可以通过打包模型来完成。 此方法能对将模型作为 Web 服务托管所需的全部资产进行打包，让你能下载完整生成的 Docker 映像或生成该映像所需的文件。 可以通过两种方式使用模型打包：
 
-**下载打包的模型：** 下载包含模型和其他文件作为 Web 服务托管所需的 Docker 映像。
+**下载打包模型：** 下载包含模型以及将其作为 web 服务托管所需的其他文件的 Docker 映像。
 
-**生成 Docker 文件：** 下载构建 Docker 映像所需的 Docker 文件、模型、条目脚本和其他资产。 然后可以先检查这些文件或进行修改，再在本地生成映像。
+**生成 Dockerfile：** 下载构建 Docker 映像所需的 Dockerfile、model、entry 脚本和其他资产。 然后可以先检查这些文件或进行修改，再在本地生成映像。
 
 这两个包都可用于获取本地 Docker 映像。
 
@@ -1122,7 +1122,7 @@ def run(request):
 > pip install azureml-contrib-services
 > ```
 
-该`AMLRequest`类仅允许您访问score.py的原始发布数据，没有客户端组件。 从客户端中，您像往常一样发布数据。 例如，以下 Python 代码读取图像文件并发布数据：
+`AMLRequest`类只允许访问 score.py 中的原始已发布数据，没有客户端组件。 通过客户端，您可以正常发布数据。 例如，以下 Python 代码读取映像文件并发布数据：
 
 ```python
 import requests
@@ -1136,18 +1136,20 @@ res = request.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'app
 
 ### <a name="cross-origin-resource-sharing-cors"></a>跨域资源共享 (CORS)
 
-跨源资源共享是允许从其他域请求网页上的资源的一种方式。 CORS 通过 HTTP 标头工作，这些标头通过客户端请求发送并随服务响应返回。 若要详细了解 CORS 和有效标头，请参阅维基百科上的[跨域资源共享 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)。
+跨域资源共享是允许从另一个域请求网页上的资源的一种方法。 CORS 通过 HTTP 标头工作，这些标头通过客户端请求发送并随服务响应返回。 若要详细了解 CORS 和有效标头，请参阅维基百科上的[跨域资源共享 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)。
 
 若要配置模型部署以支持 CORS，请在入口脚本中使用 `AMLResponse` 类。 使用此类，可设置响应对象的标头。
 
 以下示例在入口脚本中设置响应的 `Access-Control-Allow-Origin` 标头：
 
 ```python
+from azureml.contrib.services.aml_request import AMLRequest, rawhttp
 from azureml.contrib.services.aml_response import AMLResponse
 
 def init():
     print("This is init()")
 
+@rawhttp
 def run(request):
     print("This is run()")
     print("Request: [{0}]".format(request))
@@ -1180,16 +1182,16 @@ def run(request):
 
 
 > [!WARNING]
-> Azure 机器学习将仅将开机自走自走和 GET 请求路由到运行评分服务的容器。 这可能导致错误，因为浏览器使用 OPTIONS 请求进行预检 CORS 请求。
+> Azure 机器学习将仅将 POST 和 GET 请求路由到运行计分服务的容器。 这可能会导致由于浏览器使用选项请求来预航班 CORS 请求而导致的错误。
 > 
 
 ## <a name="next-steps"></a>后续步骤
 
 * [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
 * [部署疑难解答](how-to-troubleshoot-deployment.md)
-* [使用 TLS 通过 Azure 机器学习保护 Web 服务](how-to-secure-web-service.md)
+* [使用 TLS 通过 Azure 机器学习来保护 web 服务](how-to-secure-web-service.md)
 * [使用部署为 Web 服务的 Azure 机器学习模型](how-to-consume-web-service.md)
-* [使用应用程序见解监视 Azure 机器学习模型](how-to-enable-app-insights.md)
+* [用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)
 * [为生产环境中的模型收集数据](how-to-enable-data-collection.md)
 * [为模型部署创建事件警报和触发器](how-to-use-event-grid.md)
 

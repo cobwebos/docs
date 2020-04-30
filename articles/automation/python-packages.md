@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/25/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9f52dfd92d430abffe5857d231898dd4b0e7745e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 701a5aab7a0061f8b5abfaac1b699034db2671b9
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679921"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508983"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>在 Azure 自动化中管理 Python 2 包
 
@@ -32,11 +32,11 @@ ms.locfileid: "81679921"
 
 ## <a name="import-packages-with-dependencies"></a>导入带依赖项的包
 
-Azure 自动化不在导入过程中解析 Python 包的依赖项。 可以通过两种方式导入包及其所有依赖项。 只需使用以下步骤之一将包导入到自动化帐户中。
+在导入过程中，Azure 自动化不会解析 Python 包的依赖项。 可以通过两种方式导入包及其所有依赖项。 只需使用以下步骤之一将包导入到自动化帐户中。
 
 ### <a name="manually-download"></a>手动下载
 
-在安装了 [python2.7](https://www.python.org/downloads/release/latest/python2) 和 [pip](https://pip.pypa.io/en/stable/) 的 Windows 64 位计算机上运行以下命令，以便下载包及其所有依赖项：
+在安装了[python 2.7](https://www.python.org/downloads/release/latest/python2)和[pip](https://pip.pypa.io/en/stable/)的 Windows 64 位计算机上，运行以下命令以下载包及其所有依赖项：
 
 ```cmd
 C:\Python27\Scripts\pip2.7.exe download -d <output dir> <package name>
@@ -46,7 +46,7 @@ C:\Python27\Scripts\pip2.7.exe download -d <output dir> <package name>
 
 ### <a name="runbook"></a>Runbook
 
-导入 python runbook 将[python 2 包从 pypi](https://gallery.technet.microsoft.com/scriptcenter/Import-Python-2-packages-57f7d509)导入到自动化帐户中，将其从库导入到 Azure 自动化帐户。 请确保将运行设置设置为**Azure**并启动具有参数的 runbook。 Runbook 需要一个运行方式帐户，自动化帐户才能工作。 对于每个参数，请确保按照以下列表和图像中所示，通过开关启动该参数：
+ 若要获取 runbook，请将 pypi 中的 Python 2 包从库导入到自动化帐户中的[Azure 自动化帐户](https://gallery.technet.microsoft.com/scriptcenter/Import-Python-2-packages-57f7d509)。 请确保将运行设置设置为**Azure**并启动具有参数的 runbook。 Runbook 需要一个运行方式帐户，自动化帐户才能工作。 对于每个参数，请确保按照以下列表和图像中所示，通过开关启动该参数：
 
 * -s \<subscriptionId\>
 * -g \<资源组\>
@@ -85,7 +85,7 @@ for group in groups:
 
 ## <a name="develop-and-test-runbooks-offline"></a>脱机开发并测试 runbook
 
-若要脱机开发并测试 Python 2 runbook，可使用 GitHub 上的[Azure Automation python emulated assets](https://github.com/azureautomation/python_emulated_assets)（Azure 自动化 python 模拟资产）模块。 此模块使你能够引用凭据、变量、连接和证书等共享资源。
+若要脱机开发和测试 Python 2 runbook，可以使用 GitHub 上的[Azure 自动化 Python 模拟资产](https://github.com/azureautomation/python_emulated_assets)模块。 此模块使你能够引用凭据、变量、连接和证书等共享资源。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,14 +7,14 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: peterclu
-ms.author: amlstudiodocs
+ms.author: peterlu
 ms.date: 01/18/2019
-ms.openlocfilehash: d330235815b746a5bbdc7682622c0e238a3ab0ea
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: cd48e97f642402d1c7ff2ff71e7cee67be17f91d
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81411893"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82209428"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>获取 Azure 机器学习工作室（经典）的支持和培训
 
@@ -36,9 +36,9 @@ ms.locfileid: "81411893"
 
 请查看这些支持资源：
 
-+ **对 Azure 客户的技术支持**：通过 Azure 门户[提交和管理支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
++ **面向 Azure 客户的技术支持**：通过 Azure 门户[提交和管理支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
 
-+ **用户论坛**：在[MSDN 上的 Azure 机器学习工作室（经典）支持论坛](https://aka.ms/aml-forum-studio)中提出问题、回答问题并与其他用户联系。
++ **用户论坛**：提问、解答问题，并与[MSDN 上 Azure 机器学习 Studio （经典）支持论坛](https://aka.ms/aml-forum-studio)中的其他用户进行连接。
 
 + **Stack Overflow**：访问 [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) 上标记为“Azure-Machine-Learning”的 Azure 机器学习社区。
 

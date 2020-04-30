@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0507989ec25db595a85b89f15d8ff7d056a970f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a54bc3cfa67330fb0056ccd1898d9ab3de2b0ab2
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80297679"
+ms.locfileid: "82229912"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>生成 SCIM 终结点并使用 Azure Active Directory （Azure AD）配置用户预配
 
@@ -810,7 +810,7 @@ SCIM 服务必须有一个 HTTP 地址和服务器身份验证证书，该证书
 
 在令牌中，颁发者由 iss 声明标识，如`"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"`。 在此示例中，声明值`https://sts.windows.net`的基址标识 Azure Active Directory 作为颁发者，而相对地址段_cbb1a5ac-f33b-45fa-9bf5-f37db0fed422_是颁发令牌的 Azure Active Directory 租户的唯一标识符。
 
-令牌的受众将是库中应用程序的应用程序模板 ID，在单个租户中注册的每个应用程序可能会收到与 SCIM 请求`iss`相同的声明。 库中每个应用程序的应用程序模板 ID 各不相同[ProvisioningFeedback@microsoft.com](mailto:ProvisioningFeedback@microsoft.com) ，请联系以了解库应用程序的应用程序模板 id 问题。 所有自定义应用的应用程序模板 ID 都是_8adf8e6e-67b2-4cf2-a259-e3dc5476c621_。
+令牌的受众将是库中应用程序的应用程序模板 ID，在单个租户中注册的每个应用程序可能会收到与 SCIM 请求`iss`相同的声明。 所有自定义应用的应用程序模板 ID 都是_8adf8e6e-67b2-4cf2-a259-e3dc5476c621_。 Azure AD 预配服务生成的令牌只能用于测试。 不应在生产环境中使用它。
 
 在示例代码中，使用 AspNetCore. JwtBearer 包对请求进行身份验证。 下面的代码强制使用为指定租户 Azure Active Directory 颁发的持有者令牌对服务的任何终结点请求进行身份验证：
 
@@ -1144,7 +1144,7 @@ GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
    ![示例：应用程序在 Azure 门户中的设置页面](media/use-scim-to-provision-users-and-groups/scim-figure-2b.png)<br/>
    *在 Azure 门户中配置预配*
 
-7. 在“租户 URL”字段中，输入应用程序的 SCIM 终结点的 URL****。 示例： `https://api.contoso.com/scim/`
+7. 在“租户 URL”字段中，输入应用程序的 SCIM 终结点的 URL****。 示例：`https://api.contoso.com/scim/`
 8. 如果 SCIM 终结点需要来自非 Azure AD 颁发者的 OAuth 持有者令牌，可将所需的 OAuth 持有者令牌复制到可选的“密钥令牌”字段****。 如果此字段保留为空，则 Azure AD 包括每个请求 Azure AD 颁发的 OAuth 持有者令牌。 将 Azure AD 用作标识提供者的应用可以验证 Azure AD 颁发的此令牌。 
    > [!NOTE]
    > 建议***不要***将此字段留空，并依赖于 Azure AD 生成的令牌。 此选项主要用于测试目的。

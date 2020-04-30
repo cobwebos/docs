@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0bdede482b79c82e6e05b1429cb7c17399bc2277
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 83e1e11fe38a21bbd7c44139fac562342bcab866
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81756608"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82229640"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的声明解析程序
 
@@ -70,14 +70,14 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 | {OIDC:ClientId} |`client_id` 查询字符串参数。 | 00000000-0000-0000-0000-000000000000 |
 | {OIDC:DomainHint} |`domain_hint` 查询字符串参数。 | facebook.com |
 | {OIDC:LoginHint} |  `login_hint` 查询字符串参数。 | someone@contoso.com |
-| {OIDC:MaxAge} | `max_age`。 | 空值 |
+| {OIDC:MaxAge} | `max_age`。 | 不可用 |
 | {OIDC:Nonce} |`Nonce` 查询字符串参数。 | defaultNonce |
-| [OIDC：密码]| [资源所有者密码凭据流](ropc-custom.md)用户的密码。| 密码1| 
+| {OIDC： Password}| [资源所有者密码凭据流](ropc-custom.md)用户的密码。| password1| 
 | {OIDC:Prompt} | `prompt` 查询字符串参数。 | login |
-| [OIDC：重定向Uri] |`redirect_uri` 查询字符串参数。 | https://jwt.ms |
-| {OIDC:Resource} |`resource` 查询字符串参数。 | 空值 |
-| [OIDC：范围] |`scope` 查询字符串参数。 | openid |
-| [OIDC：用户名]| [资源所有者密码凭据流](ropc-custom.md)用户的用户名。| emily@contoso.com| 
+| {OIDC： RedirectUri} |`redirect_uri` 查询字符串参数。 | https://jwt.ms |
+| {OIDC:Resource} |`resource` 查询字符串参数。 | 不可用 |
+| {OIDC： Scope} |`scope` 查询字符串参数。 | openid |
+| {OIDC： Username}| [资源所有者密码凭据流](ropc-custom.md)用户的用户名。| emily@contoso.com| 
 
 ### <a name="context"></a>上下文
 
@@ -88,16 +88,16 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 | {Context:DateTimeInUtc} |UTC 格式的日期时间。  | 2018/10/10 中午 12:00 |
 | {Context:DeploymentMode} |策略部署模式。  | 生产 |
 | {Context:IPAddress} | 用户 IP 地址。 | 11.111.111.11 |
-| [上下文：KMSI] | 指示是否选中["保持我登录](custom-policy-keep-me-signed-in.md)"复选框。 |  true |
+| {Context： KMSI} | 指示是否选中["使我保持登录状态"](custom-policy-keep-me-signed-in.md)复选框。 |  true |
 
 ### <a name="claims"></a>声明 
 
 | 声明 | 说明 | 示例 |
 | ----- | ----------- | --------|
-| [索赔：声明类型] | 策略文件或父策略文件中的"声明架构"部分中已定义的声明类型的标识符。  例如：`{Claim:displayName}` 或 `{Claim:objectId}`。 | 声明类型值。|
+| {声明：声明类型} | 已在策略文件或父策略文件的 ClaimsSchema 部分中定义的声明类型的标识符。  例如：`{Claim:displayName}` 或 `{Claim:objectId}`。 | 声明类型值。|
 
 
-### <a name="oauth2-key-value-parameters"></a>OAuth2 键值参数
+### <a name="oauth2-key-value-parameters"></a>OAuth2 键-值参数
 
 可以将 OIDC 或 OAuth2 请求中包括的任何参数名称映射到用户旅程中的某个声明， 例如，来自应用程序的请求可能包括名为 `app_session`、`loyalty_number` 的查询字符串参数或任何自定义查询字符串。
 
@@ -106,48 +106,48 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 | {OAUTH-KV:campaignId} | 查询字符串参数。 | Hawaii |
 | {OAUTH-KV:app_session} | 查询字符串参数。 | A3C5R |
 | {OAUTH-KV:loyalty_number} | 查询字符串参数。 | 1234 |
-| {OAUTH-KV:any custom query string} | 查询字符串参数。 | 空值 |
+| {OAUTH-KV:any custom query string} | 查询字符串参数。 | 不可用 |
 
 ### <a name="oauth2"></a>OAuth2
 
 | 声明 | 说明 | 示例 |
 | ----- | ----------------------- | --------|
-| {oauth2:access_token} | 访问令牌。 | 空值 |
+| {oauth2:access_token} | 访问令牌。 | 不可用 |
 
 
 ### <a name="saml"></a>SAML
 
 | 声明 | 说明 | 示例 |
 | ----- | ----------- | --------|
-| [SAML：AuthnContextClass引用] | SAML`AuthnContextClassRef`请求中的元素值。 | urn：oasis：名称：tc：SAML：2.0：ac：类：密码保护传输 |
-| [SAML：名称Id政策格式] | 属性`Format`，`NameIDPolicy`来自 SAML 请求的元素。 | urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress |
-| [SAML：发行人] |  SAML`Issuer`请求的 SAML 元素值。| `https://contoso.com` |
-| [SAML：允许创建] | 属性`AllowCreate`值，来自 SAML 请求`NameIDPolicy`的元素。 | True |
-| [萨姆·斯图尔：强制奥特恩] | 属性`ForceAuthN`值，来自 SAML 请求`AuthnRequest`的元素。 | True |
-| [SAML：供应商名称] | 属性`ProviderName`值，来自 SAML 请求`AuthnRequest`的元素。| Contoso.com |
-| [SAML：中继状态] | `RelayState` 查询字符串参数。| 
+| {SAML： AuthnContextClassReferences} | SAML `AuthnContextClassRef`请求中的元素值。 | urn： oasis：名称： tc： SAML：2.0： ac：类： PasswordProtectedTransport |
+| {SAML： NameIdPolicyFormat} | 来自`Format` SAML 请求的`NameIDPolicy`元素的属性。 | urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress |
+| {SAML： Issuer} |  SAML 请求`Issuer`的 saml 元素值。| `https://contoso.com` |
+| {SAML： AllowCreate} | 来自`AllowCreate` SAML 请求的`NameIDPolicy`元素的属性值。 | True |
+| {SAML： ForceAuthn} | 来自`ForceAuthN` SAML 请求的`AuthnRequest`元素的属性值。 | True |
+| {SAML： ProviderName} | 来自`ProviderName` SAML 请求的`AuthnRequest`元素的属性值。| Contoso.com |
+| {SAML： RelayState} | `RelayState` 查询字符串参数。| 
 
-## <a name="using-claim-resolvers"></a>使用声明解析器
+## <a name="using-claim-resolvers"></a>使用声明解析程序
 
-您可以将声明解析器与以下元素一起使用：
+可以将声明解析程序用于以下元素：
 
-| 项 | 元素 | 设置 |
+| 项 | 元素 | Settings |
 | ----- | ----------------------- | --------|
 |Application Insights 技术配置文件 |`InputClaim` | |
-|[Azure 活动目录](active-directory-technical-profile.md)技术配置文件| `InputClaim`, `OutputClaim`| 1, 2|
-|[OAuth2](oauth2-technical-profile.md)技术简介| `InputClaim`, `OutputClaim`| 1, 2|
-|[OpenID 连接](openid-connect-technical-profile.md)技术配置文件| `InputClaim`, `OutputClaim`| 1, 2|
-|[索赔转换](claims-transformation-technical-profile.md)技术概况| `InputClaim`, `OutputClaim`| 1, 2|
-|[RESTful 供应商](restful-technical-profile.md)技术配置文件| `InputClaim`| 1, 2|
-|[SAML2](saml-technical-profile.md)技术配置文件| `OutputClaim`| 1, 2|
-|[自我断言](self-asserted-technical-profile.md)的技术配置文件| `InputClaim`, `OutputClaim`| 1, 2|
+|[Azure Active Directory](active-directory-technical-profile.md)技术配置文件| `InputClaim`, `OutputClaim`| 1, 2|
+|[OAuth2](oauth2-technical-profile.md)技术配置文件| `InputClaim`, `OutputClaim`| 1, 2|
+|[OpenID connect](openid-connect-technical-profile.md)技术配置文件| `InputClaim`, `OutputClaim`| 1, 2|
+|[索赔转换](claims-transformation-technical-profile.md)技术配置文件| `InputClaim`, `OutputClaim`| 1, 2|
+|[RESTful 提供程序](restful-technical-profile.md)技术配置文件| `InputClaim`| 1, 2|
+|[SAML 标识提供者](saml-identity-provider-technical-profile.md)技术配置文件| `OutputClaim`| 1, 2|
+|[自断言](self-asserted-technical-profile.md)技术配置文件| `InputClaim`, `OutputClaim`| 1, 2|
 |[ContentDefinition](contentdefinitions.md)| `LoadUri`| |
 |[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |
-|[依托方](relyingparty.md#technicalprofile)技术概况| `OutputClaim`| 2 |
+|[RelyingParty](relyingparty.md#technicalprofile)技术配置文件| `OutputClaim`| 2 |
 
 设置：
-1. 元数据`IncludeClaimResolvingInClaimsHandling`必须设置为`true`。
-1. 必须将输入或输出声明`AlwaysUseDefaultValue`属性设置为`true`。
+1. 必须`IncludeClaimResolvingInClaimsHandling`将元数据设置为`true`。
+1. 输入或输出声明特性`AlwaysUseDefaultValue`必须设置为。 `true`
 
 ## <a name="claim-resolvers-samples"></a>声明解析器示例
 
@@ -155,7 +155,7 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 
 在 [RESTful](restful-technical-profile.md) 技术配置文件中，可能想要发送用户语言、策略名称、作用域和客户端 ID。 根据声明，REST API 可以运行自定义业务逻辑，并在必要时引发本地化的错误消息。
 
-下面的示例显示了具有此方案的 RESTful 技术配置文件：
+下面的示例演示了此方案中的 RESTful 技术配置文件：
 
 ```XML
 <TechnicalProfile Id="REST">
@@ -183,9 +183,9 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 
 ### <a name="dynamic-ui-customization"></a>动态 UI 自定义
 
-Azure AD B2C 使您能够将查询字符串参数传递给 HTML 内容定义终结点，以动态呈现页面内容。 例如，此功能允许基于从 Web 或移动应用程序传递的自定义参数修改 Azure AD B2C 注册或登录页上的背景图像。 有关详细信息，请参阅[使用 Azure Active Directory B2C 中的自定义策略动态配置 UI](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri)。 此外，还可以根据语言参数本地化 HTML 页，或者根据客户端 ID 更改内容。
+Azure AD B2C 使你能够将查询字符串参数传递到 HTML 内容定义终结点，以动态呈现页面内容。 例如，利用此功能，可以根据从 web 或移动应用程序传递的自定义参数，修改 Azure AD B2C 注册或登录页上的背景图像。 有关详细信息，请参阅[使用 Azure Active Directory B2C 中的自定义策略动态配置 UI](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri)。 此外，还可以根据语言参数本地化 HTML 页，或者根据客户端 ID 更改内容。
 
-以下示例传递名为**campaignId**的查询字符串参数中，其值`Hawaii`为**language**`en-US`，和 表示客户端 ID**的语言**代码和应用：
+下面的示例在名为**campaignId**的查询字符串参数中传递，其`Hawaii`值为，**语言**代码`en-US`为，**应用**代表客户端 ID：
 
 ```XML
 <UserJourneyBehaviors>
@@ -197,7 +197,7 @@ Azure AD B2C 使您能够将查询字符串参数传递给 HTML 内容定义终�
 </UserJourneyBehaviors>
 ```
 
-因此，Azure AD B2C 将上述参数发送到 HTML 内容页：
+因此，Azure AD B2C 会将以上参数发送到 HTML 内容页：
 
 ```
 /selfAsserted.aspx?campaignId=hawaii&language=en-US&app=0239a9cc-309c-4d41-87f1-31288feb2e82
@@ -205,7 +205,7 @@ Azure AD B2C 使您能够将查询字符串参数传递给 HTML 内容定义终�
 
 ### <a name="content-definition"></a>内容定义
 
-在[Content定义中](contentdefinitions.md)`LoadUri`，您可以根据所使用的参数发送声明解析器从不同位置提取内容。
+在[ContentDefinition](contentdefinitions.md) `LoadUri`中，可以发送声明解析程序，根据所使用的参数从不同位置拉取内容。
 
 ```XML
 <ContentDefinition Id="api.signuporsignin">
@@ -232,9 +232,9 @@ Azure AD B2C 使您能够将查询字符串参数传递给 HTML 内容定义终�
 </TechnicalProfile>
 ```
 
-### <a name="relying-party-policy"></a>依靠方政策
+### <a name="relying-party-policy"></a>信赖方策略
 
-在["依赖方](relyingparty.md)"策略技术配置文件中，您可能希望将租户 ID 或相关 ID 发送到 JWT 中的依赖方应用程序。
+在[信赖方](relyingparty.md)策略技术配置文件中，你可能需要将租户 id 或相关 ID 发送到 JWT 中的信赖方应用程序。
 
 ```XML
 <RelyingParty>

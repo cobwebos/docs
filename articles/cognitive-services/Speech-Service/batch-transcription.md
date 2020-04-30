@@ -1,5 +1,5 @@
 ---
-title: 什么是批处理转录 - 语音服务
+title: 什么是批操作-语音服务
 titleSuffix: Azure Cognitive Services
 description: 如果要听录存储（如 Azure Blob）中的大量音频，则批量听录是理想的选择。 使用专用 REST API 可以通过共享访问签名 (SAS) URI 指向音频文件并异步接收听录。
 services: cognitive-services
@@ -10,36 +10,36 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: 1f88df186526c2f9903337bb3331940be0989c3d
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: 46bfabfb2ccf091fd5dc0fcf0e9b447bad7c34d1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892455"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82208612"
 ---
-# <a name="what-is-batch-transcription"></a>什么是批次转录？
+# <a name="what-is-batch-transcription"></a>什么是批处理脚本？
 
-批处理转录是一组 REST API 操作，使您能够在存储中转录大量音频。 您可以使用共享访问签名 （SAS） URI 指向音频文件，并异步接收转录结果。
+批处理脚本是一组 REST API 操作，使你能够在存储中转录大量音频。 你可以使用共享访问签名（SAS） URI 指向音频文件，并异步接收脚本结果。
 
-异步语音转文本转录只是其中一个功能。 您可以使用批处理转录 REST API 调用以下方法：
+异步语音到文本脚本只是其中一项功能。 可以使用批处理脚本 REST Api 调用以下方法：
 
 
 
-|    批次转录操作                                             |    方法    |    REST API 调用                                   |
+|    批处理操作                                             |    方法    |    REST API 调用                                   |
 |------------------------------------------------------------------------------|--------------|----------------------------------------------------|
-|    创建新的转录。                                              |    POST      |    api/语音文本/v2.0/转录            |
-|    检索已身份验证订阅的转录列表。    |    GET       |    api/语音文本/v2.0/转录            |
-|    获取脱机转录受支持区域设置的列表。              |    GET       |    api/语音文本/v2.0/转录/区域设置    |
-|    更新其 ID 标识的转录的可变详细信息。    |    PATCH     |    api/语音文本/v2.0/转录/{id}       |
-|    删除指定的转录任务。                                 |    DELETE    |    api/语音文本/v2.0/转录/{id}       |
-|    获取给定 ID 标识的转录。                        |    GET       |    api/语音文本/v2.0/转录/{id}       |
+|    创建新脚本。                                              |    POST      |    api/speechtotext/v2.0/转录            |
+|    检索经过身份验证的订阅的转录的列表。    |    GET       |    api/speechtotext/v2.0/转录            |
+|    获取脱机转录支持的区域设置列表。              |    GET       |    api/speechtotext/v2.0/转录/区域设置    |
+|    更新由 ID 标识的脚本的可变细节。    |    修补程序     |    api/speechtotext/v2.0/转录/{id}       |
+|    删除指定的脚本任务。                                 |    DELETE    |    api/speechtotext/v2.0/转录/{id}       |
+|    获取由给定 ID 标识的脚本。                        |    GET       |    api/speechtotext/v2.0/转录/{id}       |
 
 
 
 
-您可以在标题`Custom Speech transcriptions`下查看和测试详细的 API，该 API 可作为[Swagger 文档](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A)提供。
+你可以在标题`Custom Speech transcriptions`下查看并测试详细的 API，该 API 可用作[Swagger 文档](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A)。
 
-批量听录作业是按“尽力而为”的原则安排的。 当前，无法估计作业何时更改为运行状态。 在正常的系统负载下，几分钟内应该就可以发生该作业。 进入运行状态后，实际听录的处理速度比实时音频更快。
+批量听录作业是按“尽力而为”的原则安排的。 当前作业更改为 "正在运行" 状态的时间。 在正常的系统负载下，几分钟内应该就可以发生该作业。 进入运行状态后，实际听录的处理速度比实时音频更快。
 
 凭借易用的 API，无需部署自定义终结点，且无需遵守任何并发性要求。
 
@@ -50,7 +50,7 @@ ms.locfileid: "80892455"
 与语音服务的其他所有功能一样，需要按照[入门指南](get-started.md)通过 [Azure 门户](https://portal.azure.com)创建订阅密钥。
 
 >[!NOTE]
-> 若要使用批量听录，需要具备语音服务的标准订阅 (S0)。 免费订阅密钥 （F0） 不起作用。 有关详细信息，请参阅[定价和限制](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
+> 若要使用批量听录，需要具备语音服务的标准订阅 (S0)。 免费订阅密钥（F0）不起作用。 有关详细信息，请参阅[定价和限制](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
 
 ### <a name="custom-models"></a>自定义模式
 
@@ -70,7 +70,7 @@ Batch 听录 API 支持以下格式：
 
 对于立体声音频流，在听录期间会拆分左右声道。 对于每个声道，将创建一个 JSON 结果文件。 开发人员可利用为每个言语生成的时间戳创建有序的最终脚本。
 
-### <a name="configuration"></a>配置
+### <a name="configuration"></a>Configuration
 
 配置参数以 JSON 形式提供：
 
@@ -108,35 +108,35 @@ Batch 听录 API 支持以下格式：
       `ProfanityFilterMode`
    :::column-end:::
    :::column span="2":::
-      指定如何处理识别结果中的不雅内容。 接受的值是`None`禁用亵渎筛选，`Masked`用星号取代亵渎，`Removed`从结果中删除所有亵渎，或`Tags`添加"亵渎"标记。 默认设置为 `Masked`。
+      指定如何处理识别结果中的不雅内容。 接受的值`None`包括禁用猥亵语言筛选`Masked` 、将猥亵替换为星号`Removed` 、从结果中删除所有猥亵值或`Tags`添加 "猥亵" 标记。 默认设置为 `Masked`。
 :::row-end:::
 :::row:::
    :::column span="1":::
       `PunctuationMode`
    :::column-end:::
    :::column span="2":::
-      指定如何处理识别结果中的标点。 接受的值是`None`禁用标点符号，`Dictated`表示显式（口头）标点符号，`Automatic`让解码器处理标点符号，或使用`DictatedAndAutomatic`听写和自动标点符号。 默认设置为 `DictatedAndAutomatic`。
+      指定如何处理识别结果中的标点。 接受的值`None`包括禁用标点符号、 `Dictated`表示显式（口述）标点、 `Automatic`使解码器处理标点符号，或`DictatedAndAutomatic`使用听写和自动标点。 默认设置为 `DictatedAndAutomatic`。
 :::row-end:::
 :::row:::
    :::column span="1":::
       `AddWordLevelTimestamps`
    :::column-end:::
    :::column span="2":::
-      指定是否应将字级时间戳添加到输出。 接受的值是`true`启用单词级时间戳和`false`（默认值）来禁用它。
+      指定是否应将字级时间戳添加到输出。 接受的值`true`是启用 word 级别的时间`false`戳和（默认值）以禁用它。
 :::row-end:::
 :::row:::
    :::column span="1":::
       `AddSentiment`
    :::column-end:::
    :::column span="2":::
-      指定是否应将情绪分析应用于陈述。 接受的值是`true`启用和`false`（默认值）来禁用它。 有关详细信息[，请参阅情绪分析](#sentiment-analysis)。
+      指定是否应将情绪分析应用于查询文本。 接受的值`true`是启用和`false` （默认值）以禁用它。 有关更多详细信息，请参阅[情绪分析](#sentiment-analysis)。
 :::row-end:::
 :::row:::
    :::column span="1":::
       `AddDiarization`
    :::column-end:::
    :::column span="2":::
-      指定应在输入上执行二分化分析，该输入预期是包含两个语音的单声道。 接受的值启用`true`二分化和`false`（默认值）来禁用它。 还需要将 `AddWordLevelTimestamps` 设置为 true。
+      指定应在输入上执行 diarization 分析，该输入应为单声道通道，其中包含两个声音。 接受的值`true`是启用 diarization `false`和（默认值）以禁用它。 还需要将 `AddWordLevelTimestamps` 设置为 true。
 :::row-end:::
 :::row:::
    :::column span="1":::
@@ -220,7 +220,7 @@ Batch 听录 API 支持以下格式：
 
 :::row:::
    :::column span="1":::
-      **Form**
+      **窗体**
    :::column-end:::
    :::column span="2":::
       **内容**
@@ -251,14 +251,14 @@ Batch 听录 API 支持以下格式：
       `Display`
    :::column-end:::
    :::column span="2":::
-      已识别文本的显示形式。 包括添加的标点符号和大小写。
+      已识别文本的显示形式。 添加了标点和大小写。
 :::row-end:::
 
 ## <a name="speaker-separation-diarization"></a>讲述人分离（分割聚类）
 
 分割聚类是将讲述人语音分隔成音频片段的过程。 Batch 管道支持分割聚类，并且能够识别单声道录制内容中的两个讲述人。 此功能不适用于立体声录音。
 
-所有听录输出包含一个 `SpeakerId`。 如果未使用二分法，则它在 JSON 输出中显示`"SpeakerId": null`。 对于二分化，我们支持两个声音，因此扬声器被标识为`"1"``"2"`或 。
+所有听录输出包含一个 `SpeakerId`。 如果未使用 diarization，则它将`"SpeakerId": null`显示在 JSON 输出中。 对于 diarization，我们支持两个声音，因此扬声器被标识`"1"`为`"2"`或。
 
 若要请求分割聚类，只需在 HTTP 请求中添加相关的参数，如下所示。
 
@@ -288,10 +288,10 @@ Batch 听录 API 支持以下格式：
 - 将消极通话转变为积极通话时的良好交互情况
 - 了解客户对某个产品或服务喜欢和不喜欢的方面
 
-情绪根据词法形式按音频段评分。 该音频段内的整个文本用于计算情绪。 不会计算整个听录的聚合情绪。 目前情绪分析仅适用于英语。
+情绪根据词法形式按音频段评分。 该音频段内的整个文本用于计算情绪。 不会计算整个听录的聚合情绪。 情绪分析目前仅以英语提供。
 
 > [!NOTE]
-> 我们建议改用 Microsoft 文本分析 API。 它提供了超越情绪分析的更高级的功能，如关键短语提取、自动语言检测等。 您可以在[文本分析文档中](https://azure.microsoft.com/services/cognitive-services/text-analytics/)找到信息和示例。
+> 建议改为使用 Microsoft 文本分析 API。 它提供了情绪分析以外的更多高级功能，如关键短语提取、自动语言检测等。 可以在[文本分析文档](https://azure.microsoft.com/services/cognitive-services/text-analytics/)中找到相关信息和示例。
 >
 
 下面是 JSON 输出示例：
@@ -332,7 +332,7 @@ Batch 听录 API 支持以下格式：
 
 ## <a name="best-practices"></a>最佳做法
 
-听录服务可以处理大量的已提交听录内容。 可以通过[听录方法](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/GetTranscriptions)中的 `GET` 查询听录的状态。 通过指定 `take` 参数来保持以合理的大小（数百）返回信息。 检索结果后，定期从服务中[删除听录](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/DeleteTranscription)。 这保证了从转录管理调用的快速答复。
+听录服务可以处理大量的已提交听录内容。 可以通过[听录方法](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/GetTranscriptions)中的 `GET` 查询听录的状态。 通过指定 `take` 参数来保持以合理的大小（数百）返回信息。 检索结果后，定期从服务中[删除听录](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/DeleteTranscription)。 这可确保快速响应脚本管理呼叫。
 
 ## <a name="sample-code"></a>示例代码
 
@@ -342,11 +342,11 @@ Batch 听录 API 支持以下格式：
 
 [!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchdefinition)]
 
-示例代码设置客户端并提交转录请求。 然后，它会轮询状态信息并打印有关转录进度的详细信息。
+示例代码设置客户端并提交脚本请求。 然后，它会轮询状态信息并打印有关脚本进度的详细信息。
 
 [!code-csharp[Code to check batch transcription status](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchstatus)]
 
-有关上述呼叫的完整详细信息，请参阅我们的[斯瓦格文档](https://westus.cris.ai/swagger/ui/index)。 有关此处所示的完整示例，请转到 `samples/batch` 子目录中的 [GitHub](https://aka.ms/csspeech/samples)。
+有关上述调用的完整详细信息，请参阅[Swagger 文档](https://westus.cris.ai/swagger/ui/index)。 有关此处所示的完整示例，请转到 `samples/batch` 子目录中的 [GitHub](https://aka.ms/csspeech/samples)。
 
 请注意用于发布音频和接收听录状态的异步设置。 创建的客户端是一个 .NET HTTP 客户端。 `PostTranscriptions` 方法用于发送音频文件详细信息，`GetTranscriptions` 方法用于接收结果。 `PostTranscriptions` 返回句柄，`GetTranscriptions` 使用此句柄创建一个句柄来获取听录状态。
 

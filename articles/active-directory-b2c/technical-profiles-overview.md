@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5d89d123fe757b0502f4c6b3a0d33c185b25224b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 125d89301e9d2cc3fc863bffb9b9e6c41e0c129e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80057314"
+ms.locfileid: "82229929"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的技术配置文件
 
@@ -39,7 +39,7 @@ ms.locfileid: "80057314"
 - [OpenID Connect](openid-connect-technical-profile.md) - 与任何 OpenID Connect 协议标识提供者联合。
 - [电话系数](phone-factor-technical-profile.md)-支持注册和验证电话号码。
 - [RESTful 提供程序](restful-technical-profile.md)-对 REST API 服务的调用，例如验证用户输入、丰富用户数据或与业务线应用程序集成。
-- [SAML2](saml-technical-profile.md) - 与任何 SAML 协议标识提供者联合。
+- [Saml 标识提供者](saml-identity-provider-technical-profile.md)-与任何 SAML 协议标识提供者联合。
 - [Saml 令牌颁发者](saml-issuer-technical-profile.md)-发出返回给信赖方应用程序的 saml 令牌。
 - [自断言](self-asserted-technical-profile.md) - 与用户交互。 例如，收集用户的凭据进行登录、呈现注册页或密码重置。
 - [会话管理](custom-policy-reference-sso.md) - 处理不同类型的会话。

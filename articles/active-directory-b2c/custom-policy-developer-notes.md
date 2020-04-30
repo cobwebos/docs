@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 403ca480bcf0743d81e375c122c888db96bbf543
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 471c2d45e28e634adde78c2d96d407ec219be68c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80408716"
+ms.locfileid: "82229657"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>有关 Azure Active Directory B2C 中的自定义策略的开发人员说明
 
@@ -62,7 +62,7 @@ Azure Active Directory B2C 中的自定义策略配置现已正式发布。 此�
 
 ### <a name="protocols-and-authorization-flows"></a>协议和授权流
 
-| 功能 | 开发 | 预览 | GA | 说明 |
+| Feature | 开发 | 预览 | GA | 注意 |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [OAuth2 授权代码](authorization-code-flow.md) |  |  | X |  |
 | OAuth2 授权代码与 PKCE |  |  | X | 仅限移动应用程序  |
@@ -75,18 +75,18 @@ Azure Active Directory B2C 中的自定义策略配置现已正式发布。 此�
 
 ### <a name="identify-providers-federation"></a>标识提供者联合 
 
-| 功能 | 开发 | 预览 | GA | 说明 |
+| Feature | 开发 | 预览 | GA | 注意 |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [OpenID Connect](openid-connect-technical-profile.md) |  |  | X | 例如，Google +。  |
 | [OAuth2](oauth2-technical-profile.md) |  |  | X | 例如 Facebook。  |
 | [OAuth1](oauth1-technical-profile.md) |  | X |  | 例如，Twitter。 |
-| [SAML2](saml-technical-profile.md) |  |   | X | 例如 Salesforce、ADFS。 |
+| [SAML2](saml-identity-provider-technical-profile.md) |  |   | X | 例如 Salesforce、ADFS。 |
 | WSFED| X |  |  |  |
 
 
 ### <a name="rest-api-integration"></a>REST API 集成
 
-| 功能 | 开发 | 预览 | GA | 说明 |
+| Feature | 开发 | 预览 | GA | 注意 |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [REST API 与基本身份验证](secure-rest-api.md#http-basic-authentication) |  |  | X |  |
 | [与客户端证书身份验证 REST API](secure-rest-api.md#https-client-certificate-authentication) |  |  | X |  |
@@ -94,7 +94,7 @@ Azure Active Directory B2C 中的自定义策略配置现已正式发布。 此�
 
 ### <a name="component-support"></a>组件支持
 
-| 功能 | 开发 | 预览 | GA | 说明 |
+| Feature | 开发 | 预览 | GA | 注意 |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | [电话系数身份验证](phone-factor-technical-profile.md) |  |  | X |  |
 | [Azure MFA 身份验证](multi-factor-auth-technical-profile.md) |  | X |  |  |
@@ -109,7 +109,7 @@ Azure Active Directory B2C 中的自定义策略配置现已正式发布。 此�
 
 ### <a name="page-layout-versions"></a>页面布局版本
 
-| 功能 | 开发 | 预览 | GA | 说明 |
+| Feature | 开发 | 预览 | GA | 注意 |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | [2.0.0](page-layout.md#200) |  | X |  |  |
 | [1.2.0](page-layout.md#120) |  | X |  |  |
@@ -119,7 +119,7 @@ Azure Active Directory B2C 中的自定义策略配置现已正式发布。 此�
 
 ### <a name="app-ief-integration"></a>App-IEF 集成
 
-| 功能 | 开发 | 预览 | GA | 说明 |
+| Feature | 开发 | 预览 | GA | 注意 |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | 查询字符串参数`domain_hint` |  |  | X | 作为声明提供时，可以传递给 IDP。 |
 | 查询字符串参数`login_hint` |  |  | X | 作为声明提供时，可以传递给 IDP。 |
@@ -129,16 +129,17 @@ Azure Active Directory B2C 中的自定义策略配置现已正式发布。 此�
 
 ### <a name="session-management"></a>会话管理
 
-| 功能 | 开发 | 预览 | GA | 说明 |
+| Feature | 开发 | 预览 | GA | 注意 |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | [默认 SSO 会话提供程序](custom-policy-reference-sso.md#defaultssosessionprovider) |  |  | X |  |
 | [外部登录会话提供程序](custom-policy-reference-sso.md#externalloginssosessionprovider) |  |  | X |  |
 | [SAML SSO 会话提供程序](custom-policy-reference-sso.md#samlssosessionprovider) |  |  | X |  |
-
+| [OAuthSSOSessionProvider](custom-policy-reference-sso.md#oauthssosessionprovider)  |  | X |  |  |
+| [单一登录](session-overview.md#sign-out)  |  | X |  |  |
 
 ### <a name="security"></a>安全性
 
-| 功能 | 开发 | 预览 | GA | 说明 |
+| Feature | 开发 | 预览 | GA | 注意 |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | 策略密钥 - 生成、手动、上传 |  |  | X |  |
 | 策略密钥 - RSA/证书、机密 |  |  | X |  |
@@ -146,7 +147,7 @@ Azure Active Directory B2C 中的自定义策略配置现已正式发布。 此�
 
 ### <a name="developer-interface"></a>开发人员接口
 
-| 功能 | 开发 | 预览 | GA | 说明 |
+| Feature | 开发 | 预览 | GA | 注意 |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Azure 门户-IEF UX |  |  | X |  |
 | 策略上传 |  |  | X |  |

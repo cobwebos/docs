@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: b3cf4fd958202c28586b7c15932dc88a21d7c60f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 78c06cc7f08fe94a25ea63d9bf76cc1352d9f2b7
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81686863"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561675"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>教程：连接、设置、激活 Azure Data Box Gateway
 
@@ -65,7 +65,7 @@ ms.locfileid: "81686863"
    
 ![本地 Web UI“仪表板”页](./media/data-box-gateway-deploy-connect-setup-activate/image5.png)
 
-1. 在左窗格中选择“设备名称”，然后输入设备的友好名称  。 友好名称必须包含 1 到 15 个字符，并且必须包含字母、数字和连字符。
+1. 在左窗格中选择“设备名称”，然后输入设备的友好名称  。 友好名称必须包含 1 到 15 个字符，并且必须包含字母、数字和连字符。 
 
     ![本地 Web UI“设备名”页](./media/data-box-gateway-deploy-connect-setup-activate/image6.png)
 

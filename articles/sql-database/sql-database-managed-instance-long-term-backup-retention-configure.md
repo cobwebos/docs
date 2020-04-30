@@ -11,21 +11,20 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 04/19/2020
-ms.openlocfilehash: 24eacb555704593fe44bc2d949de44de163345bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.date: 04/29/2020
+ms.openlocfilehash: fba1dcdb8c4e5cfaa8071ae58ad75432b526c887
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677105"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509697"
 ---
 # <a name="manage-azure-sql-database-managed-instance-long-term-backup-retention-powershell"></a>管理 Azure SQL 数据库托管实例长期备份保留（PowerShell）
 
 在 Azure SQL 数据库托管实例中，你可以将[长期备份保留](sql-database-long-term-retention.md#managed-instance-support)策略（LTR）配置为有限的公共预览功能。 这使你可以将数据库备份自动保留在单独的 Azure Blob 存储容器中，最长可达10年。 然后，可以使用 PowerShell 通过这些备份来恢复数据库。
 
    > [!IMPORTANT]
-   > 对于托管实例，LTR 目前处于有限预览版中，并可用于每种情况下的 EA 和 CSP 订阅。 若要请求注册，请在支持主题 "**备份、还原和业务连续性/长期备份保留**" 下创建[Azure 支持票证](https://azure.microsoft.com/support/create-ticket/)。 
-
+   > 对于托管实例，LTR 目前处于有限预览版中，并可用于每种情况下的 EA 和 CSP 订阅。 若要请求注册，请创建[Azure 支持票证](https://azure.microsoft.com/support/create-ticket/)。 对于 "问题类型"，请选择 "服务" "服务"，选择 "SQL 数据库托管实例" 和 "对于问题类型"，选择 "**备份"、"还原" 和 "业务连续性/长期备份保留**。 在你的请求中，请陈述你希望在面向托管实例的按范围有限的公共预览版中进行注册。
 
 以下各部分展示了如何使用 PowerShell 配置长期备份保留、查看 Azure SQL 存储中的备份，以及从 Azure SQL 存储中的备份进行还原。
 

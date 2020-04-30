@@ -10,19 +10,22 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: mathoma
-ms.date: 01/25/2019
-ms.openlocfilehash: f28269b067ee98d69a97799911fd2d84a7f91e34
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.date: 04/28/2020
+ms.openlocfilehash: 49be53febc1783edfa16fd019a094a7e80e1cdf7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81381149"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231639"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>复制到 SQL 数据库的单一数据库和共用数据库
 
 可以对 SQL Server 复制进行配置，以便复制到 Azure SQL 数据库中 [SQL 数据库服务器](sql-database-servers.md)上的单一数据库和共用数据库。  
 
-## <a name="supported-configurations"></a>**支持的配置：**
+> [!NOTE]
+> 本文介绍如何在 Azure SQL 数据库中使用[事务复制](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication)。 它与[活动异地复制](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication)无关，这是一项 Azure SQL 数据库功能，允许你创建单个数据库的完全可读副本。
+
+## <a name="supported-configurations"></a>支持的配置
   
 - SQL Server 可以是在本地运行的 SQL Server 实例，也可以是在云端的 Azure 虚拟机中运行的 SQL Server 实例。 有关详细信息，请参阅 [Azure 虚拟机上的 SQL Server 概述](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-infrastructure-services/)。  
 - Azure SQL 数据库必须是 SQL Server 发布服务器的推送订阅者。  
@@ -106,15 +109,15 @@ Azure SQL 数据库订阅不支持以下选项：
 
 ## <a name="examples"></a>示例
 
-创建发布和推送订阅。 有关详细信息，请参阅：
+创建发布和推送订阅。 有关更多信息，请参阅：
   
-- [创建出版物](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
+- [创建发布](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [创建推送订阅](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)，方法是将 Azure SQL 数据库服务器名称用作订阅服务器（例如 N'azuresqldbdns.database.windows.net'****），将 Azure SQL 数据库名称用作目标数据库（例如 AdventureWorks****）。  
 
 ## <a name="see-also"></a>另请参阅  
 
 - [事务复制](sql-database-managed-instance-transactional-replication.md)
-- [创建出版物](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
+- [创建发布](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [创建推送订阅](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
 - [复制类型](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
 - [监视（复制）](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)

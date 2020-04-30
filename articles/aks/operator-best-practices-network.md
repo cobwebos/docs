@@ -5,12 +5,12 @@ description: 了解 Azure Kubernetes 服务 (AKS) 中虚拟网络资源和连接
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: d887f084ae329be30579b3400b4dc6cfb22c64ca
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: 560a832821f5e5ff2fbbc2d66252945951d69511
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82145472"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208051"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的网络连接和安全的最佳做法
 
@@ -45,7 +45,7 @@ ms.locfileid: "82145472"
 
 有关 AKS 服务主体委托的详细信息，请参阅[委托对其他 Azure 资源的访问权限][sp-delegation]。 你还可以使用系统分配的托管标识作为权限，而不是使用服务主体。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。
 
-每个节点和 Pod 在接收自己的 IP 地址时，请规划 AKS 子网的地址范围。 子网必须大到足以为每个部署的节点、Pod 和网络资源提供 IP 地址。 每个 AKS 群集必须位于自己的子网中。 要允许连接到 Azure 中的本地网络或对等互连网络，请勿使用与现有网络资源重叠的 IP 地址范围。 每个节点使用 kubenet 和 Azure CNI 网络运行的 Pod 数量存在默认限制。 若要处理 scale out 事件或群集升级，还需要可用于分配的子网的其他 IP 地址。 如果使用 Windows Server 容器（当前在 AKS 中为预览版），则此额外的地址空间尤其重要，因为这些节点池需要升级才能应用最新的安全修补程序。 有关 Windows Server 节点的详细信息，请参阅[在 AKS 中升级节点池][nodepool-upgrade]。
+每个节点和 Pod 在接收自己的 IP 地址时，请规划 AKS 子网的地址范围。 子网必须大到足以为每个部署的节点、Pod 和网络资源提供 IP 地址。 每个 AKS 群集必须位于自己的子网中。 要允许连接到 Azure 中的本地网络或对等互连网络，请勿使用与现有网络资源重叠的 IP 地址范围。 每个节点使用 kubenet 和 Azure CNI 网络运行的 Pod 数量存在默认限制。 若要处理 scale out 事件或群集升级，还需要可用于分配的子网的其他 IP 地址。 如果使用 Windows Server 容器，此额外的地址空间尤其重要，因为这些节点池需要升级才能应用最新的安全修补程序。 有关 Windows Server 节点的详细信息，请参阅[在 AKS 中升级节点池][nodepool-upgrade]。
 
 若要计算所需的 IP 地址，请参阅[在 AKS 中配置 Azure CNI 网络][advanced-networking]。
 
@@ -99,7 +99,7 @@ spec:
 
 入口控制器是在 AKS 节点上运行的守护程序并监视传入请求。 然后根据入口资源中定义的规则分配流量。 最佳常见的入口控制器基于 [NGINX]。 AKS 不会限制于特定的控制器，因此可以使用其他控制器，例如 [Contour][contour]、[HAProxy][haproxy] 或 [Traefik][traefik]。
 
-必须在 Linux 节点上计划入口控制器。 Windows Server 节点（当前在 AKS 中为预览版）不应运行入口控制器。 使用 YAML 清单中的节点选择器或 Helm 图表部署来指示该资源应在基于 Linux 的节点上运行。 有关详细信息，请参阅[使用节点选择器控制在 AKS 中计划 pod 的位置][concepts-node-selectors]。
+必须在 Linux 节点上计划入口控制器。 Windows Server 节点不应运行入口控制器。 使用 YAML 清单中的节点选择器或 Helm 图表部署来指示该资源应在基于 Linux 的节点上运行。 有关详细信息，请参阅[使用节点选择器控制在 AKS 中计划 pod 的位置][concepts-node-selectors]。
 
 入口有许多方案，包括以下操作指南：
 

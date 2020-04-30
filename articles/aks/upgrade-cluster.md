@@ -1,29 +1,29 @@
 ---
 title: 升级 Azure Kubernetes 服务 (AKS) 群集
-description: 了解如何升级 Azure 库伯奈斯服务 （AKS） 群集以获取最新功能和安全更新。
+description: 了解如何升级 Azure Kubernetes Service （AKS）群集以获取最新的功能和安全更新。
 services: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.openlocfilehash: 183e0a85f65d24dc7133307391931bea754a456d
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 7e9a47b7bda4cdb0ff6f1983bc884f7441a26d9b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632611"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82207966"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>升级 Azure Kubernetes 服务 (AKS) 群集
 
 在 AKS 群集的生命周期中，经常需要升级到最新的 Kubernetes 版本。 必须应用最新的 Kubernetes 安全版本，或者通过升级来获取最新功能。 本文演示如何在 AKS 群集中升级主组件或单个默认的节点池。
 
-对于使用多个节点池或 Windows 服务器节点（当前在 AKS 中预览）的 AKS 群集，请参阅[在 AKS 中升级节点池][nodepool-upgrade]。
+对于使用多个节点池的 AKS 群集，请参阅[在 AKS 中升级节点池][nodepool-upgrade]。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 本文要求运行 Azure CLI 2.0.65 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 > [!WARNING]
 > AKS 群集升级会触发节点的隔离和排空。 如果可用计算配额较低，则升级可能会失败。 有关详细信息，请参阅[增加配额](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)。
-> 如果您正在运行自己的群集自动缩放器部署，请在升级期间禁用它（您可以将其缩放为零副本），因为它可能会干扰升级过程。 托管自动缩放程序会自动处理此问题。 
+> 如果运行自己的群集自动缩放程序部署，请在升级过程中禁用它（可将其扩展为零个副本），因为这样做可能会影响升级过程。 托管自动缩放程序会自动处理这种情况。 
 
 ## <a name="check-for-available-aks-cluster-upgrades"></a>检查是否有可用的 AKS 群集升级
 
@@ -34,9 +34,9 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --outpu
 ```
 
 > [!NOTE]
-> 升级 AKS 群集时，不能跳过 Kubernetes 次要版本。 例如，允许在*1.12.x* -> *1.13.x*或*1.13.x* -> *1.14.x*之间进行升级，但不允许升级*1.12.x* -> *1.14.x。*
+> 升级 AKS 群集时，不能跳过 Kubernetes 次要版本。 例如，允许在*1.12* -> . x*1.13. x*或*1.13.* -> x*1.14*之间进行升级，但*1.12* -> *1.14*不是。
 >
-> 要升级，从*1.12.x* -> *1.14.x*，首先从*1.12.x* -> *1.13.x*升级，然后从*1.13.x* -> *1.14.x*升级。
+> 若要从*1.12.* -> *1.14*升级，请首先从*1.12.* -> x*1.13.* x 升级，然后从*1.13. x* -> *1.14*升级。
 
 以下示例输出表明，群集可以升级到版本 1.13.9** 和 1.13.10**：
 

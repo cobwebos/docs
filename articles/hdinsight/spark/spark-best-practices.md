@@ -1,22 +1,22 @@
 ---
-title: Azure HDInsight 上的 Apache Spark 最佳做法
-description: 了解在 Azure HDInsight 中使用 Apache Spark 的最佳做法。
+title: Azure HDInsight Apache Spark 准则
+description: 了解在 Azure HDInsight 中使用 Apache Spark 的准则。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 09/18/2019
-ms.openlocfilehash: 20033e52e862f086d1491c06d38cdf4f2c57ba8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 04/28/2020
+ms.openlocfilehash: 424a0cfd02cfce9fb87bc3e21d7b067740df8218
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71106120"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509408"
 ---
-# <a name="apache-spark-best-practices"></a>Apache Spark 最佳做法
+# <a name="apache-spark-guidelines"></a>Apache Spark 准则
 
-本文提供在 Azure HDInsight 上使用 Apache Spark 的各种最佳做法。
+本文提供了有关在 Azure HDInsight 上使用 Apache Spark 的各种指导原则。
 
 ## <a name="how-do-i-run-or-submit-spark-jobs"></a>如何运行或提交 Spark 作业？
 
@@ -28,6 +28,10 @@ ms.locfileid: "71106120"
 | IntelliJ | [教程：使用 IntelliJ 在 HDInsight 中创建适用于 Apache Spark 的 Scala Maven 应用程序](./apache-spark-create-standalone-application.md) |
 | Zeppelin 笔记本 | [在 Azure HDInsight 上的 Apache Spark 群集中使用 Apache Zeppelin 笔记本](./apache-spark-zeppelin-notebook.md) |
 | 使用 Livy 进行远程作业提交 | [使用 Apache Spark REST API 将远程作业提交到 HDInsight Spark 群集](./apache-spark-livy-rest-interface.md) |
+|[Apache Oozie](../hdinsight-use-oozie-linux-mac.md)|Oozie 是一个管理 Hadoop 作业的工作流和协调系统。|
+|[Apache Livy](./apache-spark-livy-rest-interface.md)|可以使用 Livy 运行交互式 Spark shell，或提交要在 Spark 上运行的批处理作业。|
+|[适用于 Apache Spark 的 Azure 数据工厂](/../data-factory/transform-data-using-spark.md)|数据工厂管道中的 Spark 活动在自己的或 [按需 HDInsight 群集上执行 Spark 程序。|
+|[适用于 Apache Hive 的 Azure 数据工厂](/../data-factory/transform-data-using-hadoop-hive.md)|数据工厂管道中的 HDInsight Hive 活动会在自己的或按需 HDInsight 群集上执行 Hive 查询。|
 
 ## <a name="how-do-i-monitor-and-debug-spark-jobs"></a>如何监视和调试 Spark 作业？
 

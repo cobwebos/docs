@@ -13,22 +13,19 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: c32fdc67c74e100e0e31dad3afde128c05c356d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 219681351159de6ac6bb48ff979cc68aa4ee18d3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335972"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233476"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API 管理常见问题
 了解有关 Azure API 管理的常见问题解答、模式和最佳做法。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="contact-us"></a>联系我们
-* [如何向 Microsoft Azure API 管理团队提问？](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)
-
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 * [功能处于预览中意味着什么？](#what-does-it-mean-when-a-feature-is-in-preview)
 * [如何确保 API 管理网关和后端服务之间的连接安全？](#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services)
 * [如何将 API 管理服务实例复制到新实例？](#how-do-i-copy-my-api-management-service-instance-to-a-new-instance)
@@ -40,30 +37,23 @@ ms.locfileid: "80335972"
 * [是否可以使用 AD FS 安全配置 OAuth 2.0 授权服务器？](#can-i-configure-an-oauth-20-authorization-server-with-ad-fs-security)
 * [API 管理使用何种路由方法部署到多个地理位置？](#what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations)
 * [是否可以使用 Azure 资源管理器模板创建 API 管理服务实例？](#can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance)
-* [是否可以将自签名 TLS/SSL 证书用于后端？](#can-i-use-a-self-signed-tlsssl-certificate-for-a-back-end)
-* [为什么在尝试克隆 GIT 存储库时出现身份验证失败？](#why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository)
+* [能否为后端使用自签名的 TLS/SSL 证书？](#can-i-use-a-self-signed-tlsssl-certificate-for-a-back-end)
+* [为何在尝试克隆 GIT 存储库时出现身份验证失败？](#why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository)
 * [API 管理是否适用于 Azure ExpressRoute ？](#does-api-management-work-with-azure-expressroute)
 * [为什么在 Resource Manager 样式 VNET 中部署 API 管理时需要专用子网？](#why-do-we-require-a-dedicated-subnet-in-resource-manager-style-vnets-when-api-management-is-deployed-into-them)
 * [在 VNET 中部署 API 管理时所需的最小子网大小是多少？](#what-is-the-minimum-subnet-size-needed-when-deploying-api-management-into-a-vnet)
 * [是否可将 API 管理服务从一个订阅移到另一个订阅？](#can-i-move-an-api-management-service-from-one-subscription-to-another)
 * [导入 API 是否存在限制或已知问题？](#are-there-restrictions-on-or-known-issues-with-importing-my-api)
 
-### <a name="how-can-i-ask-the-microsoft-azure-api-management-team-a-question"></a>如何向 Microsoft Azure API 管理团队提问？
-可使用以下选项之一联系我们：
-
-* 在 [API 管理 MSDN 论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=azureapimgmt)中发布问题。
-* 向 <mailto:apimgmt@microsoft.com> 发送电子邮件。
-* 在 [Azure 反馈论坛](https://feedback.azure.com/forums/248703-api-management)中向我们发送功能请求。
-
 ### <a name="what-does-it-mean-when-a-feature-is-in-preview"></a>功能处于预览中意味着什么？
-当功能处于预览中时，这意味着我们正在积极寻求关于功能效果如何的反馈。 处于预览中的功能具备完整功能，但我们可能为了响应客户反馈而进行重大更改。 我们建议不要在生产环境中依赖处于预览中的功能。 如果有任何关于预览功能的反馈，请通过[如何向 Microsoft Azure API 管理团队提问？](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)中的联系选项之一告知我们。
+当功能处于预览中时，这意味着我们正在积极寻求关于功能效果如何的反馈。 处于预览中的功能具备完整功能，但我们可能为了响应客户反馈而进行重大更改。 我们建议不要在生产环境中依赖处于预览中的功能。
 
 ### <a name="how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services"></a>如何确保 API 管理网关和后端服务之间的连接安全？
 有多个选项可确保 API 管理网关和后端服务之间的连接安全。 可以：
 
 * 使用 HTTP 基本身份验证。 有关详细信息，请参阅[导入并发布第一个 API](import-and-publish.md)。
-* 使用 TLS 相互身份验证，[如如何在 Azure API 管理中使用客户端证书身份验证来保护后端服务](api-management-howto-mutual-certificates.md)。
-* 在后端服务上使用 IP 允许列表。 在 API 管理的所有层中，除消耗层外，网关的 IP 地址保持不变[，IP 文档一文](api-management-howto-ip-addresses.md)中介绍了一些注意事项。
+* 如[如何通过在 AZURE API 管理中使用客户端证书身份验证保护后端服务](api-management-howto-mutual-certificates.md)中所述，使用 TLS 相互身份验证。
+* 在后端服务上使用 IP 允许列表。 在 API 管理的所有层中（消耗层除外），网关的 IP 地址仍保持不变，并在[IP 文档一文](api-management-howto-ip-addresses.md)中介绍了几个注意事项。
 * 将 API 管理实例连接到 Azure 虚拟网络。
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>如何将 API 管理服务实例复制到新实例？
@@ -83,7 +73,7 @@ ms.locfileid: "80335972"
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>如何向管理员组添加用户？
 下面是向管理员组添加用户的方法：
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 转到具有要更新的 API 管理实例的资源组。
 3. 在 API 管理中，将“API 管理服务参与者”**** 角色分配给该用户。
 
@@ -113,13 +103,13 @@ ms.locfileid: "80335972"
 API 管理使用[性能流量路由方法](../traffic-manager/traffic-manager-routing-methods.md#performance)部署到多个地理位置。 传入流量路由到最近的 API 网关。 如果一个区域处于脱机状态，则传入流量自动路由到下一个最近的网关。 在[流量管理器路由方法](../traffic-manager/traffic-manager-routing-methods.md)中了解有关路由方法的详细信息。
 
 ### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>是否可以使用 Azure 资源管理器模板创建 API 管理服务实例？
-是的。 请参阅[Azure API 管理服务](https://aka.ms/apimtemplate)快速入门模板。
+是的。 请参阅[AZURE API 管理服务](https://aka.ms/apimtemplate)快速入门模板。
 
-### <a name="can-i-use-a-self-signed-tlsssl-certificate-for-a-back-end"></a>是否可以将自签名 TLS/SSL 证书用于后端？
+### <a name="can-i-use-a-self-signed-tlsssl-certificate-for-a-back-end"></a>能否为后端使用自签名的 TLS/SSL 证书？
 是的。 可以通过 PowerShell 或直接提交到 API 完成此操作。 这将禁用证书链验证，并允许在从 API 管理与后端服务进行通信时使用自签名证书或私人签名证书。
 
 #### <a name="powershell-method"></a>Powershell 方法 ####
-使用[`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend)（对于新的后端） 或[`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend)（对于现有后端） PowerShell cmdlet`-SkipCertificateChainValidation`并将参数`True`设置为 。
+使用[`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) （适用于新后端）或[`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) （适用于现有后端） PowerShell cmdlet 并将`-SkipCertificateChainValidation`参数设置`True`为。
 
 ```powershell
 $context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'

@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 运行 VMware VM 的无代理迁�
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 4612c9b0ea2ef8d53b0c04f47628f3789705d833
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 86f24b7fdfee30c182419023e4ed33f6228b3711
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535309"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509306"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>将 VMware VM 迁移到 Azure（使用无代理方法）
 
@@ -57,7 +57,7 @@ ms.locfileid: "81535309"
 
 添加 Azure Migrate:服务器迁移工具。
 
-- 如果你已按照第二个教程来[评估 VMware VM](/tutorial-assess-vmware.md)，则可以继续添加该工具。
+- 如果你已按照第二个教程来[评估 VMware VM](tutorial-assess-vmware.md)，则可以继续添加该工具。
 - 如果未按照第二个教程操作，请[按照这些说明](how-to-add-tool-first-time.md)设置 Azure Migrate 项目。  创建项目时，请添加 Azure Migrate:服务器迁移工具。
 
 如果已设置项目，请如下所述添加工具：

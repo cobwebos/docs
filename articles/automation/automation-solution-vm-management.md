@@ -3,14 +3,14 @@ title: 在非工作时间启动/停止 Vm 解决方案
 description: 此 VM 管理解决方案按计划启动和停止 Azure 虚拟机，并主动监视 Azure Monitor 日志。
 services: automation
 ms.subservice: process-automation
-ms.date: 04/01/2020
+ms.date: 04/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 631c9b37cf1fec0d39c3c362c6bc303a576d6b7c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f7e30fd0d53af7ee61d919b56e9ffcd1f1b6bd36
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187324"
+ms.locfileid: "82207592"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>在 Azure 自动化中，在非工作时间启动/停止 Vm 解决方案
 
@@ -19,7 +19,7 @@ ms.locfileid: "82187324"
 此解决方案使用[get-azurermvm](https://docs.microsoft.com/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0) cmdlet 来启动 vm。 它使用[get-azurermvm](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Stop-AzureRmVM?view=azurermps-6.13.0)停止 vm。
 
 > [!NOTE]
-> 在非**工作时间启动/停止 vm**解决方案已更新，以支持可用 Azure 模块的最新版本。
+> 在非**工作时间启动/停止 vm**解决方案已更新，以支持可用 Azure 模块的最新版本。 此解决方案的更新版本（在 Marketplace 中提供）不支持 AzureRM 模块，因为我们已从 AzureRM 迁移到 Az 模块。
 
 此解决方案为要优化其 VM 成本的用户提供了分散的低成本自动化选项。 使用此解决方案可以：
 

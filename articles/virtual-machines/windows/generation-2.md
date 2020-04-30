@@ -1,5 +1,5 @@
 ---
-title: 对第 2 代 VM 的 Azure 支持
+title: 适用于第2代 Vm 的 Azure 支持
 description: 第 2 代 VM 的 Azure 支持概述
 author: ju-shim
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 53806a1a627c7ae6bc3470aa387be0982df914fa
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 07bf03096cbe5ec8e0fe9619519fdddb91cde984
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82082252"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231656"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 对第 2 代 VM 的支持
 
@@ -25,12 +25,12 @@ Azure 现已提供对第 2 代虚拟机 (VM) 的支持。 创建虚拟机后无�
 
 ## <a name="generation-2-vm-sizes"></a>第 2 代 VM 的大小
 
-Azure 中的所有 VM 大小都支持第 1 代 VM（Mv2 系列 VM 除外）。 Azure 目前为以下选定 VM 系列提供第 2 代支持：
+Azure 中的所有 VM 大小（Mv2 系列 Vm 除外）都支持第1代 Vm。 Azure 目前为以下选定 VM 系列提供第 2 代支持：
 
 * [B 系列](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
-* [DCv2 系列](../dcv2-series.md)
+* [DCsv2 系列](../dcv2-series.md)
 * [DSv2 系列](../dv2-dsv2-series.md)和[Dsv3 系列](../dv3-dsv3-series.md)
-* [达斯夫4系列](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series)
+* [Dasv4 系列](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series)
 * [Esv3 系列](../ev3-esv3-series.md)
 * [Easv4 系列](https://docs.microsoft.com/azure/virtual-machines/eav4-easv4-series)
 * [Fsv2 系列](../fsv2-series.md)
@@ -38,13 +38,12 @@ Azure 中的所有 VM 大小都支持第 1 代 VM（Mv2 系列 VM 除外）。 A
 * [HB 系列](../hb-series.md)
 * [HC 系列](../hc-series.md)
 * [Ls 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series)和[Lsv2 系列](../lsv2-series.md)
-* [Mv2 系列](../mv2-series.md)
+* [Mv2 系列](../mv2-series.md)<sup>1</sup>
 * [NCv2 系列](../ncv2-series.md)和[NCv3 系列](../ncv3-series.md)
 * [ND 系列](../nd-series.md)
 * [NVv3 系列](../nvv3-series.md)
 
-> [!NOTE]
-> 第 2 代 VM 映像通常用于 Mv2 系列 VM，因为 Mv2 系列只使用第 2 代 VM 映像。 Mv2 系列 VM 不支持第 1 代 VM 映像。 
+<sup>1</sup> Mv2 系列不支持第1代 VM 映像，并且仅支持第2代映像的子集。 有关详细信息，请参阅[Mv2 系列文档](https://docs.microsoft.com/azure/virtual-machines/mv2-series)。
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>Azure 市场中的第 2 代 VM 映像
 
@@ -52,14 +51,17 @@ Azure 中的所有 VM 大小都支持第 1 代 VM（Mv2 系列 VM 除外）。 A
 
 * Windows Server 2019、2016、2012 R2、2012
 * Windows 10 专业版，Windows 10 企业版
-* SUSE Linux 企业服务器 15 SP1
-* SUSE Linux 企业服务器 12 SP4
-* Ubuntu 服务器 16.04， 18.04， 19.04， 19.10 
-* RHEL 8.1、 8.0、 7.7、 7.6、 7.5、 7.4、 7.0
-* CENT OS 8.1、 8.0、 7.7、 7.6、 7.5、 7.4
-* 甲骨文 Linux 7.7， 7.7-CI
+* SUSE Linux Enterprise Server 15 SP1
+* SUSE Linux Enterprise Server 12 SP4
+* Ubuntu Server 16.04、18.04、19.04、19.10 
+* RHEL 8.1、8.0、7.7、7.6、7.5、7.4、7。0
+* O o 8.1、8.0、7.7、7.6、7.5、7。4
+* Oracle Linux 7.7，7.7-CI
 
-## <a name="on-premises-vs-azure-generation-2-vms"></a>本地与 Azure 生成 2 VM
+> [!NOTE]
+> 特定虚拟机大小（如 Mv2 系列）可能只支持这些映像的子集-请查看相关的虚拟机大小文档了解完整的详细信息。
+
+## <a name="on-premises-vs-azure-generation-2-vms"></a>本地与 Azure 第2代 Vm
 
 Azure 目前不支持本地 Hyper-V 对第 2 代 VM 所支持的某些特性。
 
@@ -101,17 +103,17 @@ Azure 目前不支持本地 Hyper-V 对第 2 代 VM 所支持的某些特性。
 
 #### <a name="azure-portal"></a>Azure 门户
 
-以下是在 Azure 门户中创建第 2 代 （Gen2） VM 的步骤。
+下面是在 Azure 门户中创建第2代（Gen2） VM 的步骤。
 
 1. 通过 https://portal.azure.com 登录到 Azure 门户。
 1. 选择“创建资源”。 
-1. 单击左侧 Azure 应用商店中的所有 **"查看"。**
-1. 选择支持 Gen 2 的图像。
-1. 单击“创建”。 
-1. 在 **"高级"** 选项卡中，在 **"VM 生成**"部分下，选择第 2**代**选项。
-1. 在 **"基本"** 选项卡""**实例下详细信息**"中，转到**大小**并打开 **"选择 VM 大小**"边栏选项卡。
-1. 选择[受支持的 2 代 VM](#generation-2-vm-sizes)。
-1. 遍通[Azure 门户创建流](quick-create-portal.md)以完成创建 VM。
+1. 单击左侧 Azure Marketplace 中的 "**查看全部**"。
+1. 选择支持 Gen2 的映像。
+1. 单击 **“创建”** 。
+1. 在 "**高级**" 选项卡的 " **VM 生成**" 部分下，选择 "**第2代**" 选项。
+1. 在 "**基本**信息" 选项卡的 "**实例详细信息**" 下，选择 "**大小**" 并打开 "**选择 VM 大小**" 边栏选项卡。
+1. 选择[受支持的第2代 VM](#generation-2-vm-sizes)。
+1. 完成创建 VM 的[Azure 门户创建流程](quick-create-portal.md)。
 
 ![选择“第 1 代”或“第 2 代”VM](./media/generation-2/gen1-gen2-select.png)
 
@@ -125,7 +127,7 @@ Azure 目前不支持本地 Hyper-V 对第 2 代 VM 所支持的某些特性。
 Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
 ```
 
-或者，可以使用 Azure CLI 查看**发布者**列出的任何可用的第 2 代映像。
+或者，可以使用 Azure CLI 查看**发布者**列出的任何可用第2代映像。
 
 ```azurecli
 az vm image list --publisher Canonical --sku gen2 --output table --all
@@ -148,15 +150,15 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
 
 还可以使用虚拟机规模集创建第 2 代 VM。 在 Azure CLI 中使用 Azure 规模集创建第 2 代 VM。
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 
 * **第 2 代 VM 是否已在所有 Azure 区域中推出？**  
     是的。 但是，并非所有[第 2 代 VM 大小](#generation-2-vm-sizes)都已在每个区域中推出。 第 2 代 VM 的可用性取决于 VM 大小的可用性。
 
 * **第 1 代与第 2 代 VM 的价格是否有差别？**  
-   不是。
+   不能。
 
-* **我有一个来自本地第 2 代 VM 的 .vhd 文件。我能否使用 .vhd 文件在 Azure 中创建第 2 代 VM？**
+* **我有来自本地第2代 VM 的 .vhd 文件。能否在 Azure 中使用该 .vhd 文件创建第2代 VM？**
   是的，你可以将第 2 代 .vhd 文件带到 Azure，并使用该文件创建第 2 代 VM。 请使用以下步骤来执行该操作：
     1. 将 .vhd 上传到你要创建 VM 的同一区域中的存储帐户。
     1. 从 .vhd 文件创建托管磁盘。 将“Hyper-V Generation”属性设置为 V2。 以下 PowerShell 命令在创建托管磁盘时设置“Hyper-V Generation”属性。
@@ -196,12 +198,12 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
 * **是否可将 VM 从第 1 代迁移到第 2 代？**  
     否，创建 VM 后无法更改其代系。 如果需要在 VM 代系之间切换，请创建一个不同代系的新 VM。
 
-* **为什么在尝试创建 Gen2 VM 时，大小选择器中未启用 VM 大小？**
+* **为什么在尝试创建 Gen2 VM 时，大小选择器中未启用我的 VM 大小？**
 
-    这可以通过执行以下操作来解决：
+    为此，可以执行以下操作：
 
-    1. 验证**VM 生成**属性是否设置为 **"高级"** 选项卡中的**第 2 代**。
-    1. 验证您正在搜索支持[Gen2 VM 的 VM 大小](#generation-2-vm-sizes)。
+    1. 验证 "**高级**" 选项卡中的 " **VM 生成**" 属性是否设置为**第2代**。
+    1. 验证是否正在搜索[支持 Gen2 vm 的 vm 大小](#generation-2-vm-sizes)。
 
 ## <a name="next-steps"></a>后续步骤
 

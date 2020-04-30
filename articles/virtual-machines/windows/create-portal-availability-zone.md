@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 门户创建分区 Windows VM
+title: 使用 Azure 门户创建分区的 Windows VM
 description: 使用 Azure 门户在可用性区域中创建 Windows VM
 documentationcenter: virtual-machines
 author: cynthn
@@ -9,18 +9,18 @@ ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 418d02b1f271efc1112b67e5dd12b6ba67a3fcd9
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: b8a5f6543bc265605361b7875fad5232d428e27e
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82086175"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208986"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>使用 Azure 门户在可用性区域中创建 Windows 虚拟机
 
 本文逐步说明如何使用 Azure 门户在 Azure 可用性区域中创建虚拟机。 [可用性区域](../../availability-zones/az-overview.md)是 Azure 区域中物理上独立的区域。 使用可用性区域可以在整个数据中心发生故障或服务中断（这种情况很少见）时保护应用和数据。
 
-若要使用可用性区域，请在[受支持的 Azure 区域](../../availability-zones/az-overview.md#services-support-by-region)中创建虚拟机。
+若要使用可用性区域，请在[受支持的 Azure 区域](../../availability-zones/az-region.md)中创建虚拟机。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure 
 
@@ -28,7 +28,7 @@ ms.locfileid: "82086175"
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
 
-1. 单击 Azure 门户左上角的 **"创建资源**"。
+1. 在 Azure 门户的左上角单击 "**创建资源**"。
 
 2. 选择“计算”，然后选择“Windows Server 2016 Datacenter”。******** 
 
@@ -40,7 +40,7 @@ ms.locfileid: "82086175"
 
     ![选择 VM 大小](./media/create-portal-availability-zone/create-windows-vm-portal-sizes.png)  
 
-5. 在 **"设置** > **高可用性**"下，从 **"可用性"区域**下拉列表中选择一个编号区域，保留剩余的默认值，然后单击"**确定**"。
+5. 在 "**设置** > **高可用性**" 下，从 "**可用性区域**" 下拉列表中选择一个编号的区域，保留剩余的默认值，然后单击 **"确定"**。
 
     ![选择可用性区域](./media/create-portal-availability-zone/create-windows-vm-portal-availability-zone.png)
 
@@ -68,4 +68,4 @@ ms.locfileid: "82086175"
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何在可用性区域中创建 VM。 详细了解 Azure VM[的可用性](availability.md)。
+本文介绍了如何在可用性区域中创建 VM。 详细了解 Azure Vm 的[可用性](availability.md)。

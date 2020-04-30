@@ -1,16 +1,16 @@
 ---
-title: 群集安全的最佳做法
+title: 群集安全性最佳方案
 titleSuffix: Azure Kubernetes Service
 description: 了解有关如何在 Azure Kubernetes 服务 (AKS) 中管理群集安全性和升级的群集操作员最佳做法
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 3d4e8577116ba1d78aaa881887f64e71c04af4f2
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 305d4c15aaf72a47549497902e3027064fbfd608
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668332"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208085"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的群集安全性和升级的最佳做法
 
@@ -22,11 +22,11 @@ ms.locfileid: "80668332"
 > * 使用 Azure Active Directory 和基于角色的访问控制来保护 API 服务器访问
 > * 保护容器对节点资源的访问
 > * 将 AKS 群集升级到最新的 Kubernetes 版本
-> * 使节点保持最新并自动应用安全修补程序
+> * 使节点保持最新状态并自动应用安全修补程序
 
 还可以阅读有关[容器映像管理][best-practices-container-image-management]和 [Pod 安全性][best-practices-pod-security]的最佳做法。
 
-您还可以使用 Azure [Kubernetes 服务与安全中心集成][security-center-aks]来帮助检测威胁并查看用于保护 AKS 群集的建议。
+你还可以使用[与安全中心的 Azure Kubernetes Services 集成][security-center-aks]来帮助检测威胁，并查看有关保护 AKS 群集的建议。
 
 ## <a name="secure-access-to-the-api-server-and-cluster-nodes"></a>保护对 API 服务器和群集节点的访问
 
@@ -195,7 +195,7 @@ az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes
 
 ## <a name="process-linux-node-updates-and-reboots-using-kured"></a>使用 kured 处理 Linux 节点更新和重启
 
-**最佳做法指南** - AKS 会自动在每个 Linux 节点上下载并安装安全修补程序，但不会在必要时自动重启。 使用 `kured` 监视挂起的重启操作，然后安全地封锁并排空节点以允许节点重启，应用更新并尽可能安全地保护 OS。 对于 Windows Server 节点（当前在 AKS 中处于预览状态），定期执行 AKS 升级操作，以安全隔离和排空 pod 并部署更新的节点。
+**最佳做法指南** - AKS 会自动在每个 Linux 节点上下载并安装安全修补程序，但不会在必要时自动重启。 使用 `kured` 监视挂起的重启操作，然后安全地封锁并排空节点以允许节点重启，应用更新并尽可能安全地保护 OS。 对于 Windows Server 节点，定期执行 AKS 升级操作，以安全地 cordon 和排出箱并部署已更新的节点。
 
 每天晚上，AKS 中的 Linux 节点都会通过其发行版更新通道获得安全修补程序。 当在 AKS 群集中部署节点时，会​​自动配置此行为。 为了尽量减少对正在运行的工作负荷的中断和潜在影响，AKS 不会在安全修补程序或内核更新需要进行重启时自动重启节点。
 

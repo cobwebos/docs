@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 516637b812afece1966006ce6d894dd1e32e6293
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c702ce72492201413d6c72af9dbf37347e49afdd
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79245455"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231095"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>将计分概要文件添加到 Azure 认知搜索索引
 
-  评分是指针对搜索结果中返回的每个项计算*搜索评分*。 分数指示某一项在当前搜索操作上下文中的相关性。 分数越高，项的相关度就越高。 在搜索结果中，根据为每项计算的搜索分数，按从高到低的顺序排列各项。  
+*计分*为排名序结果集中的每个项计算搜索评分。 搜索结果集中的每项都分配到一个搜索分数，并从高到低排名。
 
  Azure 认知搜索使用默认计分计算初始分数，但可以通过“计分概要文件”自定义计算**。 借助计分概要文件，可以更好地控制搜索结果中的项排名。 例如，建议根据创收能力提升项、提升新项或提升库存时间太长的项。  
 
@@ -87,7 +87,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 
  基于相关性的排序也通过计分概要文件实现。 请考虑过去使用的可以按价格、日期、评分或相关性排序的搜索结果页。 在 Azure 认知搜索中，计分概要文件驱动“相关性”选项。 相关性定义由你控制，基于业务目标和希望提供的搜索体验类型断定。  
 
-##  <a name="example"></a><a name="bkmk_ex"></a>例子  
+##  <a name="example"></a><a name="bkmk_ex"></a>实例  
  如前所述，自定义计分是通过索引模式中定义的一个或多个计分概要文件实现的。  
 
  此示例演示具有两个计分概要文件的索引架构（`boostGenre`、`newAndHighlyRated`）。 针对此索引的任何查询（包含任一概要文件作为查询参数）将使用此概要文件对结果集进行计分。  
@@ -168,12 +168,12 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 
 |||  
 |-|-|  
-|**权重**|指定为字段分配相对权重的名称/值对。 在[示例中](#bkmk_ex)，专辑标题、流派和艺术家名称字段分别提升 1.5、5 和 2。 genre 为何比其他字段提升更高？ 如果对在某种程度上为同类的数据执行搜索（正如 `musicstoreindex` 中的“genre”一样），可能需要在相对权重中产生较大差异。 例如，在 `musicstoreindex` 中，“rock”既作为流派显示，又显示在采用相同组句方式的流派说明中。 如果希望流派的权重在流派说明之上，genre 字段将需要更高的相对权重。|  
+|**权重**|指定为字段分配相对权重的名称/值对。 在此[示例](#bkmk_ex)中，"albumTitle"、"流派" 和 "artistName" 字段分别提升了1.5、5和2。 genre 为何比其他字段提升更高？ 如果对在某种程度上为同类的数据执行搜索（正如 `musicstoreindex` 中的“genre”一样），可能需要在相对权重中产生较大差异。 例如，在 `musicstoreindex` 中，“rock”既作为流派显示，又显示在采用相同组句方式的流派说明中。 如果希望流派的权重在流派说明之上，genre 字段将需要更高的相对权重。|  
 |**函数**|在特定上下文需要进行额外计算时使用。 有效的值为 `freshness`、`magnitude`、`distance` 和 `tag`。 每个函数具有独有的参数。<br /><br /> 当希望按项目的新旧方式进行提升时，应使用 -   `freshness`。 此函数仅可与 `datetime` 字段结合使用 (edm.DataTimeOffset)。 请注意，`boostingDuration` 属性仅用于 `freshness` 函数。<br />当希望按数值高低程度提升时，应使用 -   `magnitude`。 调用此函数的方案包括按照利润率、最高价格、最低价格或下载次数提升。 此函数仅可与 double 和 integer 字段结合使用。<br />     对于 `magnitude` 函数，如果想要反转模式（例如，将价格较低项提升至价格较高项之上），可以将范围反转为从高到低。 假设价格范围从 100 美元到 1 美元，可以将 `boostingRangeStart` 设为 100、`boostingRangeEnd` 设为 1 以提升价格较低的项。<br />当希望按距离或地理位置提升时，应使用 -   `distance`。 此函数仅可与 `Edm.GeographyPoint` 字段结合使用。<br />当希望按文档和搜索查询之间共有的标记提升时，应使用 -   `tag`。 此函数仅可与 `Edm.String` 和 `Collection(Edm.String)` 字段结合使用。<br /><br /> **使用函数的规则**<br /><br /> 函数类型（`freshness`、`magnitude`、`distance`）`tag` 必须小写。<br /><br /> 函数不能包含 null 或空值。 具体而言，如果包含字段名称，则必须将其设置为某值。<br /><br /> 函数仅可应用于可筛选字段。 有关可筛选字段的详细信息，请参阅[创建索引（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index)。<br /><br /> 函数仅可应用于在索引的字段集合中定义的字段。|  
 
  定义索引后，请通过上传索引架构（后跟文档）建立索引。 有关这些操作的说明，请参阅[创建索引（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index)和[添加、更新或删除文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)。 建立索引后，应获得适用于搜索数据的函数计分概要文件。  
 
-##  <a name="template"></a><a name="bkmk_template"></a>模板  
+##  <a name="template"></a><a name="bkmk_template"></a>模版  
  本部分演示计分概要文件的语法和模板。 请参阅下一部分的[索引属性参考](#bkmk_indexref)，获取属性的说明。  
 
 ```  
@@ -242,7 +242,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 |`boost`|计分函数的必需项。 用作原始分数乘数的正数。 不得等于 1。|  
 |`fieldname`|计分函数的必需项。 计分函数仅可应用于作为索引字段集合一部分且可筛选的字段。 此外，每个函数类型都引入了其他限制（freshness 与 datetime 字段结合使用、magnitude 与 integer 或 double 字段结合使用、distance 与 location 字段结合使用。）。 仅可按函数定义指定单个字段。 例如，若要在同一概要文件中使用两次 magnitude，则需要包含两个定义 magnitude，每个字段一个。|  
 |`interpolation`|计分函数的必需项。 定义从范围起始至范围结束的分数提升增量的斜率。 有效值包括 Linear（默认值）、Constant、Quadratic 和 Logarithmic。 请参阅[设置插值](#bkmk_interpolation)获取详细信息。|  
-|`magnitude`|magnitude 计分函数用于改变基于数值字段的值范围的排名。 一些最常见的用法示例如下：<br /><br /> -   **星级：** 根据"星级"字段中的值更改评分。 如果两个项相关，具有较高评分的项先显示。<br />-   **保证金：** 当两个文档相关时，零售商可能希望首先提升利润较高的文档。<br />-   **单击计数：** 对于跟踪对产品或页面的点击操作的应用程序，可以使用量级来提升往往获得最多流量的项目。<br />-   **下载计数：** 对于跟踪下载的应用程序，量级函数允许您提升下载次数最多的项目。|  
+|`magnitude`|magnitude 计分函数用于改变基于数值字段的值范围的排名。 一些最常见的用法示例如下：<br /><br /> -   **星级：** 根据 "星评级" 字段中的值更改评分。 如果两个项相关，具有较高评分的项先显示。<br />-   **边距：** 当两个文档相关时，零售商可能希望首先提升边距较高的文档。<br />-   **单击计数：** 对于跟踪通过操作向产品或页面进行跟踪的应用程序，可以使用数量级来提升通常会获得最多流量的项。<br />-   **下载计数：** 对于跟踪下载的应用程序，数量级函数使你可以提升下载次数最多的项。|  
 |`magnitude` &#124; `boostingRangeStart`|设置对其进行量值计分的范围的起始值。 该值必须是整数或浮点数。 对于星级评分 1 到 4，这里应为 1。 对于超过 50% 的利润率，这里应为 50。|  
 |`magnitude` &#124; `boostingRangeEnd`|设置对其进行量值计分的范围的结束值。 该值必须是整数或浮点数。 对于星级评分 1 到 4，这里应为 4。|  
 |`magnitude` &#124; `constantBoostBeyondRange`|有效值为 true 或 false（默认）。 设置为 true 时，完整的提升将继续应用到有一个目标字段值高于范围上限的文档。 如果为 false，此函数的提升不会应用到有一个目标字段值超出范围的文档。|  
@@ -285,6 +285,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
  有关更多示例，请参阅 [XML 架构：数据类型（W3.org 网站）](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)。  
 
 ## <a name="see-also"></a>请参阅  
- [Azure 认知搜索 REST](https://docs.microsoft.com/rest/api/searchservice/)   
- [创建索引&#40;Azure 认知搜索 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)   
- [Azure 认知搜索 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  
+
++ [REST API 引用](https://docs.microsoft.com/rest/api/searchservice/)   
++ [创建索引 API](https://docs.microsoft.com/rest/api/searchservice/create-index)   
++ [Azure 认知搜索 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  

@@ -4,12 +4,12 @@ description: 了解控制 Azure Kubernetes Service （AKS）中的出口流量�
 services: container-service
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: daf17ee4d6518de63dc642fd64acd6b4c5be7d2f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d723f7b1e7331e65d17dca5873b891ec46d76c0e
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183919"
+ms.locfileid: "82207167"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>控制 Azure Kubernetes Service （AKS）中群集节点的出口流量
 
@@ -20,7 +20,7 @@ ms.locfileid: "82183919"
 > [!IMPORTANT]
 > 本文档仅介绍如何锁定离开 AKS 子网的流量。 AKS 没有入口要求。  不支持使用网络安全组（Nsg）和防火墙阻止内部子网流量。 若要控制和阻止群集中的流量，请使用[网络策略][network-policy]。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 需要安装并配置 Azure CLI 版本2.0.66 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
@@ -165,19 +165,15 @@ AKS 群集需要以下出站端口/网络规则：
 | * gk。\<location\>. azmk8s.io | HTTPS：443    | 与在主服务器上运行的网关审核终结点通信以获取审核结果的 Azure 策略附加项。 |
 | dc.services.visualstudio.com | HTTPS：443 | 向 application insights 终结点发送遥测数据的 Azure 策略外接程序。 |
 
-## <a name="required-by-windows-server-based-nodes-in-public-preview-enabled"></a>已启用基于 Windows Server 的节点（公共预览版中）的要求
+## <a name="required-by-windows-server-based-nodes-enabled"></a>已启用基于 Windows Server 的节点必需的
 
-> [!CAUTION]
-> 下面的某些功能处于预览阶段。  此文中的建议可能会随此功能在公共预览版和未来发布阶段的移动而改变。
-
-对于基于 Windows Server 的 AKS 群集，需要以下 FQDN/应用程序规则：
+使用基于 Windows Server 的节点池需要以下 FQDN/应用程序规则：
 
 | FQDN                                    | 端口      | 使用      |
 |-----------------------------------------|-----------|----------|
 | onegetcdn.azureedge.net、winlayers.blob.core.windows.net、winlayers.cdn.mscr.io、go.microsoft.com | HTTPS：443 | 安装与 windows 相关的二进制文件 |
 | mp.microsoft.com、<span></span>msftconnecttest.com、ctldl.windowsupdate.com | HTTP：80 | 安装与 windows 相关的二进制文件 |
 | kms.core.windows.net | TCP：1688 | 安装与 windows 相关的二进制文件 |
-
 
 ## <a name="next-steps"></a>后续步骤
 

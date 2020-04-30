@@ -8,12 +8,12 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c8d22e63be880c0cef0c4072e99ab85bf3250a1c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: d036733c023417af3ef038bb9abc278ec91e665c
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82114268"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508949"
 ---
 # <a name="manage-modules-in-azure-automation"></a>管理 Azure 自动化中的模块
 
@@ -21,8 +21,9 @@ Azure 自动化允许导入 PowerShell 模块，以便在 runbook 和 dsc 配置
 
 * [Azure PowerShell Az. Automation](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)
 * [Azure PowerShell AzureRM](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-6.13.0)
-* 适用`Orchestrator.AssetManagement.Cmdlets`于 Windows 的 Log Analytics 代理的内部模块
 * 其他 PowerShell 模块
+* 内部`Orchestrator.AssetManagement.Cmdlets`模块
+* Python 2 模块
 * 你创建的自定义模块 
 
 创建自动化帐户时，Azure 自动化会默认导入某些模块。 请参阅[默认模块](#default-modules)。
@@ -96,9 +97,13 @@ Azure Automation 不会自动将根 Az 模块导入任何新的或现有的自�
 
 建议使用 Az 或 AzureRM cmdlet 操作 runbook 上下文外部的 Azure Automation 资源。 
 
-## <a name="module-supporting-get-automationpscredential"></a>支持 Get-automationpscredential 的模块
+## <a name="orchestratorassetmanagementcmdlets-module"></a>AssetManagement 模块
 
-`Get-AutomationPSCredential` Cmdlet 是模块`Orchestrator.AssetManagement.Cmdlets`的一部分。 此 cmdlet 将返回`PSCredential`一个对象，该对象是与凭据配合使用的大多数 PowerShell cmdlet 所需的。 若要了解有关在 Azure 自动化中使用凭据的详细信息，请参阅[Azure 自动化中的凭据资产](credentials.md)。
+默认情况下，Azure `Orchestrator.AssetManagement.Cmdlets`自动化支持适用于 Windows 的 Log Analytics agent 的内部模块。 此`Get-AutomationPSCredential`模块中的 cmdlet 通常在 runbook 中用于检索`PSCredential`对象，该对象是与凭据一起使用的大多数 PowerShell cmdlet 所需的。 若要了解有关在 Azure 自动化中使用凭据的详细信息，请参阅[Azure 自动化中的凭据资产](credentials.md)。
+
+## <a name="python-modules"></a>Python 模块
+
+可以在 Azure 自动化中创建 Python 2 runbook。 有关 Python 模块信息，请参阅[在 Azure 自动化中管理 Python 2 包](../python-packages.md)。
 
 ## <a name="migrating-to-az-modules"></a>迁移到 Az 模块
 
@@ -117,7 +122,7 @@ Azure Automation 不会自动将根 Az 模块导入任何新的或现有的自�
 * Runbook 从模块调用 cmdlet 时
 * Runbook 使用[import-module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-7) cmdlet 显式导入模块时
 * Runbook 导入另一个从属模块时
-    
+
 #### <a name="testing-for-your-runbooks-and-dsc-configurations-prior-to-module-migration"></a>在模块迁移之前测试 runbook 和 DSC 配置
 
 在迁移到 Az 模块之前，请务必在单独的自动化帐户中仔细测试所有 runbook 和 DSC 配置。 

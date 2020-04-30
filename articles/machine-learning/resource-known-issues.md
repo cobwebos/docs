@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 58fd9225298b4322567f4feb02629e3ad4e0f00d
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: 2760033cd66e99a7a7f6d331e03c6f98c486d286
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127566"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231962"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Azure 机器学习的已知问题和故障排除
 
@@ -56,7 +56,23 @@ ms.locfileid: "82127566"
         pip install azure-ml-datadrift
         pip install azureml-train-automl 
      ```
-     
+
+* **Panda 错误：通常在 AutoML 试验期间出现：**
+   
+   使用 pip 手动设置 environmnet 时，你会发现属性错误（尤其是从 pandas），因为安装了不受支持的包版本。 若要防止此类错误，[请使用 automl_setup 命令安装 AUTOML SDK](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md)：
+   
+    1. 打开 Anaconda 提示符并克隆适用于一组示例笔记本的 GitHub 存储库。
+
+    ```bash
+    git clone https://github.com/Azure/MachineLearningNotebooks.git
+    ```
+    
+    2. cd 转到示例笔记本在其中提取并运行的 "使用 azureml/自动计算机" 文件夹：
+    
+    ```bash
+    automl_setup
+    ```
+  
 * **错误消息：无法卸载 'PyYAML'**
 
     适用于 Python 的 Azure 机器学习 SDK： PyYAML `distutils`是一个已安装的项目。 因此，在部分卸载的情况下，我们无法准确确定哪些文件属于它。 若要在忽略此错误的同时继续安装 SDK，请使用：
@@ -107,7 +123,7 @@ ms.locfileid: "82127566"
 
 * **Azure 门户**：如果你直接从 SDK 或门户的共享链接中查看工作区，则你将不能在扩展中查看包含订阅信息的正常**概述**页。 也将无法切换到另一个工作区。 如果需要查看其他工作区，请直接跳到[Azure 机器学习 studio](https://ml.azure.com)并搜索工作区名称。
 
-## <a name="set-up-your-environment"></a>设置环境
+## <a name="set-up-your-environment"></a>设置你的环境
 
 * **创建 AmlCompute 时出现问题**：在 GA 版本之前，从 Azure 门户创建其 Azure 机器学习工作区的某些用户很少可能无法在该工作区中创建 AmlCompute。 你可以对服务提出支持请求，或者通过门户或 SDK 创建新的工作区以立即取消阻止。
 

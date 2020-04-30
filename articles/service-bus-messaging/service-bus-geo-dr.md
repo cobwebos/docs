@@ -9,16 +9,16 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 24d6658733ea38c15f0673d10db3c0ff5ef51c23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 49748006baf779e6aea4322068ca3bd07a03a0a3
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259573"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82209394"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure 服务总线异地灾难恢复
 
-当整个 Azure 区域或数据中心（如果未使用[可用性区域](../availability-zones/az-overview.md)）遭遇停机时，在不同区域或数据中心中继续进行数据处理就显得至关重要。 因此，“异地灾难恢复”对于任何企业而言都是非常重要的功能。** Azure 服务总线支持命名空间级别的异地灾难恢复。
+当整个 Azure 区域或数据中心（如果未使用[可用性区域](../availability-zones/az-overview.md)）遭遇停机时，在不同区域或数据中心中继续进行数据处理就显得至关重要。 因此，“异地灾难恢复”对于任何企业而言都是非常重要的功能。  Azure 服务总线支持命名空间级别的异地灾难恢复。
 
 异地灾难恢复功能在全球范围内可用于服务总线高级 SKU。 
 
@@ -29,7 +29,7 @@ ms.locfileid: "79259573"
 
 请务必注意“中断”和“灾难”的区别。 
 
-中断** 是指 Azure 服务总线暂时不可用，可能会影响服务的某些组件，如消息存储，甚至是整个数据中心。 但在问题解决后，服务总线将恢复可用。 通常情况下，中断不会导致消息或其他数据丢失。 例如，数据中心的电源故障可能会导致此类中断。 某些中断由于暂时性故障或网络问题只是短时间连接丢失。 
+中断  是指 Azure 服务总线暂时不可用，可能会影响服务的某些组件，如消息存储，甚至是整个数据中心。 但在问题解决后，服务总线将恢复可用。 通常情况下，中断不会导致消息或其他数据丢失。 例如，数据中心的电源故障可能会导致此类中断。 某些中断由于暂时性故障或网络问题只是短时间连接丢失。 
 
 根据定义，*灾难*是指永久或长期丢失服务总线群集、Azure 区域或数据中心。 该区域或数据中心不一定会恢复可用，或可能停用数小时或数天。 例如，火灾、洪灾或地震等可能导致此类灾难。 永久性灾难可能会导致一些消息、事件或其他数据丢失。 不过，在大多数情况下，都不应该会有数据丢失，并且在数据中心备份后，便可以恢复消息。
 
@@ -47,7 +47,7 @@ Azure 服务总线的异地灾难恢复功能是一项面向灾难恢复的解�
 
 -  *元数据*：队列、主题、订阅等实体及其与命名空间关联的服务的属性。 请注意，仅自动复制实体及其设置。 不会复制消息。
 
--  ** 故障转移：激活辅助命名空间的过程。
+-   故障转移：激活辅助命名空间的过程。
 
 ## <a name="setup"></a>设置
 
@@ -57,21 +57,21 @@ Azure 服务总线的异地灾难恢复功能是一项面向灾难恢复的解�
 
 设置过程如下所述 -
 
-1. 预配“主要”****** 服务总线高级命名空间。
+1. 预配“主要”服务总线高级命名空间。
 
-2. 在与预配了主要命名空间的位置不同的区域中预配“次要”服务总线高级命名空间********。 这将有助于跨不同的数据中心区域进行故障隔离。
+2. 在与预配了主要命名空间的位置不同的区域中预配“次要”服务总线高级命名空间  。 这将有助于跨不同的数据中心区域进行故障隔离。
 
-3. 在主要命名空间与次要命名空间之间创建配对以获取“别名”******。
+3. 在主要命名空间与次要命名空间之间创建配对以获取“别名”。
 
     >[!NOTE] 
-    > 如果已[将 Azure 服务总线标准命名空间迁移到 Azure 服务总线高级](service-bus-migrate-standard-premium.md)版，则必须使用预先存在的别名（即服务总线标准命名空间连接字符串）通过**PS/CLI**或**REST API**创建灾难恢复配置。
+    > 如果已将[Azure 服务总线标准命名空间迁移到 Azure 服务总线高级命名空间](service-bus-migrate-standard-premium.md)，则必须使用预先存在的别名（即服务总线标准命名空间连接字符串）通过**PS/CLI**或**REST API**创建灾难恢复配置。
     >
     >
-    > 这是因为，在迁移期间，Azure 服务总线标准命名空间连接字符串/DNS 名称本身将成为 Azure 服务总线高级命名空间的别名。
+    > 这是因为，在迁移过程中，Azure 服务总线标准命名空间连接字符串/dns/DNS 名称本身成为 Azure 服务总线高级命名空间的别名。
     >
-    > 客户端应用程序必须使用此别名（即 Azure 服务总线标准命名空间连接字符串）连接到已设置灾难恢复配对的高级命名空间。
+    > 客户端应用程序必须利用此别名（即 Azure 服务总线标准命名空间连接字符串）连接到已设置灾难恢复配对的高级命名空间。
     >
-    > 如果使用门户设置灾难恢复配置，则门户将从您中抽象出此警告。
+    > 如果你使用门户来设置灾难恢复配置，则门户将从你处抽象出这一注意事项。
 
 
 4. 使用在步骤 3 中获取的“别名”****** 将你的客户端应用程序连接到启用了异地灾难恢复的主要命名空间。 最初，别名指向主要命名空间。
@@ -140,7 +140,7 @@ Azure 服务总线的异地灾难恢复功能是一项面向灾难恢复的解�
 服务总线高级 SKU 还支持[可用性区域](../availability-zones/az-overview.md)，在 Azure 区域内提供故障隔离位置。
 
 > [!NOTE]
-> Azure 服务总线高级版的可用性区域支持仅适用于存在可用性区域的 [Azure 区域](../availability-zones/az-overview.md#services-support-by-region)。
+> Azure 服务总线高级版的可用性区域支持仅适用于存在可用性区域的 [Azure 区域](../availability-zones/az-region.md)。
 
 可以使用 Azure 门户仅在新的命名空间上启用可用性区域。 服务总线不支持迁移现有命名空间。 在命名空间上启用区域冗余之后，不能将其禁用。
 
@@ -157,7 +157,7 @@ Azure 服务总线的异地灾难恢复功能是一项面向灾难恢复的解�
 * [服务总线队列、主题和订阅](service-bus-queues-topics-subscriptions.md)
 * [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)
 * [如何使用服务总线主题和订阅](service-bus-dotnet-how-to-use-topics-subscriptions.md)
-* [休息 API](/rest/api/servicebus/) 
+* [Rest API](/rest/api/servicebus/) 
 
 [1]: ./media/service-bus-geo-dr/geodr_setup_pairing.png
 [2]: ./media/service-bus-geo-dr/geo2.png

@@ -3,12 +3,12 @@ title: 监视在任何环境中运行的 Java 应用程序-Azure Monitor Applica
 description: 适用于在任何环境中运行的 Java 应用程序的应用程序性能监视，无需对应用进行检测。 分布式跟踪和应用程序映射。
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 08a83fbc05276808b62a0391a5c4217cc09f6d00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 527f1eaf04be7b5e8c89c12912a06d2f5d50321f
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641870"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508031"
 ---
 # <a name="configuring-jvm-args-java-standalone-agent-for-azure-monitor-application-insights"></a>为 Azure Monitor Application Insights 配置 JVM 参数 Java 独立代理
 
@@ -20,15 +20,25 @@ ms.locfileid: "81641870"
 
 ## <a name="spring-boot"></a>Spring Boot
 
-在之前`-jar <myapp.jar>`的某个`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar`位置添加 JVM 参数，例如：
+在之前`-jar`的某个`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar`位置添加 JVM 参数，例如：
 
 ```
 java -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar -jar <myapp.jar>
 ```
 
-> [!NOTE]
-> 置于后`-jar <myapp.jar>`的参数作为程序参数传递到应用程序。
+## <a name="spring-boot-via-docker-entry-point"></a>通过 Docker 入口点进行春季引导
 
+如果使用的是*exec*窗体，请将参数`"-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar"`添加到参数前面`"-jar"`某个位置的参数列表中，例如：
+
+```
+ENTRYPOINT ["java", "-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar", "-jar", "<myapp.jar>"]
+```
+
+如果使用的是*shell*窗体，请在之前`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` `-jar`的某个位置添加 JVM 参数，例如：
+
+```
+ENTRYPOINT java -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar -jar <myapp.jar>
+```
 
 ## <a name="tomcat-8-linux"></a>Tomcat 8 （Linux）
 

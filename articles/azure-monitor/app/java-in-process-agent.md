@@ -3,12 +3,12 @@ title: 在任何环境中监视 Java 应用程序-Azure Monitor Application Insi
 description: 适用于在任何环境中运行的 Java 应用程序的应用程序性能监视，无需检测应用。 分布式跟踪和应用程序映射。
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: b9c1a52051e63beee9a784714a7bb1a6a79e8759
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 591cfad0f4719595835f212b9205354aad7cb9e8
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687715"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508065"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Java 无代码置备应用程序监视 Azure Monitor Application Insights-公共预览版
 
@@ -24,11 +24,11 @@ Java 无代码置备应用程序监视完全是简单的，无需更改代码，
 
 **1. 下载代理**
 
-下载[applicationinsights-agent-3.0.0-preview](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.3/applicationinsights-agent-3.0.0-PREVIEW.3.jar)
+下载[applicationinsights-agent-3.0.0-preview](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.4/applicationinsights-agent-3.0.0-PREVIEW.4.jar)
 
 **2. 将 JVM 指向代理**
 
-添加`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.3.jar`到应用程序的 JVM 参数
+添加`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.4.jar`到应用程序的 JVM 参数
 
 典型的 JVM 参数`-Xmx512m`包括`-XX:+UseG1GC`和。 如果您知道在何处添加它们，则您已经知道要将此添加到何处。
 
@@ -44,7 +44,7 @@ Java 无代码置备应用程序监视完全是简单的，无需更改代码，
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
 ```
 
-或者，通过创建一个名为`ApplicationInsights.json`的配置文件，并将其放在`applicationinsights-agent-3.0.0-PREVIEW.3.jar`与相同的目录中，并提供以下内容：
+或者，通过创建一个名为`ApplicationInsights.json`的配置文件，并将其放在`applicationinsights-agent-3.0.0-PREVIEW.4.jar`与相同的目录中，并提供以下内容：
 
 ```json
 {
@@ -117,7 +117,7 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000
 
 ### <a name="metrics"></a>指标
 
-* Micrometer
+* Micrometer （包括弹簧 Boot 制动器指标）
 * JMX 指标
 
 ## <a name="sending-custom-telemetry-from-your-application"></a>从应用程序发送自定义遥测数据

@@ -1,6 +1,6 @@
 ---
 title: 使 Azure 服务总线应用程序免受服务中断和灾难影响
-description: 本文提供了保护应用程序免受 Azure 服务总线中断的技术。
+description: 本文提供了用于保护应用程序免受潜在的 Azure 服务总线中断影响的技术。
 services: service-bus-messaging
 author: axisc
 manager: timlt
@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 07b071b0e8efc5d664dada133a214d778c6531d0
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 29eb0625ceebf4fee75d0c1accef7ae03b5f61b9
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984940"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208374"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>使应用程序免受服务总线中断和灾难影响的最佳实践
 
@@ -29,14 +29,14 @@ ms.locfileid: "80984940"
 
 ### <a name="geo-disaster-recovery"></a>异地灾难恢复
 
-服务总线高级版支持命名空间级别的异地灾难恢复。 有关详细信息，请参阅[Azure 服务总线地质灾害恢复](service-bus-geo-dr.md)。 灾难恢复功能仅适用于[高级 SKU](service-bus-premium-messaging.md)，可实现元数据灾难恢复，并且依赖于主要和辅助灾难恢复命名空间。
+服务总线高级版支持命名空间级别的异地灾难恢复。 有关详细信息，请参阅 [Azure 服务总线异地灾难恢复](service-bus-geo-dr.md)。 灾难恢复功能仅适用于[高级 SKU](service-bus-premium-messaging.md)，可实现元数据灾难恢复，并且依赖于主要和辅助灾难恢复命名空间。
 
 ### <a name="availability-zones"></a>可用性区域
 
-服务总线高级 SKU 支持[可用性区域](../availability-zones/az-overview.md)，在同一 Azure 区域内提供故障隔离位置。 服务总线管理消息存储的三个副本（1 个主存储和 2 个辅助副本）。 服务总线使所有三个副本同步用于数据和管理操作。 如果主副本失败，其中一个辅助副本将提升为主副本，而没有察觉到的停机时间。 如果应用程序看到与服务总线的暂时断开连接，SDK 中的重试逻辑将自动重新连接到服务总线。 
+服务总线高级 SKU 支持[可用性区域](../availability-zones/az-overview.md)，在同一 Azure 区域内提供故障隔离位置。 服务总线管理消息存储的三个副本（1个主副本和2个辅助副本）。 服务总线为数据和管理操作保留同步的所有三个副本。 如果主要副本发生故障，则会将其中一个辅助副本提升为主要副本，无需停机。 如果应用程序看到暂时性中断了服务总线，SDK 中的重试逻辑将自动重新连接到服务总线。 
 
 > [!NOTE]
-> Azure 服务总线高级版的可用性区域支持仅适用于存在可用性区域的 [Azure 区域](../availability-zones/az-overview.md#services-support-by-region)。
+> Azure 服务总线高级版的可用性区域支持仅适用于存在可用性区域的 [Azure 区域](../availability-zones/az-region.md)。
 
 可以使用 Azure 门户仅在新的命名空间上启用可用性区域。 服务总线不支持迁移现有命名空间。 在命名空间上启用区域冗余之后，不能将其禁用。
 
@@ -78,7 +78,7 @@ ms.locfileid: "80984940"
 [使用服务总线标准层进行异地复制][Geo-replication with Service Bus Standard Tier]示例演示了消息传送实体的被动复制。
 
 ## <a name="protecting-relay-endpoints-against-datacenter-outages-or-disasters"></a>保护中继终结点免受数据中心中断或灾难的影响
-[Azure 中继](../service-bus-relay/relay-what-is-it.md)终结点的异地复制允许在存在服务总线中断时访问公开中继终结点的服务。 若要实现异地复制，该服务必须在不同的命名空间中创建两个中继终结点。 命名空间必须位于不同的数据中心，且两个终结点必须具有不同的名称。 例如，主终结点可以在 **contosoPrimary.servicebus.windows.net/myPrimaryService** 下进行访问，而其辅助副本则可以在 **contosoSecondary.servicebus.windows.net/mySecondaryService** 下进行访问。
+使用[Azure 中继](../service-bus-relay/relay-what-is-it.md)终结点进行异地复制，可在服务总线中断时，公开中继终结点的服务可以访问。 若要实现异地复制，该服务必须在不同的命名空间中创建两个中继终结点。 命名空间必须位于不同的数据中心，且两个终结点必须具有不同的名称。 例如，主终结点可以在 **contosoPrimary.servicebus.windows.net/myPrimaryService** 下进行访问，而其辅助副本则可以在 **contosoSecondary.servicebus.windows.net/mySecondaryService** 下进行访问。
 
 该服务随后侦听两个终结点，客户端可通过其中任一终结点调用服务。 客户端应用程序随机选取一个中继作为主要终结点，并向活动终结点发送请求。 如果操作失败并返回错误代码，此故障指示中继终结点不可用。 应用程序将打开通向备份终结点的通道并重新发送请求。 此时，活动终结点与备份终结点将互换角色：客户端应用程序会将旧的活动终结点认定为新的备份终结点，而将旧的备份终结点认定为新的活动终结点。 如果两次发送操作都失败，则两个实体的角色将保持不变并返回错误。
 
@@ -87,7 +87,7 @@ ms.locfileid: "80984940"
 
 * [Azure 服务总线异地灾难恢复](service-bus-geo-dr.md)
 * [Azure SQL 数据库业务连续性][Azure SQL Database Business Continuity]
-* [设计适用于 Azure 的弹性应用程序][Azure resiliency technical guidance]
+* [为 Azure 设计复原应用程序][Azure resiliency technical guidance]
 
 [Service Bus Authentication]: service-bus-authentication-and-authorization.md
 [Partitioned messaging entities]: service-bus-partitioning.md

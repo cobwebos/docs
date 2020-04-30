@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/04/2020
+ms.date: 04/28/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8c77b3454026aa309d979bd938674e7c3ae7b6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 51a60d307ca7dac139db0097283fc08e9e41624c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "77025990"
+ms.locfileid: "82233527"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>部署 Azure AD Privileged Identity Management (PIM)
 
@@ -325,7 +325,7 @@ Azure 资源的 Privileged Identity Management 支持时限服务帐户。 应�
 
 ### <a name="communicate-privileged-identity-management-to-affected-stakeholders"></a>与受影响的利益干系人就 Privileged Identity Management 进行沟通
 
-部署 Privileged Identity Management 需要特权角色用户执行额外操作步骤。 虽然 Privileged Identity Management 极大地减少了与特权标识相关的安全问题，但在实施租户范围内的部署之前，需要有效地传达相关变更。 根据受影响的管理员数量，组织通常会选择创建有关更改的内部文档、视频或电子邮件。 这些通信内容中通常包含：
+部署 Privileged Identity Management 需要特权角色用户执行额外操作步骤。 尽管 Privileged Identity Management 大大减少了与特权标识相关的安全问题，但需要在组织范围内部署之前有效地传达更改。 根据受影响的管理员数量，组织通常会选择创建有关更改的内部文档、视频或电子邮件。 这些通信内容中通常包含：
 
 - 什么是 PIM
 - 组织有什么好处
@@ -371,7 +371,7 @@ Azure 资源的 Privileged Identity Management 支持时限服务帐户。 应�
 
 ### <a name="use-privileged-identity-management-alerts-to-safeguard-your-privileged-access"></a>使用 Privileged Identity Management 警报来保护特权访问
 
-应利用 Privileged Identity Management 的内置警报功能更好地保护租户。 有关详细信息，请参阅[安全警报](pim-how-to-configure-security-alerts.md#security-alerts)。 这些警报包括：管理员不使用特权角色、角色被分配到 Privileged Identity Management 之外、角色激活过于频繁等等。 若要充分保护组织，应定期查看警报列表，并解决问题。 可以使用以下方法查看和解决警报问题：
+你应利用 Privileged Identity Management 的内置警报功能来更好地保护你的组织。 有关详细信息，请参阅[安全警报](pim-how-to-configure-security-alerts.md#security-alerts)。 这些警报包括：管理员不使用特权角色、角色被分配到 Privileged Identity Management 之外、角色激活过于频繁等等。 若要充分保护组织，应定期查看警报列表，并解决问题。 可以使用以下方法查看和解决警报问题：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 1. 打开“Azure AD Privileged Identity Management”。 

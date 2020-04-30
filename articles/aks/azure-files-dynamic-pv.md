@@ -5,20 +5,20 @@ description: 了解如何使用 Azure 文件动态创建永久性卷，以便与
 services: container-service
 ms.topic: article
 ms.date: 09/12/2019
-ms.openlocfilehash: 59b773cd4608187fedb24358eac57715e1c271ea
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 0826035a6c81cdbdd8c93f78cb32835dce675eb4
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80803528"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82207677"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中动态创建永久性卷并将其用于 Azure 文件
 
-永久性卷表示已经过预配可以用于 Kubernetes Pod 的存储块。 永久性卷可供一个或多个 Pod 使用，并可动态或静态预配。 如果多个 Pod 需要同时访问同一存储卷，则可以使用 Azure 文件通过[服务器消息块 (SMB) 协议][smb-overview]进行连接。 本文介绍如何动态创建 Azure 文件共享以供 Azure Kubernetes 服务 (AKS) 群集中的多个 Pod 使用。
+永久性卷表示已经过预配可以用于 Kubernetes Pod 的存储块。 永久性卷可供一个或多个 Pod 使用，并可动态或静态预配。 如果多个 Pod 需要同时访问同一存储卷，则可以使用 Azure 文件存储通过[服务器消息块 (SMB) 协议][smb-overview]进行连接。 本文介绍如何动态创建 Azure 文件共享以供 Azure Kubernetes 服务 (AKS) 群集中的多个 Pod 使用。
 
 有关 Kubernetes 卷的详细信息，请参阅 [AKS 中应用程序的存储选项][concepts-storage]。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
@@ -26,19 +26,19 @@ ms.locfileid: "80803528"
 
 ## <a name="create-a-storage-class"></a>创建存储类
 
-存储类用于定义如何创建 Azure 文件共享。 [节点资源组][node-resource-group]中会自动创建一个存储帐户来与存储类配合使用，以保存 Azure 文件共享。 为 *skuName* 选择下列任一 [Azure 存储冗余][storage-skus]：
+存储类用于定义如何创建 Azure 文件共享。 [节点资源组][node-resource-group]中会自动创建一个存储帐户来与存储类配合使用，以保存 Azure 文件共享。 为 [skuName][storage-skus] 选择下列任一 *Azure 存储冗余*：
 
 * *Standard_LRS* - 标准本地冗余存储 (LRS)
 * *Standard_GRS* - 标准异地冗余存储 (GRS)
-* *Standard_ZRS* - 标准区域冗余存储 （ZRS）
+* *Standard_ZRS*标准区域冗余存储（ZRS）
 * *Standard_RAGRS* - 标准读取访问异地冗余存储 (RA-GRS)
 * *Premium_LRS* - 高级本地冗余存储 (LRS)
-* *Premium_ZRS* - 高级区域冗余存储 （GRS）
+* *Premium_ZRS* -高级区域冗余存储（GRS）
 
 > [!NOTE]
-> Azure 文件支持运行 Kubernets 1.13 或更高、最小高级文件共享为 100GB 的 AKS 群集中的高级存储
+> Azure 文件支持运行 Kubernetes 1.13 或更高版本的 AKS 群集中的高级存储，最低的高级文件共享为100GB
 
-有关 Azure 文件的库伯奈斯存储类的详细信息，请参阅[库伯奈斯存储类][kubernetes-storage-classes]。
+有关 Azure 文件的 Kubernetes 存储类的详细信息，请参阅[Kubernetes 存储类][kubernetes-storage-classes]。
 
 创建名为 `azure-file-sc.yaml` 的文件，并将其复制到以下示例清单中。 有关 *mountOptions* 的详细信息，请参阅[装载选项][mount-options]部分。
 
@@ -59,7 +59,7 @@ parameters:
   skuName: Standard_LRS
 ```
 
-使用[kubectl 应用][kubectl-apply]命令创建存储类：
+使用[kubectl apply][kubectl-apply]命令创建存储类：
 
 ```console
 kubectl apply -f azure-file-sc.yaml
@@ -88,7 +88,7 @@ spec:
 > [!NOTE]
 > 如果将 *Premium_LRS* SKU 用于存储类，则存储** 的最小值必须为 100Gi**。
 
-使用[kubectl 应用][kubectl-apply]命令创建持久卷声明：
+使用[kubectl apply][kubectl-apply]命令创建永久性卷声明：
 
 ```console
 kubectl apply -f azure-file-pvc.yaml
@@ -105,7 +105,7 @@ azurefile   Bound     pvc-8436e62e-a0d9-11e5-8521-5a8664dc0477   5Gi        RWX 
 
 ## <a name="use-the-persistent-volume"></a>使用永久性卷
 
-以下 YAML 创建的 Pod 使用永久性卷声明 *azurefile* 将 Azure 文件共享装载到 */mnt/azure* 路径。 对于 Windows 服务器容器（当前在 AKS 中预览），使用 Windows 路径约定（如 *"D："）* 指定*装载路径*。
+以下 YAML 创建的 Pod 使用永久性卷声明 *azurefile* 将 Azure 文件共享装载到 */mnt/azure* 路径。 对于 Windows Server 容器，请使用 Windows 路径约定指定*mountPath* ，例如 *"d："*。
 
 创建名为 `azure-pvc-files.yaml` 的文件，并将其复制到以下 YAML 中。 请确保 *claimName* 与上一步骤中创建的 PVC 匹配。
 
@@ -165,7 +165,7 @@ Volumes:
 
 ## <a name="mount-options"></a>装载选项
 
-对于 Kubernetes 版本 1.13.0 及以上，*文件模式*和*dirMode*的默认值为*0777。* 如果使用存储类动态创建持久卷，则可以在存储类对象上指定装载选项。 以下示例设置 *0777*：
+对于 Kubernetes 版本1.13.0 和更高*版本，"dirMode" 和 "* *dirMode* " 的默认值为*0777* 。 如果使用存储类动态创建持久卷，则可以在存储类对象上指定装载选项。 以下示例设置 *0777*：
 
 ```yaml
 kind: StorageClass

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd24650c9bf0c4de155b5bfc8723cfa1fef01548
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
-ms.translationtype: MT
+ms.openlocfilehash: 89eeb276a7f096133083037e2a1c088cb6ad35f1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81755411"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232490"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>在 Azure Active Directory 中按管理员任务委托管理员角色
 
@@ -76,9 +76,9 @@ ms.locfileid: "81755411"
 
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
-直通身份验证 | 混合标识管理员 | 
-读取所有配置 | 全局读取者 | 混合标识管理员 |
-无缝单一登录 | 混合标识管理员 | 
+直通身份验证 | 全局管理员角色  | 
+读取所有配置 | 全局读取者 | 全局管理员角色  |
+无缝单一登录 | 全局管理员角色  | 
 
 ## <a name="connect-health"></a>Connect Health
 
@@ -126,8 +126,8 @@ ms.locfileid: "81755411"
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
 同意任何委托的权限 | 云应用程序管理员 | 应用程序管理员
-同意应用程序权限不包括 Microsoft 图形 | 云应用程序管理员 | 应用程序管理员
-同意对微软图形的应用程序权限 | 特权角色管理员 | 
+同意不包括 Microsoft Graph 的应用程序权限 | 云应用程序管理员 | 应用程序管理员
+同意 Microsoft Graph 的应用程序权限 | 特权角色管理员 | 
 同意应用程序访问自己的数据 | 默认用户角色（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)） | 
 创建企业应用程序 | 云应用程序管理员 | 应用程序管理员
 管理应用程序代理 | 应用程序管理员 | 
@@ -144,8 +144,8 @@ ms.locfileid: "81755411"
 ## <a name="entitlement-management"></a>权利管理
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
-将资源添加到目录 | 用户管理员 | 使用授权管理，您可以将此任务委派给目录所有者（[请参阅文档](../governance/entitlement-management-catalog-create.md#add-additional-catalog-owners)）
-将 SharePoint 在线网站添加到目录 | 全局管理员
+将资源添加到目录 | 用户管理员 | 通过权限管理，你可以将此任务委托给目录所有者（[请参阅文档](../governance/entitlement-management-catalog-create.md#add-additional-catalog-owners)）
+将 SharePoint Online 网站添加到目录 | 全局管理员
 
 
 ## <a name="groups"></a>组
@@ -187,7 +187,7 @@ ms.locfileid: "81755411"
 分配许可证 | 许可证管理员 | 用户管理员
 读取所有配置 | 目录读者 | 默认用户角色（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)）
 撤销许可证 | 许可证管理员 | 用户管理员
-试用或购买订阅 | 计费管理员 | 
+试用或购买订阅 | 帐务管理员 | 
 
 
 ## <a name="monitoring---audit-logs"></a>监视 - 审核日志
@@ -350,5 +350,5 @@ ms.locfileid: "81755411"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [如何分配或删除 Azure AD 管理员角色](directory-manage-roles-portal.md)
+* [如何分配或删除 azure AD 管理员角色](directory-manage-roles-portal.md)
 * [Azure AD 管理员角色参考](directory-assign-admin-roles.md)

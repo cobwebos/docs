@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 85992224edd10c0a0f233de9f6274cc77e109b22
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9cf012df65560a921f2c9f12f6c0362a033300be
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "60757459"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561640"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>教程：在 VMware 中预配 Azure Data Box Gateway
 
@@ -21,7 +21,7 @@ ms.locfileid: "60757459"
 
 本教程介绍如何在运行 VMware ESXi 6.0、6.5 或 6.7 的主机系统上预配 Data Box Gateway。 
 
-需要管理员权限才能预配和连接虚拟设备。 完成预配和初始设置可能需要大约 10 分钟。
+需要管理员权限才能预配和连接虚拟设备。 完成预配和初始设置可能需要大约 10 分钟。 
 
 在本教程中，你将了解如何执行以下操作：
 

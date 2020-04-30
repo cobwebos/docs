@@ -1,23 +1,23 @@
 ---
 title: 使用共享访问签名限制访问 - Azure HDInsight
-description: 了解如何使用共享访问签名限制对 Azure 存储 Blob 中存储的数据进行 HDInsight 访问。
+description: 了解如何使用共享访问签名限制对 HDInsight 访问存储在 Azure 存储 Blob 中的数据。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 04/14/2020
-ms.openlocfilehash: d68f7dc6368c2b3de7f26f2946c5fb47237a820d
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/28/2020
+ms.openlocfilehash: 77314514ca26997fecd6b5d7c6ba1fc7d14c2584
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313930"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82209054"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>使用 Azure 存储共享访问签名来限制访问 HDInsight 中的数据
 
-HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权限。 可以在 Blob 容器中使用共享访问签名来限制对数据的访问。 共享访问签名 (SAS) 是可用于限制数据访问权限的一项 Azure 存储帐户功能。 例如，它可以提供对数据的只读访问。
+HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权限。 可以使用 Blob 容器中的共享访问签名来限制对数据的访问。 共享访问签名 (SAS) 是可用于限制数据访问权限的一项 Azure 存储帐户功能。 例如，它可以提供对数据的只读访问。
 
 > [!IMPORTANT]  
 > 对于使用 Apache Ranger 的解决方案，请考虑使用已加入域的 HDInsight。 有关详细信息，请参阅[配置已加入域的 HDInsight](./domain-joined/apache-domain-joined-configure.md) 文档。
@@ -33,20 +33,20 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
 * 如果使用 PowerShell，需要安装 [Az 模块](https://docs.microsoft.com/powershell/azure/overview)。
 
-* 如果想要使用 Azure CLI，但尚未安装它，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+* 如果要使用 Azure CLI 但尚未安装，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 * 如果使用 [Python](https://www.python.org/downloads/)，请安装 2.7 或更高版本。
 
 * 如果使用 C#，Visual Studio 的版本必须是 2013 或更高。
 
-* 存储帐户的 [URI 方案](./hdinsight-hadoop-linux-information.md#URI-and-scheme)。 此方案适用于`wasb://`Azure 存储、Azure`abfs://`数据湖存储第 2`adl://`代或 Azure 数据湖存储第 1 代。 如果为 Azure 存储启用安全传输，则 URI 将为 `wasbs://`。 另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
+* 存储帐户的 URI 方案。 此方案`wasb://`适用于 Azure 存储， `abfs://`适用于 Azure Data Lake Storage Gen2 或`adl://` Azure Data Lake Storage Gen1。 如果为 Azure 存储启用安全传输，则 URI 将为 `wasbs://`。
 
 * 共享访问签名要添加到的现有 HDInsight 群集。 如果没有，则可以使用 Azure PowerShell 创建群集，并在创建群集期间添加共享访问签名。
 
-* 来自[https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature)的示例文件。 此存储库包含以下项：
+* [https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature) 中的示例文件。 此存储库包含以下项：
 
-  * Visual Studio 项目，可以创建存储容器、存储策略，以及配合 HDInsight 使用的 SAS
-  * Python 脚本，可以创建存储容器、存储策略，以及配合 HDInsight 使用的 SAS
+  * Visual Studio 项目，可以创建存储容器、存储策略，以及与 HDInsight 配合使用的 SAS
+  * Python 脚本，可以创建存储容器、存储策略，以及与 HDInsight 配合使用的 SAS
   * PowerShell 脚本，可以创建 HDInsight 群集并将其配置为使用 SAS。 下面进一步使用更新的版本。
   * 示例文件：`hdinsight-dotnet-python-azure-storage-shared-access-signature-master\sampledata\sample.log`
 
@@ -54,11 +54,11 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
 共享访问签名有两种形式：
 
-* `Ad hoc`：SAS 的开始时间、到期时间和权限都指定在 SAS URI 上。
+* `Ad hoc`： Sas 的开始时间、到期时间和权限都在 SAS URI 上指定。
 
-* `Stored access policy`：存储的访问策略在资源容器（如 blob 容器）上定义。 可以使用策略管理一个或多个共享访问签名的约束。 在将某一 SAS 与一个存储访问策略相关联时，该 SAS 将继承对该存储访问策略定义的约束：开始时间、到期时间和权限。
+* `Stored access policy`：存储访问策略在资源容器（例如 blob 容器）中定义。 可以使用策略来管理一个或多个共享访问签名的约束。 将某一 SAS 与一个存储访问策略相关联时，该 SAS 会继承对该存储访问策略定义的约束：开始时间、到期时间和权限。
 
-这两种形式之间的差异对于一个关键情形而言十分重要：吊销。 SAS 是一个 URL，因此任何获得 SAS 的人都可以使用它。 谁要求它开始并不重要。 如果某一 SAS 是公开发布的，则世界上的任何人都可以使用它。 在发生以下四种情况之一前分发的 SAS 是有效的：
+这两种形式之间的差异对于一个关键情形而言十分重要：吊销。 SAS 是一个 URL，因此获取 SAS 的任何人都可以使用它。 不重要的是谁要求它开始。 如果某一 SAS 是公开发布的，则世界上的任何人都可以使用它。 在发生以下四种情况之一前分发的 SAS 是有效的：
 
 1. 达到了对该 SAS 指定的到期时间。
 
@@ -67,7 +67,7 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
     * 时间间隔已过。
     * 将存储访问策略修改为具有过去的到期时间。 更改到期时间是撤销 SAS 的一种方法。
 
-3. 删除了该 SAS 引用的存储访问策略，这是用于吊销 SAS 的另一种方法。 如果重新创建具有相同名称的存储访问策略，则上一个策略的所有 SAS 令牌都有效（如果 SAS 上的到期时间尚未过去）。 如果想要撤销 SAS，请确保使用不同名称（如果使用将来的到期时间重新创建该访问策略）。
+3. 删除了该 SAS 引用的存储访问策略，这是用于吊销 SAS 的另一种方法。 如果重新创建同名的存储访问策略，则以前策略的所有 SAS 令牌都将有效（如果 SAS 的到期时间尚未过）。 如果想要撤销 SAS，请确保使用不同名称（如果使用将来的到期时间重新创建该访问策略）。
 
 4. 将重新生成用于创建 SAS 的帐户密钥。 重新生成密钥会导致使用以前密钥的所有应用程序身份验证失败。 将所有组件更新为使用新密钥。
 
@@ -80,7 +80,7 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
 ## <a name="create-a-stored-policy-and-sas"></a>创建存储策略和 SAS
 
-保存每个方法结束时生成的 SAS 令牌。 令牌将类似于以下输出：
+保存每个方法结束时生成的 SAS 令牌。 该令牌将类似于以下输出：
 
 ```output
 ?sv=2018-03-28&sr=c&si=myPolicyPS&sig=NAxefF%2BrR2ubjZtyUtuAvLQgt%2FJIN5aHJMj6OsDwyy4%3D
@@ -211,20 +211,20 @@ Set-AzStorageblobcontent `
 
 3. 选择“设置”****，并添加以下条目的值：
 
-    |Item |描述 |
+    |项 |说明 |
     |---|---|
     |StorageConnectionString|想要为其创建存储策略和 SAS 的存储帐户的连接字符串。 格式应为 `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey`，其中 `myaccount` 是存储帐户名称，`mykey` 是存储帐户密钥。|
     |ContainerName|存储帐户中你要限制对其的访问的容器。|
-    |SAS策略名称|要创建的存储策略所用的名称。|
-    |文件上传|上传到容器的文件的路径。|
+    |SASPolicyName|要创建的存储策略所用的名称。|
+    |FileToUpload|上传到容器的文件的路径。|
 
 4. 运行该项目。 保存 SAS 策略令牌、存储帐户名称和容器名称。 将存储帐户与 HDInsight 群集关联时，将使用这些值。
 
 ## <a name="use-the-sas-with-hdinsight"></a>配合 HDInsight 使用 SAS
 
-创建 HDInsight 群集时，必须指定主存储帐户。 您还可以指定其他存储帐户。 这两种添加存储的方法都需要对所用存储帐户和容器拥有完全访问权限。
+创建 HDInsight 群集时，必须指定主存储帐户。 你还可以指定其他存储帐户。 这两种添加存储的方法都需要对所用存储帐户和容器拥有完全访问权限。
 
-使用共享访问签名限制容器访问。 向群集**的核心站点**配置添加自定义条目。 可以在创建群集期间使用 PowerShell 添加该条目，或者在创建群集之后使用 Ambari 添加该条目。
+使用共享访问签名来限制容器访问。 将自定义条目添加到群集的**核心站点**配置。 可以在创建群集期间使用 PowerShell 添加该条目，或者在创建群集之后使用 Ambari 添加该条目。
 
 ### <a name="create-a-cluster-that-uses-the-sas"></a>创建使用 SAS 的群集
 
@@ -353,12 +353,12 @@ Remove-AzResourceGroup `
 
 1. 打开群集的 Ambari Web UI。 此页的地址是 `https://YOURCLUSTERNAME.azurehdinsight.net`。 出现提示时，请使用在创建群集时使用的管理员名称 (admin) 和密码对群集进行身份验证。
 
-1. 导航到**HDFS** > **配置** > **高级** > **自定义核心站点**。
+1. 导航到**HDFS** > **Configs** > 配置 "**高级** > **自定义核心**"。
 
-1. 展开**自定义核心网站**部分，滚动到末尾，然后选择 **"添加属性..."** 对**键**和**值**使用以下值：
+1. 展开 "**自定义核心网站**" 部分，滚动到末尾，然后选择 "**添加属性 ...**"。使用以下值作为**键**和**值**：
 
-    * **密钥**：`fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
-    * **值**： 由前面执行的方法之一返回的 SAS。
+    * 键：`fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
+    * **值**：之前执行的一种方法返回的 SAS。
 
     将 `CONTAINERNAME` 替换为用于 C# 或 SAS 应用程序的容器名称。 将 `STORAGEACCOUNTNAME` 替换为所用的存储帐户名称。
 
@@ -373,7 +373,7 @@ Remove-AzResourceGroup `
 
 1. 会显示一个“重启”下拉列表。**** 从下拉列表中选择“重启所有受影响的项”，然后选择“确认全部重启”。****____
 
-    对**MapReduce2**和**YARN**重复此过程。
+    为**MapReduce2**和**YARN**重复此过程。
 
 1. 重启这些服务后，请选择每个服务，并从“服务操作”**** 下拉列表中禁用维护模式。
 
@@ -433,7 +433,7 @@ Remove-AzResourceGroup `
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，您已经了解如何将受限访问存储添加到 HDInsight 群集中，请学习其他处理群集上数据的方法：
+现在，你已了解如何向 HDInsight 群集添加有限访问存储，接下来了解如何通过其他方式在群集上处理数据：
 
-* [将 Apache Hive 和 HDInsight 配合使用](hadoop/hdinsight-use-hive.md)
-* [将 MapReduce 与 HDInsight 配合使用](hadoop/hdinsight-use-mapreduce.md)
+* [将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)
+* [授权用户访问 Apache Ambari 视图](hdinsight-authorize-users-to-ambari.md)

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/22/2020
-ms.openlocfilehash: f8331b64792781a89428f8c5070375c31c0da48d
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.date: 04/27/2020
+ms.openlocfilehash: e76c75e172e48866565cc292ac673f7bbddabf1f
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82084883"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232813"
 ---
 # <a name="release-notes"></a>发行说明
 
@@ -48,21 +48,30 @@ Azure HDInsight 是 Azure 中最受企业客户青睐的开源分析服务之一
 ## <a name="upcoming-changes"></a>即将推出的更改
 即将发布的版本中将推出以下变更。 
 
-### <a name="a-minimum-4-core-vm-is-required-for-head-node"></a>提供至少有 4 个核心的 VM 作为头节点 
-头节点至少需要 4 核 VM，以确保 HDInsight 群集的高可用性和可靠性。 从 2020 年 4 月 6 日开始，客户只能选择至少有 4 个核心的 VM 作为新 HDInsight 群集的头节点。 现有群集将继续按预期方式运行。 
+### <a name="deprecate-spark-21-and-22-for-hdinsight-36-spark-cluster"></a>弃用 Spark 2.1 和 2.2 for HDInsight 3.6 Spark 群集
+从7月 1 2020 开始，客户将无法在 HDInsight 3.6 上创建新的 Spark 群集和 Spark 2.1 和2.2。 现有群集将按原样运行，无需 Microsoft 的支持。 请考虑在2.3 年 6 30 2020 月的 HDInight 3.6 上迁移到 Spark，以避免潜在的系统/支持中断。
 
-### <a name="esp-spark-cluster-node-size-change"></a>ESP Spark 群集节点大小变更 
-在即将发布的版本中，ESP Spark 群集的最小允许节点大小将更改为Standard_D13_V2。 由于 CPU 和内存容量相对较低，A 系列 VM 可能会导致 ESP 群集问题。 A 系列 VM 将被弃用以创建新的 ESP 群集。
+### <a name="deprecate-spark-23-for-hdinsight-40-spark-cluster"></a>弃用 Spark 2.3 for HDInsight 4.0 Spark 群集
+从7月 1 2020 开始，客户将无法在 HDInsight 4.0 上利用 Spark 2.3 创建新的 Spark 群集。 现有群集将按原样运行，无需 Microsoft 的支持。 请考虑在2.4 年 6 30 2020 月的 HDInight 4.0 上迁移到 Spark，以避免潜在的系统/支持中断。
 
-### <a name="moving-to-azure-virtual-machine-scale-sets"></a>迁移到 Azure 虚拟机规模集
-HDInsight 目前使用 Azure 虚拟机来预配群集。 在即将发布的版本中，HDInsight 将改用 Azure 虚拟机缩放集。 详细了解 Azure 虚拟机规模集。
+### <a name="deprecate-kafka-11-for-hdinsight-40-kafka-cluster"></a>弃用 Kafka 1.1 for HDInsight 4.0 Kafka 群集
+从7月 1 2020 开始，客户将无法在 HDInsight 4.0 上创建 Kafka 1.1 的新 Kafka 群集。 现有群集将按原样运行，无需 Microsoft 的支持。 请考虑在2.1 年 6 30 2020 月的 HDInight 4.0 上迁移到 Kafka，以避免潜在的系统/支持中断。
 
 ### <a name="hbase-20-to-21"></a>HBase 2.0 到 2.1
 在即将推出的 HDInsight 4.0 版本中，HBase 版本将从 2.0 升级到 2.1。
+
+### <a name="a-minimum-4-core-vm-is-required-for-head-node"></a>头节点需要至少4核 VM 
+头节点需要最少的4核 VM，以确保 HDInsight 群集的高可用性和可靠性。 从 6 2020 年4月开始，客户只能选择4核或以上的 VM 作为新 HDInsight 群集的头节点。 现有群集将继续按预期方式运行。 
+
+### <a name="esp-spark-cluster-node-size-change"></a>ESP Spark 群集节点大小变更 
+在即将发布的版本中，ESP Spark 群集允许的最小节点大小将更改为 Standard_D13_V2。 由于 CPU 和内存容量相对较低，因此 A 系列 Vm 可能会导致 ESP 群集问题。 为创建新的 ESP 群集，将不推荐使用 A 系列 Vm。
+
+### <a name="moving-to-azure-virtual-machine-scale-sets"></a>迁移到 Azure 虚拟机规模集
+HDInsight 目前使用 Azure 虚拟机来预配群集。 在即将发布的版本中，HDInsight 将改为使用 Azure 虚拟机规模集。 详细了解 Azure 虚拟机规模集。
 
 ## <a name="bug-fixes"></a>Bug 修复
 HDInsight 会持续改善群集的可靠性和性能。 
 
 ## <a name="component-version-change"></a>组件版本更改
-此版本的组件版本未更改。 可在此处查找 HDInsight 4.0 和 HDInsight 3.6 的当前组件版本。
+此版本没有更改组件版本。 可在此处查找 HDInsight 4.0 和 HDInsight 3.6 的当前组件版本。
 

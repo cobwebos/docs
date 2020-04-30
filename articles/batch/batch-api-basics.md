@@ -4,12 +4,12 @@ description: 从开发的角度了解 Batch 服务的功能及其 API。
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: fdc04c49521c9d91ef836c4d1dba76091db8f16a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 590ce6d6804c25ea9a3c1104f8fea2ea00c66356
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115374"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509187"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>使用 Batch 开发大规模并行计算解决方案
 
@@ -429,7 +429,7 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
 * **资源度量值** 基于 CPU 使用率、带宽使用率、内存使用率和节点的数目。
 * **任务指标**基于任务状态，例如“活动”（已排队）、“正在运行”或“已完成”。******
 
-如果自动缩放会减少池中的计算节点数，则必须考虑如何处理在执行减少操作时运行的任务。 为了满足这一点，Batch 提供可包含在公式中的 *节点解除分配选项* 。 例如，可以指定运行中的任务立即停止，然后重新排入队列，以便在另一个节点上运行，或允许先完成再从池中删除节点。
+如果自动缩放会减少池中的计算节点数，则必须考虑如何处理在执行减少操作时运行的任务。 为满足这一需要，Batch 提供可包含在公式中的[*节点解除分配选项*](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes#computenodedeallocationoption)。 例如，可以指定运行中的任务立即停止，然后重新排入队列，以便在另一个节点上运行，或允许先完成再从池中删除节点。 请注意，将节点释放选项设置`taskcompletion`为`retaineddata`或将会阻止池调整大小操作，直到所有任务都已完成，或者所有任务保留周期都已过期。
 
 有关自动缩放应用程序的详细信息，请参阅 [自动缩放 Azure Batch 池中的计算节点](batch-automatic-scaling.md)。
 

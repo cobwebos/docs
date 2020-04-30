@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: sanpil
 author: sanpil
 ms.date: 11/11/2019
-ms.openlocfilehash: 40e6d7f3d9c28708c5adec26ddc3c0463e75adc0
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: cee6de8fda45c429d0c74a3ecdc966b49e092567
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81529699"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208493"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>在 YAML 中定义机器学习管道
 
@@ -48,7 +48,7 @@ ms.locfileid: "81529699"
 | `default_compute` | 默认的计算目标，管道中的所有步骤将在其上运行。 |
 | `steps` | 管道中使用的步骤。 |
 
-## <a name="parameters"></a>参数
+## <a name="parameters"></a>parameters
 
 `parameters` 节使用以下对应于 [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py) 类的键：
 
@@ -76,7 +76,7 @@ pipeline:
             default: 4
 ```
 
-## <a name="data-reference"></a>数据参考
+## <a name="data-reference"></a>数据引用
 
 `data_references` 节使用以下对应于 [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py) 的键：
 
@@ -362,11 +362,11 @@ pipeline:
                     bind_mode: mount
 ```
 
-### <a name="pipeline-with-multiple-steps"></a>具有多个步骤的管道 
+### <a name="pipeline-with-multiple-steps"></a>包含多个步骤的管道 
 
 | YAML 键 | 说明 |
 | ----- | ----- |
-| `steps` | 一个或多个管道步骤定义的序列。 请注意，一`destination`个步骤`outputs`的键将成为 的`inputs`键。| 
+| `steps` | 一个或多个 PipelineStep 定义的序列。 请注意， `destination`一个步骤的键`outputs`会成为下`source`一步的`inputs`的键。| 
 
 ```yaml
 pipeline:
@@ -433,7 +433,7 @@ pipeline:
 | `wait_for_provisioning` | 是否等待计划预配完成。 |
 | `wait_timeout` | 超时之前等待的秒数。 |
 | `datastore_name` | 要在其中监视已修改/已添加的 Blob 的数据存储。 |
-| `polling_interval` | 轮询已修改/已添加的 Blob 的间隔时间（分钟）。 默认值：5 分钟。 仅支持数据存储计划。 |
+| `polling_interval` | 轮询已修改/已添加的 Blob 的间隔时间（分钟）。 默认值：5分钟。 仅支持数据存储计划。 |
 | `data_path_parameter_name` | 要使用更改的 Blob 路径设置的数据路径管道参数的名称。 仅支持数据存储计划。 |
 | `continue_on_step_failure` | 当某个步骤失败时，是否继续执行提交的 PipelineRun 中的其他步骤。 如果提供此键，将替代管道的 `continue_on_step_failure` 设置。
 | `path_on_datastore` | 可选。 要在其中监视已修改/已添加的 Blob 的数据存储上的路径。 该路径位于数据存储的容器下，因此，计划监视的实际路径是 container/`path_on_datastore`。 如果没有此路径，将监视数据存储容器。 不会监视在 `path_on_datastore` 的子文件夹中进行的添加/修改。 仅支持数据存储计划。 |

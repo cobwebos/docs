@@ -10,17 +10,20 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
-ms.date: 02/07/2019
-ms.openlocfilehash: 9af7b471210ca3cc69428e68aef4aafaee159344
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/28/2020
+ms.openlocfilehash: 9ac30b6d502bb0fbdb454d7a3c36cde23a57fb6b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299067"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231622"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>在 Azure SQL 数据库托管实例数据库中配置复制
 
-使用事务复制，可将数据从 SQL Server 数据库或其他实例数据库复制到 Azure SQL 数据库托管实例数据库中。 
+使用事务复制，可将数据从 SQL Server 数据库或其他实例数据库复制到 Azure SQL 数据库托管实例数据库中。
+
+> [!NOTE]
+> 本文介绍如何在 Azure SQL 托管实例中使用[事务复制](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication)。 它与活动异地复制或[故障转移组](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group)无关，这是一项 Azure SQL 托管实例功能，可用于创建单个实例的完整可读副本。
 
 本文介绍如何在托管实例发布服务器/分发服务器和托管实例订阅服务器之间配置复制。 
 
@@ -36,7 +39,7 @@ ms.locfileid: "79299067"
 
   > [!NOTE]
   > - 本文旨在从头到尾地引导用户配置 Azure 数据库托管实例的复制，并从创建资源组开始讲起。 如果已部署托管实例，请跳到[步骤 4](#4---create-a-publisher-database) 以创建发布服务器数据库；如果你已有一个发布服务器数据库和订阅服务器数据库，并已准备好开始配置复制，请跳到[步骤 6](#6---configure-distribution)。  
-  > - 本文在相同的托管实例上配置发布服务器和分发服务器。 要将分发服务器放在单独的 manged 实例上，请参阅[MI 发布者和 MI 分发服务器 之间配置复制的](sql-database-managed-instance-configure-replication-tutorial.md)教程。 
+  > - 本文在相同的托管实例上配置发布服务器和分发服务器。 若要将分发服务器置于单独的托管实例上，请参阅教程在[mi 发布服务器和 mi 分发服务器之间配置复制](sql-database-managed-instance-configure-replication-tutorial.md)。 
 
 ## <a name="requirements"></a>要求
 
@@ -62,7 +65,7 @@ ms.locfileid: "79299067"
 
 Azure SQL 数据库中的托管实例不支持以下功能：
 
-- [可备份订阅](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication)。
+- [可更新订阅](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication)。
 - 带事务复制的[活动异地复制](sql-database-active-geo-replication.md)。 使用[自动故障转移组](sql-database-auto-failover-group.md)而不是活动异地复制，但请注意，必须从主托管实例中[手动删除](sql-database-managed-instance-transact-sql-information.md#replication)发布，并在故障转移后在辅助托管实例上重新创建。  
  
 ## <a name="1---create-a-resource-group"></a>1 - 创建资源组
@@ -88,7 +91,7 @@ Azure SQL 数据库中的托管实例不支持以下功能：
 
 复制采用 `DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net` 格式的存储访问密钥
 
-示例： `DefaultEndpointsProtocol=https;AccountName=replstorage;AccountKey=dYT5hHZVu9aTgIteGfpYE64cfis0mpKTmmc8+EP53GxuRg6TCwe5eTYWrQM4AmQSG5lb3OBskhg==;EndpointSuffix=core.windows.net`
+示例：`DefaultEndpointsProtocol=https;AccountName=replstorage;AccountKey=dYT5hHZVu9aTgIteGfpYE64cfis0mpKTmmc8+EP53GxuRg6TCwe5eTYWrQM4AmQSG5lb3OBskhg==;EndpointSuffix=core.windows.net`
 
 有关详细信息，请参阅[管理存储帐户访问密钥](../storage/common/storage-account-keys-manage.md)。 
 
@@ -340,5 +343,5 @@ GO
 ## <a name="see-also"></a>另请参阅
 
 - [事务复制](sql-database-managed-instance-transactional-replication.md)
-- [教程：配置 MI 发布者和 SQL 服务器订阅者之间的事务复制](sql-database-managed-instance-configure-replication-tutorial.md)
+- [教程：在 MI 发行者与 SQL Server 订阅服务器之间配置事务复制](sql-database-managed-instance-configure-replication-tutorial.md)
 - [什么是托管实例？](sql-database-managed-instance.md)

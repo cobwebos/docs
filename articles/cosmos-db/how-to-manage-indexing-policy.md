@@ -1,17 +1,17 @@
 ---
 title: 管理 Azure Cosmos DB 中的索引策略
 description: 了解如何管理索引策略、在索引中包括或排除属性、如何使用不同的 Azure Cosmos DB SDK 定义索引
-author: ThomasWeiss
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.author: thweiss
-ms.openlocfilehash: 58a1ee13afa76b152723cb71d4037f9c31cc8d4e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/28/2020
+ms.author: tisande
+ms.openlocfilehash: bdd5d986752e9d80d2967a8f5fd32491154fa236
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79252072"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233924"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的索引策略
 
@@ -19,7 +19,7 @@ ms.locfileid: "79252072"
 
 ## <a name="indexing-policy-examples"></a>索引策略示例
 
-下面是一些以[JSON 格式](index-policy.md#include-exclude-paths)显示的索引策略示例，这是它们在 Azure 门户上公开的方式。 可以通过 Azure CLI 或任何 SDK 设置相同的参数。
+下面是采用[JSON 格式](index-policy.md#include-exclude-paths)显示的索引策略的一些示例，这是它们在 Azure 门户上的公开方式。 可以通过 Azure CLI 或任何 SDK 设置相同的参数。
 
 ### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>用以有选择地排除某些属性路径的选择退出策略
 
@@ -137,7 +137,7 @@ ms.locfileid: "79252072"
     }
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > 通常情况下，建议使用**选择退出**索引策略来让 Azure Cosmos DB 主动为可能会添加到模型的任何新属性编制索引。
 
 ### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>仅在特定属性路径上使用空间索引
@@ -173,6 +173,9 @@ ms.locfileid: "79252072"
 ## <a name="composite-indexing-policy-examples"></a>组合索引策略示例
 
 除了包含或排除各属性的路径，还可以指定一个组合索引。 如果要执行具有针对多个属性的 `ORDER BY` 子句的查询，需要使用这些属性上的[组合索引](index-policy.md#composite-indexes)。 此外，对于具有筛选器且对不同属性使用 ORDER BY 子句的查询，组合索引将具有性能优势。
+
+> [!NOTE]
+> 复合路径具有隐式`/?` ，因为仅为该路径上的标量值编制索引。 复合`/*`路径中不支持通配符。 不应在`/?`复合`/*`路径中指定或。
 
 ### <a name="composite-index-defined-for-name-asc-age-desc"></a>针对（name asc、age desc）定义的组合索引：
 
@@ -346,7 +349,7 @@ WHERE c.name = "Tim" AND c.age > 18
 
 Azure Cosmos 容器将其索引策略存储为 JSON 文档，可以在 Azure 门户中直接编辑这些文档。
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 1. 创建新的 Azure Cosmos 帐户或选择现有的帐户。
 

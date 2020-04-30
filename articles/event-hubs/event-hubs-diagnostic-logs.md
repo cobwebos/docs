@@ -14,60 +14,59 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 04/28/2020
 ms.author: shvija
-ms.openlocfilehash: 68aa62ad34f8db531d439a581ef024862da0f90c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 3010ee7b996c9d3e96082edeb9447c960da321bd
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77162304"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509751"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>设置 Azure 事件中心的诊断日志
 
 可以查看两种类型的 Azure 事件中心日志：
 
-* **[活动日志](../azure-monitor/platform/platform-logs-overview.md)**：这些日志包含对作业执行的操作的相关信息。 这些日志始终启用。
+* **[活动日志](../azure-monitor/platform/platform-logs-overview.md)**：这些日志包含对作业执行的操作的相关信息。 这些日志始终启用。 可以通过在 Azure 门户的事件中心命名空间的左窗格中选择 "**活动日志**" 来查看活动日志条目。 例如： "创建或更新命名空间"，"创建或更新事件中心"。
+
+    ![事件中心命名空间的活动日志](./media/event-hubs-diagnostic-logs/activity-log.png)
 * **[诊断日志](../azure-monitor/platform/platform-logs-overview.md)**：可以配置诊断日志，以便更深入地了解作业发生的所有情况。 诊断日志涵盖从创建作业开始到删除作业为止的所有活动，其中包括作业运行时发生的更新和活动。
 
-## <a name="enable-diagnostic-logs"></a>启用诊断日志
+    以下部分说明如何为事件中心命名空间启用诊断日志。
 
+## <a name="enable-diagnostic-logs"></a>启用诊断日志
 诊断日志默认已禁用。 若要启用诊断日志，请执行以下步骤：
 
-1.  在[Azure 门户](https://portal.azure.com)中的“监视 + 管理”下，点击“诊断日志”********。
+1.  在 [Azure 门户](https://portal.azure.com)中，导航到你的事件中心命名空间。 
+2. 在左窗格中选择 "**监视**" 下的 "**诊断设置**"，然后选择 " **+ 添加诊断设置**"。 
 
-    ![在窗格中导航到诊断日志](./media/event-hubs-diagnostic-logs/image1.png)
+    !["诊断设置" 页-添加诊断设置](./media/event-hubs-diagnostic-logs/diagnostic-settings-page.png)
+4. 在 "**类别详细信息**" 部分中，选择要启用的**诊断日志类型**。 稍后会在本文中找到有关这些类别的详细信息。 
+5. 在 "**目标详细信息**" 部分中，设置所需的存档目标（目标）;例如，存储帐户、事件中心或 Log Analytics 工作区。
 
-2.  单击想要监视的资源。
+    !["添加诊断设置" 页](./media/event-hubs-diagnostic-logs/aDD-diagnostic-settings-page.png)
+6.  在工具栏上选择 "**保存**" 以保存诊断设置。
 
-3.  单击“启用诊断”****。
+    新设置在大约 10 分钟后生效。 在此之后，日志将出现在“诊断日志”窗格上配置的存档目标中****。
 
-    ![启用诊断日志](./media/event-hubs-diagnostic-logs/image2.png)
-
-4.  对于“状态”****，单击“打开”****。
-
-    ![更改诊断日志的状态](./media/event-hubs-diagnostic-logs/image3.png)
-
-5.  设置所需的存档目标；例如存储帐户、事件中心或 Azure Monitor 日志。
-
-6.  保存新的诊断设置。
-
-新设置在大约 10 分钟后生效。 在此之后，日志将出现在“诊断日志”窗格上配置的存档目标中****。
-
-有关配置诊断的详细信息，请参阅 [Azure 诊断日志概述](../azure-monitor/platform/platform-logs-overview.md)。
+    有关配置诊断的详细信息，请参阅 [Azure 诊断日志概述](../azure-monitor/platform/platform-logs-overview.md)。
 
 ## <a name="diagnostic-logs-categories"></a>诊断日志类别
 
-事件中心会捕获两种类别的诊断日志：
+事件中心捕获以下类别的诊断日志：
 
-* **存档日志**：与事件中心存档相关（特别是与存档错误相关）的日志。
-* **操作日志**：有关事件中心操作期间发生的事件的信息，具体而言，就是包括事件中心创建在内的操作类型、所使用的资源和操作的状态。
+- **存档日志**：与事件中心存档相关（特别是与存档错误相关）的日志。
+- **操作日志**：有关事件中心操作期间发生的事件的信息，具体而言，就是包括事件中心创建在内的操作类型、所使用的资源和操作的状态。
+- **自动缩放日志**：有关对事件中心命名空间执行的自动缩放操作的信息。 
+- **Kafka 协调器日志**-有关与事件中心相关的 Kafka 协调器操作的信息。 
+- **Kafka 用户日志**：有关与事件中心相关的 Kafka 用户操作的信息。 
+- **事件中心虚拟网络（VNet）连接事件**：有关事件中心虚拟网络连接事件的信息。 
+- **客户托管的密钥用户日志**：有关与客户托管密钥相关的操作的信息。 
 
-## <a name="diagnostic-logs-schema"></a>诊断日志架构
 
-所有日志均以 JavaScript 对象表示法 (JSON) 格式存储。 每个条目均包含字符串字段，这些字段采用以下部分所述的格式。
+    所有日志均以 JavaScript 对象表示法 (JSON) 格式存储。 每个条目均包含字符串字段，这些字段采用以下部分所述的格式。
 
-### <a name="archive-logs-schema"></a>存档日志架构
+## <a name="archive-logs-schema"></a>存档日志架构
 
 存档日志 JSON 字符串包括下表列出的元素：
 
@@ -105,7 +104,7 @@ category | ArchiveLogs
 }
 ```
 
-### <a name="operational-logs-schema"></a>操作日志架构
+## <a name="operational-logs-schema"></a>操作日志架构
 
 运行日志 JSON 字符串包括下表列出的元素：
 
@@ -137,6 +136,72 @@ Example:
    "category": "OperationalLogs"
 }
 ```
+
+## <a name="autoscale-logs-schema"></a>自动缩放日志架构
+自动缩放日志 JSON 包含下表中列出的元素：
+
+| 名称 | 说明 |
+| ---- | ----------- | 
+| trackingId | 用于跟踪的内部 ID |
+| resourceId | 内部 ID，其中包含 Azure 订阅 ID 和命名空间名称 |
+| 消息 | 信息性消息，提供有关自动膨胀操作的详细信息。 此消息包含给定命名空间的吞吐量单位的以前值和当前值，并触发了 TU 的陀螺形。 |
+
+## <a name="kafka-coordinator-logs-schema"></a>Kafka 协调器日志架构
+Kafka 协调器日志 JSON 包含下表中列出的元素：
+
+| 名称 | 说明 |
+| ---- | ----------- | 
+| requestId | 请求 ID，用于跟踪目的 |
+| resourceId | 内部 ID，其中包含 Azure 订阅 ID 和命名空间名称 |
+| operationName | 在组协调期间完成的操作的名称 |
+| clientId | 客户端 ID |
+| namespaceName | 命名空间名称 | 
+| subscriptionId | Azure 订阅 ID |
+| 消息 | 信息性消息，提供有关在使用者组协调期间完成的操作的详细信息。 |
+
+## <a name="kafka-user-error-logs-schema"></a>Kafka 用户错误日志架构
+Kafka 用户错误日志 JSON 包含下表中列出的元素：
+
+| 名称 | 说明 |
+| ---- | ----------- |
+| trackingId | 跟踪 ID，用于跟踪目的。 |
+| namespaceName | 命名空间名称 |
+| eventhub | 事件中心名称 |
+| partitionId | Partition ID |
+| groupId | 组 ID |
+| ClientId | 客户端 ID |
+| resourceId | 内部 ID，其中包含 Azure 订阅 ID 和命名空间名称 |
+| 消息 | 信息性消息，提供有关错误的详细信息 |
+
+## <a name="event-hubs-virtual-network-connection-event-schema"></a>事件中心虚拟网络连接事件架构
+
+事件中心虚拟网络（VNet）连接事件 JSON 包含下表中列出的元素：
+
+| 名称 | 说明 |
+| ---  | ----------- | 
+| subscriptionId | Azure 订阅 ID |
+| namespaceName | 命名空间名称 |
+| ipAddress | 连接到事件中心服务的客户端的 IP 地址 |
+| action | 事件中心服务在评估连接请求时执行的操作。 支持的操作是**AcceptConnection**和**RejectConnection**。 |
+| reason | 提供操作执行的原因 |
+| 计数 | 给定操作的出现次数 |
+| resourceId | 内部资源 ID，其中包含订阅 ID 和命名空间名称。 |
+
+## <a name="customer-managed-key-user-logs"></a>客户托管的密钥用户日志
+客户托管的密钥用户日志 JSON 包括下表中列出的元素：
+
+| 名称 | 说明 |
+| ---- | ----------- | 
+| category | 消息类别的类型。 它是下列值之一：**错误**和**信息** |
+| resourceId | 内部资源 ID，包括 Azure 订阅 ID 和命名空间名称 |
+| keyVault | Key Vault 资源的名称 |
+| key | Key Vault 密钥的名称。 |
+| version | Key Vault 密钥的版本 |
+| operation | 为请求服务而执行的操作的名称 |
+| code | 状态代码 |
+| 消息 | 消息，提供有关错误或信息性消息的详细信息 |
+
+
 
 ## <a name="next-steps"></a>后续步骤
 - [事件中心简介](event-hubs-what-is-event-hubs.md)
