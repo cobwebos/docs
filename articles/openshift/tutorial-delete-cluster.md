@@ -1,40 +1,33 @@
 ---
 title: 教程 - 删除 Azure Red Hat OpenShift 群集
 description: 在本教程中，了解如何使用 Azure CLI 删除 Azure Red Hat OpenShift 群集
-author: jimzim
-ms.author: jzim
+author: sakthi-vetrivel
+ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
-ms.date: 05/06/2019
-ms.openlocfilehash: c335236a2b0b05f03bef1ebef37f1129a5d0352b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
-ms.translationtype: HT
+ms.date: 04/24/2020
+ms.openlocfilehash: 2de60b90eb6fb75ef013a2fd8785f1b8b616fba6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76278778"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232132"
 ---
-# <a name="tutorial-delete-an-azure-red-hat-openshift-cluster"></a>教程：删除 Azure Red Hat OpenShift 群集
+# <a name="tutorial-delete-an-azure-red-hat-openshift-4-cluster"></a>教程：删除 Azure Red Hat OpenShift 4 群集
 
-本教程到此结束。 完成测试示例群集后，以下介绍如何删除群集及其相关资源，使你不会因为不使用的资源而支付费用。
-
-在该系列的第三部分中，你会学习如何：
+在本教程的第三部分中，将删除运行 OpenShift 4 的 Azure Red Hat OpenShift 群集。 学习如何：
 
 > [!div class="checklist"]
 > * 删除 Azure Red Hat OpenShift 群集
 
-在此系列教程中，你会学习如何：
-> [!div class="checklist"]
-> * [创建 Azure Red Hat OpenShift 群集](tutorial-create-cluster.md)
-> * [缩放 Azure Red Hat OpenShift 群集](tutorial-scale-cluster.md)
-> * 删除 Azure Red Hat OpenShift 群集
 
-## <a name="prerequisites"></a>先决条件
+## <a name="before-you-begin"></a>在开始之前
 
-在开始学习本教程之前：
+在前面的教程中，使用 OpenShift web 控制台创建并连接了 Azure Red Hat OpenShift 群集。 如果尚未执行这些步骤，并且想要继续操作，请从[教程 1-创建 Azure Red Hat Openshift 4 群集开始。](tutorial-create-cluster.md)
 
-* 按照[创建 Azure Red Hat OpenShift 群集](tutorial-create-cluster.md)教程来创建群集。
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 版本2.0.75 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-## <a name="step-1-sign-in-to-azure"></a>步骤 1：登录 Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
 
 如果在本地运行 Azure CLI，请运行 `az login` 以登录到 Azure。
 
@@ -44,36 +37,27 @@ az login
 
 如果你有权访问多个订阅，请运行 `az account set -s {subscription ID}`（将 `{subscription ID}` 替换为要使用的订阅）。
 
-## <a name="step-2-delete-the-cluster"></a>步骤 2：删除群集
+## <a name="delete-the-cluster"></a>删除群集
 
-打开 Bash 终端，并将变量 CLUSTER_NAME 设置为群集的名称：
-
-```bash
-CLUSTER_NAME=yourclustername
-```
-
-现在，删除群集：
+在前面的教程中，已设置以下变量。 
 
 ```bash
-az openshift delete --resource-group $CLUSTER_NAME --name $CLUSTER_NAME
+CLUSTER=yourclustername
+RESOURCE_GROUP=yourresourcegroup
 ```
 
-系统将提示你是否要删除该群集。 通过 `y` 进行确认后，删除群集需要几分钟。 此命令完成后，将删除整个资源组以及其中所有资源，包括群集。
+使用这些值删除群集：
 
-## <a name="deleting-a-cluster-using-the-azure-portal"></a>使用 Azure 门户删除群集
+```bash
+az aro delete --resource-group $RESOURCEGROUP --name $CLUSTER
+```
 
-或者，可以通过在线 Azure 门户删除相关联的资源组。 资源组的名称与你的群集名称相同。
-
-目前，创建群集时创建的 `Microsoft.ContainerService/openShiftManagedClusters` 资源隐藏在 Azure 门户中。 在 `Resource group` 视图中，勾选 `Show hidden types` 以查看资源组。
-
-![隐藏的类型复选框的屏幕截图](./media/aro-portal-hidden-type.png)
-
-如果删除资源组，将删除构建 Azure Red Hat OpenShift 群集时创建的所有相关资源。
+系统将提示你确认是否要删除群集。 通过 `y` 进行确认后，删除群集需要几分钟。 命令完成后，整个资源组以及其中的所有资源（包括群集）都将被删除。
 
 ## <a name="next-steps"></a>后续步骤
 
 本教程的此部分介绍了如何：
 > [!div class="checklist"]
-> * 删除 Azure Red Hat OpenShift 群集
+> * 删除 Azure Red Hat OpenShift 4 群集
 
-详细了解如何将 OpenShift 与官方 [Red Hat OpenShift 文档](https://docs.openshift.com/aro/welcome/index.html)结合使用
+详细了解如何将 OpenShift 与官方 [Red Hat OpenShift 文档](https://www.openshift.com/try)结合使用
