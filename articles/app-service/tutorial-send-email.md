@@ -4,12 +4,12 @@ description: 了解如何从应用服务应用调用业务流程。 发送电子
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: mvc
-ms.openlocfilehash: 4073b49a134356943bd7da8d54bf574f2e0d5eea
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: a8b94d626916b00d75eea3fea0567fa33df3382c
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81604853"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562298"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>教程：从应用服务发送电子邮件及调用其他业务流程
 
@@ -26,27 +26,27 @@ ms.locfileid: "81604853"
 
 将采用所选语言框架的某个应用部署到应用服务。 若要遵循教程部署示例应用，请参阅：
 
-# <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
+### <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
 [教程：使用 SQL 数据库在 Azure 中生成 ASP.NET 应用](app-service-web-tutorial-dotnet-sqldatabase.md)
 
-# <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
+### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
 [教程：在 Azure 应用服务中生成 ASP.NET Core 和 SQL 数据库应用](app-service-web-tutorial-dotnetcore-sqldb.md)
 
-# <a name="nodejs"></a>[Node.js](#tab/node)
+### <a name="nodejs"></a>[Node.js](#tab/node)
 
 [教程：在 Azure 中生成 Node.js 和 MongoDB 应用](app-service-web-tutorial-nodejs-mongodb-app.md)
 
-# <a name="php"></a>[PHP](#tab/php)
+### <a name="php"></a>[PHP](#tab/php)
 
 [教程：在 Azure 中生成 PHP 和 MySQL 应用](app-service-web-tutorial-php-mysql.md)
 
-# <a name="python"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 [教程：在 Azure 应用服务中使用 PostgreSQL 运行 Python (Django) Web 应用](containers/tutorial-python-postgresql-app.md)
 
-# <a name="ruby"></a>[Ruby](#tab/ruby)
+### <a name="ruby"></a>[Ruby](#tab/ruby)
 
 [在 Linux 上的 Azure 应用服务中生成 Ruby 和 Postgres 应用](containers/tutorial-ruby-postgres-app.md)
 
@@ -150,7 +150,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 单击下面的首选语言/框架选项卡查看示例。
 
-# <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
+### <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
 在 ASP.NET 中，可以使用 [System.Net.Http.HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) 类发送 HTTP POST 请求。 例如：
 
@@ -175,7 +175,7 @@ var statusCode = result.StatusCode.ToString();
 
 如果在[教程：使用 SQL 数据库在 Azure 中生成 ASP.NET 应用](app-service-web-tutorial-dotnet-sqldatabase.md)的示例应用中测试此代码，可以在添加 `Todo` 项后，使用该代码在 [Create 操作](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/blob/master/DotNetAppSqlDb/Controllers/TodosController.cs#L52-L63)中发送电子邮件确认。 若要使用上述异步代码，请将 Create 操作转换为异步操作。
 
-# <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
+### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
 在 ASP.NET Core 中，可以使用 [System.Net.Http.HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) 类发送 HTTP POST 请求。 例如：
 
@@ -203,7 +203,7 @@ var statusCode = result.StatusCode.ToString();
 
 如果在[教程：在 Azure 应用服务中生成 ASP.NET Core 和 SQL 数据库应用](app-service-web-tutorial-dotnetcore-sqldb.md)的示例应用中测试此代码，可以在添加 `Todo` 项后，使用该代码在 [Create 操作](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)中发送电子邮件确认。
 
-# <a name="nodejs"></a>[Node.js](#tab/node)
+### <a name="nodejs"></a>[Node.js](#tab/node)
 
 在 Node.js 中，可以使用 [axios](https://www.npmjs.com/package/axios) 之类的 npm 包轻松发送 HTTP POST 请求。 例如：
 
@@ -230,7 +230,7 @@ var jsonData = {
 
 如果在[教程：在 Azure 中生成 Node.js 和 MongoDB 应用](app-service-web-tutorial-nodejs-mongodb-app.md)的示例应用中测试此代码，可以在[成功保存项目](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L24)后，使用该代码在 [create 函数](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L14-L27)中发送电子邮件确认。
 
-# <a name="php"></a>[PHP](#tab/php)
+### <a name="php"></a>[PHP](#tab/php)
 
 在 PHP 中，可以使用 [Guzzle](http://docs.guzzlephp.org/en/stable/index.html) 轻松发送 HTTP POST 请求。 例如：
 
@@ -262,7 +262,7 @@ Log::info(print_r($response, TRUE));
 
 如果在[教程：在 Azure 中生成 PHP 和 MySQL 应用](app-service-web-tutorial-php-mysql.md)的示例应用中测试此代码，可以在紧靠在 return 语句前面的 [Route::post 函数](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)中使用该代码发送电子邮件确认。
 
-# <a name="python"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 在 Python 中，可以使用 [requests](https://pypi.org/project/requests/) 轻松发送 HTTP POST 请求。 例如：
 
@@ -293,7 +293,7 @@ async with aiohttp.post('http://httpbin.org/post', data=json.dump(payload)) as r
 
 如果在[教程：在 Azure 应用服务中使用 PostgreSQL 运行 Python (Django) Web 应用](containers/tutorial-python-postgresql-app.md)的示例应用中测试此代码，可以在紧靠在 return 语句前面的 [Route::post 函数](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)中使用该代码发送电子邮件确认。
 
-# <a name="ruby"></a>[Ruby](#tab/ruby)
+### <a name="ruby"></a>[Ruby](#tab/ruby)
 
 在 Ruby 中，可以使用 [JSONClient](https://www.rubydoc.info/gems/httpclient/JSONClient) 轻松发送 HTTP POST 请求。 例如：
 
@@ -312,7 +312,7 @@ connection = clnt.post_async(ENV['LOGIC_APP_URL'], body)
 
 ---
 
-# <a name="more-resources"></a>更多资源
+## <a name="more-resources"></a>更多资源
 
 [教程：在 Azure 应用服务中托管启用了 CORS 的 RESTful API](app-service-web-tutorial-rest-api.md)  
 [逻辑应用的 HTTP 请求/响应参考](../connectors/connectors-native-reqres.md)  

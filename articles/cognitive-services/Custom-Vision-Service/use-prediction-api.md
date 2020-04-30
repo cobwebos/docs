@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: anroth
 ms.openlocfilehash: 88aaa3d54ea44a15f7900aba093bf28c70c19695
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82129860"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>将模型与预测 API 配合使用
@@ -113,7 +113,7 @@ ms.locfileid: "82129860"
    * 将占位符`<Your prediction key>`替换为前面检索到的键值。
    * 将占位符`<Your prediction URL>`替换为前面检索到的 URL。
 
-## <a name="run-the-application"></a>运行此应用程序
+## <a name="run-the-application"></a>运行应用程序
 
 当你运行应用程序时，系统将提示你在控制台中输入图像文件的路径。 然后，将图像提交到预测 API，并将预测结果作为 JSON 格式的字符串返回。 下面是一个示例响应。
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
 ms.openlocfilehash: 0a394c14842fe0c4eb4baa18cbb13acb8ca3170a
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82142457"
 ---
 # <a name="iot-edge-module-skus-tab"></a>IoT Edge 模块“SKU”选项卡
@@ -36,7 +36,7 @@ ms.locfileid: "82142457"
 
 随后“SKU”选项卡将会刷新，显示配置 SKU 时所要编辑的字段。**** 名称旁边附有星号 (*) 的字段表示必填字段。
 
-|  **字段**       |     **描述**                                                          |
+|  **字段**       |     **说明**                                                          |
 |  ---------       |     ---------------                                                          |
 | **SKU ID\***       | 此 SKU 的标识符。 此名称最多包含 50 个字符，包括小写字母数字字符或短划线 (-)，但不能以短划线结尾。 **注意：** 发布套餐后无法更改此名称。 此名称将在产品 URL 中公开显示。 |
 |  |  |
@@ -50,10 +50,10 @@ ms.locfileid: "82142457"
 
 下表描述了“SKU 详细信息”下的字段的用途、内容和格式。**** 必填字段用星号 (*) 表示。
 
-|  **字段**       |     **描述**                                                          |
+|  **字段**       |     **说明**                                                          |
 |  ---------       |     ---------------                                                          |
-| **标题\***        | 此 SKU 的标题。 最大长度为 50 个字符。 <br/> 它将显示在 Azure 门户中，并在部署时用作默认模块名称（不包含空格和特殊字符）。 请参阅下图了解此字段的确切显示位置。|
-| **小结\***      | 此 SKU 的简短摘要。 最大长度为 100 个字符。 **不是**套餐的摘要，而只是 SKU 的摘要。  此摘要将显示在 Azure 市场中。 请参阅下图了解此字段的确切显示位置。|
+| **词首\***        | 此 SKU 的标题。 最大长度为 50 个字符。 <br/> 它将显示在 Azure 门户中，并在部署时用作默认模块名称（不包含空格和特殊字符）。 请参阅下图了解此字段的确切显示位置。|
+| **“摘要”\***      | 此 SKU 的简短摘要。 最大长度为 100 个字符。 **不是**套餐的摘要，而只是 SKU 的摘要。  此摘要将显示在 Azure 市场中。 请参阅下图了解此字段的确切显示位置。|
 | **说明\***  | 此 SKU 的简短说明。最大长度为 3000 个字符。 不是描述套餐，而只是描述此 SKU。 它将显示在 Azure Marketplace 和 Azure 门户中。 在 Azure 门户中，它将追加到描述 "Marketplace" 选项卡中定义的产品/服务的 Marketplace 说明中。 它可以与 SKU 摘要相同。 请参阅下图了解此字段的确切显示位置。|
 | **隐藏此 SKU\*** | 保留默认设置，即“否”。**** |
 |  |  |
@@ -105,7 +105,7 @@ ms.locfileid: "82142457"
 下表描述了 "**映像存储库详细信息**" 和 "**映像版本**" 部分的 "用途"、"内容" 和 "格式"。  必填字段用星号 (*) 表示。
 
 
-|  **字段**       |     **描述**                                                          |
+|  **字段**       |     **说明**                                                          |
 |  ---------       |     ---------------                                                          |
 |  |  ***映像存储库详细信息***    |
 | **订阅 ID\***        | ACR 的 Azure 订阅 ID。|
@@ -113,7 +113,7 @@ ms.locfileid: "82142457"
 | **注册表名称\***  | ACR 注册表名称。 仅复制注册表名称，而不复制登录服务器名称（例如，不包含 `azurecr.io`。） |
 | **存储库名称\***  | 包含 IoT Edge 模块的 ACR 的存储库名称。 **注意：** 名称一经设置，以后不可更改。 请使用唯一的名称，确保帐户中不会出现其他同名的套餐。 |
 | **用户名\*** | 与 ACR 关联的用户名（管理员用户名）。 |
-| **权限\*** | 与 ACR 关联的密码。 |
+| **Password\*** | 与 ACR 关联的密码。 |
 |    |  ***映像版本***   |
 | **Image 标记或 Digest\*** | 必须至少包含一个 `latest` 标记和一个版本标记（例如，从 `xx.xx.xx-` 开始，其中 xx 是一个数字）。 它们应是面向多个平台的[清单标记](https://github.com/estesp/manifest-tool)。 还必须添加清单标记引用的所有标记，使我们能够上传这些映像。 可以使用标记添加 IoT Edge 模块的多个版本。 所有清单标记（`latest` 除外）必须以 `X.Y-` 或 `X.Y.Z-` 开头，其中，X、Y、Z 为整数。 在[准备 IoT Edge 模块技术资产](./cpp-create-technical-assets.md)中详细了解标记和版本控制。 <br/> 例如，如果 `latest` 标记指向 `1.0.1-linux-x64`、`1.0.1-linux-arm32` 和 `1.0.1-windows-arm32`，则此处需要添加这 6 个标记。 |
 |  |  |
@@ -127,7 +127,7 @@ ms.locfileid: "82142457"
 
 下表描述了“默认路由”、“默认孪生所需属性”、“默认环境变量”和“默认 CreateOptions”的字段的用途、内容和格式。****************
 
-|  **字段**       |     **描述**                                                          |
+|  **字段**       |     **说明**                                                          |
 |  ---------       |     ---------------                                                          |
 | **默认路由**        | 每个默认路由名称和值所包含的字符必须少于 512 个。 最多可以定义 5 个默认路由。 确保在路由值中使用正确的[路由语法](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)。 若要引用模块，请使用其默认模块名称，即不包含空格和特殊字符的“SKU 标题”。**** 若要引用未知的其他模块，请使用 `<FROM_MODULE_NAME>` 约定来告知客户他们需要更新此信息。 详细了解 [IoT Edge 路由](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)。 <br/> 例如，如果模块 `ContosoModule` 在 `ContosoInput` 上侦听输入，并在 `ContosoOutput` 上侦听输出数据，则最好是定义以下 2 个默认路由：<br/>- 名称 #1：`ToContosoModule`<br/>- 值 #1：`FROM /messages/modules/<FROM_MODULE_NAME>/outputs/* INTO BrokeredEndpoint("/modules/ContosoModule/inputs/ContosoInput")`<br/>- 名称 #2：`FromContosoModuleToCloud`<br/>- 值 #2：`FROM /messages/modules/ContonsoModule/outputs/ContosoOutput INTO $upstream`<br/>  |
 | **默认孪生所需属性**      | 每个默认孪生所需属性名称和值所包含的字符必须少于 512 个。 最多可以定义 5 个名称/值孪生所需属性。 孪生所需属性的值必须是有效的 JSON、未转义且不包含数组，最多可包含 4 个嵌套层次结构。 详细了解[孪生所需属性](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties)。 <br/> 例如，如果某个模块通过孪生所需属性支持可动态配置的刷新率，则最好是定义以下默认孪生所需属性：<br/> - 名称 #1：`RefreshRate`<br/>- 值 #1：`60`|

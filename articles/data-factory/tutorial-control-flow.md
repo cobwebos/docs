@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
 ms.openlocfilehash: 77fa8f72d4d4d929d15859fde71f112de1ddd14e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81418722"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>数据工厂管道中的分支和链接活动
@@ -366,7 +366,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
 在此管道中使用以下功能：
 
-* 参数
+* parameters
 * Web 活动
 * 活动依赖项
 * 使用一个活动的输出作为另一活动的输入
@@ -451,13 +451,13 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
    client.Pipelines.CreateOrUpdate(resourceGroup, dataFactoryName, pipelineName, PipelineDefinition(client));
    ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
 管道代码的第一个部分定义参数。
 
-* `sourceBlobContainer` 列中的一个值匹配。 源 Blob 数据集在管道中使用此参数。
-* `sinkBlobContainer` 列中的一个值匹配。 接收器 Blob 数据集在管道中使用此参数。
-* `receiver` 列中的一个值匹配。 管道中的两个 Web 活动使用此参数向收件人发送成功或失败电子邮件。
+* `sourceBlobContainer`。 源 Blob 数据集在管道中使用此参数。
+* `sinkBlobContainer`。 接收器 Blob 数据集在管道中使用此参数。
+* `receiver`。 管道中的两个 Web 活动使用此参数向收件人发送成功或失败电子邮件。
 
 ```csharp
 Parameters = new Dictionary<string, ParameterSpecification>
