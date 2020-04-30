@@ -11,17 +11,17 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: f474ec121f444f5f0c41272f5d87a7f8abfadb8d
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80657049"
 ---
-# <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>教程：为 Linux 设备开发和部署 Python IoT Edge 模块
+# <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>教程：为 Linux 设备开发并部署 Python IoT Edge 模块
 
 使用 Visual Studio Code 开发 Python 代码并将其部署到运行 Azure IoT Edge 的 Linux 设备。
 
-可以使用 Azure IoT Edge 模块部署代码，直接将业务逻辑实现到 IoT Edge 设备。 本教程将引导你在 IoT Edge 设备（已在快速入门中设置）上创建和部署用于筛选传感器数据的 IoT Edge 模块。 在本教程中，你将了解如何执行以下操作：
+可以使用 Azure IoT Edge 模块部署代码，直接将业务逻辑实现到 IoT Edge 设备。 本教程将引导你在 IoT Edge 设备（已在快速入门中设置）上创建和部署用于筛选传感器数据的 IoT Edge 模块。 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 >
@@ -34,20 +34,20 @@ ms.locfileid: "80657049"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="solution-scope"></a>解决方案适用范围
+## <a name="solution-scope"></a>解决方案范围
 
-本教程演示如何使用“Visual Studio Code”在“Python”中开发模块，以及如何将其部署到“Linux 设备”    。 IoT Edge 不支持用于 Windows 设备的 Python 模块。
+本教程演示如何使用 **Visual Studio Code** 以 **Python** 开发模块，以及如何将其部署到 **Linux 设备**。 IoT Edge 不支持 Windows 设备的 Python 模块。
 
-通过下表了解用于开发 Python 模块并将其部署到 Linux 的选项：
+使用下表了解用于开发 Python 模块并将其部署到 Linux 的选项：
 
 | Python | Visual Studio Code | Visual Studio 2017/2019 |
 | - | ------------------ | ------------------ |
-| **Linux AMD64** | ![在 Linux AMD64 上使用适用于 Python 模块的 VS Code](./media/tutorial-c-module/green-check.png) |  |
-| **Linux ARM32** | ![在 Linux ARM32 上使用适用于 Python 模块的 VS Code](./media/tutorial-c-module/green-check.png) |  |
+| **Linux AMD64** | ![将 VS Code 用于 Linux AMD64 上的 Python 模块](./media/tutorial-c-module/green-check.png) |  |
+| **Linux ARM32** | ![将 VS Code 用于 Linux ARM32 上的 Python 模块](./media/tutorial-c-module/green-check.png) |  |
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始学习本教程之前，应已完成上一篇教程，了解如何设置用于开发 Linux 容器的开发环境：[开发适用于 Linux 设备的 IoT Edge 模块](tutorial-develop-for-linux.md)。 完成该教程后，应已准备好以下必备组件：
+在开始学习本教程之前，应已完成上一篇教程来设置用于开发 Linux 容器的开发环境：[开发适用于 Linux 设备的 IoT Edge 模块](tutorial-develop-for-linux.md)。 完成该教程后，已应准备好以下必备组件：
 
 * Azure 中的免费或标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
 * 一个[运行 Azure IoT Edge 的 Linux 设备](quickstart-linux.md)
@@ -55,7 +55,7 @@ ms.locfileid: "80657049"
 * 配置了 [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 的 [Visual Studio Code](https://code.visualstudio.com/)。
 * 配置为运行 Linux 容器的 [Docker CE](https://docs.docker.com/install/)。
 
-要在 Python 中开发 IoT Edge 模块，请在开发计算机上安装以下附加先决条件：
+若要开发以 Python 编写的 IoT Edge 模块，请在开发计算机上安装下述额外的必备组件：
 
 * 适用于 Visual Studio Code 的 [Python 扩展](https://marketplace.visualstudio.com/items?itemName=ms-python.python)。
 * [Python](https://www.python.org/downloads/)。
@@ -80,7 +80,7 @@ ms.locfileid: "80657049"
 
 1. 在“命令面板”中，输入并运行 Azure IoT Edge：**New IoT Edge solution** 命令。 按提示操作，提供以下信息，以便创建解决方案：
 
-   | 字段 | 值 |
+   | 字段 | Value |
    | ----- | ----- |
    | 选择文件夹 | 在适用于 VS Code 的开发计算机上选择用于创建解决方案文件的位置。 |
    | 提供解决方案名称 | 输入解决方案的描述性名称，或者接受默认的 **EdgeSolution**。 |
@@ -100,11 +100,11 @@ ms.locfileid: "80657049"
 
 ### <a name="select-your-target-architecture"></a>选择目标体系结构
 
-目前，Visual Studio Code 可以为 Linux AMD64 和 Linux ARM32v7 设备开发 Python 模块。 需要选择面向每个解决方案的体系结构，因为每种体系结构类型的容器的生成和运行方式均不相同。 默认值为 Linux AMD64。
+目前，Visual Studio Code 可以为 Linux AMD64 和 Linux ARM32v7 设备开发 Python 模块。 需要选择面向每个解决方案的体系结构，因为每种体系结构类型的容器的生成和运行方式均不相同。 默认设置为 Linux AMD64。
 
-1. 打开命令面板并搜索 **Azure IoT Edge:Set Default Target Platform for Edge Solution**，或选择窗口底部侧栏中的快捷方式图标。
+1. 打开命令面板并搜索 **Azure IoT Edge:Set Default Target Platform for Edge Solution**，或者选择窗口底部边栏中的快捷方式图标。
 
-2. 在命令面板中，从选项列表中选择目标体系结构。 在本教程中，我们使用 Ubuntu 虚拟机作为 IoT Edge 设备，因此将保留默认的“amd64”  。
+2. 在命令面板中，从选项列表中选择目标体系结构。 本教程将使用 Ubuntu 虚拟机作为 IoT Edge 设备，因此将保留默认设置 **amd64**。
 
 ### <a name="update-the-module-with-custom-code"></a>使用自定义代码更新模块
 
@@ -199,7 +199,7 @@ ms.locfileid: "80657049"
 
 ## <a name="build-and-push-your-module"></a>生成并推送模块
 
-在上一部分，你已经创建了一个 IoT Edge 解决方案并将代码添加到了 PythonModule，该函数会筛选出其中报告的计算机温度处于可接受限制范围内的消息。 现在需将解决方案生成为容器映像并将其推送到容器注册表。
+在上一部分，你已经创建了一个 IoT Edge 解决方案并将代码添加到了 PythonModule，该函数会筛选出其中报告的计算机温度处于可接受范围内的消息。 现在需将解决方案生成为容器映像并将其推送到容器注册表。
 
 1. 打开 VS Code 集成终端，方法是选择“视图” > “终端”   。
 
@@ -209,7 +209,7 @@ ms.locfileid: "80657049"
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   可能会收到一条安全警告，推荐使用 `--password-stdin`。 这条最佳做法是针对生产方案建议的，这超出了本教程的范畴。 有关详细信息，请参阅 [docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) 参考。
+   可能会出现一条安全警告，其中建议使用 `--password-stdin`。 这条最佳做法是针对生产场景建议的，这超出了本教程的范畴。 有关详细信息，请参阅 [docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) 参考。
 
 1. 在 VS Code 资源管理器中右键单击“deployment.template.json”文件，然后选择“生成并推送 IoT Edge 解决方案”。  
 
@@ -219,7 +219,7 @@ ms.locfileid: "80657049"
 
 使用 Visual Studio Code 资源管理器和 Azure IoT Tools 扩展将模块项目部署到 IoT Edge 设备。 你已经为方案准备了部署清单，即 config 文件夹中的 **deployment.json** 文件。 现在需要做的就是选择一个设备来接收部署。
 
-确保 IoT Edge 设备已启动并运行。
+请确保 IoT Edge 设备已启动并正在运行。
 
 1. 在 Visual Studio Code 资源管理器中展开“Azure IoT 中心设备”部分，查看 IoT 设备的列表。 
 
@@ -237,15 +237,15 @@ ms.locfileid: "80657049"
 
 1. 在 Visual Studio Code 资源管理器中右键单击 IoT Edge 设备的名称，选择“开始监视内置事件终结点”。 
 
-2. 查看抵达 IoT 中心的消息。 消息到达可能需要一段时间。 IoT Edge 设备必须接收其新部署并启动所有模块。 然后，我们对 PythonModule 代码所做的更改将等到机器温度达到 25 度时才发送消息。 IoT 中心还会将消息类型“警报”添加到达到该温度阈值的任何消息。 
+2. 查看抵达 IoT 中心的消息。 消息到达可能需要一段时间。 IoT Edge 设备必须接收其新部署并启动所有模块。 然后，在发送消息之前，我们对 PythonModule 代码所做的更改需等到机器温度达到 25 度才会生效。 IoT 中心还会将消息类型“警报”添加到达到该温度阈值的任何消息。 
 
 ## <a name="edit-the-module-twin"></a>编辑模块孪生
 
 我们已使用部署清单中的 PythonModule 模块孪生将温度阈值设置为 25 度。 可以使用模块孪生来更改功能，而无需更新模块代码。
 
-1. 在 Visual Studio Code 中，展开 IoT Edge 设备下的详细信息以查看正在运行的模块。
+1. 在 Visual Studio Code 中，展开 IoT Edge 设备下的详细信息即可查看运行的模块。
 
-2. 右键单击“PythonModule”并选择“编辑模块孪生”   。
+2. 右键单击 **PythonModule**，然后选择“编辑模块孪生”。 
 
 3. 在所需属性中找到 **TemperatureThreshold**。 将其值更改为比上次报告的温度高出 5 到 10 度的新温度。
 
@@ -265,9 +265,9 @@ ms.locfileid: "80657049"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，创建了 IoT Edge 模块，其中包含用于筛选 IoT Edge 设备生成的原始数据的代码。 做好生成自己的模块的准备后，可以详细了解如何[开发自己的 IoT Edge 模块](module-development.md)或如何[使用 Visual Studio Code 开发模块](how-to-vs-code-develop-module.md)。 有关 IoT Edge 模块的示例，包括模拟温度模块，请参阅 [IoT Edge 模块示例](https://github.com/Azure/iotedge/tree/master/edge-modules)和 [IoT Python SDK 示例](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios)。
+在本教程中，创建了 IoT Edge 模块，其中包含用于筛选 IoT Edge 设备生成的原始数据的代码。 准备好生成自己的模块时，可以详细了解如何[开发自己的 IoT Edge 模块](module-development.md)或如何[使用 Visual Studio Code 开发模块](how-to-vs-code-develop-module.md)。 有关 IoT Edge 模块的示例，包括模拟温度模块，请参阅 [IoT Edge 模块示例](https://github.com/Azure/iotedge/tree/master/edge-modules)和 [IoT Python SDK 示例](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios)。
 
-可以继续学习后续教程，了解如何借助 Azure IoT Edge 部署 Azure 云服务，在边缘位置处理和分析数据。
+可以继续学习后续教程，了解 Azure IoT Edge 如何帮助你部署 Azure 云服务，以在边缘位置处理和分析数据。
 
 > [!div class="nextstepaction"]
 > [Functions](tutorial-deploy-function.md)

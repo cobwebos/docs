@@ -12,10 +12,10 @@ ms.date: 10/15/2019
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
 ms.openlocfilehash: 9afb5b7602b220c25d919f8fe0773d5cfa143d89
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80991188"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>快速入门：从 Android 应用登录用户并调用 Microsoft Graph API
@@ -25,7 +25,7 @@ ms.locfileid: "80991188"
 应用程序必须由 Azure Active Directory 中的应用对象表示，以便 Microsoft 标识平台为应用程序提供令牌。
 
 > [!div renderon="docs"]
-> 为方便起见，该代码示例在 `AndroidManifest.xml` 文件中附带了默认 `redirect_uri` 预配置，因此你不必先注册自己的应用程序对象。 `redirect_uri` 部分取决于应用程序的签名密钥。 示例项目使用签名密钥进行预配置，以使提供的 `redirect_uri` 生效。 若要了解有关注册应用程序对象并将其与应用程序集成的详细信息，请参阅[登录用户和从 Android 应用程序调用 Microsoft Graph](tutorial-v2-android.md) 教程。
+> 为方便起见，代码示例在 `AndroidManifest.xml` 文件中预先配置了默认的 `redirect_uri`，因此你无需事先注册自己的应用对象。 `redirect_uri` 在一定程度上基于应用的签名密钥。 示例项目中已预先配置了签名密钥，使提供的 `redirect_uri` 可正常工作。 若要详细了解如何注册应用对象并将其与应用程序集成，请参阅[从 Android 应用将用户登录并调用 Microsoft Graph](tutorial-v2-android.md) 教程。
 
 
 > [!NOTE]
@@ -35,7 +35,7 @@ ms.locfileid: "80991188"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序 
->  为使此快速入门中的代码示例正常运行，需要添加与身份验证代理兼容的重定向 URI。
+>  若要正常运行本快速入门中的代码示例，需要添加与 Auth 代理兼容的重定向 URI。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [为我进行这些更改]()
 >
@@ -91,7 +91,7 @@ ms.locfileid: "80991188"
 > 在多帐户模式下，可以重复相同的步骤。  此外，还可以删除登录的帐户，这也会删除该帐户的缓存令牌。
 
 ## <a name="how-the-sample-works"></a>示例工作原理
-![示例应用程序的屏幕截图](media/quickstart-v2-android/android-intro.svg)
+![示例应用的屏幕截图](media/quickstart-v2-android/android-intro.svg)
 
 
 代码已组织成多个片段，演示如何编写单帐户和多帐户 MSAL 应用。 代码文件的组织方式如下：
@@ -140,7 +140,7 @@ dependencies {
 
 #### <a name="single-account-msal-initialization"></a>单帐户 MSAL 初始化
 
-在 `onCreateView()` 的 `auth_config_single_account.json` 中，单个帐户 `PublicClientApplication` 是使用 `auth_config_single_account.json` 文件中存储的配置信息创建的。  通过以下方式初始化要在单帐户 MSAL 应用中使用的 MSAL 库：
+在 `auth_config_single_account.json` 中的 `onCreateView()` 内，单个帐户 `PublicClientApplication` 是使用 `auth_config_single_account.json` 文件中存储的配置信息创建的。  通过以下方式初始化要在单帐户 MSAL 应用中使用的 MSAL 库：
 
 ```java
 ...
@@ -204,12 +204,12 @@ mSingleAccountApp.signOut(new ISingleAccountPublicClientApplication.SignOutCallb
 
 * 用户首次登录到应用程序
 * 用户在重置其密码时需输入其凭据。
-* 如果撤销许可
+* 如果许可已撤销
 * 如果应用显式要求许可
-* 应用程序首次请求访问资源时
+* 当应用程序首次请求资源的访问权限时
 * 需要 MFA 或其他条件访问策略时
 
-通过涉及用户的 UI 以交互方式获取令牌的代码位于 `callGraphApiInteractiveButton` 单击处理程序的 `initializeUI()` 中的 `SingleAccountModeFragment.java` 内：
+通过涉及用户的 UI 以交互方式获取令牌的代码位于 `callGraphApiInteractiveButton` 单击处理程序中的 `SingleAccountModeFragment.java` 的 `initializeUI()` 内：
 
 ```java
 /**
@@ -236,7 +236,7 @@ mSingleAccountApp.acquireToken(getActivity(), getScopes(), getAuthInteractiveCal
 
 #### <a name="load-an-account"></a>加载帐户
 
-用于加载帐户的代码位于 `loadAccount()` 中的 `SingleAccountModeFragment.java` 内。  加载用户帐户是一个异步操作，因此，在帐户加载、更改或出错时要处理的回调将传递到 MSAL。  以下代码也会处理在删除了帐户、用户切换到其他帐户等情况时发生的 `onAccountChanged()`。
+用于加载帐户的代码位于 `SingleAccountModeFragment.java` 中的 `loadAccount()` 内。  加载用户帐户是一个异步操作，因此，在帐户加载、更改或出错时要处理的回调将传递到 MSAL。  以下代码也会处理在删除了帐户、用户切换到其他帐户等情况时发生的 `onAccountChanged()`。
 
 ```java
 private void loadAccount() {
@@ -298,8 +298,8 @@ private void callGraphAPI(final IAuthenticationResult authenticationResult) {
 
 请注意 `"account_mode" : "SINGLE"`，它会将此应用配置为使用单个帐户。
 
-`"client_id"` 已预先配置为使用 Microsoft 维护的应用对象注册。
-`"redirect_uri"` 已预先配置为使用随代码示例提供的签名密钥。
+`"client_id"` 已预配置为使用 Microsoft 维护的应用对象注册。
+`"redirect_uri"` 已预配置为使用代码示例随附的签名密钥。
 
 ```json
 {
@@ -328,7 +328,7 @@ private void callGraphAPI(final IAuthenticationResult authenticationResult) {
 
 #### <a name="multiple-account-msal-initialization"></a>多帐户 MSAL 初始化
 
-在 `onCreateView()` 中的 `MultipleAccountModeFragment.java` 文件内，多帐户应用对象 (`IMultipleAccountPublicClientApplication`) 是使用 `auth_config_multiple_account.json file` 中存储的配置信息创建的：
+在 `MultipleAccountModeFragment.java` 文件中的 `onCreateView()` 内，多帐户应用对象 (`IMultipleAccountPublicClientApplication`) 是使用 `auth_config_multiple_account.json file` 中存储的配置信息创建的：
 
 ```java
 // Creates a PublicClientApplication object with res/raw/auth_config_multiple_account.json
@@ -352,7 +352,7 @@ PublicClientApplication.createMultipleAccountPublicClientApplication(getContext(
 
 #### <a name="load-an-account"></a>加载帐户
 
-多帐户应用通常调用 `getAccounts()` 来选择要用于 MSAL 操作的帐户。 用于加载帐户的代码位于 `loadAccounts()` 中的 `MultipleAccountModeFragment.java` 文件内。  加载用户帐户是一个异步操作。 因此，某个回调会处理帐户已加载、更改或出错时的情况。
+多帐户应用通常调用 `getAccounts()` 来选择要用于 MSAL 操作的帐户。 用于加载帐户的代码位于 `MultipleAccountModeFragment.java` 文件中的 `loadAccounts()` 内。  加载用户帐户是一个异步操作。 因此，某个回调会处理帐户已加载、更改或出错时的情况。
 
 ```java
 /**
@@ -385,12 +385,12 @@ private void loadAccounts() {
 
 * 用户首次登录应用程序
 * 用户在重置其密码时需输入其凭据。 
-* 如果撤销许可 
+* 如果许可已撤销 
 * 如果应用显式要求许可 
-* 应用程序首次请求访问资源时
+* 当应用程序首次请求资源的访问权限时
 * 需要 MFA 或其他条件访问策略时
 
-多帐户应用通常使用 `acquireToken()` 调用通过涉及用户的 UI 以交互方式获取令牌。  以交互方式获取令牌的代码位于 `callGraphApiInteractiveButton` 单击处理程序的 `initializeUI()` 中的 `MultipleAccountModeFragment.java` 文件内：
+多帐户应用通常使用 `acquireToken()` 调用通过涉及用户的 UI 以交互方式获取令牌。  以交互方式获取令牌的代码位于 `callGraphApiInteractiveButton` 单击处理程序中的 `MultipleAccountModeFragment.java` 文件的 `initializeUI()` 内：
 
 ```java
 /**
@@ -407,7 +407,7 @@ private void loadAccounts() {
 mMultipleAccountApp.acquireToken(getActivity(), getScopes(), getAuthInteractiveCallback());
 ```
 
-应用不应该在用户每次请求令牌时都要求他们登录。 如果用户已登录，则 `acquireTokenSilentAsync()` 允许应用以无提示方式请求令牌，如 `callGraphApiSilentButton` 单击处理程序的 `initializeUI()` 中的 `MultipleAccountModeFragment.java` 文件内所示：
+应用不应该在用户每次请求令牌时都要求他们登录。 如果用户已登录，则 `acquireTokenSilentAsync()` 允许应用以无提示方式请求令牌，如 `callGraphApiSilentButton` 单击处理程序的 `MultipleAccountModeFragment.java` 文件的 `initializeUI()` 中所示：
 
 ```java
 /**
@@ -424,7 +424,7 @@ mMultipleAccountApp.acquireTokenSilentAsync(getScopes(),
 
 #### <a name="remove-an-account"></a>删除帐户
 
-用于删除帐户以及该帐户的所有已缓存令牌的代码位于“删除帐户”按钮的处理程序的 `initializeUI()` 中的 `MultipleAccountModeFragment.java` 文件内。 在删除帐户之前，需要提供从 `getAccounts()` 和 `acquireToken()` 等 MSAL 方法获取的帐户对象。 由于删除帐户是一个异步操作，因此需提供 `onRemoved` 回调来更新 UI。
+用于删除帐户以及该帐户的所有已缓存令牌的代码位于“删除帐户”按钮的处理程序的 `MultipleAccountModeFragment.java` 文件中的 `initializeUI()` 内。 在删除帐户之前，需要提供从 `getAccounts()` 和 `acquireToken()` 等 MSAL 方法获取的帐户对象。 由于删除帐户是一个异步操作，因此需提供 `onRemoved` 回调来更新 UI。
 
 ```java
 /**
@@ -450,12 +450,12 @@ mMultipleAccountApp.removeAccount(accountList.get(accountListSpinner.getSelected
 
 这是使用多个帐户的 MSAL 应用的配置文件。
 
-有关各种字段的说明，请参阅[了解 Android MSAL 配置文件](msal-configuration.md)。
+有关各个字段的说明，请参阅[了解 Android MSAL 配置文件](msal-configuration.md)。
 
 与 [auth_config_single_account.json](#auth_config_single_accountjson) 配置文件不同，此配置文件包含 `"account_mode" : "MULTIPLE"` 而不是 `"account_mode" : "SINGLE"`，因为这是一个多帐户应用。
 
-`"client_id"` 已预先配置为使用 Microsoft 维护的应用对象注册。
-`"redirect_uri"` 已预先配置为使用随代码示例提供的签名密钥。
+`"client_id"` 已预配置为使用 Microsoft 维护的应用对象注册。
+`"redirect_uri"` 已预配置为使用代码示例随附的签名密钥。
 
 ```json
 {
@@ -480,7 +480,7 @@ mMultipleAccountApp.removeAccount(accountList.get(accountListSpinner.getSelected
 
 ### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>了解创建本快速入门中使用的应用程序的步骤
 
-尝试[登录用户并从 Android 应用程序调用 Microsoft Graph](tutorial-v2-android.md)教程，获取如何生成可获取访问令牌并使用该令牌调用 Microsoft Graph API 的 Android 应用程序的分步指南。
+尝试学习[从 Android 应用将用户登录并调用 Microsoft Graph](tutorial-v2-android.md) 教程，其中逐步介绍了如何生成一个可以获取访问令牌，并使用该令牌调用 Microsoft Graph API 的 Android 应用。
 
 > [!div class="nextstepaction"]
 > [调用图形 API Android 教程](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-android)
