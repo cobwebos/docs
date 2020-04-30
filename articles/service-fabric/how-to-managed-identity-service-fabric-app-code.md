@@ -1,16 +1,16 @@
 ---
-title: 将托管标识与应用程序一起使用
+title: 在应用程序中使用托管标识
 description: 如何使用 Azure Service Fabric 应用程序代码中的托管标识访问 Azure 服务。
 ms.topic: article
 ms.date: 10/09/2019
 ms.openlocfilehash: 8f1f355d6add16f3b3ec25bc569f9b198a8d6778
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461559"
 ---
-# <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>如何利用服务结构应用程序的托管标识访问 Azure 服务
+# <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>如何利用 Service Fabric 应用程序的托管标识访问 Azure 服务
 
 Service Fabric 应用程序可以利用托管标识来访问支持基于 Azure Active Directory 的身份验证的其他 Azure 资源。 应用程序可以获取代表其标识（由系统分配或用户分配）的[访问令牌](../active-directory/develop/developer-glossary.md#access-token)，并使用该令牌作为“持有者”令牌在其他服务（也称为[受保护的资源服务器](../active-directory/develop/developer-glossary.md#resource-server)）中验证自己的身份。 令牌表示分配给 Service Fabric 应用程序的标识，只会颁发给共享该标识的 Azure 资源（包括 SF 应用程序）。 有关托管标识的详细介绍以及系统分配的标识和用户分配的标识之间的区别，请参阅[托管标识概述](../active-directory/managed-identities-azure-resources/overview.md)文档。 在整篇文章中，我们将支持托管标识的 Service Fabric 应用程序称作[客户端应用程序](../active-directory/develop/developer-glossary.md#client-application)。
 
@@ -24,18 +24,18 @@ Service Fabric 应用程序可以利用托管标识来访问支持基于 Azure A
 在支持托管标识的群集中，Service Fabric 运行时将公开一个 localhost 终结点，应用程序可使用该终结点获取访问令牌。 该终结点将在群集的每个节点上提供，可供该节点上的所有实体访问。 已获授权的调用方可以通过调用此终结点并提供身份验证代码来获取访问令牌；每次激活不同的服务代码包时，此代码将由 Service Fabric 运行时生成，并且此代码与托管该服务代码包的进程的生存期紧密相关。
 
 具体而言，支持托管标识的 Service Fabric 服务的环境中植入了以下变量：
-- "IDENTITY_ENDPOINT"：与服务的托管标识对应的本地主机终结点
-- "IDENTITY_HEADER"：表示当前节点上服务的唯一身份验证代码
-- "IDENTITY_SERVER_THUMBPRINT"：服务结构托管标识服务器的指纹
+- "IDENTITY_ENDPOINT"：与服务的托管标识对应的 localhost 终结点
+- "IDENTITY_HEADER"：表示当前节点上的服务的唯一身份验证代码
+- "IDENTITY_SERVER_THUMBPRINT"： service fabric 托管标识服务器的指纹
 
 > [!IMPORTANT]
-> 应用程序代码应将"IDENTITY_HEADER"环境变量的值视为敏感数据 - 不应记录或以其他方式传播该变量。 身份验证代码没有本地节点外部的值，在托管服务的进程终止后，它也不会保留任何值，但它确实代表 Service Fabric 服务的标识，因此，应该像对待访问令牌本身一样对其采取预防措施。
+> 应用程序代码应将 "IDENTITY_HEADER" 环境变量的值视为敏感数据，而不应记录它或传送。 身份验证代码没有本地节点外部的值，在托管服务的进程终止后，它也不会保留任何值，但它确实代表 Service Fabric 服务的标识，因此，应该像对待访问令牌本身一样对其采取预防措施。
 
 若要获取令牌，客户端将执行以下步骤：
-- 通过将托管标识终结点（IDENTITY_ENDPOINT值）与 API 版本和令牌所需的资源（访问群体）串联，形成 URI
-- 为指定的 URI 创建 GET http（s） 请求
+- 通过将托管标识终结点（IDENTITY_ENDPOINT 值）与令牌所需的 API 版本和资源（受众）串联在一起形成 URI
+- 为指定的 URI 创建 GET http （s）请求
 - 添加适当的服务器证书验证逻辑
-- 将身份验证代码（IDENTITY_HEADER值）作为标头添加到请求
+- 将身份验证代码（IDENTITY_HEADER 值）添加为请求的标头
 - 提交请求
 
 成功的响应将包含一个 JSON 有效负载，该有效负载表示生成的访问令牌，以及用于描述该令牌的元数据。 失败的响应还包含有关失败的说明。 有关错误处理的更多详细信息，请参阅下文。
@@ -51,10 +51,10 @@ GET 'https://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-0
 | 元素 | 描述 |
 | ------- | ----------- |
 | `GET` | HTTP 谓词，指示想要从终结点检索数据。 在本例中，该数据为 OAuth 访问令牌。 | 
-| `https://localhost:2377/metadata/identity/oauth2/token` | 通过IDENTITY_ENDPOINT环境变量提供的 Service Fabric 应用程序的托管标识终结点。 |
+| `https://localhost:2377/metadata/identity/oauth2/token` | Service Fabric 应用程序的托管标识终结点，通过 IDENTITY_ENDPOINT 环境变量提供。 |
 | `api-version` | 一个查询字符串参数，指定托管标识令牌服务的 API 版本；目前唯一接受的值为 `2019-07-01-preview`，将来可能会有更改。 |
-| `resource` | 一个查询字符串参数，表示目标资源的应用 ID URI。 此元素以已颁发令牌的 `aud`（受众）声明形式反映。 本示例请求令牌访问 Azure 密钥保管库，其应用 ID URI 是\/https： /vault.azure.net/。 |
-| `Secret` | 一个 HTTP 请求标头字段，Service Fabric 服务的 Service Fabric 托管标识令牌服务需使用该字段对调用方进行身份验证。 此值由 SF 运行时通过IDENTITY_HEADER环境变量提供。 |
+| `resource` | 一个查询字符串参数，表示目标资源的应用 ID URI。 此元素以已颁发令牌的 `aud`（受众）声明形式反映。 此示例请求一个令牌访问 Azure Key Vault，其应用 ID URI 为 https：\//vault.azure.net/。 |
+| `Secret` | 一个 HTTP 请求标头字段，Service Fabric 服务的 Service Fabric 托管标识令牌服务需使用该字段对调用方进行身份验证。 此值由 SF 运行时通过 IDENTITY_HEADER 环境变量提供。 |
 
 
 示例响应：
@@ -332,11 +332,11 @@ HTTP 响应标头的“状态代码”字段指示请求的成功状态；“200
 
 如果发生错误，相应的 HTTP 响应正文将包含一个 JSON 对象和错误详细信息：
 
-| 元素 | 描述 |
+| 元素 | 说明 |
 | ------- | ----------- |
-| 代码 | 错误代码。 |
+| code | 错误代码。 |
 | correlationId | 可用于调试的关联 ID。 |
-| message | 错误的详细说明。 **错误描述可以随时更改。不要依赖于错误消息本身。**|
+| 消息 | 错误的详细说明。 **错误说明随时可能会更改。不要依赖于错误消息本身。**|
 
 示例错误：
 ```json
@@ -357,7 +357,7 @@ HTTP 响应标头的“状态代码”字段指示请求的成功状态；“200
 
 通常，唯一可重试错误代码是 429（请求过多）；内部服务器错误/5xx 错误代码也许可重试，不过，原因可能是永久性的。 
 
-限制适用于对托管标识子系统 - 具体而言，是“上游”依赖项（托管标识 Azure 服务或安全令牌服务）发出的调用数。 Service Fabric 在管道中的各个级别缓存令牌，但考虑到所涉及的组件的分布式性质，调用方可能会遇到不一致的限制响应（即，在应用程序的一个节点/实例上受到限制，但在请求相同标识的令牌时，不会在不同的节点上受到限制）。设置限制条件时，来自同一应用程序的后续请求可能会失败，HTTP 状态代码 429（请求太多），直到条件被清除。  
+限制适用于对托管标识子系统 - 具体而言，是“上游”依赖项（托管标识 Azure 服务或安全令牌服务）发出的调用数。 Service Fabric 在管道中的各个级别缓存令牌，但对于所涉及的组件的分布式性质，调用方可能会遇到不一致的限制响应（即，在应用程序的一个节点/实例上受到限制，而不是在为同一标识请求令牌时在不同的节点上）。设置限制条件后，来自同一应用程序的后续请求可能会失败，并出现 HTTP 状态代码429（请求过多），直到清除该条件。  
 
 建议使用指数退让来重试由于限制而失败的请求，如下所示： 
 

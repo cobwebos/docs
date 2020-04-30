@@ -12,21 +12,21 @@ ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: a670e32058794daeaa233464ba7d054f45ef25e3
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81536312"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建时序见解资源
 
-本文介绍如何使用[Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/)、PowerShell 和时序见解资源提供程序创建和部署时序见解资源。
+本文介绍如何使用 [Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/)、PowerShell 和时序见解资源提供程序创建和部署时序见解资源。
 
 时序见解支持以下资源：
 
    | 资源 | 说明 |
    | --- | --- |
-   | 环境 | 时序见解环境是从事件中转站读取的、经存储的并可供查询使用的事件的逻辑分组。 有关详细信息，请阅读规划[Azure 时间序列见解环境](time-series-insights-environment-planning.md) |
+   | 环境 | 时序见解环境是从事件中转站读取的、经存储的并可供查询使用的事件的逻辑分组。 有关详细信息，请阅读[规划 Azure 时序见解环境](time-series-insights-environment-planning.md) |
    | 事件源 | 事件源是与事件中转站建立的连接，时序见解从该中转站读取和引入事件至环境。 目前支持的事件源是 IoT 中心和事件中心。 |
    | 引用数据集 | 引用数据集提供有关环境中事件的元数据。 在引入期间，引用数据集中的元数据将与事件联接。 引用数据集根据其事件键属性定义为资源。 构成引用数据集的实际元数据通过数据平面 API 上传或修改。 |
    | 访问策略 | 访问策略授予的权限适用于：发出数据查询、操作环境中的引用数据，以及共享已保存的与环境关联的查询和透视。 有关详细信息，请参阅[使用 Azure 门户授予对时序见解环境的数据访问权限](time-series-insights-data-access.md) |
@@ -174,7 +174,7 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
 
 1. 创建部署
 
-    * 若要创建新部署，请运行 `New-AzResourceGroupDeployment` cmdlet，并在出现提示时提供必需的参数。 参数包括部署的名称、资源组的名称，以及模板文件的路径或 URL。 如果未指定**Mode**参数，则使用**增量**的默认值。 有关详细信息，请阅读[增量部署和完整部署](../azure-resource-manager/templates/deployment-modes.md)。
+    * 若要创建新部署，请运行 `New-AzResourceGroupDeployment` cmdlet，并在出现提示时提供必需的参数。 参数包括部署的名称、资源组的名称，以及模板文件的路径或 URL。 如果未指定 **Mode** 参数，将使用 **Incremental** 的默认值。 有关详细信息，请阅读[增量部署和完整部署](../azure-resource-manager/templates/deployment-modes.md)。
 
     * 以下命令提示在 PowerShell 窗口中输入五个必需的参数：
 
@@ -243,7 +243,7 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
 
 1. 通过 Azure 门户部署快速入门模板
 
-   * GitHub 上的快速入门模板主页还包含“部署到 Azure”按钮。**** 单击此按钮可在 Azure 门户中打开“自定义部署”页。 从此页中，可以输入或选择[必需的参数](#required-parameters)或[可选参数](#optional-parameters)表中每个参数的值。 填写设置后，单击“购买”按钮会启动模板部署。****
+   * GitHub 上的快速入门模板主页还包含“部署到 Azure”按钮。  单击此按钮可在 Azure 门户中打开“自定义部署”页。 从此页中，可以输入或选择[必需的参数](#required-parameters)或[可选参数](#optional-parameters)表中每个参数的值。 填写设置后，单击“购买”按钮会启动模板部署。 
     </br>
     </br>
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-timeseriesinsights-environment-with-eventhub%2Fazuredeploy.json" target="_blank">

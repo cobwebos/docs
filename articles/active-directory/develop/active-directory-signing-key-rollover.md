@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.openlocfilehash: e0a38eb03df3d1da64172842fb6eca3cd762f9cd
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537230"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Azure Active Directory 中的签名密钥滚动更新
@@ -35,19 +35,19 @@ OpenID Connect 发现文档和联合元数据文档中始终有多个有效密�
 * [访问资源的本机客户端应用程序](#nativeclient)
 * [访问资源的 Web 应用程序/API](#webclient)
 * [保护资源并通过 Azure 应用服务构建的 Web 应用程序/API](#appservices)
-* [使用 .NET OWIN OpenID 连接、WS-Fed 或 WindowsAzureActiveDirectoryBearer 身份验证中间件保护资源的 Web 应用程序/API](#owin)
+* [使用 .NET OWIN OpenID Connect、WS-Fed 或 WindowsAzureActiveDirectoryBearerAuthentication 中间件保护资源的 Web 应用程序/API](#owin)
 * [使用 .NET Core OpenID Connect 或 JwtBearerAuthentication 中间件保护资源的 Web 应用程序/API](#owincore)
 * [使用 Node.js passport-azure-ad 模块保护资源的 Web 应用程序/API](#passport)
-* [Web 应用程序/API 保护资源，并创建于 Visual Studio 2015 或更高版本](#vs2015)
-* [使用 Visual Studio 2013 创建保护资源的 Web 应用程序](#vs2013)
+* [保护资源的和使用 Visual Studio 2015 或更高版本创建的 Web 应用程序/API](#vs2015)
+* [保护资源的和使用 Visual Studio 2013 创建的 Web 应用程序](#vs2013)
 * 保护资源的和使用 Visual Studio 2013 创建的 Web API
-* [使用 Visual Studio 2012 创建保护资源的 Web 应用程序](#vs2012)
+* [保护资源的和使用 Visual Studio 2012 创建的 Web 应用程序](#vs2012)
 * [保护资源的和使用 Visual Studio 2010、2008 或 Windows Identity Foundation 创建的 Web 应用程序](#vs2010)
 * [使用任何其他库保护资源或手动实现任何受支持协议的 Web 应用程序/API](#other)
 
 本指南**不**适用于：
 
-* 从 Azure AD 应用程序库（包括自定义）添加的应用程序具有单独的签名密钥指南。 [更多信息。](../manage-apps/manage-certificates-for-federated-single-sign-on.md)
+* 从 Azure AD 应用程序库（包括自定义）添加的应用程序具有单独的签名密钥指南。 [详细信息。](../manage-apps/manage-certificates-for-federated-single-sign-on.md)
 * 通过应用程序代理发布的本地应用程序无需担心签名密钥。
 
 ### <a name="native-client-applications-accessing-resources"></a><a name="nativeclient"></a>访问资源的本机客户端应用程序
@@ -126,7 +126,7 @@ passport.use(new OIDCStrategy({
 ### <a name="web-applications--apis-protecting-resources-and-created-with-visual-studio-2015-or-later"></a><a name="vs2015"></a>保护资源的和使用 Visual Studio 2015 或更高版本创建的 Web 应用程序/API
 如果应用程序通过 Visual Studio 2015 或更高版本中的 Web 应用程序模板构建，且从“更改身份验证”**** 菜单中选择了“工作或学校帐户”****，则应用程序已包含自动处理密钥滚动更新所需要的逻辑。 此逻辑嵌入在 OWIN OpenID Connect 中间件中，可检索和缓存来自 OpenID Connect 发现文档中的密钥并定期刷新它们。
 
-如果已手动将身份验证添加到解决方案，则应用程序可能不包含必要的密钥滚动更新逻辑。 您需要自己编写它，或者[使用任何其他库或手动实现任何受支持的协议，按照 Web 应用程序/API](#other)中的步骤进行操作。
+如果已手动将身份验证添加到解决方案，则应用程序可能不包含必要的密钥滚动更新逻辑。 你需要自行编写，或者按照[使用任何其他库或手动实现任何受支持协议的 Web 应用程序/api](#other)中的步骤操作。
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2013"></a><a name="vs2013"></a>保护资源的和使用 Visual Studio 2013 创建的 Web 应用程序
 如果应用程序通过 Visual Studio 2013 中的 Web 应用程序模板生成，且从“更改身份验证”**** 菜单中选择了“组织帐户”****，则应用程序已包含必要的逻辑来自动处理密钥滚动更新。 此逻辑将组织的唯一标识符和签名密钥信息存储到与项目关联的两个数据库表中。 可以在项目的 Web.config 文件中找到数据库的连接字符串。
@@ -146,7 +146,7 @@ passport.use(new OIDCStrategy({
 ### <a name="web-apis-protecting-resources-and-created-with-visual-studio-2013"></a><a name="vs2013"></a>保护资源的和使用 Visual Studio 2013 创建的 Web API
 如果你在 Visual Studio 2013 中使用 Web API 模板创建了 Web API 应用程序，然后从 **“更改身份验证”** 菜单中选择了 **“组织帐户”**，则你的应用程序中已包含必需的逻辑。
 
-如果手动配置了身份验证，请按照以下说明了解如何配置 Web API 以自动更新其密钥信息。
+如果手动配置了身份验证，请按照以下说明进行操作，了解如何配置 web API 来自动更新其密钥信息。
 
 以下代码片段演示如何从联合元数据文档获取最新密钥，并使用 [JWT 令牌处理程序](https://msdn.microsoft.com/library/dn205065.aspx)来验证令牌。 该代码片段假设你使用自己的缓存机制来持久保存密钥（以便验证将来从 Azure AD 获取的令牌），无论是将它保存在数据库中、配置文件中，还是保存在其他位置。
 
@@ -281,7 +281,7 @@ namespace JWTValidation
             <add thumbprint="3A38FA984E8560F19AADC9F86FE9594BB6AD049B" />
           </keys>
    ```
-2. 在**\<添加指纹*">"** 设置中，通过将任何字符替换为其他字符来更改指纹值。 保存 **Web.config** 文件。
+2. 在 " ** \<添加指纹 =" ">** 设置中，通过将任何字符替换为不同的字符来更改指纹值。 保存 **Web.config** 文件。
 3. 生成并运行应用程序。 如果能完成登录过程，则应用程序将通过从目录的联合元数据文档下载所需的信息来成功地更新密钥。 如果在登录时遇到问题，请阅读[使用 Azure AD 将登录名添加到 Web 应用程序](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect)一文，或下载并检查代码示例 [Multi-Tenant Cloud Application for Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b)（用于 Azure Active Directory 的多租户云应用程序），确保应用程序中的更改是正确的。
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2008-or-2010-and-windows-identity-foundation-wif-v10-for-net-35"></a><a name="vs2010"></a>保护资源的和使用 Visual Studio 2008 或 2010 和 Windows Identity Foundation (WIF) v1.0 for .NET 3.5 创建的 Web 应用程序

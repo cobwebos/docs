@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 05/24/2019
 ms.author: alkohli
 ms.openlocfilehash: a3d533080af373ca209a9b393d02d1606d7cb22d
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461729"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>为 Azure Data Box 开具支持票证
 
-本文适用于 Azure 数据框、Azure 数据框重和 Azure 数据框磁盘，所有这些磁盘都由 Azure 数据框服务管理。 如果在使用 Azure Data Box 服务时遇到任何问题，可以创建服务请求以获取技术支持。 本文介绍：
+本文适用于 Azure Data Box、Azure Data Box Heavy 和 Azure Data Box Disk，所有这些都由 Azure Data Box 服务管理。 如果在使用 Azure Data Box 服务时遇到任何问题，可以创建服务请求以获取技术支持。 本文介绍：
 
 * 如何创建支持请求。
 * 如何从门户内部管理支持请求生命周期。
@@ -33,8 +33,8 @@ ms.locfileid: "81461729"
 2. 在“新建支持请求”中选择“基本信息”。******** 在“基本信息”中执行以下步骤：****
 
     1. 从“颁发类型”下拉列表中，选择“技术”********。
-    2. 选择您的**订阅**。
-    3. 在“服务”下，选中“所有服务”。******** 从下拉列表中，选择 **"数据框**"。 
+    2. 选择**订阅**。
+    3. 在“服务”下，选中“所有服务”。******** 从下拉列表中，选择 " **Data Box**"。 
     4. 指定**支持计划**。
     5. 单击“下一步”。 
 
@@ -56,8 +56,8 @@ ms.locfileid: "81461729"
 4. 在“新建支持请求”中，单击“步骤 3: 联系信息”。******** 在“联系信息”中执行以下步骤：****
 
    1. 在“联系人选项”中，提供首选的联系方式（电话或电子邮件）和语言。**** 系统会根据订阅计划自动选择响应时间。
-   2. 在**联系信息**中，提供您的姓名、电子邮件、可选联系人、国家/地区。 选中“保存联系人更改以便在将来的支持请求中使用”****。
-   3. 单击“创建”。 
+   2. 在 "**联系人信息**" 中，提供你的姓名、电子邮件、可选联系人、国家/地区。 选中“保存联系人更改以便在将来的支持请求中使用”****。
+   3. 单击 **“创建”** 。
 
        ![联系信息](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   
 
@@ -83,5 +83,5 @@ ms.locfileid: "81461729"
 ## <a name="next-steps"></a>后续步骤
 
 了解如何[排查 Data Box Disk 相关的问题](data-box-disk-troubleshoot.md)。
-了解如何[排除与数据框相关的问题](data-box-troubleshoot.md)。
-了解如何[解决与数据盒 Blob 存储相关的问题](data-box-troubleshoot-rest.md)。
+了解如何[解决与 Data Box 相关的问题](data-box-troubleshoot.md)。
+了解如何[解决与 Data Box Blob 存储相关的问题](data-box-troubleshoot-rest.md)。

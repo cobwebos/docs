@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
 ms.openlocfilehash: 0ca36a7081aaf70ee2045ee7586184c89591df16
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461508"
 ---
 # <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>在 Azure 开发测试实验室的 Key Vault 中存储机密
@@ -26,7 +26,7 @@ ms.locfileid: "81461508"
 
 为解决此问题并还将机密保存在安全位置，开发测试实验室支持在 [Azure Key Vault](../key-vault/general/overview.md) 中存储机密。 当用户第一次保存机密时，开发测试实验室服务会自动在包含实验室的同一资源组中创建密钥保管库，并将机密存储在密钥保管库中。 开发测试实验室为每个用户创建单独的密钥保管库。 
 
-请注意，实验室用户首先需要创建实验室虚拟机，然后才能在密钥保管库中创建机密。 这是因为 DevTest Lab 服务需要在允许实验室用户在其密钥保管库中创建和存储机密之前将实验室用户与有效的用户文档相关联。 
+请注意，实验室用户首先需要创建实验室虚拟机，然后才能在 key vault 中创建机密。 这是因为，开发测试实验室服务需要将实验室用户与有效的用户文档关联，然后才允许用户在其密钥保管库中创建和存储机密。 
 
 
 ## <a name="save-a-secret-in-azure-key-vault"></a>将机密保存在 Azure Key Vault 中

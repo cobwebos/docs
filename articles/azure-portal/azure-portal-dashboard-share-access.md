@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
 ms.openlocfilehash: 4eef5a9e3f010e19871471d007ff2a0cc24d3834
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461372"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>通过使用基于角色的访问控制来共享 Azure 仪表板
@@ -39,7 +39,7 @@ ms.locfileid: "81461372"
 * 资源组
 * resource
 
-从订阅向下分配给资源的权限。 已发布的仪表板是一个资源。 可能已将用户分配到订阅的角色，这些角色适用于已发布的仪表板。
+分配的权限从订阅向下继承到资源。 已发布的仪表板是一个资源。 可能已将用户分配到订阅的角色，这些角色适用于已发布的仪表板。
 
 假设已有 Azure 订阅，并且团队中的各个成员都分配了订阅的*所有者*、*参与者*或*读取者*角色。 作为所有者或参与者的用户能够列出、查看、创建、修改或删除该订阅中的仪表板。 作为读取者的用户能够列出并查看仪表板，但不能修改或删除它们。 拥有读取者访问权限的用户能够对已发布的仪表板进行本地编辑（例如排查问题时），但不能将这些更改发布回到服务器。 他们可以自行创建仪表板的专用副本。
 
@@ -51,15 +51,15 @@ ms.locfileid: "81461372"
 
 在分配访问权限之前，必须先发布仪表板。
 
-1. 在仪表板中，选择“共享”****。
+1. 在仪表板中，选择“共享”  。
 
     ![选择仪表板中的“共享”](./media/azure-portal-dashboard-share-access/share-dashboard-for-access-control.png)
 
-1. 在“共享 + 访问控制”中选择“发布”。********
+1. 在“共享 + 访问控制”中选择“发布”。  
 
     ![发布仪表板](./media/azure-portal-dashboard-share-access/publish-dashboard-for-access-control.png)
 
-     默认情况下，共享操作会将仪表板发布到名为 **dashboards** 的资源组。 要选择其他资源组，请清除该复选框。
+     默认情况下，共享操作会将仪表板发布到名为 **dashboards** 的资源组。 若要选择不同的资源组，请清除该复选框。
 
 仪表板现已发布。 如果从订阅继承的权限合适，则不需要执行更多的操作。 组织中的其他用户能够根据其订阅级别角色访问和修改仪表板。
 
@@ -67,23 +67,23 @@ ms.locfileid: "81461372"
 
 可将一组用户分配到该仪表板的角色。
 
-1. 发布仪表板后，选择"**共享**"或 **"取消共享**"选项以访问**共享 + 访问控制**。
+1. 发布仪表板后，选择“共享”  或“取消共享”  选项以访问“共享 + 访问控制”  。
 
-1. 在 **"共享 + 访问控制"中**，选择 **"管理用户**"。
+1. 在“共享 + 访问控制”中选择“管理用户”。  
 
     ![管理仪表板的用户](./media/azure-portal-dashboard-share-access/manage-users-for-access-control.png)
 
-1. 选择“角色分配”，查看已为其分配此仪表板角色的现有用户。****
+1. 选择“角色分配”，查看已为其分配此仪表板角色的现有用户。 
 
-1. 要添加新用户或组，请选择"**添加**"，然后**添加角色分配**。
+1. 若要添加新用户或组，请选择“添加”  ，然后选择“添加角色分配”  。
 
     ![添加有权访问仪表板的用户](./media/azure-portal-dashboard-share-access/manage-users-existing-users.png)
 
-1. 选择表示要授予的权限的角色。 对于此示例，请选择“参与者”****。
+1. 选择表示要授予的权限的角色。 对于此示例，请选择“参与者”  。
 
 1. 选择要分配到该角色的用户或组。 如果在列表中没有看到要查找的用户或组，请使用搜索框。 可用组列表取决于已在 Active Directory 中创建的组。
 
-1. 完成添加用户或组后，选择"**保存**"。
+1. 完成添加用户或组后，请选择“保存”  。
 
 ## <a name="next-steps"></a>后续步骤
 

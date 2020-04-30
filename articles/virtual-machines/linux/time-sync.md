@@ -13,20 +13,20 @@ ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
 ms.openlocfilehash: 7c93c1f525713a90abd71c30a21401b9d1cfcb9f
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81460896"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure 中 Linux VM 的时间同步
 
-时间同步对于安全性和事件关联非常重要。 有时，它用于分布式的事务实现。 可通过同步实现多个计算机系统之间的时间准确性。 同步可能受到多种因素的影响，包括重新启动以及时间源和获取时间的计算机之间的流量。 
+时间同步对于安全性和事件相关性来说很重要。 有时候，它用于分布式事务实现。 多个计算机系统之间的时间准确性通过同步来实现。 同步可能受多种因素影响，包括重启以及时间源和提取时间的计算机之间的网络流量。 
 
-Azure 由运行 Windows Server 2016 的基础结构提供支持。 Windows Server 2016 改进了用于校正时间的算法和本地时钟与 UTC 同步的条件。  Windows Server 2016 Accurate Time 功能还大幅改进了 VMICTimeSync 服务，该服务管理 VM 如何与主机同步以获得准确时间。 改进包括 VM 启动或 VM 还原的更精确的初始时间以及中断延迟校正。 
+Azure 由运行 Windows Server 2016 的基础结构提供支持。 Windows Server 2016 已改进用于纠正时间和条件的算法，方便本地时钟与 UTC 同步。  Windows Server 2016 Accurate Time 功能还大幅改进了 VMICTimeSync 服务，该服务管理 VM 如何与主机同步以获得准确时间。 改进包括 VM 启动或 VM 还原的更精确的初始时间以及中断延迟校正。 
 
 >[!NOTE]
->有关 Windows 时间服务的快速概述，请参阅此[高级概述视频](https://aka.ms/WS2016TimeVideo)。
+>若要快速了解 Windows 时间服务，请参阅此[高级概述视频](https://aka.ms/WS2016TimeVideo)。
 >
 > 有关详细信息，请参阅 [Windows Server 2016 的准确时间](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)。 
 
@@ -40,11 +40,11 @@ Azure 主机与内部 Microsoft 时间服务器同步，这些服务器从 Micro
 
 虚拟机与主机的交互也会影响时钟。 在[内存保留维护](../maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot)期间，VM 最多暂停 30 秒。 例如，在维护开始之前，VM 时钟显示上午 10:00:00 并持续 28 秒。 VM 恢复后，VM 上的时钟仍显示上午 10:00:00，也就是差了 28 秒。 为了校正这种情况，VMICTimeSync 服务会监视主机上发生的情况，并提示在 VM 上进行更改以进行补偿。
 
-如果没有进行时间同步，则 VM 上的时钟会累积错误。 当只有一个 VM 时，除非工作负载需要高度准确的计时，否则效果可能不会很明显。 但在大多数情况下，我们有多个相互关联的 VM，它们使用时间来跟踪事务，并且需要在整个部署中保持一致的时间。 VM 之间的时间不同时，可能会产生以下影响：
+如果不进行时间同步，VM 上的时钟会累积错误。 只有一个 VM 时，效果可能不明显，除非工作负荷要求极为准确的计时。 但在大多数情况下，我们有多个互连的 VM，这些 VM 使用时间来跟踪事务，因此需确保整个部署的时间一致。 当 VM 之间的时间不同时，可能会造成以下影响：
 
-- 身份验证将会失败。 Kerberos 等安全协议或依赖于证书的技术依赖于系统间的时间一致性。
-- 如果日志（或其他数据）在时间上不一致，则很难弄清楚系统中发生了什么。 同一事件看起来好像发生在不同的时间，这使关联变得困难。
-- 如果时钟关闭，则可能无法正确计费。
+- 身份验证会失败。 安全协议（如 Kerberos）或依赖于证书的技术要求跨系统确保时间一致性。
+- 如果日志（或其他数据）在时间上不一致，则很难弄清楚系统中发生了什么。 同一事件看起来就像是在不同的时间发生，难以进行关联。
+- 如果时钟存在偏差，则可能造成计费不正确。
 
 
 
@@ -70,7 +70,7 @@ Azure 主机与内部 Microsoft 时间服务器同步，这些服务器从 Micro
 
 ### <a name="host-only"></a>仅限主机 
 
-由于诸如 time.windows.com 和 ntp.ubuntu.com 等 NTP 服务器是公共服务器，因此与它们同步时间需要通过 Internet 发送流量。 不同的数据包延迟会对时间同步的质量产生负面影响。通过切换到仅主机同步来删除 NTP 有时会提高时间同步结果。
+由于诸如 time.windows.com 和 ntp.ubuntu.com 等 NTP 服务器是公共服务器，因此与它们同步时间需要通过 Internet 发送流量。 不同的数据包延迟可能会对时间同步的质量产生负面影响。通过切换到仅限主机的同步来删除 NTP 有时会缩短时间同步结果。
 
 如果使用默认配置时遇到时间同步问题，切换到仅限主机时间同步可解决问题。 请尝试仅限主机同步，看看是否会改善 VM 上的时间同步。 
 
@@ -132,7 +132,7 @@ cat /sys/class/ptp/ptp0/clock_name
 
 ### <a name="chrony"></a>chrony
 
-在 Ubuntu 19.10 和更高版本红帽企业 Linux 和 CentOS 7.x 上，[计时](https://chrony.tuxfamily.org/)配置为使用 PTP 源时钟。 较旧的 Linux 版本使用不支持 PTP 源的网络时间协议守护进程 （ntpd），而不是计时版本。 要在这些版本中启用 PTP，必须使用以下代码手动安装和配置 chrony（在 chrony.conf 中）：
+在 Ubuntu 19.10 及更高版本中，Red Hat Enterprise Linux 和 CentOS [chrony](https://chrony.tuxfamily.org/)配置为使用 PTP 源时钟。 较旧的 Linux 发行版（而不是 chrony）使用不支持 PTP 源的网络时间协议后台程序（ntpd）。 若要在这些版本中启用 PTP，必须手动安装和配置 chrony （在 chrony 中），方法是使用以下代码：
 
 ```bash
 refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
@@ -140,19 +140,19 @@ refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
 
 有关 Ubuntu 和 NTP 的详细信息，请参阅[时间同步](https://help.ubuntu.com/lts/serverguide/NTP.html)。
 
-有关红帽和 NTP 的详细信息，请参阅[配置 NTP](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/s1-configure_ntp)。 
+有关 Red Hat 和 NTP 的详细信息，请参阅[配置 NTP](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/s1-configure_ntp)。 
 
-有关计时的详细信息，请参阅[使用计时](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-using_chrony)。
+有关 chrony 的详细信息，请参阅[使用 chrony](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-using_chrony)。
 
-如果同时启用了 chrony 和 TimeSync 源，则可以将一个源标记为**首选**，这将另一个源集为备份。 由于 NTP 服务只会在很长一段时间后才会更新偏差较大的时钟，因此与仅基于 NTP 的工具相比，VMICTimeSync 可更快地从暂停的 VM 事件中恢复时钟。
+如果同时启用了 chrony 和 TimeSync 源，则可以将其标记为 "按**需**"，这会将其他源设置为备份。 由于 NTP 服务只会在很长一段时间后才会更新偏差较大的时钟，因此与仅基于 NTP 的工具相比，VMICTimeSync 可更快地从暂停的 VM 事件中恢复时钟。
 
-默认情况下，计时加速或减慢系统时钟以修复任何时间漂移。 如果漂移变得太大，色度无法修复漂移。 为了克服这种情况，可以`makestep`更改 **/etc/chrony.conf**中的参数，以强制时间同步（如果漂移超过指定的阈值）。
+默认情况下，chronyd 加速或减速系统时钟，以解决任何时间偏移。 如果偏移过大，chrony 将无法修复偏移。 若要解决此情况`makestep` ，可以更改 **/etc/chrony.conf**中的参数，以在偏移超出指定的阈值时强制 timesync。
 
  ```bash
 makestep 1.0 -1
 ```
 
-在这里，如果漂移大于 1 秒，计时将强制时间更新。 要应用更改，请重新启动计时服务：
+如果偏移大于1秒，chrony 将强制进行时间更新。 若要应用更改，请重新启动 chronyd 服务：
 
 ```bash
 systemctl restart chronyd
@@ -160,7 +160,7 @@ systemctl restart chronyd
 
 ### <a name="systemd"></a>systemd 
 
-在 19.10 之前的 SUSE 和 Ubuntu 版本中，使用[系统配置](https://www.freedesktop.org/wiki/Software/systemd/)时间同步。 有关 Ubuntu 的详细信息，请参阅[时间同步](https://help.ubuntu.com/lts/serverguide/NTP.html)。 有关 SUSE 的详细信息，请参阅[SUSE Linux 企业服务器 12 SP3 发行说明](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement)中的第 4.5.8 节。
+在19.10 之前的 SUSE 和 Ubuntu 版本上，使用[systemd](https://www.freedesktop.org/wiki/Software/systemd/)配置时间同步。 有关 Ubuntu 的详细信息，请参阅[时间同步](https://help.ubuntu.com/lts/serverguide/NTP.html)。 有关 SUSE 的详细信息，请参阅[SUSE Linux Enterprise Server 12 SP3 发行说明](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement)中的4.5.8 部分。
 
 ## <a name="next-steps"></a>后续步骤
 

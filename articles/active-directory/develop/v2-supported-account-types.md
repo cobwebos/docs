@@ -13,10 +13,10 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: b3b0114bb5d545755fe59c49605d6def341d2275
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81535768"
 ---
 # <a name="supported-account-types"></a>支持的帐户类型
@@ -29,10 +29,10 @@ ms.locfileid: "81535768"
 
 在 Microsoft Azure 公共云中，大多数类型的应用都可以使用任何受众登录用户：
 
-- 如果你正在编写业务线 (LOB) 应用程序，则可以在自己的组织中登录用户。 此类应用程序有时被命名为“单租户”****。
+- 如果你正在编写业务线 (LOB) 应用程序，则可以在自己的组织中登录用户。 此类应用程序有时被命名为“单租户”  。
 - 如果你为 ISV，则可以编写一个应用程序来登录用户：
 
-  - 在任何组织中。 这样的应用程序被命名为“多租户”Web 应用程序****。 你有时会看到它使用工作或学校帐户登录用户。
+  - 在任何组织中。 这样的应用程序被命名为“多租户”Web 应用程序  。 你有时会看到它使用工作或学校帐户登录用户。
   - 使用工作、学校或个人 Microsoft 帐户。
   - 仅使用个人 Microsoft 帐户。
     > [!NOTE]

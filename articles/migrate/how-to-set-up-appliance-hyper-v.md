@@ -1,31 +1,31 @@
 ---
-title: 为 Hyper-V 设置 Azure 迁移设备
-description: 了解如何设置 Azure 迁移设备以评估和迁移超 VM。
+title: 为 Hyper-v 设置 Azure Migrate 设备
+description: 了解如何设置 Azure Migrate 设备来评估和迁移 Hyper-v Vm。
 ms.topic: article
 ms.date: 03/23/2020
 ms.openlocfilehash: 77c13a3a8c87d116bd0863324d28669185c53c84
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81538284"
 ---
-# <a name="set-up-an-appliance-for-hyper-v-vms"></a>为超 VM 设置设备
+# <a name="set-up-an-appliance-for-hyper-v-vms"></a>为 Hyper-v Vm 设置设备
 
-请按照本文设置 Azure 迁移设备，以便使用[Azure 迁移：服务器评估](migrate-services-overview.md#azure-migrate-server-assessment-tool)工具评估超 VM。
+按照本文所述设置 Azure Migrate 设备，以便通过[Azure Migrate：服务器评估](migrate-services-overview.md#azure-migrate-server-assessment-tool)工具评估 hyper-v vm。
 
-[Azure 迁移设备](migrate-appliance.md)是 Azure 迁移：服务器评估/迁移用于发现本地超 VM 并将 VM 元数据/性能数据发送到 Azure 的轻量级设备。
+[Azure Migrate 设备](migrate-appliance.md)是 Azure Migrate 使用的轻型设备，用于发现本地 hyper-v vm，并将 VM 元数据/性能数据发送到 Azure。
 
-可以使用以下几种方法部署设备：
+可以使用几种方法来部署设备：
 
-- 使用下载的 VHD 在 Hyper-V VM 上设置。 这是本文中描述的方法。
-- 使用 PowerShell 安装程序脚本在 Hyper-V VM 或物理计算机上设置。 如果无法使用 VHD 设置 VM，或者使用 Azure 政府设置 VM，则应使用[此方法](deploy-appliance-script.md)。
+- 使用下载的 VHD 在 Hyper-v VM 上设置。 这是本文中所述的方法。
+- 使用 PowerShell 安装程序脚本在 Hyper-V VM 或物理计算机上进行设置。 如果无法使用 VHD 设置 VM，或者在 Azure 政府版中，则应使用[此方法](deploy-appliance-script.md)。
 
 创建设备后，请检查它是否可以连接到 Azure Migrate:服务器评估，首次配置该设备，并将其注册到 Azure Migrate 项目。
 
-## <a name="appliance-deployment-vhd"></a>设备部署 （VHD）
+## <a name="appliance-deployment-vhd"></a>设备部署（VHD）
 
-要使用 VHD 模板设置设备，请：
+使用 VHD 模板设置设备：
 
 - 从 Azure 门户下载压缩的 Hyper-V VHD。
 - 创建设备，并检查它是否可以连接到 Azure Migrate 服务器评估。
@@ -50,7 +50,7 @@ ms.locfileid: "81538284"
 2. 运行以下命令以生成 VHD 的哈希
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 用法示例：```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.vhd SHA256```
-3.  对于设备版本 2.19.11.12，生成的哈希应与这些[设置](https://docs.microsoft.com/azure/migrate/tutorial-assess-hyper-v#verify-security)匹配。
+3.  对于设备版本2.19.11.12，生成的哈希应与这些[设置](https://docs.microsoft.com/azure/migrate/tutorial-assess-hyper-v#verify-security)相符。
 
 
 
@@ -77,11 +77,11 @@ ms.locfileid: "81538284"
 
 ### <a name="verify-appliance-access-to-azure"></a>验证设备的 Azure 访问权限
 
-确保设备 VM 可以连接到[公共](migrate-appliance.md#public-cloud-urls)[和政府云](migrate-appliance.md#government-cloud-urls)的 Azure URL。
+确保设备 VM 可以连接到[公有云](migrate-appliance.md#public-cloud-urls)和[政府云](migrate-appliance.md#government-cloud-urls)的 Azure URL。
 
 ## <a name="configure-the-appliance"></a>配置设备
 
-首次设置设备。 如果使用脚本而不是 VHD 部署设备，则该过程的前两个步骤不适用。
+首次设置设备。 如果使用脚本而不是 VHD 来部署设备，则过程中的前两个步骤不适用。
 
 1. 在“Hyper-V 管理器”>“虚拟机”中，右键单击该 VM 并选择“连接”。  
 2. 提供设备的语言、时区和密码。
@@ -111,7 +111,7 @@ ms.locfileid: "81538284"
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>为 SMB VHD 委托凭据
 
-如果在 SMB 上运行 VHD，必须启用从设备到 Hyper-V 主机的凭据委托。 要从产品中执行此操作，请执行以下操作：
+如果在 SMB 上运行 VHD，必须启用从设备到 Hyper-V 主机的凭据委托。 若要从设备执行此操作：
 
 1. 在设备 VM 上运行此命令。 HyperVHost1/HyperVHost2 是示例主机名。
 
@@ -150,4 +150,4 @@ ms.locfileid: "81538284"
 
 ## <a name="next-steps"></a>后续步骤
 
-使用 Azure 迁移服务器评估尝试[Hyper-V 评估](tutorial-assess-hyper-v.md)。
+试用 Azure Migrate Server 评估的[hyper-v 评估](tutorial-assess-hyper-v.md)。

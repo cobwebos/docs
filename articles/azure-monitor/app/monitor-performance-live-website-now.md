@@ -4,16 +4,16 @@ description: 在不重新部署网站的情况下监视网站性能。 使用托
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.openlocfilehash: ba17ee275a744b88f2c76e7e3f99a1ac9cc8e758
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81536822"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>在运行时使用 Application Insights 无代码附加检测 Web 应用
 
 > [!IMPORTANT]
-> 不再建议使用状态监视器。 它已被 Azure 监视器应用程序见解代理（以前称为状态监视器 v2）替换。 有关[本地服务器部署](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)或[Azure 虚拟机和虚拟机缩放集部署](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps)，请参阅我们的文档。
+> 不再建议使用状态监视器。 它已替换为 Azure Monitor Application Insights 代理（以前称为状态监视器 v2）。 请参阅有关[本地服务器部署](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)或[Azure 虚拟机和虚拟机规模集部署](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps)的文档。
 
 无需修改或重新部署代码，即可使用 Azure Application Insights 检测实时 Web 应用。 需要 [Microsoft Azure](https://azure.com) 订阅。
 
@@ -144,7 +144,7 @@ Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-0
 * 若要输出详细日志，请修改配置文件：`C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config` 并将 `<add key="TraceLevel" value="All" />` 添加到 `appsettings`。
 然后重启状态监视器。
 
-* 由于状态监视器是 .NET 应用程序，您还可以[通过将适当的诊断添加到配置文件](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element)来启用 .net 跟踪。 例如，在某些情况下，通过[配置网络跟踪](https://docs.microsoft.com/dotnet/framework/network-programming/how-to-configure-network-tracing)来查看网络级别发生的情况可能很有用
+* 由于状态监视器是 .NET 应用程序，因此还可以[通过将相应的诊断添加到配置文件来启用 .net 跟踪](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element)。 例如，在某些情况下，通过[配置网络跟踪](https://docs.microsoft.com/dotnet/framework/network-programming/how-to-configure-network-tracing)来查看网络级别发生的情况会很有用。
 
 ### <a name="insufficient-permissions"></a>权限不足
   
@@ -175,7 +175,7 @@ Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-0
 ## <a name="system-requirements"></a>系统要求
 支持服务器上 Application Insights 状态监视器的 OS：
 
-* Windows Server 2008
+* Windows 2008 Server
 * Windows Server 2008 R2
 * Windows Server 2012
 * Windows server 2012 R2
@@ -238,7 +238,7 @@ IIS 支持：IIS 7、7.5、8、8.5（必须有 IIS）
 `Update-ApplicationInsightsMonitoring -Name appName [-InstrumentationKey "0000000-0000-000-000-0000"`]
 
 * `-Name`：Web 应用在 IIS 中的名称。
-* `-InstrumentationKey`（可选。使用此选项可更改应用遥测发送到的资源。
+* `-InstrumentationKey`（可选。）使用此更改将应用的遥测数据发送到的资源。
 * 此 cmdlet：
   * 将命名应用升级到最近下载到此计算机的 SDK 版本。 （仅当 `SdkState==EnabledAfterDeployment`时才适用）
   * 如果提供检测键，命名应用会重新配置为将遥测数据发送到具有该键的资源。 （仅当 `SdkState != Disabled`时才适用）

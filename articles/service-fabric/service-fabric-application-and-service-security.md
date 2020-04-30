@@ -4,10 +4,10 @@ description: 有关如何在 Service Fabric 中安全运行微服务应用程序
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.openlocfilehash: c97c5345a1a18cce8c44508542f12d3642d2b8f9
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461423"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric 应用程序和服务安全性
@@ -20,27 +20,27 @@ ms.locfileid: "81461423"
 ## <a name="authentication-and-authorization"></a>身份验证和授权
 通常，有必要将服务公开的资源和 API 限制给特定的受信任用户或客户端使用。 身份验证是可靠认定用户身份的过程。  授权是将 API 或服务提供给某些已经过身份验证的用户，而不提供给其他用户使用的过程。
 
-### <a name="authentication"></a>身份验证
-做出 API 级信任决策的第一个步骤就是身份验证。 身份验证是可靠认定用户身份的过程。  在微服务方案中，通常会集中处理身份验证。 如果使用 API 网关，可[将身份验证任务卸载](/azure/architecture/patterns/gateway-offloading)到网关。 如果使用此方法，请确保除非部署了额外的安全措施来对消息（不管是否来自网关）进行身份验证，否则不能直接访问单个服务（在不使用 API 网关的情况下）。
+### <a name="authentication"></a>Authentication
+做出 API 级信任决策的第一个步骤就是身份验证。 身份验证是可靠认定用户身份的过程。  在微服务场景中，身份验证通常以集中方式处理。 如果使用 API 网关，可[将身份验证任务卸载](/azure/architecture/patterns/gateway-offloading)到网关。 如果使用此方法，请确保除非部署了额外的安全措施来对消息（不管是否来自网关）进行身份验证，否则不能直接访问单个服务（在不使用 API 网关的情况下）。
 
-如果可以直接访问服务，则身份验证服务（如 Azure Active Directory）或充当安全令牌服务 (STS) 的专用身份验证微服务可用于对用户进行身份验证。 通过安全令牌或 cookie 在服务之间共享信任决策。 
+如果可以直接访问服务，则可以使用某个身份验证服务（例如 Azure Active Directory，或充当安全令牌服务 (STS) 的专用身份验证微服务）对用户进行身份验证。 信任决策在包含安全令牌或 Cookie 的服务之间共享。 
 
-对于 ASP.NET Core，用于[对用户进行身份验证](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/)的主要机制是 ASP.NET Core 标识成员身份系统。 ASP.NET Core 标识会将用户信息（包括登录信息、角色和声明）存储在由开发人员配置的数据存储中。 ASP.NET Core 标识支持双重身份验证。  外部身份验证提供商也受支持，因此用户可以使用来自 Microsoft、Google、Facebook 或 Twitter 等提供商的现有身份验证进程登录。
+对于 ASP.NET Core，用于[对用户进行身份验证](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/)的主要机制是 ASP.NET Core 标识成员身份系统。 ASP.NET Core 标识在开发人员配置的数据存储中存储用户信息（包括登录信息、角色和声明）。 ASP.NET Core 标识支持双重身份验证。  此外还支持外部身份验证提供程序，因此用户可以使用 Microsoft、Google、Facebook 或 Twitter 等提供程序中的现有身份验证过程登录。
 
 ### <a name="authorization"></a>授权
-完成身份验证后，服务需要为用户访问授权，或确定哪些用户可以访问。 该过程允许服务向部分通过身份验证的用户提供 API，但不是向所有用户提供。 授权是正交性的，它独立于身份验证，是认定用户身份的过程。 身份验证可为当前用户创建一个或多个标识。
+完成身份验证后，服务需要为用户访问授权，或确定哪些用户可以访问。 此过程可让服务将 API 提供给某些经过身份验证的用户使用，而不是提供给所有用户使用。 授权是正交性的，它独立于身份验证，是认定用户身份的过程。 身份验证可为当前用户创建一个或多个标识。
 
 可以根据用户的角色或者根据自定义策略（可能包括检查声明或其他试探方法）实现 [ASP.NET Core 授权](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/authorization-net-microservices-web-applications)。
 
 ## <a name="restrict-and-secure-access-using-an-api-gateway"></a>使用 API 网关限制和保护访问
-云应用程序通常都需要使用前端网关，为用户、设备或其他应用程序提供同一个入口点。 [API 网关](/azure/architecture/microservices/gateway)位于客户端与服务之间，是应用程序提供的所有服务的入口点。 它充当反向代理，将来自客户端的请求路由到服务。 它还可能执行各种跨领域任务，如身份验证和授权、TLS 终止和速率限制。 如果未部署网关，则客户端必须直接向前端服务发送请求。
+云应用程序通常都需要使用前端网关，为用户、设备或其他应用程序提供同一个入口点。 [API 网关](/azure/architecture/microservices/gateway)位于客户端与服务之间，是应用程序提供的所有服务的入口点。 它充当反向代理，将来自客户端的请求路由到服务。 它还可以执行各种跨切削任务，如身份验证和授权、TLS 终止和速率限制。 如果未部署网关，则客户端必须直接向前端服务发送请求。
 
 在 Service Fabric 中，网关可以是任意无状态服务（如 [ASP.NET Core 应用程序](service-fabric-reliable-services-communication-aspnetcore.md)），也可以是其他专为流量入口设计的服务（如 [Traefik](https://docs.traefik.io/)、[事件中心](https://docs.microsoft.com/azure/event-hubs/)、[IoT 中心](https://docs.microsoft.com/azure/iot-hub/)或 [Azure API 管理](https://docs.microsoft.com/azure/api-management)）。
 
 API 管理直接与 Service Fabric 集成，以便可以使用一组丰富的路由规则向后端 Service Fabric 服务发布 API。  可以使用限制来保护对后端服务的访问、防止 DOS 攻击；还可以验证 API 密钥、JWT 令牌、证书和其他凭据。 有关详细信息，请参阅[有关 Service Fabric 与 Azure API 管理的概述](service-fabric-api-management-overview.md)。
 
 ## <a name="manage-application-secrets"></a>管理应用程序机密
-机密可以是任何敏感信息，例如存储连接字符串、密码或其他不应以明文形式处理的值。 本文使用 Azure Key Vault 来管理密钥和机密。 但是，在应用程序中*使用*机密与云平台无关，允许将应用程序部署到任何位置托管的群集。
+机密可以是任何敏感信息，例如存储连接字符串、密码或其他不应以明文形式处理的值。 本文使用 Azure Key Vault 来管理密钥和机密。 但是，在应用程序中*使用*机密的方式不区分云平台，因此可让应用程序部署到托管在任何位置的群集。
 
 建议通过[服务配置包][config-package]来管理服务配置设置。 可以通过包含运行状况验证和自动回滚的托管滚动升级机制来控制配置包版本以及对其进行更新。 这比全局配置更有优势，因为可以减少全局服务中断的可能性。 加密的机密也不例外。 通过 Service Fabric 的内置功能，可以使用证书加密来加密和解密配置包 Settings.xml 文件中的值。
 
@@ -55,7 +55,7 @@ API 管理直接与 Service Fabric 集成，以便可以使用一组丰富的路
 3. 在部署应用程序时使用证书加密机密值，并将其注入服务的 Settings.xml 配置文件。
 4. 通过使用相同的加密证书进行解密，从 Settings.xml 中读取加密值。 
 
-[Azure 密钥保管库][key-vault-get-started]在此处用作证书的安全存储位置，也可用于将证书安装在 Azure 中的 Service Fabric 群集上。 如果不部署到 Azure，则不需要使用密钥保管库来管理 Service Fabric 应用程序中的机密。
+[Azure 密钥保管库][key-vault-get-started]在此处用作证书的安全存储位置，可用于将证书安装在 Azure 中的 Service Fabric 群集上。 如果不部署到 Azure，则不需要使用密钥保管库来管理 Service Fabric 应用程序中的机密。
 
 有关示例，请参阅[管理应用程序机密](service-fabric-application-secret-management.md)。
 

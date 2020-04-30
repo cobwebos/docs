@@ -13,15 +13,15 @@ ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
 ms.openlocfilehash: 9ec9a4daad139a4930174ba9e3445e1cda1f8c54
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461304"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>以编程方式创建 Azure 仪表板
 
-本文将引导您完成以编程方式创建和发布 Azure 仪表板的过程。 文档中将通篇引用以下仪表板。
+本文介绍如何以编程方式创建和发布 Azure 仪表板。 文档中将通篇引用以下仪表板。
 
 ![示例仪表板](./media/azure-portal-dashboards-create-programmatically/sample-dashboard.png)
 
@@ -31,13 +31,13 @@ ms.locfileid: "81461304"
 
 许多功能都建立这些 API 的基础之上，可以简化资源的管理。 所有这些 API 和工具都提供了创建、罗列、检索、修改和删除资源的方法。 由于仪表板是资源，因此可以选择使用你偏好的 API 或工具。
 
-无论使用哪种工具，以编程方式创建仪表板，您都构造了仪表板对象的 JSON 表示形式。 此对象包含有关仪表板上的磁贴的信息。 这包括大小、位置、绑定到的资源和任何用户自定义项。
+无论使用哪种工具，若要以编程方式创建仪表板，都请构造仪表板对象的 JSON 表示形式。 此对象包含有关仪表板上的磁贴的信息。 这包括大小、位置、绑定到的资源和任何用户自定义项。
 
 构建此 JSON 文档的最实用方法是使用 Azure 门户。 可以交互方式添加并放置磁贴。 然后导出 JSON，并从结果创建模板，以供后面在脚本、程序和部署工具中使用。
 
 ## <a name="create-a-dashboard"></a>创建仪表板
 
-要创建仪表板，请从 [Azure 门户](https://portal.azure.com)菜单中选择“仪表板”，然后选择“新建仪表板”。********
+要创建仪表板，请从 [Azure 门户](https://portal.azure.com)菜单中选择“仪表板”，然后选择“新建仪表板”。  
 
 ![“新建仪表板”命令](./media/azure-portal-dashboards-create-programmatically/new-dashboard-command.png)
 
@@ -51,19 +51,19 @@ ms.locfileid: "81461304"
 
 ## <a name="share-the-dashboard"></a>共享仪表板
 
-配置仪表板后，下一步是使用 **"共享"** 命令发布仪表板。
+配置仪表板后，下一步是使用“共享”命令发布仪表板。 
 
 ![共享仪表板](./media/azure-portal-dashboards-create-programmatically/share-command.png)
 
-选择“共享”时，系统会提示选择要发布到的订阅和资源组。**** 必须对所选订阅和资源组拥有写入访问权限。 有关详细信息，请参阅[使用 Azure RBAC 和 Azure 门户添加或删除角色分配](../role-based-access-control/role-assignments-portal.md)。
+选择“共享”时，系统会提示选择要发布到的订阅和资源组。  必须对所选订阅和资源组拥有写入访问权限。 有关详细信息，请参阅[使用 Azure RBAC 和 Azure 门户添加或删除角色分配](../role-based-access-control/role-assignments-portal.md)。
 
 ![对共享和访问权限进行更改](./media/azure-portal-dashboards-create-programmatically/sharing-and-access.png)
 
 ## <a name="fetch-the-json-representation-of-the-dashboard"></a>提取仪表板的 JSON 表示形式
 
-仅需要几秒钟即可完成发布。 完成后，下一步是使用 **"下载"** 命令获取 JSON。
+仅需要几秒钟即可完成发布。 完成后，下一步是使用“下载”  命令获取 JSON。
 
-![下载 JSON 表示](./media/azure-portal-dashboards-create-programmatically/download-command.png)
+![下载 JSON 表示形式](./media/azure-portal-dashboards-create-programmatically/download-command.png)
 
 ## <a name="create-a-template-from-the-json"></a>从 JSON 创建模板
 
@@ -84,7 +84,7 @@ ms.locfileid: "81461304"
 
 ## <a name="programmatically-create-a-dashboard-from-your-template-using-a-template-deployment"></a>使用模板部署以编程方式从模板创建仪表板
 
-Azure 提供协调多资源部署的功能。 创建用于表达要部署的资源集的部署模板及资源之间的关系。  每个资源的 JSON 格式与逐个创建资源时的格式相同。 差别在于模板语言会添加一些概念，例如变量、参数、基本功能等。 此扩展语法仅在模板部署上下文中受支持。 如果与前述命令式 API 一起使用，则不起作用。 有关详细信息，请参阅了解[Azure 资源管理器模板的结构和语法](../azure-resource-manager/resource-group-authoring-templates.md)。
+Azure 提供协调多资源部署的功能。 创建用于表达要部署的资源集的部署模板及资源之间的关系。  每个资源的 JSON 格式与逐个创建资源时的格式相同。 差别在于模板语言会添加一些概念，例如变量、参数、基本功能等。 此扩展语法仅在模板部署上下文中受支持。 如果与前述命令式 API 一起使用，则不起作用。 有关详细信息，请参阅[了解 Azure 资源管理器模板的结构和语法](../azure-resource-manager/resource-group-authoring-templates.md)。
 
 应使用模板的参数语法来实现参数化。  替换之前找到的所有资源 ID 的实例，如下所示。
 
@@ -129,11 +129,11 @@ id: "[resourceId(parameters('virtualMachineResourceGroup'), 'Microsoft.Compute/v
 * [Azure CLI](/cli/azure/group/deployment#az-group-deployment-create)
 * [Azure 门户模板部署页](https://portal.azure.com/#create/Microsoft.Template)
 
-接下来，您将看到我们示例仪表板 JSON 的两个版本。 第一个版本是从门户导出的、已绑定到资源的模板。 第二个是可以编程方式绑定到任何虚拟机并使用 Azure 资源管理器进行部署的模板版本。
+接下来会看到示例仪表板 JSON 的两个版本。 第一个版本是从门户导出的、已绑定到资源的模板。 第二个是可以编程方式绑定到任何虚拟机并使用 Azure 资源管理器进行部署的模板版本。
 
 ### <a name="json-representation-of-our-example-dashboard-before-templating"></a>模板化之前示例仪表板的 JSON 表示形式
 
-此示例显示了在遵循本文操作的情况下预期可以看到的内容。 指令导出了已部署的仪表板的 JSON 表示形式。 硬编码的资源标识符显示此仪表板指向特定的 Azure 虚拟机。
+此示例显示了在遵循本文操作的情况下预期可以看到的内容。 指令导出了已部署的仪表板的 JSON 表示形式。 硬编码资源标识符显示此仪表板指向特定的 Azure 虚拟机。
 
 ```json
 
@@ -657,4 +657,4 @@ id: "[resourceId(parameters('virtualMachineResourceGroup'), 'Microsoft.Compute/v
 }
 ```
 
-现在，您已经看到使用参数化模板部署仪表板的示例，可以使用[Azure 资源管理器 REST API、Azure](/rest/api/) [CLI](/cli/azure)或[Azure PowerShell 命令](/powershell/azure/get-started-azureps)尝试部署模板。
+通过示例了解如何使用参数化模板来部署仪表板后，就可以尝试使用 [Azure 资源管理器 REST API](/rest/api/)、[Azure CLI](/cli/azure) 或 [Azure PowerShell 命令](/powershell/azure/get-started-azureps)来部署模板。

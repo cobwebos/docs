@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
 ms.openlocfilehash: 93f01b3c23e08e7f432841d8a77cbe3602bff1c5
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81482141"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM 的存储配置
@@ -28,7 +28,7 @@ ms.locfileid: "81482141"
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要使用自动存储配置设置，虚拟机需有以下特征：
 
@@ -42,27 +42,27 @@ ms.locfileid: "81482141"
 
 ### <a name="azure-portal"></a>Azure 门户
 
-使用 SQL Server 库映像预配 Azure VM 时，请在**SQL Server 设置**选项卡上选择 **"更改配置**"以打开性能优化存储配置页。 您可以将值保留为默认值，也可以根据工作负荷修改最适合您需求的磁盘配置类型。 
+使用 SQL Server 库映像预配 Azure VM 时，请在 " **SQL Server 设置**" 选项卡上选择 "**更改配置**" 以打开 "性能优化存储配置" 页。 你可以将值保留为默认值，或根据工作负载修改最适合你的需求的磁盘配置类型。 
 
 ![预配期间的 SQL Server VM 存储配置](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-provisioning.png)
 
-在**存储优化**下选择要为其部署 SQL Server 的工作负荷类型。 使用“常规”**** 优化选项，默认情况下，你将拥有一个最大 IOPS 为 5000 的数据磁盘，并且你将使用此同一驱动器放置数据、事务日志和 TempDB 存储。 选择**事务处理**（OLTP） 或**数据仓库**将为数据创建单独的磁盘，为事务日志创建单独的磁盘，并使用本地 SSD 进行 TempDB。 **事务处理**和**数据仓库**之间没有存储差异，但它确实更改了[条带配置和跟踪标志](#workload-optimization-settings)。 根据[SQL Server VM 性能最佳实践](virtual-machines-windows-sql-performance.md)，选择高级存储将缓存设置为*数据驱动器的 ReadOnly，* 为日志驱动器设置*为 None。* 
+在**存储优化**下选择要为其部署 SQL Server 的工作负荷类型。 使用“常规”**** 优化选项，默认情况下，你将拥有一个最大 IOPS 为 5000 的数据磁盘，并且你将使用此同一驱动器放置数据、事务日志和 TempDB 存储。 选择**事务处理**（OLTP）或**数据仓库**时，将为数据创建单独的磁盘，为事务日志创建单独的磁盘，并将本地 SSD 用于 TempDB。 **事务处理**和**数据仓库**之间没有存储差别，但它确实更改了[条带配置和跟踪标志](#workload-optimization-settings)。 选择 "高级存储" 可将数据驱动器的缓存设置为*ReadOnly* ，而对于日志驱动器，则设置为 "*无*"，因为每[SQL Server VM 性能最佳做法](virtual-machines-windows-sql-performance.md)。 
 
 ![预配期间的 SQL Server VM 存储配置](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration.png)
 
-磁盘配置是完全可自定义的，因此您可以配置 SQL Server VM 工作负载所需的存储拓扑、磁盘类型和 IP。 如果您的 SQL Server VM 位于受支持的区域之一（美国东部 2、东南亚和北欧），并且已[为订阅启用了超磁盘](/azure/virtual-machines/windows/disks-enable-ultra-ssd)，则还可以使用 UltraSD（预览版）作为**磁盘类型的**选项。  
+磁盘配置可完全自定义，因此，你可以配置 SQL Server VM 工作负荷所需的存储拓扑、磁盘类型和 IOPs。 如果 SQL Server VM 位于某个受支持区域（美国东部2、东南亚和北欧），并且已[为订阅启用了 ultra 磁盘](/azure/virtual-machines/windows/disks-enable-ultra-ssd)，则还可以使用 UltraSSD （预览）作为**磁盘类型**的选项。  
 
-此外，您还可以为磁盘设置缓存。 Azure VM 具有称为[Blob 缓存](/azure/virtual-machines/windows/premium-storage-performance#disk-caching)的多层缓存技术，当与[高级磁盘](/azure/virtual-machines/windows/disks-types#premium-ssd)一起使用时。 Blob 缓存使用虚拟机 RAM 和本地 SSD 的组合进行缓存。 
+此外，还可以设置磁盘的缓存。 与[高级磁盘](/azure/virtual-machines/windows/disks-types#premium-ssd)结合使用时，Azure vm 具有称为[Blob 缓存](/azure/virtual-machines/windows/premium-storage-performance#disk-caching)的多层缓存技术。 Blob 缓存使用虚拟机 RAM 和本地 SSD 的组合进行缓存。 
 
-高级 SSD 的磁盘缓存可以是*只读*、*读写*或*无*。 
+高级 SSD 的磁盘缓存可以是*ReadOnly*、 *ReadWrite*或*None*。 
 
-- *只读*缓存对于存储在高级存储上的 SQL Server 数据文件非常有益。 *ReadOnly*缓存带来了低读取延迟、高读取 IOPS 和吞吐量，因为读取是从缓存执行的，缓存位于 VM 内存和本地 SSD 中。 这些读取速度比从 Azure Blob 存储的数据磁盘读取快得多。 高级存储不计算从缓存到磁盘 IOPS 的读取和吞吐量。 因此，您的适用能够实现更高的 IOPS 和吞吐量。 
-- *不应将任何*缓存配置用于托管 SQL Server 日志文件的磁盘，因为日志文件是按顺序编写的，并且不能从*ReadOnly*缓存中受益。 
-- *不应使用 ReadWrite*缓存来承载 SQL Server 文件，因为 SQL Server 不支持与*ReadWrite*缓存的数据一致性。 如果写入通过*ReadOnly* blob 缓存层，则*写入*的浪费容量会略有增加。 
+- 对于存储在高级存储上的 SQL Server 数据文件，*只读*缓存非常有用。 *ReadOnly*缓存会使读取延迟较低，读取率较高，吞吐量为，读取是从位于 VM 内存和本地 SSD 的缓存中执行的。 与从 Azure blob 存储读取数据磁盘相比，这些读取速度要快得多。 高级存储不会将从缓存提供的读取次数计入磁盘 IOPS 和吞吐量。 因此，适用的可以实现更高的总 IOPS 和吞吐量。 
+- 如果日志文件是按顺序写入的，则不会对承载 SQL Server 日志文件的磁盘使用 "*无*缓存" 配置，也不能从*ReadOnly*缓存中获益。 
+- *Readwrite*缓存不能用于宿主 SQL Server 文件，因为 SQL Server 不支持与*ReadWrite*缓存的数据一致性。 写入*只读 blob*缓存的浪费容量，如果写入经过*只读*blob 缓存层，则延迟会略微增加。 
 
 
    > [!TIP]
-   > 确保存储配置与所选 VM 大小施加的限制相匹配。 选择超出 VM 大小性能上限的存储参数将导致错误： `The desired performance might not be reached due to the maximum virtual machine disk performance cap.`。 通过更改磁盘类型来减少 IP，或者通过增加 VM 大小来增加性能限制。 
+   > 请确保存储配置与所选 VM 大小施加的限制相匹配。 选择超出 VM 大小的性能上限的存储参数将导致错误： `The desired performance might not be reached due to the maximum virtual machine disk performance cap.`。 可以通过更改磁盘类型来减少 IOPs，或增加 VM 大小以提高性能上限。 
 
 
 根据所做的选择，Azure 会在创建 VM 后执行以下存储配置任务：
@@ -94,7 +94,7 @@ ms.locfileid: "81482141"
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-对于现有的 SQL Server VM，可以在 Azure 门户中修改某些存储设置。 打开[SQL 虚拟机资源](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource)，然后选择 **"概述**"。 SQL 服务器概述页显示 VM 的当前存储使用情况。 此图显示了 VM 上存在的所有驱动器。 每个驱动器的存储空间都分四个部分显示：
+对于现有的 SQL Server VM，可以在 Azure 门户中修改某些存储设置。 打开[SQL 虚拟机资源](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource)，然后选择 "**概述**"。 SQL Server 概述 "页显示 VM 的当前存储使用情况。 此图显示了 VM 上存在的所有驱动器。 每个驱动器的存储空间都分四个部分显示：
 
 * SQL 数据
 * SQL 日志
@@ -105,7 +105,7 @@ ms.locfileid: "81482141"
 
 ![为现有 SQL Server VM 配置存储](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-existing.png)
 
-您可以修改 SQL Server VM 创建过程中配置的驱动器的磁盘设置。 选择 **"扩展驱动器**"将打开驱动器修改页，允许您更改磁盘类型，以及添加其他磁盘。 
+您可以修改在 SQL Server VM 创建过程中配置的驱动器的磁盘设置。 选择 "**扩展驱动器**" 将打开 "驱动器修改" 页，允许您更改磁盘类型并添加更多磁盘。 
 
 ![为现有 SQL Server VM 配置存储](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-extend-drive.png)
 

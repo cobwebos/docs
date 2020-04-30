@@ -1,6 +1,6 @@
 ---
 title: 了解 Azure 媒体服务建议的编码器 | Microsoft 文档
-description: 本文列出了 Azure 媒体服务推荐的本地编码器。
+description: 本文列出了 Azure 媒体服务建议的本地编码器。
 services: media-services
 keywords: 编码;编码器;媒体
 author: dbgeorge
@@ -10,10 +10,10 @@ ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 3c42070525fc60e45b976620513929c3d5a32341
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81535088"
 ---
 # <a name="recommended-on-premises-encoders"></a>推荐的本地编码器
@@ -31,7 +31,7 @@ Azure 媒体服务建议使用下列将 RTMP 作为输出的实时编码器之�
 - Adobe Flash 媒体实时编码器 3.2
 - Haivision Makito X HEVC
 - Haivision KB
-- 由于 TLS 1.2 要求，远程直播有线广播（版本 13.0.2 或更高版本）
+- Telestream Wirecast（根据 TLS 1.2 要求，版本为 13.0.2 或更高）
 
   使用 RTMPS 协议时，编码器必须支持 TLS 1.2。
 - Teradek Slice 756
@@ -47,9 +47,9 @@ Azure 媒体服务建议使用下列将多比特率片段 MP4（平滑流式处�
 - Media Excel Hero Live 和 Hero 4K (UHD/HEVC)
 - Ateme TITAN Live
 - Cisco 数字媒体编码器 2200
-- 元素实时（版本 2.14.15 及以上，由于 TLS 1.2 要求）
+- Elemental Live （版本2.14.15 和更高版本，原因是 TLS 1.2 要求）
 
-  使用 HTTPS 协议时，编码器必须支持 TLS 1.2。
+  编码器在使用 HTTPS 协议时必须支持 TLS 1.2。
 - Envivio 4Caster C4 Gen III
 - Imagine Communications Selenio MCP3
 
@@ -67,7 +67,7 @@ Azure 媒体服务建议使用下列将多比特率片段 MP4（平滑流式处�
 4. 创建已发布的直播活动
 5. 运行实时编码器大约 10 分钟
 6. 停止直播活动
-7. 创建、启动流式处理终结点、使用 Azure[媒体播放器等](https://aka.ms/azuremediaplayer)播放器监视存档资产，以确保播放没有所有质量级别的可见故障（或者，在步骤 6 之前的实时会话期间，通过预览 URL 观看和验证）
+7. 创建、启动流式处理终结点、使用播放机（如[Azure Media Player](https://aka.ms/azuremediaplayer) ）观看存档的资产，以确保播放对于所有质量级别不会有任何故障（或者在步骤6之前的实时会话期间通过预览 URL 观看和验证）
 8. 记录资产 ID、为实时存档发布的流式处理 URL，以及实时编码器所使用的设置和版本
 9. 在创建每个示例后重置通道状态
 10. 为编码器所支持的所有配置重复（具有或无广告信号/字幕/不同编码速度）步骤 3-9
@@ -79,7 +79,7 @@ Azure 媒体服务建议使用下列将多比特率片段 MP4（平滑流式处�
 4. 创建已发布的直播活动
 5. 运行实时编码器大约 10 分钟
 6. 停止直播活动
-7. 创建、启动流式处理终结点、使用 Azure[媒体播放器等](https://aka.ms/azuremediaplayer)播放器监视存档资产，以确保播放没有所有质量级别的可见故障（或者，在步骤 6 之前的实时会话期间，通过预览 URL 观看和验证）
+7. 创建、启动流式处理终结点、使用播放机（如[Azure Media Player](https://aka.ms/azuremediaplayer) ）观看存档的资产，以确保播放对于所有质量级别不会有任何故障（或者在步骤6之前的实时会话期间通过预览 URL 观看和验证）
 8. 记录资产 ID、为实时存档发布的流式处理 URL，以及实时编码器所使用的设置和版本
 9. 在创建每个示例后重置通道状态
 10. 为编码器所支持的所有配置（具有和无广告信号/字幕/不同编码速度）重复步骤 3-9
@@ -90,7 +90,7 @@ Azure 媒体服务建议使用下列将多比特率片段 MP4（平滑流式处�
 3. 配置编码器推送多比特率实时流。
 4. 创建已发布的直播活动
 5. 运行实时编码器持续一周或更长时间
-6. 使用[Azure 媒体播放器](https://aka.ms/azuremediaplayer)等播放器不时观看实时流式处理（或存档资产），以确保播放没有可见的故障
+6. 使用播放机（如[Azure Media Player](https://aka.ms/azuremediaplayer) ）实时观看实时流式处理，以确保播放不会出现任何故障
 7. 停止直播活动
 8. 记录资产 ID、为实时存档发布的流式处理 URL，以及实时编码器所使用的设置和版本
 

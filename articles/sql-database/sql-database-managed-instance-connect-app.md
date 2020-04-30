@@ -12,10 +12,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
 ms.openlocfilehash: 8d920fb7815e5a9fe30d8f3b4e40f36133d83222
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81538080"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>将应用程序连接到 Azure SQL 数据库托管实例
@@ -67,10 +67,10 @@ ms.locfileid: "81538080"
 
 ![VNet 对等互连](./media/sql-database-managed-instance-connect-app/vnet-peering.png)
 
-设置基本的体系结构以后，需修改某些设置，使 VPN 网关能够看到承载托管实例的虚拟网络中的 IP 地址。 为此，请在“对等互连设置”下进行下述很具体的更改。****
+设置基本的体系结构以后，需修改某些设置，使 VPN 网关能够看到承载托管实例的虚拟网络中的 IP 地址。 为此，请在“对等互连设置”下进行下述很具体的更改。 
 
-1. 在承载 VPN 网关的 VNet 中，转到“对等互连”，**** 然后转到进行托管实例对等互连的 VNet 连接，再单击“允许网关传输”。****
-2. 在承载托管实例的 VNet 中，转到“对等互连”，**** 然后转到进行 VPN 网关对等互连的 VNet 连接，再单击“使用远程网关”。****
+1. 在承载 VPN 网关的 VNet 中，转到“对等互连”，  然后转到进行托管实例对等互连的 VNet 连接，再单击“允许网关传输”。 
+2. 在承载托管实例的 VNet 中，转到“对等互连”，  然后转到进行 VPN 网关对等互连的 VNet 连接，再单击“使用远程网关”。 
 
 ## <a name="connect-an-azure-app-service-hosted-application"></a>连接 Azure 应用服务托管应用程序
 
@@ -96,8 +96,8 @@ ms.locfileid: "81538080"
 若要排查连接问题，请查看以下内容：
 
 - 如果无法从同一 VNet 的不同子网中的 Azure 虚拟机连接到托管实例，请检查是否在 VM 子网上设置了可能会阻止访问的网络安全组。另请注意，需在 SQL 端口 1433 上以及 11000-11999 范围的端口上打开出站连接，因为在 Azure 边界内通过重定向进行连接时，这些都是必需的。
-- 对于与 VNet 关联的路由表，请确保将“BGP 传播”设置为“启用”。****
-- 如果使用 P2S VPN，请在 Azure 门户中检查配置，确定能否看到“入口/出口”编号。**** 如果编号不为零，则表示 Azure 在本地进行流量的出入路由。
+- 对于与 VNet 关联的路由表，请确保将“BGP 传播”设置为“启用”。 
+- 如果使用 P2S VPN，请在 Azure 门户中检查配置，确定能否看到“入口/出口”编号。  如果编号不为零，则表示 Azure 在本地进行流量的出入路由。
 
    ![入口/出口编号](./media/sql-database-managed-instance-connect-app/ingress-egress-numbers.png)
 
@@ -133,7 +133,7 @@ ms.locfileid: "81538080"
 
 - 如果使用 VNet 对等互连，请确保遵循相关说明来设置[允许网关传输并使用远程网关](#connect-from-on-premises-with-vnet-peering)。
 
-- 如果使用 VNet 对等互连连接 Azure 应用服务托管应用程序，并且托管实例 VNet 具有公共 IP 地址范围，请确保托管应用程序设置允许将出站流量路由到公共 IP 网络。 按照[区域 VNet 集成](../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)中的说明进行操作。
+- 如果使用 VNet 对等互连连接 Azure App Service 托管应用程序，并且托管实例 VNet 具有公共 IP 地址范围，请确保你的托管应用程序设置允许出站流量路由到公共 IP 网络。 按照[区域 VNet 集成](../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)中的说明进行操作。
 
 ## <a name="required-versions-of-drivers-and-tools"></a>所需的驱动程序和工具版本
 

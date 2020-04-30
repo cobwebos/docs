@@ -1,5 +1,5 @@
 ---
-title: 使用 MSAL 获取&缓存令牌 |蔚蓝
+title: 通过 MSAL 获取 & 缓存令牌 |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解如何使用 Microsoft 身份验证库 (MSAL) 获取和缓存令牌。
 services: active-directory
@@ -14,15 +14,15 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 647dff9e6401322371ef795a25ca5ced2b517e9c
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81534578"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>使用 Microsoft 身份验证库 (MSAL) 获取和缓存令牌
 
-客户端可以使用[访问令牌](access-tokens.md)安全调用受 Azure 保护的 Web API。 可以使用 Microsoft 身份验证库 (MSAL) 通过多种方法获取令牌。 有些方法需要用户通过 Web 浏览器进行交互。 而有些方法则不需要任何用户交互。 通常，获取令牌的方式取决于应用程序是公共客户端应用程序（桌面或移动应用程序）还是机密客户端应用程序（Web 应用、Web API 或 Windows 服务等守护进程应用程序）。
+客户端可以使用[访问令牌](access-tokens.md)安全调用受 Azure 保护的 Web API。 可以使用 Microsoft 身份验证库 (MSAL) 通过多种方法获取令牌。 有些方法需要用户通过 Web 浏览器进行交互。 而有些方法则不需要任何用户交互。 通常，获取令牌的方式取决于应用程序是否为公共客户端应用程序（桌面或移动应用）或机密客户端应用程序（web 应用、web API 或后台程序应用程序，如 Windows 服务）。
 
 MSAL 在获取令牌后会缓存令牌。  在通过其他方式获取令牌之前，应用程序代码应该先尝试以无提示方式（从缓存中）获取令牌。
 
@@ -38,7 +38,7 @@ MSAL 在获取令牌后会缓存令牌。  在通过其他方式获取令牌之�
 
 ### <a name="request-specific-scopes-for-a-web-api"></a>请求 Web API 的特定范围
 
-当应用程序需要请求具有资源 API 特定权限的令牌时，您需要以以下格式传递包含 API 应用 ID URI 的范围：*&lt;应用 ID URI&gt;/&lt;范围&gt;*
+当应用程序需要使用资源 API 的特定权限请求令牌时，你需要采用以下格式传递包含 API 应用 ID URI 的范围： *&lt;应用 ID URI&gt;/&lt;范围&gt;*
 
 Microsoft Graph API 的范围示例：`https://graph.microsoft.com/User.Read`
 
@@ -47,7 +47,7 @@ Microsoft Graph API 的范围示例：`https://graph.microsoft.com/User.Read`
 （仅适用于 Microsoft Graph API）范围值 `user.read` 将映射为 `https://graph.microsoft.com/User.Read` 格式，两者可以换用。
 
 > [!NOTE]
-> 某些 Web API（例如 Azure 资源管理器 API (https://management.core.windows.net/)）要求在访问令牌的受众声明 (aud) 中使用尾随的“/”。 在这种情况下，必须以 https://management.core.windows.net//user_impersonation 形式（请注意双斜杠）传递范围，使令牌在 API 中有效。
+> 某些 Web API（例如 Azure 资源管理器 API (https://management.core.windows.net/) ）要求在访问令牌的受众声明 (aud) 中使用尾随的“/”。 在这种情况下，必须以 https://management.core.windows.net//user_impersonation 形式（请注意双斜杠）传递范围，使令牌在 API 中有效。
 
 ### <a name="request-dynamic-scopes-for-incremental-consent"></a>请求增量许可的动态范围
 
@@ -68,9 +68,9 @@ MSAL 维护一个令牌缓存（对机密客户端应用程序维护两个），
 但是，在尝试以无提示方式获取令牌之前，应该**先**完成两个流：
 
 - [客户端凭据流](msal-authentication-flows.md#client-credentials)：不使用用户令牌缓存，而是使用应用程序令牌缓存。 在将请求发送到 STS 之前，此方法负责验证此应用程序令牌缓存。
-- [授权代码流](msal-authentication-flows.md#authorization-code)在 Web 应用中，因为它赎回应用程序通过登录用户获得的代码，并让他们同意更多的作用域。 由于代码是作为参数而不是帐户传递的，该方法在兑换代码之前无法查看缓存，这仍然需要调用服务。
+- web 应用中的[授权代码流](msal-authentication-flows.md#authorization-code)，因为它兑换了应用程序通过登录用户获取的代码，并使他们同意更多范围。 由于代码是作为参数而不是帐户传递的，该方法在兑换代码之前无法查看缓存，这仍然需要调用服务。
 
-### <a name="recommended-call-pattern-in-web-apps-using-the-authorization-code-flow"></a>使用授权代码流在 Web 应用中推荐的呼叫模式
+### <a name="recommended-call-pattern-in-web-apps-using-the-authorization-code-flow"></a>使用授权代码流的 web 应用中的建议调用模式
 
 对于使用 [OpenID Connect 授权代码流](v2-protocols-oidc.md)的 Web 应用程序，控制器中的建议模式为：
 
@@ -91,8 +91,8 @@ MSAL 维护一个令牌缓存（对机密客户端应用程序维护两个），
 
 ### <a name="confidential-client-applications"></a>机密客户端应用程序
 
-对于机密客户端应用程序（Web 应用、Web API 或 Windows 服务等守护进程应用程序），您可以：
-- 使用[客户端凭据流](msal-authentication-flows.md#client-credentials)获取**应用程序本身**而不是用户的令牌。 此方法可用于同步工具，或者处理普通用户而不是特定用户的工具。
+对于机密客户端应用程序（web 应用、web API 或后台应用程序，如 Windows 服务），你可以：
+- 使用**客户端凭据流**获取[应用程序本身](msal-authentication-flows.md#client-credentials)而不是用户的令牌。 此方法可用于同步工具，或者处理普通用户而不是特定用户的工具。
 - 使用适用于 Web API 的[代表流](msal-authentication-flows.md#on-behalf-of)代表用户调用 API。 系统会使用客户端凭据标识应用程序，以根据用户断言（例如 SAML 或 JWT 令牌）获取令牌。 需要在服务到服务调用中访问特定用户的资源的应用程序使用此流。
 - 在用户通过授权请求 URL 登录后，在 Web 应用中使用[授权代码流](msal-authentication-flows.md#authorization-code)获取令牌。 OpenID Connect 应用程序通常使用此机制，可让用户使用 Open ID Connect 登录，然后代表用户访问 Web API。
 

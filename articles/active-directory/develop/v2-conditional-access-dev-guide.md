@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory 条件访问开发人员指南
-description: Azure AD 条件访问和 Microsoft 标识平台的开发人员指南和方案。
+description: Azure AD 条件性访问和 Microsoft 标识平台的开发人员指南和方案。
 services: active-directory
 keywords: ''
 author: rwike77
@@ -14,10 +14,10 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ms.openlocfilehash: aae1b8aa27363e8f1d3c72d3934146c47b0cf2c9
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81535887"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问开发人员指南
@@ -28,7 +28,7 @@ ms.locfileid: "81535887"
 * 仅允许已注册 Intune 的设备访问特定服务
 * 限制用户位置和 IP 范围
 
-有关条件访问的全部功能的详细信息，请参阅[Azure 活动目录中的条件访问](../active-directory-conditional-access-azure-portal.md)。
+有关条件性访问的完整功能的详细信息，请参阅[Azure Active Directory 中的条件访问](../active-directory-conditional-access-azure-portal.md)。
 
 对于生成 Azure AD 应用的开发人员，本文演示了条件访问的使用方法，并介绍了访问应用了条件访问策略且你无法控制的资源将产生的影响。 此外，本文还探讨了条件访问对代理流、Web 应用、访问 Microsoft Graph 和调用 API 的影响。
 
@@ -48,10 +48,10 @@ ms.locfileid: "81535887"
 
 * 执行代理流的应用
 * 访问多个服务/资源的应用
-* 使用 MSAL.js 的单页应用
+* 使用 MSAL 的单页应用
 * 调用资源的 Web 应用
 
-条件访问策略不仅可应用于应用，还可应用于应用访问的 Web API。 要了解有关如何配置条件访问策略的更多信息，请参阅[快速入门：对于具有 Azure 活动目录条件访问的特定应用需要 MFA。](../conditional-access/app-based-mfa.md)
+条件访问策略不仅可应用于应用，还可应用于应用访问的 Web API。 若要了解有关如何配置条件访问策略的详细信息，请参阅[快速入门：需要对具有 Azure Active Directory 条件性访问的特定应用的 MFA](../conditional-access/app-based-mfa.md)。
 
 根据具体的情况，企业客户随时可以应用和删除条件访问策略。 应用新策略后，若要使应用继续正常工作，需执行“质询”处理。 以下示例演示了质询处理的过程。
 
@@ -90,9 +90,9 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 ## <a name="scenarios"></a>方案
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
-Azure AD 条件访问是[Azure AD 高级版](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)中包含的功能。 拥有 [Microsoft 365 商业版许可证](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)的客户也可以访问条件访问功能。
+Azure AD 条件访问是[Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)中包含的一项功能。 拥有 [Microsoft 365 商业版许可证](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)的客户也可以访问条件访问功能。
 
 ### <a name="considerations-for-specific-scenarios"></a>特定应用场景的注意事项
 
@@ -100,7 +100,7 @@ Azure AD 条件访问是[Azure AD 高级版](https://docs.microsoft.com/azure/ac
 
 * 执行代理流的应用
 * 访问多个服务/资源的应用
-* 使用 MSAL.js 的单页应用
+* 使用 MSAL 的单页应用
 
 以下各部分讨论更复杂的常见应用场景。 核心运行原则是请求已应用条件访问策略的服务令牌时评估条件访问策略。
 
@@ -147,21 +147,21 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 ![访问多个请求新令牌的服务的应用](./media/v2-conditional-access-dev-guide/app-accessing-multiple-services-new-token.png)
 
-如果应用正在使用 MSAL 库，则始终以交互方式重试获取令牌失败。 发生此交互式请求时，最终用户有机会符合条件访问策略。 上述说法是正确的，但当请求是 `AcquireTokenSilentAsync` 或 `PromptBehavior.Never` 时，应用需要执行交互式 ```AcquireToken``` 请求来为最终用户提供符合策略的机会。
+如果应用使用 MSAL 库，则始终以交互方式重试获取令牌的失败。 发生此交互式请求时，最终用户有机会符合条件访问策略。 上述说法是正确的，但当请求是 `AcquireTokenSilentAsync` 或 `PromptBehavior.Never` 时，应用需要执行交互式 ```AcquireToken``` 请求来为最终用户提供符合策略的机会。
 
-## <a name="scenario-single-page-app-spa-using-msaljs"></a>方案：使用 MSAL.js 的单页应用 （SPA）
+## <a name="scenario-single-page-app-spa-using-msaljs"></a>方案：使用 MSAL 的单页面应用（SPA）
 
-在这种情况下，我们将演练使用 MSAL.js 调用条件访问受保护的 Web API 的单页应用 （SPA） 的情况。 这是一个简单的体系结构，但围绕条件访问进行开发时需要注意一些细微差异。
+在这种情况下，我们将演练使用单页应用（SPA）的情况，并使用 MSAL 调用条件访问受保护的 web API。 这是一个简单的体系结构，但围绕条件访问进行开发时需要注意一些细微差异。
 
-在`loginPopup()`MSAL.js 中，有几个函数获取令牌： 、`acquireTokenSilent(...)`和`acquireTokenPopup(…)``acquireTokenRedirect(…)`。
+在 MSAL 中，有几个函数可用于获取令牌`loginPopup()`：、 `acquireTokenSilent(...)`、 `acquireTokenPopup(…)`和。 `acquireTokenRedirect(…)`
 
 * `loginPopup()` 通过交互式登录请求获取 ID 令牌，但是无法获取任何服务的访问令牌（包括条件访问保护的 Web API）。
 * 然后可以使用 `acquireTokenSilent(…)` 以无提示方式获取访问令牌，这意味着在任何情况下它都不会显示 UI。
 * `acquireTokenPopup(…)` 和 `acquireTokenRedirect(…)` 用于以交互方式请求资源的令牌，这意味着它们始终会显示登录 UI。
 
-当应用需要访问令牌来调用 Web API 时，它会尝试`acquireTokenSilent(…)`。 如果令牌会话已过期，或者我们需要遵守条件访问策略，则*accessToken*函数将失败，应用使用`acquireTokenPopup()`或`acquireTokenRedirect()`。
+当应用需要访问令牌来调用 web API 时，它会尝试`acquireTokenSilent(…)`。 如果令牌会话已过期，或者我们需要符合条件性访问策略，则*acquireToken*函数会失败，并且应用程序将使用`acquireTokenPopup()`或`acquireTokenRedirect()`。
 
-![使用 MSAL 流程图的单页应用](./media/v2-conditional-access-dev-guide/spa-using-msal-scenario.png)
+![使用 MSAL flow 关系图的单页面应用](./media/v2-conditional-access-dev-guide/spa-using-msal-scenario.png)
 
 我们来演示一个使用条件访问应用场景的示例。 最终用户刚刚登录网站，且没有会话。 我们执行一个 `loginPopup()` 调用，未通过多重身份验证获取了 ID 令牌。 然后用户点击一个按钮，要求应用从 Web API 请求数据。 该应用将尝试执行一个 `acquireTokenSilent()` 调用，但是失败，因为用户尚未执行多重身份验证，且需要符合条件访问策略。
 
@@ -175,12 +175,12 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 应用需要捕获 `error=interaction_required`。 然后应用程序可以在同一个资源上使用 `acquireTokenPopup()` 或 `acquireTokenRedirect()`。 用户被强制执行多重身份验证。 用户完成多重身份验证后，应用针对所请求资源签发一个新访问令牌。
 
-若要尝试此应用场景，请参阅 [JS SPA 代理代码示例](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/master/Microsoft.Identity.Web/README.md#handle-conditional-access)。 此代码示例使用之前通过 JS SPA 注册的条件访问策略和 Web API 演示此应用场景。 它演示如何正确处理声明质询并获得可用于 Web API 的访问令牌。 或者，请查看常规的 [Angular.js 代码示例](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2)，获取 Angular SPA 方面的指南。
+若要尝试此应用场景，请参阅 [JS SPA 代理代码示例](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/master/Microsoft.Identity.Web/README.md#handle-conditional-access)。 此代码示例使用之前通过 JS SPA 注册的条件访问策略和 Web API 演示此应用场景。 其中显示了如何正确处理声明质询并获取可用于 web API 的访问令牌。 或者，请查看常规的 [Angular.js 代码示例](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2)，获取 Angular SPA 方面的指南。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * 若要详细了解这些功能，请参阅 [Azure Active Directory 中的条件访问](/azure/active-directory/conditional-access/overview)。
 * 有关更多 Azure AD 代码示例，请参阅[示例](sample-v2-code.md)。
-* 有关 MSAL SDK 和访问参考文档的详细信息，请参阅 Microsoft[身份验证库概述](msal-overview.md)。
+* 有关 MSAL SDK 和访问参考文档的详细信息，请参阅[Microsoft 身份验证库概述](msal-overview.md)。
 * 若要详细了解多租户应用场景，请参阅[如何使用多租户模式让用户进行登录](howto-convert-app-to-be-multi-tenant.md)。
-* 了解有关[条件访问和保护对 IoT 应用的访问](/azure/architecture/example-scenario/iot-aad/iot-aad)的更多信息。
+* 详细了解[条件访问和保护对 IoT 应用的访问](/azure/architecture/example-scenario/iot-aad/iot-aad)。

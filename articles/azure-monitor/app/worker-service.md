@@ -4,17 +4,17 @@ description: 使用 Azure Monitor Application Insights 监视 .NET Core/.NET Fra
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.openlocfilehash: f043140e5a342d114f777ad16bba588790b7f8cc
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81536720"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>适用于辅助角色服务应用程序（非 HTTP 应用）的 Application Insights
 
-应用程序见解正在发布一个新的 SDK，`Microsoft.ApplicationInsights.WorkerService`称为 ，它最适合非 HTTP 工作负载，如消息传送、后台任务、控制台应用程序等。这些类型的应用程序不像传统的ASP.NET/ASP.NET酷 Web 应用程序那样具有传入 HTTP 请求的概念，因此不支持将应用程序见解包用于[ASP.NET](asp-net.md)或[ASP.NET Core](asp-net-core.md)应用程序。
+Application Insights 正在发布名为 `Microsoft.ApplicationInsights.WorkerService` 的新 SDK，该 SDK 最适合用于消息传递、后台任务、控制台应用程序等非 HTTP 工作负荷。此类应用程序不像传统 ASP.NET/ASP.NET Core Web 应用程序那样具有传入 HTTP 请求的概念，因此，不支持对 [ASP.NET](asp-net.md) 或 [ASP.NET Core](asp-net-core.md) 应用程序使用 Application Insights 包。
 
-新 SDK 本身不执行任何遥测收集， 相反，它带来了其他众所周知的应用程序见解自动收集器，如[依赖收集器](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/)[，PerfCounterCollector，](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/)[应用程序见解记录提供程序](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights)等。此 SDK 公开扩展方法`IServiceCollection`，以启用和配置遥测集合。
+新 SDK 本身不执行任何遥测收集， 而是引入了其他众所周知的 Application Insights 自动收集器，例如 [DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/)、[PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/)、[ApplicationInsightsLoggingProvider](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights) 等。此 SDK 公开 `IServiceCollection` 中的扩展方法用于启用和配置遥测收集。
 
 ## <a name="supported-scenarios"></a>支持的方案
 
@@ -26,7 +26,7 @@ ms.locfileid: "81536720"
 
 ## <a name="using-application-insights-sdk-for-worker-services"></a>使用适用于辅助角色服务的 Application Insights SDK
 
-1. 将[Microsoft.应用程序见解.辅助服务](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService)包安装到应用程序。
+1. 将 [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) 包安装到应用程序。
    以下代码片段演示了需要添加到项目的 `.csproj` 文件中的更改。
 
 ```xml
@@ -47,7 +47,7 @@ ms.locfileid: "81536720"
 
 1. 下载并安装 [.NET Core 3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0)
 2. 使用 Visual Studio 的新建项目模板或命令行 `dotnet new worker` 创建新的辅助角色服务项目
-3. 将[Microsoft.应用程序见解.辅助服务](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService)包安装到应用程序。
+3. 将 [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) 包安装到应用程序。
 
 4. 将 `services.AddApplicationInsightsTelemetryWorkerService();` 添加到 `Program.cs` 类中的 `CreateHostBuilder()` 方法，如以下示例所示：
 
@@ -220,7 +220,7 @@ ms.locfileid: "81536720"
 
 ## <a name="net-corenet-framework-console-application"></a>.NET Core/.NET Framework 控制台应用程序
 
-如本文开头所述，甚至可以使用新包从普通的控制台应用程序启用 Application Insights 遥测。 此包面向[`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard)，因此可用于 .NET Core 2.0 或更高版本和 .NET 框架 4.7.2 或更高版本中的控制台应用。
+如本文开头所述，甚至可以使用新包从普通的控制台应用程序启用 Application Insights 遥测。 此包针对 [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard)，因此可用于 .NET Core 2.0 或更高版本，以及 .NET Framework 4.7.2 或更高版本中的控制台应用。
 
 [此处](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights)分享了完整示例
 
@@ -312,7 +312,7 @@ ms.locfileid: "81536720"
 
 ### <a name="eventcounter"></a>EventCounter
 
-`EventCounterCollectionModule` 默认已启用，它会从 .NET Core 3.0 应用收集默认的计数器集。 [事件计数器](eventcounters.md)教程列出了收集的默认计数器集。 它还包含有关自定义列表的说明。
+`EventCounterCollectionModule` 默认已启用，它会从 .NET Core 3.0 应用收集默认的计数器集。 [EventCounter](eventcounters.md)教程列出了收集的默认计数器集。 它还包含有关自定义列表的说明。
 
 ### <a name="manually-tracking-additional-telemetry"></a>手动跟踪附加遥测数据
 
@@ -490,7 +490,7 @@ using Microsoft.ApplicationInsights.Channel;
     }
 ```
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 
 ### <a name="how-can-i-track-telemetry-thats-not-automatically-collected"></a>如何跟踪不会自动收集的遥测数据？
 
@@ -502,7 +502,7 @@ using Microsoft.ApplicationInsights.Channel;
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>是否可以使用状态监视器之类的工具来启用 Application Insights 监视？
 
-不是。 [状态监视器](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now)和[状态监视器 v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) 目前仅支持 ASP.NET 4.x。
+不能。 [状态监视器](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now)和[状态监视器 v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) 目前仅支持 ASP.NET 4.x。
 
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>如果在 Linux 中运行应用程序，是否支持所有功能？
 
@@ -537,11 +537,11 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 ## <a name="open-source-sdk"></a>开源 SDK
 
-[阅读并贡献代码](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)。
+[阅读并参与编写代码](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [使用 API](../../azure-monitor/app/api-custom-events-metrics.md) 发送自己的事件和指标，以获取应用性能和使用情况的详细视图。
 * [跟踪系统不会自动跟踪的附加依赖项](../../azure-monitor/app/auto-collect-dependencies.md)。
 * [扩充或筛选自动收集的遥测数据](../../azure-monitor/app/api-filtering-sampling.md)。
-* [ASP.NET核心中的依赖注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)。
+* [ASP.NET Core 中的依赖关系注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)。

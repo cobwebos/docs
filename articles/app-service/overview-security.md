@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
 ms.openlocfilehash: 8a098b1924bf7c2866f6afd7452b8dd3b93f3109
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81535649"
 ---
 # <a name="security-in-azure-app-service"></a>Azure 应用服务中的安全性
@@ -31,14 +31,14 @@ ms.locfileid: "81535649"
 
 ## <a name="https-and-certificates"></a>HTTPS 和证书
 
-应用服务允许通过 [HTTPS](https://wikipedia.org/wiki/HTTPS) 保护应用。 创建应用后，便可使用 HTTPS 访问其默认域名 (\<app_name>.azurewebsites.net)。 如果[为应用配置自定义域](app-service-web-tutorial-custom-domain.md)，还应[使用 TLS/SSL 证书对其进行保护](configure-ssl-bindings.md)，以便客户端浏览器可以对自定义域建立安全的 HTTPS 连接。 应用服务支持几种类型的证书：
+应用服务允许通过 [HTTPS](https://wikipedia.org/wiki/HTTPS) 保护应用。 创建应用后，便可使用 HTTPS 访问其默认域名 (\<app_name>.azurewebsites.net)。 如果[为应用程序配置自定义域](app-service-web-tutorial-custom-domain.md)，还应[使用 TLS/SSL 证书对其进行保护](configure-ssl-bindings.md)，以便客户端浏览器可以建立与自定义域的安全 HTTPS 连接。 应用服务支持多种类型的证书：
 
 - 免费应用服务托管证书
 - 应用服务证书
 - 第三方证书
 - 从 Azure 密钥保管库导入的证书
 
-有关详细信息，请参阅在[Azure 应用服务中添加 TLS/SSL 证书](configure-ssl-certificate.md)。
+有关详细信息，请参阅[在 Azure App Service 中添加 TLS/SSL 证书](configure-ssl-certificate.md)。
 
 ## <a name="insecure-protocols-http-tls-10-ftp"></a>不安全的协议（HTTP、TLS 1.0、FTP）
 
@@ -52,7 +52,7 @@ ms.locfileid: "81535649"
 
 默认情况下，应用服务应用接受来自 Internet 的所有 IP 地址的请求，但你可以将该访问权限限定于一小部分 IP 地址。 通过 Windows 上的应用服务，可定义允许访问应用的 IP 地址的列表。 允许列表可包括单个 IP 地址或由子网掩码定义的 IP 地址范围。 有关详细信息，请参阅 [Azure 应用服务静态 IP 限制](app-service-ip-restrictions.md)。
 
-对于 Windows 上的应用服务，还可以通过配置_Web.config_来动态限制 IP 地址。有关详细信息，请参阅动态[IP 安全\<动态 ip 安全>](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/)。
+对于 Windows 上的应用服务，还可以通过配置 _web.config_ 来动态限制 IP 地址。有关详细信息，请参阅[动态 IP 安全性 \<dynamicIpSecurity>](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/).。
 
 ## <a name="client-authentication-and-authorization"></a>客户端身份验证和授权
 
@@ -65,7 +65,7 @@ Azure 应用服务提供用户或客户端应用的统包身份验证和授权�
 在向后端服务进行身份验证时，应用服务根据你的需要提供两种不同的机制：
 
 - **服务标识**：使用应用本身的标识登录到远程资源。 通过应用服务可轻松创建[托管标识](overview-managed-identity.md)，在向 [Azure SQL 数据库](/azure/sql-database/)或 [Azure Key Vault](/azure/key-vault/) 等其他服务进行身份验证时可使用该标识。 有关此方法的端到端教程，请参阅[使用托管标识确保从应用服务进行的 Azure SQL 数据库连接安全](app-service-web-tutorial-connect-msi.md)。
-- **代表 (OBO)**：代表用户对远程资源进行委托访问。 使用 Azure 活动目录作为身份验证提供程序，应用服务应用可以执行委派登录到远程服务，例如[Microsoft 图形 API](../active-directory/develop/microsoft-graph-intro.md)或应用服务中的远程 API 应用。 有关此方法的端到端教程，请参阅[在 Azure 应用服务中对用户进行端到端身份验证和授权](app-service-web-tutorial-auth-aad.md)。
+- **代表 (OBO)** ：代表用户对远程资源进行委托访问。 使用 Azure Active Directory 作为身份验证提供程序，应用服务应用可以执行到远程服务的委派登录，如[MICROSOFT GRAPH API](../active-directory/develop/microsoft-graph-intro.md)或应用服务中的远程 API 应用。 有关此方法的端到端教程，请参阅[在 Azure 应用服务中对用户进行端到端身份验证和授权](app-service-web-tutorial-auth-aad.md)。
 
 ## <a name="connectivity-to-remote-resources"></a>远程资源连接
 

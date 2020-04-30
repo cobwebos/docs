@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
 ms.openlocfilehash: a1bce3ab86748d8247a72da3bd70e0f2e8155dbf
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81536805"
 ---
 # <a name="smart-detection---failure-anomalies"></a>智能检测 - 失败异常
@@ -63,11 +63,11 @@ ms.locfileid: "81536805"
 
 可以从门户或使用 Azure 资源管理器禁用智能检测警报规则（[请参阅模板示例](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config)）。
 
-此警报规则与名为"应用程序见解智能检测"的关联操作组一起创建，该[操作组](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)包含电子邮件和 Webhook 操作，并可在警报触发时扩展以触发其他操作。
+此警报规则是使用名为 "Application Insights 智能检测" 的关联[操作组](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)创建的，其中包含电子邮件和 webhook 操作，并且可以扩展以在警报触发时触发其他操作。
 
 > [!NOTE]
-> 默认情况下，从此警报规则发送的电子邮件通知将发送给与订阅的监视读取器和监视参与者角色关联的用户。 [此处](https://docs.microsoft.com/azure/azure-monitor/app/proactive-email-notification)提供了与此内容相关的详细信息。
-> 从此警报规则发送的通知遵循[公共警报架构](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema)。
+> 默认情况下，从此警报规则发送的电子邮件通知将发送到与订阅的监视读取器和监视参与者角色关联的用户。 [此处](https://docs.microsoft.com/azure/azure-monitor/app/proactive-email-notification)提供了与此内容相关的详细信息。
+> 从此警报规则发送的通知遵循[常见的警报架构](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema)。
 >
 
 打开“警报”页。 其中包括失败异常警报规则以及你已手动设置的任何警报，并可以查看其当前是否处于警报状态。
@@ -332,11 +332,11 @@ ms.locfileid: "81536805"
 
 *那么，你在查看我的应用程序数据吗？*
 
-* 不是。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](../../azure-monitor/app/data-retention-privacy.md)数据。
+* 不能。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](../../azure-monitor/app/data-retention-privacy.md)数据。
 
 *是否需要订阅此警报？*
 
-* 不是。 发送请求数据的每个应用程序都有智能检测警报规则。
+* 不能。 发送请求数据的每个应用程序都有智能检测警报规则。
 
 *是否可以取消订阅或者获取已发送至同事的通知？*
 
@@ -348,7 +348,7 @@ ms.locfileid: "81536805"
 
 *一些警报关于已知问题，我不希望接收它们。*
 
-* 您可以使用[警报操作规则](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-action-rules)抑制功能。
+* 您可以使用 "[警报操作规则](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-action-rules)禁止显示" 功能。
 
 ## <a name="next-steps"></a>后续步骤
 这些诊断工具可帮助检查来自你的应用的数据：

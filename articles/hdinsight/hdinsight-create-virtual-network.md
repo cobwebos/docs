@@ -9,33 +9,33 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/16/2020
 ms.openlocfilehash: 0c7791d43ffbbc13ab151362c5c3026ebbdb0d34
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81531010"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>为 Azure HDInsight 群集创建虚拟网络
 
-本文提供了用于创建和配置[Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)的示例和代码示例。 与 Azure HDInsight 群集一起使用。 其中提供了有关创建网络安全组 (NSG) 和配置 DNS 的详细示例。
+本文提供了用于创建和配置[Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)的示例和代码示例。 用于 Azure HDInsight 群集。 其中提供了有关创建网络安全组 (NSG) 和配置 DNS 的详细示例。
 
 有关在 Azure HDInsight 中使用虚拟网络的背景信息，请参阅[规划 Azure HDInsight 的虚拟网络](hdinsight-plan-virtual-network-deployment.md)。
 
 ## <a name="prerequisites-for-code-samples-and-examples"></a>代码示例和示例的先决条件
 
-在执行本文中的任何代码示例之前，请了解 TCP/IP 网络。 如果您不熟悉 TCP/IP 网络，请在修改生产网络之前咨询某人。
+在执行本文中的任何代码示例之前，请先了解 TCP/IP 网络。 如果你不熟悉 TCP/IP 网络，请在对生产网络进行修改之前咨询他人。
 
-本文中示例的其他先决条件包括以下项：
+本文中的示例的其他先决条件包括以下各项：
 
-* 如果您使用的是 PowerShell，则需要安装[AZ 模块](https://docs.microsoft.com/powershell/azure/overview)。
-* 如果要使用 Azure CLI 但尚未安装 Azure [CLI，请参阅安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+* 如果使用的是 PowerShell，则需要安装[AZ 模块](https://docs.microsoft.com/powershell/azure/overview)。
+* 如果要使用 Azure CLI 但尚未安装，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 > [!IMPORTANT]  
 > 如果正在查找有关如何使用 Azure 虚拟网络将 HDInsight 连接到本地网络的分步指南，请参阅[将 HDInsight 连接到本地网络](connect-on-premises-network.md)文档。
 
 ## <a name="example-network-security-groups-with-hdinsight"></a><a id="hdinsight-nsg"></a>示例：网络安全组与 HDInsight
 
-本节中的示例演示如何创建网络安全组规则。 这些规则允许 HDInsight 与 Azure 管理服务通信。 在使用示例之前，请调整 IP 地址以匹配正在使用的 Azure 区域的地址。 在 [HDInsight 管理 IP 地址](hdinsight-management-ip-addresses.md)中可找到此信息。
+本节中的示例演示如何创建网络安全组规则。 规则允许 HDInsight 与 Azure 管理服务进行通信。 使用示例之前，请调整 IP 地址，使其与所使用的 Azure 区域的 IP 地址相匹配。 在 [HDInsight 管理 IP 地址](hdinsight-management-ip-addresses.md)中可找到此信息。
 
 ### <a name="azure-resource-management-template"></a>Azure 资源管理模板
 
@@ -151,7 +151,7 @@ Set-AzVirtualNetworkSubnetConfig `
 $vnet | Set-AzVirtualNetwork
 ```
 
-本示例演示如何添加规则以允许所需 IP 地址的入站流量。 它不包含限制从其他源的入站访问的规则。 以下代码演示如何允许来自 Internet 的 SSH 访问：
+本示例演示如何添加规则以允许所需 IP 地址的入站流量。 它不包含限制来自其他源的入站访问的规则。 以下代码演示如何允许来自 Internet 的 SSH 访问：
 
 ```powershell
 Get-AzNetworkSecurityGroup -Name hdisecure -ResourceGroupName RESOURCEGROUP |
@@ -362,7 +362,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
 
    将值 `10.0.0.0/16` 和 `10.1.0.0/16` 替换为虚拟网络的 IP 地址范围。 此条目允许每个网络中的资源发出 DNS 服务器请求。
 
-    任何不是虚拟网络的 DNS 后缀的请求（例如，microsoft.com）都由 Azure 递归解析程序处理。
+    对于虚拟网络的 DNS 后缀（例如，microsoft.com）不是任何请求，都由 Azure 递归解析程序处理。
 
 4. 若要使用配置，请重新启动 Bind。 例如，在两个 DNS 服务器上运行 `sudo service bind9 restart`。
 
@@ -370,8 +370,8 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关配置 HDInsight 以连接到本地网络的完整示例，请参阅[将 HDInsight 连接到本地网络](./connect-on-premises-network.md)。
-* 有关在 Azure 虚拟网络中配置 Apache HBase 群集，请参阅[在 Azure 虚拟网络中的 HDInsight 上创建 Apache HBase 群集](hbase/apache-hbase-provision-vnet.md)。
+* 有关配置 HDInsight 以连接到本地网络的完整示例，请参阅[将 Hdinsight 连接到本地网络](./connect-on-premises-network.md)。
+* 若要在 Azure 虚拟网络中配置 Apache HBase 群集，请参阅[在 Azure 虚拟网络中的 HDInsight 上创建 Apache hbase 群集](hbase/apache-hbase-provision-vnet.md)。
 * 要了解如何配置 Apache HBase 异地复制，请参阅[在 Azure 虚拟网络中设置 Apache HBase 群集复制](hbase/apache-hbase-replication.md)。
 * 有关 Azure 虚拟网络的详细信息，请参阅 [Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
 

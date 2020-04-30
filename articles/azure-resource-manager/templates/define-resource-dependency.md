@@ -4,10 +4,10 @@ description: 介绍如何在部署期间将一个资源设置为依赖于另一�
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.openlocfilehash: 764b718416e1185f56c7eb6b8335792a5822f212
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81535462"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>定义在 ARM 模板中部署资源的顺序
@@ -18,7 +18,7 @@ Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序
 
 ## <a name="dependson"></a>dependsOn
 
-在模板中，使用 dependsOn 元素可将一个资源定义为与一个或多个资源相依赖。 其值是字符串的 JSON 数组，每个字符串都是资源名称。 数组可以包括[有条件部署](conditional-resource-deployment.md)的资源。 条件资源未部署时，Azure 资源管理器会自动将其从所需依赖项中删除。
+在模板中，使用 dependsOn 元素可将一个资源定义为与一个或多个资源相依赖。 它的值是字符串的 JSON 数组，其中每个字符串都是资源名称。 该数组可以包含有条件地[部署](conditional-resource-deployment.md)的资源。 条件资源未部署时，Azure 资源管理器会自动将其从所需依赖项中删除。
 
 以下示例显示了一个虚拟机规模集，该集依赖于负载均衡器、虚拟网络以及创建多个存储帐户的循环。 下面的示例中未显示其他这些资源，但它们需要存在于模板的其他位置。
 

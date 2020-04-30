@@ -9,15 +9,15 @@ ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: c822e8af076f74e1bccc46b7a71717d9631de0a1
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461877"
 ---
 ### <a name="azure-regions-within-a-geopolitical-region"></a>地缘政治区域中的 Azure 区域
 
-基于站点到站点的 VPN 连接和虚拟 WAN 架构可用于以下区域：
+基于站点到站点的 VPN 连接和虚拟 WAN 体系结构可用于以下区域：
 
 |地缘政治区域 | Azure 区域|
 |---|---|
@@ -28,16 +28,16 @@ ms.locfileid: "81461877"
 | 印度 | 印度西部、印度中部、印度南部 |
 | 日本  | 日本西部、日本东部 |
 | 大洋洲 | 澳大利亚东南部、澳大利亚东部 |
-| 南非 | 南非北部，南非西部 |
+| 南非 | 南非北部、南非西北部 |
 | 南美洲 |巴西南部 |
 | 韩国 | 韩国中部、韩国南部 |
-| 阿拉伯联合酋长国 | 阿联酋北部，阿联酋中部 |
+| 阿拉伯联合酋长国 | 阿拉伯联合酋长国北部，阿拉伯联合酋长国中部 |
 
 
 
-### <a name="azure-regions-and-geopolitical-boundaries-for-national-clouds"></a>国家云的 Azure 区域和地缘政治边界
+### <a name="azure-regions-and-geopolitical-boundaries-for-national-clouds"></a>适用于全国云的 Azure 区域和地缘政治边界
 
-基于站点到站点的 VPN 连接和虚拟 WAN 架构可用于以下区域：
+基于站点到站点的 VPN 连接和虚拟 WAN 体系结构可用于以下区域：
 
 |地缘政治区域 | Azure 区域|
 |---|---|

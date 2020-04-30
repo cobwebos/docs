@@ -4,10 +4,10 @@ description: 有关 Application Insights 的常见问题解答。
 ms.topic: conceptual
 ms.date: 04/04/2017
 ms.openlocfilehash: 8d4b1e79c48b14ed7dce756468e4c48d633c3f04
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81536856"
 ---
 # <a name="how-do-i--in-application-insights"></a>如何在 Application Insights 中执行...？
@@ -16,13 +16,13 @@ ms.locfileid: "81536856"
 设置[可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)。
 
 ### <a name="email-if-my-site-is-overloaded"></a>站点过载时发送电子邮件
-针对“服务器响应时间”设置[警报](../../azure-monitor/app/alerts.md)。**** 介于 1 和 2 秒之间的阈值应可解决问题。
+针对“服务器响应时间”设置[警报](../../azure-monitor/app/alerts.md)。  介于 1 和 2 秒之间的阈值应可解决问题。
 
 ![](./media/how-do-i/030-server.png)
 
-应用还可能通过返回失败代码来表明资源紧张的迹象。 针对“失败的请求”设置警报。****
+应用还可能通过返回失败代码来表明资源紧张的迹象。 针对“失败的请求”设置警报。 
 
-如果想要针对“服务器异常”设置警报，可能需要执行[其他一些设置](../../azure-monitor/app/asp-net-exceptions.md)才能看到数据。****
+如果想要针对“服务器异常”设置警报，可能需要执行[其他一些设置](../../azure-monitor/app/asp-net-exceptions.md)才能看到数据。 
 
 ### <a name="email-on-exceptions"></a>发生异常时发送电子邮件
 1. [设置异常监视](../../azure-monitor/app/asp-net-exceptions.md)
@@ -35,7 +35,7 @@ ms.locfileid: "81536856"
 
     telemetry.TrackMetric("Alarm", 10);
 
-或：
+或者：
 
     var measurements = new Dictionary<string,double>();
     measurements ["Alarm"] = 10;
@@ -73,8 +73,8 @@ ms.locfileid: "81536856"
 
 ## <a name="separate-telemetry-from-different-versions"></a>不同版本中的单独遥测
 
-* 应用中的多个角色：使用单个应用程序见解资源，并在[cloud_Rolename](../../azure-monitor/app/app-map.md)上进行筛选。
-* 分隔开发、测试和发布版本：使用不同 Application Insights 资源。 从 Web.config 拾取检测密钥。[了解更多](../../azure-monitor/app/separate-resources.md)
+* 应用中的多个角色：使用单个 Application Insights 资源，并按[cloud_Rolename](../../azure-monitor/app/app-map.md)进行筛选。
+* 分隔开发、测试和发布版本：使用不同 Application Insights 资源。 从 web.config 选取检测密钥。[了解更多](../../azure-monitor/app/separate-resources.md)
 * 报告生成版本：使用遥测初始值设定项添加属性。 [了解详细信息](../../azure-monitor/app/separate-resources.md)
 
 ## <a name="monitor-backend-servers-and-desktop-apps"></a>监视后端服务器和桌面应用
@@ -87,14 +87,14 @@ ms.locfileid: "81536856"
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>包含来自其他源和 Application Insights 的数据的仪表板
 * [将遥测数据导出到 Power BI](../../azure-monitor/app/export-power-bi.md )。
 
-Or
+或
 
 * 使用 SharePoint 作为仪表板，在 SharePoint Web 部件中显示数据。 [使用连续导出和数据流分析导出到 SQL](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)。  使用 PowerView 检查数据库，并创建适用于 PowerView 的 SharePoint Web 部件。
 
 <a name="search-specific-users"></a>
 
 ### <a name="filter-out-anonymous-or-authenticated-users"></a>筛选出匿名用户或经过身份验证的用户
-如果用户登录，则可以设置[经过身份验证的用户 ID](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)。 （不会自动设置此 ID。）
+如果你的用户登录，你可以设置[经过身份验证的用户 ID](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)。 （不会自动设置此 ID。）
 
 然后，可以：
 
@@ -110,11 +110,11 @@ Or
 创建[筛选器](../../azure-monitor/app/api-filtering-sampling.md#filtering)。 这样，便可以先修改或筛选遥测数据，然后将它从应用程序发送到 Application Insights。
 
 ## <a name="list-specific-users-and-their-usage"></a>列出特定的用户及其用法
-如果只想[搜索特定用户](#search-specific-users)，可以设置[经过身份验证的用户 ID](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)。
+如果只是想要[搜索特定用户](#search-specific-users)，可以设置[经过身份验证的用户 ID](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)。
 
 如果想要查看用户列表以及他们查看过哪些页面或登录频率等相关数据，可以使用两个选项：
 
-* [设置经过身份验证的用户 ID，](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)[导出到数据库，](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)并使用适当的工具分析那里的用户数据。
+* [设置经过身份验证的用户 ID](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)，[导出到数据库](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)，并使用合适的工具来分析那里的用户数据。
 * 如果只有少量的用户，可以发送自定义事件或指标，使用感兴趣的数据作为指标值或事件名称，并将用户 ID 设置为属性。 若要分析页面视图，可以替换标准的 JavaScript trackPageView 调用。 要分析服务器端遥测数据，可以使用遥测初始值设定项，将用户 ID 添加到所有服务器遥测数据。 然后可以筛选和细分指标，并按用户 ID 执行搜索。
 
 ## <a name="reduce-traffic-from-my-app-to-application-insights"></a>减少从应用到 Application Insights 的流量
@@ -156,7 +156,7 @@ Or
 ### <a name="if-you-see-no-performance-counter-data"></a>如果看不到任何性能计数器数据
 * 在自己的计算机或 VM 上设置一个 **IIS 服务器**。 [安装状态监视器](../../azure-monitor/app/monitor-performance-live-website-now.md)。
 * **Azure 网站** - 目前不支持性能计数器。 可以获取多个指标作为 Azure 网站控制台的标准组成部分。
-* **Unix 服务器** - [安装收集](../../azure-monitor/app/java-collectd.md)
+* **Unix 服务器** - [安装 collectd](../../azure-monitor/app/java-collectd.md)
 
 ### <a name="to-display-more-performance-counters"></a>显示更多性能计数器
 * 首先[添加一个新图表](../../azure-monitor/platform/metrics-charts.md)，然后查看计数器是否出现在提供的基本集内。

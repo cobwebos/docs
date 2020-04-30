@@ -10,13 +10,13 @@ ms.custom: include file
 ms.date: 04/16/2020
 ms.author: diberry
 ms.openlocfilehash: 02610e647e2138cbf52f86c22107feec2d61273b
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81604970"
 ---
-认知服务提供两种自然语言处理服务，[语言理解和](../luis/what-is-luis.md)[QnA制作器](../qnamaker/overview/overview.md)，每个服务都有不同的目的。 本文介绍每个服务的使用时机，以及两者如何相辅相成。
+认知服务提供两种自然语言处理服务，[语言理解](../luis/what-is-luis.md)和[QnA Maker](../qnamaker/overview/overview.md)，每个服务都有不同的用途。 本文介绍每个服务的使用时机，以及两者如何相辅相成。
 
 自然语言处理 (NLP) 可让客户端应用程序（例如聊天机器人）使用自然语言来与用户交互。 用户输入句子或短语。 用户输入的文本可能存在语法、拼写和标点符号不当的情况。 认知服务仍可以处理用户的句子，并返回聊天机器人为用户提供帮助所需的信息。
 
@@ -79,9 +79,9 @@ ms.locfileid: "81604970"
 实施适用于每个服务的最佳做法：
 
 * [LUIS](../luis/luis-concept-best-practices.md) 最佳做法
-* [QnA 制造商](../qnamaker/concepts/best-practices.md)最佳实践
+* [QnA Maker](../qnamaker/concepts/best-practices.md)最佳实践
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [语言理解 (LUIS)](../luis/what-is-luis.md)
 * [QnA Maker](../qnamaker/overview/overview.md)

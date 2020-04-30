@@ -4,10 +4,10 @@ description: 使用 Application Insights 监视 Java 网站的扩展性能和使
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.openlocfilehash: b047a8dd8c67679a5cc8a45e8be82f9ab5227aa4
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537536"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>监视 Java Web 应用中的依赖项、捕获的异常和方法执行时间
@@ -15,9 +15,9 @@ ms.locfileid: "81537536"
 
 如果已[使用 Application Insights 检测了 Java Web 应用][java]，则无需更改任何代码，就能使用 Java 代理来获取更深入的见解：
 
-* **依赖项：** 有关应用程序对其他组件的调用的数据，包括：
+* **依赖项：** 有关应用程序对其他组件的调用数据，包括：
   * 捕获通过 Apache HttpClient、OkHttp 和 `java.net.HttpURLConnection` 进行的**传出 HTTP 调用**。
-  * 通过绝地客户端拨打**的雷迪斯电话**被捕获。
+  * 捕获通过 Jedis 客户端进行的 **Redis 调用**。
   * **JDBC 查询** - 对于 MySQL 和 PostgreSQL，如果调用花费的时间长于 10 秒，代理将报告查询计划。
 
 * **应用程序日志记录：** 捕获应用程序日志并将其与 HTTP 请求和其他遥测数据相关联
@@ -25,7 +25,7 @@ ms.locfileid: "81537536"
   * **Log4j2**
   * **Logback**
 
-* **更好的操作命名：**（用于在门户中对请求进行聚合）
+* **更好的操作命名：** （用于在门户中对请求进行聚合）
   * **Spring** - 基于 `@RequestMapping`。
   * **JAX-RS** - 基于 `@Path`。 
 
@@ -84,12 +84,12 @@ ms.locfileid: "81537536"
 * 选择“设置”>“应用程序设置”
 * 在“应用设置”下添加新的键/值对：
 
-键：`JAVA_OPTS`值：`-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
+注册表项：`JAVA_OPTS` 值：`-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
 
 有关 Java 代理的最新版本，请在[此处](https://github.com/Microsoft/ApplicationInsights-Java/releases
 )查看版本。 
 
-代理必须打包为项目中的资源，以便它最终位于 D:/home/site/wwwroot/ 目录中。 您可以通过访问**开发工具** > **高级工具** > **调试控制台**并检查网站目录的内容来确认代理位于正确的应用服务目录中。    
+代理必须打包为项目中的资源，以便它最终位于 D:/home/site/wwwroot/ 目录中。 可以通过转到“开发工具”   > “高级工具”   > “调试控制台”  并查看站点目录的内容，确认你的代理处于正确的应用服务目录中。    
 
 * 保存设置并重启应用。 （这些步骤仅适用于 Windows 上运行的应用程序服务。）
 
@@ -113,7 +113,7 @@ ms.locfileid: "81537536"
 
 理想情况下，所有服务都已更新为支持 W3C 协议的较新版 SDK 时，就会出现这种情况。 强烈建议尽快迁移到提供 W3C 支持的新版 SDK。
 
-请确保[传入](correlation.md#enable-w3c-distributed-tracing-support-for-java-apps)和传出（代理）配置完全相同****。
+请确保[传入](correlation.md#enable-w3c-distributed-tracing-support-for-java-apps)和传出（代理）配置完全相同  。
 
 ## <a name="view-the-data"></a>查看数据
 在 Application Insights 资源中，聚合的远程依赖项和方法执行时间显示在[“性能”磁贴下][metrics]。
@@ -122,7 +122,7 @@ ms.locfileid: "81537536"
 
 [诊断依赖项问题 - 了解详细信息](../../azure-monitor/app/asp-net-dependencies.md#diagnosis)。
 
-## <a name="questions-problems"></a>有疑问？ 遇到问题？
+## <a name="questions-problems"></a>存在疑问？ 遇到问题？
 * 没有数据？ [设置防火墙异常](../../azure-monitor/app/ip-addresses.md)
 * [Java 故障排除](java-troubleshoot.md)
 

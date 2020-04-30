@@ -1,6 +1,6 @@
 ---
-title: 在 Windows 设备上安装 C# 代理
-description: 了解如何在 32 位或 64 位 Windows 设备上安装 IoT 代理的 Azure 安全中心。
+title: '在 Windows 设备上安装 c # 代理'
+description: 了解如何在32位或64位 Windows 设备上安装用于 IoT 代理的 Azure 安全中心。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,15 +16,15 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 4d7d2f0a423a50f85160a856480eaa973be7e2b0
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537604"
 ---
 # <a name="deploy-an-azure-security-center-for-iot-c-based-security-agent-for-windows"></a>为 Windows 部署适用于 IoT 的 Azure 安全中心基于 C# 的安全代理
 
-本指南介绍如何在 Windows 上安装基于 IoT C# 的安全代理的 Azure 安全中心。
+本指南说明如何在 Windows 上安装 Azure 安全中心基于 IoT c # 的安全代理。
 
 本指南介绍如何：
 
@@ -34,24 +34,24 @@ ms.locfileid: "81537604"
 > * 卸载代理
 > * 疑难解答
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 有关其他平台和代理风格，请参阅[选择正确的安全代理](how-to-deploy-agent.md)。
 
-1. 要安装的计算机上的本地管理员权限。
+1. 要在其上安装的计算机上的本地管理员权限。
 
 1. 为设备[创建安全模块](quickstart-create-security-twin.md)。
 
 ## <a name="installation"></a>安装
 
-要安装安全代理，请使用以下工作流：
+若要安装安全代理，请使用以下工作流：
 
-1. 在设备上安装 IoT Windows C++ 代理的 Azure 安全中心。 从 IoT [GitHub 存储库](https://github.com/Azure/Azure-IoT-Security-Agent-CS)的 Azure 安全中心将最新版本下载到计算机。
+1. 在设备上安装适用于 IoT Windows c # 代理的 Azure 安全中心。 从适用于 IoT [GitHub 存储库](https://github.com/Azure/Azure-IoT-Security-Agent-CS)的 Azure 安全中心将最新版本下载到你的计算机。
 
 1. 提取包的内容，并导航到 /Install 文件夹。
 
-1. 以管理员身份打开 Windows 电源外壳。
-1. 通过运行以下功能向安装安全代理脚本添加运行权限：
+1. 以管理员身份打开 Windows PowerShell。
+1. 通过运行以下内容将运行权限添加到 InstallSecurityAgent 脚本：
 
     ```
     Unblock-File .\InstallSecurityAgent.ps1
@@ -78,9 +78,9 @@ ms.locfileid: "81537604"
 * 将代理作为**系统服务**安装。
 * 使用提供的身份验证参数配置代理。
 
-有关其他帮助，请使用 PowerShell 中的"获取帮助"命令。
+有关更多帮助，请在 PowerShell 中使用 Get-help 命令。
 
-获取帮助示例：```Get-Help .\InstallSecurityAgent.ps1```
+Get-help 示例：```Get-Help .\InstallSecurityAgent.ps1```
 
 ### <a name="verify-deployment-status"></a>验证部署状态
 
@@ -104,7 +104,7 @@ ms.locfileid: "81537604"
 
 若要启用日志记录，请执行以下操作：
 
-1. 打开配置文件 （General.config） 以使用标准文件编辑器进行编辑。
+1. 使用标准文件编辑器打开配置文件（常规 .config）进行编辑。
 
 1. 编辑以下值：
 
@@ -120,29 +120,29 @@ ms.locfileid: "81537604"
 
 1. 运行以下 PowerShell 或命令行，以便重启代理：
 
-    **电源壳**
+    **Powershell**
 
      ```
      Restart-Service "ASC IoT Agent"
      ```
 
-   or
+   或
 
-    **Cmd**
+    **CMD**
 
      ```
      sc.exe stop "ASC IoT Agent"
      sc.exe start "ASC IoT Agent"
      ```
 
-1. 查看日志文件，了解有关故障的详细信息。 日志文件将存在于运行脚本的工作目录中。 
+1. 查看日志文件，了解有关故障的详细信息。 日志文件将出现在运行脚本的工作目录中。 
 
    日志文件位置：`.\IoTAgentLog.log`
 
 ## <a name="next-steps"></a>后续步骤
 
-* 阅读 Azure 安全中心，了解 IoT 服务[概述](overview.md)
-* 了解有关 IoT[体系结构](architecture.md)的 Azure 安全中心
+* 阅读 Azure 安全中心以获取 IoT 服务[概述](overview.md)
+* 详细了解用于 IoT[体系结构](architecture.md)的 Azure 安全中心
 * 启用该[服务](quickstart-onboard-iot-hub.md)
 * 阅读[常见问题解答](resources-frequently-asked-questions.md)
 * 了解[警报](concept-security-alerts.md)

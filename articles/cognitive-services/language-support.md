@@ -11,17 +11,17 @@ ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
 ms.openlocfilehash: d103b22338672f031fa4f91349a8376f86b703c8
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81530960"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Azure 认知服务的自然语言支持
 
-Azure 认知服务使您能够构建能够查看、听到、与用户交谈和理解用户的应用程序。 这些服务支持三十多种语言，允许用户与应用程序自然地进行通信。 使用以下链接按服务查看语言可用性。
+Azure 认知服务使你能够构建可查看、听取、与用户交流并了解你的用户的应用程序。 这些服务支持三十多种语言，允许用户与应用程序自然地进行通信。 使用以下链接查看服务的语言可用性。
 
-这些认知服务与语言无关，没有基于人类语言的限制。
+这些认知服务是语言不可知的，没有基于人类语言的限制。
 
 * [异常探测器（预览版）](./anomaly-detector/index.yml)
 * [自定义视觉](./Custom-Vision-Service/index.yml)

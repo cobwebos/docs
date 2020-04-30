@@ -7,35 +7,35 @@ ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: fcc7c5b8fa182cace6e3dae0b1cae4cd41c5dcb9
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81532575"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>使用 FTP/S 将应用部署到 Azure 应用服务
 
-本文演示如何使用 FTP 或 FTPS 将 Web 应用、移动应用后端或 API 应用部署到 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)。
+本文介绍了如何使用 FTP 或 FTPS 将 Web 应用、移动应用后端或 API 应用部署到 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)。
 
-应用的 FTP / S 终结点已处于活动状态。 无需配置即可启用 FTP / S 部署。
+应用的 FTP/S 终结点已处于活动状态。 启用 FTP/S 部署不需要进行任何配置。
 
 ## <a name="open-ftp-dashboard"></a>打开 FTP 仪表板
 
-1. 在[Azure 门户](https://portal.azure.com)中，搜索并选择**应用服务**。
+1. 在[Azure 门户](https://portal.azure.com)中，搜索并选择 "**应用服务**"。
 
     ![搜索应用服务。](media/app-service-continuous-deployment/search-for-app-services.png)
 
-2. 选择要部署的 Web 应用。
+2. 选择要部署的 web 应用。
 
-    ![选择你的应用。](media/app-service-continuous-deployment/select-your-app.png)
+    ![选择应用。](media/app-service-continuous-deployment/select-your-app.png)
 
-3. 选择**部署中心** > **FTP** > **仪表板**。
+3. 选择 "**部署中心** > **FTP** > **仪表板**"。
 
     ![打开 FTP 仪表板](./media/app-service-deploy-ftp/open-dashboard.png)
 
 ## <a name="get-ftp-connection-information"></a>获取 FTP 连接信息
 
-在 FTP 仪表板中，选择 **"复制"** 以复制 FTPS 终结点和应用凭据。
+在 FTP 面板中，选择 "**复制**" 以复制 FTPS 终结点和应用程序凭据。
 
 ![复制 FTP 信息](./media/app-service-deploy-ftp/ftp-dashboard.png)
 
@@ -67,7 +67,7 @@ ms.locfileid: "81532575"
 
 ## <a name="enforce-ftps"></a>强制实施 FTPS
 
-为提高安全性，应仅允许 FTP 通过 TLS/SSL。 如果不使用 FTP 部署，也可禁用 FTP 和 FTPS。
+为增强安全性，只应允许通过 TLS/SSL 进行 FTP。 如果不使用 FTP 部署，也可禁用 FTP 和 FTPS。
 
 在 [Azure 门户](https://portal.azure.com)的应用资源页中，从左侧导航中选择“配置”**** > “常规设置”****。
 

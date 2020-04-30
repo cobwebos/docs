@@ -4,10 +4,10 @@ description: 使用 Application Insights 分析 Windows 桌面应用的使用情
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.openlocfilehash: eb9e0fc480098478a3a68265ac85e0d5450e27fe
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537383"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>监视经典 Windows 桌面应用中的使用情况和性能
@@ -24,9 +24,9 @@ ms.locfileid: "81537383"
    
     或在 ApplicationInsights.config 中设置检测密钥（如果已安装标准遥测包之一）：
    
-    `<InstrumentationKey>`*您的钥匙*`</InstrumentationKey>` 
+    `<InstrumentationKey>`*你的密钥*`</InstrumentationKey>` 
    
-    如果使用 ApplicationInsights.config，请确保它在解决方案资源管理器中的属性设置为“生成操作”=“内容”、“复制到输出目录”=“复制”****。
+    如果使用 ApplicationInsights.config，请确保它在解决方案资源管理器中的属性设置为“生成操作”=“内容”、“复制到输出目录”=“复制”  。
 5. [使用 API](../../azure-monitor/app/api-custom-events-metrics.md) 发送遥测。
 6. 运行应用，并在 Azure 门户中创建的资源中查看遥测。
 
@@ -93,7 +93,7 @@ namespace CustomInitializer.Telemetry
     }
 }
 ```
-在下面设置检测键`Program.cs``Main()`的方法中实例化初始化器：
+在以下设置检测密钥的 `Program.cs` `Main()` 方法中实例化初始化程序：
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;

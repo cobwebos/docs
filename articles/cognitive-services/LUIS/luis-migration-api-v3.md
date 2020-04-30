@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: diberry
 ms.openlocfilehash: 4b6d28b24ffc6c0a848d1c7a34e863da0606d936
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81530379"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 的预测终结点更改
@@ -38,7 +38,7 @@ V3 在从预览版过渡到正式版的过程中进行了以下更改：
 * 以下预构建的实体具有不同的 JSON 响应：
     * [OrdinalV1](luis-reference-prebuilt-ordinal.md)
     * [GeographyV2](luis-reference-prebuilt-geographyv2.md)
-    * [日期时间V2](luis-reference-prebuilt-datetimev2.md)
+    * [DatetimeV2](luis-reference-prebuilt-datetimev2.md)
     * 可度量单位密钥名称从 `units` 更改为 `unit`
 
 * 请求正文 JSON 更改：
@@ -59,7 +59,7 @@ V3 在从预览版过渡到正式版的过程中进行了以下更改：
 
 ### <a name="bing-spell-check"></a>必应拼写检查
 
-V3 预测终结点不支持此 API - 继续使用 V2 API 预测终结点进行拼写更正。 如果您在使用 V3 API 时需要拼写更正，请让客户端应用程序调用[必应拼写检查](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/overview)API，并在将文本发送到 LUIS API 之前将文本更改为正确的拼写。
+V3 预测终结点不支持此 API-继续使用 V2 API 预测终结点进行拼写更正。 如果在使用 V3 API 时需要拼写更正，请让客户端应用程序调用[必应拼写检查](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/overview)api，并将文本发送到 LUIS api 之前，将文本更改为正确的拼写。
 
 ## <a name="bot-framework-and-azure-bot-service-client-applications"></a>Bot Framework 和 Azure 机器人服务客户端应用程序
 
@@ -77,12 +77,12 @@ V3 终结点 HTTP 调用的格式已更改。
 
 如果希望按版本查询，首先需要使用 `"directVersionPublish":true`[通过 API 进行发布](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b)。 查询引用版本 ID 而不是槽名称的终结点。
 
-|预测 API 版本|METHOD|URL|
+|预测 API 版本|METHOD|代码|
 |--|--|--|
 |V3|GET|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>prediction</b>/<b>v3.0</b>/apps/<b>{APP-ID}</b>/slots/<b>{SLOT-NAME}</b>/predict?query=<b>{QUERY}</b>|
 |V3|POST|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>prediction</b>/<b>v3.0</b>/apps/<b>{APP-ID}</b>/slots/<b>{SLOT-NAME}</b>/predict|
 |V2|GET|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>prediction</b>/<b>v3.0</b>/apps/<b>{APP-ID}</b>/versions/<b>{VERSION-ID}</b>/predict?query=<b>{QUERY}</b>|
-|V2|POST|https://<b>[区域]</b>.api.cognitive.microsoft.com/luis/<b>预测</b>/<b>v3.0</b>/应用/<b>[APP-ID]</b>/版本/<b>[VERSION-ID]</b>/预测|
+|V2|POST|https://<b>{REGION}</b>. api.cognitive.microsoft.com/luis/<b>预测</b>/<b>v2.0/apps/</b><b>{应用 ID}</b>/versions/<b>{版本 ID}</b>/predict|
 
 |`SLOT-NAME` 的有效值|
 |--|
@@ -95,7 +95,7 @@ V3 终结点 HTTP 调用的格式已更改。
 
 V3 API 包含不同的查询字符串参数。
 
-|参数名称|类型|版本|默认|目标|
+|参数名称|类型|版本|默认|目的|
 |--|--|--|--|--|
 |`log`|boolean|V2 和 V3|false|将查询存储在日志文件中。 默认值为 false。|
 |`query`|字符串|仅 V3|无默认值 - 在 GET 请求中是必需的|**在 V2 中**，要预测的言语位于 `q` 参数中。 <br><br>**在 V3 中**，该功能在 `query` 参数中传递。|
@@ -119,10 +119,10 @@ V3 API 包含不同的查询字符串参数。
 }
 ```
 
-|properties|类型|版本|默认|目标|
+|properties|类型|版本|默认|目的|
 |--|--|--|--|--|
-|`dynamicLists`|array|仅 V3|非必需。|使用[动态列表](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time)可以扩展已在 LUIS 应用中的已训练且已发布的现有列表实体。|
-|`externalEntities`|array|仅 V3|非必需。|[外部实体](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time)可让 LUIS 应用在运行时识别和标记实体，这些实体可用作现有实体的特征。 |
+|`dynamicLists`|数组|仅 V3|不要求。|使用[动态列表](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time)可以扩展已在 LUIS 应用中的已训练且已发布的现有列表实体。|
+|`externalEntities`|数组|仅 V3|不要求。|[外部实体](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time)可让 LUIS 应用在运行时识别和标记实体，这些实体可用作现有实体的特征。 |
 |`options.datetimeReference`|字符串|仅 V3|无默认值|用于确定 [datetimeV2 偏移量](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)。 datetimeReference 的格式是 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)。|
 |`options.preferExternalEntities`|boolean|仅 V3|false|指定是使用用户的[外部实体（与现有实体具有相同名称）](schema-change-prediction-runtime.md#override-existing-model-predictions)，还是使用模型中的现有实体进行预测。 |
 |`query`|字符串|仅 V3|必需。|**在 V2 中**，要预测的言语位于 `q` 参数中。 <br><br>**在 V3 中**，该功能在 `query` 参数中传递。|
@@ -280,9 +280,9 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 <a name="external-entities-passed-in-at-prediction-time"></a>
 <a name="override-existing-model-predictions"></a>
 
-## <a name="extend-the-app-at-prediction-time"></a>在预测时扩展应用
+## <a name="extend-the-app-at-prediction-time"></a>在预测时间扩展应用
 
-了解如何在预测运行时扩展应用[的概念](schema-change-prediction-runtime.md)。
+了解有关如何在预测运行时扩展应用程序的[概念](schema-change-prediction-runtime.md)。
 
 ## <a name="deprecation"></a>弃用
 

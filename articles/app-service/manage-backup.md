@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
 ms.openlocfilehash: b812ae10b3462dbeff05c8a67e7ebb725281e7e8
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81535751"
 ---
 # <a name="back-up-your-app-in-azure"></a>在 Azure 中备份应用
@@ -41,11 +41,11 @@ ms.locfileid: "81535751"
 <a name="requirements"></a>
 
 ## <a name="requirements-and-restrictions"></a>要求和限制
-* 备份和还原功能要求应用服务计划处于标准层或高级层********。 有关缩放应用服务计划以使用更高层的详细信息，请参阅[增加 Azure 中的应用](manage-scale-up.md)。 与标准**** 层相比，高级**** 层每日允许更多备份量。
+* 备份和还原功能要求应用服务计划处于标准层或高级层   。 有关缩放应用服务计划以使用更高层的详细信息，请参阅[增加 Azure 中的应用](manage-scale-up.md)。 与**标准**层相比，**高级**层每日允许更多备份量。
 * 在与要备份的应用相同的订阅中，需要有一个 Azure 存储帐户和容器。 有关 Azure 存储帐户的详细信息，请参阅 [Azure 存储帐户概述](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。
 * 最多可备份 10 GB 的应用和数据库内容。 如果备份大小超过此限制，会出错。
-* 不支持为 MySQL 备份启用 TLS 的 Azure 数据库。 如果配置备份，备份将失败。
-* 不支持备份启用 TLS 的用于 PostgreSQL 的 Azure 数据库。 如果配置备份，备份将失败。
+* 不支持 Azure Database for MySQL 启用 TLS 的备份。 如果配置备份，备份将失败。
+* 不支持 Azure Database for PostgreSQL 启用 TLS 的备份。 如果配置备份，备份将失败。
 * 应用内 MySQL 数据库无需任何配置即可自动备份。 如果对应用内 MySQL 数据库进行手动设置，例如添加连接字符串，则备份可能无法正常工作。
 * 不支持将启用了防火墙的存储帐户用作备份目标。 如果配置备份，备份将失败。
 
@@ -53,7 +53,7 @@ ms.locfileid: "81535751"
 <a name="manualbackup"></a>
 
 ## <a name="create-a-manual-backup"></a>创建手动备份
-1. 在 [Azure 门户](https://portal.azure.com)中，导航到应用的页面，然后选择“备份”****。 将显示“备份”页****。
+1. 在 [Azure 门户](https://portal.azure.com)中，导航到应用的页面，然后选择“备份”  。 将显示“备份”页  。
 
     ![“备份”页面](./media/manage-backup/access-backup-page.png)
 
@@ -64,29 +64,29 @@ ms.locfileid: "81535751"
     > 
     > 
 
-2. 在 **"备份"** 页中，选择**未配置备份。单击此处为您的应用配置备份**。
+2. 在“备份”  页中，选择“未配置备份。  单击此处为应用配置备份”。
 
     ![单击“配置”](./media/manage-backup/configure-start.png)
 
-3. 在 **"备份配置"** 页中，单击**未配置为配置**存储帐户的存储。
+3. 在“备份配置”页中，单击“存储未配置”来配置存储帐户   。
 
     ![选择存储帐户](./media/manage-backup/configure-storage.png)
 
-4. 选择“存储帐户”**** 和“容器”**** 来选择备份目标。 该存储帐户必须与要备份的应用属于同一订阅。 也可在各自的页面中新建存储帐户或容器。 完成后，单击“选择”****。
+4. 选择“存储帐户”  和“容器”  来选择备份目标。 该存储帐户必须与要备份的应用属于同一订阅。 也可在各自的页面中新建存储帐户或容器。 完成后，单击“选择”  。
 
-5. 在仍处于打开状态的“备份配置”页中，可配置“备份数据库”，然后选择备份要包含的数据库（SQL 数据库或 MySQL），然后单击“确定”************。
+5. 在仍处于打开状态的“备份配置”页中，可配置“备份数据库”，然后选择备份要包含的数据库（SQL 数据库或 MySQL），然后单击“确定”    。
 
     ![选择存储帐户](./media/manage-backup/configure-database.png)
 
     > [!NOTE]
-    > 若要使数据库显示在此列表中，其连接字符串必须位于应用中“应用程序设置”页的“连接字符串”部分中********。 
+    > 若要使数据库显示在此列表中，其连接字符串必须位于应用中“应用程序设置”页的“连接字符串”部分中   。 
     >
     > 应用内 MySQL 数据库无需任何配置即可自动备份。 如果对应用内 MySQL 数据库进行手动设置，例如添加连接字符串，则备份可能无法正常工作。
     > 
     > 
 
-6. 在“备份配置”页中，单击“保存”********。
-7. 在 **"备份"** 页中，单击"**备份**"。
+6. 在“备份配置”页中，单击“保存”   。
+7. 在“备份”页中，单击“备份”   。
 
     ![BackUpNow 按钮](./media/manage-backup/manual-backup.png)
 
@@ -96,19 +96,19 @@ ms.locfileid: "81535751"
 
 <a name="automatedbackups"></a>
 
-## <a name="configure-automated-backups"></a>配置自动执行的备份
-1. 在“备份配置”页中，将“计划备份”设置为“开”************。 
+## <a name="configure-automated-backups"></a>配置自动备份
+1. 在“备份配置”页中，将“计划备份”设置为“开”    。 
 
     ![启用自动化的备份](./media/manage-backup/scheduled-backup.png)
 
-2. 根据需要配置备份计划，然后选择“确定”****。
+2. 根据需要配置备份计划，然后选择“确定”  。
 
 <a name="partialbackups"></a>
 
 ## <a name="configure-partial-backups"></a>配置部分备份
 有时你不想备份应用中的所有内容。 以下是一些示例：
 
-* [设置每周备份](#configure-automated-backups)应用，其中包含永远不会更改的静态内容，例如旧的博客文章或图像。
+* [设置每周备份](#configure-automated-backups) 应用，其中包含永远不会更改的静态内容，例如旧的博客文章或图映像。
 * 应用的内容超过 10 GB（这是一次可以备份的最大量）。
 * 不想备份日志文件。
 
@@ -120,7 +120,7 @@ ms.locfileid: "81535751"
 ### <a name="exclude-files-from-your-backup"></a>从备份中排除文件
 假定应用中包含的日志文件和静态映像已经过备份且不会发生更改。 这种情况下，可排除这些文件夹和文件，以免其存储在将来的备份中。 若要从备份中排除文件和文件夹，请在应用的 `D:\home\site\wwwroot` 文件夹中创建一个 `_backup.filter` 文件。 指定要在此文件中排除的文件和文件夹列表。 
 
-可以通过导航到 `https://<app-name>.scm.azurewebsites.net/DebugConsole` 来访问文件。 如果出现系统提示，请登录到你的 Azure 帐户。
+可以通过导航到 `https://<app-name>.scm.azurewebsites.net/DebugConsole` 来访问文件。 如果出现系统提示，请登录到 Azure 帐户。
 
 确定要从备份中排除的文件夹。 例如，筛选出突出显示的文件夹和文件。
 
@@ -141,14 +141,14 @@ ms.locfileid: "81535751"
 > [!NOTE]
 > 采用与[还原定期备份](web-sites-restore.md)相同的方式，还原站点的部分备份。 还原过程会执行正确的操作。
 > 
-> 还原完整备份后，站点上的所有内容都被替换为备份中的任何内容。 如果文件在站点上但不在备份中，则会将其删除。 但是，还原部分备份时，位于其中一个方块列表目录或任何方块列表文件中的任何内容都保持不变。
+> 还原完整备份后，站点上的所有内容都被替换为备份中的所有内容。 如果文件在站点上但不在备份中，则会将其删除。 但是，还原部分备份时，位于其中一个方块列表目录或任何方块列表文件中的任何内容都保持不变。
 > 
 
 
 <a name="aboutbackups"></a>
 
 ## <a name="how-backups-are-stored"></a>如何存储备份
-对应用进行了一次或多次备份后，可在存储帐户的“容器”**** 页中看到备份以及应用。 在存储帐户中，每个备份都由一个 `.zip` 文件和一个 `.xml` 文件组成，前者包含备份数据，后者包含 `.zip` 文件内容的清单。 如果想要在无需实际执行应用还原的情况下访问备份，则可以解压缩并浏览这些文件。
+对应用进行了一次或多次备份后，可在存储帐户的“容器”  页中看到备份以及应用。 在存储帐户中，每个备份都由一个 `.zip` 文件和一个 `.xml` 文件组成，前者包含备份数据，后者包含 `.zip` 文件内容的清单。 如果想要在无需实际执行应用还原的情况下访问备份，则可以解压缩并浏览这些文件。
 
 应用的数据库备份存储在 .zip 文件的根目录中。 对于 SQL 数据库，这是 BACPAC 文件（无文件扩展名），并且可以导入。 若要基于 BACPAC 导出创建 SQL 数据库，请参阅[导入 BACPAC 文件以创建新的用户数据库](https://technet.microsoft.com/library/hh710052.aspx)。
 
@@ -157,14 +157,14 @@ ms.locfileid: "81535751"
 > 
 > 
 
-## <a name="automate-with-scripts"></a>使用脚本自动化
+## <a name="automate-with-scripts"></a>使用脚本自动执行
 
 可以在 [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/overview) 中使用脚本自动备份管理。
 
 相关示例如下所示：
 
 - [Azure CLI 示例](samples-cli.md)
-- [Azure 电源外壳示例](samples-powershell.md)
+- [Azure PowerShell 示例](samples-powershell.md)
 
 <a name="nextsteps"></a>
 

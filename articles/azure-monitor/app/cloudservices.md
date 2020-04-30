@@ -4,10 +4,10 @@ description: 使用 Application Insights 有效监视 Web 角色和辅助角色
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.openlocfilehash: 17813d17a1c40caac5587e37e279be6376992b90
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537587"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>适用于 Azure 云服务的 Application Insights
@@ -18,7 +18,7 @@ ms.locfileid: "81537587"
 ## <a name="prerequisites"></a>先决条件
 开始前，需要具备：
 
-* [Azure](https://azure.com)订阅。 使用 Windows、XBox Live 或其他 Microsoft 云服务的 Microsoft 帐户登录。 
+* 一个 [Azure](https://azure.com) 订阅。 使用 Windows、XBox Live 或其他 Microsoft 云服务的 Microsoft 帐户登录。 
 * Microsoft Azure Tools 2.9 或更高版本。
 * Developer Analytics Tools 7.10 或更高版本。
 
@@ -48,7 +48,7 @@ ms.locfileid: "81537587"
 ## <a name="plan-resources-and-resource-groups"></a>规划资源和资源组
 应用中的遥测数据在 Application Insights 类型的 Azure 资源中进行存储、分析和显示。 
 
-每个资源属于一个资源组。 资源组用于管理成本、向团队成员授予访问权限，以及在单个协调式事务中部署更新。 例如，可以[编写脚本来在](../../azure-resource-manager/templates/deploy-powershell.md)一个操作中部署 Azure 云服务及其应用程序见解监视资源。
+每个资源属于一个资源组。 资源组用于管理成本、向团队成员授予访问权限，以及在单个协调式事务中部署更新。 例如，可以[编写一个脚本](../../azure-resource-manager/templates/deploy-powershell.md)，以通过一个操作部署 Azure 云服务及其 Application Insights 监视资源。
 
 ### <a name="resources-for-components"></a>组件的资源
 我们建议为应用的每个组件单独创建一个资源。 即，为每个 Web 角色和辅助角色创建一个资源。 可以单独分析每个组件，但也可以创建一个[仪表板](../../azure-monitor/app/overview-dashboard.md)，用于将所有组件中的关键图表汇总到一起，以便可以在一个视图中比较和监视资源。 
@@ -68,13 +68,13 @@ ms.locfileid: "81537587"
 
 ## <a name="create-an-application-insights-resource-for-each-role"></a>为每个角色创建 Application Insights 资源
 
-如果你决定为每个角色单独创建资源（也许是为每个生成配置单独创建资源集），最简单的方法是在 Application Insights 门户中创建这些资源。 如果大量创建资源，则可以[自动执行该过程](../../azure-monitor/app/powershell.md)。
+如果你决定为每个角色单独创建资源（也许是为每个生成配置单独创建资源集），最简单的方法是在 Application Insights 门户中创建这些资源。 若要创建大量的资源，可[将创建过程自动化](../../azure-monitor/app/powershell.md)。
 
-1. 在 [Azure 门户][portal]中，选择“新建” > “开发人员服务” > “Application Insights”。************  
+1. 在 [Azure 门户][portal]中，选择“新建” > “开发人员服务” > “Application Insights”。     
 
     ![“Application Insights”窗格](./media/cloudservices/01-new.png)
 
-1. 在“应用程序类型”下拉列表中，选择“ASP.NET Web 应用程序”********。
+1. 在“应用程序类型”下拉列表中，选择“ASP.NET Web 应用程序”   。
 
 每个资源由检测密钥标识。 以后若要手动配置或验证 SDK 的配置，可能需要使用此密钥。
 
@@ -82,9 +82,9 @@ ms.locfileid: "81537587"
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>为每个角色设置 Azure 诊断
 设置此选项可以使用 Application Insights 监视应用。 对于 Web 角色，此选项可提供性能监视、警报、诊断以及使用情况分析。 对于其他角色，可以搜索和监视 Azure 诊断信息，例如重启、性能计数器和对 System.Diagnostics.Trace 的调用。 
 
-1. 在可视化工作室解决方案资源管理器中，在**\<"云服务>** > **角色**"下，打开每个角色的属性。
+1. 在 Visual Studio 解决方案资源管理器中的“\<YourCloudService>” > “角色”下面，打开每个角色的属性。  
 
-1. 在“配置”中，选中“将诊断数据发送到 Application Insights”复选框，然后选择前面创建的 Application Insights 资源。********
+1. 在“配置”中，选中“将诊断数据发送到 Application Insights”复选框，然后选择前面创建的 Application Insights 资源。  
 
 如果决定对每个生成配置使用不同的 Application Insights 资源，请先选择该配置。
 
@@ -99,11 +99,11 @@ ms.locfileid: "81537587"
 
 在 Visual Studio 中，为每个云应用项目配置 Application Insights SDK。
 
-1. 若要配置 Web 角色，请右键单击项目，并选择“配置 Application Insights”或“添加”>“Application Insights 遥测”************。
+1. 若要配置 Web 角色，请右键单击项目，并选择“配置 Application Insights”或“添加”>“Application Insights 遥测”    。
 
 1. 配置**辅助角色**： 
 
-    a. 右键单击项目，并选择“管理 NuGet 包”****。
+    a. 右键单击项目，并选择“管理 NuGet 包”  。
 
     b. 添加[适用于 Windows Server 的 Application Insights](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)。
 
@@ -111,7 +111,7 @@ ms.locfileid: "81537587"
 
 1. 将 SDK 配置为向 Application Insights 资源发送数据：
 
-    a. 在合适的启动函数中，从 *.cscfg*文件中的配置设置设置检测密钥：
+    a. 在适当的启动函数中，通过 *.cscfg* 文件中的配置设置指定检测密钥：
  
     ```csharp
    
@@ -124,7 +124,7 @@ ms.locfileid: "81537587"
     * [辅助角色](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
     * [对于网页](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13) 
 
-1. 将*应用程序 Insights.config*文件设置为始终复制到输出目录。
+1. 将 *ApplicationInsights.config* 文件设置为始终复制到输出目录。
 
    *.config* 文件中的消息会询问是否要将检测密钥放在该处。 但是，对于云应用，最好是通过 *.cscfg* 文件设置检测密钥。 此方法可确保在门户中正确识别角色。
 
@@ -173,9 +173,9 @@ ms.locfileid: "81537587"
 
 1. 若要查看各个事件，请打开[搜索][diagnostic]磁贴。
 1. 在应用中打开各个页面，以生成一些遥测数据。
-1. 等待几秒，然后单击“刷新”。****  
+1. 等待几秒，然后单击“刷新”。   
 
-有关详细信息，请参阅[故障排除][qna]。
+有关详细信息，请参阅 [故障排除][qna]。
 
 ## <a name="view-azure-diagnostics-events"></a>查看 Azure 诊断事件
 可以在 Application Insights 中的以下位置找到 [Azure 诊断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)信息：
@@ -204,7 +204,7 @@ ms.locfileid: "81537587"
 * [WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA)
 * [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
 
-## <a name="exceptions"></a>例外
+## <a name="exceptions"></a>异常
 有关如何从不同的 Web 应用类型收集未经处理的异常的信息，请参阅[在 Application Insights 中监视异常](../../azure-monitor/app/asp-net-exceptions.md)。
 
 该示例 Web 角色包含 MVC5 和 Web API 2 控制器。 可使用以下处理程序捕获这两个控制器的未经处理的异常：
@@ -220,7 +220,7 @@ ms.locfileid: "81537587"
 ## <a name="performance-counters"></a>性能计数器
 默认收集以下计数器：
 
-* *进程（？？APP_WIN32_PROC？）\%处理器时间
+* \Process(??APP_WIN32_PROC??)\%处理器时间
 * \Memory\Available Bytes
 * \.NET CLR Exceptions(??APP_CLR_PROC??)\# of Exceps Thrown / sec
 * \Process(??APP_WIN32_PROC??)\Private Bytes
@@ -233,7 +233,7 @@ ms.locfileid: "81537587"
 * \ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time
 * \ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue
 
-您可以通过编辑*应用程序 Insights.config*来指定其他自定义或其他 Windows 性能计数器[，如本示例所示](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14)。
+可[按此示例所示](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14)，通过编辑 ApplicationInsights.config  来指定其他自定义性能计数器或其他 Windows 性能计数器。
 
   ![性能计数器](./media/cloudservices/002-servers.png)
 
@@ -242,7 +242,7 @@ ms.locfileid: "81537587"
 
 若要获取辅助角色的此视图，可以使用自定义遥测初始值设定项为所有遥测设置一个通用的 Operation.Id 上下文属性。 这样，延迟或失败问题是否由依赖项或代码造成便一目了然。 
 
-以下是操作方法：
+方法如下：
 
 * [按此示例所示](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36)，将 correlationId 设置到 CallContext 中。 本例使用请求 ID 作为 correlationId。
 * 添加自定义 TelemetryInitializer 实现，将 Operation.Id 设置为前面所设置的 correlationId。 有关示例，请参阅 [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13)。

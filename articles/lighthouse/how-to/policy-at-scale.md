@@ -4,10 +4,10 @@ description: 了解 Azure 委托资源管理如何允许跨多个租户部署策
 ms.date: 11/8/2019
 ms.topic: conceptual
 ms.openlocfilehash: 3fe7e48c56e9a5af93e9642ee16c50cfbce34f9e
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81481821"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>将 Azure Policy 大规模部署到委托订阅
@@ -18,7 +18,7 @@ ms.locfileid: "81481821"
 
 ## <a name="use-azure-resource-graph-to-query-across-customer-tenants"></a>使用 Azure Resource Graph 在客户租户之间执行查询
 
-你可以使用 [Azure Resource Graph](../../governance/resource-graph/index.yml) 在所管理的客户租户的所有订阅中执行查询。 在此示例中，我们将标识这些订阅中当前不需要 HTTPS 流量的任何存储帐户。  
+你可以使用 [Azure Resource Graph](../../governance/resource-graph/index.yml) 在所管理的客户租户的所有订阅中执行查询。 在此示例中，我们将确定这些订阅中当前不需要 HTTPS 通信的任何存储帐户。  
 
 ```powershell
 $MspTenant = "insert your managing tenantId here"
@@ -32,7 +32,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Storage/storageAccou
 
 ## <a name="deploy-a-policy-across-multiple-customer-tenants"></a>跨多个客户租户部署策略
 
-以下示例演示如何使用 [Azure 资源管理器模板](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-https-storage/enforceHttpsStorage.json)跨多个客户租户中的委托订阅部署策略定义和策略分配。 此策略定义要求所有存储帐户使用 HTTPS 流量，防止创建不符合的任何新存储帐户，并在未将设置设置为不合规的情况下将现有存储帐户标记为不合规。
+以下示例演示如何使用 [Azure 资源管理器模板](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-https-storage/enforceHttpsStorage.json)跨多个客户租户中的委托订阅部署策略定义和策略分配。 此策略定义要求所有存储帐户都使用 HTTPS 流量，阻止创建不符合要求并标记现有存储帐户的任何新存储帐户，而不将设置为不符合。
 
 ```powershell
 Write-Output "In total, there are $($ManagedSubscriptions.Count) delegated customer subscriptions to be managed"
@@ -50,7 +50,7 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 
 ## <a name="validate-the-policy-deployment"></a>验证策略部署
 
-部署 Azure 资源管理器模板后，可以通过尝试在其中一个委派订阅中创建启用**HttpsTrafficOnly**设置为**false**的存储帐户来确认策略定义已成功应用。 由于策略分配，你应该无法创建此存储帐户。  
+部署 Azure 资源管理器模板之后，可以通过尝试在某个委派的订阅中创建**EnableHttpsTrafficOnly**设置为**false**的存储帐户来确认策略定义已成功应用。 由于策略分配，你应该无法创建此存储帐户。  
 
 ```powershell
 New-AzStorageAccount -ResourceGroupName (New-AzResourceGroup -name policy-test -Location eastus -Force).ResourceGroupName `
@@ -63,7 +63,7 @@ New-AzStorageAccount -ResourceGroupName (New-AzResourceGroup -name policy-test -
 
 ## <a name="clean-up-resources"></a>清理资源
 
-完成后，删除部署创建的策略定义和分配。
+完成后，删除部署所创建的策略定义和分配。
 
 ```powershell
 foreach ($ManagedSub in $ManagedSubscriptions)

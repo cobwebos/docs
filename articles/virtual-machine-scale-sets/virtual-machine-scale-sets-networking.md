@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: mimckitt
 ms.openlocfilehash: efe3a39008361fdf76d80a0c8e7e2e30b061117d
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461339"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集的网络
@@ -22,7 +22,7 @@ ms.locfileid: "81461339"
 可以使用 Azure 资源管理器模板配置本文介绍的所有功能。 此外，还为选定功能提供了 Azure CLI 和 PowerShell 示例。
 
 ## <a name="accelerated-networking"></a>加速网络
-Azure 加速网络可以实现对虚拟机的单根 I/O 虚拟化 (SR-IOV)，从而提升网络性能。 若要详细了解如何使用加速网络，请查看适用于 [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) 或 [Linux](../virtual-network/create-vm-accelerated-networking-cli.md) 虚拟机的加速网络。 若要对规模集使用加速网络，请在规模集的 networkInterfaceConfigurations 设置中将 enableAcceleratedNetworking 设置为 **** true。 例如：
+Azure 加速网络可以实现对虚拟机的单根 I/O 虚拟化 (SR-IOV)，从而提升网络性能。 若要详细了解如何使用加速网络，请查看适用于 [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) 或 [Linux](../virtual-network/create-vm-accelerated-networking-cli.md) 虚拟机的加速网络。 若要对规模集使用加速网络，请在规模集的 networkInterfaceConfigurations 设置中将 enableAcceleratedNetworking 设置为  true。 例如：
 
 ```json
 "networkProfile": {
@@ -41,27 +41,27 @@ Azure 加速网络可以实现对虚拟机的单根 I/O 虚拟化 (SR-IOV)，从
 }
 ```
 
-## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>Azure 虚拟机使用 Azure 负载均衡器缩放集
+## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>Azure 虚拟机规模集与 Azure 负载均衡器
 
-使用虚拟机秤集和负载均衡器时，应考虑以下事项：
+使用虚拟机规模集和负载均衡器时，应考虑以下事项：
 
 * **多个虚拟机规模集不能使用相同的负载均衡器**。
 * **端口转发和入站 NAT 规则**：
-  * 每个虚拟机规模集必须具有入站 NAT 规则。
-  * 创建比例集后，无法为负载均衡器的运行状况探测使用的负载平衡规则修改后端端口。 要更改端口，可以通过更新 Azure 虚拟机缩放集、更新端口然后再次配置运行状况探测来删除运行状况探测。
-  * 在负载均衡器的后端池中使用虚拟机比例设置时，将自动创建默认入站 NAT 规则。
+  * 每个虚拟机规模集必须有一个入站 NAT 规则。
+  * 创建规模集后，不能为负载均衡器的运行状况探测所使用的负载均衡规则修改后端端口。 若要更改端口，可以通过更新 Azure 虚拟机规模集删除运行状况探测，更新端口，然后重新配置运行状况探测。
+  * 使用负载均衡器后端池中的虚拟机规模集时，将自动创建默认的入站 NAT 规则。
 * **负载均衡规则**：
-  * 在负载均衡器的后端池中使用虚拟机比例设置时，将自动创建默认负载平衡规则。
+  * 使用负载均衡器后端池中的虚拟机规模集时，将自动创建默认负载均衡规则。
 * **出站规则**：
-  *  要为负载平衡规则已引用的后端池创建出站规则，您需要在创建入站负载平衡规则时，首先在门户中将 **"创建隐式出站规则"** 标记为 **"否**"。
+  *  若要为已被负载平衡规则引用的后端池创建出站规则，则在创建入站负载均衡规则时，需要先将 **"创建隐式出站规则"** 标记为门户中的 "**否**"。
 
-  :::image type="content" source="./media/vmsslb.png" alt-text="负载平衡规则创建" border="true":::
+  :::image type="content" source="./media/vmsslb.png" alt-text="负载均衡规则创建" border="true":::
 
-以下方法可用于部署具有现有 Azure 负载均衡器的虚拟机规模集。
+以下方法可用于使用现有的 Azure 负载均衡器部署虚拟机规模集。
 
-* [使用 Azure 门户使用现有 Azure 负载均衡器配置虚拟机规模集](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-portal)。
-* [使用 Azure PowerShell 使用现有的 Azure 负载均衡器配置虚拟机规模集](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-powershell)。
-* [使用 Azure CLI 配置具有现有 Azure 负载均衡器的虚拟机规模集](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-cli)。
+* [使用现有的 Azure 负载均衡器，使用 Azure 门户配置虚拟机规模集](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-portal)。
+* [使用 Azure PowerShell 配置现有 Azure 负载均衡器的虚拟机规模集](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-powershell)。
+* [使用现有的 Azure 负载均衡器，使用 Azure CLI 配置虚拟机规模集](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-cli)。
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>创建引用应用程序网关的规模集
 若要创建使用应用程序网关的规模集，请在规模集的 ipConfigurations 节中引用应用程序网关的后端地址池，如此 ARM 模板配置所示：

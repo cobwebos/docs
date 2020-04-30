@@ -9,10 +9,10 @@ ms.date: 11/01/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 4559a49a64688545e519f6172798997c2d695672
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461961"
 ---
 创建 Azure 虚拟机 (VM) 时，必须创建[虚拟网络](../articles/virtual-network/virtual-networks-overview.md) (VNet) 或使用现有的 VNet。 此外，还需要确定如何在 VNet 上访问 VM。 [在创建资源之前必须做好规划](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md)，确保了解[网络资源的限制](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)。
@@ -46,7 +46,7 @@ ms.locfileid: "81461961"
 | ------ | ----------- |
 | Azure 门户 | 在 Azure 门户中创建 VM 时，系统会自动创建网络接口（无法使用单独创建的 NIC）。 门户将创建只包含一个 NIC 的 VM。 如果想要创建包含多个 NIC 的 VM，必须使用其他方法创建 VM。 |
 | [Azure PowerShell](../articles/virtual-machines/windows/multiple-nics.md) | 将 [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) 与 **-PublicIpAddressId** 参数配合使用，以提供事先创建的公共 IP 地址的标识符。 |
-| [Azure CLI](../articles/virtual-machines/linux/multiple-nics.md) | 若要提供事先创建的公共 IP 地址标识符，请结合 **--public-ip-address** 参数使用 [az network nic create](https://docs.microsoft.com/cli/azure/network/nic)。 |
+| [Azure CLI](../articles/virtual-machines/linux/multiple-nics.md) | 若要提供事先创建的公共 IP 地址标识符，请结合 [--public-ip-address](https://docs.microsoft.com/cli/azure/network/nic) 参数使用 **az network nic create**。 |
 | [模板](../articles/virtual-network/template-samples.md) | 参考 [Network Interface in a Virtual Network with Public IP Address](https://github.com/Azure/azure-quickstart-templates/tree/master/101-nic-publicip-dns-vnet)（虚拟网络中使用公共 IP 地址的网络接口），使用模板部署网络接口。 |
 
 ## <a name="ip-addresses"></a>IP 地址 
@@ -68,7 +68,7 @@ ms.locfileid: "81461961"
 | ------ | ----------- |
 | [Azure 门户](../articles/virtual-network/virtual-network-deploy-static-pip-arm-portal.md) | 默认情况下，公共 IP 地址是动态的，在停止或删除 VM 时，与这些公共 IP 地址关联的地址可能会更改。 为确保 VM 始终使用同一个公共 IP 地址，需创建静态公共 IP 地址。 默认情况下，门户会在创建 VM 时向 NIC 分配一个动态专用 IP 地址。 创建 VM 后，可将此 IP 地址更改为静态地址。|
 | [Azure PowerShell](../articles/virtual-network/virtual-network-deploy-static-pip-arm-ps.md) | 将 [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) 与值为 Dynamic 或 Static 的 **-AllocationMethod** 参数配合使用。 |
-| [Azure CLI](../articles/virtual-network/virtual-network-deploy-static-pip-arm-cli.md) | 结合值为 Dynamic 或 Static 的 **--allocation-method** 参数使用 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip)。 |
+| [Azure CLI](../articles/virtual-network/virtual-network-deploy-static-pip-arm-cli.md) | 结合值为 Dynamic 或 Static 的 [--allocation-method](https://docs.microsoft.com/cli/azure/network/public-ip) 参数使用 **az network public-ip create**。 |
 | [模板](../articles/virtual-network/template-samples.md) | 参考 [Network Interface in a Virtual Network with Public IP Address](https://github.com/Azure/azure-quickstart-templates/tree/master/101-nic-publicip-dns-vnet)（虚拟网络中使用公共 IP 地址的网络接口），使用模板部署公共 IP 地址。 |
 
 创建公共 IP 地址后，可将它分配到 NIC，从而将它与 VM 相关联。
@@ -89,8 +89,8 @@ ms.locfileid: "81461961"
 | ------ | ----------- |
 | [Azure 门户](../articles/virtual-network/quick-create-portal.md) | 如果要在创建 VM 时让 Azure 创建 VNet，VNet 的名称是包含 VNet 的资源组名称和 **-vnet** 的组合。 地址空间为 10.0.0.0/24，所需的子网名称为 **default**，子网地址范围为 10.0.0.0/24。 |
 | [Azure PowerShell](../articles/virtual-network/quick-create-powershell.md) | 可以使用 [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkSubnetConfig) 和 [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) 来创建子网和 VNet。 还可以使用 [Add-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/Az.Network/Add-AzVirtualNetworkSubnetConfig) 向现有 VNet 中添加子网。 |
-| [Azure CLI](../articles/virtual-network/quick-create-cli.md) | 子网和 VNet 是同时创建的。 在 [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) 后面提供 **--subnet-name** 参数并指定子网名称。 |
-| 模板 | 创建 VNet 和子网的最简单方法是下载现有模板，例如[具有两个子网的虚拟网络](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets)，并根据需要对其进行修改。 |
+| [Azure CLI](../articles/virtual-network/quick-create-cli.md) | 子网和 VNet 是同时创建的。 在 **az network vnet create** 后面提供 [--subnet-name](https://docs.microsoft.com/cli/azure/network/vnet) 参数并指定子网名称。 |
+| 模板 | 创建 VNet 和子网的最简单方法是下载一个现有的模板（例如[包含两个子网的虚拟网络](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets)），并根据需要对它进行修改。 |
 
 ## <a name="network-security-groups"></a>网络安全组
 
@@ -100,7 +100,7 @@ NSG 包含两种类型的规则：入站规则和出站规则。 在每组中，
 
 所有 NSG 都包含一组默认规则。 默认规则无法删除，但由于给它们分配的优先级最低，可以用创建的规则来重写它们。 
 
- 将 NSG 关联到 NIC 时，NSG 中的网络访问规则只会应用到该 NIC。 如果 NSG 已应用到包含多个 NIC 的 VM 中的单个 NIC，则它不会影响流向其他 NIC 的流量。 可将不同的 NSG 关联到 NIC（或 VM，具体取决于部署模型）以及 NIC 或 VM 绑定到的子网。 优先级是根据流量方向指定的。
+将 NSG 关联到 NIC 时，NSG 中的网络访问规则只会应用到该 NIC。 如果 NSG 已应用到包含多个 NIC 的 VM 中的单个 NIC，则它不会影响流向其他 NIC 的流量。 可将不同的 NSG 关联到 NIC（或 VM，具体取决于部署模型）以及 NIC 或 VM 绑定到的子网。 优先级是根据流量方向指定的。
 
 规划 VM 和 VNet 时，请务必[规划](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md) NSG。
 
@@ -115,18 +115,18 @@ NSG 包含两种类型的规则：入站规则和出站规则。 在每组中，
 
 ## <a name="load-balancers"></a>负载均衡器
 
-[Azure 负载均衡器](../articles/load-balancer/load-balancer-overview.md)可为应用程序提供高可用性和网络性能。 可以配置负载均衡器，[对传入 VM 的 Internet 流量进行均衡](../articles/load-balancer/load-balancer-internet-overview.md)，或者[对 VNet 中 VM 之间的流量进行均衡](../articles/load-balancer/load-balancer-internal-overview.md)。 负载均衡器还可以均衡跨界网络中本地计算机与 VM 之间的流量，或者将外部流量转发到特定的 VM。
+[Azure 负载均衡器](../articles/load-balancer/load-balancer-overview.md) 可提高应用程序的可用性和网络性能。 可以配置负载均衡器，[对传入 VM 的 Internet 流量进行均衡](../articles/load-balancer/load-balancer-internet-overview.md)，或者[对 VNet 中 VM 之间的流量进行均衡](../articles/load-balancer/load-balancer-internal-overview.md)。 负载均衡器还可以均衡跨界网络中本地计算机与 VM 之间的流量，或者将外部流量转发到特定的 VM。
 
 负载均衡器可以映射负载均衡器中公共 IP 地址与端口之间的，以及 VM 中专用 IP 地址与端口之间的传入和传出流量。
 
 创建负载均衡器时，还必须考虑以下配置要素：
 
-- **前端 IP 配置**– 负载均衡器可以包括一个或多个前端 IP 地址。 这些 IP 地址充当流量的入口。
+- **前端 ip 配置**–负载均衡器可以包含一个或多个前端 ip 地址。 这些 IP 地址充当流量的入口。
 - **后端地址池** – 与负载分配到的 NIC 关联的 IP 地址。
-- **[端口转发](../articles/load-balancer/tutorial-load-balancer-port-forwarding-portal.md)**- 定义入站流量如何流经前端 IP，以及如何利用入站 NAT 规则分发到后端 IP。
+- **[端口转发](../articles/load-balancer/tutorial-load-balancer-port-forwarding-portal.md)**-定义入站流量如何流经前端 ip 并使用入站 NAT 规则分发到后端 ip。
 - **负载均衡器规则** – 将给定的前端 IP 和端口组合映射到一组后端 IP 地址和端口组合。 单个负载均衡器可拥有多个负载均衡规则。 每个规则都包含前端 IP 和端口，以及与 VM 关联的后端 IP 和端口。
 - **[探测](../articles/load-balancer/load-balancer-custom-probe-overview.md)** - 监视 VM 的运行状况。 当探测无法响应时，负载均衡器会停止向状况不良的 VM 发送新连接。 现有连接不受影响，新连接将发送到状况良好的 VM。
-- **[出站规则](../articles/load-balancer/load-balancer-outbound-rules-overview.md)**- 出站规则为标准负载均衡器后端池标识的所有虚拟机或实例配置出站网络地址转换 （NAT）， 以便转换为前端。
+- **[出站规则](../articles/load-balancer/load-balancer-outbound-rules-overview.md)**-出站规则为要转换到前端的标准负载均衡器的后端池所标识的所有虚拟机或实例配置出站网络地址转换（NAT）。
 
 下表列出了可用于创建面向 Internet 的负载均衡器的方法。
 
@@ -141,14 +141,14 @@ NSG 包含两种类型的规则：入站规则和出站规则。 在每组中，
 
 | 方法 | 说明 |
 | ------ | ----------- |
-| Azure 门户 | 您可以在[Azure 门户中与负载均衡器平衡内部流量负载](../articles/load-balancer/tutorial-load-balancer-standard-internal-portal.md)。 |
+| Azure 门户 | 可以[在 Azure 门户中使用负载均衡器来平衡内部流量负载](../articles/load-balancer/tutorial-load-balancer-standard-internal-portal.md)。 |
 | [Azure PowerShell](../articles/load-balancer/load-balancer-get-started-ilb-arm-ps.md) | 若要提供网络子网中的专用 IP 地址，请将 [New-AzLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig) 与 **-PrivateIpAddress** 参数配合使用。 使用 [New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) 创建后端地址池的配置。 使用 [New-AzLoadBalancerInboundNatRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) 创建与你创建的前端 IP 配置关联的入站 NAT 规则。 使用 [New-AzLoadBalancerProbeConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerprobeconfig) 创建所需的探测。 使用 [New-AzLoadBalancerRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerruleconfig) 创建负载均衡器配置。 使用 [New-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancer) 创建负载均衡器。|
 | [Azure CLI](../articles/load-balancer/load-balancer-get-started-ilb-arm-cli.md) | 使用 [az network lb create](https://docs.microsoft.com/cli/azure/network/lb) 命令创建初始负载均衡器配置。 若要定义专用 IP 地址，请结合 **--private-ip-address** 参数使用 [az network lb frontend-ip create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip)。 使用 [az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb/address-pool) 添加后端地址池的配置。 使用 [az network lb inbound-nat-rule create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule) 添加 NAT 规则。 使用 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule) 添加负载均衡器规则。 使用 [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe) 添加探测。|
 | [模板](../articles/load-balancer/load-balancer-get-started-ilb-arm-template.md) | 参考[负载均衡器中的 2 个 VM，在 LB 上配置 NAT 规则](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-internal-load-balancer)，使用模板部署负载均衡器。 |
 
 ### <a name="virtual-machine-scale-sets"></a>虚拟机规模集
 
-有关负载均衡器和虚拟机缩放集的详细信息，请参阅 Azure[虚拟机缩放集的网络](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-networking)。
+有关负载均衡器和虚拟机规模集的详细信息，请参阅[Azure 虚拟机规模集的网络](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-networking)。
 
 ## <a name="vms"></a>VM
 
@@ -175,4 +175,4 @@ NSG 包含两种类型的规则：入站规则和出站规则。 在每组中，
 - 了解如何配置[用户定义的路由和 IP 转发](../articles/virtual-network/virtual-networks-udr-overview.md)。 
 - 了解如何配置 [VNet 到 VNet 连接](../articles/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)。
 - 了解如何[排查路由问题](../articles/virtual-network/diagnose-network-routing-problem.md)。
-- 了解有关[虚拟机网络带宽](../articles/virtual-network/virtual-machine-network-throughput.md)的更多信息。
+- 了解有关[虚拟机网络带宽](../articles/virtual-network/virtual-machine-network-throughput.md)的详细信息。

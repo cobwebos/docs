@@ -1,5 +1,5 @@
 ---
-title: 受保护的 Web API - 概述
+title: 受保护的 web API-概述
 titleSuffix: Microsoft identity platform
 description: 了解如何构建受保护的 Web API（概述）。
 services: active-directory
@@ -13,17 +13,17 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: cf66757d28a3883664aaacd85baad9cc0dea6956
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537196"
 ---
 # <a name="scenario-protected-web-api"></a>方案：受保护的 Web API
 
 通过此方案了解如何公开 Web API。 还了解如何保护 Web API，以便只有经过身份验证的用户才能访问它。
 
-要使用 Web API，您需要启用具有工作帐户和学校帐户的经过身份验证的用户，或者启用 Microsoft 个人帐户。
+若要使用你的 web API，你需要启用使用工作帐户和学校帐户的经过身份验证的用户，或启用 Microsoft 个人帐户。
 
 ## <a name="prerequisites"></a>先决条件
 

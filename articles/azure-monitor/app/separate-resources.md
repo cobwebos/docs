@@ -1,13 +1,13 @@
 ---
-title: 在 Azure 应用程序见解中分离遥测
+title: 在 Azure Application Insights 中分隔遥测
 description: 为开发、测试和生产戳记直接遥测不同的资源。
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.openlocfilehash: 565d51751ad50479f4e227b6855ac63b80bd949e
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81536771"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>分隔开发、测试和生产阶段的遥测
@@ -70,14 +70,14 @@ ms.locfileid: "81536771"
 ![依次单击“新建”、“Application Insights”](./media/separate-resources/01-new.png)
 
 * **应用程序类型**会影响在概述边栏选项卡上看到的内容和[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)中的可用属性。 如果未看到应用类型，请选择网页的 Web 类型之一。
-* **资源组**是管理访问[控制](../../azure-monitor/app/resources-roles-access-control.md)等属性的便利。 可为开发、测试和生产使用单独的资源组。
+* **资源组**便于管理[访问控件](../../azure-monitor/app/resources-roles-access-control.md)之类的属性。 可为开发、测试和生产使用单独的资源组。
 * **订阅**是 Azure 中的付款帐户。
 * **位置**是保留数据的位置。 当前无法更改它。 
 * **添加到仪表板**将资源的快速访问磁贴放在 Azure 主页上。 
 
 创建资源需要几秒钟。 完成后，会看到警报。
 
-（您可以编写[PowerShell 脚本](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)来自动创建资源。
+（可以编写[PowerShell 脚本](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)来自动创建资源。）
 
 ### <a name="getting-the-instrumentation-key"></a>获取检测密钥
 检测密钥标识所创建的资源。 
@@ -123,14 +123,14 @@ ms.locfileid: "81536771"
     </PropertyGroup>
     ```
 
-    这将生成名为*ProjectName*的文件。发布过程将其重命名为 BuildInfo.config。
+    这会生成一个名为*yourProjectName*的文件。Buildinfo.config。发布进程将其重命名为 Buildinfo.config。
 
     当使用 Visual Studio 生成时，生成标签包含一个占位符 (AutoGen_...)。 但是，在使用 MSBuild 生成时，标签中会填充正确的版本号。
 
     若要允许 MSBuild 生成版本号，请在 AssemblyReference.cs 中设置类似于 `1.0.*` 的版本
 
 ## <a name="version-and-release-tracking"></a>版本和发行版本跟踪
-若要跟踪应用程序版本，请确保 Microsoft 生成引擎进程生成了 `buildinfo.config`。 在文件中`.csproj`，添加：  
+若要跟踪应用程序版本，请确保 Microsoft 生成引擎进程生成了 `buildinfo.config`。 在`.csproj`文件中，添加：  
 
 ```XML
 
@@ -141,7 +141,7 @@ ms.locfileid: "81536771"
 
 当它具有内部信息时，Application Insights Web 模块自动将**应用程序版本**作为属性添加到每个遥测项。 这样，便可以在执行[诊断搜索](../../azure-monitor/app/diagnostic-search.md)或[浏览指标](../../azure-monitor/platform/metrics-charts.md)时按版本进行筛选。
 
-但是，请注意，生成版本号仅由 Microsoft 生成引擎生成，而不是由 Visual Studio 的开发人员生成。
+但请注意，内部版本号仅由 Microsoft 生成引擎生成，而不是由 Visual Studio 生成的开发人员生成。
 
 ### <a name="release-annotations"></a>版本注释
 如果使用 Azure DevOps，则可以在每次发布新版本时将[批注标记](../../azure-monitor/app/annotations.md)添加到图表中。 下图显示了此标记的形式。

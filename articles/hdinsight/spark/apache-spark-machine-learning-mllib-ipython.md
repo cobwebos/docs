@@ -1,6 +1,6 @@
 ---
 title: HDInsight 上 Spark MLlib 的机器学习示例 - Azure
-description: 了解如何使用 Spark MLlib 创建机器学习应用，以通过逻辑回归使用分类对数据集进行分析。
+description: 了解如何使用 Spark MLlib 创建机器学习应用，用于通过逻辑回归使用分类分析数据集。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,36 +9,36 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
 ms.openlocfilehash: 26695df299ba5d0f50c8f271b5da99284a8d6764
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81531127"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>使用 Apache Spark MLlib 生成机器学习应用程序并分析数据集
 
-了解如何使用 Apache Spark [MLlib](https://spark.apache.org/mllib/)创建机器学习应用程序。 应用程序将对打开的数据集进行预测分析。 在 Spark 的内置机器学习库中，本示例通过逻辑回归使用*分类*。
+了解如何使用 Apache Spark [MLlib](https://spark.apache.org/mllib/)创建机器学习应用程序。 应用程序将对打开的数据集执行预测分析。 本示例摘自 Spark 的内置机器学习库，它通过逻辑回归使用分类。 
 
 MLlib 是一个核心 Spark 库，它提供了许多可用于机器学习任务的实用程序，例如：
 
 * 分类
 * 回归
-* 群集
+* 群集功能
 * 建模
 * 单值分解 (SVD) 和主体组件分析 (PCA)
 * 假设测试和计算示例统计信息
 
 ## <a name="understand-classification-and-logistic-regression"></a>了解分类和逻辑回归
 
-*分类*是一种常见的机器学习任务，是将输入数据按类别排序的过程。 分类算法的工作是找出如何为提供的输入数据分配"标签"。 例如，您可以想到一种机器学习算法，该算法接受库存信息作为输入。 然后把股票分为两类：你应该卖出的股票和你应该保留的股票。
+“分类”是一种很常见的机器学习任务，是将输入数据归入各类别的过程。  分类算法的工作就是确定如何将 "标签" 分配到提供的输入数据。 例如，可以考虑将股票信息作为输入接受的机器学习算法。 然后将股票分为两类：应该销售的股票和应该保留的股票。
 
 逻辑回归是用于分类的算法。 Spark 的逻辑回归 API 可用于 *二元分类*，或将输入数据归类到两组中的一组。 有关逻辑回归的详细信息，请参阅[维基百科](https://en.wikipedia.org/wiki/Logistic_regression)。
 
-总之，逻辑回归过程产生*物流功能*。 使用 函数预测输入向量属于一个组或另一个组的概率。  
+总之，逻辑回归过程产生了*逻辑函数*。 使用函数可预测输入向量属于一个组或另一个组的概率。  
 
 ## <a name="predictive-analysis-example-on-food-inspection-data"></a>食品检测数据的预测分析示例
 
-在此示例中，您可以使用 Spark 对食品检验数据 **（Food_Inspections1.csv**） 进行一些预测性分析。 通过[芝加哥市数据门户获取的数据](https://data.cityofchicago.org/)。 此数据集包含有关在芝加哥进行的食品机构检查的信息。 包括有关每个机构的信息、发现的违规行为（如果有）和检查结果。 CSV 数据文件在与群集（位于 **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv**）关联的存储帐户中可用。
+在此示例中，使用 Spark 对食品检测数据（**Food_Inspections1 .csv**）执行一些预测分析。 通过[芝加哥数据门户的城市获取的](https://data.cityofchicago.org/)数据。 此数据集包含有关在芝加哥进行的食品建立检查的信息。 包括有关每个建立的信息、发现的违规（如果有）以及检测的结果。 CSV 数据文件在与群集（位于 **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv**）关联的存储帐户中可用。
 
 在以下步骤中，将开发一个模型以查看如何通过食物检测或为何失败。
 
@@ -57,11 +57,11 @@ MLlib 是一个核心 Spark 库，它提供了许多可用于机器学习任务�
     from pyspark.sql.types import *
     ```
 
-    由于 PySpark 内核，因此无需显式创建任何上下文。 当您运行第一个代码单元时，将自动创建 Spark 和 Hive 上下文。
+    由于 PySpark 内核，不需要显式创建任何上下文。 当你运行第一个代码单元格时，将自动创建 Spark 和 Hive 上下文。
 
 ## <a name="construct-the-input-dataframe"></a>构造输入数据帧
 
-使用 Spark 上下文将原始 CSV 数据作为非结构化文本放入内存。 然后使用 Python 的 CSV 库解析数据的每一行。
+使用 Spark 上下文将原始 CSV 数据作为非结构化文本提取到内存。 然后，使用 Python 的 CSV 库分析数据的每一行。
 
 1. 运行以下命令行，通过导入并分析输入数据来创建弹性分布式数据集 (RDD)。
 
@@ -106,9 +106,9 @@ MLlib 是一个核心 Spark 库，它提供了许多可用于机器学习任务�
         '(41.97583445690982, -87.7107455232781)']]
     ```
 
-    通过这些输出可以了解输入文件的架构。 它包括每个机构的名称和建立的类型。 此外，地址、检查数据以及地点等。
+    通过这些输出可以了解输入文件的架构。 它包括每个建立的名称，以及建立类型。 此外，还包括地址、检查的数据和位置，等等。
 
-3. 运行以下代码创建数据帧 (*df*) 和临时表 (*CountResults*)，其中包含一些可用于预测分析的列。 `sqlContext`用于对结构化数据进行转换。
+3. 运行以下代码创建数据帧 (*df*) 和临时表 (*CountResults*)，其中包含一些可用于预测分析的列。 `sqlContext`用于对结构化数据执行转换。
 
     ```PySpark
     schema = StructType([
@@ -121,7 +121,7 @@ MLlib 是一个核心 Spark 库，它提供了许多可用于机器学习任务�
     df.registerTempTable('CountResults')
     ```
 
-    数据框中感兴趣的四列是**ID、****名称**、**结果**和**违规**。
+    数据帧中的四个相关列是**ID**、**名称**、**结果**和**冲突**。
 
 4. 运行以下代码获取数据小样本：
 
@@ -205,9 +205,9 @@ MLlib 是一个核心 Spark 库，它提供了许多可用于机器学习任务�
        - 未找到企业
        - 停止经营
 
-     具有其他结果（"业务未定位"或"业务外"）的数据没有用处，它们无论如何在结果中占很小的百分比。
+     具有其他结果（"未找到企业" 或 "业务不足"）的数据不起作用，因此，它们会导致一小部分结果。
 
-4. 运行以下代码，将现有数据帧 (`df`) 转换为新的数据帧，其中每个检测以“违规行为标签对”表示。 在这种情况下，表示`0.0`失败的标签，表示`1.0`成功的标签，以及 表示`-1.0`除这两个结果之外的某些结果的标签。
+4. 运行以下代码，将现有数据帧 (`df`) 转换为新的数据帧，其中每个检测以“违规行为标签对”表示。 在本例中，标签`0.0`表示失败，标签`1.0`表示成功，标签`-1.0`表示除这两个结果之外的某些结果。
 
     ```PySpark
     def labelForResults(s):
@@ -235,11 +235,11 @@ MLlib 是一个核心 Spark 库，它提供了许多可用于机器学习任务�
 
 ## <a name="create-a-logistic-regression-model-from-the-input-dataframe"></a>从输入数据帧创建逻辑回归模型
 
-最后的任务是转换标记的数据。 将数据转换为可以通过逻辑回归进行分析的格式。 逻辑回归算法的输入需要一组*标签特征矢量对*。 其中"要素矢量"是表示输入点的数字矢量。 因此，您需要转换"违规"列，该列是半结构化的，包含许多自由文本注释。 将列转换为计算机可以轻松理解的实数数组。
+最终任务是转换标记的数据。 将数据转换为可通过逻辑回归进行分析的格式。 逻辑回归算法的输入需要一组*标签功能向量对*。 其中 "特征向量" 是表示输入点的数字向量。 因此，您需要将 "违规" 列转换为半结构化的，并且在自由文本中包含了许多注释。 将列转换为计算机可以轻松理解的实数数组。
 
-处理自然语言的标准机器学习方法是为每个不同的单词指定一个"索引"。 然后将矢量传递给机器学习算法。 因此，每个索引的值在文本字符串中包含该单词的相对频率。
+处理自然语言的一种标准机器学习方法是为每个不同的单词分配一个 "索引"。 然后，将一个向量传递到机器学习算法。 这样，每个索引的值都包含文本字符串中该单词的相对频率。
 
-MLlib 提供了一种简单的操作方法。 首先，“标记”每个违规行为字符串以获取每个字符串中的单个单词。 然后使用 `HashingTF` 将每组令牌转换为功能向量，随后可将向量传递到逻辑回归算法以构造模型。 利用“管道”按序列执行上述所有步骤。
+MLlib 提供了一种简单的方法来执行此操作。 首先，“标记”每个违规行为字符串以获取每个字符串中的单个单词。 然后使用 `HashingTF` 将每组令牌转换为功能向量，随后可将向量传递到逻辑回归算法以构造模型。 利用“管道”按序列执行上述所有步骤。
 
 ```PySpark
 tokenizer = Tokenizer(inputCol="violations", outputCol="words")
@@ -252,7 +252,7 @@ model = pipeline.fit(labeledData)
 
 ## <a name="evaluate-the-model-using-another-dataset"></a>使用另一个数据集评估模型
 
-您可以使用之前创建的模型*来预测*新检查的结果。 预测基于观察到的违规行为。 通过数据集 Food_Inspections1.csv 来训练此模型****。 可以使用另一个数据集 **Food_Inspections2.csv** 来评估此模型对新数据的功能性。** 第二个数据集 (**Food_Inspections2.csv**) 位于与群集关联的默认存储容器中。
+您可以使用之前创建的模型来*预测*新检查的结果。 预测基于所观察到的违规。 通过数据集 Food_Inspections1.csv 来训练此模型****。 可以使用另一个数据集 **Food_Inspections2.csv** 来评估此模型对新数据的功能性。** 第二个数据集 (**Food_Inspections2.csv**) 位于与群集关联的默认存储容器中。
 
 1. 运行以下代码创建新的数据帧 **predictionsDf**，其中包含由模型生成的预测。 该代码片段还根据数据帧创建一个名为 **Predictions** 的临时表。
 
@@ -266,7 +266,7 @@ model = pipeline.fit(labeledData)
     predictionsDf.columns
     ```
 
-    您应该会看到如下所示的输出：
+    应会看到类似于以下文本的输出：
 
     ```
     ['id',
@@ -286,9 +286,9 @@ model = pipeline.fit(labeledData)
     predictionsDf.take(1)
     ```
 
-   对测试数据集中的第一个条目进行了预测。
+   测试数据集中的第一项有一个预测。
 
-1. `model.transform()` 方法会将相同转换应用于任何具有相同构架的新数据，并成功预测如何对数据进行分类。 您可以执行一些统计信息来了解预测：
+1. `model.transform()` 方法会将相同转换应用于任何具有相同构架的新数据，并成功预测如何对数据进行分类。 您可以执行一些统计信息，以了解预测的方式：
 
     ```PySpark
     numSuccesses = predictionsDf.where("""(prediction = 0 AND results = 'Fail') OR
@@ -307,7 +307,7 @@ model = pipeline.fit(labeledData)
     This is a 86.8169618894% success rate
     ```
 
-    使用 Spark 使用逻辑回归可以建模英语中违规描述之间的关系。 以及某一企业是否会通过或未能通过食品检验。
+    将逻辑回归与 Spark 结合使用，可为你提供英语冲突说明之间关系的模型。 某个给定企业是通过还是未通过食物检测。
 
 ## <a name="create-a-visual-representation-of-the-prediction"></a>创建预测的直观表示形式
 
@@ -351,7 +351,7 @@ model = pipeline.fit(labeledData)
 
     您应看到以下输出：
 
-    ![火花机器学习应用输出 - 饼图失败食品检查的百分比。](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png "火花机器学习结果输出")
+    ![Spark 机器学习应用程序输出-饼图检查失败食物的百分比。](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png "Spark 机器学习结果输出")
 
     在此图中，“positive”结果是指未通过食品检测，而“negative”结果表示已通过检测。
 
@@ -365,7 +365,7 @@ model = pipeline.fit(labeledData)
 
 ### <a name="scenarios"></a>方案
 
-* [带 BI 的 Apache Spark：使用 HDInsight 中的 Spark 与 BI 工具进行交互式数据分析](apache-spark-use-bi-tools.md)
+* [使用 BI 进行 Apache Spark：使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](apache-spark-use-bi-tools.md)
 * [Apache Spark 和机器学习：使用 HDInsight 中的 Spark 结合 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
 * [使用 HDInsight 中的 Apache Spark 分析网站日志](apache-spark-custom-library-website-log-analysis.md)
 
