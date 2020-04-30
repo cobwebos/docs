@@ -11,10 +11,10 @@ ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/08/2019
 ms.openlocfilehash: f11c19ba33ee2fbae0fef265371bedad2fe29cb7
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81684952"
 ---
 # <a name="use-an-azure-sql-database-managed-instance-securely-with-public-endpoints"></a>在公共终结点中安全使用 Azure SQL 数据库托管实例
@@ -35,7 +35,7 @@ SQL 数据库托管实例提供专用终结点用于从其虚拟网络内部启�
 
 ## <a name="secure-data-in-motion"></a>保护动态数据
 
-如果客户端驱动程序支持加密，则始终加密托管实例数据流量。 在托管实例与其他 Azure 虚拟机或 Azure 服务之间发送的数据永远不会离开 Azure 主干网络。 如果托管实例和本地网络之间存在连接，我们建议您使用 Azure ExpressRoute。 ExpressRoute 有助于避免通过公共 Internet 移动数据。 对于托管实例专用连接，只能使用专用对等互连。
+如果客户端驱动程序支持加密，则始终加密托管实例数据流量。 在托管实例与其他 Azure 虚拟机或 Azure 服务之间发送的数据永远不会离开 Azure 主干网络。 如果托管实例与本地网络之间存在连接，建议使用 Azure ExpressRoute。 ExpressRoute 有助于避免通过公共 Internet 移动数据。 对于托管实例专用连接，只能使用专用对等互连。
 
 ## <a name="lock-down-inbound-and-outbound-connectivity"></a>锁定入站和出站连接
 

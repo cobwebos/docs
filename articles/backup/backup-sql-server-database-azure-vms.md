@@ -5,10 +5,10 @@ ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: 887f15deed74330cf132e0574d166c074d2c7cad
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81685718"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>备份 Azure VM 中的 SQL Server 数据库
@@ -26,14 +26,14 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 > * 为数据库设置自动保护。
 
 >[!NOTE]
->**Azure VM 中的 SQL 服务器软删除和 Azure VM 工作负荷中 SAP HANA 的软删除**现在在预览版中可用。<br>
->要注册预览版，请写信给我们：AskAzureBackupTeam@microsoft.com
+>Azure vm**中的 SQL Server 软删除和 AZURE vm 工作负荷中 SAP HANA 的软删除**现已在预览版中提供。<br>
+>若要注册预览版，请向我们写信AskAzureBackupTeam@microsoft.com
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在备份 SQL Server 数据库之前，请检查以下条件：
 
-1. 标识或与托管 SQL Server 实例的 VM 位于同一区域中的[恢复服务保管库](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault)和订阅。
+1. 在与托管 SQL Server 实例的 VM 相同的区域和订阅中标识或创建[恢复服务保管库](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault)。
 2. 验证 VM 是否具有[网络连接](backup-sql-server-database-azure-vms.md#establish-network-connectivity)。
 3. 确保 SQL Server 数据库遵循 [Azure 备份的数据库命名准则](#database-naming-guidelines-for-azure-backup)。
 4. 检查是否未为该数据库启用了其他任何备份解决方案。 在备份数据库之前，请禁用其他所有 SQL Server 备份。
@@ -87,7 +87,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 **允许使用 Azure 防火墙标记进行访问**。 如果使用 Azure 防火墙，请使用 AzureBackup [FQDN 标记](https://docs.microsoft.com/azure/firewall/fqdn-tags)创建应用程序规则。 这允许对 Azure 备份进行出站访问。
 
-**部署用于路由流量的 HTTP 代理服务器**。 在 Azure VM 中备份 SQL Server 数据库时，该 VM 上的备份扩展将使用 HTTPS API 将管理命令发送到 Azure 备份，并将数据发送到 Azure 存储。 备份扩展还使用 Azure AD 进行身份验证。 通过 HTTP 代理路由这三个服务的备份扩展流量。 Azure 备份没有通配符域要添加到代理规则的允许列表中。 对于 Azure 提供的这些服务，您需要使用公共 IP 范围。 该扩展是为了访问公共 Internet 而配置的唯一组件。
+**部署用于路由流量的 HTTP 代理服务器**。 在 Azure VM 中备份 SQL Server 数据库时，该 VM 上的备份扩展将使用 HTTPS API 将管理命令发送到 Azure 备份，并将数据发送到 Azure 存储。 备份扩展还使用 Azure AD 进行身份验证。 通过 HTTP 代理路由这三个服务的备份扩展流量。 Azure 备份使用的通配符域不能添加到代理规则的允许列表。 你将需要使用 Azure 提供的这些服务的公共 IP 范围。 该扩展是为了访问公共 Internet 而配置的唯一组件。
 
 连接性选项包括以下优点和缺点：
 
@@ -96,7 +96,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 允许 IP 范围 | 无额外成本 | 管理起来很复杂，因为 IP 地址范围随时会变化 <br/><br/> 允许访问整个 Azure，而不只是 Azure 存储
 使用 NSG 服务标记 | 由于范围更改会自动合并，因此更易于管理 <br/><br/> 无额外成本 <br/><br/> | 仅可与 NSG 配合使用 <br/><br/> 提供对整个服务的访问权限
 使用 Azure 防火墙 FQDN 标记 | 自动管理必需的 FQDN，因此更易于管理 | 仅可与 Azure 防火墙配合使用
-使用 HTTP 代理 | 对 VM 进行单点 Internet 访问 <br/> | 通过代理软件运行 VM 带来的额外成本 <br/> 没有已发布的 FQDN 地址，允许规则将受 Azure IP 地址更改的约束
+使用 HTTP 代理 | 对 VM 进行单点 Internet 访问 <br/> | 通过代理软件运行 VM 带来的额外成本 <br/> 无已发布的 FQDN 地址，允许规则将受到 Azure IP 地址更改的限制
 
 #### <a name="private-endpoints"></a>专用终结点
 
@@ -115,7 +115,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 可对不支持的字符使用别名，但我们建议避免这样做。 有关详细信息，请参阅 [Understanding the Table Service Data Model](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)（了解表服务数据模型）。
 
 >[!NOTE]
->不支持对名称中具有特殊字符（如"+"或"&"）的数据库进行**配置保护**操作。 您可以更改数据库名称或启用**自动保护**，从而成功保护这些数据库。
+>不支持为名称中包含特殊字符（如 "+" 或 "&"）的数据库**配置保护**操作。 可以更改数据库名称，也可以启用**自动保护**，这样可以成功保护这些数据库。
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -135,7 +135,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
     ![选择“Azure VM 中的 SQL Server”进行备份](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
 
-5. 在 **"备份目标** > **发现 VM"中**，选择 **"开始发现"** 以搜索订阅中未受保护的 VM。 此搜索过程需要花费一段时间，具体取决于订阅中不受保护的 VM 数量。
+5. 在 "**备份目标** > " 中**发现虚拟机中**的数据库，选择 "**启动发现**" 搜索订阅中未受保护的 vm。 此搜索过程需要花费一段时间，具体取决于订阅中不受保护的 VM 数量。
 
    * 发现后，未受保护的 VM 应会按名称和资源组列在列表中。
    * 如果某个 VM 未按预期列出，请查看它是否已保管库中备份。
@@ -162,7 +162,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 ## <a name="configure-backup"></a>配置备份  
 
-1. 在**备份目标** > **步骤 2：配置备份**中，选择 **"配置备份**"。
+1. 在 "**备份目标** > "**步骤2：配置备份**中，选择 "**配置备份**"。
 
    ![选择“配置备份”](./media/backup-azure-sql-database/backup-goal-configure-backup.png)
 
@@ -214,7 +214,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 创建备份策略：
 
-1. 在保管库中，选择 **"添加备份策略** > **添加**"。
+1. 在保管库中，选择 "**备份策略** > " "**添加**"。
 2. 在“添加”中，选择“Azure VM 中的 SQL Server”以定义策略类型。********
 
    ![为新的备份策略选择策略类型](./media/backup-azure-sql-database/policy-type-details.png)
@@ -258,12 +258,12 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
     ![编辑日志备份策略](./media/backup-azure-sql-database/log-backup-policy-editor.png)
 
-13. 在“备份策略”菜单中，选择是否启用“SQL 备份压缩”********。 默认已禁用此选项。 如果启用，SQL Server 会向 VDI 发送压缩的备份流。  请注意，Azure 备份将根据此控件的值，使用 COMPRESSION/NO_COMPRESSION 子句替代实例级别的默认值。
+13. 在“备份策略”菜单中，选择是否启用“SQL 备份压缩”********。 默认情况下禁用此选项。 如果启用，SQL Server 会向 VDI 发送压缩的备份流。  请注意，Azure 备份将根据此控件的值，使用 COMPRESSION/NO_COMPRESSION 子句替代实例级别的默认值。
 
 14. 完成备份策略的编辑后，选择“确定”。****
 
 > [!NOTE]
-> 每个日志备份都链接到上一个完整备份，以形成恢复链。 此完整备份将一直保留到最后一个日志备份的保留期结束为止。 这可能意味着完整备份会多保留一段时间，以确保所有日志都可以恢复。 假设用户每周有一个完整备份、每日差分和 2 小时日志。 这些备份都保留 30 天。 但是，只有在下一个完整备份可用后（即 30 + 7 天后），才能真正清除/删除这个每周完整备份。 假设每周完整备份发生在 11 月 16 日。 根据保留策略，它应保留到 12 月 16 日。 该完整备份的最后一次日志备份发生在下一次计划的完整备份之前，即 11 月 22 日。 必须等到 12 月 22 日此日志备份可用后，才能删除 11 月 16 日的完整备份。 因此，11 月 16 日的完整备份会保留到 12 月 22 日。
+> 每个日志备份都链接到上一个完整备份，以形成恢复链。 此完整备份将一直保留到最后一个日志备份的保留期结束为止。 这可能意味着完整备份会多保留一段时间，以确保所有日志都可以恢复。 假设用户具有每周完整备份、每日差异和2小时的日志。 这些备份都保留 30 天。 但是，只有在下一个完整备份可用后（即 30 + 7 天后），才能真正清除/删除这个每周完整备份。 假设每周完整备份发生在 11 月 16 日。 根据保留策略，它应保留到 12 月 16 日。 该完整备份的最后一次日志备份发生在下一次计划的完整备份之前，即 11 月 22 日。 必须等到 12 月 22 日此日志备份可用后，才能删除 11 月 16 日的完整备份。 因此，11 月 16 日的完整备份会保留到 12 月 22 日。
 
 ## <a name="enable-auto-protection"></a>启用自动保护  
 

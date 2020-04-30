@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: jingwang
 ms.openlocfilehash: 7b554ea5c2868559574979c58697fd31f8d2a2c4
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81686280"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Azure 数据工厂中的 JSON 格式
@@ -21,7 +21,7 @@ ms.locfileid: "81686280"
 
 如果要**分析 JSON 文件或以 JSON 格式写入数据**，请遵循本文中的说明。 
 
-JSON格式支持以下连接器：[亚马逊S3，Azure](connector-amazon-simple-storage-service.md) [Blob，Azure数据存储第1代](connector-azure-data-lake-store.md)[，Azure数据存储第2代](connector-azure-data-lake-storage.md)[，Azure文件存储](connector-azure-file-storage.md)，[文件系统](connector-file-system.md)[，FTP，](connector-ftp.md)[谷歌云存储](connector-google-cloud-storage.md)[，HDFS，HTTP](connector-hdfs.md)和[SFTP。](connector-sftp.md) [Azure Blob](connector-azure-blob-storage.md) [HTTP](connector-http.md)
+以下连接器支持 JSON 格式： [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google Cloud Storage](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)、 [HTTP](connector-http.md)和[SFTP](connector-sftp.md)。
 
 ## <a name="dataset-properties"></a>数据集属性
 
@@ -33,8 +33,8 @@ JSON格式支持以下连接器：[亚马逊S3，Azure](connector-amazon-simple-
 | location         | 文件的位置设置。 每个基于文件的连接器在 `location` 下都有其自己的位置类型和支持的属性。 **请在连接器文章 -> 数据集属性部分中查看详细信息**。 | 是      |
 | encodingName     | 用于读取/写入测试文件的编码类型。 <br>可用的值如下："UTF-8"、"UTF-16"、"UTF-16BE"、"UTF-32"、"UTF-32BE"、"US-ASCII"、"UTF-7"、"BIG5"、"EUC-JP"、"EUC-KR"、"GB2312"、"GB18030"、"JOHAB"、"SHIFT-JIS"、"CP875"、"CP866"、"IBM00858"、"IBM037"、"IBM273"、"IBM437"、"IBM500"、"IBM737"、"IBM775"、"IBM850"、"IBM852"、"IBM855"、"IBM857"、"IBM860"、"IBM861"、"IBM863"、"IBM864"、"IBM865"、"IBM869"、"IBM870"、"IBM01140"、"IBM01141"、"IBM01142"、"IBM01143"、"IBM01144"、"IBM01145"、"IBM01146"、"IBM01147"、"IBM01148"、"IBM01149"、"ISO-2022-JP"、"ISO-2022-KR"、"ISO-8859-1"、"ISO-8859-2"、"ISO-8859-3"、"ISO-8859-4"、"ISO-8859-5"、"ISO-8859-6"、"ISO-8859-7"、"ISO-8859-8"、"ISO-8859-9"、"ISO-8859-13"、"ISO-8859-15"、"WINDOWS-874"、"WINDOWS-1250"、"WINDOWS-1251"、"WINDOWS-1252"、"WINDOWS-1253"、"WINDOWS-1254"、"WINDOWS-1255"、"WINDOWS-1256"、"WINDOWS-1257"、"WINDOWS-1258"。| 否       |
 | compression | 用来配置文件压缩的属性组。 如果需要在活动执行期间进行压缩/解压缩，请配置此部分。 | 否 |
-| type | 用于读取/写入 JSON 文件的压缩编解码器。 <br>允许的值为 **bzip2**、**gzip**、**deflate**、**ZipDeflate**、**snappy** 或 **lz4**。 保存文件时使用。 默认值不会压缩。<br>**注意**当前复制活动不支持"快速"&"lz4"，并且映射数据流不支持"ZipDeflate"。<br>**注意**当使用复制活动来解压缩 ZipDeflate 文件并写入基于文件的接收器数据存储时，文件将提取到文件夹： `<path specified in dataset>/<folder named as source zip file>/`。 | 不是。  |
-| 级别 | 压缩率。 <br>允许的值为 **Optimal** 或 **Fastest**。<br>- **最快：** 压缩操作应尽快完成，即使生成的文件未以最佳方式压缩也是如此。<br>- **最佳**： 压缩操作应以最佳方式压缩，即使操作需要更长的时间才能完成。 有关详细信息，请参阅 [Compression Level](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx)（压缩级别）主题。 | 否       |
+| type | 用于读取/写入 JSON 文件的压缩编解码器。 <br>允许的值为 **bzip2**、**gzip**、**deflate**、**ZipDeflate**、**snappy** 或 **lz4**。 保存文件时使用。 不压缩默认值。<br>**注意**当前复制活动不支持 "snappy" & "lz4"，并且映射数据流不支持 "ZipDeflate"。<br>**请注意**，使用复制活动解压缩 ZipDeflate 文件并写入到基于文件的接收器数据存储时，文件将被提取到文件夹中： `<path specified in dataset>/<folder named as source zip file>/`。 | 不能。  |
+| 级别 | 压缩率。 <br>允许的值为 **Optimal** 或 **Fastest**。<br>- **最快：** 压缩操作应该尽快完成，即使生成的文件未以最佳方式压缩。<br>- **最佳**：应以最佳方式压缩压缩操作，即使操作需要更长的时间才能完成。 有关详细信息，请参阅 [Compression Level](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx)（压缩级别）主题。 | 否       |
 
 下面是 Azure Blob 存储上的 JSON 数据集的示例：
 
@@ -68,18 +68,18 @@ JSON格式支持以下连接器：[亚马逊S3，Azure](connector-amazon-simple-
 
 ### <a name="json-as-source"></a>以 JSON 作为源
 
-复制活动***\*源\**** 部分支持以下属性。
+复制活动*** \*源\* ***部分支持以下属性。
 
-| 属性      | 说明                                                  | 必选 |
+| 属性      | 说明                                                  | 必需 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动源的 type 属性必须设置为 **JSONSource**。 | 是      |
 | storeSettings | 有关如何从数据存储读取数据的一组属性。 每个基于文件的连接器在 `storeSettings` 下都有其自己支持的读取设置。 **请在连接器文章 -> 复制活动属性部分中查看详细信息**。 | 否       |
 
 ### <a name="json-as-sink"></a>JSON 作为接收器
 
-复制活动***\*接收器\**** 部分支持以下属性。
+复制活动*** \*接收器\* ***部分支持以下属性。
 
-| 属性      | 说明                                                  | 必选 |
+| 属性      | 说明                                                  | 必需 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动源的 type 属性必须设置为 **JSONSink**。 | 是      |
 | formatSettings | 一组属性。 请参阅下面的“JSON 写入设置”表。**** | 否       |
@@ -87,9 +87,9 @@ JSON格式支持以下连接器：[亚马逊S3，Azure](connector-amazon-simple-
 
 `formatSettings` 下支持的 **JSON 写入设置**：
 
-| 属性      | 说明                                                  | 必选                                              |
+| 属性      | 说明                                                  | 必需                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| type          | 格式类型设置必须设置为**JsonWriteSettings**。 | 是                                                   |
+| type          | FormatSettings 的类型必须设置为**JsonWriteSettings**。 | 是                                                   |
 | filePattern |指示每个 JSON 文件中存储的数据模式。 允许的值为：**setOfObjects** 和 **arrayOfObjects**。 **默认**值为 **setOfObjects**。 请参阅 [JSON 文件模式](#json-file-patterns)部分，详细了解这些模式。 |否 |
 
 ### <a name="json-file-patterns"></a>JSON 文件模式
@@ -186,25 +186,25 @@ Copy 活动可自动检测并分析以下 JSON 文件模式。
 
 ## <a name="mapping-data-flow-properties"></a>映射数据流属性
 
-JSON 文件类型可用作映射数据流的接收器和源。
+JSON 文件类型可用作接收器和映射数据流中的源。
 
 ### <a name="creating-json-structures-in-a-derived-column"></a>在派生列中创建 JSON 结构
 
-您可以通过派生的列表达式生成器向数据流添加复杂列。 在派生列转换中，添加新列，并通过单击蓝色框打开表达式生成器。 要使列变得复杂，可以手动输入 JSON 结构或使用 UX 以交互方式添加子列。
+您可以通过派生列表达式生成器将复杂列添加到数据流。 在派生列转换中，通过单击蓝色框来添加一个新列并打开 "表达式生成器"。 若要使列复杂化，可以手动输入 JSON 结构，或使用 UX 以交互方式添加个子列。
 
 #### <a name="using-the-expression-builder-ux"></a>使用表达式生成器 UX
 
-在输出架构侧窗格中，将鼠标悬停在列上，然后单击加号图标。 选择 **"添加子列**"以使该列成为复杂类型。
+在 "输出架构" 侧窗格中，将鼠标悬停在某一列上，并单击加号图标。 选择 "**添加 subcolumn** "，使列成为复杂类型。
 
-![添加子列](media/data-flow/addsubcolumn.png "添加子列")
+![添加 subcolumn](media/data-flow/addsubcolumn.png "添加 Subcolumn")
 
-可以以同样的方式添加其他列和子列。 对于每个非复杂字段，可以在右侧的表达式编辑器中添加表达式。
+您可以通过相同的方式添加更多的列和个子列。 对于每个非复杂字段，可以在右侧的表达式编辑器中添加表达式。
 
 ![复杂列](media/data-flow/complexcolumn.png "复杂列")
 
 #### <a name="entering-the-json-structure-manually"></a>手动输入 JSON 结构
 
-要手动添加 JSON 结构，请添加新列并在编辑器中输入表达式。 表达式遵循以下常规格式：
+若要手动添加 JSON 结构，请添加一个新列，然后在编辑器中输入该表达式。 表达式采用以下常规格式：
 
 ```
 @(
@@ -215,7 +215,7 @@ JSON 文件类型可用作映射数据流的接收器和源。
 )
 ```
 
-如果为名为"复杂列"的列输入此表达式，则它将以以下 JSON 一词写入接收器：
+如果为名为 "complexColumn" 的列输入了此表达式，则会将其作为以下 JSON 写入接收器：
 
 ```
 {
@@ -228,7 +228,7 @@ JSON 文件类型可用作映射数据流的接收器和源。
 }
 ```
 
-#### <a name="sample-manual-script-for-complete-hierarchical-definition"></a>完整的分层定义示例手动脚本
+#### <a name="sample-manual-script-for-complete-hierarchical-definition"></a>完整层次结构定义的示例手动脚本
 ```
 @(
     title=Title,
@@ -256,13 +256,13 @@ JSON 文件类型可用作映射数据流的接收器和源。
 
 ### <a name="source-format-options"></a>源格式选项
 
-使用 JSON 数据集作为数据流中的源，可以设置五个附加设置。 可在 **"源选项**"选项卡中的 **"JSON 设置**手风琴"下找到这些设置。  
+使用 JSON 数据集作为数据流中的源，可设置五个附加设置。 这些设置可在 "**源选项**" 选项卡中的**JSON 设置**可折叠项下找到。  
 
 ![JSON 设置](media/data-flow/json-settings.png "JSON 设置")
 
 #### <a name="default"></a>默认
 
-默认情况下，JSON 数据以以下格式读取。
+默认情况下，使用以下格式读取 JSON 数据。
 
 ```
 { "json": "record 1" }
@@ -270,9 +270,9 @@ JSON 文件类型可用作映射数据流的接收器和源。
 { "json": "record 3" }
 ```
 
-#### <a name="single-document"></a>单一文档
+#### <a name="single-document"></a>单个文档
 
-如果选择了**单个文档**，则映射数据流将读取每个文件中的一个 JSON 文档。 
+如果选择了 "**单个文档**"，则映射数据流会从每个文件读取一个 JSON 文档。 
 
 ``` json
 File1.json
@@ -289,11 +289,11 @@ File3.json
 }
 ```
 > [!NOTE]
-> 如果数据流在预览 JSON 数据时引发错误，指出"corrupt_record"，则数据可能包含 JSON 文件中的单个文档。 设置"单个文档"应清除该错误。
+> 如果在预览 JSON 数据时数据流引发了 "corrupt_record" 错误，则可能是因为数据包含的是 JSON 文件中的单个文档。 设置 "单个文档" 应清除该错误。
 
-#### <a name="unquoted-column-names"></a>未引用的列名称
+#### <a name="unquoted-column-names"></a>不带引号的列名
 
-如果选择了**未引用的列名称**，则映射数据流将读取未由引号包围的 JSON 列。 
+如果选择了不带**引号的列名称**，则映射数据流将读取未括在引号中的 JSON 列。 
 
 ```
 { json: "record 1" }
@@ -301,9 +301,9 @@ File3.json
 { json: "record 3" }
 ```
 
-#### <a name="has-comments"></a>有评论
+#### <a name="has-comments"></a>包含注释
 
-如果 JSON 数据具有 C 或C++样式注释，请选择 **"有注释**"。
+如果 JSON 数据具有 C 或 c + + 样式注释，请选择 "**具有注释**"。
 
 ``` json
 { "json": /** comment **/ "record 1" }
@@ -311,9 +311,9 @@ File3.json
 { /** comment **/ "json": "record 3" }
 ```
 
-#### <a name="single-quoted"></a>单次报价
+#### <a name="single-quoted"></a>单引号
 
-如果 JSON 字段和值使用单引号而不是双引号，请选择 **"单引号**"。
+如果 JSON 字段和值使用单引号而不是双引号，则选择 "**单引号**"。
 
 ```
 { 'json': 'record 1' }
@@ -321,9 +321,9 @@ File3.json
 { 'json': 'record 3' }
 ```
 
-#### <a name="backslash-escaped"></a>反斜杠逃跑
+#### <a name="backslash-escaped"></a>反斜杠转义
 
-如果背斜杠用于转义 JSON 数据中的字符，请选择 **"单引号**"。
+如果使用反斜杠对 JSON 数据中的字符进行转义，则选择 "**单引号**"。
 
 ```
 { "json": "record 1" }
@@ -336,4 +336,4 @@ File3.json
 - [复制活动概述](copy-activity-overview.md)
 - [映射数据流](concepts-data-flow-overview.md)
 - [查找活动](control-flow-lookup-activity.md)
-- [获取元数据活动](control-flow-get-metadata-activity.md)
+- [GetMetadata 活动](control-flow-get-metadata-activity.md)

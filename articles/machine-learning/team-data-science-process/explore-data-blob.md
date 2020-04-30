@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: e429dce497411305964cb1ec5298228dc4093b1f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81685957"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>使用 pandas 浏览 Azure blob 存储中的数据
@@ -33,7 +33,7 @@ ms.locfileid: "81685957"
 ## <a name="load-the-data-into-a-pandas-dataframe"></a>将数据加载到 pandas 数据帧
 要浏览和操作数据集，首先必须从 blob 源将数据集下载到本地文件，然后将数据集加载到 pandas 数据帧。 下面是此过程的所需步骤：
 
-1. 使用 Blob 服务使用以下 Python 代码示例从 Azure Blob 下载数据。 使用特定值替代下方代码中的变量：
+1. 通过以下使用 Blob 服务的 Python 代码示例，从 Azure blob 下载数据。 使用特定值替代下方代码中的变量：
 
     ```python
     from azure.storage.blob import BlockBlobService
