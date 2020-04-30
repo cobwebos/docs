@@ -12,10 +12,10 @@ ms.date: 04/04/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-three
 ms.openlocfilehash: 67ade64cdb3b2da6f78f77beb4d0cdc993715c9a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400857"
 ---
 # <a name="quickstart-setup-development-environment"></a>快速入门：安装开发环境

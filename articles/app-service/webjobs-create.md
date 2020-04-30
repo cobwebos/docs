@@ -9,10 +9,10 @@ ms.author: glenga
 ms.reviewer: msangapu;suwatch;pbatum;naren.soni
 ms.custom: seodec18
 ms.openlocfilehash: 028551f04b2e44e9456e2f7343159ad9b52fd25f
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82085138"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>在 Azure 应用服务中使用 WebJobs 运行后台任务
@@ -20,7 +20,7 @@ ms.locfileid: "82085138"
 本文介绍如何使用 [Azure 门户](https://portal.azure.com)部署 WebJobs，以便上传可执行文件或脚本。 有关如何使用 Visual Studio 开发和部署 WebJobs 的信息，请参阅[使用 Visual Studio 部署 WebJobs](webjobs-dotnet-deploy-vs.md)。
 
 ## <a name="overview"></a>概述
-WebJobs 是[Azure 应用服务的](index.yml)一项功能，它使您能够在 Web 应用、API 应用或移动应用的同一实例中运行程序或脚本。 使用 Web 作业无需支付额外的费用。
+Web 作业是[Azure App Service](index.yml)的一项功能，使你能够在与 web 应用、API 应用或移动应用相同的实例中运行程序或脚本。 使用 Web 作业无需支付额外的费用。
 
 > [!IMPORTANT]
 > Linux 上的应用服务尚不支持 WebJobs。
@@ -79,10 +79,10 @@ when making changes in one don't forget the other two.
    | ------------ | ----------------- | ------------ |
    | **名称** | myContinuousWebJob | 在应用服务应用中唯一的名称。 必须以字母或数字开头，且不能包含除“-”和“_”以外的特殊字符。 |
    | **文件上传** | ConsoleApp.zip | 一个 *.zip* 文件，其中包含可执行文件或脚本文件，以及运行程序或脚本所需的所有支持文件。 [支持的文件类型](#acceptablefiles)部分中列出了支持的可执行文件或脚本文件类型。 |
-   | 类型  | 连续 | 本文前面介绍了 [Web 作业类型](#webjob-types)。 |
+   | **类型** | 连续 | 本文前面介绍了 [Web 作业类型](#webjob-types)。 |
    | **缩放** | 多实例 | 仅适用于连续 Web 作业。 确定程序或脚本是在所有实例还是只在一个实例上运行。 指定要在多个实例上运行的选项不适用于免费或共享[定价层](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 | 
 
-4. 单击“确定”。 
+4. 单击" **确定**"。
 
    新的 Web 作业随即显示在“Web 作业”页上。****
 
@@ -117,10 +117,10 @@ when making changes in one don't forget the other two.
    | ------------ | ----------------- | ------------ |
    | **名称** | myTriggeredWebJob | 在应用服务应用中唯一的名称。 必须以字母或数字开头，且不能包含除“-”和“_”以外的特殊字符。|
    | **文件上传** | ConsoleApp.zip | 一个 *.zip* 文件，其中包含可执行文件或脚本文件，以及运行程序或脚本所需的所有支持文件。 [支持的文件类型](#acceptablefiles)部分中列出了支持的可执行文件或脚本文件类型。 |
-   | 类型  | 触发 | 本文前面介绍了 [Web 作业类型](#webjob-types)。 |
-   | **触发器** | 手动 | |
+   | **类型** | 触发 | 本文前面介绍了 [Web 作业类型](#webjob-types)。 |
+   | **触发器** | Manual | |
 
-4. 单击“确定”。 
+4. 单击" **确定**"。
 
    新的 Web 作业随即显示在“Web 作业”页上。****
 
@@ -155,11 +155,11 @@ when making changes in one don't forget the other two.
    | ------------ | ----------------- | ------------ |
    | **名称** | myScheduledWebJob | 在应用服务应用中唯一的名称。 必须以字母或数字开头，且不能包含除“-”和“_”以外的特殊字符。 |
    | **文件上传** | ConsoleApp.zip | 一个 *.zip* 文件，其中包含可执行文件或脚本文件，以及运行程序或脚本所需的所有支持文件。 [支持的文件类型](#acceptablefiles)部分中列出了支持的可执行文件或脚本文件类型。 |
-   | 类型  | 触发 | 本文前面介绍了 [Web 作业类型](#webjob-types)。 |
+   | **类型** | 触发 | 本文前面介绍了 [Web 作业类型](#webjob-types)。 |
    | **触发器** | 计划 | 要使计划可靠运行，请启用 Always On 功能。 Always On 仅在基本、标准和高级定价层中提供。|
    | **CRON 表达式** | 0 0/20 * * * * | 以下部分介绍了 [CRON 表达式](#ncrontab-expressions)。 |
 
-4. 单击“确定”。 
+4. 单击" **确定**"。
 
    新的 Web 作业随即显示在“Web 作业”页上。****
 
