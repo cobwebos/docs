@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 04/17/2020
 ms.author: tisande
 ms.openlocfilehash: 70702ee4a77e8b3c46de4354f3394bca4080d837
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81641400"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 ORDER BY 子句
 
-可选`ORDER BY`子句指定查询返回的结果的排序顺序。
+Optional `ORDER BY`子句指定查询返回的结果的排序顺序。
 
 ## <a name="syntax"></a>语法
   
@@ -31,9 +31,9 @@ ORDER BY <sort_specification>
   
    指定查询结合集要进行排序的属性或表达式。 可将排序列指定为名称或属性别名。  
   
-   可以指定多个属性。 属性名称必须唯一。 `ORDER BY`子句中排序属性的顺序定义排序结果集的组织。 即：结果集按第一个属性排序，然后该排序列表按第二个属性排序，依此类推。  
+   可以指定多个属性。 属性名称必须唯一。 `ORDER BY`子句中排序属性的顺序定义了排序结果集的组织。 即：结果集按第一个属性排序，然后该排序列表按第二个属性排序，依此类推。  
   
-   `ORDER BY`子句中引用的属性名称必须对应于选择列表中的属性或`FROM`子句中指定的集合中定义的属性，没有任何含糊不清之处。  
+   `ORDER BY`子句中引用的属性名称必须与 select 列表中的属性或在`FROM`子句中指定的集合中定义的属性相对应。  
   
 - `<sort_expression>`  
   
@@ -45,14 +45,14 @@ ORDER BY <sort_specification>
   
 - `ASC | DESC`  
   
-   指定按升序或降序排列指定列中的值。 `ASC`从最低值到最高值进行排序。 `DESC`从最高值到最低值进行排序。 `ASC`是默认排序顺序。 Null 值被视为最低的可能值。  
+   指定按升序或降序排列指定列中的值。 `ASC`从最低值到最高值排序。 `DESC`从最高值到最低值排序。 `ASC`是默认的排序顺序。 Null 值被视为最低的可能值。  
   
 ## <a name="remarks"></a>备注  
   
-   子`ORDER BY`句要求索引策略包含要排序的字段的索引。 Azure Cosmos DB 查询运行时支持根据属性名称排序，而不支持根据计算的属性排序。 Azure 宇宙数据库支持多个`ORDER BY`属性。 若要运行包含多个 ORDER BY 属性的查询，应在所要排序的字段中定义[组合索引](index-policy.md#composite-indexes)。
+   `ORDER BY`子句要求索引策略包含要排序的字段的索引。 Azure Cosmos DB 查询运行时支持根据属性名称排序，而不支持根据计算的属性排序。 Azure Cosmos DB 支持多`ORDER BY`个属性。 若要运行包含多个 ORDER BY 属性的查询，应在所要排序的字段中定义[组合索引](index-policy.md#composite-indexes)。
 
 > [!Note]
-> 如果某些文档的排序属性可能未定义，并且希望在 ORDER BY 查询中检索它们，则必须在索引中显式包含此路径。 默认索引策略不允许检索未定义排序属性的文档。 [查看对文档中缺少一些字段的示例查询](#documents-with-missing-fields)。
+> 如果要排序的属性对于某些文档而言可能是未定义的，并且您想要在 ORDER BY 查询中检索这些属性，则必须在索引中显式包含此路径。 默认索引策略不允许检索未定义排序属性的文档。 [查看包含某些缺失字段的文档的示例查询](#documents-with-missing-fields)。
 
 ## <a name="examples"></a>示例
 
@@ -112,11 +112,11 @@ ORDER BY <sort_specification>
 
 此查询按城市名称的升序检索家庭 `id`。 如果多个项包含同一个城市名称，该查询将按 `creationDate` 的降序排序。
 
-## <a name="documents-with-missing-fields"></a>缺少字段的文档
+## <a name="documents-with-missing-fields"></a>缺失字段的文档
 
-具有默认索引`ORDER BY`策略的容器运行的查询不会返回未定义排序属性的文档。 如果要包括未定义排序属性的文档，则应在索引策略中显式包含此属性。
+针对具有`ORDER BY`默认索引策略的容器运行的查询不会返回未定义 sort 属性的文档。 如果要包括未定义 sort 属性的文档，则应在索引策略中显式包含此属性。
 
-例如，下面是一个包含索引策略的容器，该策略未显式包含 除`"/*"`：
+例如，下面是一个容器，其中包含除了之外`"/*"`的任何路径的索引策略：
 
 ```json
 {
@@ -131,9 +131,9 @@ ORDER BY <sort_specification>
 }
 ```
 
-如果运行包含子句中的`lastName``Order By`查询，则结果将仅包括定义`lastName`属性的文档。 我们尚未为`lastName`任何没有 a 的文档定义显式包含的路径`lastName`，因此查询结果中不会显示任何没有 a 的文档。
+如果运行包含`lastName`在`Order By`子句中的查询，则结果将只包括定义了`lastName`属性的文档。 我们尚未定义显式包含的`lastName`路径，因此，任何没有的`lastName`文档都不会出现在查询结果中。
 
-下面是一个查询，它按`lastName`两个文档进行排序，其中一个文档没有`lastName`定义：
+下面的查询按`lastName`两个文档排序，其中一个文档没有`lastName`定义：
 
 ```sql
     SELECT f.id, f.lastName
@@ -141,7 +141,7 @@ ORDER BY <sort_specification>
     ORDER BY f.lastName
 ```
 
-结果仅包括具有定义的`lastName`文档：
+结果仅包括定义`lastName`了的文档：
 
 ```json
     [
@@ -152,9 +152,9 @@ ORDER BY <sort_specification>
     ]
 ```
 
-如果我们更新容器的索引策略以显式包含 的`lastName`路径，我们将在查询结果中包括具有未定义排序属性的文档。 您必须显式定义路径才能导致此标量值（而不是超出该值）。 应在索引策略中使用`?`路径定义中的字符，以确保显式索引属性，并且没有超出该属性`lastName`的其他嵌套路径。 如果`Order By`查询使用[复合索引](index-policy.md#composite-indexes)，则结果将始终在查询结果中包含具有未定义排序属性的文档。
+如果我们将容器的索引策略更新为显式包含的路径`lastName`，则在查询结果中将包含带有未定义的排序属性的文档。 必须显式定义路径，使其导致此标量值（而不是超出它的值）。 你应在索引`?`策略的路径定义中使用字符，以确保显式索引属性`lastName` ，但不会在它的外部附加嵌套路径。 如果`Order By`查询使用[复合索引](index-policy.md#composite-indexes)，则结果将始终在查询结果中包含带有未定义的排序属性的文档。
 
-下面是一个示例索引策略，允许您在查询结果中显示未定义`lastName`的文档：
+下面是一个示例索引策略，该策略允许你将包含未定义`lastName`的文档显示在查询结果中：
 
 ```json
 {
@@ -172,7 +172,7 @@ ORDER BY <sort_specification>
 }
 ```
 
-如果再次运行同一查询，则缺少`lastName`的文档首先出现在查询结果中：
+如果再次运行相同的查询，则在查询结果中`lastName`首先会出现丢失的文档：
 
 ```sql
     SELECT f.id, f.lastName
@@ -194,7 +194,7 @@ ORDER BY <sort_specification>
 ]
 ```
 
-如果将排序顺序修改为`DESC`，则缺少`lastName`的文档将在最后一个查询结果中显示：
+如果将排序顺序更改为`DESC`，则在查询结果中`lastName`最后出现的文档将显示为最后：
 
 ```sql
     SELECT f.id, f.lastName
@@ -218,6 +218,6 @@ ORDER BY <sort_specification>
 
 ## <a name="next-steps"></a>后续步骤
 
-- [开始](sql-query-getting-started.md)
+- [入门](sql-query-getting-started.md)
 - [Azure Cosmos DB 中的索引编制策略](index-policy.md)
-- [OFFSET 限制子句](sql-query-offset-limit.md)
+- [OFFSET LIMIT 子句](sql-query-offset-limit.md)

@@ -1,5 +1,5 @@
 ---
-title: 在 1 TB 数据集上使用 Azure HDInsight Hadoop 群集 - 团队数据科学流程
+title: 在 1 TB 数据集上使用 Azure HDInsight Hadoop 群集-团队数据科学流程
 description: 对于采用 HDInsight Hadoop 群集的端到端方案，使用 Team Data Science Process 来构建和部署使用大型 (1 TB) 公开可用数据集的模型
 services: machine-learning
 author: marktab
@@ -12,20 +12,20 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1198d3cc7ccc0013e7c894488027d8e162470247
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81677603"
 ---
-# <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>团队数据科学流程在操作中 - 在 1 TB 数据集上使用 Azure HDInsight Hadoop 群集
+# <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>操作中的团队数据科学过程-使用 1 TB 数据集上的 Azure HDInsight Hadoop 群集
 
 本演练演示如何利用 [Azure HDInsight Hadoop 群集](https://azure.microsoft.com/services/hdinsight/)在端到端方案中使用 Team Data Science Process 来存储、浏览并描绘工程师数据特征，从其中一个公用 [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) 数据集下载示例数据。 其中使用了 Azure 机器学习在这些数据上构建二进制分类模型。 此外，还演示如何将这些模型之一发布为 Web 服务。
 
 也可以使用 IPython Notebook 来完成本演练中介绍的任务。 想要尝试此方法的用户应该咨询[使用 Hive ODBC 连接的 Criteo 演练](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb)主题。
 
 ## <a name="criteo-dataset-description"></a><a name="dataset"></a>Criteo 数据集说明
-Criteo 数据是一个单击预测数据集，它是 370 GB 的 gzip 压缩 TSV 文件（未压缩 1.3 TB），包含超过 43 亿条记录。 它取自 [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) 提供的 24 天的单击数据。 为了方便数据科学家，我们已解压缩数据以便用于试验。
+Criteo 数据是一个单击预测数据集，它是 370 GB （未压缩的） gzip 压缩 TSV 文件（超过 1.3 TB，其中包含超过4300000000个记录）。 它取自 [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) 提供的 24 天的单击数据。 为了方便数据科学家，我们已解压缩数据以便用于试验。
 
 此数据集中的每个记录包含 40 列：
 
@@ -44,7 +44,7 @@ Criteo 数据是一个单击预测数据集，它是 370 GB 的 gzip 压缩 TSV 
 
 在此数据集的数值列和分类列中都有缺失值。 本文介绍一种处理缺失值的简单方法。 将缺失值存储到 Hive 表中时，将浏览数据的其他详细信息。
 
-**定义：***点击率 （CTR）：* 此指标是数据中点击次数的百分比。 在此 Criteo 数据集中，CTR 约为 3.3% 或 0.033。
+**定义：** *点击链接速率（CTR）：* 此指标是在数据中单击的百分比。 在此 Criteo 数据集中，CTR 约为 3.3% 或 0.033。
 
 ## <a name="examples-of-prediction-tasks"></a><a name="mltasks"></a>预测任务示例
 本演练中涉及两个示例预测问题：
@@ -57,15 +57,15 @@ Criteo 数据是一个单击预测数据集，它是 370 GB 的 gzip 压缩 TSV 
 
 ## <a name="set-up-an-hdinsight-hadoop-cluster-for-data-science"></a><a name="setup"></a>为数据科学设置 HDInsight Hadoop 群集
 > [!NOTE]
-> 此步骤通常是**管理**任务。
+> 此步骤通常是一种**管理**任务。
 
 通过三个步骤设置 Azure Data Science 环境，以构建具有 HDInsight 群集的预测分析解决方案：
 
 1. [创建存储帐户](../../storage/common/storage-account-create.md)：此存储帐户用于在 Azure Blob 存储中存储数据。 HDInsight 群集中使用的数据存储在此处。
 2. [自定义用于数据科学的 Azure HDInsight Hadoop 群集](customize-hadoop-cluster.md)：此步骤将创建一个在所有节点上都安装有 64 位 Anaconda Python 2.7 的 Azure HDInsight Hadoop 群集。 自定义 HDInsight 群集时，要完成两个重要步骤（本主题中有所描述）。
 
-   * 创建 HDInsight 群集时，将步骤 1 中创建的存储帐户与 HDInsight 群集链接。 此存储帐户用于访问可在群集中处理的数据。
-   * 创建群集后，启用对其头节点的远程访问。 请记住您在此处指定的远程访问凭据（不同于群集创建时指定的凭据）：完成以下过程。
+   * 创建时，将在步骤1中创建的存储帐户链接到 HDInsight 群集。 此存储帐户用于访问可在群集中处理的数据。
+   * 创建群集后，启用对其头节点的远程访问。 请记住在此处指定的远程访问凭据（不同于在创建群集时指定的凭据）：完成以下过程。
 3. [创建 Azure 机器学习工作室（经典）工作区](../studio/create-workspace.md)：此 Azure 机器学习工作区用于在 HDInsight 群集上进行初始数据浏览和缩小取样后构建机器学习模型。
 
 ## <a name="get-and-consume-data-from-a-public-source"></a><a name="getdata"></a>从公共源获取和使用数据
@@ -75,21 +75,21 @@ Criteo 数据是一个单击预测数据集，它是 370 GB 的 gzip 压缩 TSV 
 
 单击“继续下载”  ，详细了解数据集及其可用性。
 
-数据驻留在 Azure [blob 存储](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)位置： wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/。 “wasb”表示 Azure Blob 存储位置。
+数据驻留在[Azure blob 存储](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)位置： wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/。 “wasb”表示 Azure Blob 存储位置。
 
-1. 此 Azure Blob 存储中的数据由三个解压缩数据的子文件夹组成。
+1. 此 Azure blob 存储中的数据由三个已解压缩数据的子文件夹组成。
 
    1. 子文件夹 raw/count/  包含前 21 天的数据 - 从第\_00天到第\_20天
    2. 子文件夹 raw/train/  由一天的数据组成，即第\_21 天
    3. 子文件夹 raw/test/  由两天的数据组成，第\_22 天和第\_23 天
-2. 原始 gzip 数据也可在主文件夹中*原始/* 作为 day_NN.gz，其中 NN 从 00 到 23。
+2. 原始的 gzip 数据也在主文件夹*raw/* as day_NN 中提供，其中 NN 从00到23。
 
 另一种访问、浏览和建模不需要任何本地下载的数据的方法会在本演示的后续部分中创建 Hive 表时进行介绍。
 
 ## <a name="log-in-to-the-cluster-headnode"></a><a name="login"></a>登录到群集头节点
-若要登录到集群的头节点，请使用 [Azure 门户](https://ms.portal.azure.com)找到该集群。 单击左侧的 HDInsight 大象图标，并双击群集名称。 导航到 **"配置"** 选项卡，双击页面底部的 CONNECT 图标，并在出现提示时输入远程访问凭据，将您带到群集的头节点。
+若要登录到集群的头节点，请使用 [Azure 门户](https://ms.portal.azure.com)找到该集群。 单击左侧的 HDInsight 大象图标，并双击群集名称。 导航到 "**配置**" 选项卡，双击页面底部的 "连接" 图标，并在出现提示时输入您的远程访问凭据，并转到群集的头节点。
 
-以下是典型的首次登录到群集头节点的外观：
+典型的第一次群集头节点登录如下所示：
 
 ![登录到群集](./media/hive-criteo-walkthrough/Yys9Vvm.png)
 
@@ -113,7 +113,7 @@ Criteo 数据是一个单击预测数据集，它是 370 GB 的 gzip 压缩 TSV 
 
 Hive REPL 出现“hive>”符号后，只需剪切并粘贴查询即可执行。
 
-以下代码创建数据库"criteo"，然后生成四个表：
+以下代码将创建一个数据库 "criteo"，然后生成四个表：
 
 * 一个用于生成在第\_00 天至第\_20 天构建的计数的表**，
 * 一个用于在第\_21 天构建的定型数据集的表**，以及
@@ -152,17 +152,17 @@ Hive REPL 出现“hive>”符号后，只需剪切并粘贴查询即可执行�
     LINES TERMINATED BY '\n'
     STORED AS TEXTFILE LOCATION 'wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/test/day_23';
 
-所有这些表都是外部的，因此您可以指向其 Azure Blob 存储 （wasb） 位置。
+所有这些表都是外部的，因此可以指向其 Azure Blob 存储（wasb）位置。
 
 **有两种可以执行任何 Hive 查询的方法：**
 
-* **使用 Hive REPL 命令行**：第一个是发出"hive"命令，并在 Hive REPL 命令行上复制和粘贴查询：
+* **使用 HIVE 复制命令行**：第一种是发出 "hive" 命令，并在 Hive 复制命令行复制并粘贴查询：
 
         cd %hive_home%\bin
         hive
 
-     现在在 REPL 命令行中，剪切和粘贴查询将执行它。
-* **将查询保存到文件并执行命令**：第二种是将查询保存到'.hql'文件（[示例&#95;&#95;创建&#95;criteo&#95;数据库&#95;和&#95;表.hql），](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)然后发出以下命令以执行查询：
+     现在，在复制命令行上，剪切并粘贴查询执行。
+* 将**查询保存到文件并执行命令**：第二种是将查询保存到 "hql" 文件（[示例&#95;hive&#95;创建&#95;criteo&#95;数据库&#95;和&#95;表](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)），然后发出以下命令来执行查询：
 
         hive -f C:\temp\sample_hive_create_criteo_database_and_tables.hql
 
@@ -224,7 +224,7 @@ Hive REPL 出现“hive>”符号后，只需剪切并粘贴查询即可执行�
 
 最后，检查基于第 \_23 天的测试数据集中的测试示例数目。
 
-执行此操作的命令与显示的命令类似（请参阅[示例&#95;蜂巢&#95;计数&#95;criteo&#95;测试&#95;天&#95;23&#95;示例.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_23_examples.hql)）：
+执行此操作的命令类似于所示的命令（请参阅[示例&#95;hive&#95;计数&#95;criteo&#95;测试&#95;日&#95;23&#95;示例](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_23_examples.hql)）：
 
         SELECT COUNT(*) FROM criteo.criteo_test_day_23;
 
@@ -244,7 +244,7 @@ Hive REPL 出现“hive>”符号后，只需剪切并粘贴查询即可执行�
         0       185922280
         Time taken: 459.435 seconds, Fetched: 2 row(s)
 
-正标签的百分比约为 3.3%（与原始数据集一致）。
+正值标签的百分比约为3.3% （与原始数据集一致）。
 
 ### <a name="histogram-distributions-of-some-numeric-variables-in-the-train-dataset"></a>定型数据集中某些数值变量的直方图分布
 可以使用 Hive 的本地“histogram\_numeric”函数来找出数值变量的分布。 以下是 [sample_hive_criteo_histogram_numeric.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_histogram_numeric.hql) 的内容：
@@ -281,7 +281,7 @@ Hive REPL 出现“hive>”符号后，只需剪切并粘贴查询即可执行�
         65510   3446
         Time taken: 317.851 seconds, Fetched: 20 row(s)
 
-LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出，而不是通常的列表。 在此表中，第一列对应于 bin 中心，第二列对应于 bin 频率。
+LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出，而不是通常的列表。 在此表中，第一列对应于 bin 中心和第二列。
 
 ### <a name="approximate-percentiles-of-some-numeric-variables-in-the-train-dataset"></a>定型数据集中一些数值变量的近似百分位数
 有关数值变量的另一个有趣之处是近似百分位数的计算。 Hive 的本地“percentile \_approx”能为我们完成这些操作。 [sample_hive_criteo_approximate_percentiles.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_approximate_percentiles.hql) 的内容为：
@@ -305,7 +305,7 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
         19011825
         Time taken: 448.116 seconds, Fetched: 1 row(s)
 
-Col15 具有 19M 唯一值！ 使用类似“one-hot encoding”的 naive 技术来编码这种高维分类变量是不可行的。 特别是，我们解释和演示了一中功能强大且可靠的技术，称为[使用计数学习](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx)，以有效地解决这个问题。
+Col15 具有19M 的唯一值！ 使用类似“one-hot encoding”的 naive 技术来编码这种高维分类变量是不可行的。 特别是，我们解释和演示了一中功能强大且可靠的技术，称为[使用计数学习](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx)，以有效地解决这个问题。
 
 最后，查看一些其他分类列的唯一值的数量来结束本小节。 [sample_hive_criteo_unique_values_multiple_categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_multiple_categoricals.hql) 的内容为：
 
@@ -322,7 +322,7 @@ Col15 具有 19M 唯一值！ 使用类似“one-hot encoding”的 naive 技术
 
 ### <a name="co-occurrence-counts-of-pairs-of-categorical-variables-in-the-train-dataset"></a>定型数据集中分类变量对的共同计数
 
-分类变量对的计数分布也令人感兴趣。 可以使用 [sample_hive_criteo_paired_categorical_counts.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_paired_categorical_counts.hql) 中的代码来确定：
+分类变量对的计数分布也是相关的。 可以使用 [sample_hive_criteo_paired_categorical_counts.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_paired_categorical_counts.hql) 中的代码来确定：
 
         SELECT Col15, Col16, COUNT(*) AS paired_count FROM criteo.criteo_train GROUP BY Col15, Col16 ORDER BY paired_count DESC LIMIT 15;
 
@@ -401,10 +401,10 @@ Col15 具有 19M 唯一值！ 使用类似“one-hot encoding”的 naive 技术
 
 有此结果，我们准备使用取样缩小训练和测试数据集在 Azure 机器学习中构建模型。
 
-在继续进行 Azure 机器学习之前，还有最后一个重要的组成部分，该部分涉及计数表。 在下一个小节中，计数表将详细讨论。
+在继续进行 Azure 机器学习之前，还有最后一个重要的组成部分，该部分涉及计数表。 在下一节中，将在下一节中讨论计数表。
 
 ## <a name="a-brief-discussion-on-the-count-table"></a><a name="count"></a>关于计数表的简要讨论
-如您所见，几个分类变量具有高维度。 在演练中，我们提出了一种名为[使用计数学习](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx)的有效的技术，以高效、可靠的方式对这些变量进行编码。 有关此技术的详细信息，请参阅提供的链接。
+正如您所看到的，有几个分类变量的维数很高。 在演练中，我们提出了一种名为[使用计数学习](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx)的有效的技术，以高效、可靠的方式对这些变量进行编码。 有关此技术的详细信息，请参阅提供的链接。
 
 >[!NOTE]
 >本演练重点讲解如何使用计数表来生成高维分类特征的紧凑表示形式。 这不是编码分类特征的唯一方法；有关其他技术的详细信息，感兴趣的用户可以查看 [one-hot 编码](https://en.wikipedia.org/wiki/One-hot)和[特性哈希](https://en.wikipedia.org/wiki/Feature_hashing)。
@@ -424,7 +424,7 @@ Col15 具有 19M 唯一值！ 使用类似“one-hot encoding”的 naive 技术
 现已准备好在 Azure 机器学习工作室中构建模型。 我们的取样缩小数据将作为 Hive 表保存在群集中。 使用 Azure 机器学习的“导入数据”**** 模块来读取此数据。 在下方提供访问此群集的存储帐户的凭据。
 
 ### <a name="step-1-get-data-from-hive-tables-into-azure-machine-learning-using-the-import-data-module-and-select-it-for-a-machine-learning-experiment"></a><a name="step1"></a>步骤 1：使用导入数据模块将数据从 Hive 表中导入到 Azure 机器学习中，并选择它用于机器学习实验
-首先选择 **_NEW** -> **实验** -> **空白实验**。 然后，从左上角的“搜索”**** 框中搜索“导入数据”。 将“导入数据”**** 模块拖放到实验画布（屏幕中间部分），以使用模块进行数据访问。
+首先，选择一个 **+ 新** -> **试验** -> **空白实验**。 然后，从左上角的“搜索”**** 框中搜索“导入数据”。 将“导入数据”**** 模块拖放到实验画布（屏幕中间部分），以使用模块进行数据访问。
 
 这是从 Hive 表获取数据时“导入数据”**** 的样子：
 
@@ -434,7 +434,7 @@ Col15 具有 19M 唯一值！ 使用类似“one-hot encoding”的 naive 技术
 
 1. 为“数据源”**** 选择“Hive 查询”
 2. 在“Hive 数据库查询”**** 框中，一个简单的SELECT * FROM <\_数据集\_名称.\_表\_名称> - 就足够了。
-3. **Hcatalog 服务器 URI**：如果您的群集是"abc"，则只需： https：\//abc.azurehdinsight.net
+3. **Hcatalog 服务器 URI**：如果群集是 "abc"，则只需执行以下操作： https\/：/abc.azurehdinsight.net
 4. **Hadoop 用户帐户名称**：调试群集时选择的用户名。 （不是远程访问用户名！）
 5. **Hadoop 用户帐户密码**：调试群集时为用户名选择的密码。 （不是远程访问密码！）
 6. **输出数据的位置**：选择“Azure”
@@ -457,22 +457,22 @@ Col15 具有 19M 唯一值！ 使用类似“one-hot encoding”的 naive 技术
 >
 >
 
-### <a name="step-2-create-an-experiment-in-azure-machine-learning-to-predict-clicks--no-clicks"></a><a name="step2"></a>第 2 步：在 Azure 机器学习中创建实验以预测点击次数/无点击次数
+### <a name="step-2-create-an-experiment-in-azure-machine-learning-to-predict-clicks--no-clicks"></a><a name="step2"></a>步骤2：在 Azure 机器学习中创建实验，以预测单击/不单击
 我们的 Azure 机器学习工作室（经典）试验如下所示：
 
 ![机器学习实验](./media/hive-criteo-walkthrough/xRpVfrY.png)
 
-现在，检查一下此试验的关键组件。 首先将我们保存的火车和测试数据集拖到实验画布上。
+现在，检查一下此试验的关键组件。 首先将已保存的训练和测试数据集拖到试验画布上。
 
 #### <a name="clean-missing-data"></a>清理缺失数据
 “清除缺失数据”**** 模块执行其名称所表示的功能：按用户指定的方式清除缺失的数据。 看一下此模块，我们看到：
 
 ![清理缺失数据](./media/hive-criteo-walkthrough/0ycXod6.png)
 
-在这里，选择将所有缺失的值替换为 0。 还有其他选项，可以通过查看模块中的下拉列表看到这些选项。
+在此处，选择将所有缺失值替换为0。 还有其他选项，可以通过查看模块中的下拉列表看到这些选项。
 
 #### <a name="feature-engineering-on-the-data"></a>对数据进行特性工程
-对于大型数据集的某些分类特征，可能有数百万个唯一值。 使用诸如 one-hot 编码之类的 naive 方法来表示这种高维分类特征是完全不可行的。 本演练演示了如何使用计数功能使用内置的 Azure 机器学习模块来生成这些高维分类变量的紧凑表示形式。 最终结果是模型大小更小、培训时间更快，性能指标可与其他技术相媲美。
+对于大型数据集的某些分类特征，可能有数百万个唯一值。 使用诸如 one-hot 编码之类的 naive 方法来表示这种高维分类特征是完全不可行的。 本演练演示了如何使用计数功能使用内置的 Azure 机器学习模块来生成这些高维分类变量的紧凑表示形式。 最终结果是更小的模型大小、更快的定型时间和与使用其他技术相当的性能指标。
 
 ##### <a name="building-counting-transforms"></a>构建计数转换
 若要构建计数功能，可使用 Azure 机器学习中提供的“构建计数转换”**** 模块。 模块如下所示：
@@ -504,7 +504,7 @@ Col15 具有 19M 唯一值！ 使用类似“one-hot encoding”的 naive 技术
 在此情况下，可以看出，已使用对数几率并忽略了退避列。 还可以设置参数，例如垃圾桶阈值、要添加的用于平滑处理的伪先验示例数以及是否使用 Laplacian 噪声。 所有这些参数都是高级功能，需要注意的是，对于还不熟悉此类功能生成的用户而言，使用默认值会是一个很好的选择。
 
 ##### <a name="data-transformation-before-generating-the-count-features"></a>生成计数功能前的数据转换
-现在关注的重点是在实际生成计数功能之前转换训练和测试数据。 在计数转换应用于我们的数据之前，使用了两个**执行 R 脚本**模块。
+现在关注的重点是在实际生成计数功能之前转换训练和测试数据。 在对数据应用计数转换之前，将使用两个**执行 R 脚本**模块。
 
 ![“执行 R 脚本”模块](./media/hive-criteo-walkthrough/aF59wbc.png)
 
@@ -541,9 +541,9 @@ Col15 具有 19M 唯一值！ 使用类似“one-hot encoding”的 naive 技术
 
 ![双类提升决策树参数](./media/hive-criteo-walkthrough/bH3ST2z.png)
 
-对于试验，请选择默认值。 默认值是有意义的，是快速获取性能基线的好方法。 如果选择一旦有基线，则可以通过扫描参数来提高性能。
+对于试验，请选择默认值。 默认值是有意义的，它是获得性能的快速基线的好方法。 如果选择一旦有基线，则可以通过扫描参数来提高性能。
 
-#### <a name="train-the-model"></a>训练模型
+#### <a name="train-the-model"></a>定型模型
 对于训练，只需调用“训练模型”**** 模块。 它的两个输入是二类提升的决策树学习者和我们的定型数据集。 如下所示：
 
 ![“定型模型”模块](./media/hive-criteo-walkthrough/2bZDZTy.png)
@@ -554,18 +554,18 @@ Col15 具有 19M 唯一值！ 使用类似“one-hot encoding”的 naive 技术
 ![“评分模型”模块](./media/hive-criteo-walkthrough/fydcv6u.png)
 
 ### <a name="step-4-evaluate-the-model"></a><a name="step4"></a>步骤 4：评估模型
-最后，应分析模型性能。 通常，对于两类（二进制）分类问题，一种有效地度量值为 AUC。 要可视化此曲线，请将**分数模型**模块连接到**评估模型**模块。 在“评估模型”**** 模块上单击“可视化”**** 将生成如下图所示的图形：
+最后，应分析模型性能。 通常，对于两类（二进制）分类问题，一种有效地度量值为 AUC。 若要可视化此曲线，请将 "**评分模型**" 模块连接到 "**评估模型**" 模块。 在“评估模型”**** 模块上单击“可视化”**** 将生成如下图所示的图形：
 
 ![评估模块 BDT 模型](./media/hive-criteo-walkthrough/0Tl0cdg.png)
 
-在二进制（或二类）分类问题中，预测准确性的有效度量值是曲线下面积 (AUC)。 下一部分使用此模型在测试数据集上显示结果。 右键单击**评估模型**模块的输出端口，然后**可视化**。
+在二进制（或二类）分类问题中，预测准确性的有效度量值是曲线下面积 (AUC)。 下一部分使用此模型在测试数据集上显示结果。 右键单击 "**评估模型**" 模块的输出端口，然后单击 "**可视化**"。
 
 ![可视化评估模型模块](./media/hive-criteo-walkthrough/IRfc7fH.png)
 
 ### <a name="step-5-publish-the-model-as-a-web-service"></a><a name="step5"></a>步骤 5：将模型发布为 Web 服务
 将 Azure 机器学习模型以最小误差发布为 Web 服务的能力是使其广泛可用的一个有价值的功能。 完成后，任何人都可以使用其需要预测的输入数据调用 Web 服务，并且 Web 服务使用模型返回这些预测。
 
-首先，通过右键单击**训练模型**模块并使用 **"保存为训练模型"** 选项，将我们训练的模型保存为"已训练的模型"对象。
+首先，通过右键单击 "**训练模型**" 模块并使用 "**另存为定型模型**" 选项，将训练的模型另存为定型模型对象。
 
 接下来，为 Web 服务创建输入和输出端口：
 
@@ -581,7 +581,7 @@ Col15 具有 19M 唯一值！ 使用类似“one-hot encoding”的 naive 技术
 现在可以运行一个小试验，用于发布我们的 Web 服务。
 
 #### <a name="generate-input-data-for-webservice"></a>为 webservice 生成输入数据
-首先，由于计数表很大，因此我们采用几行测试数据，并从中生成带有计数功能的输出数据。 此输出可用作 Web 服务的输入数据格式，如下所示：
+首先，由于计数表很大，因此我们采用几行测试数据，并从中生成带有计数功能的输出数据。 此输出可作为 web 服务的输入数据格式，如下所示：
 
 ![创建 BDT 输入数据](./media/hive-criteo-walkthrough/OEJMmst.png)
 
@@ -591,7 +591,7 @@ Col15 具有 19M 唯一值！ 使用类似“one-hot encoding”的 naive 技术
 >
 
 #### <a name="scoring-experiment-for-publishing-webservice"></a>发布 webservice 的评分实验
-首先，基本结构是一个**分数模型**模块，它接受我们训练的模型对象，以及使用**Count Featurizer**模块在前几个步骤中生成的几行输入数据。 使用“在数据集中选择列”来投影出评分标签和评分概率。
+首先，基本结构是一个**评分模型**模块，该模块接受我们训练的模型对象和在前面步骤中使用**Count 特征化器**模块生成的几行输入数据。 使用“在数据集中选择列”来投影出评分标签和评分概率。
 
 ![在数据集中选择列](./media/hive-criteo-walkthrough/kRHrIbe.png)
 
@@ -612,7 +612,7 @@ Web 服务发布后，会重定向到一个如下所示的页面：
 * “请求/响应”**** 服务（或 RRS）适用于单个预测，本次研讨会中已使用该服务。
 * “BATCH 执行”**** 服务 (BES) 适用于 batch 预测，该服务要求用于进行预测的输入数据驻留在 Azure Blob 存储中。
 
-单击“请求/响应”**** 链接，进入一个页面，该页面提供了 C#、python 和 R 中的固有代码。此代码轻松地可用于调用 Web 服务。 此页上的 API 密钥需要用于身份验证。
+单击“请求/响应”**** 链接，进入一个页面，该页面提供了 C#、python 和 R 中的固有代码。此代码轻松地可用于调用 Web 服务。 此页面上的 API 密钥需要用于身份验证。
 
 可以方便地将此 python 代码复制到 IPython Notebook 中的一个新单元格。
 
@@ -620,11 +620,11 @@ Web 服务发布后，会重定向到一个如下所示的页面：
 
 ![Python 代码](./media/hive-criteo-walkthrough/f8N4L4g.png)
 
-默认 API 密钥已替换为 Web 服务的 API 密钥。 在 IPython Notebook 中此单元格上单击“运行”**** 将生成以下响应：
+默认 API 密钥已替换为 webservice 的 API 密钥。 在 IPython Notebook 中此单元格上单击“运行”**** 将生成以下响应：
 
 ![IPython 响应](./media/hive-criteo-walkthrough/KSxmia2.png)
 
-对于 Python 脚本 JSON 框架中询问的两个测试示例，您将获得"评分标签、评分概率"中的答案。 在本例中，已选择固有代码提供的默认值（所有数值列为 0，所有分类列为字符串“value”）。
+对于在 Python script JSON framework 中所询问的两个测试示例，您将以 "评分标签，评分概率" 的形式获取答案。 在本例中，已选择固有代码提供的默认值（所有数值列为 0，所有分类列为字符串“value”）。
 
-最后，我们的演练演示了如何使用 Azure 机器学习处理大型数据集。 我们从 1 TB 的数据开始，构建了一个预测模型，并在云中将其部署为 Web 服务。
+总之，我们的演练演示如何使用 Azure 机器学习来处理大规模数据集。 我们从 1 TB 的数据开始，构建了一个预测模型，并在云中将其部署为 Web 服务。
 

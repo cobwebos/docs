@@ -11,10 +11,10 @@ ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 733a33881fe3acc962aeda4b05a1b01be4e148ca
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81680365"
 ---
 # <a name="relyingparty"></a>RelyingParty
@@ -117,15 +117,15 @@ UserJourneyBehaviors  元素包含下列元素：
 | SessionExpiryInSeconds | 0:1 | 身份验证成功后，存储在用户浏览器上指定为整数的 Azure AD B2C 会话 Cookie 的生存期。 |
 | JourneyInsights | 0:1 | 要使用的 Azure Application Insights 检测密钥。 |
 | ContentDefinitionParameters | 0:1 | 要追加到内容定义负载 URI 的键值对列表。 |
-|ScriptExecution| 0:1| 支持的[JavaScript](javascript-samples.md)执行模式。 可能的值：`Allow`或`Disallow`（默认值）。
+|ScriptExecution| 0:1| 支持的[JavaScript](javascript-samples.md)执行模式。 可能的值`Allow` ： `Disallow`或（默认值）。
 
 ### <a name="singlesignon"></a>SingleSignOn
 
 SingleSignOn**** 元素包含在以下属性中：
 
-| Attribute | 必选 | 说明 |
+| 特性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
-| 范围 | 是 | 单一登录行为的范围。 可能的值：`Suppressed`、`Tenant`、`Application` 或 `Policy`。 该`Suppressed`值指示行为被抑制，并且始终提示用户选择标识提供程序。  `Tenant` 值指示该行为适用于租户中的所有策略。 例如，不会提示在两个策略旅程中导航租户的用户选择标识提供者。 `Application` 值指示该行为适用于发出请求的应用程序的所有策略。 例如，不会提示在应用程序的两个策略旅程中导航的用户选择标识提供者。 `Policy` 值指示该行为仅适用于一个策略。 例如，当在策略之间切换时，会提示在两个策略旅程中导航信任框架的用户选择标识提供者。 |
+| 范围 | 是 | 单一登录行为的范围。 可能的值：`Suppressed`、`Tenant`、`Application` 或 `Policy`。 `Suppressed`值指示禁止显示此行为，并且系统始终提示用户选择标识提供者。  `Tenant` 值指示该行为适用于租户中的所有策略。 例如，不会提示在两个策略旅程中导航租户的用户选择标识提供者。 `Application` 值指示该行为适用于发出请求的应用程序的所有策略。 例如，不会提示在应用程序的两个策略旅程中导航的用户选择标识提供者。 `Policy` 值指示该行为仅适用于一个策略。 例如，当在策略之间切换时，会提示在两个策略旅程中导航信任框架的用户选择标识提供者。 |
 | KeepAliveInDays | 是 | 控制用户保持登录状态的时间长短。 将此值设置为 0 会关闭 KMSI 功能。 有关详细信息，请参阅[使我保持登录状态](custom-policy-keep-me-signed-in.md)。 |
 |EnforceIdTokenHintOnLogout| 否|  强制将以前颁发的 ID 令牌传递到注销终结点，作为最终用户当前与客户端进行的身份验证会话的提示。 可能的值为 `false`（默认）或 `true`。 有关详细信息，请参阅[使用 OpenID Connect 进行 Web 登录](openid-connect.md)。  |
 
@@ -134,7 +134,7 @@ SingleSignOn**** 元素包含在以下属性中：
 
 JourneyInsights**** 元素包含以下属性：
 
-| Attribute | 必选 | 说明 |
+| 特性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | TelemetryEngine | 是 | 值必须是 `ApplicationInsights`。 |
 | InstrumentationKey | 是 | 一个字符串，其中包含 application insights 元素的检测密钥。 |
@@ -161,7 +161,7 @@ ContentDefinitionParameters**** 元素包含以下元素：
 
 ContentDefinitionParameters**** 元素包含以下属性：
 
-| Attribute | 必选 | 说明 |
+| 特性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | 名称 | 是 | 键值对的名称。 |
 
@@ -171,7 +171,7 @@ ContentDefinitionParameters**** 元素包含以下属性：
 
 **TechnicalProfile** 元素包含以下属性：
 
-| Attribute | 必选 | 说明 |
+| 特性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 值必须是 `PolicyProfile`。 |
 
@@ -179,8 +179,8 @@ ContentDefinitionParameters**** 元素包含以下属性：
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
-| DisplayName | 1:1 | 包含技术配置文件名称的字符串。 |
-| 说明 | 0:1 | 包含技术配置文件描述的字符串。 |
+| DisplayName | 1:1 | 包含技术配置文件的名称的字符串。 |
+| 说明 | 0:1 | 包含技术配置文件的说明的字符串。 |
 | 协议 | 1:1 | 用于联合的协议。 |
 | 元数据 | 0:1 | 一个键/值对项** 集合，由协议在事务过程中与终结点进行通信，以配置依赖方与其他社区参与者之间的交互。 |
 | OutputClaims | 1:1 | 作为技术配置文件中的输出的声明类型列表。 这些元素中的每一个都包含对已在 ClaimsSchema**** 部分或策略文件继承自的策略中定义的 ClaimType****。 |
@@ -188,7 +188,7 @@ ContentDefinitionParameters**** 元素包含以下属性：
 
 Protocol**** 元素包含以下属性：
 
-| Attribute | 必选 | 说明 |
+| 特性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | 名称 | 是 | Azure AD B2C 支持的有效协议的名称，用作技术配置文件的一部分。 可能的值：`OpenIdConnect` 或 `SAML2`。 `OpenIdConnect` 值表示根据 OpenID 基本规范的 OpenID Connect 1.0 协议标准。 `SAML2` 表示根据 OASIS 规范的 SAML 2.0 协议标准。 |
 
@@ -202,7 +202,7 @@ OutputClaims**** 元素包含以下元素：
 
 OutputClaim**** 元素包含以下属性：
 
-| Attribute | 必选 | 说明 |
+| 特性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | 是 | 对在策略文件的 ClaimsSchema**** 部分定义的 ClaimType**** 的引用。 |
 | DefaultValue | 否 | 一个默认值，如果声明值为空，则可以使用该值。 |
@@ -216,7 +216,7 @@ OutputClaim**** 元素包含以下属性：
 
 SubjectNamingInfo**** 元素包含以下属性：
 
-| Attribute | 必选 | 说明 |
+| 特性 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimType | 是 | 对输出声明的 PartnerClaimType**** 的引用。 输出声明必须在信赖方策略 OutputClaims**** 集合中定义。 |
 

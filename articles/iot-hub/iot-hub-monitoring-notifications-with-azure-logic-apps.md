@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
 ms.openlocfilehash: 2720f9acfa308294b30f9203ba80e3f9b426e1e9
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81680721"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>通过连接 IoT 中心和邮箱的 Azure 逻辑应用进行 IoT 远程监视并发送通知
@@ -70,7 +70,7 @@ ms.locfileid: "81680721"
 
 ### <a name="create-a-service-bus-namespace"></a>创建服务总线命名空间
 
-1. 在[Azure 门户](https://portal.azure.com/)上，选择 **" 创建资源** > **集成** > **服务总线**"。
+1. 在[Azure 门户](https://portal.azure.com/)上，选择 " **+ 创建资源** > **集成** > **服务总线**"。
 
 1. 在“创建命名空间”窗格中提供以下信息： 
 
@@ -118,9 +118,9 @@ ms.locfileid: "81680721"
 
    **终结点名称**：终结点的名称。
 
-   **服务总线命名空间**：选择您创建的命名空间。
+   **服务总线命名空间**：选择创建的命名空间。
 
-   **服务总线队列**：选择您创建的队列。
+   **服务总线队列**：选择创建的队列。
 
    ![在 Azure 门户中，将终结点添加到 IoT 中心](media/iot-hub-monitoring-notifications-with-azure-logic-apps/3-add-iot-hub-endpoint-azure-portal.png)
 
@@ -212,7 +212,7 @@ ms.locfileid: "81680721"
       为 [Hotmail/Outlook.com](https://support.office.com/article/Add-your-Outlook-com-account-to-another-mail-app-73f3b178-0009-41ae-aab1-87b80fa94970)、[Gmail](https://support.google.com/a/answer/176600?hl=en) 和 [Yahoo Mail](https://help.yahoo.com/kb/SLN4075.html) 获取 SMTP 信息。
 
       > [!NOTE]
-      > 您可能需要禁用 TLS/SSL 才能建立连接。 如果是这种情况，并且希望在建立连接后重新启用 TLS，请参阅本节末尾的可选步骤。
+      > 你可能需要禁用 TLS/SSL 以建立连接。 如果是这种情况，并且你想要在建立连接后重新启用 TLS，请参阅本节末尾的可选步骤。
 
    1. 在“发送电子邮件”步骤的“添加新参数”下拉列表中，选择“发件人”、“收件人”、“主题”和“正文”。       单击或点击屏幕上的任意位置以关闭选框。
 
@@ -224,7 +224,7 @@ ms.locfileid: "81680721"
 
    1. 选择“保存”以保存 SMTP 连接。 
 
-1. （可选）如果您必须禁用 TLS 才能与电子邮件提供商建立连接，并希望重新启用它，请按照以下步骤操作：
+1. 可有可无如果你必须禁用 TLS 以与你的电子邮件提供程序建立连接并想要重新启用它，请执行以下步骤：
 
    1. 在“逻辑应用”窗格中的“开发工具”下，选择“API 连接”。   
 

@@ -10,13 +10,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/26/2020
 ms.openlocfilehash: 1cafc311c842cd5bc17fefe34eacbdfc99b7147a
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81617726"
 ---
-# <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>教程：从 CLI 训练和部署模型
+# <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>教程：通过 CLI 训练和部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 在本教程中，你将使用适用于 Azure CLI 的机器学习扩展来训练、注册和部署模型。
@@ -41,11 +41,11 @@ ms.locfileid: "81617726"
 
 * 若要在**本地环境**中使用本文档所述的 CLI 命令，需要安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-    如果使用 Azure[云外壳](https://azure.microsoft.com//features/cloud-shell/)，则 CLI 将通过浏览器访问并生活在云中。
+    如果使用[Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/)，则可以通过浏览器访问 CLI，并将其驻留在云中。
 
 ## <a name="download-the-example-project"></a>下载示例项目
 
-对于本教程，下载项目[https://github.com/microsoft/MLOps](https://github.com/microsoft/MLOps)。 本教程中的步骤使用 `examples/cli-train-deploy` 目录中的文件。
+对于本教程，请下载[https://github.com/microsoft/MLOps](https://github.com/microsoft/MLOps)该项目。 本教程中的步骤使用 `examples/cli-train-deploy` 目录中的文件。
 
 若要获取这些文件的本地副本，请[下载 .zip 存档](https://github.com/microsoft/MLOps/archive/master.zip)，或使用以下 Git 命令克隆存储库：
 
@@ -57,21 +57,21 @@ git clone https://github.com/microsoft/MLOps.git
 
 项目中的 `examples/cli-train-deploy` 目录包含以下在训练模型时要使用的文件：
 
-* `.azureml\mnist.runconfig`：__运行配置文件__。 此文件定义训练模型所需的运行时环境。 在此示例中，它还会将用于训练模型的数据装入训练环境。
+* `.azureml\mnist.runconfig`：一个__运行配置__文件。 此文件定义训练模型所需的运行时环境。 在此示例中，它还会将用于训练模型的数据装入训练环境。
 * `scripts\train.py`：训练脚本。 此文件训练模型。
-* `scripts\utils.py`：训练脚本使用的帮助程序文件。
-* `.azureml\conda_dependencies.yml`：定义运行训练脚本所需的软件依赖项。
+* `scripts\utils.py`：定型脚本使用的帮助器文件。
+* `.azureml\conda_dependencies.yml`：定义运行训练脚本所需的软件依赖关系。
 * `dataset.json`：数据集定义。 用于在 Azure 机器学习工作区中注册 MNIST 数据集。
 
 ### <a name="deployment-files"></a>部署文件
 
 存储库包含以下文件，在将训练的模型部署为 Web 服务时要使用这些文件：
 
-* `aciDeploymentConfig.yml`：__部署配置文件__。 此文件定义模型所需的托管环境。
-* `inferenceConfig.json`：__推理配置文件__。 此文件定义软件环境，服务使用该环境通过模型为数据评分。
-* `score.py`：接受传入数据的 python 脚本，使用模型对它进行评分，然后返回响应。
+* `aciDeploymentConfig.yml`：一个__部署配置__文件。 此文件定义模型所需的托管环境。
+* `inferenceConfig.json`：__推理配置__文件。 此文件定义软件环境，服务使用该环境通过模型为数据评分。
+* `score.py`：用于接受传入数据的 python 脚本，使用该模型对其进行评分，然后返回响应。
 * `scoring-env.yml`：运行模型和`score.py`脚本所需的 conda 依赖项。
-* `testdata.json`：可用于测试已部署的 Web 服务的数据文件。
+* `testdata.json`：可用于测试已部署 web 服务的数据文件。
 
 ## <a name="connect-to-your-azure-subscription"></a>连接到 Azure 订阅
 
@@ -81,7 +81,7 @@ git clone https://github.com/microsoft/MLOps.git
 az login
 ```
 
-如果 CLI 可以打开默认的浏览器，则它会打开该浏览器并加载登录页。 否则，需要打开浏览器并按照命令行中的说明操作。 这些说明涉及浏览[https://aka.ms/devicelogin](https://aka.ms/devicelogin)和输入授权代码。
+如果 CLI 可以打开默认的浏览器，则它会打开该浏览器并加载登录页。 否则，需要打开浏览器并按照命令行中的说明操作。 这些说明涉及到[https://aka.ms/devicelogin](https://aka.ms/devicelogin)浏览和输入授权代码。
 
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
@@ -247,7 +247,7 @@ az ml dataset register -f dataset.json --skip-validation
 > [!IMPORTANT]
 > 复制 `id` 条目的值，以便在下一部分使用。
 
-要查看数据集的更全面的模板，请使用以下命令：
+若要查看数据集的更全面模板，请使用以下命令：
 
 ```azurecli-interactive
 az ml dataset register --show-template
@@ -290,9 +290,9 @@ data:
 
 更改 `id` 条目的值，使其与注册数据集时返回的值相匹配。 此值用于在训练期间将数据载入计算目标。
 
-此 YAML 在培训期间会导致以下操作：
+此 YAML 在训练过程中将导致以下操作：
 
-* 在训练环境中装载数据集（基于数据集的 ID），并将路径存储在环境变量中`mnist`装载点的路径。
+* 在定型环境中装载数据集（基于数据集的 ID），并在`mnist`环境变量中存储装入点的路径。
 * 使用 `--data-folder` 参数将训练环境中的数据（装入点）位置传递到脚本。
 
 runconfig 文件还包含用于配置训练运行所用环境的信息。 检查此文件时将会看到，它引用了前面创建的 `cpu-compute` 计算目标。 它还列出了训练时要使用的节点数 (`"nodeCount": "4"`)，并包含一个 `"condaDependencies"` 节，该节列出了运行训练脚本所需的 Python 包。
@@ -300,7 +300,7 @@ runconfig 文件还包含用于配置训练运行所用环境的信息。 检查
 > [!TIP]
 > 可以手动创建 runconfig 文件，不过，此示例中的配置文件是使用存储库中包含的 `generate-runconfig.py` 文件创建的。 此文件将获取对已注册数据集的引用，以编程方式创建运行配置，然后将其保存到文件中。
 
-有关运行配置文件的详细信息，请参阅[为模型培训设置和使用计算目标](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli)。 有关完整的 JSON 引用，请参阅[runconfigschema.json](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)。
+有关运行配置文件的详细信息，请参阅为[模型定型设置和使用计算目标](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli)。 有关完整的 JSON 引用，请参阅[runconfigschema](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)。
 
 ## <a name="submit-the-training-run"></a>提交训练运行
 
@@ -377,11 +377,11 @@ az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.json --dc ac
 ```
 
 > [!NOTE]
-> 您可能会收到有关"无法检查本地 Web 服务存在"或"无法创建 Docker 客户端"的警告。 您可以安全地忽略这一点，因为您没有部署本地 Web 服务。
+> 你可能会收到有关 "未能检查 LocalWebservice 存在" 或 "未能创建 Docker 客户端" 的警告。 你可以放心地忽略此情况，因为你不需要部署本地 web 服务。
 
 此命令使用前面注册的模型版本 1 部署名为 `myservice` 的新服务。
 
-该文件`inferenceConfig.yml`提供有关如何使用模型进行推理的信息。 例如，它引用条目脚本 （`score.py`） 和软件依赖项。
+此`inferenceConfig.yml`文件提供了有关如何使用模型进行推理的信息。 例如，它引用条目脚本（`score.py`）和软件依赖关系。
 
 有关此文件的结构的详细信息，请参阅[推理配置架构](reference-azure-machine-learning-cli.md#inference-configuration-schema)。 有关入口脚本的详细信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md#prepare-to-deploy)。
 
@@ -428,7 +428,7 @@ az ml service run -n myservice -d @testdata.json
 ```
 
 > [!TIP]
-> 如果使用 PowerShell，请使用以下命令：
+> 如果使用 PowerShell，请改用以下命令：
 >
 > ```azurecli-interactive
 > az ml service run -n myservice -d `@testdata.json

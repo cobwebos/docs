@@ -9,39 +9,39 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: b8869e93a7156b24d61ac555c95b9ca7f850ae34
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678559"
 ---
-1. 在"**创建对等"** 页上的 **"配置"** 选项卡上，填写如下所示的框。
+1. 在 "**创建对等互连**" 页上的 "**配置**" 选项卡上，填写框，如下所示。
 
     > [!div class="mx-imgBorder"]
-    > ![创建对等页交换对等互连类型](../media/setup-exchange-conf-tab.png)
+    > ![创建对等互连页面交换对等互连类型](../media/setup-exchange-conf-tab.png)
 
-    * 对于**对等式**，选择 **"交换**"。
-    * 选择**SKU**作为**基本免费**。
-    * 选择要将对等互连转换为 Azure 资源的**Metro**位置。 如果在选定的**Metro**位置中具有未转换为 Azure 资源的对等连接，则这些连接将列在 **"对等连接**"部分中，如图所示。 现在，您可以将这些对等连接转换为 Azure 资源。
+    * 对于 "对**等互连类型**"，选择 " **Exchange**"。
+    * 选择 " **SKU**为**基本免费**"。
+    * 选择要将对等互连转换为 Azure 资源的**地铁**位置。 如果在所选**地铁**位置中有 Microsoft 的对等互连连接未转换为 Azure 资源，则这些连接将在 "对**等互连连接**" 部分列出，如下所示。 你现在可以将这些对等互连连接转换为 Azure 资源。
 
         > [!div class="mx-imgBorder"]
-        > ![对等互连连接列表](../media/setup-exchange-legacy-conf-tab.png)
+        > ![对等连接列表](../media/setup-exchange-legacy-conf-tab.png)
 
         > [!NOTE]
-        > 不能修改旧体对等互连连接的设置。 如果要在所选**的 Metro**位置添加与 Microsoft 的其他对等互连连接，请选择"**创建新**"。 有关详细信息，请参阅[使用门户 创建或修改 Exchange 对等互连](../howto-exchange-portal.md)。
+        > 不能修改旧的对等互连连接的设置。 如果要在所选**地铁**位置添加与 Microsoft 的其他对等互连连接，请选择 "**新建**"。 有关详细信息，请参阅[使用门户创建或修改 Exchange 对等互连](../howto-exchange-portal.md)。
         >
 
-1. 选择“查看 + 创建”  。 请注意，门户运行您输入的信息的基本验证。 顶部的功能区显示消息 *"正在运行最终验证..."。*
+1. 选择“查看 + 创建”  。 请注意，门户会对所输入的信息运行基本验证。 顶部的功能区显示*运行最终验证*的消息 ...。
 
     > [!div class="mx-imgBorder"]
     > ![对等验证选项卡](../media/setup-direct-review-tab-validation.png)
 
-1. 消息更改为*验证后*，验证您的信息。 通过选择 **"创建**"提交请求。 如果需要修改请求，请选择 **"上一步"** 并重复这些步骤。
+1. 消息更改为 "*验证通过*" 后，请验证你的信息。 通过选择 "**创建**" 提交请求。 如果需要修改请求，请选择 "**上一步**"，然后重复上述步骤。
 
     > [!div class="mx-imgBorder"]
-    > ![对等提交](../media/setup-exchange-review-tab-submit.png)
+    > ![对等互连](../media/setup-exchange-review-tab-submit.png)
 
-1. 提交请求后，等待部署完成。 如果部署失败，请与[微软对等互连](mailto:peering@microsoft.com)。 成功部署将显示为图所示。
+1. 提交请求后，等待部署完成。 如果部署失败，请联系[Microsoft 对等互连](mailto:peering@microsoft.com)。 此时会显示成功的部署，如下所示。
 
     > [!div class="mx-imgBorder"]
-    > ![窥视成功](../media/setup-direct-success.png)
+    > ![对等互连成功](../media/setup-direct-success.png)

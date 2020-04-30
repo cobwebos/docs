@@ -10,10 +10,10 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
 ms.openlocfilehash: 82ea4ad23e3207f5641ade196f69595cd1e7b323
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81684100"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>从存档层解冻 Blob 数据
@@ -31,21 +31,21 @@ ms.locfileid: "81684100"
 
 ## <a name="copy-an-archived-blob-to-an-online-tier"></a>将存档的 Blob 复制到联机层
 
-如果你不想要解冻存档的 Blob，可以选择执行[复制 Blob](https://docs.microsoft.com/rest/api/storageservices/copy-blob) 操作。 原始 Blob 在存档中保持未修改状态，同时会在热层或冷层中联机创建新的 Blob 供你使用。 在"复制 Blob"操作中，还可以将可选*的 x-ms-rehydrate 优先级*属性设置为"标准"或"高"，以指定要创建 Blob 副本的优先级。
+如果你不想要解冻存档的 Blob，可以选择执行[复制 Blob](https://docs.microsoft.com/rest/api/storageservices/copy-blob) 操作。 原始 Blob 在存档中保持未修改状态，同时会在热层或冷层中联机创建新的 Blob 供你使用。 在 "复制 Blob" 操作中，你还可以将可选的 "*解除冻结" 优先级*设置为 "标准" 或 "高"，以指定要创建 Blob 副本的优先级。
 
 从存档中复制 Blob 可能需要数小时才能完成，具体取决于所选解冻优先级。 在幕后，“复制 Blob”操作会读取存档源 Blob，以便在所选目标层中创建新的联机 Blob。**** 列出 Blob 时，新 Blob 也许可见，但数据并不可用，直到从源存档 Blob 进行读取的操作完成并将数据写入到新的联机目标 Blob 为止。 新 Blob 充当独立的副本，对它进行的任何修改或删除操作不会影响源存档 Blob。
 
-只能将存档 Blob 复制到同一存储帐户中的联机目标层。 不支持将存档 Blob 复制到另一个存档 Blob。 下表指示 CopyBlob 的功能。
+只能将存档 Blob 复制到同一存储帐户中的联机目标层。 不支持将存档 Blob 复制到另一个存档 Blob。 下表指明了 CopyBlob 的功能。
 
-|                                           | **热层源**   | **冷层源** | **存档层源**    |
+|                                           | **热层源**   | **酷层源** | **存档层源**    |
 | ----------------------------------------- | --------------------- | -------------------- | ------------------- |
-| **热门层目标**                  | 支持             | 支持            | 在同一帐户中支持;待补水               |
-| **酷层目标**                 | 支持             | 支持            | 在同一帐户中支持;待补水               |
+| **热层目标**                  | 支持             | 支持            | 在同一帐户中受支持;挂起的解除冻结               |
+| **酷层目标**                 | 支持             | 支持            | 在同一帐户中受支持;挂起的解除冻结               |
 | **存档层目标**              | 支持             | 支持            | 不支持         |
 
 ## <a name="pricing-and-billing"></a>定价和计费
 
-将存档中的 Blob 解冻到热层或冷层会产生读取操作和数据检索费用。 与标准优先级相比，使用高优先级具有更高的操作和数据检索成本。 高优先级解冻在账单上单独显示费用细目。 如果返回若干 GB 存档 Blob 的高优先级请求花费了 5 小时以上，则不会按照高优先级检索费率向你收费。 不过，标准检索费率仍适用，因为解冻的优先级高于其他请求。
+将存档中的 Blob 解冻到热层或冷层会产生读取操作和数据检索费用。 与标准优先级相比，使用高优先级的操作和数据检索成本更高。 高优先级解冻在账单上单独显示费用细目。 如果返回若干 GB 存档 Blob 的高优先级请求花费了 5 小时以上，则不会按照高优先级检索费率向你收费。 不过，标准检索费率仍适用，因为解冻的优先级高于其他请求。
 
 将存档中的 Blob 复制到热层或冷层会产生读取操作和数据检索费用。 创建新的 Blob 副本会产生写入操作费用。 复制到联机 Blob 时，不会产生提前删除费，因为源 Blob 在存档层中保持未修改状态。 高优先级检索费用适用（如果已选中）。
 
@@ -75,7 +75,7 @@ ms.locfileid: "81684100"
 1. 选择底部的“保存”。****
 
 ![更改存储帐户层](media/storage-tiers/blob-access-tier.png)
-![检查补水状态](media/storage-tiers/rehydrate-status.png)
+![检查解除冻结状态](media/storage-tiers/rehydrate-status.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 以下 PowerShell 脚本可用于更改存档 blob 的 blob 层。 必须使用资源组名称初始化 `$rgName` 变量。 必须使用存储帐户名称初始化 `$accountName` 变量。 必须使用容器名称初始化 `$containerName` 变量。 必须使用 Blob 名称初始化 `$blobName` 变量。 
@@ -120,6 +120,6 @@ Start-AzStorageBlobCopy -SrcContainer $srcContainerName -SrcBlob $srcBlobName -D
 ## <a name="next-steps"></a>后续步骤
 
 * [了解 Blob 存储层](storage-blob-storage-tiers.md)
-* [按区域查看 Blob 存储和 GPv2 帐户中的热、酷和存档定价](https://azure.microsoft.com/pricing/details/storage/)
+* [按区域检查 Blob 存储和 GPv2 帐户中的热、冷和存档价格](https://azure.microsoft.com/pricing/details/storage/)
 * [管理 Azure Blob 存储生命周期](storage-lifecycle-management-concepts.md)
 * [检查数据传输定价](https://azure.microsoft.com/pricing/details/data-transfers/)

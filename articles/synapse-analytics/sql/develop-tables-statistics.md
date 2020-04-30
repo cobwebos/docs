@@ -1,6 +1,6 @@
 ---
-title: 创建、更新统计信息
-description: 在 SynapsE SQL 中创建和更新查询优化统计信息的建议和示例。
+title: 创建和更新统计信息
+description: 用于在 Synapse SQL 中创建和更新查询优化统计信息的建议和示例。
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -12,21 +12,21 @@ ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
 ms.openlocfilehash: 5196c85ca1d68028893caee55035c6c455b37d64
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81676938"
 ---
-# <a name="statistics-in-synapse-sql"></a>SynapsE SQL 中的统计信息
+# <a name="statistics-in-synapse-sql"></a>Synapse SQL 中的统计信息
 
-本文中提供了使用 Synapse SQL 资源创建和更新查询优化统计信息的建议和示例：SQL 池和 SQL 按需（预览）。
+本文中提供的建议和示例使用 Synapse SQL 资源： SQL 池和 SQL 点播（预览版）来创建和更新查询优化统计信息。
 
-## <a name="statistics-in-sql-pool"></a>SQL 池中的统计信息
+## <a name="statistics-in-sql-pool"></a>SQL pool 中的统计信息
 
 ### <a name="why-use-statistics"></a>为何使用统计信息
 
-SQL 池资源对数据了解得越多，执行查询的速度就越快。 将数据加载到 SQL 池后，收集数据的统计信息是可用于查询优化的最重要操作之一。  
+SQL 池资源了解数据越多，执行查询的速度就越快。 在将数据加载到 SQL 池中之后，收集数据的统计信息是可用于查询优化的最重要的一项。  
 
 SQL 池查询优化器是基于成本的优化器。 此优化器会对各种查询计划的成本进行比较，并选择成本最低的计划。 在大多数情况下，它会选择执行速度最快的计划。
 
@@ -34,7 +34,7 @@ SQL 池查询优化器是基于成本的优化器。 此优化器会对各种查
 
 ### <a name="automatic-creation-of-statistics"></a>自动创建统计信息
 
-当数据库AUTO_CREATE_STATISTICS选项设置为 时，SQL 池将分析传入用户查询中缺少的`ON`统计信息。  如果缺少统计信息，查询优化器将创建查询谓词或联接条件中各个列的统计信息。 此功能用于改进查询计划的基数估计。
+当数据库 AUTO_CREATE_STATISTICS 选项设置为`ON`时，SQL 池将分析传入的用户查询是否缺少统计信息。  如果缺少统计信息，则查询优化器会在查询谓词或联接条件中的各个列上创建统计信息。 此函数用于改进查询计划的基数估计。
 
 > [!IMPORTANT]
 > 默认情况下，自动创建统计信息目前处于开启状态。
@@ -46,7 +46,7 @@ SELECT name, is_auto_create_stats_on
 FROM sys.databases
 ```
 
-如果数据仓库未启用AUTO_CREATE_STATISTICS，我们建议您通过运行以下命令启用此属性：
+如果数据仓库未启用 AUTO_CREATE_STATISTICS，则建议通过运行以下命令启用此属性：
 
 ```sql
 ALTER DATABASE <yourdatawarehousename>
@@ -63,30 +63,30 @@ SET AUTO_CREATE_STATISTICS ON
 - EXPLAIN
 
 > [!NOTE]
-> 不自动创建统计信息，不会在临时表或外部表上生成统计信息。
+> 不会在临时表或外部表中生成统计信息的自动创建。
 
-自动创建统计信息是同步完成的。 因此，如果列缺少统计信息，则查询性能可能会略有下降。 为单个列创建统计信息所需的时间取决于表的大小。
+自动创建统计信息是同步完成的。 如果列缺少统计信息，则可能会导致查询性能略有下降。 为单个列创建统计信息所需的时间取决于表的大小。
 
-为了避免可衡量的性能下降，您应该首先通过在分析系统之前执行基准工作负载来创建统计信息。
+若要避免性能降低，应先通过执行基准工作负载，然后在分析系统之前，首先创建统计信息。
 
 > [!NOTE]
-> 统计信息的创建记录在不同的用户上下文中的[sys.dm_pdw_exec_requests。](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+> 统计信息的创建在不同用户上下文中记录在[sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)中。
 
-创建自动统计信息时，它们将采用以下形式 _：WA_Sys_十六进制>_的 8 位列 id<<十六进制>中的 8 位表 ID。 您可以通过运行[DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)命令来查看已创建的统计信息：
+创建自动统计信息时，它们将采用以下格式： _WA_Sys_<以十六进制表示的8位数列 id>_<以> 十六进制表示的8位表 id。 您可以通过运行[DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)命令来查看已创建的统计信息：
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
 ```
 
-table_name是包含要显示的统计信息的表的名称，该统计信息不能是外部表。 目标是要显示统计信息的目标索引、统计信息或列的名称。
+Table_name 是包含要显示的统计信息的表的名称，该名称不能是外部表。 目标是要显示统计信息的目标索引、统计信息或列的名称。
 
 ### <a name="update-statistics"></a>更新统计信息
 
-最佳实践之一是每天在添加新日期后，更新有关日期列的统计信息。 每次有新行载入数据仓库时，就会添加新的加载日期或事务日期。 这些添加将更改数据分布并使统计信息过时。
+最佳实践之一是每天在添加新日期后，更新有关日期列的统计信息。 每次有新行载入数据仓库时，就会添加新的加载日期或事务日期。 这些添加项会更改数据分布，并使统计信息过时。
 
-客户表中国家或地区列的统计信息可能永远不需要更新，因为值分布通常不会更改。 假设客户间的分布固定不变，将新行添加到表变化并不会改变数据分布情况。
+客户表中的国家或地区列的统计信息可能永远不需要更新，因为值的分布通常不会更改。 假设客户间的分布固定不变，将新行添加到表变化并不会改变数据分布情况。
 
-但是，当数据仓库仅包含一个国家或地区，并且您带来了来自新国家或地区的数据时，您需要更新国家或地区列的统计信息。
+但是，如果数据仓库只包含一个国家或地区，并且你引入了新国家/地区的数据，则需要更新 "国家或地区" 列中的统计信息。
 
 下面是关于更新统计信息的建议：
 
@@ -99,9 +99,9 @@ table_name是包含要显示的统计信息的表的名称，该统计信息不�
 
 在排查查询问题时，首先要询问的问题之一就是 **“统计信息是最新的吗？”**
 
-这个问题不是按数据年龄可以回答的问题。 如果对基础数据未做重大更改，则最新的统计信息对象有可能非常陈旧。 当行数发生实质性更改，或者列的值分布发生重大更改*时，是时候*更新统计信息了。
+此问题不是可通过数据保留时间来回答的问题。 如果对基础数据未做重大更改，则最新的统计信息对象有可能非常陈旧。 如果行数发生了重大变化，或列的值分布有重大变化 *，则需要*更新统计信息。
 
-没有动态管理视图可用于确定自上次更新统计信息以来表中的数据是否已更改。 如果知道统计信息的期限，可以大致猜出更新状态。 可以使用以下查询来确定上次更新每个表的统计信息的时间。
+没有可用的动态管理视图来确定自上次更新统计信息以来表中的数据是否发生了更改。 如果知道统计信息的期限，可以大致猜出更新状态。 可以使用以下查询来确定上次更新每个表的统计信息的时间。
 
 > [!NOTE]
 > 如果给定列的值分布有重大变化，则应该更新统计信息，不管上次更新时间为何。
@@ -133,21 +133,21 @@ WHERE
     st.[user_created] = 1;
 ```
 
-例如，数据仓库中**的日期列**通常需要频繁的统计信息更新。 每次有新行载入数据仓库时，就会添加新的加载日期或事务日期。 这些添加将更改数据分布并使统计信息过时。
+例如，数据仓库中的**日期列**通常需要频繁地更新统计信息。 每次有新行载入数据仓库时，就会添加新的加载日期或事务日期。 这些添加项会更改数据分布，并使统计信息过时。
 
-客户表中的性别列统计信息可能永远不需要更新。 假设客户间的分布固定不变，将新行添加到表变化并不会改变数据分布情况。
+Customer 表中的 "性别" 列的统计信息可能永远不需要更新。 假设客户间的分布固定不变，将新行添加到表变化并不会改变数据分布情况。
 
-但是，如果数据仓库仅包含一个性别，并且新的需求导致多个性别，则需要更新性别列的统计信息。 有关详细信息，请查看["统计信息"](/sql/relational-databases/statistics/statistics)一文。
+但是，如果数据仓库只包含一种性别，而新的要求导致了多个性别，则需要更新 "性别" 列中的统计信息。 有关详细信息，请查看[统计](/sql/relational-databases/statistics/statistics)文章。
 
 ### <a name="implementing-statistics-management"></a>实施统计信息管理
 
-通常最好扩展数据加载过程，以确保在加载结束时更新统计信息。 数据加载是表最常更改其大小、值分布或两者时。 因此，加载过程是实现某些管理过程的逻辑位置。
+最好是扩展数据加载过程，以确保在负载结束时更新统计信息。 数据加载是指最常更改表的大小、值的分布或两者。 因此，加载过程是实现某些管理过程的逻辑位置。
 
 下面提供了有关在加载过程中更新统计信息的一些指导原则：
 
-- 确保加载的每个表至少包含一个更新的统计信息对象。 此过程将更新表大小（行计数和页数）信息作为统计信息更新的一部分。
+- 确保加载的每个表至少包含一个更新的统计信息对象。 此过程会在统计信息更新过程中更新表大小（行计数和页计数）信息。
 - 将重点放在参与 JOIN、GROUP BY、ORDER BY 和 DISTINCT 子句的列上。
-- 请考虑更频繁地更新"提升键"列（如事务日期），因为这些值不会包含在统计直方图中。
+- 请考虑更频繁地更新 "递增键" 列（例如事务日期），因为这些值不包含在统计信息直方图中。
 - 考虑较不经常更新静态分布列。
 - 请记住，每个统计信息对象是按顺序更新的。 仅实现 `UPDATE STATISTICS <TABLE_NAME>` 不一定总很理想 - 尤其是对包含许多统计信息对象的宽型表而言。
 
@@ -159,8 +159,8 @@ WHERE
 
 #### <a name="create-single-column-statistics-with-default-options"></a>使用默认选项创建单列统计信息
 
-要对列创建统计信息，请为统计信息对象提供名称和列的名称。
-此语法使用所有默认选项。 默认情况下，SQL 池在创建统计信息时对表的**20% 进行**采样。
+若要对列创建统计信息，请提供统计信息对象的名称和列的名称。
+此语法使用所有默认选项。 默认情况下，SQL 池在创建统计信息时对**20%** 的表采样。
 
 ```sql
 CREATE STATISTICS [statistics_name]
@@ -194,7 +194,7 @@ CREATE STATISTICS col1_stats
 
 #### <a name="create-single-column-statistics-by-specifying-the-sample-size"></a>通过指定样本大小创建单列统计信息
 
-另一个选项是指定样本大小为百分比：
+你还可以选择以百分比形式指定样本大小：
 
 ```sql
 CREATE STATISTICS col1_stats
@@ -204,9 +204,9 @@ CREATE STATISTICS col1_stats
 
 #### <a name="create-single-column-statistics-on-only-some-of-the-rows"></a>只对某些行创建单列统计信息
 
-您还可以在表中的行的一部分创建统计信息，这称为筛选统计信息。
+您还可以对表中的部分行创建统计信息，这称为筛选的统计信息。
 
-例如，在计划查询大型分区表的特定分区时，可以使用筛选的统计信息。 通过仅创建分区值的统计信息，统计信息的准确性将提高。 您还将体验到查询性能的提高。
+例如，在计划查询大型分区表的特定分区时，可以使用筛选的统计信息。 仅对分区值创建统计信息，统计信息的准确性就会提高。 你还会经历查询性能的改进。
 
 此示例会基于一系列的值创建统计信息。 可以轻松定义这些值以匹配分区中的值范围。
 
@@ -234,12 +234,12 @@ CREATE STATISTICS stats_col1
 
 #### <a name="create-multi-column-statistics"></a>创建多列统计信息
 
-要创建多列统计信息对象，请使用前面的示例，但指定更多列。
+若要创建多列统计信息对象，请使用前面的示例，但要指定更多的列。
 
 > [!NOTE]
 > 用于估计查询结果中行数的直方图只适用于统计信息对象定义中所列的第一个列。
 
-在此示例中，直方图位于 product\_category**。 跨栏统计信息根据*产品\_类别*和*产品\_sub_category*计算：
+在此示例中，直方图位于 product\_category**。 按*产品\_类别*和*产品\_sub_category*计算跨列统计信息：
 
 ```sql
 CREATE STATISTICS stats_2cols
@@ -248,7 +248,7 @@ CREATE STATISTICS stats_2cols
     WITH SAMPLE = 50 PERCENT;
 ```
 
-由于*产品\_类别*和*\_产品子\_类别*之间存在关联，因此，如果同时访问这些列，则多列统计信息对象可能很有用。
+由于*产品\_类别*和*\_产品子\_类别*之间存在关联，因此在同时访问这些列时，多列统计信息对象会很有用。
 
 #### <a name="create-statistics-on-all-columns-in-a-table"></a>基于表中的所有列创建统计信息
 
@@ -274,7 +274,7 @@ CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 
 #### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>使用存储过程基于数据库中的所有列创建统计信息
 
-SQL 池没有等效于 SQL Server 中sp_create_stats的系统存储过程。 此存储过程将基于数据库中尚不包含统计信息的每个列创建单列统计信息对象。
+SQL 池没有与 SQL Server 中的 sp_create_stats 相同的系统存储过程。 此存储过程将基于数据库中尚不包含统计信息的每个列创建单列统计信息对象。
 以下示例可以帮助你开始进行数据库设计。 可以根据需要任意改写此存储过程：
 
 ```sql
@@ -375,7 +375,7 @@ EXEC [dbo].[prc_sqldw_create_stats] 1, NULL;
 EXEC [dbo].[prc_sqldw_create_stats] 2, NULL;
 ```
 
-要对表中的所有列创建示例统计信息，请输入 3 和示例百分比。 以下步骤使用 20% 的采样率。
+要对表中的所有列创建示例统计信息，请输入 3 和示例百分比。 下面的过程使用20% 的采样速率。
 
 ```sql
 EXEC [dbo].[prc_sqldw_create_stats] 3, 20;
@@ -402,7 +402,7 @@ UPDATE STATISTICS [schema_name].[table_name]([stat_name]);
 UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
 ```
 
-通过更新特定统计信息对象，可以减少管理统计信息所需的时间和资源。 此操作需要一些考虑才能选择要更新的最佳统计信息对象。
+通过更新特定统计信息对象，可以减少管理统计信息所需的时间和资源。 此操作要求选择要更新的最佳统计信息对象。
 
 #### <a name="update-all-statistics-on-a-table"></a>更新表的所有统计信息
 
@@ -418,17 +418,17 @@ UPDATE STATISTICS [schema_name].[table_name];
 UPDATE STATISTICS dbo.table1;
 ```
 
-UPDATE STATISTICS 语句很容易使用。 请记住，它更新了表上*的所有*统计信息，从而引发了比所需的更多工作。 如果性能不是问题，则此方法是保证统计信息是最新的最简单、最完整的方法。
+UPDATE STATISTICS 语句很容易使用。 请记住，它会更新表中的*所有*统计信息，并根据需要执行更多的工作。 如果性能不是问题，则此方法是确保统计信息最新的最简单且最完整的方法。
 
 > [!NOTE]
-> 更新表上的所有统计信息时，SQL 池执行扫描，以采样每个统计信息对象的表。 如果表很大、包含许多列和许多统计信息，则根据需要更新各项统计信息可能比较有效率。
+> 更新表中的所有统计信息时，SQL 池会执行扫描，以针对每个统计信息对象的表采样。 如果表很大、包含许多列和许多统计信息，则根据需要更新各项统计信息可能比较有效率。
 
 有关`UPDATE STATISTICS`过程的实现，请参阅[临时表](develop-tables-temporary.md)。 实现方法与上述 `CREATE STATISTICS` 过程略有不同，但最终结果相同。
-有关完整语法，请参阅[更新统计信息](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
+有关完整的语法，请参阅[更新统计信息](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ### <a name="statistics-metadata"></a>统计信息元数据
 
-可以使用多个系统视图和函数来查找有关统计信息的信息。 例如，可以使用 STATS_DATE（） 函数查看统计信息对象是否可能已过期。 STATS_DATE（） 允许您查看上次创建或更新统计信息的时间。
+可以使用多个系统视图和函数来查找有关统计信息的信息。 例如，可以使用 STATS_DATE （）函数来查看统计信息对象是否可能已过时。 STATS_DATE （）可以查看上次创建或更新统计信息的时间。
 
 #### <a name="catalog-views-for-statistics"></a>统计信息的目录视图
 
@@ -497,11 +497,11 @@ AND     st.[user_created] = 1
 
 DBCC SHOW_STATISTICS() 显示统计信息对象中保存的数据。 这些数据包括三个组成部分：
 
-- 标头
+- Header
 - 密度矢量
 - 直方图
 
-标头是关于统计信息的元数据。 直方图显示统计信息对象的第一个键列中的值分布。 密度向量可度量跨列相关性。 SQL 池使用统计信息对象中的任何数据计算基数估计值。
+标头是有关统计信息的元数据。 直方图显示统计信息对象的第一个键列中的值分布。 密度向量可度量跨列相关性。 SQL 池用 statistics 对象中的任何数据来计算基数估计值。
 
 #### <a name="show-header-density-and-histogram"></a>显示标头、密度和直方图
 
@@ -535,82 +535,82 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 
 ### <a name="dbcc-show_statistics-differences"></a>DBCC SHOW_STATISTICS() 差异
 
-`DBCC SHOW_STATISTICS()`与 SQL Server 相比，在 SQL 池中更严格地实现：
+`DBCC SHOW_STATISTICS()`与 SQL Server 相比，在 SQL 池中更严格地实现了：
 
 - 不支持未记录的功能。
-- 不能使用Stats_stream。
-- 无法联接统计信息特定子集的结果。 例如 STAT_HEADER JOIN DENSITY_VECTOR。
-- 无法为消息抑制设置NO_INFOMSGS。
-- 不能使用统计信息名称周围的方括号。
-- 不能使用列名称来标识统计信息对象。
-- 不支持自定义错误 2767。
+- 无法使用 Stats_stream。
+- 无法联接特定统计信息子集的结果。 例如 STAT_HEADER JOIN DENSITY_VECTOR。
+- 不能将 NO_INFOMSGS 设置为禁止显示消息。
+- 不能使用方括号括住统计信息名称。
+- 不能使用列名来标识统计信息对象。
+- 不支持自定义错误2767。
 
 ### <a name="next-steps"></a>后续步骤
 
 有关进一步提升查询性能的信息，请参阅[监视工作负荷](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
-## <a name="statistics-in-sql-on-demand-preview"></a>SQL 按需统计（预览）
+## <a name="statistics-in-sql-on-demand-preview"></a>SQL 点播（预览版）中的统计信息
 
 根据特定数据集（存储路径）的特定列创建统计信息。
 
 ### <a name="why-use-statistics"></a>为何使用统计信息
 
-SQL 按需（预览）对数据了解得越多，对数据的查询执行速度就越快。 收集有关数据的统计信息是优化查询的最重要操作之一。 SQL 按需查询优化器是基于成本的优化器。 此优化器会对各种查询计划的成本进行比较，并选择成本最低的计划。 在大多数情况下，它会选择执行速度最快的计划。 例如，如果优化器估计查询筛选的日期会返回一行数据，则它会选择一个计划。 如果优化器估计选定的日期会返回 1 百万行数据，则它会返回另一个计划。
+SQL 点播（预览版）对您的数据的了解越多，它对它执行查询的速度就越快。 收集数据的统计信息是优化查询时可以执行的最重要的任务之一。 SQL 按需查询优化器是基于成本的优化器。 此优化器会对各种查询计划的成本进行比较，并选择成本最低的计划。 在大多数情况下，它会选择执行速度最快的计划。 例如，如果优化器估计查询筛选的日期会返回一行数据，则它会选择一个计划。 如果优化器估计选定的日期会返回 1 百万行数据，则它会返回另一个计划。
 
 ### <a name="automatic-creation-of-statistics"></a>自动创建统计信息
 
-SQL 按需分析传入用户查询，以求缺少统计信息。 如果缺少统计信息，查询优化器将在查询谓词或联接条件中各个列上创建统计信息，以改进查询计划的基数估计。
+SQL 点播会分析传入的用户查询是否缺少统计信息。 如果缺少统计信息，查询优化器将在查询谓词或联接条件中各个列上创建统计信息，以改进查询计划的基数估计。
 
 SELECT 语句将触发自动创建统计信息。
 
 > [!NOTE]
-> 自动创建 Parquet 文件的统计信息。 对于 CSV 文件，您需要手动创建统计信息，直到支持自动创建 CSV 文件统计信息。
+> 已为 Parquet 文件启用自动创建统计信息。 对于 CSV 文件，需要手动创建统计信息，直到支持自动创建 CSV 文件统计信息。
 
 自动创建统计信息的过程是以同步方式完成的，因此，如果列中缺少统计信息，查询性能可能会轻微下降。 为单个列创建统计信息的时间取决于目标文件的大小。
 
-### <a name="manual-creation-of-statistics"></a>手动创建统计数据
+### <a name="manual-creation-of-statistics"></a>手动创建统计信息
 
-SQL 按需允许您手动创建统计信息。 对于 CSV 文件，您必须手动创建统计信息，因为 CSV 文件的自动创建统计信息不会打开。 有关如何手动创建统计信息的说明，请参阅以下示例。
+SQL 点播允许您手动创建统计信息。 对于 CSV 文件，必须手动创建统计信息，因为 CSV 文件的自动创建统计信息未打开。 有关如何手动创建统计信息的说明，请参阅以下示例。
 
 ### <a name="updating-statistics"></a>更新统计信息
 
-对文件中的数据的更改、删除和添加文件会导致数据分发更改，并使统计信息过时。 在这种情况下，需要更新统计信息。
+更改文件中的数据、删除和添加文件会导致数据分发更改并使统计信息过时。 在这种情况下，需要更新统计信息。
 
-如果数据发生显著变化，SQL 按需自动重新创建统计信息。 每次自动创建统计信息时，也会保存数据集的当前状态：文件路径、大小、上次修改日期。
+如果数据发生了重大更改，SQL 点播会自动重新创建统计信息。 每次自动创建统计信息时，也会保存数据集的当前状态：文件路径、大小、上次修改日期。
 
-当统计信息过时时，将创建新统计信息。 算法遍遍数据，并将其与数据集的当前状态进行比较。 如果更改的大小大于特定阈值，则删除旧统计信息，并将在新数据集上重新创建。
+当统计信息过期时，将创建新的统计信息。 该算法遍历数据，并将其与数据集的当前状态进行比较。 如果更改的大小超过特定的阈值，则会删除旧的统计信息，并将在新数据集上重新创建。
 
-手动统计信息永远不会声明过时。
+手动统计信息永远不会声明为过时。
 
 > [!NOTE]
-> 为 Parquet 文件打开统计信息的自动重新使用。 对于 CSV 文件，您需要手动删除和创建统计信息，直到支持自动创建 CSV 文件统计信息。 请查看以下有关如何删除和创建统计信息的示例。
+> 为 Parquet 文件启用了自动重新启用统计信息。 对于 CSV 文件，需要手动删除和创建统计信息，直到自动创建 CSV 文件统计信息。 请查看以下示例，了解如何删除和创建统计信息。
 
 在排查查询问题时，首先要询问的问题之一就是 **“统计信息是最新的吗？”**
 
-当行数发生显著变化，或者列的值分布发生重大变化*时，是时候*更新统计信息了。
+如果行数发生了重大变化，或者列的值分布有重大变化 *，则需要*更新统计信息。
 
 > [!NOTE]
 > 如果给定列的值分布有重大变化，则应该更新统计信息，不管上次更新时间为何。
 
 ### <a name="implementing-statistics-management"></a>实施统计信息管理
 
-您可能希望扩展数据管道，以确保在通过添加、删除或更改文件显著更改数据时更新统计信息。
+你可能需要扩展数据管道，以确保在通过添加、删除或更改文件对数据进行重大更改时更新统计信息。
 
-更新统计信息提供了以下指导原则：
+提供以下指导原则来更新统计信息：
 
-- 确保数据集至少更新了一个统计信息对象。 这将更新大小（行计数和页数）信息作为统计信息更新的一部分。
+- 确保数据集至少更新了一个统计信息对象。 这会在统计信息更新过程中更新大小（行计数和页计数）信息。
 - 将重点放在参与 JOIN、GROUP BY、ORDER BY 和 DISTINCT 子句的列上。
-- 更频繁地更新"提升键"列（如事务日期），因为这些值不会包含在统计直方图中。
-- 更新静态分布列的频率较低。
+- 更频繁地更新 "递增键" 列（例如事务日期），因为这些值不包含在统计信息直方图中。
+- 不经常更新静态分布列。
 
 有关详细信息，请参阅[基数估计](/sql/relational-databases/performance/cardinality-estimation-sql-server)。
 
 ### <a name="examples-create-statistics-for-column-in-openrowset-path"></a>示例：为 OPENROWSET 路径中的列创建统计信息
 
-以下示例演示如何使用各种选项创建统计信息。 用于每个列的选项取决于数据特征以及在查询中使用列的方式。
+下面的示例演示如何使用各种选项来创建统计信息。 用于每个列的选项取决于数据特征以及在查询中使用列的方式。
 
 > [!NOTE]
-> 此时只能创建单列统计信息。
+> 目前只能创建单列统计信息。
 
 以下存储过程用于创建统计信息：
 
@@ -618,7 +618,7 @@ SQL 按需允许您手动创建统计信息。 对于 CSV 文件，您必须手�
 sys.sp_create_file_statistics [ @stmt = ] N'statement_text'
 ```
 
-参数： [ @stmt ] n'statement_text' - 指定一个 Transact-SQL 语句，该语句将返回用于统计的列值。 您可以使用 TABLESAMPLE 指定要使用的数据样本。 如果未指定 TABLESAMPLE，将使用 FULLSCAN。
+参数： [ @stmt =] N ' statement_text '-指定一个 transact-sql 语句，该语句将返回要用于统计信息的列值。 您可以使用 TABLESAMPLE 来指定要使用的数据的示例。 如果未指定 TABLESAMPLE，将使用 FULLSCAN。
 
 ```syntaxsql
 <tablesample_clause> ::= TABLESAMPLE ( sample_number PERCENT )
@@ -629,11 +629,11 @@ sys.sp_create_file_statistics [ @stmt = ] N'statement_text'
 
 #### <a name="create-single-column-statistics-by-examining-every-row"></a>通过检查每个行创建单列统计信息
 
-要对列创建统计信息，请提供返回需要统计信息的列的查询。
+若要对列创建统计信息，请提供一个查询，该查询返回需要统计信息的列。
 
-默认情况下，如果不另行指定，SQL 按需在创建统计信息时会使用数据集中 100% 的数据。
+默认情况下，如果未指定，则 SQL 点播在创建统计信息时使用数据集中提供的数据的100%。
 
-例如，要根据总体.csv 文件为数据集的一年列创建具有默认选项 （FULLSCAN） 的统计信息：
+例如，使用基于人口 .csv 文件的数据集的 "年份" 列的默认选项（FULLSCAN）创建统计信息：
 
 ```sql
 /* make sure you have credentials for storage account access created
@@ -665,7 +665,7 @@ WITH (
 
 #### <a name="create-single-column-statistics-by-specifying-the-sample-size"></a>通过指定样本大小创建单列统计信息
 
-您可以将样本大小指定为百分比：
+可以指定样本大小为百分比：
 
 ```sql
 /* make sure you have credentials for storage account access created
@@ -690,15 +690,15 @@ FROM OPENROWSET(
 
 ### <a name="examples-update-statistics"></a>示例：更新统计信息
 
-要更新统计信息，您需要删除并创建统计信息。 以下存储过程用于删除统计信息：
+若要更新统计信息，需要删除并创建统计信息。 以下存储过程用于删除统计信息：
 
 ```sql
 sys.sp_drop_file_statistics [ @stmt = ] N'statement_text'
 ```
 
-参数： [ @stmt ] N'statement_text' - 指定创建统计信息时使用的相同 Transact-SQL 语句。
+参数： [ @stmt =] N ' statement_text '-指定创建统计信息时使用的相同 transact-sql 语句。
 
-要更新基于 sands.csv 文件的数据集中的年份列的统计信息，您需要删除并创建统计信息：
+若要更新数据集中 "year" 列的统计信息（基于人口 .csv 文件），则需要删除并创建统计信息：
 
 ```sql
 EXEC sys.sp_drop_file_statistics N'SELECT payment_type
@@ -732,12 +732,12 @@ FROM OPENROWSET(
 
 ### <a name="examples-create-statistics-for-external-table-column"></a>示例：为外部表列创建统计信息
 
-以下示例演示如何使用各种选项创建统计信息。 用于每个列的选项取决于数据特征以及在查询中使用列的方式。
+下面的示例演示如何使用各种选项来创建统计信息。 用于每个列的选项取决于数据特征以及在查询中使用列的方式。
 
 > [!NOTE]
-> 此时只能创建单列统计信息。
+> 目前只能创建单列统计信息。
 
-要对列创建统计信息，请为统计信息对象提供名称和列的名称。
+若要对列创建统计信息，请提供统计信息对象的名称和列的名称。
 
 ```sql
 CREATE STATISTICS statistics_name
@@ -748,11 +748,11 @@ ON { external_table } ( column )
         , { NORECOMPUTE }
 ```
 
-参数：external_table指定应创建统计信息的外部表。
+参数： external_table 指定应创建统计信息的外部表。
 
-通过扫描所有行来计算统计信息。 FULLSCAN 和 SAMPLE 100 PERCENT 的结果相同。 FULLSCAN 不能与 SAMPLE 选项一起使用。
+FULLSCAN 通过扫描所有行来计算统计信息。 FULLSCAN 和 SAMPLE 100 PERCENT 的结果相同。 FULLSCAN 不能与 SAMPLE 选项一起使用。
 
-SAMPLE 编号%指定查询优化器创建统计信息时使用的表或索引视图中的大致百分比或行数。 数字可以从 0 到 100。
+采样数百分比指定表或索引视图中的行数或行数，查询优化器在创建统计信息时要使用这些行。 数字可以介于0到100之间。
 
 SAMPLE 不能与 FULLSCAN 选项一起使用。
 
@@ -778,13 +778,13 @@ CREATE STATISTICS sState
 
 ### <a name="examples-update-statistics"></a>示例：更新统计信息
 
-要更新统计信息，您需要删除并创建统计信息。 首先删除统计信息：
+若要更新统计信息，需要删除并创建统计信息。 首先删除统计信息：
 
 ```sql
 DROP STATISTICS census_external_table.sState
 ```
 
-并创建统计信息：
+和创建统计信息：
 
 ```sql
 CREATE STATISTICS sState
@@ -794,4 +794,4 @@ CREATE STATISTICS sState
 
 ## <a name="next-steps"></a>后续步骤
 
-有关进一步的查询性能改进，请参阅[SQL 池的最佳做法](best-practices-sql-pool.md#maintain-statistics)。
+有关进一步的查询性能改进，请参阅[SQL 池的最佳实践](best-practices-sql-pool.md#maintain-statistics)。

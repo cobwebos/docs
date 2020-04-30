@@ -9,30 +9,30 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 2ebf5d574b4d185953ab0f7984648c440d6f107e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678630"
 ---
-PowerShell cmdlet **Get-AzPeeringLocation**返回具有强制参数`Kind`的对等位置列表，您将在后面的步骤中使用该参数。
+PowerShell cmdlet **AzPeeringLocation**返回具有必需参数的对等互连位置的列表，你`Kind`将在后续步骤中使用该参数。
 
 ```powershell
 Get-AzPeeringLocation -Kind "Exchange"
 ```
 
-交换对等位置包含以下字段：
-* 交换名称
-* 对等位置
+Exchange 对等互连位置包含以下字段：
+* ExchangeName
+* PeeringLocation
 * 国家/地区
-* 对等数据库设施Id
-* 对等DB设施链接
-* 微软IPv4地址
-* 微软IPv6地址
+* PeeringDBFacilityId
+* PeeringDBFacilityLink
+* MicrosoftIPv4Address
+* MicrosoftIPv6Address
 
-通过引用[对等互连数据库](https://wwww.peeringdb.com)，验证您是否在所需的对等设施中。
+请参阅[PeeringDB](https://wwww.peeringdb.com)，验证你是否在所需的对等互连设施上提供。
 
-此示例演示如何使用西雅图作为对等位置来创建对等互连。
+此示例演示如何使用西雅图作为对等互连位置来创建对等互连。
 
 ```powershell
 $exchangeLocations = Get-AzPeeringLocation -Kind Exchange

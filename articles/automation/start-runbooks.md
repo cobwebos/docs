@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: 7f2c0dda952959db3bffba6016f48b986016c19e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81679454"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>在 Azure 自动化中启动 Runbook
@@ -31,7 +31,7 @@ ms.locfileid: "81679454"
 ![Runbook 体系结构](media/automation-starting-runbook/runbooks-architecture.png)
 
 >[!NOTE]
->本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az 模块安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于自动化帐户，可以使用["如何更新 Azure 自动化 中的 Azure PowerShell"模块](automation-update-azure-modules.md)将模块更新到最新版本。
+>本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az 模块安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于自动化帐户，可参阅[如何更新 Azure 自动化中的 Azure PowerShell 模块](automation-update-azure-modules.md)，将模块更新到最新版本。
 
 ## <a name="runbook-parameters"></a>Runbook 参数
 
@@ -114,7 +114,7 @@ Smith
 
 ### <a name="credentials"></a>凭据
 
-如果参数是数据类型`PSCredential`，则可以提供 Azure 自动化[凭据资产](automation-credentials.md)的名称。 Runbook 将检索具有指定名称的凭据。 以下测试运行簿接受名为 的`credential`参数。
+如果参数是数据类型`PSCredential`，则可以提供 Azure 自动化[凭据资产](automation-credentials.md)的名称。 Runbook 将检索具有指定名称的凭据。 以下测试 runbook 接受一个名`credential`为的参数。
 
 ```powershell
 Workflow Test-Parameters
@@ -126,13 +126,13 @@ Workflow Test-Parameters
 }
 ```
 
-假定存在名为`My Credential`的凭据资产，可以使用以下文本用于用户参数。
+假定存在名`My Credential`为的凭据资产，则可将以下文本用于 user 参数。
 
 ```input
 My Credential
 ```
 
-假设凭据中的用户名为`jsmith`，将显示以下输出。
+假设凭据中的用户名为`jsmith`，则会显示以下输出。
 
 ```output
 jsmith
@@ -140,21 +140,21 @@ jsmith
 
 ## <a name="start-a-runbook-with-the-azure-portal"></a>使用 Azure 门户启动 Runbook
 
-1. 在 Azure 门户中，选择 **"自动化**"，然后单击自动化帐户的名称。
+1. 在 Azure 门户中，选择 "**自动化**"，然后单击自动化帐户的名称。
 2. 在“中心”菜单中选择“Runbook”。****
 3. 在“Runbook”页上，选择 Runbook 并单击“启动”****。
 4. 如果 Runbook 包含参数，则系统会提示在文本框中提供每个参数的值。 有关参数的详细信息，请参阅 [Runbook 参数](#runbook-parameters)。
-5. 在"作业"窗格中，您可以查看 Runbook 作业的状态。
+5. 在 "作业" 窗格上，可以查看 runbook 作业的状态。
 
 ## <a name="start-a-runbook-with-powershell"></a>使用 PowerShell 启动 Runbook
 
-您可以使用["开始-阿兹自动化 Runbook"](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0)使用 Windows PowerShell 启动 Runbook。 以下示例代码启动一个称为**测试运行簿的运行手册**。
+可以使用[AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0)通过 Windows PowerShell 启动 runbook。 以下示例代码启动名为**Test-runbook**的 runbook。
 
 ```azurepowershell-interactive
 Start-AzAutomationRunbook -AutomationAccountName "MyAutomationAccount" -Name "Test-Runbook" -ResourceGroupName "ResourceGroup01"
 ```
 
-`Start-AzAutomationRunbook`返回可用于在启动 Runbook 后跟踪状态的作业对象。 然后，您可以将此作业对象与[Get-AzAutomationJobJob](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0)一起确定作业的状态，[然后获取"获取-Az自动化作业输出"](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationjoboutput?view=azps-3.7.0)来检索其输出。 下面的示例启动名为**Test-Runbook**的运行手册，等待它完成，然后显示其输出。
+`Start-AzAutomationRunbook`返回一个作业对象，该对象可用于在启动 runbook 后跟踪状态。 然后，可以将此作业对象与[AzAutomationJob](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0)结合使用，以确定作业的状态，并[AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationjoboutput?view=azps-3.7.0)检索其输出。 以下示例启动名为 " **Test-runbook**" 的 runbook，等待其完成，然后显示其输出。
 
 ```azurepowershell-interactive
 $runbookName = "Test-Runbook"
@@ -184,4 +184,4 @@ Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" �
 
 * 若要了解如何在数据中心执行自动化 Runbook，请参阅[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)。
 * 若要详细了解如何创建模块化 Runbook，以供其他 Runbook 用于特定或常用函数，请参阅[子 Runbook](automation-child-runbooks.md)。
-* 有关 PowerShell 的详细信息（包括语言参考和学习模块），请参阅 [PowerShell 文档](https://docs.microsoft.com/powershell/scripting/overview)。
+* 有关 PowerShell 的详细信息，包括语言参考和学习模块，请参阅 [PowerShell 文档](https://docs.microsoft.com/powershell/scripting/overview)。

@@ -7,15 +7,15 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
 ms.openlocfilehash: 7a99038f41043b899886c7161f9b12c77c807c4c
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81641817"
 ---
-# <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概述：使用 Azure 资源管理器模板自动部署 Azure 逻辑应用
+# <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概述：使用 Azure 资源管理器模板将 Azure 逻辑应用部署自动化
 
-准备好自动创建和部署逻辑应用时，可将逻辑应用的基础工作流定义扩展到 [Azure 资源管理器模板](../azure-resource-manager/management/overview.md)中。 此模板定义了用于预配和部署逻辑应用的基础结构、资源、参数和其他信息。 通过为部署时会发生改变的值定义参数（也称为“参数化”），可以根据不同的部署需求重复且一致地部署逻辑应用。**
+准备好自动创建和部署逻辑应用时，可将逻辑应用的基础工作流定义扩展到 [Azure 资源管理器模板](../azure-resource-manager/management/overview.md)中。 此模板定义了用于预配和部署逻辑应用的基础结构、资源、参数和其他信息。 通过为部署时会发生改变的值定义参数（也称为“参数化”），可以根据不同的部署需求重复且一致地部署逻辑应用。 
 
 例如，如果部署到开发、测试和生产环境，则可以对每个环境使用不同的连接字符串。 可以声明接受不同连接字符串的模板参数，然后将这些字符串存储在单独的[参数文件](../azure-resource-manager/templates/parameter-files.md)中。 这样，无需更新和重新部署模板即可更改这些值。 对于其中的参数值比较敏感或者必须予以保护（例如密码和机密）的方案，可将这些值存储在 [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md) 中，并让参数文件检索这些值。 但是，在这些方案中，需要重新部署才能检索当前值。
 
@@ -32,7 +32,7 @@ ms.locfileid: "81641817"
 
 * [Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md)
 * [Azure 资源管理器模板最佳做法](../azure-resource-manager/templates/template-best-practices.md)
-* [为云一致性开发 Azure 资源管理器模板](../azure-resource-manager/templates/templates-cloud-consistency.md)
+* [开发用于实现云一致性的 Azure 资源管理器模板](../azure-resource-manager/templates/templates-cloud-consistency.md)
 
 有关示例逻辑应用模板，请参阅以下示例：
 
@@ -61,7 +61,7 @@ ms.locfileid: "81641817"
 
 对于逻辑应用模板，主要使用以下模板对象：
 
-| 特性 | 描述 |
+| 属性 | 说明 |
 |-----------|-------------|
 | `parameters` | 声明[模板参数](../azure-resource-manager/templates/template-syntax.md#parameters)，用于接受在 Azure 中创建和自定义部署资源时要使用的值。 例如，这些参数接受逻辑应用的名称和位置、连接以及部署所需的其他资源的值。 可将这些参数值存储在本主题稍后将会介绍的[参数文件](#template-parameter-files)中。 有关一般详细信息，请参阅[参数 - 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md#parameters)。 |
 | `resources` | 定义用于创建或更新以及部署到 Azure 资源组的[资源](../azure-resource-manager/templates/template-syntax.md#resources)，例如逻辑应用、连接、Azure 存储帐户等。 有关一般详细信息，请参阅[资源 - 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md#resources)。 |
@@ -84,7 +84,7 @@ ms.locfileid: "81641817"
 * 逻辑用来通过[托管连接器](../connectors/apis-list.md)访问其他服务和系统的连接
 * 逻辑应用需要对部署使用的其他资源
 
-  例如，如果逻辑应用将[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)用于企业对企业 （B2B） 方案，则模板的顶级`parameters`对象将声明接受该集成帐户的资源 ID 的参数。
+  例如，如果逻辑应用使用企业到企业（B2B）方案的[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)，则模板的顶级`parameters`对象将声明接受该集成帐户的资源 ID 的参数。
 
 下面是参数定义的一般结构和语法，[参数 - 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md#parameters)中对此做了全面介绍：
 
@@ -149,7 +149,7 @@ ms.locfileid: "81641817"
 
 * [有关模板参数的安全性建议](../azure-resource-manager/templates/template-best-practices.md#parameters)
 * [提高模板参数的安全性](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
-* [使用 Azure 密钥保管库传递安全参数值](../azure-resource-manager/templates/key-vault-parameter.md)
+* [通过 Azure Key Vault 传递受保护的参数值](../azure-resource-manager/templates/key-vault-parameter.md)
 
 其他模板对象通常引用模板参数，以便可以使用通过模板参数传递的值，例如：
 
@@ -173,7 +173,7 @@ ms.locfileid: "81641817"
 
   * [提高模板参数的安全性](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 
-  * [使用 Azure 密钥保管库传递安全参数值](../azure-resource-manager/templates/key-vault-parameter.md)
+  * [通过 Azure Key Vault 传递受保护的参数值](../azure-resource-manager/templates/key-vault-parameter.md)
 
 * 若要区分工作流定义参数名称和模板参数名称，可以使用描述性的模板参数名称，例如：`TemplateFabrikamPassword`
 
@@ -185,10 +185,10 @@ ms.locfileid: "81641817"
 
 若要提供模板参数的值，请将这些值存储在[参数文件](../azure-resource-manager/templates/parameter-files.md)中。 这样，就可以根据部署需求使用不同的参数文件。 下面是要使用的文件名格式：
 
-* 逻辑应用模板文件名：**<*逻辑应用名称*>.json**
-* 参数文件名：**<*逻辑-应用程序名称*>.parameters.json**
+* 逻辑应用模板文件名： ** <*逻辑应用名称*> json**
+* 参数文件名： ** <*逻辑应用名称*>**
 
-下面是参数文件的结构，其中包括用于[使用 Azure 密钥保管库传递安全参数值](../azure-resource-manager/templates/key-vault-parameter.md)的密钥保管库引用 ：
+下面是参数文件中的结构，其中包含用于[传递受保护的参数值与 Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)的密钥保管库参考：
 
 ```json
 {
@@ -319,7 +319,7 @@ ms.locfileid: "81641817"
 
 下面是特定于逻辑应用资源定义的属性：
 
-| Attribute | 必选 | 类型 | 说明 |
+| 特性 | 必选 | 类型 | 说明 |
 |-----------|----------|------|-------------|
 | `state` | 是 | 字符串 | 逻辑应用在部署时的状态，`Enabled` 表示逻辑应用处于活动状态，`Disabled` 表示逻辑应用处于非活动状态。 例如，如果你尚未准备好推出逻辑应用，而是想要部署草稿版本，则可以使用 `Disabled` 选项。 |
 | `integrationAccount` | 否 | 对象 | 如果逻辑应用使用集成帐户（用于存储企业到企业 (B2B) 方案的项目），则此对象包含用于指定集成帐户 ID 的 `id` 属性。 |
@@ -415,7 +415,7 @@ ms.locfileid: "81641817"
 
 此示例模板演示如何在必要时定义安全参数来完成这些任务，以便可以将这些参数的值存储在 Azure Key Vault 中：
 
-* 声明用于验证访问的值的安全参数。
+* 为用于对访问进行身份验证的值声明安全参数。
 * 在模板和工作流定义级别使用这些值。
 * 使用参数文件提供这些值。
 
@@ -1017,7 +1017,7 @@ ms.locfileid: "81641817"
 
 `"<attribute-name>": "[parameters('<template-parameter-name>')]"`
 
-若要引用工作流定义参数，请使用在运行时评估的[工作流定义语言表达式和函数](../logic-apps/workflow-definition-language-functions-reference.md)。 你可能会发现，某些模板函数和工作流定义函数同名。 工作流定义表达式以"at"符号开头 （**@**）：
+若要引用工作流定义参数，请使用在运行时评估的[工作流定义语言表达式和函数](../logic-apps/workflow-definition-language-functions-reference.md)。 你可能会发现，某些模板函数和工作流定义函数同名。 工作流定义表达式以 "at" 符号（**@**）开头：
 
 `"<attribute-name>": "@parameters('<workflow-definition-parameter-name>')"`
 

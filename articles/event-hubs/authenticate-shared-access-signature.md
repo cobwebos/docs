@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.openlocfilehash: cde5992355d274410bb43b1e3e60fbba1afe4e44
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81676358"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>使用共享访问签名 (SAS) 对事件中心资源访问进行身份验证
@@ -33,7 +33,7 @@ ms.locfileid: "81676358"
 
 
 ## <a name="configuring-for-sas-authentication"></a>配置 SAS 身份验证
-您可以在事件中心命名空间或实体（事件中心中心实例或事件中心中的 Kafka 主题）配置事件中心共享访问授权规则。 目前不支持在使用者组中配置共享访问授权规则，但你可以使用命名空间或实体中配置的规则来保护对使用者组的访问。 
+可以在事件中心命名空间或事件中心中的实体（事件中心实例或 Kafka 主题）上配置 EventHubs 共享访问授权规则。 目前不支持在使用者组中配置共享访问授权规则，但你可以使用命名空间或实体中配置的规则来保护对使用者组的访问。 
 
 下图显示了如何对示例实体应用授权规则。 
 
@@ -63,7 +63,7 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 令牌包含非哈希值，使接收方可以使用相同的参数重新计算哈希，并验证颁发者是否拥有有效的签名密钥。
 
-资源 URI 是向其声明访问权限的服务总线资源的完整 URI。 例如，http://<namespace>.servicebus.windows.net/<entityPath> `sb://<namespace>.servicebus.windows.net/<entityPath>;`或 即`http://contoso.servicebus.windows.net/eventhubs/eh1`。
+资源 URI 是向其声明访问权限的服务总线资源的完整 URI。 <namespace>例如，http://<entityPath>或`sb://<namespace>.servicebus.windows.net/<entityPath>;` `http://contoso.servicebus.windows.net/eventhubs/eh1`servicebus.windows.net/。
 
 URI 必须采用百分比编码格式。
 

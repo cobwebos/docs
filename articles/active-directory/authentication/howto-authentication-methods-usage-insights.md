@@ -1,5 +1,5 @@
 ---
-title: 身份验证方法使用&见解 - Azure 活动目录
+title: 身份验证方法用法 & insights-Azure Active Directory
 description: Azure AD 自助式密码重置和多重身份验证方法使用情况的报告
 services: active-directory
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 053b052abf6f23c385dc7447639aa40b6c2c58a1
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81680190"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>身份验证方法的使用情况和见解（预览版）
@@ -90,7 +90,7 @@ ms.locfileid: "81680190"
 
 ## <a name="limitations"></a>限制
 
-这些报告中显示的数据最长会延迟 60 分钟。 Azure 门户中存在"上次刷新"字段，用于标识数据最近的情况。
+这些报告中显示的数据最长会延迟 60 分钟。 "上次刷新时间" 字段存在于 Azure 门户中，用于识别最近的数据的方式。
 
 使用情况和见解数据不能取代 Azure 多重身份验证活动报告，也不能取代 Azure AD 登录报告中包含的信息。
 
@@ -99,5 +99,5 @@ ms.locfileid: "81680190"
 ## <a name="next-steps"></a>后续步骤
 
 - [使用身份验证方法使用情况报告 API](https://docs.microsoft.com/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
-- [为您的组织选择身份验证方法](concept-authentication-methods.md)
-- [合并注册体验](concept-registration-mfa-sspr-combined.md)
+- [为你的组织选择身份验证方法](concept-authentication-methods.md)
+- [组合注册体验](concept-registration-mfa-sspr-combined.md)

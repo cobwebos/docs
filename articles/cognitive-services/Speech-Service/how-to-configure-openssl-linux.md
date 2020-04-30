@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jhakulin
 ms.openlocfilehash: 42960c25c4124203b64646fdc5cbca833b246e21
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81683165"
 ---
 # <a name="configure-openssl-for-linux"></a>为 Linux 配置 OpenSSL
@@ -51,7 +51,7 @@ export SSL_CERT_DIR=/opt/ssl/certs
 export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt
 ```
 > [!NOTE]
-> 还值得注意的是，Linux 的某些发行版没有定义 TMP 或 TMPDIR 环境变量。 这将导致语音 SDK 每次下载证书吊销列表 （CRL），而不是将 CRL 缓存到磁盘以进行重用，直到过期。 为了提高初始连接性能[，您可以创建名为 TMPDIR 的环境变量并将其设置为所选临时目录的路径。 .](https://help.ubuntu.com/community/EnvironmentVariables)
+> 还值得注意的是，某些 Linux 发行版未定义 TMP 或 TMPDIR 环境变量。 这将导致语音 SDK 每次下载证书吊销列表（CRL），而不是将 CRL 缓存到磁盘以供重复使用，直到它们过期。 若要改善初始连接性能，可以[创建一个名为 TMPDIR 的环境变量，并将其设置为所选临时目录的路径。](https://help.ubuntu.com/community/EnvironmentVariables)
 
 ## <a name="next-steps"></a>后续步骤
 

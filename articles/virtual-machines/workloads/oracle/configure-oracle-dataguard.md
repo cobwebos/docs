@@ -15,17 +15,17 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: 96528dc34305e77602634110a0153f7623a15c96
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81676768"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上实现 Oracle Data Guard 
 
 Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本文将介绍如何使用 Azure CLI 从 Azure 市场映像部署 Oracle Database 12c 数据库。 本文将分步演示如何在 Azure 虚拟机 (VM) 上安装和配置 Data Guard。
 
-开始之前，请先确保已安装 Azure CLI。 有关详细信息，请参阅 Azure [CLI 安装指南](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+开始之前，请先确保已安装 Azure CLI。 有关详细信息，请参阅[Azure CLI 安装指南](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 ## <a name="prepare-the-environment"></a>准备环境
 ### <a name="assumptions"></a>假设
@@ -49,7 +49,7 @@ az login
 
 使用 [az group create](/cli/azure/group) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
 
-以下示例在 `westus` 位置创建名为 `myResourceGroup` 的资源组：
+以下示例在 `westus` 位置创建一个名为 `myResourceGroup` 的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -282,7 +282,7 @@ SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_r
 SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo04.log') SIZE 50M;
 ```
 
-打开闪回（这使得恢复变得容易得多），并将"备用文件\_\_管理"设置为自动。之后退出 SQL+Plus。
+启用闪回（这可以简化恢复），并将 "备用\_文件\_管理" 设置为 "自动"。退出 SQL * Plus。
 
 ```bash
 SQL> ALTER DATABASE FLASHBACK ON;
@@ -512,7 +512,7 @@ SQL> EXIT;
 
 ### <a name="configure-data-guard-broker-on-myvm1-primary"></a>在 myVM1（主 VM）上配置 Data Guard 代理
 
-启动 Data Guard Manager，并使用 SYS 和密码登录。 （不要使用操作系统身份验证。执行以下操作：
+启动 Data Guard Manager，并使用 SYS 和密码登录。 （请勿使用 OS 身份验证。）执行以下操作：
 
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1

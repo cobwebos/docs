@@ -12,10 +12,10 @@ ms.custom:
 ms.date: 11/06/2018
 ms.author: dobett
 ms.openlocfilehash: c49745b30d2c4acc115a72af095f3e941dc4d509
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683994"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>使用协议缓冲区将遥测数据序列化
@@ -32,9 +32,9 @@ ms.locfileid: "81683994"
 1. 指定在设备模型中使用 Protobuf 格式
 1. 定义 Protobuf 格式
 1. 生成 Protobuf 类
-1. 本地测试
+1. 在本地测试
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要遵循本操作指南中的步骤，需要：
 
@@ -65,7 +65,7 @@ ms.locfileid: "81683994"
 
 在 Visual Studio Code 中打开 **remote-monitoring-services-dotnet-master\storage-adapter** 文件夹。 单击任意“还原”按钮，修复未解决的依赖项****。
 
-打开 **.vscode/launch.json**文件，并将您的 Cosmos DB 连接字符串分配给**PCS\_存储适配器\_DOCUMENTDB\_CONNSTRING**环境变量。
+打开**vscode/** STORAGEADAPTER 文件，并将 Cosmos DB 连接字符串分配到**电脑\_\_DOCUMENTDB\_CONNSTRING**环境变量。
 
 > [!NOTE]
 > 在计算机本地运行微服务时，它仍然需要 Azure 中的 Cosmos DB 实例才能正常运行。
@@ -202,11 +202,11 @@ Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输�
 * 将存储帐户连接字符串分配到 **PCS\_AZURE\_STORAGE\_ACCOUNT** 环境变量。
 * 将 cosmos DB 连接字符串分配到 **PCS\_STORAGEADAPTER\_DOCUMENTDB\_CONNSTRING** 环境变量。
 
-打开**WebService_appsettings.ini**文件并修改设置，如下所示：
+打开**WebService\appsettings.ini**文件，并按如下所述修改设置：
 
 #### <a name="configure-the-solution-to-include-your-new-device-model-files"></a>将解决方案配置为包含新的设备模型文件
 
-默认情况下，新设备型号 JSON 和 JS 文件不会复制到构建的解决方案中。 需要显式包含这些文件。
+默认情况下，不会将新的设备模型 JSON 和 JS 文件复制到生成的解决方案中。 需要显式包含这些文件。
 
 将一个条目添加到所要包含的每个文件的 **services\services.csproj** 文件。 例如：
 

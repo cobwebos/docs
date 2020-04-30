@@ -1,6 +1,6 @@
 ---
-title: 将 Azure 活动目录日志流式传输到 Azure 监视器日志 |微软文档
-description: 了解如何将 Azure 活动目录日志与 Azure 监视器日志集成
+title: 将 Azure Active Directory 日志流式传输到 Azure Monitor 日志 |Microsoft Docs
+description: 了解如何将 Azure Active Directory 日志与 Azure Monitor 日志集成
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,13 +18,13 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7d0ef55f6f5117ffa77052118155afea716125a4
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81639724"
 ---
-# <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>将 Azure AD 日志与 Azure 监视器日志集成
+# <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>将 Azure AD 日志与 Azure Monitor 日志集成
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -51,24 +51,24 @@ Ignite 会话中的以下视频通过实际用户方案演示了将 Azure Monito
 > 目前不支持 B2C 相关的审核和登录活动日志。
 >
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
 若要使用此功能，需满足以下条件:
 
 * Azure 订阅。 如果没有 Azure 订阅，可以[注册免费试用版](https://azure.microsoft.com/free/)。
 * Azure AD 租户。
 * 一个是 Azure AD 租户的全局管理员或安全管理员的用户。****
-* 在 Azure 订阅中创建 Log Analytics 工作区。 了解如何[创建日志分析工作区](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)。
+* 在 Azure 订阅中创建 Log Analytics 工作区。 了解如何[创建 Log Analytics 工作区](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)。
 
 ## <a name="licensing-requirements"></a>许可要求
 
-使用此功能需要 Azure AD 高级 P1 或 P2 许可证。 若要根据需要查找合适的许可证，请参阅[比较免费版、基本版和高级版的正式发布功能](https://azure.microsoft.com/pricing/details/active-directory/)。
+使用此功能需要 Azure AD Premium P1 或 P2 许可证。 若要根据需要查找合适的许可证，请参阅[比较免费版、基本版和高级版的正式发布功能](https://azure.microsoft.com/pricing/details/active-directory/)。
 
-## <a name="send-logs-to-azure-monitor"></a>将日志发送到 Azure 监视器
+## <a name="send-logs-to-azure-monitor"></a>将日志发送到 Azure Monitor
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 
 
-2. 选择**Azure 活动目录** > **诊断设置** -> **添加诊断设置**。 还可以从“审核日志”**** 或“登录”**** 页选择“导出设置”****，以转到诊断设置配置页。  
+2. 选择**Azure Active Directory** > "**诊断设置** -> " "**添加诊断设置**"。 还可以从“审核日志”**** 或“登录”**** 页选择“导出设置”****，以转到诊断设置配置页。  
     
 3. 在“诊断设置”菜单中，选中“发送到 Log Analytics 工作区”复选框，并选择“配置”************。
 

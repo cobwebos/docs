@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 应用程序见解探查器解决问题
+title: Azure 应用程序 Insights Profiler 疑难解答
 description: 本文提供故障排除步骤和信息，帮助开发人员解决在启用或使用 Application Insights Profiler 时遇到的难题。
 ms.topic: conceptual
 author: cweining
@@ -7,17 +7,17 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 55bc4ff05b650884ef17e0de10d7156cbf458a9c
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81640950"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>排查启用或查看 Application Insights Profiler 时遇到的问题
 
 ## <a name="active-issues"></a>活动问题
 
-* 现在 Azure 应用服务支持ASP.NET Core 3.x 应用程序的分析。
+* Azure 应用服务上现在支持对 ASP.NET Core 1.x 应用程序进行分析。
 
 ## <a name="general-troubleshooting"></a><a id="troubleshooting"></a>常规故障排除
 
@@ -49,7 +49,7 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 * 如果 Web 应用是 ASP.NET Core 应用程序，则必须至少运行 ASP.NET Core 2.0。
 * 如果要查看的数据的期限超过了好几周，请尝试限制时间筛选器并重试。 七天后将删除跟踪。
 * 确保代理或防火墙未阻止对 https://gateway.azureserviceprofiler.net 的访问。
-* 免费或共享应用服务计划不支持探查器。 如果您正在使用这些计划之一，请尝试扩展至其中一个基本计划，并且探查器应开始工作。
+* 在免费或共享的应用服务计划中不支持探查器。 如果正在使用这些计划之一，请尝试扩展到一个基本计划，然后探查器应该开始工作。
 
 ### <a name="double-counting-in-parallel-threads"></a><a id="double-counting"></a>并行线程的重复计算
 
@@ -87,7 +87,7 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 
       ![profiler-webjob-log]
 
-如果您无法找出探查器不适合您的原因，您可以下载日志并将其发送给我们的团队寻求帮助。 serviceprofilerhelp@microsoft.com 
+如果无法判断为什么探查器不能正常工作，可以下载日志并将其发送给我们的团队， serviceprofilerhelp@microsoft.com以获取帮助。 
     
 ### <a name="manual-installation"></a>手动安装
 
@@ -95,7 +95,7 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 
 1. 在“Web 应用控制”窗格中，打开“设置”********。
 
-1. 将 **.NET 框架版本**设置为**v4.6**。
+1. 将 **.NET Framework 版本**设置为版本**4.6**。
 
 1. 将“Always On”设置为“打开”********。
 1. 创建以下应用设置：
@@ -163,14 +163,14 @@ Profiler 在 Web 应用中以连续 Web 作业的形式运行。 可以在 [Azur
 
 1. 使用上述 config.json 文件中的路径检查 Profiler 日志文件**。 它将显示表示 Profiler 正在使用的设置的调试信息。 此外，还将显示来自 Profiler 的状态和错误消息。  
 
-    如果探查器在应用程序接收请求时正在运行，则会显示以下消息：*从 iKey 检测到的活动*。 
+    如果在应用程序收到请求时探查器正在运行，则会显示以下消息： " *iKey 中检测到的活动*"。 
 
-    上载跟踪时，将显示以下消息：*开始上载跟踪*。 
+    上传跟踪时，将显示以下消息： "*开始上传" 跟踪*。 
 
 
 ## <a name="edit-network-proxy-or-firewall-rules"></a>编辑网络代理或防火墙规则
 
-如果应用程序通过代理或防火墙连接到 Internet，则可能需要编辑规则以允许应用程序与应用程序见解探查器服务通信。 应用程序见解配置文件程序使用的 IP 包含在 Azure 监视器服务标记中。
+如果你的应用程序通过代理或防火墙连接到 Internet，你可能需要编辑规则以允许你的应用程序与 Application Insights Profiler 服务通信。 Application Insights Profiler 使用的 Ip 包含在 Azure Monitor 服务标记中。
 
 
 [profiler-search-telemetry]:./media/profiler-troubleshooting/Profiler-Search-Telemetry.png

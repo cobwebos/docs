@@ -11,10 +11,10 @@ author: Blackmist
 ms.date: 03/05/2020
 ms.custom: seoapril2019
 ms.openlocfilehash: b802a9c9df7e7f0c44ea66ee0061efb517b80050
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81682759"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -81,7 +81,7 @@ ms.locfileid: "81682759"
 
 * 启用工作区的高保密性设置
 * 启用工作区加密
-* 使用现有的 Azure 密钥保管库检索客户管理的密钥
+* 使用现有 Azure Key Vault 检索客户托管的密钥
 
 有关详细信息，请参阅[静态加密](concept-enterprise-security.md#encryption-at-rest)。
 
@@ -265,7 +265,7 @@ ms.locfileid: "81682759"
 }
 ```
 
-要获取密钥保管库的 ID 以及此模板所需的密钥 URI，可以使用 Azure CLI。 以下命令获取密钥保管库 ID：
+若要获取 Key Vault 的 ID 以及此模板所需的密钥 URI，你可以使用 Azure CLI。 下面的命令获取 Key Vault ID：
 
 ```azurecli-interactive
 az keyvault show --name mykeyvault --resource-group myresourcegroup --query "id"
@@ -273,7 +273,7 @@ az keyvault show --name mykeyvault --resource-group myresourcegroup --query "id"
 
 此命令会返回类似于 `"/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault"` 的值。
 
-要获取客户托管密钥的 URI，请使用以下命令：
+若要获取客户托管密钥的 URI，请使用以下命令：
 
 ```azurecli-interactive
 az keyvault key show --vault-name mykeyvault --name mykey --query "key.kid"
@@ -282,7 +282,7 @@ az keyvault key show --vault-name mykeyvault --name mykey --query "key.kid"
 此命令会返回类似于 `"https://mykeyvault.vault.azure.net/keys/mykey/{guid}"` 的值。
 
 > [!IMPORTANT]
-> 创建工作区后，无法更改机密数据、加密、密钥保管库 ID 或密钥标识符的设置。 要更改这些值，必须使用新值创建新工作区。
+> 创建工作区后，不能更改机密数据、加密、密钥保管库 ID 或密钥标识符的设置。 若要更改这些值，必须使用新值创建新的工作区。
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 门户
 
@@ -290,9 +290,9 @@ az keyvault key show --vault-name mykeyvault --name mykey --query "key.kid"
 1. 选择“保存”以使用该模板。____ 提供以下信息并同意列出的条款和条件：
 
    * 订阅：选择要用于这些资源的 Azure 订阅。
-   * 资源组：选择或创建资源组以包含服务。
-   * 工作区名称：要用于要创建的 Azure 机器学习工作区的名称。 工作区名称的长度必须为 3 到 33 个字符。 只能包含字母数字字符和“-”。
-   * 位置：选择将创建资源的位置。
+   * 资源组：选择或创建一个包含服务的资源组。
+   * 工作区名称：要创建的 Azure 机器学习工作区的名称。 工作区名称的长度必须为 3 到 33 个字符。 只能包含字母数字字符和“-”。
+   * 位置：选择将在其中创建资源的位置。
 
 有关详细信息，请参阅[从自定义模板部署资源](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)。
 
@@ -340,17 +340,17 @@ az group deployment create \
 
 * 请不要对同一个参数多次部署模板。 或是在使用模板重新创建之前删除现有资源。
 
-* 检查 Key Vault 的访问策略，然后使用这些策略设置模板的 `accessPolicies` 属性。 要查看访问策略，请使用以下 Azure CLI 命令：
+* 检查 Key Vault 的访问策略，然后使用这些策略设置模板的 `accessPolicies` 属性。 若要查看访问策略，请使用以下 Azure CLI 命令：
 
     ```azurecli-interactive
     az keyvault show --name mykeyvault --resource-group myresourcegroup --query properties.accessPolicies
     ```
 
-    有关使用模板`accessPolicies`部分的详细信息，请参阅[AccessPolicyentry 对象引用](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry)。
+    有关使用模板的`accessPolicies`部分的详细信息，请参阅[AccessPolicyEntry 对象引用](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry)。
 
-* 检查 Key Vault 资源是否已存在。 如果存在，请勿通过模板重新创建。 例如，要使用现有的密钥保管库而不是创建新密钥保管库，请使用以下更改模板：
+* 检查 Key Vault 资源是否已存在。 如果存在，请勿通过模板重新创建。 例如，若要使用现有 Key Vault 而不是创建一个新的，请对模板进行以下更改：
 
-    * **添加**接受现有密钥保管库资源的 ID 的参数：
+    * **添加**一个参数，该参数接受现有 Key Vault 资源的 ID：
 
         ```json
         "keyVaultId":{
@@ -361,7 +361,7 @@ az group deployment create \
         }
       ```
 
-    * **删除**创建密钥保管库资源的部分：
+    * **删除**创建 Key Vault 资源的部分：
 
         ```json
         {
@@ -381,7 +381,7 @@ az group deployment create \
         },
         ```
 
-    * **Remove**从工作区`"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",``dependsOn`部分删除行。 此外**Change**，更改`keyVault`工作区`properties`部分中的条目以引用参数`keyVaultId`：
+    * **Remove**从工作`"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",`区的`dependsOn`部分中删除该行。 同时**Change** ，更改`keyVault`工作区的`properties`部分中的条目以引用`keyVaultId`参数：
 
         ```json
         {
@@ -409,9 +409,9 @@ az group deployment create \
         }
         ```
 
-    进行这些更改后，您可以在运行模板时指定现有密钥保管库资源的 ID。 然后，模板将通过将工作区`keyVault`的属性设置为其 ID 来重用密钥保管库。
+    完成这些更改后，你可以在运行模板时指定现有 Key Vault 资源的 ID。 然后，模板会通过将工作区的`keyVault`属性设置为其 ID 来重用 Key Vault。
 
-    要获取密钥保管库的 ID，可以引用运行的原始模板的输出或使用 Azure CLI。 以下命令是使用 Azure CLI 获取密钥保管库资源 ID 的示例：
+    若要获取 Key Vault 的 ID，可以引用原始模板运行的输出或使用 Azure CLI。 以下命令是使用 Azure CLI 获取 Key Vault 资源 ID 的示例：
 
     ```azurecli-interactive
     az keyvault show --name mykeyvault --resource-group myresourcegroup --query id
@@ -425,5 +425,5 @@ az group deployment create \
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用资源管理器模板和资源管理器 REST API 部署资源](../azure-resource-manager/templates/deploy-rest.md)。
-* [通过可视化工作室创建和部署 Azure 资源组](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)。
+* [部署具有资源管理器模板和资源管理器 REST API 的资源](../azure-resource-manager/templates/deploy-rest.md)。
+* [通过 Visual Studio 创建和部署 Azure 资源组](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)。

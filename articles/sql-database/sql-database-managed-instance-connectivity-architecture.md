@@ -12,10 +12,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
 ms.openlocfilehash: e4d6098b7b4de76461e924fc7d42d039046d7ce5
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81677173"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL 数据库中托管实例的连接体系结构
@@ -53,16 +53,16 @@ SQL 数据库托管实例放置在专用于托管实例的 Azure 虚拟网络和
 
 ![连接体系结构示意图](./media/managed-instance-connectivity-architecture/connectivityarch002.png)
 
-Microsoft 管理和部署服务在虚拟网络之外运行。 托管实例和 Microsoft 服务通过具有公共 IP 地址的终结点进行连接。 当托管实例建立出站连接时，在接收端，网络地址转换 (NAT) 会使该连接看上去来自此公共 IP 地址。
+Microsoft 管理和部署服务在虚拟网络外部运行。 托管实例和 Microsoft 服务通过具有公共 IP 地址的终结点进行连接。 当托管实例建立出站连接时，在接收端，网络地址转换 (NAT) 会使该连接看上去来自此公共 IP 地址。
 
 管理流量通过客户的虚拟网络传送。 这意味着，虚拟网络基础结构的要素可能会使实例发生故障并变得不可用，从而对管理流量造成不利影响。
 
 > [!IMPORTANT]
-> 为了提高客户体验和服务可用性，Microsoft 对 Azure 虚拟网络基础结构元素应用网络意图策略。 该策略可影响托管实例的工作方式。 此平台机制以透明方式向用户传达网络要求。 该策略的主要目的是防止网络配置不当，并确保托管实例正常运行。 删除某个托管实例时，会一并删除网络意向策略。
+> 为了改善客户体验和服务可用性，Microsoft 在 Azure 虚拟网络基础结构元素上应用了网络意向策略。 该策略可影响托管实例的工作方式。 此平台机制以透明方式向用户传达网络要求。 该策略的主要目的是防止网络配置不当，并确保托管实例正常运行。 删除某个托管实例时，会一并删除网络意向策略。
 
 ## <a name="virtual-cluster-connectivity-architecture"></a>虚拟群集连接体系结构
 
-让我们深入探讨托管实例的连接体系结构。 以下关系图演示了虚拟群集的概念布局。
+让我们更深入地探讨托管实例的连接体系结构。 以下关系图演示了虚拟群集的概念布局。
 
 ![虚拟群集的连接体系结构](./media/managed-instance-connectivity-architecture/connectivityarch003.png)
 
@@ -87,17 +87,17 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 
 使用服务辅助的子网配置时，用户可以完全控制数据 (TDS) 流量，而托管实例将负责确保管理流量不间断流动，以满足 SLA 的规定。
 
-服务辅助子网配置基于虚拟网络[子网委派](../virtual-network/subnet-delegation-overview.md)功能构建，可提供自动网络配置管理并启用服务终结点。 服务终结点可用于在存储帐户上配置虚拟网络防火墙规则，这些帐户保留备份/审核日志。
+服务辅助子网配置基于虚拟网络[子网委托](../virtual-network/subnet-delegation-overview.md)功能构建，提供自动网络配置管理并启用服务终结点。 服务终结点可用于在保存备份/审核日志的存储帐户上配置虚拟网络防火墙规则。
 
 ### <a name="network-requirements"></a>网络要求 
 
 在虚拟网络中的专用子网内部署托管实例。 该子网必须具有以下特征：
 
 - **专用子网：** 托管实例的子网不能包含与其关联的任何其他云服务，也不能是网关子网。 该子网不能包含除该托管实例以外的其他任何资源，以后无法在该子网中添加其他类型的资源。
-- **子网委派：** 托管实例的子网需要委派给`Microsoft.Sql/managedInstances`资源提供程序。
-- **网络安全组：：** NSG 需要与托管实例的子网关联。 当托管实例配置为使用重定向连接时，可以使用某个 NSG 通过筛选端口 1433 和端口 11000-11999 上的流量，来控制对托管实例数据终结点的访问。 服务将自动预配并保留所需的当前[规则](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration)，以便不间断地流管理流量。
-- **用户定义的路由 （UDR） 表：** UDR 表需要与托管实例的子网关联。 可将条目添加到路由表，以通过虚拟网络网关或虚拟网络设备 (NVA) 路由发往本地专用 IP 范围的流量。 服务将自动预配并保留所需的当前[条目](#user-defined-routes-with-service-aided-subnet-configuration)，以便不间断地流管理流量。
-- **足够的 IP 地址：** 托管实例子网必须至少具有 16 个 IP 地址。 建议的最少数目为 32 个 IP 地址。 有关详细信息，请参阅[确定托管实例的子网大小](sql-database-managed-instance-determine-size-vnet-subnet.md)。 根据[托管实例的网络要求](#network-requirements)配置托管实例后，可将其部署在[现有网络](sql-database-managed-instance-configure-vnet-subnet.md)中。 否则，请创建[新的网络和子网](sql-database-managed-instance-create-vnet-subnet.md)。
+- **子网委托：** 需要将托管实例的子网委托给`Microsoft.Sql/managedInstances`资源提供程序。
+- **网络安全组（NSG）：** NSG 需要与托管实例的子网相关联。 当托管实例配置为使用重定向连接时，可以使用某个 NSG 通过筛选端口 1433 和端口 11000-11999 上的流量，来控制对托管实例数据终结点的访问。 服务将自动预配和保留当前[规则](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration)，以允许不间断的管理流量流动。
+- **用户定义的路由（UDR）表：** UDR 表需要与托管实例的子网相关联。 可将条目添加到路由表，以通过虚拟网络网关或虚拟网络设备 (NVA) 路由发往本地专用 IP 范围的流量。 服务将自动设置并保留允许不间断管理流量流所需的当前[条目](#user-defined-routes-with-service-aided-subnet-configuration)。
+- **足够的 IP 地址：** 托管实例子网必须具有至少16个 IP 地址。 建议的最少数目为 32 个 IP 地址。 有关详细信息，请参阅[确定托管实例的子网大小](sql-database-managed-instance-determine-size-vnet-subnet.md)。 根据[托管实例的网络要求](#network-requirements)配置托管实例后，可将其部署在[现有网络](sql-database-managed-instance-configure-vnet-subnet.md)中。 否则，请创建[新的网络和子网](sql-database-managed-instance-create-vnet-subnet.md)。
 
 > [!IMPORTANT]
 > 创建托管实例时，将会针对子网应用网络意向策略，以防止对网络设置进行不合规的更改。 从子网中删除最后一个实例后，网络意向策略也会一并删除。
@@ -108,7 +108,7 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 |------------|----------------------------|--------|-----------------|-----------|------|
 |管理  |9000、9003、1438、1440、1452|TCP     |SqlManagement    |MI SUBNET  |Allow |
 |            |9000、9003                  |TCP     |CorpnetSaw       |MI SUBNET  |Allow |
-|            |9000、9003                  |TCP     |公司网络公共    |MI SUBNET  |Allow |
+|            |9000、9003                  |TCP     |CorpnetPublic    |MI SUBNET  |Allow |
 |mi_subnet   |任意                         |Any     |MI SUBNET        |MI SUBNET  |Allow |
 |health_probe|任意                         |Any     |AzureLoadBalancer|MI SUBNET  |Allow |
 
@@ -126,24 +126,24 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 |subnet-to-vnetlocal|MI SUBNET|虚拟网络|
 |mi-13-64-11-nexthop-internet|13.64.0.0/11|Internet|
 |mi-13-104-14-nexthop-internet|13.104.0.0/14|Internet|
-|mi-20-33-16-下一跳互联网|20.33.0.0/16|Internet|
+|mi-20-33-16-nexthop-internet|20.33.0.0/16|Internet|
 |mi-20-34-15-nexthop-internet|20.34.0.0/15|Internet|
 |mi-20-36-14-nexthop-internet|20.36.0.0/14|Internet|
 |mi-20-40-13-nexthop-internet|20.40.0.0/13|Internet|
-|mi-20-48-12-下一跳互联网|20.48.0.0/12|Internet|
-|mi-20-64-10-下一跳互联网|20.64.0.0/10|Internet|
+|mi-20-48-12-nexthop-internet|20.48.0.0/12|Internet|
+|mi-20-64-10-nexthop-internet|20.64.0.0/10|Internet|
 |mi-20-128-16-nexthop-internet|20.128.0.0/16|Internet|
-|mi-20-135-16-下一跳互联网|20.135.0.0/16|Internet|
-|mi-20-136-16-下一跳互联网|20.136.0.0/16|Internet|
+|mi-20-135-16-nexthop-internet|20.135.0.0/16|Internet|
+|mi-20-136-16-nexthop-internet|20.136.0.0/16|Internet|
 |mi-20-140-15-nexthop-internet|20.140.0.0/15|Internet|
-|mi-20-143-16-下一跳互联网|20.143.0.0/16|Internet|
+|mi-20-143-16-nexthop-internet|20.143.0.0/16|Internet|
 |mi-20-144-14-nexthop-internet|20.144.0.0/14|Internet|
 |mi-20-150-15-nexthop-internet|20.150.0.0/15|Internet|
 |mi-20-160-12-nexthop-internet|20.160.0.0/12|Internet|
 |mi-20-176-14-nexthop-internet|20.176.0.0/14|Internet|
 |mi-20-180-14-nexthop-internet|20.180.0.0/14|Internet|
 |mi-20-184-13-nexthop-internet|20.184.0.0/13|Internet|
-|mi-20-192-10-下一跳互联网|20.192.0.0/10|Internet|
+|mi-20-192-10-nexthop-internet|20.192.0.0/10|Internet|
 |mi-40-64-10-nexthop-internet|40.64.0.0/10|Internet|
 |mi-51-4-15-nexthop-internet|51.4.0.0/15|Internet|
 |mi-51-8-16-nexthop-internet|51.8.0.0/16|Internet|
@@ -190,7 +190,7 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 |mi-111-221-16-20-nexthop-internet|111.221.16.0/20|Internet|
 |mi-111-221-64-18-nexthop-internet|111.221.64.0/18|Internet|
 |mi-129-75-16-nexthop-internet|129.75.0.0/16|Internet|
-|mi-131-107-16-下一跳互联网|131.107.0.0/16|Internet|
+|mi-131-107-16-nexthop-internet|131.107.0.0/16|Internet|
 |mi-131-253-1-24-nexthop-internet|131.253.1.0/24|Internet|
 |mi-131-253-3-24-nexthop-internet|131.253.3.0/24|Internet|
 |mi-131-253-5-24-nexthop-internet|131.253.5.0/24|Internet|
@@ -224,7 +224,7 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 |mi-157-54-15-nexthop-internet|157.54.0.0/15|Internet|
 |mi-157-56-14-nexthop-internet|157.56.0.0/14|Internet|
 |mi-157-60-16-nexthop-internet|157.60.0.0/16|Internet|
-|mi-167-105-16-下一个跳-互联网|167.105.0.0/16|Internet|
+|mi-167-105-16-nexthop-internet|167.105.0.0/16|Internet|
 |mi-167-220-16-nexthop-internet|167.220.0.0/16|Internet|
 |mi-168-61-16-nexthop-internet|168.61.0.0/16|Internet|
 |mi-168-62-15-nexthop-internet|168.62.0.0/15|Internet|
@@ -280,19 +280,19 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 |mi-216-220-208-20-nexthop-internet|216.220.208.0/20|Internet|
 |mi-23-96-13-nexthop-internet|23.96.0.0/13|Internet|
 |mi-42-159-16-nexthop-internet|42.159.0.0/16|Internet|
-|mi-51-13-17-下一跳互联网|51.13.0.0/17|Internet|
+|mi-51-13-17-nexthop-internet|51.13.0.0/17|Internet|
 |mi-51-107-16-nexthop-internet|51.107.0.0/16|Internet|
 |mi-51-116-16-nexthop-internet|51.116.0.0/16|Internet|
 |mi-51-120-16-nexthop-internet|51.120.0.0/16|Internet|
-|mi-51-120-128-17-下一个跳-互联网|51.120.128.0/17|Internet|
+|mi-51-120-128-17-nexthop-internet|51.120.128.0/17|Internet|
 |mi-51-124-16-nexthop-internet|51.124.0.0/16|Internet|
-|mi-102-37-18-下一跳互联网|102.37.0.0/18|Internet|
-|mi-102-133-16-下一跳互联网|102.133.0.0/16|Internet|
-|mi-199-30-16-20 下一个跳互联网|199.30.16.0/20|Internet|
-|mi-204-79-180-24-下一个跳-互联网|204.79.180.0/24|Internet|
+|mi-102-37-18-nexthop-internet|102.37.0.0/18|Internet|
+|mi-102-133-16-nexthop-internet|102.133.0.0/16|Internet|
+|mi-199-30-16-20-nexthop-internet|199.30.16.0/20|Internet|
+|mi-204-79-180-24-nexthop-internet|204.79.180.0/24|Internet|
 ||||
 
-\*MI SUBNET 是指表单 x.x.x.x/y 中子网的 IP 地址范围。 可以在 Azure 门户上的子网属性中找到此信息。
+\*MI 子网是指采用 x.x.x.x/y 格式的子网的 IP 地址范围。 可以在 Azure 门户上的子网属性中找到此信息。
 
 此外，还可以将条目添加到路由表，以通过虚拟网络网关或虚拟网络设备 (NVA) 路由发往本地专用 IP 范围的流量。
 
@@ -300,23 +300,23 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 
 ### <a name="networking-constraints"></a>网络约束
 
-**TLS 1.2 在出站连接上强制执行**：2020 年 1 月，Microsoft 对所有 Azure 服务中的服务内流量强制实施 TLS 1.2。 对于 Azure SQL 数据库托管实例，这导致 TLS 1.2 在用于复制的出站连接上强制执行，并将服务器连接链接到 SQL Server。 如果您使用的 SQL Server 版本早于 2016 年托管实例，请确保已应用[TLS 1.2 特定更新](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)。
+在**出站连接上强制实施 tls 1.2**：在2020年1月，Microsoft 在所有 Azure 服务中的服务内流量中强制执行 tls 1.2。 对于 Azure SQL 数据库托管实例，这将导致在用于复制和链接服务器连接 SQL Server 的出站连接上强制实施 TLS 1.2。 如果使用托管实例的 SQL Server 版本低于2016，请确保已应用[TLS 1.2 特定的更新](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)。
 
 托管实例当前不支持以下虚拟网络功能：
-- **微软对等**：启用 Microsoft 对[等互连](../expressroute/expressroute-faqs.md#microsoft-peering)路由电路，直接或与虚拟网络进行对等，其中托管实例驻留影响虚拟网络中托管实例组件与它所依赖的服务之间的流量流，具体取决于导致可用性问题。 已启用 Microsoft 对等互连的托管实例部署到虚拟网络预期将失败。
-- **全局虚拟网络对等互连**：由于[记录的负载均衡器约束](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)，跨 Azure 区域的[虚拟网络对等](../virtual-network/virtual-network-peering-overview.md)互连对托管实例不起作用。
-- **AzurePlatformDNS**： 使用 AzurePlatformDNS[服务标记](../virtual-network/service-tags-overview.md)来阻止平台 DNS 解析将使托管实例不可用。 尽管托管实例支持客户定义的 DNS，用于引擎内的 DNS 解析，但平台操作依赖于平台 DNS。
-- **NAT 网关**：使用[虚拟网络 NAT](../virtual-network/nat-overview.md)控制具有特定公共 IP 地址的出站连接将使托管实例不可用。 托管实例服务目前仅限于使用基本负载均衡器，该平衡器不提供与虚拟网络 NAT 的入站和出站流共存。
+- **Microsoft 对等互连**：在快速路由线路上启用[Microsoft 对等互连](../expressroute/expressroute-faqs.md#microsoft-peering)在托管实例的虚拟网络中直接或间接地对等互连会影响虚拟网络内托管实例组件之间的通信流，以及它所依赖的服务将导致可用性问题。 已启用 Microsoft 对等互连的虚拟网络的托管实例部署应会失败。
+- **全局虚拟网络对等互连**： Azure 区域的[虚拟网络对等](../virtual-network/virtual-network-peering-overview.md)互连不能用于由于[负载均衡器约束所述](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)的托管实例。
+- **AzurePlatformDNS**：使用 AzurePlatformDNS [service 标记](../virtual-network/service-tags-overview.md)阻止平台 DNS 解析托管实例不可用。 尽管托管实例支持客户定义 DNS 以便在引擎内进行 DNS 解析，但平台操作的平台 DNS 存在依赖关系。
+- **NAT 网关**：使用[虚拟网络 NAT](../virtual-network/nat-overview.md)控制具有特定公共 IP 地址的出站连接托管实例不可用。 托管实例服务目前仅限于使用基本负载均衡器，不提供使用虚拟网络 NAT 的入站和出站流的 coexistance。
 
 ### <a name="deprecated-network-requirements-without-service-aided-subnet-configuration"></a>[已弃用] 不采用服务辅助子网配置时的网络要求
 
 在虚拟网络中的专用子网内部署托管实例。 该子网必须具有以下特征：
 
 - **专用子网：** 托管实例的子网不能包含与其关联的任何其他云服务，也不能是网关子网。 该子网不能包含除该托管实例以外的其他任何资源，以后无法在该子网中添加其他类型的资源。
-- **网络安全组：：** 与虚拟网络关联的 NSG 必须在任何其他规则之前定义[入站安全规则](#mandatory-inbound-security-rules)和[出站安全规则](#mandatory-outbound-security-rules)。 当托管实例配置为使用重定向连接时，可以使用某个 NSG 通过筛选端口 1433 和端口 11000-11999 上的流量，来控制对托管实例数据终结点的访问。
-- **用户定义的路由 （UDR） 表：** 与虚拟网络关联的 UDR 表必须包含特定的[条目](#user-defined-routes)。
-- **无服务终结点：** 不应将任何服务终结点与托管实例的子网关联。 创建虚拟网络时，请务必禁用“服务终结点”选项。
-- **足够的 IP 地址：** 托管实例子网必须至少具有 16 个 IP 地址。 建议的最少数目为 32 个 IP 地址。 有关详细信息，请参阅[确定托管实例的子网大小](sql-database-managed-instance-determine-size-vnet-subnet.md)。 根据[托管实例的网络要求](#network-requirements)配置托管实例后，可将其部署在[现有网络](sql-database-managed-instance-configure-vnet-subnet.md)中。 否则，请创建[新的网络和子网](sql-database-managed-instance-create-vnet-subnet.md)。
+- **网络安全组（NSG）：** 与虚拟网络关联的 NSG 必须在任何其他规则之前定义[入站安全规则](#mandatory-inbound-security-rules)和[出站安全规则](#mandatory-outbound-security-rules)。 当托管实例配置为使用重定向连接时，可以使用某个 NSG 通过筛选端口 1433 和端口 11000-11999 上的流量，来控制对托管实例数据终结点的访问。
+- **用户定义的路由（UDR）表：** 与虚拟网络关联的 UDR 表必须包含特定[项](#user-defined-routes)。
+- **无服务终结点：** 不应将服务终结点与托管实例的子网相关联。 创建虚拟网络时，请务必禁用“服务终结点”选项。
+- **足够的 IP 地址：** 托管实例子网必须具有至少16个 IP 地址。 建议的最少数目为 32 个 IP 地址。 有关详细信息，请参阅[确定托管实例的子网大小](sql-database-managed-instance-determine-size-vnet-subnet.md)。 根据[托管实例的网络要求](#network-requirements)配置托管实例后，可将其部署在[现有网络](sql-database-managed-instance-configure-vnet-subnet.md)中。 否则，请创建[新的网络和子网](sql-database-managed-instance-create-vnet-subnet.md)。
 
 > [!IMPORTANT]
 > 如果目标子网缺少这些特征，则无法部署新的托管实例。 创建托管实例时，将会针对子网应用网络意向策略，以防止对网络设置进行不合规的更改。 从子网中删除最后一个实例后，网络意向策略也会一并删除。
@@ -339,7 +339,7 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 > [!IMPORTANT]
 > 确保端口 9000、9003、1438、1440、1452 只有一个入站规则，端口 443、12000 只有一个出站规则。 如果单独为每个端口配置入站和出站规则，则无法通过 Azure 资源管理器部署预配托管实例。 如果这些端口在单独的规则中，则部署将会失败并出现错误代码 `VnetSubnetConflictWithIntendedPolicy`
 
-\*MI SUBNET 是指表单 x.x.x.x/y 中子网的 IP 地址范围。 可以在 Azure 门户上的子网属性中找到此信息。
+\*MI 子网是指采用 x.x.x.x/y 格式的子网的 IP 地址范围。 可以在 Azure 门户上的子网属性中找到此信息。
 
 > [!IMPORTANT]
 > 尽管所需的入站安全规则允许来自端口 9000、9003、1438、1440 和 1452 上的任意资源的流量，但这些端口受内置防火墙的保护__。 有关详细信息，请参阅[确定管理终结点地址](sql-database-managed-instance-find-management-endpoint-ip-address.md)。
@@ -354,24 +354,24 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 |subnet_to_vnetlocal|MI SUBNET|虚拟网络|
 |mi-13-64-11-nexthop-internet|13.64.0.0/11|Internet|
 |mi-13-104-14-nexthop-internet|13.104.0.0/14|Internet|
-|mi-20-33-16-下一跳互联网|20.33.0.0/16|Internet|
+|mi-20-33-16-nexthop-internet|20.33.0.0/16|Internet|
 |mi-20-34-15-nexthop-internet|20.34.0.0/15|Internet|
 |mi-20-36-14-nexthop-internet|20.36.0.0/14|Internet|
 |mi-20-40-13-nexthop-internet|20.40.0.0/13|Internet|
-|mi-20-48-12-下一跳互联网|20.48.0.0/12|Internet|
-|mi-20-64-10-下一跳互联网|20.64.0.0/10|Internet|
+|mi-20-48-12-nexthop-internet|20.48.0.0/12|Internet|
+|mi-20-64-10-nexthop-internet|20.64.0.0/10|Internet|
 |mi-20-128-16-nexthop-internet|20.128.0.0/16|Internet|
-|mi-20-135-16-下一跳互联网|20.135.0.0/16|Internet|
-|mi-20-136-16-下一跳互联网|20.136.0.0/16|Internet|
+|mi-20-135-16-nexthop-internet|20.135.0.0/16|Internet|
+|mi-20-136-16-nexthop-internet|20.136.0.0/16|Internet|
 |mi-20-140-15-nexthop-internet|20.140.0.0/15|Internet|
-|mi-20-143-16-下一跳互联网|20.143.0.0/16|Internet|
+|mi-20-143-16-nexthop-internet|20.143.0.0/16|Internet|
 |mi-20-144-14-nexthop-internet|20.144.0.0/14|Internet|
 |mi-20-150-15-nexthop-internet|20.150.0.0/15|Internet|
 |mi-20-160-12-nexthop-internet|20.160.0.0/12|Internet|
 |mi-20-176-14-nexthop-internet|20.176.0.0/14|Internet|
 |mi-20-180-14-nexthop-internet|20.180.0.0/14|Internet|
 |mi-20-184-13-nexthop-internet|20.184.0.0/13|Internet|
-|mi-20-192-10-下一跳互联网|20.192.0.0/10|Internet|
+|mi-20-192-10-nexthop-internet|20.192.0.0/10|Internet|
 |mi-40-64-10-nexthop-internet|40.64.0.0/10|Internet|
 |mi-51-4-15-nexthop-internet|51.4.0.0/15|Internet|
 |mi-51-8-16-nexthop-internet|51.8.0.0/16|Internet|
@@ -418,7 +418,7 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 |mi-111-221-16-20-nexthop-internet|111.221.16.0/20|Internet|
 |mi-111-221-64-18-nexthop-internet|111.221.64.0/18|Internet|
 |mi-129-75-16-nexthop-internet|129.75.0.0/16|Internet|
-|mi-131-107-16-下一跳互联网|131.107.0.0/16|Internet|
+|mi-131-107-16-nexthop-internet|131.107.0.0/16|Internet|
 |mi-131-253-1-24-nexthop-internet|131.253.1.0/24|Internet|
 |mi-131-253-3-24-nexthop-internet|131.253.3.0/24|Internet|
 |mi-131-253-5-24-nexthop-internet|131.253.5.0/24|Internet|
@@ -452,7 +452,7 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 |mi-157-54-15-nexthop-internet|157.54.0.0/15|Internet|
 |mi-157-56-14-nexthop-internet|157.56.0.0/14|Internet|
 |mi-157-60-16-nexthop-internet|157.60.0.0/16|Internet|
-|mi-167-105-16-下一个跳-互联网|167.105.0.0/16|Internet|
+|mi-167-105-16-nexthop-internet|167.105.0.0/16|Internet|
 |mi-167-220-16-nexthop-internet|167.220.0.0/16|Internet|
 |mi-168-61-16-nexthop-internet|168.61.0.0/16|Internet|
 |mi-168-62-15-nexthop-internet|168.62.0.0/15|Internet|
@@ -508,16 +508,16 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 |mi-216-220-208-20-nexthop-internet|216.220.208.0/20|Internet|
 |mi-23-96-13-nexthop-internet|23.96.0.0/13|Internet|
 |mi-42-159-16-nexthop-internet|42.159.0.0/16|Internet|
-|mi-51-13-17-下一跳互联网|51.13.0.0/17|Internet|
+|mi-51-13-17-nexthop-internet|51.13.0.0/17|Internet|
 |mi-51-107-16-nexthop-internet|51.107.0.0/16|Internet|
 |mi-51-116-16-nexthop-internet|51.116.0.0/16|Internet|
 |mi-51-120-16-nexthop-internet|51.120.0.0/16|Internet|
-|mi-51-120-128-17-下一个跳-互联网|51.120.128.0/17|Internet|
+|mi-51-120-128-17-nexthop-internet|51.120.128.0/17|Internet|
 |mi-51-124-16-nexthop-internet|51.124.0.0/16|Internet|
-|mi-102-37-18-下一跳互联网|102.37.0.0/18|Internet|
-|mi-102-133-16-下一跳互联网|102.133.0.0/16|Internet|
-|mi-199-30-16-20 下一个跳互联网|199.30.16.0/20|Internet|
-|mi-204-79-180-24-下一个跳-互联网|204.79.180.0/24|Internet|
+|mi-102-37-18-nexthop-internet|102.37.0.0/18|Internet|
+|mi-102-133-16-nexthop-internet|102.133.0.0/16|Internet|
+|mi-199-30-16-20-nexthop-internet|199.30.16.0/20|Internet|
+|mi-204-79-180-24-nexthop-internet|204.79.180.0/24|Internet|
 ||||
 
 ## <a name="next-steps"></a>后续步骤
@@ -527,6 +527,6 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于该实例
 - [计算用于部署托管实例的子网的大小](sql-database-managed-instance-determine-size-vnet-subnet.md)。
 - 了解如何通过以下方式创建托管实例：
   - 从[Azure 门户](sql-database-managed-instance-get-started.md)。
-  - 通过使用[PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md)。
-  - 通过使用[Azure 资源管理器模板](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/)。
+  - 使用[PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md)。
+  - 使用[Azure 资源管理器模板](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/)。
   - 使用 [Azure 资源管理器模板（使用包含 SSMS 的 JumpBox）](https://azure.microsoft.com/resources/templates/201-sqlmi-new-vnet-w-jumpbox/)。 

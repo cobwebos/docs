@@ -10,10 +10,10 @@ ms.topic: reference
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: bceea53e6b177940305a2dc77f2a6ecfa37f277a
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81617897"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault 客户数据功能
@@ -40,7 +40,7 @@ Azure Key Vault 在创建或更新保管库、密钥、机密、证书和托管�
 
 用于创建保管库、密钥、机密、证书和托管存储帐户的相同 REST API、门户体验和 SDK 也能够更新和删除这些对象。
 
-软删除允许您在删除后 90 天内恢复已删除的数据。 使用软删除时，通过执行清除操作，在 90 天保留期到期之前，可能会永久删除数据。 如果保管库或订阅已配置为阻止清除操作，则不能在计划的保留期结束前永久删除数据。
+通过软删除，你可以在删除后的90天内恢复已删除的数据。 使用软删除时，在90天的保留期到期之前，数据可能会被永久删除。 如果保管库或订阅已配置为阻止清除操作，则不能在计划的保留期结束前永久删除数据。
 
 ## <a name="exporting-customer-data"></a>导出客户数据
 
@@ -52,7 +52,7 @@ Azure Key Vault 诊断日志包含可通过在用户隐私门户中发出导出�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure 密钥保管库日志记录](logging.md)）
+- [Azure Key Vault 日志记录](logging.md)）
 
 - [Azure Key Vault 软删除概述](soft-delete-cli.md)
 

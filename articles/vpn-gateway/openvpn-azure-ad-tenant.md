@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/17/2020
 ms.author: alzam
 ms.openlocfilehash: 00db2ed05285a1637414aa1e3adbe3b047ff0568
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81641350"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>为 P2S OpenVPN 协议连接创建 Azure Active Directory 租户
@@ -25,7 +25,7 @@ ms.locfileid: "81641350"
 
 ## <a name="1-verify-azure-ad-tenant"></a><a name="tenant"></a>1. 验证 Azure AD 租户
 
-验证您是否具有 Azure AD 租户。 如果没有 Azure AD 租户，则可以使用["创建新租户](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)"文章中的步骤创建一个租户：
+验证你是否拥有 Azure AD 租户。 如果没有 Azure AD 租户，可以使用[创建新租户](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)一文中的步骤创建一个租户：
 
 * 组织名称
 * 初始域名
@@ -34,16 +34,16 @@ ms.locfileid: "81641350"
 
    ![新 Azure AD 租户](./media/openvpn-create-azure-ad-tenant/newtenant.png)
 
-## <a name="2-create-azure-ad-tenant-users"></a><a name="users"></a>2. 创建 Azure AD 租户用户
+## <a name="2-create-azure-ad-tenant-users"></a><a name="users"></a>2.创建 Azure AD 租户用户
 
 Azure AD 租户需要以下帐户：全局管理员帐户和主用户帐户。 主要用户帐户用作主要嵌入帐户（服务帐户）。 创建 Azure AD 租户用户帐户时，可以根据要创建的用户类型调整目录角色。
 
-使用[此文](../active-directory/fundamentals/add-users-azure-active-directory.md)中的步骤为 Azure AD 租户创建至少两个用户。 若要创建帐户类型，请务必更改“目录角色”：****
+使用[此文](../active-directory/fundamentals/add-users-azure-active-directory.md)中的步骤为 Azure AD 租户创建至少两个用户。 若要创建帐户类型，请务必更改“目录角色”： 
 
 * 全局管理员
-* 用户
+* User
 
-## <a name="3-enable-azure-ad-authentication-on-the-vpn-gateway"></a><a name="enable-authentication"></a>3. 在 VPN 网关上启用 Azure AD 身份验证
+## <a name="3-enable-azure-ad-authentication-on-the-vpn-gateway"></a><a name="enable-authentication"></a>3.在 VPN 网关上启用 Azure AD 身份验证
 
 1. 找到要用于身份验证的目录的目录 ID。 此 ID 在“Active Directory”页的“属性”部分中列出。
 
@@ -51,11 +51,11 @@ Azure AD 租户需要以下帐户：全局管理员帐户和主用户帐户。 �
 
 2. 复制“目录 ID”。
 
-3. 以拥有“全局管理员”角色的用户身份登录到 Azure 门户。****
+3. 以拥有“全局管理员”角色的用户身份登录到 Azure 门户。 
 
 4. 接下来，做出管理员许可。 在浏览器的地址栏中复制并粘贴与部署位置相关的 URL：
 
-    Public
+    公共
 
     ```
     https://login.microsoftonline.com/common/oauth2/authorize?client_id=41b23e61-6c1e-4545-b367-cd054e0ed4b4&response_type=code&redirect_uri=https://portal.azure.com&nonce=1234&prompt=admin_consent
@@ -79,15 +79,15 @@ Azure AD 租户需要以下帐户：全局管理员帐户和主用户帐户。 �
     https://login.chinacloudapi.cn/common/oauth2/authorize?client_id=49f817b6-84ae-4cc0-928c-73f27289b3aa&response_type=code&redirect_uri=https://portal.azure.cn&nonce=1234&prompt=admin_consent
     ```
 
-5. 出现提示时，请选择“全局管理员”帐户。****
+5. 出现提示时，请选择“全局管理员”帐户。 
 
     ![Directory ID](./media/openvpn-create-azure-ad-tenant/pick.png)
 
-6. 出现提示时，请选择“接受”。****
+6. 出现提示时，请选择“接受”。 
 
     ![Accept](./media/openvpn-create-azure-ad-tenant/accept.jpg)
 
-7. 在 Azure AD 下的“企业应用程序”中，将会发现已列出“Azure VPN”。********
+7. 在 Azure AD 下的“企业应用程序”中，将会发现已列出“Azure VPN”。  
 
     ![Azure VPN](./media/openvpn-create-azure-ad-tenant/azurevpn.png)
     

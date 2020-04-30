@@ -8,10 +8,10 @@ ms.date: 05/22/2017
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: f195a5c05c6c95dac898b2d471747952a3446d52
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81681717"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-with-coscale"></a>（已弃用）使用 CoScale 监视 Azure 容器服务 Kubernetes 群集
@@ -30,7 +30,7 @@ CoScale 是一种监视平台，用于从多个业务流程平台中的所有容
 如本文中所示，可以在 Kubernetes 群集上安装代理以将 CoScale 作为 SaaS 解决方案运行。 如果想要就地保留数据，CoScale 还可用于本地安装。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 首先需要[创建 CoScale 帐户](https://web.archive.org/web/20170507123133/https://www.coscale.com/free-trial)。
 
@@ -59,7 +59,7 @@ az acs kubernetes install-cli
 ```
 
 ## <a name="installing-the-coscale-agent-with-a-daemonset"></a>使用 DaemonSet 安装 CoScale 代理
-Kubernetes 使用[守护进程](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)在群集中的每个主机上运行容器的单个实例。
+Kubernetes 使用[daemonset](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)在群集中的每个主机上运行一个容器实例。
 DaemonSet 还特别适合用于运行监视代理，例如 CoScale 代理。
 
 登录到 CoScale 后，请转到[代理页](https://developer.newrelic.com/)，使用 DaemonSet 在群集上安装 CoScale 代理。 CoScale UI 提供引导式配置步骤，用于创建代理并开始监视完整的 Kubernetes 群集。

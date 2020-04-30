@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: wesmc
 ms.openlocfilehash: 03f9d58cab725335b0f4090ac1a7289c32c0af7f
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81640547"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>将 Raspberry Pi 连接到 Azure IoT 中心 (C)
@@ -103,7 +103,7 @@ ms.locfileid: "81640547"
 
 2. 将 Raspbian 安装到 microSD 卡。
 
-   1. [下载并安装蚀刻SD卡刻录机实用程序](https://etcher.io/)。
+   1. [下载并安装 Etcher SD 卡刻录机实用工具](https://etcher.io/)。
 
    2. 运行 Etcher 并选择你在步骤 1 中提取的 Raspbian 映像。
 
@@ -119,11 +119,11 @@ ms.locfileid: "81640547"
 
 1. 将 Pi 连接到监视器、键盘和鼠标，启动 Pi，然后通过将 `pi` 用作用户名并将 `raspberry` 用作密码来登录 Raspbian。
  
-2. 点击树莓图标>**偏好** > **树莓派配置**。
+2. 依次单击 Raspberry 图标 >“首选项”   > “Raspberry Pi 配置”  。
 
    ![Raspbian 首选项菜单](./media/iot-hub-raspberry-pi-kit-c-get-started/1-raspbian-preferences-menu.png)
 
-3. 在“接口”**** 选项卡上，将“SPI”**** 和“SSH”**** 设置为“启用”****，并单击“确定”****。 如果没有物理传感器并且想要使用模拟的传感器数据，则此步骤是可选的。
+3. 在“接口”  选项卡上，将“SPI”  和“SSH”  设置为“启用”  ，并单击“确定”  。 如果没有物理传感器并且想要使用模拟的传感器数据，则此步骤是可选的。
 
    ![在 Raspberry Pi 上启用 SPI 和 SSH](./media/iot-hub-raspberry-pi-kit-c-get-started/2-enable-spi-ssh-on-raspberry-pi.png)
 
@@ -133,7 +133,7 @@ ms.locfileid: "81640547"
 
 ### <a name="connect-the-sensor-to-pi"></a>将传感器连接到 Pi
 
-使用试验板和跳线，将 LED 灯和 BME280 连接到 Pi，如下所示。 如果没有传感器，[请跳过此部分](#connect-pi-to-the-network)。
+使用试验板和跳线，将 LED 灯和 BME280 连接到 Pi，如下所示。 如果没有该传感器，请[跳过此部分](#connect-pi-to-the-network)。
 
 ![Raspberry Pi 和传感器连接](./media/iot-hub-raspberry-pi-kit-c-get-started/3-raspberry-pi-sensor-connection.png)
 
@@ -201,7 +201,7 @@ BME280 传感器可收集温度和湿度数据。 如果设备和云之间有通
    ```
 
    > [!NOTE] 
-   > 如果没有物理 BME280，可使用“--simulated-data”作为命令行参数来模拟温度和湿度数据****。 `sudo ./setup.sh --simulated-data`
+   > 如果没有物理 BME280，可使用“--simulated-data”作为命令行参数来模拟温度和湿度数据  。 `sudo ./setup.sh --simulated-data`
    >
 
 ### <a name="build-and-run-the-sample-application"></a>生成并运行示例应用程序

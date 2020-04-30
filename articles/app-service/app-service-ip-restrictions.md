@@ -8,29 +8,29 @@ ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 298555da2056bc4c16d4d7b16615604f9798b91b
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81639273"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure 应用服务访问限制
 
 使用访问限制可以定义一个按优先级排序的允许/拒绝列表，用于控制在网络中对应用的访问。 该列表可以包含 IP 地址或 Azure 虚拟网络子网。 如果存在一个或多个条目，则在列表末尾会存在一个隐式的“拒绝所有”。
 
-访问限制功能适用于所有应用服务托管工作负载，包括：Web 应用、API 应用、Linux 应用程序、Linux 容器应用和功能。
+访问限制功能适用于所有应用服务托管的工作负载，包括：web 应用、API 应用、Linux 应用、Linux 容器应用和功能。
 
 向应用发出请求时，将会根据访问限制列表中的 IP 地址规则评估 FROM IP 地址。 如果 FROM 地址位于配置为使用 Microsoft.Web 服务终结点的子网中，则会根据访问限制列表中的虚拟网络规则比较源子网。 如果列表中的规则不允许访问该地址，则服务会以 [HTTP 403](https://en.wikipedia.org/wiki/HTTP_403) 状态代码进行答复。
 
 访问限制功能是在应用服务前端角色（即代码运行所在的辅助角色主机中的上游）中实现的。 因此，访问限制是有效的网络 ACL。
 
-限制从 Azure 虚拟网络 (VNet) 访问 Web 应用的功能称为[服务终结点][serviceendpoints]。 使用服务终结点可以限制为从选定的子网对多租户服务进行访问。 必须在网络端以及用于启用该功能的服务中启用该功能。 将流量限制为在应用服务环境中托管的应用不起作用。 如果您处于应用服务环境，则可以使用 IP 地址规则控制对应用的访问。
+限制从 Azure 虚拟网络 (VNet) 访问 Web 应用的功能称为[服务终结点][serviceendpoints]。 使用服务终结点可以限制为从选定的子网对多租户服务进行访问。 必须在网络端以及用于启用该功能的服务中启用该功能。 它不能用于将流量限制到应用服务环境中托管的应用。 如果你使用的是应用服务环境，则可以使用 IP 地址规则控制对应用程序的访问。
 
 ![访问限制流](media/app-service-ip-restrictions/access-restrictions-flow.png)
 
 ## <a name="adding-and-editing-access-restriction-rules-in-the-portal"></a>在门户中添加并编辑访问限制规则 ##
 
-要向应用添加访问限制规则，请使用菜单打开**网络**>**访问限制**，然后单击"**配置访问限制"**
+若要向应用添加访问限制规则，请使用菜单打开“网络”>“访问限制”，然后单击“配置访问限制”   
 
 ![应用服务网络选项](media/app-service-ip-restrictions/access-restrictions.png)  
 
@@ -42,7 +42,7 @@ ms.locfileid: "81639273"
 
 ## <a name="adding-ip-address-rules"></a>添加 IP 地址规则
 
-您可以单击 **[ 添加规则]** 添加新的访问限制规则。 规则在添加后会立即生效。 规则会从最小的数字开始往上，按优先级顺序强制执行。 即使仅添加了一个规则，一个隐式的“拒绝所有”也会立即生效。
+可单击“[+] 添加规则”以添加新的访问限制规则  。 规则在添加后会立即生效。 规则会从最小的数字开始往上，按优先级顺序强制执行。 即使仅添加了一个规则，一个隐式的“拒绝所有”也会立即生效。
 
 创建规则时，必须选择“允许/拒绝”以及规则的类型。 此时，需要提供优先级值，以及要限制访问的内容。  可以选择性地添加规则的名称和说明。  
 
@@ -70,21 +70,21 @@ ms.locfileid: "81639273"
 
 ![编辑访问限制规则](media/app-service-ip-restrictions/access-restrictions-vnet-edit.png)
 
-要删除规则，请单击规则上的 **...** **Remove**
+若要删除某个规则，请单击规则上的“...”然后单击“删除”   。
 
 ![删除访问限制规则](media/app-service-ip-restrictions/access-restrictions-delete.png)
 
 ## <a name="blocking-a-single-ip-address"></a>阻止单个 IP 地址 ##
 
-添加第一个 IP 限制规则时，该服务将添加优先级为 2147483647 的显式 **"拒绝所有**规则"。 实际上，显式**拒绝所有**规则将是最后一个执行的规则，并将阻止访问使用**Allow**规则显式允许的任何 IP 地址。
+添加第一个 IP 限制规则时，服务将添加优先级为 2147483647 的显式“全部拒绝”  规则。 实际上，显式“全部拒绝”  规则将是最后执行的规则，并将阻止访问使用“允许”  规则未明确允许的任何 IP 地址。
 
-如果用户希望显式阻止单个 IP 地址或 IP 地址块，但允许所有其他访问，则有必要添加一个显式的“全部允许”**** 规则。
+如果用户希望显式阻止单个 IP 地址或 IP 地址块，但允许所有其他访问，则有必要添加一个显式的“全部允许”  规则。
 
 ![阻止单个 IP 地址](media/app-service-ip-restrictions/block-single-address.png)
 
 ## <a name="scm-site"></a>SCM 站点 
 
-除了能够控制对应用的访问以外，还可以限制对应用所用的 scm 站点的访问。 scm 站点是 Web 部署终结点，也是 Kudu 控制台。 对于 scm 站点，可以分配不同于应用的访问限制；也可以对应用和 scm 站点使用相同的设置。 当您选中该框以具有与应用相同的限制时，一切都将空白。如果取消选中该框，则应用之前在 scm 站点上的任何设置。 
+除了能够控制对应用的访问以外，还可以限制对应用所用的 scm 站点的访问。 scm 站点是 Web 部署终结点，也是 Kudu 控制台。 对于 scm 站点，可以分配不同于应用的访问限制；也可以对应用和 scm 站点使用相同的设置。 选中相应的框来使用与应用相同的限制时，所有设置都会留空。如果取消选中该框，将应用前面针对 scm 站点指定的所有设置。 
 
 ![列出访问限制](media/app-service-ip-restrictions/access-restrictions-scm-browse.png)
 
@@ -125,12 +125,12 @@ management.azure.com/subscriptions/subscription ID/resourceGroups/resource group
 }
 ```
 
-## <a name="azure-functions-access-restrictions"></a>Azure 函数访问限制
+## <a name="azure-functions-access-restrictions"></a>Azure Functions 访问限制
 
-具有与应用服务计划相同的功能的功能应用也可用于访问限制。 启用访问限制会针对任何不允许的 IP 禁用门户代码编辑器。
+与应用服务计划具有相同功能的函数应用还提供访问限制。 启用访问限制会针对任何不允许的 IP 禁用门户代码编辑器。
 
 ## <a name="next-steps"></a>后续步骤
-[Azure 函数的访问限制](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
+[Azure Functions 的访问限制](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
 
 [应用程序网关与服务终结点的集成](networking/app-gateway-with-service-endpoints.md)
 

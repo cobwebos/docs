@@ -11,10 +11,10 @@ ms.date: 03/20/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: f18f44208b97ab5bc8d9cd9ff01d604c62deb963
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678164"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义策略
@@ -43,9 +43,9 @@ ms.locfileid: "81678164"
 - 扩展文件  保存租户的唯一配置更改。
 - 信赖方 (RP) 文件  注重单个任务的文件，由应用程序或服务（又称信赖方）直接调用。 每个唯一任务需要自身的 RP，根据品牌要求，该数字可能是“应用程序总数 x 用例总数”。
 
-Azure AD B2C 中的用户流遵循上面描述的文件模式，但开发人员只看到 RP 文件，而 Azure 门户在后台对扩展文件进行更改。
+Azure AD B2C 中的用户流遵循前面所述的文件模式，但开发人员只能看到 RP 文件，而 Azure 门户会在后台向扩展文件进行更改。
 
-尽管有三种类型的策略文件，但您并不仅限于三个文件。 您可能有多个每个文件类型的文件。 例如，如果您不想对扩展名文件进行更改，则可以创建扩展程序2文件以进一步扩展扩展文件。
+尽管有三种类型的策略文件，但并不局限于三个文件。 您可能有每个文件类型的多个文件。 例如，如果不想对扩展文件进行更改，则可以创建一个 Extensions2 文件来进一步扩展扩展文件。
 
 ## <a name="custom-policy-core-concepts"></a>自定义策略核心概念
 

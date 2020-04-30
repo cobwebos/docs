@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 配置每个站点的 WAF 策略
+title: 使用 PowerShell 配置每站点 WAF 策略
 titleSuffix: Azure Web Application Firewall
 description: 了解如何使用 Azure PowerShell 在应用程序网关上配置每个站点的 Web 应用程序防火墙策略。
 services: web-application-firewall
@@ -9,19 +9,19 @@ ms.date: 01/24/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 1301db56cab36ae623bb94cfac97b8e4bdb934e5
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81682480"
 ---
-# <a name="configure-per-site-waf-policies-using-azure-powershell"></a>使用 Azure PowerShell 配置每个站点 WAF 策略
+# <a name="configure-per-site-waf-policies-using-azure-powershell"></a>使用 Azure PowerShell 配置每个站点的 WAF 策略
 
-Web 应用程序防火墙 （WAF） 设置包含在 WAF 策略中，要更改 WAF 配置，请修改 WAF 策略。
+Web 应用程序防火墙（WAF）设置包含在 WAF 策略中，用于更改你修改了 WAF 策略的 WAF 配置。
 
-与应用程序网关关联时，策略和所有设置将全局反映。 因此，如果您的 WAF 后面有五个站点，则所有五个站点都受同一 WAF 策略的保护。 如果您需要每个站点的相同安全设置，这很棒。 但是，您也可以将 WAF 策略应用于单个侦听器，以允许特定于站点的 WAF 配置。
+与应用程序网关关联时，策略和所有设置将在全局范围内反映出来。 因此，如果你在 WAF 后面有5个站点，则所有5个站点都受相同的 WAF 策略保护。 如果对每个站点需要相同的安全设置，则此设置非常有用。 不过，你也可以将 WAF 策略应用到各个侦听器，以允许站点特定的 WAF 配置。
 
-通过将 WAF 策略应用于侦听器，可以为各个站点配置 WAF 设置，而无需更改影响每个站点。 最具体的政策是先例。 如果存在全局策略和每个站点策略（与侦听器关联的 WAF 策略），则每个站点策略将覆盖该侦听器的全局 WAF 策略。 没有自己策略的其他侦听器将仅受全局 WAF 策略的影响。
+通过将 WAF 策略应用到侦听器，可以为各个站点配置 WAF 设置，而不会影响每个站点的更改。 最具体的策略采用引用单元。 如果有全局策略和每个站点策略（与侦听器关联的 WAF 策略），则每个站点策略会替代该侦听器的全局 WAF 策略。 不具有其自己的策略的其他侦听器仅受全局 WAF 策略的影响。
 
 在本文中，学习如何：
 
@@ -42,7 +42,7 @@ Web 应用程序防火墙 （WAF） 设置包含在 WAF 策略中，要更改 WA
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount` 以创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount` 以创建与 Azure 的连接。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -134,9 +134,9 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-two-waf-policies"></a>创建两个 WAF 策略
 
-创建两个 WAF 策略，每个站点一个全局策略和一个策略，并添加自定义规则。 
+创建两个 WAF 策略，每个站点有一个全局策略，并添加自定义规则。 
 
-每个站点的策略将文件上载限制限制限制为 5 MB。 其他一切都是一样的。
+每个站点策略会将文件上传限制限制为 5 MB。 其他所有内容都是相同的。
 
 ```azurepowershell-interactive
 $variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestUri
@@ -250,9 +250,9 @@ $appgw = New-AzApplicationGateway `
   -FirewallPolicy $wafPolicyGlobal
 ```
 
-### <a name="apply-a-per-uri-policy"></a>应用每个 URI 策略
+### <a name="apply-a-per-uri-policy"></a>应用每 URI 策略
 
-要应用每个 URI 策略，只需创建新策略并将其应用于路径规则配置即可。 
+若要应用每个 URI 策略，只需创建一个新策略，并将其应用于路径规则配置。 
 
 ```azurepowershell-interactive
 $policySettingURI = New-AzApplicationGatewayFirewallPolicySetting `
@@ -406,7 +406,7 @@ Set-AzDiagnosticSetting `
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 
-可以使用 [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) 获取应用程序网关的公共 IP 地址。 然后使用此 IP 地址卷曲（替换如下所示的 1.1.1.1）。 
+可以使用 [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) 获取应用程序网关的公共 IP 地址。 然后使用此 IP 地址来弯曲（替换下面显示的1.1.1.1）。 
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress

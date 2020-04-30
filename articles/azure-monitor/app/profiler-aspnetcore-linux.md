@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: d845e245a242a88d16a2597f0144a0ae4a727cb0
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81640974"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>使用 Application Insights Profiler 探查 ASP.NET Core Azure Linux Web 应用
@@ -23,7 +23,7 @@ ms.locfileid: "81640974"
 
 ![探查器跟踪](./media/profiler-aspnetcore-linux/profiler-traces.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 以下说明适用于所有 Windows、Linux 和 Mac 开发环境：
 
 * 安装 [.NET Core SDK 2.1.2 或更高版本](https://dotnet.microsoft.com/download/archives)。
@@ -150,7 +150,7 @@ ms.locfileid: "81640974"
 
 ## <a name="add-application-insights-to-monitor-your-web-apps"></a>添加 Application Insights 来监视 Web 应用
 
-1. [创建应用程序见解资源](./../../azure-monitor/app/create-new-resource.md )。
+1. [创建 Application Insights 资源](./../../azure-monitor/app/create-new-resource.md )。
 
 2. 复制 Application Insights 资源的 **iKey** 并在 Web 应用中指定以下设置：
 

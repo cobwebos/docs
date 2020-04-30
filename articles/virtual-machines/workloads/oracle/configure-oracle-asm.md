@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: aa65b789d02c60ef6042aa62e1c138c0e1bd7224
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81676902"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上设置 Oracle ASM  
@@ -210,7 +210,7 @@ ssh <publicIpAddress>
    fdisk /dev/sdc
    ```
    
-   使用上面提供的答案，该命令的`fdisk`输出应如下所示：
+   使用上面提供的答案， `fdisk`命令的输出应如下所示：
 
    ```output
    Device contains not a valid DOS partition table, or Sun, SGI or OSF disklabel
@@ -246,7 +246,7 @@ ssh <publicIpAddress>
    Syncing disks.
    ```
 
-4. `fdisk`对`/dev/sdd`的 重复上述`/dev/sde`命令`/dev/sdf`， 和 。
+4. 对`fdisk` `/dev/sdd`、 `/dev/sde`和`/dev/sdf`重复前面的命令。
 
 5. 检查磁盘配置：
 
@@ -427,7 +427,7 @@ ssh <publicIpAddress>
    > 该密钥必须包含字符串 `ssh-rsa`。 此外，密钥的内容必须是单行文本。
    >  
 
-6. 在客户端系统上启动 PuTTY。 在 **"类别"** 窗格中，**转到连接** > **SSH** > **Auth**。在**用于身份验证的专用密钥文件中**，浏览到之前生成的密钥。
+6. 在客户端系统上启动 PuTTY。 在 "**类别**" 窗格中，请参阅**连接** > **SSH** > **身份验证**。在 "**身份验证的私钥文件**" 框中，浏览到之前生成的密钥。
 
    ![SSH 身份验证选项屏幕截图](./media/oracle-asm/setprivatekey.png)
 
@@ -443,7 +443,7 @@ ssh <publicIpAddress>
 
 若要安装 Oracle Grid Infrastructure，请完成以下步骤：
 
-1. 以**网格**身份登录。 （应该可以直接登录，系统不会提示输入密码。） 
+1. 以**网格格式**登录。 （应该可以直接登录，系统不会提示输入密码。） 
 
    > [!NOTE]
    > 如果运行的是 Windows，请确保在开始安装之前已启动 Xming。

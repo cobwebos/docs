@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: alkohli
 ms.openlocfilehash: 74d38af4a64a184b26bd6ba1105db0d2530d8ba6
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81676404"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box 和 Azure Data Box Heavy 的跟踪与事件日志记录
@@ -47,7 +47,7 @@ Data Box 或 Data Box Heavy 订单会经历以下步骤：订购、设置、数�
 - 在订单级别分配一个角色。 用户只拥有角色定义的权限，只能与该特定的 Data Box 订单交互，而没有任何其他权限。
 - 在资源组级别分配一个角色，这样，用户便有权访问资源组中的所有 Data Box 订单。
 
-有关建议的 RBAC 使用的详细信息，请参阅[Azure RBAC 的最佳做法](../role-based-access-control/best-practices.md)。
+有关建议 RBAC 使用的详细信息，请参阅[AZURE RBAC 的最佳实践](../role-based-access-control/best-practices.md)。
 
 ## <a name="track-the-order"></a>跟踪订单
 

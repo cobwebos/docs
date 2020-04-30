@@ -7,17 +7,17 @@ ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
 ms.openlocfilehash: a1ff8e0aedce5d3a6acc9a39084cf0839efdd88e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678444"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用依赖项注入
 
 Azure Functions 支持依赖项注入 (DI) 软件设计模式，这是在类及其依赖项之间实现[控制反转 (IoC)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) 的一种技术。
 
-- Azure Functions 中的依赖项注入基于 .NET Core 依赖项注入功能。 建议熟悉[.NET 核心依赖项注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)。 There are differences in how you override dependencies and how configuration values are read with Azure Functions on the Consumption plan.
+- Azure Functions 中的依赖项注入基于 .NET Core 依赖项注入功能。 建议熟悉[.Net Core 依赖项注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)。 使用消耗计划 Azure Functions 如何覆盖依赖项以及如何读取配置值。
 
 - 对依赖项注入的支持始于 Azure Functions 2.x。
 
@@ -127,15 +127,15 @@ Azure Functions 应用提供与 [ASP.NET 依赖项注入](https://docs.microsoft
 
 ## <a name="logging-services"></a>日志记录服务
 
-如果需要自己的日志记录提供程序，请将自定义类型注册为`ILoggerProvider`实例。 应用程序见解由 Azure 函数自动添加。
+如果需要自己的日志记录提供程序，请将自定义类型`ILoggerProvider`注册为实例。 Azure Functions 自动添加 Application Insights。
 
 > [!WARNING]
-> - 不要`AddApplicationInsightsTelemetry()`添加到服务集合，因为它注册的服务与环境提供的服务冲突。
-> - 不要注册您自己的`TelemetryConfiguration`应用程序，或者`TelemetryClient`如果您正在使用内置的应用程序见解功能。 如果需要配置自己的`TelemetryClient`实例，请通过注入`TelemetryConfiguration`的实例创建一个实例，如监视器 Azure[函数](./functions-monitoring.md#version-2x-and-later-2)所示。
+> - 不要添加`AddApplicationInsightsTelemetry()`到服务集合，因为它注册的服务与环境提供的服务发生冲突。
+> - 如果你使用的是`TelemetryConfiguration`内置`TelemetryClient` Application Insights 功能，请不要注册自己的或。 如果需要配置自己`TelemetryClient`的实例，请通过插入`TelemetryConfiguration`的实例创建一个实例，如[监视器 Azure Functions](./functions-monitoring.md#version-2x-and-later-2)中所示。
 
 ### <a name="iloggert-and-iloggerfactory"></a>ILogger<T>和 ILoggerFactory
 
-主机将注入`ILogger<T>`和`ILoggerFactory`服务到构造函数中。  但是，默认情况下，这些新日志记录筛选器将从函数日志中筛选出来。  您需要修改`host.json`文件才能选择加入其他筛选器和类别。  下面的示例演示添加主机将`ILogger<HttpTrigger>`公开的日志。
+主机会将和`ILogger<T>` `ILoggerFactory`服务注入构造函数中。  但是，默认情况下，将筛选出函数日志中的新的日志记录筛选器。  你将需要修改该`host.json`文件以选择加入其他筛选器和类别。  下面的示例演示如何添加`ILogger<HttpTrigger>`一个具有将由主机公开的日志。
 
 ```csharp
 namespace MyNamespace
@@ -160,7 +160,7 @@ namespace MyNamespace
 }
 ```
 
-以及添加`host.json`日志筛选器的文件。
+和一个`host.json`添加日志筛选器的文件。
 
 ```json
 {
@@ -185,8 +185,8 @@ namespace MyNamespace
 
 |服务类型|生存期|说明|
 |--|--|--|
-|`Microsoft.Extensions.Configuration.IConfiguration`|单一实例|运行时配置|
-|`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|单一实例|负责提供主机实例的 ID|
+|`Microsoft.Extensions.Configuration.IConfiguration`|单例|运行时配置|
+|`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|单例|负责提供主机实例的 ID|
 
 如果存在你要依赖的其他服务，请[在 GitHub 上创建一个问题并提出它们](https://github.com/azure/azure-functions-host)。
 
@@ -200,7 +200,7 @@ namespace MyNamespace
 
 可以将 `IConfiguration` 实例中的值提取为自定义类型。 将应用设置值复制为自定义类型以后，即可使这些值变得可注入，方便测试服务。 读取到配置实例的设置必须是简单的键/值对。
 
-请考虑以下类，该类包含名为与应用设置一致的属性：
+请考虑下面的类，该类包含一个名为与应用程序设置一致的属性：
 
 ```csharp
 public class MyOptions
@@ -209,7 +209,7 @@ public class MyOptions
 }
 ```
 
-`local.settings.json`文件可能按照如下方式构造自定义设置：
+`local.settings.json`还可以按如下所示构造自定义设置：
 ```json
 {
   "IsEncrypted": false,
