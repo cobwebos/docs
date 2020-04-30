@@ -15,10 +15,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.openlocfilehash: ada3762b6daae86033903f72ad9865ca66904ead
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81418637"
 ---
 # <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>使用 PowerShell 在 Azure 数据工厂中设置 Azure-SSIS IR
@@ -34,7 +34,7 @@ ms.locfileid: "81418637"
 > [!NOTE]
 > 本文演示如何使用 Azure PowerShell 设置 Azure-SSIS IR。 若要使用 Azure 门户或 Azure 数据工厂应用来设置 Azure-SSIS IR，请参阅[教程：设置 Azure-SSIS IR](tutorial-create-azure-ssis-runtime-portal.md)。 
 
-在本教程中，将：
+在本教程中，你将：
 > [!div class="checklist"]
 > * 创建数据工厂。
 > * 创建 Azure SSIS Integration Runtime。
@@ -552,7 +552,7 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你了解了如何执行以下操作： 
+在本教程中，你已学习了如何执行以下操作： 
 
 > [!div class="checklist"]
 > * 创建数据工厂。

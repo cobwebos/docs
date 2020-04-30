@@ -9,10 +9,10 @@ ms.date: 05/23/2018
 ms.author: yegu
 ms.custom: mvc, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: df8c827567e116e3be908221b9004eb455b24c8b
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81010775"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-java"></a>快速入门：将 Azure Redis 缓存与 Java 配合使用
@@ -126,7 +126,7 @@ mvn compile
 mvn exec:java -D exec.mainClass=example.demo.App
 ```
 
-在下面的示例中，可以看到 `Message` 键以前有一个缓存值，该值是使用 Azure 门户中的 Redis 控制台设置的。 应用更新了该缓存值。 应用还执行了 `PING` 和 `CLIENT LIST` 命令。
+在以下示例中可以看到，`Message` 键事先已包含一个缓存值，该值是使用 Azure 门户中的 Redis 控制台设置的。 应用更新了该缓存值。 应用还执行了 `PING` 和 `CLIENT LIST` 命令。
 
 ![Azure Redis 缓存应用已完成](./media/cache-java-get-started/azure-cache-redis-complete.png)
 
