@@ -1,5 +1,5 @@
 ---
-title: 微软威胁建模工具的通信安全性
+title: Microsoft Threat Modeling Tool 的通信安全性
 titleSuffix: Azure
 description: 针对威胁建模工具中暴露的威胁采取的缓解措施
 services: security
@@ -16,27 +16,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 1945025ff89a784908a1a3dffd2240172a6e2449
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 8cb74a020590fc55dcd1f046ba667be3d6640b3e
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687989"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203737"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>安全框架：通信安全 | 缓解措施 
 | 产品/服务 | 项目 |
 | --------------- | ------- |
 | **Azure 事件中心** | <ul><li>[使用 SSL/TLS 保护与事件中心之间的通信](#comm-ssltls)</li></ul> |
 | **Dynamics CRM** | <ul><li>[检查服务帐户特权，并检查自定义服务或 ASP.NET 页面是否遵循 CRM 的安全性](#priv-aspnet)</li></ul> |
-| **Azure 数据工厂** | <ul><li>[将本地 SQL 服务器连接到 Azure 数据工厂时使用数据管理网关](#sqlserver-factory)</li></ul> |
+| **Azure 数据工厂** | <ul><li>[将本地 SQL Server 连接到 Azure 数据工厂时使用数据管理网关](#sqlserver-factory)</li></ul> |
 | **标识服务器** | <ul><li>[确保发往标识服务器的所有流量都通过 HTTPS 连接传输](#identity-https)</li></ul> |
-| **Web 应用程序** | <ul><li>[验证用于对 SSL、TLS 和 DTLS 连接进行身份验证的 X.509 证书](#x509-ssltls)</li><li>[在 Azure 应用服务中为自定义域配置 SSL 证书](#ssl-appservice)</li><li>[强制要求发往 Azure 应用服务的所有流量都通过 HTTPS 连接传输](#appservice-https)</li><li>[启用 HTTP 严格传输安全性 (HSTS)](#http-hsts)</li></ul> |
-| **数据库** | <ul><li>[确保 SQL 服务器连接加密和证书验证](#sqlserver-validation)</li><li>[强制以加密形式来与 SQL Server 通信](#encrypted-sqlserver)</li></ul> |
-| **Azure 存储** | <ul><li>[确保与 Azure 存储之间的通信通过 HTTPS 进行](#comm-storage)</li><li>[如果无法启用 HTTPS，则在下载 blob 后验证 MD5 哈希](#md5-https)</li><li>[使用 SMB 3.0 兼容客户端确保对 Azure 文件共享的传输中数据加密](#smb-shares)</li></ul> |
+| **Web 应用程序** | <ul><li>[验证用于对 SSL、TLS 和 DTLS 连接进行身份验证的 X.509 证书](#x509-ssltls)</li><li>[在 Azure App Service 中为自定义域配置 TLS/SSL 证书](#ssl-appservice)</li><li>[强制要求发往 Azure 应用服务的所有流量都通过 HTTPS 连接传输](#appservice-https)</li><li>[启用 HTTP 严格传输安全性 (HSTS)](#http-hsts)</li></ul> |
+| **Database** | <ul><li>[确保 SQL server 连接加密和证书验证](#sqlserver-validation)</li><li>[强制以加密形式来与 SQL Server 通信](#encrypted-sqlserver)</li></ul> |
+| **Azure 存储** | <ul><li>[确保与 Azure 存储之间的通信通过 HTTPS 进行](#comm-storage)</li><li>[如果无法启用 HTTPS，请在下载 blob 后验证 MD5 哈希](#md5-https)</li><li>[使用 SMB 3.0 兼容的客户端来确保传输到 Azure 文件共享的数据加密](#smb-shares)</li></ul> |
 | **移动客户端** | <ul><li>[实现证书固定](#cert-pinning)</li></ul> |
 | **WCF** | <ul><li>[启用 HTTPS - 安全传输通道](#https-transport)</li><li>[WCF：将消息安全保护级别设置为 EncryptAndSign](#message-protection)</li><li>[WCF：使用最低特权帐户运行 WCF 服务](#least-account-wcf)</li></ul> |
 | **Web API** | <ul><li>[强制要求发往 Web API 的所有流量都通过 HTTPS 连接传输](#webapi-https)</li></ul> |
-| **用于 Redis 的 Azure 缓存** | <ul><li>[确保与 Redis 的 Azure 缓存的通信通过 SSL](#redis-ssl)</li></ul> |
+| **用于 Redis 的 Azure 缓存** | <ul><li>[确保与 Azure Cache for Redis 的通信通过 TLS 进行](#redis-ssl)</li></ul> |
 | **IoT 现场网关** | <ul><li>[安全设备到现场网关通信](#device-field)</li></ul> |
 | **IoT 云网关** | <ul><li>[使用 SSL/TLS 保护设备与云网关之间的通信](#device-cloud)</li></ul> |
 
@@ -44,7 +44,7 @@ ms.locfileid: "81687989"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 事件中心 | 
+| 组件                | Azure 事件中心 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **特性**              | 空值  |
@@ -55,21 +55,21 @@ ms.locfileid: "81687989"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Dynamics CRM | 
+| 组件                | Dynamics CRM | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **特性**              | 空值  |
 | **参考**              | 空值  |
 | **步骤** | 检查服务帐户特权，并检查自定义服务或 ASP.NET 页面是否遵循 CRM 的安全性 |
 
-## <a name="use-data-management-gateway-while-connecting-on-premises-sql-server-to-azure-data-factory"></a><a id="sqlserver-factory"></a>将本地 SQL 服务器连接到 Azure 数据工厂时使用数据管理网关
+## <a name="use-data-management-gateway-while-connecting-on-premises-sql-server-to-azure-data-factory"></a><a id="sqlserver-factory"></a>将本地 SQL Server 连接到 Azure 数据工厂时使用数据管理网关
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 数据工厂 | 
+| 组件                | Azure 数据工厂 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
-| **特性**              | 链接服务类型 - Azure 和本地 |
+| **特性**              | 链接服务类型-Azure 和本地 |
 | **参考**              |[在本地和 Azure 数据工厂之间移动数据](https://azure.microsoft.com/documentation/articles/data-factory-move-data-between-onprem-and-cloud/#create-gateway)，[数据管理网关](https://azure.microsoft.com/documentation/articles/data-factory-data-management-gateway/) |
 | **步骤** | <p>需要使用数据管理网关 (DMG) 工具连接到受企业网络或防火墙保护的数据源。</p><ol><li>锁定计算机可以隔离 DMG 工具，防止不正常的程序损坏源计算机或者窥视其数据。 （例如， 必须安装最新的更新、启用所需的最少量端口、预配受控帐户、审核启用、启用磁盘加密，等等。）</li><li>必须经常或者每当 DMG 服务帐户密码续订时轮替数据网关密钥</li><li>通过链接服务传输的数据必须加密</li></ol> |
 
@@ -77,40 +77,40 @@ ms.locfileid: "81687989"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 标识服务器 | 
+| 组件                | 标识服务器 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **特性**              | 空值  |
 | **参考**              | [IdentityServer3 - 密钥、签名和加密](https://identityserver.github.io/Documentation/docsv2/configuration/crypto.html)、[IdentityServer3 - 部署](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) |
-| **步骤** | 默认情况下，IdentityServer 要求所有传入连接都通过 HTTPS 建立。 只能通过受保护的传输来与 IdentityServer 通信，是一项绝对需要遵守的要求。 在某些部署方案（例如 SSL 卸载）中，可以放宽此项要求。 有关详细信息，请参阅“参考”部分中的标识服务器部署页。 |
+| **步骤** | 默认情况下，IdentityServer 要求所有传入连接都通过 HTTPS 建立。 只能通过受保护的传输来与 IdentityServer 通信，是一项绝对需要遵守的要求。 某些部署方案（如 TLS 卸载）可以放宽此要求。 有关详细信息，请参阅“参考”部分中的标识服务器部署页。 |
 
 ## <a name="verify-x509-certificates-used-to-authenticate-ssl-tls-and-dtls-connections"></a><a id="x509-ssltls"></a>验证用于对 SSL、TLS 和 DTLS 连接进行身份验证的 X.509 证书
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件                | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **特性**              | 空值  |
 | **参考**              | 空值  |
 | **步骤** | <p>使用 SSL、TLS 或 DTLS 的应用程序必须全面验证它们所要连接到的实体的 X.509 证书。 这包括验证证书的以下信息：</p><ul><li>域名</li><li>生效日期（开始日期和过期日期）</li><li>吊销状态</li><li>用途（例如，对服务器进行服务器身份验证，对客户端进行客户端身份验证）</li><li>信任链。 证书必须链接到平台信任的或者由管理员显式配置的根证书颁发机构 (CA)</li><li>证书公钥的密钥长度必须 >2048 位</li><li>哈希算法必须是 SHA256 和更高级别 |
 
-## <a name="configure-ssl-certificate-for-custom-domain-in-azure-app-service"></a><a id="ssl-appservice"></a>在 Azure 应用服务中为自定义域配置 SSL 证书
+## <a name="configure-tlsssl-certificate-for-custom-domain-in-azure-app-service"></a><a id="ssl-appservice"></a>在 Azure App Service 中为自定义域配置 TLS/SSL 证书
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件                | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **特性**              | EnvironmentType - Azure |
 | **参考**              | [为 Azure 应用服务中的应用启用 HTTPS](../../app-service/configure-ssl-bindings.md) |
-| **步骤** | 默认情况下，Azure 已使用 *.azurewebsites.net 域的通配符证书为每个应用启用了 HTTPS。 但是，就像所有通配符域一样，这不如将自定义域与自己的证书配合使用那么安全。[参考](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/) 建议针对用于访问所部署应用的自定义域启用 SSL|
+| **步骤** | 默认情况下，Azure 已使用 *.azurewebsites.net 域的通配符证书为每个应用启用了 HTTPS。 但是，就像所有通配符域一样，这不如将自定义域与自己的证书配合使用那么安全。[参考](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/) 建议为已部署的应用将访问的自定义域启用 TLS|
 
 ## <a name="force-all-traffic-to-azure-app-service-over-https-connection"></a><a id="appservice-https"></a>强制要求发往 Azure 应用服务的所有流量都通过 HTTPS 连接传输
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件                | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **特性**              | EnvironmentType - Azure |
@@ -143,40 +143,40 @@ ms.locfileid: "81687989"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件                | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **特性**              | 空值  |
 | **参考**              | [OWASP HTTP 严格传输安全性速查表](https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html) |
-| **步骤** | <p>HTTP 严格传输安全性 (HSTS) 是 Web 应用程序使用特殊响应标头指定的一个选用的安全增强功能。 支持的浏览器收到此标头后，将阻止通过 HTTP 将任何通信发送到指定的域，并改为通过 HTTPS 发送所有通信。 它还可以防止浏览器中出现 HTTPS 点击提示。</p><p>要实现 HSTS，必须在代码或配置中为全局网站配置以下响应标头。严格运输安全：最高年龄=300;包括子域 HSTS 可应对以下威胁：</p><ul><li>用户将 `https://example.com` 加入书签或手动键入此 URL，可能会受到中间人攻击：HSTS 会自动将 HTTP 请求重定向到目标域的 HTTPS</li><li>纯粹只进行 HTTPS 通信的 Web 应用程序无意中包含 HTTP 链接或通过 HTTP 提供内容：HSTS 会自动将 HTTP 请求重定向到目标域的 HTTPS</li><li>中间人攻击者尝试使用无效的证书来截获受害用户发送的流量，并希望该用户接受错误的证书：HSTS 不允许用户重写无效的证书消息</li></ul>|
+| **步骤** | <p>HTTP 严格传输安全性 (HSTS) 是 Web 应用程序使用特殊响应标头指定的一个选用的安全增强功能。 支持的浏览器收到此标头后，将阻止通过 HTTP 将任何通信发送到指定的域，并改为通过 HTTPS 发送所有通信。 它还可以防止浏览器中出现 HTTPS 点击提示。</p><p>若要实现 HSTS，必须在代码或配置中为网站全局配置以下响应标头。严格传输-安全性：最大有效期 = 300;includeSubDomains HSTS 解决了以下威胁：</p><ul><li>用户将 `https://example.com` 加入书签或手动键入此 URL，可能会受到中间人攻击：HSTS 会自动将 HTTP 请求重定向到目标域的 HTTPS</li><li>纯粹只进行 HTTPS 通信的 Web 应用程序无意中包含 HTTP 链接或通过 HTTP 提供内容：HSTS 会自动将 HTTP 请求重定向到目标域的 HTTPS</li><li>中间人攻击者尝试使用无效的证书来截获受害用户发送的流量，并希望该用户接受错误的证书：HSTS 不允许用户重写无效的证书消息</li></ul>|
 
 ## <a name="ensure-sql-server-connection-encryption-and-certificate-validation"></a><a id="sqlserver-validation"></a>确保加密 SQL Server 连接并验证证书
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 数据库 | 
+| 组件                | 数据库 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | SQL Azure  |
 | **特性**              | SQL 版本 - V12 |
 | **参考**              | [有关为 SQL 数据库编写安全连接字符串的最佳做法](https://social.technet.microsoft.com/wiki/contents/articles/2951.windows-azure-sql-database-connection-security.aspx#best) |
-| **步骤** | <p>SQL 数据库与客户端应用程序之间的所有通信始终使用安全套接字层 (SSL) 加密。 SQL 数据库不支持未加密的连接。 若要使用应用程序代码或工具验证证书，需显式请求一个加密的连接并且不信任服务器证书。 即使应用程序代码或工具未请求加密的连接，它们仍会收到加密的连接</p><p>但是，它们可能不会验证服务器证书，因此将容易受到“中间人”攻击。 若要使用 ADO.NET 应用程序代码验证证书，请在数据库连接字符串中设置 `Encrypt=True` 和 `TrustServerCertificate=False`。 若要通过 SQL Server Management Studio 验证证书，请打开“连接到服务器”对话框。 在“连接属性”选项卡中单击“加密连接”</p>|
+| **步骤** | <p>所有 SQL 数据库和客户端应用程序之间的所有通信始终使用传输层安全性（TLS）（以前称为安全套接字层（SSL））进行加密。 SQL 数据库不支持未加密的连接。 若要使用应用程序代码或工具验证证书，需显式请求一个加密的连接并且不信任服务器证书。 即使应用程序代码或工具未请求加密的连接，它们仍会收到加密的连接</p><p>但是，它们可能不会验证服务器证书，因此将容易受到“中间人”攻击。 若要使用 ADO.NET 应用程序代码验证证书，请在数据库连接字符串中设置 `Encrypt=True` 和 `TrustServerCertificate=False`。 若要通过 SQL Server Management Studio 验证证书，请打开“连接到服务器”对话框。 在“连接属性”选项卡中单击“加密连接”</p>|
 
 ## <a name="force-encrypted-communication-to-sql-server"></a><a id="encrypted-sqlserver"></a>强制以加密形式来与 SQL Server 通信
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 数据库 | 
+| 组件                | 数据库 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | OnPrem |
 | **特性**              | SQL 版本 - MsSQL2016，SQL 版本 - MsSQL2012，SQL 版本 - MsSQL2014 |
 | **参考**              | [启用数据库引擎的加密连接](https://msdn.microsoft.com/library/ms191192)  |
-| **步骤** | 启用 SSL 加密可以提高在 SQL Server 实例与应用程序之间通过网络传输的数据的安全性。 |
+| **步骤** | 启用 TLS 加密会提高在 SQL Server 和应用程序实例之间跨网络传输的数据的安全性。 |
 
 ## <a name="ensure-that-communication-to-azure-storage-is-over-https"></a><a id="comm-storage"></a>确保与 Azure 存储之间的通信通过 HTTPS 进行
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储 | 
+| 组件                | Azure 存储 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **特性**              | 空值  |
@@ -187,7 +187,7 @@ ms.locfileid: "81687989"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储 | 
+| 组件                | Azure 存储 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **特性**              | StorageType - Blob |
@@ -198,7 +198,7 @@ ms.locfileid: "81687989"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 移动客户端 | 
+| 组件                | 移动客户端 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **特性**              | StorageType - 文件 |
@@ -209,12 +209,12 @@ ms.locfileid: "81687989"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储 | 
+| 组件                | Azure 存储 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 通用、Windows Phone |
 | **特性**              | 空值  |
 | **参考**              | [证书和公钥绑定](https://owasp.org/www-community/controls/Certificate_and_Public_Key_Pinning) |
-| **步骤** | <p>证书绑定可以防范中间人 (MITM) 攻击。 绑定是将主机与其预期 X509 证书或公钥相关联的过程。 某个主机知悉或者识别到某个证书或公钥后，该证书或公钥将关联或“绑定”到该主机。 </p><p>因此，当攻击者尝试展开 SSL MITM 攻击时，在 SSL 握手期间，攻击者服务器中的密钥将与绑定证书的密钥不同，因此会丢弃该请求，阻止 MITM。可以通过实现 ServicePointManager 的 `ServerCertificateValidationCallback` 委派来完成证书固定。</p>|
+| **步骤** | <p>证书绑定可以防范中间人 (MITM) 攻击。 绑定是将主机与其预期 X509 证书或公钥相关联的过程。 某个主机知悉或者识别到某个证书或公钥后，该证书或公钥将关联或“绑定”到该主机。 </p><p>因此，当攻击者尝试执行 TLS MITM 攻击时，在 TLS 握手期间，来自攻击者服务器的密钥将不同于固定证书的密钥，请求将被丢弃，从而阻止通过实现 ServicePointManager 的`ServerCertificateValidationCallback`委托来实现 MITM 证书固定。</p>|
 
 ### <a name="example"></a>示例
 ```csharp
@@ -286,7 +286,7 @@ namespace CertificatePinningExample
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | WCF | 
+| 组件                | WCF | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | NET Framework 3 |
 | **特性**              | 空值  |
@@ -297,12 +297,12 @@ namespace CertificatePinningExample
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | WCF | 
+| 组件                | WCF | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | .NET Framework 3 |
 | **特性**              | 空值  |
 | **参考**              | [MSDN](https://msdn.microsoft.com/library/ff650862.aspx) |
-| **步骤** | <ul><li>**说明：** 当保护级别设置为“none”时，将禁用消息保护。 保密性和完整性是使用适当的设置级别实现的。</li><li>**建议：**<ul><li>当 `Mode=None` 时 - 禁用消息保护</li><li>当 `Mode=Sign` 时 - 将消息签名但不加密；当数据完整性非常重要时应使用该设置</li><li>当 `Mode=EncryptAndSign` 时 - 将消息签名并加密</li></ul></li></ul><p>请考虑禁用加密，仅当只是需要验证信息的完整性而不关心机密性时，才为消息签名。 对于需要验证原始发送者但不传输任何敏感数据的操作或服务约定，这种做法可能很有用。 降低保护级别时，请注意消息不包含任何个人数据。</p>|
+| **步骤** | <ul><li>**说明：** 当保护级别设置为“none”时，将禁用消息保护。 保密性和完整性是使用适当的设置级别实现的。</li><li>**针对**<ul><li>当 `Mode=None` 时 - 禁用消息保护</li><li>当 `Mode=Sign` 时 - 将消息签名但不加密；当数据完整性非常重要时应使用该设置</li><li>当 `Mode=EncryptAndSign` 时 - 将消息签名并加密</li></ul></li></ul><p>请考虑禁用加密，仅当只是需要验证信息的完整性而不关心机密性时，才为消息签名。 对于需要验证原始发送者但不传输任何敏感数据的操作或服务约定，这种做法可能很有用。 降低保护级别时，请注意消息不包含任何个人数据。</p>|
 
 ### <a name="example"></a>示例
 以下示例演示了如何将服务和操作配置为只将消息签名。 `ProtectionLevel.Sign` 的服务约定示例：下面是在服务约定级别使用 ProtectionLevel.Sign 的示例： 
@@ -326,7 +326,7 @@ string GetData(int value);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | WCF | 
+| 组件                | WCF | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | .NET Framework 3 |
 | **特性**              | 空值  |
@@ -337,7 +337,7 @@ string GetData(int value);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web API | 
+| 组件                | Web API | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | MVC5、MVC6 |
 | **特性**              | 空值  |
@@ -345,7 +345,7 @@ string GetData(int value);
 | **步骤** | 如果应用程序同时使用 HTTPS 和 HTTP 绑定，则客户端仍可使用 HTTP 访问站点。 为了防止这种问题，请使用操作筛选器来确保始终通过 HTTPS 向受保护 API 传输请求。|
 
 ### <a name="example"></a>示例 
-以下代码演示了一个检查 SSL 的 Web API 身份验证筛选器： 
+以下代码显示了一个用于检查 TLS 的 Web API 身份验证筛选器： 
 ```csharp
 public class RequireHttpsAttribute : AuthorizationFilterAttribute
 {
@@ -365,7 +365,7 @@ public class RequireHttpsAttribute : AuthorizationFilterAttribute
     }
 }
 ```
-将此筛选器添加到要求使用 SSL 的任何 Web API 操作： 
+将此筛选器添加到需要 TLS 的任何 Web API 操作： 
 ```csharp
 public class ValuesController : ApiController
 {
@@ -374,16 +374,16 @@ public class ValuesController : ApiController
 }
 ```
  
-## <a name="ensure-that-communication-to-azure-cache-for-redis-is-over-ssl"></a><a id="redis-ssl"></a>确保与 Azure Redis 缓存之间的通信通过 SSL 进行
+## <a name="ensure-that-communication-to-azure-cache-for-redis-is-over-tls"></a><a id="redis-ssl"></a>确保与 Azure Cache for Redis 的通信通过 TLS 进行
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 用于 Redis 的 Azure 缓存 | 
+| 组件                | 用于 Redis 的 Azure 缓存 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **特性**              | 空值  |
-| **参考**              | [Azure Redis SSL 支持](https://azure.microsoft.com/documentation/articles/cache-faq/#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis) |
-| **步骤** | Redis 服务器不能现成地支持 SSL，但 Azure Redis 缓存则可以。 如果要连接到 Azure Redis 缓存并且客户端支持 SSL（如 StackExchange.Redis），则应使用 SSL。 默认情况下，为新的 Azure Redis 缓存实例禁用了非 SSL 端口。 请确保安全的默认设置不会更改，除非 Redis 客户端依赖 SSL 支持。 |
+| **参考**              | [Azure Redis TLS 支持](https://azure.microsoft.com/documentation/articles/cache-faq/#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis) |
+| **步骤** | Redis 服务器不支持 TLS，但 Azure Cache for Redis。 如果要连接到用于 Redis 的 Azure 缓存，并且客户端支持 TLS （如 Stackexchange.redis），则应使用 TLS。 默认情况下，为 Redis 实例的新 Azure 缓存禁用非 TLS 端口。 确保不更改安全默认值，除非对 redis 客户端的 TLS 支持有依赖关系。 |
 
 请注意，Redis 旨在由受信任环境中的受信任客户端访问。 这意味着，我们通常不建议将 Redis 实例直接在 Internet 中公开，一般情况下，在不受信任的客户端可以直接访问 Redis TCP 端口或 UNIX 套接字的环境中，也不建议公开 Redis 实例。 
 
@@ -391,7 +391,7 @@ public class ValuesController : ApiController
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | IoT 现场网关 | 
+| 组件                | IoT 现场网关 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **特性**              | 空值  |
@@ -402,7 +402,7 @@ public class ValuesController : ApiController
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | IoT 云网关 | 
+| 组件                | IoT 云网关 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **特性**              | 空值  |

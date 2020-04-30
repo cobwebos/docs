@@ -3,12 +3,12 @@ title: 有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 description: 查找有关 Azure Kubernetes 服务 (AKS) 的某些常见问题的解答。
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: f91fe1c63430a0eac23cf9cbc184babb6dd5f7a4
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: a58c3510d8937b209bf6c73d33237785ecab161d
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106078"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82206594"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
@@ -50,7 +50,7 @@ Azure 会按照夜间计划自动将安全修补程序应用于群集中的 Linu
 
 ### <a name="windows-server-nodes"></a>Windows Server 节点
 
-对于 Windows Server 节点（当前在 AKS 中为预览版），Windows 更新不会自动运行和应用最新更新。 在围绕 Windows 更新发布周期和你自己的验证过程的定期计划中，你应在 AKS 群集中的群集和 Windows Server 节点池上执行升级。 此升级过程创建运行最新 Windows Server 映像和修补程序的节点，然后删除旧节点。 有关此过程的详细信息，请参阅[升级 AKS 中的节点池][nodepool-upgrade]。
+对于 Windows Server 节点，Windows 更新不会自动运行和应用最新的更新。 在围绕 Windows 更新发布周期和你自己的验证过程的定期计划中，你应在 AKS 群集中的群集和 Windows Server 节点池上执行升级。 此升级过程创建运行最新 Windows Server 映像和修补程序的节点，然后删除旧节点。 有关此过程的详细信息，请参阅[升级 AKS 中的节点池][nodepool-upgrade]。
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>为什么使用 AKS 创建两个资源组？
 
@@ -122,7 +122,7 @@ AKS 目前尚未与 Azure Key Vault 本机集成。 但是，[Kubernetes 项目�
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>是否可以在 AKS 上运行 Windows Server 容器？
 
-是的，Windows Server 容器在预览版中可用。 若要在 AKS 中运行 Windows Server 容器，请创建一个运行 Windows Server 作为来宾 OS 的节点池。 Windows Server 容器只能使用 Windows Server 2019。 若要开始，请参阅[使用 Windows Server 节点池创建 AKS 群集][aks-windows-cli]。
+是的，Windows Server 容器在 AKS 上可用。 若要在 AKS 中运行 Windows Server 容器，请创建一个运行 Windows Server 作为来宾 OS 的节点池。 Windows Server 容器只能使用 Windows Server 2019。 若要开始，请参阅[使用 Windows Server 节点池创建 AKS 群集][aks-windows-cli]。
 
 Windows Server 对节点池的支持在 Kubernetes 项目中包含属于上游 Windows Server 的一些限制。 有关这些限制的详细信息，请参阅[Windows Server 容器中的 AKS 限制][aks-windows-limitations]。
 

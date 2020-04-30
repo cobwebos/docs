@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/23/2020
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a816f2235fa5356f2300255ec9d2fb2b315acf7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 0fa43eae906c918cad940b8f5efafeea07020098
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190310"
+ms.locfileid: "82201626"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教程：为 Workday 配置自动用户预配
 
@@ -87,13 +87,13 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 本部分涵盖了计划的以下方面：
 
-* [先决条件](#prerequisites)
+* [必备条件](#prerequisites)
 * [选择要部署的预配连接器应用](#selecting-provisioning-connector-apps-to-deploy)
 * [Azure AD Connect 预配代理的规划部署](#planning-deployment-of-azure-ad-connect-provisioning-agent)
 * [与多个 Active Directory 域集成](#integrating-with-multiple-active-directory-domains)
 * [计划 Workday 到 Active Directory 的用户属性映射和转换](#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 在本教程中概述的方案假定您已具有以下各项：
 
@@ -153,8 +153,8 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 |   |   |
 | - | - |
-| 否。 预配代理数 | 3（针对高可用性和故障转移） |
-| 否。 Workday 到 AD 用户预配应用数 | 1 |
+| 不能。 预配代理数 | 3（针对高可用性和故障转移） |
+| 不能。 Workday 到 AD 用户预配应用数 | 1 |
 
   ![方案 1](./media/workday-inbound-tutorial/dep_scenario1.png)
 
@@ -164,8 +164,8 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 |   |   |
 | - | - |
-| 否。 预配代理数 | 3（针对高可用性和故障转移） |
-| 否。 Workday 到 AD 用户预配应用数 | 每个子域一个应用 |
+| 不能。 预配代理数 | 3（针对高可用性和故障转移） |
+| 不能。 Workday 到 AD 用户预配应用数 | 每个子域一个应用 |
 
   ![方案 2](./media/workday-inbound-tutorial/dep_scenario2.png)
 
@@ -175,8 +175,8 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 |   |   |
 | - | - |
-| 否。 预配代理数 | 每个非连续 AD 林 3 个 |
-| 否。 Workday 到 AD 用户预配应用数 | 每个子域一个应用 |
+| 不能。 预配代理数 | 每个非连续 AD 林 3 个 |
+| 不能。 Workday 到 AD 用户预配应用数 | 每个子域一个应用 |
 
   ![方案 3](./media/workday-inbound-tutorial/dep_scenario3.png)
 
@@ -293,7 +293,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
      ![域安全策略](./media/workday-inbound-tutorial/wd_isu_08.png "域安全策略") 
 
-     单击“确定”。 
+     单击" **确定**"。
 
 3. 在显示的报表中，选择“外部帐户预配”旁边显示的省略号 (...)，然后单击菜单选项“域”->“编辑安全策略权限”********
 
@@ -369,7 +369,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 **若要配置 Workday 到 Active Directory 的预配：**
 
-1. 转到  <https://portal.azure.com> 。
+1. 转到 <https://portal.azure.com>。
 
 2. 在 Azure 门户中，搜索并选择“Azure Active Directory”。****
 
@@ -458,11 +458,11 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
    * **Workday 密码–** 输入 Workday 集成系统帐户的密码
 
-   * **Workday Web 服务 API URL –** 输入租户的 Workday web 服务终结点的 URL。 此值应如下所示https://wd3-impl-services1.workday.com/ccx/service/contoso4：，其中*contoso4 需*替换为正确的租户名称， *wd3-impl*替换为正确的环境字符串。
+   * **Workday Web 服务 API URL –** 输入租户的 Workday web 服务终结点的 URL。 此值应如下所示`https://wd3-impl-services1.workday.com/ccx/service/contoso4`：，其中*contoso4 需*替换为正确的租户名称， *wd3-impl*替换为正确的环境字符串。
 
      > [!NOTE]
      > 默认情况下，如果未在 URL 中指定任何版本信息，应用程序将使用 Workday Web Services （WWS） v 21.1。 若要使用特定的 WWS API 版本，请使用 URL 格式：https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
-     > 示例： https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0 <br>
+     > 示例：`https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0` <br>
      
      > [!NOTE]
      > 如果你使用的是 WWS API v 30.0 及更高版本，则在启用预配作业之前，**请在 "** **属性映射-> 高级选项-> 编辑用于 Workday 的编辑属性列表**" 中引用[管理配置](#managing-your-configuration)和[Workday 属性引用](../app-provisioning/workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30)部分。  
@@ -601,7 +601,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 **若要为仅限云的用户配置 Workday 到 Azure Active Directory 的预配：**
 
-1. 转到  <https://portal.azure.com> 。
+1. 转到 <https://portal.azure.com>。
 
 2. 在 Azure 门户中，搜索并选择“Azure Active Directory”。****
 
@@ -621,11 +621,11 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
    * **Workday 密码–** 输入 Workday 集成系统帐户的密码
 
-   * **Workday Web 服务 API URL –** 输入租户的 Workday web 服务终结点的 URL。 此值应类似于：https://wd3-impl-services1.workday.com/ccx/service/contoso4；其中，contoso4 替换为正确的租户名，wd3-impl 替换为正确的环境字符串****。 如果不知道此 URL，请咨询 Workday 集成合作伙伴或支持代表，确定要使用的正确 URL。
+   * **Workday Web 服务 API URL –** 输入租户的 Workday web 服务终结点的 URL。 此值应类似于：`https://wd3-impl-services1.workday.com/ccx/service/contoso4`；其中，contoso4 替换为正确的租户名，wd3-impl 替换为正确的环境字符串****。 如果不知道此 URL，请咨询 Workday 集成合作伙伴或支持代表，确定要使用的正确 URL。
 
      > [!NOTE]
      > 默认情况下，如果未在 URL 中指定任何版本信息，应用程序将使用 Workday Web Services v 21.1。 若要使用特定 Workday Web 服务 API 版本，请使用 URL 格式：https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
-     > 示例： https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0
+     > 示例：`https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0`
 
 
    * **通知电子邮件–** 输入你的电子邮件地址，并选中 "如果出现故障，则发送电子邮件" 复选框。
@@ -703,7 +703,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 **配置 Workday 写回连接器：**
 
-1. 转到  <https://portal.azure.com> 。
+1. 转到 <https://portal.azure.com>。
 
 2. 在 Azure 门户中，搜索并选择“Azure Active Directory”。****
 
@@ -723,7 +723,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
    * **管理员密码 -** 输入 Workday 集成系统帐户的密码
 
-   * **租户 URL –** 输入租户的 Workday web 服务终结点的 URL。 此值应类似于：https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources；其中，contoso4 替换为正确的租户名称，wd3-impl 替换为正确的环境字符串（如有必要）****。
+   * **租户 URL –** 输入租户的 Workday web 服务终结点的 URL。 此值应类似于：`https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources`；其中，contoso4 替换为正确的租户名称，wd3-impl 替换为正确的环境字符串（如有必要）****。
 
    * **通知电子邮件–** 输入你的电子邮件地址，并选中 "如果出现故障，则发送电子邮件" 复选框。
 
@@ -752,7 +752,7 @@ Workday 预配应用配置完成后，可在 Azure 门户中启用预配服务�
 
 1. 在“预配”选项卡中，将“预配状态”设置为“打开”。************
 
-2. 单击“ **保存**”。
+2. 单击 **“保存”** 。
 
 3. 此操作将启动初始同步；该过程会耗时数小时，具体时间取决于 Workday 租户中的用户数。 
 
@@ -1347,7 +1347,7 @@ Azure AD 预配服务支持自定义列表或 Workday 属性，以包含人力�
 
 8. 对于“类型”，请选择对应于属性的类型（最常用的选项是“字符串”）。********
 
-9. 对于“API 表达式”，请输入从 Workday Studio 复制的 XPath 表达式。**** 示例： `wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Birth_Date/text()`
+9. 对于“API 表达式”，请输入从 Workday Studio 复制的 XPath 表达式。**** 示例：`wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Birth_Date/text()`
 
 10. 选择“添加属性”。****
 

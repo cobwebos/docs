@@ -3,22 +3,98 @@ title: 模板函数 - 比较
 description: 介绍可在 Azure 资源管理器模板中使用的用于比较值的函数。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: a9b7b32475695e5222b87c8fe75e8982f34ebb21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 15afc4d721c6577de9fe3e78483fdbfae5b493c6
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192325"
+ms.locfileid: "82203771"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>ARM 模板的比较函数
 
 资源管理器提供了几个用于在 Azure 资源管理器（ARM）模板中进行比较的函数。
 
+* [接合](#coalesce)
 * [equals](#equals)
 * [greater](#greater)
 * [greaterOrEquals](#greaterorequals)
-* [less](#less)
+* [量](#less)
 * [lessOrEquals](#lessorequals)
+
+## <a name="coalesce"></a>coalesce
+
+`coalesce(arg1, arg2, arg3, ...)`
+
+从参数中返回第一个非 null 值。 空字符串、空数组和空对象不为 null。
+
+### <a name="parameters"></a>参数
+
+| 参数 | 必选 | 类型 | 说明 |
+|:--- |:--- |:--- |:--- |
+| arg1 |是 |int、string、array 或 object |要测试是否为 null 的第一个值。 |
+| 其他参数 |否 |int、string、array 或 object |要测试是否为 null 的其他值。 |
+
+### <a name="return-value"></a>返回值
+
+第一个非 null 参数的值，可以是字符串、整数、数组或对象。 如果所有参数都为 null，则为 null。
+
+### <a name="example"></a>示例
+
+以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/coalesce.json)显示 coalesce 不同用法的输出。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "objectToTest": {
+            "type": "object",
+            "defaultValue": {
+                "null1": null,
+                "null2": null,
+                "string": "default",
+                "int": 1,
+                "object": {"first": "default"},
+                "array": [1]
+            }
+        }
+    },
+    "resources": [
+    ],
+    "outputs": {
+        "stringOutput": {
+            "type": "string",
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').string)]"
+        },
+        "intOutput": {
+            "type": "int",
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').int)]"
+        },
+        "objectOutput": {
+            "type": "object",
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').object)]"
+        },
+        "arrayOutput": {
+            "type": "array",
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').array)]"
+        },
+        "emptyOutput": {
+            "type": "bool",
+            "value": "[empty(coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2))]"
+        }
+    }
+}
+```
+
+上面具有默认值的示例的输出为：
+
+| 名称 | 类型 | 值 |
+| ---- | ---- | ----- |
+| stringOutput | 字符串 | default |
+| intOutput | Int | 1 |
+| objectOutput | 对象 | {"first": "default"} |
+| arrayOutput | 数组 | [1] |
+| emptyOutput | Bool | True |
 
 ## <a name="equals"></a>equals
 
@@ -26,7 +102,7 @@ ms.locfileid: "82192325"
 
 检查两个值是否相等。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |

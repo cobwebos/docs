@@ -1,31 +1,26 @@
 ---
-title: 使用 SCIM、Microsoft Graph 和 Azure AD 预配服务来预配用户，并使用所需的数据来丰富应用程序 |Microsoft Docs
+title: 使用 SCIM、Microsoft Graph 和 Azure AD 预配用户，并使用数据丰富应用
 description: 同时使用 SCIM 和 Microsoft Graph 来预配用户，并使用所需的数据来丰富应用程序。
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 04/26/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79ffe0474fcfeb28b49f5c2504ede86cd38459d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: ceba22e9289e0a10211ee26a7758238a8b1f06c7
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181828"
+ms.locfileid: "82201680"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>同时使用 SCIM 和 Microsoft Graph 来预配用户，并使用所需的数据来丰富应用程序
 
-**目标受众：** 本文档的目标是开发人员构建与 Azure AD 集成的应用程序。 对于希望使用已与 Azure AD 集成的应用程序（例如缩放、ServiceNow 和 DropBox）的其他用户，可以跳过此操作并查看应用程序特定[教程](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)，或查看[预配服务的工作原理](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works)。
+**目标受众：** 本文面向的是开发人员构建与 Azure Active Directory （Azure AD）相集成的应用程序的目标。 如果你想要使用已与 Azure AD 集成的应用程序（例如缩放、ServiceNow 和 DropBox），则可以跳过此文章并查看应用程序特定[教程](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)，或查看[预配服务的工作原理](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works)。
 
 **常见方案**
 
@@ -46,7 +41,6 @@ Azure AD 提供了一种现成的服务来进行预配，并提供一个可扩�
 **建议**： 
 * 如果你的客户使用各种 Idp，并且你不希望维护同步引擎以与每个同步引擎集成，则支持 SCIM 相容[/Users](https://aka.ms/scimreferencecode)终结点。 你的客户将能够轻松地使用此终结点与 Azure AD 预配服务集成，并在用户需要访问时自动创建用户帐户。 你可以一次生成终结点，并且它将与所有 Idp 兼容。 查看下面的示例请求，了解如何使用 SCIM 创建用户。
 * 如果需要在用户对象上找到用户数据，在 Azure AD 中找到用户数据，并在 Microsoft 的其他数据中发现用户数据，请考虑生成用于用户预配的 SCIM 终结点，并调用 Microsoft Graph 以获取其余数据。 
-
 
 ```json
 POST /Users

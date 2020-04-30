@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b28390dba009226d493f5bfc6a5270b067f5bba0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 731ed4664d10d3957be160bf9e8001d5470a6f38
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73570474"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82201340"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>教程：将 Sansan Intacct 与 Azure Active Directory 集成
 
@@ -94,7 +94,7 @@ ms.locfileid: "73570474"
     | ---------------| --------------- |
     | 公司名称 | **Sage Intacct 公司 ID** |
     | name | 值应与在“创建 Sage Intact 测试用户部分”  中输入的 Sage Intacct“用户 ID”  相同，本教程的后半部分会对此进行解释 |
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier | 值应与在“创建 Sage Intact 测试用户部分”  中输入的 Sage Intacct“联合 SSO 用户 ID”  相同，本教程的后半部分会对此进行解释 |
+    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` | 值应与在“创建 Sage Intact 测试用户部分”  中输入的 Sage Intacct“联合 SSO 用户 ID”  相同，本教程的后半部分会对此进行解释 |
 
     a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
 

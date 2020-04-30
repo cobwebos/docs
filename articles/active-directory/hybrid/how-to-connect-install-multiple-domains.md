@@ -16,12 +16,12 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18b5f19e3e994aa05fa99caf360d0c1be69ec7a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0775e717c0610e122bb31f752beecd2c97599053
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80049775"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82201034"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>与 Azure AD 联合的多域支持
 以下文档提供了有关与 Office 365 或 Azure AD 域联合时如何使用多个顶级域和子域的指导。
@@ -67,7 +67,7 @@ ms.locfileid: "80049775"
 
 `-SupportMultipleDomain` 的另一个功用是确保 AD FS 系统在颁发给 Azure AD 的令牌中包含正确的颁发者值。 此值是通过获取用户 UPN 的域部分并将其设置为 IssuerUri 中的域（即 https://{upn suffix}/adfs/services/trust）来设置的。
 
-因此，在 Azure AD 或 Office 365 上进行身份验证期间，将使用用户令牌中的 IssuerUri 元素来查找 Azure AD 中的域。  如果找不到匹配项，身份验证将会失败。
+因此，在 Azure AD 或 Office 365 上进行身份验证期间，会使用用户令牌中的 IssuerUri 元素来查找 Azure AD 中的域。  如果找不到匹配项，身份验证将会失败。
 
 例如，如果用户的 UPN 是 bsimon@bmcontoso.com，则 AD FS 颁发的令牌中的 IssuerUri 元素将设置为 `http://bmcontoso.com/adfs/services/trust`。 此元素将匹配 Azure AD 配置，并且身份验证会成功。
 
@@ -100,9 +100,9 @@ ms.locfileid: "80049775"
 
 请使用以下步骤来删除 Microsoft Online 信任，并更新原始域。
 
-1. 在 AD FS 联合服务器上，打开“AD FS 管理”****。
-2. 展开左侧的“信任关系”**** 和“信赖方信任”****
-3. 删除右侧的“Microsoft Office 365 标识平台”**** 项。
+1. 在 AD FS 联合身份验证服务器上，打开“AD FS 管理”  。
+2. 展开左侧的“信任关系”和“信赖方信任”  
+3. 删除右侧的“Microsoft Office 365 标识平台”项。 
    ![删除 Microsoft Online](./media/how-to-connect-install-multiple-domains/trust4.png)
 4. 在已安装[适用于 Windows PowerShell 的 Azure Active Directory 模块](https://msdn.microsoft.com/library/azure/jj151815.aspx)的计算机上运行以下命令：`$cred=Get-Credential`。  
 5. 输入要联合的 Azure AD 域的全局管理员用户名和密码。
@@ -121,12 +121,12 @@ ms.locfileid: "80049775"
 1. 从桌面或开始菜单启动 Azure AD Connect
 2. 选择“添加其他 Azure AD 域”![添加其他 Azure AD 域](./media/how-to-connect-install-multiple-domains/add1.png)
 3. 输入 Azure AD 和 Active Directory 凭据
-4. 选择希望为联合配置的第二个域。
+4. 选择要配置联合的第二个域。
    ![添加其他 Azure AD 域](./media/how-to-connect-install-multiple-domains/add2.png)
 5. 单击“安装”
 
 ### <a name="verify-the-new-top-level-domain"></a>验证新的顶级域
-使用 PowerShell 命令 `Get-MsolDomainFederationSettings -DomainName <your domain>` 可以查看更新的 IssuerUri。  下面的屏幕截图显示原始域 `http://bmcontoso.com/adfs/services/trust` 上的联合设置已更新
+使用 PowerShell 命令 `Get-MsolDomainFederationSettings -DomainName <your domain>`可以查看更新的 IssuerUri。  下面的屏幕截图显示原始域 `http://bmcontoso.com/adfs/services/trust` 上的联合设置已更新
 
 ![Get-MsolDomainFederationSettings](./media/how-to-connect-install-multiple-domains/MsolDomainFederationSettings.png)
 
@@ -137,7 +137,7 @@ ms.locfileid: "80049775"
 ## <a name="support-for-subdomains"></a>对子域的支持
 添加子域时，因为 Azure AD 处理域的方式，导致子域继承父项的设置。  因此，IssuerUri 需要与父项匹配。
 
-例如，假设我有 bmcontoso.com，后来又添加了 corp.bmcontoso.com。  来自corp.bmcontoso.com的用户的颁发者需要是**http://bmcontoso.com/adfs/services/trust。**  但是，上述为 Azure AD 实现的标准规则将生成一个颁发者**http://corp.bmcontoso.com/adfs/services/trust为 的令牌。** 这与域的所需值不匹配，身份验证会失败。
+例如，假设我有 bmcontoso.com，后来又添加了 corp.bmcontoso.com。  Corp.bmcontoso.com 中用户的 IssuerUri 需要为**`http://bmcontoso.com/adfs/services/trust`**。  不过，上述 Azure AD 的标准规则将生成一个带有颁发者的令牌**`http://corp.bmcontoso.com/adfs/services/trust`**。 这与域的所需值不匹配，身份验证将失败。
 
 ### <a name="how-to-enable-support-for-subdomains"></a>如何启用对子域的支持
 若要避免此行为，需要更新 Microsoft Online 的 AD FS 信赖方信任。  为此，必须配置自定义声明规则，使其在构造自定义 Issuer 值时能够从用户的 UPN 后缀中删除任何子域。
@@ -147,14 +147,14 @@ ms.locfileid: "80049775"
     c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
 
 [!NOTE]
-正则表达式中的最后一个数字设置根域中有多少个父域。 此处使用的是 bmcontoso.com，因此必须有两个父域。 如果保留三个父域（即：corp.bmcontoso.com），则该数字为 3。 最终可以确定一个范围，匹配值将始终匹配域的最大值。 “{2,3}”将匹配两到三个域（即：bmfabrikam.com 和 corp.bmcontoso.com）。
+正则表达式中的最后一个数字设置根域中有多少个父域。 此处使用的是 bmcontoso.com，因此必须有两个父域。 如果保留三个父域（即：corp.bmcontoso.com），则该数字为 3。 最终可以指示一个范围，并且始终会以匹配方式来匹配最大域数。 “{2,3}”将匹配两到三个域（即：bmfabrikam.com 和 corp.bmcontoso.com）。
 
 请使用以下步骤添加自定义声明，以支持子域。
 
 1. 打开“AD FS 管理”
 2. 右键单击 Microsoft Online RP 信任，并选择“编辑声明规则”
 3. 选择第三个声明规则并替换![编辑声明](./media/how-to-connect-install-multiple-domains/sub1.png)
-4. 将当前的声明：
+4. 替换当前声明：
 
         c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)","http://${domain}/adfs/services/trust/"));
 
@@ -173,4 +173,4 @@ ms.locfileid: "80049775"
 
 若要了解有关这些常见主题的详细信息，请参阅[计划程序以及如何触发同步](how-to-connect-sync-feature-scheduler.md)。
 
-详细了解[将本地标识与 Azure 活动目录集成](whatis-hybrid-identity.md)。
+了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

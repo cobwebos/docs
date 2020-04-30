@@ -3,12 +3,12 @@ title: 为容器 Azure Monitor 配置 Azure Red Hat OpenShift v3. x |Microsoft D
 description: 本文介绍如何使用 Azure Red Hat OpenShift 版本3和更高版本上托管 Azure Monitor 来配置监视 Kubernetes 群集。
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 98ac5752e047c4f5f6db63d228bec7c47271aa00
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: HT
+ms.openlocfilehash: c39eda03fc5fb7521bcf08c52eaabc28d4cb1256
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82166287"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204128"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>配置适用于容器 Azure Monitor 的 Azure Red Hat OpenShift v3
 
@@ -30,7 +30,7 @@ ms.locfileid: "82166287"
 - 实时数据（预览）
 - [收集](container-insights-update-metrics.md)群集节点和 pod 中的指标，并将其存储在 Azure Monitor 度量值数据库中
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 若要启用和访问容器 Azure Monitor 中的功能，至少需要是 Azure 订阅中的 Azure*参与者*角色的成员，以及配置了 Azure Monitor for 容器的 Log Analytics 工作区的[*Log Analytics 参与者*](../platform/manage-access.md#manage-access-using-azure-permissions)角色的成员。
 
@@ -38,7 +38,7 @@ ms.locfileid: "82166287"
 
 ## <a name="enable-for-a-new-cluster-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板启用新群集
 
-执行以下步骤以部署启用了监视功能的 Azure Red Hat OpenShift 群集。 继续之前，请查看教程[创建 Azure Red Hat OpenShift 群集](../../openshift/tutorial-create-cluster.md#prerequisites)，了解需要配置哪些依赖项，以便正确设置环境。
+执行以下步骤以部署启用了监视功能的 Azure Red Hat OpenShift 群集。 继续之前，请查看教程[创建 Azure Red Hat OpenShift 群集](../../openshift/tutorial-create-cluster.md)，了解需要配置哪些依赖项，以便正确设置环境。
 
 此方法包含两个 JSON 模板。 一个模板指定用于部署启用监视的群集的配置，另一个模板包含配置为指定以下项的参数值：
 

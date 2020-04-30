@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.custom: include file
-ms.date: 02/08/2020
+ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 4bd483e40e3a85a2934e58abdf46d09b17a33ed4
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 9b1ee467abcbfb6d91a64abf4e9ad74d7b23e881
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80758658"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203944"
 ---
 此基于 cURL 的快速入门详细介绍如何从知识库获取答案。
 
@@ -296,120 +296,7 @@ JSON 响应使用与已发布的知识库查询相同的架构。
 
     由于问题 `Thank you` 与聊天问题完全匹配，因此分数为 100，表明 QnA Maker 完全确信其答案。 QnA Maker 还返回了包含聊天元数据标记信息的所有相关问题和元数据属性。
 
-## <a name="use-curl-with-threshold-and-default-answer"></a>对阈值和默认答案使用 cURL
-
-可以请求答案的最小阈值。 如果不满足阈值，将返回默认答案。
-
-1. 使用以下 cURL 命令（请将占位符替换为自己的资源名称、知识库 ID 和终结点密钥），以请求提供阈值为 80% 或更佳的 `size` 答案。 知识库应该不会查找该答案（因为问题的评分为 71%），而是返回创建知识库时提供的默认答案。
-
-    ```bash
-    curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':80.00}"
-    ```
-
-1. 运行 cURL 命令，然后接收包含评分和解答的 JSON 响应。
-
-    ```json
-    {
-        "answers": [
-            {
-                "questions": [],
-                "answer": "No good match found in KB.",
-                "score": 0.0,
-                "id": -1,
-                "source": null,
-                "metadata": []
-            }
-        ],
-        "debugInfo": null,
-        "activeLearningEnabled": true
-    }
-    ```
-
-    QnA Maker 返回的评分为 `0`，表示没有置信度。 它同时返回了默认解答。
-
-    ```json
-    {
-      "answers": [
-          {
-              "questions": [
-                  "I thank you",
-                  "Oh, thank you",
-                  "My sincere thanks",
-                  "My humblest thanks to you",
-                  "Marvelous, thanks",
-                  "Marvelous, thank you kindly",
-                  "Marvelous, thank you",
-                  "Many thanks to you",
-                  "Many thanks",
-                  "Kthx",
-                  "I'm grateful, thanks",
-                  "Ahh, thanks",
-                  "I'm grateful for that, thank you",
-                  "Perfecto, thanks",
-                  "I appreciate you",
-                  "I appreciate that",
-                  "I appreciate it",
-                  "I am very thankful for that",
-                  "How kind, thank you",
-                  "Great, thanks",
-                  "Great, thank you",
-                  "Gracias",
-                  "Gotcha, thanks",
-                  "Gotcha, thank you",
-                  "Awesome thanks!",
-                  "I'm grateful for that, thank you kindly",
-                  "thank you pal",
-                  "Wonderful, thank you!",
-                  "Wonderful, thank you very much",
-                  "Why thank you",
-                  "Thx",
-                  "Thnx",
-                  "That's very kind",
-                  "That's great, thanks",
-                  "That is lovely, thanks",
-                  "That is awesome, thanks!",
-                  "Thanks bot",
-                  "Thanks a lot",
-                  "Okay, thanks!",
-                  "Thank you so much",
-                  "Perfect, thanks",
-                  "Thank you my friend",
-                  "Thank you kindly",
-                  "Thank you for that",
-                  "Thank you bot",
-                  "Thank you",
-                  "Right on, thanks very much",
-                  "Right on, thanks a lot",
-                  "Radical, thanks",
-                  "Rad, thanks",
-                  "Rad thank you",
-                  "Wonderful, thanks!",
-                  "Thanks"
-              ],
-              "answer": "You're welcome.",
-              "score": 100.0,
-              "id": 75,
-              "source": "qna_chitchat_Professional.tsv",
-              "metadata": [
-                  {
-                      "name": "editorial",
-                      "value": "chitchat"
-                  }
-              ],
-              "context": {
-                  "isContextOnly": false,
-                  "prompts": []
-              }
-          }
-      ],
-      "debugInfo": null,
-      "activeLearningEnabled": true
-    }
-    ```
-
-    由于问题 `Thank you` 与聊天问题完全匹配，因此分数为 100，表明 QnA Maker 完全确信其答案。 QnA Maker 还返回了包含聊天元数据标记信息的所有相关问题和元数据属性。
-
-## <a name="use-curl-with-threshold-and-default-answer"></a>对阈值和默认答案使用 cURL
+## <a name="use-threshold-and-default-answer"></a>使用阈值和默认答案
 
 可以请求答案的最小阈值。 如果不满足阈值，将返回默认答案。
 

@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 04/28/2020
 ms.author: sstein
-ms.openlocfilehash: 27a62223970b0f697465ce9aa050f3fccbcae464
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: c3dc5b26435f6d876e5eaea943e359055018913b
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106417"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82201306"
 ---
 # <a name="sql-database-release-notes"></a>SQL 数据库发行说明
 
@@ -49,7 +49,7 @@ ms.locfileid: "82106417"
 | <a href="https://aka.ms/managed-instance-aadlogins">实例级 Azure AD 服务器主体（登录名）</a> | 使用 <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN FROM EXTERNAL PROVIDER</a> 语句创建服务器级登录名。 |
 | [事务复制](sql-database-managed-instance-transactional-replication.md) | 将表中的更改复制到托管实例、单一数据库或 SQL Server 实例上放置的其他数据库中，或者在其他托管实例或 SQL Server 实例中的某些行发生更改时更新表。 有关信息，请参阅[在 Azure SQL 数据库托管实例数据库中配置复制](replication-with-sql-database-managed-instance.md)。 |
 | 威胁检测 |有关信息，请参阅[在 Azure SQL 数据库托管实例中配置威胁检测](sql-database-managed-instance-threat-detection.md)。|
-| 长期备份保留 | 有关信息，请参阅[在 AZURE SQL 数据库托管实例中配置长期备份保留](sql-database-managed-instance-long-term-backup-retention-configure.md)。 | 
+| 长期备份保留 | 有关详细信息，请参阅在[AZURE SQL 数据库托管实例中配置长期备份保留](sql-database-managed-instance-long-term-backup-retention-configure.md)，当前处于有限的公共预览版中。 | 
 
 ---
 
@@ -69,7 +69,7 @@ ms.locfileid: "82106417"
   - 支持 <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019">SharePoint 2016 和 sharepoint 2019</a> 以及 <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance">Dynamics 365 Business Central</a>
   - 使用所选<a href="https://aka.ms/managed-instance-collation">服务器级排序规则</a>和<a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">时区</a>创建实例。
   - 托管实例现在使用<a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">内置防火墙</a>进行保护。
-  - 配置实例以使用[公共终结点](sql-database-managed-instance-public-endpoint-configure.md)、[代理覆盖](sql-database-connectivity-architecture.md#connection-policy)连接以获得更好的网络性能，<a href="https://aka.ms/four-cores-sql-mi-update">Gen5 硬件代次上有 4 个 vCore</a> 或<a href="https://aka.ms/managed-instance-configurable-backup-retention">将备份保留期配置为最多 35 天</a>以便进行时间点还原。 长期备份保留（最长 10 年）仍未启用，因此可以使用<a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">仅复制备份</a>作为替代方法。
+  - 配置实例以使用[公共终结点](sql-database-managed-instance-public-endpoint-configure.md)、[代理覆盖](sql-database-connectivity-architecture.md#connection-policy)连接以获得更好的网络性能，<a href="https://aka.ms/four-cores-sql-mi-update">Gen5 硬件代次上有 4 个 vCore</a> 或<a href="https://aka.ms/managed-instance-configurable-backup-retention">将备份保留期配置为最多 35 天</a>以便进行时间点还原。 长期[备份保留期](sql-database-long-term-retention.md#managed-instance-support)（最多10年）目前处于有限的公共预览版中。  
   - 利用新功能，可以<a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">使用 PowerShell 将数据库异地还原到另一个数据中心</a>、[重命名数据库](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/)、[删除虚拟群集](sql-database-managed-instance-delete-virtual-cluster.md)。
   - 新的内置[实例参与者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor)使职责分离 (SoD) 遵从安全原则并符合企业标准。
   - 托管实例在以下 Azure 政府版区域中提供（US Gov 德克萨斯州、US Gov 亚利桑那州）以及中国北部2和中国东部2。 它还在以下公共区域中提供：澳大利亚中部、澳大利亚中部2、巴西南部、法国南部、阿拉伯联合酋长国中部、阿拉伯联合酋长国北部、南非北部、南非西北部。
@@ -81,7 +81,7 @@ ms.locfileid: "82106417"
 |[对资源组的权限不适用于托管实例](#permissions-on-resource-group-not-applied-to-managed-instance)|2020年2月|具有解决方法||
 |[通过门户为故障转移组进行手动故障转移的限制](#limitation-of-manual-failover-via-portal-for-failover-groups)|Jan 2020|具有解决方法||
 |[SQL 代理角色需要拥有对非 sysadmin 登录名的显式 EXECUTE 权限](#in-memory-oltp-memory-limits-are-not-applied)|2019 年 12 月|具有解决方法||
-|[重启代理进程可能会中断 SQL 代理作业](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|2019 年 12 月|无解决方法|三月2020|
+|[重启代理进程可能会中断 SQL 代理作业](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|2019 年 12 月|已解决|三月2020|
 |[SSDT 不支持 AAD 登录名和用户](#aad-logins-and-users-are-not-supported-in-ssdt)|2019 年 11 月|无解决方法||
 |[内存中 OLTP 内存限制不适用](#in-memory-oltp-memory-limits-are-not-applied)|2019 年 10 月|具有解决方法||
 |[尝试删除不为空的文件时，返回了错误的错误](#wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty)|2019 年 10 月|具有解决方法||
@@ -96,7 +96,7 @@ ms.locfileid: "82106417"
 |[小型数据库文件超出存储空间](#exceeding-storage-space-with-small-database-files)||具有解决方法||
 |[显示 GUID 值而不是数据库名称](#guid-values-shown-instead-of-database-names)||具有解决方法||
 |[不保留错误日志](#error-logs-arent-persisted)||无解决方法||
-|[同一实例中的两个数据库上的事务范围不受支持](#transaction-scope-on-two-databases-within-the-same-instance-isnt-supported)||具有解决方法|2020 年 3 月|
+|[同一实例中的两个数据库上的事务范围不受支持](#transaction-scope-on-two-databases-within-the-same-instance-isnt-supported)||具有解决方法|三月2020|
 |[CLR 模块和链接的服务器有时无法引用本地 IP 地址](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)||具有解决方法||
 |从 Azure Blob 存储还原数据库后，不能使用 DBCC CHECKDB 验证数据库一致性。||已解决|2019 年 11 月|
 |如果源数据库包含内存中 OLTP 对象，则从业务关键层到常规用途层的时间点数据库还原不会成功。||已解决|2019 年 10 月|
@@ -133,7 +133,7 @@ GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
 
 ### <a name="sql-agent-jobs-can-be-interrupted-by-agent-process-restart"></a>重启代理进程可能会中断 SQL 代理作业
 
-每次启动一个作业，SQL 代理就会创建一个新会话，这会逐渐增大内存消耗量。 为了避免达到内部内存限制，从而阻止已计划作业的执行，一旦代理的内存消耗量达到阈值，就会重启代理进程。 这可能会中断重启时正在运行的作业的执行。
+**（2020年3月解决）** SQL 代理在每次启动作业时都会创建一个新会话，这逐渐增加了内存消耗。 为了避免达到内部内存限制，从而阻止已计划作业的执行，一旦代理的内存消耗量达到阈值，就会重启代理进程。 这可能会中断重启时正在运行的作业的执行。
 
 ### <a name="in-memory-oltp-memory-limits-are-not-applied"></a>内存中 OLTP 内存限制不适用
 

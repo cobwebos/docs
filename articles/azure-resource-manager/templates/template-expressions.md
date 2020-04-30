@@ -3,12 +3,12 @@ title: 模板语法和表达式
 description: 介绍 Azure 资源管理器模板的声明性 JSON 语法。
 ms.topic: conceptual
 ms.date: 03/17/2020
-ms.openlocfilehash: 172838fa24709eb60fbcb6a68277f44bbd42f01e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: baddedae1b918502e579d2ed230e0779960f45e7
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460103"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203822"
 ---
 # <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Azure 资源管理器模板中的语法和表达式
 
@@ -18,7 +18,7 @@ ms.locfileid: "79460103"
 
 ## <a name="use-functions"></a>使用函数
 
-Azure[资源管理器提供了可在](template-functions.md)模板中使用的功能。 下面的示例显示了在参数的默认值中使用函数的表达式：
+Azure 资源管理器提供了可在模板中使用的[函数](template-functions.md)。 以下示例显示了一个在参数的默认值中使用函数的表达式：
 
 ```json
 "parameters": {
@@ -39,11 +39,11 @@ Azure[资源管理器提供了可在](template-functions.md)模板中使用的�
 "name": "[concat('storage', uniqueString(resourceGroup().id))]"
 ```
 
-无论部署到资源组、订阅、管理组还是租户，大多数函数的工作方式都相同。 以下函数具有基于范围的限制：
+无论是部署到资源组、订阅、管理组还是租户，大多数函数的工作原理都相同。 以下函数根据范围有限制：
 
-* [资源组](template-functions-resource.md#resourcegroup)- 只能在部署到资源组时使用。
-* [resourceId](template-functions-resource.md#resourceid) - 可在任何作用域使用，但有效参数会根据范围而变化。
-* [订阅](template-functions-resource.md#subscription)- 只能在部署到资源组或订阅时使用。
+* [resourceGroup](template-functions-resource.md#resourcegroup) - 只能在部署到资源组时使用。
+* [resourceId](template-functions-resource.md#resourceid) - 可以在任何范围内使用，但有效参数会根据范围而发生变化。
+* [subscription](template-functions-resource.md#subscription) - 只能在部署到资源组或订阅时使用。
 
 ## <a name="escape-characters"></a>转义字符
 
@@ -71,7 +71,7 @@ Azure[资源管理器提供了可在](template-functions.md)模板中使用的�
 },
 ```
 
-传入参数值时，转义字符的使用取决于参数值的指定位置。 如果在模板中设置了默认值，则需要额外的左括号。
+传入参数值时，使用转义符取决于指定参数值的位置。 如果在模板中设置了默认值，则需要额外的左括号。
 
 ```json
 {
@@ -93,21 +93,21 @@ Azure[资源管理器提供了可在](template-functions.md)模板中使用的�
 }
 ```
 
-如果使用默认值，模板将返回`[test value]`。
+如果使用默认值，则模板返回`[test value]`。
 
-但是，如果将参数值传递到命令行，则字符将字面解释。 使用以下功能部署以前的模板：
+但是，如果通过命令行传递参数值，则将按原义解释这些字符。 部署上一个模板：
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName demoGroup -TemplateFile azuredeploy.json -demoParam1 "[[test value]"
 ```
 
-返回 `[[test value]`。 相反，请使用：
+返回 `[[test value]`。 而应使用：
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName demoGroup -TemplateFile azuredeploy.json -demoParam1 "[test value]"
 ```
 
-从参数文件传入值时，也适用相同的格式。 字符被字面解释。 当与前面的模板一起使用时，以下参数文件返回`[test value]`：
+在从参数文件传递中的值时，将应用相同的格式设置。 按原义解释字符。 与上述模板一起使用时，以下参数文件将返回`[test value]`：
 
 ```json
 {
@@ -123,7 +123,7 @@ New-AzResourceGroupDeployment -ResourceGroupName demoGroup -TemplateFile azurede
 
 ## <a name="null-values"></a>Null 值
 
-要将属性设置为 null，可以使用**null**或 **[json（"null"）]**。 当您作为参数提供`null`时[，json 函数](template-functions-array.md#json)将返回一个空对象。 在这两种情况下，资源管理器模板都将其视为属性不存在。
+若要将属性设置为 null，可以使用**null**或 **[json （' null '）]**。 作为参数提供`null`时， [json 函数](template-functions-object.md#json)返回一个空对象。 在这两种情况下，资源管理器模板会将其视为不存在属性。
 
 ```json
 "stringValue": null,

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 2e84138419986ef1033ab076b3745187812e91b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c0cabab6f867df918c4ac86d035918c483e12da9
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335888"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203162"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Azure API 管理层的基于功能的比较
 
@@ -26,7 +26,7 @@ ms.locfileid: "80335888"
 > [!IMPORTANT]
 > 请注意，开发人员层适用于非生产用例和评估。 它不提供 SLA。
 
-| Feature                                                                                      | 消耗 | 开发人员 | Basic | Standard | Premium |
+| 功能                                                                                      | 消耗 | 开发人员 | 基本 | Standard | Premium |
 | -------------------------------------------------------------------------------------------- | ----------- | --------- | ----- | -------- | ------- |
 | Azure AD 集成<sup>1</sup>                                                             | 否          | 是       | 否    | 是      | 是     |
 | 虚拟网络 (VNet) 支持                                                               | 否          | 是       | 否    | 否       | 是     |
@@ -35,7 +35,7 @@ ms.locfileid: "80335888"
 | 开发人员门户<sup>2</sup>                                                                 | 否          | 是       | 是   | 是      | 是     |
 | 内置缓存                                                                               | 否          | 是       | 是   | 是      | 是     |
 | 内置分析                                                                           | 否          | 是       | 是   | 是      | 是     |
-| [自托管网关](self-hosted-gateway-overview.md)<sup>3</sup>                           | 否          | 是       | 否    | 否       | 是     |
+| [自承载网关](self-hosted-gateway-overview.md)<sup>3</sup>                           | 否          | 是       | 否    | 否       | 是     |
 | [TLS 设置](api-management-howto-manage-protocols-ciphers.md)                             | 是         | 是       | 是   | 是      | 是     |
 | [外部缓存](https://aka.ms/apimbyoc)                                                    | 是         | 是       | 是   | 是      | 是     |
 | [客户端证书身份验证](api-management-howto-mutual-certificates-for-clients.md) | 是         | 是       | 是   | 是      | 是     |
@@ -47,4 +47,4 @@ ms.locfileid: "80335888"
 
 <sup>1</sup> 允许使用 Azure AD（和 Azure AD B2C）作为标识提供者，以用于开发人员门户上的用户登录。<br/>
 <sup>2</sup> 包括相关功能，例如用户、组、问题、应用程序和电子邮件模板以及通知。<br/>
-<sup>3</sup>仅限于具有单个网关节点的单个自托管网关部署。<br/>
+<sup>3</sup>在开发人员层中，自承载的网关仅限为单个网关节点。<br/>

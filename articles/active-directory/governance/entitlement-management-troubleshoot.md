@@ -16,12 +16,12 @@ ms.date: 03/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c38e1a61827da547bb39a699a0e92043e63466c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5ddd8e1c64f4db8221937abc54e88d9a884acf3e
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80128478"
+ms.locfileid: "82207238"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>排查 Azure AD 权利管理的问题
 
@@ -87,13 +87,19 @@ ms.locfileid: "80128478"
 
     如果请求有任何传递错误，**将无法传递**或**部分传递**请求状态。
 
-    如果发生了任何传递错误，请求详细信息窗格中会显示传递错误计数。
+    如果存在传递错误，则会在请求的详细信息窗格中显示传递错误的计数。
 
 1. 单击计数可查看该请求的所有传递错误。
 
 ### <a name="reprocess-a-request"></a>重新处理请求
 
-如果某一请求遇到错误，则可以重新处理该请求以重试。 您只能重新处理状态为 "传递" 的请求已**失败**或**部分传递**且完成时间不到一周。
+如果在触发访问包重新处理请求后遇到错误，则必须等待系统重新处理请求。 系统多次尝试重新处理几个小时，因此在这段时间内不能强制重新处理。 
+
+您只能重新处理状态为 "传递" 的请求已**失败**或**部分传递**且完成时间不到一周。
+
+- 如果在试用时段内修复错误，请求状态将更改为 "正在**传递**"。 该请求将重新处理，而不需要用户执行其他操作。
+
+- 如果在试用时段内未修复此错误，则请求状态可能为 "**未通过**" 或 "**部分送达**"。 然后 **，可以使用 "重新**处理" 按钮。 你将需要7天来重新处理请求。
 
 **必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理员
 

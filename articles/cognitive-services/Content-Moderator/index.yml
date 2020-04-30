@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 10/24/2019
-  ms.openlocfilehash: 8d49e2c455bdd27917bb33cbf428b3a6b52facd3
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 92648f5b1720cd8274817d289dae1f4631e8b7e7
+  ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "74132722"
+  ms.lasthandoff: 04/28/2020
+  ms.locfileid: "82195946"
 landingContent:
 - title: 关于内容审查器
   linkLists:
@@ -37,11 +37,11 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: 使用 .NET SDK
-      url: dotnet-sdk-quickstart.md
+      url: client-libraries.md?pivots=programming-language-csharp
     - text: 使用 Python SDK
-      url: python-sdk-quickstart.md
+      url: client-libraries.md?pivots=programming-language-python
     - text: 使用 Java SDK
-      url: java-sdk-quickstart.md
+      url: client-libraries.md?pivots=programming-language-java
   - linkListType: how-to-guide
     links:
     - text: 使用 API 控制台
@@ -152,5 +152,5 @@ landingContent:
       url: https://cognitive.uservoice.com/forums/559960-content-moderator
     - text: 知识库
       url: https://cognitive.uservoice.com/knowledgebase/topics/132073-content-moderator
-    - text: 堆栈溢出
+    - text: Stack Overflow
       url: https://stackoverflow.com/questions/tagged/microsoft-cognitive

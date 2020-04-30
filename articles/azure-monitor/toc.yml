@@ -243,11 +243,13 @@
             - name: 独立 - 任何环境
               items:
                 - name: Java（预览版）
-                  href: app/java-in-process-agent.md
-                - name: Java JVM 配置
-                  href: app/java-standalone-arguments.md
-                - name: Java 配置选项
-                  href: app/java-standalone-config.md
+                  items:
+                    - name: 概述
+                      href: app/java-in-process-agent.md
+                    - name: 配置选项
+                      href: app/java-standalone-config.md
+                    - name: JVM 参数设置
+                      href: app/java-standalone-arguments.md
             - name: 本地服务器
               items:
                 - name: ASP.NET
@@ -690,8 +692,10 @@
                   href: insights/container-insights-enable-existing-clusters.md
                 - name: 针对混合群集启用
                   href: insights/container-insights-hybrid-setup.md
-                - name: 为 Azure Red Hat OpenShift 启用
+                - name: 为 Azure Red Hat OpenShift v3 启用
                   href: insights/container-insights-azure-redhat-setup.md
+                - name: 为 Azure Red Hat OpenShift v4 启用
+                  href: insights/container-insights-azure-redhat4-setup.md
                 - name: 区域映射
                   href: insights/container-insights-region-mapping.md
             - name: 监视性能
@@ -724,10 +728,16 @@
               href: insights/container-insights-update-metrics.md
             - name: 运行状况监视配置
               href: insights/container-insights-health-monitors-config.md
-            - name: 禁止监视 AKS
-              href: insights/container-insights-optout.md
-            - name: 禁止监视 Red Hat OpenShift
-              href: insights/container-insights-optout-openshift.md
+            - name: 禁用监视
+              items:
+                - name: 禁止监视 AKS
+                  href: insights/container-insights-optout.md
+                - name: 禁止监视 Red Hat OpenShift v3
+                  href: insights/container-insights-optout-openshift-v3.md
+                - name: 禁止监视 Red Hat OpenShift v4
+                  href: insights/container-insights-optout-openshift-v4.md
+                - name: 禁止监视混合群集
+                  href: insights/container-insights-optout-hybrid.md
             - name: 疑难解答
               href: insights/container-insights-troubleshoot.md
         - name: Docker 和 Windows 容器监视

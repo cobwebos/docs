@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.custom: include file
-ms.date: 02/08/2020
+ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: dd44d9cb01ff072d89afeb4efc4a59071c621315
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 97dfe175a609ab336206098948b4e3fcc401d8bc
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80758458"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203945"
 ---
 此基于 Postman 的快速入门详细介绍如何从知识库获取答案。
 
@@ -40,7 +40,7 @@ ms.locfileid: "80758458"
     |名称|设置|用途和值|
     |--|--|--|
     |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|这是 URL 的 HTTP 方法和路由。|
-    |`Host`|`https://diberry-qna-s0-s.azurewebsites.net/qnamaker`|这是 URL 的宿主。 将 Host 和 Post 值串联在一起可以获取完整的 generateAnswer URL。|
+    |`Host`|`https://YOUR-RESOURCE_NAME.azurewebsites.net/qnamaker`|这是 URL 的宿主。 将 Host 和 Post 值串联在一起可以获取完整的 generateAnswer URL。|
     |`Authorization`|`EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`|用于授权向 Azure 发出请求的标头值。 |
     |`Content-type`|`application/json`|内容的标头值。|
     ||`{"question":"<Your question>"}`|POST 请求的正文，采用 JSON 对象形式。 在后续的每个部分，此值将会根据查询的目的发生更改。|

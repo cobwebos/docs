@@ -2,22 +2,22 @@
 title: 模板函数 - 部署
 description: 介绍可在 Azure 资源管理器模板中使用的用于检索部署信息的函数。
 ms.topic: conceptual
-ms.date: 11/27/2019
-ms.openlocfilehash: 86a1d3d7e05fedacd7a3c044ecab241ca9d059c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/27/2020
+ms.openlocfilehash: a52b4eae9df4ad3fdf9e481ee0a40aac48f6665b
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156321"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203788"
 ---
-# <a name="deployment-functions-for-arm-templates"></a>ARM 模板的部署功能 
+# <a name="deployment-functions-for-arm-templates"></a>ARM 模板的部署函数
 
-资源管理器提供以下功能，用于获取与 Azure 资源管理器 （ARM） 模板的当前部署相关的值：
+资源管理器提供了以下用于获取与 Azure 资源管理器（ARM）模板的当前部署相关的值的函数：
 
-* [部署](#deployment)
+* [deployment](#deployment)
 * [环境](#environment)
 * [参数](#parameters)
-* [变量](#variables)
+* [variables](#variables)
 
 若要从资源、资源组或订阅获取值，请参阅 [Resource functions](template-functions-resource.md)（资源函数）。
 
@@ -29,7 +29,12 @@ ms.locfileid: "80156321"
 
 ### <a name="return-value"></a>返回值
 
-此函数返回部署期间传递的对象。 根据部署对象是作为链接还是内联对象传递，所返回对象中的属性将有所不同。 如果部署对象是以内联形式传递的（例如使用 Azure PowerShell 中的 **-TemplateFile** 参数指向本地文件时），所返回的对象采用以下格式：
+此函数返回部署期间传递的对象。 返回的对象中的属性根据您是否是：
+
+* 部署一个模板，该模板是本地文件，或部署一个模板，该模板是通过 URI 访问的远程文件。
+* 部署到资源组或部署到其他作用域（[Azure 订阅](deploy-to-subscription.md)、[管理组](deploy-to-management-group.md)或[租户](deploy-to-tenant.md)）之一。
+
+将本地模板部署到资源组时：该函数返回以下格式：
 
 ```json
 {
@@ -44,6 +49,7 @@ ms.locfileid: "80156321"
             ],
             "outputs": {}
         },
+        "templateHash": "",
         "parameters": {},
         "mode": "",
         "provisioningState": ""
@@ -51,7 +57,7 @@ ms.locfileid: "80156321"
 }
 ```
 
-如果对象是以链接形式传递的（例如使用 **-TemplateUri** 参数指向远程对象时），所返回的对象采用以下格式： 
+将远程模板部署到资源组时：该函数返回以下格式：
 
 ```json
 {
@@ -68,6 +74,7 @@ ms.locfileid: "80156321"
             "resources": [],
             "outputs": {}
         },
+        "templateHash": "",
         "parameters": {},
         "mode": "",
         "provisioningState": ""
@@ -75,7 +82,26 @@ ms.locfileid: "80156321"
 }
 ```
 
-[部署到 Azure 订阅](deploy-to-subscription.md)而不是资源组时，返回对象包含 `location` 属性。 部署本地模板或外部模板时包含 location 属性。
+部署到 Azure 订阅、管理组或租户后，返回对象将包含`location`属性。 部署本地模板或外部模板时包含 location 属性。 格式为：
+
+```json
+{
+    "name": "",
+    "location": "",
+    "properties": {
+        "template": {
+            "$schema": "",
+            "contentVersion": "",
+            "resources": [],
+            "outputs": {}
+        },
+        "templateHash": "",
+        "parameters": {},
+        "mode": "",
+        "provisioningState": ""
+    }
+}
+```
 
 ### <a name="remarks"></a>备注
 
@@ -99,7 +125,7 @@ ms.locfileid: "80156321"
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
-        "subscriptionOutput": {
+        "deploymentOutput": {
             "value": "[deployment()]",
             "type" : "object"
         }
@@ -118,20 +144,19 @@ ms.locfileid: "80156321"
       "contentVersion": "1.0.0.0",
       "resources": [],
       "outputs": {
-        "subscriptionOutput": {
+        "deploymentOutput": {
           "type": "Object",
           "value": "[deployment()]"
         }
       }
     },
+    "templateHash": "13135986259522608210",
     "parameters": {},
     "mode": "Incremental",
     "provisioningState": "Accepted"
   }
 }
 ```
-
-对于使用部署功能的订阅级别模板，请参阅[订阅部署功能](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json)。 它使用 `az deployment create` 或 `New-AzDeployment` 命令进行部署。
 
 ## <a name="environment"></a>环境
 
@@ -326,13 +351,13 @@ ms.locfileid: "80156321"
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
-| stringOutput | String | option 1 |
+| stringOutput | 字符串 | option 1 |
 | intOutput | Int | 1 |
-| objectOutput | Object | {"one": "a", "two": "b"} |
-| arrayOutput | Array | [1, 2, 3] |
-| crossOutput | String | option 1 |
+| objectOutput | 对象 | {"one": "a", "two": "b"} |
+| arrayOutput | 数组 | [1, 2, 3] |
+| crossOutput | 字符串 | option 1 |
 
 如需详细了解如何使用参数，请参阅 [Azure 资源管理器模板中的参数](template-parameters.md)。
 
@@ -346,7 +371,7 @@ ms.locfileid: "80156321"
 
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| variableName |是 |String |要返回的变量名称。 |
+| variableName |是 |字符串 |要返回的变量名称。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -418,18 +443,15 @@ ms.locfileid: "80156321"
 
 上面具有默认值的示例的输出为：
 
-| “属性” | 类型 | “值” |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
-| exampleOutput1 | String | myVariable |
-| exampleOutput2 | Array | [1, 2, 3, 4] |
-| exampleOutput3 | String | myVariable |
-| exampleOutput4 |  Object | {"property1": "value1", "property2": "value2"} |
+| exampleOutput1 | 字符串 | myVariable |
+| exampleOutput2 | 数组 | [1, 2, 3, 4] |
+| exampleOutput3 | 字符串 | myVariable |
+| exampleOutput4 |  对象 | {"property1": "value1", "property2": "value2"} |
 
 如需详细了解如何使用变量，请参阅 [Azure 资源管理器模板中的变量](template-variables.md)。
 
 ## <a name="next-steps"></a>后续步骤
-* 有关 Azure 资源管理器模板中各部分的说明，请参阅[创作 Azure 资源管理器模板](template-syntax.md)。
-* 若要合并多个模板，请参阅[将链接的模板与 Azure 资源管理器配合使用](linked-templates.md)。
-* 要迭代创建资源类型时指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
-* 要查看如何部署已创建的模板，请参阅[使用 Azure 资源管理器模板部署应用程序](deploy-powershell.md)。
 
+* 有关 Azure 资源管理器模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。

@@ -1,24 +1,24 @@
 ---
-title: Mv2 系列 - Azure 虚拟机
-description: Mv2 系列 VM 的规格。
+title: Mv2 系列-Azure 虚拟机
+description: Mv2 系列 Vm 的规格。
 services: virtual-machines
 author: ayshakeen
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: lahugh
-ms.openlocfilehash: 764dc93608ae3b8882b7048a722c6d3415cbc644
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 7df8dd439008258ea1b4986054660fb0fb9070ce
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885780"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204179"
 ---
 # <a name="mv2-series"></a>Mv2 系列
 
-Mv2 系列具有高吞吐量、低延迟平台，可在超线程英特尔® Xeon ®白金 8180M 2.5GHz（Skylake） 处理器上运行，所有核心基频率为 2.5 GHz，最大涡轮频率为 3.8 GHz。 所有 Mv2 系列虚拟机大小都可以使用标准和高级持久磁盘。 Mv2 系列实例是内存优化的 VM 大小，提供无与伦比的计算性能，支持大型内存数据库和工作负载，具有高内存 CPU 比率，非常适合关系数据库服务器、大型缓存和内存分析。
+Mv2 系列提供高吞吐量、低延迟的平台，该平台在超线程 Intel®强®白金 GHz （Skylake）处理器上运行，所有核心基本频率为 2.5 GHz，最大 turbo 频率为 3.8 GHz。 所有 Mv2 系列虚拟机大小均可使用标准和高级永久性磁盘。 Mv2 系列实例是内存优化的 VM 大小，提供无与伦比的计算性能，可支持大型内存中数据库和工作负荷，并且非常适合用于关系数据库服务器、大型缓存和内存中分析。
 
-Mv2 系列 VM 的功能英特尔®超线程技术
+Mv2 系列 VM 的 Intel®超线程技术功能
 
 高级存储：支持
 
@@ -32,17 +32,17 @@ Mv2 系列 VM 的功能英特尔®超线程技术
 
 |大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 缓存和临时存储的最大吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数/预期网络带宽 (MBps) |
 |---|---|---|---|---|---|---|---|
-| Standard_M208ms_v2<sup>1</sup> | 208 | 5700 | 4096 | 64 | 80000 / 800 (7040) | 40000 / 1000 | 8 / 16000 |
-| Standard_M208s_v2<sup>1</sup> | 208 | 2850 | 4096 | 64 | 80000 / 800 (7040) | 40000 / 1000 | 8 / 16000 |
-| Standard_M416ms_v2<sup>1</sup> | 416 | 11400 | 8192 | 64 | 250000 / 1600 (14080) | 80000 / 2000 | 8 / 32000 |
-| Standard_M416s_v2<sup>1</sup> | 416 | 5700 | 8192 | 64 | 250000 / 1600 (14080) | 80000 / 2000 | 8 / 32000 |
+| Standard_M208ms_v2<sup>1</sup> | 208 | 5700 | 4096 | 64 | 80000/800 （7040） | 40000 / 1000 | 8 / 16000 |
+| Standard_M208s_v2<sup>1</sup> | 208 | 2850 | 4096 | 64 | 80000/800 （7040） | 40000 / 1000 | 8 / 16000 |
+| Standard_M416ms_v2<sup>1</sup> | 416 | 11400 | 8192 | 64 | 250000/1600 （14080） | 80000 / 2000 | 8 / 32000 |
+| Standard_M416s_v2<sup>1</sup> | 416 | 5700 | 8192 | 64 | 250000/1600 （14080） | 80000 / 2000 | 8 / 32000 |
 
-<sup>1</sup> Mv2 系列 VM 仅是第 2 代。 如果使用 Linux，请参阅 Azure[上支持第 2 代 VM](./linux/generation-2.md)了解如何查找和选择映像的说明。 如果使用 Windows，请参阅 Azure[上支持第 2 代 VM](./windows/generation-2.md)了解如何查找和选择映像的说明。 所有四个不同的 Mv2 系列 VM 类型列表所需的最小操作系统版本，如下所示：
+<sup>1</sup> Mv2 系列 vm 仅为第2代，并且支持第2代支持映像的子集。 请参阅下面的 Mv2 系列支持映像的完整列表。 如果你使用的是 Linux，请参阅对[Azure 上的第2代 vm 的支持](./linux/generation-2.md)，了解有关如何查找并选择映像的说明。 如果使用的是 Windows，请参阅对[Azure 上的第2代 vm 的支持](./windows/generation-2.md)，了解有关如何查找和选择映像的说明。 
 
 - Windows Server 2019 或更高版本
-- SUSE Linux 企业服务器 12 SP4 及更高版本或 SUSE Linux 企业服务器 15 SP1 及更高版本
-- 红帽企业 Linux 7.6、 7.7、 8.1 或更高版本 
-- 甲骨文企业Linux 7.7或更高版本
+- SUSE Linux Enterprise Server 12 SP4 及更高版本或 SUSE Linux Enterprise Server 15 SP1 及更高版本
+- Red Hat Enterprise Linux 7.6、7.7、8.1 或更高版本 
+- Oracle Enterprise Linux 7.7 或更高版本
 
 
 
@@ -59,4 +59,4 @@ Mv2 系列 VM 的功能英特尔®超线程技术
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助你跨 Azure SKU 比较计算性能的详细信息。
+了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。

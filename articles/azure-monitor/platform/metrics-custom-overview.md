@@ -2,44 +2,44 @@
 title: Azure Monitor 中的自定义指标
 description: 了解 Azure Monitor 中的自定义指标及其建模方式。
 author: ancav
+ms.author: ancav
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 09/09/2019
-ms.author: ancav
+ms.date: 04/23/2020
 ms.subservice: metrics
-ms.openlocfilehash: 099ab150cde763551c2ad10a4e9159909ccff4dd
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 4286910c926cd6bd3b21acfd145e4e69548319ce
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270700"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204298"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Azure Monitor 中的自定义指标
 
 在 Azure 中部署资源和应用程序时，需要开始收集遥测数据，以洞察它们的性能和运行状况。 Azure 提供一些现成的指标。 这些指标称为[标准或平台](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)。 但是，它们在性质上有限制。 可能需要收集一些自定义性能指标或特定于业务的指标才能提供更深入的见解。
 可以通过应用程序遥测、Azure 资源上运行的代理甚至从外到内的监视系统收集这些**自定义**指标，然后将其直接提交给 Azure Monitor。 发布到 Azure Monitor 之后，可以连同 Azure 发出的标准指标一起浏览、查询 Azure 资源和应用程序的自定义指标，并针对其发出警报。
 
-## <a name="methods-to-send-custom-metrics"></a>发送自定义指标的方法
+## <a name="methods-to-send-custom-metrics"></a>用于发送自定义指标的方法
 
 可以通过多种方法将自定义指标发送到 Azure Monitor：
 - 使用 Azure Application Insights SDK 检测应用程序并将自定义遥测数据发送到 Azure Monitor。 
 - 在 [Azure VM](collect-custom-metrics-guestos-resource-manager-vm.md)、[虚拟机规模集](collect-custom-metrics-guestos-resource-manager-vmss.md)、[经典 VM](collect-custom-metrics-guestos-vm-classic.md) 或[经典云服务](collect-custom-metrics-guestos-vm-cloud-service-classic.md)上安装 Windows Azure 诊断 (WAD) 扩展，并将性能计数器发送到 Azure Monitor。 
 - 在 Azure Linux VM 上安装 [InfluxData Telegraf 代理](collect-custom-metrics-linux-telegraf.md)，并使用 Azure Monitor 输出插件发送指标。
-- 将自定义指标[直接发送到 Azure 监视器 REST](../../azure-monitor/platform/metrics-store-custom-rest-api.md) `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`API 。
+- 将自定义指标[直接发送到 Azure Monitor REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)：`https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`。
 
 ## <a name="pricing-model"></a>定价模型
 
-将标准指标（平台指标）引入 Azure 监视器指标存储不花费任何成本。 引入 Azure 监视器指标存储的自定义指标将按 MByte 计费，每个自定义指标数据点都被视为大小为 8 字节。 所有引入的指标将保留 90 天。
+将标准指标（平台指标）引入 Azure Monitor 指标存储不会产生费用。 引入度量值存储中 Azure Monitor 的自定义指标将按字节计费，其中每个自定义指标的大小都被视为8个字节。 所有引入指标保留90天。
 
-指标查询将根据标准 API 调用的数量收费。 标准 API 调用是分析 1，440 个数据点的调用（1，440 也是每天每个指标可存储的数据点的总数）。 如果 API 调用分析超过 1，440 个数据点，则它将计为多个标准 API 调用。 如果 API 调用分析的数据点少于 1，440 个，则它将计为少于一个 API 调用。 标准 API 调用的数量计算为每天分析的数据点总数除以 1，440。
+将根据标准 API 调用数对指标查询进行收费。 标准 API 调用用于分析1440数据点（1440也是每天每个指标可存储的数据点的总数）。 如果 API 调用分析超过1440个数据点，则会将其计为多个标准 API 调用。 如果 API 调用分析了小于1440的数据点，则会将其计为小于一个 API 调用。 标准 API 调用数每天计算为每天分析的数据点总数除以1440。
 
-自定义指标和指标查询的特定价格详细信息可在[Azure 监视器定价页上](https://azure.microsoft.com/pricing/details/monitor/)找到。
-
-> [!NOTE]  
-> 通过应用程序见解 SDK 发送到 Azure 监视器的指标将计费为引入的日志数据，并且仅在选择了"应用程序见解["功能"启用自定义指标维度警报](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation)"时，才会产生其他指标费用。 详细了解[您所在地区](https://azure.microsoft.com/pricing/details/monitor/)[的应用程序见解定价模型](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model)和价格。
+[Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)上提供了自定义指标和指标查询的特定价格详细信息。
 
 > [!NOTE]  
-> 有关何时为自定义指标和指标查询启用计费的详细信息，请查看[Azure 监视器定价页](https://azure.microsoft.com/pricing/details/monitor/)。 
+> 通过 Application Insights SDK 发送给 Azure Monitor 的指标将按引入日志数据计费，并且仅当已选择 Application Insights 功能 "[对自定义指标维度启用警报](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation)" 时，才会产生额外的指标费用。 详细了解[你所在地区](https://azure.microsoft.com/pricing/details/monitor/)的[Application Insights 定价模型](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model)和价格。
+
+> [!NOTE]  
+> 有关何时为自定义指标和指标查询启用计费的详细信息，请查看[Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)。 
 
 ## <a name="how-to-send-custom-metrics"></a>如何发送自定义指标
 
@@ -54,7 +54,7 @@ ms.locfileid: "81270700"
 > [!TIP]  
 > 请求用于发出自定义指标的 Azure AD 令牌时，请确保请求该令牌的受众或资源是 `https://monitoring.azure.com/`。 请务必包含尾部的“/”。
 
-### <a name="subject"></a>主题
+### <a name="subject"></a>Subject
 此属性捕获自定义指标报告的 Azure 资源 ID。 将在 API 调用的 URL 中为此信息编码。 每个 API 只能提交单个 Azure 资源的指标值。
 
 > [!NOTE]  
@@ -73,7 +73,7 @@ ms.locfileid: "81270700"
 发送到 Azure Monitor 的每个数据点必须带有时间戳标记。 此时间戳捕获测量或收集指标值的日期时间。 Azure Monitor 接受带有过去最多 20 分钟和将来最多 5 分钟时间戳的指标数据。 时间戳必须采用 ISO 8601 格式。
 
 ### <a name="namespace"></a>命名空间
-命名空间可将类似的指标分类或分组到一起。 使用命名空间能够在可收集不同见解或性能指标的指标组之间实现隔离。 例如，您可能有一个称为 **"同体记忆度量"** 的命名空间，用于跟踪配置文件应用的内存使用指标。 另一个称为**contosoapp 事务的**命名空间可能会跟踪有关应用程序中用户事务的所有指标。
+命名空间可将类似的指标分类或分组到一起。 使用命名空间能够在可收集不同见解或性能指标的指标组之间实现隔离。 例如，你可能有一个名为**contosomemorymetrics**的命名空间，用于跟踪分析你的应用程序的内存使用度量值。 另一个名为**contosoapptransaction**的命名空间可能会跟踪有关应用程序中的用户事务的所有指标。
 
 ### <a name="name"></a>名称
 “名称”是正在报告的指标的名称。**** 通常，该名称具有足够的自述性，可帮助识别所要测量的指标。 以测量给定 VM 上所用内存字节数的指标为例， 该指标可以使用类似于“已使用内存字节数”的名称。****
@@ -100,7 +100,7 @@ Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在�
 * **总和**：在给定的分钟内从所有样本和测量值中观测到的所有值的总和。
 * **计数**：在给定的分钟内创建的样本和测量值数目。
 
-例如，如果在给定的一分钟内有四个登录事务到你的应用，则每个事务的结果测量的延迟可能如下所示：
+例如，如果你在给定一分钟内，你的应用程序有四个登录事务，则每个的结果测量的延迟可能如下所示：
 
 |事务 1|事务 2|事务 3|事务 4|
 |---|---|---|---|
@@ -168,13 +168,13 @@ Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在�
 在发出自定义指标之前，无需在 Azure Monitor 中预定义该指标。 发布的每个指标数据点包含命名空间、名称和维度信息。 因此，首次将自定义指标发送到 Azure Monitor 时，会自动创建指标定义。 然后，可在通过指标定义发出其指标的任何资源上发现此指标定义。
 
 > [!NOTE]  
-> Azure 监视器还不支持为自定义指标定义**单位**。
+> Azure Monitor 尚不支持定义自定义指标的**单位**。
 
 ## <a name="using-custom-metrics"></a>使用自定义指标
 将自定义指标提交到 Azure Monitor 之后，可以通过 Azure 门户浏览它们，以及通过 Azure Monitor REST API 查询它们。 还可以对其创建警报，以便在满足特定的条件时收到通知。
 
 > [!NOTE]
-> 您需要是读取器或参与者角色才能查看自定义指标。
+> 你需要成为 "读者" 或 "参与者" 角色才能查看自定义指标。
 
 ### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>通过 Azure 门户浏览自定义指标
 1.    转到 [Azure 门户](https://portal.azure.com)。
@@ -195,7 +195,7 @@ Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在�
 |美国中北部 | https：\//northcentralus.monitoring.azure.com
 |美国中南部| https：\//southcentralus.monitoring.azure.com/ |
 |美国中部      | https：\//centralus.monitoring.azure.com |
-|加拿大中部 | https：\//加拿大中心.监视.azure.comc
+|加拿大中部 | https：\//canadacentral.monitoring.azure.comc
 |美国东部| https：\//eastus.monitoring.azure.com/ |
 | **欧洲** | |
 |北欧    | https：\//northeurope.monitoring.azure.com/ |
@@ -212,6 +212,11 @@ Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在�
 |东亚 | https：\//eastasia.monitoring.azure.com
 |韩国中部   | https：\//koreacentral.monitoring.azure.com
 
+## <a name="latency-and-storage-retention"></a>延迟和存储保留
+
+添加全新指标或添加到指标的新维度最多可能需要2到3分钟的时间才能显示。 在系统中，在99% 的时间内，数据应该显示不到30秒。 
+
+如果删除某一度量值或删除维度，则更改可能要从系统中删除一周。
 
 ## <a name="quotas-and-limits"></a>配额和限制
 Azure Monitor 针对自定义指标实施以下用量限制：

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe602972cb16bf24b1c35b2aadfe25c499bce69f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: f4de359f60b556390b8271b728580ef66ae53ffa
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181845"
+ms.locfileid: "82201714"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory 的无密码 authentication 选项
 
@@ -28,13 +28,13 @@ ms.locfileid: "82181845"
 
 当涉及身份验证时，每个组织都有不同的需求。 Microsoft 提供了以下三个无密码 authentication 选项，这些选项与 Azure Active Directory （Azure AD）集成：
 
-- Windows Hello for Business
+- Windows Hello 企业版
 - Microsoft Authenticator 应用
 - FIDO2 安全密钥
 
 ![身份验证：安全性和便利性](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
 
-## <a name="windows-hello-for-business"></a>Windows Hello for Business
+## <a name="windows-hello-for-business"></a>Windows Hello 企业版
 
 Windows Hello 企业版非常适合拥有自己的指定 Windows PC 的信息工作者。 生物识别和 PIN 直接绑定到用户的 PC，这会阻止除所有者之外的任何人访问。 利用公钥基础结构（PKI）集成和单一登录（SSO）的内置支持，Windows Hello 企业版提供了一种方便的方法，可在本地和云中无缝访问公司资源。
 
@@ -119,7 +119,7 @@ FIDO2 安全密钥是基于 unphishable 标准的无密码身份验证方法，�
 | eWBM | [https://www.ewbm.com/support](https://www.ewbm.com/support) |
 | AuthenTrend | [https://authentrend.com/about-us/#pg-35-3](https://authentrend.com/about-us/#pg-35-3) |
 | Gemalto 身份（Thales 组） | [https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/](https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/) |
-| OneSpan Inc。 | [https://www.onespan.com/sites/default/files/2019-01/OneSpan-FIDO-Authentication.pdf](https://www.onespan.com/sites/default/files/2019-01/OneSpan-FIDO-Authentication.pdf) |
+| OneSpan Inc。 | [https://www.onespan.com/products/fido](https://www.onespan.com/products/fido) |
 | IDmelon 技术 Inc。 | [https://www.idmelon.com/#idmelon](https://www.idmelon.com/#idmelon) | 
 
 > [!NOTE]
@@ -142,7 +142,7 @@ FIDO2 安全密钥是基于 unphishable 标准的无密码身份验证方法，�
 
 下面是在选择 Microsoft 无密码技术时要考虑的一些因素：
 
-||**Windows Hello for Business**|**无密码 Microsoft Authenticator 应用登录**|**FIDO2 安全密钥**|
+||**Windows Hello 企业版**|**无密码 Microsoft Authenticator 应用登录**|**FIDO2 安全密钥**|
 |:-|:-|:-|:-|
 |**必备组件**| Windows 10 版本 1809 或更高版本<br>Azure Active Directory| Microsoft Authenticator 应用<br>手机（运行 Android 6.0 或更高版本的 iOS 和 Android 设备。）|Windows 10 版本 1809 或更高版本<br>Azure Active Directory|
 |**模式**|平台|软件|硬件|

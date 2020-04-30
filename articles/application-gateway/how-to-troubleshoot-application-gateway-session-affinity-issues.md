@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: aa3617b30fe1ef9b4d4a6c5fe5aac51bff95bb92
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
-ms.translationtype: HT
+ms.openlocfilehash: f5f5c16f3d6aa1d7115e99cbae0dbd6cd926b25a
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81866675"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82202530"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>排查 Azure 应用程序网关会话相关性问题
 
@@ -75,7 +75,7 @@ ms.locfileid: "81866675"
 
 #### <a name="symptom"></a>症状
 
-你已启用“基于 Cookie 的相关性”设置，但在 Internet Explorer 中使用短名 URL（例如 [http://website](http://website/)）访问应用程序网关时，请求仍在后端服务器之间弹跳。
+你已启用“基于 Cookie 的相关性”设置，但在 Internet Explorer 中使用短名 URL（例如 `http://website`）访问应用程序网关时，请求仍在后端服务器之间弹跳。
 
 若要识别此问题，请遵照以下说明操作：
 
@@ -141,9 +141,9 @@ ms.locfileid: "81866675"
 
 5. 检查以下数据：
 
-- **客户端 IP**= 这是来自连接客户端的客户端 IP 地址。
+- **ClientIP**–这是连接客户端中的客户端 IP 地址。
 - **ClientPort** - 这是发出请求的连接方客户端的源端口。
-- **请求查询**– 这指示收到请求的目标服务器。
+- **RequestQuery** –这表示接收请求的目标服务器。
 - **Server-Routed**：收到请求的后端池实例。
 - **X-AzureApplicationGateway-LOG-ID**：用于请求的相关 ID。 可用于排查后端服务器上的流量问题。 例如：X-AzureApplicationGateway-CACHE-HIT=0&SERVER-ROUTED=10.0.2.4.
 

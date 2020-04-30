@@ -4,19 +4,19 @@ description: 了解如何将 Azure IoT Edge 解决方案从开发环境转移到
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 4/24/2020
+ms.date: 4/25/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 6ec196408c047682be527ee21735ce809f5916e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 173e663b66eeca676e8120dd46e8eca8b0126a17
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191832"
+ms.locfileid: "82204196"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>准备在生产环境中部署 IoT Edge 解决方案
 
@@ -174,12 +174,22 @@ timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。
 
 你了解如何在专用 Azure 注册表中存储自定义代码模块的容器映像，但你也可以使用它来存储公共容器映像，例如适用于 edgeAgent 和 edgHub 运行时模块。 如果防火墙受到严格限制，则可能需要执行此操作，因为这些运行时容器存储在 Microsoft 容器注册表（MCR）中。
 
-获取包含 Docker pull 命令的映像，将其放入注册表。 请注意，你将需要更新每个新版本的 IoT Edge 运行时的映像。
+获取包含要放置在专用注册表中的 Docker pull 命令的图像。 请注意，你将需要更新每个新版本的 IoT Edge 运行时的映像。
 
 | IoT Edge 运行时容器 | Docker 拉取命令 |
 | --- | --- |
 | [Azure IoT Edge 代理](https://hub.docker.com/_/microsoft-azureiotedge-agent) | `docker pull mcr.microsoft.com/azureiotedge-agent` |
 | [Azure IoT Edge 中心](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
+
+接下来，请确保在 edgeAgent 和 edgeHub 系统模块的 deployment 文件中更新映像引用。 将`mcr.microsoft.com`替换为这两个模块的注册表名称和服务器。
+
+* EdgeAgent
+
+    `"image": "<registry name and server>/azureiotedge-agent:1.0",`
+
+* EdgeHub
+
+    `"image": "<registry name and server>/azureiotedge-hub:1.0",`
 
 ## <a name="networking"></a>网络
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 895fb0d83e383618818325263ac80c5919a0ee7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 167d682bb5ce1266ba6b677f6223c38dd34af9bb
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "65406957"
+ms.locfileid: "82202390"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>将 Azure Active Directory 与 E Sales Manager Remix 集成
 
@@ -132,7 +132,7 @@ ms.locfileid: "65406957"
 
 1. 在“快速参考”部分，复制注销 URL 和 SAML 单一登录服务 URL。****
 
-1. 选择“保存”。 
+1. 选择“保存”  。
 
     ![点击“保存”按钮](./media/esalesmanagerremix-tutorial/tutorial_general_400.png)
 
@@ -158,7 +158,7 @@ ms.locfileid: "65406957"
     
     b. 在“协作项”部分的下拉列表中选择“电子邮件”。********
 
-    c. 在“协作项”**** 框中，粘贴先前从 Azure 门户复制的声明值（即：**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**）。
+    c. 在“协作项”**** 框中，粘贴先前从 Azure 门户复制的声明值（即：**`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`**）。
 
     d. 在“颁发者(实体 ID)”框中，粘贴前面从 Azure 门户的”E Sales Manager Remix 域和 URL”部分复制的标识符值。********
 

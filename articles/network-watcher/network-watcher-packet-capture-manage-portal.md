@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: damendo
-ms.openlocfilehash: 6fc4a25e39fb8f27151b2e3bec1959d74a619233
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d7a61438187534a05a7d3f0307a1a4ded89fc147
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76840821"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204077"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>在门户中使用 Azure 网络观察程序管理数据包捕获
 
@@ -27,10 +27,14 @@ ms.locfileid: "76840821"
 
 ## <a name="before-you-begin"></a>开始之前
 
-数据包捕获需要以下连接：
-* 通过端口 443 与存储帐户建立的出站连接。
-* 与 169.254.169.254 建立的入站和出站连接
-* 与 168.63.129.16 建立的入站和出站连接
+数据包捕获需要以下出站 TCP 连接：
+- 通过端口443到所选存储帐户
+- 通过端口 80 169.254.169.254
+- 通过端口 8037 168.63.129.16
+
+> [!NOTE]
+> 上述两种情况中提到的端口在所有网络观察程序功能中都是通用的，这些功能涉及网络观察程序扩展，有时可能会更改。
+
 
 如果某个网络安全组已关联到网络接口或该网络接口所在的子网，请确保存在允许上述端口的规则。 同样，将用户定义的流量路由添加到网络可能会阻止与上述 IP 和端口的连接。 请确保可以访问它们。 
 
@@ -63,7 +67,7 @@ ms.locfileid: "76840821"
      > [!NOTE]
      > 端口和 IP 地址值可以是端口的单个值、值范围或某个范围，例如 80-1024。 可以定义任意数量的筛选器。
 
-4. 选择“确定”。
+4. 选择“确定”  。
 
 超过针对数据包捕获设置的时间限制后，数据包捕获会停止，可供查看。 也可以手动停止数据包捕获会话。
 
@@ -75,7 +79,7 @@ ms.locfileid: "76840821"
 ## <a name="delete-a-packet-capture"></a>删除数据包捕获
 
 1. 在数据包捕获视图中，选择数据包捕获右侧的“...”，或右键单击现有数据包捕获并选择“删除”。********
-2. 系统会要求确认是否要删除数据包捕获。 选择 **“是”**。
+2. 系统会要求确认是否要删除数据包捕获。 请选择“是”。 
 
 > [!NOTE]
 > 删除数据包捕获不会删除存储帐户或虚拟机中的捕获文件。

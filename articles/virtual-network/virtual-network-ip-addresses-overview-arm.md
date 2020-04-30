@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/05/2019
+ms.date: 04/27/2020
 ms.author: allensu
-ms.openlocfilehash: 64940ee6451ef1a9e153ef4d699bdaed32d4030e
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: a698d0cc4653a7a9f938b8f013352d9b51e2e18c
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82146344"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203720"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Azure 中的 IP 地址类型和分配方法
 
@@ -59,6 +59,22 @@ ms.locfileid: "82146344"
 >[!IMPORTANT]
 > 必须为负载均衡器和公用 IP 资源使用匹配的 SKU。 不能混合使用基本 SKU 资源和标准 SKU 资源。 无法将独立的虚拟机、可用性集资源中的虚拟机或虚拟机规模集资源同时附加到两个 SKU。  新的设计应当考虑使用标准 SKU 资源。  有关详细信息，请查看[标准负载均衡器](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
+#### <a name="standard"></a>标准
+
+标准 SKU 公共 IP 地址为：
+
+- 始终使用静态分配方法。
+- 具有可调整的入站发起流空闲超时，范围为 4-30 分钟，默认值为 4 分钟，出站发起流的空闲超时固定为 4 分钟。
+- 默认情况下为安全的，并且对入站流量关闭。 必须使用[网络安全组](security-overview.md#network-security-groups)将允许的入站流量显式列入允许列表中。
+- 分配到网络接口、标准公共负载均衡器或应用程序网关。 有关标准负载均衡器的详细信息，请参阅 [Azure 标准负载均衡器](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+- 可以是区域冗余或区域性（可在特定的可用性区域中创建区域和保证）。 若要详细了解可用性区域，请参阅[可用性区域概述](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)与[标准负载均衡器和可用性区域](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+ 
+> [!NOTE]
+> 在创建并关联[网络安全组](security-overview.md#network-security-groups)且显式允许所需入站流量之前，到标准 SKU 资源的入站通信将会失败。
+
+> [!NOTE]
+> 使用[实例元数据服务 IMDS](../virtual-machines/windows/instance-metadata-service.md) 时，只有具有基本 SKU 的公共 IP 地址可用。 不支持标准 SKU。
+
 #### <a name="basic"></a>基本
 
 推出 SKU 之前创建的所有公共 IP 地址为基本 SKU 公共 IP 地址。 随着 SKU 的推出，可以选择指定公共 IP 地址要采用的 SKU。 基本 SKU 地址为：
@@ -68,22 +84,6 @@ ms.locfileid: "82146344"
 - 默认情况下处于打开状态。  建议使用网络安全组来对入站或出站流量进行限制，但这是可选的。
 - 分配到可以采用公共 IP 地址的任何 Azure 资源，例如网络接口、VPN 网关、应用程序网关和面向 Internet 的负载均衡器。
 - 不支持可用性区域方案。  需要为可用性区域方案使用标准 SKU 公共 IP。 若要详细了解可用性区域，请参阅[可用性区域概述](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)与[标准负载均衡器和可用性区域](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
-
-#### <a name="standard"></a>Standard
-
-标准 SKU 公共 IP 地址为：
-
-- 始终使用静态分配方法。
-- 具有可调整的入站发起流空闲超时，范围为 4-30 分钟，默认值为 4 分钟，出站发起流的空闲超时固定为 4 分钟。
-- 默认情况下为安全的，并且对入站流量关闭。 必须使用[网络安全组](security-overview.md#network-security-groups)将允许的入站流量显式列入允许列表中。
-- 分配到网络接口、标准公共负载均衡器或应用程序网关。 有关标准负载均衡器的详细信息，请参阅 [Azure 标准负载均衡器](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
-- 默认情况下是区域冗余的，也可以选择为区域性的（可以创建为区域性的，并且在特定的可用性区域中保证可靠性）。 若要详细了解可用性区域，请参阅[可用性区域概述](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)与[标准负载均衡器和可用性区域](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
- 
-> [!NOTE]
-> 在创建并关联[网络安全组](security-overview.md#network-security-groups)且显式允许所需入站流量之前，到标准 SKU 资源的入站通信将会失败。
-
-> [!NOTE]
-> 使用[实例元数据服务 IMDS](../virtual-machines/windows/instance-metadata-service.md) 时，只有具有基本 SKU 的公共 IP 地址可用。 不支持标准 SKU。
 
 ### <a name="allocation-method"></a>分配方法
 

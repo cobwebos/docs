@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 04/01/2020
 ms.author: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e104fa26d6657c06a0df31bad8c773fb444a1105
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 30b777cce9b704be558460edf20cf243258c160b
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82100866"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82202292"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>将应用程序身份验证从 Active Directory 联合身份验证服务移动到 Azure Active Directory
 
@@ -198,13 +198,13 @@ LOB 应用由组织内部开发，或者作为你的数据中心内安装的标�
 
 | 配置设置| AD FS| 如何在 Azure AD 中配置| SAML 令牌 |
 | - | - | - | - |
-| **应用登录 URL** <p>用于登录到服务提供商（SP）启动的 SAML 流中的应用的用户的 URL。| 不可用| 从基于 SAML 的登录打开基本 SAML 配置| 不可用 |
-| **应用回复 URL** <p>从标识提供者（IdP）的角度来看应用程序的 URL。 用户登录到 IdP 后，IdP 会将用户和令牌发送到此处。  这也称为**SAML 断言使用者终结点**。| 选择 "**终结点**" 选项卡| 从基于 SAML 的登录打开基本 SAML 配置| SAML 令牌中的 Destination 元素。 示例值：[https://contoso.my.salesforce.com](https://contoso.my.salesforce.com/) |
-| **应用注销 URL** <p>这是用户从应用程序中注销时，向其发送 "注销清理" 请求的 URL。 IdP 发送请求，同时从其他所有应用注销用户。| 选择 "**终结点**" 选项卡| 从基于 SAML 的登录打开基本 SAML 配置| 不可用 |
+| **应用登录 URL** <p>用于登录到服务提供商（SP）启动的 SAML 流中的应用的用户的 URL。| 空值| 从基于 SAML 的登录打开基本 SAML 配置| 空值 |
+| **应用回复 URL** <p>从标识提供者（IdP）的角度来看应用程序的 URL。 用户登录到 IdP 后，IdP 会将用户和令牌发送到此处。  这也称为**SAML 断言使用者终结点**。| 选择 "**终结点**" 选项卡| 从基于 SAML 的登录打开基本 SAML 配置| SAML 令牌中的 Destination 元素。 示例值： `https://contoso.my.salesforce.com` |
+| **应用注销 URL** <p>这是用户从应用程序中注销时，向其发送 "注销清理" 请求的 URL。 IdP 发送请求，同时从其他所有应用注销用户。| 选择 "**终结点**" 选项卡| 从基于 SAML 的登录打开基本 SAML 配置| 空值 |
 | **应用标识符** <p>这是 IdP 的透视中的应用标识符。 登录 URL 值通常用于标识符（但并非始终）。  有时，应用程序会将 "实体 ID" 称为 "实体 ID"。| 选择 "**标识符**" 选项卡|从基于 SAML 的登录打开基本 SAML 配置| 映射到 SAML 令牌中的**受众**元素。 |
-| **应用联合元数据** <p>这是应用的联合元数据的位置。 IdP 用它来自动更新特定的配置设置，例如终结点或加密证书。| 选择 "**监视**" 选项卡| 不适用。 Azure AD 不支持直接使用应用程序联合元数据。 您可以手动导入联合元数据。| 不可用 |
+| **应用联合元数据** <p>这是应用的联合元数据的位置。 IdP 用它来自动更新特定的配置设置，例如终结点或加密证书。| 选择 "**监视**" 选项卡| 不适用。 Azure AD 不支持直接使用应用程序联合元数据。 您可以手动导入联合元数据。| 空值 |
 | **用户标识符/名称 ID** <p>一个属性，用于以唯一方式向应用指示 Azure AD 或 AD FS 中的用户标识。  此属性通常为用户的 UPN 或电子邮件地址。| 声明规则。 在大多数情况下，声明规则使用以 NameIdentifier 结尾的类型发出声明。| 可以在标头**用户属性和声明**下找到标识符。 默认情况下，将使用 UPN| 映射到 SAML 令牌中的**NameID**元素。 |
-| **其他声明** <p>通常从 IdP 发送到应用的其他声明信息的示例包括名字、姓氏、电子邮件地址和组成员身份。| 在 AD FS 中，可以看到此项充当信赖方的其他声明规则。| 可以在标头用户属性下找到标识符 **& 声明**。 选择“查看”，然后编辑所有其他的用户属性。****| 不可用 |
+| **其他声明** <p>通常从 IdP 发送到应用的其他声明信息的示例包括名字、姓氏、电子邮件地址和组成员身份。| 在 AD FS 中，可以看到此项充当信赖方的其他声明规则。| 可以在标头用户属性下找到标识符 **& 声明**。 选择“查看”，然后编辑所有其他的用户属性。****| 空值 |
 
 
 ### <a name="map-identity-provider-idp-settings"></a>地图标识提供者（IdP）设置
@@ -236,11 +236,11 @@ SaaS 应用需要知道将身份验证请求发送到何处，以及如何验证
 
 | 配置设置| AD FS| 如何在 Azure AD 中配置 |
 | - | - | - |
-| **IdP 登录 URL** <p>从应用的角度来看，IdP 的登录 URL （将用户重定向以登录）。| AD FS 登录 URL 是 AD FS 的联合身份验证服务名称，后跟 "/adfs/ls/." <p>例如：[https://fs.contoso.com/adfs/ls/](https://fs.contoso.com/adfs/ls/)| 将 {租户 id} 替换为你的租户 ID。 <p> 对于使用 SAML-P 协议的应用：[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p>对于使用 WS 联合身份验证协议的应用：[https://login.microsoftonline.com/{tenant-id}/wsfed](https://login.microsoftonline.com/{tenant-id}/wsfed) |
-| **IdP 注销 URL**<p>从应用的角度注销 IdP 的 URL （当用户选择从应用中注销时，用户会重定向）。| 注销 URL 既可以是登录 URL，也可以是附加了 "wa = wsignout1.0 1.0" 的同一 URL。 例如：[https://fs.contoso.com/adfs/ls/?wa=wsignout1.0](https://fs.contoso.com/adfs/ls/?wa=wsignout1.0)| 将 {租户 id} 替换为你的租户 ID。<p>对于使用 SAML-P 协议的应用：<p>[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p> 对于使用 WS 联合身份验证协议的应用：[https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0](https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0) |
+| **IdP 登录 URL** <p>从应用的角度来看，IdP 的登录 URL （将用户重定向以登录）。| AD FS 登录 URL 是 AD FS 的联合身份验证服务名称，后跟 "/adfs/ls/." <p>例如：`https://fs.contoso.com/adfs/ls/`| 将 {租户 id} 替换为你的租户 ID。 <p> 对于使用 SAML-P 协议的应用：[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p>对于使用 WS 联合身份验证协议的应用：[https://login.microsoftonline.com/{tenant-id}/wsfed](https://login.microsoftonline.com/{tenant-id}/wsfed) |
+| **IdP 注销 URL**<p>从应用的角度注销 IdP 的 URL （当用户选择从应用中注销时，用户会重定向）。| 注销 URL 既可以是登录 URL，也可以是附加了 "wa = wsignout1.0 1.0" 的同一 URL。 例如：`https://fs.contoso.com/adfs/ls/?wa=wsignout1.0`| 将 {租户 id} 替换为你的租户 ID。<p>对于使用 SAML-P 协议的应用：<p>[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p> 对于使用 WS 联合身份验证协议的应用：[https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0](https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0) |
 | **令牌签名证书**<p>IdP 使用证书的私钥对颁发的令牌进行签名。 它可以验证令牌是否来自已配置应用所信任的 IdP。| AD FS 令牌签名证书位于 AD FS 管理中的“证书”下。****| 在应用程序的 "**单一登录属性**" 中的 " **SAML 签名证书**" 下，查找 Azure 门户。 可以在其中下载要上传到应用的证书。  <p>如果应用程序有多个证书，则可以在联合元数据 XML 文件中找到所有证书。 |
-| **标识符/"issuer"**<p>从应用的角度来看，IdP 的标识符（有时称为 "颁发者 ID"）。<p>在 SAML 令牌中，此值显示为 Issuer 元素。| AD FS 的标识符通常是 AD FS 管理中的联合身份验证服务标识符， **> 编辑联合身份验证服务属性**。 例如：[http://fs.contoso.com/adfs/services/trust](http://fs.contoso.com/adfs/services/trust)| 将 {租户 id} 替换为你的租户 ID。<p>https：\//sts.windows.net/{tenant-id}/ |
-| **IdP 联合元数据**<p>IdP 的公开可用联合元数据的位置。 （某些应用使用联合元数据来分别代替管理员配置 URL、标识符、令牌签名证书。）| 在 AD FS 管理中查找管理 > 下的 AD FS 联合元数据 URL **> 元数据 > 类型：联合元数据**。 例如：[https://fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml](https://fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml)| Azure AD 的相应值遵循模式[https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml)。 将 {TenantDomainName} 替换为 "contoso.onmicrosoft.com" 格式的租户名称。   <p>有关详细信息，请参阅[联合元数据](https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-federation-metadata)。 |
+| **标识符/"issuer"**<p>从应用的角度来看，IdP 的标识符（有时称为 "颁发者 ID"）。<p>在 SAML 令牌中，此值显示为 Issuer 元素。| AD FS 的标识符通常是 AD FS 管理中的联合身份验证服务标识符， **> 编辑联合身份验证服务属性**。 例如：`http://fs.contoso.com/adfs/services/trust`| 将 {租户 id} 替换为你的租户 ID。<p>https：\//sts.windows.net/{tenant-id}/ |
+| **IdP 联合元数据**<p>IdP 的公开可用联合元数据的位置。 （某些应用使用联合元数据来分别代替管理员配置 URL、标识符、令牌签名证书。）| 在 AD FS 管理中查找管理 > 下的 AD FS 联合元数据 URL **> 元数据 > 类型：联合元数据**。 例如：`https://fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml`| Azure AD 的相应值遵循模式[https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml)。 将 {TenantDomainName} 替换为 "contoso.onmicrosoft.com" 格式的租户名称。   <p>有关详细信息，请参阅[联合元数据](https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-federation-metadata)。 |
 
 
 ## <a name="represent-ad-fs-security-policies-in-azure-ad"></a>表示 Azure AD AD FS 安全策略
@@ -322,7 +322,7 @@ AD FS 中的 MFA 规则设置：
 
 1. 创建[新的条件访问策略](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json)。
 
-2. 选择 "**分配**"。 添加要对其强制执行 MFA 的用户或组。
+2. 选择“分配”  。 添加要对其强制执行 MFA 的用户或组。
 
 3. 配置**Access** control 选项，如下所示：  
 ‎

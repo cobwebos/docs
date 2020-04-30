@@ -136,10 +136,10 @@
         - name: 在容器和数据库上预配吞吐量
           displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
           href: set-throughput.md
-        - name: 预配吞吐量 - autopilot 模式
-          href: provision-throughput-autopilot.md
-        - name: Autopilot 常见问题解答
-          href: autopilot-faq.md
+        - name: 预配吞吐量 - 自动缩放模式
+          href: provision-throughput-autoscale.md
+        - name: 自动缩放常见问题解答
+          href: autoscale-faq.md
     - name: SQL 查询 (SQL query)
       items:
         - name: 入门
@@ -518,6 +518,7 @@
         - name: 总拥有成本 (TCO)
           href: total-cost-ownership.md
         - name: 了解帐单
+          displayName: free tier
           href: understand-your-bill.md
         - name: 优化预配吞吐量成本
           displayName: 'request units, RUs, RU'
@@ -531,6 +532,7 @@
         - name: 优化多区域成本
           href: optimize-cost-regions.md
         - name: 优化开发/测试成本
+          displayName: free tier
           href: optimize-dev-test.md
         - name: 借助保留容量优化成本
           href: cosmos-db-reserved-capacity.md

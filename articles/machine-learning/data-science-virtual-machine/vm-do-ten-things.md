@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 0f42f075f5d3be4486157334403bfa7d3f1aa80c
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 6574ccd7616ac1442b1c8c69b6218431ad912ab3
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81682875"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204213"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows 数据科学虚拟机的十大功能
 
@@ -817,9 +817,9 @@ Azure Cosmos DB 是云中的 NoSQL 数据库。 可用其处理 JSON 等文档�
 1. DSVM 上已安装 Azure Cosmos DB Python SDK。 若要更新它，请在命令提示符下运行 ```pip install pydocumentdb --upgrade```。
 2. 从 [Azure 门户](https://portal.azure.com)创建 Azure Cosmos DB 帐户和数据库。
 3. 从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=53595)下载 Azure Cosmos DB 数据迁移工具，并提取到你选择的目录。
-4. 在迁移工具中使用以下命令参数，将存储在 [公共 blob](https://dotnet.microsoft.com/) 中的 JSON 数据（Volcano 数据）导入 Azure Cosmos DB。 （使用安装 Azure Cosmos DB 数据迁移工具的目录中的 dtui.exe。使用以下参数输入源和目标位置：
+4. 在迁移工具中使用以下命令参数，将存储在 [公共 blob](https://https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json) 中的 JSON 数据（Volcano 数据）导入 Azure Cosmos DB。 （使用安装 Azure Cosmos DB 数据迁移工具的目录中的 dtui.exe。）输入具有以下参数的源和目标位置：
    
-    `/s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
+    `/s:JsonFile /s.Files:https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
 
 导入数据后，可转到 Jupyter 并打开名为“DocumentDBSample”的笔记本。** 它包含用于访问 Azure Cosmos DB 和执行某些基本查询所需的 Python 代码。 访问 Azure Cosmos DB 的[文档页](https://docs.microsoft.com/azure/cosmos-db/)，可了解有关该服务的详细信息。
 
@@ -851,7 +851,7 @@ in
 
 ![Power BI Desktop](./media/vm-do-ten-things/PowerBIVolcanoData.png)
 
-可使用数据模型开始生成报告和可视化。 您可以按照此 Power [BI 文章中](../../cosmos-db/powerbi-visualize.md#build-the-reports)的步骤生成报表。
+可使用数据模型开始生成报告和可视化。 可以按照[此 Power BI 文章](../../cosmos-db/powerbi-visualize.md#build-the-reports)中的步骤来生成报表。
 
 ## <a name="scale-the-dsvm-dynamically"></a>动态缩放 DSVM 
 可动态缩放 DSVM 以满足项目需求。 如果晚上或周末不需要使用 VM ，可从 [Azure 门户](https://portal.azure.com)关闭 VM。
@@ -861,14 +861,14 @@ in
 > 
 > 
 
-有时可能需要处理大规模分析，并需要更多的 CPU、内存或磁盘容量。 如果是这样，可以选择适当的 CPU 核心数、深度学习中基于 GPU 的实例数、内存容量和磁盘类型（包括固态磁盘）来调节 VM 大小，使其满足你的计算和成本需求。 VM 的完整列表及其每小时计算定价可在[Azure 虚拟机定价](https://azure.microsoft.com/pricing/details/virtual-machines/)页上找到。
+有时可能需要处理大规模分析，并需要更多的 CPU、内存或磁盘容量。 如果是这样，可以选择适当的 CPU 核心数、深度学习中基于 GPU 的实例数、内存容量和磁盘类型（包括固态磁盘）来调节 VM 大小，使其满足你的计算和成本需求。 [Azure 虚拟机定价](https://azure.microsoft.com/pricing/details/virtual-machines/)页上提供了 vm 的完整列表及其每小时计算定价。
 
-同样，你对于 VM 处理能力的需求也可能减小。 （例如：将主要工作负载移动到 Hadoop 或 Spark 群集。然后，可以从[Azure 门户](https://portal.azure.com)向下缩小群集，然后转到 VM 实例的设置。 
+同样，你对于 VM 处理能力的需求也可能减小。 （例如：已将主要工作负荷移动到 Hadoop 或 Spark 群集。）然后，可以从[Azure 门户](https://portal.azure.com)中缩减群集，并中转到 VM 实例的设置。 
 
 ## <a name="add-more-tools"></a>添加更多工具
 DSVM 中预构建的工具可以满足很多常规数据分析需求。 这能节约时间，因为无须一一安装和配置环境。 还能节约成本，因为仅为使用的资源付费。
 
-可以使用本文中介绍的其他 Azure 数据和分析服务改进你的分析环境。 在某些情况下，可能需要额外的工具，包括我们的合作伙伴提供的某些专利工具。 你拥有虚拟机上的完全管理访问权限，可安装必要的新工具。 还可以安装未预安装的 Python 和 R 中的其他程序包。 对于 Python，可以使用 ```conda``` 或 ```pip```。 对于 R，您可以在```install.packages()```R 控制台中使用，或使用 IDE 并选择**包** > **安装包**。
+可以使用本文中介绍的其他 Azure 数据和分析服务改进你的分析环境。 在某些情况下，可能需要额外的工具，包括我们的合作伙伴提供的某些专利工具。 你拥有虚拟机上的完全管理访问权限，可安装必要的新工具。 还可以安装未预安装的 Python 和 R 中的其他程序包。 对于 Python，可以使用 ```conda``` 或 ```pip```。 对于 r，可以在 r ```install.packages()```控制台中使用，或者使用 IDE 并选择 "**包** > " "**安装包**"。
 
 ## <a name="deep-learning"></a>深度学习
 
@@ -879,10 +879,10 @@ DSVM 中预构建的工具可以满足很多常规数据分析需求。 这能�
 
 - [生成端到端解决方案以检测映像中产品的操作方法指南](https://github.com/Azure/cortana-intelligence-product-detection-from-images)：映像检测是一种技术，可以在映像中查找对象并对其进行分类。 这项技术有望在许多现实商业领域带来巨大回报。 例如，零售商可以使用此技术确定客户已从货架上选取哪个产品。 从而，此信息可帮助商店管理产品库存。 
 
-- [音频深度学习](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/)：本教程演示如何在城市[声音数据集](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html)上训练音频事件检测的深入研究模型。 它还提供有关如何处理音频数据的概述。
+- [深入了解音频](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/)：本教程演示如何为 "[市内声音" 数据集](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html)的 "音频事件检测" 训练深度学习模型。 它还提供有关如何处理音频数据的概述。
 
-- [文本文档分类](https://github.com/anargyri/lstm_han)：本演练演示如何构建和训练两个神经网络体系结构：分层关注网络和长期短期内存 （LSTM） 网络。 这些神经网络使用用于深度学习的 Keras API 对文本文档进行分类。 Keras 是三个最流行的深度学习框架的前端：微软认知工具包、TensorFlow 和 Theano。
+- [文本文档分类](https://github.com/anargyri/lstm_han)：本演练演示如何构建和训练两个神经网络体系结构：分层注意网络和长短期内存（LSTM）网络。 这些神经网络使用用于深度学习的 Keras API 对文本文档进行分类。 Keras 是、TensorFlow 和 Theano 的三个最受欢迎的深度学习 Microsoft Cognitive Toolkit 框架的前端。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>“摘要”
 本文仅介绍了可在 Microsoft Data Science Virtual Machine 上执行的部分操作。 你还可以执行很多其他操作，使 DSVM 成为有效的分析环境。
 

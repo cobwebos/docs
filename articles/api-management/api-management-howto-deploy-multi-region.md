@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 5c71f37741de06b8633e7eafaae2f29823214f74
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0f8d9d7d90e88b4e43721dac274833a3b0df275e
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "75442669"
+ms.locfileid: "82203142"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>如何将 Azure API 管理服务实例部署到多个 Azure 区域
 
@@ -31,36 +31,23 @@ Azure API 管理多区域部署，该部署可使 API 发布者在任意数量�
 
 [!INCLUDE [premium.md](../../includes/api-management-availability-premium.md)]
 
-## <a name="deploy-an-api-management-service-instance-to-a-new-region"></a><a name="add-region"> </a>将 API 管理服务实例部署到新区域
+## <a name="deploy-api-management-service-to-a-new-region"></a><a name="add-region"> </a>将 API 管理服务部署到新的区域
 
 > [!NOTE]
 > 如果尚未创建 API 管理服务实例，请参阅[创建 API 管理服务实例][create an api management service instance]。
 
-在 Azure 门户中，导航到 API 管理服务实例的“规模和定价”  页。
+1. 在 Azure 门户中，导航到 API 管理服务，并单击菜单中的 "**位置**" 条目。
+2. 单击顶部栏中的 " **+ 添加**"。
+3. 从下拉列表中选择位置，并设置滑块的单位数。
+4. 单击 "**添加**" 按钮进行确认。
+5. 重复此过程，直到配置所有位置。
+6. 单击顶部栏中的 "**保存**"，启动部署过程。
 
-![“缩放”选项卡][api-management-scale-service]
+## <a name="delete-an-api-management-service-location"></a><a name="remove-region"> </a>删除 API 管理服务位置
 
-若要部署到新的区域，请单击工具栏中的“+ 添加区域”。 
-
-![添加区域][api-management-add-region]
-
-从下拉列表中选择位置，并通过滑块为其设置单位数。
-
-![指定单位][api-management-select-location-units]
-
-单击“添加”将选择放置在“位置”表中。 
-
-重复此过程，直到配置所有位置，并单击工具栏中的“保存”，启动部署过程。 
-
-## <a name="delete-an-api-management-service-instance-from-a-location"></a><a name="remove-region"> </a>从位置中删除 API 管理服务实例
-
-在 Azure 门户中，导航到 API 管理服务实例的“规模和定价”  页。
-
-![“缩放”选项卡][api-management-scale-service]
-
-若要删除位置，请使用表右端的“...”按钮打开上下文菜单。  选择“删除”  选项。
-
-确认删除，并单击“保存”应用所做的更改。 
+1. 在 Azure 门户中，导航到 API 管理服务，并单击菜单中的 "**位置**" 条目。
+2. 若要删除位置，请使用表右端的“...”按钮打开上下文菜单。**** 选择“删除”**** 选项。
+3. 确认删除，并单击“保存”应用所做的更改。****
 
 ## <a name="route-api-calls-to-regional-backend-services"></a><a name="route-backend"> </a>将 API 调用路由到区域后端服务
 
@@ -68,9 +55,9 @@ Azure API 管理只有一个后端服务 URL。 即使不同的区域中存在 A
 
 若要充分利用系统的地理分布性，应在 Azure API 管理实例所在的同一区域中部署后端服务。 然后，可以使用策略和 `@(context.Deployment.Region)` 属性将流量路由到后端的本地实例。
 
-1. 导航到 Azure API 管理实例，然后在左侧菜单中单击“API”。 
+1. 导航到 Azure API 管理实例，然后在左侧菜单中单击“API”。****
 2. 选择所需的 API。
-3. 在“入站处理”中的箭头式下拉列表内单击“代码编辑器”。  
+3. 在“入站处理”中的箭头式下拉列表内单击“代码编辑器”。********
 
     ![API 代码编辑器](./media/api-management-howto-deploy-multi-region/api-management-api-code-editor.png)
 
@@ -111,7 +98,7 @@ Azure API 管理只有一个后端服务 URL。 即使不同的区域中存在 A
 
 ## <a name="use-custom-routing-to-api-management-regional-gateways"></a><a name="custom-routing"> </a>使用 API 管理区域网关的自定义路由
 
-API 管理根据[最低延迟](../traffic-manager/traffic-manager-routing-methods.md#performance)将请求路由到区域网关  。 尽管无法在 API 管理中替代此设置，但可以结合自定义路由规则使用自己的流量管理器。
+API 管理根据[最低延迟](../traffic-manager/traffic-manager-routing-methods.md#performance)将请求路由到区域网关__。 尽管无法在 API 管理中替代此设置，但可以结合自定义路由规则使用自己的流量管理器。
 
 1. 创建自己的 [Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)。
 1. 如果使用自定义域，请[将它与流量管理器配合使用](../traffic-manager/traffic-manager-point-internet-domain.md)，而不要与 API 管理服务配合使用。
@@ -119,11 +106,6 @@ API 管理根据[最低延迟](../traffic-manager/traffic-manager-routing-method
 1. [在流量管理器中配置 API 管理区域状态终结点](../traffic-manager/traffic-manager-monitoring.md)。 区域状态终结点遵循 `https://<service-name>-<region>-01.regional.azure-api.net/status-0123456789abcdef` URL 模式，例如 `https://contoso-westus2-01.regional.azure-api.net/status-0123456789abcdef`。
 1. 指定流量管理器的[路由方法](../traffic-manager/traffic-manager-routing-methods.md)。
 
-[api-management-management-console]: ./media/api-management-howto-deploy-multi-region/api-management-management-console.png
-[api-management-scale-service]: ./media/api-management-howto-deploy-multi-region/api-management-scale-service.png
-[api-management-add-region]: ./media/api-management-howto-deploy-multi-region/api-management-add-region.png
-[api-management-select-location-units]: ./media/api-management-howto-deploy-multi-region/api-management-select-location-units.png
-[api-management-remove-region]: ./media/api-management-howto-deploy-multi-region/api-management-remove-region.png
 [create an api management service instance]: get-started-create-service-instance.md
 [get started with azure api management]: get-started-create-service-instance.md
 [deploy an api management service instance to a new region]: #add-region
