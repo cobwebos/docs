@@ -10,20 +10,23 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 04/21/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04bd0993873568ba7cce368ddd9277ed356b636c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9f12b2b31da4c7fe67eef9674d96b517d4e2bfa
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266567"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81867758"
 ---
 # <a name="azure-ad-roles-security-wizard-in-privileged-identity-management"></a>Privileged Identity Management 中的 Azure AD 角色安全向导
 
 如果你是 Azure Active Directory (Azure AD) 组织中第一个使用 Privileged Identity Management (PIM) 的人，则会向你显示一个向导以便开始使用。 该向导可帮助你了解特权标识的安全风险，以及如何使用 Privileged Identity Management 来降低这些风险。 如果希望以后再对现有的角色分配进行任何更改，则暂时不需要在向导中进行这些更改。
+
+> [!Important]
+> 安全向导暂时不可用。 感谢你的耐心等待。
 
 ## <a name="wizard-overview"></a>向导概述
 
@@ -32,14 +35,14 @@ ms.locfileid: "79266567"
 该向导的第二个步骤用于更改管理员的角色分配。  
 
 > [!WARNING]
-> 必须至少有一个全局管理员，并且要有多个具有组织帐户（而不是 Microsoft 帐户）的特权角色管理员。 如果只有一个特权角色管理员，一旦该帐户遭到删除，组织就无法管理 Privileged Identity Management。
+> 至少有一个全局管理员，并且有一个工作或学校帐户（而不是 Microsoft 帐户）的特权角色管理员，这一点非常重要。 如果只有一个特权角色管理员，一旦该帐户遭到删除，组织就无法管理 Privileged Identity Management。
 > 此外，如果用户具有 Microsoft 帐户（即，用于登录 Skype 和 Outlook.com 等 Microsoft 服务的帐户），则永久保留角色分配。 如果打算要求执行多重身份验证以激活该角色，则该用户将被锁定。
 
 ## <a name="run-the-wizard"></a>运行向导
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
-1. 打开**Azure AD 特权标识管理**。
+1. 打开**Azure AD Privileged Identity Management**。
 
 1. 选择“Azure AD 角色”****，然后选择“向导”****。
 

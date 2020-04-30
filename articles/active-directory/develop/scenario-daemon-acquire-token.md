@@ -12,10 +12,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: d755573b53eb63d85165fb73fe4b97298dbeff09
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869000"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>用于调用 Web API 的守护程序应用 - 获取令牌
@@ -57,7 +57,7 @@ final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default"
 
 > [!IMPORTANT]
 > 当 MSAL 向接受 1.0 版访问令牌的资源请求访问令牌时，Azure AD 将获取最后一个斜杠前面的所有内容并将其用作资源标识符，从请求的范围内分析所需的受众。
-> 因此，如果与 Azure SQL 数据库 **（https：\//database.windows.net）** 一样，资源需要以斜杠结束（`https://database.windows.net/`对于 Azure SQL 数据库），则需要请求`https://database.windows.net//.default`的范围。 （请注意双斜杠。）另请参阅 MSAL.NET 问题 [#747：将省略资源 URL 的尾部斜杠，因为该斜杠会导致 SQL 身份验证失败](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)。
+> 因此，如 Azure SQL Database （**https：\//database.windows.net**），资源期望以斜杠（对于 Azure sql 数据库， `https://database.windows.net/`）结尾的受众，需要请求的作用域`https://database.windows.net//.default`。 （请注意双斜杠。）另请参阅 MSAL.NET 问题 [#747：将省略资源 URL 的尾部斜杠，因为该斜杠会导致 SQL 身份验证失败](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)。
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API
 

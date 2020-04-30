@@ -1,5 +1,5 @@
 ---
-title: '使 D：VM 驱动器成为数据磁盘 '
+title: '将 VM 的 D：驱动器设置为数据磁盘 '
 description: '介绍如何更改 Windows VM 的盘符，以使用 D: 驱动器作为数据驱动器。'
 services: virtual-machines-windows
 author: cynthn
@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
 ms.openlocfilehash: 15df3178f2860fa066a82cb1429e0c1a6e5c2b08
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82083416"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>使用 D: 盘作为 Windows VM 上的数据驱动器

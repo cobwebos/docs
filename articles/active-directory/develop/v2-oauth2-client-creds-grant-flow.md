@@ -13,10 +13,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 36a5fdf990432e3a41cf8fc578fa20b4910250b2
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81868445"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft 标识平台和 OAuth 2.0 客户端凭据流
@@ -54,7 +54,7 @@ OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调�
 
 ### <a name="application-permissions"></a>应用程序权限
 
-您可以使用 API 来公开一组**应用程序权限**，而不是使用 ACL。 应用程序权限由组织管理员向应用程序授予，并且只可用于访问该组织与其员工所拥有的数据。 例如，Microsoft Graph 公开多个应用程序权限以执行以下操作：
+您可以使用 Api 公开一组**应用程序权限**，而不是使用 acl。 应用程序权限由组织管理员向应用程序授予，并且只可用于访问该组织与其员工所拥有的数据。 例如，Microsoft Graph 公开多个应用程序权限以执行以下操作：
 
 * 读取所有邮箱中的邮件
 * 在所有邮箱中读取和写入邮件
@@ -77,7 +77,7 @@ OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调�
 3. 找到“API 权限”**** 部分，然后添加应用所需的**应用程序权限**。
 4. **保存**应用注册。
 
-#### <a name="recommended-sign-the-user-into-your-app"></a>推荐：将用户登录到你的应用
+#### <a name="recommended-sign-the-user-into-your-app"></a>建议：让用户登录到你的应用
 
 生成使用应用程序权限的应用程序时，应用通常需要一个页面/视图，使管理员能够批准应用的权限。 此页面可以是应用登录流的一部分、应用设置的一部分，也可以是一个专用“连接”流。 在许多情况下，合理的结果是应用只在用户使用工作或学校 Microsoft 帐户登录之后才显示此“连接”视图。
 
@@ -88,7 +88,7 @@ OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调�
 准备好向组织管理员请求权限时，可将用户重定向到 Microsoft 标识平台*管理员许可终结点*。
 
 > [!TIP]
-> 尝试在 Postman 中执行此请求！ （使用您自己的应用 ID 获得最佳结果 - 教程应用程序不会请求有用的权限。[尝试在邮递员中运行此请求![](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> 尝试在 Postman 中执行此请求！ （使用自己的应用 ID 获得最佳结果-教程应用程序不会请求有用的权限。）[尝试在 Postman 中运行此请求![](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ```HTTP
 // Line breaks are for legibility only.
@@ -99,7 +99,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &redirect_uri=http://localhost/myapp/permissions
 ```
 
-专业提示：尝试在浏览器中粘贴以下请求。
+Pro 提示：尝试在浏览器中粘贴以下请求。
 
 ```
 https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&state=12345&redirect_uri=http://localhost/myapp/permissions
@@ -108,7 +108,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 | 参数 | 条件 | 说明 |
 | --- | --- | --- |
 | `tenant` | 必须 | 要向其请求权限的目录租户。 此参数可采用 GUID 或友好名称格式。 如果不知道用户属于哪个租户并想让他们登录到任一租户，请使用 `common`。 |
-| `client_id` | 必须 | [Azure 门户和应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验**的应用程序（客户端）ID**分配给应用。 |
+| `client_id` | 必须 | Azure 门户的**应用程序（客户端） ID** [-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给应用程序的体验。 |
 | `redirect_uri` | 必须 | 要向其发送响应，供应用处理的重定向 URI。 它必须与门户中注册的其中一个重定向 URI 完全匹配，否则必须经过 URL 编码并可包含其他路径段。 |
 | `state` | 建议 | 同时随令牌响应返回的请求中所包含的值。 可以是所需的任何内容的字符串。 该 state 用于在身份验证请求出现之前，于应用中编码用户的状态信息，例如之前所在的页面或视图。 |
 
@@ -215,7 +215,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 | 参数 | 说明 |
 | --- | --- |
-| `access_token` | 请求的访问令牌。 应用可以使用此令牌对安全资源（如 Web API）进行身份验证。 |
+| `access_token` | 请求的访问令牌。 应用可以使用此令牌向受保护资源（例如 web API）进行身份验证。 |
 | `token_type` | 指示令牌类型值。 Microsoft 标识平台支持的唯一类型是 `bearer`。 |
 | `expires_in` | 访问令牌有效的时间长短（以秒为单位）。 |
 

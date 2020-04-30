@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
 ms.openlocfilehash: f84d4fcd85f1e718f414e63bbe76fd29fa32427d
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869569"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server 的 Azure 混合权益
@@ -188,7 +188,7 @@ az vm list --query "[?licenseType=='Windows_Server']" -o table
 还可以详细了解如何[修改虚拟机规模集](../../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set.md)，了解更多更新规模集的方法。
 
 ## <a name="next-steps"></a>后续步骤
-- 阅读有关如何[使用 Azure 混合权益节省资金的更多内容](https://azure.microsoft.com/pricing/hybrid-use-benefit/)
+- 阅读有关[如何通过 Azure 混合权益节省资金](https://azure.microsoft.com/pricing/hybrid-use-benefit/)的详细信息
 - 详细了解 [Azure 混合权益的常见问题解答](https://azure.microsoft.com/pricing/hybrid-use-benefit/faq/)
 - 详细了解 [Windows Server 的 Azure 混合权益许可详细指南](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit)。
 - 详细了解 [Windows Server 的 Azure 混合权益和 Azure Site Recovery 让应用迁移到 Azure 更具成本效益](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/)

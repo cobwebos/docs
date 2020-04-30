@@ -1,5 +1,5 @@
 ---
-title: 如何使用打包器创建 Windows VM 映像
+title: 如何通过 Packer 创建 Windows VM 映像
 description: 了解如何使用 Packer 在 Azure 中创建 Windows 虚拟机映像
 author: cynthn
 ms.service: virtual-machines-windows
@@ -9,10 +9,10 @@ ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
 ms.openlocfilehash: f813551ed665628898bb219a611947c3026ac67c
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82084475"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>如何使用 Packer 在 Azure 中创建 Windows 虚拟机映像
@@ -21,7 +21,7 @@ Azure 中的每个虚拟机 (VM) 都创建至定义 Windows 分发和 OS 版本�
 本文最后一次使用 [Az PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)版本 1.3.0 和 [Packer](https://www.packer.io/docs/install/index.html) 版本 1.3.4 在 2019 年 2 月 21 日进行了测试。
 
 > [!NOTE]
-> Azure 现在有一个服务，Azure 映像生成器（预览），用于定义和创建您自己的自定义映像。 Azure 映像生成器是在打包器上构建的，因此您甚至可以将其现有打包器 shell 预配器脚本一起使用。 要开始使用 Azure 映像生成器，请参阅[使用 Azure 映像生成器创建 Windows VM。](image-builder.md)
+> Azure 现在有一个服务，即 Azure 映像生成器（预览版），用于定义和创建自己的自定义映像。 Azure 映像生成器建立在 Packer 的基础之上，因此你甚至可以使用现有的 Packer shell 配置程序脚本。 若要开始使用 Azure 映像生成器，请参阅[使用 Azure 映像生成器创建 WINDOWS VM](image-builder.md)。
 
 ## <a name="create-azure-resource-group"></a>创建 Azure 资源组
 在生成过程中，Packer 会在生成源 VM 时创建临时 Azure 资源。 要捕获该源 VM 用作映像，必须定义资源组。 Packer 生成过程的输出存储在此资源组中。
@@ -208,7 +208,7 @@ Packer 生成 VM、运行配置程序以及清理部署需要几分钟时间。
 
 
 ## <a name="create-a-vm-from-the-packer-image"></a>基于 Packer 映像创建 VM
-现在可以使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 从映像创建 VM。 如果提供支持的网络资源尚不存在，则会创建这些资源。 出现提示时，输入要在 VM 上创建的管理用户名和密码。 下面的示例从*myPackerImage*创建名为*myVM*的 VM：
+现在可以使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 从映像创建 VM。 如果提供支持的网络资源尚不存在，则会创建这些资源。 出现提示时，输入要在 VM 上创建的管理用户名和密码。 以下示例从*myPackerImage*创建名为*myVM*的 VM：
 
 ```powershell
 New-AzVm `
@@ -243,4 +243,4 @@ Get-AzPublicIPAddress `
 
 
 ## <a name="next-steps"></a>后续步骤
-您还可以使用 Azure[映像生成器](image-builder.md)使用现有的打包器预配器脚本。
+还可以将现有的 Packer 配置程序脚本用于[Azure 映像生成器](image-builder.md)。

@@ -10,10 +10,10 @@ ms.author: laobri
 author: lobrien
 ms.date: 11/12/2019
 ms.openlocfilehash: 8e1e718fa4e6660d72203ac98bb6d427cdba2059
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82024551"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>通过适用于 Python 的 Azure 机器学习 SDK 来计划机器学习管道
@@ -99,9 +99,9 @@ reactive_schedule = Schedule.create(ws, name="MyReactiveSchedule", description="
 
 除了前面所述的参数，还可以将 `status` 参数设置为 `"Disabled"` 以创建非活动计划。 最后，可通过 `continue_on_step_failure` 传递布尔值，重写管道的默认失败行为。
 
-### <a name="use-azure-logic-apps-for-more-complex-workflows"></a>对更复杂的工作流使用 Azure 逻辑应用
+### <a name="use-azure-logic-apps-for-more-complex-workflows"></a>将 Azure 逻辑应用用于更复杂的工作流
 
-Azure 逻辑应用支持更复杂的工作流，并且比 Azure 机器学习管道集成范围更广。 有关详细信息[，请参阅从逻辑应用触发机器学习管道的运行](how-to-trigger-published-pipeline.md)。
+Azure 逻辑应用支持更复杂的工作流，比 Azure 机器学习管道更广泛地集成。 有关详细信息，请参阅[从逻辑应用触发机器学习管道的运行](how-to-trigger-published-pipeline.md)。
 
 ## <a name="view-your-scheduled-pipelines"></a>查看计划的管道
 
@@ -145,7 +145,7 @@ stop_by_schedule_id(ws, schedule_id)
 
 本文介绍了如何使用适用于 Python 的 Azure 机器学习 SDK 以两种不同的方式计划管道。 其中一个计划按运行时间重复。 另一个计划在指定的 `Datastore` 或该存储的目录中有文件更改时运行。 你了解了如何使用门户来检查管道和单次运行。 最后，你了解了如何禁用计划以使管道停止运行。
 
-有关详细信息，请参阅：
+有关详细信息，请参见:
 
 > [!div class="nextstepaction"]
 > [使用 Azure 机器学习管道进行批量评分](tutorial-pipeline-batch-scoring-classification.md)

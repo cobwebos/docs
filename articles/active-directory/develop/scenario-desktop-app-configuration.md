@@ -12,10 +12,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: e0b43f7563c9dfac6374590f6b081197536fe31e
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869016"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>调用 Web API 的桌面应用：代码配置
@@ -45,7 +45,7 @@ ms.locfileid: "81869016"
 
 ### <a name="exclusively-by-code"></a>以独占方式通过代码来完成
 
-以下代码使用工作或学校帐户或个人 Microsoft 帐户实例化公共客户端应用程序并在 Microsoft Azure 公共云中登录用户。
+下面的代码实例化公用客户端应用程序，并使用工作或学校帐户或个人 Microsoft 帐户 Microsoft Azure 公有云中的用户登录。
 
 ```csharp
 IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
@@ -184,7 +184,7 @@ var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.Pub
 
 # <a name="java"></a>[Java](#tab/java)
 
-下面是 MSAL Java 开发示例中用于配置示例的类[：TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java)。
+下面是 MSAL Java 开发示例中用于配置示例的类： [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java)。
 
 ```Java
 PublicClientApplication pca = PublicClientApplication.builder(CLIENT_ID)
@@ -207,7 +207,7 @@ app = msal.PublicClientApplication(
 
 # <a name="macos"></a>[MacOS](#tab/macOS)
 
-以下代码使用工作或学校帐户或个人 Microsoft 帐户实例化公共客户端应用程序并在 Microsoft Azure 公共云中登录用户。
+下面的代码实例化公用客户端应用程序，并使用工作或学校帐户或个人 Microsoft 帐户 Microsoft Azure 公有云中的用户登录。
 
 ### <a name="quick-configuration"></a>快速配置
 

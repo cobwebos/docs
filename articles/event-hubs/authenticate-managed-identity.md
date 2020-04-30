@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
 ms.openlocfilehash: dfc60fbc03021e72dccc0f60a7ac34d204ef6df9
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82025180"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>使用 Azure Active Directory 对托管标识的事件中心资源访问进行身份验证
@@ -141,23 +141,23 @@ var ehClient = EventHubClient.CreateWithManagedIdentity(new Uri($"sb://{EventHub
 ---
 
 ## <a name="event-hubs-for-kafka"></a>用于 Kafka 的事件中心
-您可以使用 Apache Kafka 应用程序使用托管标识 OAuth 向 Azure 事件中心发送消息并从 Azure 事件中心接收消息。 请参阅 GitHub 上的以下示例[：Kafka 的事件中心 - 使用托管标识 OAuth 发送和接收消息](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity)。
+你可以使用 Apache Kafka 应用程序通过托管标识 OAuth 向 Azure 事件中心发送消息，以及从 Azure 事件中心接收消息。 请参阅 GitHub 上的以下示例： [Kafka 的事件中心-使用托管标识 OAuth 发送和接收消息](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity)。
 
 ## <a name="samples"></a>示例
-- **Azure.消息传递.事件中心**示例
+- **EventHubs**示例
     - [.NET](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
     - [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)
-- [微软.Azure.事件中心示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)。 
+- [EventHubs 示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)。 
     
-    这些示例使用旧的**Microsoft.Azure.EventHubs**库，但可以轻松地将其更新为使用最新的**Azure.消息.事件中心**库。 要将示例从使用旧库移动到新库，请参阅[从 Microsoft.Azure.事件中心迁移到 Azure.消息集的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)。
-    此示例已更新为使用最新的**Azure.消息.事件中心**库。
-- [卡夫卡的事件中心 - 使用托管标识 OAuth 发送和接收消息](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity)
+    这些示例使用旧的**EventHubs**库，但你可以轻松地将其更新为使用最新的**EventHubs**库。 若要将示例从使用旧库移动到新库，请参阅[从 EventHubs 迁移到 EventHubs 的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)。
+    此示例已更新为使用最新的**EventHubs**库。
+- [Kafka 的事件中心-使用托管标识 OAuth 发送和接收消息](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity)
 
 
 ## <a name="next-steps"></a>后续步骤
-- 请参阅以下文章以了解 Azure 资源的托管标识[：Azure 资源的托管标识是什么？](../active-directory/managed-identities-azure-resources/overview.md)
+- 请参阅以下文章，了解 Azure 资源的托管标识： [azure 资源的托管标识是什么？](../active-directory/managed-identities-azure-resources/overview.md)
 - 请参阅以下相关文章：
     - [使用 Azure Active Directory 对应用程序的 Azure 事件中心请求进行身份验证](authenticate-application.md)
     - [使用共享访问签名对 Azure 事件中心请求进行身份验证](authenticate-shared-access-signature.md)
-    - [使用 Azure 活动目录授权访问事件中心资源](authorize-access-azure-active-directory.md)
+    - [使用 Azure Active Directory 授权访问事件中心资源](authorize-access-azure-active-directory.md)
     - [使用共享访问签名授权访问事件中心资源](authorize-access-shared-access-signature.md)

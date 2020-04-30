@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
 ms.openlocfilehash: 07c66b2955f3df1ffae1a0cb0c2b0888bdc790e9
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82082877"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>使用 C# 创建和管理 Azure 中的 Windows VM #
@@ -32,14 +32,14 @@ ms.locfileid: "82082877"
 ## <a name="create-a-visual-studio-project"></a>创建 Visual Studio 项目
 
 1. 如果尚未安装，请安装 [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio)。 在“工作负荷”页上选择“.NET 桌面开发”****，然后单击“安装”****。 在摘要中，可以看到系统已自动选择“.NET Framework 4 4.6 开发工具”。**** 如果已安装 Visual Studio，则可以使用 Visual Studio 启动器添加 .NET 工作负荷。
-2. 在可视化工作室中，单击 **"文件** > **新项目** > **"。**
-3. 在**模板** > **可视化 C++** 中，选择**控制台应用 （.NET 框架），** 输入*myDotnetProject*以获取项目名称，选择项目的位置，然后单击"**确定**"。
+2. 在 Visual Studio 中，单击 "**文件** > " "**新建** > **项目**"。
+3. 在**Templates** > **Visual c #** 模板中，选择 "**控制台应用（.NET Framework）**"，输入*myDotnetProject*作为项目的名称，选择项目的位置，然后单击 **"确定"**。
 
 ## <a name="install-the-package"></a>安装包
 
 使用 NuGet 包可以最轻松地安装完成这些步骤所需的库。 若要在 Visual Studio 中获取所需的库，请执行以下步骤：
 
-1. 单击**工具** > **Nuget 包管理器**，然后单击**包管理器控制台**。
+1. 单击 "**工具** > " "**Nuget 包管理器**"，然后单击 "**程序包管理器控制台**"。
 2. 在控制台中键入此命令：
 
     ```
@@ -52,7 +52,7 @@ ms.locfileid: "82082877"
 
 ### <a name="create-the-authorization-file"></a>创建授权文件
 
-1. 在解决方案资源管理器中，右键单击*myDotnetProject* > **添加新** > **项目**，然后在*可视化 C# 项目中*选择**文本文件**。 命名文件 azureauth.properties，然后单击“添加”******。
+1. 在解决方案资源管理器中，右键单击*myDotnetProject* > **"添加** > **新项**"，然后在*Visual c # 项*中选择 "**文本文件**"。 命名文件 azureauth.properties，然后单击“添加”******。
 2. 添加这些授权属性：
 
     ```
@@ -66,7 +66,7 @@ ms.locfileid: "82082877"
     graphURL=https://graph.microsoft.com/
     ```
 
-    将**&lt;订阅 ID&gt;** 替换为订阅标识符，**&lt;将应用程序&gt;ID**替换为 Active Directory 应用程序标识符，**&lt;使用应用程序密钥进行身份验证密钥&gt;**，将**&lt;租户 ID&gt;** 替换为租户标识符。
+    将** &lt;订阅&gt; id**替换为你的订阅标识符** &lt;，应用程序&gt; id**替换为 Active Directory 应用程序标识符， ** &lt;身份&gt;验证密钥**替换为应用程序密钥， ** &lt;租户&gt; id**替换为租户标识符。
 
 3. 保存 azureauth.properties 文件。 
 4. 在 Windows 中设置名为 AZURE_AUTH_LOCATION 的环境变量，其中包含创建的授权文件的完整路径。 例如，以下 PowerShell 命令可用于：

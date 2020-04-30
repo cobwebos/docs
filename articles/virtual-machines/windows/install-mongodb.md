@@ -10,16 +10,16 @@ ms.topic: how-to
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: a5ba7d7fce3f3eabd223956ca8d9cc824fbd0c5f
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869453"
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>在 Azure 中的 Windows VM 上安装和配置 MongoDB
 [MongoDB](https://www.mongodb.org) 是一个流行的开源、高性能 NoSQL 数据库。 本文逐步讲解如何在 Azure 中的 Windows Server 2016 虚拟机 (VM) 上安装和配置 MongoDB。 也可以[在 Azure 中的 Linux VM 上安装 MongoDB](../linux/install-mongodb.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 在安装和配置 MongoDB 之前，需要创建一个 VM，并且最好将一个磁盘添加到该 VM。 请参阅以下文章创建 VM 并向其添加数据磁盘：
 
 * 使用 [Azure 门户](quick-create-portal.md)或 [Azure PowerShell](quick-create-powershell.md) 创建 Windows Server VM。
@@ -33,7 +33,7 @@ ms.locfileid: "81869453"
 
 
 1. 使用远程桌面连接到 VM 后，请从任务栏打开 Internet Explorer。
-2. 选择"在 Internet 资源管理器首次打开时**使用建议的安全、隐私和兼容性设置**"，然后单击 **"确定**"。
+2. 选择 "在 Internet Explorer 首次打开时**使用推荐的安全性、隐私和兼容性设置**"，然后单击 **"确定"**。
 3. 默认情况下已启用 Internet Explorer 增强的安全性配置。 将 MongoDB 网站添加到允许的站点列表：
    
    * 选择右上角的“工具”**** 图标。
@@ -54,13 +54,13 @@ ms.locfileid: "81869453"
 ## <a name="configure-the-vm-and-mongodb"></a>配置 VM 和 MongoDB
 1. MongoDB 安装程序不会更新路径变量。 如果路径变量中不包含 MongoDB `bin` 位置，则每次使用 MongoDB 可执行文件时都需要指定完整路径。 要将位置添加到路径变量，请执行以下操作：
    
-   * 右键单击"**开始"** 菜单，然后选择 **"系统**"。
+   * 右键单击 "**开始**" 菜单，然后选择 "**系统**"。
    * 依次单击“高级系统设置”**** 和“环境变量”****。
    * 在“系统变量”**** 下，选择“路径”****，然后单击“编辑”****。
      
      ![配置 PATH 变量](./media/install-mongodb/configure-path-variables.png)
      
-     将路径添加到 MongoDB `bin` 文件夹。 MongoDB 通常安装在*C：\程序文件\蒙戈DB*中。 检查 VM 上的安装路径。 以下示例将默认的 MongoDB 安装位置添加到 `PATH` 变量：
+     将路径添加到 MongoDB `bin` 文件夹。 MongoDB 通常安装在*C:\Program files\mongodb 下*中。 检查 VM 上的安装路径。 以下示例将默认的 MongoDB 安装位置添加到 `PATH` 变量：
      
      ```
      ;C:\Program Files\MongoDB\Server\3.6\bin

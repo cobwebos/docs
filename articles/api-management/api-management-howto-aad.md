@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 活动目录授权开发人员帐户
+title: 使用 Azure Active Directory 授权开发人员帐户
 titleSuffix: Azure API Management
 description: 了解如何在 API 管理中使用 Azure Active Directory 授权用户。
 services: api-management
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 41f9f267880d199d2e221453eea5c3584ce96881
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81868394"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>在 Azure API 管理中使用 Azure Active Directory 授权开发人员帐户
@@ -38,7 +38,7 @@ ms.locfileid: "81868394"
 3. 在搜索框中键入 **api**。
 4. 选择“API 管理服务”。 
 5. 选择自己的 API 管理服务实例。
-6. 在**开发人员门户**下，选择**标识**。
+6. 在 "**开发人员门户**" 下，选择 "**标识**"。
 7. 在顶部选择“+添加”  。
 
     此时将在右侧显示“添加标识提供者”  窗格。
@@ -84,12 +84,12 @@ ms.locfileid: "81868394"
 
 在为 Azure AD 租户中的用户启用访问权限之后，即可将 Azure AD 组添加到 API 管理中。 因此，可以使用 Azure AD 组控制产品可见性。
 
-若要将外部 Azure AD 组添加到 APIM 中，必须先完成上一部分。 此外，您必须通过以下步骤授予您注册的应用程序对 Microsoft 图形 API`Directory.Read.All`的权限： 
+若要将外部 Azure AD 组添加到 APIM 中，必须先完成上一部分。 此外，必须通过执行以下步骤，向已注册的应用程序授予`Directory.Read.All`对 Microsoft Graph API 的访问权限： 
 
-1. 返回上一节中创建的应用注册。
-2. 选择**API 权限**，然后单击 **"添加权限**"。 
-3. 在 **"请求 API 权限"** 窗格中，选择 **"Microsoft API"** 选项卡，然后选择 **"Microsoft 图形"** 磁贴。 选择**应用程序权限**，搜索**目录**，然后选择**目录.Read.All**权限。 
-4. 单击窗格底部的 **"添加权限**"，然后单击"**授予管理员同意 [租户名称]，** 以便授予此目录中所有用户的访问权限。 
+1. 返回到在上一部分中创建的应用注册。
+2. 选择 " **API 权限**"，然后单击 " **+ 添加权限**"。 
+3. 在 "**请求 API 权限**" 窗格中，选择 " **Microsoft api** " 选项卡，然后选择 " **Microsoft Graph** " 磁贴。 选择 "**应用程序权限**"，搜索 "**目录**"，然后选择 "**目录. 所有**权限"。 
+4. 单击窗格底部的 "**添加权限**"，然后单击 "**授予对 {tenantname} 的管理员许可**"，以便为此目录中的所有用户授予访问权限。 
 
 现在可以从 API 管理实例的“组”  选项卡添加外部 Azure AD 组。
 
@@ -105,11 +105,11 @@ ms.locfileid: "81868394"
 
 ## <a name="developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"/> 开发人员门户 - 添加 Azure AD 帐户身份验证
 
-在开发人员门户中，可以使用**登录按钮：OAuth**小部件使用 AAD 登录。 此小组件已包括在默认开发人员门户内容的登录页上。
+在开发人员门户中，可以通过**登录按钮： OAuth**小组件登录到 AAD。 此小组件已包括在默认开发人员门户内容的登录页上。
 
 尽管每当新用户使用 AAD 登录时都会自动创建一个新帐户，但你可以考虑向注册页添加同一小组件。
 
-**注册表单：OAuth**小部件表示用于与 OAuth 注册的窗体。
+**注册窗体： OAuth**小组件代表用于注册 OAuth 的窗体。
 
 > [!IMPORTANT]
 > 需要[重新发布门户](api-management-howto-developer-portal-customize.md#publish)才能使 AAD 更改生效。

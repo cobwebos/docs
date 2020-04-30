@@ -1,5 +1,5 @@
 ---
-title: Azure 基础结构演练示例
+title: 示例 Azure 基础结构演练
 description: 了解用于在 Azure 中部署示例基础结构的关键设计和实施准则。
 author: cynthn
 ms.service: virtual-machines-windows
@@ -9,10 +9,10 @@ ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 43e96b891e60dfcf8bc3c29b202bb60213905372
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869469"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>适用于 Windows VM 的 Azure 示例基础结构演练
@@ -45,7 +45,7 @@ Adventure Works Cycles 想要在 Azure 中生成一个在线商店应用程序�
 以上各项都会遵循以下命名约定：
 
 * Adventure Works Cycles 使用 **[IT 工作负荷]-[位置]-[Azure 资源]** 作为前缀
-  * 对于此示例 **，"azos"（Azure**在线商店）是 IT 工作负载名称，"**使用**"（东 US 2）是位置
+  * 在此示例中，"**azos**" （Azure Online Store）是 IT 工作负荷名称，"**USE**" （美国东部2）是位置
 * 虚拟网络使用 AZOS-USE-VN **[数字]**
 * 可用性集使用 use azos-use-as-**[角色]**
 * 虚拟机名称使用 azos-use-vm-**[VM 名称]**

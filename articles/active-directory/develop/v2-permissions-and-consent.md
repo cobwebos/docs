@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev, fasttrack-edit
 ms.openlocfilehash: 5495aa6fda189897985ed2f198f6e92c996f6fef
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81868386"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 标识平台终结点中的权限和许可
@@ -32,7 +32,7 @@ Microsoft 标识平台实现 [OAuth 2.0](active-directory-v2-protocols.md) 授�
 * Azure Key Vault：`https://vault.azure.net`
 
 > [!NOTE]
-> 我们强烈建议您使用 Microsoft 图形而不是 Office 365 邮件 API 等。
+> 强烈建议使用 Microsoft Graph 而不是 Office 365 邮件 API，等等。
 
 这同样适用于已与 Microsoft 标识平台集成的任何第三方资源。 这些资源还可以定义一组可用于将该资源的功能分成较小区块的权限。 例如，[Microsoft Graph](https://graph.microsoft.com) 定义了执行以下（以及其他）任务的权限：
 
@@ -78,13 +78,13 @@ OpenID Connect 的 Microsoft 标识平台实现有一些明确定义但未应用
 
 `email` 范围可与 `openid` 范围和任何其他范围一起使用。 它以 `email` 声明的形式向应用提供对用户主要电子邮件地址的访问权限。 仅当某个电子邮件地址与用户帐户相关联（并非总是如此）时， `email` 声明才包含在令牌中。 如果使用 `email` 范围，则应用应准备好处理 `email` 声明不存在于令牌中的情况。
 
-### <a name="profile"></a>个人资料
+### <a name="profile"></a>profile
 
-`profile` 范围可与 `openid` 范围和任何其他范围一起使用。 它使应用可以访问大量关于用户的信息。 可访问的信息包括但不限于用户的名字、姓氏、首选用户名和对象 ID。 有关特定用户id_tokens参数中可用的配置文件声明的完整列表，[`id_tokens`请参阅引用](id-tokens.md)。
+`profile` 范围可与 `openid` 范围和任何其他范围一起使用。 它使应用可以访问大量关于用户的信息。 可访问的信息包括但不限于用户的名字、姓氏、首选用户名和对象 ID。 有关特定用户 id_tokens 参数中可用配置文件声明的完整列表，请参阅[ `id_tokens`参考](id-tokens.md)。
 
 ### <a name="offline_access"></a>offline_access
 
-该[`offline_access`范围](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess)允许应用在较长时间内代表用户访问资源。 在同意页上，此范围将显示为“维持对已授予访问权限的数据的访问”权限。 用户批准 `offline_access` 范围后，应用可接收来自 Microsoft 标识平台令牌终结点的刷新令牌。 刷新令牌的生存期较长。 旧的访问令牌过期时，应用可获取新的访问令牌。
+范围允许应用程序在一段较长时间内代表用户访问资源。 [ `offline_access` ](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) 在同意页上，此范围将显示为“维持对已授予访问权限的数据的访问”权限。 用户批准 `offline_access` 范围后，应用可接收来自 Microsoft 标识平台令牌终结点的刷新令牌。 刷新令牌的生存期较长。 旧的访问令牌过期时，应用可获取新的访问令牌。
 
 > [!NOTE]
 > 目前，此权限会出现在所有同意屏幕上，即使对于不提供刷新令牌的流（[隐式流](v2-oauth2-implicit-grant-flow.md)）也是如此。  这是为了涵盖客户端可以在隐式流中开始的场景，然后移至需要刷新令牌的代码流的场景。
@@ -157,19 +157,19 @@ Microsoft 生态系统中的某些高特权权限可以设置为受管理员限�
 
 ### <a name="request-the-permissions-in-the-app-registration-portal"></a>在应用注册门户中请求权限
 
-应用程序能够记录在应用注册门户中需要哪些权限（委派和应用程序）。  这允许使用`/.default`作用域和 Azure 门户的"授予管理员同意"选项。  通常，最佳做法是确保为给定应用程序静态定义的权限是它动态/增量请求的权限的超集。
+应用程序可以在应用注册门户中记下他们需要（委托和应用程序）的权限。  这允许使用`/.default`范围和 Azure 门户的 "授予管理员许可" 选项。  通常，最佳做法是确保为给定应用程序静态定义的权限是它动态/增量请求的权限的超集。
 
 > [!NOTE]
->应用程序权限只能通过[`/.default`](#the-default-scope)- 因此，如果应用需要应用程序权限，请确保它们列在应用注册门户中。
+>仅可通过使用请求应用程序权限[`/.default`](#the-default-scope) -因此，如果应用程序需要应用程序权限，请确保它们已列在应用注册门户中。
 
 #### <a name="to-configure-the-list-of-statically-requested-permissions-for-an-application"></a>配置应用程序的静态请求权限列表
 
-1. 转到 Azure 门户中的应用程序[– 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验，或者如果尚未创建应用，则[创建应用](quickstart-register-app.md)。
+1. 在 Azure 门户中，[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验中转到你的应用程序，或[创建应用](quickstart-register-app.md)（如果尚未这样做）。
 2. 找到“API 权限”部分****，然后在“API 权限”中单击“添加权限”。
 3. 从可用 API 列表中选择 **Microsoft Graph**，然后添加应用所需的权限。
 3. **保存**应用注册。
 
-### <a name="recommended-sign-the-user-into-your-app"></a>推荐：将用户登录到你的应用
+### <a name="recommended-sign-the-user-into-your-app"></a>建议：让用户登录到你的应用
 
 生成使用管理员同意终结点的应用程序时，应用需要一个页面/视图，使管理员能够批准应用的权限。 此页面可以是应用注册流的一部分、应用设置的一部分，或专用“连接”流的一部分。 在许多情况下，合理的结果是应用只在用户使用工作或学校 Microsoft 帐户登录之后才显示此“连接”视图。
 
@@ -191,10 +191,10 @@ https://graph.microsoft.com/mail.send
 ```
 
 
-| 参数        | 条件        | 描述                                                                                |
+| 参数        | 条件        | 说明                                                                                |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
-| `tenant` | 必选 | 要向其请求权限的目录租户。 可以以 GUID 或友好名称格式提供，也可以与示例中的组织进行一般引用。 不要使用"通用"，因为个人帐户不能提供管理员同意，除非是在租户的上下文中。 为确保与管理租户的个人帐户保持最佳兼容性，请使用租户 ID。 |
-| `client_id` | 必须 | [Azure 门户和应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验**的应用程序（客户端）ID**分配给应用。 |
+| `tenant` | 必需 | 要向其请求权限的目录租户。 可以采用 GUID 或友好名称格式提供，也可以像本示例中所示，以常规方式引用组织。 不要使用 "公用"，因为个人帐户不能提供管理员同意，但在租户的上下文中除外。 若要确保与管理租户的个人帐户的兼容性最佳，请尽可能使用租户 ID。 |
+| `client_id` | 必须 | Azure 门户的**应用程序（客户端） ID** [-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给应用程序的体验。 |
 | `redirect_uri` | 必须 |要向其发送响应，供应用处理的重定向 URI。 必须与在应用注册门户中注册的重定向 URI 之一完全匹配。 |
 | `state` | 建议 | 同样随令牌响应返回的请求中所包含的值。 可以是所需的任何内容的字符串。 使用该状态可在身份验证请求出现之前，在应用中编码用户的状态信息，例如用户过去所在的页面或视图。 |
 |`scope`        | 必须        | 定义应用程序请求的权限集。 这可以是静态范围（使用 [`/.default`](#the-default-scope)）或动态范围。  这可以包括 OIDC 范围（`openid`、`profile`、`email`）。 如果需要应用程序权限，必须使用 `/.default` 来请求静态配置的权限列表。  |

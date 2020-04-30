@@ -1,6 +1,6 @@
 ---
-title: 使用 HTTPS 终结点配置潜在顾客管理 |Azure 应用商店
-description: 了解如何使用 HTTP 终结点来处理 Microsoft AppSource 和 Azure 应用商店潜在顾客。
+title: 使用 HTTPS 终结点配置潜在客户管理 |Azure Marketplace
+description: 了解如何使用 HTTP 终结点处理 Microsoft AppSource 和 Azure Marketplace 潜在顾客。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,39 +8,39 @@ ms.topic: conceptual
 ms.date: 04/21/2020
 ms.author: dsindona
 ms.openlocfilehash: f56cc5aaad7d77ff8dc753115ef1becb08ddde73
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770194"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>使用 HTTPS 终结点配置潜在顾客管理
 
-您可以使用 HTTPS 终结点来处理 Microsoft AppSource 和 Azure 应用商店潜在顾客。 这些潜在顾客可以写入客户关系管理 （CRM） 系统，也可以作为电子邮件通知发送。 本文介绍如何使用[Microsoft 电源自动化](https://powerapps.microsoft.com/automate-processes/)自动化服务来配置潜在顾客管理。
+可以使用 HTTPS 终结点处理 Microsoft AppSource 和 Azure Marketplace 潜在顾客。 这些潜在顾客可以写入客户关系管理（CRM）系统，也可以作为电子邮件通知发送。 本文介绍如何使用[Microsoft 自动](https://powerapps.microsoft.com/automate-processes/)自动化服务来配置潜在客户管理。
 
-## <a name="create-a-flow-using-microsoft-power-automate"></a>使用微软电源自动功能创建流
+## <a name="create-a-flow-using-microsoft-power-automate"></a>使用 Microsoft 电源自动化创建流
 
-1. 打开[电源自动功能](https://flow.microsoft.com/)网页。 选择“登录”**** 或者选择“免费注册”**** 来创建免费的流帐户。
+1. 打开 "[自动启动](https://flow.microsoft.com/)" 网页。 选择“登录”**** 或者选择“免费注册”**** 来创建免费的流帐户。
 
 1. 登录并在菜单栏上选择“我的流”****。
     > [!div class="mx-imgBorder"]
     > ![我的流](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows.png)
 
-1. 在 **[ 新建**， 选择 =**即时] 从空白**。
+1. 在 " **+ 新建**" 下，选择 " **+ 即时"-从空白**。
     > [!div class="mx-imgBorder"]
     > ![从空白创建](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank.png)
 
-1. 命名您的流，然后在 **"选择如何触发此流**"下，选择 **"何时收到 HTTP 请求**"。
+1. 命名你的流，然后在 "**选择触发此流的方式**" 下，选择**接收 HTTP 请求的时间**。
 
     > [!div class="mx-imgBorder"]
     > ![选择“收到 HTTP 请求时”触发器](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
 
-1. 单击流步骤以展开它。
+1. 单击 flow 步骤以将其展开。
 
     > [!div class="mx-imgBorder"]
-    > ![展开流步骤](./media/cloud-partner-portal-lead-management-instructions-https/expand-flow-step.png)
+    > ![展开 flow 步骤](./media/cloud-partner-portal-lead-management-instructions-https/expand-flow-step.png)
 
-1. 使用以下方法之一配置**请求正文 JSON 架构**：
+1. 使用以下方法之一来配置**请求正文 JSON 架构**：
 
    - 将本文末尾的 [JSON 架构](#json-schema)复制到“请求正文 JSON 架构”文本框中。****
    - 选择“使用示例有效负载生成架构”。**** 在“输入或粘贴示例 JSON 有效负载”文本框中，粘贴该 [JSON 示例](#json-example)。**** 选择“完成”以创建架构。****
@@ -50,7 +50,7 @@ ms.locfileid: "81770194"
 
 ### <a name="to-connect-to-a-crm-system"></a>连接到 CRM 系统
 
-1. 选择 **= 新步骤**。
+1. 选择 " **+ 新步骤**"。
 2. 选择所选的 CRM 系统以及用于新建记录的操作。 以下屏幕截图显示了“Dynamics 365 - 新建记录”**** 作为示例。
 
     ![新建记录](./media/cloud-partner-portal-lead-management-instructions-https/https-image009.png)
@@ -71,7 +71,7 @@ ms.locfileid: "81770194"
 
 ### <a name="to-set-up-email-notification"></a>设置电子邮件通知
 
-1. 选择 **= 新步骤**。
+1. 选择 " **+ 新步骤**"。
 2. 在“选择操作”下，选择“操作”。********
 3. 在“操作”下面，选择“发送电子邮件”。********
 
@@ -98,11 +98,11 @@ ms.locfileid: "81770194"
 
 ## <a name="configure-your-offer-to-send-leads-to-the-https-endpoint"></a>将你的产品/服务配置为将潜在顾客发送到 HTTPS 终结点
 
-为产品/服务配置潜在顾客管理信息时，为**潜在顾客目标**选择**HTTPS 终结点**，并粘贴到上一步中复制的 HTTP POST URL 中。  
+当你为产品/服务配置潜在客户管理信息时，请选择 "**客户" 目标**的**HTTPS 终结点**，并将其粘贴到你在上一步骤中复制的 HTTP POST URL。  
 
 ![添加动态内容](./media/cloud-partner-portal-lead-management-instructions-https/https-image017.png)
 
-生成潜在顾客时，Microsoft 会将潜在顾客发送到您的 Power 自动流，该流将路由到您配置的 CRM 系统或电子邮件地址。
+当生成潜在顾客时，Microsoft 会将潜在客户发送到您的电源自动流，这会路由到您配置的 CRM 系统或电子邮件地址。
 
 ## <a name="json-schema-and-example"></a>JSON 架构和示例
 
@@ -171,7 +171,7 @@ JSON 测试示例使用以下架构：
 }
 ```
 
-您可以复制和编辑以下 JSON 示例，以用作流中的测试。
+可以复制和编辑下面的 JSON 示例，以用作流中的测试。
 
 ### <a name="json-example"></a>JSON 示例
 

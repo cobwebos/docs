@@ -3,34 +3,36 @@ title: 使用 HTTP 或 HTTPS 调用服务终结点
 description: 从 Azure 逻辑应用向服务终结点发送出站 HTTP 或 HTTPS 请求
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 03/12/2020
 tags: connectors
-ms.openlocfilehash: 6c52f2df34faf441ab70b48b11bbc393ebcecb65
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: 9ed3d960b3f5653ea8706b39559c9d5a71c45a6c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81617609"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81867632"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>通过 HTTP 或 HTTPS 从 Azure 逻辑应用调用服务终结点
 
-使用[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和内置的 HTTP 触发器或操作，您可以创建自动任务和工作流，通过 HTTP 或 HTTPS 向服务终结点发送请求。 例如，您可以通过按特定计划检查终结点来监视网站的服务终结点。 当指定的事件发生在该终结点（如您的网站关闭）时，该事件将触发逻辑应用的工作流并运行该工作流中的操作。 如果要接收和响应入站 HTTPS 调用，请使用内置[的请求触发器或响应操作](../connectors/connectors-native-reqres.md)。
+通过[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和内置 HTTP 触发器或操作，可以创建通过 HTTP 或 HTTPS 向服务终结点发送请求的自动化任务和工作流。 例如，可以通过按特定计划检查终结点来监视网站的服务终结点。 当在该终结点上发生指定的事件时（如网站关闭），事件会触发逻辑应用的工作流，并运行该工作流中的操作。 如果要改为接收和响应入站 HTTPS 调用，请使用内置[请求触发器或响应操作](../connectors/connectors-native-reqres.md)。
 
 > [!NOTE]
-> 根据目标终结点的功能，HTTP 连接器支持传输层安全性 (TLS) 版本 1.0、1.1 和 1.2。 逻辑应用通过使用可能支持的最高版本与终结点协商。 例如，如果终结点支持 1.2，则连接器首先使用 1.2。 否则，连接器将使用下一个受支持的最高版本。
+> 根据目标终结点的功能，HTTP 连接器支持传输层安全性 (TLS) 版本 1.0、1.1 和 1.2。 逻辑应用通过使用可能支持的最高版本与终结点协商。 例如，如果端点支持1.2，连接器将首先使用1.2。 否则，连接器将使用下一个受支持的最高版本。
+>
+> HTTP 连接器不支持用于身份验证的中间 TLS/SSL 证书。
 
-要按定期计划检查或*轮询*终结点，[请添加 HTTP 触发器](#http-trigger)作为工作流中的第一步。 每次触发器检查终结点时，触发器都会调用终结点或向终结点发送*请求*。 该终结点的响应确定了逻辑应用的工作流是否运行。 触发器将终结点响应中的任何内容传递到逻辑应用中的操作。
+若要按定期计划检查或*轮询*终结点，请[添加 HTTP 触发器](#http-trigger)作为工作流中的第一步。 每次触发器检查终结点时，触发器都会调用或向终结点发送*请求*。 该终结点的响应确定了逻辑应用的工作流是否运行。 触发器将终结点响应中的所有内容传递给逻辑应用中的操作。
 
-要从工作流中的任意位置调用终结点，[请添加 HTTP 操作](#http-action)。 该终结点的响应确定了工作流剩余操作的运行方式。
+若要从工作流中的任何其他位置调用终结点，请[添加 HTTP 操作](#http-action)。 该终结点的响应确定了工作流剩余操作的运行方式。
 
 > [!IMPORTANT]
-> 如果 HTTP 触发器或操作包含这些标头，逻辑应用将从生成的请求消息中删除这些标头，而不会显示任何警告或错误：
+> 如果 HTTP 触发器或操作包含这些标头，则逻辑应用会从生成的请求消息中删除这些标头，而不会显示任何警告或错误：
 >
 > * `Accept-*`
 > * `Allow`
-> * `Content-*`除这些例外情况外： `Content-Disposition``Content-Encoding`和`Content-Type`
+> * `Content-*`但有以下例外`Content-Disposition`： `Content-Encoding`、和`Content-Type`
 > * `Cookie`
 > * `Expires`
 > * `Host`
@@ -39,9 +41,9 @@ ms.locfileid: "81617609"
 > * `Set-Cookie`
 > * `Transfer-Encoding`
 >
-> 尽管逻辑应用不会阻止您保存使用这些标头的 HTTP 触发器或操作的逻辑应用，但逻辑应用会忽略这些标头。
+> 尽管逻辑应用不会阻止你将使用 HTTP 触发器或操作的逻辑应用保存到这些标头，但逻辑应用会忽略这些标头。
 
-本文演示如何向逻辑应用的工作流添加 HTTP 触发器或操作。
+本文介绍如何将 HTTP 触发器或操作添加到逻辑应用的工作流。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -49,7 +51,7 @@ ms.locfileid: "81617609"
 
 * 要调用的目标终结点的 URL
 
-* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识。 如果您是逻辑应用的新增功能，请查看什么是[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)？
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识。 如果你不熟悉逻辑应用，请参阅[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)？
 
 * 要从中调用目标终结点的逻辑应用。 若要从 HTTP 触发器开始，请[创建一个空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 HTTP 操作，请使用所需的任何触发器启动逻辑应用。 此示例的第一步是使用 HTTP 触发器。
 
@@ -61,7 +63,7 @@ ms.locfileid: "81617609"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开空白逻辑应用。
 
-1. 在设计器的搜索框下，选择**内置**。 在搜索框中，输入 `http` 作为筛选器。 在“触发器”列表中，选择“HTTP”触发器。********
+1. 在设计器的搜索框下，选择 "**内置**"。 在搜索框中，输入 `http` 作为筛选器。 在“触发器”列表中，选择“HTTP”触发器。********
 
    ![选择 HTTP 触发器](./media/connectors-native-http/select-http-trigger.png)
 
@@ -71,16 +73,16 @@ ms.locfileid: "81617609"
 
    ![输入 HTTP 触发器参数](./media/connectors-native-http/http-trigger-parameters.png)
 
-   如果选择"**无"** 以外的身份验证类型，则身份验证设置会因您选择的情况而异。 有关可用于 HTTP 的身份验证类型的详细信息，请参阅以下主题：
+   如果选择 "**无**" 以外的身份验证类型，则身份验证设置会根据你的选择而有所不同。 有关可用于 HTTP 的身份验证类型的详细信息，请参阅以下主题：
 
    * [针对出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
-   * [使用托管标识对资源的身份验证访问权限](../logic-apps/create-managed-service-identity.md)
+   * [使用托管标识对资源的访问权限进行身份验证](../logic-apps/create-managed-service-identity.md)
 
 1. 若要添加其他可用参数，请打开“添加新参数”列表，并选择所需的参数。****
 
 1. 继续使用触发器激发时运行的操作生成逻辑应用的工作流。
 
-1. 完成后，请记住保存逻辑应用。 在设计器工具栏上，选择“保存”****。
+1. 完成后，请记得保存逻辑应用。 在设计器工具栏上，选择“保存”****。
 
 <a name="http-action"></a>
 
@@ -94,7 +96,7 @@ ms.locfileid: "81617609"
 
 1. 在要添加 HTTP 操作的步骤下，选择“新建步骤”。****
 
-   若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 选择显示的加号**+**（），然后选择 **"添加操作**"。
+   若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 选择出现的加号（**+**），然后选择 "**添加操作**"。
 
 1. 在“选择操作”下，选择“内置”。******** 在搜索框中，输入 `http` 作为筛选器。 在“操作”列表中，选择“HTTP”操作。********
 
@@ -106,14 +108,14 @@ ms.locfileid: "81617609"
 
    ![输入 HTTP 操作参数](./media/connectors-native-http/http-action-parameters.png)
 
-   如果选择"**无"** 以外的身份验证类型，则身份验证设置会因您选择的情况而异。 有关可用于 HTTP 的身份验证类型的详细信息，请参阅以下主题：
+   如果选择 "**无**" 以外的身份验证类型，则身份验证设置会根据你的选择而有所不同。 有关可用于 HTTP 的身份验证类型的详细信息，请参阅以下主题：
 
    * [针对出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
-   * [使用托管标识对资源的身份验证访问权限](../logic-apps/create-managed-service-identity.md)
+   * [使用托管标识对资源的访问权限进行身份验证](../logic-apps/create-managed-service-identity.md)
 
 1. 若要添加其他可用参数，请打开“添加新参数”列表，并选择所需的参数。****
 
-1. 完成后，请记住保存逻辑应用。 在设计器工具栏上，选择“保存”****。
+1. 完成后，请记得保存逻辑应用。 在设计器工具栏上，选择“保存”****。
 
 ## <a name="content-with-multipartform-data-type"></a>具有多部分/表单数据类型的内容
 

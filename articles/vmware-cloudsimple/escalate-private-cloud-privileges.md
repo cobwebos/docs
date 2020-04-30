@@ -1,7 +1,7 @@
 ---
-title: 升级私有云权限
+title: 提升私有云权限
 titleSuffix: Azure VMware Solution by CloudSimple
-description: 描述如何升级私有云上的权限，以用于 vCenter 中的管理功能
+description: 描述如何在 vCenter 中升级私有云上的管理功能的权限
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/05/2019
@@ -10,20 +10,20 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 63dc18c522a1e2e3b03bdf806945e0be67774b18
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81870477"
 ---
-# <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>从云简单门户升级私有云 vCenter 权限
+# <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>从 CloudSimple 门户升级私有云 vCenter 权限
 
-要对私有云 vCenter 进行管理访问，您可以暂时升级云简单权限。  使用提升的权限，您可以安装 VMware 解决方案、添加标识源和管理用户。
+对于私有云 vCenter 的管理访问权限，可以暂时提升 CloudSimple 权限。  使用提升的权限，你可以安装 VMware 解决方案、添加标识源以及管理用户。
 
-可以在 vCenter SSO 域上创建新用户，并授予对 vCenter 的访问权限。  创建新用户时，请将它们添加到 CloudSimple 内置组中以访问 vCenter。  有关详细信息，请参阅[VMware vCenter 的云简单私有云权限模型](https://docs.microsoft.com/azure/vmware-cloudsimple/learn-private-cloud-permissions/)。
+可以在 vCenter SSO 域上创建新用户，并授予对 vCenter 的访问权限。  创建新用户时，请将其添加到用于访问 vCenter 的 CloudSimple 内置组。  有关详细信息，请参阅[VMware vCenter 的 CloudSimple 私有云权限模型](https://docs.microsoft.com/azure/vmware-cloudsimple/learn-private-cloud-permissions/)。
 
 > [!CAUTION]
-> 不要对管理组件进行任何配置更改。 在升级的特权状态期间执行的操作可能会对您的系统产生负面影响，或可能导致您的系统不可用。
+> 不要对管理组件进行任何配置更改。 在提升的特权状态中执行的操作可能会对系统产生负面影响，或者导致系统变得不可用。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -31,62 +31,62 @@ ms.locfileid: "81870477"
 
 ## <a name="escalate-privileges"></a>提升特权
 
-1. 访问[云简单门户](access-cloudsimple-portal.md)。
+1. 访问[CloudSimple 门户](access-cloudsimple-portal.md)。
 
-2. 打开 **"资源"** 页面，选择要为其升级权限的私有云。
+2. 打开 "**资源**" 页，选择要提升其权限的私有云。
 
-3. 在 **"更改 vSphere"权限**下的"摘要"页底部附近，单击"**升级**"。
+3. 在 "**更改 vSphere 权限**" 下的 "摘要" 页面底部附近，单击 "**升级**"。
 
     ![更改 vSphere 权限](media/escalate-private-cloud-privilege.png)
 
 4. 选择 vSphere 用户类型。  只能`CloudOwner@cloudsimple.local`升级本地用户。
 
-5. 从下拉列表中选择升级时间间隔。 选择允许您完成任务的最短期限。
+5. 从下拉项中选择 "提升时间间隔"。 选择将允许您完成任务的最短时间。
 
-6. 选择该复选框以确认您了解风险。
+6. 选中该复选框以确认你了解风险。
 
-    ![升级权限对话框](media/escalate-private-cloud-privilege-dialog.png)
+    ![提升权限对话框](media/escalate-private-cloud-privilege-dialog.png)
 
-7. 单击“确定”。 
+7. 单击" **确定**"。
 
-8. 升级过程可能需要几分钟时间。 完成后，请单击“确定”****。
+8. 升级过程可能需要几分钟的时间。 完成后，请单击“确定”****。
 
-权限升级开始并持续到所选间隔的结束。  您可以登录到私有云 vCenter 以执行管理任务。
+权限提升开始，并一直持续到所选间隔结束。  你可以登录到私有云 vCenter 来执行管理任务。
 
 > [!IMPORTANT]
-> 只有一个用户可以具有升级的权限。  必须先取消升级用户的权限，然后才能升级其他用户的权限。
+> 只有一个用户可以具有提升的权限。  必须先取消升级用户的权限，然后才能升级其他用户的权限。
 
 > [!CAUTION]
-> 新用户只能添加到*云所有者组*、*云-全球群集-管理员组*、*云-全球-存储-管理员组*、*云-全球-网络-管理员组*或*云-全球-VM-管理员组*。  添加到*管理员*组的用户将自动删除。  只能将服务帐户添加到*管理员*组，并且不得使用服务帐户登录到 vSphere Web UI。
+> 新用户必须仅添加到*云所有者组*、*云全局-群集管理组*、云全局*存储管理*组、云全局*网络管理*组或*云-全局-VM 管理*组的用户组。  添加到*管理员*组的用户将被自动删除。  只有服务帐户必须添加到*Administrators*组，并且服务帐户不得用于登录 VSPHERE web UI。
 
-## <a name="extend-privilege-escalation"></a>扩展权限升级
+## <a name="extend-privilege-escalation"></a>扩展权限提升
 
-如果您需要额外的时间来完成任务，可以延长权限升级期。  选择允许您完成管理任务的额外升级时间间隔。
+如果需要额外的时间来完成任务，则可以扩展权限提升期限。  选择允许你完成管理任务的其他升级时间间隔。
 
-1. 在 CloudSimple 门户中的 **"资源** > **私有云**"上，选择要为其扩展权限升级的私有云。
+1. 在 CloudSimple 门户中的 "**资源** > "**私有云**上，选择要为其扩展权限升级的私有云。
 
-2. 在"摘要"选项卡底部附近，单击 **"扩展权限升级**"。
+2. 在 "摘要" 选项卡的底部附近，单击 "**扩展权限提升**"。
 
-    ![扩展权限升级](media/de-escalate-private-cloud-privilege.png)
+    ![扩展权限提升](media/de-escalate-private-cloud-privilege.png)
 
-3. 从下拉列表中选择升级时间间隔。 查看新的上报结束时间。
+3. 从下拉项中选择一个升级时间间隔。 查看新的 "升级结束时间"。
 
-4. 单击 **"保存**"以延长间隔。
+4. 单击 "**保存**" 以延长时间间隔。
 
-## <a name="de-escalate-privileges"></a>降级特权
+## <a name="de-escalate-privileges"></a>反呈报权限
 
-完成管理任务后，应取消降级权限。  
+完成管理任务后，应取消对权限的升级。  
 
-1. 在 CloudSimple 门户中的 **"资源** > **私有云**"上，选择要取消权限的私有云。
+1. 在 CloudSimple 门户中的 "**资源** > "**私有云**上，选择要为其解除升级权限的私有云。
 
-2. 单击 **"取消升级**"。
+2. 单击 "**取消升级**"。
 
-3. 单击“确定”。 
+3. 单击" **确定**"。
 
 > [!IMPORTANT]
-> 为避免任何错误，请注销 vCenter，并在取消升级权限后再次登录。
+> 若要避免任何错误，请注销 vCenter，并在解除升级的权限后再次登录。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [设置 vCenter 标识源以使用活动目录](https://docs.microsoft.com/azure/vmware-cloudsimple/set-vcenter-identity/)
-* 将备份解决方案安装到[备份工作负载虚拟机](https://docs.microsoft.com/azure/vmware-cloudsimple/backup-workloads-veeam/)
+* [设置要使用的 vCenter 标识源 Active Directory](https://docs.microsoft.com/azure/vmware-cloudsimple/set-vcenter-identity/)
+* 安装备份解决方案以[备份工作负荷虚拟机](https://docs.microsoft.com/azure/vmware-cloudsimple/backup-workloads-veeam/)

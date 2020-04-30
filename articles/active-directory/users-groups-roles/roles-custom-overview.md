@@ -1,5 +1,5 @@
 ---
-title: Azure 活动目录中的自定义管理员角色 |微软文档
+title: Azure Active Directory 中的自定义管理员角色 |Microsoft Docs
 description: 预览用于委托标识管理权的自定义 Azure AD 角色。 在 Azure 门户、PowerShell 或图形 API 中管理 Azure 角色。
 services: active-directory
 author: curtand
@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae244d93d679199aaa0bd08891cd34d4ca3a2ddc
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82085104"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Azure Active Directory 中的自定义管理员角色（预览）
@@ -26,7 +26,7 @@ ms.locfileid: "82085104"
 
 此外，Azure AD 自定义角色支持按资源分配，此外还支持更传统的组织范围分配。 此方法可让你授予管理某些资源（例如一个应用注册）的访问权限，而无需授予对所有资源（所有应用注册）的访问权限。
 
-Azure AD 基于角色的访问控制是 Azure AD 的一项公共预览版功能，可通过任何付费 Azure AD 许可计划获得。 有关预览的详细信息，请参阅 Microsoft [Azure 预览的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+Azure AD 基于角色的访问控制是 Azure AD 的一项公共预览版功能，可通过任何付费 Azure AD 许可计划获得。 有关预览的详细信息，请参阅[Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="understand-azure-ad-role-based-access-control"></a>了解 Azure AD 基于角色的访问控制
 
@@ -38,18 +38,18 @@ Azure AD 内置自定义角色的运作思路类似于 [Azure 基于角色的访
 
 ### <a name="how-azure-ad-determines-if-a-user-has-access-to-a-resource"></a>Azure AD 如何确定用户是否有权访问资源
 
-以下是 Azure AD 用于确定您是否有权访问管理资源的高级步骤。 使用此信息可排除访问问题。
+下面是 Azure AD 用来确定您是否有权访问管理资源的高级步骤。 使用此信息对访问问题进行故障排除。
 
-1. 用户（或服务主体）获取 Microsoft 图形或 Azure AD 图形终结点的令牌。
+1. 用户（或服务主体）获取 Microsoft Graph 或 Azure AD Graph 端点的令牌。
 
-1. 用户使用已颁发的令牌通过 Microsoft 图形或 Azure AD 图形对 Azure 活动目录 （Azure AD） 进行 API 调用。
+1. 用户使用已颁发的令牌通过 Microsoft Graph 或 Azure AD 图形对 Azure Active Directory （Azure AD）进行 API 调用。
 
 1. 根据具体情况，Azure AD 会执行以下操作之一：
 
-    - 根据用户访问令牌中的[wids 声明](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)评估用户的角色成员身份。
-    - 检索直接或通过组成员身份向执行操作的资源申请用户的所有角色分配。
+    - 基于用户访问令牌中的[wids 声明](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)评估用户的角色成员身份。
+    - 检索将用户直接或通过组成员身份应用到执行操作的资源的所有角色分配。
 
-1. Azure AD 确定 API 调用中的操作是否包含在用户对此资源的角色中。
+1. Azure AD 确定 API 调用中的操作是否包含在用户对此资源具有的角色中。
 1. 如果用户在请求的范围内没有包含该操作的角色，则不授予访问权限。 否则授予访问权限。
 
 ### <a name="role-assignments"></a>角色分配
@@ -70,7 +70,7 @@ Azure AD 内置自定义角色的运作思路类似于 [Azure 基于角色的访
 
 安全主体表示有权访问 Azure AD 资源的用户。 “用户”是在 Azure Active Directory 中具有用户配置文件的个人。**
 
-### <a name="role"></a>角色
+### <a name="role"></a>Role
 
 角色定义（或角色）是权限的集合。 角色定义列出可对 Azure AD 资源执行的操作，例如读取、写入、更新和删除。 Azure AD 中有两种类型的角色：
 

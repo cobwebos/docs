@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
 ms.openlocfilehash: 6216b56c8e8f0de4f9cd60306bbf9c5ed49a11ad
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82025197"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>使用 Azure Active Directory 授权访问事件中心资源
@@ -40,7 +40,7 @@ Azure 提供以下内置 RBAC 角色，用于授权使用 Azure AD 和 OAuth 访
 
 - [Azure 事件中心数据所有者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner)：使用此角色可以完全访问事件中心资源。
 - [Azure 事件中心数据发送方](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver)：使用此角色授予对事件中心资源的发送访问权限。
-- [Azure 事件中心数据接收器](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender)：使用此角色授予对事件中心资源的使用/接收访问权限。
+- [Azure 事件中心数据接收方](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender)：使用此角色向事件中心资源授予使用/接收访问权限。
 
 ## <a name="resource-scope"></a>资源范围 
 在将 RBAC 角色分配到某个安全主体之前，请确定该安全主体应该获取的访问范围。 最佳做法指出，最好是授予尽可能小的范围。
@@ -48,14 +48,14 @@ Azure 提供以下内置 RBAC 角色，用于授权使用 Azure AD 和 OAuth 访
 以下列表描述了可将事件中心资源访问权限限定到哪些级别，从最小的范围开始：
 
 - **使用者组**：在此范围内，角色分配仅适用于此实体。 目前，Azure 门户不支持在此级别向安全主体分配 RBAC 角色。 
-- **事件中心**：角色分配应用于事件中心实体及其下的使用者组。
-- **命名空间**：角色分配跨越命名空间下事件中心的整个拓扑以及与其关联的使用者组。
-- **资源组**：角色分配应用于资源组下的所有事件中心资源。
-- **订阅**：角色分配应用于订阅中的所有资源组中的所有事件中心资源。
+- **事件中心**：角色分配适用于事件中心实体和其下的使用者组。
+- **命名空间**：角色分配跨越命名空间和与其关联的使用者组的整个事件中心拓扑。
+- **资源组**：角色分配适用于资源组下的所有事件中心资源。
+- **订阅**：角色分配适用于订阅中所有资源组中的所有事件中心资源。
 
 > [!NOTE]
 > - 请记住，RBAC 角色分配可能需要最多五分钟的时间进行传播。 
-> - 此内容适用于 Apache Kafka 的事件中心和事件中心。 有关 Kafka 支持的事件中心的详细信息，请参阅[Kafka - 安全和身份验证的事件中心](event-hubs-for-kafka-ecosystem-overview.md#security-and-authentication)。
+> - 此内容适用于 Apache Kafka 的事件中心和事件中心。 有关 Kafka 支持的事件中心的详细信息，请参阅[Kafka 的事件中心-安全和身份验证](event-hubs-for-kafka-ecosystem-overview.md#security-and-authentication)。
 
 
 有关如何定义内置角色的详细信息，请参阅[了解角色定义](../role-based-access-control/role-definitions.md#management-and-data-operations)。 若要了解如何创建自定义 RBAC 角色，请参阅[针对 Azure 基于角色的访问控制创建自定义角色](../role-based-access-control/custom-roles.md)。
@@ -63,13 +63,13 @@ Azure 提供以下内置 RBAC 角色，用于授权使用 Azure AD 和 OAuth 访
 
 
 ## <a name="samples"></a>示例
-- [微软.Azure.事件中心示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)。 
+- [EventHubs 示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)。 
     
-    这些示例使用旧的**Microsoft.Azure.EventHubs**库，但可以轻松地将其更新为使用最新的**Azure.消息.事件中心**库。 要将示例从使用旧库移动到新库，请参阅[从 Microsoft.Azure.事件中心迁移到 Azure.消息集的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)。
-- [Azure.消息传递.事件中心示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
+    这些示例使用旧的**EventHubs**库，但你可以轻松地将其更新为使用最新的**EventHubs**库。 若要将示例从使用旧库移动到新库，请参阅[从 EventHubs 迁移到 EventHubs 的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)。
+- [EventHubs 示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
 
-    此示例已更新为使用最新的**Azure.消息.事件中心**库。
-- [卡夫卡 -奥乌特样品事件中心](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth)。 
+    此示例已更新为使用最新的**EventHubs**库。
+- [Kafka 的事件中心-OAuth 示例](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth)。 
 
 
 ## <a name="next-steps"></a>后续步骤

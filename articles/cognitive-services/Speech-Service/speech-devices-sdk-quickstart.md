@@ -12,10 +12,10 @@ ms.date: 02/20/2020
 ms.author: trbye
 zone_pivot_groups: platforms-set-of-three
 ms.openlocfilehash: 9303661efc65eb660093c01643073650f360f564
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400117"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows-linux-or-android"></a>快速入门：在 Windows、Linux 或 Android 上运行语音设备 SDK 示例应用

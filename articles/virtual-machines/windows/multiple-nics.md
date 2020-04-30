@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中创建和管理使用多个 NIC 的 Windows VM
+title: 在 Azure 中创建和管理使用多个 Nic 的 Windows Vm
 description: 了解如何使用 Azure PowerShell 或 Resource Manager 模板创建并管理附有多个 NIC 的 Windows VM。
 author: cynthn
 ms.service: virtual-machines-windows
@@ -8,23 +8,23 @@ ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
 ms.openlocfilehash: 6651ae21694022be86d8db08737c609aed3df569
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81870271"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>创建并管理具有多个 NIC 的 Windows 虚拟机
 Azure 中的虚拟机 (VM) 可附有多个虚拟网络接口卡 (NIC)。 一种常见方案是为前端和后端连接设置不同的子网。 可以将 VM 上的多个 NIC 关联到多个子网，但这些子网必须全都位于同一个虚拟网络 (vNet) 中。 本文详述了如何创建附有多个 NIC 的 VM。 还可以了解如何从现有 VM 中添加或删除 NIC。 不同的 [VM 大小](sizes.md)支持不同数目的 NIC，因此请相应地调整 VM 的大小。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在以下示例中，请将示例参数名称替换为自己的值。 示例参数名称包括 *myResourceGroup*、*myVnet* 和 *myVM*。
 
  
 
 ## <a name="create-a-vm-with-multiple-nics"></a>创建具有多个 NIC 的 VM
-首先创建一个资源组。 以下示例在*EastUs*位置创建名为*myResourceGroup*的资源组：
+首先创建一个资源组。 以下示例在 " *EastUs* " 位置创建名为 " *myResourceGroup* " 的资源组：
 
 ```powershell
 New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
@@ -121,7 +121,7 @@ $myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
 ## <a name="add-a-nic-to-an-existing-vm"></a>向现有 VM 添加 NIC
 若要向现有 VM 添加虚拟 NIC，解除分配 VM，添加虚拟 NIC，然后启动 VM。 不同的 [VM 大小](sizes.md)支持不同数目的 NIC，因此请相应地调整 VM 的大小。 如果需要，可[调整 VM 的大小](resize-vm.md)。
 
-1. 通过 [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) 解除分配 VM。 以下示例解除分配“myResourceGroup”中名为“myVM”的 VM****：
+1. 通过[new-azvm](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm)释放 VM。 以下示例解除分配“myResourceGroup”中名为“myVM”的 VM****：
 
     ```powershell
     Stop-AzVM -Name "myVM" -ResourceGroupName "myResourceGroup"
@@ -177,7 +177,7 @@ $myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
 ## <a name="remove-a-nic-from-an-existing-vm"></a>从现有 VM 中删除 NIC
 若要从现有 VM 中删除虚拟 NIC，解除分配 VM，删除虚拟 NIC，然后启动 VM。
 
-1. 通过 [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) 解除分配 VM。 以下示例解除分配“myResourceGroup”中名为“myVM”的 VM****：
+1. 通过[new-azvm](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm)释放 VM。 以下示例解除分配“myResourceGroup”中名为“myVM”的 VM****：
 
     ```powershell
     Stop-AzVM -Name "myVM" -ResourceGroupName "myResourceGroup"

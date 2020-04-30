@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 04/21/2020
 ms.openlocfilehash: 9129cb308a364a3ed0654055f8afe9dd8c89010a
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82024619"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的只读副本
@@ -34,28 +34,28 @@ ms.locfileid: "82024619"
 ## <a name="cross-region-replication"></a>跨区域复制
 可以在与主服务器不同的区域中创建只读副本。 跨区域复制对于灾难恢复规划或使数据更接近用户等方案非常有用。
 
-可以在任何 [Azure Database for MariaDB 区域](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb)中设置主服务器。  主服务器可以在其配对区域或通用副本区域中有一个副本。 下图显示了哪些副本区域可用，具体取决于您的主区域。
+可以在任何 [Azure Database for MariaDB 区域](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb)中设置主服务器。  主服务器可以在其配对区域或通用副本区域中有一个副本。 下图显示了哪些副本区域可用，具体取决于你的主区域。
 
 [![读取副本区域](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>通用副本区域
-您可以在以下任一区域中创建读取副本，而不管主服务器位于何处。 支持的通用副本区域包括：
+您可以在以下任何区域中创建读取副本，而不管您的主服务器位于何处。 支持的通用副本区域包括：
 
-澳大利亚东部、澳大利亚东南部、美国中部、东亚、美国东部、美国东部、日本东部、日本西部、韩国中部、韩国、美国中北部、北欧、美国中南部、东南亚、英国南部、英国西部、西欧、美国西部。
+澳大利亚东部、澳大利亚东南部、美国中部、东亚、美国东部、美国东部2、日本东部、日本西部、韩国中部、韩国南部、美国中北部、北欧、美国中南部、东南亚、英国南部、英国西部、西欧、美国西部。
 
-*西部 US 2 暂时不可用，作为跨区域副本位置。
+* 美国西部2暂时不可用作跨区域副本位置。
 
 ### <a name="paired-regions"></a>配对区域
-除了通用副本区域外，还可以在主服务器的 Azure 配对区域中创建读取副本。 如果不知道区域的对，可以从[Azure 配对区域一文](../best-practices-availability-paired-regions.md)中学习详细信息。
+除通用副本区域外，还可以在主服务器的 Azure 配对区域中创建读取副本。 如果你不知道区域对，可以从[Azure 配对区域一文](../best-practices-availability-paired-regions.md)了解详细信息。
 
 如果你使用跨区域副本进行灾难恢复规划，建议你在配对区域而不是其他某个区域中创建副本。 配对区域可避免同时更新，并优先考虑物理隔离和数据驻留。  
 
-但是，需要考虑以下限制： 
+但是，有一些限制： 
 
-* 区域可用性：MariaDB 的 Azure 数据库在美国西部 2、法国中部、阿联酋北部和德国中部可用。 但是，它们配对的区域不可用。
+* 区域可用性：在美国西部2、法国中部、阿拉伯联合酋长国北部和德国中部提供 Azure Database for MariaDB。 但是，它们的配对区域不可用。
     
-* 单向对：某些 Azure 区域仅朝一个方向配对。 这些地区包括西印度、巴西南部和美国政府弗吉尼亚州。 
-   这意味着印度西部的主服务器可以在印度南部创建副本。 但是，印度南部的主服务器无法在西印度创建副本。 这是因为西印度的次生地区是南印度，但南印度的次生地区不是西印度。
+* 单向对：某些 Azure 区域仅在一个方向上配对。 这些区域包括印度西部、巴西南部和 US Gov 弗吉尼亚州。 
+   这意味着印度西部的主服务器可以在印度南部创建副本。 但是，印度南部的主服务器无法在印度西部创建副本。 这是因为西部印度的次要区域是印度南部地区，而印度南部的次要区域不是西印度。
 
 ## <a name="create-a-replica"></a>创建副本
 
@@ -88,7 +88,7 @@ Azure Database for MariaDB 在 Azure Monitor 中提供“复制滞后时间(秒)
 
 此指标是使用 MariaDB 的 `SHOW SLAVE STATUS` 命令中提供的 `seconds_behind_master` 指标计算得出的。
 
-设置警报，以在复制延迟达到工作负载无法接受的值时通知您。
+设置警报以在复制滞后达到工作负荷不可接受的值时通知你。
 
 ## <a name="stop-replication"></a>停止复制
 
@@ -145,7 +145,7 @@ Azure Database for MariaDB 在 Azure Monitor 中提供“复制滞后时间(秒)
 - [`innodb_file_per_table`](https://mariadb.com/kb/en/library/innodb-system-variables/#innodb_file_per_table) 
 - [`log_bin_trust_function_creators`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#log_bin_trust_function_creators)
 
-参数[`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler)锁定在副本服务器上。
+在[`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler)副本服务器上锁定参数。
 
 ### <a name="other"></a>其他
 

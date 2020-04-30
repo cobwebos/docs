@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
 ms.openlocfilehash: cf2106302064df5ede02d18f253436047a5d33d8
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82024602"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure 云服务证书概述
@@ -55,7 +55,7 @@ Azure 使用的证书可以包含公钥。 证书具有指纹，它提供了一�
 * 为密钥交换（.pfx 文件）而创建。
 * 使用者名称必须与用于访问云服务的域匹配。
 
-    > 不能为cloudapp.net（或任何与 Azure 相关的）域获取 TLS/SSL 证书;因此，您可以获取 CLOUDAPP.NET/SSL 证书。证书的主题名称必须与用于访问应用程序的自定义域名匹配。 例如，**contoso.net**，而不是 **contoso.cloudapp.net**。
+    > 不能为 cloudapp.net （或与 Azure 相关的任何域）的 TLS/SSL 证书。证书的使用者名称必须与用于访问应用程序的自定义域名匹配。 例如，**contoso.net**，而不是 **contoso.cloudapp.net**。
 
 * 至少为 2048 位加密。
 * **仅服务证书**：客户端证书必须驻留在*个人*证书存储区。

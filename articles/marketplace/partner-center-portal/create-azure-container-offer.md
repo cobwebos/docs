@@ -8,10 +8,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.openlocfilehash: 3170849955485c0d098ed9f39c22332456e46fe4
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81867368"
 ---
 # <a name="create-an-azure-container-offer"></a>创建 Azure 容器产品/服务
@@ -98,7 +98,7 @@ ms.locfileid: "81867368"
 
 #### <a name="legal"></a>合法
 
-必须提供产品/服务的条款和条件。 存在两个选项：
+必须提供产品/服务的条款和条件。 共有两个选项：
 
 - 使用 Microsoft 商业应用商店的标准约定。
 - 提供您自己的条款和条件。

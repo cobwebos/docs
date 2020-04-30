@@ -7,17 +7,17 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 4/21/2020
 ms.openlocfilehash: a68b63fa190aa67125b2bf8c09ae7f31aedc3905
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770266"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>配置应用程序的 SSL 连接性以安全连接到 Azure Database for MySQL
 Azure Database for MySQL 支持使用安全套接字层 (SSL) 将 Azure Database for MySQL 服务器连接到客户端应用程序。 通过在数据库服务器与客户端应用程序之间强制实施 SSL 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。
 
 ## <a name="step-1-obtain-ssl-certificate"></a>步骤 1：获取 SSL 证书
-从下载通过 SSL 与 MySQL 服务器的 Azure 数据库[https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)通信所需的证书，并将证书文件保存到本地驱动器（例如，本教程使用 c：\ssl）。
+下载通过 SSL 与 Azure Database for MySQL 服务器进行通信所需的证书[https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) ，并将证书文件保存到本地驱动器（例如，本教程使用 c:\ssl 作为）。
 **对于 Microsoft Internet Explorer 和 Microsoft Edge：** 下载完成之后，将证书重命名为 BaltimoreCyberTrustRoot.crt.pem。
 
 ## <a name="step-2-bind-ssl"></a>步骤 2：绑定 SSL
@@ -65,7 +65,7 @@ mysql> status
 ```
 通过查看输出来确认连接是否已加密，如果已加密，输出应显示为：“SSL: 使用中的密码为 AES256-SHA”**** 
 
-## <a name="sample-code"></a>示例代码
+## <a name="sample-code"></a>代码示例
 若要从应用程序通过 SSL 与 Azure Database for MySQL 建立安全连接，请参阅以下代码示例：
 
 请参阅 Azure Database for MySQL 服务支持的[兼容驱动程序](concepts-compatibility.md)列表。

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 949f1b3ee3db72e1c541c3dd4c5f74f364f1b514
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869901"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>安装使用现有应用程序网关的应用程序网关入口控制器 (AGIC)
@@ -32,7 +32,7 @@ AGIC 监视 Kubernetes [入口](https://kubernetes.io/docs/concepts/services-net
 - 已启用[高级网络](https://docs.microsoft.com/azure/aks/configure-azure-cni)的 [AKS](https://azure.microsoft.com/services/kubernetes-service/)
 - AKS 所在的同一虚拟网络中的[应用程序网关 v2](https://docs.microsoft.com/azure/application-gateway/create-zone-redundant)
 - 已在 AKS 群集上安装 [AAD Pod Identity](https://github.com/Azure/aad-pod-identity)
-- [云外壳](https://shell.azure.com/)是 Azure 外壳环境，具有`az`CLI，`kubectl`并`helm`安装了 。 需要使用这些工具来运行下面所述的命令。
+- [Cloud Shell](https://shell.azure.com/)是 Azure Shell 环境，安装了`az` CLI、 `kubectl`和。 `helm` 需要使用这些工具来运行下面所述的命令。
 
 在安装 AGIC 之前，请__备份应用程序网关的配置__：
   1. 使用 [Azure 门户](https://portal.azure.com/)导航到 `Application Gateway` 实例
@@ -42,7 +42,7 @@ AGIC 监视 Kubernetes [入口](https://kubernetes.io/docs/concepts/services-net
 
 ## <a name="install-helm"></a>安装 Helm
 [Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) 是 Kubernetes 的包管理器。 我们将利用它来安装 `application-gateway-kubernetes-ingress` 包。
-使用[云外壳](https://shell.azure.com/)安装头盔：
+使用[Cloud Shell](https://shell.azure.com/)安装 Helm：
 
 1. 安装 [Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) 并运行以下命令来添加 `application-gateway-kubernetes-ingress` Helm 包：
 
@@ -77,7 +77,7 @@ AGIC 与 Kubernetes API 服务器和 Azure 资源管理器通信。 它需要一
 请根据 [AAD Pod Identity 安装说明](https://github.com/Azure/aad-pod-identity#deploy-the-azure-aad-identity-infra)将此组件添加到 AKS。
 
 接下来，需要创建一个 Azure 标识并向其授予对 ARM 的权限。
-使用[云命令](https://shell.azure.com/)运行以下所有命令并创建标识：
+使用[Cloud Shell](https://shell.azure.com/)运行以下所有命令并创建标识：
 
 1. **在 AKS 节点所在的同一个资源组**中创建 Azure 标识。 选取正确的资源组十分重要。 以下命令中所需的资源组不是 AKS 门户窗格中提到的资源组，** 而是 `aks-agentpool` 虚拟机的资源组。 通常，该资源组以 `MC_` 开头并包含 AKS 的名称。 例如：`MC_resourceGroup_aksABCD_westus`
 
@@ -128,7 +128,7 @@ armAuth:
 ```
 
 ## <a name="install-ingress-controller-as-a-helm-chart"></a>以 Helm 图表的形式安装入口控制器
-前几个步骤将在 Kubernetes 群集上安装 Helm 的 Tiller。 使用[云外壳](https://shell.azure.com/)安装 AGIC 头盔包：
+前几个步骤将在 Kubernetes 群集上安装 Helm 的 Tiller。 使用[Cloud Shell](https://shell.azure.com/)安装 AGIC Helm 包：
 
 1. 添加 `application-gateway-kubernetes-ingress` Helm 存储库并执行 Helm 更新
 
@@ -344,4 +344,4 @@ kubectl get AzureIngressProhibitedTargets prohibit-all-targets -o yaml
     kubectl get AzureIngressProhibitedTargets
     ```
 
-3. 通过门户修改应用程序网关配置 - 添加侦听器、路由规则、后端等。我们创建的新对象 （`manually-configured-staging-environment`） 将禁止 AGIC 覆盖与 的应用程序`staging.contoso.com`网关配置相关的。
+3. 通过门户修改应用程序网关配置-添加侦听器、路由规则、后端等。我们创建的新对象（`manually-configured-staging-environment`）将禁止 AGIC 覆盖与相关的应用程序网`staging.contoso.com`关配置。
