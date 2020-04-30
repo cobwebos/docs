@@ -1,5 +1,5 @@
 ---
-title: 使用密钥保管库证书配置 TLS 端接 - PowerShell
+title: 用 Key Vault 证书配置 TLS 终止-PowerShell
 titleSuffix: Azure Application Gateway
 description: 了解如何将 Azure 应用程序网关与 Key Vault 集成，以便存储附加到支持 HTTPS 的侦听器的服务器证书。
 services: application-gateway
@@ -9,25 +9,25 @@ ms.topic: article
 ms.date: 02/27/2020
 ms.author: victorh
 ms.openlocfilehash: ffda4b41497a9fd84db5fcee36202eb1c1dca2c0
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81457835"
 ---
-# <a name="configure-tls-termination-with-key-vault-certificates-by-using-azure-powershell"></a>使用 Azure PowerShell 使用密钥保管库证书配置 TLS 终止
+# <a name="configure-tls-termination-with-key-vault-certificates-by-using-azure-powershell"></a>使用 Azure PowerShell 配置使用 Key Vault 证书的 TLS 终止
 
-[Azure 密钥保管库](../key-vault/general/overview.md)是一个平台管理的秘密存储，可用于保护机密、密钥和 TLS/SSL 证书。 Azure 应用程序网关支持与密钥保管库集成，以存储附加到支持 HTTPS 的侦听器的服务器证书。 此支持仅限于应用程序网关 v2 SKU。
+[Azure Key Vault](../key-vault/general/overview.md)是平台管理的密钥存储，可用于保护机密、密钥和 TLS/SSL 证书。 Azure 应用程序网关支持与密钥保管库集成，以存储附加到支持 HTTPS 的侦听器的服务器证书。 此支持仅限于应用程序网关 v2 SKU。
 
-有关详细信息，请参阅[使用密钥保管库证书的 TLS 终止](key-vault-certs.md)。
+有关详细信息，请参阅[采用 Key Vault 证书的 TLS 终止](key-vault-certs.md)。
 
-本文介绍如何使用 Azure PowerShell 脚本将密钥保管库与 TLS/SSL 终止证书的应用程序网关集成。
+本文介绍如何使用 Azure PowerShell 脚本将密钥保管库与应用程序网关集成，以实现 TLS/SSL 终止证书。
 
 本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 要查找版本，请运行 `Get-Module -ListAvailable Az`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 若要运行本文中的命令，还需要通过运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，必须已安装 ManagedServiceIdentity 模块：
 
@@ -71,7 +71,7 @@ $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
 ```
 > [!NOTE]
-> -启用SoftDelete 标志必须用于 TLS 终止才能正常运行。 如果要[通过门户配置密钥保管库软删除](../key-vault/general/overview-soft-delete.md#soft-delete-behavior)，则保留期必须保持在默认值 90 天。 应用程序网关还不支持不同的保留期。 
+> 必须使用-EnableSoftDelete 标志才能正常使用 TLS 终止。 如果是[通过门户配置 Key Vault 软删除](../key-vault/general/overview-soft-delete.md#soft-delete-behavior)，则保留期必须保留为 90 天（默认值）。 应用程序网关尚不支持不同的保留期。 
 
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
 
@@ -102,7 +102,7 @@ $fp01 = New-AzApplicationGatewayFrontendPort -Name "port1" -Port 443
 $fp02 = New-AzApplicationGatewayFrontendPort -Name "port2" -Port 80
 ```
 
-### <a name="point-the-tlsssl-certificate-to-your-key-vault"></a>将 TLS/SSL 证书指向密钥保管库
+### <a name="point-the-tlsssl-certificate-to-your-key-vault"></a>将 TLS/SSL 证书指向你的密钥保管库
 
 ```azurepowershell
 $sslCert01 = New-AzApplicationGatewaySslCertificate -Name "SSLCert1" -KeyVaultSecretId $secretId
@@ -144,4 +144,4 @@ $appgw = New-AzApplicationGateway -Name $appgwName -Identity $appgwIdentity -Res
 
 ## <a name="next-steps"></a>后续步骤
 
-[了解有关 TLS 终止的更多](ssl-overview.md)
+[了解有关 TLS 终止的详细信息](ssl-overview.md)

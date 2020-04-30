@@ -7,10 +7,10 @@ ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
 ms.openlocfilehash: dd0a03ea76d517486bb9bda6d9628fb529166dd8
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81453721"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>使用应用服务和 Azure Functions 的 Key Vault 引用
@@ -57,7 +57,7 @@ Key Vault 引用采用 `@Microsoft.KeyVault({referenceString})` 格式，其中 
 
 ## <a name="source-application-settings-from-key-vault"></a>Key Vault 中的源应用程序设置
 
-密钥保管库引用可用作[应用程序设置](configure-common.md#configure-app-settings)的值，允许您在密钥保管库中保留机密，而不是站点配置。应用程序设置在静态时进行安全加密，但如果您需要机密管理功能，它们应进入密钥保管库。
+Key Vault 引用可以用作[应用程序设置](configure-common.md#configure-app-settings)的值，以便将机密保存在 Key Vault 而不是站点配置中。可以对应用程序设置进行安全的静态加密，但如果需要机密管理功能，则应将它们置于 Key Vault 中。
 
 若要将 Key Vault 引用用于应用程序设置，请将引用设为设置的值。 应用可以通过密钥正常引用机密。 不需更改代码。
 
@@ -187,15 +187,15 @@ Key Vault 引用采用 `@Microsoft.KeyVault({referenceString})` 格式，其中 
 ### <a name="using-the-detector-for-app-service"></a>使用应用服务的检测程序
 
 1. 在门户中导航到你的应用。
-2. 选择“诊断和解决问题”。****
-3. 依次选择“可用性和性能”、“Web 应用关闭”。********
-4. 找到“Key Vault 应用程序设置诊断”，单击“更多信息”。********
+2. 选择“诊断和解决问题”。 
+3. 依次选择“可用性和性能”、“Web 应用关闭”。  
+4. 找到“Key Vault 应用程序设置诊断”，单击“更多信息”。  
 
 
 ### <a name="using-the-detector-for-azure-functions"></a>使用 Azure Functions 的检测程序
 
 1. 在门户中导航到你的应用。
-2. 导航到“平台功能”。****
-3. 选择“诊断和解决问题”。****
-4. 依次选择“可用性和性能”、“函数应用关闭或报告错误”。********
-5. 单击“Key Vault 应用程序设置诊断”。****
+2. 导航到“平台功能”。 
+3. 选择“诊断和解决问题”。 
+4. 依次选择“可用性和性能”、“函数应用关闭或报告错误”。  
+5. 单击“Key Vault 应用程序设置诊断”。 

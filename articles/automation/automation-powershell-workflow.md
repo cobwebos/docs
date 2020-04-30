@@ -1,31 +1,31 @@
 ---
 title: 了解 Azure 自动化的 PowerShell 工作流
-description: 本文旨在作为熟悉 PowerShell 创作人员的一个速成教程，以便其了解 PowerShell 和 PowerShell 工作流之间的具体差异，并介绍适用于自动化 runbook 的概念。
+description: 本文旨在作为熟悉 PowerShell 的创作人员的一个速成教程，以便其了解 PowerShell 和 PowerShell 工作流以及适用于自动化 Runbook 的概念之间的具体差异。
 services: automation
 ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1b275239c19584bc11472711a32972aa3ebea1ab
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81457529"
 ---
-# <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>了解自动化 runbook 的关键 PowerShell 工作流概念
+# <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>了解重要的适用于自动化 Runbook 的 Windows PowerShell 工作流概念
 
 Azure 自动化中的 Runbook 作为 Windows PowerShell 工作流实现。  Windows PowerShell 工作流类似于 Windows PowerShell 脚本，但包括一些可能会让新用户产生混淆的重大差异。  本文旨在提供有关使用 PowerShell 工作流编写 runbook 的帮助，但我们建议使用 PowerShell 编写 runbook，除非是需要检查点的情况。  编写 PowerShell 工作流 runbook 时存在几个语法差异，这些差异会增加编写有效工作流时所需的工作量。
 
-工作流是一系列经过编程的连接步骤，会执行长期运行的任务，或是需要在多个设备或托管节点之间协调多个步骤。 与标准脚本相比，工作流的好处包括能够同时执行针对多台设备的操作以及自动从故障中恢复的能力。 Windows PowerShell 工作流是使用 Windows Workflow Foundation 的 Windows PowerShell 脚本。 尽管工作流是使用 Windows PowerShell 语法编写的并通过 Windows PowerShell 启动，但它由 Windows Workflow Foundation 进行处理。
+工作流是一系列编程的连接步骤，用于执行长时间运行的任务，或者要求跨多个设备或托管节点协调多个步骤。 与标准脚本相比，工作流的优点有：能够针对多台设备同时执行操作，并且能够从故障自动恢复。 Windows PowerShell 工作流是使用 Windows Workflow Foundation 的 Windows PowerShell 脚本。 尽管工作流采用 Windows PowerShell 语法编写并通过 Windows PowerShell 启动，但由 Windows Workflow Foundation 对其进行处理。
 
 有关本文中主题的完整详细信息，请参阅 [Windows PowerShell 工作流简介](https://technet.microsoft.com/library/jj134242.aspx)。
 
 >[!NOTE]
->本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az 模块安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于自动化帐户，可以使用["如何更新 Azure 自动化 中的 Azure PowerShell"模块](automation-update-azure-modules.md)将模块更新到最新版本。
+>本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az 模块安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于自动化帐户，可参阅[如何更新 Azure 自动化中的 Azure PowerShell 模块](automation-update-azure-modules.md)，将模块更新到最新版本。
 
 ## <a name="basic-structure-of-a-workflow"></a>工作流的基本结构
 
-将 PowerShell 脚本转换为 PowerShell 工作流的第一步是将其与`Workflow`关键字一起包含。  工作流从关键字开始，`Workflow`后跟括号中包含的脚本正文。 工作流的名称遵循`Workflow`以下语法中的关键字：
+将 PowerShell 脚本转换为 PowerShell 工作流的第一步是使用`Workflow`关键字将其括起来。  工作流以`Workflow`关键字开头，后跟括在大括号中的脚本正文。 工作流的名称跟在`Workflow`关键字之后，如以下语法所示：
 
 ```powershell
 Workflow Test-Workflow
@@ -34,9 +34,9 @@ Workflow Test-Workflow
 }
 ```
 
-工作流名称与自动化 Runbook 的名称匹配。 如果正在导入 Runbook，则文件名必须与工作流名称匹配，并且必须以 *.ps1*结尾。
+工作流名称与自动化 Runbook 的名称匹配。 如果正在导入 runbook，则文件名必须与工作流名称匹配，并且必须以 *. ps1*结束。
 
-要向工作流添加参数，请使用 关键字，`Param`就像在脚本中一样。
+若要将参数添加到工作流中`Param` ，请像在脚本中那样使用关键字。
 
 ## <a name="code-changes"></a>代码更改
 
@@ -102,7 +102,7 @@ Workflow Stop-MyService
 
 ## <a name="inlinescript"></a>InlineScript
 
-当您`InlineScript`需要作为传统的 PowerShell 脚本而不是 PowerShell 工作流运行一个或多个命令时，该活动非常有用。  尽管工作流中的命令将发送到 Windows Workflow Foundation 进行处理，但 InlineScript 块中的命令由 Windows PowerShell 处理。
+当`InlineScript`需要将一个或多个命令作为传统的 powershell 脚本而不是 powershell 工作流运行时，活动非常有用。  尽管工作流中的命令将发送到 Windows Workflow Foundation 进行处理，但 InlineScript 块中的命令由 Windows PowerShell 处理。
 
 InlineScript 使用如下所示的语法。
 
@@ -157,7 +157,7 @@ Workflow Stop-MyService
 
 Windows PowerShell 工作流的一个优点是能够与典型脚本一样并行而不是按顺序执行一组命令。
 
-可以使用 关键字`Parallel`创建具有多个同时运行的命令的脚本块。 此脚本块使用如下所示的语法。 在此示例中，Activity1 和 Activity2 将同时启动。 只有在 Activity1 和 Activity2 完成后，Activity3 才会启动。
+可以使用`Parallel`关键字创建包含多个同时运行的命令的脚本块。 此脚本块使用如下所示的语法。 在此示例中，Activity1 和 Activity2 将同时启动。 只有在 Activity1 和 Activity2 完成后，Activity3 才会启动。
 
 ```powershell
 Parallel
@@ -257,7 +257,7 @@ Workflow Copy-Files
 }
 ```
 
-由于用户名凭据在调用[挂起工作流](https://technet.microsoft.com/library/jj733586.aspx)活动后或最后一个检查点之后不会保留，因此您需要将凭据设置为 null，然后在调用或调用检查点后`Suspend-Workflow`从资产存储处再次检索它们。  否则，您可能会收到以下错误消息：`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
+由于在您调用[挂起工作流](https://technet.microsoft.com/library/jj733586.aspx)活动后或在最后一个检查点之后，不会保留用户名凭据，因此您需要将凭据设置为 null，然后在调用或检查点`Suspend-Workflow`后再次从资产存储区中检索这些凭据。  否则，你可能会收到以下错误消息：`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
 
 下面的相同代码演示如何在 PowerShell 工作流 Runbook 中处理此问题。
 
@@ -286,7 +286,7 @@ workflow CreateTestVms
 ```
 
 > [!NOTE]
-> 对于非图形 PowerShell 运行簿`Add-AzAccount`，`Add-AzureRMAccount`并且是[Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)的别名。 您可以使用这些 cmdlet，也可以将自动化帐户中的[模块更新](automation-update-azure-modules.md)到最新版本。 即使您刚刚创建了新的自动化帐户，您也可能需要更新模块。
+> 对于非图形 PowerShell runbook， `Add-AzAccount`和`Add-AzureRMAccount`是[AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)的别名。 可以使用这些 cmdlet，也可以在自动化帐户中[将模块更新](automation-update-azure-modules.md)为最新版本。 即使刚刚创建了一个新的自动化帐户，也可能需要更新你的模块。
 
 
 此外，如果使用配置了服务主体的运行方式帐户进行身份验证，则不需要此处理。
@@ -295,5 +295,5 @@ workflow CreateTestVms
 
 ## <a name="next-steps"></a>后续步骤
 
-* 要开始使用 PowerShell 工作流运行簿，请参阅[我的第一个 PowerShell 工作流运行簿](automation-first-runbook-textual.md)
+* 若要开始 PowerShell 工作流 runbook，请参阅[我的第一个 powershell 工作流 runbook](automation-first-runbook-textual.md)
 

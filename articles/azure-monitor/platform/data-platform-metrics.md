@@ -1,5 +1,5 @@
 ---
-title: Azure 监视器中的指标 |微软文档
+title: Azure Monitor 中的指标 |Microsoft Docs
 description: 介绍 Azure Monitor 中的指标：能够为近实时方案提供支持的轻型监视数据。
 documentationcenter: ''
 author: bwren
@@ -10,16 +10,16 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
 ms.openlocfilehash: a02b3df02d455db8a7dfd21f63d659f75a66e446
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81457308"
 ---
 # <a name="metrics-in-azure-monitor"></a>Azure Monitor 中的指标
 
 > [!NOTE]
-> Azure 监视器数据平台基于两种基本数据类型：指标和日志。 本文介绍指标。 有关日志的详细介绍，请参阅 [Azure Monitor 中的日志](data-platform-logs.md)；有关日志与指标的比较，请参阅 [Azure Monitor 数据平台](data-platform.md)。
+> Azure Monitor 数据平台基于两种基本数据类型：指标和日志。 本文介绍指标。 有关日志的详细介绍，请参阅 [Azure Monitor 中的日志](data-platform-logs.md)；有关日志与指标的比较，请参阅 [Azure Monitor 数据平台](data-platform.md)。
 
 Azure Monitor 中的指标是能够为近实时方案提供支持的轻型数据，因此，它们特别适合用于警报和快速检测问题。 本文将介绍指标的构建方式、可对指标执行哪些操作，以及如何识别需要在指标中存储数据的不同数据源。
 
@@ -32,12 +32,12 @@ Azure Monitor 中的指标是能够为近实时方案提供支持的轻型数据
 |  |  |
 |:---|:---|
 | 分析 | 使用[指标资源管理器](metrics-charts.md)可以在图表中分析收集的指标，并比较来自不同资源的指标。 |
-| 可视化 | 将指标资源管理器中的图表固定到 [Azure 仪表板](../learn/tutorial-app-dashboards.md)。<br>创建[工作簿](../app/usage-workbooks.md)以在交互式报表中与多组数据组合。将查询结果导出到[Grafana](grafana-plugin.md)以利用其仪表板并与其他数据源结合使用。 |
+| 可视化 | 将指标资源管理器中的图表固定到 [Azure 仪表板](../learn/tutorial-app-dashboards.md)。<br>创建要与交互式报表中的多个数据集组合在一起的[工作簿](../app/usage-workbooks.md)。将查询结果导出到[Grafana](grafana-plugin.md) ，以利用其仪表板建设并将其与其他数据源组合。 |
 | 警报 | 配置指标[警报规则](alerts-metric.md)，以便在指标值超过阈值时发送通知或执行[自动化操作](action-groups.md)。 |
 | 自动化 |  根据超过阈值的指标值，使用[自动缩放](autoscale-overview.md)来增加或减少资源。 |
 | 导出 | [将指标路由到日志](resource-logs-collect-storage.md)，以连同 Azure Monitor 日志中的数据一起分析 Azure Monitor 指标中的数据，并将指标值存储 93 天以上。<br>将指标流式传输到[事件中心](stream-monitoring-data-event-hubs.md)，以将其路由到外部系统。 |
 | 检索 | 使用 [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights) 从命令行访问指标值<br>使用 [REST API](rest-api-walkthrough.md) 从自定义应用程序访问指标值。<br>使用 [CLI](/cli/azure/monitor/metrics) 从命令行访问指标值。 |
-| 存档 | 出于符合性、审核或脱机报告目的，对资源的性能或运行状况历史记录进行 [存档](..//learn/tutorial-archive-data.md)。 |
+| Archive | 出于符合性、审核或脱机报告目的，对资源的性能或运行状况历史记录进行 [存档](..//learn/tutorial-archive-data.md)。 |
 
 ## <a name="how-is-data-in-azure-monitor-metrics-structured"></a>Azure Monitor 指标中的数据是如何构建的？
 Azure Monitor 指标收集的数据存储在时序数据库中，该数据库经过优化，可用于分析带时间戳的数据。 每组指标值是包含以下属性的时序：
@@ -50,13 +50,13 @@ Azure Monitor 指标收集的数据存储在时序数据库中，该数据库经
 * 如[多维指标](#multi-dimensional-metrics)中所述，某指标可能包含多个维度。 自定义指标最多可以包含 10 个维度。
 
 ## <a name="multi-dimensional-metrics"></a>多维指标
-指标数据的一大难题在于，它通常包含有限的信息，以致无法提供所收集值的上下文。 Azure Monitor 通过多维指标解决了这一难题。 指标维度是携带附加数据来描述指标值的名称/值对。 例如，指标“可用磁盘空间”可能包含名为“驱动器”并具有值“C:”和“D:”的维度，通过此维度可以查看所有驱动器的可用磁盘空间，或者可以分别查看每个驱动器的可用磁盘空间。________
+指标数据的一大难题在于，它通常包含有限的信息，以致无法提供所收集值的上下文。 Azure Monitor 通过多维指标解决了这一难题。 指标维度是携带附加数据来描述指标值的名称/值对。 例如，指标“可用磁盘空间”可能包含名为“驱动器”并具有值“C:”和“D:”的维度，通过此维度可以查看所有驱动器的可用磁盘空间，或者可以分别查看每个驱动器的可用磁盘空间。    
 
-下面的示例说明了称为_网络吞吐量_的假设指标的两个数据集。 第一个数据集不包含维度。 第二个数据集显示具有两个维度的值 _：IP 地址_和_方向_：
+以下示例演示了名为“网络吞吐量”的假设指标的两个数据集。  第一个数据集不包含维度。 第二个数据集使用两个维度（_IP 地址_和_方向_）显示值：
 
 ### <a name="network-throughput"></a>网络吞吐量
 
-| 时间戳     | 指标值 |
+| Timestamp     | 指标值 |
 | ------------- |:-------------|
 | 8/9/2017 8:14 | 1,331.8 Kbps |
 | 8/9/2017 8:15 | 1,141.4 Kbps |
@@ -66,7 +66,7 @@ Azure Monitor 指标收集的数据存储在时序数据库中，该数据库经
 
 ### <a name="network-throughput--two-dimensions-ip-and-direction"></a>网络吞吐量 + 两个维度（“IP 地址”和“方向”）
 
-| 时间戳     | “IP”维度   | “方向”维度 | 指标值|
+| Timestamp     | “IP”维度   | “方向”维度 | 指标值|
 | ------------- |:-----------------|:------------------- |:-----------|
 | 8/9/2017 8:14 | IP="192.168.5.2" | Direction="Send"    | 646.5 Kbps |
 | 8/9/2017 8:14 | IP="192.168.5.2" | Direction="Receive" | 420.1 Kbps |
@@ -91,19 +91,19 @@ Azure Monitor 从三个基本源收集指标。 在 Azure Monitor 指标数据�
 
 **来宾 OS 指标**是从虚拟机的来宾操作系统收集的。 对于 Windows 虚拟机和 Linux 虚拟机，可以分别使用 [Windows 诊断扩展 (WAD)](../platform/diagnostics-extension-overview.md) 和 [InfluxData Telegraf 代理](https://www.influxdata.com/time-series-platform/telegraf/)启用来宾 OS 指标。
 
-**应用程序指标**由 Application Insights 为受监视的应用程序创建，可帮助检测性能问题，以及跟踪应用程序的用法趋势。 此类指标包括“服务器响应时间”和“浏览器异常”等值。____
+**应用程序指标**由 Application Insights 为受监视的应用程序创建，可帮助检测性能问题，以及跟踪应用程序的用法趋势。 此类指标包括“服务器响应时间”和“浏览器异常”等值。  
 
-**自定义指标**是在自动提供的标准指标之外定义的指标。 您可以在[应用程序中定义](../app/api-custom-events-metrics.md)由应用程序见解监视的自定义指标，或使用[自定义指标 API](metrics-store-custom-rest-api.md)为 Azure 服务创建自定义指标。
+**自定义指标**是在自动提供的标准指标之外定义的指标。 可以在受 Application Insights 监视的[应用程序中定义自定义指标](../app/api-custom-events-metrics.md)，或者使用[自定义指标 API](metrics-store-custom-rest-api.md) 为 Azure 服务创建自定义指标。
 
 ## <a name="retention-of-metrics"></a>指标的保留期
 对于 Azure 中的大多数资源，指标存储 93 天。 有一些例外情况：
 
 **来宾 OS 指标**
 -   **经典来宾 OS 指标**。 这些是由 [Windows 诊断扩展 (WAD)](../platform/diagnostics-extension-overview.md) 或 [Linux 诊断扩展 (LAD)](../../virtual-machines/extensions/diagnostics-linux.md) 收集并路由到 Azure 存储帐户的性能计数器。 这些指标的保留期为 14 天。
--   **发送到 Azure Monitor 指标的来宾 OS 指标**。 这些是[Windows 诊断扩展 （WAD）](diagnostics-extension-overview.md)收集并发送到[Azure 监视器数据接收器](diagnostics-extension-overview.md#data-destinations)或通过 Linux 计算机上[的"涌入数据远程格拉夫代理"](https://www.influxdata.com/time-series-platform/telegraf/)收集的性能计数器。 这些指标的保留期为 93 天。
+-   **发送到 Azure Monitor 指标的来宾 OS 指标**。 这些是由[Windows 诊断扩展（WAD）](diagnostics-extension-overview.md)收集并发送到[Azure Monitor 数据接收器](diagnostics-extension-overview.md#data-destinations)或通过 Linux 计算机上的[InfluxData Telegraf 代理](https://www.influxdata.com/time-series-platform/telegraf/)收集的性能计数器。 这些指标的保留期为 93 天。
 -   **Log Analytics 代理收集的来宾 OS 指标**。 这些是由 Log Analytics 代理收集并发送到 Log Analytics 工作区的性能计数器。 这些指标的保留期为 31 天，最长可延长到 2 年。
 
-**应用程序见解基于日志的指标**。 
+**Application Insights 基于日志的指标**。 
 - 在后台，[基于日志的指标](../app/pre-aggregated-metrics-log-metrics.md)将转换为日志查询。 其保留期与基础日志中事件的保留期相匹配。 对于 Application Insights 资源，日志存储 90 天。
 
 

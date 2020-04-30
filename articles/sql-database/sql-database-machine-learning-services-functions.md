@@ -1,7 +1,7 @@
 ---
 title: 编写高级 R 函数
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: 了解如何使用机器学习服务（预览）在 Azure SQL 数据库中编写用于高级统计计算的 R 函数。
+description: 了解如何使用机器学习服务（预览版）在 Azure SQL 数据库中为高级统计计算编写 R 函数。
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -15,29 +15,29 @@ manager: cgronlun
 ms.date: 04/11/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: ba78267b1c6dc8f0e1bd25bb8ecdb1d8d344d03e
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81453108"
 ---
 # <a name="write-advanced-r-functions-in-azure-sql-database-using-machine-learning-services-preview"></a>使用机器学习服务（预览版）在 Azure SQL 数据库中编写高级 R 函数
 
-本文介绍如何在 SQL 存储过程中嵌入 R 数学函数和实用程序函数。 在 T-SQL 中难以实现的高级统计函数在 R 中只需一行代码就可以实现。
+本文介绍如何在 SQL 存储过程中嵌入 R 数学和实用函数。 在 T-SQL 中难以实现的高级统计函数在 R 中只需一行代码就可以实现。
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 如果还没有 Azure 订阅，可以在开始前[创建一个帐户](https://azure.microsoft.com/free/)。
 
-- 要在这些练习中运行示例代码，必须首先启用[Azure SQL 数据库，并启用机器学习服务（R）。](sql-database-machine-learning-services-overview.md)
+- 若要在这些练习中运行示例代码，必须先启用启用了[机器学习服务（使用 R）的 AZURE SQL 数据库](sql-database-machine-learning-services-overview.md)。
 
 - 确保已安装了最新的 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS)。 你可以使用其他数据库管理或查询工具运行 R 脚本，但在本快速入门中，你将使用 SSMS。
 
 ## <a name="create-a-stored-procedure-to-generate-random-numbers"></a>创建一个存储过程来生成随机数字
 
-为简单起见，让我们使用使用机器学习服务`stats`（预览）使用 Azure SQL 数据库默认安装和加载的 R 包。 该包包含数百个用于常见统计任务的函数，其中包括函数`rnorm`。 给定标准差和平均值，此函数使用正态分布生成指定数量的随机数。
+为简单起见，让我们使用在`stats` Azure SQL 数据库中默认安装并加载的 R 包，机器学习服务（预览版）。 该包包含数百个用于常见统计任务的函数，其中包含`rnorm`函数。 给定标准偏差和平均值，此函数使用正态分布生成指定数量的随机数。
 
 例如，以下 R 代码在标准偏差为 3 的情况下返回平均值为 50 的 100 个数字。
 
@@ -45,7 +45,7 @@ ms.locfileid: "81453108"
 as.data.frame(rnorm(100, mean = 50, sd = 3));
 ```
 
-要从 T-SQL 调用此行 R，`sp_execute_external_script`请运行 R 函数并在 R 脚本参数中添加 R 函数，如下所示：
+若要从 T-sql 调用此 R 行，请在 R `sp_execute_external_script`脚本参数中运行并添加 r 函数，如下所示：
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -58,7 +58,7 @@ WITH RESULT SETS(([Density] FLOAT NOT NULL));
 
 如果你希望更轻松地生成不同的一组随机数字，那该怎么办？
 
-与 SQL 结合使用时，这很容易。 定义一个存储过程，从用户那里获取参数，然后将这些参数作为变量传递给 R 脚本。
+与 SQL 结合时，这很简单。 定义一个存储过程，从用户那里获取参数，然后将这些参数作为变量传递给 R 脚本。
 
 ```sql
 CREATE PROCEDURE MyRNorm (
@@ -95,7 +95,7 @@ EXECUTE MyRNorm @param1 = 100
 
 ## <a name="use-r-utility-functions-for-troubleshooting"></a>使用 R 实用工具函数进行故障排除
 
-默认情况下`utils`安装的软件包提供了用于调查当前 R 环境的各种实用程序功能。 如果发现 R 代码在 SQL 和外部环境中的表现方式存在差异，则这些函数非常有用。 例如，你可以使用 R `memory.limit()` 函数获取当前 R 环境的内存。
+默认`utils`情况下，安装包提供了用于调查当前 R 环境的多种实用函数。 如果您在 SQL 和外部环境中执行 R 代码的方式不一致，则这些函数会很有用。 例如，你可以使用 R `memory.limit()` 函数获取当前 R 环境的内存。
 
 因为 `utils` 包默认情况下已安装但未加载，因此你必须首先使用 `library()` 函数加载该包。
 
@@ -111,4 +111,4 @@ WITH RESULT SETS(([Col1] INT NOT NULL));
 ```
 
 > [!TIP]
-> 许多用户喜欢使用 R 中的系统计时函数，例如`system.time`和`proc.time`， 来捕获 R 进程使用的时间并分析性能问题。
+> 许多用户喜欢使用 R 中的系统计时函数（如`system.time`和`proc.time`）来捕获 r 进程使用的时间，并分析性能问题。

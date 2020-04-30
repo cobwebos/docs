@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
 ms.openlocfilehash: 80a9397838e90a2af504125b2dc4c4ef39251d4e
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81455356"
 ---
 # <a name="virtual-appliance-scenario"></a>虚拟设备方案
@@ -41,11 +41,11 @@ ms.locfileid: "81455356"
 ## <a name="considerations"></a>注意事项
 可以使用当前可用的如下所述的不同功能在 Azure 中部署上述环境。
 
-* **虚拟网络 (VNet)**。 Azure VNet 在形式上与本地网络相似，可分段为一个或多个子网，以提供流量隔离和关注点分离。
+* **虚拟网络 (VNet)** 。 Azure VNet 在形式上与本地网络相似，可分段为一个或多个子网，以提供流量隔离和关注点分离。
 * **虚拟设备**。 有多个合作伙伴在 Azure 市场中提供了虚拟设备，可对上述三种防火墙使用这些设备。 
-* **用户定义的路由 (UDR)**。 路由表可以包含 Azure 网络使用的 UDR 来控制数据包在 VNet 中的流动。 这些路由表可应用到子网。 Azure 中的最新功能之一是将路由表应用到 GatewaySubnet，从而能够通过混合连接将传入 Azure VNet 的所有流量转发到虚拟设备。
+* **用户定义的路由 (UDR)** 。 路由表可以包含 Azure 网络使用的 UDR 来控制数据包在 VNet 中的流动。 这些路由表可应用到子网。 Azure 中的最新功能之一是将路由表应用到 GatewaySubnet，从而能够通过混合连接将传入 Azure VNet 的所有流量转发到虚拟设备。
 * **IP 转发**。 默认情况下，仅当数据包目标 IP 地址与 NIC IP 地址匹配时，Azure 网络引擎才将数据包转发到虚拟网络接口卡 (NIC)。 因此，如果 UDR 定义必须将数据包发送到给定的虚拟设备，则 Azure 网络引擎会丢弃该数据包。 为了确保将数据包传送到并非数据包实际目标的 VM（在本例中为虚拟设备），需要为虚拟设备启用 IP 转发。
-* **网络安全组 （NSG）**. 以下示例未使用 NSG，但可以在此解决方案中使用应用到子网和/或 NIC 的 NSG 来进一步筛选传入和传出子网与 NIC 的流量。
+* **网络安全组 (NSG)** 。 以下示例未使用 NSG，但可以在此解决方案中使用应用到子网和/或 NIC 的 NSG 来进一步筛选传入和传出子网与 NIC 的流量。
 
 ![IPv6 连接](./media/virtual-network-scenario-udr-gw-nva/figure01.png)
 
@@ -63,9 +63,9 @@ ms.locfileid: "81455356"
   * **azsn2**。 前端子网，托管作为 Web 服务器运行的、将从 Internet 访问的 VM。
   * **azsn3**。 后端子网，托管运行前端应用程序服务器的、由前端 Web 服务器访问的 VM。
   * **azsn4**。 管理子网，专门用于提供对所有防火墙虚拟设备的管理访问权限。 此子网仅包含解决方案中使用的每个防火墙虚拟设备的 NIC。
-  * **网关子网**。 ExpressRoute 和 VPN 网关在 Azure VNet 与其他网络之间提供连接所需的 Azure 混合连接子网。 
+  * **GatewaySubnet**。 ExpressRoute 和 VPN 网关在 Azure VNet 与其他网络之间提供连接所需的 Azure 混合连接子网。 
 * **azurevnet** 网络中有 3 个防火墙虚拟设备。 
-  * **AZF1**. 在 Azure 中使用公共 IP 地址资源向公共 Internet 公开的外部防火墙。 需要确保从市场或者直接从设备供应商那里获取一个模板用于预配 3-NIC 虚拟设备。
+  * **AZF1**。 在 Azure 中使用公共 IP 地址资源向公共 Internet 公开的外部防火墙。 需要确保从市场或者直接从设备供应商那里获取一个模板用于预配 3-NIC 虚拟设备。
   * **AZF2**。 用于控制 **azsn2** 与 **azsn3** 之间流量的内部防火墙。 这也是一个 3-NIC 虚拟设备。
   * **AZF3**。 管理员可从本地数据中心访问的管理防火墙，它已连接到用于管理所有防火墙设备的管理子网。 可以在市场中查找 2-NIC 虚拟设备模板，或者直接向设备供应商请求提供此类模板。
 

@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 12/20/2019
 ms.author: mblythe
 ms.openlocfilehash: ad0d3a1bf2c293039df3bba3aa18da7d6e7dd0a5
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81459213"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure 仪表板结构
@@ -290,11 +290,11 @@ ms.locfileid: "81459213"
 
 ## <a name="common-resource-properties"></a>常见资源属性
 
-现在分别介绍 JSON 的各个相关部分。  顶级属性，即 id、名称、类型、位置和标记属性是所有 Azure 资源类型所共有的属性____________________。 也就是说，它们与仪表板内容没有太大关系。
+现在分别介绍 JSON 的各个相关部分。  顶级属性，即 id、名称、类型、位置和标记属性是所有 Azure 资源类型所共有的属性      。 也就是说，它们与仪表板内容没有太大关系。
 
 ### <a name="the-id-property"></a>ID 属性
 
-Azure 资源 ID，受[Azure 资源的命名约定](/azure/architecture/best-practices/resource-naming)的约束。 当门户创建仪表板时，它通常选择 guid 形式的 ID，但当你以编程方式创建仪表板时，可以随意使用任何有效名称。 
+Azure 资源 ID，遵循[azure 资源的命名约定](/azure/architecture/best-practices/resource-naming)。 当门户创建仪表板时，它通常选择 guid 形式的 ID，但当你以编程方式创建仪表板时，可以随意使用任何有效名称。 
 
 ### <a name="the-name-property"></a>“名称”属性
 名称是资源 ID 中不包含订阅、资源类型或资源组信息的那部分。 实质上，它是资源 ID 的最后一段。
@@ -428,6 +428,6 @@ Azure 资源 ID，受[Azure 资源的命名约定](/azure/architecture/best-prac
 ```
 
 ### <a name="the-asset-object"></a>资产对象
-绑定到第一类可管理门户对象（称为“资产”）的磁贴通过资产对象表示此关系。  在示例仪表板中，虚拟机磁贴包含此资产说明。  __idInputName__属性告诉门户 ID 输入包含资产的唯一标识符，在这种情况下，是资源 ID。 大多数 Azure 资源类型在门户中定义资产。
+绑定到第一类可管理门户对象（称为“资产”）的磁贴通过资产对象表示此关系。  在示例仪表板中，虚拟机磁贴包含此资产说明。  __IdInputName__属性告知门户 ID 输入包含资产的唯一标识符，在本例中为资源 id。 大多数 Azure 资源类型在门户中定义资产。
 
 `"asset": {    "idInputName": "id",    "type": "VirtualMachine"    }`

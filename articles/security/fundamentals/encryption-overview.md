@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 09/20/2018
 ms.author: mbaldwin
 ms.openlocfilehash: ce78ade4df3c5bcea9e4e44750c430065cbfc5b0
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81454639"
 ---
 # <a name="azure-encryption-overview"></a>Azure 加密概述
@@ -181,7 +181,7 @@ Microsoft 使用[传输层安全性](https://en.wikipedia.org/wiki/Transport_Lay
 
 可以使用 Azure门户、PowerShell 或 Azure CLI 将站点到站点 VPN 连接配置到虚拟网络。
 
-有关详细信息，请参阅：
+有关详细信息，请参见:
 
 [在 Azure 门户中创建站点到站点连接](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 

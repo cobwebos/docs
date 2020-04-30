@@ -1,5 +1,5 @@
 ---
-title: Azure 监视器数据平台 |微软文档
+title: Azure Monitor 数据平台 |Microsoft Docs
 description: Azure Monitor 收集的监视数据划分为指标（轻型数据，能够支持近实时方案）和日志（用于高级分析）。
 documentationcenter: ''
 author: bwren
@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
 ms.openlocfilehash: 58f542238c952088777ed9809b57dae3cdb9cf12
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81457257"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor 数据平台
@@ -28,15 +28,15 @@ ms.locfileid: "81457257"
 ## <a name="observability-data-in-azure-monitor"></a>Azure Monitor 中的观测数据
 指标、日志和分布式跟踪通常称作观测功能的三大支柱。 监视工具必须收集并分析这些不同类型的数据，才能对受监视系统进行充分的观测。 若要实现观测功能，可以关联多个支柱提供的数据，并聚合整个受监视资源集中的数据。 由于 Azure Monitor 将多个源中的数据存储在一起，因此可以使用一组通用的工具来关联和分析这些数据。 Azure Monitor 还可关联多个 Azure 订阅和租户中的数据，并托管其他服务的数据。
 
-Azure 资源会生成大量的监视数据。 Azure Monitor 将这些数据连同其他源中的监视数据一起整合到指标或日志平台。 每个平台已针对特定的监视方案进行优化，各自支持 Azure Monitor 中的不同功能。 使用数据分析、可视化或警报等功能需要了解数据的差异，以便能够以最经济高效的方式实现所需的方案。 Azure 监视器中的见解（如[应用程序见解](../app/app-insights-overview.md)或[VM Azure 监视器）](../insights/vminsights-overview.md)具有分析工具，允许您专注于特定的监视方案，而无需了解两种数据类型之间的差异。 
+Azure 资源会生成大量的监视数据。 Azure Monitor 将这些数据连同其他源中的监视数据一起整合到指标或日志平台。 每个平台已针对特定的监视方案进行优化，各自支持 Azure Monitor 中的不同功能。 使用数据分析、可视化或警报等功能需要了解数据的差异，以便能够以最经济高效的方式实现所需的方案。 [Application Insights](../app/app-insights-overview.md)或[用于 VM 的 Azure Monitor](../insights/vminsights-overview.md)等 Azure Monitor 中的见解具有分析工具，使你能够专注于特定的监视方案，而无需了解两种数据类型之间的差异。 
 
 
-### <a name="metrics"></a>指标
-[指标](data-platform-metrics.md)是描述系统在特定时间点的某些方面的数值。 指标是定期收集的，使用一个时间戳、一个名称、一个值以及一个或多个定义标签进行标识。 可以使用各种算法聚合指标、将其与其他指标进行比较，以及分析不同时间的指标趋势。 
+### <a name="metrics"></a>度量值
+[指标](data-platform-metrics.md)是数字值，用于描述系统某些方面在特定时间点的情况。 指标是定期收集的，使用一个时间戳、一个名称、一个值以及一个或多个定义标签进行标识。 可以使用各种算法聚合指标、将其与其他指标进行比较，以及分析不同时间的指标趋势。 
 
 Azure Monitor 中的指标存储在时序数据库中，该数据库经过优化，可用于分析带时间戳的数据。 因此，指标特别适合用于警报和快速检测问题。 它们可以告知系统的运行状况，但通常需要与日志相结合才能识别问题的根本原因。
 
-指标可用于 Azure 门户中的交互式分析，以及[Azure 指标资源管理器](../platform/metrics-getting-started.md)。 可将指标添加到 [Azure 仪表板](../learn/tutorial-app-dashboards.md)，以结合其他数据生成可视化效果，以及用于近实时的[警报](alerts-metric.md)。
+在[Azure 指标资源管理器](../platform/metrics-getting-started.md)的 Azure 门户中，指标可用于进行交互式分析。 可将指标添加到 [Azure 仪表板](../learn/tutorial-app-dashboards.md)，以结合其他数据生成可视化效果，以及用于近实时的[警报](alerts-metric.md)。
 
 在 [Azure Monitor 中的指标](data-platform-metrics.md)中详细了解 Azure Monitor 指标，包括其数据源。
 
@@ -49,7 +49,7 @@ Azure Monitor 中的日志存储在基于 [Azure 数据资源管理器](/azure/d
 > 必须将 Azure Monitor 日志与 Azure 中的日志数据源区分开来。 例如，Azure 中的订阅级事件将写入到可以通过 Azure Monitor 菜单查看的[活动日志](platform-logs-overview.md)。 大多数资源会将操作信息写入可转发到不同位置的[资源日志](platform-logs-overview.md)。 Azure Monitor 日志是一个日志数据平台，可以收集活动日志和资源日志以及其他监视数据，以针对整个资源集提供深入分析。
 
 
- 您可以在 Azure 门户中与[日志分析](../log-query/portals.md)交互处理[日志查询](../log-query/log-query-overview.md)，或将结果添加到[Azure 仪表板](../learn/tutorial-app-dashboards.md)，以便与其他数据一起进行可视化。 还可以创建[日志警报](alerts-log.md)，以根据计划查询的结果触发警报。
+ 你可以使用 Azure 门户中的[Log Analytics](../log-query/portals.md)以交互方式使用[日志查询](../log-query/log-query-overview.md)，也可以将结果添加到[Azure 仪表板](../learn/tutorial-app-dashboards.md)，以便与其他数据进行可视化。 还可以创建[日志警报](alerts-log.md)，以根据计划查询的结果触发警报。
 
 在 [Azure Monitor 中的日志](data-platform-logs.md)中详细了解 Azure Monitor 日志，包括其数据源。
 
@@ -65,10 +65,10 @@ Azure Monitor 中的分布式跟踪是使用 [Application Insights SDK](../app/d
 
 下表对 Azure Monitor 中的指标和日志做了比较。
 
-| Attribute  | 指标 | 日志 |
+| Attribute  | 度量值 | 日志 |
 |:---|:---|:---|
 | 优点 | 轻型数据，支持警报等近实时方案。 非常适合用于快速检测问题。 | 使用丰富查询语言进行分析。 非常适合用于深入分析和识别根本原因。 |
-| 数据 | 仅限数字值 | 文本或数字数据 |
+| data | 仅限数字值 | 文本或数字数据 |
 | 结构 | 标准属性集，包括采样时间、受监视的资源、数字值。 某些指标包含多个维度用于进一步的定义。 | 取决于日志类型的唯一属性集。 |
 | 集合 | 定期收集。 | 可以在事件触发要创建的记录时偶发性地收集。 |
 | 在 Azure 门户中查看 | 指标资源管理器 | Log Analytics |

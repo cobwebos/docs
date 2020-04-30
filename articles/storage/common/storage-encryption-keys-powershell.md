@@ -11,17 +11,17 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: bfc2e256396904456a7ee0fd8b6173c00a5f53d7
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81456390"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-powershell"></a>通过 PowerShell 使用 Azure Key Vault 配置客户管理的密钥
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-本文介绍如何使用 PowerShell 配置包含客户管理的密钥的 Azure Key Vault。 若要了解如何使用 Azure CLI 创建密钥保管库，请参阅[快速入门：使用 PowerShell 从 Azure 密钥保管库设置和检索机密](../../key-vault/secrets/quick-create-powershell.md)。
+本文介绍如何使用 PowerShell 配置包含客户管理的密钥的 Azure Key Vault。 若要了解如何使用 Azure CLI 创建密钥保管库，请参阅[快速入门：使用 PowerShell 从 Azure Key Vault 设置和检索机密](../../key-vault/secrets/quick-create-powershell.md)。
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>将标识分配到存储帐户
 
@@ -74,7 +74,7 @@ Set-AzKeyVaultAccessPolicy `
 $key = Add-AzKeyVaultKey -VaultName $keyVault.VaultName -Name <key> -Destination 'Software'
 ```
 
-Azure 存储加密仅支持 2048 位 RSA 和 RSA-HSM 密钥。 有关密钥的详细信息，请参阅[关于 Azure Key Vault 密钥、机密和证书](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)中的“Key Vault 密钥”。****
+Azure 存储加密仅支持2048位 RSA 和 RSA-HSM 密钥。 有关密钥的详细信息，请参阅[关于 Azure Key Vault 密钥、机密和证书](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)中的“Key Vault 密钥”。****
 
 ## <a name="configure-encryption-with-customer-managed-keys"></a>配置使用客户管理的密钥进行加密
 
@@ -101,7 +101,7 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
 
 ## <a name="revoke-customer-managed-keys"></a>撤消客户管理的密钥
 
-如果您认为密钥可能已泄露，则可以通过删除密钥保管库访问策略来撤消客户管理的密钥。 要撤消客户管理的密钥，请调用[删除-AzKeyVaultAccessPolicy 命令](/powershell/module/az.keyvault/remove-azkeyvaultaccesspolicy)，如以下示例所示。 请记得将括号中的占位符值替换为自己的值，并使用前面示例中定义的变量。
+如果你认为某个密钥可能已泄露，则可以通过删除密钥保管库访问策略来吊销客户管理的密钥。 若要撤消客户托管的密钥，请调用[AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/remove-azkeyvaultaccesspolicy)命令，如以下示例中所示。 请记得将括号中的占位符值替换为自己的值，并使用前面示例中定义的变量。
 
 ```powershell
 Remove-AzKeyVaultAccessPolicy -VaultName $keyVault.VaultName `
@@ -110,7 +110,7 @@ Remove-AzKeyVaultAccessPolicy -VaultName $keyVault.VaultName `
 
 ## <a name="disable-customer-managed-keys"></a>禁用客户托管密钥
 
-禁用客户管理的密钥时，您的存储帐户将再次使用 Microsoft 管理的密钥进行加密。 若要禁用客户管理的密钥，请使用 `-StorageEncryption` 选项调用 [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount)，如以下示例所示。 请记得将括号中的占位符值替换为自己的值，并使用前面示例中定义的变量。
+禁用客户管理的密钥后，存储帐户将再次通过 Microsoft 管理的密钥加密。 若要禁用客户管理的密钥，请使用 `-StorageEncryption` 选项调用 [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount)，如以下示例所示。 请记得将括号中的占位符值替换为自己的值，并使用前面示例中定义的变量。
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
@@ -121,4 +121,4 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
 ## <a name="next-steps"></a>后续步骤
 
 - [静态数据的 Azure 存储加密](storage-service-encryption.md)
-- [什么是 Azure 密钥保管库](https://docs.microsoft.com/azure/key-vault/key-vault-overview)？
+- [什么是 Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)？

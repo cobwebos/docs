@@ -1,6 +1,6 @@
 ---
-title: Azure 快速路由：配置 MACsec
-description: 本文可帮助您配置 MACsec，以确保边缘路由器和 Microsoft 边缘路由器之间的连接。
+title: Azure ExpressRoute：配置 MACsec
+description: 本文介绍如何配置 MACsec 以保护边缘路由器与 Microsoft 边缘路由器之间的连接。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: cherylmc
 ms.openlocfilehash: 572147ca43e9a4dea9d9601dfa1dac8ba1c97ed0
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81458226"
 ---
-# <a name="configure-macsec-on-expressroute-direct-ports"></a>在快速路由直接端口上配置 MACsec
+# <a name="configure-macsec-on-expressroute-direct-ports"></a>在 ExpressRoute 直接端口上配置 MACsec
 
-本文可帮助您配置 MACsec，以使用 PowerShell 保护您的边缘路由器和 Microsoft 边缘路由器之间的连接。
+本文介绍如何使用 PowerShell 配置 MACsec，以保护边缘路由器与 Microsoft 边缘路由器之间的连接。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 在开始配置之前，请确认以下事项：
 
-* 您了解[ExpressRoute 直接预配工作流](expressroute-erdirect-about.md)。
-* 您已经创建了一个[ExpressRoute 直接端口资源](expressroute-howto-erdirect.md)。
-* 如果要在本地运行 PowerShell，请验证计算机上是否安装了最新版本的 Azure PowerShell。
+* 了解[ExpressRoute 直接预配工作流](expressroute-erdirect-about.md)。
+* 已创建[ExpressRoute 直接端口资源](expressroute-howto-erdirect.md)。
+* 如果要在本地运行 PowerShell，请验证计算机上是否安装了 Azure PowerShell 的最新版本。
 
 ### <a name="working-with-azure-powershell"></a>使用 Azure PowerShell
 
@@ -34,20 +34,20 @@ ms.locfileid: "81458226"
 
 ### <a name="sign-in-and-select-the-right-subscription"></a>登录并选择正确的订阅
 
-要启动配置，请登录到 Azure 帐户并选择要使用的订阅。
+若要启动配置，请登录到 Azure 帐户，并选择要使用的订阅。
 
    [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
 
-## <a name="1-create-azure-key-vault-macsec-secrets-and-user-identity"></a>1. 创建 Azure 密钥保管库、MACsec 机密和用户标识
+## <a name="1-create-azure-key-vault-macsec-secrets-and-user-identity"></a>1. 创建 Azure Key Vault、MACsec 的机密和用户标识
 
-1. 创建密钥保管库实例以在新资源组中存储 MACsec 机密。
+1. 创建 Key Vault 实例以将 MACsec 机密存储在新的资源组中。
 
     ```azurepowershell-interactive
     New-AzResourceGroup -Name "your_resource_group" -Location "resource_location"
     $keyVault = New-AzKeyVault -Name "your_key_vault_name" -ResourceGroupName "your_resource_group" -Location "resource_location" -EnableSoftDelete 
     ```
 
-    如果您已经拥有密钥保管库或资源组，则可以重用它们。 但是，在现有的密钥保管库上启用[**软删除**功能](../key-vault/general/overview-soft-delete.md)至关重要。 如果未启用软删除，则可以使用以下命令启用它：
+    如果已有密钥保管库或资源组，可以重复使用。 但是，在现有的密钥保管库上启用[**软删除**功能](../key-vault/general/overview-soft-delete.md)非常重要。 如果未启用软删除，你可以使用以下命令来启用它：
 
     ```azurepowershell-interactive
     ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "your_existing_keyvault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"
@@ -59,12 +59,12 @@ ms.locfileid: "81458226"
     $identity = New-AzUserAssignedIdentity  -Name "identity_name" -Location "resource_location" -ResourceGroupName "your_resource_group"
     ```
 
-    如果 New-AzUser 分配标识未识别为有效的 PowerShell cmdlet，请安装以下模块（在管理员模式下），然后重新运行上述命令。
+    如果 AzUserAssignedIdentity 未被识别为有效的 PowerShell cmdlet，请在管理员模式下安装以下模块并重新运行上述命令。
 
     ```azurepowershell-interactive
     Install-Module -Name Az.ManagedServiceIdentity
     ```
-3. 创建连接关联密钥 （CAK） 和连接关联密钥名称 （CKN），并将它们存储在密钥保管库中。
+3. 创建连接关联密钥（CAK）和连接关联密钥名称（CKN），并将其存储在密钥保管库中。
 
     ```azurepowershell-interactive
     $CAK = ConvertTo-SecureString "your_key" -AsPlainText -Force
@@ -78,20 +78,20 @@ ms.locfileid: "81458226"
     Set-AzKeyVaultAccessPolicy -VaultName "your_key_vault_name" -PermissionsToSecrets get -ObjectId $identity.PrincipalId
     ```
 
-   现在，此标识可以从密钥保管库获取机密，例如 CAK 和 CKN。
-5. 将此用户标识设置为 ExpressRoute 使用。
+   现在，此标识可以从密钥保管库中获取机密（例如 CAK 和 CKN）。
+5. 设置 ExpressRoute 使用的此用户标识。
 
     ```azurepowershell-interactive
     $erIdentity = New-AzExpressRoutePortIdentity -UserAssignedIdentityId $identity.Id
     ```
  
-## <a name="2-configure-macsec-on-expressroute-direct-ports"></a>2. 在快速路由直接端口上配置 MACsec
+## <a name="2-configure-macsec-on-expressroute-direct-ports"></a>2. 配置 ExpressRoute 直接端口上的 MACsec
 
 ### <a name="to-enable-macsec"></a>启用 MACsec
 
-每个 ExpressRoute Direct 实例都有两个物理端口。 您可以选择同时在两个端口上启用 MACsec，也可以选择一次在一个端口上启用 MACsec。 一次执行一个端口（在维修另一个端口时将流量切换到活动端口）有助于将中断降至最低，如果您的 ExpressRoute Direct 已在服务中。
+每个 ExpressRoute 直接实例都有两个物理端口。 你可以选择在两个端口上同时启用 MACsec，或一次在一个端口上启用 MACsec。 一次执行一个端口（在为其他端口提供服务时将流量切换到活动端口）有助于最大限度地减少中断（如果 ExpressRoute 直接已在服务中）。
 
-1. 设置 MACsec 机密和密码，并将用户标识与端口相关联，以便 ExpressRoute 管理代码在需要时可以访问 MACsec 机密。
+1. 设置 MACsec 的机密和密码，并将用户标识与此端口相关联，以便 ExpressRoute 管理代码可以访问 MACsec 机密（如果需要）。
 
     ```azurepowershell-interactive
     $erDirect = Get-AzExpressRoutePort -ResourceGroupName "your_resource_group" -Name "your_direct_port_name"
@@ -104,7 +104,7 @@ ms.locfileid: "81458226"
     $erDirect.identity = $erIdentity
     Set-AzExpressRoutePort -ExpressRoutePort $erDirect
     ```
-2. （可选）如果端口处于"管理关闭"状态，则可以运行以下命令来启动端口。
+2. 可有可无如果端口处于管理关闭状态，你可以运行以下命令来打开端口。
 
     ```azurepowershell-interactive
     $erDirect = Get-AzExpressRoutePort -ResourceGroupName "your_resource_group" -Name "your_direct_port_name"
@@ -113,11 +113,11 @@ ms.locfileid: "81458226"
     Set-AzExpressRoutePort -ExpressRoutePort $erDirect
     ```
 
-    此时，MACsec 在 Microsoft 端的 ExpressRoute 直接端口上启用。 如果尚未在边缘设备上配置它，则可以继续使用相同的 MACsec 机密和密码来配置它们。
+    此时，将在 Microsoft 端的 ExpressRoute 直接端口上启用 MACsec。 如果你尚未在边缘设备上对其进行配置，则可以继续通过相同的 MACsec 机密和密码对其进行配置。
 
 ### <a name="to-disable-macsec"></a>禁用 MACsec
 
-如果您的 ExpressRoute Direct 实例不再需要 MACsec，则可以运行以下命令来禁用它。
+如果你的 ExpressRoute 直接实例上不再需要 MACsec，可以运行以下命令以禁用它。
 
 ```azurepowershell-interactive
 $erDirect = Get-AzExpressRoutePort -ResourceGroupName "your_resource_group" -Name "your_direct_port_name"
@@ -129,12 +129,12 @@ $erDirect.identity = $null
 Set-AzExpressRoutePort -ExpressRoutePort $erDirect
 ```
 
-此时，MACsec 在 Microsoft 端的 ExpressRoute 直接端口上被禁用。
+此时，Microsoft 端的 ExpressRoute 直接端口上禁用了 MACsec。
 
 ### <a name="test-connectivity"></a>测试连接
-在 ExpressRoute Direct 端口上配置 MACsec（包括 MACsec 密钥更新）后，[请检查](expressroute-troubleshooting-expressroute-overview.md)电路的 BGP 会话是否启动并运行。 如果端口上没有任何电路，请先创建一个电路，并设置电路的 Azure 专用对等互连或 Microsoft 对等互连。 如果 MACsec 配置错误（包括 MACsec 密钥不匹配）网络设备和 Microsoft 的网络设备之间，您将不会在第 2 层和第 3 层的 BGP 建立中看到 ARP 分辨率。 如果所有内容都配置正确，您应该会看到双向正确通告的 BGP 路由，以及应用程序数据流通过 ExpressRoute 相应地进行。
+在 ExpressRoute 直接端口上配置 MACsec （包括 MACsec 密钥更新）后，请[检查](expressroute-troubleshooting-expressroute-overview.md)线路的 BGP 会话是否已启动并正在运行。 如果端口上还没有线路，请先创建一个，并设置该线路的 Azure 专用对等互连或 Microsoft 对等互连。 如果 MACsec 配置不正确，包括网络设备和 Microsoft 网络设备之间的 MACsec key 不匹配，则不会在第3层中看到 ARP 解析，并在第3层建立 BGP。 如果所有内容都已正确配置，则应看到在两个方向上正确公布的 BGP 路由，以及基于 ExpressRoute 的应用程序数据流。
 
 ## <a name="next-steps"></a>后续步骤
-1. [在快速路由直接上创建快速路由电路](expressroute-howto-erdirect.md)
+1. [在 ExpressRoute 直接上创建 ExpressRoute 线路](expressroute-howto-erdirect.md)
 2. [将 ExpressRoute 线路链接到 Azure 虚拟网络](expressroute-howto-linkvnet-arm.md)
 3. [验证 ExpressRoute 连接](expressroute-troubleshooting-expressroute-overview.md)

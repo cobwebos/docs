@@ -1,6 +1,6 @@
 ---
-title: 条件访问策略中的云应用或操作 - Azure 活动目录
-description: Azure AD 条件访问策略中的云应用或操作
+title: 条件访问策略中的云应用或操作 - Azure Active Directory
+description: 什么是 Azure AD 条件访问策略中的云应用或操作
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,36 +12,36 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b15b022726c09ccbaf9674775d114c8dd1916e1d
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81457291"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>条件访问：云应用或操作
 
 云应用或操作是条件访问策略中的关键信号。 使用条件访问策略，管理员可以分配对特定应用程序或操作的控制。
 
-- 管理员可以从包含内置 Microsoft 应用程序的应用程序列表和任何[Azure AD 集成应用程序](../manage-apps/what-is-application-management.md)（包括库、非库和通过[应用程序代理](../manage-apps/what-is-application-proxy.md)发布的应用程序）中进行选择。
-- 管理员可以选择不基于云应用程序但基于用户操作来定义策略。 唯一支持的操作是注册安全信息（预览），允许条件访问强制实施围绕[组合安全信息注册体验](../authentication/howto-registration-mfa-sspr-combined.md)的控制。
+- 管理员可以从包含内置 Microsoft 应用程序的应用程序列表以及任何[Azure AD 集成的应用](../manage-apps/what-is-application-management.md)程序（包括库、非库和通过[应用程序代理](../manage-apps/what-is-application-proxy.md)发布的应用程序）中进行选择。
+- 管理员可以选择不基于云应用程序但基于用户操作来定义策略。 唯一受支持的操作是注册安全信息（预览版），允许条件性访问强制实施围绕[组合的安全信息注册体验](../authentication/howto-registration-mfa-sspr-combined.md)的控制。
 
 ![定义条件访问策略并指定云应用](./media/concept-conditional-access-cloud-apps/conditional-access-cloud-apps-or-actions.png)
 
 ## <a name="microsoft-cloud-applications"></a>Microsoft 云应用程序
 
-许多现有的 Microsoft 云应用程序都包含在可以选择的应用程序列表中。 
+许多现有的 Microsoft 云应用程序都包含在可从中进行选择的应用程序列表中。 
 
-管理员可以为来自 Microsoft 的以下云应用分配条件访问策略。 某些应用（如 Office 365（预览版）和 Microsoft Azure 管理包括多个相关的子应用或服务。 以下列表不完整，并且可能会发生更改。
+管理员可以为来自 Microsoft 的以下云应用分配条件访问策略。 某些应用（如 Office 365 （预览版）和 Microsoft Azure 管理）包含多个相关的子应用或服务。 以下列表不完整，并且可能会发生更改。
 
-- [办公室 365 （预览版）](#office-365-preview)
+- [Office 365（预览版）](#office-365-preview)
 - Azure Analysis Services
 - Azure DevOps
 - [Azure SQL 数据库和数据仓库](../../sql-database/sql-database-conditional-access.md)
 - Dynamics CRM Online
-- 微软应用程序洞察分析
+- Microsoft Application Insights Analytics
 - [Microsoft Azure 信息保护](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
 - [Microsoft Azure 管理](#microsoft-azure-management)
-- 微软 Azure 订阅管理
+- Microsoft Azure 订阅管理
 - Microsoft Cloud App Security
 - Microsoft Commerce Tools 访问控制门户
 - Microsoft Commerce Tools 身份验证服务
@@ -107,24 +107,24 @@ Microsoft Azure 管理应用程序包括多个基础服务。
    - Azure 数据工厂门户
 
 > [!NOTE]
-> Microsoft Azure 管理应用程序应用于 Azure PowerShell，后者调用 Azure 资源管理器 API。 它不适用于调用 Microsoft Graph 的 Azure AD PowerShell。
+> Microsoft Azure 管理应用程序适用于调用 Azure 资源管理器 API Azure PowerShell。 它不适用于调用 Microsoft Graph 的 Azure AD PowerShell。
 
 ## <a name="other-applications"></a>其他应用程序
 
-除了 Microsoft 应用之外，管理员还可以将任何 Azure AD 注册的应用程序添加到条件访问策略。 这些应用程序可能包括： 
+除 Microsoft 应用外，管理员还可以将任何 Azure AD 注册的应用程序添加到条件访问策略。 这些应用程序可能包括： 
 
-- 通过[Azure AD 应用程序代理发布的应用程序](../manage-apps/what-is-application-proxy.md)
+- 通过[Azure AD 应用程序代理](../manage-apps/what-is-application-proxy.md)发布的应用程序
 - [从库中添加的应用程序](../manage-apps/add-application-portal.md)
 - [不在库中的自定义应用程序](../manage-apps/add-non-gallery-app.md)
-- [通过应用交付控制器和网络发布的旧应用程序](../manage-apps/secure-hybrid-access.md)
+- [通过应用传递控制器和网络发布的旧版应用程序](../manage-apps/secure-hybrid-access.md)
 
 ## <a name="user-actions"></a>用户操作
 
-用户操作是可由用户执行的任务。 当前唯一支持的操作是**注册安全信息**，它允许条件访问策略在启用合并注册的用户尝试注册其安全信息时强制执行。 更多信息请参阅《[综合安全信息注册》](../authentication/concept-registration-mfa-sspr-combined.md)一文。
+用户操作是可由用户执行的任务。 当前支持的唯一操作是**注册安全信息**，这样当启用了组合注册的用户注册其安全信息时，就可以强制实施条件性访问策略。 有关详细信息，请参阅[合并安全信息注册](../authentication/concept-registration-mfa-sspr-combined.md)一文。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [条件访问：条件](concept-conditional-access-conditions.md)
+- [条件性访问：条件](concept-conditional-access-conditions.md)
 
 - [条件访问常见策略](concept-conditional-access-policy-common.md)
 - [客户端应用程序依赖项](service-dependencies.md)

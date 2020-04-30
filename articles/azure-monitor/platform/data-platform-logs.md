@@ -1,5 +1,5 @@
 ---
-title: Azure 监视器中的日志 |微软文档
+title: Azure Monitor 中的日志 |Microsoft Docs
 description: 介绍 Azure Monitor 中的用于对监视数据进行高级分析的日志。
 documentationcenter: ''
 author: bwren
@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
 ms.openlocfilehash: 0b288bf6d987b9db682c8d1439879cf6b499f213
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81457325"
 ---
 # <a name="logs-in-azure-monitor"></a>Azure Monitor 中的日志
@@ -58,7 +58,7 @@ Application Insights 中的日志数据使用与工作区相同的 Log Analytics
 ![工作区](media/data-platform-logs/workspaces.png)
 
 ## <a name="log-queries"></a>日志查询
-Azure Monitor 日志中的日志数据都是使用以 [Kusto 查询语言](../log-query/get-started-queries.md)编写的[日志查询](../log-query/log-query-overview.md)检索的，这使得你可以快速检索、合并和分析所收集的数据。 使用[日志分析](../log-query/portals.md)在 Azure 门户中编写和测试日志查询。 这可以通过交互方式使用结果，也可以将其固定到某个仪表板，与其他可视化效果一起查看。
+Azure Monitor 日志中的日志数据都是使用以 [Kusto 查询语言](../log-query/get-started-queries.md)编写的[日志查询](../log-query/log-query-overview.md)检索的，这使得你可以快速检索、合并和分析所收集的数据。 使用[Log Analytics](../log-query/portals.md)在 Azure 门户中编写和测试日志查询。 这可以通过交互方式使用结果，也可以将其固定到某个仪表板，与其他可视化效果一起查看。
 
 ![Log Analytics](media/data-platform-logs/log-analytics.png)
 
@@ -77,15 +77,15 @@ Azure Monitor 可从 Azure 和本地资源中的各种源收集日志数据。 �
 | 数据 | 说明 |
 |:---|:---|
 | Azure Active Directory 审核日志 | 通过每个目录的诊断设置进行配置。 参阅[将 Azure AD 日志与 Azure Monitor 日志集成](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)。  |
-| 活动日志 | 默认会单独存储，可用于近实时的警报。 安装活动日志分析解决方案以写入日志分析工作区。 参阅[收集和分析 Log Analytics 中的 Azure 活动日志](activity-log-collect.md)。 |
+| 活动日志 | 默认会单独存储，可用于近实时的警报。 安装活动 log Analytics 解决方案以写入 Log Analytics 工作区。 参阅[收集和分析 Log Analytics 中的 Azure 活动日志](activity-log-collect.md)。 |
 
 ### <a name="azure-resources"></a>Azure 资源
 
 | 数据 | 说明 |
 |:---|:---|
-| 资源诊断 | 配置诊断设置以写入诊断数据，包括将指标写入 Log Analytics 工作区。 请参阅[将 Azure 资源日志流式传输到日志分析](resource-logs-collect-workspace.md)。 |
+| 资源诊断 | 配置诊断设置以写入诊断数据，包括将指标写入 Log Analytics 工作区。 请参阅[将 Azure 资源日志流式传输到 Log Analytics](resource-logs-collect-workspace.md)。 |
 | 监视解决方案 | 监视解决方案将其收集的数据写入其 Log Analytics 工作区。 有关解决方案的列表，请参阅 [Azure 中的管理解决方案的数据收集详细信息](../insights/solutions-inventory.md)。 有关安装和使用解决方案的详细信息，请参阅 [Azure Monitor 中的监视解决方案](../insights/solutions.md)。 |
-| 指标 | 将 Azure Monitor 资源的平台指标发送到 Log Analytics 工作区以长期保留日志数据，并使用 [Kusto 查询语言](/azure/kusto/query/)对其他数据类型执行复杂分析。 请参阅[将 Azure 资源日志流式传输到日志分析](resource-logs-collect-storage.md)。 |
+| 指标 | 将 Azure Monitor 资源的平台指标发送到 Log Analytics 工作区以长期保留日志数据，并使用 [Kusto 查询语言](/azure/kusto/query/)对其他数据类型执行复杂分析。 请参阅[将 Azure 资源日志流式传输到 Log Analytics](resource-logs-collect-storage.md)。 |
 | Azure 表存储 | 从某些 Azure 资源会将监视数据写入到的 Azure 存储中收集数据。 参阅[将适用于 IIS 的 Azure Blob 存储和适用于事件的 Azure 表存储与 Log Analytics 配合使用](diagnostics-extension-logs.md)。 |
 
 ### <a name="virtual-machines"></a>虚拟机

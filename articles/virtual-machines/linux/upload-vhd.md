@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 上载或复制自定义 Linux VM
+title: 使用 Azure CLI 上传或复制自定义 Linux VM
 description: 使用资源管理器部署模型和 Azure CLI 上传或复制自定义的虚拟机
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
 ms.openlocfilehash: 3306647078c46a7c66b3d7b257b213c7a48e690d
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81460420"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>使用 Azure CLI 从自定义磁盘创建 Linux VM
@@ -43,7 +43,7 @@ ms.locfileid: "81460420"
   - 也可以在 [Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) 或 [Windows Server 2012/2012 R2](https://technet.microsoft.com/library/hh846766.aspx) 上使用 Hyper-V。
 
 > [!NOTE]
-> Azure 不支持更新的 VHDX 格式。 创建 VM 时，请将 VHD 指定为映像格式。 如果需要，可以使用 [qemu-img convert](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) 或 [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) PowerShell cmdlet 将 VHDX 磁盘转换为 VHD。 Azure 不支持上传动态 VHD，因此，上传之前，你需要将此类磁盘转换为静态 VHD。 可以使用 [Azure VHD Utilities for GO](https://github.com/Microsoft/azure-vhd-utils-for-go) 等工具在将动态磁盘上传到 Azure 的过程中转换磁盘。
+> Azure 不支持更新的 VHDX 格式。 创建 VM 时，请将 VHD 指定为格式。 如果需要，可以使用 [qemu-img convert](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) 或 [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) PowerShell cmdlet 将 VHDX 磁盘转换为 VHD。 Azure 不支持上传动态 VHD，因此，上传之前，你需要将此类磁盘转换为静态 VHD。 可以使用 [Azure VHD Utilities for GO](https://github.com/Microsoft/azure-vhd-utils-for-go) 等工具在将动态磁盘上传到 Azure 的过程中转换磁盘。
 > 
 > 
 

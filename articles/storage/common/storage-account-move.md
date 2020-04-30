@@ -10,17 +10,17 @@ ms.date: 09/27/2019
 ms.author: normesta
 ms.reviewer: dineshm
 ms.openlocfilehash: c8578c518ac45bea147790028c2904c7ce36fffb
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81459026"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>将 Azure 存储帐户移到另一个区域
 
 若要移动某个存储帐户，请在另一个区域中创建该存储帐户的副本。 然后，使用 AzCopy 或其他所选工具将数据移到该帐户。
 
-本文将指导如何进行以下操作：
+本文介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > 
@@ -47,17 +47,17 @@ ms.locfileid: "81459026"
 
 此模板包含描述存储帐户的设置。 
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 若要使用 Azure 门户导出模板：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 选择**所有资源**，然后选择您的存储帐户。
+2. 选择“所有资源”，然后选择你的存储帐户  。
 
-3. 选择>**设置** > **导出模板**。
+3. 选择“设置” > “导出模板”。  
 
-4. 选择“导出模板”边栏选项卡中的“下载”。********
+4. 选择“导出模板”边栏选项卡中的“下载”。  
 
 5. 找到从门户下载的 .zip 文件，并将该文件解压缩到所选的文件夹。
 
@@ -67,7 +67,7 @@ ms.locfileid: "81459026"
 
 若要使用 PowerShell 导出模板：
 
-1. 使用[Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0)命令登录到 Azure 订阅，并按照屏幕上的说明操作：
+1. 使用 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) 命令登录到 Azure 订阅，然后按屏幕说明操作：
 
    ```azurepowershell-interactive
    Connect-AzAccount
@@ -97,23 +97,23 @@ ms.locfileid: "81459026"
 
 通过更改存储帐户名称和区域来修改模板。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 若要使用 Azure 门户部署模板：
 
-1. 在 Azure 门户中，选择 **"创建资源**"。
+1. 在 Azure 门户中，选择“创建资源”  。
 
-2. 在“搜索市场”中键入“模板部署”，然后按 **ENTER**。********
+2. 在“搜索市场”中键入“模板部署”，然后按 **ENTER**。  
 
-3. 选择“模板部署”。****
+3. 选择“模板部署”  。
 
     ![Azure 资源管理器模板库](./media/storage-account-move/azure-resource-manager-template-library.png)
 
 4. 选择“创建”  。
 
-5. 选择“在编辑器中生成自己的模板”****。
+5. 选择“在编辑器中生成自己的模板”  。
 
-6. 选择“加载文件”，然后按说明加载在上一部分下载的 **template.json** 文件。****
+6. 选择“加载文件”，然后按说明加载在上一部分下载的 **template.json** 文件。 
 
 7. 在 **template.json** 文件中，通过设置存储帐户名称的默认值来为目标存储帐户命名。 此示例将存储帐户名称的默认值设置为 `mytargetaccount`。
     
@@ -137,7 +137,7 @@ ms.locfileid: "81459026"
          "location": "centralus"
          }]          
     ```
-    若要获取区域位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是没有空格的区域名称，**美国** = **中部中心**。
+    若要获取区域位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是不包含空格、**美国** = 中部**centralus**的区域名称。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -219,39 +219,39 @@ ms.locfileid: "81459026"
 
 下表列出了这些功能，以及有关将其添加到新存储帐户的指导。
 
-| Feature    | 指南    |
+| 功能    | 指南    |
 |--------|-----------|
 | **生命周期管理策略** | [管理 Azure Blob 存储生命周期](../blobs/storage-lifecycle-management-concepts.md) |
 | **静态网站** | [在 Azure 存储中托管静态网站](../blobs/storage-blob-static-website-how-to.md) |
-| **事件订阅** | [对 Blob 存储事件做出反应](../blobs/storage-blob-event-overview.md) |
+| **事件订阅** | [响应 Blob 存储事件](../blobs/storage-blob-event-overview.md) |
 | **警报** | [使用 Azure Monitor 创建、查看和管理活动日志警报](../../azure-monitor/platform/alerts-activity-log.md) |
 | **内容分发网络 (CDN)** | [在 Azure CDN 中使用自定义域通过 HTTPS 访问 Blob](../blobs/storage-https-custom-domain-cdn.md) |
 
 > [!NOTE] 
-> 如果为源存储帐户设置了 CDN，只需将现有 CDN 的源更改为新帐户的主 Blob 服务终结点（或主静态网站终结点）。 
+> 如果为源存储帐户设置 CDN，只需将现有 CDN 的源更改为新帐户的主 blob 服务终结点（或主静态网站终结点）。 
 
 ### <a name="move-data-to-the-new-storage-account"></a>将数据移到新的存储帐户
 
 下面是移动数据的一些方法。
 
-：heavy_check_mark：Azure**存储资源管理器**
+： heavy_check_mark： **Azure 存储资源管理器**
 
   此工具易于使用，适合用于小型数据集。 可以复制容器和文件共享，然后将其粘贴到目标帐户中。
 
   请参阅 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)；
 
-：heavy_check_mark：**阿兹比**
+： heavy_check_mark： **AzCopy**
 
   这是首选方法。 此方法已针对性能进行优化。  速度较快的原因之一是数据直接在存储服务器之间复制。因此，AzCopy 不会占用计算机的网络带宽。 可在命令行或自定义脚本中使用 AzCopy。
 
-  请参阅[使用 AzCopy 入门](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+  请参阅[AzCopy 入门](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
-：heavy_check_mark：Azure**数据工厂** 
+： heavy_check_mark： **Azure 数据工厂** 
 
   仅当当前的 AzCopy 版本不支持所需的功能时，才使用此工具。 例如，在当前的 AzCopy 版本中，无法在使用分层命名空间的帐户之间复制 Blob。 另外，AzCopy 不会保留文件访问控制列表或文件时间戳（例如：创建和修改时间戳）。 
 
   请参阅以下链接：
-  - [使用 Azure 数据工厂将数据复制到或从 Azure Blob 存储中复制数据](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
+  - [使用 Azure 数据工厂将数据复制到 Azure Blob 存储或从 Azure Blob 存储复制数据](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
   - [使用 Azure 数据工厂向/从 Azure Data Lake Storage Gen2 复制数据](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
   - [使用 Azure 数据工厂从/向 Azure 文件存储复制数据](https://docs.microsoft.com/azure/data-factory/connector-azure-file-storage)
   - [使用 Azure 数据工厂向/从 Azure 表存储复制数据](https://docs.microsoft.com/azure/data-factory/connector-azure-table-storage)
@@ -289,4 +289,4 @@ Remove-AzStorageAccount -ResourceGroupName  $resourceGroup -AccountName $storage
 
 
 - [将资源移到新资源组或订阅中](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [将 Azure VM 移动到另一区域](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [将 Azure VM 移到另一区域](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
