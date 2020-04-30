@@ -6,17 +6,17 @@ ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 01e07eaee705634b03cc4462c4058e290daa8bc2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79278124"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>有关 .NET 中的持久实体的开发人员指南
 
 本文详细介绍可用于在 .NET 中开发持久实体的接口，并提供示例和一般建议。 
 
-实体函数为无服务器应用程序开发人员提供一种便捷的方式用于将应用程序状态组织为细化实体的集合。 有关基本概念的更多详细信息，请参阅["持久实体：概念"](durable-functions-entities.md)一文。
+实体函数为无服务器应用程序开发人员提供一种便捷的方式用于将应用程序状态组织为细化实体的集合。 有关基础概念的更多详细信息，请参阅[持久实体：概念](durable-functions-entities.md)一文。
 
 我们目前提供两个 API 用于定义实体：
 
@@ -67,7 +67,7 @@ public class Counter
 }
 ```
 
-`Run` 函数包含使用基于类的语法所需的样板。 它必须是静态的 Azure 函数。** 它对实体处理的每个操作消息执行一次。 调用 `DispatchAsync<T>` 时，如果该实体尚未进入内存，该函数将构造 `T` 类型的对象，并基于存储中最后保存的 JSON（如果有）填充该对象的字段。 然后，它结合匹配的名称调用方法。
+`Run` 函数包含使用基于类的语法所需的样板。 它必须是静态的 Azure 函数。  它对实体处理的每个操作消息执行一次。 调用 `DispatchAsync<T>` 时，如果该实体尚未进入内存，该函数将构造 `T` 类型的对象，并基于存储中最后保存的 JSON（如果有）填充该对象的字段。 然后，它结合匹配的名称调用方法。
 
 > [!NOTE]
 > 基于类的实体的状态是在实体处理操作之前**隐式创建**的，可以通过调用 `Entity.Current.DeleteState()` 在操作中**显式删除**。
@@ -116,7 +116,7 @@ public class Counter
 可以使用实体及其操作的显式字符串名称来直接访问基于类的实体。 下面提供了一些示例；有关基础概念（例如信号与调用）的更深入说明，请参阅[访问实体](durable-functions-entities.md#access-entities)中的介绍。 
 
 > [!NOTE]
-> 在可能的情况下，我们建议[通过接口访问实体](#accessing-entities-through-interfaces)，因为它提供了更多的类型检查。
+> 我们建议尽量[通过接口访问实体](#accessing-entities-through-interfaces)，因为这种方法提供更多的类型检查。
 
 ### <a name="example-client-signals-entity"></a>示例：客户端向实体发出信号
 
@@ -307,7 +307,7 @@ public class User
 }
 ```
 
-### <a name="serialization-attributes"></a>序列化属性
+### <a name="serialization-attributes"></a>序列化特性
 
 在以上示例中，我们已选择包含多个特性来提高基础序列化的可见性：
 - 我们已使用 `[JsonObject(MemberSerialization.OptIn)]` 为类做了批注，以提醒我们，该类必须可序列化，并仅保存显式标记为 JSON 属性的成员。
@@ -331,7 +331,7 @@ public class Counter
 }
 ```
 
-默认情况下，类的名称不会存储为 JSON 表示形式的一部分：即，我们将使用 `TypeNameHandling.None` 作为默认设置。** 可以使用 `JsonObject` 或 `JsonProperty` 特性来重写此默认行为。
+默认情况下，类的名称不会存储为 JSON 表示形式的一部分：即，我们将使用 `TypeNameHandling.None` 作为默认设置。  可以使用 `JsonObject` 或 `JsonProperty` 特性来重写此默认行为。
 
 ### <a name="making-changes-to-class-definitions"></a>对类定义进行更改
 
@@ -450,7 +450,7 @@ public class HttpEntity
 > 为了避免序列化问题，请务必排除要在序列化后存储注入值的字段。
 
 > [!NOTE]
-> 与在常规 .NET Azure Functions 中使用构造函数注入不同，必须将基于类的实体的函数入口点方法声明为 `static`。** 声明非静态函数入口点可能导致正常的 Azure Functions 对象初始值设定项与持久实体对象初始值设定项之间发生冲突。
+> 与在常规 .NET Azure Functions 中使用构造函数注入不同，必须将基于类的实体的函数入口点方法声明为 `static`。  声明非静态函数入口点可能导致正常的 Azure Functions 对象初始值设定项与持久实体对象初始值设定项之间发生冲突。
 
 ## <a name="function-based-syntax"></a>基于函数的语法
 

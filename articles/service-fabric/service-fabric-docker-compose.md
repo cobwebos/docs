@@ -4,10 +4,10 @@ description: Azure Service Fabric 接受 Docker Compose 格式，因此可以更
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: f84dd0ecb7a4002182c8455bfd86354d794a6f7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79282453"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Azure Service Fabric 中的 Docker Compose 部署支持（预览版）
@@ -127,8 +127,8 @@ sfctl compose upgrade-status --deployment-name TestContainerApp
 ### <a name="ports-section"></a>端口部分
 
 指定 Service Fabric 侦听程序将使用“端口”部分中的 http 还是 https 协议。 这将确保使用命名服务正确发布终结点协议，以允许反向代理转发请求：
-* 若要路由到不安全的 Service Fabric Compose 服务，请指定 /http****。 例如“80:80/http”****。
-* 若要路由到安全的 Service Fabric Compose 服务，请指定 /https****。 例如“443:443/https”****。
+* 若要路由到不安全的 Service Fabric Compose 服务，请指定 /http  。 例如“80:80/http”  。
+* 若要路由到安全的 Service Fabric Compose 服务，请指定 /https  。 例如“443:443/https”  。
 
 > [!NOTE]
 > /http 和 /https 端口部分语法特定于 Service Fabric，用于注册正确的 Service Fabric 侦听程序 URL。  如果以编程方式验证 Docker Compose 文件语法，则可能导致验证错误。

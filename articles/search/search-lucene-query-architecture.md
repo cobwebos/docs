@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: d46d0309b3d2ffb638016e88ba022e49009eedf2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79282934"
 ---
 # <a name="how-full-text-search-works-in-azure-cognitive-search"></a>Azure 认知搜索中全文搜索的工作原理
@@ -69,7 +69,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 2. 执行查询。 在此示例中，搜索查询包括短语和字词：`"Spacious, air-condition* +\"Ocean view\""`（用户通常不会输入标点，但此示例中包含标点，目的是为了方便解释分析器如何处理标点）。 对于此查询，搜索引擎将在 `searchFields` 指定的说明和标题字段中扫描包含“Ocean view”的文档，此外，还会根据字词“spacious”或者以前缀“air-condition”开头的字词执行搜索。 `searchMode` 参数用于匹配任一字词（默认）；如果未明确指定字词 (`+`)，则匹配所有字词。
 3. 根据与给定地理位置的距离将酒店结果集排序，然后将其返回到调用方应用程序。 
 
-本文的大部分是关于*处理搜索查询*： `"Spacious, air-condition* +\"Ocean view\""`。 筛选和排序不属于本文的介绍范畴。 有关详细信息，请参阅[搜索 API 参考文档](https://docs.microsoft.com/rest/api/searchservice/search-documents)。
+本文的大部分内容介绍如何处理*搜索查询*：`"Spacious, air-condition* +\"Ocean view\""`。 筛选和排序不属于本文的介绍范畴。 有关详细信息，请参阅[搜索 API 参考文档](https://docs.microsoft.com/rest/api/searchservice/search-documents)。
 
 <a name="stage1"></a>
 ## <a name="stage-1-query-parsing"></a>阶段 1：查询分析 
@@ -84,11 +84,11 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 
 + 针对独立字词（例如 spacious）的*字词查询*
 + 针对带引号字词（例如 ocean view）的*短语查询*
-+ 针对字词后接前缀运算符 `*`（例如 air-condition）的*前缀查询*
++ 针对字词后接前缀运算符 *（例如 air-condition）的*前缀查询`*`
 
 有关支持的查询类型的完整列表，请参阅 [Lucene 查询语法](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
 
-与子查询关联的运算符确定是“必须”还是“应该”满足该查询，才将某个文档视为匹配项。 例如，由于使用了 `+` 运算符，`+"Ocean view"` 表示“必须”满足查询。 
+与子查询关联的运算符确定是“必须”还是“应该”满足该查询，才将某个文档视为匹配项。 例如，由于使用了 `+"Ocean view"` 运算符，`+` 表示“必须”满足查询。 
 
 查询分析器将传递给搜索引擎的子查询重新构造成*查询树*（表示查询的内部结构）。 在查询分析的第一个阶段，查询树如下所示。  
 
@@ -108,7 +108,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 Spacious,||air-condition*+"Ocean view" 
 ~~~~
 
-显式运算符（例如 `+"Ocean view"` 中的 `+`）在布尔查询构造中没有歧义（*必须*匹配字词）。 剩余字词的解释方式不太明确：spacious 和 air-condition。 搜索引擎是否应该根据 ocean view *和* spacious *和* air-condition 查找匹配项？ 或者，是否应该查找 ocean view 加上*任何一个*剩余的字词？ 
+显式运算符（例如 `+` 中的 `+"Ocean view"`）在布尔查询构造中没有歧义（*必须*匹配字词）。 剩余字词的解释方式不太明确：spacious 和 air-condition。 搜索引擎是否应该根据 ocean view *和* spacious *和* air-condition 查找匹配项？ 或者，是否应该查找 ocean view 加上*任何一个*剩余的字词？ 
 
 默认情况下 (`searchMode=any`)，搜索引擎采用更广泛的解释。 *应该*匹配任一字段，反映“or”的语义。 上面所示的初始查询树包含两个“should”运算符，显示了默认行为。  
 
@@ -238,9 +238,9 @@ Spacious,||air-condition*+"Ocean view"
 
 要在倒排索引中生成字词，搜索引擎将针对文档内容执行词法分析，这类似于查询处理期间执行的操作：
 
-1. *文本输入*将传递给分析器、小写、去除标点符号等，具体取决于分析器配置。 
-2. 令牌是文本分析的输出**。
-3. 将词语添加到索引**。
+1. 根据分析器的配置，执行将文本输入传递给分析器、转换为小写、去除标点等操作  。 
+2. 令牌是文本分析的输出  。
+3. 将词语添加到索引  。
 
 我们经常（但不是非要这样做）使用相同的分析器来执行搜索和索引编制操作，使查询词看上去更像是索引中的字词。
 
@@ -360,7 +360,7 @@ search=Spacious, air-condition* +"Ocean view"
 在 Azure 认知搜索中，可以使用两种方法优化相关性评分：
 
 1. **评分配置文件**可以根据一组规则提升结果排名列表中的文档。 在本示例中，我们可以认为标题字段中匹配的文档的相关性高于说明字段中匹配的文档。 此外，如果索引包含每家酒店的价格字段，我们可以根据较低的价格提升文档。 详细了解如何[将评分配置文件添加到搜索索引](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)。
-2. **字词提升**（只能在完整 Lucene 查询语法中使用）提供可应用到查询树任何部分的提升运算符 `^`。 在我们的示例中，可以搜索确切的术语 *"空调"* 或前缀，而不是搜索前缀*的空位条件*\*，但通过对术语查询应用升压，与确切术语匹配的文档的排名更高：[空调]2}空调*。 详细了解[字词提升](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost)。
+2. **字词提升**（只能在完整 Lucene 查询语法中使用）提供可应用到查询树任何部分的提升运算符 `^`。 在本示例中，我们可以不搜索前缀 *air-condition*\*，而是搜索确切的字词 *air-condition* 或前缀，但是，由于在字词查询中应用了提升运算符，与该确切字词匹配的文档会获得更高的排名：*air-condition^2||air-condition*\*。 详细了解[字词提升](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost)。
 
 
 ### <a name="scoring-in-a-distributed-index"></a>在分布式索引评分
@@ -391,11 +391,11 @@ Internet 搜索引擎取得的成功提高了人们对私有数据运行全文�
 
 + [配置自定义分析器](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)，针对特定的字段尽量简化处理或者进行专门处理。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 [搜索文档 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 
-[简化的查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) 
+[简单的查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) 
 
 [完整 Lucene 查询语法](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) 
 

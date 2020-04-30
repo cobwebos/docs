@@ -1,33 +1,33 @@
 ---
-title: Azure 函数的 Azure 事件网格触发器
-description: 了解如何在调度 Azure 函数中的事件网格事件时运行代码。
+title: Azure Functions 的 Azure 事件网格触发器
+description: 了解如何在调度 Azure Functions 中的事件网格事件时运行代码。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 2027629e1e9e297c97cbf40485ebe7dc2e3e6c0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277721"
 ---
-# <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure 函数的 Azure 事件网格触发器
+# <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions 的 Azure 事件网格触发器
 
-使用函数触发器响应发送到事件网格主题的事件。
+使用函数触发器来响应发送到事件网格主题的事件。
 
-有关设置和配置详细信息的信息，请参阅[概述](./functions-bindings-event-grid.md)。
+若要了解设置和配置详细信息，请参阅[概述](./functions-bindings-event-grid.md)。
 
 ## <a name="example"></a>示例
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-有关 HTTP 触发器示例，请参阅[将事件接收到 HTTP 终结点](../event-grid/receive-events.md)。
+如需 HTTP 触发器示例，请参阅[将事件接收到 HTTP 终结点](../event-grid/receive-events.md)。
 
 ### <a name="c-2x-and-higher"></a>C#（2.x 及更高版本）
 
-以下示例演示绑定到 `EventGridEvent` 的 [C# 函数](functions-dotnet-class-library.md)：
+以下示例演示绑定到 [ 的 ](functions-dotnet-class-library.md)C# 函数`EventGridEvent`：
 
 ```cs
 using Microsoft.Azure.EventGrid.Models;
@@ -49,11 +49,11 @@ namespace Company.Function
 }
 ```
 
-有关详细信息，请参阅包、[属性](#attributes-and-annotations)、[配置](#configuration)和[使用情况](#usage)。
+有关详细信息，请参阅包、[特性](#attributes-and-annotations)、[配置](#configuration)和[用法](#usage)。
 
 ### <a name="version-1x"></a>版本 1.x
 
-以下示例演示绑定到 `JObject` 的 Functions 1.x [C# 函数](functions-dotnet-class-library.md)：
+以下示例演示绑定到 [ 的 Functions 1.x ](functions-dotnet-class-library.md)C# 函数`JObject`：
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -78,9 +78,9 @@ namespace Company.Function
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-以下示例演示 function.json** 文件中的一个触发器绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。
+以下示例演示 function.json  文件中的一个触发器绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。
 
-下面是 function.json** 文件中的绑定数据：
+下面是 function.json  文件中的绑定数据：
 
 ```json
 {
@@ -110,7 +110,7 @@ public static void Run(EventGridEvent eventGridEvent, ILogger log)
 }
 ```
 
-有关详细信息，请参阅包、[属性](#attributes-and-annotations)、[配置](#configuration)和[使用情况](#usage)。
+有关详细信息，请参阅包、[特性](#attributes-and-annotations)、[配置](#configuration)和[用法](#usage)。
 
 ### <a name="version-1x"></a>版本 1.x
 
@@ -128,11 +128,11 @@ public static void Run(JObject eventGridEvent, TraceWriter log)
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-以下示例演示 function.json** 文件中的一个触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。
+以下示例演示 function.json  文件中的一个触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。
 
-下面是 function.json** 文件中的绑定数据：
+下面是 function.json  文件中的绑定数据：
 
 ```json
 {
@@ -207,7 +207,7 @@ def main(event: func.EventGridEvent):
 * [事件网格触发器、字符串参数](#event-grid-trigger-string-parameter)
 * [事件网格触发器、POJO 参数](#event-grid-trigger-pojo-parameter)
 
-以下示例显示[Java](functions-reference-java.md)中的触发器绑定，该绑定使用绑定并打印出事件，首先作为 POJO 接收事件`String`，第二个接收事件作为 POJO。
+下面的示例演示了使用绑定并输出事件的[Java](functions-reference-java.md)中的触发器绑定，第一种是以 POJO `String`的形式接收事件。
 
 ### <a name="event-grid-trigger-string-parameter"></a>事件网格触发器、字符串参数
 
@@ -285,75 +285,75 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 
 有关完整示例，请参阅 C# 示例。
 
-# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
 
 C# 脚本不支持特性。
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 JavaScript 不支持特性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-Python 不支持属性。
+Python 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-[事件网格触发](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java)注释允许您通过提供配置值来声明配置事件网格绑定。 有关更多详细信息，请参阅[示例](#example)和[配置](#configuration)部分。
+[EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java)批注允许您通过提供配置值以声明方式配置事件网格绑定。 有关更多详细信息，请参阅[示例](#example)和[配置](#configuration)部分。
 
 ---
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 
 下表解释了在 function.json** 文件中设置的绑定配置属性。 无法在 `EventGridTrigger` 特性中设置任何构造函数参数或属性。
 
-|function.json 属性 |描述|
+|function.json 属性 |说明|
 |---------|---------|
-| **type** | 必需 - 必须设置为 `eventGridTrigger`。 |
-| direction**** | 必需 - 必须设置为 `in`。 |
+| type  | 必需 - 必须设置为 `eventGridTrigger`。 |
+| **方向键** | 必需 - 必须设置为 `in`。 |
 | **name** | 必需 - 在函数代码中对接收事件数据的参数使用的变量名称。 |
 
 ## <a name="usage"></a>使用情况
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-在 Azure 函数 1.x 中，可以为事件网格触发器使用以下参数类型：
+在 Azure Functions 1.x 中，可以为事件网格触发器使用以下参数类型：
 
 * `JObject`
 * `string`
 
-在 Azure 函数 2.x 及更高版本中，您还可以选择对事件网格触发器使用以下参数类型：
+在 Azure Functions 2.x 及更高版本中，还可以选择对事件网格触发器使用以下参数类型：
 
 * `Microsoft.Azure.EventGrid.Models.EventGridEvent` - 定义所有事件类型通用的字段的属性。
 
 > [!NOTE]
 > 在 Functions v1 中，如果尝试绑定到 `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`，编译器将显示“已弃用”消息，并建议你改用 `Microsoft.Azure.EventGrid.Models.EventGridEvent`。 若要使用较新类型，请引用 [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet 包，并通过为 `EventGridEvent` 类型名称添加 `Microsoft.Azure.EventGrid.Models` 前缀来对其进行完全限定。
 
-# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
 
-在 Azure 函数 1.x 中，可以为事件网格触发器使用以下参数类型：
+在 Azure Functions 1.x 中，可以对事件网格触发器使用以下参数类型：
 
 * `JObject`
 * `string`
 
-在 Azure 函数 2.x 及更高版本中，您还可以选择对事件网格触发器使用以下参数类型：
+在 Azure Functions 1.x 和更高版本中，还可以选择将以下参数类型用于事件网格触发器：
 
 * `Microsoft.Azure.EventGrid.Models.EventGridEvent` - 定义所有事件类型通用的字段的属性。
 
 > [!NOTE]
 > 在 Functions v1 中，如果尝试绑定到 `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`，编译器将显示“已弃用”消息，并建议你改用 `Microsoft.Azure.EventGrid.Models.EventGridEvent`。 若要使用较新类型，请引用 [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet 包，并通过为 `EventGridEvent` 类型名称添加 `Microsoft.Azure.EventGrid.Models` 前缀来对其进行完全限定。 有关如何在 C# 脚本函数中引用 NuGet 包的信息，请参阅[使用 NuGet 包](functions-reference-csharp.md#using-nuget-packages)
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-事件网格实例可通过*函数.json*文件属性中配置的`name`参数获得。
+事件网格实例可通过*函数 json*文件的`name`属性中配置的参数使用。
 
 # <a name="python"></a>[Python](#tab/python)
 
-事件网格实例可通过*函数.json*文件属性中配置的`name`参数（键入为`func.EventGridEvent`）可用。
+事件网格实例可通过类型为`func.EventGridEvent`的*函数 json*文件的`name`属性中配置的参数提供。
 
 # <a name="java"></a>[Java](#tab/java)
 
-事件网格事件实例可通过与属性关联的参数可用，`EventGridTrigger`键入为 。 `EventSchema` 有关详细信息，请参阅[示例](#example)。
+事件网格事件实例可通过关联到类型为的`EventGridTrigger`属性的参数提供。 `EventSchema` 有关更多详细信息，请参阅[示例](#example)。
 
 ---
 
@@ -510,7 +510,7 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 
 若要简化事件消息捕获，可部署用于显示事件消息的[预建 Web 应用](https://github.com/Azure-Samples/azure-event-grid-viewer)。 所部署的解决方案包括应用服务计划、应用服务 Web 应用和 GitHub 中的源代码。
 
-选择“部署到 Azure”**** 将解决方案部署到你的订阅。 在 Azure 门户中，为参数提供值。
+选择“部署到 Azure”  将解决方案部署到你的订阅。 在 Azure 门户中，为参数提供值。
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 

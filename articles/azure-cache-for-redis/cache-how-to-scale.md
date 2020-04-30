@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 04/11/2017
 ms.openlocfilehash: 68c668561123aee943f54e6fdcbad7c6450957f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277994"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>如何缩放 Azure Redis 缓存
@@ -29,11 +29,11 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 如果确定缓存不再满足应用程序的要求，可以更改到应用程序所需的更大或更小缓存定价层。 有关确定应使用哪个缓存定价层的详细信息，请参阅 [我应当使用哪些 Azure Redis 缓存套餐和大小](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)。
 
 ## <a name="scale-a-cache"></a>缩放缓存
-要缩放缓存，请在 [Azure 门户](https://portal.azure.com)中[浏览到缓存](cache-configure.md#configure-azure-cache-for-redis-settings)，并从“资源菜单”**** 单击“缩放”****。
+要缩放缓存，请在 [Azure 门户](cache-configure.md#configure-azure-cache-for-redis-settings)中[浏览到缓存](https://portal.azure.com)，并从“资源菜单”  单击“缩放”  。
 
 ![缩放](./media/cache-how-to-scale/redis-cache-scale-menu.png)
 
-从“选择定价层”**** 边栏选项卡选择所需的定价层，并单击“选择”****。
+从“选择定价层”  边栏选项卡选择所需的定价层，并单击“选择”  。
 
 ![定价层][redis-cache-pricing-tier-blade]
 
@@ -45,9 +45,9 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
   * 不能从**标准**缓存向下缩放到**基本**缓存。
 * 可从**基本**缓存缩放到**标准**缓存，但不能同时更改大小。 如果需要不同大小，则可以执行后续缩放操作以缩放为所需大小。
 * 不能从**基本**缓存直接缩放到**高级**缓存。 首先在一个缩放操作中从**基本**缩放到**标准**，然后在后续的缩放操作中从**标准**缩放到**高级**。
-* 不能从较大的大小减小为 **C0 (250 MB)**。
+* 不能从较大的大小减小为 **C0 (250 MB)** 。
  
-当缓存缩放到新的定价层，会在“Azure Redis 缓存”**** 边栏选项卡中显示**缩放**状态。
+当缓存缩放到新的定价层，会在“Azure Redis 缓存”  边栏选项卡中显示**缩放**状态。
 
 ![扩展][redis-cache-scaling]
 
@@ -64,7 +64,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-在修改`Sku`或`ShardCount`属性时，可以使用[Set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) cmdlet 来缩放 Redis 实例`Size`的 Azure 缓存。 以下示例演示了如何将名为 `myCache` 的缓存缩放为 2.5 GB 缓存。 
+修改 [、](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) 或 `Size` 属性后，可以在 PowerShell 中使用 `Sku`Set-AzRedisCache`ShardCount` cmdlet 缩放 Azure Redis 缓存实例。 以下示例演示了如何将名为 `myCache` 的缓存缩放为 2.5 GB 缓存。 
 
     Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
 
@@ -126,7 +126,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 ### <a name="how-does-scaling-work"></a>缩放的工作原理？
 * 将**基本**缓存缩放为不同大小时，将关闭该缓存，同时使用新的大小预配一个新缓存。 在此期间，缓存不可用，且缓存中的所有数据都将丢失。
 * 将**基本**缓存缩放为**标准**缓存时，将预配副本缓存并将主缓存中的数据复制到副本缓存。 在缩放过程中，缓存仍然可用。
-* 当**标准**缓存缩放到不同大小或**高级**缓存时，其中一个副本将关闭并重新预配到新大小和传输的数据，然后另一个副本在重新预配之前执行故障转移，类似于其中一个缓存节点发生故障期间发生的过程。
+* 将**标准**缓存缩放为不同大小或缩放到**高级**缓存时，将关闭其中一个副本，同时将其重新预配为新的大小，将数据转移，然后，在重新预配另一个副本之前，另一个副本将执行一次故障转移，类似于一个缓存节点发生故障时所发生的过程。
 
 ### <a name="will-i-lose-data-from-my-cache-during-scaling"></a>在缩放过程中是否会丢失缓存中的数据？
 * 将**基本**缓存缩放为新的大小时，所有数据都将丢失，且在缩放操作期间缓存将不可用。
@@ -160,7 +160,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
   * 不能从**标准**缓存向下缩放到**基本**缓存。
 * 可从**基本**缓存缩放到**标准**缓存，但不能同时更改大小。 如果需要不同大小，则可以执行后续缩放操作以缩放为所需大小。
 * 不能从**基本**缓存直接缩放到**高级**缓存。 首先在一个缩放操作中从**基本**缩放到**标准**，然后在后续操作中从**标准**缩放到**高级**。
-* 不能从较大的大小减小为 **C0 (250 MB)**。
+* 不能从较大的大小减小为 **C0 (250 MB)** 。
 
 如果缩放操作失败，该服务将尝试还原操作并且缓存将还原为原始大小。
 

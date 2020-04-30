@@ -6,15 +6,15 @@ ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: 2d0cf18de09932c5d66e269a85919f4d85383c5b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277643"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions 绑定表达式模式
 
-[触发器和绑定](./functions-triggers-bindings.md)最强大的功能之一是*绑定表达式*。 在 *function.json* 文件、函数参数和代码中，可以使用表达式解析为各种源的值。
+[触发器和绑定](./functions-triggers-bindings.md)的最强大功能之一是*绑定表达式*。 在 *function.json* 文件、函数参数和代码中，可以使用表达式解析为各种源的值。
 
 大多数表达式的标识方式是将其包装在大括号中。 例如，在队列触发器函数中，`{queueTrigger}` 解析为队列消息文本。 如果 Blob 输出绑定的 `path` 属性为 `container/{queueTrigger}`，并且函数由队列消息 `HelloWorld` 触发，则创建名为 `HelloWorld` 的 Blob。
 
@@ -115,7 +115,7 @@ public static void Run(Stream image, string filename, Stream imageSmall, ILogger
 <!--TODO: add JavaScript example -->
 <!-- Blocked by bug https://github.com/Azure/Azure-Functions/issues/248 -->
 
-类库中的特性同样能够使用绑定表达式和模式。 在以下示例中，特性构造函数参数的值与前面 *function.json* 示例中的 `path` 值相同： 
+类库中的特性同样能够使用绑定表达式和模式。 在以下示例中，特性构造函数参数的值与前面 `path`function.json*示例中的* 值相同： 
 
 ```csharp
 [FunctionName("ResizeImage")]
@@ -131,7 +131,7 @@ public static void Run(
 
 ```
 
-您还可以为文件名的某些部分创建表达式。 在下面的示例中，函数仅在与模式匹配的文件名上触发：`anyname-anyfile.csv`
+还可针对文件名的某些部分创建表达式。 在下面的示例中，仅对匹配以下模式的文件名触发函数：`anyname-anyfile.csv`
 
 ```json
 {
@@ -159,7 +159,7 @@ public static void Run(
 * NextVisibleTime
 * PopReceipt
 
-这些元数据值可在 function.json 文件属性中访问**。 例如，假设使用队列触发器，且队列消息中包含要读取的 blob 的名称。 在 function.json 文件中**，可在 blob `path` 属性中使用 `queueTrigger` 元数据属性，如下面的示例中所示：
+这些元数据值可在 function.json 文件属性中访问  。 例如，假设使用队列触发器，且队列消息中包含要读取的 blob 的名称。 在 function.json 文件中  ，可在 blob `queueTrigger` 属性中使用 `path` 元数据属性，如下面的示例中所示：
 
 ```json
   "bindings": [
@@ -179,7 +179,7 @@ public static void Run(
   ]
 ```
 
-相应参考文章中会详细介绍每种触发器的元数据属性。 有关示例，请参阅[队列触发器元数据](functions-bindings-storage-queue-trigger.md#message-metadata)。 在门户“集成”**** 选项卡的绑定配置区域下方的“文档”**** 部分中，还提供了文档。  
+相应参考文章中会详细介绍每种触发器的元数据属性。 有关示例，请参阅[队列触发器元数据](functions-bindings-storage-queue-trigger.md#message-metadata)。 在门户“集成”  选项卡的绑定配置区域下方的“文档”  部分中，还提供了文档。  
 
 ## <a name="json-payloads"></a>JSON 有效负载
 
@@ -268,7 +268,7 @@ module.exports = function (context, info) {
 }
 ```
 
-可以直接以 `BlobName.FileName` 的形式引用 `FileName`。 使用此 JSON 格式时，上述示例中的 `path` 属性如下所示：
+可以直接以 `FileName` 的形式引用 `BlobName.FileName`。 使用此 JSON 格式时，上述示例中的 `path` 属性如下所示：
 
 ```json
 "path": "strings/{BlobName.FileName}.{BlobName.Extension}",
@@ -315,7 +315,7 @@ public class BlobName
 ```
 ## <a name="binding-at-runtime"></a>在运行时绑定
 
-在 C# 和其他 .NET 语言中，可以使用命令性绑定模式，而不是 function.json ** 和特性中的声明式绑定。 当绑定参数需要在运行时（而非在设计时）计算时，命令性绑定很有用。 若要了解详细信息，请参阅 [C# 开发人员参考](functions-dotnet-class-library.md#binding-at-runtime)或 [C# 脚本开发人员参考](functions-reference-csharp.md#binding-at-runtime)。
+在 C# 和其他 .NET 语言中，可以使用命令性绑定模式，而不是 function.json  和特性中的声明式绑定。 当绑定参数需要在运行时（而非在设计时）计算时，命令性绑定很有用。 若要了解详细信息，请参阅 [C# 开发人员参考](functions-dotnet-class-library.md#binding-at-runtime)或 [C# 脚本开发人员参考](functions-reference-csharp.md#binding-at-runtime)。
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]

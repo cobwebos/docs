@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: cc3f38e9bb96ce76263a3124f8bfdc49dc638bfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79282752"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>数据导入概述 - Azure 认知搜索
 
-在 Azure 认知搜索中，将会针对已加载和已保存到[搜索索引](search-what-is-an-index.md)中的内容执行查询。 本文介绍填充索引的两种基本方法：一种是推送，即以编程方式将数据推送至索引；** 另一种是拉取，即将 [Azure 认知搜索索引器](search-indexer-overview.md)指向支持的数据源，以便拉取数据。**
+在 Azure 认知搜索中，将会针对已加载和已保存到[搜索索引](search-what-is-an-index.md)中的内容执行查询。 本文介绍填充索引的两种基本方法：一种是推送，即以编程方式将数据推送至索引；  另一种是拉取，即将 [Azure 认知搜索索引器](search-indexer-overview.md)指向支持的数据源，以便拉取数据。 
 
-不管使用哪种方法，目的都是将数据从外部数据源加载到 Azure 认知搜索索引中。** Azure 认知搜索会允许你创建空索引，但在你将数据推送到其中或从其拉取数据之前，该索引是不可查询的。
+不管使用哪种方法，目的都是将数据从外部数据源加载到 Azure 认知搜索索引中。  Azure 认知搜索会允许你创建空索引，但在你将数据推送到其中或从其拉取数据之前，该索引是不可查询的。
 
 ## <a name="pushing-data-to-an-index"></a>将数据推送至索引
 推送模式用于以编程方式将数据发送到 Azure 认知搜索，是最灵活的方法。 首先，它对数据源类型没有限制。 任何由 JSON 文档组成的数据集都可以推送至 Azure 认知搜索索引，前提是数据集中的每个文档的字段都映射到索引架构中定义的字段。 其次，它对执行频率没有限制。 可以根据需要选择相应的频率，将更改推送到索引。 对于具有极低延迟要求的应用程序（例如，如果需要搜索操作与动态库存数据库同步），只能选择推送模型。
@@ -35,7 +35,7 @@ ms.locfileid: "79282752"
 
 目前尚没有支持通过门户推送数据的工具。
 
-有关每种方法的简介，请参阅[快速入门：使用 PowerShell](search-create-index-rest-api.md)或 C# 快速入门创建 Azure 认知搜索索引[：使用 .NET SDK 创建 Azure 认知搜索索引](search-get-started-dotnet.md)。
+有关每种方法的简介，请参阅[快速入门：使用 PowerShell 创建 Azure 认知搜索索引](search-create-index-rest-api.md)或[C# 快速入门：使用 .NET SDK 创建 Azure 认知搜索索引](search-get-started-dotnet.md)。
 
 <a name="indexing-actions"></a>
 
@@ -48,7 +48,7 @@ ms.locfileid: "79282752"
 在 .NET SDK 中，请将数据打包到 `IndexBatch` 对象中。 `IndexBatch` 封装 `IndexAction` 对象的集合，其中每个对象均包含一个文档和一个属性，用于指示 Azure 认知搜索对该文档执行什么操作。 有关代码示例，请参阅 [C# 快速入门](search-get-started-dotnet.md)。
 
 
-| @search.action | 描述 | 每个文档必需的字段 | 说明 |
+| @search.action | 说明 | 每个文档必需的字段 | 注释 |
 | -------------- | ----------- | ---------------------------------- | ----- |
 | `upload` |`upload` 操作类似于“upsert”，如果文档是新文档，则插入；如果文档已经存在，则进行更新/替换。 |键，以及要定义的任何其他字段 |更新/替换现有文档时，会将请求中未指定的任何字段设置为 `null`。 即使该字段之前设置为了非 null 值也是如此。 |
 | `merge` |使用指定的字段更新现有文档。 如果索引中不存在该文档，merge 会失败。 |键，以及要定义的任何其他字段 |merge 中指定的任何字段都将替换文档中的现有字段。 在 .NET SDK 中，这包括 `DataType.Collection(DataType.String)` 类型的字段。 在 REST API 中，这包括 `Collection(Edm.String)` 类型的字段。 例如，如果文档包含值为 `["budget"]` 的字段 `tags`，并且已使用值 `["economy", "pool"]` 对 `tags` 执行合并，则 `tags` 字段的最终值将为 `["economy", "pool"]`。 而不会是 `["budget", "economy", "pool"]`。 |
@@ -70,12 +70,12 @@ POST 的 URL 格式相同，只是查询字符串参数仅包含 API 版本。
 
 
 ## <a name="pulling-data-into-an-index"></a>将数据拉取到索引中
-提取模型对支持的数据源进行爬网，将数据自动上传到索引中。 在 Azure 认知搜索中，此功能是通过索引器** 实现的，目前适用于以下平台：
+提取模型对支持的数据源进行爬网，将数据自动上传到索引中。 在 Azure 认知搜索中，此功能是通过索引器  实现的，目前适用于以下平台：
 
 + [Blob 存储](search-howto-indexing-azure-blob-storage.md)
 + [表存储](search-howto-indexing-azure-tables.md)
 + [Azure Cosmos DB](https://aka.ms/documentdb-search-indexer)
-+ [Azure SQL 数据库和 Azure VM 上的 SQL 服务器](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
++ [Azure VM 上的 Azure SQL 数据库和 SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 
 索引器将索引连接到数据源（通常是表、视图或等效的结构），将源字段映射到索引中的等效字段。 在执行期间，行集会自动转换为 JSON 并载入指定的索引中。 所有索引器支持计划，使用户能够指定数据的刷新频率。 大多数索引器提供更改跟踪（如果受数据源的支持）。 除了识别新文档外，通过跟踪对现有文档的更改和删除外，索引器免除了主动管理索引中数据的必要。 
 
@@ -88,12 +88,12 @@ POST 的 URL 格式相同，只是查询字符串参数仅包含 API 版本。
 
 ## <a name="verify-data-import-with-search-explorer"></a>使用搜索浏览器验证数据导入
 
-对文档上载执行初步检查的快速方法是在门户中使用**搜索资源管理器**。 使用资源管理器可以直接查询索引，而无需编写任何代码。 搜索体验基于默认设置，如[简单的语法](/rest/api/searchservice/simple-query-syntax-in-azure-search)和默认[搜索模式查询参数](/rest/api/searchservice/search-documents)。 结果以 JSON 格式返回，方便用户检查整个文档。
+针对文档上传执行初步检查的捷径之一是在门户中使用**搜索浏览器**。 使用资源管理器可以直接查询索引，而无需编写任何代码。 搜索体验取决于默认设置，例如[简单语法](/rest/api/searchservice/simple-query-syntax-in-azure-search)和默认的 [searchMode 查询参数](/rest/api/searchservice/search-documents)。 结果以 JSON 格式返回，方便用户检查整个文档。
 
 > [!TIP]
 > 有大量的 [Azure 认知搜索代码示例](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)包含了嵌入的或随时可用的数据集，帮助用户轻松入门。 门户中还提供了一个示例索引器，以及一个由小型房地产数据集组成的数据源（名为“realestate-us-sample”）。 针对示例数据源运行预配置的索引器时，会创建索引并连同文档一起加载该索引，然后，可以使用搜索浏览器或编写的代码查询该索引。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 + [索引器概述](search-indexer-overview.md)
 + [门户演练：创建、加载和查询索引](search-get-started-portal.md)

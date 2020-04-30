@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
 ms.openlocfilehash: d57b196bf95ebdf31bc459ad4b9d718fd32ca495
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79280828"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权的高级用法
@@ -66,7 +66,7 @@ Content-Type: application/json
 
 令牌格式根据提供程序而略有不同。 有关详细信息，请参阅下表：
 
-| 提供程序值 | 请求正文中必需的 | 注释 |
+| 提供程序值 | 请求正文中必需的 | 说明 |
 |-|-|-|
 | `aad` | `{"access_token":"<access_token>"}` | |
 | `microsoftaccount` | `{"access_token":"<token>"}` | `expires_in` 属性为可选。 <br/>从 Live 服务请求令牌时，将始终请求 `wl.basic` 作用域。 |
@@ -121,7 +121,7 @@ GET /.auth/logout?post_logout_redirect_uri=/index.html
 GET /.auth/logout?post_logout_redirect_uri=https%3A%2F%2Fmyexternalurl.com
 ```
 
-在[Azure 云外壳](../cloud-shell/quickstart.md)中运行以下命令 ：
+在[Azure Cloud Shell](../cloud-shell/quickstart.md)中运行以下命令：
 
 ```azurecli-interactive
 az webapp auth update --name <app_name> --resource-group <group_name> --allowed-external-redirect-urls "https://myexternalurl.com"
@@ -176,9 +176,9 @@ az webapp config appsettings set --name <app_name> --resource-group <group_name>
 - **Microsoft 帐户**：[配置 Microsoft 帐户身份验证设置](configure-authentication-provider-microsoft.md)时，请选择 `wl.offline_access` 范围。
 - **Azure Active Directory**：在 [https://resources.azure.com](https://resources.azure.com) 中执行以下步骤：
     1. 在页面顶部，选择“读/写”。****
-    2. 在左侧浏览器中，导航到**subscriptions** > **_\<订阅\_名称_** > **providers** >  > **sites** >  > **config** > **resourceGroups** >  > 资源组**_\<\_资源组\_名称>_** 提供程序**Microsoft.Web**网站**_\<应用\_名称>_** 配置**身份验证**。 
+    2. 在左侧浏览器中，导航到 "**订阅** > **_\<订阅\_名称_****sites** > **_\<\_ _****resourceGroups** > **_\<\_\_ _** > resourceGroups 资源组名称"，> > **authsettings****Microsoft.Web** >   > **提供程序** > "。> >  **config**authsettings。 
     3. 单击 **“编辑”**。
-    4. 修改以下属性。 将_\<应用\_id>_ 替换为要访问的服务的 Azure 活动目录应用程序 ID。
+    4. 修改以下属性。 将_ \<应用\_id>_ 替换为要访问的服务的 Azure Active Directory 应用程序 id。
 
         ```json
         "additionalLoginParams": ["response_type=code id_token", "resource=<app_id>"]
@@ -221,11 +221,11 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 ## <a name="limit-the-domain-of-sign-in-accounts"></a>限制登录帐户的域
 
-Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如，Microsoft 帐户允许 _outlook.com_、_live.com_ 和 _hotmail.com_ 帐户。 Azure AD 允许登录帐户的任意数量的自定义域。 但是，您可能希望将用户直接加速到自己的品牌 Azure AD 登录页（如`contoso.com`）。 要建议登录帐户的域名，请按照以下步骤操作。
+Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如，Microsoft 帐户允许 _outlook.com_、_live.com_ 和 _hotmail.com_ 帐户。 Azure AD 允许登录帐户拥有任意数量的自定义域。 但是，你可能希望将用户直接转到你自己的品牌 Azure AD 登录页面（例如`contoso.com`）。 若要建议登录帐户的域名，请执行以下步骤。
 
-在[https://resources.azure.com](https://resources.azure.com)中 导航到**订阅** > **_\<\_名称_** > **资源** > **_\<\_组资源组\_名称>_****providers** >  > **sites** >  > **config** > **Microsoft.Web** > 提供程序 Microsoft.Web 网站**_\<应用\_名称>_** 配置**身份验证**。 
+在[https://resources.azure.com](https://resources.azure.com)中**sites** > ，导航到 "**订阅** > **_\<\_订阅名称_****resourceGroups** > **_\<\_resourceGroups 资源组\_名称">_** **providers** > **Microsoft.Web** >  >  **config**" > **authsettings****_。\<>配置 authsettings。\_ _**  >  >  
 
-单击“编辑”，修改以下属性，然后单击“放置”。******** 请确保将_\<域名\_>_ 替换为所需的域。
+单击“编辑”，修改以下属性，然后单击“放置”。******** 请确保将_ \<域名\_>_ 替换为所需的域。
 
 ```json
 "additionalLoginParams": ["domain_hint=<domain_name>"]
@@ -234,7 +234,7 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
 此设置将`domain_hint`查询字符串参数追加到登录重定向 URL。 
 
 > [!IMPORTANT]
-> 客户端可以在收到重定向 URL 后删除`domain_hint`参数，然后使用其他域登录。 因此，虽然此功能很方便，但它不是一个安全功能。
+> 客户端在接收重定向 URL 之后可以`domain_hint`删除参数，然后使用不同的域登录。 所以虽然此功能非常方便，但它并不是一项安全功能。
 >
 
 ## <a name="authorize-or-deny-users"></a>授权或拒绝用户
@@ -247,11 +247,11 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
 
 ### <a name="server-level-windows-apps-only"></a>服务器级别（仅限 Windows 应用）
 
-对于任何 Windows 应用，可以通过编辑 *Web.config* 文件来定义 IIS Web 服务器的授权行为。 Linux 应用程序不使用 IIS，并且无法通过*Web.config*进行配置。
+对于任何 Windows 应用，可以通过编辑 *Web.config* 文件来定义 IIS Web 服务器的授权行为。 Linux 应用不使用 IIS，因此不*能通过 web.config 进行配置。*
 
 1. 导航到 `https://<app-name>.scm.azurewebsites.net/DebugConsole`
 
-1. 在打开应用服务文件的浏览器资源管理器中，导航到“site/wwwroot”。** 如果*Web.config*不存在，请通过选择**+** > **"新文件**"来创建它。 
+1. 在打开应用服务文件的浏览器资源管理器中，导航到“site/wwwroot”。** 如果*web.config*不存在，请通过选择**+**  > "**新建文件**" 进行创建。 
 
 1. 选择“Web.config”旁边的铅笔图标对其进行编辑。** 添加以下配置代码，然后单击“保存”。**** 如果 *Web.config* 已存在，则只需在其中添加包含任何内容的 `<authorization>` 元素即可。 在 `<allow>` 元素中添加要允许的帐户。
 
@@ -269,10 +269,10 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
 
 ### <a name="identity-provider-level"></a>标识提供者级别
 
-标识提供程序可能会提供某些交钥匙授权。 例如：
+标识提供者可能会提供某些密钥授权。 例如：
 
-- 对于[Azure 应用服务](configure-authentication-provider-aad.md)，可以直接在 Azure AD 中[管理企业级访问](../active-directory/manage-apps/what-is-access-management.md)。 有关说明，请参阅[如何删除用户对应用程序的访问](../active-directory/manage-apps/methods-for-removing-user-access.md)。
-- 对于[Google，](configure-authentication-provider-google.md)可以配置属于[组织的](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations)Google API 项目，以便仅允许组织中的用户访问（请参阅 Google[设置**OAuth 2.0**支持页面](https://support.google.com/cloud/answer/6158849?hl=en)）。
+- 对于[Azure App Service](configure-authentication-provider-aad.md)，你可以直接在 Azure AD 中[管理企业级访问权限](../active-directory/manage-apps/what-is-access-management.md)。 有关说明，请参阅[如何删除用户对应用程序的访问权限](../active-directory/manage-apps/methods-for-removing-user-access.md)。
+- 对于[google](configure-authentication-provider-google.md)，可以将属于某个[组织](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations)的 Google API 项目配置为仅允许你的组织中的用户访问（请参阅[Google 的**设置 OAuth 2.0**支持页面](https://support.google.com/cloud/answer/6158849?hl=en)）。
 
 ### <a name="application-level"></a>应用程序级别
 
@@ -282,4 +282,4 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
 
 > [!div class="nextstepaction"]
 > [教程：对用户进行端到端（Windows）](app-service-web-tutorial-auth-aad.md)
-> [教程的身份验证和授权：对用户进行端到端身份验证和授权 （Linux）](containers/tutorial-auth-aad.md)
+> 教程的身份验证和授权[教程：端到端的用户身份验证和授权（Linux）](containers/tutorial-auth-aad.md)

@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
 ms.openlocfilehash: a385d3ed7ef46389f96de72c98ffc29cebf60ec4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79278527"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Redis 缓存
 > [!div class="op_single_selector"]
-> * [电源外壳](cache-how-to-manage-redis-cache-powershell.md)
+> * [PowerShell](cache-how-to-manage-redis-cache-powershell.md)
 > * [Azure CLI](cache-manage-cli.md)
 > 
 > 
@@ -28,7 +28,7 @@ ms.locfileid: "79278527"
 
 若要深入了解经典部署模型，请参阅 [Azure 资源管理器与经典部署：了解部署模型和资源状态](../azure-resource-manager/management/deployment-models.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 如果已安装 Azure PowerShell，则必须确保安装的是 Azure PowerShell 版本 1.0.0 或更高版本。 可以使用此命令在 Azure PowerShell 命令提示符下查看已安装的 Azure PowerShell 版本。
 
     Get-Module Az | format-table version
@@ -117,14 +117,14 @@ ms.locfileid: "79278527"
 ### <a name="properties-used-for-azure-cache-for-redis-powershell"></a>Azure Redis 缓存 PowerShell 使用的属性
 下表包含使用 Azure PowerShell 创建和管理 Azure Redis 缓存实例时常用的参数的属性和说明。
 
-| 参数 | 描述 | 默认 |
+| 参数 | 说明 | 默认 |
 | --- | --- | --- |
-| “属性” |缓存的名称 | |
+| 名称 |缓存的名称 | |
 | 位置 |缓存的位置 | |
 | ResourceGroupName |将在其中创建缓存的资源组名称 | |
 | 大小 |缓存的大小。 有效值为：P1、P2、P3、P4、C0、C1、C2、C3、C4、C5、C6、250MB、1GB、2.5GB、6GB、13GB、26GB、53GB |1GB |
 | ShardCount |在启用群集的情况下创建高级缓存时要创建的分片数目。 有效值为：1、2、3、4、5、6、7、8、9、10 | |
-| SKU |指定缓存的 SKU。 有效值为：Basic、Standard、Premium |Standard |
+| SKU |指定缓存的 SKU。 有效值为：Basic、Standard、Premium |标准 |
 | RedisConfiguration |指定 Redis 配置设置。 有关每个设置的详细信息，请参阅以下 [RedisConfiguration 属性](#redisconfiguration-properties)表。 | |
 | EnableNonSslPort |指出是否启用非 SSL 端口。 |False |
 | MaxMemoryPolicy |此参数已弃用 - 请改用 RedisConfiguration。 | |

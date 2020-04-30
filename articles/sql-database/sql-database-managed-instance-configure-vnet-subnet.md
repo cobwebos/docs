@@ -12,10 +12,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
 ms.openlocfilehash: 50b832baa9253f47b5f10980ae1764c9425ed4d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79476943"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>为 Azure SQL 数据库托管实例配置现有虚拟网络
@@ -52,12 +52,12 @@ Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/delega
 
 该脚本通过三个步骤来准备子网：
 
-1. 验证：它验证所选虚拟网络和子网的托管实例网络要求。
-2. 确认：它向用户显示为托管实例部署准备子网需要进行的一组更改。 同时请求用户同意。
-3. 准备：它正确配置虚拟网络和子网。
+1. 验证：根据托管实例的网络要求验证所选虚拟网络和子网。
+2. 确认：向用户显示为托管实例部署准备子网而需要执行的一组更改。 同时请求用户同意。
+3. 准备：正确配置虚拟网络和子网。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关概述，请参阅[什么是托管实例？](sql-database-managed-instance.md)
+- 有关概述，请参阅[什么是托管实例？](sql-database-managed-instance.md)。
 - 有关如何创建虚拟网络、创建托管实例，以及从数据库备份还原数据库的教程，请参阅[创建 Azure SQL 数据库托管实例](sql-database-managed-instance-get-started.md)。
 - 有关 DNS 问题，请参阅[配置自定义 DNS](sql-database-managed-instance-custom-dns.md)。

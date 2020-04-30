@@ -1,5 +1,5 @@
 ---
-title: SAP NetWeaver 的 Azure VM HA 体系结构和方案 |微软文档
+title: SAP NetWeaver 的 Azure Vm HA 体系结构和方案 |Microsoft Docs
 description: Azure 虚拟机上 SAP NetWeaver 的高可用性体系结构和方案
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -17,10 +17,10 @@ ms.date: 02/26/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 08f770ced6cb1ec1102159788e1583d481436b08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79279905"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver 的高可用性体系结构和方案
@@ -243,7 +243,7 @@ Azure 中的 SAP 高可用性可以分为三种类型：
 
     例如，高可用性可以包括计算 (VM)、网络或存储，以及提高 SAP 应用程序可用性的优点。
 
-* **利用 Azure 基础结构 VM 重新启动来实现 SAP 应用程序*更高的可用性***： 
+* **利用 Azure 基础结构 VM 重启来实现 SAP 应用程序的*更高可用性***： 
 
     如果你决定不在 Linux 上使用 Windows Server 故障转移群集 (WSFC) 或 Pacemaker 等功能，则可利用 Azure VM 重启。 它可以保护 SAP 系统不受 Azure 物理服务器基础结构和整个基础 Azure 平台的计划和非计划停机的影响。
 
@@ -294,10 +294,10 @@ Azure 正在各个不同的 [Azure 区域](https://azure.microsoft.com/global-in
 使用可用性区域时需要注意一些事项。 注意事项列表如下：
 
 - 不能在可用性区域中部署 Azure 可用性集。 需要选择可用性区域或可用性集作为 VM 的部署框架。
-- 不能使用[基本负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)基于 Windows 故障转移群集服务或 Linux Pacemaker 创建故障转移群集解决方案。 相反，您需要使用[Azure 标准负载均衡器 SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)
+- 不能使用[基本负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)基于 Windows 故障转移群集服务或 Linux Pacemaker 创建故障转移群集解决方案。 相反，你需要使用[Azure 标准负载均衡器 SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)
 - Azure 可用性区域不能保证一个区域中的不同局部区域之间保持特定的距离
 - 不同 Azure 区域中不同 Azure 可用性区域之间的网络延迟可能根据 Azure 区域的不同而异。 有时，客户可以合理运行部署在不同局部区域中的 SAP 应用层，因为从业务流程影响度来看，从一个局部区域到活动 DBMS VM 的网络延迟仍可接受。 但在某些客户场景中，一个局部区域中的活动 DBMS VM 与另一个局部区域中的 VM 上的 SAP 应用程序实例之间的延迟可能过高，不能被 SAP 业务流程所接受。 因此，如果延迟过高，则部署体系结构需要与应用程序的主动/主动体系结构或者与主动/被动体系结构不同。
-- 使用[Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/)是部署到 Azure 可用性区域的必填项 
+- 若要部署到 Azure 可用性区域，使用[Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/)是必需的 
 
 
 ### <a name="planned-and-unplanned-maintenance-of-virtual-machines"></a>虚拟机计划内和计划外的维护
@@ -351,7 +351,7 @@ Azure 正在各个不同的 [Azure 区域](https://azure.microsoft.com/global-in
 
 ![图 1：高可用性 SAP 应用程序服务器][sap-ha-guide-figure-2000]
 
-_**图 1：** 高可用性 SAP 应用程序服务器_
+_**图1：** 高可用性 SAP 应用程序服务器_
 
 必须将所有托管 SAP 应用程序服务器实例的虚拟机放置在同一个 Azure 可用性集中。 Azure 可用性集确保：
 
@@ -391,13 +391,13 @@ WSFC 解决方案可用于保护 SAP ASCS/SCS 实例。 该解决方案有两种
 
 * **** 使用文件共享来群集化 SAP ASCS/SCS 实例：有关此体系结构的详细信息，请参阅[在 Windows 故障转移群集上使用文件共享来群集化 SAP ASCS/SCS 实例][sap-high-availability-guide-wsfc-file-share]。
 
-* **使用 ANF SMB 共享对 SAP ASCS/SCS 实例进行群集**：有关此体系结构的详细信息，请参阅[使用 ANF SMB 文件共享在 Windows 故障转移群集上群集 SAP ASCS/SCS 实例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)。
+* **使用和 smb 共享群集 SAP ASCS/scs 实例**：有关此体系结构的详细信息，请参阅[使用和 SMB 文件共享在 Windows 故障转移群集上群集集群 ASCS/scs 实例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)。
 
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>Linux 上 SAP ASCS/SCS 实例的高可用性体系结构
 
 > ![Linux][Logo_Linux] Linux
 > 
-> 有关使用 SLES 群集框架群集化 SAP ASCS/SCS 实例的详细信息，请参阅 [SUSE Linux Enterprise Server 的 Azure VM 上针对 SAP 应用程序的 SAP NetWeaver 高可用性][sap-suse-ascs-ha]。 有关 SLES 上不需要高可用性 NFS 的替代 HA 体系结构，请参阅[SUSE Linux 企业服务器上的 SAP NetWeaver 高可用性指南，该指南具有用于 SAP 应用程序的 Azure NetApp 文件][sap-suse-ascs-ha-anf]。
+> 有关使用 SLES 群集框架群集化 SAP ASCS/SCS 实例的详细信息，请参阅 [SUSE Linux Enterprise Server 的 Azure VM 上针对 SAP 应用程序的 SAP NetWeaver 高可用性][sap-suse-ascs-ha]。 对于 SLES 上不需要高可用性 NFS 的备用 HA 体系结构，请参阅适用于[sap 应用程序的 Azure NetApp 文件 SUSE Linux Enterprise Server 上的 Sap NetWeaver 高可用性指南][sap-suse-ascs-ha-anf]。
 
 有关使用 Red Hat 群集框架组建 SAP ASCS/SCS 实例群集的详细信息，请参阅 [Red Hat Enterprise Linux 上 SAP NetWeaver 的 Azure 虚拟机高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)
 
@@ -416,11 +416,11 @@ WSFC 解决方案可用于保护 SAP ASCS/SCS 实例。 该解决方案有两种
 
 > ![Linux][Logo_Linux] Linux
 > 
-> 针对 SAP ASCS/ERS 的 Linux 起搏器群集支持多 SID 群集，仅限于同一群集上的**五**个 SAP SID。
-> 有关 Linux 上的多 SID 高可用性体系结构的详细信息，请参阅：
+> 在适用于 SAP ASCS/ERS 的 Linux Pacemaker 群集上支持多 SID 群集，在同一群集上限制为**五个**sap sid。
+> 有关 Linux 上多 SID 高可用性体系结构的详细信息，请参阅：
 
-* [用于 SAP 应用程序多 SID 指南的 SLES 上的 Azure VM 上的 SAP NW 的 HA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
-* [用于 SAP 应用程序多 SID 指南的 RHEL 上的 Azure VM 上的 SAP NW HA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
+* [SLES for SAP 应用程序上的 Azure Vm 上的 SAP NW HA 多 SID 指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
+* [RHEL 上的 Azure Vm 上的 SAP NW HA for SAP 应用程序多 SID 指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
 
 ### <a name="high-availability-dbms-instance"></a>高可用性 DBMS 实例
 

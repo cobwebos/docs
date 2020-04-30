@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 2719bba0e88ba3125bd5ba163804e31885b286a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79282986"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure 认知搜索中的索引器
@@ -30,7 +30,7 @@ Azure 认知搜索中的*索引器*是一种爬网程序，它从外部 Azure �
 
 可以使用以下方法创建和管理索引器：
 
-* [门户>导入数据向导](search-import-data-portal.md)
+* [门户 > 导入数据向导](search-import-data-portal.md)
 * [服务 REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations)
 
@@ -51,14 +51,14 @@ Azure 认知搜索中的*索引器*是一种爬网程序，它从外部 Azure �
 * [Azure 表存储](search-howto-indexing-azure-tables.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure SQL 数据库](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure 虚拟机上的 SQL 服务器](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
+* [Azure 虚拟机中的 SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 * [Azure 上的 SQL 托管实例](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
 
 ## <a name="basic-configuration-steps"></a>基本配置步骤
 索引器可提供数据源独有的功能。 因此，索引器或数据源配置的某些方面会因索引器类型而不同。 但是，所有索引器的基本构成元素和要求都相同。 下面介绍所有索引器都适用的共同步骤。
 
 ### <a name="step-1-create-a-data-source"></a>步骤 1：创建数据源
-索引器从数据源** 对象获取数据源连接。 数据源定义提供连接字符串和可能的凭据。 调用[创建数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source) REST API 或 [DataSource 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource)以创建资源。
+索引器从数据源  对象获取数据源连接。 数据源定义提供连接字符串和可能的凭据。 调用[创建数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source) REST API 或 [DataSource 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource)以创建资源。
 
 数据源的配置和管理独立于使用数据源的索引器，这意味着多个索引器可使用一个数据源，同时加载多个索引。
 

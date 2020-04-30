@@ -1,6 +1,6 @@
 ---
-title: Linux 容器的 SSH 访问
-description: 您可以在 Azure 应用服务中打开 SSH 会话到 Linux 容器。 自定义 Linux 容器支持对自定义映像进行一些修改。
+title: 适用于 Linux 容器的 SSH 访问
+description: 可以在 Azure App Service 中打开 Linux 容器的 SSH 会话。 自定义映像的一些修改支持自定义 Linux 容器。
 keywords: azure 应用服务, web 应用, linux, oss
 author: msangapu-msft
 ms.assetid: 66f9988f-8ffa-414a-9137-3a9b15a5573c
@@ -9,17 +9,17 @@ ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: dab13f222b441c7415a8d09d0d91ab3af5aaf836
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79280178"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>对 Linux 上的 Azure 应用服务的 SSH 支持
 
-[安全外壳 (SSH)](https://wikipedia.org/wiki/Secure_Shell) 通常用于通过命令行终端以远程方式执行管理命令。 Linux 上的应用服务为应用容器提供 SSH 支持。 
+[安全外壳 (SSH)](https://wikipedia.org/wiki/Secure_Shell) 通常用于通过命令行终端以远程方式执行管理命令。 Linux 应用服务在应用容器中提供 SSH 支持。 
 
-![Linux 应用程序服务 SSH](./media/app-service-linux-ssh-support/app-service-linux-ssh.png)
+![Linux 应用服务 SSH](./media/app-service-linux-ssh-support/app-service-linux-ssh.png)
 
 还可以使用 SSH 和 SFTP 直接从本地开发计算机连接到容器。
 
@@ -29,7 +29,7 @@ ms.locfileid: "79280178"
 
 ## <a name="use-ssh-support-with-custom-docker-images"></a>将 SSH 支持与自定义 Docker 映像配合使用
 
-请参阅[在自定义容器中配置 SSH。](configure-custom-container.md#enable-ssh)
+请参阅[在自定义容器中配置 SSH](configure-custom-container.md#enable-ssh)。
 
 ## <a name="open-ssh-session-from-remote-shell"></a>从远程 shell 打开 SSH 会话
 
@@ -41,7 +41,7 @@ ms.locfileid: "79280178"
 
 若要开始，需安装 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 若要了解它在不安装 Azure CLI 的情况下的工作方式，请打开 [Azure Cloud Shell](../../cloud-shell/overview.md)。 
 
-使用 [az webapp remote-connection create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) 命令打开到应用的远程连接。 为应用指定_\<订阅 id>、__\<组名>_ 和应用\_\<名称>_。
+使用 [az webapp remote-connection create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) 命令打开到应用的远程连接。 为应用指定_ \<订阅 id>_、 _ \<组名称>_ 和\_ \<应用名称>_。
 
 ```azurecli-interactive
 az webapp create-remote-connection --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &

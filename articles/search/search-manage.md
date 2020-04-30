@@ -10,15 +10,15 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 3abbf2c8e0734d17aabadd2ae5f61cc03889964b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79282921"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure 门户中 Azure 认知搜索服务管理
 > [!div class="op_single_selector"]
-> * [电源外壳](search-manage-powershell.md)
+> * [PowerShell](search-manage-powershell.md)
 > * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [门户](search-manage.md)
@@ -27,11 +27,11 @@ ms.locfileid: "79282921"
 Azure 认知搜索是一种完全托管的、基于云的搜索服务，用于在自定义应用中生成丰富的搜索体验。 本文介绍可在 [Azure 门户](https://portal.azure.com)中对已预配的搜索服务执行的服务管理任务。 服务管理设计成轻型，它限于以下任务：
 
 > [!div class="checklist"]
-> * 管理对用于服务读取或写入的 api-keys** 的访问。
+> * 管理对用于服务读取或写入的 api-keys  的访问。
 > * 通过更改分区和副本的分配以调整服务容量。
 > * 根据服务层级的最大限制，监视资源使用情况。
 
-请注意，“升级”** 未列为管理任务。 因为预配服务时会分配资源，所以移动到其他层需要新的服务。 有关详细信息，请参阅[创建 Azure 认知搜索服务](search-create-service-portal.md)。
+请注意，“升级”  未列为管理任务。 因为预配服务时会分配资源，所以移动到其他层需要新的服务。 有关详细信息，请参阅[创建 Azure 认知搜索服务](search-create-service-portal.md)。
 
 可以监视查询量和其他指标，并根据这些见解调整自己的服务以缩短响应时间。 有关详细信息，请参阅[监视使用情况和查询度量值](search-monitor-usage.md)以及[性能和优化](search-performance-optimization.md)。
 
@@ -71,20 +71,20 @@ Azure 认知搜索服务不会通过门户或程序设计界面公开单个服�
 
 如果在超出 Microsoft 控制的灾难性故障中需要连续性服务，可在其他区域[预配一个附加服务](search-create-service-portal.md)并实施异地复制策略，确保索引跨所有服务完全冗余。
 
-使用[索引器](search-indexer-overview.md)来填充和刷新索引的客户可利用相同的数据源，通过特定于地区的索引器来处理灾难恢复。 不同区域的两个服务（每个都运行索引器）可对相同数据源进行索引，实现异地冗余。 如果要从也是异地冗余的数据源编制索引，请注意 Azure 认知搜索索引器只能从主副本执行增量索引（合并来自新、已修改或删除的文档的更新）。 在故障转移事件中，请确保将索引器重新指向到新的主要副本。 
+使用[索引器](search-indexer-overview.md)来填充和刷新索引的客户可利用相同的数据源，通过特定于地区的索引器来处理灾难恢复。 不同区域的两个服务（每个都运行索引器）可对相同数据源进行索引，实现异地冗余。 如果从同样异地冗余的数据源进行索引，请注意 Azure 认知搜索索引器只能从主要副本执行增量索引（从新的、已修改的或已删除的文档合并更新）。 在故障转移事件中，请确保将索引器重新指向到新的主要副本。 
 
 如果不使用索引器，也可使用应用程序代码将对象和数据并行推送到其他搜索服务。 有关详细信息，请参阅 [Azure 认知搜索中的性能和优化](search-performance-optimization.md)。
 
 ## <a name="backup-and-restore"></a>备份和还原
 
-由于 Azure 认知搜索不是主数据存储解决方案，因此，我们不提供正式的自助备份和还原机制。 但是，你可以使用此 [Azure 认知搜索 .NET 示例存储库](https://github.com/Azure-Samples/azure-search-dotnet-samples)中的 **index-backup-restore** 示例代码将索引定义和快照备份到一系列 JSON 文件，然后根据需要使用这些文件来还原索引。 还可以使用此工具在服务层级之间移动索引。
+由于 Azure 认知搜索不是主数据存储解决方案，因此，我们不提供正式的自助备份和还原机制。 但是，你可以使用此 **Azure 认知搜索 .NET 示例存储库**中的 [index-backup-restore](https://github.com/Azure-Samples/azure-search-dotnet-samples) 示例代码将索引定义和快照备份到一系列 JSON 文件，然后根据需要使用这些文件来还原索引。 还可以使用此工具在服务层级之间移动索引。
 
 在其他情况下，如果误删索引，用于创建和填充索引的应用程序代码是事实上的还原选项。 要重新生成索引，请删除它（假设其存在），在服务中重新创建该索引，并通过从主数据存储中检索数据来重新加载该索引。
 
 <a id="scale"></a>
 
 ## <a name="scale-up-or-down"></a>增加或减少
-每个搜索服务从至少一个副本和一个分区开始操作。 如果已注册[提供专用资源的层](search-limits-quotas-capacity.md)，请单击服务仪表板中的“规模”磁贴，调整资源使用情况****。
+每个搜索服务从至少一个副本和一个分区开始操作。 如果已注册[提供专用资源的层](search-limits-quotas-capacity.md)，请单击服务仪表板中的“规模”磁贴，调整资源使用情况  。
 
 如果通过任一资源添加容量，服务会自动使用它们。 无需执行任何进一步的操作，但在新资源产生作用之前，会有轻微延迟。 可能需要 15 分钟或更长的时间才能预配其他资源。
 
