@@ -91,6 +91,8 @@
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: 概念
   items:
+    - name: 计划和管理成本
+      href: concept-plan-manage-cost.md
     - name: 工作区
       href: concept-workspace.md
     - name: 环境
@@ -156,6 +158,8 @@
               href: how-to-use-azure-ad-identity.md
             - name: 重新生成存储访问密钥
               href: how-to-change-storage-access-key.md
+            - name: 使用 Azure 防火墙
+              href: how-to-access-azureml-behind-firewall.md
         - name: 设置身份验证
           displayName: 'authentication, auth, oauth'
           href: how-to-setup-authentication.md

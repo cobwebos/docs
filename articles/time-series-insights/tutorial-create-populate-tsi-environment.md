@@ -7,20 +7,21 @@ ms.author: dpalled
 manager: cshankar
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 02/03/2020
+ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7bebc9e682f5156fa235b77ff020e502695a28be
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 47cee660114ba0b19b952015b1fecff8c85d2c25
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76981185"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189209"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>教程：创建 Azure 时序见解环境
 
 本教程逐步讲解如何创建 Azure 时序见解环境，并在其中填充模拟设备的数据。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
+>
 > * 创建时序见解环境。
 > * 创建包含 IoT 中心的设备模拟解决方案。
 > * 将时序见解环境连接到 IoT 中心。
@@ -59,7 +60,7 @@ Azure IoT 中心是本教程中的所有设备（模拟设备或物理设备）�
 
    [![运行设备模拟加速器](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-landing-page.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-landing-page.png#lightbox)
 
-1.  选择“立即试用”。  然后，在“创建设备模拟解决方案”  页上输入所需的参数。
+1. 选择“立即试用”。  然后，在“创建设备模拟解决方案”  页上输入所需的参数。
 
    参数|说明
    ---|---
@@ -72,7 +73,7 @@ Azure IoT 中心是本教程中的所有设备（模拟设备或物理设备）�
 
    [![预配设备模拟解决方案](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-configuration.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-configuration.png#lightbox)
 
-1. 预配完成后，将显示两个更新，通知你部署状态已从“正在预配”  变为“就绪”  。 
+1. 预配完成后，将显示两个更新，通知你部署状态已从“正在预配”  变为“就绪”  。
 
    >[!IMPORTANT]
    > 还不要转到解决方案加速器！ 请让此网页保持打开状态，因为稍后需要返回此处。
@@ -87,9 +88,9 @@ Azure IoT 中心是本教程中的所有设备（模拟设备或物理设备）�
 
 其次，在 Azure 订阅中创建时序见解环境。
 
-1. 使用 Azure 订阅帐户登录到 [Azure 门户](https://portal.azure.com)。 
-1. 选择左上角的“+ 创建资源”。  
-1. 依次选择“物联网”类别、“时序见解”   。 
+1. 使用 Azure 订阅帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 选择左上角的“+ 创建资源”。 
+1. 依次选择“物联网”类别、“时序见解”   。
 
    [![选择时序见解环境资源](media/tutorial-create-populate-tsi-environment/tsi-create-new-environment.png)](media/tutorial-create-populate-tsi-environment/tsi-create-new-environment.png#lightbox)
 
@@ -114,7 +115,7 @@ Azure IoT 中心是本教程中的所有设备（模拟设备或物理设备）�
 
    最后，选择“查看 + 创建”  。
 
-1. 查看“通知”面板来监视部署进度。  
+1. 查看“通知”面板来监视部署进度。 
 
    [![时序见解环境部署成功](media/tutorial-create-populate-tsi-environment/create-resource-tsi-deployment-succeeded.png)](media/tutorial-create-populate-tsi-environment/create-resource-tsi-deployment-succeeded.png#lightbox)
 
@@ -142,7 +143,7 @@ Azure IoT 中心是本教程中的所有设备（模拟设备或物理设备）�
    **遥测频率** | 输入 `10` 秒。
    **模拟持续时间** | 选择“结束时间:”并输入 `5` 分钟。 
 
-   完成后，选择“开始模拟”  。 模拟总共会运行 5 分钟， 每隔 10 秒从 1,000 台模拟设备生成数据。 
+   完成后，选择“开始模拟”  。 模拟总共会运行 5 分钟， 每隔 10 秒从 1,000 台模拟设备生成数据。
 
    [![设备模拟设置](media/tutorial-create-populate-tsi-environment/sawa-simulation-setup.png)](media/tutorial-create-populate-tsi-environment/sawa-simulation-setup.png#lightbox)
 
@@ -189,6 +190,7 @@ Azure IoT 中心是本教程中的所有设备（模拟设备或物理设备）�
 在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
+>
 > * 创建时序见解环境。
 > * 创建包含 IoT 中心的设备模拟解决方案。
 > * 将时序见解环境连接到 IoT 中心。

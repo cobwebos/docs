@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: f121be4ec8c3d3ab618e2955d9dbd8ab5eea461d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2325509f68ced7c66d9f733b07247ae01301b565
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79129208"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181523"
 ---
 ## <a name="test-your-code"></a>测试代码
 
@@ -46,8 +46,6 @@ ms.locfileid: "79129208"
 |**用户名** |<span>user@domain.com</span> |用于标识用户的用户名。|
 |**令牌到期** |DateTime |令牌到期的时间。 MSAL 根据需要通过续订令牌来延长到期日期。|
 
-
-<!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>有关作用域和委派权限的详细信息
 
 Microsoft Graph API 需要 *user.read* 作用域来读取用户的个人资料。 默认情况下，在应用程序注册门户中注册的每个应用程序中，都会自动添加此作用域。 Microsoft Graph 的其他 API 以及后端服务器的自定义 API 可能需要其他作用域。 Microsoft Graph API 需要 *Calendars.Read* 作用域来列出用户的日历。
@@ -56,7 +54,5 @@ Microsoft Graph API 需要 *user.read* 作用域来读取用户的个人资料�
 
 >[!NOTE]
 >当你增加作用域数量时，可能会提示用户另外进行许可。
-
-<!--end-collapse-->
 
 [!INCLUDE [Help and support](./active-directory-develop-help-support-include.md)]

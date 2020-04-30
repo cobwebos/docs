@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/15/2020
 ms.author: trbye
-ms.openlocfilehash: b11194640c4d049c90f85974022908dce6b4fd79
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 2d6e53f8a69a3e214d7d4621e899fd2e5394c7f2
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399807"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82132287"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -102,14 +102,14 @@ const recognizer = new SpeechRecognizer(speechConfig);
 
 ```javascript
 const audioConfig = AudioConfig.fromDefaultMicrophoneInput();
-const speechConfig = SpeechConfig.fromSubscription(speechConfig, audioConfig);
+const recognizer = new SpeechRecognizer(speechConfig, audioConfig);
 ```
 
 如果要提供音频文件而不是使用麦克风，则仍需要提供 `audioConfig`。 但是，只有在以 Node.js  为目标时才能这样做。创建 [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest) 时，需调用 `fromWavFileOutput` 并传递 `filename` 参数，而不是调用 `fromDefaultMicrophoneInput`。
 
 ```javascript
 const audioConfig = AudioConfig.fromWavFileInput("YourAudioFile.wav");
-const speechConfig = SpeechConfig.fromSubscription(speechConfig, audioConfig);
+const recognizer = new SpeechRecognizer(speechConfig, audioConfig);
 ```
 
 ## <a name="recognize-speech"></a>识别语音

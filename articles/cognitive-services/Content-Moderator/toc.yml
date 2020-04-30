@@ -10,14 +10,8 @@
   items:
     - name: 尝试在 Web 上使用内容审查器
       href: quick-start.md
-    - name: 使用客户端 SDK
-      items:
-        - name: 使用 .NET SDK
-          href: dotnet-sdk-quickstart.md
-        - name: 使用 Python SDK
-          href: python-sdk-quickstart.md
-        - name: 使用 Java SDK
-          href: java-sdk-quickstart.md
+    - name: 使用客户端库
+      href: client-libraries.md
 - name: 教程
   items:
     - name: 审查电子商务映像
@@ -38,7 +32,7 @@
       href: Review-Tool-User-Guide/human-in-the-loop.md
     - name: 审阅、工作流和作业
       href: review-api.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 审查内容
       items:
@@ -126,7 +120,7 @@
       href: 'https://cognitive.uservoice.com/knowledgebase/topics/132073-content-moderator'
     - name: 语言支持
       href: language-support.md
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: 区域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
