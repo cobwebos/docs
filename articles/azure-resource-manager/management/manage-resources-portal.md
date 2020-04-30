@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.openlocfilehash: 00d260a74807774d5bf226c3ec00a6b84f93b8d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79248341"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>使用 Azure 门户管理 Azure 资源
@@ -25,7 +25,7 @@ ms.locfileid: "79248341"
 
 ## <a name="deploy-resources-to-a-resource-group"></a>将资源部署到资源组
 
-创建资源管理器模板后，可以使用 Azure 门户部署 Azure 资源。 有关创建模板，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](../templates/quickstart-create-templates-use-the-portal.md)。 有关如何使用门户部署模板，请参阅[使用资源管理器模板和 Azure 门户部署资源](../templates/deploy-portal.md)。
+创建资源管理器模板后，可以使用 Azure 门户部署 Azure 资源。 有关如何创建模板，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](../templates/quickstart-create-templates-use-the-portal.md)。 有关如何使用门户部署模板，请参阅[使用资源管理器模板和 Azure 门户部署资源](../templates/deploy-portal.md)。
 
 ## <a name="open-resources"></a>打开资源
 
@@ -33,8 +33,8 @@ Azure 资源按 Azure 服务和资源组进行组织。 以下过程说明如何
 
 按服务类型打开资源：
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
-2. 在左窗格中选择 Azure 服务。 在本例中，请选择“存储帐户”。****  如果该服务未列出，请选择“所有服务”，然后选择服务类型。****
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 在左窗格中选择 Azure 服务。 在本例中，请选择“存储帐户”。   如果该服务未列出，请选择“所有服务”，然后选择服务类型。 
 
     ![在门户中打开 Azure 资源](./media/manage-resources-portal/manage-azure-resources-portal-open-service.png)
 
@@ -48,8 +48,8 @@ Azure 资源按 Azure 服务和资源组进行组织。 以下过程说明如何
 
 按资源组打开资源：
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
-2. 在左窗格中，选择“资源组”列出该组中的资源。****
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 在左窗格中，选择“资源组”列出该组中的资源。 
 3. 选择要打开的资源。 
 
 ## <a name="manage-resources"></a>管理资源
@@ -63,20 +63,20 @@ Azure 资源按 Azure 服务和资源组进行组织。 以下过程说明如何
 ## <a name="delete-resources"></a>删除资源
 
 1. 在门户中打开资源。 有关步骤，请参阅[打开资源](#open-resources)。
-2. 选择 **"删除**"。 以下屏幕截图显示了虚拟机的管理选项。
+2. 选择“删除”  。 以下屏幕截图显示了虚拟机的管理选项。
 
     ![删除 Azure 资源](./media/manage-resources-portal/manage-azure-resources-portal-delete-resource.png)
-3. 键入资源名称以确认删除，然后选择“删除”****。
+3. 键入资源名称以确认删除，然后选择“删除”  。
 
 若要详细了解 Azure 资源管理器如何控制资源的删除，请参阅 [Azure 资源管理器资源组的删除](delete-resource-group.md)。
 
 ## <a name="move-resources"></a>移动资源
 
 1. 在门户中打开资源。 有关步骤，请参阅[打开资源](#open-resources)。
-2. 选择“移动”****。 以下屏幕截图显示了存储帐户的管理选项。
+2. 选择“移动”  。 以下屏幕截图显示了存储帐户的管理选项。
 
     ![移动 Azure 资源](./media/manage-resources-portal/manage-azure-resources-portal-move-resource.png)
-3. 根据需要选择“移到另一资源组”或“移到另一订阅”。********
+3. 根据需要选择“移到另一资源组”或“移到另一订阅”。  
 
 有关详细信息，请参阅[将资源移到新资源组或订阅](move-resource-group-and-subscription.md)。
 
@@ -85,22 +85,22 @@ Azure 资源按 Azure 服务和资源组进行组织。 以下过程说明如何
 锁定可以防止组织中的其他用户意外删除或修改关键资源，例如 Azure 订阅、资源组或资源。 
 
 1. 在门户中打开资源。 有关步骤，请参阅[打开资源](#open-resources)。
-2. 选择“锁定”。**** 以下屏幕截图显示了存储帐户的管理选项。
+2. 选择“锁定”。  以下屏幕截图显示了存储帐户的管理选项。
 
     ![锁定 Azure 资源](./media/manage-resources-portal/manage-azure-resources-portal-lock-resource.png)
-3. 选择“添加”，然后指定锁定属性。****
+3. 选择“添加”，然后指定锁定属性。 
 
-有关详细信息，请参阅使用[Azure 资源管理器锁定资源](lock-resources.md)。
+更多信息请参阅 [使用 Azure Resource Manager 锁定资源](lock-resources.md)。
 
 ## <a name="tag-resources"></a>标记资源
 
 标记有助于按逻辑方式组织资源组和资源。 
 
 1. 在门户中打开资源。 有关步骤，请参阅[打开资源](#open-resources)。
-2. 选择“标记”。**** 以下屏幕截图显示了存储帐户的管理选项。
+2. 选择“标记”。  以下屏幕截图显示了存储帐户的管理选项。
 
     ![标记 Azure 资源](./media/manage-resources-portal/manage-azure-resources-portal-tag-resource.png)
-3. 指定标记属性，然后选择“保存”。****
+3. 指定标记属性，然后选择“保存”。 
 
 有关信息，请参阅[使用标记组织 Azure 资源](tag-resources.md#portal)。
 
@@ -110,15 +110,15 @@ Azure 资源按 Azure 服务和资源组进行组织。 以下过程说明如何
 
 ![监视 Azure 资源](./media/manage-resources-portal/manage-azure-resources-portal-monitor-resource.png)
 
-可以选择图形右上角的图钉图标，将图形固定到仪表板。 若要了解如何使用仪表板，请参阅[在 Azure 门户中创建和共享仪表板](../../azure-portal/azure-portal-dashboards.md)。
+可以选择图形右上角的图钉图标，将图形固定到仪表板。 若要了解如何使用仪表板，请参阅 [Creating and sharing dashboards in the Azure portal](../../azure-portal/azure-portal-dashboards.md)（在 Azure 门户中创建和共享仪表板）。
 
 ## <a name="manage-access-to-resources"></a>管理对资源的访问
 
-[基于角色的访问控制 （RBAC）](../../role-based-access-control/overview.md)是管理对 Azure 中资源的访问的方式。 有关详细信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../../role-based-access-control/role-assignments-portal.md)。
+可以在 Azure 中通过[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 这种方式管理对资源的访问。 有关详细信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 若要了解 Azure 资源管理器，请参阅 [Azure 资源管理器概述](overview.md)。
 - 若要了解资源管理器模板语法，请参阅[了解 Azure 资源管理器模板的结构和语法](../templates/template-syntax.md)。
-- 要了解如何开发模板，请参阅分[步教程](/azure/azure-resource-manager/)。
+- 若要了解如何开发模板，请参阅[分步教程](/azure/azure-resource-manager/)。
 - 若要查看 Azure 资源管理器模板架构，请参阅[模板参考](/azure/templates/)。

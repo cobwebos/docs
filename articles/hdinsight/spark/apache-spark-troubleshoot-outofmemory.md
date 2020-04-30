@@ -1,6 +1,6 @@
 ---
 title: Azure HDInsight 中的 Apache Spark 的 OutOfMemoryError 异常
-description: Azure HDInsight 中 Apache Spark 群集的各种内存外错误异常
+description: Azure HDInsight 中 Apache Spark 群集的各种 OutOfMemoryError 异常
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,17 +8,17 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/15/2019
 ms.openlocfilehash: 31cdef281b1cb26d01a4690c815e3d3621e2c053
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79271962"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Spark 的 OutOfMemoryError 异常
 
-本文介绍在 Azure HDInsight 群集中使用 Apache Spark 组件时出现的问题的故障排除步骤和可能的解决方案。
+本文介绍在 Azure HDInsight 群集中使用 Apache Spark 组件时出现的问题的故障排除步骤和可能的解决方法。
 
-## <a name="scenario-outofmemoryerror-exception-for-apache-spark"></a>方案：Apache Spark 的内存错误异常
+## <a name="scenario-outofmemoryerror-exception-for-apache-spark"></a>方案：Apache Spark 的 OutOfMemoryError 异常
 
 ### <a name="issue"></a>问题
 
@@ -60,7 +60,7 @@ java.lang.OutOfMemoryError
 
 1. 确定 Spark 应用程序将要处理的数据大小上限。 根据输入数据的最大大小、转换输入数据时生成的中间数据，以及进一步转换中间数据时生成的输出数据来估算大小。 如果初始估算值不足，请略微增大大小并反复调整，直到内存错误消减。
 
-1. 请确保要使用的 HDInsight 群集具有足够的内存和核心资源，以便能够适应 Spark 应用程序。 这可以通过查看群集 YARN UI 的"群集"的"群集"指标部分来确定，这些值为 **"使用的内存****总数**"和 **"使用的 VCore"****与"VCores 总计**"的值。
+1. 请确保要使用的 HDInsight 群集具有足够的内存和核心资源，以便能够适应 Spark 应用程序。 若要确定资源是否足够，可以在群集的 YARN UI 的“群集指标”部分中查看“已用内存与内存总计”  以及“已用 VCore 数与 VCore 总计”   的值。 
 
     ![yarn 核心内存视图](./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png)
 
@@ -90,7 +90,7 @@ java.lang.OutOfMemoryError
 
 ---
 
-## <a name="scenario-java-heap-space-error-when-trying-to-open-apache-spark-history-server"></a>方案：尝试打开 Apache Spark 历史记录服务器时Java堆空间错误
+## <a name="scenario-java-heap-space-error-when-trying-to-open-apache-spark-history-server"></a>方案：尝试打开 Apache Spark 历史记录服务器时出现 Java 堆空间错误
 
 ### <a name="issue"></a>问题
 
@@ -130,7 +130,7 @@ hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0264_1/
 
 ---
 
-## <a name="scenario-livy-server-fails-to-start-on-apache-spark-cluster"></a>方案：利维服务器无法在 Apache Spark 群集上启动
+## <a name="scenario-livy-server-fails-to-start-on-apache-spark-cluster"></a>方案：Livy 服务器无法在 Apache Spark 群集上启动
 
 ### <a name="issue"></a>问题
 
@@ -247,12 +247,12 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 
 如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
-* [火花内存管理概述](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview)。
+* [Spark 内存管理概述](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview)。
 
 * [在 HDInsight 群集上调试 Spark 应用程序](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)。
 
 * 通过 [Azure 社区支持](https://azure.microsoft.com/support/community/)获取 Azure 专家的解答。
 
-* 与[@AzureSupport](https://twitter.com/azuresupport)- 用于改善客户体验的官方 Microsoft Azure 帐户连接。 将 Azure 社区连接到正确的资源：答案、支持和专家。
+* 连接[@AzureSupport](https://twitter.com/azuresupport) -官方 Microsoft Azure 帐户来改善客户体验。 将 Azure 社区连接到正确的资源：答案、支持和专家。
 
 * 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”****，或打开“帮助 + 支持”**** 中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅包含对订阅管理和计费支持的访问权限，并且通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。

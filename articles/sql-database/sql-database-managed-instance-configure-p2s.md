@@ -1,5 +1,5 @@
 ---
-title: 配置 P2S - 托管实例
+title: 配置 P2S-托管实例
 description: 使用本地客户端计算机的点到站点连接，通过 SQL Server Management Studio 连接到 Azure SQL 数据库托管实例。
 services: sql-database
 ms.service: sql-database
@@ -12,17 +12,17 @@ ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova, jovanpop
 ms.date: 03/13/2019
 ms.openlocfilehash: 30b2ba92174996ea2bae34e7553a3258d8ebee27
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79268881"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>快速入门：配置从本地到 Azure SQL 数据库托管实例的点到站点连接
 
 本快速入门演示如何使用本地客户端计算机的点到站点连接，通过 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) 连接到 Azure SQL 数据库托管实例。 有关点到站点连接的信息，请参阅[关于点到站点 VPN](../vpn-gateway/point-to-site-about.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本快速入门：
 
@@ -63,30 +63,30 @@ ms.locfileid: "79268881"
 
 ## <a name="create-a-vpn-connection-to-your-managed-instance"></a>创建连接到托管实例的 VPN 连接
 
-1. 登录到 Azure[门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 打开在其中创建了虚拟网络网关的资源组，然后打开虚拟网络网关资源。
-3. 选择“点到站点配置”，然后选择“下载 VPN 客户端”********。
+3. 选择“点到站点配置”，然后选择“下载 VPN 客户端”   。
 
     ![下载 VPN 客户端](./media/sql-database-managed-instance-configure-p2s/download-vpn-client.png)  
 4. 在本地客户端计算机上，从 zip 文件中提取文件，然后打开包含已提取文件的文件夹。
-5. 打开 **'WindowsAmd64**文件夹，并打开**VpnClientSetupAmd64.exe**文件。
-6. 如果收到“Windows 已保护你的电脑”消息，请单击“更多信息”，然后单击“仍然运行”。************
+5. 打开 **WindowsAmd64** 文件夹，然后打开 **VpnClientSetupAmd64.exe** 文件。
+6. 如果收到“Windows 已保护你的电脑”消息，请单击“更多信息”，然后单击“仍然运行”。   
 
     ![安装 VPN 客户端](./media/sql-database-managed-instance-configure-p2s/vpn-client-defender.png)\
-7. 在“用户帐户控制”**** 对话框中单击“是”，继续下一步。
-8. 在引用虚拟网络的对话框中选择“是”，为虚拟网络安装 VPN 客户端。****
+7. 在“用户帐户控制”  对话框中单击“是”，继续下一步。
+8. 在引用虚拟网络的对话框中选择“是”，为虚拟网络安装 VPN 客户端。 
 
 ## <a name="connect-to-the-vpn-connection"></a>连接到 VPN 连接
 
-1. 在本地客户端计算机上的“网络和 Internet”中转到“VPN”，选择“托管实例”虚拟网络，以便建立到此 VNet 的连接。******** 在下图中，VNet 命名为 **MyNewVNet**。
+1. 在本地客户端计算机上的“网络和 Internet”中转到“VPN”，选择“托管实例”虚拟网络，以便建立到此 VNet 的连接。   在下图中，VNet 命名为 **MyNewVNet**。
 
     ![VPN 连接](./media/sql-database-managed-instance-configure-p2s/vpn-connection.png)  
-2. 选择“连接”****。
-3. 在对话框中，选择“连接”****。
+2. 选择“连接”  。
+3. 在对话框中，选择“连接”  。
 
     ![VPN 连接](./media/sql-database-managed-instance-configure-p2s/vpn-connection2.png)  
-4. 当系统提示连接管理器需要提升的权限才能更新路由表时，请选择“继续”****。
-5. 在“用户帐户控制”对话框中选择“是”以继续****。
+4. 当系统提示连接管理器需要提升的权限才能更新路由表时，请选择“继续”  。
+5. 在“用户帐户控制”对话框中选择“是”以继续  。
 
    已建立到托管实例 VNet 的 VPN 连接。
 
@@ -95,8 +95,8 @@ ms.locfileid: "79268881"
 ## <a name="use-ssms-to-connect-to-the-managed-instance"></a>使用 SSMS 连接到托管实例
 
 1. 在本地客户端计算机上，打开 SQL Server Management Studio (SSMS)。
-2. 在“连接到服务器”对话框的“服务器名称”框中输入托管实例的完全限定******主机名**。****
-3. 选择“SQL Server 身份验证”，提供用户名和密码，然后选择“连接”。********
+2. 在“连接到服务器”对话框的“服务器名称”框中输入托管实例的完全限定  **主机名**。 
+3. 选择“SQL Server 身份验证”，提供用户名和密码，然后选择“连接”。  
 
     ![ssms 连接](./media/sql-database-managed-instance-configure-vm/ssms-connect.png)  
 
@@ -106,4 +106,4 @@ ms.locfileid: "79268881"
 
 - 有关介绍如何从 Azure 虚拟机进行连接的快速入门，请参阅[配置点到站点连接](sql-database-managed-instance-configure-p2s.md)。
 - 如需应用程序的连接选项的概述，请参阅[将应用程序连接到托管实例](sql-database-managed-instance-connect-app.md)。
-- 要将现有的 SQL Server 数据库从本地还原到托管实例，可以使用 Azure[数据库迁移服务 （DMS） 进行迁移](../dms/tutorial-sql-server-to-managed-instance.md)，也可以使用[T-SQL RESTORE 命令](sql-database-managed-instance-get-started-restore.md)从数据库备份文件还原。
+- 若要将现有 SQL Server 数据库从本地还原到托管实例，可以使用[用于迁移的 Azure 数据库迁移服务 (DMS)](../dms/tutorial-sql-server-to-managed-instance.md)，或使用 [T-SQL RESTORE 命令](sql-database-managed-instance-get-started-restore.md)从数据库备份文件还原。

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 96bd6b461a5374b5f5bc578c5f58dbcd09cd7087
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79271377"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>开发你自己的 IoT Edge 模块
@@ -21,7 +21,7 @@ Azure IoT Edge 模块可以与其他 Azure 服务连接，帮助你实现更大�
 
 ## <a name="iot-edge-runtime-environment"></a>IoT Edge 运行时环境
 
-IoT Edge 运行时提供基础结构可集成多个 IoT Edge 模块的功能并将其部署到 IoT Edge 设备上。 任何程序都可以打包为 IoT 边缘模块。 为了充分利用 IoT Edge 通信和管理功能，在模块中运行的程序可以使用 Azure IoT 设备 SDK 连接到本地 IoT Edge 中心。
+IoT Edge 运行时提供基础结构可集成多个 IoT Edge 模块的功能并将其部署到 IoT Edge 设备上。 任意程序都可打包为 IoT Edge 模块。 若要充分利用 IoT Edge 通信和管理功能，在模块中运行的程序可以使用 Azure IoT 设备 SDK 连接到本地 IoT Edge 中心。
 
 ## <a name="using-the-iot-edge-hub"></a>使用 IoT Edge 中心
 
@@ -31,19 +31,19 @@ IoT Edge 中心提供两种主要功能：连接到 IoT 中心的代理和本地
 
 IoT 中心在以下意义上将模块实例视为与设备类似：
 
-* 它有一个模块孪生，与[设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)和该设备的其他模块孪生分离;
+* 它拥有模块孪生，这与[设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)和该设备的其他模块孪生不同且相隔离；
 * 它可以发送[设备到云消息](../iot-hub/iot-hub-devguide-messaging.md)；
 * 它可以接收专门针对其标识的[直接方法](../iot-hub/iot-hub-devguide-direct-methods.md)。
 
-目前，模块无法接收云到设备的消息或使用文件上载功能。
+当前，模块不能接收云到设备消息，也不能使用文件上传功能。
 
-编写模块时，可以使用[Azure IoT 设备 SDK](../iot-hub/iot-hub-devguide-sdks.md)连接到 IoT 边缘中心，并使用上述功能，就像将 IoT 中心与设备应用程序一起使用时一样。 IoT Edge 模块和 IoT 设备应用程序的唯一区别是，您必须引用模块标识而不是设备标识。
+编写模块时，可使用 [Azure IoT 设备 SDK](../iot-hub/iot-hub-devguide-sdks.md) 连接到 IoT Edge 中心，使用上述将 IoT 中心用于设备应用程序时的功能。 IoT Edge 模块和 IoT 设备应用程序之间的唯一区别在于，你必须引用模块标识而非设备标识。
 
 ### <a name="device-to-cloud-messages"></a>设备到云的消息
 
 若要启用设备到云消息的复杂处理，IoT Edge 中心需要提供模块之间以及模块与 IoT 中心之间消息的声明性路由。 声明性路由允许模块拦截并处理其他模块发送的消息，并将它们传播到复杂管道。 有关详细信息，请参阅[在 IoT Edge 中部署模块和建立路由](module-composition.md)。
 
-IoT Edge 模块（与正常的 IoT 中心设备应用程序相比）可以接收由其本地 IoT Edge 中心进行处理的设备到云的消息。
+与常规 IoT 中心设备应用程序不同，IoT Edge 模块可以接收其本地 IoT Edge 中心所代理的设备到云消息，以便进行处理。
 
 IoT Edge 中心基于[部署清单](module-composition.md)中介绍的声明性路由将消息传播到模块。 开发 IoT Edge 模块时，可以通过设置消息处理程序来接收这些消息。
 
@@ -51,7 +51,7 @@ IoT Edge 中心基于[部署清单](module-composition.md)中介绍的声明性�
 
 最后，Edge 中心处理的设备到云消息标有以下系统属性：
 
-| properties | 描述 |
+| 属性 | 说明 |
 | -------- | ----------- |
 | $connectionDeviceId | 发送消息的客户端的设备 ID |
 | $connectionModuleId | 发送消息的模块的模块 ID |
@@ -65,7 +65,7 @@ IoT Edge 中心基于[部署清单](module-composition.md)中介绍的声明性�
 1. 在应用程序中创建 ModuleClient 实例。
 2. 确保应用程序接受该设备上 IoT Edge 中心提供的证书。
 
-创建一个 ModuleClient 实例，将模块连接到设备上运行的 IoT Edge 中心，其方式与 DeviceClient 实例将 IoT 设备连接到 IoT 中心类似。 有关 ModuleClient 类及其通信方法的详细信息，请参阅首选 SDK 语言的 API 引用：C#、C、Python、Java 或[Node.js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest)。 [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet) [C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h) [Python](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python) [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)
+创建一个 ModuleClient 实例，将模块连接到设备上运行的 IoT Edge 中心，其方式与 DeviceClient 实例将 IoT 设备连接到 IoT 中心类似。 有关 ModuleClient 类及其通信方法的更多信息，请参阅首选 SDK 语言的 API 参考：[C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)、[C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h)、[Python](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python)、[Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable) 或 [Node.js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest)。
 
 ## <a name="language-and-architecture-support"></a>语言和体系结构支持
 

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
 ms.openlocfilehash: 7c80ba6b15cec08da9bcefea243493a824ef66bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79276473"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 词汇表：Azure 平台上的云术语字典
@@ -37,7 +37,7 @@ Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 �
 [应用服务应用](#app-service-app)的另一个名称。
 
 ## <a name="app-service-app"></a>应用服务应用
-[Azure 应用服务](app-service/overview.md)为托管网站或 Web 应用程序、Web API 或[移动应用后端](app-service-mobile/app-service-mobile-value-prop.md)而提供的计算资源。 应用服务应用也称为“应用服务”**、“Web 应用”**、“API 应用”** 和“移动应用”**。
+[Azure App Service](app-service/overview.md)提供的计算资源，用于托管网站或 web 应用程序、web API 或[移动应用后端](app-service-mobile/app-service-mobile-value-prop.md)。 应用服务应用也称为“应用服务”**、“Web 应用”**、“API 应用”** 和“移动应用”**。
 
 ## <a name="availability-set"></a>可用性集
 可一起管理的、用于提供应用程序冗余和可靠性的虚拟机集合。 使用可用性集可确保在计划内或计划外维护事件期间，至少有一个虚拟机可用。  
@@ -46,12 +46,12 @@ Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 �
 ## <a name="azure-classic-deployment-model"></a><a name="classic-model"></a>Azure 经典部署模型
 用于在 Azure 中部署资源的两个[部署模型](resource-manager-deployment-model.md)中的一个（新模型是 Azure 资源管理器）。 有些 Azure 服务仅支持 Resource Manager 部署模型，有些仅支持经典部署模型，而有些则两种模型都支持。 每个 Azure 服务的文档中指定了其支持的模型。
 
-## <a name="azure-command-line-interface-cli"></a><a name="cli"></a>Azure 命令行接口 (CLI)
+## <a name="azure-command-line-interface-cli"></a><a name="cli"></a>Azure 命令行接口（CLI）
 一个命令行接口，可用于从 Windows、macOS 和 Linux 管理 Azure 服务。  某些服务或服务功能只能通过 PowerShell 或 CLI 来管理。 请参阅 [Azure CLI](/cli/azure)
 
-## <a name="azure-powershell"></a><a name="powershell"></a>Azure 电源外壳
+## <a name="azure-powershell"></a><a name="powershell"></a>Azure PowerShell
 一个命令行接口，可用于从 Windows 电脑通过命令行管理 Azure 服务。 某些服务或服务功能只能通过 PowerShell 或 CLI 来管理。
-[请参阅如何安装和配置 Azure PowerShell](/powershell/azure/overview)
+请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)
 
 ## <a name="azure-resource-manager-deployment-model"></a><a name="arm-model"></a>Azure 资源管理器部署模型
 用于在 Microsoft Azure 中部署资源的两个[部署模型](resource-manager-deployment-model.md)中的一个（另一个是经典部署模型）。 有些 Azure 服务仅支持 Resource Manager 部署模型，有些仅支持经典部署模型，而有些则两种模型都支持。 每个 Azure 服务的文档中指定了其支持的模型。
@@ -75,7 +75,7 @@ Microsoft Azure 词汇表是适用于 Azure 平台的简短云术语字典。 �
 
 ## <a name="limits"></a>限制
 可以创建的资源数目或可实现的性能基准。 限制通常与订阅、服务和产品关联。  
-请参阅 [Azure 订阅和服务限制、配额和约束](azure-resource-manager/management/azure-subscription-service-limits.md)
+请参阅[Azure 订阅和服务限制、配额和约束](azure-resource-manager/management/azure-subscription-service-limits.md)
 
 ## <a name="load-balancer"></a>负载均衡器
 在网络中的计算机之间分散传入流量的资源。 在 Azure 中，负载均衡器将流量分散到负载均衡器集内定义的虚拟机。 [负载均衡器](load-balancer/load-balancer-overview.md)可以面向 Internet，也可以是内部的。  
@@ -114,11 +114,11 @@ Resource Manager 中的容器，用于保存应用程序的相关资源。 资�
 用于控制可分配给用户、组和服务的访问权限的方式。 角色能够对 Azure 资源执行创建、管理和读取等操作。  
 请参阅 [RBAC：内置角色](role-based-access-control/built-in-roles.md)
 
-## <a name="service-level-agreement-sla"></a><a name="sla"></a>服务级别协议 （SLA）
+## <a name="service-level-agreement-sla"></a><a name="sla"></a>服务级别协议（SLA）
 用于描述 Microsoft 在运行时间和连接性方面所做承诺的协议。 每个 Azure 服务都有具体的 SLA。  
 请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/)
 
-## <a name="shared-access-signature-sas"></a><a name="sas"></a>共享访问签名 （SAS）
+## <a name="shared-access-signature-sas"></a><a name="sas"></a>共享访问签名（SAS）
 使用该签名能够在不公开帐户密钥的情况下，授予对资源的有限访问权限。 例如，[Azure 存储使用 SAS](storage/common/storage-dotnet-shared-access-signature-part-1.md) 授予客户端对 Blob 等对象的访问权限。 [IoT 中心使用 SAS](iot-hub/iot-hub-devguide-security.md#security-tokens) 授予设备发送遥测数据的权限。
 
 ## <a name="storage-account"></a>存储帐户
@@ -147,13 +147,13 @@ Resource Manager 中的容器，用于保存应用程序的相关资源。 资�
 请参阅[关于虚拟机扩展和功能 (Windows)](virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)或[关于虚拟机扩展和功能 (Linux)](virtual-machines/linux/extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="virtual-network"></a><a name="vnet"></a>虚拟网络
-在 Azure 资源之间提供连接并与其他所有 Azure 租户隔离的网络。 [Azure VPN 网关](vpn-gateway/vpn-gateway-about-vpngateways.md)允许您在虚拟网络之间以及虚拟网络和本地网络之间建立连接。 可以完全控制虚拟网络中的 IP 地址块、DNS 设置、安全策略和路由表。  
+在 Azure 资源之间提供连接并与其他所有 Azure 租户隔离的网络。 通过[AZURE VPN 网关](vpn-gateway/vpn-gateway-about-vpngateways.md)，你可以在虚拟网络之间以及虚拟网络与本地网络之间建立连接。 可以完全控制虚拟网络中的 IP 地址块、DNS 设置、安全策略和路由表。  
 请参阅[虚拟网络概述](virtual-network/virtual-networks-overview.md)  
 
 ## <a name="web-app"></a>Web 应用
 又叫[应用服务应用](#app-service-app)。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [Azure 入门](https://azure.microsoft.com/get-started/)
 * [云资源中心](https://azure.microsoft.com/resources/)  

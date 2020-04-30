@@ -1,13 +1,13 @@
 ---
 title: 创建 Azure Service Fabric 容器应用程序
-description: 在 Azure Service Fabric 上创建第一个 Windows 容器应用程序。 使用 Python 应用程序构建 Docker 映像，将映像推送到容器注册表，然后生成容器并将容器部署到 Azure 服务结构。
+description: 在 Azure Service Fabric 上创建第一个 Windows 容器应用程序。 使用 Python 应用程序生成 Docker 映像，将该映像推送到容器注册表，然后生成容器并将其部署到 Azure Service Fabric。
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.openlocfilehash: 8e1de48874655721f708bfd1dfdda8d975f94c4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79258468"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>在 Windows 上创建第一个 Service Fabric 容器应用程序
@@ -16,7 +16,7 @@ ms.locfileid: "79258468"
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-在 Service Fabric 群集上运行 Windows 容器中的现有应用程序不需要对应用程序进行任何更改。 本文将引导您创建包含 Python [Flask](http://flask.pocoo.org/) Web 应用程序的 Docker 映像并将其部署到 Azure 服务结构群集。 此外，将通过 [Azure 容器注册表](/azure/container-registry/)共享容器化的应用程序。 本文假定读者对 Docker 有一个基本的了解。 阅读 [Docker Overview](https://docs.docker.com/engine/understanding-docker/)（Docker 概述）即可了解 Docker。
+在 Service Fabric 群集上运行 Windows 容器中的现有应用程序不需要对应用程序进行任何更改。 本文逐步讲解如何创建包含 Python [Flask](http://flask.pocoo.org/) Web 应用程序的 Docker 映像并将其部署到 Azure Service Fabric 群集。 此外，会通过 [Azure 容器注册表](/azure/container-registry/)共享容器化的应用程序。 本文假定读者对 Docker 有一个基本的了解。 阅读 [Docker Overview](https://docs.docker.com/engine/understanding-docker/)（Docker 概述）即可了解 Docker。
 
 > [!NOTE]
 > 本文适用于 Windows 开发环境。  Service Fabric 群集运行时和 Docker 运行时必须在同一 OS 上运行。  不能在 Linux 群集上运行 Windows 容器。
@@ -28,8 +28,8 @@ ms.locfileid: "79258468"
 
 * 一台运行以下软件的开发计算机：
   * Visual Studio 2015 或 Visual Studio 2019。
-  * [服务结构 SDK 和工具](service-fabric-get-started.md)。
-  *  适用于 Windows 的 Docker。 [获取 Windows（稳定）的 Docker CE。](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description) 安装并启动 Docker 以后，右键单击任务栏图标，并选择“切换到 Windows 容器”。**** 此步骤是运行基于 Windows 的 Docker 映像所必需的。
+  * [Service Fabric SDK 和工具](service-fabric-get-started.md)。
+  *  适用于 Windows 的 Docker。 [获取适用于 Windows 的 Docker CE（稳定版）](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)。 安装并启动 Docker 以后，右键单击任务栏图标，并选择“切换到 Windows 容器”。  此步骤是运行基于 Windows 的 Docker 映像所必需的。
 
 * 有三个或更多节点在使用容器的 Windows Server 上运行的 Windows 群集。 
 
@@ -37,8 +37,8 @@ ms.locfileid: "79258468"
   
 若要确定使用容器的 Windows Server 版本，请在开发计算机上从 Windows 命令提示符运行 `ver` 命令：
 
-* 如果版本包含 x.x.14323.x，[创建群集](service-fabric-cluster-creation-via-portal.md)时请选择 WindowsServer 2016-Datacenter-with-Containers 作为操作系统****。
-  * 如果版本包含 x.x.16299.x，[创建群集](service-fabric-cluster-creation-via-portal.md)时请选择 WindowsServerSemiAnnual Datacenter-Core-1709-with-Containers 作为操作系统****。
+* 如果版本包含 x.x.14323.x，[创建群集](service-fabric-cluster-creation-via-portal.md)时请选择 WindowsServer 2016-Datacenter-with-Containers 作为操作系统   。
+  * 如果版本包含 x.x.16299.x，[创建群集](service-fabric-cluster-creation-via-portal.md)时请选择 WindowsServerSemiAnnual Datacenter-Core-1709-with-Containers 作为操作系统   。
 
 * 一个位于 Azure 容器注册表中的注册表 - 在 Azure 订阅中[创建容器注册表](../container-registry/container-registry-get-started-portal.md)。
 
@@ -127,7 +127,7 @@ helloworldapp                 latest              8ce25f5d6a79        2 minutes 
 ```
 
 ## <a name="run-the-application-locally"></a>在本地运行应用程序
-请先在本地验证映像，再将其推送到容器注册表。 
+请先在本地验证映像，然后再将其推送到容器注册表。 
 
 运行应用程序：
 
@@ -135,14 +135,14 @@ helloworldapp                 latest              8ce25f5d6a79        2 minutes 
 docker run -d --name my-web-site helloworldapp
 ```
 
-name 用于为运行的容器（而不是容器 ID）命名。**
+*name* 为运行的容器（而不是容器 ID）命名。
 
 容器启动以后，查找其 IP 地址，以便通过浏览器连接到正在运行的容器：
 ```
 docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" my-web-site
 ```
 
-如果该命令未返回任何内容，则运行以下命令并检查 IP 地址的**NetworkSettings**->**网络**元素：
+如果该命令未返回任何内容，请运行以下命令并检查 IP 地址的 **NetworkSettings**->**Networks** 元素：
 ```
 docker inspect my-web-site
 ```
@@ -168,7 +168,7 @@ docker rm my-web-site
 
 运行 ``docker login``，以使用[注册表凭据](../container-registry/container-registry-authentication.md)登录到容器注册表。
 
-以下示例传递了 Azure Active Directory [服务主体](../active-directory/develop/app-objects-and-service-principals.md)的 ID 和密码。 例如，你可能在自动化方案中向注册表分配了服务主体。 或者，可以使用注册表用户名和密码登录。
+以下示例传递了 Azure Active Directory [服务主体](../active-directory/develop/app-objects-and-service-principals.md)的 ID 和密码。 例如，在自动化方案中，可能已向注册表分配了服务主体。 或者，可以使用注册表用户名和密码登录。
 
 ```
 docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
@@ -189,11 +189,11 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 ## <a name="create-the-containerized-service-in-visual-studio"></a>在 Visual Studio 中创建容器化服务
 Service Fabric SDK 和工具提供服务模板，用于创建容器化应用程序。
 
-1. 启动 Visual Studio。 选择 **"文件** > **新项目** > **"。**
-2. 选择“Service Fabric 应用程序”，将其命名为“MyFirstContainer”，并单击“确定”。********
-3. 从“服务模板”列表中选择“容器”。********
+1. 启动 Visual Studio。 选择“文件” > “新建” > “项目”    。
+2. 选择“Service Fabric 应用程序”，将其命名为“MyFirstContainer”，并单击“确定”。  
+3. 从“服务模板”列表中选择“容器”。  
 4. 在“映像名称”中输入“myregistry.azurecr.io/samples/helloworldapp”，这是已推送到容器存储库中的映像。****
-5. 为服务命名，然后单击 **"确定**"。
+5. 为服务命名，并单击“确定”  。
 
 ## <a name="configure-communication"></a>配置通信
 容器化服务需要使用终结点进行通信。 请将 `Endpoint` 元素以及协议、端口和类型添加到 ServiceManifest.xml 文件。 在此示例中，使用固定端口 8081。 如果未指定端口，则从应用程序端口范围中选择一个随机端口。 
@@ -208,7 +208,7 @@ Service Fabric SDK 和工具提供服务模板，用于创建容器化应用程�
 > [!NOTE]
 > 可以通过使用适用的属性值声明其他 EndPoint 元素来添加服务的其他终结点。 每个端口可以仅声明一个协议值。
 
-定义终结点后，Service Fabric 即可将该终结点发布到命名服务。 在群集中运行的其他服务可以解析此容器。 还可以使用[反向代理](service-fabric-reverseproxy.md)进行容器到容器通信。 将 HTTP 侦听端口和想要与其通信的服务名称作为环境变量提供给反向代理，以此方式进行通信。
+定义终结点后，Service Fabric 即可将该终结点发布到命名服务。 在群集中运行的其他服务可以解析此容器。 还可以使用[反向代理](service-fabric-reverseproxy.md)执行容器间的通信。 将 HTTP 侦听端口和想要与其通信的服务名称作为环境变量提供给反向代理，以此方式进行通信。
 
 该服务在特定端口（本例中为 8081）上进行侦听。 当应用程序部署到 Azure 中的群集时，该群集和应用程序都在 Azure 负载均衡器之后运行。 应用程序端口必须在 Azure 负载均衡器中打开，以便入站流量能够通过该服务。  可以在 Azure 负载均衡器中使用 [PowerShell 脚本](./scripts/service-fabric-powershell-open-port-in-load-balancer.md)来打开此端口，也可以在 [Azure 门户](https://portal.azure.com)中将其打开。
 
@@ -256,7 +256,7 @@ Service Fabric SDK 和工具提供服务模板，用于创建容器化应用程�
 
 ## <a name="configure-container-repository-authentication"></a>配置容器存储库身份验证
 
-请参阅[容器存储库身份验证](configure-container-repository-credentials.md)，了解如何为容器映像下载配置不同类型的身份验证。
+若要了解如何为容器映像下载配置不同类型的身份验证，请参阅[容器存储库身份验证](configure-container-repository-credentials.md)。
 
 ## <a name="configure-isolation-mode"></a>配置隔离模式
 Windows 支持容器的两种隔离模式：进程和 Hyper-V。 使用进程隔离模式时，在同一台主机计算机上运行的所有容器将与主机共享内核。 使用 Hyper-V 隔离模式时，内核将在每个 Hyper-V 容器与容器主机之间隔离。 隔离模式在应用程序清单文件中的 `ContainerHostPolicies` 元素内指定。 可以指定的隔离模式为 `process`、`hyperv` 和 `default`。 Windows Server 主机上默认采用进程隔离模式。 Windows 10 主机仅支持 Hyper-V 隔离模式，因此无论容器的离模式设置如何，它都在 Hyper-V 隔离模式下运行。 以下代码片段演示如何在应用程序清单文件中指定隔离模式。
@@ -573,7 +573,7 @@ Service Fabric（6.1 或更高版本）支持保留终止的或无法启动的�
  <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 
 ```
 
-**** ContainersRetentionCount 设置指定在容器故障时需保留的容器数。 如果指定一个负值，则会保留所有故障容器。 未指定**容器保留计数**属性时，将不会保留任何容器。 **** ContainersRetentionCount 属性还支持应用程序参数，因此用户可以为测试性群集和生产群集指定不同的值。 使用此功能时可使用放置约束，将容器服务的目标设置为特定的节点，防止将容器服务移至其他节点。 使用此功能保留的容器必须手动删除。
+**** ContainersRetentionCount 设置指定在容器故障时需保留的容器数。 如果指定一个负值，则会保留所有故障容器。 如果未指定**ContainersRetentionCount**属性，则不会保留任何容器。 **** ContainersRetentionCount 属性还支持应用程序参数，因此用户可以为测试性群集和生产群集指定不同的值。 使用此功能时可使用放置约束，将容器服务的目标设置为特定的节点，防止将容器服务移至其他节点。 使用此功能保留的容器必须手动删除。
 
 ## <a name="start-the-docker-daemon-with-custom-arguments"></a>使用自定义参数启动 Docker 守护程序
 

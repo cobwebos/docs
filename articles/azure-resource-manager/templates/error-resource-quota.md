@@ -4,10 +4,10 @@ description: 说明在使用 Azure 资源管理器部署资源时如何解决资
 ms.topic: troubleshooting
 ms.date: 03/09/2018
 ms.openlocfilehash: 410b086b39d63d03491d390364f4aec6300fc7c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79273782"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>解决资源配额错误
@@ -40,7 +40,7 @@ please delete some resources of this type before creating a new one.
 已按资源组、订阅、帐户和其他范围应用配额。 例如，订阅可能配置为限制某个区域的核心数目。 如果尝试部署超过允许核心数目的虚拟机，则会收到指出超过配额的错误消息。
 有关完整的配额信息，请参阅 [Azure 订阅和服务限制、配额与约束](../../azure-resource-manager/management/azure-subscription-service-limits.md)。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -68,7 +68,7 @@ az vm list-usage --location "South Central US"
 
 ### <a name="powershell"></a>PowerShell
 
-对于 PowerShell，可使用 Get-AzVMUsage 命令查找虚拟机配额****。
+对于 PowerShell，可使用 Get-AzVMUsage 命令查找虚拟机配额  。
 
 ```powershell
 Get-AzVMUsage -Location "South Central US"
@@ -93,7 +93,7 @@ Virtual Machines                             0 10000 Count
 >
 >
 
-1. 选择**订阅**。
+1. 选择 **订阅**。
 
    ![Subscriptions](./media/error-resource-quota/subscriptions.png)
 
@@ -101,11 +101,11 @@ Virtual Machines                             0 10000 Count
 
    ![选择订阅](./media/error-resource-quota/select-subscription.png)
 
-3. 选择**使用情况和配额**
+3. 选择“使用情况 + 配额” 
 
    ![选择使用情况和配额](./media/error-resource-quota/select-usage-quotas.png)
 
-4. 在右上角，选择 **"请求增加**"。
+4. 在右上角选择“请求增加”  。
 
    ![请求增加](./media/error-resource-quota/request-increase.png)
 

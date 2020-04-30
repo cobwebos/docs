@@ -1,6 +1,6 @@
 ---
-title: Azure IoT 中心设备配置服务 - 安全概念
-description: 描述使用设备配置服务 （DPS） 和 IoT 中心特定于设备的安全预配概念
+title: Azure IoT 中心设备预配服务-安全概念
+description: 介绍专用于具有设备预配服务（DPS）和 IoT 中心的设备的安全设置概念
 author: nberdy
 ms.author: nberdy
 ms.date: 04/04/2019
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 3191e9886604af9b2a26b71a89cee699197585c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79271559"
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT 中心设备预配服务安全性概念 

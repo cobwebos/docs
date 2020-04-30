@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: jgao
 ms.openlocfilehash: 585e2773ea5d6af184f85e65b63d39b60d632146
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79273626"
 ---
 # <a name="use-visual-studio-code-to-create-azure-resource-manager-templates"></a>使用 Visual Studio Code 创建 Azure 资源管理器模板
@@ -23,11 +23,11 @@ Visual studio Code 支持 MacOS、Windows 和 Linux。  可以从 [Visual Studio
 ## <a name="install-resource-manager-tools-extension"></a>安装资源管理器工具扩展
 
 1. 打开 Visual Studio Code。
-1. 在左侧菜单中选择“扩展”。**** 或者，在“视图”菜单中选择“扩展”打开“扩展”窗格。********
+1. 在左侧菜单中选择“扩展”。  或者，在“视图”菜单中选择“扩展”打开“扩展”窗格。  
 
     ![安装 Visual Studio Code 资源管理器工具扩展](./media/use-vs-code-to-create-template/resource-manager-visual-studio-code-tools-extension.png)
-1. 搜索“资源管理器”。****
-1. 在“Azure 资源管理器工具”下选择“安装”。********
+1. 搜索“资源管理器”。 
+1. 在“Azure 资源管理器工具”下选择“安装”。  
 
 ## <a name="the-extension-features"></a>扩展功能
 
@@ -69,7 +69,7 @@ Visual studio Code 支持 MacOS、Windows 和 Linux。  可以从 [Visual Studio
 
 ### <a name="go-to-definition-for-variable-and-parameter-references"></a>转到变量和参数引用的定义
 
-您可以使用**Ctrl+Click**跳转到定义，或者使用屏幕截图所示的上下文菜单：Visual ![Studio 代码资源管理器工具扩展到定义](./media/use-vs-code-to-create-template/resource-manager-tools-extension-context-menu.png)
+你可以使用**Ctrl + 单击**跳转到该定义，或使用屏幕截图中所示的上下文菜单（ ![Visual Studio Code 资源管理器工具扩展转到 "定义"。](./media/use-vs-code-to-create-template/resource-manager-tools-extension-context-menu.png)
 
 可以在**按住 Ctrl+Alt 的同时单击**，在另一侧打开定义。
 
@@ -120,5 +120,5 @@ Visual studio Code 支持 MacOS、Windows 和 Linux。  可以从 [Visual Studio
 
 ## <a name="next-steps"></a>后续步骤
 
-- 要了解如何创建 Azure 资源管理器模板，请参阅[教程：创建和部署第一个 Azure 资源管理器模板](template-tutorial-create-first-template.md)。
-- 要使用可视化工作室代码快速入门，请参阅[快速入门：使用可视化工作室代码创建 Azure 资源管理器模板](quickstart-create-templates-use-visual-studio-code.md)
+- 若要了解如何创建 Azure 资源管理器模板，请参阅[教程：创建和部署第一个 Azure 资源管理器模板](template-tutorial-create-first-template.md)。
+- 若要通过使用 Visual Studio Code 进行快速入门，请参阅[快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板](quickstart-create-templates-use-visual-studio-code.md)

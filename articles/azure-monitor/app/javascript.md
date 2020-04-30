@@ -1,20 +1,20 @@
 ---
-title: 适用于 JavaScript Web 应用的 Azure 应用程序见解
-description: 获取页面视图和会话计数、Web 客户端数据、单页应用程序 （SPA） 和跟踪使用模式。 检测 JavaScript 网页中的异常和性能问题。
+title: 适用于 JavaScript web 应用的 Azure 应用程序 Insights
+description: 获取页面视图和会话计数、web 客户端数据、单页面应用程序（SPA）和跟踪使用模式。 检测 JavaScript 网页中的异常和性能问题。
 ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
 ms.openlocfilehash: 5414a70180a82be8253dace7d800c90c1ae6a9bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79276070"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
 
-了解网页或应用的性能和使用情况。 如果将[应用程序见解](app-insights-overview.md)添加到页面脚本中，您将获得页面加载和 AJAX 调用的时间、计数以及浏览器异常和 AJAX 失败的详细信息，以及用户和会话计数。 所有这些信息可按页面、客户端 OS 和浏览器版本、地理位置和其他维度细分。 可以针对失败计数或页面加载缓慢情况设置警报。 并且通过在 JavaScript 代码中插入跟踪调用，可以跟踪网页应用程序的不同功能的使用情况。
+了解网页或应用的性能和使用情况。 如果你将[Application Insights](app-insights-overview.md)添加到页面脚本，则会获取页面加载和 ajax 调用、计数以及浏览器异常和 ajax 故障的详细信息以及用户和会话计数的计时。 所有这些信息可按页面、客户端 OS 和浏览器版本、地理位置和其他维度细分。 可以针对失败计数或页面加载缓慢情况设置警报。 并且通过在 JavaScript 代码中插入跟踪调用，可以跟踪网页应用程序的不同功能的使用情况。
 
 可以在任何网页中使用 Application Insights - 刚刚添加了 JavaScript 的简短片段。 如果 Web 服务是 [Java](java-get-started.md) 或 [ASP.NET](asp-net.md)，则你可以将服务器端 SDK 与客户端 JavaScript SDK 结合使用，以全方面地了解应用的性能。
 
@@ -24,13 +24,13 @@ ms.locfileid: "79276070"
 2. 从你要将 JavaScript 遥测数据发送到的资源复制检测密钥。
 3. 通过以下两个选项之一，将 Application Insights JavaScript SDK 添加到网页或应用：
     * [npm 设置](#npm-based-setup)
-    * [JavaScript 代码段](#snippet-based-setup)
+    * [JavaScript 代码片段](#snippet-based-setup)
 
 > [!IMPORTANT]
-> 仅使用一种方法将 JavaScript SDK 添加到应用程序中。 如果使用 NPM 安装程序，请不要使用代码段，反之亦然。
+> 仅使用一种方法将 JavaScript SDK 添加到应用程序。 如果使用 NPM 安装程序，请不要使用代码片段，反之亦然。
 
 > [!NOTE]
-> NPM 安装程序将 JavaScript SDK 作为项目的依赖项安装，启用 IntelliSense，而代码段在运行时获取 SDK。 两者都支持相同的功能。 但是，希望更多自定义事件和配置的开发人员通常选择 NPM 安装程序，而希望快速启用开箱即用 Web 分析的用户选择代码段。
+> NPM 安装程序会将 JavaScript SDK 作为依赖项安装到项目中，启用 IntelliSense，而代码片段会在运行时获取 SDK。 两者都支持相同的功能。 但是，需要更多自定义事件和配置的开发人员通常会选择 NPM 设置，而用户则需要快速启用现成的 web analytics 来选择代码片段。
 
 ### <a name="npm-based-setup"></a>基于 npm 的设置
 
@@ -61,7 +61,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>将遥测数据发送到 Azure 门户
 
-默认情况下，Application Insights JavaScript SDK 会自动收集许多遥测项，这些项有助于确定应用程序和底层用户体验的运行状况。 其中包括:
+默认情况下，Application Insights JavaScript SDK 会自动收集许多遥测项，这些项有助于确定应用程序和底层用户体验的运行状况。 这些方法包括：
 
 - 应用中**未捕获到的异常**，包括以下相关信息
     - 堆栈跟踪
@@ -82,7 +82,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 ### <a name="telemetry-initializers"></a>遥测初始化表达式
 遥测初始化表达式用于在从用户浏览器发送收集的遥测内容之前先对其进行修改。 它们还可用于返回 `false` 以阻止发送某些遥测数据。 可将多个遥测初始化表达式添加到 Application Insights 实例，它们将按添加顺序执行。
 
-的`addTelemetryInitializer`输入参数是一个回调，它将[`ITelemetryItem`](https://github.com/microsoft/ApplicationInsights-JS/blob/master/API-reference.md#addTelemetryInitializer)作为 参数并返回`boolean`或`void`。 如果返回 `false`，则不发送遥测项，否则将继续处理下一个遥测初始化表达式（如果有），或者将遥测项发送到遥测集合终结点。
+的输入`addTelemetryInitializer`参数是一个回调，它[`ITelemetryItem`](https://github.com/microsoft/ApplicationInsights-JS/blob/master/API-reference.md#addTelemetryInitializer)采用作为参数并返回`boolean`或。 `void` 如果返回 `false`，则不发送遥测项，否则将继续处理下一个遥测初始化表达式（如果有），或者将遥测项发送到遥测集合终结点。
 
 使用遥测初始化表达式的示例：
 ```ts
@@ -96,10 +96,10 @@ appInsights.addTelemetryInitializer(() => false); // Nothing is sent after this 
 appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ```
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 大多数配置字段的命名都可默认为 false。 除 `instrumentationKey` 以外的所有字段都是可选的。
 
-| “属性” | 默认 | 描述 |
+| 名称 | 默认 | 说明 |
 |------|---------|-------------|
 | instrumentationKey | null | **必需**<br>从 Azure 门户获取的检测密钥。 |
 | accountId | null | 可选的帐户 ID（如果应用将用户分组到帐户中）。 不允许使用空格、逗号、分号、等于或竖线 |
@@ -109,9 +109,9 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | maxBatchInterval | 15000 | 发送前要批处理遥测数据的时间长短（毫秒） |
 | disableExceptionTracking | false | 如果为 true，则不自动收集异常。 默认值为 false。 |
 | disableTelemetry | false | 如果为 true，则不收集或发送遥测数据。 默认值为 false。 |
-| enableDebug | false | 如果为 true，则不管 SDK 日志记录设置如何，**内部**调试数据都将引发为异常，**而不是**记录这些数据。 默认值为 false。 <br>***注：*** 启用此设置将导致每当发生内部错误时遥测数据丢弃。 这可能有利于快速识别 SDK 的配置或用法问题。 如果你不希望在调试时丢失遥测数据，请考虑使用 `consoleLoggingLevel` 或 `telemetryLoggingLevel`，而不是 `enableDebug`。 |
-| loggingLevelConsole | 0 | 将**内部** Application Insights 错误记录到控制台。 <br>0：关闭， <br>1： 仅严重错误， <br>2： 一切（错误&警告） |
-| loggingLevelTelemetry | 1 | 将**内部** Application Insights 错误作为遥测数据发送。 <br>0：关闭， <br>1： 仅严重错误， <br>2： 一切（错误&警告） |
+| enableDebug | false | 如果为 true，则不管 SDK 日志记录设置如何，**内部**调试数据都将引发为异常，**而不是**记录这些数据。 默认值为 false。 <br>***注意：*** 如果启用此设置，则在发生内部错误时，将导致丢弃遥测数据。 这可能有利于快速识别 SDK 的配置或用法问题。 如果你不希望在调试时丢失遥测数据，请考虑使用 `consoleLoggingLevel` 或 `telemetryLoggingLevel`，而不是 `enableDebug`。 |
+| loggingLevelConsole | 0 | 将**内部** Application Insights 错误记录到控制台。 <br>0：关闭， <br>1：仅严重错误， <br>2：所有内容（错误 & 警告） |
+| loggingLevelTelemetry | 1 | 将**内部** Application Insights 错误作为遥测数据发送。 <br>0：关闭， <br>1：仅严重错误， <br>2：所有内容（错误 & 警告） |
 | diagnosticLogInterval | 10000 | 内部日志记录队列的（内部）轮询间隔（以毫秒为单位） |
 | samplingPercentage | 100 | 要发送的事件百分比。 默认值为 100，表示发送所有事件。 如果你希望避免大型应用程序达到数据上限，请设置此项。 |
 | autoTrackPageVisitTime | false | 如果为 true，则对于页面视图，将跟踪前一个检测的页面的查看时间并将其作为遥测数据发送，同时，为当前的页面视图启动新的计时器。 默认值为 false。 |
@@ -199,7 +199,7 @@ dataset
 
 #### <a name="link-to-blob-storage-account"></a>链接到 Blob 存储帐户
 
-您可以将应用程序见解资源链接到自己的 Azure Blob 存储容器，以自动取消调用堆栈。 要开始，请参阅[自动源映射支持](./source-map-support.md)。
+可以将 Application Insights 资源链接到自己的 Azure Blob 存储容器，以自动 unminify 调用堆栈。 若要开始，请参阅[自动源映射支持](./source-map-support.md)。
 
 ### <a name="drag-and-drop"></a>拖放
 
@@ -217,26 +217,26 @@ npm i --save @microsoft/applicationinsights-web-basic
 
 ## <a name="examples"></a>示例
 
-有关可运行的示例，请参阅[应用程序见解 JavaScript SDK 示例](https://github.com/topics/applicationinsights-js-demo)
+有关可运行的示例，请参阅[Application Insights JAVASCRIPT SDK 示例](https://github.com/topics/applicationinsights-js-demo)
 
-## <a name="upgrading-from-the-old-version-of-application-insights"></a>从旧版本的应用程序见解进行升级
+## <a name="upgrading-from-the-old-version-of-application-insights"></a>从旧版本的 Application Insights 升级
 
 SDK V2 版本中的重大更改：
-- 为了提供更好的 API 签名，某些 API 调用（如 trackPageView 和 trackException）已更新。 不支持在 Internet 资源管理器 8 中运行以及浏览器的早期版本。
-- 遥测信封具有由于数据架构更新而导致的字段名称和结构更改。
-- 已将 `context.operation` 转移到 `context.telemetryTrace`。 某些字段也已更改 （`operation.id` --> `telemetryTrace.traceID`。
-  - 要手动刷新当前页面视图 ID（例如，在 SPA 应用中），请使用`appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()`。
+- 为了实现更好的 API 签名，某些 API 调用（例如 trackPageView 和 trackException）已更新。 不支持在 Internet Explorer 8 和早期版本的浏览器中运行。
+- 由于数据架构更新，遥测信封具有字段名称和结构更改。
+- 已将 `context.operation` 转移到 `context.telemetryTrace`。 还更改了某些字段（`operation.id` --> `telemetryTrace.traceID`）。
+  - 若要手动刷新当前 pageview ID （例如，在 SPA 应用中），请`appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()`使用。
     > [!NOTE]
-    > 要保持跟踪 ID 的唯一性（以前`Util.newId()`使用的位置），`Util.generateW3CId()`现在使用 。 两者最终都是操作 ID。
+    > 若要使跟踪 ID 保持唯一，你之前使用`Util.newId()`过，现在`Util.generateW3CId()`请使用。 最终最终都是操作 ID。
 
 如果你正在使用最新的 Application Insights PRODUCTION SDK (1.0.20)，并想要查看新 SDK 是否可在运行时中正常工作，请根据当前的 SDK 加载方案更新 URL。
 
-- 通过 CDN 方案下载：更新您当前用于指向以下 URL 的代码段：
+- 通过 CDN 方案下载：更新当前用于指向以下 URL 的代码片段：
    ```
    "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js"
    ```
 
-- npm 方案：`downloadAndSetup`调用从 CDN 下载完整的应用程序 Insights 脚本，然后使用检测密钥初始化它：
+- npm 方案：调用`downloadAndSetup`从 CDN 下载完整的 applicationinsights.config 脚本并将其初始化为检测密钥：
 
    ```ts
    appInsights.downloadAndSetup({
@@ -260,7 +260,7 @@ SDK V2 版本中的重大更改：
 
 ## <a name="browser-support"></a>浏览器支持
 
-![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![IE](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
+![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![FireFox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![IE](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
 --- | --- | --- | --- | --- |
 Chrome 最新版 ✔ |  Firefox 最新版 ✔ | IE 9 + 和 Edge ✔ | Opera 最新版 ✔ | Safari 最新版 ✔ |
 
@@ -270,5 +270,5 @@ Application Insights JavaScript SDK 是开源的，用户可查看其源代码�
 
 ## <a name="next-steps"></a><a name="next"></a> 后续步骤
 * [跟踪使用情况](usage-overview.md)
-* [自定义事件和指标](api-custom-events-metrics.md)
+* [自定义事件和度量值](api-custom-events-metrics.md)
 * [Build-measure-learn](usage-overview.md)

@@ -1,13 +1,13 @@
 ---
 title: 打包 Azure Service Fabric 应用
-description: 了解如何打包 Azure 服务结构应用程序以及如何准备部署到群集。
+description: 了解如何打包 Azure Service Fabric 应用程序以及如何准备部署到群集。
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 7c99eec28ac06ecf666d6dda1015f889841a5dbf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79258338"
 ---
 # <a name="package-an-application"></a>打包应用程序
@@ -48,7 +48,7 @@ D:\TEMP\MYAPPLICATIONTYPE
 * 设置和初始化服务可执行文件所需的环境变量。 这并不仅限于通过 Service Fabric 编程模型编写的可执行文件。 例如，npm.exe 需要配置一些环境变量来部署 node.js 应用程序。
 * 通过安装安全证书设置访问控制。
 
-有关如何配置**SetupEntryPoint**的详细信息，请参阅[为服务设置入口点配置策略](service-fabric-application-runas-security.md)
+有关如何配置 **SetupEntryPoint** 的详细信息，请参阅[配置服务设置入口点的策略](service-fabric-application-runas-security.md)
 
 <a id="Package-App"></a>
 
@@ -56,13 +56,13 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 ### <a name="build-a-package-by-using-visual-studio"></a>使用 Visual Studio 生成包
 
-如果使用 Visual Studio 创建应用程序，则可以使用 *"包"* 命令自动创建与上述布局相匹配的包。
+如果已使用 Visual Studio 创建应用程序，则可以使用 Package  命令自动创建匹配上述布局的包。
 
-要创建包，请右键单击*解决方案资源管理器*中的应用程序项目，然后选择 **"包**"命令：
+若要创建包，请在解决方案资源管理器中右键单击应用程序项目，选择 *Package* 命令  ：
 
 ![使用 Visual Studio 打包应用程序][vs-package-command]
 
-打包完成后，该包的位置会显示在“输出”**** 窗口中。 在 Visual Studio 中部署或调试应用程序时，打包步骤自动发生。
+打包完成后，该包的位置会显示在“输出”  窗口中。 在 Visual Studio 中部署或调试应用程序时，打包步骤自动发生。
 
 ### <a name="build-a-package-by-command-line"></a>通过命令行生成一个包
 
@@ -88,7 +88,7 @@ Test-ServiceFabricApplicationPackage : The EntryPoint MySetup.bat is not found.
 FileName: C:\Users\servicefabric\AppData\Local\Temp\TestApplicationPackage_7195781181\nrri205a.e2h\MyApplicationType\MyServiceManifest\ServiceManifest.xml
 ```
 
-此错误显示代码包中缺少服务清单 **SetupEntryPoint** 中引用的 *MySetup.bat* 文件。 添加缺少的文件后，应用程序验证通过：
+此错误显示代码包中缺少服务清单 *SetupEntryPoint* 中引用的 **MySetup.bat** 文件。 添加缺少的文件后，应用程序验证通过：
 
 ```
 tree /f .\MyApplicationType
@@ -134,9 +134,9 @@ True
 压缩包和未压缩包的部署机制相同。 如果为压缩包，则存储在群集映像存储等位置，并且在应用程序运行前在节点上解压缩。
 压缩会将有效的 Service Fabric 包替换为已压缩版本。 文件夹必须允许写入操作。 对已压缩的包运行压缩将不会产生任何更改。
 
-可以通过使用 `CompressPackage` 开关运行 Powershell 命令 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 来压缩包。 可以通过使用 `UncompressPackage` 开关运行同一命令来解压缩包。
+可以通过使用 [ 开关运行 Powershell 命令 ](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps)Copy-ServiceFabricApplicationPackage`CompressPackage` 来压缩包。 可以通过使用 `UncompressPackage` 开关运行同一命令来解压缩包。
 
-以下命令可压缩包，但不会将包复制到映像存储区。 通过使用不带 `SkipCopy` 标志的 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 将压缩的包复制到一个或多个 Service Fabric 群集中。
+以下命令可压缩包，但不会将包复制到映像存储区。 通过使用不带 [ 标志的 ](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps)Copy-ServiceFabricApplicationPackage`SkipCopy` 将压缩的包复制到一个或多个 Service Fabric 群集中。
 包中现在包括 `code`、`config` 和 `data` 包的压缩文件。 应用程序清单和服务清单不会被压缩，因为它们是许多内部操作所必需的。 例如，进行某些验证时的包共享、应用程序类型名称和版本提取都需要访问清单。 压缩清单会使这些操作无效。
 
 ```
@@ -226,11 +226,11 @@ ZipFile.CreateFromDirectory(appPackageDirectoryPath, sfpkgFilePath);
 
 ## <a name="next-steps"></a>后续步骤
 
-[部署和删除应用程序][10]描述如何使用 PowerShell 管理应用程序实例
+[部署和删除应用程序][10]介绍如何使用 PowerShell 来管理应用程序实例
 
-[管理多个环境的应用程序参数][11]介绍如何配置不同应用程序实例的参数和环境变量。
+[管理多个环境的应用程序参数][11]介绍如何为不同的应用程序实例配置参数和环境变量。
 
-[配置应用程序的安全策略][12]介绍如何在安全策略下运行服务，从而对访问进行限制。
+[配置应用程序的安全策略][12]介绍如何根据安全策略运行服务，从而限制访问。
 
 <!--Image references-->
 [vs-package-command]: ./media/service-fabric-package-apps/vs-package-command.png

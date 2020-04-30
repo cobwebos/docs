@@ -4,10 +4,10 @@ description: 了解如何使用用于容器的 Azure Monitor 订阅启用对新�
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.openlocfilehash: c731826f2780c45358730f9ce20d6a6151f6f259
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79275433"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>启用对新的 Azure Kubernetes 服务 (AKS) 群集的监视
@@ -24,7 +24,7 @@ ms.locfileid: "79275433"
 若要使用 Azure CLI 对新建的 AKS 群集启用监视，请遵循快速入门文章的[创建 AKS 群集](../../aks/kubernetes-walkthrough.md#create-aks-cluster)部分中所述的步骤。  
 
 >[!NOTE]
->如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 2.0.74 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 如果已安装 aks 预览 CLI 扩展版本 0.4.12 或更高版本，请删除为启用预览扩展所做的任何更改，因为它可以覆盖默认的 Azure CLI 行为，因为 AKS 预览功能在 Azure US Governmnet 云中不可用。
+>如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 2.0.74 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 如果你安装了 aks-preview CLI 扩展版本0.4.12 或更高版本，请删除你为启用预览扩展所做的任何更改，因为它可以覆盖默认的 Azure CLI 行为，因为 AKS 预览版功能在 Azure US Governmnet cloud 中不可用。
 
 ## <a name="enable-using-terraform"></a>使用 Terraform
 
@@ -33,12 +33,12 @@ ms.locfileid: "79275433"
 >[!NOTE]
 >如果选择使用 Terraform，则必须运行 Terraform Azure RM 提供程序 1.17.0 版或更高版本。
 
-要将用于容器的 Azure Monitor 添加到工作区，请参阅 [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html)，并通过纳入 [addon_profile](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile)，以及指定 oms_agent，完成配置文件********。 
+要将用于容器的 Azure Monitor 添加到工作区，请参阅 [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html)，并通过纳入 [addon_profile **，以及指定 oms_agent，完成配置文件**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile)  。 
 
 启用监视并成功完成所有配置任务后，可通过两种方法监视群集性能：
 
-* 直接在 AKS 群集中从左侧窗格选择“运行状况”****。
-* 在选定群集的 AKS 群集页面中选择“监视容器见解”磁贴****。 在 Azure Monitor 中，从左侧窗格选择“运行状况”****。 
+* 直接在 AKS 群集中从左侧窗格选择“运行状况”  。
+* 在选定群集的 AKS 群集页面中选择“监视容器见解”磁贴  。 在 Azure Monitor 中，从左侧窗格选择“运行状况”  。 
 
   ![用于在 AKS 中为容器选择 Azure Monitor 的选项](./media/container-insights-onboard/kubernetes-select-monitoring-01.png)
 
@@ -78,7 +78,7 @@ omsagent   1         1         1            1            3h
 
 ### <a name="agent-version-earlier-than-06072018"></a>代理版本低于 06072018
 
-若要验证 06072018** 之前发布的 Log Analytics 代理版本是否已正确部署，请运行以下命令：  
+若要验证 06072018  之前发布的 Log Analytics 代理版本是否已正确部署，请运行以下命令：  
 
 ```
 kubectl get ds omsagent --namespace=kube-system

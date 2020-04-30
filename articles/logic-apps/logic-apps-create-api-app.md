@@ -7,10 +7,10 @@ ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 05/26/2017
 ms.openlocfilehash: bb6c99ea12e5b53631d42a04b36b7bfef2337e42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79270532"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>创建可从 Azure 逻辑应用调用的自定义 API
@@ -30,7 +30,7 @@ ms.locfileid: "79270532"
 > [!TIP] 
 > 虽然可以将 API 部署为 Web 应用，但请考虑将 API 部署为 API 应用，这样可以更轻松地在云和本地生成、托管和使用 API。 不必更改 API 中的任何代码 - 可直接将代码部署到 API 应用。 例如，了解如何生成使用以下语言创建的 API 应用： 
 > 
-> * [ASP.NET](../app-service/app-service-web-get-started-dotnet.md). . 
+> * [ASP.NET](../app-service/app-service-web-get-started-dotnet.md)。 
 > * [Java](../app-service/app-service-web-get-started-java.md)
 > * [Node.js](../app-service/app-service-web-get-started-nodejs.md)
 > * [PHP](../app-service/app-service-web-get-started-php.md)
@@ -206,9 +206,9 @@ Webhook 触发器的行为非常类似于之前本主题中所述的 [Webhook �
 > [!TIP]
 > 有关 Webhook 模式的示例，请查看 [GitHub 中的 Webhook 触发器控制器示例](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)。
 
-## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>提高从逻辑应用调用 API 的安全性
+## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>提高从逻辑应用对 Api 的调用的安全性
 
-创建自定义 API 后，请为 API 设置身份验证，以便可以通过逻辑应用安全地调用它们。 [了解如何提高从逻辑应用调用自定义 API 的安全性](../logic-apps/logic-apps-custom-api-authentication.md)。
+创建自定义 API 后，请为 API 设置身份验证，以便可以通过逻辑应用安全地调用它们。 了解[如何提高从逻辑应用对自定义 api 的调用的安全性](../logic-apps/logic-apps-custom-api-authentication.md)。
 
 ## <a name="deploy-and-call-your-apis"></a>部署和调用 API
 
@@ -222,7 +222,7 @@ Webhook 触发器的行为非常类似于之前本主题中所述的 [Webhook �
 
 ## <a name="get-support"></a>获取支持
 
-* 有关自定义 API 的特定帮助，请[customapishelp@microsoft.com](mailto:customapishelp@microsoft.com)与 .
+* 有关自定义 Api 的特定帮助， [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com)请联系。
 
 * 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
 

@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 12/04/2018
 ms.openlocfilehash: fc328c34c1543a75fdc885087d44b28e24c0850a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79268673"
 ---
 # <a name="business-critical-tier---azure-sql-database"></a>业务关键层 - Azure SQL 数据库
@@ -38,18 +38,18 @@ Azure SQL 数据库的“高级”或“业务关键”服务层级中已启用�
 
 ![数据库引擎节点群集](media/sql-database-managed-instance/business-critical-service-tier.png)
 
-SQL 数据库引擎进程和基础 mdf/ldf 文件都放置在同一个节点上，该节点在本地附加了 SSD 存储，使工作负荷保持较低的延迟。 高可用性是通过类似于 SQL Server [Always On 可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)的技术实现的。 每个数据库是由数据库节点组成的群集，该群集中的一个主数据库可由客户工作负荷访问，还有三个辅助进程包含数据副本。 主节点不断地将更改推送到辅助节点，以确保在主节点出于任何原因崩溃时，可在次要副本上提供数据。 故障转移由 SQL Server 数据库引擎处理 – 一个次要副本成为主节点，并创建新的次要副本来确保群集中有足够的节点。 工作负荷自动重定向到新的主节点。
+SQL 数据库引擎进程和底层 mdf/ldf 文件都放置在同一个节点上，该节点在本地附加了 SSD 存储，使工作负荷保持较低的延迟。 高可用性是使用类似于 SQL Server [Always On 可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)的技术来实现的。 每个数据库是由数据库节点组成的群集，该群集中的一个主数据库可由客户工作负荷访问，还有三个辅助进程包含数据副本。 主节点不断地将更改推送到辅助节点，以确保在主节点出于任何原因崩溃时，可在次要副本上提供数据。 故障转移由 SQL Server 数据库引擎处理 – 一个次要副本成为主节点，并创建新的次要副本来确保群集中有足够的节点。 工作负荷自动重定向到新的主节点。
 
-此外，业务关键群集具有内置的[读取扩展](sql-database-read-scale-out.md)功能，该功能提供免费的内置只读节点，可用于运行不会影响主要工作负荷性能的只读查询（例如报告）。
+此外，业务关键群集具有内置的[读取扩展](sql-database-read-scale-out.md)功能，该功能提供免费的内置只读节点，用于运行不会影响主要工作负荷性能的只读查询（例如报告）。
 
 ## <a name="when-to-choose-this-service-tier"></a>何时选择此服务层级？
 
 “业务关键”服务层级为具有以下特点的应用程序而设计：需要来自基础 SSD 存储的低延迟响应（平均 1-2 毫秒）、在底层基础设施发生故障时需要快速恢复或是需要将报表、分析和只读查询分流到主数据库的免费可读次要副本。
 
 选择“业务关键”服务层级而不是“常规用途”层级的主要原因包括：
--   低 IO 延迟要求 – 需要存储层快速响应的工作负载（平均 1-2 毫秒）应使用业务关键层。 
+-   低 IO 延迟要求–需要从存储层快速响应的工作负载（平均1-2 毫秒）应使用业务关键层。 
 -   应用程序与数据库之间频繁通信。 无法利用应用层缓存或[请求批处理](sql-database-use-batching-to-improve-performance.md)，并需要发送大量必须得到快速处理的 SQL 查询的应用程序非常适合使用“业务关键”层级。
--   大量更新 – 插入、更新和删除操作会修改内存中的数据页（脏页），这些数据页必须保存到具有`CHECKPOINT`操作的数据文件中。 潜在的数据库引擎进程崩溃或故障转移包含大量脏页的数据库可能会增大“常规用途”层级中的恢复时间。 如果工作负荷会导致大量的内存中更改，请使用“业务关键”层级。 
+-   大量更新（插入、更新和删除操作）修改内存中的数据页（"脏页"），这些数据页必须通过`CHECKPOINT`操作保存到数据文件。 潜在的数据库引擎进程崩溃或故障转移包含大量脏页的数据库可能会增大“常规用途”层级中的恢复时间。 如果工作负荷会导致大量的内存中更改，请使用“业务关键”层级。 
 -   存在修改数据的长时间运行的事务。 长时间打开的事务会阻止截断日志文件，这可能会增加日志大小和[虚拟日志文件 (VLF)](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch) 的数量。 如果存在大量的 VLF，可能会在故障转移后减慢数据库的恢复速度。
 -   工作负荷包含可重定向到免费辅助只读副本的报告和分析查询。
 - 提高复原能力，并在故障后更快地恢复。 发生系统故障时，主实例上的数据库将被禁用，某个次要副本将立即成为新的读写主数据库，该数据库随时可以处理查询。 数据库引擎不需要分析和重做日志文件中的事务，也不需要加载内存缓冲区中的所有数据。
@@ -61,5 +61,5 @@ SQL 数据库引擎进程和基础 mdf/ldf 文件都放置在同一个节点上�
 
 - 在[托管实例](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)中查找业务关键层的资源特征（核心数、IO 数、内存数），在 [vCore 模型](sql-database-vcore-resource-limits-single-databases.md#business-critical---provisioned-compute---gen4)或 [DTU 模型](sql-database-dtu-resource-limits-single-databases.md#premium-service-tier)中查找单一数据库，在 [vCore 模型](sql-database-vcore-resource-limits-elastic-pools.md#business-critical---provisioned-compute---gen4)和 [DTU 模型](sql-database-dtu-resource-limits-elastic-pools.md#premium-elastic-pool-limits)中查找弹性池。
 - 了解[常规用途](sql-database-service-tier-general-purpose.md)和[超大规模](sql-database-service-tier-hyperscale.md)层。
-- 了解[服务结构](../service-fabric/service-fabric-overview.md)。
+- 了解 [Service Fabric](../service-fabric/service-fabric-overview.md)。
 - 有关高可用性和灾难恢复的更多选项，请参阅[业务连续性](sql-database-business-continuity.md)。

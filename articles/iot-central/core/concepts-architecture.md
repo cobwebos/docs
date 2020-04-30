@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 12ad231d81b6c134ebb8d4902b3f95c978e9622d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79271637"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central 体系结构
@@ -58,7 +58,7 @@ IoT Central 为 IoT Edge 设备启用以下功能：
   - 不存储在 IoT Edge 设备上的云属性。
   - 属于 IoT Central 应用程序的自定义、仪表板和窗体。
 
-  有关详细信息，请参阅[将 Azure IoT 边缘设备连接到 Azure IoT 中心应用程序](./concepts-iot-edge.md)一文。
+  有关详细信息，请参阅 "[将 Azure IoT Edge 设备连接到 Azure IoT Central 应用程序" 一](./concepts-iot-edge.md)文。
 
 - 使用 Azure IoT 设备预配服务大规模预配 Azure IoT Edge 设备的功能
 - 规则和操作。
@@ -133,9 +133,9 @@ Azure IoT Central 将时序存储用于从设备发送的度量数据。 设备�
 
 ![模板体系结构](media/concepts-architecture/template-architecture.png)
 
-在 IoT 中央应用程序设备模板中包含：
+在 IoT Central 应用程序设备模板中包含：
 
-- **设备功能模型**指定设备的功能，例如它发送的遥测数据、用于定义设备状态的属性，以及设备响应的命令。 设备功能已组织到一个或多个界面中。 有关设备功能模型的详细信息，请参阅[IoT 即插即用（预览）](../../iot-pnp/overview-iot-plug-and-play.md)文档。
+- **设备功能模型**指定设备的功能，例如它发送的遥测数据、用于定义设备状态的属性，以及设备响应的命令。 设备功能已组织到一个或多个界面中。 有关设备功能模型的详细信息，请参阅[IoT 即插即用（预览版）](../../iot-pnp/overview-iot-plug-and-play.md)文档。
 - **云属性**指定 IoT Central 为设备存储的属性。 这些属性只存储在 IoT Central 中，而不会发送到设备。
 - **视图**指定生成器创建的、让操作员监视和管理设备的仪表板和窗体。
 - **自定义项**让生成器替代设备功能模型中的某些定义，使之与 IoT Central 应用程序更相关。
@@ -152,7 +152,7 @@ Azure IoT Central 将时序存储用于从设备发送的度量数据。 设备�
 
 ## <a name="role-based-access-control-rbac"></a>基于角色的访问控制 (RBAC)
 
-管理员可以使用预定义的角色之一或创建自定义角色为 Azure IoT 中心应用程序[定义访问规则](howto-manage-users-roles.md)。 角色确定用户有权访问的应用程序区域以及他们可以执行哪些操作。
+管理员可以使用预定义角色之一或通过创建自定义角色来定义 Azure IoT Central 应用程序的[访问规则](howto-manage-users-roles.md)。 角色决定了用户有权访问哪些应用程序区域以及可执行哪些操作。
 
 ## <a name="security"></a>安全性
 
