@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.openlocfilehash: ad5cc696892764ce68d4714ead98b8afd9c37669
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82144160"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure 逻辑应用的常见方案、示例、教程和演练
@@ -117,7 +117,7 @@ ms.locfileid: "82144160"
 * [为 B2B 企业集成创建和管理集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 * [在 Azure 逻辑应用中管理 integration service 环境（ISE）](../logic-apps/ise-manage-integration-service-environment.md)
 
-### <a name="monitor"></a>监视器
+### <a name="monitor"></a>监视
 
 * [监视运行状态，查看触发器历史记录，并设置 Azure 逻辑应用的警报](../logic-apps/monitor-logic-apps.md)
 * [设置 Azure Monitor 日志并收集 Azure 逻辑应用的诊断数据](../logic-apps/monitor-logic-apps-log-analytics.md)

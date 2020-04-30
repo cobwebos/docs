@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: ccd8d383db265826d8644ee89d7300128fc3a350
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82131312"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>使用 X.509 证书创建和预配 IoT Edge 设备
@@ -113,7 +113,7 @@ IoT Edge 设备上都需要这两个证书。 如果打算在 DPS 中使用单�
       }
       ```
 
-1. 选择“保存”。 
+1. 选择“保存”  。
 
 既然此设备已存在注册，IoT Edge 运行时在安装期间可以自动预配设备。 继续[安装 IoT Edge 运行时](#install-the-iot-edge-runtime)部分，设置 IoT Edge 设备。
 
@@ -139,7 +139,7 @@ IoT Edge 设备上都需要这两个证书。 如果打算在 DPS 中使用单�
 
    如果使用的是演示证书，请上传`<wrkdir>/certs/azure-iot-test-only.root.ca.cert.pem`证书。
 
-1. 选择“保存”。 
+1. 选择“保存”  。
 
 1. 你的证书现在应列在 "**证书**" 页上。 选择它以打开证书详细信息。
 
@@ -198,7 +198,7 @@ IoT Edge 设备上都需要这两个证书。 如果打算在 DPS 中使用单�
       }
       ```
 
-1. 选择“保存”。 
+1. 选择“保存”  。
 
 既然此设备已存在注册，IoT Edge 运行时在安装期间可以自动预配设备。 若要设置 IoT Edge 设备，请转到下一节。
 

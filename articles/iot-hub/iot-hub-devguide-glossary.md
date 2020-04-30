@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 73981cb0f124e1577690f893ead60e6375f16298
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82133146"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT 中心术语表
@@ -329,11 +329,11 @@ Azure 订阅是发生计费的地方。 创建的每个 Azure 资源或使用的
 
 在与[设备孪生](iot-hub-devguide-device-twins.md)相关的语境中，系统属性为只读，其中包括与设备使用情况相关的信息，例如上次活动时间和连接状态。
 
-## <a name="tags"></a>标记
+## <a name="tags"></a>Tags
 
 在与[设备孪生](iot-hub-devguide-device-twins.md)相关的语境中，标记是指由解决方案后端以 JSON 文档形式存储和检索的设备元数据。 标记对于设备上的应用程序不可见。
 
-## <a name="telemetry"></a>遥测
+## <a name="telemetry"></a>遥测技术
 
 设备收集遥测数据，如风速或温度，并使用数据点消息将遥测数据发送到 IoT 中心。
 

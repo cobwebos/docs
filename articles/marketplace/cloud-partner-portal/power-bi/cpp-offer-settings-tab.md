@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
 ms.openlocfilehash: ddedc15b41b2b163f85f5443275daf9fbb56bac8
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82143033"
 ---
 # <a name="power-bi-apps-offer-settings-tab"></a>Power BI 应用套餐设置选项卡
@@ -31,7 +31,7 @@ ms.locfileid: "82143033"
 |  字段        |  说明                                                               |
 |---------------|----------------------------------------------------------------------------|
 | **产品/服务 ID\***  | 产品/服务的唯一标识符（在发布者配置文件内）。 此标识符将显示在产品 URL、Azure 资源管理器模板和计费报表中。 最大长度为 50 个字符。 它只能包含小写字母数字字符和短划线（-）。 它不能以短划线结束。 产品/服务投入使用后，不能更改此标识符。 如果 Contoso 发布产品/服务 ID `sample-SvcApp`，则会为该产品/服务分配`https://appsource.microsoft.com/marketplace/apps/contoso.sample-SvcApp`AppSource URL。      |
-| **发布者\*** | 你的组织在 [AppSource](https://appsource.microsoft.com) 中的唯一标识符。 你的所有产品/服务都应当与你的发布者 ID 相关联。 保存产品/服务后，无法更改此值。                         |
+| **器\*** | 你的组织在 [AppSource](https://appsource.microsoft.com) 中的唯一标识符。 你的所有产品/服务都应当与你的发布者 ID 相关联。 保存产品/服务后，无法更改此值。                         |
 | **名称\***      | 产品/服务的显示名称。 此名称将显示在 AppSource 和云合作伙伴门户上。 最大长度为 50 个字符。 使用可用于你的产品的品牌名称。 请不要在此处包含组织的名称，除非应用以该名称推销。 如果对其他网站和发布提供此优惠，请在所有发布中使用相同的名称。    <br/>如果在 Power BI 应用的预览期间发布产品/服务，请在应用程序`(Preview)`名称的末尾添加字符串，如下所示： `Sample Scv App (Preview)`。 |
 |     |     |
 

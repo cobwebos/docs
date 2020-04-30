@@ -9,10 +9,10 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: d44d5a8eeba749572980f79a90bcf5893a9c1fbf
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82144345"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>在 Azure 逻辑应用中发送、接收和批处理消息
@@ -57,7 +57,7 @@ ms.locfileid: "82144345"
 
 3. 为批接收方设置以下属性： 
 
-   | 属性 | 说明 | 
+   | properties | 说明 | 
    |----------|-------------|
    | **批处理模式** | - **内联**：用于在批处理触发器中定义发布条件 <br>- **集成帐户**：用于通过[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)定义多个发布条件配置。 使用集成帐户可在一个位置而不是独立的逻辑应用中维护这些配置。 | 
    | **批名称** | 批的名称（在本示例中为“TestBatch”），仅适用于“内联”批处理模式**** |  
@@ -168,7 +168,7 @@ ms.locfileid: "82144345"
 
 3. 设置批发送方的属性：
 
-   | 属性 | 说明 | 
+   | properties | 说明 | 
    |----------|-------------| 
    | **批名称** | 接收方逻辑应用定义的批名称，在本示例中为“TestBatch” <p>**重要说明**：批名称在运行时将接受验证，必须与接收方逻辑应用指定的名称相匹配。 更改批名称会导致批发送方失败。 | 
    | **消息内容** | 要发送的消息内容 | 
@@ -186,7 +186,7 @@ ms.locfileid: "82144345"
 
 4. 现在为批设置分区。 在“BatchReceiver”操作中，选择“显示高级选项”并设置以下属性：****
 
-   | 属性 | 说明 | 
+   | properties | 说明 | 
    |----------|-------------| 
    | **分区名称** | 可选的唯一分区键，用于将目标批分割为逻辑子集，并基于该键收集消息 | 
    | **消息 Id** | 可选的消息标识符，为空时是系统生成的全局唯一标识符 (GUID) | 

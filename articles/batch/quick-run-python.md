@@ -1,23 +1,17 @@
 ---
 title: 使用 Python API 运行 Azure Batch 作业
 description: 使用 Batch Python 客户端库快速运行 Azure Batch 示例作业和任务。 了解 Batch 服务的关键概念。
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
-ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/27/2018
-ms.author: labrenne
 ms.custom:
 - seo-python-october2019
 - mvc
-ms.openlocfilehash: 140ae0fc9f9a8daba193aa05e0800d83b7b6b963
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 07ad9115f6cb602b4df5adbe9a7acdc0425bbf86
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77086047"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82117193"
 ---
 # <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>快速入门：使用 Python API 运行 Azure Batch 作业
 
@@ -55,7 +49,7 @@ git clone https://github.com/Azure-Samples/batch-python-quickstart.git
 pip install -r requirements.txt
 ```
 
-打开 `config.py` 文件。 使用为帐户获取的值更新 Batch 帐户和存储帐户凭据字符串。 例如：
+打开 `config.py`文件。 使用为帐户获取的值更新 Batch 帐户和存储帐户凭据字符串。 例如：
 
 ```Python
 _BATCH_ACCOUNT_NAME = 'mybatchaccount'
@@ -65,7 +59,7 @@ _STORAGE_ACCOUNT_NAME = 'mystorageaccount'
 _STORAGE_ACCOUNT_KEY = 'xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB827Mt9lybZB1nUcQbQiUrkPtilK5BQ=='
 ```
 
-## <a name="run-the-app"></a>运行应用
+## <a name="run-the-app"></a>运行应用程序
 
 若要查看操作中的 Batch 工作流，请运行脚本：
 

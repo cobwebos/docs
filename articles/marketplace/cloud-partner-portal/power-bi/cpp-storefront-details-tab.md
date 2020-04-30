@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
 ms.openlocfilehash: 9db01941c21dbd26d149f3623319557e4c625350
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82141796"
 ---
 # <a name="power-bi-app-storefront-details-tab"></a>Power BI 应用店面详细信息选项卡
@@ -69,14 +69,14 @@ ms.locfileid: "82141796"
 | **产品/服务徽标（png 格式，48x48）\***   | 上传徽标以显示在应用的概述或应用搜索结果中。 AppSource 仅支持 PNG 格式，分辨率为 48 x 48 px。  |
 | **产品/服务徽标（png 格式，216x216）\*** | 上载要在应用的详细信息页上显示的徽标。  AppSource 仅支持 PNG 格式，分辨率为 216 x 216 px。  |
 | *视频*                             |                                                                   |
-| **名称**                             | 输入应用的名称或标题。                                          |
+| **Name**                             | 输入应用的名称或标题。                                          |
 | **URL**                              | 输入在 YouTube 或 Vimeo 上托管的视频的 URL。                              |
 | **缩略图**                        | 添加应用的缩略图图像。  AppSource 仅支持 PNG 格式，分辨率为 1280 x 720 px。   |
 | *文档*                          | 在 "**了解更多**" 标题下，添加最多3个要在 AppSource 上显示的文档。  |
-| **名称**                             | 输入支持文档的名称或标题。                              |
+| **Name**                             | 输入支持文档的名称或标题。                              |
 | **File**                             | 上载 PDF 文件。                             |
 | *屏幕截图\**                      | 最多添加五个屏幕截图。                        |
-| **名称**                             | 输入屏幕截图的名称或标题。                                       |
+| **Name**                             | 输入屏幕截图的名称或标题。                                       |
 | **映像**                            | 上传 PNG 屏幕快照。 其分辨率必须为 1280 x 720 px。  | 
 |   |   |
 

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7870b62dea01f680126f5b4aac3dc2328407cd61
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82143221"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>规划和部署本地 Azure Active Directory 密码保护
@@ -88,7 +88,7 @@ Azure AD 密码保护 DC 代理软件的设计可减轻与高可用性相关的�
     * 默认情况下，RPC 服务器端口是动态 RPC 端口，但可以配置为[使用静态端口](#static)。
 * 将安装 Azure AD 密码保护代理服务的所有计算机必须具有对以下终结点的网络访问权限：
 
-    |**终结点**|**用途**|
+    |**终结点**|**目的**|
     | --- | --- |
     |`https://login.microsoftonline.com`|身份验证请求|
     |`https://enterpriseregistration.windows.net`|Azure AD 密码保护功能|

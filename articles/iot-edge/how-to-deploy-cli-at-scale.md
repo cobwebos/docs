@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: ff6bb9e4d4e40c02b52f35bd56bf065a8804a43a
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82134372"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>使用 Azure CLI 大规模部署并监视 IoT Edge 模块
@@ -196,10 +196,10 @@ az iot edge deployment create --deployment-id [deployment id] --hub-name [hub na
 * **--deployment-id** - 将在 IoT 中心创建的部署的名称。 为部署提供唯一名称（最多包含 128 个小写字母）。 避免空格和以下无效字符：`& ^ [ ] { } \ | " < > /`。 必需参数。
 * **--content** - 部署清单 JSON 的文件路径。 必需参数。
 * **--hub-name** - 将在其中创建部署的 IoT 中心的名称。 此中心必须在当前订阅中。 使用 `az account set -s [subscription name]` 命令更改当前订阅。
-* **--labels** - 添加用于跟踪部署的标签。 标签是描述部署的“名称, 值”对。 标签对名称和值采用 JSON 格式设置。 例如 `{"HostPlatform":"Linux", "Version:"3.0.1"}`
-* **--target-condition** - 输入一个目标条件，用于确定哪些设备会成为此部署的目标。该条件基于设备孪生标记或设备孪生报告的属性，应与表达式格式相匹配。例如，`tags.environment='test' and properties.reported.devicemodel='4000x'`。
+* **--labels** - 添加用于跟踪部署的标签。 标签是描述部署的“名称, 值”对。 标签对名称和值采用 JSON 格式设置。 例如： `{"HostPlatform":"Linux", "Version:"3.0.1"}`
+* **--target-condition** - 输入一个目标条件，用于确定哪些设备会成为此部署的目标。该条件基于设备孪生标记或设备孪生报告的属性，应与表达式格式相匹配。例如，`tags.environment='test' and properties.reported.devicemodel='4000x'` 。
 * **--priority** -A 正整数。 如果同一设备上确定的部署目标至少有两个，则会应用优先级数值最高的部署。
-* **--metrics** - 创建指标，该指标可以查询 edgeHub 报告属性以跟踪部署状态。 指标使用 JSON 输入或文件路径。 例如，`'{"queries": {"mymetric": "SELECT deviceId FROM devices WHERE properties.reported.lastDesiredStatus.code = 200"}}'`。
+* **--metrics** - 创建指标，该指标可以查询 edgeHub 报告属性以跟踪部署状态。 指标使用 JSON 输入或文件路径。 例如，`'{"queries": {"mymetric": "SELECT deviceId FROM devices WHERE properties.reported.lastDesiredStatus.code = 200"}}'` 。
 
 若要使用 Azure CLI 监视部署，请参阅[监视 IoT Edge 部署](how-to-monitor-iot-edge-deployments.md#monitor-a-deployment-with-azure-cli)。
 

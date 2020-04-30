@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
 ms.openlocfilehash: bb66e90f1d835a6341b47bb698cf05bc442e0ac0
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82129256"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>使用不可变的存储来存储业务关键型 Blob 数据
@@ -118,7 +118,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
 使用此功能不会产生额外的费用。 不可变数据的定价方式与可变数据的定价方式相同。 有关 Azure Blob 存储的定价详细信息，请参阅[Azure 存储定价页](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>FAQ
 
 **你们是否可以提供有关 WORM 合规性的文档？**
 

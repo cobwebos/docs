@@ -6,10 +6,10 @@ ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: conceptual
 ms.openlocfilehash: 79c4e74086acc0f74bcc43f6b4543afe12916364
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82117380"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>使用 Azure Pipelines 来构建和部署 HPC 解决方案
@@ -24,7 +24,7 @@ Azure Pipelines 提供了一系列新式 CI/CD 过程，用于构建、部署、
 
 ![显示管道中的部署流的关系图](media/batch-ci-cd/DeploymentFlow.png)
 
-### <a name="setup"></a>安装
+### <a name="setup"></a>设置
 
 若要按照本文中的步骤进行操作，需要一个 Azure DevOps 组织和一个团队项目。
 

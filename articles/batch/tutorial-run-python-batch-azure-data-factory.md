@@ -1,21 +1,18 @@
 ---
 title: 通过数据工厂运行 Python 脚本 - Azure Batch Python
 description: 教程 - 了解如何使用 Azure Batch 通过 Azure 数据工厂将 Python 脚本作为管道的一部分运行。
-services: batch
 author: mammask
-manager: jeconnoc
-ms.service: batch
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 12/11/2019
 ms.author: komammas
 ms.custom: mvc
-ms.openlocfilehash: 2995c5da4491f14471d9ed03022a144a02beab5a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6761896a6555c11d7957f923a5951641c1541012
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78201634"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82117057"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>教程：使用 Azure Batch 通过 Azure 数据工厂运行 Python 脚本
 

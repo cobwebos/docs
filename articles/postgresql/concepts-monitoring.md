@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.openlocfilehash: 99c8d4e7e5263b8a7caf30833a899976d3cc829b
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82133705"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>监视和优化 Azure Database for PostgreSQL（单一服务器）
@@ -33,8 +33,8 @@ Azure Database for PostgreSQL 提供了各种指标来帮助用户深入了解�
 |serverlog_storage_percent|服务器日志存储空间百分比|百分比|所用的服务器日志存储占服务器的服务器日志最大存储的百分比。|
 |serverlog_storage_usage|服务器日志已用的存储量|字节|使用的服务器日志存储量。|
 |serverlog_storage_limit|服务器存储空间上限|字节|此服务器的最大服务器日志存储。|
-|active_connections|活动连接数|Count|服务器的活动连接数。|
-|connections_failed|失败的连接数|Count|服务器的失败连接数。|
+|active_connections|活动连接数|计数|服务器的活动连接数。|
+|connections_failed|失败的连接数|计数|服务器的失败连接数。|
 |network_bytes_egress|网络传出|字节|跨活动连接数的网络传出。|
 |network_bytes_ingress|网络传入|字节|跨活动连接数的网络传入。|
 |backup_storage_used|使用的备份存储|字节|已使用的备份存储量。|
@@ -47,7 +47,7 @@ Azure Database for PostgreSQL 提供了各种指标来帮助用户深入了解�
 ## <a name="query-store"></a>查询存储
 [查询存储](concepts-query-store.md)可以随着时间的推移跟踪查询性能，包括查询运行时统计信息和等待事件。 此功能将查询运行时性能信息保留在 query_store 架构下名为 azure_sys 的一个系统数据库中****。 你可以通过各种配置旋钮控制数据的收集和存储。
 
-## <a name="query-performance-insight"></a>查询性能见解
+## <a name="query-performance-insight"></a>Query Performance Insight
 [Query Performance Insight](concepts-query-performance-insight.md) 与查询存储协同工作以提供可以从 Azure 门户访问的可视化效果。 这些图表使你能够识别对性能造成影响的关键查询。 Azure Database for PostgreSQL 服务器门户页面的 "**支持 + 故障排除**" 部分可访问 Query Performance Insight。
 
 ## <a name="performance-recommendations"></a>性能建议

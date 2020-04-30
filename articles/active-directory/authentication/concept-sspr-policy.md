@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e8b6d08dd2073de80ac0f7fd08f510d9cda80545
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82143233"
 ---
 # <a name="self-service-password-reset-policies-and-restrictions-in-azure-active-directory"></a>自助服务密码重置策略和 Azure Active Directory 中的限制
@@ -69,7 +69,7 @@ ms.locfileid: "82143233"
 
 需登录到 Azure AD 的每个用户帐户都必须有唯一的与其帐户关联的用户主体名称 (UPN) 属性值。 下表概述了适用于本地 Active Directory 域服务用户帐户（同步到云）和仅限云的用户帐户的策略：
 
-| 属性 | UserPrincipalName 要求 |
+| properties | UserPrincipalName 要求 |
 | --- | --- |
 | 允许的字符 |<ul> <li>A – Z</li> <li>a - z</li><li>0 – 9</li> <li> ' \. - \_ ! \# ^ \~</li></ul> |
 | 不允许的字符 |<ul> <li>任何不分隔用户名和域的“\@\"”字符。</li> <li>不能包含紧靠在“\@\"”符号前面的点字符“.”</li></ul> |
@@ -79,7 +79,7 @@ ms.locfileid: "82143233"
 
 下表描述了适用于在 Azure AD 中创建和管理的用户帐户的密码策略设置：
 
-| 属性 | 要求 |
+| properties | 要求 |
 | --- | --- |
 | 允许的字符 |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [] {} &#124; \： '，。 ? / \` ~ " ( ) ;</li> <li>空白</li></ul> |
 | 不允许的字符 | Unicode 字符。 |

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: e55d3f704c76d2783c3e442a90c829448129a4d0
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82134411"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>使用 Azure 门户大规模部署 IoT Edge 模块
@@ -176,14 +176,14 @@ IoT Edge 提供两种不同类型的自动部署，可用于自定义你的方�
 * 目标条件
 * 自定义指标
 * 标签
-* 标记
+* Tags
 * 所需的属性
 
 ### <a name="modify-target-conditions-custom-metrics-and-labels"></a>修改目标条件、自定义指标和标签
 
 1. 在 IoT 中心中，从左窗格菜单中选择 " **IoT Edge** "。
 1. 选择 " **IoT Edge 部署**" 选项卡，然后选择要配置的部署。
-1. 选择 "**目标条件**" 选项卡。更改**目标条件**以面向目标设备。 你还可以调整**优先级**。  选择“保存”。 
+1. 选择 "**目标条件**" 选项卡。更改**目标条件**以面向目标设备。 你还可以调整**优先级**。  选择“保存”  。
 
     如果更新目标条件，将发生以下更新：
 
@@ -191,7 +191,7 @@ IoT Edge 提供两种不同类型的自动部署，可用于自定义你的方�
     * 如果当前运行此部署的设备不再满足目标条件，则它将卸载此部署并采用下一个最高优先级部署。
     * 如果当前运行此部署的设备不再满足目标条件且不满足任何其他部署的目标条件，则此设备上不会发生任何更改。 设备在当前状态下继续运行当前模块，但不再作为此部署的一部分被托管。 一旦它满足任何其他部署的目标条件，将卸载此部署并采用新的部署。
 
-1. 选择 "**指标**" 选项卡，然后单击 "**编辑指标**" 按钮。 使用示例语法作为指南，添加或修改自定义度量值。 选择“保存”。 
+1. 选择 "**指标**" 选项卡，然后单击 "**编辑指标**" 按钮。 使用示例语法作为指南，添加或修改自定义度量值。 选择“保存”  。
 
     ![在部署中编辑自定义指标](./media/how-to-deploy-monitor/metric-list.png)
 

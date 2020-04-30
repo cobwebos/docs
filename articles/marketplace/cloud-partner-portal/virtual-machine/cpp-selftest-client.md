@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: dsindona
 ms.openlocfilehash: 9f16d26fa95254282e453cd7bf35d85f8b81ed73
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82143201"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>创建用来预验证 Azure 虚拟机映像的自测试客户端
@@ -69,9 +69,9 @@ Request body:    The Request body parameters should use the following JSON forma
 |  ---------------   |  ---------------  |
 |  Authorization     |  "持有者 xxxx-xxxxx" 字符串包含可使用 PowerShell 创建的 Azure Active Directory （AD）客户端令牌。          |
 |  DNSName           |  要测试的 VM 的 DNS 名称    |
-|  用户              |  用于登录到 VM 的用户名         |
-|  密码          |  用于登录到 VM 的密码          |
-|  OS                |  VM 的操作系统：`Linux` 或 `Windows`          |
+|  User              |  用于登录到 VM 的用户名         |
+|  Password          |  用于登录到 VM 的密码          |
+|  操作系统                |  VM 的操作系统：`Linux` 或 `Windows`          |
 |  PortNo            |  用于连接到 VM 的开放端口号。 通常，对于 Linux，端口号为 `22`，对于 Windows，端口号为 `5986`。          |
 |  |  |
 
@@ -274,11 +274,11 @@ https://isvapp.azurewebsites.net/selftest-vm
 14. 单击“选择”  。
 15. 选择“完成”  。
 16. 在“设置”下，选择“属性”********。
-17. 在“属性”下，向下滚动到“多租户”********。 选择 **“是”** 。
+17. 在“属性”下，向下滚动到“多租户”********。 请选择“是”。 
 
     ![为应用配置多租户](./media/stclient-yes-multitenant.png)
 
-18. 选择“保存”。 
+18. 选择“保存”  。
 19. 在“设置”下，选择“密钥”********。
 20. 选择密钥“说明”文本框，创建密钥****。 配置以下字段：
 

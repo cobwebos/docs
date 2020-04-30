@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 17a96479b80410cbfcb2a6061904491f95c45f10
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82116258"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>使用 Azure 认知搜索索引器进行字段映射和转换
@@ -139,7 +139,7 @@ Azure 认知搜索文档键中只能使用 URL 安全字符（因为客户必须
 
 如果未包含映射函数的 parameters 属性，该属性的默认值为 `{"useHttpServerUtilityUrlTokenEncode" : true}`。
 
-Azure 认知搜索支持两种不同的 Base64 编码。 在编码和解码同一字段时，应使用相同的参数。 在决定要使用哪些参数时，请参阅 [base64 编码选项](#base64details)了解详细信息。
+Azure 认知搜索支持两种不同的 Base64 编码： 在编码和解码同一字段时，应使用相同的参数。 在决定要使用哪些参数时，请参阅 [base64 编码选项](#base64details)了解详细信息。
 
 <a name="base64DecodeFunction"></a>
 

@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
 ms.openlocfilehash: 6f0e7c514835227fafd439803107531fbc62285c
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82133831"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
@@ -386,7 +386,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 
 如果已显式[将 RBAC 角色分配](storage-auth-aad.md#assign-rbac-roles-for-access-rights)到以下服务的特定实例的[系统分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)，则“允许受信任的 Microsoft 服务...”设置也允许该资源实例访问存储帐户。**** 在这种情况下，该实例的访问权限范围对应于分配到托管标识的 RBAC 角色。
 
-| 服务                        | 资源提供程序名称                 | 用途            |
+| 服务                        | 资源提供程序名称                 | 目的            |
 | :----------------------------- | :------------------------------------- | :----------------- |
 | Azure 认知搜索         | Microsoft.Search/searchServices        | 使认知搜索服务可以访问用于索引、处理和查询的存储帐户。 |
 | Azure 容器注册表任务 | Microsoft.ContainerRegistry/registries | 在构建容器映像时，ACR 任务可以访问存储帐户。 |

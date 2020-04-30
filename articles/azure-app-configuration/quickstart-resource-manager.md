@@ -3,18 +3,18 @@ title: 有关自动完成使用 Azure 应用程序配置的 VM 部署的快速�
 description: 本快速入门演示如何使用 Azure PowerShell 模块和 Azure 资源管理器模板部署 Azure 应用程序配置存储。 然后使用该存储中的值来部署 VM。
 author: lisaguthrie
 ms.author: lcozzens
-ms.date: 03/05/2020
+ms.date: 04/14/2020
 ms.topic: quickstart
 ms.service: azure-app-configuration
 ms.custom:
 - mvc
 - subject-armqs
-ms.openlocfilehash: c45f6855c33dff2790ced306fd7f049b98dd1387
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 96d09de73e8b904a8e26eb4f365d34fab1401203
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79126381"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82137546"
 ---
 # <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template"></a>快速入门：使用应用配置和资源管理器模板自动部署 VM
 
@@ -127,7 +127,7 @@ New-AzResourceGroup `
 
    ```azurepowershell
    New-AzResourceGroupDeployment `
-       -ResourceGroupName "<your resource group>" 
+       -ResourceGroupName "<your resource group>" `
        -TemplateFile "<path to prereq.azuredeploy.json>" `
        -TemplateParameterFile "<path to prereq.azuredeploy.parameters.json>"
    ```
@@ -152,6 +152,9 @@ New-AzResourceGroup `
 ## <a name="deploy-vm-using-stored-key-values"></a>使用存储的键-值部署 VM
 
 将键-值添加到存储后，接下来可以使用 Azure 资源管理器模板部署 VM。 该模板引用创建的 **windowsOsVersion** 和 **diskSizeGB** 键。
+
+> [!WARNING]
+> ARM 模板无法引用已启用“专用链接”的应用配置存储中的密钥。
 
 1. 将以下 JSON 代码复制并粘贴到名为 *azuredeploy.json* 的新文件中，或者从 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.json)下载该文件。
 
@@ -423,13 +426,13 @@ New-AzResourceGroup `
    |storageAccountName|与 VM 关联的存储帐户的唯一名称。|
    |domainNameLabel|唯一的域名。|
 
-1. 在 PowerShell 窗口中，运行以下命令以部署 Azure 应用程序配置存储。 不要忘记替换资源组名称、模板文件路径和模板参数文件路径。
+1. 在 PowerShell 窗口中，运行以下命令以部署 VM。 不要忘记替换资源组名称、模板文件路径和模板参数文件路径。
 
    ```azurepowershell
    New-AzResourceGroupDeployment `
-       -ResourceGroupName "<your resource group>" 
-       -TemplateFile "<path to prereq.azuredeploy.json>" `
-       -TemplateParameterFile "<path to prereq.azuredeploy.parameters.json>"
+       -ResourceGroupName "<your resource group>"
+       -TemplateFile "<path to azuredeploy.json>" `
+       -TemplateParameterFile "<path to azuredeploy.parameters.json>"
    ```
 
 祝贺你！ 现已使用 Azure 应用程序配置中存储的配置部署了一个 VM。

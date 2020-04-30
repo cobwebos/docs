@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: yinhew
 ms.openlocfilehash: 005824b0953be741f47c027d121dbe073adca3ba
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82131287"
 ---
 # <a name="speech-to-text-rest-api"></a>语音转文本 REST API
@@ -38,7 +38,7 @@ REST API 的终结点具有以下格式：
 https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
 ```
 
-替换`<REGION_IDENTIFIER>`为与此表中的订阅区域匹配的标识符：
+将 `<REGION_IDENTIFIER>` 替换为与下表中的订阅区域匹配的标识符：
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
@@ -51,7 +51,7 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 
 | 参数 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `language` | 标识所要识别的口语。 请参阅[支持的语言](language-support.md#speech-to-text)。 | 必需 |
+| `language` | 标识所要识别的口语。 请参阅[支持的语言](language-support.md#speech-to-text)。 | 必选 |
 | `format` | 指定结果格式。 接受的值为 `simple` 和 `detailed`。 简单结果包括 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 详细响应包括多个具有置信度值的结果，以及四种不同的表示形式。 默认设置为 `simple`。 | 可选 |
 | `profanity` | 指定如何处理识别结果中的不雅内容。 接受的值为 `masked`（将亵渎内容替换为星号）、`removed`（删除结果中的所有亵渎内容）或 `raw`（包含结果中的亵渎内容）。 默认设置为 `masked`。 | 可选 |
 | `pronunciationScoreParams` | 指定用于在识别结果中显示发音评分的参数，这些参数可评估语音输入的发音质量，并显示准确性、熟练、完整性等。此参数是 base64 编码的 json，其中包含多个详细参数。 有关如何生成此参数的详细说明，请参阅[发音评估参数](#pronunciation-assessment-parameters)。 | 可选 |
@@ -65,7 +65,7 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | 语音服务订阅密钥。 | 此标头或 `Authorization` 是必需的。 |
 | `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 此标头或 `Ocp-Apim-Subscription-Key` 是必需的。 |
-| `Content-type` | 描述所提供音频数据的格式和编解码器。 接受的值为 `audio/wav; codecs=audio/pcm; samplerate=16000` 和 `audio/ogg; codecs=opus`。 | 必需 |
+| `Content-type` | 描述所提供音频数据的格式和编解码器。 接受的值为 `audio/wav; codecs=audio/pcm; samplerate=16000` 和 `audio/ogg; codecs=opus`。 | 必选 |
 | `Transfer-Encoding` | 指定要发送分块的音频数据，而不是单个文件。 仅当要对音频数据进行分块时才使用此标头。 | 可选 |
 | `Expect` | 如果使用分块传输，则发送 `Expect: 100-continue`。 语音服务将确认初始请求并等待附加的数据。| 如果发送分块的音频数据，则是必需的。 |
 | `Accept` | 如果提供此标头，则值必须是 `application/json`。 语音服务以 JSON 格式提供结果。 某些请求框架提供不兼容的默认值。 最好始终包含 `Accept`。 | 可选，但建议提供。 |
@@ -88,7 +88,7 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 
 | 参数 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
-| ReferenceText | 将对发音进行计算的文本。 | 必需 |
+| ReferenceText | 将对发音进行计算的文本。 | 必选 |
 | GradingSystem | 用于分数校准的点系统。 接受的值为 `FivePoint` 和 `HundredMark`。 默认设置为 `FivePoint`。 | 可选 |
 | 粒度 | 计算粒度。 接受的值`Phoneme`为，其中显示了全文本、单词和音素级别`Word`上的分数，其中显示了整个文本和 word 级别`FullText`的分数，只显示了完整文本级别的分数。 默认设置为 `Phoneme`。 | 可选 |
 | 维度 | 定义输出条件。 接受的值`Basic`为，只显示精确度评分， `Comprehensive`显示更多维度上的分数（例如，熟练分数和完整文本级别的完整性分数，word 级别上的错误类型）。 检查[响应参数](#response-parameters)以查看不同分数维度和 word 错误类型的定义。 默认设置为 `Basic`。 | 可选 |

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
 ms.openlocfilehash: 59469aaa0a63cd56debe6af84d48bafa727df88c
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82142297"
 ---
 # <a name="iot-edge-module-support-tab"></a>IoT Edge 模块“支持”选项卡
@@ -27,7 +27,7 @@ ms.locfileid: "82142297"
 
 下表介绍了窗体字段和每个字段所需的输入。 必填字段用星号 (*) 表示。
 
-|  **字段**                |     **描述**                                                          |
+|  **字段**                |     **说明**                                                          |
 |  ---------                |     ---------------                                                          |
 | ***工程联系人***  |  *作为 Microsoft 与你的组织之间的技术联系人* | 
 | **名称\***                  | 作为技术/工程支持的人员或组的名称     |

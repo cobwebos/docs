@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: d0482e5205b97b5c57c41e0ba98fb9ca819e5d5f
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82141745"
 ---
 # <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL 单服务器中配置 TLS 连接
@@ -31,15 +31,15 @@ Azure Database for PostgreSQL 倾向于使用传输层安全性（TLS）（以�
 
 ### <a name="using-the-azure-portal"></a>使用 Azure 门户
 
-访问 Azure Database for PostgreSQL 服务器，并单击“连接安全性”****。 使用切换按钮来启用或禁用“强制实施 SSL 连接”**** 设置。 然后，单击 **“保存”**。
+访问 Azure Database for PostgreSQL 服务器，并单击“连接安全性”  。 使用切换按钮来启用或禁用“强制实施 SSL 连接”  设置。 然后单击“保存”  。
 
 ![连接安全-禁用强制执行 TLS/SSL](./media/concepts-ssl-connection-security/1-disable-ssl.png)
 
-可以通过在“概述”**** 页中查看“SSL 强制实施状态”**** 指示器来确认设置。
+可以通过在“概述”  页中查看“SSL 强制实施状态”  指示器来确认设置。
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
 
-可以通过在 Azure CLI 中分别使用 `Enabled` 或 `Disabled` 值来启用或禁用“ssl-enforcement”**** 参数。
+可以通过在 Azure CLI 中分别使用 `Enabled` 或 `Disabled` 值来启用或禁用“ssl-enforcement”  参数。
 
 ```azurecli
 az postgres server update --resource-group myresourcegroup --name mydemoserver --ssl-enforcement Enabled

@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
 ms.openlocfilehash: b676c2647fbf7c93d271e1d7f68653452125e39b
-ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82137189"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>使用 AzCopy 和 Blob 存储传输数据
@@ -31,7 +31,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 >
 > 如果你希望使用 SAS 令牌来授权访问 Blob 数据，可将该令牌追加到每个 AzCopy 命令中的资源 URL。
 >
-> 例如： `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`。
+> 例如：`'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`。
 
 ## <a name="create-a-container"></a>创建容器
 

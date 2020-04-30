@@ -14,10 +14,10 @@ ms.date: 04/15/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: bfe0c6fcc0d1d22807bfb59b146050fb307892a0
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82133160"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure 资源管理器资源提供程序操作
@@ -687,7 +687,7 @@ Azure 服务： [azure 资源管理器](../azure-resource-manager/index.yml)
 > | 操作 | Microsoft.Authorization/operations/read | 获取操作列表 |
 > |  | **权限** |  |
 > | 操作 | Microsoft.Authorization/permissions/read | 列出调用方在给定范围拥有的所有权限。 |
-> |  | **政策** |  |
+> |  | **策略** |  |
 > | 操作 | Microsoft.Authorization/policies/audit/action | 因 Azure 策略评估影响程度为“audit”而执行的操作 |
 > | 操作 | Microsoft.Authorization/policies/auditIfNotExists/action | 因 Azure 策略评估影响程度为“auditIfNotExists”而执行的操作 |
 > | 操作 | Microsoft.Authorization/policies/deny/action | 因 Azure 策略评估影响程度为“deny”而执行的操作 |
@@ -2852,7 +2852,7 @@ Azure 服务： [Azure Databricks](../azure-databricks/index.yml)
 > | 操作 | Microsoft.Databricks/locations/operationstatuses/read | 读取资源的操作状态。 |
 > |  | **运算符** |  |
 > | 操作 | Microsoft.Databricks/operations/read | 获取操作列表。 |
-> |  | **workspaces** |  |
+> |  | **环境** |  |
 > | 操作 | Microsoft.Databricks/workspaces/read | 检索 Databricks 工作区列表。 |
 > | 操作 | Microsoft.Databricks/workspaces/write | 创建 Databricks 工作区。 |
 > | 操作 | Microsoft.Databricks/workspaces/delete | 删除 Databricks 工作区。 |
@@ -5281,7 +5281,7 @@ Azure 服务： [azure 数据资源管理器](/azure/data-explorer/)
 > | 操作 | Microsoft.Kusto/register/action | 订阅注册操作 |
 > | 操作 | Microsoft.Kusto/Register/action | 将订阅注册到 Kusto 资源提供程序。 |
 > | 操作 | Microsoft.Kusto/Unregister/action | 将订阅取消注册到 Kusto 资源提供程序。 |
-> |  | **Clusters** |  |
+> |  | **群集** |  |
 > | 操作 | Microsoft.Kusto/Clusters/read | 读取群集资源。 |
 > | 操作 | Microsoft.Kusto/Clusters/write | 写入群集资源。 |
 > | 操作 | Microsoft.Kusto/Clusters/delete | 删除群集资源。 |
@@ -5402,7 +5402,7 @@ Azure 服务： [Azure 实验室服务](../lab-services/index.yml)
 > | 操作 | Microsoft.LabServices/labAccounts/sharedImages/write | 添加或修改 sharedimages。 |
 > |  | **位置/操作** |  |
 > | 操作 | Microsoft.LabServices/locations/operations/read | 读取操作。 |
-> |  | **那些** |  |
+> |  | **用户** |  |
 > | 操作 | Microsoft.LabServices/users/Register/action | 将用户注册到托管的实验室 |
 > | 操作 | Microsoft.LabServices/users/ListAllEnvironments/action | 列出用户的所有环境 |
 > | 操作 | Microsoft.LabServices/users/StartEnvironment/action | 通过启动环境内的所有资源来启动环境。 |
@@ -5593,7 +5593,7 @@ Azure 服务：[机器学习 Studio](../machine-learning/studio/index.yml)
 > | 操作 | Microsoft.MachineLearning/webServices/delete | 删除任何机器学习 Web 服务 |
 > |  | **webServices/listkeys** |  |
 > | 操作 | Microsoft.MachineLearning/webServices/listkeys/read | 获取机器学习 Web 服务的密钥 |
-> |  | **环境** |  |
+> |  | **工作区** |  |
 > | 操作 | Microsoft.MachineLearning/Workspaces/read | 读取任何机器学习工作区 |
 > | 操作 | Microsoft.MachineLearning/Workspaces/write | 创建或更新任何机器学习工作区 |
 > | 操作 | Microsoft.MachineLearning/Workspaces/delete | 删除任何机器学习工作区 |
@@ -5620,7 +5620,7 @@ Azure 服务：[机器学习服务](../machine-learning/index.yml)
 > | 操作 | Microsoft.MachineLearningServices/locations/vmsizes/read | 获取支持的 VM 大小 |
 > |  | **位置/workspaceOperationsStatus** |  |
 > | 操作 | Microsoft.MachineLearningServices/locations/workspaceOperationsStatus/read | 获取特定工作区操作的状态 |
-> |  | **workspaces** |  |
+> |  | **环境** |  |
 > | 操作 | Microsoft.MachineLearningServices/workspaces/read | 获取机器学习服务工作区 |
 > | 操作 | Microsoft.MachineLearningServices/workspaces/write | 创建或更新机器学习服务工作区 |
 > | 操作 | Microsoft.MachineLearningServices/workspaces/delete | 删除机器学习服务工作区 |
@@ -7204,7 +7204,7 @@ Azure 服务： [Azure Monitor](../azure-monitor/index.yml)
 > | 操作 | microsoft.operationalinsights/位置/operationStatuses/读取 | 获取 Log Analytics Azure 异步操作状态。 |
 > |  | **运算符** |  |
 > | 操作 | microsoft.operationalinsights/operations/read | 列出所有可用的 OperationalInsights Rest API 操作。 |
-> |  | **workspaces** |  |
+> |  | **环境** |  |
 > | 操作 | Microsoft.OperationalInsights/workspaces/write | 创建新的工作区，或者通过提供现有工作区中的客户 ID 链接到现有工作区。 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/read | 获取现有工作区 |
 > | 操作 | Microsoft.OperationalInsights/workspaces/delete | 删除工作区。 如果该工作区在创建时已链接到现有工作区，则不会删除它链接到的工作区。 |
@@ -8554,7 +8554,7 @@ Azure 服务：[安全中心](../security-center/index.yml)
 > | 操作 | Microsoft.Security/locations/tasks/resolve/action | 解决安全建议 |
 > | 操作 | Microsoft.Security/locations/tasks/activate/action | 激活安全建议 |
 > | 操作 | Microsoft.Security/locations/tasks/dismiss/action | 关闭安全建议 |
-> |  | **政策** |  |
+> |  | **策略** |  |
 > | 操作 | Microsoft.Security/policies/read | 获取安全策略 |
 > | 操作 | Microsoft.Security/policies/write | 更新安全策略 |
 > |  | **pricings** |  |

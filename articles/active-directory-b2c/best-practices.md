@@ -12,17 +12,17 @@ ms.date: 03/03/2020
 ms.author: vigunase
 ms.subservice: B2C
 ms.openlocfilehash: b16c60130836cf0e3b38092b894129f503ee6e83
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82141670"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的建议和最佳实践
 
 以下最佳实践和建议涵盖了将 Azure Active Directory （Azure AD） B2C 集成到现有或新应用程序环境中的一些主要方面。
 
-## <a name="fundamentals"></a>基本
+## <a name="fundamentals"></a>基础知识
 
 |  |  |
 |--|--|

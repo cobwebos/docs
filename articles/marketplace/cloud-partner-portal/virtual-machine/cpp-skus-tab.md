@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
 ms.openlocfilehash: 6ca2ebf9d02c43c3fe6bb3abec6bc0d5815fac74
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82143019"
 ---
 # <a name="virtual-machine-skus-tab"></a>虚拟机“SKU”选项卡
@@ -40,13 +40,13 @@ ms.locfileid: "82143019"
 
 <!-- TD: I took a new screenshot, and the fields differ somewhat from description in the VM Pub Guide.  Needs review. -->
 
-|  **字段**       |     **描述**                                                          |
+|  **字段**       |     **说明**                                                          |
 |  ---------       |     ---------------                                                          |
 |  *SKU 设置*   |    |
 | **SKU ID\***       | 此 SKU 的标识符。  此名称最多包含 50 个字符，包括小写字母数字字符或短划线 (-)，但不能以短划线结尾。  套餐一经发布，便不可修改。  |
 |  *SKU 详细信息*   |  |
-| **标题\***        | 套餐在市场中的友好显示名称。 最大长度为 50 个字符。 |
-| **小结\***      | 套餐在市场中显示的简短说明。 最大长度为 100 个字符。 |
+| **词首\***        | 套餐在市场中的友好显示名称。 最大长度为 50 个字符。 |
+| **“摘要”\***      | 套餐在市场中显示的简短说明。 最大长度为 100 个字符。 |
 | **说明\***  | 更详细地介绍套餐的说明文本。  <!-- TD: max len/guidance? 3k characters -->  |
 | **隐藏此 SKU\*** | 指示是否应在市场中向客户显示该 SKU。  如果只想通过解决方案模板提供此 SKU，而不允许单独购买，则可以隐藏此 SKU。  对于初始测试、临时性或季节性的套餐，此选项也可以提供方便。 |
 | **云可用性\*** | 确定要在哪个云上提供该 SKU。  默认值为 Azure 公有云。  Microsoft Azure 政府版是一个政府社区云，允许美国联邦、州、地方或部落政府及其认证的合作伙伴进行受控的访问。  有关政府云的详细信息，请参阅[欢迎使用 Azure 政府版](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)。 |

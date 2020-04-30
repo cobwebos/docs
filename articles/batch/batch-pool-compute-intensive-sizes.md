@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 12/17/2018
 ms.author: labrenne
 ms.openlocfilehash: 674ee6c5b96c7aaf2926b51824488d03fc56d0a6
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82115952"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>在 Batch 池中使用 RDMA 或 GPU 实例
@@ -37,8 +37,8 @@ Batch 中计算密集型大小的 RDMA 或 GPU 功能仅在某些操作系统中
 | 大小 | 功能 | 操作系统 | 所需软件 | 池设置 |
 | -------- | -------- | ----- |  -------- | ----- |
 | [H16r、H16mr、A8、A9](../virtual-machines/linux/sizes-hpc.md)<br/>[NC24r、NC24rs_v2、NC24rs_v3、ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16.04 LTS 或<br/>基于 CentO 的 HPC<br/>（Azure 市场） | Intel MPI 5<br/><br/>Linux RDMA 驱动程序 | 启用节点间通信，禁用并发任务执行 |
-| [NC、NCv2、NCv3、NDv2 系列](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla GPU（因系列而异） | Ubuntu 16.04 LTS 或<br/>CentOS 7.3 或 7.4<br/>（Azure 市场） | NVIDIA CUDA 或 CUDA Toolkit 驱动程序 | N/A | 
-| [NV、NVv2 系列](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS 或<br/>CentOS 7.3<br/>（Azure 市场） | NVIDIA GRID 驱动程序 | N/A |
+| [NC、NCv2、NCv3、NDv2 系列](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla GPU（因系列而异） | Ubuntu 16.04 LTS 或<br/>CentOS 7.3 或 7.4<br/>（Azure 市场） | NVIDIA CUDA 或 CUDA Toolkit 驱动程序 | 空值 | 
+| [NV、NVv2 系列](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS 或<br/>CentOS 7.3<br/>（Azure 市场） | NVIDIA GRID 驱动程序 | 空值 |
 
 <sup>*</sup>支持 RDMA 的 N 系列大小还包括 NVIDIA Tesla Gpu
 
@@ -47,8 +47,8 @@ Batch 中计算密集型大小的 RDMA 或 GPU 功能仅在某些操作系统中
 | 大小 | 功能 | 操作系统 | 所需软件 | 池设置 |
 | -------- | ------ | -------- | -------- | ----- |
 | [H16r、H16mr、A8、A9](../virtual-machines/sizes-hpc.md)<br/>[NC24r、NC24rs_v2、NC24rs_v3、ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Windows Server 2016、2012 R2 或<br/>2012（Azure 市场） | Microsoft MPI 2012 R2 或更高版本，或<br/> Intel MPI 5<br/><br/>Windows RDMA 驱动程序 | 启用节点间通信，禁用并发任务执行 |
-| [NC、NCv2、NCv3、ND、NDv2 系列](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU（因系列而异） | Windows Server 2016 或 <br/>2012 R2（Azure 市场） | NVIDIA CUDA 或 CUDA Toolkit 驱动程序| N/A | 
-| [NV、NVv2 系列](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 或<br/>2012 R2（Azure 市场） | NVIDIA GRID 驱动程序 | N/A |
+| [NC、NCv2、NCv3、ND、NDv2 系列](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU（因系列而异） | Windows Server 2016 或 <br/>2012 R2（Azure 市场） | NVIDIA CUDA 或 CUDA Toolkit 驱动程序| 空值 | 
+| [NV、NVv2 系列](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 或<br/>2012 R2（Azure 市场） | NVIDIA GRID 驱动程序 | 空值 |
 
 <sup>*</sup>支持 RDMA 的 N 系列大小还包括 NVIDIA Tesla Gpu
 
@@ -101,7 +101,7 @@ Batch 中计算密集型大小的 RDMA 或 GPU 功能仅在某些操作系统中
 | 设置 | 值 |
 | ---- | ----- | 
 | **映像类型** | 市场 (Linux/Windows) |
-| **发布者** | MicrosoftWindowsServer |
+| **器** | MicrosoftWindowsServer |
 | **产品/服务** | WindowsServer |
 | **限量** | 2016-Datacenter |
 | **节点大小** | NC6 标准 |
@@ -155,7 +155,7 @@ Batch 中计算密集型大小的 RDMA 或 GPU 功能仅在某些操作系统中
 | 设置 | 值 |
 | ---- | ---- |
 | **映像类型** | 市场 (Linux/Windows) |
-| **发布者** | OpenLogic |
+| **器** | OpenLogic |
 | **产品/服务** | CentOS-HPC |
 | **限量** | 7.4 |
 | **节点大小** | H16r 标准 |

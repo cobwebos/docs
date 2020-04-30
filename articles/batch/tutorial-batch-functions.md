@@ -1,19 +1,17 @@
 ---
 title: 使用 Azure Functions 触发批处理作业
 description: 教程 - 在扫描文档添加到存储 Blob 时将 OCR 应用于这些文档
-author: LauraBrenner
-ms.service: batch
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: peshultz
 ms.custom: mvc
-ms.openlocfilehash: a967fdc14b85f294ee11cbcc57a8d2280dba38e8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 01c3ab167239affa4d7ae94f5649d60072c3c270
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77017184"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82117159"
 ---
 # <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>教程：使用 Azure Functions 触发批处理作业
 
@@ -24,11 +22,11 @@ ms.locfileid: "77017184"
 * Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 * Azure Batch 帐户和关联的 Azure 存储帐户。 有关如何创建和链接帐户的详细信息，请参阅[创建批处理帐户](quick-create-portal.md#create-a-batch-account)。
 * [Batch Explorer](https://azure.github.io/BatchExplorer/)
-* [Azure 存储浏览器](https://azure.microsoft.com/features/storage-explorer/)
+* [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录 [Azure 门户](https://portal.azure.com)。
+登录到 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="create-a-batch-pool-and-batch-job-using-batch-explorer"></a>使用 Batch Explorer 创建批处理池和批处理作业
 

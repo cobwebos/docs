@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
 ms.openlocfilehash: ef73956b1b0d3e7bed6e91cde0b92bcc3e432795
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82141845"
 ---
 # <a name="publish-iot-edge-module-offer"></a>发布 IoT Edge 模块套餐
@@ -31,7 +31,7 @@ ms.locfileid: "82141845"
 <!-- P2: we need to tell them that if an offer seems stuck in a step, to know that they should file a support ticket (link to support ticket doc) -->
 
 
-|  **发布步骤**           | **时间**    | **描述**                                                            |
+|  **发布步骤**           | **时间**    | **说明**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
 | 验证先决条件         | 15 分钟   | 验证套餐信息和套餐设置。                        |
 | 认证                  | 2 周 | Azure 认证团队对套餐进行分析。 此步骤将针对病毒、恶意软件、安全合规性和安全问题执行扫描。 此外，还验证此 IoT Edge 模块套餐是否符合所有资格条件（请参阅[先决条件](./cpp-prerequisites.md)和[准备技术资产](./cpp-create-technical-assets.md)）。 如果发现了问题，则提供反馈。 |

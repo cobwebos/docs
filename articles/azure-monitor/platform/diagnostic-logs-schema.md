@@ -5,10 +5,10 @@ ms.subservice: logs
 ms.topic: reference
 ms.date: 10/22/2019
 ms.openlocfilehash: 7183c0b268342d08fe7c0ed79c7fa589e3e28afe
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82128464"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Azure 资源日志支持的服务、架构和类别
@@ -68,14 +68,14 @@ ms.locfileid: "82128464"
 | IoT 中心 | [IoT 中心操作](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
 | Key Vault |[Azure Key Vault 日志记录](../../key-vault/general/logging.md) |
 | Kubernetes 服务 |[Azure Kubernetes 日志记录](../../aks/view-master-logs.md#log-event-schema) |
-| 负载平衡器 |[Azure 负载均衡器的 Log Analytics](../../load-balancer/load-balancer-monitor-log.md) |
+| 负载均衡器 |[Azure 负载均衡器的 Log Analytics](../../load-balancer/load-balancer-monitor-log.md) |
 | 逻辑应用 |[逻辑应用 B2B 自定义跟踪架构](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | 网络安全组 |[网络安全组 (NSG) 的 Log Analytics](../../virtual-network/virtual-network-nsg-manage-log.md) |
 | DDOS 保护 | [管理 Azure DDoS 防护标准](../../virtual-network/manage-ddos-protection.md) |
 | Power BI 专用 | [在 Azure 中记录 Power BI Embedded](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
 | 恢复服务 | [Azure 备份的数据模型](../../backup/backup-azure-reports-data-model.md)|
 | 搜索 |[允许并使用搜索流量分析](../../search/search-traffic-analytics.md) |
-| Service Bus |[Azure 服务总线日志](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
+| 服务总线 |[Azure 服务总线日志](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
 | SQL 数据库 | [Azure SQL Database 日志记录](../../sql-database/sql-database-metrics-diag-logging.md) |
 | 流分析 |[作业日志](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
 | 流量管理器 | [流量管理器日志架构](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
@@ -110,7 +110,7 @@ ms.locfileid: "82128464"
 |Microsoft.BatchAI/workspaces|BaiClusterNodeEvent|BaiClusterNodeEvent|
 |Microsoft.BatchAI/workspaces|BaiJobEvent|BaiJobEvent|
 |Microsoft.Blockchain/blockchainMembers|BlockchainApplication|区块链应用程序|
-|Microsoft.Blockchain/blockchainMembers|Proxy (代理)|Proxy (代理)|
+|Microsoft.Blockchain/blockchainMembers|代理|代理|
 |Microsoft.Cdn/profiles/endpoints|CoreAnalytics|获取终结点的指标，例如带宽、流出量等。|
 |Microsoft.ClassicNetwork/networksecuritygroups|网络安全组规则流事件|网络安全组规则流事件|
 |Microsoft.CognitiveServices/accounts|审核|审核日志|
@@ -124,7 +124,7 @@ ms.locfileid: "82128464"
 |Microsoft.ContainerService/managedClusters|cluster-autoscaler|Kubernetes 群集自动缩放程序|
 |Microsoft.Databricks/workspaces|dbfs|Databricks 文件系统|
 |Microsoft.Databricks/workspaces|clusters|Databricks 群集|
-|Microsoft.Databricks/workspaces|accounts|Databricks 帐户|
+|Microsoft.Databricks/workspaces|帐户|Databricks 帐户|
 |Microsoft.Databricks/workspaces|jobs|Databricks 作业|
 |Microsoft.Databricks/workspaces|笔记本|Databricks Notebook|
 |Microsoft.Databricks/workspaces|ssh|Databricks SSH|
@@ -199,7 +199,7 @@ ms.locfileid: "82128464"
 |Microsoft.Insights/AutoscaleSettings|AutoscaleEvaluations|自动缩放评估|
 |Microsoft.Insights/AutoscaleSettings|AutoscaleScaleActions|自动缩放缩放操作|
 |Microsoft.IoTSpaces/Graph|跟踪|跟踪|
-|Microsoft.IoTSpaces/Graph|可运行|可运行|
+|Microsoft.IoTSpaces/Graph|操作|操作|
 |Microsoft.IoTSpaces/Graph|审核|审核|
 |Microsoft.IoTSpaces/Graph|UserDefinedFunction|UserDefinedFunction|
 |Microsoft.IoTSpaces/Graph|流入量|流入量|

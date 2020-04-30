@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
 ms.openlocfilehash: a25f6877f1fb4940fb1de127b81d83975c8e835c
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82142703"
 ---
 # <a name="create-virtual-machine-offer"></a>创建虚拟机产品/服务
@@ -25,7 +25,7 @@ ms.locfileid: "82142703"
 
 其中：
 
-|  **资产组**   |  **描述**  |
+|  **资产组**   |  **说明**  |
 |  ---------------   |  ---------------  |
 |    SKU            |  产品/服务的最小可购买单位。 单个产品/服务（产品分类）可以具有多个与之关联的 SKU，以便区分所支持的功能、VM 映像类型和计费模型。 |
 |  市场       | 包含营销、法律和潜在顾客管理资产以及规范。  <ul><li> 营销资产包括套餐名称、说明和徽标</li> <li> 法律资产包括隐私政策、使用条款和其他法律文档</li>  <li> 潜在顾客管理政策允许你指定如何处理来自 Azure 市场最终用户门户的潜在顾客。</li> </ul> |
