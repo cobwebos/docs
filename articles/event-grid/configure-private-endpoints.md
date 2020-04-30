@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/22/2020
 ms.author: spelluru
 ms.openlocfilehash: 97f08bf0f89fdb65f0ffef7d18557f210e45a8d3
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82101002"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains-preview"></a>配置 Azure 事件网格主题或域的专用终结点（预览）
@@ -157,7 +157,7 @@ az network private-endpoint delete --resource-group <RESOURECE GROUP NAME> --nam
 
 
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 通过运行以下命令更新适用于 CLI 的 Azure 事件网格扩展： 
 
 ```azurecli-interactive

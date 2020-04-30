@@ -4,10 +4,10 @@ description: 如何在 Azure Batch 池中的计算节点上配置或禁用对 SS
 ms.topic: article
 ms.date: 02/13/2018
 ms.openlocfilehash: 8b0ae4b80757bfa647cd5322668d793fa66ffca3
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82113844"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>配置或禁用对 Azure Batch 池中计算节点的远程访问

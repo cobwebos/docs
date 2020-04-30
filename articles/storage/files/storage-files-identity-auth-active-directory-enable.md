@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: rogarana
 ms.openlocfilehash: b2dd501344e1ea799db58ea749395aaed05d05f8
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82106538"
 ---
 # <a name="enable-on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>启用 Azure 文件共享的通过 SMB 进行本地 Active Directory 域服务身份验证
@@ -40,7 +40,7 @@ ms.locfileid: "82106538"
 > - 将本地文件服务器替换为 Azure 文件（包括在文件和 AD 身份验证的专用链接上安装）
 > - 使用 Azure 文件作为 Windows 虚拟机的配置文件容器（包括在 AD 身份验证和 FsLogix 配置上设置）
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
 在为 Azure 文件共享启用 AD DS 身份验证之前，请确保已完成以下先决条件： 
 

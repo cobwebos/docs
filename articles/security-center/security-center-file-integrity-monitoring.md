@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
 ms.openlocfilehash: 46ff4d9c941af25fcec3a70d7a2e6da95da59f32
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82106689"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 安全中心内的文件完整性监视
@@ -208,7 +208,7 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 
    ![将“已启用”设置为 false][19]
 
-6. 选择“保存”。 
+6. 选择“保存”  。
 
 ## <a name="folder-and-path-monitoring-using-wildcards"></a>使用通配符监视文件夹和路径
 

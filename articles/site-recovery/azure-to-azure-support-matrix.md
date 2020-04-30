@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: raynew
 ms.openlocfilehash: 73160a6bf416722021d76da21a32a1cd1ee04386
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82111719"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>在 Azure 区域之间进行 Azure VM 灾难恢复的支持矩阵
@@ -114,7 +114,7 @@ Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3�
 
 #### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Azure 虚拟机支持的 Ubuntu 内核版本
 
-**Release** | **移动服务版本** | **内核版本** |
+**拆卸** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
 14.04 LTS | 9.32| 3.13.0-24-generic 到 3.13.0-170-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-148-generic、<br/>4.15.0-1023-azure 到 4.15.0-1045-azure |
 14.04 LTS | 9.31 | 3.13.0-24-generic 到 3.13.0-170-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-148-generic、<br/>4.15.0-1023-azure 到 4.15.0-1045-azure |
@@ -134,7 +134,7 @@ Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3�
 
 #### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Azure 虚拟机支持的 Debian 内核版本
 
-**Release** | **移动服务版本** | **内核版本** |
+**拆卸** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
 Debian 7 | 9.28、9.29、9:30、9.31 | 3.2.0-4-amd64 到 3.2.0-6-amd64、3.16.0-0.bpo.4-amd64 |
 |||
@@ -143,7 +143,7 @@ Debian 8 | 9.28 | 3.16.0-4-amd64 到 3.16.0-10-amd64、4.9.0-0.bpo.4-amd64 到 4
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Azure 虚拟机支持的 SUSE Linux Enterprise Server 12 内核版本
 
-**Release** | **移动服务版本** | **内核版本** |
+**拆卸** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
 SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | 9.32 | 支持所有库存 SUSE 12 SP1、SP2、SP3、SP4 内核。</br></br> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 到 4.12.14-6.34-azure  |
 SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | 9.31 | 支持所有库存 SUSE 12 SP1、SP2、SP3、SP4 内核。</br></br> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 到 4.12.14-6.29-azure  |
@@ -152,7 +152,7 @@ SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | 9.29 | 支持所有
 
 #### <a name="supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines"></a>Azure 虚拟机支持 SUSE Linux Enterprise Server 15 内核版本
 
-**Release** | **移动服务版本** | **内核版本** |
+**拆卸** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
 SUSE Linux Enterprise Server 15 和 15 SP1 | 9.32 | 所有股票 SUSE 15 和15个内核都受支持。</br></br> 4.12.14-5.5-azure 到 4.12.14-8.22-azure |
 

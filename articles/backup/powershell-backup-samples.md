@@ -5,11 +5,11 @@ ms.topic: sample
 ms.date: 01/31/2019
 ms.custom: mvc
 ms.openlocfilehash: ebe89a22639e94d8c2ef0e8e5354176f6d04ad8d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76768087"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82101512"
 ---
 # <a name="azure-backup-powershell-samples"></a>Azure 备份 PowerShell 示例
 

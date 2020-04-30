@@ -9,10 +9,10 @@ ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: c8d22e63be880c0cef0c4072e99ab85bf3250a1c
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82114268"
 ---
 # <a name="manage-modules-in-azure-automation"></a>管理 Azure 自动化中的模块
@@ -33,7 +33,7 @@ Azure 自动化允许导入 PowerShell 模块，以便在 runbook 和 dsc 配置
 >请确保只导入您的 runbook 和 DSC 配置实际需要的模块。 建议不要导入根 Az 模块，因为它包含可能不需要的许多其他模块，这可能会导致性能问题。 改为导入单个模块，如 Az. Compute。
 
 >[!NOTE]
->本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az module 安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于你的自动化帐户，可使用[如何在 Azure 自动化中更新 Azure PowerShell 模块](../automation-update-azure-modules.md)，将模块更新到最新版本。
+>本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az 模块安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于自动化帐户，可参阅[如何更新 Azure 自动化中的 Azure PowerShell 模块](../automation-update-azure-modules.md)，将模块更新到最新版本。
 
 ## <a name="default-modules"></a>默认模块
 
@@ -334,7 +334,7 @@ New-AzAutomationModule -AutomationAccountName <AutomationAccountName> -ResourceG
 
 1. 找到https://www.powershellgallery.com并搜索要导入的模块。
 2. 单击 "**安装选项**" 下的 " **azure 自动化**" 选项卡上的 "**部署到 azure 自动化**"。 此操作将打开 Azure 门户。 
-3. 在 "导入" 页上，选择自动化帐户，然后单击 **"确定"**。
+3. 在“导入”页上，选择你的自动化帐户并单击“确定”  。
 
 ![PowerShell 库导入模块](../media/modules/powershell-gallery.png)
 

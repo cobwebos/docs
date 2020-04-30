@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/02/2020
 ms.author: saudas
 ms.openlocfilehash: 00ecc077ba55ab9f91fc58f8a47fcdf7440deea6
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82112960"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes 服务中使用托管标识
@@ -27,7 +27,7 @@ AKS 创建两个托管标识：
 
 外接程序也使用托管标识进行身份验证。 对于每个外接程序，AKS 创建一个托管标识，并在外接程序的生存期内持续。 
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 必须安装了以下资源：
 

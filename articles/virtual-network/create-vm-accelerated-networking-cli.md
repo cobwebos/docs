@@ -17,10 +17,10 @@ ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
 ms.openlocfilehash: 54c4a673e654a0244183a84ffa841d553ae6db51
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82106247"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>使用 Azure CLI 创建具有加速网络的 Linux 虚拟机
@@ -175,7 +175,7 @@ az vm create \
 
 若要获取所有 VM 大小和特性列表，请参阅 [Linux VM 大小](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
-创建 VM 后，将返回以下类似输出。 记下 publicIpAddress。**** 在后续步骤中，将使用此地址访问 VM。
+创建 VM 后，将返回以下类似输出。 记下 publicIpAddress。  在后续步骤中，将使用此地址访问 VM。
 
 ```output
 {

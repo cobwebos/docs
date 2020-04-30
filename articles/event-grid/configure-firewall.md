@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: spelluru
 ms.openlocfilehash: 4aa86b3619897c310473f12e1c28101185ebf3ab
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82100985"
 ---
 # <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains-preview"></a>为 Azure 事件网格主题或域配置 IP 防火墙（预览版）
@@ -39,7 +39,7 @@ ms.locfileid: "82100985"
 本部分说明如何使用 Azure CLI 命令创建具有入站 IP 规则的主题。 本部分中所示的步骤适用于主题。 你可以使用类似的步骤为**域**创建入站 IP 规则。 
 
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 通过运行以下命令更新适用于 CLI 的 Azure 事件网格扩展： 
 
 ```azurecli-interactive
@@ -166,7 +166,7 @@ az eventgrid topic update \
 ## <a name="use-powershell"></a>使用 PowerShell
 本部分演示如何使用 Azure PowerShell 命令通过入站 IP 防火墙规则创建 Azure 事件网格主题。 本部分中所示的步骤适用于主题。 你可以使用类似的步骤为**域**创建入站 IP 规则。 
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 按照[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md)中的说明来创建 Azure Active Directory 应用程序，并记下以下值：
 
 - 目录(租户) ID

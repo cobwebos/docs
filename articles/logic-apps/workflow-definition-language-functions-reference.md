@@ -7,10 +7,10 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.openlocfilehash: 6ab3db36ac4d743c8c03b57075d3c4d5f6c85d67
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82115017"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>有关在 Azure 逻辑应用和 Power Automate 的表达式中使用函数的参考指南
@@ -143,7 +143,7 @@ ms.locfileid: "82115017"
 
 | 转换函数 | 任务 |
 | ------------------- | ---- |
-| [数组](../logic-apps/workflow-definition-language-functions-reference.md#array) | 从单个指定的输入返回数组。 对于多个输入，请参阅 [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray)。 |
+| [组成](../logic-apps/workflow-definition-language-functions-reference.md#array) | 从单个指定的输入返回数组。 对于多个输入，请参阅 [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray)。 |
 | [base64](../logic-apps/workflow-definition-language-functions-reference.md#base64) | 返回字符串的 base64 编码版本。 |
 | [base64ToBinary](../logic-apps/workflow-definition-language-functions-reference.md#base64ToBinary) | 返回 base64 编码字符串的二进制版本。 |
 | [base64ToString](../logic-apps/workflow-definition-language-functions-reference.md#base64ToString) | 返回 base64 编码字符串的字符串版本。 |
@@ -505,7 +505,7 @@ actions('Get_user').outputs.body.status
 
 <a name="add"></a>
 
-### <a name="add"></a>添加
+### <a name="add"></a>add
 
 返回两个数字相加的结果。
 
@@ -846,7 +846,7 @@ addToTime('2018-01-01T00:00:00Z', 1, 'Day', 'D')
 
 <a name="and"></a>
 
-### <a name="and"></a>和
+### <a name="and"></a>and
 
 检查所有表达式是否为 true。
 当所有表达式均为 true 时返回 true，当至少一个表达式为 false 时返回 false。
@@ -862,7 +862,7 @@ and(<expression1>, <expression2>, ...)
 
 | 返回值 | 类型 | 说明 |
 | ------------ | -----| ----------- |
-| True 或 False | 布尔 | 当所有表达式均为 true 时返回 true。 当至少一个表达式为 false 时返回 false。 |
+| True 或 False | 布尔值 | 当所有表达式均为 true 时返回 true。 当至少一个表达式为 false 时返回 false。 |
 ||||
 
 *示例 1*
@@ -915,7 +915,7 @@ array('<value>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| [<*值*>] | Array | 一个包含单一指定输入的数组 |
+| [<*值*>] | 数组 | 一个包含单一指定输入的数组 |
 ||||
 
 *示例*
@@ -1125,7 +1125,7 @@ bool(<value>)
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| True 或 False | 布尔 | 指定的值的布尔版本 |
+| True 或 False | 布尔值 | 指定的值的布尔版本 |
 ||||
 
 *示例*
@@ -1236,7 +1236,7 @@ contains([<collection>], '<value>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| True 或 False | 布尔 | 当找到该项时返回 true。 找不到时返回 false。 |
+| True 或 False | 布尔值 | 当找到该项时返回 true。 找不到时返回 false。 |
 ||||
 
 *示例 1*
@@ -1400,7 +1400,7 @@ createArray('<object1>', '<object2>', ...)
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| [<*object1*>，<*b j*>，...] | Array | 基于所有输入项创建的数组 |
+| [<*object1*>，<*b j*>，...] | 数组 | 基于所有输入项创建的数组 |
 ||||
 
 *示例*
@@ -1759,7 +1759,7 @@ empty([<collection>])
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| True 或 False | 布尔 | 当集合为空时返回 true。 不为空时返回 false。 |
+| True 或 False | 布尔值 | 当集合为空时返回 true。 不为空时返回 false。 |
 ||||
 
 *示例*
@@ -1796,7 +1796,7 @@ endsWith('<text>', '<searchText>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| True 或 False  | 布尔 | 当找到结尾子字符串时返回 true。 找不到时返回 false。 |
+| True 或 False  | 布尔值 | 当找到结尾子字符串时返回 true。 找不到时返回 false。 |
 ||||
 
 *示例 1*
@@ -1837,7 +1837,7 @@ equals('<object1>', '<object2>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| True 或 False | 布尔 | 当两者相等时返回 true。 不相等时返回 false。 |
+| True 或 False | 布尔值 | 当两者相等时返回 true。 不相等时返回 false。 |
 ||||
 
 *示例*
@@ -1969,7 +1969,7 @@ formDataMultiValues('<actionName>', '<key>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| [<*array-with-key-values*>] | Array | 包含与指定键匹配的所有值的数组 |
+| [<*array-with-key-values*>] | 数组 | 包含与指定键匹配的所有值的数组 |
 ||||
 
 *示例*
@@ -2176,7 +2176,7 @@ greater('<value>', '<compareTo>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| True 或 False | 布尔 | 当第一个值大于第二个值时返回 true。 当第一个值等于或小于第二个值时返回 false。 |
+| True 或 False | 布尔值 | 当第一个值大于第二个值时返回 true。 当第一个值等于或小于第二个值时返回 false。 |
 ||||
 
 *示例*
@@ -2213,7 +2213,7 @@ greaterOrEquals('<value>', '<compareTo>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| True 或 False | 布尔 | 当第一个值大于或等于第二个值时返回 true。 当第一个值小于第二个值时返回 false。 |
+| True 或 False | 布尔值 | 当第一个值大于或等于第二个值时返回 true。 当第一个值小于第二个值时返回 false。 |
 ||||
 
 *示例*
@@ -2766,7 +2766,7 @@ less('<value>', '<compareTo>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| True 或 False | 布尔 | 当第一个值小于第二个值时返回 true。 当第一个值等于或大于第二个值时返回 false。 |
+| True 或 False | 布尔值 | 当第一个值小于第二个值时返回 true。 当第一个值等于或大于第二个值时返回 false。 |
 ||||
 
 *示例*
@@ -2803,7 +2803,7 @@ lessOrEquals('<value>', '<compareTo>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| True 或 False  | 布尔 | 当第一个值小于或等于第二个值时返回 true。 当第一个值大于第二个值时返回 false。 |
+| True 或 False  | 布尔值 | 当第一个值小于或等于第二个值时返回 true。 当第一个值大于第二个值时返回 false。 |
 ||||
 
 *示例*
@@ -3014,7 +3014,7 @@ not(<expression>)
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| True 或 False | 布尔 | 当表达式为 false 时返回 true。 当表达式为 true 时返回 false。 |
+| True 或 False | 布尔值 | 当表达式为 false 时返回 true。 当表达式为 true 时返回 false。 |
 ||||
 
 *示例 1*
@@ -3047,7 +3047,7 @@ not(equals(1, 1))
 
 <a name="or"></a>
 
-### <a name="or"></a>、
+### <a name="or"></a>或
 
 检查是否至少一个表达式为 true。
 当至少一个表达式为 true 时返回 true，当所有表达式均为 false 时返回 false。
@@ -3063,7 +3063,7 @@ or(<expression1>, <expression2>, ...)
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| True 或 False | 布尔 | 当至少一个表达式为 true 时返回 true。 当所有表达式均为 false 时返回 false。 |
+| True 或 False | 布尔值 | 当至少一个表达式为 true 时返回 true。 当所有表达式均为 false 时返回 false。 |
 ||||
 
 *示例 1*
@@ -3244,7 +3244,7 @@ range(<startIndex>, <count>)
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| [<*range-result*>] | Array | 从指定索引开始的整数组成的数组 |
+| [<*range-result*>] | 数组 | 从指定索引开始的整数组成的数组 |
 ||||
 
 *示例*
@@ -3617,7 +3617,7 @@ skip([<collection>], <count>)
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| [<*updated-collection*>] | Array | 删除指定项后得到的更新后的集合 |
+| [<*updated-collection*>] | 数组 | 删除指定项后得到的更新后的集合 |
 ||||
 
 *示例*
@@ -3648,7 +3648,7 @@ split('<text>', '<delimiter>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| [<*substring1*>,<*substring2*>,...] | Array | 一个数组，其中包含从原始字符串返回以逗号分隔的子字符串 |
+| [<*substring1*>,<*substring2*>,...] | 数组 | 一个数组，其中包含从原始字符串返回以逗号分隔的子字符串 |
 ||||
 
 *示例*
@@ -3774,7 +3774,7 @@ startsWith('<text>', '<searchText>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| True 或 False  | 布尔 | 当找到起始子字符串时返回 true。 找不到时返回 false。 |
+| True 或 False  | 布尔值 | 当找到起始子字符串时返回 true。 找不到时返回 false。 |
 ||||
 
 *示例 1*
@@ -4118,7 +4118,7 @@ triggerFormDataMultiValues('<key>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| [<*array-with-key-values*>] | Array | 包含与指定键匹配的所有值的数组 |
+| [<*array-with-key-values*>] | 数组 | 包含与指定键匹配的所有值的数组 |
 ||||
 
 *示例*
@@ -4715,7 +4715,7 @@ xpath('<xml>', '<xpath>')
 | ------------ | ---- | ----------- |
 | <*xml-节点*> | XML | 一个 XML 节点，当只有单个节点与指定的 XPath 表达式匹配时 |
 | <*负值*> | Any | 来自一个 XML 节点的值，当只有单个值与指定的 XPath 表达式匹配时 |
-| [<*xml-node1*>, <*xml-node2*>, ...] </br>\- 或 - </br>[<*value1*>, <*value2*>, ...] | Array | 一个数组，其中包含与指定的 XPath 表达式匹配的 XML 节点或值 |
+| [<*xml-node1*>, <*xml-node2*>, ...] </br>\- 或 - </br>[<*value1*>, <*value2*>, ...] | 数组 | 一个数组，其中包含与指定的 XPath 表达式匹配的 XML 节点或值 |
 ||||
 
 *示例 1*

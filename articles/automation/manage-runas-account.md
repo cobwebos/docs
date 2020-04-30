@@ -6,10 +6,10 @@ ms.subservice: shared-capabilities
 ms.date: 04/23/2020
 ms.topic: conceptual
 ms.openlocfilehash: 5cb3752e5a74f26936efcbb9dba5cdcda76e01f4
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82113300"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>管理 Azure 自动化运行方式帐户
@@ -310,7 +310,7 @@ if ($CreateClassicRunAsAccount) {
 ```
 
 >[!NOTE]
->`Add-AzAccount`和`Add-AzureRMAccount`是[AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)的别名。 可以使用这些 cmdlet，或者将自动化帐户中的[模块更新](automation-update-azure-modules.md)到最新版本。 即使刚刚创建了一个新的自动化帐户，也可能需要更新模块。
+>`Add-AzAccount`和`Add-AzureRMAccount`是[AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)的别名。 可以使用这些 cmdlet，也可以在自动化帐户中[将模块更新](automation-update-azure-modules.md)为最新版本。 即使刚刚创建了一个新的自动化帐户，也可能需要更新你的模块。
 
 ### <a name="execute-the-powershell-script"></a>执行 PowerShell 脚本
 

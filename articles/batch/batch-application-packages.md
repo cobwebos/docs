@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 04/26/2019
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7824d3e2d8cfb7b52041e59a9007688c4ef1cafa
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82115612"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>使用 Batch 应用程序包将应用程序部署到计算节点
@@ -138,7 +138,7 @@ Batch 服务使用 Azure 存储将应用程序包存储为块 blob。 对于块 
 * 在 Batch 帐户内必须唯一。
 * 保留大小写和不区分大小写。
 
-**版本**
+**Version**
 
 此字段指定要上传的应用程序包版本。 版本字符串需符合以下验证规则：
 

@@ -4,10 +4,10 @@ description: 提供服务器评估和迁移中所使用的 Azure Migrate 设备�
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.openlocfilehash: 71a17211a530b4cb55764f3b3ab84ff5a4d5f3e6
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82106336"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 设备
@@ -18,7 +18,7 @@ ms.locfileid: "82106336"
 
 在以下方案中使用 Azure Migrate 设备。
 
-**方案** | **工具** | **用于** 
+**方案** | **工具** | **用途** 
 --- | --- | ---
 **VMware VM 评估** | Azure Migrate：服务器评估 | 发现 VMware Vm<br/><br/> 发现计算机应用和依赖项<br/><br/> 收集计算机元数据和性能元数据以进行评估。
 **VMware VM 无代理迁移** | Azure Migrate：服务器迁移 | 发现 VMware Vm <br/><br/> 复制 VMware Vm 和无代理迁移。
@@ -176,7 +176,7 @@ IPv6 地址 | vm.Guest.Net
 读取吞吐量（MB/秒） | net.received.average
 写入吞吐量（MB/秒） | net.transmitted.average
 **清单路径详细信息** | 
-“属性” | container.GetType().Name
+名称 | container.GetType().Name
 子对象类型 | container.ChildType
 引用详细信息 | container.MoRef
 父级详细信息 | Container.Parent
@@ -191,7 +191,7 @@ IPv6 地址 | vm.Guest.Net
 
 下面是设备收集并发送到 Azure 的 VMware VM 性能数据。
 
-**数据** | **计数器** | **评估影响**
+**数据** | **对抗** | **评估影响**
 --- | --- | ---
 CPU 使用率 | cpu.usage.average | 建议的 VM 大小/成本
 内存利用率 | mem.usage.average | 建议的 VM 大小/成本
@@ -218,7 +218,7 @@ NIC 写入吞吐量（MB/秒） | net.transmitted.average  |VM 大小的计算
 远程 IP 地址 | netstat
 TCP 连接状态 | netstat
 进程 ID | netstat
-不是。 活动连接 | netstat
+不能。 活动连接 | netstat
 
 #### <a name="process-data"></a>处理数据
 以下是设备从每个已启用无代理依赖关系分析的 VM 收集的处理数据。 此数据会发送到 Azure。
@@ -240,7 +240,7 @@ TCP 连接状态 | netstat
 远程端口 | netstat 
 远程 IP 地址 | netstat 
 TCP 连接状态 | netstat 
-不是。 活动连接 | netstat
+不能。 活动连接 | netstat
 进程 ID  | netstat 
 进程名称 | ps
 处理参数 | ps
@@ -286,7 +286,7 @@ NIC MAC ID （旧 Nic） | MsvmEmulatedEthernetPortSetting 数据 | 地址
 
 下面是设备收集并发送到 Azure 的超级 VM 性能数据。
 
-**性能计数器类** | **计数器** | **评估影响**
+**性能计数器类** | **对抗** | **评估影响**
 --- | --- | ---
 Hyper-v 虚拟机监控程序虚拟处理器 | % Guest 运行时间 | 建议的 VM 大小/成本
 Hyper-v 动态内存 VM | 当前压力（%）<br/> 来宾可见物理内存（MB） | 建议的 VM 大小/成本

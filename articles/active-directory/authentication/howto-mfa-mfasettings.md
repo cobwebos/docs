@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9002447df44a1f0c87ec9de03e316d7d12d8a626
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82105652"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>配置 Azure 多重身份验证设置
@@ -84,7 +84,7 @@ ms.locfileid: "82105652"
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 浏览到**Azure Active Directory** > **安全** > **MFA** > **欺诈警报**。
 3. 将“允许用户提交欺诈警报”设置为“打开”。********
-4. 选择“保存”。 
+4. 选择“保存”  。
 
 ### <a name="configuration-options"></a>配置选项
 
@@ -156,7 +156,7 @@ ms.locfileid: "82105652"
 
 用于创建自定义消息的示例脚本。
 
-| 消息名 | Script |
+| 消息名 | 脚本 |
 | --- | --- |
 | 身份验证成功 | 已成功验证你的登录。 不用. |
 | 扩展提示 | 感谢您使用 Microsoft 的登录验证系统。 请按井号键继续。 |
@@ -323,7 +323,7 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 4. 输入位置的名称。
 5. 选择 "**标记为受信任位置**"。
 6. 以 CIDR 表示法输入 IP 范围（例如 192.168.1.1/24）。****
-7. 选择“创建”  。
+7. 选择“创建”。 
 
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>通过使用条件访问启用受信任的 Ip 功能
 
@@ -341,7 +341,7 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
       * 对于单个 IP 地址，请使用类似于**xxx.xxx.xxx.xxx/32**的表示法。
       * 可输入至多 50 个 IP 地址范围。 从这些 IP 地址登录的用户将免除双重验证。
 
-5. 选择“保存”。 
+5. 选择“保存”  。
 
 ### <a name="enable-the-trusted-ips-feature-by-using-service-settings"></a>使用服务设置启用受信任的 IP 功能
 
@@ -360,7 +360,7 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
       * 对于单个 IP 地址，请使用类似于**xxx.xxx.xxx.xxx/32**的表示法。
       * 可输入至多 50 个 IP 地址范围。 从这些 IP 地址登录的用户将免除双重验证。
 
-6. 选择“保存”。 
+6. 选择“保存”  。
 
 ## <a name="verification-methods"></a>验证方法
 
@@ -382,7 +382,7 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 3. 选择 "**多重身份验证**"。
 4. 在“多重身份验证”下，选择“服务设置”。****
 5. 在“服务设置”页上的“验证选项”**** 下，选择/取消选择要向用户提供的方法。****
-6. 单击“ **保存**”。
+6. 单击 **“保存”** 。
 
 若要更详细地了解如何使用身份验证方法，可参阅[有哪些身份验证方法](concept-authentication-methods.md)一文。
 
@@ -419,7 +419,7 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 4. 在“多重身份验证”下，选择“服务设置”。****
 5. 在“服务设置”页的“管理记住多重身份验证设置”下，选择“允许用户在其信任的设备上记住多重身份验证”************ 选项。
 6. 设置允许受信任设备免除双重验证的天数。 默认值为 14 天。
-7. 选择“保存”。 
+7. 选择“保存”  。
 
 ### <a name="mark-a-device-as-trusted"></a>将设备标记为受信任的
 

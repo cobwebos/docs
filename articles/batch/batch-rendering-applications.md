@@ -4,10 +4,10 @@ description: 可以将任何渲染应用程序与 Azure Batch 配合使用。 �
 ms.date: 09/19/2019
 ms.topic: conceptual
 ms.openlocfilehash: f04fff3df2deb714f0432e5ad77d921a2d7ac205
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82115782"
 ---
 # <a name="pre-installed-applications-on-rendering-vm-images"></a>在渲染 VM 映像上预安装的应用程序

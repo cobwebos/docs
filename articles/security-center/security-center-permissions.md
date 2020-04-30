@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: memildin
 ms.openlocfilehash: 6e61571400930d4a781d6d67647bd662a7f2d350
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82106213"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure 安全中心的权限
@@ -41,7 +41,7 @@ Azure 安全中心使用[基于角色的访问控制 (RBAC)](../role-based-acces
 
 下表显示安全中心的角色和允许的操作。
 
-| 角色 | 编辑安全策略 | 应用资源的安全建议</br> （包括 with "Quick Fix！"） | 关闭警报和建议 | 查看警报和建议 |
+| Role | 编辑安全策略 | 应用资源的安全建议</br> （包括 with "Quick Fix！"） | 关闭警报和建议 | 查看警报和建议 |
 |:--- |:---:|:---:|:---:|:---:|
 | 订阅所有者 | ✔ | ✔ | ✔ | ✔ |
 | 订阅参与者 | -- | ✔ | ✔ | ✔ |

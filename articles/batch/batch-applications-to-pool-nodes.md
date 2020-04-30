@@ -4,10 +4,10 @@ description: 了解如何将应用程序和数据复制到池节点。
 ms.topic: article
 ms.date: 02/17/2020
 ms.openlocfilehash: 700e9b80f8420266c0300b47bdd30bc271f8421c
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82115578"
 ---
 # <a name="copying-applications-and-data-to-pool-nodes"></a>将应用程序和数据复制到池节点

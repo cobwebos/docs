@@ -5,10 +5,10 @@ services: cognitive-services
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: d9235b6ef1c7cddbfbbd36f8382439d781af6d5f
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82101019"
 ---
 # <a name="create-luis-resources"></a>创建 LUIS 资源
@@ -85,7 +85,7 @@ ms.locfileid: "82101019"
 
 1. 登录到[LUIS 门户](https://www.luis.ai)。
 1. 在右上角的导航栏中选择用户帐户，然后选择“设置”。****
-1. 在“用户设置”页上选择“添加创作资源”，然后选择现有的创作资源。******** 选择“保存”。 
+1. 在“用户设置”页上选择“添加创作资源”，然后选择现有的创作资源。******** 选择“保存”  。
 
 ## <a name="assign-a-resource-to-an-app"></a>将资源分配给应用
 
@@ -111,7 +111,7 @@ ms.locfileid: "82101019"
 
     此 POST API 需要以下设置：
 
-    |Header|值|
+    |Header|“值”|
     |--|--|
     |`Authorization`|`Authorization` 的值为 `Bearer {token}`。 请注意，单词 `Bearer` 和空格前面必须是令牌值。|
     |`Ocp-Apim-Subscription-Key`|你的创作密钥。|

@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
 ms.openlocfilehash: 3efc4528863286da676fc7eb758176156c87a32a
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82115646"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure 容器实例中的容器组
@@ -79,7 +79,7 @@ Azure 容器实例通过添加组中实例的[资源请求][resource-requests]�
 
 可以指定要在容器组内装载的外部卷。 支持的卷包括：
 * [Azure 文件共享][azure-files]
-* [私钥][secret]
+* [机密][secret]
 * [空目录][empty-directory]
 * [克隆的 git 存储库][volume-gitrepo]
 

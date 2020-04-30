@@ -6,10 +6,10 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 04/23/2020
 ms.openlocfilehash: 73147fe2e8c834fd4fc67c4c396bb095f616b6d8
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82105839"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights 和 Log Analytics 使用的 IP 地址
@@ -28,9 +28,9 @@ ms.locfileid: "82105839"
 ## <a name="outgoing-ports"></a>传出端口
 需要在服务器防火墙中打开某些传出端口，允许 Application Insights SDK 和/或状态监视器将数据发送到门户：
 
-| 目标 | 代码 | IP | 端口 |
+| 目的 | 代码 | IP | 端口 |
 | --- | --- | --- | --- |
-| 遥测 |dc.applicationinsights.azure.com<br/>dc.applicationinsights.microsoft.com<br/>dc.services.visualstudio.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.155.50<br/>52.162.110.67<br/>191.233.204.248<br/>13.69.66.140<br/>13.77.52.29<br/>51.107.59.180<br/>40.71.12.235<br/>20.44.8.10<br/>40.71.13.169<br/>13.66.141.156<br/>40.71.13.170 | 443 |
+| 遥测技术 |dc.applicationinsights.azure.com<br/>dc.applicationinsights.microsoft.com<br/>dc.services.visualstudio.com |40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221<br/>52.167.221.184<br/>52.169.64.244<br/>40.85.218.175<br/>104.211.92.54<br/>52.175.198.74<br/>51.140.6.23<br/>40.71.12.231<br/>13.69.65.22<br/>13.78.108.165<br/>13.70.72.233<br/>20.44.8.7<br/>13.86.218.248<br/>40.79.138.41<br/>52.231.18.241<br/>13.75.38.7<br/>102.133.155.50<br/>52.162.110.67<br/>191.233.204.248<br/>13.69.66.140<br/>13.77.52.29<br/>51.107.59.180<br/>40.71.12.235<br/>20.44.8.10<br/>40.71.13.169<br/>13.66.141.156<br/>40.71.13.170 | 443 |
 | 实时指标流（美国东部） |use.rt.prod.applicationinsights.trafficmanager.net |23.96.28.38<br/>13.92.40.198<br/>40.112.49.101<br/>40.117.80.207 |443 |
 | 实时指标流（美国中南部） |ussc.rt.prod.applicationinsights.trafficmanager.net |157.55.177.6<br/>104.44.140.84<br/>104.215.81.124<br/>23.100.122.113 |443 |
 | 实时指标流（北欧） |eun.rt.prod.applicationinsights.trafficmanager.net |40.115.103.168<br/>40.115.104.31<br/>40.87.140.215<br/>40.87.138.220 |443 |
@@ -41,15 +41,15 @@ ms.locfileid: "82105839"
 ## <a name="status-monitor"></a>状态监视器
 状态监视器配置 - 仅在进行更改时需要。
 
-| 目标 | 代码 | IP | 端口 |
+| 目的 | 代码 | IP | 端口 |
 | --- | --- | --- | --- |
-| Configuration |`management.core.windows.net` | |`443` |
-| Configuration |`management.azure.com` | |`443` |
-| Configuration |`login.windows.net` | |`443` |
-| Configuration |`login.microsoftonline.com` | |`443` |
-| Configuration |`secure.aadcdn.microsoftonline-p.com` | |`443` |
-| Configuration |`auth.gfx.ms` | |`443` |
-| Configuration |`login.live.com` | |`443` |
+| 配置 |`management.core.windows.net` | |`443` |
+| 配置 |`management.azure.com` | |`443` |
+| 配置 |`login.windows.net` | |`443` |
+| 配置 |`login.microsoftonline.com` | |`443` |
+| 配置 |`secure.aadcdn.microsoftonline-p.com` | |`443` |
+| 配置 |`auth.gfx.ms` | |`443` |
+| 配置 |`login.live.com` | |`443` |
 | 安装 | `globalcdn.nuget.org`, `packages.nuget.org` ,`api.nuget.org/v3/index.json` `nuget.org`, `api.nuget.org`, `dc.services.vsallin.net` | |`443` |
 
 ## <a name="availability-tests"></a>可用性测试
@@ -182,14 +182,14 @@ East US
 
 ## <a name="application-insights--log-analytics-apis"></a>Application Insights & Log Analytics Api
 
-| 目标 | URI |  IP | 端口 |
+| 目的 | URI |  IP | 端口 |
 | --- | --- | --- | --- |
 | API |`api.applicationinsights.io`<br/>`api1.applicationinsights.io`<br/>`api2.applicationinsights.io`<br/>`api3.applicationinsights.io`<br/>`api4.applicationinsights.io`<br/>`api5.applicationinsights.io`<br/>`dev.applicationinsights.io`<br/>`dev.applicationinsights.microsoft.com`<br/>`dev.aisvc.visualstudio.com`<br/>`www.applicationinsights.io`<br/>`www.applicationinsights.microsoft.com`<br/>`www.aisvc.visualstudio.com`<br/>`api.loganalytics.io`<br/>`*.api.loganalytics.io`<br/>`dev.loganalytics.io`<br>`docs.loganalytics.io`<br/>`www.loganalytics.io` |20.37.52.188 <br/> 20.37.53.231 <br/> 20.36.47.130 <br/> 20.40.124.0 <br/> 20.43.99.158 <br/> 20.43.98.234 <br/> 13.70.127.61 <br/> 40.81.58.225 <br/> 20.40.160.120 <br/> 23.101.225.155 <br/> 52.139.8.32 <br/> 13.88.230.43 <br/> 52.230.224.237 <br/> 52.242.230.209 <br/> 52.173.249.138 <br/> 52.229.218.221 <br/> 52.229.225.6 <br/> 23.100.94.221 <br/> 52.188.179.229 <br/> 52.226.151.250 <br/> 52.150.36.187 <br/> 40.121.135.131 <br/> 20.44.73.196 <br/> 20.41.49.208 <br/> 40.70.23.205 <br/> 20.40.137.91 <br/> 20.40.140.212 <br/> 40.89.189.61 <br/> 52.155.118.97 <br/> 52.156.40.142 <br/> 23.102.66.132 <br/> 52.231.111.52 <br/> 52.231.108.46 <br/> 52.231.64.72 <br/> 52.162.87.50 <br/> 23.100.228.32 <br/> 40.127.144.141 <br/> 52.155.162.238 <br/> 137.116.226.81 <br/> 52.185.215.171 <br/> 40.119.4.128 <br/> 52.171.56.178 <br/> 20.43.152.45 <br/> 20.44.192.217 <br/> 13.67.77.233 <br/> 51.104.255.249 <br/> 51.104.252.13 <br/> 51.143.165.22 <br/> 13.78.151.158 <br/> 51.105.248.23 <br/> 40.74.36.208 <br/> 40.74.59.40 <br/> 13.93.233.49 <br/> 52.247.202.90 |80,443 |
 | Azure Pipeline 批注扩展 |aigs1.aisvc.visualstudio.com |动态|443 | 
 
 ## <a name="application-insights-analytics"></a>Application Insights Analytics
 
-| 目标 | URI | IP | 端口 |
+| 目的 | URI | IP | 端口 |
 | --- | --- | --- | --- |
 | 分析门户 | analytics.applicationinsights.io | 动态 | 80,443 |
 | CDN | applicationanalytics.azureedge.net | 动态 | 80,443 |
@@ -199,7 +199,7 @@ East US
 
 ## <a name="log-analytics-portal"></a>Log Analytics 门户
 
-| 目标 | URI | IP | 端口 |
+| 目的 | URI | IP | 端口 |
 | --- | --- | --- | --- |
 | 门户 | portal.loganalytics.io | 动态 | 80,443 |
 | CDN | applicationanalytics.azureedge.net | 动态 | 80,443 |
@@ -208,29 +208,29 @@ East US
 
 ## <a name="application-insights-azure-portal-extension"></a>Application Insights Azure 门户扩展
 
-| 目标 | URI | IP | 端口 |
+| 目的 | URI | IP | 端口 |
 | --- | --- | --- | --- |
 | Application Insights 扩展 | stamp2.app.insightsportal.visualstudio.com | 动态 | 80,443 |
 | Application Insights 扩展 CDN | insightsportal-prod2-cdn.aisvc.visualstudio.com<br/>insightsportal-prod2-asiae-cdn.aisvc.visualstudio.com<br/>insightsportal-cdn-aimon.applicationinsights.io | 动态 | 80,443 |
 
 ## <a name="application-insights-sdks"></a>Application Insights SDK
 
-| 目标 | URI | IP | 端口 |
+| 目的 | URI | IP | 端口 |
 | --- | --- | --- | --- |
 | Application Insights JS SDK CDN | az416426.vo.msecnd.net | 动态 | 80,443 |
 | Application Insights Java SDK | aijavasdk.blob.core.windows.net | 动态 | 80,443 |
 
 ## <a name="alert-webhooks"></a>警报 Webhook
 
-| 目标 | IP | 端口
+| 目的 | IP | 端口
 | --- | --- | --- |
 | 警报 | 23.96.11.4 | 443 |
 
 ## <a name="profiler"></a>探查器
 
-| 目标 | URI | IP | 端口 |
+| 目的 | URI | IP | 端口 |
 | --- | --- | --- | --- |
-| 代理 | agent.azureserviceprofiler.net<br/>*.agent.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73<br/>191.232.214.6<br/>191.232.213.239 | 443
+| Agent | agent.azureserviceprofiler.net<br/>*.agent.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73<br/>191.232.214.6<br/>191.232.213.239 | 443
 | 门户 | gateway.azureserviceprofiler.net | 动态 | 443
 | 存储 | *.core.windows.net | 动态 | 443
 
@@ -239,8 +239,8 @@ East US
 > [!NOTE]
 > 探查器和快照调试器共享同一组 IP 地址。
 
-| 目标 | URI | IP | 端口 |
+| 目的 | URI | IP | 端口 |
 | --- | --- | --- | --- |
-| 代理 | ppe.azureserviceprofiler.net<br/>*.ppe.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73<br/>191.232.214.6<br/>191.232.213.239 | 443
+| Agent | ppe.azureserviceprofiler.net<br/>*.ppe.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73<br/>191.232.214.6<br/>191.232.213.239 | 443
 | 门户 | ppe.gateway.azureserviceprofiler.net | 动态 | 443
 | 存储 | *.core.windows.net | 动态 | 443

@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7704a758f53b6ba26b1c9cf9e9e2811f533601f0
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82112195"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发行历史记录
@@ -464,7 +464,7 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 >“对于部署了高于 1.1.524.0 的版本的部分租户，自动升级功能错误地被禁用了。 若要确保你的 Azure AD Connect 实例依然可以进行自动升级，请运行以下 PowerShell cmdlet：“Set-ADSyncAutoUpgrade -AutoupGradeState Enabled”
 
 
-### <a name="azure-ad-connect"></a>Azure AD Connect
+### <a name="azure-ad-connect"></a>具有 Azure AD Connect
 #### <a name="fixed-issues"></a>修复的问题
 
 * 如果自动升级状态设置为“已暂停”，则 Set-ADSyncAutoUpgrade cmdlet 以前会阻止自动升级。 此功能现已更改为，不阻止自动升级未来版本。
@@ -476,7 +476,7 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 >[!NOTE]
 >完成到此新版本的升级以后，将会自动触发针对 Azure AD 连接器的完全同步和完全导入，以及针对 AD 连接器的完全同步。 由于这可能需要一定的时间（具体取决于 Azure AD Connect 环境的大小），因此请确保已采取必要的支持措施，否则需推迟升级，直至找到合适的升级时间。
 
-### <a name="azure-ad-connect"></a>Azure AD Connect
+### <a name="azure-ad-connect"></a>具有 Azure AD Connect
 #### <a name="fixed-issues"></a>修复的问题
 * 修复了在切换到下一页时，“分区筛选”页的后台任务的计时窗口问题。
 
@@ -538,7 +538,7 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 >[!NOTE]
 >此版本是 Azure AD Connect 安全相关修补程序
 
-### <a name="azure-ad-connect"></a>Azure AD Connect
+### <a name="azure-ad-connect"></a>具有 Azure AD Connect
 Azure AD Connect 版本 1.1.654.0（以及更高版本）中已添加了一项改进，以确保当 Azure AD Connect 创建 AD DS 帐户时会自动应用[锁定对 AD DS 帐户的访问](#lock)部分下所述的建议权限更改。 
 
 - 设置 Azure AD Connect 时，安装管理员可提供现有的 AD DS 帐户，也可以让 Azure AD Connect 自动创建帐户。 权限更改将自动应用到在设置期间由 Azure AD Connect 创建的 AD DS 帐户。 它们不适用于安装管理员所提供的现有 AD DS 帐户。
@@ -579,7 +579,7 @@ Allow    | 经过身份验证的用户           | 读取权限     | 此对象 
 Set-ADSyncRestrictedPermissions -ObjectDN <$ObjectDN> -Credential <$Credential>
 ```
 
-位置 
+Where 
 
 **$ObjectDN** = 需要增强权限的 Active Directory 帐户。
 
@@ -588,7 +588,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN <$ObjectDN> -Credential <$Credential>
 >[!NOTE] 
 >$credential.UserName 应为 FQDN\username 格式。 示例：contoso.com\admin 
 
-##### <a name="example"></a>示例：
+##### <a name="example"></a>例如：
 
 ```powershell
 Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbackdc,DC=com" -Credential $credential 
@@ -605,7 +605,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 >[!NOTE]
 >不通过 Azure AD Connect 自动升级功能向客户提供此内部版本。
 
-### <a name="azure-ad-connect"></a>Azure AD Connect
+### <a name="azure-ad-connect"></a>具有 Azure AD Connect
 #### <a name="fixed-issue"></a>修复的问题
 * 修复了 Azure AD Connect 与 Azure AD Connect Health 代理（用于同步）之间存在的版本兼容性问题。 此问题会影响要执行 Azure AD Connect 就地升级到版本 1.1.647.0，但当前 Health 代理版本为 3.0.127.0 的用户。 升级之后，Health 代理不再能够将有关 Azure AD Connect 同步服务的运行状况数据发送到 Azure AD Health 服务。 通过此修复，在 Azure AD Connect 就地升级过程中将安装 Health 代理版本 3.0.129.0。 Health 代理版本 3.0.129.0 与 Azure AD Connect 版本 1.1.649.0 没有兼容性问题。
 
@@ -618,7 +618,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 >
 >
 
-### <a name="azure-ad-connect"></a>Azure AD Connect
+### <a name="azure-ad-connect"></a>具有 Azure AD Connect
 #### <a name="fixed-issues"></a>修复的问题
 * 修复了 Azure AD Connect 向导中的“更改用户登录”任务：**
 
@@ -675,7 +675,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 ## <a name="116140"></a>1.1.614.0
 状态：2017 年 9 月 5 日
 
-### <a name="azure-ad-connect"></a>Azure AD Connect
+### <a name="azure-ad-connect"></a>具有 Azure AD Connect
 
 #### <a name="known-issues"></a>已知问题
 * 有个已知问题会导致 Azure AD Connect 升级失败并出现错误“无法升级同步服务”的问题。** 此外，在出现事件错误“服务无法启动，因为数据库的版本比所安装的二进制文件的版本更新”时，同步服务不再能够启动。** 当执行升级的管理员对 Azure AD Connect 所用的 SQL 服务器没有 sysadmin 特权时，将会出现此问题。 Dbo 权限是不够的。
@@ -725,7 +725,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 ## <a name="115610"></a>1.1.561.0
 状态：2017 年 7 月 23 日
 
-### <a name="azure-ad-connect"></a>Azure AD Connect
+### <a name="azure-ad-connect"></a>具有 Azure AD Connect
 
 #### <a name="fixed-issue"></a>修复的问题
 
@@ -765,7 +765,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 ## <a name="115580"></a>1.1.558.0
 状态：不会发行。 版本 1.1.561.0 中包括了此内部版本中的更改。
 
-### <a name="azure-ad-connect"></a>Azure AD Connect
+### <a name="azure-ad-connect"></a>具有 Azure AD Connect
 
 #### <a name="fixed-issue"></a>修复的问题
 
@@ -796,7 +796,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 >[!NOTE]
 >不通过 Azure AD Connect 自动升级功能向客户提供此内部版本。
 
-### <a name="azure-ad-connect"></a>Azure AD Connect
+### <a name="azure-ad-connect"></a>具有 Azure AD Connect
 
 #### <a name="fixed-issue"></a>修复的问题
 * 修复了 Initialize-ADSyncDomainJoinedComputerSync cmdlet 中导致现有服务连接点对象上配置的仍然有效的已验证域更改的问题。 当 Azure AD 租户具有可用于配置服务连接点的多个已验证域时会发生此问题。
@@ -898,7 +898,7 @@ CBool(
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
     |CertVersion|CertSignatureAlgorithmOid|Select|
-    |CertKeyAlgorithmParams|CertHashString|位置|
+    |CertKeyAlgorithmParams|CertHashString|Where|
     |||With|
 
 * 引入了以下架构更改来允许客户为流 sAMAccountName、domainNetBios 和组对象的 domainFQDN 以及用户对象的 distinguishedName 创建自定义同步规则：
@@ -1417,4 +1417,4 @@ AD FS 管理
 **Azure AD Sync 的初始版本。**
 
 ## <a name="next-steps"></a>后续步骤
-详细了解如何[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)。
+了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

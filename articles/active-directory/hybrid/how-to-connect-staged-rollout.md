@@ -11,10 +11,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 80b7536704d68e96429d715705a0518410db399a
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82112314"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>使用分步推出（预览版）迁移到云身份验证
@@ -221,7 +221,7 @@ ms.locfileid: "82112314"
 
 从组中删除用户将为该用户禁用暂存推出。 若要禁用分阶段推出功能，请将控件滑回**Off**。
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 
 **问：我是否能在生产中使用此功能？**
 
