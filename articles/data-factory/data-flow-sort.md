@@ -1,5 +1,5 @@
 ---
-title: 映射数据流的排序转换
+title: 映射数据流中的排序转换
 description: Azure 数据工厂映射数据排序转换
 author: kromerm
 ms.author: makromer
@@ -9,34 +9,34 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/14/2020
 ms.openlocfilehash: 26852ec77194714c8236856b7cb496170bf0d777
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606323"
 ---
-# <a name="sort-transformation-in-mapping-data-flow"></a>映射数据流的排序转换
+# <a name="sort-transformation-in-mapping-data-flow"></a>映射数据流中的排序转换
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-排序转换允许您对当前数据流上的传入行进行排序。 您可以选择单个列，然后按升序或降序排序。
+排序转换允许对当前数据流中的传入行进行排序。 您可以选择各个列并按升序或降序对它们进行排序。
 
 > [!NOTE]
-> 映射数据流在跨多个节点和分区分布数据的 Spark 群集上执行。 如果选择在后续转换中重新分区数据，则可能会由于重新洗牌而丢失排序。
+> 在将数据分布到多个节点和分区的 spark 群集上执行映射数据流。 如果选择在后续转换中对数据进行重新分区，则可能会由于重新组织数据而丢失排序。
 
 ## <a name="configuration"></a>配置
 
 ![排序设置](media/data-flow/sort.png "排序")
 
-**不区分大小写：** 在排序字符串或文本字段时是否希望忽略大小写
+不**区分大小写：** 是否希望在对字符串或文本字段进行排序时忽略大小写
 
-**仅在分区内排序：** 当数据流在火花上运行时，每个数据流被划分为分区。 此设置仅对传入分区中的数据进行排序，而不是对整个数据流进行排序。 
+**仅在分区中排序：** 当数据流在 spark 上运行时，每个数据流都划分为多个分区。 此设置仅对传入分区内的数据进行排序，而不是对整个数据流进行排序。 
 
-**排序条件：** 选择要按排序的列以及排序顺序。 顺序确定排序优先级。 选择空值是否出现在数据流的开头或结尾。
+**排序条件：** 选择要排序的列以及排序发生的顺序。 顺序决定排序优先级。 选择 null 是否将显示在数据流的开头或结尾。
 
 ### <a name="computed-columns"></a>计算列
 
-要在应用排序之前修改或提取列值，请将鼠标悬停在列上并选择"计算列"。 这将打开表达式生成器以创建排序操作的表达式，而不是使用列值。
+若要在应用排序之前修改或提取列值，请将鼠标悬停在该列上，然后选择 "计算列"。 这将打开 "表达式生成器" 来创建用于排序操作的表达式，而不是使用列值。
 
 ## <a name="data-flow-script"></a>数据流脚本
 
@@ -64,4 +64,4 @@ BasketballStats sort(desc(PTS, true),
 
 ## <a name="next-steps"></a>后续步骤
 
-排序后，您可能需要使用[聚合转换](data-flow-aggregate.md)
+排序后，您可能希望使用[聚合转换](data-flow-aggregate.md)

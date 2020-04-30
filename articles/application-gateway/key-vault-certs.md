@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 密钥保管库证书终止 TLS
+title: TLS 终止，Azure Key Vault 证书
 description: 了解如何将 Azure 应用程序网关与 Key Vault 集成，以便存储附加到支持 HTTPS 的侦听器的服务器证书。
 services: application-gateway
 author: vhorne
@@ -8,19 +8,19 @@ ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
 ms.openlocfilehash: 934cf854b0c526ed994c7dc91763f65de64fd14b
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81617504"
 ---
-# <a name="tls-termination-with-key-vault-certificates"></a>使用密钥保管库证书的 TLS 终止
+# <a name="tls-termination-with-key-vault-certificates"></a>TLS 终止，Key Vault 证书
 
-[Azure 密钥保管库](../key-vault/general/overview.md)是一个平台管理的秘密存储，可用于保护机密、密钥和 TLS/SSL 证书。 Azure 应用程序网关支持与密钥保管库集成，以存储附加到支持 HTTPS 的侦听器的服务器证书。 此支持仅限 v2 SKU 版应用程序网关。
+[Azure Key Vault](../key-vault/general/overview.md)是平台管理的密钥存储，可用于保护机密、密钥和 TLS/SSL 证书。 Azure 应用程序网关支持与密钥保管库集成，以存储附加到支持 HTTPS 的侦听器的服务器证书。 此支持仅限 v2 SKU 版应用程序网关。
 
-密钥保管库集成为 TLS 端接提供了两种模型：
+Key Vault 集成为 TLS 终止提供两种模型：
 
-- 您可以显式提供附加到侦听器的 TLS/SSL 证书。 此模型是将 TLS/SSL 证书传递到应用程序网关以进行 TLS 终止的传统方法。
+- 可以显式提供附加到侦听器的 TLS/SSL 证书。 此模型是将 TLS/SSL 证书传递给应用程序网关以进行 TLS 终止的传统方法。
 - 可以选择在创建支持 HTTPS 的侦听器时提供对现有 Key Vault 证书或机密的引用。
 
 应用程序网关与 Key Vault 集成具有许多优势，其中包括：
@@ -32,10 +32,10 @@ ms.locfileid: "81617504"
 - 支持将现有证书导入密钥保管库中。 或者使用 Key Vault API 与任何受信任的 Key Vault 合作伙伴一起创建并管理新证书。
 - 支持自动续订存储在密钥保管库中的证书。
 
-应用程序网关目前仅支持经软件验证的证书。 不支持硬件安全模块 (HSM) 验证的证书。 将应用程序网关配置为使用密钥保管库证书后，其实例将从密钥保管库检索证书，并在本地安装以进行 TLS 终止。 实例还按 24 小时的时间间隔轮询 Key Vault，以便检索续订版的证书（如果存在）。 如果找到更新的证书，则当前与 HTTPS 侦听器关联的 TLS/SSL 证书将自动旋转。
+应用程序网关目前仅支持经软件验证的证书。 不支持硬件安全模块 (HSM) 验证的证书。 在应用程序网关配置为使用 Key Vault 证书后，其实例会从 Key Vault 检索证书，并在本地将其安装为 TLS 终止。 实例还按 24 小时的时间间隔轮询 Key Vault，以便检索续订版的证书（如果存在）。 如果找到更新的证书，则将自动轮换当前与 HTTPS 侦听器关联的 TLS/SSL 证书。
 
 > [!NOTE]
-> Azure 门户仅支持密钥库证书，不支持机密。 应用程序网关仍然支持引用 KeyVault 的机密，但只能通过非门户资源（如 PowerShell、CLI、API、ARM 模板等）来引用机密。 
+> Azure 门户仅支持 KeyVault 证书，而不支持机密。 应用程序网关仍支持从 KeyVault 引用机密，而只能通过 PowerShell、CLI、API、ARM 模板等非门户资源进行引用。 
 
 ## <a name="how-integration-works"></a>集成工作原理
 
@@ -43,21 +43,21 @@ ms.locfileid: "81617504"
 
 1. **创建用户分配的托管标识**
 
-   你创建或重用现有的用户分配的托管标识，供应用程序网关用来代表你从 Key Vault 检索证书。 有关详细信息，请参阅[Azure 资源的托管标识是什么？](../active-directory/managed-identities-azure-resources/overview.md) 这一步在 Azure Active Directory 租户中创建新标识。 此标识受那个用来创建标识的订阅的信任。
+   你创建或重用现有的用户分配的托管标识，供应用程序网关用来代表你从 Key Vault 检索证书。 有关详细信息，请参阅[什么是 Azure 资源的托管标识？](../active-directory/managed-identities-azure-resources/overview.md)。 这一步在 Azure Active Directory 租户中创建新标识。 此标识受那个用来创建标识的订阅的信任。
 
 1. **配置密钥保管库**
 
-   然后导入现有的证书，或者在密钥保管库中创建新证书。 此证书将供通过应用程序网关的应用程序使用。 在此步骤中，您还可以使用密钥保管库密钥库密钥，该密钥保管库密钥作为无密码、base-64 编码的 PFX 文件存储。 我们建议使用证书类型是因为适用于密钥保管库中证书类型对象的自动续订功能。 在创建证书或机密以后，即可在密钥保管库中定义访问策略，此类策略允许为标识授予对机密的“获取”** 访问权限。
+   然后导入现有的证书，或者在密钥保管库中创建新证书。 此证书将供通过应用程序网关的应用程序使用。 在此步骤中，你还可以使用存储为不带密码的64编码的 PFX 文件的密钥保管库机密。 我们建议使用证书类型是因为适用于密钥保管库中证书类型对象的自动续订功能。 在创建证书或机密以后，即可在密钥保管库中定义访问策略，此类策略允许为标识授予对机密的“获取”  访问权限。
    
    > [!NOTE]
-   > 如果通过 ARM 模板（通过使用 Azure CLI 或 PowerShell）或通过从 Azure 门户部署的 Azure 应用程序部署应用程序网关，则作为基 64 编码 PFX 文件存储在密钥保管库中的 SSL 证书**必须无密码**。 此外，还必须完成使用 Azure[密钥保管库中的步骤，以在部署期间传递安全参数值](../azure-resource-manager/templates/key-vault-parameter.md)。 设置`enabledForTemplateDeployment`这一点尤为重要`true`。
+   > 如果通过 ARM 模板部署应用程序网关，可以使用 Azure CLI 或 PowerShell，也可以通过从 Azure 门户部署的 Azure 应用程序来部署，作为64编码的 PFX 文件存储在密钥保管库中的 SSL 证书**必须为无密码**。 此外，必须完成[使用 Azure Key Vault 在部署期间传递安全参数值](../azure-resource-manager/templates/key-vault-parameter.md)中所述的步骤。 尤其重要的是，将`enabledForTemplateDeployment`设置`true`为。
 
 1. **配置应用程序网关**
 
-   在完成前面的两个步骤以后，即可设置或修改现有的应用程序网关，以便使用用户分配的托管标识。 您还可以配置 HTTP 侦听器的 TLS/SSL 证书，以指向密钥保管库证书或密钥 ID 的完整 URI。
+   在完成前面的两个步骤以后，即可设置或修改现有的应用程序网关，以便使用用户分配的托管标识。 你还可以配置 HTTP 侦听器的 TLS/SSL 证书，使其指向 Key Vault 证书或机密 ID 的完整 URI。
 
    ![密钥保管库证书](media/key-vault-certs/ag-kv.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用 Azure PowerShell 使用密钥保管库证书配置 TLS 终止](configure-keyvault-ps.md)
+[使用 Azure PowerShell 配置使用 Key Vault 证书的 TLS 终止](configure-keyvault-ps.md)

@@ -1,6 +1,6 @@
 ---
-title: 映射数据流中的条件拆分转换
-description: 使用 Azure 数据工厂映射数据流中的条件拆分转换将数据拆分到不同的流中
+title: 映射数据流中的有条件拆分转换
+description: 使用 Azure 数据工厂映射数据流中的有条件拆分转换将数据拆分为不同的流
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,25 +9,25 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/16/2019
 ms.openlocfilehash: bd9241e526d7cf42f0697afb8635c085a08c80d8
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606483"
 ---
-# <a name="conditional-split-transformation-in-mapping-data-flow"></a>映射数据流中的条件拆分转换
+# <a name="conditional-split-transformation-in-mapping-data-flow"></a>映射数据流中的有条件拆分转换
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-条件拆分转换根据匹配条件将数据行路由到不同的流。 条件拆分转换类似于编程语言中的 CASE 决策结构。 转换计算表达式，并根据结果将数据行定向到指定的流。
+有条件拆分转换根据匹配条件将数据行路由到不同的流。 有条件拆分转换类似于编程语言中的 CASE 决策结构。 转换计算表达式，并根据结果将数据行定向到指定的流。
 
 ## <a name="configuration"></a>配置
 
-"**拆分"** 设置确定数据行是流向第一个匹配流还是与其匹配的每个流。
+"**拆分依据**" 设置确定数据行是流向第一个匹配流还是传递到其匹配的每个流。
 
-使用数据流表达式生成器为拆分条件输入表达式。 要添加新条件，请单击现有行中的加号图标。 对于与任何条件不匹配的行，也可以添加默认流。
+使用数据流表达式生成器为拆分条件输入表达式。 若要添加新条件，请单击现有行中的加号图标。 还可以为与任何条件都不匹配的行添加默认流。
 
-![条件拆分](media/data-flow/conditionalsplit1.png "条件拆分选项")
+![有条件拆分](media/data-flow/conditionalsplit1.png "有条件拆分选项")
 
 ## <a name="data-flow-script"></a>数据流脚本
 
@@ -45,13 +45,13 @@ ms.locfileid: "81606483"
 
 ### <a name="example"></a>示例
 
-下面的示例是一个条件拆分转换，`SplitByYear`该转换名为，用于`CleanData`传入流。 此转换有两个拆分`year < 1960`条件和`year > 1980`。 `disjoint`为 false，因为数据转到第一个匹配条件。 匹配第一个条件的每一行都转到`moviesBefore1960`输出流。 匹配第二个条件的所有剩余行都转到输出`moviesAFter1980`流。 所有其他行流经默认流`AllOtherMovies`。
+下面的示例是一个名为`SplitByYear`的有条件拆分转换，它`CleanData`采用传入流。 此转换有两个拆分`year < 1960`条件`year > 1980`和。 `disjoint`为 false，因为数据转到第一个匹配的条件。 每个匹配第一个条件的行都会转`moviesBefore1960`到输出流。 与第二个条件匹配的所有剩余行都`moviesAFter1980`将移到输出流中。 所有其他行都流过默认流`AllOtherMovies`。
 
-在数据工厂 UX 中，此转换类似于下图：
+在数据工厂 UX 中，此转换如下图所示：
 
-![条件拆分](media/data-flow/conditionalsplit1.png "条件拆分选项")
+![有条件拆分](media/data-flow/conditionalsplit1.png "有条件拆分选项")
 
-此转换的数据流脚本位于下面的代码段中：
+此转换的数据流脚本位于下面的代码片段中：
 
 ```
 CleanData
@@ -64,4 +64,4 @@ CleanData
 
 ## <a name="next-steps"></a>后续步骤
 
-与条件拆分一起使用的常见数据流转换是[联接转换](data-flow-join.md)、[查找转换](data-flow-lookup.md)和[选择转换](data-flow-select.md)
+用于 "有条件拆分" 的常见数据流转换为[联接转换](data-flow-join.md)、[查找转换](data-flow-lookup.md)和[选择转换](data-flow-select.md)

@@ -1,5 +1,5 @@
 ---
-title: 为 Azure SSIS 集成运行时启用 AAD
+title: 为 Azure SSIS 启用 AAD Integration Runtime
 description: 本文介绍如何使用 Azure 数据工厂的托管标识启用 Azure Active Directory 身份验证，以创建 Azure-SSIS 集成运行时。
 services: data-factory
 ms.service: data-factory
@@ -12,10 +12,10 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 5/14/2019
 ms.openlocfilehash: 77b49d8446c7882a155742e8455d77bd1ec110cb
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606189"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>为 Azure-SSIS 集成运行时启用 Azure Active Directory 身份验证
@@ -44,7 +44,7 @@ Azure SQL 数据库服务器支持使用 Azure AD 用户创建数据库。 首�
 
 可以使用现有的 Azure AD 组，或使用 Azure AD PowerShell 创建新组。
 
-1.  安装[Azure AD 电源外壳](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2)模块。
+1.  安装 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) 模块。
 
 2.  使用  `Connect-AzureAD` 登录，运行以下 cmdlet 来创建组，并将该组保存在变量中：
 
@@ -65,7 +65,7 @@ Azure SQL 数据库服务器支持使用 Azure AD 用户创建数据库。 首�
     6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 SSISIrGroup
     ```
 
-3.  将 ADF 的托管标识添加到该组。 您可以按照[数据工厂的托管标识](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)来获取主托管标识对象 ID（例如 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc，但不为此使用托管标识应用程序 ID）。
+3.  将 ADF 的托管标识添加到该组。 你可以按照文章为[数据工厂托管标识](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)一文获取主体托管标识对象 id （例如 765ad4ab-51ed985819dc，但不要使用托管标识应用程序 ID 实现此目的）。
 
     ```powershell
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
@@ -81,37 +81,37 @@ Azure SQL 数据库服务器支持使用 Azure AD 用户创建数据库。 首�
 
 可使用以下步骤 [通过 SQL 配置和管理 Azure AD 身份验证](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)：
 
-1.  在 Azure 门户中，从左侧导航中选择**所有服务** -> **SQL 服务器**。
+1.  在 Azure 门户中，从左侧导航栏中选择“所有服务” -> “SQL 服务器”   。
 
 2.  选择要使用 Azure AD 身份验证配置的 Azure SQL 数据库服务器。
 
-3.  在边栏选项卡的“设置”部分中，选择“Active Directory 管理员”。********
+3.  在边栏选项卡的“设置”部分中，选择“Active Directory 管理员”。  
 
-4.  在命令栏中，选择“设置管理员”****。
+4.  在命令栏中，选择“设置管理员”  。
 
-5.  选择要成为服务器管理员的 Azure AD 用户帐户，然后选择 **"选择"。**
+5.  选择要设为服务器管理员的 Azure AD 用户帐户，然后选择“选择”  。
 
-6.  在命令栏中，选择“保存”。****
+6.  在命令栏中，选择“保存”。 
 
 ### <a name="create-a-contained-user-in-azure-sql-database-server-representing-the-azure-ad-group"></a>在 Azure SQL 数据库服务器中创建代表 Azure AD 组的内含用户
 
-对于下一步，您需要 [Microsoft SQL 服务器管理工作室](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) （SSMS）。
+在下一步骤中，需要使用  [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。
 
 1. 启动 SSMS。
 
-2. 在“连接到服务器”对话框的“服务器名称”字段中，输入 Azure SQL 数据库服务器名称。********
+2. 在“连接到服务器”对话框的“服务器名称”字段中，输入 Azure SQL 数据库服务器名称。  
 
-3. 在“身份验证”字段中，选择“Active Directory - 通用且具有 MFA 支持”（还可以使用其他两种 Active Directory 身份验证类型，请参阅[使用 SQL 配置和管理 Azure AD 身份验证](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)********）。
+3. 在“身份验证”字段中，选择“Active Directory - 通用且具有 MFA 支持”（还可以使用其他两种 Active Directory 身份验证类型，请参阅[使用 SQL 配置和管理 Azure AD 身份验证](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)   ）。
 
-4. 在“用户名”字段中，输入已设为服务器管理员的 Azure AD 帐户的名称，例如 testuser@xxxonline.com****。
+4. 在“用户名”字段中，输入已设为服务器管理员的 Azure AD 帐户的名称，例如 testuser@xxxonline.com  。
 
-5. 选择“连接”并完成登录过程****。
+5. 选择“连接”并完成登录过程  。
 
-6. 在“对象资源管理器”中，展开“数据库” -> “系统数据库”文件夹************。
+6. 在“对象资源管理器”中，展开“数据库” -> “系统数据库”文件夹    。
 
-7. 右键单击**主**数据库并选择 **"新建查询**"。
+7. 右键单击 master 数据库并选择“新建查询”   。
 
-8. 在查询窗口中，输入以下 T-SQL 命令，然后在工具栏中选择“执行”****。
+8. 在查询窗口中，输入以下 T-SQL 命令，然后在工具栏中选择“执行”  。
 
    ```sql
    CREATE USER [SSISIrGroup] FROM EXTERNAL PROVIDER
@@ -119,7 +119,7 @@ Azure SQL 数据库服务器支持使用 Azure AD 用户创建数据库。 首�
 
    命令应会成功完成，并创建内含用户来表示组。
 
-9. 清除查询窗口，输入以下 T-SQL 命令，然后在工具栏中选择“执行”****。
+9. 清除查询窗口，输入以下 T-SQL 命令，然后在工具栏中选择“执行”  。
 
    ```sql
    ALTER ROLE dbmanager ADD MEMBER [SSISIrGroup]
@@ -127,9 +127,9 @@ Azure SQL 数据库服务器支持使用 Azure AD 用户创建数据库。 首�
 
    命令应会成功完成，并授予该内含用户创建数据库的权限 (SSISDB)。
 
-10. 如果 SSISDB 是使用 SQL 身份验证创建的，并且希望切换为 Azure-SSIS IR 使用 Azure AD 身份验证来访问它，请右键单击“SSISDB”数据库并选择“新建查询”********。
+10. 如果 SSISDB 是使用 SQL 身份验证创建的，并且希望切换为 Azure-SSIS IR 使用 Azure AD 身份验证来访问它，请右键单击“SSISDB”数据库并选择“新建查询”   。
 
-11. 在查询窗口中，输入以下 T-SQL 命令，然后在工具栏中选择“执行”****。
+11. 在查询窗口中，输入以下 T-SQL 命令，然后在工具栏中选择“执行”  。
 
     ```sql
     CREATE USER [SSISIrGroup] FROM EXTERNAL PROVIDER
@@ -137,7 +137,7 @@ Azure SQL 数据库服务器支持使用 Azure AD 用户创建数据库。 首�
 
     命令应会成功完成，并创建内含用户来表示组。
 
-12. 清除查询窗口，输入以下 T-SQL 命令，然后在工具栏中选择“执行”****。
+12. 清除查询窗口，输入以下 T-SQL 命令，然后在工具栏中选择“执行”  。
 
     ```sql
     ALTER ROLE db_owner ADD MEMBER [SSISIrGroup]
@@ -155,15 +155,15 @@ Azure SQL 数据库托管实例支持直接使用 ADF 的托管标识创建数�
 
 ### <a name="add-the-managed-identity-for-your-adf-as-a-user-in-azure-sql-database-managed-instance"></a>在 Azure SQL 数据库托管实例中以用户身份添加 ADF 的托管标识
 
-对于下一步，您需要 [Microsoft SQL 服务器管理工作室](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) （SSMS）。
+在下一步骤中，需要使用  [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。
 
 1.  启动 SSMS。
 
-2.  使用名为 **sysadmin** 的 SQL Server 帐户连接到托管实例。 这是一个临时限制，Azure SQL 数据库托管实例的 Azure AD 服务器主体（登录名）变为 GA 后，就会去除该限制。 如果您尝试使用 Azure AD 管理员帐户创建登录名：Msg 15247、级别 16、状态 1、行 1 用户无权执行此操作，您将看到以下错误。
+2.  使用名为 **sysadmin** 的 SQL Server 帐户连接到托管实例。 这是一个临时限制，Azure SQL 数据库托管实例的 Azure AD 服务器主体（登录名）变为 GA 后，就会去除该限制。 如果尝试使用 Azure AD 管理员帐户创建登录名，将会看到以下错误：消息 15247、级别 16、状态 1、行 1 用户无权执行此操作。
 
-3.  在“对象资源管理器”中，展开“数据库” -> “系统数据库”文件夹************。
+3.  在“对象资源管理器”中，展开“数据库” -> “系统数据库”文件夹    。
 
-4.  右键单击**主**数据库并选择 **"新建查询**"。
+4.  右键单击 master 数据库并选择“新建查询”   。
 
 5.  在查询窗口中，执行以下 T-SQL 脚本，以用户身份添加 ADF 的托管标识
 
@@ -175,9 +175,9 @@ Azure SQL 数据库托管实例支持直接使用 ADF 的托管标识创建数�
     
     命令应会成功完成，并授予 ADF 的托管标识创建数据库的权限 (SSISDB)。
 
-6.  如果 SSISDB 是使用 SQL 身份验证创建的，并且希望切换为 Azure-SSIS IR 使用 Azure AD 身份验证来访问它，请右键单击“SSISDB”数据库并选择“新建查询”********。
+6.  如果 SSISDB 是使用 SQL 身份验证创建的，并且希望切换为 Azure-SSIS IR 使用 Azure AD 身份验证来访问它，请右键单击“SSISDB”数据库并选择“新建查询”   。
 
-7.  在查询窗口中，输入以下 T-SQL 命令，然后在工具栏中选择“执行”****。
+7.  在查询窗口中，输入以下 T-SQL 命令，然后在工具栏中选择“执行”  。
 
     ```sql
     CREATE USER [{your ADF name}] FOR LOGIN [{your ADF name}] WITH DEFAULT_SCHEMA = dbo
@@ -188,7 +188,7 @@ Azure SQL 数据库托管实例支持直接使用 ADF 的托管标识创建数�
 
 ## <a name="provision-azure-ssis-ir-in-azure-portaladf-app"></a>在 Azure 门户/ADF 应用中预配 Azure-SSIS IR
 
-在 Azure 门户/ADF 应用中预配 Azure-SSIS IR 时，在“SQL 设置”页上选择“对 ADF 的托管标识使用 AAD 身份验证”选项********。 以下屏幕截图显示了采用承载 SSISDB 的 Azure SQL 数据库服务器的 IR 的设置。 对于承载 SSISDB 的托管实例的 IR，“目录数据库服务层”和“允许 Azure 服务访问”设置不适用，而其他设置相同********。
+在 Azure 门户/ADF 应用中预配 Azure-SSIS IR 时，在“SQL 设置”页上选择“对 ADF 的托管标识使用 AAD 身份验证”选项   。 以下屏幕截图显示了采用承载 SSISDB 的 Azure SQL 数据库服务器的 IR 的设置。 对于承载 SSISDB 的托管实例的 IR，“目录数据库服务层”和“允许 Azure 服务访问”设置不适用，而其他设置相同   。
 
 有关如何创建 Azure-SSIS IR 的详细信息，请参阅[在 Azure 数据工厂中创建 Azure-SSIS 集成运行时](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)。
 
@@ -198,7 +198,7 @@ Azure SQL 数据库托管实例支持直接使用 ADF 的托管标识创建数�
 
 若要通过 PowerShell 预配 Azure-SSIS IR，请执行以下操作：
 
-1.  安装[Azure 电源外壳](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018) 模块。
+1.  安装 [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018)  模块。
 
 2.  在脚本中，不要设置 `CatalogAdminCredential` 参数。 例如：
 

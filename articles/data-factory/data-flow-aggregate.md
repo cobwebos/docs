@@ -1,6 +1,6 @@
 ---
-title: 映射数据流的聚合转换
-description: 了解如何使用映射数据流聚合转换在 Azure 数据工厂中大规模聚合数据。
+title: 映射数据流中的聚合转换
+description: 了解如何在 Azure 数据工厂中大规模聚合数据以及映射数据流聚合转换。
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,54 +9,54 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/24/2020
 ms.openlocfilehash: 871f2b49e2dce9d762ef8a54923da04b0f24e4be
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606536"
 ---
-# <a name="aggregate-transformation-in-mapping-data-flow"></a>映射数据流的聚合转换
+# <a name="aggregate-transformation-in-mapping-data-flow"></a>映射数据流中的聚合转换
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-聚合转换定义数据流中列的聚合。 使用表达式生成器，可以定义不同类型的聚合，如 SUM、MIN、MAX 和 COUNT，按现有列或计算列分组。
+聚合转换定义数据流中列的聚合。 使用表达式生成器可以定义不同类型的聚合，如求和、MIN、MAX 和 COUNT，并按现有或计算列进行分组。
 
 ## <a name="group-by"></a>Group by
 
-选择现有列或创建新的计算列，以用作聚合的按子句分组。 要使用现有列，请从下拉列表中选择它。 要创建新的计算列，请将鼠标悬停在子句上，然后单击"**计算"列**。 这将打开[数据流表达式生成器](concepts-data-flow-expression-builder.md)。 创建计算列后，请在 **"名称"字段中**输入输出列名称。 如果要按子句添加其他组，请将鼠标悬停在现有子句上，然后单击加号图标。
+选择现有列或创建新的计算列，以用作聚合的 group by 子句。 若要使用现有列，请从下拉列表中选择它。 若要创建新的计算列，请将鼠标悬停在子句上，并单击 "**计算列**"。 这将打开 "数据流[表达式生成器](concepts-data-flow-expression-builder.md)"。 创建计算列后，在 "**名称**" 字段中输入输出列的名称。 如果要添加其他 group by 子句，请将鼠标悬停在现有子句上，并单击加号图标。
 
-![按设置聚合转换组](media/data-flow/agg.png "按设置聚合转换组")
+![聚合转换组（按设置）](media/data-flow/agg.png "聚合转换组（按设置）")
 
-在聚合转换中，按子句分组是可选的。
+在聚合转换中，group by 子句是可选的。
 
 ## <a name="aggregate-column"></a>聚合列 
 
-转到**聚合**选项卡以生成聚合表达式。 您可以使用聚合覆盖现有列，也可以使用新名称创建新字段。 聚合表达式在列名称选择器旁边的右侧框中输入。 要编辑表达式，请单击文本框以打开表达式生成器。 要添加其他聚合，请将鼠标悬停在现有表达式上，然后单击加号以创建新的聚合列或[列模式](concepts-data-flow-column-pattern.md)。
+请参阅 "**聚合**" 选项卡以生成聚合表达式。 您可以使用聚合覆盖现有列，或使用新名称创建新的字段。 在列名称选择器旁的右侧框中输入聚合表达式。 若要编辑该表达式，请单击文本框打开 "表达式生成器"。 若要添加其他聚合，请将鼠标悬停在现有表达式上，并单击加号图标创建新的聚合列或[列模式](concepts-data-flow-column-pattern.md)。
 
-每个聚合表达式必须至少包含一个聚合函数。
+每个聚合表达式必须包含至少一个聚合函数。
 
 ![聚合转换聚合设置](media/data-flow/agg2.png "聚合转换聚合设置")
 
 
 > [!NOTE]
-> 在调试模式下，表达式生成器无法生成具有聚合函数的数据预览。 要查看聚合转换的数据预览，关闭表达式生成器并通过"数据预览"选项卡查看数据。
+> 在调试模式下，表达式生成器不能用聚合函数生成数据预览。 若要查看聚合转换的数据预览，请关闭 "表达式生成器" 并通过 "数据预览" 选项卡来查看数据。
 
 ## <a name="reconnect-rows-and-columns"></a>重新连接行和列
 
-聚合转换类似于 SQL 聚合选择查询。 按子句或聚合函数未包含在组中的列不会流到聚合转换的输出。 如果要在聚合输出中包含其他列，请执行以下方法之一：
+聚合转换类似于 SQL 聚合 select 查询。 未包含在 group by 子句或聚合函数中的列不会流向聚合转换的输出。 如果希望将其他列包含在聚合输出中，请执行以下方法之一：
 
-* 使用聚合函数，如`last()`或`first()`包括该附加列。
-* 使用[自联接模式](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/)将列重新加入输出流。
+* 使用聚合函数（如或`last()` `first()` ）来包含该其他列。
+* 使用[自联接模式](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/)将这些列重新加入到输出流中。
 
 ## <a name="removing-duplicate-rows"></a>删除重复行
 
-聚合转换的常见用途是删除或标识源数据中的重复条目。 此过程称为重复数据消除。 基于按键分组的组，使用您选择的启发式方法确定要保留的重复行。 常见的启发`first()`式是 ，`last()`和`max()`。 `min()` 使用[列模式](concepts-data-flow-column-pattern.md)将规则应用于除按列分组之外的每个列。
+聚合转换的一个常见用途是删除或标识源数据中的重复项。 此过程称为删除重复。 根据一组按键分组，使用所选的试探法来确定要保留的重复行。 常见试探法`first()`包括`last()`、 `max()`、和`min()`。 使用[列模式](concepts-data-flow-column-pattern.md)将规则应用到除 group by 列之外的每一列。
 
 ![重复数据删除](media/data-flow/agg-dedupe.png "重复数据删除")
 
-在上面的示例中，列`ProductID`和`Name`正在用于分组。 如果两行的两列具有相同的值，则它们被视为重复项。 在此聚合转换中，将保留匹配的第一行的值，并删除所有其他行的值。 使用列模式语法，所有名称不是`ProductID`并`Name`映射到其现有列名称并给出第一个匹配行的值的列。 输出架构与输入架构相同。
+在上面的示例中， `ProductID`列`Name`和用于分组。 如果两个行的值与这两个列的值相同，则它们被视为重复项。 在此聚合转换中，将保留第一个匹配的行的值，并且将删除所有其他行的值。 使用列模式语法，名称不`ProductID`为和`Name`的所有列都映射到其现有列名，并给定第一个匹配行的值。 输出架构与输入架构相同。
 
-对于数据验证方案，`count()`该函数可用于计算有多少重复项。
+对于数据验证方案， `count()`函数可用于计算有多少重复项。
 
 ## <a name="data-flow-script"></a>数据流脚本
 
@@ -81,15 +81,15 @@ ms.locfileid: "81606536"
 
 ### <a name="example"></a>示例
 
-下面的示例采用传入流`MoviesYear`，按列`year`对行进行分组。 转换创建一个聚合列`avgrating`，该列计算到列`Rating`的平均值。 此聚合转换名为`AvgComedyRatingsByYear`。
+下面的示例使用传入流`MoviesYear`并按列`year`对行进行分组。 转换将创建计算结果为`avgrating`列`Rating`平均值的聚合列。 此聚合转换的名称`AvgComedyRatingsByYear`为。
 
-在数据工厂 UX 中，此转换类似于下图：
+在数据工厂 UX 中，此转换如下图所示：
 
 ![按示例分组](media/data-flow/agg-script1.png "按示例分组")
 
 ![聚合示例](media/data-flow/agg-script2.png "聚合示例")
 
-此转换的数据流脚本位于下面的代码段中。
+下面的代码片段中提供了此转换的数据流脚本。
 
 ```
 MoviesYear aggregate(
@@ -100,7 +100,7 @@ MoviesYear aggregate(
 
 ![聚合数据流脚本](media/data-flow/aggdfs1.png "聚合数据流脚本")
 
-```MoviesYear```：派生列定义年份和标题列```AvgComedyRatingByYear```：按年份```avgrating```分组的喜剧平均评级的聚合转换：为保存聚合值而创建的新列的名称
+```MoviesYear```：用于定义年份和标题列```AvgComedyRatingByYear```的派生列：按年```avgrating```分组的 comedies 平均分级的聚合转换：要创建的、用于保存聚合值的新列的名称
 
 ```
 MoviesYear aggregate(groupBy(year),
