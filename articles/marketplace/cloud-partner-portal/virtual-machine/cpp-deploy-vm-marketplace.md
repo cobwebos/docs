@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
 ms.openlocfilehash: 2fb04e2e953e2bcbe479f7685b8042fdc7ea1767
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82146990"
 ---
 # <a name="deploy-a-virtual-machine-from-the-azure-marketplace"></a>从 Azure 市场部署虚拟机
@@ -27,7 +27,7 @@ ms.locfileid: "82146990"
 
 Azure VM 部署快速入门模板现以联机文件 [azuredeploy.json](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-vm-winrm-keyvault-windows/azuredeploy.json) 形式提供。  它包含以下参数：
 
-|  **Parameter**        |   **描述**                                 |
+|  **参数**        |   **说明**                                 |
 |  -------------        |   ---------------                                 |
 | newStorageAccountName    | 存储帐户的名称                       |
 | dnsNameForPublicIP    | 公共 IP 的 DNS 名称。 必须为小写。    |

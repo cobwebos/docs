@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: dsindona
 ms.openlocfilehash: 58e096a3b25b16e54cf2f18935dcf4a2d44cd767
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82146215"
 ---
 # <a name="publish-container-offer"></a>发布容器产品/服务
@@ -30,7 +30,7 @@ ms.locfileid: "82146215"
 下表介绍了每个发布步骤。 还给出了完成每个步骤的估计时间。
 
 
-|  **发布步骤**           | **时间**    | **描述**                                                            |
+|  **发布步骤**           | **时间**    | **说明**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
 | 验证先决条件         | 15 分钟   | 验证套餐信息和套餐设置。                        |
 | 认证                  | 1 周 | Azure 认证团队对套餐进行分析。 针对病毒、恶意软件、安全合规性和安全问题对产品/服务进行扫描。 检查产品/服务，以了解它是否满足所有资格条件。 有关详细信息，请参阅[先决条件](./cpp-prerequisites.md)和[准备技术资产](./cpp-create-technical-assets.md)。 如果发现了问题，则提供反馈。 |

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
 ms.openlocfilehash: 9981f8eda174bbe04b54933528d20d270d360824
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82148259"
 ---
 # <a name="create-certificates-for-azure-key-vault"></a>创建 Azure Key Vault 证书
@@ -35,7 +35,7 @@ ms.locfileid: "82148259"
 
 编辑并运行以下 Azure Powershell 脚本，以在本地文件夹中创建证书文件 (.pfx)。  需要替换以下参数的值：
 
-|  **Parameter**        |   **描述**                                                               |
+|  **参数**        |   **说明**                                                               |
 |  -------------        |   ---------------                                                               |
 | `$certroopath` | 用于保存 .pfx 文件的本地文件夹  |
 | `$location`    | Azure 标准地理位置之一  |
@@ -81,7 +81,7 @@ ms.locfileid: "82148259"
 
 将 [Key Vault 部署模板](./cpp-key-vault-deploy-template.md)的内容复制到本地计算机上的文件中。 （在下面的示例脚本中，此资源`C:\certLocation\keyvault.json`为。） 编辑并运行以下 Azure Powershell 脚本以创建 Azure Key Vault 实例和关联的资源组。  需要替换以下参数的值：
 
-|  **Parameter**        |   **描述**                                                               |
+|  **参数**        |   **说明**                                                               |
 |  -------------        |   ---------------                                                               |
 | `$postfix`            | 附加到部署标识符的任意数字字符串                     |
 | `$rgName`             | 要创建的 Azure 资源组 (RG) 名称                                        |

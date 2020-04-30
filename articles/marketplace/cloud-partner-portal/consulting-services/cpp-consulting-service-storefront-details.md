@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
 ms.openlocfilehash: 9fd1330e0ca0a49556e79044570173adaf458e13
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82148146"
 ---
 # <a name="storefront-details-tab"></a>“店面详细信息”选项卡
@@ -172,7 +172,7 @@ Microsoft 专门侧重于提供给单个客户的固定范围、固定持续时�
 
 选择咨询服务套餐最适合的行业。
 
-**持续时间**
+**Duration**
 
 在“持续时间”下选择一个数字（例如 3 或 4），然后选择“小时”、“天”或“周”。****************
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: dsindona
 ms.openlocfilehash: 724c2ffebd34b838c19f3296363c38c83e142b96
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82148240"
 ---
 # <a name="container-marketplace-tab"></a>容器的“市场”选项卡
@@ -31,8 +31,8 @@ ms.locfileid: "82148240"
 
 |    字段                  |       说明                                                            |
 |  ---------                |     ---------------                                                          |
-| **标题\***                 | 套餐的标题。 将在市场中突出显示。  最大长度为 50 个字符。 |
-| **小结\***               | 套餐的简短摘要。 最大长度为 100 个字符。 |
+| **词首\***                 | 套餐的标题。 将在市场中突出显示。  最大长度为 50 个字符。 |
+| **“摘要”\***               | 套餐的简短摘要。 最大长度为 100 个字符。 |
 | **长摘要\***          | 套餐的较长摘要（不过，其内容可与“摘要”相同）。****  最大长度为 256 个字符。 |
 | **说明\***           | 套餐的说明。  最大长度为 3000 个字符，支持简单 HTML 格式。
 | **营销标识符**  | 与此产品/服务关联的唯一 URL，通常包含组织名称和解决方案名称， 最大长度为 50 个字符。   |

@@ -4,10 +4,10 @@ description: 了解如何使用 Java 开发函数。
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.openlocfilehash: 19a290fe7717d7838e8fcd1d1f5cddb3f54eb812
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82145330"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 开发人员指南
@@ -105,7 +105,7 @@ _* Kotlin 项目看起来非常相似，因为它仍然是 Maven_
 > [!IMPORTANT] 
 > 必须在 [local.settings.json](/azure/azure-functions/functions-run-local#local-settings-file) 中配置一个 Azure 存储帐户，才能在本地运行 Azure Blob 存储、Azure 队列存储或 Azure 表存储触发器。
 
-示例：
+例如：
 
 ```java
 public class Function {
@@ -397,7 +397,7 @@ public class Function {
 
 使用 `ExecutionContext` 中定义的 `getLogger` 从函数代码写入日志。
 
-示例：
+例如：
 
 ```java
 

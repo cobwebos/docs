@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.custom: seodec18
 ms.openlocfilehash: bee40bc30a0ffbdacf8cc7bf88d1512c4fc43fa4
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82147951"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure 流分析输出的故障排除
@@ -21,7 +21,7 @@ ms.locfileid: "82147951"
 
 ## <a name="the-job-doesnt-produce-output"></a>作业不生成输出
 
-1. 使用每项输出对应的“测试连接”按钮来验证与输出的连接****。
+1. 使用每项输出对应的“测试连接”按钮来验证与输出的连接  。
 1. 查看 "**监视**" 选项卡上的 "[监视指标](stream-analytics-monitoring.md)"。由于值会进行聚合，因此指标会延迟几分钟。
 
    * 如果**输入事件**值大于零，则作业可以读取输入数据。 如果**输入事件**值不大于零，则作业的输入有问题。 有关详细信息，请参阅[疑难解答输入连接](stream-analytics-troubleshoot-input.md)。
@@ -89,12 +89,12 @@ ms.locfileid: "82147951"
 
 ## <a name="get-help"></a>获取帮助
 
-若要获得进一步的帮助，请尝试我们的[Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure 流分析简介](stream-analytics-introduction.md)
-* [开始使用 Azure 流分析](stream-analytics-real-time-fraud-detection.md)
+* [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
 * [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
 * [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
