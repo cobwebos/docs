@@ -11,10 +11,10 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.openlocfilehash: 5b0bcdd66e17fb93a560b6073c13e3170e3ab37b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81409260"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Spark 活动转换云中的数据
@@ -161,13 +161,13 @@ ms.locfileid: "81409260"
    
    g. 至于“资源组”，请选择创建数据工厂时使用的资源组。  将在此资源组中创建 Spark 群集。 
    
-   h. 展开“OS 类型”。 
+   h.如果该值不存在，请单击“添加行”。 展开“OS 类型”。 
    
    i. 输入名称作为**群集用户名**。 
    
    j. 输入该用户的**群集密码**。 
    
-   k. 选择“完成”  。 
+   k. 选择“完成”。  
 
    ![HDInsight 链接服务设置](./media/tutorial-transform-data-spark-portal/azure-hdinsight-linked-service-settings.png)
 
@@ -244,7 +244,7 @@ ms.locfileid: "81409260"
 ```
 
 ## <a name="next-steps"></a>后续步骤
-此示例中的管道使用 Spark 活动和按需 HDInsight 链接服务转换数据。 你已了解如何执行以下操作： 
+此示例中的管道使用 Spark 活动和按需 HDInsight 链接服务转换数据。 你已了解如何： 
 
 > [!div class="checklist"]
 > * 创建数据工厂。 
