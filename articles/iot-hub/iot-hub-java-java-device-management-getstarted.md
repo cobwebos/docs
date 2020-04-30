@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: mqtt
 ms.openlocfilehash: 75d89b54bae6eb8166d44e08ea020a0da67ad20c
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732561"
 ---
 # <a name="get-started-with-device-management-java"></a>设备管理入门 (Java)
@@ -290,9 +290,9 @@ trigger-reboot  。 此应用：
     </build>
     ```
 
-6. 保存并关闭**pom.xml**文件。
+6. 保存并关闭**pom .xml**文件。
 
-7. 使用文本编辑器打开**模拟设备\src_main_java_com_mycompany_App.java**源文件。
+7. 使用文本编辑器打开**simulated-device\src\main\java\com\mycompany\app\App.java**源文件。
 
 8. 在该文件中添加以下 **import** 语句：
 
@@ -308,7 +308,7 @@ trigger-reboot  。 此应用：
     import java.util.HashSet;
     ```
 
-9. 将以下类级变量添加到 **App** 类。 替换为`{yourdeviceconnectionstring}`在[IoT 中心部分中注册新设备中](#register-a-new-device-in-the-iot-hub)记录的设备连接字符串：
+9. 将以下类级变量添加到 **App** 类。 将`{yourdeviceconnectionstring}`替换为在[IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)部分中记下的设备连接字符串：
 
     ```java
     private static final int METHOD_SUCCESS = 200;
@@ -377,7 +377,7 @@ trigger-reboot  。 此应用：
     }
     ```
 
-14. 若要在设备上实现直接方法，请将以下嵌套类添加到 App 类  。 当模拟应用收到对**重新启动**直接方法的调用时，它将确认返回给调用方，然后启动线程来处理重新启动：
+14. 若要在设备上实现直接方法，请将以下嵌套类添加到 App 类  。 当模拟应用收到对**reboot**直接方法的调用时，它会向调用方返回确认，然后启动一个线程来处理重启：
 
     ```java
     protected static class DirectMethodCallback implements com.microsoft.azure.sdk.iot.device.DeviceTwin.DeviceMethodCallback

@@ -1,5 +1,5 @@
 ---
-title: 用于 GRUB 和单用户模式的 Azure 串行控制台
+title: 适用于 GRUB 和单用户模式的 Azure 串行控制台
 description: 在 Azure 虚拟机中使用 grub 串行控制台。
 services: virtual-machines-linux
 author: asinn826
@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: 2aa7110ab4e52fdc5c3804bd27be5f41081fb435
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758506"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>使用串行控制台访问 GRUB 和单用户模式
@@ -178,7 +178,7 @@ Oracle Linux 原本就启用了 GRUB。 若要进入 GRUB，请使用 `sudo rebo
 遵照适用于 RHEL 的上述说明，在 Oracle Linux 中启用单用户模式。
 
 ## <a name="next-steps"></a>后续步骤
-* 主串行控制台Linux文档页面[位于此处](serial-console.md)。
+* 主要的串行控制台 Linux 文档页位于[此处](serial-console.md)。
 * 使用串行控制台执行 [NMI 和 SysRq 调用](serial-console-nmi-sysrq.md)
 * 串行控制台也适用于 [Windows](../windows/serial-console.md) VM
 * 详细了解[启动诊断](boot-diagnostics.md)

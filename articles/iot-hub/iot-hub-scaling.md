@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 4b18878cfc5c75bf27fd46cbceaa06e0b6053ddd
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759622"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>选择适用于解决方案的 IoT 中心层
@@ -42,7 +42,7 @@ IoT 中心的标准层启用了所有功能，是任何需要使用双向通信�
 | ---------- | ---------- | ------------- |
 | [设备到云的遥测](iot-hub-devguide-messaging.md) | 是 | 是 |
 | [每设备标识](iot-hub-devguide-identity-registry.md) | 是 | 是 |
-| [消息路由](iot-hub-devguide-messages-read-custom.md)、[消息扩充](iot-hub-message-enrichments-overview.md)和[事件网格集成](iot-hub-event-grid.md) | 是 | 是 |
+| [消息路由](iot-hub-devguide-messages-read-custom.md)、[消息根据](iot-hub-message-enrichments-overview.md)和[事件网格集成](iot-hub-event-grid.md) | 是 | 是 |
 | [HTTP、AMQP 和 MQTT 协议](iot-hub-devguide-protocols.md) | 是 | 是 |
 | [设备预配服务](../iot-dps/about-iot-dps.md) | 是 | 是 |
 | [监视和诊断](iot-hub-monitor-resource-health.md) | 是 | 是 |
@@ -135,7 +135,7 @@ IoT 中心的流量按单元进行度量。 创建 IoT 中心时，请选择其�
 
 ## <a name="auto-scale"></a>自动缩放
 
-如果接近 IoT 中心上允许的消息限制，则可以使用[以下步骤自动缩放](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/)以在同一 IoT 中心层中增加 IoT 中心单元。
+如果你接近 IoT 中心允许的消息限制，则可以使用这些[步骤自动缩放](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/)，以便在同一 iot 中心层中递增 IoT 中心单元。
 
 ## <a name="next-steps"></a>后续步骤
 

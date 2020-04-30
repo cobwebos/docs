@@ -1,5 +1,5 @@
 ---
-title: 用于 Eclipse 的 Azure 工具包：为 HDInsight Spark 创建 Scala 应用
+title: Azure Toolkit for Eclipse：为 HDInsight Spark 创建 Scala 应用
 description: 使用 Azure Toolkit for Eclipse 中的 HDInsight 工具开发以 Scala 编写的 Spark 应用程序，并将应用程序直接从 Eclipse IDE 提交到 HDInsight Spark 群集。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/13/2019
 ms.openlocfilehash: 5ae9190213f753f8b9440ced52e4d04626af13f9
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733003"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>使用 Azure Toolkit for Eclipse 为 HDInsight 群集创建 Apache Spark 应用程序
@@ -166,9 +166,9 @@ ms.locfileid: "81733003"
    * 对于“群集名称”  ，选择要在其上运行应用程序的 HDInsight Spark 群集。
    * 从 Eclipse 项目或硬盘中选择一个项目。 默认值取决于从包资源管理器右键单击的项。
    * 在“主类名”下拉列表中，提交向导将显示项目中的所有对象名。  选择或输入要运行的对象的名称。 如果从硬盘中选择项目，必须手动输入主类名。 
-   * 由于此示例中的应用程序代码不需要任何命令行参数或引用 JAR 或文件，因此可以将剩余的文本框留空。
+   * 由于本示例中的应用程序代码不需要任何命令行参数或引用 Jar 或文件，因此可以将其余的文本框留空。
 
-     ![阿帕奇火花提交对话框](./media/apache-spark-eclipse-tool-plugin/create-scala-project3.png)
+     ![Apache Spark 提交 "对话框](./media/apache-spark-eclipse-tool-plugin/create-scala-project3.png)
 
 1. “Spark 提交”  选项卡应开始显示进度。 可以通过选择“Spark 提交”窗口中的红色按钮停止应用程序。  也可以选择地球图标（以图中的蓝色框表示），查看此特定应用程序运行的日志。
 
@@ -186,21 +186,21 @@ ms.locfileid: "81733003"
 
 1. 选择“作业”节点。  如果 Java 版本低于 **1.8**，HDInsight 工具会自动提醒你安装 **E(fx)clipse** 插件。 选择“确定”继续，然后按照向导指示从 Eclipse Marketplace 安装该插件并重启 Eclipse。 
 
-   ![安装缺少的插件 E（fx）剪辑](./media/apache-spark-eclipse-tool-plugin/auto-install-efxclipse.png)
+   ![安装缺少的插件 E （fx） clipse](./media/apache-spark-eclipse-tool-plugin/auto-install-efxclipse.png)
 
 1. 从“作业”节点打开作业视图。  在右窗格中，“Spark 作业视图”  选项卡显示了群集上运行的所有应用程序。 选择想要查看其详细信息的应用程序的名称。
 
-   ![阿帕奇 Eclipse 视图作业日志详细信息](./media/apache-spark-eclipse-tool-plugin/eclipse-view-job-logs.png)
+   ![Apache Eclipse 查看作业日志详细信息](./media/apache-spark-eclipse-tool-plugin/eclipse-view-job-logs.png)
 
    然后，可以执行以下任一操作：
 
    * 将鼠标悬停在作业图上。 将显示有关运行作业的基本信息。 选择作业图，可以看到每个作业生成的阶段和信息。
 
-     ![阿帕奇火花作业图阶段信息](./media/apache-spark-eclipse-tool-plugin/Job-graph-stage-info.png)
+     ![Apache Spark 作业图阶段信息](./media/apache-spark-eclipse-tool-plugin/Job-graph-stage-info.png)
 
    * 选择“日志”选项卡查看常用的日志，包括“驱动程序 Stderr”、“驱动程序 Stdout”和“目录信息”。    
 
-     ![阿帕奇火花Eclipse作业日志信息](./media/apache-spark-eclipse-tool-plugin/eclipse-job-log-info.png)
+     ![Apache Spark Eclipse 作业日志信息](./media/apache-spark-eclipse-tool-plugin/eclipse-job-log-info.png)
 
    * 选择窗口顶部的超链接打开 Spark 历史记录 UI 和 Apache Hadoop YARN UI（应用程序级别）。
 
@@ -295,11 +295,11 @@ ms.locfileid: "81733003"
 
 1. 创建一个 HDInsight 项目。
 
-2. 右键单击包。 然后选择“将 Spark 应用程序提交到 HDInsight”  。
+2. 右键单击该程序包。 然后选择“将 Spark 应用程序提交到 HDInsight”  。
 
    ![Azure 资源管理器中的 HDInsight Spark 群集（提交）](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer11.png)
 
-3. 选择具有**群集名称**仅读取器角色权限的群集。 此时会显示警告消息。可以单击“链接此群集”以链接群集。 
+3. 选择对**群集名称**具有只读角色权限的群集。 此时会显示警告消息。可以单击“链接此群集”以链接群集。 
 
    ![Azure 资源管理器中的 HDInsight Spark 群集（对此进行链接）](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer15.png)
 
@@ -319,7 +319,7 @@ ms.locfileid: "81733003"
 
 使用“链接群集”时，建议提供存储的凭据  。
 
-![链接群集与存储凭据日食](./media/apache-spark-eclipse-tool-plugin/link-cluster-with-storage-credential-eclipse.png)
+![将群集与存储凭据旁](./media/apache-spark-eclipse-tool-plugin/link-cluster-with-storage-credential-eclipse.png)
 
 可通过两种模式提交作业。 如果提供存储凭据，则将使用批处理模式提交作业。 否则，将使用交互模式。 如果群集正忙，可能会收到以下错误。
 

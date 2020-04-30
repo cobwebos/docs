@@ -10,17 +10,17 @@ ms.workload: infrastructure
 ms.date: 10/15/2019
 ms.author: haroldw
 ms.openlocfilehash: d7d251370aefdfadc0b77a67f6dad1be2dcb9e9a
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759442"
 ---
 # <a name="deploy-okd-in-azure"></a>在 Azure 中部署 OKD
 
 可使用两种方式之一在 Azure 中部署 OKD（以前称为 OpenShift Origin）：
 
-- 您可以手动部署所有必要的 Azure 基础结构组件，然后按照[OKD 文档](https://docs.okd.io)操作。
+- 可以手动部署所有必要的 Azure 基础结构组件，然后按照[OKD 文档](https://docs.okd.io)进行操作。
 - 也可使用现有的[资源管理器模板](https://github.com/Microsoft/openshift-origin)，该模板可简化 OKD 群集的部署。
 
 ## <a name="deploy-using-the-okd-template"></a>使用 OKD 模板进行部署

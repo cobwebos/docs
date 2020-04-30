@@ -13,10 +13,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: a1e0e3623692321e5c69e4b9c5a26ff82a1c47a0
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732355"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-nodejs"></a>使用 IoT 中心发送云到设备消息 (Node.js)
@@ -196,4 +196,4 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 若要查看使用 IoT 中心完成端到端解决方案的示例，请参阅 [Azure IoT 远程监视解决方案加速器](https://azure.microsoft.com/documentation/suites/iot-suite/)。
 
-要了解有关使用 IoT 中心开发解决方案的更多内容，请参阅[IoT 中心开发人员指南](iot-hub-devguide.md)。
+若要了解有关通过 IoT 中心开发解决方案的详细信息，请参阅[Iot 中心开发人员指南](iot-hub-devguide.md)。

@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure MQTT 客户端库将消息发送到 MQTT 服务器
-description: 了解如何使用 MQTT 客户端库向 MQTT 代理发送消息。 还了解如何将 mXChip IoT 开发 Kit 配置为 MQTT 客户端。
+title: 使用 Azure MQTT 客户端库向 MQTT 服务器发送消息
+description: 了解如何使用 MQTT 客户端库将消息发送到 MQTT broker。 还将了解如何将 mXChip IoT DevKit 配置为 MQTT 客户端。
 author: liydu
 manager: jeffya
 ms.service: iot-hub
@@ -11,10 +11,10 @@ ms.date: 04/02/2018
 ms.author: liydu
 ms.custom: mqtt
 ms.openlocfilehash: 600e64ef5bc3329f0116359066bdcdaf42c13e2e
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733492"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>向 MQTT 服务器发送消息

@@ -10,10 +10,10 @@ ms.date: 04/09/2020
 ms.author: robinsh
 ms.custom: mqtt
 ms.openlocfilehash: f0760f6e61904295771ba349f8101e2d6dc6afe3
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759745"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>使用 IoT 中心发送云到设备消息 (Python)
@@ -30,21 +30,21 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 * 在设备上接收云到设备的消息。
 
-您可以在[IoT 中心开发人员指南](iot-hub-devguide-messaging.md)中找到有关云到设备消息的详细信息。
+可以在[IoT 中心开发人员指南](iot-hub-devguide-messaging.md)中找到有关云到设备消息的详细信息。
 
 在本教程末尾，你将运行两个 Python 控制台应用：
 
 * **SimulatedDevice.py**（[从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-python.md)中创建的应用的修改版本），它连接到 IoT 中心并接收云到设备的消息。
 
-* **SendCloudToDeviceMessage.py**，通过 IoT 中心向模拟设备应用发送云到设备的消息。
+* **SendCloudToDeviceMessage.py**，它通过 IoT 中心将云到设备的消息发送到模拟设备应用。
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [iot-hub-include-python-v2-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
-* 确保已在防火墙中打开端口 8883。 本文中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
+* 确保已在防火墙中打开端口 8883。 本文中的设备示例使用了 MQTT 协议，该协议通过端口8883进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>在模拟设备应用中接收消息
 
@@ -56,7 +56,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
     pip install azure-iot-device
     ```
 
-1. 使用文本编辑器，创建名为**SimulatedDevice.py**的文件。
+1. 使用文本编辑器创建一个名为 " **SimulatedDevice.py**" 的文件。
 
 1. 在 `import`SimulatedDevice.py**文件的开头添加以下** 语句和变量：
 
@@ -68,7 +68,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
     RECEIVED_MESSAGES = 0
     ```
 
-1. 将以下代码添加到 **SimulatedDevice.py** 文件。 将`{deviceConnectionString}`占位符值替换为您在["将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-python.md)快速启动"中创建的设备的设备连接字符串：
+1. 将以下代码添加到 **SimulatedDevice.py** 文件。 将`{deviceConnectionString}`占位符值替换为在将[遥测从设备发送到 IoT 中心](quickstart-send-telemetry-python.md)快速入门中创建的设备的设备连接字符串：
 
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
@@ -138,7 +138,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
    pip install azure-iot-hub
    ```
 
-1. 使用文本编辑器，创建名为**SendCloudToDeviceMessage.py**的文件。
+1. 使用文本编辑器创建一个名为 " **SendCloudToDeviceMessage.py**" 的文件。
 
 1. 在 **SendCloudToDeviceMessage.py** 文件的开头添加以下 `import` 语句和变量：
 
@@ -152,14 +152,14 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
     MSG_TXT = "{\"service client sent a message\": %.2f}"
     ```
 
-1. 将以下代码添加到 **SendCloudToDeviceMessage.py** 文件。 将`{iot hub connection string}`和`{device id}`占位符值替换为您之前指出的 IoT 中心连接字符串和设备 ID：
+1. 将以下代码添加到 **SendCloudToDeviceMessage.py** 文件。 用之前`{iot hub connection string}`记`{device id}`下的 IoT 中心连接字符串和设备 ID 替换和占位符值：
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"
     DEVICE_ID = "{deviceId}"
     ```
 
-1. 添加以下代码以向设备发送消息：
+1. 添加以下代码以将消息发送到设备：
 
     ```python
     def iothub_messaging_sample_run():
@@ -213,7 +213,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 现在，已准备就绪，可以运行应用程序了。
 
-1. 在工作目录中的命令提示符处，运行以下命令以侦听云到设备的消息：
+1. 在工作目录中的命令提示符下，运行以下命令以侦听云到设备的消息：
 
     ```shell
     python SimulatedDevice.py
@@ -221,7 +221,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
     ![运行模拟设备应用](./media/iot-hub-python-python-c2d/device-1.png)
 
-1. 在工作目录中打开一个新的命令提示符，并运行以下命令以发送云到设备的消息：
+1. 在工作目录中打开新的命令提示符，并运行以下命令发送云到设备的消息：
 
     ```shell
     python SendCloudToDeviceMessage.py
@@ -229,7 +229,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
     ![运行应用以发送云到设备的命令](./media/iot-hub-python-python-c2d/service.png)
 
-1. 请注意设备收到的消息。
+1. 记下设备收到的消息。
 
     ![收到的消息](./media/iot-hub-python-python-c2d/device-2.png)
 
@@ -239,4 +239,4 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 若要查看使用 IoT 中心完成端到端解决方案的示例，请参阅 [Azure IoT 远程监视解决方案加速器](https://azure.microsoft.com/documentation/suites/iot-suite/)。
 
-要了解有关使用 IoT 中心开发解决方案的更多内容，请参阅[IoT 中心开发人员指南](iot-hub-devguide.md)。
+若要了解有关通过 IoT 中心开发解决方案的详细信息，请参阅[Iot 中心开发人员指南](iot-hub-devguide.md)。

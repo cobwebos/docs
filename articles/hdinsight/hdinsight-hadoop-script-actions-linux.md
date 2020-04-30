@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/28/2019
 ms.openlocfilehash: db37a56ffbf0cb64530f8f7af38841bac72c77d4
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81767551"
 ---
 # <a name="script-action-development-with-hdinsight"></a>使用 HDInsight 进行脚本操作开发
@@ -133,11 +133,11 @@ fi
 
 脚本必须是幂等的。 如果脚本多次运行，则每次都应将群集返回到相同的状态。
 
-例如，如果多次运行，修改配置文件的脚本不应添加重复的条目。
+例如，修改配置文件的脚本如果运行多次，不应添加重复的项。
 
 ### <a name="ensure-high-availability-of-the-cluster-architecture"></a><a name="bPS5"></a>确保群集体系结构的高可用性
 
-基于 Linux 的 HDInsight 群集提供在群集中保持活动状态的两个头节点，而脚本操作会同时在这两个节点上运行。 如果安装的组件只需要一个头节点，请不要在两个头节点上安装组件。
+基于 Linux 的 HDInsight 群集提供在群集中保持活动状态的两个头节点，而脚本操作会同时在这两个节点上运行。 如果安装的组件只需要一个头节点，请不要在两个头节点上都安装这些组件。
 
 > [!IMPORTANT]  
 > 作为 HDInsight 一部分提供的服务旨在根据需要在两个头节点之间进行故障转移。 此功能未扩展到通过脚本操作安装的自定义组件。 如果需要为自定义组件提供高可用性，必须实现自己的故障转移机制。
@@ -146,7 +146,7 @@ fi
 
 在群集上安装的组件可能具有使用 Apache Hadoop 分布式文件系统 (HDFS) 存储的默认配置。 HDInsight 使用 Azure 存储或 Data Lake Storage 作为默认存储。 两者可以提供与 HDFS 兼容的文件系统，即使删除了群集，也能保存数据。 可能需要将安装的组件配置为使用 WASB 或 ADL，而不是 HDFS。
 
-对于大多数操作，不需要指定文件系统。 例如，以下脚本将 hadoop-common.jar 文件从本地文件系统复制到群集存储：
+对于大多数操作，无需指定文件系统。 例如，以下脚本将 hadoop-common.jar 文件从本地文件系统复制到群集存储：
 
 ```bash
 hdfs dfs -put /usr/hdp/current/hadoop-client/hadoop-common.jar /example/jars/
@@ -159,7 +159,7 @@ hdfs dfs -put /usr/hdp/current/hadoop-client/hadoop-common.jar /example/jars/
 HDInsight 会记录已写入 STDOUT 和 STDERR 的脚本输出。 可以使用 Ambari Web UI 查看这些信息。
 
 > [!NOTE]  
-> 只有在成功创建群集之后，才能使用 Apache Ambari。 如果在群集创建期间使用脚本操作，并且创建失败，请参阅[对脚本操作进行故障排除，](./troubleshoot-script-action.md)了解访问记录信息的其他方法。
+> 只有在成功创建群集之后，才能使用 Apache Ambari。 如果在群集创建过程中使用脚本操作，并且创建失败，请参阅使用[脚本操作排查脚本操作](./troubleshoot-script-action.md)，了解访问记录信息的其他方式。
 
 大多数实用工具和安装包已将信息写入 STDOUT 和 STDERR，不过你可能需要添加更多日志记录。 若要将文本发送到 STDOUT，请使用 `echo`。 例如：
 
@@ -175,7 +175,7 @@ echo "Getting ready to install Foo"
 
 这会将写入 STDOUT 的信息改为重定向到 STDERR (2)。 有关 IO 重定向的详细信息，请参阅 [https://www.tldp.org/LDP/abs/html/io-redirection.html](https://www.tldp.org/LDP/abs/html/io-redirection.html)。
 
-有关查看脚本操作记录的信息的详细信息，请参阅[对脚本操作进行故障排除](./troubleshoot-script-action.md)。
+有关查看脚本操作记录的信息的详细信息，请参阅[脚本操作疑难解答](./troubleshoot-script-action.md)。
 
 ### <a name="save-files-as-ascii-with-lf-line-endings"></a><a name="bps8"></a> 将文件另存为包含 LF 行尾的 ASCII
 
@@ -226,7 +226,7 @@ retry wget -O ./tmpfile.sh https://hdiconfigactions.blob.core.windows.net/linuxh
 
 ## <a name="helper-methods-for-custom-scripts"></a><a name="helpermethods"></a>自定义脚本的帮助器方法
 
-脚本操作帮助器方法是可以在编写自定义脚本时使用的实用工具。 这些方法包含在脚本中[https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh)。 使用以下命令下载这些方法并在脚本中使用：
+脚本操作帮助器方法是可以在编写自定义脚本时使用的实用工具。 这些方法包含在[https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh)脚本中。 使用以下命令下载这些方法并在脚本中使用：
 
 ```bash
 # Import the helper method module.
@@ -322,19 +322,19 @@ echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
 
 ## <a name="custom-script-samples"></a><a name="sampleScripts"></a>自定义脚本示例
 
-Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。 请参阅[在 HDInsight 群集上安装和使用 Hue](hdinsight-hadoop-hue-linux.md)作为示例脚本操作。
+Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。 请参阅[在 HDInsight 群集上安装并使用色相](hdinsight-hadoop-hue-linux.md)作为示例脚本操作。
 
 ## <a name="troubleshooting"></a>疑难解答
 
-以下是在使用已开发的脚本时可能会遇到的错误：
+使用已开发的脚本时，可能会遇到以下错误：
 
-**错误** `$'\r': command not found`： . 有时后面会接着出现“`syntax error: unexpected end of file`”。
+**错误**： `$'\r': command not found`。 有时后面会接着出现“`syntax error: unexpected end of file`”。
 
 *原因*：此错误的原因是脚本中以 CRLF 作为行尾。 Unix 系统只允许使用 LF 作为行尾。
 
 此问题最常出现于 Windows 环境中编写的脚本，因为 CRLF 是 Windows 上许多文本编辑器中常见的行尾符号。
 
-*解决方法*：如果是文本编辑器中的选项，则为行尾选择 Unix 格式或 LF。 也可以在 Unix 系统上使用以下命令，将 CRLF 更改为 LF：
+*解决方法*：如果是文本编辑器中的选项，请选择 "Unix 格式" 或 "LF" 作为行尾。 也可以在 Unix 系统上使用以下命令，将 CRLF 更改为 LF：
 
 > [!NOTE]  
 > 以下命令大致相当于将 CRLF 行尾更改为 LF。 根据系统中提供的实用工具选择一种解决方法。
@@ -346,7 +346,7 @@ Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。 请参�
 | `perl -pi -e 's/\r\n/\n/g' INFILE` | 直接修改文件 |
 | ```sed 's/$'"/`echo \\\r`/" INFILE > OUTFILE``` |OUTFILE 包含只带 LF 行尾的版本 |
 
-**错误** `line 1: #!/usr/bin/env: No such file or directory`： .
+**错误**： `line 1: #!/usr/bin/env: No such file or directory`。
 
 *原因*：将脚本另存为包含字节顺序标记 (BOM) 的 UTF-8 时会发生此错误。
 

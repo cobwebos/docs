@@ -4,10 +4,10 @@ description: 提供常见的 Azure 订阅和服务限制、配额和约束的列
 ms.topic: conceptual
 ms.date: 04/21/2020
 ms.openlocfilehash: 00bd85febe34a7bd9b4e993d5697fa810347711b
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81768774"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
@@ -19,21 +19,21 @@ ms.locfileid: "81768774"
 ## <a name="managing-limits"></a>管理限制
 
 > [!NOTE]
-> 某些服务具有可调节的限制。
+> 某些服务具有可调整的限制。
 >
-> 当服务没有可调整的限制时，下表将使用标头**限制**。 在这些情况下，默认值和最大限制相同。
+> 如果服务没有可调整的限制，下表将使用标头**限制**。 在这些情况下，默认值和最大限制相同。
 >
-> 当可以调整限制时，表包括**默认限制**和**最大限制**标头。 限制可以高于默认限制，但不能高于最大限制。
+> 如果可以调整此限制，则表包含**默认限制**和**最大限制**标头。 此限制可以高于默认限制以上，但不超过最大限制。
 >
-> 如果要将限制或配额提高到默认限制以上，[请免费打开在线客户支持请求](../templates/error-resource-quota.md)。
+> 如果要提高限制或配额超过默认限制，请免费[打开联机客户支持请求](../templates/error-resource-quota.md)。
 
 [免费试用订阅](https://azure.microsoft.com/offers/ms-azr-0044p)不符合限制或配额增加的条件。 如果有[免费试用版订阅](https://azure.microsoft.com/offers/ms-azr-0044p)，可将其升级到[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)订阅。 有关详细信息，请参阅将[Azure 免费试用版订阅升级到即用即付订阅](../../billing/billing-upgrade-azure-subscription.md)和[免费试用订阅常见问题解答](https://azure.microsoft.com/free/free-account-faq)。
 
-某些限制在区域一级管理。
+某些限制在区域级别进行管理。
 
 让我们以 vCPU 配额为例。 若要请求提高 vCPU 支持数目的配额，必须确定要在哪些区域中使用多少 vCPU。 然后针对所需的 Azure 资源组 vCPU 配额的数量和区域发出特定请求。 如果需要在西欧使用 30 个 vCPU 以在那里运行应用程序，则应专门在西欧请求 30 个 vCPU。 这不会增加任何其他区域的 vCPU 配额 - 西欧的配额为 30 个 vCPU。
 
-因此，请考虑针对任意区域中的工作负荷来确定所需的 Azure 资源组配额， 然后在需将内容部署到其中的每个区域中请求相应的量。 有关如何确定特定区域的当前配额的帮助，请参阅[解决资源配额的错误](../templates/error-resource-quota.md)。
+因此，请考虑针对任意区域中的工作负荷来确定所需的 Azure 资源组配额， 然后在需将内容部署到其中的每个区域中请求相应的量。 有关如何确定特定区域的当前配额的帮助，请参阅[解决资源配额错误](../templates/error-resource-quota.md)。
 
 ## <a name="general-limits"></a>常规限制
 
@@ -121,7 +121,7 @@ ms.locfileid: "81768774"
 
 有关 Azure Database for PostgreSQL 限制，请参阅 [Azure Database for PostgreSQL 中的限制](../../postgresql/concepts-limits.md)。
 
-## <a name="azure-functions-limits"></a>Azure 函数限制
+## <a name="azure-functions-limits"></a>Azure Functions 限制
 
 [!INCLUDE [functions-limits](../../../includes/functions-limits.md)]
 
@@ -131,7 +131,7 @@ ms.locfileid: "81768774"
 
 ## <a name="azure-machine-learning-limits"></a>Azure 机器学习限制
 
-Azure 机器学习计算配额的最新值可在[Azure 机器学习配额页](../../machine-learning/how-to-manage-quotas.md)中找到
+可以在 " [Azure 机器学习配额" 页](../../machine-learning/how-to-manage-quotas.md)中找到 Azure 机器学习计算配额的最新值
 
 ## <a name="azure-maps-limits"></a>Azure Maps 限制
 
@@ -163,7 +163,7 @@ Azure 机器学习计算配额的最新值可在[Azure 机器学习配额页](..
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
 
-## <a name="azure-signalr-service-limits"></a>Azure 信号R 服务限制
+## <a name="azure-signalr-service-limits"></a>Azure SignalR 服务限制
 
 [!INCLUDE [signalr-service-limits](../../../includes/signalr-service-limits.md)]
 
@@ -177,7 +177,7 @@ Azure 机器学习计算配额的最新值可在[Azure 机器学习配额页](..
 
 ## <a name="classic-deployment-model-limits"></a>经典部署模型限制
 
-如果使用经典部署模型而不是 Azure 资源管理器部署模型，则适用以下限制。
+如果使用经典部署模型而不是 Azure 资源管理器部署模型，则以下限制适用。
 
 [!INCLUDE [azure-subscription-limits](../../../includes/azure-subscription-limits.md)]
 
@@ -187,7 +187,7 @@ Azure 机器学习计算配额的最新值可在[Azure 机器学习配额页](..
 
 ## <a name="container-registry-limits"></a>容器注册表限制
 
-下表详细介绍了基本、标准和高级[服务层的功能](../../container-registry/container-registry-skus.md)和限制。
+下表详细介绍了基本、标准和高级[服务层](../../container-registry/container-registry-skus.md)的功能和限制。
 
 [!INCLUDE [container-registry-limits](../../../includes/container-registry-limits.md)]
 
@@ -227,7 +227,7 @@ Azure 机器学习计算配额的最新值可在[Azure 机器学习配额页](..
 
 [!INCLUDE [automation-limits](~/includes/managed-identity-limits.md)]
 
-## <a name="iot-central-limits"></a>IoT 中心限制
+## <a name="iot-central-limits"></a>IoT Central 限制
 [!INCLUDE [iot-central-limits](../../../includes/iot-central-limits.md)]
 
 ## <a name="iot-hub-limits"></a>IoT 中心限制
@@ -248,7 +248,7 @@ Azure 机器学习计算配额的最新值可在[Azure 机器学习配额页](..
 
 ### <a name="media-services-v2-legacy"></a>媒体服务 v2（旧版）
 
-有关特定于媒体服务 v2（旧版）的限制，请参阅[媒体服务 v2（旧版）](https://docs.microsoft.com/azure/media-services/previous/media-services-quotas-and-limitations)
+有关特定于媒体服务 v2 （旧版）的限制，请参阅[媒体服务 v2 （旧版）](https://docs.microsoft.com/azure/media-services/previous/media-services-quotas-and-limitations)
 
 ## <a name="mobile-services-limits"></a>移动服务限制
 
@@ -325,7 +325,7 @@ Azure 机器学习计算配额的最新值可在[Azure 机器学习配额页](..
 
 ## <a name="sql-data-warehouse-limits"></a>SQL 数据仓库限制
 
-有关 SQL 数据仓库限制，请参阅[SQL 数据仓库资源限制](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
+有关 SQL 数据仓库的限制，请参阅[Sql 数据仓库资源限制](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
 
 ## <a name="storage-limits"></a>存储限制
 

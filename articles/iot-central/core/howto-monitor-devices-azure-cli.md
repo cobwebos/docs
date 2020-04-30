@@ -9,15 +9,15 @@ ms.service: iot-central
 services: iot-central
 manager: corywink
 ms.openlocfilehash: 1a6106a45f5062850ceb12205528a05ed1d494be
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81756668"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>使用 Azure CLI 监视设备连接
 
-*本主题适用于设备开发人员和解决方案生成器。*
+*本主题适用于设备开发人员和解决方案构建者。*
 
 使用 Azure CLI IoT 扩展，了解如何将设备发送到 IoT Central，并观察设备孪生中的更改。 可以使用此工具来调试和观察设备连接性，并诊断设备消息不到达云或者设备不响应孪生更改的问题。
 
@@ -36,13 +36,13 @@ ms.locfileid: "81756668"
 az extension add --name azure-iot
 ```
 
-通过运行检查扩展的版本：
+通过运行以下内容检查扩展的版本：
 
 ```azurecli
 az --version
 ```
 
-您应该会看到 azure iot 扩展为 0.8.1 或更高。 如果不是，则运行：
+应会看到 azure iot 扩展为0.8.1 或更高版本。 如果不是，请运行：
 
 ```azurecli
 az extension update --name azure-iot
@@ -61,10 +61,10 @@ az login
 ```
 
 ### <a name="get-the-application-id-of-your-iot-central-app"></a>获取 IoT Central 应用的应用程序 ID
-在“管理/应用程序设置”中，复制**应用程序 ID**  。 在后面的步骤中使用此值。
+在“管理/应用程序设置”中，复制**应用程序 ID**  。 可在后续步骤中使用此值。
 
 ### <a name="monitor-messages"></a>监视消息
-监视从设备发送到 IoT Central 应用的消息。 输出包括所有标头和注释。
+监视从设备发送到 IoT Central 应用的消息。 输出包含所有标头和批注。
 
 ```azurecli
 az iot central app monitor-events --app-id <app-id> --properties all
@@ -79,4 +79,4 @@ az iot central device-twin show --app-id <app-id> --device-id <device-id>
 
 ## <a name="next-steps"></a>后续步骤
 
-如果您是设备开发人员，建议的下一步是阅读[Azure IoT 中央 中有关设备连接](./concepts-get-connected.md)的信息。
+如果你是一名设备开发人员，建议下一步是了解[Azure IoT Central 中的设备连接](./concepts-get-connected.md)。

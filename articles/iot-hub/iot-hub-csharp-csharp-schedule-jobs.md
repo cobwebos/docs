@@ -10,10 +10,10 @@ ms.date: 08/20/2019
 ms.author: robinsh
 ms.custom: mqtt
 ms.openlocfilehash: 4c71a108d1967027465d127db50737119af3e2c1
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733367"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>计划和广播作业 (.NET)
@@ -54,7 +54,7 @@ ms.locfileid: "81733367"
 
 * Visual Studio。
 
-* 有效的 Azure 帐户。 如果您没有帐户，只需几分钟即可创建[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
+* 有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 * 确保已在防火墙中打开端口 8883。 本文中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
@@ -154,7 +154,7 @@ ms.locfileid: "81733367"
 1. 保存所做工作并构建解决方案。
 
 > [!NOTE]
-> 为简单起见，本教程不实现任何重试策略。 在生产代码中，应实现重试策略（如连接重试），如[瞬态故障处理](/azure/architecture/best-practices/transient-faults)中的建议。
+> 为简单起见，本教程不实现任何重试策略。 在生产代码中，应按照[暂时性故障处理](/azure/architecture/best-practices/transient-faults)中的建议，实现重试策略（例如连接重试）。
 >
 
 ## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串

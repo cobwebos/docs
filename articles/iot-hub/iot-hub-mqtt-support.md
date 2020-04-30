@@ -11,10 +11,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 86fc5d4845e746604c1ba69f661d1b9ea9d8dca4
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732321"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 协议与 IoT 中心通信
@@ -28,7 +28,7 @@ IoT 中心不是功能完备的 MQTT 中转站，并未支持 MQTT v3.1.1 标准
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-所有通过 IoT 中心进行的设备通信都必须使用 TLS/SSL 来保护。 因此，IoT 中心不支持通过端口 1883 进行不安全的连接。
+所有通过 IoT 中心进行的设备通信都必须使用 TLS/SSL 来保护。 因此，IoT 中心不支持端口1883上的非安全连接。
 
 ## <a name="connecting-to-iot-hub"></a>连接到 IoT 中心
 
@@ -121,7 +121,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
   有关如何生成 SAS 令牌的详细信息，请参阅[使用 IoT 中心安全令牌](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)的设备部分。
 
-  测试时，还可以使用跨平台[Azure IoT 工具进行可视化工作室代码](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)或 CLI 扩展命令[az iot 中心生成 sas-token](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token)来快速生成 SAS 令牌，以便复制并粘贴到您自己的代码中：
+  测试时，还可以使用跨平台的[Azure IoT 工具进行 Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)或使用 CLI 扩展命令[az IoT 中心生成-sas 令牌](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token)，快速生成可复制并粘贴到自己的代码中的 sas 令牌：
 
 ### <a name="for-azure-iot-tools"></a>对于 Azure IoT 工具
 
@@ -152,25 +152,25 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 此存储库包含：
 
-**对于窗口：**
+**对于 Windows：**
 
-* 遥测MQTTWin32：包含向在 Windows 计算机上生成和运行的 Azure IoT 中心发送遥测消息的代码。
+* TelemetryMQTTWin32：包含将遥测消息发送到 Azure IoT 中心、在 Windows 计算机上生成和运行的代码。
 
-* 订阅MQTTWin32：包含用于订阅 Windows 计算机上的给定 IoT 中心事件的代码。
+* SubscribeMQTTWin32：包含用于在 Windows 计算机上订阅给定 IoT 中心事件的代码。
 
-* DeviceTwinMQTTWin32：包含用于在 Windows 计算机上的 Azure IoT 中心查询和订阅设备设备孪生事件的代码。
+* DeviceTwinMQTTWin32：包含用于在 Windows 计算机上查询和订阅 Azure IoT 中心内设备的设备克隆事件的代码。
 
-* PnPMQTTWin32：包含用于向在 Windows 计算机上生成和运行的 Azure IoT 中心发送具有 IoT 插头&播放预览设备功能的遥测消息的代码。 有关 IoT 即插即用的更多信息，请参阅[此处](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)
+* PnPMQTTWin32：包含用 IoT 插头 & 播放预览版设备功能将遥测消息发送到 Azure IoT 中心的代码，在 Windows 计算机上生成并运行。 有关 IoT 即插即用的更多信息，请参阅[此处](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)
 
 **对于 Linux：**
 
-* MQTTLinux：包含在Linux上运行的代码和构建脚本（WSL、Ubuntu和Raspbian已经过测试）。
+* MQTTLinux：包含要在 Linux 上运行的代码和生成脚本（目前已测试过 WSL、Ubuntu 和 Raspbian）。
 
-* LinuxConsoleVS2019：包含相同的代码，但位于面向WSL（Windows Linux子系统）的VS2019项目中。 使用此项目可以从 Visual Studio 逐步调试在 Linux 上运行的代码。
+* LinuxConsoleVS2019：包含相同的代码，但在 VS2019 项目中面向 WSL （Windows Linux sub system）。 使用此项目可以从 Visual Studio 逐步调试在 Linux 上运行的代码。
 
-**对于mosquitto_pub：**
+**对于 mosquitto_pub：**
 
-此文件夹包含两个示例命令，用于Mosquitto.org提供的mosquitto_pub实用程序工具。
+此文件夹包含两个用于 Mosquitto.org 提供的 mosquitto_pub 实用工具工具的示例命令。
 
 * Mosquitto_sendmessage：用于将简单的文本消息发送到充当设备的 Azure IoT 中心。
 
@@ -180,7 +180,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 通过 MQTT 并使用模块标识连接到 IoT 中心的操作与设备类似（如[上面](#using-the-mqtt-protocol-directly-as-a-device)所述），但需要：
 
-* 将客户端 ID`{device_id}/{module_id}`设置为 。
+* 将客户端 ID 设置`{device_id}/{module_id}`为。
 
 * 如果使用用户名和密码进行身份验证，请将用户名设置为 `<hubname>.azure-devices.net/{device_id}/{module_id}/?api-version=2018-06-30`，并使用与模块标识关联的 SAS 令牌作为密码。
 
@@ -304,15 +304,15 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 在设备成功订阅 `devices/{device_id}/messages/devicebound/#` 主题筛选器表示的设备特定终结点前，不会从 IoT 中心收到任何消息。 建立订阅后，设备会接收建立订阅后发送给它的云到设备消息。 如果设备在 **CleanSession** 标志设置为 0**** 的情况下进行连接，则订阅在经历不同的会话后仍然持久存在。 在此情况下，下次使用 CleanSession 0**** 进行连接时，设备会收到断开连接时发送给它的未处理消息。 但是，如果设备使用设置为 1**** 的 CleanSession**** 标志，在订阅其设备终结点前，它不会从 IoT 中心收到任何消息。
 
-如有消息属性，IoT 中心会传送包含**主题名称** `devices/{device_id}/messages/devicebound/` 或 `devices/{device_id}/messages/devicebound/{property_bag}` 的消息。 `{property_bag}` 包含 URL 编码的消息属性键/值对。 属性包中只包含应用程序属性和用户可设置的系统属性（例如 **messageId** 或 **correlationId**）。 系统属性名称具有前缀**$**，应用程序属性使用原始属性名称，没有前缀。
+如有消息属性，IoT 中心会传送包含**主题名称** `devices/{device_id}/messages/devicebound/` 或 `devices/{device_id}/messages/devicebound/{property_bag}` 的消息。 `{property_bag}` 包含 URL 编码的消息属性键/值对。 属性包中只包含应用程序属性和用户可设置的系统属性（例如 **messageId** 或 **correlationId**）。 系统属性名称具有前缀**$**，但应用程序属性使用没有前缀的原始属性名称。
 
 当设备应用使用 **QoS 2** 订阅主题时，IoT 中心会在 **SUBACK** 包中授予最高 QoS 级别 1。 之后，IoT 中心会使用 QoS 1 将消息传送到设备。
 
 ## <a name="retrieving-a-device-twins-properties"></a>检索设备克隆的属性
 
-首先，设备订阅 `$iothub/twin/res/#`，接收操作的响应。 然后，它将一个空消息发送到主题`$iothub/twin/GET/?$rid={request id}`，该主题具有请求**ID**的填充值。 然后，该服务使用与请求相同的**请求 ID**发送包含主题`$iothub/twin/res/{status}/?$rid={request id}`上的设备孪生数据的响应消息。
+首先，设备订阅 `$iothub/twin/res/#`，接收操作的响应。 然后，它向主题`$iothub/twin/GET/?$rid={request id}`发送一条空消息，其中包含**请求 ID**的填充值。 然后，该服务使用与请求相同的**请求 ID** ，发送包含`$iothub/twin/res/{status}/?$rid={request id}`主题中设备克隆数据的响应消息。
 
-根据[IoT 中心消息传递开发人员指南](iot-hub-devguide-messaging.md)，请求 ID 可以是消息属性值的任何有效值，并且状态将验证为整数。
+请求 ID 可以是消息属性值的任何有效值，如每个[IoT 中心消息传送开发人员指南](iot-hub-devguide-messaging.md)一样，状态将验证为一个整数。
 
 响应正文包含设备孪生的 properties 节，如以下响应示例所示：
 
@@ -334,7 +334,7 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 |状态 | 说明 |
 | ----- | ----------- |
-| 200 | Success |
+| 200 | 成功 |
 | 429 | 请求过多（受限），如 [IoT 中心限制](iot-hub-devguide-quotas-throttling.md)中所述 |
 | 5** | 服务器错误 |
 
@@ -342,17 +342,17 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 ## <a name="update-device-twins-reported-properties"></a>更新设备孪生的报告属性
 
-若要更新已报告的属性，设备通过指定的 MQTT 主题上的发布向 IoT 中心发出请求。 处理完请求后，IoT 中心会通过发布到其他主题来响应更新操作的成功或失败状态。 设备可以订阅此主题，以便通知它有关其孪生更新请求的结果。 为了在 MQTT 中实现这种类型的请求/响应交互，我们利用了设备在其更新请求中`$rid`最初提供的请求 ID （ ） 的概念。 此请求 ID 也包含在 IoT 中心的响应中，以允许设备将响应与其特定早期请求相关联。
+若要更新已报告的属性，设备通过指定的 MQTT 主题上的发布向 IoT 中心发出请求。 处理完请求后，IoT 中心会通过发布到其他主题来响应更新操作的成功或失败状态。 设备可以订阅此主题，以便通知它有关其孪生更新请求的结果。 若要在 MQTT 中实现这种类型的请求/响应交互，我们将利用设备最初`$rid`在其更新请求中提供的请求 ID （）的概念。 此请求 ID 还包括在来自 IoT 中心的响应中，以允许设备将响应与其特定的先前请求关联起来。
 
 以下序列描述了设备如何在 IoT 中心中更新设备孪生中报告的属性：
 
 1. 设备必须首先订阅 `$iothub/twin/res/#` 主题才能从 IoT 中心接收操作的响应。
 
-2. 设备将包含设备孪生更新的消息发送到 `$iothub/twin/PATCH/properties/reported/?$rid={request id}` 主题。 此消息包括请求**ID**值。
+2. 设备将包含设备孪生更新的消息发送到 `$iothub/twin/PATCH/properties/reported/?$rid={request id}` 主题。 此消息包含**请求 ID**值。
 
-3. 然后，服务发送一个响应消息，其中包含 `$iothub/twin/res/{status}/?$rid={request id}` 主题上报告的属性集合的新 ETag 值。 此响应消息使用与**请求相同的请求 ID。**
+3. 然后，服务发送一个响应消息，其中包含 `$iothub/twin/res/{status}/?$rid={request id}` 主题上报告的属性集合的新 ETag 值。 此响应消息使用与请求相同的**请求 ID** 。
 
-请求消息正文包含 JSON 文档，该文档包含已报告属性的新值。 JSON 文档中的每个成员都会更新或添加设备孪生文档中的相应成员。 如果某个成员设置为 `null`，则会从包含方对象中删除该成员。 例如：
+请求消息正文包含 JSON 文档，该文档包含已报告属性的新值。 JSON 文档中的每个成员都会更新或添加设备克隆文档中的相应成员。 如果某个成员设置为 `null`，则会从包含方对象中删除该成员。 例如：
 
 ```json
 {
@@ -400,7 +400,7 @@ client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" +
 }
 ```
 
-对于属性更新，`null`值表示正在删除 JSON 对象成员。 另请注意，`$version` 指示孪生的所需属性部分的新版本。
+对于属性更新， `null`值表示正在删除 JSON 对象成员。 另请注意，`$version` 指示孪生的所需属性部分的新版本。
 
 > [!IMPORTANT]
 > IoT 中心仅在连接设备时才会生成更改通知。 请确保实现[设备重新连接流](iot-hub-devguide-device-twins.md#device-reconnection-flow)，让 IoT 中心和设备应用之间的所需属性保持同步。

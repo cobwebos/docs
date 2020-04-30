@@ -1,18 +1,18 @@
 ---
-title: Azure 应用程序见解 .Net 代理 API 引用
+title: Azure 应用程序 Insights .Net 代理 API 参考
 description: Application Insights 代理 API 参考。 无需重新部署网站即可监视网站性能。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 02762c4b3af735eb0b4c19aaf450b2b3a416a2be
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733669"
 ---
-# <a name="azure-monitor-application-insights-agent-api-reference"></a>Azure 监视器应用程序见解代理 API 参考
+# <a name="azure-monitor-application-insights-agent-api-reference"></a>Azure Monitor Application Insights 代理 API 参考
 
 本文介绍属于 [Az.ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)的 cmdlet。
 
@@ -47,7 +47,7 @@ PS C:\> Enable-InstrumentationEngine
 ### <a name="parameters"></a>参数
 
 #### <a name="-acceptlicense"></a>-AcceptLicense
-**选。** 使用此开关可在无外设安装中接受许可条款和隐私声明。
+**可选。** 使用此开关可在无外设安装中接受许可条款和隐私声明。
 
 #### <a name="-verbose"></a>-Verbose
 **通用参数。** 使用此开关输出详细的日志。
@@ -83,7 +83,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 ```
 
 #### <a name="example-with-an-instrumentation-key-map"></a>使用检测密钥映射的示例
-在本示例中：
+在此示例中：
 - `MachineFilter` 使用 `'.*'` 通配符匹配当前计算机。
 - `AppFilter='WebAppExclude'` 提供 `null` 检测密钥。 不会检测指定的应用。
 - `AppFilter='WebAppOne'` 为指定的应用分配唯一的检测密钥。
@@ -127,12 +127,12 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 
 
 #### <a name="-enableinstrumentationengine"></a>-EnableInstrumentationEngine
-**选。** 使用此开关可让检测引擎收集执行托管进程期间发生的事件和相关消息。 这些事件和消息包括依赖项结果代码、HTTP 谓词和 SQL 命令文本。
+**可选。** 使用此开关可让检测引擎收集执行托管进程期间发生的事件和相关消息。 这些事件和消息包括依赖项结果代码、HTTP 谓词和 SQL 命令文本。
 
 检测引擎会增加开销，默认情况下处于关闭状态。
 
 #### <a name="-acceptlicense"></a>-AcceptLicense
-**选。** 使用此开关可在无外设安装中接受许可条款和隐私声明。
+**可选。** 使用此开关可在无外设安装中接受许可条款和隐私声明。
 
 #### <a name="-ignoresharedconfig"></a>-IgnoreSharedConfig
 当你使用一组 Web 服务器时，你可能正在使用[共享配置](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)。
@@ -333,7 +333,7 @@ AppAlreadyInstrumented : true
 - **DemoWebApp333** 已使用 Application Insights SDK 进行手动检测。 状态监视器检测到 SDK，不会监视此站点。
 
 
-#### <a name="example-powershell-module-information"></a>示例：PowerShell 模块信息
+#### <a name="example-powershell-module-information"></a>示例： PowerShell 模块信息
 
 运行 `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` 命令可显示有关当前模块的信息：
 
@@ -475,7 +475,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 ```
 
 #### <a name="example-with-an-instrumentation-key-map"></a>使用检测密钥映射的示例
-在本示例中：
+在此示例中：
 - `MachineFilter` 使用 `'.*'` 通配符匹配当前计算机。
 - `AppFilter='WebAppExclude'` 提供 `null` 检测密钥。 不会检测指定的应用。
 - `AppFilter='WebAppOne'` 为指定的应用分配唯一的检测密钥。
@@ -585,17 +585,17 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applica
 ### <a name="parameters"></a>参数
 
 #### <a name="-maxdurationinminutes"></a>-MaxDurationInMinutes
-**选。** 使用此参数可设置此脚本应收集事件的时长。 默认值为 5 分钟。
+**可选。** 使用此参数可设置此脚本应收集事件的时长。 默认值为 5 分钟。
 
 #### <a name="-logdirectory"></a>-LogDirectory
-**选。** 使用此开关可设置 ETL 文件的输出目录。 默认情况下，此文件将在 PowerShell 模块目录中创建。 完整路径将在脚本执行期间显示。
+**可选。** 使用此开关可设置 ETL 文件的输出目录。 默认情况下，此文件将在 PowerShell 模块目录中创建。 完整路径将在脚本执行期间显示。
 
 
 #### <a name="-collectsdkevents"></a>-CollectSdkEvents
-**选。** 使用此开关可收集 Application Insights SDK 事件。
+**可选。** 使用此开关可收集 Application Insights SDK 事件。
 
 #### <a name="-collectredfieldevents"></a>-CollectRedfieldEvents
-**选。** 使用此开关可从状态监视器和 Redfield 运行时收集事件。
+**可选。** 使用此开关可从状态监视器和 Redfield 运行时收集事件。
 
 #### <a name="-verbose"></a>-Verbose
 **通用参数。** 使用此开关输出详细的日志。
@@ -637,7 +637,7 @@ Timeout Reached. Stopping...
 ## <a name="next-steps"></a>后续步骤
 
   查看遥测：
- - [浏览指标](../../azure-monitor/app/metrics-explorer.md)以监视性能和使用情况。
+ - [探索指标](../../azure-monitor/app/metrics-explorer.md)来监视性能和使用情况。
 - [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)以诊断问题。
 - 使用[分析](../../azure-monitor/app/analytics.md)，以便进行更高级的查询。
 - [创建仪表板](../../azure-monitor/app/overview-dashboard.md)。

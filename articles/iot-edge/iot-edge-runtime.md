@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: ef31bd74c73aa081c32031b71392f69a1ca14f75
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81730909"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>了解 Azure IoT Edge 运行时及其体系结构
@@ -51,7 +51,7 @@ IoT Edge 中心不是在本地运行的完整版本的 IoT 中心。 IoT Edge �
 
 ![IoT Edge 中心是物理设备和 IoT 中心之间的网关](./media/iot-edge-runtime/Gateway.png)
 
-IoT Edge 中心可以确定其是否连接到了 IoT 中心。 如果连接丢失，IoT Edge 中心将在本地保存消息或孪生更新。 一旦重新建立连接，将同步所有数据。 用于此临时缓存的位置由 IoT Edge 中心模块孪生的属性确定。 只要设备具有存储容量，缓存的大小就没有限制并且会增加。 有关详细信息，请参阅[脱机功能](offline-capabilities.md)。
+IoT Edge 中心可以确定其是否连接到了 IoT 中心。 如果连接丢失，IoT Edge 中心将在本地保存消息或孪生更新。 一旦重新建立连接，将同步所有数据。 用于此临时缓存的位置由 IoT Edge 中心的模块克隆的属性确定。 只要设备具有存储容量，缓存的大小就没有限制并且会增加。 有关详细信息，请参阅[脱机功能](offline-capabilities.md)。
 
 ### <a name="module-communication"></a>模块通信
 
@@ -85,10 +85,10 @@ IoT Edge 代理是构成 Azure IoT Edge 运行时的其他模块。 它负责实
 
 [IoT Edge 安全守护程序](iot-edge-security-manager.md)在设备启动时启动 IoT Edge 代理。 该代理从 IoT 中心检索其模块孪生并检查部署清单。 部署清单是一个 JSON 文件，它声明了需要启动的模块。
 
-部署清单中的每个项都包含有关模块的特定信息，IoT Edge 代理用于控制模块的生命周期。 下面是一些更有趣的属性：
+部署清单中的每一项都包含有关模块的特定信息，并由 IoT Edge 代理用来控制模块的生命周期。 下面是一些更有趣的属性：
 
 * **settings.image** - IoT Edge 代理用来启动模块的容器映像。 如果该映像受密码保护，则必须为 IoT Edge 代理配置容器注册表的凭据。 可以使用部署清单远程配置容器注册表的凭据，也可以在 IoT Edge 设备本身上通过更新 IoT Edge 程序文件夹中的 `config.yaml` 文件进行配置。
-* **设置.createOptions** = 在启动模块的容器时直接传递到 Moby 容器守护进程的字符串。 在此属性中添加选项允许高级配置，如端口转发或将卷安装到模块的容器中。  
+* **createOptions** –启动模块的容器时，直接传递到小鲸鱼容器守护程序的字符串。 如果在此属性中添加选项，则可以进行高级配置，例如端口转发或将卷装入模块的容器。  
 * **status** - IoT Edge 代理放置的模块的状态。 通常，此值设置为“正在运行”  ，因为大多数人都希望 IoT Edge 代理立即启动设备上的所有模块。 但是，可以将模块的初始状态指定为“已停止”，等待一定时间后再告知 IoT Edge 代理启动模块。 IoT Edge 代理会向报告的属性中的云报告每个模块的状态。 所需属性和报告的属性之间存在差异指示了设备运行状况不正常。 支持的状态为：
 
   * 正在下载
@@ -122,7 +122,7 @@ IoT Edge 代理会将运行时响应发送到 IoT 中心。 下面是可能的�
 
 ### <a name="security"></a>安全性
 
-IoT Edge 代理在 IoT Edge 设备的安全性中起着关键作用。 例如，它在启动模块映像之前执行验证模块映像等操作。
+IoT Edge 代理在 IoT Edge 设备的安全性中起着关键作用。 例如，它执行一些操作，如在启动模块之前验证模块的映像。
 
 有关 Azure IoT Edge 安全框架的详细信息，请阅读有关 [IoT Edge 安全管理器](iot-edge-security-manager.md)的内容。
 

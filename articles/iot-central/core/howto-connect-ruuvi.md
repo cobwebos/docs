@@ -11,15 +11,15 @@ ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
 ms.openlocfilehash: 93e4d3d0bed9090573d2b6ee87a29b86ccd72e42
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758950"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>将 RuuviTag 传感器连接到 Azure IoT Central 应用程序
 
-*本文适用于解决方案生成器和设备开发人员。*
+本文适用于解决方案构建者和设备开发人员。 
 
 本文为解决方案构建人员介绍如何将 RuuviTag 传感器连接到 Microsoft Azure IoT Central 应用程序。
 
@@ -31,7 +31,7 @@ RuuviTag 通过 BLE（低能耗蓝牙）通信，要求网关设备与 Azure IoT
 
 若要设置 Rigado Cascade 500 网关设备，请按照[此处的说明](./howto-connect-rigado-cascade-500.md)操作。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要连接 RuuviTag 传感器，需准备好以下资源：
 
@@ -45,9 +45,9 @@ RuuviTag 通过 BLE（低能耗蓝牙）通信，要求网关设备与 Azure IoT
 
 若要添加 RuuviTag 设备模板：
 
-1. 导航到左侧窗格中的 ***"设备模板***"选项卡，选择 **"** 新建![："创建新设备模板](./media/howto-connect-ruuvi/devicetemplate-new.png)页面为您提供***创建自定义模板***或使用***预配置设备模板***的选项
-1. 从预配置的设备模板列表中选择 RuuviTag 设备模板，如下所示：![选择 RuuviTag 设备模板](./media/howto-connect-ruuvi/devicetemplate-preconfigured.png)
-1. 选择 ***"下一步"：自定义***以继续下一步。
+1. 导航到左侧窗格中的 "***设备模板***" 选项卡，选择 " **+ 新建**： ![创建](./media/howto-connect-ruuvi/devicetemplate-new.png)新设备模板" 页面提供了***创建自定义模板***或***使用预配置设备模板***的选项
+1. 从预配置的设备模板列表中选择 "RuuviTag 设备" 模板，如下![所示：选择 RuuviTag 设备模板](./media/howto-connect-ruuvi/devicetemplate-preconfigured.png)
+1. 选择 "***下一步：自定义***" 可继续执行下一步。
 1. 在下一个屏幕上，选择“创建”以将 C500 设备模板加入到 IoT Central 应用程序中。******
 
 ## <a name="connect-a-ruuvitag-sensor"></a>连接 RuuviTag 传感器
@@ -76,7 +76,7 @@ RuuviTag 通过 BLE（低能耗蓝牙）通信，要求网关设备与 Azure IoT
 
 ## <a name="next-steps"></a>后续步骤
 
-如果您是设备开发人员，建议的后续步骤是：
+如果你是一名设备开发人员，我们建议执行以下后续步骤：
 
-- 阅读[有关 Azure IoT 中心中的设备连接](./concepts-get-connected.md)
-- 了解如何使用[Azure CLI 监视设备连接](./howto-monitor-devices-azure-cli.md)
+- 了解[Azure 中的设备连接 IoT Central](./concepts-get-connected.md)
+- 了解如何[使用 Azure CLI 监视设备连接](./howto-monitor-devices-azure-cli.md)

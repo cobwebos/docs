@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 中部署的 SSIS 包打开和保存文件
+title: 打开并保存在 Azure 中部署的 SSIS 包的文件
 description: 了解将使用本地文件系统的 SSIS 包提升并移动到 Azure 中的 SSIS 时，如何在本地和 Azure 中打开并保存文件
 ms.date: 06/27/2018
 ms.topic: conceptual
@@ -9,10 +9,10 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
 ms.openlocfilehash: 630a8ead409ad60b9146838f062210a3301b43b5
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81760194"
 ---
 # <a name="open-and-save-files-on-premises-and-in-azure-with-ssis-packages-deployed-in-azure"></a>使用 Azure 中部署的 SSIS 包在本地和 Azure 中打开并保存文件
@@ -51,4 +51,4 @@ ms.locfileid: "81760194"
 
 - 部署包。 有关详细信息，请参阅[使用 SSMS 将 SSIS 项目部署到 Azure](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-deploy-ssms)。
 - 运行包。 有关详细信息，请参阅[使用 SSMS 运行 Azure 中的 SSIS 包](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-run-ssms)。
-- 计划包。 有关详细信息，请参阅[Azure 中的计划 SSIS 包](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15)。
+- 计划包。 有关详细信息，请参阅[在 Azure 中计划 SSIS 包](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15)。

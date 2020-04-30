@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 中排除 OpenShift 容器平台 3.11 部署的疑难解答
-description: 在 Azure 中排除 OpenShift 容器平台 3.11 部署的疑难解答。
+title: 排查 Azure 中的 OpenShift 容器平台3.11 部署问题
+description: 排查 Azure 中的 OpenShift 容器平台3.11 部署问题。
 author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
@@ -11,13 +11,13 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 90fd3680cfdc4ecd1dcb0ce33b63f8d76dd8bfae
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759465"
 ---
-# <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>在 Azure 中排除 OpenShift 容器平台 3.11 部署的疑难解答
+# <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>排查 Azure 中的 OpenShift 容器平台3.11 部署问题
 
 如果 OpenShift 群集未成功部署，Azure 门户将提供错误输出。 该输出可能难以阅读，导致难以识别问题。 请在此输出中快速扫描退出代码 3、4 或 5。 下面提供了有关这三个退出代码的信息：
 
@@ -37,9 +37,9 @@ ms.locfileid: "81759465"
 
 ## <a name="log-files"></a>日志文件
 
-主机准备脚本的日志文件（斯特和斯特和斯特处理）位于所有主机`/var/lib/waagent/custom-script/download/0`上。 如果在准备主机期间出错，请查看这些日志文件以确定错误。
+主机准备脚本的日志文件（stderr 和 stdout）位于所有主机`/var/lib/waagent/custom-script/download/0`上的。 如果在准备主机期间出错，请查看这些日志文件以确定错误。
 
-如果准备脚本成功运行，则需要检查易访问操作手册主机`/var/lib/waagent/custom-script/download/1`目录中的日志文件。 如果在实际安装 OpenShift 期间出错，stdout 文件将显示错误。 使用此信息来联系支持人员，以获得进一步的帮助。
+如果准备脚本成功运行，则需要检查 ansible 操作手册宿主`/var/lib/waagent/custom-script/download/1`目录中的日志文件。 如果在实际安装 OpenShift 期间出错，stdout 文件将显示错误。 使用此信息来联系支持人员，以获得进一步的帮助。
 
 示例输出
 
@@ -88,11 +88,11 @@ Failure summary:
 
 ### <a name="private-key-has-a-passphrase"></a>私钥包含通行短语
 
-您将看到一个错误，该错误是 ssh 的权限被拒绝。 ssh 到可访问播放簿主机，以检查私钥上的密码。
+你将看到一个错误，指出拒绝了 ssh 的权限。 通过 ssh 连接到 ansible 操作手册主机以检查私钥上的通行短语。
 
 ### <a name="key-vault-secret-with-private-key-wasnt-created-correctly"></a>未正确创建包含私钥的 Key Vault 机密
 
-私钥被复制到可理解的玩法主机 - */.ssh/id_rsa。 确认此文件正确。 通过与 ansible playbook 主机中的某个群集节点建立 SSH 会话来进行测试。
+将私钥复制到 ansible 操作手册主机-~/.ssh/id_rsa。 确认此文件正确。 通过与 ansible playbook 主机中的某个群集节点建立 SSH 会话来进行测试。
 
 ### <a name="service-principal-credentials-were-entered-incorrectly"></a>输入的服务主体凭据不正确
 
@@ -114,5 +114,5 @@ az group update -g <openshift resource group> --set tags.sptest=test
 
 对于某些错误，还可以使用以下命令获取详细信息：
 
-1. 系统状态\<服务>
+1. systemctl 状态\<服务>
 2. journalctl -xe

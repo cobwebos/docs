@@ -7,15 +7,15 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: 73c18d45136eea90ad29dc1bd40c4539dddc0ee6
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81767253"
 ---
 # <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>使用 Azure Policy 启用用于 VM 的 Azure Monitor
 
-本文介绍如何使用 Azure 策略为 Azure 虚拟机或虚拟机缩放集启用 Azure 监视器。 在此过程结束时，即已成功配置并启用 Log Analytics 和依赖项代理，同时已识别不合规的虚拟机。
+本文介绍如何使用 Azure 策略为 Azure 虚拟机或虚拟机规模集启用用于 VM 的 Azure Monitor。 在此过程结束时，即已成功配置并启用 Log Analytics 和依赖项代理，同时已识别不合规的虚拟机。
 
 若要为所有 Azure 虚拟机或虚拟机规模集发现、管理和启用用于 VM 的 Azure Monitor，可以使用 Azure Policy 或 Azure PowerShell。 我们建议使用 Azure Policy 方法，因为这样可以管理策略定义，以便有效地监管订阅，确保始终保持合规，并自动启用新预配的 VM。 这些策略定义：
 
@@ -23,20 +23,20 @@ ms.locfileid: "81767253"
 * 报告合规性结果。
 * 修正不合规的 VM。
 
-如果您有兴趣使用 Azure PowerShell 或 Azure 资源管理器模板完成这些任务，请参阅使用[Azure PowerShell 或 Azure 资源管理器模板为 VM 启用 Azure 监视器](vminsights-enable-at-scale-powershell.md)。
+如果你有兴趣使用 Azure PowerShell 或 Azure 资源管理器模板来完成这些任务，请参阅[使用 Azure PowerShell 或 azure 资源管理器模板启用用于 VM 的 Azure Monitor](vminsights-enable-at-scale-powershell.md)。
 
-## <a name="prerequisites"></a>先决条件
-在使用策略将 Azure VM 和虚拟机缩放集装到 VM 的 Azure 监视之前，必须在要用于存储监视数据的工作区上启用 VMInsights 解决方案。 此任务可以从"**其他载入"选项**选项卡上的 Azure 监视器中的"**入门"** 页完成。 选择 **"配置工作区**"，这将提示您选择要配置的工作区。
+## <a name="prerequisites"></a>必备条件
+在使用策略将 Azure 虚拟机和虚拟机规模集载入 azure 监视虚拟机之前，必须在将用于存储监视数据的工作区上启用 VMInsights 解决方案。 此任务可从 "**其他载入选项**" 选项卡上的 "Azure Monitor 中的"**入门**"页完成。 选择 "**配置工作区**"，将提示您选择要配置的工作区。
 
 ![配置工作区](media/vminsights-enable-at-scale-policy/configure-workspace.png)
 
-您还可以通过选择 **"使用策略启用"** 来配置工作区，然后选择"**配置工作区**"工具栏按钮。  这将在选定的工作区上安装 VMInsights 解决方案，使工作区能够存储使用策略启用的 VM 和虚拟机规模集发送的监视数据。 
+你还可以通过选择 "**使用策略启用**"，然后选择 "**配置工作区**" 工具栏按钮来配置工作区。  这会在所选工作区上安装 VMInsights 解决方案，这将使工作区能够存储使用策略启用的 Vm 和虚拟机规模集所发送的监视数据。 
 
-![使用策略启用](media/vminsights-enable-at-scale-policy/enable-using-policy.png)
+![启用使用策略](media/vminsights-enable-at-scale-policy/enable-using-policy.png)
 
 ## <a name="manage-policy-coverage-feature-overview"></a>“管理策略覆盖范围”功能概述
 
-VM 策略覆盖范围的 Azure 监视器简化了大规模发现、管理和启用启用 AZURE**监视器计划**，其中包括前面提到的策略定义。 要访问此功能，请从"为 VM 的 Azure 监视器**入门"** 选项卡中选择**其他载入选项**。 选择“管理策略覆盖范围”打开“用于 VM 的 Azure Monitor 策略覆盖范围”页。********
+用于 VM 的 Azure Monitor 策略覆盖范围简化了 "**启用用于 VM 的 Azure Monitor**计划" （包括前面提到的策略定义）的大规模发现、管理和启用。 若要访问此功能，请从用于 VM 的 Azure Monitor 的 "**入门**" 选项卡中选择**其他载入选项**。 选择“管理策略覆盖范围”打开“用于 VM 的 Azure Monitor 策略覆盖范围”页。********
 
 ![用于 VM 的 Azure Monitor 的“开始”选项卡](./media/vminsights-enable-at-scale-policy/get-started-page.png)
 
@@ -61,14 +61,14 @@ VM 策略覆盖范围的 Azure 监视器简化了大规模发现、管理和启�
 
 | 函数 | 说明 | 
 |----------|-------------| 
-| **范围** | 你拥有的或者继承了其访问权限的管理组和订阅，可以通过管理组层次结构向下钻取。|
-| **作用** | 你在该范围内的角色，可能是读取者、所有者或参与者。 在某些情况下，此项可能显示为空白，表示你可能有权访问订阅，但无权访问该订阅所属的管理组。 其他列中的信息根据角色的不同而异。 在确定可以查看哪些数据和执行哪些操作（包括分配策略或计划（所有者）、对其进行编辑，或查看合规性）时，角色非常关键。 |
+| **Scope** | 你拥有的或者继承了其访问权限的管理组和订阅，可以通过管理组层次结构向下钻取。|
+| **Role** | 你在该范围内的角色，可能是读取者、所有者或参与者。 在某些情况下，此项可能显示为空白，表示你可能有权访问订阅，但无权访问该订阅所属的管理组。 其他列中的信息根据角色的不同而异。 在确定可以查看哪些数据和执行哪些操作（包括分配策略或计划（所有者）、对其进行编辑，或查看合规性）时，角色非常关键。 |
 | **VM 总数** | 该范围内的 VM 数目。 对于管理组，该数目是嵌套在订阅或子管理组下的 VM 数之和。 |
 | **分配覆盖范围** | 策略或计划覆盖的 VM 百分比。 |
 | **分配状态** | 有关策略或计划分配状态的信息。 |
 | **合规的 VM 数** | 符合策略或计划的 VM 数目。 对于“启用用于 VM 的 Azure Monitor”计划，这是包含 Log Analytics 代理和依赖项代理的 VM 数目。**** 在某些情况下，可能会由于没有分配、VM 或足够的权限，此项显示为空白。 “合规状态”下会提供信息。**** |
-| **合规性** | 整体合规性是不同合规资源的总和除以所有唯一资源。 |
-| **合规性状态** | 有关策略或计划分配的合规状态的信息。|
+| **遵从性** | 整体合规性是不同合规资源的总和除以所有唯一资源。 |
+| **相容性状态** | 有关策略或计划分配的合规状态的信息。|
 
 分配策略或计划时，在分配中选择的范围可能是列出的范围或者其子集。 例如，你可能为某个订阅创建了分配（策略范围），但没有为管理组创建分配（覆盖范围）。 在这种情况下，“分配覆盖范围”的值表示策略或计划范围内的 VM 数除以覆盖范围内的 VM 数。**** 另举一例。你可能从策略范围中排除了一些 VM、资源组或订阅。 如果该值为空白，表示策略或计划不存在，或者你没有权限。 “分配状态”下会提供信息。****
 
@@ -101,7 +101,7 @@ VM 策略覆盖范围的 Azure 监视器简化了大规模发现、管理和启�
 
 |名称 |说明 |类型 |
 |-----|------------|-----|
-|为虚拟机规模集启用 Azure Monitor |在指定范围（管理组、订阅或资源组）中为虚拟机规模集启用 Azure Monitor。 将 Log Analytics 工作区用作参数。 注意：如果规模设置升级策略设置为"手动"，则通过在设置上调用升级来应用扩展程序。 在 CLI 中，`az vmss update-instances`这是 。 |计划 |
+|为虚拟机规模集启用 Azure Monitor |在指定范围（管理组、订阅或资源组）中为虚拟机规模集启用 Azure Monitor。 将 Log Analytics 工作区用作参数。 注意：如果规模集升级策略设置为 "手动"，则通过对其调用升级来将扩展应用到集中的所有 Vm。 在 CLI 中，这是`az vmss update-instances`。 |计划 |
 |审核虚拟机规模集中的依赖项代理部署 - VM 映像 (OS) 未列出 |如果虚拟机规模集映像 (OS) 未在列表中定义且未安装代理，则报告 VM 不合规。 |策略 |
 |审核虚拟机规模集中的 Log Analytics 代理部署 - VM 映像 (OS) 未列出 |如果虚拟机规模集映像 (OS) 未在列表中定义且未安装代理，则报告 VM 不合规。 |策略 |
 |为 Linux 虚拟机规模集部署依赖项代理 |如果 VM 映像 (OS) 在列表中定义但未安装代理，请为 Linux 虚拟机规模集部署依赖项代理。 |策略 |
@@ -123,13 +123,13 @@ VM 策略覆盖范围的 Azure 监视器简化了大规模发现、管理和启�
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 在 Azure 门户中，选择 **"监视器**"。 
+2. 在 Azure 门户中，选择 "**监视器**"。 
 
-3. 在 **"见解"** 部分中选择**虚拟机**。
+3. 选择 " **Insights** " 部分中的 "**虚拟机**"。
  
-4. 选择"**开始"** 选项卡。在页面上，选择 **"管理策略覆盖范围**"。
+4. 选择 "**开始**" 选项卡。在 "" 页上，选择 "**管理策略覆盖率**"。
 
-5. 从表中选择一个管理组或订阅。 通过选择省略号 （...） 选择**范围**。在此示例中，作用域将策略分配限制为要强制执行的虚拟机分组。
+5. 从表中选择一个管理组或订阅。 选择 "**作用域**"，选择省略号（...）。在此示例中，作用域将策略分配限制为一组用于强制执行的虚拟机。
 
 6. 在“Azure Policy 分配”页上，已经预先填充了“启用用于 VM 的 Azure Monitor”计划。******** 
     “分配名称”框中会自动填充计划名称，但可对其进行更改。**** 还可以添加可选的说明。 “分配者”框根据登录的用户自动填充****。 此值是可选的。
@@ -139,9 +139,9 @@ VM 策略覆盖范围的 Azure 监视器简化了大规模发现、管理和启�
 8. 在受支持区域的“Log Analytics 工作区”下拉列表中，选择一个工作区****。
 
    > [!NOTE]
-   > 如果工作区超出分配范围，则将 *Log Analytics 参与者*权限授予策略分配的主体 ID。 如果不执行此操作，您可能会看到部署失败，如`The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ...`授予访问权限，请查看[如何手动配置托管标识](../../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity)。
+   > 如果工作区超出分配范围，则将 *Log Analytics 参与者*权限授予策略分配的主体 ID。 如果不这样做，可能会看到部署失败，如`The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ...`授予访问权限，请查看[如何手动配置托管标识](../../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity)。
    > 
-   >  选择 **"托管标识"** 复选框，因为正在分配的计划包括具有*DeployIfNotExists*效果的策略。
+   >  "**托管标识**" 复选框处于选中状态，因为指定的计划包括具有*deployIfNotExists*效果的策略。
     
 9. 在“管理标识位置”下拉列表中，选择适当的区域****。
 
@@ -153,13 +153,13 @@ VM 策略覆盖范围的 Azure 监视器简化了大规模发现、管理和启�
 
 | 符合性状态 | 说明 | 
 |------------------|-------------|
-| **兼容** | 该范围内的所有 VM 都部署了 Log Analytics 和依赖项代理。|
+| **要求** | 该范围内的所有 VM 都部署了 Log Analytics 和依赖项代理。|
 | **不合规** | 该范围内并非所有 VM 都部署了 Log Analytics 和依赖项代理，可能需要修正。|
 | **未启动** | 添加了新的分配。 |
-| **Lock** | 你对管理组没有足够的特权。<sup>1</sup> | 
+| **住** | 你对管理组没有足够的特权。<sup>1</sup> | 
 | **空白** | 未分配策略。 | 
 
-<sup>1</sup>如果您无法访问管理组，请要求所有者提供访问权限。 或者，通过子管理组或订阅查看合规性和管理分配。 
+<sup>1</sup>如果您无权访问管理组，请要求所有者提供访问权限。 或者，通过子管理组或订阅查看合规性和管理分配。 
 
 下表映射了计划的每种可能的分配状态。
 
@@ -168,11 +168,11 @@ VM 策略覆盖范围的 Azure 监视器简化了大规模发现、管理和启�
 | **成功** | 该范围内的所有 VM 都部署了 Log Analytics 和依赖项代理。|
 | **警告** | 订阅不在管理组下。|
 | **未启动** | 添加了新的分配。 |
-| **Lock** | 你对管理组没有足够的特权。<sup>1</sup> | 
+| **住** | 你对管理组没有足够的特权。<sup>1</sup> | 
 | **空白** | 没有 VM，或者未分配策略。 | 
 | **操作** | 分配策略或编辑分配。 | 
 
-<sup>1</sup>如果您无法访问管理组，请要求所有者提供访问权限。 或者，通过子管理组或订阅查看合规性和管理分配。
+<sup>1</sup>如果您无权访问管理组，请要求所有者提供访问权限。 或者，通过子管理组或订阅查看合规性和管理分配。
 
 ## <a name="review-and-remediate-the-compliance-results"></a>检查和修正合规结果
 
@@ -183,7 +183,7 @@ VM 策略覆盖范围的 Azure 监视器简化了大规模发现、管理和启�
 根据计划中包含的策略的结果，VM 在以下情况中报告为不合规：
 
 * 未部署 Log Analytics 代理或依赖项代理。  
-    这对于已经拥有 VM 的范围来说是典型情况。 要缓解它，通过在不合规的策略上[创建修正任务](../../governance/policy/how-to/remediate-resources.md)来部署所需的代理。  
+    这对于已经拥有 VM 的范围来说是典型情况。 若要缓解此问题，请通过在不符合策略上[创建修正任务](../../governance/policy/how-to/remediate-resources.md)来部署所需的代理。  
     - 为 Linux VM 部署依赖项代理
     - 为 Windows VM 部署依赖项代理
     - 为 Linux VM 部署 Log Analytics 代理

@@ -12,10 +12,10 @@ ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: cac7e6feb632456b63b97ead057f9ecaf49322ea
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81729722"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection 声明转换
@@ -159,18 +159,18 @@ ms.locfileid: "81729722"
 - 输出声明：
     - **outputClaim**: "true"
 
-## <a name="stringcollectioncontainsclaim"></a>字符串收集包含索赔
+## <a name="stringcollectioncontainsclaim"></a>StringCollectionContainsClaim
 
 检查 StringCollection 声明类型是否包含声明值。
 
-| 项 | TransformationClaimType | 数据类型 | 说明 |
+| 项 | TransformationClaimType | 数据类型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | collection | stringCollection | 要搜索的声明类型。 |
 | InputClaim | item|字符串| 包含要搜索的值的声明类型。|
 |InputParameter|ignoreCase|字符串|指定此比较是否应忽略所比较字符串的大小写。|
-| OutputClaim | outputClaim | boolean | 调用此 ClaimsTransformation 后生成的 ClaimType。 如果集合包含此类字符串，则布尔指示器 |
+| OutputClaim | outputClaim | boolean | 调用此 ClaimsTransformation 后生成的 ClaimType。 如果集合包含这样的字符串，则为布尔型指示器 |
 
-下面的示例检查`roles`字符串集合声明类型是否包含`role`声明类型的值。
+下面的`roles`示例检查 stringCollection 声明类型是否包含`role`声明类型的值。
 
 ```XML
 <ClaimsTransformation Id="HasRequiredRole" TransformationMethod="StringCollectionContainsClaim">
@@ -188,9 +188,9 @@ ms.locfileid: "81729722"
 ```
 
 - 输入声明：
-    - **集合**： ["读者"，"作者"，"管理员"]
-    - **项目**："管理员"
+    - **集合**： ["reader"、"author"、"admin"]
+    - **项**： "Admin"
 - 输入参数：
-    - **忽略案例**："真"
+    - **regexoptions.ignorecase**： "true"
 - 输出声明：
-    - **输出要求**："真"
+    - **outputClaim**： "true"

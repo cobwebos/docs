@@ -13,17 +13,17 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: f0753827fe5f7f2b866726683d4cb1f205da4599
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732464"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>使用 IoT 中心将文件从设备上传到云 (Java)
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
-本教程基于[IoT 中心教程"发送云到设备消息](iot-hub-java-java-c2d.md)"中的代码，向您展示如何使用[IoT 中心的文件上载功能](iot-hub-devguide-file-upload.md)将文件上载到[Azure Blob 存储](../storage/index.yml)。 本教程介绍如何：
+本教程基于使用[Iot 中心发送云到设备的消息](iot-hub-java-java-c2d.md)教程中的代码，演示如何使用[iot 中心的文件上传功能](iot-hub-devguide-file-upload.md)将文件上传到[Azure blob 存储](../storage/index.yml)。 本教程介绍如何：
 
 * 安全提供具有 Azure blob URI 的设备，用于上传文件。
 
@@ -40,7 +40,7 @@ ms.locfileid: "81732464"
 
 在本教程的最后，将运行两个 Java 控制台应用：
 
-* **模拟设备**，在 [使用 IoT Hub] 教程中创建的应用程序的修改版本。 该应用使用 IoT 中心提供的 SAS URI 将文件上传到存储。
+* **模拟设备**，在 [使用 IoT 中心发送云到设备的消息] 教程中创建的应用的修改版本。 该应用使用 IoT 中心提供的 SAS URI 将文件上传到存储。
 
 * **read-file-upload-notification**，它可以接收来自 IoT 中心的文件上传通知。
 
@@ -61,7 +61,7 @@ ms.locfileid: "81732464"
 
 ## <a name="upload-a-file-from-a-device-app"></a>从设备应用上传文件
 
-在本节中，您将修改在[使用 IoT 中心发送云到设备消息](iot-hub-java-java-c2d.md)以将文件上载到 IoT 中心时创建的设备应用。
+在本部分中，会修改在[使用 Iot 中心发送云到设备消息](iot-hub-java-java-c2d.md)中创建的设备应用，以便将文件上传到 iot 中心。
 
 1. 将一个图像文件复制到 `simulated-device` 文件夹并将其重命名为 `myimage.png`。
 

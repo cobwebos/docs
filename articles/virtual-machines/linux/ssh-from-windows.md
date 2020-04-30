@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
 ms.openlocfilehash: cdf901ca56c150cfed6ba3d462ce493d40bd2488
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81757990"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>如何在 Azure 上将 SSH 密钥与 Windows 配合使用
@@ -37,7 +37,7 @@ Windows 计算机并不总是装有类似的 SSH 命令。 最新版本的 Windo
 
 还可以在 [Azure Cloud Shell](../../cloud-shell/overview.md) 中使用 Bash 中提供的 SSH 实用工具。 
 
-* 在 Azure[https://shell.azure.com](https://shell.azure.com)[门户](https://portal.azure.com)的 Web 浏览器中访问云外壳。 
+* 在 web 浏览器中[https://shell.azure.com](https://shell.azure.com)或[Azure 门户](https://portal.azure.com)中访问 Cloud Shell。 
 * 通过安装 [Azure 帐户扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)，从 Visual Studio Code 内访问作为终端的 Cloud Shell。
 
 ## <a name="create-an-ssh-key-pair"></a>创建 SSH 密钥对
@@ -75,9 +75,9 @@ ssh-keygen -t rsa -b 2048
 
     ![保存 PuTTY 私钥文件](./media/ssh-from-windows/save-ppk-file.png)
 
-    如果要以 OpenSSH 格式（许多 SSH 客户端使用的私钥格式）保存私钥，请选择 **"转换** > **导出 OpenSSH 密钥**"。
+    如果要以 OpenSSH 格式保存私钥（由多个 SSH 客户端使用的私钥格式），请选择 "**转换** > " "**导出 OpenSSH 密钥**"。
 
-## <a name="provide-an-ssh-public-key-when-deploying-a-vm"></a>在部署 VM 时提供 SSH 公钥
+## <a name="provide-an-ssh-public-key-when-deploying-a-vm"></a>部署 VM 时提供 SSH 公钥
 
 若要创建使用 SSH 密钥进行身份验证的 Linux VM，请在使用 Azure 门户或其他方法创建 VM 时提供 SSH 公钥。
 
@@ -111,7 +111,7 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 
     ![打开新的 PuTTY 连接](./media/ssh-from-windows/putty-new-connection.png)
 
-3. 选择**连接** > **SSH** > **Auth**类别。 浏览并选择 PuTTY 私钥（.ppk 文件）：
+3. 选择 "**连接** > **SSH** > **身份验证**" 类别。 浏览并选择 PuTTY 私钥（.ppk 文件）：
 
     ![选择用于身份验证的 PuTTY 私钥](./media/ssh-from-windows/putty-auth-dialog.png)
 

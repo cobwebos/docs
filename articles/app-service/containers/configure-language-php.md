@@ -1,31 +1,31 @@
 ---
 title: 配置 PHP 应用
-description: 了解如何为应用配置预构建的 PHP 容器。 本文介绍最常见的配置任务。
+description: 了解如何为应用程序配置预先构建的 PHP 容器。 本文介绍最常见的配置任务。
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
 ms.openlocfilehash: 9e87466f810dc4ebf767c36ad74c358cbf6069e5
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758876"
 ---
-# <a name="configure-a-linux-php-app-for-azure-app-service"></a>为 Azure 应用服务配置 Linux PHP 应用
+# <a name="configure-a-linux-php-app-for-azure-app-service"></a>为 Azure App Service 配置 Linux PHP 应用
 
-本指南介绍如何在 Azure 应用服务中为 Web 应用、移动后端和 API 应用配置内置 PHP 运行时。
+本指南演示如何在 Azure App Service 中配置 web 应用、移动后端和 API 应用的内置 PHP 运行时。
 
-本指南为在应用服务中使用内置 Linux 容器的 PHP 开发人员提供了关键概念和说明。 如果您从未使用过 Azure 应用服务，请先使用 MySQL 教程，请先按照[PHP 快速入门](quickstart-php.md)和 PHP 进行[MySQL 教程](tutorial-php-mysql-app.md)。
+本指南为在应用服务中使用内置 Linux 容器的 PHP 开发人员提供重要的概念和说明。 如果你从未使用过 Azure App Service，请先参阅[php 快速入门](quickstart-php.md)和[php with MySQL 教程](tutorial-php-mysql-app.md)。
 
 ## <a name="show-php-version"></a>显示 PHP 版本
 
-要显示当前的 PHP 版本，在[云壳](https://shell.azure.com)中运行以下命令：
+若要显示当前 PHP 版本，请在[Cloud Shell](https://shell.azure.com)中运行以下命令：
 
 ```azurecli-interactive
 az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
 ```
 
-要显示所有受支持的 PHP 版本，可在[云外壳](https://shell.azure.com)中运行以下命令：
+若要显示所有支持的 PHP 版本，请在[Cloud Shell](https://shell.azure.com)中运行以下命令：
 
 ```azurecli-interactive
 az webapp list-runtimes --linux | grep PHP
@@ -33,23 +33,23 @@ az webapp list-runtimes --linux | grep PHP
 
 ## <a name="set-php-version"></a>设置 PHP 版本
 
-在[云壳](https://shell.azure.com)中运行以下命令，将 PHP 版本设置为 7.2：
+在[Cloud Shell](https://shell.azure.com)中运行以下命令，将 PHP 版本设置为7.2：
 
 ```azurecli-interactive
 az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "PHP|7.2"
 ```
 
-## <a name="customize-build-automation"></a>自定义构建自动化
+## <a name="customize-build-automation"></a>自定义生成自动化
 
-如果使用打开的 Git 或 zip 包部署应用，应用服务将构建自动化步骤，执行以下顺序：
+如果在启用了生成自动化的情况下使用 Git 或 zip 包部署应用，应用服务将通过以下顺序生成自动化步骤：
 
-1. 如果由`PRE_BUILD_SCRIPT_PATH`指定，则运行自定义脚本。
+1. 如果由指定， `PRE_BUILD_SCRIPT_PATH`则运行自定义脚本。
 1. 运行 `php composer.phar install`。
-1. 如果由`POST_BUILD_SCRIPT_PATH`指定，则运行自定义脚本。
+1. 如果由指定， `POST_BUILD_SCRIPT_PATH`则运行自定义脚本。
 
-`PRE_BUILD_COMMAND`和`POST_BUILD_COMMAND`是默认情况下为空的环境变量。 要运行预生成命令，请定义`PRE_BUILD_COMMAND`。 要运行生成后命令，请定义`POST_BUILD_COMMAND`。
+`PRE_BUILD_COMMAND`和`POST_BUILD_COMMAND`是默认情况下为空的环境变量。 若要运行预生成命令，请`PRE_BUILD_COMMAND`定义。 若要运行生成后命令，请`POST_BUILD_COMMAND`定义。
 
-下面的示例指定一系列命令的两个变量，这些命令用逗号分隔。
+下面的示例为一系列命令指定了两个变量，用逗号分隔。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
@@ -58,11 +58,11 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 有关自定义生成自动化的其他环境变量，请参阅[Oryx 配置](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)。
 
-有关应用服务如何在 Linux 中运行和构建 PHP 应用程序的详细信息，请参阅[Oryx 文档：如何检测和构建 PHP 应用程序](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/php.md)。
+若要详细了解应用服务的运行方式以及如何在 Linux 中生成 PHP 应用，请参阅[Oryx 文档：如何检测和构建 php 应用](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/php.md)。
 
 ## <a name="customize-start-up"></a>自定义启动
 
-默认情况下，内置 PHP 容器运行 Apache 服务器。 在启动时，它运行`apache2ctl -D FOREGROUND"`。 如果您愿意，可以通过在[云壳](https://shell.azure.com)中运行以下命令，在启动时运行不同的命令：
+默认情况下，内置 PHP 容器运行 Apache 服务器。 在启动时，它将运行`apache2ctl -D FOREGROUND"`。 如果需要，可以在启动时运行不同的命令，方法是在[Cloud Shell](https://shell.azure.com)中运行以下命令：
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
@@ -70,17 +70,17 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="access-environment-variables"></a>访问环境变量
 
-在应用服务中，可以在应用代码外部[设置应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)。 然后，您可以使用标准[getenv（）](https://secure.php.net/manual/function.getenv.php)模式访问它们。 例如，若要访问名为 `DB_HOST` 的应用设置，请使用以下代码：
+在应用服务中，可以在应用代码外部[设置应用设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)。 然后，你可以使用标准[getenv （）](https://secure.php.net/manual/function.getenv.php)模式访问它们。 例如，若要访问名为 `DB_HOST` 的应用设置，请使用以下代码：
 
 ```php
 getenv("DB_HOST")
 ```
 
-## <a name="change-site-root"></a>更改站点根
+## <a name="change-site-root"></a>更改站点根目录
 
-您选择的 Web 框架可能使用子目录作为站点根目录。 例如[，Laravel](https://laravel.com/)使用`public/`子目录作为站点根目录。
+所选的 web 框架可能使用子目录作为网站根目录。 例如， [Laravel](https://laravel.com/)使用`public/`子目录作为网站根目录。
 
-应用服务的默认 PHP 映像使用 Apache，它不允许您自定义应用的网站根。 要解决此限制，请向存储库根添加包含以下内容的 *.htaccess*文件：
+应用服务的默认 PHP 映像使用 Apache，不允许你为应用自定义站点根。 若要解决此限制，请将 *.htaccess*文件添加到存储库根目录中，其中包含以下内容：
 
 ```
 <IfModule mod_rewrite.c>
@@ -104,17 +104,17 @@ if (isset($_SERVER['X-Forwarded-Proto']) && $_SERVER['X-Forwarded-Proto'] === 'h
 
 使用常用 Web 框架可以访问采用标准应用模式的 `X-Forwarded-*` 信息。 在 [CodeIgniter](https://codeigniter.com/) 中，[is_https()](https://github.com/bcit-ci/CodeIgniter/blob/master/system/core/Common.php#L338-L365) 默认检查 `X_FORWARDED_PROTO` 的值。
 
-## <a name="customize-phpini-settings"></a>自定义 php.ini 设置
+## <a name="customize-phpini-settings"></a>自定义 php .ini 设置
 
-如果需要更改 PHP 安装，可以通过执行以下步骤更改任何[php.ini 指令](https://www.php.net/manual/ini.list.php)。
+如果需要更改 PHP 安装，可以通过执行下列步骤来更改任何[php 指令](https://www.php.net/manual/ini.list.php)。
 
 > [!NOTE]
-> 查看 PHP 版本和当前*php.ini*配置的最佳方法是在应用程序中调用[phpinfo（）。](https://php.net/manual/function.phpinfo.php)
+> 查看 PHP 版本和当前*php .ini*配置的最佳方式是在应用程序中调用[phpinfo （）](https://php.net/manual/function.phpinfo.php) 。
 >
 
-### <a name="customize-non-php_ini_system-directives"></a><a name="Customize-non-PHP_INI_SYSTEM directives"></a>自定义非PHP_INI_SYSTEM指令
+### <a name="customize-non-php_ini_system-directives"></a><a name="Customize-non-PHP_INI_SYSTEM directives"></a>自定义-非 PHP_INI_SYSTEM 指令
 
-要自定义PHP_INI_USER、PHP_INI_PERDIR和PHP_INI_ALL指令（请参阅[php.ini 指令](https://www.php.net/manual/ini.list.php)），请向应用的根目录添加 *.htaccess*文件。
+若要自定义 PHP_INI_USER、PHP_INI_PERDIR 和 PHP_INI_ALL 指令（请参阅[PHP 指令](https://www.php.net/manual/ini.list.php)），请将 *.htaccess*文件添加到应用程序的根目录中。
 
 在 *.htaccess*文件中，使用`php_value <directive-name> <value>`语法添加指令。 例如：
 
@@ -128,31 +128,31 @@ php_value display_errors On
 php_value upload_max_filesize 10M
 ```
 
-使用更改重新部署应用并重新启动它。 如果使用 Kudu 部署它（例如，使用[Git](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)），则部署后会自动重新启动它。
+重新部署你的应用并将其重新启动。 如果使用 Kudu 部署它（例如，使用[Git](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)），则它会在部署后自动重启。
 
-作为使用 *.htaccess*的替代方法，您可以在应用中使用[ini_set（）](https://www.php.net/manual/function.ini-set.php)来自定义这些非PHP_INI_SYSTEM指令。
+作为使用 *.htaccess*的替代方法，你可以使用应用中的[ini_set （）](https://www.php.net/manual/function.ini-set.php)自定义这些非 PHP_INI_SYSTEM 指令。
 
-### <a name="customize-php_ini_system-directives"></a><a name="customize-php_ini_system-directives"></a>自定义PHP_INI_SYSTEM指令
+### <a name="customize-php_ini_system-directives"></a><a name="customize-php_ini_system-directives"></a>自定义 PHP_INI_SYSTEM 指令
 
-要自定义PHP_INI_SYSTEM指令（请参阅[php.ini 指令](https://www.php.net/manual/ini.list.php)），不能使用 *.htaccess*方法。 应用服务使用`PHP_INI_SCAN_DIR`应用设置提供单独的机制。
+若要自定义 PHP_INI_SYSTEM 指令（请参阅[PHP 指令](https://www.php.net/manual/ini.list.php)），则不能使用 *.htaccess*方法。 应用服务提供使用`PHP_INI_SCAN_DIR`应用设置的单独机制。
 
-首先，在[云壳](https://shell.azure.com)中运行以下命令以添加名为`PHP_INI_SCAN_DIR`的应用设置：
+首先，在[Cloud Shell](https://shell.azure.com)中运行以下命令，添加一个名`PHP_INI_SCAN_DIR`为的应用设置：
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PHP_INI_SCAN_DIR="/usr/local/etc/php/conf.d:/home/site/ini"
 ```
 
-`/usr/local/etc/php/conf.d`是*存在 php.ini 的*默认目录。 `/home/site/ini`是在其中添加自定义 *.ini*文件的自定义目录。 使用 分隔值`:`。
+`/usr/local/etc/php/conf.d`是*php*所在的默认目录。 `/home/site/ini`自定义目录，你将在其中添加自定义 *.ini*文件。 使用分隔值`:`。
 
-使用 Linux 容器 （导航`https://<app-name>.scm.azurewebsites.net/webssh/host`到 Web SSH 会话）。
+导航到你的 Linux 容器的 web SSH 会话（`https://<app-name>.scm.azurewebsites.net/webssh/host`）。
 
-在`/home/site`中`ini`创建目录，然后在`/home/site/ini`目录中创建 *.ini*文件（例如，*设置.ini），* 该目录包含要自定义的指令。 使用在*php.ini*文件中使用的语法。 
+创建一个`/home/site` `ini`名为的目录，然后使用要自定义的指令在`/home/site/ini`目录中创建一个 *.ini*文件（例如，*设置 .ini）* 。 使用在*php .ini*文件中使用的语法。 
 
 > [!TIP]
-> 在应用服务中的内置 Linux 容器中 *，/home*用作持久共享存储。 
+> 在应用服务中的内置 Linux 容器中， */home*用作持久性共享存储。 
 >
 
-例如，要更改[expose_php](https://php.net/manual/ini.core.php#ini.expose-php)运行以下命令的值：
+例如，若要更改[expose_php](https://php.net/manual/ini.core.php#ini.expose-php)的值，请运行以下命令：
 
 ```bash
 cd /home/site
@@ -164,19 +164,19 @@ echo "expose_php = Off" >> ini/setting.ini
 
 ## <a name="enable-php-extensions"></a>启用 PHP 扩展
 
-内置 PHP 安装包含最常用的扩展。 您可以启用其他扩展的方式与[自定义 php.ini 指令](#customize-php_ini_system-directives)相同。
+内置 PHP 安装包含最常用的扩展。 您可以使用与[自定义 php 指令](#customize-php_ini_system-directives)相同的方式来启用其他扩展。
 
 > [!NOTE]
-> 查看 PHP 版本和当前*php.ini*配置的最佳方法是在应用程序中调用[phpinfo（）。](https://php.net/manual/function.phpinfo.php)
+> 查看 PHP 版本和当前*php .ini*配置的最佳方式是在应用程序中调用[phpinfo （）](https://php.net/manual/function.phpinfo.php) 。
 >
 
 若要启用其他扩展，请执行下列步骤：
 
-将`bin`目录添加到应用的根目录，并将`.so`扩展文件放入其中（例如 *，mongodb.so*）。 确保扩展与 Azure 中的 PHP 版本兼容，并且与 VC9 和非线程安全 （nts） 兼容。
+将`bin`目录添加到应用的根目录，并将`.so`扩展文件放入其中（例如， *mongodb.so*）。 请确保这些扩展与 Azure 中的 PHP 版本兼容，并且与 VC9 和非线程安全（nts）兼容。
 
-部署更改。
+部署所做的更改。
 
-按照[自定义PHP_INI_SYSTEM指令](#customize-php_ini_system-directives)中的步骤，将扩展添加到自定义 *.ini*文件中，并[带有扩展名](https://www.php.net/manual/ini.core.php#ini.extension)或[zend_extension](https://www.php.net/manual/ini.core.php#ini.zend-extension)指令。
+按照[自定义 PHP_INI_SYSTEM 指令](#customize-php_ini_system-directives)中的步骤操作，将扩展添加到具有[扩展名](https://www.php.net/manual/ini.core.php#ini.extension)或[zend_extension](https://www.php.net/manual/ini.core.php#ini.zend-extension)指令的自定义 *.ini*文件中。
 
 ```ini
 extension=/home/site/wwwroot/bin/mongodb.so
@@ -195,14 +195,14 @@ zend_extension=/home/site/wwwroot/bin/xdebug.so
 
 ## <a name="troubleshooting"></a>疑难解答
 
-当工作中的 PHP 应用在应用服务中的行为不同或有错误时，请尝试以下操作：
+如果运行中的 PHP 应用在应用服务中的行为不同或有错误，请尝试以下操作：
 
 - [访问日志流](#access-diagnostic-logs)。
-- 在生产模式下本地测试应用。 应用服务在生产模式下运行 Node.js 应用，因此您需要确保项目在本地生产模式下按预期工作。 例如：
-    - 根据您的*作曲家.json，* 不同的软件包可能安装生产模式（`require`与 ）。 `require-dev`
-    - 某些 Web 框架在生产模式下可能以不同的方式部署静态文件。
-    - 某些 Web 框架在生产模式下运行时可能会使用自定义启动脚本。
-- 在调试模式下在应用服务中运行应用。 例如，在[Laravel](https://meanjs.org/)中，可以通过[将`APP_DEBUG``true`应用设置设置为](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)（） 来配置应用以在生产中输出调试消息。
+- 在生产模式下本地测试应用。 应用服务在生产模式下运行 node.js 应用，因此，你需要确保你的项目在生产模式下以本地方式按预期方式工作。 例如：
+    - 根据你的*作曲*程序，可能会为生产模式（`require`与`require-dev`）安装不同的包。
+    - 某些 web 框架可以在生产模式下以不同的方式部署静态文件。
+    - 在生产模式下运行时，某些 web 框架可能使用自定义的启动脚本。
+- 在调试模式下，在应用服务中运行应用。 例如，在[Laravel](https://meanjs.org/)中，可以通过[将`APP_DEBUG`应用设置`true`设置为来](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)将应用配置为在生产中输出调试消息。
 
 [!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 

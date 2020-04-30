@@ -1,6 +1,6 @@
 ---
 title: Azure RBAC 的最佳实践
-description: 使用基于 Azure 角色的访问控制 （Azure RBAC） 的最佳做法。
+description: 使用 Azure 基于角色的访问控制（Azure RBAC）的最佳做法。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,19 +14,19 @@ ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: dc86dd488ff9e8649ae80f4768941791dd37fce6
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81726769"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Azure RBAC 的最佳实践
 
-本文介绍使用基于 Azure 角色的访问控制 （Azure RBAC） 的一些最佳实践。 这些最佳实践源自我们在 Azure RBAC 方面的经验以及您这样的客户的体验。
+本文介绍使用 Azure 基于角色的访问控制（Azure RBAC）的一些最佳实践。 这些最佳实践源于我们的 Azure RBAC 经验和客户体验。
 
 ## <a name="only-grant-the-access-users-need"></a>仅授予用户所需的访问权限
 
-使用 Azure RBAC，可以隔离团队中的职责，并仅向用户授予执行作业所需的访问权限量。 无需向每个人授予 Azure 订阅或资源的无限制权限，可以仅允许在特定的范围执行某些操作。
+使用 Azure RBAC，可以在团队中对职责进行隔离，只向用户授予执行作业所需的访问权限。 无需向每个人授予 Azure 订阅或资源的无限制权限，可以仅允许在特定的范围执行某些操作。
 
 规划访问控制策略时，最佳做法是授予用户完成工作所需的最低权限。 下图显示了与 RBAC 使用有关的建议模式。
 
@@ -36,14 +36,14 @@ ms.locfileid: "81726769"
 
 ## <a name="limit-the-number-of-subscription-owners"></a>限制订阅所有者的数量
 
-您最多应拥有 3 个订阅所有者，以减少被泄露的所有者违反的可能性。 可以在 Azure 安全中心监视此建议。 有关安全中心中的其他标识和访问建议，请参阅[安全建议 - 参考指南](../security-center/recommendations-reference.md)。
+你最多应具有3个订阅所有者，以减少受到泄露的所有者的潜在侵害。 可以在 Azure 安全中心监视此建议。 有关安全中心中的其他标识和访问建议，请参阅[安全建议-参考指南](../security-center/recommendations-reference.md)。
 
-## <a name="use-azure-ad-privileged-identity-management"></a>使用 Azure AD 特权标识管理
+## <a name="use-azure-ad-privileged-identity-management"></a>使用 Azure AD Privileged Identity Management
 
-为了保护特权帐户免受恶意网络攻击，可以使用 Azure Active Directory Privileged Identity Management (PIM) 来降低权限的暴露时间，并通过报表和警报增加对使用的可见性。 PIM 通过提供对 Azure AD 和 Azure 资源的及时特权访问，帮助保护特权帐户。 访问可以受时限限制，之后权限将自动撤销。 
+为了保护特权帐户免受恶意网络攻击，可以使用 Azure Active Directory Privileged Identity Management (PIM) 来降低权限的暴露时间，并通过报表和警报增加对使用的可见性。 PIM 提供对 Azure AD 和 Azure 资源的实时特权访问，从而帮助保护特权帐户。 在自动撤消权限后，访问可以进行时间绑定。 
 
 有关详细信息，请参阅[什么是 Azure AD Privileged Identity Management？](../active-directory/privileged-identity-management/pim-configure.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [排除 Azure RBAC 故障](troubleshooting.md)
+- [排查 Azure RBAC 问题](troubleshooting.md)

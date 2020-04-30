@@ -13,10 +13,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 41c29e55f04f9edf06ba375ad4539e5fb3f82c18
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733422"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>使用 IoT 中心 (.NET) 将消息从云发送到设备
@@ -51,7 +51,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 * Visual Studio
 
-* 有效的 Azure 帐户。 如果您没有帐户，只需几分钟即可创建[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
+* 有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 * 确保已在防火墙中打开端口 8883。 本文中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
@@ -166,7 +166,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 ## <a name="receive-delivery-feedback"></a>接收送达反馈
 
-可以请求从 IoT 中心对每个云到设备消息的传递（或过期）确认。 借助此选项，解决方案后端能够轻松地通知重试或补偿逻辑。 有关云到设备反馈的详细信息，请参阅 [IoT 中心的 D2C 和 C2D 消息传送](iot-hub-devguide-messaging.md)。
+可以为每个云到设备消息的 IoT 中心请求送达（或过期）确认。 借助此选项，解决方案后端能够轻松地通知重试或补偿逻辑。 有关云到设备反馈的详细信息，请参阅 [IoT 中心的 D2C 和 C2D 消息传送](iot-hub-devguide-messaging.md)。
 
 在本部分中，修改 **SendCloudToDevice** 应用以请求反馈，并接收来自 IoT 中心的反馈。
 
@@ -212,7 +212,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
    ![应用接收消息](./media/iot-hub-csharp-csharp-c2d/sendc2d2.png)
 
 > [!NOTE]
-> 为简单起见，本教程不实现任何重试策略。 在生产代码中，应实现重试策略，如指数回退，如[瞬态故障处理](/azure/architecture/best-practices/transient-faults)中的建议。
+> 为简单起见，本教程不实现任何重试策略。 在生产代码中，应按照[暂时性故障处理](/azure/architecture/best-practices/transient-faults)中的建议，实现重试策略（如指数回退）。
 >
 
 ## <a name="next-steps"></a>后续步骤
@@ -221,4 +221,4 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 若要查看使用 IoT 中心完成端到端解决方案的示例，请参阅 [Azure IoT 远程监视解决方案加速器](https://docs.microsoft.com/azure/iot-suite/)。
 
-要了解有关使用 IoT 中心开发解决方案的更多内容，请参阅[IoT 中心开发人员指南](iot-hub-devguide.md)。
+若要了解有关通过 IoT 中心开发解决方案的详细信息，请参阅[Iot 中心开发人员指南](iot-hub-devguide.md)。

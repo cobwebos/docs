@@ -10,10 +10,10 @@ ms.date: 11/11/2019
 ms.author: kgremban
 ms.custom: amqp
 ms.openlocfilehash: a1d74085090a3e20764d7b6fee84ffca52d5cb74
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732428"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>监视 Azure IoT 中心的运行状况并快速诊断问题
@@ -313,9 +313,9 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
 
 #### <a name="distributed-tracing-preview"></a>分布式跟踪（预览版）
 
-分布式跟踪类别跟踪执行跟踪上下文标头的消息的相关 ID。 要完全启用这些日志，必须通过以下[分析和诊断 IoT 应用程序与 IoT 中心分布式跟踪（预览）](iot-hub-distributed-tracing.md)来更新客户端代码。
+分布式跟踪类别跟踪执行跟踪上下文标头的消息的相关 ID。 若要完全启用这些日志，必须通过以下方法来更新客户端代码：[使用 Iot 中心分布式跟踪（预览版）分析和诊断 iot 应用程序端到端](iot-hub-distributed-tracing.md)。
 
-请注意，`correlationId`它符合[W3C 跟踪上下文](https://github.com/w3c/trace-context)方案，其中它包含`trace-id`和 。 `span-id`
+请注意`correlationId` ，符合[W3C 跟踪上下文](https://github.com/w3c/trace-context)提议，其中包含`trace-id`和。 `span-id`
 
 ##### <a name="iot-hub-d2c-device-to-cloud-logs"></a>IoT 中心 D2C（设备到云）日志
 
@@ -344,10 +344,10 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
 
 此时不会计算 `durationMs`，因为 IoT 中心的时钟可能不会与设备时钟同步，所以持续时间计算可能产生误导。 我们建议使用 `properties` 部分中的时间戳编写逻辑，以捕获设备到云延迟的峰值。
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **messageSize** | Integer | 以字节为单位的设备到云消息的大小 |
-| **设备 Id** | ASCII 7 位字母数字字符字符串 | 设备的标识 |
+| **deviceId** | ASCII 7 位字母数字字符字符串 | 设备的标识 |
 | **callerLocalTimeUtc** | UTC 时间戳 | 设备本地时钟报告的消息创建时间 |
 | **calleeLocalTimeUtc** | UTC 时间戳 | IoT 中心服务端时钟报告的消息到达 IoT 中心网关的时间 |
 
@@ -376,9 +376,9 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
 }
 ```
 
-在本`properties`节中，此日志包含有关消息入口的其他信息。
+在`properties`部分中，此日志包含有关消息入口的其他信息。
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **isRoutingEnabled** | 字符串 | True 或 false，指示 IoT 中心是否启用了消息路由 |
 | **parentSpanId** | 字符串 | 父消息的 [span-id](https://w3c.github.io/trace-context/#parent-id)，在这种情况下为 D2C 消息跟踪 |
@@ -408,11 +408,11 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
 }
 ```
 
-在本`properties`节中，此日志包含有关消息入口的其他信息。
+在`properties`部分中，此日志包含有关消息入口的其他信息。
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **终结点名称** | 字符串 | 路由终结点的名称 |
+| **点** | 字符串 | 路由终结点的名称 |
 | **endpointType** | 字符串 | 路由终结点的类型 |
 | **parentSpanId** | 字符串 | 父消息的 [span-id](https://w3c.github.io/trace-context/#parent-id)，在这种情况下为 IoT 中心流入消息跟踪 |
 
@@ -547,7 +547,7 @@ Azure IoT 中心指示区域级别的运行状况。 如果区域性服务中断
 
 3. 从下拉列表框中，选择你的订阅，然后选择“IoT 中心”**** 作为资源类型。
 
-要了解有关如何解释运行状况数据的详细信息，请参阅[Azure 资源运行状况概述](../service-health/resource-health-overview.md)。
+若要了解有关如何解释运行状况数据的详细信息，请参阅[Azure 资源运行状况概述](../service-health/resource-health-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

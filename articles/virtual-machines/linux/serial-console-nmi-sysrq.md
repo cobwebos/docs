@@ -8,16 +8,16 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: 5541dec748f31818a0e9485fc0c56b7926ccaae7
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758483"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>使用串行控制台发出 SysRq 和 NMI 调用
 
 ## <a name="system-request-sysrq"></a>系统请求 (SysRq)
-SysRq 是 Linux 操作系统内核识别的按键序列，可以触发一组预定义的操作。 当虚拟机故障排除或恢复无法通过传统管理执行（例如，如果 VM 未响应）时，通常使用这些命令。 使用 Azure 串行控制台的 SysRq 功能时，将会模拟 SysRq 按键，以及物理键盘上的字符输入。
+SysRq 是 Linux 操作系统内核识别的按键序列，可以触发一组预定义的操作。 当无法通过传统的管理执行虚拟机故障排除或恢复时（例如，如果 VM 未响应），通常使用这些命令。 使用 Azure 串行控制台的 SysRq 功能时，将会模拟 SysRq 按键，以及物理键盘上的字符输入。
 
 传送 SysRq 序列后，内核配置将控制系统的响应方式。 有关启用和禁用 SysRq 的信息，请参阅 *SysRq 管理员指南* [text](https://aka.ms/kernelorgsysreqdoc) | [markdown](https://aka.ms/linuxsysrq)。  
 
@@ -79,7 +79,7 @@ echo "1" >/proc/sys/kernel/sysrq
 有关 SysRq 的特定于分发版的文档，以及配置 Linux 以便在收到 SysRq“Crash”命令时创建故障转储的步骤，请参阅以下链接：
 
 #### <a name="ubuntu"></a>Ubuntu ####
- - [内核崩溃转储](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
+ - [内核故障转储](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
 
 #### <a name="red-hat"></a>Red Hat ####
 - [SysRq 工具是什么，如何使用它？](https://access.redhat.com/articles/231663)
@@ -92,7 +92,7 @@ echo "1" >/proc/sys/kernel/sysrq
 - [收集崩溃日志](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
 ## <a name="non-maskable-interrupt-nmi"></a>不可屏蔽的中断 (NMI) 
-不可屏蔽的中断 (NMI) 旨在创建虚拟机上的软件不会忽略的信号。 过去，NMI 用来监视要求实现特定响应时间的系统上的硬件问题。  如今，程序员和系统管理员通常使用 NMI 作为调试或排除未响应的系统的机制。
+不可屏蔽的中断 (NMI) 旨在创建虚拟机上的软件不会忽略的信号。 过去，NMI 用来监视要求实现特定响应时间的系统上的硬件问题。  如今，程序员和系统管理员通常使用 NMI 作为一种机制来对未响应的系统进行调试或故障排除。
 
 可以使用下面显示的命令栏上的键盘图标通过串行控制台向 Azure 虚拟机发送 NMI。 传送 NMI 后，虚拟机配置将控制系统的响应方式。  可将 Linux 操作系统配置为在收到 NMI 时发生崩溃并创建内存转储。
 
@@ -107,7 +107,7 @@ echo "1" >/proc/sys/kernel/sysrq
 有关 Linux 内核配置的详细信息，包括 `unknown_nmi_panic`、`panic_on_io_nmi` 和 `panic_on_unrecovered_nmi`，请参阅：[/proc/sys/kernel/* 的文档](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt)。 有关 NMI 的特定于分发版的文档，以及配置 Linux 以便在收到 NMI 时创建故障转储的步骤，请参阅以下链接：
  
 ### <a name="ubuntu"></a>Ubuntu 
- - [内核崩溃转储](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
+ - [内核故障转储](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
 
 ### <a name="red-hat"></a>Red Hat 
  - [NMI 是什么，它有什么用途？](https://access.redhat.com/solutions/4127)

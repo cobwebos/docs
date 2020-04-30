@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.openlocfilehash: 6c5b19c7e03993ef973cd708ed7a6fe89feb01a5
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687702"
 ---
 # <a name="smart-detection---performance-anomalies"></a>智能检测 - 性能异常
@@ -49,7 +49,7 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 
 ## <a name="configure-email-notifications"></a>配置电子邮件通知
 
-默认情况下，智能检测通知将启用，并发送给具有[监视读取器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)和[监视参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)访问应用程序见解资源所在的订阅的用户。 若要更改此配置，请在电子邮件通知中单击“配置”，或者在 Application Insights 中打开“智能检测”设置。**** 
+智能检测通知默认情况下处于启用状态，并被发送到具有[监视读取器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)的用户并[监视参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)对 Application Insights 资源所在订阅的访问。 若要更改此配置，请在电子邮件通知中单击“配置”，或者在 Application Insights 中打开“智能检测”设置。**** 
   
   ![智能检测设置](media/proactive-performance-diagnostics/smart_detection_configuration.png)
   
@@ -57,10 +57,10 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 
 每天只会针对每个 Application Insights 资源发送一封有关智能检测性能异常的电子邮件。 只有当天至少检测到一个新问题时，才会发送电子邮件。 将不会收到任何重复的消息。 
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>FAQ
 
 * *那么，Microsoft 员工会查看我的数据？*
-  * 不是。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](../../azure-monitor/app/data-retention-privacy.md)数据。
+  * 不能。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](../../azure-monitor/app/data-retention-privacy.md)数据。
 * *是否分析由 Application Insights 收集的所有数据？*
   * 目前不会。 目前，我们分析请求响应时间、依赖项响应时间和页面加载时间。 其他指标的分析功能正在规划中，今后有望推出。
 
@@ -70,13 +70,13 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 * *是否可以创建自己的异常检测规则或自定义现有的规则？*
 
   * 目前不可以，但可以：
-    * [设置警报](../../azure-monitor/app/alerts.md)，告诉指标何时超过阈值。
-    * [将遥测数据导出](../../azure-monitor/app/export-telemetry.md)到[数据库](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)或[Power BI，](../../azure-monitor/app/export-power-bi.md )您可以在其中自行分析它。
+    * [设置](../../azure-monitor/app/alerts.md)在指标超过阈值时通知你的警报。
+    * 将[遥测数据导出](../../azure-monitor/app/export-telemetry.md)到[数据库](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)或[Power BI](../../azure-monitor/app/export-power-bi.md )，你可以自行对其进行分析。
 * *执行分析的频率是多少？*
 
   * 我们每天针对前一天（UTC 时区整天）的遥测数据运行分析。
-* *那么，这是否取代了[指标警报](../../azure-monitor/app/alerts.md)？*
-  * 不是。  我们不确定检测用户视为异常的每个行为。
+* *这是否会替换[指标警报](../../azure-monitor/app/alerts.md)？*
+  * 不能。  我们不确定检测用户视为异常的每个行为。
 
 
 * *如果不执行任何操作来响应通知，是否会收到提醒？*
@@ -125,11 +125,11 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
   * 帮助你查看哪些地方需要花费操作时间的探查器跟踪（如果在检测期间已收集此操作的探查器跟踪示例，则会提供链接）。 
   * 指标资源管理器中的性能报告，可在其中分解此操作的时间范围/筛选器。
   * 搜索此调用以查看特定调用属性。
-  * 故障报告 - 如果计数> 1，这意味着此操作中存在可能导致性能下降的失败。
+  * 失败报告-如果计数 > 1，则意味着此操作中的失败可能会导致性能下降。
 
 ## <a name="dependency-duration-degradation"></a>依赖项持续时间延长
 
-现代应用越来越采用微服务设计方法，在许多情况下，这种方法会导致外部服务的可靠性。 例如，如果应用程序依赖于某个数据平台，或者，即使机器人服务是由自己构建的，它也可能会依赖于某个认知服务提供程序来使机器人能够以更加类似于人类的方式交互，并依赖于某个数据存储服务来让机器人提取解答。  
+现代应用程序越来越多地采用微服务设计方法，在许多情况下，这种方法会导致对外部服务的可靠性较高。 例如，如果应用程序依赖于某个数据平台，或者，即使机器人服务是由自己构建的，它也可能会依赖于某个认知服务提供程序来使机器人能够以更加类似于人类的方式交互，并依赖于某个数据存储服务来让机器人提取解答。  
 
 依赖项降级通知的示例：
 
@@ -160,7 +160,7 @@ Application Insights 可以找到只会影响一部分用户，或者只会在�
 ![从电子邮件警报，单击链接以在 Azure 中打开诊断报告](./media/proactive-performance-diagnostics/03.png)
 
 * **When** 显示检测到问题的时间。
-* **描述内容**：
+* **说明：**
 
   * 检测到的问题；
   * 我们发现显示问题行为的事件集的特征。

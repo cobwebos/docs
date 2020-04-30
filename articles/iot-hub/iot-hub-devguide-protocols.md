@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 3e7f31371a0582a6f4941efbfa0087119278d2d1
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81729115"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>参考 - 选择通信协议
@@ -42,7 +42,7 @@ IoT 中心允许设备使用以下协议进行设备端通信：
 
 * **从云到设备模式**。 HTTPS 没有用于实现服务器推送的有效方法。 因此，使用 HTTPS 时，设备会在 IoT 中心轮询从云到设备的消息。 此方法对于设备和 IoT 中心而言是低效的。 根据当前 HTTPS 准则，每台设备应每 25 分钟或更长时间轮询一次消息。 MQTT 和 AMQP 支持在收到云到设备的消息时进行服务器推送。 它们将启用从 IoT 中心到设备的直接消息推送。 如果传送延迟是考虑因素，最好使用 MQTT 或 AMQP 协议。 对于很少连接的设备，HTTPS 也适用。
 
-* **现场网关**。 MQTT 和 HTTPS 仅支持每个 TLS 连接的单个设备标识（设备 ID 加上凭据）。 因此，这些协议不支持用于需要跨单个或到 IoT 中心的上行连接池中使用多个设备标识的多路复用消息[的字段网关方案](iot-hub-devguide-endpoints.md#field-gateways)。 此类网关可以使用支持每个连接的多个设备标识的协议（如 AMQP）进行上游流量。
+* **现场网关**。 对于每个 TLS 连接，MQTT 和 HTTPS 仅支持单个设备标识（设备 ID 和凭据）。 出于此原因，不支持使用这些协议的[现场网关方案](iot-hub-devguide-endpoints.md#field-gateways)需要使用多路复用多个设备标识跨一个或多个到 IoT 中心的上游连接池的消息。 此类网关可以使用一种协议，该协议支持每个连接的多个设备标识（如 AMQP）用于其上游流量。
 
 * **低资源设备**。 相比 AMQP 库的占用空间，MQTT 和 HTTPS 库的占用空间更小。 因此，如果设备的资源很少（如低于 1 MB RAM），可能只可实现这些协议。
 
@@ -51,7 +51,7 @@ IoT 中心允许设备使用以下协议进行设备端通信：
 * **有效负载大小**。 MQTT 和 AMQP 是二进制协议，因此，其有效负载比 HTTPS 的有效负载更精简。
 
 > [!WARNING]
-> 使用 HTTPS 时，每个设备应轮询云到设备的消息，每 25 分钟轮询一次。 在开发中，如果需要，每个设备都可以更频繁地轮询。
+> 使用 HTTPS 时，每台设备应每25分钟轮询一次云到设备的消息。 在开发中，每个设备都可以根据需要更频繁地轮询。
 
 ## <a name="port-numbers"></a>端口号
 

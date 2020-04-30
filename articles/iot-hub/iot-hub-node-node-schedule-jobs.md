@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: mqtt
 ms.openlocfilehash: d7f9ce37ad85d39388eea90af263f59ce312a6b8
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732268"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>计划和广播作业 (Node.js)
@@ -33,7 +33,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 * 设备孪生和属性：[设备孪生入门](iot-hub-node-node-twin-getstarted.md)和[教程：如何使用设备孪生属性](tutorial-device-twins.md)
 
-* 直接方法[：IoT 中心开发人员指南 - 直接方法和](iot-hub-devguide-direct-methods.md)[教程：直接方法](quickstart-control-device-node.md)
+* 直接方法： [IoT 中心开发人员指南-直接方法](iot-hub-devguide-direct-methods.md)和[教程：直接方法](quickstart-control-device-node.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 

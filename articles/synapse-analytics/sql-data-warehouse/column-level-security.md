@@ -1,5 +1,5 @@
 ---
-title: Azure 突触的列级安全性是什么？
+title: Azure Synapse 的列级安全性是什么？
 description: 借助列级别安全性，客户可以根据用户的执行上下文或组成员身份，控制对数据库表列的访问，从而简化应用程序中的安全性设计和编码，以及对列访问实施限制。
 services: synapse-analytics
 author: julieMSFT
@@ -13,10 +13,10 @@ ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
 tags: azure-synapse
 ms.openlocfilehash: b0a783ad5db86ca783ff1cebceec8d77ab528047
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687926"
 ---
 # <a name="column-level-security"></a>列级别安全性
@@ -24,7 +24,7 @@ ms.locfileid: "81687926"
 借助列级别安全性，客户可以根据用户的执行上下文或组成员身份，控制对表列的访问。
 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
-自发布此视频以来[，行级别安全性](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)已可用于 Azure 同步。
+由于此视频已发布，因此[行级别安全性](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)可用于 Azure Synapse。
 
 列级别安全性简化了应用程序中的安全性设计和编程，使你能够限制列访问权限以保护敏感数据。 例如，确保具体用户只能访问表中与其部门相关的特定列。 访问限制逻辑位于数据库层中，而不是在另一个应用层中远离数据。 每当有任何一层的数据访问请求，数据库就会应用访问限制。 此限制会减少整个安全系统的外围应用，从而提高安全措施的可靠性。 此外，使用列级别安全性还无需引入用于筛选掉列的视图以限制用户访问。
 

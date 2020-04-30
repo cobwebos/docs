@@ -1,77 +1,77 @@
 ---
-title: Azure 媒体播放器选项
-description: Azure 媒体播放器嵌入代码只是一个 HTML5 视频标记，因此对于许多选项，您可以使用标准标记属性来设置选项。
+title: Azure Media Player 选项
+description: Azure Media Player 嵌入代码只是一个 HTML5 视频标记，因此对于很多选项，你可以使用标准标记特性来设置选项。
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: e26215115b4c4484e5e05a2fd94a4d2c6680a4d0
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81727159"
 ---
 # <a name="options"></a>选项 #
 
 ## <a name="setting-options"></a>设置选项 ##
 
-Azure 媒体播放器嵌入代码只是一个 HTML5 视频标记，因此对于许多选项，您可以使用标准标记属性来设置选项。
+Azure Media Player 嵌入代码只是一个 HTML5 视频标记，因此对于很多选项，你可以使用标准标记特性来设置选项。
 
 `<video controls autoplay ...>`
 
-或者，您可以使用数据设置属性以[JSON](http://json.org/example.html)格式提供选项。 这也是如何设置不标准到视频标记的选项。
+此外，还可以使用数据安装属性提供[JSON](http://json.org/example.html)格式的选项。 这也是如何设置不标准给视频标记的选项的方式。
 
 `<video data-setup='{ "controls": true, "autoplay": false }'...>`
 
-最后，如果您不使用数据设置属性来触发播放器设置，则可以将具有播放器选项的对象作为 JavaScript 设置函数中的第二个参数传递。
+最后，如果未使用数据安装属性来触发播放机安装程序，则可以使用播放机选项作为 JavaScript 安装函数中的第二个参数传递对象。
 
 `amp("vid1", { "controls": true, "autoplay": false });`
 
 > [!NOTE]
-> 构造函数中的选项仅在设置源之前在第一个初始化上设置。  如果要修改同一初始化 Azure 媒体播放器元素上的选项，则必须在更改源之前更新这些选项。 您可以使用 更新 JavaScript 中的选项`myPlayer.options({/*updated options*/});`。 请注意，只有更改的选项才会受到影响，所有其他以前设置的选项将保持不变。
+> 仅在设置源之前的第一个初始化中设置构造函数中的选项。  如果希望修改同一已初始化 Azure Media Player 元素上的选项，则必须在更改源之前更新选项。 您可以使用`myPlayer.options({/*updated options*/});`更新 JavaScript 中的选项。 请注意，仅更改的选项会受到影响，所有以前设置的选项都将保留。
 
 ## <a name="individual-options"></a>单个选项 ##
 
 > [!NOTE]
->视频标记属性只能是真或假（布尔），您只需包括属性（无等于符号）来打开它，或排除它来将其关闭。 例如，打开控件：错误`<video controls="true" ...>`正确`<video controls ...>`遇到的最大问题是，使用 false 作为值（例如控件="false"）将这些值设置为 false，该值实际上执行相反操作并将值设置为 true，因为属性仍包含在内。
+>视频标记属性只能为 true 或 false （布尔值），只需包含属性（不带等号）即可将其打开，或排除它以将其关闭。 例如，若要打开控件：错误`<video controls="true" ...>`正确`<video controls ...>`的用户遇到的最大问题是，使用 false 作为值（如 controls = "false"），该值实际执行相反的操作，并将值设置为 true，因为属性仍包含在内。
 
 ### <a name="controls"></a>controls ###
 
-控件选项设置播放器是否具有用户可以与之交互的控件。 如果没有控件，启动视频播放的唯一方法是使用自动播放属性或通过 API。
+"控件" 选项用于设置播放机是否具有用户可与之交互的控件。 如果不使用控件，开始视频播放的唯一方法是使用自动播放特性或通过 API。
 
 `<video controls ...>` 或 `{ "controls": true }`
 
 ### <a name="autoplay"></a>autoplay ###
 
-如果自动播放为 true，则视频将在加载页面后立即开始播放（无需用户进行任何交互）。
+如果自动播放为 true，则在页面加载后（无需任何用户交互），视频将立即开始播放。
 
 > [!NOTE]
-> Windows 手机、Apple iOS 和 Android 等移动设备不支持此选项。 移动设备阻止自动播放功能，以防止消费者每月数据计划过度使用（通常成本高昂）。 在这种情况下，需要用户触摸/单击才能启动视频。
+> Windows Phone、Apple iOS 和 Android 等移动设备不支持此选项。 移动设备阻止自动播放功能，以防止使用者的每月数据计划（通常是昂贵的）。 在这种情况下，用户需要按下 "触摸/单击" 才能启动视频。
 
 `<video autoplay ...>`或`{ "autoplay": true }`
 
-### <a name="poster"></a>海报 ###
-海报属性设置在视频开始播放之前显示的图像。 这通常是视频或自定义标题屏幕的框架。 用户一点击播放，图像就会消失。
+### <a name="poster"></a>广告 ###
+海报属性设置视频开始播放前显示的图像。 这通常是视频或自定义标题屏幕的帧。 一旦用户单击 "播放"，图像就会消失。
 
 `<video poster="myPoster.jpg" ...>` 或 `{ "poster": "myPoster.jpg" }`
 
 ### <a name="width"></a>width ###
 
-宽度属性设置视频的显示宽度。
+Width 属性设置视频的显示宽度。
 
 `<video width="640" ...>` 或 `{ "width": 640 }`
 
 ### <a name="height"></a>height ###
 
-高度属性设置视频的显示高度。
+"高度" 属性设置视频的显示高度。
 
 `<video height="480" ...>` 或 `{ "height": 480 }`
 
 ### <a name="plugins"></a>插件 ###
 
-插件 JSON 确定哪些插件加载了 AMP 实例，允许您配置插件可能具有的任何选项。
+插件 JSON 确定与该实例一起加载的插件，以便你可以配置插件可能具有的任何选项。
 
    `<video... data-setup='{plugins: { "contentTitle": {"name": "Azure Medi Services Overview"}}}'...>`
 
@@ -79,29 +79,29 @@ Azure 媒体播放器嵌入代码只是一个 HTML5 视频标记，因此对于�
 
 ### <a name="other-options"></a>其他选项 ###
 
-可以使用采用 JSON 的`<video>``data-setup`参数在标记上设置其他选项。
+可以通过使用采用 JSON 的`<video>` `data-setup`参数对标记设置其他选项。
 `<video ... data-setup='{"nativeControlsForTouch": false}'>`
 
-#### <a name="nativecontrolsfortouch"></a>本机控制ForTouch ####
+#### <a name="nativecontrolsfortouch"></a>nativeControlsForTouch ####
 
-这显式设置为 false。 通过将设置为 false，它将允许跨平台呈现 Azure 媒体播放器外观。  此外，与名称相反，仍可启用触摸。
+此值显式设置为 false。 如果将设置为 false，则将允许在平台之间呈现 Azure Media Player 的外观。  而且，与名称相反，仍将启用触摸。
 
-### <a name="fluid"></a>流体 ###
+### <a name="fluid"></a>液体 ###
 
-通过将此选项设置为 true 视频元素，将采用父容器的完整宽度，并且高度将进行调整，以适应具有标准 16：9 纵横比的视频。
+如果将此选项设置为 "true"，则视频元素会获得父容器的完整宽度，并将调整高度以适应具有标准16:9 纵横比的视频。
 
 `<video ... data-setup='{"fluid": true}'>`
 
-`fluid`选项覆盖显式`width`和`height`设置。 此选项仅在 Azure 媒体播放器版本`2.0.0`和更高版本中可用。
+`fluid`选项替代显式`width`和`height`设置。 此选项仅在 Azure Media Player 版本及更`2.0.0`高版本中可用。
 
-### <a name="playbackspeed"></a>播放速度 ###
+### <a name="playbackspeed"></a>playbackSpeed ###
 
-`playbackSpeed`选项控制播放速度控制和一组可供用户使用的播放速度设置。 `playbackSpeed`获取对象。 为了在控制栏上启用播放速度控制，需要将对象的`enabled`属性设置为 true。 在标记中启用播放速度的示例：
+`playbackSpeed`选项控制用户可使用的 playbackSpeed 控件和播放速度设置集。 `playbackSpeed`采用对象。 若要在控件条上启用播放速度控制，需要将`enabled`对象的属性设置为 true。 启用标记的播放速度的示例：
 
 `<video ... data-setup='{"playbackSpeed": {"enabled": true}}'>`
 
 
-`playbackSpeed`设置的其他属性由[PlaybackSpeedOptions](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions)对象提供。
+该`playbackSpeed`设置的其他属性由[PlaybackSpeedOptions](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions)对象提供。
 
 在 JavaScript 中设置播放速度选项的示例：
 
@@ -126,15 +126,15 @@ Azure 媒体播放器嵌入代码只是一个 HTML5 视频标记，因此对于�
     });
 ```
 
-此选项仅在 Azure 媒体播放器版本 2.0.0 及更高版本中可用。
+此选项仅在 Azure Media Player 版本2.0.0 和更高版本中可用。
 
-### <a name="staledatatimelimitinsec"></a>陈旧的数据时间限值 ###
+### <a name="staledatatimelimitinsec"></a>staleDataTimeLimitInSec ###
 
-该`staleDataTimeLimitInSec`选项是一个优化，允许您配置要在 mediaSource 缓冲区中保留多少秒的过时数据。 此项已默认禁用。
+`staleDataTimeLimitInSec`选项是一种优化，可让你配置要在 mediaSource 缓冲区中保留的陈旧数据的数量。 此项已默认禁用。
 
-### <a name="cea708captionssettings"></a>cea708 标题设置 ###
+### <a name="cea708captionssettings"></a>cea708CaptionsSettings ###
 
-启用为 true 的设置允许您在实时流和实时存档中显示实时 CEA 字幕。 标签属性不是必需的，如果未包含，播放器将回退到默认标签。
+如果设置为 true，则可在实时流和实时存档中显示实时 CEA 字幕。 不需要标签属性，如果不包含该属性，播放机将回退到默认标签。
 
 ```javascript
      cea708CaptionsSettings: {
@@ -144,8 +144,8 @@ Azure 媒体播放器嵌入代码只是一个 HTML5 视频标记，因此对于�
             }
 ```
 
-此选项仅在 Azure 媒体播放器版本 2.1.1 及更高版本中可用。
+此选项仅在2.1.1 和更高版本 Azure Media Player 中可用。
 
 ## <a name="next-steps"></a>后续步骤 ##
 
-- [Azure 媒体播放器快速入门](azure-media-player-quickstart.md)
+- [Azure Media Player 快速入门](azure-media-player-quickstart.md)

@@ -5,10 +5,10 @@ ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
 ms.openlocfilehash: e02c23623062f5cb3e4c597b0bb257b30aa9f44a
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81769771"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure 中的警报概述 
@@ -125,7 +125,7 @@ ms.locfileid: "81769771"
 
 
 ## <a name="create-an-alert-rule"></a>创建警报规则
-无论监视服务或信号类型如何，您都可以以一致的方式编写警报规则。
+无论监视服务或信号类型如何，都可以通过一致的方式创作警报规则。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tflw]
 
@@ -172,7 +172,7 @@ ms.locfileid: "81769771"
 
 | 部分 | 说明 |
 |:---|:---|
-| 总结 | 显示警报的属性和其他重要信息。 |
+| “摘要” | 显示警报的属性和其他重要信息。 |
 | 历史记录 | 列出警报执行的每个操作，以及对警报进行的任何更改。 目前仅限状态更改。 |
 | 诊断 | 有关包含警报的智能组的信息。 “警报计数”表示包含在智能组中的警报数量**。 包括同一智能组中在过去 30 天内创建的其他警报，无论警报列表页面中的时间筛选器是什么。 选择某个警报以查看其详细信息。 |
 
@@ -184,7 +184,7 @@ ms.locfileid: "81769771"
 
 你可能希望以编程方式查询针对订阅生成的警报。 这可以是在 Azure 门户之外创建自定义视图，也可以是分析警报以确定模式和趋势。
 
-您可以通过使用[警报管理 REST API](https://aka.ms/alert-management-api)或使用[Azure 资源图](../../governance/resource-graph/overview.md)和资源[REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources)来查询针对订阅生成的警报。
+你可以通过使用[警报管理 REST API](https://aka.ms/alert-management-api)或使用[Azure 资源关系图](../../governance/resource-graph/overview.md)和[资源的 REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources)查询针对订阅生成的警报。
 
 用于资源的 Resource Graph REST API 可用于大规模查询警报实例。 如果必须管理跨多个订阅生成的警报，建议使用此 API。 
 
@@ -199,7 +199,7 @@ ms.locfileid: "81769771"
 }
 ```
 
-您还可以在门户中通过 Azure 资源图资源管理器查看此资源图查询的结果[：portal.azure.com](https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/AlertsManagementResources%20%7C%20where%20type%20%3D~%20%27Microsoft.AlertsManagement%2Falerts%27%20%7C%20summarize%20count())
+还可以通过 Azure 资源图资源管理器在门户中查看此资源图形查询的结果： [portal.azure.com](https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/AlertsManagementResources%20%7C%20where%20type%20%3D~%20%27Microsoft.AlertsManagement%2Falerts%27%20%7C%20summarize%20count())
 
 可以查询警报的[基本](alerts-common-schema-definitions.md#essentials)字段。
 

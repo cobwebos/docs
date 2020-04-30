@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
 ms.openlocfilehash: 2fa67d81546db86535c179a9c59d0602c1175cba
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687495"
 ---
 # <a name="virtual-machine-offer-publishing-guide"></a>“虚拟机”产品/服务发布指南
@@ -56,15 +56,15 @@ ms.locfileid: "81687495"
 | 与 Azure 兼容的虚拟硬盘 (VHD) | 必须基于 Windows 或 Linux 构建 VM。 <ul> <li>有关创建 Linux VHD 的详细信息，请参阅 [Azure 认可的 Linux 发行版](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)。</li> <li>有关创建 Windows VHD 的详细信息，请参阅[创建与 Azure 兼容的 VHD](./partner-center-portal/azure-vm-create-offer.md)。</li> </ul> |  
 
 >[!Note]
->云解决方案提供商 （CSP） 合作伙伴渠道选择加入现已可用。  有关通过 Microsoft CSP 合作伙伴渠道营销产品/服务的更多信息[，请参阅云解决方案提供商](./cloud-solution-providers.md)。
+>现在提供了云解决方案提供商（CSP）合作伙伴渠道选择。  请参阅[云解决方案提供商](./cloud-solution-providers.md)，了解有关通过 Microsoft CSP 合作伙伴渠道营销产品/服务的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 
 如果尚未注册， 
 
-- [了解](https://azuremarketplace.microsoft.com/sell)市场。
+- [了解](https://azuremarketplace.microsoft.com/sell)marketplace。
 
 如果已注册并正在创建新套餐或正在使用现有套餐，
 
-- [登录合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)创建或完成您的优惠。
-- 有关详细信息[，请参阅创建虚拟机产品/服务](./partner-center-portal/azure-vm-create-offer.md)。
+- [登录到合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)，创建或完成产品/服务。
+- 有关详细信息，请参阅[创建虚拟机产品/服务](./partner-center-portal/azure-vm-create-offer.md)。

@@ -10,10 +10,10 @@ ms.date: 03/11/2020
 ms.author: robinsh
 ms.custom: mqtt
 ms.openlocfilehash: 0bb1371de827fbb68afd5d114f49afa4acec0deb
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759735"
 ---
 # <a name="get-started-with-device-twins-python"></a>设备孪生入门 (Python)
@@ -140,7 +140,7 @@ ms.locfileid: "81759735"
 
 ## <a name="create-the-device-app"></a>创建设备应用
 
-在本节中，您将创建一个 Python 控制台应用，该应用将作为 **[设备 ID]** 连接到集线器，然后更新其设备孪生的报告属性以包含使用蜂窝网络连接的信息。
+在本部分中，将创建一个 Python 控制台应用，用于连接到你的中心作为 **{设备 ID}**，然后更新其设备克隆的报告属性，以包含使用蜂窝网络连接的信息。
 
 1. 在工作目录中的命令提示符下，安装**适用于 Python 的 Azure IoT 中心设备 SDK**：
 

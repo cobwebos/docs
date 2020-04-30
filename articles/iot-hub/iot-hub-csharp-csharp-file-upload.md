@@ -11,23 +11,23 @@ ms.date: 07/04/2017
 ms.author: robinsh
 ms.custom: mqtt
 ms.openlocfilehash: 14472e84d425bf03a3c6a0c2dc558d4b8225caec
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733400"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>使用 IoT 中心 (.NET) 将文件从设备上传到云
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
-本教程基于[IoT 中心教程中的"发送云到设备消息](iot-hub-csharp-csharp-c2d.md)"中的代码，向您展示如何使用 IoT 中心的文件上载功能。 其中了说明了如何：
+本教程基于使用[Iot 中心发送云到设备的消息](iot-hub-csharp-csharp-c2d.md)教程中的代码，演示如何使用 iot 中心的文件上传功能。 其中了说明了如何：
 
 * 安全提供具有 Azure blob URI 的设备，用于上传文件。
 
 * 使用 IoT 中心文件上传通知触发处理应用后端中的文件。
 
-[从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-dotnet.md)快速入门和[使用 IoT 中心发送云到设备的消息](iot-hub-csharp-csharp-c2d.md)教程介绍了 IoT 中心提供的基本的设备到云和云到设备的消息传送功能。 [使用 IoT 中心配置消息路由](tutorial-routing.md)教程介绍了在 Microsoft Azure Blob 存储中可靠地存储设备到云消息的方法。 但是，在某些情况下，您无法轻松地将设备发送的数据映射到 IoT 中心接受的相对较小的设备到云消息中。 例如：
+[从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-dotnet.md)快速入门和[使用 IoT 中心发送云到设备的消息](iot-hub-csharp-csharp-c2d.md)教程介绍了 IoT 中心提供的基本的设备到云和云到设备的消息传送功能。 [使用 IoT 中心配置消息路由](tutorial-routing.md)教程介绍了一种在 Microsoft Azure Blob 存储中可靠地存储设备到云消息的方法。 但是，在某些情况下，无法轻松地将设备发送的数据映射到 IoT 中心接受的相对较小的设备到云消息。 例如：
 
 * 包含图像的大型文件
 
@@ -52,7 +52,7 @@ ms.locfileid: "81733400"
 
 * Visual Studio
 
-* 有效的 Azure 帐户。 如果您没有帐户，只需几分钟即可创建[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
+* 有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 * 确保已在防火墙中打开端口 8883。 本文中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
@@ -188,7 +188,7 @@ ms.locfileid: "81733400"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已学习了如何使用 IoT 中心的文件上传功能来简化从设备进行的文件上传。 您可以通过以下文章继续探索 IoT 中心功能和方案：
+在本教程中，你已学习了如何使用 IoT 中心的文件上传功能来简化从设备进行的文件上传。 你可以继续在以下文章中探索 IoT 中心功能和方案：
 
 * [以编程方式创建 IoT 中心](iot-hub-rm-template-powershell.md)
 

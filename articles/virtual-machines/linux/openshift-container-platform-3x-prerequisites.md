@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 先决条件中打开Shift容器平台 3.11
-description: 在 Azure 中部署 OpenShift 容器平台 3.11 的先决条件。
+title: Azure 必备组件中的 OpenShift 容器平台3.11
+description: 在 Azure 中部署 OpenShift 容器平台3.11 的先决条件。
 author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
@@ -10,23 +10,23 @@ ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
 ms.openlocfilehash: 26b190515819378309c2b0705efdbc349ecccbe2
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759504"
 ---
-# <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>在 Azure 中部署 OpenShift 容器平台 3.11 的常见先决条件
+# <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>在 Azure 中部署 OpenShift 容器平台3.11 的常见先决条件
 
 本文介绍了在 Azure 中部署 OpenShift 容器平台或 OKD 所要满足的常见先决条件。
 
 OpenShift 的安装使用 Ansible 攻略。 Ansible 使用安全外壳 (SSH) 连接到所有群集主机来完成安装步骤。
 
-当 Aible 使 SSH 连接到远程主机时，它无法输入密码。 因此，私钥不能有与之关联的密码（通行短语），否则，部署将失败。
+当 ansible 建立到远程主机的 SSH 连接时，它无法输入密码。 因此，私钥不能有与之关联的密码（通行短语），否则，部署将失败。
 
-因为虚拟机 (VM) 是通过 Azure 资源管理器模板部署的，所以将使用同一公钥来访问所有 VM。 相应的私钥必须位于执行所有行动手册的 VM 上。 要安全地执行此操作，使用 Azure 密钥保管库将私钥传递到 VM 中。
+因为虚拟机 (VM) 是通过 Azure 资源管理器模板部署的，所以将使用同一公钥来访问所有 VM。 对应的私钥必须位于同时执行所有行动手册的 VM 上。 若要安全地执行此操作，请使用 Azure 密钥保管库将私钥传递到 VM 中。
 
-如果容器需要持久性存储，则需要永久卷。 OpenShift 支持持久卷的 Azure 虚拟硬盘 （VHD），但必须先将 Azure 配置为云提供程序。
+如果容器需要持久性存储，则需要永久卷。 OpenShift 支持持久卷的 Azure 虚拟硬盘（Vhd），但必须首先将 Azure 配置为云提供程序。
 
 在此模型中，OpenShift 将会：
 
@@ -34,7 +34,7 @@ OpenShift 的安装使用 Ansible 攻略。 Ansible 使用安全外壳 (SSH) 连
 - 将 VHD 装载到 VM 中并格式化卷。
 - 将卷装载到 Pod。
 
-要使此配置可行，OpenShift 需要有权在 Azure 中执行这些任务。 为此，使用服务主体。 服务主体是 Azure Active Directory 中的一个安全帐户，被授予了对资源的权限。
+要使此配置可行，OpenShift 需要有权在 Azure 中执行这些任务。 服务主体用于实现此目的。 服务主体是 Azure Active Directory 中的一个安全帐户，被授予了对资源的权限。
 
 服务主体需要有权访问构成了群集的存储帐户和 VM。 如果所有 OpenShift 群集资源都部署到单个资源组中，则可以向服务主体授予对该资源组的权限。
 
@@ -64,7 +64,7 @@ az group create --name keyvaultrg --location eastus
 ```
 
 ## <a name="create-a-key-vault"></a>创建 key vault
-使用 [az keyvault create](/cli/azure/keyvault) 命令创建一个 Key Vault 用于管理群集的 SSH 密钥。 密钥保管库名称必须全局唯一，并且必须为模板部署启用，否则部署将失败，出现"KeyVault 参数引用秘密检索失败"错误。
+使用 [az keyvault create](/cli/azure/keyvault) 命令创建一个 Key Vault 用于管理群集的 SSH 密钥。 Key vault 名称必须全局唯一，并且必须启用模板部署，否则部署将失败并出现 "KeyVaultParameterReferenceSecretRetrieveFailed" 错误。
 
 以下示例在 *keyvaultrg* 资源组中创建一个名为 *keyvault* 的 Key Vault：
 
@@ -94,13 +94,13 @@ az keyvault secret set --vault-name keyvault --name keysecret --file ~/.ssh/open
 ```
 
 ## <a name="create-a-service-principal"></a>创建服务主体 
-OpenShift 使用用户名和密码或服务主体来与 Azure 通信。 Azure 服务主体是可用于应用、服务和 OpenShift 等自动化工具的安全标识。 控制和定义服务主体可在 Azure 中执行哪些操作的权限。 最好将服务主体的权限范围限定为特定资源组，而不是整个订阅。
+OpenShift 使用用户名和密码或服务主体来与 Azure 通信。 Azure 服务主体是可用于应用、服务和 OpenShift 等自动化工具的安全标识。 控制和定义服务主体可在 Azure 中执行哪些操作的权限。 最好将服务主体的权限范围限制为特定的资源组，而不是整个订阅。
 
 使用 [az ad sp create-for-rbac](/cli/azure/ad/sp) 创建服务主体并输出 OpenShift 需要的凭据。
 
-下面的示例创建一个服务主体，并将其参与者权限分配给名为*openshiftrg*的资源组。
+以下示例创建一个服务主体，并为其分配对名为*openshiftrg*的资源组的参与者权限。
 
-首先，创建名为*openshiftrg*的资源组 ：
+首先，创建名为*openshiftrg*的资源组：
 
 ```azurecli
 az group create -l eastus -n openshiftrg
@@ -112,14 +112,14 @@ az group create -l eastus -n openshiftrg
 az group show --name openshiftrg --query id
 ```
 
-保存命令的输出，并代替下一个命令中的$scope
+保存命令的输出，并使用下一个命令替换 $scope
 
 ```azurecli
 az ad sp create-for-rbac --name openshiftsp \
       --role Contributor --scopes $scope \
 ```
 
-请注意从命令返回的 appId 属性和密码：
+记录从命令返回的 appId 属性和密码：
 
 ```json
 {
@@ -132,30 +132,30 @@ az ad sp create-for-rbac --name openshiftsp \
 ```
 
  > [!WARNING] 
- > 请务必记下安全密码，因为无法再次检索此密码。
+ > 请确保记下安全密码，因为它不能再次检索此密码。
 
 有关服务主体的详细信息，请参阅[使用 Azure CLI 创建 Azure 服务主体](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)。
 
 ## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>仅适用于资源管理器模板的先决条件
 
-需要为 SSH 私**钥 （sshPrivateKey）、** Azure AD 客户端密钥 （**aadClientSecret）、** OpenShift 管理员密码 （**开放移位密码**） 和红帽订阅管理器密码或激活密钥 **（rhsmPasswordOr 激活密钥**） 创建秘密。  此外，如果使用自定义 TLS/SSL 证书，则需要创建另外六个机密 -**路由缓存文件**、**路由文件**、**密钥文件、主文件**、**主密钥文件**和**主密钥文件**。 **routingkeyfile**  这些参数将更详细地解释。
+需要为 SSH 私钥（**sshPrivateKey**）、Azure AD client Secret （**AadClientSecret**）、OpenShift admin password （**OpenshiftPassword**）和 Red Hat 订阅管理员密码或激活密钥（**rhsmPasswordOrActivationKey**）创建机密。  此外，如果使用自定义的 TLS/SSL 证书，则需要创建六个额外的机密- **routingcafile**、 **routingcertfile**、 **routingkeyfile**、 **mastercafile**、 **mastercertfile**和**masterkeyfile**。  这些参数将更详细地介绍。
 
-模板引用特定的机密名称，因此**必须**使用上面列出的粗体名称（区分大小写）。
+模板引用特定的机密名称，因此您**必须**使用上面列出的粗体名称（区分大小写）。
 
 ### <a name="custom-certificates"></a>自定义证书
 
-默认情况下，模板将使用 OpenShift Web 控制台和路由域的自签名证书部署 OpenShift 群集。 如果要使用自定义 TLS/SSL 证书，可以将"路由证书类型"设置为"自定义"，将"主证书类型"设置为"自定义"。  证书需要以 .pem 格式的 CA、Cert 和 Key 文件。  可以将自定义证书用于其中一个，但不能对另一个证书使用。
+默认情况下，模板将使用 OpenShift web 控制台和路由域的自签名证书部署 OpenShift 群集。 如果要使用自定义的 TLS/SSL 证书，请将 "routingCertType" 设置为 "custom"，将 "masterCertType" 设置为 "custom"。  对于证书，你将需要 CA、证书和密钥文件。  可以将自定义证书用于一个，而不是另一个。
 
-您需要将这些文件存储在密钥保管库机密中。  使用与私钥相同的密钥保管库。  模板无需为机密名称增加 6 个输入，而是硬编码，可为每个 TLS/SSL 证书文件使用特定机密名称。  使用下表中的信息存储证书数据。
+需要将这些文件存储在 Key Vault 密码中。  使用与用于私钥相同的 Key Vault。  不需要为机密名称额外使用6个输入，该模板将硬编码为对每个 TLS/SSL 证书文件使用特定的机密名称。  使用下表中的信息存储证书数据。
 
-| 秘密名称      | 证书文件   |
+| 机密名称      | 证书文件   |
 |------------------|--------------------|
-| 马斯特卡菲菲     | 主 CA 文件     |
-| 主文件   | 主 CERT 文件   |
-| 主键文件    | 主密钥文件    |
-| 路由缓存文件    | 路由 CA 文件    |
-| 路由文件  | 路由 CERT 文件  |
-| 路由密钥文件   | 路由密钥文件   |
+| mastercafile     | 主 CA 文件     |
+| mastercertfile   | 主证书文件   |
+| masterkeyfile    | 主密钥文件    |
+| routingcafile    | 路由 CA 文件    |
+| routingcertfile  | 路由证书文件  |
+| routingkeyfile   | 路由密钥文件   |
 
 使用 Azure CLI 创建机密。 下面是一个示例。
 
@@ -173,4 +173,4 @@ az keyvault secret set --vault-name KeyVaultName -n mastercafile --file ~/certif
 接下来，可部署 OpenShift 群集：
 
 - [部署 OpenShift Container Platform](./openshift-container-platform-3x.md)
-- [部署 OpenShift 容器平台自管理市场产品/服务](./openshift-container-platform-3x-marketplace-self-managed.md)
+- [部署 OpenShift 容器平台自行管理的 Marketplace 产品/服务](./openshift-container-platform-3x-marketplace-self-managed.md)

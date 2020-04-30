@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.custom: mqtt
 ms.openlocfilehash: 68186e777051e77deca7b6e5891eb392cac23260
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81729031"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>了解和使用 Azure IoT 中心 SDK
@@ -46,7 +46,7 @@ Microsoft Azure IoT 设备 SDK 包含的代码可帮助构建连接到 Azure IoT
 
 适用于 .NET 的 Azure IoT 中心设备 SDK： 
 
-* 从[NuGet 下载](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/)。  命名空间是 Microsoft.Azure.Devices.Clients，其中包含 IoT 中心设备客户端（DeviceClient、ModuleClient）。
+* 从[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/)下载。  命名空间是 Microsoft.Azure.Devices.Clients，其中包含 IoT 中心设备客户端（DeviceClient、ModuleClient）。
 * [源代码](https://github.com/Azure/azure-iot-sdk-csharp)
 * [API 参考](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices?view=azure-dotnet)
 * [模块参考](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)
@@ -94,7 +94,7 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 
 适用于 .NET 的 Azure IoT 中心服务 SDK：
 
-* 从[NuGet 下载](https://www.nuget.org/packages/Microsoft.Azure.Devices/)。  命名空间是 Microsoft.Azure.Devices，其中包含 IoT 中心服务客户端（RegistryManager、ServiceClients）。
+* 从[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Devices/)下载。  命名空间是 Microsoft.Azure.Devices，其中包含 IoT 中心服务客户端（RegistryManager、ServiceClients）。
 * [源代码](https://github.com/Azure/azure-iot-sdk-csharp)
 * [API 参考](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices)
 
@@ -117,7 +117,7 @@ Azure IoT 服务 SDK 包含的代码可帮助生成直接与 IoT 中心进行交
 
 适用于 C 的 Azure IoT 中心服务 SDK： 
 
-* 从[贴切获取、MBED、Arduino IDE 或 NuGet 下载](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md)
+* 从[apt 下载-get、MBED、ARDUINO IDE 或 NuGet](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md)
 * [源代码](https://github.com/Azure/azure-iot-sdk-c)
 
 适用于 iOS 的 Azure IoT 中心服务 SDK： 
@@ -179,4 +179,4 @@ Azure IoT SDK 还提供了一组工具来帮助开发：
 * [用于设备孪生、作业和消息路由的 IoT 中心查询语言](iot-hub-devguide-query-language.md)
 * [配额和限制](iot-hub-devguide-quotas-throttling.md)
 * [IoT 中心 MQTT 支持](iot-hub-mqtt-support.md)
-* [物联网中心 REST API 参考](/rest/api/iothub/)
+* [IoT 中心 REST API 参考](/rest/api/iothub/)

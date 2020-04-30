@@ -8,10 +8,10 @@ ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
 ms.openlocfilehash: 32bc90cc069ac82641c3aa7692c900c60db7ba87
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733105"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>将 Azure 监视数据流式传输到事件中心
@@ -34,14 +34,14 @@ Azure Monitor 为 Azure、其他云和本地的应用程序与服务提供全堆
 
 | 层 | data | 方法 |
 |:---|:---|:---|
-| [Azure 租户](data-sources.md#azure-tenant) | Azure Active Directory 审核日志 | 在 AAD 租户上配置租户诊断设置。 有关详细信息[，请参阅教程：将 Azure 活动目录日志流式传输到 Azure 事件中心](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。 |
-| [Azure 订阅](data-sources.md#azure-subscription) | Azure 活动日志 | 创建日志配置文件，以将活动日志事件导出到事件中心。  有关详细信息，请参阅[将 Azure 平台日志流式传输到 Azure 事件中心](resource-logs-stream-event-hubs.md)。 |
-| [Azure 资源](data-sources.md#azure-resources) | 平台指标<br> 资源日志 |使用资源诊断设置将两种类型的数据发送到事件中心。 有关详细信息[，请参阅将 Azure 资源日志流式传输到事件中心](resource-logs-stream-event-hubs.md)。 |
+| [Azure 租户](data-sources.md#azure-tenant) | Azure Active Directory 审核日志 | 在 AAD 租户上配置租户诊断设置。 有关详细信息，请参阅[教程：将 Azure Active Directory 日志流式传输到 Azure 事件中心](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。 |
+| [Azure 订阅](data-sources.md#azure-subscription) | Azure 活动日志 | 创建日志配置文件，以将活动日志事件导出到事件中心。  有关详细信息，请参阅[将 azure 平台日志流式传输到 Azure 事件中心](resource-logs-stream-event-hubs.md)。 |
+| [Azure 资源](data-sources.md#azure-resources) | 平台指标<br> 资源日志 |使用资源诊断设置将两种类型的数据发送到事件中心。 有关详细信息，请参阅[将 Azure 资源日志流式传输到事件中心](resource-logs-stream-event-hubs.md)。 |
 | [操作系统（来宾）](data-sources.md#operating-system-guest) | Azure 虚拟机 | 在 Azure 中的 Windows 和 Linux 虚拟机上安装 [Azure 诊断扩展](diagnostics-extension-overview.md)。 有关 Windows VM 的详细信息，请参阅[使用事件中心流式传输热路径中的 Azure 诊断数据](diagnostics-extension-stream-event-hubs.md)；有关 Linux VM 的详细信息，请参阅[使用 Linux 诊断扩展监视指标和日志](../../virtual-machines/extensions/diagnostics-linux.md#protected-settings)。 |
 | [应用程序代码](data-sources.md#application-code) | Application Insights | Application Insights 不提供直接方法用于将数据流式传输到事件中心。 可以设置将 Application Insights 数据[连续导出](../../azure-monitor/app/export-telemetry.md)到存储帐户，然后根据[使用逻辑应用手动进行流式传输](#manual-streaming-with-logic-app)中所述，使用逻辑应用将数据发送到事件中心。 |
 
 ## <a name="manual-streaming-with-logic-app"></a>使用逻辑应用手动进行流式传输
-对于无法直接流式传输到事件中心的数据，可以写入 Azure 存储，然后使用时间触发的逻辑应用[从 Blob 存储中提取数据](../../connectors/connectors-create-api-azureblobstorage.md#add-action)[并将其作为消息推送到事件中心](../../connectors/connectors-create-api-azure-event-hubs.md#add-action)。 
+对于无法直接流式传输到事件中心的数据，可以写入 Azure 存储，然后使用[从 blob 存储提取数据](../../connectors/connectors-create-api-azureblobstorage.md#add-action)并将[其作为消息推送到事件中心](../../connectors/connectors-create-api-azure-event-hubs.md#add-action)的时间触发的逻辑应用。 
 
 
 ## <a name="partner-tools-with-azure-monitor-integration"></a>与 Azure Monitor 集成的合作伙伴工具
@@ -61,7 +61,7 @@ Azure Monitor 为 Azure、其他云和本地的应用程序与服务提供全堆
 
 ## <a name="next-steps"></a>后续步骤
 * [将活动日志存档到存储帐户](../../azure-monitor/platform/archive-activity-log.md)
-* [阅读 Azure 活动日志的概述](../../azure-monitor/platform/platform-logs-overview.md)
-* [基于活动日志事件设置警报](../../azure-monitor/platform/alerts-log-webhook.md)
+* [阅读 Azure 活动日志概述](../../azure-monitor/platform/platform-logs-overview.md)
+* [根据活动日志事件设置警报](../../azure-monitor/platform/alerts-log-webhook.md)
 
 

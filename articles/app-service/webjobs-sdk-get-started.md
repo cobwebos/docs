@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
 ms.openlocfilehash: 4ee724ec66d5fb474f8c8a9a967cc7235fef5e85
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732626"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>用于事件驱动的后台处理的 Azure WebJobs SDK 入门
@@ -37,21 +37,21 @@ ms.locfileid: "81732626"
 
 ## <a name="webjobs-nuget-packages"></a>WebJobs NuGet 包
 
-1. 安装最新的稳定 3.x 版本的[`Microsoft.Azure.WebJobs.Extensions`NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions/)，`Microsoft.Azure.WebJobs`其中包括 。
+1. 安装[ `Microsoft.Azure.WebJobs.Extensions` NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions/)的最新稳定版2.x 版本，其中包括。 `Microsoft.Azure.WebJobs`
 
-     下面是**包管理器控制台**命令：
+     下面是**程序包管理器控制台**命令：
 
      ```powershell
      Install-Package Microsoft.Azure.WebJobs.Extensions -version <3_X_VERSION>
      ```
 
-    在此命令中，替换为`<3_X_VERSION>`受支持的包版本。 
+    在此命令中， `<3_X_VERSION>`将替换为支持的包版本。 
 
 ## <a name="create-the-host"></a>创建主机
 
-主机是函数的运行时容器，它侦听触发器并调用函数。 以下步骤创建实现[`IHost`](/dotnet/api/microsoft.extensions.hosting.ihost)的主机，该主机是 ASP.NET Core 中的通用主机。
+主机是函数的运行时容器，它侦听触发器并调用函数。 以下步骤创建一个实现[`IHost`](/dotnet/api/microsoft.extensions.hosting.ihost)的宿主，该主机是 ASP.NET Core 中的泛型主机。
 
-1. 在*Program.cs*中，`using`添加以下语句：
+1. 在*Program.cs*中，添加`using`以下语句：
 
     ```cs
     using System.Threading.Tasks;
@@ -76,15 +76,15 @@ ms.locfileid: "81732626"
     }
     ```
 
-在ASP.NET核心中，主机配置是通过在实例上调用方法设置[`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder)的。 有关详细信息，请参阅 [.NET 通用主机](/aspnet/core/fundamentals/host/generic-host)。 `ConfigureWebJobs` 扩展方法初始化 WebJobs 主机。 在 `ConfigureWebJobs` 中，初始化特定的 WebJobs 扩展并设置这些扩展的属性。  
+在 ASP.NET Core 中，通过调用[`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder)实例上的方法来设置主机配置。 有关详细信息，请参阅 [.NET 通用主机](/aspnet/core/fundamentals/host/generic-host)。 `ConfigureWebJobs` 扩展方法初始化 WebJobs 主机。 在 `ConfigureWebJobs` 中，初始化特定的 WebJobs 扩展并设置这些扩展的属性。  
 
 ## <a name="enable-console-logging"></a>启用控制台日志记录
 
 在本部分，设置使用 [ASP.NET Core 日志记录框架](/aspnet/core/fundamentals/logging)的控制台日志记录。
 
-1. 安装[`Microsoft.Extensions.Logging.Console`最新的](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console/)稳定版本的 NuGet 包 ，其中包括`Microsoft.Extensions.Logging`。
+1. 安装[ `Microsoft.Extensions.Logging.Console` NuGet 包](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console/)的最新稳定版本，其中包括。 `Microsoft.Extensions.Logging`
 
-   下面是**包管理器控制台**命令：
+   下面是**程序包管理器控制台**命令：
 
    ```powershell
    Install-Package Microsoft.Extensions.Logging.Console -version <3_X_VERSION>
@@ -96,9 +96,9 @@ ms.locfileid: "81732626"
    using Microsoft.Extensions.Logging;
    ```
 
-    在此命令中，替换为`<3_X_VERSION>`支持的 3.x 版本的包。
+    在此命令中， `<3_X_VERSION>`将替换为受支持的包版本。
 
-1. 调用[`ConfigureLogging`](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configurelogging)方法。 [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) 该方法[`AddConsole`](/dotnet/api/microsoft.extensions.logging.consoleloggerextensions.addconsole)将控制台日志记录添加到配置中。
+1. 对[`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder)调用[`ConfigureLogging`](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configurelogging)方法。 [`AddConsole`](/dotnet/api/microsoft.extensions.logging.consoleloggerextensions.addconsole)方法将控制台日志记录添加到配置。
 
     ```cs
     builder.ConfigureLogging((context, b) =>
@@ -142,15 +142,15 @@ ms.locfileid: "81732626"
 
 1. 安装 [Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet 包的最新稳定版本，即 3.x 版。 
 
-    下面是**包管理器控制台**命令：
+    下面是**程序包管理器控制台**命令：
 
     ```powershell
     Install-Package Microsoft.Azure.WebJobs.Extensions.Storage -Version <3_X_VERSION>
     ```
     
-    在此命令中，替换为`<3_X_VERSION>`受支持的包版本。 
+    在此命令中， `<3_X_VERSION>`将替换为支持的包版本。 
 
-2. 在`ConfigureWebJobs`扩展方法中`AddAzureStorage`，调用[`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder)实例上的方法以初始化存储扩展。 此时，`ConfigureWebJobs` 方法如下例所示：
+2. 在`ConfigureWebJobs`扩展方法中，对`AddAzureStorage` [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder)实例调用方法以初始化存储扩展插件。 此时，`ConfigureWebJobs` 方法如下例所示：
 
     ```cs
     builder.ConfigureWebJobs(b =>
@@ -162,7 +162,7 @@ ms.locfileid: "81732626"
 
 ## <a name="create-a-function"></a>创建函数
 
-1. 右键单击项目，选择 **"** > **添加新项目..."，** 选择 **"类**"，Functions.cs命名新的 C#*Functions.cs*类文件，然后选择"**添加**"。
+1. 右键单击该项目，选择 "**添加** > **新项 ...**"，选择 "**类**"，将新的 c # 类文件命名为*Functions.cs*，然后选择 "**添加**"。
 
 1. 在 Functions.cs 中，使用以下代码替换生成的模板：
     
@@ -202,7 +202,7 @@ ms.locfileid: "81732626"
 
 1. 选择在其中创建了应用服务应用的同一**区域**或者靠近的区域。
 
-1. 选择“创建”  。
+1. 选择“创建”。 
 
    ![创建存储帐户](./media/webjobs-sdk-get-started/create-storage-account.png)
 
@@ -218,7 +218,7 @@ ms.locfileid: "81732626"
 
 WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串。 在本地运行时，它会在本地配置文件或环境变量中查找此值。
 
-1. 右键单击项目，选择 **"添加新** > **项目..."，** 选择**JavaScript JSON 配置文件**，命名新文件*app"json*文件"，然后选择"**添加**"。 
+1. 右键单击该项目，选择 "**添加** > **新项 ...**"，选择 " **JavaScript JSON 配置文件**"，将新文件命名为*appsettings*文件，然后选择 "**添加**"。 
 
 1. 在新文件中添加 `AzureWebJobsStorage` 字段，如以下示例所示：
 
@@ -234,11 +234,11 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 稍后，你将在 Azure 应用服务中的应用中添加相同的连接字符串应用设置。
 
-## <a name="test-locally"></a>本地测试
+## <a name="test-locally"></a>在本地测试
 
 在本部分，我们将生成并在本地运行项目，然后通过创建队列消息来触发函数。
 
-1. 按**Ctrl+F5**以运行项目。
+1. 按**Ctrl + F5**运行项目。
 
    控制台显示运行时已找到函数，并等待队列消息触发该函数。 v3.x 主机生成以下输出：
 
@@ -339,7 +339,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 1. 将 *{instrumentation key}* 替换为所用 Application Insights 资源中的检测密钥。
 
-1. 选择“保存”。 
+1. 选择“保存”  。
 
 1. 向项目添加 Application Insights 连接，以便在本地运行。 在“appsettings.json”文件中，添加 `APPINSIGHTS_INSTRUMENTATIONKEY` 字段，如下例所示**：
 
@@ -358,17 +358,17 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 若要利用 [Application Insights](../azure-monitor/app/app-insights-overview.md) 日志记录，请更新日志记录代码以执行以下操作：
 
-* 使用默认[筛选](webjobs-sdk-how-to.md#log-filtering)添加应用程序见解日志记录提供程序。 在本地运行时，所有信息和更高级别的日志都写入控制台和应用程序见解。
+* 使用默认[筛选](webjobs-sdk-how-to.md#log-filtering)添加 Application Insights 日志记录提供程序。 在本地运行时，所有信息和更高级别的日志都将同时写入控制台和 Application Insights。
 * 将 [LoggerFactory](./webjobs-sdk-how-to.md#logging-and-monitoring) 对象放在 `using` 块中，以确保在主机退出时刷新日志输出。
 
-1. 安装最新的稳定3.x版本的[`Microsoft.Azure.WebJobs.Logging.ApplicationInsights`NuGet包](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/)。
+1. 安装[ `Microsoft.Azure.WebJobs.Logging.ApplicationInsights` NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/)的最新稳定版1.x 版本。
 
-   下面是**包管理器控制台**命令：
+   下面是**程序包管理器控制台**命令：
 
    ```powershell
    Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -Version <3_X_VERSION>
    ```
-    在此命令中，替换为`<3_X_VERSION>`受支持的包版本。
+    在此命令中， `<3_X_VERSION>`将替换为支持的包版本。
 
 1. 打开“Program.cs”并使用以下代码替换 `Main` 方法中的代码**：
 
@@ -407,23 +407,23 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 在本部分，我们将再次在本地运行，以验证日志记录数据现在是否转到 Application Insights 和控制台。
 
-1. 在可视化工作室中使用**服务器资源管理器**创建队列消息，就像[您之前](#test-locally)所做的那样，除非输入*Hello 应用程序见解！* 作为消息文本。
+1. 使用 Visual Studio 中的**服务器资源管理器**创建类似于你[之前](#test-locally)执行的队列消息，但输入*Hello App Insights！* 作为消息文本。
 
 1. 运行该项目。
 
-   WebJobs SDK 处理队列消息，并在控制台窗口中看到日志。
+   Web 作业 SDK 处理队列消息，并在控制台窗口中看到日志。
 
 1. 关闭控制台窗口。
 
-1. 转到[Azure 门户](https://portal.azure.com/)以查看应用程序见解资源。 搜索并选择“Application Insights”。****
+1. 请参阅[Azure 门户](https://portal.azure.com/)查看 Application Insights 资源。 搜索并选择“Application Insights”。****
 
-1. 选择应用程序见解实例。
+1. 选择 Application Insights 的实例。
 
 1. 选择“搜索”****。
 
    ![选择“搜索”](./media/webjobs-sdk-get-started/select-search.png)
 
-1. 如果未看到“Hello App Insights!”** 消息，请定期选择“刷新”几分钟。**** （日志不会立即显示，因为应用程序见解客户端需要一段时间才能刷新它处理的日志。
+1. 如果未看到“Hello App Insights!”** 消息，请定期选择“刷新”几分钟。**** （日志不会立即出现，因为 Application Insights 客户端需要一段时间来刷新它所处理的日志。）
 
    ![Application Insights 中的日志](./media/webjobs-sdk-get-started/logs-in-ai.png)
 

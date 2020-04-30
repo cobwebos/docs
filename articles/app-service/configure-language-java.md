@@ -10,10 +10,10 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: cebe5564767ee345c1aea96b6ac54b9398c3e9a3
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733032"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>为 Azure 应用服务配置 Windows Java 应用
@@ -35,15 +35,15 @@ Azure 应用服务可让 Java 开发人员在完全托管的基于 Windows 的�
 
 ## <a name="logging-and-debugging-apps"></a>日志记录和调试应用
 
-可以通过 Azure 门户对每个应用使用性能报告、流量可视化和运行状况检查。 有关详细信息，请参阅[Azure 应用服务诊断概述](overview-diagnostics.md)。
+可以通过 Azure 门户对每个应用使用性能报告、流量可视化和运行状况检查。 有关详细信息，请参阅[Azure App Service 诊断概述](overview-diagnostics.md)。
 
-### <a name="use-flight-recorder"></a>使用飞行记录器
+### <a name="use-flight-recorder"></a>使用网络流量记录器
 
-使用 Azul JVM 的应用程序服务上的所有 Java 运行时都配有祖鲁飞行记录器。 您可以使用它记录 JVM、系统和 Java 级别事件，以监视 Java 应用程序中的行为和疑难解答问题。
+应用服务上使用 Azul Jvm 的所有 Java 运行时均随附于祖鲁网络流量记录器。 您可以使用此记录来记录 JVM、系统和 Java 级别事件，以监视 Java 应用程序中的行为和解决问题。
 
-要进行时序录制，您需要 Java 应用程序的 PID（进程 ID）。 要查找 PID，请以 https：//<网站名称>.scm.azure 网站.net/ProcessExplorer/）打开 Web 应用的 SCM 站点的浏览器。 此页显示 Web 应用中的运行进程。 在表中查找名为"java"的进程并复制相应的 PID（进程 ID）。
+要拍摄定时记录，需要 Java 应用程序的 PID （进程 ID）。 若要查找 PID，请在 https://中打开 web 应用的 SCM 站点的浏览器 <> 你的 scm.azurewebsites.net/ProcessExplorer/。 此页面显示 web 应用中正在运行的进程。 在表中找到名为 "java" 的进程，并复制相应的 PID （进程 ID）。
 
-接下来，在 SCM 站点的顶部工具栏中打开**调试控制台**并运行以下命令。 替换为`<pid>`前面复制的进程 ID。 此命令将启动 Java 应用程序的 30 秒探查器录制，并生成`timed_recording_example.jfr`目录中名为`D:\home`的文件。
+接下来，打开 SCM 网站顶部工具栏中的**调试控制台**，并运行以下命令。 将`<pid>`替换为前面复制的进程 ID。 此命令将启动 Java 应用程序的30秒探查器记录，并在`timed_recording_example.jfr` `D:\home`目录中生成名为的文件。
 
 ```
 jcmd <pid> JFR.start name=TimedRecording settings=profile duration=30s filename="D:\home\timed_recording_example.JFR"
@@ -53,13 +53,13 @@ jcmd <pid> JFR.start name=TimedRecording settings=profile duration=30s filename=
 
 #### <a name="analyze-jfr-files"></a>分析`.jfr`文件
 
-使用[FTPS](deploy-ftp.md)将 JFR 文件下载到本地计算机。 要分析JFR文件，下载并安装[祖鲁任务控制](https://www.azul.com/products/zulu-mission-control/)。 有关祖鲁任务控制的说明，请参阅[Azul 文档](https://docs.azul.com/zmc/)和[安装说明](https://docs.microsoft.com/java/azure/jdk/java-jdk-flight-recorder-and-mission-control)。
+使用[FTPS](deploy-ftp.md)将 JFR 文件下载到本地计算机。 若要分析 JFR 文件，请下载并安装[祖鲁任务控制](https://www.azul.com/products/zulu-mission-control/)。 有关祖鲁任务控制的说明，请参阅[Azul 文档](https://docs.azul.com/zmc/)和[安装说明](https://docs.microsoft.com/java/azure/jdk/java-jdk-flight-recorder-and-mission-control)。
 
 ### <a name="stream-diagnostic-logs"></a>流式传输诊断日志
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-no-h.md)]
 
-有关详细信息，请参阅[云壳中的流日志](troubleshoot-diagnostic-logs.md#in-cloud-shell)。
+有关详细信息，请参阅[Cloud Shell 中的流日志](troubleshoot-diagnostic-logs.md#in-cloud-shell)。
 
 ### <a name="app-logging"></a>应用日志记录
 
@@ -141,15 +141,15 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
 
 ## <a name="secure-applications"></a>安全应用程序
 
-在应用服务中运行的 Java 应用程序具有与其他应用程序相同的[安全最佳实践](/azure/security/security-paas-applications-using-app-services)集。
+在应用服务中运行的 Java 应用程序与其他应用程序具有相同的一组[安全最佳做法](/azure/security/security-paas-applications-using-app-services)。
 
 ### <a name="authenticate-users-easy-auth"></a>对用户进行身份验证（简易身份验证）
 
-使用 **"身份验证和授权"** 选项在 Azure 门户中设置应用身份验证。 在此处，可以使用 Azure Active Directory 或社交登录名（例如 Facebook、Google、或 GitHub）启用身份验证。 仅当配置单个身份验证提供程序时，Azure 门户配置才起作用。 有关详细信息，请参阅[将应用服务应用配置为使用 Azure Active Directory 登录](configure-authentication-provider-aad.md)，以及其他标识提供者的相关文章。 如果需要启用多个登录提供程序，请遵照[自定义应用服务身份验证](app-service-authentication-how-to.md)一文中的说明。
+在 Azure 门户中设置采用**身份验证和授权**选项的应用身份验证。 在此处，可以使用 Azure Active Directory 或社交登录名（例如 Facebook、Google、或 GitHub）启用身份验证。 仅当配置单个身份验证提供程序时，Azure 门户配置才起作用。 有关详细信息，请参阅[将应用服务应用配置为使用 Azure Active Directory 登录](configure-authentication-provider-aad.md)，以及其他标识提供者的相关文章。 如果需要启用多个登录提供程序，请遵照[自定义应用服务身份验证](app-service-authentication-how-to.md)一文中的说明。
 
 #### <a name="tomcat"></a>Tomcat
 
-Tomcat 应用程序可以通过将主体对象强制转换到 Map 对象，直接从 servlet 访问用户的声明。 该 Map 对象将每个声明类型映射到该类型的声明集合。 在以下代码中，`request` 是 `HttpServletRequest` 的实例。
+Tomcat 应用程序可以通过将主体对象强制转换为 Map 对象，直接从 servlet 访问用户的声明。 该 Map 对象将每个声明类型映射到该类型的声明集合。 在以下代码中，`request` 是 `HttpServletRequest` 的实例。
 
 ```java
 Map<String, Collection<String>> map = (Map<String, Collection<String>>) request.getUserPrincipal();
@@ -183,7 +183,7 @@ public int getServerPort()
 
 ### <a name="configure-tlsssl"></a>配置 TLS/SSL
 
-按照[Azure 应用服务中具有 TLS 绑定的自定义 DNS 名称](configure-ssl-bindings.md)中的说明进行操作，上载现有的 TLS/SSL 证书并将其绑定到应用程序的域名。 默认情况下，应用程序仍允许 HTTP 连接 - 请遵循教程中的具体步骤来强制实施 SSL 和 TLS。
+按照 Azure App Service 中的 "[保护自定义 DNS 名称](configure-ssl-bindings.md)" 中的说明操作，上传现有的 TLS/SSL 证书，并将其绑定到应用程序的域名。 默认情况下，应用程序仍允许 HTTP 连接 - 请遵循教程中的具体步骤来强制实施 SSL 和 TLS。
 
 ### <a name="use-keyvault-references"></a>使用 KeyVault 引用
 
@@ -245,7 +245,7 @@ public int getServerPort()
 </appSettings>
 ```
 
-或者在 Azure 门户中的 **"配置** > **应用程序设置"** 页中设置环境变量。
+或在 "**配置** > **应用程序设置**" 页的 "Azure 门户中设置环境变量。
 
 接下来，确定数据源应当供一个应用程序使用，还是供在 Tomcat servlet 上运行的所有应用程序使用。
 
@@ -279,9 +279,9 @@ public int getServerPort()
 
 #### <a name="finalize-configuration"></a>完成配置
 
-最后，将驱动程序 JAR 放在 Tomcat 类路径中并重启应用服务。 将 JDBC 驱动程序文件放入 */home/tomcat/lib* 目录，确保它们可供 Tomcat 类加载器使用。 （如果此目录不存在，请创建该目录。要将这些文件上载到应用服务实例，请执行以下步骤：
+最后，将驱动程序 JAR 放在 Tomcat 类路径中并重启应用服务。 将 JDBC 驱动程序文件放入 */home/tomcat/lib* 目录，确保它们可供 Tomcat 类加载器使用。 （如果此目录尚不存在，请创建它。）若要将这些文件上传到应用服务实例，请执行以下步骤：
 
-1. 在[云外壳](https://shell.azure.com)中，安装 Webapp 扩展：
+1. 在[Cloud Shell](https://shell.azure.com)中，安装 webapp 扩展：
 
     ```azurecli-interactive
     az extension add -–name webapp
@@ -308,7 +308,7 @@ public int getServerPort()
 
 ## <a name="configure-java-se"></a>配置 Java SE
 
-运行 时。Windows 上的 Java SE`server.port`上的 JAR 应用程序在应用程序启动时作为命令行选项传递。 可以从环境变量 手动解析 HTTP 端口`HTTP_PLATFORM_PORT`。 此环境变量的值将是应用程序应侦听的 HTTP 端口。 
+在运行时。Windows `server.port`上 Java SE 上的 JAR 应用程序在应用程序启动时作为命令行选项传递。 可以从环境变量手动解析 HTTP 端口`HTTP_PLATFORM_PORT`。 此环境变量的值将是应用程序应侦听的 HTTP 端口。 
 
 ## <a name="java-runtime-statement-of-support"></a>Java 运行时支持声明
 
@@ -324,7 +324,7 @@ Azure 支持的 Java 开发工具包 (JDK) 为提供 [Azul Systems](https://www.
 
 重大安全漏洞的修补程序和修复程序将在 Azul Systems 提供后立即发布。 “重大”漏洞是根据 [NIST 常见漏洞评分系统版本 2](https://nvd.nist.gov/cvss.cfm) 提供的基本评分 9.0 或以上来定义的。
 
-截至[2018年9月30日，Tomcat 8.0已达到寿命终止（EOL）。](https://tomcat.apache.org/tomcat-80-eol.html) 虽然运行时在 Azure 应用服务上仍然有效，但 Azure 不会将安全更新应用于 Tomcat 8.0。 如果可能，请将应用程序迁移到 Tomcat 8.5 或 9.0。 Tomcat 8.5 和 9.0 在 Azure 应用服务中都可用。 有关详细信息，请参阅[官方 Tomcat 网站](https://tomcat.apache.org/whichversion.html)。 
+Tomcat 8.0 已[于2018年9月30日结束](https://tomcat.apache.org/tomcat-80-eol.html)。 尽管运行时仍在 Azure App Service 上在，但 Azure 不会对 Tomcat 8.0 应用安全更新。 如果可能，请将应用程序迁移到 Tomcat 8.5 或9.0。 Azure App Service 上提供 Tomcat 8.5 和9.0。 有关详细信息，请参阅[官方 Tomcat 站点](https://tomcat.apache.org/whichversion.html)。 
 
 ### <a name="deprecation-and-retirement"></a>弃用和停用
 

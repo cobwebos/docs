@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 上载自定义 Linux 磁盘
+title: 使用 Azure CLI 上传自定义 Linux 磁盘
 description: 使用资源管理器部署模型和 Azure CLI 创建虚拟硬盘 (VHD) 并将其上传到 Azure
 author: cynthn
 ms.service: virtual-machines-linux
@@ -9,10 +9,10 @@ ms.date: 07/10/2017
 ms.author: cynthn
 ms.custom: storage accounts
 ms.openlocfilehash: 7ec9b670f8b2eb1731511deb1d01cfc7db55054f
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758571"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>通过 Azure CLI 从自定义磁盘上传并创建 Linux VM
@@ -72,7 +72,7 @@ az vm create --resource-group myResourceGroup --location westus \
     --use-unmanaged-disk
 ```
 
-目标存储帐户必须与上传虚拟磁盘的目标位置相同。 还需要指定或根据提示输入 **az vm create** 命令所需的所有其他参数，例如虚拟网络、公共 IP 地址、用户名和 SSH 密钥。 您可以阅读有关[可用经典 CLI 资源管理器参数的更多信息](../azure-cli-arm-commands.md#virtual-machines)。
+目标存储帐户必须与上传虚拟磁盘的目标位置相同。 还需要指定或根据提示输入 **az vm create** 命令所需的所有其他参数，例如虚拟网络、公共 IP 地址、用户名和 SSH 密钥。 可以阅读有关[可用的经典 CLI 资源管理器参数](../azure-cli-arm-commands.md#virtual-machines)的详细信息。
 
 ## <a name="requirements"></a>要求
 若要完成以下步骤，需要：
@@ -99,25 +99,25 @@ az vm create --resource-group myResourceGroup --location westus \
 ## <a name="prepare-the-disk-to-be-uploaded"></a>准备要上传的磁盘
 Azure 支持各种 Linux 分发（请参阅 [Endorsed Distributions](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（认可的分发））。 以下文章指导如何准备 Azure 上支持的各种 Linux 分发：
 
-* **[基于 CentOS 的分布](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[基于 CentOS 的分发](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[SLES & 打开SUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[SLES & openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[其他 - 非认可发行](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[其他-非认可分发](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 
-有关为 Azure 准备 Linux 映像的更多一般提示，请参阅**[Linux 安装说明](create-upload-generic.md#general-linux-installation-notes)**。
+另请参阅**[Linux 安装说明](create-upload-generic.md#general-linux-installation-notes)**，了解有关为 Azure 准备 Linux 映像的更多常规提示。
 
 > [!NOTE]
-> [Azure 平台 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)仅适用于运行 Linux 的 VM，只有当其中一个认可的发行版与[在 Azure 认可的发行版上的 Linux](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中的"支持版本"下指定的配置详细信息一起使用时。
+> 仅当使用某个认可的分发版与[Azure 认可的分发](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中的 Linux 中 "支持的版本" 下指定的配置详细信息时， [Azure 平台 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)才适用于运行 Linux 的 vm。
 > 
 > 
 
 ## <a name="create-a-resource-group"></a>创建资源组
 资源组以逻辑方式将所有 Azure 资源（例如虚拟网络和存储）聚集在一起，以支持虚拟机。 有关资源组的详细信息，请参阅[资源组概述](../../azure-resource-manager/management/overview.md)。 在上载自定义磁盘和创建 VM 之前，首先需要使用 [az group create](/cli/azure/group) 创建一个资源组。
 
-以下示例在 `westus` 位置创建名为 `myResourceGroup` 的资源组：
+以下示例在 `westus` 位置创建一个名为 `myResourceGroup` 的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location westus

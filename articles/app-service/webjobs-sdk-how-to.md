@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
 ms.openlocfilehash: 5a8d5f96449cfecd4628c38fa2788a1e06e96b07
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758889"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>如何使用 Azure WebJobs SDK 进行事件驱动的后台处理
@@ -45,7 +45,7 @@ ms.locfileid: "81758889"
 
 在本地运行时，WebJobs SDK 在 local.settings.json 文件中查找 Azure 存储和 Azure 服务总线连接字符串；在 Azure 中运行时，它会在 WebJob 的环境中查找这些字符串。 默认情况下，需要名为 `AzureWebJobsStorage` 的存储连接字符串设置。  
 
-版本 2。SDK 的*x*允许您对这些连接字符串使用自己的名称，或将其存储在其他位置。 您可以使用 设置代码中的名称，[`JobHostConfiguration`]如下所示：
+版本2。*x*的 SDK 允许将自己的名称用于这些连接字符串或将其存储在其他位置。 您可以使用在代码中设置名称[`JobHostConfiguration`]，如下所示：
 
 ```cs
 static void Main(string[] args)
@@ -71,7 +71,7 @@ static void Main(string[] args)
 
 可在开发模式下运行主机，提高本地开发效率。 下面介绍部分设置，这些设置在开发模式下运行时会发生更改：
 
-| 属性 | 开发设置 |
+| properties | 开发设置 |
 | ------------- | ------------- |
 | `Tracing.ConsoleLevel` | `TraceLevel.Verbose`：最大化日志输出。 |
 | `Queues.MaxPollingInterval`  | 使用较小的值可确保立即触发队列方法。  |
@@ -79,9 +79,9 @@ static void Main(string[] args)
 
 启用开发模式的过程取决于 SDK 版本。 
 
-#### <a name="version-3x"></a>版本 3.*x*
+#### <a name="version-3x"></a>版本3。*x*
 
-版本 3.*x*使用标准ASP.NET核心 API。 调用[`UseEnvironment`](/dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.useenvironment)[`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder)实例上的方法。 传递名为 `development` 的字符串，如以下示例中所示：
+版本3。*x*使用标准 ASP.NET Core api。 对[`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder)实例[`UseEnvironment`](/dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.useenvironment)调用方法。 传递名为 `development` 的字符串，如以下示例中所示：
 
 ```cs
 static async Task Main()
@@ -100,7 +100,7 @@ static async Task Main()
 }
 ```
 
-#### <a name="version-2x"></a>版本 2。*x*
+#### <a name="version-2x"></a>版本2。*x*
 
 `JobHostConfiguration` 类具有 `UseDevelopmentSettings` 方法，该方法支持开发模式。  以下示例演示如何使用开发设置。 若要使 `config.IsDevelopment` 在本地运行时返回 `true`，请设置名为 `AzureWebJobsEnv`、值为 `Development` 的本地环境变量。
 
@@ -121,11 +121,11 @@ static void Main()
 
 ### <a name="managing-concurrent-connections-version-2x"></a><a name="jobhost-servicepointmanager-settings"></a>管理并发连接数（版本 2.*x*）
 
-在版本 3 中。*x*，连接限制默认值为无限连接。 如果由于某种原因需要更改此限制，则可以使用[`MaxConnectionsPerServer`](/dotnet/api/system.net.http.winhttphandler.maxconnectionsperserver)[`WinHttpHandler`](/dotnet/api/system.net.http.winhttphandler)类的属性。
+版本3中的。*x*，连接限制默认为无限连接。 如果由于某种原因需要更改此限制，则可以使用[`MaxConnectionsPerServer`](/dotnet/api/system.net.http.winhttphandler.maxconnectionsperserver) [`WinHttpHandler`](/dotnet/api/system.net.http.winhttphandler)类的属性。
 
-在版本 2.*x* 中，使用 [ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit#System_Net_ServicePointManager_DefaultConnectionLimit) API 控制主机的并发连接数。 在 2 中。*x*，在启动 Web作业主机之前，应从默认值 2 中增加此值。
+在版本 2.*x* 中，使用 [ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit#System_Net_ServicePointManager_DefaultConnectionLimit) API 控制主机的并发连接数。 在2中。*x*在启动 web 作业主机之前，应将此值从默认值2增加。
 
-使用 `HttpClient` 从某个函数发出的所有传出 HTTP 请求都会流经 `ServicePointManager`。 达到 `DefaultConnectionLimit` 中设置的值后，`ServicePointManager` 会开始将请求排队，然后再发送请求。 假设 `DefaultConnectionLimit` 设置为 2，并且代码发出了 1,000 个 HTTP 请求。 最初，只允许 2 个请求传入 OS。 其他998人排队，直到有空间供他们使用。 这意味着 `HttpClient` 可能会超时，因为它似乎已发出请求，但是，OS 从未将此请求发送到目标服务器。 因此，可能会出现看似不合理的行为：本地 `HttpClient` 花费了 10 秒来完成请求，但服务在 200 毫秒内就返回了每个请求。 
+使用 `HttpClient` 从某个函数发出的所有传出 HTTP 请求都会流经 `ServicePointManager`。 达到 `DefaultConnectionLimit` 中设置的值后，`ServicePointManager` 会开始将请求排队，然后再发送请求。 假设 `DefaultConnectionLimit` 设置为 2，并且代码发出了 1,000 个 HTTP 请求。 最初，只允许 2 个请求传入 OS。 其他998将排队等候，直到它们的空间不足。 这意味着 `HttpClient` 可能会超时，因为它似乎已发出请求，但是，OS 从未将此请求发送到目标服务器。 因此，可能会出现看似不合理的行为：本地 `HttpClient` 花费了 10 秒来完成请求，但服务在 200 毫秒内就返回了每个请求。 
 
 ASP.NET 应用程序的默认值是 `Int32.MaxValue`，这可能非常适合在“基本”或更高级别应用服务计划中运行的 WebJob。 WebJob 通常需要 Always On 设置，该设置仅受“基本”和更高级别应用服务计划的支持。
 
@@ -146,7 +146,7 @@ static void Main(string[] args)
 
 ## <a name="triggers"></a>触发器
 
-函数必须是公共方法，并且必须具有一个触发器属性或属性[`NoAutomaticTrigger`](#manual-triggers)。
+函数必须是公共方法，并且必须具有一个触发器特性或[`NoAutomaticTrigger`](#manual-triggers)属性。
 
 ### <a name="automatic-triggers"></a>自动触发器
 
@@ -162,7 +162,7 @@ public static void Run(
 }
 ```
 
-`QueueTrigger` 特性告知运行时，每当某个队列消息显示在 `myqueue-items` 队列中，就要调用该函数。 `Blob` 特性告知运行时要使用队列消息读取 *sample-workitems* 容器中的 Blob。 `samples-workitems`容器中的 blob 项的名称直接从队列触发器作为绑定表达式 （）`{queueTrigger}`获得。
+`QueueTrigger` 特性告知运行时，每当某个队列消息显示在 `myqueue-items` 队列中，就要调用该函数。 `Blob` 特性告知运行时要使用队列消息读取 *sample-workitems* 容器中的 Blob。 `samples-workitems`容器中的 blob 项的名称直接从队列触发器获取为绑定表达式（`{queueTrigger}`）。
 
 [!INCLUDE [webjobs-always-on-note](../../includes/webjobs-always-on-note.md)]
 
@@ -184,7 +184,7 @@ string value,
 
 手动触发函数的过程取决于 SDK 版本。
 
-#### <a name="version-3x"></a>版本 3.*x*
+#### <a name="version-3x"></a>版本3。*x*
 
 ```cs
 static async Task Main(string[] args)
@@ -211,7 +211,7 @@ static async Task Main(string[] args)
 }
 ```
 
-#### <a name="version-2x"></a>版本 2。*x*
+#### <a name="version-2x"></a>版本2。*x*
 
 ```cs
 static void Main(string[] args)
@@ -223,7 +223,7 @@ static void Main(string[] args)
 
 ## <a name="input-and-output-bindings"></a>输入和输出绑定
 
-通过输入绑定能够以声明方式将 Azure 或第三方服务中的数据提供给代码使用。 输出绑定提供更新数据的方式。 入门[文章](webjobs-sdk-get-started.md)显示了每个示例。
+通过输入绑定能够以声明方式将 Azure 或第三方服务中的数据提供给代码使用。 输出绑定提供更新数据的方式。 [入门](webjobs-sdk-get-started.md)文章显示了每个示例。
 
 通过将属性应用于方法返回值，可以对输出绑定使用方法返回值。 请参阅[使用 Azure 函数返回值](../azure-functions/functions-bindings-return-value.md)中的示例。
 
@@ -231,9 +231,9 @@ static void Main(string[] args)
 
 安装和管理绑定类型的过程取决于使用的是 SDK 版本 3.*x* 还是版本 2.*x*。 可以在特定绑定类型的 Azure Functions [参考文章](#binding-reference-information)的“包”部分找到要为该绑定类型安装的包。 异常是 Files 触发器和绑定（适用于本地文件系统），不受 Azure Functions 的支持。
 
-#### <a name="version-3x"></a>版本 3.*x*
+#### <a name="version-3x"></a>版本3。*x*
 
-在版本 3 中。*x*，存储绑定包含在包中`Microsoft.Azure.WebJobs.Extensions.Storage`。 在 `ConfigureWebJobs` 方法中调用 `AddAzureStorage` 扩展方法，如下所示：
+版本3中的。*x*，存储绑定包含在`Microsoft.Azure.WebJobs.Extensions.Storage`包中。 在 `ConfigureWebJobs` 方法中调用 `AddAzureStorage` 扩展方法，如下所示：
 
 ```cs
 static async Task Main()
@@ -273,7 +273,7 @@ static async Task Main()
 
 若要使用属于核心服务的 Timer 触发器或 Files 绑定，请分别调用 `AddTimers` 或 `AddFiles` 扩展方法。
 
-#### <a name="version-2x"></a>版本 2。*x*
+#### <a name="version-2x"></a>版本2。*x*
 
 以下触发器和绑定类型包含在版本 2.*x* 的 `Microsoft.Azure.WebJobs` 包中：
 
@@ -297,7 +297,7 @@ static void Main()
 
 ### <a name="executioncontext"></a>ExecutionContext
 
-Web 作业允许您绑定到[`ExecutionContext`]。 使用此绑定，您可以在函数签名中访问[`ExecutionContext`]作为 参数。 例如，以下代码使用上下文对象访问调用 ID，使用该 ID 可以关联给定函数调用生成的所有日志。  
+使用[`ExecutionContext`]web 作业可以绑定到。 使用此绑定，可以在函数签名[`ExecutionContext`]中访问作为参数。 例如，以下代码使用上下文对象访问调用 ID，使用该 ID 可以关联给定函数调用生成的所有日志。  
 
 ```cs
 public class Functions
@@ -311,9 +311,9 @@ public class Functions
 }
 ```
 
-绑定到 的过程[`ExecutionContext`]取决于您的 SDK 版本。
+绑定到的[`ExecutionContext`]过程取决于 SDK 版本。
 
-#### <a name="version-3x"></a>版本 3.*x*
+#### <a name="version-3x"></a>版本3。*x*
 
 在 `ConfigureWebJobs` 方法中调用 `AddExecutionContextBinding` 扩展方法，如下所示：
 
@@ -334,9 +334,9 @@ static async Task Main()
 }
 ```
 
-#### <a name="version-2x"></a>版本 2。*x*
+#### <a name="version-2x"></a>版本2。*x*
 
-前面所述的 `Microsoft.Azure.WebJobs.Extensions` 包还提供了一个可以通过调用 `UseCore` 方法注册的特殊绑定类型。 此绑定允许您在函数签名[`ExecutionContext`]中定义参数，该参数启用时如下所示：
+前面所述的 `Microsoft.Azure.WebJobs.Extensions` 包还提供了一个可以通过调用 `UseCore` 方法注册的特殊绑定类型。 此绑定使你可以在[`ExecutionContext`]函数签名中定义参数，如下所示：
 
 ```cs
 class Program
@@ -355,8 +355,8 @@ class Program
 
 可以配置某些触发器和绑定的行为。 配置过程取决于 SDK 版本。
 
-* **版本 3.*x*：** 在`Add<Binding>`中调用 方法`ConfigureWebJobs`时设置配置。
-* **版本 2。*x*：** 通过在传递给 的配置对象中设置属性来设置配置`JobHost`。
+* **版本3。*x*：** 在中`Add<Binding>` `ConfigureWebJobs`调用方法时设置配置。
+* **版本2。*x*：** 通过在传入的配置对象中设置属性来设置配置。 `JobHost`
 
 这些特定于绑定的设置相当于 Azure Functions 的 [host.json 项目文件](../azure-functions/functions-host-json.md)中的设置。
 
@@ -429,7 +429,7 @@ static async Task Main()
 
 这些示例演示如何配置队列存储触发器：
 
-#### <a name="version-3x"></a>版本 3.*x*
+#### <a name="version-3x"></a>版本3。*x*
 
 ```cs
 static async Task Main()
@@ -455,7 +455,7 @@ static async Task Main()
 
 有关更多详细信息，请参阅[队列存储绑定](../azure-functions/functions-bindings-storage-queue-trigger.md#hostjson-properties)一文。
 
-#### <a name="version-2x"></a>版本 2。*x*
+#### <a name="version-2x"></a>版本2。*x*
 
 ```cs
 static void Main(string[] args)
@@ -530,7 +530,7 @@ static async Task Main()
 
 某些触发器和绑定类型定义其自身的自定义配置类型。 例如，File 触发器允许指定要监视的根路径，如以下示例中所示：
 
-#### <a name="version-3x"></a>版本 3.*x*
+#### <a name="version-3x"></a>版本3。*x*
 
 ```cs
 static async Task Main()
@@ -549,7 +549,7 @@ static async Task Main()
 }
 ```
 
-#### <a name="version-2x"></a>版本 2。*x*
+#### <a name="version-2x"></a>版本2。*x*
 
 ```cs
 static void Main()
@@ -612,7 +612,7 @@ public class CustomNameResolver : INameResolver
 }
 ```
 
-#### <a name="version-3x"></a>版本 3.*x*
+#### <a name="version-3x"></a>版本3。*x*
 
 使用依赖关系注入配置解析程序。 这些示例需要下列 `using` 语句：
 
@@ -620,7 +620,7 @@ public class CustomNameResolver : INameResolver
 using Microsoft.Extensions.DependencyInjection;
 ```
 
-通过在 上[`ConfigureServices`][`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder)调用扩展方法来添加解析器，如以下示例所示：
+可以通过调用上[`ConfigureServices`] [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder)的扩展方法来添加冲突解决程序，如以下示例中所示：
 
 ```cs
 static async Task Main(string[] args)
@@ -640,7 +640,7 @@ static async Task Main(string[] args)
 }
 ```
 
-#### <a name="version-2x"></a>版本 2。*x*
+#### <a name="version-2x"></a>版本2。*x*
 
 将 `NameResolver` 类传入 `JobHost` 对象，如下所示：
 
@@ -682,15 +682,15 @@ Azure Functions 文档中提供了有关每个绑定类型的参考信息。 每
 
 * [包](../azure-functions/functions-bindings-storage-queue.md)。 需要安装哪个包才能在 WebJobs SDK 项目中支持绑定。
 * [示例](../azure-functions/functions-bindings-storage-queue-trigger.md)。 代码示例。 C# 类库示例适用于 WebJobs SDK。 只需省略 `FunctionName` 特性。
-* [属性](../azure-functions/functions-bindings-storage-queue-trigger.md#attributes-and-annotations)。 用于绑定类型的特性。
-* [配置](../azure-functions/functions-bindings-storage-queue-trigger.md#configuration). 特性属性和构造函数参数的解释。
-* [用法](../azure-functions/functions-bindings-storage-queue-trigger.md#usage)。 可绑定到哪些类型，以及有关绑定工作原理的信息。 例如：轮询算法、有害队列处理。
+* [特性](../azure-functions/functions-bindings-storage-queue-trigger.md#attributes-and-annotations)。 用于绑定类型的特性。
+* [配置](../azure-functions/functions-bindings-storage-queue-trigger.md#configuration)。 特性属性和构造函数参数的解释。
+* [使用情况](../azure-functions/functions-bindings-storage-queue-trigger.md#usage)。 可绑定到哪些类型，以及有关绑定工作原理的信息。 例如：轮询算法、有害队列处理。
   
-有关绑定参考文章的列表，请参阅 Azure 函数的[触发器和绑定](../azure-functions/functions-triggers-bindings.md#supported-bindings)文章中的"受支持绑定"。 在该列表中，HTTP、Webhook 和事件网格绑定仅受 Azure Functions 的支持，而不受 WebJobs SDK 的支持。
+有关绑定引用项目的列表，请参阅 Azure Functions 的[触发器和绑定](../azure-functions/functions-triggers-bindings.md#supported-bindings)一文中的 "支持的绑定"。 在该列表中，HTTP、Webhook 和事件网格绑定仅受 Azure Functions 的支持，而不受 WebJobs SDK 的支持。
 
 ## <a name="disable-attribute"></a>Disable 特性 
 
-该[`Disable`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/DisableAttribute.cs)属性允许您控制是否可以触发函数。 
+[`Disable`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/DisableAttribute.cs)属性允许您控制是否可以触发函数。 
 
 在以下示例中，如果应用设置 `Disable_TestJob` 使用值 `1` 或 `True`（不区分大小写），则函数不会运行。 在这种情况下，运行时将创建日志消息“函数 'Functions.TestJob' 已禁用”。**
 
@@ -708,7 +708,7 @@ public static void TestJob([QueueTrigger("testqueue2")] string message)
 
 ## <a name="timeout-attribute"></a>Timeout 特性
 
-如果[`Timeout`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TimeoutAttribute.cs)函数未在指定的时间内完成，则该属性会导致该函数被取消。 以下示例中的函数不带 Timeout 特性，将会运行一天。 如果指定了 Timeout，该函数将在 15 秒后被取消。
+如果[`Timeout`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TimeoutAttribute.cs)某个函数在指定的时间内未完成，则该特性将导致该函数被取消。 以下示例中的函数不带 Timeout 特性，将会运行一天。 如果指定了 Timeout，该函数将在 15 秒后被取消。
 
 ```cs
 [Timeout("00:00:15")]
@@ -727,7 +727,7 @@ public static async Task TimeoutJob(
 
 ## <a name="singleton-attribute"></a>Singleton 特性
 
-该[`Singleton`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/SingletonAttribute.cs)属性可确保仅运行函数的一个实例，即使主机 Web 应用有多个实例也是如此。 使用[分布式锁定](#viewing-lease-blobs)可实现此目的。
+[`Singleton`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/SingletonAttribute.cs)特性可确保仅运行一个函数实例，即使存在主机 web 应用的多个实例时也是如此。 使用[分布式锁定](#viewing-lease-blobs)可实现此目的。
 
 在此示例中，在任意给定时间只会运行 `ProcessImage` 函数的单个实例：
 
@@ -743,8 +743,8 @@ public static async Task ProcessImage([BlobTrigger("images")] Stream image)
 
 某些触发器为并发管理提供内置支持：
 
-* **队列触发器**。 将 `JobHostConfiguration.Queues.BatchSize` 设置为 `1`。
-* **服务总线触发器**。 将 `ServiceBusConfiguration.MessageOptions.MaxConcurrentCalls` 设置为 `1`。
+* **QueueTrigger**。 将 `JobHostConfiguration.Queues.BatchSize` 设置为 `1`。
+* **ServiceBusTrigger**。 将 `ServiceBusConfiguration.MessageOptions.MaxConcurrentCalls` 设置为 `1`。
 * **FileTrigger**。 将 `FileProcessor.MaxDegreeOfParallelism` 设置为 `1`。
 
 可以使用这些设置来确保函数在单个实例上作为单一实例运行。 若要确保在 Web 应用横向扩展到多个实例时只运行函数的单个实例，请对该函数应用侦听器级别的单一实例锁 (`[Singleton(Mode = SingletonMode.Listener)]`)。 启动 JobHost 时获取侦听器锁。 如果三个横向扩展的实例全部同时启动，只有其中的一个实例获取该锁，并且只有一个侦听器启动。
@@ -807,11 +807,11 @@ WebJobs SDK 在幕后使用 [Azure Blob 租约](../storage/common/storage-concur
 
 计时器触发器会自动确保只会运行计时器的一个实例，因此，在给定的计划时间，不会运行多个函数实例。
 
-如果要确保即使主机 Web 应用有多个实例，也只能运行一个函数实例，则可以使用 该[`Singleton`](#singleton-attribute)属性。
+如果要确保即使有多个主机 web 应用的实例，也只有一个函数实例运行，可以使用[`Singleton`](#singleton-attribute)特性。
 
 ## <a name="filters"></a>筛选器
 
-通过函数筛选器（预览版）可以使用自己的逻辑自定义 WebJobs 执行管道。 筛选器类似于[ASP.NET核心筛选器](https://docs.microsoft.com/aspnet/core/mvc/controllers/filters)。 可将其实现为应用到函数或类的声明性特性。 有关详细信息，请参阅[函数筛选器](https://github.com/Azure/azure-webjobs-sdk/wiki/Function-Filters)。
+通过函数筛选器（预览版）可以使用自己的逻辑自定义 WebJobs 执行管道。 筛选器类似于[ASP.NET Core 筛选](https://docs.microsoft.com/aspnet/core/mvc/controllers/filters)器。 可将其实现为应用到函数或类的声明性特性。 有关详细信息，请参阅[函数筛选器](https://github.com/Azure/azure-webjobs-sdk/wiki/Function-Filters)。
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
@@ -819,7 +819,7 @@ WebJobs SDK 在幕后使用 [Azure Blob 租约](../storage/common/storage-concur
 
 ### <a name="log-filtering"></a>日志筛选
 
-`ILogger` 实例创建的每个日志都包含关联的 `Category` 和 `Level`。 [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel)是枚举，整数代码表示相对重要性：
+`ILogger` 实例创建的每个日志都包含关联的 `Category` 和 `Level`。 [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel)为枚举，整数代码指示相对重要性：
 
 |LogLevel    |代码|
 |------------|---|
@@ -831,11 +831,11 @@ WebJobs SDK 在幕后使用 [Azure Blob 租约](../storage/common/storage-concur
 |严重    | 5 |
 |无        | 6 |
 
-您可以独立地将每个类别筛选为特定[`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel)。 例如，你可能想要查看有关 Blob 触发器处理的所有日志，但对于其他任何操作，只想查看 `Error` 和更高级别的日志。
+您可以单独筛选每个类别的特定[`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel)类别。 例如，你可能想要查看有关 Blob 触发器处理的所有日志，但对于其他任何操作，只想查看 `Error` 和更高级别的日志。
 
-#### <a name="version-3x"></a>版本 3.*x*
+#### <a name="version-3x"></a>版本3。*x*
 
-版本 3.SDK 的*x*依赖于内置于 .NET Core 中的筛选。 使用 `LogCategories` 类，可以为特定函数、触发器或用户定义类别。 它还能为特定主机状态（例如，`Startup` 和 `Results`）定义筛选器。 这样就可以微调日志记录输出。 如果在定义类别中未找到任何匹配项，筛选器在决定是否筛选消息时会回退到 `Default` 值。
+版本3。*x* SDK 依赖于 .net Core 中内置的筛选。 使用 `LogCategories` 类，可以为特定函数、触发器或用户定义类别。 它还能为特定主机状态（例如，`Startup` 和 `Results`）定义筛选器。 这样就可以微调日志记录输出。 如果在定义类别中未找到任何匹配项，筛选器在决定是否筛选消息时会回退到 `Default` 值。
 
 `LogCategories` 需要以下 using 语句：
 
@@ -870,7 +870,7 @@ static async Task Main(string[] args)
 }
 ```
 
-#### <a name="version-2x"></a>版本 2。*x*
+#### <a name="version-2x"></a>版本2。*x*
 
 在版本 2.*x* 的 SDK 中，`LogCategoryFilter` 类用于控制筛选。 `LogCategoryFilter` 包含初始值为 `Information` 的 `Default` 属性，这意味着，将会记录级别为 `Information`、`Warning`、`Error` 或 `Critical` 的所有消息，但会筛选掉级别为 `Debug` 或 `Trace` 的所有消息。
 
@@ -894,7 +894,7 @@ config.LoggerFactory = new LoggerFactory()
 
 为 [Application Insights](../azure-monitor/app/app-insights-overview.md) 实现自定义遥测的过程取决于 SDK 版本。 要了解如何配置 Application Insights，请参阅[添加 Application Insights 日志记录](webjobs-sdk-get-started.md#add-application-insights-logging)。
 
-#### <a name="version-3x"></a>版本 3.*x*
+#### <a name="version-3x"></a>版本3。*x*
 
 由于 WebJobs SDK 的版本 3.x** 依赖于 .NET Core 通用主机，因此不再提供自定义遥测工厂。 但可以使用依赖关系注入将自定义遥测添加到管道。 本部分中的示例要求使用下列 `using` 语句：
 
@@ -903,7 +903,7 @@ using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.ApplicationInsights.Channel;
 ```
 
-下面的自定义实现[`ITelemetryInitializer`]允许您将自己添加到[`ITelemetry`](/dotnet/api/microsoft.applicationinsights.channel.itelemetry)默认值[`TelemetryConfiguration`]。
+的以下自定义实现[`ITelemetryInitializer`]允许你将自己[`ITelemetry`](/dotnet/api/microsoft.applicationinsights.channel.itelemetry)添加到默认。 [`TelemetryConfiguration`]
 
 ```cs
 internal class CustomTelemetryInitializer : ITelemetryInitializer
@@ -915,7 +915,7 @@ internal class CustomTelemetryInitializer : ITelemetryInitializer
 }
 ```
 
-调用[`ConfigureServices`]生成器以将自定义[`ITelemetryInitializer`]添加到管道。
+在[`ConfigureServices`]生成器中调用，将您的[`ITelemetryInitializer`]自定义添加到管道。
 
 ```cs
 static async Task Main()
@@ -950,17 +950,17 @@ static async Task Main()
 }
 ```
 
-构造[`TelemetryConfiguration`]时，将包含所有已注册的[`ITelemetryInitializer`]类型。 若要了解详细信息，请参阅[用于处理自定义事件和指标的 Application Insights API](../azure-monitor/app/api-custom-events-metrics.md)。
+[`TelemetryConfiguration`]构造后，将包括的[`ITelemetryInitializer`]所有注册类型。 若要了解详细信息，请参阅[用于处理自定义事件和指标的 Application Insights API](../azure-monitor/app/api-custom-events-metrics.md)。
 
-在版本 3 中。*x*，当主机停止[`TelemetryClient`]时，您不再需要刷新 。 .NET 核心依赖项注入系统自动释放已注册的`ApplicationInsightsLoggerProvider`，后者刷新 。 [`TelemetryClient`]
+版本3中的。*x*，你不再需要在主机停止[`TelemetryClient`]时刷新。 .NET Core 依赖项注入系统自动释放已注册`ApplicationInsightsLoggerProvider`的，这会刷新[`TelemetryClient`]。
 
-#### <a name="version-2x"></a>版本 2。*x*
+#### <a name="version-2x"></a>版本2。*x*
 
 在版本 2.x** 中，Application Insights 提供程序为 WebJobs SDK 在内部创建的 [`TelemetryClient`] 使用 [`ServerTelemetryChannel`](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/ServerTelemetryChannel/ServerTelemetryChannel.cs)。 当 Application Insights 终结点时不可用或限制传入请求时，此通道会[在 Web 应用的文件系统中保存请求，并稍后提交这些请求](https://apmtips.com/blog/2015/09/03/more-telemetry-channels)。
 
-[`TelemetryClient`]由实现`ITelemetryClientFactory`的类创建。 默认情况下，这是 。 [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/DefaultTelemetryClientFactory.cs)
+[`TelemetryClient`]是由实现`ITelemetryClientFactory`的类创建的。 默认情况下，此为[`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/DefaultTelemetryClientFactory.cs)。
 
-如果要修改应用程序见解管道的任何部分，可以提供您自己的`ITelemetryClientFactory`，并且主机将使用类构造 。 [`TelemetryClient`] 例如，此代码会重写 `DefaultTelemetryClientFactory` 以修改 `ServerTelemetryChannel` 的属性：
+如果要修改 Application Insights 管道的任何部分，则可以提供自己`ITelemetryClientFactory`的，主机将使用类来构造。 [`TelemetryClient`] 例如，此代码会重写 `DefaultTelemetryClientFactory` 以修改 `ServerTelemetryChannel` 的属性：
 
 ```csharp
 private class CustomTelemetryClientFactory : DefaultTelemetryClientFactory
@@ -999,7 +999,7 @@ config.LoggerFactory = new LoggerFactory()
 
 [`ExecutionContext`]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Core/ExecutionContext.cs
 [`TelemetryClient`]: /dotnet/api/microsoft.applicationinsights.telemetryclient
-[`ConfigureServices`]: /dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.configureservices
-["I遥测初始化器"]: /dotnet/api/microsoft.applicationinsights.extensibility.itelemetryinitializer
+[ConfigureServices]: /dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.configureservices
+[ITelemetryInitializer]: /dotnet/api/microsoft.applicationinsights.extensibility.itelemetryinitializer
 [`TelemetryConfiguration`]: /dotnet/api/microsoft.applicationinsights.extensibility.telemetryconfiguration
 [`JobHostConfiguration`]: https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.Host/JobHostConfiguration.cs

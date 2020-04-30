@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 04/20/2020
 zone_pivot_groups: programming-languages-set-diberry-3core
 ms.openlocfilehash: 2b85e3085a7265fa007422180ff1cfe93d4fef57
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732063"
 ---
 # <a name="quickstart-query-v3-prediction-endpoint-with-sdk"></a>快速入门：使用 SDK 查询 V3 预测终结点

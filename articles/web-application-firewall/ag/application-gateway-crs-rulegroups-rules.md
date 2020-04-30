@@ -9,10 +9,10 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 59409c428aba938c49fc37647db82f30d783a629
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81730559"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web 应用程序防火墙 CRS 规则组和规则
@@ -223,7 +223,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |932170|远程命令执行 = Shellshock (CVE-2014-6271)|
 |932171|远程命令执行 = Shellshock (CVE-2014-6271)|
 |932180|受限文件上传企图|
-|932190|远程命令执行：通配符旁路技术尝试|
+|932190|远程命令执行：通配符绕过方法尝试|
 
 ### <a name="p-x-ms-format-detectionnonerequest-933-application-attack-phpp"></a><a name="crs933-31"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
 
@@ -231,18 +231,18 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |---|---|
 |933100|PHP 注入攻击 = 找到开始/结束标记|
 |933110|PHP 注入攻击 = 找到 PHP 脚本文件上传|
-|933111|PHP注入攻击：找到PHP脚本文件上传|
+|933111|PHP 注入攻击：找到 PHP 脚本文件上传|
 |933120|PHP 注入攻击 = 找到配置指令|
 |933130|PHP 注入攻击 = 找到变量|
 |933131|PHP 注入攻击：找到变量|
-|933140|PHP 注入攻击：找到 I/O 流|
+|933140|PHP 注入攻击：发现 i/o 流|
 |933150|PHP 注入攻击 = 找到高风险的 PHP 函数名称|
-|933151|PHP 注入攻击：找到中风险 PHP 函数名称|
+|933151|PHP 注入攻击：找到了中等风险的 PHP 函数名称|
 |933160|PHP 注入攻击 = 找到高风险的 PHP 函数调用|
-|933161|PHP注入攻击：找到低值PHP函数调用|
+|933161|PHP 注入攻击：找到低值 PHP 函数调用|
 |933170|PHP 注入攻击：序列化对象注入|
 |933180|PHP 注入攻击 = 找到可变函数调用|
-|933190|PHP 注入攻击：找到 PHP 关闭标记|
+|933190|PHP 注入攻击：找到 PHP 结束标记|
 
 ### <a name="p-x-ms-format-detectionnonerequest-941-application-attack-xssp"></a><a name="crs941-31"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
 
@@ -254,8 +254,8 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |941130|XSS 筛选器 - 类别 3 = 属性向量|
 |941140|XSS 筛选器 - 类别 4 = Javascript URI 向量|
 |941150|XSS 筛选器 - 类别 5 = 不允许的 HTML 属性|
-|941160|NoScript XSS 注射器：HTML 注入|
-|941170|NoScript XSS 注入检查器：属性注入|
+|941160|NoScript XSS InjectionChecker： HTML 注入|
+|941170|NoScript XSS InjectionChecker：属性注入|
 |941180|节点验证器方块列表关键字|
 |941190|使用样式表的 XSS|
 |941200|使用 VML 帧的 XSS|
@@ -281,9 +281,9 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |RuleId|说明|
 |---|---|
 |942100|检测到通过 libinjection 展开的 SQL 注入攻击|
-|942110|SQL 注入攻击：检测到常见注入测试|
+|942110|SQL 注入式攻击：检测到常见注入测试|
 |942120|SQL 注入攻击：检测到 SQL 运算符|
-|942130|SQL 注入攻击：检测到 SQL 陶体学。|
+|942130|SQL 注入攻击：检测到 SQL Tautology。|
 |942140|SQL 注入攻击 = 检测到常用 DB 名称|
 |942150|SQL 注入攻击|
 |942160|检测到使用 sleep() 或 benchmark() 的盲注 sqli 测试。|
@@ -344,7 +344,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 # <a name="owasp-30"></a>[OWASP 3.0](#tab/owasp30)
 
-## <a name="rule-sets"></a><a name="owasp30"></a> 规则集
+## <a name="rule-sets"></a><a name="owasp30"></a>规则集
 
 ### <a name="p-x-ms-format-detectionnonegeneralp"></a><a name="general-30"></a> <p x-ms-format-detection="none">常规</p>
 
@@ -507,8 +507,8 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |RuleId|说明|
 |---|---|
 |942100|检测到通过 libinjection 展开的 SQL 注入攻击|
-|942110|SQL 注入攻击：检测到常见注入测试|
-|942130|SQL 注入攻击：检测到 SQL 陶体学。|
+|942110|SQL 注入式攻击：检测到常见注入测试|
+|942130|SQL 注入攻击：检测到 SQL Tautology。|
 |942140|SQL 注入攻击 = 检测到常用 DB 名称|
 |942160|检测到使用 sleep() 或 benchmark() 的盲注 sqli 测试。|
 |942170|检测到包含条件查询的 SQL 基准和休眠注入企图|
@@ -544,7 +544,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 # <a name="owasp-229"></a>[OWASP 2.2.9](#tab/owasp2)
 
-## <a name="rule-sets"></a><a name="owasp229"></a> 规则集
+## <a name="rule-sets"></a><a name="owasp229"></a>规则集
 
 ### <a name="crs_20_protocol_violations"></a><a name="crs20"></a>crs_20_protocol_violations
 

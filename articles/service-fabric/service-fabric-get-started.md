@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.custom: sfrev
 ms.openlocfilehash: 1b43c838537e46ffbaf6c4adcfb117f6718bd046
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81731757"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>在 Windows 上准备开发环境
@@ -37,7 +37,7 @@ ms.locfileid: "81731757"
 
 > [!NOTE]
 > Windows 7 支持：
-> - 默认情况下，Windows 7 仅包含 Windows PowerShell 2.0。 Service Fabric PowerShell cmdlet 需要 PowerShell 3.0 或更高版本。 你可以从微软[下载中心下载 Windows PowerShell 5.1。][powershell5-download]
+> - 默认情况下，Windows 7 仅包含 Windows PowerShell 2.0。 Service Fabric PowerShell cmdlet 需要 PowerShell 3.0 或更高版本。 你可以从 Microsoft 下载中心[下载 Windows PowerShell 5.1][powershell5-download] 。
 > - 在 Windows 7 上无法使用 Service Fabric 反向代理。
 
 ## <a name="install-the-sdk-and-tools"></a>安装 SDK 和工具
@@ -68,8 +68,8 @@ Service Fabric 工具是 Visual Studio 2017 和 2019 中 Azure 开发工作负�
 
 当前版本包括：
 
-* 服务结构 SDK 和工具 4.1.409
-* 服务交换矩阵运行时 7.1.409
+* Service Fabric SDK 和工具4.1.409
+* Service Fabric 运行时7.1.409
 
 有关支持版本的列表，请参阅 [Service Fabric 版本](service-fabric-versions.md)
 

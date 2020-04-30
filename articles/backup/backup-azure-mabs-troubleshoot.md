@@ -5,10 +5,10 @@ ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.openlocfilehash: 7a1cac63ba6497b8580c83fe2b666b020701283a
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81688040"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>对 Azure 备份服务器进行故障排除
@@ -32,7 +32,7 @@ ms.locfileid: "81688040"
 
 | 操作 | 错误详细信息 | 解决方法 |
 | --- | --- | --- |
-| 注册到保管库 | 提供的保管库凭据无效。 该文件已损坏，或者没有与恢复服务关联的最新凭据。 | 建议的操作： <br> <ul><li> 从保管库中下载最新的凭据文件，并重试。 <br>（或者）</li> <li> 如果上述操作不起作用，请尝试将凭据下载到其他本地目录，或创建新的保管库。 <br>（或者）</li> <li> 请尝试更新[本文](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#invalid-vault-credentials-provided)中所述的日期和时间设置。 <br>（或者）</li> <li> 检查 C:\windows\temp 中的文件数是否超过 65000。 将过时文件移到另一位置，或者删除 Temp 文件夹中的项。 <br>（或者）</li> <li> 检查证书的状态。 <br> a. 打开“管理计算机证书”（在控制面板中）。  <br> b. 展开“个人”节点及其子节点“证书”。  <br> c.  删除证书“Windows Azure Tools”。  <br> d. 重试在 Azure 备份客户端中注册。 <br> （或者） </li> <li> 检查是否部署了任何组策略。 </li></ul> |
+| 注册到保管库 | 提供的保管库凭据无效。 该文件已损坏，或者没有与恢复服务关联的最新凭据。 | 建议的操作： <br> <ul><li> 从保管库中下载最新的凭据文件，并重试。 <br>（或者）</li> <li> 如果上述操作不起作用，请尝试将凭据下载到其他本地目录，或创建新的保管库。 <br>（或者）</li> <li> 尝试更新日期和时间设置，如[本文](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#invalid-vault-credentials-provided)所述。 <br>（或者）</li> <li> 检查 C:\windows\temp 中的文件数是否超过 65000。 将过时文件移到另一位置，或者删除 Temp 文件夹中的项。 <br>（或者）</li> <li> 检查证书的状态。 <br> a. 打开“管理计算机证书”（在控制面板中）。  <br> b. 展开“个人”节点及其子节点“证书”。  <br> c.  删除证书“Windows Azure Tools”。  <br> d. 重试在 Azure 备份客户端中注册。 <br> （或者） </li> <li> 检查是否部署了任何组策略。 </li></ul> |
 
 ## <a name="replica-is-inconsistent"></a>副本不一致
 
@@ -113,28 +113,28 @@ ms.locfileid: "81688040"
 
 ## <a name="common-issues"></a>常见问题
 
-本节介绍在使用 Azure 备份服务器时可能会遇到的常见错误。
+本部分介绍在使用 Azure 备份服务器时可能会遇到的常见错误。
 
 ### <a name="cbpsourcesnapshotfailedreplicamissingorinvalid"></a>CBPSourceSnapshotFailedReplicaMissingOrInvalid
 
 错误消息 | 建议操作 |
 -- | --
-备份失败，因为磁盘备份副本无效或缺失。 | 要解决此问题，请验证以下步骤并重试操作： <br/> 1. 创建磁盘恢复点<br/> 2. 对数据源运行一致性检查 <br/> 3. 停止数据源保护，然后重新配置此数据源的保护
+备份失败，因为磁盘备份副本无效或缺失。 | 若要解决此问题，请验证以下步骤，然后重试该操作： <br/> 1. 创建磁盘恢复点<br/> 2. 对数据源运行一致性检查 <br/> 3. 停止对数据源的保护，然后重新配置对此数据源的保护
 
 ### <a name="cbpsourcesnapshotfailedreplicametadatainvalid"></a>CBPSourceSnapshotFailedReplicaMetadataInvalid
 
 错误消息 | 建议操作 |
 -- | --
-源卷快照失败，因为副本上的元数据无效。 | 创建此数据源的磁盘恢复点，然后重试联机备份
+源卷快照失败，因为副本上的元数据无效。 | 请创建此数据源的磁盘恢复点，然后重试联机备份
 
 ### <a name="cbpsourcesnapshotfailedreplicainconsistent"></a>CBPSourceSnapshotFailedReplicaInconsistent
 
 错误消息 | 建议操作 |
 -- | --
-由于数据源副本不一致，源卷快照失败。 | 在此数据源上运行一致性检查，然后重试
+源卷快照失败，因为数据源副本不一致。 | 对此数据源运行一致性检查，然后重试
 
 ### <a name="cbpsourcesnapshotfailedreplicacloningissue"></a>CBPSourceSnapshotFailedReplicaCloningIssue
 
 错误消息 | 建议操作 |
 -- | --
-备份失败，因为磁盘备份副本无法克隆。| 确保取消安装所有以前的磁盘备份副本文件 （.vhdx），并且联机备份期间没有磁盘到磁盘备份
+备份失败，因为磁盘备份副本无法克隆。| 确保所有以前的磁盘备份副本文件（.vhdx）都已卸载，并且在联机备份期间没有磁盘到磁盘的备份

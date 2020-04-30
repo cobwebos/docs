@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt
 ms.openlocfilehash: 307ab47c1f7498f71e61108a616d35ef1d4f61c9
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81730000"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>从 IoT 中心发送云到设备的消息
@@ -28,13 +28,13 @@ ms.locfileid: "81730000"
 
 每个设备队列最多可以保留 50 条云到设备的消息。 尝试将更多消息传送到同一设备会导致错误。
 
-## <a name="the-cloud-to-device-message-life-cycle"></a>云到设备消息生命周期
+## <a name="the-cloud-to-device-message-life-cycle"></a>云到设备的消息生命周期
 
 为了保证至少一次消息传递，IoT 中心将云到设备的消息保留在每个设备队列中。 设备必须显式确认完成，IoT 中心才会从队列中删除消息  。 这种方法可以保证连接失败和设备故障时能够复原。
 
 下图显示了生命周期状态图：
 
-![云到设备消息生命周期](./media/iot-hub-devguide-messages-c2d/lifecycle.png)
+![云到设备的消息生命周期](./media/iot-hub-devguide-messages-c2d/lifecycle.png)
 
 IoT 中心服务向设备发送消息时，该服务会将消息状态设置为“排队”  。 当设备想要接收某条消息时，IoT 中心会通过将状态设置为“不可见”来锁定该消息。    这种状态使得设备上的其他线程可以开始接收其他消息。 当设备线程完成消息的处理后，会通过完成消息来通知 IoT 中心  。 随后 IoT 中心会将状态设置为“已完成”  。
 

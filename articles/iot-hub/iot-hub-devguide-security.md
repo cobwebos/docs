@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: b7f9ac7e6e7049a3b744151bc9cb05115fbac935
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81729218"
 ---
 # <a name="control-access-to-iot-hub"></a>控制对 IoT 中心的访问
@@ -94,7 +94,7 @@ HTTPS 通过在 Authorization  请求标头中包含有效的令牌来实施身�
 
 用户名（DeviceId 区分大小写）：`iothubname.azure-devices.net/DeviceId`
 
-密码（您可以使用 CLI 扩展命令[az iot 中心生成 sas-token](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token)或[用于可视化工作室代码的 Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)生成 SAS 令牌）：
+密码（可以使用 CLI 扩展命令[az iot 中心生成 sas](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token)令牌或[用于 Visual Studio Code 的 Azure IOT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)生成 sas 令牌）：
 
 `SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
 
@@ -280,7 +280,7 @@ var token = generateSasToken(endpoint, deviceKey, null, 60);
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697`
 
 > [!NOTE]
-> 可以使用 CLI 扩展命令[az iot 中心生成 sas-token](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token)或[用于可视化工作室代码的 Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)生成 SAS 令牌。
+> 可以使用 CLI 扩展命令[az iot 中心生成 sas 令牌](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token)或[用于 Visual Studio Code 的 Azure IOT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)生成 sas 令牌。
 
 ### <a name="use-a-shared-access-policy"></a>使用共享访问策略
 
@@ -350,7 +350,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 ## <a name="supported-x509-certificates"></a>支持的 X.509 证书
 
-可以通过将证书指纹或证书颁发机构 (CA) 上传到 Azure IoT 中心，从而借助 IoT 中心使用任何 X.509 证书对设备进行身份验证。 使用证书指纹进行身份验证可验证呈现的指纹是否与配置的指纹匹配。 使用证书颁发机构的身份验证会验证证书链。 无论哪种方式，TLS 握手都需要设备具有有效的证书和私钥。 有关详细信息，请参阅 TLS 规范，例如[：RFC 5246 - 传输层安全 （TLS） 协议版本 1.2](https://tools.ietf.org/html/rfc5246/)。
+可以通过将证书指纹或证书颁发机构 (CA) 上传到 Azure IoT 中心，从而借助 IoT 中心使用任何 X.509 证书对设备进行身份验证。 使用证书指纹进行的身份验证将验证所提供的指纹是否与配置的指纹匹配。 使用证书颁发机构的身份验证会验证证书链。 无论采用哪种方式，TLS 握手都要求设备具有有效的证书和私钥。 有关详细信息，请参阅 TLS 规范，例如： [RFC 5246-传输层安全性（TLS）协议版本 1.2](https://tools.ietf.org/html/rfc5246/)。
 
 支持的证书包括：
 
@@ -444,18 +444,18 @@ var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 
 下表列出了可用于控制对 IoT 中心的访问的权限。
 
-| 权限 | 说明 |
+| 权限 | 注意 |
 | --- | --- |
 | **RegistryRead** |授予对标识注册表的读取访问权限。 有关详细信息，请参阅[标识注册表](iot-hub-devguide-identity-registry.md)。 <br/>后端云服务将使用此权限。 |
-| **注册表读取写入** |授予对标识注册表的读取和写入访问权限。 有关详细信息，请参阅[标识注册表](iot-hub-devguide-identity-registry.md)。 <br/>后端云服务将使用此权限。 |
-| **服务连接** |授予对面向云服务的通信和监视终结点的访问权限。 <br/>授予接收设备到云消息、发送云到设备消息和检索相应传送确认的权限。 <br/>授予检索文件上载的传递确认的权限。 <br/>授予访问孪生以更新标记和所需属性、检索报告属性和运行查询的权限。 <br/>后端云服务将使用此权限。 |
-| **设备连接** |授予对面向设备的终结点的访问权限。 <br/>授予发送设备到云消息和接收云到设备消息的权限。 <br/>授予从设备执行文件上传的权限。 <br/>授予接收设备孪生所需属性通知和更新设备孪生报告属性的权限。 <br/>授予执行文件上传的权限。 <br/>此权限由设备使用。 |
+| **RegistryReadWrite** |授予对标识注册表的读取和写入访问权限。 有关详细信息，请参阅[标识注册表](iot-hub-devguide-identity-registry.md)。 <br/>后端云服务将使用此权限。 |
+| **ServiceConnect** |授予对面向云服务的通信和监视终结点的访问权限。 <br/>授予接收设备到云消息、发送云到设备消息和检索相应传送确认的权限。 <br/>授予检索文件上传的传送确认的权限。 <br/>授予访问孪生以更新标记和所需属性、检索报告属性和运行查询的权限。 <br/>后端云服务将使用此权限。 |
+| **DeviceConnect** |授予对面向设备的终结点的访问权限。 <br/>授予发送设备到云消息和接收云到设备消息的权限。 <br/>授予从设备执行文件上传的权限。 <br/>授予接收设备孪生所需属性通知和更新设备孪生报告属性的权限。 <br/>授予执行文件上传的权限。 <br/>此权限由设备使用。 |
 
 ## <a name="additional-reference-material"></a>其他参考资料
 
 IoT 中心开发人员指南中的其他参考主题包括：
 
-* [IoT 中心终结点](iot-hub-devguide-endpoints.md)描述每个 IoT 中心为运行时和管理操作公开的各种终结点。
+* [Iot 中心终结点](iot-hub-devguide-endpoints.md)介绍了每个 iot 中心针对运行时和管理操作公开的各种终结点。
 
 * [限制和配额](iot-hub-devguide-quotas-throttling.md)介绍了适用于 IoT 中心服务的配额和限制行为。
 
@@ -465,7 +465,7 @@ IoT 中心开发人员指南中的其他参考主题包括：
 
 * [IoT 中心 MQTT 支持](iot-hub-mqtt-support.md)提供有关 IoT 中心对 MQTT 协议的支持的详细信息。
 
-* [RFC 5246 - 传输层安全 （TLS） 协议版本 1.2](https://tools.ietf.org/html/rfc5246/)提供有关 TLS 身份验证的详细信息。
+* [RFC 5246-传输层安全性（TLS）协议版本 1.2](https://tools.ietf.org/html/rfc5246/)提供有关 TLS 身份验证的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

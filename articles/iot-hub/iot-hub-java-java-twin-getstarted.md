@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: mqtt
 ms.openlocfilehash: 3ea2f0eec12d756a898f1761f6b22fd034c1bc3e
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732460"
 ---
 # <a name="get-started-with-device-twins-java"></a>设备孪生入门 (Java)
@@ -179,7 +179,7 @@ ms.locfileid: "81732460"
     System.out.println(device);
     ```
 
-14. 若要在 IoT 中心查询设备孪生，请将以下代码添加到 `try` 块（添加到上一步骤中添加的代码后面）。 该代码运行两个查询。 每个查询最多返回 100 个设备。
+14. 若要在 IoT 中心查询设备孪生，请将以下代码添加到 `try` 块（添加到上一步骤中添加的代码后面）。 该代码运行两个查询。 每个查询最多返回100个设备。
 
     ```java
     // Query the device twins in IoT Hub
@@ -344,7 +344,7 @@ ms.locfileid: "81732460"
     }
     ```
 
-13. 将以下代码添加到 **main** 方法的末尾。 等待**Enter**键允许 IoT 中心有时间报告设备孪生操作的状态。
+13. 将以下代码添加到 **main** 方法的末尾。 等待**输入**密钥允许 IoT 中心报告设备克隆操作的状态。
 
     ```java
     System.out.println("Press any key to exit...");

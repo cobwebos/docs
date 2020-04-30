@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: b25e9d860f118c1b044b13e01a80aaf7a24963cf
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81768248"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>在 Azure HDInsight 上安装自定义 Apache Hadoop 应用程序
 
-在本文中，您将了解如何在 Azure HDInsight 上安装[Apache Hadoop](https://hadoop.apache.org/)应用程序，该应用程序尚未发布到 Azure 门户。 您将在本文中安装的应用程序是[Hue](https://gethue.com/)。
+本文介绍如何在 Azure HDInsight 上安装尚未发布到 Azure 门户的[Apache Hadoop](https://hadoop.apache.org/)应用程序。 您将在本文中安装的应用程序是[色调](https://gethue.com/)。
 
 HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程序。  这些应用程序可能是 Microsoft、独立软件供应商 (ISV) 或自己开发的。  
 
@@ -71,7 +71,7 @@ HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程�
 
 ## <a name="validate-the-installation"></a>验证安装
 
-可以在 Azure 门户中检查应用程序状态，以验证应用程序安装。 此外，您还可以验证所有 HTTP 终结点按预期出现，如果存在，则验证网页。
+可以在 Azure 门户中检查应用程序状态，以验证应用程序安装。 此外，还可以验证所有 HTTP 终结点是否按预期方式出现，以及网页（如果有）。
 
 对于 **Hue**，可以使用以下步骤：
 
@@ -113,13 +113,13 @@ HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程�
 
 * HDInsight 脚本操作：如果 HDInsight 应用程序的错误消息指出脚本操作失败，“脚本操作”窗格会显示有关脚本失败的详细信息。
 
-    从"设置"中选择脚本操作。 脚本操作历史记录中显示了错误消息
+    从 "设置" 中选择脚本操作。 脚本操作历史记录中显示了错误消息
 
     ![hdinsight 应用程序脚本操作错误](./media/hdinsight-apps-install-custom-applications/hdinsight-apps-script-action-error.png)
 
-* Apache Ambari Web UI：如果安装脚本是故障的原因，请使用 Ambari Web UI 检查有关安装脚本的完整日志。
+* Apache Ambari Web UI：如果安装脚本是失败的原因，请使用 Ambari Web UI 来检查有关安装脚本的完整日志。
 
-    有关详细信息，请参阅[对脚本操作进行故障排除](./troubleshoot-script-action.md)。
+    有关详细信息，请参阅[脚本操作疑难解答](./troubleshoot-script-action.md)。
 
 ## <a name="remove-hdinsight-applications"></a>删除 HDInsight 应用程序
 

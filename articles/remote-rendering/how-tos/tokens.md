@@ -1,56 +1,56 @@
 ---
 title: 获取服务访问令牌
-description: 描述如何创建用于访问 ARR REST API 的令牌
+description: 介绍如何创建用于访问 ARR REST Api 的令牌
 author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
 ms.openlocfilehash: fd510f90887353d7486908ee076d5308db72c59d
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687067"
 ---
 # <a name="get-service-access-tokens"></a>获取服务访问令牌
 
-仅授权用户才能访问 ARR REST API。 要证明您的授权，您必须发送*访问令牌*以及 REST 请求。 这些令牌由*安全令牌服务*（STS） 颁发，以换取帐户密钥。 令牌**的生存期为 24 小时**，因此可以颁发给用户，而无需授予他们对服务的完全访问权限。
+仅向授权用户授予对 ARR REST Api 的访问权限。 若要证明你的授权，你必须将*访问令牌*与 REST 请求一起发送。 这些令牌由 exchange 中用于帐户密钥的*安全令牌服务*（STS）颁发。 令牌的**生存期为24小时**，因此，可以将其颁发给用户，而无需授予其对服务的完全访问权限。
 
 本文介绍如何创建此类访问令牌。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-[创建 ARR 帐户](create-an-account.md)，如果您还没有。
+如果还没有[ARR 帐户](create-an-account.md)，请创建一个。
 
 ## <a name="token-service-rest-api"></a>令牌服务 REST API
 
-要创建访问令牌，*安全令牌服务*提供单个 REST API。 ARR STS 服务的 URL 是 https：\//sts.mixedreality.azure.com。
+为创建访问令牌，*安全令牌服务*提供单个 REST API。 ARR STS 服务的 URL 是 https：\//sts.mixedreality.azure.com。
 
-### <a name="get-token-request"></a>"获取令牌"请求
+### <a name="get-token-request"></a>"获取令牌" 请求
 
 | URI | 方法 |
 |-----------|:-----------|
-| /帐户/**帐户 Id**/令牌 | GET |
+| /accounts/**accountId**/token | GET |
 
-| 标头 | 值 |
+| Header | 值 |
 |--------|:------|
-| 授权 | "持有人**帐户 Id**：**帐户密钥**" |
+| 授权 | "持有者**accountId**：**accountKey**" |
 
-将*帐户 Id*和*帐户密钥*替换为相应的数据。
+将*accountId*和*accountKey*替换为相应的数据。
 
-### <a name="get-token-response"></a>"获取令牌"响应
+### <a name="get-token-response"></a>"获取令牌" 响应
 
-| 状态代码 | JSON 有效负载 | 注释 |
+| 状态代码 | JSON 有效负载 | 说明 |
 |-----------|:-----------|:-----------|
-| 200 | 访问令牌：字符串 | Success |
+| 200 | AccessToken：字符串 | 成功 |
 
-| 标头 | 目的 |
+| Header | 目的 |
 |--------|:------|
 | MS-CV | 此值可用于跟踪服务中的调用 |
 
 ## <a name="getting-a-token-using-powershell"></a>使用 PowerShell 获取令牌
 
-下面的 PowerShell 代码演示如何向 STS 发送必要的 REST 请求。 然后，它将令牌打印到 PowerShell 提示符。
+下面的 PowerShell 代码演示如何向 STS 发送必要的 REST 请求。 然后，它会将令牌打印到 PowerShell 提示符。
 
 ```PowerShell
 $accountId = "<account_id_from_portal>"
@@ -63,10 +63,10 @@ $response = ConvertFrom-Json -InputObject $webResponse.Content
 Write-Output "Token: $($response.AccessToken)"
 ```
 
-脚本只需将令牌打印到输出，即可复制&粘贴它。 对于实际项目，您应该自动执行此过程。
+此脚本只是将令牌打印到输出，从中复制 & 粘贴。 对于实际项目，应自动执行此过程。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [PowerShell 脚本示例](../samples/powershell-example-scripts.md)
-* [Azure 前端 API](../how-tos/frontend-apis.md)
+* [Azure 前端 Api](../how-tos/frontend-apis.md)
 * [会话管理 REST API](../how-tos/session-rest-api.md)

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: mqtt
 ms.openlocfilehash: a7814970d4ffb051ab54c965d27394f925d79e59
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732331"
 ---
 # <a name="get-started-with-device-management-nodejs"></a>设备管理入门 (Node.js)
@@ -22,7 +22,7 @@ ms.locfileid: "81732331"
 
 本教程演示如何：
 
-* 使用[Azure 门户](https://portal.azure.com)创建 IoT 中心并在 IoT 中心中创建设备标识。
+* 使用[Azure 门户](https://portal.azure.com)创建 iot 中心，并在 IoT 中心创建设备标识。
 
 * 创建包含重新启动该设备的直接方法的模拟设备应用。 直接方法是从云中调用的。
 

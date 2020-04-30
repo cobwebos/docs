@@ -9,10 +9,10 @@ ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
 ms.openlocfilehash: 80fc33a93d4d83dad1e687b176b39728fc7e8807
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758605"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>使用“运行命令”在 Linux VM 中运行 shell 脚本
@@ -67,16 +67,16 @@ az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript 
 
 ## <a name="azure-portal"></a>Azure 门户
 
-转到[Azure 门户](https://portal.azure.com)中的 VM，然后选择 **"操作**"下的 **"运行"命令**。 您将看到要在 VM 上运行的可用命令的列表。
+在[Azure 门户](https://portal.azure.com)中，选择 "VM"，并选择 "**操作**" 下的 "**运行命令**"。 你将看到可在 VM 上运行的命令的列表。
 
 ![命令列表](./media/run-command/run-command-list.png)
 
-选择要运行的命令。 某些命令可能具有可选或所需的输入参数。 对于这些命令，参数将作为文本字段显示，以便您提供输入值。 对于每个命令，可以通过展开**视图脚本**来查看正在运行的脚本。 **RunShellScript**与其他命令不同，因为它允许您提供自己的自定义脚本。
+选择要运行的命令。 一些命令可能有可选的或必需的输入参数。 对于这些命令，这些参数将作为文本字段显示，以便你提供输入值。 对于每个命令，可以通过展开 "**查看脚本**" 来查看正在运行的脚本。 **RunShellScript**不同于其他命令，因为它允许你提供自己的自定义脚本。
 
 > [!NOTE]
 > 内置命令不可编辑。
 
-选择该命令后，选择 **"运行"** 以运行脚本。 脚本完成后，它将返回输出窗口中的输出和任何错误。 下面的屏幕截图显示了运行 **ifconfig** 命令时的示例输出。
+选择命令后，选择 "**运行**" 以运行脚本。 脚本完成后，会在 "输出" 窗口中返回输出和任何错误。 下面的屏幕截图显示了运行 **ifconfig** 命令时的示例输出。
 
 ![运行命令脚本输出](./media/run-command/run-command-script-output.png)
 
@@ -94,7 +94,7 @@ Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' 
 
 运行命令需要订阅级别的 `Microsoft.Compute/virtualMachines/runCommand/action` 权限。 [虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)角色和更高级别的角色具有此权限。
 
-您可以使用其中一个[内置角色](../../role-based-access-control/built-in-roles.md)，也可以创建[自定义角色](../../role-based-access-control/custom-roles.md)来使用 Run 命令。
+可以使用某个[内置角色](../../role-based-access-control/built-in-roles.md)，也可以创建[自定义角色](../../role-based-access-control/custom-roles.md)来使用 "运行" 命令。
 
 ## <a name="next-steps"></a>后续步骤
 

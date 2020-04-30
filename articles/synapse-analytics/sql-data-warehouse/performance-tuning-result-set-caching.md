@@ -1,6 +1,6 @@
 ---
 title: 使用结果集缓存优化性能
-description: Azure 突触分析中突触 SQL 池的结果集缓存功能概述
+description: Azure Synapse Analytics 中 Synapse SQL 池的结果集缓存功能概述
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,15 +12,15 @@ ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
 ms.openlocfilehash: eadbe13269ce1259b4560af117f5b15b3b294151
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81730601"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>使用结果集缓存优化性能
 
-启用结果集缓存后，SQL Analytics 会自动缓存用户数据库中的查询结果，以便重复使用。  这样，后续的查询执行就能直接从持久性缓存中获取结果，因此无需重新计算。   结果集缓存提高了查询性能，并减少了计算资源的用量。  此外，使用缓存结果集的查询不会占用任何并发槽，因此不会计入现有的并发限制。 出于安全考虑，如果访问方用户的数据访问权限与创建缓存结果的用户相同，则访问方用户只能访问缓存的结果。  
+启用结果集缓存后，SQL Analytics 会自动缓存用户数据库中的查询结果以供重复使用。  这样，后续的查询执行就能直接从持久性缓存中获取结果，因此无需重新计算。   结果集缓存提高了查询性能，并减少了计算资源的用量。  此外，使用缓存结果集的查询不会占用任何并发槽，因此不会计入现有的并发限制。 出于安全考虑，如果访问方用户的数据访问权限与创建缓存结果的用户相同，则访问方用户只能访问缓存的结果。  
 
 ## <a name="key-commands"></a>关键命令
 
@@ -42,11 +42,11 @@ ms.locfileid: "81730601"
 - 使用用户定义的函数的查询
 - 使用启用了行级安全性或列级安全性的表的查询
 - 返回行大小大于 64 KB 的数据的查询
-- 返回大数据大小的查询（>10GB） 
+- 返回大数据大小（>10GB）的查询 
 
 > [!IMPORTANT]
-> 创建结果集缓存并从缓存中检索数据的操作发生在 Synapse SQL 池实例的控制节点上。
-> 启用结果集缓存后，运行返回大型结果集（例如，>1GB）的查询可能会导致控制节点上出现高限制，并减慢实例上的总体查询响应。  这些查询通常在数据浏览或 ETL 操作过程中使用。 若要避免对控制节点造成压力并导致性能问题，用户应在运行此类查询之前关闭数据库的结果集缓存。  
+> 用于创建结果集缓存和从缓存中检索数据的操作将在 Synapse SQL 池实例的控制节点上发生。
+> 当结果集缓存处于开启状态时，运行返回大型结果集的查询（例如 >1GB）会导致控制节点上的高限制，并减缓对实例的总体查询响应。  这些查询通常在数据浏览或 ETL 操作过程中使用。 若要避免对控制节点造成压力并导致性能问题，用户应在运行此类查询之前关闭数据库的结果集缓存。  
 
 此查询的运行持续时间以针对某个查询执行结果集缓存操作所需的时间为宜：
 
@@ -72,7 +72,7 @@ WHERE request_id  = <'request_id'>;
 - 新查询与生成结果集缓存的上一个查询之间存在完全匹配。
 - 生成缓存结果集的表中没有任何数据或架构更改。
 
-运行此命令以检查所执行的查询的结果缓存是命中还是失误。 result_cache_hit列返回 1 表示缓存命中，0 返回缓存未命中，负值返回，以说明未使用结果集缓存的原因。 有关详细信息，请检查 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+运行此命令以检查所执行的查询的结果缓存是命中还是失误。 对于缓存命中，result_cache_hit 列返回 1; 如果缓存未命中，则返回 0; 如果未使用结果集缓存，则返回负值。 有关详细信息，请检查 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ```sql
 SELECT request_id, command, result_cache_hit FROM sys.dm_pdw_exec_requests
@@ -83,7 +83,7 @@ WHERE request_id = <'Your_Query_Request_ID'>
 
 每个数据集的结果集缓存的最大大小为 1 TB。  当底层查询数据发生更改时，缓存结果会自动失效。  
 
-缓存逐出由 SQL 分析按照此计划自动管理：
+按照以下计划自动管理缓存逐出：
 
 - 如果结果集在 48 小时间隔时间内未使用，或者已失效。
 - 当结果集缓存接近最大大小时。

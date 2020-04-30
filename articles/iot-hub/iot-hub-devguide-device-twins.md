@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/01/2020
 ms.custom: mqtt
 ms.openlocfilehash: 3bec3d19ed68b7eb8bb50baa8f6c11135ef778cc
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81731467"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>了解并在 IoT 中心内使用设备孪生
@@ -59,7 +59,7 @@ ms.locfileid: "81731467"
 
 * **报告的属性**。 与所需的属性结合使用，同步设备配置或状态。 设备应用可设置报告的属性，并且解决方案后端可进行读取和查询。
 
-* **设备标识属性**。 设备孪生 JSON 文档的根包含[标识注册表](iot-hub-devguide-identity-registry.md)中存储的相应设备标识的只读属性。 属性`connectionStateUpdatedTime`，`generationId`将不包含。
+* **设备标识属性**。 设备孪生 JSON 文档的根包含[标识注册表](iot-hub-devguide-identity-registry.md)中存储的相应设备标识的只读属性。 不`connectionStateUpdatedTime`会`generationId`包含属性和属性。
 
 ![设备孪生属性的屏幕截图](./media/iot-hub-devguide-device-twins/twin.png)
 
@@ -145,7 +145,7 @@ ms.locfileid: "81731467"
    }
    ```
 
-3. 解决方案后端可以通过[查询](iot-hub-devguide-query-language.md)设备孪生来跟踪跨多个设备的配置操作的结果。
+3. 解决方案后端可以通过[查询](iot-hub-devguide-query-language.md)设备孪生来跟踪多个设备上的配置操作结果。
 
 > [!NOTE]
 > 为便于阅读，上述代码片段示例经过优化，演示了为设备配置及其状态进行编码的一种方式。 IoT 中心不会对设备克隆中的所需属性和报告属性施加特定的架构。
@@ -199,7 +199,7 @@ ms.locfileid: "81731467"
 
   - Body
         
-    本部分包括 JSON 格式的所有孪生更改。 它使用与修补程序相同的格式，其区别之处在于它可以包含所有孪生部分：标记、属性.报告、属性.希望，并且它包含"$metadata"元素。 例如，
+    本部分包括 JSON 格式的所有孪生更改。 它使用与修补程序相同的格式，差别在于它可以包含所有的所有克隆部分：标记、属性、所需的属性和包含的 "$metadata" 元素。 例如，
 
     ```json
     {
@@ -246,15 +246,15 @@ ms.locfileid: "81731467"
 
 标记、所需的属性和报告的属性是具有以下限制的 JSON 对象：
 
-* **键**：JSON 对象中的所有键都是 UTF-8 编码的、区分大小写且长度高达 1 KB 的。 允许的字符不包括 UNICODE 控制字符（段 C0 和 C1）以及 `.`、`$` 和 SP。
+* **键**： JSON 对象中的所有键都是 utf-8 编码、区分大小写和最大为 1 KB。 允许的字符不包括 UNICODE 控制字符（段 C0 和 C1）以及 `.`、`$` 和 SP。
 
-* **值**：JSON 对象中的所有值都可以具有以下 JSON 类型：布尔、数字、字符串、对象。 不允许数组。
+* **值**： json 对象中的所有值可以是以下 json 类型：布尔值、数字、字符串、对象。 不允许数组。
 
-    * 整数的最小值为 -4503599627370496，最大值为 4503599627370495。
+    * 整数的最小值可为-4503599627370496，最大值为4503599627370495。
 
-    * 字符串值为 UTF-8 编码，最大长度可达 4 KB。
+    * 字符串值是 UTF-8 编码的，最大长度为 4 KB。
 
-* **深度**：标记、所需属性和报告属性中的 JSON 对象的最大深度为 10。 例如，以下对象有效：
+* **深度**：标记、所需属性和报告属性中 JSON 对象的最大深度为10。 例如，以下对象是有效的：
 
    ```json
    {
@@ -288,21 +288,21 @@ ms.locfileid: "81731467"
 
 ## <a name="device-twin-size"></a>设备克隆的大小
 
-IoT 中心对 `tags` 的值实施 8 KB 大小限制，对 `properties/desired` 和 `properties/reported` 的值分别实施 32 KB 大小限制。 这些总计不包括只读元素，如`$etag`和`$version`。 `$metadata/$lastUpdated`
+IoT 中心对 `tags` 的值实施 8 KB 大小限制，对 `properties/desired` 和 `properties/reported` 的值分别实施 32 KB 大小限制。 这些总计由只读元素（如`$etag`、 `$version`和`$metadata/$lastUpdated`）排除。
 
-双大小按如下方式计算：
+克隆大小的计算方式如下：
 
-* 对于 JSON 文档中的每个属性，IoT 中心会累积计算并添加属性的键和值的长度。
+* 对于 JSON 文档中的每个属性，IoT 中心累积计算并添加属性的键和值的长度。
 
 * 属性键被视为 UTF8 编码的字符串。
 
-* 简单属性值被视为 UTF8 编码字符串、数值（8 字节）或布尔值 （4 字节）。
+* 简单属性值被视为 UTF8 编码的字符串、数字值（8字节）或布尔值（4字节）。
 
-* UTF8 编码字符串的大小是通过计算所有字符（不包括 UNICODE 控制字符（段 C0 和 C1）来计算的。
+* UTF8 编码字符串的大小通过对所有字符进行计数计算，不包括 UNICODE 控制字符（段 C0 和 C1）。
 
-* 复杂属性值（嵌套对象）是根据属性键及其包含的属性值的聚合大小计算的。
+* 复杂属性值（嵌套对象）根据它们所包含的属性键和属性值的聚合大小进行计算。
 
-IoT 中心以错误拒绝所有将 增大`tags`的 、`properties/desired`或`properties/reported`文档超出限制的文档大小的操作。
+IoT 中心拒绝错误所有操作，这些操作将增加`tags`、 `properties/desired`或`properties/reported`文档的大小超出限制。
 
 ## <a name="device-twin-metadata"></a>设备克隆的元数据
 
@@ -360,7 +360,7 @@ IoT 中心保留设备孪生所需属性和报告属性中每个 JSON 对象的�
 ## <a name="optimistic-concurrency"></a>乐观并发
 
 标记、所需的属性和报告的属性都支持乐观并发。
-标记具有一个 ETag，如[RFC7232](https://tools.ietf.org/html/rfc7232)，表示标记的 JSON 表示形式。 可在解决方案后端上的条件更新操作中使用 ETag 来确保一致性。
+标记具有每个[RFC7232](https://tools.ietf.org/html/rfc7232)的 ETag，它表示标记的 JSON 表示形式。 可在解决方案后端上的条件更新操作中使用 ETag 来确保一致性。
 
 设备孪生所需的属性和报告的属性不包含 ETag，但包含一个保证可递增的 `$version` 值。 更新方可以使用类似于 ETag 的版本来强制实施更新一致性。 例如，报告的属性的设备应用，或者所需的属性的解决方案后端。
 

@@ -9,25 +9,25 @@ ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
 ms.openlocfilehash: 87776c14e45ff4bb3cce6661323d74a1315c8ab2
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81757097"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>在 Azure 上优化 Linux VM
-通过命令行或门户创建运行 Linux 虚拟机 (VM) 是一项很简单的操作。 本教程说明如何在 Microsoft Azure 平台上设置 VM 以确保优化其性能。 本主题使用 Ubuntu Server VM，不过你也可以[将自己的映像作为模板](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)来创建 Linux 虚拟机。  
+通过命令行或门户创建运行 Linux 虚拟机 (VM) 是一项很简单的操作。 本教程说明如何在 Microsoft Azure 平台上设置 VM 以确保优化其性能。 本主题使用 Ubuntu Server VM，不过也可以[将自己的映像作为模板](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)来创建 Linux 虚拟机。  
 
 ## <a name="prerequisites"></a>先决条件
 本主题假设用户已有一个有效的 Azure 订阅（[注册免费试用版](https://azure.microsoft.com/pricing/free-trial/)），并已在 Azure 订阅中预配 VM。 在[创建 VM](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 之前，请确保已安装最新的 [Azure CLI](/cli/azure/install-az-cli2) 并使用 [az login](/cli/azure/reference-index) 登录到 Azure 订阅。
 
 ## <a name="azure-os-disk"></a>Azure OS 磁盘
-在 Azure 中创建 Linux VM 后，它将具有两个与之关联的磁盘。 **/dev/sda**是您的 OS 磁盘 **，/dev/sdb**是您的临时磁盘。  请勿将主要 OS 磁盘 (**/dev/sda**) 用于操作系统以外的用途，因为它已针对快速启动 VM 进行优化，无法为工作负荷提供良好的性能。 要获得持久且经过优化的数据存储，可以将一个或多个磁盘附加到 VM。 
+在 Azure 中创建 Linux VM 后，它具有两个与之关联的磁盘。 **/dev/sda** 是 OS 磁盘， **/dev/sdb** 是临时磁盘。  请勿将主要 OS 磁盘 ( **/dev/sda**) 用于操作系统以外的用途，因为它已针对快速启动 VM 进行优化，无法为工作负荷提供良好的性能。 要获得持久且经过优化的数据存储，可以将一个或多个磁盘附加到 VM。 
 
 ## <a name="adding-disks-for-size-and-performance-targets"></a>添加磁盘以实现大小和性能目标
-根据 VM 大小，您可以在 A 系列上附加多达 16 个其他磁盘，在 D 系列上连接 32 个磁盘，在 G 系列计算机上连接 64 个磁盘 ，每个磁盘的大小高达 32 TB。 可以根据空间和 IOps 要求以及自己的需要添加额外的磁盘。 每个磁盘的标准存储的性能目标为 500 IOps，高级存储的每个磁盘的性能目标高达 20，000 IOps。
+根据 VM 大小，可以在 A 系列、32磁盘上的 D 系列和64磁盘上附加最多16个附加磁盘，每个磁盘最大可达 32 TB。 可以根据空间和 IOps 要求以及自己的需要添加额外的磁盘。 对于标准存储，每个磁盘的性能目标为 500 IOps；对于高级存储，每个磁盘的性能目标最高为 20,000 IOps。
 
-要在高级存储磁盘上实现最高的 IOps，其中其缓存设置已设置为 **"只读"** 或 **"无**"，您必须在 Linux 中安装文件系统时禁用**障碍**。 不需要屏障，因为写入高级存储支持的磁盘对于这些缓存设置是持久的。
+对于缓存设置为“ReadOnly”或“None”的高级存储磁盘，必须在 Linux 中装入文件系统时禁用“barrier”（屏障）才能达到最高 IOps。    不需要屏障，因为写入高级存储支持的磁盘对于这些缓存设置是持久的。
 
 * 如果使用的是 **reiserFS**，请使用装入选项 `barrier=none` 禁用屏障（若要启用屏障，请使用 `barrier=flush`）
 * 如果使用的是 **ext3/ext4**，请使用装入选项 `barrier=0` 禁用屏障（若要启用屏障，请使用 `barrier=1`）
@@ -42,10 +42,10 @@ ms.locfileid: "81757097"
  
 
 ## <a name="your-vm-temporary-drive"></a>VM 临时驱动器
-默认情况下，创建 VM 时，Azure 将提供 OS 磁盘 (**/dev/sda**) 和临时磁盘 (**/dev/sdb**)。  您添加的所有附加磁盘将显示为 /dev/sdc、/dev/sdd、/dev/sde 等。 **/dev/sdc** **/dev/sdd** **/dev/sde** 临时磁盘上的所有数据 （**/dev/sdb**） 都不允许持久，如果 VM 调整大小、重新部署或维护等特定事件强制重新启动 VM，则可能会丢失。  临时磁盘的类型和大小与在部署时选择的 VM 大小相关。 所有高级大小的 VM（DS、G 和 DS_V2 系列），临时驱动器均由本地 SSD 提供支持，因此可以实现最高 48k IOps 的附加性能。 
+默认情况下，创建 VM 时，Azure 会提供 OS 磁盘 ( **/dev/sda**) 和临时磁盘 ( **/dev/sdb**)。  额外添加的所有磁盘显示为 **/dev/sdc**、 **/dev/sdd**、 **/dev/sde**，依此类推。 临时磁盘 ( **/dev/sdb**) 上的所有数据均不具有持久性，因此当发生 VM 调整大小、重新部署或维护等特定事件，从而迫使 VM 重新启动时，数据可能会丢失。  临时磁盘的类型和大小与在部署时选择的 VM 大小相关。 所有高级大小的 VM（DS、G 和 DS_V2 系列），临时驱动器均由本地 SSD 提供支持，因此可以实现最高 48k IOps 的附加性能。 
 
 ## <a name="linux-swap-partition"></a>Linux 交换分区
-如果 Azure VM 来自 Ubuntu 或 CoreOS 映像，则可以使用 CustomData 将 cloud-config 发送到 cloud-init。 如果已[上传使用 cloud-init 的自定义 Linux](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)映像，则还可以使用 cloud-init 配置交换分区。
+如果 Azure VM 来自 Ubuntu 或 CoreOS 映像，则可以使用 CustomData 将 cloud-config 发送到 cloud-init。 如果已[上传使用 cloud-init 的自定义 Linux 映像](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，则还可以使用 cloud-init 配置交换分区。
 
 在 Ubuntu 云映像上，必须使用 cloud-init 配置交换分区。 有关详细信息，请参阅 [AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions)。
 
@@ -72,7 +72,7 @@ Swap:       524284          0     524284
 随着 2.6.18 Linux 内核的推出，默认 I/O 调度算法已从 Deadline 更改为 CFQ（完全公平的队列算法）。 对于随机访问 I/O 模式，CFQ 与 Deadline 之间的性能差异可忽略不计。  对于磁盘 I/O 模式以循序为主的基于 SSD 的磁盘，切换回到 NOOP 或 Deadline 算法可以实现更好的 I/O 性能。
 
 ### <a name="view-the-current-io-scheduler"></a>查看当前的 I/O 调度器
-使用以下命令：  
+请使用以下命令：  
 
 ```bash
 cat /sys/block/sda/queue/scheduler
@@ -97,7 +97,7 @@ root@myVM:~# update-grub
 > [!NOTE]
 > 为 **/dev/sda** 单独应用此设置毫无用处。 在有序 I/O 支配 I/O 模式的所有数据磁盘上设置。  
 
-您应该会看到以下输出，指示**grub.cfg**已成功重建，并且默认计划程序已更新为 NOOP。  
+用户应该会看到以下输出，指示已成功重新生成 **grub.cfg** 并且默认计划程序已更新为 NOOP。  
 
 ```bash
 Generating grub configuration file ...
@@ -117,9 +117,9 @@ echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 ```
 
 ## <a name="using-software-raid-to-achieve-higher-iops"></a>使用软件 RAID 来实现更高的 I/Ops
-如果工作负荷所需的 IOps 超过单个磁盘的极限，则需要使用包含多个磁盘的软件 RAID 配置。 由于 Azure 已在本地结构层执行磁盘复原，因此可以通过 RAID-0 条带化配置获得最高级别的性能。  在 Azure 环境中预配和创建磁盘，将这些磁盘附加到 Linux VM，然后分区、格式化并装入驱动器。  有关在 Azure 中针对 Linux VM 配置软件 RAID 设置的详细信息，请参阅 **[Configuring Software RAID on Linux](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**（在 Linux 上配置软件 RAID）文档。
+如果工作负荷所需的 IOps 超过单个磁盘的极限，则需要使用包含多个磁盘的软件 RAID 配置。 由于 Azure 已在本地结构层执行磁盘复原，因此可以通过 RAID-0 条带化配置获得最高级别的性能。  在 Azure 环境中预配和创建磁盘，将这些磁盘附加到 Linux VM，分区、格式化并装入驱动器。  有关在 Azure 中针对 Linux VM 配置软件 RAID 设置的详细信息，请参阅 **[在 Linux 上配置软件 RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** 文档。
 
-作为传统 RAID 配置的替代方案，还可以选择安装逻辑卷管理器 (LVM)，以便将多个物理磁盘配置到单个条带化逻辑存储卷中。 在此配置中，读取和写入将分布到卷组中包含的多个磁盘（类似于 RAID0）。 出于性能的考虑，你可能希望将逻辑卷条带化，以便读取和写入操作利用所有附加的数据磁盘。  有关在 Azure 中的 Linux VM 上配置条带化逻辑卷的更多详细信息，请参阅**[在 Azure 中的 Linux VM 上配置 LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** 文档。
+作为传统 RAID 配置的替代方案，还可以选择安装逻辑卷管理器 (LVM)，以便将多个物理磁盘配置到单个条带化逻辑存储卷中。 在此配置中，读取和写入将分布到卷组中包含的多个磁盘（类似于 RAID0）。 出于性能的考虑，你可能希望将逻辑卷条带化，以便读取和写入操作利用所有附加的数据磁盘。  有关在 Azure 中的 Linux VM 上配置条带化逻辑卷的更多详细信息，请参阅 **[在 Azure 中的 Linux VM 上配置 LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** 文档。
 
 ## <a name="next-steps"></a>后续步骤
 请记住，如同有关优化的所有文章中所述，需要在每次更改之前和之后执行测试，以衡量更改所造成的影响。  优化是一个逐序渐进的过程，在环境中不同的计算机上会产生不同的效果。  对某一项配置有用的做法不一定适用于其他配置。

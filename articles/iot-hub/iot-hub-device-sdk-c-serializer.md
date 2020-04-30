@@ -10,10 +10,10 @@ ms.date: 09/06/2016
 ms.author: robinsh
 ms.custom: amqp
 ms.openlocfilehash: d4916d651638f0d1dbb4f10e0e0732f5c330d300
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81767011"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>适用于 C 语言的 Azure IoT 设备 SDK - 有关序列化程序的详细信息
@@ -54,7 +54,7 @@ END_NAMESPACE(WeatherStation);
 
 模型包含可发送到 IoT 中心的事件（*数据*）以及可从 IoT 中心接收的消息（*操作*）的定义。 如同在示例中所见，事件具有类型和名称；操作具有一个名称和可选参数（各有一个类型）。
 
-此示例中未演示的是 SDK 支持的其他数据类型。 我们会在稍后讨论。
+本示例中未演示的内容是 SDK 支持的其他数据类型。 我们会在稍后讨论。
 
 > [!NOTE]
 > IoT 中心将设备发送到它的数据作为*事件*，而建模语言将其作为*数据*（使用 **WITH_DATA** 进行定义）。 同样，IoT 中心将你发送到设备的数据作为*消息*，而建模语言将其作为*操作*（使用 **WITH_ACTION** 进行定义）。 请注意，本文中可能会换用这些术语。
@@ -71,8 +71,8 @@ END_NAMESPACE(WeatherStation);
 | int |32-bit integer |
 | float |单精度浮点数 |
 | long |长整数 |
-| int8\_t |8 位整数 |
-| int16\_t |16 位整数 |
+| int8\_t |8位整数 |
+| int16\_t |16位整数 |
 | int32\_t |32-bit integer |
 | int64\_t |64-bit integer |
 | bool |布尔值 |
@@ -82,7 +82,7 @@ END_NAMESPACE(WeatherStation);
 | EDM\_BINARY |binary |
 | DECLARE\_STRUCT |复杂数据类型 |
 
-让我们从最后一个数据类型开始。 **DECLARE\_STRUCT** 可用来定义作为其他基元类型的分组的复杂数据类型。 这些分组可让我们定义如下所示的模型：
+让我们从最后一种数据类型开始。 **DECLARE\_STRUCT** 可用来定义作为其他基元类型的分组的复杂数据类型。 这些分组可让我们定义如下所示的模型：
 
 ```C
 DECLARE_STRUCT(TestType,
@@ -140,7 +140,7 @@ testModel->Test.aBinary = binaryData;
 SendAsync(iotHubClientHandle, (const void*)&(testModel->Test));
 ```
 
-基本上，我们将为**测试**结构的每个成员分配一个值，然后调用**SendAsync**将**测试**数据事件发送到云。 **SendAsync** 是将单个数据事件发送到 IoT 中心的帮助器函数：
+基本上，我们要为**测试**结构的每个成员赋值，然后调用**SendAsync**将**测试**数据事件发送到云。 **SendAsync** 是将单个数据事件发送到 IoT 中心的帮助器函数：
 
 ```C
 void SendAsync(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const void *dataEvent)
@@ -252,7 +252,7 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature) == IOT_AG
 }
 ```
 
-我们将在示例代码中使用硬编码值的温度和湿度，但假设我们实际上是通过采样恒温器上的相应传感器来检索这些值。
+我们将对示例代码中的温度和湿度使用硬编码值，但假设我们确实要通过对恒温器中的相应传感器采样来检索这些值。
 
 上述代码使用前面介绍的帮助器 **GetDateTimeOffset** 。 此代码将序列化与发送事件的任务明确区分，原因在稍后将渐趋明朗。 前面的代码将温度事件以序列化方式发送到缓冲区。 **sendMessage** 是将事件发送到 IoT 中心的帮助器函数（包括在 **simplesample\_amqp** 中）：
 
@@ -271,7 +271,7 @@ static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned 
 }
 ```
 
-此代码是上一节中描述的**SendAsync**帮助器的子集，因此我们不会再在此处介绍它。
+此代码是上一节中所述的**SendAsync**帮助器的子集，因此我们不会在此处再次讨论。
 
 运行前面的代码发送温度事件时，事件的序列化形式将发送到 IoT 中心：
 
@@ -279,7 +279,7 @@ static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned 
 {"Temperature":75, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-我们发送的温度，这是**类型温度事件**，并且结构包含**温度**和**时间**成员。 这直接反映在序列化数据中。
+我们发送的温度为**TemperatureEvent**类型，该结构包含**温度**和**时间**成员。 这直接反映在序列化数据中。
 
 同样，我们可以使用以下代码发送湿度事件：
 
@@ -292,7 +292,7 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Humidity) == IOT_AGENT
 }
 ```
 
-发送到 IoT 中心的序列化窗体如下所示：
+发送到 IoT 中心的序列化形式如下所示：
 
 ```C
 {"Humidity":45, "Time":"2015-09-17T18:45:56Z"}
@@ -302,7 +302,7 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Humidity) == IOT_AGENT
 
 可以使用此模型来想象如何轻松地添加其他事件。 可以使用 **DECLARE\_STRUCT** 定义更多结构，使用 **WITH\_DATA** 在模型中包含相应的事件。
 
-现在，让我们修改模型，使其包含相同的数据，但结构不同。
+现在，让我们修改模型，使它包含相同的数据，但具有不同的结构。
 
 ### <a name="model-2"></a>模型 2
 
@@ -316,9 +316,9 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 );
 ```
 
-在这种情况下，我们已消除**DECLARE\_STRUCT**宏，并且只是使用建模语言中的简单类型从方案中定义数据项。
+在这种情况下，我们已经消除了**DECLARE\_结构**宏，只需使用建模语言中的简单类型从我们的方案定义数据项。
 
-此时，可以忽略 **Time** 事件。 除此之外，下面是进入**温度**的代码：
+此时，可以忽略 **Time** 事件。 这样一来，以下代码就进入**温度**：
 
 ```C
 time_t now;
@@ -370,7 +370,7 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature, thermosta
 
 [ {"Temperature":75}, {"Humidity":45} ]
 
-换而言之，可以预料此代码与分别发送 **Temperature** 和 **Humidity** 相同， 在同一调用中将两个事件传递给**SERIALIZE**只是一种便利性。 然而，事实并非如此。 上述代码会将此单个数据事件发送到 IoT 中心：
+换而言之，可以预料此代码与分别发送 **Temperature** 和 **Humidity** 相同， 这只是在同一调用中传递两个事件以进行**序列化**的便利。 但这并不是这样。 上述代码会将此单个数据事件发送到 IoT 中心：
 
 {"Temperature":75, "Humidity":45}
 
@@ -384,7 +384,7 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 );
 ```
 
-更重要的是，我们没有对**温度**和**湿度**位于同一结构中的这些事件进行建模：
+更多情况下，我们没有对这些事件进行建模，其中**温度**和**湿度**处于相同的结构中：
 
 ```C
 DECLARE_STRUCT(TemperatureAndHumidityEvent,
@@ -399,7 +399,7 @@ WITH_DATA(TemperatureAndHumidityEvent, TemperatureAndHumidity),
 
 如果我们使用此模型，则可以轻松地了解如何在同一序列化消息中发送 **Temperature** 和 **Humidity**。 但是可能不容易看出使用第二个模型将这两个数据事件传递到 **SERIALIZE** 时它的行为的原因。
 
-如果知道**序列化程序**库所做的假设，则更容易理解此行为。 为了理解这一点，让我们回到我们的模型：
+如果知道**序列化程序**库所做的假设，则更容易理解此行为。 要了解这一点，让我们返回到模型：
 
 ```C
 DECLARE_MODEL(Thermostat,
@@ -409,7 +409,7 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 );
 ```
 
-请以对象定向的观点思考此模型。 在这种情况下，我们正在对物理设备（恒温器）进行建模，该设备包括**温度**和**湿度**等属性。
+请以对象定向的观点思考此模型。 在这种情况下，我们要对物理设备（恒温器）进行建模，并且该设备包含**温度**和**湿度**等属性。
 
 可以利用类似于下面的代码来发送模型的整个状态：
 
@@ -426,31 +426,31 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature, thermosta
 {"Temperature":75, "Humidity":45, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-有时，可能只想将模型的*某些*属性发送到云（特别是当模型包含大量数据事件时）。 只发送数据事件的子集很有用，例如在前面的示例中：
+有时，可能只想将模型的*某些*属性发送到云（特别是当模型包含大量数据事件时）。 仅发送部分数据事件（例如在前面的示例中）很有用：
 
 ```C
 {"Temperature":75, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-这会生成完全相同的序列化的事件，就像我们在模型 1 中定义带有 **Temperature** 和 **Time** 成员的 **TemperatureEvent** 一样。 在这种情况下，我们能够使用不同的模型（模型 2）生成完全相同的序列化事件，因为我们以不同的方式调用**SERIALIZE。**
+这会生成完全相同的序列化的事件，就像我们在模型 1 中定义带有 **Temperature** 和 **Time** 成员的 **TemperatureEvent** 一样。 在这种情况下，我们可以通过使用不同的模型（模型2）来生成完全相同的序列化事件，因为我们以不同的方式调用了**序列化**事件。
 
 重点是，如果将多个数据事件传递给 **SERIALIZE,**，则它会假设每个事件都是单个 JSON 对象中的一个属性。
 
-最佳方法取决于自己以及对模型的思考方式。 如果要向云发送"事件"，并且每个事件都包含一组定义的属性，则第一种方法很有意义。 在此情况下，使用 **DECLARE\_STRUCT** 定义每个事件的结构，并使用 **WITH\_DATA** 宏将它们包含在模型中。 然后根据上述第一个示例中使用的方法来发送每个事件。 在此方法中，您只会将单个数据事件传递给**SERIALIZER。**
+最佳方法取决于自己以及对模型的思考方式。 如果要将 "事件" 发送到云，且每个事件都包含一组已定义的属性，则第一种方法非常有用。 在此情况下，使用 **DECLARE\_STRUCT** 定义每个事件的结构，并使用 **WITH\_DATA** 宏将它们包含在模型中。 然后根据上述第一个示例中使用的方法来发送每个事件。 在此方法中，只会将单个数据事件传递给**序列化程序**。
 
-如果以对象定向的方式思考模型，则第二种方法可能比较适合。 在本例中，使用 **WITH\_DATA** 定义的元素是对象的“属性”。 您可以将任何事件子集传递给喜欢的**SERIALIZE，** 具体取决于要发送到云的"对象"状态。
+如果以对象定向的方式思考模型，则第二种方法可能比较适合。 在本例中，使用 **WITH\_DATA** 定义的元素是对象的“属性”。 根据要发送到云的 "对象" 状态的数量，传递要**序列化**的事件的任何子集。
 
 没有绝对正确或错误的方法。 只需了解**序列化程序**库的工作原理，并挑选最符合需求的建模方法。
 
 ## <a name="message-handling"></a>消息处理
 
-到目前为止，本文只讨论了如何将事件发送到 IoT 中心，而尚未涉及到消息接收。 原因是，关于接收消息我们需要了解的内容在 C 的[Azure IoT 设备 SDK](iot-hub-device-sdk-c-intro.md)中已基本涵盖。从该文章中回顾，您通过注册消息回调函数来处理邮件：
+到目前为止，本文只讨论了如何将事件发送到 IoT 中心，而尚未涉及到消息接收。 出现这种情况的原因是我们在[Azure IoT 设备 SDK For C](iot-hub-device-sdk-c-intro.md)一文中介绍了有关接收消息的详细信息。回忆一下，通过注册消息回调函数来处理消息：
 
 ```C
 IoTHubClient_SetMessageCallback(iotHubClientHandle, IoTHubMessage, myWeather)
 ```
 
-然后编写收到消息时调用的回调函数：
+然后编写在接收消息时调用的回调函数：
 
 ```C
 static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)
@@ -536,7 +536,7 @@ EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
 
 ## <a name="macro-configuration"></a>宏配置
 
-如果使用**序列化器**库，则 AZURE-c 共享实用程序库中可以找到要注意的 SDK 的重要组成部分。
+如果使用的是**序列化程序**库，则在 azure--共享实用程序库中已找到要注意的 SDK 的重要部分。
 
 如果已从 GitHub 克隆了 Azure-iot-sdk-c 存储库并发出了 `git submodule update --init` 命令，则将在以下位置找到此共享实用程序库：
 
@@ -556,9 +556,9 @@ azure-c-shared-utility\\macro\_utils\_h\_generator.
 
   ![Visual Studio 解决方案 maco_utils_h_generator 的屏幕截图](media/iot-hub-device-sdk-c-serializer/01-macro_utils_h_generator.png)
 
-此解决方案中的程序将生成 **macro\_utils.h** 文件。 SDK 中包含默认宏\_utils.h 文件。 此解决方案可让用户修改某些参数，并根据这些参数重新创建标头文件。
+此解决方案中的程序将生成 **macro\_utils.h** 文件。 SDK 附带了一个默认\_的 macro utils 文件。 此解决方案可让用户修改某些参数，并根据这些参数重新创建标头文件。
 
-要关注的两个关键参数是**n算术**参数和**nMacro 参数**，它们在宏\_utils.tt中的这两行中定义：
+要关注的两个关键参数为**nArithmetic**和**nMacroParameters**，这些参数在 macro\_utils.tt 的以下两行中定义：
 
 ```C
 <#int nArithmetic=1024;#>
@@ -609,7 +609,7 @@ WITH_DATA(int, MyData)
 到目前为止，我们已经介绍了使用**序列化程序**库编写代码所需了解的所有内容。 结束前，来回顾下前面文章中可能感兴趣的一些主题。
 
 ## <a name="the-lower-level-apis"></a>较低级别 API
-这篇文章重点介绍的示例应用程序是 **simplesample\_amqp**。 此示例使用较高级别 （非**LL**） API 发送事件和接收消息。 如果使用这些 API，将运行后台线程来处理事件发送和消息接收。 不过，可以使用较低级别 (LL) API 以取消此后台线程，并在发送事件或接收来自云的消息时接管显式控制。
+这篇文章重点介绍的示例应用程序是 **simplesample\_amqp**。 此示例使用较高级别的（非**LL**） api 来发送事件和接收消息。 如果使用这些 API，将运行后台线程来处理事件发送和消息接收。 不过，可以使用较低级别 (LL) API 以取消此后台线程，并在发送事件或接收来自云的消息时接管显式控制。
 
 如[上一篇文章](iot-hub-device-sdk-c-iothubclient.md)所述，还有一组函数包含较高级别的 API：
 
@@ -654,7 +654,7 @@ serializer_init(NULL);
 
 此操作必须在调用 **IoTHubClient\_CreateFromConnectionString** 之前完成。
 
-同样，当您使用完库后，您最后一次调用是**序列化器\_deinit：**
+同样，在使用完库后，最后一次调用是**序列化程序\_deinit**：
 
 ```C
 serializer_deinit();
@@ -664,9 +664,9 @@ serializer_deinit();
 
 ## <a name="next-steps"></a>后续步骤
 
-本文详细介绍了**Azure IoT 设备 SDK 中包含的序列****化器**库的独特方面。通过提供的信息，您应该能够很好地了解如何使用模型发送事件和接收来自 IoT 中心的消息。
+本文详细介绍了**适用于 C 语言的 Azure IoT 设备 SDK**中包含的**序列化程序**库的独特方面。利用提供的信息，您应该能够充分了解如何使用模型来发送事件和从 IoT 中心接收消息。
 
-本文还总结了有关如何使用**Azure IoT 设备 SDK 为 C**开发应用程序的三部分系列。这应该足够获得足够的信息，不仅帮助您入门，而且让您全面了解 API 的工作原理。 请了解其他信息，因为还有一些 SDK 中的示例未涵盖在本文中。 除此之外，[Azure IoT SDK 文档](https://github.com/Azure/azure-iot-sdk-c)也是获取其他信息的绝佳资源。
+这还介绍了如何通过**适用于 C 语言的 Azure IoT 设备 SDK**开发应用程序的三部分系列。此信息应该足以满足您的需要，但您可以全面了解 Api 的工作原理。 请了解其他信息，因为还有一些 SDK 中的示例未涵盖在本文中。 除此之外，[Azure IoT SDK 文档](https://github.com/Azure/azure-iot-sdk-c)也是获取其他信息的绝佳资源。
 
 若要详细了解如何针对 IoT 中心进行开发，请参阅 [Azure IoT SDK](iot-hub-devguide-sdks.md)。
 

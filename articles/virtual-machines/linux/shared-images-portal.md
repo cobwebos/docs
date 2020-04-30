@@ -11,10 +11,10 @@ ms.date: 11/06/2019
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 74c87d589f1c50551ac5685fe0fa126a82bffbde
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758439"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>使用门户创建 Azure 共享映像库
@@ -61,7 +61,7 @@ ms.locfileid: "81758439"
 1. 在映像定义的页面顶部，从菜单中选择“创建 VM”。 
 1. 对于“资源组”，请选择“新建”并键入 *myResourceGroup* 作为名称。  
 1. 在“虚拟机名称”中键入 *myVM*。 
-1. 对于**区域**，选择 *"美国东部*"。
+1. 对于 "**区域**"，选择 "*美国东部*"。
 1. 对于“可用性选项”，请保留默认设置“无需基础结构冗余”。  
 1. 如果你是从映像定义的页面开始操作的，系统会自动使用 `latest` 映像版本填充“映像”的值。 
 1. 对于“大小”，请从可用大小列表中选择一种 VM 大小，然后选择“选择”。  

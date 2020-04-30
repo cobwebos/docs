@@ -4,10 +4,10 @@ description: 修改 Azure 政府等区域的默认 Azure Monitor Application Ins
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.openlocfilehash: b43bd13c73f77c6292e2062db88d68a20e5bf480
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81729531"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>替代默认终结点的 Application Insights
@@ -15,7 +15,7 @@ ms.locfileid: "81729531"
 若要将 Application Insights 中的数据发送到某些区域，需要替代默认终结点地址。 每个 SDK 都需要进行稍有不同的修改，本文将对所有这些修改进行说明。 这些更改需要调整示例代码，并将 `QuickPulse_Endpoint_Address`、`TelemetryChannel_Endpoint_Address` 和 `Profile_Query_Endpoint_address` 的占位符值替换为特定区域的实际终结点地址。 本文末尾包含指向需要此配置的区域的终结点地址的链接。
 
 > [!NOTE]
-> [连接字符串](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net)是在应用程序见解中设置自定义终结点的新的首选方法。
+> [连接字符串](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net)是在 Application Insights 中设置自定义终结点的新首选方法。
 
 ---
 
@@ -196,7 +196,7 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 
 # <a name="python"></a>[Python](#tab/python)
 
-有关修改开放census-python SDK 的引入终结点的指导，请参阅[开放census-python 回购。](https://github.com/census-instrumentation/opencensus-python/blob/af284a92b80bcbaf5db53e7e0813f96691b4c696/contrib/opencensus-ext-azure/opencensus/ext/azure/common/__init__.py)
+有关修改 opencensus SDK 的引入终结点的指南，请参阅 opencensus 存储库[。](https://github.com/census-instrumentation/opencensus-python/blob/af284a92b80bcbaf5db53e7e0813f96691b4c696/contrib/opencensus-ext-azure/opencensus/ext/azure/common/__init__.py)
 
 ---
 

@@ -12,10 +12,10 @@ ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: b42c2a414333e7ed262441321a808fc45425fc3b
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81756759"
 ---
 # <a name="json-claims-transformations"></a>JSON 声明转换
@@ -223,17 +223,17 @@ ms.locfileid: "81756759"
 - 输出声明：
     -  extractedClaim:6353399
 
-## <a name="getsingleitemfromjson"></a>从Json获取单物项目
+## <a name="getsingleitemfromjson"></a>GetSingleItemFromJson
 
-从 JSON 数据获取第一个元素。
+获取 JSON 数据中的第一个元素。
 
 | 项目 | TransformationClaimType | 数据类型 | 注释 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputJson | string | 声明转换用于从 JSON 数据获取项的声明类型。 |
+| InputClaim | inputJson | string | 由声明转换用来从 JSON 数据获取项的 ClaimTypes。 |
 | OutputClaim | key | string | JSON 中的第一个元素键。 |
 | OutputClaim | 值 | 字符串 | JSON 中的第一个元素值。 |
 
-在下面的示例中，声明转换从 JSON 数据中提取第一个元素（给定名称）。
+在下面的示例中，声明转换从 JSON 数据提取第一个元素（名为）。
 
 ```XML
 <ClaimsTransformation Id="GetGivenNameFromResponse" TransformationMethod="GetSingleItemFromJson">
@@ -250,17 +250,17 @@ ms.locfileid: "81756759"
 ### <a name="example"></a>示例
 
 - 输入声明：
-  - **输入Json：**{"指定名称"："埃米尔"，"姓氏"："史密斯"*
+  - **inputjson.txt**： {"givenName"： "Emilty"，"lastName"： "Smith"}
 - 输出声明：
-  - **键**： 给定名称
-  - **值**： 埃米尔
+  - **密钥**： givenName
+  - **值**： Emilty
 
 
 ## <a name="getsinglevaluefromjsonarray"></a>GetSingleValueFromJsonArray
 
 从 JSON 数据数组中获取第一个元素。
 
-| 项 | TransformationClaimType | 数据类型 | 说明 |
+| 项 | TransformationClaimType | 数据类型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputJsonClaim | 字符串 | 由声明转换用于从 JSON 数组中获取项的 ClaimTypes。 |
 | OutputClaim | extractedClaim | 字符串 | 调用此 ClaimsTransformation 后生成的 ClaimType，即 JSON 数组中的第一个元素。 |
@@ -281,15 +281,15 @@ ms.locfileid: "81756759"
 ### <a name="example"></a>示例
 
 - 输入声明：
-  - **输入JonClaim：**["，"someone@example.com某人"，6353399]
+  - **inputJsonClaim**： ["someone@example.com"，"有人"，6353399]
 - 输出声明：
-  - **提取索赔**：someone@example.com
+  - **extractedClaim**：someone@example.com
 
 ## <a name="xmlstringtojsonstring"></a>XmlStringToJsonString
 
 将 XML 数据转换为 JSON 格式。
 
-| 项 | TransformationClaimType | 数据类型 | 说明 |
+| 项 | TransformationClaimType | 数据类型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | xml | 字符串 | 由声明转换用于将数据从 XML 转换为 JSON 格式的 ClaimTypes。 |
 | OutputClaim | json | 字符串 | 调用此 ClaimsTransformation 后生成的 ClaimType，即采用 JSON 格式的数据。 |

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 创建共享图像库
+title: 创建具有 Azure CLI 的共享映像库
 description: 在本文中，你将了解如何使用 Azure CLI 在 Azure 中创建 VM 的共享映像。
 author: cynthn
 ms.service: virtual-machines
@@ -10,10 +10,10 @@ ms.date: 05/06/2019
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: c75d33f8310cfd143bf201cdac861954d07baf0b
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758419"
 ---
 # <a name="create-a-shared-image-gallery-with-the-azure-cli"></a>使用 Azure CLI 创建共享映像库
@@ -56,7 +56,7 @@ az vm create\
 [!INCLUDE [virtual-machines-common-shared-images-update-delete-cli](../../../includes/virtual-machines-common-shared-images-update-delete-cli.md)]
 
 ## <a name="next-steps"></a>后续步骤
-[Azure 映像生成器（预览）](image-builder-overview.md)可以帮助自动创建映像版本，您甚至可以使用它[从现有映像版本更新和创建新映像版本](image-builder-gallery-update-image-version.md)。 
+[Azure 映像生成器（预览版）](image-builder-overview.md)可帮助自动创建映像版本，甚至还可以使用它来更新[现有映像版本并创建新的映像版本](image-builder-gallery-update-image-version.md)。 
 
 此外可以使用模板创建共享映像库资源。 提供多个 Azure 快速入门模板： 
 

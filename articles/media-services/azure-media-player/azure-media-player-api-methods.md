@@ -1,34 +1,34 @@
 ---
-title: Azure 媒体播放器 API 方法
-description: Azure 媒体播放器 API 允许您通过 JavaScript 与视频进行交互，无论浏览器是通过 HTML5 视频、Flash、Silverlight 或任何其他受支持的播放技术播放视频。
+title: Azure Media Player API 方法
+description: 使用 Azure Media Player API 可以通过 JavaScript 与视频交互，无论浏览器是通过 HTML5 视频、Flash、Silverlight 还是任何其他受支持的播放技术播放视频。
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: d1ad0cbe30ce20e61a31f0534a47fe031f6f257b
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81727263"
 ---
 # <a name="api"></a>API #
 
-Azure 媒体播放器 API 允许您通过 JavaScript 与视频进行交互，无论浏览器是通过 HTML5 视频、Flash、Silverlight 或任何其他受支持的播放技术播放视频。
+使用 Azure Media Player API 可以通过 JavaScript 与视频交互，无论浏览器是通过 HTML5 视频、Flash、Silverlight 还是任何其他受支持的播放技术播放视频。
 
-## <a name="referencing-the-player"></a>引用播放器 ##
+## <a name="referencing-the-player"></a>引用播放机 ##
 
-要使用 API 函数，您需要访问播放器对象。 幸运的是，这是很容易得到。 您只需确保您的视频标签具有 ID。 示例嵌入代码的 ID 为`vid1`。 如果一个页面上有多个视频，请确保每个视频标记都具有唯一的 ID。
+若要使用 API 函数，需要访问 player 对象。 幸运的是，很容易获得。 只需确保视频标记具有 ID。 嵌入代码的示例具有一个 ID `vid1`。 如果一个页面上有多个视频，请确保每个视频标记都具有唯一的 ID。
 
 `var myPlayer = amp('vid1');`
 
 > [!NOTE]
-> 如果玩家尚未通过数据设置属性或其他方法初始化，这也将初始化该播放器。
+> 如果尚未通过数据安装属性或其他方法初始化播放机，这也会初始化播放器。
 
-## <a name="wait-until-the-player-is-ready"></a>等待玩家准备就绪 ##
+## <a name="wait-until-the-player-is-ready"></a>等待播放机准备就绪 ##
 
-设置视频和 API 所需的时间因正在使用的播放技术而异。 HTML5 的加载速度通常比闪存或银光快得多。 因此，玩家的"就绪"功能应用于触发任何需要玩家 API 的代码。
+Azure Media Player 设置视频和 API 所花的时间取决于所使用的播放技术。 HTML5 的加载速度通常比 Flash 或 Silverlight 要快得多。 出于此原因，应该使用播放机的 "就绪" 函数触发需要播放机的 API 的任何代码。
 
 ```javacript
     amp("vid_1").ready(function(){
@@ -49,7 +49,7 @@ OR
 
 ## <a name="api-methods"></a>API 方法 ##
 
-现在，您可以访问现成的播放器，您可以控制视频、获取值或响应视频事件。 Azure 媒体播放器 API 函数名称尝试遵循[HTML5 媒体 API](http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html)。 主要区别是 getter/setter 函数用于视频属性。
+现在，你可以访问准备就绪的播放机，可以控制视频、获取值或响应视频事件。 Azure Media Player API 函数名称将尝试遵循[HTML5 媒体 API](http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html)。 主要区别在于，getter/setter 函数用于视频属性。
 
 ```javacript
     // setting a property on a bare HTML5 video element
@@ -59,8 +59,8 @@ OR
     myPlayer.currentTime(120);
 ```
 
-## <a name="registering-for-events"></a>注册活动 ##
-事件应在首次初始化播放器后直接注册，以确保所有事件都适当地报告给应用程序，并且应在就绪事件之外完成。
+## <a name="registering-for-events"></a>注册事件 ##
+应在第一次初始化播放机之后直接注册事件，以确保所有事件都已正确报告给应用程序，并且应在就绪事件外完成。
 
 ```javacript
     var myPlayer = amp("vid_1", myOptions, function(){
@@ -73,4 +73,4 @@ OR
 ## <a name="next-steps"></a>后续步骤 ##
 
 <!---Some context for the following links goes here--->
-- [Azure 媒体播放器快速入门](azure-media-player-quickstart.md)
+- [Azure Media Player 快速入门](azure-media-player-quickstart.md)

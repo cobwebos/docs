@@ -1,6 +1,6 @@
 ---
 title: 在 Azure IoT Central 中定义新的 IoT 设备类型 | Microsoft Docs
-description: 本文将介绍如何作为构建者，如何在 Azure IoT 中央应用程序中创建新的 Azure IoT 设备模板。 其中介绍了如何为类型定义遥测、状态、属性和命令。
+description: 本文介绍如何在 Azure IoT Central 应用程序中创建新的 Azure IoT 设备模板，作为构建者。 其中介绍了如何为类型定义遥测、状态、属性和命令。
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/06/2019
@@ -9,15 +9,15 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 2a99f261e1a834705d081e8197e4ae627cf1cb9f
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81756647"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中定义新的 IoT 设备类型
 
-*本文适用于解决方案生成器和设备开发人员。*
+本文适用于解决方案构建者和设备开发人员。 
 
 设备模板是一个蓝图，用于定义可连接到 Azure IoT Central 应用程序的某种设备的特征和行为。
 
@@ -36,7 +36,7 @@ ms.locfileid: "81756647"
 > [!NOTE]
 > 只有构建人员和管理员可以创建、编辑和删除设备模板。 任何用户都可以在“设备”页中基于现有的设备模板创建设备。****
 
-[IoT 即插即用（预览）](../../iot-pnp/overview-iot-plug-and-play.md)使 IoT Central 能够集成设备，而无需编写任何嵌入式设备代码。 IoT 即插即用（预览版）的核心是描述设备功能的设备功能模型架构。 在 IoT Central 应用程序中，设备模板使用这些 IoT 即插即用（预览版）设备功能模型。
+[IoT 即插即用（预览版）](../../iot-pnp/overview-iot-plug-and-play.md)可让 IoT Central 集成设备，而无需编写任何嵌入的设备代码。 IoT 即插即用（预览版）的核心是描述设备功能的设备功能模型架构。 在 IoT Central 应用程序中，设备模板使用这些 IoT 即插即用（预览版）设备功能模型。
 
 作为构建者，你在创建设备模板时有多种选择：
 
@@ -66,7 +66,7 @@ ms.locfileid: "81756647"
 要在 IoT Central 中创建设备模板：
 
 1. 请转到 IoT Central 应用程序中的“设备模板”页****。
-1. 选择 **= 新** > **自定义**。
+1. 选择 " **+ 新建** > **"。**
 1. 请输入模板的名称，例如“环境传感器”****。
 1. 按 Enter****。 IoT Central 将创建一个空的设备模板。
 
@@ -104,13 +104,13 @@ ms.locfileid: "81756647"
 
     - 从头开始创建自定义接口。
     - 从文件中导入现有接口。 设备构建人员可能已使用 Visual Studio Code 来创建设备接口。
-    - 选择其中一个标准接口，如**设备信息**接口。 标准接口指定许多设备通用的功能。 这些标准接口由 Azure IoT 发布，且无法对其进行版本控制或编辑。
+    - 选择某个标准接口，如**设备信息**接口。 标准接口指定许多设备通用的功能。 这些标准接口由 Azure IoT 发布，且无法对其进行版本控制或编辑。
 
 1. 创建接口后，选择“编辑标识”以更改接口的显示名称****。
 
 1. 如果选择从头开始创建自定义接口，则可添加设备的功能。 设备功能包括遥测、属性和命令。
 
-### <a name="telemetry"></a>遥测
+### <a name="telemetry"></a>遥测技术
 
 遥测是从设备发送的值流，通常来自传感器。 例如，传感器可能会报告环境温度。
 
@@ -125,7 +125,7 @@ ms.locfileid: "81756647"
 | 架构 | 遥测数据类型，如 double、string 或 vector。 可用的选项取决于语义类型。 架构不可用于事件和状态语义类型。 |
 | 严重性 | 仅适用于事件语义类型。 严重性为“错误”、“信息”或“警告”************。 |
 | 状态值 | 仅适用于状态语义类型。 定义可能的状态值，其中每个状态值都具有显示名称、名称、枚举类型和值。 |
-| 单位 | 遥测值的单位，如**mph**、**%****&deg;或 C**。 |
+| 单位 | 遥测值的单位，例如**mph**、 **%** 或** &deg;C**。 |
 | 显示单位 | 仪表板和窗体上使用的显示单位。 |
 | 注释 | 有关遥测功能的任何注释。 |
 | 说明 | 遥测功能的说明。 |
@@ -146,7 +146,7 @@ ms.locfileid: "81756647"
 | 可写 | 如果属性不是可写，则设备可向 IoT Central 报告属性值。 如果属性是可写的，则该设备可以向 IoT Central 报告属性值，而 IoT Central 可将属性更新发送到设备。
 | 严重性 | 仅适用于事件语义类型。 严重性为“错误”、“信息”或“警告”************。 |
 | 状态值 | 仅适用于状态语义类型。 定义可能的状态值，其中每个状态值都具有显示名称、名称、枚举类型和值。 |
-| 单位 | 属性值的单位，如**mph**、**%** 或**&deg;C**。 |
+| 单位 | 属性值的单位，如**mph**、 **%** 或** &deg;C**。 |
 | 显示单位 | 仪表板和窗体上使用的显示单位。 |
 | 注释 | 有关属性功能的任何注释。 |
 | 说明 | 属性功能的说明。 |
@@ -162,7 +162,7 @@ ms.locfileid: "81756647"
 | 显示名称 | 仪表板和窗体上使用的命令的显示名称。 |
 | 名称 | 命令的名称。 IoT Central 将根据显示名称生成此字段的值，但你可根据需要选择自己的值。 |
 | 功能类型 | 命令。 |
-| 命令 | `SynchronousExecutionType`. |
+| Command | `SynchronousExecutionType`. |
 | 注释 | 有关命令功能的任何注释。 |
 | 说明 | 命令功能的说明。 |
 | 请求 | 如果启用，则请求参数的定义包括：名称、显示名称、架构、单位和显示单位。 |
@@ -189,7 +189,7 @@ ms.locfileid: "81756647"
 
 ## <a name="add-customizations"></a>添加自定义项
 
-需要修改导入的接口或将 IoT Central 特定的功能添加到功能时，可以使用自定义项。 只能自定义不会破坏接口兼容性的字段。 例如，你能够：
+需要修改导入的接口或将 IoT Central 特定的功能添加到功能时，可以使用自定义项。 只能自定义不会破坏接口兼容性的字段。 例如，你可以：
 
 - 自定义功能的显示名称和单位。
 - 添加在图表上显示值时要使用的默认颜色。
@@ -257,4 +257,4 @@ ms.locfileid: "81756647"
 
 ## <a name="next-steps"></a>后续步骤
 
-如果您是设备开发人员，建议的下一步是阅读有关[设备模板版本控制](./howto-version-device-template.md)的信息。
+如果你是一名设备开发人员，建议下一步是了解[设备模板版本控制](./howto-version-device-template.md)。

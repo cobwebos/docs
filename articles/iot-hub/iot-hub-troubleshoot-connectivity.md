@@ -10,10 +10,10 @@ ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: mqtt
 ms.openlocfilehash: 82139eef9708ff8d76e1087c71aa5445ba898385
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759610"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>监视、诊断和排查 Azure IoT 中心的连接断开问题
@@ -46,7 +46,7 @@ ms.locfileid: "81759610"
 
 ### <a name="set-up-alerts-for-device-disconnect-at-scale"></a>针对设备断开连接大规模地设置警报
 
-要在设备断开连接时获取警报，请在 **"已连接的设备（预览）"** 指标上配置警报。
+若要在设备断开连接时获取警报，请在 "**已连接的设备（预览版）** " 指标上配置警报。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
@@ -101,7 +101,7 @@ ms.locfileid: "81759610"
 
 * 如果你有权以物理方式或远程访问（例如通过 SSH）有问题的设备，请遵循[设备端故障排除指南](https://github.com/Azure/azure-iot-sdk-node/wiki/Troubleshooting-Guide-Devices)继续进行故障排除。
 
-* 验证您的设备在 Azure 门户中**是否已启用**，> IoT 中心> IoT 设备。
+* 验证你的设备是否**已**在你的 iot 中心 > iot 设备 > 的 Azure 门户中启用。
 
 * 如果设备使用 MQTT 协议，请确认端口 8883 已打开。 有关详细信息，请参阅[连接到 IoT 中心 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 

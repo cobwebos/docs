@@ -1,5 +1,5 @@
 ---
-title: 将 IoT 开发基 AZ3166 连接到 Azure IoT 中心
+title: 将 IoT DevKit AZ3166 连接到 Azure IoT 中心
 description: 在本教程中了解如何设置 IoT DevKit AZ3166 并将其连接到 Azure IoT 中心，使其能够将数据发送到 Azure 云平台。
 author: wesmc7777
 ms.service: iot-hub
@@ -10,10 +10,10 @@ ms.date: 06/25/2019
 ms.author: wesmc
 ms.custom: mqtt
 ms.openlocfilehash: 1c6af4f44cd16405d1ef12ae909085220b0d072d
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733597"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>将 IoT DevKit AZ3166 连接到 Azure IoT 中心
@@ -31,7 +31,7 @@ ms.locfileid: "81733597"
 
 还没有 DevKit？ 请尝试 [DevKit 模拟器](https://azure-samples.github.io/iot-devkit-web-simulator/)或[购买 DevKit](https://aka.ms/iot-devkit-purchase)。
 
-你可以从[代码示例库中](https://docs.microsoft.com/samples/browse/?term=mxchip)找到所有 DevKit 教程的源代码。
+可以从[代码示例库](https://docs.microsoft.com/samples/browse/?term=mxchip)中找到所有 DevKit 教程的源代码。
 
 ## <a name="what-you-need"></a>需要什么
 
@@ -83,15 +83,15 @@ ms.locfileid: "81733597"
     ```
 
    > [!NOTE]
-   > 如果运行`device-identity`错误，请安装 Azure [CLI 的 Azure IoT 扩展。](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md)
-   > 运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IoT 扩展将特定于 IoT 中心、IoT 边缘和 IoT 设备配置服务 （DPS） 的命令添加到 Azure CLI。
+   > 如果遇到错误`device-identity`，请安装[适用于 Azure CLI 的 Azure IoT 扩展](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md)。
+   > 运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IoT 扩展将特定于 IoT 中心、IoT Edge 和 IoT 设备预配服务（DPS）的命令添加到 Azure CLI。
    > 
    > ```azurecli-interactive
    > az extension add --name azure-iot
    >  ```
    >
   
-1. 在 Azure 云外壳中运行以下命令，以获取刚刚注册的_设备的设备连接字符串_：
+1. 在 Azure Cloud Shell 中运行以下命令，以获取刚注册设备的_设备连接字符串_：
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
@@ -119,7 +119,7 @@ DevKit 将连接到 IoT 中心内特定于设备的终结点，并发送温度�
 
     ![复制固件](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/copy-firmware.png)
 
-1. 在 DevKit 上，按住按钮**B**，按下并释放 **"重置"** 按钮，然后释放按钮**B**。您的 DevKit 进入 AP 模式。 屏幕将显示 DevKit 的服务集标识符 (SSID) 和配置门户 IP 地址供你确认。
+1. 在 DevKit 上，按下按钮**b**，按下并释放 "**重置**" 按钮，然后松开按钮**B**。DevKit 进入 AP 模式。 屏幕将显示 DevKit 的服务集标识符 (SSID) 和配置门户 IP 地址供你确认。
 
     ![重置按钮、按钮 B 和 SSID](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/wifi-ap.jpg)
 
@@ -149,7 +149,7 @@ DevKit 将连接到 IoT 中心内特定于设备的终结点，并发送温度�
 
     ![发送数据](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/sending-data.jpg)
 
-1. 要验证发送到 Azure 的遥测数据，请在 Azure 云命令中运行以下命令：
+1. 若要验证发送到 Azure 的遥测数据，请在 Azure Cloud Shell 中运行以下命令：
 
     ```azurecli
     az iot hub monitor-events --hub-name YourIoTHubName --output table
@@ -179,7 +179,7 @@ DevKit 将连接到 IoT 中心内特定于设备的终结点，并发送温度�
     或者将此 URL 复制并粘贴到浏览器窗口中：`vscode:extension/vsciot-vscode.azure-iot-tools`
 
     > [!NOTE]
-    > Azure IoT Tools 扩展包包含用于在各种 IoT devkit 设备上进行开发和调试的 [Azure IoT Device Workbench](https://aka.ms/iot-workbench)。 [Azure IoT 中心扩展](https://aka.ms/iot-toolkit)包也包含在 Azure IoT 工具扩展包中，用于管理和与 Azure IoT 中心进行交互。
+    > Azure IoT Tools 扩展包包含用于在各种 IoT devkit 设备上进行开发和调试的 [Azure IoT Device Workbench](https://aka.ms/iot-workbench)。 Azure iot[中心扩展](https://aka.ms/iot-toolkit)（随附于 Azure iot 工具扩展包）用于管理 Azure iot 中心并与之进行交互。
 
 5. 为 VS Code 配置 Arduino 设置。
 
@@ -203,7 +203,7 @@ DevKit 将连接到 IoT 中心内特定于设备的终结点，并发送温度�
         "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
         ```
 
-    * **乌本图**：
+    * **Ubuntu**：
 
         将下面的 **{username}** 占位符替换为你的用户名。
 
@@ -222,7 +222,7 @@ DevKit 将连接到 IoT 中心内特定于设备的终结点，并发送温度�
 
 * **Windows**：从 [STMicroelectronics 网站](https://www.st.com/en/development-tools/stsw-link009.html)下载并安装 USB 驱动程序。
 * **macOS**：macOS 无需驱动程序。
-* **Ubuntu**： 在终端中运行命令并注销并登录，以便组更改生效：
+* **Ubuntu**：运行终端中的命令并注销，并登录以使组更改生效：
 
     ```bash
     # Copy the default rules. This grants permission to the group 'plugdev'
@@ -244,7 +244,7 @@ IoT DevKit 包含丰富的示例库，可以使用这些示例来了解如何将
 
 1. 确保 IoT DevKit **未连接**到计算机。 先启动 VS Code，然后将 DevKit 连接到计算机。
 
-1. 单击`F1`以打开命令调色板，键入并选择**Azure IoT 设备工作台：打开示例..."** 然后选择**IoT 开发人员工具包**作为板。
+1. 单击`F1`打开命令面板，键入并选择 " **Azure IoT 设备工作台：打开示例 ...**"。然后选择 " **IoT DevKit** as 板"。
 
 1. 在 IoT Workbench 的“示例”页中，找到“入门”并单击“打开示例”。   然后选择用于下载示例代码的默认路径。
 
@@ -254,7 +254,7 @@ IoT DevKit 包含丰富的示例库，可以使用这些示例来了解如何将
 
 如果不通过 Azure 门户预配 Azure IoT 中心和设备，可以在不退出开发环境的情况下在 VS Code 中执行此操作。
 
-1. 在新的打开的项目窗口中，单击以`F1`打开命令调色板，键入并选择 Azure **IoT 设备工作台：预配 Azure 服务...** 按照分步指南完成 Azure IoT 中心预配和创建 IoT 中心设备。
+1. 在 "新建打开的项目" 窗口`F1`中，单击打开命令面板，键入并选择 " **Azure IoT 设备工作台：预配 azure 服务 ...**"。按照分步指南完成 Azure IoT 中心的预配和创建 IoT 中心设备的步骤。
 
     ![预配命令](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/provision.png)
 
@@ -277,9 +277,9 @@ IoT DevKit 包含丰富的示例库，可以使用这些示例来了解如何将
 
     ![选定的 IoT 中心](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/iot-hub-selected.png)
 
-1. 在输出窗口中，您将看到 Azure IoT 中心预配。
+1. 在 "输出" 窗口中，你会看到预配的 Azure IoT 中心。
 
-    ![IoT 中心配置](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/iot-hub-provisioned.png)
+    ![已预配 IoT 中心](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/iot-hub-provisioned.png)
 
 1. 在预配的 Azure IoT 中心内选择或新建一个设备。
 
@@ -297,13 +297,13 @@ IoT DevKit 包含丰富的示例库，可以使用这些示例来了解如何将
 
     ![选择开发板和 COM](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-com.png)
 
-1. 单击`F1`以打开命令调色板，键入并选择**Azure IoT 设备工作台：配置设备设置...，** 然后选择 **"配置设备连接字符串>选择 IoT 中心设备连接字符串**。
+1. 单击`F1`打开命令面板，键入并选择 " **Azure IoT 设备工作台：配置设备设置 ...**"，然后选择 "**配置设备连接字符串" > "选择 IoT 中心设备连接字符串**"。
 
-1. 在 DevKit 上，按住**按钮 A**，按下并释放**重置**按钮，然后释放**按钮 A**。您的 DevKit 进入配置模式并保存连接字符串。
+1. 在 DevKit 上，按下**按钮 a**，按下 "**重置**" 按钮，然后松开**按钮 A**。DevKit 进入配置模式并保存连接字符串。
 
     ![连接字符串](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/connection-string.png)
 
-1. 再次`F1`单击，键入并选择**Azure IoT 设备工作台：上载设备代码**。 它启动编译，并将代码上传到 DevKit。
+1. 再次`F1`单击，键入并选择 " **Azure IoT 设备工作台：上传设备代码**"。 它启动编译，并将代码上传到 DevKit。
 
     ![Arduino 上传](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/arduino-upload.png)
 
@@ -328,15 +328,15 @@ DevKit 将重新启动并开始运行代码。
 ![串行监视器输出](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/result-serial-output.png)
 
 > [!NOTE]
-> 在测试期间，您可能会遇到 LED 指示灯未闪烁、Azure 门户不显示来自设备的传入数据的错误，但设备 OLED 屏幕将显示为 **"正在运行..."** 要解决此问题，在 Azure 门户中，转到 IoT 中心中的设备并向设备发送消息。 如果在 VS Code 中的串行监视器中看到以下响应，则可能是在路由器级别阻止来自设备的直接通信。 检查为连接设备配置的防火墙和路由器规则。 此外，请确保出站端口 1833 处于打开状态。
+> 在测试期间可能会遇到错误，其中 LED 未闪烁，Azure 门户未显示设备的传入数据，但设备 OLED 屏幕显示为 "**正在运行 ...**"。若要解决此问题，请在 Azure 门户中，在 IoT 中心中转到设备，并将消息发送到设备。 如果在 VS Code 的串行监视器中看到以下响应，则可能是从该设备的直接通信被阻止。 检查为连接设备配置的防火墙和路由器规则。 另外，请确保出站端口1833处于打开状态。
 > 
-> 错误： mqtt_client.c （ln 454）： 错误： 打开到终结点的连接失败  
-> 信息： >>>连接状态：已断开连接  
-> 错误： tlsio_mbedtls.c （ln 604）： 基础 IO 打开失败  
-> 错误： mqtt_client.c （ln 1042）： 错误： io_open失败  
-> 错误： iothubtransport_mqtt_common.c （ln 2283）： 无法连接到地址atcsliothub.azure-devices.net。  
-> 信息： >>>重新连接。  
-> 信息： IoThub 版本： 1.3.6  
+> 错误： mqtt_client （ln 454）：错误：打开到终结点的连接时失败  
+> 信息：  >>>连接状态：已断开连接  
+> 错误： tlsio_mbedtls （ln 604）：基础 IO 打开失败  
+> 错误： mqtt_client （ln 1042）：错误： io_open 失败  
+> 错误： iothubtransport_mqtt_common （ln 2283）：连接到地址 atcsliothub.azure-devices.net 时失败。  
+> 信息：  >>>重新连接。  
+> 信息： IoThub 版本：1.3。6  
 
 ### <a name="view-the-telemetry-received-by-azure-iot-hub"></a>查看 Azure IoT 中心收到的遥测数据
 
@@ -350,7 +350,7 @@ DevKit 将重新启动并开始运行代码。
 
     ![Azure IoT 中心连接字符串](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-portal-conn-string.png)
 
-1. 在 VS 代码`F1`中，单击 、键入并选择**Azure IoT 中心：设置 IoT 中心连接字符串**。 将连接字符串复制到其中。
+1. 在 VS Code 中， `F1`单击 "类型"，然后选择 " **Azure Iot 中心：设置 IoT 中心连接字符串**"。 将连接字符串复制到其中。
 
     ![设置 Azure IoT 中心连接字符串](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/set-iothub-connection-string.png)
 
