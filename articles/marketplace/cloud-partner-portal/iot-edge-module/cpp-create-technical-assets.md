@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
 ms.openlocfilehash: 1a523872bb15981958eeb1678caa1d911a9cbbba
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82142409"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>准备 IoT Edge 模块技术资产
@@ -98,14 +98,14 @@ IoT Edge 模块的所有配置设置都必须清楚地记录在文档中（如�
 >[!Note]
 >（可选）版本控制可以包含“滚动更新版本”标记，例如 `2.0` 和 `1.0`。 这样就可以支持同时维护多个主要版本。
 
-### <a name="telemetry"></a>遥测
+### <a name="telemetry"></a>遥测技术
 
 出于遥测目的，使用 IoT 模块 SDK 的模块必须将唯一模块标识符设置为 `PublisherId.OfferId.SkuId`。 使用唯一的标识符可让 Azure 市场识别正在运行的模块实例数。
 
  在 IoT 模块 SDK 中使用以下方法将 `ProductInfo` 设置到此标识符：
 
 - [Ansi-c\#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo) 
-- [Ansi-c](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
+- [C](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Python](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.productinfo?view=azure-java-stable)
 

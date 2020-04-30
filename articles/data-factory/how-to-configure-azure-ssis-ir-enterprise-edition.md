@@ -11,10 +11,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
 ms.openlocfilehash: a0e35a309fd30a36263b498b6a8e74a312004a99
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606161"
 ---
 # <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>预配 Azure-SSIS 集成运行时企业版
@@ -42,7 +42,7 @@ ms.locfileid: "81606161"
 | 模糊分组和模糊查找转换  | 模糊分组和模糊查找转换已预装在 Azure-SSIS IR 企业版上。 这些组件支持使用 SQL Server 和 Azure SQL 数据库来存储参考数据。 |
 | 字词提取和字词查找转换 | 字词提取和字词查找转换已预装在 Azure-SSIS IR 企业版上。 这些组件支持使用 SQL Server 和 Azure SQL 数据库来存储参考数据。 |
 
-## <a name="instructions"></a>说明
+## <a name="instructions"></a>Instructions
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

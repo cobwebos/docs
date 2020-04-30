@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: dsindona
 ms.openlocfilehash: 61d9fa535d2bec0a52351ba6199183ea899a0e1c
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82146263"
 ---
 # <a name="container-offer-settings-tab"></a>容器的“产品/服务设置”选项卡
@@ -27,7 +27,7 @@ ms.locfileid: "82146263"
 
 在 "**产品标识**" 下，必须为下表中描述的字段提供信息。 名称旁边附有星号 (*) 的字段表示必填字段。 
 
-|  **字段**       |     **描述**                                                          |
+|  **字段**       |     **说明**                                                          |
 |  ---------       |     ---------------                                                          |
 | **产品/服务 ID\***       | 产品/服务的唯一标识符（在发布者配置文件内）。 此标识符将显示在产品 URL 和见解报表中。 它的最大长度为 50 个字符，并且可以使用小写字母数字字符和短划线 (-)。 （标识符不能以短划线结尾。）**注意：** 在产品/服务推出后，不能更改此字段。 <br> 例如，如果 Contoso 发布了产品/服务 ID 为 **sample-container** 的产品/服务，则会为该产品/服务分配 Azure 市场 URL `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-container?tab=Overview`。 |
 | **发布者 ID\***     | 你的组织在 Azure 市场中的唯一标识符。 你的所有产品/服务都应当与你的发布者 ID 相关联。 保存产品/服务后，无法更改此值。 |

@@ -4,10 +4,10 @@ description: 使用 v2 运行时的 Azure Functions host.json 文件的参考文
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.openlocfilehash: 7967cdc7f5f7cbb92c12de15d31471fda8aa6569
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758847"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 及更高版本的 host.json 参考 
@@ -136,75 +136,75 @@ host.json 中与绑定相关的配置将同样地应用于函数应用中的每�
 
 此设置是[日志记录](#logging)的子项。
 
-控制应用程序见解的选项，包括[采样选项](./functions-monitoring.md#configure-sampling)。
+控制 Application Insights 的选项，包括[采样选项](./functions-monitoring.md#configure-sampling)。
 
-有关完整的 JSON 结构，请参阅前面的[示例 host.json 文件](#sample-hostjson-file)。
+有关完整的 JSON 结构，请参阅前面的[示例主机 JSON 文件](#sample-hostjson-file)。
 
 > [!NOTE]
-> 日志采样可能会导致一些执行不会显示在 Application Insights 监视器边栏选项卡中。 为了避免日志采样，请添加到`excludedTypes: "Request"``samplingSettings`值。
+> 日志采样可能会导致一些执行不会显示在 Application Insights 监视器边栏选项卡中。 若要避免日志采样， `excludedTypes: "Request"`请将`samplingSettings`添加到值。
 
-| 属性 | 默认 | 说明 |
+| properties | 默认 | 说明 |
 | --------- | --------- | --------- | 
-| 采样设置 | 不适用 | 请参阅[应用程序见解.采样设置](#applicationinsightssamplingsettings)。 |
-| 启用实时测量 | true | 启用实时指标集合。 |
-| 启用依赖跟踪 | true | 启用依赖项跟踪。 |
-| 启用性能计数器集合 | true | 启用库杜性能计数器集合。 |
-| 实时参数初始化延迟 | 00:00:15 | 仅供内部使用。 |
-| http 自动收集选项 | 不适用 | 请参阅[应用程序见解.http自动收集选项](#applicationinsightshttpautocollectionoptions)。 |
-| 快照配置 | 不适用 | 请参阅[应用程序见解.快照配置](#applicationinsightssnapshotconfiguration)。 |
+| samplingSettings | n/a | 请参阅[applicationinsights.config. samplingSettings](#applicationinsightssamplingsettings)。 |
+| enableLiveMetrics | true | 启用实时指标收集。 |
+| enableDependencyTracking | true | 启用依赖项跟踪。 |
+| enablePerformanceCountersCollection | true | 启用 Kudu 性能计数器集合。 |
+| liveMetricsInitializationDelay | 00:00:15 | 仅供内部使用。 |
+| httpAutoCollectionOptions | n/a | 请参阅[applicationinsights.config. httpAutoCollectionOptions](#applicationinsightshttpautocollectionoptions)。 |
+| snapshotConfiguration | n/a | 请参阅[applicationinsights.config. snapshotConfiguration](#applicationinsightssnapshotconfiguration)。 |
 
-### <a name="applicationinsightssamplingsettings"></a>应用程序见解.采样设置
+### <a name="applicationinsightssamplingsettings"></a>Applicationinsights.config. samplingSettings
 
-|属性 | 默认 | 说明 |
+|properties | 默认 | 说明 |
 | --------- | --------- | --------- | 
 | isEnabled | true | 启用或禁用采样。 | 
-| maxTelemetryItemsPerSecond | 20 | 每台服务器主机上每秒记录的遥测项的目标数量。 如果应用在许多主机上运行，请减小此值以保持在总体流量目标速率内。 | 
-| 评估间隔 | 01:00:00 | 会重新评估当前遥测速率的间隔。 评估以移动平均线形式进行执行。 可能想要缩短此间隔（如果遥测很容易就激增）。 |
-| 初始采样百分比| 1.0 | 在采样过程开始时应用的初始采样百分比可动态更改百分比。 不要在调试时减小值。 |
-| 采样百分比增加超时 | 00:00:01 | 当采样百分比值发生更改时，此属性确定不久之后允许应用程序见解再次提高采样百分比以捕获更多数据。 |
-| 采样百分比减少超时 | 00:00:01 | 当采样百分比值发生更改时，此属性确定不久之后允许应用程序见解再次降低采样百分比以捕获更少的数据。 |
-| 最小采样百分比 | 0.1 | 由于采样百分比不同，此属性确定允许的最小采样百分比。 |
-| 最大采样百分比 | 0.1 | 由于采样百分比不同，此属性确定允许的最大采样百分比。 |
-| 移动平均比率 | 1.0 | 在移动平均线的计算中，权重分配给最新的值。 使用等于或小于 1 的值。 较小的值会使算法不易受突然的更改影响。 |
-| 排除类型 | Null | 不希望采样类型的分号分隔列表。 识别的类型是： `Dependency` `Event` `Exception`、、、、、`PageView``Request`和`Trace`。 传输指定类型的所有实例;对未指定的类型进行采样。 |
-| 包括类型 | Null | 要采样的类型的分号分隔列表;空列表表示所有类型的。 此处列出的覆盖`excludedTypes`类型中列出的类型。 识别的类型是： `Dependency` `Event` `Exception`、、、、、`PageView``Request`和`Trace`。 对指定类型的实例进行采样;未指定或隐含的类型在没有采样的情况下传输。 |
+| maxTelemetryItemsPerSecond | 20 | 每个服务器主机上每秒记录的遥测项的目标数目。 如果你的应用程序在多个主机上运行，请将此值降低到流量的总体目标值中。 | 
+| evaluationInterval | 01:00:00 | 会重新评估当前遥测速率的间隔。 评估以移动平均线形式进行执行。 可能想要缩短此间隔（如果遥测很容易就激增）。 |
+| initialSamplingPercentage| 1.0 | 采样过程开始时应用的初始采样百分比，以动态改变百分比。 不要在调试时减小值。 |
+| samplingPercentageIncreaseTimeout | 00:00:01 | 采样百分比值更改时，此属性将确定允许之后 Application Insights 再次引发采样百分比以捕获更多数据。 |
+| samplingPercentageDecreaseTimeout | 00:00:01 | 采样百分比值更改时，此属性将确定允许之后 Application Insights 再次降低采样百分比以捕获更少的数据。 |
+| minSamplingPercentage | 0.1 | 随着采样百分比的变化，此属性将确定允许的最小采样百分比。 |
+| maxSamplingPercentage | 0.1 | 随着采样百分比的变化，此属性将确定允许的最大采样百分比。 |
+| movingAverageRatio | 1.0 | 在移动平均线的计算中，权重分配给最新的值。 使用等于或小于 1 的值。 较小的值会使算法不易受突然的更改影响。 |
+| excludedTypes | null | 不希望对其进行采样的以分号分隔的类型列表。 可识别的类型为`Dependency`： `Event`、 `Exception`、 `PageView`、 `Request`、和`Trace`。 传输指定类型的所有实例;对未指定的类型进行采样。 |
+| includedTypes | null | 要进行采样的以分号分隔的类型列表。空列表隐含了所有类型。 此处列出的`excludedTypes`替代类型中列出了类型。 可识别的类型为`Dependency`： `Event`、 `Exception`、 `PageView`、 `Request`、和`Trace`。 采样指定类型的实例;未指定或隐含的类型将在不采样的情况下传输。 |
 
-### <a name="applicationinsightshttpautocollectionoptions"></a>应用程序见解.http自动收集选项
+### <a name="applicationinsightshttpautocollectionoptions"></a>Applicationinsights.config. httpAutoCollectionOptions
 
-|属性 | 默认 | 说明 |
+|properties | 默认 | 说明 |
 | --------- | --------- | --------- | 
-| 启用Httptrigger扩展信息集合 | true | 启用或禁用 HTTP 触发器的扩展 HTTP 请求信息：传入请求关联标头、多检测密钥支持、HTTP 方法、路径和响应。 |
-| 启用W3C分布式跟踪 | true | 启用或禁用对 W3C 分布式跟踪协议的支持（并启用旧相关架构）。 默认情况下启用（如果`enableHttpTriggerExtendedInfoCollection`为 true）。 如果`enableHttpTriggerExtendedInfoCollection`为 false，则此标志仅适用于传出请求，不适用于传入请求。 |
-| 启用响应标头注入 | true | 启用或禁用将多组件相关标头注入响应。 启用注入允许应用程序见解构造应用程序映射，以何时使用多个检测密钥。 默认情况下启用（如果`enableHttpTriggerExtendedInfoCollection`为 true）。 如果`enableHttpTriggerExtendedInfoCollection`为 false，则此设置不适用。 |
+| enableHttpTriggerExtendedInfoCollection | true | 启用或禁用 HTTP 触发器的扩展 HTTP 请求信息：传入请求相关标头，多检测密钥支持，HTTP 方法，路径，以及响应。 |
+| enableW3CDistributedTracing | true | 启用或禁用对 W3C 分布式跟踪协议的支持（并打开旧版相关架构）。 如果`enableHttpTriggerExtendedInfoCollection`为 true，则默认情况下启用。 如果`enableHttpTriggerExtendedInfoCollection`为 false，则此标志仅适用于传出请求，而不应用于传入请求。 |
+| enableResponseHeaderInjection | true | 启用或禁用向响应中注入多组件相关标头。 启用注入允许 Application Insights 在使用多个检测密钥时构造应用程序映射。 如果`enableHttpTriggerExtendedInfoCollection`为 true，则默认情况下启用。 如果`enableHttpTriggerExtendedInfoCollection`为 false，则此设置不适用。 |
 
-### <a name="applicationinsightssnapshotconfiguration"></a>应用程序见解.快照配置
+### <a name="applicationinsightssnapshotconfiguration"></a>Applicationinsights.config. snapshotConfiguration
 
-有关快照的详细信息，请参阅[在 .NET 应用中调试异常的快照](/azure/azure-monitor/app/snapshot-debugger)，以及[启用应用程序见解快照调试器或查看快照的疑难解答问题](/azure/azure-monitor/app/snapshot-debugger-troubleshoot)。
+有关快照的详细信息，请参阅[调试 .net 应用中的异常](/azure/azure-monitor/app/snapshot-debugger)和[排查 Application Insights Snapshot Debugger 或查看快照](/azure/azure-monitor/app/snapshot-debugger-troubleshoot)中的异常。
 
-|属性 | 默认 | 说明 |
+|properties | 默认 | 说明 |
 | --------- | --------- | --------- | 
-| 代理端点 | Null | 用于连接到应用程序见解快照调试器服务的终结点。 如果为 null，则使用默认终结点。 |
-| 捕获快照内存权重 | 0.5 | 检查是否有足够的内存拍摄快照时，当前进程内存大小给出的权重。 预期值大于 0 正确的分数（0 <捕获快照内存权重< 1）。 |
-| 失败的请求限制 | 3 | 禁用遥测处理器之前请求快照的失败请求数的限制。|
-| 句柄 未跟踪的异常 | true | 启用或禁用跟踪应用程序见解遥测未跟踪的异常。 |
-| isEnabled | true | 启用或禁用快照集合 | 
-| 是启用的开发者模式 | false | 在开发人员模式下启用或禁用快照集合。 |
-| 正在启用时分析 | true | 启用或禁用快照创建，即使应用程序见解探查器正在收集详细的分析会话。 |
-| 是启用的例外捕捉点 | false | 启用或禁用异常筛选。 |
-| 是低优先级快照加载器 | true | 确定是否以低于正常优先级运行快照加载进程。 |
-| 最大收集平面大小 | 50 | 我们可以在 1 到 9999 之间随时跟踪的最大问题数。 |
-| 所需的最大快照 | 3 | 为单个问题收集的快照的最大数量，范围为 1 到 999。 在应用程序中，问题可能被视为单个引发语句。 一旦为问题收集的快照数达到此值，在重置问题计数器（请参阅`problemCounterResetInterval`）并再次达到`thresholdForSnapshotting`限制之前，将不再为该问题收集快照。 |
-| 问题计数器重置间隔 | 24:00:00 | 在一分钟到七天之间重置问题计数器的频率。 达到此间隔时，所有问题计数将重置为零。 已达到执行快照阈值但尚未生成 中的`maximumSnapshotsRequired`快照数的现有问题保持活动状态。 |
-| 提供匿名遥测 | true | 确定是否向 Microsoft 发送匿名使用情况和错误遥测。 如果您联系 Microsoft 以帮助解决快照调试器的问题，则可能会使用此遥测数据。 它还用于监视使用模式。 |
-| 重新连接间隔 | 00:15:00 | 我们重新连接到快照调试器终结点的频率。 允许的范围为一分钟到一天。 |
-| 影子复制文件夹 | Null | 指定用于卷影复制二进制文件的文件夹。 如果未设置，则按顺序尝试以下环境变量指定的文件夹：Fabric_Folder_App_Temp、本地应用数据、APPDATA、TEMP。 |
-| 共享加载程序 | true | 如果为 true，则只有一个快照 Uploader 实例将收集和上载共享检测密钥的多个应用的快照。 如果设置为 false，则快照 Uploader 对于每个（进程名称、检测键）元组将是唯一的。 |
-| 快照在低优先级线程 | true | 确定是否处理低 IO 优先级线程中的快照。 创建快照是一种快速操作，但是，为了将快照上载到快照调试器服务，必须首先将其写入磁盘作为小型转储。 这发生在快照加载器过程中。 将此值设置为 true 使用低优先级 IO 编写小型转储，这不会与您的应用程序竞争资源。 将此值设置为 false 会加快小型转储的创建速度，但代价是减慢应用程序的速度。 |
-| 快照PerDay限制 | 30 | 一天（24 小时）内允许的最大快照数。 此限制也在应用程序见解服务端强制执行。 每个应用程序的上载速率限制为每天 50 个（即每个检测密钥）。 此值有助于防止创建其他快照，这些快照最终将在上载期间被拒绝。 值为零将完全删除限制，不建议这样做。 |
-| 快照Perten分钟限制 | 1 | 10 分钟内允许的最大快照数。 尽管此值没有上限，但请谨慎增加此值，因为它可能会影响应用程序的性能。 创建快照速度很快，但创建快照的小型转储并将其上载到快照调试器服务是一个速度慢得多的操作，它将与应用程序争夺资源（CPU 和 I/O）。 |
-| 临时文件夹 | Null | 指定用于编写小型转储和上载器日志文件的文件夹。 如果未设置，则使用 *%TEMP%\转储*。 |
-| 用于快照的阈值 | 1 | 应用程序见解在请求快照之前需要查看异常的次数。 |
-| 上传器代理 | Null | 覆盖快照上载程序进程中使用的代理服务器。 如果您的应用程序通过代理服务器连接到互联网，则可能需要使用此设置。 快照收集器在应用程序的进程中运行，并将使用相同的代理设置。 但是，快照上传程序作为单独的进程运行，您可能需要手动配置代理服务器。 如果此值为空，则快照收集器将尝试通过检查 System.Net.WebRequest.DefaultWebProxy 并将该值传递给快照上传程序来自动检测代理的地址。 如果此值不是空，则不使用自动检测，此处指定的代理服务器将在快照上传器中使用。 |
+| agentEndpoint | null | 用于连接到 Application Insights Snapshot Debugger 服务的终结点。 如果为 null，则使用默认终结点。 |
+| captureSnapshotMemoryWeight | 0.5 | 检查是否有足够的内存来拍摄快照时，为当前进程内存大小指定的权重。 预期值为大于0的正确分数（0 < CaptureSnapshotMemoryWeight < 1）。 |
+| failedRequestLimit | 3 | 禁用遥测处理器之前请求快照的失败请求数的限制。|
+| handleUntrackedExceptions | true | 启用或禁用 Application Insights 遥测未跟踪的异常跟踪。 |
+| isEnabled | true | 启用或禁用快照收集 | 
+| isEnabledInDeveloperMode | false | 启用或禁用快照收集在开发人员模式下启用。 |
+| isEnabledWhenProfiling | true | 启用或禁用快照创建，即使 Application Insights Profiler 正在收集详细分析会话也是如此。 |
+| isExceptionSnappointsEnabled | false | 启用或禁用异常筛选。 |
+| isLowPrioritySnapshotUploader | true | 确定是否按正常优先级运行 SnapshotUploader 进程。 |
+| maximumCollectionPlanSize | 50 | 在从一到9999的范围内随时可以跟踪的问题的最大数目。 |
+| maximumSnapshotsRequired | 3 | 为单个问题收集的最大快照数，范围为1到999。 在应用程序中，可能会将问题视为单个 throw 语句。 为问题收集的快照数达到此值后，就不会再为该问题收集更多的快照（请参阅`problemCounterResetInterval`），并再次达到`thresholdForSnapshotting`限制。 |
+| problemCounterResetInterval | 24:00:00 | 在一分钟到7天内重置问题计数器的频率。 达到此间隔后，所有问题计数都将重置为零。 已达到用于执行快照的阈值但尚未在中`maximumSnapshotsRequired`生成快照数的现有问题仍处于活动状态。 |
+| provideAnonymousTelemetry | true | 确定是否将匿名使用和错误遥测发送给 Microsoft。 如果与 Microsoft 联系以帮助解决与 Snapshot Debugger 相关的问题，则可以使用此遥测。 它还用于监视使用模式。 |
+| reconnectInterval | 00:15:00 | 重新连接到 Snapshot Debugger 终结点的频率。 允许的范围是一分钟到一天。 |
+| shadowCopyFolder | null | 指定用于卷影复制二进制文件的文件夹。 如果未设置，则按以下环境变量指定的文件夹按顺序尝试： Fabric_Folder_App_Temp、LOCALAPPDATA、APPDATA、TEMP。 |
+| shareUploaderProcess | true | 如果为 true，则只有一个 SnapshotUploader 实例将为共享 InstrumentationKey 的多个应用收集和上载快照。 如果设置为 false，则 SnapshotUploader 对于每个（ProcessName，InstrumentationKey）元组都是唯一的。 |
+| snapshotInLowPriorityThread | true | 确定是否在低 IO 优先级线程中处理快照。 创建快照是一个快速操作，但为了将快照上载到 Snapshot Debugger 服务，必须首先将其作为小型转储写入磁盘。 这会在 SnapshotUploader 过程中发生。 如果将此值设置为 true，则使用低优先级 IO 来写入小型转储，而不会与应用程序争用资源。 如果将此值设置为 "false"，则会加速创建小型转储，同时降低应用程序的运行速度。 |
+| snapshotsPerDayLimit | 30 | 一天中允许的最大快照数（24小时）。 此限制还强制用于 Application Insights 服务端。 上传速率限制为每个应用程序每天50（即每个检测密钥）。 此值有助于阻止创建在上载过程中最终会被拒绝的其他快照。 如果值为零，则完全删除限制，不建议这样做。 |
+| snapshotsPerTenMinutesLimit | 1 | 10分钟内允许的最大快照数。 尽管此值没有上限，但由于它可能会影响应用程序的性能，因此请小心增加生产工作负荷。 创建快照的速度快，但创建快照的小型转储，并将其上载到 Snapshot Debugger 服务是一项更慢的操作，它将与应用程序争用资源（CPU 和 i/o）。 |
+| tempFolder | null | 指定用于写入小型转储和上载者日志文件的文件夹。 如果未设置，则使用 *%TEMP%\Dumps* 。 |
+| thresholdForSnapshotting | 1 | Application Insights 需要多长时间才能在请求快照之前查看异常。 |
+| uploaderProxy | null | 替代快照上载程序进程中使用的代理服务器。 如果你的应用程序通过代理服务器连接到 internet，则可能需要使用此设置。 Snapshot Collector 在应用程序的进程中运行，并将使用相同的代理设置。 但是，快照上载程序作为单独的进程运行，你可能需要手动配置代理服务器。 如果此值为 null，则 Snapshot Collector 将尝试通过检查 WebRequest DefaultWebProxy 并将值传递到快照上载程序来自动检测代理的地址。 如果此值不为 null，则不会使用 "自动检测"，将在快照上载者中使用此处指定的代理服务器。 |
 
 ## <a name="cosmosdb"></a>CosmosDB
 
@@ -242,7 +242,7 @@ host.json 中与绑定相关的配置将同样地应用于函数应用中的每�
 
 指示所有函数的超时持续时间。 它采用 timespan 字符串格式。 在无服务器消耗计划中，有效范围为 1 秒至 10 分钟，默认值为 5 分钟。  
 
-在高级计划中，有效范围为 1 秒到 60 分钟，默认值为 30 分钟。
+在高级计划中，有效范围为1秒至60分钟，默认值为30分钟。
 
 在专用（应用服务）计划中，没有总体限制，默认值为 30 分钟。 值 `-1` 指示无限执行，但建议保留固定上限。
 
@@ -268,7 +268,7 @@ host.json 中与绑定相关的配置将同样地应用于函数应用中的每�
 }
 ```
 
-|属性  |默认 | 说明 |
+|properties  |默认 | 说明 |
 |---------|---------|---------| 
 |已启用|true|指定是否启用此功能。 | 
 |healthCheckInterval|10 秒|定期后台运行状况检查之间的时间间隔。 | 
@@ -300,14 +300,14 @@ host.json 中与绑定相关的配置将同样地应用于函数应用中的每�
 }
 ```
 
-|属性  |默认 | 说明 |
+|properties  |默认 | 说明 |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|定义启用哪种级别的文件日志记录。  选项包括 `never`、`always` 和 `debugOnly`。 |
-|logLevel|不适用|一个对象，它定义了用于筛选应用中的函数的日志类别。 版本 2.x 和更高版本遵循日志类别筛选ASP.NET核心布局。 此设置允许您筛选特定函数的日志记录。 有关详细信息，请参阅 ASP.NET Core 文档中的[日志筛选](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)。 |
-|console|不适用| [控制台](#console)日志记录设置。 |
-|applicationInsights|不适用| [applicationInsights](#applicationinsights) 设置。 |
+|logLevel|n/a|一个对象，它定义了用于筛选应用中的函数的日志类别。 版本2.x 和更高版本按照 ASP.NET Core 布局进行日志类别筛选。 此设置允许你筛选特定函数的日志记录。 有关详细信息，请参阅 ASP.NET Core 文档中的[日志筛选](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)。 |
+|控制台|n/a| [控制台](#console)日志记录设置。 |
+|applicationInsights|n/a| [applicationInsights](#applicationinsights) 设置。 |
 
-## <a name="console"></a>console
+## <a name="console"></a>控制台
 
 此设置是[日志记录](#logging)的子项。 它在未处于调试模式时控制控制台日志记录。
 
@@ -323,13 +323,13 @@ host.json 中与绑定相关的配置将同样地应用于函数应用中的每�
 }
 ```
 
-|属性  |默认 | 说明 |
+|properties  |默认 | 说明 |
 |---------|---------|---------| 
 |isEnabled|false|启用或禁用控制台日志记录。| 
 
 ## <a name="manageddependency"></a>managedDependency
 
-托管依赖项是一项功能，目前仅支持基于 PowerShell 的函数。 它使依赖项可以由服务自动管理。 `enabled` 属性设置为 `true` 时，`requirements.psd1` 文件会被处理。 发布任何次要版本时会更新依赖项。 有关详细信息，请参阅 PowerShell 一文中的[托管依赖项](functions-reference-powershell.md#dependency-management)。
+托管依赖项是一项功能，目前仅支持基于 PowerShell 的函数。 它使依赖项可以由服务自动管理。 `enabled` 属性设置为 `true` 时，`requirements.psd1` 文件会被处理。 发布任何次要版本时会更新依赖项。 有关详细信息，请参阅 PowerShell 文章中的[托管依赖项](functions-reference-powershell.md#dependency-management)。
 
 ```json
 {
@@ -367,17 +367,17 @@ host.json 中与绑定相关的配置将同样地应用于函数应用中的每�
 }
 ```
 
-|属性  |默认 | 说明 |
+|properties  |默认 | 说明 |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|占用函数级锁的时间段。 锁自动续订。| 
 |listenerLockPeriod|00:01:00|占用侦听器锁的时间段。| 
 |listenerLockRecoveryPollingInterval|00:01:00|在启动时无法获取侦听器锁的情况下，用于恢复侦听器锁的时间间隔。| 
 |lockAcquisitionTimeout|00:01:00|运行时尝试获取锁的最长时间。| 
-|lockAcquisitionPollingInterval|不适用|尝试获取锁的间隔时间。| 
+|lockAcquisitionPollingInterval|n/a|尝试获取锁的间隔时间。| 
 
 ## <a name="version"></a>版本
 
-此值指示 host.json 的架构版本。 面向 v2 运行时或更高版本的函数应用需要版本字符串`"version": "2.0"`。 v2 和 v3 之间没有 host.json 架构更改。
+此值指示 host 的架构版本。 对于面向 v2 `"version": "2.0"`运行时或更高版本的函数应用，版本字符串是必需的。 V2 和 v3 之间没有 host json 架构更改。
 
 ## <a name="watchdirectories"></a>watchDirectories
 

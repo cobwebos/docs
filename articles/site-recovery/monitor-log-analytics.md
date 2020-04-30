@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
 ms.openlocfilehash: 0b3f5963572368cb9c884984418140b4bbc0dea3
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82131193"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>使用 Azure Monitor 日志监视 Site Recovery
@@ -49,7 +49,7 @@ Azure Monitor 日志提供了一个日志数据平台，该平台收集活动和
 2. 在 "**诊断设置**" 中，指定一个名称，并选中 "**发送到 Log Analytics**" 框。
 3. 选择 Azure Monitor 日志订阅和 Log Analytics 工作区。
 4. 在切换中选择**Azure 诊断**。
-5. 在日志列表中，选择带有 **AzureSiteRecovery** 前缀的所有日志。 然后单击“确定”****。
+5. 在日志列表中，选择带有 **AzureSiteRecovery** 前缀的所有日志。  。
 
     ![选择工作区](./media/monitoring-log-analytics/select-workspace.png)
 

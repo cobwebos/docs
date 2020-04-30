@@ -5,10 +5,10 @@ ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.openlocfilehash: 6b0e321747e0f84be5a75ab96749311ff0071e8d
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687416"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 监视 REST API 演练
@@ -94,7 +94,7 @@ $authHeader = @{
 
 **方法**：GET
 
-**请求 URI**：\/\/https： management.azure.com/subscriptions/*[订阅 Id]*/资源组/*[资源组名称]*/提供程序/*[资源提供程序命名空间]*/*[资源类型]*/*[资源名称]*/提供程序/microsoft.insights/指标定义？api版本 *] [apiVersion]*
+**请求 URI**： https：\/\/management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/providers/*{resourceProviderNamespace}*/*{resourceType}*/*{context.resourcename}*/providers/microsoft.insights/metricDefinitions？ api 版本 =*{apiVersion}*
 
 例如，若要检索 Azure 存储帐户的指标定义，请求将如下所示：
 
@@ -238,7 +238,7 @@ Invoke-RestMethod -Uri $request `
 
 **方法**：GET
 
-**请求 URI**：\:https /management.azure.com/subscriptions/*[订阅 id]*/资源组组/*资源组/[资源-组名称]*/提供程序 */[资源提供程序*/*-类型] [资源类型]*/[*资源名称]*/提供程序/microsoft.insights/metrics？metricnames=*[度量]*&时间跨度**[开始时间/结束时间]*&$filter]*[筛选器]*&结果类型_元数据&api 版本 *]*
+**请求 URI**： https\://management.azure.com/subscriptions/*{订阅 id}*/resourceGroups/*{资源组名称}*/providers/*{资源提供程序-命名空间*/} {资源*类型}*/*{资源名称}*/providers/microsoft.insights/metrics？ metricnames =*{公制}*&timespan =*{starttime/endtime}*&$filter =*{filter}*&resultType = metadata&api 版本 =*{apiVersion}*
 
 例如，若要检索为“事务”指标的“API 名称维度”发出的维度值列表，其中在指定时间范围内 GeoType 维度为“Primary”，则请求将如下所示：
 
@@ -311,7 +311,7 @@ Invoke-RestMethod -Uri $request `
 
 **方法**：GET
 
-**请求 URI**：\/https： /management.azure.com/subscriptions/*[订阅-id]**{apiVersion}* /资源组组名称/*[资源-* 提供程序 *{resource-provider-namespace}*/名称]*[资源类型] [资源类型]*/*{resource-name}*/提供程序/microsoft.insights/metrics？metricnames =&时间跨度 *[* *开始时间/结束时间]*&$filter [*筛选器]*&间隔[*时间谷]*&&*{aggreation}*
+**请求 URI**： https：\//management.azure.com/subscriptions/*{订阅 id}*/resourceGroups/*{资源组名称}*/providers/*{资源提供程序命名空间*/} {资源*类型}*/*{资源名称*}/providers/microsoft.insights/metrics？ metricnames =*{公制}*&timespan =*{starttime/endtime}*&$filter =*{filter}*&interval =*{timeGrain}*&聚合 =*{aggreation}*&api 版本 =*{apiVersion}*
 
 例如，若要在 5 分钟时间范围内按“事务”数降序值检索前 3 个 API，其中 GeotType 为 “Primary”，则请求将如下所示：
 
@@ -390,7 +390,7 @@ Invoke-RestMethod -Uri $request `
 
 **方法**：GET
 
-**请求 URI**：\/\/https： management.azure.com/subscriptions/*[订阅 Id]*/资源组/*[资源组名称]*/提供程序/*[资源提供程序命名空间]*/*[资源类型]*/*[资源名称]*/提供程序/microsoft.insights/指标定义？api版本 *] [apiVersion]*
+**请求 URI**： https：\/\/management.azure.com/subscriptions/*{subscriptionId}*/resourceGroups/*{resourceGroupName}*/providers/*{resourceProviderNamespace}*/*{resourceType}*/*{context.resourcename}*/providers/microsoft.insights/metricDefinitions？ api 版本 =*{apiVersion}*
 
 例如，若要检索某个 Azure 逻辑应用的指标定义，请求将如下所示：
 

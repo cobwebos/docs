@@ -4,10 +4,10 @@ description: 将 Azure 策略中的内置策略分配给 Azure 容器注册表�
 ms.topic: article
 ms.date: 02/26/2020
 ms.openlocfilehash: a2bfdc18f4bbf16fe8fa6bcbcba7bab18aedabf1
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82145005"
 ---
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>使用 Azure 策略审核 Azure 容器注册表的符合性

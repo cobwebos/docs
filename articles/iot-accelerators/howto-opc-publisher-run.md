@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: c664d4859a306387b4eafa2f19ab5877ccf6eb1b
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81686956"
 ---
 # <a name="run-opc-publisher"></a>运行 OPC 发布服务器
@@ -372,7 +372,7 @@ OPC 发布服务器已准备好用作 [Azure IoT Edge](https://docs.microsoft.co
 若要将 OPC 发布服务器作为模块添加到 IoT Edge 部署，请转到 Azure 门户中的 IoT 中心设置并完成以下步骤：
 
 1. 转到 IoT Edge，然后创建或选择你的 IoT Edge 设备****。
-1. 选择**设置模块**。
+1. 选择 "**设置模块**"。
 1. 选择“部署模块”下的“添加”，然后选择“IoT Edge 模块”************。
 1. 在“名称”字段中，输入“发布服务器”********。
 1. 在“映像 URI”字段中，输入 `mcr.microsoft.com/iotedge/opc-publisher:<tag>`****
