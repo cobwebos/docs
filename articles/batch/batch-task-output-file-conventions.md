@@ -4,12 +4,12 @@ description: 了解如何使用适用于 .NET 的 Azure Batch 文件约定库将
 ms.topic: article
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e835b4e4ace344de65bc5d037b99afdf811ed4bb
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 2d7988ef4339280bd729cc1acaa1b7fb2c33b6b9
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116428"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232694"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>使用适用于 .NET 的 Batch 文件约定库将作业和任务数据保存到 Azure 存储
 
@@ -182,7 +182,7 @@ foreach (CloudTask task in myJob.ListTasks())
 
 ## <a name="view-output-files-in-the-azure-portal"></a>在 Azure 门户中查看输出文件
 
-Azure 门户将显示使用 [Batch 文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)保存到链接的 Azure 存储帐户的任务输出文件和日志。 可以使用所选语言自行实现这些约定，也可以在 .NET 应用程序中使用文件约定库。
+Azure 门户将显示使用 [Batch 文件约定标准](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files)保存到链接的 Azure 存储帐户的任务输出文件和日志。 可以使用所选语言自行实现这些约定，也可以在 .NET 应用程序中使用文件约定库。
 
 若要在门户中显示输出文件，必须满足以下要求：
 

@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 04/21/2020
+ms.date: 04/28/2020
 ms.author: curtand
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 201abd24bc4056337f1ffecd2dabd002ae352c74
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 02fbfc83c16cb13376cce820f19b247a7cd7db59
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81866420"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232302"
 ---
 # <a name="email-notifications-in-pim"></a>PIM 中的电子邮件通知
 
@@ -62,7 +62,7 @@ ms.locfileid: "81866420"
 
 ### <a name="weekly-privileged-identity-management-digest-email-for-azure-ad-roles"></a>Azure AD 角色的每周 Privileged Identity Management 摘要电子邮件
 
-Azure AD 角色的每周 Privileged Identity Management 摘要电子邮件将发送给启用了 Privileged Identity Management 的特权角色管理员、安全管理员和全局管理员。 此每周电子邮件提供一周的 Privileged Identity Management 活动快照以及特权角色分配。 它仅适用于公有云上的租户。 下面是电子邮件示例：
+Azure AD 角色的每周 Privileged Identity Management 摘要电子邮件将发送给启用了 Privileged Identity Management 的特权角色管理员、安全管理员和全局管理员。 此每周电子邮件提供一周的 Privileged Identity Management 活动快照以及特权角色分配。 它仅适用于公有云中 Azure AD 组织。 下面是电子邮件示例：
 
 ![Azure AD 角色的每周 Privileged Identity Management 摘要电子邮件](./media/pim-email-notifications/email-directory-weekly.png)
 
@@ -70,24 +70,24 @@ Azure AD 角色的每周 Privileged Identity Management 摘要电子邮件将发
 
 | 磁贴 | 说明 |
 | --- | --- |
-| **已激活的用户** | 用户在租户内激活其符合条件角色的次数。 |
+| **已激活的用户** | 用户在组织内激活其合格角色的次数。 |
 | **永久用户** | 用户符合资格的分配被设定为永久分配的次数。 |
 | **Privileged Identity Management 中的角色分配** | 在 Privileged Identity Management 中为用户分配符合条件的角色的次数。 |
 | **PIM 之外的角色分配** | 在 Privileged Identity Management 外部（在 Azure AD 内部）为用户分配永久角色的次数。 |
 
-**热门角色概述**部分根据每个角色的永久和符合条件管理员的总数列出了租户中的前五个角色。 采取措施  链接打开 [PIM 向导](pim-security-wizard.md)，可以将永久管理员批量转换为符合条件的管理员。
+"**顶级角色**" 部分的概述根据每个角色的永久和合格管理员总数列出组织中的前五个角色。 采取措施  链接打开 [PIM 向导](pim-security-wizard.md)，可以将永久管理员批量转换为符合条件的管理员。
 
-## <a name="email-timing-for-activation-approvals"></a>激活审批的电子邮件时间
+## <a name="email-timing-for-activation-approvals"></a>激活批准的电子邮件时间
 
-当用户激活其角色且角色设置需要审批时，审批者将收到三封每次审批的电子邮件：
+当用户激活其角色并且角色设置需要审批时，审批者将收到三封电子邮件以供每个批准：
 
-- 请求批准或拒绝用户的激活请求（由请求审批引擎发送）
-- 用户的请求获得批准（由请求审批引擎发送）
-- 用户的角色被激活（由特权标识管理发送）
+- 请求批准或拒绝用户的激活请求（由请求批准引擎发送）
+- 用户的请求已获批准（由请求批准引擎发送）
+- 用户的角色已激活（由 Privileged Identity Management 发送）
 
-请求审批引擎发送的前两封电子邮件可能会延迟。 目前，90% 的电子邮件需要 3 到 10 分钟，但对于 1% 的客户来说，时间可能更长，长达 15 分钟。
+请求批准引擎发送的前两封电子邮件可能会延迟。 目前，90% 的电子邮件需要三到十分钟，但对于1% 的客户，它可能会长达15分钟。
 
-如果在发送第一封电子邮件之前在 Azure 门户中批准了审批请求，则不再触发第一封电子邮件，也不会通过电子邮件通知其他审批人批准请求。 看起来好像他们没有得到电子邮件，但这是预期的行为。
+如果在发送第一封电子邮件之前在 Azure 门户中批准了批准请求，则将不再触发第一封电子邮件，并且不会通过电子邮件向审批请求发送电子邮件通知。 它可能看起来好像没有收到电子邮件，但这是预期的行为。
 
 ## <a name="pim-emails-for-azure-resource-roles"></a>用于 Azure 资源角色的 PIM 电子邮件
 
