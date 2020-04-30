@@ -1,5 +1,5 @@
 ---
-title: 连接到 Windows 服务器 VM
+title: 连接到 Windows Server VM
 description: 了解如何使用 Azure 门户和 Resource Manager 部署模型连接并登录到 Windows VM。
 author: cynthn
 ms.service: virtual-machines-windows
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 92f7ba30e2a3c66218974ab65502c35139ab1f8c
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82086209"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>如何连接并登录到运行 Windows 的 Azure 虚拟机

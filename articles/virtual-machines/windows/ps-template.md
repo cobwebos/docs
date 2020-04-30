@@ -8,10 +8,10 @@ ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cafe28be1d7c08c24b728de2476cb2210c6e5bd0
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82098316"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>通过 Resource Manager 模板创建 Windows 虚拟机
@@ -50,7 +50,7 @@ New-AzResourceGroupDeployment `
 
 ```
 
-如果选择在本地安装并使用 PowerShell 而不是 Azure Cloud shell，则本教程需要 Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell 而不是 Azure Cloud shell，则本教程需要 Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
 在前面的示例中，指定了 GitHub 中存储的一个模板。 还可以下载或创建模板并使用 `--template-file` 参数指定本地路径。
 
@@ -71,7 +71,7 @@ New-AzResourceGroupDeployment `
 
 若要了解有关创建模板的更多信息，请查看所部署的资源类型的 JSON 语法和属性：
 
-- [PublicIPAddresses/网络](/azure/templates/microsoft.network/publicipaddresses)
-- [VirtualNetworks/网络](/azure/templates/microsoft.network/virtualnetworks)
-- [NetworkInterfaces/网络](/azure/templates/microsoft.network/networkinterfaces)
-- [VirtualMachines/计算](/azure/templates/microsoft.compute/virtualmachines)
+- [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
+- [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+- [Microsoft.Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
+- [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)

@@ -7,17 +7,17 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: f00d93a639bacd1d0862fed7b6b003302bb2920e
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82097653"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB 定价层
 
 在“基本”、“常规用途”和“内存优化”这三个不同的定价层中，Azure Database for MariaDB 服务器可以在其中的一个定价层中创建。 定价层的差异表现在可以预配的 vCore 中的计算量、每个 vCore 的内存，以及用于存储数据的存储技术。 所有资源都在 MariaDB 服务器级别预配。 一个服务器可以有一个或多个数据库。
 
-|    | **Basic** | **常规用途** | **内存优化** |
+|    | **基本** | **常规用途** | **内存优化** |
 |:---|:----------|:--------------------|:---------------------|
 | 计算的代 | 第 5 代 |第 5 代 | 第 5 代 |
 | vCore 数 | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -29,11 +29,11 @@ ms.locfileid: "82097653"
 
 | 定价层 | 目标工作负荷 |
 |:-------------|:-----------------|
-| Basic | 需要轻型计算和 I/O 性能的工作负荷。 示例包括用于开发或测试的服务器，或不常使用的小型应用程序。 |
+| 基本 | 需要轻型计算和 I/O 性能的工作负荷。 示例包括用于开发或测试的服务器，或不常使用的小型应用程序。 |
 | 常规用途 | 大多数业务工作负荷。此类工作负荷需要均衡的计算和内存以及可缩放的 I/O 吞吐量。 相关示例包括用于托管 Web 和移动应用的服务器，以及其他企业应用程序。|
 | 内存优化 | 高性能数据库工作负荷。此类工作负荷需要内存中性能来实现更快的事务处理速度和更高的并发性。 相关示例包括用于处理实时数据的服务器，以及高性能事务性应用或分析应用。|
 
-创建服务器后，只需数秒即可增加或减少 vCore 数和定价层（来回调整基本定价层除外）。 也可在不关闭应用程序的情况下，独立调整存储容量（向上调整）和备份保留期（上下调整）。 创建服务器后，便无法再更改备份存储类型。 有关详细信息，请参阅[缩放资源](#scale-resources)部分。
+创建服务器后，只需数秒即可增加或减少 vCore 数和定价层（来回调整基本定价层除外）。 也可在不关闭应用程序的情况下，独立调整存储容量（向上调整）和备份保留期（上下调整）。 创建服务器之后，不能更改备份存储类型。 有关详细信息，请参阅[缩放资源](#scale-resources)部分。
 
 ## <a name="compute-generations-and-vcores"></a>计算代数和 vCore 数
 
@@ -43,7 +43,7 @@ ms.locfileid: "82097653"
 
 预配的存储是指可供 Azure Database for MariaDB 服务器使用的存储容量。 此存储可用于数据库文件、临时文件、事务日志和 MariaDB 服务器日志。 预配的总存储量也定义了可供服务器使用的 I/O 容量。
 
-|    | **Basic** | **常规用途** | **内存优化** |
+|    | **基本** | **常规用途** | **内存优化** |
 |:---|:----------|:--------------------|:---------------------|
 | 存储类型 | 基本存储 | 常规用途存储 | 常规用途存储 |
 | 存储大小 | 5 GB 到 1 TB | 5GB 到 4TB | 5GB 到 4TB |
@@ -57,11 +57,11 @@ ms.locfileid: "82097653"
 
 “基本”层不提供 IOPS 保证。 在“常规用途”和“内存优化”定价层中，IOPS 与预配的存储大小按 3:1 的比例缩放。
 
-可以通过 Azure 门户或 Azure CLI 命令监视 I/O 使用情况。 要监视的相关指标是[存储限制、存储百分比、已用存储和 IO 百分比](concepts-monitoring.md)。
+可以通过 Azure 门户或 Azure CLI 命令监视 I/O 使用情况。 要监视的相关指标是[存储上限、存储百分比、已用存储和 IO 百分比](concepts-monitoring.md)。
 
 ### <a name="reaching-the-storage-limit"></a>达到存储限制
 
-如果可用存储小于预配的存储大小的5%，则小于等于 100 GB 预配存储的服务器将标记为只读。 对于预配存储超出 100 GB 的服务器，如果可用存储少于 5 GB，则会将其标记为只读。
+如果可用存储小于预配的存储大小的5%，则小于等于 100 GB 预配存储的服务器将标记为只读。 对于预配存储超出 100 GB 的服务器，当可用存储不到 5 GB 时，会将该服务器标记为只读。
 
 例如，如果已预配 110 GB 的存储，而实际使用量超过 105 GB，则会将服务器标记为只读。 或者，如果已预配 5 GB 的存储，则当可用存储少于 256 MB 时，服务器会标记为只读。
 
@@ -77,13 +77,13 @@ ms.locfileid: "82097653"
 
 请记住，存储只能增加，不能减少。
 
-## <a name="backup"></a>备份
+## <a name="backup"></a>Backup
 
-服务自动对服务器进行备份。 你可以选择介于7到35天之间的保留期。 常规用途和内存优化服务器可以选择使用异地冗余存储进行备份。 在[概念一文](concepts-backup.md)中了解有关备份的详细信息。
+服务自动对服务器进行备份。 可以选择 7 到 35 天的保留期。 常规用途和内存优化服务器可以选择使用异地冗余存储进行备份。 若要详细了解备份，请参阅[概念文章](concepts-backup.md)。
 
 ## <a name="scale-resources"></a>缩放资源
 
-创建服务器后，可以单独更改 vCore 数、定价层（来回调整基本定价层除外）、存储量和备份保留期。 创建服务器后，便无法再更改备份存储类型。 可以增加或减少 VCore 数。 备份保留期可以从 7 天到 35 天进行上下调整。 存储大小只能增加。 可以通过门户或 Azure CLI 缩放资源。 
+创建服务器后，可以单独更改 vCore 数、定价层（来回调整基本定价层除外）、存储量和备份保留期。 创建服务器之后，不能更改备份存储类型。 可以向上或向下调整 VCore 数。 备份保留期可以从 7 天到 35 天进行上下调整。 存储大小只能增加。 可以通过门户或 Azure CLI 缩放资源。 
 
 <!--For an example of scaling by using Azure CLI, see [Monitor and scale an Azure Database for MariaDB server by using Azure CLI](scripts/sample-scale-server.md).-->
 
@@ -93,7 +93,7 @@ ms.locfileid: "82097653"
 
 ## <a name="pricing"></a>定价
 
-有关最新定价信息，请参阅服务的[定价页](https://azure.microsoft.com/pricing/details/mariadb/)。 若要查看所需配置的具体成本，可以单击 [Azure 门户](https://portal.azure.com/#create/Microsoft.MariaDBServer)的“定价层”选项卡，系统就会根据选定的选项显示每月成本。**** 如果没有 Azure 订阅，可使用 Azure 定价计算器获取估计的价格。 在 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)网站上，选择“添加项”，展开“数据库”类别，选择“Azure Database for MariaDB”自定义选项************。
+有关最新定价信息，请参阅服务的[定价页](https://azure.microsoft.com/pricing/details/mariadb/)。 若要查看所需配置的具体成本，可以单击 [Azure 门户](https://portal.azure.com/#create/Microsoft.MariaDBServer)的“定价层”选项卡，系统就会根据选定的选项显示每月成本。  如果没有 Azure 订阅，可使用 Azure 定价计算器获取估计的价格。 在 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)网站上，选择“添加项”，展开“数据库”类别，选择“Azure Database for MariaDB”自定义选项************。
 
 ## <a name="next-steps"></a>后续步骤
 - 了解[服务限制](concepts-limits.md)。

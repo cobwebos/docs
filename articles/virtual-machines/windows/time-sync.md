@@ -8,21 +8,21 @@ ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
 ms.openlocfilehash: cd9a196e5f957782de91cff69c01fbfa5716369a
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82100492"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Azure 中 Windows VM 的时间同步
 
 时间同步对于安全性和事件相关性来说很重要。 有时候，它用于分布式事务实现。 多个计算机系统之间的时间准确性通过同步来实现。 同步可能受多种因素影响，包括重启以及时间源和提取时间的计算机之间的网络流量。 
 
-Azure 现在由运行 Windows Server 2016 的基础结构提供支持。 Windows Server 2016 已改进用于纠正时间和条件的算法，方便本地时钟与 UTC 同步。  Windows Server 2016 还改进了 VMICTimeSync 服务，该服务管理 VM 如何与主机同步以获得准确时间。 改进包括 VM 启动或 VM 恢复的更精确的初始时间以及提供给 Windows 时间 (W32time) 的示例的中断延迟校正。 
+Azure 现在受运行 Windows Server 2016 的基础设施的支持。 Windows Server 2016 已改进用于纠正时间和条件的算法，方便本地时钟与 UTC 同步。  Windows Server 2016 还改进了 VMICTimeSync 服务，该服务用于控制 VM 与主机的同步方式，以确保时间准确。 改进包括增强 VM 启动或 VM 还原的初始时间的准确性，以及纠正提供给 Windows 时间 (W32time) 服务的示例的中断延迟。 
 
 
 >[!NOTE]
->有关 Windows 时间服务的快速概述，请参阅此[高级概述视频](https://aka.ms/WS2016TimeVideo)。
+>若要快速了解 Windows 时间服务，请参阅此[高级概述视频](https://aka.ms/WS2016TimeVideo)。
 >
 > 有关详细信息，请参阅 [Windows Server 2016 的准确时间](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)。 
 
@@ -173,8 +173,8 @@ w32tm /dumpreg /subkey:Parameters | findstr /i "ntpserver"
 以下是有关时间同步的更多详细信息的链接：
 
 - [Windows 时间服务工具和设置](https://docs.microsoft.com/windows-server/networking/windows-time-service/Windows-Time-Service-Tools-and-Settings)
-- [Windows Server 2016 的改进](https://docs.microsoft.com/windows-server/networking/windows-time-service/windows-server-2016-improvements)
+- [Windows Server 2016 改进](https://docs.microsoft.com/windows-server/networking/windows-time-service/windows-server-2016-improvements)
 - [Windows Server 2016 的准确时间](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
-- [为高精度环境配置 Windows 时间服务的支持边界](https://docs.microsoft.com/windows-server/networking/windows-time-service/support-boundary)
+- [用于针对高精度环境配置 Windows 时间服务的支持边界](https://docs.microsoft.com/windows-server/networking/windows-time-service/support-boundary)
 
 

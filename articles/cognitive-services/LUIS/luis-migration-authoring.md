@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: diberry
 ms.openlocfilehash: 679073715588a4a81e69e3e7ba2d18341b1bab4b
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82096616"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>迁移到 Azure 资源创作密钥
@@ -82,7 +82,7 @@ ms.locfileid: "82096616"
 
 您可以在该资源的 "**访问控制（IAM）** " 页上，将参与者添加到_Azure 门户_中的创作资源。 有关详细信息，请参阅[添加参与者访问](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource)。
 
-|门户|用途|
+|门户|目的|
 |--|--|
 |[Azure](https://azure.microsoft.com/free/)|* 创建预测和创作资源。<br>* 分配参与者。|
 |[LUIS](https://www.luis.ai)|* 迁移到新的创作资源。<br>* 通过 "**管理-> Azure 资源**" 页为应用分配预测和创作资源。|

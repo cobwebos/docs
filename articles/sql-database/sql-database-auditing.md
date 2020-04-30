@@ -11,10 +11,10 @@ ms.reviewer: vanto
 ms.date: 03/27/2020
 ms.custom: azure-synapse
 ms.openlocfilehash: 57c4b22dfe6ef6cf44be64a4b5c042403f64ccf2
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82096650"
 ---
 # <a name="azure-sql-auditing"></a>Azure SQL 审核
@@ -91,7 +91,7 @@ Azure SQL 数据库审核在审核记录中存储字符字段的 4000 个字符�
    
 ### <a name="audit-to-storage-destination"></a><a id="audit-storage-destination"></a>审核到存储目标
 
-若要配置将审核日志写入存储帐户的操作，请选择“存储”，打开“存储详细信息”。******** 依次选择要用于保存日志的 Azure 存储帐户以及保持期。 然后单击“确定”****。 早于保留期的日志会被删除。
+若要配置将审核日志写入存储帐户的操作，请选择“存储”，打开“存储详细信息”。******** 依次选择要用于保存日志的 Azure 存储帐户以及保持期。  。 早于保留期的日志会被删除。
 
 - 保留期的默认值为 0（无限制保留）。 可以更改此值，只需在配置用于审核的存储帐户时在“存储设置”中移动“保留期(天)”滑块即可。********
   - 如果将保留期从0（无限制保留）更改为任何其他值，请注意，保留期仅适用于更改保留值后写入的日志（当保留期设置为 "无限制" 时，即使在启用保留后，仍会保留写入的日志）。

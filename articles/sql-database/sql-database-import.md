@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
 ms.openlocfilehash: 4fe8eb0b363fc95ac5913e66884a2ed8f3d225a6
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82086481"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>快速入门：将 BACPAC 文件导入 Azure SQL 数据库中的数据库
@@ -51,7 +51,7 @@ ms.locfileid: "82086481"
 
    ![数据库 import2](./media/sql-database-import/sql-server-import-database-settings.png)
 
-1. 单击“确定”。 
+1. 单击" **确定**"。
 
 1. 若要监视导入的进度，请打开数据库的服务器页，然后在“设置”**** 下，选择“导入/导出历史记录”****。 成功导入后，状态为“已完成”****。
 
@@ -61,7 +61,7 @@ ms.locfileid: "82086481"
 
 ## <a name="using-sqlpackage"></a>使用 SqlPackage
 
-若要使用 [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) 命令行实用程序导入 SQL Server 数据库，请参阅[导入参数和属性](https://docs.microsoft.com/sql/tools/sqlpackage#import-parameters-and-properties)。 用于[可视化工作室的](https://msdn.microsoft.com/library/mt204009.aspx) [SQL 服务器管理工作室](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)和 SQL Server 数据工具包括 SqlPackage。 还可以从 Microsoft 下载中心下载最新的 [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876)。
+若要使用 [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) 命令行实用程序导入 SQL Server 数据库，请参阅[导入参数和属性](https://docs.microsoft.com/sql/tools/sqlpackage#import-parameters-and-properties)。 [Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx) [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)和 SQL Server Data Tools 包括 SqlPackage。 还可以从 Microsoft 下载中心下载最新的 [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876)。
 
 在大多数生产环境中，建议使用 SqlPackage 而不是 Azure 门户来实现缩放和性能。 有关 SQL Server 客户咨询团队使用 `BACPAC` 文件进行迁移的博客，请参阅[使用 BACPAC 文件从 SQL Server 迁移到 Azure SQL 数据库](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/)。
 
@@ -83,10 +83,10 @@ sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 ## <a name="using-powershell"></a>使用 PowerShell
 
 > [!NOTE]
-> [托管实例](sql-database-managed-instance.md)当前不支持使用 Azure PowerShell 从 BACPAC 文件将数据库迁移到实例数据库中。 若要导入托管实例，请使用 SQL Server Management Studio 或 SQLPackage。
+> [托管实例](sql-database-managed-instance.md)当前不支持使用 AZURE POWERSHELL 从 BACPAC 文件将数据库迁移到实例数据库中。 若要导入托管实例，请使用 SQL Server Management Studio 或 SQLPackage。
 
 > [!NOTE]
-> 处理通过门户或 Powershell 提交的导入/导出请求的计算机需要存储 bacpac 文件以及数据层应用程序框架 (DacFX) 生成的临时文件。 所需的磁盘空间在具有相同大小的 DB 之间存在显著差异，并且最多可占数据库大小的 3 倍。 运行导入/导出请求的计算机只有 450GB 的本地磁盘空间。 因此，某些请求可能会失败，出现"磁盘上空间不足"错误。 在这种情况下，解决方法是在具有足够本地磁盘空间的计算机上运行 sqlpackage.exe。 导入/导出大于 150GB 的数据库时，请使用 SqlPackage 来避免此问题。
+> 处理通过门户或 Powershell 提交的导入/导出请求的计算机需要存储 bacpac 文件以及数据层应用程序框架 (DacFX) 生成的临时文件。 所需的磁盘空间在具有相同大小的 DB 之间存在显著差异，并且最多可占数据库大小的 3 倍。 运行导入/导出请求的计算机只有 450GB 的本地磁盘空间。 因此，某些请求可能会失败，出现 "磁盘空间不足" 错误。 在这种情况下，解决方法是在具有足够本地磁盘空间的计算机上运行 sqlpackage.exe。 导入/导出大于 150GB 的数据库时，请使用 SqlPackage 来避免此问题。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -145,18 +145,18 @@ az sql db import --resource-group "<resourceGroup>" --server "<server>" --name "
 ## <a name="limitations"></a>限制
 
 - 不支持导入到弹性池中的数据库。 可以将数据导入到单一数据库，然后将数据库移到弹性池。
-- 将 Azure 服务的允许访问设置为 OFF 时，导入导出服务不起作用。 不过，可通过以下方式解决此问题：在 Azure VM 中手动运行 sqlpackage.exe，或者直接在代码中使用 DACFx API 执行导出。
+- 当 "允许访问 Azure 服务" 设置为 "关闭" 时，导入导出服务不起作用。 不过，可通过以下方式解决此问题：在 Azure VM 中手动运行 sqlpackage.exe，或者直接在代码中使用 DACFx API 执行导出。
 
 ## <a name="import-using-wizards"></a>使用向导导入
 
 还可以使用以下向导。
 
 - [SQL Server Management Studio 中的“导入数据层应用程序”向导](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database#using-the-import-data-tier-application-wizard)。
-- [SQL 服务器导入和导出向导](https://docs.microsoft.com/sql/integration-services/import-export-data/start-the-sql-server-import-and-export-wizard)。
+- [SQL Server 导入和导出向导](https://docs.microsoft.com/sql/integration-services/import-export-data/start-the-sql-server-import-and-export-wizard)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 要了解如何连接到和查询导入的 SQL 数据库，请参阅[快速入门：Azure SQL 数据库：使用 SQL 服务器管理工作室连接和查询数据](sql-database-connect-query-ssms.md)。
+- 若要了解如何连接并查询导入的 SQL 数据库，请参阅[快速入门： AZURE SQL 数据库：使用 SQL Server Management Studio 来连接和查询数据](sql-database-connect-query-ssms.md)。
 - 有关 SQL Server 客户咨询团队使用 BACPAC 文件进行迁移的博客，请参阅 [Migrating from SQL Server to Azure SQL Database using BACPAC Files](https://techcommunity.microsoft.com/t5/DataCAT/Migrating-from-SQL-Server-to-Azure-SQL-Database-using-Bacpac/ba-p/305407)（使用 BACPAC 文件从 SQL Server 迁移到 Azure SQL 数据库）。
 - 有关对于整个 SQL Server 数据库迁移进程（包括性能建议）的讨论，请参阅[将 SQL Server 数据库迁移到 Azure SQL 数据库](sql-database-single-database-migrate.md)。
 - 若要了解如何安全地管理和共享存储密钥和共享访问签名，请参阅 [Azure 存储安全指南](https://docs.microsoft.com/azure/storage/common/storage-security-guide)。

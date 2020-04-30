@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
 ms.openlocfilehash: 515ac034158b821968e2d7b2be9514a3f7c20866
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82099036"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>如何：向 Azure AD 应用提供可选声明
@@ -37,7 +37,7 @@ ms.locfileid: "82099036"
 
 | 帐户类型               | v1.0 令牌 | v2.0 令牌 |
 |----------------------------|-------------|-------------|
-| Microsoft 个人帐户 | 不可用         | 支持   |
+| Microsoft 个人帐户 | N/A         | 支持   |
 | Azure AD 帐户           | 支持   | 支持   |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>v1.0 和 v2.0 可选声明集
@@ -49,7 +49,7 @@ ms.locfileid: "82099036"
 
 **表 2：v1.0 和 v2.0 可选声明集**
 
-| 名称                       |  说明   | 令牌类型 | 用户类型 | 说明  |
+| 名称                       |  说明   | 令牌类型 | 用户类型 | 注意  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | 用户上次进行身份验证的时间。 请参阅 OpenID Connect 规范。| JWT        |           |  |
 | `tenant_region_scope`      | 资源租户的区域 | JWT        |           | |
@@ -96,7 +96,7 @@ ms.locfileid: "82099036"
 
 **表4：用于配置可选声明的值**
 
-| 属性名称  | 附加属性名称 | 描述 |
+| 属性名称  | 附加属性名称 | 说明 |
 |----------------|--------------------------|-------------|
 | `upn`          |                          | 可用于 SAML 和 JWT 响应，以及 v1.0 和 v2.0 令牌。 |
 |                | `include_externally_authenticated_upn`  | 包含资源租户中存储的来宾 UPN。 例如： `foo_hometenant.com#EXT#@resourcetenant.com` |
@@ -367,7 +367,7 @@ ms.locfileid: "82099036"
 - 可以使用“清单”（参阅以下示例）。**** 请先阅读[了解 Azure AD 应用程序清单文档](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest)中的清单简介。
 - 还可以编写使用[MICROSOFT GRAPH API](https://docs.microsoft.com/graph/use-the-api?context=graph%2Fapi%2F1.0&view=graph-rest-1.0)的应用程序来更新应用程序。 Microsoft Graph API 参考指南中的[OptionalClaims](https://docs.microsoft.com/graph/api/resources/optionalclaims?view=graph-rest-1.0)类型可帮助你配置可选声明。
 
-**实例**
+**示例：**
 
 在下面的示例中，你将使用**令牌配置**UI 和**清单**向适用于你的应用程序的访问、ID 和 SAML 令牌添加可选声明。 会将不同的可选声明添加到应用程序可以接收的每种令牌。
 

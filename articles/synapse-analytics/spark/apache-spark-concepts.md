@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 3cf654e77bf68c5194a0213d4452242b5c44e234
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: b1db306ffdb1c05c880e5fc639de2cc1db130d8e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419531"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82096276"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Azure Synapse Analytics 中的 Apache Spark 的核心概念
 
@@ -30,7 +30,7 @@ Spark 池（预览版）在 Azure 门户中创建。 Spark 池的定义是，在
 
 最佳做法是先创建较小的 Spark 池进行开发和调试，然后再创建较大的 Spark 池来运行生产工作负载。
 
-可在 [Synapse Analytics 中的 Spark 池入门](apache-spark-notebook-create-spark-use-sql.md#create-an-apache-spark-pool)中了解如何创建 Spark 池及查看其所有属性
+可在 [Synapse Analytics 中的 Spark 池入门](../quickstart-create-apache-spark-pool.md)中了解如何创建 Spark 池及查看其所有属性
 
 ## <a name="spark-instances"></a>Spark 实例
 

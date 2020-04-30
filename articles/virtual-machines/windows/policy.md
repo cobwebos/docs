@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: mimckitt
 ms.openlocfilehash: a0ff463bd7f77f8a4a138bf41698059102809215
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82098690"
 ---
 # <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>使用 Azure 资源管理器向 Windows VM 应用策略
@@ -99,7 +99,7 @@ ms.locfileid: "82098690"
 }
 ```
 
-若要了解策略字段，请参阅[策略别名](../../governance/policy/concepts/definition-structure.md#aliases)。
+有关策略字段的信息，请参阅[策略别名](../../governance/policy/concepts/definition-structure.md#aliases)。
 
 ## <a name="managed-disks"></a>托管磁盘
 
@@ -151,7 +151,7 @@ ms.locfileid: "82098690"
 
 ## <a name="images-for-virtual-machines"></a>虚拟机映像
 
-出于安全考虑，可要求在环境中部署仅已批准的自定义映像。 可以指定包含已批准映像的资源组，或特定已批准映像。
+出于安全考虑，可要求仅在环境中部署已批准的自定义映像。 可以指定包含已批准映像的资源组，或特定已批准映像。
 
 下例需要来自已批准资源组的映像：
 
@@ -191,7 +191,7 @@ ms.locfileid: "82098690"
 
 ## <a name="virtual-machine-extensions"></a>虚拟机扩展
 
-建议禁止某些扩展类型的使用情况。 例如，扩展名可能与某些自定义虚拟机映像不兼容。 下例演示如何阻止特定扩展。 该示例使用发布者和类型来确定要阻止的扩展。
+可能想要禁止使用某些类型的扩展。 例如，扩展名可能与某些自定义虚拟机映像不兼容。 下例演示如何阻止特定扩展。 该示例使用发布者和类型来确定要阻止的扩展。
 
 ```json
 {

@@ -1,26 +1,19 @@
 ---
 title: 快速入门 - 使用 Azure CLI 创建 Windows VM
 description: 本快速入门介绍如何使用 Azure CLI 创建 Windows 虚拟机
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 32e7b67cb3dda715127204d77c4988d41ed3f9d3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c6f1663924f338b6b17c760afe64527f563f5bc2
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80240280"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82098010"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Windows 虚拟机
 

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 294f53fe929343708bdbb9564b23c46865cf02ac
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a29fd66cf264b09cc5e0db7ac1a329be3f297bb8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419811"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82096327"
 ---
 # <a name="quickstart-using-synapse-studio-preview"></a>快速入门：使用 Synapse Studio（预览版）
 
@@ -52,7 +52,7 @@ ms.locfileid: "81419811"
 > 你需要是基础存储上 `Storage Blob Reader` 角色的成员才能查询文件。 了解如何[在 Azure 存储上分配**存储 Blob 数据读者**或**存储 Blob 数据参与者** RBAC 权限](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)。
 
 1. 上传一些 `PARQUET` 文件。
-2. 选择一个或多个文件，然后创建新的 SQL 脚本或 Spark 笔记本来查看文件内容。 若要创建笔记本，需要[在工作区中创建 Apache Spark 池](spark/apache-spark-notebook-create-spark-use-sql.md)。
+2. 选择一个或多个文件，然后创建新的 SQL 脚本或 Spark 笔记本来查看文件内容。 若要创建笔记本，需要[在工作区中创建 Apache Spark 池](quickstart-create-apache-spark-pool.md)。
 
    ![查询存储中的文件](./media/quickstart-synapse-studio/query-files-on-storage.png)
 
@@ -66,5 +66,5 @@ ms.locfileid: "81419811"
 
 - 通过[在 Azure 存储上分配**存储 Blob 数据读者**或**存储 Blob 数据参与者** RBAC 权限](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)，使 Azure AD 用户能够查询文件。
 - [使用 SQL 按需版本查询 Azure 存储中的文件](sql/on-demand-workspace-overview.md)
-- [创建 Apache Spark 池](spark/apache-spark-notebook-create-spark-use-sql.md)
+- [创建 Apache Spark 池](quickstart-create-apache-spark-pool.md)
 - [创建有关 Azure 存储中存储的文件的 Power BI 报表](sql/tutorial-connect-power-bi-desktop.md)

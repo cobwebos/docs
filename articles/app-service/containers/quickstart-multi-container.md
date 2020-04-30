@@ -8,10 +8,10 @@ ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18
 ms.openlocfilehash: ab8e416e460546dcf758c83aa8b357139c6dbefb
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82085867"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>使用 Docker Compose 配置创建多容器（预览版）应用

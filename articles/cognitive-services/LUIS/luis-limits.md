@@ -4,10 +4,10 @@ description: 本文介绍 Azure 认知服务语言理解 (LUIS) 的已知限制�
 ms.topic: reference
 ms.date: 04/02/2020
 ms.openlocfilehash: 0a734091ad2c9812f079d77c97c22872717aa7c9
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82103588"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>LUIS 模型和密钥的限制

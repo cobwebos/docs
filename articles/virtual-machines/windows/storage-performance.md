@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
 ms.openlocfilehash: cd15df2a7074463789bcf4a2d4de3c41bd012bbb
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82100543"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>优化 Lsv2 系列虚拟机上的性能
@@ -77,7 +77,7 @@ Lsv2 系列 Vm 使用 AMD EYPC™ server 基于 Zen 微体系结构的服务器�
 
 若要了解有关在本地存储中备份数据的选项的详细信息，请参阅[Azure IaaS 磁盘的备份和灾难恢复](backup-and-disaster-recovery-for-azure-iaas-disks.md)。
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 
 * **如何实现开始部署 Lsv2 系列 Vm？**  
    与任何其他 VM 一样，使用[门户](quick-create-portal.md)、 [Azure CLI](quick-create-cli.md)或[PowerShell](quick-create-powershell.md)来创建 vm。

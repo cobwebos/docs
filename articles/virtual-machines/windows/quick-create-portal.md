@@ -1,25 +1,19 @@
 ---
 title: 快速入门 - 在 Azure 门户中创建 Windows VM
 description: 本快速入门介绍了如何使用 Azure 门户创建 Windows 虚拟机
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 002d374f5be606688121ef4a3952383567c43e85
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5cf23a9c66c76f778dbd5d2b126b28a5a577c978
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79214745"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82097993"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Windows 虚拟机
 
@@ -59,7 +53,7 @@ ms.locfileid: "79214745"
 
 ## <a name="connect-to-virtual-machine"></a>连接到虚拟机
 
-创建到虚拟机的远程桌面连接。 这些说明指明了如何从 Windows 计算机连接到 VM。 在 Mac 上，需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12)。
+创建到虚拟机的远程桌面连接。 这些说明指明了如何从 Windows 计算机连接到 VM。 在 Mac 上，需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12)。
 
 1. 单击虚拟机概述页上的“连接”按钮  。 
 

@@ -4,10 +4,10 @@ description: 列表实体表示一组固定、封闭的相关单词及其同义�
 ms.topic: reference
 ms.date: 03/12/2020
 ms.openlocfilehash: 273fabae38f6682cfaaffcdcc19e62adc41b7a47
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82097568"
 ---
 # <a name="list-entity"></a>列表实体

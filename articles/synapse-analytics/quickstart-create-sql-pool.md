@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: josels
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: b3cd4ed280529efbde32fb89e6bac20640940fff
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a50f203b8057dd4ea51eff1cf09fc97fb598cb3e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419871"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82096429"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool"></a>快速入门：创建 Synapse SQL 池
 
@@ -81,5 +81,5 @@ Azure Synapse Analytics 提供了各种分析引擎，可帮助你引入、转�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅[快速入门：使用 Web 工具在 Synapse Studio 中创建 Apache Spark 池](spark/apache-spark-notebook-create-spark-use-sql.md)。
+- 请参阅[快速入门：使用 Web 工具在 Synapse Studio 中创建 Apache Spark 池](quickstart-apache-spark-notebook.md)。
 - 请参阅[快速入门：使用 Azure 门户创建 Apache Spark 池](quickstart-create-apache-spark-pool.md)。

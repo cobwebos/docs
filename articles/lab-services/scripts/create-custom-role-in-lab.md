@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/22/2020
 ms.author: spelluru
 ms.openlocfilehash: a7822d6ea46b7efc21f43e944d0a96f609df389a
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82100170"
 ---
 # <a name="use-powershell-to-create-a-custom-role-in-a-lab-in-azure-devtest-labs"></a>使用 PowerShell 在 Azure 开发测试实验室的实验室中创建自定义角色
@@ -27,7 +27,7 @@ ms.locfileid: "82100170"
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * 实验室****。 此脚本要求拥有现有的实验室。 
 
 ## <a name="sample-script"></a>示例脚本

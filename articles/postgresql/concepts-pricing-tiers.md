@@ -1,23 +1,23 @@
 ---
-title: 定价层-Azure Database for PostgreSQL-单服务器
-description: 本文介绍 Azure Database for PostgreSQL-单服务器中的计算和存储选项。
+title: 定价层 - Azure Database for PostgreSQL（单一服务器）
+description: 本文介绍 Azure Database for PostgreSQL（单一服务器）中的计算和存储选项。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.openlocfilehash: 95795f287a369edec84b68ac920874808966ff1e
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82097075"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的定价层
 
-在“基本”、“常规用途”和“内存优化”这三个不同的定价层中，Azure Database for PostgreSQL 服务器可以在其中的一个定价层中创建。 定价层的差异表现在可以预配的 vCore 中的计算量、每个 vCore 的内存，以及用于存储数据的存储技术。 所有资源都在 PostgreSQL 服务器级别预配。 一个服务器可以有一个或多个数据库。
+可以在以下三个不同的定价层之一中创建 Azure Database for PostgreSQL 服务器：“基本”、“常规用途”和“内存优化”。 定价层的差异表现在可以预配的 vCore 中的计算量、每个 vCore 的内存，以及用于存储数据的存储技术。 所有资源都在 PostgreSQL 服务器级别预配。 一个服务器可以有一个或多个数据库。
 
-|    | **Basic** | **常规用途** | **内存优化** |
+|    | **基本** | **常规用途** | **内存优化** |
 |:---|:----------|:--------------------|:---------------------|
 | 计算的代 | 第 4 代、第 5 代 | 第 4 代、第 5 代 | 第 5 代 |
 | vCore 数 | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -29,11 +29,11 @@ ms.locfileid: "82097075"
 
 | 定价层 | 目标工作负荷 |
 |:-------------|:-----------------|
-| Basic | 需要轻型计算和 I/O 性能的工作负荷。 示例包括用于开发或测试的服务器，或不常使用的小型应用程序。 |
+| 基本 | 需要轻型计算和 I/O 性能的工作负荷。 示例包括用于开发或测试的服务器，或不常使用的小型应用程序。 |
 | 常规用途 | 大多数业务工作负荷。此类工作负荷需要均衡的计算和内存以及可缩放的 I/O 吞吐量。 相关示例包括用于托管 Web 和移动应用的服务器，以及其他企业应用程序。|
 | 内存优化 | 高性能数据库工作负荷。此类工作负荷需要内存中性能来实现更快的事务处理速度和更高的并发性。 相关示例包括用于处理实时数据的服务器，以及高性能事务性应用或分析应用。|
 
-创建服务器后，只需数秒即可增加或减少 vCore 数、硬件生成和定价层（来回调整基本定价层除外）。 也可在不关闭应用程序的情况下，独立调整存储容量（向上调整）和备份保留期（上下调整）。 创建服务器后，便无法再更改备份存储类型。 有关详细信息，请参阅[缩放资源](#scale-resources)部分。
+创建服务器后，只需数秒即可增加或减少 vCore 数、硬件生成和定价层（来回调整基本定价层除外）。 也可在不关闭应用程序的情况下，独立调整存储容量（向上调整）和备份保留期（上下调整）。 创建服务器之后，不能更改备份存储类型。 有关详细信息，请参阅[缩放资源](#scale-resources)部分。
 
 ## <a name="compute-generations-and-vcores"></a>计算代数和 vCore 数
 
@@ -43,7 +43,7 @@ ms.locfileid: "82097075"
 
 预配的存储是指可供 Azure Database for PostgreSQL 服务器使用的存储容量。 此存储用于数据库文件、临时文件、事务日志和 PostgreSQL 服务器日志。 预配的总存储量也定义了可供服务器使用的 I/O 容量。
 
-|    | **Basic** | **常规用途** | **内存优化** |
+|    | **基本** | **常规用途** | **内存优化** |
 |:---|:----------|:--------------------|:---------------------|
 | 存储类型 | 基本存储 | 常规用途存储 | 常规用途存储 |
 | 存储大小 | 5 GB 到 1 TB | 5 GB 到 16 TB | 5 GB 到 16 TB |
@@ -67,7 +67,7 @@ ms.locfileid: "82097075"
 
 ### <a name="reaching-the-storage-limit"></a>达到存储限制
 
-如果可用存储小于512MB 或预配的存储大小的5%，则小于等于 100 GB 预配存储的服务器将标记为只读。 对于预配存储超出 100 GB 的服务器，如果可用存储少于 5 GB，则会将其标记为只读。
+如果可用存储小于 512MB 或小于预配存储大小的 5%，则预配存储小于等于 100 GB 的服务器将标记为只读。 对于预配存储超出 100 GB 的服务器，当可用存储不到 5 GB 时，会将该服务器标记为只读。
 
 例如，如果已预配 110 GB 的存储，而实际使用量超过 105 GB，则会将服务器标记为只读。 或者，如果已预配 5 GB 的存储，则当可用存储少于 512 MB 时，服务器会标记为只读。
 
@@ -79,30 +79,30 @@ ms.locfileid: "82097075"
 
 ### <a name="storage-auto-grow"></a>存储自动增长
 
-存储自动增长可防止服务器耗尽存储空间并变为只读。 如果启用了存储自动增长，存储会在不影响工作负荷的情况下自动增长。 对于低于等于 100 GB 预配存储的服务器，只要可用存储低于预配存储的 1 GB 或10%，预配的存储大小将增加 5 GB。 对于预配存储超过 100 GB 的服务器，当可用存储空间低于 10 GB 或预配的存储大小的5% 时，预配的存储大小将增加5%。 适用上面指定的最大存储限制。
+存储自动增长可防止服务器耗尽存储空间并变为只读。 如果启用了存储自动增长，存储会在不影响工作负荷的情况下自动增长。 对于预配存储小于等于 100 GB 的服务器，可用存储小于 1 GB 或预配存储的 10%（以这二者中的较大值为准）后，预配存储大小会立即增加 5 GB。 对于预配存储大于 100 GB 的服务器，当可用存储空间小于 10 GB 或预配存储大小的 5%（以这二者中的较大值为准）时，预配存储大小会增加 5%。 适用上面指定的最大存储限制。
 
 例如，如果已预配 1000 GB 的存储，而实际使用量超过 950 GB，则服务器存储大小会增加到 1050 GB。 或者，如果已预配 10 GB 的存储，则当可用存储少于 1 GB 时，存储大小会增加到 15 GB。
 
 请记住，存储只能增加，不能减少。
 
-## <a name="backup"></a>备份
+## <a name="backup"></a>Backup
 
-服务自动对服务器进行备份。 你可以选择介于7到35天之间的保留期。 常规用途和内存优化服务器可以选择使用异地冗余存储进行备份。 在[概念一文](concepts-backup.md)中了解有关备份的详细信息。
+服务自动对服务器进行备份。 可以选择 7 到 35 天的保留期。 常规用途和内存优化服务器可以选择使用异地冗余存储进行备份。 若要详细了解备份，请参阅[概念文章](concepts-backup.md)。
 
 ## <a name="scale-resources"></a>缩放资源
 
-创建服务器后，可以单独更改 vCore 数、硬件生成、定价层（来回调整基本定价层除外）、存储量和备份保持期。 创建服务器后，便无法再更改备份存储类型。 可以增加或减少 VCore 数。 备份保留期可以从 7 天到 35 天进行上下调整。 存储大小只能增加。 可以通过门户或 Azure CLI 缩放资源。 有关使用 Azure CLI 进行缩放的示例，请参阅[使用 Azure CLI 监视和缩放 Azure Database for PostgreSQL 服务器](scripts/sample-scale-server-up-or-down.md)。
+创建服务器之后，可以独立地更改 vCore 数、硬件生成、定价层（基本层的操作除外）、存储量和备份保留期。 创建服务器之后，不能更改备份存储类型。 可以向上或向下调整 VCore 数。 备份保留期可以从 7 天到 35 天进行上下调整。 存储大小只能增加。 可以通过门户或 Azure CLI 缩放资源。 有关使用 Azure CLI 进行缩放的示例，请参阅[使用 Azure CLI 监视和缩放 Azure Database for PostgreSQL 服务器](scripts/sample-scale-server-up-or-down.md)。
 
 > [!NOTE] 
 > 存储大小只能增加。 增加后，将不能返回到更小的存储大小。
 
-更改 vCore 数、硬件生成或定价层时，将会创建原始服务器的副本，其分配有新的计算资源。 启动并运行新服务器后，连接将切换到新服务器。 在系统切换到新服务器的短暂期间，无法建立新的连接，所有未提交的连接将会回退。 此时段不定，但大多数情况下短于一分钟。
+更改 vCore 数、硬件生成或定价层时，将会使用新的计算分配创建原始服务器的副本。 启动并运行新服务器后，连接将切换到新服务器。 在系统切换到新服务器的短暂期间，无法建立新的连接，所有未提交的连接将会回退。 此时段不定，但大多数情况下短于一分钟。
 
 缩放存储和更改备份保留期是真正的联机操作。 不会造成停机，应用程序不会受影响。 当 IOPS 随已预配存储的大小缩放时，可以通过扩大存储来增加提供给服务器的 IOPS。
 
 ## <a name="pricing"></a>定价
 
-有关最新定价信息，请参阅服务的[定价页](https://azure.microsoft.com/pricing/details/PostgreSQL/)。 若要查看所需配置的具体成本，可以单击 [Azure 门户](https://portal.azure.com/#create/Microsoft.PostgreSQLServer)的“定价层”选项卡，系统就会根据选定的选项显示每月成本。**** 如果没有 Azure 订阅，可使用 Azure 定价计算器获取估计的价格。 在 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)网站上，选择“添加项”****，展开“数据库”**** 类别，选择“Azure Database for PostgreSQL”**** 自定义选项。
+有关最新定价信息，请参阅服务的[定价页](https://azure.microsoft.com/pricing/details/PostgreSQL/)。 若要查看所需配置的具体成本，可以单击 [Azure 门户](https://portal.azure.com/#create/Microsoft.PostgreSQLServer)的“定价层”选项卡，系统就会根据选定的选项显示每月成本。  如果没有 Azure 订阅，可使用 Azure 定价计算器获取估计的价格。 在 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)网站上，选择“添加项”  ，展开“数据库”  类别，选择“Azure Database for PostgreSQL”  自定义选项。
 
 ## <a name="next-steps"></a>后续步骤
 

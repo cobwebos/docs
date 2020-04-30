@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 2df36d80aea34da1693cecde524d239abd2bb04a
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82100237"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>安装并运行 LUIS docker 容器
@@ -32,7 +32,7 @@ ms.locfileid: "82100237"
 
 若要运行 LUIS 容器，请注意以下先决条件：
 
-|必需|用途|
+|必选|目的|
 |--|--|
 |Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> **在 Windows 上**，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。|
@@ -166,7 +166,7 @@ Host: {AZURE_REGION}.api.cognitive.microsoft.com
 Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 ```
 
-| 占位符 | 值 |
+| 占位符 | “值” |
 |-------------|-------|
 | **{APP_ID}** | 已发布 LUIS 应用的应用程序 ID。 |
 | **{SLOT_NAME}** | 已发布 LUIS 应用的环境。 使用以下值之一：<br/>`PRODUCTION`<br/>`STAGING` |
@@ -185,7 +185,7 @@ Host: {AZURE_REGION}.api.cognitive.microsoft.com
 Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 ```
 
-| 占位符 | 值 |
+| 占位符 | “值” |
 |-------------|-------|
 | **{APP_ID}** | 已训练 LUIS 应用的应用程序 ID。 |
 | **{APP_VERSION}** | 已训练 LUIS 应用的应用程序版本。 |
@@ -252,12 +252,12 @@ ApiKey={API_KEY}
 
 查询参数配置查询响应的返回方式以及返回内容：
 
-|查询参数|类型|用途|
+|查询参数|类型|目的|
 |--|--|--|
 |`query`|字符串|用户的话语。|
-|`verbose`|布尔值|一个布尔值，表示是否为预测的模型返回所有元数据。 默认值为 false。|
-|`log`|布尔值|记录查询，以便以后用于[主动学习](luis-how-to-review-endpoint-utterances.md)。 默认值为 false。|
-|`show-all-intents`|布尔值|一个布尔值，表示是返回所有意向，还是只返回打分最高的意向。 默认值为 false。|
+|`verbose`|boolean|一个布尔值，表示是否为预测的模型返回所有元数据。 默认值为 false。|
+|`log`|boolean|记录查询，以便以后用于[主动学习](luis-how-to-review-endpoint-utterances.md)。 默认值为 false。|
+|`show-all-intents`|boolean|一个布尔值，表示是返回所有意向，还是只返回打分最高的意向。 默认值为 false。|
 
 # <a name="v2-prediction-endpoint"></a>[V2 预测终结点](#tab/v2)
 
@@ -268,13 +268,13 @@ ApiKey={API_KEY}
 
 查询参数配置查询响应的返回方式以及返回内容：
 
-|查询参数|类型|用途|
+|查询参数|类型|目的|
 |--|--|--|
 |`q`|字符串|用户的话语。|
 |`timezoneOffset`|数字|通过 timezoneOffset 可以[更改时区](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)，该时区由预生成实体 datetimeV2 使用。|
-|`verbose`|布尔值|设置为 true 时，返回所有意向及其分数。 默认值为 false 时，仅返回评分最高的意向。|
-|`staging`|布尔值|设置为 true 时，返回过渡环境结果中的查询。 |
-|`log`|布尔值|记录查询，以便以后用于[主动学习](luis-how-to-review-endpoint-utterances.md)。 默认值为 true。|
+|`verbose`|boolean|设置为 true 时，返回所有意向及其分数。 默认值为 false 时，仅返回评分最高的意向。|
+|`staging`|boolean|设置为 true 时，返回过渡环境结果中的查询。 |
+|`log`|boolean|记录查询，以便以后用于[主动学习](luis-how-to-review-endpoint-utterances.md)。 默认值为 true。|
 
 ***
 
@@ -355,7 +355,7 @@ curl -X GET \
 
 若要关闭容器，请在运行容器的命令行环境中按 Ctrl+C****。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 如果运行启用了输出[装入点](luis-container-configuration.md#mount-settings)和日志记录的容器，该容器会生成有助于排查启动或运行容器时发生的问题的日志文件。
 
@@ -372,7 +372,7 @@ LUIS 容器使用 Azure 帐户中的认知服务__ 资源向 Azure 发送账单�
 <!--blogs/samples/video courses -->
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>“摘要”
 
 在本文中，我们已学习相关的概念，以及语言理解 (LUIS) 容器的下载、安装和运行工作流。 综上所述：
 

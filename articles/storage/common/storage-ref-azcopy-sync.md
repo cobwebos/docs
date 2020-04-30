@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: d855019be7f357a35a26d14e68ba3d427d984e17
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82086022"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
@@ -67,7 +67,7 @@ azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[contai
 ```
 
 > [!NOTE]
-> 目标 blob*必须*存在。 用于`azcopy copy`复制目标中尚不存在的单个文件。 否则，将发生以下错误： `Cannot perform sync due to error: sync must happen between source and destination of the same type, e.g. either file <-> file, or directory/container <-> directory/container`。
+> 目标 blob*必须*存在。 使用`azcopy copy`复制目标中尚不存在的单个文件。 否则，将发生以下错误： `Cannot perform sync due to error: sync must happen between source and destination of the same type, e.g. either file <-> file, or directory/container <-> directory/container`。
 
 与前面的示例相同，但这一次此命令还会计算文件内容的 MD5 哈希，并将其另存为 Blob 的 Content-MD5 属性：
 
@@ -134,27 +134,27 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 ## <a name="options"></a>选项
 
-**--block-size-mb** 浮点数         在上传到 Azure 存储或从 Azure 存储下载时使用此块大小（以 MiB 为单位）。 默认值根据文件大小自动计算。 允许小数分数（例如：0.25）。
+**--block-size-mb** 浮点数         在上传到 Azure 存储或从 Azure 存储下载时使用此块大小（以 MiB 为单位）。 默认值根据文件大小自动计算。 允许使用小数小数（例如：0.25）。
 
-**--检查 md5**字符串 指定下载时应严格验证 MD5 哈希。 此选项仅在下载时可用。 可用值包括：无检查、仅日志、失败（如果已转移）、失败转移或缺失。 （默认值为“FailIfDifferent”）。 （默认值为“FailIfDifferent”）
+**--check-md5** string 指定在下载时应如何验证严格的 md5 哈希。 此选项仅在下载时可用。 可用值包括： NoCheck、LogOnly、FailIfDifferent、FailIfDifferentOrMissing。 （默认值为“FailIfDifferent”）。 （默认值为“FailIfDifferent”）
 
 **--delete-destination** 字符串   定义是否从目标中删除不在源中的多余文件。 可设置为 true、false 或 prompt。 如果设置为 prompt，则在计划要删除的文件和 Blob 之前，系统会向用户提问。 （默认值为“false”）。 （默认值为“false”）
 
-**--排除属性**字符串（仅限 Windows） 排除其属性与属性列表匹配的文件。 例如：A;S;R
+**--exclude-** attribute string （仅限 Windows）排除其属性与属性列表匹配的文件。 例如： A;些迅驰
 
-**--外**字符串复制时排除这些路径。 此选项不支持通配符 (*)。 检查相对路径前缀（例如：myFolder;myFolder/subDirName/file.pdf）。 与帐户遍历结合使用时，路径不包含容器名称。
+**--排除-路径**字符串在复制时排除这些路径。 此选项不支持通配符 (*)。 检查相对路径前缀（例如：myFolder;myFolder/subDirName/file.pdf）。 与帐户遍历结合使用时，路径不包含容器名称。
 
-**--排除模式**字符串 排除名称与模式列表匹配的文件。 例如：\*.jpg;\*.pdf;exactName
+**--排除模式**字符串排除名称与模式列表匹配的文件。 例如：\*.jpg;\*.pdf;exactName
 
 **-h、--help**                         sync 命令的帮助
 
-**--include-attributes** 字符串   （仅限 Windows）仅包括其属性与属性列表相匹配的文件。 例如：A;S;R
+**--include-attributes** 字符串   （仅限 Windows）仅包括其属性与属性列表相匹配的文件。 例如： A;些迅驰
 
-**--包括模式**字符串 仅包括名称与模式列表匹配的文件。 例如：\*.jpg;\*.pdf;exactName
+**--include-模式**字符串仅包含名称与模式列表匹配的文件。 例如：\*.jpg;\*.pdf;exactName
 
-**--日志级**字符串 定义日志文件的日志详细性、可用级别：INFO（所有请求和响应）、警告（慢速响应）、ERROR（仅失败的请求）和 NONE（无输出日志）。 （默认值为 INFO）。 （默认值为“INFO”）
+**--日志级别**字符串定义日志文件的日志详细级别，可用级别：信息（所有请求和响应）、警告（响应缓慢）、错误（仅失败的请求）和 NONE （无输出日志）。 （默认值为 INFO）。 （默认值为“INFO”）
 
-**--put-md5**                    创建每个文件的 MD5 哈希，并将哈希保存为目标 blob 或文件的内容-MD5 属性。 （默认情况下不会创建哈希。仅在上载时可用。
+**--put-md5**                    创建每个文件的 MD5 哈希，并将哈希保存为目标 blob 或文件的 Content-MD5 属性。 （默认情况下不创建哈希。）仅在上载时可用。
 
 **--recursive**                   默认值为 True，即，在目录之间同步时，将以递归方式查看子目录。 （默认值为 true）。 （默认值为 true）
 
@@ -165,6 +165,6 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 |--cap-mbps uint32|以兆位/秒为单位限制传输速率。 瞬间吞吐量可能与上限略有不同。 如果此选项设置为零，或者省略，则吞吐量不受限制。|
 |--output-type string|命令输出的格式。 选项包括：text、json。 默认值为“text”。|
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [azcopy](storage-ref-azcopy.md)

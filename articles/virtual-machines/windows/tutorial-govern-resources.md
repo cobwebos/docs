@@ -1,23 +1,19 @@
 ---
 title: 教程 - 使用 PowerShell 管理虚拟机
 description: 本教程介绍如何通过使用 Azure PowerShell 应用 RBAC、策略、锁和标记管理 Azure 虚拟机
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: tfitzmac
-manager: gwallace
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.tgt_pltfrm: vm-windows
 ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: d8cb1895c980fa9f84983ea8364cb2f0f5dcb982
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: b4ce4cd53f9dda3d0f96e892128d543e59c83b26
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81456016"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82100356"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>教程：了解如何使用 Azure PowerShell 管理 Windows 虚拟机
 

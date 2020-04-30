@@ -6,10 +6,10 @@ ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
 ms.openlocfilehash: 39a41a60f4cabe995ebd458c4b906438d1e31bde
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82097109"
 ---
 # <a name="manage-connections-in-azure-automation"></a>在 Azure 自动化中管理连接
@@ -22,7 +22,7 @@ ms.locfileid: "82097109"
 >Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产使用为每个自动化帐户生成的唯一密钥加密并存储在 Azure 自动化中。 此密钥存储在系统托管的密钥保管库中。 在存储安全资产之前，从密钥保管库加载密钥，然后使用该密钥加密资产。 此过程由 Azure 自动化管理。
 
 >[!NOTE]
->本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az module 安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于你的自动化帐户，可使用[如何在 Azure 自动化中更新 Azure PowerShell 模块](automation-update-azure-modules.md)，将模块更新到最新版本。
+>本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az 模块安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于自动化帐户，可参阅[如何更新 Azure 自动化中的 Azure PowerShell 模块](automation-update-azure-modules.md)，将模块更新到最新版本。
 
 ## <a name="connection-types"></a>连接类型
 
@@ -38,7 +38,7 @@ Azure 自动化中提供了三种类型的内置连接：
 
 下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化连接。 它们作为[Azure PowerShell 模块](/powershell/azure/overview)的一部分附带，可在自动化 RUNBOOK 和 DSC 配置中使用。
 
-|Cmdlet|描述|
+|Cmdlet|说明|
 |---|---|
 |[AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationconnection?view=azps-3.7.0)|检索连接。 包含具有连接字段的值的哈希表。|
 |[新-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationconnection?view=azps-3.7.0)|创建新连接。|
@@ -105,7 +105,7 @@ Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.
 ```
 
 > [!NOTE]
-> 对于非图形 PowerShell runbook， `Add-AzAccount`和`Add-AzureRMAccount`是[AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)的别名。 可以使用这些 cmdlet，或者将自动化帐户中的[模块更新](automation-update-azure-modules.md)到最新版本。 即使刚刚创建了一个新的自动化帐户，也可能需要更新模块。
+> 对于非图形 PowerShell runbook， `Add-AzAccount`和`Add-AzureRMAccount`是[AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)的别名。 可以使用这些 cmdlet，也可以在自动化帐户中[将模块更新](automation-update-azure-modules.md)为最新版本。 即使刚刚创建了一个新的自动化帐户，也可能需要更新你的模块。
 
 ### <a name="graphical-runbook-samples"></a>图形 Runbook 示例
 
@@ -165,6 +165,6 @@ azure_credential = get_automation_runas_credential(runas_connection)
 ## <a name="next-steps"></a>后续步骤
 
 - 查看[图形创作中的链接](automation-graphical-authoring-intro.md#links-and-workflow)，了解如何引导和控制 Runbook 中的逻辑流。
-* 有关 PowerShell cmdlet 参考，请参阅[Az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+* 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
 )。
 - 要详细了解 Azure 自动化如何使用 PowerShell 模块，以及如何根据最佳实践创建自己的 PowerShell 模块（充当 Azure 自动化中的集成模块），请参阅[集成模块](automation-integration-modules.md)。

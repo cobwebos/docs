@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
 ms.openlocfilehash: 7e987c56c3a125a03e3a90540313ace1f8adf47a
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82086566"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的安全性
@@ -74,13 +74,13 @@ Data Lake Storage Gen1 是一个类似于 Hadoop 分布式文件系统 (HDFS) �
 
 ![防火墙设置和 IP 访问](./media/data-lake-store-security-overview/firewall-ip-access.png "防火墙设置和 IP 地址")
 
-Azure 虚拟网络 （VNet） 支持数据湖第 1 代的服务标记。 服务标记代表给定 Azure 服务中的一组 IP 地址前缀。 Microsoft 管理服务标记包含的地址前缀，并在地址更改时自动更新服务标记。 有关详细信息，请参阅[Azure 服务标记概述](../virtual-network/service-tags-overview.md)。
+Azure 虚拟网络（VNet）支持 Data Lake 第1代的服务标记。 服务标记代表给定 Azure 服务中的一组 IP 地址前缀。 Microsoft 管理服务标记包含的地址前缀，并在地址更改时自动更新服务标记。 有关详细信息，请参阅[Azure 服务标记概述](../virtual-network/service-tags-overview.md)。
 
 ## <a name="data-protection"></a>数据保护
 
 Data Lake Storage Gen1 会在其整个生命周期中保护用户的数据。 对于传输过程中的数据，Data Lake Storage Gen1 使用符合行业标准的传输层安全性 (TLS 1.2) 协议来保护网络上的数据。
 
-![数据存储单元1中的加密](./media/data-lake-store-security-overview/adls-encryption.png "数据存储单元1中的加密")
+![Data Lake Storage Gen1 中的加密](./media/data-lake-store-security-overview/adls-encryption.png "Data Lake Storage Gen1 中的加密")
 
 Data Lake Storage Gen1 还针对帐户中存储的数据提供加密。 可以选择加密或不加密数据。 如果选择使用加密，可以先对存储在 Data Lake Storage Gen1 中的数据进行加密，然后再将其存储在持久性介质上。 在这种情况下，Data Lake Storage Gen1 会在保存数据前进行自动加密，在检索前进行自动解密，因此对于访问数据的客户端而言，它是完全透明的。 无需在客户端上进行代码更改，即可加密/解密数据。
 
@@ -105,19 +105,19 @@ Data Lake Storage Gen1 还针对帐户中存储的数据提供加密。 可以�
 
 ### <a name="diagnostics-logs"></a>诊断日志
 
-您可以在 Azure 门户中启用数据访问审核和诊断日志记录，并将日志发送到 Azure Blob 存储帐户、事件中心或 Azure 监视器日志。
+可以在 Azure 门户中启用数据访问审核和诊断日志记录，并将日志发送到 Azure Blob 存储帐户、事件中心或 Azure Monitor 日志。
 
 ![诊断日志](./media/data-lake-store-security-overview/diagnostic-logs.png "诊断日志")
 
 有关如何使用 Data Lake Storage Gen1 的诊断日志的详细信息，请参阅[访问 Data Lake Storage Gen1 的诊断日志](data-lake-store-diagnostic-logs.md)。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>“摘要”
 
 企业客户需要安全、易用的数据分析云平台。 Data Lake Storage Gen1 旨在利用 Azure Active Directory 集成、基于 ACL 的授权、网络隔离、传输中的数据加密、静态数据加密和审核，通过标识管理和身份验证来满足这些需求。
 
 如果想要了解 Data Lake Storage Gen1 中的新功能，请在 [Data Lake Storage Gen1 UserVoice 论坛](https://feedback.azure.com/forums/327234-data-lake)中向我们发送反馈。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)
 * [Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
