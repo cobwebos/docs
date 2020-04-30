@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
-ms.date: 02/12/2020
-ms.openlocfilehash: 6bba71ab35920027cc7296e774936c3d1deb8f92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.date: 04/10/2020
+ms.openlocfilehash: ed2fe1736c887fd8aa866c8d0c71a5df0aa4fb31
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770317"
+ms.locfileid: "82232830"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他组件在 HDInsight 中设置群集
 
@@ -128,6 +128,9 @@ HDInsight 群集可以使用以下存储选项：
 在配置期间，对于默认存储终结点，需要指定 Azure 存储帐户的 Blob 容器或 Data Lake Storage。 默认存储包含应用程序日志和系统日志。 可以选择指定群集可访问的其他链接的 Azure 存储帐户和 Data Lake Storage 帐户。 HDInsight 群集与从属存储帐户必须位于相同的 Azure 位置。
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
+
+> [!IMPORTANT]
+> 如果在创建群集后启用安全存储传输，则可能会导致使用存储帐户时出现错误，不建议使用此项。 最好使用已启用安全传输的存储帐户创建新群集。
 
 ### <a name="metastore-settings"></a>元存储设置
 

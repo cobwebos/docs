@@ -1,54 +1,83 @@
 ---
 title: Azure Cosmos DB 中的分区
 description: 了解 Azure Cosmos DB 中的分区、选择分区键时的最佳做法，以及如何管理逻辑分区
-author: markjbrown
-ms.author: mjbrown
+author: deborahc
+ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 551703b5dcca082904197010366ee059998dde4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/28/2020
+ms.openlocfilehash: 1a760b4cedad5e43a2ef9f186162675aaf6d5ea5
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79251864"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82234173"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Azure Cosmos DB 中的分区
 
-Azure Cosmos DB 使用分区缩放数据库中的单个容器，以满足应用程序的性能需求。 在分区中，容器中的项被划分为称为*逻辑分区*的不同子集。 逻辑分区是根据与容器中每个项关联的分区键值形成的。** 逻辑分区中的所有项具有相同的分区键值。
+Azure Cosmos DB 使用分区缩放数据库中的单个容器，以满足应用程序的性能需求。 在分区中，可将容器中的项分割成不同的子集（称作“逻辑分区”）。  逻辑分区是根据与容器中每个项关联的分区键值形成的。  逻辑分区中的所有项具有相同的分区键值。
 
 例如，某个容器保存项。 每个项具有唯一的 `UserID` 属性值。 如果 `UserID` 充当容器中的项的分区键，并且有 1,000 个唯一的 `UserID` 值，则会为容器创建 1,000 个逻辑分区。
 
-除了确定项的逻辑分区的分区键外，容器中的每个项都有一个*项 ID（* 在逻辑分区中是唯一的）。 将分区键与项 ID 相结合可以创建项的索引用于唯一标识该项。**
+除了用于确定项的逻辑分区的分区键以外，容器中的每个项还有一个项 ID（在逻辑分区中保持唯一）。  合并分区键和*项 ID*将创建项的索引，该*索引*将唯一标识该项。
 
-[选择分区密钥](partitioning-overview.md#choose-partitionkey)是影响应用程序性能的重要决策。
+[分区键的选择](partitioning-overview.md#choose-partitionkey)非常重要，这会影响应用程序的性能。
 
 ## <a name="managing-logical-partitions"></a>管理逻辑分区
 
-Azure Cosmos DB 以透明方式自动管理逻辑分区在物理分区上的位置，以有效满足容器的可伸缩性和性能需求。 随着应用程序的吞吐量和存储要求的提高，Azure Cosmos DB 可移动逻辑分区，以自动在更多的服务器之间分散负载。 
+Azure Cosmos DB 以透明方式自动管理逻辑分区在物理分区上的位置，以有效满足容器的可伸缩性和性能需求。 随着应用程序的吞吐量和存储要求的增加，Azure Cosmos DB 移动逻辑分区，以自动将负载分散到更多的物理分区上。 你可以详细了解[物理分区](partition-data.md#physical-partitions)。
 
 Azure Cosmos DB 使用基于哈希的分区在物理分区之间分散逻辑分区。 Azure Cosmos DB 对项的分区键值进行哈希处理。 哈希处理结果确定了物理分区。 然后，Azure Cosmos DB 在物理分区之间均匀分配分区键哈希的键空间。
 
-与访问多个分区的查询相比，访问单个逻辑分区中的数据的查询更具成本效益。 只允许针对单个逻辑分区中的项执行事务（在存储过程或触发器中）。
+只允许针对单个逻辑分区中的项执行事务（在存储过程或触发器中）。
 
-若要详细了解 Azure Cosmos DB 如何管理分区，请参阅[逻辑分区](partition-data.md)。 （生成或运行应用程序不需要了解内部详细信息，添加到这里只是为了方便那些好奇的读者。）
+你可以详细了解[Azure Cosmos DB 管理分区的方式](partition-data.md)。 （生成或运行应用程序不需要了解内部详细信息，添加到这里只是为了方便那些好奇的读者。）
 
 ## <a name="choosing-a-partition-key"></a><a id="choose-partitionkey"></a>选择分区键
 
-以下内容是选择分区键的很好的指南：
+选择分区键是 Azure Cosmos DB 中的一个简单但重要的设计选择。 选择分区键后，就不能就地更改。 如果需要更改分区键，应使用新的所需分区键将数据移动到新容器。
 
-* 单个逻辑分区的上限为 20 GB 的存储空间。  
+对于**所有**容器，分区键应：
 
-* Azure Cosmos 容器的最小吞吐量为每秒 400 个请求单位 (RU/s)。 在数据库上预配吞吐量时，每个容器的最小 RU 数为每秒 100 个请求单位（RU/秒）。 对同一分区键的请求不能超过分配给某个分区的吞吐量。 如果请求超过分配的吞吐量，则请求将受到速率限制。 请务必选择不会导致应用程序中产生“热点”的分区键。
+* 是具有不更改的值的属性。 如果某个属性是您的分区键，则不能更新该属性的值。
+* 基数较高。 换言之，属性应具有范围广泛的可能值。
+* 跨所有逻辑分区均匀分配请求单位（RU）消耗和数据存储。 这可确保甚至跨物理分区的 RU 消耗和存储分配。
 
-* 选择具有宽广范围的值，以及在逻辑分区之间均匀分散的访问模式的分区键。 这有助于在逻辑分区集之间分散容器中的数据和活动，以便可以在逻辑分区之间分配数据存储和吞吐量的资源。
+如果在 Azure Cosmos DB 中需要[多项 ACID 事务](database-transactions-optimistic-concurrency.md#multi-item-transactions)，则需要使用[存储过程或触发器](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures)。 所有基于 JavaScript 的存储过程和触发器的作用域都是单个逻辑分区。
 
-* 选择可以持续在所有分区之间均匀分散工作负荷的分区键。 所选的分区键应该可以根据在多个分区之间分配项的目标，平衡有效分区查询和事务的需求，以实现可伸缩性。
+## <a name="partition-keys-for-read-heavy-containers"></a>用于读取繁重容器的分区键
 
-* 分区键的候选项可能包括经常在查询中显示为筛选器的属性。 通过在筛选器谓词中包含分区键，可以有效地路由查询。
+对于大多数容器，在选择分区键时，需要考虑上述标准。 但对于大型的读取密集型容器，可能需要选择在查询中经常出现为筛选器的分区键。 查询可以通过在筛选器谓词中包含分区键来[有效地路由到相关的物理分区](how-to-query-container.md#in-partition-query)。
+
+如果你的大部分工作负荷请求是查询，而大多数查询在同一属性上都有相等性筛选器，则此属性可以是一个很好的分区键选择。 例如，如果经常运行筛选器的查询`UserID`，则选择`UserID`作为分区键将减少[跨分区查询](how-to-query-container.md#avoiding-cross-partition-queries)的数量。
+
+但是，如果容器很小，则可能没有足够的物理分区需要担心跨分区查询的性能影响。 Azure Cosmos DB 中的大多数小容器只需要一个或两个物理分区。
+
+如果容器可能会增长到多个物理分区，则应确保选择最大程度地减少跨分区查询的分区键。 如果满足以下任一条件，则容器将需要多个物理分区：
+
+* 容器已预配了 30000 RU
+* 容器将存储超过 100 GB 的数据
+
+## <a name="using-item-id-as-the-partition-key"></a>使用项 ID 作为分区键
+
+如果容器具有具有各种可能值的属性，则很可能是很好的分区键选择。 此类属性的一个可能示例是*项 ID*。 对于具有任意大小的小型读繁重容器或大容量写入容器，*该项 ID*对于分区键是很好的选择。
+
+系统属性*项 ID*保证存在于 Cosmos 容器中的每一项。 可能有其他属性，这些属性表示项的逻辑 ID。 在许多情况下，这些是很好的分区键选择，这与*项 ID*的原因相同。
+
+*项 ID*是一个很好的分区键选择，原因如下：
+
+* 有多种可能的值（每个项一个唯一*项 ID* ）。
+* 由于每个项目都有唯一的*项 id* ，因此，*项 id*会在平均平衡 RU 消耗和数据存储时执行出色的工作。
+* 你可以轻松执行有效的点读取，因为如果你知道项的*项 ID*，将始终知道项的分区键。
+
+选择*项 ID*作为分区键时需要注意的一些事项包括：
+
+* 如果*项 ID*是分区键，则它会成为整个容器中的唯一标识符。 你将无法具有具有重复*项 ID*的项。
+* 如果有大量[物理分区](partition-data.md#physical-partitions)的读取密集型容器，则如果查询具有*项 ID*的相等筛选器，则查询将更有效。
+* 不能跨多个逻辑分区运行存储过程或触发器。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 了解 [Azure Cosmos DB 中的分区和水平缩放](partition-data.md)。
-* 了解[Azure 宇宙 DB 中的预配吞吐量](request-units.md)。
+* 了解[Azure Cosmos DB 中预配的吞吐量](request-units.md)。
 * 了解 [Azure Cosmos DB 中的全局分布](distribute-data-globally.md)。

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/16/2020
-ms.openlocfilehash: 53d8da3f5ff715fa34f007272214823ed60e6326
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c0e95b71ec21b384f17a44ebf5cfd4f33b45f0f
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192053"
+ms.locfileid: "82232847"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>使用 Apache Ambari Web UI 管理 HDInsight 群集
 
@@ -135,7 +135,7 @@ Apache Ambari 简化了 Apache Hadoop 群集的管理和监视。 这种简化�
 
 ### <a name="ambari-users-groups-and-permissions"></a>Ambari 用户、组和权限
 
-使用已加入域的 HDInsight 群集时，支持使用用户、组和权限。 若要深入了解如何在已加入域的群集上使用 Ambari 管理 UI，请参阅[管理已加入域的 HDInsight 群集](./domain-joined/hdinsight-security-overview.md)。
+支持使用用户、组和权限。 有关本地管理，请参阅为[Apache Ambari 视图授权用户](./hdinsight-authorize-users-to-ambari.md)。 对于已加入域的群集，请参阅[管理已加入域的 HDInsight 群集](./domain-joined/hdinsight-security-overview.md)。
 
 > [!WARNING]  
 > 不要在基于 Linux 的 HDInsight 群集上更改 Ambari 监视程序 (hdinsightwatchdog) 的密码。 更改密码将导致无法通过群集使用脚本操作或执行缩放操作。
@@ -153,7 +153,7 @@ Apache Ambari 简化了 Apache Hadoop 群集的管理和监视。 这种简化�
 
 2. 使用 "**操作**" 菜单选择要执行的操作：
 
-    |项 |说明 |
+    |项 |描述 |
     |---|---|
     |启动所有组件|启动主机上的所有组件。|
     |停止所有组件|停止主机上的所有组件。|

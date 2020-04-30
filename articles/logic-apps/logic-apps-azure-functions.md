@@ -1,16 +1,16 @@
 ---
-title: 从 Azure 逻辑应用添加和调用 Azure 函数
-description: 从 Azure 逻辑应用中的自动任务和工作流调用和运行 Azure 函数中的自定义代码
+title: 在 Azure 逻辑应用中添加和调用 Azure Functions
+description: 在 Azure 逻辑应用中的自动任务和工作流中调用并运行 Azure Functions 中的自定义代码
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
 ms.openlocfilehash: 29713622be90ea280bff3c002be746bf1615718f
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81605902"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>从 Azure 逻辑应用调用 Azure 函数
@@ -21,7 +21,7 @@ ms.locfileid: "81605902"
 * 在逻辑应用工作流中执行计算。
 * 在逻辑应用中应用高级格式设置或计算字段。
 
-要在不创建 Azure 函数的情况下运行代码段，请了解如何[添加和运行内联代码](../logic-apps/logic-apps-add-run-inline-code.md)。
+若要运行代码片段而不创建 Azure 函数，请了解如何[添加和运行内联代码](../logic-apps/logic-apps-add-run-inline-code.md)。
 
 > [!NOTE]
 > 在逻辑应用和 Azure Functions 之间集成目前不适用于槽已启用的情况。
@@ -42,7 +42,7 @@ ms.locfileid: "81605902"
 
     此 HTTP 触发器模板可从逻辑应用接受具有 `application/json` 类型的内容。 将 Azure 函数添加到逻辑应用中时，逻辑应用设计器在 Azure 订阅内显示基于此模板创建的自定义函数。
 
-  * 除非定义了[OpenAPI 定义](../azure-functions/functions-openapi-definition.md)（以前称为[Swagger 文件](https://swagger.io/)），否则函数不使用自定义路由。
+  * 除非定义了[OpenAPI 定义](../azure-functions/functions-openapi-definition.md)（以前称为[Swagger 文件](https://swagger.io/)），否则函数不会使用自定义路由。
 
   * 如果已经有函数的 OpenAPI 定义，逻辑应用设计器会提供更丰富的函数参数使用体验。 在逻辑应用查找并访问具有 OpenAPI 定义的函数之前，请先[按以下步骤设置函数应用](#function-swagger)。
 
@@ -54,17 +54,17 @@ ms.locfileid: "81605902"
 
 ## <a name="find-functions-that-have-openapi-descriptions"></a>查找有 OpenAPI 说明的函数
 
-为了在逻辑应用设计器中使用函数参数时获得更丰富的体验，请为您的函数[生成 OpenAPI 定义](../azure-functions/functions-openapi-definition.md)（以前称为[Swagger 文件](https://swagger.io/)）。 若要设置函数应用以使其可查找和使用具备 Swagger 描述的函数，请按照以下步骤操作：
+若要在逻辑应用设计器中使用函数参数时获得更丰富的体验，请为函数[生成 OpenAPI 定义](../azure-functions/functions-openapi-definition.md)（以前称为[Swagger 文件](https://swagger.io/)）。 若要设置函数应用以使其可查找和使用具备 Swagger 描述的函数，请按照以下步骤操作：
 
 1. 确保函数应用正在运行。
 
 1. 按照以下步骤，在函数应用中，设置[跨源资源共享 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) 以便允许所有来源：
 
-   1. 从 **"功能应用"** 列表中，选择函数应用。 在右侧窗格中，选择 **"平台"功能** > **CORS**。
+   1. 从 "**函数应用**" 列表中，选择函数应用。 在右侧窗格中，选择 "**平台功能** > " "**CORS**"。
 
       ![选择函数应用 >“平台功能”>“CORS”](./media/logic-apps-azure-functions/function-platform-features-cors.png)
 
-   1. 在**CORS**下，添加星号**`*`**（） 通配符，但删除列表中的所有其他源，然后选择 **"保存**"。
+   1. 在**CORS**下，添加星号（**`*`**）通配符，但删除列表中的所有其他来源，然后选择 "**保存**"。
 
       ![将 CORS 设为通配符“*”](./media/logic-apps-azure-functions/function-platform-features-cors-origins.png)
 
@@ -101,9 +101,9 @@ function convertToDateString(request, response){
 
 ## <a name="create-functions-inside-logic-apps"></a>在逻辑应用内部创建函数
 
-可以使用逻辑应用设计器中的内置 Azure 函数操作直接从逻辑应用的工作流创建 Azure 函数，但只能对 JavaScript 中编写的 Azure 函数使用此方法。 对于其他语言，可以通过 Azure 门户中的 Azure 函数体验创建 Azure 函数。 有关详细信息，请参阅在[Azure 门户中创建第一个函数](../azure-functions/functions-create-first-azure-function.md)。
+可以使用逻辑应用设计器中的内置 Azure Functions 操作直接从逻辑应用的工作流创建 Azure 函数，但只能对用 JavaScript 编写的 Azure 函数使用此方法。 对于其他语言，可以通过 Azure 门户中的 Azure Functions 体验来创建 Azure 功能。 有关详细信息，请参阅[在 Azure 门户中创建第一个函数](../azure-functions/functions-create-first-azure-function.md)。
 
-但是，在创建任何 Azure 函数之前，必须已经具有 Azure 函数应用，它是函数的容器。 若没有函数应用，请先创建一个。 请参阅[在 Azure 门户中创建第一个函数](../azure-functions/functions-create-first-azure-function.md)。
+但是，你必须已有一个 Azure function app 作为函数的容器，然后才能创建任何 Azure 函数。 若没有函数应用，请先创建一个。 请参阅[在 Azure 门户中创建第一个函数](../azure-functions/functions-create-first-azure-function.md)。
 
 1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中打开逻辑应用。
 
@@ -117,7 +117,7 @@ function convertToDateString(request, response){
 
    ![找到“Azure Functions”](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
-1. 从函数应用列表中选择自己的函数应用。 操作列表打开后，选择此操作：**创建新函数**
+1. 从函数应用列表中选择自己的函数应用。 打开操作列表后，选择此操作：**创建新函数**
 
    ![选择函数应用](./media/logic-apps-azure-functions/select-function-app-create-function.png)
 
@@ -131,7 +131,7 @@ function convertToDateString(request, response){
 
    ![定义函数](./media/logic-apps-azure-functions/add-code-function-definition.png)
 
-   在模板的代码中，*`context`对象*是指逻辑应用在后续步骤中通过 **"请求正文"** 字段发送的消息。 要从函数内访问 `context` 对象的属性，请使用如下语法：
+   在模板的代码中， * `context`对象*是指逻辑应用在稍后的步骤中通过 "**请求正文**" 字段发送的消息。 要从函数内访问 `context` 对象的属性，请使用如下语法：
 
    `context.body.<property-name>`
 
@@ -146,11 +146,11 @@ function convertToDateString(request, response){
 
 1. 在“请求正文”框中，提供函数的输入，其格式必须为 JavaScript 对象表示法 (JSON) 对象****。
 
-   此输入是逻辑应用发送到函数的上下文对象或消息**。 点击“请求正文”字段时，界面会显示动态内容列表，以便你可以为先前步骤中的输出选择令牌****。 此示例指定上下文负载包含名为具有`content`电子邮件触发器的**From**令牌值的属性。
+   此输入是逻辑应用发送到函数的上下文对象或消息**。 点击“请求正文”字段时，界面会显示动态内容列表，以便你可以为先前步骤中的输出选择令牌****。 此示例指定上下文有效负载包含一个名为`content`的属性，该属性具有来自 email 触发器的**from**标记的值。
 
    ![“请求正文”示例 - 上下文对象有效负载](./media/logic-apps-azure-functions/function-request-body-example.png)
 
-   此处的上下文对象没有强制转换为字符串，因此对象的内容被直接添加到 JSON 有效负载中。 但是，如果该上下文对象不是传递字符串、JSON 对象或 JSON 数组的 JSON 令牌，则会出现错误。 因此，如果此示例改用 **"接收时间**"令牌，则可以通过添加双引号将上下文对象转换为字符串。
+   此处的上下文对象没有强制转换为字符串，因此对象的内容被直接添加到 JSON 有效负载中。 但是，如果该上下文对象不是传递字符串、JSON 对象或 JSON 数组的 JSON 令牌，则会出现错误。 因此，如果此示例改用**接收的时间**令牌，则可以通过添加双引号将上下文对象转换为字符串。
 
    ![将对象强制转换为字符串](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
@@ -174,13 +174,13 @@ function convertToDateString(request, response){
 
    ![选择函数应用和 Azure 函数](./media/logic-apps-azure-functions/select-function-app-existing-function.png)
 
-   对于具有 API 定义（斯瓦格描述）并[设置的函数，以便逻辑应用可以找到和访问这些函数](#function-swagger)，您可以选择**Swagger 操作**。
+   对于具有 API 定义（Swagger 说明）并对其进行[设置以便逻辑应用可以查找和访问这些函数](#function-swagger)的函数，可以选择**Swagger 操作**。
 
    ![选择函数应用、“Swagger 操作”和 Azure 函数](./media/logic-apps-azure-functions/select-function-app-existing-function-swagger.png)
 
 1. 在“请求正文”框中，提供函数的输入，其格式必须为 JavaScript 对象表示法 (JSON) 对象****。
 
-   此输入是逻辑应用发送到函数的上下文对象或消息**。 点击“请求正文”字段时，界面会显示动态内容列表，以便你可以为先前步骤中的输出选择令牌****。 此示例指定上下文负载包含名为具有`content`电子邮件触发器的**From**令牌值的属性。
+   此输入是逻辑应用发送到函数的上下文对象或消息**。 点击“请求正文”字段时，界面会显示动态内容列表，以便你可以为先前步骤中的输出选择令牌****。 此示例指定上下文有效负载包含一个名为`content`的属性，该属性具有来自 email 触发器的**from**标记的值。
 
    ![“请求正文”示例 - 上下文对象有效负载](./media/logic-apps-azure-functions/function-request-body-example.png)
 
@@ -202,11 +202,11 @@ function convertToDateString(request, response){
 
 若要在不登录且不提供凭据或机密的情况下验证对其他 Azure Active Directory (Azure AD) 租户中资源的访问，逻辑应用可以使用[托管标识](../active-directory/managed-identities-azure-resources/overview.md)（前称为托管服务标识，简称 MSI）。 由于无需提供或轮换机密，因此 Azure 会为你管理此标识，并且会帮助保护凭据。 详细了解[支持使用托管标识进行 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
 
-如果将逻辑应用设置为使用系统分配的标识或手动创建的用户分配的标识，则逻辑应用中的 Azure 函数也可以使用相同的标识进行身份验证。 有关逻辑应用中的 Azure 函数的身份验证支持的详细信息，请参阅[将身份验证添加到出站调用](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
+如果将逻辑应用设置为使用系统分配的标识或手动创建的用户分配的标识，则逻辑应用中的 Azure 函数也可以使用同一标识进行身份验证。 有关逻辑应用中的 Azure 函数的身份验证支持的详细信息，请参阅[将身份验证添加到出站调用](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
 
-要将托管标识与函数一起设置和使用，请按照以下步骤操作：
+若要设置并将托管标识用于你的函数，请执行以下步骤：
 
-1. 在逻辑应用中启用托管标识，并设置该标识对目标资源的访问权限。 请参阅[在 Azure 逻辑应用中使用托管标识验证对 Azure 资源的访问](../logic-apps/create-managed-service-identity.md)。
+1. 在逻辑应用上启用托管标识，并设置该标识对目标资源的访问权限。 请参阅[在 Azure 逻辑应用中使用托管标识验证对 Azure 资源的访问](../logic-apps/create-managed-service-identity.md)。
 
 1. 执行以下步骤，在 Azure 函数和函数应用中启用身份验证：
 
@@ -217,7 +217,7 @@ function convertToDateString(request, response){
 
 ### <a name="set-up-anonymous-authentication-in-your-function"></a>在函数中设置匿名身份验证
 
-要在 Azure 函数中使用逻辑应用的托管标识，可以将函数的身份验证级别设置为匿名。 否则，逻辑应用会引发“BadRequest”错误。
+若要在 Azure 函数中使用逻辑应用的托管标识，请将函数的身份验证级别设置为 "匿名"。 否则，逻辑应用会引发“BadRequest”错误。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，找到并选择你的函数应用。 这些步骤使用“FabrikamFunctionApp”作为示例函数应用。
 
@@ -229,7 +229,7 @@ function convertToDateString(request, response){
 
    ![在调试控制台菜单中选择“CMD”选项](./media/logic-apps-azure-functions/open-debug-console-kudu.png)
 
-1. 下一页显示后，从文件夹列表中，选择**网站** > **wwwroot** > *您的功能*。 这些步骤使用“FabrikamAzureFunction”作为示例函数。
+1. 下一页面出现后，从 "文件夹" 列表中选择 "**站点** > **wwwroot** > *function*"。 这些步骤使用“FabrikamAzureFunction”作为示例函数。
 
    ![选择“站点”>“wwwroot”> 你的函数](./media/logic-apps-azure-functions/select-site-wwwroot-function-folder.png)
 
@@ -257,7 +257,7 @@ function convertToDateString(request, response){
 
 * Azure Active Directory (Azure AD) 中租户的目录 ID
 
-  要获取租户的目录 ID，可以运行[`Get-AzureAccount`](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureaccount)Powershell 命令。 或者，在 Azure 门户中执行以下步骤：
+  若要获取租户的目录 ID，可以运行[`Get-AzureAccount`](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureaccount) Powershell 命令。 或者，在 Azure 门户中执行以下步骤：
 
   1. 在 [Azure 门户](https://portal.azure.com)中，找到并选择你的函数应用。
 

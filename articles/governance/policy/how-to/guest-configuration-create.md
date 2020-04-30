@@ -3,12 +3,12 @@ title: 如何创建适用于 Windows 的 Guest Configuration 策略
 description: 了解如何创建适用于 Windows 的 Azure Policy Guest Configuration 策略。
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: f09bb543f73e37bd211a55e2238808f57585bb18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a75525b25945dd9548d7c293d5965cc67eb463dc
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024891"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509612"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>如何创建适用于 Windows 的 Guest Configuration 策略
 
@@ -16,7 +16,7 @@ ms.locfileid: "82024891"
  
 若要了解如何创建适用于 Linux 的 Guest Configuration 策略，请参阅[如何创建适用于 Linux 的 Guest Configuration 策略](./guest-configuration-create-linux.md)页
 
-审核 Windows 时，Guest Configuration 将使用 [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) 资源模块和配置文件。 DSC 配置定义计算机的应有状态。
+审核 Windows 时，来宾配置使用[Desired State configuration](/powershell/scripting/dsc/overview/overview) （DSC）资源模块创建配置文件。 DSC 配置定义计算机的应有状态。
 如果配置评估失败，则会触发策略效应 auditIfNotExists，并将计算机视为不合规。  
 
 [Azure Policy Guest Configuration](../concepts/guest-configuration.md) 只可用于审核计算机内部的设置。 目前尚未提供修正计算机内部设置的功能。

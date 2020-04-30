@@ -5,17 +5,17 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 04/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b470f9278bdca94d1fe98c64b11b070fb36cb075
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 069d2a153e307ed94032ce1d980f26521969fc56
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80998479"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508304"
 ---
-# <a name="set-up-azure-multi-factor-authentication"></a>设置 Azure 多重身份验证
+# <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>为 Windows 虚拟桌面启用 Azure 多重身份验证
 
 适用于 windows 虚拟桌面的 Windows 客户端是将 Windows 虚拟桌面与本地计算机集成的最佳选项。 但是，当你将 Windows 虚拟桌面帐户配置到 Windows 客户端时，你需要采取某些措施来保护你的用户和用户安全。
 
@@ -23,75 +23,38 @@ ms.locfileid: "80998479"
 
 尽管记住凭据很方便，但它也可以使部署在企业方案或个人设备上不太安全。 若要保护用户，你需要确保客户端始终询问 Azure 多重身份验证（MFA）凭据。 本文将演示如何配置 Windows 虚拟桌面的条件性访问策略，以便启用此设置。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 下面是你需要入门的内容：
 
-- 向所有用户分配以下许可证之一：
-  - Microsoft 365 E3 或 E5
-  - Azure Active Directory Premium P1 或 P2
-  - 企业移动性 + 安全性 E3 或 E5
+- 为用户分配包含 Azure Active Directory Premium P1 或 P2 的许可证。
 - 用户分配为组成员的 Azure Active Directory 组。
 - 为所有用户启用 Azure MFA。 有关如何执行此操作的详细信息，请参阅[如何要求用户进行双重验证](../active-directory/authentication/howto-mfa-userstates.md#view-the-status-for-a-user)。
 
->[!NOTE]
->以下设置也适用于[Windows 虚拟桌面 web 客户端](https://rdweb.wvd.microsoft.com/webclient/index.html)。
+> [!NOTE]
+> 以下设置也适用于[Windows 虚拟桌面 web 客户端](https://rdweb.wvd.microsoft.com/webclient/index.html)。
 
-## <a name="opt-in-to-the-conditional-access-policy"></a>选择条件性访问策略
+## <a name="create-a-conditional-access-policy"></a>创建条件访问策略
 
-1. 打开“Azure Active Directory”。****
+本部分将介绍如何创建在连接到 Windows 虚拟桌面时需要多重身份验证的条件性访问策略。
 
-2. 中转到 "**所有应用程序**" 选项卡。在 "应用程序类型" 下拉菜单中，选择 "**企业应用程序**"，然后搜索 " **Windows 虚拟桌面客户端**"。
+1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 **Azure 门户**。
+1. 浏览到**Azure Active Directory** > **安全** > **条件性访问**。
+1. 选择“新策略”****。
+1. 为策略指定名称。 建议组织为其策略的名称创建有意义的标准。
+1. 在“分配”  下，选择“用户和组”  。
+   1. 在 "**包括**" 下，选择 "**选择用户和组** > **用户和组**" > 选择 "先决条件" 阶段中创建的组。
+   1. 选择“完成”  。
+1. 在 "**云应用或操作** > **包括**" 下，选择 "**选择应用**"。
+   1. 选择 " **Windows 虚拟桌面**和**Windows 虚拟桌面客户端**"，**然后选择 "** **完成**"。
+   ![云应用或操作页的屏幕截图。 Windows 虚拟桌面和 Windows 虚拟桌面客户端应用以红色突出显示。](media/cloud-apps-enterprise-selected.png)
+1. 在 "**访问控制** > " "**授权**" 下，选择 "**授予访问权限**，**需要多重身份验证**"，然后**选择**。
+1. 在 **"访问控制** > "**会话**下，选择 "**登录频率**"，将 "值" 设置为 " **1** "，将 "单位" 设置为 "**小时**"，然后**选择**。
+1. 确认设置，然后将“启用策略”设置为“打开”。********
+1. 选择 "**创建**" 以启用策略。
 
-    !["所有应用程序" 选项卡的屏幕截图。用户已在搜索栏中输入 "windows 虚拟桌面客户端"，应用已显示在搜索结果中。](media/all-applications-search.png)
+## <a name="next-steps"></a>后续步骤
 
-3. 选择 "**条件访问**"。
+- [了解有关条件性访问策略的详细信息](../active-directory/conditional-access/concept-conditional-access-policies.md)
 
-    ![一个屏幕截图，显示用户将鼠标光标悬停在 "条件访问" 选项卡上。](media/conditional-access-location.png)
-
-4. 选择 " **+ 新建策略**"。
-
-   !["条件访问" 页的屏幕截图。 用户将鼠标光标悬停在 "新建策略" 按钮上。](media/new-policy-button.png)
-
-5. 输入**规则**的**名称**，然后**选择**"先决条件" 中创建的**组**的名称。
-
-6. 选择 "**选择**"，然后选择 "**完成**"。
-
-7. 接下来，打开 "**云应用或操作**"。
-
-8. 在**选择**面板上，选择**Windows 虚拟桌面**企业应用。
-
-    ![云应用或操作页的屏幕截图。 用户通过选择 Windows 虚拟桌面应用旁边的复选标记进行了选择。 选定的应用以红色突出显示。](media/cloud-apps-select.png)
-    
-    >[!NOTE]
-    >还应看到在屏幕左侧选择的 "Windows 虚拟桌面客户端应用"，如下图所示。 需要使用 Windows 虚拟桌面和 Windows 虚拟桌面客户端企业应用程序才能使用该策略。
-    >
-    > ![云应用或操作页的屏幕截图。 Windows 虚拟桌面和 Windows 虚拟桌面客户端应用以红色突出显示。](media/cloud-apps-enterprise-selected.png)
-
-9. 选择 "**选择**"
-
-10. 接下来，打开**Grant** 
-
-11. 选择 "**需要多重身份验证**"，然后选择 **"需要一个选定的控件"**。
-   
-    ![授权页的屏幕截图。 已选择 "需要多重身份验证"。](media/grant-page.png)
-
-    >[!NOTE]
-    >如果组织中已注册 MDM 的设备，并且不希望它们显示 MFA 提示符，还可以选择 "**要求设备标记为符合**"。
-
-12. 选择 "**会话**"。
-
-13. 将 "**登录频率**" 设置为 "**活动**"，然后将其值更改为 " **1 小时**"。
-
-    ![会话页的屏幕截图。 "会话" 菜单显示 "登录频率" 下拉菜单已更改为 "1" 和 "小时"。](media/sign-in-frequency.png)
-   
-    >[!NOTE]
-    >当你更改策略时，Windows 虚拟桌面环境中的活动会话将继续工作。 但是，如果断开连接或注销，则需要在60分钟后再次提供凭据。 更改设置时，你可以根据需要扩展超时期限（前提是它与组织的安全策略一致）。
-    >
-    >默认设置为90天的滚动窗口，这意味着客户端将要求用户在其计算机上的非活动状态为90天或更长时间后尝试访问该资源时再次登录。
-
-14. 启用策略。
-
-15. 选择 "**创建**" 以确认策略。
-
-本教程到此结束！ 随意测试该策略，以确保允许列表按预期方式工作。
+- [了解有关用户登录频率的详细信息](../active-directory/conditional-access/howto-conditional-access-session-lifetime.md#user-sign-in-frequency)

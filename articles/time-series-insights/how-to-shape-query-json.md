@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 04/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: 63a708f80ad18309269e37c354b047c304a260d3
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81641297"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>塑造 JSON 以最大化查询性能
@@ -22,7 +22,7 @@ ms.locfileid: "81641297"
 
 ## <a name="video"></a>视频
 
-### <a name="learn-best-practices-for-shaping-json-to-meet-your-storage-needsbr"></a>了解塑造 JSON 以满足存储需求的最佳做法。</br>
+### <a name="learn-best-practices-for-shaping-json-to-meet-your-storage-needsbr"></a>了解整形 JSON 以满足你的存储需求的最佳实践。</br>
 
 > [!VIDEO https://www.youtube.com/embed/b2BD5hwbg5I]
 
@@ -43,7 +43,7 @@ ms.locfileid: "81641297"
 
 1. 不要使用动态属性（例如标记 ID）作为属性名称。 这种用法会导致达到最大属性限制。
 1. 不要发送不必要的属性。 如果不需要查询属性，最好不要发送它。 这可以避免达到存储限制。
-1. 使用[参考数据](time-series-insights-add-reference-data-set.md)避免通过网络发送静态数据。
+1. 使用[引用数据](time-series-insights-add-reference-data-set.md)来避免通过网络发送静态数据。
 1. 在多个事件之间共享维度属性，以更有效地通过网络发送数据。
 1. 不要使用深层数组嵌套。 时序见解最多支持两个级别的包含对象的嵌套数组。 时序见解会将消息中的数组平展成包含属性值对的多个事件。
 1. 如果所有或大多数事件只存在几个度量，最好是在同一个对象中将这些度量作为单独的属性发送。 单独发送度量可以减少事件数目，并可能会提高查询的效率，因为要处理的事件更少。 如果存在多个度量，在单个属性中将它们作为值发送可以最大程度地减少达到最大属性数限制的可能性。
@@ -54,7 +54,7 @@ ms.locfileid: "81641297"
 
 这些示例基于多个设备发送度量值或信号的场景。 度量值或信号可能包括“流速”、“引擎油压”、“温度”和“湿度”。 在第一个示例中，所有设备提供了一些度量值。 第二个示例涉及许多的设备，每个设备发送多个唯一的度量值。
 
-## <a name="scenario-one-only-a-few-measurements-exist"></a>方案一：仅存在几个度量值
+## <a name="scenario-one-only-a-few-measurements-exist"></a>方案一：仅存在少数度量值
 
 > [!TIP]
 > 我们建议将每个度量值或信号作为单独的属性或列发送。
@@ -115,7 +115,7 @@ ms.locfileid: "81641297"
 > - 使用了两个嵌套层，这是时序见解支持的最大嵌套数量。 必须避免深层嵌套的数组。
 > - 由于度量很少，因此将其作为单独的属性在同一对象中发送。 此处的 **series.Flow Rate psi** 和 **series.Engine Oil Pressure ft3/s** 是唯一的列。
 
-## <a name="scenario-two-several-measures-exist"></a>方案二：存在几种度量值
+## <a name="scenario-two-several-measures-exist"></a>方案二：存在多个度量值
 
 > [!TIP]
 > 我们建议将度量值作为“type”、“unit”、“value”元组发送。
@@ -186,7 +186,7 @@ ms.locfileid: "81641297"
 > [!NOTE]
 > - 列 **deviceId** 和 **series.tagId** 充当机群中各个设备和标记的列标题。 对于其他六个列，将每个值用作其自身的特性会将设备总数查询限制为 594（对于 S1 环境）或 794（对于 S2 环境）。
 > - 出于第一个示例中提到的原因，请避免不必要的属性。
-> - 参考数据用于减少通过网络传输的字节数，因为针对 **messageId** 和 **deviceLocation** 的唯一对引入了 **deviceId**。 针对 **type** 和 **unit** 的唯一对使用了组合键 **series.tagId**。 复合键允许设备**Id**和**series.tagId**对用于引用四个值：**消息 Id、设备位置、类型**和**单位**。 在流入时，此数据将联接到遥测数据。 然后，它将存储在时序见解中供查询。
+> - 参考数据用于减少通过网络传输的字节数，因为针对 **messageId** 和 **deviceLocation** 的唯一对引入了 **deviceId**。 针对 **type** 和 **unit** 的唯一对使用了组合键 **series.tagId**。 组合键允许使用**deviceId**和**tagId**对来表示四个值： **messageId、msds-devicelocation、type**和**unit**。 在流入时，此数据将联接到遥测数据。 然后，它将存储在时序见解中供查询。
 > - 出于第一个示例中提到的原因，使用了两个嵌套层。
 
 ### <a name="for-both-scenarios"></a>对于两种场景

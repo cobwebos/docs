@@ -11,10 +11,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 213fc3412a2dfad77946e52a355a30774d6860c7
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81680678"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>使用 MQTT 协议与 DPS 通信
@@ -26,7 +26,7 @@ DPS 可让设备使用以下协议来与 DPS 设备终结点通信：
 
 DPS 不是功能完备的 MQTT 中转站，并未支持 MQTT v3.1.1 标准中指定的所有行为。 本文介绍设备如何使用受支持的 MQTT 行为通过 DPS 进行通信。
 
-所有通过 DPS 进行的设备通信都必须使用 TLS/SSL 来保护。 因此，DPS 不支持通过端口 1883 进行不安全的连接。
+所有通过 DPS 进行的设备通信都必须使用 TLS/SSL 来保护。 因此，DPS 不支持端口1883上的非安全连接。
 
  > [!NOTE] 
  > DPS 目前不支持通过 MQTT 协议使用 TPM [证明机制](https://docs.microsoft.com/azure/iot-dps/concepts-device#attestation-mechanism)的设备。

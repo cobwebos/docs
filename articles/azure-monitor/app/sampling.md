@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 82e42580f5d934af96b4fad57dde1573b9c30ef5
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: f4989f8dce32e2340357e30541548b3e7e9d8a44
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82098758"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508881"
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -310,7 +310,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 #### <a name="configuring-java-agent"></a>配置 Java 代理
 
-1. 下载[applicationinsights-agent-3.0.0-preview](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.3/applicationinsights-agent-3.0.0-PREVIEW.3.jar)
+1. 下载[applicationinsights-agent-3.0.0-preview](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.4/applicationinsights-agent-3.0.0-PREVIEW.4.jar)
 
 1. 若要启用采样，请将以下`ApplicationInsights.json`内容添加到文件：
 
@@ -504,7 +504,7 @@ union requests,dependencies,pageViews,browserTimings,exceptions,traces
 
 近似值的准确性很大程度上取决于配置的采样百分比。 此外，对于处理通常来自大量用户的类似请求的较大量的应用程序，准确性也会提升。 相反，对于不处理大量负载的应用程序，不需要采样，因为这些应用程序通常可以发送其所有遥测的同时保持在配额以内，而不会因限制而造成数据丢失。 
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 
 *ASP.NET 和 ASP.NET Core Sdk 中的默认采样行为是什么？*
 
@@ -528,7 +528,7 @@ union requests,dependencies,pageViews,browserTimings,exceptions,traces
 
 是否可以对遥测数据进行多次采样？**
 
-* 不是。 如果项已采样，则 SamplingTelemetryProcessor 将不考虑项的采样。 同样适用于引入采样，这也不会将采样应用于已在 SDK 自身中进行了采样的那些项。
+* 不能。 如果项已采样，则 SamplingTelemetryProcessor 将不考虑项的采样。 同样适用于引入采样，这也不会将采样应用于已在 SDK 自身中进行了采样的那些项。
 
 *为何不采样简单“收集每个遥测类型 %X”？*
 

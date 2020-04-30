@@ -9,19 +9,19 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: c84cd8b1d7850576eb608d88ba91c3079edb0d68
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81680810"
 ---
-要获取对等互连列表，运行**获取阿兹对流**命令。
+若要获取对等互连的列表，请运行**AzPeering**命令。
 
 ```powershell
 $directPeering = Get-AzPeering -ResourceGroupName "PeeringResourceGroup" -Name "SeattleDirectPeering"
 ```
 
-下面的示例显示了成功完成端到端预配时的响应。
+下面的示例演示了成功完成端到端预配时的响应。
 
 ```powershell
     Name                 : SeattleDirectPeering

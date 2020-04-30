@@ -4,36 +4,36 @@ description: 介绍了如何在 Azure 资源管理器模板中创建资源组。
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.openlocfilehash: 6bec29a07653ff5ad7d1e2f8317246049e127c8c
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81605005"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在订阅级别创建资源组和资源
 
-为了简化 Azure 订阅中资源的管理，可以跨订阅定义和分配[策略](../../governance/policy/overview.md)或[基于角色的访问控件](../../role-based-access-control/overview.md)。 使用订阅级别模板，您可以声明性地应用策略并在订阅中分配角色。 您还可以创建资源组并部署资源。
+为了简化 Azure 订阅中的资源管理，可以在整个订阅中定义和分配[策略](../../governance/policy/overview.md)或[基于角色的访问控制](../../role-based-access-control/overview.md)。 使用订阅级别模板，可以在订阅中以声明方式应用策略和分配角色。 还可以创建资源组和部署资源。
 
 若要在订阅级别部署模板，请使用 Azure CLI、PowerShell 或 REST API。 Azure 门户不支持在订阅级别部署。
 
 ## <a name="supported-resources"></a>支持的资源
 
-您可以在订阅级别部署以下资源类型：
+可以在订阅级别部署以下资源类型：
 
 * [预算](/azure/templates/microsoft.consumption/budgets)
-* [部署](/azure/templates/microsoft.resources/deployments)- 用于部署到资源组的嵌套模板。
+* [部署](/azure/templates/microsoft.resources/deployments)-适用于部署到资源组的嵌套模板。
 * [eventSubscriptions](/azure/templates/microsoft.eventgrid/eventsubscriptions)
-* [对等Asns](/azure/templates/microsoft.peering/2019-09-01-preview/peerasns)
-* [策略分配](/azure/templates/microsoft.authorization/policyassignments)
+* [peerAsns](/azure/templates/microsoft.peering/2019-09-01-preview/peerasns)
+* [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
-* [补救](/azure/templates/microsoft.policyinsights/2019-07-01/remediations)
+* [修正](/azure/templates/microsoft.policyinsights/2019-07-01/remediations)
 * [resourceGroups](/azure/templates/microsoft.resources/resourcegroups)
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
-* [范围分配](/azure/templates/microsoft.managednetwork/scopeassignments)
-* [支持计划类型](/azure/templates/microsoft.addons/supportproviders/supportplantypes)
-* [标签](/azure/templates/microsoft.resources/tags)
+* [scopeAssignments](/azure/templates/microsoft.managednetwork/scopeassignments)
+* [supportPlanTypes](/azure/templates/microsoft.addons/supportproviders/supportplantypes)
+* [tags](/azure/templates/microsoft.resources/tags)
 
 ### <a name="schema"></a>架构
 
@@ -45,7 +45,7 @@ ms.locfileid: "81605005"
 https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#
 ```
 
-对于所有部署作用域，参数文件的架构都相同。 对于参数文件，请使用：
+对于所有部署范围，参数文件的架构都是相同的。 对于参数文件，请使用：
 
 ```json
 https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
@@ -55,7 +55,7 @@ https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json
 
 用于订阅级别部署的命令不同于资源组部署的命令。
 
-对于 Azure CLI，使用[az 部署子创建](/cli/azure/deployment/sub?view=azure-cli-latest#az-deployment-sub-create)。 以下示例通过部署模板来创建资源组：
+对于 Azure CLI，请使用[az deployment sub create](/cli/azure/deployment/sub?view=azure-cli-latest#az-deployment-sub-create)。 以下示例通过部署模板来创建资源组：
 
 ```azurecli-interactive
 az deployment sub create \
@@ -65,7 +65,7 @@ az deployment sub create \
   --parameters rgName=demoResourceGroup rgLocation=centralus
 ```
 
-对于 PowerShell 部署命令，请使用["新部署"](/powershell/module/az.resources/new-azdeployment)或 **"新订阅部署**"。 以下示例通过部署模板来创建资源组：
+对于 PowerShell 部署命令，请使用[AzDeployment](/powershell/module/az.resources/new-azdeployment)或**AzSubscriptionDeployment**。 以下示例通过部署模板来创建资源组：
 
 ```azurepowershell-interactive
 New-AzSubscriptionDeployment `
@@ -92,9 +92,9 @@ New-AzSubscriptionDeployment `
 
 * 不支持 [resourceGroup()](template-functions-resource.md#resourcegroup) 函数。****
 * 支持 [reference()](template-functions-resource.md#reference) 和 [list()](template-functions-resource.md#list) 函数。
-* 使用[订阅 ResourceId（）](template-functions-resource.md#subscriptionresourceid)函数获取在订阅级别部署的资源的资源 ID。
+* 使用[subscriptionResourceId （）](template-functions-resource.md#subscriptionresourceid)函数获取在订阅级别部署的资源的资源 ID。
 
-  例如，要获取策略定义的资源 ID，请使用：
+  例如，若要获取策略定义的资源 ID，请使用：
   
   ```json
   subscriptionResourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
@@ -173,7 +173,7 @@ New-AzSubscriptionDeployment `
 }
 ```
 
-有关资源迭代的信息，请参阅[在 Azure 资源管理器模板中部署多个资源实例](./copy-resources.md)，以及[教程：使用资源管理器模板创建多个资源实例](./template-tutorial-create-multiple-instances.md)。
+有关资源迭代的信息，请参阅[在 Azure 资源管理器模板中部署资源的多个实例](./copy-resources.md)和[教程：使用资源管理器模板创建多个资源实例](./template-tutorial-create-multiple-instances.md)。
 
 ## <a name="resource-group-and-resources"></a>资源组和资源
 
@@ -377,7 +377,7 @@ New-AzSubscriptionDeployment `
 
 ## <a name="template-samples"></a>模板示例
 
-* [创建资源组，将其锁定，并授予其权限](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment)。
+* [创建资源组，将其锁定并向其授予权限](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment)。
 * [创建资源组、策略和策略分配](https://github.com/Azure/azure-docs-json-samples/blob/master/subscription-level-deployment/azuredeploy.json)。
 
 ## <a name="next-steps"></a>后续步骤
@@ -385,4 +385,4 @@ New-AzSubscriptionDeployment `
 * 若要了解如何分配角色，请参阅[使用 RBAC 和 Azure 资源管理器模板管理对 Azure 资源的访问权限](../../role-based-access-control/role-assignments-template.md)。
 * 若要通过示例来了解如何为 Azure 安全中心部署工作区设置，请参阅 [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)。
 * 示例模板可在 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments) 中找到。
-* 您还可以在[管理组级别](deploy-to-management-group.md)和[租户级别](deploy-to-tenant.md)部署模板。
+* 你还可以在[管理组级别](deploy-to-management-group.md)和[租户级别](deploy-to-tenant.md)部署模板。

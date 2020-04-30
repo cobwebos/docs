@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
 ms.openlocfilehash: cd630acfd65f0a79c186ba35bc15627bf7ccfdbe
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81686194"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 向 Azure Key Vault 进行服务到服务身份验证
@@ -88,7 +88,7 @@ ms.locfileid: "81686194"
 
 1. 登录到 Azure 门户：运行 *az login* 登录到 Azure。
 
-1. 通过输入*az 帐户获取访问令牌 -资源 https/vault.azure.net\/* 验证访问。 如果收到错误，请检查是否正确安装了适当版本的 Azure CLI。
+1. 通过输入*az account get-help-\/-resource https：/vault.azure.net*验证访问权限。 如果收到错误，请检查是否正确安装了适当版本的 Azure CLI。
 
    如果未将 Azure CLI 安装到默认目录，则可能会收到错误，指出 `AzureServiceTokenProvider` 找不到 Azure CLI 的路径。 请使用 **AzureCLIPath** 环境变量来定义 Azure CLI 安装文件夹。 `AzureServiceTokenProvider` 在需要时将 **AzureCLIPath** 环境变量中指定的目录添加到 **Path** 环境变量。
 
@@ -278,7 +278,7 @@ AzureServiceTokenProvider 在默认安装位置查找 Azure CLI。 如果找不�
 
 #### <a name="managed-identity-isnt-set-up-on-the-app-service"></a>未在应用服务中设置托管标识
 
-使用[Kudu 调试控制台](https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/)检查MSI_ENDPOINT和MSI_SECRET存在的环境变量。 如果这些环境变量不存在，则不会在应用服务中启用托管标识。
+使用[Kudu 调试控制台](https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/)检查环境变量 MSI_ENDPOINT 和 MSI_SECRET 存在。 如果这些环境变量不存在，则不会在应用服务中启用托管标识。
 
 ### <a name="common-issues-when-deployed-locally-with-iis"></a>在本地与 IIS 一起部署时出现的常见问题
 
@@ -289,7 +289,7 @@ AzureServiceTokenProvider 在默认安装位置查找 Azure CLI。 如果找不�
 - 将“setProfileEnvironment”配置为“True”。 请在[此处](https://docs.microsoft.com/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration)查看详细信息。 
 
     - 转到 %windir%\System32\inetsrv\config\applicationHost.config
-    - 搜索“setProfileEnvironment”。 如果它设置为“False”，请更改为“True”。 如果不存在，则将其作为属性添加到进程模型元素 （），/configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment并将其设置为"True"。
+    - 搜索“setProfileEnvironment”。 如果它设置为“False”，请更改为“True”。 如果该元素不存在，请将其作为属性添加到 processModel 元素（/configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment），并将其设置为 "True"。
 
 - 详细了解 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/index.yml)。
 - 详细了解 [Azure AD 身份验证方案](../../active-directory/develop/active-directory-authentication-scenarios.md)。

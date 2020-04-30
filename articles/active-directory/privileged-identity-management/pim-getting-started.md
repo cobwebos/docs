@@ -14,12 +14,12 @@ ms.date: 04/23/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46f6c77916c7be62247c69b12dff1982e5781aff
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 1f8d41fb3e6233d319725cac924c0c0ed41b7ce4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82112212"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82234292"
 ---
 # <a name="start-using-privileged-identity-management"></a>开始使用 Privileged Identity Management
 
@@ -63,14 +63,14 @@ ms.locfileid: "82112212"
 
 ![Privileged Identity Management 中的导航窗口，其中显示“任务”和“管理”选项](./media/pim-getting-started/pim-quickstart-tasks.png)
 
-| 任务 + 管理 | 说明 |
+| 任务 + 管理 | 描述 |
 | --- | --- |
 | **我的角色**  | 显示已向你分配的符合条件的活动角色列表。 可以在此处激活任何符合条件的已分配角色。 |
 | **我的请求** | 显示要激活符合条件的角色分配的挂起的请求。 |
 | **审批请求** | 按用户显示你的目录中指定由你进行审批的要激活符合条件的角色的请求列表。 |
 | **评审访问权限** | 列出指定要由你完成的活动访问审阅（无论你是审阅自己还是审阅其他人的访问权限）。 |
-| **Azure AD 角色** | 显示用于管理 Azure AD 角色分配的特权角色管理员的仪表板和设置。 此仪表板对非特权角色管理员禁用。 这些用户可以访问标题为“我的视图”的特殊仪表板。 “我的视图”仪表板仅显示正在访问此仪表板的用户的相关信息，而非整个租户的相关信息。 |
-| **Azure 资源** | 显示用于管理 Azure 资源角色分配的特权角色管理员的仪表板和设置。 此仪表板对非特权角色管理员禁用。 这些用户可以访问标题为“我的视图”的特殊仪表板。 “我的视图”仪表板仅显示正在访问此仪表板的用户的相关信息，而非整个租户的相关信息。 |
+| **Azure AD 角色** | 显示用于管理 Azure AD 角色分配的特权角色管理员的仪表板和设置。 此仪表板对非特权角色管理员禁用。 这些用户可以访问标题为“我的视图”的特殊仪表板。 "我的视图" 仪表板仅显示有关用户访问仪表板的信息，而不显示整个组织的相关信息。 |
+| **Azure 资源** | 显示用于管理 Azure 资源角色分配的特权角色管理员的仪表板和设置。 此仪表板对非特权角色管理员禁用。 这些用户可以访问标题为“我的视图”的特殊仪表板。 "我的视图" 仪表板仅显示有关用户访问仪表板的信息，而不显示整个组织的相关信息。 |
 
 ## <a name="add-a-pim-tile-to-the-dashboard"></a>将 PIM 磁贴添加到仪表板
 

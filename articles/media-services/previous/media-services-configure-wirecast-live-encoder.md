@@ -16,15 +16,15 @@ ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: cenkdin;anilmur
 ms.openlocfilehash: 8e3705aaecb0760513f0605aece89b7ffc0044a8
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81641647"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>使用 Wirecast 编码器发送单比特率实时流 
 > [!div class="op_single_selector"]
-> * [有线广播](media-services-configure-wirecast-live-encoder.md)
+> * [Wirecast](media-services-configure-wirecast-live-encoder.md)
 >
 
 本文说明如何配置 [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) 实时编码器，以便将单比特率流发送到用于实时编码的 AMS 频道。 有关详细信息，请参阅 [使用能够通过 Azure 媒体服务执行实时编码的频道](media-services-manage-live-encoder-enabled-channels.md)。
@@ -32,9 +32,9 @@ ms.locfileid: "81641647"
 本教程演示了如何通过 Azure 媒体服务浏览器 (AMSE) 工具管理 Azure 媒体服务 (AMS)。 此工具仅在 Windows 电脑上运行。 如果使用的是 Mac 或 Linux，则可使用 Azure 门户创建[频道](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel)和[节目](media-services-portal-creating-live-encoder-enabled-channel.md)。
 
 > [!NOTE]
-> 使用 RTMPS 协议时，编码器必须支持 TLS 1.2。 由于 TLS 1.2 要求，请使用有线广播版本 13.0.2 或更高版本。
+> 编码器在使用 RTMPS 协议时必须支持 TLS 1.2。 使用 Wirecast 版本13.0.2 或更高版本，原因是 TLS 1.2 要求。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * [创建 Azure 媒体服务帐户](media-services-portal-create-account.md)
 * 确保流式处理终结点正在运行。 有关详细信息，请参阅[在媒体服务帐户中管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)
 * 安装最新版本的 [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) 工具。
@@ -63,7 +63,7 @@ ms.locfileid: "81641647"
 >
 >
 
-当通道启动时，您可以[配置编码器](media-services-configure-wirecast-live-encoder.md#configure_wirecast_rtmp)。
+当通道正在启动时，可以[配置编码器](media-services-configure-wirecast-live-encoder.md#configure_wirecast_rtmp)。
 
 > [!IMPORTANT]
 > 只要频道进入就绪状态，就会开始计费。 有关详细信息，请参阅[频道的状态](media-services-manage-live-encoder-enabled-channels.md#states)。
@@ -92,7 +92,7 @@ ms.locfileid: "81641647"
 2. 导航到“输出”**** 选项卡并选择“输出设置…”****，以配置输出。
 
     确保已将“输出目标”**** 设置为“RTMP 服务器”****。
-3. 单击 **“确定”** 。
+3. 单击" **确定**"。
 4. 在设置页上，将“目标”**** 字段设置为“Azure 媒体服务”****。
 
     编码配置文件已预先选择为 **Azure H.264 720p 16:9 (1280x720)**。 要自定义这些设置，请选择下拉列表右侧的齿轮图标，并选择“新建预设”****。
@@ -145,7 +145,7 @@ ms.locfileid: "81641647"
 
 ## <a name="test-playback"></a>测试播放
 
-导航回 AMSE 工具，并右键单击要测试的频道。 在菜单中，将鼠标悬停在 **"播放预览"** 上，然后**使用 Azure 媒体播放器**进行选择。  
+导航回 AMSE 工具，并右键单击要测试的频道。 从菜单中，将鼠标悬停**在 "播放预览"** 上，并选择 "**与 Azure Media Player**。  
 
     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast8.png)
 
@@ -158,8 +158,8 @@ ms.locfileid: "81641647"
 
     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast9.png)
 2. 为节目命名，并根据需要调整“存档时段长度”****（默认为 4 小时）。 还可以指定存储位置，也可以将其保留为默认值。  
-3. 选中"**立即启动程序"** 框。
-4. 单击 **"创建程序**"。  
+3. 选中 "**立即启动节目**" 框。
+4. 单击 "**创建程序**"。  
 
    >[!NOTE]
    >创建节目需要的时间比创建频道需要的时间少。

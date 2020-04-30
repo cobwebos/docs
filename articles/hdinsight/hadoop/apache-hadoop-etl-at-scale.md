@@ -6,18 +6,18 @@ ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 03/03/2020
-ms.openlocfilehash: f4be3343f090c4d31ccb85eba8e99f22a3b1fcae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/28/2020
+ms.openlocfilehash: ee989ccbb2e441256bec71781c538c7761fc7b88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "79529469"
+ms.locfileid: "82232234"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大规模提取、转换和加载 (ETL)
 
-提取、转换和加载 (ETL) 是从各种源获取数据、将数据收集到标准位置、进行清理和处理，最终将其载入数据存储供查询的过程。 传统的 ETL 过程是导入数据、就地清理该数据，然后将其存储在关系数据引擎中。 使用 HDInsight 时，各种 Apache Hadoop 生态系统组件都支持大规模执行 ETL。
+提取、转换和加载（ETL）是从各种源获取数据的过程。 在标准位置收集、清理和处理。 最终加载到可从中查询它的数据存储中。 传统的 ETL 过程是导入数据、就地清理该数据，然后将其存储在关系数据引擎中。 使用 HDInsight，广泛的 Apache Hadoop 环境组件支持 ETL 大规模。
 
 在 ETL 过程中使用 HDInsight 可以通过以下管道来总结：
 
@@ -35,16 +35,16 @@ ms.locfileid: "79529469"
 
 Apache Oozie 是一个管理 Hadoop 作业的工作流协调系统。 Oozie 在 HDInsight 群集中运行，并与 Hadoop 堆栈集成。 Oozie 支持 Apache Hadoop MapReduce、Apache Pig、Apache Hive 和 Apache Sqoop 的 Hadoop 作业。 Oozie 还可用于安排特定于某系统的作业，例如 Java 程序或 shell 脚本。
 
-有关详细信息，请参阅[在 HDInsight 中将 Apache Oozie 与 Apache Hadoop 配合使用以定义和运行工作流](../hdinsight-use-oozie-linux-mac.md)。如需深入演示如何使用 Oozie 驱动端到端管道，请参阅[操作数据管道](../hdinsight-operationalize-data-pipeline.md)。
+有关详细信息，请参阅[将 Apache Oozie 与 Apache Hadoop 配合使用来在 HDInsight 上定义和运行工作流](../hdinsight-use-oozie-linux-mac.md)。 另请参阅[操作数据管道](../hdinsight-operationalize-data-pipeline.md)。
 
 ### <a name="azure-data-factory"></a>Azure 数据工厂
 
-Azure 数据工厂以平台即服务的形式提供业务流程功能。 它是基于云的数据集成服务，用于在云中创建数据驱动型工作流，以便协调和自动完成数据移动和数据转换。
+Azure 数据工厂以平台即服务的形式提供业务流程功能。 这是一项基于云的数据集成服务，可让你在云中创建数据驱动的工作流。 用于协调和自动化数据移动和数据转换的工作流。
 
 使用 Azure 数据工厂可以：
 
 1. 创建和计划数据驱动型工作流（称为管道），以便从不同的数据存储引入数据。
-2. 使用计算服务（例如 Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics、Azure Batch 和 Azure 机器学习）处理和转换数据。
+2. 使用计算服务（例如 Azure HDInsight Hadoop）处理和转换数据。 或 Spark、Azure Data Lake Analytics、Azure Batch 和 Azure 机器学习。
 3. 将输出数据发布到数据存储（例如 Azure SQL 数据仓库），供商业智能 (BI) 应用程序使用。
 
 有关 Azure 数据工厂的详细信息，请参阅[文档](../../data-factory/introduction.md)。
@@ -55,21 +55,21 @@ Azure 数据工厂以平台即服务的形式提供业务流程功能。 它是�
 
 ### <a name="azure-storage"></a>Azure 存储
 
-[Azure 存储](https://azure.microsoft.com/services/storage/blobs/)具有特定的可伸缩性目标。 有关详细信息，请参阅 [Blob 存储的可伸缩性和性能目标](../../storage/blobs/scalability-targets.md)。 对于大多数分析节点而言，在处理许多较小的文件时，Azure 存储的可伸缩性最佳。  Azure 存储可以保证无论有多少文件或文件有多大（只要在限制范围内），都能提供相同的性能。  这意味着，无论使用的是数据子集还是所有数据，都可以存储数 tb 的数据，并且仍能获得一致的性能。
+Azure 存储具有特定的适应性目标。 请参阅[Blob 存储的可伸缩性和性能目标](../../storage/blobs/scalability-targets.md)。 对于大多数分析节点而言，在处理许多较小的文件时，Azure 存储的可伸缩性最佳。  无论文件大小如何（只要你处于限制范围内），Azure 存储都可保证相同的性能。  这一保证意味着，无论你使用的是数据子集还是所有数据，都可以存储 tb，并且仍能获得一致的性能。
 
 Azure 存储包含多种不同类型的 Blob。  “追加 Blob”是存储 Web 日志或传感器数据的极佳选项。**  
 
-尽管可以在众多服务器之间分布多个 Blob 以便扩大对其的访问权限，但只能由单个服务器为单个 Blob 提供服务。 虽然 Blob 可在 Blob 容器中进行逻辑分组，但这种分组不会对分区产生影响。
+多个 blob 可以分布在多个服务器上，以扩展对它们的访问。 但单个 blob 只能由单个服务器提供服务。 虽然 Blob 可在 Blob 容器中进行逻辑分组，但这种分组不会对分区产生影响。
 
-Azure 存储还为 Blob 存储提供一个 WebHDFS API 层。  HDInsight 中的所有服务都可以访问 Azure Blob 存储中的文件来进行数据清理和数据处理，就像这些服务使用 Hadoop 分布式文件系统 (HDFS) 时一样。
+Azure 存储还为 Blob 存储提供一个 WebHDFS API 层。  HDInsight 中的所有服务都可以访问 Azure Blob 存储中的文件，以便进行数据清理和数据处理。 类似于这些服务使用 Hadoop 分布式文件系统（HDFS）的方式。
 
 通常使用 PowerShell、Azure 存储 SDK 或 AZCopy 将数据引入 Azure 存储。
 
 ### <a name="azure-data-lake-storage"></a>Azure Data Lake Storage
 
-Azure Data Lake Storage (ADLS) 是一个托管的超大规模存储库，用于分析与 HDFS 兼容的数据。  ADLS 使用类似于 HDFS 的设计范例，并在总容量及单个文件的大小方面提供无限可伸缩性。 ADLS 非常适合与大型文件配合运行，因为大型文件可以跨多个节点存储。  ADLS 中的数据分区在幕后执行。  通过数以千计的并发执行程序，可高效读取和写入数百 TB 的数据，从而可获得极大的吞吐量来运行分析作业。
+Azure Data Lake Storage （ADLS）是一个托管的超大规模存储库。 与 HDFS 兼容的分析数据存储库。  ADLS 使用类似于 HDFS 的设计范例。 ADLS 为总容量和单个文件的大小提供无限制的适应性。 当处理大型文件时，ADLS 是很好的，因为大文件可以存储在多个节点上。  ADLS 中的数据分区在幕后执行。  通过数以千计的并发执行程序，可高效读取和写入数百 TB 的数据，从而可获得极大的吞吐量来运行分析作业。
 
-通常使用 Azure 数据工厂、ADLS SDK、AdlCopy 服务、Apache DistCp 或 Apache Sqoop 将数据引入 ADLS。  要使用其中的哪些服务在很大程度上取决于数据的所在位置。  如果数据当前在现有的 Hadoop 群集中，则可以使用 Apache DistCp、AdlCopy 服务或 Azure 数据工厂。  如果数据在 Azure Blob 存储中，则可以使用 Azure Data Lake Storage .NET SDK、Azure PowerShell 或 Azure 数据工厂。
+数据通常使用 Azure 数据工厂引入到 ADLS 中。 或 ADLS Sdk、AdlCopy Service、Apache DistCp 或 Apache Sqoop。  要使用其中的哪些服务在很大程度上取决于数据的所在位置。  如果数据当前在现有的 Hadoop 群集中，则可以使用 Apache DistCp、AdlCopy 服务或 Azure 数据工厂。  对于 Azure Blob 存储中的数据，可以使用 Azure Data Lake Storage .NET SDK、Azure PowerShell 或 Azure 数据工厂。
 
 ADLS 还针对使用 Azure 事件中心或 Apache Storm 运行的事件引入进行了优化。
 
@@ -79,23 +79,23 @@ ADLS 还针对使用 Azure 事件中心或 Apache Storm 运行的事件引入进
 
 * Azure ExpressRoute：使用 Azure ExpressRoute 可在 Azure 数据中心与本地基础结构之间创建专用连接。 这些连接为传输大量数据提供了可靠选项。 有关详细信息，请参阅[ Azure ExpressRoute 文档](../../expressroute/expressroute-introduction.md)。
 
-* 数据“离线上传”。 可以使用 [Azure 导入/导出服务](../../storage/common/storage-import-export-service.md)将包含数据的硬盘驱动器发送到 Azure 数据中心。 数据会首先上传到 Azure 存储 Blob。 然后可使用 [Azure 数据工厂](../../data-factory/connector-azure-data-lake-store.md)或 [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) 工具从 Azure 存储 Blob 将数据复制到 Data Lake Storage。
+* 数据“离线上传”。 可以使用 [Azure 导入/导出服务](../../storage/common/storage-import-export-service.md)将包含数据的硬盘驱动器发送到 Azure 数据中心。 数据会首先上传到 Azure 存储 Blob。 然后可使用 Azure 数据工厂或 AdlCopy 工具从 Azure 存储 Blob 将数据复制到 Data Lake Storage。
 
 ### <a name="azure-sql-data-warehouse"></a>Azure SQL 数据仓库
 
-Azure SQL DW 是存储已清理且准备好的数据供今后分析的绝佳选项。  可以使用 Azure HDInsight 对 Azure SQL DW 执行这些服务。
+Azure SQL DW 是存储已准备结果的最佳选择。  Azure HDInsight 可用于为 Azure SQL DW 执行这些服务。
 
 Azure SQL 数据仓库 (SQL DW) 是已针对分析工作负荷进行优化的关系数据库。  Azure SQL DW 根据分区表进行缩放。  表可以跨多个节点分区。  在创建 Azure SQL DW 节点时便选择了节点。  可以在事后缩放节点，但是，该主动过程可能需要移动数据。 有关详细信息，请参阅[SQL 数据仓库-管理计算](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)。
 
 ### <a name="apache-hbase"></a>Apache HBase
 
-Apache HBase 是 Azure HDInsight 中提供的键/值存储。  Apache HBase 是一种开源 NoSQL 数据库，它构建于 Hadoop 基础之上，并基于 Google BigTable 模型化。 HBase 针对按列系列组织的无架构数据库中的大量非结构化和结构化数据提供高性能的随机访问和强一致性。
+Apache HBase 是 Azure HDInsight 中提供的键/值存储。  Apache HBase 是一种开源 NoSQL 数据库，它构建于 Hadoop 基础之上，并基于 Google BigTable 模型化。 HBase 为大量非结构化和半结构化数据提供高性能随机访问和高度一致性。 按列系列组织的无架构数据库中的数据。
 
-数据存储在表的各行中，行中的数据按列系列分组。 HBase 是无架构数据库，也就是说，在使用其数据前，不必定义列以及列中存储的数据类型。 开放源代码可进行线性伸缩，以处理上千节点上数 PB 的数据。 HBase 可依赖数据冗余、批处理以及 Hadoop 生态系统中的分布式应用程序提供的其他功能。
+数据存储在表的各行中，行中的数据按列系列分组。 HBase 是一个无架构数据库。 不需要在使用它们之前定义这些列和数据类型。 开放源代码可进行线性伸缩，以处理上千节点上数 PB 的数据。 HBase 可依赖数据冗余、批处理以及 Hadoop 环境中的分布式应用程序提供的其他功能。
 
 HBase 是供将来分析的传感器和日志数据的绝佳目标。
 
-HBase 可伸缩性取决于 HDInsight 群集中的节点数。
+HBase 的适应性取决于 HDInsight 群集中的节点数。
 
 ### <a name="azure-sql-database-and-azure-database"></a>Azure SQL 数据库和 Azure 数据库
 
@@ -109,7 +109,7 @@ Azure 以平台即服务 (PAAS) 的形式提供三种不同的关系数据库。
 
 ## <a name="azure-analysis-services"></a>Azure Analysis Services
 
-Azure Analysis Services (AAS) 是用于决策支持和业务分析的分析数据引擎，可为业务报告和客户端应用程序（例如 Power BI、Excel、Reporting Services 报告及其他可视化工具）提供分析数据。
+Azure Analysis Services （.AAS）是在决策支持和业务分析中使用的分析数据引擎。 .AAS 为业务报表和客户端应用程序（如 Power BI）提供分析数据。 另外，还可以是 Excel、Reporting Services 报表和其他数据可视化工具。
 
 可以通过更改每个多维数据集的层来缩放这些分析多维数据集。  有关详细信息，请参阅 [Azure Analysis Services 定价](https://azure.microsoft.com/pricing/details/analysis-services/)。
 
@@ -125,7 +125,7 @@ Sqoop 使用 MapReduce 导入和导出数据，可提供并行操作和容错。
 
 ### <a name="apache-flume"></a>Apache Flume
 
-Apache Flume 是分布式、可靠且高度可用的服务，能够有效地收集、聚合与移动大量日志数据。 Flume 采用基于流式传输数据流的简单弹性体系结构。 Flume 既可靠又能容错，提供可优化的可靠性机制和许多故障转移与恢复机制。 Flume 使用一个允许联机分析应用程序的简单可扩展数据模型。
+`Apache Flume`是一种分布式、可靠且可用的服务，用于有效地收集、聚合和移动大量日志数据。 Flume 具有基于流数据流的灵活的体系结构。 Flume 既可靠又能容错，提供可优化的可靠性机制和许多故障转移与恢复机制。 Flume 使用一个允许联机分析应用程序的简单可扩展数据模型。
 
 Apache Flume 不能与 Azure HDInsight 配合使用。  本地 Hadoop 安装可以使用 Flume 将数据发送到 Azure 存储 Blob 或 Azure Data Lake Storage。  有关详细信息，请参阅[将 Apache Flume 与 HDInsight 配合使用](https://web.archive.org/web/20190217104751/https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/)。
 

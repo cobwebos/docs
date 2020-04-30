@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: dsindona
 ms.openlocfilehash: b02fda545ac135735186885d7db597885bf6cc21
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82147965"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>从 VHD 部署 VM
@@ -58,7 +58,7 @@ ms.locfileid: "82147965"
 
    <table> <tr> <td valign="top"> <img src="./media/publishvm_023.png" alt="Custom deployment property page 1"> </td> <td valign="top"> <img src="./media/publishvm_024.png" alt="Custom deployment property page 2"> </td> </tr> </table> <br/> 
 
-   |  **Parameter**              |   **描述**                                                            |
+   |  **参数**              |   **说明**                                                            |
    |  -------------              |   ---------------                                                            |
    | 用户存储帐户名称   | 通用化 VHD 所在的存储帐户名称                    |
    | 用户存储容器名称 | 通用化 VHD 所在的容器名称                          |

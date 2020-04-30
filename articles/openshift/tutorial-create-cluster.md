@@ -1,236 +1,207 @@
 ---
-title: 教程 - 创建 Azure Red Hat OpenShift 群集
+title: 教程-创建 Azure Red Hat OpenShift 4 群集
 description: 了解如何使用 Azure CLI 创建 Microsoft Azure Red Hat OpenShift 群集
-author: jimzim
-ms.author: jzim
+author: sakthi-vetrivel
+ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
-ms.date: 11/04/2019
-ms.openlocfilehash: 58fc695707995aafe4d804ffab8beee7c52b4320
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/24/2020
+ms.openlocfilehash: 32069d9594d4579bd18ec3fd0e76af7bdc69f4d0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79455292"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232149"
 ---
-# <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>教程：创建 Azure Red Hat OpenShift 群集
+# <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>教程：创建 Azure Red Hat OpenShift 4 群集
 
-本教程是一个系列中的第一部分。 其中将会介绍如何使用 Azure CLI 创建 Microsoft Azure Red Hat OpenShift 群集，对其进行缩放，然后删除该群集以清理资源。
-
-本教程系列的第一部分介绍了如何：
-
+在本教程的第三部分中，你将准备好环境，以创建运行 OpenShift 4 的 Azure Red Hat OpenShift 群集，并创建一个群集。 将了解如何执行以下操作：
 > [!div class="checklist"]
-> * 创建 Azure Red Hat OpenShift 群集
+> * 安装必备组件并创建所需的虚拟网络和子网
+> * 部署群集
 
-在此系列教程中，你会学习如何：
-> [!div class="checklist"]
-> * 创建 Azure Red Hat OpenShift 群集
-> * [缩放 Azure Red Hat OpenShift 群集](tutorial-scale-cluster.md)
-> * [删除 Azure Red Hat OpenShift 群集](tutorial-delete-cluster.md)
+## <a name="before-you-begin"></a>在开始之前
 
-## <a name="prerequisites"></a>先决条件
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 版本2.0.75 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-> [!IMPORTANT]
-> 本教程需要 Azure CLI 2.0.65 版。
+### <a name="install-the-az-aro-extension"></a>安装`az aro`扩展
+使用`az aro`此扩展，可以使用 Azure CLI 从命令行直接创建、访问和删除 Azure Red Hat OpenShift 群集。
 
-在开始学习本教程之前：
+运行以下命令以安装`az aro`扩展。
 
-确保已[设置开发环境](howto-setup-environment.md)，包括：
-- 安装最新版的 CLI（2.0.65 或更高版本）
-- 如果还没有租户，请创建一个
-- 如果还没有 Azure 应用对象，请创建一个
-- 添加安全组
-- 创建 Active Directory 用户以登录到群集。
-
-## <a name="step-1-sign-in-to-azure"></a>步骤 1：登录 Azure
-
-如果在本地运行 Azure CLI，请打开 Bash 命令 shell，然后运行 `az login` 登录到 Azure。
-
-```azurecli
-az login
+```azurecli-interactive
+az extension add -n aro --index https://az.aroapp.io/stable
 ```
 
- 如果你有权访问多个订阅，请运行 `az account set -s {subscription ID}`（将 `{subscription ID}` 替换为要使用的订阅）。
+如果已安装了该扩展，则可以通过运行以下命令进行更新。
 
-## <a name="step-2-create-an-azure-red-hat-openshift-cluster"></a>步骤 2：创建 Azure Red Hat OpenShift 群集
-
-在 Bash 命令窗口中，设置以下变量：
-
-> [!IMPORTANT]
-> 为群集选择唯一的名称，且所有小写或群集创建操作都将失败。
-
-```bash
-CLUSTER_NAME=<cluster name in lowercase>
+```azurecli-interactive
+az extension update -n aro --index https://az.aroapp.io/stable
 ```
 
-选择创建群集所在的位置。 有关支持 OpenShift on Azure 的 Azure 区域列表，请参阅[支持的区域](supported-resources.md#azure-regions)。 例如：`LOCATION=eastus`。
+### <a name="register-the-resource-provider"></a>注册资源提供程序
 
-```bash
-LOCATION=<location>
+接下来，需要将`Microsoft.RedHatOpenShift`资源提供程序注册到订阅中。
+
+```azurecli-interactive
+az provider register -n Microsoft.RedHatOpenShift --wait
 ```
 
-将 `APPID` 设置为在[创建 Azure AD 应用注册](howto-aad-app-configuration.md#create-an-azure-ad-app-registration)的步骤 5 中保存的值。
+验证扩展是否已注册。
 
-```bash
-APPID=<app ID value>
+```azurecli-interactive
+az -v
 ```
 
-将“GROUPID”设置为在[创建 Azure AD 安全组](howto-aad-app-configuration.md#create-an-azure-ad-security-group)的步骤 10 中保存的值。
+  应会看到类似于下面的输出。
 
-```bash
-GROUPID=<group ID value>
+```output
+...
+Extensions:
+aro                                1.0.0
+...
 ```
 
-将 `SECRET` 设置为在[创建客户端密码](howto-aad-app-configuration.md#create-a-client-secret)的步骤 8 中保存的值。
+### <a name="get-a-red-hat-pull-secret-optional"></a>获取 Red Hat 请求机密（可选）
 
-```bash
-SECRET=<secret value>
+Red Hat pull secret 使群集能够访问 Red Hat 容器注册表以及其他内容。 此步骤是可选的，但建议执行。
+
+通过导航到https://cloud.redhat.com/openshift/install/azure/aro-provisioned并单击 "*下载请求机密*" 获取你的请求机密。
+
+你将需要使用你的企业电子邮件登录 Red Hat 帐户或创建一个新的 Red Hat 帐户，并接受条款和条件。
+
+将保存`pull-secret.txt`的文件保存在安全的位置-在每次创建群集时使用。
+
+### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>创建包含两个子网的虚拟网络
+
+接下来，你将创建一个包含两个空子网的虚拟网络。
+
+1. **设置以下变量。**
+
+   ```console
+   LOCATION=eastus                 # the location of your cluster
+   RESOURCEGROUP="v4-$LOCATION"    # the name of the resource group where you want to create your cluster
+   CLUSTER=cluster                 # the name of your cluster
+   ```
+
+1. **创建资源组**
+
+    Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 创建资源组时，系统会要求你指定一个位置， 此位置是资源组元数据的存储位置，如果你在创建资源期间未指定另一个区域，则它还是你的资源在 Azure 中的运行位置。 使用 [az group create] [az-create] 命令创建资源组。
+
+    ```azurecli-interactive
+    az group create --name $CLUSTER --location $LOCATION
+    ```
+
+    以下示例输出显示已成功创建资源组：
+
+    ```json
+    {
+    "id": "/subscriptions/<guid>/resourceGroups/aro-rg",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "aro-rg",
+    "properties": {
+        "provisioningState": "Succeeded"
+    },
+    "tags": null
+    }
+    ```
+
+2. **创建虚拟网络。**
+
+    运行 OpenShift 4 的 Azure Red Hat OpenShift 群集需要一个包含两个子网的虚拟网络，适用于主节点和辅助节点。
+
+    在之前创建的同一资源组中创建新的虚拟网络。
+
+    ```azurecli-interactive
+    az network vnet create \
+    --resource-group $RESOURCEGROUP \
+    --name aro-vnet \
+    --address-prefixes 10.0.0.0/22
+    ```
+
+    以下示例输出显示已成功创建的虚拟网络：
+
+    ```json
+    {
+    "newVNet": {
+        "addressSpace": {
+        "addressPrefixes": [
+            "10.0.0.0/22"
+        ]
+        },
+        "id": "/subscriptions/<guid>/resourceGroups/aro-rg/providers/Microsoft.Network/virtualNetworks/aro-vnet",
+        "location": "eastus",
+        "name": "aro-vnet",
+        "provisioningState": "Succeeded",
+        "resourceGroup": "aro-rg",
+        "type": "Microsoft.Network/virtualNetworks"
+    }
+    }
+    ```
+
+3. **为主节点添加一个空子网。**
+
+    ```azurecli-interactive
+    az network vnet subnet create \
+    --resource-group $RESOURCEGROUP \
+    --vnet-name aro-vnet \
+    --name master-subnet \
+    --address-prefixes 10.0.0.0/23 \
+    --service-endpoints Microsoft.ContainerRegistry
+    ```
+
+4. **添加辅助角色节点的空子网。**
+
+    ```azurecli-interactive
+    az network vnet subnet create \
+    --resource-group $RESOURCEGROUP \
+    --vnet-name aro-vnet \
+    --name worker-subnet \
+    --address-prefixes 10.0.2.0/23 \
+    --service-endpoints Microsoft.ContainerRegistry
+    ```
+
+5. **[禁用子网中的子网专用终结点策略](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy)。** 这是能够连接和管理群集所必需的。
+
+    ```azurecli-interactive
+    az network vnet subnet update \
+    --name master-subnet \
+    --resource-group $RESOURCEGROUP \
+    --vnet-name aro-vnet \
+    --disable-private-link-service-network-policies true
+    ```
+
+## <a name="create-the-cluster"></a>创建群集
+
+运行以下命令以创建群集。 可以选择传递一个请求机密，使群集能够访问 Red Hat 容器注册表以及其他内容。 导航到[Red Hat OpenShift 群集管理器](https://cloud.redhat.com/openshift/install/azure/installer-provisioned)，然后单击 "**复制请求机密**"，以访问你的请求机密。
+
+```azurecli-interactive
+az aro create \
+  --resource-group $RESOURCEGROUP \
+  --name $CLUSTER \
+  --vnet aro-vnet \
+  --master-subnet master-subnet \
+  --worker-subnet worker-subnet
+  # --domain foo.example.com # [OPTIONAL] custom domain
+  # --pull-secret '$(< pull-secret.txt)' # [OPTIONAL]
 ```
+>[!NOTE]
+> 创建群集通常需要大约35分钟。
 
-将 `TENANT` 设置为在[创建新租户](howto-create-tenant.md#create-a-new-azure-ad-tenant)的步骤 7 中保存的租户 ID 值。
-
-```bash
-TENANT=<tenant ID>
-```
-
-为群集创建资源组。 在用于定义上述变量的同一 Bash shell 中运行以下命令：
-
-```azurecli
-az group create --name $CLUSTER_NAME --location $LOCATION
-```
-
-### <a name="optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network"></a>可选：将群集的虚拟网络连接到现有的虚拟网络
-
-如果不需要通过对等互连将所创建的群集的虚拟网络 (VNET) 连接到现有 VNET，请跳过此步骤。
-
-如果与默认订阅之外的网络对等互连，则在该订阅中，还需要注册提供程序 Microsoft.ContainerService。 为此，请在该订阅中运行以下命令。 否则，如果对等互连的 VNET 位于同一订阅中，则可以跳过注册步骤。
-
-`az provider register -n Microsoft.ContainerService --wait`
-
-首先获取现有 VNET 的标识符。 该标识符采用以下格式：`/subscriptions/{subscription id}/resourceGroups/{resource group of VNET}/providers/Microsoft.Network/virtualNetworks/{VNET name}`。
-
-如果你不知道现有 VNET 所属的网络名称或资源组，请转到[“虚拟网络”边栏选项卡](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Network%2FvirtualNetworks)并单击你的虚拟网络。 此时会出现“虚拟网络”页，其中列出了该 VNET 所属的网络名称和资源组。
-
-在 BASH shell 中使用以下 CLI 命令定义一个 VNET_ID 变量：
-
-```azurecli
-VNET_ID=$(az network vnet show -n {VNET name} -g {VNET resource group} --query id -o tsv)
-```
-
-例如： `VNET_ID=$(az network vnet show -n MyVirtualNetwork -g MyResourceGroup --query id -o tsv`
-
-### <a name="optional-connect-the-cluster-to-azure-monitoring"></a>可选：将群集连接到 Azure 监视
-
-首先，获取**现有** log-analytics 工作区的标识符。 该标识符采用以下格式：
-
-`/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.OperationalInsights/workspaces/{workspace-id}` 列中的一个值匹配。
-
-如果不知道 log-analytics 工作区名称或现有 log-analytics 工作区所属的资源组，请转到 [Log-Analytics 工作区](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces)并单击你的 log-analytics 工作区。 此时会出现 log-analytics工作区页，其中列出了工作区的名称及其所属的资源组。
-
-_若要创建 log-analytics 工作区，请参阅[创建 log-analytics 工作区](../azure-monitor/learn/quick-create-workspace-cli.md)_
-
-在 BASH shell 中使用以下 CLI 命令定义一个 WORKSPACE_ID 变量：
-
-```azurecli
-WORKSPACE_ID=$(az monitor log-analytics workspace show -g {RESOURCE_GROUP} -n {NAME} --query id -o tsv)
-```
-
-### <a name="create-the-cluster"></a>创建群集
-
-现在已准备好创建群集。 以下命令将在指定的 Azure AD 租户中创建群集、指定要用作安全主体的 Azure AD 应用对象和机密，以及包含对群集具有管理访问权限的成员的安全组。
-
-> [!IMPORTANT]
-> 在创建群集之前，请确保已正确添加 Azure AD 应用的适当权限，如[此处所说明](howto-aad-app-configuration.md#add-api-permissions)
-
-如果**没有**将群集对等互连到虚拟网络，或者**不**想要 Azure 监视，请使用以下命令：
-
-```azurecli
-az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID
-```
-
-如果**要**将群集对等互连到虚拟网络，请使用添加 `--vnet-peer` 标记的以下命令：
-
-```azurecli
-az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --vnet-peer $VNET_ID
-```
-
-如果**要**对群集使用 Azure 监视，请使用可添加 `--workspace-id` 标记的以下命令：
-
-```azurecli
-az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --workspace-id $WORKSPACE_ID
-```
-
-> [!NOTE]
-> 如果有错误指出主机名不可用，原因可能是群集名称不唯一。 尝试删除原始应用注册，并使用不同的群集名称重新执行[创建新应用注册](howto-aad-app-configuration.md#create-an-azure-ad-app-registration)中的步骤（省略创建新用户和安全组的步骤）。
-
-
-
-
-`az openshift create` 将在几分钟后完成。
-
-### <a name="get-the-sign-in-url-for-your-cluster"></a>获取群集的登录 URL
-
-通过运行以下命令获取用于登录到群集的 URL：
-
-```azurecli
-az openshift show -n $CLUSTER_NAME -g $CLUSTER_NAME
-```
-
-在输出中查找 `publicHostName`，例如：`"publicHostname": "openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io"`
-
-群集的登录 URL 将为 `https://`，后跟 `publicHostName` 值。  例如：`https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io`。  下一步中将使用此 URI 作为应用注册重定向 URI 的一部分。
-
-## <a name="step-3-update-your-app-registration-redirect-uri"></a>步骤 3：更新应用注册重定向 URI
-
-现在已拥有群集的登录 URL，接下来可设置应用注册重定向 UI：
-
-1. 打开 [应用注册](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) 边栏选项卡。
-2. 单击应用注册对象。
-3. 单击“添加重定向 URI”  。
-4. 确保“类型”为“Web”，并使用以下模式设置“重定向 URI”：`https://<public host name>/oauth2callback/Azure%20AD`    。 例如： `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io/oauth2callback/Azure%20AD`
-5. 单击“保存” 
-
-## <a name="step-4-sign-in-to-the-openshift-console"></a>步骤 4：登录到 OpenShift 控制台
-
-现可登录到新群集的 OpenShift 控制台。 使用 [OpenShift Web 控制台](https://docs.openshift.com/aro/architecture/infrastructure_components/web_console.html)可以可视化、浏览和管理 OpenShift 项目的内容。
-
-需要一个全新的浏览器实例，其中尚未缓存平时用来登录 Azure 门户的标识。
-
-1. 打开 *incognito* 窗口 (Chrome) 或 *InPrivate* 窗口 (Microsoft Edge)。
-2. 导航到之前获取的登录 URL，例如：`https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io`
-
-使用在[创建新的 Azure Active Directory 用户](howto-aad-app-configuration.md#create-a-new-azure-active-directory-user)的步骤 3 中创建的用户名登录。
-
-此时将显示“请求权限”对话框  。 依次单击“代表组织同意”和“接受”   。
-
-现已登录到群集控制台。
-
-![OpenShift 群集控制台的屏幕截图](./media/aro-console.png)
-
- 在 [Red Hat OpenShift](https://docs.openshift.com/aro/welcome/index.html) 文档中详细了解如何[使用 OpenShift 控制台](https://docs.openshift.com/aro/getting_started/developers_console.html)来创建和生成映像。
-
-## <a name="step-5-install-the-openshift-cli"></a>步骤 5：安装 OpenShift CLI
-
-[OpenShift CLI](https://docs.openshift.com/aro/cli_reference/get_started_cli.html)（或 OC 工具）提供了用于管理应用程序的命令，以及用于与 OpenShift 群集各组件进行交互的低级别实用工具。 
-
-在 OpenShift 控制台中，单击右上角登录名旁边的问号，然后选择“命令行工具”。   单击“最新版本”链接下载并安装适用于 Linux、MacOS 或 Windows 的受支持 oc CLI。 
-
-> [!NOTE]
-> 如果右上角未显示问号图标，请从左上方的下拉列表中选择“服务目录”或“应用程序控制台”。  
+>[!IMPORTANT]
+> 如果选择指定自定义域（例如**foo.example.com**），则 OpenShift 控制台将出现在 URL （如`https://console-openshift-console.apps.foo.example.com`）中，而不是内置域。 `https://console-openshift-console.apps.<random>.<location>.aroapp.io`
 >
-> 或者，可以直接[下载 oc CLI](https://www.okd.io/download.html)。
-
-“命令行工具”页提供了一个采用 `oc login https://<your cluster name>.<azure region>.cloudapp.azure.com --token=<token value>` 格式的命令。   请单击“复制到剪贴板”按钮以复制此命令。   在终端窗口中，将[路径设置](https://docs.okd.io/latest/cli_reference/openshift_cli/getting-started-cli.html#installing-the-cli)为包含 oc 工具的本地安装。 然后使用复制的 oc CLI 命令登录到群集。
-
-如果使用上述步骤无法获取令牌值，请从 `https://<your cluster name>.<azure region>.cloudapp.azure.com/oauth/token/request` 获取令牌值。
+> 默认情况下，OpenShift 对在上`*.apps.<random>.<location>.aroapp.io`创建的所有路由使用自签名证书。  如果你选择在连接到群集后使用自定义 DNS，你将需要按照 OpenShift 文档为[入口控制器配置自定义 ca](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) ，并为[API 服务器配置自定义 ca](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html)。
+>
 
 ## <a name="next-steps"></a>后续步骤
 
 本教程的此部分介绍了如何：
-
 > [!div class="checklist"]
-> * 创建 Azure Red Hat OpenShift 群集
+> * 安装必备组件并创建所需的虚拟网络和子网
+> * 部署群集
 
 转到下一教程：
 > [!div class="nextstepaction"]
-> [缩放 Azure Red Hat OpenShift 群集](tutorial-scale-cluster.md)
+> [连接到 Azure Red Hat OpenShift 群集](tutorial-connect-cluster.md)

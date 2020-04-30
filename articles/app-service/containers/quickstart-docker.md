@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.author: msangapu
 ms.date: 08/28/2019
 ms.topic: quickstart
-ms.openlocfilehash: 62e6b007e89fc6be726d3d971ca838770db9cb6e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 51607f44f75cbd93c7ecf1c77bb52c73b27b5f3c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75422153"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82159739"
 ---
 # <a name="deploy-a-custom-linux-container-to-azure-app-service"></a>将自定义 Linux 容器部署到 Azure 应用服务
 
@@ -21,8 +21,8 @@ Linux 上的应用服务在 Linux 上提供预定义的应用程序堆栈，并�
 * 一个 [Azure 帐户](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-docker-extension&mktingSource=vscode-tutorial-docker-extension)
 * [Docker](https://www.docker.com/community-edition)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [适用于 VS Code 的 Azure 应用服务扩展](vscode:extension/ms-azuretools.vscode-azureappservice)。 可以使用此扩展在 Azure 平台即服务 (PaaS) 上创建、管理和部署 Linux Web 应用。
-* [适用于 VS Code 的 Docker 扩展](vscode:extension/ms-azuretools.vscode-docker)。 可以使用此扩展简化本地 Docker 映像和命令的管理，并将生成的应用映像部署到 Azure。
+* [适用于 VS Code 的 Azure 应用服务扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice)。 可以使用此扩展在 Azure 平台即服务 (PaaS) 上创建、管理和部署 Linux Web 应用。
+* [适用于 VS Code 的 Docker 扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)。 可以使用此扩展简化本地 Docker 映像和命令的管理，并将生成的应用映像部署到 Azure。
 
 ## <a name="create-an-image"></a>创建映像
 

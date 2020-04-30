@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.openlocfilehash: b169a067f05de422b714e18a4d7ebb9c9e7f0428
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82133497"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Azure 流分析功能比较
@@ -18,7 +18,7 @@ ms.locfileid: "82133497"
 借助 Azure 流分析，可以使用 [Azure 门户](stream-analytics-quick-create-portal.md)，[Visual Studio](stream-analytics-quick-create-vs.md) 和 [Visual Studio Code](quick-create-vs-code.md) 在云端和 IoT Edge 中创建流式处理解决方案。 本文中的表显示了每种平台支持这两种作业类型的哪些功能。
 
 > [!NOTE]
-> Visual Studio 和 Visual Studio Code 工具不支持中国东部、中国北部、德国中部和德国东北地区的作业。
+> Visual Studio 和 Visual Studio Code 工具不支持“中国东部”、“中国北部”、“德国中部”和“德国东北部”区域中的作业。
 
 ## <a name="cloud-job-features"></a>云作业功能
 

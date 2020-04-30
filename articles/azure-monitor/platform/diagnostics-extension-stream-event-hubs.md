@@ -1,49 +1,49 @@
 ---
 title: 将数据从 Windows Azure 诊断扩展发送到 Azure 事件中心
-description: 在 Azure 监视器中配置诊断扩展以将数据发送到 Azure 事件中心，以便可以将数据转发到 Azure 外部的位置。
+description: 将 Azure Monitor 中的诊断扩展配置为将数据发送到 Azure 事件中心，以便将其转发到 Azure 之外的位置。
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
-ms.openlocfilehash: 5e5034e99d37d3681192c2ad066f28acd1c4aeeb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 979535b1f9a237f6975908178fb1e5ed819181b0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77672525"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233459"
 ---
 # <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>将数据从 Windows Azure 诊断扩展发送到 Azure 事件中心
-Azure 诊断扩展是 Azure 监视器中的代理，用于从 Azure 虚拟机和其他计算资源的来宾操作系统和工作负荷收集监视数据。 本文介绍如何将数据从 Windows Azure 诊断扩展 （WAD） 发送到[Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，以便可以转发到 Azure 外部的位置。
+Azure 诊断扩展是 Azure Monitor 中的一个代理，可从 Azure 虚拟机的来宾操作系统和工作负荷及其他计算资源收集监视数据。 本文介绍如何将数据从 Windows Azure 诊断扩展 (WAD) 发送到 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，以便将其转发到 Azure 之外的位置。
 
 ## <a name="supported-data"></a>支持的数据
 
-从来宾操作系统收集的可发送到事件中心的数据包括以下内容。 WAD 收集的其他数据源（包括 IIS 日志和崩溃转储）无法发送到事件中心。
+从来宾操作系统收集的可发送到事件中心的数据包括以下内容。 WAD 收集的其他数据源（包括 IIS 日志和故障转储）无法发送到事件中心。
 
 * Windows 事件跟踪 (ETW) 事件
 * 性能计数器
-* Windows 事件日志，包括 Windows 事件日志中的应用程序日志
+* Windows 事件日志（包括 Windows 事件日志中的应用程序日志）
 * Azure 诊断基础结构日志
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* Windows 诊断扩展 1.6 或更高版本。 有关受支持资源的版本历史记录和[Azure 诊断扩展概述](diagnostics-extension-overview.md)，请参阅[Azure 诊断扩展配置架构版本和历史记录](diagnostics-extension-versions.md)。
-* 必须始终预配事件中心命名空间。 有关详细信息[，请参阅从事件中心开始](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)。
+* Windows 诊断扩展 1.6 或更高版本。 请参阅 [Azure 诊断扩展配置架构版本和历史记录](diagnostics-extension-versions.md)以获取版本历史记录，参阅 [Azure 诊断扩展概述](diagnostics-extension-overview.md)以获取支持的资源。
+* 必须始终预配事件中心命名空间。 请参阅[事件中心入门](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)以获取详细信息。
 
 
 ## <a name="configuration-schema"></a>配置架构
-有关启用和配置诊断扩展和[Azure 诊断配置架构](diagnostics-extension-schema-windows.md)的不同选项，请参阅[安装和配置 Windows Azure 诊断扩展 （WAD），](diagnostics-extension-windows-install.md)以便参考配置架构。 本文的其余部分将介绍如何使用此配置将数据发送到事件中心。 
+请参阅[安装并配置 Windows Azure 诊断扩展 (WAD)](diagnostics-extension-windows-install.md)，获取启用和配置诊断扩展的不同选项；参阅 [Azure 诊断配置架构](diagnostics-extension-schema-windows.md)，获取配置架构参考。 本文的其余部分将介绍如何使用此配置向事件中心发送数据。 
 
-Azure 诊断始终向 Azure 存储帐户发送日志和指标。 您可以配置一个或多个将数据发送到其他位置*的数据接收器*。 每个接收器都在公共配置的[SinksConfig 元素](diagnostics-extension-schema-windows.md#sinksconfig-element)中定义，在私有配置中包含敏感信息。 事件中心此配置使用下表中的值。
+Azure 诊断始终将日志和指标发送到 Azure 存储帐户。 可以配置一个或多个可将数据发送到其他位置的数据接收器  。 每个接收器都在公共配置的 [SinksConfig 元素](diagnostics-extension-schema-windows.md#sinksconfig-element)中定义，而敏感信息则包含在专用配置中。 事件中心的此配置使用下表中的值。
 
-| properties | 描述 |
+| properties | 说明 |
 |:---|:---|
-| “属性” | 接收器的描述性名称。 在配置中用于指定要发送到接收器的数据源。 |
-| URL  | 窗体\<事件中心-命名空间\>中的事件中心 url servicebus.windows.net/\<事件中心名称\>。          |
-| 共享访问密钥名称 | 具有至少 **"发送**"权限的事件中心的共享访问策略的名称。 |
-| SharedAccessKey     | 事件中心共享访问策略的主键或辅助键。 |
+| 名称 | 接收器的说明性名称。 在配置中用于指定要发送到接收器的数据源。 |
+| URL  | 事件中心的 URL，其格式为 \<event-hubs-namespace\>.servicebus.windows.net/\<event-hub-name\>。          |
+| SharedAccessKeyName | 事件中心的至少具有“发送”  权限的共享访问策略的名称。 |
+| SharedAccessKey     | 事件中心的共享访问策略中的主密钥或辅助密钥。 |
 
-示例公共配置和私有配置如下所示。 这是一个最小配置，具有单个性能计数器和事件日志，用于说明如何配置和使用事件中心数据接收器。 有关更复杂的示例，请参阅[Azure 诊断配置架构](diagnostics-extension-schema-windows.md)。
+下面显示了公共和专用配置示例。 这是一个最小配置，其中包含一个性能计数器和事件日志，用于说明如何配置和使用事件中心数据接收器。 如需更复杂的示例，请参阅 [Azure 诊断配置架构](diagnostics-extension-schema-windows.md)。
 
 ### <a name="public-configuration"></a>公共配置
 
@@ -51,26 +51,26 @@ Azure 诊断始终向 Azure 存储帐户发送日志和指标。 您可以配置
 {
     "WadCfg": {
         "DiagnosticMonitorConfiguration": {
-            "overallQuotaInMB": 5120
-        },
-        "PerformanceCounters": {
-            "scheduledTransferPeriod": "PT1M",
-            "sinks": "myEventHub",
-            "PerformanceCounterConfiguration": [
-                {
-                    "counterSpecifier": "\\Processor(_Total)\\% Processor Time",
-                    "sampleRate": "PT3M"
-                }
-            ]
-        },
-        "WindowsEventLog": {
-            "scheduledTransferPeriod": "PT1M",
-            "sinks": "myEventHub",
-                "DataSource": [
-                {
-                    "name": "Application!*[System[(Level=1 or Level=2 or Level=3)]]"
-                }
-            ]
+            "overallQuotaInMB": 5120,
+            "PerformanceCounters": {
+                "scheduledTransferPeriod": "PT1M",
+                "sinks": "myEventHub",
+                "PerformanceCounterConfiguration": [
+                    {
+                        "counterSpecifier": "\\Processor(_Total)\\% Processor Time",
+                        "sampleRate": "PT3M"
+                    }
+                ]
+            },
+            "WindowsEventLog": {
+                "scheduledTransferPeriod": "PT1M",
+                "sinks": "myEventHub",
+                    "DataSource": [
+                    {
+                        "name": "Application!*[System[(Level=1 or Level=2 or Level=3)]]"
+                    }
+                ]
+            }
         },
         "SinksConfig": {
             "Sink": [
@@ -107,7 +107,7 @@ Azure 诊断始终向 Azure 存储帐户发送日志和指标。 您可以配置
 
 
 ## <a name="configuration-options"></a>配置选项
-要将数据发送到数据接收器，请在数据源的节点上指定**接收器**属性。 放置**接收器**属性的位置决定了分配的范围。 在下面的示例中，**接收器**属性被定义为**性能计数器**节点，这将导致将所有子性能计数器发送到事件中心。
+若要将数据发送到数据接收器，请在数据源的节点上指定 **sinks** 特性。 在何处放置 **sinks** 特性决定了分配的范围。 在以下示例中，**sinks** 特性定义到 **PerformanceCounters** 节点，这会导致系统将所有子性能计数器都发送到事件中心。
 
 ```JSON
 "PerformanceCounters": {
@@ -131,7 +131,7 @@ Azure 诊断始终向 Azure 存储帐户发送日志和指标。 您可以配置
 ```
 
 
-在下面的示例中，**接收器**属性直接应用于三个计数器，这将导致仅将这些性能计数器发送到事件中心。 
+在以下示例中，**sinks** 特性直接应用到三个计数器，这会导致系统仅将这些性能计数器发送到事件中心。 
 
 ```JSON
 "PerformanceCounters": {
@@ -165,20 +165,20 @@ Azure 诊断始终向 Azure 存储帐户发送日志和指标。 您可以配置
 ```
 
 ## <a name="validating-configuration"></a>验证配置
-可以使用多种方法验证数据是否已发送到事件中心。 ne 简单方法是使用事件中心捕获，如在[Azure Blob 存储或 Azure 数据湖存储中通过 Azure 事件中心捕获事件](../../event-hubs/event-hubs-capture-overview.md)中所述。 
+可以使用多种方法来验证数据是否发送到事件中心。 使用事件中心捕获是一种直接的方法，如[通过 Azure Blob 存储或 Azure Data Lake Storage 中的 Azure 事件中心来捕获事件](../../event-hubs/event-hubs-capture-overview.md)中所述。 
 
 
 ## <a name="troubleshoot-event-hubs-sinks"></a>排查事件中心接收器问题
 
-- 查看 Azure 存储表**WAD 诊断基础结构日志表**，其中包含 Azure 诊断本身的日志和错误。 一个选项是使用 [Azure 存储资源管理器](https://www.storageexplorer.com)等工具连接到此存储帐户，查看此表，并添加过去 24 小时的时间戳查询。 可以使用此工具导出 .csv 文件，并在 Microsoft Excel 之类的应用程序中打开它。 Excel 可以轻松地搜索电话卡字符串（如 **EventHubs**），以便查看系统报告了哪些错误。  
+- 查看 Azure 存储表 **WADDiagnosticInfrastructureLogsTable**，其中包含 Azure 诊断本身的日志和错误。 一个选项是使用 [Azure 存储资源管理器](https://www.storageexplorer.com)等工具连接到此存储帐户，查看此表，并添加过去 24 小时的时间戳查询。 可以使用此工具导出 .csv 文件，并在 Microsoft Excel 之类的应用程序中打开它。 Excel 可以轻松地搜索电话卡字符串（如 **EventHubs**），以便查看系统报告了哪些错误。  
 
-- 检查是否已成功预配事件中心。 配置的 Private **Config**部分中的所有连接信息必须与门户中所看到的资源值匹配。 请确保门户中定义了 SAS 策略（示例中的*SendRule），* 并且已授予 *"发送*"权限。  
+- 检查是否已成功预配事件中心。 配置的 **PrivateConfig** 节的所有连接信息必须与门户中显示的资源值匹配。 请确保已在门户中定义 SAS 策略（本示例中为 *SendRule*），并为其授予“发送”权限。   
 
 ## <a name="next-steps"></a>后续步骤
 
 * [事件中心概述](../../event-hubs/event-hubs-about.md)
 * [创建事件中心](../../event-hubs/event-hubs-create.md)
-* [事件中心常见问题](../../event-hubs/event-hubs-faq.md)
+* [事件中心常见问题解答](../../event-hubs/event-hubs-faq.md)
 
 <!-- Images. -->
 [0]: ../../event-hubs/media/event-hubs-streaming-azure-diags-data/dashboard.png

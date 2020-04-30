@@ -1,17 +1,17 @@
 ---
-title: 排除 Azure 应用程序见解可用性测试的故障
+title: Azure 应用程序 Insights 可用性测试疑难解答
 description: 排查 Azure Application Insights 中的 Web 测试问题。 当网站不可用或响应速度缓慢时接收警报。
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
-ms.date: 09/19/2019
+ms.date: 04/28/2020
 ms.reviewer: sdash
-ms.openlocfilehash: 94b00a36445b0f4284caba218f6416db726611eb
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 8f03099cf2890882a1c1d4ba9d69fcb64d0db600
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255441"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233952"
 ---
 # <a name="troubleshooting"></a>故障排除
 
@@ -22,12 +22,12 @@ ms.locfileid: "81255441"
 |症状/错误消息| 可能的原因|
 |--------|------|
 |无法创建 SSL/TLS 安全通道  | SSL 版本。 仅支持 TLS 1.0、1.1 和 1.2。 **不支持 SSLv3。**
-|TLSv1.2 记录层：警报（级别：致命、描述：记录错误 MAC）| 请查看 StackExchange 线程以了解[详细信息](https://security.stackexchange.com/questions/39844/getting-ssl-alert-write-fatal-bad-record-mac-during-openssl-handshake)。
+|TLSv1.2 记录层：警报（级别：严重，说明：错误记录 MAC）| 请查看 StackExchange 线程以了解[详细信息](https://security.stackexchange.com/questions/39844/getting-ssl-alert-write-fatal-bad-record-mac-during-openssl-handshake)。
 |无法连接到 CDN（内容分发网络）的 URL | 这可能是由于 CDN 上的错误配置导致的 |  
 
 ### <a name="possible-workaround"></a>可能的解决方法
 
-* 如果遇到问题的 URL 始终指向依赖资源，建议对 Web 测试禁用“分析从属请求”****。
+* 如果遇到问题的 URL 始终指向依赖资源，建议对 Web 测试禁用“分析从属请求”  。
 
 ## <a name="test-fails-only-from-certain-locations"></a>测试仅在某些位置失败
 
@@ -44,13 +44,13 @@ ms.locfileid: "81255441"
 |服务器违反了协议。 节=ResponseHeader 详细信息=CR 必须后跟 LF | 检测到格式不正确的标头时，会发生这种情况。 具体来说，某些标头可能没有使用 CRLF 来指示行尾，这违反了 HTTP 规范。 Application Insights 强制实施此 HTTP 规范，并使用格式错误的标头导致响应失败。| a. 请与网站主机提供商/CDN 提供商联系以修复故障服务器。 <br> b. 如果失败的请求是资源（例如，样式文件、图像、脚本），则可以考虑禁止分析依赖请求。 请记住，如果执行此操作，你将无法监视这些文件的可用性。
 
 > [!NOTE]
-> 在 HTTP 标头验证比较宽松的浏览器上，URL 可能不会失败。 有关该问题的详细说明，请参阅此博客文章：http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
+> 在 HTTP 标头验证比较宽松的浏览器上，URL 可能不会失败。 有关该问题的详细说明，请参阅此博客文章： http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
 
 ## <a name="common-troubleshooting-questions"></a>常见故障排除问题
 
 ### <a name="site-looks-okay-but-i-see-test-failures-why-is-application-insights-alerting-me"></a>站点看似正常，但我看见测试失败了？ 为何 Application Insights 会向我发出警报？
 
-   * 您的测试是否启用**了分析相关请求**？ 这导致对脚本、图像等资源进行严格检查。这些类型的故障在浏览器上可能并不明显。 检查所有图像、脚本、样式表和页面加载的任何其他文件。 如果其中有任何一个失败，即使 HTML 主页正常加载，测试也会报告为失败。 若要使测试对此类资源故障不再敏感，只需在测试配置中取消选中“分析从属请求”即可。
+   * 你的测试是否启用了“分析从属请求”  ？ 这会导致严格检查脚本、图像等资源。这类故障在浏览器上可能不明显。 检查所有图像、脚本、样式表和页面加载的任何其他文件。 如果其中有任何一个失败，即使 HTML 主页正常加载，测试也会报告为失败。 若要使测试对此类资源故障不再敏感，只需在测试配置中取消选中“分析从属请求”即可。
 
    * 若要降低暂时性网络问题等各方面因素导致的干扰，请确保选中“测试故障时允许重试”配置。 也可从多个位置进行测试并对警报规则阈值进行相应的管理，防止在出现特定于位置的问题时引发不必要的警报。
 
@@ -68,6 +68,10 @@ ms.locfileid: "81255441"
 
 检查以确保接收 Webhook 通知的应用程序可用并成功处理 Webhook 请求。 有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook)。
 
+### <a name="i-am-getting--403-forbidden-errors-what-does-this-mean"></a>我收到了403禁止的错误，这是什么意思？
+
+此错误表示需要添加防火墙例外以允许可用性代理测试目标 url。 有关要允许的代理 IP 地址的完整列表，请参阅[IP 异常一文](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses#availability-tests)。
+
 ### <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>间歇性测试失败，出现违反协议错误？
 
 错误（“违反协议: CR 必须后跟 LF”）表明服务器（或依赖项）存在问题。 在响应中设置的标头格式错误时，会发生这种情况。 可能是负载均衡器或 CDN 引发的。 具体来说，某些标头可能没有使用 CRLF 来指示行尾，这违反了 HTTP 规范，因此无法通过 .NET WebRequest 级别的验证。 请检查响应，以找出可能违反规范的标头。
@@ -81,7 +85,7 @@ ms.locfileid: "81255441"
 
 ### <a name="can-i-call-code-from-my-web-test"></a>是否可从 Web 测试调用代码？
 
-不是。 测试步骤必须在 .webtest 文件中指定。 此外，不能调用其他 Web 测试或使用循环。 但是可以借助一些有用的插件。
+不能。 测试步骤必须在 .webtest 文件中指定。 此外，不能调用其他 Web 测试或使用循环。 但是可以借助一些有用的插件。
 
 
 ### <a name="is-there-a-difference-between-web-tests-and-availability-tests"></a>“Web 测试”与“可用性测试”之间是否存在差异？

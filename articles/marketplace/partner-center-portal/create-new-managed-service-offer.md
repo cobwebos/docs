@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.openlocfilehash: c82c3e0b6e6d11ccc33bf8556b06aeb04a6d37b5
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82147910"
 ---
 # <a name="create-a-new-managed-service-offer"></a>创建新的托管服务产品/服务
@@ -206,7 +206,7 @@ ms.locfileid: "82147910"
 > [!NOTE]
 > 如上所述，“授权”条目中的用户和角色将应用于每个购买了计划的客户****。 如果想要限制特定客户的访问权限，需发布专用计划供其专用。
 
-#### <a name="manifest"></a>file:///
+#### <a name="manifest"></a>清单
 
 首先，请提供清单的版本****。 使用 n.n.n 格式（例如 1.2.5）**。
 

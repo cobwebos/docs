@@ -10,10 +10,10 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/05/2020
 ms.openlocfilehash: 9a7d0b75140c50df61ff63f350e5b312a6a684c7
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81617776"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>使用 Azure CLI 创建 Azure 机器学习工作区
@@ -21,18 +21,18 @@ ms.locfileid: "81617776"
 
 本文介绍如何使用 Azure CLI 创建 Azure 机器学习工作区。 Azure CLI 提供用于管理 Azure 资源的命令。 CLI 的机器学习扩展提供用于处理 Azure 机器学习资源的命令。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* **Azure 订阅**。 如果没有订阅，可试用 [Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
+* 一个 **Azure 订阅**。 如果没有订阅，可试用 [Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
 * 若要在**本地环境**中使用本文档所述的 CLI 命令，需要安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-    如果使用 Azure[云外壳](https://azure.microsoft.com//features/cloud-shell/)，则 CLI 将通过浏览器访问并生活在云中。
+    如果使用[Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/)，则可以通过浏览器访问 CLI，并将其驻留在云中。
 
 ## <a name="connect-the-cli-to-your-azure-subscription"></a>将 CLI 连接到 Azure 订阅
 
 > [!IMPORTANT]
-> 如果使用 Azure 云外壳，则可以跳过此部分。 云外壳使用登录到 Azure 订阅的帐户自动对您进行身份验证。
+> 如果使用 Azure Cloud Shell，则可以跳过此部分。 Cloud shell 使用登录到 Azure 订阅的帐户自动对你进行身份验证。
 
 可通过多种方法从 CLI 对 Azure 订阅进行身份验证。 最基本的方法是使用浏览器进行交互式身份验证。 若要以交互方式进行身份验证，请打开命令行或终端，然后使用以下命令：
 
@@ -40,7 +40,7 @@ ms.locfileid: "81617776"
 az login
 ```
 
-如果 CLI 可以打开默认的浏览器，则它会打开该浏览器并加载登录页。 否则，需要打开浏览器并按照命令行中的说明操作。 这些说明涉及浏览[https://aka.ms/devicelogin](https://aka.ms/devicelogin)和输入授权代码。
+如果 CLI 可以打开默认的浏览器，则它会打开该浏览器并加载登录页。 否则，需要打开浏览器并按照命令行中的说明操作。 这些说明涉及到[https://aka.ms/devicelogin](https://aka.ms/devicelogin)浏览和输入授权代码。
 
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
@@ -166,7 +166,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 
         `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/microsoft.insights/components/<application-insight-name>"`
 
-+ **Azure 密钥保管库**：`az keyvault show --name <key-vault-name> --query "ID"`
++ **Azure Key Vault**：`az keyvault show --name <key-vault-name> --query "ID"`
 
     此命令的响应类似于以下文本，它是 Key Vault 的 ID：
 
@@ -355,11 +355,11 @@ az group delete -g <resource-group-name>
 ### <a name="moving-the-workspace"></a>移动工作区
 
 > [!WARNING]
-> 不支持将 Azure 机器学习工作区移动到其他订阅，或将所属订阅移动到新租户。 这样做可能会导致错误。
+> 不支持将 Azure 机器学习工作区移动到不同的订阅，或将拥有的订阅移动到新租户。 这样做可能会导致错误。
 
 ### <a name="deleting-the-azure-container-registry"></a>删除 Azure 容器注册表
 
-Azure 机器学习工作区使用 Azure 容器注册表 （ACR） 执行某些操作。 当 ACR 实例首次需要时，它将自动创建一个 ACR 实例。
+Azure 机器学习工作区对某些操作使用 Azure 容器注册表（ACR）。 它首次需要时，它将自动创建一个 ACR 实例。
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
