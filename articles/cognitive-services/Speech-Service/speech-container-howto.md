@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: 2caae4fecdf13a1833f23cf9423cf3ded67f6f72
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d5283051de50b84ea87c0f02a391652854067168
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80878999"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610729"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>安装和运行语音服务容器（预览）
 
@@ -28,7 +28,7 @@ ms.locfileid: "80878999"
 
 | 函数 | 功能 | 最新版本 |
 |--|--|--|
-| 语音转文本 | 转录连续实时语音或批处理音频记录到带有中间结果的文本中。 | 2.1.1 |
+| 语音转文本 | 利用中间结果分析情绪和转录连续实时语音或批处理音频记录。  | 2.2.0 |
 | 自定义语音转文本 | 使用[自定义语音门户](https://speech.microsoft.com/customspeech)中的自定义模型，转录连续实时语音或批处理音频记录到带有中间结果的文本中。 | 2.1.1 |
 | 文本转语音 | 用纯文本输入或语音合成标记语言（SSML）将文本转换为自然声音语音。 | 1.3.0 |
 | 自定义文本到语音转换 | 使用[自定义语音门户](https://aka.ms/custom-voice-portal)中的自定义模型，使用纯文本输入或语音合成标记语言（SSML）将文本转换为自然声音声音。 | 1.3.0 |
@@ -164,7 +164,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 以下标记是格式示例：
 
 ```
-2.1.1-amd64-en-us-preview
+2.2.0-amd64-en-us-preview
 ```
 
 对于 "**语音到文本**" 容器的所有受支持的区域设置，请参阅[语音到文本图像标记](../containers/container-image-tags.md#speech-to-text)。
@@ -259,6 +259,33 @@ ApiKey={API_KEY}
 * 公开 TCP 端口 5000，并为容器分配伪 TTY。
 * 退出后自动删除容器。 容器映像在主计算机上仍然可用。
 
+
+#### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>分析语音到文本输出的情绪 
+
+从 "语音到文本" 容器的 v 2.2.0 开始，可以对输出调用[情绪分析 V3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) 。 若要调用情绪分析，需要文本分析 API 资源终结点。 例如： 
+* `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0-preview.1/sentiment`
+* `https://localhost:5000/text/analytics/v3.0-preview.1/sentiment`
+
+如果要访问云中的文本分析终结点，你将需要一个密钥。 如果在本地运行文本分析，则可能不需要提供此。
+
+密钥和终结点作为参数传递到语音容器，如下面的示例中所示。
+
+```bash
+docker run -it --rm -p 5000:5000 \
+containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY} \
+CloudAI:SentimentAnalysisSettings:TextAnalyticsHost={TEXT_ANALYTICS_HOST} \
+CloudAI:SentimentAnalysisSettings:SentimentAnalysisApiKey={SENTIMENT_APIKEY}
+```
+
+此命令：
+
+* 执行与上述命令相同的步骤。
+* 存储用于发送情绪分析请求的文本分析 API 终结点和密钥。 
+
+
 # <a name="custom-speech-to-text"></a>[自定义语音到文本](#tab/cstt)
 
 *自定义语音到文本*的容器依赖于自定义语音模型。 自定义模型必须使用[自定义语音门户](https://speech.microsoft.com/customspeech)进行[训练](how-to-custom-speech-train-model.md)。
@@ -282,7 +309,7 @@ ApiKey={API_KEY}
 
 下表表示各种`docker run`参数及其相应的说明：
 
-| 参数 | 说明 |
+| 参数 | 描述 |
 |---------|---------|
 | `{VOLUME_MOUNT}` | 宿主计算机的[卷装载](https://docs.docker.com/storage/volumes/)，docker 使用它来持久保存自定义模型。 例如， *C:\CustomSpeech* ，其中*C 驱动器*位于主机上。 |
 | `{MODEL_ID}` | 自定义语音门户的 "**培训**" 页中的自定义语音**模型 ID** 。 |
@@ -344,7 +371,7 @@ ApiKey={API_KEY}
 
 下表表示各种`docker run`参数及其相应的说明：
 
-| 参数 | 说明 |
+| 参数 | 描述 |
 |---------|---------|
 | `{VOLUME_MOUNT}` | 宿主计算机的[卷装载](https://docs.docker.com/storage/volumes/)，docker 使用它来持久保存自定义模型。 例如， *C:\CustomSpeech* ，其中*C 驱动器*位于主机上。 |
 | `{MODEL_ID}` | 自定义语音门户的 "**培训**" 页中的自定义语音**模型 ID** 。 |
@@ -380,6 +407,9 @@ ApiKey={API_KEY}
 
 ## <a name="query-the-containers-prediction-endpoint"></a>查询容器的预测终结点
 
+> [!NOTE]
+> 如果要运行多个容器，请使用唯一端口号。
+
 | 容器 | SDK 主机 URL | 协议 |
 |--|--|--|
 | 语音到文本和自定义语音到文本 | `ws://localhost:5000` | WS |
@@ -388,6 +418,121 @@ ApiKey={API_KEY}
 有关使用 WSS 和 HTTPS 协议的详细信息，请参阅[容器安全性](../cognitive-services-container-support.md#azure-cognitive-services-container-security)。
 
 [!INCLUDE [Query Speech-to-text container endpoint](includes/speech-to-text-container-query-endpoint.md)]
+
+#### <a name="analyze-sentiment"></a>分析情绪
+
+如果[为容器](#analyze-sentiment-on-the-speech-to-text-output)提供了文本分析 API 凭据，则可以使用语音 SDK 通过情绪分析发送语音识别请求。 可以将 API 响应配置为使用*简单*或*详细*格式。
+
+# <a name="simple-format"></a>[简单格式](#tab/simple-format)
+
+若要将语音客户端配置为使用简单格式， `"Sentiment"`请将添加为`Simple.Extensions`的值。 如果要选择特定的文本分析模型版本，请在`'latest'` `speechcontext-phraseDetection.sentimentAnalysis.modelversion`属性配置中替换。
+
+```python
+speech_config.set_service_property(
+    name='speechcontext-PhraseOutput.Simple.Extensions',
+    value='["Sentiment"]',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+speech_config.set_service_property(
+    name='speechcontext-phraseDetection.sentimentAnalysis.modelversion',
+    value='latest',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+```
+
+`Simple.Extensions`将返回响应的根层中的情绪结果。
+
+```json
+{
+   "DisplayText":"What's the weather like?",
+   "Duration":13000000,
+   "Id":"6098574b79434bd4849fee7e0a50f22e",
+   "Offset":4700000,
+   "RecognitionStatus":"Success",
+   "Sentiment":{
+      "Negative":0.03,
+      "Neutral":0.79,
+      "Positive":0.18
+   }
+}
+```
+
+# <a name="detailed-format"></a>[详细格式](#tab/detailed-format)
+
+若要将语音客户端配置为使用详细格式， `"Sentiment"`请将添加为`Detailed.Extensions`、 `Detailed.Options`或的值。 如果要选择特定的文本分析模型版本，请在`'latest'` `speechcontext-phraseDetection.sentimentAnalysis.modelversion`属性配置中替换。
+
+```python
+speech_config.set_service_property(
+    name='speechcontext-PhraseOutput.Detailed.Options',
+    value='["Sentiment"]',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+speech_config.set_service_property(
+    name='speechcontext-PhraseOutput.Detailed.Extensions',
+    value='["Sentiment"]',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+speech_config.set_service_property(
+    name='speechcontext-phraseDetection.sentimentAnalysis.modelversion',
+    value='latest',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+```
+
+`Detailed.Extensions`提供响应根层中的情绪结果。 `Detailed.Options`提供响应`NBest`层的结果。 它们可以单独使用，也可以一起使用。
+
+```json
+{
+   "DisplayText":"What's the weather like?",
+   "Duration":13000000,
+   "Id":"6a2aac009b9743d8a47794f3e81f7963",
+   "NBest":[
+      {
+         "Confidence":0.973695,
+         "Display":"What's the weather like?",
+         "ITN":"what's the weather like",
+         "Lexical":"what's the weather like",
+         "MaskedITN":"What's the weather like",
+         "Sentiment":{
+            "Negative":0.03,
+            "Neutral":0.79,
+            "Positive":0.18
+         }
+      },
+      {
+         "Confidence":0.9164971,
+         "Display":"What is the weather like?",
+         "ITN":"what is the weather like",
+         "Lexical":"what is the weather like",
+         "MaskedITN":"What is the weather like",
+         "Sentiment":{
+            "Negative":0.02,
+            "Neutral":0.88,
+            "Positive":0.1
+         }
+      }
+   ],
+   "Offset":4700000,
+   "RecognitionStatus":"Success",
+   "Sentiment":{
+      "Negative":0.03,
+      "Neutral":0.79,
+      "Positive":0.18
+   }
+}
+```
+
+---
+
+如果要完全禁用情绪分析，请将`false`值添加到。 `sentimentanalysis.enabled`
+
+```python
+speech_config.set_service_property(
+    name='speechcontext-phraseDetection.sentimentanalysis.enabled',
+    value='false',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+```
 
 ### <a name="text-to-speech-or-custom-text-to-speech"></a>文本到语音转换或自定义文本到语音转换
 
@@ -405,7 +550,7 @@ ApiKey={API_KEY}
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 启动或运行容器时，可能会遇到问题。 使用输出[装载](speech-container-configuration.md#mount-settings)并启用日志记录。 这样，容器就可以生成日志文件，这些文件在解决问题时非常有用。
 
@@ -423,7 +568,7 @@ ApiKey={API_KEY}
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>“摘要”
+## <a name="summary"></a>总结
 
 本文已介绍语音容器的概念，及其下载、安装和运行工作流。 综上所述：
 
