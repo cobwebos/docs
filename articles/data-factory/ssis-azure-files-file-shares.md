@@ -10,7 +10,7 @@ ms.author: sawinark
 ms.reviewer: maghan
 ms.openlocfilehash: 630a8ead409ad60b9146838f062210a3301b43b5
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81760194"
