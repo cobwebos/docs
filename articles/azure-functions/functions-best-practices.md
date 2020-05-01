@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a41a5828a82d81c5e7e8749fee70cd15e17bb9d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277773"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>优化 Azure Functions 的性能和可靠性
@@ -56,7 +56,7 @@ ms.locfileid: "79277773"
 1. 在数据库中进行 10,000 行的查询。
 2. 为每行创建队列消息，从而处理下一行。
  
-根据系统的复杂性，您可能有：涉及的下游服务行为不端、网络中断或达到配额限制等。所有这些都可以随时影响您的功能。 需设计函数，使其做好该准备。
+根据系统复杂程度，可能有：行为有误的相关下游服务，网络故障或已达配额限制等等。所有这些可在任何时间影响用户的函数。 需设计函数，使其做好该准备。
 
 如果将 5,000 个那些项插入到队列中进行处理，然后发生故障，代码将如何响应？ 跟踪已完成的一组中的项。 否则，下次可能再次插入它们。 这种双插入可能会严重影响工作流，因此请[将函数设置为幂等](functions-idempotent.md)。 
 
@@ -98,7 +98,7 @@ Function App 中的各函数共享资源。 例如，共享内存。 如果生�
 
 ### <a name="use-multiple-worker-processes"></a>使用多个工作进程
 
-默认情况下，Functions 的任何主机实例均使用单个工作进程。 为了提高性能（尤其是使用 Python 等单线程运行时），请使用[FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count)来增加每个主机的辅助进程数（最多 10 个）。 然后，Azure Functions 会尝试在这些工作进程之间平均分配同步函数调用。 
+默认情况下，Functions 的任何主机实例均使用单个工作进程。 若要提高性能，尤其是在单线程运行时（例如 Python），请使用[FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count)增加每个主机的工作进程数（最多10个）。 然后，Azure Functions 会尝试在这些工作进程之间平均分配同步函数调用。 
 
 FUNCTIONS_WORKER_PROCESS_COUNT 适用于 Functions 在横向扩展应用程序以满足需求时创建的每个主机。 
 
@@ -106,19 +106,19 @@ FUNCTIONS_WORKER_PROCESS_COUNT 适用于 Functions 在横向扩展应用程序�
 
 某些触发器（例如事件中心）允许通过单次调用接收一批消息。  批处理消息可大幅提升性能。  可以根据 [host.json 参考文档](functions-host-json.md)中的详述，在 `host.json` 文件中配置最大批大小
 
-对于 C# 函数，可将类型更改为强类型化数组。  例如，方法签名可以是 `EventData[] sensorEvent`，而不是 `EventData sensorEvent`。  对于其他语言，您需要显式将 中的`function.json``many`基数属性设置为 ，以便启用批处理[，如下所示](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10)。
+对于 C# 函数，可将类型更改为强类型化数组。  例如，方法签名可以是 `EventData[] sensorEvent`，而不是 `EventData sensorEvent`。  对于其他语言，需要根据[此文所述](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10)，在 `function.json` 中将基数属性显式设置为 `many`，以启用批处理。
 
 ### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>配置主机行为以更好地处理并发性
 
 使用函数应用中的 `host.json` 文件可以配置主机运行时和触发器行为。  除了批处理行为以外，还可以管理大量触发器的并发性。 调整这些选项中的值往往有助于每个实例根据被调用函数的需求适当缩放。
 
-host.json 文件中的设置应用于应用中的所有函数，以及函数的单个实例。** 例如，如果您有一个功能应用，其中两个 HTTP[`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings)函数和请求设置为 25，则对任一 HTTP 触发器的请求将计入共享的 25 个并发请求。  如果该函数应用扩展到 10 个实例，则两个函数会有效地允许 250 个并发请求（10 个实例 * 每个实例 25 个并发请求）。 
+host.json 文件中的设置应用于应用中的所有函数，以及函数的单个实例。  例如，如果有包含两个 HTTP 函数的函数应用，并且 [`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings) 请求设置为 25，则针对任一 HTTP 触发器发出的请求将计入 25 个共享的并发请求。  如果该函数应用扩展到 10 个实例，则两个函数会有效地允许 250 个并发请求（10 个实例 * 每个实例 25 个并发请求）。 
 
 可在 [host.json 配置文章](functions-host-json.md)在找到其他主机配置选项。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更多信息，请参见以下资源：
+有关详细信息，请参阅以下资源：
 
 * [如何在 Azure Functions 中管理连接](manage-connections.md)
 * [Azure 应用服务最佳实践](../app-service/app-service-best-practices.md)
