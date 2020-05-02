@@ -17,6 +17,9 @@
     - name: 运行自己的第一个查询 - PowerShell
       displayName: 'module, docker, Az.ResourceGraph'
       href: first-query-powershell.md
+    - name: 部署共享查询 - ARM 模板
+      displayName: 'resource manager, queries'
+      href: shared-query-template.md
 - name: 教程
   items:
     - name: 在 Azure 门户中创建和共享查询
@@ -44,12 +47,12 @@
     - name: 针对受限制请求的指南
       displayName: 'pagination, batching, throttling, parallel'
       href: ./concepts/guidance-for-throttled-requests.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 获取资源更改
       displayName: 'resource, change, history, snapshot, details'
       href: ./how-to/get-resource-changes.md
-- name: 故障排除
+- name: 疑难解答
   displayName: 'errors, violation'
   href: ./troubleshoot/general.md
 - name: 参考
@@ -78,6 +81,8 @@
       href: /rest/api/azure-resourcegraph/
     - name: OpenAPI
       href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/stable/2019-04-01'
+    - name: 资源管理器模板
+      href: /azure/templates/microsoft.resourcegraph/allversions
     - name: Resource Graph 表和资源类型
       href: ./reference/supported-tables-resources.md
 - name: 资源

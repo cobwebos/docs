@@ -291,7 +291,7 @@
       items:
         - name: 所有函数
           href: template-functions.md
-        - name: 数组和对象函数
+        - name: 数组函数
           href: template-functions-array.md
         - name: 比较函数
           href: template-functions-comparison.md
@@ -303,6 +303,8 @@
           href: template-functions-logical.md
         - name: 数字函数
           href: template-functions-numeric.md
+        - name: 对象函数
+          href: template-functions-object.md
         - name: 资源函数
           href: template-functions-resource.md
         - name: 字符串函数
@@ -327,7 +329,7 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=azure-resource-manager'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-resource-manager'
     - name: 视频
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager'

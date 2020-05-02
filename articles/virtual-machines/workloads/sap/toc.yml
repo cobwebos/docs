@@ -76,6 +76,8 @@
           href: ha-setup-with-stonith.md
         - name: 类型 II SKU 的 OS 备份
           href: os-backup-type-ii-skus.md
+        - name: 为 HANA 大型实例启用 Kdump
+          href: hana-large-instance-enable-kdump.md
         - name: HANA 大型实例的 OS 升级
           href: os-upgrade-hana-large-instance.md
         - name: 为 SUSE Linux 安装 SMT 服务器

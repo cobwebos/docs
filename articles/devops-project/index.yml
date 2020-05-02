@@ -1,30 +1,30 @@
 ### YamlMime:Landing
-title: Azure DevOps Projects 文档
-summary: Azure DevOps Projects 提供一种简化的体验，你在其中既可使用现有的代码和 Git 存储库，也可选择一个示例应用程序，以便创建连接到 Azure 的持续集成 (CI) 和持续交付 (CD) 管道。
+title: Azure DevOps Starter 文档
+summary: Azure DevOps Starter 提供一种简化的体验，你在其中既可使用现有的代码和 Git 存储库，也可选择一个示例应用程序，以便创建连接到 Azure 的持续集成 (CI) 和持续交付 (CD) 管道。
 metadata:
-  title: Azure DevOps Projects 文档
+  title: Azure DevOps Starter 文档
   description: 使用现有的代码和 Git 存储库，或者选择一个示例应用，以便创建连接到 Azure 的持续集成 (CI) 和持续交付 (CD) 管道。
   ms.service: devops-project
   ms.topic: landing-page
   author: 
   ms.author: 
-  ms.date: 03/05/2020
-  ms.openlocfilehash: f03a03b353ffa0d0562169a51a2552c2f2ab143b
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 03/24/2020
+  ms.openlocfilehash: 461d088f85f6845dfb9204381209b477b384a0be
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "78942458"
+  ms.lasthandoff: 04/28/2020
+  ms.locfileid: "82231454"
 landingContent:
-- title: 关于 Azure DevOps Projects
+- title: 关于 Azure DevOps Starter
   linkLists:
   - linkListType: overview
     links:
-    - text: 什么是 Azure DevOps Projects？
+    - text: 什么是 Azure DevOps Starter？
       url: overview.md
   - linkListType: video
     links:
-    - text: “通过 Azure DevOps Projects 创建 CI/CD”视频 (8:53)
+    - text: “通过 Azure DevOps Starter 创建 CI/CD”视频 (8:53)
       url: https://channel9.msdn.com/Events/Connect/2017/T174/player/
 - title: 创建 CI/CD 管道
   linkLists:

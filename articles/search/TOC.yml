@@ -262,9 +262,11 @@
       items:
         - name: 处理结果
           href: search-pagination-page-layout.md
-        - name: 相关性调整（计分配置文件）
+        - name: 相关性评分
+          href: index-similarity-and-scoring.md
+        - name: 为配置文件评分
           href: index-add-scoring-profiles.md
-        - name: 相关性优化（相似性算法）
+        - name: 相似性算法
           href: index-ranking-similarity.md
     - name: 计划
       items:

@@ -76,6 +76,8 @@
       href: user-overview.md
     - name: 用户配置文件属性
       href: user-profile-attributes.md
+    - name: SSO 会话
+      href: session-overview.md
 - name: 操作指南
   items:
     - name: 应用集成
@@ -335,8 +337,8 @@
                       href: phone-factor-technical-profile.md
                     - name: REST
                       href: restful-technical-profile.md
-                    - name: SAML
-                      href: saml-technical-profile.md
+                    - name: SAML 标识提供者
+                      href: saml-identity-provider-technical-profile.md
                     - name: SAML 令牌颁发者
                       href: saml-issuer-technical-profile.md
                     - name: 自断言
@@ -433,7 +435,7 @@
       href: 'https://azure.microsoft.com/updates/?product=active-directory-b2c'
     - name: 解决方案和培训
       href: solution-articles.md
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-ad-b2c+identity-experience-framework'
     - name: 支持
       href: support-options.md

@@ -252,7 +252,7 @@
         - name: 实时查看容器数据
           href: ../azure-monitor/insights/container-insights-livedata-overview.md
           maintainContext: true
-    - name: 使用 Windows Server 容器（预览版）
+    - name: 使用 Windows Server 容器
       items:
         - name: 创建 AKS 群集
           href: windows-container-cli.md

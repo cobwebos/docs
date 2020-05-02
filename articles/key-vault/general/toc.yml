@@ -48,6 +48,8 @@
       href: authentication-requests-and-responses.md
     - name: Azure Key Vault 限制指南
       href: overview-throttling.md
+    - name: Azure 密钥保管库可用性和冗余
+      href: disaster-recovery-guidance.md
     - name: Azure Key Vault 的虚拟网络服务终结点 - Azure Key Vault
       href: overview-vnet-service-endpoints.md
 - name: 操作指南
@@ -92,6 +94,10 @@
           href: soft-delete-cli.md
         - name: 在 PowerShell 中使用软删除
           href: soft-delete-powershell.md
+    - name: 移动 Key Vault
+      items:
+        - name: 将 Key Vault 移到另一个区域
+          href: keyvault-moveregion.md
     - name: 疑难解答
       items:
         - name: 移动订阅后更改 Key Vault 租户 ID
