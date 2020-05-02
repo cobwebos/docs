@@ -697,6 +697,8 @@
               href: mongodb-feature-support-36.md
             - name: 线路协议支持 (3.2)
               href: mongodb-feature-support.md
+            - name: 常见问题解答
+              href: mongodb-api-faq.md
         - name: 操作指南
           items:
             - name: 迁移前指南
@@ -763,6 +765,10 @@
           items:
             - name: 1 - 查询数据
               href: tutorial-query-graph.md
+        - name: 概念
+          items:
+            - name: 常见问题解答
+              href: gremlin-api-faq.md
         - name: 操作指南
           items:
             - name: 图形数据建模
@@ -844,6 +850,10 @@
             - name: 'F#'
               href: /dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
               maintainContext: true
+        - name: 概念
+          items:
+            - name: 常见问题解答
+              href: table-api-faq.md
         - name: 操作指南
           items:
             - name: 使用表 API 构建应用

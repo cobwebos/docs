@@ -36,7 +36,7 @@
           href: ../../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: SQL 数据库
           href: ../../sql-database/sql-database-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: SQL 数据仓库
+        - name: Azure Synapse Analytics
           href: prepay-sql-data-warehouse-charges.md
         - name: 虚拟机
           href: ../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/cost-management-billing/reservations/toc.json
@@ -91,7 +91,7 @@
           href: understand-storage-charges.md
         - name: SQL 数据库
           href: understand-reservation-charges.md
-        - name: SQL 数据仓库
+        - name: Azure Synapse Analytics
           href: reservation-discount-azure-sql-dw.md
         - name: 虚拟机
           href: ../manage/understand-vm-reservation-charges.md

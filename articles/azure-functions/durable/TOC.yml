@@ -83,7 +83,9 @@
       href: durable-functions-http-api.md
     - name: .NET API
       href: /dotnet/api/microsoft.azure.webjobs.extensions.durabletask?view=azure-dotnet
-- name: 操作方法指南
+    - name: Node.js API
+      href: /javascript/api/durable-functions/?view=azure-node-latest
+- name: 操作指南
   items:
     - name: 开发
       items:
@@ -131,7 +133,7 @@
       href: 'https://www.youtube.com/c/AzureFunctions'
     - name: MSDN 论坛
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-functions'
     - name: Twitter
       href: 'https://twitter.com/hashtag/DurableFunctions?src=hash'

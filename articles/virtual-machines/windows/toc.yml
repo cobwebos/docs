@@ -225,7 +225,7 @@
               href: ../nvv3-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: NVv4 系列
               href: ../nvv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: 安装 GPU 驱动程序
+            - name: 安装 NVIDIA GPU 驱动程序
               href: n-series-driver-setup.md
             - name: 安装 AMD GPU 驱动程序
               href: n-series-amd-driver-setup.md

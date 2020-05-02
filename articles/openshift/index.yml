@@ -10,12 +10,12 @@ metadata:
   author: jimzim
   ms.author: jzim
   ms.date: 03/06/2020
-  ms.openlocfilehash: f35419d63375ae8fca5f9458505b96b6ddfd3890
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 178faad2aab2f2ef7658a32822899f1e5ca51bd9
+  ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "80062288"
+  ms.lasthandoff: 05/01/2020
+  ms.locfileid: "82628123"
 landingContent:
 - title: 关于 Azure Red Hat OpenShift
   linkLists:
@@ -27,29 +27,25 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: 创建 Azure Red Hat OpenShift 群集
+    - text: 创建 Azure Red Hat OpenShift 4 群集
       url: tutorial-create-cluster.md
-    - text: 缩放 Azure Red Hat OpenShift 群集
-      url: tutorial-scale-cluster.md
-    - text: 删除 Azure Red Hat OpenShift 群集
+    - text: 连接到 Azure Red Hat OpenShift 4 群集
+      url: tutorial-connect-cluster.md
+    - text: 删除 Azure Red Hat OpenShift 4 群集
       url: tutorial-delete-cluster.md
 - title: 设置
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 设置 Azure Red Hat OpenShift 开发环境
-      url: howto-setup-environment.md
-    - text: 创建 Azure AD 租户
-      url: howto-create-tenant.md
-    - text: 创建 Azure AD 应用对象和用户
-      url: howto-aad-app-configuration.md
+    - text: 创建专用 Azure Red Hat OpenShift 4 群集
+      url: howto-create-private-cluster.md
+    - text: 为 Azure Red Hat OpenShift 4 群集配置 DNS 转发
+      url: dns-forwarding.md
 - title: 参考
   linkLists:
   - linkListType: reference
     links:
     - text: Azure CLI
-      url: /cli/azure/openshift
-    - text: REST API
-      url: /rest/api/openshift
+      url: /cli/azure/aro
     - text: Red Hat OpenShift 文档
-      url: https://docs.openshift.com/aro/welcome/index.html
+      url: https://docs.openshift.com/aro/4/welcome/index.html

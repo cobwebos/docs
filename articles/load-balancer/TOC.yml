@@ -36,8 +36,12 @@
       href: powershell-samples.md
 - name: 概念
   items:
-    - name: 组件和限制
-      href: concepts-limitations.md
+    - name: 组件
+      href: components.md
+    - name: 概念
+      href: concepts.md
+    - name: 类型
+      href: types.md
     - name: 运行状况监视
       items:
         - name: 运行状况探测
@@ -129,10 +133,12 @@
           href: move-across-regions-internal-load-balancer-portal.md
         - name: 内部负载均衡器 - PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 排查 Azure 负载均衡器问题
           href: load-balancer-troubleshoot.md
+        - name: 排查常见部署错误
+          href: load-balancer-common-deployment-errors.md
 - name: 参考
   items:
     - name: 代码示例
