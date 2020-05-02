@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: d5283051de50b84ea87c0f02a391652854067168
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 53110875596830f63a946c1263bdbff3711366bf
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610729"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82653152"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>安装和运行语音服务容器（预览）
 
 容器使你能够在自己的环境中运行一些语音服务 Api。 容器非常适合于特定的安全和数据管理要求。 本文介绍如何下载、安装和运行语音容器。
 
-语音容器使客户能够构建一个语音应用程序体系结构，该体系结构针对强健的云功能和边缘区域进行了优化。 可使用四个不同的容器。 这两个标准容器为**语音到文本**和**文本到语音转换**。 这两个自定义容器是**自定义语音文本**和**自定义文本到语音转换**。
+语音容器使客户能够构建一个语音应用程序体系结构，该体系结构针对强健的云功能和边缘区域进行了优化。 可使用四个不同的容器。 这两个标准容器为**语音到文本**和**文本到语音转换**。 这两个自定义容器是**自定义语音文本**和**自定义文本到语音转换**。 语音容器与基于云的 Azure 语音服务具有相同的[定价](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
 
 > [!IMPORTANT]
 > 所有语音容器当前均作为[公共 "封闭" 预览版](../cognitive-services-container-support.md#public-gated-preview-container-registry-containerpreviewazurecrio)的一部分提供。 语音容器推出正式发行版（GA）时将发出一则通知。
