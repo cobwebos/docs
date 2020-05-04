@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.custom: mvc, devcenter, vs-azure, seodec18
 ms.openlocfilehash: a9acb55f0a03a6ec1ba0bb6bb38c665b059b672b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80047026"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>教程：使用 SQL 数据库在 Azure 中构建 ASP.NET 应用
@@ -123,7 +123,7 @@ ms.locfileid: "80047026"
 
 在“配置 SQL 数据库”  对话框中，单击“SQL Server”  旁的“新建”  。 
 
-将生成唯一的服务器名称。 此名称用作逻辑服务器`<server_name>.database.windows.net`默认 URL 的一部分。 在 Azure 中的所有逻辑服务器实例中，此名称必须是唯一的。 可以更改服务器名称，但本教程沿用生成的值。
+将生成唯一的服务器名称。 此名称用作逻辑服务器`<server_name>.database.windows.net`默认 URL 的一部分。  在 Azure 中的所有逻辑服务器实例中，此名称必须是唯一的。 可以更改服务器名称，但本教程沿用生成的值。
 
 添加管理员用户名和密码。 有关密码复杂性要求，请参阅[密码策略](/sql/relational-databases/security/password-policy)。
 
@@ -150,7 +150,7 @@ ms.locfileid: "80047026"
 
 ![已创建资源](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
 
-向导程序完成创建 Azure 资源后，会将 ASP.NET 应用发布到 Azure。 默认浏览器启动时会打开所部署的应用的 URL。 
+向导程序完成创建 Azure 资源后，会将 ASP.NET 应用发布到 Azure。  默认浏览器启动时会打开所部署的应用的 URL。  
 
 添加几个待办事项。
 
