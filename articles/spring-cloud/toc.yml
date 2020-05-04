@@ -42,6 +42,10 @@
       href: spring-cloud-quotas.md
     - name: 了解 Azure Spring Cloud 中的指标
       href: spring-cloud-concept-metrics.md
+    - name: Azure Spring Cloud 服务的安全控制
+      href: spring-cloud-concept-security-controls.md
+    - name: 了解 Azure Spring Cloud 中的应用状态
+      href: spring-cloud-concept-app-status.md
     - name: 规划灾难恢复
       href: disaster-recovery.md
 - name: 操作指南

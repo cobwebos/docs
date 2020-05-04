@@ -167,6 +167,10 @@
               href: concepts-hyperscale-firewall-rules.md
             - name: 配置 SSL
               href: concepts-hyperscale-ssl-connection-security.md
+        - name: 业务连续性
+          items:
+            - name: 备份和还原
+              href: concepts-hyperscale-backup.md
         - name: 监视和优化
           items:
             - name: 监视和优化
@@ -273,6 +277,8 @@
               href: howto-data-encryption-portal.md
             - name: Azure CLI
               href: howto-data-encryption-cli.md
+            - name: 数据加密验证
+              href: howto-data-encryption-validation.md
         - name: 重新启动服务器
           items:
             - name: Azure 门户
@@ -329,7 +335,7 @@
       href: 'https://azure.microsoft.com/pricing/details/postgresql/'
     - name: MSDN 论坛
       href: 'https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDatabaseforPostgreSQL'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-database-postgresql'
     - name: 视频
       items:

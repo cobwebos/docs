@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: 827ab3f7a54f03782922332c20946816ada5c4c0
-  ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+  ms.openlocfilehash: 0c433c2d09f101a9ab3fb9d1225e47741908b3bf
+  ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/22/2020
-  ms.locfileid: "82024653"
+  ms.lasthandoff: 04/29/2020
+  ms.locfileid: "82562179"
 highlightedContent:
   items:
   - title: 什么是 IoT Central？
@@ -130,3 +130,6 @@ additionalContent:
     - title: Microsoft Learn 上的 IoT Central
       summary: 了解免费沙盒环境中的 IoT Central。
       url: https://docs.microsoft.com/learn/browse/?products=azure-iot-central
+    - title: 最新更新
+      summary: 查看 IoT Central 中的新增功能。
+      url: https://azure.microsoft.com/updates/?status=nowavailable&updateType=features&category=iot&query=azure%20iot%20central

@@ -43,6 +43,8 @@
       href: analysis-services-long-operations.md
     - name: 支持的数据源
       href: analysis-services-datasource.md
+    - name: 网络连接常见问题解答
+      href: analysis-services-network-faq.md
 - name: 操作说明
   items:
     - name: 服务器
@@ -131,7 +133,7 @@
       href: 'https://azure.microsoft.com/pricing/details/analysis-services/'
     - name: 定价计算器
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-analysis-services'
     - name: 视频
       href: 'https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest'

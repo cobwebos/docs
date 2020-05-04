@@ -103,7 +103,15 @@
   items:
     - name: 身份验证基础知识
       displayName: Auth basics
-      href: authentication-scenarios.md
+      items:
+        - name: 身份验证和授权
+          href: authentication-vs-authorization.md
+        - name: 安全令牌
+          href: security-tokens.md
+        - name: 应用程序模型
+          href: application-model.md
+        - name: 应用登录流
+          href: app-sign-in-flow.md
     - name: 身份验证流和应用方案
       displayName: Auth flows
       href: authentication-flows-app-scenarios.md
@@ -250,129 +258,120 @@
       items:
         - name: 概述
           href: msal-overview.md
-        - name: 帐户和租户配置文件 - Android
-          href: accounts-overview.md
-        - name: 授权代理 - Android
-          href: authorization-agents.md
-        - name: 中转身份验证 - Android
-          href: brokered-auth.md
-        - name: 迁移
+        - name: .NET
+          displayName: 'xamarin, ASP.NET Core'
           items:
-            - name: 概述
-              href: msal-migration.md
+            - name: 初始化应用程序
+              href: msal-net-initializing-client-applications.md
+            - name: 客户端断言
+              href: msal-net-client-assertions.md
+            - name: 与 Azure AD B2C 集成
+              href: msal-net-aad-b2c-considerations.md
+            - name: 与 ADFS 集成
+              href: msal-net-adfs-support.md
             - name: 迁移到 MSAL.NET
               href: msal-net-migration.md
-            - name: 迁移到 MSAL.js
-              href: msal-compare-msal-js-and-adal-js.md
-            - name: 迁移到 MSAL.Android
-              href: migrate-android-adal-msal.md
-            - name: 迁移到 MSAL.iOS/macOS
-              href: migrate-objc-adal-msal.md
-            - name: 迁移到 MSAL Python
-              href: migrate-python-adal-msal.md
-            - name: 迁移到适用于 Java 的 MSAL
-              href: migrate-adal-msal-java.md
             - name: 使用代理将 Xamarin 应用迁移到 MSAL.NET
               href: msal-net-migration-ios-broker.md
-        - name: 支持的身份验证流
-          href: msal-authentication-flows.md
-        - name: 单个和多个帐户公共客户端应用 (Android)
-          href: single-multi-account.md
-        - name: 获取和缓存令牌
+            - name: Web 浏览器注意事项
+              href: msal-net-web-browsers.md
+            - name: 处理错误和异常
+              href: msal-handling-exceptions.md?tabs=dotnet
+            - name: 日志记录
+              href: msal-logging.md?tabs=dotnet
+        - name: Android
           items:
+            - name: 帐户和租户配置文件
+              href: accounts-overview.md
+            - name: 授权代理
+              href: authorization-agents.md
+            - name: 中转身份验证
+              href: brokered-auth.md
+            - name: 与 Azure AD B2C 集成
+              href: msal-android-b2c.md
+            - name: 迁移到 MSAL.Android
+              href: migrate-android-adal-msal.md
+            - name: 共享设备模式
+              href: msal-android-shared-devices.md
+              displayName: 'firstline worker, frontline worker, flw'
+            - name: 单个和多个帐户公共客户端应用
+              href: single-multi-account.md
+            - name: 日志记录
+              href: msal-logging.md?tabs=android
+        - name: iOS 和 macOS
+          items:
+            - name: 与 Azure AD B2C 集成
+              href: 'config-authority.md#b2c'
+            - name: 迁移到 MSAL.iOS/macOS
+              href: migrate-objc-adal-msal.md
+            - name: 适用于 iOS 设备的共享设备模式
+              href: msal-ios-shared-devices.md
+              displayName: 'firstline worker, frontline worker, flw'
+            - name: MSAL 应用之间的 SSO
+              href: single-sign-on-macos-ios.md
+            - name: ADAL 与 MSAL 应用之间的 SSO
+              href: sso-between-adal-msal-apps-macos-ios.md
+            - name: 排查 SSL 问题 (MSAL iOS/macOS)
+              href: ssl-issues.md
+            - name: 处理错误和异常
+              href: msal-handling-exceptions.md?tabs=iosmacos
+            - name: 日志记录
+              href: msal-logging.md?tabs=swift
+        - name: Java
+          items:
+            - name: 迁移到适用于 Java 的 MSAL
+              href: migrate-adal-msal-java.md
+            - name: 适用于 Java 的 MSAL 中的 ADFS 支持
+              href: msal-java-adfs-support.md
+            - name: 处理错误和异常
+              href: msal-handling-exceptions.md?tabs=java
+            - name: 日志记录
+              href: msal-logging.md?tabs=java
+        - name: JavaScript 和 Node.js
+          items:
+            - name: 初始化应用程序 - JavaScript
+              href: msal-js-initializing-client-applications.md
+            - name: 与 Azure AD B2C 集成
+              href: msal-b2c-overview.md
+            - name: 迁移到 MSAL.js
+              href: msal-compare-msal-js-and-adal-js.md
+            - name: 使用 MSAL.js 的单一登录
+              href: msal-js-sso.md
+            - name: 注意事项 - IE
+              href: msal-js-use-ie-browser.md
+            - name: 已知问题 - IE 和 Microsoft Edge
+              href: msal-js-known-issues-ie-edge-browsers.md
+            - name: 已知问题 - Safari
+              href: msal-js-known-issues-safari-browser.md
+            - name: 处理错误和异常
+              href: msal-handling-exceptions.md?tabs=javascript
+            - name: 日志记录
+              href: msal-logging.md?tabs=javascript
+        - name: Python
+          items:
+            - name: 迁移到 MSAL Python
+              href: migrate-python-adal-msal.md
+            - name: 适用于 Python 的 MSAL 中的 ADFS 支持
+              href: msal-python-adfs-support.md
+            - name: 处理错误和异常
+              href: msal-handling-exceptions.md?tabs=python
+            - name: 日志记录
+              href: msal-logging.md?tabs=python
+        - Name: 所有平台
+          items:
+            - name: 支持的身份验证流
+              href: msal-authentication-flows.md
             - name: 获取和缓存令牌
               href: msal-acquire-cache-tokens.md
-            - name: v1.0 应用的作用域
-              href: msal-v1-app-scopes.md
-        - name: 客户端应用程序
-          displayName: Client apps
-          items:
-            - name: 配置角色声明
-              href: active-directory-enterprise-app-role-management.md
-            - name: 自定义声明 - 门户
-              href: active-directory-saml-claims-customization.md
-            - name: 自定义声明 - PowerShell
-              href: active-directory-claims-mapping.md
-            - name: 配置可选声明
-              href: active-directory-optional-claims.md
-            - name: 配置令牌生存期
-              href: active-directory-configurable-token-lifetimes.md
-            - name: 在 Chrome 浏览器中处理 SameSite Cookie 更改
-              href: howto-handle-samesite-cookie-changes-chrome-browser.md
-        - name: 应用程序配置
-          displayName: App configuration
-          items:
-            - name: 客户端应用程序
+            - name: 公共客户端和机密客户端应用
               href: msal-client-applications.md
             - name: 应用程序配置
               href: msal-client-application-configuration.md
-            - name: 初始化应用程序 - .NET
-              href: msal-net-initializing-client-applications.md
-            - name: 客户端断言 - .NET
-              href: msal-net-client-assertions.md
-            - name: 初始化应用程序 - JavaScript
-              href: msal-js-initializing-client-applications.md
-        - name: 处理错误和异常
-          href: msal-handling-exceptions.md
-        - name: 日志记录
-          href: msal-logging.md
-        - name: 共享设备
-          items:
-            - name: 概述 - 共享设备
+            - name: 共享设备
               href: msal-shared-devices.md
-              displayName: 'shared device mode, firstline worker, frontline worker'
-            - name: 适用于 iOS 设备的共享设备模式
-              href: msal-ios-shared-devices.md
-              displayName: 'firstline worker, frontline worker'
-            - name: 适用于 Android 设备的共享设备模式
-              href: msal-android-shared-devices.md
-              displayName: 'firstline worker, frontline worker'
-        - name: 单一登录
-          displayName: SSO
-          items:
-            - name: 使用 MSAL.js 的单一登录
-              href: msal-js-sso.md
-            - name: 使用适用于 iOS 和 macOS 的 MSAL 的单一登录
-              items:
-                - name: MSAL 应用之间的 SSO
-                  href: single-sign-on-macos-ios.md
-                - name: ADAL 与 MSAL 应用之间的 SSO
-                  href: sso-between-adal-msal-apps-macos-ios.md
-        - name: 与 ADFS 集成
-          displayName: Active Directory Federation Services
-          items:
-            - name: MSAL.NET 中的 ADFS 支持
-              href: msal-net-adfs-support.md
-            - name: 适用于 Python 的 MSAL 中的 ADFS 支持
-              href: msal-python-adfs-support.md
-            - name: 适用于 Java 的 MSAL 中的 ADFS 支持
-              href: msal-java-adfs-support.md
-        - name: 与 Azure AD B2C 集成
-          items:
-            - name: Android
-              href: msal-android-b2c.md
-            - name: JavaScript
-              href: msal-b2c-overview.md
-            - name: .NET
-              href: msal-net-aad-b2c-considerations.md
-            - name: iOS 和 macOS
-              href: 'config-authority.md#b2c'
-        - name: 注意事项和已知问题
-          items:
-            - name: MSAL.NET
-              items:
-                - name: Web 浏览器
-                  href: msal-net-web-browsers.md
-            - name: MSAL.js
-              items:
-                - name: 注意事项 - IE
-                  href: msal-js-use-ie-browser.md
-                - name: 已知问题 - IE 和 Microsoft Edge
-                  href: msal-js-known-issues-ie-edge-browsers.md
-                - name: 已知问题 - Safari
-                  href: msal-js-known-issues-safari-browser.md
-            - name: 排查 SSL 问题 (MSAL iOS/macOS)
-              href: ssl-issues.md
+              displayName: 'shared device mode, firstline worker, frontline worker, flw'
+            - name: 在 Chrome 浏览器中处理 SameSite Cookie 更改
+              href: howto-handle-samesite-cookie-changes-chrome-browser.md
     - name: 身份验证协议
       displayName: Auth protocol
       items:
@@ -457,9 +456,13 @@
     - name: 自动用户预配 (SCIM)
       items:
         - name: 自动用户预配是什么？
-          href: /azure/active-directory/manage-apps/user-provisioning
-        - name: 生成和集成 SCIM 终结点
-          href: /azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups
+          href: /azure/active-directory/app-provisioning/user-provisioning
+        - name: 开发和集成 SCIM 终结点
+          href: /azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups
+        - name: 常见预配方案
+          href: /azure/active-directory/app-provisioning/scim-graph-scenarios
+        - name: 使用 MS Graph 自动执行配置
+          href: /azure/active-directory/app-provisioning/application-provisioning-configure-api
 - name: 操作指南
   items:
     - name: 身份验证
