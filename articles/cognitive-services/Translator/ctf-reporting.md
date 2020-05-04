@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
-ms.openlocfilehash: 6a197095d97e67f7548e60375148cff57e47b797
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0c099584642de1939df5e1e7d9785006e8d25235
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68595938"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732336"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>如何使用协作性翻译框架 (CTF) 报告
 
@@ -34,7 +34,7 @@ CTF 报告 API 的终结点为 https://api.microsofttranslator.com/v2/beta/ctfre
 
 
 ## <a name="methods"></a>方法
-| 名称 |    说明|
+| 名称 |    描述|
 |:---|:---|
 | GetUserTranslationCounts 方法 | 获取用户创建的翻译计数。 |
 | GetUserTranslations 方法 | 检索用户创建的翻译。 |
@@ -115,8 +115,8 @@ CTF 报告 API 的终结点为 https://api.microsofttranslator.com/v2/beta/ctfre
 > 将调整配额，以确保该服务的所有用户之间的公平性。
 
 **查看 GitHub 上的代码示例**
-* [C#](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslationcounts-example-csharp.md)
-* [PHP](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslationcounts-example-php.md)
+* [C#](https://github.com/MicrosoftTranslator/CustomTranslator-API-CSharp)
+* [PHP](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP)
 
 ## <a name="getusertranslations-method"></a>GetUserTranslations 方法
 
@@ -188,5 +188,5 @@ CTF 报告 API 的终结点为 https://api.microsofttranslator.com/v2/beta/ctfre
 > 将调整配额，以确保该服务的所有用户之间的公平性。
 
 **查看 GitHub 上的代码示例**
-* [C#](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-csharp.md)
-* [PHP](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-php.md)
+* [C#](https://github.com/MicrosoftTranslator/CustomTranslator-API-CSharp)
+* [PHP](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP)

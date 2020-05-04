@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: weixu
-ms.openlocfilehash: e2c9c0aadc8e443f07f60f3ccddb4a1b6dd661b1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b8b874888d3a46a855c3d76d520d390725c40898
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80520915"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735396"
 ---
 # <a name="real-time-conversation-transcription-preview"></a>实时对话脚本（预览）
 
@@ -32,8 +32,8 @@ ms.locfileid: "80520915"
 
 语音设备 SDK 使用8个通道在 Java 中提供了用于实时音频捕获的示例代码。
 
-- [ROOBO 设备示例代码](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Android/Speech%20Devices%20SDK%20Starter%20App/example/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/sdsdkstarterapp/ConversationTranscription.java)
-- [Azure Kinect 开发工具包示例代码](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Windows_Linux/SampleDemo/src/com/microsoft/cognitiveservices/speech/samples/Cts.java)
+- [ROOBO 设备示例代码](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Java/Android/Speech%20Devices%20SDK%20Starter%20App/example/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/sdsdkstarterapp/ConversationTranscription.java)
+- [Azure Kinect 开发工具包示例代码](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Java/Windows_Linux/SampleDemo/src/com/microsoft/cognitiveservices/speech/samples/Cts.java)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -48,7 +48,7 @@ ms.locfileid: "80520915"
 - 用于创建语音签名的输入音频波形文件应为16位示例、16 kHz 采样率和单通道（单声道）格式。
 - 每个音频采样的建议长度介于30秒到2分钟之间。
 
-### <a name="sample-code"></a>示例代码
+### <a name="sample-code"></a>代码示例
 
 下面的示例演示了使用 c # 中[的 REST API](https://aka.ms/cts/signaturegenservice)以两种不同的方式创建语音签名。 请注意，需要将 "YourSubscriptionKey" 的实际信息、"speakerVoice" 的波形文件名和 "YourServiceRegion" （_centralus_或_eastasia_）的区域`{region}`替换为 ""。
 
