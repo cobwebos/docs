@@ -11,12 +11,12 @@ metadata:
   author: asudbring
   ms.author: allensu
   ms.date: 12/05/2019
-  ms.openlocfilehash: d215bbfb80d634780ebfb7e33129c19f241d12a7
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 46afc139f240b46b9512360e79411a5bc8b03ec4
+  ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "76263517"
+  ms.lasthandoff: 05/03/2020
+  ms.locfileid: "82732982"
 landingContent:
 - title: 关于负载均衡器
   linkLists:
@@ -24,6 +24,10 @@ landingContent:
     links:
     - text: 什么是负载均衡器？
       url: load-balancer-overview.md
+    - text: 负载均衡器的概念
+      url: concepts.md
+    - text: 负载均衡器组件
+      url: components.md
 - title: 入门
   linkLists:
   - linkListType: quickstart
@@ -72,7 +76,7 @@ landingContent:
       url: load-balancer-get-started-internet-availability-zones-zonal-portal.md
     - text: 在多个 IP 配置上进行负载均衡
       url: load-balancer-multiple-ip.md
-- title: 故障排除
+- title: 疑难解答
   linkLists:
   - linkListType: concept
     links:
@@ -80,6 +84,8 @@ landingContent:
       url: load-balancer-standard-diagnostics.md
     - text: 排查 Azure 负载均衡器问题
       url: load-balancer-troubleshoot.md
+    - text: 常见的 Azure 负载均衡器错误
+      url: load-balancer-common-deployment-errors.md
 - title: 参考
   linkLists:
   - linkListType: reference
