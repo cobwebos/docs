@@ -8,10 +8,10 @@ ms.topic: sample
 ms.date: 09/28/2019
 ms.author: victorh
 ms.openlocfilehash: 5dabe0337ab2ba92a19b198941d9830aee4dd885
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73509631"
 ---
 # <a name="azure-resource-manager-templates-for-azure-web-application-firewall"></a>用于 Azure Web 应用程序防火墙的 Azure 资源管理器模板
