@@ -9,10 +9,10 @@ ms.date: 10/07/2019
 author: sakash279
 ms.author: akshanka
 ms.openlocfilehash: e6d61e329ba91f53b11ace4d258b35950e188dcb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76771213"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>如何通过 C++ 使用 Azure 表存储或 Azure Cosmos DB 表 API
@@ -497,7 +497,7 @@ else
 }
 ```
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 对于 Visual Studio Community 版本，如果项目因包含文件 storage_account.h 和 table.h 而显示生成错误，请删除 /permissive- 编译器开关    ：
 

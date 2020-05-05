@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 274d725a0e7987c8cb15363ba276aec7ebc541d5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77426354"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>教程：在 IoT Central 中创建连接的废弃物管理应用程序
@@ -146,7 +146,7 @@ Azure IoT Central 中的设备模板定义设备的功能，这些功能可以�
 尝试自定义以下内容：
 1. 从设备模板菜单导航到“自定义” 
 2. 找到 `Odor meter` 遥测类型
-3. 将 `Odor meter` 的“显示名称”更新为 `Odor level` 
+3. 将 `Odor meter` 的“显示名称”更新为 `Odor level`
 4. 还可以尝试更新度量单位，或设置最小值和最大值  
 5. 保存任何更改  
 
@@ -185,7 +185,7 @@ Azure IoT Central 中的设备模板定义设备的功能，这些功能可以�
 
      ![设备 1](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devices-bin1.png)
 
-3. 导航到“云属性”选项卡，尝试将 `Bin full alert threshold` 值从 `95` 更新为 `100`  。 
+3. 导航到“云属性”选项卡，尝试将 `Bin full alert threshold` 值从 `95` 更新为 `100` 。 
 * 浏览“设备属性”选项卡和“设备仪表板”选项卡   。 
 
 > [!NOTE]

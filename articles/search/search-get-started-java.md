@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 02/25/2020
 ms.openlocfilehash: 0b07e934625b09e7f6249dc00865465147f6f0ba
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77624019"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>快速入门：使用 REST API 在 Java 中创建 Azure 认知搜索索引
@@ -564,7 +564,7 @@ hotels 索引定义包含简单字段和一个复杂字段。 例如，“酒店
           Thread.sleep(1000L); // wait a second to create the index
     ```
 
-1. 打开“Maven”工具窗口并执行以下 Maven 目标：`verify exec:java` 
+1. 打开“Maven”工具窗口并执行以下 Maven 目标：`verify exec:java`
 
     运行该代码时，请查看后接 201 响应代码的“Creating index”消息。 此响应代码确认已创建索引。 运行结束时，应会显示 BUILD SUCCESS 消息以及零 (0) 退出代码。
     
@@ -684,7 +684,7 @@ hotels 索引定义包含简单字段和一个复杂字段。 例如，“酒店
 
     在上传请求的后面插入两秒暂停，以确保在查询索引之前完成文档加载过程。
 
-1. 打开“Maven”工具窗口并执行以下 Maven 目标：`verify exec:java` 
+1. 打开“Maven”工具窗口并执行以下 Maven 目标：`verify exec:java`
 
     由于在上一步骤中已创建“hotels-quickstart”索引，因此，该代码现在会删除该索引并重新创建它，然后加载酒店文档。
 
@@ -813,7 +813,7 @@ hotels 索引定义包含简单字段和一个复杂字段。 例如，“酒店
 
     有两种[方法可用于在查询中匹配术语](search-query-overview.md#types-of-queries)：全文搜索和筛选器。 全文搜索查询会在索引的 `IsSearchable` 字段中搜索一个或多个术语。 筛选器是布尔表达式，该表达式通过索引中的 `IsFilterable` 字段求值。 可以配合使用全文搜索和筛选器，也可以单独使用。
 
-1. 打开“Maven”工具窗口并执行以下 Maven 目标：`verify exec:java` 
+1. 打开“Maven”工具窗口并执行以下 Maven 目标：`verify exec:java`
 
     查看每个查询的摘要及其结果。 运行完成时，应会显示 BUILD SUCCESS 消息以及零 (0) 退出代码。
 

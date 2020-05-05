@@ -4,10 +4,10 @@ description: include 文件
 services: cosmos-db
 ms.custom: include file
 ms.openlocfilehash: ecf45a692f83689ed56c03bec13f291781508474
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77061688"
 ---
 1. 在新浏览器窗口中，登录到 [Azure 门户](https://portal.azure.com/)。

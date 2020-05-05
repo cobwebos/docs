@@ -4,10 +4,10 @@ description: 支付卡行业数据安全标准 v3.2.1 蓝图示例到 Azure Poli
 ms.date: 01/29/2020
 ms.topic: sample
 ms.openlocfilehash: db21ac9d628e777b6ff2cc86516cfb1497f5a62f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76905636"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>PCI-DSS v3.2.1 蓝图示例的控制映射

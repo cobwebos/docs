@@ -7,10 +7,10 @@ ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
 ms.openlocfilehash: b6348d9fdcd4133a4fa69aac3ccf5494e904094e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75613969"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>教程：创建用于托管 Service Fabric 群集的 AWS 基础结构
@@ -41,7 +41,7 @@ Service Fabric 独立群集为你提供选择自己的环境的选项，并创�
 
 ![EC2 实例选择][aws-ec2instance]
 
-依次选择“t2.medium”、“下一步: 配置实例详细信息”，在下一个屏幕中，将实例数目更改为 **，然后选择“高级详细信息”展开该部分。**  `3` 
+依次选择“t2.medium”、“下一步: 配置实例详细信息”，在下一个屏幕中，将实例数目更改为 **，然后选择“高级详细信息”展开该部分。**  `3`
 
 若要在 Service Fabric 中将虚拟机连接到一起，托管基础结构的 VM 需有相同的凭据。  可通过两种常用方法获取一致的凭据：将所有 VM 加入同一个域，或者在每个 VM 上设置相同的管理员密码。  本教程使用用户数据脚本将所有 EC2 实例设置为采用相同的密码。  在生产环境中，将主机加入 Windows 域会更安全。
 
@@ -99,7 +99,7 @@ Service Fabric 要求在群集中的主机之间打开一些端口。 若要在 
 
 ![下载远程桌面文件][aws-rdp]
 
-成功连接到实例后，验证是否能够在不同的实例之间建立连接，以及是否能够共享文件。  现已收集所有实例的 IP 地址，接下来请选择当前未连接到的 IP 地址。 转到“开始”，输入 **，并选择“命令提示符”。** `cmd` 
+成功连接到实例后，验证是否能够在不同的实例之间建立连接，以及是否能够共享文件。  现已收集所有实例的 IP 地址，接下来请选择当前未连接到的 IP 地址。 转到“开始”，输入 **，并选择“命令提示符”。** `cmd`
 
 在这些示例中，已经与以下 IP 地址建立 RDP 连接：172.31.21.141。 然后，针对另一个 IP 地址执行所有连接测试：172.31.20.163。
 

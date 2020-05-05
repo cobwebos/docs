@@ -16,10 +16,10 @@ ms.date: 03/11/2019
 ms.author: allensu
 ms.custom: seodec18
 ms.openlocfilehash: 8961a50490bdbf8b456e87e1c00577c2c8afd050
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80240359"
 ---
 # <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>教程：通过 Azure 门户对从 Internet 到 VM 的流量进行负载均衡

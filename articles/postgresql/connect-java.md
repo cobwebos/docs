@@ -11,10 +11,10 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.openlocfilehash: cf03cebcd69bd85a4cc94ceb7e99fd0edef99b58
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80063133"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-postgresql---single-server"></a>快速入门：使用 Java 连接到 Azure Database for PostgreSQL 并查询其中的数据 - 单一服务器

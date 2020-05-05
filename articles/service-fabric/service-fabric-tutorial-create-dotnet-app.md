@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/10/2019
 ms.custom: mvc
 ms.openlocfilehash: cbfae89ffa446ca3915129fd9add2701ac21d837
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75465471"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>教程：使用 ASP.NET Core Web API 前端服务和有状态后端服务创建并部署应用程序
@@ -624,7 +624,7 @@ public class VotesController : Controller
       ![添加投票后端服务](./media/service-fabric-tutorial-create-dotnet-app/addvote-backend.png)
 
    2. 方法 **(1)** 的第一行使用 `StateManager` 获取或添加 `counts` 可靠字典。
-   3. 与可靠字典中的值进行的所有交互都需要使用事务，这个 using 语句（图中标识为2）  负责创建此事务。
+   3. 与可靠字典中的值进行的所有交互都需要使用事务，这个 using 语句 (2)  负责创建此事务。
    4. 在事务中更新投票选项的相关键值，并提交操作 **(3)** 。 提交方法返回后，便会更新字典中的数据，并将数据复制到群集中的其他节点。 数据现在安全地存储在群集中，并且后端服务可以故障转移到其他节点，同时数据仍可用。
 6. 按 F5 以继续操作  。
 

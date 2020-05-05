@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: b978190776aee3c89d3beadde76d20c4327b012f
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80388910"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>将本地计算机迁移到 Azure
@@ -53,9 +53,9 @@ ms.locfileid: "80388910"
 1. 单击“恢复服务保管库”  > 保管库。
 2. 在“资源”菜单中，依次单击“Site Recovery”   > “准备基础结构”   > “保护目标”  。
 3. 在“保护目标”  中，选择要迁移的内容。
-    - **VMware**：选择“到 Azure”   > “是，使用 VMWare vSphere 虚拟机监控程序”  。
-    - **物理计算机**：选择“到 Azure”   > “未虚拟化/其他”  。
-    - **Hyper-V**：选择“到 Azure”   > “是，使用 Hyper-V”  。 如果 Hyper-V VM 由 VMM 管理，则选择“是”  。
+    -  VMware：选择“到 Azure”   > “是，使用 VMWare vSphere 虚拟机监控程序”  。
+    - “物理计算机”  ：选择“到 Azure”   > “未虚拟化/其他”  。
+    -  Hyper-V：选择“到 Azure”   > “是，使用 Hyper-V”  。 如果 Hyper-V VM 由 VMM 管理，则选择“是”  。
 
 
 ## <a name="set-up-the-source-environment"></a>设置源环境
@@ -117,7 +117,7 @@ Hyper-V | [启用复制](hyper-v-azure-tutorial.md#enable-replication)<br/><br/>
 
 
 > [!WARNING]
-> **不会取消正在进行的故障转移**：在故障转移开始前，VM 复制已停止。 如果取消正在进行的故障转移，故障转移会停止，但 VM 将不再进行复制。
+> **请勿取消正在进行的故障转移**：在故障转移开始前，VM 复制已停止。 如果取消正在进行的故障转移，故障转移会停止，但 VM 将不再进行复制。
 
 在某些情况下，故障转移需要大约八到十分钟的时间完成其他进程。 你可能注意到物理服务器、VMware Linux 计算机、未启用 DHCP 服务的 VMware VM 和未安装以下启动驱动程序：storvsc、vmbus、storflt、intelide、atapi 的 VMware VM 需要更长的测试故障转移时间。
 

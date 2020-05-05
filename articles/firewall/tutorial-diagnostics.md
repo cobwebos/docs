@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/24/2018
 ms.author: victorh
 ms.openlocfilehash: da46cf826da40658883d22692e5038b09d222907
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75974524"
 ---
 # <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>教程：监视 Azure 防火墙日志和指标
@@ -63,7 +63,7 @@ ms.locfileid: "75974524"
    ![启动配置过程][1] OMS 工作区现在称为 Log Analytics 工作区。  
 12. 在“日志”下面，单击“AzureFirewallApplicationRule”和“AzureFirewallNetworkRule”收集应用程序和网络规则的日志。   
    ![保存诊断设置][2]
-13. 单击“保存”  。
+13. 单击“ **保存**”。
 
 ## <a name="enable-logging-with-powershell"></a>使用 PowerShell 启用日志记录
 

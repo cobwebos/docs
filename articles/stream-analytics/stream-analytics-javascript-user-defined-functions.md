@@ -9,10 +9,10 @@ ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 03/23/2020
 ms.openlocfilehash: 58d750b47f3f6a2bcfbf23399ca249131e7876ae
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80235390"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Azure 流分析中 JavaScript 用户定义的函数
@@ -47,7 +47,7 @@ JavaScript 用户定义的函数支持仅用于计算的且不需要外部连接
 
 然后，你必须提供以下属性并选择“保存”  。
 
-|属性|说明|
+|properties|说明|
 |--------|-----------|
 |函数别名|输入一个名称以在查询中调用函数。|
 |输出类型|JavaScript 用户定义的函数将向流分析查询返回的类型。|

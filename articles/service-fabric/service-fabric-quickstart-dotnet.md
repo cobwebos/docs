@@ -7,10 +7,10 @@ ms.date: 06/26/2019
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
 ms.openlocfilehash: e3d984fee75dcdb8d4e14e7b454e74a3f7c629f2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75730133"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>快速入门：将 .NET Reliable Services 应用程序部署到 Service Fabric
@@ -82,7 +82,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 右键单击“开始”菜单中的 Visual Studio 图标，再选择“以管理员身份运行”  。 若要将调试程序附加到服务，需要以管理员身份运行 Visual Studio。
 
-从克隆的存储库中打开 Voting.sln  Visual Studio 解决方案。
+从克隆的存储库中打开“Voting.sln” Visual Studio 解决方案。 
 
 默认情况下，Voting 应用程序在端口 8080 上侦听。  应用程序端口在 */VotingWeb/PackageRoot/ServiceManifest.xml* 文件中进行设置。  可以通过更新**终结点**元素的 **Port** 属性来更改应用程序端口。  若要在本地部署和运行应用程序，应用程序端口必须为打开状态且在你的计算机上可用。  如果更改应用程序端口，请通篇将本文中的“8080”替换为新的应用程序端口值。
 
@@ -140,7 +140,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
      ![添加投票后端服务](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
 
    - 在方法 (1) 的第一行  ，`StateManager` 获取或添加一个可靠字典 `counts`。
-   - 与可靠字典中的值进行的所有交互都需要使用事务，这个 using 语句（图中标识为2）  负责创建此事务。
+   - 与可靠字典中的值进行的所有交互都需要使用事务，这个 using 语句 (2)  负责创建此事务。
    - 在事务中更新投票选项的相关键值，并提交操作  (3)。 提交方法返回后，便会更新字典中的数据，并将数据复制到群集中的其他节点。 数据现在安全地存储在群集中，并且后端服务可以故障转移到其他节点，同时数据仍可用。
 5. 按 F5  以继续操作
 

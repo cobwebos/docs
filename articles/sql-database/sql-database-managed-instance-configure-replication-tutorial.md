@@ -10,10 +10,10 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 11/21/2019
 ms.openlocfilehash: fa6e393500e9deeb91ee84aa5255320003817f08
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76719885"
 ---
 # <a name="tutorial-configure-transactional-replication-between-two-managed-instances-and-sql-server"></a>教程：在两个托管实例和 SQL Server 之间配置事务复制

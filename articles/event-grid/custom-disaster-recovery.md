@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 01/21/2020
 ms.author: babanisa
 ms.openlocfilehash: 87f8f79e2cf125fa5735653153d8fcaa781f5200
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76511512"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>为事件网格中的自定义主题构建自己的灾难恢复方案
