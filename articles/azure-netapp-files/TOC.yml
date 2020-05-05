@@ -23,10 +23,10 @@
       items:
         - name: Azure NetApp 文件的性能考虑因素
           href: azure-netapp-files-performance-considerations.md
-        - name: Azure NetApp 文件的性能基准测试结果
-          href: azure-netapp-files-performance-benchmarks.md
         - name: Azure NetApp 文件的性能基准测试建议
           href: azure-netapp-files-performance-metrics-volumes.md
+        - name: Linux 性能基准
+          href: performance-benchmarks-linux.md
         - name: 有关 SMB 性能的常见问题解答
           href: azure-netapp-files-smb-performance.md
     - name: Azure NetApp 文件的成本模型
@@ -37,10 +37,12 @@
       items:
         - name: 使用 Azure NetApp 文件的解决方案体系结构
           href: azure-netapp-files-solution-architectures.md
-        - name: 将 Azure NetApp 文件与 Oracle Database 配合使用的好处
-          href: solutions-benefits-azure-netapp-files-oracle-database.md
-        - name: 使用 Azure NetApp 文件实现电子设计自动化的好处
-          href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
+        - name: 特定解决方案
+          items:
+            - name: 将 Azure NetApp 文件与 Oracle Database 配合使用的好处
+              href: solutions-benefits-azure-netapp-files-oracle-database.md
+            - name: 使用 Azure NetApp 文件实现电子设计自动化的好处
+              href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
     - name: 有关 Azure NetApp 文件的常见问题解答
       href: azure-netapp-files-faqs.md
 - name: 操作指南

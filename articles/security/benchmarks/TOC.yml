@@ -3,6 +3,7 @@
 - name: 简介
   href: introduction.md
 - name: 安全控制
+  expanded: true
   items:
     - name: Azure 安全控制概述
       href: overview.md
@@ -16,7 +17,7 @@
       href: security-control-data-protection.md
     - name: 漏洞管理
       href: security-control-vulnerability-management.md
-    - name: 清单和资产管理
+    - name: 库存和资产管理
       href: security-control-inventory-asset-management.md
     - name: 安全配置
       href: security-control-secure-configuration.md
@@ -28,7 +29,7 @@
       href: security-control-incident-response.md
     - name: 渗透测试和红队练习
       href: security-control-penetration-tests-red-team-exercises.md
-- name: 安全基线
+- name: Azure 安全基线
   items:
     - name: Azure 安全基线概述
       href: security-baselines-overview.md

@@ -1,0 +1,104 @@
+- name: Windows 虚拟桌面 2019 秋季版
+  href: ../index.yml
+- name: 概述
+  items:
+    - name: 什么是 Windows 虚拟桌面？
+      href: ../overview.md
+    - name: 2020 春季版文档
+      href: ../create-host-pools-azure-marketplace.md
+- name: 教程
+  items:
+    - name: 1. 创建租户
+      href: tenant-setup-azure-active-directory.md
+    - name: 2. 使用 PowerShell 创建服务主体和角色分配
+      href: create-service-principal-role-powershell.md
+    - name: 3. 通过 Azure 市场创建主机池
+      href: create-host-pools-azure-marketplace-2019.md
+    - name: 4. 管理应用组
+      href: manage-app-groups-2019.md
+    - name: 5. 创建主机池以验证服务更新
+      href: create-validation-host-pool-2019.md
+    - name: 6. 设置服务警报
+      href: set-up-service-alerts-2019.md
+- name: 操作说明
+  items:
+    - name: 连接到 Windows 虚拟桌面资源
+      items:
+        - name: 使用 Web 客户端进行连接
+          href: connect-web-2019.md
+        - name: 使用 Android 客户端进行连接
+          href: connect-android-2019.md
+        - name: 使用 macOS 客户端进行连接
+          href: connect-macos-2019.md
+        - name: 使用 iOS 客户端进行连接
+          href: connect-ios-2019.md
+    - name: 创建主机池和会话主机
+      items:
+        - name: Azure 资源管理器模板
+          href: create-host-pools-arm-template.md
+        - name: PowerShell
+          href: create-host-pools-powershell-2019.md
+        - name: 部署 Windows 7 虚拟机
+          href: deploy-windows-7-virtual-machine.md
+        - name: 部署基于 GPU 的会话主机
+          href: configure-vm-gpu-2019.md
+        - name: 展开现有的主机池
+          href: expand-existing-host-pool-2019.md
+    - name: 配置主机池设置
+      items:
+        - name: RDP 属性
+          href: customize-rdp-properties-2019.md
+        - name: 个人桌面分配类型
+          href: configure-host-pool-personal-desktop-assignment-type-2019.md
+    - name: 自动缩放会话主机
+      href: set-up-scaling-script.md
+    - name: 自定义源
+      href: customize-feed-virtual-desktop-users-2019.md
+    - name: 部署管理工具
+      items:
+        - name: Azure 资源管理器模板
+          href: manage-resources-using-ui.md
+        - name: PowerShell
+          href: manage-resources-using-ui-powershell.md
+    - name: 使用服务诊断
+      items:
+        - name: 部署诊断工具
+          href: deploy-diagnostics.md
+        - name: 将诊断与 Log Analytics 配合使用
+          href: diagnostics-log-analytics-2019.md
+    - name: 发布内置应用
+      href: publish-apps-2019.md
+- name: 概念
+  items:
+    - name: Windows 虚拟桌面环境
+      href: environment-setup-2019.md
+    - name: Windows 虚拟桌面中的委托访问
+      href: delegated-access-virtual-desktop-2019.md
+    - name: 主机池负载均衡方法
+      href: host-pool-load-balancing-2019.md
+    - name: 数据位置
+      href: data-locations-2019.md
+- name: 疑难解答
+  items:
+    - name: 故障排除概述、反馈和支持
+      href: troubleshoot-set-up-overview-2019.md
+    - name: 识别和诊断问题
+      href: diagnostics-role-service-2019.md
+    - name: 创建租户和主机池
+      href: troubleshoot-set-up-issues-2019.md
+    - name: 会话主机虚拟机配置
+      href: troubleshoot-vm-configuration-2019.md
+    - name: 排查 Windows 7 虚拟机问题
+      href: troubleshoot-windows-7-vm.md
+    - name: 排查管理工具问题
+      href: troubleshoot-management-tool.md
+    - name: 远程桌面服务连接
+      href: troubleshoot-service-connection-2019.md
+    - name: Windows 虚拟桌面 PowerShell
+      href: troubleshoot-powershell-2019.md
+- name: 参考
+  items:
+    - name: PowerShell
+      href: /powershell/windows-virtual-desktop/overview
+    - name: REST API
+      href: /rest/api/virtual-desktop/

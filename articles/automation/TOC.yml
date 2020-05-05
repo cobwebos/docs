@@ -178,7 +178,7 @@
                   href: automation-onboard-solutions-from-automation-account.md
                 - name: 从自动化 Runbook
                   href: automation-onboard-solutions.md
-            - name: 查看所跟踪文件的内容
+            - name: 管理更改跟踪和库存
               href: change-tracking-file-contents.md
             - name: 管理 VM 上的清单收集
               href: automation-vm-inventory.md

@@ -1,22 +1,20 @@
-- name: Windows 虚拟桌面
+- name: Windows 虚拟桌面 2020 春季版
   href: index.yml
 - name: 概述
   items:
     - name: 什么是 Windows 虚拟桌面？
       href: overview.md
+    - name: 2019 秋季版文档
+      href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
 - name: 教程
   items:
-    - name: 1. 在 Windows 虚拟桌面中创建租户
-      href: tenant-setup-azure-active-directory.md
-    - name: 2. 通过使用 PowerShell 创建服务主体和角色分配
-      href: create-service-principal-role-powershell.md
-    - name: 3. 通过使用 Azure 市场创建主机池
+    - name: 1. 使用 Azure 门户创建主机池
       href: create-host-pools-azure-marketplace.md
-    - name: 4. 管理应用组
+    - name: 2. 管理应用组
       href: manage-app-groups.md
-    - name: 5. 创建主机池以验证服务更新
+    - name: 3. 创建主机池以验证服务更新
       href: create-validation-host-pool.md
-    - name: 6. 设置服务警报
+    - name: 4. 设置服务警报
       href: set-up-service-alerts.md
 - name: 操作说明
   items:
@@ -32,18 +30,18 @@
           href: connect-macos.md
         - name: 使用 iOS 客户端进行连接
           href: connect-ios.md
+    - name: 设置 PowerShell 模块
+      href: powershell-module.md
     - name: 创建主机池和会话主机
       items:
-        - name: Azure 资源管理器模板
-          href: create-host-pools-arm-template.md
         - name: PowerShell
           href: create-host-pools-powershell.md
-        - name: 部署 Windows 7 虚拟机
-          href: deploy-windows-7-virtual-machine.md
         - name: 部署基于 GPU 的会话主机
           href: configure-vm-gpu.md
         - name: 展开现有的主机池
           href: expand-existing-host-pool.md
+        - name: 使用 PowerShell 管理应用组
+          href: manage-app-groups-powershell.md
     - name: 创建配置文件容器
       items:
         - name: 使用基于 VM 的文件共享
@@ -68,20 +66,10 @@
           href: set-up-customize-master-image.md
         - name: 在主 VHD 映像中安装 Office
           href: install-office-on-wvd-master-image.md
-    - name: 自动缩放会话主机
-      href: set-up-scaling-script.md
     - name: 自定义源
       href: customize-feed-for-virtual-desktop-users.md
-    - name: 部署管理工具
-      items:
-        - name: Azure 资源管理器模板
-          href: manage-resources-using-ui.md
-        - name: PowerShell
-          href: manage-resources-using-ui-powershell.md
     - name: 使用服务诊断
       items:
-        - name: 部署诊断工具
-          href: deploy-diagnostics.md
         - name: 将诊断与 Log Analytics 配合使用
           href: diagnostics-log-analytics.md
     - name: 发布内置应用
@@ -124,10 +112,6 @@
       href: troubleshoot-set-up-issues.md
     - name: 会话主机虚拟机配置
       href: troubleshoot-vm-configuration.md
-    - name: 排查 Windows 虚拟桌面中的 Windows 7 虚拟机问题
-      href: troubleshoot-windows-7-vm.md
-    - name: 排查 Windows 虚拟桌面管理工具问题
-      href: troubleshoot-management-tool.md
     - name: 远程桌面服务连接
       href: troubleshoot-service-connection.md
     - name: 远程桌面客户端问题
@@ -140,10 +124,6 @@
   items:
     - name: Linux 支持
       href: linux-overview.md
-    - name: PowerShell
-      href: /powershell/windows-virtual-desktop/overview
-    - name: REST API
-      href: /rest/api/virtual-desktop/
     - name: 支持的 RDP 文件设置
       href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context'
     - name: 网络指南

@@ -55,7 +55,7 @@
       items:
         - name: 内置安全控件
           href: api-management-security-controls.md
-    - name: Subscriptions
+    - name: 订阅
       href: api-management-subscriptions.md
     - name: 使用自动化进行管理
       href: automation-manage-api-management.md
@@ -65,7 +65,7 @@
       href: api-management-api-import-restrictions.md
     - name: 自托管网关概述
       href: self-hosted-gateway-overview.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 定义 API
       items:
@@ -101,10 +101,12 @@
           href: api-management-howto-deploy-multi-region.md
         - name: 预配自托管网关
           href: api-management-howto-provision-self-hosted-gateway.md
+        - name: 将自托管网关部署到 Azure Kubernetes 服务
+          href: how-to-deploy-self-hosted-gateway-azure-kubernetes-service.md
         - name: 将自托管网关部署到 Kubernetes
-          href: api-management-howto-deploy-self-hosted-gateway-to-k8s.md
+          href: how-to-deploy-self-hosted-gateway-kubernetes.md
         - name: 将自托管网关部署到 Docker
-          href: api-management-howto-deploy-self-hosted-gateway-to-docker.md
+          href: how-to-deploy-self-hosted-gateway-docker.md
         - name: 为自托管网关配置自定义域
           href: api-management-howto-configure-custom-domain-gateway.md
     - name: 缓存
@@ -209,12 +211,20 @@
           href: api-management-transformation-policies.md
     - name: 在生产环境中进行管理
       items:
+        - name: 将 API 导出到 Power Platform
+          href: export-api-power-platform.md
         - name: 管理组
           href: api-management-howto-create-groups.md
         - name: 检索 IP 地址
           href: api-management-howto-ip-addresses.md
         - name: 将事件记录到 Azure 事件中心
           href: api-management-howto-log-event-hubs.md
+        - name: 使用 Azure Application Insights 记录请求
+          href: api-management-howto-app-insights.md
+        - name: 为自托管网关配置云指标和日志
+          href: how-to-configure-cloud-metrics-logs.md
+        - name: 为自托管网关配置本地指标和日志
+          href: how-to-configure-local-metrics-logs.md
         - name: 使用 Azure Application Insights 记录请求
           href: api-management-howto-app-insights.md
         - name: 使用备份/还原设置灾难恢复
@@ -261,7 +271,7 @@
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=api-management'
     - name: MSDN 论坛
       href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-api-management'
     - name: API 设计指南
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json'

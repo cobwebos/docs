@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: 5dbbbbb18bf81d70ed7955530db7c603594c16d0
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 93bedbf4275dacc3ec84e6df9c55e7e9a7b9d632
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652726"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780906"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>发行说明：语音设备 SDK
 
@@ -23,6 +23,7 @@ ms.locfileid: "82652726"
 
 ## <a name="speech-devices-sdk-1110"></a>语音设备 SDK 1.11.0：
 
+- 支持[任意麦克风阵列几何](how-to-devices-microphone-array-configuration.md)，并通过[配置文件](https://aka.ms/sdsdk-micarray-json)设置工作角度。
 - 支持[URBETTER DDK](http://www.urbetter.com/products_56/278.html)。
 - 用于[语音助手示例](https://aka.ms/sdsdk-speaker)中的[GGEC 扬声器](https://aka.ms/sdsdk-download-speaker)的已发布二进制文件。
 - 针对 Raspberry Pi 和类似设备的[LINUX ARM32](https://aka.ms/sdsdk-download-linux-arm32)和[linux ARM 64](https://aka.ms/sdsdk-download-linux-arm64)的已发布二进制文件。

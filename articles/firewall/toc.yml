@@ -23,6 +23,9 @@
     - name: 使用多个地址进行部署
       displayName: Resource Manager
       href: quick-create-multiple-ip-template.md
+    - name: 使用可用性区域进行部署
+      displayName: Resource Manager
+      href: deploy-template.md
 - name: 示例
   items:
     - name: Azure PowerShell
@@ -61,8 +64,6 @@
       href: tutorial-hybrid-ps.md
     - name: 使用 Azure CLI 进行部署
       href: deploy-cli.md
-    - name: 使用模板进行部署
-      href: deploy-template.md
     - name: 使用多个公共 IP 进行部署
       href: deploy-multi-public-ip-powershell.md
     - name: 使用可用性区域进行部署
@@ -75,6 +76,8 @@
       href: snat-private-range.md
     - name: 创建 IP 组
       href: create-ip-group.md
+    - name: 保护 Windows 虚拟桌面
+      href: protect-windows-virtual-desktop.md
 - name: 参考
   items:
     - name: Azure CLI

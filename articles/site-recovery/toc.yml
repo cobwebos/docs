@@ -165,8 +165,6 @@
               href: azure-to-azure-about-networking.md
             - name: 自定义目标 Azure VM 的网络配置
               href: azure-to-azure-customize-networking.md
-            - name: 配置移动服务代理设置
-              href: configure-mobility-service-proxy-settings.md
             - name: 设置网络映射并在故障转移后保留 IP 地址
               href: azure-to-azure-network-mapping.md
             - name: 有关故障转移后保留 IP 地址的示例
@@ -191,6 +189,8 @@
               href: azure-to-azure-how-to-reprotect.md
             - name: 设置 Azure VM 迁移到 Azure 后的灾难恢复
               href: azure-to-azure-replicate-after-migration.md
+            - name: 启用“区域到区域”灾难恢复
+              href: azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md
         - name: 管理
           items:
             - name: 更新 Azure VM 的移动服务
@@ -241,7 +241,7 @@
               href: vmware-azure-set-up-replication.md
             - name: 部署移动服务
               items:
-                - name: 关于移动服务安装
+                - name: 移动服务概述和安装
                   href: vmware-physical-mobility-service-overview.md
                 - name: 准备推送安装
                   href: vmware-azure-install-mobility-service.md

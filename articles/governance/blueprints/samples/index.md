@@ -3,12 +3,12 @@ title: 蓝图示例的索引
 description: 用于通过 Azure 蓝图部署环境、策略和云采用框架基础的符合性和标准示例的索引。
 ms.date: 02/26/2020
 ms.topic: sample
-ms.openlocfilehash: 745b16f8aff8fe003ec65449cdf3dc0d629ba6ff
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 582a4bbc1ec21e231d2a9f1feb1cfef34b3cce37
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383527"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594264"
 ---
 # <a name="azure-blueprints-samples"></a>Azure 蓝图示例
 
@@ -18,6 +18,7 @@ ms.locfileid: "81383527"
 
 |  |  |
 |---------|---------|
+| [澳大利亚政府 ISM PROTECTED](./ism-protected/control-mapping.md) | 提供用于符合澳大利亚政府 ISM PROTECTED 的规范措施。 |
 | [加拿大联邦 PBMM](./canada-federal-pbmm/index.md) | 提供防护措施，以便符合加拿大联邦受保护的 B、中等完整性、中等可用性 (PBMM)。 |
 | [CIS Microsoft Azure 基础基准](./cis-azure-1.1.0/index.md)| 提供一组策略以帮助符合 CIS Microsoft Azure 基础基准建议。 |
 | [DoD 影响级别 4](./dod-impact-level-4/index.md) | 提供了一组策略以帮助符合 DoD 影响级别 4。 |

@@ -35,6 +35,8 @@
           href: concept-conditional-access-grant.md
         - name: 会话
           href: concept-conditional-access-session.md
+    - name: 见解和报告
+      href: howto-conditional-access-insights-reporting.md
     - name: “仅报表”模式
       href: concept-conditional-access-report-only.md
     - name: 服务依赖项
@@ -49,7 +51,7 @@
       href: policy-migration.md
     - name: 基线保护策略
       href: concept-baseline-protection.md
-- name: 操作方法指南
+- name: 操作指南
   expanded: true
   items:
     - name: 计划条件访问部署
@@ -94,7 +96,7 @@
       href: howto-conditional-access-session-lifetime.md
     - name: 迁移经典策略
       href: policy-migration-mfa.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 排查登录问题
           href: troubleshoot-conditional-access.md
@@ -110,7 +112,7 @@
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: 服务更新
       href: ../fundamentals/whats-new.md
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
     - name: 视频
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

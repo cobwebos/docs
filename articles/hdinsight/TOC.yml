@@ -221,14 +221,18 @@
               href: ./hdinsight-hadoop-oms-log-analytics-use-queries.md
             - name: 监视群集性能
               href: ./hdinsight-key-scenarios-to-monitor.md
-            - name: 使用 Ambari 和 Azure Monitor 日志监视群集可用性
+            - name: 群集可用性 - Apache Ambari
               href: ./hdinsight-cluster-availability.md
+            - name: 群集可用性 - Azure Monitor 日志
+              href: ./cluster-availability-monitor-logs.md
         - name: 疑难解答
           items:
             - name: 排查脚本操作问题
               href: ./troubleshoot-script-action.md
             - name: 资源创建失败
               href: ./troubleshoot-resource-creation-fails.md
+            - name: 排查 Apache Oozie 故障
+              href: ./troubleshoot-oozie.md
     - name: 参考
       items:
         - name: Azure PowerShell
@@ -699,6 +703,8 @@
               href: ./hbase/hbase-troubleshoot-timeouts-hbase-hbck.md
             - name: 排查 Apache HBase 故障
               href: ./hbase/apache-troubleshoot-hbase.md
+            - name: 用于查询 Apache HBase 的 REST API
+              href: ./hbase/troubleshoot-rest-api.md
 - name: 交互式查询
   items:
     - name: 概述
@@ -901,6 +907,8 @@
           href: ./transport-layer-security.md
         - name: 为 HDInsight 计划 VNET
           href: ./hdinsight-plan-virtual-network-deployment.md
+        - name: 控制网络流量
+          href: ./control-network-traffic.md
         - name: NSG 和 UDR 所需的 IP 地址
           href: ./hdinsight-management-ip-addresses.md
         - name: Azure 防火墙的服务标记

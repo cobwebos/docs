@@ -4,6 +4,11 @@
   items:
     - name: 什么是用于服务器的 Azure Arc？
       href: ./servers/overview.md
+- name: 示例
+  items:
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./servers/policy-samples.md
 - name: 操作指南
   items:
     - name: 连接到 Azure Arc

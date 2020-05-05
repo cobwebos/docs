@@ -17,6 +17,9 @@
     - name: 创建蓝图 - REST API
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-rest-api.md
+    - name: 创建蓝图 - ARM 模板
+      displayName: 'assign, compliance, resource manager'
+      href: ../../azure-resource-manager/templates/deploy-to-subscription.md??toc=/azure/governance/blueprints/toc.json&bc=/azure/governance/blueprints/breadcrumb/toc.json
 - name: 教程
   items:
     - name: 从蓝图示例创建
@@ -32,9 +35,20 @@
       href: ./samples/index.md
     - name: Azure 安全基准
       items:
+        - name: 概述
+          displayName: 'standards, azure, benchmark'
+          href: ./samples/azure-security-benchmark/index.md
         - name: 控制映射
           displayName: 'standards, azure, benchmark'
           href: ./samples/azure-security-benchmark/control-mapping.md
+        - name: 部署步骤
+          displayName: 'standards, azure, benchmark'
+          href: ./samples/azure-security-benchmark/deploy.md
+    - name: 澳大利亚政府 ISM PROTECTED
+      items:
+        - name: 控制映射
+          displayName: 'standards, Australian, Government, ISM, PROTECTED'
+          href: ./samples/ism-protected/control-mapping.md
     - name: 加拿大联邦 PBMM
       items:
         - name: 概述
