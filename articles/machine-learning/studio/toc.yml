@@ -44,7 +44,7 @@
     - name: 模型管理
       displayName: 'deploy, consume, web service'
       href: deploy-consume-web-service-guide.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 管理工作区
       items:
@@ -52,8 +52,6 @@
           href: create-workspace.md
         - name: 管理
           href: manage-workspace.md
-        - name: 故障排除
-          href: troubleshooting-creating-ml-workspace.md
         - name: 使用 ARM 进行部署
           href: deploy-with-resource-manager-template.md
     - name: 导入训练数据
@@ -84,8 +82,6 @@
               href: algorithm-parameters-optimize.md
             - name: 解释结果
               href: interpret-model-results.md
-            - name: 调试
-              href: debug-models.md
         - name: 重新定型
           items:
             - name: “新”Web 服务
@@ -96,19 +92,12 @@
           items:
             - name: 通过 R 开始使用
               href: r-get-started.md
-            - name: 执行 R 脚本
-              href: extend-your-experiment-with-r.md
             - name: 创作自定义 R 模块
               href: custom-r-modules.md
             - name: 执行 Python 脚本
               href: execute-python-scripts.md
     - name: 选择一个算法
-      items:
-        - name: 选择算法
-          href: algorithm-choice.md
-        - name: 算法示例
-          displayName: 'infographic, studio basics'
-          href: basics-infographic-with-algorithm-examples.md
+      href: algorithm-choice.md
     - name: 部署模型
       items:
         - name: 部署 Web 服务
@@ -143,14 +132,6 @@
           href: consuming-from-excel.md
         - name: 使用 Excel 加载项
           href: excel-add-in-for-web-services.md
-    - name: 用例
-      items:
-        - name: 客户流失
-          href: azure-ml-customer-churn-scenario.md
-        - name: 情绪分析
-          href: text-analytics-module-tutorial.md
-        - name: 将分析从 Excel 迁移到工作室（经典）
-          href: use-case-excel-studio.md
     - name: 删除和导出客户数据
       items:
         - name: 工作室（经典）数据

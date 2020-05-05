@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.custom: hdinsightactive,seodec18
-ms.date: 03/11/2020
-ms.openlocfilehash: 66bfa0d3ee4cb03f1b48e2db24be7a90d97f60d6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: hdinsightactive,seodec18,seoapr2020
+ms.date: 04/22/2020
+ms.openlocfilehash: 8aa7401a2ee7a0d87736e6b18fc814f983e2afa0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79117216"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184191"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>教程：将 Apache Spark 结构化流式处理与 Apache Kafka on HDInsight 配合使用
 
@@ -35,7 +35,7 @@ Spark 结构化流式处理是建立在 Spark SQL 上的流处理引擎。 这�
 
 * 熟悉 [Jupyter Notebook](https://jupyter.org/) 和 Spark on HDInsight 的结合使用。 有关详细信息，请参阅[使用 Apache Spark on HDInsight 加载数据并运行查询](spark/apache-spark-load-data-run-query.md)文档。
 
-* 熟悉 [Scala](https://www.scala-lang.org/) 编程语言。 本教程所使用的代码是使用 Scala 编写的。
+* 熟悉 Scala 编程语言。 本教程所使用的代码是使用 Scala 编写的。
 
 * 熟悉 Kafka 主题的创建。 有关详细信息，请参阅 [Apache Kafka on HDInsight 快速入门](kafka/apache-kafka-get-started.md)文档。
 
@@ -182,7 +182,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
 1. 选择“新建”>“Spark”，创建一个笔记本。 
 
-1. Spark 流式处理具有微型批处理，这意味着数据是成批传入的，而执行程序则对这批数据运行。 如果执行程序的空闲超时少于处理批处理所需的时间，则将不断添加和删除执行程序。 如果执行程序的空闲超时大于批处理持续时间，则不会删除执行程序。 因此，**我们建议你在运行流式处理应用程序时通过将 spark.dynamicAllocation.enabled 设置为 false 来禁用动态分配。**
+1. Spark 流式处理具有微型批处理，这意味着数据是成批传入的，而执行程序则对这批数据运行。 如果执行程序的空闲超时少于处理批处理所需的时间，则将不断添加和删除执行程序。 如果执行程序的空闲超时大于批处理持续时间，则不会删除执行程序。 因此，我们建议你在运行流式处理应用程序时通过将 spark.dynamicAllocation.enabled 设置为 false 来禁用动态分配。 
 
     加载供 Notebook 使用的包，方法是在 Notebook 单元格中输入以下信息。 使用 **CTRL + ENTER** 运行该命令。
 
@@ -277,7 +277,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
     println("Schema declared")
     ```
 
-1. 选择数据并启动流。 以下命令演示如何使用批量查询从 Kafka 检索数据，然后将结果写入 Spark 群集上的 HDFS。 在此示例中，`select` 从 Kafka 检索消息（值字段），然后为其应用架构。 然后，将数据以 parquet 格式写入 HDFS（WASB 或 ADL）。 在下一 Jupyter 单元格中输入此命令。
+1. 选择数据并启动流。 以下命令演示了如何使用批处理查询从 Kafka 检索数据。 然后，将输出结果写入到 Spark 群集上的 HDFS 中。 在此示例中，`select` 从 Kafka 检索消息（值字段），然后为其应用架构。 然后，将数据以 parquet 格式写入 HDFS（WASB 或 ADL）。 在下一 Jupyter 单元格中输入此命令。
 
     ```scala
     // Read a batch from Kafka
@@ -316,7 +316,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-若要清理本教程创建的资源，可以删除资源组。 删除资源组也会删除相关联的 HDInsight 群集，以及与资源组相关联的任何其他资源。
+若要清理本教程创建的资源，可以删除资源组。 删除资源组还会删除关联的 HDInsight 群集， 以及与该资源组关联的任何其他资源。
 
 若要使用 Azure 门户删除资源组，请执行以下操作：
 
@@ -331,7 +331,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何使用 [Apache Spark 结构化流式处理](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)从 [Apache Kafka](./kafka/apache-kafka-introduction.md) on HDInsight 写入和读取数据。 使用以下链接，了解如何将 [Apache Storm](./storm/apache-storm-overview.md) 和 Kafka 结合使用。
+在本教程中，你已了解了如何使用 Apache Spark 结构化流式处理。 在 Apache Kafka on HDInsight 中写入和读取数据。 使用以下链接，了解如何将 Apache Storm 和 Kafka 配合使用。
 
 > [!div class="nextstepaction"]
 > [将 Apache Storm 与 Apache Kafka 配合使用](hdinsight-apache-storm-with-kafka.md)

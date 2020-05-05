@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
 ms.openlocfilehash: 29e24166218a6757cded9d1b002321800ab0c073
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80055440"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>教程：Log Analytics 查询入门
@@ -118,7 +118,7 @@ Log Analytics 将结果数限制为最多 10,000 条记录。 类似于 `Event` 
    
 1. 选择“筛选”。 
    
-   ![“筛选器”](media/get-started-portal/filter.png)
+   ![筛选器](media/get-started-portal/filter.png)
 
 ## <a name="sort-group-and-select-columns"></a>排序、分组和选择列
 若要按特定的列（例如“TimeGenerated [UTC]”）对查询结果进行排序，请选择列标题。  再次选择该标题可切换为按升序或降序排序。
