@@ -12,12 +12,12 @@ metadata:
   author: alkohli
   ms.author: alkohli
   ms.date: 11/04/2019
-  ms.openlocfilehash: 61cda4ccab69396c13581598f399104b0a4fb181
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: bf4f5d7589bdf9ae9b456f7dbe24c8d5fc02afaf
+  ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "73570119"
+  ms.lasthandoff: 04/29/2020
+  ms.locfileid: "82562349"
 landingContent:
 - title: 关于 Azure Stack Edge 和 Data Box Gateway
   linkLists:
@@ -26,7 +26,7 @@ landingContent:
     - text: 什么是 Data Box Gateway？
       url: data-box-gateway-overview.md
     - text: 什么是 Azure Stack Edge？
-      url: data-box-edge-overview.md
+      url: azure-stack-edge-overview.md
   - linkListType: architecture
     links:
     - text: 选择 Azure 数据传输选项
@@ -44,11 +44,11 @@ landingContent:
     - text: Data Box Gateway 要求
       url: data-box-gateway-system-requirements.md
     - text: Azure Stack Edge 要求
-      url: data-box-edge-system-requirements.md
+      url: azure-stack-edge-system-requirements.md
     - text: Data Box Gateway 限制
       url: data-box-gateway-limits.md
     - text: Azure Stack Edge 限制
-      url: data-box-edge-limits.md
+      url: azure-stack-edge-limits.md
 - title: 部署
   linkLists:
   - linkListType: tutorial
@@ -56,13 +56,13 @@ landingContent:
     - text: Data Box Gateway
       url: data-box-gateway-deploy-prep.md
     - text: Azure Stack Edge
-      url: data-box-edge-deploy-prep.md
+      url: azure-stack-edge-deploy-prep.md
 - title: 开发
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: C# Edge 计算模块
-      url: data-box-edge-create-iot-edge-module.md
+      url: azure-stack-edge-create-iot-edge-module.md
   - linkListType: download
     links:
     - text: 示例 - 用于 Azure Stack Edge 的 C#
@@ -74,11 +74,11 @@ landingContent:
     - text: Data Box Gateway 共享
       url: data-box-gateway-manage-shares.md
     - text: Azure Stack Edge 共享
-      url: data-box-edge-manage-shares.md
+      url: azure-stack-edge-manage-shares.md
     - text: Edge 计算
-      url: data-box-edge-manage-compute.md
+      url: azure-stack-edge-manage-compute.md
     - text: Edge 计算网络
-      url: data-box-edge-extend-compute-access-modules.md
+      url: azure-stack-edge-extend-compute-access-modules.md
 - title: 故障排除
   linkLists:
   - linkListType: how-to-guide
@@ -86,10 +86,10 @@ landingContent:
     - text: Data Box Gateway
       url: data-box-gateway-troubleshoot.md
     - text: Azure Stack Edge
-      url: data-box-edge-troubleshoot.md
+      url: azure-stack-edge-troubleshoot.md
     - text: Edge 计算模块
-      url: data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules
+      url: azure-stack-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules
     - text: 返回或替换 Azure Stack Edge
-      url: data-box-edge-return-device.md
+      url: azure-stack-edge-return-device.md
     - text: 创建支持票证
-      url: data-box-edge-contact-microsoft-support.md
+      url: azure-stack-edge-contact-microsoft-support.md
