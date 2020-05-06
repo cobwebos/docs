@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 426ba4c0ac84799b4d0e6bf9330508f928437fd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f5494b1a7590e87bac9f8ffeaeef8f1da791fd6e
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80060178"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791130"
 ---
 # <a name="tutorial-configure-availability-group-on-azure-sql-server-vm-manually"></a>教程：在 Azure SQL Server VM 上手动配置可用性组
 
@@ -72,7 +72,7 @@ ms.locfileid: "80060178"
    ![创建群集](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/40-createcluster.png)
 4. 在“创建群集向导”中，逐页完成下表中的设置来创建一个单节点群集：
 
-   | 页 | 设置 |
+   | 页面 | 设置 |
    | --- | --- |
    | 开始之前 |使用默认值 |
    | 选择服务器 |在“输入服务器名称”**** 中键入第一个 SQL Server 的名称，并单击“添加”****。 |
@@ -114,9 +114,9 @@ ms.locfileid: "80060178"
     >[!WARNING]
    >如果正在使用存储空间，且选中了“将所有符合条件的存储添加到群集”****，Windows 会在群集进程中分离虚拟磁盘。 这样一来，这些虚拟磁盘将不会出现在磁盘管理器或资源管理器之中，除非从群集中删除存储空间，并使用 PowerShell 将其重新附加。 存储空间将多个磁盘集合到存储池中。 有关详细信息，请参阅[存储空间](https://technet.microsoft.com/library/hh831739)。
 
-1. 单击“下一步”。 
+1. 单击“下一步”  。
 
-1. 单击 **“完成”** 。
+1. 单击“完成”  。
 
    “故障转移群集管理器”显示群集具有一个新的节点，并将该节点在“节点”**** 容器中列出。
 
@@ -140,7 +140,7 @@ ms.locfileid: "80060178"
 
 1. 在“文件夹路径”**** 上，单击“浏览”**** 并找到或创建一个共享文件夹路径。 单击“下一步”  。
 
-1. 在“名称、说明和设置”**** 中核对共享名称和路径。 单击“下一步”。 
+1. 在“名称、说明和设置”**** 中核对共享名称和路径。 单击“下一步”  。
 
 1. 在“共享文件夹权限”**** 上设置“自定义权限****”。 单击 "**自定义 ...**"。
 
@@ -150,7 +150,7 @@ ms.locfileid: "80060178"
 
    ![新建共享](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/50-filesharepermissions.png)
 
-1. 单击" **确定**"。
+1. 单击 **“确定”** 。
 
 1. 在“共享文件夹权限”**** 中单击“完成”****。 再次单击“完成”****。  
 
@@ -177,9 +177,9 @@ ms.locfileid: "80060178"
 
 1. 在“配置文件共享见证”**** 上键入所创建的共享的路径。 单击“下一步”  。
 
-1. 在“确认”**** 上核对设置。 单击“下一步”。 
+1. 在“确认”**** 上核对设置。 单击“下一步”  。
 
-1. 单击 **“完成”** 。
+1. 单击“完成”  。
 
 群集核心资源配置了文件共享见证。
 
@@ -242,7 +242,7 @@ Repeat these steps on the second SQL Server.
 
 1. 在“文件夹路径”**** 上，单击“浏览”**** 并找到或创建一个数据库备份共享文件夹路径。 单击“下一步”  。
 
-1. 在“名称、说明和设置”**** 中核对共享名称和路径。 单击“下一步”。 
+1. 在“名称、说明和设置”**** 中核对共享名称和路径。 单击“下一步”  。
 
 1. 在“共享文件夹权限”**** 上设置“自定义权限****”。 单击 "**自定义 ...**"。
 
@@ -252,7 +252,7 @@ Repeat these steps on the second SQL Server.
 
    ![新建共享](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/68-backupsharepermission.png)
 
-1. 单击" **确定**"。
+1. 单击 **“确定”** 。
 
 1. 在“共享文件夹权限”**** 中单击“完成”****。 再次单击“完成”****。  
 
@@ -278,7 +278,7 @@ Repeat these steps on the second SQL Server.
 
     ![启动新建可用性组向导](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/56-newagwiz.png)
 
-2. 在 **“简介”** 页上，单击 **“下一步”**。 在“指定可用性组名称”**** 页的“可用性组名称”**** 中，键入可用性组的名称，例如“AG1”****。 单击“下一步”。 
+2. 在 **“简介”** 页上，单击 **“下一步”**。 在“指定可用性组名称”**** 页的“可用性组名称”**** 中，键入可用性组的名称，例如“AG1”****。 单击“下一步”  。
 
     ![新建可用性组向导，指定可用性组名称](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/58-newagname.png)
 
@@ -301,7 +301,7 @@ Repeat these steps on the second SQL Server.
 
     ![新建可用性组向导，选择初始数据同步](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/66-endpoint.png)
 
-8. 在“选择初始数据同步”**** 页上，选择“完全同步”****，并指定一个共享网络位置。 具体位置，使用[创建的备份共享](#backupshare)。 在本示例中， ** \\ \\ \<首先 SQL Server\>\Backup\\**。 单击“下一步”。 
+8. 在“选择初始数据同步”**** 页上，选择“完全同步”****，并指定一个共享网络位置。 具体位置，使用[创建的备份共享](#backupshare)。 在本示例中， ** \\ \\ \<首先 SQL Server\>\Backup\\**。 单击“下一步”  。
 
    >[!NOTE]
    >完全同步对 SQL Server 第一个实例上的数据库进行完整备份，并将其还原到第二个实例。 对于大型数据库，不建议使用完全同步，因为这可能要花费很长时间。 可以通过使用 `NO RECOVERY` 对数据库进行手动备份和还原来降低该时间。 如果配置可用性组之前，已在 SQL Server 上使用 `NO RECOVERY` 对数据库进行还原，请选择“仅联接”。**** 若想在配置可用性组之后进行备份，请选择“跳过初始数据同步”****。
@@ -348,7 +348,7 @@ Repeat these steps on the second SQL Server.
 
 SQL Server 可用性组在 Azure 虚拟机上需要负载均衡器。 负载均衡器保留可用性组侦听程序和 Windows Server 故障转移群集的 IP 地址。 本部分概述如何在 Azure 门户中创建负载均衡器。
 
-Azure 负载均衡器可以是标准负载均衡器或基本负载均衡器。 标准负载均衡器的功能比基本负载均衡器的功能更多。 对于可用性组，如果使用可用性区域（而不是可用性集），则需要标准负载均衡器。 有关负载均衡器类型之间的差异的详细信息，请参阅[负载均衡器 SKU 比较](../../../load-balancer/concepts-limitations.md#skus)。
+Azure 负载均衡器可以是标准负载均衡器或基本负载均衡器。 标准负载均衡器的功能比基本负载均衡器的功能更多。 对于可用性组，如果使用可用性区域（而不是可用性集），则需要标准负载均衡器。 有关负载平衡器 Sku 之间的差异的详细信息，请参阅[负载均衡器 sku 比较](../../../load-balancer/skus.md)。
 
 1. 在 Azure 门户中，转到 SQL Server 所在的资源组，并单击“+ 添加”****。
 1. 搜索**负载均衡器**。 选择 Microsoft 发布的负载均衡器。
@@ -360,7 +360,7 @@ Azure 负载均衡器可以是标准负载均衡器或基本负载均衡器。 �
 
    | 设置 | 字段 |
    | --- | --- |
-   | **Name** |为负载均衡器使用文本名称，例如“sqlLB”****。 |
+   | **名称** |为负载均衡器使用文本名称，例如“sqlLB”****。 |
    | **类型** |内部 |
    | **虚拟网络** |使用 Azure 虚拟网络的名称。 |
    | **子网** |使用虚拟机所在的子网的名称。  |
@@ -404,8 +404,8 @@ Azure 负载均衡器可以是标准负载均衡器或基本负载均衡器。 �
 
    | 设置 | 说明 | 示例
    | --- | --- |---
-   | **Name** | Text | SQLAlwaysOnEndPointProbe |
-   | 协议  | 选择 TCP | TCP |
+   | **名称** | Text | SQLAlwaysOnEndPointProbe |
+   | **协议** | 选择 TCP | TCP |
    | 端口  | 任何未使用的端口 | 59999 |
    | **间隔**  | 探测尝试之间的时间长短（秒） |5 |
    | **不正常阈值** | 虚拟机不可避免且被视为不正常的连续探测失败次数  | 2 |
@@ -420,15 +420,15 @@ Azure 负载均衡器可以是标准负载均衡器或基本负载均衡器。 �
 
    | 设置 | 说明 | 示例
    | --- | --- |---
-   | **Name** | Text | SQLAlwaysOnEndPointListener |
+   | **名称** | Text | SQLAlwaysOnEndPointListener |
    | **前端 IP 地址** | 选择一个地址 |使用创建负载均衡器时所创建的地址。 |
-   | 协议  | 选择 TCP |TCP |
+   | **协议** | 选择 TCP |TCP |
    | 端口  | 使用可用性组侦听程序的端口 | 1433 |
    | **后端端口** | 当直接服务器返回设置为浮动 IP时，不使用此字段 | 1433 |
    | **探测** |为探测指定的名称 | SQLAlwaysOnEndPointProbe |
    | **会话持久性** | 下拉列表 | **无** |
    | **空闲超时** | 使 TCP 连接保持打开所需的分钟数 | 4 |
-   | 浮动 IP (直接服务器返回)**** | |已启用 |
+   | 浮动 IP (直接服务器返回)**** | |Enabled |
 
    > [!WARNING]
    > 创建过程中已设置直接服务器返回。 无法进行更改。
@@ -447,8 +447,8 @@ WSFC IP 地址也必须在负载均衡器上。
 
    | 设置 | 说明 | 示例
    | --- | --- |---
-   | **Name** | Text | WSFCEndPointProbe |
-   | 协议  | 选择 TCP | TCP |
+   | **名称** | Text | WSFCEndPointProbe |
+   | **协议** | 选择 TCP | TCP |
    | 端口  | 任何未使用的端口 | 58888 |
    | **间隔**  | 探测尝试之间的时间长短（秒） |5 |
    | **不正常阈值** | 虚拟机不可避免且被视为不正常的连续探测失败次数  | 2 |
@@ -461,15 +461,15 @@ WSFC IP 地址也必须在负载均衡器上。
 
    | 设置 | 说明 | 示例
    | --- | --- |---
-   | **Name** | Text | WSFCEndPoint |
+   | **名称** | Text | WSFCEndPoint |
    | **前端 IP 地址** | 选择一个地址 |使用配置 WSFC IP 地址时所创建的地址。 这不同于侦听器 IP 地址 |
-   | 协议  | 选择 TCP |TCP |
+   | **协议** | 选择 TCP |TCP |
    | 端口  | 使用群集 IP 地址的端口。 这是可用的端口，不用于侦听器探测端口。 | 58888 |
    | **后端端口** | 当直接服务器返回设置为浮动 IP时，不使用此字段 | 58888 |
    | **探测** |为探测指定的名称 | WSFCEndPointProbe |
    | **会话持久性** | 下拉列表 | **无** |
    | **空闲超时** | 使 TCP 连接保持打开所需的分钟数 | 4 |
-   | 浮动 IP (直接服务器返回)**** | |已启用 |
+   | 浮动 IP (直接服务器返回)**** | |Enabled |
 
    > [!WARNING]
    > 创建过程中已设置直接服务器返回。 无法进行更改。

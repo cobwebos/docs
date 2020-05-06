@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.reviewer: azfuncdf, antchu
 ms.openlocfilehash: 55098daa69d3e878140b20095b0a3e08811269e1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80257642"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>使用 JavaScript 创建你的第一个持久函数
@@ -22,9 +22,9 @@ ms.locfileid: "80257642"
 
 ![在 Azure 中运行持久函数](./media/quickstart-js-vscode/functions-vs-code-complete.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-为完成此教程：
+完成本教程：
 
 * 安装 [Visual Studio Code](https://code.visualstudio.com/download)。
 
@@ -86,7 +86,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 1. 使用“视图”菜单或按 Ctrl+Shift+`，在 VS Code 中打开新的终端。 
 
-1. 通过运行函数应用的根目录中的 `npm install durable-functions` 来安装 `durable-functions` npm 包。
+1. 通过运行函数应用的根目录中的 `durable-functions` 来安装 `npm install durable-functions` npm 包。
 
 ## <a name="creating-your-functions"></a>创建函数
 

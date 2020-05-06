@@ -4,12 +4,12 @@ description: 本快速入门介绍如何使用资源管理器模板创建策略�
 ms.date: 03/16/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: ae6b2d151baaa904215639276c7fb74766810c6a
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 646e2e064618e70fd9e9e747926f0886d85fde26
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606604"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82187777"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>快速入门：使用资源管理器模板创建策略分配以识别不合规的资源
 
@@ -70,7 +70,7 @@ ms.locfileid: "81606604"
 
 选择页面左侧的“符合性”  。 然后找到所创建的“审核未使用托管磁盘的 VM”策略分配  。
 
-![策略符合性概述页](./media/assign-policy-template/policy-compliance.png)
+:::image type="content" source="./media/assign-policy-template/policy-compliance.png" alt-text="策略符合性概述页" border="false":::
 
 如果存在与此新分配不相符的任何现有资源，这些资源会在“不符合的资源”下显示  。
 
@@ -84,7 +84,7 @@ ms.locfileid: "81606604"
 
 1. 右键单击“审核不使用托管磁盘的 VM”策略分配并选择“删除分配”。  
 
-   ![从符合性概述页中删除分配](./media/assign-policy-template/delete-assignment.png)
+   :::image type="content" source="./media/assign-policy-template/delete-assignment.png" alt-text="从符合性概述页中删除分配" border="false":::
 
 ## <a name="next-steps"></a>后续步骤
 

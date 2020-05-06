@@ -8,12 +8,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 91ecff311b8820d3b97e1de0e4b4e87c150e749b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f936b62349a534e6193a3c628c66c49d1a58b681
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678927"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790824"
 ---
 # <a name="troubleshoot-issues-with-the-update-management-solution"></a>解决更新管理解决方案的问题
 
@@ -49,13 +49,13 @@ Error details: Failed to enable the Update solution
 
 * 根据操作系统运行[Windows](update-agent-issues.md#troubleshoot-offline)或[Linux](update-agent-issues-linux.md#troubleshoot-offline)的疑难解答。
 
-* 请参阅[网络规划](../automation-hybrid-runbook-worker.md#network-planning)，了解哪些地址和端口必须允许更新管理才能工作。  
+* 请通过 "[网络配置](../automation-hybrid-runbook-worker.md#network-planning)" 了解更新管理要使用的地址和端口。  
 
-* 请参阅[网络规划](../../azure-monitor/platform/log-analytics-agent.md#network-requirements)，了解 Log Analytics 代理可使用哪些地址和端口才能正常工作。
+* 请通过 "[网络配置](../../azure-monitor/platform/log-analytics-agent.md#network-requirements)" 了解 Log Analytics 代理可使用哪些地址和端口。
 
 * 检查作用域配置问题。 [作用域配置](../automation-onboard-solutions-from-automation-account.md#scope-configuration)确定为解决方案配置的计算机。 如果计算机显示在工作区中，而不是在 * * 更新管理门户中显示，则需将作用域配置设置为以计算机为目标。 若要了解作用域配置，请参阅[工作区中的板载计算机](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace)。
 
-* 按照[删除混合 runbook 辅助角色](../automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker)中的步骤操作，删除辅助角色配置。 
+* 按照[删除 Windows 混合 Runbook 辅助角色](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker)或[删除 Linux 混合 runbook 辅助角色](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker)中的步骤操作，删除辅助角色配置。 
 
 ## <a name="scenario-superseded-update-indicated-as-missing-in-update-management"></a>方案：被取代的更新在更新管理中指出为缺少
 
@@ -448,7 +448,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 ### <a name="resolution"></a>解决方法
 
 1. 按照["更新管理中的" 计算机未显示](#nologs)的步骤 "下的步骤，确保计算机报告到正确的工作区。
-2. [删除混合 runbook 组](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group)，清除计算机上的项目，然后重试。
+2. [删除混合 runbook 组](../automation-windows-hrw-install.md#remove-a-hybrid-worker-group)，清除计算机上的项目，然后重试。
 
 ## <a name="scenario-machine-cant-communicate-with-the-service"></a><a name="machine-unable-to-communicate"></a>方案：计算机无法与服务进行通信
 

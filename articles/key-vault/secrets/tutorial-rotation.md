@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 70eb2449c5c54750831c30ff7d5c948173a38594
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8f9c0dca29d173eb2c7893a20b2ab41dd31522e1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426346"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183205"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-single-usersingle-password-authentication"></a>自动轮换使用单用户/单密码身份验证的资源的机密
 
@@ -263,7 +263,7 @@ az keyvault secret set --name sqluser --vault-name simplerotation-kv --value "Si
  
 ![选择 URL](../media/rotate10.png)
 
-应会看到“生成的机密值”，其“数据库已连接”值为 true。
+当应用程序在浏览器中打开时，你会看到“生成的机密值”  ，并会看到“数据库已连接”  的值为“true”  。
 
 ## <a name="learn-more"></a>了解详细信息
 

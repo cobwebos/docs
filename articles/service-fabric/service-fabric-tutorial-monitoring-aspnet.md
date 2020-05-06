@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/10/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: b226c37c36da033862377860be4c413229651fb6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6ce2e5a71d48942642ee01d8d2cc75a232abf259
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75614037"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82159943"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>教程：使用 Application Insights 在 Service Fabric 上监视和诊断 ASP.NET Core 应用程序
 
@@ -32,7 +32,7 @@ ms.locfileid: "75614037"
 > * [使用 Azure Pipelines 配置 CI/CD](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * 设置应用程序的监视和诊断
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始学习本教程之前：
 
@@ -102,7 +102,7 @@ Application Insights 有两个特定于 Service Fabric 的 NuGet，可以根据�
     ![AI sdk Nuget](./media/service-fabric-tutorial-monitoring-aspnet/ai-sdk-nuget-new.png)
 5. 在显示的“审阅更改”对话框中单击“确定”，接受“接受许可证”中的条款。    这样即可将 NuGet 添加到服务。
 6. 现在需在两个服务中设置遥测初始值设定项。 为此，请打开“VotingWeb.cs”和“VotingData.cs”。   对这两个文件执行下述两项步骤：
-    1. 在每个  *ServiceName>.cs 顶部的现有 \<using* 语句之后添加下面这两个 using  语句：
+    1. 在每个  \<ServiceName>.cs 顶部的现有 *using* 语句之后添加下面这两个 using  语句：
 
     ```csharp
     using Microsoft.ApplicationInsights.Extensibility;
@@ -150,7 +150,7 @@ Application Insights 有两个特定于 Service Fabric 的 NuGet，可以根据�
         .Build();
     ```
 
-仔细进行检查，确保在 `UseApplicationInsights()`VotingWeb.cs*和*VotingData.cs*中调用* 方法，如上所示。
+仔细进行检查，确保在 *VotingWeb.cs* 和 *VotingData.cs* 中调用 `UseApplicationInsights()` 方法，如上所示。
 
 >[!NOTE]
 >此示例应用使用 http 供服务通信。 如果使用 Service Remoting V2 来开发应用，则需在以前添加代码的位置添加以下代码行
@@ -168,7 +168,7 @@ ConfigureServices(services => services
 >[!NOTE]
 >如果未安装 .NET Core SDK 的最新版本，可能会出现生成错误。
 
-应用程序部署完以后，请访问 [localhost:8080](localhost:8080)，其中应该可以看到 Voting 单页应用程序示例。 投票选择各种不同的项目，以便创建一些示例数据和遥测 - 我投票选择甜点！
+应用程序部署完后，请访问 `localhost:8080`，其中应该可以看到 Voting 示例单页应用程序。 投票选择各种不同的项目，以便创建一些示例数据和遥测 - 我投票选择甜点！
 
 ![AI 示例投票](./media/service-fabric-tutorial-monitoring-aspnet/vote-sample.png)
 
@@ -251,7 +251,7 @@ public async Task<IActionResult> Delete(string name)
 }
 ```
 
-进行这些更改以后，请启动应用程序，以便生成和部署最新版本。  应用程序部署完以后，请访问 [localhost:8080](localhost:8080)，添加和删除一些投票选项。 然后回到 Application Insights 资源，查看最新运行的跟踪（与前面一样，跟踪可能需要 1-2 分钟才会显示在 Application Insights 中）。 不管是添加的还是删除的投票，此时都会看到一个“自定义事件”\*，以及所有响应遥测。
+进行这些更改以后，请启动应用程序，以便生成和部署最新版本。  应用程序部署完后，请访问 `localhost:8080`，添加和删除一些投票选项。 然后回到 Application Insights 资源，查看最新运行的跟踪（与前面一样，跟踪可能需要 1-2 分钟才会显示在 Application Insights 中）。 不管是添加的还是删除的投票，此时都会看到一个“自定义事件”\*，以及所有响应遥测。
 
 ![自定义事件](./media/service-fabric-tutorial-monitoring-aspnet/custom-events.png)
 

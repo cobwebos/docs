@@ -5,12 +5,12 @@ author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 30b66414e87f642bc72b8723ebff57f2e9009f17
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 737e8a247a232278db73de716647fc5bb890fe39
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239238"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82184990"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>教程：排查 ARM 模板部署问题
 
@@ -26,20 +26,18 @@ ms.locfileid: "80239238"
 本教程涵盖以下任务：
 
 > [!div class="checklist"]
-> * 创建有问题的模板
-> * 排查验证错误
-> * 排查部署错误
-> * 清理资源
+> - 创建有问题的模板
+> - 排查验证错误
+> - 排查部署错误
+> - 清理资源
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
 若要完成本文，需要做好以下准备：
 
-* 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 ARM 模板](use-vs-code-to-create-template.md)。
+- 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 ARM 模板](use-vs-code-to-create-template.md)。
 
 ## <a name="create-a-problematic-template"></a>创建有问题的模板
 
@@ -51,12 +49,14 @@ ms.locfileid: "80239238"
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
+
 3. 选择“打开”以打开该文件。 
 4. 将 **apiVersion** 行更改为以下行：
 
     ```json
     "apiVersion1": "2018-07-02",
     ```
+
     - **apiVersion1** 是无效的元素名称。 它是验证错误。
     - API 版本应该是“2018-07-01”。  它是部署错误。
 
@@ -64,7 +64,7 @@ ms.locfileid: "80239238"
 
 ## <a name="troubleshoot-the-validation-error"></a>排查验证错误
 
-请参阅[部署模板](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template)部分，了解如何部署模板。
+请参阅[部署模板](template-tutorial-create-multiple-instances.md#deploy-the-template)部分，了解如何部署模板。
 
 你会从 shell 获得类似于以下内容的错误：
 
@@ -78,7 +78,7 @@ New-AzResourceGroupDeployment : 4:29:24 PM - Error: Code=InvalidRequestContent; 
 
 ## <a name="troubleshoot-the-deployment-error"></a>排查部署错误
 
-请参阅[部署模板](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template)部分，了解如何部署模板。
+请参阅[部署模板](template-tutorial-create-multiple-instances.md#deploy-the-template)部分，了解如何部署模板。
 
 你会从 shell 获得类似于以下内容的错误：
 

@@ -8,13 +8,13 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: ralphe
 ms.openlocfilehash: 92fc7aeec87015a9ddbe4e52f870334582e28c14
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80671581"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请务必：
 
@@ -294,7 +294,7 @@ ms.locfileid: "80671581"
     }
     ```
 
-2. 将你的 `public static async Task Main(string[] args)` 函数中的 `CreateConversationAsync();` 替换为：
+2. 将你的 `CreateConversationAsync();` 函数中的 `public static async Task Main(string[] args)` 替换为：
 
     ```csharp
     // Set this to the conversation you want to join

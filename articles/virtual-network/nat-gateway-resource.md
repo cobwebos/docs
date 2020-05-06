@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/09/2020
+ms.date: 04/27/2020
 ms.author: allensu
-ms.openlocfilehash: 4095b0b48e86b0aafcc86d74ca1fa25bacddf0ec
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 6bb53539c105cda99c842b6b0fa236f0e18a85ea
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011712"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82182474"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>使用 NAT 网关资源设计虚拟网络
 
-NAT 网关资源是[虚拟网络 NAT](nat-overview.md) 的一部分，为虚拟网络的一个或多个子网提供出站 Internet 连接。 虚拟网络的子网指明要使用的 NAT 网关。 NAT 为子网提供源网络地址转换 (SNAT)。  NAT 网关资源指定虚拟机在创建出站流时要使用的静态 IP 地址。 静态 IP 地址来自公共 IP 地址资源和/或公共 IP 前缀资源。 NAT 网关资源最多可以使用公共 IP 地址资源或公共 IP 前缀资源中的 16个静态 IP 地址。
+NAT 网关资源是[虚拟网络 NAT](nat-overview.md) 的一部分，为虚拟网络的一个或多个子网提供出站 Internet 连接。 虚拟网络的子网指明要使用的 NAT 网关。 NAT 为子网提供源网络地址转换 (SNAT)。  NAT 网关资源指定虚拟机在创建出站流时要使用的静态 IP 地址。 静态 IP 地址来自公共 IP 地址资源和/或公共 IP 前缀资源。 如果使用公共 IP 前缀资源，则由 NAT 网关资源使用整个公共 IP 前缀资源的所有 IP 地址。 NAT 网关资源最多可以使用公共 IP 地址资源或公共 IP 前缀资源中的 16 个（总计）静态 IP 地址。
 
 
 <p align="center">
@@ -60,7 +60,8 @@ NAT 网关资源：
 
 建议为大多数工作负荷使用 NAT，除非对[基于池的负载均衡器出站连接](../load-balancer/load-balancer-outbound-connections.md)有具体的依赖。  
 
-可以从标准负载均衡器方案（包括[出站规则](../load-balancer/load-balancer-outbound-rules-overview.md)）迁移到 NAT 网关。 若要迁移，请将负载均衡器前端中的公共 IP 和公共 IP 前缀资源移到 NAT 网关。 不需要为 NAT 网关指定新的 IP 地址。 可以重复使用标准公共 IP 和前缀，只要总共不超过 16 个 IP 地址即可。 在转换期间，请规划好迁移并考虑到服务中断。  将此过程自动化可以最大程度地缩减中断时间。 首先在过渡环境中测试迁移。  在转换期间，入站来源流不受影响。
+可以从标准负载均衡器方案（包括[出站规则](../load-balancer/load-balancer-outbound-rules-overview.md)）迁移到 NAT 网关。 若要迁移，请将负载均衡器前端中的公共 IP 和公共 IP 前缀资源移到 NAT 网关。 不需要为 NAT 网关指定新的 IP 地址。 可以重复使用标准公共 IP 地址资源和公共 IP 前缀资源，只要总共不超过 16 个 IP 地址即可。 在转换期间，请规划好迁移并考虑到服务中断。  将此过程自动化可以最大程度地缩减中断时间。 首先在过渡环境中测试迁移。  在转换期间，入站来源流不受影响。
+
 
 以下示例是 Azure 资源管理器模板中的代码片段。  此模板部署多个资源，其中包括 NAT 网关。  在此示例中，模板有以下参数：
 
@@ -225,6 +226,12 @@ NAT 网关优先于子网的出站方案。 无法通过适当的转换来调整
 >[!NOTE] 
 >如果未指定局部区域，则 IP 地址本身不是局部区域冗余的。  如果 IP 地址不是在特定局部区域中创建的，则[标准负载均衡器的前端是局部区域冗余的](../load-balancer/load-balancer-standard-availability-zones.md#frontend)。  此规则不适用于 NAT。  仅支持区域隔离或局部区域隔离。
 
+## <a name="performance"></a>性能
+
+每个 NAT 网关资源最多可提供 50 Gbps 的吞吐量。 可以将部署拆分成多个子网，为每个子网或子网组分配一个 NAT 网关，以便进行横向扩展。
+
+对于所分配的每个出站 IP 地址，每个 NAT 网关可支持 64000 个连接。  请查看下面的有关源网络地址转换 (SNAT) 的部分来获取详细信息，并查看[故障排除文章](https://docs.microsoft.com/azure/virtual-network/troubleshoot-nat)来了解具体的问题解决指南。
+
 ## <a name="source-network-address-translation"></a>源网络地址转换
 
 源网络地址转换 (SNAT) 将流的源重写为源自不同的 IP 地址。  NAT 网关资源使用一个通常称作端口地址转换 (PAT) 的 SNAT 变体。 PAT 可重写源地址和源端口。 使用 SNAT 时，专用地址的数量与其转换的公共地址之间没有固定的关系。  
@@ -277,7 +284,10 @@ NAT 为新的出站流量流提供按需 SNAT 端口。 配置了 NAT 的子网�
 
 ### <a name="scaling"></a>扩展
 
-缩放 NAT 功能主要用于管理共享的可用 SNAT 端口库存。 NAT 需有足够的 SNAT 端口库存，才能解决已附加到 NAT 网关资源的所有子网的预期高峰出站流。  可以使用公共 IP 地址资源和/或公共 IP 前缀资源来创建 SNAT 端口库存。
+缩放 NAT 功能主要用于管理共享的可用 SNAT 端口库存。 NAT 需有足够的 SNAT 端口库存，才能解决已附加到 NAT 网关资源的所有子网的预期高峰出站流。  可以使用公共 IP 地址资源和/或公共 IP 前缀资源来创建 SNAT 端口库存。  
+
+>[!NOTE]
+>如果你分配一个公共 IP 前缀资源，则会使用整个公共 IP 前缀。  不能先分配一个公共 IP 前缀资源，然后再将个别 IP 地址取出来分配给其他资源。  如果要将来自公共 IP 地址前缀的个别 IP 地址分配给多个资源，则你需要基于公共 IP 前缀资源创建个别公共 IP 地址，再根据需要分配这些地址，而不能分配公共 IP 前缀资源本身。
 
 SNAT 将专用地址映射到一个或多个公共 IP 地址，并重写进程中的源地址和源端口。 NAT 网关资源将为所配置的每个公共 IP 地址使用 64,000 个端口（SNAT 端口）进行此转换。 NAT 网关资源可以扩展到 16 个 IP 地址和 100 万个 SNAT 端口。 如果提供了公共 IP 前缀资源，则前缀中的每个 IP 地址都会提供 SNAT 端口库存。 添加更多公共 IP 地址可以增加可用库存 SNAT 端口。 TCP 和 UDP 是独立的 SNAT 端口库存，与此无关。
 

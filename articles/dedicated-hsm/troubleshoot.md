@@ -14,13 +14,13 @@ ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
 ms.openlocfilehash: ad3c9d702384b8a32a9d4f0c8aebe44de4bb526e
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80337216"
 ---
-# <a name="troubleshooting"></a>故障排除
+# <a name="troubleshooting"></a>疑难解答
 
 Azure 专用 HSM 服务有两个不同的方面。 第一个方面是指在 Azure 中注册和部署包含基础网络组件的 HSM 设备。 第二个方面是指配置 HSM 设备，做好与给定的工作负载或应用程序配合使用/集成的准备。 尽管 Azure 中的 Thales Luna Network HSM 设备与直接从 Thales 购买的相同，但由于它们是 Azure 中的资源，因此有一些独特的注意事项。 本文介绍了这些注意事项以及所产生的任何故障排除见解或最佳做法，确保关键信息的高可见性和访问权限。 开始使用此服务后，可通过向 Microsoft 或 Thales 发送支持请求直接获取权威信息。 
 

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.date: 10/11/2019
-ms.openlocfilehash: f5aac7fe63b2afc997ff69e5d976c755440c1bea
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 045f6d50846092820014ccc7f11a81f1e2234311
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75982573"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82144080"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>教程：通过 Azure 事件网格和逻辑应用监视虚拟机更改
 
@@ -48,6 +48,9 @@ ms.locfileid: "75982573"
 * 来自逻辑应用支持的电子邮件提供程序且用于发送通知的电子邮件帐户，例如 Office 365 Outlook、Outlook.com 或 Gmail。 至于其他提供商，请[查看此处的连接器列表](/connectors/)。
 
   本教程将使用 Office 365 Outlook 帐户。 如果使用其他电子邮件帐户，则常规步骤保持不变，但 UI 显示可能稍有不同。
+
+  > [!IMPORTANT]
+  > 如果要使用 Gmail 连接器，则只有 G-Suite 商业帐户可以在逻辑应用中不受限制地使用此连接器。 如果有 Gmail 用户帐户，则只能将此连接器与 Google 批准的特定服务一起使用，也可以[创建用于通过 Gmail 连接器进行身份验证的 Google 客户端应用](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。 有关详细信息，请参阅 [Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
 
 * 一个在其自己的 Azure 资源组中独一无二的[虚拟机](https://azure.microsoft.com/services/virtual-machines)。 如你尚未这样做，请通过[创建 VM 教程](../virtual-machines/windows/quick-create-portal.md)创建虚拟机。 若要使虚拟机发布事件，你[无需执行任何其他操作](../event-grid/overview.md)。
 

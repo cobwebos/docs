@@ -8,11 +8,11 @@
   items:
     - name: 混合连接
       items:
-        - name: 发送和接收消息 - .NET Websocket
+        - name: 发送和接收消息 - .NET WebSocket
           href: relay-hybrid-connections-dotnet-get-started.md
         - name: 发送和接收消息 - .NET HTTP
           href: relay-hybrid-connections-http-requests-dotnet-get-started.md
-        - name: 发送和接收消息 - Node Websocket
+        - name: 发送和接收消息 - Node WebSocket
           href: relay-hybrid-connections-node-get-started.md
         - name: 发送和接收消息 - Node HTTP
           href: relay-hybrid-connections-http-requests-node-get-started.md
@@ -40,7 +40,7 @@
           href: service-bus-relay-security-controls.md
     - name: 混合连接协议
       href: relay-hybrid-connections-protocol.md
-- name: 如何
+- name: 操作方式
   items:
     - name: 从 Azure Service Manager（经典）API 迁移到资源管理器 API
       href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json
@@ -59,10 +59,12 @@
               href: relay-hybrid-connections-dotnet-api-overview.md
             - name: 节点
               href: relay-hybrid-connections-node-ws-api-overview.md
-    - name: 管理
+    - name: 管理和监视
       items:
         - name: 使用 Azure 监视来监视 Azure 中继
           href: relay-metrics-azure-monitor.md
+        - name: 设置诊断日志
+          href: diagnostic-logs.md
 - name: 参考
   items:
     - name: .NET
@@ -89,5 +91,5 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 示例
       href: 'https://github.com/azure/azure-relay/tree/master/samples'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-servicebusrelay'

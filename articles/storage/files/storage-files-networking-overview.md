@@ -8,10 +8,10 @@ ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 383ad5e5063a0a207320a517c34f3b41cc57804a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80067149"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure 文件存储的网络注意事项 

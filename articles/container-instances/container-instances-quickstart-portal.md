@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 03/09/2020
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 7a872e955db46b76d3b12f8ffc38d4a8e497ea63
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79087966"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure 中部署容器实例
@@ -33,7 +33,7 @@ ms.locfileid: "79087966"
 
 在“基本信息”页的“资源组”、“容器名称”和“容器映像”文本框中输入以下值     。 将其他值保留为默认值，然后选择“确定”  。
 
-* 资源组：“新建” > `myresourcegroup` 
+* 资源组：“新建” > `myresourcegroup`
 * 容器名称：`mycontainer`
 * 映像源：**快速启动映像**
 * 容器映像：`mcr.microsoft.com/azuredocs/aci-helloworld` (Linux)

@@ -3,12 +3,12 @@ title: 教程：列表实体 - LUIS
 description: 获取与项的预定义列表匹配的数据。 列表中的每个项可以有也是完全匹配的同义词
 ms.topic: tutorial
 ms.date: 03/12/2020
-ms.openlocfilehash: 1cfeccbd54e8ef8ec315d53fc7a766760c92a0d1
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 9530719c43260751d64d7ccf446bc7941078d6e9
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79297401"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82101121"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance-with-list-entity"></a>教程：使用列表实体从言语中获取文本完全匹配的数据
 
@@ -33,7 +33,7 @@ ms.locfileid: "79297401"
 出现以下情况时，列表实体非常适合此类数据：
 
 * 数据值是已知的集。
-* 此集不超出此实体类型的最大 LUIS [边界](luis-boundaries.md)。
+* 此集不超出此实体类型的最大 LUIS [边界](luis-limits.md)。
 * 言语中的文本是同义项或规范名称的不区分大小写的匹配。 LUIS 不会在不匹配的情况下使用该列表。 仅仅有列表实体无法解析词干、复数形式和其他变体。 若要管理变体，请考虑使用带有可选文本语法的[模式](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance)。
 
 > [!CAUTION]

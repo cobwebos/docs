@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 06/25/2019
 ms.custom: mvc
-ms.openlocfilehash: ed78d3dd4e6fbde10c69403cc3dcff24072dc676
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: de46eeb20f3c99eb7a459965d17e2dd55728a9db
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75358021"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82146663"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure Database for PostgreSQL - 单一服务器
 
@@ -58,7 +58,7 @@ sku-name | GP_Gen5_2 | SKU 的名称。 请遵循简写约定 {pricing tier}\_{c
 backup-retention | 7 | 保留备份的时长。 单位为天。 范围为 7-35。 
 geo-redundant-backup | 已禁用 | 是否应该为此服务启用异地冗余备份。 允许的值：“Enabled”、“Disabled”。
 location | westus | 服务器的 Azure 位置。
-ssl-enforcement | 已启用 | 是否应该为此服务启用 ssl。 允许的值：“Enabled”、“Disabled”。
+ssl-enforcement | 已启用 | 是否应该为此服务器启用 TLS/SSL。 允许的值：“Enabled”、“Disabled”。
 storage-size | 51200 | 服务器的存储容量（单位是兆字节）。 有效的存储大小最小为 5120MB，以 1024MB 为增量。 请参阅[定价层](./concepts-pricing-tiers.md)文档，详细了解存储大小限制。 
 版本 | 9.6 | PostgreSQL 主版本。
 admin-user | myadmin | 用于管理员登录的用户名。 它不能为“azure_superuser”、“admin”、“administrator”、“root”、“guest”或“public”       。
@@ -186,7 +186,7 @@ pgAdmin 是用于 PostgreSQL 的开源工具。 可以从 [pgAdmin 网站](https
     用户名 | 服务器管理员登录名 | 此前在创建用于 PostgreSQL 的 Azure 数据库服务器时提供的服务器管理员登录用户名。 如果不记得用户名，请按上一部分的步骤操作，以便获取连接信息。 格式为 username\@servername  。
     密码 | 管理员密码 | 之前在此快速入门中创建服务器时选择的密码。
     角色 | 留空 | 此时无需提供角色名称。 此字段留空。
-    SSL 模式 | *必需* | 可以在 pgAdmin 的 SSL 选项卡中设置 SSL 模式。默认情况下，所有 Azure Database for PostgreSQL 服务器在创建时都会启用“SSL 强制实施”。 若要关闭“SSL 强制实施”，请参阅 [SSL 强制实施](./concepts-ssl-connection-security.md)。
+    SSL 模式 | *必需* | 可以在 pgAdmin 的 SSL 选项卡中设置 TLS/SSL 模式。默认情况下，所有 Azure Database for PostgreSQL 服务器在创建时都会启用“强制实施 TLS”。 若要禁用“强制实施 TLS”，请参阅[配置 TLS 的强制实施](./concepts-ssl-connection-security.md#configure-enforcement-of-tls)。
     
 5. 选择“保存”。 
 

@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 04/07/2020
+ms.date: 05/04/2020
 ms.author: banders
-ms.openlocfilehash: 4ef0420eab8064343b54f2c0bf15a692b8bc038c
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 6b01253d12b67c327bc67416ca569ccb7ee469ae
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382811"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780634"
 ---
 # <a name="buy-a-reservation"></a>购买预留项
 
@@ -36,7 +36,7 @@ Azure 预留项可帮助你节省资金，因为它可以承诺许多 Azure 资�
 
 - **单个资源组范围** — 仅将预留折扣应用到所选资源组中匹配的资源。
 - **单个订阅范围** — 将预留折扣应用到所选订阅中匹配的资源。
-- **共享范围** — 将预留折扣应用到计费上下文中符合条件的订阅中的匹配资源。 对于企业协议客户，计费上下文为注册。 对于 Microsoft 客户协议客户，计费范围为计费配置文件。 对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。
+- **共享范围** — 将预留折扣应用到计费上下文中符合条件的订阅中的匹配资源。 对于企业协议客户，计费上下文为注册。 对于 Microsoft 客户协议客户，计费范围为计费对象信息。 对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。
 
 对用途应用预留折扣时，Azure 将按以下顺序处理预留：
 
@@ -73,7 +73,10 @@ Azure 预留项可帮助你节省资金，因为它可以承诺许多 Azure 资�
 - [软件计划](../../virtual-machines/linux/prepay-suse-software-charges.md)
 - [存储](../../storage/blobs/storage-blob-reserved-capacity.md)
 - [SQL 数据库](../../sql-database/sql-database-reserved-capacity.md)
-- [SQL 数据仓库](prepay-sql-data-warehouse-charges.md)
+- [Azure Database for PostgreSQL](../../postgresql/concept-reserved-pricing.md)
+- [Azure Database for MySQL](../../mysql/concept-reserved-pricing.md)
+- [Azure Database for MariaDB](../../mariadb/concept-reserved-pricing.md)
+- [Azure Synapse Analytics](prepay-sql-data-warehouse-charges.md)
 - [虚拟机](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
 
 ## <a name="buy-reservations-with-monthly-payments"></a>按月付款的方式购买预留项

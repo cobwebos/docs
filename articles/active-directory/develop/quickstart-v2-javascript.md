@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: 1d22f66ad5f7adf5bb8196c3e72a2a343f4558b0
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: aad830ba7c7198077fe6073d6351c72ac9a8e662
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536091"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82144391"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>快速入门：登录用户并在 JavaScript SPA 中获取访问令牌
 
@@ -25,7 +25,7 @@ ms.locfileid: "81536091"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Azure 订阅 - [免费创建 Azure 订阅](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Node.js](https://nodejs.org/en/download/)
 * [Visual Studio Code](https://code.visualstudio.com/download)（用于编辑项目文件）
 
@@ -165,7 +165,7 @@ ms.locfileid: "81536091"
 
 ### <a name="how-the-sample-works"></a>示例工作原理
 
-![本快速入门中的示例应用的工作原理](media/quickstart-v2-javascript/javascriptspa-intro.svg)
+![示例 JavaScript SPA 的工作原理：1. SPA 启动登录。 2. SPA 从 Microsoft 标识平台获取 ID 令牌。 3. SPA 调用获取令牌。 4. Microsoft 标识平台返回 SPA 的访问令牌。 5. SPA 使用访问令牌向 Microsoft Graph API 发出 HTTP GET 请求。 6. Graph API 向 SPA 返回 HTTP 响应。](media/quickstart-v2-javascript/javascriptspa-intro.svg)
 
 ### <a name="msaljs"></a>msal.js
 

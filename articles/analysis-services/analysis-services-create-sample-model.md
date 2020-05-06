@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: a72236843c13e139f33a669b54f108e91679c8c6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74326579"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>教程：从门户添加示例模型
@@ -64,7 +64,7 @@ ms.locfileid: "74326579"
 
     ![登录](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-signin.png)
 
-3. 在“对象资源管理器”中，右键单击  **示例数据库，然后单击“删除”。** `adventureworks` 
+3. 在“对象资源管理器”中，右键单击  **示例数据库，然后单击“删除”。** `adventureworks`
 
     ![删除示例数据库](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-delete.png)
 

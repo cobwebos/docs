@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 03/24/2020
 ms.openlocfilehash: 475f89fc5b33948864fd83c39ee8058ab6908cad
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80247191"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 认知搜索中的新增功能
@@ -45,7 +45,7 @@ Azure 搜索现已重命名为 **Azure 认知搜索**，以反映认知技能和
 
 + 可以通过两种机制（两者的功能目前以预览版提供）对搜索服务进行私密访问：
 
-  + 可以使用管理 REST API `api-version=2019-10-01-Preview` 创建服务，来仅限特定的 IP 地址进行访问。 预览版 API 在 [CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service) 中提供 **IpRule** 和 **NetworkRuleSet** 属性。 此预览版功能可在选定的区域中使用。 有关详细信息，请参阅[如何使用管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)。
+  + 可以使用管理 REST API `api-version=2019-10-01-Preview` 创建服务，来仅限特定的 IP 地址进行访问。 预览版 API 在 **CreateOrUpdate API** 中提供 **IpRule** 和 [NetworkRuleSet](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service) 属性。 此预览版功能可在选定的区域中使用。 有关详细信息，请参阅[如何使用管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)。
 
   + 可以预配一个支持 Azure 专用终结点的 Azure 搜索服务，用于从同一虚拟网络中的客户端建立连接。此功能目前以受限访问预览版提供。 有关详细信息，请参阅[创建专用终结点以建立安全连接](service-create-private-endpoint.md)。
 
