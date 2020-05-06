@@ -1,6 +1,6 @@
 ---
-title: 了解 Azure 资源的 RBAC 角色定义 | Microsoft Docs
-description: 了解基于角色的访问控制 (RBAC) 中的角色定义，以便对 Azure 资源进行精细的访问管理。
+title: 了解 Azure 角色定义-Azure RBAC
+description: 在 azure 基于角色的访问控制（Azure RBAC）中了解 azure 角色定义，以便对 Azure 资源进行精细的访问管理。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 777ea7cc29679a3819e94d39913f167ea1cb3453
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 03edb8e5c58f0fe746921d50ab3f657f291d16da
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641375"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735532"
 ---
-# <a name="understand-role-definitions-for-azure-resources"></a>了解 Azure 资源的角色定义
+# <a name="understand-azure-role-definitions"></a>了解 Azure 角色定义
 
-如果想要了解角色的工作原理，或者要创建自己的 [Azure 资源自定义角色](custom-roles.md)，那么了解角色的定义方法会很有帮助。 本文介绍角色定义的详细信息，并提供了一些示例。
+如果你正在尝试了解 Azure 角色的工作方式，或如果你要创建自己的[azure 自定义角色](custom-roles.md)，则了解如何定义角色会很有帮助。 本文介绍角色定义的详细信息，并提供了一些示例。
 
 ## <a name="role-definition"></a>角色定义
 
@@ -42,7 +42,7 @@ NotDataActions []
 AssignableScopes []
 ```
 
-| properties | 说明 |
+| Property | 说明 |
 | --- | --- |
 | `Name` | 角色的显示名称。 |
 | `Id` | 角色的唯一 ID。 |
@@ -170,11 +170,11 @@ Bob 的权限限制为[存储 Blob 数据参与者](built-in-roles.md#storage-bl
 
 有关存储的管理和数据平面安全性的详细信息，请参阅 [Azure 存储安全指南](../storage/blobs/security-recommendations.md)。
 
-### <a name="what-tools-support-using-rbac-for-data-operations"></a>哪些工具支持使用 RBAC 进行数据操作？
+### <a name="what-tools-support-using-azure-roles-for-data-operations"></a>哪些工具支持使用 Azure 角色进行数据操作？
 
 若要查看和处理数据操作，必须安装正确版本的工具或 SDK：
 
-| 工具  | 版本  |
+| 工具  | Version  |
 |---------|---------|
 | [Azure PowerShell](/powershell/azure/install-az-ps) | 1.1.0 或更高版本 |
 | [Azure CLI](/cli/azure/install-azure-cli) | 2.0.30 或更高版本 |
@@ -245,10 +245,10 @@ Bob 的权限限制为[存储 Blob 数据参与者](built-in-roles.md#storage-bl
 > | 管理组和订阅 | `"/providers/Microsoft.Management/managementGroups/{groupId1}", /subscriptions/{subscriptionId1}",` |
 > | 所有范围（仅适用于内置角色） | `"/"` |
 
-有关自定义角色的 `AssignableScopes` 的信息，请参阅 [Azure 资源的自定义角色](custom-roles.md)。
+有关自定义`AssignableScopes`角色的详细信息，请参阅[Azure 自定义角色](custom-roles.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure 资源的内置角色](built-in-roles.md)
-* [Azure 资源的自定义角色](custom-roles.md)
+* [Azure 内置角色](built-in-roles.md)
+* [Azure 自定义角色](custom-roles.md)
 * [Azure 资源管理器资源提供程序操作](resource-provider-operations.md)

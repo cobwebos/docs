@@ -10,12 +10,12 @@ ms.date: 03/13/2020
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: e32530ece3626807b199850a2b4af5461ff51cde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 901761c8a5dc17cd7f00c3f04153c8e9aa99b648
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414063"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857994"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>如何创建和配置 Azure 集成运行时
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -59,10 +59,10 @@ Azure IR 的类型必须设置为**托管**。 无需指定计算详细信息，
 1. 在 "**集成运行时安装**" 页上，选择 " **Azure"、"自承载**"，然后选择 "**继续**"。 
 
 1. 在以下页面上，选择 " **Azure** " 创建 Azure IR，然后选择 "**继续**"。
-   ![创建集成运行时](media/create-azure-integration-runtime/new-azure-ir.png)
+   ![创建集成运行时](media/create-azure-integration-runtime/new-azure-integration-runtime.png)
 
 1. 输入 Azure IR 的名称，然后选择 "**创建**"。
-   ![创建 Azure IR](media/create-azure-integration-runtime/create-azure-ir.png)
+   ![创建 Azure IR](media/create-azure-integration-runtime/create-azure-integration-runtime.png)
 
 1. 创建完成后，将显示一个弹出通知。 在 "**集成运行时**" 页上，确保在列表中看到新创建的 IR。
 

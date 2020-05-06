@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 05/04/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 8904d584d453cb0945a11b08ad50688aeb1e1fc0
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 601f1c224d6e1d756c27dc2478951682ce6bb4fd
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207320"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854761"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>通过 Azure Monitor 日志管理使用情况和成本
 
@@ -44,11 +44,13 @@ Log Analytics 的默认定价采用**即用即付**模型，该模型基于数�
 
 另请注意，某些解决方案（例如[Azure 安全中心](https://azure.microsoft.com/pricing/details/security-center/)、 [Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/)和[配置管理](https://azure.microsoft.com/pricing/details/automation/)）有自己的定价模型。 
 
-### <a name="dedicated-clusters"></a>专用群集
+### <a name="log-analytics-clusters"></a>Log Analytics 群集
 
-Azure Monitor 日志专用群集是工作区到单个托管 Azure 数据资源管理器（ADX）群集的集合，以支持高级方案，如[客户管理的密钥](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys)。  与即用即付定价相比，专用群集仅支持从 1000 GB/天开始、25% 折扣的容量保留定价模型。 超过预留级别的任何用量将按即用即付费率计费。 在增加预留级别后，群集容量预留具有31天承诺期。 在承诺期间，不能减少容量保留级别，但可以随时增加容量预留级别。 详细了解如何[创建专用群集](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource)并[将工作区关联到该](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#workspace-association-to-cluster-resource)群集。  
+Log Analytics 群集是单个托管的 Azure 数据资源管理器群集的工作区集合，用于支持高级方案，如[客户管理的密钥](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys)。  与即用即付定价相比，Log Analytics 群集仅支持从 1000 GB/天开始、25% 折扣的容量保留定价模型。 超过预留级别的任何用量将按即用即付费率计费。 在增加预留级别后，群集容量预留具有31天承诺期。 在承诺期间，不能减少容量保留级别，但可以随时增加容量预留级别。 详细了解如何[创建 Log Analytics 群集](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource)并[将工作区关联到该](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#workspace-association-to-cluster-resource)群集。  
 
-由于引入数据的计费是在群集级别上完成的，因此与群集关联的工作区不再具有定价层。 将聚合与群集关联的每个工作区中的引入数据数量，以计算该分类的每日帐单。 请注意，在此聚合之前，Azure 安全中心的每个节点分配都将应用于工作区级别。 数据保留期仍按工作区级别计费。  
+使用下`Capacity` `Sku`的参数通过以编程方式使用 Azure 资源管理器配置群集容量预留级别。 以`Capacity` GB 为单位指定，可具有 1000 gb/天或更多的值，以 100 gb/天为增量。 详细信息见[此处](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource)。 如果群集需要超过 2000 GB/天的保留，请联系我们[LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com)。
+
+由于引入数据的计费是在群集级别上完成的，因此与群集关联的工作区不再具有定价层。 将聚合与群集关联的每个工作区中的引入数据数量，以计算该分类的每日帐单。 请注意， [Azure 安全中心](https://docs.microsoft.com/azure/security-center/)的每个节点分配在此聚合数据在群集中的所有工作区上聚合之前，应用于工作区级别。 数据保留期仍按工作区级别计费。 请注意，群集计费在创建群集时开始，不管工作区是否已关联到群集。 
 
 ## <a name="estimating-the-costs-to-manage-your-environment"></a>估算环境的管理成本 
 
@@ -310,7 +312,7 @@ Usage
 
 ### <a name="data-volume-by-computer"></a>按计算机的数据量
 
-`Usage`数据类型不包含其完成注册级别的信息。 若要查看每台计算机的引入数据**大小**，请`_BilledSize`使用[属性](log-standard-properties.md#_billedsize)，它以字节为单位提供大小：
+`Usage`数据类型不包括计算机级别的信息。 若要查看每台计算机的引入数据**大小**，请`_BilledSize`使用[属性](log-standard-properties.md#_billedsize)，它以字节为单位提供大小：
 
 ```kusto
 union withsource = tt * 
@@ -467,7 +469,7 @@ union withsource = tt *
 | where computerName != ""
 | summarize nodesPerHour = dcount(computerName) by bin(TimeGenerated, 1h)  
 | summarize nodesPerDay = sum(nodesPerHour)/24.  by day=bin(TimeGenerated, 1d)  
-| join (
+| join kind=leftouter (
     Heartbeat 
     | where TimeGenerated >= startofday(now(-7d)) and TimeGenerated < startofday(now())
     | where Computer != ""

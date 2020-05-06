@@ -4,16 +4,20 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
-ms.openlocfilehash: 256510f855256e648ae9203f46eb9f66c9ffaed6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 41dfb809cdab00f4f9bee335d92522f37a438c68
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77029178"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82109887"
 ---
 ## <a name="publish-the-project-to-azure"></a>将项目发布到 Azure
 
 在本部分，你将在 Azure 订阅中创建一个函数应用和相关资源，然后部署代码。 
+
+> [!IMPORTANT]
+> 发布到现有函数应用将覆盖该应用在 Azure 中的内容。 
+
 
 1. 在活动栏中选择“Azure”图标，然后在“Azure:  函数”区域中，选择“部署到函数应用...”按钮。 
 
@@ -21,13 +25,12 @@ ms.locfileid: "77029178"
 
 1. 根据提示提供以下信息：
 
+    + **选择文件夹**：从工作区中选择一个文件夹，或浏览到包含函数应用的文件夹。 如果已打开有效的函数应用，则不会看到此信息。
+
     + **选择订阅**：选择要使用的订阅。 如果只有一个订阅，则不会看到此项。
 
-    + **在 Azure 中选择函数应用**：选择 `+ Create new Function App`（而不是 `Advanced`）。 本文不支持[高级发布流](../articles/azure-functions/functions-develop-vs-code.md#enable-publishing-with-advanced-create-options)。 
-    
-    >[!IMPORTANT]
-    > 发布到现有函数应用将覆盖该应用在 Azure 中的内容。 
-    
+    + **在 Azure 中选择函数应用**：选择`+ Create new Function App`。 （请不要选择本文中未介绍的 `Advanced` 选项。）
+      
     + **输入函数应用的全局唯一名称**：键入在 URL 路径中有效的名称。 将对你键入的名称进行验证，以确保其在 Azure Functions 中是唯一的。 
     
     ::: zone pivot="programming-language-python"
@@ -40,13 +43,13 @@ ms.locfileid: "77029178"
 
     + **选择新资源的位置**：为了获得更好的性能，请选择你附近的[区域](https://azure.microsoft.com/regions/)。 
     
-1.  完成后，将在订阅中创建以下 Azure 资源：
-
-    + **[资源组](../articles/azure-resource-manager/management/overview.md)** ：包含创建的所有 Azure 资源。 名称基于你的函数应用名称。
-    + **[存储帐户](../articles//storage/common/storage-introduction.md#types-of-storage-accounts)** ：将使用基于你的函数应用名称的唯一名称创建一个标准存储帐户。
-    + **[托管计划](../articles/azure-functions/functions-scale.md)** ：将在美国西部区域中创建一个消耗计划来托管你的无服务器函数应用。
-    + **函数应用**：你的项目将部署到此新的函数应用并在其中运行。
-    + **Application Insights**：连接到函数应用的实例是根据你的函数名称创建的。
+1.  完成后，将使用基于函数应用名称的名称在订阅中创建以下 Azure 资源：
+    
+    + 一个资源组：相关资源的逻辑容器。
+    + 一个标准 Azure 存储帐户：用于维护项目的状态和其他信息。
+    + 一个消耗计划：用于定义无服务器函数应用的基础主机。 
+    + 一个函数应用：提供用于执行函数代码的环境。 可以通过函数应用将函数分组为逻辑单元，以便在同一托管计划中更轻松地管理、部署和共享资源。
+    + 一个连接到函数应用的 Application Insights 实例：用于跟踪无服务器函数的使用情况。
 
     创建函数应用并应用了部署包之后，会显示一个通知。 
     

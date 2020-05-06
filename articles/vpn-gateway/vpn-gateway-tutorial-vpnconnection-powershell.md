@@ -9,10 +9,10 @@ ms.date: 03/11/2020
 ms.author: yushwang
 ms.custom: mvc
 ms.openlocfilehash: 18c6188e1b13c35a4c28a5f9e7fc863f00798eed
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80616403"
 ---
 # <a name="tutorial-create-and-manage-s2s-vpn-connections-using-powershell"></a>教程：使用 PowerShell 创建和管理 S2S VPN 连接

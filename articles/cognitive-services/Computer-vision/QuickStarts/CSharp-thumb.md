@@ -12,10 +12,10 @@ ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: dcb3d12646f995304019e57fb2436b279fad3659
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81405112"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-c"></a>快速入门：使用计算机视觉 REST API 和 C# 生成缩略图

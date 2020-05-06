@@ -15,10 +15,10 @@ ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: ac581b45f3aefe7a386f25c978bfc09adda4e39f
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460471"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>教程：在 Azure 中使用 Key Vault 中存储的 TLS/SSL 证书保护 Linux 虚拟机上的 Web 服务器

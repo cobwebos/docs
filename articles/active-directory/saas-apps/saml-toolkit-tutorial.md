@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 04/24/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7902112c1694bacfeb45b5f20db80d5136642169
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4d2681c09030ff0f36938d7a09e1d1b2e9aa645c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77047952"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82166304"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-azure-ad-saml-toolkit"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Azure AD SAML Toolkit 集成
 
@@ -83,11 +82,14 @@ ms.locfileid: "77047952"
 
 1. 在“基本 SAML 配置”页上，输入以下字段的值  ：
 
-    a. 在“登录 URL”文本框中，键入 URL：`https://samltoolkit.azurewebsites.net/` 
+    a. 在“登录 URL”文本框中，键入 URL：`https://samltoolkit.azurewebsites.net/`
 
-    b. 在“标识符(实体 ID)”文本框中，键入 URL：`https://samltoolkit.azurewebsites.net` 
+    b. 在“标识符(实体 ID)”文本框中，键入 URL：`https://samltoolkit.azurewebsites.net`
 
-    c. 在“回复 URL”文本框中键入 URL：`https://samltoolkit.azurewebsites.net/SAML/Consume` 
+    c. 在“回复 URL”文本框中键入 URL：`https://samltoolkit.azurewebsites.net/SAML/Consume`
+
+    > [!NOTE]
+    > 这些值不是实际值。 本教程稍后将介绍如何使用实际的登录 URL、标识符和回复 URL 值更新这些值。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(原始)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
@@ -154,6 +156,8 @@ ms.locfileid: "77047952"
     1. 单击“选择文件”  并上传从 Azure 门户下载的“证书(原始)”  文件。
 
     1. 单击“创建”。 
+
+    1. 在“SAML 工具包 SSO 配置”页上复制“登录 URL”、“标识符”和“ACS URL”值，然后将其粘贴到 Azure 门户的“基本 SAML 配置”部分  中的相应文本框中。
 
 ### <a name="create-azure-ad-saml-toolkit-test-user"></a>创建 Azure AD SAML Toolkit 测试用户
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 0f815003449f0600bce1cb8927b92b85b51b09a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da01d0f7d2313b9700c5aae08edbda9e355b3774
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641624"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801767"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中使用搜索结果
 
@@ -92,9 +92,15 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
 
 ## <a name="hit-highlighting"></a>突出显示
 
-命中突出显示指的是在结果中应用于匹配字词的文本格式（例如粗体或黄色突出显示），这样就可以轻松地找到匹配项。 [查询请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)上提供了命中突出显示说明。 搜索引擎将匹配项包含在标记中， `highlightPreTag`并`highlightPostTag`在代码中处理响应（例如，应用粗体字体）。
+命中突出显示是指应用于结果中的匹配字词的文本格式（例如粗体或黄色突出显示），这使得可以轻松地找到匹配项。 [查询请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)上提供了命中突出显示说明。 
 
-格式设置将应用于整个术语查询。 在下面的示例中，在 "说明" 字段中找到的术语 "sandy"、"沙滩"、"海滩"、"浮水" 标记为突出显示。 在引擎中触发查询扩展的查询（如模糊和通配符搜索）对命中突出显示功能的支持有限。
+若要启用命中突出显示`highlight=[comma-delimited list of string fields]` ，请添加以指定将使用突出显示的字段。 突出显示适用于较长的内容字段（例如 "说明" 字段），其中不会立即显示匹配项。 只有属性化为可**搜索**的字段定义才能进行命中突出显示。
+
+默认情况下，Azure 认知搜索每个字段最多返回5个亮点。 您可以通过在字段中追加一个短划线后跟一个整数来调整此数字。 例如，对于`highlight=Description-10` "说明" 字段中的匹配内容，最多返回10个突出显示内容。
+
+格式设置将应用于整个术语查询。 格式设置的类型由标记、 `highlightPreTag`和`highlightPostTag`代码处理响应（例如，应用粗体或黄色背景）。
+
+在下面的示例中，在 "说明" 字段中找到的术语 "sandy"、"沙滩"、"海滩"、"浮水" 标记为突出显示。 在引擎中触发查询扩展的查询（如模糊和通配符搜索）对命中突出显示功能的支持有限。
 
 ```http
 GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2019-05-06 

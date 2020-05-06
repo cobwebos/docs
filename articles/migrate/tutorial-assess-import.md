@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 2a30222902fd8797908202562a04018209842af2
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 484dfd7834a206dce6805dc38b0eabeae2ee352a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115065"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82114558"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>使用导入的数据评估服务器
 
@@ -68,7 +68,7 @@ ms.locfileid: "81115065"
 5. 在“迁移项目”中选择你的 Azure 订阅，并创建一个资源组（如果没有）。 
 6. 在“项目详细信息”中，指定项目名称以及要在其中创建项目的地理位置。  更多相关信息：
 
-    - 查看[支持的地理位置](migrate-support-matrix.md#supported-geographies)。 项目地理位置仅用于存储从本地 VM 中收集的元数据。
+    - 查看[公有云](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府云](migrate-support-matrix.md#supported-geographies-azure-government)支持的地理位置。
     - 运行迁移时，可以选择任一目标区域。
 
     ![创建 Azure Migrate 项目](./media/tutorial-assess-import/migrate-project.png)
@@ -248,6 +248,8 @@ IP 地址  | 否 | 服务器地址。
 > 不会将置信度评级分配到使用 CSV 导入到“服务器评估”中的服务器评估。
 
 ## <a name="supported-operating-system-names"></a>支持的操作系统名称
+
+CSV 中提供的操作系统名称必须包含此列表中的名称或与之匹配。 若要确保指定的名称在评估时被识别为有效，这是必要的。
 
 <!-- BEGIN A - H -->
 

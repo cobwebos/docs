@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: dcadfcb4c2f8e6bc371b0a70b917c8c1e218fba9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b990db39ffe0623b50a2cfc728da61bc51bdd4da
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679516"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855343"
 ---
 # <a name="source-control-integration-in-azure-automation---legacy"></a>Azure 自动化中的源代码管理集成 - 传统
 
@@ -102,7 +102,7 @@ Runbook 签入可让你将对 Azure 自动化中的 Runbook 所做的更改推�
    > [!NOTE]
    > 源代码管理 Runbook 是特殊的自动化 Runbook，无法查看或编辑。 虽然它们不显示在 Runbook 列表上，但你可以看到显示在作业列表中的同步作业。
 
-5. 修改后的 Runbook 的名称将发送为已签入 Runbook 的输入参数。 可以通过在 "存储库同步" 页面上展开 runbook 来[查看作业详细信息](automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)。  
+5. 修改后的 Runbook 的名称将发送为已签入 Runbook 的输入参数。 可以通过在 "存储库同步" 页面上展开 runbook 来[查看作业详细信息](automation-runbook-execution.md#job-statuses)。  
 
     ![显示同步作业的输入的窗口](media/source-control-integration-legacy/automation-CheckinInput.png)
 6. 在作业完成时刷新 GitHub 存储库可以查看更改。  存储库中应有一个提交消息：**已在 Azure 自动化中更新*Runbook 名称*。**  
