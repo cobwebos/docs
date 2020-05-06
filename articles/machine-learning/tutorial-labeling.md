@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
-ms.date: 04/02/2020
-ms.openlocfilehash: fa33861d86ff8bee3e2a34fb3d93032ac6180880
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.date: 04/09/2020
+ms.openlocfilehash: d960c8225cbb22c221ecaec1b7c49b5bb20c1429
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879619"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203635"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>教程：创建用于多类图像分类的标记项目 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -69,23 +69,11 @@ Azure 机器学习数据存储用于存储连接信息，例如订阅 ID 和令�
     数据存储名称 | 为数据存储提供一个名称。  此处我们使用 labeling_tutorial。 
     数据存储类型 | 选择存储的类型。  此处我们使用“Azure Blob 存储”，这是适用于图像的首选存储。 
     帐户选择方法 | 选择“手动输入”。 
-    URL | `https://azureopendatastorage.blob.core.windows.net/openimagescontainer`
+    代码 | `https://azureopendatastorage.blob.core.windows.net/openimagescontainer`
     身份验证类型 | 选择“SAS 令牌”。 
     帐户密钥 | `?sv=2019-02-02&ss=bfqt&srt=sco&sp=rl&se=2025-03-25T04:51:17Z&st=2020-03-24T20:51:17Z&spr=https&sig=7D7SdkQidGT6pURQ9R4SUzWGxZ%2BHlNPCstoSRRVg8OY%3D`
 
 1. 选择“创建”以创建数据存储。 
-
-### <a name="add-labelers-to-workspace"></a>将标记人员添加到工作区
-
-设置你的工作区以包含将为你的任何项目标记数据的所有人员。  稍后需要将这些标记人员添加到特定的标记项目。
-
-1. 在左侧选择“数据标记”。 
-
-1. 在页面顶部选择“标记人员”。 
-
-1. 选择“添加标记人员”以添加标记人员的电子邮件地址。 
-
-1. 继续添加所需的更多标记人员。
 
 ### <a name="create-a-labeling-project"></a>创建标记项目
 
@@ -142,51 +130,21 @@ Azure 机器学习数据存储用于存储连接信息，例如订阅 ID 和令�
 
 此页面不会自动刷新。 片刻之后，请手动刷新页面，直到项目状态更改为“已创建”。 
 
-### <a name="add-labelers-to-your-project"></a>将标记人员添加到项目
-
-将部分或全部标记人员添加到此项目。
-
-1. 选择项目名称以打开该项目。  
-
-1. 在页面顶部选择“团队”。 
-
-1. 选择“labeling_tutorial 默认团队”链接。 
-
-1. 现在，使用“分配标记人员”添加你希望其参与此项目的标记人员。  
-
-1. 从前面创建的标记人员列表中进行选择。  选择要使用的所有标记人员后，选择“分配标记人员”以将其添加到默认项目团队。 
-
 ## <a name="start-labeling"></a>开始标记
 
 你现在已设置了 Azure 资源，并已配置了数据标记项目。 接下来需要向数据添加标签。
 
-### <a name="notify-labelers"></a>通知标记人员
+### <a name="tag-the-images"></a>标记图像
 
-假设你需要标记大量的图像，那么希望你有大量的标记人员来完成该任务。  现在，你想要向标记人员发送说明，使他们可以访问数据并开始标记。
+在本教程部分，你要将角色从“项目管理员”切换为标记人员的角色。    任何对你的工作区具有参与者访问权限的人都可以成为标记人员。
 
 1. 在[机器学习工作室](https://ml.azure.com)中，选择左侧的“数据标记”来找到你的项目。   
 
-1. 选择项目名称链接。
+1. 选择列表中的项目名称。
 
-1. 在页面顶部选择“详细信息”。   此时会看到项目摘要。
+1. 在项目名称下方，选择“标签数据”  。
 
-    ![项目详细信息](media/tutorial-labeling/project-details.png)
-
-1. 复制要发送给标记人员的“标记门户 URL”链接。 
-
-1. 现在，选择顶部的“团队”来找到你的标记团队。   
-
-1. 选择团队名称链接。
-
-1. 在页面顶部，选择“向团队发送电子邮件”以启动电子邮件。   粘贴刚刚复制的标记门户 URL。  
-
-标记人员每次转到该门户 URL 时，都会看到其他要标记的图像，直到队列为空。  
-
-### <a name="tag-the-images"></a>标记图像
-
-在本教程部分，你要将角色从“项目管理员”切换为标记人员的角色。    使用发送给团队的 URL。  此 URL 会将你转到项目的标记门户。  如果前面已添加说明，则进入该页面时会看到这些说明。
-
-1. 在页面顶部，选择“任务”以开始标记。 
+1. 阅读说明，然后选择“任务”  。
 
 1. 选择右侧的缩略图以显示要一次性标记的图像数。 必须标记所有这些图像才能继续操作。 仅当有包含未标记数据的新页面时，才可以切换布局。 切换布局会清除页面的正在进行的标记工作。
 

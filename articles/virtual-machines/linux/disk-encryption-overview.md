@@ -8,27 +8,27 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: fa7e085f723d4f4c411f52e045c9437d5cb293b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 80ca7d8ed89ba0a3b196f1b2b29384c749cf1b22
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459774"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792541"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>适用于 Linux VM 的 Azure 磁盘加密 
 
 Azure 磁盘加密有助于保护数据，使组织能够信守在安全性与合规性方面作出的承诺。 它使用 Linux 的 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能为 Azure 虚拟机 (VM) 的 OS 和数据磁盘提供卷加密，并与 [Azure Key Vault](../../key-vault/index.yml) 集成，帮助你控制和管理磁盘加密密钥和机密。 
 
-如果使用 [Azure 安全中心](../../security-center/index.yml)，当 VM 未加密时，你会收到警报。 这些警报显示为“高严重性”，建议加密这些 VM。
+如果使用 [Azure 安全中心](../../security-center/index.yml)，则当 VM 未加密时，你会收到警报。 这些警报显示为“高严重性”，建议加密这些 VM。
 
 ![Azure 安全中心磁盘加密警报](media/disk-encryption/security-center-disk-encryption-fig1.png)
 
 > [!WARNING]
-> - 如果之前是使用 Azure 磁盘加密与 Azure AD 来加密 VM，则必须继续使用此选项来加密 VM。 有关详细信息，请参阅 [使用 Azure AD 进行 Azure 磁盘加密（以前版本）](disk-encryption-overview-aad.md)。 
+> - 如果之前是使用 Azure 磁盘加密与 Azure AD 来加密 VM，则必须继续使用此选项来加密 VM。 有关详细信息，请参阅[使用 Azure AD 进行的 Azure 磁盘加密（以前的版本）](disk-encryption-overview-aad.md)。 
 > - 某些建议可能会导致数据、网络或计算资源使用量增加，从而产生额外的许可或订阅成本。 必须具有有效的活动 Azure 订阅，才能在 Azure 的受支持区域中创建资源。
-> - 当前第2代 Vm 不支持 Azure 磁盘加密。 有关详细信息，请参阅[Azure 上的第2代 Vm 支持](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2)。
+> - 目前，第 2 代 VM 不支持 Azure 磁盘加密。 有关详细信息，请参阅 [Azure 对第 2 代 VM 的支持](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2)。
 
-只需几分钟，即可通过[使用 Azure CLI 创建和加密 Linux VM 快速入门](disk-encryption-cli-quickstart.md)或[使用 Azure Powershell 创建和加密 Linux VM 快速入门](disk-encryption-powershell-quickstart.md)了解适用于 Linux 的 Azure 磁盘加密的基础知识。
+只需几分钟即可了解适用于 Linux 的 Azure 磁盘加密基础知识，只需使用[Azure CLI 快速入门创建和加密 LINUX vm](disk-encryption-cli-quickstart.md) ，或者[使用 Azure PowerShell 快速入门创建和加密 linux vm](disk-encryption-powershell-quickstart.md)即可。
 
 ## <a name="supported-vms-and-operating-systems"></a>支持的 VM 和操作系统
 
@@ -46,7 +46,7 @@ Linux VM 提供了[多种大小](sizes.md)。 Azure 磁盘加密不适用于[基
 
 Azure 磁盘加密还可用于使用高级存储的 VM。
 
-Azure 磁盘加密不适用于[第2代 vm](generation-2.md#generation-1-vs-generation-2-capabilities)）和[Lsv2 系列 vm](../lsv2-series.md)）。 有关更多例外，请参阅[Azure 磁盘加密：不支持的方案](disk-encryption-linux.md#unsupported-scenarios)。
+Azure 磁盘加密不适用于[第2代 vm](generation-2.md#generation-1-vs-generation-2-capabilities)）和[Lsv2 系列 vm](../lsv2-series.md)）。 有关更多例外，请参阅 [Azure 磁盘加密：不支持的方案](disk-encryption-linux.md#unsupported-scenarios)。
 
 ### <a name="supported-operating-systems"></a>支持的操作系统
 
@@ -56,29 +56,37 @@ Azure 磁盘加密不适用于[第2代 vm](generation-2.md#generation-1-vs-gener
 
 未经 Azure 认可的 Linux 服务器发行版不支持 Azure 磁盘加密；在认可的发行版中，只有以下发行版和版本支持 Azure 磁盘加密：
 
-| Linux 分发版 | 版本 | 支持加密的卷类型|
-| --- | --- |--- |
-| Ubuntu | 18.04| OS 和数据磁盘 |
-| Ubuntu | 16.04| OS 和数据磁盘 |
-| Ubuntu | 14.04.5</br>[其 Azure 优化内核更新到 4.15 或更高版本](disk-encryption-troubleshooting.md) | OS 和数据磁盘 |
-| RHEL | 7.7 | OS 和数据磁盘（参阅下面的注释） |
-| RHEL | 7.6 | OS 和数据磁盘（参阅下面的注释） |
-| RHEL | 7.5 | OS 和数据磁盘（参阅下面的注释） |
-| RHEL | 7.4 | OS 和数据磁盘（参阅下面的注释） |
-| RHEL | 7.3 | OS 和数据磁盘（参阅下面的注释） |
-| RHEL | 7.2 | OS 和数据磁盘（参阅下面的注释） |
-| RHEL | 6.8 | 数据磁盘（参阅下面的注释） |
-| RHEL | 6.7 | 数据磁盘（参阅下面的注释） |
-| CentOS | 7.7 | OS 和数据磁盘 |
-| CentOS | 7.6 | OS 和数据磁盘 |
-| CentOS | 7.5 | OS 和数据磁盘 |
-| CentOS | 7.4 | OS 和数据磁盘 |
-| CentOS | 7.3 | OS 和数据磁盘 |
-| CentOS | 7.2n | OS 和数据磁盘 |
-| CentOS | 6.8 | 数据磁盘 |
-| openSUSE | 42.3 | 数据磁盘 |
-| SLES | 12-SP4 | 数据磁盘 |
-| SLES | 12-SP3 | 数据磁盘 |
+| 发布者 | 产品/服务 | SKU | URN | 支持加密的卷类型 |
+| --- | --- |--- | --- |
+| Canonical | Ubuntu | 18.04-LTS | 规范： UbuntuServer： 18.04-LTS：最新 | OS 和数据磁盘 |
+| Canonical | Ubuntu 18.04 | 18.04-每日-LTS | 规范： UbuntuServer： 18.04-LTS：最新 | OS 和数据磁盘 |
+| Canonical | Ubuntu 16.04 | 16.04-DAILY-LTS | 规范： UbuntuServer： 16.04-LTS：最新 | OS 和数据磁盘 |
+| Canonical | Ubuntu 14.04。5</br>[其 Azure 优化内核更新到 4.15 或更高版本](disk-encryption-troubleshooting.md) | 14.04.5-LTS | 规范： UbuntuServer： 14.04.5-LTS：最新 | OS 和数据磁盘 |
+| Canonical | Ubuntu 14.04。5</br>[其 Azure 优化内核更新到 4.15 或更高版本](disk-encryption-troubleshooting.md) | 14.04.5-DAILY-LTS | 规范： UbuntuServer： 14.04.5-LTS：最新 | OS 和数据磁盘 |
+| RedHat | RHEL 7。7 | 7.7 | RedHat： RHEL：7.7：最新 | OS 和数据磁盘（参阅下面的注释） |
+| RedHat | RHEL 7。7 | 7-RAW | RedHat： RHEL： 7-RAW：最新 | OS 和数据磁盘（参阅下面的注释） |
+| RedHat | RHEL 7。7 | 7-LVM | RedHat： RHEL： 7-LVM：最新 | OS 和数据磁盘（参阅下面的注释） |
+| RedHat | RHEL 7。6 | 7.6 | RedHat： RHEL：7.6：最新 | OS 和数据磁盘（参阅下面的注释） |
+| RedHat | RHEL 7.5 | 7.5 | RedHat： RHEL：7.5：最新 | OS 和数据磁盘（参阅下面的注释） |
+| RedHat | RHEL 7.4 | 7.4 | RedHat： RHEL：7.4：最新 | OS 和数据磁盘（参阅下面的注释） |
+| RedHat | RHEL 7.3 | 7.3 | RedHat： RHEL：7.3：最新 | OS 和数据磁盘（参阅下面的注释） |
+| RedHat | RHEL 7.2 | 7.2 | RedHat： RHEL：7.2：最新 | OS 和数据磁盘（参阅下面的注释） |
+| RedHat | RHEL 6。8 | 6.8 | RedHat： RHEL：6.8：最新 | 数据磁盘（参阅下面的注释） |
+| RedHat | RHEL 6。7 | 6.7 | RedHat： RHEL：6.7：最新 | 数据磁盘（参阅下面的注释） |
+| OpenLogic | CentOS 7。7 | 7.7 | OpenLogic： CentOS：7.7：最新 | OS 和数据磁盘 |
+| OpenLogic | CentOS 7。7 | 7-LVM | OpenLogic： CentOS： 7-LVM：最新 | OS 和数据磁盘 |
+| OpenLogic | CentOS 7。6 | 7.6 | OpenLogic： CentOS：7.6：最新 | OS 和数据磁盘 |
+| OpenLogic | CentOS 7.5 | 7.5 | OpenLogic： CentOS：7.5：最新 | OS 和数据磁盘 |
+| OpenLogic | CentOS 7.4 | 7.4 | OpenLogic： CentOS：7.4：最新 | OS 和数据磁盘 |
+| OpenLogic | CentOS 7.3 | 7.3 | OpenLogic： CentOS：7.3：最新 | OS 和数据磁盘 |
+| OpenLogic | CentOS 7.2 n | 7.2n | OpenLogic： CentOS： 7.2 n：最新 | OS 和数据磁盘 |
+| OpenLogic | CentOS 7.1 | 7.1 | OpenLogic： CentOS：7.1：最新 | 仅数据磁盘 |
+| OpenLogic | CentOS 7。0 | 7.0 | OpenLogic： CentOS：7.0：最新 | 仅数据磁盘 |
+| OpenLogic | CentOS 6.8 | 6.8 | OpenLogic： CentOS：6.8：最新 | 仅数据磁盘 |
+| SUSE | openSUSE 42.3 | 42.3 | SUSE:openSUSE-Leap:42.3:latest | 仅数据磁盘 |
+| SUSE | SLES 优先级 12-SP4 | 12-SP4 | SUSE:SLES-Priority:12-SP4:latest | 仅数据磁盘 |
+| SUSE | SLES 优先级 12-SP3 | 12-SP3 | SUSE:SLES-Priority:12-SP3:latest | 仅数据磁盘 |
+| SUSE | SLES HPC 12-SP3 | 12-SP3 | SUSE:SLES-HPC:12-SP3:latest | 仅数据磁盘 |
 
 > [!NOTE]
 > RHEL OS 和用于 RHEL7 即用即付映像的数据磁盘支持新的 Azure 磁盘加密。  
@@ -89,7 +97,7 @@ Azure 磁盘加密不适用于[第2代 vm](generation-2.md#generation-1-vs-gener
 
 Azure 磁盘加密要求系统上存在 dm-dm-crypt 和 vfat 模块。 在默认映像中删除或禁用 vfat 会阻止系统读取密钥卷，以及在后续重新启动时获取用于解锁磁盘的密钥。 从系统中删除 vfat 模块的系统强化步骤与 Azure 磁盘加密不兼容。 
 
-在启用加密之前，要加密的数据磁盘必须在 /etc/fstab 中正确列出。 为此条目使用永久性块设备名，因为每次重新启动后，不能依赖于使用“/dev/sdX”格式的设备名来与同一磁盘相关联，尤其是应用加密后。 有关此行为的详细信息，请参阅：[排查 Linux VM 设备名更改问题](troubleshoot-device-names-problems.md)
+在启用加密之前，要加密的数据磁盘必须在 /etc/fstab 中正确列出。 为此条目使用永久性块设备名，因为每次重新启动后，不能依赖于使用“/dev/sdX”格式的设备名来与同一磁盘相关联，尤其是应用加密后。 有关此行为的更多详细信息，请参阅：[排查 Linux VM 设备名称更改问题](troubleshoot-device-names-problems.md)
 
 确保正确配置用于装载的 /etc/fstab 设置。 若要配置这些设置，请运行 mount -a 命令，或重新启动 VM 并以这种方法触发重新装载。 装载完成后，检查 lsblk 命令的输出，以验证驱动器是否仍已装载。 
 - 如果在启用加密之前 /etc/fstab 文件未正确装载该驱动器，则 Azure 磁盘加密无法将其正确装载。
@@ -132,6 +140,6 @@ Azure 磁盘加密需要 Azure Key Vault 来控制和管理磁盘加密密钥和
 - [Linux VM 上的 Azure 磁盘加密方案](disk-encryption-linux.md)
 - [Azure 磁盘加密先决条件 CLI 脚本](https://github.com/ejarvi/ade-cli-getting-started)
 - [Azure 磁盘加密先决条件 PowerShell 脚本](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
-- [创建和配置用于 Azure 磁盘加密的 Key Vault](disk-encryption-key-vault.md)
+- [创建和配置用于 Azure 磁盘加密的密钥保管库](disk-encryption-key-vault.md)
 
 

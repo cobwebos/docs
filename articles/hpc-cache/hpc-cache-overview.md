@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: overview
 ms.date: 04/15/2020
 ms.author: v-erkel
-ms.openlocfilehash: 084c33874b474fc1789df93e088d3cec4263eac9
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 02013abe7050f7f193b6aeb1a441e70f46a5df48
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536635"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82106451"
 ---
 # <a name="what-is-azure-hpc-cache"></a>什么是 Azure HPC 缓存？
 
@@ -63,6 +63,12 @@ Azure HPC 缓存在以下 Azure 区域中提供：
 * 美国西部 2
 
 有关最新可用性信息，请查看 [Azure HPC 缓存产品页](https://azure.microsoft.com/services/hpc-cache)。
+
+## <a name="service-availability"></a>服务可用性
+
+必须为将用于 Azure HPC 缓存的每个订阅请求访问权限。 此限制有助于确保服务质量。
+
+通过填写[此表单](https://aka.ms/onboard-hpc-cache)来请求访问权限。 将订阅添加到访问列表后，可以创建缓存。
 
 ## <a name="next-steps"></a>后续步骤
 

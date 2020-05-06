@@ -4,14 +4,14 @@ description: 本教程介绍如何横向扩展和缩小 Azure 中的 Service Fab
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: f1b813576a94541cdc2ab0a67fea71b6f49696c5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6e8dbb5a56bf313bf35ad97ec6ea7df8ce483be9
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78251799"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788815"
 ---
-# <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>教程：在 Azure 中缩放 Service Fabric 群集
+# <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>教程：缩放 Azure 中的 Service Fabric 群集
 
 本教程是系列教程的第三部分，介绍如何扩大和缩小现有群集。 完成时，将知道如何缩放群集以及如何清理剩余的资源。  有关缩放 Azure 中运行的群集的详细信息，请阅读[缩放 Service Fabric 群集](service-fabric-cluster-scaling.md)。
 
@@ -33,7 +33,7 @@ ms.locfileid: "78251799"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始学习本教程之前：
 
@@ -84,7 +84,7 @@ ms.locfileid: "78251799"
 
 这样，可通过更新 nt1InstanceCount  的值来更改第二个节点类型中的节点数。  请记住，无法将一个节点类型横向扩展到超过 100 个节点。  运行有状态生产工作负荷的非主节点类型应始终具有五个或更多个节点。 运行无状态生产工作负荷的非主节点类型应始终具有两个或更多个节点。
 
-如果缩减铜级[持久性级别][durability]的节点类型规模（从其中删除节点），必须[手动删除这些节点的状态](service-fabric-cluster-scale-up-down.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set)。  对于白银和黄金持久性层，平台会自动完成上述步骤。
+如果缩减铜级[持久性级别][durability]的节点类型规模（从其中删除节点），必须[手动删除这些节点的状态](service-fabric-cluster-scale-in-out.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set)。  对于白银和黄金持久性层，平台会自动完成上述步骤。
 
 ### <a name="deploy-the-updated-template"></a>部署已更新的模板
 将任何更改保存到 template.json 和 parameters.json 文件   。  若要部署更新的模板，请运行以下命令：

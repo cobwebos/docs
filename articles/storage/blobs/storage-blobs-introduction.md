@@ -1,5 +1,6 @@
 ---
-title: Blob（对象）存储简介 - Azure 存储
+title: Blob（对象）存储简介
+titleSuffix: Azure Storage
 description: Azure Blob 存储可存储巨量的非结构化对象数据，例如文本或二进制数据。 Azure Blob 存储高度可缩放且高度可用。 客户端可通过 PowerShell 或 Azure CLI、以编程方式通过 Azure Storage 客户端库或者使用 REST 访问 Blob 存储中的数据对象。
 services: storage
 author: tamram
@@ -8,12 +9,12 @@ ms.topic: overview
 ms.date: 03/18/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f7d1967c8a9585fbf5131da986595761030f0e5f
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 084b364f4a1414febb7b6f11c9cf70958ee823c4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631994"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82176663"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob 存储简介
 

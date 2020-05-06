@@ -449,6 +449,8 @@
           items:
             - name: 创建 Azure 应用程序产品/服务
               href: ./partner-center-portal/create-new-azure-apps-offer.md
+            - name: Azure 应用程序按流量计费
+              href: ./partner-center-portal/azure-app-metered-billing.md
             - name: 处理评审反馈
               href: ./partner-center-portal/azure-apps-review-feedback.md
             - name: 用于载入的 API
@@ -515,11 +517,6 @@
               href: ./partner-center-portal/create-new-saas-offer.md
             - name: SaaS 按流量计费
               href: ./partner-center-portal/saas-metered-billing.md
-              items:
-                - name: Azure 市场计量服务 API - 常见问题解答
-                  href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
-                - name: Azure 市场计量服务 API
-                  href: ./partner-center-portal/marketplace-metering-service-apis.md
             - name: SaaS 履行 API
               href: ./partner-center-portal/pc-saas-fulfillment-apis.md
               items:
@@ -546,6 +543,14 @@
               href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md
             - name: Salesforce
               href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
+        - name: 市场计量服务
+          items:
+            - name: 身份验证策略
+              href: ./partner-center-portal/marketplace-metering-service-authentication.md
+            - name: Azure 市场计量服务 API
+              href: ./partner-center-portal/marketplace-metering-service-apis.md
+            - name: Azure 市场计量服务 API - 常见问题解答
+              href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
         - name: 试用产品/服务
           href: ./partner-center-portal/test-drive.md
         - name: 联合销售选项
@@ -589,11 +594,13 @@
           href: ./partner-center-portal/get-paid.md
         - name: 设置付款帐户和纳税表单
           href: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
-        - name: 计费详细信息
-          href: ./partner-center-portal/billing-details.md
         - name: 付款阈值、方法和时间范围
           href: ./partner-center-portal/payment-thresholds-methods-timeframes.md
+        - name: 付款摘要概述
+          href: ./partner-center-portal/payout-summary-overview.md
         - name: 付款摘要
           href: ./partner-center-portal/payout-summary.md
+        - name: 付款策略详细信息
+          href: ./partner-center-portal/payout-policy-details.md
         - name: 税项详细信息
           href: ./partner-center-portal/tax-details-paid-transactions.md

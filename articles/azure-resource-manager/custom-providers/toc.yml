@@ -21,6 +21,11 @@
       href: tutorial-custom-providers-create.md
     - name: 扩展资源
       href: tutorial-resource-onboarding.md
+- name: 示例
+  items:
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 用于关联的 Azure Policy

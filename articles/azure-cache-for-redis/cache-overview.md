@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 03/11/2020
-ms.openlocfilehash: 38936000e426d560237295105b5456429d9ae16d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: cd4e7c8e2693c25f3fc092fb53874a97cfd62434
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79126364"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82113198"
 ---
 # <a name="azure-cache-for-redis-description"></a>Azure Redis 缓存说明
 
@@ -19,7 +19,7 @@ Azure Cache for Redis 基于开源软件 [Redis](https://redis.io/) 提供内存
 
 Azure Cache for Redis 也可用作内存中数据结构存储、分布式非关系数据库以及消息代理。 若要提高应用程序性能，可充分利用 Redis 引擎低延迟、高吞吐量的性能特点。
 
-Azure Cache for Redis 提供了安全的专用 Redis 缓存。 Azure Redis 缓存由 Microsoft 进行管理并承载在 Azure 中，可供 Azure 内外的任何应用程序访问。
+Azure Cache for Redis 提供了安全的专用 Redis 缓存。 Azure Redis 缓存由 Microsoft 进行管理并承载在 Azure 中，可供 Azure 内外的任何应用程序访问。 此外，Azure Redis for Cache 使用无盘复制策略，增强了与支付卡行业的兼容性。
 
 ## <a name="using-azure-cache-for-redis"></a>使用 Azure Redis 缓存
 

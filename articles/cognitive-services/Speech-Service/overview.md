@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 03/12/2020
 ms.author: trbye
 ms.openlocfilehash: 464e21caf3105b12f0fbf44dc2aa3674a252d3c6
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81401027"
 ---
 # <a name="what-is-the-speech-service"></a>什么是语音服务？

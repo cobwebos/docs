@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 94d3993c6a0c62a68ea77a888d3351c8fea1d935
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 4b9dac92f0cff213622f0087b281814251f06ffd
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80990984"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181607"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>向 ASP.NET Web 应用添加 Microsoft 登录功能
 
@@ -70,10 +70,8 @@ ms.locfileid: "80990984"
     Install-Package Microsoft.Owin.Host.SystemWeb
     ```
 
-<!--start-collapse-->
-> ### <a name="about-these-libraries"></a>关于这些库
-> 这些库通过基于 Cookie 的身份验证使用 OpenID Connect 启用单一登录 (SSO)。 完成身份验证后，代表用户的令牌会发送到应用程序，OWIN 中间件会创建会话 Cookie。 浏览器随后对后续请求使用此 Cookie，这样一来，用户就无需重新键入密码，也不需要任何其他验证。
-<!--end-collapse-->
+### <a name="about-these-libraries"></a>关于这些库
+这些库通过基于 Cookie 的身份验证使用 OpenID Connect 启用单一登录 (SSO)。 完成身份验证后，代表用户的令牌会发送到应用程序，OWIN 中间件会创建会话 Cookie。 浏览器随后对后续请求使用此 Cookie，这样一来，用户就无需重新键入密码，也不需要任何其他验证。
 
 ## <a name="configure-the-authentication-pipeline"></a>配置身份验证管道
 
@@ -117,7 +115,7 @@ ms.locfileid: "80990984"
         string authority = String.Format(System.Globalization.CultureInfo.InvariantCulture, System.Configuration.ConfigurationManager.AppSettings["Authority"], tenant);
 
         /// <summary>
-        /// Configure OWIN to use OpenIdConnect 
+        /// Configure OWIN to use OpenIdConnect
         /// </summary>
         /// <param name="app"></param>
         public void Configuration(IAppBuilder app)
@@ -171,10 +169,9 @@ ms.locfileid: "80990984"
 > 在本快速入门中，设置 `ValidateIssuer = false` 是一种简化操作。 在实际应用程序中，必须验证颁发者。
 > 查看示例，了解如何执行该操作。
 
-<!--start-collapse-->
-> ### <a name="more-information"></a>详细信息
-> 在 *OpenIDConnectAuthenticationOptions* 中提供的参数将充当应用程序与 Microsoft 标识平台通信时使用的坐标。 OpenID Connect 中间件会在后台使用 Cookie，因此，还必须设置 Cookie 身份验证，如以上代码所示。 *ValidateIssuer* 值告知 OpenIdConnect 不要限制某个特定组织的访问权限。
-<!--end-collapse-->
+### <a name="more-information"></a>详细信息
+
+在 *OpenIDConnectAuthenticationOptions* 中提供的参数将充当应用程序与 Microsoft 标识平台通信时使用的坐标。 OpenID Connect 中间件会在后台使用 Cookie，因此，还必须设置 Cookie 身份验证，如以上代码所示。 *ValidateIssuer* 值告知 OpenIdConnect 不要限制某个特定组织的访问权限。
 
 ## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>添加控制器来处理登录和注销请求
 
@@ -208,7 +205,7 @@ ms.locfileid: "80990984"
                 OpenIdConnectAuthenticationDefaults.AuthenticationType);
         }
     }
-    
+
     /// <summary>
     /// Send an OpenID Connect sign-out request.
     /// </summary>
@@ -266,10 +263,8 @@ ms.locfileid: "80990984"
     </html>
     ```
 
-<!--start-collapse-->
-> ### <a name="more-information"></a>详细信息
-> 此页以 SVG 形式添加登录按钮，背景为黑色：<br/>![Microsoft 登录](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> 对于多个登录按钮，请转到[品牌准则](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "品牌准则")。
-<!--end-collapse-->
+### <a name="more-information"></a>详细信息
+此页以 SVG 形式添加登录按钮，背景为黑色：<br/>![Microsoft 登录](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> 对于多个登录按钮，请转到[品牌准则](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "品牌准则")。
 
 ## <a name="add-a-controller-to-display-users-claims"></a>添加控制器来显示用户声明
 此控制器演示如何使用 `[Authorize]` 属性来保护控制器。 此属性只允许通过身份验证的用户，从而限制对控制器的访问。 以下代码使用该属性来显示作为登录的一部分被检索的用户声明：
@@ -291,28 +286,26 @@ ms.locfileid: "80990984"
         public ActionResult Index()
         {
             var userClaims = User.Identity as System.Security.Claims.ClaimsIdentity;
-    
+
             //You get the user’s first and last name below:
             ViewBag.Name = userClaims?.FindFirst("name")?.Value;
-    
+
             // The 'preferred_username' claim can be used for showing the username
             ViewBag.Username = userClaims?.FindFirst("preferred_username")?.Value;
-    
+
             // The subject/ NameIdentifier claim can be used to uniquely identify the user across the web
             ViewBag.Subject = userClaims?.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-    
+
             // TenantId is the unique Tenant Id - which represents an organization in Azure AD
             ViewBag.TenantId = userClaims?.FindFirst("http://schemas.microsoft.com/identity/claims/tenantid")?.Value;
-    
+
             return View();
         }
     }
     ```
 
-<!--start-collapse-->
-> ### <a name="more-information"></a>详细信息
-> 因为使用 `[Authorize]` 属性，仅当用户通过身份验证后，才执行此控制器的所有方法。 如果用户未通过身份验证，并尝试访问控制器，OWIN 将启动身份验证质询，并强制用户进行身份验证。 以上代码查看用户的 ID 令牌中包含的特定用户属性的声明列表。 这些属性包括用户的完整姓名和用户名，以及全局用户标识符使用者。 它还包含租户 ID，表示用户的组织的 ID  。 
-<!--end-collapse-->
+### <a name="more-information"></a>详细信息
+因为使用 `[Authorize]` 属性，仅当用户通过身份验证后，才执行此控制器的所有方法。 如果用户未通过身份验证，并尝试访问控制器，OWIN 将启动身份验证质询，并强制用户进行身份验证。 以上代码查看用户的 ID 令牌中包含的特定用户属性的声明列表。 这些属性包括用户的完整姓名和用户名，以及全局用户标识符使用者。 它还包含租户 ID，表示用户的组织的 ID  。
 
 ## <a name="create-a-view-to-display-the-users-claims"></a>创建视图来显示用户的声明
 
@@ -403,16 +396,16 @@ ms.locfileid: "80990984"
 <br/><br/>
 ![登录 Microsoft 帐户](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
-<!--start-collapse-->
-> ###  <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 标识平台终结点中的权限和许可
->  与 Microsoft 标识平台集成的应用程序遵循的授权模型可让用户和管理员控制数据的访问方式。 在用户对 Microsoft 标识平台进行身份验证以访问此应用程序后，系统会提示他们许可应用程序请求的权限（“查看你的基本个人资料”和“保留你已授权访问的数据的访问权限”）。 接受这些权限后，用户将转到应用程序结果。 但是，如果出现以下情况之一，则系统可能会向用户提示“需要管理员许可”页： 
->  > - 应用程序开发人员添加了任何需要“管理员许可”的附加权限。 
->  > - 或者，在配置的租户（“企业应用程序”->“用户设置”）中，用户无法许可代表他们访问公司数据的应用。 
->
-> 有关详细信息，请参阅 [Microsoft 标识平台终结点中的权限和许可](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)。
-<!--end-collapse-->
+#### <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 标识平台终结点中的权限和许可
 
-#### <a name="view-application-results"></a>查看应用程序结果
+与 Microsoft 标识平台集成的应用程序遵循的授权模型可让用户和管理员控制数据的访问方式。 在用户对 Microsoft 标识平台进行身份验证以访问此应用程序后，系统会提示他们许可应用程序请求的权限（“查看你的基本个人资料”和“保留你已授权访问的数据的访问权限”）。 接受这些权限后，用户将转到应用程序结果。 但是，如果出现以下情况之一，则系统可能会向用户提示“需要管理员许可”页： 
+
+- 应用程序开发人员添加了任何需要“管理员许可”的附加权限。 
+- 或者，在配置的租户（“企业应用程序”->“用户设置”）中，用户无法许可代表他们访问公司数据的应用。 
+
+有关详细信息，请参阅 [Microsoft 标识平台终结点中的权限和许可](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)。
+
+### <a name="view-application-results"></a>查看应用程序结果
 
 登录后，用户将重定向到网站主页。 该主页是 Microsoft 应用程序注册门户上应用程序注册信息中指定的 HTTPS URL。 主页包括欢迎消息“你好，\<用户>”、一个注销链接和一个用于查看用户声明的链接。  用户声明链接连接到你之前创建的“声明”控制器。
 
@@ -446,14 +439,13 @@ ms.locfileid: "80990984"
 
 ## <a name="advanced-options"></a>高级选项
 
-<!--start-collapse-->
 ### <a name="protect-your-entire-website"></a>保护整个网站
+
 若要保护整个网站，请在 **Global.asax** 文件中向 `Application_Start` 方法中的 `GlobalFilters` 筛选器添加 `AuthorizeAttribute` 属性：
 
 ```csharp
 GlobalFilters.Filters.Add(new AuthorizeAttribute());
 ```
-<!--end-collapse-->
 
 ### <a name="restrict-who-can-sign-in-to-your-application"></a>限制谁可以登录到应用程序
 

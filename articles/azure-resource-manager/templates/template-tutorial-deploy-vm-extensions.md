@@ -2,15 +2,15 @@
 title: 使用模板部署 VM 扩展
 description: 了解如何使用 Azure 资源管理器模板部署虚拟机扩展
 author: mumian
-ms.date: 03/31/2020
+ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7397e9387fe3354a926ed607a9132ab6ddc7e785
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 06d948b44064f029e00a2ef089077e9b55246545
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477593"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82184956"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>教程：使用 ARM 模板部署虚拟机扩展
 
@@ -23,7 +23,6 @@ ms.locfileid: "80477593"
 > * 打开快速入门模板
 > * 编辑模板
 > * 部署模板
-> * 验证部署
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
@@ -42,29 +41,34 @@ ms.locfileid: "80477593"
 
 ## <a name="prepare-a-powershell-script"></a>准备 PowerShell 脚本
 
-从 [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1) 共享包含以下内容的 PowerShell 脚本：
+可以使用内联 PowerShell 脚本或脚本文件。  本教程介绍如何使用脚本文件。 从 [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1) 共享包含以下内容的 PowerShell 脚本：
 
 ```azurepowershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-如果选择将文件发布到你自己的位置，则必须在教程的后面部分更新模板中的 `fileUri` 元素。
+如果选择将文件发布到你自己的位置，请在本教程的后面部分更新模板中的 `fileUri` 元素。
 
 ## <a name="open-a-quickstart-template"></a>打开快速入门模板
 
 Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建模板，只需找到一个示例模板并对其自定义即可。 本教程中使用的模板称为[部署简单的 Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)。
 
 1. 在 Visual Studio Code 中，选择“文件” > “打开文件”。  
-1. 在“文件名”框中粘贴以下 URL： https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json 
+1. 在“文件名”框中粘贴以下 URL： 
+
+    ```url
+    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
+    ```
 
 1. 若要打开该文件，请选择“打开”。 
     该模板定义五个资源：
 
-   * **Microsoft.Storage/storageAccounts**。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)。
-   * **Microsoft.Network/publicIPAddresses**。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)。
-   * **Microsoft.Network/virtualNetworks**。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)。
-   * **Microsoft.Network/networkInterfaces**。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)。
-   * **Microsoft.Compute/virtualMachines**。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)。
+   * [Microsoft.Storage/storageAccounts](/azure/templates/Microsoft.Storage/storageAccounts)  。
+   * [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)  。
+   * [Microsoft.Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)  。
+   * [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)  。
+   * [Microsoft.Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)  。
+   * [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)  。
 
      在自定义模板之前，不妨对其进行一些基本的了解。
 
@@ -77,7 +81,7 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
 ```json
 {
   "type": "Microsoft.Compute/virtualMachines/extensions",
-  "apiVersion": "2018-06-01",
+  "apiVersion": "2019-12-01",
   "name": "[concat(variables('vmName'),'/', 'InstallWebServer')]",
   "location": "[parameters('location')]",
   "dependsOn": [
@@ -105,6 +109,14 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
 * **fileUris**：存储脚本文件的位置。 如果不使用提供的位置，则需更新这些值。
 * **commandToExecute**：此命令调用脚本。
 
+若要使用内联脚本，请删除“fileUris”  并将“commandToExecute”  更新为：
+
+```powershell
+powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools && powershell.exe remove-item 'C:\\inetpub\\wwwroot\\iisstart.htm' && powershell.exe Add-Content -Path 'C:\\inetpub\\wwwroot\\iisstart.htm' -Value $('Hello World from ' + $env:computername)
+```
+
+此内联脚本还更新 iisstart.html 内容。
+
 还必须打开 HTTP 端口，以便访问 Web 服务器。
 
 1. 在模板中找到 **securityRules**。
@@ -130,10 +142,13 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
 
 有关部署过程，请参阅“部署模板”部分，文档为[教程：创建包含依赖资源的 ARM 模板](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)。 建议使用为虚拟机管理员帐户生成的密码。 请参阅本文的[先决条件](#prerequisites)部分。
 
-## <a name="verify-the-deployment"></a>验证部署
+在 Cloud Shell 中，运行以下命令以检索 VM 的公共 IP 地址：
 
-1. 在 Azure 门户中选择 VM。
-1. 在 VM 概述中，选择“单击进行复制”复制 IP 地址，并将其粘贴到浏览器标签页中。  此时会打开默认的 Internet Information Services (IIS) 欢迎页：
+```azurepowershell
+(Get-AzPublicIpAddress -ResourceGroupName $resourceGroupName).IpAddress
+```
+
+将该 IP 地址粘贴到 Web 浏览器中。 此时会打开默认的 Internet Information Services (IIS) 欢迎页：
 
 ![Internet Information Services 欢迎页](./media/template-tutorial-deploy-vm-extensions/resource-manager-template-deploy-extensions-customer-script-web-server.png)
 

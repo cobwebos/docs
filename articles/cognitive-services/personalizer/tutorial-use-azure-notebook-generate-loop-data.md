@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: tutorial
-ms.date: 02/03/2020
+ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 03e8b658f7edf4640d738e5ea3af84953185d0f5
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 1f004fe1dae58faaded0b872dcdebdb4e9af66aa
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76986829"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192997"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>教程：在 Azure Notebook 中使用个性化体验创建服务
 
@@ -297,7 +297,7 @@ def add_event_id(rankjsonobj):
 
 此函数选择唯一的用户、天气和当日时间，然后将这些项添加到要发送至排名请求的 JSON 对象。
 
-该单元不提供输出。 调用该函数时，它会返回随机用户的名称、随机天气和随机当日时间。
+该单元不提供输出。 调用该函数时，它会返回随机用户的名称、随机天气和随机的当日时间。
 
 包含 4 个用户及其偏好的列表 - 为简洁起见，此处只显示了一部分偏好：
 

@@ -1,31 +1,35 @@
 ---
-title: 排查 Azure 注册问题
+title: 排查在 Azure 门户或 Azure 帐户中心注册新帐户时遇到的问题
 description: 解决尝试在 Microsoft Azure 门户帐户中心注册新帐户时遇到的问题。
+services: cost-management-billing
 author: v-miegge
-ms.reviewer: dcscontentpm
+manager: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: v-miegge
-ms.openlocfilehash: 540cb5b4ca8f78c734fbc7dcd16358be8eb391c0
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 7bcf3197ae218c469983200814cecf551dc42a6b
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409457"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133171"
 ---
-# <a name="troubleshoot-azure-sign-up"></a>排查 Azure 注册问题
+# <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>排查在 Azure 门户或 Azure 帐户中心注册新帐户时遇到的问题
 
 尝试在 Microsoft Azure 门户或 Azure 帐户中心注册新帐户时，可能会遇到问题。 对问题进行故障排除前，请先验证以下内容：
 
-- 为 Azure 帐户个人资料提供的信息（包括联系电子邮件地址、街道地址和电话号码）正确无误。
+- 为 Azure 帐户个人资料提供的信息（包括联系人电子邮件地址、街道地址和电话号码）正确无误。
 - 信用卡信息正确无误。
-- 尚未拥有包含相同信息的 Microsoft 帐户。
+- 你还没有具有相同信息的 Microsoft 帐户。
+
+> [!NOTE]
+> 如果你已有一个现有帐户，并且正在寻求排查登录问题的指导，请参阅[排查 Azure 订阅登录问题](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue)。
 
 ## <a name="resolutions"></a>解决方法
 
-若要解决错误，请选择你尝试注册 Azure 时遇到的问题。
+若要解决任何错误，请选择你尝试注册 Azure 时遇到的问题。
 
 ### <a name="error-we-cannot-proceed-with-sign-up-due-to-an-issue-with-your-account-please-contact-billing-support"></a>错误：“由于你的帐户存在问题，我们无法处理注册。  请联系计费支持人员。”
 
@@ -37,7 +41,7 @@ ms.locfileid: "80409457"
 
 3. 确保所有地址字段都已完成并且有效。
 
-4. 注册 Azure 订阅时，请确保信用卡注册的账单地址与银行记录相符。
+4. 注册 Azure 订阅时，请确保信用卡注册的帐单邮寄地址与银行记录相符。
 
 如果继续收到错误消息，请尝试使用其他浏览器注册。
 
@@ -84,7 +88,7 @@ ms.locfileid: "80409457"
 
 ### <a name="i-saw-a-charge-on-my-free-trial-account"></a>我看到我的免费试用帐户上产生了费用
 
-在注册后，你可能会看到你的信用卡帐户上存在少量验证费用， 这在 3 到 5 天内会被删除。 如果你为如何管理成本而担忧，请阅读有关[防止意外成本](getting-started.md)的详细信息。
+注册后，你可能会看到你的信用卡帐户上存在少量验证费用， 这在 3 到 5 天内会被删除。 如果你为如何管理成本而担忧，请阅读有关[防止意外成本](getting-started.md)的详细信息。
 
 ### <a name="cant-activate-azure-benefit-plan-like-msdn-bizspark-bizsparkplus-or-mpn"></a>无法激活 MSDN、BizSpark、BizSparkPlus 或 MPN 等 Azure 权益计划
 
@@ -110,13 +114,13 @@ ms.locfileid: "80409457"
 
 - 为 Azure 帐户个人资料提供的信息（包括联系电子邮件地址、街道地址和电话号码）正确无误。
 - 信用卡信息正确无误。
-- 尚未拥有使用相同信息的 Microsoft 帐户。
+- 你还没有使用相同信息的 Microsoft 帐户。
 
 ### <a name="error-your-current-account-type-is-not-supported"></a>错误：你当前的帐户类型不受支持 
 
-如果帐户注册在[非托管 Azure AD 目录](../../active-directory/users-groups-roles/directory-self-service-signup.md)中，不在组织的 Azure AD 目录中，则可能出现此问题。
+如果该帐户是在[非托管 Azure AD 目录](../../active-directory/users-groups-roles/directory-self-service-signup.md)中注册的，并且不在你组织的 Azure AD 目录中，则可能会发生此问题。
 
-若要解决此问题，请使用另一帐户注册 Azure 帐户，或者接管非托管 AD 目录。 有关详细信息，请参阅[在 Azure Active Directory 中以管理员身份接管非托管目录](../../active-directory/users-groups-roles/domains-admin-takeover.md)。
+若要解决此问题，请使用其他帐户注册 Azure 帐户，或接管非托管 AD 目录。 有关详细信息，请参阅[在 Azure Active Directory 中以管理员身份接管非托管目录](../../active-directory/users-groups-roles/domains-admin-takeover.md)。
 
 ## <a name="additional-help-resources"></a>其他帮助资源
 

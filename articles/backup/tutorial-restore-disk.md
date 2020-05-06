@@ -4,12 +4,12 @@ description: 了解如何在 Azure 中使用备份和恢复服务还原磁盘并
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 8a66cee7e844f0049f2d2ca2f6841943aa267f3e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 56410b5302611d5de3d72f727e1a4c36bd49ca7e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222444"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82160932"
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>在 Azure 中还原磁盘并创建恢复的 VM
 
@@ -87,8 +87,21 @@ az backup recoverypoint list \
         --target-resource-group targetRG
     ```
 
-> [!WARNING]
-> 如果未提供目标资源组，则托管磁盘将作为非托管磁盘还原到给定的存储帐户。 这会对还原时间产生重大影响，因为还原磁盘所需的时间完全取决于给定的存储帐户。
+    > [!WARNING]
+    > 如果未提供目标资源组，则托管磁盘将作为非托管磁盘还原到给定的存储帐户。 这会对还原时间产生重大影响，因为还原磁盘所需的时间完全取决于给定的存储帐户。 只有指定了 target-resource-group 参数，客户才能获得即时还原的好处。 如果打算将托管磁盘作为非托管磁盘还原，则不提供 target-resource-group 参数，而是提供 restore-as-unmanaged-disk 参数，如下所示。 此参数从 az 3.4.0 开始提供。
+
+    ```azurecli-interactive
+    az backup restore restore-disks \
+    --resource-group myResourceGroup \
+    --vault-name myRecoveryServicesVault \
+    --container-name myVM \
+    --item-name myVM \
+    --storage-account mystorageaccount \
+    --rp-name myRecoveryPointName
+    --restore-as-unmanaged-disk
+    ```
+
+这会将托管磁盘作为非托管磁盘还原到给定存储帐户，并且不会利用“即时”还原功能。 在将来的 CLI 版本中，必须提供 target-resource-group 参数或 restore-as-unmanaged-disk 参数。
 
 ### <a name="unmanaged-disks-restore"></a>非托管磁盘还原
 

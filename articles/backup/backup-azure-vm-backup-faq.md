@@ -4,12 +4,12 @@ description: 本文解答有关使用 Azure 备份服务备份 Azure VM 的常�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: a6746944e34b8bd2fbb115baaabece96ee93dd1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5705b70dd210c336fc2baa4da07f96f2ad249f64
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190089"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82800645"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常见问题 - 备份 Azure VM
 
@@ -131,7 +131,7 @@ Azure 备份现在支持使用 Azure 虚拟机备份解决方案进行选择性�
 
 ### <a name="can-i-restore-the-vm-thats-been-deleted"></a>可以还原已删除的 VM 吗？
 
-是的。 即使删除 VM，也可以在保管库中使用相应的备份项，并从恢复点还原。
+可以。 即使删除 VM，也可以在保管库中使用相应的备份项，并从恢复点还原。
 
 ### <a name="how-do-i-restore-a-vm-to-the-same-availability-sets"></a>如何实现将 VM 还原到相同的可用性集吗？
 
@@ -176,6 +176,14 @@ Azure 备份现在支持使用 Azure 虚拟机备份解决方案进行选择性�
 4. 恢复备份。
 
 可以从在移动操作之前创建的可用还原点还原 VM。
+
+### <a name="what-happens-after-i-move-a-vm-to-a-different-resource-group"></a>将 VM 移到其他资源组后会出现什么情况？
+
+将 VM 移到其他资源组后，就会在 Azure 备份中使用新 VM。
+
+将 VM 移到新的资源组后，可以在同一保管库或其他保管库中重新保护 VM。 由于这是 Azure 备份的新 VM，因此将单独对其计费。
+
+如果需要，旧 VM 的还原点将可用于还原。 如果不需要此备份数据，则可以停止保护旧 VM 的删除数据。
 
 ### <a name="is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy"></a>可以与同一备份策略关联的 Vm 数是否有限制？
 

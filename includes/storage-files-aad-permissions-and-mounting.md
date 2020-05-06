@@ -1,6 +1,6 @@
 ---
-title: include 文件
-description: include 文件
+title: 包含文件
+description: 包含文件
 services: storage
 author: tamram
 ms.service: storage
@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 47bd550bbd8d75a06d38babe88b5a95f3790af50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5fc106bfd97e8decd47ac7d43383907dcbbbda9c
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106537"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792967"
 ---
-## <a name="2-assign-access-permissions-to-an-identity"></a>2. 为标识分配访问权限
+## <a name="2-assign-access-permissions-to-an-identity"></a>2为标识分配访问权限
 
 若要使用基于身份的身份验证访问 Azure 文件资源，标识（用户、组或服务主体）必须具有共享级别的必要权限。 此过程类似于指定 Windows 共享权限，你可以在其中指定特定用户对文件共享的访问类型。 本部分中的指导演示如何将文件共享的读取、写入或删除权限分配给标识。 
 
@@ -28,7 +28,7 @@ ms.locfileid: "82106537"
 > [!IMPORTANT]
 > 对文件共享的完全管理控制（包括获取文件所有权的能力）需要使用存储帐户密钥。 Azure AD 凭据不支持管理控制。
 
-你可以使用 Azure 门户、PowerShell 或 Azure CLI 将内置角色分配给用户的 Azure AD 标识，以便授予共享级别权限。
+你可以使用 Azure 门户、PowerShell 或 Azure CLI 将内置角色分配给用户的 Azure AD 标识，以便授予共享级别权限。 请注意，共享级别 RBAC 角色分配可能需要一些时间才能生效。 
 
 > [!NOTE]
 > 如果计划使用本地 AD DS 进行身份验证，请记住将[AD DS 凭据同步到 Azure AD](../articles/active-directory/hybrid/how-to-connect-install-roadmap.md) 。 从 AD DS 到 Azure AD 的密码哈希同步是可选的。 将向从本地 AD DS 同步的 Azure AD 标识授予共享级权限。
@@ -70,7 +70,7 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 az role assignment create --role "<role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshares/<share-name>"
 ```
 
-## <a name="3-configure-ntfs-permissions-over-smb"></a>3. 配置基于 SMB 的 NTFS 权限 
+## <a name="3-configure-ntfs-permissions-over-smb"></a>3配置通过 SMB 的 NTFS 权限 
 使用 RBAC 分配共享级别权限后，必须在根目录、目录或文件级别分配正确的 NTFS 权限。 将共享级权限视为用于确定用户是否可以访问共享的高级身份确认程序。 NTFS 权限的作用更精细，以确定用户可以在目录或文件级别执行哪些操作。
 
 Azure 文件支持全套 NTFS 基本和高级权限。 你可以通过装入并使用 Windows 文件资源管理器或运行 Windows [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)或[Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-acl)命令来查看和配置 Azure 文件共享中的目录和文件的 NTFS 权限。 
@@ -119,7 +119,7 @@ icacls <mounted-drive-letter>: /grant <user-email>:(f)
 
 有关如何使用 icacls 设置 NTFS 权限以及不同类型的支持权限的详细信息，请参阅[icacls 的命令行参考](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)。
 
-## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4. 从已加入域的 VM 装载文件共享
+## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4从已加入域的 VM 装载文件共享
 
 以下过程验证是否正确设置了文件共享和访问权限，并且可以从已加入域的 VM 访问 Azure 文件共享。 请注意，共享级别 RBAC 角色分配可能需要一些时间才能生效。 
 

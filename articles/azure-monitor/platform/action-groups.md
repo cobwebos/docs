@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 4/17/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 339b11664308962962c59b2e9386ff122681293a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c8808450f8baa6d395ee9c24dbc59dfa919b66d
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116207"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801002"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 操作组是由 Azure 订阅的所有者定义的通知首选项的集合。 Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警报已触发。 各种警报可以使用相同的操作组或不同的操作组，具体取决于用户的要求。 可以在订阅中最多配置 2,000 个操作组。
@@ -200,16 +200,21 @@ Write-Host $myApp.AppRoles
 
 一个操作组中可以存在有限数量的短信操作。
 
-如果 Azure 门户操作组用户界面不允许你选择国家/地区代码，则你所在的国家/地区不支持短信。 [Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)中列出了支持的国家/地区的定价。 如果你的国家/地区代码不可用，则可以投票你的国家/地区以[用户语音](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice)添加。  
+> [!NOTE]
+> 如果 Azure 门户操作组用户界面不允许你选择国家/地区代码，则你所在的国家/地区不支持短信。  如果你的国家/地区代码不可用，则可以投票你的国家/地区以[用户语音](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice)添加。 在这种情况下，解决方法是让你的操作组通过你所在国家/地区的支持向第三方 SMS 提供程序调用 webhook。  
 
+[Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)中列出了支持的国家/地区的定价。
   
 
 ### <a name="voice"></a>语音
-请参阅[速率限制信息](./../../azure-monitor/platform/alerts-rate-limiting.md)一文。
+有关其他重要行为，请参阅[速率限制信息](./../../azure-monitor/platform/alerts-rate-limiting.md)文章。
 
 一个操作组中可以存在有限数量的语音操作。
 
-如果 Azure 门户操作组用户界面不允许你选择国家/地区代码，则你所在的国家/地区不支持语音呼叫。 [Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)中列出了支持的国家/地区的定价。 如果你的国家/地区代码不可用，则可以投票你的国家/地区以[用户语音](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice)添加。  
+> [!NOTE]
+> 如果 Azure 门户操作组用户界面不允许你选择国家/地区代码，则你所在的国家/地区不支持语音呼叫。 如果你的国家/地区代码不可用，则可以投票你的国家/地区以[用户语音](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice)添加。  在这种情况下，解决方法是让你的操作组通过你所在国家/地区的支持向第三方语音呼叫提供商调用 webhook。  
+
+[Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)中列出了支持的国家/地区的定价。
 
 ### <a name="webhook"></a>Webhook
 Webhook 使用以下规则进行重试。 返回以下 HTTP 状态代码时，webhook 调用最多重试2次：408、429、503、504或 HTTP 终结点未响应。 首次重试在 10 秒后发生。 第二次重试在 100 秒后发生。 在失败两次后，操作组在 30 分钟内不会再调用该终结点。 

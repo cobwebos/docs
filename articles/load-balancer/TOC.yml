@@ -40,6 +40,8 @@
       href: components.md
     - name: 概念
       href: concepts.md
+    - name: SKU
+      href: skus.md
     - name: 运行状况监视
       items:
         - name: 运行状况探测

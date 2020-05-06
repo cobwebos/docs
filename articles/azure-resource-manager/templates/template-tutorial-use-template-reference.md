@@ -2,16 +2,16 @@
 title: 使用模板参考
 description: 使用 Azure 资源管理器模板参考来创建模板。
 author: mumian
-ms.date: 03/27/2020
+ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: b713d508a5e28291778d3727c15e12972eea3a77
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 12990238455046d837b175318225bb4f3d317706
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878473"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82185041"
 ---
 # <a name="tutorial-utilize-the-resource-manager-template-reference"></a>教程：利用资源管理器模板参考
 
@@ -102,21 +102,42 @@ ms.locfileid: "80878473"
 
 ## <a name="deploy-the-template"></a>部署模板
 
-有关部署过程，请参阅 Visual Studio Code 快速入门中的[部署模板](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template)部分。 部署模板时，请使用新添加的值指定 **storageAccountType** 参数，例如 **Premium_ZRS**。 如果使用原始快速入门模板，部署会失败，因为 **Premium_ZRS** 不是允许的值。  若要传递参数值，请将以下开关添加到部署命令：
+1. 登录到 [Azure Cloud Shell](https://shell.azure.com)
 
-# <a name="cli"></a>[CLI](#tab/CLI)
+1. 通过在左上角选择“PowerShell”  或“Bash”  （适用于 CLI）来选择你喜欢使用的环境。  进行切换时，需重启 shell。
 
-```azurecli
---parameters storageAccountType='Premium_ZRS'
-```
+    ![Azure 门户 - Cloud Shell - 上传文件](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+1. 依次选择“上传/下载文件”、“上传”。   请参阅上面的屏幕截图。 选择在上一部分保存的文件。 上传文件后，可以使用 ls  命令和 cat  命令验证文件是否已成功上传。
 
-```azurepowershell
--storageAccountType "Premium_ZRS"
-```
+1. 在 Cloud Shell 中运行以下命令。 选择用于显示 PowerShell 代码或 CLI 代码的选项卡。
 
----
+    # <a name="cli"></a>[CLI](#tab/CLI)
+
+    ```azurecli
+    echo "Enter a project name that is used to generate resource group name:" &&
+    read projectName &&
+    echo "Enter the location (i.e. centralus):" &&
+    read location &&
+    resourceGroupName="${projectName}rg" &&
+    az group create --name $resourceGroupName --location "$location" &&
+    az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json" --parameters storageAccountType='Standard_RAGRS'
+    ```
+
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+    ```azurepowershell
+    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
+    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+    $resourceGroupName = "${projectName}rg"
+
+    New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json" -storageAccountType "Standard_RAGRS"
+    ```
+
+    ---
+
+ 部署模板时，请使用新添加的值（例如 Standard_RAGRS  ）指定 storageAccountType  参数。 如果使用原始快速入门模板，部署会失败，因为 Standard_RAGRS  不是允许的值。
 
 ## <a name="clean-up-resources"></a>清理资源
 

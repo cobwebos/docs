@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: d2e7e157156a4049a5db37b1d5c0e02773adbcc3
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: a02abd931dddd410882dd67a73a5b5fab6dc8cf9
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879541"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82194884"
 ---
 # <a name="what-is-azure-security-center"></a>什么是 Azure 安全中心？
 
@@ -61,7 +61,7 @@ Azure 安全中心解决了三个最紧急的安全性挑战：
 
 ### <a name="manage-organization-security-policy-and-compliance"></a>管理组织安全策略和符合性
 
-了解并确保工作负荷的安全性是保障安全的基础，并且要从拥有量身定制的适当安全策略开始。 由于安全中心中的所有策略都是基于 Azure 策略控制构建的，因此你将获得世界级策略解决方案的全方位服务和灵活性  。 在安全中心中，可以将策略设置为在管理组上、订阅中以及甚至为整个租户运行。
+了解并确保工作负荷的安全性是保障安全的基础，并且要从拥有量身定制的适当安全策略开始。 由于安全中心的所有策略都是基于 Azure Policy 控制构建的，因此你将获得世界级策略解决方案的全方位服务和灵活性  。 在安全中心中，可以将策略设置为在管理组上、订阅中以及甚至为整个租户运行。
 
 ![安全中心仪表板](media/security-center-intro/sc-dashboard.png)
 

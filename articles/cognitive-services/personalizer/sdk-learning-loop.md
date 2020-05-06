@@ -2,14 +2,14 @@
 title: 快速入门：使用 SDK 创建和使用学习循环 - 个性化体验创建服务
 description: 本快速入门介绍如何使用客户端 SDK 创建和管理知识库。
 ms.topic: quickstart
-ms.date: 01/15/2020
+ms.date: 04/27/2020
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: 7ebe22227b4323b2e6b1c3fc9ca31e171d1d97cd
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: c65be6c68372ffe92ffd942bf71d2b635ec2fd16
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77524863"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188838"
 ---
 # <a name="quickstart-personalizer-client-library"></a>快速入门：个性化体验创建服务客户端库
 
@@ -17,7 +17,7 @@ ms.locfileid: "77524863"
 
 个性化体验创建服务客户端库入门。 请按照以下步骤安装程序包并试用基本任务的示例代码。
 
- * 排名 API - 根据你提供的有关内容和上下文的实时信息，从内容项中选择最佳项。
+ * 排名 API - 根据你提供的有关内容和上下文的实时信息，从操作中选择最佳项。
  * 奖励 API - 根据业务需要确定奖励分数，然后使用此 API 将其发送给个性化体验创建服务。 该分数可以是单个值（例如，1 表示“好”，0 表示“差”），也可以是你根据业务需求创建的算法。
 
 ::: zone pivot="programming-language-csharp"

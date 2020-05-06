@@ -7,12 +7,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: pepogors
-ms.openlocfilehash: a61b0cf30ca46eb77837eb09d6a9a0b6f30e89a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 04c6444723180c34f6605810260f5f865dff2d12
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77368580"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790909"
 ---
 # <a name="service-fabric-guardrails"></a>Service Fabric 准则 
 部署 Service Fabric 群集时，需遵循相应准则，使用有效的群集配置通过 Azure 资源管理器进行部署，否则就会失败。 以下部分概述了常见的群集配置问题，以及解决这些问题所需的步骤。 
@@ -79,7 +79,7 @@ Service Fabric 群集提供一个[可靠性层](https://docs.microsoft.com/azure
 确保主节点类型具有足够的虚拟机，以实现群集中指定的可靠性。 如果删除某个虚拟机会导致虚拟机规模集的节点数小于给定可靠性层的最小节点数，将无法执行此删除操作。
 * 如果正确指定了可靠性层，请确保在主节点类型中提供可靠性层所需的足够节点。 
 * 如果可靠性层不正确，请在 Service Fabric 资源中发起更改以便先降低可靠性级别，然后启动任何虚拟机规模集操作并等待操作完成。
-* 如果可靠性层为“铜级”，请遵循[这些步骤](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#manually-remove-vms-from-a-node-typevirtual-machine-scale-set)适度缩减群集。
+* 如果可靠性层为铜牌，请遵循以下[步骤](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-in-out#manually-remove-vms-from-a-node-typevirtual-machine-scale-set)，在群集中进行适当缩放。
 
 ## <a name="next-steps"></a>后续步骤
 * 在运行 Windows Server 的 VM 或计算机上创建群集：[创建适用于 Windows Server 的 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)

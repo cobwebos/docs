@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 08/27/2018
+ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 5440333360549c5df2da57c97b24dcc77436ba4b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 644e29c3b5e37cd95280cfd2261e644b20bbda98
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70072704"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82203245"
 ---
 # <a name="add-an-api-manually"></a>手动添加 API
 
@@ -35,24 +35,14 @@ ms.locfileid: "70072704"
 
 ## <a name="create-an-api"></a>创建 API
 
-1. 在“API 管理”下面选择“API”。  
+1. 在 Azure 门户中导航到 API 管理服务，然后从菜单中选择“API”  。
 2. 在左侧菜单中，选择“+ 添加 API”。 
-3. 从列表中选择“空白 API”。 
-
-    ![空白 API](media/add-api-manually/blank-api.png)
-4. 输入 API 的设置。
-
-    |**名称**|**值**|**说明**|
-    |---|---|---|
-    |**显示名称**|空白 API |此名称显示在开发人员门户中。|
-    |**名称**|blank-api |提供 API 的唯一名称。|
-    |**Web 服务 URL**（可选）|*https://httpbin.org*| 若要模拟某个 API，可以不输入任何内容。 <br/>在此示例中，我们输入 [https://httpbin.org](https://httpbin.org)。这是一个公共测试服务。 <br/>若要导入已自动映射到后端的 API，请参阅[相关主题](#related-topics)部分中的主题之一。|
-    |**URL 方案**|HTTPS |在本例中，尽管后端支持不安全的 HTTP 访问，但我们还是指定了对后端进行安全的 HTTPS APIM 访问。 <br/>此类方案（HTTPS 转 HTTP）称为 HTTPS 终结。 如果 API 位于虚拟网络（在其中，即使不使用 HTTPS，也能确认访问是安全的）中，则可以采用此方案。 <br/>可以使用“HTTPS 终结”来消减一些 CPU 周期。|
-    |**URL 后缀**|hbin | 后缀是用于在该 APIM 实例中标识此特定 API 的名称。 它在此 APIM 实例中必须唯一。|
-    |**产品**|*不受限制*|通过关联 API 与产品来发布 API。 如果想要发布 API 并使其对开发人员可用，请将其添加到产品中。 可在 API 创建期间执行此操作，或稍后进行设置。<br/><br/>产品是一个或多个 API 的关联。 可以包含多个 API，并通过开发人员门户将其提供给开发人员。 <br/>开发人员必须先订阅产品才能访问 API。 订阅时，他们会得到一个订阅密钥，此密钥对该产品中的任何 API 都有效。 如果创建了 APIM 实例，那么你已是管理员，因此默认情况下订阅了每个产品。<br/><br/> 默认情况下，每个 API 管理实例附带两个示例产品：**初学者**和**无限**。| 
+3. 从列表中选择“空白 API”。   
+    空白 API![](media/add-api-manually/blank-api.png)  
+4. 输入 API 的设置。 在[导入和发布第一个 API](import-and-publish.md#-import-and-publish-a-backend-api) 教程中对这些设置进行了说明。
 5. 选择“创建”  。
 
-此时，APIM 中没有任何操作映射到后端 API 中的操作。 如果调用通过后端而不是通过 APIM 公开的操作，将收到 **404** 错误。
+此时，API 管理中没有任何操作映射到后端 API 中的操作。 如果调用通过后端（而不是通过 API 管理）公开的操作，则会收到 404  错误。
 
 >[!NOTE] 
 > 默认情况下，在添加某个 API 时，除非已将某些操作列入允许列表，否则即使该 API 已连接到某个后端服务，APIM 也不会公开任何操作。 若要将后端服务的某个操作列入允许列表，请创建一个映射到后端操作的 APIM 操作。

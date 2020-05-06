@@ -1,28 +1,28 @@
 ---
-title: Azure Marketplace 中的托管服务提供
+title: Azure 市场中的托管服务产品
 description: 托管服务提供允许服务提供商向 Azure Marketplace 中的客户销售资源管理服务。
-ms.date: 03/30/2020
+ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 13e1825ae6eb50b1b376e3bd3de908a545fbe023
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 975c9ab98229626a513404b2092b266a9e284279
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144898"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792286"
 ---
-# <a name="managed-service-offers-in-azure-marketplace"></a>Azure Marketplace 中的托管服务提供
+# <a name="managed-service-offers-in-azure-marketplace"></a>Azure 市场中的托管服务产品
 
-本文介绍[Azure Marketplace](https://azuremarketplace.microsoft.com)中的**托管服务**提供类型。 托管服务产品/服务允许你使用[Azure 委派的资源管理](azure-delegated-resource-management.md)为客户提供资源管理服务。 你可以向所有潜在客户提供这些产品/服务，也可以仅向一个或多个特定客户提供这些产品/服务。 由于直接向客户收取与这些托管服务相关的成本，因此 Microsoft 不收取任何费用。
+本文介绍[Azure Marketplace](https://azuremarketplace.microsoft.com)中的**托管服务**提供类型。 托管服务产品/服务允许你通过[Azure 委托资源管理](azure-delegated-resource-management.md)向客户提供资源管理服务。 你可以向所有潜在客户提供这些产品/服务，也可以仅向一个或多个特定客户提供这些产品/服务。 由于直接向客户收取与这些托管服务相关的成本，因此 Microsoft 不收取任何费用。
 
 ## <a name="understand-managed-service-offers"></a>了解托管服务产品
 
 托管服务提供简化 Azure 委托资源管理的客户的管理过程。 客户在 Azure 市场中购买产品/服务时，他们将能够指定应加入哪些订阅和/或资源组。
 
-之后，你的组织中的用户将能够根据你在创建产品/服务时定义的访问权限，从你组织的租户中处理这些资源。 这通过清单来完成，该清单指定将使用 Azure 委托资源管理访问客户资源的 Azure AD 用户、组和服务主体，以及定义其访问级别的角色。 通过向 Azure AD 组而不是单个用户或应用程序帐户分配权限，可以在访问要求发生更改时添加或删除单个用户。
+之后，你的组织中的用户将能够根据你在创建产品/服务时定义的访问权限，从你组织的租户中处理这些资源。 这是通过一个清单来完成的，该清单指定将有权访问客户资源的 Azure Active Directory （Azure AD）用户、组和服务主体，以及定义其访问级别的角色。 通过向 Azure AD 组而不是单个用户或应用程序帐户分配权限，可以在访问要求发生更改时添加或删除单个用户。
 
 ## <a name="public-and-private-offers"></a>公共和专用产品/服务
 
-每个托管服务产品/服务均包含一个或多个计划。 计划可以是私有的，也可以是公共的。
+每个托管服务产品/服务包含一个或多个计划。 计划可以是私有的，也可以是公共的。
 
 如果要将产品/服务限制为特定客户，可以发布专用计划。 执行此操作时，只能为你提供的特定订阅 ID 购买计划。 有关详细信息，请参阅[专用产品/服务](../../marketplace/private-offers.md)。
 
@@ -35,7 +35,7 @@ ms.locfileid: "82144898"
 
 ## <a name="publish-managed-service-offers"></a>发布托管服务产品
 
-要了解如何发布托管服务产品，请参阅[将托管服务产品发布到 Azure 市场](../how-to/publish-managed-services-offers.md)。
+若要了解如何发布托管服务产品/服务，请参阅将[托管服务产品/服务发布到 Azure Marketplace](../how-to/publish-managed-services-offers.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
