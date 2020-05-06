@@ -4,10 +4,10 @@ description: 独立 ISO 27001 蓝图示例的部署步骤，包括蓝图项目�
 ms.date: 01/13/2020
 ms.topic: sample
 ms.openlocfilehash: f5920541d49c454bd6648318c04ed607eada1dfb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75922506"
 ---
 # <a name="deploy-the-iso-27001-blueprint-sample"></a>部署 ISO 27001 蓝图示例

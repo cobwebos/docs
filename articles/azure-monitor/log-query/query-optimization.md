@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 29d5213b8eecd94ed8c8ce565972c9f98872a362
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ae0aec6b87a746ed1f141dcf98f599acd20ab3a
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411430"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864243"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>优化 Azure Monitor 中的日志查询
 Azure Monitor 日志使用[Azure 数据资源管理器（ADX）](/azure/data-explorer/)来存储日志数据，并运行查询来分析这些数据。 它为你创建、管理和维护 ADX 群集，并为日志分析工作负荷优化它们。 运行查询时，将对其进行优化，并将其路由到存储工作区数据的相应 ADX 群集。 Azure Monitor 日志和 Azure 数据资源管理器使用许多自动查询优化机制。 虽然自动优化可显著提高性能，但在某些情况下，可以显著提高查询性能。 本文介绍了性能注意事项和解决这些问题的几种方法。
@@ -108,7 +108,7 @@ Heartbeat
 | summarize count() by Computer
 ```
 
-### <a name="use-effective-aggregation-commands-and-dimmentions-in-summarize-and-join"></a>在汇总和联接中使用有效的聚合命令和 dimmentions
+### <a name="use-effective-aggregation-commands-and-dimensions-in-summarize-and-join"></a>在汇总和联接中使用有效的聚合命令和维度
 
 尽管一些聚合命令[（如 max （）](/azure/kusto/query/max-aggfunction)、 [sum （）](/azure/kusto/query/sum-aggfunction)、 [count （](/azure/kusto/query/count-aggfunction)）和[avg （））](/azure/kusto/query/avg-aggfunction)对 CPU 的影响较低，但其他一些则更复杂，其中包括允许有效执行它们的试探法和估计。 例如， [dcount （）](/azure/kusto/query/dcount-aggfunction)使用 HyperLogLog 算法来提供较大数据集的非重复计数，而不是实际计算每个值;百分点函数使用最近排名百分比算法执行类似的近似值。 几个命令包含可选参数以降低其影响。 例如， [makeset （）](/azure/kusto/query/makeset-aggfunction)函数有一个可选参数，用于定义最大集大小，这会明显影响 CPU 和内存。
 
