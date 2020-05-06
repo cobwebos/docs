@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: e740a65d453a69a987e938a5170ae8e04c7bfe40
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: dcb151c8be0ab3a2393d0659b75985a92ac60507
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78249879"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82207881"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>教程：使用门户在 Azure 负载均衡器中配置端口转发
 
@@ -60,7 +60,7 @@ ms.locfileid: "78249879"
     |可用性区域| 选择“区域冗余”  。    |
      
     >[!NOTE]
-     >确保在支持可用性区域的位置为其创建负载均衡器和所有资源。 有关详细信息，请参阅[支持可用性区域的区域](../availability-zones/az-overview.md#services-support-by-region)。 
+     >确保在支持可用性区域的位置为其创建负载均衡器和所有资源。 有关详细信息，请参阅[支持可用性区域的区域](../availability-zones/az-region.md)。 
 
 3. 在“查看 + 创建”选项卡中，单击“创建”   。  
   

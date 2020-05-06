@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: a48c553f1c96b8777e0a591f428dca3f15d7d30e
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 79ecb801e1b4d0fa96ca7ae06223fc231cbf12e6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80053644"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82129876"
 ---
 # <a name="what-is-custom-vision"></a>什么是自定义视觉？
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-自定义视觉是一种认知服务，用于生成、部署和改进自己的图像分类器。 图像分类器是一种 AI 服务，可以根据视觉特征为图像应用标签（代表类  ）。 与[计算机视觉](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)服务不同，自定义视觉允许你确定要应用的标签。
+Azure 自定义视觉是一种认知服务，用于生成、部署和改进自己的图像分类器。 图像分类器是一种 AI 服务，可以根据视觉特征为图像应用标签（代表类  ）。 与[计算机视觉](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)服务不同，自定义视觉允许你指定要应用的标签。
 
 ## <a name="what-it-does"></a>作用
 
@@ -49,4 +49,4 @@ ms.locfileid: "80053644"
 
 ## <a name="next-steps"></a>后续步骤
 
-按照[生成分类器](getting-started-build-a-classifier.md)指南操作，开始在 Web 上使用自定义视觉，或者完成[图像分类教程](csharp-tutorial.md)，以便实现代码中的基本方案。
+按照[生成分类器](getting-started-build-a-classifier.md)指南操作，开始在 Web 上使用自定义视觉，或者完成[图像分类教程](quickstarts/image-classification.md)，以便实现代码中的基本方案。

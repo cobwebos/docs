@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: cdad95b1a910a45629e85bcc716218b272afd9de
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: e18fc765385e6d703e735a1ca15c539c32f36e93
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421291"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82116241"
 ---
 # <a name="overview-query-data-in-storage"></a>概述：查询存储中的数据
 
@@ -72,9 +72,6 @@ CREATE DATABASE mydbname;
 > 默认情况下，SQL 按需版本始终使用 AAD 直通身份验证。
 
 有关如何管理存储访问控制的详细信息，请查看[此链接](develop-storage-files-storage-access-control.md)。
-
-> [!WARNING]
-> 需要为终结点区域中的存储帐户创建凭据。 尽管 SQL 按需版本可以访问不同区域中的存储，但将存储和终结点置于同一区域可提供性能更好的体验。
 
 若要创建 CSV、JSON 和 Parquet 容器的凭据，请运行以下代码：
 

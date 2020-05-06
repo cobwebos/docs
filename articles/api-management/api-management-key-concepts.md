@@ -14,10 +14,10 @@ ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
 ms.openlocfilehash: 8d7fa8b8119ddf1769b36bcb55831047d6242470
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79215205"
 ---
 # <a name="about-api-management"></a>关于 API 管理
@@ -60,7 +60,7 @@ API 管理有助于组织将 API 发布给外部、合作伙伴和内部开发�
   * 创建帐户并可以订阅以获取 API 密钥。
   * 访问他们自己的使用情况分析。
 
-有关详细信息，请参阅[基于云的 API 管理：利用 API 的强大功能](https://j.mp/ms-apim-whitepaper) PDF 白皮书。 由 CITO Research 编撰的有关 API 管理的简介白皮书包括︰ 
+有关详细信息，请参阅 PDF 版的 [基于云的 API 管理：利用 API 的强大功能](https://j.mp/ms-apim-whitepaper) 白皮书。 由 CITO Research 编撰的有关 API 管理的简介白皮书包括︰ 
  
  * 常见 API 需求和挑战
  * 分离 API 和呈现外观

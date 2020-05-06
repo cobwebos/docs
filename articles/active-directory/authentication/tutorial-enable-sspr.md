@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71b9052f364dfbae205dd324ba69de9578ccc225
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c84aa99608a4fc2ac1842c617cca54e2afc3cdbe
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77026310"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82201986"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>教程：使用户能够使用 Azure Active Directory 自助式密码重置来解锁其帐户或重置密码
 
@@ -104,7 +104,7 @@ Azure AD 可让你为“无”、“选定”或“所有”用户启用 SSPR。
 如果用户在执行 SSPR 过程时需要更多帮助，你可以自定义“联系管理员”链接。 此链接将在 SSPR 注册过程中以及在用户解锁其帐户或重置其密码时使用。 为确保用户获得所需的支持，我们强烈建议提供自定义的支持电子邮件或 URL。
 
 1. 在“自定义”页上的左侧菜单中，将“自定义支持链接”设置为“是”。   
-1. 在“自定义支持电子邮件或 URL”字段中提供电子邮件地址或网页 URL（例如 *https://support.contoso.com/* ），通过此链接，用户可从你的组织获得更多帮助。 
+1. 在“自定义支持电子邮件或 URL”字段中提供电子邮件地址或网页 URL（例如 *`https://support.contoso.com/`* ），通过此链接，用户可从你的组织获得更多帮助。 
 1. 若要应用自定义链接，请选择“保存”。 
 
 ## <a name="test-self-service-password-reset"></a>测试自助式密码重置

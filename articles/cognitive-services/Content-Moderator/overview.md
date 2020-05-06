@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: f28f2bcf5d04c9a6354b8135bd39546b9d8b9bf3
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81404297"
 ---
 # <a name="what-is-azure-content-moderator"></a>什么是 Azure 内容审查器？

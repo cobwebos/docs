@@ -9,12 +9,12 @@ ms.author: mhopkins
 ms.date: 01/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 5219af0ec343a6e7f87a07e4a7280ac5f4e85cd3
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 920d3d6c1cfc928efa5daa2d6c0aa3a6b4e81375
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619113"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82161119"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -28,7 +28,7 @@ ms.locfileid: "80619113"
 - 一个 Azure 存储帐户。 [创建存储帐户](../common/storage-account-create.md)。
 - 一个本地 Web 服务器。 本文使用 [Node.js](https://nodejs.org) 打开基本服务器。
 - [Visual Studio Code](https://code.visualstudio.com)。
-- 用于浏览器调试的 VS Code 扩展，例如 [Chrome 的调试程序](vscode:extension/msjsdiag.debugger-for-chrome)或 [Microsoft Edge 的调试程序](vscode:extension/msjsdiag.debugger-for-edge)。
+- 用于浏览器调试的 VS Code 扩展，例如 [Chrome 的调试程序](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)或 [Microsoft Edge 的调试程序](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-edge)。
 
 ## <a name="setting-up-storage-account-cors-rules"></a>设置存储帐户 CORS 规则
 
@@ -94,7 +94,7 @@ az storage account generate-sas \
 
 ## <a name="implement-the-html-page"></a>实现 HTML 页
 
-在本部分，你将创建一个基本的网页，然后将 VS Code 配置为启动并调试该页面。 但是，在启动之前，需要使用 Node.js 启动本地 Web 服务器，并根据浏览器的请求提供该页面。 接下来，添加 JavaScript 代码以调用各种 Blob 存储 API，并在页中显示结果。 也可以在 [Azure 门户](https://portal.azure.com)、[Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer)和适用于 VS Code 的 [Azure 存储扩展](vscode:extension/ms-azuretools.vscode-azurestorage)中查看这些调用的结果。
+在本部分，你将创建一个基本的网页，然后将 VS Code 配置为启动并调试该页面。 但是，在启动之前，需要使用 Node.js 启动本地 Web 服务器，并根据浏览器的请求提供该页面。 接下来，添加 JavaScript 代码以调用各种 Blob 存储 API，并在页中显示结果。 也可以在 [Azure 门户](https://portal.azure.com)、[Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer)和适用于 VS Code 的 [Azure 存储扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage)中查看这些调用的结果。
 
 ### <a name="set-up-the-web-application"></a>设置 Web 应用程序
 
