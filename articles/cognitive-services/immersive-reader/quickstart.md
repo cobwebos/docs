@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: metan
 ms.openlocfilehash: 8dd8459922caa9f765d59bc28fbf050b86834b46
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76845243"
 ---
 # <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>快速入门：创建用于启动沉浸式阅读器的 Web 应用 (C#)

@@ -9,10 +9,10 @@ ms.topic: sample
 ms.date: 02/08/2019
 ms.author: sngun
 ms.openlocfilehash: 8b133f0044bdf8f99fdee657177d561ef5bb406b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79222084"
 ---
 # <a name="azure-cosmos-db-java-examples-for-the-sql-api"></a>Azure Cosmos DB：SQL API 的 Java 示例
