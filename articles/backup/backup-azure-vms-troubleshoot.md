@@ -4,12 +4,12 @@ description: 本文介绍如何解决在备份和还原 Azure 虚拟机时遇到
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 019c27b1f7e8560c86252aaf2ed1fb79df2439fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd199bc0245ab1daa090f88b1e92216c714042ee
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677339"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864439"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>排查 Azure 虚拟机上出现的备份失败问题
 
@@ -98,22 +98,30 @@ ms.locfileid: "81677339"
 * ```net stop serviceName```
 * ```net start serviceName```
 
+可帮助的另一个过程是从提升的命令提示符（以管理员身份）运行以下命令。
+
+```CMD
+REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
+```
+
+添加此注册表项将导致不会为 blob 快照创建线程，并阻止超时。
+
 ## <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure - 无法分析备份扩展的配置
 
-错误代码：ExtensionConfigParsingFailure<br/>
-错误消息：无法分析备份扩展的配置。
+错误代码： ExtensionConfigParsingFailure<br/>
+错误消息：分析备份扩展的配置时出错。
 
-发生此错误的原因是 MachineKeys 目录 %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys   上的权限已更改。
-请运行以下命令，并验证“MachineKeys”目录的权限是否为默认值  ：**icacls %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**。
+发生此错误的原因是 MachineKeys 目录 %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys******** 上的权限已更改。
+请运行以下命令，并验证“MachineKeys”目录的权限是否为默认值****：**icacls %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**。
 
 默认权限如下：
 
-* Everyone:(R,W)
-* BUILTIN\Administrators：(F)
+* 所有人：（R，W）
+* BUILTIN\Administrators：（F）
 
-如果在“MachineKeys”目录中看到的权限与默认值不同，请执行以下步骤以更正权限、删除证书以及触发备份  ：
+如果在“MachineKeys”目录中看到的权限与默认值不同，请执行以下步骤以更正权限、删除证书以及触发备份****：
 
-1. 修复“MachineKeys”目录上的权限  。 通过在目录中使用 Explorer 安全属性和高级安全设置，将权限重新设为默认值。 从目录中删除所有用户对象（默认值除外），确保 Everyone 权限具有以下特殊访问权限  ：
+1. 修复“MachineKeys”目录上的权限****。 通过在目录中使用 Explorer 安全属性和高级安全设置，将权限重新设为默认值。 从目录中删除所有用户对象（默认值除外），确保 Everyone 权限具有以下特殊访问权限****：
 
    * 列出文件夹/读取数据
    * 读取属性
@@ -123,29 +131,29 @@ ms.locfileid: "81677339"
    * 写入属性
    * 写入扩展的属性
    * 读取权限
-2. 删除其中发布对象为经典部署模式或“Windows Azure CRP 证书生成器”的所有证书   ：
+2. 删除其中发布对象为经典部署模式或“Windows Azure CRP 证书生成器”的所有证书********：
 
    * [在本地计算机控制台上打开证书](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in)。
-   * 在“个人” > “证书”下，删除其中发布对象为经典部署模式或 Windows Azure CRP 证书生成器的所有证书     。
+   * 在 "**个人** > **证书**" 下，删除 "**颁发给**" 为经典部署模型或**Windows Azure CRP 证书生成器**的所有证书。
 3. 触发 VM 备份作业。
 
 ## <a name="extensionstuckindeletionstate---extension-state-is-not-supportive-to-backup-operation"></a>ExtensionStuckInDeletionState - 扩展状态不支持备份操作
 
-错误代码：ExtensionStuckInDeletionState <br/>
-错误消息：扩展状态不支持备份操作
+错误代码： ExtensionStuckInDeletionState <br/>
+错误消息：扩展状态不能用于备份操作
 
 备份操作由于备份扩展出现不一致状态而失败。 若要解决此问题，请执行以下步骤：
 
 * 确保来宾代理已安装并可做出响应
-* 从 Azure 门户中，转到“虚拟机” > “所有设置” > “扩展”   
-* 选择备份扩展 VmSnapshot 或 VmSnapshotLinux，并单击“卸载” 
+* 从 Azure 门户中转到 "**虚拟机** > " "**所有设置** > " "**扩展**"
+* 选择备份扩展 VmSnapshot 或 VmSnapshotLinux，并单击“卸载”****
 * 在删除备份扩展后重试备份操作
 * 后续备份操作将以所需的状态安装新扩展
 
 ## <a name="extensionfailedsnapshotlimitreachederror---snapshot-operation-failed-as-snapshot-limit-is-exceeded-for-some-of-the-disks-attached"></a>ExtensionFailedSnapshotLimitReachedError - 由于某些附加的磁盘已超出快照限制，因此快照操作失败
 
-错误代码：ExtensionFailedSnapshotLimitReachedError  <br/>
-错误消息：由于某些附加的磁盘已超出快照限制，因此快照操作失败
+错误代码： ExtensionFailedSnapshotLimitReachedError <br/>
+错误消息：快照操作失败，因为已附加的某些磁盘已超出快照限制
 
 由于某些附加的磁盘已超出快照限制，因此快照操作失败。 请完成以下故障排除步骤，然后重试操作。
 
@@ -158,8 +166,8 @@ ms.locfileid: "81677339"
 
 ## <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>ExtensionFailedTimeoutVMNetworkUnresponsive - 快照操作因 VM 资源不足而失败
 
-错误代码：ExtensionFailedTimeoutVMNetworkUnresponsive<br/>
-错误消息：快照操作因 VM 资源不足而失败。
+错误代码： ExtensionFailedTimeoutVMNetworkUnresponsive<br/>
+错误消息：由于 VM 资源不足，快照操作失败。
 
 VM 上的备份操作由于执行快照操作时进行的网络调用发生延迟而失败。 若要解决此问题，请执行步骤 1。 如果问题仍然存在，请尝试执行步骤 2 和 3。
 
@@ -174,22 +182,22 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 这将确保通过主机而不是来宾来拍摄快照。 请重试备份操作。
 
-**步骤 2**：尝试将备份计划更改到 VM 的负载较小（CPU/IOPS 等较小）的某个时间
+**步骤 2**：尝试将备份计划更改为 VM 负载不足的一段时间（更少的 CPU/IOps 等等）
 
-**步骤 3**：尝试[增大 VM 的大小](https://azure.microsoft.com/blog/resize-virtual-machines/)并重试操作
+**步骤 3**：尝试[增加 VM 的大小](https://azure.microsoft.com/blog/resize-virtual-machines/)，然后重试该操作
 
 ## <a name="common-vm-backup-errors"></a>常见的 VM 备份错误
 
 | 错误详细信息 | 解决方法 |
 | ------ | --- |
-| **错误代码**：320001，ResourceNotFound <br/> **错误消息**：无法执行该操作，因为 VM 已不存在。 <br/> <br/> **错误代码**：400094，BCMV2VMNotFound <br/> **错误消息**：虚拟机不存在 <br/> <br/>  找不到 Azure 虚拟机。  |删除主 VM 时会发生此错误，但备份策略仍会查找要备份的 VM。 要修复此错误，请执行以下步骤： <ol><li> 重新创建具有相同名称和相同资源组名称的虚拟机，“云服务名称” <br>**or**</li><li> 通过删除或不删除备份数据来停止保护虚拟机。 有关更多信息，请参阅[停止保护虚拟机](backup-azure-manage-vms.md#stop-protecting-a-vm)。</li></ol>|
-|**错误代码**：UserErrorBCMPremiumStorageQuotaError<br/> **错误消息**：由于存储帐户中的可用空间不足，无法复制虚拟机的快照 | 对于 VM 备份堆栈 V1 上的高级 VM，我们将快照复制到存储帐户。 此步骤可确保在快照上运行的备份管理流量不会限制使用高级磁盘的应用程序的可用 IOPS 数。 <br><br>我们建议只分配总存储帐户空间的 50%（即 17.5 TB）。 这样，Azure 备份服务可以将快照复制到存储帐户，并将数据从存储帐户中的复制位置传输到保管库。 |
-| **错误代码**：380008，AzureVmOffline <br/> **错误消息**：无法安装 Microsoft 恢复服务扩展，因为虚拟机未运行 | VM 代理是 Azure 恢复服务扩展的先决条件。 安装 Azure 虚拟机代理并重启注册操作。 <br> <ol> <li>检查 VM 代理是否安装正确。 <li>确保已正确设置 VM 配置中的标志。</ol> 阅读有关安装 VM 代理以及如何验证 VM 代理安装的详细信息。 |
-| **错误代码**：ExtensionSnapshotBitlockerError <br/> **错误消息**：快照操作失败，出现卷影复制服务 (VSS) 操作错误“此驱动器已通过 BitLocker 驱动器加密锁定。  必须通过控制面板解锁此驱动器”。 |关闭 VM 上的所有驱动器的 BitLocker，并检查 VSS 问题是否得到解决。 |
-| **错误代码**：VmNotInDesirableState <br/> **错误消息**：VM 未处于允许备份的状态。 |<ul><li>如果 VM 处于“运行”和“关闭”之间的瞬时状态，请等待状态更改   。 然后触发备份作业。 <li> 如果 VM 是 Linux VM 并使用安全性增强的 Linux 内核模块，则需要从安全策略排除 Azure Linux 代理路径 (/var/lib/waagent  )，确保已安装备份扩展。  |
+| **错误代码**：320001，ResourceNotFound <br/> **错误消息**：无法执行操作，因为 VM 不再存在。 <br/> <br/> **错误代码**：400094，BCMV2VMNotFound <br/> **错误消息**：虚拟机不存在 <br/> <br/>  找不到 Azure 虚拟机。  |删除主 VM 时会发生此错误，但备份策略仍会查找要备份的 VM。 要修复此错误，请执行以下步骤： <ol><li> 重新创建具有相同名称和相同资源组名称、**云服务名称**的虚拟机<br>**或**</li><li> 通过删除或不删除备份数据来停止保护虚拟机。 有关更多信息，请参阅[停止保护虚拟机](backup-azure-manage-vms.md#stop-protecting-a-vm)。</li></ol>|
+|**错误代码**： UserErrorBCMPremiumStorageQuotaError<br/> **错误消息**：由于存储帐户中的可用空间不足，无法复制虚拟机的快照 | 对于 VM 备份堆栈 V1 上的高级 VM，我们将快照复制到存储帐户。 此步骤可确保在快照上运行的备份管理流量不会限制使用高级磁盘的应用程序的可用 IOPS 数。 <br><br>我们建议只分配总存储帐户空间的 50%（即 17.5 TB）。 这样，Azure 备份服务可以将快照复制到存储帐户，并将数据从存储帐户中的复制位置传输到保管库。 |
+| **错误代码**：380008，AzureVmOffline <br/> **错误消息**：未能安装 Microsoft 恢复服务扩展，因为虚拟机未运行 | VM 代理是 Azure 恢复服务扩展的先决条件。 安装 Azure 虚拟机代理并重启注册操作。 <br> <ol> <li>检查 VM 代理是否安装正确。 <li>确保已正确设置 VM 配置中的标志。</ol> 阅读有关安装 VM 代理以及如何验证 VM 代理安装的详细信息。 |
+| **错误代码**： ExtensionSnapshotBitlockerError <br/> **错误消息**：快照操作失败，出现卷影复制服务（VSS）操作错误：**此驱动器已由 BitLocker 驱动器加密锁定。必须通过控制面板解锁此驱动器。** |关闭 VM 上的所有驱动器的 BitLocker，并检查 VSS 问题是否得到解决。 |
+| **错误代码**： VmNotInDesirableState <br/> **错误消息**： VM 未处于允许备份的状态。 |<ul><li>如果 VM 处于“运行”和“关闭”之间的瞬时状态，请等待状态更改********。 然后触发备份作业。 <li> 如果 VM 是 Linux VM 并使用安全性增强的 Linux 内核模块，则需要从安全策略排除 Azure Linux 代理路径 (/var/lib/waagent****)，确保已安装备份扩展。  |
 | 虚拟机上不存在 VM 代理： <br>安装任何必备组件和 VM 代理。 然后，重启该操作。 |阅读有关 [VM 代理安装以及如何验证 VM 代理安装](#vm-agent)的详细信息。 |
-| **错误代码**：ExtensionSnapshotFailedNoSecureNetwork <br/> **错误消息**：由于无法创建安全的网络通信通道，因此快照操作失败。 | <ol><li> 通过在权限提升模式下运行“regedit.exe”来打开注册表编辑器  。 <li> 标识系统中存在的所有 .NET Framework 版本。 它们位于注册表项“HKEY_LOCAL_MACHINE \ SOFTWARE \ Microsoft”的层次结构下  。 <li> 请为注册表项中存在的每个 .Net Framework 添加以下键： <br> “SchUseStrongCrypto"=dword:00000001”  。 </ol>|
-| **错误代码**：ExtensionVCRedistInstallationFailure <br/> **错误消息**：由于 Visual C++ Redistributable for Visual Studio 2012 安装失败，因此快照操作失败。 | 导航到 C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion 并安装 vcredist2013_x64。<br/>请确保允许此服务安装的注册表项值设置为正确的值。 也就是说，将 **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** 中的 **Start** 值设置为 **3**，而不是 **4**。 <br><br>如果仍然遇到安装问题，请通过权限提升的命令提示符运行“MSIEXEC /UNREGISTER”，接着运行“MSIEXEC /REGISTER”来重启安装服务   。  |
+| **错误代码**： ExtensionSnapshotFailedNoSecureNetwork <br/> **错误消息**：快照操作失败，因为创建安全网络通信通道失败。 | <ol><li> 通过在权限提升模式下运行“regedit.exe”来打开注册表编辑器****。 <li> 标识系统中存在的所有 .NET Framework 版本。 它们位于注册表项“HKEY_LOCAL_MACHINE \ SOFTWARE \ Microsoft”的层次结构下****。 <li> 请为注册表项中存在的每个 .Net Framework 添加以下键： <br> **SchUseStrongCrypto "= dword： 00000001**。 </ol>|
+| **错误代码**： ExtensionVCRedistInstallationFailure <br/> **错误消息**：快照操作失败，因为安装 Visual C++ Redistributable for Visual Studio 2012 失败。 | 导航到 C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion 并安装 vcredist2013_x64。<br/>请确保允许此服务安装的注册表项值设置为正确的值。 也就是说，将 **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** 中的 **Start** 值设置为 **3**，而不是 **4**。 <br><br>如果仍然遇到安装问题，请通过权限提升的命令提示符运行“MSIEXEC /UNREGISTER”，接着运行“MSIEXEC /REGISTER”来重启安装服务********。  |
 | **错误代码**： UserErrorRequestDisallowedByPolicy <BR> **错误消息**：在 VM 上配置了无效的策略，该策略将阻止快照操作。 | 如果你的 Azure 策略在[你的环境中控制标记](https://docs.microsoft.com/azure/governance/policy/tutorials/govern-tags)，则可以考虑将策略从[拒绝效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny)更改为[修改效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify)，或根据[Azure 备份所需的命名架构](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines)手动创建资源组。
 
 ## <a name="jobs"></a>作业

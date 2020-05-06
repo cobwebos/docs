@@ -1,25 +1,14 @@
 ---
-title: Azure Batch 在云中运行大型并行作业 | Microsoft Docs
+title: Azure Batch 在云中运行大型并行作业
 description: 了解如何使用 Azure Batch 服务执行大规模并发工作负荷与 HPC 工作负荷
-services: batch
-documentationcenter: ''
-author: mscurrell
-manager: evansma
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.workload: big-compute
-ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 01/19/2018
-ms.author: markscu
-ms.custom: mvc
-ms.openlocfilehash: 7ca2a5e91a0ec0d765e106baca20f135996bc26e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f2bdaeec47b50b715920b27d6adf6e078a354964
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77022794"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82116343"
 ---
 # <a name="what-is-azure-batch"></a>什么是 Azure Batch？
 

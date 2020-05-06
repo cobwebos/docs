@@ -2,20 +2,22 @@
 title: 快速入门：适用于 .NET 的 QnA Maker 客户端库
 description: 本快速入门介绍如何开始使用适用于 .NET 的 QnA Maker 客户端库。 请按照以下步骤安装程序包并试用基本任务的示例代码。  使用 QnA Maker，可以根据常见问题解答文档、URL 和产品手册等半结构化内容打造一项问题与解答服务。
 ms.topic: quickstart
-ms.date: 01/13/2020
-ms.openlocfilehash: 2911c74226c3b682b75e8d10b0b4b7617a48ec64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/27/2020
+ms.openlocfilehash: ce12b0d5739f3c17a324a663a777b70e61f167d1
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75945981"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203998"
 ---
 可以使用适用于 .NET 的 QnA Maker 客户端库执行以下操作：
 
 * 创建知识库
-* 管理知识库
+* 更新知识库
 * 发布知识库
-* 从知识库生成答案
+* 获取已发布的终结点密钥
+* 等待长时间运行的任务
+* 删除知识库
 
 [参考文档](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Knowledge.QnAMaker) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker/) | [C# 示例](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp)
 
@@ -24,7 +26,10 @@ ms.locfileid: "75945981"
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
-* [.NET Core](https://dotnet.microsoft.com/download/dotnet-core) 的当前版本。
+* [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) 或最新版本的 [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
+* 有了 Azure 订阅后，在 Azure 门户中创建 [QnA Maker 资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)，以获取创作密钥和终结点。 部署后，选择”转到资源”  。
+    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到 QnA Maker API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
 
 ## <a name="setting-up"></a>设置
 
@@ -32,7 +37,7 @@ ms.locfileid: "75945981"
 
 Azure 认知服务由你订阅的 Azure 资源表示。 使用 [Azure 门户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 在本地计算机上创建用于 QnA Maker 的资源。
 
-获取资源的密钥和终结点后，[为名为 `QNAMAKER_SUBSCRIPTION_KEY` 的密钥创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。 资源名称用作终结点 URL 的一部分。
+获取资源的密钥和终结点后，为名为 `QNAMAKER_SUBSCRIPTION_KEY` 的密钥[创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。 资源名称将用作终结点 URL 的自定义子域。
 
 ### <a name="create-a-new-c-application"></a>新建 C# 应用程序
 
@@ -121,7 +126,7 @@ var client = new QnAMakerClient(new ApiKeyServiceClientCredentials(subscriptionK
 
 创建 [QnAMakerRuntimeClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerruntimeclient?view=azure-dotnet) 来查询知识库，以通过主动学习生成答案或训练。
 
-[!code-csharp[Authenticate the runtime](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=EndpointKey)]
+[!code-csharp[Authenticate the runtime](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=EndpointKey&highlight=3)]
 
 ## <a name="create-a-knowledge-base"></a>创建知识库
 
@@ -135,7 +140,7 @@ var client = new QnAMakerClient(new ApiKeyServiceClientCredentials(subscriptionK
 
 以下代码的最后一行从来自 MonitorOoperation 的响应返回知识库 ID。
 
-[!code-csharp[Create a knowledge base](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=CreateKB&highlight=29,30)]
+[!code-csharp[Create a knowledge base](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=CreateKB&highlight=30)]
 
 请确保包括上述代码中引用的 [`MonitorOperation`](#get-status-of-an-operation) 函数，以便成功创建知识库。
 

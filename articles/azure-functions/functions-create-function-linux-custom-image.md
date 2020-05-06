@@ -1,20 +1,20 @@
 ---
 title: 在 Linux 上使用自定义映像创建 Azure Functions
 description: 了解如何创建在自定义 Linux 映像中运行的 Azure Functions。
-ms.date: 01/15/2020
+ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 8c074c677c645dd03e3cf5288d82aa3e65720e8b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: fee4e16bd77664e541eeb36cb807a77d13191899
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223724"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82165716"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>在 Linux 上使用自定义容器创建函数
 
-在本教程中，你将创建 Python 代码，并使用 Linux 基础映像将其作为自定义 Docker 容器部署到 Azure Functions。 当函数需要特定的语言版本，或者需要内置映像不提供的特定依赖项或配置时，通常你会使用自定义映像。
+在本教程中，你将创建代码，并使用 Linux 基础映像将其作为自定义 Docker 容器部署到 Azure Functions。 当函数需要特定的语言版本，或者需要内置映像不提供的特定依赖项或配置时，通常你会使用自定义映像。
 
 也可以根据[创建托管在 Linux 上的第一个函数](functions-create-first-azure-function-azure-cli-linux.md)中所述，使用默认的 Azure 应用服务容器。 Azure Functions 支持的基础映像可以在 [Azure Functions 基础映像存储库](https://hub.docker.com/_/microsoft-azure-functions-base)中找到。
 
@@ -31,236 +31,158 @@ ms.locfileid: "79223724"
 > * 与容器建立 SSH 连接。
 > * 添加队列存储输出绑定。 
 
-可以在运行 Windows、Mac OS 或 Linux 的任何计算机上按照本教程所述进行操作。 完成本教程会在你的 Azure 帐户扣取几美元的费用。
+可以在运行 Windows、macOS 或 Linux 的任何计算机上按照本教程所述进行操作。 完成本教程会在你的 Azure 帐户扣取几美元的费用。
 
-## <a name="prerequisites"></a>先决条件
+[!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]
 
-- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- [Azure Functions Core Tools](./functions-run-local.md#v2) 2.7.1846 或更高版本
-- [Azure CLI](/cli/azure/install-azure-cli) 2.0.77 或更高版本
-- [Azure Functions 2.x 运行时](functions-versions.md)
-- 以下语言运行时组件：
-    ::: zone pivot="programming-language-csharp"
-    - [.NET Core 2.2.x 或更高版本](https://dotnet.microsoft.com/download)
-    ::: zone-end
-    ::: zone pivot="programming-language-javascript"
-    - [Node.js](https://nodejs.org/en/download/)
-    ::: zone-end
-    ::: zone pivot="programming-language-powershell"
-    - [PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)
-    ::: zone-end
-    ::: zone pivot="programming-language-python"
-    - [Python 3.6 - 64 位](https://www.python.org/downloads/release/python-3610/)或 [Python 3.7 - 64 位](https://www.python.org/downloads/release/python-376/)
-    ::: zone-end
-    ::: zone pivot="programming-language-typescript"
-    - [Node.js](https://nodejs.org/en/download/)
-    - [TypeScript](http://www.typescriptlang.org/#download-links)
-    ::: zone-end
-- [Docker](https://docs.docker.com/install/)
-- [Docker ID](https://hub.docker.com/signup)
+<!---Requirements specific to Docker --->
++ [Docker](https://docs.docker.com/install/)  
 
-### <a name="prerequisite-check"></a>先决条件检查
++ [Docker ID](https://hub.docker.com/signup)
 
-1. 在终端或命令窗口中，运行 `func --version` 检查 Azure Functions Core Tools 的版本是否为 2.7.1846 或以上。
-1. 运行 `az --version` 检查 Azure CLI 版本是否为 2.0.76 或以上。
-1. 运行 `az login` 登录到 Azure 并验证活动订阅。
-1. 运行 `docker login` 登录到 Docker。 如果 Docker 未运行，则此命令将会失败。在这种情况下，请启动 Docker，然后重试该命令。
+[!INCLUDE [functions-cli-verify-prereqs](../../includes/functions-cli-verify-prereqs.md)]
+
++ 运行 `docker login` 登录到 Docker。 如果 Docker 未运行，则此命令会失败。在这种情况下，请启动 Docker，然后重试该命令。
+
+[!INCLUDE [functions-cli-create-venv](../../includes/functions-cli-create-venv.md)]
 
 ## <a name="create-and-test-the-local-functions-project"></a>创建并测试本地 Functions 项目
 
-1. 在终端中或命令提示符下，在适当的位置创建用于本教程的文件夹，然后导航到该文件夹。
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
+在终端或命令提示符中，根据所选的语言运行以下命令，在名为 `LocalFunctionsProject` 的文件夹中创建一个函数应用项目。  
+::: zone-end  
+::: zone pivot="programming-language-csharp"  
+```
+func init LocalFunctionsProject --worker-runtime dotnet --docker
+```
+::: zone-end  
+::: zone pivot="programming-language-javascript"  
+```
+func init LocalFunctionsProject --worker-runtime node --language javascript --docker
+```
+::: zone-end  
+::: zone pivot="programming-language-powershell"  
+```
+func init LocalFunctionsProject --worker-runtime powershell --docker
+```
+::: zone-end  
+::: zone pivot="programming-language-python"  
+```
+func init LocalFunctionsProject --worker-runtime python --docker
+```
+::: zone-end  
+::: zone pivot="programming-language-typescript"  
+```
+func init LocalFunctionsProject --worker-runtime node --language typescript --docker
+```
+::: zone-end
+::: zone pivot="programming-language-java"  
+在空的文件夹中，运行以下命令以从 [Maven archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) 生成 Functions 项目。
 
-1. 按照有关[创建和激活虚拟环境](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#create-venv)的说明创建用于本教程的虚拟环境。
+# <a name="bash"></a>[bash](#tab/bash)
+```bash
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -Ddocker
+```
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+```powershell
+mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-Ddocker"
+```
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+```cmd
+mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-Ddocker"
+```
+---
 
-1. 根据所选的语言运行以下命令，在某个文件夹中创建名为 `LocalFunctionsProject` 的函数应用项目。 `--docker` 选项生成该项目的 `Dockerfile`，其中定义了适合用于 Azure Functions 和所选运行时的自定义容器。
+Maven 会请求你提供所需的值，以在部署上完成项目的生成。   
+系统提示时提供以下值：
 
-    ::: zone pivot="programming-language-csharp"
-    ```
-    func init LocalFunctionsProject --worker-runtime dotnet --docker
-    ```
-    ::: zone-end
+| Prompt | 值 | 说明 |
+| ------ | ----- | ----------- |
+| **groupId** | `com.fabrikam` | 一个值，用于按照 Java 的[包命名规则](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7)在所有项目中标识你的项目。 |
+| **artifactId** | `fabrikam-functions` | 一个值，该值是 jar 的名称，没有版本号。 |
+| **version** | `1.0-SNAPSHOT` | 选择默认值。 |
+| **package** | `com.fabrikam.functions` | 一个值，该值是所生成函数代码的 Java 包。 使用默认值。 |
 
-    ::: zone pivot="programming-language-javascript"
-    ```
-    func init LocalFunctionsProject --worker-runtime node --language javascript --docker
-    ```
-    ::: zone-end
+键入 `Y` 或按 Enter 进行确认。
 
-    ::: zone pivot="programming-language-powershell"
-    ```
-    func init LocalFunctionsProject --worker-runtime powershell --docker
-    ```
-    ::: zone-end
+Maven 在名为 artifactId  的新文件夹（在此示例中为 `fabrikam-functions`）中创建项目文件。 
+::: zone-end
+`--docker` 选项生成该项目的 `Dockerfile`，其中定义了适合用于 Azure Functions 和所选运行时的自定义容器。
 
-    ::: zone pivot="programming-language-python"
-    ```
-    func init LocalFunctionsProject --worker-runtime python --docker
-    ```
-    ::: zone-end
+导航到项目文件夹：
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
+```
+cd LocalFunctionsProject
+```
+::: zone-end  
+::: zone pivot="programming-language-java"  
+```
+cd fabrikam-functions
+```
+::: zone-end  
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
+使用以下命令将一个函数添加到项目，其中，`--name` 参数是该函数的唯一名称，`--template` 参数指定该函数的触发器。 `func new` 创建一个与函数名称匹配的、包含项目所选语言适用的代码文件的子文件夹，以及一个名为 *function.json* 的配置文件。
 
-    ::: zone pivot="programming-language-typescript"
-    ```
-    func init LocalFunctionsProject --worker-runtime node --language typescript --docker
-    ```
-    ::: zone-end
-    
-1. 导航到项目文件夹：
+```
+func new --name HttpExample --template "HTTP trigger"
+```
+::: zone-end  
+若要在本地测试函数，请启动项目文件夹的根目录中的本地 Azure Functions 运行时主机： 
+::: zone pivot="programming-language-csharp"  
+```
+func start --build  
+```
+::: zone-end  
+::: zone pivot="programming-language-javascript,programming-language-powershell,programming-language-python"   
+```
+func start  
+```
+::: zone-end  
+::: zone pivot="programming-language-typescript"  
+```
+npm install
+npm start
+```
+::: zone-end  
+::: zone pivot="programming-language-java"  
+```
+mvn clean package  
+mvn azure-functions:run
+```
+::: zone-end
+看到输出中显示了 `HttpExample` 终结点后，请导航到 `http://localhost:7071/api/HttpExample?name=Functions`。 浏览器会显示“hello”消息，该消息回显 `Functions`（提供给 `name` 查询参数的值）。
 
-    ```
-    cd LocalFunctionsProject
-    ```
-    
-1. 使用以下命令将一个函数添加到项目，其中，`--name` 参数是该函数的唯一名称，`--template` 参数指定该函数的触发器。 `func new` 创建一个与函数名称匹配的、包含项目所选语言适用的代码文件的子文件夹，以及一个名为 *function.json* 的配置文件。
-
-    ```
-    func new --name HttpExample --template "HTTP trigger"
-    ```
-
-1. 若要在本地测试函数，请在 *LocalFunctionsProject* 文件夹中启动本地 Azure Functions 运行时主机：
-   
-    ::: zone pivot="programming-language-csharp"
-    ```
-    func start --build
-    ```
-    ::: zone-end
-
-    ::: zone pivot="programming-language-javascript"
-    ```
-    func start
-    ```
-    ::: zone-end
-
-    ::: zone pivot="programming-language-powershell"
-    ```
-    func start
-    ```
-    ::: zone-end
-
-    ::: zone pivot="programming-language-python"
-    ```
-    func start
-    ```
-    ::: zone-end    
-
-    ::: zone pivot="programming-language-typescript"
-    ```
-    npm install
-    ```
-
-    ```
-    npm start
-    ```
-    ::: zone-end
-
-1. 看到输出中显示了 `HttpExample` 终结点后，请导航到 `http://localhost:7071/api/HttpExample?name=Functions`。 浏览器中应会显示类似于“Hello，Functions”的消息（根据所选编程语言而略有不同）。
-
-1. 按 **Ctrl**-**C** 停止主机。
+按 **Ctrl**-**C** 停止主机。
 
 ## <a name="build-the-container-image-and-test-locally"></a>生成容器映像并在本地测试
 
-1. （可选）检查 *LocalFunctionsProj* 文件夹中的“Dockerfile”。 Dockerfile 描述了在 Linux 上运行函数应用所需的环境： 
+（可选）检查项目文件夹的根目录中的“Dockerfile”。 Dockerfile 描述了在 Linux 上运行函数应用所需的环境。  Azure Functions 支持的基础映像的完整列表可以在 [Azure Functions 基础映像页](https://hub.docker.com/_/microsoft-azure-functions-base)中找到。
+    
+在项目根文件夹中运行 [docker build](https://docs.docker.com/engine/reference/commandline/build/) 命令，并提供名称 `azurefunctionsimage` 和标记 `v1.0.0`。 将 `<DOCKER_ID>` 替换为 Docker 中心帐户 ID。 此命令为容器生成 Docker 映像。
 
-    ::: zone pivot="programming-language-csharp"
-    ```Dockerfile
-    FROM microsoft/dotnet:2.2-sdk AS installer-env
+```
+docker build --tag <DOCKER_ID>/azurefunctionsimage:v1.0.0 .
+```
 
-    COPY . /src/dotnet-function-app
-    RUN cd /src/dotnet-function-app && \
-        mkdir -p /home/site/wwwroot && \
-        dotnet publish *.csproj --output /home/site/wwwroot
+该命令完成后，可在本地运行新容器。
     
-    # To enable ssh & remote debugging on app service change the base image to the one below
-    # FROM mcr.microsoft.com/azure-functions/dotnet:2.0-appservice 
-    FROM mcr.microsoft.com/azure-functions/dotnet:2.0
-    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
-        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
-    
-    COPY --from=installer-env ["/home/site/wwwroot", "/home/site/wwwroot"]
-    ```
-    ::: zone-end
+若要测试生成，请使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行本地容器中的映像，并再次将 `<DOCKER_ID` 替换为 Docker ID，同时添加端口参数 `-p 8080:80`：
 
-    ::: zone pivot="programming-language-javascript"
-    ```Dockerfile
-    # To enable ssh & remote debugging on app service change the base image to the one below
-    # FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
-    FROM mcr.microsoft.com/azure-functions/node:2.0
-    
-    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
-        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
-    
-    COPY . /home/site/wwwroot
-    
-    RUN cd /home/site/wwwroot && \
-    npm install    
-    ```
-    ::: zone-end
+```
+docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
+```
 
-    ::: zone pivot="programming-language-powershell"
-    ```Dockerfile
-    # To enable ssh & remote debugging on app service change the base image to the one below
-    # FROM mcr.microsoft.com/azure-functions/powershell:2.0-appservice
-    FROM mcr.microsoft.com/azure-functions/powershell:2.0
-    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
-        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
-    
-    COPY . /home/site/wwwroot    
-    ```
-    ::: zone-end
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
+该映像在本地容器中运行后，请在浏览器中打开 `http://localhost:8080`。浏览器中应会显示如下所示的占位符映像。 该映像之所以在此时显示，是因为函数在本地容器中运行（与在 Azure 中一样），这意味着，该函数由 *function.json* 中定义的访问密钥使用 `"authLevel": "function"` 属性来保护。 但是，容器尚未发布到 Azure 中的函数应用，因此该密钥尚不可用。 若要针对本地容器进行测试，请停止 Docker，将授权属性更改为 `"authLevel": "anonymous"`，重新生成映像，然后重启 Docker。 然后重置 *function.json* 中的 `"authLevel": "function"`。 有关详细信息，请参阅[授权密钥](functions-bindings-http-webhook-trigger.md#authorization-keys)。
 
-    ::: zone pivot="programming-language-python"
-    ```Dockerfile
-    # To enable ssh & remote debugging on app service change the base image to the one below
-    # FROM mcr.microsoft.com/azure-functions/python:2.0-python3.7-appservice
-    FROM mcr.microsoft.com/azure-functions/python:2.0-python3.7
-    
-    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
-        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
-    
-    COPY requirements.txt /
-    RUN pip install -r /requirements.txt
-    
-    COPY . /home/site/wwwroot    
-    ```
-    ::: zone-end
+![指示容器正在本地运行的占位符映像](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
-    ::: zone pivot="programming-language-typescript"
-    ```Dockerfile
-    # To enable ssh & remote debugging on app service change the base image to the one below
-    # FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
-    FROM mcr.microsoft.com/azure-functions/node:2.0
-    
-    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
-        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
-    
-    COPY . /home/site/wwwroot
-    
-    RUN cd /home/site/wwwroot && \
-    npm install    
-    ```
-    ::: zone-end
+::: zone-end
+::: zone pivot="programming-language-java"  
+映像在本地容器中运行后，请浏览到 `http://localhost:8080/api/HttpExample?name=Functions`，此时会显示与前面相同的“hello”消息。 由于 Maven 原型会生成一个使用匿名身份验证的 HTTP 触发函数，因此你仍可以调用该函数，即使它在容器中运行。 
+::: zone-end  
 
-    > [!NOTE]
-    > Azure Functions 支持的基础映像的完整列表可以在 [Azure Functions 基础映像页](https://hub.docker.com/_/microsoft-azure-functions-base)中找到。
-    
-1. 在 *LocalFunctionsProject* 文件夹中运行 [docker build](https://docs.docker.com/engine/reference/commandline/build/) 命令，并提供名称 `azurefunctionsimage` 和标记 `v1.0.0`。 将 `<docker_id>` 替换为 Docker 中心帐户 ID。 此命令为容器生成 Docker 映像。
-
-    ```
-    docker build --tag <docker_id>/azurefunctionsimage:v1.0.0 .
-    ```
-    
-    该命令完成后，可在本地运行新容器。
-    
-1. 若要测试生成，请使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行本地容器中的映像，并再次将 `<docker_id>` 替换为 Docker ID，同时添加端口参数 `-p 8080:80`：
-
-    ```
-    docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
-    ```
-    
-1. 该映像在本地容器中运行后，请在浏览器中打开 `http://localhost:8080`。浏览器中应会显示如下所示的占位符映像。 该映像之所以在此时显示，是因为函数在本地容器中运行（与在 Azure 中一样），这意味着，该函数由 *function.json* 中定义的访问密钥使用 `"authLevel": "function"` 属性来保护。 但是，容器尚未发布到 Azure 中的函数应用，因此该密钥尚不可用。 若要在本地进行测试，请停止 Docker，将授权属性更改为 `"authLevel": "anonymous"`，重新生成映像，然后重启 Docker。 然后重置 *function.json* 中的 `"authLevel": "function"`。 有关详细信息，请参阅[授权密钥](functions-bindings-http-webhook-trigger.md#authorization-keys)。
-
-    ![指示容器正在本地运行的占位符映像](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
-
-1. 验证容器中的函数应用后，按 **Ctrl**+**C** 停止 Docker。
+验证容器中的函数应用后，按 Ctrl+C 停止 Docker   。
 
 ## <a name="push-the-image-to-docker-hub"></a>将映像推送到 Docker Hub
 
@@ -349,18 +271,18 @@ Azure 上的函数应用管理托管计划中函数的执行。 在本部分，�
 
 1. 该函数现在可以使用此连接字符串来访问存储帐户。
 
-> [!TIP]
-> 在 bash 中，可以使用 shell 变量来捕获连接字符串，而无需使用剪贴板。 首先，使用以下命令创建包含连接字符串的变量：
-> 
-> ```bash
-> storageConnectionString=$(az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv)
-> ```
-> 
-> 然后，在第二个命令中引用该变量：
-> 
-> ```azurecli
-> az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=$storageConnectionString
-> ```
+    > [!TIP]
+    > 在 bash 中，可以使用 shell 变量来捕获连接字符串，而无需使用剪贴板。 首先，使用以下命令创建包含连接字符串的变量：
+    > 
+    > ```bash
+    > storageConnectionString=$(az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv)
+    > ```
+    > 
+    > 然后，在第二个命令中引用该变量：
+    > 
+    > ```azurecli
+    > az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=$storageConnectionString
+    > ```
 
 > [!NOTE]    
 > 如果将自定义映像发布到专用容器帐户，则应改为在连接字符串的 Dockerfile 中使用环境变量。 有关详细信息，请参阅 [ENV 指令](https://docs.docker.com/engine/reference/builder/#env)。 另外，应设置变量 `DOCKER_REGISTRY_SERVER_USERNAME` 和 `DOCKER_REGISTRY_SERVER_PASSWORD`。 若要使用这些值，必须重新生成映像，将映像推送到注册表，然后在 Azure 上重启函数应用。
@@ -511,347 +433,47 @@ SSH 实现容器和客户端之间的安全通信。 启用 SSH 后，可以使�
 
 本部分介绍如何将函数与 Azure 存储队列集成。 添加到此函数的输出绑定会将 HTTP 请求中的数据写入到队列中的消息。
 
-## <a name="retrieve-the-azure-storage-connection-string"></a>检索 Azure 存储连接字符串
+[!INCLUDE [functions-cli-get-storage-connection](../../includes/functions-cli-get-storage-connection.md)]
 
-前面你已创建一个供函数应用使用的 Azure 存储帐户。 此帐户的连接字符串安全存储在 Azure 中的应用设置内。 将设置下载到 *local.settings.json* 文件中后，在本地运行函数时，可以在同一帐户中使用该连接写入存储队列。 
+[!INCLUDE [functions-register-storage-binding-extension-csharp](../../includes/functions-register-storage-binding-extension-csharp.md)]
 
-1. 在项目的根目录中运行以下命令（请将 `<app_name>` 替换为前一篇快速入门中所用的函数应用名称）。 此命令将覆盖该文件中的任何现有值。
+[!INCLUDE [functions-add-output-binding-cli](../../includes/functions-add-output-binding-cli.md)]
 
-    ```
-    func azure functionapp fetch-app-settings <app_name>
-    ```
-    
-1. 打开 *local.settings.json*，找到名为 `AzureWebJobsStorage` 的值，即存储帐户连接字符串。 在本文的其他部分，将使用名称 `AzureWebJobsStorage` 和该连接字符串。
-
-> [!IMPORTANT]
-> 由于 *local.settings.json* 包含从 Azure 下载的机密，因此请始终从源代码管理中排除此文件。 连同本地函数项目一起创建的 *.gitignore* 文件默认会排除该文件。
-
-### <a name="add-an-output-binding-to-functionjson"></a>将输出绑定添加到 function.json
-
-在 Azure Functions 中，每种类型的绑定都需要一个 `direction`、`type`，以及要在 *function.json* 文件中定义的唯一 `name`。 *function.json* 已包含“httpTrigger”类型的输入绑定，以及 HTTP 响应的输出绑定。 若要将绑定添加到存储队列，请按如下所示修改该文件，为“queue”类型（其中的队列作为名为 `msg`的输入参数显示在代码中）添加输出绑定。 队列绑定还要求使用队列的名称（在本例中为 `outqueue`），以及用于保存连接字符串的设置的名称（在本例中为 `AzureWebJobStorage`）。
-
-::: zone pivot="programming-language-csharp"
-
-在 C# 类库项目中，绑定被定义为函数方法上的绑定属性。 然后根据这些属性自动生成 *function.json* 文件。
-
-1. 对于队列绑定，请运行以下 [dotnet add package](/dotnet/core/tools/dotnet-add-package) 命令，将存储扩展包添加到项目中。
-
-    ```
-    dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
-    ```
-
-1. 打开 *HttpTrigger.cs* 文件并添加以下 `using` 语句：
-
-    ```cs
-    using Microsoft.Azure.WebJobs.Extensions.Storage;
-    ```
-    
-1. 将以下参数添加到 `Run` 方法定义：
-    
-    ```csharp
-    [Queue("outqueue"), StorageAccount("AzureWebJobsStorage")] ICollector<string> msg
-    ```
-    
-    `Run` 方法定义现在应与以下代码相匹配：
-    
-    ```csharp
-    [FunctionName("HttpTrigger")]
-    public static async Task<IActionResult> Run(
-        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, 
-        [Queue("outqueue"), StorageAccount("AzureWebJobsStorage")] ICollector<string> msg, ILogger log)
-    ```
-
-`msg` 参数为 `ICollector<T>` 类型，表示函数完成时写入输出绑定的消息集合。 在这种情况下，输出是名为的 `outqueue` 存储队列。 存储帐户的连接字符串由 `StorageAccountAttribute` 设置。 此属性指示包含存储帐户连接字符串的设置，可以在类、方法或参数级别应用。 在本例中，可以省略 `StorageAccountAttribute`，因为你已使用默认存储帐户。
-
-::: zone-end
-
-::: zone pivot="programming-language-javascript"
-
-通过在 HTTP 绑定后面添加队列绑定来更新 *function.json*，以便与以下内容相匹配：
-
-```json
-{
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "res"
-    },
-    {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
-::: zone-end
-
-::: zone pivot="programming-language-powershell"
-
-通过在 HTTP 绑定后面添加队列绑定来更新 *function.json*，以便与以下内容相匹配：
-
-```json
-{
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "Request",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "Response"
-    },
-    {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
-::: zone-end
-
-::: zone pivot="programming-language-python"
-
-通过在 HTTP 绑定后面添加队列绑定来更新 *function.json*，以便与以下内容相匹配：
-
-```json
-{
-  "scriptFile": "__init__.py",
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    },
-    {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
-::: zone-end
-
-::: zone pivot="programming-language-typescript"
-
-通过在 HTTP 绑定后面添加队列绑定来更新 *function.json*，以便与以下内容相匹配：
-
-```json
-{
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "Request",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "Response"
-    },
-    {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
-::: zone-end
+::: zone pivot="programming-language-csharp"  
+[!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]  
+::: zone-end  
+::: zone pivot="programming-language-java" 
+[!INCLUDE [functions-add-output-binding-java-cli](../../includes/functions-add-output-binding-java-cli.md)]
+::: zone-end  
 
 ## <a name="add-code-to-use-the-output-binding"></a>添加使用输出绑定的代码
 
-定义绑定后，绑定的名称（在本例中为 `msg`）将作为参数显示在函数代码中（或者 JavaScript 和 TypeScript 的 `context` 对象中）。 然后，可以使用该变量将消息写入队列。 需要编写任何用于身份验证、获取队列引用或写入数据的代码。 在 Azure Functions 运行时和队列输出绑定中可以方便地处理所有这些集成任务。
+定义队列绑定后，可以更新函数，以接收 `msg` 输出参数并将消息写入队列。
 
-::: zone pivot="programming-language-csharp"
-```csharp
-[FunctionName("HttpTrigger")]
-public static async Task<IActionResult> Run(
-    [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, 
-    [Queue("outqueue"), StorageAccount("AzureWebJobsStorage")] ICollector<string> msg, ILogger log)
-{
-    log.LogInformation("C# HTTP trigger function processed a request.");
+::: zone pivot="programming-language-python"     
+[!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
+::: zone-end  
 
-    string name = req.Query["name"];
+::: zone pivot="programming-language-javascript"  
+[!INCLUDE [functions-add-output-binding-js](../../includes/functions-add-output-binding-js.md)]
+::: zone-end  
 
-    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-    dynamic data = JsonConvert.DeserializeObject(requestBody);
-    name = name ?? data?.name;
+::: zone pivot="programming-language-typescript"  
+[!INCLUDE [functions-add-output-binding-ts](../../includes/functions-add-output-binding-ts.md)]
+::: zone-end  
 
-    if (!string.IsNullOrEmpty(name))
-    {
-        // Add a message to the output collection.
-        msg.Add(string.Format("Name passed to the function: {0}", name));
-    }
-    
-    return name != null
-        ? (ActionResult)new OkObjectResult($"Hello, {name}")
-        : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
-}
-```
+::: zone pivot="programming-language-powershell"  
+[!INCLUDE [functions-add-output-binding-powershell](../../includes/functions-add-output-binding-powershell.md)]  
 ::: zone-end
 
-::: zone pivot="programming-language-javascript"
-```js
-module.exports = async function (context, req) {
-    context.log('JavaScript HTTP trigger function processed a request.');
+::: zone pivot="programming-language-csharp"  
+[!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
+::: zone-end 
 
-    if (req.query.name || (req.body && req.body.name)) {
-        // Add a message to the Storage queue.
-        context.bindings.msg = "Name passed to the function: " +
-            (req.query.name || req.body.name);
+::: zone pivot="programming-language-java"
+[!INCLUDE [functions-add-output-binding-java-code](../../includes/functions-add-output-binding-java-code.md)]
 
-        context.res = {
-            // status: 200, /* Defaults to 200 */
-            body: "Hello " + (req.query.name || req.body.name)
-        };
-    }
-    else {
-        context.res = {
-            status: 400,
-            body: "Please pass a name on the query string or in the request body"
-        };
-    }
-};
-```
-::: zone-end
-
-::: zone pivot="programming-language-powershell"
-```powershell
-using namespace System.Net
-
-# Input bindings are passed in via param block.
-param($Request, $TriggerMetadata)
-
-# Write to the Azure Functions log stream.
-Write-Host "PowerShell HTTP trigger function processed a request."
-
-# Interact with query parameters or the body of the request.
-$name = $Request.Query.Name
-if (-not $name) {
-    $name = $Request.Body.Name
-}
-
-if ($name) {
-    $outputMsg = "Name passed to the function: $name"
-    Push-OutputBinding -name msg -Value $outputMsg
-
-    $status = [HttpStatusCode]::OK
-    $body = "Hello $name"
-}
-else {
-    $status = [HttpStatusCode]::BadRequest
-    $body = "Please pass a name on the query string or in the request body."
-}
-
-# Associate values to output bindings by calling 'Push-OutputBinding'.
-Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
-    StatusCode = $status
-    Body = $body
-})
-```
-::: zone-end
-
-::: zone pivot="programming-language-python"
-```python
-import logging
-
-import azure.functions as func
-
-
-def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
-
-    name = req.params.get('name')
-    if not name:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            pass
-        else:
-            name = req_body.get('name')
-
-    if name:
-        msg.set(name)
-        return func.HttpResponse(f"Hello {name}!")
-    else:
-        return func.HttpResponse(
-            "Please pass a name on the query string or in the request body",
-            status_code=400
-        )
-```
-::: zone-end
-
-::: zone pivot="programming-language-typescript"
-```typescript
-import { AzureFunction, Context, HttpRequest } from "@azure/functions"
-
-const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
-    context.log('HTTP trigger function processed a request.');
-    const name = (req.query.name || (req.body && req.body.name));
-
-    if (name) {
-        // Add a message to the Storage queue.
-        context.bindings.msg = "Name passed to the function: " +
-            (req.query.name || req.body.name);
-        
-        context.res = {
-            // status: 200, /* Defaults to 200 */
-            body: "Hello " + (req.query.name || req.body.name)
-        };
-    }
-    else {
-        context.res = {
-            status: 400,
-            body: "Please pass a name on the query string or in the request body"
-        };
-    }
-};
-
-export default httpTrigger;
-```
+[!INCLUDE [functions-add-output-binding-java-test-cli](../../includes/functions-add-output-binding-java-test-cli.md)]
 ::: zone-end
 
 ### <a name="update-the-image-in-the-registry"></a>更新注册表中的映像
@@ -874,71 +496,7 @@ export default httpTrigger;
 
 在浏览器中，使用前面所述的同一 URL 来调用函数。 浏览器应会显示与前面相同的响应，因为尚未修改函数代码的该部分。 但是，添加的代码已使用 `name` URL 参数将消息写入 `outqueue` 存储队列。
 
-可以在 [Azure 门户](../storage/queues/storage-quickstart-queues-portal.md)或 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)中查看队列。 也可以按以下步骤中所述，在 Azure CLI 中查看队列：
-
-1. 打开函数项目的 *local.setting.json* 文件，并复制连接字符串值。 在终端或命令窗口中运行以下命令，以创建名为 `AZURE_STORAGE_CONNECTION_STRING` 的环境变量（请在 `<connection_string>` 位置粘贴特定的连接字符串）。 （创建此环境变量后，无需在使用 `--connection-string` 参数的每个后续命令中提供连接字符串。）
-
-    # <a name="bash"></a>[bash](#tab/bash)
-    
-    ```bash
-    AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
-    ```
-    
-    # <a name="powershell"></a>[PowerShell](#tab/powershell)
-    
-    ```powershell
-    $env:AZURE_STORAGE_CONNECTION_STRING = "<connection_string>"
-    ```
-    
-    # <a name="cmd"></a>[Cmd](#tab/cmd)
-    
-    ```cmd
-    set AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
-    ```
-    
-    ---
-    
-1. （可选）使用 [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) 命令查看帐户中的存储队列。 此命令的输出应包含名为 `outqueue` 的队列，该队列是函数将其第一条消息写入该队列时创建的。
-    
-    # <a name="bash"></a>[bash](#tab/bash)
-    
-    ```azurecli
-    az storage queue list --output tsv
-    ```
-    
-    # <a name="powershell"></a>[PowerShell](#tab/powershell)
-    
-    ```azurecli
-    az storage queue list --output tsv
-    ```
-    
-    # <a name="cmd"></a>[Cmd](#tab/cmd)
-    
-    ```azurecli
-    az storage queue list --output tsv
-    ```
-    
-    ---
-
-1. 使用 [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) 命令查看此队列中的消息，队列名称应是前面在测试函数时使用的名称。 该命令检索队列中采用 [base64 编码](functions-bindings-storage-queue-trigger.md#encoding)的第一条消息，因此，还必须将此消息解码，才能以文本格式查看它。
-
-    # <a name="bash"></a>[bash](#tab/bash)
-    
-    ```bash
-    echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
-    ```
-    
-    # <a name="powershell"></a>[PowerShell](#tab/powershell)
-    
-    ```powershell
-    [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}')))
-    ```
-    
-    # <a name="cmd"></a>[Cmd](#tab/cmd)
-    
-    由于需要取消引用消息集合并从 base64 解码，因此请运行 PowerShell 并使用 PowerShell 命令。
-
-    ---
+[!INCLUDE [functions-add-output-binding-view-queue-cli](../../includes/functions-add-output-binding-view-queue-cli.md)]
 
 ## <a name="clean-up-resources"></a>清理资源
 

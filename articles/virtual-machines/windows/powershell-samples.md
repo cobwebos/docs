@@ -1,25 +1,19 @@
 ---
 title: Azure 虚拟机 PowerShell 示例
 description: Azure 虚拟机 PowerShell 示例
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-service-management
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: sample
 ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 434cf3f9342ad10bab39030e65cdd4bc4d0edc27
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
-ms.translationtype: MT
+ms.openlocfilehash: 03d27e1e72eaa5f5dee8cfa9062a56c6dd45007a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81458856"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82100016"
 ---
 # <a name="azure-virtual-machine-powershell-samples"></a>Azure 虚拟机 PowerShell 示例
 
@@ -30,7 +24,7 @@ ms.locfileid: "81458856"
 |**创建虚拟机**||
 | [快速创建虚拟机](./../scripts/virtual-machines-windows-powershell-sample-create-vm-quick.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 根据简单的提示创建资源组、虚拟机和所有相关资源。|
 | [创建完全配置的虚拟机](./../scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 创建资源组、虚拟机和所有相关资源。|
-| [创建高可用虚拟机](./../scripts/virtual-machines-windows-powershell-sample-create-nlb-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 使用高度可用且负载均衡的配置创建多个虚拟机。|
+| [创建高度可用的虚拟机](./../scripts/virtual-machines-windows-powershell-sample-create-nlb-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 使用高度可用且负载均衡的配置创建多个虚拟机。|
 | [创建 VM 并运行配置脚本](./../scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 创建一个虚拟机，并使用 Azure 自定义脚本扩展安装 IIS。 |
 | [创建 VM 并运行 DSC 配置](./../scripts/virtual-machines-windows-powershell-sample-create-iis-using-dsc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 创建一个虚拟机，并使用 Azure Desired State Configuration (DSC) 扩展来安装 IIS。 |
 | [上传 VHD 并创建 VM](./../scripts/virtual-machines-windows-powershell-upload-generalized-script.md) | 将本地 VHD 文件上传到 Azure，从 VHD 创建映像，然后通过该映像创建 VM。 |
