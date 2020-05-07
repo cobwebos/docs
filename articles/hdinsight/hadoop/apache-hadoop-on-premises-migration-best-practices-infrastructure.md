@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: d7ee8ae121e3cbb9760a87c95d12109a9b05e0c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 61d7d2a52f58162d288b1155f9724c7912e451f3
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74951507"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780090"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 基础结构最佳做法
 
@@ -109,7 +109,7 @@ HDInsight 提供预先编写的脚本用于在 HDInsight 群集上安装以下�
 
 ## <a name="customize-hdinsight-configs-using-bootstrap"></a>使用 Bootstrap 自定义 HDInsight 配置
 
-可以使用 Bootstrap 对 `core-site.xml`、`hive-site.xml` 和 `oozie-env.xml` 等配置文件中的配置进行更改。 以下脚本是使用 Powershell [AZ module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) cmdlet [New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) 的示例：
+可以使用 Bootstrap 对 `core-site.xml`、`hive-site.xml` 和 `oozie-env.xml` 等配置文件中的配置进行更改。 以下脚本是使用 PowerShell [AZ module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) cmdlet [AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster)的示例：
 
 ```powershell
 # hive-site.xml configuration
@@ -167,7 +167,7 @@ Azure 虚拟网络可以筛选和路由网络流量，使 Azure 资源（例如 
 - 将 HDInsight 连接到 Azure 虚拟网络中的数据存储。
 - 直接访问无法通过 Internet 公开访问的 Hadoop 服务。 例如，Kafka API 或 HBase Java API。
 
-可将 HDInsight 添加到新的或现有的 Azure 虚拟网络。 如果将 HDInsight 添加到现有的虚拟网络，则需要更新现有的网络安全组和用户定义的路由，以便能够不受限制地访问 Azure 数据中心内的[多个 IP 地址](../hdinsight-management-ip-addresses.md)。 此外，请确保不要阻止对 HDInsight 服务使用的[端口](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ports)的流量。
+可将 HDInsight 添加到新的或现有的 Azure 虚拟网络。 如果将 HDInsight 添加到现有的虚拟网络，则需要更新现有的网络安全组和用户定义的路由，以便能够不受限制地访问 Azure 数据中心内的[多个 IP 地址](../hdinsight-management-ip-addresses.md)。 此外，请确保不要阻止对 HDInsight 服务使用的[端口](../control-network-traffic.md#required-ports)的流量。
 
 > [!Note]  
 > HDInsight 目前不支持强制隧道。 强制隧道是一种子网设置，将出站 Internet 流量强制定向到设备以进行检查和记录。 在将 HDInsight 安装到子网之前删除强制隧道，或者为 HDInsight 创建新的子网。 此外，HDInsight 不支持限制出站网络连接。

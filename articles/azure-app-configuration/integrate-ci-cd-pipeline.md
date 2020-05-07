@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 01/30/2020
 ms.author: lcozzens
-ms.openlocfilehash: c744557471a9b37bd620bb9195bdb709c24649ab
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4b1b9e2360f4ae1cf428133006ed08327b10cdef
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77047291"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790756"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>与 CI/CD 管道集成
 
@@ -96,4 +96,4 @@ ms.locfileid: "77047291"
 在本教程中，导出了要在部署管道中使用的 Azure 应用程序配置数据。 若要了解有关如何使用应用程序配置的更多信息，请继续阅读 Azure CLI 示例。
 
 > [!div class="nextstepaction"]
-> [托管标识集成](./howto-integrate-azure-managed-service-identity.md)
+> [Azure CLI](https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest)

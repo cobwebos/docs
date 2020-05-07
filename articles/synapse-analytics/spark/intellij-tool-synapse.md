@@ -8,12 +8,12 @@ ms.reviewer: jrasnick, carlrab
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: 310dfec2bbd1bf6cb69f6293becead30487d6cbd
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: fc7551c081d14a871c8ee96610ca7190f629901d
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81425456"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790960"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-spark-pools-preview"></a>教程：使用 Azure Toolkit for IntelliJ 为 Spark 池（预览版）创建 Apache Spark 应用程序
 
@@ -35,7 +35,7 @@ ms.locfileid: "81425456"
 - [IntelliJ IDEA 社区版](https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows&code=IIC)。
 - Azure 工具包插件 3.27.0-2019.2 – 从 [IntelliJ 插件存储库](/java/azure/intellij/azure-toolkit-for-intellij-installation?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)安装
 - [JDK（版本 1.8）](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。
-- Scala 插件 – 从 [IntelliJ 插件存储库](/hdinsight/spark/apache-spark-intellij-tool-plugin#install-scala-plugin-for-intellij-idea.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)安装。
+- Scala 插件 – 从 [IntelliJ 插件存储库](/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#install-scala-plugin-for-intellij-idea)安装。
 - 此先决条件仅适用于 Windows 用户。
 
   在 Windows 计算机上运行本地 Spark Scala 应用程序时，可能会发生 [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) 中所述的异常。 发生此异常的原因是 Windows 中缺少 WinUtils.exe。
