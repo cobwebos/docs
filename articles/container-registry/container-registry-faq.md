@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 7452b5dd3c952a13a28566914d2fe513689d4751
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 39b543c5f886b22d488198873b75cf76555692fa
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80618795"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731638"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>有关 Azure 容器注册表的常见问题解答
 
@@ -104,12 +104,12 @@ az role assignment create --role "Reader" --assignee user@contoso.com --scope /s
 - [如何启用 TLS 1.2？](#how-to-enable-tls-12)
 - [Azure 容器注册表是否支持内容信任？](#does-azure-container-registry-support-content-trust)
 - [在无权管理注册表资源的情况下如何授予提取或推送映像的访问权限？](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
-- [如何为注册表启用自动映像隔离？](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
+- [如何实现为注册表启用自动映像隔离？](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
 - [如何实现启用匿名请求访问？](#how-do-i-enable-anonymous-pull-access)
 
 ### <a name="how-do-i-access-docker-registry-http-api-v2"></a>如何访问 Docker 注册表 HTTP API V2？
 
-ACR 支持 Docker 注册表 HTTP API V2。 可通过 `https://<your registry login server>/v2/` 访问 API。 示例：`https://mycontainerregistry.azurecr.io/v2/`
+ACR 支持 Docker 注册表 HTTP API V2。 可通过 `https://<your registry login server>/v2/` 访问 API。 示例： `https://mycontainerregistry.azurecr.io/v2/`
 
 ### <a name="how-do-i-delete-all-manifests-that-are-not-referenced-by-any-tag-in-a-repository"></a>如何删除不由存储库中的任何标记引用的所有清单？
 
@@ -125,7 +125,7 @@ az acr repository show-manifests -n myRegistry --repository myRepository --query
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv | %{ az acr repository delete -n myRegistry -t myRepository@$_ }
 ```
 
-注意：可以在 delete `-y`命令中添加，以跳过确认。
+注意：在 delete 命令中添加 `-y` 可跳过确认。
 
 有关详细信息，请参阅[删除 Azure 容器注册表中的容器映像](container-registry-delete.md)。
 
@@ -184,31 +184,31 @@ az acr login -n MyRegistry
 
 ### <a name="how-to-enable-tls-12"></a>如何启用 TLS 1.2？
 
-使用任何最近的 docker 客户端（版本18.03.0 及更高版本）启用 TLS 1.2。 
+使用任何最近发布的 Docker 客户端（18.03.0 和更高版本）启用 TLS 1.2。 
 
 > [!IMPORTANT]
 > 从 2020 年 1 月 13 日开始，Azure 容器注册表将要求服务器和应用程序的所有安全连接都使用 TLS 1.2。 对 TLS 1.0 和 1.1 的支持将停用。
 
 ### <a name="does-azure-container-registry-support-content-trust"></a>Azure 容器注册表是否支持内容信任？
 
-是的，你可以使用 Azure 容器注册表中的受信任映像，因为[Docker 公证人](https://docs.docker.com/notary/getting_started/)已集成并可启用。 有关详细信息，请参阅[Azure 容器注册表中的内容信任](container-registry-content-trust.md)。
+支持，可以在 Azure 容器注册表中使用受信任映像，因为 [Docker Notary](https://docs.docker.com/notary/getting_started/) 已集成且可以启用。 有关详细信息，请参阅 [Azure 容器注册表中的内容信任](container-registry-content-trust.md)。
 
 
-####  <a name="where-is-the-file-for-the-thumbprint-located"></a>指纹位于何处？
+####  <a name="where-is-the-file-for-the-thumbprint-located"></a>指纹文件位于何处？
 
-在`~/.docker/trust/tuf/myregistry.azurecr.io/myrepository/metadata`：
+在 `~/.docker/trust/tuf/myregistry.azurecr.io/myrepository/metadata` 下：
 
-* 所有角色（委托角色除外）的公钥和证书都存储在中`root.json`。
-* 委托角色的公钥和证书存储在其父角色的 JSON 文件中（例如`targets.json` ， `targets/releases`角色）。
+* 所有角色（委托角色除外）的公钥和证书都存储在 `root.json` 中。
+* 委托角色的公钥和证书将存储在其父角色的 JSON 文件（例如，`targets/releases` 角色的 `targets.json`）中。
 
-建议在 Docker 和公证人客户端完成总体 TUF 验证之后验证这些公钥和证书。
+建议在 Docker 和 Notary 客户端完成总体 TUF 验证后验证这些公钥和证书。
 
 ### <a name="how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource"></a>在无权管理注册表资源的情况下如何授予提取或推送映像的访问权限？
 
 ACR 支持提供不同权限级别的[自定义角色](container-registry-roles.md)。 具体而言，`AcrPull` 和 `AcrPush` 角色允许用户在无权管理 Azure 中的注册表资源的情况下提取和/或推送映像。
 
-* Azure 门户：注册表 > 访问控制（IAM）-> 添加（为角色选择`AcrPull`或`AcrPush` ）。
-* Azure CLI：通过运行以下命令查找注册表的资源 ID：
+* Azure 门户：你的注册表 >“访问控制(IAM)”->“添加”（为“角色”选择 `AcrPull` 或 `AcrPush`）。
+* Azure CLI：运行以下命令找到注册表的资源 ID：
 
   ```azurecli
   az acr show -n myRegistry
@@ -259,11 +259,11 @@ ACR 支持提供不同权限级别的[自定义角色](container-registry-roles.
 
 ## <a name="diagnostics-and-health-checks"></a>诊断和运行状况检查
 
-- [检查运行状况`az acr check-health`](#check-health-with-az-acr-check-health)
+- [使用 `az acr check-health` 检查运行状况](#check-health-with-az-acr-check-health)
 - [Docker 提取失败并出现错误：net/http: 等待连接时取消了请求(等待标头时超过了 Client.Timeout)](#docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers)
-- [docker 推送成功但 docker pull 失败，出现错误：未授权：需要进行身份验证](#docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required)
-- [`az acr login`成功，但 docker 命令失败并出现错误：未授权：需要进行身份验证](#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
-- [启用并获取 docker 后台程序的调试日志](#enable-and-get-the-debug-logs-of-the-docker-daemon)    
+- [Docker 推送成功，但 Docker 提取失败并出现错误：未授权: 需要身份验证](#docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required)
+- [`az acr login` 成功，但 Docker 命令失败并出现错误：未授权: 需要身份验证](#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
+- [启用和获取 Docker 守护程序的调试日志](#enable-and-get-the-debug-logs-of-the-docker-daemon)    
 - [新用户权限在更新后可能不会立即生效](#new-user-permissions-may-not-be-effective-immediately-after-updating)
 - [未在 REST API 调用中以正确的格式指定身份验证信息](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
 - [为何 Azure 门户不列出我的所有存储库或标记？](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
@@ -312,7 +312,7 @@ Trying to pull repository myregistry.azurecr.io/myimage ...
 unauthorized: authentication required
 ```
 
-解决该错误：
+若要解决该错误：
 1. 将选项 `--signature-verification=false` 添加到 Docker 守护程序配置文件 `/etc/sysconfig/docker`。 例如：
    
    `OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'`
@@ -434,14 +434,14 @@ curl $redirect_url
 
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>为什么我的拉取或推送请求失败，出现操作不被允许的情况？
 
-下面是可能不允许操作的一些情况：
-* 不再支持经典注册表。 请使用[az acr update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update)或 Azure 门户升级到受支持的[sku](https://aka.ms/acr/skus) 。
+下面是操作可能不被允许的一些情况：
+* 不再支持经典注册表。 请使用 [az acr update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) 或 Azure 门户升级到受支持的 [SKU](https://aka.ms/acr/skus)。
 * 映像或存储库可能会处于锁定状态，导致无法删除或更新。 可以使用 [az acr show repository](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) 命令来查看当前属性。
 * 如果映像处于隔离状态，则会禁用某些操作。 详细了解[隔离](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)。
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>如何在 Windows 上收集 HTTP 跟踪？
 
-#### <a name="prerequisites"></a>必备条件
+#### <a name="prerequisites"></a>先决条件
 
 - 在 Fiddler 中启用 HTTPS 解密：<https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
 - 允许 Docker 通过 Docker UI 使用代理：<https://docs.docker.com/docker-for-windows/#proxies>
@@ -493,10 +493,10 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 
 | Git 服务 | 源上下文 | 手动生成 | 通过“提交”触发器自动生成 |
 |---|---|---|---|
-| GitHub | https://github.com/user/myapp-repo.git#mybranch:myfolder | 是 | 是 |
-| Azure Repos | https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder | 是 | 是 |
-| GitLab | https://gitlab.com/user/myapp-repo.git#mybranch:myfolder | 是 | 否 |
-| BitBucket | https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder | 是 | 否 |
+| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | 是 | 是 |
+| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | 是 | 是 |
+| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | 是 | 否 |
+| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | 是 | 否 |
 
 ## <a name="run-error-message-troubleshooting"></a>运行错误消息故障排除操作
 

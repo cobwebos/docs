@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2395aa5984de2a9fe41e4778d16aba69bfef5192
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3e21d850f03fdca300085c864a12611acb968aa8
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77559227"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582967"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>管理 Azure Active Directory 中的自定义域名
 
@@ -41,7 +41,7 @@ ms.locfileid: "77559227"
 
 可以将目录的主域名更改为任何未联合的已验证自定义域。 更改目录的主域不会更改任何现有用户的用户名。
 
-## <a name="add-custom-domain-names-to-your-azure-ad-tenant"></a>将自定义域名添加到 Azure AD 租户
+## <a name="add-custom-domain-names-to-your-azure-ad-organization"></a>将自定义域名添加到 Azure AD 组织
 
 最多可以添加 900 个托管域名。 若要配置所有域以便与本地 Active Directory 联合，最多可在每个目录中添加 450 个域名。
 
@@ -72,7 +72,7 @@ ms.locfileid: "77559227"
 若要在 Azure 门户中调用 **ForceDelete**，必须确保对该域名的引用少于 1000 个，并且必须在 [Exchange 管理中心](https://outlook.office365.com/ecp/)更新或删除预配服务是 Exchange 的所有引用。 这包括支持 Exchange 邮件的安全组和分发列表；有关详细信息，请参阅[删除支持邮件的安全组](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)。 此外，如果存在以下任一情况，则 **ForceDelete** 操作不会成功：
 
 * 通过 Office 365 域订阅服务购买了域
-* 你是代表另一客户租户的合作伙伴管理员
+* 你是代表另一个客户组织的合作伙伴管理
 
 在执行 **ForceDelete** 操作过程中，将执行以下操作：
 
@@ -85,7 +85,7 @@ ms.locfileid: "77559227"
 * 要重命名的对象数大于 1000
 * 要重命名的某个应用程序是多租户应用
 
-### <a name="frequently-asked-questions"></a>常见问题解答
+### <a name="frequently-asked-questions"></a>常见问题
 
 **问：为何域删除操作失败，同时有一条错误指出，此域名包含 Exchange 主控的组？** <br>
 **答：** 目前，某些组（例如，支持邮件的安全组和分发列表）由 Exchange 预配，需要手动在 [Exchange 管理中心 (EAC)](https://outlook.office365.com/ecp/) 清理这些组。 可能有遗留的 ProxyAddresses 依赖于自定义域名，需要手动将其更新为另一个域名。 

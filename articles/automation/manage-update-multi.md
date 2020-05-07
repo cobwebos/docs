@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 03/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5376562d9df35539a33f6746b387a1ff7083b8f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a878ecf4519a852a9798b320bda26cd490487a4
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676447"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731962"
 ---
 # <a name="manage-updates-for-multiple-azure-virtual-machines"></a>管理多个 Azure 虚拟机的更新
 
@@ -21,9 +21,9 @@ ms.locfileid: "81676447"
 - 计划安装所需的更新。
 - 查看部署结果，验证更新是否已成功应用到已启用更新管理的所有虚拟机。
 
-要了解更新管理的系统要求，请参阅[更新管理客户端要求](automation-update-management.md#clients)。
+要了解更新管理的系统要求，请参阅[更新管理客户端要求](automation-update-management.md#client-requirements)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 一个安装了某个受支持的操作系统的虚拟机或计算机。
 * 访问适用于 Linux Vm 的更新存储库载入到更新管理。

@@ -8,10 +8,10 @@ ms.date: 10/1/2019
 author: sivethe
 ms.author: sivethe
 ms.openlocfilehash: 670020d276b9d4a868f24eb4a3f522581060adca
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72754983"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB 的用于 MongoDB 的 API
@@ -54,4 +54,4 @@ Azure Cosmos DB 服务对 Cassandra、MongoDB、Gremlin 和 Azure 表存储等�
 * 使用 [Robo 3T](mongodb-robomongo.md) 连接到 Cosmos 帐户。
 * 了解如何[配置全局分布式应用的读取首选项](../cosmos-db/tutorial-global-distribution-mongodb.md)。
 
-注意：<sup>本文介绍了可与 MongoDB 数据库实现网络协议兼容的 Azure Cosmos DB 功能。Microsoft 不会运行 MongoDB 数据库来提供此服务。Azure Cosmos DB 并不隶属于 MongoDB, inc.</sup>
+<sup>注意：本文介绍了可与 MongoDB 数据库实现网络协议兼容的 Azure Cosmos DB 功能。Microsoft 不会运行 MongoDB 数据库来提供此服务。Azure Cosmos DB 并不隶属于 MongoDB, inc.</sup>

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 05/01/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd41e79a1e08c57e806f6ada32faccfa5fdf5792
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c5643b0ce9d93c28372b30e6fc114816cafbce6
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80295289"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690476"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>什么是条件访问仅限报告模式？
 
@@ -26,7 +26,7 @@ ms.locfileid: "80295289"
 
 - 可以在仅限报告模式下启用条件访问策略。
 - 在登录过程中，将评估仅限报告模式下的策略，但不强制执行这些策略。
-- 结果记录在登录日志详细信息的“条件访问”和“仅限报告(预览)”选项卡中********。
+- 结果记录在登录日志详细信息的 "**条件访问**" 和 "**仅报告**" 选项卡中。
 - 具有 Azure Monitor 订阅的客户可以使用条件访问见解工作簿来监视其条件访问策略的影响。
 
 > [!WARNING]

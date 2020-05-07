@@ -1,0 +1,36 @@
+### YamlMime:Landing
+title: Azure VMware 解决方案 (AVS) 文档
+summary: 了解如何使用 Azure VMware 解决方案 (AVS) 将 VMware 私有云部署到 Azure
+metadata:
+  title: Azure VMware 解决方案 (AVS) 文档
+  description: 了解如何使用 Azure VMware 解决方案 (AVS) 将 VMware 私有云部署到 Azure
+  ms.service: azure-vmware
+  ms.topic: landing-page
+  author: dikamath
+  ms.author: dikamath
+  ms.date: 05/04/2020
+  ms.openlocfilehash: 2ae8f6bc5257dc4d7383516201912c504c4d6038
+  ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 05/04/2020
+  ms.locfileid: "82739444"
+landingContent:
+- title: 关于 Azure VMware 解决方案 (AVS)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure VMware 解决方案 (AVS)？
+      url: introduction.md
+  - linkListType: get-started
+    links:
+    - text: 网络清单
+      url: tutorial-network-checklist.md
+  - linkListType: tutorial
+    links:
+    - text: 创建 AVS 私有云
+      url: tutorial-create-private-cloud.md
+    - text: 配置网络
+      url: tutorial-configure-networking.md
+    - text: 访问私有云
+      url: tutorial-access-private-cloud.md

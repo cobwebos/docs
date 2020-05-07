@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
-ms.reviewer: ''
-ms.openlocfilehash: edd607c4d708df9fcfd3cbd5fdb71f0a7652d6c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: a293bd33d3a25f26e5374184da42db335041284d
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80330913"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610133"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>规划 Azure AD 应用程序代理部署
 
@@ -28,11 +28,11 @@ Azure Active Directory （Azure AD）应用程序代理是一种安全且经济�
 
 建议使用应用程序代理来使远程用户访问内部资源。 应用程序代理不需要对这些远程访问用例使用 VPN 或反向代理。 它不适用于位于企业网络上的用户。 使用应用程序代理进行 intranet 访问的这些用户可能会遇到意外的性能问题。
 
-本文包含规划、操作和管理 Azure AD 应用程序代理所需的资源。 
+本文包含规划、操作和管理 Azure AD 应用程序代理所需的资源。
 
 ## <a name="plan-your-implementation"></a>规划实施
 
-以下部分提供了关键规划元素的广泛视图，这些元素将为你提供高效的部署体验。 
+以下部分提供了关键规划元素的广泛视图，这些元素将为你提供高效的部署体验。
 
 ### <a name="prerequisites"></a>先决条件
 
@@ -50,7 +50,7 @@ Azure Active Directory （Azure AD）应用程序代理是一种安全且经济�
      * 如果可能，请在与后端 web 应用程序服务器[相同的网络](application-proxy-network-topology.md)和网段中部署连接器。 在完成应用程序发现后，最好部署连接器。
      * 建议每个连接器组至少有两个连接器，以提供高可用性和规模。 如果在任何时候都需要为计算机服务，则具有三个连接器是最佳的。 查看[连接器容量表](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#capacity-planning)，以帮助确定要在其上安装连接器的计算机的类型。 计算机越大，连接器的缓冲区和性能就越多。
 
-* **网络访问设置**： Azure AD 应用程序代理连接器[通过 HTTPS （tcp 端口443）和 HTTP （tcp 端口80）连接到 Azure](application-proxy-add-on-premises-application.md)。 
+* **网络访问设置**： Azure AD 应用程序代理连接器[通过 HTTPS （tcp 端口443）和 HTTP （tcp 端口80）连接到 Azure](application-proxy-add-on-premises-application.md)。
 
    * 不支持终止连接器 TLS 流量，并且会阻止连接器使用各自的 Azure 应用代理终结点建立安全通道。
 
@@ -64,7 +64,7 @@ Azure Active Directory （Azure AD）应用程序代理是一种安全且经济�
 
 *  **Azure 载入**：在部署应用程序代理之前，必须从本地目录同步用户标识，或直接在 Azure AD 租户中创建用户标识。 标识同步允许 Azure AD 在授予用户对应用代理发布的应用程序的访问权限之前对用户进行预身份验证，并获得执行单一登录 (SSO) 所需的用户标识符信息。
 
-* **条件性访问要求**：我们不建议使用应用程序代理进行 intranet 访问，因为这会增加会影响用户的延迟。 建议将应用程序代理与预身份验证和条件访问策略一起使用，以便从 internet 进行远程访问。  提供 intranet 使用条件性访问的方法是实现应用程序的现代化，使其能够直接使用 AAD 进行身份验证。 有关详细信息，请参阅将[应用程序迁移到 AAD 的资源](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources)。 
+* **条件性访问要求**：我们不建议使用应用程序代理进行 intranet 访问，因为这会增加会影响用户的延迟。 建议将应用程序代理与预身份验证和条件访问策略一起使用，以便从 internet 进行远程访问。  提供 intranet 使用条件性访问的方法是实现应用程序的现代化，使其能够直接使用 AAD 进行身份验证。 有关详细信息，请参阅将[应用程序迁移到 AAD 的资源](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources)。
 
 * **服务限制**：若要防止单个租户过度资源，有每个应用程序和租户设置限制限制。 若要查看这些限制，请参阅[Azure AD 服务限制和限制](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions)。 这些限制基于比典型的使用量更高的基准，并为大多数部署提供充足的缓冲区。
 
@@ -81,11 +81,11 @@ Azure Active Directory （Azure AD）应用程序代理是一种安全且经济�
 
 * **管理权限和角色**
 
-   * **连接器安装**需要对其上安装的 Windows 服务器具有本地管理权限。 它还需要至少一个*应用程序管理员*角色来进行身份验证，并将连接器实例注册到 Azure AD 租户。 
+   * **连接器安装**需要对其上安装的 Windows 服务器具有本地管理权限。 它还需要至少一个*应用程序管理员*角色来进行身份验证，并将连接器实例注册到 Azure AD 租户。
 
    * **应用程序发布和管理**需要*应用程序管理员*角色。 应用程序管理员可以管理目录中的所有应用程序，包括注册、SSO 设置、用户和组分配以及许可、应用程序代理设置和许可。 它不能授予管理条件访问的能力。 *云应用程序管理员*角色具有应用程序管理员的所有功能，但它不允许管理应用程序代理设置。
 
-* **许可**：可通过 Azure AD Premium 订阅获取应用程序代理。 有关许可选项和功能的完整列表，请参阅[Azure Active Directory 定价页](https://azure.microsoft.com/pricing/details/active-directory/)。  
+* **许可**：可通过 Azure AD Premium 订阅获取应用程序代理。 有关许可选项和功能的完整列表，请参阅[Azure Active Directory 定价页](https://azure.microsoft.com/pricing/details/active-directory/)。
 
 ### <a name="application-discovery"></a>应用程序发现
 
@@ -117,7 +117,7 @@ Azure Active Directory （Azure AD）应用程序代理是一种安全且经济�
 
 * 具有批准的个人设备的远程用户可以安全地访问已发布的应用程序，前提是这些用户已在 MFA 中注册，并已在其移动电话上将 Microsoft Authenticator 应用注册为身份验证方法。
 
-**调控** 
+**调控**
 
 * 管理员可以定义和监视用户分配到通过应用程序代理发布的应用程序的生命周期。
 
@@ -141,9 +141,9 @@ Azure Active Directory （Azure AD）应用程序代理是一种安全且经济�
 
 确定完全通过单一登录（SSO）对单个应用程序进行远程访问所需的时间和工作量。 执行此操作的方法是运行一个可考虑其初始发现、发布和常规测试的试验。 使用已预先配置为集成 Windows 身份验证（IWA）的基于 IIS 的简单 web 应用程序有助于建立基准，因为此安装程序需要尽量少地试验远程访问和 SSO。
 
-以下设计元素应直接在生产租户中增加试点实现的成功与否。  
+以下设计元素应直接在生产租户中增加试点实现的成功与否。
 
-**连接器管理**：  
+**连接器管理**：
 
 * 连接器在向应用程序提供本地管道时发挥着重要作用。 在将发布的应用程序授权到生产环境之前，使用**默认**连接器组足以满足对它们的初始试验测试。 然后，已成功测试的应用程序可以移动到生产连接器组。
 
@@ -157,7 +157,8 @@ Azure Active Directory （Azure AD）应用程序代理是一种安全且经济�
 
 **连接器主机和目标应用程序之间的 TLS**：安全性非常重要，因此应始终使用连接器主机和目标应用程序之间的 tls。 特别是，如果为基于窗体的身份验证（FBA）配置了 web 应用程序，则会有效地以明文形式传输用户凭据。
 
-**增量实现并测试每个步骤**。 在发布应用程序后执行基本功能测试，以确保满足所有用户和业务要求，请遵循以下说明：
+**增量实现并测试每个步骤**。
+在发布应用程序后执行基本功能测试，以确保满足所有用户和业务要求，请遵循以下说明：
 
 1. 测试和验证已禁用预身份验证的对 web 应用程序的常规访问。
 2. 如果成功，则启用预身份验证并分配用户和组。 测试和验证访问权限。
@@ -231,7 +232,7 @@ Azure Active Directory （Azure AD）应用程序代理是一种安全且经济�
 
 ### <a name="enable-pre-authentication"></a>启用预身份验证
 
-验证是否可通过应用程序代理访问应用程序，方法是通过外部 URL 访问应用程序。 
+验证是否可通过应用程序代理访问应用程序，方法是通过外部 URL 访问应用程序。
 
 1. 导航到 " **Azure Active Directory** > **企业应用程序** > " "**所有应用程序**"，并选择要管理的应用。
 
@@ -243,7 +244,7 @@ Azure Active Directory （Azure AD）应用程序代理是一种安全且经济�
 
 ### <a name="enable-single-sign-on"></a>启用单一登录
 
-SSO 可提供最佳的用户体验和安全性，因为用户在访问 Azure AD 时只需登录一次。 用户预身份验证后，应用程序代理连接器将以用户身份向本地应用程序进行身份验证。 后端应用程序将处理登录，就好像它是用户本身一样。 
+SSO 可提供最佳的用户体验和安全性，因为用户在访问 Azure AD 时只需登录一次。 用户预身份验证后，应用程序代理连接器将以用户身份向本地应用程序进行身份验证。 后端应用程序将处理登录，就好像它是用户本身一样。
 
 选择 "**直通**" 选项可允许用户访问已发布的应用程序，而无需对 Azure AD 进行身份验证。
 
@@ -286,8 +287,8 @@ Microsoft 在为 Azure AD 提供执行所需任务的最低权限的原则。 [�
 | 应用程序所有者| 创建和管理企业应用程序、应用程序注册和应用程序代理设置的所有方面。| 应用程序管理员 |
 | 基础结构管理 | 证书滚动更新所有者 | 应用程序管理员 |
 
-最大程度地减少有权访问安全信息或资源的人员的数量，有助于减少恶意执行组件获取未经授权的访问或被授权的用户无意中影响敏感资源的可能性。 
- 
+最大程度地减少有权访问安全信息或资源的人员的数量，有助于减少恶意执行组件获取未经授权的访问或被授权的用户无意中影响敏感资源的可能性。
+
 但是，用户仍需要执行日常的特权操作，因此强制基于实时（JIT）的[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)策略来提供对 Azure 资源和 Azure AD 的按需权限访问，这是我们建议的方法，以便有效地管理管理访问和审核。
 
 ### <a name="reporting-and-monitoring"></a>报告和监视
@@ -310,9 +311,9 @@ Azure AD 通过[审核日志和报告，](../reports-monitoring/concept-provisio
 
 ### <a name="troubleshooting-guide-and-steps"></a>疑难解答指南和步骤
 
-详细了解常见问题，以及[如何解决这些](application-proxy-troubleshoot.md)问题。 
+详细了解常见问题，以及[如何解决这些](application-proxy-troubleshoot.md)问题。
 
-以下文章介绍了一些常见方案，这些方案还可用于为你的支持组织创建故障排除指南。 
+以下文章介绍了一些常见方案，这些方案还可用于为你的支持组织创建故障排除指南。
 
 * [显示应用页时出现问题](application-proxy-page-appearance-broken-problem.md)
 * [应用程序加载时间过长](application-proxy-page-load-speed-problem.md)

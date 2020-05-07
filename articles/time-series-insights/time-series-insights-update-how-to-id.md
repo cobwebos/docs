@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 05/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: a62c2460698408f6a2bfa51c6638bdeaf88bb31f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: faf98d4fc5bf6c7028cf7d20bdf8df89fb3d533b
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77083532"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838716"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>选择时序 ID 的最佳做法
 
@@ -27,6 +27,7 @@ ms.locfileid: "77083532"
 
 > [!IMPORTANT]
 > 时序 ID 如下：
+>
 > * 区分大小写的属性  ：搜索、比较和更新以及分区都会用到字母和字符的大小写。
 > * 不可变属性  ：一旦创建，无法更改。
 
@@ -56,7 +57,7 @@ ms.locfileid: "77083532"
 
 ### <a name="example-2-time-series-id-with-a-composite-key"></a>示例 2：具有组合键的时序 ID
 
-* 同一组资产中需要多个唯一的属性。 
+* 同一组资产中需要多个唯一的属性。
 * 你是一家智能建筑制造商，希望在每个房间部署传感器。 对于每个房间，通常对 **sensorId** 使用相同的值。 例如，**sensor1**、**sensor2** 和 **sensor3**。
 * 建筑物在属性 **flrRm** 中包含不同场地的重叠楼层号和房间号。 这些数字使用类似于 **1a**、**2b** 和 **3a** 的值。
 * **location** 属性包含类似于 **Redmond**、**Barcelona** 和 **Tokyo** 的值。 若要实现唯一性，可将以下三个属性指定为时序 ID 键：**sensorId**、**flrRm** 和 **location**。
@@ -72,7 +73,7 @@ ms.locfileid: "77083532"
 }
 ```
 
-然后，可在 Azure 门户中输入组合键，如下所示： 
+然后，可在 Azure 门户中输入组合键，如下所示：
 
 ```JSON
 [{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
-ms.openlocfilehash: 636903c20e07f11a2fd919654cfaa62037171f20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 743bd21a4fd974654760402a639c661fe086d2d5
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277760"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735005"
 ---
 # <a name="azure-cosmos-db-output-binding-for-azure-functions-2x"></a>适用于 Azure Functions 2.x 的 Azure Cosmos DB 输出绑定
 
@@ -527,7 +527,7 @@ public String cosmosDbQueryById(
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-在 [C# 类库](functions-dotnet-class-library.md)中，使用 [CosmosDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/master/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) 特性。
+在 [C# 类库](functions-dotnet-class-library.md)中，使用 [CosmosDB](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/dev/test/WebJobs.Extensions.CosmosDB.Tests) 特性。
 
 该特性的构造函数采用数据库名称和集合名称。 有关这些设置以及可以配置的其他属性的信息，请参阅[输出 - 配置](#configuration)。 下面是某个方法签名中的 `CosmosDB` 特性示例：
 
@@ -559,15 +559,15 @@ Python 不支持特性。
 
 ---
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
 下表说明了在*函数 json*文件和`CosmosDB`属性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
 |type      | 不适用 | 必须设置为 `cosmosDB`。        |
-|**方向键**     | n/a | 必须设置为 `out`。         |
-|**name**     | n/a | 表示函数中的文档的绑定参数的名称。  |
+|**方向键**     | 不适用 | 必须设置为 `out`。         |
+|**name**     | 不适用 | 表示函数中的文档的绑定参数的名称。  |
 |**Database** | **DatabaseName**|包含在其中创建文档的集合的数据库。     |
 |**collectionName** |**CollectionName**  | 包含在其中创建文档的集合的名称。 |
 |**createIfNotExists**  |**CreateIfNotExists**    | 一个用于指示是否创建集合（如果不存在）的布尔值。 默认值为 *false*，因为新集合是使用保留的吞吐量创建的，具有成本方面的隐含意义。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)。  |
@@ -579,7 +579,7 @@ Python 不支持特性。
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="usage"></a>使用情况
+## <a name="usage"></a>用法
 
 默认情况下，当写入函数中的输出参数时，将在数据库中创建一个文档。 本文档将自动生成的 GUID 作为文档 ID。 可以通过在传递给输出参数的 JSON 对象中指定 `id` 属性来指定输出文档的文档 ID。
 
@@ -613,11 +613,11 @@ Python 不支持特性。
 }
 ```
 
-|properties  |默认 | 说明 |
+|Property  |默认 | 说明 |
 |---------|---------|---------|
 |GatewayMode|网关|连接到 Azure Cosmos DB 服务时该函数使用的连接模式。 选项为 `Direct` 和 `Gateway`|
 |协议|Https|连接到 Azure Cosmos DB 服务时该函数使用的连接协议。  参阅[此处，了解两种模式的说明](../cosmos-db/performance-tips.md#networking)|
-|leasePrefix|n/a|应用中所有函数要使用的租用前缀。|
+|leasePrefix|不适用|应用中所有函数要使用的租用前缀。|
 
 ## <a name="next-steps"></a>后续步骤
 

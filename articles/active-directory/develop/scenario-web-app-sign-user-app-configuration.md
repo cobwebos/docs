@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 621aff0a6571714ad8dad587c2385e6081c2d0f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1eef510e6389b551e128877ffde723955a1084d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181658"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734631"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>可将用户登录的 Web 应用：代码配置
 
@@ -100,7 +100,7 @@ ms.locfileid: "82181658"
 }
 ```
 
-在 ASP.NET Core 中，另一个文件（[properties\launchSettings.json](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/1-WebApp-OIDC/1-1-MyOrg/Properties/launchSettings.json#L6-L7)）包含应用`applicationUrl`程序和不同配置文件的 URL （`sslPort`）和 TLS/SSL 端口（）。
+在 ASP.NET Core 中，另一个文件 ([properties\launchSettings.json](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/1-WebApp-OIDC/1-1-MyOrg/Properties/launchSettings.json#L6-L7)) 包含应用程序的 URL (`applicationUrl`) 和 TLS/SSL 端口 (`sslPort`)，以及各种配置文件。
 
 ```Json
 {
@@ -298,7 +298,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 
 包含授权代码的响应抵达时，它将使用 MSAL Java 获取令牌。 当它最终从令牌终结点收到令牌时（在重定向 URI 上），用户已登录。
 
-有关详细信息，请参阅 [AuthFilter.java](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java) 中的 `doFilter()` 方法。
+有关详细信息，请参阅 [AuthFilter.java](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/msal-java-webapp-sample/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java) 中的 `doFilter()` 方法。
 
 > [!NOTE]
 > `doFilter()` 的代码以略微不同的顺序编写，但流与上述相同。

@@ -10,12 +10,12 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7a5967f52a187fe289c6fb1ca72af2d5fd17f010
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 680c1b036b9b41edb1115f478fd5dc8f63ea1d02
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255231"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688046"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>使用共享访问签名 (SAS) 授予对 Azure 存储资源的受限访问权限
 
@@ -115,7 +115,7 @@ SAS 通常适用于用户需要在存储帐户中读取和写入其数据的服�
 - **知道每次使用都会对帐户收费，包括通过 SAS 使用。** 如果你提供某个 Blob 的写入访问权限，则用户可以选择上传 200 GB 的 Blob。 如果还向用户提供了对 Blob 的读访问权限，他们可能会选择下载 Blob 10 次，对你产生 2 TB 的传出费用。 此外，提供受限权限，帮助降低恶意用户的潜在操作威胁。 使用短期 SAS 以便减少这一威胁（但要注意结束时间上的时钟偏移）。
 - **验证使用 SAS 写入的数据。** 在某一客户端应用程序将数据写入存储帐户时，请记住对于这些数据可能存在问题。 如果应用程序要求在数据可供使用前对数据进行验证或授权，应该在写入数据后、但在应用程序使用这些数据前执行此验证。 这一实践还有助于防止损坏的数据或恶意数据写入帐户，这些数据可能是正常要求 SAS 的用户写入的，也可能是利用泄露的 SAS 的用户写入的。
 - **知道何时不使用 SAS。** 有时，针对存储帐户执行特定操作所带来的风险超过了 SAS 所带来的好处。 对于此类操作，应创建一个中间层服务，该服务在执行业务规则验证、身份验证和审核后写入存储帐户。 此外，有时候以其他方式管理访问会更简单。 例如，如果想要使某一容器中的所有 Blob 都可以公开读取，则可以使该容器成为公共的，而不是为每个客户端都提供 SAS 来进行访问。
-- **使用 Azure Monitor 和 Azure 存储日志来监视应用程序。** 可以使用 Azure Monitor 和存储分析日志记录来观察由于 SAS 提供程序服务中断或无意中删除存储访问策略而导致授权失败的任何高发情形。 有关详细信息，请参阅 [Azure Monitor 中的 Azure 存储指标](storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)和 [Azure 存储分析日志记录](storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+- **使用 Azure Monitor 和 Azure 存储日志来监视应用程序。** 可以使用 Azure Monitor 和存储分析日志记录来观察由于 SAS 提供程序服务中断或无意中删除存储访问策略而导致授权失败的任何高发情形。 有关详细信息，请参阅 [Azure Monitor 中的 Azure 存储指标](monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)和 [Azure 存储分析日志记录](storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 ## <a name="get-started-with-sas"></a>开始使用 SAS
 

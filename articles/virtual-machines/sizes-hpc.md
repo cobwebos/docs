@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jonbeck
-ms.openlocfilehash: df22c857571e51bb886ff1d25db185a306999540
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 409fe69d111e2c5aebe0ad0bd38ced10604b5f1b
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80420872"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839056"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>高性能计算 VM 大小
 
@@ -39,7 +39,7 @@ Azure H 系列虚拟机（Vm）旨在为各种真实的 HPC 工作负荷提供�
 
 ## <a name="rdma-capable-instances"></a>支持 RDMA 的实例
 
-大多数 HPC VM 大小（HBv2、HB-ACCT-WC、HC、H16r、H16mr、A8 和 A9）都具有用于远程直接内存访问（RDMA）连接的网络接口。 选择 [N 系列] （https://docs.microsoft.com/azure/virtual-machines/nc-series)通过 "r" 指定的大小，如 NC24rs 配置（NC24rs_v3、NC24rs_v2 和 NC24r）也是支持 RDMA 功能的。 此接口是对其他 VM 大小中可用的标准 Azure 网络接口的补充。
+大多数 HPC VM 大小（HBv2、HB-ACCT-WC、HC、H16r、H16mr、A8 和 A9）都具有用于远程直接内存访问（RDMA）连接的网络接口。 选择了用 "r" （如 NC24rs 配置（NC24rs_v3、NC24rs_v2 和 NC24r）指定的[N 系列](https://docs.microsoft.com/azure/virtual-machines/nc-series)大小也是支持 RDMA 功能的。 此接口是对其他 VM 大小中可用的标准 Azure 网络接口的补充。
 
 此接口允许支持 RDMA 的实例通过未使用的（IB）网络进行通信，以 HBv2、HB-ACCT-WC、HC、FDR 速率为 H16r、H16mr 和支持 RDMA 的 N 系列虚拟机进行通信，并为 A8 和 A9 Vm 提供 QDR 速率。 这些 RDMA 功能可以提高某些消息传递接口 (MPI) 应用程序的可伸缩性和性能。 有关速度的详细信息，请参阅本页上的表中的详细信息。
 
@@ -92,7 +92,7 @@ Azure 提供了多个选项，用于创建可使用 RDMA 网络通信的 Windows
 
 - **虚拟机**-在同一规模集或可用性集中（使用 Azure 资源管理器部署模型时）部署支持 RDMA 的 HPC vm。 如果使用经典部署模型，请在同一云服务中部署 VM。
 
-- **虚拟机规模集**-在虚拟机规模集（VMSS）中，确保将部署限制为单个放置组。 例如，在资源管理器模板中，将 `singlePlacementGroup` 属性设置为 `true`。 请注意，默认情况下，可以使用`singlePlacementGroup`属性设置的最大`true` VMSS 大小限制为 100 vm。 如果你的 HPC 作业规模需求高于单个 VMSS 租户中的 100 Vm，则你可以请求增加，免费[打开联机客户支持请求](../azure-supportability/how-to-create-azure-support-request.md)。
+- **虚拟机规模集**-在虚拟机规模集（VMSS）中，确保将部署限制为单个放置组，以便在 VMSS 内进行不受限制的通信。 例如，在资源管理器模板中，将 `singlePlacementGroup` 属性设置为 `true`。 请注意，默认情况下，可以使用`singlePlacementGroup`属性设置的最大`true` VMSS 大小限制为 100 vm。 如果你的 HPC 作业规模需求高于单个 VMSS 租户中的 100 Vm，则你可以请求增加，免费[打开联机客户支持请求](../azure-supportability/how-to-create-azure-support-request.md)。 单个 VMSS 中的 Vm 数目限制可增加到300。 请注意，使用可用性集部署 Vm 时，最大限制为每个可用性集200个 Vm。
 
 - **虚拟机**之间的 MPI-如果虚拟机（vm）之间需要 RDMA （如使用 MPI 通信），请确保 vm 处于相同的虚拟机规模集或可用性集中。
 
@@ -129,6 +129,6 @@ Azure 提供了多个选项，用于创建可使用 RDMA 网络通信的 Windows
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解如何优化 Azure 的 HPC 应用程序和 [HPC 工作负荷] 上的一些示例（https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/overview) 
+- 详细了解如何优化 Azure 的 HPC 应用程序以及[Hpc 工作负荷](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/overview)中的一些示例 
 
 - 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。

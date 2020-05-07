@@ -2,13 +2,13 @@
 title: 在 Azure Application Insights 中分隔遥测
 description: 为开发、测试和生产戳记直接遥测不同的资源。
 ms.topic: conceptual
-ms.date: 05/15/2017
-ms.openlocfilehash: 565d51751ad50479f4e227b6855ac63b80bd949e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.date: 04/29/2020
+ms.openlocfilehash: 92a1bb6cb0bb73ac67d38eeba5bd3cdafacf8b56
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536771"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562145"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>分隔开发、测试和生产阶段的遥测
 
@@ -20,13 +20,24 @@ ms.locfileid: "81536771"
 
 为 Web 应用设置 Application Insights 监视时，会在 Microsoft Azure 中创建 Application Insights *资源*。 为了查看和分析从应用收集的遥测数据，会在 Azure 门户中打开此资源。 每个资源都由一个*检测密钥* (iKey) 予以标识。 在安装 Application Insights 程序包来监视应用时，将为其配置检测密钥，以使其知道要将遥测数据发送到何处。
 
-在不同的方案中，通常选择使用不同的资源或使用单个共享资源：
+每个 Application Insights 资源随附了现成可用的指标。 如果完全不同的组件报告到相同的 Application Insights 资源，则这些指标可能对上的仪表板/警报没有意义。
 
-* 不同的独立应用程序 - 为每个应用使用不同的资源和 ikey。
-* 单个业务应用程序的多个组件或角色 - 为所有组件应用使用[单个共享资源](../../azure-monitor/app/app-map.md)。 可以按 cloud_RoleName 属性对遥测数据进行筛选或分段。
-* 开发、测试和发布 - 在各个生产“戳记”或生产阶段中为系统的不同版本使用不同的资源和 ikey。
-* A | B 测试 - 使用单个资源 创建遥测初始值设定项来向遥测添加用于标识各个变体的属性。
+### <a name="use-a-single-application-insights-resource"></a>使用单个 Application Insights 资源
 
+-   对于一起部署的应用程序组件。 通常由单个团队开发，由同一组 DevOps/ITOps 用户进行管理。
+-   如果有必要聚合关键绩效指标（Kpi）（如响应持续时间、仪表板中的故障率等），请在默认情况下，在所有这些指标之间进行聚合（可以选择按角色名称划分指标资源管理器体验）。
+-   如果不需要在应用程序组件之间不同地管理基于角色的访问控制（RBAC）。
+-   如果不需要不同组件之间的指标警报条件，
+-   如果不需要在组件之间以不同方式管理连续导出。
+-   如果不需要在组件之间以不同方式管理计费/配额，
+-   如果可以让 API 密钥对所有组件中的数据具有相同的访问权限。 和10个 API 密钥足以满足所有这些密钥的需求。
+-   如果可以在所有角色中具有相同的智能检测和工作项集成设置。
+
+### <a name="other-things-to-keep-in-mind"></a>需要记住的其他事项
+
+-   你可能需要添加自定义代码，以确保有意义的值设置到[Cloud_RoleName](https://docs.microsoft.com/azure/azure-monitor/app/app-map?tabs=net#set-cloud-role-name)属性中。 如果没有为此属性设置有意义*的值，门户*体验将不起作用。
+- 对于 Service Fabric 应用程序和经典云服务，SDK 会自动从 Azure 角色环境中读取并设置这些内容。 对于所有其他类型的应用，你可能需要显式设置。
+-   实时指标体验不支持按角色名称拆分。
 
 ## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> 动态检测密钥
 
@@ -47,7 +58,7 @@ ms.locfileid: "81536771"
 在此示例中，不同资源的 ikey 放置在 Web 配置文件的不同版本中。 通过交换 Web 配置文件（可作为发布脚本的一部分执行），将交换目标资源。
 
 ### <a name="web-pages"></a>网页
-通过[从快速启动边栏选项卡获取的脚本](../../azure-monitor/app/javascript.md)，iKey 也在应用的网页中使用。 从服务器状态生成它，而不是逐字将其编码到脚本中。 例如，在 ASP.NET 应用中：
+在您的应用程序的网页中，还会在[您从快速入门窗格获取的脚本](../../azure-monitor/app/javascript.md)中使用 iKey。 从服务器状态生成它，而不是逐字将其编码到脚本中。 例如，在 ASP.NET 应用中：
 
 *使用 Razor 的 JavaScript*
 
@@ -63,26 +74,11 @@ ms.locfileid: "81536771"
 
 
 ## <a name="create-additional-application-insights-resources"></a>创建其他 Application Insights 资源
-若要为不同的应用程序组件或同一组件的不同戳记（开发/测试/生产）分隔遥测，则必须创建新的 Application Insights 资源。
 
-在 [portal.azure.com](https://portal.azure.com) 中，添加 Application Insights 资源：
-
-![依次单击“新建”、“Application Insights”](./media/separate-resources/01-new.png)
-
-* **应用程序类型**会影响在概述边栏选项卡上看到的内容和[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)中的可用属性。 如果未看到应用类型，请选择网页的 Web 类型之一。
-* **资源组**便于管理[访问控件](../../azure-monitor/app/resources-roles-access-control.md)之类的属性。 可为开发、测试和生产使用单独的资源组。
-* **订阅**是 Azure 中的付款帐户。
-* **位置**是保留数据的位置。 当前无法更改它。 
-* **添加到仪表板**将资源的快速访问磁贴放在 Azure 主页上。 
-
-创建资源需要几秒钟。 完成后，会看到警报。
-
-（可以编写[PowerShell 脚本](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)来自动创建资源。）
+若要创建 Application Insights 资源，请遵循[资源创建指南](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)。
 
 ### <a name="getting-the-instrumentation-key"></a>获取检测密钥
-检测密钥标识所创建的资源。 
-
-![单击“Essentials”、单击“检测密钥，并按“CTRL+C”](./media/separate-resources/02-props.png)
+检测密钥标识所创建的资源。
 
 需要将向其发送数据的所有资源的检测密钥。
 
@@ -90,8 +86,6 @@ ms.locfileid: "81536771"
 发布新应用版本时，我们希望能够将不同版本的遥测数据分开。
 
 可以设置“应用程序版本”属性，这样便可以筛选[搜索](../../azure-monitor/app/diagnostic-search.md)和[指标资源管理器](../../azure-monitor/platform/metrics-charts.md)结果。
-
-![按属性进行筛选](./media/separate-resources/050-filter.png)
 
 可通过多种不同的方法设置“应用程序版本”属性。
 
@@ -146,7 +140,6 @@ ms.locfileid: "81536771"
 ### <a name="release-annotations"></a>版本注释
 如果使用 Azure DevOps，则可以在每次发布新版本时将[批注标记](../../azure-monitor/app/annotations.md)添加到图表中。 下图显示了此标记的形式。
 
-![图表中示例版本批注的屏幕截图](media/separate-resources/release-annotation.png)
 ## <a name="next-steps"></a>后续步骤
 
 * [多个角色的共享资源](../../azure-monitor/app/app-map.md)

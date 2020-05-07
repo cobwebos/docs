@@ -1,6 +1,6 @@
 ---
-title: Azure 资源的自定义角色 | Microsoft Docs
-description: 了解如何使用基于角色的访问控制 (RBAC) 创建自定义角色，以便对 Azure 资源进行精细的访问权限管理。
+title: Azure 自定义角色-Azure RBAC
+description: 了解如何使用 Azure 基于角色的访问控制（Azure RBAC）创建 Azure 自定义角色，以便进行 Azure 资源的精细访问管理。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,27 +11,27 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/19/2020
+ms.date: 04/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9454962e210781559f2fdceb1c36f499c4ae8ff7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5030fb50313e1db2173990c55930c22fdf58f559
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062172"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734784"
 ---
-# <a name="custom-roles-for-azure-resources"></a>Azure 资源的自定义角色
+# <a name="azure-custom-roles"></a>Azure 自定义角色
 
 > [!IMPORTANT]
 > 将管理组添加到 `AssignableScopes` 的功能目前处于预览状态。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-如果 [Azure 资源的内置角色](built-in-roles.md)不能满足组织的特定需求，则可以创建自定义角色。 与内置角色一样，可将自定义角色分配到管理组、订阅和资源组范围内的用户、组与服务主体。
+如果[Azure 内置角色](built-in-roles.md)不能满足组织的特定需求，则可以创建自己的自定义角色。 与内置角色一样，可将自定义角色分配到管理组、订阅和资源组范围内的用户、组与服务主体。
 
-自定义角色可在信任同一 Azure AD 目录的订阅之间共享。 每个目录都有 **5,000** 个自定义角色的限制。 （对于 Azure 德国和 Azure 中国世纪互联，此限制为2000个自定义角色。）可以使用 Azure 门户（预览）、Azure PowerShell、Azure CLI 或 REST API 创建自定义角色。
+自定义角色可在信任同一 Azure AD 目录的订阅之间共享。 每个目录都有 **5,000** 个自定义角色的限制。 （对于 Azure 德国和 Azure 中国世纪互联，此限制为2000个自定义角色。）可以使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 创建自定义角色。
 
 ## <a name="custom-role-example"></a>自定义角色示例
 
@@ -75,7 +75,7 @@ ms.locfileid: "80062172"
 
 1. 确定如何创建自定义角色
 
-    可以使用 [Azure 门户](custom-roles-portal.md)（预览版）、[Azure PowerShell](custom-roles-powershell.md)、[Azure CLI](custom-roles-cli.md) 或 [REST API](custom-roles-rest.md) 创建自定义角色。
+    您可以使用[Azure 门户](custom-roles-portal.md)、 [Azure PowerShell](custom-roles-powershell.md)、 [Azure CLI](custom-roles-cli.md)或[REST API](custom-roles-rest.md)创建自定义角色。
 
 1. 确定所需的权限
 
@@ -89,7 +89,7 @@ ms.locfileid: "80062172"
 
     创建自定义角色后，必须对其进行测试，以验证它是否按预期工作。 如果以后需要进行调整，可以更新自定义角色。
 
-有关如何创建自定义角色的分步教程，请参阅[教程：使用 Azure PowerShell 创建自定义角色](tutorial-custom-role-powershell.md)或[教程：使用 Azure CLI 创建自定义角色](tutorial-custom-role-cli.md)。
+有关如何创建自定义角色的分步教程，请参阅[教程：使用 Azure PowerShell 或教程创建 azure 自定义角色](tutorial-custom-role-powershell.md) [：使用 Azure CLI 创建 azure 自定义角色](tutorial-custom-role-cli.md)。
 
 ## <a name="custom-role-properties"></a>自定义角色属性
 
@@ -131,6 +131,6 @@ ms.locfileid: "80062172"
 若要详细了解自定义角色和管理组，请参阅[使用 Azure 管理组整理资源](../governance/management-groups/overview.md#custom-rbac-role-definition-and-assignment)。
 
 ## <a name="next-steps"></a>后续步骤
-- [使用 Azure 门户（预览版）创建或更新 Azure 自定义角色](custom-roles-portal.md)
-- [了解 Azure 资源的角色定义](role-definitions.md)
-- [ Azure 资源 RBAC 故障排除](troubleshooting.md)
+- [使用 Azure 门户创建或更新 Azure 自定义角色](custom-roles-portal.md)
+- [了解 Azure 角色定义](role-definitions.md)
+- [排查 Azure RBAC 问题](troubleshooting.md)
