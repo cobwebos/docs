@@ -18,12 +18,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: c938b6174226ef9ea1104c5e95968d6122e922cf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7e442d85303485ca8800d4bcb31a9afde06d0e69
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72386322"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82595012"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>教程：使用 Azure 通知中心和 Google Cloud Messaging（已弃用）将通知推送到 Android 设备
 
@@ -43,7 +43,7 @@ ms.locfileid: "72386322"
 > [!IMPORTANT]
 > 本主题演示了使用 Google Cloud Messaging (GCM) 的推送通知。 如果使用的是 Google 的 Firebase Cloud Messaging (FCM)，请参阅[使用 Azure 通知中心和 FCM 将推送通知发送到 Android](notification-hubs-android-push-notification-google-fcm-get-started.md)。
 
-可以从 [此处](https://github.com/Azure/azure-notificationhubs-samples/tree/master/Android/GetStarted)的 GitHub 中下载本教程的已完成代码。
+可以从 [此处](https://github.com/Azure/azure-notificationhubs-android/tree/master/FCMTutorialApp)的 GitHub 中下载本教程的已完成代码。
 
 在本教程中，将执行以下操作：
 

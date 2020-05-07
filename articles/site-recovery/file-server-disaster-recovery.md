@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: c9f10815f2fbc8a17b8b712b6e5f8391fc7d541e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 59541c568c1d5341375236f9f074b7f82e1a6f94
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75980288"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858757"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 保护文件服务器 
 
@@ -30,7 +30,7 @@ ms.locfileid: "75980288"
 DFSR 使用称为远程差分压缩 (RDC) 的压缩算法，该算法可用于通过带宽有限的网络有效更新文件。 它可以检测文件中数据的插入、删除和重新排列。 在更新文件时，DFSR 只会复制已更改的文件块。 此外还有文件服务器环境，其中会在非高峰时间创建每日备份，可迎合灾难恢复的需求。 不需要实施 DFSR。
 
 下图演示了已实施 DFSR 的文件服务器环境。
-                
+        
 ![DFSR 体系结构](media/site-recovery-file-server/dfsr-architecture.JPG)
 
 在上图中，多台文件服务器称为成员，它们积极跨复制组的文件复制。 即使某个成员脱机，已复制的文件夹中的内容也可供向任一成员发送请求的所有客户端使用。
@@ -57,19 +57,19 @@ DFSR 使用称为远程差分压缩 (RDC) 的压缩算法，该算法可用于�
 |环境  |建议  |考虑的要点 |
 |---------|---------|---------|
 |带有或不带 DFSR 的文件服务器环境|   [使用 Site Recovery 进行复制](#replicate-an-on-premises-file-server-by-using-site-recovery)   |    Site Recovery 不支持共享磁盘群集或网络附加存储 (NAS)。 如果环境使用上述任何配置，请相应地使用其他任何方法。 <br> Site Recovery 不支持 SMB 3.0。 仅当已在文件原始位置更新了对文件所做的更改时，复制的 VM 才会合并更改。<br>  Site Recovery 提供了近乎同步的数据复制过程，因此在发生计划外故障转移情况时，可能会丢失数据，并且可能会产生 USN 不匹配问题。
-|带有 DFSR 的文件服务器环境     |  [将 DFSR 扩展到 Azure IaaS 虚拟机](#extend-dfsr-to-an-azure-iaas-virtual-machine)  |      DFSR 可在带宽严重不足的环境中正常工作。 此方法要求一直保持运行某个 Azure VM。 需要在规划中考虑该 VM 的成本。         |
+|带有 DFSR 的文件服务器环境     |  [将 DFSR 扩展到 Azure IaaS 虚拟机](#extend-dfsr-to-an-azure-iaas-virtual-machine)  |    DFSR 可在带宽严重不足的环境中正常工作。 此方法要求一直保持运行某个 Azure VM。 需要在规划中考虑该 VM 的成本。         |
 |Azure IaaS VM     |     文件同步    |     如果在灾难恢复场景中使用文件同步，则在故障转移期间，需要采取手动操作来确保可在客户端计算机上以透明方式访问文件共享。 文件同步要求在客户端计算机上开放端口 445。     |
 
 
 ### <a name="site-recovery-support"></a>Site Recovery 支持
 由于 Site Recovery 复制不区分应用程序，因此这些建议应该也适用于以下场景。
 
-| 源    |到辅助站点    |到 Azure
+| 源  |到辅助站点  |到 Azure
 |---------|---------|---------|
-|Azure| -|是|
-|Hyper-V|   是 |是
-|VMware |是|   是
-|物理服务器|   是 |是
+|Azure|  -|是|
+|Hyper-V|  是  |是
+|VMware  |是|  是
+|物理服务器|  是  |是
  
 
 > [!IMPORTANT]
@@ -97,7 +97,7 @@ DFSR 使用称为远程差分压缩 (RDC) 的压缩算法，该算法可用于�
 
 以下步骤简要说明了如何使用文件同步：
 
-1. [在 Azure 中创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。 如果为存储帐户选择了读取访问异地冗余存储，则发生灾难时，可以从次要区域对数据进行读取访问。 有关详细信息，请参阅[Azure 存储中的灾难恢复和强制故障转移（预览版）](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json)。
+1. [在 Azure 中创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。 如果为存储帐户选择了读取访问异地冗余存储，则发生灾难时，可以从次要区域对数据进行读取访问。 有关详细信息，请参阅[灾难恢复和存储帐户故障转移](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json)。
 2. [创建文件共享](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)。
 3. 在 Azure 文件服务器上[启动文件同步](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide)。
 4. 创建一个同步组。 同步组中的终结点保持彼此同步。 同步组中必须至少包含一个表示 Azure 文件共享的云终结点。 此外，同步组必须包含一个表示 Windows Server 上的路径的服务器终结点。
@@ -146,7 +146,7 @@ DFSR 使用称为远程差分压缩 (RDC) 的压缩算法，该算法可用于�
 
 遵循以下步骤来使用文件同步：
 
-1. [在 Azure 中创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。 如果为存储帐户选择了读取访问异地冗余存储（建议），则发生灾难时，可以从次要区域对数据进行读取访问。 有关详细信息，请参阅 [Azure 存储中的灾难恢复和强制故障转移（预览版）](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json)。
+1. [在 Azure 中创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。 如果为存储帐户选择了读取访问异地冗余存储（建议），则发生灾难时，可以从次要区域对数据进行读取访问。 有关详细信息，请参阅[灾难恢复和存储帐户故障转移](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json)。
 2. [创建文件共享](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)。
 3. 在本地文件服务器中[部署文件同步](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide)。
 4. 创建一个同步组。 同步组中的终结点保持彼此同步。 同步组中必须至少包含一个表示 Azure 文件共享的云终结点。 此外，同步组必须包含一个表示本地 Windows Server 上的路径的服务器终结点。

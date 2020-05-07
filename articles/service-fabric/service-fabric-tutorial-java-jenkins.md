@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 08/27/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: dee1d5a744ddfc2ad38cbe93447377a8af27a2f7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 74c412ad4c62a5821890aa5602b521f3f63da925
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75376641"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594757"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>教程：配置 Jenkins 环境以便为 Service Fabric 上的 Java 应用程序启用 CI/CD
 
@@ -31,7 +31,7 @@ ms.locfileid: "75376641"
 > * [设置监视和诊断应用程序](service-fabric-tutorial-java-elk.md)
 > * 设置 CI/CD
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 通过 [Git 下载页](https://git-scm.com/downloads)在本地计算机上安装 Git。 有关 Git 的详细信息，请参阅 [Git 文档](https://git-scm.com/docs)。
 * 在 [Jenkins](https://jenkins.io/) 方面有实践经验。
@@ -77,7 +77,7 @@ ms.locfileid: "75376641"
 
 1. 首先，如果没有可用于在 GitHub 上托管投票项目的存储库，请创建一个存储库。 在本教程的余下内容中，此存储库名为 **dev_test**。
 
-1. 在  **的 Jenkins 仪表板上创建一个**新项``http://<HOST-IP>:8080``。
+1. 在 ``http://<HOST-IP>:8080`` 的 Jenkins 仪表板上创建一个**新项**。
 
 1. 输入项名称（例如 **MyJob**）。 选择“自由格式的项目”，并单击“确定”。  
 
@@ -85,7 +85,7 @@ ms.locfileid: "75376641"
 
    a. 在常规部分中，选择“GitHub 项目”所对应的复选框，指定 GitHub 项目 URL。  此 URL 托管要与 Jenkins 持续集成和持续部署 (CI/CD) 流（例如 ``https://github.com/testaccount/dev_test``）集成的 Service Fabric Java 应用程序。
 
-   b. 在“源代码管理”  部分，选择 **Git**。 指定用于托管要与 Jenkins CI/CD 流（例如 *https://github.com/testaccount/dev_test.git* ）集成的 Service Fabric Java 应用程序的存储库 URL。 也可在此处指定要生成的分支（例如 **/master**）。
+   b. 在“源代码管理”  部分，选择 **Git**。 指定用于托管要与 Jenkins CI/CD 流（例如 *`https://github.com/testaccount/dev_test.git`* ）集成的 Service Fabric Java 应用程序的存储库 URL。 也可在此处指定要生成的分支（例如 **/master**）。
 
 1. 配置 *GitHub*（存储库的托管位置），使它能够与 Jenkins 通信。 请使用以下步骤：
 
@@ -115,11 +115,11 @@ ms.locfileid: "75376641"
     > 如果使用 Service Fabric 部署 Jenkins 容器映像，此处的群集可与托管 Jenkins 容器应用程序的群集相同。
     >
 
-1. 单击“保存”  。
+1. 单击“ **保存**”。
 
 ## <a name="update-your-existing-application"></a>更新现有应用程序
 
-1. 使用 *Service Fabric 投票示例 V2* 更新 **VotingApplication/VotingWebPkg/Code/wwwroot/index.html** 文件中 HTML 的标题。
+1. 使用 **Service Fabric 投票示例 V2** 更新 *VotingApplication/VotingWebPkg/Code/wwwroot/index.html* 文件中 HTML 的标题。
 
     ```html
     <div ng-app="VotingApp" ng-controller="VotingAppController" ng-init="refresh()">
@@ -133,7 +133,7 @@ ms.locfileid: "75376641"
     </div>
     ```
 
-1. 在 **Voting/VotingApplication/ApplicationManifest.xml** 文件中，将 **ApplicationTypeVersion** 和 **ServiceManifestVersion** 版本更新为 *2.0.0*。
+1. 在 *Voting/VotingApplication/ApplicationManifest.xml* 文件中，将 **ApplicationTypeVersion** 和 **ServiceManifestVersion** 版本更新为 **2.0.0**。
 
     ```xml
     <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -160,7 +160,7 @@ ms.locfileid: "75376641"
     </ApplicationManifest>
     ```
 
-1. 在 **Voting/VotingApplication/VotingWebPkg/ServiceManifest.xml** 文件中，将 **ServiceManifest** 中的 **Version** 字段以及 **CodePackage** 标记中的 *Version* 字段更新为 **2.0.0**。
+1. 在 *Voting/VotingApplication/VotingWebPkg/ServiceManifest.xml* 文件中，将 **ServiceManifest** 中的 **Version** 字段以及 **CodePackage** 标记中的 **Version** 字段更新为 **2.0.0**。
 
     ```xml
     <CodePackage Name="Code" Version="2.0.0">

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 04/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01f969c3bc6f546025b3bbe5826181efdfa69be0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b827c2e949502ad8bd19378a84ea89947929459d
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76983605"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509357"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>教程：Azure Active Directory 单一登录 (SSO) 与 DocuSign 的集成
 
@@ -45,7 +45,7 @@ ms.locfileid: "76983605"
 
 * DocuSign 支持服务提供商 (SP) 发起的 SSO。
 
-* DocuSign 支持*实时*用户预配。
+* DocuSign 支持**实时**用户预配。
 
 * DocuSign 支持[自动用户预配](https://docs.microsoft.com/azure/active-directory/saas-apps/docusign-provisioning-tutorial)。
 * 配置 DocuSign 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
@@ -87,12 +87,20 @@ ms.locfileid: "76983605"
 
 1. 在“基本 SAML 配置”部分执行以下步骤： 
 
-    a. 在“登录 URL”框中，使用以下模式输入 URL：`https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login/sp/<IDPID>`。 
+    a. 在“登录 URL”文本框中，使用以下模式输入 URL： 
 
-    b. 在“标识符(实体 ID)”框中，使用以下模式输入 URL：  `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2`
+    `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login/sp/<IDPID>`
+
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式输入 URL： 
+
+    `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2`
+
+    c. 在“回复 URL”  文本框中，使用以下模式输入 URL：
+    
+    `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login`
 
     > [!NOTE]
-    > 括号中的值是占位符。 请将这些值替换为实际登录 URL 和标识符。 本教程稍后的“查看 SAML 2.0 终结点”部分将会详细描述相关值。
+    > 括号中的值是占位符。 请将这些占位符替换为实际登录 URL、标识符和回复 URL。 本教程稍后的“查看 SAML 2.0 终结点”部分将会详细描述相关值。
 
 1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分，找到“证书(Base64)”    。 选择“下载”以下载证书，并将其保存在计算机上。 
 
@@ -206,20 +214,23 @@ ms.locfileid: "76983605"
        ![标识提供者/终结点][59]
 
     l. 在 DocuSign 管理门户的“查看 SAML 2.0 终结点”部分执行以下步骤： 
-       1. 复制“服务提供程序颁发者 URL”，然后将其粘贴到 Azure 门户上的“基本 SAML 配置”部分的“标识符”框中    。
-
-       1. 复制“服务提供程序登录 URL”，然后将其粘贴到 Azure 门户上的“基本 SAML 配置”部分的“登录 URL”框中    。
-
-       1. 选择“关闭”  。
 
        ![查看 SAML 2.0 终结点][60]
+       
+       1. 复制“服务提供程序颁发者 URL”，然后将其粘贴到 Azure 门户上的“基本 SAML 配置”部分的“标识符”框中    。
+       
+       1. 复制“服务提供商断言使用者服务 URL”，然后将其粘贴到 Azure 门户的“基本 SAML 配置”部分的“回复 URL”框中    。
+       
+       1. 复制“服务提供程序登录 URL”，然后将其粘贴到 Azure 门户上的“基本 SAML 配置”部分的“登录 URL”框中    。 在“服务提供商登录 URL”  的末尾，你将获得 IDPID 值。
+
+       1. 选择“关闭”  。
 
 ### <a name="create-docusign-test-user"></a>创建 DocuSign 测试用户
 
 在本部分，我们将在 DocuSign 中创建名为 B.Simon 的用户。 DocuSign 支持默认启用的实时用户预配。 此部分不存在任何操作项。 如果 DocuSign 中尚不存在用户，身份验证后会创建一个新用户。
 
->[!Note]
->如果需要手动创建用户，请联系 [DocuSign 支持团队](https://support.docusign.com/)。
+> [!Note]
+> 如果需要手动创建用户，请联系 [DocuSign 支持团队](https://support.docusign.com/)。
 
 ## <a name="test-sso"></a>测试 SSO 
 

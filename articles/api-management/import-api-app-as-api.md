@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 11/22/2017
+ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: bf4039b661ac7e0ee9630b86b9e15d1388991431
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e6195409a08498527ec40a2ddd2f909a092c9d19
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74108498"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202819"
 ---
 # <a name="import-an-api-app-as-an-api"></a>将 API 应用导入为 API
 
@@ -30,16 +30,16 @@ ms.locfileid: "74108498"
 > * 在 Azure 门户中测试 API
 > * 在开发人员门户中测试 API
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-+ 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)
++ 请完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)
 + 确保订阅中已有 API 应用。 有关详细信息，请参阅[应用服务文档](https://docs.microsoft.com/azure/app-service/)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>导入和发布后端 API
 
-1. 在“API 管理”下面选择“API”。  
+1. 在 Azure 门户中导航到 API 管理服务，然后从菜单中选择“API”  。
 2. 从“添加新的 API”列表中选择“API 应用”   。
 
     ![API 应用](./media/import-api-app-as-api/api-app.png)
@@ -56,7 +56,8 @@ ms.locfileid: "74108498"
 
     * **入门**
     * **不受限制**   
-7. 选择“创建”  。
+7. 输入其他 API 设置。 可以在创建过程中设置这些值，也可以稍后转到“设置”  选项卡来配置这些值。在[导入和发布第一个 API](import-and-publish.md#-import-and-publish-a-backend-api) 教程中对这些设置进行了说明。
+8. 选择“创建”  。
 
 ## <a name="test-the-new-api-in-the-azure-portal"></a>在 Azure 门户中测试新的 API
 

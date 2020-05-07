@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 36ded3bd85cd7acdffbfe46b9e931a811994fa30
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 0fa6785b2c4029dc5eb3f0397b1144616be357fe
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81531094"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594162"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>使用 REST API 和 Python 通过标签训练表单识别器模型
 
@@ -486,11 +486,8 @@ print("Train operation did not complete within the allocated time.")
               "page":1,
               "confidence":1,
               "elements":[ 
-                { 
-                  "$ref":"#/analyzeResult/readResults/0/lines/15/words/0"
-                }
-              ],
-              "fieldName":"total"
+                "#/analyzeResult/readResults/0/lines/15/words/0"
+              ]
             },
             "invoice #":{ 
               "type":"string",
@@ -509,11 +506,8 @@ print("Train operation did not complete within the allocated time.")
               "page":1,
               "confidence":1,
               "elements":[ 
-                { 
-                  "$ref":"#/analyzeResult/readResults/0/lines/12/words/0"
-                }
-              ],
-              "fieldName":"invoice #"
+                "#/analyzeResult/readResults/0/lines/12/words/0"
+              ]
             },
             "vat":{ 
               "type":"string",
@@ -532,11 +526,8 @@ print("Train operation did not complete within the allocated time.")
               "page":1,
               "confidence":0.9839357733726502,
               "elements":[ 
-                { 
-                  "$ref":"#/analyzeResult/readResults/0/lines/16/words/0"
-                }
-              ],
-              "fieldName":"vat"
+                "#/analyzeResult/readResults/0/lines/16/words/0"
+              ]
             },
             ...
           }
