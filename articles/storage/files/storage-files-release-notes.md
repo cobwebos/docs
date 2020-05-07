@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/16/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 82d8c8ca94f3d0f4289902ae40928ff507e2d1ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4cb5a3d471aa3131d3233841cd6450f0a968dfe7
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460658"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82800968"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure 文件同步代理发行说明
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Windows Server 安装可转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上提供的任意协议（包括 SMB、NFS 和 FTPS）以本地方式访问数据， 并且可以根据需要在世界各地设置多个缓存。
@@ -25,7 +25,7 @@ ms.locfileid: "81460658"
 
 | 里程碑 | 代理版本号 | 发布日期 | 状态 |
 |----|----------------------|--------------|------------------|
-| V10 版本- [KB4522359](https://support.microsoft.com/en-us/help/4522409/azure-file-sync-agent-v10-release-march-2020)| 10.0.0.0 | 2020年4月9日 | 正在进行 |
+| V10 版本- [4522409](https://support.microsoft.com/en-us/help/4522409)| 10.0.0.0 | 2020年4月9日 | 正在进行 |
 | 2019年12月更新汇总- [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 2019 年 12 月 12 日 | 支持 |
 | V9.x 版本- [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2019年12月2日 | 支持 |
 | V8 版本- [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 2019 年 10 月 8 日 | 支持 |
@@ -36,10 +36,10 @@ ms.locfileid: "81460658"
 | 2019年6月更新汇总- [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 2019 年 6 月 13 日 | 支持的代理版本将于2020年4月21日过期 |
 | 5月2019更新汇总- [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 2019 年 5 月 7 日 | 支持的代理版本将于2020年4月21日过期 |
 | V6 版本- [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 2019年4月21日 | 支持的代理版本将于2020年4月21日过期 |
-| V5 版本 | 5.0.2.0 - 5.2.0.0 | 空值 | 不支持-代理版本在2020年3月18日过期 |
-| V4 版本 | 4.0.1.0 - 4.3.0.0 | 空值 | 不支持-代理版本在2019年11月6日过期 |
-| V3 版本 | 3.1.0.0-为3.4.0。0 | 空值 | 不支持-代理版本在2019年8月19日过期 |
-| 预发行版代理 | 1.1.0.0 - 3.0.13.0 | 空值 | 不支持 - 代理版本于 2018 年 10 月 1 日到期 |
+| V5 版本 | 5.0.2.0 - 5.2.0.0 | 不适用 | 不支持-代理版本在2020年3月18日过期 |
+| V4 版本 | 4.0.1.0 - 4.3.0.0 | 不适用 | 不支持-代理版本在2019年11月6日过期 |
+| V3 版本 | 3.1.0.0-为3.4.0。0 | 不适用 | 不支持-代理版本在2019年8月19日过期 |
+| 预发行版代理 | 1.1.0.0 - 3.0.13.0 | 不适用 | 不支持 - 代理版本于 2018 年 10 月 1 日到期 |
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure 文件同步代理更新策略
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

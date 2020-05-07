@@ -3,12 +3,12 @@ title: 更新容器组
 description: 了解如何更新 Azure 容器实例容器组中正在运行的容器。
 ms.topic: article
 ms.date: 04/17/2020
-ms.openlocfilehash: d64590c553f4ae4ef462d4468fade68861db31c3
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: dc10e38aa6be9473f89df6f7fa10a72f63d9ada8
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160096"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854446"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>更新 Azure 容器实例中的容器
 
@@ -28,7 +28,7 @@ ms.locfileid: "82160096"
 * 用先前提供的值设置其他属性。 如果没有为属性设置值，则它将恢复为其默认值。
 
 > [!TIP]
-> [YAML 文件](/container-instances-container-groups.md#deployment)帮助维护容器组的部署配置，并提供开始部署更新的组的起点。 如果你使用了不同的方法来创建组，则可以使用[az 容器 export][az-container-export]将配置导出到 YAML， 
+> [YAML 文件](container-instances-container-groups.md#deployment)帮助维护容器组的部署配置，并提供开始部署更新的组的起点。 如果你使用了不同的方法来创建组，则可以使用[az 容器 export][az-container-export]将配置导出到 YAML， 
 
 ### <a name="example"></a>示例
 

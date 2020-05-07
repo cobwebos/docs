@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45648170f69d513b15e79cdd76f56e66bbc88bfa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 553ecc971235b5ba7d55a2dcb6963200919a3480
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80332088"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853459"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect 云预配的先决条件
 本文提供了有关如何选择和使用 Azure Active Directory （Azure AD）将云预配作为标识解决方案进行连接的指导。
@@ -47,6 +47,8 @@ ms.locfileid: "80332088"
 ### <a name="in-your-on-premises-environment"></a>在本地环境中
 
 1. 使用最少 4 GB RAM 和 .NET 4.7.1 + runtime 标识运行 Windows Server 2012 R2 或更高版本的已加入域的主机服务器。
+
+1. 本地服务器上的 PowerShell 执行策略必须设置为 Undefined 或 RemoteSigned。
 
 1. 如果服务器和 Azure AD 之间存在防火墙，请配置以下项：
    - 确保代理可以通过以下端口向 Azure AD 发出出站请求： 

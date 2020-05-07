@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 05/16/2018
-ms.openlocfilehash: 65a15a8506b88e95e14af8c87bcbe33087301519
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 986c2783f3d130114da93406bfaf70d5c038d5ed
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75647826"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856143"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>将用于 IntelliJ 的 HDInsight 工具与 Hortonworks 沙盒配合使用
 
@@ -32,7 +32,7 @@ ms.locfileid: "75647826"
 
 - [Java 开发人员工具包 (JDK) 1.8 或更高版本](https://aka.ms/azure-jdks)。 用于 IntelliJ 的 Azure 工具包需要 JDK。
 
-- [IntelliJ IDEA 社区版](https://www.jetbrains.com/idea/download)，带 [Scala](https://plugins.jetbrains.com/idea/plugin/1347-scala) 插件和[用于 IntelliJ 的 Azure 工具包](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij)插件。 用于 IntelliJ 的 HDInsight 工具作为用于 IntelliJ 的 Azure 工具包的一部分提供。 
+- [IntelliJ IDEA 社区版](https://www.jetbrains.com/idea/download)，带 [Scala](https://plugins.jetbrains.com/idea/plugin/1347-scala) 插件和[用于 IntelliJ 的 Azure 工具包](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij)插件。 用于 IntelliJ 的 HDInsight 工具作为用于 IntelliJ 的 Azure 工具包的一部分提供。
 
 安装插件的步骤：
 

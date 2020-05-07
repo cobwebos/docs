@@ -3,14 +3,14 @@ title: 模板部署 what-if（预览版）
 description: 在部署 Azure 资源管理器模板之前确定资源将会发生的更改。
 author: mumian
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 04/29/2020
 ms.author: jgao
-ms.openlocfilehash: f13789912e5b801295f1f926a12db50849cd75d8
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 70023f4fa5d44c74c7ce14f3a2c09ff14c9d2f8c
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509578"
+ms.locfileid: "82581205"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM 模板部署假设操作（预览）
 
@@ -106,7 +106,7 @@ Resource changes: 1 to modify.
 * `New-AzResourceGroupDeployment -Whatif`对于资源组部署
 * `New-AzSubscriptionDeployment -Whatif`订阅`New-AzDeployment -Whatif`级别部署的和
 
-或者，你可以使用`-Confirm`开关参数预览更改并提示你继续部署。
+你可以使用`-Confirm`开关参数预览更改并提示你继续部署。
 
 * `New-AzResourceGroupDeployment -Confirm`对于资源组部署
 * `New-AzSubscriptionDeployment -Confirm`订阅`New-AzDeployment -Confirm`级别部署的和
@@ -123,10 +123,10 @@ Resource changes: 1 to modify.
 * `az deployment group what-if`对于资源组部署
 * `az deployment sub what-if`对于订阅级别部署
 
-或者，你可以使用`--confirm-with-what-if`参数预览更改并提示你继续部署。
+你可以使用`--confirm-with-what-if`开关（或其简短形式`-c`）来预览更改并提示你继续部署。
 
-* `az deployment group create --confirm-with-what-if`对于资源组部署
-* `az deployment sub create --confirm-with-what-if`对于订阅级别部署
+* `az deployment group create --confirm-with-what-if`或`-c`用于资源组部署
+* `az deployment sub create --confirm-with-what-if``-c`对于订阅级别部署
 
 上述命令返回可手动检查的文本摘要。 若要获取可通过编程方式检查更改的 JSON 对象，请使用：
 
@@ -340,7 +340,7 @@ results=$(az deployment group what-if --resource-group ExampleGroup --template-u
 
 what-if 操作支持使用[部署模式](deployment-modes.md)。 设置为完整模式时，将删除不在模板中的资源。 以下示例部署一个处于完整模式的[未定义任何资源的模板](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json)。
 
-若要在部署模板前预览更改，请`-Confirm`将开关参数用于部署命令。 如果所做的更改与预期不同，请确认你希望部署完成。
+若要在部署模板前预览更改，请将 confirm 开关参数用于部署命令。 如果所做的更改与预期不同，请确认你希望部署完成。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

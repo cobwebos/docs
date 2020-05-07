@@ -2,13 +2,13 @@
 title: 使用 Azure Pipelines 和 Azure Application Insights 连续监视 DevOps 发布管道 | Microsoft Docs
 description: 提供使用 Application Insights 快速设置连续监视的说明
 ms.topic: conceptual
-ms.date: 07/16/2019
-ms.openlocfilehash: e565101218b975ef2bd29b8a32a4aa1bf4300b6d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.openlocfilehash: 0d47fb1eccdfcfc7b2719825575f06dc85e62452
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77655389"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652754"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>向发布管道添加连续监视
 
@@ -51,17 +51,19 @@ Azure Pipelines 与 Azure Application Insights 集成，可连续监视整个软
 
 若要修改警报规则设置：
 
-1. 在发布管道页的左窗格中，选择“配置 Application Insights 警报”。 
+在发布管道页的左窗格中，选择“配置 Application Insights 警报”。 
 
-1. 在“Azure Monitor 警报”窗格中，选择“警报规则”旁边的省略号 ( **...** )。  
-   
-1. 在“警报规则”对话框中，选择警报规则（例如“可用性”）旁边的下拉符号。   
-   
-1. 根据要求修改“阈值”和其他设置。 
-   
-   ![修改警报](media/continuous-monitoring/003.png)
-   
-1. 选择“确定”，然后在“Azure DevOps”窗口的右上角选择“保存”。   输入描述性的注释，然后选择“确定”。 
+四个默认警报规则是通过内联脚本创建的：
+
+```bash
+$subscription = az account show --query "id";$subscription.Trim("`"");$resource="/subscriptions/$subscription/resourcegroups/"+"$(Parameters.AppInsightsResourceGroupName)"+"/providers/microsoft.insights/components/" + "$(Parameters.ApplicationInsightsResourceName)";
+az monitor metrics alert create -n 'Availability_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'avg availabilityResults/availabilityPercentage < 99' --description "created from Azure DevOps";
+az monitor metrics alert create -n 'FailedRequests_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'count requests/failed > 5' --description "created from Azure DevOps";
+az monitor metrics alert create -n 'ServerResponseTime_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'avg requests/duration > 5' --description "created from Azure DevOps";
+az monitor metrics alert create -n 'ServerExceptions_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'count exceptions/server > 5' --description "created from Azure DevOps";
+```
+
+您可以修改脚本并添加其他警报规则、修改警报条件或删除不适合您的部署的警报规则。
 
 ## <a name="add-deployment-conditions"></a>添加部署条件
 
@@ -69,31 +71,31 @@ Azure Pipelines 与 Azure Application Insights 集成，可连续监视整个软
 
 若要添加部署门限：
 
-1. 在管道主页上的“阶段”下，根据哪个阶段需要持续监视门限，选择“部署前的条件”或“部署后的条件”符号。   
+1. 在管道主页上的“阶段”下，根据哪个阶段需要持续监视门限，选择“部署前的条件”或“部署后的条件”符号。************
    
    ![部署前的条件](media/continuous-monitoring/004.png)
    
-1. 在“部署前的条件”配置窗格中，将“门限”设置为“已启用”。   
+1. 在“部署前的条件”配置窗格中，将“门限”设置为“已启用”。************
    
-1. 在“部署门限”的旁边，选择“添加”。  
+1. 在“部署门限”的旁边，选择“添加”。********
    
-1. 从下拉菜单中选择“查询 Azure Monitor 警报”。  使用此选项可以访问 Azure Monitor 和 Application Insights 警报。
+1. 从下拉菜单中选择“查询 Azure Monitor 警报”。**** 使用此选项可以访问 Azure Monitor 和 Application Insights 警报。
    
    ![查询 Azure Monitor 警报](media/continuous-monitoring/005.png)
    
-1. 在“评估选项”下，输入要对“重新评估门限的间隔时间”和“门限失败之前所要经过的超时”等设置使用的值。    
+1. 在“评估选项”下，输入要对“重新评估门限的间隔时间”和“门限失败之前所要经过的超时”等设置使用的值。************ 
 
 ## <a name="view-release-logs"></a>查看发布日志
 
 可以在发布日志中查看部署门限行为和其他发布步骤。 若要打开日志：
 
-1. 从管道页的左菜单中选择“发布”。  
+1. 从管道页的左菜单中选择“发布”。**** 
    
 1. 选择任一发布活动。 
    
-1. 在“阶段”下，选择任一阶段以查看发布摘要。  
+1. 在“阶段”下，选择任一阶段以查看发布摘要。**** 
    
-1. 若要查看日志，请在发布摘要中选择“查看日志”，然后在任一阶段中选择“成功”或“失败”超链接，或者将鼠标悬停在任一阶段上并选择“日志”。     
+1. 若要查看日志，请在发布摘要中选择“查看日志”，然后在任一阶段中选择“成功”或“失败”超链接，或者将鼠标悬停在任一阶段上并选择“日志”。**************** 
    
    ![查看发布日志](media/continuous-monitoring/006.png)
 

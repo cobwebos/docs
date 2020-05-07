@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 1eb3da3759f5fca1bc5d675a9b2d61fcf9358bd4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f1bce0a95b672bb23767fce3d5d092221ccd8321
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195462"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858337"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>在 Azure HDInsight 中通过 Microsoft Power BI 使用 ODBC 直观显示 Apache Hive 数据
 
@@ -28,7 +28,7 @@ ms.locfileid: "82195462"
 
 这些信息也适用于新的[交互式查询](../interactive-query/apache-interactive-query-get-started.md)群集类型。 有关如何使用直接查询连接到 HDInsight 交互式查询的信息，请参阅[在 Azure HDInsight 中通过 Microsoft Power BI 使用直接查询可视化交互式查询 Hive 数据](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始阅读本文前，必须具备以下项：
 
@@ -76,4 +76,4 @@ ms.locfileid: "82195462"
 
 * [使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight](./apache-hadoop-connect-excel-hive-odbc-driver.md)。
 * [使用 Power Query 将 Excel 连接到 Apache Hadoop](apache-hadoop-connect-excel-power-query.md)。
-* [使用 Microsoft Power BI 使用直接查询直观显示交互式查询 Apache Hive 数据](/interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)
+* [使用 Microsoft Power BI 使用直接查询直观显示交互式查询 Apache Hive 数据](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)

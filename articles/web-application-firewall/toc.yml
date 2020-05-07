@@ -63,6 +63,8 @@
           href: ./ag/policy-overview.md
         - name: 机器人防护概述
           href: ./ag/bot-protection-overview.md
+        - name: 常见问题解答
+          href: ./ag/application-gateway-waf-faq.md
     - name: Front Door
       items:
         - name: 自定义规则

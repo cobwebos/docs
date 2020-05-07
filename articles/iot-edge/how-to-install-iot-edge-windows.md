@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: kgremban
-ms.openlocfilehash: 61b382f1c286209a12d0be39a81e6817806d3251
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e95f68610f8469a829255d6a16115dcf728ef612
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81113462"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856749"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>在 Windows 上安装 Azure IoT Edge 运行时
 
@@ -164,7 +164,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 
 4. 也可以下载 Visual C++ 可再发行组件的安装程序。 例如，PowerShell 脚本使用以下版本： [vc_redist](https://download.microsoft.com/download/0/6/4/064F84EA-D1DB-4EAA-9A5C-CC2F0FF6A638/vc_redist.x64.exe)。 将安装程序保存在 IoT 设备上与 IoT Edge 文件相同的文件夹中。
 
-5. 若要安装具有脱机组件的点，请在 PowerShell 脚本的本地副本上保存[点](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing)。 然后，在`Deploy-IoTEdge`命令`-OfflineInstallationPath`中使用参数，并提供文件目录的绝对路径。 例如，
+5. 若要安装具有脱机组件的点，请在 PowerShell 脚本的本地副本上保存[点](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing)。 然后，在`Deploy-IoTEdge`命令`-OfflineInstallationPath`中使用参数，并提供文件目录的绝对路径。 例如，应用于对象的
 
    ```powershell
    . <path>\IoTEdgeSecurityDaemon.ps1
@@ -193,17 +193,21 @@ Get-Service iotedge
 . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-运行自动检查以查找最常见的配置和网络错误。
+运行[疑难解答工具](troubleshoot.md#run-the-check-command)以检查最常见的配置和网络错误。
 
 ```powershell
 iotedge check
 ```
 
-列出正在运行的模块。 在全新安装之后，应该看到运行的唯一模块是 **edgeAgent**。 首次[部署 IoT Edge 模块](how-to-deploy-modules-portal.md)后，其他系统模块 **edgeHub** 也会在设备上启动。
+在将第一个模块部署到设备上的 IoT Edge 之前，**$edgeHub** 系统模块不会部署到设备。 因此，自动检查会返回一个针对 `Edge Hub can bind to ports on host` 连接性检查的错误。 除非在将模块部署到设备后发生此错误，否则可以忽略此错误。
+
+最后，列出正在运行的模块：
 
 ```powershell
 iotedge list
 ```
+
+在全新安装之后，应该看到运行的唯一模块是 **edgeAgent**。 首次[部署 IoT Edge 模块](how-to-deploy-modules-portal.md)后，其他系统模块 **edgeHub** 也会在设备上启动。
 
 ## <a name="manage-module-containers"></a>管理模块容器
 
@@ -264,21 +268,21 @@ Get-AuthenticodeSignature "C:\<path>\IotEdgeSecurityDaemon.ps1"
 
 Deploy-IoTEdge 命令下载并部署 IoT Edge 安全守护程序及其依赖项。 该部署命令接受这些通用参数，此外还接受其他一些参数。 有关完整列表，请使用命令 `Get-Help Deploy-IoTEdge -full`。  
 
-| 参数 | 接受的值 | 说明 |
+| 参数 | 接受的值 | 注释 |
 | --------- | --------------- | -------- |
 | **ContainerOs** | **Windows**或**Linux** | 如果未指定容器操作系统，则 Windows 是默认值。<br><br>对于 Windows 容器，IoT Edge 使用安装中包含的 moby 容器引擎。 对于 Linux 容器，需要在开始安装之前安装容器引擎。 |
 | **代理** | 代理 URL | 如果设备需要通过代理服务器来连接 Internet，请包含此参数。 有关详细信息，请参阅[将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)。 |
 | **OfflineInstallationPath** | 目录路径 | 如果包含此参数，则安装程序将在列出的目录中检查安装时所需的 IoT Edge cab 和 VC 运行时 MSI 文件。 系统会下载该目录中不存在的任何文件。 如果这两个文件在该目录中存在，则无需建立 Internet 连接即可安装 IoT Edge。 还可以通过此参数来使用特定的版本。 |
 | **InvokeWebRequestParameters** | 参数和值的哈希表 | 在安装期间，会发出多个 Web 请求。 请使用此字段来设置这些 Web 请求的参数。 此参数可用于配置代理服务器的凭据。 有关详细信息，请参阅[将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)。 |
-| **RestartIfNeeded** | none | 此标志可让部署脚本在无提示的情况下根据需要重启计算机。 |
+| **RestartIfNeeded** | 无 | 此标志可让部署脚本在无提示的情况下根据需要重启计算机。 |
 
 ### <a name="initialize-iotedge"></a>Initialize-IoTEdge
 
 Initialize-IoTEdge 命令使用设备连接字符串和操作详细信息配置 IoT Edge。 然后，此命令生成的许多信息将存储在 iotedge\config.yaml 文件中。 该初始化命令接受这些通用参数，此外还接受其他一些参数。 有关完整列表，请使用命令 `Get-Help Initialize-IoTEdge -full`。
 
-| 参数 | 接受的值 | 说明 |
+| 参数 | 接受的值 | 注释 |
 | --------- | --------------- | -------- |
-| 手动  | 无 | **开关参数**。 如果未指定预配类型，则 manual 是默认值。<br><br>声明你要提供设备连接字符串来手动预配设备 |
+| **手动** | 无 | **开关参数**。 如果未指定预配类型，则 manual 是默认值。<br><br>声明你要提供设备连接字符串来手动预配设备 |
 | **分发** | 无 | **开关参数**。 如果未指定预配类型，则 manual 是默认值。<br><br>声明你要提供设备预配服务 (DPS) 范围 ID 和设备的注册 ID，以通过 DPS 进行预配。  |
 | **DeviceConnectionString** | 已在 IoT 中心注册的 IoT Edge 设备中的连接字符串，括在单引号中 | **需要**手动预配。 如果未在脚本参数中提供连接字符串，系统将提示您输入一个连接字符串。 |
 | **ScopeId** | 与 IoT 中心关联的设备预配服务实例中的范围 ID。 | DPS 预配**必需**的。 如果未在脚本参数中提供作用域 ID，系统将提示您输入一个。 |
@@ -294,20 +298,20 @@ Initialize-IoTEdge 命令使用设备连接字符串和操作详细信息配置 
 
 ### <a name="update-iotedge"></a>Update-IoTEdge
 
-| 参数 | 接受的值 | 说明 |
+| 参数 | 接受的值 | 注释 |
 | --------- | --------------- | -------- |
 | **ContainerOs** | **Windows**或**Linux** | 如果未指定容器 OS，则 Windows 是默认值。 对于 Windows 容器，安装中会包含一个容器引擎。 对于 Linux 容器，需要在开始安装之前安装容器引擎。 |
 | **代理** | 代理 URL | 如果设备需要通过代理服务器来连接 Internet，请包含此参数。 有关详细信息，请参阅[将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)。 |
 | **InvokeWebRequestParameters** | 参数和值的哈希表 | 在安装期间，会发出多个 Web 请求。 请使用此字段来设置这些 Web 请求的参数。 此参数可用于配置代理服务器的凭据。 有关详细信息，请参阅[将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)。 |
 | **OfflineInstallationPath** | 目录路径 | 如果包含此参数，则安装程序将在列出的目录中检查安装时所需的 IoT Edge cab 和 VC 运行时 MSI 文件。 系统会下载该目录中不存在的任何文件。 如果这两个文件在该目录中存在，则无需建立 Internet 连接即可安装 IoT Edge。 还可以通过此参数来使用特定的版本。 |
-| **RestartIfNeeded** | none | 此标志可让部署脚本在无提示的情况下根据需要重启计算机。 |
+| **RestartIfNeeded** | 无 | 此标志可让部署脚本在无提示的情况下根据需要重启计算机。 |
 
 ### <a name="uninstall-iotedge"></a>Uninstall-IoTEdge
 
-| 参数 | 接受的值 | 说明 |
+| 参数 | 接受的值 | 注释 |
 | --------- | --------------- | -------- |
-| **团队** | none | 在上次尝试卸载失败时，此标志会强制卸载。
-| **RestartIfNeeded** | none | 此标志可让卸载脚本在无提示的情况下根据需要重启计算机。 |
+| **团队** | 无 | 在上次尝试卸载失败时，此标志会强制卸载。
+| **RestartIfNeeded** | 无 | 此标志可让卸载脚本在无提示的情况下根据需要重启计算机。 |
 
 ## <a name="next-steps"></a>后续步骤
 

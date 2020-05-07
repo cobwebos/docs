@@ -15,12 +15,12 @@ ms.date: 11/14/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: 1949b66ee48036163e92cb37c275e9117d6a74b4
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: be2a52f1a9071e9d4bb77ab4439291fd58cd828b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460012"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82129371"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>教程 - 使用 Azure CLI 管理 Azure 磁盘
 
@@ -32,7 +32,6 @@ Azure 虚拟机 (VM) 使用磁盘来存储操作系统、应用程序和数据�
 > * 标准磁盘和高级磁盘
 > * 磁盘性能
 > * 附加和准备数据磁盘
-> * 调整磁盘大小
 > * 磁盘快照
 
 
@@ -265,7 +264,6 @@ az vm disk attach \
 > * 标准磁盘和高级磁盘
 > * 磁盘性能
 > * 附加和准备数据磁盘
-> * 调整磁盘大小
 > * 磁盘快照
 
 转到下一教程，了解如何自动配置 VM。

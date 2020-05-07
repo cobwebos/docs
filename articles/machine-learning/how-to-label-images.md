@@ -6,13 +6,13 @@ author: lobrien
 ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 371b99c794feb4a64eb3e9af389020e25d14eedb
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.date: 04/09/2020
+ms.openlocfilehash: 2c21a8770209871be4d871a08e6355e4ca7ed169
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879422"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82204315"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>在标记项目中标记图像
 
@@ -25,21 +25,24 @@ ms.locfileid: "80879422"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 正在运行的数据标签项目的标签门户 URL
 * 或组织和项目的 [Microsoft 帐户](https://account.microsoft.com/account)或 Azure Active Directory 帐户
+* 对包含标签项目的工作区具有参与者级别访问权限。
 
-> [!NOTE]
-> 项目管理员可以在“项目详细信息”页的“详细信息”选项卡上找到标记门户 URL。  
+## <a name="sign-in-to-the-workspace"></a>登录到工作区
 
-## <a name="sign-in-to-the-projects-labeling-portal"></a>登录到项目的标记门户
+1. 登录到 [Azure 机器学习工作室](https://ml.azure.com)。
 
-转到项目管理员提供的标记门户 URL。 使用管理员用于将你添加到团队的电子邮件帐户登录。 对于大多数用户而言，该帐户是 Microsoft 帐户。 如果标记项目使用 Azure Active Directory，则你需要使用 Azure Active Directory 帐户登录。
+1. 选择包含标签项目的订阅和工作区。  从项目管理员处获取此信息。
+
+1. 选择左侧的“数据标记”  来查找项目。  
+
+1. 选择列表中的项目名称。
 
 ## <a name="understand-the-labeling-task"></a>了解标记任务
 
-登录后，将看到项目的概述页。
+选择项目后，在页面顶部选择“标签数据”  。
 
-转到“查看详细说明”。  这些说明特定于你的项目。 其中解释了现有的数据类型、如何做出决策以及其他相关信息。 阅读此信息后，请返回到项目页，然后选择“开始标记”。 
+你会看到特定于项目的说明。 其中解释了现有的数据类型、如何做出决策以及其他相关信息。 阅读此信息后，在页面顶部选择“任务”  。  或者在页面底部选择“开始标记”。 
 
 ## <a name="common-features-of-the-labeling-task"></a>标签任务的常用功能
 

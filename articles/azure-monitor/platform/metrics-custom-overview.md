@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor 中的自定义指标
+title: Azure Monitor 中的自定义指标（预览）
 description: 了解 Azure Monitor 中的自定义指标及其建模方式。
 author: ancav
 ms.author: ancav
@@ -7,17 +7,20 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.subservice: metrics
-ms.openlocfilehash: 4286910c926cd6bd3b21acfd145e4e69548319ce
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 4891d7272516caf4944219907d81ee4fb89e0189
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204298"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837305"
 ---
-# <a name="custom-metrics-in-azure-monitor"></a>Azure Monitor 中的自定义指标
+# <a name="custom-metrics-in-azure-monitor-preview"></a>Azure Monitor 中的自定义指标（预览）
 
-在 Azure 中部署资源和应用程序时，需要开始收集遥测数据，以洞察它们的性能和运行状况。 Azure 提供一些现成的指标。 这些指标称为[标准或平台](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)。 但是，它们在性质上有限制。 可能需要收集一些自定义性能指标或特定于业务的指标才能提供更深入的见解。
-可以通过应用程序遥测、Azure 资源上运行的代理甚至从外到内的监视系统收集这些**自定义**指标，然后将其直接提交给 Azure Monitor。 发布到 Azure Monitor 之后，可以连同 Azure 发出的标准指标一起浏览、查询 Azure 资源和应用程序的自定义指标，并针对其发出警报。
+在 Azure 中部署资源和应用程序时，需要开始收集遥测数据，以洞察它们的性能和运行状况。 Azure 提供一些现成的指标。 这些指标称为[标准或平台](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)。 但是，它们在性质上有限制。 
+
+可能需要收集一些自定义性能指标或特定于业务的指标才能提供更深入的见解。 可以通过应用程序遥测、Azure 资源上运行的代理甚至从外到内的监视系统收集这些**自定义**指标，然后将其直接提交给 Azure Monitor。 发布到 Azure Monitor 之后，可以连同 Azure 发出的标准指标一起浏览、查询 Azure 资源和应用程序的自定义指标，并针对其发出警报。
+
+Azure Monitor 自定义指标在公共预览版中是最新的。 
 
 ## <a name="methods-to-send-custom-metrics"></a>用于发送自定义指标的方法
 
@@ -25,21 +28,17 @@ ms.locfileid: "82204298"
 - 使用 Azure Application Insights SDK 检测应用程序并将自定义遥测数据发送到 Azure Monitor。 
 - 在 [Azure VM](collect-custom-metrics-guestos-resource-manager-vm.md)、[虚拟机规模集](collect-custom-metrics-guestos-resource-manager-vmss.md)、[经典 VM](collect-custom-metrics-guestos-vm-classic.md) 或[经典云服务](collect-custom-metrics-guestos-vm-cloud-service-classic.md)上安装 Windows Azure 诊断 (WAD) 扩展，并将性能计数器发送到 Azure Monitor。 
 - 在 Azure Linux VM 上安装 [InfluxData Telegraf 代理](collect-custom-metrics-linux-telegraf.md)，并使用 Azure Monitor 输出插件发送指标。
-- 将自定义指标[直接发送到 Azure Monitor REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)：`https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`。
+- 将自定义度量值[直接发送到 Azure Monitor REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md) `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`。
 
-## <a name="pricing-model"></a>定价模型
+## <a name="pricing-model-and-rentention"></a>定价模型和保留
 
-将标准指标（平台指标）引入 Azure Monitor 指标存储不会产生费用。 引入度量值存储中 Azure Monitor 的自定义指标将按字节计费，其中每个自定义指标的大小都被视为8个字节。 所有引入指标保留90天。
+有关何时为自定义指标和指标查询启用计费的详细信息，请查看[Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)。 此页提供了所有指标的特定价格详细信息，包括自定义指标和指标查询。 总而言之，将标准指标（平台指标）引入 Azure Monitor 指标存储不会产生费用，但自定义指标在输入正式上市时产生成本。 指标 API 查询会产生成本。
 
-将根据标准 API 调用数对指标查询进行收费。 标准 API 调用用于分析1440数据点（1440也是每天每个指标可存储的数据点的总数）。 如果 API 调用分析超过1440个数据点，则会将其计为多个标准 API 调用。 如果 API 调用分析了小于1440的数据点，则会将其计为小于一个 API 调用。 标准 API 调用数每天计算为每天分析的数据点总数除以1440。
-
-[Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)上提供了自定义指标和指标查询的特定价格详细信息。
+自定义指标的保留[时间与平台指标的时间相同](data-platform-metrics.md#retention-of-metrics)。 
 
 > [!NOTE]  
-> 通过 Application Insights SDK 发送给 Azure Monitor 的指标将按引入日志数据计费，并且仅当已选择 Application Insights 功能 "[对自定义指标维度启用警报](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation)" 时，才会产生额外的指标费用。 详细了解[你所在地区](https://azure.microsoft.com/pricing/details/monitor/)的[Application Insights 定价模型](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model)和价格。
+> 通过 Application Insights SDK 发送给 Azure Monitor 的指标按引入日志数据计费。 仅当已选择 "[对自定义指标维度启用警报](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation)" Application Insights 功能时，它们才会产生额外的指标费用。 此复选框使用自定义指标 API 将数据发送到 Azure Monitor 指标数据库，以允许更复杂的警报。  详细了解[你所在地区](https://azure.microsoft.com/pricing/details/monitor/)的[Application Insights 定价模型](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model)和价格。
 
-> [!NOTE]  
-> 有关何时为自定义指标和指标查询启用计费的详细信息，请查看[Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)。 
 
 ## <a name="how-to-send-custom-metrics"></a>如何发送自定义指标
 
@@ -54,7 +53,7 @@ ms.locfileid: "82204298"
 > [!TIP]  
 > 请求用于发出自定义指标的 Azure AD 令牌时，请确保请求该令牌的受众或资源是 `https://monitoring.azure.com/`。 请务必包含尾部的“/”。
 
-### <a name="subject"></a>Subject
+### <a name="subject"></a>使用者
 此属性捕获自定义指标报告的 Azure 资源 ID。 将在 API 调用的 URL 中为此信息编码。 每个 API 只能提交单个 Azure 资源的指标值。
 
 > [!NOTE]  
@@ -69,7 +68,7 @@ ms.locfileid: "82204298"
 >
 >
 
-### <a name="timestamp"></a>时间戳
+### <a name="timestamp"></a>Timestamp
 发送到 Azure Monitor 的每个数据点必须带有时间戳标记。 此时间戳捕获测量或收集指标值的日期时间。 Azure Monitor 接受带有过去最多 20 分钟和将来最多 5 分钟时间戳的指标数据。 时间戳必须采用 ISO 8601 格式。
 
 ### <a name="namespace"></a>命名空间

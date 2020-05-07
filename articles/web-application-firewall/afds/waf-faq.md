@@ -1,23 +1,23 @@
 ---
-title: Azure Web 应用程序防火墙-常见问题
+title: Azure 前门服务上的 azure Web 应用程序防火墙-常见问题
 description: 本文提供有关 Azure 前门上的 Web 应用程序防火墙的常见问题的解答
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: fefbb038cec0c061f1fd191a77164880372555a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d129c37c909c630623f8a41c06da9aa80e4e2392
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81314324"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837628"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Azure 前门服务上的 Azure Web 应用程序防火墙常见问题解答
 
-本文解答了有关 Azure web 应用程序防火墙（WAF）特性和功能的常见问题。 
+本文解答有关 azure 前门服务特性和功能上的 Azure Web 应用程序防火墙（WAF）的常见问题。 
 
 ## <a name="what-is-azure-waf"></a>什么是 Azure WAF？
 
@@ -35,7 +35,7 @@ Azure 前门是高度可缩放的全球分布式应用程序和内容交付网�
 
 ## <a name="does-azure-waf-support-ipv6"></a>Azure WAF 是否支持 IPv6？
 
-是的。 可为 IPv4 和 IPv6 配置 IP 限制。
+可以。 可为 IPv4 和 IPv6 配置 IP 限制。
 
 ## <a name="how-up-to-date-are-the-managed-rule-sets"></a>托管规则集的最新版本是什么？
 

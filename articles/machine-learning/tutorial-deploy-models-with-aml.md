@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 02/10/2020
+ms.date: 03/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 81e02492f7e79b87e1513a910afe4719908adbbb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5d064b0953d8d6e9089dcfa765ff29bb97088f34
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80159060"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801104"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>教程：在 Azure 容器实例中部署映像分类模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,14 +27,13 @@ ms.locfileid: "80159060"
 > [!div class="checklist"]
 > * 设置测试环境。
 > * 从工作区检索模型。
-> * 在本地测试模型。
 > * 将模型部署到容器实例。
 > * 测试已部署的模型。
 
 容器实例是用于测试和了解工作流的理想解决方案。 对于可缩放的生产部署，请考虑使用 Azure Kubernetes 服务。 有关详细信息，请参阅[部署方式及位置](how-to-deploy-and-where.md)。
 
 >[!NOTE]
-> 本文中的代码已使用 Azure 机器学习 SDK 版本 1.0.41 进行测试。
+> 本文中的代码已使用 Azure 机器学习 SDK 版本 1.0.83 进行测试。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -54,78 +53,177 @@ ms.locfileid: "80159060"
 
 ### <a name="import-packages"></a>导入包
 
-导入本教程所需的 Python 包：
+导入此教程所需的 Python 包。
+
 
 ```python
 %matplotlib inline
 import numpy as np
-import matplotlib
 import matplotlib.pyplot as plt
  
-import azureml
-from azureml.core import Workspace, Run
+import azureml.core
 
 # Display the core SDK version number
 print("Azure ML SDK Version: ", azureml.core.VERSION)
 ```
 
-### <a name="retrieve-the-model"></a>检索模型
+## <a name="deploy-as-web-service"></a>部署为 Web 服务
 
-你在上一个教程中于工作区内注册了一个模型。 现在，加载此工作区并将模型下载到本地目录：
+将该模型部署为在 ACI 中托管的 Web 服务。 
+
+要为 ACI 构建正确的环境，请提供以下信息：
+* 显示如何使用模型的评分脚本
+* 要生成 ACI 的配置文件
+* 之前已定型的模型
+
+### <a name="create-scoring-script"></a>创建评分脚本
+
+创建名为 score.py 的评分脚本，由 Web 服务调用用于显示如何使用该模型。
+
+必须在评分脚本中包含两个必需的函数：
+* `init()` 函数，它通常将模型加载到全局对象中。 此函数只能在 Docker 容器启动时运行一次。 
+
+* `run(input_data)` 函数，它使用模型来基于输入数据预测值。 运行的输入和输出通常使用 JSON 进行序列化和反序列化，但支持其他格式。
+
+```python
+%%writefile score.py
+import json
+import numpy as np
+import os
+import pickle
+import joblib
+
+def init():
+    global model
+    # AZUREML_MODEL_DIR is an environment variable created during deployment.
+    # It is the path to the model folder (./azureml-models/$MODEL_NAME/$VERSION)
+    # For multiple models, it points to the folder containing all deployed models (./azureml-models)
+    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_mnist_model.pkl')
+    model = joblib.load(model_path)
+
+def run(raw_data):
+    data = np.array(json.loads(raw_data)['data'])
+    # make prediction
+    y_hat = model.predict(data)
+    # you can return any data type as long as it is JSON-serializable
+    return y_hat.tolist()
+```
+
+### <a name="create-configuration-file"></a>创建配置文件
+
+创建部署配置文件并指定 ACI 容器所需的 CPU 数量和 RAM 大小（单位为 GB）。 虽然这取决于具体模型，但对于许多模型而言，默认的 1 核和 1 GB 的 RAM 通常已足够。 如果你认为以后需要更多核心或 RAM，请重新创建映像并重新部署服务。
 
 
 ```python
+from azureml.core.webservice import AciWebservice
+
+aciconfig = AciWebservice.deploy_configuration(cpu_cores=1, 
+                                               memory_gb=1, 
+                                               tags={"data": "MNIST",  "method" : "sklearn"}, 
+                                               description='Predict MNIST with sklearn')
+```
+
+### <a name="deploy-in-aci"></a>在 ACI 中部署
+估计完成时间：约 2-5 分钟 
+
+配置映像和部署。 下面的代码将完成这些步骤：
+
+1. 使用训练过程中保存的环境 (`tutorial-env`) 创建包含模型所需依赖项的环境对象。
+1. 使用以下项创建将模型部署为 Web 服务所需的推理配置：
+   * 评分文件 (`score.py`)
+   * 在上一步中创建的环境对象
+1. 将模型部署到 ACI 容器。
+1. 获取 Web 服务 HTTP 终结点。
+
+
+```python
+%%time
+from azureml.core.webservice import Webservice
+from azureml.core.model import InferenceConfig
+from azureml.core.environment import Environment
 from azureml.core import Workspace
 from azureml.core.model import Model
-import os
+
 ws = Workspace.from_config()
 model = Model(ws, 'sklearn_mnist')
 
-model.download(target_dir=os.getcwd(), exist_ok=True)
 
-# verify the downloaded model file
-file_path = os.path.join(os.getcwd(), "sklearn_mnist_model.pkl")
+myenv = Environment.get(workspace=ws, name="tutorial-env", version="1")
+inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
 
-os.stat(file_path)
+service = Model.deploy(workspace=ws, 
+                       name='sklearn-mnist-svc3', 
+                       models=[model], 
+                       inference_config=inference_config, 
+                       deployment_config=aciconfig)
+
+service.wait_for_deployment(show_output=True)
 ```
 
-## <a name="test-the-model-locally"></a>在本地测试模型
+获取评分 Web 服务的 HTTP 终结点，该终结点接受 REST 客户端调用。 可以与想要测试 Web 服务或要将其集成到应用程序中的任何人共享此终结点。
 
-部署之前，请确保模型在本地运行：
-* 加载测试数据。
-* 预测测试数据。
-* 检查混淆矩阵。
+
+```python
+print(service.scoring_uri)
+```
+
+## <a name="test-the-model"></a>测试模型
+
+
+### <a name="download-test-data"></a>下载测试数据
+将测试数据下载到“./data/”  目录
+
+
+```python
+import os
+from azureml.core import Dataset
+from azureml.opendatasets import MNIST
+
+data_folder = os.path.join(os.getcwd(), 'data')
+os.makedirs(data_folder, exist_ok=True)
+
+mnist_file_dataset = MNIST.get_file_dataset()
+mnist_file_dataset.download(data_folder, overwrite=True)
+```
 
 ### <a name="load-test-data"></a>加载测试数据
 
-从训练教程中创建的 **./data/** 目录中加载测试数据：
+从定型教程中创建的 ./data/  目录中加载测试数据。
+
 
 ```python
 from utils import load_data
 import os
+import glob
 
 data_folder = os.path.join(os.getcwd(), 'data')
 # note we also shrink the intensity values (X) from 0-255 to 0-1. This helps the neural network converge faster
-X_test = load_data(os.path.join(data_folder, 'test-images.gz'), False) / 255.0
-y_test = load_data(os.path.join(
-    data_folder, 'test-labels.gz'), True).reshape(-1)
+X_test = load_data(glob.glob(os.path.join(data_folder,"**/t10k-images-idx3-ubyte.gz"), recursive=True)[0], False) / 255.0
+y_test = load_data(glob.glob(os.path.join(data_folder,"**/t10k-labels-idx1-ubyte.gz"), recursive=True)[0], True).reshape(-1)
 ```
 
 ### <a name="predict-test-data"></a>预测测试数据
 
-若要获得预测结果，请将测试数据集馈送到模型：
+将测试数据集提供给模型以获得预测。
+
+
+下面的代码将完成这些步骤：
+1. 将数据作为 JSON 数组发送到 ACI 中托管的 Web 服务。 
+
+1. 使用 SDK 的 `run` API 来调用服务。 还可以使用任何 HTTP 工具（如 curl）进行原始调用。
+
 
 ```python
-import pickle
-from sklearn.externals import joblib
-
-clf = joblib.load(os.path.join(os.getcwd(), 'sklearn_mnist_model.pkl'))
-y_hat = clf.predict(X_test)
+import json
+test = json.dumps({"data": X_test.tolist()})
+test = bytes(test, encoding='utf8')
+y_hat = service.run(input_data=test)
 ```
 
 ###  <a name="examine-the-confusion-matrix"></a>检查混淆矩阵
 
-生成一个混淆矩阵，便于查看测试集中有多少样本已正确分类。 注意不正确预测的错误分类值： 
+生成一个混淆矩阵，便于查看测试集中有多少样本已正确分类。 请注意不正确预测的错误分类值。
+
 
 ```python
 from sklearn.metrics import confusion_matrix
@@ -150,7 +248,7 @@ print('Overall accuracy:', np.average(y_hat == y_test))
     Overall accuracy: 0.9204
    
 
-使用 `matplotlib` 将混淆矩阵显示为图形。 在此图中，x 轴显示实际值，y 轴显示预测值。 每个网格的颜色表示错误率。 颜色越浅，错误率越高。 例如，许多应分类为 5 的值被错误地分类为 3 的值。 因此，(5,3) 处的网格颜色较亮：
+使用 `matplotlib` 将混淆矩阵显示为图形。 在此图中，X 轴表示实际值，Y 轴表示预测的值。 每个网格的颜色表示错误率。 颜色越浅，错误率越高。 例如，许多应分类为 5 的值被错误地分类为 3 的值。 因此，(5,3) 处的网格颜色较亮。
 
 ```python
 # normalize the diagonal cells so that they don't overpower the rest of the cells when visualized
@@ -175,141 +273,17 @@ plt.show()
 
 ![显示混淆矩阵的图表](./media/tutorial-deploy-models-with-aml/confusion.png)
 
-## <a name="deploy-as-a-web-service"></a>部署为 Web 服务
 
-测试模型并对结果感到满意后，请将模型部署为容器实例中托管的 Web 服务。 
+## <a name="show-predictions"></a>显示预测
 
-若要为容器实例构建正确的环境，请提供以下组件：
-* 显示如何使用模型的评分脚本。
-* 显示需要安装的包的环境文件。
-* 用于生成容器实例的配置文件。
-* 之前已训练的模型。
+使用来自测试数据的 30 个映像的随机样本来测试部署的模型。  
 
-<a name="make-script"></a>
 
-### <a name="create-scoring-script"></a>创建评分脚本
+1. 打印返回的预测并将其与输入映像一起绘制。 红色字体和反向图像（黑底白色）用于突出显示错误分类的样本。 
 
-创建名为 **score.py** 的评分脚本。 Web 服务调用使用此脚本来显示模型的用法。
+ 由于模型精度较高，可能需要运行以下代码几次才能看到错误分类的样本。
 
-在评分脚本中包含两个必需的函数：
-* `init()` 函数，它通常将模型加载到全局对象中。 此函数只能在 Docker 容器启动时运行一次。 
 
-* `run(input_data)` 函数，它使用模型来基于输入数据预测值。 运行的输入和输出通常使用 JSON 进行序列化和反序列化，但支持其他格式。
-
-```python
-%%writefile score.py
-import json
-import numpy as np
-import os
-import pickle
-from sklearn.externals import joblib
-from sklearn.linear_model import LogisticRegression
-
-from azureml.core.model import Model
-
-def init():
-    global model
-    # retrieve the path to the model file using the model name
-    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_mnist_model.pkl')
-    model = joblib.load(model_path)
-
-def run(raw_data):
-    data = np.array(json.loads(raw_data)['data'])
-    # make prediction
-    y_hat = model.predict(data)
-    # you can return any data type as long as it is JSON-serializable
-    return y_hat.tolist()
-```
-
-<a name="make-myenv"></a>
-
-### <a name="create-environment-file"></a>创建环境文件
-
-接下来，创建名为 **myenv.yml** 的环境文件，用于指定脚本的所有包依赖项。 此文件用于确保在 Docker 映像中安装所有这些依赖项。 此模型需要 `scikit-learn` 和 `azureml-sdk`。 所有自定义环境文件需要使用版本 1.0.45 或更高版本将 azureml-defaults 列为 pip 依赖项。 此包包含将模型托管为 Web 服务所需的功能。
-
-```python
-from azureml.core.conda_dependencies import CondaDependencies
-
-myenv = CondaDependencies()
-myenv.add_conda_package("scikit-learn")
-myenv.add_pip_package("azureml-defaults")
-
-with open("myenv.yml", "w") as f:
-    f.write(myenv.serialize_to_string())
-```
-查看 `myenv.yml` 文件的内容：
-
-```python
-with open("myenv.yml", "r") as f:
-    print(f.read())
-```
-
-### <a name="create-a-configuration-file"></a>创建配置文件
-
-创建部署配置文件。 指定容器实例容器所需的 CPU 数目和 RAM 大小（单位为 GB）。 虽然这取决于具体的模型，但对于许多模型而言，默认的单核和 1 GB RAM 便已足够。 如果以后需要更多核心或 RAM，必须重新创建映像并重新部署服务。
-
-```python
-from azureml.core.webservice import AciWebservice
-
-aciconfig = AciWebservice.deploy_configuration(cpu_cores=1, 
-                                               memory_gb=1, 
-                                               tags={"data": "MNIST",  
-                                                     "method": "sklearn"},
-                                               description='Predict MNIST with sklearn')
-```
-
-### <a name="deploy-in-container-instances"></a>在容器实例中部署
-完成部署的估计时间为**大约 7 到 8 分钟**。
-
-配置映像和部署。 下面的代码将完成这些步骤：
-
-1. 使用以下文件生成映像：
-   * 评分文件 `score.py`。
-   * 环境文件 `myenv.yml`。
-   * 模型文件。
-1. 在工作区下注册该映像。 
-1. 将映像发送到容器实例容器。
-1. 使用映像在容器实例中启动容器。
-1. 获取 Web 服务 HTTP 终结点。
-
-请注意，如果要定义自己的环境文件，则必须使用版本 1.0.45 或更高版本将 azureml-defaults 列为 pip 依赖项。 此包包含将模型托管为 Web 服务所需的功能。
-
-```python
-%%time
-from azureml.core.webservice import Webservice
-from azureml.core.model import InferenceConfig
-from azureml.core.environment import Environment
-
-myenv = Environment.from_conda_specification(name="myenv", file_path="myenv.yml")
-inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
-
-service = Model.deploy(workspace=ws,
-                       name='sklearn-mnist-svc',
-                       models=[model], 
-                       inference_config=inference_config,
-                       deployment_config=aciconfig)
-
-service.wait_for_deployment(show_output=True)
-```
-
-获取评分 Web 服务的 HTTP 终结点，该终结点接受 REST 客户端调用。 可以与想要测试 Web 服务或要将其集成到应用程序中的任何人共享此终结点： 
-
-```python
-print(service.scoring_uri)
-```
-
-## <a name="test-the-deployed-service"></a>测试已部署的服务
-
-之前你使用本地版本的模型对所有测试数据进行了评分。 现在，可以使用来自测试数据的 30 个映像的随机样本来测试部署的模型。  
-
-下面的代码将完成这些步骤：
-1. 将数据作为 JSON 数组发送到容器实例中托管的 Web 服务。 
-
-1. 使用 SDK 的 `run` API 来调用服务。 还可以使用任何 HTTP 工具（如 **curl**）进行原始调用。
-
-1. 打印返回的预测并将其与输入映像一起绘制。 红色字体和反色图像（黑底白色）用于突出显示错误分类的样本。 
-
-由于模型精度较高，可能需要运行以下代码几次才能看到错误分类的样本：
 
 ```python
 import json
@@ -326,7 +300,7 @@ result = service.run(input_data=test_samples)
 
 # compare actual value vs. the predicted values:
 i = 0
-plt.figure(figsize=(20, 1))
+plt.figure(figsize = (20, 1))
 
 for s in sample_indices:
     plt.subplot(1, n, i + 1)
@@ -344,11 +318,8 @@ for s in sample_indices:
 plt.show()
 ```
 
-下面是某个随机测试映像样本的结果：
+还可以发送原始 HTTP 请求以测试 Web 服务。
 
-![显示结果的图形](./media/tutorial-deploy-models-with-aml/results.png)
-
-还可以发送原始 HTTP 请求以测试 Web 服务：
 
 ```python
 import requests

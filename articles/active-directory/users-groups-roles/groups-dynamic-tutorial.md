@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 382f3b59142aee7ddfbec4aceb153a174874ac1a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7ee5fa52f59ea2ef3332fe66c81c24ff44c64e81
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74027111"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582874"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>教程：自动添加或删除组成员
 
-在 Azure Active Directory (Azure AD) 中，可以自动地在安全组或 Office 365 组中添加或删除用户，因此不必总是手动执行该操作。 当用户或设备的任何属性更改时，Azure AD 会评估租户中的所有动态组规则，看该更改是否会导致成员的添加或删除。
+在 Azure Active Directory (Azure AD) 中，可以自动地在安全组或 Office 365 组中添加或删除用户，因此不必总是手动执行该操作。 当用户或设备的任何属性更改时，Azure AD 会评估 Azure AD 组织中的所有动态组规则，以了解该更改是否会添加或删除成员。
 
 在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
@@ -35,15 +35,15 @@ ms.locfileid: "74027111"
 
 ## <a name="prerequisites"></a>先决条件
 
-此功能要求充当租户全局管理员的你使用一个 Azure AD Premium 许可证。 如果没有该许可证，请在 Azure AD 中选择“许可证”   > “产品”   >   “试用/购买”。
+此功能要求组织全局管理员使用一个 Azure AD Premium 许可证。 如果没有该许可证，请在 Azure AD 中选择“许可证”   > “产品”   >   “试用/购买”。
 
-不需向用户分配许可证即可让用户成为动态组中的成员。 只需在租户中提供最低数目的 Azure AD Premium P1 许可证来涵盖全部此类用户即可。 
+不需向用户分配许可证即可让用户成为动态组中的成员。 只需在组织中提供最低数目的 Azure AD Premium P1 许可证即可涵盖所有此类用户。 
 
 ## <a name="create-a-group-of-guest-users"></a>创建包含来宾用户的组
 
 首先，需为来宾用户创建一个组，这些用户全都来自某个合作伙伴公司。 他们需要特别许可，因此通常情况下，为此创建一个组会更为有效。
 
-1. 使用一个其身份为租户全局管理员的帐户登录到 Azure 门户 (https://portal.azure.com) 。
+1. 使用组织的全局管理员帐户登录到 Azure 门户 (https://portal.azure.com) 。
 2. 选择“Azure Active Directory”   > “组”   >   “新建组”。
    ![选择命令以启动新组](./media/groups-dynamic-tutorial/new-group.png)
 3. 在“组”  边栏选项卡上执行以下操作：
@@ -80,7 +80,7 @@ ms.locfileid: "74027111"
 
 ## <a name="remove-guests-from-all-users-group"></a>从“所有用户”组中删除来宾
 
-也许你最终的管理计划是将所有来宾用户按公司分配到他们自己的组。 也可现在就更改“所有用户”组，使其成为一个保留组，仅供你租户中的成员用户使用。  然后，可以用它来分配特定于你所在组织的应用和许可证。
+也许你最终的管理计划是将所有来宾用户按公司分配到他们自己的组。 现在，还可以更改“所有用户”  组，仅为组织中的成员用户保留该组。 然后，可以用它来分配特定于你所在组织的应用和许可证。
 
    ![将“所有用户”组更改为仅限成员的组](./media/groups-dynamic-tutorial/all-users-edit.png)
 
@@ -88,7 +88,7 @@ ms.locfileid: "74027111"
 
 **删除来宾用户组**
 
-1. 使用一个其身份为租户全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 使用组织的全局管理员帐户登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择“Azure Active Directory”   >   “组”。 依次选择“来宾用户 Contoso”组、  省略号 (...)、“删除”。  删除组时，会删除任何已分配的许可证。
 
 **还原“所有用户”组**

@@ -10,18 +10,18 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: laobri
 ms.date: 03/11/2020
-ms.openlocfilehash: 1ccd7a7f33c6ee5cab8b7173d8eb93365b6cb587
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 41d68c58c43262b36b93af0008e7d35de13dff4d
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79472214"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562264"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>教程：生成用于批量评分的 Azure 机器学习管道
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-了解如何在 Azure 机器学习中构建管道来运行批量评分作业。 机器学习管道可以优化工作流以提高其速度、可移植性和可重用性，使你能够将工作重心放在机器学习上，而不必关注基础结构和自动化。 生成并发布管道后，你将配置一个 REST 终结点，用于从任何平台上的任何 HTTP 库触发该管道。 
+此高级教程介绍如何在 Azure 机器学习中构建管道来运行批量评分作业。 机器学习管道可以优化工作流以提高其速度、可移植性和可重用性，使你能够将工作重心放在机器学习上，而不必关注基础结构和自动化。 生成并发布管道后，你将配置一个 REST 终结点，用于从任何平台上的任何 HTTP 库触发该管道。 
 
 本示例使用 Tensorflow 中实现的预先训练的 [Inception-V3](https://arxiv.org/abs/1512.00567) 卷积神经网络模型来对不带标签的图像进行分类。 [详细了解机器学习管道](concept-ml-pipelines.md)。
 

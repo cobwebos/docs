@@ -1,20 +1,17 @@
 ---
-title: 如何对 Azure Database for PostgreSQL Single 服务器应用预留折扣
-description: 如何对 Azure Database for PostgreSQL Single 服务器应用预留折扣
+title: 了解预留折扣 - Azure Database for PostgreSQL 单一服务器
+description: 了解如何对 Azure Database for PostgreSQL 单一服务器应用预留折扣。
 author: kummanish
 ms.author: manishku
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/13/2020
-ms.openlocfilehash: e0dc7780ee570ce2d731bedf9ef56be606088a1f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e01b35bc540045bc272484159380f8a11e5a6c48
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199290"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509391"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-postgresql-single-server"></a>如何对 Azure Database for PostgreSQL Single 服务器应用预留折扣
 
@@ -28,7 +25,7 @@ ms.locfileid: "77199290"
 
 ## <a name="discount-applied-to-azure-database-for-postgresql-single-server"></a>向 Azure Database for PostgreSQL Single 服务器应用的折扣
 
-按小时向运行的 PostgreSQL Single 服务器应用 Azure Database for PostgreSQL Single 服务器预留容量折扣。 购买的预留容量则与运行中的 Azure Database for PostgreSQL Single 服务器产生的计算用量进行匹配。 对于非整小时运行的 PostgreSQL Single 服务器，预留自动应用到与预留属性匹配的其他 Azure Database for PostgreSQL Single 服务器。 折扣可以应用于同时运行的 Azure Database for PostgreSQL Single 服务器。 如果与预留属性匹配的 PostgreSQL Single 服务器不是整小时运行，则无法获得该小时的完整预留折扣权益。
+按小时向运行的 PostgreSQL Single 服务器应用 Azure Database for PostgreSQL Single 服务器预留容量折扣。 购买的预留容量则与运行中的 Azure Database for PostgreSQL Single 服务器产生的计算用量进行匹配。 对于非整小时运行的 PostgreSQL Single 服务器，预留自动应用到与预留属性匹配的其他 Azure Database for PostgreSQL Single 服务器。 折扣可以应用于同时运行的 Azure Database for PostgreSQL Single 服务器。 如果没有整小时运行且与预留属性匹配的 PostgreSQL 单一服务器，则无法获得该小时的全部预留折扣权益。
 
 以下示例演示如何根据购买的核心的数目及其运行时间，来应用 Azure Database for PostgreSQL Single 预留容量折扣。
 
@@ -44,5 +41,6 @@ ms.locfileid: "77199290"
 
 若要了解 Azure 预留的应用情况并在计费使用情况报告中查看该信息，请参阅[了解 Azure 预留使用情况](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)。
 
-## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
+## <a name="next-steps"></a>后续步骤
+
 如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

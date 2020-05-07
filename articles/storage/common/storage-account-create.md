@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c2d1e8b4975be0657983192df00cc434da00a6f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ff7db383a74ce01f7f1a7bf49a33e41f91decf8
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255400"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853497"
 ---
 # <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 
@@ -73,7 +73,7 @@ Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 A
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 登录 [Azure 门户](https://portal.azure.com)。
 
@@ -97,7 +97,7 @@ az login
 
 # <a name="template"></a>[模板](#tab/template)
 
-空值
+不适用
 
 ---
 
@@ -152,8 +152,8 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
 |区域冗余存储 (ZRS)     |Standard_ZRS         |
 |异地冗余存储 (GRS)     |Standard_GRS         |
 |读取访问异地冗余存储 (GRS)     |Standard_RAGRS         |
-|区域冗余存储（GZRS）（预览版）    |Standard_GZRS         |
-|读取访问区域冗余存储（GZRS）（预览版）    |Standard_RAGZRS         |
+|异地区域冗余存储 (GZRS)    |Standard_GZRS         |
+|读取访问区域冗余存储（GZRS）    |Standard_RAGZRS         |
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -195,12 +195,12 @@ az storage account create \
 |区域冗余存储 (ZRS)     |Standard_ZRS         |
 |异地冗余存储 (GRS)     |Standard_GRS         |
 |读取访问异地冗余存储 (GRS)     |Standard_RAGRS         |
-|区域冗余存储（GZRS）（预览版）    |Standard_GZRS         |
-|读取访问区域冗余存储（GZRS）（预览版）    |Standard_RAGZRS         |
+|异地区域冗余存储 (GZRS)    |Standard_GZRS         |
+|读取访问区域冗余存储（GZRS）    |Standard_RAGZRS         |
 
 # <a name="template"></a>[模板](#tab/template)
 
-可以使用 Azure Powershell 或 Azure CLI 来部署资源管理器模板以创建存储帐户。 本操作指南文章中使用的模板来自 [Azure 资源管理器快速入门模板](https://azure.microsoft.com/resources/templates/101-storage-account-create/)。 若要运行脚本，请选择“试用”**** 打开 Azure Cloud shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”  。
+你可以使用 Azure PowerShell 或 Azure CLI 来部署资源管理器模板来创建存储帐户。 本操作指南文章中使用的模板来自 [Azure 资源管理器快速入门模板](https://azure.microsoft.com/resources/templates/101-storage-account-create/)。 若要运行脚本，请选择 "**尝试**" 以打开 Azure Cloud Shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”  。
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -236,7 +236,7 @@ az group deployment create --resource-group $resourceGroupName --template-file "
 
 删除存储帐户将删除整个帐户，包括该帐户中的所有数据，并且该操作无法撤销。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 导航到[Azure 门户](https://portal.azure.com)中的存储帐户。
 1. 单击 **“删除”** 。
@@ -288,7 +288,7 @@ az storage account delete --name storageAccountName --resource-group resourceGro
 
 在本操作指南文章中，你已创建一个常规用途 v2 标准存储帐户。 若要了解如何通过存储帐户上传和下载 Blob，请继续阅读 Blob 存储快速入门之一。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 > [!div class="nextstepaction"]
 > [通过 Azure 门户使用 Blob](../blobs/storage-quickstart-blobs-portal.md)
