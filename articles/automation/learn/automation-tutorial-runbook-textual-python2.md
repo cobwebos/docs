@@ -5,12 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: 116f2544b23ed5f9bc0fabbb945cb5cb2b51af96
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.custom: has-adal-ref
+ms.openlocfilehash: 2b20796fdcf71ccfb60c519d081b42fba982f0b6
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81725261"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608688"
 ---
 # <a name="tutorial-create-a-python-runbook"></a>教程：创建 Python Runbook
 
@@ -224,7 +225,7 @@ async_vm_start.wait()
 还可以使用以下约定从 Python Runbook 中检索各种流，包括“警告”、“错误”和“调试”流。
 
 ```python
-print("Hello World output") 
+print("Hello World output")
 print("ERROR: - Hello world error")
 print("WARNING: - Hello world warning")
 print("DEBUG: - Hello world debug")
