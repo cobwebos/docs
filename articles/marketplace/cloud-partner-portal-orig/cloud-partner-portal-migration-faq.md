@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mingshen
 ms.openlocfilehash: 672153eba4aa2b739b67694f939c4796b39ac4c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 05/05/2020
 ms.locfileid: "81274375"
 ---
 # <a name="frequently-asked-questions-for-migrating-from-the-cloud-partner-portal-to-partner-center"></a>从云合作伙伴门户迁移到合作伙伴中心的常见问题
@@ -56,7 +56,7 @@ ms.locfileid: "81274375"
 
 ## <a name="do-i-need-to-create-a-new-account-to-manage-offers-in-partner-center"></a>是否需要创建新帐户来管理合作伙伴中心提供的产品/服务？
 
-不能。 你的基础帐户将会保留，你应该已在合作伙伴中心进行管理。 这意味着，如果你是现有合作伙伴，则可以使用现有的云合作伙伴门户帐户凭据登录到合作伙伴中心后期迁移。 仅提供和关联的管理体验从云合作伙伴门户转移到合作伙伴中心。 我们要求您不要创建任何新帐户，因为您的产品/服务不会与新帐户关联。
+否。 你的基础帐户将会保留，你应该已在合作伙伴中心进行管理。 这意味着，如果你是现有合作伙伴，则可以使用现有的云合作伙伴门户帐户凭据登录到合作伙伴中心后期迁移。 仅提供和关联的管理体验从云合作伙伴门户转移到合作伙伴中心。 我们要求您不要创建任何新帐户，因为您的产品/服务不会与新帐户关联。
 
 ## <a name="i-see-a-message-in-the-cloud-partner-portal-to-activate-my-account-what-does-this-mean"></a>我在云合作伙伴门户中看到一条消息来激活我的帐户，这是什么意思？
 
@@ -137,7 +137,7 @@ ms.locfileid: "81274375"
 
 下表显示了这两个门户之间的相应链接。
 
-| 页 | 云合作伙伴门户链接 | 合作伙伴中心链接 |
+| 页面 | 云合作伙伴门户链接 | 合作伙伴中心链接 |
 |------|---------------------------|---------------------|
 | **全部产品/服务页** | https://cloudpartner.azure.com/#alloffers | https://partner.microsoft.com/dashboard/commercial-marketplace/overview |
 | **所有发布者页面** | https://cloudpartner.azure.com/#publishers | https://partner.microsoft.com/dashboard/account/v3/publishers/list |
@@ -152,7 +152,7 @@ ms.locfileid: "81274375"
 
 云合作伙伴门户 Api 与合作伙伴中心集成，并在将产品/服务迁移到合作伙伴中心后继续工作。 集成引入了少量更改。 查看下表中的更改，确保你的代码在迁移到合作伙伴中心后仍能正常工作。
 
-| **API** | **更改描述** | **影响** |
+| **API** | **更改描述** | **对** |
 | ------- | ---------------------- | ---------- |
 | POST 发布，GoLive，取消 | 对于已迁移的产品/服务，响应标头将具有不同的格式，但会以相同的方式继续工作，这表示检索操作状态的相对路径。 | 发送产品/服务的任何相应 POST 请求时，位置标头将具有两种格式中的一种，具体取决于产品/服务的迁移状态：<ul><li>未迁移的产品<br>`/api/operations/{PublisherId}${offerId}$2$preview?api-version=2017-10-31`</li><li>已迁移产品<br>`/api/publishers/{PublisherId}/offers/{offereId}/operations/408a4835-0000-1000-0000-000000000000?api-version=2017-10-31`</li> |
 | 获取操作 | 对于先前在响应中受支持的 "通知电子邮件" 字段的产品/服务，将不再推荐使用此字段，并且不再为已迁移的产品返回此字段。 | 对于已迁移的产品/服务，我们将不再向请求中指定的电子邮件列表发送通知。 相反，API 服务将与合作伙伴中心发送电子邮件的通知电子邮件进程一致。 具体而言，通知将发送到合作伙伴中心的 "帐户设置" 的 "卖方联系人信息" 部分中的 "电子邮件地址" 设置，通知您操作进度。<br><br>查看合作伙伴中心的[帐户设置](https://partner.microsoft.com/dashboard/account/management)中的 "卖方联系人信息" 部分中的 "电子邮件地址" 设置，以确保为通知提供了正确的电子邮件。  |
