@@ -1,24 +1,24 @@
 ---
-title: 配置 Microsoft 商用 marketplace 产品/服务的潜在客户
-description: 配置 Microsoft 商业应用商店中的客户领导。
+title: Microsoft 商业应用商店中的潜在客户管理
+description: 了解如何通过 Microsoft AppSource 和 Azure Marketplace 产品/服务生成和接收客户主管
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 54c67656d7847b44c8fc83b33a4e03be3838cf76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d1bf859968c7b7a889abe635c917d0da11bf6e1
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131091"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837322"
 ---
-# <a name="customer-leads-from-your-marketplace-offer"></a>来自市场产品/服务的客户线索
+# <a name="customer-leads-from-your-commercial-marketplace-offer"></a>客户从你的商业应用商店产品/服务
 
-潜在顾客是对 Microsoft [AppSource](https://appsource.microsoft.com)和[Azure Marketplace](https://azuremarketplace.microsoft.com)中的产品/服务感兴趣的客户。 在产品/服务发布到 marketplace 后，你将收到客户潜在顾客。 本文介绍：
+潜在顾客是对[Microsoft AppSource](https://appsource.microsoft.com)和[Azure Marketplace](https://azuremarketplace.microsoft.com)中的产品/服务感兴趣的客户。 你可以在产品/服务发布到商业市场后接收客户领导。 本文介绍了以下潜在的管理概念：
 
-* 你的 marketplace 产品/服务如何产生客户主管，确保你不会错过商机。 
+* 你的商业应用商店产品/服务如何产生客户主管，确保你不会错过商机。 
 * 如何将您的客户关系管理（CRM）系统连接到您的产品/服务，以便您可以在一个中心位置管理潜在顾客。
 * 发送给你的潜在客户数据可以跟进你的客户。
 
@@ -56,7 +56,7 @@ ms.locfileid: "82131091"
 
 可能的值为：
 
-- **"INS"**：代表*安装*。 当客户购买你的产品时，此操作位于 Azure Marketplace 或 AppSource 中。
+- **"INS"**：代表*安装*。 当客户获取你的产品时，此操作位于 Azure Marketplace 或 AppSource 中。
 - **"PLT"**：代表*合作伙伴 led 的试用版*。 当客户选择 "**与我联系**" 选项时，此操作在 AppSource 中。
 - **"DNC"**：代表 "不*联系*"。 当请求联系在应用页面上交叉列出的合作伙伴时，此操作位于 AppSource 中。 我们共享了此客户在你的应用上交叉列出的通知，但不需要联系这些通知。
 - **"创建"**：此操作仅在 Azure 门户中，当客户将你的产品/服务购买到帐户时，将生成此操作。
@@ -92,7 +92,7 @@ ms.locfileid: "82131091"
 - **跟进**：不要忘记跟进。 预计典型事务需要5到12次调用。
 - **维护**：维护你的潜在客户，让你了解更高利润的方式。
 
-## <a name="leads-frequently-asked-questions"></a>带领常见问题
+## <a name="common-questions-about-lead-management"></a>有关潜在客户管理的常见问题
 
 ### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>在何处可获得设置潜在顾客目标的帮助？
 
@@ -133,7 +133,7 @@ Azure Blob 存储不再作为潜在客户目标提供支持，因此你不会遇
 
 ### <a name="i-received-an-email-from-the-commercial-marketplace-but-why-cant-i-find-the-lead-in-my-crm"></a>我收到了来自商业应用商店的一封电子邮件，但为何我在 CRM 中找不到潜在客户？
 
-最终用户的电子邮件域可能来自 .edu。 出于隐私原因，我们不会将 edu 域中的个人身份信息传递给你。 通过[合作伙伴中心帮助和支持](https://partner.microsoft.com/support/v2/?stage=1)提交支持票证。
+最终用户的电子邮件域可能来自 .edu。 出于隐私原因，我们不会将 edu 域中的个人信息传递给你。 通过[合作伙伴中心帮助和支持](https://partner.microsoft.com/support/v2/?stage=1)提交支持票证。
 
 ### <a name="i-configured-an-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>我将 Azure 表配置为 "我的潜在客户"。 如何查看潜在客户？
 
@@ -141,7 +141,7 @@ Azure Blob 存储不再作为潜在客户目标提供支持，因此你不会遇
 
 ### <a name="i-configured-an-azure-table-as-my-lead-destination-can-i-get-notified-whenever-a-new-commercial-marketplace-lead-is-sent"></a>我将 Azure 表配置为 "我的潜在客户"。 当发送新的商业市场主管时，是否可以收到通知？
 
-是的。 按照[使用 azure 表配置潜在客户管理](./commercial-marketplace-lead-management-instructions-azure-table.md)中的说明进行操作，以设置 Microsoft flow，以便在将潜在客户添加到 Azure 表时发送电子邮件。
+可以。 按照[使用 azure 表配置潜在客户管理](./commercial-marketplace-lead-management-instructions-azure-table.md)中的说明进行操作，以设置 Microsoft flow，以便在将潜在客户添加到 Azure 表时发送电子邮件。
 
 ### <a name="i-configured-salesforce-as-my-lead-destination-but-why-cant-i-find-the-leads"></a>我将 Salesforce 配置为我的潜在客户，但为什么找不到潜在客户？
 
@@ -149,7 +149,7 @@ Azure Blob 存储不再作为潜在客户目标提供支持，因此你不会遇
 
 ### <a name="there-was-an-issue-with-my-lead-destination-and-i-missed-some-leads-can-i-have-them-sent-to-me-in-an-email"></a>潜在顾客目标存在问题，我丢失了一些潜在顾客。 可通过电子邮件将他们发送给我吗？
 
-由于个人身份信息策略，我们无法通过不安全的电子邮件共享潜在客户信息。
+由于个人信息策略，我们无法通过不安全的电子邮件共享潜在客户信息。
 
 ### <a name="i-configured-an-azure-table-as-my-lead-destination-how-much-will-it-cost"></a>我将 Azure 表配置为 "我的潜在客户"。 它的费用是多少？
 

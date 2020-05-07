@@ -6,12 +6,12 @@ ms.date: 04/15/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 6b9732aab9e3fe0d26b4c572efe87c3a9d3e29f6
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 3b68531319e83eece11833dba475020060e280b6
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535343"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583319"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>将 Hyper-V VM 迁移到 Azure 
 
@@ -40,7 +40,7 @@ ms.locfileid: "81535343"
 1. [查看](hyper-v-migration-architecture.md) Hyper-V 迁移体系结构。
 2. [查看](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts) Hyper-V 主机要求以及 Hyper-V 主机需要访问的 Azure URL。
 3. [查看](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms)要迁移的 Hyper-V VM 的要求。 Hyper-V VM 必须符合 [Azure VM 要求](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements)。
-2. 我们建议你完成本系列中前面的教程。 [第一篇教程](tutorial-prepare-hyper-v.md)演示了如何针对迁移设置 Azure 和 Hyper-V。 第二篇教程演示了如何在迁移之前使用 Azure Migrate:服务器评估 [评估 Hyper-V VMs](tutorial-assess-hyper-v.md。 
+2. 我们建议你完成本系列中前面的教程。 [第一篇教程](tutorial-prepare-hyper-v.md)演示了如何针对迁移设置 Azure 和 Hyper-V。 第二篇教程演示了如何在迁移之前使用 Azure Migrate:服务器评估来[评估 Hyper-V VM](tutorial-assess-hyper-v.md)。 
     > [!NOTE]
     > 尽管我们建议你尝试运行评估，但在迁移 VM 之前不一定非要这样做。
     > 对于迁移 Hyper-V VM，Azure Migrate:服务器迁移在 Hyper-V 主机或群集节点上运行软件代理（Microsoft Azure Site Recovery 提供程序和 Microsoft Azure 恢复服务代理），以便进行协调并将数据复制到 Azure Migrate。 [Azure Migrate 设备](migrate-appliance.md)不用于 Hyper-V 迁移。

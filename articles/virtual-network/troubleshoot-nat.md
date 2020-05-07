@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/30/2020
+ms.date: 04/28/2020
 ms.author: allensu
-ms.openlocfilehash: c012a8d83761b88cc59b62d11fd3d5542ca7f7a1
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: c9b5aaefeb8ab21eed850f5bf291d38981239aab
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396091"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508422"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>排查 Azure 虚拟网络 NAT 连接问题
 
@@ -101,6 +101,7 @@ _**解决方法：**_ 请改用 TCP 连接测试（例如“TCP ping”）和 UD
 
 [虚拟网络 NAT](nat-overview.md) 的连接问题可能是由多个不同的因素造成的：
 
+* 由于配置错误而导致的永久性故障。
 * NAT 网关出现暂时性或持续性的 [SNAT 耗尽](#snat-exhaustion)；
 * Azure 基础结构出现暂时性故障； 
 * Azure 与公共 Internet 目标之间的路径出现暂时性故障； 
@@ -112,6 +113,13 @@ _**解决方法：**_ 请改用 TCP 连接测试（例如“TCP ping”）和 UD
 |---|---|---|---|
 | Linux | nc（常规连接测试） | curl（TCP 应用层测试） | 特定于应用程序 |
 | Windows | [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) | PowerShell [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | 特定于应用程序 |
+
+#### <a name="configuration"></a>配置
+
+检查以下各项：
+1. NAT 网关资源是至少具有一个公共 IP 资源还是一个公共 IP 前缀资源？ 它必须至少具有一个与 NAT 网关关联的 IP 地址，才能提供出站连接。
+2. 虚拟网络的子网是否配置为使用 NAT 网关？
+3. 是否正在使用 UDR（用户定义的路由）？是否要替代目标？  NAT 网关资源将在配置的子网上成为默认路由 (0/0)。
 
 #### <a name="snat-exhaustion"></a>SNAT 耗尽
 

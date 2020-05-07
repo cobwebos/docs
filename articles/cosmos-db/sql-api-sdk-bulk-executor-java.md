@@ -1,19 +1,19 @@
 ---
-title: Azure Cosmos DB：批量执行程序 Java API、SDK 和资源
+title: Azure Cosmos DB：批量执行器 Java API、SDK & 资源
 description: 了解有关批量执行程序 Java API 和 SDK 的所有信息，包括发布日期、停用日期和 Azure Cosmos DB 批量执行程序 Java SDK 各版本之间所做的更改。
-author: tknandu
+author: milismsft
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
 ms.date: 11/21/2018
-ms.author: ramkris
-ms.openlocfilehash: 1a5de2647df5b8092fdcf8e6233f1fddc1690b03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: adrianmi
+ms.openlocfilehash: 0030f974a36dc80dc8c4112000aa5934126a2482
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80981318"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82836438"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java 批量执行程序库：下载信息
 
@@ -39,4 +39,27 @@ ms.locfileid: "80981318"
 | **API 文档**| [Java API 参考文档](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)|
 |**入门**|[批量执行程序库 Java SDK 入门](bulk-executor-java.md)|
 |受支持的最小运行时 |[Java 开发工具包 (JDK) 7+](/java/azure/jdk/?view=azure-java-stable)|
+
+## <a name="release-notes"></a>发行说明
+
+### <a name="2100"></a><a name="2.10.0"/>2.10.0
+
+* 修复 DocumentAnalyzer 以从 json 正确提取嵌套分区键值。
+
+### <a name="294"></a><a name="2.9.4"/>2.9.4
+
+* 在 BulkDelete 操作中添加功能，以便在特定故障后重试，还会向用户返回可重试的失败列表。
+
+### <a name="293"></a><a name="2.9.3"/>2.9.3
+
+* Cosmos SDK 版本2.4.7 的更新。
+
+### <a name="292"></a><a name="2.9.2"/>2.9.2
+
+* 修复了 "mergeAll" 以继续执行 "id" 和分区键值，以便将 "id" 和 "分区键值" 下放置的所有已修补的文档属性添加到更新的项列表。
+
+### <a name="291"></a><a name="2.9.1"/>2.9.1
+
+* 将并发启动度更新为1并添加 minibatch 的调试日志。
+
 

@@ -3,12 +3,12 @@ title: Azure 文件共享备份的支持矩阵
 description: 汇总了备份 Azure 文件共享时的支持设置和限制。
 ms.topic: conceptual
 ms.date: 1/26/2020
-ms.openlocfilehash: 3f154f92d8d094654301bc319003adc22299017b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: HT
+ms.openlocfilehash: b5bfae9454464bc8d11cef3bd346861e13822046
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207983"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838563"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Azure 文件共享备份的支持矩阵
 
@@ -18,9 +18,9 @@ ms.locfileid: "82207983"
 
 Azure 文件共享的备份在以下地域中提供：
 
-| GA 区域 | 支持的区域，但不是 GA                                                      |
+| GA 区域 | 支持的区域（作为预览的一部分），但尚未 GA                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 澳大利亚东南部（ASE）、加拿大中部（CNC）、美国中部（WCUS）、美国西部2（WUS 2）、印度南部（INS）、美国中北部（NCUS）、日本东部（JPE）、巴西南部（BRS）、南东亚（海平面）、瑞士西部（SZW）、阿拉伯联合酋长国中部（UAC）、挪威东部                                                  |澳大利亚东部（AE）、加拿大东部（CE）、东亚（EA）、美国东部（EUS）、美国东部2（EUS2）、日本西部（JPW）、印度 Central （INC.）、韩国中南部（KRC）、韩国南部（KRS）、北欧（NE）、美国中南部（SCUS）、英国南部（UKS）、英国西部（UKW）、西欧（我们）、美国西部（WUS）、US Gov 亚利桑那州（UGA）、UGT、阿拉伯联合酋长国北部（UAN）、法国中部（FRC）、德国北部（GN）、德国中西部（GWC）、南非西部（见）、挪威西部（NWW）、瑞士北部（SZN）、美国中部（CU）           |
+| 澳大利亚东南部（ASE）、加拿大中部（CNC）、美国中部（WCUS）、美国西部2（WUS 2）、印度南部（INS）、美国中北部（NCUS）、日本东部（JPE）、巴西南部（BRS）、南东亚（海平面）、瑞士西部（SZW）、阿拉伯联合酋长国中部（UAC）、挪威东部（NWE）、印度西部（INW）、澳大利亚中部（ACL）、韩国中部（KRC）、日本西部（JPW）、南非北部（SAN）、英国西部（UKW），韩国南部（KRS），德国北部（GN）、挪威西部（NWW）、南非西部（锯）、瑞士北部（SZN）、德国中西部（GWC）、阿拉伯联合酋长国北部（UAN）、法国中部（FRC）、印度中部（INC.）、加拿大东部（CNE）、东亚（EA）、澳大利亚东部（AE）、美国中部                                                  |  美国东部（EUS）、美国东部2（EUS2）、北欧（NE）、美国中南部（SCUS）、英国南部（UKS）、西欧（我们）、US Gov 亚利桑那州（UGA）、US Gov 德克萨斯州（UGT）、US Gov 弗吉尼亚州（UGV）           |
 
 ## <a name="supported-storage-accounts"></a>支持的存储帐户
 
@@ -34,7 +34,7 @@ Azure 文件共享的备份在以下地域中提供：
 
 | 文件共享类型                                   | 支持   |
 | -------------------------------------------------- | --------- |
-| 标准                                           | 支持 |
+| Standard                                           | 支持 |
 | 大型                                              | 支持 |
 | Premium                                            | 支持 |
 | 与 Azure 文件同步服务连接的文件共享 | 支持 |

@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 04/14/2020
-ms.openlocfilehash: 317d12f6d5dee92d998266d4e9b6d52e6ef9c7a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/29/2020
+ms.openlocfilehash: 48602cb65430bcf6720b4d6f4ba05c771a7bd55b
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81381384"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559956"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>使用 Apache Ambari REST API 管理 HDInsight 群集
 
@@ -23,7 +23,7 @@ ms.locfileid: "81381384"
 
 ## <a name="what-is-apache-ambari"></a>什么是 Apache Ambari
 
-[Apache Ambari](https://ambari.apache.org) 提供基于 [REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md) 的简单易用型 Web UI 来简化 Hadoop 群集的管理和监视。  基于 Linux 的 HDInsight 群集已按默认提供 Ambari。
+Apache Ambari 提供基于 [REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md) 的简单易用型 Web UI 来简化 Hadoop 群集的管理和监视。  基于 Linux 的 HDInsight 群集已按默认提供 Ambari。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,7 +33,7 @@ ms.locfileid: "81381384"
 
 * jq，一个命令行 JSON 处理程序。  请参阅 [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)。
 
-* Windows PowerShell。  或者，可以使用[Bash](https://www.gnu.org/software/bash/)。
+* Windows PowerShell。  或者，可以使用 Bash。
 
 ## <a name="base-uniform-resource-identifier-for-ambari-rest-api"></a>Ambari Rest API 的基本统一资源标识符
 

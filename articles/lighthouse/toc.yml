@@ -10,6 +10,9 @@
     - name: 索引
       displayName: 'template, sample'
       href: ./samples/index.md
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./samples/policy-samples.md
 - name: 概念
   items:
     - name: Azure 委派资源管理
@@ -33,6 +36,9 @@
     - name: 企业应用场景中的 Azure Lighthouse
       displayName: 'corporation, IT, consolidate'
       href: ./concepts/enterprise.md
+    - name: Azure Lighthouse 和 Azure 托管应用程序
+      displayName: 'managed apps, ama'
+      href: ./concepts/managed-applications.md
 - name: 操作指南
   items:
     - name: 将客户载入到 Azure 委派资源管理
