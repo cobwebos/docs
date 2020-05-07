@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: cc487e8def180735606aa010651dde40ef93908e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8ee9ddbd8a2d0ecbe8e2f13e6421cec177c7ce69
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80069560"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594196"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>配置 Azure 文件存储网络终结点
 Azure 文件存储提供两种主要类型的终结点用于访问 Azure 文件共享： 
@@ -218,7 +218,7 @@ New-AzPrivateDnsRecordSet `
 如果你在虚拟网络中有一个虚拟机，或者已按[此文](storage-files-networking-dns.md)所述配置了 DNS 转发，则可以使用以下命令测试是否已正确设置专用终结点：
 
 ```PowerShell
-$storageAccountHostName = [System.Uri]::new($storageAccount.PrimaryEndpoints.File) | `
+$storageAccountHostName = [System.Uri]::new($storageAccount.PrimaryEndpoints.file) | `
     Select-Object -ExpandProperty Host
 
 Resolve-DnsName -Name $storageAccountHostName
@@ -393,7 +393,7 @@ az network private-dns record-set a add-record \
 httpEndpoint=$(az storage account show \
         --resource-group $storageAccountResourceGroupName \
         --name $storageAccountName \
-        --query "primaryEndpoints.File" | \
+        --query "primaryEndpoints.file" | \
     tr -d '"')
 
 hostName=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint) | tr -d "/")
