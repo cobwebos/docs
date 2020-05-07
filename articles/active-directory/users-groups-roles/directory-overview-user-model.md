@@ -14,12 +14,12 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3cc2de5a2f297e8133011905ff2961b44476d6b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8052bb44df6d29e17304763051fa2099009b9701
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77046329"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583021"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>大型组织的用户、组、许可和角色
 
@@ -60,7 +60,7 @@ ms.locfileid: "77046329"
 
 ## <a name="assign-app-access"></a>分配应用访问权限
 
-可以使用 Azure AD 为组分配对 [Azure AD 租户中部署的企业应用](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups?context=azure/active-directory/users-groups-roles/context/ugr-context)的访问权限。 如果在应用中结合使用动态组和组分配，则可以在组织不断发展的过程中，来自动分配用户对应用的访问权限。 需要一个 Azure Active Directory Premium P1 或 Premium P2 许可证才能分配对企业应用的访问权限。
+可以使用 Azure AD 为组分配对 [Azure AD 组织中部署的企业应用](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups?context=azure/active-directory/users-groups-roles/context/ugr-context)的访问权限。 如果在应用中结合使用动态组和组分配，则可以在组织不断发展的过程中，来自动分配用户对应用的访问权限。 需要一个 Azure Active Directory Premium P1 或 Premium P2 许可证才能分配对企业应用的访问权限。
 
 在 Azure AD 中，还可以精细控制你有权访问的应用和组之间流动的数据。 在[企业应用程序](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)中打开一个应用，并选择“预配”以执行以下操作： 
 

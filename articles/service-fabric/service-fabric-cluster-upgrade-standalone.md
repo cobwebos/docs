@@ -3,12 +3,12 @@ title: 升级 Azure Service Fabric 独立群集
 description: 了解有关升级 Azure Service Fabric 独立群集的版本或配置的信息。  T
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.openlocfilehash: 6da9b4c6890895141ecc419382f05f667614fb31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac3e80aae440c6709057e4211f7a4f6a1beea058
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75451825"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790637"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>升级和更新 Service Fabric 独立群集
 
@@ -38,7 +38,7 @@ ms.locfileid: "75451825"
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何自定义 [Service Fabric 群集结构设置](service-fabric-cluster-fabric-settings.md)的部分内容
-* 了解如何[扩展和缩减群集](service-fabric-cluster-scale-up-down.md)
+* 了解如何[扩展和缩减群集](service-fabric-cluster-scale-in-out.md)
 * 了解[应用程序升级](service-fabric-application-upgrade.md)
 
 <!--Image references-->

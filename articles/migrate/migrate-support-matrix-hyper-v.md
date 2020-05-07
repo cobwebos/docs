@@ -3,12 +3,12 @@ title: Azure Migrate 中的 Hyper-v 评估支持
 description: 了解 Azure Migrate Server 评估的 Hyper-v 评估支持
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 990d5026d9621c144c31635fabac4416eb9d20e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67fabebf805e38a6bca5dda6e691c263ee235219
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538165"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744601"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Hyper-v 评估的支持矩阵
 
@@ -54,7 +54,7 @@ Azure Migrate 使用[Azure Migrate 设备](migrate-appliance.md)进行发现和�
 
 - 了解 Hyper-v 的[设备要求](migrate-appliance.md#appliance---hyper-v)。
 - 了解设备需要在[公共](migrate-appliance.md#public-cloud-urls)和[政府](migrate-appliance.md#government-cloud-urls)云中访问的 url。
-- 在 Azure 政府版中，必须使用脚本部署该设备。
+- 在 Azure 政府版中，必须[使用脚本](deploy-appliance-script-government.md)部署该设备。
 
 ## <a name="port-access"></a>端口访问
 

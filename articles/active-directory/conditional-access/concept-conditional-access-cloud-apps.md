@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b15b022726c09ccbaf9674775d114c8dd1916e1d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 022c6360b97c7c27887ff5d2f6460f69cb8126c6
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457291"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778458"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>条件访问：云应用或操作
 
@@ -71,7 +71,7 @@ ms.locfileid: "81457291"
 
 Office 365 提供基于云的高效生产和协作服务，如 Exchange、SharePoint 和 Microsoft Teams。 Office 365 云服务已深度集成，以确保用户拥有顺畅的协作体验。 在创建策略时，此集成可能会导致混淆，因为某些应用（例如 Microsoft Teams）依赖于其他应用，例如 SharePoint 或 Exchange。
 
-使用 Office 365（预览版）应用可以一次同时将这些服务作为目标。 建议使用新的 Office 365（预览版）应用，而不是以个别云应用作为目标。 以此组应用程序作为目标有助于避免因策略和依赖关系不一致而导致的问题。
+使用 Office 365（预览版）应用可以一次同时将这些服务作为目标。 建议使用新的 Office 365 （预览版）应用程序，而不是面向单个云应用程序，以免出现[服务依赖关系](service-dependencies.md)问题。 以此组应用程序作为目标有助于避免因策略和依赖关系不一致而导致的问题。
 
 如果需要，管理员可以选择从策略中排除特定应用，方法是在策略中包括 Office 365（预览版）应用并排除他们选择的特定应用。
 
@@ -120,11 +120,11 @@ Microsoft Azure 管理应用程序包括多个基础服务。
 
 ## <a name="user-actions"></a>用户操作
 
-用户操作是可由用户执行的任务。 当前支持的唯一操作是**注册安全信息**，这样当启用了组合注册的用户注册其安全信息时，就可以强制实施条件性访问策略。 有关详细信息，请参阅[合并安全信息注册](../authentication/concept-registration-mfa-sspr-combined.md)一文。
+用户操作是可由用户执行的任务。 目前唯一支持的操作是“注册安全信息”  。当启用了组合注册功能的用户尝试注册其安全信息时，此操作允许条件访问策略来强制实施。 有关详细信息，请参阅[合并安全信息注册](../authentication/concept-registration-mfa-sspr-combined.md)一文。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [条件性访问：条件](concept-conditional-access-conditions.md)
+- [条件访问：条件](concept-conditional-access-conditions.md)
 
 - [条件访问常见策略](concept-conditional-access-policy-common.md)
 - [客户端应用程序依赖项](service-dependencies.md)

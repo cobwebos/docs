@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.openlocfilehash: 9c2e00ed14a45c6df7cf72845db2ecd069381ca5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f0eb6aa92dd8999baed6868a159c86d5e7bd0c8
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257197"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594606"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>对机器学习管道进行调试和故障排除
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -128,28 +128,32 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
 ## <a name="debug-and-troubleshoot-in-azure-machine-learning-designer-preview"></a>在 Azure 机器学习设计器中进行调试和故障排除（预览）
 
-本部分概述了如何在设计器中对管道进行故障排除。
-对于在设计器中创建的管道，可以在 "创作" 页或 "管道运行详细信息" 页中找到**日志文件**。
+本部分概述了如何在设计器中对管道进行故障排除。 对于在设计器中创建的管道，可以在 "创作" 页或 "管道运行详细信息" 页中找到**70_driver_log**文件。
 
-### <a name="access-logs-from-the-authoring-page"></a>从创作页访问日志
+### <a name="get-logs-from-the-authoring-page"></a>从创作页获取日志
 
-提交管道运行并停留在创作页面时，可以找到为每个模块生成的日志文件。
+提交管道运行并保留在创作页中时，可以查找每个模块完成运行时为每个模块生成的日志文件。
 
-1. 在创作画布中选择任何模块。
+1. 在创作画布中选择已完成运行的模块。
 1. 在模块的右窗格中，请参阅**输出 + 日志**选项卡。
-1. 选择日志文件`70_driver_log.txt`。
+1. 展开右窗格，然后选择 " **70_driver_log** "，以在浏览器中查看文件。 你还可以在本地下载日志。
 
-    ![创作页模块日志](./media/how-to-debug-pipelines/pipelinerun-05.png)
+    ![设计器中的展开输出窗格](./media/how-to-debug-pipelines/designer-logs.png)
 
-### <a name="access-logs-from-pipeline-runs"></a>从管道运行访问日志
+### <a name="get-logs-from-pipeline-runs"></a>从管道运行获取日志
 
-您还可以在 "管道 **" 或 "** **试验**" 部分的 "管道运行详细信息" 页中找到特定运行的日志文件。
+您还可以在 "管道运行详细信息" 页中找到特定运行的日志文件，该文件可在工作室的 "**管道**" 或 "**试验**" 一节中找到。
 
 1. 选择在设计器中创建的管道运行。
-    !["管道运行" 页](./media/how-to-debug-pipelines/pipelinerun-04.png)
-1. 选择预览窗格中的任何模块。
+
+    !["管道运行" 页](./media/how-to-debug-pipelines/designer-pipelines.png)
+
+1. 在预览窗格中选择模块。
 1. 在模块的右窗格中，请参阅**输出 + 日志**选项卡。
-1. 选择日志文件`70_driver_log.txt`。
+1. 展开右窗格以便在浏览器中查看**70_driver_log**的文件，或选择文件以本地下载日志。
+
+> [!IMPORTANT]
+> 若要从管道运行详细信息页更新管道，必须将管道运行**克隆**到新管道草案。 管道运行是管道的快照。 它类似于日志文件，并且无法更改。 
 
 ## <a name="debug-and-troubleshoot-in-application-insights"></a>Application Insights 中的调试和故障排除
 有关以这种方式使用 OpenCensus Python 库的详细信息，请参阅本指南：[在 Application Insights 中调试和解决机器学习管道问题](how-to-debug-pipelines-application-insights.md)
@@ -158,7 +162,7 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
 在某些情况下，可能需要以交互方式调试 ML 管道中使用的 Python 代码。 通过使用 Visual Studio Code （VS Code）和针对 Visual Studio 的 Python 工具（PTVSD），可以在代码在定型环境中运行时附加到代码。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 * 配置为使用__Azure 虚拟网络__的__Azure 机器学习工作区__。
 * 一个__Azure 机器学习管道__，它使用 Python 脚本作为管道步骤的一部分。 例如，PythonScriptStep。

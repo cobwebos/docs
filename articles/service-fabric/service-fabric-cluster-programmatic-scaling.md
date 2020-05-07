@@ -5,16 +5,16 @@ author: mjrousos
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: ffe07960c6d32bea8ec31b1fe8248b6abc2b63af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd7c57f3089115e4da861fc8fd20331ab92bc33e
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75458288"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787101"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>以编程方式缩放 Service Fabric 群集 
 
-在 Azure 中运行的 Service Fabric 群集在虚拟机规模集的基础上构建。  [群集缩放](./service-fabric-cluster-scale-up-down.md)介绍如何手动缩放或使用自动缩放规则缩放 Service Fabric 群集。 本文介绍如何使用 fluent Azure 计算 SDK（更高级的方案）管理凭据和缩小或扩大群集。 有关概述，请阅读[以编程方式协调 Azure 缩放操作](service-fabric-cluster-scaling.md#programmatic-scaling)。 
+在 Azure 中运行的 Service Fabric 群集在虚拟机规模集的基础上构建。  [群集缩放](./service-fabric-cluster-scale-in-out.md)介绍如何手动缩放或使用自动缩放规则缩放 Service Fabric 群集。 本文介绍如何使用 fluent Azure 计算 SDK（更高级的方案）管理凭据和缩小或扩大群集。 有关概述，请阅读[以编程方式协调 Azure 缩放操作](service-fabric-cluster-scaling.md#programmatic-scaling)。 
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -119,6 +119,6 @@ await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 
 要开始实现自己的自动缩放逻辑，请先熟悉以下概念和有用的 API：
 
-- [手动或使用自动缩放规则缩放](./service-fabric-cluster-scale-up-down.md)
+- [手动或使用自动缩放规则缩放](./service-fabric-cluster-scale-in-out.md)
 - [用于 .NET 的 Fluent Azure 管理库](https://github.com/Azure/azure-sdk-for-net/tree/Fluent)（与 Service Fabric 群集的底层虚拟机规模集交互时非常有用）
 - [System.Fabric.FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient)（与 Service Fabric 群集及其节点交互时非常有用）

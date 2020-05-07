@@ -8,17 +8,17 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 32466cc0a1ab9b86fc2fb8eb791c232ae13f1c01
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4817db0ce9723f46ceac4f4720915a9bfddcf915
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79213563"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561710"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>教程：使用 Azure Data Box Gateway 传输数据
 
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 本文介绍如何在 Data Box Gateway 上添加共享并与其连接。 添加共享后，Data Box Gateway 设备可将数据传输到 Azure。
 
@@ -115,7 +115,7 @@ ms.locfileid: "79213563"
 
 ### <a name="connect-to-an-nfs-share"></a>连接到 NFS 共享
 
-在连接到 Data Box Edge 设备的 Linux 客户端上，执行以下过程：
+在连接到 Azure Stack Edge 设备的 Linux 客户端上，执行以下过程：
 
 1. 确保此客户端已安装 NFSv4 客户端。 若要安装 NFS 客户端，请使用以下命令：
 

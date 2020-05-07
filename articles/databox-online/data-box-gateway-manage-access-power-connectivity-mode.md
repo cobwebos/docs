@@ -8,16 +8,16 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: e4d85bd460c39964c9f42ac946e3522f5f129c1c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4043702bd27bb9a37fca70475ef254bbd1f7372
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79474435"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561340"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>管理 Azure Data Box Gateway 的访问、电源和连接模式
 
-本文介绍如何管理 Azure Data Box Gateway 的访问、电源和连接模式。 这些操作是通过本地 Web UI 或 Azure 门户执行的。
+本文介绍如何管理 Azure Data Box Gateway 的访问、电源和连接模式。 这些操作是通过本地 Web UI 或 Azure 门户执行的。 
 
 在本文中，学习如何：
 
@@ -56,16 +56,16 @@ ms.locfileid: "79474435"
 
 ## <a name="manage-resource-access"></a>管理资源访问
 
-若要创建 Data Box Edge/Data Box Gateway、IoT 中心和 Azure 存储资源，需要具有资源组级别的参与者或更高级别的权限。 还需要注册相应的资源提供程序。 对于涉及激活密钥和凭据的任何操作，还需要 Azure Active Directory 图形 API 的权限。 以下部分介绍了这些内容。
+若要创建 Azure Stack Edge/Data Box Gateway、IoT 中心和 Azure 存储资源，需要具有资源组级别的参与者或更高权限。 还需要注册相应的资源提供程序。 对于涉及激活密钥和凭据的任何操作，还需要 Azure Active Directory 图形 API 的权限。 以下部分介绍了这些内容。
 
 ### <a name="manage-microsoft-graph-api-permissions"></a>管理 Microsoft Graph API 权限
 
-为 Data Box Edge 设备生成激活密钥，或执行需要凭据的任何操作时，需要具有 Microsoft Graph API 的权限。 需要凭据的操作可以是：
+为 Azure Stack Edge 设备生成激活密钥，或执行需要凭据的任何操作时，需要具有 Microsoft Graph API 的权限。 需要凭据的操作可以是：
 
 -  使用关联的存储帐户创建共享。
 -  创建可访问设备上的共享的用户。
 
-你应该可以`User`访问 Active Directory 租户，因为你需要能够访问它`Read all directory objects`。 你不能是来宾用户，因为他们没有权限`Read all directory objects`。 如果你是来宾，则生成激活密钥、在 Data Box Edge 设备上创建共享以及创建用户等操作都将失败。
+你应该可以`User`访问 Active Directory 租户，因为你需要能够访问它`Read all directory objects`。 你不能是来宾用户，因为他们没有权限`Read all directory objects`。 如果你是来宾，则生成激活密钥、在 Azure Stack Edge 设备上创建共享的操作都将失败，从而导致用户创建失败。
 
 有关如何向用户提供 Microsoft Graph API 访问权限的详细信息，请参阅[Microsoft Graph 权限参考](https://docs.microsoft.com/graph/permissions-reference)。
 
@@ -88,7 +88,7 @@ ms.locfileid: "79474435"
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-对于 Data Box Edge 设备， `Microsoft.DataBoxEdge`应当注册。 若要`Microsoft.DataBoxEdge`注册，订阅管理员应运行以下命令：
+对于 Azure Stack Edge 设备， `Microsoft.DataBoxEdge`应注册。 若要`Microsoft.DataBoxEdge`注册，订阅管理员应运行以下命令：
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge

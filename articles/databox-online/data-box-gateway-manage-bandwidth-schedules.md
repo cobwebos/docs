@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 63f3572dcb5affb9fcf89d86a665bef9414cb011
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: feae75b1fbb832f833a01fa20ce07962ab5c484f
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60755279"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561414"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-gateway"></a>使用 Azure 门户管理 Azure Data Box Gateway 上的带宽计划  
 
@@ -44,7 +44,7 @@ ms.locfileid: "60755279"
    2. 如果此计划全天运行，可以选中“全天”选项。**** 
    3. “带宽速率”是指设备在执行涉及到云的操作时使用的带宽，以每秒兆位数 (Mbps) 表示。**** 为此字段提供介于 1 和 1,000 之间的数字。 
    4. 如果不希望限制数据上传和下载带宽，请选中“无限制”。**** 
-   5. 单击 **“添加”** 。
+   5. 单击“添加”  。
 
       ![单击“添加用户”](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
 
@@ -84,4 +84,4 @@ ms.locfileid: "60755279"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[管理带宽](data-box-gateway-manage-bandwidth-schedules.md)。
+- 了解如何[管理带宽](data-box-gateway-manage-bandwidth-schedules.md)。 

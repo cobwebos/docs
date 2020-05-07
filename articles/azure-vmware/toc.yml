@@ -1,0 +1,42 @@
+- name: Azure VMware 解决方案 (AVS)
+  href: index.yml
+- name: 概述
+  items:
+    - name: 关于 Azure VMware 解决方案 (AVS)
+      href: introduction.md
+- name: 教程
+  items:
+    - name: 1 - 网络规划
+      href: tutorial-network-checklist.md
+    - name: 2 - 创建 AVS 私有云
+      href: tutorial-create-private-cloud.md
+    - name: 3 - 配置网络
+      href: tutorial-configure-networking.md
+    - name: 4 - 访问私有云
+      href: tutorial-access-private-cloud.md
+    - name: 5 - 缩放私有云
+      href: tutorial-scale-private-cloud.md
+- name: 概念
+  items:
+    - name: 私有云和群集
+      href: concepts-private-clouds-clusters.md
+    - name: 私有云网络和网络间连接
+      href: concepts-networking.md
+    - name: 私有云中的存储
+      href: concepts-storage.md
+    - name: 私有云的访问权限和标识
+      href: concepts-identity.md
+    - name: 私有云升级
+      href: concepts-upgrades.md
+- name: 操作指南
+  items:
+    - name: 管理 DHCP
+      href: manage-dhcp.md
+    - name: 灾难恢复
+      href: disaster-recovery.md
+- name: 参考
+  items: null
+- name: 资源
+  items:
+    - name: 常见问题解答
+      href: faq.md

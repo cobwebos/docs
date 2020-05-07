@@ -139,7 +139,7 @@
         - name: 在容器和数据库上预配吞吐量
           displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
           href: set-throughput.md
-        - name: 预配吞吐量 - 自动缩放模式
+        - name: 预配吞吐量 - 自动缩放
           href: provision-throughput-autoscale.md
         - name: 自动缩放常见问题解答
           href: autoscale-faq.md
@@ -916,6 +916,8 @@
           href: how-to-manage-consistency.md
         - name: 配置冲突解决策略
           href: how-to-manage-conflicts.md
+        - name: 转换会话令牌格式
+          href: how-to-convert-session-token.md
     - name: 预配的吞吐量
       items:
         - name: 预配容器吞吐量
@@ -1062,7 +1064,7 @@
               href: monitor-server-side-latency.md
             - name: 监视请求单位使用情况
               href: monitor-request-unit-usage.md
-        - name: 使用诊断日志
+        - name: 使用 Azure Monitor 日志
           items:
             - name: 使用诊断日志进行监视
               href: cosmosdb-monitor-resource-logs.md

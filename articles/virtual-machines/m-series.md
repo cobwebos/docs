@@ -7,16 +7,16 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: 0e7d61516b0b7fb9bab9aa0444a123ac932aaa56
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 7b84537693b3ffc3f7398c6eb84615a96bf8e7df
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509170"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744685"
 ---
 # <a name="m-series"></a>M 系列
 
-M 系列提供高 vCPU 计数（最多 128 个vCPU）和大量内存（最高 3.8 TiB）。 它也非常适用于极大型数据库或受益于高 vCPU 计数和大量内存的其他应用程序。 &reg;在 intel&reg; E7-8890 v3 @ 2.50 ghz 和 intel&reg;强&reg;白金 8280M 2.7 ghz （Cascade Lake）上，支持 M 系列大小。
+M 系列提供高 vCPU 计数（最多 128 个vCPU）和大量内存（最高 3.8 TiB）。 它也非常适用于极大型数据库或受益于高 vCPU 计数和大量内存的其他应用程序。 &reg;在 intel&reg; E7-8890 v3 @ 2.50 ghz 和 intel&reg;强&reg;白金8280M （Cascade Lake）上，支持 M 系列大小。
 
 M 系列 VM 的 Intel&reg;超线程技术功能。
 
