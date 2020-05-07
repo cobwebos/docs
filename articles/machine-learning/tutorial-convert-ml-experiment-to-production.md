@@ -1,20 +1,22 @@
 ---
-title: 将机器学习试验代码转换为生产代码
+title: 将笔记本代码转换为 Python 脚本
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 MLOpsPython 代码模板将机器学习试验代码转换为生产代码。
+description: 使用 MLOpsPython 代码模板将机器学习试验笔记本转换为生产就绪代码。 然后，可以测试、部署和自动执行该代码。
 author: bjcmit
 ms.author: brysmith
 ms.service: machine-learning
 ms.topic: tutorial
-ms.date: 03/13/2020
-ms.openlocfilehash: e3c9b16ae3d2b06ec19ecd29d15762a065c0c1ae
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.date: 04/30/2020
+ms.openlocfilehash: a0b66f233de9e1bfdc6d011b65489884a1049a12
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521437"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559677"
 ---
-# <a name="tutorial-convert-ml-experimental-code-to-production-code"></a>教程：将机器学习试验代码转换为生产代码
+# <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>教程：将 ML 试验转换为生产 Python 代码
+
+本教程介绍如何使用 MLOpsPython 代码模板和 Azure 机器学习，将 Juptyer 笔记本转换为 Python 脚本，更方便地进行测试和自动化操作。 通常，此过程用于从 Juptyer 笔记本获取试验/训练代码，并将其转换为 Python 脚本。 然后，可以在生产环境中使用这些脚本进行测试和 CI/CD 自动化。 
 
 机器学习项目要求提供试验，在其中可以使用真实数据集通过 Jupyter Notebook 等灵活工具测试假设条件。 准备好将模型投入生产后，应将模型代码放在生产代码存储库中。 在某些情况下，模型代码必须转换为 Python 脚本才能放到生产代码存储库中。 本教程提供有关如何将试验代码导出到 Python 脚本的建议方法。
 
@@ -261,7 +263,7 @@ main()
 在 `experimentation/Diabetes Ridge Regression Scoring.ipynb` 中完成以下步骤：
 
 1. 创建名为 `init` 的新函数，该函数不采用任何参数，且不返回任何内容。
-1. 将“Load Model”标题下的代码复制到 `init` 函数中。
+1. 将“加载模型”标题下的代码复制到 `init` 函数中。
 
 `init` 函数应类似于以下代码：
 
@@ -272,7 +274,7 @@ def init():
     model = joblib.load(model_path)
 ```
 
-创建 `init` 函数后，将“Load Model”标题下的所有代码替换为单个 `init` 调用，如下所示：
+创建 `init` 函数后，将标题“加载模型”下的所有代码替换为单个 `init` 调用，如下所示：
 
 ```python
 init()
@@ -286,7 +288,7 @@ init()
     {"result": result.tolist()}
     ```
 
-1. 将“Prepare Data”和“Score Data”标题下的代码复制到 `run` 函数中。
+1. 将“准备数据”和“评分数据”标题下的代码复制到 `run` 函数中。
 
     `run` 函数应类似于以下代码（请记得删除设置变量 `raw_data` 和 `request_headers` 的语句，稍后在调用 `run` 函数时将使用这些变量）：
 
@@ -299,7 +301,7 @@ init()
         return {"result": result.tolist()}
     ```
 
-创建 `run` 函数后，将“Prepare Data”和“Score Data”标题下的所有代码替换为以下代码：
+创建 `run` 函数后，将“准备数据”和“评分数据”标题下的所有代码替换为以下代码：
 
 ```python
 raw_data = '{"data":[[1,2,3,4,5,6,7,8,9,10],[10,9,8,7,6,5,4,3,2,1]]}'

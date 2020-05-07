@@ -13,19 +13,19 @@ ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: f4138c4ae24ae599d4058c9fd06c33b69657fe38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3e66cd6a05a7c616b22eefffdd9d132aa0f4d36d
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81680073"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853968"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Azure Active Directory 中可配置的令牌生存期（预览版）
 
 可以指定 Azure Active Directory (Azure AD) 颁发的令牌的生存期。 可以针对组织中的所有应用、多租户（多组织）应用程序或者组织中的特定服务主体设置生存期。
 
 > [!IMPORTANT]
-> 在预览期间收到客户的来信后，我们实现了 Azure AD 条件性访问中的[身份验证会话管理功能](https://go.microsoft.com/fwlink/?linkid=2083106)。 可以使用此新功能，通过设置登录频率来配置刷新令牌生存期。 5月1日之后2020，将无法使用可配置的令牌生存期策略来配置会话和刷新令牌。 你仍可以在弃用后配置访问令牌生存期。
+> 在预览期间收到客户的来信后，我们实现了 Azure AD 条件性访问中的[身份验证会话管理功能](https://go.microsoft.com/fwlink/?linkid=2083106)。 可以使用此新功能，通过设置登录频率来配置刷新令牌生存期。 5月30日之后2020，任何新租户都无法使用可配置的令牌生存期策略来配置会话和刷新令牌。 弃用将在此之后的几个月内发生，这意味着我们将停止考虑现有会话和刷新令牌策略。 你仍可以在弃用后配置访问令牌生存期。
 
 在 Azure AD 中，策略对象表示针对组织中的单个应用程序或所有应用程序强制实施的一组规则。 每种策略类型都有一个唯一的结构，其中的一组属性将应用于它们所分配到的对象。
 
@@ -83,7 +83,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 令牌生存期策略是一种策略对象，其中包含令牌生存期规则。 使用策略的属性控制指定的令牌生存期。 如果未设置策略，系统将强制实施默认生存期值。
 
 ### <a name="configurable-token-lifetime-properties"></a>可配置的令牌生存期属性
-| 属性 | 策略属性字符串 | 影响 | 默认 | 最小值 | 最大值 |
+| properties | 策略属性字符串 | 影响 | 默认 | 最小值 | 最大值 |
 | --- | --- | --- | --- | --- | --- |
 | 访问令牌生存期 |AccessTokenLifetime<sup>2</sup> |访问令牌、ID 令牌、SAML2 令牌 |1 小时 |10 分钟 |1 天 |
 | 刷新令牌最大非活动时间 |MaxInactiveTime |刷新令牌 |90 天 |10 分钟 |90 天 |
@@ -95,8 +95,8 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 * <sup>1</sup>365 天是可针对这些属性设置的最大显式时间长短。
 * <sup>2</sup>若要确保 Microsoft 团队 Web 客户端工作，建议将 AccessTokenLifetime 保留为大于15分钟的 Microsoft 团队。
 
-### <a name="exceptions"></a>例外
-| 属性 | 影响 | 默认 |
+### <a name="exceptions"></a>异常
+| properties | 影响 | 默认 |
 | --- | --- | --- |
 | 刷新令牌最大期限（针对吊销信息不足的联合用户颁发<sup>1</sup>） |刷新令牌（针对吊销信息不足的联合用户颁发<sup>1</sup>） |12 小时 |
 | 刷新令牌最大非活动时间（针对机密客户端颁发） |刷新令牌（针对机密客户端颁发） |90 天 |

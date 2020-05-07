@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 05/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c83aa6e476bbd898999fb6efe490c7847a809ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 200ede6b4c5565a8eab95b0398abaa1c056c612f
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77120131"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853124"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>“Azure Active Directory 标识保护”通知
 
@@ -50,12 +50,11 @@ Azure AD 标识保护会发送两种类型的自动生成的通知电子邮件�
 每周摘要电子邮件中包含新风险检测的摘要。  
 其中包括：
 
-- 有风险的用户
-- 可疑活动
-- 检测到的漏洞
+- 检测到新的有风险用户
+- 检测到新的风险登录（实时）
 - 指向“标识保护”中相关报告的链接
 
-![每周摘要电子邮件](./media/howto-identity-protection-configure-notifications/400.png)
+![每周摘要电子邮件](./media/howto-identity-protection-configure-notifications/weekly-digest-email.png)
 
 默认情况下，收件人包括所有全局管理员。 全局管理员还可将其他全局管理员、安全管理员、安全读取者添加为收件人。
 
