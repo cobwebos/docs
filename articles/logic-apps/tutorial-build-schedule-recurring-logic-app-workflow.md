@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: 17802228c8f08e3c8f1533296e2d39080f6f8b7a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5d4990fd806aed75d9b5e5ddd3e9a615631d9d65
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75456630"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82146524"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>教程：使用 Azure 逻辑应用创建自动化的基于计划的重复工作流
 
@@ -37,6 +37,9 @@ ms.locfileid: "75456630"
 * Azure 订阅。 如果你没有 Azure 订阅，请在开始之前[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
 * 逻辑应用支持的电子邮件提供商（例如 Office 365 Outlook、Outlook.com 或 Gmail）提供的电子邮件帐户。 至于其他提供商，请[查看此处的连接器列表](https://docs.microsoft.com/connectors/)。 本快速入门使用 Office 365 Outlook 帐户。 如果你使用其他电子邮件帐户，则常规步骤保持不变，但 UI 可能稍有不同。
+
+  > [!IMPORTANT]
+  > 如果要使用 Gmail 连接器，则只有 G-Suite 商业帐户可以在逻辑应用中不受限制地使用此连接器。 如果有 Gmail 用户帐户，则只能将此连接器与 Google 批准的特定服务一起使用，也可以[创建用于通过 Gmail 连接器进行身份验证的 Google 客户端应用](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。 有关详细信息，请参阅 [Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
 
 * 若要获取路线的行程时间，需要必应地图 API 的访问密钥。 若要获取此密钥，请执行[如何获取必应地图密钥](https://docs.microsoft.com/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key)中的步骤。
 
@@ -247,7 +250,7 @@ ms.locfileid: "75456630"
 
    1. 在中间的比较框中，选择“大于”  运算符。
 
-   1. 在条件右侧的“选择值”框中输入以下限制：`15` 
+   1. 在条件右侧的“选择值”框中输入以下限制：`15`
 
       完成后，条件如以下示例所示：
 

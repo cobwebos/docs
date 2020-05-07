@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: 5414a70180a82be8253dace7d800c90c1ae6a9bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 50ce0d57ec7395c69bf65e41b67f0cb005a43cb8
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276070"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854983"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
 
@@ -61,7 +61,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>将遥测数据发送到 Azure 门户
 
-默认情况下，Application Insights JavaScript SDK 会自动收集许多遥测项，这些项有助于确定应用程序和底层用户体验的运行状况。 这些方法包括：
+默认情况下，Application Insights JavaScript SDK 会自动收集许多遥测项，这些项有助于确定应用程序和底层用户体验的运行状况。 其中包括:
 
 - 应用中**未捕获到的异常**，包括以下相关信息
     - 堆栈跟踪
@@ -76,7 +76,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
     - 发出请求的用户的 ID（如果有）
     - 发出请求的关联上下文（如果有）
 - **用户信息**（例如位置、网络、IP）
-- **设备信息**（例如浏览器、OS、版本、语言、分辨率、型号）
+- **设备信息**（例如，浏览器、OS、版本、语言、型号）
 - **会话信息**
 
 ### <a name="telemetry-initializers"></a>遥测初始化表达式
@@ -116,20 +116,20 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | samplingPercentage | 100 | 要发送的事件百分比。 默认值为 100，表示发送所有事件。 如果你希望避免大型应用程序达到数据上限，请设置此项。 |
 | autoTrackPageVisitTime | false | 如果为 true，则对于页面视图，将跟踪前一个检测的页面的查看时间并将其作为遥测数据发送，同时，为当前的页面视图启动新的计时器。 默认值为 false。 |
 | disableAjaxTracking | false | 如果为 true，则不自动收集 Ajax 调用。 默认值为 false。 |
-| disableFetchTracking | true | 如果为 true，则不自动收集 Fetch 请求。 默认值为 true |
+| disableFetchTracking | 是 | 如果为 true，则不自动收集 Fetch 请求。 默认值为 true |
 | overridePageViewDuration | false | 如果为 true，则在调用 trackPageView 时，trackPageView 的默认行为将更改为记录页面视图持续时间间隔的结束时间。 如果为 false 且未为 trackPageView 提供自定义持续时间，则会使用导航计时 API 计算页面视图性能。 默认值为 false。 |
 | maxAjaxCallsPerView | 500 | 默认值为 500 - 控制每个页面视图将监视多少个 Ajax 调用。 设置为 -1 可监视页面上的所有（无限制）Ajax 调用。 |
-| disableDataLossAnalysis | true | 如果为 false，则对于尚未发送的项，启动时将检查内部遥测发送方缓冲区。 |
+| disableDataLossAnalysis | 是 | 如果为 false，则对于尚未发送的项，启动时将检查内部遥测发送方缓冲区。 |
 | disableCorrelationHeaders | false | 如果为 false，则 SDK 会将两个标头（“Request-Id”和“Request-Context”）添加到所有依赖项请求，以将其关联到服务器端上的对应请求。 默认值为 false。 |
 | correlationHeaderExcludedDomains |  | 禁用特定域的关联标头 |
 | correlationHeaderDomains |  | 启用特定域的关联标头 |
 | disableFlushOnBeforeUnload | false | 默认值为 false。 如果为 true，则触发 onBeforeUnload 事件时不会调用 flush 方法 |
-| enableSessionStorageBuffer | true | 默认值为 true。 如果为 true，则会将包含所有未发送的遥测数据的缓冲区存储在会话存储中。 加载页面时会还原该缓冲区 |
+| enableSessionStorageBuffer | 是 | 默认值为 true。 如果为 true，则会将包含所有未发送的遥测数据的缓冲区存储在会话存储中。 加载页面时会还原该缓冲区 |
 | isCookieUseDisabled | false | 默认值为 false。 如果为 true，则 SDK 不会存储或读取 Cookie 中的任何数据。|
 | cookieDomain | null | 自定义 Cookie 域。 若要跨子域共享 Application Insights Cookie，此字段会有帮助。 |
 | isRetryDisabled | false | 默认值为 false。 如果为 false，则出现代码 206（部分成功）、408（超时）、429（请求过多）、500（内部服务器错误）、503（服务不可用）和 0（脱机，仅当已检测到此状态时）时会重试 |
 | isStorageUseDisabled | false | 如果为 true，则 SDK 不会存储或读取本地和会话存储中的任何数据。 默认值为 false。 |
-| isBeaconApiDisabled | true | 如果为 false，则 SDK 将使用[信标 API](https://www.w3.org/TR/beacon) 发送所有遥测数据 |
+| isBeaconApiDisabled | 是 | 如果为 false，则 SDK 将使用[信标 API](https://www.w3.org/TR/beacon) 发送所有遥测数据 |
 | onunloadDisableBeacon | false | 默认值为 false。 选项卡关闭时，SDK 将使用[信标 API](https://www.w3.org/TR/beacon) 发送所有剩余的遥测 |
 | sdkExtension | null | 设置 SDK 扩展名。 仅允许使用字母字符。 扩展名将添加为“ai.internal.sdkVersion”标记的前缀（例如“ext_javascript:2.0.0”）。 默认值为 null。 |
 | isBrowserLinkTrackingEnabled | false | 默认值为 false。 如果为 true，则 SDK 将跟踪所有[浏览器链接](https://docs.microsoft.com/aspnet/core/client-side/using-browserlink)请求。 |
@@ -145,14 +145,21 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 默认情况下，此 SDK **不会**处理单页应用程序中发生的基于状态的路由更改。 若要为单页应用程序启用自动路由更改跟踪，可将 `enableAutoRouteTracking: true` 添加到设置配置。
 
-目前，我们提供了一个可通过此 SDK 初始化的独立 [React 插件](#react-extensions)。 该插件也能为你实现路由更改跟踪，并可收集[其他特定于 React 的遥测数据](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)。
+目前，我们提供了一个单独的[响应插件](#react-extensions)，你可以使用此 SDK 对其进行初始化。 该插件也能为你实现路由更改跟踪，并可收集[其他特定于 React 的遥测数据](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)。
+
+> [!NOTE]
+> 仅`enableAutoRouteTracking: true`在**未**使用 "响应" 插件时使用。 当路由更改时，这两种方法都能发送新的 PageViews。 如果两者都处于启用状态，则可能会发送重复的 PageViews。
+
+## <a name="configuration-autotrackpagevisittime"></a>配置： autoTrackPageVisitTime
+
+通过设置`autoTrackPageVisitTime: true`，跟踪用户在每个页面上所花费的时间。 在每个新的 PageView 上，用户在*上一*页上花费的持续时间将作为名`PageVisitTime`为的[自定义度量值](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview)发送。 此自定义指标在[指标资源管理器](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)中可作为 "基于日志的指标" 查看。
 
 ## <a name="react-extensions"></a>React 扩展
 
 | 扩展 |
 |---------------|
 | [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
-| [React Native](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
+| [响应本机](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
 
 ## <a name="explore-browserclient-side-data"></a>浏览浏览器/客户端数据
 
@@ -170,7 +177,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 ![](./media/javascript/performance-operations.png)
 
-### <a name="dependencies"></a>依赖项
+### <a name="dependencies"></a>依赖关系
 
 ![](./media/javascript/performance-dependencies.png)
 

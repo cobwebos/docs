@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/25/2019
-ms.openlocfilehash: d93c1d81e1434ffdd41297ed54e874c6b71240d2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6611c394d6aff92a62a7ecd9a7656d3408fb9da6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75430481"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82146627"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建用于 PostgreSQL 的 Azure 数据库服务器
 
@@ -178,7 +178,7 @@ pgAdmin 是用于 PostgreSQL 的开源工具。 可以从 [pgAdmin 网站](https
     用户名 | 服务器管理员登录名 | 此前在创建用于 PostgreSQL 的 Azure 数据库服务器时提供的服务器管理员登录用户名。 如果不记得用户名，请按上一部分的步骤操作，以便获取连接信息。 格式为 username\@servername  。
     密码 | 管理员密码 | 之前在此快速入门中创建服务器时选择的密码。
     角色 | 留空 | 此时无需提供角色名称。 此字段留空。
-    SSL 模式 | *必需* | 可以在 pgAdmin 的 SSL 选项卡中设置 SSL 模式。默认情况下，所有 Azure Database for PostgreSQL 服务器在创建时都会启用“SSL 强制实施”。 若要关闭“SSL 强制实施”，请参阅 [SSL 强制实施](./concepts-ssl-connection-security.md)。
+    SSL 模式 | *必需* | 可以在 pgAdmin 的 SSL 选项卡中设置 TLS/SSL 模式。默认情况下，所有 Azure Database for PostgreSQL 服务器在创建时都会启用“强制实施 TLS”。 若要禁用“强制实施 TLS”，请参阅[配置 TLS 的强制实施](./concepts-ssl-connection-security.md#configure-enforcement-of-tls)。
     
 5. 选择“保存”。 
 

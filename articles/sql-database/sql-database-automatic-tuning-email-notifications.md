@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: b3b235833e794e48ae655d184bf938effc0d7ac0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f117f1518211680c4ea1f5ac51ecf0e44396a133
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81768374"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856768"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>自动优化的电子邮件通知
 
@@ -69,7 +69,7 @@ SQL 数据库自动优化建议可在 [Azure 门户](sql-database-advisor-portal
 请按照以下步骤创建新的 Azure 自动化 Runbook：
 
 1. 访问在上一步中创建的 Azure 自动化帐户。
-1. 在 "自动化帐户" 窗格中，单击左侧的 "**runbook**" 菜单项，使用 PowerShell 脚本创建新的 Azure 自动化 runbook。 要了解有关创建自动化 runbook 的详细信息，请参阅[创建新的 runbook](../automation/manage-runbooks.md#creating-a-runbook)。
+1. 在 "自动化帐户" 窗格中，单击左侧的 "**runbook**" 菜单项，使用 PowerShell 脚本创建新的 Azure 自动化 runbook。 若要详细了解如何创建自动化 runbook，请参阅[创建新的 runbook](../automation/manage-runbooks.md#create-a-runbook)。
 1. 若要添加新 runbook，请单击 "**+ 添加 runbook**" 菜单选项，然后单击 "**快速创建-创建新 runbook**"。
 1. 在 "Runbook" 窗格中，键入 runbook 的名称（在本示例中，使用 "**AutomaticTuningEmailAutomation**"），选择 runbook 类型作为**PowerShell**并写入此 runbook 的说明以描述其用途。
 1. 单击 "**创建**" 按钮以完成创建新的 runbook。
