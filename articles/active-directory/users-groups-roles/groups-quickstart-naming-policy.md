@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84e419ac5c3d292b7e630d1ebb3d3b9f59ef7b8a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4253f5bd702abd061cf1cddd4badd68c9cd5d475
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74026934"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582832"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>快速入门：为 Azure Active Directory 中的组命名策略
 
-在本快速入门中，需在 Azure Active Directory (Azure AD) 租户中为用户创建的 Office 365 组设置命名策略，以便对租户的组进行排序和搜索。 例如，可以将命名策略用于：
+本快速入门将在 Azure Active Directory (Azure AD) 组织中为用户创建的 Office 365 组设置命名策略，以便对组织的组进行排序和搜索。 例如，可以将命名策略用于：
 
 * 传达组的功能、成员身份、地理区域或创建组的人员。
 * 有助于对通讯簿中的组进行分类。
@@ -31,7 +31,7 @@ ms.locfileid: "74026934"
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-portal"></a>使用 Azure 门户为租户配置组命名策略
+## <a name="configure-the-group-naming-policy-in-the-azure-portal"></a>在 Azure 门户中配置组命名策略
 
 1. 使用用户管理员帐户登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
 1. 选择“组”，然后选择“命名策略”，以便打开“命名策略”页。  

@@ -5,14 +5,15 @@ keywords: postgresql 连接, 连接字符串, 连接问题, 暂时性错误, 连
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
+ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 10/8/2019
-ms.openlocfilehash: c064aca484f85c44dada9888012140784a96863f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: abcc979bb36fe0acb663a511875a1e186c2c0739
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74977499"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583966"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---hyperscale-citus"></a>排查 Azure Database for PostgreSQL 的连接问题-超大规模（Citus）
 
@@ -49,7 +50,7 @@ ms.locfileid: "74977499"
 如果应用程序持久无法连接到超大规模（Citus），最常见的原因是防火墙配置错误或用户错误。
 
 * 协调器节点防火墙配置：确保超大规模服务器防火墙已配置为允许来自客户端（包括代理服务器和网关）的连接。
-* 客户端防火墙配置：客户端上的防火墙必须允许连接到数据库服务器。 某些防火墙要求仅允许名称使用应用程序，但允许服务器的 IP 地址和端口。
+* 客户端防火墙配置：客户端的防火墙必须允许连接到数据库服务器。 某些防火墙要求仅允许名称使用应用程序，但允许服务器的 IP 地址和端口。
 * 用户错误：仔细检查连接字符串。 您可能键入了错误的参数，如服务器名称。 可以在 Azure 门户中找到各种语言框架和 psql 的连接字符串。 请在超大规模（Citus）服务器组中转到 "**连接字符串**" 页。 另外请记住，超大规模（Citus）群集只具有一个数据库，其预定义名称为**Citus**。
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>解决永久性连接问题的步骤

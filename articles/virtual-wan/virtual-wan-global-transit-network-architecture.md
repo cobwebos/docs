@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9515058bc78a2d56dc1734c046dac5d5b04f68d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c32d42de5290bff63a897e7b9d5c8a2b1bf04ce4
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81113163"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82786965"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>全局传输网络体系结构和虚拟 WAN
 
@@ -98,6 +98,9 @@ ExpressRoute Global Reach 是适用于 ExpressRoute 的附加功能。 使用 Gl
 可以使用 ExpressRoute 线路和/或站点到站点 VPN 连接将分支连接到 Azure 虚拟 WAN 集线器。 你可以将分支连接到距离分支最近的区域中的虚拟 WAN 集线器。
 
 企业可以通过此选项来利用 Azure 主干网连接分支。 但是，尽管可以此功能，应该权衡通过 Azure 虚拟 WAN 与通过专用 WAN 连接分支的利弊。  
+
+> [!NOTE]
+> 禁用虚拟 WAN 中的分支到分支连接-虚拟 WAN 可配置为禁用分支到分支连接。 此配置将阻止 VPN （S2S 和 P2S）和快速路由连接的站点之间的路由传播。 此配置不会影响分支到 Vnet 和 Vnet 到 Vnet 路由传播和连接。 使用 Azure 门户配置此设置：在 "虚拟 WAN 配置" 菜单下，选择 "设置：分支到分支-已禁用"。 
 
 ### <a name="remote-user-to-vnet-c"></a>远程用户到 VNet (c)
 

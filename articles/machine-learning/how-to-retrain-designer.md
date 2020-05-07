@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: keli19
 author: likebupt
 ms.date: 04/06/2020
-ms.openlocfilehash: 721e5414fc4753cd5d58a17fc7ed51ea99868778
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77c1cc6ef5a7353d246958d1b047f054d5f49890
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80810353"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837152"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>使用 Azure 机器学习设计器重新训练模型（预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -31,14 +31,8 @@ ms.locfileid: "80810353"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 使用企业 SKU 的 Azure 机器学习工作区。
-* 设计器可访问的数据集。 可以是下列选项之一：
-   * Azure 机器学习注册的数据集
-    
-     **或**
-   * 存储在 Azure 机器学习数据存储中的数据文件。
-   
-有关使用设计器进行数据访问的信息，请参阅[如何将数据导入到设计器中](how-to-designer-import-data.md)。
+* 具有企业版 SKU 的 Azure 机器学习工作区。
+* 完成本操作方法系列的第1部分，[在设计器中转换数据](how-to-designer-transform-data.md)。
 
 本文还假定你具有在设计器中生成管道的基本知识。 对于引导式简介，请完成[教程](tutorial-designer-automobile-price-train-score.md)。 
 
@@ -72,7 +66,7 @@ ms.locfileid: "80810353"
    > [!NOTE]
    > 可以通过选择管道草稿标题旁边的 "**设置**" 齿轮图标来检查和编辑管道参数。 
 
-1. 选择“保存”  。
+1. 选择“保存”。 
 
 1. 提交管道运行。
 
@@ -92,8 +86,8 @@ ms.locfileid: "80810353"
 
 将管道发布到管道终结点，以便在将来轻松重用管道。 管道终结点创建 REST 终结点，以便在将来调用管道。 在此示例中，您的管道终结点允许您重新使用您的管道重新训练不同数据上的模型。
 
-1. 选择设计器画布上方的“发布”  。
-1. 选择或创建一个管道终结点。
+1. 选择设计器画布上方的“发布”****。
+1. 选择或创建管道终结点。
 
    > [!NOTE]
    > 可将多个管道发布到一个终结点。 给定终结点中的每个管道都提供一个版本号，你可以在调用管道终结点时指定该版本号。
