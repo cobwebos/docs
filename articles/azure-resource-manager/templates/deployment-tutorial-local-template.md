@@ -4,12 +4,12 @@ description: 了解如何从本地计算机部署 Azure 资源管理器模板
 ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c8e3eb62fa52caeaa63808b6b9ea199bdff5c4da
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7f134bb836d05d006ef2e474ea48382a671957fe
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80081816"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82188818"
 ---
 # <a name="tutorial-deploy-a-local-azure-resource-manager-template"></a>教程：部署本地 Azure 资源管理器模板
 
@@ -37,9 +37,7 @@ ms.locfileid: "80081816"
 
 ## <a name="review-template"></a>审阅模板
 
-本教程中使用的模板与[有关快速入门模板的教程](template-tutorial-quickstart-template.md)中使用的模板类似。 如果你对创建模板感兴趣，则可以完成该教程。 但这不是完成本教程所必需的。
-
-模板部署一个存储帐户、应用服务计划和 Web 应用。
+模板部署一个存储帐户、应用服务计划和 Web 应用。 如果对创建模板感兴趣，则可完成[关于快速入门模板的教程](template-tutorial-quickstart-template.md)。 但这不是完成本教程所必需的。
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/local-template/azuredeploy.json":::
 

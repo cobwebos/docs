@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/29/2019
-ms.openlocfilehash: 39ea8dda0fd823d3061b2cb29e1c548f99281c82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: bbcbb19530aebe777a91cbe4c5487e1b50ace2e5
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418790"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559769"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>创建翻转窗口触发器依赖项
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -25,9 +25,13 @@ ms.locfileid: "81418790"
 
 若要生成依赖关系链，并确保某个触发器只在成功执行数据工厂中的另一个触发器之后才执行，请使用此高级功能创建翻转窗口依赖项。
 
+有关如何使用翻转窗口触发器在 Azure 数据工厂中创建从属管道的演示，请观看以下视频：
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Create-dependent-pipelines-in-your-Azure-Data-Factory/player]
+
 ## <a name="create-a-dependency-in-the-data-factory-ui"></a>在数据工厂 UI 中创建依赖项
 
-若要在触发器上创建依赖项，请选择“触发器”>“高级”>“新建”，然后选择要依赖的、具有相应偏移量和大小的触发器。  选择“完成”并发布数据工厂更改，使依赖项生效。 
+若要在触发器上创建依赖项，请选择“触发器”>“高级”>“新建”，然后选择要依赖的、具有相应偏移量和大小的触发器。**** 选择“完成”并发布数据工厂更改，使依赖项生效。****
 
 ![依赖项创建](media/tumbling-window-trigger-dependency/tumbling-window-dependency01.png "依赖项创建")
 
@@ -78,11 +82,11 @@ ms.locfileid: "81418790"
 | **属性名称** | **说明**  | **类型** | **必需** |
 |---|---|---|---|
 | type  | 所有现有翻转窗口触发器将显示在此下拉列表中。 选择要依赖的触发器。  | TumblingWindowTriggerDependencyReference 或 SelfDependencyTumblingWindowTriggerReference | 是 |
-| offset | 依赖项触发器的偏移量。 以时间跨度格式提供值，负数和正数偏移量均可。 如果触发器依赖于自身，则此属性是必需的；对于其他所有情况，此属性是可选的。 自我依赖项应始终为负偏移量。 如果未指定任何值，则该窗口与触发器本身相同。 | Timespan<br/>(hh:mm:ss) | 自我依赖项：是<br/>其他：否 |
+| offset | 依赖项触发器的偏移量。 以时间跨度格式提供值，负数和正数偏移量均可。 如果触发器依赖于自身，则此属性是必需的；对于其他所有情况，此属性是可选的。 自我依赖项应始终为负偏移量。 如果未指定任何值，则该窗口与触发器本身相同。 | Timespan<br/>(hh:mm:ss) | 自依赖项：是<br/>其他：否 |
 | 大小 | 依赖项翻转窗口的大小。 提供正的 timespan 值。 此属性是可选的。 | Timespan<br/>(hh:mm:ss) | 否  |
 
 > [!NOTE]
-> 翻转窗口触发器最多可以依赖于两个其他触发器。
+> 翻转窗口触发器最多可以有五个其他触发器。
 
 ## <a name="tumbling-window-self-dependency-properties"></a>翻转窗口自我依赖项属性
 
@@ -126,7 +130,7 @@ ms.locfileid: "81418790"
 
 ### <a name="dependency-offset"></a>依赖项偏移量
 
-![偏移量示例](media/tumbling-window-trigger-dependency/tumbling-window-dependency02.png "偏移量示例")
+![偏移示例](media/tumbling-window-trigger-dependency/tumbling-window-dependency02.png "偏移量示例")
 
 ### <a name="dependency-size"></a>依赖项大小
 
@@ -134,7 +138,7 @@ ms.locfileid: "81418790"
 
 ### <a name="self-dependency"></a>自我依赖项
 
-![自我依赖项](media/tumbling-window-trigger-dependency/tumbling-window-dependency04.png "自我依赖项")
+![自依赖项](media/tumbling-window-trigger-dependency/tumbling-window-dependency04.png "自我依赖项")
 
 ### <a name="dependency-on-another-tumbling-window-trigger"></a>依赖于另一个翻转窗口触发器
 
@@ -147,10 +151,6 @@ ms.locfileid: "81418790"
 在作业输出流中不存在间隙的每日作业：
 
 ![自我依赖项示例](media/tumbling-window-trigger-dependency/tumbling-window-dependency06.png "自我依赖项示例")
-
-有关如何使用翻转窗口触发器在 Azure 数据工厂中创建从属管道的演示，请观看以下视频：
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Create-dependent-pipelines-in-your-Azure-Data-Factory/player]
 
 ## <a name="monitor-dependencies"></a>监视依赖项
 

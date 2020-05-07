@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 05d73ae09d95879c37e86f5f3e73e35ed4607296
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 409ba6cd192f65c73aba6bd6eb11a26ec1f820fa
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82560969"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790875"
 ---
 # <a name="what-is-azure-iot-central"></a>什么是 Azure IoT Central？
 
@@ -29,19 +29,6 @@ IoT Central 是一个 IoT 应用程序平台，可减轻开发、管理和维护
 - 如何管理应用程序。
 - IoT Central 中的 Azure IoT Edge 功能。
 - 如何将 Azure IoT Edge 运行时支持的设备连接到应用程序。
-
-## <a name="known-issues"></a>已知问题
-
-- 连续数据导出不支持 Avro 格式（不兼容）。
-- 目前不支持 GeoJSON。
-- 目前不支持地图图块。
-- 作业不支持复杂类型。
-- 不支持数组架构类型。
-- 仅支持 C 设备 SDK 以及 Node.js 设备和服务 SDK。
-- IoT Central 目前可在美国、欧洲、亚太、澳大利亚、英国和日本位置中使用。
-- 不能在英国和日本位置使用“自定义应用程序(旧版)”  应用程序模板。
-- 必须在同一文件中以内联方式定义设备功能模型的所有接口。
-- 对 [IoT 即插即用](../../iot-pnp/overview-iot-plug-and-play.md)的支持处于预览状态，并且仅在选定区域受支持。
 
 ## <a name="personas"></a>角色
 
@@ -152,7 +139,7 @@ IoT Central 应用程序完全由 Microsoft 托管，这降低了管理应用程
 
 对于旨在大规模运行的 IoT 解决方案，以结构化的方式管理设备非常重要。 只是将设备连接到云是不够的，还需要使设备保持连接状态并正常运行。 在整个应用程序生命周期内，操作员可使用以下 IoT Central 功能来管理设备：
 
-### <a name="dashboards"></a>仪表板 
+### <a name="dashboards"></a>仪表板
 
 内置的[仪表板](./howto-set-up-template.md#generate-default-views)提供可自定义的 UI 用于监视设备运行状况和遥测。 一开始可以使用[应用程序模板](howto-use-app-templates.md)中的预生成仪表板，或创建自己的根据操作员需求定制的仪表板。 可与应用程序中的所有用户共享仪表板，或将其保留为个人专用。
 
@@ -193,6 +180,18 @@ IoT Central 应用程序完全由 Microsoft 托管，这降低了管理应用程
 ## <a name="quotas"></a>配额
 
 每个 Azure 订阅具有默认的配额，这些配额可能影响 IoT 解决方案的范围。 目前，IoT Central 将可在单个订阅中部署的应用程序数限制为 10 个。 如果需要增加此限制，请联系 [Microsoft 支持](https://azure.microsoft.com/support/options/)。
+
+## <a name="known-issues"></a>已知问题
+
+- 连续数据导出不支持 Avro 格式（不兼容）。
+- 目前不支持 GeoJSON。
+- 目前不支持地图图块。
+- 不支持数组架构类型。
+- 仅支持 C 设备 SDK 以及 Node.js 设备和服务 SDK。
+- IoT Central 目前可在美国、欧洲、亚太、澳大利亚、英国和日本位置中使用。
+- 不能在英国和日本位置使用“自定义应用程序(旧版)”  应用程序模板。
+- 必须在同一文件中以内联方式定义设备功能模型的所有接口。
+- 对 [IoT 即插即用](../../iot-pnp/overview-iot-plug-and-play.md)的支持处于预览状态，并且仅在选定区域受支持。
 
 ## <a name="next-steps"></a>后续步骤
 

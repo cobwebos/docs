@@ -1010,6 +1010,8 @@
         - name: 安全概述
           href: /azure/databricks/security/index
           maintainContext: true
+        - name: 安全基线
+          href: security-baseline.md
         - name: 访问控制
           items:
             - name: 访问控制概述
@@ -1631,7 +1633,7 @@
                     - name: 使用服务主体获取 AAD 令牌
                       href: /azure/databricks/dev-tools/api/latest/aad/service-prin-aad-token
                       maintainContext: true
-                    - name: 排查 AAD 访问令牌问题
+                    - name: AAD 访问令牌疑难解答
                       href: /azure/databricks/dev-tools/api/latest/aad/troubleshoot-aad-token
                       maintainContext: true
             - name: 群集
