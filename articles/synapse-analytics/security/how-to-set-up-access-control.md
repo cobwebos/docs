@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: ae8be848b5d12e01865fe6bd3b394b460252aa3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 383a28e90c093c0885c34af03371608261ece110
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606006"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692631"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>保护你的 Synapse 工作区（预览）
 
@@ -165,9 +165,22 @@ Synapse Studio 将根据用户角色的行为有所不同。 如果用户未分�
 | 管理中心/链接服务 | YES | YES | YES |
 | 管理中心/访问控制（将用户分配到 Synapse 工作区角色） | YES | 是 | 是 |
 | 管理中心/集成运行时 | YES | YES | YES |
+| 使用监视集线器 | YES | YES | YES |
+| 监视集线器/业务流程/管道运行  | YES | 是 | 是 |
+| 监视集线器/业务流程/触发器运行  | YES | 是 | 是 |
+| 监视集线器/业务流程/集成运行时  | YES | YES | YES |
+| 监视集线器/活动/Spark 应用程序 | YES | YES | 是  |
+| 监视集线器/活动/SQL 请求 | YES | 是 | YES |
+| 监视集线器/活动/Spark 池 | YES | YES | 是  |
+| 监视集线器/触发器 | YES | 是 | 是 |
+| 管理中心/链接服务 | YES | YES | YES |
+| 管理中心/访问控制（将用户分配到 Synapse 工作区角色） | YES | 是 | 是 |
+| 管理中心/集成运行时 | YES | YES | YES |
+
 
 > [!NOTE]
-> [1] 对容器中的数据的访问权限取决于 ADLSGen2 [2] 中的访问控制 SQL OD 表和 Spark 表将其数据存储在 ADLSGen2 中，而 Access 需要对 ADLSGen2 具有适当的权限。
+> [1] 对容器中的数据的访问权限取决于 ADLSGen2 中的访问控制。 </br>
+> [2] SQL OD 表和 Spark 表将其数据存储在 ADLSGen2 中，access 需要 ADLSGen2 的适当权限。
 
 ## <a name="next-steps"></a>后续步骤
 

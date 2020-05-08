@@ -1,6 +1,6 @@
 ---
-title: 使用 REST API 列出 Azure 资源的拒绝分配
-description: 了解如何使用 Azure 资源基于角色的访问控制 (RBAC) 和 REST API 来列出用户、组和应用程序的拒绝分配。
+title: 使用 REST API 列出 Azure 拒绝分配-Azure RBAC
+description: 了解如何使用 REST API 和 Azure 基于角色的访问控制（Azure RBAC）列出用户、组和应用程序的 Azure 拒绝分配。
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,25 +15,25 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0f648405a3d71bf27c64dacbb3fd78f3e9801137
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dae0352566e6cb4f8ed1384ca12213e2aaa07f9d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063015"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733864"
 ---
-# <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>使用 REST API 列出 Azure 资源的拒绝分配
+# <a name="list-azure-deny-assignments-using-the-rest-api"></a>使用 REST API 列出 Azure 拒绝分配
 
-即使角色分配向用户授予了访问权限，[拒绝分配](deny-assignments.md)也会阻止用户执行特定的 Azure 资源操作。 本文介绍如何使用 REST API 列出拒绝分配。
+[Azure 拒绝分配](deny-assignments.md)会阻止用户执行特定的 Azure 资源操作，即使角色分配授予访问权限。 本文介绍如何使用 REST API 列出拒绝分配。
 
 > [!NOTE]
-> 不能直接创建自己的拒绝分配。 有关如何创建拒绝分配的详细信息，请参阅[拒绝分配](deny-assignments.md)。
+> 不能直接创建自己的拒绝分配。 有关如何创建拒绝分配的信息，请参阅[Azure 拒绝分配](deny-assignments.md)。
 
 ## <a name="prerequisites"></a>必备条件
 
 如要获取拒绝分配的相关信息，必须具有：
 
-- `Microsoft.Authorization/denyAssignments/read` 权限，在大多数 [Azure 资源的内置角色](built-in-roles.md)都包含该权限。
+- `Microsoft.Authorization/denyAssignments/read`权限包括在大多数[Azure 内置角色](built-in-roles.md)中。
 
 ## <a name="list-a-single-deny-assignment"></a>列出单个拒绝分配
 
@@ -91,7 +91,7 @@ ms.locfileid: "80063015"
 
 ## <a name="list-deny-assignments-at-the-root-scope-"></a>列出根范围 (/) 处的拒绝分配
 
-1. 按[提升 Azure Active Directory 中全局管理员的访问权限](elevate-access-global-admin.md)中所述提升访问权限。
+1. 提升访问权限[以管理所有 Azure 订阅和管理组](elevate-access-global-admin.md)中所述的访问权限。
 
 1. 使用以下请求：
 
@@ -111,6 +111,6 @@ ms.locfileid: "80063015"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [了解 Azure 资源的拒绝分配](deny-assignments.md)
-- [提升 Azure Active Directory 中全局管理员的访问权限](elevate-access-global-admin.md)
+- [了解 Azure 拒绝分配](deny-assignments.md)
+- [提升访问权限以管理所有 Azure 订阅和管理组](elevate-access-global-admin.md)
 - [Azure REST API 参考](/rest/api/azure/)
