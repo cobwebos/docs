@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 11/08/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09012d93a1f9fd24427cb8b3937b3a36cf75d9e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 36c7bb426a329a54f333b76e028b884204543014
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75834185"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582980"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>在 Azure Active Directory 中以管理员身份接管非托管目录
 
@@ -34,15 +34,15 @@ ms.locfileid: "75834185"
 
 ## <a name="internal-admin-takeover"></a>内部管理员接管
 
-包含 SharePoint 和 OneDrive 的某些产品（如 Office 365）不支持外部接管。 如果是这种情况，或如果你是管理员且想要接管的非托管或“阴影”租户是由使用自助服务注册的用户创建的，则可通过内部管理员接管方式达到目的。
+包含 SharePoint 和 OneDrive 的某些产品（如 Office 365）不支持外部接管。 如果是你的方案，或者如果你是管理员，并且想要接管使用自助注册的用户创建的非托管或 "影子" Azure AD 组织，则可以使用内部管理员接管来执行此操作。
 
-1. 通过注册 Power BI 在非托管租户中创建用户上下文。 为方便举例，以下步骤假定采用该方式。
+1. 通过注册 Power BI 在非托管组织中创建用户上下文。 为方便举例，以下步骤假定采用该方式。
 
 2. 打开 [Power BI 网站](https://powerbi.com)并选择“免费开始”****。 输入使用组织域名的用户帐户，如 `admin@fourthcoffee.xyz`。 输入验证码后，请检查电子邮件，查看确认代码。
 
 3. 在来自 Power BI 的确认电子邮件中，选择“是，是我”****。
 
-4. 用 Power BI 用户帐户登录到[Microsoft 365 管理中心](https://portal.office.com/admintakeover)。 会收到一条消息，指示如何“成为管理员”，即成为已在非托管租户中经过验证的域名的管理员****。 选择“是，我想成为管理员”****。
+4. 用 Power BI 用户帐户登录到[Microsoft 365 管理中心](https://portal.office.com/admintakeover)。 您将收到一条消息，指示您成为在非托管组织中已验证的域名的**管理员**。 选择“是，我想成为管理员”****。
   
    ![“成为管理员”的首个屏幕截图](./media/domains-admin-takeover/become-admin-first.png)
   
@@ -50,35 +50,35 @@ ms.locfileid: "75834185"
   
    ![为域名添加 txt 记录](./media/domains-admin-takeover/become-admin-txt-record.png)
 
-在域名注册机构验证 DNS TXT 记录后，便可管理 Azure AD 租户。
+在域名注册机构验证 DNS TXT 记录后，可以管理 Azure AD 组织。
 
-完成上述步骤后，便获得 Office 365 中 Fourth Coffee 租户的全局管理员身份。 若要将域名与其他 Azure 服务集成，可将其从 Office 365 中删除并移动到 Azure 中的另一个托管租户。
+完成上述步骤后，你现在就是 Office 365 中第四个咖啡店的全局管理员。 若要将域名与其他 Azure 服务集成，你可以将其从 Office 365 中删除，并将其添加到 Azure 中的其他托管组织。
 
-### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>将域名添加到 Azure AD 中的托管租户
+### <a name="adding-the-domain-name-to-a-managed-organization-in-azure-ad"></a>将域名添加到 Azure AD 中的托管组织
 
 1. 打开[Microsoft 365 管理中心](https://admin.microsoft.com)。
 2. 选择 "**用户**" 选项卡，并使用不使用自定义域名的名称（例如*用户\@fourthcoffeexyz.onmicrosoft.com* ）创建新的用户帐户。 
-3. 请确保新的用户帐户对 Azure AD 租户拥有全局管理员权限。
+3. 确保新的用户帐户具有 Azure AD 组织的全局管理员权限。
 4. 在 Microsoft 365 管理中心中打开 "**域**" 选项卡，选择域名，然后选择 "**删除**"。 
   
    ![从 Office 365 删除域名](./media/domains-admin-takeover/remove-domain-from-o365.png)
   
 5. 如果在 Office 365 中存在任何引用了已删除的域名的用户或组，必须将其重命名到 .onmicrosoft.com 域。 如果你强制删除域名，则所有用户都将自动重命名，在此示例中为*user\@fourthcoffeexyz.onmicrosoft.com*。
   
-6. 使用 Azure AD 租户的全局管理员帐户登录到 [Azure AD 管理中心](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
+6. 使用作为 Azure AD 组织的全局管理员的帐户登录到[Azure AD 管理中心](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
   
 7. 选择“自定义域名”，然后添加域名****。 需要输入 DNS TXT 记录来验证该域名的所有权。 
   
    ![域已验证为已添加到 Azure AD](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
-> 如果删除了域名，则在 Office 365 租户中分配了许可证的任何 Power BI 或 Azure Rights Management 服务的用户必须保存其仪表板。 他们必须使用用户名*\@fourthcoffeexyz.onmicrosoft.com* （而不是*用户\@fourthcoffee*）登录用户名。
+> 如果删除了域名，则在 Office 365 组织中分配了许可证的 Power BI 或 Azure Rights Management 服务的任何用户必须保存他们的仪表板。 他们必须使用用户名*\@fourthcoffeexyz.onmicrosoft.com* （而不是*用户\@fourthcoffee*）登录用户名。
 
 ## <a name="external-admin-takeover"></a>外部管理员接管
 
-如果已使用 Azure 服务或 Office 365 管理租户，且自定义域名已在另一个 Azure AD 租户中经过验证，则无法添加该域名。 但是，可通过外部管理员接管从 Azure AD 中的托管租户接管非托管租户。 常规过程遵循文章[将自定义域添加到 Azure AD](../fundamentals/add-custom-domain.md) 中的步骤。
+如果已使用 Azure 服务或 Office 365 管理组织，则如果已在另一 Azure AD 组织中验证了自定义域名，则无法添加该域名。 但是，在 Azure AD 中，你可以将非托管组织作为外部管理员接管。 常规过程遵循文章[将自定义域添加到 Azure AD](../fundamentals/add-custom-domain.md) 中的步骤。
 
-验证域名的所有权时，Azure AD 会从非托管租户中删除该域名并将其移动到现有租户。 非托管目录的外部管理员接管操作需要执行与内部管理员接管操作相同的 DNS TXT 验证过程。 不同之处在于，除域名外还会移动以下内容：
+验证域名的所有权时，Azure AD 会从非托管组织中删除域名，并将其移到现有组织中。 非托管目录的外部管理员接管操作需要执行与内部管理员接管操作相同的 DNS TXT 验证过程。 不同之处在于，除域名外还会移动以下内容：
 
 - 用户
 - 订阅
@@ -100,27 +100,27 @@ ms.locfileid: "75834185"
 
 对于包含 SharePoint、OneDrive 或 Skype For Business 的服务计划的任何服务，都不支持外部管理员接管;例如，通过 Office 免费订阅。 
 
-可以选择使用 [**ForceTakeover** 选项](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option)，从非托管租户中删除域名并在所需租户上对其进行验证。 
+您可以选择使用[ **ForceTakeover**选项](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option)从非托管组织中删除域名，并在所需的组织中对其进行验证。 
 
 #### <a name="more-information-about-rms-for-individuals"></a>有关个人版 RMS 的详细信息
 
-对于[个人版 RMS](/azure/information-protection/rms-for-individuals)，当非托管租户与你拥有的租户位于同一区域时，自动创建的 [Azure 信息保护租户密钥](/azure/information-protection/plan-implement-tenant-key)和[默认保护模板](/azure/information-protection/configure-usage-rights#rights-included-in-the-default-templates)还会随域名一起移动。
+对于[个人 RMS](/azure/information-protection/rms-for-individuals)，如果非托管组织与你拥有的组织位于同一区域，则自动创建的[Azure 信息保护组织密钥](/azure/information-protection/plan-implement-tenant-key)和[默认保护模板](/azure/information-protection/configure-usage-rights#rights-included-in-the-default-templates)将另外随域名一起移动。
 
-当非托管租户位于不同区域时，密钥和模板不随之移动。 例如，如果非托管租户位于欧洲，并且你拥有的组织处于北美中。
+当非托管组织在不同的区域时，密钥和模板不会移动。 例如，如果非托管组织在欧洲，并且你拥有的组织处于北美中。
 
 虽然个人版 RMS 旨在支持通过 Azure AD 身份验证来打开受保护的内容，但它不会阻止用户对内容也进行保护。 如果用户已通过个人 RMS 订阅保护内容，并且未移动密钥和模板，则在域接管后，不能访问该内容。
 
 ### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>用于“ForceTakeover”选项的 Azure AD PowerShell cmdlet
 可以查看在 [PowerShell 示例](#powershell-example)中使用的这些 cmdlet。
 
-cmdlet | 使用情况
+cmdlet | 用法
 ------- | -------
-`connect-msolservice` | 出现提示时，请登录到托管租户。
-`get-msoldomain` | 显示与当前租户关联的域名。
-`new-msoldomain –name <domainname>` | 将域名以“未验证”方式添加到租户（尚未执行 DNS 验证）。
-`get-msoldomain` | 该域名现已包含在与托管租户关联的域名列表中，但被列为“未验证”****。
+`connect-msolservice` | 出现提示时，请登录到托管组织。
+`get-msoldomain` | 显示与当前组织关联的域名。
+`new-msoldomain –name <domainname>` | 将域名作为 "未验证" 添加到组织（尚未执行任何 DNS 验证）。
+`get-msoldomain` | 域名现在包含在与托管组织关联的域名列表中，但列为 "未**验证**"。
 `get-msoldomainverificationdns –Domainname <domainname> –Mode DnsTxtRecord` | 提供信息以将其放入域 (MS=xxxxx) 的新 DNS TXT 记录中。 可能不会立即进行验证，因为 TXT 记录需要花费一些时间传播，所以请等待几分钟，然后再考虑使用“-ForceTakeover”选项****。 
-`confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>若仍未验证域名，则可使用“-ForceTakeover”选项继续操作****。 它验证已创建 TXT 记录并启动接管进程。<li>仅在强制实施外部管理员接管时将“-ForceTakeover”选项添加到 cmdlet，例如，当非托管租户使用 Office 365 服务阻止接管时****。
+`confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>若仍未验证域名，则可使用“-ForceTakeover”选项继续操作****。 它验证已创建 TXT 记录并启动接管进程。<li>仅当强制外部管理员接管时，才应将 **-ForceTakeover**选项添加到 cmdlet，例如，当非托管组织有 Office 365 服务阻止接管时。
 `get-msoldomain` | 域列表现在将该域名显示为“已验证”****。
 
 > [!NOTE]

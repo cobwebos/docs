@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddfc4bf7ed3bdf214a44a5dfe03259d32b2f3f94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43eba1b2f3373555e871b586ae633dcb64abfd9b
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74025691"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582690"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>识别和解决 Azure Active Directory 中组的许可证分配问题
 
@@ -100,7 +100,7 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 
 ## <a name="duplicate-proxy-addresses"></a>重复的代理地址
 
-如果使用的是 Exchange Online，可能会使用相同的代理地址值错误地配置租户中的某些用户。 当基于组的许可尝试为此类用户分配许可证时，此操作会失败并显示“代理地址已被使用”。
+如果你使用 Exchange Online，则组织中的某些用户可能会使用相同的代理地址值错误地配置。 当基于组的许可尝试为此类用户分配许可证时，此操作会失败并显示“代理地址已被使用”。
 
 > [!TIP]
 > 若要查看是否有重复的代理地址，请针对 Exchange Online 执行以下 PowerShell cmdlet：

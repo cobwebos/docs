@@ -33,6 +33,8 @@
   items:
     - name: Azure 安全基线概述
       href: security-baselines-overview.md
+    - name: API 管理安全基线
+      href: ../../api-management/security-baseline.md
     - name: Azure Cache for Redis 安全基线
       href: ../../azure-cache-for-redis/security-baseline.md
     - name: 备份安全基线
@@ -45,8 +47,12 @@
       href: ../../cosmos-db/security-baseline.md
     - name: 数据资源管理器安全基线
       href: /azure/data-explorer/security-baseline
+    - name: Databricks 安全基线
+      href: ../../azure-databricks/security-baseline.md
     - name: 事件中心安全基线
       href: ../../event-hubs/security-baseline.md
+    - name: Functions 安全基线
+      href: ../../azure-functions/security-baseline.md
     - name: HDInsight 安全基线
       href: ../../hdinsight/security-baseline.md
     - name: Key Vault 安全基线

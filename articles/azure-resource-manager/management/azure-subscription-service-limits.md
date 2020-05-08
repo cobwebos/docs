@@ -2,13 +2,15 @@
 title: Azure 订阅限制和配额
 description: 提供常见的 Azure 订阅和服务限制、配额和约束的列表。 本文包括有关如何增加限制以及最大值的信息。
 ms.topic: conceptual
+author: davidsmatlak
+ms.author: v-dasmat
 ms.date: 04/21/2020
-ms.openlocfilehash: 00bd85febe34a7bd9b4e993d5697fa810347711b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 865c39ea9a48f9f5e0fbf04dea629b6886cf7ae4
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81768774"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82584068"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 
@@ -19,13 +21,13 @@ ms.locfileid: "81768774"
 ## <a name="managing-limits"></a>管理限制
 
 > [!NOTE]
-> 某些服务具有可调整的限制。
+> 某些服务的限制可调整。
 >
-> 如果服务没有可调整的限制，下表将使用标头**限制**。 在这些情况下，默认值和最大限制相同。
+> 当某个服务的限制不可调整时，下面的表会使用表头“限制”  。 在这些情况下，默认值和最大限制相同。
 >
-> 如果可以调整此限制，则表包含**默认限制**和**最大限制**标头。 此限制可以高于默认限制以上，但不超过最大限制。
+> 如果可以调整限制，则表中包含“默认限制”  和“最大限制”  表头。 可以将限制提高到默认限制以上，但不能超过最大限制。
 >
-> 如果要提高限制或配额超过默认限制，请免费[打开联机客户支持请求](../templates/error-resource-quota.md)。
+> 如果想要提高限制或配额，使其超出默认限制，可以[免费建立联机客户支持请求](../templates/error-resource-quota.md)。
 
 [免费试用订阅](https://azure.microsoft.com/offers/ms-azr-0044p)不符合限制或配额增加的条件。 如果有[免费试用版订阅](https://azure.microsoft.com/offers/ms-azr-0044p)，可将其升级到[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)订阅。 有关详细信息，请参阅将[Azure 免费试用版订阅升级到即用即付订阅](../../billing/billing-upgrade-azure-subscription.md)和[免费试用订阅常见问题解答](https://azure.microsoft.com/free/free-account-faq)。
 
@@ -35,9 +37,9 @@ ms.locfileid: "81768774"
 
 因此，请考虑针对任意区域中的工作负荷来确定所需的 Azure 资源组配额， 然后在需将内容部署到其中的每个区域中请求相应的量。 有关如何确定特定区域的当前配额的帮助，请参阅[解决资源配额错误](../templates/error-resource-quota.md)。
 
-## <a name="general-limits"></a>常规限制
+## <a name="general-limits"></a>一般限制
 
-有关资源名称的限制，请参阅[Azure 资源的命名规则和限制](resource-name-rules.md)。
+有关资源名称的限制，请参阅 [Azure 资源的命名规则和限制](resource-name-rules.md)。
 
 有关资源管理器 API 读写限制的信息，请参阅[限制资源管理器请求](request-limits-and-throttling.md)。
 
@@ -87,9 +89,9 @@ ms.locfileid: "81768774"
 
 定价层决定了搜索服务的容量和限制。 层包括：
 
-* “免费”层**** 为多租户服务，可与其他 Azure 订阅用户共享，旨在用于评估和小型开发项目。
-* 基本层**** 为规模较小的生产工作负荷提供专用计算资源，并为高可用查询工作负荷提供最多 3 个副本。
-* “标准”层（包括 S1、S2、S3 和 S3 高密度）**** 适用于较大型生产工作负荷。 “标准”层内有多个级别，以便可以选择与工作负荷配置文件最匹配的资源配置。
+* “免费”层  为多租户服务，可与其他 Azure 订阅用户共享，旨在用于评估和小型开发项目。
+* 基本层  为规模较小的生产工作负荷提供专用计算资源，并为高可用查询工作负荷提供最多 3 个副本。
+* “标准”层（包括 S1、S2、S3 和 S3 高密度）  适用于较大型生产工作负荷。 “标准”层内有多个级别，以便可以选择与工作负荷配置文件最匹配的资源配置。
 
 **基于订阅的限制**
 
@@ -131,7 +133,7 @@ ms.locfileid: "81768774"
 
 ## <a name="azure-machine-learning-limits"></a>Azure 机器学习限制
 
-可以在 " [Azure 机器学习配额" 页](../../machine-learning/how-to-manage-quotas.md)中找到 Azure 机器学习计算配额的最新值
+可在[“Azure 机器学习配额”页](../../machine-learning/how-to-manage-quotas.md)中找到 Azure 机器学习计算配额的最新值
 
 ## <a name="azure-maps-limits"></a>Azure Maps 限制
 
@@ -171,7 +173,7 @@ ms.locfileid: "81768774"
 
 [!INCLUDE [azure-backup-limits](../../../includes/azure-backup-limits.md)]
 
-## <a name="batch-limits"></a>Batch 限制
+## <a name="batch-limits"></a>批处理限制
 
 [!INCLUDE [azure-batch-limits](../../../includes/azure-batch-limits.md)]
 
@@ -187,7 +189,7 @@ ms.locfileid: "81768774"
 
 ## <a name="container-registry-limits"></a>容器注册表限制
 
-下表详细介绍了基本、标准和高级[服务层](../../container-registry/container-registry-skus.md)的功能和限制。
+下表详细介绍了“基本”、“标准”和“高级”[服务层级](../../container-registry/container-registry-skus.md)的功能和限制。
 
 [!INCLUDE [container-registry-limits](../../../includes/container-registry-limits.md)]
 
@@ -248,7 +250,7 @@ ms.locfileid: "81768774"
 
 ### <a name="media-services-v2-legacy"></a>媒体服务 v2（旧版）
 
-有关特定于媒体服务 v2 （旧版）的限制，请参阅[媒体服务 v2 （旧版）](https://docs.microsoft.com/azure/media-services/previous/media-services-quotas-and-limitations)
+若要了解特定于媒体服务 v2（旧版）的限制，请参阅[媒体服务 v2（旧版）](https://docs.microsoft.com/azure/media-services/previous/media-services-quotas-and-limitations)
 
 ## <a name="mobile-services-limits"></a>移动服务限制
 
@@ -325,7 +327,7 @@ ms.locfileid: "81768774"
 
 ## <a name="sql-data-warehouse-limits"></a>SQL 数据仓库限制
 
-有关 SQL 数据仓库的限制，请参阅[Sql 数据仓库资源限制](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
+有关 SQL 数据仓库限制，请参阅 [SQL 数据仓库资源限制](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
 
 ## <a name="storage-limits"></a>存储限制
 
@@ -391,7 +393,7 @@ ms.locfileid: "81768774"
 
 [!INCLUDE [azure-virtual-machines-limits](../../../includes/azure-virtual-machines-limits.md)]
 
-### <a name="virtual-machines-limits---azure-resource-manager"></a>虚拟机限制 - Azure 资源管理器
+### <a name="virtual-machines-limits---azure-resource-manager"></a>虚拟机限制 - Azure Resource Manager
 
 使用 Azure 资源管理器和 Azure 资源组时，以下限制适用。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: 3d250ef1aba979be04a44acaf31a3d685f162e37
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df96ceb47bf33b734f2127bade50af18713a97a0
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80283882"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82581364"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>用于 VM 的 Azure Monitor 公开发布（GA）常见问题
 此正式发行版常见问题解答介绍了在我们为 GA 做好准备后2019和 Q1 2020 中所做的更改。
@@ -44,7 +44,7 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-grou
 
 ## <a name="what-should-i-do-about-the-performance-counters-in-my-workspace-if-i-install-the-vminsights-solution"></a>如果安装 VMInsights 解决方案，我应该如何处理我的工作区中的性能计数器？
 
-上一种启用用于 VM 的 Azure Monitor 在工作区中使用性能计数器的方法。 当前版本将此数据存储在名为`InsightsMetrics`的表中。 如果不再需要使用 countersin，可以选择禁用这些性能。 
+上一种启用用于 VM 的 Azure Monitor 在工作区中使用性能计数器的方法。 当前版本将此数据存储在名为`InsightsMetrics`的表中。 如果不再需要使用这些性能计数器，可以选择在工作区中禁用这些计数器。 
 
 >[!NOTE]
 >如果在`Perf`表中有引用这些计数器的警报规则，则需要对其进行更新以引用存储在表中的`InsightsMetrics`新数据。 请参阅我们的文档，以了解可用于引用此表的示例日志查询。

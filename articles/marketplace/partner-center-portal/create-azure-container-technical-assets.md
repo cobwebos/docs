@@ -1,29 +1,29 @@
 ---
-title: 创建 Azure VM 技术资产
-description: 本文介绍在 Azure Marketplace 上配置容器产品/服务的步骤和要求。
+title: Azure 容器提供的技术概念-Microsoft 商业应用商店
+description: 帮助你在 Azure Marketplace 上配置容器产品/服务的技术资源和指南。
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: e51b8c705533fd74a5e46eaa2570563fef485309
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3c6f88df151cc497f0de670d5d78a05c7477459
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730628"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791878"
 ---
-# <a name="create-an-azure-vm-technical-asset"></a>创建 Azure VM 技术资产
+# <a name="create-an-azure-container-offer"></a>创建 Azure 容器产品/服务
 
 > [!IMPORTANT]
 > 我们正在将 Azure 容器提供的管理从云合作伙伴门户迁移到合作伙伴中心。 在迁移你的产品/服务之前，请按照为云合作伙伴门户[准备容器技术资产](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-create-technical-assets)中的说明来管理你的产品/服务。
 
-本文介绍在 Azure Marketplace 上配置容器产品/服务的步骤和要求。
+本文提供技术资源和建议，帮助你在 Azure Marketplace 上创建容器产品/服务。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
-有关快速入门、教程和示例，请参阅[Azure 容器实例](https://docs.microsoft.com/azure/container-instances)。
+有关快速入门、教程和示例，请参阅[Azure 容器实例文档](https://docs.microsoft.com/azure/container-instances)。
 
 ## <a name="fundamental-technical-knowledge"></a>基础技术知识
 
@@ -61,6 +61,6 @@ ms.locfileid: "81730628"
 - [教程：创建用于部署到 Azure 容器实例的容器映像](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
 - [教程：通过 Azure 容器注册表任务在云中构建和部署容器映像](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task)。
 
-## <a name="next-step"></a>下一步
+## <a name="next-steps"></a>后续步骤
 
 - [创建容器产品](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer)。
