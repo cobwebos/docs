@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46be728216ed4b9c9e84c1c7f68c5ddf2051f42b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fdc011a39c5526e6a2577ab1b21567bbe64ffcc6
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672299"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788869"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>如何：在 Azure AD 中管理过时设备
 
@@ -176,7 +176,7 @@ Get-MsolDevice -all -LogonTimeBefore $dt | select-object -Property Enabled, Devi
 
 将拒绝使用该设备在 Azure AD 中进行身份验证。 常见示例包括：
 
-- **已加入混合 Azure AD 的设备** - 用户也许可以使用该设备登录到其本地域。 但是，他们无法访问 Office 365 等 Azure AD 资源。
+- **混合 Azure AD 联接的设备**-用户可以使用设备登录到其本地域。 但是，他们无法访问 Office 365 等 Azure AD 资源。
 - **已加入 Azure AD 的设备** - 用户无法使用该设备登录。 
 - **移动设备** - 用户无法访问 Office 365 等 Azure AD 资源。 
 

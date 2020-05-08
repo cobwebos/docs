@@ -10,18 +10,18 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 8140fc4286ac97260e0b23ea700a70303ec69e2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5428f24ea5ab780c4b51e0af37908077ddc32232
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81411205"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891367"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>为 Azure 机器学习工作区配置 Azure 专用链接（预览）
 
 本文档介绍如何将 Azure 私有链接与 Azure 机器学习工作区结合使用。 此功能目前以预览版提供，可在美国东部、美国西部2、美国中南部地区获得。 
 
-使用 Azure 专用链接，可以使用专用终结点连接到工作区。 专用终结点是虚拟网络中的一组专用 IP 地址。 然后，你可以将对工作区的访问权限限制为仅在专用 IP 地址上进行。 私有链接有助于降低数据渗透的风险。 若要了解有关专用终结点的详细信息，请参阅[Azure 专用链接](/azure/private-link/private-link-overview)一文。
+使用 Azure 专用链接，可以使用专用终结点连接到工作区。 专用终结点是虚拟网络中的一组专用 IP 地址。 然后，你可以将对工作区的访问权限限制为仅在专用 IP 地址上进行。 私有链接有助于降低数据渗透的风险。 若要详细了解专用终结点，请参阅 [Azure 专用链接](/azure/private-link/private-link-overview)一文。
 
 > [!IMPORTANT]
 > Azure 专用链接不会影响 Azure 控制平面（管理操作），例如删除工作区或管理计算资源。 例如，创建、更新或删除计算目标。 这些操作是在公共 Internet 上按正常方式执行的。
@@ -118,7 +118,7 @@ az group deployment create \
 
 若要保护你的工作区使用的 Azure Key Vault，你可以将其放在虚拟网络中，或者为其启用 "专用" 链接。
 
-有关将密钥保管库放入虚拟网络的信息，请参阅在[工作区中使用密钥保管库实例](how-to-enable-virtual-network.md#use-a-key-vault-instance-with-your-workspace)。
+有关将密钥保管库放入虚拟网络的信息，请参阅在[工作区中使用密钥保管库实例](how-to-enable-virtual-network.md#key-vault-instance)。
 
 有关启用密钥保管库专用链接的信息，请参阅将[Key Vault 与 Azure Private 链接集成](/azure/key-vault/private-link-service)。
 
@@ -131,7 +131,7 @@ az group deployment create \
 
 ## <a name="azure-container-registry"></a>Azure 容器注册表
 
-有关在虚拟网络中保护 Azure 容器注册表的信息，请参阅[使用 Azure 容器注册表](how-to-enable-virtual-network.md#use-azure-container-registry)。
+有关在虚拟网络中保护 Azure 容器注册表的信息，请参阅[使用 Azure 容器注册表](how-to-enable-virtual-network.md#azure-container-registry)。
 
 > [!IMPORTANT]
 > 如果为 Azure 机器学习工作区使用专用链接，并在虚拟网络中放置工作区的 Azure 容器注册表，则还必须应用以下 Azure 资源管理器模板。 此模板允许你的工作区通过专用链接与 ACR 通信。

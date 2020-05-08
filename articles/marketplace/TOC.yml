@@ -17,7 +17,7 @@
               href: ./lead-management-for-cloud-marketplace.md
             - name: 在商业市场中进行交易
               href: ./marketplace-commercial-transaction-capabilities-and-considerations.md
-            - name: 专用套餐
+            - name: 专用产品/服务
               href: ./private-offers.md
             - name: 标准合同
               href: ./standard-contract.md
@@ -28,9 +28,9 @@
           items:
             - name: 虚拟机
               href: ./marketplace-virtual-machines.md
-            - name: Azure 应用程序：解决方案模板
+            - name: Azure 应用：解决方案模板
               href: ./marketplace-solution-templates.md
-            - name: Azure 应用程序：托管应用程序
+            - name: Azure 应用：托管应用程序
               href: ./marketplace-managed-apps.md
             - name: SaaS 应用
               href: ./marketplace-saas-applications-technical-publishing-guide.md
@@ -42,7 +42,7 @@
               href: ./consulting-services.md
             - name: Office 365、Dynamics 365 和 Power BI
               href: ./appsource-offer-publishing-guide.md
-            - name: 使用 Azure Active Directory 启用 AppSource 和市场列表
+            - name: 允许产品/服务向 Azure AD 进行身份验证
               href: ./enable-appsource-marketplace-using-azure-ad.md
             - name: 集成的解决方案
               href: ./integrated-solutions-for-publishers.md
@@ -51,7 +51,7 @@
           items:
             - name: 套餐列出最佳做法
               href: ./gtm-offer-listing-best-practices.md
-            - name: 如何成为特别推荐的应用
+            - name: 成为特别推荐的产品/服务
               href: ./gtm-how-to-get-featured.md
             - name: 市场内容验证
               href: ./marketplace-criteria-content-validation.md
@@ -69,7 +69,7 @@
         - name: 对商业市场的支持
           href: ./support-azure-marketplace.md
           items:
-            - name: 市场常见问题解答
+            - name: 商业市场常见问题解答
               href: ./marketplace-faq-publisher-guide.md
             - name: 上市地区和货币
               href: ./marketplace-geo-availability-currencies.md
@@ -289,49 +289,9 @@
             - name: 帮助 Wiki
               href: ./cloud-partner-portal-orig/help-wiki.md
         - name: IoT Edge 模块套餐
-          href: ./cloud-partner-portal/iot-edge-module/cpp-offer-process-parts.md
-          items:
-            - name: 先决条件
-              href: ./cloud-partner-portal/iot-edge-module/cpp-prerequisites.md
-            - name: 创建 IoT Edge 模块套餐
-              href: ./cloud-partner-portal/iot-edge-module/cpp-create-offer.md
-              items:
-                - name: “产品/服务设置”选项卡
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-offer-settings-tab.md
-                - name: “SKU”选项卡
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-skus-tab.md
-                - name: “市场”选项卡
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-marketplace-tab.md
-                - name: “支持”选项卡
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-support-tab.md
-            - name: 创建 IoT Edge 模块技术资产
-              href: ./cloud-partner-portal/iot-edge-module/cpp-create-technical-assets.md
-            - name: 发布 IoT Edge 模块套餐
-              href: ./cloud-partner-portal/iot-edge-module/cpp-publish-offer.md
-            - name: 更新现有套餐
-              href: ./cloud-partner-portal/iot-edge-module/cpp-update-existing-offer.md
+          href: ./cloud-partner-portal/iot-edge-module/iot-edge-module-offer.md
         - name: Power BI 应用套餐
           href: ./cloud-partner-portal/power-bi/cpp-power-bi-offer.md
-          items:
-            - name: 先决条件
-              href: ./cloud-partner-portal/power-bi/cpp-prerequisites.md
-            - name: 创建 Power BI 应用套餐
-              href: ./cloud-partner-portal/power-bi/cpp-create-offer.md
-              items:
-                - name: “产品/服务设置”选项卡
-                  href: ./cloud-partner-portal/power-bi/cpp-offer-settings-tab.md
-                - name: “技术信息”选项卡
-                  href: ./cloud-partner-portal/power-bi/cpp-technical-info-tab.md
-                - name: “店面详细信息”选项卡
-                  href: ./cloud-partner-portal/power-bi/cpp-storefront-details-tab.md
-                - name: “联系人”选项卡
-                  href: ./cloud-partner-portal/power-bi/cpp-contacts-tab.md
-            - name: 创建 Power BI 应用技术资产
-              href: ./cloud-partner-portal/power-bi/cpp-create-technical-assets.md
-            - name: 发布 Power BI 应用产品/服务
-              href: ./cloud-partner-portal/power-bi/cpp-publish-offer.md
-            - name: 更新现有套餐
-              href: ./cloud-partner-portal/power-bi/cpp-update-existing-offer.md
         - name: SaaS 应用程序套餐
           href: ./cloud-partner-portal/saas-app/cpp-saas-offer.md
         - name: 虚拟机套餐
@@ -495,10 +455,10 @@
               href: ./partner-center-portal/create-new-business-central-offer.md
         - name: IoT Edge 模块产品/服务
           items:
-            - name: 准备 IoT Edge 模块技术资产
-              href: ./partner-center-portal/create-iot-edge-module-asset.md
             - name: 创建 IoT Edge 模块产品/服务
               href: ./partner-center-portal/azure-iot-edge-module-creation.md
+            - name: 准备 IoT Edge 模块技术资产
+              href: ./partner-center-portal/create-iot-edge-module-asset.md
         - name: 托管服务产品
           items:
             - name: 创建托管服务产品

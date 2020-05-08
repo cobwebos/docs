@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
-ms.openlocfilehash: 28d85736019a6fea6d977d813fdc1c9be6429748
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 043dc4f6e57620f58a1cf5f76db755703421800f
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80883264"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778730"
 ---
 # <a name="how-to-configure-endpoints"></a>如何配置终结点
 
@@ -31,6 +31,8 @@ ms.locfileid: "80883264"
 -   这会打开“终结点”  页，该页会列出租户的所有身份验证终结点。
 
 -   将特定于要使用的身份验证协议的终结点与应用程序 ID 结合使用，生成特定于应用程序的身份验证请求。
+
+**国内云**（例如，中国、德国和美国政府 Azure AD）有自己的应用注册门户和 Azure AD 身份验证终结点。 有关详细信息，请参阅[国家云概述](authentication-national-cloud.md)。
 
 ## <a name="next-steps"></a>后续步骤
 [Azure Active Directory 开发人员指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)

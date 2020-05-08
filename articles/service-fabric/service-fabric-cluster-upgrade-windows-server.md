@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 489a90180454e2b4a9dad34730fbd3c4f235a2ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5921fc9038e53f34e23f6fd97111c71b29699dc5
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77598096"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793136"
 ---
 # <a name="upgrade-the-service-fabric-version-that-runs-on-your-cluster"></a>升级群集上运行的 Service Fabric 版本 
 
@@ -162,7 +162,7 @@ ms.locfileid: "77598096"
 ## <a name="next-steps"></a>后续步骤
 * [升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)
 * 自定义部分 [Service Fabric 群集设置](service-fabric-cluster-fabric-settings.md)。
-* [扩展和缩减群集](service-fabric-cluster-scale-up-down.md)。
+* [扩展和缩减群集](service-fabric-cluster-scale-in-out.md)。
 
 <!--Image references-->
 [getfabversions]: ./media/service-fabric-cluster-upgrade-windows-server/getfabversions.PNG

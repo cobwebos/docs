@@ -3,15 +3,15 @@ title: 访问 Azure 虚拟网络
 description: 概述 integration service 环境（ISEs）如何帮助逻辑应用访问 Azure 虚拟网络（Vnet）
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
-ms.topic: article
-ms.date: 03/12/2020
-ms.openlocfilehash: 9d5e0c088fe773f16e1fc57f292ca812906aa09c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: jonfan, logicappspm
+ms.topic: conceptual
+ms.date: 05/01/2020
+ms.openlocfilehash: d74303df74a1e877645b333fa0726a68055c819b
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127242"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734904"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用访问 Azure 虚拟网络资源
 
@@ -111,16 +111,18 @@ ms.locfileid: "79127242"
 
 ## <a name="ise-endpoint-access"></a>ISE 终结点访问
 
-创建 ISE 时，可以选择使用内部或外部访问终结点。 你的选择将确定 ISE 中逻辑应用的请求或 webhook 触发器是否可以从虚拟网络外部接收调用。
-
-这些终结点还会影响可在逻辑应用的运行历史记录中访问输入和输出的方式。
-
-* **内部**：允许在 ISE 中调用逻辑应用的专用终结点，你可以在其中查看和访问仅运行历史记录中的逻辑应用的输入和输出（*仅从虚拟网络内部*）
-
-* **External**：允许在 ISE 中调用逻辑应用的公共终结点，可在其中*从虚拟网络外部*查看和访问逻辑应用的输入和输出。 如果使用网络安全组（Nsg），请确保将其设置为具有入站规则，以允许访问运行历史记录的输入和输出。 有关详细信息，请参阅[为 ISE 启用访问权限](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)。
+创建 ISE 时，可以选择使用内部或外部访问终结点。 你的选择将确定 ISE 中逻辑应用的请求或 webhook 触发器是否可以从虚拟网络外部接收调用。 这些终结点还会影响从逻辑应用的运行历史记录访问输入和输出的方式。
 
 > [!IMPORTANT]
-> "访问终结点" 选项仅在创建 ISE 时可用，不能在以后更改。
+> 只能在 ISE 创建过程中选择访问终结点，以后无法更改此选项。
+
+* **内部**：专用终结点允许调用 ISE 中的逻辑应用，其中你只能*从虚拟网络内部*查看和访问逻辑应用 "运行历史记录" 中的输入和输出。 请确保专用终结点与要从中访问运行历史记录的计算机之间存在网络连接。 例如，你的客户端计算机可以位于 ISE 的虚拟网络中，也可以存在于连接到 ISE 虚拟网络的虚拟网络中，例如通过对等互连或虚拟专用网络。
+
+* **外部**：公用终结点允许调用 ISE 中的逻辑应用，可在其中查看和访问来自*虚拟网络外部*的逻辑应用的运行历史记录的输入和输出。 如果使用网络安全组（Nsg），请确保将其设置为具有入站规则，以允许访问运行历史记录的输入和输出。 有关详细信息，请参阅[为 ISE 启用访问权限](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)。
+
+若要确定 ISE 是否使用内部或外部访问终结点，请在 ISE 菜单上的 "**设置**" 下，选择 "**属性**"，然后找到 "**访问终结点**" 属性：
+
+![查找 ISE 访问终结点](./media/connect-virtual-network-vnet-isolated-environment-overview/find-ise-access-endpoint.png)
 
 <a name="create-integration-account-environment"></a>
 

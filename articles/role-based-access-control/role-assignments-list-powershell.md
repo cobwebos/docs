@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure RBAC 和 Azure PowerShell 列出角色分配
-description: 了解如何使用 Azure 基于角色的访问控制 (RBAC) 和 Azure PowerShell 来确定用户、组、服务主体和托管标识有权访问的资源内容。
+title: 使用 Azure PowerShell 列出 Azure 角色分配-Azure RBAC
+description: 了解如何使用 Azure PowerShell 和 Azure 基于角色的访问控制（Azure RBAC）确定用户、组、服务主体或托管标识有权访问哪些资源。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 01/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0ec3153e5b1bfbe04a079d1cfc44e8e8709784d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1bdf703ac29ce11749de70fa0ef5972ee284401b
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75931154"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735702"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-azure-powershell"></a>使用 Azure RBAC 和 Azure PowerShell 列出角色分配
+# <a name="list-azure-role-assignments-using-azure-powershell"></a>使用 Azure PowerShell 列出 Azure 角色分配
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] 本文介绍如何使用 Azure PowerShell 列出角色分配。
 
@@ -168,4 +168,4 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure RBAC 和 Azure PowerShell 添加或删除角色分配](role-assignments-powershell.md)
+- [使用 Azure PowerShell 添加或删除 Azure 角色分配](role-assignments-powershell.md)

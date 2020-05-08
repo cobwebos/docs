@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 03/30/2020
-ms.openlocfilehash: f9ca75943eaec2ae018b54145d872fc09294035e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed65d69c18f2dbcd53324fe3cc18af8c51c546b2
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80398183"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780107"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>什么是 Azure 机器学习中的计算目标? 
 
@@ -57,7 +57,7 @@ Azure 机器学习为不同的计算资源提供不同的支持。  你也可以
 
 你还可以使用[机器学习扩展为 Azure CLI](tutorial-train-deploy-model-cli.md#create-the-compute-target-for-training)创建计算群集。
 
-创建时，这些计算资源会自动成为工作区的一部分，这与其他类型的计算目标不同。
+当创建时，这些计算资源将自动成为工作区的一部分，与其他类型的计算目标不同。
 
 ### <a name="compute-clusters"></a>计算群集
 
@@ -68,7 +68,33 @@ Azure 机器学习为不同的计算资源提供不同的支持。  你也可以
 * 自动化群集管理和作业计划 
 * 为 CPU 和 GPU 资源提供支持
 
+### <a name="supported-vm-series-and-sizes"></a>支持的 VM 系列和大小
 
+在 Azure 机器学习中选择托管计算资源的节点大小时，可以从 Azure 中的 "选择 VM 大小" 中选择。 Azure 针对不同工作负荷提供适用于 Linux 和 Windows 的各种大小。 请参阅此处，了解有关不同[VM 类型和大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)的详细信息。
+
+选择 VM 大小时有几个例外和限制：
+* Azure 机器学习中不支持某些 VM 系列。
+* 某些 VM 系列受到限制。 若要使用受限制的系列，请联系支持人员并请求提高序列的配额。 有关联系支持人员的信息，请参阅[Azure 支持选项](https://azure.microsoft.com/support/options/)
+
+请参阅下表以了解有关支持的系列和限制的详细信息。 
+
+| **支持的 VM 系列**  | **限制** |
+|------------|------------|
+| D | None |
+| Dv2 | None |  
+| DSv2 | None |  
+| FSv2 | None |  
+| M | 需要批准 |
+| NC | None |    
+| NCsv2 | 需要批准 |
+| NCsv3 | 需要批准 |  
+| Dns | 需要批准 |
+| NDv2 | 需要批准 |
+| NV | None |
+| NVv3 | 需要批准 | 
+
+
+虽然 Azure 机器学习支持这些 VM 系列，但它们可能不会在所有 Azure 区域中提供。 可在此处查看可用的 VM 系列：[按区域提供的产品](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)。
 
 ## <a name="unmanaged-compute"></a>非托管计算
 
@@ -76,6 +102,6 @@ Azure 机器学习为不同的计算资源提供不同的支持。  你也可以
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何操作：
+了解如何：
 * [设置用来训练模型的计算目标](how-to-set-up-training-targets.md)
 * [将模型部署到计算目标](how-to-deploy-and-where.md)

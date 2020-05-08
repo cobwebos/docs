@@ -13,12 +13,12 @@ ms.date: 01/30/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 25c219bedbbbec9fbc0c5617c7bd9fc482faf49a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db9937d87692a1221d72bd27cfd653d803b9a1c6
+ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050516"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82883237"
 ---
 # <a name="authentication-flows"></a>身份验证流
 
@@ -151,7 +151,7 @@ MSAL 支持 [OAuth 2 设备代码流](v2-oauth2-device-code.md)，可让用户�
 
 在上图中：
 
-1. 只要需要用户身份验证，应用程序就会提供代码，并要求用户使用其他设备（如连接 internet 的智能手机）来访问 URL （例如`https://microsoft.com/devicelogin`）。 然后，系统会提示用户输入该代码，并转到完成正常身份验证的体验，包括许可提示和多重身份验证（如果需要）。
+1. 每当需要用户身份验证时，应用将提供一个代码，并要求用户使用另一台设备（例如，已连接到 Internet 的智能手机）访问某个 URL（例如 `https://microsoft.com/devicelogin`）。 然后，系统会提示用户输入该代码，并转到完成正常身份验证的体验，包括许可提示和多重身份验证（如果需要）。
 
 2. 成功完成身份验证后，命令行应用会通过传回通道收到所需的令牌，并使用这些令牌执行所需的 Web API 调用。
 
@@ -193,14 +193,14 @@ IWA 不会绕过多重身份验证。 如果配置了多重身份验证，需要
 - 租户管理员必须已事先许可租户中的所有用户使用该应用程序。
 
 这意味着需要符合以下条件之一：
-- 开发人员已在 Azure 门户上自行选择“授权”。****
-- 租户管理员已在应用程序注册的“API 权限”选项卡中选择“授予/撤销 {租户域} 的管理员许可”（请参阅[添加用于访问 Web API 的权限](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)）。********
+- 开发人员已在 Azure 门户上自行选择“授权”。 
+- 租户管理员已在应用程序注册的“API 权限”选项卡中选择“授予/撤销 {租户域} 的管理员许可”（请参阅[添加用于访问 Web API 的权限](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)）。  
 - 你已提供某种方式让用户许可应用程序（请参阅[请求单个用户的许可](v2-permissions-and-consent.md#requesting-individual-user-consent)）。
 - 你已提供某种方式让租户管理员许可应用程序（请参阅[管理员许可](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)）。
 
 已针对 .NET Desktop、.NET Core 和 Windows 通用平台应用启用 IWA 流。 在 .NET Core 上，必须向 IWA 提供用户名，因为 .NET Core 无法从操作系统获取用户名。
   
-有关许可的详细信息，请参阅 v2.0[权限和许可](v2-permissions-and-consent.md)。
+有关许可的详细信息，请参阅 [v2.0 权限和许可](v2-permissions-and-consent.md)。
 
 ## <a name="usernamepassword"></a>用户名/密码
 
@@ -226,10 +226,10 @@ MSAL 支持 [OAuth 2 资源所有者密码凭据授予](v2-oauth-ropc.md)，后�
 
 除了 [Windows 集成身份验证约束](#integrated-windows-authentication)以外，以下约束也适用：
 
-- 用户名/密码流与条件性访问和多重身份验证不兼容。 因此，如果应用在 Azure AD 租户中运行，而该租户中的租户管理员需要多重身份验证，则你无法使用此流。 许多组织都会提出这种要求。
+- 用户名/密码流与条件访问和多重身份验证不兼容。 因此，如果应用在 Azure AD 租户中运行，而该租户中的租户管理员需要多重身份验证，则你无法使用此流。 许多组织都会提出这种要求。
 - 它仅适用于工作和学校帐户（而不是 Microsoft 帐户）。
 - 可在 .NET Desktop 和 .NET Core 中使用该流，但不能在通用 Windows 平台中使用。
 
 ### <a name="azure-ad-b2c-specifics"></a>Azure AD B2C 细节
 
-有关使用 MSAL.NET 和 Azure AD B2C 的详细信息，请参阅[将 ROPC 与 Azure AD B2C (MSAL.NET) 配合使用](msal-net-aad-b2c-considerations.md#resource-owner-password-credentials-ropc-with-azure-ad-b2c)。
+有关在 MSAL.NET 和 Azure AD B2C 中使用 ROPC 的详细信息，请参阅将[ROPC 与 Azure AD B2C 配合使用](msal-net-aad-b2c-considerations.md#resource-owner-password-credentials-ropc)。

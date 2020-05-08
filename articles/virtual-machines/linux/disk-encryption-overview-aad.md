@@ -8,18 +8,18 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 029743dbb44ab0ebb6ab8f695c0c966137c45107
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cc9f3b54d427a30b587d8335f6ce9b013f407374
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459791"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792558"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>使用 Azure AD 进行 Azure 磁盘加密（以前版本）
 
-新版本的 Azure 磁盘加密消除了提供 Azure Active Directory （Azure AD）应用程序参数以启用 VM 磁盘加密的要求。 使用新版本，在执行启用加密步骤时，不再需要提供 Azure AD 凭据。 在不使用新版本的情况下，必须使用 Azure AD 的应用程序参数对所有新的 Vm 进行加密。 有关如何使用新版本启用 VM 磁盘加密的说明，请参阅适用于[Linux vm 的 Azure 磁盘加密](disk-encryption-overview.md)。 已使用 Azure AD 应用程序参数加密的 VM 仍受支持，应继续使用 AAD 语法进行维护。
+新版本的 Azure 磁盘加密无需提供 Azure Active Directory (Azure AD) 应用程序参数即可启用 VM 磁盘加密。 使用新版本，在执行启用加密步骤时，不再需要提供 Azure AD 凭据。 所有新 VM 都必须使用新版本在没有 Azure AD 应用程序参数的情况下进行加密。 有关如何使用新版本来启用 VM 磁盘加密的说明，请参阅[适用于 Linux VM 的 Azure 磁盘加密](disk-encryption-overview.md)。 已使用 Azure AD 应用程序参数加密的 VM 仍受支持，应继续使用 AAD 语法进行维护。
 
-本文提供了对[Linux vm 的 Azure 磁盘加密](disk-encryption-overview.md)的补充，其中包含针对 Azure AD （以前版本）的 Azure 磁盘加密的其他要求和先决条件。
+本文提供了使用 Azure AD 进行 Azure 磁盘加密的其他要求和先决条件（旧版），补充说明了[适用于 Linux VM 的 Azure 磁盘加密](disk-encryption-overview.md)。
 
 这些部分中的信息保持不变：
 
@@ -27,16 +27,14 @@ ms.locfileid: "81459791"
 - [其他 VM 要求](disk-encryption-overview.md#additional-vm-requirements)
 
 
- 
-
 ## <a name="networking-and-group-policy"></a>网络和组策略
 
-若要通过使用较旧的 AAD 参数语法来启用 Azure 磁盘加密功能，基础结构即服务（IaaS） Vm 必须满足以下网络终结点配置要求： 
+若要使用旧的 AAD 参数语法来启用 Azure 磁盘加密功能，基础结构即服务 (IaaS) VM 必须符合以下网络终结点配置要求： 
   - 若要获取令牌以连接到密钥保管库，IaaS VM 必须能够连接到 Azure AD 终结点\[login.microsoftonline.com。\]
   - IaaS VM 必须能够连接到 Key Vault 终结点，以将加密密钥写入 Key Vault。
   - IaaS VM 必须能够连接到托管 Azure 扩展存储库的 Azure 存储终结点和托管 VHD 文件的 Azure 存储帐户。
-  -  如果安全策略限制从 Azure Vm 到 internet 的访问，可以解析上述 URI，并配置特定的规则以允许与 Ip 建立出站连接。 有关详细信息，请参阅[防火墙后的 Azure Key Vault](../../key-vault/general/access-behind-firewall.md)。
-  - 在 Windows 上，如果显式禁用了 TLS 1.0，并且 .NET 版本未更新为4.6 或更高版本，则通过以下注册表更改，Azure 磁盘加密可选择最新的 TLS 版本：
+  -  如果安全策略限制从 Azure VM 到 Internet 的访问，可以解析上述 URI，并配置特定的规则，允许与这些 IP 建立出站连接。 有关详细信息，请参阅[防火墙后的 Azure Key Vault](../../key-vault/general/access-behind-firewall.md)。
+  - 在 Windows 中，如果显式禁用了 TLS 1.0 且 .NET 版本未更新到 4.6 或更高版本，则下面的注册表更改将使 Azure 磁盘加密能够选择较新的 TLS 版本：
     
             [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
             "SystemDefaultTlsVersions"=dword:00000001
@@ -48,15 +46,15 @@ ms.locfileid: "81459791"
          
     
 ### <a name="group-policy"></a>组策略
- - Azure 磁盘加密解决方案对 Windows IaaS VM 使用 BitLocker 外部密钥保护程序。 对于已加入域的 Vm，不要推送任何强制 TPM 保护程序的组策略。 有关选项的组策略**允许无兼容 TPM 的 bitlocker**的信息，请参阅[bitlocker 组策略参考](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1)。
+ - Azure 磁盘加密解决方案对 Windows IaaS VM 使用 BitLocker 外部密钥保护程序。 对于已加入域的 VM，请不要推送会强制执行 TPM 保护程序的任何组策略。 有关“在没有兼容 TPM 的情况下允许 BitLocker”  选项的组策略信息，请参阅 [BitLocker 组策略参考](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1)。
 
-- 使用自定义组策略的已加入域的虚拟机上的 BitLocker 策略必须包括以下设置：[配置 BitLocker 恢复信息的用户存储-> 允许256位恢复密钥](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings)。 当 BitLocker 的自定义组策略设置不兼容时，Azure 磁盘加密会失败。 在没有正确的策略设置的计算机上，应用新策略，强制更新新策略（gpupdate/force），然后在需要时重新启动。 
+- 具有自定义组策略的已加入域虚拟机上的 BitLocker 策略必须包含以下设置：[配置 BitLocker 恢复信息的用户存储 -> 允许 256 位恢复密钥](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings)。 如果 BitLocker 的自定义组策略设置不兼容，Azure 磁盘加密会失败。 在没有正确的策略设置的计算机上应用新策略，强制更新新策略 (gpupdate.exe /force)，然后根据需要重启。 
 
 ## <a name="encryption-key-storage-requirements"></a>加密密钥存储要求 
 
 Azure 磁盘加密需要 Azure Key Vault 来控制和管理磁盘加密密钥和机密。 密钥保管库和 VM 必须位于同一 Azure 区域和订阅中。
 
-有关详细信息，请参阅[使用 Azure AD 创建和配置用于 Azure 磁盘加密的密钥保管库（以前的版本）](disk-encryption-key-vault-aad.md)。
+有关详细信息，请参阅[使用 Azure AD 创建和配置用于 Azure 磁盘加密的密钥保管库（旧版）](disk-encryption-key-vault-aad.md)。
  
 ## <a name="next-steps"></a>后续步骤
 

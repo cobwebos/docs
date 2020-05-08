@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: 9f95677211a89c1bb2a18076741dec08e76c5d70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bbb2ddaa1fb84590f9dec1c84ac4bc87a8e03022
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81390396"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738110"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>排查 Azure 到 Azure VM 复制错误
 
@@ -60,8 +60,8 @@ Site Recovery configuration failed.
 
 对于运行 Windows 操作系统的 VM，请安装最新的 Windows 更新，使所有受信任的根证书都存在于 VM 上。 按照组织中典型的 Windows 更新管理或证书更新管理过程，在 Vm 上获取最新的根证书和更新的证书吊销列表。
 
-- 如果处于未联网的环境中，请按照组织中的标准 Windows 更新过程获取证书。
-- 如果 VM 上没有所需的证书，对 Site Recovery 服务的调用会出于安全原因失败。
+- 在断开连接的环境中，请按照组织中的标准 Windows 更新过程执行操作并获取证书。
+- 如果 VM 上不存在所需证书，则对 Site Recovery 服务的调用会因安全原因而失败。
 
 若要验证问题是否已解决，请从`login.microsoftonline.com` VM 中的浏览器中转到。
 
@@ -171,9 +171,7 @@ Site Recovery configuration failed.
 
 ## <a name="outbound-urls-or-ip-ranges-error-code-151037-or-151072"></a>出站 Url 或 IP 范围（错误代码151037或151072）
 
-要使 Site Recovery 复制正常运行，需要从 VM 到特定 Url 的出站连接。 如果 VM 位于防火墙后或使用网络安全组 (NSG) 规则来控制出站连接，则可能会遇到以下问题之一。 尽管我们继续支持通过 Url 进行的出站访问，但不再支持使用 IP 范围的允许列表。
-
-### <a name="issue-1-failed-to-register-azure-vm-with-site-recovery-151195"></a>问题1：未能将 Azure VM 注册到 Site Recovery （151195）
+要使 Site Recovery 复制正常工作，需要从 VM 到特定 URL 的出站连接。 如果 VM 位于防火墙后或使用网络安全组 (NSG) 规则来控制出站连接，则可能会遇到以下问题之一。 尽管我们继续支持通过 Url 进行的出站访问，但不再支持使用 IP 范围的允许列表。
 
 #### <a name="possible-causes"></a>可能的原因
 
@@ -241,13 +239,13 @@ Azure Site Recovery 需要访问用于身份验证的 Office 365 IP 范围。
 > [!NOTE]
 > 移动服务代理仅支持**未经身份验证的代理**。
 
-### <a name="more-information"></a>更多信息
+### <a name="more-information"></a>详细信息
 
 若要指定[所需的 url](azure-to-azure-about-networking.md#outbound-connectivity-for-urls)或[所需的 IP 范围](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)，请按照[关于 Azure 中的网络到 azure 的复制](azure-to-azure-about-networking.md)中的指导进行操作。
 
 ## <a name="disk-not-found-in-vm-error-code-150039"></a>在 VM 中找不到磁盘（错误代码150039）
 
-必须初始化附加到 VM 的新磁盘。 如果找不到该磁盘，则显示以下消息：
+必须对附加到 VM 的新磁盘进行初始化。 如果找不到该磁盘，则显示以下消息：
 
 ```Output
 Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> was not mapped to a corresponding disk being reported from within the VM that has the same LUN value.
@@ -262,10 +260,10 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 
 确保数据磁盘已初始化，然后重试该操作。
 
-- **Windows**：[附加并初始化新磁盘](/azure/virtual-machines/windows/attach-managed-disk-portal)。
-- **Linux**：[在 linux 中初始化新的数据磁盘](/azure/virtual-machines/linux/add-disk)。
+- **Windows**：[附加并初始化新的磁盘](/azure/virtual-machines/windows/attach-managed-disk-portal)。
+- Linux  ：[在 Linux 中初始化新的数据磁盘](/azure/virtual-machines/linux/add-disk)。
 
-如果问题持续出现，请联系支持人员。
+如果问题仍然存在，请联系支持部门。
 
 ## <a name="multiple-disks-available-for-protection-error-code-153039"></a>可用于保护的多个磁盘（错误代码153039）
 
@@ -280,15 +278,15 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 
 #### <a name="to-protect-the-disks"></a>保护磁盘
 
-1. 中转到 **"复制的项** > "_VM 名称_ > **磁盘**。
-1. 选择未受保护的磁盘，然后选择“启用复制”：****
+1. 转到“复制的项” >  VM 名称  > “磁盘”。   
+1. 选择未受保护的磁盘，然后选择“启用复制”： 
 
    :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/add-disk.png" alt-text="启用 VM 磁盘上的复制。":::
 
 #### <a name="to-dismiss-the-warning"></a>消除警告
 
-1. 中转到 "**复制的项** > "_VM 名称_。
-1. 选择“概述”部分选择警告，然后选择“确定”。********
+1. 转到“复制的项” >  VM 名称。  
+1. 选择“概述”部分选择警告，然后选择“确定”。  
 
    :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png" alt-text="消除磁盘上的新警告。":::
 
@@ -348,7 +346,7 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 
 Site Recovery 当前要求源区域资源组和虚拟机应位于同一位置。 否则，你将无法在尝试应用保护时找到虚拟机或资源组。
 
-一种解决方法是，从 VM 而不是从恢复服务保管库启用复制。 中转到**源 VM** > **属性** > "**灾难恢复**" 并启用复制。
+一种解决方法是，从 VM 而不是从恢复服务保管库启用复制。 转到“源 VM” > “属性” > “灾难恢复”并启用复制。   
 
 ### <a name="issue-2-the-resource-group-isnt-part-of-the-selected-subscription"></a>问题2：资源组不属于所选订阅
 
@@ -383,16 +381,16 @@ Site Recovery 当前要求源区域资源组和虚拟机应位于同一位置。
 
 ### <a name="fix-the-problem"></a>解决问题
 
-请参阅 "**虚拟机** > **设置** > " "**扩展**"，并检查是否有任何处于 "失败" 状态的扩展。 卸载所有失败的扩展，然后重试保护虚拟机。
+转到“虚拟机” > “设置” > “扩展”，并检查是否有任何扩展处于失败状态。    卸载所有失败的扩展，然后重试保护虚拟机。
 
 ## <a name="vm-provisioning-state-isnt-valid-error-code-150019"></a>VM 预配状态无效（错误代码150019）
 
-若要在 VM 上启用复制，预配状态必须是“成功”。**** 遵循以下步骤检查预配状态：
+若要在 VM 上启用复制，预配状态必须是“成功”。  遵循以下步骤检查预配状态：
 
-1. 在 Azure 门户中，从“所有服务”中选择“资源浏览器”。********
-1. 展开“订阅”**** 列表并选择你的订阅。
-1. 展开 **ResourceGroups** 列表并选择 VM 的资源组。
-1. 展开“资源”**** 列表并选择你的 VM。
+1. 在 Azure 门户中，从“所有服务”中选择“资源浏览器”。  
+1. 展开“订阅”列表并选择你的订阅。 
+1. 展开“资源组”并选择 VM 的资源组。 
+1. 展开“资源”  列表并选择你的 VM。
 1. 在右侧的实例视图中检查**provisioningState**字段。
 
 ### <a name="fix-the-problem"></a>解决问题

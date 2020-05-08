@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
-ms.openlocfilehash: 34805c4eaae5d969fc2338c24f9f92404e065d15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ca4dc888af414ede270118eff72652f098d3306c
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81727172"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779036"
 ---
 # <a name="localization"></a>本地化 #
 
@@ -35,7 +35,7 @@ Azure Media Player 当前支持以下语言及其相应的语言代码：
 | 捷克语               | cs   | 意大利语                 | it     | 塞尔维亚语 - 拉丁         | sr-latn-rs   |
 | 丹麦语              | da   | 日语                | ja     | 俄语                 | ru           |
 | 德语              | de   | 哈萨克语                  | kk     | 瑞典语                 | sv           |
-| 希腊语               | el   | 韩语                  | ko     | 泰语                    | th           |
+| 希腊语               | el   | 朝鲜语                  | ko     | 泰语                    | th           |
 | 西班牙语             | es   | 立陶宛语              | lt     | 他加禄语                 | tl           |
 | 爱沙尼亚语            | et   | 拉脱维亚语                 | lv     | 土耳其语                 | tr           |
 | 巴斯克语              | eu   | 马来西亚               | ms     | 乌克兰语               | uk           |
@@ -44,7 +44,7 @@ Azure Media Player 当前支持以下语言及其相应的语言代码：
 | 法语              | fr   | 挪威语 - 尼诺斯克语     | nn     | 中文-简体    | zh-hans      |
 | 加利西亚语            | gl   | 波兰语                  | pl     | 中文-繁体   | zh-hant      |
 | 希伯来语              | he   | 葡萄牙语 - 巴西     | pt-br  |                         |              |
-| Hindi               | hu   | 葡萄牙语 - 葡萄牙   | pt-pt  |                         |              |
+| Hindi               | hi   | 葡萄牙语 - 葡萄牙   | pt-pt  |                         |              |
 
 
 > [!NOTE]
