@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: 94187cc7c0c3500a86d47a5f244457ee020581a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a97b79f7927c56a737723060cd9cb3218b12bf55
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77062432"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625487"
 ---
 # <a name="view-how-your-organization-uses-your-privacy-related-data"></a>查看组织如何使用隐私相关数据
 
@@ -24,7 +24,7 @@ ms.locfileid: "77062432"
 
 ## <a name="view-your-privacy-related-info"></a>查看与隐私相关的信息
 
-1. 登录到工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页。
+1. 登录到工作或学校帐户，然后转到 https://myaccount.microsoft.com/ 页。
 
 2. 从左侧导航窗格中选择“隐私”，或从“隐私”块中选择“查看隐私”链接************。
 

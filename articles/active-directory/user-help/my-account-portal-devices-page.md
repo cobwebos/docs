@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: e273a44c1cbc5a6a6161f059038c7e87973a33d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d43b2bd5912375c3bb2010f0f2ae75a119512f03
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77062483"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625827"
 ---
 # <a name="manage-your-connected-devices-from-the-devices-page"></a>从 "设备" 页管理连接的设备
 
@@ -31,7 +31,7 @@ ms.locfileid: "77062483"
 
 ## <a name="view-your-connected-devices"></a>查看连接的设备
 
-1. 登录到你的工作或学校帐户，然后中转到**我的帐户**（https://myprofile.microsoft.com/)页面）。
+1. 登录到你的工作或学校帐户，然后中转到**我的帐户**（https://myaccount.microsoft.com/)页面）。
 
 2. 从左侧导航窗格选择“设备”，或从“设备”块选择“管理设备”链接************。
 

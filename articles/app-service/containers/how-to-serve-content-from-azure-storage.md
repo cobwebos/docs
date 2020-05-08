@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: msangapu
-ms.openlocfilehash: 79a4e423f7a2b6570234c958ac833cdf5c6a75e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9a5a38ea32d927f50fb9ddbebe3e1c3533e6fcc0
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79297911"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625317"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>从 Linux 上的应用服务中的 Azure 存储提供内容
 
@@ -20,7 +20,7 @@ ms.locfileid: "79297911"
 
 本指南说明如何将 Azure 存储附加到 Linux 上的应用服务。 优点包括受保护的内容、内容可移植性、持久存储、对多个应用的访问和多种传输方法。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - [Azure CLI](/cli/azure/install-azure-cli)（2.0.46 或更高版本）。
 - [Linux 应用上的现有应用服务](https://docs.microsoft.com/azure/app-service/containers/)。
@@ -45,7 +45,7 @@ ms.locfileid: "79297911"
 
 创建[Azure 存储帐户、文件共享和目录](#prerequisites)后，现在可以通过 Azure 存储空间配置应用。
 
-若要在应用服务应用中将存储帐户装载到目录中，请使用[`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add)命令。 存储类型可以是 AzureBlob 或 AzureFiles。 本示例使用 AzureFiles。
+若要在应用服务应用中将存储帐户装载到目录中，请使用[`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add)命令。 存储类型可以是 AzureBlob 或 AzureFiles。 本示例使用 AzureFiles。 装载路径设置对应于要从 Azure 存储装载的文件夹。 将其设置为 "/" 即可装入整个 Azure 存储。
 
 
 > [!CAUTION]

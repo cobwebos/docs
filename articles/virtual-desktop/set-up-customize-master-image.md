@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: aba444e618a6ee2c6808b7f6d9d706fdf18fe546
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: fc6eb22f81279003a5355993db231ffec8e31b7d
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209037"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611953"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>准备和自定义主 VHD 映像
 
@@ -136,7 +136,7 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\
 
 ### <a name="include-additional-language-support"></a>包括其他语言支持
 
-本文不介绍如何配置语言和区域支持。 有关详细信息，请参阅下列文章：
+本文不介绍如何配置语言和区域支持。 有关详细信息，请参阅以下文章：
 
 - [将语言添加到 Windows 映像](/windows-hardware/manufacture/desktop/add-language-packs-to-windows/)
 - [按需功能](/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities/)
@@ -203,7 +203,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-s
 
 现在，你已有了一个映像，可以创建或更新主机池。 若要了解有关如何创建和更新主机池的详细信息，请参阅以下文章：
 
-- [使用 Azure 资源管理器模板创建主机池](create-host-pools-arm-template.md)
+- [使用 Azure 资源管理器模板创建主机池](./virtual-desktop-fall-2019/create-host-pools-arm-template.md)
 - [教程：使用 Azure Marketplace 创建主机池](create-host-pools-azure-marketplace.md)
 - [使用 PowerShell 创建主机池](create-host-pools-powershell.md)
 - [使用文件共享为主机池创建配置文件容器](create-host-pools-user-profile.md)

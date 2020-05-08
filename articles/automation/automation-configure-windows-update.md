@@ -3,14 +3,14 @@ title: 将 Windows 更新设置配置为使用 Azure 更新管理
 description: 本文介绍配置为使用 Azure 更新管理的 Windows 更新设置。
 services: automation
 ms.subservice: update-management
-ms.date: 03/02/2020
+ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7f226c4d297d25644b2650d085655f70d8326927
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b9b5f2b19b29eae0132ec01a9f3fb7e8355361f5
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279021"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779444"
 ---
 # <a name="configure-windows-update-settings-for-update-management"></a>为更新管理配置 Windows 更新设置
 
@@ -22,6 +22,8 @@ Azure 更新管理依赖于[Windows 更新客户端](https://docs.microsoft.com/
 - 直接编辑注册表
 
 更新管理规定了许多指定用于控制 Windows 更新客户端的设置。 如果使用设置来启用非 Windows 更新，更新管理还将管理这些更新。 如果你想要在更新部署发生之前允许下载更新，则更新部署可能会更快、更高效，且不太可能超过维护时段。
+
+若要详细了解如何在 Azure 订阅中设置 WSUS 并安全地使 Windows 虚拟机保持最新状态，请参阅[计划在 azure 中使用 WSUS 更新 windows 虚拟机的部署](https://docs.microsoft.com/azure/architecture/example-scenario/wsus/)。
 
 ## <a name="pre-download-updates"></a>下载前更新
 
