@@ -10,23 +10,23 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 03/18/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 130ce05e332f4705feb4acd54cbeb25d25a82532
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b9c61bbc794438c34a4bda27c8048ac0b21f9fc1
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253060"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582709"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>按 Azure Active Directory 中的组成员资格将许可证分配给用户
 
 本文将指导你完成将产品许可证分配给一组用户，并验证他们是否在 Azure Active Directory (Azure AD) 中获得正确许可的过程。
 
-在此示例中，租户包含名为 **HR Department** 的安全组。 此组包括人力资源部的所有成员（大约 1,000 个用户）。 你要将 Office 365 企业版 E3 许可证分配给整个部门。 必须暂时禁用产品中包含的 Yammer Enterprise 服务，直到该部门准备好开始使用它为止。 你还希望将企业移动性 + 安全性许可证部署到同一个用户组。
+在此示例中，Azure AD 组织包含名为**HR 部门**的安全组。 此组包括人力资源部的所有成员（大约 1,000 个用户）。 你要将 Office 365 企业版 E3 许可证分配给整个部门。 必须暂时禁用产品中包含的 Yammer Enterprise 服务，直到该部门准备好开始使用它为止。 你还希望将企业移动性 + 安全性许可证部署到同一个用户组。
 
 > [!NOTE]
 > 某些 Microsoft 服务不能在所有位置使用。 在将许可证分配给用户之前，管理员必须为该用户指定“使用位置”属性。
@@ -37,7 +37,7 @@ ms.locfileid: "79253060"
 
 1. 使用许可证管理员帐户登录到[**Azure AD 管理中心**](https://aad.portal.azure.com)。 若要管理许可证，该帐户必须是许可证管理员、用户管理员或全局管理员。
 
-1. 选择“许可证”  以打开一个页面，可以在其中查看和管理租户中的所有可许可产品。
+1. 选择 "**许可证**" 以打开一个页面，您可以在其中查看和管理组织中的所有许可产品。
 
 1. 在“所有产品”下，通过选择产品名称选中 Office 365 企业版 E5 和企业移动性 + 安全性 E3。  若要开始分配，请选择页面顶部的“分配”  。
 

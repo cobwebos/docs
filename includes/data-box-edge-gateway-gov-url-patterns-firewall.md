@@ -4,16 +4,16 @@ ms.service: databox
 ms.topic: include
 ms.date: 04/02/2019
 ms.author: alkohli
-ms.openlocfilehash: 3a5ccdbc45f87eea1d6949a506015e3884938c07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d9463dc5d888427e5fa26106102022a396d1ccd
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67173397"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561811"
 ---
 |    URL 模式                                                                                                                                                                                                                                                                                                                                                                                                                                                      |    组件或功能                                                                           |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-|    https://\*. databoxedge.azure.us/\*<br>https://\*. servicebus.usgovcloudapi.net/\*<br>https://login.microsoftonline.us                                                                                                                                                                                                                                                                                                                                                           |    Azure Data Box Edge/Azure Data Box Gateway 服务<br>Azure 服务总线<br>身份验证服务                           |
+|    https://\*. databoxedge.azure.us/\*<br>https://\*. servicebus.usgovcloudapi.net/\*<br>https://login.microsoftonline.us                                                                                                                                                                                                                                                                                                                                                           |    Azure Stack Edge/Data Box Gateway 服务<br>Azure 服务总线<br>身份验证服务                           |
 |    http://\*. backup.windowsazure.us                                                                                                                                                                                                                                                                                                                                                                                                                                |    设备激活                                                                                    |
 |    http：\//crl.microsoft.com/pki/\*<br>http：\//www.microsoft.com/pki/\*                                                                                                                                                                                                                                                                                                                                                                                                  |    证书吊销                                                                               |
 |    https://\*. core.usgovcloudapi.net/\*<br>https://\*.data.microsoft.com<br>http://\*.msftncsi.com                                                                                                                                                                                                                                                                                                                                                                            |    Azure 存储帐户和监视                                                                |

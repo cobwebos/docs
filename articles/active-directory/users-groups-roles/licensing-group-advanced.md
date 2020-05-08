@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 139d7e0cf2b57cc466dc97370b90a599257ce755
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0af897ca284b1d51867808c2c74496c73e9bdcc3
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266281"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582781"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>在 Azure Active Directory 中使用组管理许可的方案、限制和已知问题
 
@@ -100,7 +100,7 @@ ms.locfileid: "79266281"
 
 ## <a name="managing-new-services-added-to-products"></a>管理添加到产品的新服务
 
-当 Microsoft 向产品许可计划中添加新服务时，默认情况下，该服务在已向其分配了产品许可证的所有组中启用。 租户中订阅了有关产品更改通知的用户将提前收到电子邮件，通知他们即将推出的服务添加件。
+当 Microsoft 向产品许可计划中添加新服务时，默认情况下，该服务在已向其分配了产品许可证的所有组中启用。 组织中订阅了产品更改通知的用户将提前收到电子邮件，通知他们即将添加的服务。
 
 作为管理员，你可以查看受更改影响的所有组并执行操作，例如在每个组中禁用新服务。 例如，如果已创建的组仅面向部署的特定服务，则可以重新访问这些组，并确保禁用任何新添加的服务。
 
@@ -108,7 +108,7 @@ ms.locfileid: "79266281"
 
 1. 最初，将 Office 365 企业版 E5 ** 产品分配给多个组。 其中一个名为 O365 E5 - Exchange only** 的组旨在仅为其成员启用 Exchange Online（计划 2）** 服务。
 
-2. Microsoft 向你发送通知，告知 E5 产品将使用 Microsoft Stream ** 这项新服务进行扩展。 当该服务在你的租户中可用时，可以执行以下操作：
+2. Microsoft 向你发送通知，告知 E5 产品将使用 Microsoft Stream ** 这项新服务进行扩展。 当你的组织中的服务可用时，你可以执行以下操作：
 
 3. 转到 [“Azure Active Directory”>“许可证”>“所有产品”****](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products)边栏选项卡，选择“Office 365 企业版 E5”**，然后选择“许可的组”**** 以查看具有该产品的所有组的列表。
 
@@ -128,9 +128,9 @@ ms.locfileid: "79266281"
 ## <a name="use-powershell-to-see-who-has-inherited-and-direct-licenses"></a>使用 PowerShell 查看谁拥有继承的许可证和直接许可证
 可以使用 PowerShell 脚本来检查用户是具有直接分配的许可证还是具有从组继承的许可证。
 
-1. 运行 `connect-msolservice` cmdlet 进行身份验证并连接到租户。
+1. 运行`connect-msolservice` cmdlet 进行身份验证并连接到你的组织。
 
-2. 可以使用 `Get-MsolAccountSku` 来发现该租户中所有已预配的产品许可证。
+2. `Get-MsolAccountSku`可用于发现 Azure AD 组织中所有预配的产品许可证。
 
    ![Get-Msolaccountsku cmdlet 的屏幕截图](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 

@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fa3c6bf39dbef601fe64e125999f519f725f2e2
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 87f5b1ec02400c5cd9d26cc324ddbafdf8d76537
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67083776"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582583"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>在 Azure Active Directory 中委托管理权限
 
@@ -100,7 +100,7 @@ Azure AD 提供了一篇综合性的指南来帮助你规划和执行 Azure AD �
 
 ## <a name="secure-your-administrator-roles"></a>保护管理员角色
 
-控制了特权帐户的攻击者可能会造成极大的损害，因此，首先请使用默认适用于所有 Azure AD 租户的[基线访问策略](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/22/baseline-security-policy-for-azure-ad-admin-accounts-in-public-preview/)（公共预览版）保护这些帐户。 该策略针对 Azure AD 特权帐户强制实施多重身份验证。 Azure AD 基线策略涵盖以下 Azure AD 角色：
+控制特权帐户的攻击者可能会面临巨大的损害，因此，请先使用默认情况下提供给所有 Azure AD 组织（在公共预览版中）的[基线访问策略](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/22/baseline-security-policy-for-azure-ad-admin-accounts-in-public-preview/)来保护这些帐户。 该策略针对 Azure AD 特权帐户强制实施多重身份验证。 Azure AD 基线策略涵盖以下 Azure AD 角色：
 
 * 全局管理员
 * SharePoint 管理员

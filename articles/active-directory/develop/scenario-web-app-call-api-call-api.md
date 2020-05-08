@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 84df33137566445015848655cfecb87ba67ef123
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 12802ab6dcfbbe5a1c5576ab672ead864dd0b4ae
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181675"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559882"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>调用 Web API 的 Web 应用：调用 Web API
 
@@ -59,10 +59,9 @@ public async Task<IActionResult> Profile()
    var content = await response.Content.ReadAsStringAsync();
 
    dynamic me = JsonConvert.DeserializeObject(content);
-   return me;
+   ViewData["Me"] = me;
   }
 
-  ViewData["Me"] = me;
   return View();
 }
 ```
@@ -118,4 +117,4 @@ def graphcall():
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [移到生产环境](scenario-web-app-call-api-production.md)
+> [转移到生产环境](scenario-web-app-call-api-production.md)

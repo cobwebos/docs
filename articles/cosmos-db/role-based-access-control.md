@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: 0c7332a42751b35b6ad8ec3f88afb7bc78cc85e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e028e7a5e7e7b8f747d7a1cfb36c553a8113544
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75445104"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583732"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Azure Cosmos DB 中基于角色的访问控制
 
@@ -61,6 +61,12 @@ Azure 门户中的“访问控制(IAM)”窗格用于针对 Azure Cosmos 资源�
         }
     }
 }
+```
+如果导出现有资源管理器模板，并使用此属性更新它，则它可以完全替换模板的功能。 因此，如果不包含所有值，则会将其重置为默认值。 禁用基于密钥的元数据写入访问的另一种方法是使用 Azure CLI，如以下命令中所示：
+
+```cli
+az cosmosdb update  --name CosmosDBAccountName --resource-group ResourceGroupName  --disable-key-based-metadata-write-access true
+
 ```
 
 ## <a name="next-steps"></a>后续步骤

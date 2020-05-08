@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: e5463a32e299d9d4d151049ab5afffd4975d5182
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3df7ca90b81b697c72ba8f36bfff56c70cc090f2
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265436"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561293"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>使用 Azure 门户管理 Azure Data Box Gateway 上的共享 
 
@@ -37,7 +37,7 @@ ms.locfileid: "79265436"
 在 Azure 门户中执行以下步骤，以创建共享。
 
 1. 在 Azure 门户中，转到自己的 Data Box Gateway 资源，然后导航到“概述”。**** 单击命令栏上的“+ 添加共享”****。
-2. 在“添加共享”中指定共享设置。**** 提供共享的唯一名称。
+2. 在“添加共享”中指定共享设置。**** 提供共享的唯一名称。 
 
     ![单击“添加共享”](media/data-box-gateway-manage-shares/add-share-1.png)
 

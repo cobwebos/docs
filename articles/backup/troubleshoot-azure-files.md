@@ -3,12 +3,12 @@ title: 排查 Azure 文件共享备份问题
 description: 本文提供在保护 Azure 文件共享时所发生的问题的故障排除信息。
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: a6ce613b8c0fe8a7a5df6397ba2f1eb508d61aae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9b3514b4c1a00cc2f9bb1e1922975bf0bb70d24
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100050"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562077"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>在备份 Azure 文件共享时排查问题
 
@@ -25,6 +25,7 @@ ms.locfileid: "82100050"
   >一个存储帐户中的所有文件共享只能在一个恢复服务保管库中进行保护。 您可以使用[此脚本](scripts/backup-powershell-script-find-recovery-services-vault.md)查找您的存储帐户注册到的恢复服务保管库。
 
 - 确保文件共享不在任何不受支持的存储帐户中。 可以参考[Azure 文件共享备份的支持矩阵](azure-file-share-support-matrix.md)来查找支持的存储帐户。
+- 检查存储帐户的防火墙设置，以确保启用 "允许受信任的 Microsoft 服务访问存储帐户" 选项。
 
 ### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>门户中的错误指出无法发现存储帐户
 
@@ -32,7 +33,7 @@ ms.locfileid: "82100050"
 
 ### <a name="selected-storage-account-validation-or-registration-failed"></a>选择的存储帐户验证或注册失败
 
-重试注册。 如果问题持续出现，请联系支持人员。
+重试注册。 如果问题仍然存在，请联系支持部门。
 
 ### <a name="could-not-list-or-find-file-shares-in-the-selected-storage-account"></a>无法在所选存储帐户中列出或查找文件共享
 

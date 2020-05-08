@@ -7,17 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 2c0cd47acbd4639ff5eff2af78dcebdfc26270a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc35602b55e79f3351da0def800d2a2b2698e250
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730704"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856727"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>准备 IoT Edge 模块技术资产
-
-> [!IMPORTANT]
-> 我们正在将 IoT Edge 模块的管理从云合作伙伴门户迁移到合作伙伴中心。 在迁移你的产品/服务之前，请按照[准备 IoT Edge 模块技术资产](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets)中的说明来管理你云合作伙伴门户的产品/服务。
 
 本文介绍了物联网（IoT）边缘模块在 Azure Marketplace 中发布之前必须满足的要求。
 
@@ -104,7 +101,7 @@ ServerIPAddress = <MY_SERVER_IP_ADDRESS>
 > [!NOTE]
 > 版本控制可以选择包括 "滚动版本" 标记，例如2.0 和1.0。 这样就可以支持同时维护多个主要版本。
 
-### <a name="telemetry"></a>遥测技术
+### <a name="telemetry"></a>遥测
 
 使用 IoT 模块 SDK 的模块必须将唯一的模块标识符设置为 PublisherId，以用于遥测目的。 唯一标识符有助于 Azure Marketplace 标识正在运行的模块实例的数目。
 

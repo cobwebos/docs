@@ -4,12 +4,12 @@ description: 了解如何使用 Azure CLI 快速创建 Kubernetes 群集，在 A
 services: container-service
 ms.topic: article
 ms.date: 04/14/2020
-ms.openlocfilehash: 148ba900839c6eaf031416b0884778edded5735c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 8b4d7fff6bb03e31976c28ba67c1db0e68d7cc8f
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208102"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854421"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>使用 Azure CLI 在 Azure Kubernetes Service （AKS）群集上创建 Windows Server 容器
 
@@ -294,7 +294,7 @@ az group delete --name myResourceGroup --yes --no-wait
 [kubernetes-service]: concepts-network.md#services
 [kubernetes-dashboard]: kubernetes-dashboard.md
 [restricted-vm-sizes]: quotas-skus-regions.md#restricted-vm-sizes
-[use-advanced-networking]: configure-advanced-networking.md
+[use-advanced-networking]: configure-azure-cni.md
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
 [az-extension-add]: /cli/azure/extension#az-extension-add

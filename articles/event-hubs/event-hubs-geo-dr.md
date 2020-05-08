@@ -14,12 +14,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 61318fbccdf92c6502aa8b2236d8b234cec67668
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2c42637dda9d1a413c0521ea2d7565a63ca58e81
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209139"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858282"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure 事件中心 - 异地灾难恢复 
 
@@ -58,9 +58,9 @@ Azure 事件中心的异地灾难恢复功能是一种灾难恢复解决方案�
 | 主命名空间 | 辅助命名空间 | 支持 | 
 | ----------------- | -------------------- | ---------- |
 | Standard | Standard | 是 | 
-| 标准 | 专用 | 是 | 
+| Standard | 专用 | 是 | 
 | 专用 | 专用 | 是 | 
-| 专用 | 标准 | 否 | 
+| 专用 | Standard | 否 | 
 
 > [!NOTE]
 > 不能对同一专用群集中的命名空间配对。 你可以将位于不同群集中的命名空间配对。 
@@ -71,7 +71,7 @@ Azure 事件中心的异地灾难恢复功能是一种灾难恢复解决方案�
 
 ![1][]
 
-### <a name="setup"></a>设置
+### <a name="setup"></a>安装
 
 首先，创建一个主要命名空间或使用现有的主要命名空间，并创建一个新的次要命名空间，然后将两者配对。 此配对提供可用于连接的别名。 由于使用别名，因此，无需更改连接字符串。 只有新的命名空间可以添加到故障转移配对。 最后，应添加一些监视功能，以检测是否有必要进行故障转移。 在大多数情况下，服务是一个大型生态系统的一部分，因此极少可能会发生自动故障转移，因为通常故障转移必须在与剩余子系统或基础结构保持同步的情况下进行。
 
@@ -138,7 +138,7 @@ Azure 事件中心的异地灾难恢复功能是一种灾难恢复解决方案�
 ## <a name="next-steps"></a>后续步骤
 
 * [GitHub 上的示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient)演练了一个针对灾难恢复方案创建地理配对并启动故障转移的简单工作流。
-* [REST API 参考](/rest/api/eventhub/disasterrecoveryconfigs)介绍了用于执行异地灾难恢复配置的 API。
+* [REST API 参考](/rest/api/eventhub/)介绍了用于执行异地灾难恢复配置的 API。
 
 有关事件中心的详细信息，请访问以下链接：
 

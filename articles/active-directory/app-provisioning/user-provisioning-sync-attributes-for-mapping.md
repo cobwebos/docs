@@ -1,26 +1,21 @@
 ---
-title: 为映射将特性同步到 Azure AD |Microsoft Docs
+title: 为映射将特性同步到 Azure AD
 description: 了解如何将本地 Active Directory 的属性同步到 Azure AD。 配置 SaaS 应用的用户预配时，请使用目录扩展功能添加默认情况下不同步的源属性。
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: mimart
-ms.custom: ''
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09d1efaf54bee65bd3274987e68e643f887baade
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4b51d74d188f8f1c99f2075000e8fd91e70a81a4
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77522265"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593142"
 ---
 # <a name="sync-an-attribute-from-your-on-premises-active-directory-to-azure-ad-for-provisioning-to-an-application"></a>将属性从本地 Active Directory 同步到 Azure AD 以便预配到应用程序
 

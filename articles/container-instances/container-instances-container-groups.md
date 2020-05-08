@@ -4,12 +4,12 @@ description: 了解 Azure 容器实例中的容器组，它是共享生命周期
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: 3efc4528863286da676fc7eb758176156c87a32a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: b5f4f834d44294d846495a59af2fb65b231e4820
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115646"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583835"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure 容器实例中的容器组
 
@@ -69,7 +69,7 @@ Azure 容器实例通过添加组中实例的[资源请求][resource-requests]�
 
 ## <a name="networking"></a>网络
 
-容器组可以共享面向外部的 IP 地址、该 IP 地址上的一个或多个端口，以及具有完全限定域名 (FQDN) 的 DNS 标签。 若要启用外部客户端来访问组内的容器，必须从该容器公开 IP 地址上的端口。 由于组中的容器共享一个端口命名空间，因此不支持端口映射。 删除容器组后，将释放该容器组的 IP 地址和 FQDN。 
+容器组可以共享面向外部的 IP 地址、该 IP 地址上的一个或多个端口，以及具有完全限定域名 (FQDN) 的 DNS 标签。 若要启用外部客户端来访问组内的容器，必须从该容器公开 IP 地址上的端口。 删除容器组后，会释放容器组的 IP 地址和 FQDN。 
 
 在容器组中，容器实例可以通过任何端口上的本地主机相互访问，即使这些端口未在组的 IP 地址对外公开，或者未从容器公开。
 
@@ -118,7 +118,7 @@ Azure 容器实例通过添加组中实例的[资源请求][resource-requests]�
 [resource-limits]: /rest/api/container-instances/containergroups/createorupdate#resourcelimits
 [resource-requirements]: /rest/api/container-instances/containergroups/createorupdate#resourcerequirements
 [azure-files]: container-instances-volume-azure-files.md
-[virtual-network]: container-instances-vnet.md
+[virtual-network]: container-instances-virtual-network-concepts.md
 [secret]: container-instances-volume-secret.md
 [volume-gitrepo]: container-instances-volume-gitrepo.md
 [gpus]: container-instances-gpu.md

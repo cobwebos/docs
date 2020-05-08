@@ -1,23 +1,21 @@
 ---
 title: Azure Service Fabric 反向代理安全通信
 description: 在 Azure Service Fabric 应用程序中配置反向代理以启用安全的端到端通信。
-author: kavyako
 ms.topic: conceptual
 ms.date: 08/10/2017
-ms.author: kavyako
-ms.openlocfilehash: 61a8d1e766ea576f7d2984add239b0da7e2e8183
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e88a81108f38efefe413024fb2b41bbd82f297b2
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80617114"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858523"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>使用反向代理连接到安全服务
 
 本文介绍如何在反向代理与服务之间建立安全连接，从而启用端到端的安全通道。 若要了解有关反向代理的详细信息，请参阅 [Azure Service Fabric 中的反向代理](service-fabric-reverseproxy.md)
 
-仅当反向代理配置为侦听 HTTPS 时，才支持连接到安全服务。 本文假定现为这种情况。
-请参阅[在 Azure Service Fabric 中设置反向代理](service-fabric-reverseproxy-setup.md)，在 Service Fabric 中配置反向代理。
+> [!IMPORTANT]
+> 仅当反向代理配置为侦听 HTTPS 时，才支持连接到安全服务。 本文假定现为这种情况。 请参阅[在 Azure Service Fabric 中设置反向代理](service-fabric-reverseproxy-setup.md)，在 Service Fabric 中配置反向代理。
 
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>在反向代理与服务之间建立安全连接 
 
@@ -180,10 +178,10 @@ TLS 终止发生在反向代理上，并且所有客户端证书数据都将丢�
 
 2. 当**ForwardClientCertificate**设置为**true**时，反向代理在与客户端的 TLS 握手期间请求客户端的证书。
 然后，将会转发名为 **X-Client-Certificate** 的自定义 HTTP 标头中的客户端证书数据。 标头值是客户端证书的 base64 编码 PEM 格式字符串。 检查证书数据后，服务可能会成功/无法处理请求并返回相应的状态代码。
-如果客户端未提供证书，反向代理将转发空标头，并让服务处理这种情况。
+如果客户端不提供证书，反向代理将转发空标头，并让服务处理该情况。
 
 > [!NOTE]
-> 反向代理只是一个转发器。 它不会对客户端的证书执行任何验证。
+> 反向代理仅用作转发服务。 它不会对客户端的证书执行任何验证。
 
 
 ## <a name="next-steps"></a>后续步骤

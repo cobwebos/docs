@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/03/2020
-ms.openlocfilehash: 65b89a13637f5a4e1712995a6ac58d88b4421806
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/27/2020
+ms.openlocfilehash: 2503c26ac0348739bbf117c3538af797833ce8b8
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414849"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857639"
 ---
 # <a name="transformation-with-azure-databricks"></a>使用 Azure Databricks 进行转换
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 在本教程中，将创建一个端到端管道，其中包含 Azure 数据工厂中的**验证**、**复制数据**和**笔记本**活动。
 
@@ -118,7 +118,7 @@ ms.locfileid: "81414849"
 
         ![用于连接到群集的选项](media/solution-template-Databricks-notebook/databricks-connection.png)
 
-1. 选择“使用此模板”****。 你将看到已创建的管道。
+1. 选择“使用此模板”  。 你将看到已创建的管道。
 
     ![创建管道](media/solution-template-Databricks-notebook/new-pipeline.png)
 
@@ -153,6 +153,9 @@ ms.locfileid: "81414849"
 1. 验证**管道参数**是否与以下屏幕截图中显示的内容匹配： ![管道参数](media/solution-template-Databricks-notebook/pipeline-parameters.png)
 
 1. 连接到数据集。
+
+    >[!NOTE]
+    >在下面的数据集内，已在模板中自动指定文件路径。 如果需要进行任何更改，请确保为**容器**和**目录**指定路径，以防出现任何连接错误。
 
    - **SourceAvailabilityDataset** -检查源数据是否可用。
 

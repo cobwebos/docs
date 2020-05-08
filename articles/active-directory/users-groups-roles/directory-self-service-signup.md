@@ -1,6 +1,6 @@
 ---
 title: 自助注册电子邮件验证的用户-Azure AD |Microsoft Docs
-description: 在 Azure Active Directory （Azure AD）租户中使用自助服务注册
+description: 在 Azure Active Directory （Azure AD）组织中使用自助服务注册
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 11/08/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 953837e22cdd3ba8a54d702eac61461739db82d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fedb9375ec7ac7e7c7ac7a3ebf91166f70b6a05b
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74027637"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582993"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>什么是 Azure Active Directory 的自助注册？
 
@@ -57,7 +57,7 @@ AllowEmailVerifiedUsers 和 AllowAdHocSubscriptions 是可应用于托管或非�
 
 如果满足上述条件，那么将在主目录中创建成员用户，并在邀请目录中创建 B2B 来宾用户。
 
-流和 PowerApps 试用版登录不受**AllowAdHocSubscriptions**设置控制。 有关详细信息，请参阅下列文章：
+流和 PowerApps 试用版登录不受**AllowAdHocSubscriptions**设置控制。 有关详细信息，请参阅以下文章：
 
 * [如何禁止现有用户开始使用 Power BI？](https://support.office.com/article/Power-BI-in-your-Organization-d7941332-8aec-4e5e-87e8-92073ce73dc5#bkmk_preventjoining)
 * [组织中 Flow 问答](https://docs.microsoft.com/flow/organization-q-and-a)

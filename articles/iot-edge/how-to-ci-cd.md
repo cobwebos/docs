@@ -8,12 +8,12 @@ ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9a653d13137a3067bfaf51c64c09454a08783e31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: ac37e9bd10caea5c6e58fc797eac73ce6c714162
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131417"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561027"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>向 Azure IoT Edge 进行持续集成和持续部署
 
@@ -54,7 +54,7 @@ ms.locfileid: "82131417"
 >
 >有关详细信息，请参阅[创建生成管道](https://docs.microsoft.com/azure/devops/pipelines/create-first-pipeline)。
 
-1. 登录 Azure DevOps 组织 (**https:\//dev.azure.com/{your organization}/**) 并打开包含 IoT Edge 解决方案存储库的项目。
+1. 登录到 Azure DevOps 组织（**https：\//dev.azure.com/{your 组织}/**），打开包含 IoT Edge 解决方案存储库的项目。
 
    在本文中，我们创建了名为“IoTEdgeRepo”的存储库****。 该存储库包含“IoTEdgeSolution”，其中包含名为“filtermodule”的模块代码********。
 
@@ -100,6 +100,13 @@ ms.locfileid: "82131417"
    * **默认平台**：根据目标 IoT Edge 设备选择模块的相应平台。
    * **输出变量**：输出变量包含一个引用名称，您可以使用该名称来配置将在其中生成 deployment json 文件的文件路径。 将引用名称设置为令人难忘的内容，如“边缘”****。
 
+
+   这些配置使用在`module.json`文件中定义的图像存储库和标记来命名和标记模块映像。 **生成模块映像**还有助于将变量替换为在`module.json`文件中定义的准确值。 在 Visual Studio 或 Visual Studio Code 中，你将在`.env`文件中指定实际值。 在 Azure Pipelines 中，在 "**管道变量**" 选项卡上设置值。选择 "**变量**" 选项卡，并按如下所示配置名称和值：
+
+    * **ACR_ADDRESS**： Azure 容器注册表地址。 
+
+    如果项目中有其他变量，则可以在此选项卡上指定名称和值。**生成模块映像**仅识别`${VARIABLE}`格式为的变量。 请确保在`**/module.json`文件中使用此格式。
+    
 7. 选择第二个“Azure IoT Edge”任务进行编辑****。 此任务会把所有模块图像推送到所选容器注册表。
 
    * **显示名称**：当操作字段更改时，显示名称自动更新。
