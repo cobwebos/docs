@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: ff6ae0de0bbd8c47b81fa5066a97eb0b3e0cf6bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 29852eb0920f7bb32464d91e0be65c7dcb03325c
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79204386"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82627953"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure 机器学习工作室（经典）Web 服务：部署和使用
 
@@ -81,7 +81,6 @@ ms.locfileid: "79204386"
 有关更多详细信息，请参阅以下文章和示例代码：
 
 * MSDN 上的 [Azure 机器学习工作室（经典）Cmdlet](https://docs.microsoft.com/powershell/module/az.machinelearning) 参考
-* GitHub 上的示例[演练](https://github.com/raymondlaghaeian/azureml-webservices-arm-powershell/blob/master/sample-commands.txt)
 
 ## <a name="consume-the-web-services"></a>使用 Web 服务
 
@@ -91,15 +90,15 @@ ms.locfileid: "79204386"
 
 * [部署新 Web 服务](deploy-a-machine-learning-web-service.md)
 * [部署 Azure 机器学习 Web 服务](deploy-a-machine-learning-web-service.md)
-* [教程 3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)
+* [教程3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)
 
 ### <a name="from-excel"></a>从 Excel
 
 可以下载使用 Web 服务的 Excel 模板：
 
 * [从 Excel 使用 Azure 机器学习 Web 服务](consuming-from-excel.md)
-* [适用于 Azure 机器学习 Web 服务的 Excel 加载项](excel-add-in-for-web-services.md)
+* [用于 Azure 机器学习 Web 服务的 Excel 外接程序](excel-add-in-for-web-services.md)
 
 ### <a name="from-a-rest-based-client"></a>从基于 REST 的客户端
 
-Azure 机器学习 Web 服务是 RESTful API。 可以从各种平台使用这些 API，例如 .NET、Python、R、Java 等。[Microsoft Azure 机器学习 Web 服务门户](https://services.azureml.net)上的 Web 服务“使用”  页提供示例代码，从而有助于开始操作。 有关详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](consume-web-services.md)。
+Azure 机器学习 Web 服务是 RESTful API。 可以从各种平台（如 .NET、Python、R、Java 等）使用这些 Api。[Microsoft Azure 机器学习 Web 服务门户](https://services.azureml.net)上的 web 服务的 "**使用**情况" 页包含可帮助您入门的示例代码。 有关详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](consume-web-services.md)。

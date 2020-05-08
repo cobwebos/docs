@@ -12,20 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/03/2020
+ms.date: 04/30/2020
 ms.author: b-juche
-ms.openlocfilehash: c4e7566eeb28bc5709acd60ced9fcdffb7e8a725
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7dfc17825fab6c9a5f0d832318cb1d57271c56da
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80668006"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625509"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 SMB 卷
 
 Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池的预配容量计数的。 本文介绍如何创建 SMBv3 卷。 若要创建 NFS 卷，请参阅[为 Azure NetApp 文件创建 NFS 卷](azure-netapp-files-create-volumes.md)。 
 
-## <a name="before-you-begin"></a>在开始之前 
+## <a name="before-you-begin"></a>开始之前 
 必须已设置容量池。   
 [设置容量池](azure-netapp-files-set-up-capacity-pool.md)   
 子网必须委派给 Azure NetApp 文件。  
@@ -45,7 +45,7 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
     |    AD Web 服务    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    空值       |    回显回复    |
+    |    ICMPv4             |    不可用       |    回显回复    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -222,6 +222,23 @@ Azure NetApp 文件支持 AD 连接[Active Directory 域服务](https://docs.mic
     你创建的卷将出现在 "卷" 页中。 
  
     卷从其容量池继承订阅、资源组和位置属性。 若要监视卷部署状态，可以使用“通知”选项卡。
+
+## <a name="control-access-to-an-smb-volume"></a>控制对 SMB 卷的访问  
+
+通过权限管理对 SMB 卷的访问。  
+
+### <a name="share-permissions"></a>共享权限  
+
+默认情况下，新卷具有 "**所有人"/"完全控制**" 共享权限。 Domain Admins 组的成员可以使用计算机帐户（用于 Azure NetApp 文件卷）更改共享权限。
+
+![SMB 装载路径](../media/azure-netapp-files/smb-mount-path.png) 
+![设置共享权限](../media/azure-netapp-files/set-share-permissions.png) 
+
+### <a name="ntfs-file-and-folder-permissions"></a>NTFS 文件和文件夹权限  
+
+可以使用 Windows SMB 客户端中对象属性的 "**安全**" 选项卡设置文件或文件夹的权限。
+ 
+![设置文件和文件夹权限](../media/azure-netapp-files/set-file-folder-permissions.png) 
 
 ## <a name="next-steps"></a>后续步骤  
 

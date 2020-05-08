@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 9595ee87801fa4ce187a50197fc58d6c448eac24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09dd4ea3cd039bcb91acc877e51fee7e40168ac3
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78303216"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612752"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>在 Azure 虚拟机上配置使用高级文件共享的 SQL Server 故障转移群集实例
 
@@ -47,7 +47,7 @@ ms.locfileid: "78303216"
 > [!IMPORTANT]
 > 目前，仅支持将 Azure 虚拟机上的故障转移群集实例 SQL Server [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)的[轻型管理模式](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes)。 若要从完全扩展模式更改为轻型，请删除相应 Vm 的**Sql 虚拟机**资源，然后在轻型模式下向 sql VM 资源提供程序注册这些虚拟机资源。 使用 Azure 门户删除**SQL 虚拟机**资源时，请**清除正确虚拟机旁边的复选框**。 完整扩展支持诸如自动备份、修补和高级门户管理之类的功能。 在轻型管理模式下重新安装代理后，这些功能对 SQL Vm 不起作用。
 
-高级文件共享提供了 IOPS，还提供了可满足多个工作负荷需求的所有容量。 对于 IO 密集型工作负荷，请考虑将[故障转移群集实例与存储空间直通 SQL Server](virtual-machines-windows-portal-sql-create-failover-cluster.md)基于托管高级磁盘或超磁盘。  
+高级文件共享提供可满足多个工作负荷需求的 IOPS 和吞吐量容量。 对于 IO 密集型工作负荷，请考虑将[故障转移群集实例与存储空间直通 SQL Server](virtual-machines-windows-portal-sql-create-failover-cluster.md)基于托管高级磁盘或超磁盘。  
 
 检查环境的 IOPS 活动，并验证高级文件共享在开始部署或迁移之前是否会提供所需的 IOPS。 使用 Windows 性能监视器磁盘计数器可监视 SQL Server 数据、日志和临时数据库文件所需的总 IOPS （每秒的磁盘传输数）和吞吐量（每秒的磁盘字节数）。
 
@@ -71,7 +71,7 @@ ms.locfileid: "78303216"
 
 具有高级文件共享的故障转移群集不支持 Filestream。 若要使用 filestream，请使用[存储空间直通](virtual-machines-windows-portal-sql-create-failover-cluster.md)部署群集。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在完成本文中的步骤之前，你应该已经：
 
@@ -101,7 +101,7 @@ ms.locfileid: "78303216"
 
    1. 在 Azure 门户中，选择 "**创建资源**" 以打开 Azure Marketplace。 搜索“可用性集”。****
    1. 选择 "**可用性集**"。
-   1. 选择“创建”  。
+   1. 选择“创建”。 
    1. 在 "**创建可用性集**" 下，提供以下值：
       - **名称**：可用性集的名称。
       - **订阅**： Azure 订阅。
@@ -153,7 +153,7 @@ ms.locfileid: "78303216"
 
    在每个虚拟机上，在 Windows 防火墙上打开以下端口：
 
-   | 目的 | TCP 端口 | 注意
+   | 目标 | TCP 端口 | 说明
    | ------ | ------ | ------
    | SQL Server | 1433 | SQL Server 的默认实例正常使用的端口。 如果使用了库中的某个映像，此端口会自动打开。
    | 运行状况探测 | 59999 | 任何打开的 TCP 端口。 在后面的步骤中，需要将负载均衡器[运行状况探测](#probe)和群集配置为使用此端口。
@@ -257,7 +257,7 @@ ms.locfileid: "78303216"
 New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage
 ```   
 
-#### <a name="windows-server-2019"></a>Windows Server Standard 2012 R2
+#### <a name="windows-server-2019"></a>Windows Server 2019
 
 下面的 PowerShell 脚本将为 Windows Server 2019 创建一个故障转移群集。 有关详细信息，请参阅[故障转移群集：群集网络对象](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97)。 使用 Azure 虚拟网络中节点的名称（虚拟机名称）和可用的 IP 地址更新脚本。
 
@@ -330,9 +330,9 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. 在 Azure 门户中，请前往包含虚拟机的资源组。
 
-1. 选择 **添加** 。 在 Azure Marketplace 中搜索**负载均衡器**。 选择 "**负载均衡器**"。
+1. 选择“添加”  。 在 Azure Marketplace 中搜索**负载均衡器**。 选择 "**负载均衡器**"。
 
-1. 选择“创建”  。
+1. 选择“创建”。 
 
 1. 使用以下值设置负载均衡器：
 
@@ -367,7 +367,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. 在 "负载均衡器" 边栏选项卡中选择 "**运行状况探测**"。
 
-1. 选择 **添加** 。
+1. 选择“添加”  。
 
 1. 在 "**添加运行状况探测**" <span id="probe"> </span>边栏选项卡上，设置以下运行状况探测参数。
 
@@ -383,7 +383,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. 在 "负载均衡器" 边栏选项卡上，选择 "**负载均衡规则**"。
 
-1. 选择 **添加** 。
+1. 选择“添加”  。
 
 1. 设置负载均衡规则参数：
 

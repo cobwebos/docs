@@ -7,16 +7,16 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 71df574602518fdc252d9d86859ed772a17be443
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b8632eaf7662d705235adaad7cd03d2e7e4904b
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81408976"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626865"
 ---
 # <a name="what-are-wrangling-data-flows"></a>什么是整理数据流？
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 组织需要进行数据准备和整理，以便准确分析每天持续增长的复杂数据。 需要进行数据准备，以便组织可以使用各种业务流程中的数据并缩短价值。
 

@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 393d67b200a4f8d44cb001b3a7e2e491209e9d58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 99fbda6f6d5e8fc88f9f4f34c6e194412a120057
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80364154"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598481"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL 数据库托管实例常见问题解答 (FAQ)
 
@@ -64,7 +64,7 @@ ms.locfileid: "80364154"
 
 托管实例默认 DNS 区域 *。 database.windows.net*可以更改。 
 
-若要使用另一个 DNS 区域而不是默认的，例如*contoso.com*： 
+若要使用其他 DNS 区域而不是默认区域（例如“.contoso.com”  ），请执行以下操作： 
 - 使用 CliConfig 定义别名。 该工具只是一个注册表设置包装器，因此也可以使用组策略或脚本完成此操作
 - 将 *CNAME* 与 *TrustServerCertificate=true* 选项一起使用。
 
@@ -90,11 +90,17 @@ ms.locfileid: "80364154"
 
 **能否在第 4 代和第 5 代托管实例硬件代系之间联机切换？**
 
-如果这两种硬件代系都可以在预配托管实例的区域中使用，则可以在硬件代系之间自动联机切换。 在这种情况下，可以查看说明如何在硬件生成之间切换的[vCore model 概述页](sql-database-service-tiers-vcore.md)。
+如果这两种硬件代系都可以在预配托管实例的区域中使用，则可以在硬件代系之间自动联机切换。 在这种情况下，可以查看[“vCore 模型概述”页](sql-database-service-tiers-vcore.md)，该页说明了如何在硬件代系之间切换。
 
 这是一个长时间运行的操作，因为新托管实例将在后台预配，数据库将在旧实例与新实例之间自动转移，该过程结束时，可以快速故障转移。 
 
+**如果同一区域中不支持两个硬件代，会怎么样？**
+
 如果同一区域不能同时支持这两种硬件代系，可以更改硬件代系，但必须手动完成该操作。 这需要在所需硬件代系可用的区域中预配一个新实例，并在旧实例与新实例之间手动备份和还原数据。
+
+**如果没有足够的 IP 地址来执行更新操作，该怎么办？**
+
+如果在预配托管实例的子网中没有足够的 IP 地址，则必须在其中创建新的子网和新的托管实例。 我们还建议创建具有更多 IP 地址的新子网 alocated，以便将来的更新操作将避免类似情况（对于 propper 子网大小，请查看[如何确定 vnet 子网的大小](sql-database-managed-instance-determine-size-vnet-subnet.md)。 预配新实例后，可以在旧实例与新实例之间手动备份和还原数据，或执行跨实例[时间点还原](sql-database-managed-instance-point-in-time-restore.md?tabs=azure-powershell)。 
 
 
 ## <a name="tune-performance"></a>调整性能
@@ -129,24 +135,24 @@ ms.locfileid: "80364154"
 
 **如何针对管理端口设置入站 NSG 规则？**
 
-托管实例控制平面维护保护管理端口的 NSG 规则。
+托管实例控制平面会维护用于保护管理端口的 NSG 规则。
 
-下面是用于的管理端口：
+下面是管理端口的用途：
 
 端口 9000 和 9003 由 Service Fabric 基础结构使用。 Service Fabric 的主要作用是使虚拟群集保持正常，并根据组件副本数保持目标状态。
 
-节点代理使用端口1438、1440和1452。 节点代理是群集中运行的一个应用程序，控制平面使用它来执行管理命令。
+端口 1438、1440 和 1452 由节点代理使用。 节点代理是群集中运行的一个应用程序，控制平面使用它来执行管理命令。
 
-除了 NSG 规则外，内置防火墙还会保护网络层上的实例。 在应用程序层通信上，用证书来保护。
+除了 NSG 规则外，内置防火墙还会保护网络层上的实例。 在应用程序层上，使用证书保护通信。
   
 有关详细信息以及如何验证内置防火墙，请参阅 [Azure SQL 数据库托管实例的内置防火墙](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md)。
 
 
-## <a name="mitigate-data-exfiltration-risks"></a>缓解数据渗透风险  
+## <a name="mitigate-data-exfiltration-risks"></a>缓解数据透露风险  
 
-**如何缓解数据渗透风险？**
+**如何缓解数据透露风险？**
 
-为了缓解任何数据渗透的风险，建议客户应用一组安全设置和控制：
+为了缓解任何数据透露风险，我们建议客户应用一组安全设置和控制：
 
 - 针对所有数据库启用[透明数据加密 (TDE)](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql)。
 - 禁用公共语言运行时 (CLR)。 也建议在本地禁用 CLR。
@@ -167,7 +173,7 @@ ms.locfileid: "80364154"
 - [KMD](https://customers.microsoft.com/en-ca/story/kmd-professional-services-azure-sql-database)
 - [PowerDETAILS](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
 - [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)   
-为了更好地了解与部署 Azure SQL 数据库托管实例相关的优势、成本和风险，另外还提供了一个 Forrester 的研究：[英里的总体经济影响](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance)。
+为了让用户更好地了解部署 Azure SQL 数据库托管实例的优势、成本和风险，我们还提供了一份 Forrester 案例研究：[MI 产生的总体经济影响](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance)。
 
 
 ## <a name="dns-refresh"></a>DNS 刷新 
@@ -188,7 +194,7 @@ DNS 配置最终会刷新：
 
 **能否使用 IP 地址连接到托管实例？**
 
-不支持使用 IP 地址连接到托管实例。 托管实例主机名映射到托管实例虚拟群集前面的负载均衡器。 由于一个虚拟群集可以托管多个托管实例连接，因此无法将其路由到适当的托管实例，无需指定其名称。
+不支持使用 IP 地址连接到托管实例。 托管实例主机名会映射到托管实例虚拟群集前面的负载均衡器。 由于一个虚拟群集可以托管多个托管实例，因此如果不指定名称，则无法将连接路由到正确的托管实例。
 
 有关托管实例虚拟群集体系结构的详细信息，请参阅[虚拟群集连接体系结构](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture)。
 
@@ -222,8 +228,8 @@ DNS 配置最终会刷新：
 
 可以，无需解密数据库即可将其还原到托管实例。 需将一个在源系统中用作加密密钥保护器的证书/密钥提供给托管实例，才能从加密的备份文件中读取数据。 要运行此操作有两个可行的方式：
 
-- 将证书保护器上传到托管实例。** 只能使用 PowerShell 执行此操作。 [示例脚本](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate-tde-certificate)描述了整个过程。
-- 将非对称密钥保护器上传到 Azure Key Vault (AKV)，并将托管实例指向该保护器。** 此方法类似于自带密钥 (BYOK) TDE 用例，该用例也使用 AKV 集成来存储加密密钥。 如果你不想使用密钥作为加密密钥保护程序，并且只是想让托管实例提供密钥来还原加密的数据库，请按照[设置 BYOK TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption)的说明进行操作，并不要选中 "*将所选密钥设为默认 TDE 保护*程序" 复选框。
+- 将证书保护器上传到托管实例。  只能使用 PowerShell 执行此操作。 [示例脚本](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate-tde-certificate)描述了整个过程。
+- 将非对称密钥保护器上传到 Azure Key Vault (AKV)，并将托管实例指向该保护器。  此方法类似于自带密钥 (BYOK) TDE 用例，该用例也使用 AKV 集成来存储加密密钥。 如果你不想使用密钥作为加密密钥保护程序，并且只是想让托管实例提供密钥来还原加密的数据库，请按照[设置 BYOK TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption)的说明进行操作，并不要选中 "*将所选密钥设为默认 TDE 保护*程序" 复选框。
 
 将加密保护器提供给托管实例使用后，可以继续执行标准的数据库还原过程。
 

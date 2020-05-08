@@ -3,12 +3,12 @@ title: Azure Migrate 中的物理服务器评估支持
 description: 了解支持 Azure Migrate Server 评估的物理服务器评估
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: ae76a6b570ec58e71a8a1728a2a601728030f58c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 31fd676a339a6c82cec84e0f355ac875f68a653c
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538148"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983663"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>物理服务器评估的支持矩阵 
 
@@ -34,16 +34,18 @@ ms.locfileid: "81538148"
 | **支持**                | **详细信息**               
 | :-------------------       | :------------------- |
 | **物理服务器部署**       | 物理服务器可以是独立服务器，也可以部署到群集中。 |
-| **权限**           | **Windows：** 你需要在要发现的所有 Windows 服务器上使用本地用户帐户或域用户帐户。 应将用户帐户添加到这些组：远程桌面用户、性能监视器用户和性能日志用户。 <br/><br/> **Linux：** 需要在要发现的 Linux 服务器上拥有根帐户。 |
-| **操作系统** | Azure 支持的所有[windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)和[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)操作系统，WINDOWS Server 2003 和 SUSE Linux 除外。|
+| **权限**           | **Windows：** 你需要是域管理员，或者是你要发现的所有 Windows 服务器上的本地管理员。 应将用户帐户添加到以下组：远程管理用户、性能监视器用户和性能日志用户。 <br/><br/> **Linux：** 需要在要发现的 Linux 服务器上拥有根帐户。 |
+| **操作系统** | Azure 支持的所有[windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)和[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)服务器操作系统，WINDOWS Server 2003 和 SUSE Linux 除外。<br/><br/> Windows 10 和 Windows 8 客户端操作系统。 |
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate 设备要求
 
-Azure Migrate 使用[Azure Migrate 设备](migrate-appliance.md)进行发现和评估。 适用于物理服务器的设备可在 VM 或物理计算机上运行。 使用从 Azure 门户下载的 PowerShell 脚本来设置设备。
+Azure Migrate 使用[Azure Migrate 设备](migrate-appliance.md)进行发现和评估。 适用于物理服务器的设备可在 VM 或物理计算机上运行。 
 
 - 了解物理服务器的[设备要求](migrate-appliance.md#appliance---physical)。
 - 了解设备需要在[公共](migrate-appliance.md#public-cloud-urls)和[政府](migrate-appliance.md#government-cloud-urls)云中访问的 url。
+- 使用从 Azure 门户下载的[PowerShell 脚本](how-to-set-up-appliance-physical.md)来设置设备。
+在 Azure 政府版中，[使用此脚本](deploy-appliance-script-government.md)部署该设备。
 
 ## <a name="port-access"></a>端口访问
 

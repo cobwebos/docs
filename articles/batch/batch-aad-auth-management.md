@@ -3,12 +3,13 @@ title: 使用 Azure Active Directory 对 Batch 管理解决方案进行身份验
 description: 了解如何使用 Azure Active Directory 通过使用 Batch Management .NET 库的应用程序进行身份验证。
 ms.topic: article
 ms.date: 04/27/2017
-ms.openlocfilehash: 0aa95aa440303d1577b7646c1a9f1bc5b6e69ac2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 7ca32e5f9ff32d635d7f662c74dea5534e3dd072
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82114779"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608449"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>使用 Active Directory 对 Batch 管理解决方案进行身份验证
 
@@ -28,7 +29,7 @@ Azure [Active Directory 身份验证库][aad_adal] (ADAL) 提供一个可在应�
 
 ![](./media/batch-aad-auth-management/app-registration-management-plane.png)
 
-完成注册过程后，将列出应用程序的应用程序 ID 和对象（服务主体）ID。  
+完成注册过程后，将列出应用程序的应用程序 ID 和对象（服务主体）ID。
 
 ![](./media/batch-aad-auth-management/app-registration-client-id.png)
 
@@ -44,7 +45,7 @@ Azure [Active Directory 身份验证库][aad_adal] (ADAL) 提供一个可在应�
     ![搜索应用程序名称](./media/batch-aad-auth-management/search-app-registration.png)
 
 3. 此时会显示“设置”边栏选项卡。  在“API 访问”部分中，选择“所需的权限”。  
-4. 单击“添加”添加新的所需权限。  
+4. 单击“添加”添加新的所需权限。 
 5. 在步骤 1 中输入 **Windows Azure Service Management API**，从结果列表中选择该 API，并单击“选择”按钮。 
 6. 在步骤 2 中，选中“以组织用户的身份访问 Azure 经典部署模型”旁边的复选框，并单击“选择”按钮。  
 7. 单击“完成”按钮。 
@@ -70,11 +71,11 @@ AccountManagement 示例应用程序定义这些终结点的常量。 请将以�
 ```csharp
 // Azure Active Directory "common" endpoint.
 private const string AuthorityUri = "https://login.microsoftonline.com/common";
-// Azure Resource Manager endpoint 
+// Azure Resource Manager endpoint
 private const string ResourceUri = "https://management.core.windows.net/";
 ```
 
-## <a name="reference-your-application-id"></a>引用应用程序 ID 
+## <a name="reference-your-application-id"></a>引用应用程序 ID
 
 在运行时，客户端应用程序使用应用程序 ID（也称为客户端 ID）来访问 Azure AD。 在 Azure 门户中注册应用程序后，请更新代码，以使用 Azure AD 为已注册的应用程序提供的应用程序 ID。 在 AccountManagement 示例应用程序中，将 Azure 门户上的应用程序 ID 复制到相应的常量中：
 
@@ -96,7 +97,7 @@ private const string RedirectUri = "http://myaccountmanagementsample";
 
 ## <a name="acquire-an-azure-ad-authentication-token"></a>获取 Azure AD 身份验证令牌
 
-在 Azure AD 租户中注册 AccountManagement 示例并更新示例源代码中的值后，便可以使用 Azure AD 对该示例进行身份验证。 运行该示例时，ADAL 会尝试获取身份验证令牌。 执行此步骤时，系统会提示输入 Microsoft 凭据： 
+在 Azure AD 租户中注册 AccountManagement 示例并更新示例源代码中的值后，便可以使用 Azure AD 对该示例进行身份验证。 运行该示例时，ADAL 会尝试获取身份验证令牌。 执行此步骤时，系统会提示输入 Microsoft 凭据：
 
 ```csharp
 // Obtain an access token using the "common" AAD resource. This allows the application
@@ -109,7 +110,7 @@ AuthenticationResult authResult = authContext.AcquireToken(ResourceUri,
                                                         PromptBehavior.Auto);
 ```
 
-提供凭据后，示例应用程序可以继续向批处理管理服务发出身份验证的请求。 
+提供凭据后，示例应用程序可以继续向批处理管理服务发出身份验证的请求。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -117,7 +118,7 @@ AuthenticationResult authResult = authContext.AcquireToken(ResourceUri,
 
 有关 Azure AD 的详细信息，请阅读 [Azure Active Directory 文档](https://docs.microsoft.com/azure/active-directory/)。 演示如何使用 [Azure 代码示例](https://azure.microsoft.com/resources/samples/?service=active-directory)库中提供的 ADAL 的深度讲解示例。
 
-若要使用 Azure AD 对 Batch 服务应用程序进行身份验证，请参阅[使用 Active Directory 对 Batch 服务解决方案进行身份验证](batch-aad-auth.md)。 
+若要使用 Azure AD 对 Batch 服务应用程序进行身份验证，请参阅[使用 Active Directory 对 Batch 服务解决方案进行身份验证](batch-aad-auth.md)。
 
 
 [aad_about]:../active-directory/fundamentals/active-directory-whatis.md "什么是 Azure Active Directory？"

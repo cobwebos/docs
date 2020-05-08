@@ -5,12 +5,13 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 52d817d1029e75837e55c1b942525661ace33f87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 430907f43fb40f0ee24505bdc366a98a49f23b47
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82136934"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82613279"
 ---
 # <a name="imagery-partner-integration"></a>图像合作伙伴集成
 
@@ -88,7 +89,7 @@ access_token = token_response.get('access_token')
 
 下面是在对 FarmBeats Datahub 进行 API 调用时需要指定的最常见请求标头。
 
-**Header** | **说明和示例**
+**标头** | **说明和示例**
 --- | ---
 Content-Type  | 请求格式（Content-type： application/<format>）。 对于 FarmBeats Datahub Api，格式为 JSON。 Content-Type: application/json
 授权 | 指定进行 API 调用所需的访问令牌。 授权：持有者 <访问令牌>
@@ -120,10 +121,10 @@ curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 
 
 ```bash
-curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  
-"accept: application/json" -H  
+curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H
+"accept: application/json" -H
 "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d
-"{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  \"reportingInterval\": 900,  
+"{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  \"reportingInterval\": 900,
 \"name\": \"Device123\",  \"description\": \"Test Device 123\",}"
 ```
 

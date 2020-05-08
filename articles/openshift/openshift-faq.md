@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ef355361516264db95a333dde8a117819ca1a661
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 92529c2d60b32e9c8b57b897008b5333adc2a4d4
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203686"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594961"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift 常见问题
 
@@ -23,7 +23,7 @@ ms.locfileid: "82203686"
 
 ## <a name="can-i-deploy-a-cluster-into-an-existing-virtual-network"></a>是否可以将群集部署到现有的虚拟网络？
 
-不能。 但可以通过对等互连将 Azure Red Hat OpenShift 群集连接到现有虚拟网络。 有关详细信息，请参阅[将群集的虚拟网络连接到现有虚拟网络](tutorial-create-cluster.md#create-the-cluster)。
+否。 但可以通过对等互连将 Azure Red Hat OpenShift 群集连接到现有虚拟网络。 有关详细信息，请参阅[将群集的虚拟网络连接到现有虚拟网络](tutorial-create-cluster.md#create-the-cluster)。
 
 ## <a name="what-cluster-operations-are-available"></a>哪些群集操作可用？
 
@@ -75,11 +75,11 @@ oc adm policy \
 
 ## <a name="can-a-cluster-have-compute-nodes-across-multiple-azure-regions"></a>群集是否可以跨多个 Azure 区域具有计算节点？
 
-不能。 Azure Red Hat OpenShift 群集中的所有节点都必须源自同一 Azure 区域。
+否。 Azure Red Hat OpenShift 群集中的所有节点都必须源自同一 Azure 区域。
 
 ## <a name="are-master-and-infrastructure-nodes-abstracted-away-as-they-are-with-azure-kubernetes-service-aks"></a>主节点和基础结构节点在与 Azure Kubernetes 服务（AKS）配合时是否会被抽象掉？
 
-不能。 所有资源（包括群集主机）都在您的客户订阅中运行。 这些类型的资源置于只读资源组中。
+否。 所有资源（包括群集主机）都在您的客户订阅中运行。 这些类型的资源置于只读资源组中。
 
 ## <a name="is-open-service-broker-for-azure-osba-supported"></a>是否支持 Azure （OSBA）的开放 Service Broker？
 
@@ -135,7 +135,7 @@ Syslog、docker 日志、日记和 dmesg 由托管服务进行处理，不会向
 
 ## <a name="what-is-the-default-pod-scheduler-configuration-for-aro"></a>ARO 的默认 pod 计划程序配置是什么？
 
-ARO 使用 OpenShift 中随附的默认计划程序。 ARO 中有几种不支持的附加机制。 请参阅[默认计划程序文档](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/scheduler.html#generic-scheduler)和[主计划程序文档](https://github.com/openshift/openshift-azure/blob/master/pkg/startup/v6/data/master/etc/origin/master/scheduler.json)以了解更多详细信息。
+ARO 使用 OpenShift 中随附的默认计划程序。 ARO 中有几种不支持的附加机制。 请参阅[默认计划程序文档](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/scheduler.html#generic-scheduler)和[主计划程序文档](https://github.com/openshift/openshift-azure/blob/master/pkg/startup/v16/data/master/etc/origin/master/scheduler.json)以了解更多详细信息。
 
 当前不支持高级/自定义计划。 有关更多详细信息，请参阅[计划文档](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/index.html)。
 

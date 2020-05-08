@@ -11,14 +11,15 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26e52930211611673b6fe2309e2dca067a91ebc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 08f083fe60076c80b5b7d60f555daac499974254
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80331769"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611307"
 ---
-# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>混合 Azure Active Directory 联接设备的故障排除 
+# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>混合 Azure Active Directory 联接设备的故障排除
 
 本文内容适用于运行 Windows 10 或 Windows Server 2016 的设备。
 
@@ -28,15 +29,15 @@ ms.locfileid: "80331769"
 
 - 基于设备的条件访问
 - [企业设置漫游](../active-directory-windows-enterprise-state-roaming-overview.md)
-- [Windows Hello for Business](../active-directory-azureadjoin-passport-deployment.md)
+- [Windows Hello 企业版](../active-directory-azureadjoin-passport-deployment.md)
 
-本文档提供了用于解决潜在问题的故障排除指导。 
+本文档提供了用于解决潜在问题的故障排除指导。
 
 对于 Windows 10 和 Windows Server 2016，混合 Azure Active Directory 加入功能支持 Windows 10 November 2015 Update 和更高版本。
 
 ## <a name="troubleshoot-join-failures"></a>排查联接故障
 
-### <a name="step-1-retrieve-the-join-status"></a>步骤 1：检索加入状态 
+### <a name="step-1-retrieve-the-join-status"></a>步骤 1：检索加入状态
 
 **检索加入状态：**
 
@@ -88,22 +89,22 @@ WamDefaultAuthority: organizations
          AzureAdPrt: YES
 ```
 
-### <a name="step-2-evaluate-the-join-status"></a>步骤 2：评估加入状态 
+### <a name="step-2-evaluate-the-join-status"></a>步骤 2：评估加入状态
 
 检查以下字段，确保它们包含预期值：
 
-#### <a name="domainjoined--yes"></a>DomainJoined : YES  
+#### <a name="domainjoined--yes"></a>DomainJoined : YES
 
-此字段指示设备是否已加入本地 Active Directory。 如果值为 **NO**，则设备无法执行混合 Azure AD 加入。  
+此字段指示设备是否已加入本地 Active Directory。 如果值为 **NO**，则设备无法执行混合 Azure AD 加入。
 
-#### <a name="workplacejoined--no"></a>WorkplaceJoined : NO  
+#### <a name="workplacejoined--no"></a>WorkplaceJoined : NO
 
 此字段指示设备是否以个人设备的形式注册到 Azure AD（标记为“已加入工作区”）。** 对于已加入域，同时已加入混合 Azure AD 的计算机，此值应为 **NO**。 如果值为 **YES**，则表示在完成混合 Azure AD 加入之前已添加工作或学校帐户。 在这种情况下，如果使用 Windows 10 周年更新版 (1607)，则会忽略该帐户。
 
-#### <a name="azureadjoined--yes"></a>AzureAdJoined : YES  
+#### <a name="azureadjoined--yes"></a>AzureAdJoined : YES
 
 此字段指示设备是否已加入。 如果设备是 Azure AD 联接设备或混合 Azure AD 加入设备，则该值为**YES** 。
-如果值为 **NO**，则表示加入到 Azure AD 的过程尚未完成。 
+如果值为 **NO**，则表示加入到 Azure AD 的过程尚未完成。
 
 继续执行后续步骤，进一步进行故障排除。
 
@@ -155,7 +156,7 @@ WamDefaultAuthority: organizations
    - 设备所属的 AD 林中需要有效的 SCP 对象，这些对象指向 Azure AD 中的已验证域名。
    - 详细信息可在[配置服务连接点](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join)部分找到。
 - 未能连接并从发现终结点提取发现元数据。
-   - 设备应该能够在系统上下文中`https://enterpriseregistration.windows.net`访问，以便发现注册和授权终结点。 
+   - 设备应该能够在系统上下文中`https://enterpriseregistration.windows.net`访问，以便发现注册和授权终结点。
    - 如果本地环境需要出站代理，则 IT 管理员必须确保设备的计算机帐户能够发现并以无提示方式向出站代理进行身份验证。
 - 未能连接到用户领域终结点并执行领域发现。 （仅限 Windows 10 版本1809及更高版本）
    - 设备应该能够在系统上下文中`https://login.microsoftonline.com`访问，以执行已验证域的领域发现，并确定域类型（托管/联合）。
@@ -173,7 +174,7 @@ WamDefaultAuthority: organizations
    - 原因：执行发现时操作超时。
    - 解决方法：确保`https://enterpriseregistration.windows.net`在系统上下文中可访问。 有关详细信息，请参阅[网络连接要求](hybrid-azuread-join-managed-domains.md#prerequisites)部分。
 - **DSREG_AUTOJOIN_USERREALM_DISCOVERY_FAILED** （0x801c0021/-2145648611）
-   - 原因：通用领域发现失败。 无法从 STS 确定域类型（托管/联合）。 
+   - 原因：通用领域发现失败。 无法从 STS 确定域类型（托管/联合）。
    - 解决方法：查找下面的 suberror 以进行进一步调查。
 
 **常见的 suberror 代码：**
@@ -260,7 +261,7 @@ WamDefaultAuthority: organizations
 
 - **ERROR_ADAL_PROTOCOL_NOT_SUPPORTED** （0xcaa90017/-894894057）
    - 原因：身份验证协议不是 WS-TRUST。
-   - 解决方法：本地标识提供者必须支持 WS-TRUST 
+   - 解决方法：本地标识提供者必须支持 WS-TRUST
 - **ERROR_ADAL_FAILED_TO_PARSE_XML** （0xcaa9002c/-894894036）
    - 原因：本地联合身份验证服务未返回 XML 响应。
    - 解决方法：确保 MEX 终结点返回有效的 XML。 确保代理不会干扰并返回非 xml 响应。
@@ -278,7 +279,7 @@ WamDefaultAuthority: organizations
    - 解决方法：在一段时间后重试，或者尝试从另一个稳定的网络位置进行联接。
 - **ERROR_ADAL_INTERNET_SECURE_FAILURE** （0xcaa82f8f/-894947441）
    - 原因：传输层安全性（TLS）以前称为安全套接字层（SSL），无法验证服务器发送的证书。
-   - 解决方法：检查客户端时间偏差。 请在一段时间后重试，或者尝试从备用的稳定网络位置进行联接。 
+   - 解决方法：检查客户端时间偏差。 请在一段时间后重试，或者尝试从备用的稳定网络位置进行联接。
 - **ERROR_ADAL_INTERNET_CANNOT_CONNECT** （0xcaa82efd/-894947587）
    - 原因：尝试连接到`https://login.microsoftonline.com`失败。
    - 解决方法：检查与`https://login.microsoftonline.com`之间的网络连接。
@@ -293,11 +294,11 @@ WamDefaultAuthority: organizations
    - 解决方法：检查联合服务器设置。 在身份验证日志中查找服务器错误代码。
 - **ERROR_ADAL_WSTRUST_TOKEN_REQUEST_FAIL** （0xcaa90006/-894894074）
    - 原因：尝试从令牌终结点获取访问令牌时收到错误。
-   - 解决方法：查找 ADAL 日志中的基本错误。 
+   - 解决方法：查找 ADAL 日志中的基本错误。
 - **ERROR_ADAL_OPERATION_PENDING** （0xcaa1002d/-895418323）
    - 原因：常规 ADAL 失败
    - 解决方法：查找验证日志中的 suberror 代码或服务器错误代码。
-    
+
 #### <a name="join-phase"></a>联接阶段
 
 失败原因：
@@ -337,7 +338,7 @@ WamDefaultAuthority: organizations
    - 原因：收到 DRS 发出的错误响应，错误代码： "目录错误"
    - 解决方法：有关可能的原因和解决方法，请参阅服务器错误代码。
 - **DSREG_E_DEVICE_AUTHENTICATION_ERROR** （0x801c0002/-2145648638）
-   - 原因：收到 DRS 发出的错误响应，错误代码： "AuthenticationError"，ErrorSubCode 不是 "DeviceNotFound"。 
+   - 原因：收到 DRS 发出的错误响应，错误代码： "AuthenticationError"，ErrorSubCode 不是 "DeviceNotFound"。
    - 解决方法：有关可能的原因和解决方法，请参阅服务器错误代码。
 - **DSREG_E_DEVICE_INTERNALSERVICE_ERROR** （0x801c0006/-2145648634）
    - 原因：收到 DRS 发出的错误响应，错误代码： "目录错误"
@@ -349,7 +350,7 @@ WamDefaultAuthority: organizations
    - 原因： TPM 操作失败或无效
    - 解决方法：可能是由于 sysprep 映像错误引起的。 确保从中创建 sysprep 映像的计算机未 Azure AD 联接、混合 Azure AD 联接或 Azure AD 已注册。
 - **TPM_E_PCP_INTERNAL_ERROR** （0x80290407/-2144795641）
-   - 原因：常见的 TPM 错误。 
+   - 原因：常见的 TPM 错误。
    - 解决方法：在出现此错误的设备上禁用 TPM。 Windows 10 版本1809和更高版本会自动检测 TPM 故障，并在不使用 TPM 的情况下完成混合 Azure AD 联接。
 - **TPM_E_NOTFIPS** （0x80280036/-2144862154）
    - 原因：目前不支持在 FIPS 模式下 TPM。
@@ -386,28 +387,32 @@ WamDefaultAuthority: organizations
 
 ### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>步骤5：收集日志并联系 Microsoft 支持部门
 
-在此处获取公共脚本： [ https://1drv.ms/u/s！AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ]( https://1drv.ms/u/s!AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ)
+从下载文件身份验证 .zip[https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
 
-1. 打开管理员命令提示符，然后运行`start_ngc_tracing_public.cmd`。
-2. 执行步骤来重现问题。
-3. 通过执行`stop_ngc_tracing_public.cmd`来停止运行日志记录脚本。
-4. 压缩并发送日志`%SYSTEMDRIVE%\TraceDJPP\*`以供分析。
+1. 解压缩文件并将包含文件**start-auth**和**stop-auth**重命名为**start-auth**和**stop-auth**。
+1. 在提升的命令提示符下，运行**start-auth**。
+1. 使用交换机帐户切换到有问题用户的其他会话。
+1. 重现此问题。
+1. 使用交换机帐户切换回运行跟踪的管理会话。
+1. 在提升的命令提示符下，运行**stop-auth**。
+1. Zip，并从执行脚本的文件夹**Authlogs**发送文件夹。
 
 ## <a name="troubleshoot-post-join-issues"></a>排查联接后问题
 
-### <a name="retrieve-the-join-status"></a>检索加入状态 
+### <a name="retrieve-the-join-status"></a>检索加入状态
 
 #### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet： YES 和 AzureADPrt： YES
-  
-这些字段指示用户在登录设备时是否已成功通过 Azure AD 的身份验证。 如果值为 **NO**，原因可能是：
+
+这些字段指示用户在登录设备时是否已成功通过 Azure AD 的身份验证。
+如果值为 **NO**，原因可能是：
 
 - 注册时与设备关联的 TPM 中的存储密钥错误（在运行提升时检查 KeySignTest）。
 - 备用登录 ID
 - 找不到 HTTP 代理
 
 ## <a name="known-issues"></a>已知问题
-- 在 "设置-> 帐户"-> 访问工作或学校，混合 Azure AD 加入的设备可能会显示两个不同的帐户，一个用于 Azure AD，另一个用于本地 AD，在连接到移动热点或外部 WiFi 网络时。 这只是一个 UI 问题，不会对功能产生任何影响。 
- 
+- 在 "设置-> 帐户"-> 访问工作或学校，混合 Azure AD 加入的设备可能会显示两个不同的帐户，一个用于 Azure AD，另一个用于本地 AD，在连接到移动热点或外部 WiFi 网络时。 这只是一个 UI 问题，不会对功能产生任何影响。
+
 ## <a name="next-steps"></a>后续步骤
 
 继续[使用 dsregcmd.exe 命令对设备进行故障排除](troubleshoot-device-dsregcmd.md)

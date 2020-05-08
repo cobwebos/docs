@@ -5,12 +5,13 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 5b50906fac613a4e7470b0e13d6f068c3872f625
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 3833b27e9f90cbffa2320c84877d4eb5bb6520f7
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82136900"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82613262"
 ---
 # <a name="ingest-historical-telemetry-data"></a>引入历史遥测数据
 
@@ -18,7 +19,7 @@ ms.locfileid: "82136900"
 
 在 FarmBeats 中，引入（IoT）资源（如设备和传感器）的历史物联网数据是常见的方案。 为设备和传感器创建元数据，然后将历史数据以规范格式引入 FarmBeats。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 在继续阅读本文之前，请确保已安装 FarmBeats 并从 IoT 设备收集的历史数据。 还需要启用合作伙伴访问权限，如以下步骤中所述。
 
@@ -32,12 +33,12 @@ ms.locfileid: "82136900"
 - 客户端机密
 - EventHub 连接字符串
 
-执行以下步骤:
+请执行这些步骤：
 
 > [!NOTE]
 > 您必须是管理员才能执行以下步骤。
 
-1. 登录 https://portal.azure.com/。
+1. 登录 https://portal.azure.com/ 。
 
 2. **如果你使用的是 FarmBeats 版本1.2.7 或更高版本，请跳过步骤 a、b 和 c，然后转到步骤3。** 可以通过选择 FarmBeats UI 右上角的 "**设置**" 图标来检查 FarmBeats 版本。
 
@@ -58,7 +59,7 @@ ms.locfileid: "82136900"
 5. 中转到主目录。
 
     ```azurepowershell-interactive 
-    cd  
+    cd
     ```
 
 6. 运行以下命令。 这会将脚本下载到主目录。
@@ -73,7 +74,7 @@ ms.locfileid: "82136900"
 
     ```azurepowershell-interactive 
 
-    ./generatePartnerCredentials.ps1   
+    ./generatePartnerCredentials.ps1
 
     ```
 
@@ -92,7 +93,7 @@ ms.locfileid: "82136900"
 - /**DeviceModel**： DeviceModel 对应于设备的元数据，如制造商和设备类型（网关或节点）。
 - /**设备**：设备对应于在场上存在的物理设备。
 - /**SensorModel**： SensorModel 对应于传感器的元数据，如制造商、传感器类型（模拟或数字）以及传感器测量，如环境温度和压力。
-- /**传感器**：传感器对应于记录值的物理传感器。 传感器通常连接到设备 ID 为的设备。  
+- /**传感器**：传感器对应于记录值的物理传感器。 传感器通常连接到设备 ID 为的设备。
 
 
 |        DeviceModel   |  建议   |
@@ -108,7 +109,7 @@ ms.locfileid: "82136900"
 |   DeviceModelId     |     关联的设备模型的 ID。  |
 |  HardwareId          | 设备的唯一 ID，如 MAC 地址。
 |  ReportingInterval        |   报告间隔（秒）。
-|  位置            |  设备纬度（-90 到 + 90）、经度（-180 到180）和提升（以米为单位）。   
+|  位置            |  设备纬度（-90 到 + 90）、经度（-180 到180）和提升（以米为单位）。
 |ParentDeviceId       |    此设备连接到的父设备的 ID。 例如，连接到网关的节点。 节点将 parentDeviceId 作为网关。  |
 |    名称            | 用于标识资源的名称。 设备合作伙伴必须发送与合作伙伴端设备名称一致的名称。 如果合作伙伴设备名称是用户定义的，则应将同一用户定义的名称传播到 FarmBeats。|
 |     说明       |      提供有意义的说明。 |
@@ -139,7 +140,7 @@ ms.locfileid: "82136900"
 
 ### <a name="api-request-to-create-metadata"></a>用于创建元数据的 API 请求
 
-若要发出 API 请求，请将 HTTP （POST）方法、API 服务的 URL 和用于查询、将数据提交到、创建或删除请求的 URI 组合在一起。 然后添加一个或多个 HTTP 请求标头。 API 服务的 URL 是 API 终结点，即 Datahub URL （https://\<yourdatahub>. azurewebsites.net）。  
+若要发出 API 请求，请将 HTTP （POST）方法、API 服务的 URL 和用于查询、将数据提交到、创建或删除请求的 URI 组合在一起。 然后添加一个或多个 HTTP 请求标头。 API 服务的 URL 是 API 终结点，即 Datahub URL （https://\<yourdatahub>. azurewebsites.net）。
 
 ### <a name="authentication"></a>身份验证
 
@@ -297,10 +298,10 @@ SensorModel
 以下示例请求创建设备。 此请求将输入 JSON 作为带有请求正文的有效负载。
 
 ```bash
-curl -X POST "https://<datahub>.azurewebsites.net/Device" -H  
+curl -X POST "https://<datahub>.azurewebsites.net/Device" -H
 "accept: application/json" -H  "Content-Type: application/json" -H
-"Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  
-\"reportingInterval\": 900,  \"name\": \"Device123\",  
+"Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",
+\"reportingInterval\": 900,  \"name\": \"Device123\",
 \"description\": \"Test Device 123\"}" *
 ```
 

@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 79638f584f1c65b33f23a68f01dbe82878460cc2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b28901918f2606100d92f47800c6e0fb6778e3d0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234071"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82606885"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure 安全中心的威胁防护
 
@@ -34,7 +34,9 @@ Azure 安全中心的威胁防护为你的环境提供了综合防御：
 > [!TIP]
 > 若要启用安全中心的威胁防护功能，必须将标准定价层应用到包含适用工作负荷的订阅。
 >
-> 安全中心的存储帐户威胁防护和 PaaS SQL/MySQL/PG 服务器目前是唯一可在资源级别启用以保护单个存储/SQL 工作负荷的工作负荷。
+> 可以在订阅级别或资源级别为**Azure 存储帐户**启用威胁防护。
+> 可以在订阅级别或资源级别为**AZURE Sql 数据库 sql server**启用威胁防护。
+> 只能在资源级别为**Azure Database for MariaDB/MySQL/PostgreSQL**启用威胁防护。
 
 
 
@@ -155,7 +157,7 @@ Azure 安全中心与 Azure 服务集成，以监视和保护基于 Windows 的�
 
 适用于 Azure SQL 数据库和 SQL 的高级威胁防护是高级 SQL 安全功能[（](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)包括 Azure sql 数据库、Azure sql 数据库托管实例、Azure Sql 数据仓库数据库和 Azure 虚拟机上的 sql server）的高级 SQL 安全统一包的高级威胁防护。
 
-有关更多信息，请参阅：
+有关详细信息，请参见:
 
 * [如何为 Azure SQL Database 启用高级威胁防护](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
 * [如何为 Azure 虚拟机上的 SQL server 启用高级威胁防护](security-center-iaas-advanced-data.md)
@@ -173,7 +175,7 @@ Azure 存储的高级威胁防护目前仅适用于[Blob 存储](https://azure.m
 
 有关定价详细信息（包括免费的30天试用版），请参阅[Azure 安全中心定价页](https://azure.microsoft.com/pricing/details/security-center/)。
 
-有关更多信息，请参阅：
+有关详细信息，请参见:
 
 * [如何为 Azure 存储启用高级威胁防护](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
 * [Azure 存储的威胁防护警报列表](alerts-reference.md#alerts-azurestorage)
@@ -188,7 +190,7 @@ Azure 存储的高级威胁防护目前仅适用于[Blob 存储](https://azure.m
 
 Azure Cosmos DB 警报由异常和潜在有害尝试访问或利用 Azure Cosmos DB 帐户生成。
 
-有关更多信息，请参阅：
+有关详细信息，请参见:
 
 * [Azure Cosmos DB 的高级威胁防护（预览版）](../cosmos-db/cosmos-db-advanced-threat-protection.md)
 * [Azure Cosmos DB 的威胁防护警报列表（预览）](alerts-reference.md#alerts-azurecosmos)
@@ -264,7 +266,7 @@ Azure 安全中心包含适用于 Azure Key Vault 的 Azure 本机高级威胁�
 
 Azure 应用程序网关提供的 Web 应用程序防火墙 (WAF) 可以对 Web 应用程序进行集中保护，避免其受到常见的攻击和漏洞伤害。
 
-Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标。 应用程序网关 WAF 是基于开放式 Web 应用程序安全项目的核心规则集3.0 或2.2.9。 WAF 会自动更新，以防止出现新的漏洞。 
+Web 应用程序正逐渐成为利用常见已知漏洞的恶意攻击的目标。 应用程序网关 WAF 是基于开放式 Web 应用程序安全项目的核心规则集3.0 或2.2.9。 WAF 会自动更新，以防止出现新的漏洞。 
 
 如果拥有 Azure WAF 的许可证，则会将 WAF 警报流式传输到安全中心，无需进行其他配置。 有关 WAF 生成的警报的详细信息，请参阅[Web 应用程序防火墙 CRS 规则组和规则](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md?tabs=owasp31#crs911-31)。
 

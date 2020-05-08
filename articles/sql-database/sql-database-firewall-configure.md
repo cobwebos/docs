@@ -1,28 +1,27 @@
 ---
 title: IP 防火墙规则
-description: 配置 SQL 数据库或 SQL 数据仓库防火墙的服务器级 IP 防火墙规则。 管理访问权限，并配置单一数据库或共用数据库的数据库级 IP 防火墙规则。
+description: 配置 SQL 数据库或 Azure Synapse Analytics 防火墙的服务器级 IP 防火墙规则。 管理访问权限，并配置单一数据库或共用数据库的数据库级 IP 防火墙规则。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and SQL Data Warehouse
-ms.custom: ''
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/18/2019
-ms.openlocfilehash: 12280e8a5b90c6712703fefc60ec1bfb12ba8573
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2fe0881a7e6c624ea1104d1ebace307e6cf4e337
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606093"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629229"
 ---
-# <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL 数据库和 Azure SQL 数据仓库 IP 防火墙规则
+# <a name="azure-sql-database-and-azure-synapse-analytics-ip-firewall-rules"></a>Azure SQL 数据库和 Azure Synapse Analytics IP 防火墙规则
 
 > [!NOTE]
-> 本文适用于 Azure SQL 服务器，同时也适用于 Azure SQL 服务器上的 Azure SQL 数据库和 Azure SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称“SQL 数据库”。 
+> 本文适用于 azure sql 服务器，以及 azure sql server 上的 Azure SQL 数据库和 Azure Synapse 分析数据库。 为简单起见， *Sql 数据库*用于引用 sql 数据库和 Azure Synapse。
 
 > [!IMPORTANT]
 > 本文不  适用于 *Azure SQL 数据库托管实例*。 有关网络配置的信息，请参阅[将应用程序连接到 Azure SQL 数据库托管实例](sql-database-managed-instance-connect-app.md)。
@@ -30,7 +29,7 @@ ms.locfileid: "81606093"
 例如，在创建名为*mysqlserver*的新 Azure sql server 时，SQL 数据库防火墙会阻止对该服务器（可在*mysqlserver.database.windows.net*中访问）的公共终结点的所有访问。
 
 > [!IMPORTANT]
-> SQL 数据仓库仅支持服务器级 IP 防火墙规则， 不支持数据库级 IP 防火墙规则。
+> Azure Synapse 仅支持服务器级 IP 防火墙规则。 不支持数据库级 IP 防火墙规则。
 
 ## <a name="how-the-firewall-works"></a>防火墙的工作原理
 来自 Internet 和 Azure 的连接尝试必须首先通过防火墙，才能访问 SQL 服务器或 SQL 数据库，如下图中所示：
@@ -39,7 +38,7 @@ ms.locfileid: "81606093"
 
 ### <a name="server-level-ip-firewall-rules"></a>服务器级别 IP 防火墙规则
 
-  这些规则允许客户端访问整个 Azure SQL 服务器，即同一 SQL 数据库服务器内的所有数据库。 这些规则存储在 *master* 数据库中。 对于 Azure SQL Server，最多可以有 128 个服务器级别 IP 防火墙规则。 如果已启用 "**允许 Azure 服务和资源访问此服务器**" 设置，则会将其计为 Azure SQL Server 的单个防火墙规则。
+  这些规则允许客户端访问整个 Azure SQL 服务器，即同一 SQL 数据库服务器内的所有数据库。 这些规则存储在 *master* 数据库中。 对于 Azure SQL Server，最多可以有 128 个服务器级别 IP 防火墙规则。 如果启用了“允许 Azure 服务和资源访问此服务器”  设置，则这将计为 Azure SQL Server 的单个防火墙规则。
   
   可以使用 Azure 门户、PowerShell 或 Transact-SQL 语句来配置服务器级 IP 防火墙规则。
   - 只有订阅所有者或订阅参与者才能使用门户或 PowerShell。
@@ -64,31 +63,31 @@ ms.locfileid: "81606093"
 
 ## <a name="server-level-versus-database-level-ip-firewall-rules"></a>服务器级别与数据库级别 IP 防火墙规则
 
-*是否应将一个数据库的用户与另一个数据库完全隔离？*
+是否应将一个数据库的用户与另一个数据库完全隔离？ 
 
-如果是，使用数据库级 IP 防火墙规则授予访问权限。** 此方法可以避免使用服务器级 IP 防火墙规则，因为这些规则允许通过防火墙访问所有数据库， 从而降低防御深度。
+如果是，使用数据库级 IP 防火墙规则授予访问权限。  此方法可以避免使用服务器级 IP 防火墙规则，因为这些规则允许通过防火墙访问所有数据库， 从而降低防御深度。
 
-IP 地址用户是否需要访问所有数据库？**
+IP 地址用户是否需要访问所有数据库？ 
 
-如果是，请使用服务器级 IP 防火墙规则来减少必须配置 IP 防火墙规则的次数。**
+如果是，请使用服务器级 IP 防火墙规则来减少必须配置 IP 防火墙规则的次数。 
 
-配置 IP 防火墙规则的个人或团队是否只能通过 Azure 门户、PowerShell 或 REST API 获取访问权限？**
+配置 IP 防火墙规则的个人或团队是否只能通过 Azure 门户、PowerShell 或 REST API 获取访问权限？ 
 
 如果是，则必须使用服务器级 IP 防火墙规则。 只能通过 Transact-SQL 配置数据库级 IP 防火墙规则。  
 
-是否禁止配置 IP 防火墙规则的个人或团队在数据库级别拥有高级权限？**
+是否禁止配置 IP 防火墙规则的个人或团队在数据库级别拥有高级权限？ 
 
 如果是，请使用服务器级 IP 防火墙规则。 在数据库级别至少需要拥有 *CONTROL DATABASE* 权限才能通过 Transact-SQL 配置数据库级 IP 防火墙规则。  
 
-配置或审核 IP 防火墙规则的个人或团队是否集中管理多个（可能几百个）数据库的 IP 防火墙规则？**
+配置或审核 IP 防火墙规则的个人或团队是否集中管理多个（可能几百个）数据库的 IP 防火墙规则？ 
 
 对于这种情况，最佳做法取决于需求和环境。 虽然服务器级别 IP 防火墙规则可能更易于配置，但脚本可以在数据库级别配置规则。 即使使用服务器级 IP 防火墙规则，也可能需要审核数据库级 IP 防火墙规则，以确定对数据库拥有 *CONTROL* 权限的用户是否已创建数据库级 IP 防火墙规则。
 
-能否同时使用服务器级和数据库级 IP 防火墙规则？**
+能否同时使用服务器级和数据库级 IP 防火墙规则？ 
 
 是的。 一些用户（如管理员）可能需要服务器级 IP 防火墙规则。 另一些用户（如数据库应用程序用户）可能需要数据库级别 IP 防火墙规则。
 
-### <a name="connections-from-the-internet"></a>从 Internet 连接
+### <a name="connections-from-the-internet"></a>从 Internet 进行连接
 
 在计算机尝试从 Internet 连接到数据库服务器时，防火墙先针对请求连接的数据库，根据数据库级 IP 防火墙规则来检查请求的发起 IP 地址。
 
@@ -147,7 +146,7 @@ IP 地址用户是否需要访问所有数据库？**
 
 ### <a name="use-transact-sql-to-manage-ip-firewall-rules"></a>使用 Transact-SQL 管理 IP 防火墙规则
 
-| 目录视图或存储过程 | Level | 说明 |
+| 目录视图或存储过程 | 级别 | 说明 |
 | --- | --- | --- |
 | [sys.firewall_rules](https://msdn.microsoft.com/library/dn269980.aspx) |服务器 |显示当前服务器级别 IP 防火墙规则 |
 | [sp_set_firewall_rule](https://msdn.microsoft.com/library/dn270017.aspx) |服务器 |创建或更新服务器级别 IP 防火墙规则 |
@@ -181,7 +180,7 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 > [!IMPORTANT]
 > PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有开发现在都是针对 Az.Sql 模块。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 和 AzureRm 模块中的命令参数大体上是相同的。
 
-| Cmdlet | Level | 说明 |
+| Cmdlet | 级别 | 说明 |
 | --- | --- | --- |
 | [Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule) |服务器 |返回当前的服务器级防火墙规则 |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) |服务器 |新建服务器级防火墙规则 |
@@ -203,7 +202,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 
 ### <a name="use-cli-to-manage-server-level-ip-firewall-rules"></a>使用 CLI 管理服务器级 IP 防火墙规则
 
-| Cmdlet | Level | 说明 |
+| Cmdlet | 级别 | 说明 |
 | --- | --- | --- |
 |[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|服务器|创建服务器 IP 防火墙规则|
 |[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|服务器|列出服务器上的 IP 防火墙规则|
@@ -225,7 +224,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
 ### <a name="use-a-rest-api-to-manage-server-level-ip-firewall-rules"></a>使用 REST API 管理服务器级 IP 防火墙规则
 
-| API | Level | 说明 |
+| API | 级别 | 说明 |
 | --- | --- | --- |
 | [列出防火墙规则](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver) |服务器 |显示当前服务器级别 IP 防火墙规则 |
 | [创建或更新防火墙规则](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) |服务器 |创建或更新服务器级别 IP 防火墙规则 |
@@ -253,7 +252,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
 - **登录名未授权或使用了错误的密码：**
 
-  如果某个登录名对 SQL 数据库服务器没有权限或者使用的密码不正确，则与服务器的连接会被拒绝。 创建防火墙设置只能为客户端提供尝试连接到服务器的机会  。 客户端仍必须提供所需的安全凭据。 有关准备登录名的详细信息，请参阅[控制和授予数据库对 SQL 数据库与 SQL 数据仓库的访问权限](sql-database-manage-logins.md)。
+  如果某个登录名对 SQL 数据库服务器没有权限或者使用的密码不正确，则与服务器的连接会被拒绝。 创建防火墙设置只能为客户端提供尝试连接到服务器的机会  。 客户端仍必须提供所需的安全凭据。 有关准备登录名的详细信息，请参阅[控制和授予数据库访问 SQL 数据库和 Azure Synapse](sql-database-manage-logins.md)。
 
 - **动态 IP 地址：**
 

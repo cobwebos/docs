@@ -5,23 +5,25 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 33d058f028b7032f296ffcf82f0e5fe2c993e6fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad535dd18b89cbe2fceab90f73789180ad332b57
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127922"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612361"
 ---
 # <a name="windows-virtual-desktop-environment"></a>Windows 虚拟桌面环境
 
+>[!IMPORTANT]
+>此内容适用于带有 Azure 资源管理器 Windows 虚拟桌面对象的弹簧2020更新。 如果使用的是不带 Azure 资源管理器对象的 Windows 虚拟桌面2019版，请参阅[此文](./virtual-desktop-fall-2019/environment-setup-2019.md)。
+>
+> Windows 虚拟桌面春季2020更新目前为公共预览版。 此预览版本在提供时没有服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
 Windows 虚拟桌面是一种服务，使用户能够轻松安全地访问其虚拟化桌面和 RemoteApps。 本主题将详细介绍 Windows 虚拟桌面环境的一般结构。
-
-## <a name="tenants"></a>租户
-
-Windows 虚拟桌面租户是用于管理 Windows 虚拟桌面环境的主要界面。 每个 Windows 虚拟桌面租户必须与包含将登录到环境的用户的 Azure Active Directory 相关联。 从 Windows 虚拟桌面租户中，你可以开始创建主机池来运行用户的工作负载。
 
 ## <a name="host-pools"></a>主机池
 
@@ -45,12 +47,12 @@ Windows 虚拟桌面租户是用于管理 Windows 虚拟桌面环境的主要界
 
 若要将资源发布到用户，你必须将其分配给应用组。 将用户分配到应用组时，请考虑以下事项：
 
-- 不能将用户同时分配到桌面应用组和同一主机池中的 RemoteApp 应用组。
+- 用户可以在同一主机池中同时分配到桌面应用组和 RemoteApp 应用组。 但是，用户只能为每个会话启动一种类型的应用组。 用户无法在单个会话中同时启动这两种类型的应用程序组。
 - 用户可以分配给同一主机池中的多个应用组，其源将是这两个应用组的累积。
 
-## <a name="tenant-groups"></a>租户组
+## <a name="workspaces"></a>工作区
 
-在 Windows 虚拟桌面中，大多数设置和配置都会在 Windows 虚拟桌面租户中发生。 Windows 虚拟桌面租户包含主机池、应用组和应用组用户分配。 但是，在某些情况下，你可能需要同时管理多个 Windows 虚拟桌面租户，尤其是在你是云服务提供商（CSP）或托管合作伙伴时。 在这些情况下，可以使用自定义 Windows 虚拟桌面租户组放置每个客户的 Windows 虚拟桌面租户，并集中管理访问权限。 但是，如果你只管理单个 Windows 虚拟桌面租户，则租户组概念不适用，你可以继续操作并管理默认租户组中存在的租户。
+工作区是 Windows 虚拟桌面中的应用程序组的逻辑分组。 每个 Windows 虚拟桌面应用程序组必须与一个工作区关联，用户才能查看向其发布的远程应用和桌面。  
 
 ## <a name="end-users"></a>最终用户
 
@@ -60,9 +62,12 @@ Windows 虚拟桌面租户是用于管理 Windows 虚拟桌面环境的主要界
 
 了解有关委派访问权限的详细信息，以及如何在[Windows 虚拟桌面中委派访问权限](delegated-access-virtual-desktop.md)将角色分配给用户。
 
-若要了解如何设置 Windows 虚拟桌面租户，请参阅[在 Windows 虚拟桌面中创建租户](tenant-setup-azure-active-directory.md)。
+若要了解如何设置 Windows 虚拟桌面主机池，请参阅[使用 Azure 门户创建主机池](create-host-pools-azure-marketplace.md)。
 
 若要了解如何连接到 Windows 虚拟桌面，请参阅以下文章之一：
 
-- [从 Windows 10 或 Windows 7 进行连接](connect-windows-7-and-10.md)
-- [从 Web 浏览器进行连接](connect-web.md)
+- [与 Windows 10 或 Windows 7 连接](connect-windows-7-and-10.md)
+- [使用 Web 浏览器建立连接](connect-web.md)
+- [使用 Android 客户端进行连接](connect-android.md)
+- [使用 macOS 客户端进行连接](connect-macos.md)
+- [使用 iOS 客户端进行连接](connect-ios.md)
