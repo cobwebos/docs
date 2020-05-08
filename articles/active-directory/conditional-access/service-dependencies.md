@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 05/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b39238575c05d35a2d87999e08c49c0c77e99bfb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b0d7816dc83a7c3536e44ff2461d85ea6178ff1
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74380018"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778475"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的服务依赖项是什么？ 
 
 使用条件访问策略时，可以指定网站和服务的访问要求。 例如，访问要求可以包括要求进行多重身份验证 (MFA)，或者要求使用[托管设备](require-managed-devices.md)。 
 
-直接访问站点或服务时，通常容易评估相关策略的影响。 例如，如果策略要求对配置的 SharePoint Online 进行 MFA，则每次登录到 SharePoint Web 门户时，都会强制执行 MFA。 但是，评估某项策略的影响并非始终是直截了当的，因为某些云应用依赖于其他云应用。 例如，可以通过 Microsoft Teams 访问 SharePoint Online 中的资源。 因此，你在访问当前方案中的 Microsoft Teams 时，也会受 SharePoint MFA 策略的约束。   
+直接访问站点或服务时，通常容易评估相关策略的影响。 例如，如果你的策略需要配置 SharePoint Online 的多重身份验证（MFA），则每次登录到 SharePoint web 门户时都会强制执行 MFA。 但是，评估某项策略的影响并非始终是直截了当的，因为某些云应用依赖于其他云应用。 例如，可以通过 Microsoft Teams 访问 SharePoint Online 中的资源。 因此，你在访问当前方案中的 Microsoft Teams 时，也会受 SharePoint MFA 策略的约束。 
 
 ## <a name="policy-enforcement"></a>策略强制执行 
 
@@ -36,6 +36,8 @@ ms.locfileid: "74380018"
 ![MS Teams 服务依赖关系](./media/service-dependencies/01.png)
 
 最佳做法是，尽可能跨相关的应用和服务设置常用策略。 安全态势一致可以为你提供最佳用户体验。 例如，跨 Exchange Online、SharePoint Online、Microsoft Teams 和 Skype for Business 设置常用策略可以显著减少意外提示数（为下游服务应用不同策略时，可能会出现这些提示）。 
+
+若要使用 office stack 中的应用程序实现此目的，一种很好的方法是使用[office 365 （预览版）](concept-conditional-access-cloud-apps.md#office-365-preview) ，而不是以单个应用程序为目标。
 
 下表列出了客户端应用必须满足的其他服务依赖项  
 

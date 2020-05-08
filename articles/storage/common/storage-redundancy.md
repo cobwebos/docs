@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: f4fff7c8865a59b916755a69a98448a1684da229
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: d37e790b8a77a48cb5ef53292712164dcdcf459b
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/06/2020
-ms.locfileid: "82853323"
+ms.locfileid: "82872012"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 存储冗余
 
@@ -104,6 +104,18 @@ GRS 和 GZRS 之间的主要区别在于如何在主要区域中复制数据。 
 
 仅常规用途 v2 存储帐户支持 GZRS 和 GZRS。 有关存储帐户类型的详细信息，请参阅 [Azure 存储帐户概述](storage-account-overview.md)。 GZRS 和 GZRS 支持块 blob、页 blob （VHD 磁盘除外）、文件、表和队列。 GZRS 和 GZRS 在所有 Azure 区域中均可用。
 
+以下区域支持 GZRS 和 GZRS：
+
+- 亚洲东南部
+- 北欧
+- 西欧
+- 日本东部
+- 英国南部
+- 美国中部
+- 美国东部
+- 美国东部 2
+- 美国西部 2
+
 有关定价的信息，请参阅[blob](https://azure.microsoft.com/pricing/details/storage/blobs)、[文件](https://azure.microsoft.com/pricing/details/storage/files/)、[队列](https://azure.microsoft.com/pricing/details/storage/queues/)和[表](https://azure.microsoft.com/pricing/details/storage/tables/)的定价详细信息。
 
 ## <a name="read-access-to-data-in-the-secondary-region"></a>对次要区域中的数据的读取访问权限
@@ -128,7 +140,7 @@ GRS 和 GZRS 之间的主要区别在于如何在主要区域中复制数据。 
 
 下表显示了在给定方案中数据持久和可用的方式，具体取决于存储帐户的冗余类型：
 
-| 方案                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
+| 场景                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
 | 数据中心内的节点变为不可用                                                                 | 是                             | 是                              | 是                                  | 是                                  |
 | 整个数据中心（区域性或非区域性）不可用                                           | 否                              | 是                              | 是                                  | 是                                  |

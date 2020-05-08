@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
-ms.date: 04/10/2020
-ms.openlocfilehash: ed2fe1736c887fd8aa866c8d0c71a5df0aa4fb31
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/30/2020
+ms.openlocfilehash: 4eaa9c4e3d200eedd57c468639c1af3830911d1d
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232830"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889263"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他组件在 HDInsight 中设置群集
 
@@ -26,9 +26,11 @@ Hadoop 群集由用于对任务进行分布式处理的多个虚拟机（节点�
 > [!IMPORTANT]  
 > HDInsight 群集计费在创建群集之后便会开始，删除群集后才会停止。 HDInsight 群集按分钟收费，因此不再需要使用群集时，应将其删除。 了解如何[删除群集](hdinsight-delete-cluster.md)。
 
+如果将多个群集一起使用，则需要创建一个虚拟网络，如果使用的是 Spark 群集，则还需要使用 Hive 仓库连接器。 有关详细信息，请参阅[规划 Azure HDInsight 的虚拟网络](./hdinsight-plan-virtual-network-deployment.md)和[将 Apache Spark 和 Apache Hive 与 Hive 仓库连接器集成](interactive-query/apache-hive-warehouse-connector.md)。
+
 ## <a name="cluster-setup-methods"></a>群集设置方法
 
-下表显示了可用于设置 HDInsight 群集的不同方法。
+下表显示可用于设置 HDInsight 群集的各种方法。
 
 | 群集创建方法 | Web 浏览器 | 命令行 | REST API | SDK |
 | --- |:---:|:---:|:---:|:---:|
@@ -37,17 +39,17 @@ Hadoop 群集由用于对任务进行分布式处理的多个虚拟机（节点�
 | [Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [cURL](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✔ |✔ |&nbsp; |
-| [Azure Resource Manager 模板](hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
+| [Azure 资源管理器模板](hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 
 本文逐步讲解[Azure 门户](https://portal.azure.com)中的设置，您可以在其中创建 HDInsight 群集。
 
 ## <a name="basics"></a>基础知识
 
-![hdinsight 创建选项 - 自定义快速创建](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-basics-blank-fs.png)
+![hdinsight 创建选项自定义快速](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-basics-blank-fs.png)
 
 ### <a name="project-details"></a>项目详细信息
 
-可以借助 [Azure Resource Manager](../azure-resource-manager/management/overview.md) 以组（称为 Azure [资源组](../azure-resource-manager/management/overview.md#resource-groups)）的形式处理应用程序中的资源。 可以通过单个协调的操作来部署、更新、监视或删除应用程序的所有资源。
+[Azure 资源管理器](../azure-resource-manager/management/overview.md)可帮助你以组的形式处理应用程序中的资源（称为 Azure[资源组](../azure-resource-manager/management/overview.md#resource-groups)）。 可以通过单个协调的操作部署、更新、监视或删除应用程序的所有资源。
 
 ### <a name="cluster-details"></a>群集详细信息
 
@@ -58,24 +60,24 @@ HDInsight 群集名称具有以下限制：
 * 允许的字符：a-z、0-9、A-Z
 * 最大长度：59
 * 保留的名称：apps
-* 群集命名作用域适用于所有订阅中的所有 Azure。 因此该名称必须全球唯一。
-* 前六个字符在虚拟网络中必须唯一
+* 群集命名范围适用于所有订阅中的所有 Azure。 因此，群集名称在全球范围内必须是唯一的。
+* 在虚拟网络中，前六个字符必须唯一
 
 #### <a name="region"></a>区域
 
-不需要显式指定群集位置：群集与默认存储在相同的位置。 若要获取受支持区域的列表，请选择 [HDInsight 定价](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)中的“区域”下拉列表。 
+无需显式指定群集位置：群集位于默认存储所在的位置。 若要查看受支持区域的列表，请选择[HDInsight 定价](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)中的 "**区域**" 下拉列表。
 
 #### <a name="cluster-type"></a>群集类型
 
-Azure HDInsight 目前提供以下群集类型，每种类型都具有一组用于提供特定功能的组件。
+Azure HDInsight 目前提供以下几种群集类型，每种类型都具有一组用于提供特定功能的组件。
 
 > [!IMPORTANT]  
-> HDInsight 群集以多种类型提供，每种类型适用于单个工作负荷或技术。 不支持在一个群集上创建合并了多个类型（如 Storm 和 HBase）的群集。 如果解决方案需要分布在多种 HDInsight 群集类型上的技术，可以使用 [Azure 虚拟网络 ](https://docs.microsoft.com/azure/virtual-network)连接所需的群集类型。
+> HDInsight 群集类型繁多，每种类型适用于一种工作负荷或技术。 没有任何方法支持创建组合多种类型的群集，如一个群集同时具有 Storm 和 HBase 类型。 如果解决方案需要分布在多种 HDInsight 群集类型上的技术， [Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network) 可以连接所需的群集类型。
 
 | 群集类型 | 功能 |
 | --- | --- |
-| [Hadoop](hadoop/apache-hadoop-introduction.md) |Batch 查询和存储数据的分析 |
-| [HBase](hbase/apache-hbase-overview.md) |大量无架构 NoSQL 数据的处理 |
+| [Hadoop](hadoop/apache-hadoop-introduction.md) |批量查询和分析存储数据 |
+| [HBase](hbase/apache-hbase-overview.md) |处理大量无架构的 NoSQL 数据 |
 | [交互式查询](./interactive-query/apache-interactive-query-get-started.md) |更快的交互式 Hive 查询的内存中缓存 |
 | [Kafka](kafka/apache-kafka-introduction.md) | 分布式流式处理平台，可用于构建实时流数据管道和应用程序 |
 | [ML Services](r-server/r-server-overview.md) |各种大数据统计信息、预测模型和机器学习功能 |
@@ -204,7 +206,7 @@ Ambari 用于监视 HDInsight 群集、进行配置更改，以及存储群集�
 
 每种群集类型都有自身的节点数、节点术语和默认的 VM 大小。 下表中的括号内列出了每个节点类型的节点数目。
 
-| 类型 | 节点 | 图表 |
+| 类型 | 节点 | 图示 |
 | --- | --- | --- |
 | Hadoop |头节点 (2)、工作器节点 (1+) |![HDInsight Hadoop 群集节点](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
 | HBase |头服务器 (2)，区域服务器 (1+)，主控/ZooKeeper 节点 (3) |![HDInsight HBase 群集类型设置](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
