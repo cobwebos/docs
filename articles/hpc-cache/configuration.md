@@ -4,14 +4,14 @@ description: 说明如何为缓存配置其他设置，如 MTU 和无 squash，�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 05/06/2020
 ms.author: v-erkel
-ms.openlocfilehash: 7938fcc0819fc3e5e0762cc8c3c2931594ed1c68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a3bab06166110a3627bb3a99d51ceb09b0c7ed80
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195054"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871416"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>配置其他 Azure HPC 缓存设置
 
@@ -42,13 +42,15 @@ Azure 门户中的 "**配置**" 页具有自定义多个设置的选项。 大�
 ## <a name="configure-root-squash"></a>配置根 squash
 <!-- linked from troubleshoot -->
 
-**Enable root squash**设置控制 Azure HPC 缓存如何允许根访问。 Root squash 可帮助防止未经授权的客户端的根级别访问。
+**Enable root squash**设置控制 Azure HPC 缓存如何处理来自客户端计算机上的根用户的请求。
 
-此设置允许用户在缓存级别控制根访问权限，这有助于补偿用作存储目标的``no_root_squash`` NAS 系统所需的设置。 （了解有关[NFS 存储目标先决条件](hpc-cache-prereqs.md#nfs-storage-requirements)的详细信息。）与 Azure Blob 存储目标一起使用时，它还可以提高安全性。
+启用根 squash 后，当客户端通过 Azure HPC 缓存发送请求时，会自动将客户端的根用户映射到用户 "无人"。 它还会阻止客户端请求使用设置 UID 权限位。
+
+如果已禁用 root squash，则客户端根用户（UID 0）发出的请求会作为根传递到后端 NFS 存储系统。 此配置可能会允许不适当的文件访问。
+
+在缓存上设置根 squash 有助于补偿用作存储目标的``no_root_squash`` NAS 系统上所需的设置。 （了解有关[NFS 存储目标先决条件](hpc-cache-prereqs.md#nfs-storage-requirements)的详细信息。）与 Azure Blob 存储目标一起使用时，它还可以提高安全性。
 
 默认设置为 **"是"**。 （2020年4月之前创建的缓存可能会默认设置为 "**否**"。）
-
-启用后，此功能还会阻止在客户端请求中对缓存使用设置 UID 权限位。
 
 ## <a name="view-snapshots-for-blob-storage-targets"></a>查看 blob 存储目标的快照
 

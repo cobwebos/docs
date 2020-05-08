@@ -1,5 +1,5 @@
 ---
-title: 什么是视频索引器？
+title: 什么是 Azure 媒体服务视频索引器？
 titleSuffix: Azure Media Services
 description: 本文概述了 Azure 媒体服务视频索引器服务。
 services: media-services
@@ -10,14 +10,14 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/12/2020
 ms.author: juliako
-ms.openlocfilehash: 1c7156da171a101f04db9f83df587f5b8bc71e8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08dcee28c234183aa2b125d82d046d31d4b50e47
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687117"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788847"
 ---
-# <a name="what-is-video-indexer"></a>什么是视频索引器？
+# <a name="what-is-azure-media-services-video-indexer"></a>什么是 Azure 媒体服务视频索引器？
 
 视频索引器（VI）是 Azure 媒体服务 AI 解决方案和 Azure 认知服务品牌的组成部分。 使用视频索引器，可以根据多个通道（语音、声乐、视觉对象）使用机器学习模型来提取深度见解（无需数据分析或编码技巧）。 您可以进一步自定义和定型模型。 该服务可实现深层搜索，降低运营成本，实现新的盈利机会，并为视频的大型存档创建新的用户体验（具有较低的入口障碍）。
 
@@ -114,7 +114,7 @@ ms.locfileid: "81687117"
 
 ## <a name="next-steps"></a>后续步骤
 
-你已做好视频索引器入门准备。 有关详细信息，请参阅下列文章：
+你已做好视频索引器入门准备。 有关详细信息，请参阅以下文章：
 
 - [视频索引器网站入门](video-indexer-get-started.md)。
 - [REST API 中处理视频索引器的内容](video-indexer-use-apis.md)。

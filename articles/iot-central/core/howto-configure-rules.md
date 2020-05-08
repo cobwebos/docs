@@ -8,16 +8,14 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 509f9557a8128df12353ad02a7c7db02b7b42631
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6e85ba5aafaad973d28f799a251b6f3aae548e3
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80158435"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871944"
 ---
 # <a name="configure-rules"></a>配置规则
-
-
 
 *本文适用于操作员、构建者和管理员。*
 
@@ -36,6 +34,12 @@ IoT Central 中的规则充当一种可自定义的响应手段，它们是基�
 在下面的屏幕截图中，当温度大于 70&deg; F 并且湿度小于10时，将检查条件。 如果这两个语句均为 true，则规则将评估为 true 并触发操作。
 
 ![条件](media/howto-configure-rules/conditions.png)
+
+### <a name="use-a-cloud-property-in-a-value-field"></a>在值字段中使用云属性
+
+您可以通过 "**值**" 字段中的 "设备" 模板引用某个条件的云属性。 Cloud 属性和遥测值必须具有相似的类型。 例如，如果**温度**为 double，则仅在 "**值**" 下拉箭头中的 "double" 类型的云属性为 "选项"。
+
+如果选择事件类型 "遥测" 值，则 "**值**" 下拉选项将包含选项**Any**。 **Any**选项表示当应用程序接收到该类型的事件时引发的规则，无论负载是什么。
 
 ## <a name="use-aggregate-windowing"></a>使用聚合开窗
 

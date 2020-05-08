@@ -1,18 +1,18 @@
 ---
-title: 获取 VM 映像的共享访问签名 URI |Azure Marketplace
-description: 本文介绍如何获取每个虚拟硬盘（VHD）的共享访问签名（SAS） URI。
+title: VM 映像的共享访问签名 URI-Azure Marketplace
+description: 在 Azure Marketplace 中为虚拟硬盘（VHD）生成共享访问签名（SAS） URI。
 author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mingshen
-ms.openlocfilehash: c226d35647e4a5a2b1d583dd6328bfb73dae2a1c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b521a3a035044e2f0c1b625df19d265cfa35b49a
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732641"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857926"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>获取 VM 映像的共享访问签名 URI
 
@@ -125,7 +125,7 @@ ms.locfileid: "81732641"
 * 出现`sr=c`时，这意味着指定了容器级别的访问权限。
 * 将 URI 复制并粘贴到浏览器中以测试-下载 blob （可以在下载完成前取消该操作）。
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>后续步骤
 
 如果在创建 SAS URI 时遇到困难，请参阅[常见 SAS URL 问题](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-sas-uri-issues)。 否则，请将 SAS URI 保存到安全位置供将来使用。 你需要它来在合作伙伴中心发布 VM 产品/服务。
 

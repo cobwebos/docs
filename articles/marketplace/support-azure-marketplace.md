@@ -1,24 +1,22 @@
 ---
-title: 对商业应用商店的支持 |Azure Marketplace
-description: Azure 市场和 AppSource 支持信息和链接
+title: Microsoft 商用 marketplace 支持-Azure Marketplace
+description: 合作伙伴中心的 Azure Marketplace 和 AppSource 的支持信息和链接
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 3871ef232d9a2315ece632f6f764f8377a8435c5
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 9dacbbac1caad33a6ab2f5f09d3f6c9d31c32bb7
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159909"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871550"
 ---
-# <a name="support-for-the-marketplace"></a>市场的支持
+# <a name="support-for-microsoft-commercial-marketplace"></a>Microsoft 商用 marketplace 支持
 
-以下是市场的支持选项列表。  
-
-此外，还可以在 [C+AI 社区论坛的市场通道](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222)中让你的许多问题得到解答。  
+你是否有关于 Microsoft 商用 marketplace 发布者入门的问题？ 下面是适用于商业应用商店的支持选项的列表。 除了以下资源之外，你还可以在[C + AI 社区论坛的 Marketplace 渠道](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222)中获得很多问题的答案。  
 
 ## <a name="onboarding"></a>登记
 
@@ -30,7 +28,7 @@ ms.locfileid: "82159909"
 |:--- |:--- |:--- |  
 | 如需帮助，请访问位于[市场支持](https://partner.microsoft.com/support/v2/?stage=1)中的“创建事件”页</li> </ul> | 支持合作伙伴中心。 | 24x5 提供支持。 |  
 
-## <a name="technical"></a>技术方面  
+## <a name="technical"></a>技术条件  
 
 | 支持渠道 | 说明 |  
 |:--- |:--- |  

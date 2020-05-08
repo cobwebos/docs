@@ -6,20 +6,20 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: tisande
-ms.openlocfilehash: bdd5d986752e9d80d2967a8f5fd32491154fa236
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b913ba58252f4cb84d010aea39d371316582bd6d
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233924"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82869926"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的索引策略
 
-在 Azure Cosmos DB 中，数据是按照为每个容器定义的[索引策略](index-policy.md)编制索引的。 新建容器的默认索引策略会对任何字符串或数字强制使用范围索引。 可使用自己的自定义索引策略来替代此策略。
+在 Azure Cosmos DB 中，数据是按照为每个容器定义的[索引策略](index-policy.md)编制索引的。 新建容器的默认索引策略会对任何字符串或数字强制使用范围索引。 可以使用你自己的自定义索引策略覆盖此策略。
 
 ## <a name="indexing-policy-examples"></a>索引策略示例
 
-下面是采用[JSON 格式](index-policy.md#include-exclude-paths)显示的索引策略的一些示例，这是它们在 Azure 门户上的公开方式。 可以通过 Azure CLI 或任何 SDK 设置相同的参数。
+下面是以 [JSON 格式](index-policy.md#include-exclude-paths)显示的一些索引策略示例，该格式是在 Azure 门户上公开索引策略的方式。 可以通过 Azure CLI 或任何 SDK 设置相同的参数。
 
 ### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>用以有选择地排除某些属性路径的选择退出策略
 
@@ -349,17 +349,17 @@ WHERE c.name = "Tim" AND c.age > 18
 
 Azure Cosmos 容器将其索引策略存储为 JSON 文档，可以在 Azure 门户中直接编辑这些文档。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 1. 创建新的 Azure Cosmos 帐户或选择现有的帐户。
 
-1. 打开“数据资源管理器”窗格，选择要使用的容器。****
+1. 打开“数据资源管理器”窗格，选择要使用的容器。 
 
-1. 单击“缩放设置”。****
+1. 单击“缩放设置”。 
 
 1. 修改索引策略 JSON 文档（请参阅[下文](#indexing-policy-examples)中的示例）
 
-1. 完成后，单击“保存”。****
+1. 完成后，单击“保存”。 
 
 ![使用 Azure 门户管理索引编制](./media/how-to-manage-indexing-policy/indexing-policy-portal.png)
 
@@ -371,7 +371,9 @@ Azure Cosmos 容器将其索引策略存储为 JSON 文档，可以在 Azure 门
 
 若要创建具有自定义索引策略的容器，请参阅[使用 Powershell 创建具有自定义索引策略的容器](manage-with-powershell.md#create-container-custom-index)
 
-## <a name="use-the-net-sdk-v2"></a>使用 .NET SDK V2
+## <a name="use-the-net-sdk"></a><a id="dotnet-sdk"></a>使用 .NET SDK
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 [.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) 中的 `DocumentCollection` 对象公开了一个 `IndexingPolicy` 属性，可以通过该属性更改 `IndexingMode` 以及添加或删除 `IncludedPaths` 和 `ExcludedPaths`。
 
@@ -401,7 +403,7 @@ ResourceResponse<DocumentCollection> container = await client.ReadDocumentCollec
 long indexTransformationProgress = container.IndexTransformationProgress;
 ```
 
-## <a name="use-the-net-sdk-v3"></a>使用 .NET SDK V3
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
 [.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) 中的 `ContainerProperties` 对象（请参阅有关其用法的[此快速入门](create-sql-api-dotnet.md)）公开了一个 `IndexingPolicy` 属性，可以通过该属性更改 `IndexingMode` 以及添加或删除 `IncludedPaths` 和 `ExcludedPaths`。
 
@@ -457,6 +459,7 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
     .Attach()
     .CreateIfNotExistsAsync();
 ```
+---
 
 ## <a name="use-the-java-sdk"></a>使用 Java SDK
 
@@ -610,7 +613,9 @@ const containerResponse = await client.database('database').container('container
 const indexTransformationProgress = replaceResponse.headers['x-ms-documentdb-collection-index-transformation-progress'];
 ```
 
-## <a name="use-the-python-sdk-v3"></a>使用 Python SDK V3
+## <a name="use-the-python-sdk"></a>使用 Python SDK
+
+# <a name="python-sdk-v3"></a>[Python SDK V3](#tab/pythonv3)
 
 使用 [Python SDK V3](https://pypi.org/project/azure-cosmos/) 时（有关其用法，请参阅[此快速入门](create-sql-api-python.md)），容器配置将作为字典进行管理。 从此字典中，可以访问索引策略及其所有属性。
 
@@ -674,7 +679,7 @@ container['indexingPolicy']['compositeIndexes'] = [
 response = client.ReplaceContainer(containerPath, container)
 ```
 
-## <a name="use-the-python-sdk-v4"></a>使用 Python SDK V4
+# <a name="python-sdk-v4"></a>[Python SDK V4](#tab/pythonv4)
 
 使用 [Python SDK V4](https://pypi.org/project/azure-cosmos/) 时，容器配置将作为字典进行管理。 从此字典中，可以访问索引策略及其所有属性。
 
@@ -739,6 +744,7 @@ indexingPolicy['compositeIndexes'] = [
 ```python
 response = database_client.replace_container(container_client, container['partitionKey'], indexingPolicy)
 ```
+---
 
 ## <a name="next-steps"></a>后续步骤
 

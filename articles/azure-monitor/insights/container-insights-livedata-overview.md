@@ -3,12 +3,12 @@ title: 查看容器 Azure Monitor 的实时数据（预览） |Microsoft Docs
 description: 本文介绍 Kubernetes 日志、事件和 pod 指标的实时视图，而无需在容器 Azure Monitor 中使用 kubectl。
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 9e7c7a7b7bf276b3451cee1d289b8b07ac0f40ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 38615acf079c33c49e27394bfdb9b8104e5a68ac
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79216536"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872118"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>如何实时查看 Kubernetes 日志、事件和 Pod 指标
 
@@ -42,7 +42,7 @@ ms.locfileid: "79216536"
 >建议你在解决问题时，只会在短时间内暂停或暂停自动滚动。 这些请求可能会影响群集上 Kubernetes API 的可用性和限制。 
 
 >[!IMPORTANT]
->在操作此功能的过程中，不会永久存储数据。 当你关闭浏览器或离开浏览器或离开浏览器时，将删除会话期间捕获的所有信息。 数据仅在指标功能的五分钟窗口内保持可视化任何超过五分钟的指标也会被删除。 实时数据（预览）缓冲区查询在合理的内存使用量限制内（需要更具体的位置，这是合理的？）。 
+>在操作此功能的过程中，不会永久存储数据。 当你关闭浏览器或离开浏览器或离开浏览器时，将删除会话期间捕获的所有信息。 数据仅在指标功能的五分钟窗口内保持可视化任何超过五分钟的指标也会被删除。 实时数据（预览）缓冲区在合理内存使用量限制内查询。
 
 ## <a name="view-logs"></a>查看日志
 

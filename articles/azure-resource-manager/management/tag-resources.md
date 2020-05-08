@@ -2,13 +2,13 @@
 title: 为逻辑组织标记资源、资源组和订阅
 description: 演示如何应用标记来整理 Azure 资源以便进行计费和管理。
 ms.topic: conceptual
-ms.date: 04/10/2020
-ms.openlocfilehash: 2f437682a2ac415ce8478b09a44bff044bd9511b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/06/2020
+ms.openlocfilehash: 9ba7c58f6fa56b8ef2c233a5fe7f8f8e04fe29e1
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81255118"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864481"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>使用标记来组织 Azure 资源和管理层次结构
 
@@ -591,7 +591,9 @@ az deployment sub create --name tagresourcegroup --location westus2 --template-u
 * 标记名称不能包含以下字符：`<`、`>`、`%`、`&`、`\`、`?`、`/`
 
    > [!NOTE]
-   > 目前 Azure DNS 区域和流量管理器服务也不允许在标记中使用空格。
+   > 目前，Azure DNS 区域和流量管理器服务也不允许在标记中使用空格。
+   >
+   > Azure 前门不支持`#`在标记名称中使用。
 
 ## <a name="next-steps"></a>后续步骤
 

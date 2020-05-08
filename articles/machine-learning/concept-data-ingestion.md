@@ -1,5 +1,5 @@
 ---
-title: 数据引入选项
+title: 数据引入 & 自动化
 titleSuffix: Azure Machine Learning
 description: 了解用于训练机器学习模型的数据引入选项。
 services: machine-learning
@@ -10,25 +10,27 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
-ms.openlocfilehash: 6b1c671d2079c7d8ab59e9afe981ccef3f58ef27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 475c4fd6b34996c83035c4f7ef93b9fa02ded11f
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79086887"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789855"
 ---
-# <a name="data-ingestion-in-azure-machine-learning"></a>Azure 机器学习中的数据引入
+# <a name="data-ingestion-options-for-azure-machine-learning-workflows"></a>Azure 机器学习工作流的数据引入选项
 
-本文介绍可在 Azure 机器学习中使用的以下数据引入选项的优点和缺点。 
+本文介绍 Azure 机器学习提供的数据引入选项的优点和缺点。 
 
-1. [Azure 数据工厂](#use-azure-data-factory)管道
-2. [Azure 机器学习 Python SDK](#use-the-python-sdk)
+选择：
++ [Azure 数据工厂](#azure-data-factory)管道，专门构建以提取、加载和转换数据
 
-数据引入是指从一个或多个源中提取非结构化数据，然后准备这些数据以用于训练机器学习模型的过程。 此过程也很耗时，尤其是手动执行，并且要从多个源提取大量数据时。 将此工作自动化可以释放资源，并确保模型使用最新且适用的数据。
++ [Azure 机器学习 PYTHON SDK](#azure-machine-learning-python-sdk)，为基本数据引入任务提供自定义代码解决方案。
 
-Azure 数据工厂 (ADF) 专门设计用于提取、加载和转换数据，但是，使用 Python SDK 可为基本数据引入任务开发自定义代码解决方案。 如果两者都不太符合你的需求，还可以结合使用 ADF 和 Python SDK 来创建符合需求的总体数据引入工作流。 
++ 两者的组合
 
-## <a name="use-azure-data-factory"></a>使用 Azure 数据工厂
+数据引入是指将非结构化数据从一个或多个源中提取出来，然后准备好用于训练机器学习模型的过程。 这也会耗费时间，尤其是当手动完成时，如果有大量的数据来自多个源。 自动执行此工作可释放资源并确保模型使用最新的适用数据。
+
+## <a name="azure-data-factory"></a>Azure 数据工厂
 
 [Azure 数据工厂](https://docs.microsoft.com/azure/data-factory/introduction)原生支持数据引入管道的数据源监视和触发器。  
 
@@ -55,7 +57,7 @@ Azure 数据工厂数据流的嵌入式数据世系功能|
     
 了解如何使用 [Azure 数据工厂](how-to-data-ingest-adf.md)为机器学习生成数据引入管道。
 
-## <a name="use-the-python-sdk"></a>使用 Python SDK 
+## <a name="azure-machine-learning-python-sdk"></a>Azure 机器学习 Python SDK 
 
 使用 [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml) 可将数据引入任务合并到 [Azure 机器学习管道](how-to-create-your-first-pipeline.md)步骤中。
 
@@ -73,5 +75,7 @@ Azure 数据工厂数据流的嵌入式数据世系功能|
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何使用 [Azure 数据工厂](how-to-data-ingest-adf.md)为机器学习生成数据引入管道
-* 了解如何使用 [Azure Pipelines](how-to-cicd-data-ingestion.md) 自动化和管理数据引入管道的开发生命周期。
+请参阅以下操作指南文章：
+* [使用 Azure 数据工厂构建数据引入管道](how-to-data-ingest-adf.md)
+
+* [利用 Azure Pipelines 自动执行和管理数据引入管道](how-to-cicd-data-ingestion.md)。

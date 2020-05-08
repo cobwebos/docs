@@ -4,12 +4,12 @@ ms.service: machine-learning
 ms.topic: include
 ms.date: 03/16/2020
 ms.author: larryfr
-ms.openlocfilehash: d36bf2db05113656a77e76ff900d95910f313c73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e6a7ee8ed497c87c08f13e09a0022b0835c952cc
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79477249"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82975081"
 ---
 若要更新 Web 服务，请使用 `update` 方法。 你可以更新 Web 服务，以使用可以在推理配置中指定的新模型、新入口脚本或新依赖项。 有关详细信息，请参阅 [Webservice.update](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#update--args-) 的文档。
 
@@ -63,6 +63,6 @@ az ml service update -n myservice --model-metadata-file modelinfo.json
 > [!TIP]
 > 此示例使用 JSON 文档将模型信息从注册命令传递到更新命令。
 >
-> 若要更新服务以使用新的入口脚本或环境，请创建[推理配置文件](/azure/machine-learning/service/reference-azure-machine-learning-cli#inference-configuration-schema)并使用 `ic` 参数指定它。
+> 若要更新服务以使用新的入口脚本或环境，请创建[推理配置文件](/azure/machine-learning/reference-azure-machine-learning-cli#inference-configuration-schema)并使用 `ic` 参数指定它。
 
 有关详细信息，请参阅 [az ml 服务更新](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-update)文档。
