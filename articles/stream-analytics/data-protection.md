@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 1b3bdad0125b5bddbba20c8d807924fc3ea87e32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d201beb2ff4aba815749b12a506d2292779cb82
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79299390"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857292"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure 流分析中的数据保护 
 
@@ -61,6 +61,9 @@ Azure 流分析是一种完全托管的平台即服务，可用于构建实时�
 还将存储你的流分析作业使用的资源的连接详细信息。 加密存储帐户以保护你的所有数据。 
 
 为了帮助你满足任何管控行业或环境中的符合性义务，你可以阅读有关[Microsoft 的符合性产品/服务的](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)详细信息。 
+
+## <a name="known-issues"></a>已知问题
+存在一个已知问题，即使用客户托管密钥的作业在使用托管标识向任何输入或输出进行身份验证时出现故障。 正在处理此问题的修补程序，并将在不久的将来推出。 
 
 ## <a name="next-steps"></a>后续步骤
 

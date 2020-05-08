@@ -8,10 +8,10 @@ ms.author: inhenkel
 author: IngridAtMicrosoft
 ms.date: 03/25/2020
 ms.openlocfilehash: 459f11844f873a911b3e5702e8c768b1cd22e504
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80984991"
 ---
 # <a name="create-an-azure-media-services-live-stream"></a>创建 Azure 媒体服务实时传送流
@@ -144,7 +144,7 @@ ms.locfileid: "80984991"
 
    ![“流式处理终结点”菜单项](media/live-events-wirecast-quickstart/streaming-endpoints.png)
 1. 如果默认流式处理终结点的状态为“已停止”，请选择它。 此步骤会将你转到该终结点的页面。
-1. 选择“启动”  。
+1. 选择“开始”  。
    
    ![流式处理终结点的“启动”按钮](media/live-events-wirecast-quickstart/start.png)
 

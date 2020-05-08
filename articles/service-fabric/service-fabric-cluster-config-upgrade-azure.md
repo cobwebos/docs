@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 476a2d910b916ea29132b108478d06f756454813
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c2973428354f101b5b546128b08bf67587923a8e
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75463287"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793068"
 ---
 # <a name="upgrade-the-configuration-of-a-cluster-in-azure"></a>在 Azure 中升级群集的配置 
 
@@ -53,4 +53,4 @@ ms.locfileid: "75463287"
 
 ## <a name="next-steps"></a>后续步骤
 * 了解 [Service Fabric 群集设置](service-fabric-cluster-fabric-settings.md)。
-* 了解如何[扩展和缩减群集](service-fabric-cluster-scale-up-down.md)。
+* 了解如何[扩展和缩减群集](service-fabric-cluster-scale-in-out.md)。

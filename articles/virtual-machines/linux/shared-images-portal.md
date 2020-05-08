@@ -7,15 +7,15 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.topic: article
 ms.workload: infrastructure
-ms.date: 11/06/2019
+ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 74c87d589f1c50551ac5685fe0fa126a82bffbde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28cdc96020d085c6f44c8b6818aa76dd7eb29891
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758439"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788973"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>使用门户创建 Azure 共享映像库
 
@@ -27,26 +27,18 @@ ms.locfileid: "81758439"
 
 共享映像库功能具有多种资源类型。 我们将在本文中使用或生成这些资源类型：
 
-| 资源 | 说明|
-|----------|------------|
-| **托管映像** | 一个基本映像，可以单独使用，也可用于在映像库中创建**映像版本**。 托管映像是从[通用化](shared-image-galleries.md#generalized-and-specialized-images) VM 创建的。 托管映像是一种特殊的 VHD 类型，可用于生成多个 VM，并且现在可用于创建共享映像版本。 |
-| **快照** | 可用于创建**映像版本**的 VHD 副本。 可以从[专用化](shared-image-galleries.md#generalized-and-specialized-images) VM（一个尚未通用化的 VM）创建快照，然后单独使用该快照，或者将其与数据磁盘的快照配合使用，以创建专用化的映像版本。
-| **映像库** | 与 Azure 市场一样，**映像库**是用于管理和共享映像的存储库，但你可以控制谁有权访问这些映像。 |
-| **映像定义** | 映像在库中定义，携带有关该映像及其在组织内部使用的要求的信息。 可以包含映像是通用化还是专用化映像、操作系统、最小和最大内存要求以及发行说明等信息。 它是某种映像类型的定义。 |
-| **映像版本** | 使用库时，将使用**映像版本**来创建 VM。 可根据环境的需要创建多个映像版本。 与托管映像一样，在使用**映像版本**创建 VM 时，将使用映像版本来创建 VM 的新磁盘。 可以多次使用映像版本。 |
+
+[!INCLUDE [virtual-machines-shared-image-gallery-resources](../../../includes/virtual-machines-shared-image-gallery-resources.md)]
 
 <br>
 
-> [!IMPORTANT]
-> 专用化映像目前以公共预览版提供。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
->
-> **预览版的已知限制**：只能使用门户或 API 从专用化映像创建 VM。 预览版不提供 CLI 或 PowerShell 支持。
 
 
-## <a name="before-you-begin"></a>准备阶段
 
-若要完成本文中的示例，必须准备好通用化 VM 的现有托管映像，或专用化 VM 的快照。 可以按照[教程：使用 Azure PowerShell 创建 Azure VM 的自定义映像](tutorial-custom-images.md)来创建托管映像，或按照[创建快照](../windows/snapshot-copy-managed-disk.md)来创建专用化 VM。 对于托管映像和快照，数据磁盘大小不能超过 1 TB。
+
+## <a name="before-you-begin"></a>开始之前
+
+若要完成本文中的示例，必须准备好通用化 VM 的现有托管映像，或专用化 VM 的快照。 可以按照[教程：使用 Azure PowerShell 创建 AZURE VM 的自定义映像](tutorial-custom-images.md)，创建托管映像，或创建专用 VM 的[快照](../windows/snapshot-copy-managed-disk.md)。 对于托管映像和快照，数据磁盘大小不能超过 1 TB。
 
 通过本文进行操作时，请根据需要替换资源组和 VM 名称。
 
@@ -58,13 +50,13 @@ ms.locfileid: "81758439"
 现在，可以创建一个或多个新的 VM。 本示例在美国东部数据中心的“myResourceGroup”中创建名为“myVMfromImage”的 VM******。
 
 1. 转到映像定义。 可以使用资源筛选器显示所有可用的映像定义。
-1. 在映像定义的页面顶部，从菜单中选择“创建 VM”。 
-1. 对于“资源组”，请选择“新建”并键入 *myResourceGroup* 作为名称。  
-1. 在“虚拟机名称”中键入 *myVM*。 
+1. 在映像定义的页面顶部，从菜单中选择“创建 VM”。****
+1. 对于“资源组”，请选择“新建”并键入 *myResourceGroup* 作为名称。********
+1. 在“虚拟机名称”中键入 *myVM*。****
 1. 对于 "**区域**"，选择 "*美国东部*"。
-1. 对于“可用性选项”，请保留默认设置“无需基础结构冗余”。  
-1. 如果你是从映像定义的页面开始操作的，系统会自动使用 `latest` 映像版本填充“映像”的值。 
-1. 对于“大小”，请从可用大小列表中选择一种 VM 大小，然后选择“选择”。  
+1. 对于“可用性选项”，请保留默认设置“无需基础结构冗余”。******
+1. 如果你是从映像定义的页面开始操作的，系统会自动使用 `latest` 映像版本填充“映像”的值。****
+1. 对于“大小”，请从可用大小列表中选择一种 VM 大小，然后选择“选择”。********
 1. 在“管理员帐户”下，如果源 VM 是通用化的，请输入**用户名**和 **SSH 公钥**。**** 如果源 VM 是专用化的，则这些选项将会灰显，因为系统会使用源 VM 中的信息。
 1. 若要允许远程访问 VM，请在“公共入站端口”下选择“允许所选端口”，然后从下拉列表中选择“SSH (22)”。************ 如果你不希望允许远程访问 VM，请为“公共入站端口”保留选择“无”。********
 1. 完成后，选择页面底部的“查看 + 创建”按钮。****
@@ -82,9 +74,9 @@ ms.locfileid: "81758439"
 此外可以使用模板创建共享映像库资源。 提供多个 Azure 快速入门模板： 
 
 - [创建共享映像库](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [在共享的映像库中创建映像定义](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
+- [在共享映像库中创建映像定义](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [在共享映像库中创建映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
-- [根据映像版本创建 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
+- [从映像版本创建 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
 有关共享映像库的详细信息，请参阅[概述](shared-image-galleries.md)。 如果遇到问题，请参阅[排查共享映像库问题](troubleshooting-shared-images.md)。
 

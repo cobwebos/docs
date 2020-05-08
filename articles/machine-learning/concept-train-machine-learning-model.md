@@ -1,5 +1,5 @@
 ---
-title: 模型训练方法
+title: 构建 & 定型模型
 titleSuffix: Azure Machine Learning
 description: 了解可用于通过 Azure 机器学习训练模型的不同方法。 评估器提供了一种简单的方法来使用常用框架，如 Scikit-learn、TensorFlow、Keras、PyTorch 和 Chainer。 机器学习管道使你可以轻松地计划无人参与的运行，使用异类计算环境，并重复使用工作流的某些部分。 运行配置提供对训练进程运行于的计算目标的精细控制。
 services: machine-learning
@@ -9,12 +9,12 @@ ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 68ad9cc47d68f7bc3ae952f7e458781cdc1c4ab2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c75c41012928b7bffb61a00a73f314e4c372b154
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79129768"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792337"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure 机器学习训练模型
 

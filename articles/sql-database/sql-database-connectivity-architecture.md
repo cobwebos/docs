@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: b4e7d827536245a22d168c7d9923c2e5b82830b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 112dbea4ef54c5923c586b87be9770c2e91befd2
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82111787"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901434"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL 连接体系结构
 > [!NOTE]
@@ -45,7 +45,7 @@ ms.locfileid: "82111787"
 Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三个选项：
 
 - **重定向（建议）：** 客户端直接与托管数据库的节点建立连接，从而降低延迟并改进吞吐量。 若要通过连接来使用此模式，客户端需要：
-   - 允许从客户端到 11000 11999 范围内端口上的所有 Azure SQL IP 地址的出站通信。 使用 SQL 服务标记，使其更易于管理。  
+   - 在范围为 11000 到 11999 的端口上允许从客户端到区域中所有 Azure SQL IP 地址的出站通信。 使用 SQL 服务标记，使其更易于管理。  
    - 在端口 1433 上允许从客户端到 Azure SQL 数据库网关 IP 地址的出站通信。
 
 - **代理：** 在此模式下，所有连接都通过 Azure SQL 数据库网关来代理，导致延迟增大和吞吐量降低。 若要通过连接来使用此模式，客户端需满足以下条件：在端口 1433 上允许从客户端到 Azure SQL 数据库网关 IP 地址的出站通信。
@@ -100,7 +100,7 @@ Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三�
 | 印度中部        | 104.211.96.159     |
 | 印度南部          | 104.211.224.146    |
 | 印度西部           | 104.211.160.80     |
-| 日本东部           | 13.78.61.196, 40.79.184.8, 13.78.106.224, 191.237.240.43, 40.79.192.5 | 
+| 日本东部           | 13.78.61.196, 40.79.184.8, 191.237.240.43, 40.79.192.5 | 
 | 日本西部           | 104.214.148.156, 40.74.100.192, 191.238.68.11, 40.74.97.10 | 
 | 韩国中部        | 52.231.32.42       |
 | 韩国南部          | 52.231.200.86      |
@@ -127,5 +127,5 @@ Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三�
 ## <a name="next-steps"></a>后续步骤
 
 - 有关如何更改 Azure SQL 数据库服务器的 Azure SQL 数据库连接策略的信息，请参阅 [conn-policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy)。
-- 有关使用 ADO.NET 4.5 或更高版本的客户端的 Azure SQL 数据库连接行为的信息，请参阅[用于 ADO.NET 4.5 的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)。
-- 有关常规应用程序开发的概述信息，请参阅[SQL 数据库应用程序开发概述](sql-database-develop-overview.md)。
+- 若要了解使用 ADO.NET 4.5 或更高版本的客户端的 Azure SQL 数据库连接行为，请参阅[用于 ADO.NET 4.5 的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)。
+- 若要了解常规应用程序开发的概述信息，请参阅[SQL 数据库应用程序开发概述](sql-database-develop-overview.md)。

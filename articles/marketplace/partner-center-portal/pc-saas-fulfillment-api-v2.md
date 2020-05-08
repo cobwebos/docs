@@ -1,22 +1,22 @@
 ---
-title: SaaS 履单 API v2 |Azure Marketplace
-description: 本文介绍如何使用关联的履单 v2 Api 在 AppSource 和 Azure Marketplace 上创建和管理 SaaS 产品/服务。
+title: Microsoft 商业应用商店中的 SaaS 履单 Api v2
+description: 了解如何通过使用履单版本2来创建和管理 Microsoft AppSource 和 Azure Marketplace 上的 SaaS 产品/服务。
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: dsindona
-ms.openlocfilehash: ca49418013357ecaae62ea5e91374eaa1cbde59d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f452349c0d636bc74a3722e2526623c955093f7
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80275758"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854186"
 ---
-# <a name="saas-fulfillment-apis-version-2"></a>SaaS 履行 API 第 2 版 
+# <a name="saas-fulfillment-apis-version-2-in-microsoft-commercial-marketplace"></a>Microsoft 商用 marketplace 中的 SaaS 履单 Api 版本2
 
-本文详细介绍了允许合作伙伴在 AppSource marketplace 和 Azure Marketplace 中销售其 SaaS 应用程序的 Api。 AppSource 和 Azure Marketplace 上的事务 SaaS 产品/服务需要这些 Api。
+本文详细介绍了实现 Api，使合作伙伴能够在 Microsoft AppSource 和 Azure Marketplace 中销售其 SaaS 应用程序。 事务 SaaS 产品/服务需要这些 Api。
 
 ## <a name="managing-the-saas-subscription-life-cycle"></a>管理 SaaS 订阅生命周期
 
@@ -57,7 +57,7 @@ Azure SaaS 管理 SaaS 订阅购买的整个生命周期。 它使用履单 Api 
 
 ![从 SaaS 服务启动更新时的 API 调用](./media/saas-update-api-v2-calls-from-saas-service-a.png) 
 
-#### <a name="suspended"></a>Suspended
+#### <a name="suspended"></a>已挂起
 
 此状态表示尚未收到客户的付款。 按照策略，我们将在取消订阅之前向客户提供宽限期。 当订阅处于此状态时： 
 
@@ -861,7 +861,7 @@ Response body:
  - **InProgress** <br>
 - 成功  <br>
 - **Failed** <br>
-- **冲突** <br>
+- **合并** <br>
 
 在 webhook 通知中，可操作的状态为 "**成功**" 和 "**失败**"。 操作的生命周期是从**NotStarted**到终端状态，例如**成功**、**失败**或**冲突**。 如果收到**NotStarted**或**InProgress**，请继续通过 GET API 请求状态，直到操作在执行操作之前进入终端状态。 
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/31/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3dadb57c6358623974de1a27e1601d99b28fee32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c25c64268b38e5929c73891f7c48e79b9b8593e
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80584331"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856045"
 ---
 # <a name="locking-down-an-app-service-environment"></a>锁定应用服务环境
 
@@ -174,6 +174,7 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 |azglobal-red.azglobal.metrics.nsatc.net:443 |
 |antares-black.antares.metrics.nsatc.net:443 |
 |antares-red.antares.metrics.nsatc.net:443 |
+|prod.microsoftmetrics.com:443 |
 |maupdateaccount.blob.core.windows.net:443 |
 |clientconfig.passport.net:443 |
 |packages.microsoft.com:443 |
@@ -190,6 +191,8 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 |admin.core.windows.net:443 |
 |prod.warmpath.msftcloudes.com:443 |
 |prod.warmpath.msftcloudes.com:80 |
+|gcs.prod.monitoring.core.windows.net:80|
+|gcs.prod.monitoring.core.windows.net:443|
 |azureprofileruploads.blob.core.windows.net:443 |
 |azureprofileruploads2.blob.core.windows.net:443 |
 |azureprofileruploads3.blob.core.windows.net:443 |
@@ -295,7 +298,7 @@ Linux 在 US Gov 区域中不可用，因此不作为可选配置列出。
 | 13.82.184.151:80 | 监视 ASE 问题和发出相关警报时需要此端口 |
 | 13.82.184.151:443 | 监视 ASE 问题和发出相关警报时需要此端口 |
 
-#### <a name="dependencies"></a>依赖项 ####
+#### <a name="dependencies"></a>依赖关系 ####
 
 | 终结点 |
 |----------|

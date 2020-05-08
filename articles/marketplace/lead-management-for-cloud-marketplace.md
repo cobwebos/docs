@@ -7,24 +7,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 6f93e00cb9f840b27578eb9a5b0c6a2cab1ac525
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: c41831f528ae425b35a04503180a956f67762b70
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160539"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789838"
 ---
 # <a name="lead-management-for-commercial-marketplace"></a>面向商用 marketplace 的潜在客户管理
 
-
 任何发展良好的业务都以客户为中心。 在转换当今的产品时，营销人员需要集中精力直接与客户建立关系。 所以，生成高质量的销售线索对销售周期非常重要。 在[合作伙伴中心](https://partner.microsoft.com/)列出你的产品/服务后，你可以使用一些工具以编程方式立即接收客户联系信息，并在 marketplace 中向客户提供兴趣或部署你的产品。 
-
-
 
 ## <a name="what-are-leads-in-the-marketplace"></a>什么是市场中的潜在顾客？
 
 潜在顾客是对市场中的产品感兴趣或部署产品的客户。 无论你的产品是在 Azure Marketplace 还是 AppSource 上列出，你都可以在从 CRM 到合作伙伴中心的列表中正确设置客户后接收来自客户的潜在顾客。 
-
 
 ## <a name="how-to-connect-your-crm-system-with-partner-center"></a>如何将 CRM 系统与合作伙伴中心连接
 
@@ -48,7 +44,7 @@ ms.locfileid: "82160539"
 
 完成技术设置后，应将这些潜在顾客合并到当前销售 & 营销策略和操作流程中。 我们希望更好地了解整个销售流程并希望更紧密地与你合作来提供高质量的潜在顾客和足够的数据来助你成功。 我们欢迎你提供有关如何优化发送给销售线索，以及如何使用额外的数据对其进行增强的反馈，以便帮助客户取得成功。 如果你有兴趣提供反馈和建议，让你的销售团队能够更成功地利用 Marketplace 主管，请告知我们。
 
-## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a>在合作伙伴中心发布期间的常见潜在客户配置错误
+## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a><a id="publishing-config-errors"></a>在合作伙伴中心发布期间的常见潜在客户配置错误
 
 **无法将潜在顾客保存到 Dynamics CRM。检查 Dynamics CRM 帐户设置。LastCRMError：无法登录到 Dynamics CRM，LastCRMException：** 
 
@@ -82,7 +78,7 @@ ms.locfileid: "82160539"
 
 > 解决方法：登录到合作伙伴中心，查看店面详细信息 >> 主导目标 >> URL，检查它是否为有效的动态 CRM 实例。
 
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 
 **什么是潜在顾客？为什么说他们对在市场上作为发布者的我很重要？** 
 

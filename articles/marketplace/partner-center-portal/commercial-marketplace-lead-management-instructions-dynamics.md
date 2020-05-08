@@ -1,18 +1,18 @@
 ---
-title: Dynamics 365 客户参与的潜在客户管理 |Azure Marketplace
-description: 为 Dynamics 365 客户参与配置潜在客户管理。
+title: 针对 Dynamics 365 的潜在客户管理-Microsoft 商业市场
+description: 了解如何设置 Dynamics 365 Customer Engagement，以管理来自 Microsoft AppSource 和 Azure Marketplace 的潜在客户。
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: b9158f7b2e3fc73a2fe2a9b20ead2558b7467f6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 985b3258eb0b957242d529945f32ed9704a91e7d
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131057"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790994"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>为 Dynamics 365 客户参与配置潜在客户管理
 
@@ -21,14 +21,14 @@ ms.locfileid: "82131057"
 >[!NOTE]
 >这些说明特定于 Microsoft 托管的云环境，适用于 Dynamics 365 客户参与。 当前不支持直接连接到 Dynamics 本地环境。 还有其他选项可用于接收潜在顾客，如配置[HTTPS 终结点](./commercial-marketplace-lead-management-instructions-https.md)或[Azure 表](./commercial-marketplace-lead-management-instructions-azure-table.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-需要以下用户权限才能完成本文中的步骤。 你需要：
+需要以下用户权限才能完成本文中的步骤：
 
-* 是 Dynamics 365 客户参与实例上的管理员，能够安装解决方案并按照这些说明操作。
-* 是租户管理员，用于为用于从商业 marketplace 产品/服务发送销售线索的潜在客户服务创建一个新的服务帐户。
-* 具有 Office 365 管理门户的访问权限。
-* 有权访问 Azure 门户。
+* Dynamics 365 Customer Engagement 实例的管理员权限才能安装解决方案。
+* 租户管理员权限，用于为使用商业 marketplace 产品/服务的潜在客户创建新的服务帐户。
+* 对 Office 365 管理门户的访问权限。
+* 对 Azure 门户的访问权限。
 
 ## <a name="install-the-solution"></a>安装解决方案
 

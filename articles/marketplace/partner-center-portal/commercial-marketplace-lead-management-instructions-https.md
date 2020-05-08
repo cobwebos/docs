@@ -1,25 +1,27 @@
 ---
-title: 具有 HTTPS 的 Microsoft 商业市场主导管理
-description: 为 HTTPS 终结点配置 Microsoft 商用 marketplace 潜在客户管理。
+title: 使用 HTTPS 终结点进行客户端管理-Microsoft 商用 marketplace
+description: 了解如何使用 Power 自动功能和 HTTPS 终结点来管理 Microsoft AppSource 和 Azure Marketplace 中的潜在客户。
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 1c3337e970fdbb22cb1ed88f105d5e7798a68f74
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a4fc57b3be8dd59997ef2bfc9624892cf726160
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133736"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790977"
 ---
-# <a name="configure-lead-management-by-using-an-https-endpoint"></a>使用 HTTPS 终结点配置潜在客户管理
+# <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>使用 HTTPS 终结点管理商业市场主管
+
+如果你的客户关系管理（CRM）系统未在合作伙伴中心获得支持 Microsoft AppSource 和 Azure Marketplace 主管，你可以在 "[自动](https://powerapps.microsoft.com/automate-processes/)" 中使用 HTTPS 终结点来处理这些潜在顾客。 使用 HTTPS 终结点时，可以通过电子邮件通知形式发送商业市场主管，也可以将其写入到电源自动支持的 CRM 系统。
+
+本文介绍如何在 "自动启动" 中创建新流，以生成将用于在合作伙伴中心配置潜在顾客的 HTTP POST URL。 其中还包括用[Postman](https://www.getpostman.com/downloads/)测试流的步骤。
 
 >[!NOTE]
->这些说明中使用的电源自动连接器需要付费订阅才能实现自动化。 在按照本文中的说明操作之前，请务必考虑此情况。
-
-如果你的客户关系管理（CRM）系统未在合作伙伴中心获得支持 Microsoft AppSource 和 Azure Marketplace 主管，你可以在 "自动" 中使用 HTTPS 终结点来处理这些潜在顾客。 使用 HTTPS 终结点时，可以将这些潜在顾客作为电子邮件通知发送，也可以将其写入到电源自动支持的 CRM 系统。 本文中的说明将指导你完成使用 Power 自动功能创建新流的基本过程，该过程将生成 HTTP POST URL，你将在 "**潜在顾客管理** > **HTTPS 终结点 url** " 字段中输入该 url。 还介绍了如何使用名为[Postman](https://www.getpostman.com/downloads/)的工具（可在线获得）的帮助测试流。
+>这些说明中使用的电源自动连接器需要付费订阅才能实现自动化。 在配置此流之前，请务必考虑此情况。
 
 ## <a name="create-a-flow-by-using-power-automate"></a>使用电源自动执行创建流
 
@@ -27,22 +29,24 @@ ms.locfileid: "82133736"
 
 1. 登录，然后在菜单中选择 **"我的流**"。
 
-1. 选择 " **+ 自动--从空白**"。
+    ![登录我的流](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
 
-    ![我的流 + 自动化-从空白](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
+1. 在 " **+ 新建**" 下，选择 " **+ 即时"-从空白**。
 
-1. 在 "**生成自动流**" 窗口中，选择 "**跳过**"。 
+    ![我的流 + 自动化-从空白](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-create-fromblank.png)
 
-    ![生成自动流窗口 "跳过" 按钮](./media/commercial-marketplace-lead-management-instructions-https/build-automated-flow.png)
+1. 命名你的流，然后在 "**选择触发此流的方式**" 下，选择**接收 HTTP 请求的时间**。
 
-1. 在 "**搜索连接器和触发器**" 字段中，输入**请求**以查找请求连接器。
-1. 在“触发器”下，选择“收到 HTTP 请求时”。******** 
+    ![生成自动流窗口 "跳过" 按钮](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
 
-    ![触发器菜单](./media/commercial-marketplace-lead-management-instructions-https/request-connector.png)
+1. 单击 flow 步骤以将其展开。
 
-1. 在 "**收到 HTTP 请求时**" 窗口中，将以下 JSON 架构复制并粘贴到 "**请求正文 JSON 架构**" 文本框中。 Microsoft 使用此架构来包含您的潜在客户数据。
+    ![展开 flow 步骤](./media/commercial-marketplace-lead-management-instructions-https/expand-flow-step.png)
 
-    !["请求正文 JSON 架构" 文本框](./media/commercial-marketplace-lead-management-instructions-https/https-request-received.png)
+1. 使用以下方法之一来配置**请求正文 JSON 架构**：
+
+    - 将 JSON 架构复制到 "**请求正文 JSON 架构**" 文本框中。
+    - 选择“使用示例有效负载生成架构”。**** 在 "**输入或粘贴示例 JSON 负载**" 文本框中，粘贴 JSON 示例。 选择“完成”以创建架构。****
 
     **JSON 架构**
 
@@ -103,6 +107,26 @@ ms.locfileid: "82133736"
     }
     ```
 
+    **JSON 示例**
+    
+    ```json
+    {
+      "UserDetails": {
+        "FirstName": "Some",
+        "LastName": "One",
+        "Email": "someone@contoso.com",
+        "Phone": "16175555555",
+        "Country": "USA",
+        "Company": "Contoso",
+        "Title": "Esquire"
+     },
+      "LeadSource": "AzureMarketplace",
+      "ActionCode": "INS",
+      "OfferTitle": "Test Microsoft",
+      "Description": "Test run through Power Automate"
+    }
+    ```
+
 >[!NOTE]
 >此时，你可以选择连接到 CRM 系统或配置电子邮件通知。 根据你的选择，按照其余说明进行操作。
 
@@ -157,7 +181,7 @@ ms.locfileid: "82133736"
 
 ### <a name="testing"></a>测试
 
-可以使用一个名为 " [Postman](https://app.getpostman.com/app/download/win64)" 的工具来测试一切是否按预期运行，该工具可以在线下载。 此工具适用于 Windows。 
+可以通过[Postman](https://app.getpostman.com/app/download/win64)测试配置。 Windows 提供了 Postman 的在线下载。 
 
 1. 启动 Postman，然后选择 "**新建** > **请求**" 以设置测试工具。 
 
@@ -201,10 +225,18 @@ ms.locfileid: "82133736"
 
 准备好在发布门户中为产品/服务配置潜在顾客管理信息时，请执行以下步骤。
 
-1. 请参阅产品/服务的**产品/服务设置**页。
-1. 选择 "**潜在顾客管理**" 部分下的 "**连接**"。
+1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+
+1. 选择产品/服务，并中转到 "**产品/服务" 设置**选项卡。
+
+1. 在 "**潜在客户管理**" 部分下，选择 "**连接**"。 
+    ![潜在客户管理连接按钮](./media/commercial-marketplace-lead-management-instructions-https/lead-management-connect.png)
+
 1. 在 "**连接详细信息**" 弹出窗口中，选择 "**潜在顾客目标**的**HTTPS 终结点**"。 将前面步骤中创建的流中的 HTTP POST URL 粘贴到 " **HTTPS 终结点 URL** " 字段。
+    ![连接详细信息联系电子邮件](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)
+
 1. 在 "**联系人电子邮件**" 下，输入公司中应在收到新潜在客户时接收电子邮件通知的人员的电子邮件地址。 可以提供多个电子邮件，用分号分隔。
+
 1. 选择“确定”  。
 
 若要确保已成功连接到潜在客户目标，请选择 "**验证**" 按钮。 如果成功，则在潜在客户目标中会出现测试主管。
@@ -213,10 +245,3 @@ ms.locfileid: "82133736"
 >您必须先完成该产品/服务的其余部分的配置，然后发布该产品/服务，才能接收该产品/服务的潜在客户。
 
 当生成潜在顾客时，Microsoft 会将潜在顾客发送到流中。 潜在顾客路由到您配置的 CRM 系统或电子邮件地址。
-
-![潜在客户管理连接按钮](./media/commercial-marketplace-lead-management-instructions-https/lead-management-connect.png)
-
-![连接详细信息潜在顾客目标](./media/commercial-marketplace-lead-management-instructions-https/connection-details.png)
-
-![连接详细信息联系电子邮件](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)
-

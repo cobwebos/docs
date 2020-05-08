@@ -1,5 +1,5 @@
 ---
-title: 支出摘要-Azure Marketplace
+title: 支出报表-Microsoft 商业应用商店
 description: 费用报表显示你在产品/服务中获得的资金的详细信息，包括付款金额以及支付的时间。
 author: mingshen
 ms.author: mingshen
@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 40f8ca1cdbdf44639b009792c71cbf9fd55d8841
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
-ms.translationtype: HT
+ms.openlocfilehash: 0380330c2cfd4b0a72dcc158a0d6e051d5547b31
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779804"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857021"
 ---
-# <a name="payout-summaries"></a>支出摘要
+# <a name="payout-summaries"></a>付款摘要
 
 费用摘要显示了你在 Microsoft 获得的资金的详细信息。 它还使你可以知道你将何时收到付款和收到多少付款。
 
@@ -241,6 +241,6 @@ ms.locfileid: "82779804"
 | Charges                 | 显示 "事务量" 列中聚合的所有费用详细信息的细目（仅包括在 Azure Marketplace 中，不包括在**保留**的 CSV 文件中）。 |
 |||
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>后续步骤
 
-- [策略详细信息](./payout-policy-details.md)
+- [付款策略详细信息](./payout-policy-details.md)
