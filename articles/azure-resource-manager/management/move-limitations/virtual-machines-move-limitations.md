@@ -3,12 +3,12 @@ title: 将 Azure VM 移到新的订阅或资源组
 description: 使用 Azure 资源管理器将虚拟机移到新的资源组或订阅。
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 144888c4a66ef68448ae8bc863f6aef0923dfb69
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: e5bd004b6619db9c9882b8e9e6005309317b8ca5
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160113"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744637"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>针对虚拟机的移动指南
 
@@ -29,7 +29,7 @@ ms.locfileid: "82160113"
 
 若要移动配置了 Azure 备份的虚拟机，你必须从保管库中删除还原点。
 
-如果为虚拟机启用[软删除](../../../backup/backup-azure-security-feature-cloud.md)，则在保留这些还原点时，你无法移动虚拟机。 请在删除还原点后[禁用软删除](../../../backup/backup-azure-security-feature-cloud.md#disabling-soft-delete)或等待14天。
+如果为虚拟机启用[软删除](../../../backup/backup-azure-security-feature-cloud.md)，则在保留这些还原点时，你无法移动虚拟机。 请在删除还原点后[禁用软删除](../../../backup/backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete)或等待14天。
 
 ### <a name="portal"></a>门户
 

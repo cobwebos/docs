@@ -3,12 +3,12 @@ title: 用于处理自定义事件和指标的 Application Insights API | Micros
 description: 在设备、桌面应用、网页或服务中插入几行代码，即可跟踪使用情况和诊断问题。
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.openlocfilehash: 152bd117ec0ae76c2c85ead26ba5278aa71d582f
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 74ca6d6a13967c2139d3d47dd425b6cb1a3ee31a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509281"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927932"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -206,7 +206,7 @@ telemetry.trackMetric({name: "queueLength", value: 42.0});
 * `valueSum` - 这是度量值的总和。 若要获取平均值，请除以 `valueCount`。
 * `valueCount` - 聚合到此 `trackMetric(..)` 调用中的度量值个数。
 
-## <a name="page-views"></a>页面视图
+## <a name="page-views"></a>页面查看次数
 
 在设备或网页应用中，加载每个屏幕或页面时默认将发送页面视图遥测数据。 但是，可以更改为在其他时间或不同时间跟踪页面视图。 例如，在显示选项卡或边栏选项卡的应用中，可以在用户每次打开新边栏选项卡时跟踪一个页面。
 
@@ -649,7 +649,7 @@ telemetry.flush();
 
 ## <a name="authenticated-users"></a>经过身份验证的用户
 
-在 Web 应用中，默认按 Cookie 标识用户。 如果用户从不同的计算机或浏览器访问应用或删除 Cookie，则可能会多次统计它们。
+在 web 应用中，用户是[由 cookie 标识](../../azure-monitor/app/usage-segmentation.md#the-users-sessions-and-events-segmentation-tool)的（默认值）。 如果用户从不同的计算机或浏览器访问应用或删除 Cookie，则可能会多次统计它们。
 
 如果用户登录到应用，可以通过在浏览器代码中设置经过身份验证的用户 ID 来获取更准确的计数：
 
@@ -1119,4 +1119,4 @@ telemetry.Context.Operation.Name = "MyOperationName";
 ## <a name="next-steps"></a><a name="next"></a>后续步骤
 
 * [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)
-* [故障排除](../../azure-monitor/app/troubleshoot-faq.md)
+* [疑难解答](../../azure-monitor/app/troubleshoot-faq.md)

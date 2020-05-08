@@ -15,12 +15,12 @@ ms.date: 05/04/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: b6587ca113319c266d2335c9cbb154e0ecc4afa1
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: HT
+ms.openlocfilehash: b5ba4b84fcd9c1722e8ab2f4031ec1551357e406
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838733"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82869994"
 ---
 # <a name="azure-built-in-roles"></a>Azure 内置角色
 
@@ -156,7 +156,7 @@ ms.locfileid: "82838733"
 > | [实验室创建者](#lab-creator) | 允许在 Azure 实验室帐户下创建、管理、删除托管实验室。 | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
 > | **监视** |  |  |
 > | [Application Insights 组件参与者](#application-insights-component-contributor) | 可管理 Application Insights 组件 | ae349356-3a1b-4a5e-921d-050484c6347e |
-> | [Application Insights 快照调试器](#application-insights-snapshot-debugger) | 授予用户查看和下载使用 Application Insights Snapshot Debugger 收集的调试快照的权限。 请注意，[所有者](#owner)或[参与者](#contributor)角色中未包括这些权限。 | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
+> | [Application Insights 快照调试器](#application-insights-snapshot-debugger) | 授予用户查看和下载使用 Application Insights Snapshot Debugger 收集的调试快照的权限。 请注意，[所有者](#owner)或[参与者](#contributor)角色中未包括这些权限。 向用户提供 Application Insights Snapshot Debugger 角色时，必须将该角色直接授予用户。 当角色添加到自定义角色时，无法识别该角色。 | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
 > | [监视参与者](#monitoring-contributor) | 可以读取所有监视数据和编辑监视设置。 另请参阅 [Azure Monitor 的角色、权限和安全入门](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles)。 | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
 > | [监视指标发布者](#monitoring-metrics-publisher) | 允许针对 Azure 资源发布指标 | 3913510d-42f4-4e42-8a64-420c390055eb |
 > | [监视查阅者](#monitoring-reader) | 可以读取所有监视数据（指标、日志等）。 另请参阅 [Azure Monitor 的角色、权限和安全入门](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles)。 | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
@@ -5594,7 +5594,7 @@ Azure Sentinel 响应方
 > | SecurityInsights/事件/* |  |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | 使用新引擎进行搜索。 |
 > | Microsoft.OperationalInsights/workspaces/*/read | 查看日志分析数据 |
-> | Microsoft.OperationalInsights/workspaces/dataSources/read | 获取工作区下面的数据源。 |
+> | Microsoft.operationalinsights/工作区/数据源/读取 | 获取工作区下面的数据源。 |
 > | Microsoft.OperationalInsights/workspaces/savedSearches/read | 获取保存的搜索查询 |
 > | Microsoft.OperationsManagement/solutions/read | 获取现有的 OMS 解决方案 |
 > | Microsoft.OperationalInsights/workspaces/query/read | 基于工作区中的数据运行查询 |
@@ -6145,7 +6145,7 @@ Azure Sentinel 响应方
 
 ### <a name="application-insights-snapshot-debugger"></a>Application Insights 快照调试器
 
-授予用户查看和下载使用 Application Insights Snapshot Debugger 收集的调试快照的权限。 请注意，[所有者](#owner)或[参与者](#contributor)角色中未包括这些权限。
+授予用户查看和下载使用 Application Insights Snapshot Debugger 收集的调试快照的权限。 请注意，[所有者](#owner)或[参与者](#contributor)角色中未包括这些权限。 向用户提供 Application Insights Snapshot Debugger 角色时，必须将该角色直接授予用户。 当角色添加到自定义角色时，无法识别该角色。 
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -6232,7 +6232,7 @@ Azure Sentinel 响应方
 > | Microsoft.AlertsManagement/smartDetectorAlertRules/* |  |
 > | AlertsManagement/actionRules/* |  |
 > | AlertsManagement/smartGroups/* |  |
-> | **不操作** |  |
+> | **NotActions** |  |
 > | *无* |  |
 > | **DataActions** |  |
 > | *无* |  |
@@ -6350,7 +6350,7 @@ Azure Sentinel 响应方
 > | */read | 读取除密码外的所有类型的资源。 |
 > | Microsoft.OperationalInsights/workspaces/search/action | 执行搜索查询 |
 > | Microsoft.Support/* | 创建和更新支持票证 |
-> | **不操作** |  |
+> | **NotActions** |  |
 > | *无* |  |
 > | **DataActions** |  |
 > | *无* |  |
@@ -6628,7 +6628,7 @@ Azure Sentinel 响应方
 > | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Support/* | 创建和更新支持票证 |
-> | **不操作** |  |
+> | **NotActions** |  |
 > | *无* |  |
 > | **DataActions** |  |
 > | *无* |  |
@@ -6773,7 +6773,7 @@ Azure Sentinel 响应方
 > | Microsoft.Management/managementGroups/read | 列出已通过身份验证的用户的管理组。 |
 > | Microsoft.CostManagement/*/read |  |
 > | Microsoft.Support/* | 创建和更新支持票证 |
-> | **NotActions** |  |
+> | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
 > | *无* |  |
@@ -7121,7 +7121,7 @@ Azure Sentinel 响应方
 > | */read | 读取除密码外的所有类型的资源。 |
 > | Microsoft.Resources/deployments/* | 创建和管理部署 |
 > | Microsoft.Solutions/jitRequests/* |  |
-> | **不操作** |  |
+> | **NotActions** |  |
 > | *无* |  |
 > | **DataActions** |  |
 > | *无* |  |
@@ -7165,7 +7165,7 @@ Azure Sentinel 响应方
 > | Microsoft.ManagedServices/registrationAssignments/read | 检索托管服务注册分配的列表。 |
 > | Microsoft.ManagedServices/registrationAssignments/delete | 删除托管服务注册分配。 |
 > | Microsoft.ManagedServices/operationStatuses/read | 读取资源的操作状态。 |
-> | **NotActions** |  |
+> | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
 > | *无* |  |
@@ -7301,7 +7301,7 @@ Azure Sentinel 响应方
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Support/* | 创建和更新支持票证 |
 > | NewRelic.APM/accounts/* |  |
-> | **不操作** |  |
+> | **NotActions** |  |
 > | *无* |  |
 > | **DataActions** |  |
 > | *无* |  |
@@ -7723,7 +7723,7 @@ Azure Sentinel 响应方
 > | Microsoft.RecoveryServices/Vaults/usages/read | 返回恢复服务保管库的使用情况详细信息。 |
 > | Microsoft.RecoveryServices/Vaults/vaultTokens/read | “保管库令牌”操作可用于获取保管库级后端操作的保管库令牌。 |
 > | Microsoft.Support/* | 创建和更新支持票证 |
-> | **不操作** |  |
+> | **NotActions** |  |
 > | *无* |  |
 > | **DataActions** |  |
 > | *无* |  |

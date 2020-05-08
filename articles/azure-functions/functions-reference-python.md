@@ -3,12 +3,12 @@ title: Azure Functions Python 开发人员参考
 description: 了解如何使用 Pythong 开发函数
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 936d6455f448e0243c7d4de2b9f1b88673a32798
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ea128fc7c68b49fc14d796e9a3b91a9dbddd9b26
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185976"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780039"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 开发人员指南
 
@@ -22,7 +22,7 @@ Azure Functions 要求函数在 Python 脚本中作为无状态方法来处理�
 
 来自触发器和绑定的数据使用在 *function.json* 配置文件中定义的 `name` 属性，通过方法特性绑定到函数。 例如，下面的 _function.json_ 描述一个由名为 `req` 的 HTTP 请求触发的简单函数：
 
-:::code language="son" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
+:::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
 
 根据此定义，包含函数`__init__.py`代码的文件可能类似于以下示例：
 
@@ -77,6 +77,7 @@ Python 函数项目的建议文件夹结构类似于以下示例：
  | | - my_second_helper_function.py
  | - host.json
  | - requirements.txt
+ | - Dockerfile
  tests
 ```
 主\_\_项目文件夹（应用\_\_）可以包含以下文件：
@@ -86,6 +87,7 @@ Python 函数项目的建议文件夹结构类似于以下示例：
 * *host json*：包含影响函数应用中所有函数的全局配置选项。 此文件会被发布到 Azure。 在本地运行时，并非所有选项都受支持。 若要了解详细信息，请参阅[host。](functions-host-json.md)
 * *. funcignore*：（可选）声明不应发布到 Azure 的文件。
 * *. .gitignore*：（可选）声明从 git 存储库中排除的文件，如 ""。
+* *Dockerfile*：（可选）在[自定义容器](functions-create-function-linux-custom-image.md)中发布项目时使用。
 
 每个函数都有自己的代码文件和绑定配置文件 (function.json)。 
 
@@ -232,7 +234,7 @@ def main(req: func.HttpRequest,
     return message
 ```
 
-## <a name="logging"></a>日志记录
+## <a name="logging"></a>Logging
 
 通过函数应用中的根[`logging`](https://docs.python.org/3/library/logging.html#module-logging)处理程序可以访问 Azure Functions 运行时记录器。 此记录器绑定到 Application Insights，并允许标记在函数执行期间遇到的警告和错误。
 

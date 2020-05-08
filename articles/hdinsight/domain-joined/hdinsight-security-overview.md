@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 492c248b9a68b39b37984b978944b4f7ef34d756
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 91a3c71ecaa8af58e13cb96571fc7afdf618fcdd
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190106"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780073"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight 中的企业安全性概述
 
@@ -87,7 +87,7 @@ Azure 合规性产品/服务基于各种类型的保证，包括独立的第三�
 | 操作系统安全性 | 使用最新且安全的基础映像创建群集 | 客户 |
 |  | 确保定期进行 [OS 修补](../hdinsight-os-patching.md) | 客户 |
 | 网络安全 | 配置[虚拟网络](../hdinsight-plan-virtual-network-deployment.md) |
-|  | 配置[网络安全组 (NSG) 入站规则](../hdinsight-plan-virtual-network-deployment.md#networktraffic) | 客户 |
+|  | 配置[网络安全组 (NSG) 入站规则](../control-network-traffic.md) | 客户 |
 |  | 使用防火墙配置[出站流量限制](../hdinsight-restrict-outbound-traffic.md) | 客户 |
 | 虚拟化的基础结构 | 空值 | HDInsight（云提供商） |
 | 物理基础结构安全性 | 空值 | HDInsight（云提供商） |

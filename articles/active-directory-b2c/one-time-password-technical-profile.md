@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bd5fed45332c73c633db1137bdc23aea66fd3403
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 35497f978a1819f09411487e4bbc7eb1d05cc80d
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80332783"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900383"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>在 Azure AD B2C 自定义策略中定义一次性密码技术配置文件
 
@@ -144,7 +144,8 @@ InputClaimsTransformations 元素可以包含 InputClaimsTransformation 元素�
 | UserMessageIfSessionDoesNotExist | 否 | 代码验证会话过期后向用户显示的消息。 代码已过期，或从未为给定标识符生成代码。 |
 | UserMessageIfMaxRetryAttempted | 否 | 用户尝试验证的次数超过允许的最大值时显示的消息。 |
 | UserMessageIfInvalidCode | 否 | 用户提供的代码无效时显示的消息。 |
-|UserMessageIfSessionConflict|否| 无法验证代码时要向用户显示的消息。|
+| UserMessageIfVerificationFailedRetryAllowed | 否 | 如果用户提供的代码无效，则向用户显示消息，并且允许用户提供正确的代码。  |
+|UserMessageIfSessionConflict|否| 当无法验证代码时向用户显示的消息。|
 
 ### <a name="example"></a>示例
 

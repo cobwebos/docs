@@ -9,36 +9,39 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: dadfe0022cfb99703222ba7a91ca3ec6f5fce645
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 1f9c8d449fb060d5b1a5f810f9e387057eac3252
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836625"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927966"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>排查 Linux 更新代理问题
 
-在 Azure 自动化更新管理解决方案中，你的计算机不会显示为 "就绪" （正常），这可能有很多原因。 在更新管理中，可以检查混合 Runbook 辅助角色代理的运行状况，以确定基本问题。 本文介绍如何在[脱机方案](#troubleshoot-offline)中从 Azure 门户和非 Azure 计算机运行 Azure 计算机的疑难解答。 
+在更新管理中，计算机未显示为 "就绪" （正常）的原因有很多。 可以检查 Linux 混合 Runbook 辅助角色代理的运行状况，以确定基本问题。 下面是计算机的三个就绪状态：
 
-计算机可以处于三个就绪状态：
-
-* **准备就绪**：混合 Runbook 辅助角色已部署，最后发现不到1小时前。
-* 已**断开连接**：混合 Runbook 辅助角色已部署，上次在一小时前查看。
-* **未配置**：混合 Runbook 辅助角色找不到或未完成加入。
+* 准备就绪：混合 Runbook 辅助角色已部署，最后发现不到1小时前。
+* 已断开连接：混合 Runbook 辅助角色已部署，上次在一小时前查看。
+* 未配置：混合 Runbook 辅助角色找不到或未完成加入。
 
 > [!NOTE]
 > 在 Azure 门户显示的内容和计算机的当前状态之间可能会有轻微的延迟。
 
+本文介绍如何在[脱机方案](#troubleshoot-offline)中从 Azure 门户和非 Azure 计算机运行 Azure 计算机的疑难解答。 
+
+> [!NOTE]
+> 如果配置了一个代理服务器，则疑难解答脚本当前不会通过代理服务器路由流量。
+
 ## <a name="start-the-troubleshooter"></a>启动“故障排除”
 
-对于 Azure 计算机，请在门户中的 "**更新代理就绪**" 列下选择 "**故障排除**" 链接，以打开 "**更新代理故障排除**" 页。 对于非 Azure 计算机，此链接会将你带入本文。 若要对非 Azure 计算机进行故障排除，请参阅 "脱机疑难解答" 部分中的说明。
+对于 Azure 计算机，请在门户中的 "**更新代理就绪**" 列下选择 "**故障排除**" 链接，以打开 "更新代理故障排除" 页。 对于非 Azure 计算机，此链接会将你带入本文。 若要对非 Azure 计算机进行故障排除，请参阅 "脱机疑难解答" 部分中的说明。
 
 ![VM 列表页](../media/update-agent-issues-linux/vm-list.png)
 
 > [!NOTE]
 > 检查要求 VM 处于运行状态。 如果 VM 未运行，将显示 **"启动 vm"** 。
 
-在 "**更新代理故障排除**" 页上，选择 "**运行检查**" 以启动疑难解答。 疑难解答使用[运行命令](../../virtual-machines/linux/run-command.md)在计算机上运行脚本，以验证依赖关系。 完成故障排除时，它会返回检查的结果。
+在 "更新代理故障排除" 页上，选择 "**运行检查**" 以启动疑难解答。 疑难解答使用[运行命令](../../virtual-machines/linux/run-command.md)在计算机上运行脚本，以验证依赖关系。 完成故障排除时，它会返回检查的结果。
 
 ![故障排除页](../media/update-agent-issues-linux/troubleshoot-page.png)
 
@@ -84,6 +87,9 @@ sudo /opt/microsoft/omsagent/bin/service_control restart
 ### <a name="hybrid-runbook-worker-status"></a>混合 Runbook 辅助角色状态
 
 此检查可确保混合 Runbook 辅助角色在计算机上运行。 如果混合 Runbook 辅助角色正常运行，则应存在以下进程。 若要了解详细信息，请参阅[排查适用于 Linux 的 Log Analytics 代理](hybrid-runbook-worker.md#oms-agent-not-running)。
+
+> [!NOTE]
+> 如果混合 Runbook 辅助角色未运行并且操作终结点失败，则更新可能会失败。 更新管理从操作终结点下载混合辅助角色包。
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>

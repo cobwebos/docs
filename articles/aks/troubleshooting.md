@@ -6,12 +6,12 @@ author: sauryadas
 ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: 7bdabf2ec109fe96c28185bd1a2a680ce19c2650
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8460f4f2a66a1f545bea767cccf3aa77c9d3bff3
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79368326"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778951"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 
@@ -58,7 +58,7 @@ ms.locfileid: "79368326"
 
 ## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>我无法连接到仪表板。   应采取何种操作？
 
-要访问群集外的服务，最简单的方法是运行 `kubectl proxy`，它将代理对 Kubernetes API 服务器使用 localhost 端口 8001 的请求。 在此，API 服务器可以代理服务：`http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`。
+要访问群集外的服务，最简单的方法是运行 `kubectl proxy`，它将代理对 Kubernetes API 服务器使用 localhost 端口 8001 的请求。 在此，API 服务器可以代理服务：`http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/`。
 
 如果看不到 Kubernetes 仪表板，请检查 `kube-proxy` Pod 是否在 `kube-system` 命名空间中运行。 如果未处于运行状态，请删除 Pod，它会重启。
 
@@ -192,7 +192,7 @@ Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.Wait
 | -- | :--: |
 | 1.10 | 1.10.2 或更高版本 |
 | 1.11 | 1.11.0 或更高版本 |
-| 1.12 和更高版本 | 空值 |
+| 1.12 和更高版本 | 不可用 |
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>在 Azure 磁盘的 mountOptions 中设置 uid 和 gid 失败
 
@@ -266,7 +266,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.11 | 1.11.5 或更高版本 |
 | 1.12 | 1.12.3 或更高版本 |
 | 1.13 | 1.13.0 或更高版本 |
-| 1.14 或更高版本 | 空值 |
+| 1.14 或更高版本 | 不可用 |
 
 如果使用的 Kubernetes 版本未解决此问题，可以等待几分钟再重试，这样就可以缓解此问题。
 
@@ -287,7 +287,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.11 | 1.11.6 或更高版本 |
 | 1.12 | 1.12.4 或更高版本 |
 | 1.13 | 1.13.0 或更高版本 |
-| 1.14 或更高版本 | 空值 |
+| 1.14 或更高版本 | 不可用 |
 
 如果使用的 Kubernetes 版本未解决此问题，可以尝试以下方法来缓解此问题：
 
@@ -308,7 +308,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.11 | 1.11.9 或更高版本 |
 | 1.12 | 1.12.7 或更高版本 |
 | 1.13 | 1.13.4 或更高版本 |
-| 1.14 或更高版本 | 空值 |
+| 1.14 或更高版本 | 不可用 |
 
 如果使用的 Kubernetes 版本未解决此问题，可以通过手动分离磁盘来缓解此问题。
 
@@ -323,7 +323,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.12 | 1.12.9 或更高版本 |
 | 1.13 | 1.13.6 或更高版本 |
 | 1.14 | 1.14.2 或更高版本 |
-| 1.15 和更高版本 | 空值 |
+| 1.15 和更高版本 | 不可用 |
 
 如果使用的 Kubernetes 版本未解决此问题，并且节点 VM 包含过时的磁盘列表，则你可以通过一个批量操作从 VM 中分离所有不存在的磁盘，以此缓解此问题。 **单独分离不存在的磁盘可能会失败。**
 
@@ -343,7 +343,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.12 | 1.12.10 或更高版本 |
 | 1.13 | 1.13.8 或更高版本 |
 | 1.14 | 1.14.4 或更高版本 |
-| 1.15 和更高版本 | 空值 |
+| 1.15 和更高版本 | 不可用 |
 
 如果使用的 Kubernetes 版本未解决此问题，并且节点 VM 处于故障状态，可以使用以下方法之一手动更新 VM 状态，以此缓解此问题：
 
@@ -460,7 +460,7 @@ E0118 08:15:52.041014    2112 nestedpendingoperations.go:267] Operation for "\"k
 | -- | :--: |
 | 1.12 | 1.12.6 或更高版本 |
 | 1.13 | 1.13.4 或更高版本 |
-| 1.14 或更高版本 | 空值 |
+| 1.14 或更高版本 | 不可用 |
 
 ### <a name="azure-files-mount-fails-due-to-storage-account-key-changed"></a>由于存储帐户密钥已更改，Azure 文件存储装载失败
 

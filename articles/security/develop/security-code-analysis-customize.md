@@ -2,7 +2,7 @@
 title: 自定义 Microsoft 安全代码分析任务
 titleSuffix: Azure
 description: 本文介绍如何自定义 Microsoft 安全代码分析扩展中的任务
-author: vharindra
+author: sukhans
 manager: sukhans
 ms.author: terrylan
 ms.date: 07/31/2019
@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6cdf892651407defc21f359a8e3b326b4af63b62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d074c12f28abdc61f4d70356c2a7aa264deb44c
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77499990"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871900"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>配置和自定义生成任务
 
@@ -62,7 +62,7 @@ Windows Defender 使用 Windows 更新客户端下载和安装签名。 如果�
     - 多个指定的目标必须用分号（;) 分隔。
     - 说明符可以是单个文件，也可以包含通配符。
     - 目录规范必须始终以\\* 结尾。
-    - 示例：
+    - 示例:
 
            *.dll;*.exe
            $(BUILD_STAGINGDIRECTORY)\*
@@ -82,7 +82,7 @@ Windows Defender 使用 Windows 更新客户端下载和安装签名。 如果�
 
 有关 BinSkim 命令行参数、按 ID 或退出代码的规则的详细信息，请参阅[BinSkim 用户指南](https://github.com/Microsoft/binskim/blob/master/docs/UserGuide.md)。
 
-有关此任务的 YAML 配置的信息，请查看我们的[BINSKIM YAML 选项](yaml-configuration.md#binskim-task)
+有关此任务的 YAML 配置的信息，请查看[BINSKIM YAML 选项](yaml-configuration.md#binskim-task)
 
 ## <a name="credential-scanner-task"></a>凭据扫描器任务
 
@@ -91,7 +91,8 @@ Windows Defender 使用 Windows 更新客户端下载和安装签名。 如果�
 ![配置凭据扫描器生成任务](./media/security-tools/3-taskdetails.png)
 
 可用选项包括：
-
+  - **显示名称**： Azure DevOps 任务的名称。 默认值为 "运行凭据扫描器"
+  - **工具主要版本**：可用值包括**CredScan V2**、 **CredScan V1**。 建议客户使用**CredScan V2**版本。
   - **输出格式**：可用值包括**TSV**、 **CSV**、 **SARIF**和**PREfast**。
   - **工具版本**：建议选择 "**最新**"。
   - **Scan 文件夹**：要扫描的存储库文件夹。
@@ -181,7 +182,7 @@ Windows Defender 使用 Windows 更新客户端下载和安装签名。 如果�
 >[!NOTE] 
 >如您所知， [TSLint GitHub](https://github.com/palantir/tslint)存储库主页指出 TSLint 将在2019的某个时间被弃用。 Microsoft 正在调查[ESLint](https://github.com/eslint/eslint)作为备用任务。
 
-有关此任务的 YAML 配置的信息，请查看我们的[TSLINT YAML 选项](yaml-configuration.md#tslint-task)
+有关此任务的 YAML 配置的信息，请查看[TSLINT YAML 选项](yaml-configuration.md#tslint-task)
 
 ## <a name="publish-security-analysis-logs-task"></a>发布安全分析日志任务
 
@@ -206,7 +207,7 @@ Windows Defender 使用 Windows 更新客户端下载和安装签名。 如果�
 - **高级选项**：如果未选择任何一个工具的日志，则可以选择记录警告或错误。 如果记录错误，任务将失败。
 - **基本日志文件夹**：可以自定义要在其中找到日志的基本日志文件夹。 但通常不会使用此选项。
 
-有关此任务的 YAML 配置的信息，请查看[安全报告 YAML 选项](yaml-configuration.md#security-report-task)
+有关此任务的 YAML 配置的信息，请查看我们的[安全报表 YAML 选项](yaml-configuration.md#security-report-task)
 
 ## <a name="post-analysis-task"></a>分析后任务
 
