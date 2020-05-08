@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: b66f5a7d85eb91970d5f551b010dd512b216b9c6
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: ddbb1c6fd705e658867c0d594981e87bc8cd6afe
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509510"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930482"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>连接到 Azure IoT Central
 
@@ -95,6 +95,14 @@ IoT Central 使用[Azure IoT 中心设备预配服务（DPS）](../../iot-dps/ab
 
 使用上传的根证书或中间证书生成设备的 x.509 叶证书。 使用**设备 ID**作为叶证书`CNAME`中的值。 设备代码需要应用程序的**ID 范围**值、**设备 ID**和相应的设备证书。
 
+#### <a name="sample-device-code"></a>示例设备代码
+
+以下来自[Azure IoT NODE.JS SDK](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/device/samples/register_x509.js)的示例显示 node.js 设备客户端如何使用 x.509 叶证书和 DPS 注册到 IoT Central 应用程序：
+
+:::code language="nodejs" source="~/azure-iot-sdk-node/provisioning/device/samples/register_x509.js":::
+
+有关等效的 C 示例，请参阅[Azure IoT C 预配设备客户端 SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)中的[prov_dev_client_sample。](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c)
+
 ### <a name="for-testing-purposes-only"></a>仅用于测试目的
 
 仅适用于测试，你可以使用以下实用工具生成根证书、中间证书和设备证书：
@@ -106,11 +114,6 @@ IoT Central 使用[Azure IoT 中心设备预配服务（DPS）](../../iot-dps/ab
   - 将证书保存为 .cer 文件，以上传到 IoT Central 应用程序。
   - 使用 IoT Central 应用程序中的验证码生成验证证书。
   - 在工具中使用设备 ID 作为参数，为设备创建叶证书。
-
-### <a name="further-reference"></a>更多参考信息
-
-- [Config-raspberrypi.json 的示例实现](https://aka.ms/iotcentral-docs-Raspi-releases)
-- [C 中的设备客户端示例](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)
 
 ## <a name="connect-without-registering-devices"></a>在不事先注册设备的情况下连接设备
 
@@ -143,11 +146,11 @@ IoT Central 使用[Azure IoT 中心设备预配服务（DPS）](../../iot-dps/ab
 
 ### <a name="connect-devices-that-use-x509-certificates-without-registering"></a>连接使用 x.509 证书的设备而不注册
 
-1. [将根或中间 x.509 证书添加](#connect-devices-using-x509-certificates)到 IoT Central 应用程序并进行验证。（#connect 设备-使用-x509-证书）
+1. [将根或中间 x.509 证书添加](#connect-devices-using-x509-certificates)到 IoT Central 应用程序并进行验证。
 
 1. 使用已添加到 IoT Central 应用程序的根证书或中间证书为设备生成叶证书。 使用小写的设备 Id 作为叶证书`CNAME`中的。
 
-1. OEM 用设备 ID、生成的左 x.509 证书和应用程序**ID 范围**值闪烁每个设备。
+1. OEM 用设备 ID、生成的叶 x.509 证书和应用程序**ID 范围**值闪烁每个设备。
 
 1. 打开设备时，它首先会连接到 DPS 以检索其 IoT Central 注册信息。
 
@@ -253,8 +256,8 @@ Azure 设备 SDK 为实现设备代码提供最简便的方法。 以下设备 S
 
 | Azure IoT Central | Azure IoT 中心 |
 | ----------- | ------- |
-| 遥测技术 | 设备到云的消息传递 |
-| properties | 设备孪生报告属性 |
+| 遥测 | 设备到云的消息传递 |
+| 属性 | 设备孪生报告属性 |
 | 属性（可写） | 设备孪生所需的和报告的属性 |
 | Command | 直接方法 |
 

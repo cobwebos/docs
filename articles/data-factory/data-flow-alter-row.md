@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/06/2020
-ms.openlocfilehash: 0a8864555798d3b64d675c70728ab97d191be81f
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: c3858756a0140481c0ab249e29c95f76c4b90da5
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891375"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982643"
 ---
 # <a name="alter-row-transformation-in-mapping-data-flow"></a>在映射数据流中更改行转换
 
@@ -61,13 +61,15 @@ ms.locfileid: "82891375"
 
 ADF 数据流支持与 Azure SQL 数据库和 Synapse 数据库池（数据仓库）结合 upsert 选项进行合并。
 
-但是，你可能会遇到目标数据库架构使用键列的 identity 属性的情况。 ADF 要求你确定将用于匹配 updates 和 upsert 的行值的密钥。 但是，如果目标列设置了 identity 属性，而你使用的是 upsert 策略，则目标数据库将不允许写入列。
+但是，你可能会遇到目标数据库架构使用键列的 identity 属性的情况。 ADF 要求你确定将用于匹配 updates 和 upsert 的行值的密钥。 但是，如果目标列设置了 identity 属性，而你使用的是 upsert 策略，则目标数据库将不允许写入列。 尝试 upsert 分布式表的分布列时，也可能会遇到错误。
 
-可以使用两个选项：
+以下是解决此问题的方法：
 
-1. 使用接收器转换预处理 SQL 选项： ```SET IDENTITY_INSERT tbl_content ON```。 然后，将它与后处理 SQL 属性一起关闭： ```SET IDENTITY_INSERT tbl_content OFF```。
+1. 转到接收器转换设置并设置 "跳过写入键列"。 这会告知 ADF 不要将您选择的列编写为映射的键值。
 
-2. 使用有条件拆分转换，而不是使用 upsert，而是使用有条件拆分转换将逻辑从插入条件中分离出来。 这样，你可以将更新路径上的映射设置为忽略键列映射。
+2. 如果该键列不是导致标识列问题的列，则可以使用接收器转换预处理 SQL 选项： ```SET IDENTITY_INSERT tbl_content ON```。 然后，将它与后处理 SQL 属性一起关闭： ```SET IDENTITY_INSERT tbl_content OFF```。
+
+3. 对于标识事例和分布列的情况，可以将逻辑从 Upsert 切换为使用单独的更新条件，使用有条件拆分转换的单独插入条件。 这样，你可以将更新路径上的映射设置为忽略键列映射。
 
 ## <a name="data-flow-script"></a>数据流脚本
 

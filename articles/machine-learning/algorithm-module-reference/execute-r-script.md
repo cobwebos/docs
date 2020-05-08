@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 03/10/2020
-ms.openlocfilehash: eb778c8d24639320b60927438de76a29de724ac2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/27/2020
+ms.openlocfilehash: 7b72d83740e0e2b02ef9d2ea3cd1cbf04a4c99cc
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684713"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983561"
 ---
 # <a name="execute-r-script"></a>执行 R 脚本
 
@@ -42,9 +42,11 @@ azureml_main <- function(dataframe1, dataframe2){
   return(list(dataset1=dataframe1, dataset2=dataframe2))
 }
 ```
+> [!NOTE]
+> 如果管道包含多个执行 R 脚本模块并且需要的包不在预安装的列表中，请分别在每个模块中安装包。 
 
 ## <a name="installing-r-packages"></a>安装 R 程序包
-若要安装其他 R 包，请使用 `install.packages()` 方法。 为每个“执行 R 脚本”模块安装包，但不在其他“执行 R 脚本”模块之间共享包********。
+若要安装其他 R 包，请使用 `install.packages()` 方法。 为每个“执行 R 脚本”模块安装包，但不在其他“执行 R 脚本”模块之间共享包   。
 
 > [!NOTE]
 > 请在安装包（如）时指定 CRAN 存储库`install.packages("zoo",repos = "http://cran.us.r-project.org")`
@@ -77,9 +79,9 @@ azureml_main <- function(dataframe1, dataframe2){
   > 安装之前，请检查是否已存在包，避免重复安装。 类似于上述示例代码 `  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")`。 重复安装可能会导致 Web 服务请求超时。     
 
 ## <a name="upload-files"></a>上传文件
-**执行 R 脚本**支持使用 Azure 机器学习 R SDK 来上传文件。
+**执行 r 脚本**支持使用 AZURE 机器学习 R SDK 上传文件。
 
-以下示例演示了如何在“执行 R 脚本”  中上传映像文件：
+下面的示例演示如何在**执行 R 脚本**中上载映像文件：
 ```R
 
 # R version: 3.5.1
@@ -115,32 +117,32 @@ azureml_main <- function(dataframe1, dataframe2){
 管道运行完成后，可以在模块的右窗格中预览图像
 
 > [!div class="mx-imgBorder"]
-> ![已上传 - 映像](media/module/upload-image-in-r-script.png)
+> ![已上传-映像](media/module/upload-image-in-r-script.png)
 
 ## <a name="how-to-configure-execute-r-script"></a>如何配置“执行 R 脚本”
 
-“执行 R 脚本”模块包含可用作起点的示例代码  。 若要配置“执行 R 脚本”模块，请提供一组输入和要执行的代码  。
+“执行 R 脚本”模块包含可用作起点的示例代码****。 若要配置“执行 R 脚本”模块，请提供一组输入和要执行的代码****。
 
 ![R 模块](media/module/execute-r-script.png)
 
 使用此模块加载时，存储在设计器中的数据集将自动转换为 R 数据帧。
 
-1.  将“执行 R 脚本”模块添加到管道  。
+1.  将“执行 R 脚本”模块添加到管道****。
 
   
 
 1. 连接脚本所需的任何输入。 输入是可选的，可以包含数据和其他 R 代码。
 
-    * **Dataset1**：引用第一个输入作为 `dataframe1`。 输入数据集的格式必须为 CSV、TSV、ARFF，或者可以连接 Azure 机器学习数据集。
+    * **Dataset1**：将第一个输入作为`dataframe1`引用。 输入数据集的格式必须为 CSV、TSV、ARFF，或者可以连接 Azure 机器学习数据集。
 
-    * **Dataset2**：引用第二个输入作为 `dataframe2`。 该数据集的格式也必须为 CSV、TSV、ARFF 文件，或者作为 Azure 机器学习数据集。
+    * **Dataset2**：引用第二个输入`dataframe2`。 该数据集的格式也必须为 CSV、TSV、ARFF 文件，或者作为 Azure 机器学习数据集。
 
-    * **脚本包**：第三个输入接受 ZIP 文件。 压缩的文件可以包含多个文件和多个文件类型。
+    * **脚本捆绑包**：第三个输入接受 ZIP 文件。 压缩的文件可以包含多个文件和多个文件类型。
 
-1. 在“R 脚本”文本框中，键入或粘贴有效的 R 脚本  。
+1. 在“R 脚本”文本框中，键入或粘贴有效的 R 脚本****。
 
     > [!NOTE]
-    > 编写脚本时请务必小心，并确保没有语法错误，如使用未声明的变量或未导入的模块或函数。 在本文档末尾，还需支付额外的发出关注信号。 若要使用未列出的包，请将它们安装在你的脚本中，如`install.packages("zoo",repos = "http://cran.us.r-project.org")`
+    > 编写脚本时请务必小心，并确保没有语法错误，如使用未声明的变量或未导入的模块或函数。 还应特别注意本文档末尾的预安装包列表。 若要使用未列出的包，请将它们安装在你的脚本中，如`install.packages("zoo",repos = "http://cran.us.r-project.org")`
     
     > [!NOTE]
     > 不支持依赖于 X11 库的函数（例如 "视图"），因为未预安装 X11 库。
@@ -327,7 +329,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 |              |            | 
 |--------------|------------| 
-| 包      | 版本    | 
+| 程序包      | 版本    | 
 | askpass      | 1.1        | 
 | assertthat   | 0.2.1      | 
 | backports    | 1.1.4      | 

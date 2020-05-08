@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8a49bc979923bf52d099e30615910c5bdb0601b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f5e0eda72f39a70f02b596a8fd69728336eac333
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279853"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594808"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>针对 SAP ASCS/SCS 使用 Windows 故障转移群集和共享磁盘准备 SAP HA 的 Azure 基础结构
 
@@ -164,7 +164,7 @@ ms.locfileid: "79279853"
 
 本文介绍使用群集共享磁盘作为群集化 SAP ASCS 实例的选项，在 Windows 故障转移群集上安装和配置高可用性 SAP 系统之前准备 Azure 基础结构所要执行的步骤。**
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始安装之前，请查看以下文章：
 
@@ -177,9 +177,9 @@ Azure 资源管理器中的三层模板还支持高可用性方案。 例如体�
 
 可在以下位置获取本文中所述的示例方案的 Azure 资源管理器模板：
 
-* [Azure 市场映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image)  
+* [Azure 市场映像](https://github.com/Azure/azure-quickstart-templates/)  
 * [使用 Azure 托管磁盘的 Azure 市场映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md)  
-* [自定义映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image)
+* [自定义映像](https://github.com/Azure/azure-quickstart-templates/)
 * [使用托管磁盘的自定义映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-md)
 
 准备体系结构模板 1 的基础结构：
@@ -270,9 +270,9 @@ Azure 资源管理器中的三层模板还支持高可用性方案。 例如体�
 
 可从以下位置获取适用于此部署方案的 Azure 资源管理器模板：
 
-* [Azure 市场映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged)  
+* [Azure 市场映像](https://github.com/Azure/azure-quickstart-templates/)  
 * [使用托管磁盘的 Azure 市场映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged-md)  
-* [自定义映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged)
+* [自定义映像](https://github.com/Azure/azure-quickstart-templates/)
 * [使用托管磁盘的自定义映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged-md)
 
 

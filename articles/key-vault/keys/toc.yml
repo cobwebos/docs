@@ -23,6 +23,11 @@
       href: hsm-protected-keys-vendor-agnostic-byok.md
     - name: 导入 HSM 保护的密钥（旧版）
       href: hsm-protected-keys-legacy.md
+- name: 示例
+  items:
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ../policy-samples.md?toc=/azure/key-vault/keys/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
 - name: 参考
   items:
     - name: Azure PowerShell

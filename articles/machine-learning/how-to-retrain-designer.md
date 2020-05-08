@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: keli19
 author: likebupt
 ms.date: 04/06/2020
-ms.openlocfilehash: 77c1cc6ef5a7353d246958d1b047f054d5f49890
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: fb0122833dabe4030232efb3ca07557ce1826aff
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837152"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981895"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>使用 Azure 机器学习设计器重新训练模型（预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -38,7 +38,7 @@ ms.locfileid: "82837152"
 
 ### <a name="sample-pipeline"></a>示例管道
 
-本文中使用的管道是[示例3：收入预测](samples-designer.md#classification-samples)的更改版本。 管道使用[导入数据](algorithm-module-reference/import-data.md)模块，而不是示例数据集来向您演示如何使用自己的数据训练模型。
+本文中使用的管道是[示例3：收入预测](samples-designer.md#classification)的更改版本。 管道使用[导入数据](algorithm-module-reference/import-data.md)模块，而不是示例数据集来向您演示如何使用自己的数据训练模型。
 
 ![用突出显示导入数据模块的框显示修改后的示例管道的屏幕截图](./media/how-to-retrain-designer/modified-sample-pipeline.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "82837152"
    > [!NOTE]
    > 可以通过选择管道草稿标题旁边的 "**设置**" 齿轮图标来检查和编辑管道参数。 
 
-1. 选择“保存”。 
+1. 选择“保存”  。
 
 1. 提交管道运行。
 
@@ -105,7 +105,7 @@ ms.locfileid: "82837152"
 1. 在工作室工作区中转到 "**终结点**" 页。
 1. 选择 "**管道终结点**" 选项卡。然后，选择管道终结点。
 1. 选择 "**已发布管道**" 选项卡。然后，选择要运行的管道版本。
-1. 选择“提交”。 
+1. 选择“提交”  。
 1. 在 "设置" 对话框中，可以指定运行的参数值。 对于本示例，请更新数据路径以使用非美国数据集来训练模型。
 
 ![显示如何在设计器中设置参数化管道运行的屏幕截图](./media/how-to-retrain-designer/published-pipeline-run.png)

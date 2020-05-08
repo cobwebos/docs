@@ -5,17 +5,17 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 10/12/2017
 ms.author: tomfitz
-ms.openlocfilehash: 6e56c5e528a17d42a75da54158f00857a917645c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a93f4ff2ddc0737692de9e5619cf7a7521936224
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248445"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980807"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition 函数
 本部分包含 CreateUiDefinition 支持的所有函数的签名。
 
-要使用函数，请将声明放在方括号内。 例如：
+若要使用函数，请使用方括号将调用括起来。 例如：
 
 ```json
 "[function()]"
@@ -485,6 +485,45 @@ ms.locfileid: "79248445"
 "[coalesce(steps('foo').element1, steps('foo').element2, 'foobar')]"
 ```
 
+此函数在页面加载后由于用户操作而发生的可选调用上下文中尤其有用。 例如，如果在用户界面中的一个字段上放置的约束依赖于当前所选的另一个**不可见**字段的值，则为。 在这种情况`coalesce()`下，可以在页面加载时使用来允许函数在语法上有效，同时在用户与字段交互时具有所需的效果。
+
+请考虑`DropDown`这样，这允许用户从多个不同的数据库类型中进行选择：
+
+```
+{
+    "name": "databaseType",
+    "type": "Microsoft.Common.DropDown",
+    "label": "Choose database type",
+    "toolTip": "Choose database type",
+    "defaultValue": "Oracle Database",
+    "visible": "[bool(steps('section_database').connectToDatabase)]"
+    "constraints": {
+        "allowedValues": [
+            {
+                "label": "Azure Database for PostgreSQL",
+                "value": "postgresql"
+            },
+            {
+                "label": "Oracle Database",
+                "value": "oracle"
+            },
+            {
+                "label": "Azure SQL",
+                "value": "sqlserver"
+            }
+        ],
+        "required": true
+    },
+```
+
+若要在此字段的当前选定值上对另一字段的操作进行`coalesce()`条件，请使用，如下所示：
+
+```
+"regex": "[concat('^jdbc:', coalesce(steps('section_database').databaseConnectionInfo.databaseType, ''), '.*$')]",
+```
+
+这是必需的`databaseType` ，因为最初不可见，因此不包含值。 这将导致整个表达式计算不正确。
+
 ## <a name="conversion-functions"></a>转换函数
 可以使用这些函数在 JSON 数据类型和编码之间转换值。
 
@@ -503,7 +542,7 @@ ms.locfileid: "79248445"
 "[int(2.9)]"
 ```
 
-### <a name="float"></a>FLOAT
+### <a name="float"></a>浮动
 将参数转换为浮点。 此函数支持数字和字符串类型的参数。
 
 以下示例返回 `1.0`：
@@ -518,7 +557,7 @@ ms.locfileid: "79248445"
 "[float(2.9)]"
 ```
 
-### <a name="string"></a>字符串
+### <a name="string"></a>string
 将参数转换为字符串。 此函数支持所有 JSON 数据类型的参数。
 
 以下示例返回 `"1"`：

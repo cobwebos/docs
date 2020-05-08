@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 04/21/2020
-ms.openlocfilehash: d421811c18ac63952432cd853a6928db7c81f3db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: e2db6d1d60026a00fa8e766fbaa1c72975fa2e99
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182423"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82786608"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>规划 Azure HDInsight 的虚拟网络
 
@@ -44,7 +44,7 @@ ms.locfileid: "82182423"
 
 * 是否需要限制/重定向 HDInsight 的入站或出站流量？
 
-    HDInsight 必须与 Azure 数据中心的特定 IP 地址进行不受限制的通信。 此外还必须通过防火墙启用数个端口，以便进行客户端通信。 有关详细信息，请参阅[控制网络流量](#networktraffic)部分。
+    HDInsight 必须与 Azure 数据中心的特定 IP 地址进行不受限制的通信。 此外还必须通过防火墙启用数个端口，以便进行客户端通信。 有关详细信息，请参阅[控制网络流量](./control-network-traffic.md)。
 
 ## <a name="add-hdinsight-to-an-existing-virtual-network"></a><a id="existingvnet"></a>将 HDInsight 添加到现有的虚拟网络
 
@@ -201,57 +201,9 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 2. 若要确定服务可用的节点和端口，请参阅 [HDInsight 的 Hadoop 服务所用的端口](./hdinsight-hadoop-port-settings-for-services.md)一文。
 
-## <a name="controlling-network-traffic"></a><a id="networktraffic"></a> 控制网络流量
-
-### <a name="techniques-for-controlling-inbound-and-outbound-traffic-to-hdinsight-clusters"></a>控制 HDInsight 群集的入站和出站流量的技术
-
-可以使用以下方法控制 Azure 虚拟网络中的网络流量：
-
-*  网络安全组 (NSG)：用于筛选网络的入站和出站流量。 有关详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/security-overview.md)文档。
-
-* **网络虚拟设备** (NVA) 只能用于出站流量。 NVA 可复制设备（如防火墙和路由器）的功能。 有关详细信息，请参阅[网络设备](https://azure.microsoft.com/solutions/network-appliances)文档。
-
-作为托管服务，HDInsight 需要对 HDInsight 运行状况和管理服务具有不受限制的访问权限，以处理从 VNET 传入和传出的流量。 使用 NSG 时，必须确保这些服务仍然可以与 HDInsight 群集进行通信。
-
-![在 Azure 自定义 VNET 中创建的 HDInsight 实体示意图](./media/hdinsight-plan-virtual-network-deployment/hdinsight-vnet-diagram.png)
-
-### <a name="hdinsight-with-network-security-groups"></a>使用网络安全组的 HDInsight
-
-如果计划使用**网络安全组**来控制网络流量，请在安装 HDInsight 之前执行以下操作：
-
-1. 确定计划用于 HDInsight 的 Azure 区域。
-
-2. 确定 HDInsight 需要的用于你所在区域的服务标记。 有关详细信息，请参阅 [Azure HDInsight 的网络安全组 (NSG) 服务标记](hdinsight-service-tags.md)。
-
-3. 为计划将 HDInsight 安装到其中的子网创建或修改网络安全组。
-
-    *  网络安全组：在端口 443 上允许来自 IP 地址的入站流量。   这将确保 HDInsight 管理服务可以从虚拟网络外部访问群集。
-
-有关网络安全组的详细信息，请参阅[网络安全组概述](../virtual-network/security-overview.md)。
-
-### <a name="controlling-outbound-traffic-from-hdinsight-clusters"></a>控制 HDInsight 群集的出站流量
-
-有关控制 HDInsight 群集的出站流量的详细信息，请参阅[配置 Azure HDInsight 群集的出站网络流量限制](hdinsight-restrict-outbound-traffic.md)。
-
-#### <a name="forced-tunneling-to-on-premises"></a>到本地的强制隧道
-
-强制隧道是用户定义的路由配置，用于将子网中的所有流量强制流向特定的网络或位置，例如本地网络。 HDInsight 不  支持将流量通过强制隧道传输到本地网络。
-
-## <a name="required-ip-addresses"></a><a id="hdinsight-ip"></a> 所需 IP 地址
-
-如果使用网络安全组或用户定义的路由来控制流量，请参阅[HDInsight 管理 IP 地址](hdinsight-management-ip-addresses.md)。
-
-## <a name="required-ports"></a><a id="hdinsight-ports"></a> 所需端口
-
-如果计划使用**防火墙**并在特定端口上从外部访问群集，则需要允许你的方案所需的那些端口上的流量。 默认情况下，只要允许上一部分中所述的 Azure 管理流量进入端口443上的群集，就不需要任何特殊的允许列表端口。
-
-对于特定服务的端口列表，请参阅 [HDInsight 上的 Apache Hadoop 服务所用的端口](hdinsight-hadoop-port-settings-for-services.md)文档。
-
-有关虚拟设备防火墙规则的详细信息，请参阅[虚拟设备方案](../virtual-network/virtual-network-scenario-udr-gw-nva.md)文档。
-
 ## <a name="load-balancing"></a>负载均衡
 
-创建 HDInsight 群集时，也会创建一个负载均衡器。 此负载均衡器的类型为[基本 SKU 级别](../load-balancer/concepts-limitations.md#skus)，它具有某些约束。 这些约束中的一个是：如果两个虚拟网络位于不同的区域，则无法连接到基本负载均衡器。 有关详细信息，请参阅[虚拟网络常见问题解答：对全局 VNet 对等互连的约束](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。
+创建 HDInsight 群集时，也会创建一个负载均衡器。 此负载均衡器的类型为[基本 SKU 级别](../load-balancer/skus.md)，它具有某些约束。 这些约束中的一个是：如果两个虚拟网络位于不同的区域，则无法连接到基本负载均衡器。 有关详细信息，请参阅[虚拟网络常见问题解答：对全局 VNet 对等互连的约束](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -260,3 +212,4 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 * 有关 Azure 虚拟网络的详细信息，请参阅 [Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
 * 有关网络安全组的详细信息，请参阅[网络安全组](../virtual-network/security-overview.md)。
 * 有关用户定义的路由的详细信息，请参阅[用户定义的路由和 IP 转发](../virtual-network/virtual-networks-udr-overview.md)。
+* 有关控制流量的详细信息，请参阅[控制网络流量](./control-network-traffic.md)。
