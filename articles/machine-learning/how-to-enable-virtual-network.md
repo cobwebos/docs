@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 04/17/2020
-ms.openlocfilehash: 6cf89790ee125d8d09d9bdead2f6e34dcb73e8f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5e4f811d39c75742f11c52de5c178fbf4063000d
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188117"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864634"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>在 Azure 虚拟网络中保护 Azure ML 试验和推理作业
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -150,7 +150,7 @@ Azure 机器学习使用与工作区关联的 Key Vault 实例来存储以下凭
 > 这些资源受订阅的[资源配额](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)限制。
 
 
-### <a name="required-ports"></a><a id="mlcports"></a>所需的端口
+### <a name="required-ports"></a><a id="mlcports"></a>必需的端口
 
 机器学习计算目前使用 Azure Batch 服务在指定的虚拟网络中预配 VM。 子网必须允许来自 Batch 服务的入站通信。 可以使用这种通信在机器学习计算节点上计划运行，以及与 Azure 存储和其他资源进行通信。 Batch 服务在附加到 VM 的网络接口 (NIC) 级别添加网络安全组 (NSG)。 这些 NSG 自动配置允许以下流量的入站和出站规则：
 
@@ -359,7 +359,7 @@ except ComputeTargetException:
 若要将虚拟网络中的 AKS 添加到工作区，请执行以下步骤：
 
 > [!IMPORTANT]
-> 在开始执行以下过程之前，请满足[在 Azure Kubernetes 服务 (AKS) 中配置高级网络](https://docs.microsoft.com/azure/aks/configure-advanced-networking#prerequisites)操作指南中的先决条件，并规划好群集的 IP 地址。
+> 在开始执行以下过程之前，请满足[在 Azure Kubernetes 服务 (AKS) 中配置高级网络](https://docs.microsoft.com/azure/aks/configure-azure-cni#prerequisites)操作指南中的先决条件，并规划好群集的 IP 地址。
 >
 > AKS 实例和 Azure 虚拟网络必须位于同一区域。 如果在虚拟网络中保护工作区使用的 Azure 存储帐户，这些帐户必须与 AKS 实例位于同一虚拟网络中。
 
@@ -557,7 +557,7 @@ az rest --method put --uri https://management.azure.com"/subscriptions/<subscrip
     
     有关详细信息，请参阅[update （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-)方法参考。
 
-1. 如果为 Azure 机器学习工作区使用专用链接，并在虚拟网络中放置工作区的 Azure 容器注册表，则还必须应用以下 Azure 资源管理器模板。 此模板允许你的工作区通过专用链接与 ACR 通信。
+1. 必须应用以下 Azure 资源管理器模板。 此模板允许你的工作区与 ACR 通信。
 
     ```json
     {

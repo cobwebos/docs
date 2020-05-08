@@ -1,18 +1,18 @@
 ---
 title: 配置 Azure 应用配置的托管标识
 description: 了解托管标识如何在 Azure 应用配置中工作，以及如何配置托管标识
-author: jpconnock
+author: barbkess
 ms.topic: article
 ms.date: 02/25/2020
-ms.author: jeconnoc
+ms.author: barbkess
 ms.reviewer: lcozzens
 ms.service: azure-app-configuration
-ms.openlocfilehash: fe66466395a100221e6a3cdebdef870bdf195afc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 560a2df5946b9cfe1160864752595e86cc6eeb65
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77623024"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981215"
 ---
 # <a name="how-to-use-managed-identities-for-azure-app-configuration"></a>如何将托管标识用于 Azure 应用配置
 

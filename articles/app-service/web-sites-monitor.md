@@ -4,15 +4,15 @@ description: 了解如何使用 Azure 门户在 Azure 应用服务中监视应�
 author: btardif
 ms.assetid: d273da4e-07de-48e0-b99d-4020d84a425e
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 8baefcbfa1eb34bc6cd37e4325d9a9bfc11e2d20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7205f8a842f2086b1cf3a6bbf76c2df48ed679e9
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181216"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738093"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>监视 Azure 应用服务中的应用
 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)针对 [Azure 门户](https://portal.azure.com)中的 Web 应用、移动和 API 应用提供内置监视功能。
@@ -49,7 +49,7 @@ ms.locfileid: "82181216"
 
 ![403 错误消息][http403]
 
-如果超过应用内存配额，则将重启该应用。
+如果超过应用程序内存配额，则暂时停止应用程序。
 
 如果超过文件系统配额，则任何写入操作都会失败。 写入操作失败包括对日志的任何写入。
 
@@ -131,8 +131,7 @@ ms.locfileid: "82181216"
 **CPU 百分比**：适用于托管在“基本”、“标准”和“高级”计划中的应用，因为它们可横向扩展。CPU 百分比是所有实例中总用量的良好指标。
 
 ## <a name="metrics-granularity-and-retention-policy"></a>指标粒度和保留策略
-
-应用和应用服务计划的度量值由服务记录和聚合。 指标保留90天。
+应用和应用服务计划的度量值由服务进行记录和聚合，并[根据这些规则进行保留](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics)。
 
 ## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>在 Azure 门户中监视配额和指标
 若要查看影响应用的各种配额和指标的状态，请转到 [Azure 门户](https://portal.azure.com)。

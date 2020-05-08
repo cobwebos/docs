@@ -1,17 +1,17 @@
 ---
 title: 在 Azure Cosmos DB 中编写存储过程、触发器和 UDF
 description: 了解如何在 Azure Cosmos DB 中定义存储过程、触发器和用户定义的函数
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/31/2019
-ms.author: mjbrown
-ms.openlocfilehash: 4dee017323bda5fc08598a9b24cadd11516807cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/07/2020
+ms.author: tisande
+ms.openlocfilehash: 3c0ac8ac419b3cdd2b154974d3ccbcce6896e847
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75441734"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982286"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中编写存储过程、触发器和用户定义的函数
 
@@ -21,15 +21,12 @@ Azure Cosmos DB 提供 JavaScript 的语言集成式事务执行用于编写**�
 
 > [!NOTE]
 > 对于已分区的容器，在执行存储过程时，必须在请求选项中提供分区键值。 存储过程的范围始终限定为分区键。 存储过程看不到具有不同分区键值的项。 这一点也适用于触发器。
-
 > [!Tip]
 > Cosmos 支持使用存储过程、触发器和用户定义的函数部署容器。 有关详细信息，请参阅[使用服务器端功能创建 Azure Cosmos DB 容器](manage-sql-with-resource-manager.md#create-sproc)。
 
 ## <a name="how-to-write-stored-procedures"></a><a id="stored-procedures"></a>如何编写存储过程
 
 存储过程是使用 JavaScript 编写的，它们可以在 Azure Cosmos 容器中创建、更新、读取、查询和删除项。 存储过程按集合注册，可以针对该集合中的任何文档或附件运行。
-
-**示例**
 
 下面是一个可以返回“Hello World”响应的简单存储过程。
 
@@ -51,7 +48,7 @@ var helloWorldStoredProc = {
 
 ### <a name="create-an-item-using-stored-procedure"></a><a id="create-an-item"></a>使用存储过程创建项
 
-使用存储过程创建某个项时，该项将会插入到 Azure Cosmos 容器，并返回新建项的 ID。 创建项是一种异步操作，依赖于 JavaScript 回调函数。 回调函数包含两个参数 - 一个参数用于操作失败时返回的错误对象，另一个参数用于返回值（在本例中为创建的对象）。 在回调内部，可以处理异常或引发错误。 如果未提供回调并出现错误，则 Azure Cosmos DB 运行时将引发错误。 
+使用存储过程创建某个项时，该项将会插入到 Azure Cosmos 容器，并返回新建项的 ID。 创建项是一种异步操作，依赖于 JavaScript 回调函数。 回调函数包含两个参数 - 一个参数用于操作失败时返回的错误对象，另一个参数用于返回值（在本例中为创建的对象）。 在回调内部，可以处理异常或引发错误。 如果未提供回调并出现错误，则 Azure Cosmos DB 运行时将引发错误。
 
 存储过程还包含一个用于设置说明的参数（一个布尔值）。 如果该参数设置为 true，同时缺少说明，则存储过程将引发异常。 否则，存储过程的剩余部分将继续运行。
 
@@ -73,7 +70,7 @@ function createToDoItem(itemToCreate) {
 }
 ```
 
-### <a name="arrays-as-input-parameters-for-stored-procedures"></a>将数组用作存储过程的输入参数 
+### <a name="arrays-as-input-parameters-for-stored-procedures"></a>将数组用作存储过程的输入参数
 
 使用 Azure 门户定义存储过程时，输入参数始终以字符串的形式发送到该存储过程。 即使将字符串数组作为输入传递，该数组也会转换为字符串发送到存储过程。 若要解决此问题，可在存储过程中定义一个函数以将字符串作为数组进行分析。 以下代码演示如何将字符串输入参数作为数组进行分析：
 
@@ -102,12 +99,12 @@ function tradePlayers(playerId1, playerId2) {
     var player1Document, player2Document;
 
     // query for players
-    var filterQuery = 
-    {     
+    var filterQuery =
+    {
         'query' : 'SELECT * FROM Players p where p.id = @playerId1',
         'parameters' : [{'name':'@playerId1', 'value':playerId1}] 
     };
-            
+
     var accept = container.queryDocuments(container.getSelfLink(), filterQuery, {},
         function (err, items, responseOptions) {
             if (err) throw new Error("Error" + err.message);
@@ -115,10 +112,10 @@ function tradePlayers(playerId1, playerId2) {
             if (items.length != 1) throw "Unable to find both names";
             player1Item = items[0];
 
-            var filterQuery2 = 
-            {     
+            var filterQuery2 =
+            {
                 'query' : 'SELECT * FROM Players p where p.id = @playerId2',
-                'parameters' : [{'name':'@playerId2', 'value':playerId2}] 
+                'parameters' : [{'name':'@playerId2', 'value':playerId2}]
             };
             var accept2 = container.queryDocuments(container.getSelfLink(), filterQuery2, {},
                 function (err2, items2, responseOptions2) {
@@ -211,6 +208,56 @@ function bulkImport(items) {
 }
 ```
 
+### <a name="async-await-with-stored-procedures"></a><a id="async-promises"></a>异步 await 与存储过程
+
+下面是使用 helper 函数将 async await 与承诺结合使用的存储过程的示例。 存储过程会查询项并替换项。
+
+```javascript
+function async_sample() {
+    const ERROR_CODE = {
+        NotAccepted: 429
+    };
+
+    const asyncHelper = {
+        queryDocuments(sqlQuery, options) {
+            return new Promise((resolve, reject) => {
+                const isAccepted = __.queryDocuments(__.getSelfLink(), sqlQuery, options, (err, feed, options) => {
+                    if (err) reject(err);
+                    resolve({ feed, options });
+                });
+                if (!isAccepted) reject(new Error(ERROR_CODE.NotAccepted, "replaceDocument was not accepted."));
+            });
+        },
+
+        replaceDocument(doc) {
+            return new Promise((resolve, reject) => {
+                const isAccepted = __.replaceDocument(doc._self, doc, (err, result, options) => {
+                    if (err) reject(err);
+                    resolve({ result, options });
+                });
+                if (!isAccepted) reject(new Error(ERROR_CODE.NotAccepted, "replaceDocument was not accepted."));
+            });
+        }
+    };
+
+    async function main() {
+        let continuation;
+        do {
+            let { feed, options } = await asyncHelper.queryDocuments("SELECT * from c", { continuation });
+
+            for (let doc of feed) {
+                doc.newProp = 1;
+                await asyncHelper.replaceDocument(doc);
+            }
+
+            continuation = options.continuation;
+        } while (continuation);
+    }
+
+    main().catch(err => getContext().abort(err));
+}
+```
+
 ## <a name="how-to-write-triggers"></a><a id="triggers"></a>如何编写触发器
 
 Azure Cosmos DB 支持前触发器和后触发器。 前触发器是在修改数据库项之前执行的，后触发器是在修改数据库项之后执行的。
@@ -240,7 +287,7 @@ function validateToDoItemTimestamp() {
 
 预触发器不能有任何输入参数。 使用触发器中的请求对象来处理与操作关联的请求消息。 在前面的示例中，创建 Azure Cosmos 项时将运行前触发器，请求消息正文包含要以 JSON 格式创建的项。
 
-注册触发器后，可以指定可对哪些操作运行该触发器。 应使用 `TriggerOperation` 的 `TriggerOperation.Create` 值创建此触发器，这意味着，不允许在以下代码所示的 replace 操作中使用此触发器。
+注册触发器后，可以指定可对哪些操作运行该触发器。 应使用 `TriggerOperation.Create` 的 `TriggerOperation` 值创建此触发器，这意味着，不允许在以下代码所示的 replace 操作中使用此触发器。
 
 有关如何注册和调用前触发器的示例，请参阅[前触发器](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers)和[后触发器](how-to-use-stored-procedures-triggers-udfs.md#post-triggers)文章。 
 
@@ -317,7 +364,7 @@ function tax(income) {
 
 有关如何注册和使用用户定义的函数的示例，请参阅[如何在 Azure Cosmos DB 中使用用户定义的函数](how-to-use-stored-procedures-triggers-udfs.md#udfs)一文。
 
-## <a name="logging"></a>日志记录 
+## <a name="logging"></a>Logging 
 
 使用存储过程、触发器或用户定义的函数时，可以使用 `console.log()` 命令来记录步骤。 当 `EnableScriptLogging` 设置为 true 时，该命令会专注于一个字符串进行调试，如以下示例所示：
 
@@ -336,6 +383,6 @@ Console.WriteLine(response.ScriptLog);
 
 * [如何在 Azure Cosmos DB 中使用 Javascript 查询 API 编写存储过程和触发器](how-to-write-javascript-query-api.md)
 
-* [在 Azure Cosmos DB 中使用 Azure Cosmos DB 存储过程、触发器与用户定义的函数](stored-procedures-triggers-udfs.md)
+* [在 Azure Cosmos DB 中使用 Azure Cosmos DB 存储过程、触发器和用户定义的函数](stored-procedures-triggers-udfs.md)
 
 * [在 Azure Cosmos DB 中使用 JavaScript 语言集成式查询 API](javascript-query-api.md)

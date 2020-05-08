@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure RBAC 和 Azure 门户列出角色分配
-description: 了解如何使用 Azure 基于角色的访问控制 (RBAC) 和 Azure 门户来确定用户、组、服务主体和托管标识有权访问的资源内容。
+title: 使用 Azure 门户列出 Azure 角色分配-Azure RBAC
+description: 了解如何使用 Azure 门户和 Azure 基于角色的访问控制（Azure RBAC）确定用户、组、服务主体或托管标识有权访问哪些资源。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 03a3d3c7d572d7ec5b8d3ac3d527d0d59e649bc2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed7f2b57df97a99a73ad191e45fb900a04f8021f
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062249"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983017"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>使用 Azure RBAC 和 Azure 门户列出角色分配
+# <a name="list-azure-role-assignments-using-the-azure-portal"></a>使用 Azure 门户列出 Azure 角色分配
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] 本文介绍如何使用 Azure 门户列出角色分配。
 
@@ -32,7 +32,9 @@ ms.locfileid: "80062249"
 
 要查看分配给订阅中的用户或组的角色，最简单的方法是使用“Azure 资源”窗格****。
 
-1. 在 Azure 门户中单击“所有服务”，然后选择“用户”或“组”************。
+1. 在 Azure 门户中，从 "Azure 门户" 菜单中选择 "**所有服务**"。
+
+1. 选择 " **Azure Active Directory** "，然后选择 "**用户**或**组**"。
 
 1. 单击要列出其角色分配的用户或组。
 
@@ -138,5 +140,5 @@ ms.locfileid: "80062249"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure RBAC 和 Azure 门户添加或删除角色分配](role-assignments-portal.md)
-- [对 Azure 资源的 RBAC 问题进行故障排除](troubleshooting.md)
+- [使用 Azure 门户添加或删除 Azure 角色分配](role-assignments-portal.md)
+- [排查 Azure RBAC 问题](troubleshooting.md)

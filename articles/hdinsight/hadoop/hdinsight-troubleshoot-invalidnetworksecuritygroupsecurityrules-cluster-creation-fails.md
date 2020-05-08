@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/31/2019
-ms.openlocfilehash: a73e1e9f7a9c017dd29b627a24c25ae2e064c0a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2cf4859d3bf4c34fff4cb076eec11bcd2d81e4ab
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75894147"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780770"
 ---
 # <a name="scenario-invalidnetworksecuritygroupsecurityrules---cluster-creation-fails-in-azure-hdinsight"></a>方案：InvalidNetworkSecurityGroupSecurityRules - 在 Azure HDInsight 中创建群集失败
 
@@ -28,7 +28,7 @@ ms.locfileid: "75894147"
 
 ## <a name="resolution"></a>解决方法
 
-转到 Azure 门户并找到与部署了群集的子网关联的 NSG。 在**入站安全规则**部分中，确保规则允许对[此处](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ip)提到的 IP 地址的端口 443 进行入站访问。
+转到 Azure 门户并找到与部署了群集的子网关联的 NSG。 在**入站安全规则**部分中，确保规则允许对[此处](../control-network-traffic.md)提到的 IP 地址的端口 443 进行入站访问。
 
 ## <a name="next-steps"></a>后续步骤
 

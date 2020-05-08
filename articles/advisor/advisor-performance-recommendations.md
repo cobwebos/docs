@@ -3,12 +3,12 @@ title: 使用 Azure 顾问提高 Azure 应用程序的性能
 description: 使用顾问优化 Azure 部署的性能。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 405ec395feeb33b8511b9b915151b2ed9503c371
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ff9b8fb9494c887397947f009b22cdc89d8f70b5
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443058"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787934"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>使用 Azure 顾问提高 Azure 应用程序的性能
 
@@ -28,6 +28,10 @@ Azure 顾问将识别配置了较长 TTL 的流量管理器配置文件，并建
 > 若要获取建议，数据库必须具有一周左右的使用量，且该周内必须有一些一致的活动。 SQL 数据库顾问优化一致的查询模式比优化随机的突发活动更加轻松。
 
 有关 SQL 数据库顾问的详细信息，请参阅[SQL 数据库顾问](https://azure.microsoft.com/documentation/articles/sql-database-advisor/)。
+
+## <a name="upgrade-your-storage-client-library-to-the-latest-version-for-better-reliability-and-performance"></a>将存储客户端库升级到最新版本，以提高可靠性和性能
+
+最新版存储客户端库/SDK 包含问题修复，这些问题有客户报告的，也有我们通过 QA 过程主动标识的。 最新版除了新功能，还有可靠性和性能优化，可以改进你在使用 Azure 存储时的总体体验。 如果你使用的是旧版本，则顾问会为你提供升级到最新版本的 SDK 的建议和步骤。 建议用于支持的语言-c + + 和 .Net。
 
 ## <a name="improve-app-service-performance-and-reliability"></a>提高应用服务性能和可靠性
 
@@ -73,6 +77,26 @@ Azure 顾问会检测 SQL 数据仓库是否具有高缓存使用百分比和低
 ## <a name="design-your-storage-accounts-to-prevent-hitting-the-maximum-subscription-limit"></a>设计存储帐户以避免达到最大订阅限制
 
 对于每个订阅，Azure 区域最多支持250个存储帐户。 达到此限制后，将无法再创建该区域/订阅组合中的任何其他存储帐户。 Advisor 将检查你的订阅和表面建议，以便为接近达到最大限制的任何内容设计更少的存储帐户。
+
+## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-adress-high-p2s-use"></a>考虑将 VNet 网关 SKU 的大小增加到 P2S，使用
+
+每个网关 SKU 只能支持指定的并发 P2S 连接计数。 如果连接计数接近网关限制，则其他连接尝试可能会失败。 增加网关的大小，可以支持更多的并发 P2S 用户。顾问为此提供建议和步骤。
+
+## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-address-high-cpu"></a>考虑增加 VNet 网关 SKU 的大小以处理高 CPU
+
+在高流量负载下，VPN 网关可能会因为 CPU 太高而丢弃数据包。 你应考虑升级 VPN 网关 SKU，因为你的 VPN 一直在上运行。增加 VPN 网关的大小可确保不会因 CPU 太高而丢弃连接。 Advisor provdes 建议，以主动解决此问题。 
+
+## <a name="increase-batch-size-when-loading-to-maximize-load-throughput-data-compression-and-query-performance"></a>在加载时提高批大小，以最大限度地提高负载吞吐量、数据压缩和查询性能
+
+顾问可以通过在加载到数据库时增加批大小来检测是否可以提高负载性能和吞吐量。 可以考虑使用 COPY 语句。 如果无法使用 COPY 语句，请考虑在使用加载实用程序（例如 SQLBulkCopy API 或 BCP）时增加批大小，好的经验法则是10到1M 行之间的批大小。 这会增加负载吞吐量、数据压缩和查询性能。
+
+## <a name="co-locate-the-storage-account-within-the-same-region-to-minimize-latency-when-loading"></a>归置同一区域中的存储帐户，以便在加载时最大程度地减少延迟
+
+Advisor 可以检测到你正在从不同于 SQL 池的区域加载。 你应考虑从与 SQL 池位于同一区域中的存储帐户加载，以最大程度地减少加载数据时的延迟。 这将有助于最大程度地减少延迟并提高负载性能。
+
+## <a name="unsupported-kubernetes-version-is-detected"></a>检测到不支持的 Kubernetes 版本
+
+顾问可以检测是否检测到不受支持的 Kubernetes 版本。 建议确保使用受支持的版本运行 Kubernetes 群集。
 
 ## <a name="optimize-the-performance-of-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers"></a>优化 Azure MySQL、Azure PostgreSQL 和 Azure MariaDB 服务器的性能 
 

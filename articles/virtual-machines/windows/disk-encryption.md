@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: b25d35ce467786c402c56c8a7d19a305381db94f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6b6e261b5cdfee00a9346338b6eb5d7e1f2a2a0
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137784"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982099"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure 托管磁盘的服务器端加密
 
@@ -79,7 +79,7 @@ Azure 托管磁盘使用[信封加密](../../storage/common/storage-client-side-
 - 与客户托管的密钥（Azure 密钥保管库、磁盘加密集、Vm、磁盘和快照）相关的所有资源必须位于同一订阅和区域中。
 - 用客户管理的密钥加密的磁盘、快照和映像不能移到另一个订阅。
 - 如果使用 Azure 门户创建磁盘加密集，则目前无法使用快照。
-- 使用客户管理的密钥加密的托管磁盘也不能使用 Azure 磁盘加密进行加密。
+- 通过使用 Azure 磁盘加密对使用服务器端加密进行加密的托管磁盘进行加密，反之亦然。
 
 ### <a name="powershell"></a>PowerShell
 
@@ -287,8 +287,8 @@ $disk.Encryption.Type
 
 ## <a name="next-steps"></a>后续步骤
 
-- [探索 Azure 资源管理器模板，以便通过客户托管的密钥创建加密磁盘](https://github.com/ramankumarlive/manageddiskscmkpreview)
-- [什么是 Azure Key Vault？](../../key-vault/general/overview.md)
+- [探索 Azure 资源管理器模板以使用客户管理密钥创建加密磁盘](https://github.com/ramankumarlive/manageddiskscmkpreview)
+- [什么是 Azure 密钥保管库？](../../key-vault/general/overview.md)
 - [复制已启用客户托管密钥的计算机](../../site-recovery/azure-to-azure-how-to-enable-replication-cmk-disks.md)
 - [使用 PowerShell 设置 VMware VM 到 Azure 的灾难恢复](../../site-recovery/vmware-azure-disaster-recovery-powershell.md#replicate-vmware-vms)
-- [使用 PowerShell 和 Azure 资源管理器对 Hyper-V VM 设置到 Azure 的灾难恢复](../../site-recovery/hyper-v-azure-powershell-resource-manager.md#step-7-enable-vm-protection)
+- [使用 PowerShell 和 Azure 资源管理器为 Hyper-V VM 设置到 Azure 的灾难恢复](../../site-recovery/hyper-v-azure-powershell-resource-manager.md#step-7-enable-vm-protection)

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 160898f8535d3dad4811af016ebca779b7ef43a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a2b9cc0c69f0c559c9561a02de4192974ee7f521
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189611"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926181"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中配置令牌
 
@@ -25,7 +25,7 @@ ms.locfileid: "78189611"
 
 [创建用户流](tutorial-create-user-flows.md)，以便用户能够注册并登录应用程序。
 
-## <a name="configure-token-lifetime"></a>配置令牌生存期
+## <a name="configure-jwt-token-lifetime"></a>配置 JWT 令牌生存期
 
 可以在任何用户流上配置令牌生存期。
 
@@ -41,7 +41,7 @@ ms.locfileid: "78189611"
 
 8. 单击“保存”  。
 
-## <a name="configure-token-compatibility"></a>配置令牌兼容性
+## <a name="configure-jwt-token-compatibility"></a>配置 JWT 令牌兼容性
 
 1. 选择“用户流(策略)”  。
 2. 打开之前创建的用户流。

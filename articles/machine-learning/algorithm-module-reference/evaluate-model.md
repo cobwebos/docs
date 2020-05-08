@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/24/2020
-ms.openlocfilehash: cf9597f4a722ff9cda68e87b31db77c989afcb0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f69a3f61c288b320399d1b3abfc632c93261c540
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129849"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983357"
 ---
 # <a name="evaluate-model-module"></a>“评估模型”模块
 
@@ -34,9 +34,13 @@ ms.locfileid: "82129849"
 
 
 ## <a name="how-to-use-evaluate-model"></a>如何使用评估模型
-1. 将[评分模型](./score-model.md)的**评分数据集**输出连接到 "**评估模型**" 的左侧输入端口。 
+1. 将评分[模型](./score-model.md)的**评分数据集**输出或将数据的结果数据集输出连接[到](./assign-data-to-clusters.md)"**评估模型**" 的左侧输入端口。 
+  > [!NOTE] 
+  > 如果使用 "选择数据集中的列" 之类的模块来选择部分输入数据集，请确保实际标签列（在定型中使用）、"评分概率" 列和 "评分标签" 列以计算指标（如 AUC）、二元分类/异常检测的准确性。
+  > 存在实际标签列 "评分标签" 列，用于计算多类分类/回归指标。
+  > "赋值" 列，列 "DistancesToClusterCenter no"。X ' （X 是质心索引，范围为0，...，质心-1）的值，用于计算分类的度量值。
 
-2. 可有可无将第二个模型的评分[模型](./score-model.md)的**评分数据集**输出连接到 "**评估模型**" 的**右侧**输入。 您可以轻松地将两个不同模型的结果与相同数据进行比较。 两个输入算法应为同一算法类型。 或者，可以比较两个不同运行使用不同参数针对相同数据提供的评分。
+2. 可有可无将第二个模型的评分[模型](./score-model.md)或结果数据集输出的**评分数据集**输出连接到**评估模型**的**右**输入端口。 您可以轻松地将两个不同模型的结果与相同数据进行比较。 两个输入算法应为同一算法类型。 或者，可以比较两个不同运行使用不同参数针对相同数据提供的评分。
 
     > [!NOTE]
     > 算法类型是指 "机器学习算法" 下的 "双类分类"、"多类分类"、"回归"、"聚类分析"。 

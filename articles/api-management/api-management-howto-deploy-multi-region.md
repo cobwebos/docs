@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 0f8d9d7d90e88b4e43721dac274833a3b0df275e
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 17c92558ebef2eee0a4daead45d16a295cedd1bb
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203142"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790473"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>如何将 Azure API 管理服务实例部署到多个 Azure 区域
 
 Azure API 管理多区域部署，该部署可使 API 发布者在任意数量的受支持 Azure 区域中分配单个 Azure API 管理服务。 多区域功能有助于减少地理上分散的 API 使用者所感知的请求延迟，并且还可改善其中一个区域处于离线状态时的服务可用性。
 
-新的 Azure API 管理服务最初只在一个 Azure 区域（主要区域）中包含一个[单元][unit]。 可向主要区域或次要区域添加更多区域。 API 管理网关组件将部署到每个选定的主要区域和次要区域。 传入的 API 请求将自动定向到最近的区域。 如果某个区域脱机，API 请求将自动路由到与发生故障的区域最靠近的下一个网关。
+新的 Azure API 管理服务最初只在一个 Azure 区域（主要区域）中包含一个[单元][unit]。 可以向主要区域或次要区域添加其他单位。 API 管理网关组件将部署到每个选定的主要区域和次要区域。 传入的 API 请求将自动定向到最近的区域。 如果某个区域脱机，API 请求将自动路由到与发生故障的区域最靠近的下一个网关。
 
 > [!NOTE]
 > 只会将 API 管理的网关组件部署到所有区域。 服务管理组件和开发人员门户只会托管在主要区域。 因此，如果主要区域发生服务中断，在主要区域恢复联机之前，访问开发人员门户和更改配置（例如添加 API、应用策略）的功能将受到影响。 当主要区域脱机时，可用的辅助区域将继续使用可用的最新配置为 API 流量提供服务。

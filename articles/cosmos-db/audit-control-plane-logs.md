@@ -1,17 +1,17 @@
 ---
 title: 如何审核 Azure Cosmos DB 控制平面操作
-description: 了解如何在 Azure Cosmos DB 中审核控制平面操作（如添加区域、更新吞吐量、区域故障转移、添加 VNet 等）
+description: 了解如何在 Azure Cosmos DB 中审核控制平面操作，例如添加区域、更新吞吐量、区域故障转移、添加 VNet，等等
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: sngun
-ms.openlocfilehash: d380e4c025b35f0000e13c62422d54dc10079524
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5df7866f7897109dbd7a0ea8a52b857ab671875
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192861"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735345"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>如何审核 Azure Cosmos DB 控制平面操作
 
@@ -25,39 +25,41 @@ Azure Cosmos DB 中的控制平面是一项 RESTful 服务，可用于对 Azure 
 
 * 你需要从诊断日志获取有关所更改内容的更多详细信息。 例如，VNet 发生了更改。
 
-## <a name="disable-key-based-metadata-write-access"></a>禁用基于密钥的元数据写入访问权限
+## <a name="disable-key-based-metadata-write-access"></a>禁用基于密钥的元数据写入访问
 
-在 Azure Cosmos DB 中审核控制平面操作之前，请在你的帐户上禁用基于密钥的元数据写入访问权限。 禁用基于密钥的元数据写访问后，将无法通过帐户密钥连接到 Azure Cosmos 帐户的客户端访问该帐户。 可以通过将`disableKeyBasedMetadataWriteAccess`属性设置为 true 来禁用写入访问权限。 设置此属性后，可以从具有适当的基于角色的访问控制（RBAC）角色和凭据的用户发生对任何资源的更改。 若要了解有关如何设置此属性的详细信息，请参阅[阻止 sdk 更改](role-based-access-control.md#preventing-changes-from-cosmos-sdk)一文。 禁用写访问后，基于 SDK 的吞吐量更改将继续工作。
+在 Azure Cosmos DB 中审核控制平面操作之前，请在帐户中禁用基于密钥的元数据写入访问。 禁用基于密钥的元数据写入访问后，会阻止通过帐户密钥连接到 Azure Cosmos 帐户的客户端访问该帐户。 可以通过将 `disableKeyBasedMetadataWriteAccess` 属性设置为 true 来禁用写入访问。 设置此属性后，可以从具有适当的基于角色的访问控制（RBAC）角色和凭据的用户发生对任何资源的更改。 若要详细了解如何设置此属性，请参阅[阻止从 SDK 进行更改](role-based-access-control.md#preventing-changes-from-cosmos-sdk)一文。 
 
-关闭元数据写入访问权限时，请注意以下几点：
+`disableKeyBasedMetadataWriteAccess`启用后，如果基于 SDK 的客户端运行创建或更新操作，则*不允许对资源 "ContainerNameorDatabaseName" 执行 "操作" POST 操作，因为返回 Azure Cosmos DB 终结点*。 你必须为你的帐户启用此类操作的访问权限，或通过 Azure 资源管理器、Azure CLI 或 Azure Powershell 执行创建/更新操作。 若要切换回，请使用 Azure CLI 将 disableKeyBasedMetadataWriteAccess 设置为**false** ，如[阻止 Cosmos SDK 的更改](role-based-access-control.md#preventing-changes-from-cosmos-sdk)一文中所述。 请确保将的值更改`disableKeyBasedMetadataWriteAccess`为 "false"，而不是 "true"。
 
-* 评估并确保应用程序不会进行通过使用 SDK 或帐户密钥来更改上述资源（例如，创建集合、更新吞吐量、...）的元数据调用。
+禁用元数据写入访问时，请注意以下几点：
 
-* 当前，Azure 门户使用帐户密钥进行元数据操作，因此将阻止这些操作。 此外，还可以使用 Azure CLI、Sdk 或资源管理器模板部署来执行此类操作。
+* 进行评估，并确保应用程序不会使用 SDK 或帐户密钥发出更改上述资源（例如，创建集合、更新吞吐量等）的元数据调用。
 
-## <a name="enable-diagnostic-logs-for-control-plane-operations"></a>为控制平面操作启用诊断日志
+* 目前，Azure 门户会对元数据操作使用帐户密钥，因此这些操作将被阻止。 请使用 Azure CLI、SDK 或资源管理器模板部署来执行此类操作。
 
-您可以使用 Azure 门户为控制平面操作启用诊断日志。 启用后，诊断日志会将操作记录为包含相关详细信息的一对启动和完整事件。 例如， *RegionFailoverStart*和*RegionFailoverComplete*将完成区域故障转移事件。
+## <a name="enable-diagnostic-logs-for-control-plane-operations"></a>对控制平面操作启用诊断日志
 
-使用以下步骤在控制平面操作上启用日志记录：
+可以使用 Azure 门户对控制平面操作启用诊断日志。 启用后，诊断日志会将操作记录为包含相关详细信息的一对启动和完整事件。 例如， *RegionFailoverStart*和*RegionFailoverComplete*将完成区域故障转移事件。
 
-1. 登录[Azure 门户](https://portal.azure.com)，导航到你的 Azure Cosmos 帐户。
+使用以下步骤对控制平面操作启用日志记录：
 
-1. 打开 "**诊断设置**" 窗格，提供要创建的日志的**名称**。
+1. 登录到 [Azure 门户](https://portal.azure.com)，导航到你的 Azure Cosmos 帐户。
 
-1. 选择 " **ControlPlaneRequests** " 作为 "日志类型"，并选择 "**发送到 Log Analytics** " 选项。
+1. 打开“诊断设置”窗格，为要创建的日志提供名称。  
 
-你还可以将日志存储在存储帐户或流中。 本文介绍如何将日志发送到 log analytics，并对其进行查询。 启用后，诊断日志需要几分钟才能生效。 可以跟踪在该点之后执行的所有控制平面操作。 以下屏幕截图显示了如何启用控制平面日志：
+1. 选择“ControlPlaneRequests”作为日志类型，然后选择“发送到 Log Analytics”选项。  
+
+还可以将日志存储在存储帐户中，或将其流式传输到事件中心。 本文介绍如何将日志发送到 Log Analytics，然后查询这些日志。 启用诊断日志后，要使诊断日志生效，需要几分钟的时间。 可以跟踪在该时间点之后执行的所有控制平面操作。 以下屏幕截图显示如何启用控制平面日志：
 
 ![启用控制平面请求日志记录](./media/audit-control-plane-logs/enable-control-plane-requests-logs.png)
 
 ## <a name="view-the-control-plane-operations"></a>查看控制平面操作
 
-启用日志记录后，请使用以下步骤来跟踪特定帐户的操作：
+启用日志记录后，使用以下步骤跟踪针对特定帐户的操作：
 
-1. 登录[Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 从左侧导航栏中打开 "**监视器**" 选项卡，然后选择 "**日志**" 窗格。 它将打开一个 UI，你可以在其中轻松地在范围内运行具有该特定帐户的查询。 运行以下查询以查看控制平面日志：
+1. 在左侧导航栏中打开“监视”选项卡，然后选择“日志”窗格。   此时会打开一个 UI，可在其中轻松针对该特定帐户按范围运行查询。 运行以下查询以查看控制平面日志：
 
    ```kusto
    AzureDiagnostics
@@ -65,17 +67,17 @@ Azure Cosmos DB 中的控制平面是一项 RESTful 服务，可用于对 Azure 
    | where TimeGenerated >= ago(1h)
    ```
 
-将 VNET 添加到 Azure Cosmos 帐户时，以下屏幕截图捕获日志：
+当 Azure Cosmos 帐户的一致性级别发生更改时，以下屏幕截图将捕获日志：
 
 ![添加 VNet 时的控制平面日志](./media/audit-control-plane-logs/add-ip-filter-logs.png)
 
-当更新 Cassandra 表的吞吐量时，以下屏幕截图将捕获日志：
+以下屏幕截图捕获了更新 Cassandra 表的吞吐量时的日志：
 
 ![更新吞吐量时的控制平面日志](./media/audit-control-plane-logs/throughput-update-logs.png)
 
-## <a name="identify-the-identity-associated-to-a-specific-operation"></a>标识与特定操作关联的标识
+## <a name="identify-the-identity-associated-to-a-specific-operation"></a>识别与特定操作关联的标识
 
-如果要进一步调试，可以通过使用活动 ID 或操作的时间戳来标识**活动日志**中的特定操作。 时间戳用于某些不显式传递活动 ID 的资源管理器客户端。 活动日志提供有关用于启动操作的标识的详细信息。 以下屏幕截图演示了如何使用活动 ID 并在活动日志中查找与它关联的操作：
+若要进一步进行调试，可以使用活动 ID 或者按照操作的时间戳，来识别“活动日志”中的特定操作。  时间戳用于某些未显式传递活动 ID 的资源管理器客户端。 “活动日志”提供有关用于启动操作的标识的详细信息。 以下屏幕截图显示如何使用活动 ID，以及如何在“活动日志”中查找与该 ID 关联的操作：
 
 ![使用活动 ID 和查找操作](./media/audit-control-plane-logs/find-operations-with-activity-id.png)
 
@@ -149,8 +151,25 @@ Azure Cosmos DB 中的控制平面是一项 RESTful 服务，可用于对 Azure 
 
 * CassandraKeyspacesUpdateStart, CassandraKeyspacesUpdateComplete
 * CassandraKeyspacesThroughputUpdateStart, CassandraKeyspacesThroughputUpdateComplete
+* SqlContainersUpdateStart, SqlContainersUpdateComplete
 
 *ResourceDetails*属性包含作为请求负载的整个资源正文，其中包含请求更新的所有属性
+
+## <a name="diagnostic-log-queries-for-control-plane-operations"></a>控制平面操作的诊断日志查询
+
+下面是为控制平面操作获取诊断日志的一些示例：
+
+```kusto
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersUpdateStart"
+```
+
+```kusto
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersThroughputUpdateStart"
+```
 
 ## <a name="next-steps"></a>后续步骤
 

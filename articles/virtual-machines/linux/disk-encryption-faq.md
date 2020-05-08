@@ -8,22 +8,22 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 753d606e1fc2dc966c970a210cf6fc5066d5ed83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c49467451963ceb52f114430343fafb955ec4f7
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460131"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82786982"
 ---
 # <a name="azure-disk-encryption-for-linux-virtual-machines-faq"></a>适用于 Linux 虚拟机的 Azure 磁盘加密常见问题解答
 
-本文提供有关适用于 Linux 虚拟机（Vm）的 Azure 磁盘加密的常见问题解答（FAQ）的解答。 有关此服务的详细信息，请参阅 [Azure 磁盘加密概述](disk-encryption-overview.md)。
+本文提供有关适用于 Linux 虚拟机 (VM) 的 Azure 磁盘加密的常见问题解答 (FAQ)。 有关此服务的详细信息，请参阅 [Azure 磁盘加密概述](disk-encryption-overview.md)。
 
-## <a name="what-is-azure-disk-encryption-for-linux-vms"></a>什么是适用于 Linux Vm 的 Azure 磁盘加密？
+## <a name="what-is-azure-disk-encryption-for-linux-vms"></a>什么是适用于 Linux VM 的 Azure 磁盘加密？
 
-适用于 Linux Vm 的 Azure 磁盘加密使用 Linux 的 dm dm-crypt 功能提供 OS 磁盘 * 和数据磁盘的完整磁盘加密。 此外，它还提供了使用[EncryptFormatAll 功能](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)时临时资源磁盘的加密。 从 VM 加密到存储后端的内容流。 因此，使用客户管理的密钥提供端对端加密。
+适用于 Linux VM 的 Azure 磁盘加密使用 Linux 的 dm-crypt 功能提供对 OS 磁盘和数据磁盘的完整磁盘加密。 此外，它还提供了使用[EncryptFormatAll 功能](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)时临时磁盘的加密。 内容以加密的形式从 VM 流向存储后端。 因此，使用客户托管密钥提供端对端加密。
  
-请参阅[支持的 vm 和操作系统](disk-encryption-overview.md#supported-vms-and-operating-systems)。
+请参阅[支持的 VM 和操作系统](disk-encryption-overview.md#supported-vms-and-operating-systems)。
 
 ## <a name="where-is-azure-disk-encryption-in-general-availability-ga"></a>哪里有正式发布版 (GA) 的 Azure 磁盘加密？
 
@@ -57,11 +57,11 @@ Azure 磁盘加密正式版支持 Azure 资源管理器模板、Azure PowerShell
 
 ## <a name="what-is-storage-server-side-encryption"></a>什么是存储服务器端加密？
 
-存储服务器端加密在 Azure 存储中加密 Azure 托管磁盘。 默认情况下，托管磁盘是使用平台托管的密钥（截至2017年6月10日）对服务器端加密进行加密的。 可以通过指定客户托管的密钥，使用自己的密钥来管理托管磁盘的加密。 有关详细信息，请参阅： [Azure 托管磁盘的服务器端加密](disk-encryption.md)。
+存储服务器端加密会在 Azure 存储中加密 Azure 托管磁盘。 默认情况下，托管磁盘使用平台托管密钥通过服务器端加密进行加密（从 2017 年 6 月 10 日开始）。 可以通过指定客户托管密钥，使用自己的密钥来管理托管磁盘加密。 有关详细信息，请参阅：[Azure 托管磁盘的服务器端加密](disk-encryption.md)。
  
 ## <a name="how-is-azure-disk-encryption-different-from-storage-server-side-encryption-with-customer-managed-key-and-when-should-i-use-each-solution"></a>Azure 磁盘加密与使用客户管理的密钥进行存储服务器端加密的方式不同，何时应使用每个解决方案？
 
-Azure 磁盘加密使用客户管理的密钥为 OS 磁盘、数据磁盘和临时资源磁盘提供端对端加密。
+Azure 磁盘加密使用客户管理的密钥为 OS 磁盘、数据磁盘和临时磁盘提供端对端加密。
 - 如果你的要求包括对上述和端到端加密的加密，请使用 Azure 磁盘加密。 
 - 如果你的要求包括仅使用客户管理的密钥加密静态数据，则对[客户管理的密钥使用服务器端加密](disk-encryption.md)。 不能使用 Azure 磁盘加密和使用客户托管密钥的存储服务器端加密来加密磁盘。 
 - 如果你的 Linux 发行版未在[Azure 磁盘加密支持的操作系统](disk-encryption-overview.md#supported-operating-systems)下列出，或者你正在使用[不受支持的 Windows 方案](disk-encryption-linux.md#unsupported-scenarios)中的应用场景，请考虑[使用客户管理的密钥进行服务器端加密](disk-encryption.md)。
@@ -86,7 +86,7 @@ Azure 磁盘加密使用客户管理的密钥为 OS 磁盘、数据磁盘和临�
 
 ## <a name="can-i-use-an-azure-created-key-encryption-key"></a>是否可以使用 Azure 创建的密钥加密密钥？
 
-是的，可以使用 Azure Key Vault 来生成密钥加密密钥供 Azure 磁盘加密使用。 这些密钥在 Azure Key Vault（Azure 磁盘加密的密钥存储）中受保护。 有关密钥加密密钥的详细信息，请参阅[创建和配置用于 Azure 磁盘加密的 Key Vault](disk-encryption-key-vault.md)。
+是的，可以使用 Azure Key Vault 来生成密钥加密密钥供 Azure 磁盘加密使用。 这些密钥在 Azure Key Vault（Azure 磁盘加密的密钥存储）中受保护。 有关密钥加密密钥的详细信息，请参阅[创建和配置用于 Azure 磁盘加密的密钥保管库](disk-encryption-key-vault.md)。
 
 ## <a name="can-i-use-an-on-premises-key-management-service-or-hsm-to-safeguard-the-encryption-keys"></a>是否可以使用本地密钥管理服务或 HSM 来保护加密密钥？
 
@@ -108,7 +108,7 @@ Azure 磁盘加密具有先决条件。 请参阅[使用 Azure AD 的 Azure 磁�
 
 ## <a name="what-version-of-azure-powershell-does-azure-disk-encryption-support"></a>Azure 磁盘加密支持哪些 Azure PowerShell 版本？
 
-使用最新版的 Azure PowerShell SDK 来配置 Azure 磁盘加密。 下载最新版本的 [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)。 Azure SDK 版本 1.1.0*不*支持 Azure 磁盘加密。
+使用最新版的 Azure PowerShell SDK 来配置 Azure 磁盘加密。 下载最新版本的 [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)。 Azure SDK 版本 1.1.0 不  支持 Azure 磁盘加密。
 
 > [!NOTE]
 > Linux Azure 磁盘加密预览扩展“Microsoft.OSTCExtension.AzureDiskEncryptionForLinux”已弃用。 发布的该扩展适用于 Azure 磁盘加密预览版。 不应将预览版扩展用于测试或生产性部署。
@@ -148,9 +148,9 @@ Azure 磁盘加密可将 aes-xts-plain64 的 decrypt 默认方法和 256 位卷�
 否，不会擦除已使用 Azure 磁盘加密进行了加密的数据驱动器上的数据。 与 EncryptFormatAll 不重新加密 OS 驱动器类似，它也不会重新加密已加密的数据驱动器。 有关详细信息，请参阅 [EncryptFormatAll 条件](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)。        
 
 ## <a name="is-xfs-filesystem-supported"></a>是否支持 XFS 文件系统？
-支持 XFS OS 磁盘加密。
+支持加密 XFS OS 磁盘。
 
-仅当使用 EncryptFormatAll 参数时，才支持 XFS 数据磁盘的加密。 该操作会将卷重新格式化，擦除以前存在上面的任何数据。 有关详细信息，请参阅 [EncryptFormatAll 条件](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)。
+仅当使用 EncryptFormatAll 参数时，才支持加密 XFS 数据磁盘。 该操作会将卷重新格式化，擦除以前存在上面的任何数据。 有关详细信息，请参阅 [EncryptFormatAll 条件](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)。
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>能否备份和还原加密的 VM？ 
 

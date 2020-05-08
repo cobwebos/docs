@@ -3,12 +3,12 @@ title: 通过模板运行快速任务
 description: 使用 Azure 资源管理器模板对 ACR 任务运行排队以生成映像
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: 6e85e4a3d10ea34d71efde959aa7d179eba69e3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ad40d2e925d5e1443af9bce4115d45b0e8c06e1
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82196525"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927762"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>使用资源管理器模板运行 ACR 任务
 
@@ -26,7 +26,7 @@ ms.locfileid: "82196525"
 * 您必须指定远程上下文，例如 GitHub 存储库作为任务运行的[源位置](container-registry-tasks-overview.md#context-locations)。 不能使用本地源上下文。
 * 对于使用托管标识运行的任务，只允许使用*用户分配*的托管标识。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * **GitHub 帐户**- https://github.com如果你还没有帐户，则创建一个。 
 * **分叉示例存储库**-对于此处显示的任务示例，请使用 github UI 将以下示例存储库加入 github 帐户： https://github.com/Azure-Samples/acr-build-helloworld-node。 此存储库包含用于构建小型容器映像的示例 Dockerfile 和源代码。
@@ -139,7 +139,7 @@ az acr task logs \
 
 ### <a name="create-new-dockerfile"></a>创建新的 Dockerfile
 
-创建从基本注册表提取基本映像的 Dockerfile。 在 GitHub 存储库的本地分支中执行以下步骤，例如， https://github.com/myGitHubID/acr-build-helloworld-node.git*。
+创建从基本注册表提取基本映像的 Dockerfile。 在 GitHub 存储库的本地分支中执行以下步骤，例如`https://github.com/myGitHubID/acr-build-helloworld-node.git`。
 
 1. 在 GitHub UI 中，选择 "**新建文件**"。
 1. 将文件命名*为 "Dockerfile* "，并粘贴以下内容。 将*mybaseregistry*的注册表名称替换为。

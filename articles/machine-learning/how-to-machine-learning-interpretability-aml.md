@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/12/2020
-ms.openlocfilehash: 45eef976fe10bbb5acda2cd348a77b28c3ffbe02
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 39d2bf0e527d43e2a5fb9437720f249e54b4dff3
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769809"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983629"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>使用 interpretability 包在 Python 中说明 & 预测的 ML 模型
 
@@ -238,12 +238,12 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 * 在远程运行中使用 `ExplanationClient` 来上传可解释性上下文。
 * 稍后在本地环境中下载该上下文。
 
-1. 安装`azureml-interpret`和`azureml-interpret-contrib`包。
+1. 安装`azureml-interpret`和`azureml-contrib-interpret`包。
     ```bash
     pip install azureml-interpret
-    pip install azureml-interpret-contrib
+    pip install azureml-contrib-interpret
     ```
-1. 在本地 Jupyter 笔记本中创建训练脚本。 例如，`train_explain.py` 。
+1. 在本地 Jupyter 笔记本中创建训练脚本。 例如 `train_explain.py`。
 
     ```python
     from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient

@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
-ms.openlocfilehash: 9cfb44fbf84ad85f3e2684dfec21cc83d4aaa666
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6fa959b1c9ed021a97031ba03822ae89fbbb7bbb
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131255"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983068"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>排查 Azure 应用程序网关的 Web 应用程序防火墙 (WAF) 问题
 
@@ -20,15 +20,17 @@ ms.locfileid: "82131255"
 
 首先，请确保已阅读 [WAF 概述](ag-overview.md)和 [WAF 配置](application-gateway-waf-configuration.md)文档。 此外，确保已启用 [WAF 监视](../../application-gateway/application-gateway-diagnostics.md)。这些文章介绍了 WAF 函数、WAF 规则集的工作原理，以及 WAF 日志的访问方式。
 
+OWASP 规则集的设计目的是非常严格，可以根据使用 WAF 的应用程序或组织的特定需求进行调整。 在许多情况下，它是完全正常的，但实际上却是预期的：创建排除项、自定义规则，甚至禁用可能导致问题或误报的规则。 每个站点和每个 URI 的策略允许这些更改仅影响特定的站点/Uri，因此，任何更改都不会影响可能不会遇到相同问题的其他站点。 
+
 ## <a name="understanding-waf-logs"></a>了解 WAF 日志
 
 WAF 日志用于显示 WAF 匹配或阻止的每个请求。 它是匹配或阻止的所有已评估请求的账本。 如果你发现 WAF 阻止了原本不应该阻止的请求（误报），可以采取几种方法来解决问题。 首先缩小查找范围，找到特定的请求。 浏览日志，找到该请求的特定 URI、时间戳或事务 ID。 找到关联的日志条目后，可以开始处理误报。
 
 例如，假设某个合法流量（你希望该流量通过 WAF）包含字符串 *1=1*。 如果尝试请求，WAF 将阻止任何参数或字段中包含 *1=1* 字符串的流量。 此字符串通常与 SQL 注入攻击相关。 可以浏览日志，查看请求的时间戳，以及阻止/匹配的规则。
 
-在以下示例中可以看到，处理同一请求期间触发了 4 个规则（使用 TransactionId 字段）。 第一个规则指出该请求是匹配的，因为用户对该请求使用了数字/IP URL，这将异常评分增加了 3 分（因为这是一条警告）。 匹配的下一个规则是 942130，即你要查找的规则。 可以在 `details.data` 字段中看到 *1=1*。 这进一步将异常评分增加了 3 分，因为这也是一条警告。 通常，具有“已匹配”操作的每个规则都会增加异常评分，此时，异常评分为 6。  有关详细信息，请参阅[异常评分模式](ag-overview.md#anomaly-scoring-mode)。
+在以下示例中可以看到，处理同一请求期间触发了 4 个规则（使用 TransactionId 字段）。 第一个规则指出该请求是匹配的，因为用户对该请求使用了数字/IP URL，这将异常评分增加了 3 分（因为这是一条警告）。 匹配的下一个规则是 942130，即你要查找的规则。 可以在 `details.data` 字段中看到 *1=1*。 这进一步将异常评分增加了 3 分，因为这也是一条警告。 通常，具有“已匹配”操作的每个规则都会增加异常评分，此时，异常评分为 6。**** 有关详细信息，请参阅[异常评分模式](ag-overview.md#anomaly-scoring-mode)。
 
-最后两个日志条目显示该请求被阻止，因为异常评分足够高。 这些条目的操作不同于另外两个条目。 它们显示确实阻止了该请求。  这些规则是必需的，不可禁用。 不应将它们视为规则，而应更多地将其视为 WAF 内部组件的核心基础结构。
+最后两个日志条目显示该请求被阻止，因为异常评分足够高。 这些条目的操作不同于另外两个条目。 它们显示确实阻止了该请求。** 这些规则是必需的，不可禁用。 不应将它们视为规则，而应更多地将其视为 WAF 内部组件的核心基础结构。
 
 ```json
 { 
@@ -152,7 +154,7 @@ WAF 日志用于显示 WAF 匹配或阻止的每个请求。 它是匹配或阻�
 
 ![排除项](../media/web-application-firewall-troubleshoot/exclusion-list.png)
 
-在此示例中，你希望排除等于 *text1* 的**请求属性名称**。 在防火墙日志中可以一目了解地看到该属性名称：**数据:匹配的数据:在 ARGS:text1:1=1 中找到 1=1**。 属性为 **text1**。 还可以通过其他几种方法找到此属性名称，具体请参阅[查找请求属性名称](#finding-request-attribute-names)。
+在此示例中，你希望排除等于 *text1* 的**请求属性名称**。 这一点很明显，因为你可以在防火墙日志中看到属性名称：**数据：匹配的数据： 1 = 1，位于参数： text1： 1 = 1 中**。 属性为 **text1**。 还可以通过其他几种方法找到此属性名称，具体请参阅[查找请求属性名称](#finding-request-attribute-names)。
 
 ![WAF 排除列表](../media/web-application-firewall-troubleshoot/waf-config.png)
 
@@ -287,7 +289,7 @@ WAF 日志用于显示 WAF 匹配或阻止的每个请求。 它是匹配或阻�
 -   }
 ```
 
-了解 CRS 规则集的工作原理，并知道 CRS 规则集 3.0 使用异常评分系统（请参阅 [Azure 应用程序网关的 Web 应用程序防火墙](ag-overview.md)）之后，便知道了最下面的两个具有“操作:  已阻止”属性的规则正在根据总异常评分阻止请求。 要关注的规则是最前面的两个规则。
+了解 CRS 规则设置的工作原理，以及 CRS 规则集3.0 如何与异常计分系统一起使用（请参阅[Azure 应用程序网关的 Web 应用程序防火墙](ag-overview.md)）你知道具有 "**操作：阻塞**" 属性的下面两个规则将基于总异常分数阻止。 要关注的规则是最前面的两个规则。
 
 记录第一个条目的原因是用户使用数字 IP 地址导航到了应用程序网关，在本例中可以忽略此条目。
 
@@ -299,19 +301,19 @@ WAF 日志用于显示 WAF 匹配或阻止的每个请求。 它是匹配或阻�
 
 ![Fiddler](../media/web-application-firewall-troubleshoot/fiddler-2.png)
 
-查看请求和响应标头的另一种方式是使用 Chrome 的开发人员工具。 可以按 F12，或右键单击并选择“检查” -> “开发人员工具”->“网络”选项卡。    加载一个网页，然后单击要检查的请求。
+查看请求和响应标头的另一种方式是使用 Chrome 的开发人员工具。 可以按 F12 或右键单击 >**检查** -> **开发人员工具**，然后选择 "**网络**" 选项卡。加载网页，然后单击要检查的请求。
 
 ![Chrome F12](../media/web-application-firewall-troubleshoot/chrome-f12.png)
 
 ## <a name="finding-request-cookie-names"></a>查找请求 Cookie 名称
 
-如果请求包含 Cookie，可以选择“Cookie”选项卡以在 Fiddler 中查看 Cookie。 
+如果请求包含 Cookie，可以选择“Cookie”选项卡以在 Fiddler 中查看 Cookie。****
 
 ## <a name="restrict-global-parameters-to-eliminate-false-positives"></a>限制全局参数以消除误报
 
 - 禁用请求正文检查
 
-   将“检查请求正文”设置为“关闭”时，WAF 不会评估所有流量的请求正文。  如果你知道请求正文对你的应用程序而言不是恶意的，这此设置可能很有用。
+   将“检查请求正文”设置为“关闭”时，WAF 不会评估所有流量的请求正文。**** 如果你知道请求正文对你的应用程序而言不是恶意的，这此设置可能很有用。
 
    如果禁用此选项，则只是不检查请求正文。 除非使用排除列表功能排除了单个标头和 Cookie，否则仍会检查标头和 Cookie。
 
@@ -330,7 +332,7 @@ WAF 日志用于显示 WAF 匹配或阻止的每个请求。 它是匹配或阻�
 2. Web 应用程序防火墙阻止的规则计数   阻止请求**和**匹配的所有规则
 3. Web 应用程序防火墙规则分配总数   在评估过程中匹配的所有规则
      
-若要启用指标，请在门户中选择“指标”  选项卡，然后选择三个指标之一。
+若要启用指标，请在门户中选择“指标”**** 选项卡，然后选择三个指标之一。
 
 ## <a name="next-steps"></a>后续步骤
 

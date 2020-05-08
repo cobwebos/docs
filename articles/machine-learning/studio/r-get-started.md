@@ -9,41 +9,37 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 1dcda3efe3872100100d6e85b68a36359b7eab84
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 665bb12c91c8d6a5a60fd8f60216f30131f34915
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209496"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982184"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>R 中的 Azure 机器学习 Studio （经典）入门
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 <!-- Stephen F Elston, Ph.D. -->
-本教程有助于开始使用 R 编程语言扩展 Azure 机器学习工作室（经典版）。 按照此 R 编程教程在工作室（经典版）中创建、测试和执行 R 代码。 在完成本教程的过程中，你会在工作室（经典版）中使用 R 语言创建完整的预测解决方案。  
+本教程介绍如何使用机器学习工作室（经典）来创建、测试和执行 R 代码。 最后，您将拥有一个完整的预测解决方案。  
 
-Azure 机器学习工作室（经典版）包含许多功能强大的机器学习和数据操作模块。 功能强大的 R 语言已被描述为分析通用语言。 幸运的是，可使用 R 扩展工作室（经典版）中的分析和数据操作。依靠 R 的灵活性和深入分析，这种组合为工作室（经典版）提供了可伸缩性和易于部署的特征。
+> [!div class="checklist"]
+> * 为数据清除和转换创建代码。
+> * 分析数据集中几个变量之间的相关性。
+> * 为牛奶生产创建季节性时序预测模型。
 
-### <a name="forecasting-and-the-dataset"></a>预测和数据集
 
-预测是一种被广泛采用且非常有用的分析方法。 常见的用途包括预测季节性商品的销售、确定最优的库存级别和预测宏观经济变量。 通常使用时序模型进行预测。
+Azure 机器学习工作室（经典版）包含许多功能强大的机器学习和数据操作模块。 借助 R 编程语言，此组合提供了通过 R 的灵活性和深度分析实现 Studio （经典）部署的可伸缩性和易用性。
 
-时序数据是其中的值具有时间索引的数据。 时间索引可以是定期的，例如每月或每分钟，也可以是不定期的。 时序模型基于时序数据。 R 编程语言包含针对时序数据的灵活框架和广泛分析。
+预测是一种被广泛采用且非常有用的分析方法。 常见的用途包括预测季节性商品的销售、确定最优的库存级别和预测宏观经济变量。 通常使用时序模型进行预测。 时序数据是其中的值具有时间索引的数据。 时间索引可以是定期的，例如每月或每分钟，也可以是不定期的。 时序模型基于时序数据。 R 编程语言包含针对时序数据的灵活框架和广泛分析。
 
-在本快速入门指南中我们将使用加利福尼亚州的乳品生产和价格数据。 该数据包括几种乳品的生产和基准商品乳脂的价格的月度信息。
+## <a name="get-the-data"></a>获取数据
+
+在本教程中，您将使用加利福尼亚奶制品的生产和定价数据，其中包括有关多个奶制品产品的生产的每月信息以及牛奶脂肪的价格（一项基准测试）。
 
 本文中使用的数据和 R 脚本可以从 [MachineLearningSamples-Notebooks/studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples) 下载。 文件`cadairydata.csv`中的数据最初与威斯康星大学提供的信息有关[https://dairymarkets.com](https://dairymarkets.com)。
 
-### <a name="organization"></a>组织
 
-我们将通过几个步骤来了解如何在 Azure 机器学习工作室（经典版）环境中创建、测试并执行分析和数据操作 R 代码。  
-
-* 首先我们探讨在 Azure 机器学习工作室（经典版）环境中使用 R 语言的基础知识。
-* 然后，我们会讨论 Azure 机器学习工作室（经典版）环境中数据 I/O、R 代码和图形的各个方面。
-* 接着我们通过创建用于数据清理和转换的代码来构建预测解决方案的第一部分。
-* 准备好数据之后，在数据集的几个变量之间执行相关性分析。
-* 最后，我们创建牛奶生产的季节性时序预测模型。
 
 ## <a name="interact-with-r-language-in-machine-learning-studio-classic"></a><a id="mlstudio"></a>在机器学习工作室（经典版）中与 R 语言交互
 
@@ -143,7 +139,7 @@ RStudio 是广泛使用的针对 R 语言的集成开发环境 (IDE)。我会使
 
 [MachineLearningSamples-Notebooks/studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples) 中提供了本部分的完整代码。
 
-### <a name="load-and-check-data-in-machine-learning-studio-classic"></a>在机器学习工作室（经典版）中加载和检查数据
+### <a name="load-and-check-data"></a>加载和检查数据 
 
 #### <a name="load-the-dataset"></a><a id="loading"></a>加载数据集
 

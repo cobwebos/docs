@@ -3,12 +3,12 @@ title: 在 Azure Application Insights 中跟踪依赖项 | Microsoft Docs
 description: 使用 Application Insights 监视来自本地或 Microsoft Azure Web 应用程序的依赖项调用。
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 1e30d8036c1fc624d39f027f38e314c6c57360f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b7a20731fa5eae8313adcf07d877626fcaa4dce
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731492"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980841"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>在 Azure Application Insights 中跟踪依赖项 
 
@@ -92,14 +92,14 @@ ms.locfileid: "81731492"
 
 对于 ASP.NET Core 应用程序，无需执行额外的步骤即可获取完整的 SQL 查询。
 
-对于 ASP.NET 应用程序，可以借助字节代码检测（需要检测引擎）收集完整的 SQL 查询。 这需要执行其他特定于平台的步骤，如下所述。
+对于 ASP.NET 应用程序，将使用需要检测引擎或[SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet 包而不是 SqlClient 库的字节代码检测帮助收集完整的 SQL 查询。 这需要执行其他特定于平台的步骤，如下所述。
 
 | 平台 | 获取完整 SQL 查询所要执行的步骤 |
 | --- | --- |
 | Azure Web 应用 |在 Web 应用控制面板中，[打开“Application Insights”边栏选项卡](../../azure-monitor/app/azure-web-apps.md)并启用“.NET”下的“SQL 命令” |
-| IIS 服务器（Azure VM、本地服务器，等等。） | 使用状态监视器 PowerShell 模块[安装检测引擎](../../azure-monitor/app/status-monitor-v2-api-reference.md)并重启 IIS。 |
+| IIS 服务器（Azure VM、本地服务器，等等。） | 使用[SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet 包，或使用状态监视器 PowerShell 模块[安装检测引擎](../../azure-monitor/app/status-monitor-v2-api-reference.md)，并重新启动 IIS。 |
 | Azure 云服务 | 添加[启动任务以安装 StatusMonitor](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> 您的应用程序应在生成时通过安装[ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)或[ASP.NET Core 应用程序](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)的 NuGet 包载入到 applicationinsights.config SDK |
-| IIS Express | 不支持
+| IIS Express | 使用[SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet 包
 
 在上述情况下，验证是否已正确安装该检测引擎的适当方法是验证收集的 `DependencyTelemetry` 的 SDK 版本是否为“rddp”。 “rdddsd”或“rddf”表示依赖项是通过 DiagnosticSource 或 EventSource 回调收集的，因此不会捕获完整的 SQL 查询。
 
