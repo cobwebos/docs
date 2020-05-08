@@ -1,18 +1,18 @@
 ---
 title: 模板函数 - 资源
-description: 介绍可在 Azure 资源管理器模板中使用的用于检索资源相关值的函数。
+description: 介绍可在 Azure Resource Manager 模板中用于检索资源相关值的函数。
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 4038d95942805ae26b5e82d5b766a80a92ae11bc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 508933cbea3e21fdec63907cef73102866732bb1
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231299"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891011"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM 模板的资源函数
 
-资源管理器提供了以下用于在 Azure 资源管理器（ARM）模板中获取资源值的函数：
+资源管理器提供了以下函数，用于获取 Azure 资源管理器 (ARM) 模板中的资源值：
 
 * [extensionResourceId](#extensionresourceid)
 * [list*](#list)
@@ -34,12 +34,12 @@ ms.locfileid: "82231299"
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| resourceId |是 |字符串 |扩展资源应用到的资源的资源 ID。 |
-| resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
-| resourceName1 |是 |字符串 |资源的名称。 |
-| resourceName2 |否 |字符串 |下一个资源名称段（如果需要）。 |
+| ResourceId |是 |string |扩展资源应用到的资源的资源 ID。 |
+| resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
+| resourceName1 |是 |string |资源的名称。 |
+| resourceName2 |否 |string |下一个资源名称段（如果需要）。 |
 
 如果资源类型包含更多段，则继续添加资源名称作为参数。
 
@@ -112,11 +112,11 @@ ms.locfileid: "82231299"
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| resourceName 或 resourceIdentifier |是 |字符串 |资源的唯一标识符。 |
-| apiVersion |是 |字符串 |资源运行时状态的 API 版本。 通常情况下，格式为 **yyyy-mm-dd**。 |
-| functionValues |否 |对象 (object) | 具有函数值的对象。 仅为支持接收具有参数值的对象的函数提供此对象，例如存储帐户上的 listAccountSas  。 本文中演示了传递函数值的示例。 |
+| resourceName 或 resourceIdentifier |是 |string |资源的唯一标识符。 |
+| apiVersion |是 |string |资源运行时状态的 API 版本。 通常采用 **yyyy-mm-dd**格式。 |
+| functionValues |否 |object | 具有函数值的对象。 仅为支持接收具有参数值的对象的函数提供此对象，例如存储帐户上的 listAccountSas  。 本文中演示了传递函数值的示例。 |
 
 ### <a name="valid-uses"></a>有效使用
 
@@ -155,7 +155,7 @@ list 函数只能用在资源定义的 properties 中以及模板或部署的 ou
 | DataShare/accounts/shareSubscriptions | [listSynchronizationDetails](/rest/api/datashare/sharesubscriptions/listsynchronizationdetails) |
 | DataShare/accounts/shareSubscriptions | [listSynchronizations](/rest/api/datashare/sharesubscriptions/listsynchronizations) |
 | Microsoft.Devices/iotHubs | [listkeys](/rest/api/iothub/iothubresource/listkeys) |
-| IotHubs/iotHubKeys | [listkeys](/rest/api/iothub/iothubresource/getkeysforkeyname) |
+| Microsoft.Devices/iotHubs/iotHubKeys | [listkeys](/rest/api/iothub/iothubresource/getkeysforkeyname) |
 | Microsoft.Devices/provisioningServices/keys | [listkeys](/rest/api/iot-dps/iotdpsresource/listkeysforkeyname) |
 | Microsoft.Devices/provisioningServices | [listkeys](/rest/api/iot-dps/iotdpsresource/listkeys) |
 | Microsoft.DevTestLab/labs | [ListVhds](/rest/api/dtl/labs/listvhds) |
@@ -168,11 +168,11 @@ list 函数只能用在资源定义的 properties 中以及模板或部署的 ou
 | Microsoft.DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
 | Microsoft.EventGrid/domains | [listKeys](/rest/api/eventgrid/version2019-06-01/domains/listsharedaccesskeys) |
 | Microsoft.EventGrid/topics | [listKeys](/rest/api/eventgrid/version2019-06-01/topics/listsharedaccesskeys) |
-| Microsoft.EventHub/namespaces/authorizationRules | [listkeys](/rest/api/eventhub/namespaces/listkeys) |
-| Microsoft.EventHub/namespaces/disasterRecoveryConfigs/authorizationRules | [listkeys](/rest/api/eventhub/disasterrecoveryconfigs/listkeys) |
-| Microsoft.EventHub/namespaces/eventhubs/authorizationRules | [listkeys](/rest/api/eventhub/eventhubs/listkeys) |
+| Microsoft.EventHub/namespaces/authorizationRules | [listkeys](/rest/api/eventhub) |
+| Microsoft.EventHub/namespaces/disasterRecoveryConfigs/authorizationRules | [listkeys](/rest/api/eventhub) |
+| Microsoft.EventHub/namespaces/eventhubs/authorizationRules | [listkeys](/rest/api/eventhub) |
 | Microsoft.ImportExport/jobs | [listBitLockerKeys](/rest/api/storageimportexport/bitlockerkeys/list) |
-| Kusto/群集/数据库 | [ListPrincipals](/rest/api/azurerekusto/databases/listprincipals) |
+| Microsoft.Kusto/Clusters/Databases | [ListPrincipals](/rest/api/azurerekusto/databases/listprincipals) |
 | LabServices/用户 | [ListEnvironments](/rest/api/labservices/globalusers/listenvironments) |
 | LabServices/用户 | [ListLabs](/rest/api/labservices/globalusers/listlabs) |
 | Microsoft.Logic/integrationAccounts/agreements | [listContentCallbackUrl](/rest/api/logic/agreements/listcontentcallbackurl) |
@@ -184,8 +184,8 @@ list 函数只能用在资源定义的 properties 中以及模板或部署的 ou
 | Microsoft.Logic/integrationAccounts/schemas | [listContentCallbackUrl](/rest/api/logic/schemas/listcontentcallbackurl) |
 | Microsoft.Logic/workflows | [listCallbackUrl](/rest/api/logic/workflows/listcallbackurl) |
 | Microsoft.Logic/workflows | [listSwagger](/rest/api/logic/workflows/listswagger) |
-| Microsoft. 逻辑/工作流/运行/操作 | [listExpressionTraces](/rest/api/logic/workflowrunactions/listexpressiontraces) |
-| Microsoft. 逻辑/工作流/运行/操作/重复 | [listExpressionTraces](/rest/api/logic/workflowrunactionrepetitions/listexpressiontraces) |
+| Microsoft.Logic/workflows/runs/actions | [listExpressionTraces](/rest/api/logic/workflowrunactions/listexpressiontraces) |
+| Microsoft.Logic/workflows/runs/actions/repetitions | [listExpressionTraces](/rest/api/logic/workflowrunactionrepetitions/listexpressiontraces) |
 | Microsoft.Logic/workflows/triggers | [listCallbackUrl](/rest/api/logic/workflowtriggers/listcallbackurl) |
 | Microsoft.Logic/workflows/versions/triggers | [listCallbackUrl](/rest/api/logic/workflowversions/listcallbackurl) |
 | Microsoft.MachineLearning/webServices | [listkeys](/rest/api/machinelearning/webservices/listkeys) |
@@ -246,7 +246,7 @@ list 函数只能用在资源定义的 properties 中以及模板或部署的 ou
   ```powershell
   Get-AzProviderOperation -OperationSearchString "Microsoft.Storage/*" | where {$_.Operation -like "*list*"} | FT Operation
   ```
-* 使用以下 Azure CLI 命令以仅筛选列表操作：
+* 使用以下 Azure CLI 命令，仅筛选列表操作：
 
   ```azurecli
   az provider operation show --namespace Microsoft.Storage --query "resourceTypes[?name=='storageAccounts'].operations[].name | [?contains(@, 'list')]"
@@ -273,7 +273,7 @@ list 函数只能用在资源定义的 properties 中以及模板或部署的 ou
 }
 ```
 
-其他列表函数具有不同的返回格式。 要查看函数的格式，请将其包含在 outputs 节中，如示例模板所示。
+其他列表函数具有不同的返回格式。 若要查看函数的格式，请将其包含在 outputs 节中，如示例模板所示。
 
 ### <a name="remarks"></a>备注
 
@@ -358,10 +358,10 @@ list 函数只能用在资源定义的 properties 中以及模板或部署的 ou
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| providerNamespace |是 |字符串 |提供程序的命名空间 |
-| resourceType |否 |字符串 |指定的命名空间中的资源类型。 |
+| providerNamespace |是 |string |提供程序的命名空间 |
+| resourceType |否 |string |指定的命名空间中的资源类型。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -403,7 +403,7 @@ list 函数只能用在资源定义的 properties 中以及模板或部署的 ou
 }
 ```
 
-对于 Microsoft.Web 资源提供程序和站点资源类型，上面的示例返回以下格式的对象********：
+对于 Microsoft.Web 资源提供程序和站点资源类型，上面的示例返回以下格式的对象   ：
 
 ```json
 {
@@ -431,23 +431,23 @@ list 函数只能用在资源定义的 properties 中以及模板或部署的 ou
 
 返回表示资源的运行时状态的对象。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| resourceName 或 resourceIdentifier |是 |字符串 |资源的名称或唯一标识符。 当引用当前模板中的资源时，请仅提供资源名称作为参数。 引用以前部署的资源时，或资源名称不明确时，提供资源 ID。 |
-| apiVersion |否 |字符串 |指定的资源的 API 版本。 **如果资源不是在同一模板中预配的，则此参数是必需的。** 通常情况下，格式为 **yyyy-mm-dd**。 有关资源的有效 API 版本，请参阅[模板参考](/azure/templates/)。 |
-| 'Full' |否 |字符串 |一个值，指定是否要返回完整资源对象。 如果未指定 `'Full'`，仅返回资源的属性对象。 完整对象包括资源 ID 和位置等值。 |
+| resourceName 或 resourceIdentifier |是 |string |资源的名称或唯一标识符。 当引用当前模板中的资源时，请仅提供资源名称作为参数。 当引用以前部署的资源或者资源名称不明确时，请提供资源 ID。 |
+| apiVersion |否 |string |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，则需要此参数。  通常采用 **yyyy-mm-dd**格式。 有关资源的有效 API 版本，请参阅[模板参考](/azure/templates/)。 |
+| 'Full' |否 |string |一个值，指定是否要返回完整资源对象。 如果未指定 `'Full'`，仅返回资源的属性对象。 完整对象包括资源 ID 和位置等值。 |
 
 ### <a name="return-value"></a>返回值
 
-每种资源类型返回 reference 函数的不同属性。 该函数不返回单个预定义的格式。 另外，返回的值因`'Full'`参数值而异。 若要查看资源类型的属性，请返回 outputs 节中的对象，如示例所示。
+每种资源类型返回 reference 函数的不同属性。 该函数不返回单个预定义的格式。 另外，返回的值因 `'Full'` 参数的值而异。 若要查看资源类型的属性，请返回 outputs 节中的对象，如示例所示。
 
 ### <a name="remarks"></a>备注
 
 reference 函数检索以前部署的资源或在当前模板中部署的资源的运行时状态。 本文展示了这两种方案的示例。
 
-通常情况下，可使用 reference 函数返回对象的特定值，例如 Blob 终结点 URI 或完全限定的域名。****
+通常情况下，可以使用 reference 函数返回对象的特定值，例如 blob 终结点 URI 或完全限定的域名  。
 
 ```json
 "outputs": {
@@ -490,7 +490,7 @@ reference 函数检索以前部署的资源或在当前模板中部署的资源�
 
 reference 函数只能用在资源定义的 properties 中以及模板或部署的 outputs 节中。 与[属性迭代](copy-properties.md)一起使用时，可以使用 `input` 的 reference 函数，因为表达式已分配给资源属性。
 
-不能使用 reference 函数在复制循环中设置`count`属性的值。 您可以使用在循环中设置其他属性。 对于 count 属性，引用被阻止，因为必须先确定该属性，然后才能解析引用函数。
+不能使用引用函数在复制循环中设置 `count` 属性的值。 可用于在循环中设置其他属性。 count 属性的引用会被阻止，因为必须在解析引用函数之前确定该属性。
 
 不能在[嵌套模板](linked-templates.md#nested-template)的输出中使用引用函数返回已在嵌套模板中部署的资源， 只能使用[链接模板](linked-templates.md#linked-template)。
 
@@ -508,19 +508,19 @@ reference 函数只能用在资源定义的 properties 中以及模板或部署�
 "value": "[reference(parameters('storageAccountName'))]"
 ```
 
-引用未部署在同一模板中的资源时，请提供资源 ID 和`apiVersion`。
+引用没有部署在同一模板中的资源时，请提供资源 ID 和 `apiVersion`。
 
 ```json
 "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"
 ```
 
-若要避免对所引用的资源有歧义，可以提供完全限定的资源标识符。
+为了避免对引用的资源产生歧义，可以提供完全限定的资源标识符。
 
 ```json
 "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName')))]"
 ```
 
-向资源构造完全限定的引用时，类型和名称的分段组合顺序并不是这两者的简单串联。 相反，在命名空间后，需采用“类型/名称”对从最不具体到最具体的序列**：
+向资源构造完全限定的引用时，类型和名称的分段组合顺序并不是这两者的简单串联。 而是，在命名空间后面，使用*类型/名称*对的序列（从最不具体到最具体）：
 
 **{resource-provider-namespace}/{parent-resource-type}/{parent-resource-name}[/{child-resource-type}/{child-resource-name}]**
 
@@ -528,11 +528,11 @@ reference 函数只能用在资源定义的 properties 中以及模板或部署�
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt` 正确，`Microsoft.Compute/virtualMachines/extensions/myVM/myExt` 不正确
 
-若要简化任何资源 ID 的创建，请使用`resourceId()`本文档中所述的函数而`concat()`不是函数。
+若要简化任何资源 ID 的创建，请使用本文档中所述的 `resourceId()` 函数，而不是 `concat()` 函数。
 
 ### <a name="get-managed-identity"></a>获取托管标识
 
-[Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)是为某些资源隐式创建的[扩展资源类型](../management/extension-resource-types.md)。 由于未在模板中显式定义托管标识，因此必须引用应用该标识的资源。 使用`Full`可获取所有属性，包括隐式创建的标识。
+[Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)是为某些资源隐式创建的[扩展资源类型](../management/extension-resource-types.md)。 由于模板中未显式定义托管标识，因此必须引用该标识所应用到的资源。 使用 `Full` 获取所有属性，包括隐式创建的标识。
 
 例如，若要获取应用于虚拟机规模集的托管标识的租户 ID，请使用：
 
@@ -724,7 +724,7 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 }
 ```
 
-上面的示例返回以下格式的对象：
+上述示例返回采用以下格式的对象：
 
 ```json
 {
@@ -738,27 +738,27 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 }
 ```
 
-## <a name="resourceid"></a>resourceId
+## <a name="resourceid"></a>ResourceId
 
 `resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)`
 
-返回资源的唯一标识符。 如果资源名称不确定或未设置在相同的模板内，请使用此函数。 返回的标识符的格式取决于部署是在资源组、订阅、管理组还是租户的作用域中发生。
+返回资源的唯一标识符。 如果资源名称不确定或未设置在相同的模板内，请使用此函数。 返回的标识符的格式因部署是在资源组、订阅、管理组还是租户的范围内进行而不同。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |否 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 仅在资源组或订阅的范围内部署时提供此值。 |
-| resourceGroupName |否 |字符串 |默认值为当前资源组。 如果需要检索另一个资源组中的资源，请指定此值。 仅在资源组范围内部署时提供此值。 |
-| resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
-| resourceName1 |是 |字符串 |资源的名称。 |
-| resourceName2 |否 |字符串 |下一个资源名称段（如果需要）。 |
+| subscriptionId |否 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 仅在资源组或订阅的范围内部署时才提供此值。 |
+| resourceGroupName |否 |string |默认值为当前资源组。 如果需要检索另一个资源组中的资源，请指定此值。 仅在资源组的范围内部署时才提供此值。 |
+| resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
+| resourceName1 |是 |string |资源的名称。 |
+| resourceName2 |否 |string |下一个资源名称段（如果需要）。 |
 
 如果资源类型包含更多段，则继续添加资源名称作为参数。
 
 ### <a name="return-value"></a>返回值
 
-在资源组的范围内部署模板时，将采用以下格式返回资源 ID：
+在资源组的范围内部署模板时，将以以下格式返回资源 ID：
 
 ```json
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -770,7 +770,7 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-当在[管理组级别部署](deploy-to-management-group.md)或租户级部署中使用时，资源 ID 将按以下格式返回：
+在[管理组级别部署](deploy-to-management-group.md)或租户级别部署中使用时，将使用以下格式返回资源 ID：
 
 ```json
 /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -884,9 +884,9 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | sameRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
@@ -942,18 +942,18 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |否 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 |
-| resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
-| resourceName1 |是 |字符串 |资源的名称。 |
-| resourceName2 |否 |字符串 |下一个资源名称段（如果需要）。 |
+| resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
+| resourceName1 |是 |string |资源的名称。 |
+| resourceName2 |否 |string |下一个资源名称段（如果需要）。 |
 
 如果资源类型包含更多段，则继续添加资源名称作为参数。
 
 ### <a name="return-value"></a>返回值
 
-将使用以下格式返回标识符：
+使用以下格式返回标识符：
 
 ```json
 /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -1022,19 +1022,19 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 
 返回在租户级别部署的资源的唯一标识符。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
-| resourceName1 |是 |字符串 |资源的名称。 |
-| resourceName2 |否 |字符串 |下一个资源名称段（如果需要）。 |
+| resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
+| resourceName1 |是 |string |资源的名称。 |
+| resourceName2 |否 |string |下一个资源名称段（如果需要）。 |
 
 如果资源类型包含更多段，则继续添加资源名称作为参数。
 
 ### <a name="return-value"></a>返回值
 
-将使用以下格式返回标识符：
+使用以下格式返回标识符：
 
 ```json
 /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -1047,7 +1047,7 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 ## <a name="next-steps"></a>后续步骤
 
 * 有关 Azure 资源管理器模板中各部分的说明，请参阅[创作 Azure 资源管理器模板](template-syntax.md)。
-* 若要合并多个模板，请参阅将[链接模板与 Azure 资源管理器一起使用](linked-templates.md)。
-* 若要在创建资源类型时迭代指定的次数，请参阅[在 Azure 中创建多个资源实例资源管理器](copy-resources.md)。
+* 若要合并多个模板，请参阅[将链接的模板与 Azure 资源管理器配合使用](linked-templates.md)。
+* 若要在创建资源类型时迭代指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
 * 要查看如何部署已创建的模板，请参阅[使用 Azure 资源管理器模板部署应用程序](deploy-powershell.md)。
 
