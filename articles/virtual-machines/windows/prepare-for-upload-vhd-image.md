@@ -6,14 +6,14 @@ manager: dcscontentpm
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.topic: troubleshooting
-ms.date: 04/27/2020
+ms.date: 04/28/2020
 ms.author: genli
-ms.openlocfilehash: c83850ea479e115121da8eb049db4a01befe7f89
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: bf96cea2f64c52714ed6c63b0e973d0d26999856
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201068"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864379"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备好要上传到 Azure 的 Windows VHD 或 VHDX
 
@@ -151,8 +151,8 @@ Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDTyp
 1. 请确保环境变量**TEMP**和**TMP**设置为其默认值：
 
    ```powershell
-   Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment -Name TEMP -Value "%SystemRoot%\TEMP" -Type ExpandString -Force
-   Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment -Name TMP -Value "%SystemRoot%\TEMP" -Type ExpandString -Force
+   Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -Name TEMP -Value "%SystemRoot%\TEMP" -Type ExpandString -Force
+   Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -Name TMP -Value "%SystemRoot%\TEMP" -Type ExpandString -Force
    ```
 
 ## <a name="check-the-windows-services"></a>查看 Windows 服务

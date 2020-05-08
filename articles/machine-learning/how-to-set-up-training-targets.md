@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4db00fd43095c44a88cc0aae40778ab5b4b751b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ac0352fbca73aca7cc8c19a851dad9149af14a1
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137393"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872101"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>设置并使用模型训练的计算目标 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -365,7 +365,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 > [!IMPORTANT]
 > 提交训练运行时，将创建包含训练脚本的目录的快照，并将其发送到计算目标。 目录快照也作为试验的一部分存储在工作区中。 如果更改文件并再次提交运行，将仅上传更改后的文件。
 >
-> 若要防止在快照中包含文件，请在目录中创建一个 [.gitignore](https://git-scm.com/docs/gitignore) 或 `.amlignore` 文件，然后将文件添加到其中。 `.amlignore` 文件使用的语法和模式与 [.gitignore](https://git-scm.com/docs/gitignore) 文件相同。 如果这两个文件都存在，则 `.amlignore` 文件的优先级更高。
+> [!INCLUDE [amlinclude-info](../../includes/machine-learning-amlignore-gitignore.md)]
 > 
 > 有关详细信息，请参阅[快照](concept-azure-machine-learning-architecture.md#snapshots)。
 

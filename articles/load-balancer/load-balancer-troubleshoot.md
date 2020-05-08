@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: cf9fa48019ab88190175131b27f4a40e29eb5ed0
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 0db91f3c661ebd3087a4389f4112a7214c992227
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801716"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82925943"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>对 Azure 负载均衡器进行故障排除
 <p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=fb23185b-6c56-d9f1-7ce1-758c978e08e1" target='_blank'>Start</a></span><span class="has-padding-small">通过使用虚拟代理运行<b>自动诊断</b>，快速开始解决问题。</span><div align="right"> <sub>Privacy Statement</sub>隐私声明<span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'></div></a></span></p>
@@ -132,11 +132,15 @@ ms.locfileid: "82801716"
 ### <a name="cause--the-backend-port-cannot-be-modified-for-a-load-balancing-rule-thats-used-by-a-health-probe-for-load-balancer-referenced-by-vm-scale-set"></a>原因：无法针对 VM 规模集引用的负载均衡器所用的负载均衡规则修改后端端口。
 **解决方法**若要更改端口，可以通过更新 VM 规模集删除运行状况探测，更新端口，然后重新配置运行状况探测。
 
+## <a name="symptom-small-traffic-is-still-going-through-load-balancer-after-removing-vms-from-backend-pool-of-the-load-balancer"></a>症状：从负载均衡器的后端池中删除 Vm 后，小型流量仍会经历负载均衡器。 
+### <a name="cause--vms-removed-from-backend-pool-should-no-longer-receive-traffic-the-small-amount-of-network-traffic-could-be-related-to-storage-dns-and-other-functions-within-azure"></a>原因：从后端池删除的 Vm 不应再接收流量。 少量的网络流量可与 Azure 中的存储、DNS 和其他功能相关。 
+若要验证，可以执行网络跟踪。 用于 blob 存储帐户的 FQDN 列在每个存储帐户的属性中。  在 Azure 订阅中的虚拟机上，你可以执行 nslookup 来确定分配给该存储帐户的 Azure IP。
+
 ## <a name="additional-network-captures"></a>附加网络捕获
 如果决定打开支持案例，请收集下列信息，以更快获得解决方案。 选择单个后端 VM 执行下列测试：
 - 使用来自 VNet 中后端 VM 的 Psping 进行探测端口响应测试（例如 psping 10.0.0.4:3389）并记录结果。 
 - 如果这些 ping 测试未收到响应，请在运行 PsPing 时，在后端 VM 和 VNet 测试 VM 上同时运行 Netsh 跟踪，并停止 Netsh 跟踪。 
-  
+ 
 ## <a name="next-steps"></a>后续步骤
 
 如果上述步骤无法解决问题，请开具[支持票证](https://azure.microsoft.com/support/options/)。

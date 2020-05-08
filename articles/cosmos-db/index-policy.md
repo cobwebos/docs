@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: tisande
-ms.openlocfilehash: f010ec46c41c2302cc9c99a631fd18b1af9661eb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 68adfb8b4cfb7c665a8e8b162b4698a095bb671e
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232064"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82869939"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引策略
 
@@ -27,10 +27,10 @@ ms.locfileid: "82232064"
 Azure Cosmos DB 支持两种索引模式：
 
 - **一致**：创建、更新或删除项时，索引将以同步方式更新。 这意味着，读取查询的一致性是[为帐户配置的一致性](consistency-levels.md)。
-- **无**：针对该容器禁用索引。 将容器用作单纯的键-值存储时，通常会使用此设置，在此情况下无需使用辅助索引。 它还可用于改善批量操作的性能。 批量操作完成后，可将索引模式设置为“一致”，然后使用 [IndexTransformationProgress](how-to-manage-indexing-policy.md#use-the-net-sdk-v2) 进行监视，直到完成。
+- **无**：针对该容器禁用索引。 将容器用作单纯的键-值存储时，通常会使用此设置，在此情况下无需使用辅助索引。 它还可用于改善批量操作的性能。 批量操作完成后，可将索引模式设置为“一致”，然后使用 [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) 进行监视，直到完成。
 
 > [!NOTE]
-> Azure Cosmos DB 还支持延迟索引模式。 当引擎未执行任何其他工作时，延迟索引将以低得多的优先级对索引执行更新。 这可能导致查询结果**不一致或不完整**。 如果计划查询 Cosmos 容器，则不应选择 "延迟索引"。
+> Azure Cosmos DB 还支持延迟索引模式。 当引擎未执行任何其他工作时，延迟索引将以低得多的优先级对索引执行更新。 这可能导致查询结果**不一致或不完整**。 如果计划查询 Cosmos 容器，则不应选择“延迟索引”。
 
 默认情况下，索引策略设置为 `automatic`。 为此，可将索引策略中的 `automatic` 属性设置为 `true`。 将此属性设置为 `true` 可让 Azure CosmosDB 在写入文档时自动为文档编制索引。
 
@@ -75,9 +75,9 @@ Azure Cosmos DB 支持两种索引模式：
 
 - 对于包含常规字符（包括字母数字字符和下划线 _）的路径，无需在双引号中转义路径字符串（例如 "/path/?"）。 对于包含其他特殊字符的路径，需要在双引号中转义路径字符串（例如 "/\"path-abc\"/?"）。 如果预期路径中会出现特殊字符，出于安全考虑，可以转义每个路径。 在功能上，转义每个路径与仅转义包含特殊字符的路径没有任何差别。
 
-- 默认情况下`_etag` ，系统属性会从索引中排除，除非将 etag 添加到用于索引的包含路径。
+- 默认情况下，系统属性 `_etag` 被排除在索引之外，除非将 etag 添加到索引所包含的路径中。
 
-- 如果索引模式设置为 "**一致**"，系统属性`id`和`_ts`将自动创建索引。
+- 如果将索引模式设为“一致”  ，则会自动为系统属性 `id` 和 `_ts` 编制索引。
 
 包含和排除路径时，可能会遇到以下属性：
 
@@ -121,7 +121,7 @@ Azure Cosmos DB 支持两种索引模式：
 
 在索引策略中定义空间路径时，应定义要将哪个索引 ```type``` 应用到该路径。 空间索引的可能类型包括：
 
-* 点
+* Point
 
 * Polygon
 
@@ -158,7 +158,7 @@ Azure Cosmos DB 默认不会创建任何空间索引。 若要使用空间 SQL �
 
 考虑以下示例，其中针对属性 name、age 和 _ts 定义了组合索引：
 
-| **复合索引**     | **示例`ORDER BY`查询**      | **是否受组合索引的支持？** |
+| **组合索引**     | **示例 `ORDER BY` 查询**      | **是否受组合索引的支持？** |
 | ----------------------- | -------------------------------- | -------------- |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c ORDER BY c.name ASC, c.age asc``` | ```Yes```            |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c ORDER BY c.age ASC, c.name asc```   | ```No```             |
@@ -169,7 +169,7 @@ Azure Cosmos DB 默认不会创建任何空间索引。 若要使用空间 SQL �
 
 应该自定义索引策略，以便可为所有必要的 `ORDER BY` 查询提供服务。
 
-### <a name="queries-with-filters-on-multiple-properties"></a>使用多个属性的筛选器的查询
+### <a name="queries-with-filters-on-multiple-properties"></a>包含针对多个属性的筛选器的查询
 
 如果查询包含针对两个或更多个属性的筛选器，为这些属性创建组合索引可能会有帮助。
 
@@ -210,7 +210,7 @@ SELECT * FROM c WHERE c.name = "John" AND c.age > 18
 | ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age = 18 AND c.timestamp > 123049923``` | ```Yes```            |
 | ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age < 18 AND c.timestamp = 123049923``` | ```No```            |
 
-### <a name="queries-with-a-filter-as-well-as-an-order-by-clause"></a>使用筛选器和 ORDER BY 子句的查询
+### <a name="queries-with-a-filter-as-well-as-an-order-by-clause"></a>包含筛选器和 ORDER BY 子句的查询
 
 如果查询针对一个或多个属性进行筛选，并在 ORDER BY 子句中包含不同的属性，则将筛选器中的属性添加到 `ORDER BY` 子句可能会有帮助。
 
@@ -249,7 +249,7 @@ SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.name, c.age, c.time
 * 有关为包含多个属性的 `ORDER BY` 查询，以及为包含针对多个属性的筛选器的查询创建组合查询的所有注意事项仍然适用。
 
 
-| **复合索引**                      | **示例`ORDER BY`查询**                                  | **是否受组合索引的支持？** |
+| **组合索引**                      | **示例 `ORDER BY` 查询**                                  | **是否受组合索引的支持？** |
 | ---------------------------------------- | ------------------------------------------------------------ | --------------------------------- |
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.name ASC, c.timestamp ASC``` | `Yes` |
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp ASC, c.name ASC``` | `No`  |
@@ -268,7 +268,7 @@ SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.name, c.age, c.time
 
 ## <a name="indexing-policies-and-ttl"></a>索引策略和 TTL
 
-[生存时间 (TTL) 功能](time-to-live.md)要求索引编制在启用它的容器中处于活动状态。 这表示：
+[生存时间 (TTL) 功能](time-to-live.md)要求索引编制在启用它的容器中处于活动状态。 这意味着：
 
 - 无法在索引模式设置为“无”的容器中激活 TTL。
 - 无法在已激活 TTL 的容器中将索引模式设置为“无”。

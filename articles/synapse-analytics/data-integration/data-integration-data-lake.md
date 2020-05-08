@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Synapse Analytics 中引入 Azure Data Lake Storage Gen2
+title: 引入 Azure Data Lake Storage Gen2
 description: 了解如何在 Azure Synapse 分析中将数据引入到 Azure Data Lake Storage Gen2
 services: synapse-analytics
 author: djpmsft
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4d7d7be523749797e5dbce0e50c307fc682974f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7b844bcf45417fefc7dd78a26d5dae0b2ce03249
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81430573"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982898"
 ---
 # <a name="ingesting-data-into-azure-data-lake-storage-gen2"></a>将数据引入到 Azure Data Lake Storage Gen2 
 
