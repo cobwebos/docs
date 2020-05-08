@@ -4,14 +4,15 @@ description: 用于配置 Azure Database for PostgreSQL-超大规模（Citus）�
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
+ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: 8a691b6d3f28800ab1cb38a72f124e950d485084
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 791eed9419375c7245488b8ec61a1c5481be382e
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422339"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580568"
 ---
 # <a name="configure-tls-in-azure-database-for-postgresql---hyperscale-citus"></a>在 Azure Database for PostgreSQL-超大规模（Citus）中配置 TLS
 与超大规模（Citus）协调器节点的客户端应用程序连接需要传输层安全性（TLS），以前称为安全套接字层（SSL）。 在数据库服务器与客户端应用程序之间强制 TLS 连接可以通过加密服务器与应用程序之间的数据流，帮助防止 "中间人" 攻击。

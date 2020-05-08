@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: yushwang
 ms.reviewer: cherylmc
-ms.openlocfilehash: ec3697208434eb971e47136416f2c2cc541b5cea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 436428c8f4a30706ab16ddace2d491287e620646
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244636"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559844"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>配置与 Azure VPN 网关的主动-主动 S2S VPN 连接
 
@@ -36,11 +36,9 @@ ms.locfileid: "79244636"
 可以将这些选项结合起来，构建符合要求的更复杂、高度可用的网络拓扑。
 
 > [!IMPORTANT]
-> 主动-主动模式仅使用以下 SKU： 
->   * VpnGw1、VpnGw2、VpnGw3
->   * HighPerformance（适用于旧的传统 SKU）
+> 主动-主动模式适用于所有 Sku，基本除外。
 
-## <a name="part-1---create-and-configure-active-active-vpn-gateways"></a><a name ="aagateway"></a>第 1 部分 - 创建并设置主动-主动 VPN 网关
+## <a name="part-1---create-and-configure-active-active-vpn-gateways"></a><a name ="aagateway"></a>第 1 部分 - 创建并配置主动-主动 VPN 网关
 以下步骤将 Azure VPN 网关配置为主动-主动模式。 主动-主动与主机-待机网关之间的重要差异：
 
 * 需要使用两个公共 IP 地址创建两个网关 IP 配置
@@ -49,13 +47,13 @@ ms.locfileid: "79244636"
 
 其他属性与非主动-主动网关相同。 
 
-### <a name="before-you-begin"></a>准备阶段
+### <a name="before-you-begin"></a>开始之前
 * 确保拥有 Azure 订阅。 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
-* 需要安装 Azure Resource Manager PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [Azure PowerShell 概述](/powershell/azure/overview)。
+* 需要安装 Azure 资源管理器 PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [Azure PowerShell 概述](/powershell/azure/overview)。
 
 ### <a name="step-1---create-and-configure-vnet1"></a>步骤 1 - 创建并配置 VNet1
-#### <a name="1-declare-your-variables"></a>1.声明变量
-对于本练习，我们首先要声明变量。 以下示例使用此练习中的值来声明变量。 请务必在配置生产环境时，使用自己的值来替换该值。 如果执行这些步骤是为了熟悉此类型的配置，则可以使用这些变量。 修改变量，并将其复制并粘贴到 PowerShell 控制台中。
+#### <a name="1-declare-your-variables"></a>1. 声明变量
+对于本练习，我们首先要声明变量。 以下示例使用此练习中的值来声明变量。 请务必在配置生产环境时，使用自己的值来替换该值。 如果执行这些步骤是为了熟悉此类型的配置，则可以使用这些变量。 修改变量，然后将其复制并粘贴到 PowerShell 控制台中。
 
 ```powershell
 $Sub1 = "Ross"
@@ -82,10 +80,10 @@ $Connection151 = "VNet1toSite5_1"
 $Connection152 = "VNet1toSite5_2"
 ```
 
-#### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2.连接到订阅并创建新资源组
-确保切换到 PowerShell 模式，以便使用Resource Manager cmdlet。 有关详细信息，请参阅[将 Windows PowerShell 与资源管理器配合使用](../powershell-azure-resource-manager.md)。
+#### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2. 连接到订阅并创建新的资源组
+确保切换到 PowerShell 模式，以便使用Resource Manager cmdlet。 有关详细信息，请参阅[将 Windows PowerShell 与 Resource Manager 配合使用](../powershell-azure-resource-manager.md)。
 
-打开 PowerShell 控制台并连接到帐户。 使用下面的示例来帮助连接：
+打开 PowerShell 控制台并连接到帐户。 使用下面的示例来帮助你连接：
 
 ```powershell
 Connect-AzAccount
@@ -93,7 +91,7 @@ Select-AzSubscription -SubscriptionName $Sub1
 New-AzResourceGroup -Name $RG1 -Location $Location1
 ```
 
-#### <a name="3-create-testvnet1"></a>3.创建 TestVNet1
+#### <a name="3-create-testvnet1"></a>3. 创建 TestVNet1
 以下示例创建一个名为 TestVNet1 的虚拟网络和三个子网：一个名为 GatewaySubnet、一个名为 FrontEnd，还有一个名为 Backend。 替换值时，请务必始终将网关子网特意命名为 GatewaySubnet。 如果命名为其他名称，网关创建会失败。
 
 ```powershell
@@ -105,8 +103,8 @@ New-AzVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 -Location $Locatio
 ```
 
 ### <a name="step-2---create-the-vpn-gateway-for-testvnet1-with-active-active-mode"></a>步骤 2 - 使用主动-主动模式创建 TestVNet1 的 VPN 网关
-#### <a name="1-create-the-public-ip-addresses-and-gateway-ip-configurations"></a>1.创建公共 IP 地址和网关 IP 配置
-请求两个公共 IP 地址，分配给要为 VNet 创建的网关。 你还要定义所需的子网和 IP 配置。
+#### <a name="1-create-the-public-ip-addresses-and-gateway-ip-configurations"></a>1. 创建公共 IP 地址和网关 IP 配置
+请求两个公共 IP 地址，分配给要为 VNet 创建的网关。 还将定义所需的子网和 IP 配置。
 
 ```powershell
 $gw1pip1 = New-AzPublicIpAddress -Name $GW1IPName1 -ResourceGroupName $RG1 -Location $Location1 -AllocationMethod Dynamic
@@ -118,14 +116,14 @@ $gw1ipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GW1IPconf1 -Subnet $sub
 $gw1ipconf2 = New-AzVirtualNetworkGatewayIpConfig -Name $GW1IPconf2 -Subnet $subnet1 -PublicIpAddress $gw1pip2
 ```
 
-#### <a name="2-create-the-vpn-gateway-with-active-active-configuration"></a>2.使用主动-主动配置创建 VPN 网关
-为 TestVNet1 创建虚拟网络网关。 请注意有两个 GatewayIpConfig 条目，并且已设置 EnableActiveActiveFeature 标志。 创建网关可能需要花费一段时间（45 分钟或更久才能完成）。
+#### <a name="2-create-the-vpn-gateway-with-active-active-configuration"></a>2. 通过主动-主动配置创建 VPN 网关
+为 TestVNet1 创建虚拟网络网关。 请注意有两个 GatewayIpConfig 条目，并且已设置 EnableActiveActiveFeature 标志。 创建网关可能需要一些时间（45 分钟或更久）。
 
 ```powershell
 New-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gw1ipconf1,$gw1ipconf2 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -Asn $VNet1ASN -EnableActiveActiveFeature -Debug
 ```
 
-#### <a name="3-obtain-the-gateway-public-ip-addresses-and-the-bgp-peer-ip-address"></a>3.获取网关公共 IP 地址和 BGP 对等 IP 地址
+#### <a name="3-obtain-the-gateway-public-ip-addresses-and-the-bgp-peer-ip-address"></a>3. 获取网关公共 IP 地址和 BGP 对等节点 IP 地址
 创建网关后，需要在 Azure VPN 网关上获取 BGP 对等节点 IP 地址。 需要此地址才能将 Azure VPN 网关配置为本地 VPN 设备的 BGP 对等节点。
 
 ```powershell
@@ -151,20 +149,20 @@ PS D:\> $vnet1gw.BgpSettingsText
 }
 ```
 
-网关实例的公共 IP 地址顺序与对应的 BGP 对等连接地址相同。 在本示例中，公共 IP 为 40.112.190.5 的网关 VM 使用 10.12.255.4 作为其 BGP 对等连接地址，公共 IP 为 138.91.156.129 的网关使用 10.12.255.5。 设置连接到主动-主动网关的本地 VPN 设备时需要此信息。 下图显示了网关和所有地址：
+网关实例的公共 IP 地址顺序与对应的 BGP 对等连接地址相同。 在本示例中，公共 IP 为 40.112.190.5 的网关 VM 将使用 10.12.255.4 作为其 BGP 对等连接地址，公共 IP 为 138.91.156.129 的网关将使用 10.12.255.5。 设置连接到主动-主动网关的本地 VPN 设备时需要此信息。 下图显示了网关和所有地址：
 
 ![主动-主动网关](./media/vpn-gateway-activeactive-rm-powershell/active-active-gw.png)
 
 创建网关后，可以使用此网关创建主动-主动跨界连接或 VNet 到 VNet 连接。 以下各节介绍完成该练习所需的步骤。
 
 ## <a name="part-2---establish-an-active-active-cross-premises-connection"></a><a name ="aacrossprem"></a>第 2 部分 - 建立主动-主动跨界连接
-要建立跨界连接，你需要创建本地网关来表示本地 VPN 设备，并创建连接将 Azure VPN 网关与本地网关连接在一起。 在本示例中，Azure VPN 网关处于主动-主动模式。 因此，即使只有一个本地 VPN 设备（本地网关）和一个连接资源，两个 Azure VPN 网关实例也都与该本地设备建立 S2S VPN 隧道。
+要建立跨界连接，需要创建本地网关来表示本地 VPN 设备，并创建连接将 Azure VPN 网关与本地网关连接在一起。 在本示例中，Azure VPN 网关处于主动-主动模式。 因此，即使只有一个本地 VPN 设备（本地网络网关）和一个连接资源，两个 Azure VPN 网关实例也都与该本地设备建立 S2S VPN 隧道。
 
-在继续下一步之前，请确保已完成本练习的 [第 1 部分](#aagateway) 。
+在继续下一步之前，请确保已完成本练习的[第 1 部分](#aagateway)。
 
 ### <a name="step-1---create-and-configure-the-local-network-gateway"></a>步骤 1 - 创建和配置本地网关
-#### <a name="1-declare-your-variables"></a>1.声明变量
-此练习将继续生成图中所示的配置。 请务必将值替换为要用于配置的值。
+#### <a name="1-declare-your-variables"></a>1. 声明变量
+此练习将继续生成图中所示的配置。 请务必将值替换为用于配置的值。
 
 ```powershell
 $RG5 = "TestAARG5"
@@ -183,7 +181,7 @@ $BGPPeerIP51 = "10.52.255.253"
 * 如果 BGP 已启用，需要为本地网关声明的最小前缀是 VPN 设备上的 BGP 对等节点 IP 地址中的主机地址。 在此示例中，它是“10.52.255.253/32”中的 /32 前缀。
 * 提醒一下，在本地网络与 Azure VNet 之间必须使用不同的 BGP ASN。 如果它们是相同的，则需要更改 VNet ASN（如果本地 VPN 设备已使用该 ASN 与其他 BGP 邻居对等）。
 
-#### <a name="2-create-the-local-network-gateway-for-site5"></a>2.为 Site5 创建本地网关
+#### <a name="2-create-the-local-network-gateway-for-site5"></a>2. 为 Site5 创建本地网关
 继续操作之前，请确保仍与订阅 1 保持连接。 创建资源组（如果尚未创建）。
 
 ```powershell
@@ -192,21 +190,21 @@ New-AzLocalNetworkGateway -Name $LNGName51 -ResourceGroupName $RG5 -Location $Lo
 ```
 
 ### <a name="step-2---connect-the-vnet-gateway-and-local-network-gateway"></a>步骤 2 - 连接 VNet 网关和本地网关
-#### <a name="1-get-the-two-gateways"></a>1.获取这两个网关
+#### <a name="1-get-the-two-gateways"></a>1. 获取两个网关
 
 ```powershell
 $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1  -ResourceGroupName $RG1
 $lng5gw1 = Get-AzLocalNetworkGateway  -Name $LNGName51 -ResourceGroupName $RG5
 ```
 
-#### <a name="2-create-the-testvnet1-to-site5-connection"></a>2.创建 TestVNet1 到 Site5 的连接
+#### <a name="2-create-the-testvnet1-to-site5-connection"></a>2. 创建 TestVNet1 到 Site5 的连接
 在本步骤中，创建从 TestVNet1 到 Site5_1 的连接，其“EnableBGP”设置为 $True。
 
 ```powershell
 New-AzVirtualNetworkGatewayConnection -Name $Connection151 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw1 -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $True
 ```
 
-#### <a name="3-vpn-and-bgp-parameters-for-your-on-premises-vpn-device"></a>3.本地 VPN 设备的 VPN 和 BGP 参数
+#### <a name="3-vpn-and-bgp-parameters-for-your-on-premises-vpn-device"></a>3. 本地 VPN 设备的 VPN 和 BGP 参数
 下面的示例列出了可在本地 VPN 设备上的 BGP 配置节中为此练习输入的参数：
 
 ```
@@ -228,7 +226,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection151 -ResourceGroupName $R
 ### <a name="step-3---connect-two-on-premises-vpn-devices-to-the-active-active-vpn-gateway"></a>步骤 3 - 将两个本地 VPN 设备连接到主动-主动 VPN 网关
 如果同一个本地网络上有两个 VPN 设备，可以通过将 Azure VPN 网关连接到第二个 VPN 设备来实现双重冗余。
 
-#### <a name="1-create-the-second-local-network-gateway-for-site5"></a>1.为 Site5 创建第二个本地网关
+#### <a name="1-create-the-second-local-network-gateway-for-site5"></a>1. 为 Site5 创建第二个本地网关
 第二个本地网络网关的网关 IP地址、地址前缀和 BGP 对等连接地址不能与同一个本地网络的前一个本地网络网关重叠。
 
 ```powershell
@@ -253,7 +251,7 @@ $lng5gw2 = Get-AzLocalNetworkGateway -Name $LNGName52 -ResourceGroupName $RG5
 New-AzVirtualNetworkGatewayConnection -Name $Connection152 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw2 -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $True
 ```
 
-#### <a name="3-vpn-and-bgp-parameters-for-your-second-on-premises-vpn-device"></a>3.第二个本地 VPN 设备的 VPN 和 BGP 参数
+#### <a name="3-vpn-and-bgp-parameters-for-your-second-on-premises-vpn-device"></a>3. 第二个本地 VPN 设备的 VPN 和 BGP 参数
 下面列出了要输入到第二个 VPN 设备的参数：
 
 ```
@@ -275,7 +273,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection152 -ResourceGroupName $R
 ## <a name="part-3---establish-an-active-active-vnet-to-vnet-connection"></a><a name ="aav2v"></a>第 3 部分 - 建立主动-主动 VNet 到 VNet 连接
 本部分使用 BGP 创建主动-主动 VNet 到 VNet 连接。 
 
-下面的说明延续上面所列的前述步骤。 必须完成 [第 1 部分](#aagateway) ，使用 BGP 创建和配置 TestVNet1 与 VPN 网关。 
+下面的说明延续上面所列的前述步骤。 必须完成[第 1 部分](#aagateway)，使用 BGP 创建和配置 TestVNet1 与 VPN 网关。 
 
 ### <a name="step-1---create-testvnet2-and-the-vpn-gateway"></a>步骤 1 - 创建 TestVNet2 和 VPN 网关
 必须确保新虚拟网络的 IP 地址空间 TestVNet2 不与任何 VNet 范围重叠。

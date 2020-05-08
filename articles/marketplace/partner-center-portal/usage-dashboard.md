@@ -1,31 +1,31 @@
 ---
-title: 合作伙伴中心的商业 marketplace 分析中的使用情况仪表板
-description: 了解如何访问所有 VM 产品/服务的使用情况和计费指标。
+title: Microsoft 商业 marketplace 分析中的使用情况仪表板
+description: 了解如何访问所有 VM 产品/服务的使用情况和计费指标。 请在 "商业市场" 下的 "合作伙伴中心" 中转到使用情况仪表板。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 33762540d14ea51e8325abe9a466007cd7cca748
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 89a0a782b4a18b71f7be8bcdd3728fd008c24d5a
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262173"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793000"
 ---
-# <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>商业 marketplace 分析中的使用情况仪表板
+# <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Microsoft 商业 marketplace 分析中的使用情况仪表板
 
 本文提供了有关合作伙伴中心中的使用情况仪表板的信息。 此仪表板在两个单独的选项卡中显示所有 VM 的使用情况和计量计费指标： VM 使用情况和计费的计费指标。
 
-若要访问使用情况仪表板，请在 "商业市场" 下打开 "**[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**" 仪表板。
+若要访问使用情况仪表板，请在 "**商业市场**" 下打开 "**[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**" 仪表板。
 
 >[!NOTE]
 > 有关分析术语的详细定义，请参阅[商业 marketplace 分析的常见问题和术语](./faq-terminology.md)。
 
 ## <a name="usage-dashboard"></a>使用情况仪表板
 
-"使用情况" 仪表板表示所有虚拟机（VM）的指标提供使用情况和计费使用情况。 可在两个单独的选项卡中找到这些选项： VM 使用情况和按流量计费。
+"使用情况" 仪表板表示所有虚拟机（VM）的指标提供使用情况和计费使用情况。 这些指标位于两个单独的选项卡中： VM 使用情况和计费计费使用情况。
 
 在 "VM 使用情况" 选项卡中，有以下各项的图形表示形式：
 
@@ -58,13 +58,13 @@ ms.locfileid: "81262173"
 
 ### <a name="usage-by-offers"></a>产品/服务的使用情况
 
-- 根据所选日期范围，按产品/**服务提供的规范化使用**情况按产品/服务显示规范化使用时间的细分。 前5个产品/服务在图形中显示，其余部分分组为 "全部 rest" 类别。
+- 根据所选日期范围，按产品/**服务提供的规范化使用**情况按产品/服务显示规范化使用时间的细分。 前五个产品/服务在图形中显示，其余部分分组为**rest all**类别。
 - 条形图描述所选日期范围的每月增长趋势。 月份列表示产品/服务的使用时间，其最高使用时间为各自月份。 折线图描述了在辅助 Y 轴上绘制的增长百分比趋势。
 - 使用图表顶部的滑块沿 x 轴向右滚动，并/或将焦点置于特定数据点上。
 
 ### <a name="usage-trend-by-offers-and-skus"></a>按产品/服务和 Sku 的使用趋势
 
-此图显示了产品/服务的选定 Sku 的规范化使用趋势。 "产品/服务" 排行榜显示最高使用量最高的50产品，并按使用时间进行排序。 SKU 排行榜显示最高的 50 Sku，其中包含所选产品/服务的最高使用量。
+此图显示了产品/服务的选定 Sku 的规范化使用趋势。 "产品/服务" 排行榜显示最高使用量的前50产品，按使用时间排序。 SKU 排行榜显示最高的 50 Sku，其中包含所选产品/服务的最高使用量。
 
 ### <a name="usage-by-offer-type"></a>按产品/服务类型的使用情况
 
@@ -91,17 +91,17 @@ ms.locfileid: "81262173"
 
 - 网格中的每一列都是可排序的。
 - 如果记录计数小于1000，则可以将数据提取到 CSV 文件中。
-- 如果记录计数超过1000，则导出的数据将异步放置在 "下载" 页中，这将在未来30天可用。
+- 如果记录计数超过1000，则导出数据将异步放置在将在未来30天内可用的下载页面。
 - 筛选器可应用于**详细使用情况数据**以仅显示你感兴趣的数据。 数据可以按国家/地区、销售渠道、Marketplace 许可证类型、使用类型、产品名称、产品类型、免费试用版、Marketplace 订阅 ID、客户 ID 和公司名称进行筛选。
 
 > [!NOTE]
 > 在页面筛选器中选择 "**使用类型**" 可以在页面上的 "规范化视图" 或 "原始视图" 中查看图表。 这些图表的默认视图为 "正常化视图"。
 
-在页面级别应用 "**使用情况" 页筛选器**。 您可以选择多个筛选器来呈现您选择的条件的图表，以及要在 "详细使用数据" 网格/导出中显示的数据。 筛选器将应用于在 "订单" 页右上角为所选数据范围提取的数据。
+在页面级别应用 "**使用情况" 页筛选器**。 您可以选择多个筛选器来呈现您选择的条件的图表，以及要在 "详细使用数据" 网格/导出中显示的数据。 筛选器将应用于为您在 "订单" 页右上角选择的数据范围提取的数据。
 
 - 仅为在所选日期范围内获得的产品/服务提供**产品**/服务**名称**。 列表中的产品/服务名称将显示在列表中选择的产品/服务类型。
 - 默认情况下，每个筛选选项（**使用类型**除外）的默认选择为 "所有"。 **使用情况类型**的默认选择是 "标准化使用"。 若要在图表中显示原始使用情况，请选择 "原始使用情况"。
-- 应用的筛选器显示所做的筛选器选择的计数选择。 不会为默认选择显示应用的筛选器。
+- 应用的筛选器显示所选筛选器选择的计数选择。 不会为默认选择显示应用的筛选器。
 
 > [!NOTE]
 > 在 "[常见问题解答" 和 "术语](link needed)" 一文的 "数据字典" 部分中定义了 "详细订单数据" 网格中的每个字段的详细定义、页面筛选器以及所有可能的选择。
@@ -123,5 +123,5 @@ ms.locfileid: "81262173"
 - 有关以图形和可下载格式显示的订单的信息，请参阅[商业 marketplace 分析中的 "订单" 仪表板](./orders-dashboard.md)。
 - 有关客户的详细信息，包括增长趋势，请参阅[商业 marketplace 分析中的客户仪表板](./customer-dashboard.md)。
 - 有关过去30天内下载请求的列表，请参阅[商业 marketplace 分析中的下载仪表板](./downloads-dashboard.md)。
-- 若要查看有关 Azure Marketplace 和 AppSource 上的产品/服务的客户反馈的合并视图，请参阅[商业 marketplace 分析中的评级和评论仪表板](./ratings-reviews.md)。
+- 若要查看有关 Microsoft AppSource 和 Azure Marketplace 上的产品/服务的客户反馈的综合视图，请参阅[商业 Marketplace 分析中的评级和评论仪表板](./ratings-reviews.md)。
 - 有关商业 marketplace 分析的常见问题和全面的数据术语字典，请参阅[商业市场分析的常见问题和术语](./faq-terminology.md)。

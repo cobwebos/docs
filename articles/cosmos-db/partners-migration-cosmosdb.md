@@ -6,52 +6,48 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 3e400f62ed4afcb40d5d68aeb357d47083445802
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad5ed2b45a182c1f33f33ca1f6d4e3212c61b6a2
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76988169"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791725"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL 迁移和应用程序开发合作伙伴
 
 从 NoSQL 迁移到应用程序开发，你可以从各种经验丰富的系统集成商合作伙伴和工具中进行选择，以支持 Azure Cosmos DB 解决方案。 
 
-## <a name="migration-tools"></a>迁移工具
-
-|**合作伙伴**  |**功能和体验**  |**支持的国家/地区**  |**联系人**  |
-|---------|---------|---------|---------|
-|![Striim][2]    |  从各种数据源[将实时数据移至 Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/)。 <br/> Striim 简化了将数据从各种本地源（包括企业文档和关系数据库、传感器和日志文件）实时收集和移动到 Azure Cosmos DB。 |   USA   |  [网站](https://www.striim.com/)       |
-
 ## <a name="systems-integrator-partners"></a>系统集成商合作伙伴
 
-|**合作伙伴**  |**功能和体验**  |**支持的国家/地区**  |**联系人**  |
-|---------|---------|---------|---------|
-| ![10thMagnitude][13] | NoSQL 迁移；新应用开发 | USA | [网站](https://www.10thmagnitude.com/)|
-|![Altoros Development LLC][3]    |  NoSQL 迁移、 <br/> 应用创新（现有应用）、 <br/> 新应用开发 |   美国、挪威、芬兰、白俄罗斯、阿根廷 |  [网站](https://www.altoros.com/)     |
-|![Attunix Redapt][4]     |   NoSQL 迁移、 <br/> 应用创新（现有应用）、 <br/> 新应用开发      |    USA     |  [网站](https://www.attunix.com/)       |
-| ![Avanade][26] | 新应用开发、 <br/> 应用创新（现有应用） | 奥地利、德国、瑞士、意大利、挪威、西班牙、英国 | [网站](https://www.avanade.com/)
-|![Bluemetal Architects][5]     |  NoSQL 迁移、 <br/> 应用创新（现有应用）、 <br/> 新应用开发       |    北美、亚太     |  [网站](https://www.bluemetal.com/)       |
-|![Capax Global LLC][6]     |  NoSQL 迁移、 <br/> 应用创新（现有应用）、 <br/> 新应用开发       |    USA     |  [网站](https://www.capaxglobal.com/)       |
-| ![Capgemini][14] | NoSQL 迁移、应用创新（现有应用）、新应用开发 | 美国、法国、英国、荷兰、芬兰  | [网站](https://www.capgemini.com/) | 
-|![Coeo][7]     |   应用创新（现有应用）、 <br/> 新应用开发 |    英国     |  [网站](https://www.coeo.com/)       |
-| ![Cognizant][15] | NoSQL 迁移 |美国、加拿大、英国、丹麦、荷兰、瑞士、澳大利亚、日本 | [网站](https://www.cognizant.com/)|
-|![Infosys][8]     |  NoSQL 迁移       |    Global     |  [网站](https://www.infosys.com/)       |
-| ![Lagash][16] | NoSQL 迁移、 <br/> 新应用开发 | 阿根廷、智利、哥伦比亚、墨西哥| [网站](https://www.lagash.com/)|
-| ![Lambda3 Informatics][17] | NoSQL 迁移、 <br/> 新应用开发 | 巴西| [网站](https://www.lambda3.com.br/)|
-|![Neal Analytics][9]     |     应用开发（新应用）    |    USA     |  [网站](https://www.nealanalytics.com/)       |
-|![Pragmatic Works Software Inc][10]    |   NoSQL 迁移      |   USA      |  [网站](https://www.pragmaticworks.com/)       |
-| ![Ricoh Global][18] | NoSQL 迁移、 <br/> 应用创新（现有应用）| 英国  | [网站](https://www.ricoh.com/)|
-| ![SNP Technologies][19] | NoSQL 迁移| 美国 | [网站](https://www.snp.com/)|
-| ![Solidsoft Reply][20] | NoSQL 迁移 | 克罗地亚、瑞典、丹麦、爱尔兰、保加利亚语、斯洛文尼亚、塞浦路斯、马耳他、立陶宛、捷克共和国、冰岛、瑞士和列支敦士登| [网站](https://www.reply.com/solidsoft-reply/)|
-| ![Spanish Point Technologies][21] | NoSQL 迁移| 爱尔兰| [网站](https://www.spanishpoint.ie/)|
-| ![Syone][22] | NoSQL 迁移| 葡萄牙| [网站](https://www.syone.com/)|
-|![Tallan][11]    |  NoSQL 迁移、 <br/> 应用创新（现有应用）、 <br/> 新应用开发       |    USA     |  [网站](https://www.tallan.com/)       |
-| ![TCS][23] | 应用创新（现有应用）、 <br/> 新应用开发 | 美国、英国、法国、马来西亚、丹麦、挪威、瑞典| [网站](https://www.tcs.com/)|
-|![VTeamLabs][12]    | NoSQL 迁移       |  USA      | [网站](https://www.vteamlabs.com/)       |
-| ![White Duck][24] |NoSQL 迁移、 <br/> 新应用开发 | 德国 | [网站](https://whiteducksoftware.com/)|
-| ![Xpand IT][25] | 新应用开发 | 葡萄牙、英国| [网站](https://www.xpand-it.com/)|
-
+|**Partner**  |**功能和体验**  |**支持的国家/地区**  |
+|---------|---------|---------|
+|[Striim](https://www.striim.com/)    |  持续实时的数据移动，数据迁移|   USA   |
+| [10thMagnitude](https://www.10thmagnitude.com/) | IoT，零售（库存），操作分析（Spark），无服务器体系结构，应用开发 | USA |
+|[Altoros Development LLC](https://www.altoros.com/)  |  IoT，个性化零售（库存），无服务器体系结构 NoSQL 迁移，应用开发|   USA |
+|[Avanade](https://www.avanade.com/) | IoT，零售（库存），无服务器体系结构，应用开发 | 奥地利、德国、瑞士、意大利、挪威、西班牙、英国、加拿大 |
+|[Accenture](https://www.accenture.com/) | IoT，零售（库存），无服务器体系结构，应用开发 |Global|
+|[Bluemetal](https://www.bluemetal.com/)     |  IoT，个性化零售（库存），适用于企业 & SMC 的操作分析，AI 图像批注，资产控制，NoSQL 迁移，应用开发     |    北美、亚太     |
+|[Capax Global LLC](https://www.capaxglobal.com/) | IoT，个性化，零售（库存），操作分析（Spark），无服务器体系结构，应用开发|    USA     |  
+| [Capgemini](https://www.capgemini.com/) | 零售（库存），IoT，操作分析（Spark），应用开发 | 美国、法国、英国、荷兰、芬兰  |
+| [Cognizant](https://www.cognizant.com/) | IoT，个性化，零售（库存），操作分析（Spark），应用开发 |美国、加拿大、英国、丹麦、荷兰、瑞士、澳大利亚、日本 |
+|[Infosys](https://www.infosys.com/)     | 应用开发      |    USA    |  
+| [Lagash 系统](https://www.lagash.com/) | IoT，无服务器体系结构，应用开发 | 阿根廷、智利、哥伦比亚、墨西哥|
+| [Lambda3 Informatics](https://www.lambda3.com.br/) | 实时个性化，零售库存，应用开发 | 巴西|
+|[Neal Analytics](https://www.nealanalytics.com/)    |     个性化设置，零售（库存），操作分析（Spark），应用开发  |    USA     |  
+|[Pragmatic Works Software Inc](https://www.pragmaticworks.com/)    |   NoSQL 迁移      |   USA      |
+| [Ricoh 数字服务](https://www.ricoh.com/) | IoT，实时个性化，零售库存，NoSQL 迁移 | 英国  |
+|[SNP Technologies](https://www.snp.com/) | NoSQL 迁移| USA |
+| [Solidsoft Reply](https://www.reply.com/solidsoft-reply/) | NoSQL 迁移 | 克罗地亚，瑞典，丹麦，爱尔兰，保加利亚，斯洛文尼亚，塞浦路斯，马耳他，立陶宛，捷克共和国，冰岛，以及瑞士和列支敦士登|
+| [Spanish Point Technologies](https://www.spanishpoint.ie/) | NoSQL 迁移| 爱尔兰|
+| [Syone](https://www.syone.com/) | NoSQL 迁移| 葡萄牙|
+|[Tallan](https://www.tallan.com/)    |  应用开发      |    USA     |
+| [TCS](https://www.tcs.com/) | 应用开发 | 美国、英国、法国、马来西亚、丹麦、挪威、瑞典|
+|[VTeamLabs](https://www.vteamlabs.com/)    | 个性化设置，零售（库存），IoT，游戏，操作分析（Spark），无服务器体系结构，NoSQL 迁移，应用开发       |  USA      |  
+| [白色的 GmbH](https://whiteducksoftware.com/) |新应用程序开发、应用后端、基于文档的数据的存储| 德国 |
+| [Xpand IT](https://www.xpand-it.com/) | 新应用开发 | 葡萄牙、英国|
+| [Hanu](https://hanu.com/) | IoT，应用开发 | USA|
+| [Incycle 软件](https://www.incyclesoftware.com/) | NoSQL 迁移，无服务器体系结构，应用开发| USA|
+| [Orion](https://www.orioninc.com/) | 个性化，零售（库存），操作分析（Spark），IoT，应用开发| 美国、加拿大|
 
 ## <a name="next-steps"></a>后续步骤
 

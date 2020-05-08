@@ -4,14 +4,15 @@ description: 本文介绍 Azure Database for PostgreSQL-超大规模（Citus）�
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
+ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d2e9fcd6f6292c1da76e725e90deda4547b3682d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fb24100eaebc54b98adf2f09fa3e557e4d6fa0be
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74975510"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580655"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>监视和优化 Azure Database for PostgreSQL-超大规模（Citus）
 
@@ -29,9 +30,9 @@ ms.locfileid: "74975510"
 
 |指标|指标显示名称|单位|说明|
 |---|---|---|---|
-|active_connections|活动连接数|Count|服务器的活动连接数。|
+|active_connections|活动连接数|计数|服务器的活动连接数。|
 |cpu_percent|CPU 百分比|百分比|使用的 CPU 百分比。|
-|iops|IOPS|Count|查看[IOPS 定义](../virtual-machines/linux/premium-storage-performance.md#iops)和[超大规模吞吐量](concepts-hyperscale-configuration-options.md)|
+|iops|IOPS|计数|查看[IOPS 定义](../virtual-machines/linux/premium-storage-performance.md#iops)和[超大规模吞吐量](concepts-hyperscale-configuration-options.md)|
 |memory_percent|内存百分比|百分比|使用的内存百分比。|
 |network_bytes_ingress|网络传入|字节|跨活动连接数的网络传入。|
 |network_bytes_egress|网络传出|字节|跨活动连接数的网络传出。|

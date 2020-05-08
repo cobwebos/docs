@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: f2f8c08176f80436a339924adb4b2a09338a548a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c8739dff39490f14b613af483f769ac031c1bd9
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81313587"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792371"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>连接的工厂解决方案加速器的常见问题解答
 
@@ -30,7 +30,7 @@ ms.locfileid: "81313587"
 OPC 统一体系结构 (UA) 发布于 2008 年，是一种独立于平台、以服务为导向的互操作性标准。 OPC UA 为工业电脑、PLC 和传感器等多种行业体系和设备所采用。 OPC UA 将 OPC 经典规范的功能集成到一种具有内置安全性的可扩展框架。 它是一种由 OPC 基金会倡导的标准。 [OPC 基金会](https://opcfoundation.org/)是一个拥有 440 多个成员的非营利性组织。 组织的目标是使用 OPC 规范通过以下方面促进多供应商、多平台的安全可靠互操作性：
 
 * 基础结构
-* 规范
+* 规格
 * 技术
 * 进程
 
@@ -111,7 +111,7 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 * publisher.rio.corp.contoso
 * publisher.seattle.corp.contoso
 
-使用 [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) 或[适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)工具，可以查看解决方案当前所用的 IoT 中心中注册了哪些设备。 若要使用设备资源管理器，则部署中需要 IoT 中心的连接字符串。 若要使用适用于 Azure CLI 的 IoT 扩展，则需要 IoT 中心的名称。
+使用 [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/) 或[适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)工具，可以查看解决方案当前所用的 IoT 中心中注册了哪些设备。 若要使用设备资源管理器，则部署中需要 IoT 中心的连接字符串。 若要使用适用于 Azure CLI 的 IoT 扩展，则需要 IoT 中心的名称。
 
 ### <a name="how-can-i-get-log-data-from-the-simulation-components"></a>如何从模拟组件获取日志数据？
 
@@ -125,7 +125,7 @@ Microsoft 选择 OPC UA 的原因是，OPC UA 是一种开放、非专有、独�
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>如何检查模拟是否正向云发送数据？
 
-通过 [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) 或 [Azure IoT CLI 扩展 monitor-events](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) 命令可检查从特定设备发送到 IoT 中心的数据。 若要使用这些工具，需要知道部署中的 IoT 中心连接字符串。 请参阅[如何查找解决方案所使用的 IoT 中心的连接字符串？](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+通过[Azure Iot 浏览器](https://github.com/Azure/azure-iot-explorer)或 " [Azure iot CLI 扩展监视器-事件](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events)" 命令，你可以检查从特定设备发送到 IoT 中心的数据。 若要使用这些工具，需要知道部署中的 IoT 中心连接字符串。 请参阅[如何查找解决方案所使用的 IoT 中心的连接字符串？](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
 检查由以下某个发布者设备发送的数据：
 

@@ -4,14 +4,15 @@ description: 本文介绍 Azure Database for PostgreSQL-超大规模（Citus）�
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
+ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: b843cd1528630a21255053f623356a0379daacf6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 127840738d8fb8db00a7efc0b0d8fe393138488d
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74975561"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580922"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL-超大规模（Citus）中的防火墙规则
 在指定哪些计算机具有权限之前，Azure Database for PostgreSQL 服务器防火墙阻止对超大规模（Citus）协调器节点的所有访问。 防火墙基于每个请求的起始 IP 地址授予对服务器的访问权限。

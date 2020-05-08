@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
-ms.openlocfilehash: b7aac80b19a7c30d994f3c14e19047583d5334ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7902dfdf81d8e44921a5218d56effc90f433f02d
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81727107"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857403"
 ---
 # <a name="writing-plugins-for-azure-media-player"></a>正在为 Azure Media Player 编写插件 #
 
@@ -35,7 +35,7 @@ ms.locfileid: "81727107"
 
 您可以直接在 HTML 页的`<script>`标记或外部 JavaScript 文件中编写代码。 如果执行后一项操作，请确保在*您的 HTML 页面*的`<head>`中包含 JavaScript 文件，然后再添加 AMP 脚本。
 
-例如：
+示例：
 
 ```javascript
     <!--*****START OF Azure Media Player Scripts*****-->
@@ -87,7 +87,7 @@ ms.locfileid: "81727107"
 
 ### <a name="plugin-gallery"></a>插件库 ###
 
-[插件库](http//:aka.ms/ampplugins)包含多个插件，社区已为时间线标记、缩放、分析等功能提供了这些插件。 页面提供对插件的访问以及有关如何设置插件的说明，以及演示如何进行操作的演示。 如果您创建的是您认为应该包含在库中的冷插件，则可随意提交，以便我们可以将其签出。
+[插件库](https://aka.ms/ampplugins)包含多个插件，社区已为时间线标记、缩放、分析等功能提供了这些插件。 页面提供对插件的访问以及有关如何设置插件的说明，以及演示如何进行操作的演示。 如果您创建的是您认为应该包含在库中的冷插件，则可随意提交，以便我们可以将其签出。
 
 ## <a name="next-steps"></a>后续步骤 ##
 

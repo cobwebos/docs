@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: allensu
-ms.openlocfilehash: 0de28fc75d5eb1b0867e4ba6d8eda9f0f42c8498
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ef96c83b460346ba49051f6f5c4fd0dd5df34ab
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82148020"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790161"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>使用 Azure 门户创建具有静态公共 IP 地址的虚拟机
 
@@ -49,7 +49,7 @@ ms.locfileid: "82148020"
 
    ![选择“静态”](./media/virtual-network-deploy-static-pip-arm-portal/select-static.png)
 
-   如果公共 IP 地址必须为标准 SKU，请在“SKU”下选择“标准”。   详细了解[公共 IP 地址 SKU](virtual-network-ip-addresses-overview-arm.md#sku)。 如果虚拟机将添加到公共 Azure 负载均衡器的后端池，则虚拟机公共 IP 地址的 SKU 必须与负载均衡器的公共 IP 地址的 SKU 相匹配。 有关详细信息，请参阅 [Azure 负载均衡器](../load-balancer/concepts-limitations.md#skus)。
+   如果公共 IP 地址必须为标准 SKU，请在“SKU”下选择“标准”。   详细了解[公共 IP 地址 SKU](virtual-network-ip-addresses-overview-arm.md#sku)。 如果虚拟机将添加到公共 Azure 负载均衡器的后端池，则虚拟机公共 IP 地址的 SKU 必须与负载均衡器的公共 IP 地址的 SKU 相匹配。 有关详细信息，请参阅 [Azure 负载均衡器](../load-balancer/skus.md)。
 
 6. 在“选择公共入站端口”下选择一个端口，或者不选择任何端口。  选择了端口 3389，目的是能够通过 Internet 对 Windows Server 虚拟机进行远程访问。 对于生产型工作负荷，建议不要打开从 Internet 进行访问的端口 3389。
 

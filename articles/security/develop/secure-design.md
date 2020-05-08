@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c9e3cfa689f2e528f4d20e796017ae9d91c29fe2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 533f287693ca8aac76a3233674d95f3f49d4ae22
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461712"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857171"
 ---
 # <a name="design-secure-applications-on-azure"></a>在 Azure 上设计安全应用程序
 本文介绍了在为云设计应用程序时要考虑的安全活动和控制措施。 还介绍了在 Microsoft[安全开发生命周期（SDL）](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx)的要求和设计阶段，培训资源以及要考虑的安全问题和概念。 其目标是帮助你定义可用于设计更安全的应用程序的活动和 Azure 服务。
@@ -155,7 +155,7 @@ Azure 提供了可用于托管网站和 web 应用程序的其他服务。 大�
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | 欺骗               | 身份验证        | [需要 HTTPS 连接](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio)。 |
 | 篡改              | 完整性             | 验证 SSL/TLS 证书。 使用 SSL/TLS 的应用程序必须完全验证其连接到的实体的 x.509 证书。 使用 Azure Key Vault 证书来[管理 x509 证书](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates)。 |
-| 否认性            | 不可否认性       | 启用 Azure [监视和诊断](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)。|
+| 否认            | 不可否认性       | 启用 Azure [监视和诊断](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)。|
 | 信息泄露 | 机密性       | 加密和[传输中](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit)[的敏感](../fundamentals/encryption-atrest.md)数据。 |
 | 拒绝服务      | 可用性          | 监视性能指标，以了解潜在的拒绝服务情况。 实现连接筛选器。 [Azure DDoS 保护](../../virtual-network/ddos-protection-overview.md#next-steps)与应用程序设计最佳做法相结合，提供对 DDoS 攻击的防御。|
 | 特权提升 | 授权         | 使用 Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)。|
@@ -222,11 +222,11 @@ Azure 提供了可用于托管网站和 web 应用程序的其他服务。 大�
 确保你的应用程序在其访问模式中强制实施[最小特权](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models#in-applications)。
 
 > [!NOTE]
->  最小特权规则需要应用于软件和创建软件的人。 如果为软件开发人员提供过多的访问权限，软件开发人员可能会面临巨大的风险。 如果开发人员有恶意的意图，或者对其进行了太多的访问，则结果可能很严重。 建议在整个开发生命周期中将最低权限规则应用到开发人员。
+> 最小特权规则需要应用于软件和创建软件的人。 如果为软件开发人员提供过多的访问权限，软件开发人员可能会面临巨大的风险。 如果开发人员有恶意的意图，或者对其进行了太多的访问，则结果可能很严重。 建议在整个开发生命周期中将最低权限规则应用到开发人员。
 
 #### <a name="implement-just-in-time-access"></a>实现实时访问
 
-实现*实时*（JIT）访问，进一步降低权限的暴露时间。 使用[Azure AD Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#stage-3-build-visibility-and-take-full-control-of-admin-activity)执行以下操作：
+实现*实时*（JIT）访问，进一步降低权限的暴露时间。 使用[Azure AD Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#stage-3-take-control-of-admin-activity)执行以下操作：
 
 - 向用户授予仅 JIT 所需的权限。
 - 分配时限更短的角色，确信权限会自动撤消。

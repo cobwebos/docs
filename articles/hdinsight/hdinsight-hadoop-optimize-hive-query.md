@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: 4955df718dcc8f169232052979ccf4a636c3be80
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c81d70577c5e7b852d315bdb91993d15624a7336
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81390293"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791487"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>优化 Azure HDInsight 中的 Apache Hive 查询
 
@@ -198,5 +198,6 @@ set hive.vectorized.execution.enabled = true;
 在本文中，已学习了几种常见的 Hive 查询优化方法。 若要了解详细信息，请参阅以下文章：
 
 * [使用 HDInsight 中的 Apache Hive](hadoop/hdinsight-use-hive.md)
+* [优化 Apache Hive](./optimize-hive-ambari.md)
 * [使用 HDInsight 中的交互式查询分析航班延误数据](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
 * [使用 HDInsight 中的 Apache Hive 分析 Twitter 数据](hdinsight-analyze-twitter-data-linux.md)

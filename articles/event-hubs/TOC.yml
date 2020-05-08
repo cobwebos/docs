@@ -78,7 +78,12 @@
       href: ../azure-databricks/databricks-stream-from-eventhubs.md
       maintainContext: true
 - name: 示例
-  href: event-hubs-samples.md
+  items:
+    - name: 代码示例
+      href: event-hubs-samples.md
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 事件中心术语
@@ -245,7 +250,7 @@
         - name: 客户端库
           items:
             - name: azure-eventhub 版本 5
-              href: /python/api/overview/azure/eventhub/client
+              href: /python/api/azure-eventhub/?view=azure-python
             - name: azure-eventhub 版本 1
               href: /python/api/azure-eventhub/?view=azure-python-previous
         - name: 管理库
@@ -282,7 +287,7 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=event-hubs'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-eventhub'
     - name: 视频
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=event-hubs'

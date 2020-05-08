@@ -29,7 +29,7 @@ ms.locfileid: "82792779"
 [!INCLUDE [virtual-machines-shared-image-gallery-resources](../../includes/virtual-machines-shared-image-gallery-resources.md)]
 
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 下列步骤详细说明如何将现有 VM 转换为可重用自定义映像，以便将其用于创建新 VM 实例。
 
@@ -48,8 +48,8 @@ ms.locfileid: "82792779"
 此外可以使用模板创建共享映像库资源。 提供多个 Azure 快速入门模板： 
 
 - [创建共享映像库](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [在共享的映像库中创建映像定义](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
+- [在共享映像库中创建映像定义](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [在共享映像库中创建映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
-- [根据映像版本创建 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
+- [从映像版本创建 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
 有关共享映像库的详细信息，请参阅[概述](shared-image-galleries.md)。 如果遇到问题，请参阅[排查共享映像库问题](troubleshooting-shared-images.md)。

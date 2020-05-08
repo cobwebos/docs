@@ -1,24 +1,24 @@
 ---
-title: 使用 Azure 表配置 Microsoft 商用 marketplace 潜在客户管理
-description: 了解如何使用 Azure 表来管理 Microsoft AppSource 和 Azure Marketplace 中的潜在客户。
+title: 通过 Azure 表存储的潜在客户管理-Microsoft 商用 marketplace
+description: 了解如何使用 Azure 表存储来配置 Microsoft AppSource 和 Azure Marketplace 的潜在客户
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 9814b03e348fc807c04364afbf027369f917670a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2ecca18e9de02bfe5f3bcb972d0b4034ab8012ac
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131144"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791011"
 ---
-# <a name="configure-lead-management-by-using-an-azure-table"></a>使用 Azure 表配置潜在客户管理
+# <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>使用 Azure 表存储来管理商业市场主管
 
-如果你的客户关系管理（CRM）系统不能在合作伙伴中心获得 Microsoft AppSource 和 Azure Marketplace 主管，则可以使用 Azure 表来处理这些潜在顾客。 然后，可以选择导出数据并将其导入到 CRM 系统中。 本文中的说明将指导你完成创建 Azure 存储帐户和该帐户下的 Azure 表的过程。 此外，你可以通过使用 "电源自动执行" 来创建新的流，以便在你的产品/服务收到潜在客户时发送电子邮件通知。
+如果你的客户关系管理（CRM）系统不能在合作伙伴中心获得 Microsoft AppSource 和 Azure Marketplace 主管，则可以使用 Azure 表存储来处理这些潜在顾客。 然后，可以选择导出数据并将其导入到 CRM 系统中。 本文介绍如何创建 Azure 存储帐户和该帐户下的表。 此外，你可以通过使用 "电源自动执行" 来创建新的流，以便在你的产品/服务收到潜在客户时发送电子邮件通知。
 
-## <a name="configure-an-azure-table"></a>配置 Azure 表
+## <a name="configure-an-azure-storage-account"></a>配置 Azure 存储帐户
 
 1. 如果没有 Azure 帐户，可以[创建免费试用帐户](https://azure.microsoft.com/pricing/free-trial/)。
 1. Azure 帐户处于活动状态后，登录到[Azure 门户](https://portal.azure.com)。
@@ -32,7 +32,11 @@ ms.locfileid: "82131144"
 
         有关存储帐户的详细信息，请参阅[快速入门教程](https://docs.microsoft.com/azure/storage/)。 有关存储定价的详细信息，请参阅[存储定价](https://azure.microsoft.com/pricing/details/storage/)。
 
-1. 等待存储帐户已预配。 此过程通常要花费几分钟时间。 然后，通过选择 "**查看所有资源**"，从 Azure 门户的**主页**访问存储帐户。 你还可以从 "Azure 门户" 的左侧菜单栏中选择 "**所有资源**"。
+1. 等待存储帐户已预配。 此过程通常要花费几分钟时间。 
+
+## <a name="create-a-table-in-your-storage-account"></a>在存储帐户中创建表
+
+1. 在 Azure 门户的 "**主页**" 页上，选择 "**查看所有资源**" 以访问存储帐户。 你还可以从 "Azure 门户" 的左侧菜单栏中选择 "**所有资源**"。
 
     ![访问 Azure 存储帐户](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png)
 
@@ -52,13 +56,13 @@ ms.locfileid: "82131144"
 
     您可以使用[Azure 存储资源管理器](https://archive.codeplex.com/?p=azurestorageexplorer)或任何其他工具查看存储表中的数据。 还可以导出 Azure 表中的数据。 
 
-## <a name="optional-use-power-automate-with-an-azure-table"></a>可有可无将 Power 自动用于 Azure 表 
+## <a name="optional-use-power-automate-to-get-lead-notifications"></a>可有可无使用 Power 自动功能获取潜在顾客通知
 
-每次将潜在客户添加到 Azure 表时，都可以使用[电源自动功能](https://docs.microsoft.com/flow/)自动执行通知。 如果没有帐户，可以[注册一个免费帐户](https://flow.microsoft.com/)。
+每次将潜在客户添加到 Azure 存储表时，都可以使用[电源自动功能](https://docs.microsoft.com/flow/)自动执行通知。 如果没有帐户，可以[注册一个免费帐户](https://flow.microsoft.com/)。
 
 ### <a name="lead-notification-example"></a>潜在顾客通知示例
 
-使用此示例作为指南，创建一个简单的流，在将新的潜在顾客添加到 Azure 表时自动发送电子邮件通知。 如果表存储已更新，此示例将设置一个重复周期，以便每隔一小时发送发送信息。
+该示例创建一个流，该流在新的潜在客户添加到 Azure 表存储时自动发送电子邮件通知。 如果表存储已更新，此示例将设置一个重复周期，以便每隔一小时发送发送信息。
 
 1. 登录到你的 Power 自动帐户帐户。
 1. 在左侧栏上，选择 "**我的流**"。
@@ -89,21 +93,21 @@ ms.locfileid: "82131144"
    >[!TIP] 
    >可以随时检查流以验证是否正确配置了每个步骤。 若要检查流，请从**流**菜单栏中选择 "**流检查器**"。
 
-   在下一组步骤中，你将连接到 Azure 表，并设置处理逻辑以处理新的潜在顾客。
+   在下一组步骤中，您将连接到您的表，并设置处理逻辑以处理新的潜在顾客。
 
-1. 在步骤8后，选择 " **+ 新建步骤**"。 然后在 "**选择操作**" 窗口中搜索 "**获取实体**"。
+1. 选择 " **+ 新步骤**"。 然后在 "**选择操作**" 窗口中搜索 "**获取实体**"。
 1. 在 "**操作**" 下，选择 "**获取实体" （Azure 表存储）**。
 1. 在 " **Azure 表存储**" 窗口中，提供以下框的信息并选择 "**创建**"：
 
-    * **连接名称**：为在此流和 Azure 表之间建立的连接提供有意义的名称。
-    * **存储帐户名称**：提供 Azure 表的存储帐户的名称。 可以在存储帐户的 "**访问密钥**" 页上找到此名称。
-    * **共享存储密钥**：提供 Azure 表的存储帐户的密钥值。 可以在存储帐户的 "**访问密钥**" 页上找到此值。
+    * **连接名称**：为在此流和表之间建立的连接提供有意义的名称。
+    * **存储帐户名称**：提供表的存储帐户的名称。 可以在存储帐户的 "**访问密钥**" 页上找到此名称。
+    * **共享存储密钥**：提供表的存储帐户的密钥值。 可以在存储帐户的 "**访问密钥**" 页上找到此值。
 
       ![Azure 表存储窗口](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
 
    选择 "**创建**" 后，将显示 "**获取实体**" 窗口。 在此处选择 "**显示高级选项**"，并提供以下框的信息：
 
-   * **表**：选择 Azure 表存储的名称（从 "配置 Azure 表" 部分中的说明步骤6）。 下图显示了为此示例选择了 "marketplaceleads" 表时的提示。
+   * **表**：选择表的名称（从 "[创建表](#create-a-table-in-your-storage-account)"）。 下图显示了为此示例选择了 "marketplaceleads" 表时的提示。
 
      ![获取实体窗口](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
@@ -177,9 +181,18 @@ ms.locfileid: "82131144"
 准备好在发布门户中为产品/服务配置潜在顾客管理信息时，请执行以下步骤。
 
 1. 请参阅产品/服务的**产品/服务设置**页。
+
 1. 选择 "**潜在顾客管理**" 部分下的 "**连接**"。
-1. 在 "**连接详细信息**" 弹出窗口中，为**潜在顾客目标**选择**Azure 表**。 在 "**存储帐户连接字符串**" 框中按照前面的步骤创建的 Azure 存储帐户中粘贴连接字符串。
+     ![潜在客户管理](./media/commercial-marketplace-lead-management-instructions-azure-table/lead-management.png)
+
+1. 在 "**连接详细信息**" 弹出窗口中，为**潜在顾客目标**选择**Azure 表**。 
+     ![潜在客户管理，连接详细信息](./media/commercial-marketplace-lead-management-instructions-azure-table/connection-details.png)
+
+1. 在 "**存储帐户连接字符串**" 框中按照前面的步骤创建的 Azure 存储帐户中粘贴连接字符串。
+     ![潜在客户管理，连接详细信息存储帐户](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-connection-details.png)
+
 1. **联系人电子邮件**：向公司中的人员提供电子邮件，该电子邮件应在收到新潜在客户时收到电子邮件通知。 可以提供多个电子邮件，用分号分隔。
+
 1. 选择“确定”  。
 
 若要确保已成功连接到潜在客户目标，请选择 "**验证**" 按钮。 如果成功，则在潜在客户目标中会出现测试主管。
@@ -188,10 +201,3 @@ ms.locfileid: "82131144"
 >您必须先完成该产品/服务的其余部分的配置，然后发布该产品/服务，才能接收该产品/服务的潜在客户。
 
 生成潜在客户后，Microsoft 会将潜在顾客发送到 Azure 表。 如果配置了流，还会将电子邮件发送到配置的电子邮件地址。
-
-![潜在顾客管理](./media/commercial-marketplace-lead-management-instructions-azure-table/lead-management.png)
-
-![潜在客户管理，连接详细信息](./media/commercial-marketplace-lead-management-instructions-azure-table/connection-details.png)
-
-![潜在客户管理，连接详细信息存储帐户](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-connection-details.png)
-

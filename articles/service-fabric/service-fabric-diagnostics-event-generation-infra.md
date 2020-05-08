@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 720cc157111293146b796f8567f94a4f1f4830c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce0cd0866cc6daa36d598767a486faeabac8076d
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75376930"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791810"
 ---
 # <a name="monitoring-the-cluster"></a>监视群集
 
@@ -74,7 +74,7 @@ Service Fabric 具有自身的运行状况模型，以下文章对此做了详�
 
 ## <a name="measuring-performance"></a>测量性能
 
-测量群集性能有助于了解它如何处理负载以及如何做出关于缩放群集的决策（请参阅有关[在 Azure 上](service-fabric-cluster-scale-up-down.md)或[在本地](service-fabric-cluster-windows-server-add-remove-nodes.md)缩放群集的详细信息）。 将来分析日志时，性能数据还可用于比较你或你的应用程序和服务可能执行的操作。 
+测量群集性能有助于了解它如何处理负载以及如何做出关于缩放群集的决策（请参阅有关[在 Azure 上](service-fabric-cluster-scale-in-out.md)或[在本地](service-fabric-cluster-windows-server-add-remove-nodes.md)缩放群集的详细信息）。 将来分析日志时，性能数据还可用于比较你或你的应用程序和服务可能执行的操作。 
 
 有关使用 Service Fabric 时要收集的性能计数器的列表，请参阅 [Service Fabric 中的性能计数器](service-fabric-diagnostics-event-generation-perf.md)
 

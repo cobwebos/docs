@@ -69,6 +69,8 @@
       href: powershell-samples.md
 - name: 概念
   items:
+    - name: 映像
+      href: shared-image-galleries.md
     - name: Azure 资源管理器
       href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: 区域
@@ -457,17 +459,64 @@
         - name: 创建日志警报
           href: ../../azure-monitor/platform/alerts-log.md
     - name: 使用映像
+      displayName: 'SIG, AMI, image'
       items:
         - name: 共享映像库
           items:
-            - name: 概述
-              href: shared-image-galleries.md
             - name: CLI
-              href: shared-images.md
+              items:
+                - name: 创建库
+                  href: ../shared-images-cli.md
+                - name: 创建映像
+                  items:
+                    - name: 从 VM
+                      href: ../image-version-vm-cli.md
+                    - name: 从托管映像迁移
+                      href: ../image-version-managed-image-cli.md
+                    - name: 从另一个库复制
+                      href: ../image-version-another-gallery-cli.md
+                - name: 创建 VM
+                  items:
+                    - name: 通用
+                      href: ../vm-generalized-image-version-cli.md
+                - name: 更新映像资源
+                  href: ../update-image-resources-cli.md
+                - name: 用于共享的应用注册
+                  href: share-images-across-tenants.md
+            - name: PowerShell
+              items:
+                - name: 创建库
+                  href: ../shared-images-powershell.md
+                - name: 创建映像版本
+                  items:
+                    - name: 从 VM
+                      href: ../image-version-vm-powershell.md
+                    - name: 从托管映像迁移
+                      href: ../image-version-managed-image-powershell.md
+                    - name: 从另一个库复制
+                      href: ../image-version-another-gallery-powershell.md
+                - name: 创建 VM
+                  items:
+                    - name: 通用
+                      href: ../vm-generalized-image-version-powershell.md
+                    - name: 专用
+                      href: ../vm-specialized-image-version-powershell.md
+                - name: 更新映像资源
+                  href: ../update-image-resources-powershell.md
             - name: 门户
-              href: shared-images-portal.md
-            - name: 用于共享的应用注册
-              href: share-images-across-tenants.md
+              items:
+                - name: 创建库、映像和 VM
+                  href: shared-images-portal.md
+            - name: 资源管理器模板
+              items:
+                - name: 创建共享映像库
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
+                - name: 在共享映像库中创建映像定义
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
+                - name: 在共享映像库中创建映像版本
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
+                - name: 从映像版本创建 VM
+                  href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
             - name: 排查共享映像问题
               href: troubleshooting-shared-images.md
         - name: 映像生成器（预览版）
@@ -544,9 +593,9 @@
         - name: Terraform
           items:
             - name: 安装和配置
-              href: ../../terraform/terraform-install-configure.md
+              href: /azure/developer/terraform/install-configure
             - name: 创建完整 VM
-              href: ../../terraform/terraform-create-complete-vm.md
+              href: /azure/developer/terraform/create-linux-virtual-machine-with-infrastructure
         - name: Cloud-init
           items:
             - name: Cloud-init 概述
@@ -564,14 +613,14 @@
             - name: 准备适用于 cloud-init 的现有 VM
               href: cloudinit-prepare-custom-image.md
         - name: Jenkins
-          href: /azure/developer/jenkins/overview.md
+          href: /azure/developer/jenkins/overview
           items:
             - name: 创建 Jenkins 服务器
-              href: /azure/developer/jenkins/configure-on-linux-vm.md
+              href: /azure/developer/jenkins/configure-on-linux-vm
             - name: 使用 VM 代理进行缩放
-              href: /azure/developer/jenkins/scale-deployments-using-vm-agents.md
+              href: /azure/developer/jenkins/scale-deployments-using-vm-agents
             - name: 将项目发布到存储
-              href: /azure/developer/jenkins/azure-storage-blobs-as-build-artifact-repository.md
+              href: /azure/developer/jenkins/azure-storage-blobs-as-build-artifact-repository
             - name: 保护 Jenkins
               href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
     - name: 运行容器
@@ -653,6 +702,8 @@
           href: disks-shared-enable.md
         - name: 将 vhd 上传到磁盘 - CLI
           href: disks-upload-vhd-to-managed-disk-cli.md
+        - name: 调整带有 GPT 分区的 OS 磁盘的大小
+          href: resize-os-disk-gpt-partition.md
         - name: 调整磁盘大小
           href: expand-disks.md
         - name: 使用存储资源管理器管理磁盘

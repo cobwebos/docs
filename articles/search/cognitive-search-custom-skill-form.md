@@ -8,18 +8,18 @@ ms.author: pafarley
 ms.service: cognitive-search
 ms.topic: article
 ms.date: 01/21/2020
-ms.openlocfilehash: 713b790c432f0e416392243262aed4b0fcda8892
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 050848b0bff65b19e2b17bd170e1d3e9ff0176f1
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81274570"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791997"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>示例：创建窗体识别器自定义技能
 
 在此 Azure 认知搜索技能组合示例中，你将学习如何使用 c # 和 Visual Studio 创建窗体识别器自定义技能。 表单识别器将分析文档并提取键/值对和表数据。 通过将窗体识别器包装到[自定义技能界面](cognitive-search-custom-skill-interface.md)，可以将此功能添加为端对端扩充管道中的一个步骤。 然后，管道可以加载文档和执行其他转换。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) （任何版本）。
 - 至少5种相同类型的窗体。 您可以使用本指南中提供的示例数据。
@@ -164,8 +164,8 @@ POST https://localhost:7071/api/analyze-form
 
 本指南介绍了如何从 Azure 窗体识别器服务创建自定义的技能。 若要了解有关自定义技能的详细信息，请参阅以下资源。 
 
-* [Azure 搜索的强大技能：定制技能的存储库](https://github.com/*zure-Samples/azure-search-power-skills)
+* [Azure 搜索的强大技能：定制技能的存储库](https://github.com/Azure-Samples/azure-search-power-skills)
 * [向 AI 扩充管道添加自定义技能](cognitive-search-custom-skill-interface.md)
 * [定义技能组合](cognitive-search-defining-skillset.md)
-* [创建技能组合（REST）](https://docs.microsoft.com/rest/api/*earchservice/create-skillset)
+* [创建技能组合（REST）](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 * [映射充实字段](cognitive-search-output-field-mapping.md)

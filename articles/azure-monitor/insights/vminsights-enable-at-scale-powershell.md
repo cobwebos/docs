@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2019
-ms.openlocfilehash: 75d5203e7c475a44b6a00dbf9286f43114b7b54f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77fe4b4ffbf7c189a5bf64e662f395fc78e53944
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79480838"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82581502"
 ---
 # <a name="enable-azure-monitor-for-vms-using-azure-powershell-or-resource-manager-templates"></a>使用 Azure PowerShell 或资源管理器模板启用用于 VM 的 Azure Monitor
 
@@ -170,7 +170,7 @@ provisioningState       : Succeeded
 
 ## <a name="enable-with-powershell"></a>使用 PowerShell 启用
 
-若要为多个 VM 或虚拟机规模集启用用于 VM 的 Azure Monitor，请使用 PowerShell 脚本 [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0)。 它在 Azure PowerShell 库中提供。 此脚本循环访问：
+若要为多个 VM 或虚拟机规模集启用用于 VM 的 Azure Monitor，请使用 PowerShell 脚本 [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights)。 它在 Azure PowerShell 库中提供。 此脚本循环访问：
 
 - 订阅中的每个虚拟机和虚拟机规模集。
 - 通过 *ResourceGroup* 指定的具有作用域的资源组。

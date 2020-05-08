@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/02/2019
 ms.author: alkohli
-ms.openlocfilehash: e72113313e27949819db567c550401b1f051473f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dde84f0973cc7e21e57574bbabe398b38581358f
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77022675"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562372"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Azure Data Box Gateway 的用例
 
@@ -77,7 +77,7 @@ Data Box Gateway 的主要优势之一就是，无论数据大小如何，都能
 
 ### <a name="ongoing-feed-with-data-box-gateway"></a>使用 Data Box Gateway 进行持续馈送
 
-按照以下步骤使用 Data Box Gateway 进行持续引入。
+按照以下步骤使用 Data Box Gateway 进行持续引入。 
 
 1. 在 Data Box Gateway 上创建云共享。 此共享会自动将所有数据上传到 Azure 存储帐户。 转到 Data Box Gateway 资源中的“共享”，然后单击“+ 添加共享”********。
 

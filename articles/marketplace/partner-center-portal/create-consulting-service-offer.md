@@ -1,27 +1,27 @@
 ---
-title: 在合作伙伴中心创建咨询服务产品-Azure Marketplace
-description: 了解如何使用合作伙伴中心将咨询服务产品/服务发布到 Azure Marketplace 或 AppSource。
+title: 创建咨询服务产品/服务-Microsoft 商业应用商店
+description: 了解如何使用合作伙伴中心将咨询服务产品/服务发布到 Microsoft AppSource 或 Azure Marketplace。
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: eff37750f0580a28c9644ee1ffb7fe4e95038709
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e85175cbee53bd5984a38a587a90b98eaf8dcad
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869794"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791895"
 ---
-# <a name="create-a-consulting-service-offer"></a>创建咨询服务产品/服务
+# <a name="create-a-consulting-service-offer"></a>创建咨询服务套餐
 
 > [!IMPORTANT]
 > 我们正在将你的咨询服务产品/服务的管理从云合作伙伴门户转移到合作伙伴中心。 在迁移你的产品/服务之前，请按照[Azure 和 Dynamics 365 咨询服务提供](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer)的说明进行操作，以便云合作伙伴门户管理你的产品/服务。
 
-本文介绍如何将咨询服务产品/服务发布到[Azure Marketplace](https://azuremarketplace.microsoft.com/)或[AppSource](https://appsource.microsoft.com/)。 基于 AppSource 上的 Microsoft [Dynamics 365](https://dynamics.microsoft.com/)和 Power Platform 列出咨询服务产品/服务。 基于 Azure Marketplace 上的 Microsoft Azure 列出咨询服务产品/服务。
+本文介绍如何将咨询服务产品/服务发布到[Microsoft AppSource](https://appsource.microsoft.com/)或[Azure Marketplace](https://azuremarketplace.microsoft.com/)。 基于 AppSource 上的 Microsoft [Dynamics 365](https://dynamics.microsoft.com/)和 Power Platform 列出咨询服务产品/服务。 基于 Azure Marketplace 上的 Microsoft Azure 列出咨询服务产品/服务。 在开始之前，请[在合作伙伴中心创建一个商用 marketplace 帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)（如果尚未这样做）。 确保你的帐户已在 "商用 marketplace 计划" 中注册。
 
-若要在 Azure Marketplace 或 AppSource 咨询服务中创建咨询服务产品/服务，你必须首先[在合作伙伴中心拥有一个发布者帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)，并且你的帐户必须注册到 "商业市场" 计划中。 在创建产品/服务之前，请先查看[咨询服务先决条件](https://docs.microsoft.com/azure/marketplace/partner-center-portal/consulting-service-prerequisites)中的先决条件。
+在创建产品/服务之前，请先查看[咨询服务先决条件](https://docs.microsoft.com/azure/marketplace/partner-center-portal/consulting-service-prerequisites)中的先决条件。
 
 ## <a name="publishing-benefits"></a>发布的好处
 
@@ -34,37 +34,35 @@ ms.locfileid: "81869794"
 
 ## <a name="create-a-new-offer"></a>创建新套餐
 
-满足上述要求后，请按照以下步骤创建咨询服务产品/服务。
+1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+2. 在左侧导航菜单中，选择 "**商业市场** > **概述**"。
+3. 在 "概述" 页上，选择 " **+ 新建产品** > /**服务**"。
 
-1. 登录到 "[合作伙伴中心](https://partner.microsoft.com)"，然后从顶部菜单中选择 "**仪表板**"。
-2. 在左侧导航栏中，选择 "**商用 Marketplace**"，然后选择 "**概述**"。
+    ![阐释左侧导航菜单。](./media/new-offer-consulting-service.png)
 
-    :::image type="content" source="media/cs-menu-overview.png" alt-text="演示适用于商业应用商店的菜单":::
+>[!NOTE]
+>发布产品/服务后，在 "合作伙伴中心" 中对其进行的编辑仅在重新发布产品/服务后出现在商店中。 请确保在进行更改后始终重新发布。
 
-3. 选择 " **+ 新产品**/服务"，然后选择 "**咨询服务**"。
+## <a name="new-offer"></a>新产品/服务
 
-    :::image type="content" source="media/cs-menu-newoffer.png" alt-text="说明用于创建新产品/服务的按钮。":::
+输入**产品/服务 ID**。 这是你的帐户中每个产品/服务的唯一标识符。
 
-4. 输入**产品/服务 ID**。 这是你的帐户中每个产品/服务的唯一标识符。
+- 适用于 marketplace 产品的 web 地址中的客户可看到此 ID。
+- 只使用小写字母和数字。 它可以包括连字符和下划线，但不能包含空格，并且限制为50个字符。 例如，如果输入了 "**测试/服务-1**"，则 "产品/服务`https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`" 网址为。
+- 选择 "**创建**" 后，无法更改产品/服务 ID。
 
-    - 适用于 marketplace 产品的 web 地址中的客户可看到此 ID。
-    - 仅使用小写字母、数字、短划线和下划线，但不要使用空格。 长度限制为50个字符。 例如，如果输入了 "**测试/服务-1**"，则 "产品/ `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`服务" URL 将为。
-    - 选择 "**创建**" 后，产品/服务 ID&#39;t 会更改。
+输入**提议别名**。 这是在合作伙伴中心中用于产品/服务的名称。
 
-5. 输入**提议别名**。 这是用于引用合作伙伴中心中的产品/服务的名称。
+- 此名称不能在 marketplace 中使用，它与向客户显示的产品/服务名称和其他值不同。
+- 选择 "**创建**" 后，不能更改该产品/服务别名。
 
-    - 此名称在 marketplace 中不&#39;使用。 它&#39;不同于提供给客户的产品/服务名称和其他值。 您可以使用此字段为产品/服务分配一个名称，该名称对您在内部标识该产品/服务更有用。它不会向客户显示。
-    - 选择 "**创建**" 后，该产品/服务别名可以&#39;t 更改。
-
-在输入这两个值后，选择 "**创建**" 以继续进入 "**产品/服务设置**" 页。
+选择 "**创建**" 以生成产品/服务并继续。
 
 ## <a name="offer-setup"></a>产品/服务设置
 
-输入产品/服务 ID 和产品/服务别名后，合作伙伴中心会创建草稿产品/服务，并显示 "**产品/服务设置**" 页。 请按照以下步骤设置你的产品/服务。
-
 ### <a name="connect-lead-management"></a>连接潜在客户管理
 
-使用合作伙伴中心向 marketplace 发布产品/服务时，_必须_将其连接到客户关系管理（CRM）或市场营销自动化系统。 这样一来，用户就可以立即收到客户联系信息。
+使用合作伙伴中心向 marketplace 发布产品/服务时，_必须_将其连接到客户关系管理（CRM）或市场营销自动化系统。 这使你可以在有人向你的产品表达兴趣或使用你的产品时立即收到客户联系信息。
 
 1. 选择 "**连接**" 以指定要向其发送客户主管的位置。 合作伙伴中心支持以下系统：
 
@@ -73,20 +71,20 @@ ms.locfileid: "81869794"
     - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
 
     > [!NOTE]
-    > 如果 CRM 系统不&#39;以上列出，请使用[Azure 表](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table)或[Https 终结点](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https)来存储客户领导数据，然后将数据导出到 CRM 系统。
+    > 如果上面未列出你的 CRM 系统，请使用[Azure 表](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table)或[Https 终结点](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https)来存储客户领导数据，然后将数据导出到 CRM 系统。
 
 2. 在合作伙伴中心发布产品/服务后，将产品/服务连接到潜在客户。
-3. 确认正确配置了与潜在客户目标的连接。 将其发布到合作伙伴中心后，我们&#39;验证连接并向你发送测试线索。 当你在推出产品/服务前预览产品/服务时，你还可以通过尝试在预览环境中自行购买产品/服务来测试你的潜在客户连接。
-4. 确保与潜在客户目标的连接保持更新，这样您就不会&#39;会丢失任何潜在顾客。
+3. 确认正确配置了与潜在客户目标的连接。 在合作伙伴中心发布后，我们将验证连接并向你发送测试线索。 当你在推出产品/服务前预览产品/服务时，你还可以通过尝试在预览环境中自行购买产品/服务来测试你的潜在客户连接。
+4. 请确保与潜在客户目标的连接保持更新，以便不会丢失任何潜在顾客。
 
 下面是一些其他潜在客户管理资源：
 
 - [潜在客户管理概述](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
 - [潜在顾客管理常见问题解答](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [常见的潜在顾客配置错误](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [常见的潜在顾客配置错误](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
 - [潜在客户管理概述](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)PDF （确保弹出窗口阻止程序处于关闭状态）
 
-选择 "**保存草稿**"，然后继续下一部分的 "属性"。
+选择 "**保存草稿**"，然后继续。
 
 ### <a name="properties"></a>属性
 
@@ -95,25 +93,25 @@ ms.locfileid: "81869794"
 1. 从下拉列表中选择一个**主产品**。
 2. 从下拉列表中选择 "**咨询服务类型**"：
 
-    - **评估**：评估客户&#39;的环境，以确定解决方案的适用性，并提供成本和时间估算。
+    - **评估**：评估客户的环境，以确定解决方案的适用性，并提供成本和时间估算。
     - **简介**：使用框架、演示和客户示例介绍解决方案或咨询服务，以吸引客户的兴趣。
-    - **实现：实现**完全正常工作的解决方案的完整安装。 限制为可在两周或更短时间内实施的解决方案。
-    - **概念证明**：用于确定解决方案是否满足客户要求的有限范围实现。
-    - **研讨会**：在客户&#39;的本地开展互动。 它可能涉及到在客户&#39;数据或环境上构建的培训、简报、评估或演示。
+    - **实施：** 进行完整安装，以实施完全正常运行的解决方案。 限制为可在两周或更短时间内实施的解决方案。
+    - **概念证明：** 进行有限范围的实施，以确定解决方案是否满足客户的要求。
+    - **研讨会**：在客户的本地开展互动。 它可能涉及到基于客户数据或环境构建的培训、简报、评估或演示。
 
-1. 如果选择了**Azure**的主要产品，最多可选择三个**解决方案区域**。 这使得 Azure Marketplace 中的客户能够更轻松地找到你的产品/服务。 如果未选择 "&#39;"，请跳过此步骤。
+1. 如果选择了**Azure**的主要产品，最多可选择三个**解决方案区域**。 这使得 Azure Marketplace 中的客户能够更轻松地找到你的产品/服务。 如果未选择 "Azure"，请跳过此步骤。
 2. 如果选择了除_Azure 之外的主要产品，_ 请选择最多三个适用的**产品**。 这使 AppSource 中的客户能够更轻松地找到你的产品/服务。 有关详细信息，请参阅[Microsoft AppSource 咨询服务列表准则](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409)（PDF）。
 3. 选择最多六个适用于你的产品/服务的**行业**。 这会使客户更容易找到你的产品/服务。
-4. 添加最多三项**技能**，使其能够在你的咨询服务产品列表中显示。 至少需要一项能力，Azure 专家 MSP&#39;s 和 Azure 网络 MSP&#39;s 除外。
+4. 添加最多三项**技能**，使其能够在你的咨询服务产品列表中显示。 至少需要一项能力，Azure 专家 Msp 和 Azure 网络 Msp 除外。
 
-选择 "**保存草稿**"，然后继续下一部分 "产品/服务"。
+选择 "**保存草稿**"，然后继续。
 
 ## <a name="offer-listing"></a>产品/服务列表
 
-在这里，您&#39;定义在 marketplace 中显示的产品/服务详细信息。 这包括产品名称、说明、图像等。 在配置此产品/服务时，请确保遵循[Microsoft&#39;s 策略页](https://docs.microsoft.com/legal/marketplace/certification-policies#800-consulting-services)上详细的策略。
+在这里，你将定义显示在 marketplace 中的产品/服务详细信息。 这包括产品名称、说明、图像等。 在配置此产品/服务时，请确保遵循[商业应用商店认证策略页](https://docs.microsoft.com/legal/marketplace/certification-policies#800-consulting-services)上详细的策略。
 
 > [!NOTE]
-> 产品/服务详细信息-如果产品/服务说明以短语开头，则&#39;t 要求&quot;使用英语，此应用程序仅适用于 [非英语语言]。&quot;它&#39;还可以提供一个有用的链接，以便以一种与产品/服务列表详细信息中所使用的语言不同的&#39;语言提供内容。
+> 如果产品/服务说明以短语开头，则产品/服务详细信息不需要&quot;为英语，此应用程序仅在 [非英语语言] 中可用。&quot;还可以提供一个有用的链接来提供与产品/服务列表详细信息中所使用的语言不同的内容。
 
 ### <a name="name"></a>名称
 
@@ -122,8 +120,8 @@ ms.locfileid: "81869794"
 名称：
 
 - 可以是商标字的（可以包括商标或版权符号）。
-- &#39;t 的长度不能超过50个字符。
-- 可以&#39;t 是否包含表情符号。
+- 长度不能超过50个字符。
+- 不能包含表情符号。
 
 ### <a name="search-results-summary"></a>搜索结果摘要
 
@@ -147,24 +145,28 @@ ms.locfileid: "81869794"
   - 从产品/服务中受益的用户类型。
   - 客户需求或颁发提供地址。
 - 请记住，前几个句子可能会显示在搜索结果中。
-- 别&#39;t 依赖特性和功能来销售产品。 而是专注于你的产品/服务提供的价值。
+- 不要依赖特性和功能来销售产品。 而是专注于你的产品/服务提供的价值。
 - 尝试使用行业特定的词汇或基于权益的词汇。
 
-若要使说明更具吸引力，请使用富文本编辑器来设置说明格式。 利用富文本编辑器，您可以添加数字、项目符号、粗体、斜体和缩进，使说明更具可读性。
+若要使您的产品/服务说明更具吸引力，请使用富文本编辑器应用格式设置。
 
-:::image type="content" source="media/cs-rich-text-editor.png" alt-text="说明用于编写产品说明的富文本编辑器。" border="false":::
+![使用富文本编辑器](./media/rich-text-editor.png)
 
-### <a name="keywords"></a>关键字
+| <center>更改文本格式 | <center>添加项目符号或编号 | <center>添加或删除文本缩进 |
+| --- | --- | --- |
+| <center>![使用富文本编辑器更改文本格式](./media/text-editor3.png) |  <center>![使用富文本编辑器添加列表](./media/text-editor4.png) |  <center>![使用富文本编辑器缩进](./media/text-editor5.png) |
+
+### <a name="keywords"></a>Keywords
 
 输入与你的主要产品和咨询服务相关的最多三个搜索关键字。 这样可以更轻松地找到产品/服务。
 
-### <a name="duration"></a>Duration
+### <a name="duration"></a>持续时间
 
 设置此参与与客户的预期持续时间。
 
 ### <a name="contact-information"></a>联系信息
 
-您必须为**主要****联系人和辅助联系人**提供姓名、电子邮件和电话号码。 此信息不会向客户显示&#39;。 它可用于 Microsoft，并可提供给云解决方案提供商（CSP）合作伙伴。
+您必须为**主要****联系人和辅助联系人**提供姓名、电子邮件和电话号码。 此信息不会向客户显示。 它可用于 Microsoft，并可提供给云解决方案提供商（CSP）合作伙伴。
 
 ### <a name="supporting-documents"></a>支持文档
 
@@ -179,7 +181,7 @@ ms.locfileid: "81869794"
 
 #### <a name="store-logos"></a>应用商店徽标
 
-在以下每个像素大小中提供产品/服务的 .png 文件&#39;的徽标：
+在以下每个像素大小中提供产品/服务徽标的 PNG 文件：
 
 - **小型（48 x 48）**
 - **大（216 x 216）**
@@ -188,13 +190,13 @@ ms.locfileid: "81869794"
 
 #### <a name="screenshots-optional"></a>屏幕快照（可选）
 
-最多可添加五个屏幕截图，其中显示了产品/服务的工作方式。 每个大小必须为 1280 x 720 像素大小和 .png 格式。
+最多可添加五个屏幕截图，其中显示了产品/服务的工作方式。 每个必须 1280 x 720 像素大小和 PNG 格式。
 
 #### <a name="videos-optional"></a>视频（可选）
 
-最多可添加四个视频来演示产品/服务。 输入视频&#39;的 "名称"、"web 地址（URL）" 和视频的缩略图 1280 x 720 像素大小。
+最多可添加四个视频来演示产品/服务。 输入视频的名称、其 web 地址（URL）和视频的缩略图（以 1280 x 720 像素大小表示）。
 
-选择 "**保存草稿**"，然后继续下一部分 "定价和可用性"。
+选择 "**保存草稿**"，然后继续。
 
 ## <a name="pricing-and-availability"></a>定价和可用性
 
@@ -209,7 +211,7 @@ ms.locfileid: "81869794"
     > 咨询服务优惠仅适用于列表。 所有事务都将直接在商业市场外发生。
 
 4. 对于付费产品/服务，指定**价格和币种**以及价格是**固定**的还是**估计**的。 如果估计，则必须在 "说明" 中指定哪些因素会影响价格。
-5. 选择 "**保存草稿**"。
+5. 选择 "**保存草稿**"，然后继续。
 
 ## <a name="review-and-publish"></a>查看和发布
 

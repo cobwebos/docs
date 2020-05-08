@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 08/23/2019
-ms.openlocfilehash: ba1e0eee5de65364d8e5e762195f7de98384c2a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9eedc0c3044717360494b222c88d73b3c8999e94
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76122571"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82587892"
 ---
 | 计算目标 | 用于 | GPU 支持 | FPGA 支持 | 说明 |
 | ----- | ----- | ----- | ----- | ----- |
@@ -25,7 +25,7 @@ ms.locfileid: "76122571"
 | [Azure 机器学习计算群集](../articles/machine-learning/how-to-use-parallel-run-step.md) | （预览）批处理&nbsp;推理 | [是](../articles/machine-learning/how-to-use-parallel-run-step.md)（机器学习管道） | &nbsp;  | 对无服务器计算运行批量评分。 支持普通 VM 和低优先级 VM。 |
 | [Azure Functions](../articles/machine-learning/how-to-deploy-functions.md) | （预览）实时推理 | &nbsp; | &nbsp; | &nbsp; |
 | [Azure IoT Edge](../articles/machine-learning/how-to-deploy-and-where.md#iotedge) | （预览）IoT&nbsp;模块 |  &nbsp; | &nbsp; | 在 IoT 设备上部署和提供 ML 模型。 |
-| [Azure Data Box Edge](../articles/databox-online/data-box-edge-overview.md)   | 通过 IoT Edge |  &nbsp; | 是 | 在 IoT 设备上部署和提供 ML 模型。 |
+| [Azure Data Box Edge](../articles/databox-online/azure-stack-edge-overview.md)   | 通过 IoT Edge |  &nbsp; | 是 | 在 IoT 设备上部署和提供 ML 模型。 |
 
 > [!NOTE]
 > 尽管计算目标（例如本地、Azure 机器学习计算实例和 Azure 机器学习计算群集）支持用于训练和试验的 GPU，但在__部署为 Web 服务__时，使用 GPU 进行推理仅在 Azure Kubernetes 服务中受支持。

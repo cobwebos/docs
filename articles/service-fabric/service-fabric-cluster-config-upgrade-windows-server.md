@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 8e7e01dac29cb9ba91c83270dac4e46c73b2089e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d0279cc323f7eee87feb2a596a4c2df0b4667e1
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75610110"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790841"
 ---
 # <a name="upgrade-the-configuration-of-a-standalone-cluster"></a>升级独立群集的配置 
 
@@ -75,7 +75,7 @@ Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Confi
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何自定义某些 [Service Fabric 群集设置](service-fabric-cluster-fabric-settings.md)。
-* 了解如何[扩大和缩小群集](service-fabric-cluster-scale-up-down.md)。
+* 了解如何[扩大和缩小群集](service-fabric-cluster-scale-in-out.md)。
 * 了解[应用程序升级](service-fabric-application-upgrade.md)。
 
 <!--Image references-->

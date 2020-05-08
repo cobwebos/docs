@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 04/21/2020
-ms.openlocfilehash: 9129cb308a364a3ed0654055f8afe9dd8c89010a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 5/4/2020
+ms.openlocfilehash: 6b738fc96a51893d8c0a0e75c5551007da60bdd2
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024619"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793187"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的只读副本
 
@@ -84,11 +84,11 @@ mysql -h myreplica.mariadb.database.azure.com -u myadmin@myreplica -p
 
 ## <a name="monitor-replication"></a>监视复制
 
-Azure Database for MariaDB 在 Azure Monitor 中提供“复制滞后时间(秒)”指标。**** 此指标仅适用于副本。
+Azure Database for MariaDB 在 Azure Monitor 中提供“复制滞后时间(秒)”指标。  此指标仅适用于副本。
 
 此指标是使用 MariaDB 的 `SHOW SLAVE STATUS` 命令中提供的 `seconds_behind_master` 指标计算得出的。
 
-设置警报以在复制滞后达到工作负荷不可接受的值时通知你。
+请设置警报，以便在复制滞后时间达到工作负荷不可接受的值时收到通知。
 
 ## <a name="stop-replication"></a>停止复制
 
@@ -139,18 +139,20 @@ Azure Database for MariaDB 在 Azure Monitor 中提供“复制滞后时间(秒)
 
 ### <a name="server-parameters"></a>服务器参数
 
-为了防止数据变得不同步，以及为了避免可能发生的数据丢失或损坏情况，在使用只读副本时，某些服务器参数因为锁定而无法更新。
+为了防止数据不同步并避免潜在的数据丢失或损坏，使用读取副本时，会锁定某些服务器参数以防止其更新。
 
 将在主服务器和副本服务器上锁定以下的服务器参数：
 - [`innodb_file_per_table`](https://mariadb.com/kb/en/library/innodb-system-variables/#innodb_file_per_table) 
 - [`log_bin_trust_function_creators`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#log_bin_trust_function_creators)
 
-在[`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler)副本服务器上锁定参数。
+将在副本服务器上锁定 [`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler) 参数。
+
+若要更新主服务器上的上述参数之一，请删除副本服务器，更新主副本上的参数值，然后重新创建副本。
 
 ### <a name="other"></a>其他
 
 - 不支持创建副本服务器的副本。
-- 内存中表可能会导致副本不同步。这是 MariaDB 复制技术的限制。
+- 内存中的表可能会导致副本服务器变得不同步。这是 MariaDB 复制技术的限制。
 - 确保主服务器表具有主键。 缺少主键可能会导致主服务器与副本服务器之间的复制延迟。
 
 ## <a name="next-steps"></a>后续步骤

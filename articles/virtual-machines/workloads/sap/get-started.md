@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/24/2020
+ms.date: 05/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bf8c797edec143d09739272917b5781a239280ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb1dba32ed2e913268a9fc37f37ab8cec360c5de
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147741"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858421"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 托管和运行 SAP 工作负荷方案
 
@@ -111,6 +111,7 @@ Azure for SAP HANA 的唯一性是将 Azure 分开的一个产品/服务。 为�
 
 ## <a name="change-log"></a>更改日志
 
+- 05/05/2020： [SAP NetWeaver 的 Azure 虚拟机规划和实施](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)中的更改，用于表示 Gen2 部署可用于 Mv1 VM 系列
 - 04/24/2020：在[Azure vm 上具有和 ON SLES 的备用节点 SAP HANA 向外扩展的](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)更改，请参阅 SAP HANA 在 azure vm 上通过[和 on rhel 向外扩展，其中包含 on rhel](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)的 azure vm 上的和高可用性，以及在 rhel 上通过 AZURE Vm 上的[sap NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)实现[高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
 - 04/22/2020：在[SLES 上的 Azure vm 上更改 SAP HANA 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability)，以从`is-managed`说明中删除元属性，因为它与将群集置于或退出维护模式冲突
 - 04/21/2020：已将 SQL Azure DB 添加为适用于 SAP 的 DBMS （Hybris） Commerce 平台1811和更高版本，本文介绍[了 Azure 部署支持的 sap 软件](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure)以及[在 Microsoft Azure 上运行的 sap 认证和配置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-certifications)

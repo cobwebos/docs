@@ -1,23 +1,22 @@
 ---
-title: 注册 SaaS 应用程序 |Azure Marketplace
-description: 介绍如何使用 Azure 门户注册 SaaS 应用程序。
+title: 注册 SaaS 应用程序-Azure Marketplace
+description: 了解如何使用 Azure 门户注册 SaaS 应用程序并接收 Azure Active Directory 的安全令牌。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: dsindona
-ms.openlocfilehash: 9c20fe34e108de95a34aabea56390e8a6f0d858f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3c20d25917d66cba8ae3d811eddaa6455b87722
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80275707"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792949"
 ---
 # <a name="register-a-saas-application"></a>注册 SaaS 应用程序
 
 本文介绍如何使用 Microsoft [Azure 门户](https://portal.azure.com/)注册 SaaS 应用程序。  成功注册后，你会收到一个 Azure Active Directory （Azure AD）安全令牌，可用于访问 SaaS 履单 Api。  有关 Azure AD 的详细信息，请参阅[什么是身份验证？](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)
-
 
 ## <a name="service-to-service-authentication-flow"></a>服务到服务身份验证流
 
@@ -26,7 +25,6 @@ ms.locfileid: "80275707"
 ![SaaS 套餐 API 流](./media/saas-offer-publish-api-flow-v1.png)
 
 Azure 不会对 SaaS 服务公开给其最终用户的身份验证施加任何约束。 但是，通过使用 Azure AD 安全令牌（通常通过 Azure 门户注册 SaaS 应用）来执行使用 SaaS 履单 Api 进行的身份验证。 
-
 
 ## <a name="register-an-azure-ad-secured-app"></a>注册 Azure AD 保护的应用
 
@@ -56,7 +54,6 @@ Azure 不会对 SaaS 服务公开给其最终用户的身份验证施加任何�
 >[!Note]
 >默认情况下，新注册的应用程序配置为只允许同一租户中的用户登录到应用程序。
 
-
 ## <a name="using-the-azure-ad-security-token"></a>使用 Azure AD 安全令牌
 
 注册应用程序后，可以以编程方式请求 Azure AD 安全令牌。  发行者应使用此令牌，并发出请求以解决此问题。  当使用各种履单 Api 时，当用户从 Azure 重定向到 SaaS 网站时，令牌查询参数将在 URL 中。  此令牌仅在一小时内有效。  此外，在使用之前，应从浏览器对令牌值进行 URL 解码。
@@ -82,7 +79,7 @@ HTTP 方法
 |  |  |  |
 
 
-*请求头*
+*请求标头*
 
 |  **标头名称**  | **必需** |  **说明**                                   |
 |  --------------   | ------------ |  ------------------------------------------------- |
@@ -103,7 +100,7 @@ HTTP 方法
 
 *响应*
 
-|  **Name**  | **类型**       |  **说明**    |
+|  **名称**  | **类型**       |  **说明**    |
 | ---------- | -------------  | ------------------- |
 | 200 正常    | TokenResponse  | 请求成功   |
 |  |  |  |
@@ -123,7 +120,6 @@ HTTP 方法
       "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImlCakwxUmNxemhpeTRmcHhJeGRacW9oTTJZayIsImtpZCI6ImlCakwxUmNxemhpeTRmcHhJeGRacW9oTTJZayJ9…"
   }               
 ```
-
 
 ## <a name="next-steps"></a>后续步骤
 

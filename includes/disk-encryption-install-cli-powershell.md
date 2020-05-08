@@ -47,7 +47,7 @@ az account set --subscription "<subscription name or ID>"
 
 如果已在本地安装 PowerShell，请确保使用最新版本的 Azure PowerShell SDK 来配置 Azure 磁盘加密。 下载最新版本的 [Azure PowerShell 版本](https://github.com/Azure/azure-powershell/releases)。
 
-若要[使用 Azure PowerShell 登录到 Azure 帐户](/powershell/azure/authenticate-azureps?view=azps-2.5.0)，请使用[AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) cmdlet。
+若要[使用 Azure PowerShell 登录 Azure 帐户](/powershell/azure/authenticate-azureps?view=azps-2.5.0)，请使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) cmdlet。
 
 ```powershell
 Connect-AzAccount

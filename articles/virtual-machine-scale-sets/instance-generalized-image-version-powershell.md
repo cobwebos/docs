@@ -178,7 +178,7 @@ New-AzVmss `
 此外可以使用模板创建共享映像库资源。 提供多个 Azure 快速入门模板： 
 
 - [创建共享映像库](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [在共享的映像库中创建映像定义](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
+- [在共享映像库中创建映像定义](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [在共享映像库中创建映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 
 有关共享映像库的详细信息，请参阅[概述](shared-image-galleries.md)。 如果遇到问题，请参阅[排查共享映像库问题](troubleshooting-shared-images.md)。

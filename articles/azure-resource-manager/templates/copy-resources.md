@@ -2,13 +2,13 @@
 title: 部署资源的多个实例
 description: 在 Azure 资源管理器模板中使用复制操作和数组多次部署资源类型。
 ms.topic: conceptual
-ms.date: 09/27/2019
-ms.openlocfilehash: e65ab93c21daffa0053e53d953fe95fa9f28e2a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: d4f40b606ffd56019b44cc8b67e5629b935bf50c
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80153312"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583388"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>ARM 模板中的资源迭代
 
@@ -18,7 +18,7 @@ ms.locfileid: "80153312"
 
 如需指定究竟是否部署资源，请参阅 [condition 元素](conditional-resource-deployment.md)。
 
-## <a name="resource-iteration"></a>资源迭代
+## <a name="syntax"></a>语法
 
 copy 元素采用以下常规格式：
 
@@ -35,7 +35,24 @@ copy 元素采用以下常规格式：
 
 使用 **mode** 和 **batchSize** 属性指定是并行还是按顺序部署资源。 [串行或并行](#serial-or-parallel)中介绍了这些属性。
 
-以下示例创建在 **storageCount** 参数中指定的存储帐户数目。
+## <a name="copy-limits"></a>复制限制
+
+count 不能超过 800。
+
+count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 REST API 部署模板，则可以为零。 具体来说，您必须使用：
+
+* Azure PowerShell **2.6**或更高版本
+* Azure CLI **2.0.74**或更高版本
+* REST API 版本**2019-05-10**或更高版本
+* 对于部署资源类型，[链接部署](linked-templates.md)必须使用 API 版本**2019-05-10**或更高版本
+
+更早版本的 PowerShell、CLI 和 REST API 不支持将 count 设为零。
+
+将[完整模式部署](deployment-modes.md)与复制一起使用时要小心。 如果以完整模式重新部署到资源组，则在解析复制循环后会删除模板中未指定的任何资源。
+
+## <a name="resource-iteration"></a>资源迭代
+
+以下示例创建在**storageCount**参数中指定的存储帐户的数目。
 
 ```json
 {
@@ -92,9 +109,9 @@ copy 元素采用以下常规格式：
 * storage2
 * storage3
 
-当使用数组时，copy 操作十分有用，因为这样可以迭代数组中的每个元素。 可以对数组使用 `length` 函数来指定迭代计数，并使用 `copyIndex` 来检索数组中的当前索引。
+处理数组时可以使用复制操作，因为可对数组中的每个元素执行迭代操作。 可以对数组使用 `length` 函数来指定迭代计数，并使用 `copyIndex` 来检索数组中的当前索引。
 
-以下示例为参数中提供的每个名称创建一个存储帐户。
+下面的示例为参数中提供的每个名称创建一个存储帐户。
 
 ```json
 {
@@ -131,13 +148,13 @@ copy 元素采用以下常规格式：
 }
 ```
 
-如果要从已部署的资源返回值，可以使用[在输出部分中复制](copy-outputs.md)。
+如果要从已部署的资源返回值，可以使用["输出" 部分中的 "复制"](copy-outputs.md)。
 
 ## <a name="serial-or-parallel"></a>串行或并行
 
 默认情况下，资源管理器将并行创建资源。 除了模板中 800 个资源的总限制外，它对并行部署的资源数量没有限制。 不会保证它们的创建顺序。
 
-但是，可能需要指定按顺序部署资源。 例如，在更新生产环境时，可能需要错开更新，使得任何一次仅更新一定数量。 若要按顺序部署多个资源实例，请将 `mode` 设置为“串行”，并将  **设置为一次要部署的实例数量**`batchSize`。 在串行模式下，资源管理器会在循环中创建早前实例的依赖项，以便在前一个批处理完成之前它不会启动一个批处理。
+但是，可能需要指定按顺序部署资源。 例如，在更新生产环境时，可能需要错开更新，使得任何一次仅更新一定数量。 若要按顺序部署多个资源实例，请将 `mode` 设置为“串行”，并将 `batchSize` 设置为一次要部署的实例数量****。 在串行模式下，资源管理器会在循环中创建早前实例的依赖项，以便在前一个批处理完成之前它不会启动一个批处理。
 
 例如，若要按顺序一次部署两个存储帐户，请使用：
 
@@ -172,7 +189,7 @@ mode 属性也接受 **parallel**（它是默认值）。
 
 ## <a name="depend-on-resources-in-a-loop"></a>依赖于循环中的资源
 
-然后使用 `dependsOn` 元素指定部署一个资源后再部署另一个资源。 若要部署的资源依赖于循环中的资源集合，请在 dependsOn 元素中提供 copy 循环的名称。 以下示例演示了如何在部署虚拟机之前部署三个存储帐户。 此处并未显示完整的虚拟机定义。 请注意，copy 元素的名称设置为 `storagecopy`，而虚拟机的 dependsOn 元素也设置为 `storagecopy`。
+然后使用 `dependsOn` 元素指定部署一个资源后再部署另一个资源。 若要部署的资源依赖于循环中的资源集合，请在 dependsOn 元素中提供 copy 循环的名称。 以下示例演示了如何在部署虚拟机之前部署三个存储帐户。 未显示完整的虚拟机定义。 请注意，copy 元素的名称设置为`storagecopy` ，而虚拟机的 dependsOn 元素也设置为`storagecopy`。
 
 ```json
 {
@@ -258,14 +275,6 @@ mode 属性也接受 **parallel**（它是默认值）。
 }]
 ```
 
-## <a name="copy-limits"></a>复制限制
-
-count 不能超过 800。
-
-count 不能为负数。 如果使用 Azure PowerShell 2.6 或更高版本、Azure CLI 2.0.74 或更高版本或者 REST API 版本 **2019-05-10** 或更高版本部署模板，则可以将 count 设置为零。 更早版本的 PowerShell、CLI 和 REST API 不支持将 count 设为零。
-
-将[完整模式部署](deployment-modes.md)与复制一起使用时要小心。 如果以完整模式重新部署到资源组，则在解析复制循环后会删除模板中未指定的任何资源。
-
 ## <a name="example-templates"></a>示例模板
 
 以下示例展示了创建资源或属性的多个实例的常见方案。
@@ -275,17 +284,17 @@ count 不能为负数。 如果使用 Azure PowerShell 2.6 或更高版本、Azu
 |[复制存储](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |部署名称中带索引号的多个存储帐户。 |
 |[串行的复制存储](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |一次部署多个存储帐户。 名称中包含索引号。 |
 |[复制具有数组的存储](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewitharray.json) |部署多个存储帐户。 名称中包含数组中的值。 |
-|[部署数据磁盘数量不定的 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |通过虚拟机部署多个数据磁盘。 |
+|[数据磁盘数可变的 VM 部署](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |通过虚拟机部署多个数据磁盘。 |
 |[多个安全规则](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |将多个安全规则部署到网络安全组。 这会从参数构造安全规则。 有关参数，请参阅[多个 NSG 参数文件](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json)。 |
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要学习教程，请参阅[教程：使用 ARM 模板创建多个资源实例](template-tutorial-create-multiple-instances.md)。
+* 若要完成教程，请参阅[教程：使用 ARM 模板创建多个资源实例](template-tutorial-create-multiple-instances.md)。
 * 有关 copy 元素的其他用法，请参阅：
   * [ARM 模板中的属性迭代](copy-properties.md)
   * [ARM 模板中的变量迭代](copy-variables.md)
   * [ARM 模板中的输出迭代](copy-outputs.md)
 * 有关将副本与嵌套的模板配合使用的信息，请参阅[使用副本](linked-templates.md#using-copy)。
-* 如果要了解有关模板的部分，请参阅[创作 ARM 模板](template-syntax.md)。
+* 若要了解有关模板区段的信息，请参阅[创作 ARM 模板](template-syntax.md)。
 * 若要了解如何部署模板，请参阅[使用 ARM 模板部署应用程序](deploy-powershell.md)。
 

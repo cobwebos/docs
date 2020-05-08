@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: d0669a89527cabd23b81a0948e8cf9962dcd1e9e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 52f389e00d63f3659dfe79487b31ec9c3fab1ced
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232047"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580694"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>映射数据流中的数据转换表达式
 
@@ -26,10 +26,10 @@ ms.locfileid: "82232047"
 ___
 ### <code>abs</code>
 <code><b>abs(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
-数字的绝对值。
+数字的绝对值。  
 * ``abs(-20) -> 20``  
 * ``abs(10) -> 10``  
-___
+___   
 ### <code>acos</code>
 <code><b>acos(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
 计算余弦反值* ``acos(1) -> 0.0``  
@@ -116,7 +116,7 @@ ___
 ___
 ### <code>columnNames</code>
 <code><b>columnNames(<i>&lt;value1&gt;</i> : string) => array</b></code><br/><br/>
-获取流的所有输出列。 可以将可选流名称作为第二个参数传递。
+获取流的所有输出列。 可以将可选流名称作为第二个参数传递。  
 * ``columnNames()``
 * ``columnNames('DeriveStream')``
 ___
@@ -156,8 +156,8 @@ ___
 ___
 ### <code>currentDate</code>
 <code><b>currentDate([<i>&lt;value1&gt;</i> : string]) => date</b></code><br/><br/>
-当此作业开始运行时获取当前日期。 可以“GMT”、“PST”、“UTC”、“America/Cayman”格式传递可选的时区。 本地时区用作默认时区。有关可用格式，请参阅 Java 的 SimpleDateFormat。 ["https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html)
-* ``currentDate() == toDate('2250-12-31') -> false`` * ``currentDate('PST')  == toDate('2250-12-31') -> false``  
+当此作业开始运行时获取当前日期。 可以“GMT”、“PST”、“UTC”、“America/Cayman”格式传递可选的时区。 本地时区用作默认时区。有关可用格式，请参阅 Java 的 SimpleDateFormat。 ["https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html) * ``currentDate() == toDate('2250-12-31') -> false``  
+* ``currentDate('PST')  == toDate('2250-12-31') -> false``  
 * ``currentDate('America/New_York')  == toDate('2250-12-31') -> false``  
 ___
 ### <code>currentTimestamp</code>
@@ -278,9 +278,11 @@ ___
 ___
 ### <code>iifNull</code>
 <code><b>iifNull(<i>&lt;value1&gt;</i> : any, [<i>&lt;value2&gt;</i> : any], ...) => any</b></code><br/><br/>
-检查该值是否不为 NULL，并返回该值，否则返回该替换值。 它测试所有输入，直到找到第一个非 null 值* ``iifNull(10, 20) -> 10``  
+检查第一个参数是否为 null。 如果不为 null，则返回第一个参数。 如果为 null，则返回第二个参数。 如果指定了三个参数，则行为与 iif （isNull （value1）、value2、value3）相同，如果第一个值不为 null，则返回第三个参数。  
+* ``iifNull(10, 20) -> 10``  
 * ``iifNull(null, 20, 40) -> 20``  
-* ``iifNull('bojjus', 'bo', 'dumbo') -> 'dumbo'``  
+* ``iifNull('azure', 'data', 'factory') -> 'factory'``  
+* ``iifNull(null, 'data', 'factory') -> 'data'``  
 ___
 ### <code>in</code>
 <code><b>in(<i>&lt;array of items&gt;</i> : array, <i>&lt;item to find&gt;</i> : any) => boolean</b></code><br/><br/>
@@ -373,7 +375,7 @@ ___
 ### <code>like</code>
 <code><b>like(<i>&lt;string&gt;</i> : string, <i>&lt;pattern match&gt;</i> : string) => boolean</b></code><br/><br/>
 模式是按原义匹配的字符串。 以下特殊符号除外： _ 与输入中的任何一个字符匹配（类似于。 posix 正则表达式中的 .）。% 匹配输入中的零个或多个字符（类似于 posix 正则表达式中的 .*）。
-转义字符为 ''。 如果转义字符的之前带有特殊符号或其他转义字符，则在字面上匹配后面的字符。 转义其他任何字符的操作无效。
+转义字符为 ''。 如果转义字符的之前带有特殊符号或其他转义字符，则在字面上匹配后面的字符。 转义其他任何字符的操作无效。  
 * ``like('icecream', 'ice%') -> true``  
 ___
 ### <code>locate</code>
@@ -504,7 +506,7 @@ ___
 ___
 ### <code>pMod</code>
 <code><b>pMod(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
-将数字对正数取模。
+将数字对正数取模。  
 * ``pmod(-20, 8) -> 4``  
 ___
 ### <code>partitionId</code>
@@ -944,7 +946,7 @@ ___
 ##窗口函数只能在窗口转换中使用以下函数___
 ### <code>cumeDist</code>
 <code><b>cumeDist() => integer</b></code><br/><br/>
-CumeDist 函数计算某个值相对于分区中所有值的位置。 结果是前面的行数，或者等于当前行在分区中的顺序除以窗口分区中的总行数。 排序中的任何并列值都将计算为相同的位置。
+CumeDist 函数计算某个值相对于分区中所有值的位置。 结果是前面的行数，或者等于当前行在分区中的顺序除以窗口分区中的总行数。 排序中的任何并列值都将计算为相同的位置。  
 * ``cumeDist()``  
 ___
 ### <code>denseRank</code>
@@ -963,7 +965,7 @@ ___
 ___
 ### <code>nTile</code>
 <code><b>nTile([<i>&lt;value1&gt;</i> : integer]) => integer</b></code><br/><br/>
-NTile 函数将每个窗口分区的行分割为从 1 到 `n` 的 `n` 桶。 桶值最大相差 1。 如果分区中的行数不能均匀分割成桶数，则余值将逐个分布在每个桶中，从第一个桶开始。 NTile 函数可用于计算 tertiles、四分位数、十分位数和其他常见汇总统计信息。 函数在初始化期间计算两个变量：常规 bucket 的大小将额外添加一行。 这两个变量都以当前分区的大小为基础。 在计算过程中，该函数将跟踪当前行号、当前桶号，以及发生桶更改的行号 (bucketThreshold)。 如果当前行号达到桶的阈值，则桶值将会加 1，阈值将按桶大小增加（如果当前桶已填充，则额外加 1）。
+NTile 函数将每个窗口分区的行分割为从 1 到 `n` 的 `n` 桶。 桶值最大相差 1。 如果分区中的行数不能均匀分割成桶数，则余值将逐个分布在每个桶中，从第一个桶开始。 NTile 函数可用于计算 tertiles、四分位数、十分位数和其他常见汇总统计信息。 函数在初始化期间计算两个变量：常规 bucket 的大小将额外添加一行。 这两个变量都以当前分区的大小为基础。 在计算过程中，该函数将跟踪当前行号、当前桶号，以及发生桶更改的行号 (bucketThreshold)。 如果当前行号达到桶的阈值，则桶值将会加 1，阈值将按桶大小增加（如果当前桶已填充，则额外加 1）。  
 * ``nTile()``  
 * ``nTile(numOfBuckets)``  
 ___

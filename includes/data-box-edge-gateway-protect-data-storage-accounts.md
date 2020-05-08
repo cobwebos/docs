@@ -4,16 +4,16 @@ ms.service: databox
 ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
-ms.openlocfilehash: 8840e6649058837207c75dbdf7baa5c0b11ef387
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ac9865afe37916f1777d92eab8637884eba0c08
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75467010"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562112"
 ---
 设备与在 Azure 中用作数据目标的存储帐户相关联。 对存储帐户的访问由与该存储帐户关联的订阅和 2 512 位存储访问密钥控制。
 
-当 Data Box Edge 设备访问存储帐户时，将使用其中一个密钥进行身份验证。 其他密钥保留，因此你可以定期轮换密钥。
+当 Azure Stack Edge 设备访问存储帐户时，将使用其中一个密钥进行身份验证。 其他密钥保留，因此你可以定期轮换密钥。
 
 出于安全原因，很多数据中心要求密钥轮换。 我们建议遵循密钥轮换的以下最佳实践：
 
