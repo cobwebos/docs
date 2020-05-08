@@ -3,12 +3,12 @@ title: 将资源部署到租户
 description: 介绍如何在 Azure 资源管理器模板中的租户范围内部署资源。
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: fcdfc5b1c4333a0d7eeec80a09ad85579a1f8b77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a3748c0948238b588a01f7d91780693a2c5bf3a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79460256"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930057"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>在租户级别创建资源
 
@@ -19,6 +19,7 @@ ms.locfileid: "79460256"
 可以在租户级别部署以下资源类型：
 
 * [部署](/azure/templates/microsoft.resources/deployments)-适用于部署到管理组或订阅的嵌套模板。
+* managementGroups
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
@@ -103,13 +104,13 @@ New-AzTenantDeployment `
 * 使用[tenantResourceId （）](template-functions-resource.md#tenantresourceid)函数获取在租户级别部署的资源的资源 ID。
 
   例如，若要获取策略定义的资源 ID，请使用：
-  
+
   ```json
   tenantResourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
   ```
-  
+
   返回的资源 ID 具有以下格式：
-  
+
   ```json
   /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   ```

@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: 10a061163447a60f1c25b386ef28028436284650
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b78e227159065d2ae85d9b1dc989e8ea192ae26a
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75453072"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982796"
 ---
 # <a name="microsoft-global-network"></a>Microsoft 全球网络
 
-Microsoft 拥有并操作世界上最大的主干网络之一。 这种全球复杂的体系结构（跨越超过100000英里）连接我们的数据中心和客户。 
+Microsoft 拥有并操作世界上最大的主干网络之一。 这种全球复杂的体系结构（跨越超过160000英里）连接我们的数据中心和客户。 
  
 每天，世界各地的客户连接并将数万亿个请求传递到 Microsoft Azure、Bing、Dynamics 365、Office 365、XBox 等。 无论类型如何，客户都希望能够从我们的服务获得即时的可靠性和响应能力。 
  
@@ -32,7 +32,7 @@ Microsoft 拥有并操作世界上最大的主干网络之一。 这种全球复
  
 ## <a name="get-the-premium-cloud-network"></a>获取高级云网络
  
-使用 Microsoft 云时，可以轻松选择[最佳体验](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/)。 从客户流量进入全球网络到战略放置的边缘节点的那一刻，你的数据将在接近光线速度的情况下通过优化的路由传输。 这可确保最佳的延迟，以获得最佳性能。 在超过145个位置，这些边缘节点（所有连接到超过3500个唯一 Internet 合作伙伴（对等）的 Internet 合作伙伴（对等）可为其奠定基础。 
+使用 Microsoft 云时，可以轻松选择[最佳体验](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/)。 从客户流量进入全球网络到战略放置的边缘节点的那一刻，你的数据将在接近光线速度的情况下通过优化的路由传输。 这可确保最佳的延迟，以获得最佳性能。 在超过165个位置，这些边缘节点（所有连接到超过3500个唯一 Internet 合作伙伴（对等）的 Internet 合作伙伴（对等）可为其奠定基础。 
  
 无论是从伦敦连接到东京还是从华盛顿特区连接到洛杉矶，网络性能都可以量化，并受诸如延迟、抖动、数据包丢失和吞吐量等因素的影响。  在 Microsoft，我们首选并使用直接互连，而不是传输链接，这会使响应流量保持对称，并有助于使跃点、对等方和路径尽可能简短且简单。 
 

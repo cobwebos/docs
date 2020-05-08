@@ -9,12 +9,12 @@ ms.date: 01/21/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 6f0e7c514835227fafd439803107531fbc62285c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 911172bd6ef9c08419e74828657c8bdb2f8d1b30
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133831"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930635"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 
@@ -356,7 +356,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 > [!IMPORTANT]
 > 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则网络规则不会有任何效果****。
 
-## <a name="exceptions"></a>例外
+## <a name="exceptions"></a>异常
 
 在大多数情况下，网络规则有助于为应用程序与数据之间的连接创建安全环境。 不过，某些应用程序依赖于无法通过虚拟网络或 IP 地址规则单独隔离的 Azure 服务。 但是，必须授予此类服务访问存储的权限，才能完全实现应用程序的功能。 在这种情况下，可以使用“允许受信任的 Microsoft 服务...”设置来允许此类服务访问数据、日志或分析。******
 
@@ -386,16 +386,16 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 
 如果已显式[将 RBAC 角色分配](storage-auth-aad.md#assign-rbac-roles-for-access-rights)到以下服务的特定实例的[系统分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)，则“允许受信任的 Microsoft 服务...”设置也允许该资源实例访问存储帐户。**** 在这种情况下，该实例的访问权限范围对应于分配到托管标识的 RBAC 角色。
 
-| 服务                        | 资源提供程序名称                 | 目的            |
+| 服务                        | 资源提供程序名称                 | 目标            |
 | :----------------------------- | :------------------------------------- | :----------------- |
 | Azure 认知搜索         | Microsoft.Search/searchServices        | 使认知搜索服务可以访问用于索引、处理和查询的存储帐户。 |
 | Azure 容器注册表任务 | Microsoft.ContainerRegistry/registries | 在构建容器映像时，ACR 任务可以访问存储帐户。 |
 | Azure 数据工厂             | Microsoft.DataFactory/factories        | 用于通过 ADF 运行时访问存储帐户。 |
 | Azure Data Share               | Microsoft.DataShare/accounts           | 允许通过数据共享访问存储帐户。 |
 | Azure 逻辑应用               | Microsoft.Logic/workflows              | 使逻辑应用能够访问存储帐户。 [了解详细信息](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity)。 |
-| Azure 机器学习服务 | Microsoft.MachineLearningServices      | 授权 Azure 机器学习工作区将试验输出、模型和日志写入 Blob 存储并读取数据。 [了解详细信息](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace)。 | 
+| Azure 机器学习服务 | Microsoft.MachineLearningServices      | 授权 Azure 机器学习工作区将试验输出、模型和日志写入 Blob 存储并读取数据。 [了解详细信息](/azure/machine-learning/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace)。 | 
 | Azure SQL 数据仓库       | Microsoft.Sql                          | 用于通过 PolyBase 从特定 SQL 数据库实例导入和导出数据。 [了解详细信息](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。 |
-| Azure 流分析         | Microsoft.StreamAnalytics             | 用于将流式处理作业中的数据写入 Blob 存储。 此功能目前处于预览状态。 [了解详细信息](/azure/stream-analytics/blob-output-managed-identity)。 |
+| Azure 流分析         | Microsoft.StreamAnalytics             | 用于将流式处理作业中的数据写入 Blob 存储。 此功能目前以预览版提供。 [了解详细信息](/azure/stream-analytics/blob-output-managed-identity)。 |
 | Azure Synapse Analytics        | Microsoft.Synapse/workspaces          | 允许从 Synapse Analytics 访问 Azure 存储中的数据。 |
 
 

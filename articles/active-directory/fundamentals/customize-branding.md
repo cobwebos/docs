@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 05/07/2020
 ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 441fdd14cc2c734b6ce532f3ad1d30663b2f56c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e0fc3cb450c253882ed34a2c4f5748efe55d0ec
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80049797"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982031"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>将品牌添加到组织的 Azure Active Directory 登录页面
 使用组织的徽标和自定义颜色方案，在 Azure Active Directory (Azure AD) 登录页面上提供一致外观和体验。 用户登录到组织的基于 Web 的应用（例如 Office 365，它使用 Azure AD 作为标识提供者时）时，将显示登录页面。
@@ -52,9 +52,9 @@ ms.locfileid: "80049797"
 
         - **语言.** 语言自动设置为默认语言，无法更改。
         
-        - **登录页面背景图像。** 选择要显示为登录页面背景的 .png 或 .jpg 图像文件。 
+        - **登录页面背景图像。** 选择要显示为登录页面背景的 .png 或 .jpg 图像文件。 此图像将锚定到浏览器的中心，并将缩放到可查看空间的大小。 不能选择大于1920x1080 像素大小或文件大小超过 300 KB 的图像。
         
-            图像大小不能超过 1920 x 1080 像素，并且其中的文件的大小必须小于 300 KB。
+            建议在没有强主题焦点的情况下使用图像，例如，屏幕中心出现一个不透明的白色框，并且可能会根据可查看空间的尺寸覆盖图像的任何部分。
 
         - **横幅徽标。** 用户在“我的应用”门户页面上输入用户名后，选择要显示在登录页面上的徽标的 .png 或 .jpg 版本****。
             
@@ -62,7 +62,7 @@ ms.locfileid: "80049797"
 
         - **用户名提示。** 键入提示文本，如果用户忘记用户名将会显示此提示文本。 此文本必须是 Unicode，不带链接或代码，且不能超过 64 个字符。 如果访客登录到应用，我们建议不添加此提示。
 
-        - **登录页面文本。** 键入显示在登录页面底部的文本。 可使用此文本传达其他信息，例如技术支持的电话号码或法律声明。 此文本必须为 Unicode，并且不能超过 256 个字符。 我们还建议不包括链接或 HTML 标记。
+        - **登录页面文本。** 键入显示在登录页面底部的文本。 可使用此文本传达其他信息，例如技术支持的电话号码或法律声明。 此文本必须为 Unicode，并且不能超过 256 个字符。
 
     - **高级设置**
             
@@ -101,7 +101,7 @@ ms.locfileid: "80049797"
 
 3. 在“配置公司品牌”页面上，根据本文的[自定义 Azure AD 登录页面](#customize-your-azure-ad-sign-in-page)部分中的说明添加、删除或更改任何信息****。
 
-4. 选择“保存”。 
+4. 选择“保存”  。
 
    最长可能需要一个小时才能显示用户对登录页的品牌元素所做的任何更改。
 
@@ -118,7 +118,7 @@ ms.locfileid: "80049797"
 
 3. 在“配置公司品牌”页面上，选择语言（例如法语），然后根据本文的[自定义 Azure AD 登录页面](#customize-your-azure-ad-sign-in-page)部分中的说明添加已翻译的信息****。
 
-4. 选择“保存”。 
+4. 选择“保存”  。
 
     “Contoso - 公司品牌”页面更新以显示新的法语配置****。
 
