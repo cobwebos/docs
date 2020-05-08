@@ -3,15 +3,15 @@ title: 使用 ISE 连接到 Azure 虚拟网络
 description: 创建可从 Azure 逻辑应用访问 Azure 虚拟网络（Vnet）的集成服务环境（ISE）
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 03/12/2020
-ms.openlocfilehash: fa63380a8e27dcc8f4de414c483f8d8ed2323e7b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/05/2020
+ms.openlocfilehash: 8fab8c51655c860bc63715a5313c18ac72d4b0cd
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234107"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871617"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络
 
@@ -80,42 +80,49 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
 * 如果创建了新的 Azure 虚拟网络和子网而没有任何限制，则无需在虚拟网络中设置[网络安全组（nsg）](../virtual-network/security-overview.md#network-security-groups)来控制子网之间的流量。
 
-* 在现有虚拟网络上，你可以*选择*通过[筛选子网中的网络流量](../virtual-network/tutorial-filter-network-traffic.md)来设置 nsg。 如果你想要执行此路由，或者如果你已在使用 Nsg，请确保在你具有 Nsg 或要设置 Nsg 的虚拟网络上的[此表中打开端口](#network-ports-for-ise)。
+* 对于现有虚拟网络，可以*选择性地*设置[网络安全组（nsg）](../virtual-network/security-overview.md#network-security-groups) ，以便[在子网之间筛选网络流量](../virtual-network/tutorial-filter-network-traffic.md)。 如果要实现此路线，或者如果已在使用 Nsg，请确保为这些 Nsg[打开此表中所述的端口](#network-ports-for-ise)。
 
-  > [!NOTE]
-  > 如果使用[NSG 安全规则](../virtual-network/security-overview.md#security-rules) *，则需要使用 TCP*和 UDP 协议。 NSG 安全规则描述必须为需要访问这些端口的 IP 地址打开的端口。 确保这些终结点之间存在的任何防火墙、路由器或其他项也会保留这些 IP 地址可访问的那些端口。
+  设置[NSG 安全规则](../virtual-network/security-overview.md#security-rules)时，需要*同时*使用**TCP**和**UDP**协议，或者也可以选择**任何**协议，这样就不必为每个协议创建单独的规则。 NSG 安全规则描述必须为需要访问这些端口的 IP 地址打开的端口。 确保这些终结点之间存在的任何防火墙、路由器或其他项也会保留这些 IP 地址可访问的那些端口。
 
 <a name="network-ports-for-ise"></a>
 
 ### <a name="network-ports-used-by-your-ise"></a>ISE 使用的网络端口
 
-此表介绍你的 ISE 使用的 Azure 虚拟网络中的端口以及这些端口的使用位置。 为了帮助降低创建安全规则时的复杂性，表中的[服务标记](../virtual-network/service-tags-overview.md)代表特定 Azure 服务的 IP 地址前缀组。
+下表介绍了 ISE 需要访问的端口和这些端口的用途。 为了在设置安全规则时帮助降低复杂性，此表使用[服务标记](../virtual-network/service-tags-overview.md)来表示特定 Azure 服务的 IP 地址前缀组。 如果提到，*内部 ise*和*外部 ise*指的是在[创建 ISE 期间选择的访问终结点](connect-virtual-network-vnet-isolated-environment.md#create-environment)。 有关详细信息，请参阅[终结点访问](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。
 
 > [!IMPORTANT]
-> 源端口是暂时的，因此请确保将其设置为`*`适用于所有规则。 如上所述，内部 ISE 和外部 ISE 引用[在创建 ISE 时选择的终结点](connect-virtual-network-vnet-isolated-environment.md#create-environment)。 有关详细信息，请参阅[终结点访问](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 
+> 对于所有规则，请确保将源端口设置为`*` ，因为源端口是暂时的。
 
-| 目的 | 方向 | 目标端口 | 源服务标记 | 目标服务标记 | 注意 |
-|---------|-----------|-------------------|--------------------|-------------------------|-------|
-| Intersubnet 虚拟网络中的通信 | 入站和出站 | * | 包含 ISE 子网的虚拟网络的地址空间 | 包含 ISE 子网的虚拟网络的地址空间 | 在虚拟网络中的子网*之间*流动的流量是必需的。 <p><p>**重要提示**：对于要在每个子网中的*组件*之间流动的流量，请确保打开每个子网中的所有端口。 |
-| 与逻辑应用的通信 | 入站 | 443 | 内部 ISE： <br>VirtualNetwork <p><p>外部 ISE： <br>Internet <br>（请参阅**注释**列） | VirtualNetwork | 可以不使用**Internet**服务标记，而是指定在逻辑应用中调用任何请求触发器或 webhook 的计算机或服务的源 IP 地址。 <p><p>**重要提示**：关闭或阻止此端口会阻止对具有请求触发器的逻辑应用的 HTTP 调用。 |
-| 逻辑应用运行历史记录 | 入站 | 443 | 内部 ISE： <br>VirtualNetwork <p><p>外部 ISE： <br>Internet <br>（请参阅**注释**列） | VirtualNetwork | 可以指定要从中查看逻辑应用运行历史记录的计算机或服务的源 IP 地址，而不是使用**Internet**服务标记。 <p><p>**重要提示**：尽管关闭或阻止此端口不会阻止你查看运行历史记录，但无法查看该运行历史记录中每个步骤的输入和输出。 |
-| 逻辑应用设计器 - 动态属性 | 入站 | 454 | LogicAppsManagement | VirtualNetwork | 请求来自该区域的逻辑应用访问终结点[入站](../logic-apps/logic-apps-limits-and-config.md#inbound)IP 地址。 |
-| 连接器部署 | 入站 | 454 | AzureConnectors | VirtualNetwork | 部署和更新连接器需要。 关闭或阻止此端口会导致 ISE 部署失败，并阻止连接器更新或修复。 |
-| 网络运行状况检查 | 入站 | 454 | LogicApps | VirtualNetwork | 请求来自逻辑应用访问终结点，适用于该区域的[入站](../logic-apps/logic-apps-limits-and-config.md#inbound)和[出站](../logic-apps/logic-apps-limits-and-config.md#outbound)IP 地址。 |
-| 应用服务管理依赖项 | 入站 | 454、455 | AppServiceManagement | VirtualNetwork | |
-| 来自 Azure 流量管理器的通信 | 入站 | 内部 ISE：454 <p><p>外部 ISE：443 | AzureTrafficManager | VirtualNetwork | |
-| API 管理 - 管理终结点 | 入站 | 3443 | APIManagement | VirtualNetwork | |
-| 连接器策略部署 | 入站 | 3443 | APIManagement | VirtualNetwork | 部署和更新连接器需要。 关闭或阻止此端口会导致 ISE 部署失败，并阻止连接器更新或修复。 |
-| 来自逻辑应用的通信 | 出站 | 80、443 | VirtualNetwork | 取决于目标 | 逻辑应用需要与其通信的外部服务的终结点。 |
-| Azure Active Directory | 出站 | 80、443 | VirtualNetwork | AzureActiveDirectory | |
-| 连接管理 | 出站 | 443 | VirtualNetwork  | 应用服务 | |
-| 发布诊断日志和指标 | 出站 | 443 | VirtualNetwork  | AzureMonitor | |
-| Azure 存储依赖项 | 出站 | 80、443、445 | VirtualNetwork | 存储 | |
-| Azure SQL 依赖关系 | 出站 | 1433 | VirtualNetwork | SQL | |
-| Azure 资源运行状况 | 出站 | 1886 | VirtualNetwork | AzureMonitor | 将运行状况状态发布到资源运行状况时必需的 |
-| “记录到事件中心”策略和监视代理中的依赖项 | 出站 | 5672 | VirtualNetwork | EventHub | |
-| 访问角色实例之间的 Azure Redis 缓存实例 | 入站 <br>出站 | 6379-6383 | VirtualNetwork | VirtualNetwork | 此外，要使 ISE 使用 Azure Cache for Redis，必须打开[Azure cache For REDIS 常见问题中所述的这些出站和入站端口](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements)。 |
-||||||
+#### <a name="inbound-security-rules"></a>入站安全规则
+
+| 目标 | 源服务标记或 IP 地址 | 源端口 | 目标服务标记或 IP 地址 | 目标端口 | 说明 |
+|---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
+| 虚拟网络内的 Intersubnet 通信 | 包含 ISE 子网的虚拟网络的地址空间 | * | 包含 ISE 子网的虚拟网络的地址空间 | * | 在虚拟网络中的子网*之间*流动的流量是必需的。 <p><p>**重要提示**：对于要在每个子网中的*组件*之间流动的流量，请确保打开每个子网中的所有端口。 |
+| 两者： <p>与逻辑应用的通信 <p><p>逻辑应用的运行历史记录| 内部 ISE： <br>**VirtualNetwork** <p><p>外部 ISE： **Internet**或请参阅**说明** | * | **VirtualNetwork** | 443 | 你可以指定以下项的源 IP 地址，而不是使用**Internet**服务标记： <p><p>-在逻辑应用中调用任何请求触发器或 webhook 的计算机或服务 <p>-要从中访问逻辑应用运行历史记录的计算机或服务 <p><p>**重要提示**：关闭或阻止此端口会阻止调用具有请求触发器或 webhook 的逻辑应用。 还会阻止你访问运行历史记录中每个步骤的输入和输出。 但是，不会阻止你访问逻辑应用运行历史记录。|
+| 逻辑应用设计器-动态属性 | **LogicAppsManagement** | * | **VirtualNetwork** | 454 | 请求来自该区域的逻辑应用访问终结点的[入站 IP 地址](../logic-apps/logic-apps-limits-and-config.md#inbound)。 |
+| 连接器部署 | **AzureConnectors** | * | **VirtualNetwork** | 454 | 部署和更新连接器时需要。 关闭或阻止此端口会导致 ISE 部署失败，并阻止连接器更新和修补程序。 |
+| 网络运行状况检查 | **LogicApps** | * | **VirtualNetwork** | 454 | 请求来自逻辑应用访问终结点的[入站 ip 地址](../logic-apps/logic-apps-limits-and-config.md#inbound)和该区域的[出站 ip 地址](../logic-apps/logic-apps-limits-and-config.md#outbound)。 |
+| 应用服务管理依赖项 | **AppServiceManagement** | * | **VirtualNetwork** | 454、455 ||
+| 来自 Azure 流量管理器的通信 | **AzureTrafficManager** | * | **VirtualNetwork** | 内部 ISE：454 <p><p>外部 ISE：443 ||
+| 两者： <p>连接器策略部署 <p>API 管理 - 管理终结点 | **APIManagement** | * | **VirtualNetwork** | 3443 | 对于连接器策略部署，需要进行端口访问以部署和更新连接器。 关闭或阻止此端口会导致 ISE 部署失败，并阻止连接器更新和修补程序。 |
+| 访问角色实例之间的 Azure Redis 缓存实例 | **VirtualNetwork** | * | **VirtualNetwork** | 6379-6383，还请参阅**说明**| 要使 ISE 使用适用于 Redis 的 Azure 缓存，必须打开这些[出站和入站端口，这些端口由 Azure cache 用于 REDIS 常见问题解答](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements)。 |
+|||||||
+
+#### <a name="outbound-security-rules"></a>入站安全规则
+
+| 目标 | 源服务标记或 IP 地址 | 源端口 | 目标服务标记或 IP 地址 | 目标端口 | 说明 |
+|---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
+| 虚拟网络内的 Intersubnet 通信 | 包含 ISE 子网的虚拟网络的地址空间 | * | 包含 ISE 子网的虚拟网络的地址空间 | * | 在虚拟网络中的子网*之间*流动的流量是必需的。 <p><p>**重要提示**：对于要在每个子网中的*组件*之间流动的流量，请确保打开每个子网中的所有端口。 |
+| 来自逻辑应用的通信 | **VirtualNetwork** | * | 取决于目标 | 80、443 | 目标取决于逻辑应用需要与其通信的外部服务的终结点。 |
+| Azure Active Directory | **VirtualNetwork** | * | **AzureActiveDirectory** | 80、443 ||
+| Azure 存储依赖项 | **VirtualNetwork** | * | **存储** | 80、443、445 ||
+| 连接管理 | **VirtualNetwork** | * | **AppService** | 443 ||
+| & 度量值发布诊断日志 | **VirtualNetwork** | * | **AzureMonitor** | 443 ||
+| Azure SQL 依赖关系 | **VirtualNetwork** | * | **SQL** | 1433 ||
+| Azure 资源运行状况 | **VirtualNetwork** | * | **AzureMonitor** | 1886 | 将运行状况状态发布到资源运行状况是必需的。 |
+| “记录到事件中心”策略和监视代理中的依赖项 | **VirtualNetwork** | * | **EventHub** | 5672 ||
+| 访问角色实例之间的 Azure Redis 缓存实例 | **VirtualNetwork** | * | **VirtualNetwork** | 6379-6383，还请参阅**说明**| 要使 ISE 使用适用于 Redis 的 Azure 缓存，必须打开这些[出站和入站端口，这些端口由 Azure cache 用于 REDIS 常见问题解答](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements)。 |
+|||||||
 
 <a name="create-environment"></a>
 
@@ -133,7 +140,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
    ![提供环境详细信息](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
-   | properties | 必选 | Value | 说明 |
+   | 属性 | 必须 | Value | 说明 |
    |----------|----------|-------|-------------|
    | **订阅** | 是 | <*Azure-订阅-名称*> | 用于环境的 Azure 订阅 |
    | **资源组** | 是 | <*Azure-资源组-名称*> | 要在其中创建环境的新的或现有的 Azure 资源组 |
@@ -141,7 +148,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
    | **位置** | 是 | <*Azure-数据中心-地区*> | 要在其中部署环境的 Azure 数据中心区域 |
    | **SKU** | 是 | **高级**或**开发人员（无 SLA）** | 要创建和使用的 ISE SKU。 有关这些 Sku 之间的差异，请参阅[ISE sku](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)。 <p><p>**重要说明**：此选项仅在创建 ISE 时可用，不能在以后更改。 |
    | **额外容量** | 高级： <br>是 <p><p>开发人员版： <br>不适用 | 高级： <br>0到10 <p><p>开发人员版： <br>不适用 | 要用于此 ISE 资源的其他处理单元的数量。 若要在创建后添加容量，请参阅[添加 ISE 容量](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)。 |
-   | **访问终结点** | 是 | **内部**或**外部** | 要用于 ISE 的访问终结点的类型。 这些终结点确定 ISE 中逻辑应用的请求或 webhook 触发器是否可以从虚拟网络外部接收调用。 <p><p>你的选择还会影响你可以查看和访问逻辑应用运行历史记录中的输入和输出的方式。 有关详细信息，请参阅[ISE 终结点访问](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 <p><p>**重要说明**：此选项仅在创建 ISE 时可用，不能在以后更改。 |
+   | **访问终结点** | 是 | **内部**或**外部** | 要用于 ISE 的访问终结点的类型。 这些终结点确定 ISE 中逻辑应用的请求或 webhook 触发器是否可以从虚拟网络外部接收调用。 <p><p>你的选择还会影响你可以查看和访问逻辑应用运行历史记录中的输入和输出的方式。 有关详细信息，请参阅[ISE 终结点访问](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 <p><p>**重要提示**：只能在 ISE 创建过程中选择访问终结点，以后无法更改此选项。 |
    | **虚拟网络** | 是 | <*Azure-虚拟网络名称*> | 要注入环境以便该环境中的逻辑应用可以访问虚拟网络的 Azure 虚拟网络。 如果没有网络，请[先创建 Azure 虚拟网络](../virtual-network/quick-create-portal.md)。 <p><p>**重要提示**：只有在创建 ISE 时*才*可以执行此注入。 |
    | **子网** | 是 | <*子网-资源列表*> | ISE 需要四个*空*子网，以便在您的环境中创建和部署资源。 要创建每个子网，请[按照此表下方的步骤操作](#create-subnet)。 |
    |||||

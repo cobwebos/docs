@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1fffb3eb10b7d3cbb3360a03112c3b4d7db8d109
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 5356ff0ac165deefc5053cf4faa40c1159e98678
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209479"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856898"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 可以通过两种主要方式部署[Azure 文件](storage-files-introduction.md)：直接装载无服务器 Azure 文件共享，或使用 Azure 文件同步在本地缓存 azure 文件共享。你选择哪种部署选项会更改你在规划部署时需要考虑的事项。 
@@ -84,7 +84,7 @@ Azure 文件支持两种不同类型的加密：传输过程中的加密，它�
     - 高级文件共享使用预配的计费模式进行计费，这意味着你需要为预配的存储量而不是实际请求的存储量付费。 
     - 标准文件共享使用即用即付模型进行计费，其中包括实际使用的存储量的基本成本，并根据使用共享的方式增加事务成本。 使用标准文件共享时，如果你使用（读取/写入/装载） Azure 文件共享，则你的帐单将会增加。
 - **冗余选项**
-    - 高级文件共享仅适用于本地冗余（LRS）和区域冗余（ZRS）存储。 
+    - 高级文件共享仅适用于本地冗余（LRS）和区域冗余（ZRS）存储。
     - 标准文件共享可用于本地冗余、区域冗余、异地冗余（GRS）和异地冗余（GZRS）存储。
 - **文件共享的最大大小**
     - 高级文件共享最多可预配到 100 TiB，无需任何额外的工作。

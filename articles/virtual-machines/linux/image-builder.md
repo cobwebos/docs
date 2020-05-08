@@ -4,15 +4,15 @@ description: 使用 Azure 映像生成器创建 Linux VM。
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
-ms.topic: article
+ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
-ms.openlocfilehash: 0d36d7db4d85ece8de77040925c535305951562b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b50b2a9bfca99e1868c083759cce26bb176789f4
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80066683"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792405"
 ---
 # <a name="preview-create-a-linux-vm-with-azure-image-builder"></a>预览：使用 Azure 映像生成器创建 Linux VM
 
@@ -215,7 +215,7 @@ cat helloImageTemplateLinux.json
 
 有关此 json 文件的更多详细信息，请参阅[图像生成器模板参考](image-builder-json.md)
 
-## <a name="clean-up"></a>清除
+## <a name="clean-up"></a>清理
 
 完成后，可以删除资源。
 

@@ -140,6 +140,8 @@
                   href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-oms.md
 - name: 概念
   items:
+    - name: 映像
+      href: shared-image-galleries.md
     - name: Azure 资源管理器
       href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 区域
@@ -524,19 +526,64 @@
         - name: 使用 REST 获取使用情况指标
           href: ../linux/metrics-vm-usage-rest.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 使用映像
+      displayName: 'SIG, AMI, image'
       items:
-        - name: 共享映像
+        - name: 创建和共享映像
           items:
-            - name: 概述
-              href: shared-image-galleries.md
             - name: PowerShell
-              href: shared-images.md
-            - name: 门户
-              href: shared-images-portal.md
+              items:
+                - name: 创建库
+                  href: ../shared-images-powershell.md
+                - name: 创建映像
+                  items:
+                    - name: 从 VM
+                      href: ../image-version-vm-powershell.md
+                    - name: 从托管映像迁移
+                      href: ../image-version-managed-image-powershell.md
+                    - name: 从另一个库复制
+                      href: ../image-version-another-gallery-powershell.md
+                - name: 创建 VM
+                  items:
+                    - name: 通用
+                      href: ../vm-generalized-image-version-powershell.md
+                    - name: 专用
+                      href: ../vm-specialized-image-version-powershell.md
+                - name: 更新映像资源
+                  href: ../update-image-resources-powershell.md
             - name: CLI
-              href: ../linux/shared-images.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: 用于共享的应用注册
-              href: share-images-across-tenants.md
+              items:
+                - name: 创建库
+                  href: ../linux/shared-images.md
+                - name: 创建映像
+                  items:
+                    - name: 从 VM
+                      href: ../image-version-vm-cli.md
+                    - name: 从托管映像迁移
+                      href: ../image-version-managed-image-cli.md
+                    - name: 从另一个库复制
+                      href: ../image-version-another-gallery-cli.md
+                    - name: 从另一个库复制
+                      href: ../image-version-another-gallery-cli.md
+                - name: 创建 VM
+                  items:
+                    - name: 通用
+                      href: ../vm-generalized-image-version-cli.md
+                - name: 更新映像资源
+                  href: ../update-image-resources-cli.md
+            - name: 门户
+              items:
+                - name: 创建库、映像和 VM
+                  href: shared-images-portal.md
+            - name: 资源管理器模板
+              items:
+                - name: 创建共享映像库
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
+                - name: 在共享映像库中创建映像定义
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
+                - name: 在共享映像库中创建映像版本
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
+                - name: 从映像版本创建 VM
+                  href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
             - name: 排查共享映像问题
               href: troubleshooting-shared-images.md
         - name: 映像生成器（预览版）

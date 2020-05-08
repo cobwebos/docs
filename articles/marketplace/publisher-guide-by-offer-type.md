@@ -1,5 +1,5 @@
 ---
-title: Microsoft 商用 marketplace 按产品/服务类型发布指南
+title: 按产品/服务类型发布指南-Microsoft 商用 marketplace
 description: 本文介绍了 Microsoft 商业应用商店中提供的产品/服务类型。
 author: dsindona
 ms.service: marketplace
@@ -7,22 +7,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 6521f19ea566719fee39c238adda8e3a068e2c25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 39bc4e3cc653589686be539da127279b3db41be6
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81419283"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872350"
 ---
 # <a name="publishing-guide-by-offer-type"></a>发布指南（按产品/服务类型）
 
-[确定发布选项](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)后，即可选择用于提供产品/服务的产品/服务类型。
+本文介绍了商业应用商店中提供的产品/服务类型。 “产品/服务类型”定义商品结构，其中包括元数据、项目和其他用于在市场中呈现产品/服务的内容**。
 
- “产品/服务类型”定义商品结构，其中包括元数据、项目和其他用于在市场中呈现产品/服务的内容**。
+在你创建产品/服务并[决定发布选项](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)之后，你必须选择用于提供产品/服务的产品/服务类型，然后才能创建产品/服务。 套餐类型对应于你要发布的解决方案、应用或服务套餐的类型，并取决于与 Microsoft 产品和服务的匹配情况。
 
-在创建套餐之前，必须选择套餐类型。 套餐类型对应于你要发布的解决方案、应用或服务套餐的类型，并取决于与 Microsoft 产品和服务的匹配情况。
-
-可以采用不同的方式配置单个产品/服务类型，以支持不同的发布选项、操作调用、预配或定价。 套餐类型的发布选项和配置也取决于套餐资格和技术要求。
+可以采用不同的方式配置单个产品/服务类型，以启用不同的发布选项、操作调用、预配或定价。 套餐类型的发布选项和配置也取决于套餐资格和技术要求。
 
 在创建产品/服务之前，请务必查看店面和产品/服务类型资格要求以及技术方面的发布要求。
 

@@ -1,14 +1,14 @@
 ---
 title: 如何通过 PowerShell 管理分配
 description: 了解如何通过官方 Azure 蓝图 PowerShell 模块 Az. 蓝图管理蓝图分配。
-ms.date: 09/30/2019
+ms.date: 05/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 0868e5e207202511c1981a930870bfdc68a77a8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fa0f89df79c4ae1c5b66998089f04575bd53ea37
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80677430"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82863971"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>如何通过 PowerShell 管理分配
 
@@ -205,8 +205,7 @@ ResourceGroups    : ResourceGroup
 
 ### <a name="example-2-use-a-json-assignment-definition-file"></a>示例2：使用 JSON 赋值定义文件
 
-下面的示例创建了几乎与[示例 1](#example-1-provide-parameters)相同的分配。
-该示例演示如何使用 JSON 赋值定义文件和**AssignmentFile**参数，而不是将参数传递给 cmdlet。 此外，将**excludedPrincipals**属性配置为**锁定**的一部分。 没有适用于**excludedPrincipals**的 PowerShell 参数，只能通过 JSON 赋值定义文件设置属性来配置属性。
+下面的示例创建了几乎与[示例 1](#example-1-provide-parameters)相同的分配。 该示例演示如何使用 JSON 赋值定义文件和**AssignmentFile**参数，而不是将参数传递给 cmdlet。 此外，将**excludedPrincipals**属性配置为**锁定**的一部分。 没有适用于**excludedPrincipals**的 PowerShell 参数，只能通过 JSON 赋值定义文件设置属性来配置属性。
 
 ```json
 {
@@ -335,7 +334,7 @@ $blueprintAssignment = Get-AzBlueprintAssignment -Name 'Assignment-lock-resource
 Remove-AzBlueprintAssignment -InputObject $blueprintAssignment -SubscriptionId '{subId}'
 ```
 
-## <a name="end-to-end-code-example"></a>端到端代码示例
+## <a name="code-example"></a>代码示例
 
 将所有步骤组合在一起后，以下示例将获取蓝图定义，然后创建、更新和删除特定订阅中表示为`{subId}`的蓝图分配：
 

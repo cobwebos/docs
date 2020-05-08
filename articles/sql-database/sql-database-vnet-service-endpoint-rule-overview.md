@@ -11,19 +11,19 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 7032f9e8f57ea9400bf6a92f89b13fa1866f8fc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e7e1f91cd4b647472e1899c3485d038f25b5b24
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414399"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82651804"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>为数据库服务器使用虚拟网络服务终结点和规则
 
-*虚拟网络规则*是一种防火墙安全功能，用于控制是否允许 Azure [SQL 数据库](sql-database-technical-overview.md)中你的单一数据库和弹性池的数据库服务器或 [SQL 数据仓库](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)中你的数据库的数据库服务器接受从虚拟网络中的特定子网发送的通信。 本文说明了为何有时候最好选择虚拟网络规则功能来安全地启用到 Azure SQL 数据库和 SQL 数据仓库的通信。
+*虚拟网络规则*是一种防火墙安全功能，用于控制 Azure [SQL 数据库](sql-database-technical-overview.md)中的单个数据库和弹性池的数据库服务器，或者[是否接受从](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)虚拟网络中的特定子网发送的通信。 本文介绍虚拟网络规则功能有时是安全允许与 Azure SQL 数据库和 Azure Synapse Analytics 进行通信的最佳选项。
 
 > [!IMPORTANT]
-> 本文适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。 本文不  适用于 Azure SQL 数据库中的**托管实例**部署，因为它没有与之关联的服务终结点。
+> 本文适用于 Azure SQL server，以及在 Azure SQL server 上创建的 SQL 数据库和 Azure Synapse 分析数据库。 为简单起见，在同时引用 SQL 数据库和 Azure Synapse 分析时，将使用 SQL 数据库。 本文不  适用于 Azure SQL 数据库中的**托管实例**部署，因为它没有与之关联的服务终结点。
 
 若要创建虚拟网络规则，首先必须具有可供规则引用的[虚拟网络服务终结点][vm-virtual-network-service-endpoints-overview-649d]。
 
@@ -105,11 +105,11 @@ When searching for blogs about ASM, you probably need to use this old and now-fo
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>将 VNet 服务终结点与 Azure 存储配合使用的影响
 
-Azure 存储已实现相同的功能，允许限制到 Azure 存储帐户的连接。 如果选择将此功能与某个 Azure 存储帐户配合使用，而该帐户正由 Azure SQL Server 使用，则可能会出现问题。 接下来会列出受此影响的 Azure SQL 数据库和 Azure SQL 数据仓库功能并对其进行讨论。
+Azure 存储已实现相同的功能，允许限制到 Azure 存储帐户的连接。 如果选择将此功能与某个 Azure 存储帐户配合使用，而该帐户正由 Azure SQL Server 使用，则可能会出现问题。 下一步是对 Azure SQL 数据库和 Azure Synapse 分析功能的列表和讨论，这些功能受此影响。
 
-### <a name="azure-sql-data-warehouse-polybase"></a>Azure SQL 数据仓库 PolyBase
+### <a name="azure-synapse-analytics-polybase"></a>Azure Synapse Analytics PolyBase
 
-PolyBase 通常用于将数据从 Azure 存储帐户加载到 Azure SQL 数据仓库中。 如果正从 Azure 存储帐户加载数据，而该帐户只允许一组 VNet-子网的访问，则会断开从 PolyBase 到该帐户的连接。 对于连接到 Azure 存储（已通过安全方式连接到 VNet）的 Azure SQL 数据仓库，若要启用 PolyBase 导入和导出方案，请执行如下所示的步骤：
+PolyBase 通常用于从 Azure 存储帐户将数据加载到 Azure Synapse Analytics 中。 如果正从 Azure 存储帐户加载数据，而该帐户只允许一组 VNet-子网的访问，则会断开从 PolyBase 到该帐户的连接。 若要通过 Azure Synapse Analytics （连接到已保护到 VNet 的 Azure 存储）启用 PolyBase 导入和导出方案，请按照以下步骤进行操作：
 
 #### <a name="prerequisites"></a>先决条件
 
@@ -122,7 +122,7 @@ PolyBase 通常用于将数据从 Azure 存储帐户加载到 Azure SQL 数据�
 
 #### <a name="steps"></a>步骤
 
-1. 在 PowerShell 中，**向 Azure Active Directory (AAD) 注册**托管 Azure SQL 数据仓库实例的 Azure SQL Server：
+1. 在 PowerShell 中，通过 Azure Active Directory （AAD）**注册 azure SQL Server**托管 Azure Synapse 分析实例：
 
    ```powershell
    Connect-AzAccount
@@ -135,11 +135,11 @@ PolyBase 通常用于将数据从 Azure 存储帐户加载到 Azure SQL 数据�
    > [!NOTE]
    > - 如果有常规用途 v1 或 Blob 存储帐户，则必须先按照此[指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)将该帐户**升级到 v2** 帐户。
    > - 若要了解 Azure Data Lake Storage Gen2 的已知问题，请参阅此[指南](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)。
-
-1. 在存储帐户下导航到“访问控制(标识和访问管理)”，然后单击“添加角色分配”。   将“存储 Blob 数据参与者”  RBAC 角色分配给托管 Azure SQL 数据仓库的 Azure SQL Server，后者已在步骤 #1 中向 Azure Active Directory (AAD) 注册。
+    
+1. 在存储帐户下，导航到 "**访问控制（IAM）**"，然后选择 "**添加角色分配**"。 从下拉菜单中选择**存储 Blob 数据参与者**RBAC 角色。 对于 "**分配访问权限**"，选择**Azure AD 用户、组或服务主体**。 对于 "**选择**"，键入在步骤1中注册到 AZURE ACTIVE DIRECTORY （AAD）的 azure SQL Server （Azure Synapse Analytics 数据仓库逻辑服务器）的服务器名称。 仅使用服务器名称，而不是完全限定的 DNS**名称（database.windows.net** ）
 
    > [!NOTE]
-   > 只有具有“所有者”特权的成员能够执行此步骤。 若要了解 Azure 资源的各种内置角色，请参阅此[指南](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
+   > 只有拥有存储帐户权限的成员才可以执行此步骤。 若要了解 Azure 资源的各种内置角色，请参阅此[指南](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
   
 1. **通过 Polybase 连接到 Azure 存储帐户：**
 
@@ -159,15 +159,15 @@ PolyBase 通常用于将数据从 Azure 存储帐户加载到 Azure SQL 数据�
        > - 使用 Azure 存储访问密钥时，不需指定 SECRET，因为此机制在后台使用[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
        > - 使用 Azure 存储帐户以安全方式连接到 VNet 时，IDENTITY 名称应该为 **'托管服务标识'** ，以便通过 PolyBase 进行连接。
 
-   1. 使用 PolyBase 创建外部数据`abfss://`源，并使用连接到通用 v2 存储帐户的方案：
+   1. 使用 `abfss://` 方案创建外部数据源，以便通过 PolyBase 连接到常规用途 v2 存储帐户：
 
        ```SQL
        CREATE EXTERNAL DATA SOURCE ext_datasource_with_abfss WITH (TYPE = hadoop, LOCATION = 'abfss://myfile@mystorageaccount.dfs.core.windows.net', CREDENTIAL = msi_cred);
        ```
 
        > [!NOTE]
-       > - 如果已经有外部表关联到常规用途 v1 或 Blob 存储帐户，则应先删除这些外部表，然后删除相应的外部数据源。 然后创建外部数据源， `abfss://`并将其方案连接到常规用途 v2 存储帐户，如上所述，并使用此新的外部数据源重新创建所有外部表。 可以通过[生成和发布脚本向导](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard)为所有外部表生成 create-script，以方便使用。
-       > - 有关`abfss://`方案的详细信息，请参阅本[指南](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri)。
+       > - 如果已经有外部表关联到常规用途 v1 或 Blob 存储帐户，则应先删除这些外部表，然后删除相应的外部数据源。 然后，使用 `abfss://` 方案按照上面的步骤创建连接到常规用途 v2 存储帐户的外部数据源，并使用此新的外部数据源重新创建所有外部表。 可以通过[生成和发布脚本向导](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard)为所有外部表生成 create-script，以方便使用。
+       > - 有关 `abfss://` 方案的详细信息，请参阅此[指南](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri)。
        > - 有关 CREATE EXTERNAL DATA SOURCE 的详细信息，请参阅此[指南](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql)。
 
    1. 使用[外部表](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql)进行正常查询。

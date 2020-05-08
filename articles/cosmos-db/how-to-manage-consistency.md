@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: mjbrown
-ms.openlocfilehash: e18abf5d8e26dba7a48bd1deb7d53102b9971690
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28266471fb1e440a45e412ee889e0706cfc2ce49
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82184276"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82870088"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中管理一致性级别
 
@@ -23,7 +23,13 @@ ms.locfileid: "82184276"
 
 [默认一致性级别](consistency-levels.md)是客户端默认情况下使用的一致性级别。
 
-### <a name="cli"></a>CLI
+# <a name="azure-portal"></a>[Azure 门户](#tab/portal)
+
+若要查看或修改默认一致性级别，请登录到 Azure 门户。 找到你的 Azure Cosmos 帐户，打开“默认一致性”窗格****。 选择你希望用作新的默认值的一致性级别，然后选择“保存”****。 Azure 门户还使用音符提供了不同一致性级别的可视化效果。 
+
+![Azure 门户中的一致性菜单](./media/how-to-manage-consistency/consistency-settings.png)
+
+# <a name="cli"></a>[CLI](#tab/cli)
 
 使用会话一致性创建 Cosmos 帐户，并更新默认一致性。
 
@@ -35,7 +41,7 @@ az cosmosdb create --name $accountName --resource-group $resourceGroupName --def
 az cosmosdb update --name $accountName --resource-group $resourceGroupName --default-consistency-level Strong
 ```
 
-### <a name="powershell"></a>PowerShell
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 使用会话一致性创建 Cosmos 帐户，并更新默认一致性。
 
@@ -49,11 +55,7 @@ Update-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
   -Name $accountName -DefaultConsistencyLevel "Strong"
 ```
 
-### <a name="azure-portal"></a>Azure 门户
-
-若要查看或修改默认一致性级别，请登录到 Azure 门户。 找到你的 Azure Cosmos 帐户，打开“默认一致性”窗格****。 选择你希望用作新的默认值的一致性级别，然后选择“保存”****。 Azure 门户还使用音符提供了不同一致性级别的可视化效果。 
-
-![Azure 门户中的一致性菜单](./media/how-to-manage-consistency/consistency-settings.png)
+---
 
 ## <a name="override-the-default-consistency-level"></a>替代默认一致性级别
 
@@ -62,7 +64,9 @@ Update-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
 > [!TIP]
 > 一致性只能在请求级别**宽松**。 若要从较弱的一致性转移到更强的一致性，请更新 Cosmos 帐户的默认一致性。
 
-### <a name="net-sdk-v2"></a><a id="override-default-consistency-dotnet"></a>.NET SDK V2
+### <a name="net-sdk"></a><a id="override-default-consistency-dotnet"></a>.NET SDK
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 ```csharp
 // Override consistency at the client level
@@ -74,7 +78,7 @@ RequestOptions requestOptions = new RequestOptions { ConsistencyLevel = Consiste
 var response = await client.CreateDocumentAsync(collectionUri, document, requestOptions);
 ```
 
-### <a name="net-sdk-v3"></a><a id="override-default-consistency-dotnet-v3"></a>.NET SDK V3
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
 ```csharp
 // Override consistency at the request level via request options
@@ -86,8 +90,11 @@ var response = await client.GetContainer(databaseName, containerName)
         new PartitionKey(itemPartitionKey),
         requestOptions);
 ```
+---
 
-### <a name="java-async-sdk"></a><a id="override-default-consistency-java-async"></a>Java 异步 SDK
+### <a name="java-sdk"></a><a id="override-default-consistency-java"></a>Java SDK
+
+# <a name="java-async-sdk"></a>[Java 异步 SDK](#tab/javaasync)
 
 ```java
 // Override consistency at the client level
@@ -101,13 +108,14 @@ AsyncDocumentClient client =
                 .withConnectionPolicy(policy).build();
 ```
 
-### <a name="java-sync-sdk"></a><a id="override-default-consistency-java-sync"></a>Java 同步 SDK
+# <a name="java-sync-sdk"></a>[Java 同步 SDK](#tab/javasync)
 
 ```java
 // Override consistency at the client level
 ConnectionPolicy connectionPolicy = new ConnectionPolicy();
 DocumentClient client = new DocumentClient(accountEndpoint, accountKey, connectionPolicy, ConsistencyLevel.Eventual);
 ```
+---
 
 ### <a name="nodejsjavascripttypescript-sdk"></a><a id="override-default-consistency-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
@@ -137,7 +145,9 @@ Azure Cosmos DB 中的一致性级别之一是“会话”一致性**。 这是�
 
 若要手动管理会话令牌，请从响应中获取会话令牌并针对每个请求设置它们。 如果不需手动管理会话令牌，则不需要使用这些示例。 SDK 会自动跟踪会话令牌。 如果未手动设置会话令牌，则默认情况下，SDK 使用最新的会话令牌。
 
-### <a name="net-sdk-v2"></a><a id="utilize-session-tokens-dotnet"></a>.NET SDK V2
+### <a name="net-sdk"></a><a id="utilize-session-tokens-dotnet"></a>.NET SDK
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 ```csharp
 var response = await client.ReadDocumentAsync(
@@ -150,7 +160,7 @@ var response = await client.ReadDocumentAsync(
                 UriFactory.CreateDocumentUri(databaseName, collectionName, "SalesOrder1"), options);
 ```
 
-### <a name="net-sdk-v3"></a><a id="utilize-session-tokens-dotnet-v3"></a>.NET SDK V3
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
 ```csharp
 Container container = client.GetContainer(databaseName, collectionName);
@@ -161,8 +171,11 @@ ItemRequestOptions options = new ItemRequestOptions();
 options.SessionToken = sessionToken;
 ItemResponse<SalesOrder> response = await container.ReadItemAsync<SalesOrder>(salesOrder.Id, new PartitionKey(salesOrder.PartitionKey), options);
 ```
+---
 
-### <a name="java-async-sdk"></a><a id="utilize-session-tokens-java-async"></a>Java 异步 SDK
+### <a name="java-sdk"></a><a id="utilize-session-tokens-java"></a>Java SDK
+
+# <a name="java-async-sdk"></a>[Java 异步 SDK](#tab/javaasync)
 
 ```java
 // Get session token from response
@@ -184,7 +197,7 @@ requestOptions.setSessionToken(sessionToken);
 Observable<ResourceResponse<Document>> readObservable = client.readDocument(document.getSelfLink(), options);
 ```
 
-### <a name="java-sync-sdk"></a><a id="utilize-session-tokens-java-sync"></a>Java 同步 SDK
+# <a name="java-sync-sdk"></a>[Java 同步 SDK](#tab/javasync)
 
 ```java
 // Get session token from response
@@ -196,6 +209,7 @@ RequestOptions options = new RequestOptions();
 options.setSessionToken(sessionToken);
 ResourceResponse<Document> response = client.readDocument(documentLink, options);
 ```
+---
 
 ### <a name="nodejsjavascripttypescript-sdk"></a><a id="utilize-session-tokens-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
@@ -235,6 +249,6 @@ item = client.ReadItem(doc_link, options)
 * [Azure Cosmos DB 中的一致性级别](consistency-levels.md)
 * [管理区域之间的冲突](how-to-manage-conflicts.md)
 * [分区和数据分布](partition-data.md)
-* [现代分布式数据库系统设计中的一致性折衷](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
+* [现代分布式数据库系统设计中的一致性利弊](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 * [高可用性](high-availability.md)
 * [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

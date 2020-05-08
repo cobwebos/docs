@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 97c8f8a5bb2111264e9459a7d2128c1ab7c2503d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed7b01fb83ebd0c494f3f0f06a28dbf4e98c0b2d
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414435"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592071"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>创建按翻转窗口运行管道的触发器
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -110,6 +110,9 @@ ms.locfileid: "81414435"
 | **dependsOn: size** | 依赖项翻转窗口的大小。 | Timespan<br/>(hh:mm:ss)  | 一个正的时间跨度值，其中默认值为子触发器的窗口大小  | 否 |
 | **dependsOn: offset** | 依赖项触发器的偏移量。 | Timespan<br/>(hh:mm:ss) |  在自我依赖项中必须为负的时间跨度值。 如果未指定任何值，则该窗口与触发器本身相同。 | 自我依赖项：是<br/>其他：否  |
 
+> [!NOTE]
+> 发布翻转窗口触发器后，无法编辑**时间间隔**和**频率**。
+
 ### <a name="windowstart-and-windowend-system-variables"></a>WindowStart 和 WindowEnd 系统变量
 
 可以在**管道**定义中（即，作为查询的一部分），使用翻转窗口触发器的 **WindowStart** 和 **WindowEnd** 系统变量。 **触发器**定义中将系统变量作为参数传递给管道。 下面的示例演示如何将这些变量作为参数传递：
@@ -148,8 +151,8 @@ ms.locfileid: "81414435"
 ### <a name="existing-triggerresource-elements"></a>现有 TriggerResource 元素
 以下各点适用于现有 **TriggerResource** 元素：
 
-* 如果触发器的 **frequency** 元素（或窗口大小）的值更改，则已处理窗口的状态不会  重置。 触发器会根据新的窗口大小继续触发一段时间（从上次执行开始计算）。
-* 如果触发器的 **endTime** 元素的值更改（添加或更新），则已处理窗口的状态不会  重置。 触发器会遵循新的 **endTime** 值。 如果新的 **endTime** 值在已执行的窗口之前，则触发器会停止。 否则，触发器会在遇到新的 **endTime** 值停止。
+* 如果触发器的 **frequency** 元素（或窗口大小）的值更改，则已处理窗口的状态不会** 重置。 触发器会根据新的窗口大小继续触发一段时间（从上次执行开始计算）。
+* 如果触发器的 **endTime** 元素的值更改（添加或更新），则已处理窗口的状态不会** 重置。 触发器会遵循新的 **endTime** 值。 如果新的 **endTime** 值在已执行的窗口之前，则触发器会停止。 否则，触发器会在遇到新的 **endTime** 值停止。
 
 ### <a name="tumbling-window-trigger-dependency"></a>翻转窗口触发器依赖项
 
@@ -161,7 +164,7 @@ ms.locfileid: "81414435"
 
 本部分展示了如何使用 Azure PowerShell 创建、启动和监视触发器。
 
-1. 在 C:\ADFv2QuickStartPSH\ 文件夹中创建一个名为 **MyTrigger.json** 的且包含以下内容的 JSON 文件：
+1. 在 C:\ADFv2QuickStartPSH\ 文件夹中，创建包含以下内容的名为**mytrigger.json**的 json 文件：
 
     > [!IMPORTANT]
     > 保存 JSON 文件之前，请将 **startTime** 元素的值设置为当前 UTC 时间。 将 **endTime** 元素的值设置为比当前 UTC 时间早一小时。
@@ -209,7 +212,7 @@ ms.locfileid: "81414435"
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-4. 使用 **Start-AzDataFactoryV2Trigger** cmdlet 启动触发器：
+4. 使用**AzDataFactoryV2Trigger** cmdlet 启动触发器：
 
     ```powershell
     Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"

@@ -4,15 +4,15 @@ description: 本文介绍如何从 Azure Analysis Services 数据库备份和还
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/24/2020
+ms.date: 05/05/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2866ec860cbc9037aa6b57389b35f17ec71a7c9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: aa98a13b84e89c90e29525fb6743ac33faf1d917
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82145459"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871293"
 ---
 # <a name="backup-and-restore"></a>备份和还原
 
@@ -24,7 +24,7 @@ ms.locfileid: "82145459"
 > 
 
 > [!NOTE]
-> 如果该存储帐户位于不同的区域，则必须将防火墙设置配置为允许从**所有网络**进行访问。 不支持为包含白名单 IP 地址并允许受信任的 Microsoft 服务异常的选定网络配置防火墙设置。
+> 如果该存储帐户位于不同的区域，请将存储帐户防火墙设置配置为允许从**所选网络**进行访问。 在 "防火墙**地址范围**" 中，指定 Analysis Services 服务器所在的区域的 IP 地址范围。 支持将存储帐户防火墙设置配置为允许从所有网络进行访问，但最好选择所选网络并指定 IP 地址范围。 若要了解详细信息，请参阅[网络连接常见问题解答](analysis-services-network-faq.md#backup-and-restore)。
 
 备份以 .abf 扩展名保存。 对于内存中表格模型，将存储模型数据和元数据。 对于 DirectQuery 表格模型，将仅存储模型元数据。 备份可以进行压缩和加密，具体取决于选择的选项。
 
@@ -107,5 +107,5 @@ ms.locfileid: "82145459"
 ## <a name="related-information"></a>相关信息
 
 [Azure 存储帐户](../storage/common/storage-create-storage-account.md)  
-[高可用性](analysis-services-bcdr.md)     
-[管理 Azure Analysis Services](analysis-services-manage.md)
+[高可用性](analysis-services-bcdr.md)      
+[Analysis Services 网络连接常见问题](analysis-services-network-faq.md)

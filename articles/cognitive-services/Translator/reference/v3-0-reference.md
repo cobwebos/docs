@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 4/2/2020
+ms.date: 4/17/2020
 ms.author: swmachan
-ms.openlocfilehash: fcbaabac0961f1269a929fb4a56f81ac282bae29
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bf7701055c8c325f02c0daca1755806f3ca17b76
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80619149"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857308"
 ---
 # <a name="translator-text-api-v30"></a>文本翻译 API v3.0
 
@@ -147,7 +147,7 @@ Authorization: Bearer <Base64-access_token>
 
 ## <a name="virtual-network-support"></a>虚拟网络支持
 
-转换器服务现在提供了`WestUS2`有限区域（、 `EastUS`、 `SouthCentralUS` `WestUS`、、 `Central US EUAP`、 `global`）中的虚拟网络功能。 若要启用虚拟网络，请参阅[配置 Azure 认知服务虚拟网络](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)。 
+转换器服务现在提供了`WestUS2`有限区域（、 `EastUS`、 `SouthCentralUS` `WestUS`、、 `CentralUSEUAP`、 `global`）中的虚拟网络功能。 若要启用虚拟网络，请参阅[配置 Azure 认知服务虚拟网络](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)。 
 
 启用此功能后，必须使用自定义终结点来调用转换器 API。 不能使用全局转换器终结点（"api.cognitive.microsofttranslator.com"），也不能使用访问令牌进行身份验证。
 

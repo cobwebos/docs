@@ -1,22 +1,22 @@
 ---
-title: 专用产品/服务 |Azure Marketplace
-description: Azure 市场中面向应用和服务发布者的专用套餐。
+title: Microsoft 商业应用商店中的专用产品/服务
+description: 适用于应用和服务发布者的 Microsoft 商用 marketplace 中的私有产品/服务。
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/19/2020
 ms.author: dsindona
-ms.openlocfilehash: efda9fb66a65f1f2cd40de8bf32a8a3fa99aea7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e449f65ca65a679aa6c6823938fa561b84e38368
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681432"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872380"
 ---
-# <a name="private-offers"></a>专用产品/服务
+# <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Microsoft 商业应用商店中的专用产品/服务
 
-[Microsoft Azure 市场](https://azuremarketplace.microsoft.com/)中的专用套餐可让发布者创建仅向目标客户显示的 SKU。
+[Microsoft Azure 市场](https://azuremarketplace.microsoft.com/)中的专用产品/服务，发布者可以创建仅对目标客户可见的计划。 本文介绍专用产品/服务的选项和优点。
 
 ## <a name="unlock-enterprise-deals-with-private-offers"></a>通过专用产品/服务解锁企业交易
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/20/2020
+ms.date: 04/17/2020
 ms.author: swmachan
-ms.openlocfilehash: 1821623fbe2a22234af649934ac06e72897a19cf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 14d1f042240fd045925afe1725b32ddade490dfe
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80052394"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858541"
 ---
 # <a name="translator-text-api-30-translate"></a>文本翻译 API 3.0：翻译
 
@@ -178,7 +178,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 [示例](#examples)部分提供了 JSON 响应的示例。
 
-## <a name="response-headers"></a>响应标头
+## <a name="response-headers"></a>响应头
 
 <table width="100%">
   <th width="20%">头文件</th>
@@ -206,7 +206,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>400</td>
-    <td>查询参数之一缺失或无效。 请更正请求参数，然后重试。</td>
+    <td>其中一个查询参数丢失或无效。 请更正请求参数，然后重试。</td>
   </tr>
   <tr>
     <td>401</td>
@@ -366,7 +366,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
   <th>操作</th>
   <tr>
     <td><code>NoAction</code></td>
-    <td>此选项为默认行为。 不雅内容会从源传递到目标。<br/><br/>
+    <td>这是默认行为。 不雅内容会从源传递到目标。<br/><br/>
     <strong>示例源（日语）</strong>：彼はジャッカスです。<br/>
     <strong>示例翻译（中文）</strong>：他是一个笨蛋。
     </td>
@@ -454,6 +454,14 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 ### <a name="obtain-alignment-information"></a>获取比对信息
 
+对齐将作为以下格式的字符串值返回给源的每个词。 每个词的信息由一个空格分隔，其中包括非空格分隔的语言（脚本），比如中文：
+
+[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]] *
+
+对齐字符串示例：“0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21”。
+
+换而言之，冒号分隔开始和结束索引，连字符分隔语言，空格分隔词。 一个单词可能与另一种语言中的 0 个、1 个或多个单词比对，而比对的词可能是不连续的。 当没有可用的对齐信息时，Alignment 元素将为空。 在这种情况下，该方法不会返回任何错误。
+
 若要接收比对信息，请在查询字符串中指定 `includeAlignment=true`。
 
 ```curl
@@ -483,9 +491,10 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 * 对齐方式不适用于 HTML 格式的文本，即 textType = html
 * 仅针对一部分语言对返回比对内容：
-  - 从英语到任何其他语言；
-  - 从任何其他语言到英语，除了简体中文、繁体中文和拉脱维亚语到英语；
+  - 英语与除繁体中文、粤语（传统）或塞尔维亚语（西里尔文）以外的任何其他语言。
   - 从日语到韩语或从韩语到日语。
+  - 从日语到简体中文以及简体中文到日语。 
+  - 简体中文和繁体中文之间的简体中文和繁体中文。 
 * 如果句子是预录翻译，则不会收到比对内容。 预录翻译示例有“This is a test”、“I love you”，以及其他高频句子。
 * 当应用任何方法来阻止[此处](../prevent-translation.md)所述的转换时，对齐功能不可用
 
@@ -515,7 +524,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 ### <a name="translate-with-dynamic-dictionary"></a>使用动态词典进行翻译
 
-若已知道要应用于某个单词或短语的翻译，可以在请求中将其作为标记提供。 动态词典仅适用于复合名词，例如专有名称和产品名称。
+若已知道要应用于某个单词或短语的翻译，可以在请求中将其作为标记提供。 动态字典仅适用于正确名词，如个人姓名和产品名称。
 
 要提供的标记使用以下语法。
 

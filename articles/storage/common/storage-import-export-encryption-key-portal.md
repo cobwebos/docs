@@ -5,15 +5,15 @@ services: storage
 author: alkohli
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/12/2020
+ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: d3e4535c05ef077d14ef74310459a84af0f02fd5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71426d131cdd46b176c387a31e3dc2ca66ae3761
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176322"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871160"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>在导入/导出服务的 Azure Key Vault 中使用客户托管的密钥
 
@@ -37,7 +37,7 @@ Azure 导入/导出可通过加密密钥保护用于锁定驱动器的 BitLocker
 
     - 在现有 Key Vault 上设置**软删除**和不**清除**。 默认情况下未启用这些属性。 若要启用这些属性，请参阅以下文章之一中标题为**启用软删除**和**启用清除保护**的部分：
 
-        - [如何通过 PowerShell 使用软删除](../../key-vault/general/soft-delete-powershell.md)。
+        - [如何将软删除与 PowerShell 配合使用](../../key-vault/general/soft-delete-powershell.md)。
         - [如何通过 CLI 使用软删除](../../key-vault/general/soft-delete-cli.md)。
     - 现有密钥保管库的 RSA 密钥应为2048或更大。 有关密钥的详细信息，请参阅[关于 Azure Key Vault 密钥、机密和证书](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)中的**Key Vault 密钥**。
     - 密钥保管库必须与你的数据的存储帐户位于同一区域。  
@@ -90,9 +90,8 @@ Azure 导入/导出可通过加密密钥保护用于锁定驱动器的 BitLocker
 
 在 "**加密**" 边栏选项卡中，可以看到密钥保管库以及为客户托管密钥选择的密钥。
 
-## <a name="disable-keys"></a>禁用密钥
-
-在导入/导出作业的任何阶段，只能禁用 Microsoft 托管密钥并移动到客户托管密钥。 但是，在创建客户托管密钥后，你无法将其禁用。
+> [!IMPORTANT]
+> 在导入/导出作业的任何阶段，只能禁用 Microsoft 托管密钥并移动到客户托管密钥。 但是，在创建客户托管密钥后，你无法将其禁用。
 
 ## <a name="troubleshoot-customer-managed-key-errors"></a>客户托管密钥错误疑难解答
 

@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: bb73b3d644e96f9596f887faaf62eb15f01956ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f2ceda6e87ce16e910f3d215c1fabe81d522f32
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769665"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855559"
 ---
 # <a name="update-azure-powershell-modules-in-azure-automation"></a>更新 Azure 自动化中的 Azure PowerShell 模块
 
-若要更新你的自动化帐户中的 Azure 模块，你需要使用[更新 azure 模块 runbook](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update)，该 runbook 可用作开源。 若要开始使用 **Update-AutomationAzureModulesForAccount** Runbook 来更新 Azure 模块，请从 GitHub 上的[更新 Azure 模块 Runbook 存储库](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update)下载该 Runbook。 然后，可以将其导入自动化帐户，或将其作为脚本运行。 若要了解如何导入自动化帐户中的 runbook，请参阅[导入 runbook](manage-runbooks.md#importing-a-runbook)。
+若要更新你的自动化帐户中的 Azure 模块，你需要使用[更新 azure 模块 runbook](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update)，该 runbook 可用作开源。 若要开始使用 **Update-AutomationAzureModulesForAccount** Runbook 来更新 Azure 模块，请从 GitHub 上的[更新 Azure 模块 Runbook 存储库](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update)下载该 Runbook。 然后，可以将其导入自动化帐户，或将其作为脚本运行。 若要了解如何导入自动化帐户中的 runbook，请参阅[导入 runbook](manage-runbooks.md#import-a-runbook)。
 
 默认情况下，每个自动化帐户中都提供最常见的 PowerShell 模块。 Azure 团队定期更新 Azure 模块。 因此，若要将自动化帐户中的模块保持为最新状态，应使用[AutomationAzureModulesForAccount](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) runbook。
 

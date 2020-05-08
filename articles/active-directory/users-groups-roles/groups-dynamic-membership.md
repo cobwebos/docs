@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/27/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6f8237ac13744e56baa8551f8cced12b2785a48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a399ee43ef0ce97274f060b7a5b7df46fb523605
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81114737"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582902"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory 中的动态组成员资格规则
 
@@ -31,7 +31,7 @@ ms.locfileid: "81114737"
 - 无法根据设备所有者的属性创建设备组。 设备成员资格规则只能引用设备属性。
 
 > [!NOTE]
-> 对于每一个作为一个或多个动态组成员的唯一用户，此功能需要 Azure AD Premium P1 许可证。 无需将许可证分配给用户使其成为动态组成员，但必须在租户中具有涵盖所有此类用户所需的最小许可证数。 例如：如果在租户的所有动态组中总共拥有 1,000 个唯一用户，则需要至少具有 1,000 个 Azure AD Premium P1 版的许可证，才能满足许可证要求。
+> 对于每一个作为一个或多个动态组成员的唯一用户，此功能需要 Azure AD Premium P1 许可证。 你无需将许可证分配给用户作为动态组的成员，但你必须在 Azure AD 组织中具有最小数量的许可证才能涵盖所有此类用户。 例如，如果组织中的所有动态组中总共有1000个唯一用户，则 Azure AD Premium P1 需要至少1000个许可证才能满足许可证要求。
 > 如果设备是动态设备组的成员，则不需要许可证。
 
 ## <a name="rule-builder-in-the-azure-portal"></a>Azure 门户中的规则生成器
@@ -69,7 +69,7 @@ user.department -eq "Sales"
 使用用户或设备自动填充组的成员资格规则是一个二进制表达式，会生成 true 或 false 结果。 一个简单的规则包含三个部分：
 
 - 属性
-- 操作员
+- 运算符
 - 值
 
 表达式中各部分的顺序对于避免语法错误至关重要。
@@ -78,22 +78,22 @@ user.department -eq "Sales"
 
 有三种类型的属性可用于构建成员资格规则。
 
-- 布尔值
-- 字符串
+- 布尔
+- String
 - 字符串集合
 
 以下是可用于创建单个表达式的用户属性。
 
 ### <a name="properties-of-type-boolean"></a>布尔值类型的属性
 
-| 属性 | 允许的值 | 使用情况 |
+| 属性 | 允许的值 | 用法 |
 | --- | --- | --- |
 | accountEnabled |true false |user.accountEnabled -eq true |
 | dirSyncEnabled |true false |user.dirSyncEnabled -eq true |
 
 ### <a name="properties-of-type-string"></a>字符串类型的属性
 
-| 属性 | 允许的值 | 使用情况 |
+| 属性 | 允许的值 | 用法 |
 | --- | --- | --- |
 | city |任何字符串值或*null* |(user.city -eq "value") |
 | country |任何字符串值或*null* |(user.country -eq "value") |
@@ -124,7 +124,7 @@ user.department -eq "Sales"
 
 ### <a name="properties-of-type-string-collection"></a>字符串集合类型的属性
 
-| 属性 | 允许的值 | 使用情况 |
+| 属性 | 允许的值 | 用法 |
 | --- | --- | --- |
 | otherMails |任意字符串值 |(user.otherMails -contains "alias@domain") |
 | proxyAddresses |SMTP: alias@domain smtp: alias@domain |(user.proxyAddresses -contains "SMTP: alias@domain") |
@@ -135,7 +135,7 @@ user.department -eq "Sales"
 
 下表列出了单个表达式支持的所有运算符及其语法。 运算符可以带或不带连字符 (-) 前缀。
 
-| 操作员 | 语法 |
+| 运算符 | 语法 |
 | --- | --- |
 | 不等于 |-ne |
 | 等于 |-eq |
@@ -160,7 +160,7 @@ user.department -eq "Sales"
 
 
 ### <a name="using-the--match-operator"></a>使用 -match 运算符 
-**-match** 运算符用于匹配任何正则表达式。 示例：
+**-match** 运算符用于匹配任何正则表达式。 示例:
 
 ```
 user.displayName -match "Da.*"   
@@ -249,7 +249,7 @@ David 的计算结果为 true，Da 的计算结果为 false。
 
 多值属性是同一类型的对象的集合。 它们可用于使用 -any 和 -all 逻辑运算符创建成员资格规则。
 
-| 属性 | 值 | 使用情况 |
+| 属性 | 值 | 用法 |
 | --- | --- | --- |
 | assignedPlans | 集合中的每个对象均公开以下字符串属性：capabilityStatus、service、servicePlanId |user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled") |
 | proxyAddresses| SMTP: alias@domain smtp: alias@domain | (user.proxyAddresses -any (\_ -contains "contoso")) |
@@ -310,20 +310,20 @@ Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
 以下提示可帮助你正确使用该规则。
 
 - “经理 ID”是经理的对象 ID****。 可在经理的“配置文件”中找到它****。
-- 要使规则起作用，请确保租户中用户的 Manager 属性已正确设置****。 可检查用户的“配置文件”中的当前值****。
+- 要使规则正常运行，请确保为组织中的用户正确设置了**管理器**属性。 可检查用户的“配置文件”中的当前值****。
 - 此规则仅支持经理的直接下属。 换言之，无法创建包含经理的直接下属及其下属的组**。
 - 此规则不能与任何其他成员资格规则结合使用。
 
 ### <a name="create-an-all-users-rule"></a>创建“所有用户”规则
 
-可使用成员资格规则创建包含租户中所有用户的组。 以后向租户添加用户或从中删除用户时，将自动调整该组的成员资格。
+您可以使用成员身份规则创建包含组织内所有用户的组。 以后在组织中添加或删除用户时，会自动调整组的成员身份。
 
 “所有用户”规则是使用 -ne 运算符和 null 值的单一表达式构造的。 此规则将 B2B 来宾用户以及成员用户添加到该组。
 
 ```
 user.objectId -ne null
 ```
-如果你希望组排除来宾用户并且只包括你的租户的成员，则可以使用以下语法：
+如果你希望组排除来宾用户并且只包括你的组织的成员，则可以使用以下语法：
 
 ```
 (user.objectId -ne null) -and (user.userType -eq "Member")
@@ -331,7 +331,7 @@ user.objectId -ne null
 
 ### <a name="create-an-all-devices-rule"></a>创建“所有设备”规则
 
-可使用成员资格规则创建包含租户中所有设备的组。 以后向租户添加设备或从中删除设备时，将自动调整该组的成员资格。
+你可以使用成员身份规则创建包含组织内所有设备的组。 将来在组织中添加或删除设备时，会自动调整组的成员身份。
 
 “所有设备”规则是使用 -ne 运算符和 null 值的单一表达式构造的：
 

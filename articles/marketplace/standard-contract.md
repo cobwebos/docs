@@ -1,22 +1,22 @@
 ---
-title: 标准协定 |Azure Marketplace
-description: Azure Marketplace 和 AppSource 的标准协定
+title: Microsoft 商用 marketplace 的标准协定
+description: 合作伙伴中心的 Azure Marketplace 和 AppSource 的标准协定
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: facb500299f7196e0e1387c3a7267a917d13a3a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3886b29a47edcfb36114cedf8b8edb3799e0c345
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681445"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871436"
 ---
-# <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Microsoft 商用 marketplace 的标准协定
+# <a name="standard-contract-for-microsoft-commercial-marketplace"></a>Microsoft 商用 marketplace 的标准协定
 
-为了简化客户的采购过程并降低软件供应商的法律复杂性，Microsoft 为 Microsoft 商用 marketplace 提供了标准合同，有助于促进 marketplace 中的交易。 商业 marketplace 发布者可以选择以标准合同提供其软件，而客户只需来审查并接受一次，而不是手工编写自定义条款和条件。 可在此处找到标准协定： [https://go.microsoft.com/fwlink/?linkid=2041178](https://go.microsoft.com/fwlink/?linkid=2041178)。
+Microsoft 为 Microsoft 商业市场提供标准合同。 这有助于简化客户的采购过程，降低软件供应商的法律复杂性，并促进 marketplace 中的交易。 您可以选择在[标准合同](https://go.microsoft.com/fwlink/?linkid=2041178)下提供您的软件，而客户只需要来审查并接受一次，而不是作为一家商业 marketplace 发布者的形式来起草自定义条款和条件。
 
 产品/服务的条款和条件是在合作伙伴中心创建产品/服务时定义的。 你可以选择使用 Microsoft 商业应用商店的标准合同，而不是提供你自己的自定义条款和条件。
 
@@ -40,7 +40,7 @@ ms.locfileid: "81681445"
 
 ## <a name="customer-experience"></a>客户体验
 
-在 Azure marketplace 或 AppSource 的发现体验期间，客户将能够查看与产品/服务关联的条款，作为 Microsoft 商业市场和任何通用修正的标准合同。
+在 Azure Marketplace 或 AppSource 的发现体验期间，客户将能够查看与产品/服务关联的条款，作为 Microsoft 商业市场和任何通用修正的标准合同。
 
 ![Azure 门户客户发现体验。](media/marketplace-publishers-guide/azure-discovery-process.png)
 

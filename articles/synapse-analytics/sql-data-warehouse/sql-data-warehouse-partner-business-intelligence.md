@@ -11,19 +11,19 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 75020b0dd58a80f989bd03eb92031d904ebf4c82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb37efb796ddf41bd1d19e10d22f934590604274
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81313686"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871711"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure Synapse Analytics 商业智能合作伙伴
 
 若要使用 Azure Synapse 中的 Synapse SQL 池创建完整的数据仓库解决方案，可以从各种行业领先工具中进行选择。  本文重点介绍了支持 Azure SQL 数据仓库的官方商业智能（BI）解决方案的 Microsoft 合作伙伴公司。
 
 ## <a name="our-business-intelligence-partners"></a>我们的商业智能合作伙伴
-| 合作伙伴 | 说明 | 网站/产品链接 |
+| Partner | 说明 | 网站/产品链接 |
 | ------- | ----------- | -------------------- |
 | ![Birst](./media/sql-data-warehouse-partner-business-intelligence/birst_logo.png) |**Birst**<br>Birst 通过两者虚拟化 BI 实例的网络将整个组织连接到共享的通用分析结构之上|[产品页](https://www.birst.com/)<br>[Azure 市场](https://azure.microsoft.com/marketplace/partners/birst/birst/)<br> |
 | ![ClearStory Data](./media/sql-data-warehouse-partner-business-intelligence/clearstory_data_logo.png) |**ClearStory 数据（连续业务见解）**<br>ClearStory 数据可跨存储在 Synapse SQL 池中的不同数据进行快速循环分析。 ClearStory 的基于 Spark 的集成式平台和分析应用程序加快数据访问速度，并协调不同的数据集。 它们支持快速、协作的浏览，使业务用户能够在获取快速见解的同时获得快速见解。 |[产品页](https://www.clearstorydata.com/product/continuous-insights/)<br> |
@@ -38,7 +38,7 @@ ms.locfileid: "81313686"
 | ![SiSense](./media/sql-data-warehouse-partner-business-intelligence/sisense_logo.png) |**SiSense**<br>SiSense 是全方位的商业智能软件，提供企业分析和可视化数据所必备的工具：高性能分析数据库、联接多个源、简易数据提取 (ETL) 和基于 Web 的数据可视化。 立即使用 SiSense BI 和 Analytics 开始分析及可视化大型数据集。 |[产品页](https://www.sisense.com/product/)<br> |
 | ![Tableau](./media/sql-data-warehouse-partner-business-intelligence/tableau_sparkle_logo.png) |**Tableau**<br>Tableau 的自助分析可帮助任何人查看和了解数据，从平面文件到数据库的多种类型的数据。 Tableau 有一个本机、优化的连接器，用于支持实时数据和内存中分析的 Synapse SQL 池。 |[产品页](https://www.tableau.com/)<br> [Azure 市场](https://azure.microsoft.com/marketplace/partners/tableau/tableau-server/)<br>|
 | ![Targit](./media/sql-data-warehouse-partner-business-intelligence/targit_logo.png) |**Targit （决策套件）**<br>Targit Decision Suite 提供 BI 和分析平台，以单个且一致的解决方案提供实时仪表板、自助分析、方便使用的报告、令人赞叹的移动功能和简单的数据发现技术。 Targit 为企业带来了行动的勇气。 |[产品页](https://www.targit.com/targit-decision-suite/analytics)<br> [Azure 市场](https://azure.microsoft.com/marketplace/partners/targit/targit-decision-suite/)<br> |
-| ![ThoughtSpot](./media/sql-data-warehouse-partner-business-intelligence/thoughtspot-logo.png) |**ThoughtSpot**<br>世界上最具创新性的企业使用 ThoughtSpot，使其组织中的每个人（从 C-suite 主管到一名员工）都能快速发现数据驱动见解。 借助 ThoughtSpot，业务人员可以键入简单的搜索，以即时分析数十亿的数据行，并利用人工智能获得受信任的相关见解，并将这些见解推送给他们，作为他们可能不想提出的成千上万个问题的答案。 ThoughtSpot 非常简单，足以满足任何业务人员的使用需求，但足以应对最大、最复杂的企业数据，而不会影响速度、安全性或监管。 这就是为什么客户喜欢 Walmart、7-11、BT、Daimler、Exxon、Hulu、皇家银行（加拿大）、西部银行和全国建筑社会，在2020幻方象限中转变为 ThoughtSpot 的决策文化和分析师公司 Gartner。 通过使见解成为每个会话的一部分和每个决策，ThoughtSpot 在创建一个更事实驱动的世界中面貌了数据的角色。 |[产品页](https://www.thoughtspot.com)<br>|
+| ![ThoughtSpot](./media/sql-data-warehouse-partner-business-intelligence/thoughtspot-logo.png) |**ThoughtSpot**<br>使用 "搜索" 可从数十亿行数据中获取详细信息，或让 AI 从你可能不想提出的问题中发现见解。 ThoughtSpot 可帮助 businesspeople 查找在几秒钟内隐藏在其公司数据中的见解。 使用 "搜索" 分析数据，并在需要时获取自动见解。|[产品页](https://www.thoughtspot.com)<br>|
 | ![Yellowfin](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_logo.png) |**Yellowfin**<br>Yellowfin 是适用于即席报表和仪表板的顶级 Cloud BI 供应商（领域最顶级）;BI 调查。 连接到 Synapse SQL 池，然后创建精美的报表和仪表板，并将其与获奖的协作 BI 和位置智能功能结合在一起。 |[产品页](https://www.yellowfinbi.com/)<br> [Azure 市场](https://azure.microsoft.com/marketplace/partners/yellowfin/yellowfin-for-azure-byol/) |
 
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->
