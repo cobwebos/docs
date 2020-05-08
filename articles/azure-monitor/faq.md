@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/26/2020
-ms.openlocfilehash: db63ce2d56eb78bf6b361d530511b6902c1cb6d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 728c8605dca183d8eb733b5e674868592d920d03
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80637772"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732030"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor 常见问题
 
@@ -36,7 +36,7 @@ ms.locfileid: "80637772"
 从 Azure 门户中的 "**监视**" 菜单访问所有 Azure Monitor 功能和数据。 对于不同的 Azure 服务，菜单的 "**监视**" 部分提供对相同工具的访问权限，并将数据筛选到特定资源。 使用 CLI、PowerShell 和 REST API 的各种情况下，也可以访问 Azure Monitor 数据。
 
 ### <a name="is-there-an-on-premises-version-of-azure-monitor"></a>是否有 Azure Monitor 的本地版本？
-不能。 Azure Monitor 是一种可缩放的云服务，可处理和存储大量数据，不过 Azure Monitor 可以监视本地和其他云中的资源。
+否。 Azure Monitor 是一种可缩放的云服务，可处理和存储大量数据，不过 Azure Monitor 可以监视本地和其他云中的资源。
 
 ### <a name="can-azure-monitor-monitor-on-premises-resources"></a>能否 Azure Monitor 监视本地资源？
 是的，除了收集 Azure 资源的监视数据以外，Azure Monitor 还可以从其他云和本地的虚拟机和应用程序中收集数据。 请参阅[Azure Monitor 的监视数据源](platform/data-sources.md)。
@@ -226,7 +226,7 @@ WireData
 
 [阅读定价计划](https://azure.microsoft.com/pricing/details/application-insights/)。
 
-### <a name="how-much-does-it-cost"></a>定价是多少？
+### <a name="how-much-does-it-cost"></a>费用是多少？
 
 * 在 Application Insights 资源中打开“使用情况和估算成本”页面。**** 此处提供了一个最近使用情况的图表。 如果愿意，可以设置数据上限。
 * 打开 [Azure 计费边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview)查看所有资源的帐单。
@@ -254,6 +254,10 @@ WireData
 
 ### <a name="how-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>如何更改项目要将数据发送到的 Azure 资源？
 在解决方案资源管理器中，右键单击 `ApplicationInsights.config` 并选择“更新 Application Insights”****。 可在 Azure 中将数据发送到现有或新资源。 更新向导更改 ApplicationInsights.config 中的检测密钥，该密钥确定服务器 SDK 将数据发送到何处。 除非取消选中“更新全部”，否则它还将在网页中出现密钥的位置更改密钥。
+
+### <a name="can-i-use-providersmicrosoftinsights-componentsapiversions0-in-my-azure-resource-manager-deployments"></a>能否在 Azure `providers('Microsoft.Insights', 'components').apiVersions[0]`资源管理器部署中使用？
+
+不建议使用此方法来填充 API 版本。 最新版本可以表示可能包含重大更改的预览版本。 即使使用较新的非预览版本，API 版本也并不总是向后兼容现有的模板，或者在某些情况下，API 版本可能不适用于所有订阅。
 
 ### <a name="what-is-status-monitor"></a>什么是状态监视器？
 
@@ -412,7 +416,7 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
 
 ### <a name="can-i-send-telemetry-to-the-application-insights-portal"></a>是否可以将遥测数据发送到 Application Insights 门户？
 
-建议使用我们的 SDK 并使用 [SDK API](app/api-custom-events-metrics.md)。 为各种[平台](app/platforms.md)提供了相应的 SDK 变体。 这些 SDK 可处理缓冲、压缩、限制以及重试等。 但是，[引入架构](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema)和[终结点协议](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md)是公共的。
+建议使用我们的 SDK 并使用 [SDK API](app/api-custom-events-metrics.md)。 为各种[平台](app/platforms.md)提供了相应的 SDK 变体。 这些 SDK 可处理缓冲、压缩、限制以及重试等。 但是，[引入架构](https://github.com/microsoft/ApplicationInsights-dotnet/tree/master/BASE/Schema/PublicSchema)和[终结点协议](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md)是公共的。
 
 ### <a name="can-i-monitor-an-intranet-web-server"></a>是否可以监视 Intranet Web 服务器？
 

@@ -5,12 +5,12 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: f5f18e9365b09f06c1bd4f25a8efe909cc308dad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d97fbe6ac515a2559340474105d73b7c9b9c6ee4
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537009"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731911"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>在多台 VM 上启用更新管理、更改跟踪和清单解决方案
 
@@ -129,7 +129,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 **原因：** 并非所有 Linux 分发版或所有 Windows 版本都支持此解决方案。
 
-**解决方案：** 指的是解决方案的[受支持客户端列表](automation-update-management.md#clients)。
+**解决方案：** 请参阅[受支持的客户端的列表](automation-update-management.md#supported-client-types)。
 
 ### <a name="classic-vms-cannot-be-enabled"></a>无法启用经典 VM
 

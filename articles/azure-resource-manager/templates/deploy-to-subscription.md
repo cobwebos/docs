@@ -2,13 +2,13 @@
 title: 将资源部署到订阅
 description: 介绍了如何在 Azure 资源管理器模板中创建资源组。 它还展示了如何在 Azure 订阅范围内部署资源。
 ms.topic: conceptual
-ms.date: 04/30/2020
-ms.openlocfilehash: 80fe451f696480ec24b3d8eced64941de9492fef
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: HT
+ms.date: 05/07/2020
+ms.openlocfilehash: a48bc2fd4efb383b42fd0889df079c9a6f700dda
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610813"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929054"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在订阅级别创建资源组和资源
 
@@ -35,6 +35,7 @@ ms.locfileid: "82610813"
 * [scopeAssignments](/azure/templates/microsoft.managednetwork/scopeassignments)
 * [supportPlanTypes](/azure/templates/microsoft.addons/supportproviders/supportplantypes)
 * [tags](/azure/templates/microsoft.resources/tags)
+* [workspacesettings](/azure/templates/microsoft.security/workspacesettings)
 
 ### <a name="schema"></a>架构
 
@@ -96,11 +97,11 @@ New-AzSubscriptionDeployment `
 * 使用[subscriptionResourceId （）](template-functions-resource.md#subscriptionresourceid)函数获取在订阅级别部署的资源的资源 ID。
 
   例如，若要获取策略定义的资源 ID，请使用：
-  
+
   ```json
   subscriptionResourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
   ```
-  
+
   返回的资源 ID 具有以下格式：
 
   ```json

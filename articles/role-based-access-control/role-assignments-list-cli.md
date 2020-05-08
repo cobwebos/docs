@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure RBAC 和 Azure CLI 列出角色分配
-description: 了解如何使用 Azure 基于角色的访问控制 (RBAC) 和 Azure CLI 来确定用户、组、服务主体和托管标识有权访问的资源内容。
+title: 使用 Azure CLI 列出 Azure 角色分配-Azure RBAC
+description: 了解如何使用 Azure CLI 和 Azure 基于角色的访问控制（Azure RBAC）确定用户、组、服务主体或托管标识有权访问哪些资源。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,21 +14,21 @@ ms.workload: identity
 ms.date: 01/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 5716e7bb89d017866bd1575256e2d119bb7acbe5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4b635d6867c36b8b0f385320e3720bea41b54d1
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80385055"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735736"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-azure-cli"></a>使用 Azure RBAC 和 Azure CLI 列出角色分配
+# <a name="list-azure-role-assignments-using-azure-cli"></a>使用 Azure CLI 列出 Azure 角色分配
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] 本文介绍如何使用 Azure CLI 列出角色分配。
 
 > [!NOTE]
 > 如果你的组织对使用[Azure 委托资源管理](../lighthouse/concepts/azure-delegated-resource-management.md)的服务提供商具有外包管理功能，则此处将不会显示该服务提供商授权的角色分配。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - [Bash Azure Cloud Shell](/azure/cloud-shell/overview)或[Azure CLI](/cli/azure)
 
@@ -98,7 +98,7 @@ az role assignment list --resource-group pharma-sales --output json | jq '.[] | 
 az role assignment list --subscription <subscription_name_or_id>
 ```
 
-例如：
+示例：
 
 ```azurecli-interactive
 az role assignment list --subscription 00000000-0000-0000-0000-000000000000 --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
@@ -112,7 +112,7 @@ az role assignment list --subscription 00000000-0000-0000-0000-000000000000 --ou
 az role assignment list --scope /providers/Microsoft.Management/managementGroups/<group_id>
 ```
 
-例如：
+示例：
 
 ```azurecli-interactive
 az role assignment list --scope /providers/Microsoft.Management/managementGroups/marketing-group --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
@@ -144,4 +144,4 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure RBAC 和 Azure CLI 添加或删除角色分配](role-assignments-cli.md)
+- [使用 Azure CLI 添加或删除 Azure 角色分配](role-assignments-cli.md)

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: allensu
-ms.openlocfilehash: 477a5ffa971120d1a98c09ac4ae8ebda1c82b770
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3ec7021e63257a3c9f8cf84c6ddc0c3707fbf3bc
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209020"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928583"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure 专用终结点 DNS 配置
 
@@ -36,57 +36,58 @@ Azure 服务将在公共 DNS 上创建一个规范名称 DNS 记录（CNAME）�
 
 对于 Azure 服务，请根据下表中所述使用建议的区域名称：
 
-|专用链接资源类型   |子资源  |区域名称  |
-|---------|---------|---------|
-|SQL DB （Sql server）    |  Sql Server (sqlServer)        |   privatelink.database.windows.net       |
-|Azure Synapse Analytics （Sql/servers）    |  Sql Server (sqlServer)        | privatelink.database.windows.net |
-|存储帐户 (Microsoft.Storage/storageAccounts)    |  Blob（blob、blob_secondary）        |    privatelink.blob.core.windows.net      |
-|存储帐户 (Microsoft.Storage/storageAccounts)    |    表（table、table_secondary）      |   privatelink.table.core.windows.net       |
-|存储帐户 (Microsoft.Storage/storageAccounts)    |    队列（queue、queue_secondary）     |   privatelink.queue.core.windows.net       |
-|存储帐户 (Microsoft.Storage/storageAccounts)   |    文件（file、file_secondary）      |    privatelink.file.core.windows.net      |
-|存储帐户 (Microsoft.Storage/storageAccounts)     |  Web（web、web_secondary）        |    privatelink.web.core.windows.net      |
-|Data Lake File System Gen2 (Microsoft.Storage/storageAccounts)  |  Data Lake File System Gen2（dfs、dfs_secondary）        |     privatelink.dfs.core.windows.net     |
-|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|SQL    |privatelink.documents.azure.com|
-|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|MongoDB    |privatelink.mongo.cosmos.azure.com|
-|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Cassandra|privatelink.cassandra.cosmos.azure.com|
-|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Gremlin    |privatelink.gremlin.cosmos.azure.com|
-|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|表|privatelink.table.cosmos.azure.com|
-|Azure Database for PostgreSQL-单一服务器（DBforPostgreSQL/服务器）|postgresqlServer|privatelink.postgres.database.azure.com|
-|Azure Database for MySQL （DBforMySQL/服务器）|mysqlServer|privatelink.mysql.database.azure.com|
-|Azure Database for MariaDB （DBforMariaDB/服务器）|mariadbServer|privatelink.mariadb.database.azure.com|
-|Azure Key Vault （KeyVault/保管库）|保管库|privatelink.vaultcore.azure.net|
-|Azure Kubernetes 服务-Kubernetes API （ContainerService/managedClusters）    | managedCluster | {guid}. privatelink。{region}. azmk8s|
-|Azure 搜索（searchServices/）|searchService|privatelink.search.windows.net|   
-|Azure 容器注册表（Microsoft.containerregistry/注册表） | 注册表 | privatelink.azurecr.io |
-|Azure 应用配置（Appconfiguration/configurationStores）| configurationStore | privatelink.azconfig.io|
-|Azure 备份（Microsoft.recoveryservices/保管库）| 保管库 |privatelink.{region}. windowsazure.storage|
-|Azure 事件中心（node.js/命名空间）| namespace |privatelink.servicebus.windows.net|
-|Azure 服务总线（node.js/命名空间） | namespace |privatelink.servicebus.windows.net|
-|Azure 中继（Microsoft 中继/命名空间） | namespace |privatelink.servicebus.windows.net|
-|Azure 事件网格（EventGrid/主题）     | 主题 | 标题.{region}. privatelink. eventgrid|
-|Azure 事件网格（EventGrid/域） | 域 | 域名.{region}. privatelink. eventgrid |
-|Azure WebApps （Microsoft 网站/站点）    | site | privatelink.azurewebsites.net |
-|Azure 机器学习（MachineLearningServices/工作区）    | 工作区 | privatelink.api.azureml.ms |
+| Private Link 资源类型/Subresource |专用 DNS 区域名称 | 公共 DNS 区域名称 |
+|---|---|---|---|
+| SQL DB （Sql Server）/Sql Server | privatelink.database.windows.net | database.windows.net |
+| Azure Synapse Analytics （Sql Server）/Sql Server  | privatelink.database.windows.net | database.windows.net |
+| 存储帐户（storageAccounts/）/Blob （blob、blob_secondary） | privatelink.blob.core.windows.net | blob.core.windows.net |
+| 存储帐户（storageAccounts/）/表（表、table_secondary） | privatelink.table.core.windows.net | table.core.windows.net |
+| 存储帐户（storageAccounts/）/队列（队列、queue_secondary） | privatelink.queue.core.windows.net | queue.core.windows.net |
+| 存储帐户（storageAccounts/）/文件（文件、file_secondary） | privatelink.file.core.windows.net | file.core.windows.net |
+| 存储帐户（storageAccounts/）/Web （web、web_secondary） | privatelink.web.core.windows.net | web.core.windows.net |
+| Data Lake 文件系统 Gen2 （Gen2/storageAccounts）/Data Lake File System （dfs，dfs_secondary） | privatelink.dfs.core.windows.net | dfs.core.windows.net |
+| Azure Cosmos DB （AzureCosmosDB/databaseAccounts）/SQL | privatelink.documents.azure.com | documents.azure.com |
+| Azure Cosmos DB （AzureCosmosDB/databaseAccounts）/MongoDB | privatelink.mongo.cosmos.azure.com | mongo.cosmos.azure.com |
+| Azure Cosmos DB （AzureCosmosDB/databaseAccounts）/Cassandra | privatelink.cassandra.cosmos.azure.com | cassandra.cosmos.azure.com |
+| Azure Cosmos DB （AzureCosmosDB/databaseAccounts）/Gremlin | privatelink.gremlin.cosmos.azure.com | gremlin.cosmos.azure.com |
+| Azure Cosmos DB （AzureCosmosDB/databaseAccounts）/Table | privatelink.table.cosmos.azure.com | table.cosmos.azure.com |
+| Azure Database for PostgreSQL-单服务器（DBforPostgreSQL/服务器）/postgresqlServer | privatelink.postgres.database.azure.com | postgres.database.azure.com |
+| Azure Database for MySQL （DBforMySQL/服务器）/mysqlServer | privatelink.mysql.database.azure.com | mysql.database.azure.com |
+| Azure Database for MariaDB （DBforMariaDB/服务器）/mariadbServer | privatelink.mariadb.database.azure.com | mariadb.database.azure.com |
+| Azure Key Vault （KeyVault/保管库）/保管库 | privatelink.vaultcore.azure.net | vault.azure.net |
+| Azure Kubernetes 服务-Kubernetes API （ContainerService/managedClusters）/managedCluster | privatelink.{region}. azmk8s | {region}. azmk8s |
+| Azure 搜索（searchServices/）/searchService | privatelink.search.windows.net | search.windows.net |
+| Azure 容器注册表（Microsoft.containerregistry/注册表）/注册表 | privatelink.azurecr.io | azurecr.io |
+| Azure 应用配置（AppConfiguration/configurationStores）/configurationStore | privatelink.azconfig.io | azconfig.io |
+| Azure 备份（Microsoft.recoveryservices/保管库）/保管库 | privatelink.{region}. windowsazure.storage | {region}. windowsazure.storage |
+| Azure 事件中心（node.js/命名空间）/命名空间 | privatelink.servicebus.windows.net | servicebus.windows.net |
+| Azure 服务总线（node.js/命名空间）/命名空间 | privatelink.servicebus.windows.net | servicebus.windows.net |
+| Azure 中继（Microsoft 中继/命名空间）/命名空间 | privatelink.servicebus.windows.net | servicebus.windows.net |
+| Azure 事件网格（EventGrid/主题）/主题 | privatelink.eventgrid.azure.net | eventgrid.azure.net |
+| Azure 事件网格（EventGrid/域）/域 | privatelink.eventgrid.azure.net | eventgrid.azure.net |
+| Azure WebApps （Microsoft 网站/站点）/站点 | privatelink.azurewebsites.net | azurewebsites.net |
+| Azure 机器学习（MachineLearningServices/工作区）/工作区 | privatelink.api.azureml.ms | api.azureml.ms |
+
  
 
 
 ## <a name="dns-configuration-scenarios"></a>DNS 配置方案
 
-服务的 FQDN 解析公共 ip 地址，你必须更改 DNS 配置以解析专用终结点的专用 IP 地址。
+服务的 FQDN 自动解析为公共 IP 地址，因此，若要解析到专用终结点的专用 IP 地址，你必须相应地更改 DNS 配置。
 
 DNS 是一项关键的组件，可通过正确的方式解析专用终结点 IP 地址来使应用程序正常工作。
 
 根据你的喜好，以下方案适用于集成的 DNS 解析：
 
 - [不带自定义 DNS 服务器的虚拟网络工作负荷](#virtual-network-workloads-without-custom-dns-server)
-
+- [使用 DNS 转发器的本地工作负荷](#on-premises-workloads-using-a-dns-forwarder)
 
 ## <a name="virtual-network-workloads-without-custom-dns-server"></a>不带自定义 DNS 服务器的虚拟网络工作负荷
 
 此配置适用于没有自定义 DNS 服务器的虚拟网络工作负荷。 在此方案中，客户端会查询 Azure 提供的 DNS [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md)的专用终结点 IP 地址。 Azure DNS 将负责专用 DNS 区域的 DNS 解析。
 
 
- > [!NOTE]
+> [!NOTE]
 > 这种情况下，建议使用 Azure SQL 数据库专用 DNS 区域。 对于其他服务，可以使用以下参考[Azure 服务 DNS 区域配置](#azure-services-dns-zone-configuration)来调整模型。
 
 若要正确配置，需要以下资源：
@@ -99,16 +100,60 @@ DNS 是一项关键的组件，可通过正确的方式解析专用终结点 IP 
 
 下图说明了使用专用 DNS 区域的虚拟网络工作负载中的 DNS 解析顺序
 
-:::image type="content" source="media/private-endpoint-dns/single-vnet-azure-dns.png" alt-text="单个虚拟网络和 azure 提供的 dns":::
+:::image type="content" source="media/private-endpoint-dns/single-vnet-azure-dns.png" alt-text="单个虚拟网络和 Azure 提供的 DNS":::
 
 此模型可扩展到多个与同一专用终结点相关联的对等互连虚拟网络。 为此，可[将新的虚拟网络链接添加](../dns/private-dns-virtual-network-links.md)到所有对等互连虚拟网络的专用 DNS 区域。
 
- > [!IMPORTANT]
+> [!IMPORTANT]
 >  此配置需要单个专用 DNS 区域，为不同的虚拟网络创建具有相同名称的多个区域需要手动操作来合并 DNS 记录
 
 在这种情况下，[集线器 & 辐射](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)网络拓扑与共享公共专用终结点的辐射网络，并且所有辐射虚拟网络都链接到同一专用 dns 区域。 
 
-:::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="通过 azure 提供的 dns 的中心和辐射":::
+:::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="具有 Azure 提供的 DNS 的中心和辐射":::
+
+## <a name="on-premises-workloads-using-a-dns-forwarder"></a>使用 DNS 转发器的本地工作负荷
+ 
+对于本地工作负荷，若要能够将专用终结点的 FQDN 解析为专用 IP 地址，必须使用 DNS 转发器来解决 Azure 中部署的 Azure 服务[公共 DNS 区域](#azure-services-dns-zone-configuration)。
+
+
+以下方案适用于在 Azure 中具有 DNS 转发器的本地网络，后者负责将所有 DNS 查询通过服务器级别转发器解析到 Azure 提供的 DNS [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) 
+
+> [!NOTE]
+> 这种情况下，建议使用 Azure SQL 数据库专用 DNS 区域。对于其他服务，可以使用以下参考 [Azure 服务 DNS 区域配置](#azure-services-dns-zone-configuration)来调整模型。
+
+若要正确配置，需要以下资源：
+
+- 本地网络
+- 虚拟网络 [已连接到本地](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)
+- Azure 中部署的 DNS 转发器 
+- 使用 [类型 A 记录](../dns/dns-zones-records.md#record-types)专用 DNS 区域 [privatelink.database.windows.net](../dns/private-dns-privatednszone.md) 
+- 专用终结点信息（FQDN 记录名称和专用 IP 地址）
+
+下图显示了使用 Azure 中部署的 DNS 转发器的本地网络中的 DNS 解析序列，其中的解决方案是通过链接到虚拟网络的专用 DNS 区域进行的。
+
+:::image type="content" source="media/private-endpoint-dns/on-premise-using-azure-dns.png" alt-text="使用 Azure DNS 本地":::
+
+可以为已有 DNS 解决方案的本地网络扩展此配置。 
+需要配置本地 DNS 解决方案，以便通过引用 Azure 中部署的 DNS 转发器的 [条件转发器](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)，将 dns 流量转发到 Azure DNS。
+
+> [!NOTE]
+> 这种情况下，建议使用 Azure SQL 数据库专用 DNS 区域。对于其他服务，可以使用以下参考 [Azure 服务 DNS 区域配置](#azure-services-dns-zone-configuration)来调整模型。
+
+若要正确配置，需要以下资源：
+
+
+- 在本地网络上部署了自定义 DNS 解决方案 
+- 虚拟网络 [已连接到本地](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)
+- Azure 中部署的 DNS 转发器
+- 使用 [类型 A 记录](../dns/dns-zones-records.md#record-types)专用 DNS 区域 [privatelink.database.windows.net](../dns/private-dns-privatednszone.md)  
+- 专用终结点信息（FQDN 记录名称和专用 IP 地址）
+
+下图说明了本地网络中的 DNS 解析序列，该序列有条件地将 DNS 流量转发到 Azure，在该序列中，可通过链接到虚拟网络的专用 DNS 区域进行解析
+
+> [!IMPORTANT]
+> 必须对 [公共 DNS 区域](#azure-services-dns-zone-configuration) （例如： `database.windows.net` ）执行条件性转发，而不是 **privatelink**。 database.windows.net
+
+:::image type="content" source="media/private-endpoint-dns/on-premise-forwarding-to-azure.png" alt-text="本地转发到 Azure DNS":::
 
 
 ## <a name="next-steps"></a>后续步骤

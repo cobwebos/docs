@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 0926f41fb030e27ab8be54a2672ff9ed20e15206
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df02c7d2ace6c58d86f4044607eca386f1790e1d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181573"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734308"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>用于登录用户的 Web 应用：登录和注销
 
@@ -74,7 +74,7 @@ else
 
 # <a name="java"></a>[Java](#tab/java)
 
-在 Java 快速入门中，登录按钮位于 [main/resources/templates/index.html](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/src/main/resources/templates/index.html) 文件中。
+在 Java 快速入门中，登录按钮位于 [main/resources/templates/index.html](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/msal-java-webapp-sample/src/main/resources/templates/index.html) 文件中。
 
 ```html
 <!DOCTYPE html>
@@ -112,7 +112,7 @@ def index():
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-在 ASP.NET 中，在 Web 应用中选择“登录”按钮会触发 `AccountController` 控制器上的 `SignIn` 操作。**** 在以前的 ASP.NET Core 模板版本中，`Account` 控制器嵌入在 Web 应用中。 这并不是这样，因为控制器现在是**Microsoft 的 web.config**包的一部分。 有关详细信息，请参阅[AccountController.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) 。
+在 ASP.NET 中，在 Web 应用中选择“登录”按钮会触发 `AccountController` 控制器上的 `SignIn` 操作。  在以前的 ASP.NET Core 模板版本中，`Account` 控制器嵌入在 Web 应用中。 这并不是这样，因为控制器现在是**Microsoft 的 web.config**包的一部分。 有关详细信息，请参阅[AccountController.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) 。
 
 此控制器还处理 Azure AD B2C 应用程序。
 
@@ -433,4 +433,4 @@ public class AccountController : Controller
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [移到生产环境](scenario-web-app-sign-user-production.md)
+> [转移到生产环境](scenario-web-app-sign-user-production.md)

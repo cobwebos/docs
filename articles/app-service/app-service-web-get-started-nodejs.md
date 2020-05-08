@@ -5,14 +5,12 @@ ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
 ms.date: 03/04/2020
 ms.custom: mvc, devcenter, seodec18
-experimental: false
-experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: bcb0ae2457175e7511c3539187d72d48e80baa5b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: df1e0809c0122eae593543cd193a6477b03d0938
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80047130"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690797"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>在 Azure 中创建 Node.js Web 应用 
 
@@ -23,7 +21,7 @@ ms.locfileid: "80047130"
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension)。
 - [Node.js 和 npm](https://nodejs.org)。 运行命令 `node --version` 验证是否已安装 Node.js。
 - [Visual Studio Code](https://code.visualstudio.com/)。
-- Visual Studio Code 的 [Azure 应用服务扩展](vscode:extension/ms-azuretools.vscode-azureappservice)。
+- Visual Studio Code 的 [Azure 应用服务扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice)。
 
 ## <a name="clone-and-run-a-local-nodejs-application"></a>克隆并运行本地 Node.js 应用程序
 
@@ -45,7 +43,7 @@ ms.locfileid: "80047130"
     npm start
     ```
     
-1. 打开浏览器并导航到 [http://localhost:1337](http://localhost:1337)。 浏览器应会显示“Hello World!”。
+1. 打开浏览器并导航到 `http://localhost:1337`。 浏览器应会显示“Hello World!”。
 
 1. 在终端中按 **Ctrl**+**C** 停止服务器。
 

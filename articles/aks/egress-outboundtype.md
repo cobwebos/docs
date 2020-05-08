@@ -4,12 +4,12 @@ description: 了解如何在 Azure Kubernetes 服务中定义自定义传出路�
 services: container-service
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: 3780680c485aebf1ffc654d31c577821a9b96fff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e7dbde4095fb635180bb1ba663734f8dbfd602f7
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80676508"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733492"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>使用用户定义的路由自定义群集传出（预览）
 
@@ -23,7 +23,7 @@ ms.locfileid: "80676508"
 > * [AKS 支持策略](support-policies.md)
 > * [Azure 支持常见问题](faq.md)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 * Azure CLI 版本2.0.81 或更高版本
 * Azure CLI 预览扩展版本0.4.28 或更高版本
 * 或更高`2020-01-01`版本的 API
@@ -73,7 +73,7 @@ az extension update --name aks-preview
 
 如果`userDefinedRouting`设置了，则 AKS 不会自动配置出口路径。 应由**用户**执行以下操作。
 
-必须使用已配置的子网将群集部署到现有的虚拟网络中。 具有出站连接的子网中必须存在有效的用户定义路由（UDR）。
+必须使用已配置的子网将 AKS 群集部署到现有的虚拟网络中。 使用标准负载均衡器（SLB）体系结构时，必须建立显式出口。 这要求向设备（例如防火墙、网关、本地）发送传出请求，或允许通过分配到标准负载均衡器或给定节点的公共 IP 完成出口。
 
 AKS 资源提供程序将部署标准负载平衡器（SLB）。 负载均衡器未配置任何规则，并且在[下一条规则之前不会产生费用](https://azure.microsoft.com/pricing/details/load-balancer/)。 AKS**不**会自动为 SLB 前端预配公共 IP 地址。 AKS**不**会自动配置负载均衡器后端池。
 

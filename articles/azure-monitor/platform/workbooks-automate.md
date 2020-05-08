@@ -7,18 +7,18 @@ manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 04/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: 2c2d70d1c945e700a3fa42609f8aa0e1607ba77c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d62fa84711bd8cba57d07f3464c21344bc5c32c6
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77658398"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731725"
 ---
 # <a name="programmatically-manage-workbooks"></a>以编程方式管理工作簿
 
-资源所有者可以选择通过资源管理器模板以编程方式创建和管理其工作簿。 
+资源所有者可以选择通过资源管理器模板以编程方式创建和管理其工作簿。
 
 这在下列情况下非常有用：
 * 部署组织或域特定的分析报表以及资源部署。 例如，你可以为新的应用或虚拟机部署特定于组织的性能和故障工作簿。
@@ -26,7 +26,98 @@ ms.locfileid: "77658398"
 
 将在所需的子/资源组中创建工作簿，并在资源管理器模板中指定内容。
 
-## <a name="azure-resource-manager-template-for-deploying-workbooks"></a>用于部署工作簿的 Azure 资源管理器模板
+可以通过编程方式管理两种类型的工作簿资源：
+* [工作簿模板](#azure-resource-manager-template-for-deploying-a-workbook-template)
+* [工作簿实例](#azure-resource-manager-template-for-deploying-a-workbook-instance)
+
+## <a name="azure-resource-manager-template-for-deploying-a-workbook-template"></a>用于部署工作簿模板的 Azure 资源管理器模板
+
+1. 打开要以编程方式部署的工作簿。
+2. 单击 "_编辑_" 工具栏项，将工作簿切换到编辑模式。
+3. 使用工具栏_Advanced Editor_上的_</>_ 按钮打开高级编辑器。
+4. 确保位于 "_库模板_" 选项卡上。
+
+    ![库模板选项卡](./media/workbooks-automate/gallery-template.png)
+1. 将库模板中的 JSON 复制到剪贴板。
+2. 下面是一个示例 Azure 资源管理器模板，用于将工作簿模板部署到 Azure Monitor 工作簿库。 粘贴复制的用于代替的`<PASTE-COPIED-WORKBOOK_TEMPLATE_HERE>`JSON。 可在[此处](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/ARM-template-for-creating-workbook-template)找到用于创建工作簿模板的引用 Azure 资源管理器模板。
+
+    ```json
+          {
+        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+            "resourceName": {
+                "type": "string",
+                "defaultValue": "my-workbook-template",
+                "metadata": {
+                    "description": "The unique name for this workbook template instance"
+                }
+            }
+        },
+        "resources": [
+            {
+                "name": "[parameters('resourceName')]",
+                "type": "microsoft.insights/workbooktemplates",
+                "location": "[resourceGroup().location]",
+                "apiVersion": "2019-10-17-preview",
+                "dependsOn": [],
+                "properties": {
+                    "galleries": [
+                        {
+                            "name": "A Workbook Template",
+                            "category": "Deployed Templates",
+                            "order": 100,
+                            "type": "workbook",
+                            "resourceType": "Azure Monitor"
+                        }
+                    ],
+                    "templateData": <PASTE-COPIED-WORKBOOK_TEMPLATE_HERE>
+                }
+            }
+        ]
+    }
+    ```
+1. 在`galleries`对象中，用您`name`的`category`值填充和键。 在下一部分中了解有关[参数](#parameters)的详细信息。
+2. 使用[Azure 门户](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template)、[命令行接口](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli)、 [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell)等部署此 Azure 资源管理器模板。
+3. 打开 Azure 门户，导航到在 Azure 资源管理器模板中选择的工作簿库。 在示例模板中，导航到 Azure Monitor 工作簿库：
+    1. 打开 Azure 门户并导航到 Azure Monitor
+    2. 从`Workbooks`目录中打开
+    3. 在 "类别`Deployed Templates` " 下的库中查找模板（将是紫色项目之一）。
+
+### <a name="parameters"></a>参数
+
+|参数                |说明                                                                                             |
+|:-------------------------|:-------------------------------------------------------------------------------------------------------|
+| `name`                   | Azure 资源管理器中的工作簿模板资源的名称。                                  |
+|`type`                    | 始终为 workbooktemplates/                                                            |
+| `location`               | 将在其中创建工作簿的 Azure 位置。                                               |
+| `apiVersion`             | 2019-10-17 预览                                                                                     |
+| `type`                   | 始终为 workbooktemplates/                                                            |
+| `galleries`              | 要在其中显示此工作簿模板的库集。                                                |
+| `gallery.name`           | 库中工作簿模板的友好名称。                                             |
+| `gallery.category`       | 要放置模板的库中的组。                                                     |
+| `gallery.order`          | 确定在库的类别中显示模板的顺序的数字。 顺序越小，优先级越高。 |
+| `gallery.resourceType`   | 与库对应的资源类型。 这通常是对应于资源的资源类型字符串（例如，microsoft.operationalinsights/工作区）。 |
+|`gallery.type`            | 这是表示工作簿类型的唯一键，用于在资源类型中将库区分开来。 例如，Application Insights 具有类型`workbook`并`tsg`对应于不同的工作簿库。 |
+
+### <a name="galleries"></a>库
+
+| 库                                        | 资源类型                                      | 工作簿类型 |
+| :--------------------------------------------- |:---------------------------------------------------|:--------------|
+| Azure Monitor 中的工作簿                     | `Azure Monitor`                                    | `workbook`    |
+| Azure Monitor 中的 VM Insights                   | `Azure Monitor`                                    | `vm-insights` |
+| Log analytics 工作区中的工作簿           | `microsoft.operationalinsights/workspaces`         | `workbook`    |
+| Application Insights 中的工作簿              | `microsoft.insights/component`                     | `workbook`    |
+| Application Insights 中的故障排除指南 | `microsoft.insights/component`                     | `tsg`         |
+| Application Insights 中的用法                  | `microsoft.insights/component`                     | `usage`       |
+| Kubernetes 服务中的工作簿                | `Microsoft.ContainerService/managedClusters`       | `workbook`    |
+| 资源组中的工作簿                   | `microsoft.resources/subscriptions/resourcegroups` | `workbook`    |
+| Azure Active Directory 中的工作簿            | `microsoft.aadiam/tenant`                          | `workbook`    |
+| 虚拟机中的 VM Insights                | `microsoft.compute/virtualmachines`                | `insights`    |
+| 虚拟机规模集中的 VM Insights                   | `microsoft.compute/virtualmachinescalesets`        | `insights`    |
+
+## <a name="azure-resource-manager-template-for-deploying-a-workbook-instance"></a>用于部署工作簿实例的 Azure 资源管理器模板
+
 1. 打开要以编程方式部署的工作簿。
 2. 单击 "_编辑_" 工具栏项，将工作簿切换到编辑模式。
 3. 使用工具栏_Advanced Editor_上的_</>_ 按钮打开高级编辑器。
@@ -124,4 +215,3 @@ ms.locfileid: "77658398"
 ## <a name="next-steps"></a>后续步骤
 
 了解如何使用工作簿为新[Azure Monitor 提供存储体验](../insights/storage-insights-overview.md)。
-

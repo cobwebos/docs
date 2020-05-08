@@ -3,16 +3,16 @@ title: Azure EA 虚拟机预留实例
 description: 本文总结了针对 VM 预留实例的 Azure 预留如何帮助你节省企业注册的费用。
 author: bandersmsft
 ms.author: banders
-ms.date: 04/01/2020
+ms.date: 05/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: cfd3693825d34561ad08154882247c159a40b3e8
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 4321d2b48a3672b537cf0f50c5e02e3196e68ed8
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586173"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691169"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA 虚拟机预留实例
 

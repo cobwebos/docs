@@ -1,22 +1,17 @@
 ---
-title: 使用 Azure Active Directory 在 Azure Data Lake Storage Gen1 中进行身份验证 | Microsoft Docs
-description: 了解如何使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 身份验证
-services: data-lake-store
-documentationcenter: ''
+title: 身份验证-Data Lake Storage Gen1 与 Azure AD
+description: 了解如何使用 Azure Active Directory 对 Azure Data Lake Storage Gen1 进行身份验证。
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: f83cf183bee930dd07c707b0eb49125cecd70b84
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 49e6df417190071e06582be400575e1880f2543a
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60193588"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692290"
 ---
 # <a name="authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 身份验证
 

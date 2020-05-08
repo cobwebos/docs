@@ -29,6 +29,9 @@
   items:
     - name: Azure CLI
       href: sample-scripts-azure-cli.md
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 数据库和服务器
@@ -218,7 +221,7 @@
       href: 'https://azure.microsoft.com/pricing/details/mariadb/'
     - name: MSDN 论坛
       href: 'https://social.msdn.microsoft.com/forums/en-US/home?forum=AzureDatabaseforMariaDB'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-database-mariadb'
     - name: 请求功能
       href: 'https://feedback.azure.com/forums/915439-azure-database-for-mariadb'
