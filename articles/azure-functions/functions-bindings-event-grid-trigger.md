@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2027629e1e9e297c97cbf40485ebe7dc2e3e6c0d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4673bcb71fc2f45c3b02f8fe5e463184395e8ef8
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277721"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891278"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions 的 Azure 事件网格触发器
 
@@ -313,7 +313,7 @@ Python 不支持特性。
 | **方向键** | 必需 - 必须设置为 `in`。 |
 | **name** | 必需 - 在函数代码中对接收事件数据的参数使用的变量名称。 |
 
-## <a name="usage"></a>使用情况
+## <a name="usage"></a>用法
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -570,4 +570,4 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 
 ## <a name="next-steps"></a>后续步骤
 
-* [调度事件网格事件](./functions-bindings-event-grid-trigger.md)
+* [调度事件网格事件](./functions-bindings-event-grid-output.md)

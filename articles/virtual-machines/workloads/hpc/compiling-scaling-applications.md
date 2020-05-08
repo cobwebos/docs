@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 00d5b86c8cae01d342d55b7ad20ec59c3f7530bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1de7b1412a242e1b658128ba11f482a2d9dc3107
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67707839"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594791"
 ---
 # <a name="scaling-hpc-applications"></a>缩放 HPC 应用程序
 
@@ -37,7 +37,7 @@ Clang 是 C、c + + 和目标 C 编译器，处理预处理、分析、优化、
 
 ### <a name="flang"></a>FLANG
 
-FLANG 编译器是 AOCC suite （添加到2018年4月）的最新补充，目前处于预发布版本，供开发人员下载和测试。 基于 Fortran 2008，AMD 扩展了 GitHub 版本的 FLANG （https://github.com/flangcompiler/flang)。 FLANG 编译器支持所有 Clang 编译器选项和多个特定于 FLANG 的编译器选项。
+FLANG 编译器是 AOCC suite （添加到2018年4月）的最新补充，目前处于预发布版本，供开发人员下载和测试。 基于 Fortran 2008，AMD 扩展了 GitHub 版本的 FLANG （https://github.com/flang-compiler/flang)。 FLANG 编译器支持所有 Clang 编译器选项和多个特定于 FLANG 的编译器选项。
 
 ### <a name="dragonegg"></a>DragonEgg
 

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 74462b68bea38e4d84219adeedb7c3bb0893bbb4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/22/2020
+ms.openlocfilehash: 945ef895304a151ea7e0ef5b94ed0b42757743ad
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417237"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890617"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP HANA 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -34,7 +34,7 @@ ms.locfileid: "81417237"
 以下活动支持此 SAP HANA 连接器：
 
 - 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
-- [查找活动](control-flow-lookup-activity.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 
 可以将数据从 SAP HANA 数据库复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
@@ -46,13 +46,13 @@ ms.locfileid: "81417237"
 - 从 SAP HANA 源进行并行复制。 有关详细信息，请参阅[SAP HANA 部分中的并行复制](#parallel-copy-from-sap-hana)。
 
 > [!TIP]
-> 要将数据复制到**** SAP HANA 数据存储，请使用泛型 ODBC 连接器。 有关详细信息，请参阅 [SAP HANA 接收器](connector-odbc.md#sap-hana-sink)。 注意：适用于 SAP HANA 连接器和 ODBC 连接器的链接服务采用不同的类型，因此不能重用。
+> 要将数据复制到**** SAP HANA 数据存储，请使用泛型 ODBC 连接器。 有关详细信息，请参阅[SAP HANA sink](#sap-hana-sink)部分。 注意：适用于 SAP HANA 连接器和 ODBC 连接器的链接服务采用不同的类型，因此不能重用。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 要使用此 SAP HANA 连接器，需要：
 
-- 设置自承载集成运行时。 有关详细信息，请参阅[自承载 Integration Runtime](create-self-hosted-integration-runtime.md)文章。
+- 设置自承载集成运行时。 有关详细信息，请参阅[自承载集成运行时](create-self-hosted-integration-runtime.md)一文。
 - 在集成运行时计算机上安装 SAP HANA ODBC 驱动程序。 可以从 [SAP 软件下载中心](https://support.sap.com/swdc)下载 SAP HANA ODBC 驱动程序。 使用关键字 **SAP HANA CLIENT for Windows** 进行搜索。
 
 ## <a name="getting-started"></a>入门
@@ -65,7 +65,7 @@ ms.locfileid: "81417237"
 
 SAP HANA 链接的服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapHana** | 是 |
 | connectionString | 指定使用**基本身份验证**或 **Windows 身份验证**连接到 SAP HANA 时所需的信息。 请参阅以下示例。<br>在连接字符串中，服务器/端口是必需的（默认端口为 30015）。在使用基本身份验证时，用户名和密码是必需的。 有关其他高级设置，请参阅 [SAP HANA ODBC 连接属性](<https://help.sap.com/viewer/0eec0d68141541d1b07893a39944924e/2.0.02/en-US/7cab593774474f2f8db335710b2f5c50.html>)<br/>还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取密码配置。 有关更多详细信息，请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
@@ -142,11 +142,11 @@ SAP HANA 链接的服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各节和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 SAP HANA 数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 SAP HANA 数据集支持的属性列表。
 
 支持使用以下属性从 SAP HANA 复制数据：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为： **SapHanaTable** | 是 |
 | 架构 | SAP HANA 数据库中架构的名称。 | 否（如果指定了活动源中的“query”） |
@@ -185,14 +185,14 @@ SAP HANA 链接的服务支持以下属性：
 
 若要从 SAP HANA 复制数据，复制活动的 **source** 节支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为： **SapHanaSource** | 是 |
-| query | 指定要从 SAP HANA 实例读取数据的 SQL 查询。 | 是 |
+| 查询 | 指定要从 SAP HANA 实例读取数据的 SQL 查询。 | 是 |
 | partitionOptions | 指定用于从 SAP HANA 引入数据的数据分区选项。 从 SAP HANA 部分的[并行复制中](#parallel-copy-from-sap-hana)了解详细信息。<br>允许值为： **None** （默认值）、 **PhysicalPartitionsOfTable**、 **SapHanaDynamicRange**。 从 SAP HANA 部分的[并行复制中](#parallel-copy-from-sap-hana)了解详细信息。 `PhysicalPartitionsOfTable`只能在从表中复制数据，而不能在查询中使用。 <br>启用分区选项（即，不`None`是）时，将通过复制活动上的[`parallelCopies`](copy-activity-performance-features.md#parallel-copy)设置来控制同时从 SAP HANA 中加载数据的并行度。 | False |
 | partitionSettings | 指定数据分区的设置组。<br>当分区选项是 `SapHanaDynamicRange` 时适用。 | False |
 | partitionColumnName | 指定分区将用于并行复制的源列的名称。 如果未指定此参数，将自动检测表的索引或主键，并将其用作分区列。<br>当 partition 选项为 `SapHanaDynamicRange`时应用。 如果使用查询来检索源数据，请在 WHERE 子句 `?AdfHanaDynamicRangePartitionCondition`中挂接。 请参阅[并行复制 SAP HANA](#parallel-copy-from-sap-hana)部分中的示例。 | 如果使用`SapHanaDynamicRange`分区，则为 "是"。 |
-| packetSize | 指定网络数据包大小 (KB)，以便将数据拆分成多个块。 如果有大量的数据需要复制，则大多数情况下，提高数据包大小可以提高从 SAP HANA 读取数据的速度。 调整数据包大小时，建议进行性能测试。 | 不能。<br>默认值为 2048 (2MB)。 |
+| packetSize | 指定网络数据包大小 (KB)，以便将数据拆分成多个块。 如果有大量的数据需要复制，则大多数情况下，提高数据包大小可以提高从 SAP HANA 读取数据的速度。 调整数据包大小时，建议进行性能测试。 | 否。<br>默认值为 2048 (2MB)。 |
 
 **示例：**
 
@@ -238,7 +238,7 @@ SAP HANA 链接的服务支持以下属性：
 
 建议使用数据分区启用并行复制，尤其是从 SAP HANA 中引入大量数据时。 下面是适用于不同方案的建议配置。 将数据复制到基于文件的数据存储时，建议以多个文件（仅指定文件夹名称）的形式写入文件夹，在这种情况下，性能比写入单一文件更好。
 
-| 方案                                           | 建议的设置                                           |
+| 场景                                           | 建议的设置                                           |
 | -------------------------------------------------- | ------------------------------------------------------------ |
 | 从大型表进行完整加载。                        | **分区选项**：表的物理分区。 <br><br/>在执行期间，数据工厂会自动检测指定 SAP HANA 表的物理分区类型，并选择相应的分区策略：<br>- **范围分区**：获取为表定义的分区列和分区范围，然后按范围复制数据。 <br>- **哈希**分区：使用哈希分区键作为分区列，然后基于 ADF 计算范围对数据进行分区和复制。 <br>- **循环分区**或**无分区**：使用主密钥作为分区列，然后基于 ADF 计算范围对数据进行分区和复制。 |
 | 使用自定义查询加载大量数据。 | **Partition 选项**：动态范围分区。<br>**查询**： `SELECT * FROM <TABLENAME> WHERE ?AdfHanaDynamicRangePartitionCondition AND <your_additional_where_clause>`。<br>**分区列**：指定用于应用动态范围分区的列。 <br><br>在执行期间，数据工厂首先计算指定分区列的值范围，方法是根据非重复分区列值和 ADF 并行复制设置的数量，将替换`?AdfHanaDynamicRangePartitionCondition`为每个分区的分区列值范围，并将其发送到 SAP HANA。<br><br>如果要使用多个列作为分区列，可以在查询中将每列的值连接为一个列，并将其指定为 ADF 中的分区列， `SELECT * FROM (SELECT *, CONCAT(<KeyColumn1>, <KeyColumn2>) AS PARTITIONCOLUMN FROM <TABLENAME>) WHERE ?AdfHanaDynamicRangePartitionCondition`如。 |
@@ -271,37 +271,65 @@ SAP HANA 链接的服务支持以下属性：
 
 | SAP HANA 数据类型 | 数据工厂临时数据类型 |
 | ------------------ | ------------------------------ |
-| ALPHANUM           | 字符串                         |
+| ALPHANUM           | String                         |
 | BIGINT             | Int64                          |
 | BINARY             | Byte[]                         |
-| BINTEXT            | 字符串                         |
+| BINTEXT            | String                         |
 | BLOB               | Byte[]                         |
 | BOOL               | Byte                           |
-| CLOB               | 字符串                         |
+| CLOB               | String                         |
 | DATE               | DateTime                       |
-| DECIMAL            | Decimal                        |
+| DECIMAL            | 小数                        |
 | DOUBLE             | Double                         |
 | FLOAT              | Double                         |
 | INTEGER            | Int32                          |
-| NCLOB              | 字符串                         |
-| NVARCHAR           | 字符串                         |
+| NCLOB              | String                         |
+| NVARCHAR           | String                         |
 | real               | Single                         |
 | SECONDDATE         | DateTime                       |
-| SHORTTEXT          | 字符串                         |
-| SMALLDECIMAL       | Decimal                        |
+| SHORTTEXT          | String                         |
+| SMALLDECIMAL       | 小数                        |
 | SMALLINT           | Int16                          |
 | STGEOMETRYTYPE     | Byte[]                         |
 | STPOINTTYPE        | Byte[]                         |
-| TEXT               | 字符串                         |
+| TEXT               | String                         |
 | TIME               | TimeSpan                       |
 | TINYINT            | Byte                           |
 | VARCHAR            | 字符串                         |
 | TIMESTAMP          | DateTime                       |
 | VARBINARY          | Byte[]                         |
 
-## <a name="lookup-activity-properties"></a>Lookup 活动属性
+### <a name="sap-hana-sink"></a>SAP HANA 接收器
+
+目前，不支持将 SAP HANA 连接器作为接收器，而可以使用包含 SAP HANA 驱动程序的泛型 ODBC 连接器将数据写入 SAP HANA 中。 
+
+按照[先决条件](#prerequisites)设置自承载 Integration Runtime 并首先安装 SAP HANA ODBC 驱动程序。 创建一个 ODBC 链接服务以连接到 SAP HANA 的数据存储，如以下示例中所示，然后相应地使用 ODBC 类型创建数据集和复制活动接收器。 从[ODBC 连接器](connector-odbc.md)一文了解详细信息。
+
+```json
+{
+    "name": "SAPHANAViaODBCLinkedService",
+    "properties": {
+        "type": "Odbc",
+        "typeProperties": {
+            "connectionString": "Driver={HDBODBC};servernode=<HANA server>.clouddatahub-int.net:30015",
+            "authenticationType": "Basic",
+            "userName": "<username>",
+            "password": {
+                "type": "SecureString",
+                "value": "<password>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+## <a name="lookup-activity-properties"></a>查找活动属性
 
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中的复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

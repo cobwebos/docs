@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/28/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1208e08f7b85e893ba754bdbdf71a2da4f68c90a
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 6a21effc3e567e75a8851fec35ff80dffc60a761
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509053"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787169"
 ---
 # <a name="overview-of-change-tracking-and-inventory"></a>更改跟踪和清单概述
 
@@ -23,10 +23,15 @@ ms.locfileid: "82509053"
 - Microsoft 服务
 - Linux 守护程序
 
-更改跟踪和清单从云中的 Azure Monitor 服务获取其数据。 Azure 会将更改发送到受监视的服务器上已安装的软件、Microsoft 服务、Windows 注册表和文件和 Linux 守护程序，以便 Azure Monitor 进行处理。 云服务将逻辑应用到接收的数据，记录该数据，并使其可用。 
-
 > [!NOTE]
 > 若要跟踪 Azure 资源管理器属性更改，请参阅 Azure 资源图[更改历史记录](../governance/resource-graph/how-to/get-resource-changes.md)。
+
+更改跟踪和清单从 Azure Monitor 中获取其数据。 连接到 Log Analytics 工作区的虚拟机使用 Log Analytics 代理收集有关已安装的软件、Microsoft 服务、Windows 注册表和文件以及受监视服务器上的任何 Linux 守护程序的更改的数据。 数据可用时，代理会将其发送到 Azure Monitor 进行处理。 Azure Monitor 将逻辑应用到接收的数据，记录该数据，并使其可用。 
+
+更改跟踪和清单功能在 Azure 自动化中同时启用了更改跟踪和清单功能区域。 由于这两个区域都使用相同的 Log Analytics 代理，因此，在任何一个功能区域中添加 VM 的过程都是相同的。 
+
+> [!NOTE]
+> 若要使用更改跟踪和清单功能，必须在自动化帐户的同一订阅和区域中查找所有 Vm。
 
 更改跟踪和清单当前不支持以下项：
 
@@ -38,7 +43,7 @@ ms.locfileid: "82509053"
 其他限制：
 
 * 未在当前实现中使用“最大文件大小”列和值****。
-* 如果在30分钟的收集周期内收集超过2500个文件，解决方案性能可能会下降。
+* 如果在30分钟的收集周期内收集超过2500个文件，则更改跟踪和清单性能可能会下降。
 * 当网络流量较高时，更改记录可能需要最多六个小时才能显示。
 * 如果在计算机关闭的情况下修改配置，计算机可能会发布属于以前配置的更改。
 
@@ -49,48 +54,22 @@ ms.locfileid: "82509053"
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
-Windows 和 Linux 操作系统上都支持更改跟踪和清单以及 Azure Monitor Log Analytics 的代理。
-
-### <a name="windows-operating-systems"></a>Windows 操作系统
-
-正式支持的 Windows 操作系统版本为 Windows Server 2008 R2 或更高版本。
-
-### <a name="linux-operating-systems"></a>Linux 操作系统
-
-适用于 Linux 的 Log Analytics 代理正式支持下面讨论的 Linux 分发版。 不过，Linux 代理也可在未列出的其他分发版上运行。 除非另行说明，列出每个主版本支持所有的次版本。
-
-#### <a name="64-bit-linux-operating-systems"></a>64位 Linux 操作系统
-
-* CentOS 6 和 7
-* Amazon Linux 2017.09
-* Oracle Linux 6 和 7
-* Red Hat Enterprise Linux Server 6 和 7
-* Debian GNU/Linux 8 和 9
-* Ubuntu Linux 14.04 LTS、16.04 LTS 和 18.04 LTS
-* SUSE Linux Enterprise Server 12
-
-#### <a name="32-bit-linux-operating-systems"></a>32位 Linux 操作系统
-
-* CentOS 6
-* Oracle Linux 6
-* Red Hat Enterprise Linux Server 6
-* Debian GNU/Linux 8 和 9
-* Ubuntu Linux 14.04 LTS 和 16.04 LTS
+满足 Log Analytics 代理要求的所有操作系统都支持更改跟踪和清单。 正式支持的 Windows 操作系统版本为 Windows Server 2008 SP1 或更高版本以及 Windows 7 SP1 或更高版本。 还支持多个 Linux 操作系统。 请参阅[Log Analytics 代理概述](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)。 
 
 ## <a name="network-requirements"></a>网络要求
 
 更改跟踪和清点具体要求下表中列出的网络地址。 与这些地址的通信使用端口443。
 
-|Azure Public  |Azure Government  |
+|Azure Public  |Azure Government   |
 |---------|---------|
-|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
+|*.ods.opinsights.azure.com    | *.ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
-|\* .blob.core.windows.net|*.blob.core.usgovcloudapi.net|
-|* .azure-automation.net|*.azure-automation.us|
+|\* .blob.core.windows.net | *.blob.core.usgovcloudapi.net|
+|* .azure-automation.net | *.azure-automation.us|
 
 ## <a name="change-tracking-and-inventory-user-interface"></a>更改跟踪和清单用户界面
 
-使用 Azure 门户中更改跟踪和清单查看所监视的计算机的更改摘要。 可以通过在自动化帐户中选择 "**配置管理**" 下的 "**更改跟踪**" 来提供此功能。 
+使用 Azure 门户中更改跟踪和清单查看所监视的计算机的更改摘要。 此功能可通过在自动化帐户中选择 "**配置管理**" 下的 "**更改跟踪**" 和 "**清单**" 的 "添加 vm" 选项之一。  
 
 ![更改跟踪仪表板](./media/change-tracking/change-tracking-dash01.png)
 
@@ -124,7 +103,7 @@ Windows 和 Linux 操作系统上都支持更改跟踪和清单以及 Azure Moni
 更改跟踪和清单允许监视注册表项的更改。 通过监视，可以确定第三方代码和恶意软件可以激活的扩展点。 下表列出了预配置（但未启用）的注册表项。 若要跟踪这些密钥，必须启用每个密钥。
 
 > [!div class="mx-tdBreakAll"]
-> |注册表项 | 目的 |
+> |注册表项 | 目标 |
 > | --- | --- |
 > |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | 监视直接挂接到 Windows 资源管理器并在进程中与**资源管理器**运行的常见自动启动条目。
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup` | 监视启动时运行的脚本。
@@ -186,7 +165,7 @@ Windows 和 Linux 操作系统上都支持更改跟踪和清单以及 Azure Moni
 |服务|250|
 |守护程序|250|
 
-使用更改跟踪和清单的计算机的平均 Log Analytics 数据使用率大约为每月 40 MB。 此值仅为近似值，且随时可能基于环境而更改。 建议监视环境以查看具体使用情况。
+使用更改跟踪和清单的计算机的平均 Log Analytics 数据使用率大约为每月 40 MB，具体取决于你的环境。 使用 "Log Analytics" 工作区的 "使用情况和估计成本" 功能，可以在使用情况图表中查看更改跟踪和库存的数据引入。 你可以使用此数据视图来评估你的数据使用情况，并确定它如何影响你的帐单。 请参阅[了解你的使用情况和估计成本](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs)。  
 
 ### <a name="microsoft-service-data"></a>Microsoft 服务数据
 

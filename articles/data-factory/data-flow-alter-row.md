@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/20/2020
-ms.openlocfilehash: 6b353967c9b9c7517f1a42581717c6394c0e6374
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/06/2020
+ms.openlocfilehash: 0a8864555798d3b64d675c70728ab97d191be81f
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729136"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891375"
 ---
 # <a name="alter-row-transformation-in-mapping-data-flow"></a>在映射数据流中更改行转换
 
@@ -24,6 +24,8 @@ ms.locfileid: "81729136"
 ![更改行设置](media/data-flow/alter-row1.png "更改行设置")
 
 更改行转换仅对数据流中的数据库或 CosmosDB 接收器进行操作。 在调试会话期间，分配给行（insert、update、delete、upsert）的操作不会发生。 在管道中运行 "执行数据流" 活动，以对数据库表执行更改行策略。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4vJYc]
 
 ## <a name="specify-a-default-row-policy"></a>指定默认行策略
 
@@ -54,6 +56,18 @@ ms.locfileid: "81729136"
 > 如果 insert、update 或 upsert 修改了接收器中目标表的架构，数据流将失败。 若要修改数据库中的目标架构，请选择 "**重新创建表**" 作为表操作。 这样就会删除表，然后使用新的架构定义重新创建表。
 
 接收器转换需要使用单个键或一系列键来确定目标数据库中的唯一行标识。 对于 SQL 接收器，在 "接收器设置" 选项卡中设置密钥。对于 CosmosDB，请在设置中设置分区键，同时在接收器映射中设置 CosmosDB 系统字段 "id"。 对于 CosmosDB，必须为更新、upsert 和删除包含系统列 "id"。
+
+## <a name="merges-and-upserts-with-azure-sql-database-and-synapse"></a>与 Azure SQL 数据库和 Synapse 合并和 upsert
+
+ADF 数据流支持与 Azure SQL 数据库和 Synapse 数据库池（数据仓库）结合 upsert 选项进行合并。
+
+但是，你可能会遇到目标数据库架构使用键列的 identity 属性的情况。 ADF 要求你确定将用于匹配 updates 和 upsert 的行值的密钥。 但是，如果目标列设置了 identity 属性，而你使用的是 upsert 策略，则目标数据库将不允许写入列。
+
+可以使用两个选项：
+
+1. 使用接收器转换预处理 SQL 选项： ```SET IDENTITY_INSERT tbl_content ON```。 然后，将它与后处理 SQL 属性一起关闭： ```SET IDENTITY_INSERT tbl_content OFF```。
+
+2. 使用有条件拆分转换，而不是使用 upsert，而是使用有条件拆分转换将逻辑从插入条件中分离出来。 这样，你可以将更新路径上的映射设置为忽略键列映射。
 
 ## <a name="data-flow-script"></a>数据流脚本
 

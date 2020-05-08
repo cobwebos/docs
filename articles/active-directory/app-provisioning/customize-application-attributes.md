@@ -2,24 +2,20 @@
 title: 自定义 Azure AD 属性映射 |Microsoft Docs
 description: 了解 Azure Active Directory 中有哪些针对 SaaS 应用的属性映射，以及如何修改它们来满足业务需求。
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11eddf0e5f9f950373e222a8007cabf7aa0720bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 4abfdd94c57064c86e533234d78f774c45ba8e4a
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82142273"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593856"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
 
@@ -129,7 +125,7 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
   - *引用* - 属性包含 ID，该 ID 引用目标应用程序中的另一个表存储的值。
   - *字符串* - 属性包含文本字符串。
 - **主键？** -特性是否定义为目标对象的架构中的主键字段。
-- **是否必需？** -是否需要在目标应用程序或系统中填充属性。
+- **必填？** -是否需要在目标应用程序或系统中填充属性。
 - **多值？** -特性是否支持多个值。
 - **区分大小写?** -是否以区分大小写的方式对属性值进行求值。
 - **API 表达式**-不使用，除非通过特定预配连接器（如 Workday）的文档的指示执行此操作。
@@ -203,7 +199,7 @@ SCIM RFC 定义核心用户和组架构，同时允许对架构进行扩展，�
   - **如何配置：** 使用上述步骤导航到 "属性映射" 页，并使用 SingleAppRoleAssignment 表达式映射到 roles 属性。 有三个角色属性可供选择：（角色 [主 eq "True"]。显示、角色 [主 eq "True"）、类型和角色 [主 eq "True"]。 你可以选择在映射中包含任何或所有角色属性。 如果要包含多个映射，只需添加一个新映射，并将其包含为目标属性即可。  
   
   ![添加 SingleAppRoleAssignment](./media/customize-application-attributes/edit-attribute-singleapproleassignment.png)
-  - **注意事项**
+  - **要考虑的事项**
     - 确保未向用户分配多个角色。 我们无法保证将预配哪个角色。
     
   - **示例输出** 
@@ -239,7 +235,7 @@ SCIM RFC 定义核心用户和组架构，同时允许对架构进行扩展，�
     然后，使用 AppRoleAssignmentsComplex 表达式映射到自定义角色属性，如下图所示：
 
     ![添加 AppRoleAssignmentsComplex](./media/customize-application-attributes/edit-attribute-approleassignmentscomplex.png)<br>
-  - **注意事项**
+  - **要考虑的事项**
     - 所有角色都将设置为主 = false。
     - POST 包含角色类型。 修补请求不包含类型。 我们正在努力发送 POST 和 PATCH 请求中的类型。
     
@@ -310,7 +306,7 @@ SCIM RFC 定义核心用户和组架构，同时允许对架构进行扩展，�
 > [!IMPORTANT]
 > 在调用此选项之前，强烈建议将**预配状态**设置为 "**关闭**"。
 
-## <a name="what-you-should-know"></a>应了解的内容
+## <a name="what-you-should-know"></a>要点
 
 - Microsoft Azure AD 提供了一个有效的同步进程实现。 在初始化环境中，在同步周期中只会处理需要更新的对象。
 - 更新属性映射会影响同步周期的性能。 对属性映射配置进行更新需要重新评估所有托管对象。

@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: mimckitt
-ms.openlocfilehash: c2db0cca120d08b85229618547a2aaabbba437ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a5fcb3bb1ebf48eaa9cdce70800a4239c5fae03
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870221"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611392"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure 虚拟机规模集常见问题解答
 
@@ -45,11 +45,13 @@ ms.locfileid: "81870221"
 
 ### <a name="if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed"></a>如果我将规模集容量从 20 减少到 15，会删除哪些 VM？
 
-将从跨更新域和容错域的规模集中均匀地删除虚拟机，以最大限度地提高可用性。 首先删除 ID 最大的 VM。
+默认情况下，虚拟机将在可用性区域（如果规模集部署在区域配置中）和容错域之间均匀地从规模集中删除，以最大限度地提高可用性。 首先删除 ID 最大的 VM。
+
+可以通过指定规模集的[扩展策略](virtual-machine-scale-sets-scale-in-policy.md)来更改虚拟机删除的顺序。
 
 ### <a name="what-if-i-then-increase-the-capacity-from-15-to-18"></a>如果将容量从 15 增加到 18，会发生什么情况？
 
-如果将容量增加到 18，则创建 3 个新 VM。 每增加容量一次，VM 实例 ID 就会从以前的最高值（例如 20、21、22）递增。 容错域与和更新域中的 VM 是均衡的。
+如果将容量增加到 18，则创建 3 个新 VM。 每增加容量一次，VM 实例 ID 就会从以前的最高值（例如 20、21、22）递增。 Vm 跨容错域平衡。
 
 ### <a name="when-im-using-multiple-extensions-in-a-scale-set-can-i-enforce-an-execution-sequence"></a>在一个规模集中使用多个扩展时，是否可以强制规定执行序列？
 
@@ -61,7 +63,7 @@ ms.locfileid: "81870221"
 
 ### <a name="do-scale-sets-work-with-azure-availability-zones"></a>规模集是否可以与 Azure 可用性区域配合使用？
 
-可以！ 有关详细信息，请参阅[规模集区域文档](./virtual-machine-scale-sets-use-availability-zones.md)。
+能！ 有关详细信息，请参阅[规模集区域文档](./virtual-machine-scale-sets-use-availability-zones.md)。
 
 
 ## <a name="autoscale"></a>自动缩放
@@ -126,7 +128,7 @@ ms.locfileid: "81870221"
 
 ### <a name="if-i-have-stopped-deallocated-a-vm-is-that-vm-started-as-part-of-an-autoscale-operation"></a>如果我已停止（解除分配）VM，该 VM 是否作为自动缩放操作的一部分启动？
 
-不能。 如果自动缩放规则要求将其他 VM 实例作为规模集的一部分，则会创建新的 VM 实例。 停止（解除分配）的 VM 实例不会作为自动缩放事件的一部分启动。 但是，那些已停止（解除分配）的 VM 可能会作为可缩小实例数的自动缩放事件的一部分删除，这与基于 VM 实例 ID 的顺序可以删除任何 VM 实例的方式相同。
+否。 如果自动缩放规则要求将其他 VM 实例作为规模集的一部分，则会创建新的 VM 实例。 停止（解除分配）的 VM 实例不会作为自动缩放事件的一部分启动。 但是，那些已停止（解除分配）的 VM 可能会作为可缩小实例数的自动缩放事件的一部分删除，这与基于 VM 实例 ID 的顺序可以删除任何 VM 实例的方式相同。
 
 
 
@@ -221,11 +223,11 @@ az sf cluster create -h
 }
 ```
 
-linuxConfiguration 元素名称 | 必选 | 类型 | 说明
+linuxConfiguration 元素名称 | 必须 | 类型 | 说明
 --- | --- | --- | ---
-ssh | 否 | 集合 | 指定 Linux OS 的 SSH 密钥配置
-path | 是 | 字符串 | 指定 SSH 密钥或证书应放置到的 Linux 文件路径
-keyData | 是 | 字符串 | 指定 base64 编码的 SSH 公钥
+ssh | 否 | 收集 | 指定 Linux OS 的 SSH 密钥配置
+path | 是 | String | 指定 SSH 密钥或证书应放置到的 Linux 文件路径
+keyData | 是 | String | 指定 base64 编码的 SSH 公钥
 
 有关示例，请参阅 [101-vm-sshkey GitHub 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)。
 
@@ -335,13 +337,13 @@ Key Vault 要求指定证书版本的目的是为了使用户清楚地了解哪�
 
 是的。 可在适用于 [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) 和 [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) 的“Azure 快速入门”模板中查看一些示例 MSI 模板。
 
-## <a name="deleting"></a>正在删除 
+## <a name="deleting"></a>正在删除
 
 ### <a name="will-the-locks-i-set-in-place-on-virtual-machine-scale-set-instances-be-respected-when-deleting-instances"></a>删除实例时，是否遵守我在虚拟机规模集实例上设置的锁？
 
-在 Azure 门户中，可通过选择多个实例来删除单个实例或批量删除。 如果尝试删除带有锁的单个实例，则遵守此锁，并且你将无法删除该实例。 但是，如果批量选择多个实例，并且这些实例中的任何一个实例都带有锁，则不遵守锁，并且所有选定的实例都将被删除。 
- 
-在 Azure CLI 中，只能删除单个实例。 如果尝试删除带有锁的单个实例，则遵守此锁，并且你将无法删除该实例。 
+在 Azure 门户中，可通过选择多个实例来删除单个实例或批量删除。 如果尝试删除带有锁的单个实例，则遵守此锁，并且你将无法删除该实例。 但是，如果批量选择多个实例，并且这些实例中的任何一个实例都带有锁，则不遵守锁，并且所有选定的实例都将被删除。
+
+在 Azure CLI 中，只能删除单个实例。 如果尝试删除带有锁的单个实例，则遵守此锁，并且你将无法删除该实例。
 
 ## <a name="extensions"></a>扩展
 
@@ -466,7 +468,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
 ### <a name="is-it-possible-to-assign-a-network-security-group-nsg-to-a-scale-set-so-that-it-applies-to-all-the-vm-nics-in-the-set"></a>是否可以将网络安全组 (NSG) 分配给规模集，以便将其应用于集中的所有 VM NIC？
 
-是的。 可通过在网络配置文件的 networkInterfaceConfigurations 部分中引用网络安全组，将其直接应用于规模集。 例如：
+是的。 可通过在网络配置文件的 networkInterfaceConfigurations 部分中引用网络安全组，将其直接应用于规模集。 示例：
 
 ```json
 "networkProfile": {
@@ -520,7 +522,7 @@ IP 地址是从指定的子网中选择的。
 
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>能否将规模集与加速网络结合使用？
 
-是的。 若要使用加速网络，请在规模集的 networkInterfaceConfigurations 设置中将 enableAcceleratedNetworking 设置为 true。 例如
+是的。 若要使用加速网络，请在规模集的 networkInterfaceConfigurations 设置中将 enableAcceleratedNetworking 设置为 true。 例如：
 
 ```json
 "networkProfile": {
@@ -540,7 +542,7 @@ IP 地址是从指定的子网中选择的。
 
 ### <a name="how-can-i-configure-the-dns-servers-used-by-a-scale-set"></a>如何才能配置规模集使用的 DNS 服务器？
 
-若要创建具有自定义 DNS 配置的虚拟机规模集，请将 dnsSettings JSON 数据包添加到规模集的 networkInterfaceConfigurations 部分中。 例如：
+若要创建具有自定义 DNS 配置的虚拟机规模集，请将 dnsSettings JSON 数据包添加到规模集的 networkInterfaceConfigurations 部分中。 示例：
 
 ```json
     "dnsSettings":{
@@ -550,7 +552,7 @@ IP 地址是从指定的子网中选择的。
 
 ### <a name="how-can-i-configure-a-scale-set-to-assign-a-public-ip-address-to-each-vm"></a>如何才能将规模集配置为向每个 VM 分配公共 IP 地址？
 
-若要创建向每个 VM 分配公共 IP 地址的虚拟机规模集，请确保 virtualMachineScaleSets 资源的 API 版本为2017-03-30，并将_publicipaddressconfiguration_ JSON 数据包添加到规模集 ipconfiguration 部分。 例如：
+若要创建向每个 VM 分配公共 IP 地址的虚拟机规模集，请确保 virtualMachineScaleSets 资源的 API 版本为2017-03-30，并将_publicipaddressconfiguration_ JSON 数据包添加到规模集 ipconfiguration 部分。 示例：
 
 ```json
     "publicipaddressconfiguration": {

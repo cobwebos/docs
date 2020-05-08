@@ -10,12 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: fcaa7a0c44851d6b48b40b01af4c8ec992c330b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 6b2cfa85ea412a5ef8bda47a7ff6e99970ba6b0e
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283532"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611834"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>为 Azure 机器学习资源和工作流设置身份验证
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -125,7 +126,7 @@ az ad sp show --id your-client-id
 }
 ```
 
-然后，使用以下命令将你的服务主体访问权限分配给机器学习工作区。 你将需要工作区名称，以及分别针对 `-w` 和 `-g` 参数的资源组名称。 对于 `--user` 参数，请使用 `objectId` 之前步骤中的 值。 可使用 `--role` 参数设置服务主体的访问角色，通常将使用“所有者”或“参与者”******** 角色。 两者都具有现有资源（如计算机群集和数据存储）的写权限，但只有“所有者”角色能预配这些资源****。 
+然后，使用以下命令将你的服务主体访问权限分配给机器学习工作区。 你将需要工作区名称，以及分别针对 `-w` 和 `-g` 参数的资源组名称。 对于 `--user` 参数，请使用 `objectId` 之前步骤中的 值。 可使用 `--role` 参数设置服务主体的访问角色，通常将使用“所有者”或“参与者”******** 角色。 两者都具有现有资源（如计算机群集和数据存储）的写权限，但只有“所有者”角色能预配这些资源****。
 
 ```azurecli-interactive
 az ml workspace share -w your-workspace-name -g your-resource-group-name --user your-sp-object-id --role owner
@@ -148,7 +149,7 @@ sp = ServicePrincipalAuthentication(tenant_id="your-tenant-id", # tenantID
 `sp` 变量现在包含身份验证对象，可直接在 SDK 中使用。 通常，建议将上述 ID/机密存储在环境变量中，如下面的代码所示。
 
 ```python
-import os 
+import os
 
 sp = ServicePrincipalAuthentication(tenant_id=os.environ['AML_TENANT_ID'],
                                     service_principal_id=os.environ['AML_PRINCIPAL_ID'],
@@ -160,7 +161,7 @@ sp = ServicePrincipalAuthentication(tenant_id=os.environ['AML_TENANT_ID'],
 ```python
 from azureml.core import Workspace
 
-ws = Workspace.get(name="ml-example", 
+ws = Workspace.get(name="ml-example",
                    auth=sp,
                    subscription_id="your-sub-id")
 ws.get_details()
@@ -168,7 +169,7 @@ ws.get_details()
 
 ## <a name="azure-machine-learning-rest-api-auth"></a>Azure 机器学习 REST API 身份验证
 
-上述步骤中创建的服务主体也可以对 Azure 机器学习 [REST API](https://docs.microsoft.com/rest/api/azureml/) 进行身份验证。 如果使用 Azure Active Directory [客户端凭据授予流](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)，则可在自动化工作流中进行无外设身份验证的服务到服务调用。 这些示例都可通过 Python 和 Node.js 中的 [ADAL 库](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)实现，但你也可以使用任何支持 OpenID Connect 1.0 的开放源代码库。 
+上述步骤中创建的服务主体也可以对 Azure 机器学习 [REST API](https://docs.microsoft.com/rest/api/azureml/) 进行身份验证。 如果使用 Azure Active Directory [客户端凭据授予流](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)，则可在自动化工作流中进行无外设身份验证的服务到服务调用。 这些示例都可通过 Python 和 Node.js 中的 [ADAL 库](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)实现，但你也可以使用任何支持 OpenID Connect 1.0 的开放源代码库。
 
 > [!NOTE]
 > MSAL 是一个比 ADAL 更高的库，但不能使用 MSAL 的客户端凭据执行服务到服务身份验证，因为它主要是一个客户端库，适用于与特定用户关联的交互/UI 身份验证。 我们建议使用如下所示的 ADAL，通过 REST API 创建自动化工作流。
@@ -206,7 +207,7 @@ context.acquireTokenWithClientCredentials(
 变量 `tokenResponse` 是包含令牌和关联元数据（如过期时间）的对象。 令牌的有效时间为 1 个小时，可以通过再次运行相同的调用检索一个新令牌来对令牌进行刷新。 以下内容是示例响应。
 
 ```javascript
-{ 
+{
     tokenType: 'Bearer',
     expiresIn: 3599,
     expiresOn: 2019-12-17T19:15:56.326Z,
@@ -214,13 +215,13 @@ context.acquireTokenWithClientCredentials(
     accessToken: "random-oauth-token",
     isMRRT: true,
     _clientId: 'your-client-id',
-    _authority: 'https://login.microsoftonline.com/your-tenant-id' 
+    _authority: 'https://login.microsoftonline.com/your-tenant-id'
 }
 ```
 
 使用 `accessToken` 属性获取身份验证令牌。 请参阅 [REST API 文档](https://github.com/microsoft/MLOps/tree/master/examples/AzureML-REST-API)，获取如何使用令牌进行 API 调用的示例。
 
-### <a name="python"></a>Python 
+### <a name="python"></a>Python
 
 使用以下步骤，通过 Python 生成身份验证令牌。 在你的环境中运行 `pip install adal`。 然后，使用在上述步骤中创建的服务主体中的 `tenantId`、`clientId` 和 `clientSecret`，作为以下脚本中适合的变量的值。
 
@@ -242,13 +243,13 @@ print(token_response)
 
 ```python
 {
-    'tokenType': 'Bearer', 
-    'expiresIn': 3599, 
-    'expiresOn': '2019-12-17 19:47:15.150205', 
-    'resource': 'https://management.azure.com/', 
-    'accessToken': 'random-oauth-token', 
-    'isMRRT': True, 
-    '_clientId': 'your-client-id', 
+    'tokenType': 'Bearer',
+    'expiresIn': 3599,
+    'expiresOn': '2019-12-17 19:47:15.150205',
+    'resource': 'https://management.azure.com/',
+    'accessToken': 'random-oauth-token',
+    'isMRRT': True,
+    '_clientId': 'your-client-id',
     '_authority': 'https://login.microsoftonline.com/your-tenant-id'
 }
 ```
@@ -314,9 +315,9 @@ print(token)
 > [!IMPORTANT]
 > 需要在令牌的 `refresh_by` 时间后请求一个新令牌。 如果需要刷新 Python SDK 外的令牌，一个选择是使用服务主体身份验证的 REST API 定期进行 `service.get_token()` 调用，如前文所述。
 >
-> 我们强烈建议在 Azure Kubernetes 服务群集所在的相同区域中创建 Azure 机器学习工作区。 
+> 我们强烈建议在 Azure Kubernetes 服务群集所在的相同区域中创建 Azure 机器学习工作区。
 >
-> 要使用令牌进行身份验证，Web 服务将调用创建 Azure 机器学习工作区的区域。 如果工作区的区域不可用，即使你的群集和工作区不在同一区域，你也无法获取 Web 服务的令牌。 结果是直到工作区的区域再次可用时，Azure AD 身份验证才可用。 
+> 要使用令牌进行身份验证，Web 服务将调用创建 Azure 机器学习工作区的区域。 如果工作区的区域不可用，即使你的群集和工作区不在同一区域，你也无法获取 Web 服务的令牌。 结果是直到工作区的区域再次可用时，Azure AD 身份验证才可用。
 >
 > 此外，群集区域和工作区区域的距离越远，获取令牌所需的时间就越长。
 

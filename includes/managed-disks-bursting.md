@@ -2,52 +2,17 @@
 title: include 文件
 description: include 文件
 services: virtual-machines
-author: roygara
+author: albecker1
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/29/2020
-ms.author: rogarana
+ms.date: 04/27/2020
+ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 84736b7f1dcdf8b186fddbced5dd773e008c0dd2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 39cc37293ecb0e900a9a88d5aa00863f3e450400
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80887420"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594360"
 ---
-高级 Ssd 支持磁盘突发。 任何高级 SSD 磁盘大小都支持突发 <= 512 GiB （P20 或更低）。 这些磁盘大小支持最大程度的突发，并使用信用系统来管理突发。 如果磁盘流量低于预配的性能目标，则信用额度将在突发存储桶中累积，并在流量超出目标时使用信用额度。 磁盘流量针对预配目标中的 IOPS 和带宽进行跟踪。 磁盘突发不会绕过虚拟机（VM）对 IOPS 或吞吐量的大小限制。
-
-默认情况下，磁盘突发在支持它的磁盘大小的新部署上处于启用状态。 如果现有磁盘大小支持磁盘突发，则可以通过以下任一方法启用突发：
-
-- 分离并重新附加该磁盘。
-- 停止并启动 VM。
-
-## <a name="burst-states"></a>突发状态
-
-磁盘附加到虚拟机时，所有突发适用的磁盘大小都将从完整的突发信用桶开始。 突发的最大持续时间取决于爆发信用桶的大小。 只能将未使用的信用额度累计到信用桶的大小。 在任意时间点，磁盘脉冲信用额度可以处于以下三种状态之一： 
-
-- 如果磁盘流量使用小于预配的性能目标，则为 "累算"。 如果磁盘流量超出 IOPS 或带宽目标，则可以累计信用额度。 如果使用的是完整磁盘带宽，则仍可累积 IO 信用，反之亦然。  
-
-- 正在拒绝，在磁盘流量超过预配的性能目标时使用。 突发流量将独立地使用 IOPS 或带宽的信用额度。 
-
-- 当磁盘流量精确到预配的性能目标时，剩余的常量。 
-
-下表总结了提供突发支持的磁盘大小以及突发规范。
-
-## <a name="regional-availability"></a>区域可用性
-
-在公有云中的所有区域都可以使用磁盘突发。
-
-## <a name="disk-sizes"></a>磁盘大小
-
-[!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
-
-## <a name="example-scenarios"></a>示例方案
-
-为了更好地了解这种方法的工作原理，以下是几个示例方案：
-
-- 可以从磁盘突发中获益的一个常见方案是在 OS 磁盘上加快 VM 启动和应用程序启动。 使用带有8个 GiB OS 映像的 Linux VM 作为示例。 如果使用 P2 磁盘作为 OS 磁盘，则预配目标为 120 IOPS，25 MiB。 当 VM 启动时，将会在加载启动文件的 OS 磁盘上出现读取峰值。 引入突发后，可以按 3500 IOPS 和 170 MiB 的最大突发速度进行阅读，通过至少6倍加快加载时间。 VM 启动后，操作系统磁盘上的流量级别通常较低，因为应用程序的大多数数据操作都将针对附加的数据磁盘。 如果流量低于预配目标，则将累计信用额度。
-
-- 如果你在托管远程虚拟桌面环境，则只要活动用户启动了一个应用程序（如 AutoCAD），就会大幅增加到 OS 磁盘的流量。 在这种情况下，突发流量会消耗累计信用额度，使你能够超出预配目标，并使应用程序的启动速度更快。
-
-- P1 磁盘的预配目标为 120 IOPS，25 MiB。 如果磁盘上的实际流量是在过去1秒的时间间隔内的 100 IOPS 和 20 MiB，则未使用的 20 Io 和 5 MB 将贷记到磁盘的突发存储桶中。 如果流量超出预配目标，则可在以后使用突发存储桶中的信用额度，最大限度地提高突发限制。 最大猝发限制定义了磁盘流量的上限，即使要使用的突发信用额度也是如此。 在这种情况下，即使在信用额度中有 10000 Io，P1 磁盘也不能颁发超过 3500 IO 每秒的最大突发。  
+在 Azure 上，我们提供了在虚拟机和磁盘上提升磁盘存储 IOPS 和 MB/s 性能的功能。 在许多情况下，清除非常有用，例如处理意外的磁盘流量或处理批处理作业。 你可以有效地利用 VM 和磁盘级别的突发，在 VM 和磁盘上实现出色的基准和突发性能。 这样，你就可以在 vm 和磁盘上实现出色的基准性能和突发性能。

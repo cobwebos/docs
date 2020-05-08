@@ -10,14 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/17/2019
 ms.author: martinco
-ms.reviewer: arvindha
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d2f284fddfc49632e467adbf5877856b40a81dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: arvindha, celested
+ms.openlocfilehash: 4f391a2fce669c2684ac5001e3659247adfeb4f6
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77522404"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593533"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>规划自动用户预配部署
 
@@ -65,7 +64,7 @@ Azure AD 使用应用程序库菜单中提供的模板为任何应用程序提�
 
 * [用于跨域标识管理（SCIM）的系统](https://aka.ms/scimoverview)-一种开放标准，允许用户预配的自动化。 SCIM 在标识提供程序（如 Microsoft）与服务提供商（如 Salesforce 或其他需要用户标识信息的 SaaS 应用程序）之间传达用户标识数据。
 
-### <a name="training-resources"></a>定型资源
+### <a name="training-resources"></a>培训资源
 
 | 资源| 链接和说明 |
 | - | - |
@@ -132,7 +131,7 @@ Azure AD 预配服务通过连接到每个应用程序供应商提供的用户�
 
 当技术项目失败时，通常是由于对影响、结果和责任的预期不匹配而导致的。 若要避免这些问题，请[确保参与到正确的利益干系人](https://aka.ms/deploymentplans)，并通过记录利益干系人及其项目输入和责任来充分了解项目中的利益干系人角色。
 
-### <a name="plan-communications"></a>计划通信
+### <a name="plan-communications"></a>规划沟通
 
 沟通对于任何新服务的成功至关重要。 主动与用户交流他们的体验将如何更改，何时会发生更改，以及在遇到问题时如何获取支持。
 
@@ -239,7 +238,7 @@ Azure AD 通过直接的特性到属性映射、提供常量值或[为属性映�
 
 作为部署的一部分，通常需要安全审查。 如果需要安全检查，请参阅许多 Azure AD[白皮书](https://www.microsoft.com/download/details.aspx?id=36391)，其中概述了标识即服务。
 
-### <a name="plan-rollback"></a>计划回滚
+### <a name="plan-rollback"></a>规划回滚
 
 如果自动用户预配实现在生产环境中不能按预期方式工作，以下回滚步骤可帮助你恢复到以前已知的良好状态：
 
@@ -309,7 +308,7 @@ Azure AD 可以通过审核日志和报告，[进一步深入](../app-provisioni
 
 * [预配到 Azure AD 库应用程序的用户组错误](../app-provisioning/application-provisioning-config-problem-wrong-users-provisioned.md)
 
-### <a name="helpful-documentation"></a>帮助文档
+### <a name="helpful-documentation"></a>有用的文档
 
 * [为属性映射编写表达式](../app-provisioning/functions-for-customizing-application-data.md)
 

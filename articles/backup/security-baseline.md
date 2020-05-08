@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: acc8ceaa96f6fddafdbf4aa74ab9e43a1a60714a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 68453341defd2d359e69e0ecf8a821464fead0d3
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195666"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744066"
 ---
 # <a name="azure-security-baseline-for-backup"></a>用于备份的 Azure 安全基准
 
@@ -20,11 +20,11 @@ ms.locfileid: "82195666"
 
 此服务的基线取自[Azure 安全基准1.0 版](https://docs.microsoft.com/azure/security/benchmarks/overview)，其中提供了有关如何在 Azure 上利用我们的最佳实践指南来保护云解决方案的建议。
 
-有关详细信息，请参阅 [Azure 安全基线概述](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)。
+有关详细信息，请参阅[Azure 安全基线概述](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)。
 
 ## <a name="network-security"></a>网络安全
 
-有关详细信息，请参阅[安全控制：  网络安全性](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)。
+*有关详细信息，请参阅[安全控制：网络安全](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)。*
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1：在虚拟网络中使用网络安全组或 Azure 防火墙保护资源
 
@@ -34,7 +34,7 @@ ms.locfileid: "82195666"
 
 **责任**：不适用
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2：监视和记录 Vnet、子网和 Nic 的配置和流量
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2：监视和记录 VNet、子网和 NIC 的配置与流量
 
 **指南**：不适用;不能将虚拟网络、子网或网络安全组与恢复服务保管库相关联。 备份 Azure 虚拟机时，数据将通过 Azure 主干传输。 从本地计算机备份时，使用 Azure 中的特定终结点创建加密的隧道，在通过加密隧道发送数据之前，凭据用于对数据进行预加密。
 
@@ -42,7 +42,7 @@ ms.locfileid: "82195666"
 
 **责任**：不适用
 
-### <a name="13-protect-critical-web-applications"></a>1.3：保护关键 web 应用程序
+### <a name="13-protect-critical-web-applications"></a>1.3：保护关键 Web 应用程序
 
 **指南**：不适用;此建议适用于在 Azure App Service 或计算资源上运行的 web 应用程序。
 
@@ -78,7 +78,7 @@ ms.locfileid: "82195666"
 
 **责任**：客户
 
-### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理 web 应用程序的流量
+### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理发往 Web 应用程序的流量
 
 **指南**：不适用;此建议适用于在 Azure App Service 或计算资源上运行的 web 应用程序。
 
@@ -86,7 +86,7 @@ ms.locfileid: "82195666"
 
 **责任**：不适用
 
-### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：降低网络安全规则的复杂性和管理开销
+### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：最大程度地降低网络安全规则的复杂性和管理开销
 
 **指南**：如果在 Azure 虚拟机上使用 MARS 代理，请在 NSG 或 Azure 防火墙上使用 AzureBackup 服务标记，以允许对 azure 备份进行出站访问。
 
@@ -104,7 +104,7 @@ ms.locfileid: "82195666"
 
 **责任**：不适用
 
-### <a name="110-document-traffic-configuration-rules"></a>1.10：记录流量配置规则
+### <a name="110-document-traffic-configuration-rules"></a>1.10：阐述流量配置规则
 
 **指南**：如果你在 Azure 虚拟机上使用 MARS 代理，请将该 VM 与网络安全组相关联使用描述来指定该规则的业务需求
 
@@ -112,7 +112,7 @@ ms.locfileid: "82195666"
 
 **责任**：客户
 
-### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自动工具来监视网络资源配置和检测更改
+### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自动化工具来监视网络资源配置和检测更改
 
 **指南**：如果在受 NSG 或 azure 防火墙保护的 Azure 虚拟机上使用 MARS 代理，请使用 Azure 活动日志监视 NSG 或防火墙的配置。 你可以在 Azure Monitor 中创建警报，以便在对这些资源进行更改时触发。
 
@@ -126,7 +126,7 @@ ms.locfileid: "82195666"
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
-*有关详细信息，请参阅[安全控制：日志记录和监视](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)。*
+有关详细信息，请参阅[安全控制：  日志记录和监视](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)。
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用批准的时间同步源
 
@@ -148,11 +148,11 @@ ms.locfileid: "82195666"
 
 - [如何载入 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
-### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：启用 Azure 资源的审核日志记录
+### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：为 Azure 资源启用审核日志记录
 
 **指南**：对于控制平面审核日志记录，启用 Azure 活动日志诊断设置，并将日志发送到 Log Analytics 工作区、azure 事件中心或 azure 存储帐户以进行存档。 使用 Azure 活动日志数据，可以确定在 Azure 资源的控制平面级别执行的任何写入操作（PUT、POST、DELETE）的 "操作内容、操作人员和操作时间"。
 
@@ -162,19 +162,19 @@ ms.locfileid: "82195666"
 
 - [对恢复服务保管库使用诊断设置](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2.4：从操作系统收集安全日志
 
-**指南**：不适用;此建议用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
-### <a name="25-configure-security-log-storage-retention"></a>2.5：配置安全日志存储保留
+### <a name="25-configure-security-log-storage-retention"></a>2.5：配置安全日志存储保留期
 
 **指南**：在 Azure Monitor 中，根据组织的符合性规定，设置与 Azure 恢复服务保管库关联的 Log Analytics 工作区的日志保持期。
 
@@ -184,7 +184,7 @@ ms.locfileid: "82195666"
 
 **责任**：客户
 
-### <a name="26-monitor-and-review-logs"></a>2.6：监视和查看日志
+### <a name="26-monitor-and-review-logs"></a>2.6：监视和审查日志
 
 **指南**： Azure 备份在恢复服务保管库中提供内置的监视和警报功能。 无需任何附加的管理基础结构即可使用这些功能。 还可以使用 Azure Monitor 提高监视和报告的规模。
 
@@ -218,7 +218,7 @@ ms.locfileid: "82195666"
 
 **责任**：客户
 
-### <a name="28-centralize-anti-malware-logging"></a>2.8：集中反恶意软件日志记录
+### <a name="28-centralize-anti-malware-logging"></a>2.8：集中管理反恶意软件日志记录
 
 **指南**：不适用;Azure 备份不会处理或产生与反恶意软件相关的日志。
 
@@ -236,7 +236,7 @@ ms.locfileid: "82195666"
 
 ### <a name="210-enable-command-line-audit-logging"></a>2.10：启用命令行审核日志记录
 
-**指南**：不适用;此建议用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -260,7 +260,7 @@ ms.locfileid: "82195666"
 
 **责任**：客户
 
-### <a name="32-change-default-passwords-where-applicable"></a>3.2：更改默认密码（如果适用）
+### <a name="32-change-default-passwords-where-applicable"></a>3.2：在适用的情况下更改默认密码
 
 **指南**： Azure AD 没有默认密码的概念。 其他需要密码的 Azure 资源会强制使用复杂性要求和最小密码长度来创建密码，这因服务而异。 你负责第三方应用程序和可能使用默认密码的 marketplace 服务。
 
@@ -320,7 +320,7 @@ ms.locfileid: "82195666"
 
 **责任**：客户
 
-### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：来自管理帐户的可疑活动的日志和警报
+### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
 
 **指南**：在环境中发生可疑或不安全活动时，使用 AZURE ACTIVE DIRECTORY （AD） PRIVILEGED IDENTITY MANAGEMENT （PIM）来生成日志和警报。
 
@@ -356,7 +356,7 @@ ms.locfileid: "82195666"
 
 **责任**：客户
 
-### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期查看和协调用户访问权限
+### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期审查和协调用户访问
 
 **指南**： AZURE ACTIVE DIRECTORY （AD）提供日志以帮助你发现陈旧的帐户。 此外，使用 Azure 标识访问评审来有效地管理组成员身份、访问企业应用程序和角色分配。 可以定期查看用户访问权限，以确保只有正确的用户才能继续访问。
 
@@ -452,7 +452,7 @@ Microsoft 管理 Azure 备份的底层基础结构，并实施了严格控制来
 
 - [了解 Azure 中的客户数据保护](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：共享
 
@@ -460,13 +460,13 @@ Microsoft 管理 Azure 备份的底层基础结构，并实施了严格控制来
 
 **指南**：从服务器到恢复服务保管库的备份流量将通过安全的 HTTPS 链接传输并在存储在保管库中时使用高级加密标准（AES）256加密。
 
-- [了解 Azure 备份中的静态加密](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#encryption)
+- [了解 Azure 备份中的静态加密](https://docs.microsoft.com/azure/backup/backup-encryption)
 
 **Azure 安全中心监视**：不适用
 
 **责任**： Microsoft
 
-### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5：使用活动发现工具识别敏感数据
+### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5：使用有效的发现工具识别敏感数据
 
 **指南**：当前不可用;数据标识、分类和丢失防护功能尚不可用于 Azure 备份。
 
@@ -488,13 +488,13 @@ Azure 备份提供了三种内置角色来控制备份管理操作：备份参�
 
 - [使用基于角色的访问控制管理 Azure 备份恢复点](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7：使用基于主机的数据丢失防护来强制实施访问控制
 
-**指南**：不适用;此建议用于计算资源。 Microsoft 管理 Azure 备份的底层基础结构，并实施了严格控制来防止客户数据丢失或泄露。
+**指导**：不适用；此建议适用于计算资源。 Microsoft 管理 Azure 备份的底层基础结构，并实施了严格控制来防止客户数据丢失或泄露。
 
 - [Azure 客户数据保护](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
@@ -502,19 +502,19 @@ Azure 备份提供了三种内置角色来控制备份管理操作：备份参�
 
 **责任**： Microsoft
 
-### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：加密静态敏感信息
+### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：静态加密敏感信息
 
 **指南**： Azure 备份支持静态数据加密。 对于本地备份，使用在备份到 Azure 时提供的密码提供静态加密。 对于云工作负荷，将使用存储服务加密（SSE）静态加密数据。 Microsoft 不会解密任何位置的备份数据。
 
 当使用 MARS 代理进行备份或使用使用客户管理的密钥加密的恢复服务保管库时，只有你才能访问加密密钥。 Microsoft 不保留副本，且没有访问该密钥的权限。 如果客户丢失了密钥，Microsoft 无法恢复备份数据。
 
-- [了解 Azure 备份的静态加密](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#encryption)
+- [了解 Azure 备份的静态加密](https://docs.microsoft.com/azure/backup/backup-encryption)
 
 **Azure 安全中心监视**：不适用
 
 **责任**：共享
 
-### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：对关键 Azure 资源的更改进行记录和警报
+### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：记录对关键 Azure 资源的更改并对此类更改发出警报
 
 **指南**：将 Azure Monitor 与 azure 活动日志结合使用，为生产 Azure 恢复服务保管库以及其他关键或相关资源的发生更改创建警报。
 
@@ -536,41 +536,41 @@ Microsoft 对基础平台进行了扫描和修补。 查看可用于 Azure 备�
 
 - [了解适用于 Azure 备份的安全控件](https://docs.microsoft.com/azure/backup/backup-security-controls)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
-### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2：部署自动操作系统修补程序管理解决方案
+### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2：部署自动操作系统修补管理解决方案
 
-**指南**：不适用;此建议用于计算资源。
-
-**Azure 安全中心监视**：不适用
-
-**责任**：不适用
-
-### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3：部署自动第三方软件修补程序管理解决方案
-
-**指南**：不适用;此建议用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
-### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4：比较后向后漏洞扫描
+### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3：部署第三方自动软件修补管理解决方案
 
-**指南**：不适用;此建议用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
-### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用风险评分过程来确定已发现漏洞的修正的优先级
+### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4：比较连续进行的漏洞扫描
+
+**指导**：不适用；此建议适用于计算资源。
+
+**Azure 安全中心监视**：不适用
+
+**责任**：不适用
+
+### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用风险评级过程来确定已发现漏洞的修正措施的优先级
 
 **指南**：当前不可用;azure 安全中心目前尚不支持 Azure 备份的安全配置。
 
 - [Azure 安全中心支持的 PaaS 服务列表](https://docs.microsoft.com/azure/security-center/features-paas)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
@@ -582,7 +582,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看可用于 Azure 备�
 
 **指南**：使用 Azure 资源关系图查询/发现订阅中的所有资源（如计算、存储、网络、端口和协议等）。  请确保租户中的相应（读取）权限，并枚举所有 Azure 订阅以及订阅中的资源。
 
-虽然可通过资源图发现经典 Azure 资源，但强烈建议创建和使用 Azure 资源管理器资源。
+尽管可以通过 Resource Graph 发现经典 Azure 资源，但我们强烈建议你今后还是创建并使用 Azure 资源管理器资源。
 
 - [如何通过 Azure 资源关系图创建查询](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
 
@@ -606,7 +606,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看可用于 Azure 备�
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：删除未经授权的 Azure 资源
 
-**指南**：使用标记、管理组和单独的订阅（如果适用）来组织和跟踪 Azure 资源。 定期协调清点，并确保及时地从订阅中删除未经授权的资源。
+**指南**：使用标记、管理组和单独的订阅（如果适用）来组织和跟踪 Azure 资源。 定期核对清单，确保及时地从订阅中删除未经授权的资源。
 
 此外，使用 Azure 策略将限制添加到可使用以下内置策略定义在客户订阅中创建的资源类型：不允许的资源类型允许的资源类型
 
@@ -628,7 +628,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看可用于 Azure 备�
 
 **责任**：客户
 
-### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：监视未经批准的 Azure 资源
+### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：监视未批准的 Azure 资源
 
 **指南**：使用 Azure 策略对可在订阅中创建的资源类型施加限制。
 
@@ -642,31 +642,31 @@ Microsoft 对基础平台进行了扫描和修补。 查看可用于 Azure 备�
 
 **责任**：客户
 
-### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6：监视计算资源中未经批准的软件应用程序
+### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6：监视计算资源中未批准的软件应用程序
 
-**指南**：不适用;此建议用于计算资源。
-
-**Azure 安全中心监视**：不适用
-
-**责任**：不适用
-
-### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7：删除未经批准的 Azure 资源和软件应用程序
-
-**指南**：不适用;此建议用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
-### <a name="68-use-only-approved-applications"></a>6.8：仅使用批准的应用程序
+### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7：删除未批准的 Azure 资源和软件应用程序
 
-**指南**：不适用;此建议用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
-### <a name="69-use-only-approved-azure-services"></a>6.9：仅使用批准的 Azure 服务
+### <a name="68-use-only-approved-applications"></a>6.8：仅使用已批准的应用程序
+
+**指导**：不适用；此建议适用于计算资源。
+
+**Azure 安全中心监视**：不适用
+
+**责任**：不适用
+
+### <a name="69-use-only-approved-azure-services"></a>6.9：仅使用已批准的 Azure 服务
 
 **指南**：使用 Azure 策略对可使用以下内置策略定义在客户订阅中创建的资源类型施加限制：不允许的资源类型允许的资源类型
 
@@ -678,9 +678,9 @@ Microsoft 对基础平台进行了扫描和修补。 查看可用于 Azure 备�
 
 **责任**：客户
 
-### <a name="610-implement-approved-application-list"></a>6.10：实现已批准的应用程序列表
+### <a name="610-implement-approved-application-list"></a>6.10：实施已批准的应用程序列表
 
-**指南**：不适用;此建议用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -696,15 +696,15 @@ Microsoft 对基础平台进行了扫描和修补。 查看可用于 Azure 备�
 
 **责任**：客户
 
-### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12：限制用户在计算资源中执行脚本的能力
+### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12：限制用户在计算资源中执行脚本的功能
 
-**指南**：不适用;此建议用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
-### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：对高风险应用程序进行物理或逻辑分离
+### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以物理或逻辑方式隔离高风险应用程序
 
 **指南**：不适用;此建议适用于在 Azure App Service 或计算资源上运行的 web 应用程序。
 
@@ -730,7 +730,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看可用于 Azure 备�
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7.2：建立安全的操作系统配置
 
-**指南**：不适用;此准则用于计算资源。
+**指导**：不适用；此项指导适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -750,7 +750,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看可用于 Azure 备�
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7.4：维护安全的操作系统配置
 
-**指南**：不适用;此准则用于计算资源。
+**指导**：不适用；此项指导适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -770,7 +770,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看可用于 Azure 备�
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6：安全存储自定义操作系统映像
 
-**指南**：不适用;此准则用于计算资源。
+**指导**：不适用；此项指导适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -778,7 +778,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看可用于 Azure 备�
 
 ### <a name="77-deploy-system-configuration-management-tools"></a>7.7：部署系统配置管理工具
 
-**指南**：使用内置 azure 策略定义以及 "microsoft.recoveryservices" 命名空间中的 azure 策略别名创建自定义策略，以对系统配置进行警报、审核和强制执行。 此外，开发用于管理策略异常的进程和管道。
+**指南**：使用内置 azure 策略定义以及 "microsoft.recoveryservices" 命名空间中的 azure 策略别名创建自定义策略，以对系统配置进行警报、审核和强制执行。 另外，开发一个用于管理策略例外的流程和管道。
 
 - [如何配置和管理 Azure 策略](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -786,15 +786,15 @@ Microsoft 对基础平台进行了扫描和修补。 查看可用于 Azure 备�
 
 **责任**：客户
 
-### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8：部署适用于操作系统的系统配置管理工具
+### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8：为操作系统部署系统配置管理工具
 
-**指南**：不适用;此准则用于计算资源。
+**指导**：不适用；此项指导适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
-### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9：实现 Azure 服务的自动配置监视
+### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9：为 Azure 服务实施自动配置监视
 
 **指南**：使用内置 azure 策略定义以及 "microsoft.recoveryservices" 命名空间中的 azure 策略别名创建自定义策略，以对系统配置进行警报、审核和强制执行。 使用 Azure 策略 [audit]、[拒绝] 和 [部署（如果不存在））自动强制执行 Azure 资源的配置。
 
@@ -804,9 +804,9 @@ Microsoft 对基础平台进行了扫描和修补。 查看可用于 Azure 备�
 
 **责任**：客户
 
-### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10：为操作系统实现自动配置监视
+### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10：为操作系统实施自动配置监视
 
-**指南**：不适用;此准则用于计算资源。
+**指导**：不适用；此项指导适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -834,9 +834,9 @@ Microsoft 对基础平台进行了扫描和修补。 查看可用于 Azure 备�
 
 **责任**：不适用
 
-### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除意外的凭据公开
+### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除意外的凭据透露
 
-**指南**：通过实现凭据扫描器来识别代码中的凭据。 凭据扫描器还鼓励将发现的凭据迁移到更安全的位置，例如 Azure Key Vault。
+**指导**：实施凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。
 
 - [如何设置凭据扫描器](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
@@ -856,7 +856,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看可用于 Azure 备�
 
 **责任**：不适用
 
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预扫描要上载到非计算 Azure 资源的文件
+### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预先扫描要上传到非计算 Azure 资源的文件
 
 **指南**：在支持 azure 服务（例如，azure 备份）的底层主机上启用了 Microsoft 反恶意软件，但它不会在你的内容上运行。
 
@@ -872,9 +872,9 @@ Microsoft 对基础平台进行了扫描和修补。 查看可用于 Azure 备�
 
 **责任**：客户
 
-### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8.3：确保更新反恶意软件和签名
+### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>步骤 8.3：确保反恶意软件和签名已更新
 
-**指南**：不适用;此准则用于计算资源。
+**指导**：不适用；此项指导适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -884,7 +884,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看可用于 Azure 备�
 
 *有关详细信息，请参阅[安全控制：数据恢复](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)。*
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9.1：确保定期自动备份
+### <a name="91-ensure-regular-automated-back-ups"></a>9.1：确保定期执行自动备份
 
 **指南**：不适用;此建议适用于要备份的资源，而不是 Azure 备份本身。
 
@@ -892,7 +892,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看可用于 Azure 备�
 
 **责任**：不适用
 
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：执行完整的系统备份并备份任何客户托管的密钥
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：执行完整系统备份，并备份客户管理的所有密钥
 
 **指南**：本地冗余存储（LRS）将数据复制到数据中心的存储缩放单位三次（创建三个数据副本）。 数据的所有副本存在于同一区域。 LRS 是一种低成本的选项，用于保护你的数据免受本地硬件故障的影响。异地冗余存储（GRS）是默认和推荐的复制选项。 GRS 将数据复制到离源数据主位置数英里之外的次要区域中。 GRS 的成本比 LRS 的高，但 GRS 提供更高的数据持久度，即使出现区域性服务中断也是如此。
 
@@ -902,13 +902,13 @@ Azure Key Vault 中的备份客户托管密钥。
 
 - [如何在 Azure 中备份 key vault 密钥](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
-- [了解 Azure 备份中的加密](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#encryption-of-backup-data-using-customer-managed-keys)
+- [了解 Azure 备份中的加密](https://docs.microsoft.com/azure/backup/backup-encryption#encryption-of-backup-data-using-customer-managed-keys)
 
 **Azure 安全中心监视**：不适用
 
 **责任**：客户
 
-### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：验证包括客户托管密钥在内的所有备份
+### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：验证所有备份，包括客户管理的密钥
 
 **指南**：测试还原已备份的客户托管密钥。
 
@@ -948,11 +948,11 @@ Azure Key Vault 中的备份客户托管密钥。
 
 **责任**：客户
 
-### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件计分和优先级过程
+### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指南**：安全中心为每个警报分配一个严重性，以帮助你确定应该首先调查的警报的优先级。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
+**指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
-此外，清楚地标记订阅（例如 生产、非生产），并创建一个命名系统来明确识别和分类 Azure 资源。
+此外，请明确标记订阅（例如 生产、非生产），并创建命名系统来对 Azure 资源进行明确标识和分类。
 
 **Azure 安全中心监视**：是
 
@@ -960,7 +960,7 @@ Azure Key Vault 中的备份客户托管密钥。
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指导**：执行试验，以定期测试系统的事件响应功能。 确定薄弱点和间隙，并根据需要修改计划。
+**指导**：执行试验，以定期测试系统的事件响应功能。 识别弱点和差距，并根据需要修改计划。
 
 - [请参阅 NIST 发布：针对 IT 计划和功能的测试、培训和运用计划指南](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
@@ -1004,7 +1004,7 @@ Azure Key Vault 中的备份客户托管密钥。
 
 *有关详细信息，请参阅[安全控制：渗透测试和 Red 团队练习](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。*
 
-### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1：对 Azure 资源进行定期渗透测试，并确保60天内所有关键安全发现的修正
+### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1：定期对 Azure 资源执行渗透测试，确保在 60 天内修正所有发现的关键安全问题
 
 **指南**：-[遵循 microsoft 订婚规则确保你的渗透测试不违反 Microsoft 政策](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 

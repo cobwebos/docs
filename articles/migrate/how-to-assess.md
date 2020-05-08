@@ -1,31 +1,21 @@
 ---
 title: 在 Azure Migrate 中添加评估工具
 description: 了解如何在 Azure Migrate 中添加评估工具。
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
-ms.manager: carmonm
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 64af78abd8f82b41d4a03fbb56c96e3038cef5a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 04/26/2020
+ms.openlocfilehash: 7e7d7cf26cab30cd7449e4643fdfb59faece47f2
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74185916"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901060"
 ---
 # <a name="add-assessment-tools"></a>添加评估工具
 
-本文介绍如何在[Azure Migrate](migrate-overview.md)中添加评估工具。
+本文介绍如何在[Azure Migrate](migrate-overview.md)中添加评估工具。 
 
-Azure Migrate 提供了一个用于评估和迁移到 Azure 的工具中心。 它包括 Azure Migrate 工具以及其他工具和独立软件供应商（ISV）产品。
-
-如果你想要添加一个评估工具，但还没有 Azure Migrate 项目，请遵循此[文](how-to-add-tool-first-time.md)。
-
-## <a name="select-a-tool"></a>选择工具
-
-如果你选择非 Azure Migrate 工具进行评估，请从获取许可证开始，或根据工具策略注册免费试用版。 工具具有连接到 Azure Migrate 的选项。 按照说明和文档操作，将该工具连接到 Azure Migrate。 [了解](migrate-services-overview.md)有关工具的详细信息。
-
+- 如果你想要添加一个评估工具，但还没有 Azure Migrate 项目，请遵循此[文](how-to-add-tool-first-time.md)。
+- 如果已添加 ISV 工具或 Movere，请[按照步骤](prepare-isv-movere.md)进行操作以准备使用该工具。
 
 ## <a name="select-an-assessment-scenario"></a>选择评估方案
 

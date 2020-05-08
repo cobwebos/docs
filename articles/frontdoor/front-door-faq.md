@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2020
 ms.author: sohamnc
-ms.openlocfilehash: e2785baab27f5bfc996b57607816062195a19b2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee4bd24264be9e7730d4dc99af4e61b05a7692bc
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81313755"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594128"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure 前门常见问题
 
@@ -91,7 +91,7 @@ Azure 前门是全球分布的多租户服务。 因此，前门的基础结构�
 
 - 为后端配置 IP Acl，以接受来自 Azure 前门的后端 IP 地址空间和 Azure 的基础结构服务的流量。 请参阅下面的 IP 详细信息，以 Acl 后端：
  
-    - 请参阅[AZURE IP 范围](https://www.microsoft.com/download/details.aspx?id=56519)中的*AzureFrontDoor*和前端的 IPv4 后端 IP 地址范围服务标记中的内容，也可以使用[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)中的服务标记*AzureFrontDoor*或使用[Azure 防火墙](https://docs.microsoft.com/azure/firewall/service-tags)。
+    - 请参阅 Azure IP 范围中的*AzureFrontDoor* ，并为前门的 IPv4 后端 IP 地址范围提供[服务标记，](https://www.microsoft.com/download/details.aspx?id=56519)或者也可以使用[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)中的服务标记*AzureFrontDoor* 。
     - 在服务标记中涵盖的前端的**IPv6**后端 IP 空间未在 Azure IP 范围 JSON 文件中列出。 如果正在查找显式 IPv6 地址范围，则它当前限制为`2a01:111:2050::/44`
     - Azure 的[基本基础结构服务](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)，通过虚拟化主机`168.63.129.16` IP 地址：和`169.254.169.254`
 

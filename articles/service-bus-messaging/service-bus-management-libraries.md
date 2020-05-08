@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: d0e90d9278ede97de04ad8efeaa59d94a4567f66
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e1531d9b70860f498a3e38305f26eb862c9513f3
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76756260"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901498"
 ---
 # <a name="service-bus-management-libraries"></a>服务总线管理库
 
@@ -40,7 +40,7 @@ Azure 服务总线管理库可以动态预配服务总线命名空间和实体�
 * [使用 Azure PowerShell 创建服务主体来访问资源](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
 * [使用 Azure CLI 创建服务主体来访问资源](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 
-这些教程提供 `AppId`（客户端 ID）、`TenantId` 和 `ClientSecret`（身份验证密钥），这些都用于管理库进行的身份验证。 若要对资源组运行命令，必须拥有“所有者”  权限。
+这些教程提供 `AppId`（客户端 ID）、`TenantId` 和 `ClientSecret`（身份验证密钥），这些都用于管理库进行的身份验证。 对于要在其上运行的资源组，您必须至少具有[**Azure 服务总线数据所有者**](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner)或[**参与者**](/azure/role-based-access-control/built-in-roles#contributor)权限。
 
 ## <a name="programming-pattern"></a>编程模式
 

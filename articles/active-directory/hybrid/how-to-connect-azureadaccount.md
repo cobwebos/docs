@@ -16,12 +16,13 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ea151ee79fccd66f1d9422744d8f57829677ec0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 7f6b623cc5f864106dc2f119308370e80014a4c2
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67204527"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611018"
 ---
 # <a name="change-the-azure-ad-connector-account-password"></a>更改 Azure AD 连接器帐户密码
 Azure AD 连接器帐户应该是免费服务。 但如果需要重置其凭据，则可以参阅本主题。 例如，全局管理员错误地使用 PowerShell 对帐户重置了密码。
@@ -30,7 +31,7 @@ Azure AD 连接器帐户应该是免费服务。 但如果需要重置其凭据�
 如果 Azure AD 连接器帐户由于身份验证问题无法联系 Azure AD，则可以重置密码。
 
 1. 登录到 Azure AD Connect 同步服务器并启动 PowerShell。
-2. 运行 `Add-ADSyncAADServiceAccount`。  
+2. 运行 `Add-ADSyncAADServiceAccount`。
    ![PowerShell cmdlet addadsyncaadserviceaccount](./media/how-to-connect-azureadaccount/addadsyncaadserviceaccount.png)
 3. 提供 Azure AD 全局管理员凭据。
 
@@ -40,18 +41,13 @@ Azure AD 连接器帐户应该是免费服务。 但如果需要重置其凭据�
 本部分列出了客户报告的可以通过重置 Azure AD 连接器帐户凭据解决的错误。
 
 ---
-事件 6900  
-服务器在处理密码更改通知时遇到意外的错误：  
-AADSTS70002: 验证凭据时出错。 AADSTS50054: 使用旧密码进行身份验证。
+事件6900服务器在处理密码更改通知时遇到意外错误： AADSTS70002：验证凭据时出错。 AADSTS50054: 使用旧密码进行身份验证。
 
 ---
-事件 659  
-检索密码策略同步配置时出错。 Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException：  
-AADSTS70002: 验证凭据时出错。 AADSTS50054: 使用旧密码进行身份验证。
+检索密码策略同步配置时出现事件659错误。 System.identitymodel： AdalServiceException： AADSTS70002：验证凭据时出错。 AADSTS50054: 使用旧密码进行身份验证。
 
 ## <a name="next-steps"></a>后续步骤
 **概述主题**
 
 * [Azure AD Connect 同步：理解和自定义同步](how-to-connect-sync-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)
-

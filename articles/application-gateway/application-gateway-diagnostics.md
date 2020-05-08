@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: b458537c7cf8a254cd188c565ab1925afa202369
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6829efa007e9e67866bdc0efbca4d095155c35e2
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312657"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889704"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>应用程序网关的后端运行状况和诊断日志
 
@@ -302,7 +302,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |ruleSetType     | 规则集类型。 可用值为 OWASP。        |
 |ruleSetVersion     | 使用的规则集版本。 可用值为 2.2.9 和 3.0。     |
 |ruleId     | 触发事件的规则 ID。        |
-|消息     | 触发事件的用户友好信息。 详细信息部分提供了更多详细信息。        |
+|message     | 触发事件的用户友好信息。 详细信息部分提供了更多详细信息。        |
 |action     |  针对请求执行的操作。 可用值为 Matched 和 Blocked。      |
 |site     | 为其生成日志的站点。 目前，由于规则为全局性规则，所以仅列出了“全局”站点。|
 |详细信息     | 触发事件的详细信息。        |
@@ -368,7 +368,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 ## <a name="next-steps"></a>后续步骤
 
 * 使用 [Azure Monitor 日志](../azure-monitor/insights/azure-networking-analytics.md)可视化计数器和事件日志。
-* [通过 Power BI 的博客文章直观显示 Azure 活动日志](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)。
+* [通过 Power BI 的博客文章直观显示 Azure 活动日志](https://powerbi.microsoft.com/blog/monitor-azure-audit-logs-with-power-bi/)。
 * [View and analyze Azure activity logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)（在 Power BI 和其他组件中查看和分析 Azure 活动日志）博客文章。
 
 [1]: ./media/application-gateway-diagnostics/figure1.png

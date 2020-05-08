@@ -2,13 +2,13 @@
 title: Azure 文件共享备份的支持矩阵
 description: 汇总了备份 Azure 文件共享时的支持设置和限制。
 ms.topic: conceptual
-ms.date: 1/26/2020
-ms.openlocfilehash: b5bfae9454464bc8d11cef3bd346861e13822046
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.date: 5/07/2020
+ms.openlocfilehash: 4da17bb591e94a0eaf26f95210a3e841ad17973b
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838563"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890725"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Azure 文件共享备份的支持矩阵
 

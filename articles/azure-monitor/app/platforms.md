@@ -4,12 +4,12 @@ description: 适用于 Application Insights 的语言、平台和集成
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.reviewer: olegan
-ms.openlocfilehash: cbda252fece638393ee7757dc165c4b009a0195e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 153d4ad3d95c182dcc4f2aa3bad857d7e1984cc2
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79136717"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891108"
 ---
 # <a name="supported-languages"></a>支持的语言
 
@@ -33,7 +33,7 @@ ms.locfileid: "79136717"
 * [Android](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [iOS](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [Java EE](../../azure-monitor/app/java-get-started.md)
-* [NODE.JS](https://www.npmjs.com/package/applicationinsights)
+* [Node.JS](https://www.npmjs.com/package/applicationinsights)
 * [Python](../../azure-monitor/app/opencensus-python.md)
 * [通用 Windows 应用](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [Windows 桌面应用程序、服务和辅助角色](../../azure-monitor/app/windows-desktop.md)
@@ -46,8 +46,8 @@ ms.locfileid: "79136717"
 * [Azure Monitor](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)
 
 ## <a name="export-and-data-analysis"></a>导出和数据分析
-* [Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)
+* [Power BI](https://powerbi.microsoft.com/blog/explore-your-application-insights-data-with-power-bi/)
 * [流分析](../../azure-monitor/app/export-power-bi.md)
 
 ## <a name="unsupported-sdks"></a>不受支持的 SDK
-我们知道还有其他几个社区支持的 SDK。 但是，Azure Monitor 仅在使用此页上列出的受支持 SDK 时提供支持。 我们正在不断地评估增加对其他语言的支持的机会，因此请按照[GitHub 公告](https://github.com/microsoft/ApplicationInsights-Announcements/issues)页面，接收最新的 SDK 新闻。 
+我们知道还有其他几个社区支持的 SDK。 但是，Azure Monitor 仅在使用此页上列出的受支持 SDK 时提供支持。 我们一直在评估扩展对其他语言支持的机会，因此请关注我们的 [GitHub 公告](https://github.com/microsoft/ApplicationInsights-Announcements/issues)页，以获得最新的 SDK 消息。 

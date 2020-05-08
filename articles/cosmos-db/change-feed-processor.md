@@ -1,21 +1,21 @@
 ---
-title: Azure Cosmos DB 中的更改源处理器库
-description: 了解如何使用 Azure Cosmos DB 更改源处理器库来读取更改源、更改源处理器的组件
-author: markjbrown
-ms.author: mjbrown
+title: Azure Cosmos DB 更改源处理器
+description: 了解如何使用 Azure Cosmos DB 更改源处理器来读取更改源（更改源处理器的组件）
+author: timsander1
+ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 4/29/2020
 ms.reviewer: sngun
-ms.openlocfilehash: e71b2807595aebeb1f0c8682fde119f4e267e55d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d069df0a095cc0356cd61155dde875a5d92ed18d
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78273306"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594145"
 ---
-# <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB 更改源处理器 
+# <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB 更改源处理器
 
 更改源处理器是 [Azure Cosmos DB SDK V3](https://github.com/Azure/azure-cosmos-dotnet-v3) 的一部分。 它可以简化读取更改源的过程，并有效地在多个使用者之间分配事件处理负载。
 
@@ -23,13 +23,13 @@ ms.locfileid: "78273306"
 
 ## <a name="components-of-the-change-feed-processor"></a>更改源处理器的组件
 
-实现更改源处理器需要四个主要组件： 
+实现更改源处理器需要四个主要组件：
 
 1. **监视的容器：** 监视的容器是用于生成更改源的数据。 对监视容器的任何插入和更新都会反映在容器的更改源中。
 
-1. **租约容器：** 租约容器充当状态存储，协调处理跨多个辅助角色的更改源。 租约容器可以存储在受监视容器所在的同一个帐户中，也可以存储在单独的帐户中。 
+1. **租约容器：** 租约容器充当状态存储，协调处理跨多个辅助角色的更改源。 租约容器可以存储在受监视容器所在的同一个帐户中，也可以存储在单独的帐户中。
 
-1. **主机：** 主机是使用更改源处理器侦听更改的应用程序实例。 采用相同租约配置的多个实例可以并行运行，但每个实例应使用不同的**实例名称**。 
+1. **主机：** 主机是使用更改源处理器侦听更改的应用程序实例。 采用相同租约配置的多个实例可以并行运行，但每个实例应使用不同的**实例名称**。
 
 1. **委托：** 委托是定义开发人员要对更改源处理器读取的每批更改执行的操作的代码。 
 
@@ -65,7 +65,11 @@ ms.locfileid: "78273306"
 
 ## <a name="error-handling"></a>错误处理。
 
-更改源处理器能够弹性应对用户代码错误。 这意味着，如果委托实现出现未经处理的异常（步骤 #4），则处理该特定更改批的线程将会停止，并创建一个新线程。 新线程将检查租约存储中该分区键值范围的最新时间点是什么，从该时间点处重启，并有效地将同一批更改发送到委托。 此行为会一直继续到委托正确处理了更改，正因如此，更改源处理器可提供“至少一次”保证；因为如果委托代码引发异常，它会重试该批。
+更改源处理器能够弹性应对用户代码错误。 这意味着，如果委托实现出现未经处理的异常（步骤 #4），则处理该特定更改批的线程将会停止，并创建一个新线程。 新线程将检查租约存储中该分区键值范围的最新时间点是什么，从该时间点处重启，并有效地将同一批更改发送到委托。 此行为将继续运行，直到你的委托正确地处理更改，这是因为如果委托代码引发异常，则会重试该批处理。
+
+若要防止更改源处理器不断地重试相同的更改批，应在委托代码中添加逻辑，以便在出现异常时将文档写入死信队列。 此设计可确保跟踪未处理的更改，同时仍然能够继续处理将来的更改。 死信队列可能只是另一个 Cosmos 容器。 确切的数据存储并不重要，只是保留未处理的更改。
+
+此外，可以使用[更改源估计器](how-to-use-change-feed-estimator.md)来监视更改源处理器实例读取更改源时的进度。 除了监视更改源处理器是否 "停滞" 持续重试相同批次更改外，您还可以了解更改源处理器是否滞后，因为可用资源（如 CPU、内存和网络带宽）。
 
 ## <a name="dynamic-scaling"></a>动态缩放
 

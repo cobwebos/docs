@@ -10,18 +10,18 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: 5134a262397676aa9b59de9b0c6de61c26d21523
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 545dbcfb1db5595ff5b2047ec44afa8a065d816d
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262904"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594842"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>在应用程序中嵌入视频索引器小组件
 
 本文介绍如何在应用中嵌入视频索引器小组件。 视频索引器支持在您的应用程序中嵌入三种类型的小组件：*认知见解*、*播放器*和*编辑器*。
 
-从版本2开始，小组件基 URL 包含指定帐户的区域。 例如，美国西部区域中的帐户将生成：`https://wus2.videoindexer.ai/embed/insights/...`。
+从版本2开始，小组件基 URL 包含指定帐户的区域。 例如，美国西部区域中的帐户将生成：`https://www.videoindexer.ai/embed/insights/.../?location=westus2`。
 
 ## <a name="widget-types"></a>小组件类型
 
@@ -36,6 +36,7 @@ ms.locfileid: "81262904"
 |`language`|短语言代码（语言名称）|控制见解语言。<br/>示例：`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>或 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
 |`locale` | 短语言代码 | 控制 UI 的语言。 默认值为 `en`。 <br/>示例：`locale=de`。|
 |`tab` | 默认选定的选项卡 | 控制默认呈现的 "**见解**" 选项卡。 <br/>示例： `tab=timeline`在选择 "**时间线**" 选项卡的情况上呈现见解。|
+|`location` ||`location`参数必须包含在嵌入的链接中，请参阅[如何获取区域名称](regions.md)。 如果你的帐户为预览版，则`trial`应将其用于位置值。 `trial``location`参数的默认值。| 
 
 ### <a name="player-widget"></a>播放器小组件
 
@@ -49,6 +50,7 @@ ms.locfileid: "81262904"
 |`type`| | 激活音频播放器外观（视频部分被删除）。<br/> 示例：`type=audio`。 |
 |`autoplay` | 布尔值 | 指示播放机是否应在加载时开始播放视频。 默认值为 `true`。<br/> 示例：`autoplay=false`。 |
 |`language`/`locale` | 语言代码 | 控制播放器语言。 默认值为 `en-US`。<br/>示例：`language=de-DE`。|
+|`location` ||`location`参数必须包含在嵌入的链接中，请参阅[如何获取区域名称](regions.md)。 如果你的帐户为预览版，则`trial`应将其用于位置值。 `trial``location`参数的默认值。| 
 
 ### <a name="editor-widget"></a>编辑器小组件
 
@@ -56,27 +58,32 @@ ms.locfileid: "81262904"
 
 |名称|定义|说明|
 |---|---|---|
-|`accessToken`<sup>*</sup> | 字符串 | 提供对仅用于嵌入小组件的帐户的视频的访问。<br> 编辑器小组件要求`accessToken`参数。 |
+|`accessToken`<sup>*</sup> | String | 提供对仅用于嵌入小组件的帐户的视频的访问。<br> 编辑器小组件要求`accessToken`参数。 |
 |`language` | 语言代码 | 控制播放器语言。 默认值为 `en-US`。<br/>示例：`language=de-DE`。 |
 |`locale` | 短语言代码 | 控制 insights 语言。 默认值为 `en`。<br/>示例：`language=de`。 |
+|`location` ||`location`参数必须包含在嵌入的链接中，请参阅[如何获取区域名称](regions.md)。 如果你的帐户为预览版，则`trial`应将其用于位置值。 `trial`是`location` language 的默认值。| 
 
 <sup>*</sup>所有者应小心提供`accessToken` 。
 
-## <a name="embedding-public-content"></a>嵌入公共内容
+## <a name="embedding-videos"></a>嵌入视频
+
+本部分讨论如何在应用中嵌入公共内容和私有内容。
+
+`location`参数必须包含在嵌入的链接中，请参阅[如何获取区域名称](regions.md)。 如果你的帐户为预览版，则`trial`应将其用于位置值。 `trial`是`location` language 的默认值。 例如：`https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`。
+
+> [!IMPORTANT]
+> 共享**播放机**或**Insights**小组件的链接将包含访问令牌，并向帐户授予只读权限。
+
+### <a name="public-content"></a>公共内容
 
 1. 登录到[视频索引器](https://www.videoindexer.ai/)网站。
-2. 选择要使用的视频。
-3. 选择视频下显示的**</>**"嵌入" 按钮（）。
-
-    选择 "**嵌入**" 按钮后，可以选择要在应用中嵌入的小组件。
-4. 选择所需的小组件类型（**认知见解**、**播放器**或**编辑**）。
+1. 选择要使用的视频，并按 "**播放**"。
+1. 选择所需的小组件类型（**认知见解**、**播放器**或**编辑**）。
+1. 单击 " ** &lt; / &gt;嵌入**"。
 5. 复制嵌入代码（在 "**共享 & 嵌入**" 对话框中的 "**复制嵌入代码**" 中显示）。
 6. 将代码添加到应用。
 
-> [!NOTE]
-> 如果在共享视频 Url 时遇到问题，请将`location`参数添加到链接中。 应将参数设置为[视频索引器所在的 Azure 区域](regions.md)。 例如：`https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`。
-
-## <a name="embedding-private-content"></a>嵌入专用内容
+### <a name="private-content"></a>专用内容
 
 若要嵌入专用视频，必须在 iframe 的`src`属性中传递访问令牌：
 

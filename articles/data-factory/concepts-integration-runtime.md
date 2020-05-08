@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/26/2020
-ms.openlocfilehash: ffa348c796a4d9d4e3bdb8e7ce18ba0eb82e17ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 214d97822bdb2efbe164c3526939ddbe78777e59
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418370"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890734"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure 数据工厂中的集成运行时 
 
@@ -115,7 +115,7 @@ Azure-SSIS IR 是完全托管的 Azure VM 群集，专用于运行 SSIS 包。 �
 有关 Azure-SSIS 运行时的详细信息，请参阅以下文章： 
 
 - [教程：将 SSIS 包部署到 Azure](tutorial-create-azure-ssis-runtime-portal.md)。 本文提供了创建 Azure-SSIS IR 的分步说明，并使用 Azure SQL 数据库来托管 SSIS 目录。 
-- [如何创建 Azure-SSIS 集成运行时](create-azure-ssis-integration-runtime.md)。 本文是教程的拓展延伸，介绍了如何使用 Azure SQL 数据库托管实例以及如何将 IR 加入虚拟网络。 
+- [如何：创建 Azure-SSIS 集成运行时](create-azure-ssis-integration-runtime.md)。 本文是教程的拓展延伸，介绍了如何使用 Azure SQL 数据库托管实例以及如何将 IR 加入虚拟网络。 
 - [监视 Azure-SSIS IR](monitor-integration-runtime.md#azure-ssis-integration-runtime)。 此文介绍如何检索有关 Azure-SSIS IR 的信息，以及返回的信息中的状态说明。 
 - [管理 Azure-SSIS IR](manage-azure-ssis-integration-runtime.md)。 此文介绍如何停止、启动或删除 Azure-SSIS IR。 此外，介绍如何通过在 Azure-SSIS IR 中添加更多节点来扩展 IR。 
 - [将 Azure-SSIS IR 加入虚拟网络](join-azure-ssis-integration-runtime-virtual-network.md)。 此文提供有关将 Azure-SSIS IR 加入 Azure 虚拟网络的概念性信息。 此外，还介绍可以执行哪些步骤来使用 Azure 门户配置虚拟网络，以便 Azure-SSIS IR 能够加入虚拟网络。 
@@ -128,6 +128,10 @@ IR 位置定义其后端计算的位置，尤其是执行数据移动、活动�
 
 ### <a name="azure-ir-location"></a>Azure IR 位置
 
+您可以设置某个 Azure IR 的某个位置，在这种情况下，活动执行或调度将在该特定区域中发生。
+
+如果选择使用自动解析 Azure IR （默认值），则
+
 - 对于复制活动，ADF 会尽力自动检测接收器数据存储的位置，然后在同一区域中使用 IR （如果可用），或者在同一地理区域中使用最接近的 IR;如果无法检测接收器数据存储区的区域，则会使用数据工厂区域中的 IR 作为替代项。
 
   例如，你的工厂是在美国东部创建的， 
@@ -135,7 +139,8 @@ IR 位置定义其后端计算的位置，尤其是执行数据移动、活动�
   - 将数据复制到美国西部的 Azure Blob 时，如果 ADF 成功检测到 Blob 在美国西部，则会在美国西部的 IR 上执行复制活动;如果区域检测失败，将在美国东部的 IR 上执行复制活动。
   - 将数据复制到未检测到其区域的 Salesforce 时，将在美国东部的 IR 上执行复制活动。
 
-- 对于复制活动，ADF 会尽力自动检测接收器和源数据存储，以便在同一区域（如果有）或在同一地理区域中最接近的位置选择最佳位置，或者如果无法检测到使用数据工厂区域作为替代项。
+  >[!TIP] 
+  >如果有严格的数据符合性要求，并需确保数据不离开特定的地域，则可在特定区域显式创建一个 Azure IR，然后使用 ConnectVia 属性将链接服务指向该 IR。 例如，若需将数据从英国南部的 Blob 复制到英国南部的 SQL DW，并且需确保数据不离开英国，请在英国南部创建一个 Azure IR，然后将两个链接服务均链接到该 IR。
 
 - 对于查找/GetMetadata/删除活动执行（也称为管道活动）、转换活动调度（也称为外部活动）和创作操作（测试连接、浏览文件夹列表和表列表、预览数据），ADF 会在数据工厂区域使用 IR。
 

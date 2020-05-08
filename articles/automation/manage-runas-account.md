@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 04/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5cb3752e5a74f26936efcbb9dba5cdcda76e01f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d77fc756530115ff828c79a3b444c1152ffe5c5a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82113300"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608671"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>管理 Azure 自动化运行方式帐户
 
@@ -459,7 +459,7 @@ $roleDefinition | Set-AzRoleDefinition
 
 ### <a name="add-permissions-to-key-vault"></a>将权限添加到 Key Vault
 
-可以允许 Azure 自动化验证 Key Vault 和运行方式帐户服务主体是否正在使用自定义角色定义。 必须：
+可以允许 Azure 自动化验证 Key Vault 和运行方式帐户服务主体是否正在使用自定义角色定义。 必须具备以下条件：
 
 * 授予 Key Vault 的权限。
 * 设置访问策略。
@@ -475,7 +475,7 @@ $roleDefinition | Set-AzRoleDefinition
 * 从参与者角色中删除的运行方式帐户
 * Azure AD 中的服务主体或应用程序
 
-对于这类错误配置实例，自动化帐户会检测更改，并`Incomplete`在帐户的 "运行方式帐户属性" 窗格中显示状态。
+对于这类错误配置实例，Automation 帐户将检测更改，并在该帐户的 "运行方式帐户属性" 窗格中显示 "*不完整*" 状态。
 
 ![不完整的运行方式帐户配置状态](media/manage-runas-account/automation-account-runas-incomplete-config.png)
 

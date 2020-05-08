@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 6983a2ac7ab5fafcb00aee0b72221a8540ea1668
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 25f3734a2a12ddf87862cc1d127f88f175225e07
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678974"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900289"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>Windows update 代理问题疑难解答
 
@@ -22,29 +22,29 @@ ms.locfileid: "81678974"
 
 下面是计算机的三个就绪状态：
 
-* 就绪-已部署混合 Runbook 辅助角色，最后发现它不到1小时前。
-* 已断开连接-混合 Runbook 辅助角色已部署，最后一次在1小时前查看。
-* 未配置-混合 Runbook 辅助角色找不到或未完成加入。
+* 准备就绪：混合 Runbook 辅助角色已部署，最后发现不到1小时前。
+* 断开连接：已部署混合 Runbook 辅助角色，最后在1小时前查看。
+* 未配置：混合 Runbook 辅助角色找不到或未完成加入。
 
 > [!NOTE]
 > 在 Azure 门户显示的内容和计算机的当前状态之间可能会有轻微的延迟。
 
 ## <a name="start-the-troubleshooter"></a>启动“故障排除”
 
-对于 Azure 计算机，通过单击门户中“更新代理准备”**** 列下的“故障排除”**** 链接，可以启动“更新代理故障排除”页。 对于非 Azure 计算机，此链接会将你带入本文。 请参阅[脱机说明](#troubleshoot-offline)，对非 Azure 计算机进行故障排除。
+对于 Azure 计算机，你可以通过在门户中的 "**更新代理准备情况**" 列下选择 "**故障排除**" 链接，启动 "**更新代理疑难解答**" 页。 对于非 Azure 计算机，此链接会将你带入本文。 请参阅[脱机说明](#troubleshoot-offline)，对非 Azure 计算机进行故障排除。
 
-![虚拟机更新管理列表](../media/update-agent-issues/vm-list.png)
+![虚拟机更新管理列表的屏幕截图](../media/update-agent-issues/vm-list.png)
 
 > [!NOTE]
 > 若要查看混合 Runbook 辅助角色的运行状况，VM 必须正在运行。 如果 VM 没有运行，屏幕上会显示“启动 VM”按钮****。
 
-在“更新代理故障排除”页上选择“运行检查”，启动故障排除****。 疑难解答使用[运行命令](../../virtual-machines/windows/run-command.md)在计算机上运行脚本，以验证依赖关系。 完成故障排除时，它会返回检查的结果。
+在“更新代理故障排除”页上选择“运行检查”，启动故障排除********。 疑难解答使用[运行命令](../../virtual-machines/windows/run-command.md)在计算机上运行脚本，以验证依赖关系。 完成故障排除时，它会返回检查的结果。
 
-![“更新代理故障排除”页面](../media/update-agent-issues/troubleshoot-page.png)
+!["更新代理疑难解答" 页的屏幕截图](../media/update-agent-issues/troubleshoot-page.png)
 
 结果准备就绪后会显示在该页上。 检查部分显示每个检查中包含的内容。
 
-![“更新代理故障排除”检查](../media/update-agent-issues/update-agent-checks.png)
+![更新代理检查疑难解答的屏幕截图](../media/update-agent-issues/update-agent-checks.png)
 
 ## <a name="prerequisite-checks"></a>先决条件检查
 
@@ -52,9 +52,9 @@ ms.locfileid: "81678974"
 
 操作系统检查会验证混合 Runbook 辅助角色是否正在运行以下操作系统之一：
 
-|操作系统  |注意  |
+|操作系统  |说明  |
 |---------|---------|
-|Windows Server 2012 及更高版本 |需要 .NET Framework 4.6 或更高版本。 （[下载 .NET Framework](/dotnet/framework/install/guide-for-developers)）<br/> Windows PowerShell 5.1 是必需的。  （[下载 Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616)）        |
+|Windows Server 2012 及更高版本 |需要 .NET Framework 4.6 或更高版本。 （[下载 .NET Framework](/dotnet/framework/install/guide-for-developers)。）<br/> Windows PowerShell 5.1 是必需的。  （[下载 Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616)。）        |
 
 ### <a name="net-462"></a>.NET 4.6.2
 
@@ -62,11 +62,11 @@ ms.locfileid: "81678974"
 
 ### <a name="wmf-51"></a>WMF 5.1
 
-WMF 检查将验证系统是否具有所需的 Windows Management Framework （WMF）版本- [Windows Management framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616)。
+WMF 检查将验证系统是否具有所需的 Windows Management Framework （WMF）版本： [Windows Management framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616)。
 
 ### <a name="tls-12"></a>TLS 1.2
 
-此项检查用于确定是否使用 TLS 1.2 加密通信。 该平台不再支持 TLS 1.0。 建议客户端使用 TLS 1.2 与更新管理进行通信。
+此项检查用于确定是否使用 TLS 1.2 加密通信。 该平台不再支持 TLS 1.0。 使用 TLS 1.2 与更新管理通信。
 
 ## <a name="connectivity-checks"></a>连接性检查
 
@@ -98,13 +98,13 @@ WMF 检查将验证系统是否具有所需的 Windows Management Framework （W
 
 ## <a name="access-permissions-checks"></a>访问权限检查
 
-### <a name="machinekeys-folder-access"></a>MachineKeys 文件夹访问权限
+### <a name="crypto-folder-access"></a>加密文件夹访问
 
-Crypto 文件夹访问检查确定本地系统帐户是否有权访问 C:\ProgramData\Microsoft\Crypto\RSA。
+加密文件夹访问检查确定本地系统帐户是否有权访问 C:\ProgramData\Microsoft\Crypto\RSA。
 
 ## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>脱机使用故障排除
 
-可以通过在本地运行脚本，在混合 Runbook 辅助角色上脱机使用故障排除。 可在 PowerShell 库中获得 [Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration) 脚本。 必须安装 WMF 4.0 或更高版本，才能运行该脚本。 若要下载最新版本的 PowerShell，请参阅[安装各种版本的 powershell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)。
+你可以通过在本地运行脚本来脱机使用混合 Runbook 辅助角色上的疑难解答。 从 PowerShell 库获取以下脚本： [WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration)。 若要运行该脚本，必须安装 WMF 4.0 或更高版本。 若要下载最新版本的 PowerShell，请参阅[安装各种版本的 powershell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)。
 
 此脚本的输出如以下示例所示：
 
@@ -202,4 +202,4 @@ CheckResultMessageArguments : {}
 
 ## <a name="next-steps"></a>后续步骤
 
-若要排查混合 Runbook 辅助角色的更多问题，请参阅[混合 Runbook 辅助角色的故障排除](hybrid-runbook-worker.md)。
+[对混合 Runbook 辅助角色进行故障排除](hybrid-runbook-worker.md)

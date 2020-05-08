@@ -3,12 +3,12 @@ title: 恢复服务保管库概述
 description: 恢复服务保管库和 Azure 备份保管库的概述和比较。
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: e6a359287533c9ffdd688b5285b24b9c70fa7b7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a0dacd82b7cf4258c0147bbaf9dc39ee6fc0fa25
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80436964"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597938"
 ---
 # <a name="recovery-services-vaults-overview"></a>恢复服务保管库概述
 
@@ -79,6 +79,14 @@ Azure 备份会自动处理保管库的存储。 请参阅如何[更改存储设
 ### <a name="secure-the-vault"></a>保护保管库
 
 - [保护恢复服务保管库中的云备份数据](backup-azure-security-feature.md)
+
+## <a name="azure-advisor"></a>Azure 顾问
+
+[Azure 顾问](https://docs.microsoft.com/azure/advisor/)是一个个性化的云顾问，可帮助优化 Azure 的使用。 它会分析你的 Azure 使用情况，并提供及时建议来帮助优化和保护你的部署。 它提供四个类别的建议：高可用性、安全性、性能和成本。
+
+Azure 顾问为未备份的 Vm 提供每小时[建议](https://docs.microsoft.com/azure/advisor/advisor-high-availability-recommendations#protect-your-virtual-machine-data-from-accidental-deletion)，因此，你永远不会错过重要的 vm 的备份。 你还可以通过暂停来控制建议。  你可以单击该建议，并通过指定保管库（将存储备份的位置）和备份策略（备份的备份和备份副本的保留期）来启用 Vm 上的备份。
+
+![Azure 顾问](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
 
 ## <a name="next-steps"></a>后续步骤
 

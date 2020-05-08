@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: e73686629de8481f6a37e5bfafc9b723206b4853
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4ba54736abe335b53a3b8c6733063efcb34ea29a
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80351033"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856822"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>借助预留容量优化 Blob 存储的成本
 
@@ -84,7 +84,7 @@ Azure 存储预留容量适用于标准存储帐户中的资源，包括常规�
    |**订阅**  | 用于支付 Azure 存储预留的订阅。 所选订阅的付款方式用于对成本进行收费。 订阅必须是以下类型之一： <br/><br/>  企业协议（产品/服务编号： BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p）：对于企业订阅，将从注册的货币承诺余额中扣除费用，或将其收费为超额。 <br/><br/> 使用即用即付费率的单个订阅（产品/服务编号： BC-OP-NT-AZR-Ms-azr-0003p 或 BC-OP-NT-AZR-0023P）：对于使用即用即付费率的单个订阅，将对订阅上的信用卡或发票付款方式收取费用。    |
    | **区域** | 预订有效的区域。 |
    | **访问层** | 其中的预订生效的访问层。 选项包括 "*热*"、"*冷*" 或 "*存档*"。 有关访问层的详细信息，请参阅 [Azure Blob 存储：热、冷和存档访问层](storage-blob-storage-tiers.md)。 |
-   | **冗余** | 预订的冗余选项。 选项包括*LRS*、 *ZRS*、 *GRS*和*RA-GZRS*。 有关冗余选项的详细信息，请参阅[Azure 存储冗余](../common/storage-redundancy.md)。 |
+   | **冗余** | 预订的冗余选项。 选项包括*LRS*、 *ZRS*、 *GRS*、 *GZRS*、 *ra-GRS*和*ra-GZRS*。 有关冗余选项的详细信息，请参阅[Azure 存储冗余](../common/storage-redundancy.md)。 |
    | **计费频率** | 指示帐户按预订计费的频率。 选项包括 "*每月*" 或 "*提前*"。 |
    | **大小** | 预订有效的区域。 |
    |**术语**  | 一年或三年。   |
@@ -129,5 +129,5 @@ Azure 存储预留容量适用于标准存储帐户中的资源，包括常规�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [什么是 Azure 保留？](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [什么是 Azure 预留项？](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
 - [了解如何将预留折扣应用于 Azure 存储](../../cost-management-billing/reservations/understand-storage-charges.md)
