@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: b68e7b517ddaa9b2aaef00cf87d5b6e63871654b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c828878506ee69e90945d1f4be07eb81541b9757
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77064013"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625402"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-preview-page"></a>从 "我的登录（预览）" 页查看和搜索最近的登录活动
 
@@ -30,7 +30,7 @@ ms.locfileid: "77064013"
 
 ## <a name="view-your-recent-sign-in-activity"></a>查看近期的登录活动
 
-1. 登录到工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页。
+1. 登录到工作或学校帐户，然后转到 https://myaccount.microsoft.com/ 页。
 
 2. 从左侧导航窗格中选择 "**我的登录（预览版）** "，或从 "**我的登录（预览版）** " 块中选择 "**查看最近的活动**" 链接。
 

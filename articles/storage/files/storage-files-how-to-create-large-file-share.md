@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bd7726d2bbf2830d18d78b5f0b0d7202b734124d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: add2805d9a360d3d9cd45ab54f476a6852fb7bd5
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537672"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858576"
 ---
 # <a name="enable-and-create-large-file-shares"></a>启用和创建大型文件共享
 
@@ -26,8 +26,9 @@ ms.locfileid: "81537672"
 
 ## <a name="restrictions"></a>限制
 
-现在，只能在启用了大文件共享的帐户上使用本地冗余存储（LRS）或区域冗余存储（ZRS）。 不能使用异地冗余存储（GZRS）、异地冗余存储（GRS）或读取访问异地冗余存储（RA-GRS）。
-在帐户中启用大型文件共享是一个不可逆的过程。 启用后，你将无法将你的帐户转换为 GZRS、GRS 或 GRS。
+现在，只能在启用了大文件共享的帐户上使用本地冗余存储（LRS）或区域冗余存储（ZRS）。 不能使用异地冗余存储（GZRS）、异地冗余存储（GRS）、读取访问异地冗余存储（RA-GRS）或读取访问地域冗余存储（RA-GZRS）。
+
+在帐户中启用大型文件共享是一个不可逆的过程。 启用后，你将无法将你的帐户转换为 GZRS、GRS、GRS 或 GZRS。
 
 ## <a name="create-a-new-storage-account"></a>新建存储帐户
 
@@ -68,7 +69,7 @@ ms.locfileid: "81537672"
 若要创建启用了大文件共享的存储帐户，请使用以下命令。 请将 `<yourStorageAccountName>`、`<yourResourceGroup>` 和 `<yourDesiredRegion>` 替换为自己的信息。
 
 ```azurecli-interactive
-## This command creates a large file share–enabled account. It will not support GZRS, GRS, or RA-GRS.
+## This command creates a large file share–enabled account. It will not support GZRS, GRS, RA-GRS, or RA-GZRS.
 az storage account create --name <yourStorageAccountName> -g <yourResourceGroup> -l <yourDesiredRegion> --sku Standard_LRS --kind StorageV2 --enable-large-file-share
 ```
 
@@ -79,13 +80,13 @@ az storage account create --name <yourStorageAccountName> -g <yourResourceGroup>
 若要创建启用了大文件共享的存储帐户，请使用以下命令。 请将 `<yourStorageAccountName>`、`<yourResourceGroup>` 和 `<yourDesiredRegion>` 替换为自己的信息。
 
 ```powershell
-## This command creates a large file share–enabled account. It will not support GZRS, GRS, or RA-GRS.
+## This command creates a large file share–enabled account. It will not support GZRS, GRS, RA-GRS, or RA-GZRS.
 New-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAccountName> -Location <yourDesiredRegion> -SkuName Standard_LRS -EnableLargeFileShare;
 ```
 
 ## <a name="enable-large-files-shares-on-an-existing-account"></a>在现有帐户中启用大型文件共享
 
-也可以在现有帐户中启用大型文件共享。 如果启用大型文件共享，则无法转换为 GZRS、GRS 或 GRS。 在此存储帐户中启用大型文件共享的操作不可逆。
+也可以在现有帐户中启用大型文件共享。 如果启用大型文件共享，则无法转换为 GZRS、GRS、GRS 或 GZRS。 在此存储帐户中启用大型文件共享的操作不可逆。
 
 ### <a name="portal"></a>门户
 

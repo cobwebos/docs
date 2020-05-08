@@ -5,17 +5,23 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 91451ff3024a9a5019b3982b0e4471e2c4d80c74
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 16b4fca475f91a8cb5b7f9a20ea5aa74b6b674a3
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81683912"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612854"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop"></a>Windows 虚拟桌面中的委托访问
+
+>[!IMPORTANT]
+>此内容适用于带有 Azure 资源管理器 Windows 虚拟桌面对象的弹簧2020更新。 如果使用的是不带 Azure 资源管理器对象的 Windows 虚拟桌面2019版，请参阅[此文](./virtual-desktop-fall-2019/delegated-access-virtual-desktop-2019.md)。
+>
+> Windows 虚拟桌面春季2020更新目前为公共预览版。 此预览版本在提供时没有服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Windows 虚拟桌面具有委派的访问模型，使你可以通过为特定用户分配角色来定义允许该用户拥有的访问量。 角色分配有三个组件：安全主体、角色定义和作用域。 Windows 虚拟桌面委托访问模型基于 Azure RBAC 模型。 若要详细了解特定的角色分配及其组件，请参阅[Azure 基于角色的访问控制概述](../role-based-access-control/built-in-roles.md)。
 
@@ -23,48 +29,38 @@ Windows 虚拟桌面委托访问为角色分配的每个元素支持以下值：
 
 * 安全主体
     * 用户
+    * 用户组
     * 服务主体
 * 角色定义
     * 内置角色
-* 范围
-    * 租户组
-    * 租户
+    * 自定义角色
+* 作用域
     * 主机池
     * 应用组
-
-## <a name="built-in-roles"></a>内置角色
-
-Windows 虚拟桌面中的委派访问权限包含若干内置角色定义，你可以将其分配给用户和服务主体。
-
-* RDS 所有者可以管理所有内容，包括对资源的访问权限。
-* RDS 参与者可以管理所有内容，但无法访问资源。
-* RDS 读者可以查看所有内容，但不能进行任何更改。
-* RDS 操作员可以查看诊断活动。
+    * 工作区
 
 ## <a name="powershell-cmdlets-for-role-assignments"></a>用于角色分配的 PowerShell cmdlet
 
-可以运行以下 cmdlet 来创建、查看和删除角色分配：
+在开始之前，请确保按照[设置 PowerShell 模块](powershell-module.md)中的说明设置 Windows 虚拟桌面 PowerShell 模块（如果尚未安装）。
 
-* **RdsRoleAssignment**显示角色分配的列表。
-* **RdsRoleAssignment**创建新的角色分配。
-* **RdsRoleAssignment**删除角色分配。
+在将应用程序组发布到用户或用户组时，Windows 虚拟桌面使用 Azure 基于角色的访问控制（RBAC）。 桌面虚拟化用户角色分配给用户或用户组，而作用域是应用组。 此角色向用户提供对应用程序组的特殊数据访问权限。  
 
-### <a name="accepted-parameters"></a>接受的参数
+运行以下 cmdlet，将 Azure Active Directory 用户添加到应用组：
 
-可以用以下参数修改基本的三个 cmdlet：
+```powershell
+New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <hostpoolname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'  
+```
 
-* **AadTenantId**：指定服务主体所属的 AZURE ACTIVE DIRECTORY 租户 ID。
-* **AppGroupName**：远程桌面应用组的名称。
-* **诊断**：指示诊断范围。 （必须与**基础结构**或**租户**参数配对。）
-* **HostPoolName**：远程桌面主机池的名称。
-* **基础结构**：指示基础结构作用域。
-* **RoleDefinitionName**：分配给用户、组或应用远程桌面服务基于角色的访问控制角色的名称。 （例如，远程桌面服务所有者、远程桌面服务读取器等。）
-* **ServerPrincipleName**： Azure Active Directory 应用程序的名称。
-* **SignInName**：用户的电子邮件地址或用户主体名称。
-* **TenantName**：远程桌面租户的名称。
+运行以下 cmdlet，将 Azure Active Directory 用户组添加到应用组：
+
+```powershell
+New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <hostpoolname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
+```
 
 ## <a name="next-steps"></a>后续步骤
 
 有关每个角色可以使用的 PowerShell cmdlet 的更完整列表，请参阅[powershell 参考](/powershell/windows-virtual-desktop/overview)。
+
+有关 Azure RBAC 中支持的角色的完整列表，请参阅[azure 内置角色](../role-based-access-control/built-in-roles.md)。
 
 有关如何设置 Windows 虚拟桌面环境的指导，请参阅[Windows 虚拟桌面环境](environment-setup.md)。

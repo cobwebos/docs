@@ -4,12 +4,12 @@ description: 了解 MARS 代理如何支持备份方案
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: d2cc8e32152f6930c9c250e2811668cc2c924616
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5656c113a6823a1708854a547b199bd16c521b04
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78673290"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611477"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>关于 Microsoft Azure 恢复服务（MARS）代理
 
@@ -39,19 +39,21 @@ MARS 代理支持以下还原方案：
 
 ## <a name="backup-process"></a>备份过程
 
-1. 在 Azure 门户中，创建[恢复服务保管库](install-mars-agent.md#create-a-recovery-services-vault)，并从备份目标中选择文件、文件夹和系统状态。
+1. 在 Azure 门户中，创建[恢复服务保管库](install-mars-agent.md#create-a-recovery-services-vault)，并从**备份目标**中选择文件、文件夹和系统状态。
 2. 将[恢复服务保管库凭据和代理安装程序下载](https://docs.microsoft.com/azure/backup/install-mars-agent#download-the-mars-agent)到本地计算机。
 
-    若要通过选择备份选项来保护本地计算机，请选择 "文件"、"文件夹" 和 "系统状态"，然后下载 MARS 代理。
-
-3. 准备基础结构：
-
-    a. 运行安装程序以[安装代理](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent)。
-
-    b. 使用下载的保管库凭据将计算机注册到恢复服务保管库。
-4. 在客户端上的代理控制台中[配置备份](https://docs.microsoft.com/azure/backup/backup-windows-with-mars-agent#create-a-backup-policy)。 指定备份数据的保留策略，以开始保护该数据。
+3. [安装代理](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent)，并使用下载的保管库凭据将计算机注册到恢复服务保管库。
+4. 在客户端上的代理控制台中，[将备份配置](https://docs.microsoft.com/azure/backup/backup-windows-with-mars-agent#create-a-backup-policy)为指定要备份的内容、何时备份（计划）、备份应在 Azure 中保留多长时间（保留策略）并开始保护。
 
 ![Azure 备份代理关系图](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
+
+### <a name="additional-information"></a>其他信息
+
+- **初始备份**（第一次备份）根据备份设置运行。  MARS 代理使用 VSS 来创建选择进行备份的卷的时间点快照。 代理仅使用 Windows 系统编写器操作来捕获快照。 它不使用任何应用程序 VSS 编写器，并且不捕获与应用一致的快照。 使用 VSS 创建快照后，MARS 代理将在配置备份时指定的缓存文件夹中创建一个虚拟硬盘 (VHD)。 该代理还会存储每个数据块的校验和。
+
+- **增量备份**（后续备份）根据指定的计划运行。 在增量备份期间，会标识更改的文件并创建新的 VHD。 该 VHD 经过压缩和加密，然后发送到保管库。 增量备份完成后，新 VHD 将与初始复制后创建的 VHD 合并。 此合并的 VHD 提供最新状态，用于对现行备份进行比较。
+
+- MARS 代理可以使用 USN （更新序列号）变更日志在**优化模式**下运行备份作业，或者通过扫描整个卷，通过检查目录或文件的更改以未**优化模式**运行备份作业。 未优化模式的速度较慢，因为代理必须扫描卷上的每个文件，并将它与元数据进行比较，以确定更改后的文件。  **初始备份**将始终在未优化模式下运行。 如果以前的备份失败，则下一个计划的备份作业将在未优化模式下运行。
 
 ### <a name="additional-scenarios"></a>其他方案
 

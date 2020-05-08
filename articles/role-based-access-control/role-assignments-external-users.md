@@ -1,6 +1,6 @@
 ---
-title: 添加或删除具有 RBAC 和 Azure 门户的外部用户的角色分配
-description: 了解如何使用 Azure 基于角色的访问控制（RBAC）为组织外部的用户授予对 Azure 资源的访问权限。
+title: 使用 Azure 门户为外部用户添加或删除 Azure 角色分配-Azure RBAC
+description: 了解如何使用 Azure 门户和 Azure 基于角色的访问控制（Azure RBAC）为组织外部的用户授予对 Azure 资源的访问权限。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,18 +16,18 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 1c440b85f792ac5bb1336f4d20f930aafc38ad7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 568cb7602d9cb454685ef69e820288bcc68563c4
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245637"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735753"
 ---
-# <a name="add-or-remove-role-assignments-for-external-guest-users-using-azure-rbac-and-the-azure-portal"></a>使用 Azure RBAC 和 Azure 门户添加或删除外部来宾用户的角色分配
+# <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>使用 Azure 门户添加或删除外部来宾用户的 Azure 角色分配
 
-使用[Azure 基于角色的访问控制（RBAC）](overview.md) ，可以更好地管理大型组织，适用于需要访问环境中的特定资源，但不一定要访问整个基础结构或任何与计费相关范围的外部协作者、供应商或兼职的中小型企业。 你可以使用[AZURE ACTIVE DIRECTORY B2B](../active-directory/b2b/what-is-b2b.md)中的功能与外部来宾用户合作，你可以使用 RBAC 仅授予来宾用户在你的环境中所需的权限。
+使用[azure 基于角色的访问控制（AZURE RBAC）](overview.md) ，可以更好地管理大型组织，适用于需要访问环境中的特定资源，但不一定要访问整个基础结构或任何计费相关范围的小型和中型企业。 你可以使用[AZURE ACTIVE DIRECTORY B2B](../active-directory/b2b/what-is-b2b.md)中的功能与外部来宾用户合作，并且你可以使用 Azure RBAC 仅授予在你的环境中来宾用户需要的权限。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要添加或删除角色分配，必须拥有以下权限：
 
@@ -69,7 +69,7 @@ ms.locfileid: "79245637"
 
 ## <a name="add-a-role-assignment-for-a-guest-user"></a>为来宾用户添加角色分配
 
-在 RBAC 中，若要授予访问权限，请分配角色。 若要为来宾用户添加角色分配，请执行与成员用户、组、服务主体或托管标识[相同的步骤](role-assignments-portal.md#add-a-role-assignment)。 按照以下步骤为不同范围内的来宾用户添加角色分配。
+在 Azure RBAC 中，若要授予访问权限，你需要分配一个角色。 若要为来宾用户添加角色分配，请执行与成员用户、组、服务主体或托管标识[相同的步骤](role-assignments-portal.md#add-a-role-assignment)。 按照以下步骤为不同范围内的来宾用户添加角色分配。
 
 1. 在 Azure 门户中，单击 "**所有服务**"。
 

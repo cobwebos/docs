@@ -2,28 +2,23 @@
 title: 开发 SCIM 终结点，以便将用户预配到 Azure AD 的应用
 description: 跨域标识管理（SCIM）的系统标准化自动用户预配。 了解如何开发 SCIM 终结点，如何将 SCIM API 与 Azure Active Directory 集成，并开始自动将用户和组预配到你的云应用程序中。
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/07/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.custom: aaddev;it-pro;seohack1
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a54bc3cfa67330fb0056ccd1898d9ab3de2b0ab2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 65bbb35d041a48e68d01a50e88e42fbeb73f2ea6
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229912"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864277"
 ---
-# <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>生成 SCIM 终结点并使用 Azure Active Directory （Azure AD）配置用户预配
+# <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>生成 SCIM 终结点并使用 Azure AD 配置用户预配
 
 作为应用程序开发人员，你可以使用系统来实现跨域标识管理（SCIM）用户管理 API，以便在应用程序和 Azure AD 之间自动预配用户和组。 本文介绍如何生成 SCIM 终结点并与 Azure AD 预配服务集成。 SCIM 规范提供了用于预配的常见用户架构。 与 SAML 或 OpenID Connect 等联合标准结合使用时，SCIM 为管理员提供了一种基于标准的端到端解决方案，用于访问管理。
 
@@ -63,7 +58,7 @@ SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)、 [7643](https://to
 |workMail|电子邮件 [类型 eq "work"]。值|Mail|
 |manager|manager|manager|
 |标记|urn： ietf： params： scim：架构：扩展：2.0： CustomExtension：标记|extensionAttribute1|
-|status|活动|isSoftDeleted （计算值未存储在用户上）|
+|状态|活动|isSoftDeleted （计算值未存储在用户上）|
 
 上面定义的架构将使用下面的 Json 有效负载来表示。 请注意，除应用程序所需的属性外，JSON 表示形式还包含所需的 "id"、"externalId" 和 "meta" 特性。
 
@@ -1200,8 +1195,8 @@ SCIM 规范未定义用于身份验证和授权的特定于 SCIM 的方案。 �
 [!NOTE] 不建议在 Azure AD 预配配置自定义应用 UI 中将令牌字段留空。 生成的令牌主要可用于测试目的。
 
 **OAuth 授权代码授予流：** 预配服务支持[授权代码授予](https://tools.ietf.org/html/rfc6749#page-24)。 提交你的应用程序在库中发布的请求后，我们的团队将与你一起收集以下信息：
-*  授权 URL：客户端的 URL，通过用户代理重定向从资源所有者获取授权。 用户被重定向到此 URL 以授权访问。 
-*  令牌交换 URL：客户端用于交换访问令牌授权的 URL，通常使用客户端身份验证。
+*  授权 URL：客户端的 URL，通过用户代理重定向从资源所有者获取授权。 用户被重定向到此 URL 以授权访问。 请注意，此 URL 当前不可按租户配置。
+*  令牌交换 URL：客户端用于交换访问令牌授权的 URL，通常使用客户端身份验证。 请注意，此 URL 当前不可按租户配置。
 *  客户端 ID：授权服务器向注册的客户端颁发客户端标识符，该标识符是表示客户端提供的注册信息的唯一字符串。  客户端标识符不是机密;它向资源所有者公开，**不得**单独用于客户端身份验证。  
 *  客户端密码：客户端密码是由授权服务器生成的机密。 它应该是唯一的唯一值，只是授权服务器。 
 

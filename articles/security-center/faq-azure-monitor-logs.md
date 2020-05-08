@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: f6384c1e9e14e38b4c44c5ac79a674839b43b4ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2fe306cf7d17f0789c5e134c3fcad3f8f07a0b80
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80436166"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612820"
 ---
 # <a name="faq-for-customers-already-using-azure-monitor-logs"></a>已使用 Azure Monitor 日志的客户的常见问题<a name="existingloganalyticscust"></a>
 
@@ -42,7 +42,7 @@ ms.locfileid: "80436166"
 ## <a name="i-already-have-workspaces-in-my-environment-can-i-use-them-to-collect-security-data"></a>环境中已存在工作区，是否可以将其用于收集安全数据？
 如果 VM 已作为 Azure 扩展安装了 Log Analytics 代理，则安全中心会使用现有连接的工作区。 如果没有安全中心解决方案，则会在工作区安装，并且由于[解决方案目标](../operations-management-suite/operations-management-suite-solution-targeting.md)此解决方案仅适用于相关的 VM。
 
-当安全中心在虚拟机上安装 Log Analytics 代理时，它将使用安全中心创建的默认工作区。
+当安全中心在虚拟机上安装 Log Analytics 代理时，如果安全中心未指向现有工作区，则使用安全中心创建的默认工作区。
 
 ## <a name="i-already-have-security-solution-on-my-workspaces-what-are-the-billing-implications"></a>工作区已存在安全解决方案。 计费会产生什么影响？
 Security & Audit 解决方案用于为 Azure Vm 启用安全中心标准层功能。 如果已在工作区上安装“安全性与审核”解决方案，则安全中心会使用现有解决方案。 计费方面没有任何更改。
