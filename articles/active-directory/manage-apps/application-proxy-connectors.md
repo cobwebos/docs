@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f1b8b9af8f90629d087246edf0cb3426bd9b66c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3737603360d3fce9d6e11e6c4ce9b2de58f76a6d
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406829"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583126"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>了解 Azure AD 应用程序代理连接器
 
@@ -136,7 +136,7 @@ Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代�
 
 连接器可在未加入域的计算机上运行。 但是，如果想要对使用集成 Windows 身份验证 (IWA) 的应用程序使用单一登录 (SSO)，则需要一个已加入域的计算机。 在这种情况下，必须将连接器计算机加入到可代表已发布应用程序的用户执行 [Kerberos](https://web.mit.edu/kerberos) 约束委派的域。
 
-还可以将连接器加入到具有部分信任的域或林，或者加入到只读的域控制器。
+连接器还可以加入到具有部分信任的林中的域，或者加入到只读域控制器。
 
 ## <a name="connector-deployments-on-hardened-environments"></a>强化的环境中的连接器部署
 

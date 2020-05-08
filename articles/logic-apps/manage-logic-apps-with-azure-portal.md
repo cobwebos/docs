@@ -5,16 +5,16 @@ services: logic-apps
 ms.suite: integration
 author: lauradolan
 ms.author: ladolan
-ms.reviewer: estfan, logicappspm
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.custom: mvc
-ms.date: 04/13/2020
-ms.openlocfilehash: f726ca90c215c4aff3734bd8022bbc1ad4dc5f87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: d80972cd200b8f85e14d316c4c06a38f88ac81b5
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81415993"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598158"
 ---
 # <a name="manage-logic-apps-in-the-azure-portal"></a>管理 Azure 门户中的逻辑应用
 
@@ -54,11 +54,11 @@ ms.locfileid: "81415993"
 
 1. 在 "**属性**" 窗格中，可以查看并复制有关逻辑应用的以下信息：
 
-   * **Name**
+   * **名称**
    * **资源 ID**
    * **资源组**
    * **位置**
-   * **类型** 
+   * 类型  
    * **订阅名称**
    * **订阅 ID**
    * **访问终结点**
@@ -86,7 +86,7 @@ ms.locfileid: "81415993"
 
   1. 编辑逻辑应用触发器的任何部分。
 
-  1. 保存所做更改。 此步骤将重置触发器的当前状态。
+  1. 保存更改。 此步骤将重置触发器的当前状态。
 
   1. [重新启用逻辑应用](#disable-enable-single-logic-app)。
 
@@ -145,6 +145,10 @@ ms.locfileid: "81415993"
 * 所有正在进行的和挂起的运行将继续，直到它们完成。 此过程可能需要一段时间，具体取决于这些运行的数量。
 
 * 逻辑应用引擎不会创建或运行新的工作流实例。
+
+> [!NOTE]
+> 如果删除并重新创建子逻辑应用，则必须重新保存父逻辑应用。 重新创建的子应用程序将具有不同的元数据。
+> 如果在重新创建父逻辑应用的子逻辑应用后不重新保存父逻辑应用，则对子逻辑应用的调用将失败并出现 "未授权" 错误。 此行为适用于父子逻辑应用，例如，使用集成帐户中的项目或调用 Azure 函数。
 
 <a name="delete-single-logic-app"></a>
 

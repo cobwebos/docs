@@ -8,16 +8,22 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d2990c82efbcdac7d453f920301787b8c83db1e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c1ffb4b1c0018cf56771d3fea56fe56d151bae3
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80295376"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612922"
 ---
 # <a name="connect-with-the-android-client"></a>使用 Android 客户端进行连接
 
 > 适用于： Android 4.1 及更高版本、Chromebook 和 ChromeOS 53 及更高版本。
+
+>[!IMPORTANT]
+>此内容适用于带有 Azure 资源管理器 Windows 虚拟桌面对象的弹簧2020更新。 如果使用的是不带 Azure 资源管理器对象的 Windows 虚拟桌面2019版，请参阅[此文](./virtual-desktop-fall-2019/connect-android-2019.md)。
+>
+> Windows 虚拟桌面春季2020更新目前为公共预览版。 此预览版本在提供时没有服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 >[!NOTE]
 > 当前在预览版中提供了从 Android 客户端访问 Windows 虚拟桌面资源的功能。
@@ -36,7 +42,7 @@ ms.locfileid: "80295376"
 
 1. 在“连接中心”点击“+”  ，然后点击“远程资源源”  。
 2. 在 "**源 url** " 字段中输入源 url。 源 URL 可以是 URL，也可以是电子邮件地址。
-   - 如果使用 URL，请使用管理员为你提供的（通常<https://rdweb.wvd.microsoft.com>为）。
+   - 如果使用 URL，请使用管理员为你提供的（通常<https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery>为）。
    - 若要使用电子邮件，请输入你的电子邮件地址。 如果管理员配置了服务器，则客户端将搜索与你的电子邮件地址关联的 URL。
 3. 点击 "**下一步**"。
 4. 在系统提示时提供凭据。

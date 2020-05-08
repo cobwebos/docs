@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 141e83e21db18f21468113fd9927c2bdd2ed176d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9018228ec685d69fb03dfbc23de530e1bb8abb4f
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79497879"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582864"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>在 Azure Active Directory 中的 Office 365 组上强制实施命名策略
 
-要为用户创建或编辑的 Office 365 组实施一致的命名约定，请为 Azure Active Directory (Azure AD) 中的租户设置组命名策略。 例如，可以使用命名策略传达组的功能、成员身份、地理区域或创建组的人员。 使用命名策略还可帮助对通讯簿中的组分类。 可以使用策略来阻止组名称和别名中使用特定字词。
+若要为用户创建或编辑的 Office 365 组强制执行一致的命名约定，请在 Azure Active Directory （Azure AD）中为你的组织设置组命名策略。 例如，可以使用命名策略传达组的功能、成员身份、地理区域或创建组的人员。 使用命名策略还可帮助对通讯簿中的组分类。 可以使用策略来阻止组名称和别名中使用特定字词。
 
 > [!IMPORTANT]
 > 如果对 Office 365 组使用 Azure AD 命名策略，则需要拥有但不一定要为一个或多个 Office 365 组的成员的每个唯一用户分配 Azure Active Directory Premium P1 许可证或 Azure AD Basic EDU 许可证。
@@ -42,7 +42,7 @@ ms.locfileid: "79497879"
 
 ### <a name="prefix-suffix-naming-policy"></a>前后缀命名策略
 
-命名约定的一般结构是“前缀[GroupName]后缀”。 虽然可以定义多个前缀和后缀，但设置中仅可包含一个 [GroupName] 实例。 前缀或后缀可以是固定字符串，也可以是根据创建组的用户替换的用户属性（如 \[Department\]）。 前缀和后缀字符串允许的总字符数共计 53 个字符。 
+命名约定的一般结构是“前缀[GroupName]后缀”。 虽然可以定义多个前缀和后缀，但设置中仅可包含一个 [GroupName] 实例。 前缀或后缀可以是固定字符串，也可以是根据创建组的用户替换的用户属性（如 \[Department\]）。 前缀和后缀字符串（包括组名）的允许字符总数为53个字符。 
 
 前缀和后缀可包含组名和组别名中支持的特殊字符。 如果前缀或后缀中有任何组别名不支持的字符，这些字符仍可应用于组名，但会从组别名中删除。 由于存在此限制，应用于组名的前缀和后缀与应用于组别名的前缀和后缀可能有所不同。 
 
@@ -77,8 +77,8 @@ ms.locfileid: "79497879"
 选定的管理员可跨所有组工作负荷和终结点得到这些策略的豁免，因此可以使用阻止的字词及其自己的命名约定创建组。 下面列出了可得到组命名策略豁免的管理员角色。
 
 - 全局管理员
-- 合作伙伴层 1 支持
-- 合作伙伴层 2 支持
+- 合作伙伴一线支持人员
+- 合作伙伴二线支持人员
 - 用户管理员
 - 目录写入者
 
@@ -138,7 +138,7 @@ ms.locfileid: "79497879"
 
    在打开的“登录到你的帐户”屏幕上，输入管理员帐户和密码以连接到服务，然后选择“登录”********。
 
-1. 按照[用于配置组设置的 Azure Active Directory cmdlet](groups-settings-cmdlets.md) 中的步骤创建此租户的组设置。
+1. 按照 Azure Active Directory cmdlet 中的步骤[配置组设置](groups-settings-cmdlets.md)，为此组织创建组设置。
 
 ### <a name="view-the-current-settings"></a>查看当前设置
 

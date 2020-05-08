@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: guybo
-ms.openlocfilehash: 032b49631c6adb30d4b25f8b82d35dab49ffd3a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5bf26fa096058f5a73d5527c0c6adb1649c9884f
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81757672"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857317"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>为 Azure 准备 SLES 或 openSUSE 虚拟机
 
@@ -39,7 +39,7 @@ ms.locfileid: "81757672"
 4. 使用最新修补程序更新系统：
    
         # sudo zypper update
-5. 从 SLES 存储库安装 Azure Linux 代理：
+5. 从 SLES 存储库安装 Azure Linux 代理（SLE11）：
    
         # sudo zypper install python-azure-agent
 6. 在 chkconfig 中检查 waagent 是否设置为“on”，如果不是，请启用它以便自动启动：

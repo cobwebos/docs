@@ -1,33 +1,37 @@
 ---
-title: SAP SuccessFactors 属性参考 |Microsoft Docs
+title: SAP SuccessFactors 属性参考
 description: 了解 SuccessFactors 中的哪些属性受 SuccessFactors 驱动的预配支持
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: jodadzie
-ms.assetid: afb77f2d-5ddd-4c2e-a840-09021b0efef1
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: 00b16f969525e7b802c008ba247ecba015875689
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: celested
+ms.openlocfilehash: cdd6abf5d10a529aa4c529d0364b2ba9f1df72e3
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77522350"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593178"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>SAP SuccessFactors 属性参考
 
+本文将介绍以下内容：
+
+- [支持的 SuccessFactors 实体和属性](#supported-successfactors-entities-and-attributes)
+- [默认属性映射](#default-attribute-mapping)
+
 ## <a name="supported-successfactors-entities-and-attributes"></a>支持的 SuccessFactors 实体和属性
 
-下表捕获了以下两个预配应用支持的 SuccessFactors 属性列表： 
-* [SuccessFactors Active Directory 用户预配](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
-* [SuccessFactors Azure AD 用户预配](../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md) 
+下表捕获了以下两个预配应用支持的 SuccessFactors 属性列表：
+
+- [SuccessFactors Active Directory 用户预配](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
+- [SuccessFactors Azure AD 用户预配](../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md)
+
 
 | \# | SuccessFactors 实体                  | SuccessFactors 特性     | 操作类型 |
 |----|----------------------------------------|------------------------------|----------------|
@@ -40,35 +44,35 @@ ms.locfileid: "77522350"
 | 7  | PerPersonal                            | lastName                     | 读取           |
 | 8  | PerPersonal                            | middleName                   | 读取           |
 | 9  | PerPersonal                            | preferredName                | 读取           |
-| 10 | User                                   | addressLine1                 | 读取           |
-| 11 | User                                   | addressLine2                 | 读取           |
+| 10 | 用户                                   | addressLine1                 | 读取           |
+| 11 | 用户                                   | addressLine2                 | 读取           |
 | 12 | User                                   | addressLIne3                 | 读取           |
-| 13 | User                                   | 商务电话                | 读取           |
-| 14 | User                                   | 手机                    | 读取           |
-| 15 | User                                   | city                         | 读取           |
-| 16 | User                                   | country                      | 读取           |
-| 17 | User                                   | custom01                     | 读取           |
-| 18 | User                                   | custom02                     | 读取           |
-| 19 | User                                   | custom03                     | 读取           |
-| 20 | User                                   | custom04                     | 读取           |
-| 21 | User                                   | custom05                     | 读取           |
-| 22 | User                                   | custom06                     | 读取           |
-| 23 | User                                   | custom07                     | 读取           |
-| 24 | User                                   | custom08                     | 读取           |
-| 25 | User                                   | custom09                     | 读取           |
-| 26 | User                                   | custom10                     | 读取           |
-| 27 | User                                   | custom11                     | 读取           |
-| 28 | User                                   | custom12                     | 读取           |
-| 29 | User                                   | custom13                     | 读取           |
-| 30 | User                                   | custom14                     | 读取           |
-| 31 | User                                   | empId                        | 读取           |
-| 32 | User                                   | homePhone                    | 读取           |
-| 33 | User                                   | jobFamily                    | 读取           |
-| 34 | User                                   | nickname                     | 读取           |
-| 35 | User                                   | state                        | 读取           |
-| 36 | User                                   | timezone                     | 读取           |
-| 37 | User                                   | username                     | 读取           |
-| 38 | User                                   | zipCode                      | 读取           |
+| 13 | 用户                                   | 商务电话                | 读取           |
+| 14 | 用户                                   | 手机                    | 读取           |
+| 15 | 用户                                   | city                         | 读取           |
+| 16 | 用户                                   | country                      | 读取           |
+| 17 | 用户                                   | custom01                     | 读取           |
+| 18 | 用户                                   | custom02                     | 读取           |
+| 19 | 用户                                   | custom03                     | 读取           |
+| 20 | 用户                                   | custom04                     | 读取           |
+| 21 | 用户                                   | custom05                     | 读取           |
+| 22 | 用户                                   | custom06                     | 读取           |
+| 23 | 用户                                   | custom07                     | 读取           |
+| 24 | 用户                                   | custom08                     | 读取           |
+| 25 | 用户                                   | custom09                     | 读取           |
+| 26 | 用户                                   | custom10                     | 读取           |
+| 27 | 用户                                   | custom11                     | 读取           |
+| 28 | 用户                                   | custom12                     | 读取           |
+| 29 | 用户                                   | custom13                     | 读取           |
+| 30 | 用户                                   | custom14                     | 读取           |
+| 31 | 用户                                   | empId                        | 读取           |
+| 32 | 用户                                   | homePhone                    | 读取           |
+| 33 | 用户                                   | jobFamily                    | 读取           |
+| 34 | 用户                                   | nickname                     | 读取           |
+| 35 | 用户                                   | state                        | 读取           |
+| 36 | 用户                                   | timezone                     | 读取           |
+| 37 | 用户                                   | username                     | 读取           |
+| 38 | 用户                                   | zipCode                      | 读取           |
 | 39 | PerPhone                               | 区号                     | 读取           |
 | 40 | PerPhone                               | countryCode                  | 读取           |
 | 41 | PerPhone                               | 扩展                    | 读取           |
@@ -111,7 +115,6 @@ ms.locfileid: "77522350"
 | 77 | EmpEmploymentTermination               | activeEmploymentsCount       | 读取           |
 | 78 | EmpEmploymentTermination               | latestTerminationDate        | 读取           |
 
-
 ## <a name="default-attribute-mapping"></a>默认属性映射
 
 下表提供了上面列出的 SuccessFactors 特性与 AD/Azure AD 特性之间的默认属性映射。 在 Azure AD 预配应用 "映射" 边栏选项卡中，可以修改此默认映射，使其包含上述列表中的属性。 
@@ -123,12 +126,12 @@ ms.locfileid: "77522350"
 | 3  | PerPersonal                            | displayName              | displayName                             | NA                                                                                           |
 | 4  | PerPersonal                            | firstName                | givenName                               | NA                                                                                           |
 | 5  | PerPersonal                            | lastName                 | sn                                      | NA                                                                                           |
-| 6  | User                                   | addressLine1             | streetAddress                           | NA                                                                                           |
-| 7  | User                                   | city                     | l                                       | NA                                                                                           |
-| 8  | User                                   | country                  | co                                      | NA                                                                                           |
+| 6  | 用户                                   | addressLine1             | streetAddress                           | NA                                                                                           |
+| 7  | 用户                                   | city                     | l                                       | NA                                                                                           |
+| 8  | 用户                                   | country                  | co                                      | NA                                                                                           |
 | 9  | User                                   | state                    | st                                      | NA                                                                                           |
-| 10 | User                                   | username                 | samAccountName                          | NA                                                                                           |
-| 11 | User                                   | zipCode                  | postalCode                              | NA                                                                                           |
+| 10 | 用户                                   | username                 | samAccountName                          | NA                                                                                           |
+| 11 | 用户                                   | zipCode                  | postalCode                              | NA                                                                                           |
 | 12 | PerEmail                               | emailAddress             | mail                                    | NA                                                                                           |
 | 13 | EmpJob                                 | jobTitle                 | title                                   | NA                                                                                           |
 | 14 | EmpJob                                 | managerId                | manager                                 | NA                                                                                           |
@@ -138,4 +141,3 @@ ms.locfileid: "77522350"
 | 18 | EmpJob\.位置                       | officeLocationAddress    | streetAddress                           | NA                                                                                           |
 | 19 | EmpJob\.位置                       | officeLocationZipCode    | postalCode                              | NA                                                                                           |
 | 20 | EmpEmploymentTermination               | activeEmploymentsCount   | accountEnabled                          | 如果 activeEmploymentsCount = 0，则禁用 account\。                                           |
-

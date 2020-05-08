@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 12/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 20a82cbd7de4b5678648bac19ab9b59bf557b0ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec69a9906eabb4ce56f79b1b88c2b5f2440f84b1
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79128319"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612463"
 ---
 # <a name="set-up-msix-app-attach"></a>设置 MSIX 应用附加
 
 > [!IMPORTANT]
 > .MSIX 应用附加当前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 此预览版本在提供时没有服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 本主题将指导你完成如何在 Windows 虚拟桌面环境中设置 .MSIX app attach。
 
@@ -28,7 +28,7 @@ ms.locfileid: "79128319"
 在开始之前，你需要配置 .MSIX 应用附加：
 
 - 访问 Windows 有问必答门户以获取 Windows 10 版本，并支持 .MSIX 应用附加 Api。
-- 正常运行的 Windows 虚拟桌面部署。 有关信息，请参阅[在 Windows 虚拟桌面中创建租户](tenant-setup-azure-active-directory.md)。
+- 正常运行的 Windows 虚拟桌面部署。 有关信息，请参阅[在 Windows 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。
 - .MSIX 打包工具
 - Windows 虚拟桌面部署中将存储 .MSIX 包的网络共享
 
@@ -207,7 +207,7 @@ sc config wuauserv start=disabled
 
 4.  打开父文件夹。 如果正确扩展，则会看到一个与包同名的文件夹。 更新 **$packageName**变量以匹配此文件夹的名称。
 
-    例如，`VSCodeUserSetup-x64-1.38.1_1.38.1.0_x64__8wekyb3d8bbwe` 。
+    例如 `VSCodeUserSetup-x64-1.38.1_1.38.1.0_x64__8wekyb3d8bbwe`。
 
 5.  打开命令提示符并输入**mountvol**。 此命令将显示卷及其 Guid 的列表。 将驱动器号与安装了 VHD 的驱动器的 GUID 复制到步骤2中。
 

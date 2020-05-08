@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 1bef73e6be4bdbe8828e1d20ea6e684759984627
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 569e8d769d56acbb4c7fb4258952ec19e44b58e4
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72244636"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607820"
 ---
-# <a name="security-frame-authentication--mitigations"></a>安全框架：身份验证 | 缓解措施 
+# <a name="security-frame-authentication--mitigations"></a>安全框架：身份验证 | 缓解措施
 
 | 产品/服务 | 项目 |
 | --------------- | ------- |
@@ -44,85 +45,85 @@ ms.locfileid: "72244636"
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 |
+| **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型 |
-| **特性**              | 不适用  |
-| **参考**              | 不适用  |
+| **特性**              | 不可用  |
+| **参考**              | 不可用  |
 | 详细信息 | <p>身份验证是某个实体证明其身份的过程，这通常是通过用户名和密码等凭据完成的。 可以考虑使用多种身份验证协议。 下面列出了其中一些协议：</p><ul><li>客户端证书</li><li>基于 Windows</li><li>基于窗体</li><li>联合身份验证 - ADFS</li><li>联合身份验证 - Azure AD</li><li>联合身份验证 - 标识服务器</li></ul><p>考虑使用标准身份验证机制来识别源进程</p>|
 
 ## <a name="applications-must-handle-failed-authentication-scenarios-securely"></a><a id="handle-failed-authn"></a>应用程序必须安全处理失败的身份验证方案
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 |
+| **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型 |
-| **特性**              | 不适用  |
-| **参考**              | 不适用  |
+| **特性**              | 不可用  |
+| **参考**              | 不可用  |
 | 详细信息 | <p>显式执行用户身份验证的应用程序必须安全处理失败的身份验证方案。身份验证机制必须：</p><ul><li>在身份验证失败时拒绝访问特权资源</li><li>身份验证失败并且发生访问被拒绝后，显示常规错误消息</li></ul><p>测试：</p><ul><li>登录失败后保护特权资源</li><li>身份验证失败并且发生访问被拒绝事件后，显示常规错误消息</li><li>尝试失败的次数过多后禁用帐户</li><ul>|
 
 ## <a name="enable-step-up-or-adaptive-authentication"></a><a id="step-up-adaptive-authn"></a>启用升级或自适应身份验证
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 |
+| **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型 |
-| **特性**              | 不适用  |
-| **参考**              | 不适用  |
+| **特性**              | 不可用  |
+| **参考**              | 不可用  |
 | 详细信息 | <p>验证应用程序是否有附加的授权（例如，通过多重身份验证（在短信中发送 OTP，等等）执行升级或自适应的身份验证，或者提示重新身份验证），以便在向用户授予对敏感信息的访问权限之前向其提出质询。 对帐户或操作进行重大更改时，也可以应用此规则</p><p>这也意味着，必须以适当的方式实施身份验证的调适，以便应用程序能够正确实施区分上下文的授权，阻止通过参数篡改等方式执行未经授权的操作</p>|
 
 ## <a name="ensure-that-administrative-interfaces-are-appropriately-locked-down"></a><a id="admin-interface-lockdown"></a>确保适当锁定管理界面
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 |
+| **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型 |
-| **特性**              | 不适用  |
-| **参考**              | 不适用  |
+| **特性**              | 不可用  |
+| **参考**              | 不可用  |
 | 详细信息 | 第一种解决方案是仅授予从某个源 IP 范围到管理界面的访问权限。 如果该解决方案不可行，我们始终建议针对管理界面的登录实施升级或自适应的身份验证 |
 
 ## <a name="implement-forgot-password-functionalities-securely"></a><a id="forgot-pword-fxn"></a>安全实施忘记密码功能
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 |
+| **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型 |
-| **特性**              | 不适用  |
-| **参考**              | 不适用  |
+| **特性**              | 不可用  |
+| **参考**              | 不可用  |
 | 详细信息 | <p>首先，验证“忘记密码”和其他恢复路径是否发送包含限时激活令牌而不是密码本身的链接。 在发送链接之前，还可能需要实施基于软令牌（例如 SMS 令牌、本机移动应用程序等）的其他身份验证。 第二，在获取新密码的过程正在进行时，不应锁定用户帐户。</p><p>否则，每当攻击者决定使用自动攻击来有意锁定用户时，可能会导致拒绝服务攻击。 第三，在新密码请求正在设置时，显示的消息应该普通化，防止用户名枚举。 第四，始终禁止使用旧密码并实施强密码策略。</p> |
 
 ## <a name="ensure-that-password-and-account-policy-are-implemented"></a><a id="pword-account-policy"></a>确保实施密码和帐户策略
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 |
+| **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型 |
-| **特性**              | 不适用  |
-| **参考**              | 不适用  |
+| **特性**              | 不可用  |
+| **参考**              | 不可用  |
 | 详细信息 | <p>应该实施与组织策略和最佳做法相符的密码与帐户策略。</p><p>为了防范暴力破解和基于字典的猜测：必须实现强密码策略，确保用户创建复杂密码（例如，最小长度为 12 个字符，必须包含字母数字和特殊字符）。</p><p>可按以下方式实施帐户锁定策略：</p><ul><li>**软锁定：** 这可能是防止用户遭受暴力破解攻击的不错选项。 例如，当用户输入错误密码三次时，应用程序可能会将该帐户锁定一分钟，以便减缓强行破解密码的过程，从而使攻击者无法继续进行盈利。 如果要在此示例中实现硬锁定对策，可以通过永久锁定帐户来实现 "DoS"。 或者，应用程序可以生成 OTP（一次性密码），并将其以带外方式（通过电子邮件、短信等）发送给用户。 另一种做法是在达到失败尝试次数的阈值后实施 CAPTCHA。</li><li>**硬锁定：** 每当检测到你的应用程序的攻击者，并通过永久锁定其帐户，直到响应团队有时间完成其辩论之前，就应应用这种类型的锁定。 完成此过程后，你可以决定向用户返回其帐户或对其采取进一步的法律操作。 这种方式可以防止攻击者进一步侵入应用程序和基础结构。</li></ul><p>为了防范针对默认与可预测帐户的攻击，请验证所有密钥和密码是否可替换，并且是否是在安装后生成或替换的。</p><p>如果应用程序必须自动生成密码，请确保生成的密码是随机的并具有高熵。</p>|
 
 ## <a name="implement-controls-to-prevent-username-enumeration"></a><a id="controls-username-enum"></a>实施控制来防止用户名枚举
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | Web 应用程序 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web 应用程序 |
+| **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型 |
-| **特性**              | 不适用  |
-| **参考**              | 不适用  |
+| **特性**              | 不可用  |
+| **参考**              | 不可用  |
 | **步骤** | 所有错误消息应该普通化，以防止用户名枚举。 此外，在注册页等功能中，有时无法避免信息泄露。 在这种情况下，需要使用 CAPTCHA 等频率限制方法来防止攻击者的自动攻击。 |
 
 ## <a name="when-possible-use-windows-authentication-for-connecting-to-sql-server"></a><a id="win-authn-sql"></a>尽可能使用 Windows 身份验证连接到 SQL Server
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | 数据库 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 数据库 |
+| **SDL 阶段**               | 构建 |
 | **适用的技术** | OnPrem |
 | **特性**              | SQL 版本 - 所有 |
 | **参考**              | [SQL Server - 选择身份验证模式](https://msdn.microsoft.com/library/ms144284.aspx) |
@@ -132,8 +133,8 @@ ms.locfileid: "72244636"
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | 数据库 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 数据库 |
+| **SDL 阶段**               | 构建 |
 | **适用的技术** | SQL Azure |
 | **特性**              | SQL 版本 - V12 |
 | **参考**              | [使用 Azure Active Directory 身份验证连接到 SQL 数据库](https://azure.microsoft.com/documentation/articles/sql-database-aad-authentication/) |
@@ -143,10 +144,10 @@ ms.locfileid: "72244636"
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | 数据库 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 数据库 |
+| **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型 |
-| **特性**              | 不适用  |
+| **特性**              | 不可用  |
 | **参考**              | [SQL Server 密码策略](https://technet.microsoft.com/library/ms161959(v=sql.110).aspx) |
 | **步骤** | 使用 SQL Server 身份验证时，登录名是在不基于 Windows 用户帐户的 SQL Server 中创建的。 用户名和密码是使用 SQL Server 创建的，存储在 SQL Server 中。 SQL Server 可以使用 Windows 密码策略机制。 对于在 SQL Server 中使用的密码，它可以应用 Windows 中所用的相同复杂性与过期策略。 |
 
@@ -154,8 +155,8 @@ ms.locfileid: "72244636"
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | 数据库 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 数据库 |
+| **SDL 阶段**               | 构建 |
 | **适用的技术** | OnPrem、SQL Azure |
 | **特性**              | SQL 版本 - MSSQL2012，SQL 版本 - V12 |
 | **参考**              | [针对包含数据库的安全性最佳方法](https://msdn.microsoft.com/library/ff929055.aspx) |
@@ -165,10 +166,10 @@ ms.locfileid: "72244636"
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | Azure 事件中心 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Azure 事件中心 |
+| **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型 |
-| **特性**              | 不适用  |
+| **特性**              | 不可用  |
 | **参考**              | [事件中心身份验证和安全模型概述](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
 | **步骤** | <p>事件中心安全模型基于共享访问签名 (SAS) 令牌与事件发布者的组合。 发布者名称表示接收令牌的 DeviceID。 它可以帮助将生成的令牌与相应的设备相关联。</p><p>所有消息在服务端标记为发起方，用于检测有效负载中原点欺骗的企图。 对设备进行身份验证时，将生成一个对应于唯一发布者的基于设备的 SaS 令牌。</p>|
 
@@ -176,10 +177,10 @@ ms.locfileid: "72244636"
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | Azure 信任边界 | 
-| **SDL 阶段**               | 部署 |  
+| 组件                | Azure 信任边界 |
+| **SDL 阶段**               | 部署 |
 | **适用的技术** | 泛型 |
-| **特性**              | 不适用  |
+| **特性**              | 不可用  |
 | **参考**              | [什么是 Azure 多重身份验证？](https://azure.microsoft.com/documentation/articles/multi-factor-authentication/) |
 | **步骤** | <p>多重身份验证 (MFA) 是要求使用多种验证方法的身份验证方法，为用户登录和事务额外提供一层重要的安全保障。 它需要以下验证方法中的两种或更多种来进行工作：</p><ul><li>您知道的信息（通常为密码）</li><li>您拥有的东西（不易被复制的受信任设备，如电话）</li><li>自身的特征（生物辨识系统）</li><ul>|
 
@@ -187,8 +188,8 @@ ms.locfileid: "72244636"
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | Service Fabric 信任边界 | 
-| **SDL 阶段**               | 部署 |  
+| 组件                | Service Fabric 信任边界 |
+| **SDL 阶段**               | 部署 |
 | **适用的技术** | 泛型 |
 | **特性**              | 环境 - Azure  |
 | **参考**              | [Service Fabric 群集安全方案](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security) |
@@ -198,8 +199,8 @@ ms.locfileid: "72244636"
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | Service Fabric 信任边界 | 
-| **SDL 阶段**               | 部署 |  
+| 组件                | Service Fabric 信任边界 |
+| **SDL 阶段**               | 部署 |
 | **适用的技术** | 泛型 |
 | **特性**              | 环境 - Azure，环境 - 独立 |
 | **参考**              | [Service Fabric 客户端到节点的证书安全性](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#_client-to-node-certificate-security)、[使用客户端证书连接到安全群集](https://azure.microsoft.com/documentation/articles/service-fabric-connect-to-secure-cluster/) |
@@ -209,8 +210,8 @@ ms.locfileid: "72244636"
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | Service Fabric 信任边界 | 
-| **SDL 阶段**               | 部署 |  
+| 组件                | Service Fabric 信任边界 |
+| **SDL 阶段**               | 部署 |
 | **适用的技术** | 泛型 |
 | **特性**              | 环境 - Azure |
 | **参考**              | [群集安全方案 - 安全建议](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#security-recommendations) |
@@ -220,8 +221,8 @@ ms.locfileid: "72244636"
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | Service Fabric 信任边界 | 
-| **SDL 阶段**               | 部署 |  
+| 组件                | Service Fabric 信任边界 |
+| **SDL 阶段**               | 部署 |
 | **适用的技术** | 泛型 |
 | **特性**              | 环境 - Azure |
 | **参考**              | [X.509 证书和 Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#x509-certificates-and-service-fabric) |
@@ -231,10 +232,10 @@ ms.locfileid: "72244636"
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | 标识服务器 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | 标识服务器 |
+| **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型 |
-| **特性**              | 不适用  |
+| **特性**              | 不可用  |
 | **参考**              | [IdentityServer3 - 大图](https://identityserver.github.io/Documentation/docsv2/overview/bigPicture.html) |
 | **步骤** | <p>下面是标识服务器支持的典型交互：</p><ul><li>浏览器与 Web 应用程序通信</li><li>Web 应用程序与 Web API 通信（有时是代表自身，有时代表用户）</li><li>基于浏览器的应用程序与 Web API 通信</li><li>本机应用程序与 Web API 通信</li><li>基于服务器的应用程序与 Web API 通信</li><li>Web API 与 Web API 通信（有时是代表自身，有时代表用户）</li></ul>|
 
@@ -242,10 +243,10 @@ ms.locfileid: "72244636"
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | 标识服务器 | 
-| **SDL 阶段**               | 部署 |  
+| 组件                | 标识服务器 |
+| **SDL 阶段**               | 部署 |
 | **适用的技术** | 泛型 |
-| **特性**              | 不适用  |
+| **特性**              | 不可用  |
 | **参考**              | [标识服务器部署 - 缓存](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) |
 | **步骤** | <p>IdentityServer 具有简单的内置内存中缓存。 尽管对于小规模本机应用而言这很合适，但是，出于以下原因，它无法根据中间层和后端应用程序缩放：</p><ul><li>这些应用程序同时由许多用户访问。 在同一个存储中保存所有访问令牌会产生隔离问题，并且在大规模运行时会带来难题：如果用户数目众多，并且每个用户的令牌数与应用代表他们访问的资源数相当，则可能意味着需要执行极大量的开销极高的查找操作</li><li>这些应用程序通常部署在分布式拓扑中，其中的多个节点必须能够访问同一个缓存</li><li>在进程回收和停用后，缓存的令牌必须能够幸存</li><li>出于上述所有原因，在实施 Web 应用程序时，建议使用 Azure Redis 缓存等可缩放的替代方案来覆盖标识服务器的默认令牌缓存</li></ul>|
 
@@ -253,21 +254,21 @@ ms.locfileid: "72244636"
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | 计算机信任边界 | 
-| **SDL 阶段**               | 部署 |  
+| 组件                | 计算机信任边界 |
+| **SDL 阶段**               | 部署 |
 | **适用的技术** | 泛型 |
-| **特性**              | 不适用  |
-| **参考**              | 不适用  |
+| **特性**              | 不可用  |
+| **参考**              | 不可用  |
 | **步骤** | 确保部署的应用程序的二进制文件经过数字签名，以便能够验证二进制文件的完整性|
 
 ## <a name="enable-authentication-when-connecting-to-msmq-queues-in-wcf"></a><a id="msmq-queues"></a>连接到 WCF 中的 MSMQ 队列时启用身份验证
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | WCF | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | WCF |
+| **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型、NET Framework 3 |
-| **特性**              | 不适用 |
+| **特性**              | 不可用 |
 | **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx) |
 | **步骤** | 如果程序在连接到 MSMQ 队列时无法启用身份验证，攻击者可能会以匿名方式将消息提交到队列进行处理。 如果不使用身份验证连接到用于向另一程序传送消息的 MSMQ 队列，攻击者可能会提交恶意的匿名消息。|
 
@@ -304,8 +305,8 @@ ms.locfileid: "72244636"
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | WCF | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | WCF |
+| **SDL 阶段**               | 构建 |
 | **适用的技术** | .NET Framework 3 |
 | **特性**              | 客户端凭据类型 - None |
 | **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://community.microfocus.com/t5/UFT-Discussions/UFT-API-Test-with-WCF-wsHttpBinding/m-p/600927) |
@@ -320,8 +321,8 @@ ms.locfileid: "72244636"
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | WCF | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | WCF |
+| **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型、.NET Framework 3 |
 | **特性**              | 客户端凭据类型 - None |
 | **参考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://community.microfocus.com/t5/UFT-Discussions/UFT-API-Test-with-WCF-wsHttpBinding/m-p/600927) |
@@ -336,10 +337,10 @@ ms.locfileid: "72244636"
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | Web API | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Web API |
+| **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型 |
-| **特性**              | 不适用  |
+| **特性**              | 不可用  |
 | **参考**              | [ASP.NET Web API 中的身份验证和授权](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api)、[使用 ASP.NET Web API 的外部身份验证服务 (C#)](https://www.asp.net/web-api/overview/security/external-authentication-services) |
 | **步骤** | <p>身份验证是某个实体证明其身份的过程，这通常是通过用户名和密码等凭据完成的。 可以考虑使用多种身份验证协议。 下面列出了其中一些协议：</p><ul><li>客户端证书</li><li>基于 Windows</li><li>基于窗体</li><li>联合身份验证 - ADFS</li><li>联合身份验证 - Azure AD</li><li>联合身份验证 - 标识服务器</li></ul><p>参考部分中的链接提供了有关如何实施每种身份验证方案来保护 Web API 的低级别详细信息。</p>|
 
@@ -347,10 +348,10 @@ ms.locfileid: "72244636"
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | Azure AD | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Azure AD |
+| **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型 |
-| **特性**              | 不适用  |
+| **特性**              | 不可用  |
 | **参考**              | [Azure AD 的身份验证方案](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/)、[Azure Active Directory 代码示例](https://azure.microsoft.com/documentation/articles/active-directory-code-samples/)、[Azure Active Directory 开发人员指南](https://azure.microsoft.com/documentation/articles/active-directory-developers-guide/) |
 | **步骤** | <p>Azure Active Directory (Azure AD) 通过提供标识即服务并支持 OAuth 2.0 和 OpenID Connect 等行业标准协议，简化了对开发人员的身份验证。 下面是 Azure AD 支持的五种主要应用程序方案：</p><ul><li>Web 浏览器到 Web 应用程序：用户需要登录到由 Azure AD 保护的 Web 应用程序</li><li>单页面应用程序 (SPA)：用户需要登录到由 Azure AD 保护的单页面应用程序</li><li>本机应用程序到 Web API：在手机、平板电脑或电脑上运行的本机应用程序需要对用户进行身份验证以从 Azure AD 所保护的 Web API 获取资源</li><li>Web 应用程序到 Web API：Web 应用程序需要从 Azure AD 所保护的 Web API 获取资源。</li><li>后台或服务器应用程序到 Web API：没有 Web 用户界面的后台应用程序或服务器应用程序需要从 Azure AD 所保护的 Web API 获取资源</li></ul><p>请参阅参考部分中的链接，了解低级别实施详细信息</p>|
 
@@ -358,10 +359,10 @@ ms.locfileid: "72244636"
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | Azure AD | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Azure AD |
+| **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型 |
-| **特性**              | 不适用  |
+| **特性**              | 不可用  |
 | **参考**              | [使用 Azure Active Directory 对 Web 应用程序执行新式身份验证](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/)、[使用 Redis 作为 ADAL 令牌缓存](https://blogs.msdn.microsoft.com/mrochon/2016/09/19/using-redis-as-adal-token-cache/)  |
 | **步骤** | <p>ADAL（Active Directory 身份验证库）使用的默认缓存是依赖于静态存储、可在进程范围内使用的内存中缓存。 尽管这很适合用于本机应用程序，但是，出于以下原因，它无法根据中间层和后端应用程序缩放：</p><ul><li>这些应用程序同时由许多用户访问。 在同一个存储中保存所有访问令牌会产生隔离问题，并且在大规模运行时会带来难题：如果用户数目众多，并且每个用户的令牌数与应用代表他们访问的资源数相当，则可能意味着需要执行极大量的开销极高的查找操作</li><li>这些应用程序通常部署在分布式拓扑中，其中的多个节点必须能够访问同一个缓存</li><li>在进程回收和停用后，缓存的令牌必须能够幸存</li></ul><p>出于上述所有原因，在实施 Web 应用程序时，建议使用 Azure Redis 缓存等可缩放的替代方案来覆盖默认的 ADAL 令牌缓存。</p>|
 
@@ -369,10 +370,10 @@ ms.locfileid: "72244636"
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | Azure AD | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Azure AD |
+| **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型 |
-| **特性**              | 不适用  |
+| **特性**              | 不可用  |
 | **参考**              | [使用 Azure Active Directory 对 Web 应用程序执行新式身份验证](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/) |
 | **步骤** | <p>开发人员可以使用 TokenReplayCache 属性来定义令牌重放缓存，这是一个可以用来保存令牌的存储，用途是验证没有多次使用某个令牌。</p><p>这是针对一种所谓的令牌重放攻击的常见攻击采取的措施：截获登录时发送的令牌的攻击者可能会尝试再次将该令牌发送到应用（“重放”它），以求建立新的会话。 例如，在 OIDC 代码授予流中，用户身份验证成功后，向信赖方的“/signin-oidc”终结点发出的请求包含“id_token”、“code”和“state”参数。</p><p>信赖方会验证此请求并建立新的会话。 如果攻击者捕获到此请求并重放它，就可以建立成功的会话并欺骗用户。 在 OpenID Connect 中使用 nonce 可以限制但不能完全消除攻击成功得手的结果。 为了保护应用程序，开发人员可以提供 ITokenReplayCache 的实现，并向 TokenReplayCache 分配一个实例。</p>|
 
@@ -430,10 +431,10 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | Azure AD | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Azure AD |
+| **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型 |
-| **特性**              | 不适用  |
+| **特性**              | 不可用  |
 | **参考**              | [ADAL](https://azure.microsoft.com/documentation/articles/active-directory-authentication-libraries/) |
 | **步骤** | <p>通过 Azure AD 身份验证库 (ADAL)，客户端应用程序开发人员能够轻松利用云或本地 Active Directory (AD) 对用户进行身份验证，并获取访问令牌，以进行安全的 API 调用。</p><p>ADAL 提供许多可以方便开发人员进行身份验证的功能，例如，异步支持、用于存储访问令牌和刷新令牌的可配置令牌缓存、访问令牌过期时和提供刷新令牌时自动刷新令牌，等等。</p><p>ADAL 可以应对大部分复杂情况，因而可以帮助开发人员集中处理其应用程序中的业务逻辑，并可轻松保护资源而不必成为安全方面的专家。 适用于 .NET、JavaScript （客户端和 node.js）、Python、iOS、Android 和 Java 的单独库。</p>|
 
@@ -441,22 +442,22 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | IoT 现场网关 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | IoT 现场网关 |
+| **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型 |
-| **特性**              | 不适用  |
-| **参考**              | 不适用  |
+| **特性**              | 不可用  |
+| **参考**              | 不可用  |
 | **步骤** | 确保现场网关在接受每个设备的数据以及帮助上游与云网关通信之前，对每个设备进行身份验证。 此外，确保设备使用每个设备的凭据建立连接，以便能够唯一标识各个设备。|
 
 ## <a name="ensure-that-devices-connecting-to-cloud-gateway-are-authenticated"></a><a id="authn-devices-cloud"></a>确保对连接到云网关的设备进行身份验证
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | IoT 云网关 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | IoT 云网关 |
+| **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型、C#、Node.JS,  |
 | **特性**              | 不适用，网关选项 - Azure IoT 中心 |
-| **参考**              | 不适用，[包含 .net 的 Azure IoT 中心](https://azure.microsoft.com/documentation/articles/iot-hub-csharp-csharp-getstarted/)，[入门 Iot 中心和 NODE.JS](https://azure.microsoft.com/documentation/articles/iot-hub-node-node-getstarted)，使用[SAS 和证书保护 IoT](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/)， [Git 存储库](https://github.com/Azure/azure-iot-sdks/tree/master/node) |
+| **参考**              | 不适用，[包含 .net 的 Azure IoT 中心](https://azure.microsoft.com/documentation/articles/iot-hub-csharp-csharp-getstarted/)，[入门 Iot 中心和 NODE.JS](https://azure.microsoft.com/documentation/articles/iot-hub-node-node-getstarted)，使用[SAS 和证书保护 IoT](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/)， [Git 存储库](https://github.com/Azure/azure-iot-sdks/) |
 | **步骤** | <ul><li>**泛型：** 使用传输层安全性 (TLS) 或 IPSec 对设备进行身份验证。 如果设备无法处理完全非对称加密，则基础结构应该支持在这些设备上使用预共享密钥 (PSK)。 利用 Azure AD、Oauth。</li><li>**C#：** 创建 DeviceClient 实例时，Create 方法默认创建使用 AMQP 协议来与 IoT 中心通信的 DeviceClient 实例。 要使用 HTTPS 协议，请使用 Create 方法的重写，它可以让你指定协议。 如果使用 HTTPS 协议，则还应在项目中添加 `Microsoft.AspNet.WebApi.Client` NuGet 包，以包含 `System.Net.Http.Formatting` 命名空间。</li></ul>|
 
 ### <a name="example"></a>示例
@@ -512,9 +513,9 @@ await deviceClient.SendEventAsync(message);
     if (policyName) token += "&skn="+policyName;
     return token;
     ```
-* 使用 SAS 令牌建立连接： 
+* 使用 SAS 令牌建立连接：
     ```javascript
-    Client.fromSharedAccessSignature(sas, Http); 
+    Client.fromSharedAccessSignature(sas, Http);
     ```
   #### <a name="certificates"></a>证书
 * 使用 OpenSSL 等任何工具生成自签名的 X509 证书，以便生成分别用于存储证书和密钥的 .cert 和 .key 文件
@@ -541,7 +542,7 @@ await deviceClient.SendEventAsync(message);
     var options = {
         key: fs.readFileSync('./key.pem', 'utf8'),
         cert: fs.readFileSync('./server.crt', 'utf8')
-    }; 
+    };
     // Calling setOptions with the x509 certificate and key (and optionally, passphrase) will configure the client //transport to use x509 when connecting to IoT Hub
     client.setOptions(options);
     //call fn to execute after the connection is set up
@@ -552,8 +553,8 @@ await deviceClient.SendEventAsync(message);
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | IoT 云网关  | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | IoT 云网关  |
+| **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型 |
 | **特性**              | 网关选项 - Azure IoT 中心 |
 | **参考**              | [Azure IoT 中心安全令牌](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/) |
@@ -563,8 +564,8 @@ await deviceClient.SendEventAsync(message);
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | Azure 存储 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Azure 存储 |
+| **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型 |
 | **特性**              | StorageType - Blob |
 | **参考**              | [管理对容器和 Blob 的匿名读取访问](https://azure.microsoft.com/documentation/articles/storage-manage-access-to-resources/)、[共享访问签名，第 1 部分：了解 SAS 模型](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/) |
@@ -574,9 +575,9 @@ await deviceClient.SendEventAsync(message);
 
 | Title                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件                | Azure 存储 | 
-| **SDL 阶段**               | 构建 |  
+| 组件                | Azure 存储 |
+| **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型 |
-| **特性**              | 不适用 |
+| **特性**              | 不可用 |
 | **参考**              | [共享访问签名，第 1 部分：了解 SAS 模型](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)、[共享访问签名，第 2 部分：创建 SAS 并将 SAS 用于 Blob 存储](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-2/)、[如何使用共享访问签名和存储访问策略来委派对帐户中对象的访问权限](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_how-to-delegate-access-to-objects-in-your-account-using-shared-access-signatures-and-stored-access-policies) |
 | **步骤** | <p>使用共享访问签名 (SAS) 是将对存储帐户中对象的受限访问权限授予其他客户端且不必公开帐户访问密钥的一种高度有效的方法。 SAS 是在其查询参数中包含对存储资源进行验证了身份的访问所需的所有信息的 URI。 要使用 SAS 访问存储资源，客户端只需将 SAS 传入到相应的构造函数或方法。</p><p>需要将存储帐户中资源的访问权限提供给不能使用帐户密钥进行信任的客户端时，可以使用 SAS。 存储帐户密钥包括主密钥和辅助密钥，这两种密钥都授予对帐户以及其中所有资源的管理访问权限。 公开这两种帐户密钥的任何一种都会向可能的恶意或负面使用开放帐户。 共享访问签名提供一种安全的方法，允许其他客户端根据你授予的权限读取、写入和删除存储帐户中的数据，而无需帐户密钥。</p><p>如果每次都有一组类似的逻辑参数，使用存储访问策略 (SAP) 是个不错的想法。 由于使用派生自存储访问策略的 SAS 可以立即吊销该 SAS，因此建议的最佳做法是始终使用存储访问策略（如果可能）。</p>|

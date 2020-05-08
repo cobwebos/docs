@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: d1929f937d86001a0f2a399b1ebd92e47bbd2c86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a6efe74008b2271b960f877f5f0f6b2b6b549a8d
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80990899"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583086"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory （Azure AD）应用程序代理常见问题
 
@@ -95,6 +95,10 @@ ms.locfileid: "80990899"
 
 如果连接器服务器和 web 应用程序服务帐户在不同的域中，则使用基于资源的委派。 委托权限在目标 web 服务器和 web 应用程序服务帐户上进行配置。 此约束委派方法相对全新。 此方法是在 Windows Server 2012 中引入的，该方法支持跨域委托，这允许资源（web 服务）所有者控制哪些计算机和服务帐户可以委派给它。 没有可帮助此配置的 UI，因此你需要使用 PowerShell。
 有关详细信息，请参阅白皮书[了解具有应用程序代理的 Kerberos 约束委派](https://aka.ms/kcdpaper)。
+
+### <a name="does-ntlm-authentication-work-with-azure-ad-application-proxy"></a>NTLM 身份验证是否适用于 Azure AD 应用程序代理？
+
+NTLM 身份验证不能用作预身份验证或单一登录方法。 仅当可以直接在客户端和已发布的 web 应用程序之间协商 NTLM 身份验证时，才能使用 NTLM 身份验证。 使用 NTLM 身份验证通常会在浏览器中显示登录提示。
 
 ## <a name="pass-through-authentication"></a>直通身份验证
 

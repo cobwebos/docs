@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/23/2020
-ms.openlocfilehash: 8170a0190e2d322c07f8f4978a77a8171579cbfb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/24/2020
+ms.openlocfilehash: 05d057be76a1b468f892b3123080e32a948153ae
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232881"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598492"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集
 
@@ -219,13 +219,19 @@ HDInsight 群集可以有两个用户帐户。 HDInsight 群集用户帐户（HT
 4. 在“脚本操作”页中，选择“提交新项”   。
 5. 在“提交脚本操作”页中，输入以下信息： 
 
-   | 字段 | Value |
+> [!NOTE]
+> SSH 密码不能包含以下字符：
+> ```
+> " ' ` / \ < % ~ | $ & ! 
+> ```
+
+   | 字段 | 值 |
    | --- | --- |
-   | 脚本类型 | 从下拉列表中选择“- 自定义”。 |
+   | 脚本类型 | 从下拉列表中选择“- 自定义”。****|
    | 名称 |"更改 ssh 凭据" |
    | Bash 脚本 URI |Changecredentials.sh 文件的 URI |
-   | 节点类型：（头节点、辅助角色节点、Nimbus 节点、监督器节点或 Zookeeper 节点。） |✓ 适用于所有列出的节点类型 |
-   | parameters |输入 SSH 用户名和新密码。 用户名与密码之间应有一个空格。 Ssh 密码中不支持以下字符： "' '/\ <% ~ | $ &
+   | 节点类型：（Head、Worker、Nimbus、监察员或 Zookeeper。） |✓ 适用于所有列出的节点类型 |
+   | 参数 |输入 SSH 用户名和新密码。 用户名与密码之间应有一个空格。 |
    | 保留此脚本操作... |将此字段保留未选中状态。 |
 
 6. 选择“创建”**** 以应用脚本。 脚本完成后，便可以使用 SSH 和新凭据连接到群集。

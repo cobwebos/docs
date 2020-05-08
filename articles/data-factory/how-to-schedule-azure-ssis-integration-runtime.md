@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 50ff0afe13b5b098fbc8d9fbeefba295a6217192
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 83ccc3160ed62a1ea801dd8c5795328fd2b5109f
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606070"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82584018"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>如何按计划启动和停止 Azure-SSIS Integration Runtime
 
@@ -230,7 +230,7 @@ ms.locfileid: "81606070"
     4. 对于“位置”，选择 Azure 自动化的位置****。 
     5. 确认“创建 Azure 运行方式帐户”为“是”********。 将在 Azure Active Directory 中创建服务主体，并在 Azure 订阅中为其分配“参与者”角色****。
     6. 选择“固定到仪表板”以在 Azure 仪表板中永久显示该服务主体****。 
-    7. 选择“创建”  。 
+    7. 选择“创建”。  
 
    ![“新建”->“监视 + 管理”->“自动化”](./media/how-to-schedule-azure-ssis-integration-runtime/add-automation-account-window.png)
    
@@ -268,7 +268,7 @@ ms.locfileid: "81606070"
 
     1. 对于“名称”，输入 StartStopAzureSsisRuntime********。
     2. 对于“Runbook 类型”，请选择“PowerShell”。********
-    3. 选择“创建”  。
+    3. 选择“创建”。 
     
    ![“添加 Runbook”按钮](./media/how-to-schedule-azure-ssis-integration-runtime/add-runbook-window.png)
    
@@ -353,7 +353,7 @@ ms.locfileid: "81606070"
 
 ## <a name="create-schedules-for-your-runbook-to-startstop-azure-ssis-ir"></a>为 Runbook 创建计划来启动/停止 Azure SSIS IR
 
-在上一部分，已创建了一个可以启动或停止 Azure SSIS IR 的 Azure 自动化 Runbook。 在本部分，将为 Runbook 创建两个计划。 配置第一个计划时，为“操作”指定“启动”********。 类似地，在配置第二个计划时，请为“操作”指定“停止”********。 有关创建计划的详细步骤，请参阅[创建计划](../automation/shared-resources/schedules.md#creating-a-schedule)一文。
+在上一部分，已创建了一个可以启动或停止 Azure SSIS IR 的 Azure 自动化 Runbook。 在本部分，将为 Runbook 创建两个计划。 配置第一个计划时，为“操作”指定“启动”********。 类似地，在配置第二个计划时，请为“操作”指定“停止”********。 有关创建计划的详细步骤，请参阅[创建计划](../automation/shared-resources/schedules.md#create-a-schedule)一文。
 
 1. 在“Runbook”窗口中选择“计划”，然后在工具栏上选择“+ 添加计划”************。 
 
@@ -367,7 +367,7 @@ ms.locfileid: "81606070"
     4. 对于“开始”，请输入比当前时间晚几分钟的时间****。 
     5. 对于“重复周期 ”，请选择“定期”。******** 
     6. 对于“重复间隔”，请输入“1”并选择“日”************。 
-    7. 选择“创建”  。 
+    7. 选择“创建”。  
 
    ![计划 Azure SSIS IR 的启动](./media/how-to-schedule-azure-ssis-integration-runtime/new-schedule-start.png)
     

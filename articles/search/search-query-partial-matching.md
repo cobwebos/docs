@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 5a05f2973ac17460250fb3e80eb7bc0da9849940
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 05ff56c904fc48a1041ad40f00110a8ff0fd01f1
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262870"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592037"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>部分术语搜索和包含特殊字符的模式（通配符、正则表达式、模式）
 
@@ -24,7 +24,7 @@ ms.locfileid: "81262870"
 解决方法是调用一个分析器，该分析器会保留完整的字符串（如有必要，包括空格和特殊字符），以便能够与部分术语和模式匹配。 为完整的字符串创建其他字段以及使用内容保留分析器是解决方案的基础。
 
 > [!TIP]
-> 熟悉 Postman 和 REST Api？ [下载 "查询示例" 集合](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/full-syntax-examples)以查询本文中所述的部分术语和特殊字符。
+> 熟悉 Postman 和 REST Api？ [下载 "查询示例" 集合](https://github.com/Azure-Samples/azure-search-postman-samples/)以查询本文中所述的部分术语和特殊字符。
 
 ## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Azure 认知搜索中的部分搜索
 
