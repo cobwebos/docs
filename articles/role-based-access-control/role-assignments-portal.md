@@ -1,6 +1,6 @@
 ---
-title: 添加或删除带有 RBAC 和 Azure 门户的角色分配
-description: 了解如何使用 Azure 基于角色的访问控制 (RBAC) 和 Azure 门户为用户、组、服务主体或托管标识授予对 Azure 资源的访问权限。
+title: 使用 Azure 门户添加或删除 Azure 角色分配-Azure RBAC
+description: 了解如何使用 Azure 门户和 Azure 基于角色的访问控制（Azure RBAC）为用户、组、服务主体或托管标识授予对 Azure 资源的访问权限。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 01/25/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e2458b07602bca3b6f12b2f486b509c11d705461
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 88cb1e9893e0ca058e57ce12f00747a59248fb19
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79246352"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735685"
 ---
-# <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-azure-portal"></a>使用 Azure RBAC 和 Azure 门户添加或删除角色分配
+# <a name="add-or-remove-azure-role-assignments-using-the-azure-portal"></a>使用 Azure 门户添加或删除 Azure 角色分配
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] 本文介绍如何使用 Azure 门户分配角色。
 
@@ -143,7 +143,7 @@ ms.locfileid: "79246352"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure RBAC 和 Azure 门户列出角色分配](role-assignments-list-portal.md)
-- [教程：使用 RBAC 和 Azure 门户授予用户对 Azure 资源的访问权限](quickstart-assign-role-user-portal.md)
-- [ Azure 资源 RBAC 故障排除](troubleshooting.md)
+- [使用 Azure 门户列出 Azure 角色分配](role-assignments-list-portal.md)
+- [教程：使用 Azure 门户向用户授予对 Azure 资源的访问权限](quickstart-assign-role-user-portal.md)
+- [排查 Azure RBAC 问题](troubleshooting.md)
 - [使用 Azure 管理组来组织资源](../governance/management-groups/overview.md)

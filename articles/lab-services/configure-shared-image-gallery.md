@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 9593d60f76802cd515ca85616bce028cf3aa0d49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7591f22286f9ac451a15dd926adab0212adb190e
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77589311"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691287"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中配置共享映像库
 开发测试实验室现在支持[共享映像库](../virtual-machines/windows/shared-image-galleries.md)功能。 它允许实验室用户在创建实验室资源的同时访问共享位置中的图像。 它还可帮助你围绕自定义托管 VM 映像构建结构和组织。 共享映像库功能支持：
@@ -54,7 +54,7 @@ ms.locfileid: "77589311"
     ![共享图像库菜单](./media/configure-shared-image-gallery/shared-image-galleries-menu.png)
 1. 单击 "**附加**" 按钮，然后在下拉列表中选择库，将现有的共享映像库附加到实验室。
 
-    ![Attach](./media/configure-shared-image-gallery/attach-options.png)
+    ![附加](./media/configure-shared-image-gallery/attach-options.png)
 1. 中转到连接的库，并配置库，以便为 VM 创建**启用或禁用**共享映像。 从列表中选择一个映像库以对其进行配置。 
 
     默认情况下，"**允许将所有映像用作虚拟机库**" 设置为 **"是"**。 这意味着在创建新的实验室 VM 时，会向实验室用户提供附加的共享映像库中可用的所有映像。 如果需要限制对某些映像的访问，请将 "**允许所有映像全部使用为虚拟机库**" 更改为 "**否**"，并选择要在创建 vm 时允许的映像，然后选择 "**保存**" 按钮。
@@ -91,9 +91,21 @@ ms.locfileid: "77589311"
 
 有关完整的资源管理器模板示例，请参阅公共 GitHub 存储库中的以下资源管理器模板示例：[创建实验室时配置共享映像库](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-lab-shared-gallery-configured)。
 
-## <a name="use-api"></a>使用 API
+## <a name="use-rest-api"></a>使用 REST API
 
-### <a name="shared-image-galleries---create-or-update"></a>共享图像库-创建或更新
+### <a name="get-a-list-of-labs"></a>获取实验室列表 
+
+```rest
+GET  https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs?api-version= 2018-10-15-preview
+```
+
+### <a name="get-the-list-of-shared-image-galleries-associated-with-a-lab"></a>获取与实验室关联的共享映像库的列表
+
+```rest
+GET  https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/sharedgalleries?api-version= 2018-10-15-preview
+   ```
+
+### <a name="create-or-update-shared-image-gallery"></a>创建或更新共享映像库
 
 ```rest
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/sharedgalleries/{name}?api-version= 2018-10-15-preview
@@ -107,12 +119,11 @@ Body:
 
 ```
 
-### <a name="shared-image-galleries-images---list"></a>共享图像库映像-列表 
+### <a name="list-images-in-a-shared-image-gallery"></a>列出共享图像库中的图像
 
 ```rest
 GET  https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/sharedgalleries/{name}/sharedimages?api-version= 2018-10-15-preview
 ```
-
 
 
 

@@ -1,20 +1,20 @@
 ---
-title: 合作伙伴中心的商业市场分析
-description: 概述如何访问分析报表以监视销售额、评估性能和优化 marketplace 产品。
+title: 合作伙伴中心的 Microsoft 商业市场分析
+description: 了解如何在 Microsoft 合作伙伴中心访问分析报表来监视销售、评估性能和优化 marketplace 产品。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 41b9c5244ce9d468d9bf0fb7bafa719b4e6f55ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c406efd30e891c8ca69481299801e7309cdff81
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262275"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744906"
 ---
-# <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>合作伙伴中心的商业市场分析
+# <a name="access-analytic-reports-for-the-commercial-marketplace-in-partner-center"></a>访问合作伙伴中心的商业 marketplace 分析报表
 
 了解如何在 Microsoft 合作伙伴中心访问分析报表，以在 marketplace 中监视销售情况、评估性能和优化产品/服务。 作为合作伙伴，你可以使用合作伙伴中心支持的数据可视化和见解图来监视你的产品/服务列表，并找到最大化销售的方式。 改进的分析工具使你可以处理性能结果，并与你的客户和经销商保持更好的关系。
 

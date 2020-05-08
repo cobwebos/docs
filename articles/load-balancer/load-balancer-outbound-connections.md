@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: acf49c4247c8084a3afd3c2046003ee1b20d2f67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 80da8d2880509a8ed6a2af8cb181b3bc2c281c09
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393105"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930567"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure 中的出站连接
 
@@ -119,7 +119,7 @@ SNAT 端口是根据[了解 SNAT 和 PAT](#snat) 部分中所述预先分配的�
 
 ### <a name="port-masquerading-snat-pat"></a><a name="pat"></a>端口伪装 SNAT (PAT)
 
-公共负载均衡器资源与 VM 实例相关联时，将重写每个出站连接源。 出站连接源从虚拟网络专用 IP 地址空间重新写入负载均衡器的前端公共 IP 地址。 在公共 IP 地址空间中，流的 5 元组（源 IP 地址、源端口、IP 转换协议、目标 IP 地址、目标端口）必须唯一。  端口伪装 SNAT 可与 TCP 或 UDP IP 协议一起使用。
+当公共负载均衡器资源与没有专用公共 IP 地址的 VM 实例相关联时，将重写每个出站连接源。 出站连接源从虚拟网络专用 IP 地址空间重新写入负载均衡器的前端公共 IP 地址。 在公共 IP 地址空间中，流的 5 元组（源 IP 地址、源端口、IP 转换协议、目标 IP 地址、目标端口）必须唯一。 端口伪装 SNAT 可与 TCP 或 UDP IP 协议一起使用。
 
 重写专用源 IP 地址后，临时端口（SNAT 端口）用于实现此目的，因为多个流源自单个公共 IP 地址。 伪装 SNAT 算法的端口为 UDP 与 TCP 分配不同的 SNAT 端口。
 
@@ -147,7 +147,7 @@ UDP SNAT 端口由与 TCP SNAT 端口不同的算法管理。  负载均衡器�
 
 ### <a name="ephemeral-port-preallocation-for-port-masquerading-snat-pat"></a><a name="preallocatedports"></a>端口伪装 SNAT (PAT) 的临时端口预先分配
 
-使用端口伪装 SNAT ([PAT](#pat)) 时，Azure 使用某种算法根据后端池的大小来确定可用的预先分配 SNAT 端口数目。 SNAT 端口是可用于特定公共 IP 源地址的临时端口。
+使用端口伪装 SNAT ([PAT](#pat)) 时，Azure 使用某种算法根据后端池的大小来确定可用的预先分配 SNAT 端口数目。 SNAT 端口是可用于特定公共 IP 源地址的临时端口。 对于每个与负载均衡器关联的公共 IP 地址，都有64000个端口可用作每个 IP 传输协议的 SNAT 端口。
 
 将分别为 UDP 和 TCP 预分配相同数量的 SNAT 端口，并根据 IP 传输协议独立地使用这些端口。  但是，SNAT 端口使用情况会因流是 UDP 还是 TCP 而有所不同。
 
@@ -193,11 +193,14 @@ SNAT 端口分配特定于 IP 传输协议（TCP 和 UDP 是分别维护的）�
 本部分旨在帮助解决 SNAT 耗尽的问题，以及 Azure 中的出站连接可能出现的其他情况。
 
 ### <a name="managing-snat-pat-port-exhaustion"></a><a name="snatexhaust"></a>应对 SNAT (PAT) 端口耗尽问题
-用于[PAT](#pat)的[临时端口](#preallocatedports)是可耗尽的资源，如[无公共 ip 地址的独立 vm](#defaultsnat)和[无公共 ip 地址的负载均衡 vm](#lb)中所述。可以监视临时端口的使用情况，并与当前分配进行比较，以确定或使用[本](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#how-do-i-check-my-snat-port-usage-and-allocation)指南确认 SNAT exhuastion 的风险。
+用于[PAT](#pat)的[临时端口](#preallocatedports)是可耗尽的资源，如[无公共 ip 地址的独立 vm](#defaultsnat)和[无公共 ip 地址的负载均衡 vm](#lb)中所述。可以监视临时端口的使用情况，并与当前分配进行比较，以确定或使用[本](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#how-do-i-check-my-snat-port-usage-and-allocation)指南确认 SNAT 消耗的风险。
 
 如果知道正在启动与同一目标 IP 地址和端口的多个出站 TCP 或 UDP 连接，观察失败的出站连接，或者支持人员通知已耗尽 SNAT 端口（[PAT](#pat) 使用的预先分配[临时端口](#preallocatedports)），则有几个常见缓解选项可供选择。 查看这些选项，确定可用且最适合自己的方案的选项。 一个或多个选项可能有助于管理此方案。
 
 如果难以理解出站连接行为，可以使用 IP 堆栈统计 (netstat)。 或者使用数据包捕获来观察连接行为。 可以在实例的来宾 OS 中执行这些数据包捕获，或使用[网络观察程序来捕获数据包](../network-watcher/network-watcher-packet-capture-manage-portal.md)。 
+
+#### <a name="manually-allocate-snat-ports-to-maximize-snat-ports-per-vm"></a><a name ="manualsnat"></a>手动分配 SNAT 端口以最大程度地提高每个 VM 的 SNAT 端口数
+根据预分配[端口](#preallocatedports)中的定义，负载均衡器会根据后端 vm 的数量自动分配端口。 默认情况下，此操作是保守的，以确保可伸缩性。 如果你知道将在后端拥有的 Vm 的最大数量，你可以通过在每个出站规则中配置此设置，手动分配 SNAT 端口。 例如，如果知道您最多可以有10个 vm，则可以为每个 VM 分配6400个 SNAT 端口，而不是默认的1024。 
 
 #### <a name="modify-the-application-to-reuse-connections"></a><a name="connectionreuse"></a>修改应用程序以重复使用连接 
 在应用程序中重复使用连接，可以降低对用于 SNAT 的临时端口的需求。 这尤其适用于 HTTP/1.1 这样的协议，在这些协议中，默认重复使用连接。 其他使用 HTTP 作为其传输（如 REST）的协议也可以因此受益。 

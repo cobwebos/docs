@@ -1,23 +1,17 @@
 ---
-title: 将 Azure Data Lake Storage Gen1 和其他 Azure 服务集成 | Microsoft Docs
-description: 了解 Azure Data Lake Storage Gen1 如何与其他 Azure 服务集成
-documentationcenter: ''
-services: data-lake-store
+title: 将 Data Lake Storage Gen1 与其他 Azure 服务集成
+description: 了解如何将 Azure Data Lake Storage Gen1 与其他 Azure 服务集成。
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 48a5d1f4-3850-4c22-bbc4-6d1d394fba8a
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 43024b63a355646f607adbb6623cc6c349374ea8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ae27aba9fb6dc1421d224dab0c36373753acd5a2
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79535589"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690533"
 ---
 # <a name="integrating-azure-data-lake-storage-gen1-with-other-azure-services"></a>将 Azure Data Lake Storage Gen1 和其他 Azure 服务集成
 Azure Data Lake Storage Gen1 可和其他 Azure 服务结合使用来实现更多的使用方案。 下面的文章列出了可和 Data Lake Storage Gen1 集成的服务。

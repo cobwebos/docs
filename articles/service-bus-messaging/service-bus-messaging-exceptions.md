@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: aschhab
-ms.openlocfilehash: d04902a8d53397b7e7d9712a1c75ce44cc7aa7ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f1a4caf6ffd5740b4227aff2f38d9cb709c77b48
+ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80880782"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82739341"
 ---
 # <a name="service-bus-messaging-exceptions"></a>服务总线消息传送异常
 本文列出了 .NET Framework Api 生成的 .NET 异常。 
@@ -46,9 +46,7 @@ ms.locfileid: "80880782"
 | [MessageNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagenotfoundexception) |尝试接收具有特定序列号的消息。 找不到此消息。 |确保该消息尚未接收。 检查死信队列，以确定该消息是否被视为死信。 |重试不起作用。 |
 | [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) |客户端无法与服务总线建立连接。 |确保提供的主机名正确并且主机可访问。 |如果存在间歇性的连接问题，重试可能会有帮助。 |
 | [ServerBusyException](/dotnet/api/microsoft.azure.servicebus.serverbusyexception) |服务目前无法处理请求。 |客户端可以等待一段时间，并重试操作。 |客户端可在特定的时间间隔后重试操作。 如果重试导致其他异常，请检查该异常的重试行为。 |
-| [MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception) |与消息关联的锁令牌已过期，或者找不到锁令牌。 |释放消息。 |重试不起作用。 |
-| [SessionLockLostException](/dotnet/api/microsoft.azure.servicebus.sessionlocklostexception) |与此会话关联的锁已丢失。 |中止 [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) 对象。 |重试不起作用。 |
-| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) |在以下情况下，可能会引发一般消息异常：<p>尝试使用属于其他实体类型（例如主题）的名称或路径创建 [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient)。</p><p>尝试发送大于 256 KB 的消息。 </p>服务器或服务在处理请求期间遇到错误。 有关详细信息，请查看异常消息。 这通常是暂时性异常。</p><p>请求已终止，因为该实体被限制。 错误代码：50001、50002、50008。 </p> | 检查代码，并确保只对消息正文使用可序列化对象（或使用自定义序列化程序）。 <p>在文档中查看属性支持的值类型，并只使用支持的类型。</p><p> 检查 [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception) 属性。 如果为 true，可以重试操作  。 </p>| 如果异常是由于限制导致的，请等待几秒钟，然后重试该操作。 重试行为是未定义的，在其他情况下可能不会有帮助。|
+| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) |在以下情况下，可能会引发一般消息异常：<p>尝试使用属于其他实体类型（例如主题）的名称或路径创建 [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient)。</p><p>尝试发送大于 256 KB 的消息。 </p>服务器或服务在处理请求期间遇到错误。 有关详细信息，请查看异常消息。 这通常是暂时性异常。</p><p>请求已终止，因为该实体被限制。 错误代码：50001、50002、50008。 </p> | 检查代码，并确保只对消息正文使用可序列化对象（或使用自定义序列化程序）。 <p>在文档中查看属性支持的值类型，并只使用支持的类型。</p><p> 检查 [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception) 属性。 如果为 true，可以重试操作****。 </p>| 如果异常是由于限制导致的，请等待几秒钟，然后重试该操作。 重试行为是未定义的，在其他情况下可能不会有帮助。|
 | [MessagingEntityAlreadyExistsException](/dotnet/api/microsoft.servicebus.messaging.messagingentityalreadyexistsexception) |尝试使用已被该服务命名空间中另一实体使用的名称创建实体。 |删除现有的实体，或者选择不同的名称来创建实体。 |重试不起作用。 |
 | [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) |消息实体已达到其允许的最大大小，或已超出到命名空间的最大连接数。 |通过从实体或其子队列接收消息在该实体中创建空间。 请参阅[QuotaExceededException](#quotaexceededexception)。 |如果同时已删除消息，则重试可能会有帮助。 |
 | [RuleActionException](/dotnet/api/microsoft.servicebus.messaging.ruleactionexception) |如果尝试创建无效的规则操作，服务总线将返回此异常。 如果在处理该消息的规则操作时出错，服务总线会将此异常附加到死信消息。 |检查规则操作是否正确。 |重试不起作用。 |
@@ -102,6 +100,96 @@ ConnectionsQuotaExceeded for namespace xxx.
 
 ### <a name="queues-and-topics"></a>队列和主题
 对于队列和主题，超时在 [MessagingFactorySettings.OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings) 属性中作为连接字符串的一部分指定，或通过 [ServiceBusConnectionStringBuilder](/dotnet/api/microsoft.azure.servicebus.servicebusconnectionstringbuilder) 指定。 错误消息本身可能会有所不同，但它始终包含当前操作的指定超时值。 
+
+## <a name="messagelocklostexception"></a>MessageLockLostException
+
+### <a name="cause"></a>原因
+
+当使用[PeekLock](message-transfers-locks-settlement.md#peeklock)接收模式收到消息，并且客户端持有的锁在服务端过期时，将引发**microsoft.servicebus.messaging.messagelocklostexception** 。
+
+由于各种原因，消息上的锁可能会过期- 
+
+  * 锁定计时器已在客户端应用程序续订之前过期。
+  * 客户端应用程序获取了该锁，并将其保存到持久性存储区中，然后重新启动。 重新启动后，客户端应用程序将查看即时消息并尝试完成这些消息。
+
+### <a name="resolution"></a>解决方法
+
+如果是**microsoft.servicebus.messaging.messagelocklostexception**，则客户端应用程序无法再处理该消息。 客户端应用程序可以选择考虑记录异常以进行分析，但客户端*必须*释放消息。
+
+由于消息的锁已过期，它将返回到队列（或订阅），并可由调用 receive 的下一个客户端应用程序进行处理。
+
+如果已超过**MaxDeliveryCount** ，则可能会将消息移动到**DeadLetterQueue**。
+
+## <a name="sessionlocklostexception"></a>SessionLockLostException
+
+### <a name="cause"></a>原因
+
+当接受会话，并且客户端持有的锁在服务端过期时，将引发**microsoft.servicebus.messaging.messagelocklostexception、microsoft.servicebus.messaging.sessionlocklostexception** 。
+
+由于各种原因，对会话的锁定可能会过期- 
+
+  * 锁定计时器已在客户端应用程序续订之前过期。
+  * 客户端应用程序获取了该锁，并将其保存到持久性存储区中，然后重新启动。 重新启动后，客户端应用程序将查看即时会话并尝试处理这些会话中的消息。
+
+### <a name="resolution"></a>解决方法
+
+如果是**microsoft.servicebus.messaging.messagelocklostexception、microsoft.servicebus.messaging.sessionlocklostexception**，则客户端应用程序无法再处理会话上的消息。 客户端应用程序可能会考虑记录要分析的异常，但是客户端*必须*释放消息。
+
+由于会话的锁已过期，它将返回到队列（或订阅），并可由接受会话的下一个客户端应用程序锁定。 由于在任意给定时间，会话锁由单个客户端应用程序持有，因此可保证按顺序处理。
+
+## <a name="socketexception"></a>SocketException
+
+### <a name="cause"></a>原因
+
+以下情况下会引发**SocketException** -
+   * 当连接尝试由于主机在指定时间之后未正确响应而失败时（TCP 错误代码10060）。
+   * 建立的连接失败，因为连接的主机未能响应。
+   * 处理消息时出错或远程主机超过超时。
+   * 底层网络资源问题。
+
+### <a name="resolution"></a>解决方法
+
+**SocketException**错误表明承载应用程序的 VM 无法将该名称`<mynamespace>.servicebus.windows.net`转换为相应的 IP 地址。 
+
+检查以下命令是否成功映射到 IP 地址。
+
+```Powershell
+PS C:\> nslookup <mynamespace>.servicebus.windows.net
+```
+
+这应提供如下所示的输出
+
+```bash
+Name:    <cloudappinstance>.cloudapp.net
+Address:  XX.XX.XXX.240
+Aliases:  <mynamespace>.servicebus.windows.net
+```
+
+如果上面的名称**未解析**为 IP 和命名空间别名，请检查网络管理员是否进一步进行调查。 名称解析是通过 DNS 服务器在客户网络中通常是一项资源来完成的。 如果 Azure DNS 进行 DNS 解析，请联系 Azure 支持部门。
+
+如果名称解析**按预期方式工作**，请[在此处](service-bus-troubleshooting-guide.md#connectivity-certificate-or-timeout-issues)检查是否允许连接到 Azure 服务总线
+
+
+## <a name="messagingexception"></a>MessagingException
+
+### <a name="cause"></a>原因
+
+**MessagingException**是一个通用异常，可能出于各种原因引发。 下面列出了其中的一些原因。
+
+   * 尝试在**主题**或**订阅**上创建**QueueClient** 。
+   * 发送的消息的大小超过了给定层的限制。 详细了解服务总线[配额和限制](service-bus-quotas.md)。
+   * 由于限制，特定数据平面请求（发送、接收、完成、放弃）已终止。
+   * 由于服务升级和重启导致的暂时性问题。
+
+> [!NOTE]
+> 上述异常列表并不完整。
+
+### <a name="resolution"></a>解决方法
+
+解决方法步骤取决于导致**MessagingException**引发的原因。
+
+   * 对于**暂时性问题**（其中， ***isTransient***设置为***true***）或用于**阻止问题**，重试该操作可能会解决问题。 可以利用 SDK 上的默认重试策略。
+   * 对于其他问题，异常中的详细信息指示可以从同一获取问题和解决步骤。
 
 ## <a name="next-steps"></a>后续步骤
 有关服务总线 .NET API 的完整参考，请参阅 [Azure .NET API 参考](/dotnet/api/overview/azure/service-bus)。

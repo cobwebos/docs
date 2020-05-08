@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 18490ec7c3cfde33cef186b753e2adc809f854c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6821e3de3bfec891d98e9291a479cbb7537364ca
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641366"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733647"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>提升访问权限以管理所有 Azure 订阅和管理组
 
@@ -55,7 +55,7 @@ Azure AD 和 Azure 资源彼此独立保护。 也就是说，Azure AD 角色分
 
 1. 以全局管理员身份登录到 [Azure 门户](https://portal.azure.com) 或 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。
 
-1. 打开“Azure Active Directory”。****
+1. 打开“Azure Active Directory”。 
 
 1. 在“管理”下，选择“属性”********。
 
@@ -84,7 +84,7 @@ Azure AD 和 Azure 资源彼此独立保护。 也就是说，Azure AD 角色分
 
 1. 以提升的访问权限做出所需的更改。
 
-    有关如何分配角色的信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](role-assignments-portal.md)。 如果使用 Azure AD Privileged Identity Management (PIM)，请参阅[在 PIM 中发现要管理的 Azure 资源](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md)或[在 PIM 中分配 Azure 资源角色](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)。
+    有关分配角色的信息，请参阅[使用 Azure 门户添加或删除 Azure 角色分配](role-assignments-portal.md)。 如果使用 Azure AD Privileged Identity Management (PIM)，请参阅[在 PIM 中发现要管理的 Azure 资源](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md)或[在 PIM 中分配 Azure 资源角色](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)。
 
 ### <a name="remove-elevated-access"></a>撤消提升的访问权限
 
@@ -321,5 +321,5 @@ az role assignment list --role "User Access Administrator" --scope "/"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [了解 Azure 中的不同角色](rbac-and-directory-admin-roles.md)
-- [使用 RBAC 和 REST API 管理对 Azure 资源的访问权限](role-assignments-rest.md)
+- [了解不同角色](rbac-and-directory-admin-roles.md)
+- [使用 REST API 添加或删除 Azure 角色分配](role-assignments-rest.md)

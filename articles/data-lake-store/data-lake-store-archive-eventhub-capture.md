@@ -1,28 +1,23 @@
 ---
-title: 将事件中心的数据捕获到 Azure Data Lake Storage Gen1 中 | Microsoft Docs
-description: 使用 Azure Data Lake Storage Gen1 捕获事件中心的数据
-services: data-lake-store
-documentationcenter: ''
+title: 将事件中心的数据捕获到 Azure Data Lake Storage Gen1
+description: 使用 Azure Data Lake Storage Gen1 来捕获 Azure 事件中心收到的数据。
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: bb67c1769510710b368bef4dc0b501f939b3427e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5cbcdc5cb9713432be5b52898d956506d80d6ea0
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265657"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690668"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>使用 Azure Data Lake Storage Gen1 捕获事件中心的数据
 
 了解如何使用 Azure Data Lake Storage Gen1 捕获 Azure 事件中心收到的数据。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
@@ -62,7 +57,7 @@ ms.locfileid: "79265657"
 
     ![为 Data Lake Storage Gen1 根分配权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "为 Data Lake Storage Gen1 根分配权限")
 
-    单击" **确定**"。
+    单击 **“确定”** 。
 
 1. 为 Data Lake Storage Gen1 帐户下要在其中捕获数据的文件夹分配权限。
 
@@ -80,7 +75,7 @@ ms.locfileid: "79265657"
 
     ![分配 Data Lake Storage Gen1 文件夹的权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "分配 Data Lake Storage Gen1 文件夹的权限")
     
-    单击" **确定**"。 
+    单击 **“确定”** 。 
 
 ## <a name="configure-event-hubs-to-capture-data-to-data-lake-storage-gen1"></a>配置事件中心，将数据捕获到 Data Lake Storage Gen1
 

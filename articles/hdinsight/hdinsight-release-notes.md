@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: e76c75e172e48866565cc292ac673f7bbddabf1f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/08/2020
+ms.openlocfilehash: 458925dd9f7f7386a9159256fdb024d027f7016c
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232813"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929309"
 ---
 # <a name="release-notes"></a>发行说明
 
@@ -48,17 +48,20 @@ Azure HDInsight 是 Azure 中最受企业客户青睐的开源分析服务之一
 ## <a name="upcoming-changes"></a>即将推出的更改
 即将发布的版本中将推出以下变更。 
 
-### <a name="deprecate-spark-21-and-22-for-hdinsight-36-spark-cluster"></a>弃用 Spark 2.1 和 2.2 for HDInsight 3.6 Spark 群集
-从7月 1 2020 开始，客户将无法在 HDInsight 3.6 上创建新的 Spark 群集和 Spark 2.1 和2.2。 现有群集将按原样运行，无需 Microsoft 的支持。 请考虑在2.3 年 6 30 2020 月的 HDInight 3.6 上迁移到 Spark，以避免潜在的系统/支持中断。
+### <a name="deprecate-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>HDInsight 中的弃用 Spark 2.1 和 2.2 3.6 Spark 群集
+从7月 1 2020 开始，客户将无法在 HDInsight 3.6 上创建新的 Spark 群集和 Spark 2.1 和2.2。 现有群集将按原样运行，无需 Microsoft 的支持。 请考虑在2.3 年 6 30 2020 月的 HDInsight 3.6 上迁移到 Spark，以避免潜在的系统/支持中断。
 
-### <a name="deprecate-spark-23-for-hdinsight-40-spark-cluster"></a>弃用 Spark 2.3 for HDInsight 4.0 Spark 群集
-从7月 1 2020 开始，客户将无法在 HDInsight 4.0 上利用 Spark 2.3 创建新的 Spark 群集。 现有群集将按原样运行，无需 Microsoft 的支持。 请考虑在2.4 年 6 30 2020 月的 HDInight 4.0 上迁移到 Spark，以避免潜在的系统/支持中断。
+### <a name="deprecate-spark-23-in-hdinsight-40-spark-cluster"></a>HDInsight 4.0 Spark 群集中的弃用 Spark 2。3
+从7月 1 2020 开始，客户将无法在 HDInsight 4.0 上利用 Spark 2.3 创建新的 Spark 群集。 现有群集将按原样运行，无需 Microsoft 的支持。 请考虑在2.4 年 6 30 2020 月的 HDInsight 4.0 上迁移到 Spark，以避免潜在的系统/支持中断。
 
-### <a name="deprecate-kafka-11-for-hdinsight-40-kafka-cluster"></a>弃用 Kafka 1.1 for HDInsight 4.0 Kafka 群集
-从7月 1 2020 开始，客户将无法在 HDInsight 4.0 上创建 Kafka 1.1 的新 Kafka 群集。 现有群集将按原样运行，无需 Microsoft 的支持。 请考虑在2.1 年 6 30 2020 月的 HDInight 4.0 上迁移到 Kafka，以避免潜在的系统/支持中断。
+### <a name="deprecate-kafka-11-in-hdinsight-40-kafka-cluster"></a>HDInsight 4.0 Kafka 群集中的弃用 Kafka 1。1
+从7月 1 2020 开始，客户将无法在 HDInsight 4.0 上创建 Kafka 1.1 的新 Kafka 群集。 现有群集将按原样运行，无需 Microsoft 的支持。 请考虑在2.1 年 6 30 2020 月的 Kafka 上移动到 HDInsight 4.0 上的，以避免潜在的系统/支持中断。
 
-### <a name="hbase-20-to-21"></a>HBase 2.0 到 2.1
-在即将推出的 HDInsight 4.0 版本中，HBase 版本将从 2.0 升级到 2.1。
+### <a name="hbase-20-to-216"></a>HBase 2.0 到2.1。6
+在即将推出的 HDInsight 4.0 版本中，HBase 版本将从2.0 版升级到2.1。6
+
+### <a name="spark-240-to-244"></a>Spark 2.4.0 到2.4。4
+在即将推出的 HDInsight 4.0 版本中，Spark 版本将从版本2.4.0 升级到2.4。4
 
 ### <a name="a-minimum-4-core-vm-is-required-for-head-node"></a>头节点需要至少4核 VM 
 头节点需要最少的4核 VM，以确保 HDInsight 群集的高可用性和可靠性。 从 6 2020 年4月开始，客户只能选择4核或以上的 VM 作为新 HDInsight 群集的头节点。 现有群集将继续按预期方式运行。 

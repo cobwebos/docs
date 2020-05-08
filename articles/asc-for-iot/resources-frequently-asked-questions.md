@@ -1,5 +1,5 @@
 ---
-title: 常见问题解答
+title: 常见问题
 description: 查找有关 Azure 安全中心的有关 IoT 功能和服务的常见问题的解答。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 02736b63b900600c51eda8666aff0117b9307824
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1aeab1a7dcdf2b12efc268ed0d47834b24d34b87
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81310768"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734971"
 ---
 # <a name="azure-security-center-for-iot-frequently-asked-questions"></a>适用于 IoT 的 Azure 安全中心常见问题
 
@@ -66,7 +66,7 @@ IoT 设备上的代理安装不是为 IoT 启用 Microsoft Azure 安全中心所
 
 ## <a name="where-can-i-get-the-azure-security-center-for-iot-security-agent"></a>在哪里可以获得用于 IoT 安全代理的 Azure 安全中心？
 
-适用于 IoT security agent 的 Azure 安全中心是开放源代码，在 GitHub 上的32位和64位 Windows 和 Linux 版本中https://github.com/Azure/Azure-Security-IoT提供：。
+适用于 IoT security agent 的 Azure 安全中心是开放源代码，在 GitHub 上的32位和64位 Windows 和 Linux 版本中https://github.com/Azure/Azure-IoT-Security提供：。
 
 ## <a name="where-does-the-azure-security-center-for-iot-agent-get-installed"></a>用于 IoT 代理的 Azure 安全中心安装在何处？
 

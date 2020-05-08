@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/14/2020
-ms.openlocfilehash: 1dceb3db4572ecdaf504745dba1099a5eccead43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: 7ed01a57a4c2a55d777907a6cc14b111fb2086e3
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80395789"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731894"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>删除和恢复 Azure Log Analytics 工作区
 
@@ -59,14 +59,13 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 
 ### <a name="troubleshooting"></a>疑难解答
 
-您必须具有 "Log Analytics 参与者" 权限才能删除 Log Analytics 工作区。<br>
-如果在创建工作区时收到错误消息 "*此工作区名称已在使用中*"，则可能是由于以下原因：
+若要删除工作区，您必须至少具有*Log Analytics 参与者*权限。<br>
+如果收到一条错误消息，则*此工作区名称已在使用中*或在创建工作区时*发生冲突*，原因可能是：
 * 工作区名称不可用，或由组织中的某个用户或其他客户使用。
-* 工作区在过去14天内被删除，其名称保留在软删除期间。 若要替代软删除并立即删除工作区并创建同名的新工作区，请执行以下步骤以首先恢复工作区并执行永久删除：<br>
+* 工作区在过去14天内被删除，其名称保留在软删除期间。 若要替代软删除并永久删除你的工作区以创建同名的新工作区，请执行以下步骤以首先恢复工作区并执行永久删除：<br>
    1. [恢复](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace)你的工作区。
    2. [永久删除](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete)你的工作区。
    3. 使用相同的工作区名称创建新的工作区。
-
 
 ## <a name="permanent-workspace-delete"></a>永久删除工作区
 在某些情况下（如开发和测试），软删除方法可能不适合，需要使用相同的设置和工作区名称重复部署。 在这种情况下，你可以永久删除你的工作区，并 "替代" 软删除期间。 永久工作区删除操作将释放工作区名称，你可以使用相同的名称创建新的工作区。
@@ -96,12 +95,7 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 
 如果你有订阅和资源组（其中的工作区在软删除操作之前已进行关联）的“参与者”权限，则可在软删除期间恢复它（包括其数据、配置和连接的代理）。 软删除期过后，工作区将不可恢复，会被系统指定进行永久删除。 已删除工作区的名称会在软删除期间保留，不能用于创建新工作区。  
 
-你可以使用以下工作区 create 方法恢复工作区： [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace)或[REST API]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate) ，前提是以下属性使用已删除工作区的详细信息进行填充：
-
-* 订阅 ID
-* 资源组名称
-* 工作区名称
-* 区域
+可以通过创建工作区，其中包含已删除工作区的详细信息，包括*订阅 ID*、*资源组名称*、*工作区名称*和*区域*，从而恢复工作区。 如果还删除了资源组并且该资源组不存在，请创建一个资源组，该资源组的名称与删除之前使用的相同，然后使用下列任一方法创建工作区： [Azure 门户](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)、 [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace)或[REST API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate)。
 
 ### <a name="powershell"></a>PowerShell
 ```PowerShell

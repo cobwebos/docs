@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 2a68a50a5d15b9f38407c19494a39a14abfa0a5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd67c3b7eed6b3ce3730bd48cda69d85aa276df4
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81432068"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930584"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虚拟网络服务终结点
 
@@ -79,6 +79,7 @@ ms.locfileid: "81432068"
 |Azure 事件中心|[允许访问客户托管密钥方案的密钥保管库](https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key)|
 |Azure 服务总线|[允许访问客户托管密钥方案的密钥保管库](https://docs.microsoft.com/azure/service-bus-messaging/configure-customer-managed-key)|
 |Azure 导入/导出| [在导入/导出服务的 Azure Key Vault 中使用客户托管的密钥](https://docs.microsoft.com/azure/storage/common/storage-import-export-encryption-key-portal)
+|Azure 容器注册表|[使用客户托管密钥的注册表加密](../../container-registry/container-registry-customer-managed-keys.md)
 
 > [!NOTE]
 > 必须设置相关 Key Vault 访问策略，才能允许相应的服务访问 Key Vault。

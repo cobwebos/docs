@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 600167e529e1ff8cfa65eeb3d0fb6fe26e9466bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9883065993f35054338079c8b9647a8420574414
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137512"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738059"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>重新保护已故障转移到主要区域的 Azure VM
 
@@ -95,6 +95,10 @@ ms.locfileid: "82137512"
 |源区域有1个 VM，其中 1 TB 高级磁盘。<br/>仅使用 20 GB 数据，磁盘的其余部分为空。<br/>磁盘类型为高级，200 MBps 吞吐量。<br/>故障转移后，磁盘上的初始数据为 15 GB。 故障转移后，有 5 GB 的数据更改。 因此填充的数据总量为 20 GB| 大概时间：30-45 分钟。<br/>由于磁盘中填充的数据小于磁盘大小的10%，因此我们将执行完整的初始复制。<br/>传输速度约为吞吐量的16%，或32MBps。 因此，需要将时间限制为 20 gb/32 MBps，大约为11分钟。<br/>Site Recovery 自动缩放需要一定的开销时间约20-30 分钟 |
 
 如果在故障回复到主要区域后重新保护 VM （即，如果 VM 从主要区域重新保护到 DR 区域），则会删除目标 VM 和关联的 NIC。
+
+将 VM 从 DR 区域重新保护到主要区域时，我们不会删除 erstwhile 主 VM 和关联的 NIC。
+
+如果在故障回复到主要区域后重新保护 VM （即，如果 VM 从主要区域重新保护到 DR 区域），则会删除目标 VM 和关联的 NIC。 
 
 将 VM 从 DR 区域重新保护到主要区域时，我们不会删除 erstwhile 主 VM 和关联的 NIC。
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: terrylan
 manager: rkarlin
 ms.date: 11/04/2019
-ms.openlocfilehash: abc16ae7f7ab8bf15173248a6e7668e689e127de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5330c751aaa3fcbd5c7fc268e4a4de08d336d474
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77561963"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735430"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure 的客户密码箱
 
@@ -49,7 +49,7 @@ Microsoft Azure 的客户密码箱提供了一个界面，供客户查看和批�
 
     请求现在处于**客户通知**状态，在授予访问权限前等待客户的批准。
 
-7. 在客户组织中，拥有 Azure 订阅的[所有者角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles)的用户将收到来自 Microsoft 的电子邮件，通知他们有关挂起的访问请求。 对于客户密码箱请求，此人为指定的审批者。
+7. 在客户组织中，拥有 Azure 订阅的[所有者角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)的用户将收到来自 Microsoft 的电子邮件，通知他们有关挂起的访问请求。 对于客户密码箱请求，此人为指定的审批者。
 
     示例电子邮件：
 

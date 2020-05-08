@@ -15,6 +15,11 @@
       href: quick-create-portal.md
     - name: Python
       href: quick-create-python.md
+- name: 示例
+  items:
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ../policy-samples.md?toc=/azure/key-vault/certificates/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
 - name: 教程
   items:
     - name: 导入证书

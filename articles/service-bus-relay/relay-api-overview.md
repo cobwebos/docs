@@ -1,7 +1,7 @@
 ---
 title: Azure 中继 API 概述 | Microsoft Docs
 description: 本文概述了可用的 Azure 中继 API（.NET Standard、.NET Framework、Node.js 等）
-services: event-hubs
+services: service-bus-relay
 documentationcenter: na
 author: spelluru
 manager: timlt
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 41d9e2026c19c959dc6fe2546b0ef699571ec7cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad7226b5c5badfddf9f436a1229a48f729485821
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76513960"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983119"
 ---
 # <a name="available-relay-apis"></a>可用的中继 API
 
@@ -33,7 +33,7 @@ ms.locfileid: "76513960"
 | --- | --- | --- | --- |
 | .NET Standard | 混合连接 | [Microsoft.Azure.Relay](https://www.nuget.org/packages/Microsoft.Azure.Relay/) | [GitHub](https://github.com/azure/azure-relay-dotnet) |
 | .NET Framework | WCF 中继 | [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | 空值 |
-| 节点 | 混合连接 | [Websocket：`hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[Websocket：`hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[HTTP 请求：`hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHub](https://github.com/Azure/azure-relay-node) |
+| 节点 | 混合连接 | [Websocket`hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[Websocket`hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[HTTP 请求：`hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHub](https://github.com/Azure/azure-relay-node) |
 
 ### <a name="additional-information"></a>其他信息
 
@@ -43,13 +43,13 @@ ms.locfileid: "76513960"
 
 .NET Framework 库仅支持 WCF 编程模型并依赖于基于 WCF `net.tcp` 传输的专有二进制协议。 保留此协议和库是为了实现与现有应用程序的后向兼容性。
 
-.NET Standard 库基于混合连接中继的开放协议定义，该中继构建在 HTTP 和 WebSocket 上。 该库支持通过 Websocket 进行流抽象和用于答复 HTTP 请求的简单请求-响应 API 手势。 [Web API](https://github.com/Azure/azure-relay-dotnet) 示例演示如何集成混合连接和适用于 Web 服务的 ASP.NET Core。
+.NET Standard 库基于混合连接中继的开放协议定义，该中继构建在 HTTP 和 WebSocket 上。 库支持通过 Websocket 进行流抽象，并支持用于应答 HTTP 请求的简单的请求-响应 API 手势。 [Web API](https://github.com/Azure/azure-relay-dotnet) 示例演示如何集成混合连接和适用于 Web 服务的 ASP.NET Core。
 
 #### <a name="nodejs"></a>Node.js
 
 上表列出的混合连接模块将现有 Node.js 模块替换或修改为侦听 Azure 中继服务而不是本地网络堆栈的备用实现。
 
-`hyco-https` 模块修改并部分替代核心 Node.js 模块 `http` 和 `https`，提供能与许多现有 Node.js 模块和依赖于这些核心模块的应用程序兼容的 HTTPS 侦听器实现。
+`hyco-https`模块 amends 并部分重写核心 node.js 模块`http` ，并`https`提供与多个依赖于这些核心模块的现有 node.js 模块和应用程序兼容的 HTTPS 侦听程序实现。
 
 `hyco-ws` 和 `hyco-websocket` 模块修改 Node.js 的常用 `ws` 和 `websocket` 模块，提供备用侦听器实现，该实现使得模块和依赖于其中一个模块的应用程序呢能够在混合连接中继的后台工作。
 

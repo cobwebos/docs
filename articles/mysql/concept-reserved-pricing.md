@@ -5,13 +5,13 @@ author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 78c8750de7189bad33e9bbc766a3d7543a646f6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/20/2020
+ms.openlocfilehash: a8a5914b51b56fbe8b4b7b7ba331f58ec451f975
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80159347"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731877"
 ---
 # <a name="prepay-for-azure-database-for-mysql-compute-resources-with-reserved-capacity"></a>为 Azure Database for MySQL 计算资源预付预留容量
 
@@ -19,7 +19,7 @@ ms.locfileid: "80159347"
 
 不需要将保留分配给特定 Azure Database for MySQL 服务器。 已在运行的 Azure Database for MySQL 或新部署的，将自动获得预留价格的好处。 购买预留容量便会预付为期一年或三年的计算资源费用。 购买保留后，与预订属性匹配的 Azure database for MySQL 计算费用将不再按即用即付费率收费。 预订不涉及与 MySQL 数据库服务器相关联的软件、网络或存储费用。 在保留期结束时，计费权益过期，按即用即付价格对 Azure Database for MySQL 进行计费。 虚拟机预留实例不自动续订。 有关定价信息，请参阅[Azure Database for MySQL 保留容量产品](https://azure.microsoft.com/pricing/details/mysql/)。 </br>
 
-可以在[Azure 门户](https://portal.azure.com/)中购买 Azure Database for MySQL 保留容量。 购买保留容量：
+可以在[Azure 门户](https://portal.azure.com/)中购买 Azure Database for MySQL 保留容量。 通过[提前付款或按月付款](../cost-management-billing/reservations/monthly-payments-reservations.md)的方式为预留付款。 购买保留容量：
 
 * 对于至少一个企业或个人订阅，你必须以即用即付费率作为所有者角色。
 * 对于企业订阅，必须在 [EA 门户](https://ea.azure.com/)中启用“添加预留实例”****。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。
@@ -51,7 +51,7 @@ ms.locfileid: "80159347"
 | 字段 | 说明 |
 | :------------ | :------- |
 | 订阅   | 用于支付 Azure Database for MySQL 预留容量预留的订阅。 订阅上的付款方式将收取 Azure Database for MySQL 预留容量预留的前期成本。 订阅类型必须是企业协议（产品/服务编号： BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p）或使用即用即付定价的单个协议（产品/服务编号： MS-BC-OP-NT-AZR-Ms-azr-0003p 或-bc-op-nt-azr）。 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。 对于使用即用即付定价的单个订阅，将对订阅上的信用卡或发票付款方式收取费用。
-| 范围 | VCore 预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择： </br></br> **共享**，vCore 预订折扣应用于计费上下文内任何订阅中运行的 Azure Database for MySQL 服务器。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。</br></br> **单个订阅**，vCore 预订折扣将应用到此订阅中的 Azure Database for MySQL 服务器。 </br></br> **单个资源组**，预订折扣应用于所选订阅中的 Azure Database for MySQL 服务器，以及该订阅内的所选资源组。
+| 作用域 | VCore 预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择： </br></br> **共享**，vCore 预订折扣应用于计费上下文内任何订阅中运行的 Azure Database for MySQL 服务器。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。</br></br> **单个订阅**，vCore 预订折扣将应用到此订阅中的 Azure Database for MySQL 服务器。 </br></br> **单个资源组**，预订折扣应用于所选订阅中的 Azure Database for MySQL 服务器，以及该订阅内的所选资源组。
 | 区域 | Azure Database for MySQL 保留容量保留所涵盖的 Azure 区域。
 | 部署类型 | 要为其购买预订的 Azure Database for MySQL 资源类型。
 | 性能层 | Azure Database for MySQL 服务器的服务层。

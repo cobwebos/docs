@@ -1,20 +1,20 @@
 ---
-title: 在商业应用商店中加入 Azure 应用的 API
-description: Microsoft 合作伙伴中心的商业 marketplace 中的 Azure 应用的 API 必备组件。
+title: 适用于 Microsoft 商业应用商店中的 Azure 应用的合作伙伴中心提交 API
+description: 了解在 Microsoft 合作伙伴中心的商业 marketplace 中使用适用于 Azure 应用的合作伙伴中心提交 API 的先决条件。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: cc4d56058ce3985ec3a1d9124ef4ec73ff6be1a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c37e51ad0c6618e20d9445fab7472b1a3a72ab9
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80279753"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744895"
 ---
-# <a name="api-for-onboarding-azure-apps-in-partner-center"></a>用于在合作伙伴中心载入 Azure 应用的 API
+# <a name="partner-center-submission-api-to-onboard-azure-apps-in-partner-center"></a>合作伙伴中心提交的 API，可在合作伙伴中心加入 Azure 应用
 
 使用*合作伙伴中心提交 API*以编程方式查询、创建提交并发布 Azure 产品/服务。  如果你的帐户管理多个产品/服务，并且你希望自动执行这些服务的提交过程并对其进行优化，则此 API 非常有用。
 
@@ -70,3 +70,8 @@ grant_type=client_credentials
 拥有 Azure AD 访问令牌后，可以在合作伙伴中心提交 API 中调用方法。 若要创建或更新提交，通常按特定顺序在合作伙伴中心提交 API 中调用多个方法。 有关每个方案和每个方法的语法的信息，请参阅摄取 API swagger。
 
 https://apidocs.microsoft.com/services/partneringestion/
+
+## <a name="next-steps"></a>后续步骤
+
+* 了解如何创建[AZURE VM 技术资产](create-azure-container-technical-assets.md)
+* 了解如何创建[Azure 容器产品/服务](create-azure-container-offer.md)hoe

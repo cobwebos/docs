@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: ac7609d49631fb2ed16fa129f8dc4099cc166247
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d94f557ddd946d20020825e2bbb6babbd67d3af3
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769875"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734325"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>教程：配合使用自定义视觉和 IoT 设备来报告视觉状态
 
@@ -62,7 +62,7 @@ IoT 视觉警报应用以连续循环的形式运行，并根据需要在四个�
 | [MainPage.xaml.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml.cs) | 此代码控制 XAML UI 的行为。 它包含处理代码的状态机。|
 | [CustomVision\CustomVisionServiceWrapper.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/CustomVision/CustomVisionServiceWrapper.cs) | 此类是一个包装器，用于处理与自定义视觉服务的集成。|
 | [CustomVision\CustomVisionONNXModel.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/CustomVision/CustomVisionONNXModel.cs) | 此类是一个包装器，用于处理与的 Windows ML 的集成，以加载 ONNX 模型并根据该模型对图像评分。|
-| [IoTHub\IotHubWrapper.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/IoTHub/IotHubWrapper.cs) | 此类是一个包装器，用于处理与 IoT 中心的集成，以将评分结果上传到 Azure。|
+| [IoTHub\IotHubWrapper.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/IoTHub/IoTHubWrapper.cs) | 此类是一个包装器，用于处理与 IoT 中心的集成，以将评分结果上传到 Azure。|
 
 ## <a name="set-up-the-visual-alerts-app"></a>设置视觉警报应用
 
@@ -90,7 +90,7 @@ IoT 视觉警报应用以连续循环的形式运行，并根据需要在四个�
 
 要设置模型，需要将应用置于“捕获训练图像”状态  。 执行以下任一步骤：
 * 如果要在电脑上运行应用，请使用 UI 右上角的按钮。
-* 如果要在 IoT 设备上运行应用，请通过 IoT 中心在设备上调用 `EnterLearningMode` 方法。 可通过 Azure 门户上 IoT 中心菜单中的设备项或 [IoT 中心设备资源管理器](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)等工具来调用。
+* 如果要在 IoT 设备上运行应用，请通过 IoT 中心在设备上调用 `EnterLearningMode` 方法。 可通过 Azure 门户上 IoT 中心菜单中的设备项或 [IoT 中心设备资源管理器](https://github.com/Azure/azure-iot-sdk-csharp)等工具来调用。
  
 当应用进入“捕获训练图像”状态时，它会每隔一秒钟捕获大约两个图像，直到达到目标图像数目  。 默认情况下，目标图像数目为 30，但可通过将所需数目作为参数传递给 `EnterLearningMode` IoT 中心方法，来设置此参数。 
 
