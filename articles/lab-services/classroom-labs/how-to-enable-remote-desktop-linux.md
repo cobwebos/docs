@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2019
+ms.date: 04/30/2020
 ms.author: spelluru
-ms.openlocfilehash: cb9a3e2b9ddcd0f74bfa4978f0bc3f4eb0688257
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dfd16d0977504e598492225238d29c83fcb7a028
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270857"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598056"
 ---
 # <a name="enable-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>在 Azure 实验室服务的实验室中启用适用于 Linux 虚拟机的远程桌面
 本文介绍如何执行以下任务：
@@ -36,7 +36,7 @@ ms.locfileid: "79270857"
 ![为 Linux 映像启用远程桌面连接](../media/how-to-enable-remote-desktop-linux/enabling-remote-desktop-connection-dialog.png)
 
 > [!IMPORTANT] 
-> 启用**远程桌面连接**仅打开 Linux 计算机上的**RDP**端口。 如果已在虚拟机映像上安装并配置了 RDP （例如： Ubuntu Data Science Virtual Machine 映像），则你/学生可以通过 RDP 连接到 Vm，而无需执行任何其他步骤。
+> 启用**远程桌面连接**仅打开 Linux 计算机上的**RDP**端口。 如果已在虚拟机映像上安装并配置了 RDP，你/学生可以通过 RDP 连接到 Vm，而无需执行任何其他步骤。
 > 
 > 如果 VM 映像未安装和配置 RDP，则需要首次使用 SSH 连接到 Linux 计算机，并安装 RDP 和 GUI 包，以便你/学生以后可以使用 RDP 连接到 Linux 计算机。 有关详细信息，请参阅[安装和配置远程桌面以连接到 Azure 中的 LINUX VM](../../virtual-machines/linux/use-remote-desktop.md)。 然后，发布该映像，以便学生可以通过 RDP 登录到学生 Linux Vm。 
 

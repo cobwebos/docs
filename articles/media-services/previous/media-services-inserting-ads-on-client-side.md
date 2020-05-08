@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 274ee09ae98dd229b255e58261f462e322be9f89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e5f6b7fa505890dc6bc818d1bd2578e5d974ff0
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77565734"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594859"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>在客户端上插入广告
 本文包含有关如何在客户端上插入各种类型的广告的信息。
@@ -586,7 +586,7 @@ ProgrammaticAdPage.xaml.cs 文件创建 AdHandlerPlugin，添加 TimelineMarker 
 ```
 
 ## <a name="implementing-an-ios-video-player-with-ad-support"></a>实现带有广告支持的 iOS 视频播放器
-Microsoft 媒体平台：适用于 iOS 的播放器框架包含示例应用程序集合，这些示例应用程序展示如何使用该框架来实现视频播放器应用程序。 可以从 [Azure 媒体播放器框架](https://github.com/Azure/azure-media-player-framework)下载播放器框架和示例。 GitHub 页面具有指向 Wiki（含有关播放器框架的其他信息和播放器示例简介）的链接：[Azure Media Player Wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework)。
+Microsoft 媒体平台：适用于 iOS 的播放器框架包含示例应用程序集合，这些示例应用程序展示如何使用该框架来实现视频播放器应用程序。 可以从 [Azure 媒体播放器框架](https://github.com/CloudMetal/azure-media-player-framework)下载播放器框架和示例。 GitHub 页面具有指向 Wiki（含有关播放器框架的其他信息和播放器示例简介）的链接：[Azure Media Player Wiki](https://github.com/CloudMetal/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework)。
 
 ### <a name="scheduling-ads-with-vmap"></a>使用 VMAP 安排广告
 以下示例演示如何使用 VMAP 文件安排广告。

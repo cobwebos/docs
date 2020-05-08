@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 71ba24784dee7771acbe19bf0261c7dc02478b24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4bb315991846b115070854b6e81caf16232fef6b
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127517"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607175"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Windows 虚拟桌面中的 FSLogix 配置文件容器的存储选项
 
@@ -25,7 +25,7 @@ Windows 虚拟桌面提供 FSLogix 的配置文件容器作为建议的用户配
 
 ## <a name="azure-platform-details"></a>Azure 平台详细信息
 
-|功能|Azure 文件|Azure NetApp 文件|Storage Spaces Direct|
+|功能|Azure 文件|Azure NetApp 文件|存储空间直通|
 |--------|-----------|------------------|---------------------|
 |用例|常规用途|从本地 NetApp 进行超高性能或迁移|跨平台|
 |平台服务|是，Azure-本机解决方案|是，Azure-本机解决方案|不，自我管理|
@@ -38,7 +38,7 @@ Windows 虚拟桌面提供 FSLogix 的配置文件容器作为建议的用户配
 
 ## <a name="azure-management-details"></a>Azure 管理详细信息
 
-|功能|Azure 文件|Azure NetApp 文件|Storage Spaces Direct|
+|功能|Azure 文件|Azure NetApp 文件|存储空间直通|
 |--------|-----------|------------------|---------------------|
 |访问|云、本地和混合（Azure 文件同步）|云，本地（通过 ExpressRoute）|云，本地|
 |备份|Azure 备份快照集成|Azure NetApp 文件快照|Azure 备份快照集成|
@@ -57,4 +57,4 @@ Windows 虚拟桌面提供 FSLogix 的配置文件容器作为建议的用户配
 - [使用 Azure NetApp 文件为主机池创建 FSLogix 配置文件容器](create-fslogix-profile-container.md)
 - 使用 FSLogix 配置文件容器而不是用户配置文件磁盘时，在[Azure 中部署 UPD 存储的双节点存储空间直通横向扩展文件服务器](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/)中的说明也适用
 
-还可以从开始处开始，并在[Windows 虚拟桌面的 "创建租户" 中](tenant-setup-azure-active-directory.md)设置自己的 Windows 虚拟桌面解决方案。
+还可以从开始处开始，并在[Windows 虚拟桌面的 "创建租户" 中](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)设置自己的 Windows 虚拟桌面解决方案。

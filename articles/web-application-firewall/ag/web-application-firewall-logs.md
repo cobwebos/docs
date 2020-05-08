@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
-ms.openlocfilehash: 4bc2aa055c40fb33edade8f7815311e392633885
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4bca41effc4e9834f8c76308556facb0681717cd
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133869"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82888878"
 ---
 # <a name="resource-logs-for-azure-web-application-firewall"></a>Azure Web 应用程序防火墙的资源日志
 
@@ -231,7 +231,7 @@ ms.locfileid: "82133869"
 |ruleSetType     | 规则集类型。 可用值为 OWASP。        |
 |ruleSetVersion     | 使用的规则集版本。 可用值为 2.2.9 和 3.0。     |
 |ruleId     | 触发事件的规则 ID。        |
-|消息     | 触发事件的用户友好信息。 详细信息部分提供了更多详细信息。        |
+|message     | 触发事件的用户友好信息。 详细信息部分提供了更多详细信息。        |
 |action     |  针对请求执行的操作。 可用值为“阻止”和“允许”。      |
 |site     | 为其生成日志的站点。 目前，由于规则为全局性规则，所以仅列出了“全局”站点。|
 |详细信息     | 触发事件的详细信息。        |
@@ -305,7 +305,7 @@ ms.locfileid: "82133869"
 ## <a name="next-steps"></a>后续步骤
 
 * 使用 [Azure Monitor 日志](../../azure-monitor/insights/azure-networking-analytics.md)可视化计数器和事件日志。
-* [通过 Power BI 的博客文章直观显示 Azure 活动日志](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)。
+* [通过 Power BI 的博客文章直观显示 Azure 活动日志](https://powerbi.microsoft.com/blog/monitor-azure-audit-logs-with-power-bi/)。
 * [View and analyze Azure activity logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)（在 Power BI 和其他组件中查看和分析 Azure 活动日志）博客文章。
 
 [1]: ../media/web-application-firewall-logs/figure1.png

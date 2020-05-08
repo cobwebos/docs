@@ -16,18 +16,19 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8a2c962c69ead28c4e79b663010eab77a499f5c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: has-adal-ref
+ms.openlocfilehash: 13c3a7f8376d4c852a74be75e323c6bb042b5407
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80048419"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610983"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>从 Azure AD 应用库配置 OpenID/OAuth 应用程序
 
 ## <a name="process-of-adding-an-openid-application-from-the-gallery"></a>从库添加 OpenID 应用程序的过程
 
-1. 在 [Azure 门户](https://portal.azure.com) 的左窗格中，选择“Azure Active Directory”  。 
+1. 在 [Azure 门户](https://portal.azure.com) 的左窗格中，选择“Azure Active Directory”  。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png))
 
@@ -61,17 +62,17 @@ ms.locfileid: "80048419"
 
 ![使用 OpenID Connect 的身份验证流](./media/openidoauth-tutorial/authenticationflow.png)
 
-### <a name="multitenant-application"></a>多租户应用程序 
-多租户应用程序预定在许多组织中使用，而不仅是在单个组织中使用。 它们通常是由独立软件供应商 (ISV) 编写的软件即服务 (SaaS) 应用程序。 
+### <a name="multitenant-application"></a>多租户应用程序
+多租户应用程序预定在许多组织中使用，而不仅是在单个组织中使用。 它们通常是由独立软件供应商 (ISV) 编写的软件即服务 (SaaS) 应用程序。
 
-多租户应用程序需要在使用它们的每个目录中预配。 它们需要用户或管理员的许可才能注册。 当在目录中注册应用程序并向其授予对 Graph API 或者另一可能的 Web API 的访问权限时，此许可过程即已开始。 当其他组织的用户或管理员注册使用应用程序时，某个对话框会显示应用程序所需的权限。 
+多租户应用程序需要在使用它们的每个目录中预配。 它们需要用户或管理员的许可才能注册。 当在目录中注册应用程序并向其授予对 Graph API 或者另一可能的 Web API 的访问权限时，此许可过程即已开始。 当其他组织的用户或管理员注册使用应用程序时，某个对话框会显示应用程序所需的权限。
 
 然后，用户或管理员可以向应用程序提供许可。 这种许可使应用程序能够访问指定的数据，并最终在目录中注册该应用程序。
 
 > [!NOTE]
 > 若要使应用程序可供多个目录中的用户使用，需要一种机制来确定用户在哪个租户中。 单租户应用程序只需在其自身的目录中查找用户。 多租户应用程序需要从 Azure AD 中的所有目录来识别特定用户。
-> 
-> 为此，Azure AD 提供了一个任何多租户应用程序都可以在其中对登录请求进行定向的通用身份验证终结点，而不是提供特定于租户的终结点。 对于 Azure AD 中的所有目录，此终结点为 `https://login.microsoftonline.com/common`。 特定于租户的终结点可能为 `https://login.microsoftonline.com/contoso.onmicrosoft.com`。 
+>
+> 为此，Azure AD 提供了一个任何多租户应用程序都可以在其中对登录请求进行定向的通用身份验证终结点，而不是提供特定于租户的终结点。 对于 Azure AD 中的所有目录，此终结点为 `https://login.microsoftonline.com/common`。 特定于租户的终结点可能为 `https://login.microsoftonline.com/contoso.onmicrosoft.com`。
 >
 > 在开发应用程序时考虑通用终结点尤为重要。 在登录、注销和令牌验证期间需要使用必要的逻辑来处理多租户。
 
@@ -80,9 +81,9 @@ ms.locfileid: "80048419"
 ## <a name="consent-framework"></a>同意框架
 
 可以使用 Azure AD 许可框架来开发多租户 Web 应用程序和本机客户端应用程序。 这些应用程序允许与应用程序所注册到的租户不同的 Azure AD 租户中的用户帐户登录。 它们可能还需要访问 Web API，例如：
-- Microsoft 图形 API（以便访问 Azure AD、Intune，以及 Office 365 中的服务）。 
+- Microsoft 图形 API（以便访问 Azure AD、Intune，以及 Office 365 中的服务）。
 - 其他 Microsoft 服务的 API。
-- 你自己的 Web API。 
+- 你自己的 Web API。
 
 该框架基于某个用户或管理员，该用户或管理员许可某个应用程序在其目录中注册。 注册可能涉及到访问目录数据。 获得许可后，客户端应用程序可以代表该用户调用 Microsoft 图形 API，并根据需要使用信息。
 
@@ -146,7 +147,7 @@ ms.locfileid: "80048419"
 
 仅限应用的权限始终需要租户管理员的同意。 如果应用程序请求仅限应用的权限，当用户尝试登录应用程序时，会显示一条错误消息。 该消息指出该用户无法许可。
 
-如果应用程序使用需要管理员许可的权限，则需要提供某种表示，例如可供管理员启动操作的按钮或链接。 应用程序针对此操作发送的请求是一个普通的 OAuth2/OpenID Connect 授权请求。 此请求包含 *prompt=admin_consent* 查询字符串参数。 
+如果应用程序使用需要管理员许可的权限，则需要提供某种表示，例如可供管理员启动操作的按钮或链接。 应用程序针对此操作发送的请求是一个普通的 OAuth2/OpenID Connect 授权请求。 此请求包含 *prompt=admin_consent* 查询字符串参数。
 
 在管理员已许可且系统已在客户的租户中创建服务主体之后，后续登录请求就不再需要 *prompt=admin_consent* 参数。 由于管理员已确定可接受请求的权限，因此从该时间点之后，不再提示租户中的任何其他用户许可。
 

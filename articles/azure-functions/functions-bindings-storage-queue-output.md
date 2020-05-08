@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 76af5f398edd736874fa79095f2e80c02298eac0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd8442c00e2b7685b0dc1a7bd5150c87f2c27b7c
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277331"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891459"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>适用于 Azure Functions 的 Azure 队列存储输出绑定
 
@@ -123,7 +123,7 @@ function.json  文件如下所示：
     {
       "type": "queue",
       "direction": "out",
-      "name": "$return",
+      "name": "myQueueItem",
       "queueName": "outqueue",
       "connection": "MyStorageConnectionAppSetting"
     }
@@ -137,7 +137,8 @@ JavaScript 代码如下所示：
 
 ```javascript
 module.exports = function (context, input) {
-    context.done(null, input.body);
+    context.bindings.myQueueItem = input.body;
+    context.done();
 };
 ```
 
@@ -300,7 +301,7 @@ public class HttpTriggerQueueOutput {
 }
 ```
 
-| properties    | 说明 |
+| 属性    | 说明 |
 |-------------|-----------------------------|
 |`name`       | 声明函数签名中的参数名称。 触发函数时，此参数的值将具有队列消息的内容。 |
 |`queueName`  | 声明存储帐户中的队列名称。 |
@@ -317,14 +318,14 @@ public class HttpTriggerQueueOutput {
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
 |type  | 不适用 | 必须设置为 `queue`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
-|**方向键** | n/a | 必须设置为 `out`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|**name** | n/a | 表示函数代码中的队列的变量的名称。 设置为 `$return` 可引用函数返回值。|
+|**方向键** | 不适用 | 必须设置为 `out`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
+|**name** | 不适用 | 表示函数代码中的队列的变量的名称。 设置为 `$return` 可引用函数返回值。|
 |**queueName** |**QueueName** | 队列的名称。 |
 |**connection** | **连接** |包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，Functions 运行时将会查找名为“MyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="usage"></a>使用情况
+## <a name="usage"></a>用法
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -386,7 +387,7 @@ public class HttpTriggerQueueOutput {
 |---|---|
 | 队列 | [队列错误代码](https://docs.microsoft.com/rest/api/storageservices/queue-service-error-codes) |
 | Blob、表、队列 | [存储错误代码](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
-| Blob、表、队列 |  [故障排除](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
+| Blob、表、队列 |  [疑难解答](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 <a name="host-json"></a>  
 
@@ -412,7 +413,7 @@ public class HttpTriggerQueueOutput {
 }
 ```
 
-|properties  |默认 | 说明 |
+|属性  |默认 | 说明 |
 |---------|---------|---------|
 |maxPollingInterval|00:00:01|队列轮询的最大间隔时间。 最小值为 00:00:00.100（100 毫秒），可递增至 00:01:00（1 分钟）。  在 1.x 中，数据类型是毫秒，在 2.x 及更高版本中，数据类型是 TimeSpan。|
 |visibilityTimeout|00:00:00|消息处理失败时的重试间隔时间。 |

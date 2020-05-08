@@ -3,15 +3,15 @@ title: 在 Azure 逻辑应用中管理集成服务环境
 description: 在适用于 Azure 逻辑应用的 integration service 环境（ISE）中查看网络运行状况和管理逻辑应用、连接、自定义连接器和集成帐户
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.openlocfilehash: f48106be67763c093a183be01098cab74391752e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: 41e511bce3599dd341ccf8192612e3f08111245a
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79284195"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598413"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>在 Azure 逻辑应用中管理集成服务环境（ISE）
 
@@ -54,6 +54,10 @@ ms.locfileid: "79284195"
    ![查看逻辑应用](./media/ise-manage-integration-service-environment/ise-find-logic-apps.png)
 
 1. 若要删除 ISE 中不再需要的逻辑应用，请选择这些逻辑应用，然后选择 "**删除**"。 若要确认是否要删除，请选择 **"是"**。
+
+> [!NOTE]
+> 如果删除并重新创建子逻辑应用，则必须重新保存父逻辑应用。 重新创建的子应用程序将具有不同的元数据。
+> 如果在重新创建父逻辑应用的子逻辑应用后不重新保存父逻辑应用，则对子逻辑应用的调用将失败并出现 "未授权" 错误。 此行为适用于父子逻辑应用，例如，使用集成帐户中的项目或调用 Azure 函数。
 
 <a name="find-api-connections"></a>
 

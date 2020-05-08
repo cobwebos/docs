@@ -2,13 +2,13 @@
 title: 将资源部署到订阅
 description: 介绍了如何在 Azure 资源管理器模板中创建资源组。 它还展示了如何在 Azure 订阅范围内部署资源。
 ms.topic: conceptual
-ms.date: 03/23/2020
-ms.openlocfilehash: 6bec29a07653ff5ad7d1e2f8317246049e127c8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 04/30/2020
+ms.openlocfilehash: 80fe451f696480ec24b3d8eced64941de9492fef
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605005"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610813"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在订阅级别创建资源组和资源
 
@@ -20,6 +20,7 @@ ms.locfileid: "81605005"
 
 可以在订阅级别部署以下资源类型：
 
+* [蓝图](/azure/templates/microsoft.blueprint/blueprints)
 * [预算](/azure/templates/microsoft.consumption/budgets)
 * [部署](/azure/templates/microsoft.resources/deployments)-适用于部署到资源组的嵌套模板。
 * [eventSubscriptions](/azure/templates/microsoft.eventgrid/eventsubscriptions)
@@ -244,11 +245,11 @@ New-AzSubscriptionDeployment `
 }
 ```
 
-## <a name="create-policies"></a>创建策略
+## <a name="azure-policy"></a>Azure Policy
 
-### <a name="assign-policy"></a>分配策略
+### <a name="assign-policy-definition"></a>分配策略定义
 
-以下示例将现有的策略定义分配到订阅。 如果策略使用参数，请将参数作为对象提供。 如果策略不使用参数，请使用默认的空对象。
+以下示例将现有的策略定义分配到订阅。 如果策略定义采用参数，请将它们作为对象提供。 如果策略定义未采用参数，请使用默认的空对象。
 
 ```json
 {
@@ -285,7 +286,7 @@ New-AzSubscriptionDeployment `
 若要使用 Azure CLI 部署此模板，请使用：
 
 ```azurecli-interactive
-# Built-in policy that accepts parameters
+# Built-in policy definition that accepts parameters
 definition=$(az policy definition list --query "[?displayName=='Allowed locations'].id" --output tsv)
 
 az deployment sub create \
@@ -312,9 +313,9 @@ New-AzSubscriptionDeployment `
   -policyParameters $policyParams
 ```
 
-### <a name="define-and-assign-policy"></a>定义和分配策略
+### <a name="create-and-assign-policy-definitions"></a>创建和分配策略定义
 
-可以在同一模板中[定义](../../governance/policy/concepts/definition-structure.md)和分配策略。
+可以在同一个模板中[定义](../../governance/policy/concepts/definition-structure.md)并分配策略定义。
 
 ```json
 {
@@ -357,7 +358,7 @@ New-AzSubscriptionDeployment `
 }
 ```
 
-若要在订阅中创建策略定义，然后将其应用到订阅，请使用以下 CLI 命令：
+若要在订阅中创建策略定义并将其分配给订阅，请使用以下 CLI 命令：
 
 ```azurecli
 az deployment sub create \
@@ -373,6 +374,32 @@ New-AzSubscriptionDeployment `
   -Name definePolicy `
   -Location centralus `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json"
+```
+
+## <a name="azure-blueprints"></a>Azure 蓝图
+
+### <a name="create-blueprint-definition"></a>创建蓝图定义
+
+可以从模板[创建](../../governance/blueprints/tutorials/create-from-sample.md)蓝图定义。
+
+:::code language="json" source="~/quickstart-templates/subscription-level-deployments/blueprints-new-blueprint/azuredeploy.json":::
+
+若要在订阅中创建蓝图定义，请使用以下 CLI 命令：
+
+```azurecli
+az deployment sub create \
+  --name demoDeployment \
+  --location centralus \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-level-deployments/blueprints-new-blueprint/azuredeploy.json"
+```
+
+若要使用 PowerShell 部署此模板，请使用：
+
+```azurepowershell
+New-AzSubscriptionDeployment `
+  -Name demoDeployment `
+  -Location centralus `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-level-deployments/blueprints-new-blueprint/azuredeploy.json"
 ```
 
 ## <a name="template-samples"></a>模板示例

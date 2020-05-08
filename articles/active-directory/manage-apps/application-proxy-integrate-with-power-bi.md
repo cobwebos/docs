@@ -14,24 +14,24 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.custom: it-pro
+ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc96c94152b39cc70cfc4553690faaa5b9cb8d20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a6fab618280f1383e3840c67d85136edc095b9a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77111585"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610082"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理启用对 Power BI 移动版的远程访问
 
-本文介绍如何使用 Azure AD 应用程序代理来启用 Power BI 移动应用程序连接到 Power BI 报表服务器（PBIRS）和 SQL Server Reporting Services （SSRS）2016及更高版本。 通过这种集成，远离企业网络的用户可以从 Power BI 移动应用程序访问其 Power BI 报表，并通过 Azure AD 身份验证进行保护。 此保护包括条件访问和多重身份验证等[安全权益](application-proxy-security.md#security-benefits)。  
+本文介绍如何使用 Azure AD 应用程序代理来启用 Power BI 移动应用程序连接到 Power BI 报表服务器（PBIRS）和 SQL Server Reporting Services （SSRS）2016及更高版本。 通过这种集成，远离企业网络的用户可以从 Power BI 移动应用程序访问其 Power BI 报表，并通过 Azure AD 身份验证进行保护。 此保护包括条件访问和多重身份验证等[安全权益](application-proxy-security.md#security-benefits)。
 
 ## <a name="prerequisites"></a>先决条件
 
 本文假定你已部署了报表服务和[应用程序代理](application-proxy-add-on-premises-application.md)。
 
-- 启用应用程序代理需要在 Windows server 上安装连接器并完成[必备组件](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)，使连接器能够与 Azure AD 服务通信。  
+- 启用应用程序代理需要在 Windows server 上安装连接器并完成[必备组件](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)，使连接器能够与 Azure AD 服务通信。
 - 发布 Power BI 时，建议使用相同的内部和外部域。 若要了解有关自定义域的详细信息，请参阅[在应用程序代理中使用自定义域](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain)。
 - 此集成可用于**Power BI 移动版 iOS 和 Android**应用程序。
 
@@ -68,7 +68,7 @@ SPN 是使用 Kerberos 身份验证的服务的唯一标识符。 需要确保�
 若要配置 KCD，请针对每个连接器计算机重复以下步骤：
 
 1. 以域管理员身份登录到域控制器，然后打开**Active Directory 用户和计算机**"。
-2. 找到运行连接器的计算机。  
+2. 找到运行连接器的计算机。
 3. 双击计算机，然后选择 "**委派**" 选项卡。
 4. 将 "委托设置" 设置为 **"仅信任此计算机来委派指定的服务"**。 然后，选择“使用任意身份验证协议”。****
 5. 选择 "**添加**"，然后选择 "**用户或计算机**"。
@@ -95,7 +95,7 @@ SPN 是使用 Kerberos 身份验证的服务的唯一标识符。 需要确保�
 
    b. 对于**单一登录模式**，请选择 "**集成 Windows 身份验证**"。
 
-   c. 将 "**内部应用程序 SPN** " 设置为之前设置的值。  
+   c. 将 "**内部应用程序 SPN** " 设置为之前设置的值。
 
    d. 针对你要代表你的用户使用的连接器选择“委派的登录标识”。**** 有关详细信息，请参阅[使用不同的本地标识和云标识](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)。
 
@@ -105,7 +105,7 @@ SPN 是使用 Kerberos 身份验证的服务的唯一标识符。 需要确保�
 
 ## <a name="step-3-modify-the-reply-uris-for-the-application"></a>步骤3：修改应用程序的回复 URI
 
-在 Power BI 移动应用可以连接和访问报表服务之前，您必须配置在步骤2中为您自动创建的应用程序注册。 
+在 Power BI 移动应用可以连接和访问报表服务之前，您必须配置在步骤2中为您自动创建的应用程序注册。
 
 1. 在 Azure Active Directory**概述**"页上，选择"**应用注册**"。
 2. 在 "**所有应用程序**" 选项卡下，搜索在步骤2中创建的应用程序。
@@ -117,11 +117,11 @@ SPN 是使用 Kerberos 身份验证的服务的唯一标识符。 需要确保�
    - `msauth://code/mspbi-adalms%3a%2f%2fcom.microsoft.powerbimobilems`
    - `mspbi-adal://com.microsoft.powerbimobile`
    - `mspbi-adalms://com.microsoft.powerbimobilems`
-   
+
    为 Power BI 移动版**Android**配置应用时，请添加以下类型的重定向 Uri：公用客户端（移动 & 桌面）：
    - `urn:ietf:wg:oauth:2.0:oob`
    - `mspbi-adal://com.microsoft.powerbimobile`
-   - `msauth://com.microsoft.powerbim/g79ekQEgXBL5foHfTlO2TPawrbI%3D` 
+   - `msauth://com.microsoft.powerbim/g79ekQEgXBL5foHfTlO2TPawrbI%3D`
    - `msauth://com.microsoft.powerbim/izba1HXNWrSmQ7ZvMXgqeZPtNEU%3D`
 
    > [!IMPORTANT]
@@ -144,7 +144,7 @@ SPN 是使用 Kerberos 身份验证的服务的唯一标识符。 需要确保�
 1. 依次执行 " **Azure Active Directory** " 和 "**应用注册**"。
 2. 注册本机客户端应用程序时，选择在步骤3中配置的应用程序。
 3. 在应用程序页上，选择 " **API 权限**"。
-4. 单击 "**添加权限**"。 
+4. 单击 "**添加权限**"。
 5. 在 "**我的组织使用的 api**" 下，搜索 "Microsoft 移动应用程序管理" 并将其选中。
 6. 向应用程序添加**DeviceManagementManagedApps**权限
 7. 单击 "**授予管理员许可**" 以授予对应用程序的访问权限。

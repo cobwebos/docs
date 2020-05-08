@@ -3,12 +3,12 @@ title: 资源的标记支持
 description: 显示支持标记的 Azure资源类型。 提供所有 Azure 服务的详细信息。
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: c971d3af102faf99f97aac261882797460d71f37
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c035f4f9ce6b7c842caeab3b705394417d15ba0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81255020"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609283"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 资源的标记支持
 本文介绍某一资源类型是否支持[标记](tag-resources.md)。 标记为“支持标记”  的列指示资源类型是否具有标记的属性。 标记为“在成本报表中标记”**** 的列指示该资源类型是否将标记传递给成本报表。 可以通过[成本管理成本分析](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options)和 [Azure 账单发票和每日使用情况数据](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)中的标记查看成本。
@@ -34,7 +34,7 @@ ms.locfileid: "81255020"
 > - [Microsoft.AzureActiveDirectory](#microsoftazureactivedirectory)
 > - [AzureData](#microsoftazuredata)
 > - [Microsoft.AzureStack](#microsoftazurestack)
-> - [Microsoft. 批处理](#microsoftbatch)
+> - [Microsoft.Batch](#microsoftbatch)
 > - [Microsoft.Billing](#microsoftbilling)
 > - [Microsoft.BingMaps](#microsoftbingmaps)
 > - [Microsoft.Blockchain](#microsoftblockchain)
@@ -49,7 +49,7 @@ ms.locfileid: "81255020"
 > - [Microsoft.ClassicInfrastructureMigrate](#microsoftclassicinfrastructuremigrate)
 > - [Microsoft.classicnetwork](#microsoftclassicnetwork)
 > - [Microsoft.ClassicStorage](#microsoftclassicstorage)
-> - [Cognitiveservices account](#microsoftcognitiveservices)
+> - [Microsoft.CognitiveServices](#microsoftcognitiveservices)
 > - [Microsoft.Commerce](#microsoftcommerce)
 > - [Microsoft.Compute](#microsoftcompute)
 > - [Microsoft. 消耗](#microsoftconsumption)
@@ -100,11 +100,11 @@ ms.locfileid: "81255020"
 > - [Microsoft.Intune](#microsoftintune)
 > - [Microsoft.IoTCentral](#microsoftiotcentral)
 > - [Microsoft.IoTSpaces](#microsoftiotspaces)
-> - [KeyVault](#microsoftkeyvault)
+> - [Microsoft.KeyVault](#microsoftkeyvault)
 > - [Kubernetes](#microsoftkubernetes)
 > - [Microsoft.Kusto](#microsoftkusto)
 > - [Microsoft.LabServices](#microsoftlabservices)
-> - [Microsoft. 逻辑](#microsoftlogic)
+> - [Microsoft.Logic](#microsoftlogic)
 > - [Microsoft.MachineLearning](#microsoftmachinelearning)
 > - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
 > - [Microsoft. 维护](#microsoftmaintenance)
@@ -120,12 +120,12 @@ ms.locfileid: "81255020"
 > - [Microsoft.Migrate](#microsoftmigrate)
 > - [Microsoft.MixedReality](#microsoftmixedreality)
 > - [Microsoft.NetApp](#microsoftnetapp)
-> - [Microsoft 网络](#microsoftnetwork)
+> - [Microsoft.Network](#microsoftnetwork)
 > - [Microsoft 笔记本](#microsoftnotebooks)
 > - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
 > - [ObjectStore](#microsoftobjectstore)
 > - [Microsoft.OffAzure](#microsoftoffazure)
-> - [Microsoft.operationalinsights](#microsoftoperationalinsights)
+> - [Microsoft.OperationalInsights](#microsoftoperationalinsights)
 > - [为 microsoft.operationsmanagement](#microsoftoperationsmanagement)
 > - [Microsoft。对等互连](#microsoftpeering)
 > - [Microsoft.PolicyInsights](#microsoftpolicyinsights)
@@ -134,7 +134,7 @@ ms.locfileid: "81255020"
 > - [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated)
 > - [ProjectBabylon](#microsoftprojectbabylon)
 > - [Microsoft 量子](#microsoftquantum)
-> - [Microsoft.recoveryservices](#microsoftrecoveryservices)
+> - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
 > - [Microsoft.Relay](#microsoftrelay)
 > - [Microsoft RemoteApp](#microsoftremoteapp)
 > - [Microsoft.ResourceGraph](#microsoftresourcegraph)
@@ -145,7 +145,7 @@ ms.locfileid: "81255020"
 > - [Microsoft.Security](#microsoftsecurity)
 > - [Microsoft.SecurityGraph](#microsoftsecuritygraph)
 > - [Microsoft.SecurityInsights](#microsoftsecurityinsights)
-> - [Microsoft。](#microsoftservicebus)
+> - [Microsoft.ServiceBus](#microsoftservicebus)
 > - [Microsoft.ServiceFabric](#microsoftservicefabric)
 > - [Microsoft.ServiceFabricMesh](#microsoftservicefabricmesh)
 > - [Microsoft. 服务](#microsoftservices)
@@ -168,7 +168,7 @@ ms.locfileid: "81255020"
 > - [Microsoft.TimeSeriesInsights](#microsofttimeseriesinsights)
 > - [VMwareCloudSimple](#microsoftvmwarecloudsimple)
 > - [VnfManager](#microsoftvnfmanager)
-> - [Microsoft Web](#microsoftweb)
+> - [Microsoft.Web](#microsoftweb)
 > - [Microsoft.WindowsDefenderATP](#microsoftwindowsdefenderatp)
 > - [Microsoft.WindowsIoT](#microsoftwindowsiot)
 > - [Microsoft.WorkloadMonitor](#microsoftworkloadmonitor)
@@ -538,7 +538,7 @@ ms.locfileid: "81255020"
 > | CdnWebApplicationFirewallManagedRuleSets | 否 | 否 |
 > | CdnWebApplicationFirewallPolicies | 是 | 是 |
 > | edgenodes | 否 | 否 |
-> | profiles | 是 | 是 |
+> | 配置文件 | 是 | 是 |
 > | profiles/endpoints | 是 | 是 |
 > | profiles / endpoints / customdomains | 否 | 否 |
 > | 配置文件/终结点/origingroups | 否 | 否 |
@@ -633,7 +633,7 @@ ms.locfileid: "81255020"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
-> | 帐户 | 是 | 是 |
+> | accounts | 是 | 是 |
 
 ## <a name="microsoftcommerce"></a>Microsoft.Commerce
 
@@ -859,7 +859,7 @@ ms.locfileid: "81255020"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
-> | 帐户 | 是 | 是 |
+> | accounts | 是 | 是 |
 > | 帐户/dataLakeStoreAccounts | 否 | 否 |
 > | 帐户/storageAccounts | 否 | 否 |
 > | 帐户/storageAccounts/容器 | 否 | 否 |
@@ -870,7 +870,7 @@ ms.locfileid: "81255020"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
-> | 帐户 | 是 | 是 |
+> | accounts | 是 | 是 |
 > | 帐户/eventGridFilters | 否 | 否 |
 > | 帐户/firewallRules | 否 | 否 |
 
@@ -887,7 +887,7 @@ ms.locfileid: "81255020"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
-> | 帐户 | 是 | 是 |
+> | accounts | 是 | 是 |
 > | 帐户/共享 | 否 | 否 |
 > | 帐户/共享/数据集 | 否 | 否 |
 > | 帐户/共享/邀请 | 否 | 否 |
@@ -1127,7 +1127,7 @@ ms.locfileid: "81255020"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
-> | 帐户 | 是 | 是 |
+> | accounts | 是 | 是 |
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
@@ -1321,7 +1321,7 @@ ms.locfileid: "81255020"
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
 > | workspaces | 是 | 是 |
-> | 工作区/计算 | 否 | 否 |
+> | workspaces / computes | 否 | 否 |
 > | 工作区/eventGridFilters | 否 | 否 |
 
 ## <a name="microsoftmaintenance"></a>Microsoft. 维护
@@ -1368,7 +1368,7 @@ ms.locfileid: "81255020"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
-> | 帐户 | 是 | 是 |
+> | accounts | 是 | 是 |
 > | 帐户/eventGridFilters | 否 | 否 |
 > | 帐户/privateAtlases | 是 | 是 |
 
@@ -1551,6 +1551,7 @@ ms.locfileid: "81255020"
 > | virtualHubs | 是 | 是 |
 > | virtualNetworkGateways | 是 | 是 |
 > | virtualNetworks | 是 | 是 |
+> | virtualNetworks/子网 | 否 | 否 |
 > | virtualNetworkTaps | 是 | 是 |
 > | virtualWans | 是 | 否 |
 > | vpnGateways | 是 | 是 |
@@ -1672,7 +1673,7 @@ ms.locfileid: "81255020"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
-> | 帐户 | 是 | 是 |
+> | accounts | 是 | 是 |
 
 ## <a name="microsoftquantum"></a>Microsoft 量子
 
@@ -1706,7 +1707,7 @@ ms.locfileid: "81255020"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
-> | 帐户 | 否 | 否 |
+> | accounts | 否 | 否 |
 > | 集合 | 是 | 是 |
 > | 集合/应用程序 | 否 | 否 |
 > | 集合/securityprincipalsgetresponse | 否 | 否 |

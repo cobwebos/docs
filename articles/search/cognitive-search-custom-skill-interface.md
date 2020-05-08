@@ -7,15 +7,17 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/20/2020
-ms.openlocfilehash: 78f5f6eda28bed164668445b5671dad92f8dedd7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/06/2020
+ms.openlocfilehash: 7a1a2aa92549bcab35532120c4af5bd0b6904f58
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77500271"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891250"
 ---
 # <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>如何向 Azure 认知搜索扩充管道添加自定义技能
+
+> [!VIDEO https://www.youtube.com/embed/fHLCE-NZeb4?version=3&start=172&end=221]
 
 Azure 认知搜索中的[扩充管道](cognitive-search-concept-intro.md)可以从[内置认知技能](cognitive-search-predefined-skills.md)和你自己创建并添加到管道中的[自定义技能](cognitive-search-custom-skill-web-api.md)进行装配。 在本文中，你将了解如何创建自定义技能并使其公开某个接口，用以将该技能包括在 AI 扩充管道中。 
 
@@ -39,6 +41,10 @@ Azure 认知搜索中的[扩充管道](cognitive-search-concept-intro.md)可以�
 目前，与自定义技能交互的唯一机制是通过 Web API 接口。 Web API 需求必须满足本节中所述的要求。
 
 ### <a name="1--web-api-input-format"></a>1.Web API 输入格式
+
+
+> [!VIDEO https://www.youtube.com/embed/fHLCE-NZeb4?version=3&start=294&end=340]
+
 
 Web API 必须接受要处理的一组记录。 每条记录都必须包含一个“属性包”，该属性包是提供给 Web API 的输入。 
 
@@ -158,8 +164,9 @@ Web API 必须接受要处理的一组记录。 每条记录都必须包含一�
 
 本文介绍了将自定义技能组成到技能组时所需的接口要求。 单击下面的链接来了解有关自定义技能和技能组构成的详细信息。
 
-+ [强大技能：自定义技能的存储库](https://github.com/Azure-Samples/azure-search-power-skills)
-+ [示例：创建 AI 扩充的自定义技能](cognitive-search-create-custom-skill-example.md)
++ [观看有关自定义技能的视频](https://youtu.be/fHLCE-NZeb4)
++ [强大技能：定制技能的存储库](https://github.com/Azure-Samples/azure-search-power-skills)
++ [示例：为 AI 扩充创建自定义技能](cognitive-search-create-custom-skill-example.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)
 + [创建技能组合 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [如何映射扩充的域](cognitive-search-output-field-mapping.md)

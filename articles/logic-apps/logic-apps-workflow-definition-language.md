@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: ff2267c2d03076d3abc44d0bd1dddc64577cc7f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f9eefc40f7bca3f0bc21510a2d8a3d3fe76711b0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283857"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611409"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Azure 逻辑应用中工作流定义语言的架构引用指南
 
@@ -74,12 +74,12 @@ ms.locfileid: "79283857"
 },
 ```
 
-| 特性 | 必选 | 类型 | 说明 |
+| 特性 | 必须 | 类型 | 说明 |
 |-----------|----------|------|-------------|
-| <*参数-名称*> | 是 | 字符串 | 要定义的参数的名称 |
+| <*参数-名称*> | 是 | String | 要定义的参数的名称 |
 | <*参数类型*> | 是 | int、float、string、bool、array、object、securestring、secureobject <p><p>**注意**：对于所有密码、密钥和机密，请使用`securestring`或`secureobject`类型，因为`GET`操作不返回这些类型。 若要详细了解如何保护参数，请参阅[操作和输入参数的安全建议](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)。 | 参数的类型 |
 | <*默认值-参数-值*> | 是 | 与 `type` 相同 | 在工作流实例化时未指定值的情况下使用的默认参数值。 `defaultValue` 属性是逻辑应用设计器正确显示参数所必需的，但是你可以指定空值。 |
-| <*数组-允许-参数-值*> | 否 | 数组 | 包含参数可接受的值的数组 |
+| <*数组-允许-参数-值*> | 否 | Array | 包含参数可接受的值的数组 |
 | <*参数-说明*> | 否 | JSON 对象 | 任何其他的参数详细信息，例如参数的说明 |
 ||||
 
@@ -112,13 +112,13 @@ ms.locfileid: "79283857"
 }
 ```
 
-| 特性 | 必选 | 类型 | 说明 |
+| 特性 | 必须 | 类型 | 说明 |
 |-----------|----------|------|-------------|
-| <*静态结果定义-名称*> | 是 | 字符串 | 操作定义可通过 `runtimeConfiguration.staticResult` 对象引用的静态结果定义的名称。 有关详细信息，请参阅[运行时配置设置](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options)。 <p>可以使用所需的任意唯一名称。 默认情况下，此唯一名称的后面会追加一个按需递增的数字。 |
+| <*静态结果定义-名称*> | 是 | String | 操作定义可通过 `runtimeConfiguration.staticResult` 对象引用的静态结果定义的名称。 有关详细信息，请参阅[运行时配置设置](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options)。 <p>可以使用所需的任意唯一名称。 默认情况下，此唯一名称的后面会追加一个按需递增的数字。 |
 | <*output-返回的特性和值*> | 是 | 不定 | 这些特性的要求因条件不同而异。 例如，如果 `status` 为 `Succeeded`，则 `outputs` 特性包含操作作为模拟输出返回的特性和值。 如果 `status` 为 `Failed`，则 `outputs` 特性包含 `errors` 特性，即提供错误信息的一个或多个错误 `message` 对象的数组。 |
 | <*标头值*> | 否 | JSON | 操作返回的任何标头值 |
-| <*返回状态代码*> | 是 | 字符串 | 操作返回的状态代码 |
-| <*操作-状态*> | 是 | 字符串 | 操作的状态，例如 `Succeeded` 或 `Failed` |
+| <*返回状态代码*> | 是 | String | 操作返回的状态代码 |
+| <*操作-状态*> | 是 | String | 操作的状态，例如 `Succeeded` 或 `Failed` |
 |||||
 
 例如，在此 HTTP 操作定义中，`runtimeConfiguration.staticResult.name` 特性引用 `staticResults` 中的定义了操作模拟输出的 `HTTP0` 特性。 `runtimeConfiguration.staticResult.staticResultOptions` 特性指定 HTTP 操作的静态结果设置为 `Enabled`。
@@ -178,7 +178,7 @@ HTTP 操作在 `staticResults` 内的 `HTTP0` 定义中返回输出。 在此示
 "rainbowColorsCount": 7
 ```
 
-还可以获取在运行时之前不存在的值。 若要表示这些值，可以使用运行时计算的表达式。** 表达式是可以包含一个或多个[函数](#functions)、[运算符](#operators)、变量、显式值或常量的序列。 在工作流定义中，可以通过在表达式的前面加上 \@ 符号前缀在 JSON 字符串值中的任何位置使用表达式。 计算表示 JSON 值的表达式时，会通过删除 \@ 字符来提取表达式主体，并且始终生成另一个 JSON 值。
+还可以获取在运行时之前不存在的值。 若要表示这些值，可以使用运行时计算的表达式。** 表达式是可以包含一个或多个[函数](#functions)、[运算符](#operators)、[变量](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-variables-store-values)、显式值或常量的序列。 在工作流定义中，可以通过在表达式的前面加上 \@ 符号前缀在 JSON 字符串值中的任何位置使用表达式。 计算表示 JSON 值的表达式时，会通过删除 \@ 字符来提取表达式主体，并且始终生成另一个 JSON 值。
 
 例如，对于前面定义的 `customerName` 属性，可以通过在表达式中使用 [parameters()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) 函数来获取属性值，并将该值分配给 `accountName` 属性：
 
@@ -275,9 +275,9 @@ HTTP 操作在 `staticResults` 内的 `HTTP0` 定义中返回输出。 在此示
 }
 ```
 
-| 特性 | 必选 | 类型 | 说明 |
+| 特性 | 必须 | 类型 | 说明 |
 |-----------|----------|------|-------------|
-| <*项名称*> | 是 | 字符串 | 输出返回值的密钥名称 |
+| <*项名称*> | 是 | String | 输出返回值的密钥名称 |
 | <*键类型*> | 是 | int、float、string、securestring、bool、array、JSON 对象 | 输出返回值的类型 |
 | <*键-值*> | 是 | 与 <*键类型*相同> | 输出返回值 |
 |||||
@@ -290,7 +290,7 @@ HTTP 操作在 `staticResults` 内的 `HTTP0` 定义中返回输出。 在此示
 
 在[表达式](#expressions)和[函数](#functions)中，运算符执行特定的任务，例如，引用数组中的某个属性或值。
 
-| 操作员 | 任务 |
+| 运算符 | 任务 |
 |----------|------|
 | ' | 若要使用字符串文本作为输入，或者在表达式和函数中使用字符串文本，请仅使用单引号包装该字符串，例如 `'<myString>'`。 不要使用双引号 ("")，否则与整个表达式两侧的 JSON 格式相冲突。 例如： <p>**正确**：length('Hello') </br>**错误**：length("Hello") <p>如果传递数组或数字，则不需要包装标点符号。 例如： <p>**正确**：length([1, 2, 3]) </br>**错误**：length("[1, 2, 3]") |
 | [] | 若要引用数组中特定位置（索引）处的某个值，请使用方括号。 例如，若要获取数组中的第二个项： <p>`myArray[1]` |

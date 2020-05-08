@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: e333dfb109840538fd5dec8110e1c32adedce989
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8605e269f09e4fedf7a61817a3634e75081593ca
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76759238"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890236"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>使用 PowerShell 管理服务总线资源
 
@@ -170,8 +170,8 @@ Set-AzServiceBusQueue -ResourceGroup $ResGrpName -NamespaceName $Namespace -Queu
 
 这些博客文章介绍管理服务总线实体的一些备选方法：
 
-* [How to create Service Bus queues, topics and subscriptions using a PowerShell script](https://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)（如何使用 PowerShell 脚本创建服务总线队列、主题和订阅）
-* [How to create a Service Bus Namespace and an Event Hub using a PowerShell script](https://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)（如何使用 PowerShell 脚本创建服务总线命名空间和事件中心）
+* [How to create Service Bus queues, topics and subscriptions using a PowerShell script](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-service-bus-queues-topics-and-subscriptions-using-a-powershell-script)（如何使用 PowerShell 脚本创建服务总线队列、主题和订阅）
+* [How to create a Service Bus Namespace and an Event Hub using a PowerShell script](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script)（如何使用 PowerShell 脚本创建服务总线命名空间和事件中心）
 * [服务总线 PowerShell 脚本](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
 
 <!--Anchors-->

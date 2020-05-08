@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 75363212684bb09e84a4bc4881af26e6d2a8e7e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f051d02ac06163cf1861ab6bfc6afd0dcbb0ad8a
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585273"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559526"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>通过 Azure Monitor 监视媒体服务指标和诊断日志
 
@@ -63,24 +63,24 @@ ms.locfileid: "80585273"
 |指标名称|显示名称|说明|
 |---|---|---|
 |Requests|Requests|提供由流式处理终结点提供服务的 HTTP 请求总数。|
-|流出量|流出量|出口字节总数。 例如，流式处理终结点流式处理的字节数。|
-|SuccessE2ELatency|成功端到端延迟|从流式处理终结点收到请求，到发送最后一个响应字节的持续时间。|
+|流出量|流出量|每个流式处理终结点每分钟传出的字节总数。|
+|SuccessE2ELatency|成功端到端延迟|从流式处理终结点接收请求到发送响应的最后一个字节时的持续时间。|
 
-### <a name="why-would-i-want-to-use-metrics"></a>为何使用指标？
+### <a name="why-would-i-want-to-use-metrics"></a>为什么要使用度量值？
 
-以下示例说明监视媒体服务指标如何能够帮助你了解应用的执行情况。 使用媒体服务指标可以解决的部分问题包括：
+下面的示例演示了监视媒体服务指标如何帮助你了解应用的执行情况。 可以通过媒体服务指标解决的一些问题包括：
 
-* 如何监视标准流式处理终结点以了解何时超出了限制？
-* 如何知道是否有足够的高级流式处理终结点缩放单元？
-* 如何设置警报来了解何时应扩展流式处理终结点？
-* 如何设置警报来了解何时达到了帐户中配置的最大出口限制？
-* 如何查看失败请求的细节以及失败的原因？
-* 如何查看正在从打包程序中提取多少个 HLS 或 DASH 请求？
-* 如何设置警报来了解何时达到了失败请求数的阈值？
+* 如何实现监视标准流式处理终结点以了解何时超出了限制？
+* 如何实现知道是否有足够的高级流式处理终结点缩放单位？
+* 如何设置警报来了解何时增加流式处理终结点？
+* 如何实现设置警报以了解何时达到了帐户上配置的最大出口数量？
+* 如何查看请求失败以及导致失败的原因？
+* 如何查看从包装器中提取了多少 HLS 或短划线请求？
+* 如何实现设置警报以了解何时点击了失败请求数的阈值？
 
 ### <a name="example"></a>示例
 
-参阅[如何监视媒体服务指标](media-services-metrics-howto.md)。
+请参阅[如何监视媒体服务指标](media-services-metrics-howto.md)。
 
 ## <a name="media-services-diagnostic-logs"></a>媒体服务诊断日志
 
@@ -88,7 +88,7 @@ ms.locfileid: "80585273"
 
 媒体服务支持以下诊断日志：
 
-* 密钥传送
+* 密钥传递
 
 ### <a name="key-delivery"></a>密钥传送
 
@@ -96,18 +96,18 @@ ms.locfileid: "80585273"
 |---|---|
 |密钥传送服务请求|显示密钥传送服务请求信息的日志。 有关详细信息，请参阅[架构](media-services-diagnostic-logs-schema.md)。|
 
-### <a name="why-would-i-want-to-use-diagnostics-logs"></a>为何使用诊断日志？
+### <a name="why-would-i-want-to-use-diagnostics-logs"></a>为什么要使用诊断日志？
 
-可以使用密钥传送诊断日志检查的部分内容包括：
+可以通过关键交付诊断日志检查的一些内容包括：
 
-* 按 DRM 类型查看传送的许可证数量。
-* 按策略查看传送的许可证数量。
+* 查看 DRM 类型传递的许可证数量。
+* 查看策略传递的许可证数量。
 * 按 DRM 或策略类型查看错误。
 * 查看来自客户端的未经授权的许可证请求数。
 
 ### <a name="example"></a>示例
 
-参阅[如何监视媒体服务诊断日志](media-services-diagnostic-logs-howto.md)。
+请参阅[如何监视 Media Service 诊断日志](media-services-diagnostic-logs-howto.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

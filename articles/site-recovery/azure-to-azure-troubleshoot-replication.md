@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
-ms.openlocfilehash: 8cba02d3c7d1e649853570b199b646b1c4dcce2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c7d4f0a6d33a52fd972815923e60b33ce8a7448
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80667416"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901356"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>排查 Azure VM 灾难恢复中的复制问题
 
@@ -41,7 +41,7 @@ Error ID: 153007
 
 下表提供了 Azure Site Recovery 限制。 这些限制基于我们的测试，但无法涵盖所有可能的应用程序输入-输出（i/o）组合。 实际结果可能因应用程序 I/O 组合而异。
 
-需要考虑以下两个限制：每个磁盘的数据变动和每个虚拟机的数据变动。 让我们看一下下表中的高级 P20 磁盘，以获取示例。 对于单个 VM，Site Recovery 可以处理每个磁盘的 5 MB/秒的变动，最多可以处理 5 MB 的磁盘空间。 Site Recovery 的限制为每个 VM 的总流失数为 25 MB。
+需要考虑以下两个限制：每个磁盘的数据变动和每个虚拟机的数据变动。 让我们看一下下表中的高级 P20 磁盘，以获取示例。 对于单个 VM，Site Recovery 可以处理每个磁盘的 5 MB/秒的变动，最多可以处理 5 MB 的磁盘空间。 Site Recovery 的每个 VM 的总流失数限制为 54 MB/秒。
 
 **复制存储目标** | **平均源磁盘 I/O 大小** |**平均源磁盘数据变动率** | **每天的总源数据磁盘数据变动率**
 ---|---|---|---
@@ -65,7 +65,7 @@ Azure Site Recovery 对数据更改率有限制，这取决于磁盘的类型。
 数据更改率的高峰可能源自偶尔的数据突发。 如果数据更改率超过 10 MB/秒（适用于高级版）或 2 MB/秒（适用于标准），则复制将会保持不变。 如果改动量始终超过支持的限制，请考虑以下选项之一：
 
 - 排除导致数据更改率较高的磁盘：首先，禁用复制。 然后，可以使用[PowerShell](azure-to-azure-exclude-disks.md)排除该磁盘。
-- 更改灾难恢复存储磁盘的层：仅当磁盘数据改动小于 20 MB/秒时，此选项才可用。 例如，具有 P10 磁盘的 VM 的数据变动大于 8 MB/秒，但小于 10 MB/s。 如果客户在保护期间可以使用 P30 磁盘作为目标存储，则可以解决此问题。 此解决方案仅适用于使用高级托管磁盘的计算机。 执行以下步骤:
+- 更改灾难恢复存储磁盘的层：仅当磁盘数据改动小于 20 MB/秒时，此选项才可用。 例如，具有 P10 磁盘的 VM 的数据变动大于 8 MB/秒，但小于 10 MB/s。 如果客户在保护期间可以使用 P30 磁盘作为目标存储，则可以解决此问题。 此解决方案仅适用于使用高级托管磁盘的计算机。 请执行这些步骤：
 
   1. 中转到受影响的复制计算机的**磁盘**，并复制副本磁盘名称。
   1. 请参阅托管磁盘的此副本。

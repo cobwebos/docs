@@ -3,12 +3,12 @@ title: 资源类型支持的移动操作
 description: 列出可移到新资源组或订阅的 Azure 资源类型。
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 90fbec4dc076feb1fee8c38cf9757d3c5ddbafaf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45450b21b1cd3236712043629f433c2c5fe20f80
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804786"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900977"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 本文列出某个 Azure 资源类型是否支持移动操作。 它还提供了有关移动资源时要考虑的特殊条件的信息。
@@ -29,7 +29,7 @@ ms.locfileid: "80804786"
 > - [Microsoft.AzureActiveDirectory](#microsoftazureactivedirectory)
 > - [AzureData](#microsoftazuredata)
 > - [Microsoft.AzureStack](#microsoftazurestack)
-> - [Microsoft. 批处理](#microsoftbatch)
+> - [Microsoft.Batch](#microsoftbatch)
 > - [Microsoft.BatchAI](#microsoftbatchai)
 > - [Microsoft.Billing](#microsoftbilling)
 > - [Microsoft.BingMaps](#microsoftbingmaps)
@@ -45,7 +45,7 @@ ms.locfileid: "80804786"
 > - [Microsoft.classicnetwork](#microsoftclassicnetwork)
 > - [Microsoft.ClassicStorage](#microsoftclassicstorage)
 > - [认知](#microsoftcognition)
-> - [Cognitiveservices account](#microsoftcognitiveservices)
+> - [Microsoft.CognitiveServices](#microsoftcognitiveservices)
 > - [Microsoft.Compute](#microsoftcompute)
 > - [Microsoft. 消耗](#microsoftconsumption)
 > - [Microsoft.Container](#microsoftcontainer)
@@ -99,13 +99,13 @@ ms.locfileid: "80804786"
 > - [microsoft.insights](#microsoftinsights)
 > - [Microsoft.IoTCentral](#microsoftiotcentral)
 > - [Microsoft.IoTSpaces](#microsoftiotspaces)
-> - [KeyVault](#microsoftkeyvault)
+> - [Microsoft.KeyVault](#microsoftkeyvault)
 > - [Kubernetes](#microsoftkubernetes)
 > - [Microsoft.Kusto](#microsoftkusto)
 > - [Microsoft.LabServices](#microsoftlabservices)
 > - [Microsoft.LocationBasedServices](#microsoftlocationbasedservices)
 > - [Microsoft.LocationServices](#microsoftlocationservices)
-> - [Microsoft. 逻辑](#microsoftlogic)
+> - [Microsoft.Logic](#microsoftlogic)
 > - [Microsoft.MachineLearning](#microsoftmachinelearning)
 > - [Microsoft.MachineLearningCompute](#microsoftmachinelearningcompute)
 > - [Microsoft.MachineLearningExperimentation](#microsoftmachinelearningexperimentation)
@@ -122,10 +122,10 @@ ms.locfileid: "80804786"
 > - [Microservices4Spring](#microsoftmicroservices4spring)
 > - [Microsoft.Migrate](#microsoftmigrate)
 > - [Microsoft.NetApp](#microsoftnetapp)
-> - [Microsoft 网络](#microsoftnetwork)
+> - [Microsoft.Network](#microsoftnetwork)
 > - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
 > - [ObjectStore](#microsoftobjectstore)
-> - [Microsoft.operationalinsights](#microsoftoperationalinsights)
+> - [Microsoft.OperationalInsights](#microsoftoperationalinsights)
 > - [为 microsoft.operationsmanagement](#microsoftoperationsmanagement)
 > - [Microsoft。对等互连](#microsoftpeering)
 > - [Microsoft.PolicyInsights](#microsoftpolicyinsights)
@@ -137,7 +137,7 @@ ms.locfileid: "80804786"
 > - [Microsoft.ProjectOxford](#microsoftprojectoxford)
 > - [ProviderHub](#microsoftproviderhub)
 > - [Microsoft 量子](#microsoftquantum)
-> - [Microsoft.recoveryservices](#microsoftrecoveryservices)
+> - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
 > - [RedHatOpenShift](#microsoftredhatopenshift)
 > - [Microsoft.Relay](#microsoftrelay)
 > - [Microsoft.ResourceGraph](#microsoftresourcegraph)
@@ -148,14 +148,14 @@ ms.locfileid: "80804786"
 > - [Microsoft.Security](#microsoftsecurity)
 > - [Microsoft.SecurityInsights](#microsoftsecurityinsights)
 > - [Microsoft.ServerManagement](#microsoftservermanagement)
-> - [Microsoft。](#microsoftservicebus)
+> - [Microsoft.ServiceBus](#microsoftservicebus)
 > - [Microsoft.ServiceFabric](#microsoftservicefabric)
 > - [Microsoft.ServiceFabricMesh](#microsoftservicefabricmesh)
 > - [Microsoft. 服务](#microsoftservices)
 > - [Microsoft.SignalRService](#microsoftsignalrservice)
 > - [SoftwarePlan](#microsoftsoftwareplan)
 > - [Microsoft.Solutions](#microsoftsolutions)
-> - [Microsoft .Sql](#microsoftsql)
+> - [Microsoft.Sql](#microsoftsql)
 > - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
 > - [Microsoft.SqlVM](#microsoftsqlvm)
 > - [Microsoft.Storage](#microsoftstorage)
@@ -177,7 +177,7 @@ ms.locfileid: "80804786"
 > - [VMwareCloudSimple](#microsoftvmwarecloudsimple)
 > - [VnfManager](#microsoftvnfmanager)
 > - [VSOnline](#microsoftvsonline)
-> - [Microsoft Web](#microsoftweb)
+> - [Microsoft.Web](#microsoftweb)
 > - [WindowsESU](#microsoftwindowsesu)
 > - [Microsoft.WindowsIoT](#microsoftwindowsiot)
 > - [Microsoft.WorkloadMonitor](#microsoftworkloadmonitor)
@@ -400,7 +400,7 @@ ms.locfileid: "80804786"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | cdnwebapplicationfirewallpolicies | 是 | 是 |
-> | profiles | 是 | 是 |
+> | 配置文件 | 是 | 是 |
 > | profiles/endpoints | 是 | 是 |
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
@@ -458,7 +458,7 @@ ms.locfileid: "80804786"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 帐户 | 是 | 是 |
+> | accounts | 是 | 是 |
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
@@ -511,7 +511,7 @@ ms.locfileid: "80804786"
 > | reservationrecommendations | 否 | 否 |
 > | reservationsummaries | 否 | 否 |
 > | reservationtransactions | 否 | 否 |
-> | 标记 | 否 | 否 |
+> | tags | 否 | 否 |
 > | tenants | 否 | 否 |
 > | terms | 否 | 否 |
 > | usagedetails | 否 | 否 |
@@ -565,7 +565,7 @@ ms.locfileid: "80804786"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 帐户 | 否 | 否 |
+> | accounts | 否 | 否 |
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 
@@ -579,7 +579,7 @@ ms.locfileid: "80804786"
 > | 导出 | 否 | 否 |
 > | externalsubscriptions | 否 | 否 |
 > | forecast | 否 | 否 |
-> | query | 否 | 否 |
+> | 查询 | 否 | 否 |
 > | reportconfigs | 否 | 否 |
 > | 报表 | 否 | 否 |
 > | showbackrules | 否 | 否 |
@@ -664,14 +664,14 @@ ms.locfileid: "80804786"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 帐户 | 是 | 是 |
+> | accounts | 是 | 是 |
 
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 帐户 | 是 | 是 |
+> | accounts | 是 | 是 |
 
 ## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
 
@@ -694,7 +694,7 @@ ms.locfileid: "80804786"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 帐户 | 是 | 是 |
+> | accounts | 是 | 是 |
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 
@@ -847,7 +847,7 @@ ms.locfileid: "80804786"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 帐户 | 否 | 否 |
+> | accounts | 否 | 否 |
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
@@ -1009,14 +1009,14 @@ ms.locfileid: "80804786"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 帐户 | 否 | 否 |
+> | accounts | 否 | 否 |
 
 ## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 帐户 | 否 | 否 |
+> | accounts | 否 | 否 |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
@@ -1051,7 +1051,7 @@ ms.locfileid: "80804786"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 帐户 | 否 | 否 |
+> | accounts | 否 | 否 |
 > | 帐户/工作区 | 否 | 否 |
 > | 帐户/工作区/项目 | 否 | 否 |
 > | teamaccounts | 否 | 否 |
@@ -1063,7 +1063,7 @@ ms.locfileid: "80804786"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 帐户 | 否 | 否 |
+> | accounts | 否 | 否 |
 
 ## <a name="microsoftmachinelearningoperationalization"></a>Microsoft.MachineLearningOperationalization
 
@@ -1078,7 +1078,7 @@ ms.locfileid: "80804786"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | workspaces | 否 | 否 |
-> | 工作区/计算 | 否 | 否 |
+> | workspaces / computes | 否 | 否 |
 
 ## <a name="microsoftmaintenance"></a>Microsoft. 维护
 
@@ -1121,7 +1121,7 @@ ms.locfileid: "80804786"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 帐户 | 是 | 是 |
+> | accounts | 是 | 是 |
 > | 帐户/privateatlases | 是 | 是 |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
@@ -1252,7 +1252,10 @@ ms.locfileid: "80804786"
 > | workspaces | 是 | 是 |
 
 > [!IMPORTANT]
-> 确保移到新订阅时，不会超出[订阅配额](azure-subscription-service-limits.md#azure-monitor-limits)。
+> 请确保移动到新订阅不超过[订阅配额](azure-subscription-service-limits.md#azure-monitor-limits)。
+
+> [!IMPORTANT]
+> 不能移动具有链接的自动化帐户的工作区。 在开始移动操作之前，请确保取消所有自动化帐户的链接。   
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 
@@ -1315,14 +1318,14 @@ ms.locfileid: "80804786"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 帐户 | 否 | 否 |
+> | accounts | 否 | 否 |
 
 ## <a name="microsoftprojectoxford"></a>Microsoft.ProjectOxford
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 帐户 | 否 | 否 |
+> | accounts | 否 | 否 |
 
 ## <a name="microsoftproviderhub"></a>ProviderHub
 
@@ -1389,7 +1392,7 @@ ms.locfileid: "80804786"
 > | ------------- | ----------- | ---------- |
 > | deploymentscripts | 否 | 否 |
 > | links | 否 | 否 |
-> | 标记 | 否 | 否 |
+> | tags | 否 | 否 |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
 
@@ -1523,6 +1526,7 @@ ms.locfileid: "80804786"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | instancepools | 否 | 否 |
+> | 位置 | 是 | 是 |
 > | managedinstances | 否 | 否 |
 > | managedinstances/databases | 否 | 否 |
 > | servers | 是 | 是 |
@@ -1701,7 +1705,7 @@ ms.locfileid: "80804786"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 帐户 | 是 | 是 |
+> | accounts | 是 | 是 |
 > | plans | 是 | 是 |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
@@ -1753,6 +1757,6 @@ ms.locfileid: "80804786"
 第三方服务当前不支持移动操作。
 
 ## <a name="next-steps"></a>后续步骤
-有关移动资源的命令，请参阅[将资源移动至新资源组或订阅](move-resource-group-and-subscription.md)。
+有关用于移动资源的命令，请参阅[将资源移到新资源组或订阅](move-resource-group-and-subscription.md)。
 
 若要以逗号分隔值文件的形式获取同一数据，请下载 [move-support-resources.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv)。

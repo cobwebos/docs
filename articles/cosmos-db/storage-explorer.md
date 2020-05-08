@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: dech
-ms.custom: seodec18
-ms.openlocfilehash: 914551bab47ad9db4e0bca4d53226fbae74b92f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, has-adal-ref
+ms.openlocfilehash: d2fe231dce26311268e578a495fb2ba7076651e0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411673"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608024"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>使用 Azure 存储资源管理器处理数据
 
@@ -30,9 +30,9 @@ ms.locfileid: "80411673"
 ## <a name="connect-to-an-azure-subscription"></a>连接到 Azure 订阅
 
 1. 安装 **Azure 存储资源管理器**之后，单击左侧的**插件**图标，如下图中所示：
-       
+
    ![插件图标](./media/storage-explorer/plug-in-icon.png)
- 
+
 2. 选择“添加 Azure 帐户”****，然后单击“登录”****。
 
    ![连接到 Azure 订阅](./media/storage-explorer/connect-to-azure-subscription.png)
@@ -100,27 +100,27 @@ ms.locfileid: "80411673"
 * 还可以将 Azure Cosmos DB 帐户、数据库、集合添加到“快速访问”  。
 * 通过“从此处搜索”  可以在所选路径下进行关键字搜索。
 
-    ![从此处搜索](./media/storage-explorer/search-from-here.png) 
+    ![从此处搜索](./media/storage-explorer/search-from-here.png)
 
 ### <a name="database-and-collection-management"></a>数据库和集合管理
-#### <a name="create-a-database"></a>创建数据库 
+#### <a name="create-a-database"></a>创建数据库
 -   右键单击 Azure Cosmos DB 帐户，选择“创建数据库”  ，输入数据库名称，然后按 **Enter** 以完成。
-       
-    ![创建数据库](./media/storage-explorer/create-database.png) 
+
+    ![创建数据库](./media/storage-explorer/create-database.png)
 
 #### <a name="delete-a-database"></a>删除数据库
 - 右键单击数据库，单击“删除数据库”  ，然后在弹出窗口中单击“是”  。 数据库节点会删除，并且 Azure Cosmos DB 帐户会自动刷新。
 
-    ![删除数据库 1](./media/storage-explorer/delete-database1.png)  
+    ![删除数据库 1](./media/storage-explorer/delete-database1.png)
 
-    ![删除数据库 2](./media/storage-explorer/delete-database2.png) 
+    ![删除数据库 2](./media/storage-explorer/delete-database2.png)
 
 #### <a name="create-a-collection"></a>创建集合
-1. 右键单击数据库，选择“创建集合”  ，然后提供以下信息，如“集合 ID”  、“存储容量”  等。单击“确定”  完成。 
+1. 右键单击数据库，选择“创建集合”  ，然后提供以下信息，如“集合 ID”  、“存储容量”  等。单击“确定”  完成。
 
     ![创建集合 1](./media/storage-explorer/create-collection.png)
 
-    ![创建集合 2](./media/storage-explorer/create-collection2.png) 
+    ![创建集合 2](./media/storage-explorer/create-collection2.png)
 
 2. 选择“无限制”以便能够指定分区键，然后单击“确定”完成操作。  
 
@@ -129,11 +129,11 @@ ms.locfileid: "80411673"
     ![分区键](./media/storage-explorer/partitionkey.png)
 
 #### <a name="delete-a-collection"></a>删除集合
-- 右键单击集合，单击“删除集合”  ，然后在弹出窗口中单击“是”  。 
+- 右键单击集合，单击“删除集合”  ，然后在弹出窗口中单击“是”  。
 
     集合节点会删除，并且数据库会自动刷新。
 
-    ![删除集合](./media/storage-explorer/delete-collection.png) 
+    ![删除集合](./media/storage-explorer/delete-collection.png)
 
 ### <a name="document-management"></a>文档管理
 
@@ -155,8 +155,8 @@ ms.locfileid: "80411673"
 ### <a name="graph-management"></a>图形管理
 
 #### <a name="create-and-modify-vertex"></a>创建和修改顶点
-1. 若要创建新顶点，请在左窗口中打开“图形”，单击“新建顶点”，编辑内容，然后单击“确定”。       
-2. 若要修改现有顶点，请在右窗格中单击铅笔图标。   
+1. 若要创建新顶点，请在左窗口中打开“图形”，单击“新建顶点”，编辑内容，然后单击“确定”。   
+2. 若要修改现有顶点，请在右窗格中单击铅笔图标。
 
     ![Graph](./media/storage-explorer/vertex.png)
 
@@ -193,7 +193,7 @@ ms.locfileid: "80411673"
     ![表查询](./media/storage-explorer/table-query.png)
 
 ### <a name="manage-stored-procedures-triggers-and-udfs"></a>管理存储过程、触发器和 UDF
-* 若要创建存储过程，请在左侧树中，右键单击“存储过程”  ，选择“创建存储过程”  ，在左侧输入名称，在右侧窗口中输入存储过程脚本，然后单击“创建”  。 
+* 若要创建存储过程，请在左侧树中，右键单击“存储过程”  ，选择“创建存储过程”  ，在左侧输入名称，在右侧窗口中输入存储过程脚本，然后单击“创建”  。
 * 还可以双击，进行更新，然后单击“更新”  保存，从而编辑现有存储过程，或单击“放弃”  以取消更改。
 
     ![存储过程](./media/storage-explorer/stored-procedure.png)
@@ -215,7 +215,7 @@ ms.locfileid: "80411673"
 
 + 你位于“透明代理”之后，这意味着某人（例如 IT 部门）在拦截 HTTPS 流量，将其解密后又使用自签名证书对其加密  。
 
-+ 正在运行软件，例如防病毒软件，该软件将自签名的 TLS/SSL 证书注入到收到的 HTTPS 消息中。
++ 你正在运行的软件（如防病毒软件）正在将自签名 TLS/SSL 证书注入收到的 HTTPS 消息中。
 
 存储资源管理器在遇到其中一个这样的“自签名证书”时，将再也无法判断收到的 HTTPS 消息是否已被篡改。 但若拥有一份自签名证书的副本，则可让存储资源管理器信任它。 若无法确定谁在注入证书，则可自行尝试通过以下步骤找到它：
 
@@ -248,7 +248,7 @@ ms.locfileid: "80411673"
 
 ![console](./media/storage-explorer/console.png)
 
-#### <a name="unable-to-see-the-authentication-page"></a>无法查看身份验证页 
+#### <a name="unable-to-see-the-authentication-page"></a>无法查看身份验证页
 
 如果无法看到身份验证页面：
 
@@ -273,7 +273,7 @@ ms.locfileid: "80411673"
 
 ### <a name="httphttps-proxy-issue"></a>Http/Https 代理问题
 
-在 ASE 中配置 http/https 代理时，无法列出左侧树中的 Azure Cosmos DB 节点。 这是一个已知问题，下一版本会修复此问题。 目前可以在 Azure 门户中使用 Azure Cosmos DB 数据资源管理器作为解决方法。 
+在 ASE 中配置 http/https 代理时，无法列出左侧树中的 Azure Cosmos DB 节点。 这是一个已知问题，下一版本会修复此问题。 目前可以在 Azure 门户中使用 Azure Cosmos DB 数据资源管理器作为解决方法。
 
 ### <a name="development-node-under-local-and-attached-node-issue"></a>“本地和附加”节点下的“开发”节点问题
 
@@ -289,7 +289,7 @@ ms.locfileid: "80411673"
 
 ### <a name="expand-azure-cosmos-db-node-error"></a>展开 Azure Cosmos DB 节点错误
 
-尝试展开左侧的树节点时可能会看到以下错误。 
+尝试展开左侧的树节点时可能会看到以下错误。
 
 ![展开错误](./media/storage-explorer/expand-error.png)
 
@@ -306,4 +306,3 @@ ms.locfileid: "80411673"
 
 * 观看以下视频，了解如何在 Azure 存储资源管理器中使用 Azure Cosmos DB：[在 Azure 存储资源管理器中使用 Azure Cosmos DB](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be)。
 * 在[存储资源管理器入门](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)中了解有关存储资源管理器和连接更多服务的详细信息。
-

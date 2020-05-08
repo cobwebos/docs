@@ -16,12 +16,13 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72dbb404d1b4d3618909e0233f332d2f98b51516
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: f55f291575aea40cba8551a5fec535f63a90150c
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80049734"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610439"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>排查 Azure AD 连接问题
 本文说明 Azure AD Connect 与 Azure AD 之间的连接的工作方式，以及如何排查连接问题。 这些问题很有可能出现在包含代理服务器的环境中。
@@ -31,7 +32,7 @@ Azure AD Connect 使用现代身份验证（使用 ADAL 库）来进行身份验
 
 在本文中，我们说明了 Fabrikam 如何通过其代理连接到 Azure AD。 代理服务器名为 fabrikamproxy，并使用端口 8080。
 
-首先，我们需要确保正确配置 [machine.config](how-to-connect-install-prerequisites.md#connectivity)。   
+首先，我们需要确保正确配置 [machine.config](how-to-connect-install-prerequisites.md#connectivity)。 
 ![machineconfig](./media/tshoot-connect-connectivity/machineconfig.png)
 
 > [!NOTE]
@@ -58,25 +59,24 @@ Azure AD Connect 使用现代身份验证（使用 ADAL 库）来进行身份验
 以下问题是在安装向导中遇到的最常见错误。
 
 ### <a name="the-installation-wizard-has-not-been-correctly-configured"></a>未正确配置安装向导
-当向导本身无法访问代理时，会出现此错误。  
+当向导本身无法访问代理时，会出现此错误。
 ![nomachineconfig](./media/tshoot-connect-connectivity/nomachineconfig.png)
 
 * 如果看到此错误，请检查是否已正确配置 [machine.config](how-to-connect-install-prerequisites.md#connectivity)。
 * 如果配置看起来正确，请按照 [验证代理连接](#verify-proxy-connectivity) 中的步骤，查看问题是否也出现在向导外部的位置。
 
 ### <a name="a-microsoft-account-is-used"></a>已使用 Microsoft 帐户
-如果使用的是 Microsoft 帐户而不是学校或组织帐户，将会看到一个常规错误。    
+如果使用的是 Microsoft 帐户而不是学校或组织帐户，将会看到一个常规错误。  
 ![A Microsoft Account is used](./media/tshoot-connect-connectivity/unknownerror.png)
 
 ### <a name="the-mfa-endpoint-cannot-be-reached"></a>无法访问 MFA 终结点
-如果无法访问终结点 **https://secure.aadcdn.microsoftonline-p.com** ，并且全局系统管理员启用了 MFA，则会出现此错误。  
+如果无法访问终结点 **https://secure.aadcdn.microsoftonline-p.com** ，并且全局系统管理员启用了 MFA，则会出现此错误。
 ![nomachineconfig](./media/tshoot-connect-connectivity/nomicrosoftonlinep.png)
 
 * 如果看到此错误，请检查是否已将 **secure.aadcdn.microsoftonline-p.com** 终结点添加到代理。
 
 ### <a name="the-password-cannot-be-verified"></a>无法验证密码
-如果安装向导已成功连接到 Azure AD，但无法验证密码本身，则会看到此错误：  
-![密码不正确。](./media/tshoot-connect-connectivity/badpassword.png)
+如果安装向导已成功连接到 Azure AD，但无法验证密码本身，则会看到此错误： ![密码错误。](./media/tshoot-connect-connectivity/badpassword.png)
 
 * 密码是否为临时密码并且必须更改？ 它是否确实为正确的密码？ 请尝试登录到 `https://login.microsoftonline.com` （在 Azure AD Connect 服务器以外的另一台计算机上），并验证该帐户是否可用。
 
@@ -166,7 +166,7 @@ Azure AD Connect 向 Azure AD 发送导出请求时，在生成响应之前，Az
 未能授权用户在 Azure AD 中执行操作。
 
 ### <a name="authentication-canceled"></a>身份验证已取消
-多重身份验证（MFA）质询已取消。
+多重身份验证 (MFA) 质询已取消。
 
 <div id="connect-msolservice-failed">
 <!--
@@ -186,7 +186,7 @@ Azure AD Connect 向 Azure AD 发送导出请求时，在生成响应之前，Az
 </div>
 
 ### <a name="azure-ad-global-admin-role-needed"></a>需要 Azure AD 全局管理员角色
-用户已成功完成身份验证。 但用户未分配有全局管理员角色。 此处介绍[如何将全局管理员角色分配给](../users-groups-roles/directory-assign-admin-roles.md)用户。 
+用户已成功完成身份验证。 但用户未分配有全局管理员角色。 此处介绍[如何将全局管理员角色分配给](../users-groups-roles/directory-assign-admin-roles.md)用户。
 
 <div id="privileged-identity-management">
 <!--
@@ -219,21 +219,21 @@ Azure AD Connect 向 Azure AD 发送导出请求时，在生成响应之前，Az
 身份验证成功。 无法从 Azure AD 检索域信息。
 
 ### <a name="unspecified-authentication-failure"></a>身份验证失败，出现未知错误
-在安装向导中显示为“意外错误”。 如果尝试使用 **Microsoft 帐户**而不是**学校或组织**帐户，可能会发生这种错误。
+在安装向导中显示为“意外错误”。 如果尝试使用 Microsoft 帐户而不是学校或组织帐户，可能会发生这种错误。  
 
-## <a name="troubleshooting-steps-for-previous-releases"></a>旧版疑难解答步骤
+## <a name="troubleshooting-steps-for-previous-releases"></a>针对旧版本的疑难解答步骤
 从内部版本号 1.1.105.0（于 2016 年 2 月发行）开始已停用登录助理。 不再需要用到本部分所述的配置，这些内容仅供参考。
 
-要使单一登录助理正常工作，必须配置 winhttp。 可以使用 [**netsh**](how-to-connect-install-prerequisites.md#connectivity) 完成此配置。  
+要使单一登录助理正常工作，必须配置 winhttp。 可以使用 [netsh](how-to-connect-install-prerequisites.md#connectivity) 完成此配置。 
 ![netsh](./media/tshoot-connect-connectivity/netsh.png)
 
 ### <a name="the-sign-in-assistant-has-not-been-correctly-configured"></a>未正确配置登录助理
-当登录助理无法访问代理或代理不允许该请求时，将出现此错误。
+当登录助理无法访问代理或代理不允许该请求时，此错误出现。
 ![nonetsh](./media/tshoot-connect-connectivity/nonetsh.png)
 
 * 如果看到此错误，请在 [netsh](how-to-connect-install-prerequisites.md#connectivity) 中查看代理配置并确认配置是否正确。
   ![netshshow](./media/tshoot-connect-connectivity/netshshow.png)
-* 如果配置看起来正确，请按照[验证代理连接](#verify-proxy-connectivity)中的步骤，查看问题是否也出现在向导外部的位置。
+* 如果配置看起来正确，请按照 [验证代理连接](#verify-proxy-connectivity) 中的步骤，查看问题是否也出现在向导外部的位置。
 
 ## <a name="next-steps"></a>后续步骤
 了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
