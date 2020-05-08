@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9f519022fffe98c565c3b2d30f6578b9ebb70c57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f0644c25d0047f774fe8f99efa34a33e10d7b2b
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81428012"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983289"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>向工作区托管标识授予权限（预览）
 
-本文介绍如何向 Azure synapse 工作区中的托管标识授予权限。 权限进而允许通过 Azure 门户访问工作区中的 SQL 池和 ADLS gen2 存储帐户。
+本文介绍如何向 Azure synapse 工作区中的托管标识授予权限。 权限进而允许访问工作区中的 SQL 池，并通过 Azure 门户 ADLS Gen2 存储帐户。
 
 >[!NOTE]
 >在此文档的剩余部分中，我们将此工作区托管标识称为托管标识。
@@ -29,25 +29,25 @@ ms.locfileid: "81428012"
 
 ![SQL 池上的 CONTROL 权限](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-16.png)
 
-## <a name="grant-the-managed-identity-permissions-to-adls-gen2-storage-account"></a>向托管标识授予对 ADLS gen2 存储帐户的权限
+## <a name="grant-the-managed-identity-permissions-to-adls-gen2-storage-account"></a>向托管标识授予对 ADLS Gen2 存储帐户的权限
 
-创建 Azure Synapse 工作区需要 ADLS gen2 存储帐户。 若要在 Azure Synapse 工作区中成功启动 Spark 池，Azure Synapse 托管标识需要此存储帐户上的 "*存储 Blob 数据参与者*" 角色。 Azure Synapse 中的管道业务流程也可以从此角色获益。
+创建 Azure Synapse 工作区需要 ADLS Gen2 存储帐户。 若要在 Azure Synapse 工作区中成功启动 Spark 池，Azure Synapse 托管标识需要此存储帐户上的 "*存储 Blob 数据参与者*" 角色。 Azure Synapse 中的管道业务流程也可以从此角色获益。
 
 ### <a name="grant-permissions-to-managed-identity-during-workspace-creation"></a>创建工作区时向托管标识授予权限
 
-使用 Azure 门户创建 Azure Synapse 工作区后，Azure Synapse 将尝试向托管标识授予存储 Blob 数据参与者角色。 在 "**基本**信息" 选项卡中提供 ADLS gen2 存储帐户的详细信息。
+使用 Azure 门户创建 Azure Synapse 工作区后，Azure Synapse 将尝试向托管标识授予存储 Blob 数据参与者角色。 你将在 "**基本**信息" 选项卡中提供 ADLS Gen2 存储帐户的详细信息。
 
 ![工作区创建流中的 "基本信息" 选项卡](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-1.png)
 
-在 "**帐户名称**" 和 "**文件系统名称**" 中选择 ADLS gen2 存储帐户和文件系统。
+在 "**帐户名称**" 和 "**文件系统名称**" 中选择 ADLS Gen2 存储帐户和文件系统。
 
-![提供 ADLS gen2 存储帐户详细信息](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-2.png)
+![提供 ADLS Gen2 存储帐户详细信息](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-2.png)
 
-如果工作区创建者也是 ADLS gen2 存储帐户的**所有者**，则 Azure Synapse 会将*存储 Blob 数据参与者*角色分配给托管标识。 你将在输入的存储帐户详细信息下看到以下消息。
+如果工作区创建者也是 ADLS Gen2 存储帐户的**所有者**，则 Azure Synapse 会将*存储 Blob 数据参与者*角色分配给托管标识。 你将在输入的存储帐户详细信息下看到以下消息。
 
 ![成功的存储 Blob 数据参与者分配](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-3.png)
 
-如果工作区创建者不是 ADLS gen2 存储帐户的所有者，则 Azure Synapse 不会将*存储 Blob 数据参与者*角色分配给托管标识。 显示在存储帐户详细信息下面的消息将通知工作区创建者他们没有足够的权限向托管标识授予*存储 Blob 数据参与者*角色。
+如果工作区创建者不是 ADLS Gen2 存储帐户的所有者，则 Azure Synapse 不会将*存储 Blob 数据参与者*角色分配给托管标识。 显示在存储帐户详细信息下面的消息将通知工作区创建者他们没有足够的权限向托管标识授予*存储 Blob 数据参与者*角色。
 
 ![不成功的存储 Blob 数据参与者分配](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-4.png)
 
@@ -55,21 +55,21 @@ ms.locfileid: "81428012"
 
 ### <a name="grant-permissions-to-managed-identity-after-workspace-creation"></a>创建工作区后向托管标识授予权限
 
-在工作区创建期间，如果未将*存储 Blob 数据参与者*分配给托管标识，则 ADLS gen2 存储帐户的**所有者**会手动将该角色分配给该标识。 以下步骤将帮助你完成手动分配。
+在工作区创建期间，如果未将*存储 Blob 数据参与者*分配给托管标识，则 ADLS Gen2 存储帐户的**所有者**将手动将该角色分配给该标识。 以下步骤将帮助你完成手动分配。
 
-#### <a name="step-1-navigate-to-the-adls-gen2-storage-account-in-azure-portal"></a>步骤1：导航到 Azure 门户中的 ADLS gen2 存储帐户
+#### <a name="step-1-navigate-to-the-adls-gen2-storage-account-in-azure-portal"></a>步骤1：导航到 Azure 门户中的 ADLS Gen2 存储帐户
 
-在 Azure 门户中，打开 ADLS gen2 存储帐户，并从左侧导航栏中选择 "**概述**"。 只需将*存储 Blob 数据参与者*角色分配到容器或文件系统级别。 选择“容器”****。  
-![ADLS gen2 存储帐户概述](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-5.png)
+在 Azure 门户中，打开 ADLS Gen2 存储帐户，并从左侧导航栏中选择 "**概述**"。 只需将*存储 Blob 数据参与者*角色分配到容器或文件系统级别。 选择“容器”****。  
+![ADLS Gen2 存储帐户概述](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-5.png)
 
 #### <a name="step-2-select-the-container"></a>步骤2：选择容器
 
 托管标识应具有在创建工作区时提供的容器（文件系统）的数据访问权限。 可以在 Azure 门户中找到此容器或文件系统。 在 Azure 门户中打开 Azure Synapse 工作区，然后从左侧导航栏中选择 "**概述**" 选项卡。
-![ADLS gen2 存储帐户容器](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-7.png)
+![ADLS Gen2 存储帐户容器](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-7.png)
 
 
 选择相同的容器或文件系统，以向托管标识授予*存储 Blob 数据参与者*角色。
-![ADLS gen2 存储帐户容器选择](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-6.png)
+![ADLS Gen2 存储帐户容器选择](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-6.png)
 
 #### <a name="step-3-navigate-to-access-control"></a>步骤3：导航到访问控制
 
@@ -114,7 +114,7 @@ ms.locfileid: "81428012"
 ![验证角色分配](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-14.png)
 
 应会在 "**存储 Blob 数据参与者**" 部分下列出托管标识，并向其分配了 "*存储 blob 数据参与者*" 角色。 
-![ADLS gen2 存储帐户容器选择](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-15.png)
+![ADLS Gen2 存储帐户容器选择](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-15.png)
 
 ## <a name="next-steps"></a>后续步骤
 

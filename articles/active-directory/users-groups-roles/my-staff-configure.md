@@ -9,16 +9,16 @@ ms.topic: article
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.date: 04/23/2020
+ms.date: 05/01/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 282946a023e4e79ee79b05cc2a317efc5a4056e4
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: b88f4aad650d77fea12677e61d3f249a77367e6f
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82165853"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690693"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>利用我的员工管理用户（预览）
 
@@ -26,9 +26,28 @@ ms.locfileid: "82165853"
 
 在为你的组织配置员工之前，我们建议你查看此文档以及[用户文档](../user-help/my-staff-team-manager.md)，以确保你了解此功能对用户的功能和影响。 你可以利用用户文档来训练和准备用户以获得新体验，并帮助确保成功推出。
 
+面向用户的基于短信的身份验证是 Azure Active Directory 的一项公共预览版功能。 有关预览的详细信息，请参阅[Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+
 ## <a name="how-my-staff-works"></a>我的员工工作方式
 
 我的员工基于管理单元（澳大利亚），这是资源的容器，可用于限制角色分配的管理控制的作用域。 在我的工作人员中，使用了澳大利亚来定义组织用户（如商店或部门）的子集。 例如，可以将团队经理分配到其作用域为一个或多个澳大利亚的角色。 在以下示例中，用户已被授予身份验证管理角色，这三个澳大利亚是角色的作用域。 有关管理单元的详细信息，请参阅[Azure Active Directory 中的管理单元管理](directory-administrative-units.md)。
+
+## <a name="before-you-begin"></a>准备阶段
+
+需有以下资源和特权才能完成本文：
+
+* 一个有效的 Azure 订阅。
+
+  * 如果你没有 Azure 订阅，请[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* 一个与订阅关联的 Azure Active Directory 租户。
+
+  * 如果需要，请[创建一个 Azure Active Directory 租户](../fundamentals/sign-up-organization.md)或[将 Azure 订阅关联到你的帐户](../fundamentals/active-directory-how-subscriptions-associated-directory.md)。
+* 需要 Azure AD 租户中的*全局管理员*权限才能启用基于 SMS 的身份验证。
+* 短信身份验证方法策略中启用的每个用户都必须获得许可，即使他们不使用该方法也是如此。 每个启用的用户必须拥有以下 Azure AD 或 Microsoft 365 许可证之一：
+
+  * [Azure AD Premium P1 或 P2](https://azure.microsoft.com/pricing/details/active-directory/)
+  * [Microsoft 365 （M365） F1 或 F3](https://www.microsoft.com/licensing/news/m365-firstline-workers)
+  * [企业移动性 + 安全性（EMS） e3 或 e5](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/compare-plans-and-pricing)或[Microsoft 365 （M365） e3 或 e5](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans)
 
 ## <a name="how-to-enable-my-staff"></a>如何启用我的员工
 
@@ -47,7 +66,7 @@ ms.locfileid: "82165853"
 
 强烈建议使用[Azure AD 的条件性访问策略](https://docs.microsoft.com/azure/active-directory/conditional-access/)来保护我的员工。 若要将条件访问策略应用到我的员工，必须使用 PowerShell 手动创建 "我的员工服务主体"。
 
-### <a name="apply-a-----conditional-access-policy-to-my-staff"></a>将条件性访问策略应用于我的员工
+### <a name="apply-a-conditional-access-policy-to-my-staff"></a>将条件性访问策略应用于我的员工
 
 1. 安装[Microsoft Graph Beta PowerShell cmdlet](https://github.com/microsoftgraph/msgraph-sdk-powershell/blob/dev/samples/0-InstallModule.ps1)。
 1. 运行以下命令：
@@ -62,13 +81,6 @@ ms.locfileid: "82165853"
 ## <a name="using-my-staff"></a>使用我的员工
 
 当用户转到我的员工时，他们将显示具有管理权限的[管理单元](directory-administrative-units.md)的名称。 在[我的员工用户文档](../user-help/my-staff-team-manager.md)中，我们将使用术语 "位置" 来表示管理单元。 如果管理员的权限没有 AU 范围，则这些权限将应用于整个组织。 启用我的人员后，已被授予并已分配有管理角色的用户可以通过[https://mystaff.microsoft.com](https://mystaff.microsoft.com)访问。 他们可以选择 AU 来查看该 AU 中的用户，并选择用户以打开其配置文件。
-
-## <a name="licenses"></a>许可证
-
-在我的员工中启用的每个用户都必须获得许可，即使他们不使用我的员工门户也是如此。 每个启用的用户都必须具有下列 Azure AD 之一或 Microsoft 365 许可证：
-
-- Azure AD Premium P1 或 P2
-- Microsoft 365 F1 或 F3
 
 ## <a name="reset-a-users-password"></a>重置用户密码
 

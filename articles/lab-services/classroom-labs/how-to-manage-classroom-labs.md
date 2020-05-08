@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 46c53c99c12ade986ab913bf013b652a931a4d22
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed1c2f14ca5a791743a95cc50e5af0c29c74fefe
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257736"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983306"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>管理 Azure 实验室服务中的教室实验室 
 本文介绍如何创建和删除教室实验室。 它还说明如何查看实验室帐户中的所有教室实验室。 
@@ -104,9 +104,10 @@ ms.locfileid: "81257736"
 | 小型 | 2 | 3.5 GB | 此大小最适用于命令行、打开 web 浏览器、低流量 web 服务器、小到中型数据库。 |
 | 中 | 4 | 7 GB | 此大小最适合用于关系数据库、内存中缓存和分析 | 
 | 中（嵌套虚拟化） | 4 | 16 GB | 此大小最适合用于关系数据库、内存中缓存和分析。 此大小还支持嵌套虚拟化。 <p>如果每个学生都需要多个 Vm，则可以使用此大小。 教师可以使用嵌套虚拟化在虚拟机中设置几个小大小的嵌套虚拟机。 </p> |
-| 大型 | 8 | 32 GB | 此大小最适用于需要更快的 Cpu、更好的本地磁盘性能、大型数据库、大内存缓存的应用程序。 此大小还支持嵌套虚拟化 |  
-| 小型 GPU （可视化效果） | 6 | 56 GB | 此大小最适合用于使用框架（如 OpenGL 和 DirectX）进行远程可视化、流式处理、游戏、编码。 | 
 | 小型 GPU （计算） | 6 | 56 GB | 此大小最适用于计算密集型和网络密集型应用程序，如人工智能和深度学习应用程序。 | 
+| 小型 GPU （可视化效果） | 6 | 56 GB | 此大小最适合用于使用框架（如 OpenGL 和 DirectX）进行远程可视化、流式处理、游戏、编码。 | 
+| 大型 | 8 | 16 GB | 此大小最适用于需要更快的 Cpu、更好的本地磁盘性能、大型数据库、大内存缓存的应用程序。 |
+| 大（嵌套虚拟化） | 8 | 32 GB | 此大小最适用于需要更快的 Cpu、更好的本地磁盘性能、大型数据库、大内存缓存的应用程序。 此大小还支持嵌套虚拟化。 |  
 | 中等 GPU （可视化效果） | 12 | 112 GB | 此大小最适合用于使用框架（如 OpenGL 和 DirectX）进行远程可视化、流式处理、游戏、编码。 | 
 
 > [!NOTE]

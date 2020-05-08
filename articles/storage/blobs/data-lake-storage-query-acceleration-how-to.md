@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: jamsbak
-ms.openlocfilehash: b71d4e0eab0c1c1a7cfaf6e5bf9169776308fd3b
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
-ms.translationtype: HT
+ms.openlocfilehash: d7213bb44503fbe191a69683188bdea6976827ee
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583846"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930074"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration-preview"></a>使用 Azure Data Lake Storage 查询加速来筛选数据（预览）
 
@@ -24,7 +24,7 @@ ms.locfileid: "82583846"
 > [!NOTE]
 > 查询加速功能处于公共预览阶段，在加拿大中部和法国中部区域提供。 若要查看限制，请参阅[已知问题](data-lake-storage-known-issues.md)一文。 若要注册预览版，请参阅[此窗体](https://aka.ms/adls/qa-preview-signup)。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -244,7 +244,7 @@ class ErrorHandler : IBlobQueryErrorReceiver
 {
     public void ReportError(BlobQueryError err)
     {
-        Console.Error.WriteLine(String.Format("Error: {1}:{2}", err.Name, err.Description));
+        Console.Error.WriteLine($"Error: {err.Name}:{ err.Description }");
     }
 }
 

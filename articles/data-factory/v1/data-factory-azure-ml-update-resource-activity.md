@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: afc79badd19fa180e631f1f8fa9735567a0b1e33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 83cb62efd98615b7eda7f52ebafe95dedc282355
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74978707"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930448"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>使用更新资源活动更新 Azure 机器学习模型
 
@@ -44,7 +44,7 @@ ms.locfileid: "74978707"
 1. 在[Azure 机器学习 Studio （经典）](https://studio.azureml.net)中创建试验。
 2. 如果对模型感到满意，请使用 Azure 机器学习 Studio （经典）发布 web 服务，以进行**训练试验**和评分/预测性**实验**。
 
-下表介绍了本示例所用的 Web 服务。  有关详细信息，请参阅[以编程方式重新定型机器学习模型](../../machine-learning/machine-learning-retrain-models-programmatically.md)。
+下表介绍了本示例所用的 Web 服务。  有关详细信息，请参阅[以编程方式重新训练机器学习 Studio （经典）模型](../../machine-learning/studio/retrain-machine-learning-model.md)。
 
 - **定型 Web 服务** - 接收定型数据和生成定型模型。 重新定型的输出是 Azure Blob 存储中的 .ilearner 文件。 将训练实验作为 Web 服务发布时，会自动创建**默认终结点**。 还可创建更多终结点，但本示例仅使用默认终结点。
 - **评分 Web 服务** - 接收未标记的数据示例并进行预测。 预测输出可能采用多种形式，例如 .csv 文件或 Azure SQL 数据库中的行，具体取决于实验的配置。 将预测实验作为 Web 服务发布时，会自动创建默认终结点。 

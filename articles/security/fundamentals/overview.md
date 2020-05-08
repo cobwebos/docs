@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: a7957c7cbcfa511ea441d8c7bd4371f56ab87560
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b39eb24b5611e36d14b151aaec96941ff52f3dfa
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461678"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731689"
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性简介
 ## <a name="overview"></a>概述
@@ -266,9 +266,9 @@ Web 应用程序防火墙是 [Azure 应用程序网关](../../application-gatewa
 ### <a name="azure-load-balancer"></a>Azure 负载均衡器
 [Azure 负载均衡器](../../load-balancer/load-balancer-overview.md)为应用程序提供高可用性和网络性能。 它是第 4 层（TCP、UDP）类型的负载均衡器，可在负载均衡集中定义的运行状况良好的服务实例之间分配传入流量。 可以将 Azure 负载均衡器配置为：
 
--   对传入到虚拟机的 Internet 流量进行负载均衡。 此配置称为[面向 Internet 的负载均衡](../../load-balancer/concepts-limitations.md#publicloadbalancer)。
+-   对传入到虚拟机的 Internet 流量进行负载均衡。 此配置称为[公共负载平衡](../../load-balancer/components.md#frontend-ip-configurations)。
 
--   对虚拟网络中虚拟机之间的流量、云服务中虚拟机之间的流量或本地计算机和跨界虚拟网络中虚拟机之间的流量进行负载均衡。 此配置称为[内部负载均衡](../../load-balancer/concepts-limitations.md#internalloadbalancer)。
+-   对虚拟网络中虚拟机之间的流量、云服务中虚拟机之间的流量或本地计算机和跨界虚拟网络中虚拟机之间的流量进行负载均衡。 此配置称为[内部负载均衡](../../load-balancer/components.md#frontend-ip-configurations)。
 
 - 将外部流量转发到特定的虚拟机
 

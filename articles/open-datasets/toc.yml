@@ -9,10 +9,10 @@
 - name: 教程
   items:
     - name: 使用自动化机器学习的回归
-      href: /azure/machine-learning/service/tutorial-auto-train-models?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
+      href: /azure/machine-learning/tutorial-auto-train-models?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
     - name: 扩充图像分类模型
-      href: /azure/machine-learning/service/tutorial-train-models-with-aml?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
-- name: 操作方法指南
+      href: /azure/machine-learning/tutorial-train-models-with-aml?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
+- name: 操作指南
   items:
     - name: Azure 机器学习中的数据集
       href: ../machine-learning/how-to-create-register-datasets.md?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
@@ -38,8 +38,8 @@
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/open-datasets/'
     - name: 区域可用性
-      href: 'https://azure.microsoft.com/regions/services/'
+      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/?products=open-datasets&regions=non-regional'
     - name: 用户论坛
       href: 'https://aka.ms/open-datasets-forum'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-open-datasets'

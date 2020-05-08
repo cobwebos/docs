@@ -3,12 +3,13 @@ title: 使用 Azure Active Directory 对 Azure Batch 服务进行身份验证
 description: Batch 支持 Azure AD 在 Batch 服务中进行身份验证。 了解如何通过两种方式之一进行身份验证。
 ms.topic: article
 ms.date: 01/28/2020
-ms.openlocfilehash: e1f95871788b4b9848ba622da1c8eb0cc83c07aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 3fa1aa2bb7389200fe5e5a80598686143344d636
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116173"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608466"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>使用 Active Directory 对 Batch 服务解决方案进行身份验证
 
@@ -35,9 +36,9 @@ Azure Batch 支持使用 [Azure Active Directory][aad_about] (Azure AD) 进行�
 
 `https://login.microsoftonline.com/<tenant-id>`
 
-> [!NOTE] 
-> 使用服务主体进行验证时，需要特定于租户的终结点。 
-> 
+> [!NOTE]
+> 使用服务主体进行验证时，需要特定于租户的终结点。
+>
 > 使用集成身份验证进行验证时，虽然特定于租户的终结点为可选，但仍推荐。 然而，还可以使用 Azure AD 常用终结点。 未提供特定租户时，该常用终结点可提供泛型凭据收集接口。 常用终结点为 `https://login.microsoftonline.com/common`。
 >
 >
@@ -126,7 +127,7 @@ Azure Batch 资源终结点  用于获取对 Batch 服务的请求进行身份�
 1. 在 Batch 帐户的“设置”  部分，选择“访问控制(标识和访问管理)”  。
 1. 选择“角色分配”选项卡  。
 1. 选择“添加角色分配”  。
-1. 在“角色”  下拉列表中，为应用程序选择参与者  或读者  角色。 有关这些角色的详细信息，请参阅 [Azure 门户中基于角色的访问控制入门](../role-based-access-control/overview.md)。  
+1. 在“角色”  下拉列表中，为应用程序选择参与者  或读者  角色。 有关这些角色的详细信息，请参阅 [Azure 门户中基于角色的访问控制入门](../role-based-access-control/overview.md)。
 1. 在“选择”  字段中，输入应用程序的名称。 从列表中选择你的应用程序，然后选择“保存”  。
 
 现在，应用程序应出现在访问控制设置中，同时已分配有 RBAC 角色。
@@ -209,7 +210,7 @@ Azure Batch 资源终结点  用于获取对 Batch 服务的请求进行身份�
 此部分中的代码示例演示如何使用集成身份验证和服务主体通过 Azure AD 进行验证。 这些代码示例大多使用了 .NET，但概念与其他语言类似。
 
 > [!NOTE]
-> Azure AD 身份验证令牌在一小时后过期。 使用生存期较长的 **BatchClient** 对象时，我们建议每次发出请求都从 ADAL 中检索令牌，确保始终获得有效的令牌。 
+> Azure AD 身份验证令牌在一小时后过期。 使用生存期较长的 **BatchClient** 对象时，我们建议每次发出请求都从 ADAL 中检索令牌，确保始终获得有效的令牌。
 >
 >
 > 要在 .NET 中实现此目的，可编写一个方法从 Azure AD 中检索令牌，然后将该方法作为委派传递给 **BatchTokenCredentials** 对象。 这样，每次批处理服务发出请求都会调用该委派方法，确保提供有效的令牌。 默认情况下，ADAL 会缓存令牌，以便只在必要时，才从 Azure AD 中检索新令牌。 有关 Azure AD 中的令牌的详细信息，请参阅 [Azure AD 的身份验证方案][aad_auth_scenarios]。
@@ -266,9 +267,9 @@ public static async Task<string> GetAuthenticationTokenAsync()
     var authContext = new AuthenticationContext(AuthorityUri);
 
     // Acquire the authentication token from Azure AD.
-    var authResult = await authContext.AcquireTokenAsync(BatchResourceUri, 
-                                                        ClientId, 
-                                                        new Uri(RedirectUri), 
+    var authResult = await authContext.AcquireTokenAsync(BatchResourceUri,
+                                                        ClientId,
+                                                        new Uri(RedirectUri),
                                                         new PlatformParameters(PromptBehavior.Auto));
 
     return authResult.AccessToken;
@@ -307,7 +308,7 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 private const string AuthorityUri = "https://login.microsoftonline.com/<tenant-id>";
 ```
 
-引用 Batch 服务资源终结点：  
+引用 Batch 服务资源终结点：
 
 ```csharp
 private const string BatchResourceUri = "https://batch.core.windows.net/";
@@ -372,7 +373,7 @@ from azure.common.credentials import ServicePrincipalCredentials
 TENANT_ID = "<tenant-id>"
 ```
 
-引用 Batch 服务资源终结点：  
+引用 Batch 服务资源终结点：
 
 ```python
 RESOURCE = "https://batch.core.windows.net/"

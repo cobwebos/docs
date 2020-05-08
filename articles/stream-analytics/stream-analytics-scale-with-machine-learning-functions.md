@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 5b08625d055063b3804a35a3344ff01c7edb79de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e2c99274df90d232754c862f3174b5767392cec
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80067002"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929037"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>使用 Azure 机器学习工作室（经典）函数缩放流分析作业
 
@@ -58,7 +58,7 @@ ms.locfileid: "80067002"
 
 还可以在机器学习 Web 服务中配置“最大并发调用数”。 建议将此参数设置为最大值（目前为200）。
 
-有关此设置的详细信息，请参阅[机器学习 Web 服务的缩放文章](../machine-learning/studio/scaling-webservice.md)。
+有关此设置的详细信息，请参阅[机器学习 Web 服务的缩放文章](../machine-learning/studio/create-endpoint.md)。
 
 ## <a name="example--sentiment-analysis"></a>示例 – 情绪分析
 以下示例包括具有情绪分析机器学习函数的流分析作业，如[流分析机器学习集成教程](stream-analytics-machine-learning-integration-tutorial.md)所述。

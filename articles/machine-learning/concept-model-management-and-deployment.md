@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7857d11c625911cd1b49dfcf0e0d612fc6a3871e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 12d86f9415f7f5b813d2dce8eb3ad4bb63dec30c
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81314308"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929751"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：模型管理、部署和监视 Azure 机器学习
 
@@ -153,7 +153,7 @@ Azure ML 使你可以使用元数据来跟踪所有 ML 资产的端到端审核�
 - 使用[Interpretability](how-to-machine-learning-interpretability.md) ，可以对模型进行说明，满足法规遵从性要求，并了解模型到达给定输入的结果。
 - Azure ML 运行历史记录存储用于定型模型的代码、数据和计算的快照。
 - Azure ML 模型注册表捕获与模型关联的所有元数据（训练该模型的试验、模型的部署位置、其部署是否正常）。
-- [通过与 Azure 事件网格集成](concept-event-grid-integration.md)，可在 ML 生命周期中处理事件。 例如，模型注册、部署、数据偏移和定型（运行）事件。
+- [与 Azure 的集成](how-to-use-event-grid.md)使你能够对 ML 生命周期中的事件进行操作。 例如，模型注册、部署、数据偏移和定型（运行）事件。
 
 > [!TIP]
 > 虽然自动捕获有关模型和数据集的某些信息，但可以使用__标记__添加其他信息。 在工作区中查找已注册的模型和数据集时，可以使用标记作为筛选器。

@@ -3,16 +3,16 @@ title: 更新容器组
 description: 了解如何更新 Azure 容器实例容器组中正在运行的容器。
 ms.topic: article
 ms.date: 04/17/2020
-ms.openlocfilehash: dc10e38aa6be9473f89df6f7fa10a72f63d9ada8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: cfc27de8caae98dd1c3065b5ed06433c4baaa5d2
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854446"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928714"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>更新 Azure 容器实例中的容器
 
-在正常操作容器实例期间，你可能认为有必要更新[容器组](container-instances-container-groups.md)中正在运行的容器。 例如，你可能想要更新属性（如映像版本、DNS 名称或环境变量），或刷新应用程序崩溃的容器中的属性。
+在正常操作容器实例期间，你可能认为有必要更新[容器组](./container-instances-container-groups.md)中正在运行的容器。 例如，你可能想要更新属性（如映像版本、DNS 名称或环境变量），或刷新应用程序崩溃的容器中的属性。
 
 通过使用至少一个已修改的属性重新部署现有组，来更新正在运行的容器组中的容器。 更新某个容器组时，该组中所有正在运行的容器均会就地重启（通常在同一基础容器主机上）。
 
@@ -28,7 +28,7 @@ ms.locfileid: "82854446"
 * 用先前提供的值设置其他属性。 如果没有为属性设置值，则它将恢复为其默认值。
 
 > [!TIP]
-> [YAML 文件](container-instances-container-groups.md#deployment)帮助维护容器组的部署配置，并提供开始部署更新的组的起点。 如果你使用了不同的方法来创建组，则可以使用[az 容器 export][az-container-export]将配置导出到 YAML， 
+> [YAML 文件](./container-instances-container-groups.md#deployment)帮助维护容器组的部署配置，并提供开始部署更新的组的起点。 如果你使用了不同的方法来创建组，则可以使用[az 容器 export][az-container-export]将配置导出到 YAML， 
 
 ### <a name="example"></a>示例
 
@@ -80,7 +80,7 @@ az container create --resource-group myResourceGroup --name mycontainer \
 
 本文中多次提到了**容器组**。 Azure 容器实例中的每个容器部署在容器组中，容器组可以包含多个容器。
 
-[Azure 容器实例中的容器组](container-instances-container-groups.md)
+[Azure 容器实例中的容器组](./container-instances-container-groups.md)
 
 [部署多容器组](container-instances-multi-container-group.md)
 
