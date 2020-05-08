@@ -9,12 +9,12 @@ ms.date: 12/20/2019
 ms.author: normesta
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 69983502fb7d099f474fb1c4c084f5d381a173e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8dc3c629830019a6c207c18f1783559e89512172
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76314753"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610966"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>使用 Azure 存储指标和日志记录、AzCopy 及 Message Analyzer 进行端到端故障排除
 
@@ -161,7 +161,7 @@ Message Analyzer 包括 Azure 存储的资产，可帮助你分析服务器、�
 
 ### <a name="download-and-install-message-analyzer-and-the-azure-storage-assets"></a>下载并安装 Message Analyzer 和 Azure 存储资产
 
-1. 从 Microsoft 下载中心下载 [Message Analyzer](https://www.microsoft.com/download/details.aspx?id=44226)，并运行安装程序。
+1. 下载[Message Analyzer](https://docs.microsoft.com/message-analyzer/installing-and-upgrading-message-analyzer)。
 2. 启动 Message Analyzer。
 3. 从“工具”  菜单中选择“资产管理器”  。 在“资产管理器”  对话框中，选择“下载”  ，并筛选“Azure 存储”  。 会看到 Azure 存储资产，如下图中所示。
 4. 单击“同步所有显示的项”  以安装 Azure 存储资产。 可用的资产包括：

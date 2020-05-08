@@ -3,28 +3,17 @@ title: 使用计分概要文件提升搜索排名
 titleSuffix: Azure Cognitive Search
 description: 通过添加计分概要文件，提高 Azure 认知搜索结果的搜索排名分数。
 manager: nitinme
-author: Brjohnstmsft
-ms.author: brjohnst
+author: shmed
+ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/28/2019
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: c702ce72492201413d6c72af9dbf37347e49afdd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/06/2020
+ms.openlocfilehash: 56757d1c2810efe608601c231946b2242df82b19
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231095"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890183"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>将计分概要文件添加到 Azure 认知搜索索引
 
@@ -32,9 +21,15 @@ ms.locfileid: "82231095"
 
  Azure 认知搜索使用默认计分计算初始分数，但可以通过“计分概要文件”自定义计算**。 借助计分概要文件，可以更好地控制搜索结果中的项排名。 例如，建议根据创收能力提升项、提升新项或提升库存时间太长的项。  
 
+ 以下视频段快进到如何在 Azure 认知搜索中工作配置文件。
+ 
+> [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=463&end=970]
+
+## <a name="scoring-profile-definitions"></a>计分配置文件定义
+
  计分概要文件属于索引定义的一部分，由加权字段、函数和参数组成。  
 
- 若要概览计分概要文件，请参阅下面的示例，其中展示了名为“geo”的简单概要文件。 此配置文件会提升 **hotelName** 字段中包含关键字的项。 它还使用 `distance` 函数优先提升在当前位置十公里范围内的项。 如果有人搜索“inn”一词，而“inn”恰好是酒店名称的一部分，包含当前位置 10 公里范围内带有“inn”的酒店的文档会在搜索结果中的较高位置出现。  
+ 若要概览计分概要文件，请参阅下面的示例，其中展示了名为“geo”的简单概要文件。 此文件用于提升在“hotelName”字段中具有搜索词的项。  它还使用 `distance` 函数优先提升在当前位置十公里范围内的项。 如果有人搜索“inn”一词，而“inn”恰好是酒店名称的一部分，包含当前位置 10 公里范围内带有“inn”的酒店的文档会在搜索结果中的较高位置出现。  
 
 
 ```json
@@ -87,7 +82,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 
  基于相关性的排序也通过计分概要文件实现。 请考虑过去使用的可以按价格、日期、评分或相关性排序的搜索结果页。 在 Azure 认知搜索中，计分概要文件驱动“相关性”选项。 相关性定义由你控制，基于业务目标和希望提供的搜索体验类型断定。  
 
-##  <a name="example"></a><a name="bkmk_ex"></a>实例  
+##  <a name="example"></a><a name="bkmk_ex"></a> 示例  
  如前所述，自定义计分是通过索引模式中定义的一个或多个计分概要文件实现的。  
 
  此示例演示具有两个计分概要文件的索引架构（`boostGenre`、`newAndHighlyRated`）。 针对此索引的任何查询（包含任一概要文件作为查询参数）将使用此概要文件对结果集进行计分。  
@@ -168,12 +163,12 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 
 |||  
 |-|-|  
-|**权重**|指定为字段分配相对权重的名称/值对。 在此[示例](#bkmk_ex)中，"albumTitle"、"流派" 和 "artistName" 字段分别提升了1.5、5和2。 genre 为何比其他字段提升更高？ 如果对在某种程度上为同类的数据执行搜索（正如 `musicstoreindex` 中的“genre”一样），可能需要在相对权重中产生较大差异。 例如，在 `musicstoreindex` 中，“rock”既作为流派显示，又显示在采用相同组句方式的流派说明中。 如果希望流派的权重在流派说明之上，genre 字段将需要更高的相对权重。|  
+|**权重**|指定为字段分配相对权重的名称/值对。 在[示例](#bkmk_ex)中，albumTitle、genre 和 artistName 字段各自提升 1.5、5 和 2。 genre 为何比其他字段提升更高？ 如果对在某种程度上为同类的数据执行搜索（正如 `musicstoreindex` 中的“genre”一样），可能需要在相对权重中产生较大差异。 例如，在 `musicstoreindex` 中，“rock”既作为流派显示，又显示在采用相同组句方式的流派说明中。 如果希望流派的权重在流派说明之上，genre 字段将需要更高的相对权重。|  
 |**函数**|在特定上下文需要进行额外计算时使用。 有效的值为 `freshness`、`magnitude`、`distance` 和 `tag`。 每个函数具有独有的参数。<br /><br /> 当希望按项目的新旧方式进行提升时，应使用 -   `freshness`。 此函数仅可与 `datetime` 字段结合使用 (edm.DataTimeOffset)。 请注意，`boostingDuration` 属性仅用于 `freshness` 函数。<br />当希望按数值高低程度提升时，应使用 -   `magnitude`。 调用此函数的方案包括按照利润率、最高价格、最低价格或下载次数提升。 此函数仅可与 double 和 integer 字段结合使用。<br />     对于 `magnitude` 函数，如果想要反转模式（例如，将价格较低项提升至价格较高项之上），可以将范围反转为从高到低。 假设价格范围从 100 美元到 1 美元，可以将 `boostingRangeStart` 设为 100、`boostingRangeEnd` 设为 1 以提升价格较低的项。<br />当希望按距离或地理位置提升时，应使用 -   `distance`。 此函数仅可与 `Edm.GeographyPoint` 字段结合使用。<br />当希望按文档和搜索查询之间共有的标记提升时，应使用 -   `tag`。 此函数仅可与 `Edm.String` 和 `Collection(Edm.String)` 字段结合使用。<br /><br /> **使用函数的规则**<br /><br /> 函数类型（`freshness`、`magnitude`、`distance`）`tag` 必须小写。<br /><br /> 函数不能包含 null 或空值。 具体而言，如果包含字段名称，则必须将其设置为某值。<br /><br /> 函数仅可应用于可筛选字段。 有关可筛选字段的详细信息，请参阅[创建索引（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index)。<br /><br /> 函数仅可应用于在索引的字段集合中定义的字段。|  
 
  定义索引后，请通过上传索引架构（后跟文档）建立索引。 有关这些操作的说明，请参阅[创建索引（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index)和[添加、更新或删除文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)。 建立索引后，应获得适用于搜索数据的函数计分概要文件。  
 
-##  <a name="template"></a><a name="bkmk_template"></a>模版  
+##  <a name="template"></a><a name="bkmk_template"></a> 模板  
  本部分演示计分概要文件的语法和模板。 请参阅下一部分的[索引属性参考](#bkmk_indexref)，获取属性的说明。  
 
 ```  
@@ -232,7 +227,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 > [!NOTE]  
 >  计分函数仅可应用于可筛选的字段。  
 
-|特性|描述|  
+|属性|说明|  
 |---------------|-----------------|  
 |`name`|必需。 这是计分概要文件的名称。 它遵循与字段相同的命名约定。 它必须以字母开头，不能包含点、冒号或 @ 符号，并且不能以短语“azureSearch”（区分大小写）开头。|  
 |`text`|包含 weights 属性。|  
@@ -242,7 +237,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 |`boost`|计分函数的必需项。 用作原始分数乘数的正数。 不得等于 1。|  
 |`fieldname`|计分函数的必需项。 计分函数仅可应用于作为索引字段集合一部分且可筛选的字段。 此外，每个函数类型都引入了其他限制（freshness 与 datetime 字段结合使用、magnitude 与 integer 或 double 字段结合使用、distance 与 location 字段结合使用。）。 仅可按函数定义指定单个字段。 例如，若要在同一概要文件中使用两次 magnitude，则需要包含两个定义 magnitude，每个字段一个。|  
 |`interpolation`|计分函数的必需项。 定义从范围起始至范围结束的分数提升增量的斜率。 有效值包括 Linear（默认值）、Constant、Quadratic 和 Logarithmic。 请参阅[设置插值](#bkmk_interpolation)获取详细信息。|  
-|`magnitude`|magnitude 计分函数用于改变基于数值字段的值范围的排名。 一些最常见的用法示例如下：<br /><br /> -   **星级：** 根据 "星评级" 字段中的值更改评分。 如果两个项相关，具有较高评分的项先显示。<br />-   **边距：** 当两个文档相关时，零售商可能希望首先提升边距较高的文档。<br />-   **单击计数：** 对于跟踪通过操作向产品或页面进行跟踪的应用程序，可以使用数量级来提升通常会获得最多流量的项。<br />-   **下载计数：** 对于跟踪下载的应用程序，数量级函数使你可以提升下载次数最多的项。|  
+|`magnitude`|magnitude 计分函数用于改变基于数值字段的值范围的排名。 一些最常见的用法示例如下：<br /><br /> -   星级评分：  根据“星级评分”字段中的值更改评分。 如果两个项相关，具有较高评分的项先显示。<br />-   **利润：** 当两个文档相关时，零售商可能希望先提升具有较高利润的文档。<br />-   **点击次数：** 对于跟踪产品或页面点击行为的应用程序，可使用 magnitude 提升容易获得最多流量的项。<br />-   **下载次数：** 对于跟踪下载的应用程序，magnitude 函数可提升下载次数最多的项。|  
 |`magnitude` &#124; `boostingRangeStart`|设置对其进行量值计分的范围的起始值。 该值必须是整数或浮点数。 对于星级评分 1 到 4，这里应为 1。 对于超过 50% 的利润率，这里应为 50。|  
 |`magnitude` &#124; `boostingRangeEnd`|设置对其进行量值计分的范围的结束值。 该值必须是整数或浮点数。 对于星级评分 1 到 4，这里应为 4。|  
 |`magnitude` &#124; `constantBoostBeyondRange`|有效值为 true 或 false（默认）。 设置为 true 时，完整的提升将继续应用到有一个目标字段值高于范围上限的文档。 如果为 false，此函数的提升不会应用到有一个目标字段值超出范围的文档。|  
@@ -271,11 +266,11 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 ##  <a name="set-boostingduration"></a><a name="bkmk_boostdur"></a>设置 boostingDuration  
  `boostingDuration` 是 `freshness` 函数的属性。 使用它设置一个有效期，超过这个有效期之后，针对特定文档的提升将停止。 例如，要在 10 天促销期内提升某个产品系列或品牌，应针对这些文档将 10 天期限指定为 "P10D"。  
 
- `boostingDuration` 必须设置为 XSD "dayTimeDuration" 值（ISO 8601 持续时间值的受限子集）的格式。 此值的模式为："P[nD][T[nH][nM][nS]]"。  
+ `boostingDuration` 必须设置为 XSD "dayTimeDuration" 值（ISO 8601 持续时间值的受限子集）的格式。 它的模式为：“P[nD][T[nH][nM][nS]]”。  
 
  下表提供几个示例。  
 
-|Duration|boostingDuration|  
+|持续时间|boostingDuration|  
 |--------------|----------------------|  
 |1 天|"P1D"|  
 |2 天 12 小时|"P2DT12H"|  
@@ -284,7 +279,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 
  有关更多示例，请参阅 [XML 架构：数据类型（W3.org 网站）](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)。  
 
-## <a name="see-also"></a>请参阅  
+## <a name="see-also"></a>另请参阅  
 
 + [REST API 引用](https://docs.microsoft.com/rest/api/searchservice/)   
 + [创建索引 API](https://docs.microsoft.com/rest/api/searchservice/create-index)   

@@ -4,12 +4,12 @@ description: 了解如何创建私有 Azure Kubernetes 服务（AKS）群集
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: 87f52c5a749b531e5b0656e0b30ff0fe9c1a57bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f0d702a213c4c34024c043edc50d25e6696cbc1
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80398043"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610932"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>创建专用的 Azure Kubernetes 服务群集
 
@@ -17,7 +17,7 @@ ms.locfileid: "80398043"
 
 控制平面或 API 服务器位于 Azure Kubernetes 服务（AKS）管理的 Azure 订阅中。 客户的群集或节点池在客户的订阅中。 服务器和群集或节点池可以通过 API 服务器虚拟网络中的[Azure 专用链接服务][private-link-service]和在客户 AKS 群集的子网中公开的专用终结点相互通信。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure CLI 版本2.2.0 或更高版本
 
@@ -93,7 +93,7 @@ API 服务器终结点没有公共 IP 地址。 若要管理 API 服务器，你
 
 3. 如果包含群集的 VNet 具有自定义 DNS 设置（4），则群集部署将失败，除非专用 DNS 区域链接到包含自定义 DNS 解析程序（5）的 VNet。 在群集预配期间创建专用区域或通过使用 Azure 策略或其他基于事件的部署机制（例如，Azure 事件网格和 Azure Functions）来检测区域创建时，可以手动创建此链接。
 
-## <a name="dependencies"></a>依赖项  
+## <a name="dependencies"></a>依赖关系  
 
 * 仅标准 Azure 负载均衡器支持专用链接服务。 不支持基本的 Azure 负载均衡器。  
 * 若要使用自定义 DNS 服务器，请在自定义 DNS 服务器中将 Azure DNS IP 168.63.129.16 添加为上游 DNS 服务器。
@@ -101,7 +101,7 @@ API 服务器终结点没有公共 IP 地址。 若要管理 API 服务器，你
 ## <a name="limitations"></a>限制 
 * IP 授权范围不能应用于专用 api 服务器终结点，它们仅适用于公共 API 服务器
 * 某些区域当前支持可用性区域，请参阅本文档的开头部分 
-* [Azure 专用链接服务限制][private-link-service]适用于专用群集、Azure 专用终结点和虚拟网络服务终结点，这些终结点当前在同一虚拟网络中不受支持。
+* [Azure 专用链接服务限制][private-link-service]适用于专用群集。
 * 不支持专用群集中的虚拟节点在专用的 Azure 虚拟网络中实现专用 Azure 容器实例（ACI）
 * 不支持具有专用群集的现成的 Azure DevOps 集成
 * 对于需要使 Azure 容器注册表能与专用 AKS 配合使用的客户，容器注册表虚拟网络必须与代理群集虚拟网络对等互连。
@@ -116,7 +116,7 @@ API 服务器终结点没有公共 IP 地址。 若要管理 API 服务器，你
 [az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[private-link-service]: /azure/private-link/private-link-service-overview
+[private-link-service]: /azure/private-link/private-link-service-overview#limitations
 [virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
 [express-route-or-vpn]: ../expressroute/expressroute-about-virtual-network-gateways.md

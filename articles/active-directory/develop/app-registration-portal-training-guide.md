@@ -13,16 +13,16 @@ ms.date: 11/8/2019
 ms.author: marsma
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
-ms.openlocfilehash: 50c88dd1785bd9177219054fed3800ca725a5274
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a954167dc0698389680a92511621fb6acf4b12b
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154587"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889997"
 ---
 # <a name="the-new-azure-portal-app-registration-experience"></a>新的 Azure 门户应用注册体验
 
-Azure 门户的新[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验有很多改进。 如果你更熟悉注册或管理聚合应用程序的应用程序注册门户（apps.dev.microsoft.com）体验（称为旧体验），本培训指南将帮助你开始使用新体验。
+Azure 门户的新[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验有很多改进。 如果你对注册或管理应用程序的应用程序注册门户（apps.dev.microsoft.com）更熟悉，这里称为 "旧经验"），本指南将帮助你开始使用新的体验。
 
 ## <a name="whats-not-changing"></a>什么不更改？
 
@@ -37,7 +37,7 @@ Azure 门户的新[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908
 
 ## <a name="key-changes"></a>关键更改
 
--   在过去的体验中，应用默认注册为支持所有组织帐户（多租户）和个人 Microsoft 帐户的汇聚应用。 这不能通过旧体验进行修改，因此很难创建仅支持组织帐户（多租户或单租户）的应用。
+-   在过去的体验中，应用默认注册为*汇聚*应用-支持所有组织帐户（多租户）和个人 Microsoft 帐户的应用。 这不能通过旧体验进行修改，因此很难创建仅支持组织帐户（多租户或单租户）的应用。
     新体验允许注册支持所有这些选项的应用。 [了解有关应用类型的详细信息](active-directory-v2-registration-portal.md)。
 
 -   在新体验中，如果你的个人 Microsoft 帐户也在 Azure AD 租户中，你将看到三个选项卡：租户中的所有应用程序、租户中的所有应用程序以及你的个人帐户中的应用程序。 因此，如果您认为注册到个人 Microsoft 帐户的应用程序丢失，请从 "**个人帐户**" 选项卡中检查应用程序。
@@ -52,28 +52,23 @@ Azure 门户的新[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908
 
 ## <a name="new-app-registration"></a>新应用注册
 
-在过去的体验中，若要注册聚合应用，只需提供名称即可。 已创建的应用注册为支持所有组织目录（多租户）和个人 Microsoft 帐户的汇聚应用。  这不能通过旧体验进行修改，因此很难创建仅支持组织帐户（多租户或单租户）的应用。 [了解有关支持的帐户类型的详细信息](v2-supported-account-types.md)
+在过去的体验中，若要注册应用，只需提供一个名称。 已创建的应用注册为*汇聚*应用-支持所有组织目录（多租户）和个人 Microsoft 帐户的应用。  这种情况无法通过旧体验进行修改，因此很难创建仅支持组织帐户（单租户或多租户）的应用。 [了解有关支持的帐户类型的详细信息](v2-supported-account-types.md)
 
 在新体验中，必须提供应用的名称，并选择支持的帐户类型。 你可以选择提供重定向 URI。
 如果提供重定向 URI，则需要指定其 web/公共（本机/移动和桌面）。 有关如何使用新应用注册体验注册应用的详细信息，请参阅[此快速入门](quickstart-register-app.md)。
 
 ## <a name="app-management-page"></a>应用管理页
 
-过去的经验是，具有以下部分的聚合应用的单个应用管理页：属性、应用程序机密、平台、所有者、Microsoft Graph 权限、配置文件和高级选项。
+对于具有以下各部分的应用，旧体验具有单个应用管理页：属性、应用程序机密、平台、所有者、Microsoft Graph 权限、配置文件和高级选项。
 
-Azure 门户中的新体验将这些功能表示为单独的页面。 下面是可以找到等效功能的位置：
+Azure 门户中的新体验在单独的页面中提供这些功能。 下面是可以找到等效功能的位置：
 
--   属性-名称和应用程序 ID 在 "概述" 页上。
-
--   应用程序机密位于 "证书 & 机密" 页面上
-
--   平台配置位于 "身份验证" 页上
-
--   Microsoft Graph 权限位于 "API 权限" 页上以及其他权限
-
--   配置文件处于品牌页面
-
--   高级选项-实时 SDK 支持在 "身份验证" 页上。
+- 属性-名称和应用程序 ID 在 "概述" 页上。
+- 应用程序机密位于 "证书 & 机密" 页面上
+- 平台配置位于 "身份验证" 页上
+- Microsoft Graph 权限位于 "API 权限" 页上以及其他权限
+- 配置文件处于品牌页面
+- 高级选项-实时 SDK 支持在 "身份验证" 页上。
 
 ## <a name="application-secretscertificates--secrets"></a>应用程序机密/证书 & 机密
 
@@ -111,7 +106,7 @@ Web Api 在公开 API 页中进行配置。
 
 -   可以通过“公开 API”页配置“此 API 定义的范围”(oauth2Permissions) 和“已授权的客户端应用程序”(preAuthorizedApplications)。 有关如何将应用配置为 Web API 和公开权限/范围的详细信息，请参阅[此快速入门](quickstart-configure-app-expose-web-apis.md)。
 
--   发布者域（在[应用程序\'许可提示](application-consent-experience.md)中向用户显示）可以在 "品牌" 边栏选项卡页上找到。 有关如何配置发布者域的详细信息，请参阅[此操作指南](howto-configure-publisher-domain.md)。
+-   发布者域（在[应用程序\'许可提示](application-consent-experience.md)中向用户显示）可以在 "品牌" 页中找到。 有关如何配置发布者域的详细信息，请参阅[此操作指南](howto-configure-publisher-domain.md)。
 
 ## <a name="limitations"></a>限制
 
@@ -125,3 +120,7 @@ Web Api 在公开 API 页中进行配置。
 
    > [!NOTE]
    > 如果你是 Azure AD 租户中的个人 Microsoft 帐户用户，并且租户管理员限制了对 Azure 门户的访问权限，则你可能会收到访问被拒绝的情况。 但是，如果通过在搜索栏中键入应用注册来浏览快捷方式，则可以访问新的体验。
+
+## <a name="next-steps"></a>后续步骤
+
+若要开始使用新的应用注册体验，请参阅[快速入门：将应用程序注册到 Microsoft 标识平台](quickstart-register-app.md)。

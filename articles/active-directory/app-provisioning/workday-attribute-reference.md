@@ -1,27 +1,25 @@
 ---
-title: Workday 特性引用 |Microsoft Docs
+title: Workday 属性参考
 description: 了解 SuccessFactors 中的哪些属性受 SuccessFactors 驱动的预配支持
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: jodadzie
-ms.assetid: afb77f2d-5ddd-4c2e-a840-09021b0efef1
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/19/2020
 ms.author: chmutali
-ms.openlocfilehash: 61f374c3fbc15e78784fe30c4e66ea109537727d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.reviewer: celested
+ms.openlocfilehash: b0acb058e7e58656257d55f82f5dd02a8ae7d9c3
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112875"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593057"
 ---
 # <a name="workday-attribute-reference"></a>Workday 属性参考
+
 本部分提供了可以使用 XPATH 查询从 Workday 中提取的属性列表。 基于 Workday Web Services API 版本，你计划使用，请参阅相应的部分。 
 
 ## <a name="xpath-values-for-workday-web-services-wws-api-v211"></a>Workday Web Services （WWS） API v 21.1 的 XPATH 值
@@ -62,7 +60,7 @@ ms.locfileid: "82112875"
 | 29 | LocationIdentifier                    | wd： worker/wd： worker\_data/wd：受雇\_data/wd： Position\_data/wd： Business\_Site\_Summary\_Data/wd： Location\_Reference/wd： ID\[@wd:type= ' location\_ID '\]/text\(\)                                                                                                                                                                                                                                            |
 | 30 | ManagerReference                      | wd： worker/wd： worker\_Data/wd：管理\_链\_Data/wd：工作\_线程\_监督\_管理\_链\[数据\(\)位置 =\]1/wd：\_管理\_链\[数据\(\)last =\(\)\]位置/wd：\_Manager Reference/wd：\[@wd:typeID = "WID\]"/text\(\)                                                                                                                                                                            |
 | 31 | MiddleName                            | wd： Worker/wd： Worker\_data/Wd： Personal\_Data/wd： Name\_Data/wd：合法\_名称\_Data/wd： name\_Detail\_data/wd：中间\_名称/文本\(\)                                                                                                                                                                                                                                                                                |
-| 32 | 移动电话                                | wd： worker/wd： worker\_data/wd： Personal\_data/wd： Contact\_data/wd： phone\_数据\[转换\(字符串\(wd：电话\_设备\_类型\_Reference/@wd:Descriptor\)、"abcdefghijklmnopqrstuvwxyz"、"abcdefghijklmnopqrstuvwxyz"\)= "MOBILE" 和转换\(字符串\(wd：用量\_data/wd： type\_Data/wd： type\_Reference/@wd:Descriptor\)，"abcdefghijklmnopqrstuvwxyz"，"abcdefghijklmnopqrstuvwxyz"\)= "WORK"\]/@wd:Formatted\_Phone    |
+| 32 | 移动型                                | wd： worker/wd： worker\_data/wd： Personal\_data/wd： Contact\_data/wd： phone\_数据\[转换\(字符串\(wd：电话\_设备\_类型\_Reference/@wd:Descriptor\)、"abcdefghijklmnopqrstuvwxyz"、"abcdefghijklmnopqrstuvwxyz"\)= "MOBILE" 和转换\(字符串\(wd：用量\_data/wd： type\_Data/wd： type\_Reference/@wd:Descriptor\)，"abcdefghijklmnopqrstuvwxyz"，"abcdefghijklmnopqrstuvwxyz"\)= "WORK"\]/@wd:Formatted\_Phone    |
 | 33 | Municipality                          | wd： Worker/wd： Worker\_data/Wd：受雇\_Data/wd： Position\_data/wd： Business\_Site\_Summary\_data/wd： Address\_Data/wd：市政府/text\(\)                                                                                                                                                                                                                                                                   |
 | 34 | PositionID                            | wd： Worker/wd： Worker\_data/Wd：受雇\_Data/wd： position\_data/wd： position\_ID/text\(\)                                                                                                                                                                                                                                                                                                                     |
 | 35 | PositionTitle                         | wd： Worker/wd： Worker\_data/Wd：受雇\_Data/wd： position\_data/wd：位置\_标题/文本\(\)                                                                                                                                                                                                                                                                                                                  |
@@ -150,7 +148,7 @@ ms.locfileid: "82112875"
 | 29 | LocationIdentifier                    | wd： worker/wd： worker\_data/wd：受雇\_data/wd： worker\_job\_data\[@wd:Primary\_job = 1\]/wd： Position\_Data/wd： Business\_Site\_Summary\_data/wd： Location\_Reference/wd： ID\[@wd:type= ' location\_ID '\]/text\(\)                                                                                                                                                                           |
 | 30 | ManagerReference                      | wd： worker/wd： worker\_Data/wd：管理\_链\_Data/wd：工作\_线程\_监督\_管理\_链\[数据\(\)位置 =\]1/wd：\_管理\_链\[数据\(\)last =\(\)\]位置/wd：\_Manager Reference/wd：\[@wd:typeID = "WID\]"/text\(\)                                                                                                                                                      |
 | 31 | MiddleName                            | wd： Worker/wd： Worker\_data/Wd： Personal\_Data/wd： Name\_Data/wd：合法\_名称\_Data/wd： name\_Detail\_data/wd：中间\_名称/文本\(\)                                                                                                                                                                                                                                                          |
-| 32 | 移动电话                                | wd： worker/wd： worker\_Data/wd：个人\_数据/wd： Contact\_data/wd： Phone\_Data\[wd：用量\_Data/@wd:Public= "1" 和 string\(wd：用量\_data/wd： Type\_data/wd： type\_Reference/wd： ID\[@wd:type= "通信\_使用\_类型\_ID"\]\)= "工作" 和字符串\(wd：手机\_设备\_类型\_引用/wd： ID\[@wd:type= "手机\_设备\_类型\_ID"\]\)= "移动"\]/@wd:Workday\_传统\_格式化\_电话   |
+| 32 | 移动型                                | wd： worker/wd： worker\_Data/wd：个人\_数据/wd： Contact\_data/wd： Phone\_Data\[wd：用量\_Data/@wd:Public= "1" 和 string\(wd：用量\_data/wd： Type\_data/wd： type\_Reference/wd： ID\[@wd:type= "通信\_使用\_类型\_ID"\]\)= "工作" 和字符串\(wd：手机\_设备\_类型\_引用/wd： ID\[@wd:type= "手机\_设备\_类型\_ID"\]\)= "移动"\]/@wd:Workday\_传统\_格式化\_电话   |
 | 33 | Municipality                          | wd： worker/wd： worker\_data/wd：受雇\_data/wd： worker\_job\_data\[@wd:Primary\_job = 1\]/wd： Position\_Data/wd： Business\_Site\_Summary\_data/wd： Address\_Data/wd：市政府/text\(\)                                                                                                                                                                                                  |
 | 34 | PositionID                            | wd： worker/wd： worker\_data/wd：受雇\_data/wd： worker\_job\_data\[@wd:Primary\_job = 1\]/wd： position\_Data/wd： position\_ID/text\(\)                                                                                                                                                                                                                                                    |
 | 35 | PositionTitle                         | wd： worker/wd： worker\_data/wd：受雇\_data/wd： worker\_job\_data\[@wd:Primary\_job = 1\]/wd： position\_Data/wd： position\_Title/text\(\)                                                                                                                                                                                                                                                 |

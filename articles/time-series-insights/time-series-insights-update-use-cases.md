@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 04/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 50ac2a728750c6b01dfc57fa7e20df25c856395a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 93813dfaecf40fcb5cab0856d013fb890118886c
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77087394"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580662"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure 时序见解预览版用例
 
@@ -42,13 +42,13 @@ Azure 时序见解是一种端到端的平台即服务产品/服务。 它用于
 
 大多数客户都认为，获得见解所需的最短时间是时序见解的突出功能之一：
 
-* 时序见解无需前期数据准备。 
-* 时序见解可在几分钟内快速将你连接到 Azure IoT 中心或 Azure 事件中心实例中的数十亿个事件。 
+* 时序见解无需前期数据准备。
+* 时序见解可在几分钟内快速将你连接到 Azure IoT 中心或 Azure 事件中心实例中的数十亿个事件。
 * 连接后，可直观显示和分析数十亿事件，发现异常，发现数据的隐藏趋势。
 
 时序见解直观且易于使用。 连一行代码也无需编写即可与数据交互。 尽管时序见解为熟悉 SQL 的高级用户提供了一种基于文本的细粒度查询语言，但你也不需要学习任何新语言。 为初学者提供“选择+单击”式探索模式。
 
-客户可以利用这种高效率，快速诊断与资产相关的问题。 时序见解可以执行 DevOps 分析来找出 IoT 解决方案中 bug 的根本原因。 作为数据科学计划的一部分，时序见解还可以识别要标记的区域，以便进一步调查。 
+客户可以利用这种高效率，快速诊断与资产相关的问题。 时序见解可以执行 DevOps 分析来找出 IoT 解决方案中 bug 的根本原因。 作为数据科学计划的一部分，时序见解还可以识别要标记的区域，以便进一步调查。
 
 与时序见解中存储的数据进行交互主要有三种方式：
 

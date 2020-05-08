@@ -4,14 +4,14 @@ description: 如何使用 Azure HPC 缓存 Azure Key Vault 来控制加密密钥
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 04/29/2020
 ms.author: v-erkel
-ms.openlocfilehash: f8a8b8dfedd9c4ac0590dc91e5cdced50d2be6ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2d10241b8395c33767ffeeb550d9d8060bde3ce3
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195071"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597733"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>将客户托管的加密密钥用于 Azure HPC 缓存
 
@@ -20,11 +20,7 @@ ms.locfileid: "82195071"
 > [!NOTE]
 > 默认情况下，在 Azure 中存储的所有数据（包括在缓存磁盘上）都使用 Microsoft 托管密钥进行静态加密。 如果要管理用于对数据进行加密的密钥，则只需按照本文中的步骤进行操作。
 
-此功能仅在以下 Azure 区域提供：
-
-* 美国东部
-* 美国中南部
-* 美国西部 2
+此功能仅在 Azure HPC 缓存可用的某些 Azure 区域中提供。 有关详细信息，请参阅[区域可用性](hpc-cache-overview.md#region-availability)列表。
 
 为 Azure HPC 缓存启用客户托管的密钥加密有三个步骤：
 
@@ -71,7 +67,7 @@ Key vault 属性：
 有关详细信息，请阅读[Azure Key Vault 文档](../key-vault/key-vault-overview.md)。
 
 > [!NOTE]
-> Azure Key Vault 必须使用相同的订阅，并且必须与 Azure HPC 缓存位于同一区域。 使用本文开头所列的受支持区域之一。
+> Azure Key Vault 必须使用相同的订阅，并且必须与 Azure HPC 缓存位于同一区域。 请确保所选的区域[支持客户管理的密钥功能](hpc-cache-overview.md#region-availability)。
 
 ## <a name="2-create-the-cache-with-customer-managed-keys-enabled"></a>2. 创建缓存并启用客户托管密钥
 

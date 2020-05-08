@@ -18,12 +18,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 9f8697332d34fc044c805db6c6595fdf067ed054
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0abe443521b928dd087e23b5491635b02cd832e8
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80127191"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592020"
 ---
 # <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>教程：使用通知中心和必应空间数据发送基于位置的推送通知
 
@@ -217,7 +217,7 @@ ms.locfileid: "80127191"
 
 ## <a name="set-up-the-backend"></a>设置后端
 
-1. [从 GitHub 下载 .NET 后端示例](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/NotifyUsers)。
+1. [从 GitHub 下载 .NET 后端示例](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers)。
 2. 下载完成后，打开 `NotifyUsers` 文件夹，然后在 Visual Studio 中打开 `NotifyUsers.sln` 文件。
 3. 将 `AppBackend` 项目设置为“启始项目”并将它启动。 
 

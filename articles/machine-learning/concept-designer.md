@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 78a6e7fa8d030185f537136a3a2124d8bc59d808
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 945a27da874071d22952207b7be5add79ce7e2ec
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79037624"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872622"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>什么是 Azure 机器学习设计器（预览版）？ 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -82,18 +82,19 @@ ms.locfileid: "79037624"
 
 ![模块属性](./media/concept-designer/properties.png)
 
-在浏览可用的机器学习算法库时如需帮助，请参阅[算法和模块参考概述](algorithm-module-reference/module-reference.md)
+有关在可用的机器学习算法库中导航的帮助，请参阅[算法 & 模块参考概述](algorithm-module-reference/module-reference.md)。 有关选择算法的帮助，请参阅[Azure 机器学习算法](algorithm-cheat-sheet.md)备忘单。
 
-## <a name="compute-resources"></a><a name="compute"></a> 计算资源
+## <a name="compute-resources"></a><a name="compute"></a>计算资源
 
 使用工作区中的计算资源来运行管道，并将已部署的模型作为实时终结点或管道终结点托管（用于批量推理）。 支持的计算目标为：
 
 | 计算目标 | 培训 | 部署 |
 | ---- |:----:|:----:|
 | Azure 机器学习计算 | ✓ | |
+| Azure 机器学习计算实例 | ✓ | |
 | Azure Kubernetes 服务 | | ✓ |
 
-计算目标会附加至 [Azure 机器学习工作区](concept-workspace.md)。 可在 [Azure 机器学习工作室（经典）](https://ml.azure.com)中管理工作区中的计算目标。
+计算目标会附加至 [Azure 机器学习工作区](concept-workspace.md)。 在[Azure 机器学习 studio](https://ml.azure.com)中的工作区中管理计算目标。
 
 ## <a name="deploy"></a>部署
 
@@ -105,7 +106,7 @@ ms.locfileid: "79037624"
 
 ## <a name="publish"></a>发布
 
-还可以将管道发布到管道终结点  。 与实时终结点类似，借助管道终结点，可以使用 REST 调用从外部应用程序提交新的管道运行。 但是不能使用管道终结点实时发送或接收数据。
+还可以将管道发布到管道终结点****。 与实时终结点类似，借助管道终结点，可以使用 REST 调用从外部应用程序提交新的管道运行。 但是不能使用管道终结点实时发送或接收数据。
 
 已发布的管道是灵活的，它们可用于训练或重新训练模型、[执行批量推断](how-to-run-batch-predictions-designer.md)、处理新数据等。 可以将多个管道发布到单个管道终结点，并指定要运行的管道版本。
 
@@ -134,6 +135,6 @@ ms.locfileid: "79037624"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 要了解预测分析和机器学习的基本知识，请参考[教程：使用设计器预测汽车价格](tutorial-designer-automobile-price-train-score.md)
+* 若要了解有关预测分析和机器学习的基本知识，请参阅[教程：使用设计器预测汽车价格](tutorial-designer-automobile-price-train-score.md)
 * 了解如何根据自己的需求修改现有的[设计器示例](samples-designer.md)。
 

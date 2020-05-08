@@ -7,20 +7,17 @@ ms.service: event-grid
 ms.topic: how-to
 ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: 97f08bf0f89fdb65f0ffef7d18557f210e45a8d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b72462334fa2311b017be49860ed422dfa35430c
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82101002"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890825"
 ---
-# <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains-preview"></a>配置 Azure 事件网格主题或域的专用终结点（预览）
+# <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>为 Azure 事件网格主题或域配置专用终结点
 你可以使用[专用终结点](../private-link/private-endpoint-overview.md)将事件直接从你的虚拟网络直接发送到你的主题和域，[而无需](../private-link/private-link-overview.md)通过公共 internet。 专用终结点使用来自你的主题或域的 VNet 地址空间中的 IP 地址。 有关更多概念信息，请参阅[网络安全](network-security.md)。
 
 本文介绍如何配置主题或域的专用终结点。
-
-> [!IMPORTANT]
-> 专用终结点功能仅适用于高级层中的主题和域。 若要从基本层升级到高级层，请参阅[更新定价层](update-tier.md)一文。 
 
 ## <a name="use-azure-portal"></a>使用 Azure 门户 
 本部分演示如何使用 Azure 门户为主题或域创建专用终结点。
@@ -87,7 +84,7 @@ ms.locfileid: "82101002"
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在搜索栏中，键入**事件网格主题**或**事件网格域**。
 1. 选择要管理的**主题**或**域**。
-1. 选择 "**网络**" 选项卡。
+1. 选择“网络”选项卡。 
 1. 如果有任何挂起的连接，你会在预配状态中看到 "**挂起**" 列出的连接。 
 
 ### <a name="to-approve-a-private-endpoint"></a>批准专用终结点
@@ -157,7 +154,7 @@ az network private-endpoint delete --resource-group <RESOURECE GROUP NAME> --nam
 
 
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 通过运行以下命令更新适用于 CLI 的 Azure 事件网格扩展： 
 
 ```azurecli-interactive
@@ -205,7 +202,7 @@ az network private-endpoint delete --resource-group <RESOURECE GROUP NAME> --nam
 - 资源组
 - 虚拟网络
 - 虚拟网络中的子网
-- Azure 事件网格主题（高级层）
+- Azure 事件网格主题
 - 主题的专用终结点
 
 > [!NOTE]
@@ -254,8 +251,7 @@ az network vnet subnet update \
 az eventgrid topic create \
     --resource-group $resourceGroupName \
     --name $topicName \
-    --location $location \
-    --sku "Premium" 
+    --location $location
 
 # verify that the topic was created.
 az eventgrid topic show \
@@ -369,7 +365,7 @@ $virtualNetwork | Set-AzVirtualNetwork
 
 
 ```azurepowershell-interactive
-$body = @{"location"="<LOCATION>"; "sku"= @{"name"="premium"}; "properties"=@{"publicNetworkAccess"="disabled"}} | ConvertTo-Json
+$body = @{"location"="<LOCATION>"; "properties"=@{"publicNetworkAccess"="disabled"}} | ConvertTo-Json
 
 # create topic
 Invoke-RestMethod -Method 'Put'  `
