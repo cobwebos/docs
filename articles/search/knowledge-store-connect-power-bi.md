@@ -7,20 +7,25 @@ ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/26/2019
-ms.openlocfilehash: 4fd71a7f322cb2672eb485f17e4de2619a7c2d2c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/05/2020
+ms.openlocfilehash: e67bd688d720ed3d7549a86c9cff752bc19fb2fc
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78270030"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858822"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>使用 Power BI 连接知识存储
 
 > [!IMPORTANT] 
 > 知识存储目前以公开预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供预览版功能。 目前提供有限的门户支持，不提供 .NET SDK 支持。
 
-本文介绍如何使用 Power BI Desktop 应用中的 Power Query 来连接和浏览知识存储。 使用模板可以更快地开始操作，也可以从头开始构建自定义仪表板。
+本文介绍如何使用 Power BI Desktop 应用中的 Power Query 来连接和浏览知识存储。 使用模板可以更快地开始操作，也可以从头开始构建自定义仪表板。 下面的简短视频演示了如何使用 Azure 认知搜索结合 Power BI 来丰富数据的体验。
+
+
+> [!VIDEO https://www.youtube.com/embed/XWzLBP8iWqg?version=3&start=593&end=663]
+
+
 
 + 按照[在 Azure 门户中创建知识存储](knowledge-store-create-portal.md)或[使用 REST 创建 Azure 认知搜索知识存储](knowledge-store-create-rest.md)中的步骤创建本演练中使用的示例知识存储。 还需要用于创建知识存储的 Azure 存储帐户的名称，以及从 Azure 门户获得的其访问密钥。
 

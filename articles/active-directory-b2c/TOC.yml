@@ -226,7 +226,9 @@
         - name: 令牌和会话管理
           items:
             - name: 自定义令牌
-              href: custom-policy-manage-sso-and-token-config.md
+              href: configure-tokens-custom-policy.md
+            - name: 配置会话行为
+              href: session-behavior-custom-policy.md
         - name: 传递外部 IdP 令牌
           href: idp-pass-through-custom.md
         - name: 自适应体验

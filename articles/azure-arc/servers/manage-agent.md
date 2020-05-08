@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/14/2020
+ms.date: 04/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5ad2127b4cb9da3ca83aa04bd1885908a88dba62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 685c56c7ef270acb416d4b76c6aceb8553e9a07f
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81308973"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82581709"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>管理并维护连接的计算机代理
 
@@ -261,3 +261,49 @@ Azcmagent 工具（Azcmagent）用于在安装过程中配置用于服务器（�
 1. 转到 [Azure 门户](https://aka.ms/hybridmachineportal)并打开 Azure Arc for servers（预览版）。
 
 2. 在列表中选择计算机，选择省略号图标 (**...**)，然后选择“删除”。****
+
+## <a name="update-or-remove-proxy-settings"></a>更新或删除代理设置
+
+若要将代理配置为通过代理服务器与服务进行通信，或在部署后删除此配置，请使用以下方法之一来完成此任务。
+
+### <a name="windows"></a>Windows
+
+若要设置代理服务器环境变量，请运行以下命令：
+
+```powershell
+# If a proxy server is needed, execute these commands with the proxy URL and port.
+[Environment]::SetEnvironmentVariable("https_proxy","http://{proxy-url}:{proxy-port}","Machine")
+$env:https_proxy = [System.Environment]::GetEnvironmentVariable("https_proxy","Machine")
+# For the changes to take effect, the agent service needs to be restarted after the proxy environment variable is set.
+Restart-Service -Name himds
+```
+
+若要将代理配置为停止通过代理服务器进行通信，请运行以下命令删除代理服务器环境变量并重新启动代理服务：
+
+```powershell
+[Environment]::SetEnvironmentVariable("https_proxy",$null,"Machine")
+$env:https_proxy = [System.Environment]::GetEnvironmentVariable("https_proxy","Machine")
+# For the changes to take effect, the agent service needs to be restarted after the proxy environment variable removed.
+Restart-Service -Name himds
+```
+
+### <a name="linux"></a>Linux
+
+若要设置代理服务器，请从下载代理安装包的目录运行以下命令：
+
+```bash
+# Reconfigure the connected machine agent and set the proxy server.
+bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
+```
+
+若要将代理配置为停止通过代理服务器进行通信，请运行以下命令来删除代理配置：
+
+```bash
+sudo azcmagent_proxy remove
+```
+
+## <a name="next-steps"></a>后续步骤
+
+- 了解如何使用[Azure 策略](../../governance/policy/overview.md)管理计算机，例如 VM[来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否向预期的 Log Analytics 工作区进行报告，使用[vm Azure Monitor](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)启用监视等操作。
+
+- 详细了解[Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)。 如果希望主动监视计算机上运行的操作系统和工作负荷，请使用自动化 runbook 或功能（如更新管理）管理它，或使用[Azure 安全中心](../../security-center/security-center-intro.md)之类的其他 azure 服务，则需要使用适用于 Windows 和 Linux 的 Log Analytics 代理。

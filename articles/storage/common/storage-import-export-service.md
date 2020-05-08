@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 03/15/2020
+ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: eee0fc2797fbe0666a6b848fde574c7807f47cc9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 120dbe9c4b79755105ba634c68606edfbfdc4ad2
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80282437"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872437"
 ---
 # <a name="what-is-azure-importexport-service"></a>什么是 Azure 导入/导出服务？
 
@@ -41,7 +41,7 @@ ms.locfileid: "80282437"
 * WAImportExport 工具****：这是命令行工具，可执行以下任务：
   * 准备要寄送的磁盘驱动器，以便进行导入。
   * 在将数据导入到驱动器的过程中提供辅助。
-  * 用 AES 128 位 BitLocker 加密驱动器上的数据。 你可以使用外部密钥保护程序保护你的 BitLocker 密钥。
+  * 用 AES 256 位 BitLocker 加密驱动器上的数据。 你可以使用外部密钥保护程序保护你的 BitLocker 密钥。
   * 生成导入创建过程中使用的驱动器日志文件。
   * 帮助确定导出作业所需的驱动器数。
 
@@ -131,7 +131,7 @@ Azure 导入/导出服务支持将数据复制到所有 Azure 存储帐户，以
 
 ## <a name="security-considerations"></a>安全注意事项
 
-使用 AES 128 位 BitLocker 驱动器加密对驱动器上的数据进行加密。 此加密会在运送过程中保护数据。
+使用 AES 256 位 BitLocker 驱动器加密对驱动器上的数据进行加密。 此加密会在运送过程中保护数据。
 
 对于导入作业，驱动器有两种加密方式。  
 

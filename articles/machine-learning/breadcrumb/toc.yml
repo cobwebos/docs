@@ -19,7 +19,7 @@
       items:
         - name: 服务
           tocHref: /azure/open-datasets/
-          topicHref: /azure/machine-learning/service/index
+          topicHref: /azure/machine-learning/index
           items:
             - name: 开放数据集
               tocHref: /azure/open-datasets/
@@ -34,7 +34,7 @@
       items:
         - name: 服务
           tocHref: /azure/iot-edge/
-          topicHref: /azure/machine-learning/service/index
+          topicHref: /azure/machine-learning/index
           items:
             - name: IoT Edge
               tocHref: /azure/iot-edge/
@@ -49,7 +49,7 @@
       items:
         - name: 服务
           tocHref: /azure/architecture/data-guide/technology-choices/
-          topicHref: /azure/machine-learning/service/index
+          topicHref: /azure/machine-learning/index
           items:
             - name: 数据体系结构指南
               tocHref: /azure/architecture/data-guide/
@@ -64,7 +64,7 @@
       items:
         - name: 服务
           tocHref: /azure/devops/pipelines/
-          topicHref: /azure/machine-learning/service/index
+          topicHref: /azure/machine-learning/index
           items:
             - name: 管道
               tocHref: /azure/devops/pipelines/languages/

@@ -5,12 +5,12 @@ author: KarlErickson
 ms.author: karler
 ms.topic: quickstart
 ms.date: 02/26/2020
-ms.openlocfilehash: fa64ec526ab85e412b407da8566ac6f802ca2d20
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 561c45bd13648f5f17273b478f320e9fd3d71331
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82195275"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857590"
 ---
 # <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>快速入门：生成 Java 容器映像并将其推送到 Azure 容器注册表
 
@@ -151,7 +151,7 @@ ms.locfileid: "82195275"
 祝贺你！ 现已在 Azure 支持的 JDK 中生成了容器化 Java 应用，并已将其推送到 ACR。 接下来可通过以下方式测试映像：将其部署到 Azure 应用服务，或使用以下命令（请替换占位符）将其提取到本地：
 
 ```bash
-docker pull <your registry name>.azurecr.io/gs-spring-boot-docker:v1
+docker pull <your registry name>.azurecr.io/gs-spring-boot-docker
 ```
 
 ## <a name="next-steps"></a>后续步骤

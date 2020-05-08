@@ -25,6 +25,9 @@
       href: powershell-samples.md
     - name: 托管应用程序解决方案
       href: sample-projects.md
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 视图定义项目
@@ -134,5 +137,5 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 资源管理器模板最佳做法
       href: 'https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'http://stackoverflow.com/questions/tagged/azure-managedapps'

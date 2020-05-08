@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/11/2019
-ms.openlocfilehash: 0ad780c04954c09ddfd432b3c7de3dc65f0841bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/05/2020
+ms.openlocfilehash: 20819bc6ec091eddf5d65b1c0d7aa57c821b2fc1
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78942996"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858803"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Azure 认知搜索中的知识存储简介
 
@@ -25,6 +25,10 @@ ms.locfileid: "78942996"
 如果你过去使用过认知技能，你已经知道*技能集*通过一系列根据移动文档。 结果可以是搜索索引，也可以是知识存储中的投影（此预览版中新增的）。 两个输出，搜索索引和知识存储都是同一管道的产品;派生自相同的输入，但会生成以非常不同的方式进行结构化、存储和使用的输出。
 
 在物理上，知识存储是一个 [Azure 存储](https://docs.microsoft.com/azure/storage/common/storage-account-overview)，可以是 Azure 表存储和/或 Azure Blob 存储。 任何可以连接到 Azure 存储的工具或进程都可以使用知识存储的内容。
+
+
+> [!VIDEO https://www.youtube.com/embed/XWzLBP8iWqg?version=3&start=235&end=426]
+
 
 ![管道中的知识存储示意图](./media/knowledge-store-concept-intro/knowledge-store-concept-intro.svg "管道中的知识存储示意图")
 
@@ -46,6 +50,10 @@ ms.locfileid: "78942996"
 > 熟悉 AI 扩充和认知技能？ Azure 认知搜索与认知服务视觉和语言功能集成，以对图像文件使用光学字符识别 (OCR)、对文本文件使用实体识别和关键短语提取等来提取和扩充源数据。 有关详细信息，请参阅 [Azure 认知搜索中的 AI 扩充](cognitive-search-concept-intro.md)。
 
 ## <a name="physical-storage"></a>物理存储
+
+
+> [!VIDEO https://www.youtube.com/embed/XWzLBP8iWqg?version=3&start=455&end=542]
+
 
 通过技能组合中`projections` `knowledgeStore`定义的元素清楚表述知识存储区的物理表达式。 投影定义输出的结构，使其与预期用途匹配。
 

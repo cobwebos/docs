@@ -155,8 +155,16 @@
           items:
             - name: 使用 Apache Ambari Web UI 管理群集
               href: ./hdinsight-hadoop-manage-ambari.md
-            - name: 使用 Apache Ambari Web UI 优化群集
-              href: ./hdinsight-changing-configs-via-ambari.md
+            - name: 利用 Apache Ambari 进行优化
+              items:
+                - name: 优化群集
+                  href: ./hdinsight-changing-configs-via-ambari.md
+                - name: 优化 Apache HBase
+                  href: ./optimize-hbase-ambari.md
+                - name: 优化 Apache Hive
+                  href: ./optimize-hive-ambari.md
+                - name: 优化 Apache Pig
+                  href: ./optimize-pig-ambari.md
             - name: 使用 Apache Ambari REST API
               href: ./hdinsight-hadoop-manage-ambari-rest-api.md
             - name: 删除群集
@@ -939,6 +947,8 @@
           href: ./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
         - name: 使用防火墙限制出站流量
           href: ./hdinsight-restrict-outbound-traffic.md
+        - name: 配置网络虚拟设备
+          href: ./network-virtual-appliance.md
         - name: 疑难解答
           items:
             - name: ESP 身份验证问题

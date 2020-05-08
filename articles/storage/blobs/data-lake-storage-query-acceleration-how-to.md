@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: jamsbak
-ms.openlocfilehash: 22776d9498676ec77cd71845ca5e39f01926259d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b71d4e0eab0c1c1a7cfaf6e5bf9169776308fd3b
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137563"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583846"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration-preview"></a>使用 Azure Data Lake Storage 查询加速来筛选数据（预览）
 
@@ -24,7 +24,7 @@ ms.locfileid: "82137563"
 > [!NOTE]
 > 查询加速功能处于公共预览阶段，在加拿大中部和法国中部区域提供。 若要查看限制，请参阅[已知问题](data-lake-storage-known-issues.md)一文。 若要注册预览版，请参阅[此窗体](https://aka.ms/adls/qa-preview-signup)。  
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -367,6 +367,6 @@ static void QueryMysteryBooks(BlobClient blobClient)
 
 ## <a name="next-steps"></a>后续步骤
 
-- [查询加速注册表单](https://aka.ms/adls/queryaccelerationpreview)    
+- [查询加速注册表单](https://aka.ms/adls/qa-preview-signup)    
 - [Azure Data Lake Storage 查询加速（预览版）](data-lake-storage-query-acceleration.md)
 - [查询加速 SQL 语言参考（预览版）](query-acceleration-sql-reference.md)

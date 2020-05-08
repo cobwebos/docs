@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5948fba67d3f071d77192f9ad89bc696fdc0c3cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 521982a5cf09e0da9c52bca2fe367432a1d29e57
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253450"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583142"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>使用应用程序代理通过 Kerberos 约束委派单一登录到应用程序
 
@@ -100,11 +100,13 @@ ms.locfileid: "79253450"
 
 ## <a name="sso-for-non-windows-apps"></a>非 Windows 应用的 SSO
 
-Azure AD 应用程序代理的 Kerberos 委托流程从 Azure AD 在云中验证用户身份开始。 请求到达本地后，Azure AD 应用程序代理连接器将通过与本地 Active Directory 交互，代表用户颁发 Kerberos 票证。 此过程称为 Kerberos 约束委托 (KCD)。 在下一个阶段，请求将发送到具有此 Kerberos 票证的后端应用程序。 
+Azure AD 应用程序代理的 Kerberos 委托流程从 Azure AD 在云中验证用户身份开始。 请求到达本地后，Azure AD 应用程序代理连接器将通过与本地 Active Directory 交互，代表用户颁发 Kerberos 票证。 此过程称为 Kerberos 约束委托 (KCD)。 
 
-有许多协议定义了如何发送此类请求。 大多数非 Windows 服务器应与 SPNEGO 协商。 此协议受 Azure AD 应用程序代理支持，但默认处于禁用状态。 可以为服务器配置 SPNEGO 或标准 KCD，但不能同时配置两者。
+在下一个阶段，请求将发送到具有此 Kerberos 票证的后端应用程序。 
 
-如果为连接器计算机配置 SPNEGO，请确保与 SPNEGO 一起还配置了相应连接器组中的其他所有连接器。 应与标准 KCD 协商的应用程序应通过其他未配置 SPNEGO 的连接器进行路由。
+可以通过多种机制来定义如何在此类请求中发送 Kerberos 票证。 大多数非 Windows 服务器都应以 SPNEGO 令牌的形式接收它。 此机制在 Azure AD 应用程序代理上受支持，但在默认情况下处于禁用状态。 连接器可以配置为 SPNEGO 或标准 Kerberos 令牌，但不能同时配置两者。
+
+如果为连接器计算机配置 SPNEGO，请确保与 SPNEGO 一起还配置了相应连接器组中的其他所有连接器。 应通过未配置 SPNEGO 的其他连接器来路由需要标准 Kerberos 令牌的应用程序。
  
 
 若要启用 SPNEGO，请执行以下操作：

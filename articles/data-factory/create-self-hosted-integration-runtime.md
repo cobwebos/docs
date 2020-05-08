@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 03/13/2020
-ms.openlocfilehash: 6bc0f002c6927cfd9a314797663e1dabbac392b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6d18a8d09749b832984872b57eec8a36abc1b2e2
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416645"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857686"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
 
@@ -67,7 +67,7 @@ ms.locfileid: "81416645"
 1. 在 "**集成运行时安装**" 页上，选择 " **Azure"、"自承载**"，然后选择 "**继续**"。 
 
 1. 在下面的页面上，选择 "**自承载**" 以创建自承载 IR，然后选择 "**继续**"。
-   ![创建 selfhosted IR](media/create-self-hosted-integration-runtime/new-selfhosted-ir.png)
+   ![创建 selfhosted IR](media/create-self-hosted-integration-runtime/new-selfhosted-integration-runtime.png)
 
 1. 输入 IR 的名称，然后选择“创建”****。
 
@@ -107,7 +107,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 下面是应用程序参数和属性的详细信息： 
 
-| 属性                                                    | 说明                                                  | 必需 |
+| properties                                                    | 描述                                                  | 必需 |
 | ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
 | **RegisterNewNode**"`<AuthenticationKey>`"                     | 使用指定的身份验证密钥注册自承载集成运行时节点。 | 否       |
 | **RegisterNewNode**"`<AuthenticationKey>`" "`<NodeName>`"      | 使用指定的身份验证密钥和节点名称注册自承载集成运行时节点。 | 否       |
@@ -119,7 +119,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 | **ImportBackupFile**"`<filePath>`" "`<password>`"              | 从备份文件还原节点。                          | 否       |
 | **重新启动**                                                     | 重启自承载集成运行时主机服务。   | 否       |
 | **Start**                                                       | 启动自承载集成运行时主机服务。     | 否       |
-| **停止**                                                        | 停止自承载集成运行时主机服务。        | 否       |
+| **Stop**                                                        | 停止自承载集成运行时主机服务。        | 否       |
 | **StartUpgradeService**                                         | 启动自承载集成运行时升级服务。       | 否       |
 | **StopUpgradeService**                                          | 停止自承载集成运行时升级服务。        | 否       |
 | **TurnOnAutoUpdate**                                            | 启用自承载集成运行时自动更新。        | 否       |
@@ -163,7 +163,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
   + Windows Server 2012
   + Windows Server 2012 R2
   + Windows Server 2016
-  + Windows Server Standard 2012 R2
+  + Windows Server 2019
    
    不支持在域控制器上安装自承载集成运行时。
 - 需要 .NET Framework 4.6.1 或更高版本。 如果在 Windows 7 计算机上安装自承载集成运行时，请安装 .NET Framework 4.6.1 或更高版本。 有关详细信息，请参阅 [.NET Framework 系统需求](/dotnet/framework/get-started/system-requirements)。

@@ -7,12 +7,12 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: f4d8eabdba32eaa0a2c04e6b330fbd4c8d3a563e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 900fb5120b1674397c248fd7d090660c7a813705
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80061134"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594179"
 ---
 # <a name="azure-storage-samples"></a>Azure 存储示例
 
@@ -50,9 +50,9 @@ ms.locfileid: "80061134"
 
 若要浏览 C++ 示例，请从 NuGet 下载 [C++ 存储客户端库](https://www.nuget.org/packages/wastorage/)。
 
-* [Blob 入门](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted)
-* [表使用入门](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/TablesGettingStarted)
-* [队列使用入门](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/QueuesGettingStarted)
+* [Blob 入门](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp)
+* [表使用入门](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/TablesGettingStarted.cpp)
+* [队列使用入门](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/QueuesGettingStarted.cpp)
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -68,7 +68,7 @@ ms.locfileid: "80061134"
 |----------|---------------|-------------|
 | .NET | [.NET 客户端库参考](https://docs.microsoft.com/dotnet/api/overview/azure/storage) | [.NET 存储客户端库的源代码](https://github.com/Azure/azure-storage-net) |
 | Java | [Java 客户端库参考](https://docs.microsoft.com/java/api/overview/azure/storage) | [Java 存储客户端库的源代码](https://github.com/azure/azure-storage-java) |
-| Python | [Python 客户端库参考](https://azure-storage.readthedocs.io/) | [Python 存储客户端库的源代码](https://github.com/Azure/azure-storage-p[ython]) |
+| Python | [Python 客户端库参考](https://azure-storage.readthedocs.io/) | [Python 存储客户端库的源代码](https://github.com/Azure/azure-storage-python) |
 | Node.js | [Node.js 客户端库参考](https://azure.github.io/azure-storage-node) | [Node.js 存储客户端库的源代码](https://github.com/Azure/azure-storage-node) |
 | C++ | [C++ 客户端库参考](https://azure.github.io/azure-storage-cpp/) | [C++ 存储客户端库的源代码](https://github.com/Azure/azure-storage-cpp)|
 | Azure CLI | [Azure CLI 库参考](/cli/azure/storage) | [Azure CLI 存储客户端库的源代码](https://github.com/Azure-Samples/azure-cli-samples/tree/master/storage)

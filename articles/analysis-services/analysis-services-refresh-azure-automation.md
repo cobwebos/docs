@@ -6,12 +6,12 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
-ms.openlocfilehash: a79123d57f80474e1871ef68f9a92ea9417089ac
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.openlocfilehash: 7908b168adcaa00819990d7ced04ba4888d67d63
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73572356"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871317"
 ---
 # <a name="refresh-with-azure-automation"></a>使用 Azure 自动化进行刷新
 
@@ -144,7 +144,7 @@ ms.locfileid: "73572356"
 **正文**是包含以下属性的 JSON 文档：
 
 
-|properties  |值  |
+|属性  |值  |
 |---------|---------|
 |**AnalysisServicesDatabase**     |Azure Analysis Services 数据库的名称 <br/> 示例： Adventureworksdb.msi         |
 |**AnalysisServicesServer**     |Azure Analysis Services 服务器名称。 <br/> 示例： https：\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/         |
@@ -173,7 +173,7 @@ ms.locfileid: "73572356"
 > [!IMPORTANT]
 > 确保将虚拟机公共 IP 地址配置为静态。
 >
->若要详细了解如何配置 Azure 自动化混合辅助角色，请参阅[使用混合 Runbook 辅助角色自动执行数据中心或云中的资源](../automation/automation-hybrid-runbook-worker.md#install-a-hybrid-runbook-worker)。
+>若要详细了解如何配置 Azure 自动化混合辅助角色，请参阅[混合 Runbook 辅助角色安装](../automation/automation-hybrid-runbook-worker.md#hybrid-runbook-worker-installation)。
 
 配置混合辅助角色后，请按照使用[数据工厂使用](#consume-with-data-factory)部分中所述创建一个 Webhook。  唯一的区别在于，在配置 Webhook 时，请选择 "在 > **混合辅助角色****上运行**" 选项。
 

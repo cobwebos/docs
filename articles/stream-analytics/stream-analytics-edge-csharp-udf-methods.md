@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: f07c02df1b8e0032c9e1b4ef9a24c345fee20a40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c15f16692e92c4d25d8194aaf93a3da907ae0e67
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426317"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598141"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>为 Azure 流分析作业开发 .NET Standard 用户定义函数（预览版）
 
@@ -42,17 +42,29 @@ Azure 流分析的 Visual Studio 工具可用于轻松编写 UDF、在本地（�
 任何 UDF 包的格式都具有路径 `/UserCustomCode/CLR/*`。 动态链接库 (DLL) 和资源被复制到 `/UserCustomCode/CLR/*` 文件夹下，有助于将系统中的用户 DLL 与 Azure 流分析 DLL 隔离开来。 无论使用何种方法来利用这些函数，此包路径都用于所有函数。
 
 ## <a name="supported-types-and-mapping"></a>支持的类型和映射
+若要在 c # 中使用 Azure 流分析值，需要将其从一个环境封送到另一个环境。 针对 UDF 的所有输入参数进行封送处理。 每个 Azure 流分析类型在 c # 中都有对应的类型，如下表所示：
 
-|**UDF 类型 (C#)**  |**Azure 流分析类型**  |
+|**Azure 流分析类型** |**C # 类型** |
+|---------|---------|
+|bigint | long |
+|float | double |
+|nvarchar(max) | string |
+|datetime | DateTime |
+|Record | 字典\<字符串，对象> |
+|Array | Array\<object> |
+
+当需要将数据从 c # 封送到 Azure 流分析时，就会出现这种情况。 下表显示了受支持的类型：
+
+|**C # 类型**  |**Azure 流分析类型**  |
 |---------|---------|
 |long  |  bigint   |
-|double  |  double   |
-|字符串  |  nvarchar(max)   |
-|dateTime  |  dateTime   |
-|struct  |  IRecord   |
-|对象 (object)  |  IRecord   |
-|Array\<object>  |  IArray   |
-|dictionary<string, object>  |  IRecord   |
+|Double  |  float   |
+|string  |  nvarchar(max)   |
+|DateTime  |  dateTime   |
+|struct  |  Record   |
+|对象 (object)  |  Record   |
+|Array\<object>  |  Array   |
+|字典\<字符串，对象>  |  Record   |
 
 ## <a name="codebehind"></a>CodeBehind
 可以在 Script.sql CodeBehind 中编写用户定义的函数****。 Visual Studio 工具会自动将 CodeBehind 文件编译为程序集文件。 将作业提交到 Azure 时，程序集将打包为 zip 文件并上传到存储帐户。 可以根据[流分析 Edge 作业的 UDF](stream-analytics-edge-csharp-udf.md) 教程执行操作，了解如何使用 CodeBehind 编写 C# UDF。 
