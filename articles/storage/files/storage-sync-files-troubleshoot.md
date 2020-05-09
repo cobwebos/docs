@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 11942a08d46f4b46dc5478fca4b64796b9ce0a7c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 41bc2a05b81bca586cde261bf2eb05db96d687f8
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176118"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801310"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -221,12 +221,12 @@ Set-AzStorageSyncServerEndpoint `
 如果创建云终结点并使用包含数据的 Azure 文件共享，则可能会出现此问题。 在云与服务器终结点之间同步文件之前，扫描 Azure 文件共享中的更改的更改枚举作业必须已完成。 完成该作业所需的时间取决于 Azure 文件共享中命名空间的大小。 更改枚举作业完成后，服务器终结点运行状况应会更新。
 
 ### <a name="how-do-i-monitor-sync-health"></a><a id="broken-sync"></a>如何监视同步运行状况
-# <a name="portal"></a>[门户](#tab/portal1)
+# <a name="portal"></a>[Portal](#tab/portal1)
 在每个同步组中，可以向下钻取到单个服务器终结点，以查看最后几个已完成的同步会话的状态。 如果出现绿色的“运行状况”列，并且“文件未同步”的值为 0，则表示同步按预期工作。 否则，请参阅下面的常见同步错误列表，以及文件不同步问题的处理方法。 
 
 ![Azure 门户的屏幕截图](media/storage-sync-files-troubleshoot/portal-sync-health.png)
 
-# <a name="server"></a>[服务器](#tab/server)
+# <a name="server"></a>[Server](#tab/server)
 转到服务器的遥测日志（可在事件查看器中通过 `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry` 找到）。 事件 9102 对应于已完成的同步会话；有关最新同步状态，请查找 ID 为 9102 的最新事件。 SyncDirection 会告知此会话是上传还是下载。 如果 HResult 为 0，则表示同步会话已成功。 如果 HResult 不为 0，则表示同步期间出错；有关常见错误的列表，请参阅下文。 如果 PerItemErrorCount 大于 0，则表示某些文件或文件夹未正确同步。 有可能 HResult 为 0，但 PerItemErrorCount 大于 0。
 
 下面是成功上传的示例。 为简洁起见，下面只列出了每个 9102 事件中包含的某些值。 
@@ -258,10 +258,10 @@ TransferredFiles: 0, TransferredBytes: 0, FailedToTransferFiles: 0, FailedToTran
 ---
 
 ### <a name="how-do-i-monitor-the-progress-of-a-current-sync-session"></a>如何监视当前同步会话的进度？
-# <a name="portal"></a>[门户](#tab/portal1)
+# <a name="portal"></a>[Portal](#tab/portal1)
 在同步组中，转到有问题的服务器终结点，并在“同步活动”部分查看当前同步会话中已上传或下载的文件计数。 请注意，此状态会延迟大约 5 分钟，如果同步会话足够小，可在此时间段内完成，则可能不会在门户中报告此会话。 
 
-# <a name="server"></a>[服务器](#tab/server)
+# <a name="server"></a>[Server](#tab/server)
 在服务器上的遥测日志中查看最近的 9302 事件（在事件查看器中，转到“应用程序和服务日志\Microsoft\FileSync\Agent\Telemetry”）。 此事件指示当前同步会话的状态。 TotalItemCount 表示要同步多少个文件，AppliedItemCount 表示到目前为止已同步的文件数，PerItemErrorCount 表示同步失败的文件数（请参阅下文了解如何处理此问题）。
 
 ```
@@ -276,14 +276,14 @@ PerItemErrorCount: 1006.
 ---
 
 ### <a name="how-do-i-know-if-my-servers-are-in-sync-with-each-other"></a>如何知道我的服务器是否已彼此同步？
-# <a name="portal"></a>[门户](#tab/portal1)
+# <a name="portal"></a>[Portal](#tab/portal1)
 对于给定同步组中的每个服务器，请确保：
 - 上传和下载会话的“上次尝试同步”时间戳是最近的时间。
 - 上传和下载会话的状态为绿色。
 - “同步活动”字段显示的要同步的剩余文件数很少或者为零。
 - 上传和下载会话的“文件未同步”字段值为 0。
 
-# <a name="server"></a>[服务器](#tab/server)
+# <a name="server"></a>[Server](#tab/server)
 查看由每个服务器的遥测事件日志中的 9102 事件标记的已完成同步会话（在事件查看器中，转到 `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry`）。 
 
 1. 在任何给定的服务器上，需要确保最近的上传和下载会话已成功完成。 为此，请检查上传和下载操作的 HResult 与 PerItemErrorCount 是否为 0（SyncDirection 字段会指示给定的会话是上传还下载会话）。 请注意，如果未看到最近完成的同步会话，原因有可能是同步会话当前正在进行；如果刚刚添加或修改了大量数据，则这种情况符合预期。
@@ -392,7 +392,7 @@ PerItemErrorCount: 1006.
 | **错误字符串** | ECS_E_SYNC_BLOCKED_ON_CHANGE_DETECTION_POST_RESTORE |
 | **所需的补救措施** | 否 |
 
-不需要执行任何操作。 使用 Azure 备份还原文件或文件共享（云终结点）后，同步会被阻止，直到在 Azure 文件共享上完成更改检测。 更改检测在还原完成后立即运行，持续时间取决于文件共享中的文件数。
+因此不需要执行任何操作。 使用 Azure 备份还原文件或文件共享（云终结点）后，同步会被阻止，直到在 Azure 文件共享上完成更改检测。 更改检测在还原完成后立即运行，持续时间取决于文件共享中的文件数。
 
 <a id="-2147216747"></a>**同步失败，因为同步数据库已卸载。**  
 
@@ -807,12 +807,9 @@ PerItemErrorCount: 1006.
 | **错误字符串** | ECS_E_INVALID_AAD_TENANT |
 | **所需的补救措施** | 是 |
 
-发生此错误是因为 Azure 文件同步目前不支持将订阅移到其他 Azure Active Directory 租户。
+请确保具有最新的 Azure 文件同步代理。 在代理 V10 中，Azure 文件同步支持将订阅移到其他 Azure Active Directory 租户。
  
-若要解决此问题，请执行以下选项之一：
-
-- **选项1（推荐）**：将订阅移回原始 Azure Active Directory 租户
-- **选项 2**：删除并重新创建当前同步组。 如果在服务器终结点上启用了云分层，请删除同步组，然后执行[“云分层”部分]( https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)中记录的步骤，以便删除孤立的分层文件，然后重新创建同步组。 
+获得最新的代理版本后，必须为 Storagesync.sys 应用程序提供对存储帐户的访问权限（请参阅[确保 Azure 文件同步有权访问存储帐户](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot#troubleshoot-rbac)）。
 
 <a id="-2134364010"></a>**由于防火墙和虚拟网络例外，同步失败-未配置**  
 
@@ -887,7 +884,7 @@ PerItemErrorCount: 1006.
 
 ### <a name="common-troubleshooting-steps"></a>常见故障排除步骤
 <a id="troubleshoot-storage-account"></a>**验证存储帐户是否存在。**  
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 1. 导航到存储同步服务中的同步组。
 2. 选择同步组中的云终结点。
 3. 记下打开的窗格中的 Azure 文件共享名称。
@@ -970,7 +967,7 @@ if ($storageAccount -eq $null) {
 ---
 
 <a id="troubleshoot-azure-file-share"></a>**确保 Azure 文件共享存在。**  
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 1. 单击左侧目录中的 "**概述**"，返回到 "主存储帐户" 页。
 2. 选择 "**文件**" 以查看文件共享列表。
 3. 检查云终结点引用的文件共享是否显示在文件共享列表中（在上述步骤 1 中应已记下此共享名称）。
@@ -989,7 +986,7 @@ if ($fileShare -eq $null) {
 ---
 
 <a id="troubleshoot-rbac"></a>**确保 Azure 文件同步有权访问存储帐户。**  
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 1. 在左侧的目录上单击“访问控制(IAM)”。****
 1. 单击“角色分配”**** 选项卡以列出有权访问你的存储帐户的用户和应用程序（*服务主体*）。
 1. 验证 " **storagesync.sys** " 或 "**混合文件同步服务**（旧应用程序名称）是否与**读取器和数据访问**角色一起显示在列表中。 
@@ -998,7 +995,7 @@ if ($fileShare -eq $null) {
 
     如果列表中未显示 " **storagesync.sys** " 或 "**混合文件同步" 服务**，请执行以下步骤：
 
-    - 单击 **“添加”** 。
+    - 单击“添加”  。
     - 在“角色”**** 字段中，选择“读者和数据访问”****。
     - 在 "**选择**" 字段中，键入**storagesync.sys**，选择角色，然后单击 "**保存**"。
 
@@ -1248,7 +1245,25 @@ $orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
 3. 验证 Azure 文件同步筛选器驱动程序（StorageSync.sys 和 StorageSyncGuard.sys）是否正在运行。
     - 在权限提升的命令提示符下，运行 `fltmc`。 验证 StorageSync.sys 和 StorageSyncGuard.sys 文件系统筛选器驱动程序是否已列出。
 
-如果问题未得到解决，请运行 AFSDiag 工具：
+如果问题未得到解决，请运行 AFSDiag 工具，并将其 .zip 文件输出发送到分配给你的案例的支持工程师，以便进一步诊断。
+
+对于代理版本 v11 和更高版本：
+
+1. 打开权限提升的 PowerShell 窗口并运行以下命令（在每条命令后面按 Enter）：
+
+    > [!NOTE]
+    >AFSDiag 会在收集日志之前在其中创建输出目录和临时文件夹，并将在执行后删除临时文件夹。 指定不包含数据的输出位置。
+    
+    ```powershell
+    cd "c:\Program Files\Azure\StorageSyncAgent"
+    Import-Module .\afsdiag.ps1
+    Debug-AFS -OutputDirectory C:\output -KernelModeTraceLevel Verbose -UserModeTraceLevel Verbose
+    ```
+
+2. 重现此问题。 完成后，输入 **D**。
+3. 随即会将一个包含日志和跟踪文件的 .zip 文件保存到指定的输出目录。 
+
+对于 v10 和更早版本的代理：
 1. 创建用于保存 AFSDiag 输出的目录（例如，C:\Output）。
     > [!NOTE]
     >AFSDiag 会在收集日志之前删除输出目录中的所有内容。 指定不包含数据的输出位置。

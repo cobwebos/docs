@@ -2,23 +2,20 @@
 title: 在 Azure API 管理中监视已发布的 API | Microsoft Docs
 description: 遵循本教程的步骤了解如何在 Azure API 管理中监视 API。
 services: api-management
-documentationcenter: ''
 author: vladvino
 manager: cfowler
-editor: ''
 ms.service: api-management
 ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: b06301ab424a29d8f0e31e8f4dee26265327896b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bee93cf84f4beda0684127102942447630219881
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79221924"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82128846"
 ---
 # <a name="monitor-published-apis"></a>监视已发布的 API
 
@@ -28,7 +25,7 @@ ms.locfileid: "79221924"
 
 > [!div class="checklist"]
 > * 查看活动日志
-> * 查看诊断日志
+> * 查看资源日志
 > * 查看 API 的指标 
 > * 针对 API 收到的未经授权的调用设置警报规则
 
@@ -36,11 +33,11 @@ ms.locfileid: "79221924"
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Monitor-API-Management-with-Azure-Monitor/player]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 + 了解 [Azure API 管理术语](api-management-terminology.md)。
-+ 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
-+ 此外，请完成以下教程：[导入并发布第一个 API](import-and-publish.md)。
++ 请完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
++ 此外，请完成以下教程：[导入和发布第一个 API](import-and-publish.md)。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -120,20 +117,20 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 
 3. 选择所需的筛选范围，然后单击“应用”  。
 
-## <a name="diagnostic-logs"></a>诊断日志
+## <a name="resource-logs"></a>资源日志
 
-诊断日志提供大量有关操作和错误的信息，这些信息对审核和故障排除非常重要。 诊断日志不同于活动日志。 活动日志提供有关对 Azure 资源执行的操作的见解。 诊断日志提供资源执行的操作的深入信息。
+资源日志提供了大量有关操作和错误的信息，这些信息对于审核和故障排除非常重要。 资源日志不同于活动日志。 活动日志提供对在 Azure 资源上执行的操作的见解。 资源日志提供对资源执行的操作的见解。
 
-若要配置诊断日志，请执行以下操作：
+若要配置资源日志，请执行以下操作：
 
 1. 选择 APIM 服务实例。
 2. 单击“诊断设置”。 
 
-    ![诊断日志](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
+    ![资源日志](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
 
-3. 单击“启用诊断”  。 可以将诊断日志与指标一起存档到存储帐户，将其流式传输到事件中心，或者将其发送到 Azure Monitor 日志。 
+3. 单击“启用诊断”  。 可以将资源日志与指标一起存档到存储帐户，将其流式传输到事件中心，或者将其发送到 Azure Monitor 日志。 
 
-“API 管理”当前提供有关单个 API 请求的诊断日志（每小时进行批处理），其中每个条目具有以下架构：
+“API 管理”当前提供有关单个 API 请求的资源日志（每小时进行批处理），其中每个条目具有以下架构：
 
 ```json
 {  
@@ -190,7 +187,7 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 | callerIpAddress | 字符串 | 直接网关调用方（可以是中介）的 IP 地址 |
 | correlationId | 字符串 | 由 API 管理分配的唯一 http 请求标识符 |
 | location | 字符串 | 处理请求的网关所在 Azure 区域的名称 |
-| httpStatusCodeCategory | 字符串 | Http 响应状态代码的类别：成功（301 或以下，或者 304 或 307）、未授权（401、403、429）、错误（400、500 到 600）、其他 |
+| httpStatusCodeCategory | 字符串 | http 响应状态代码的类别：成功（301 或以下，或者 304 或 307）、未授权（401、403、429）、错误（400、500 到 600）、其他 |
 | resourceId | 字符串 | API 管理资源 /SUBSCRIPTIONS/\<subscription>/RESOURCEGROUPS/\<resource-group>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/\<name> 的 ID |
 | properties | 对象 (object) | 当前请求的属性 |
 | method | 字符串 | 传入请求的 HTTP 方法 |
@@ -227,7 +224,7 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 
 > [!div class="checklist"]
 > * 查看活动日志
-> * 查看诊断日志
+> * 查看资源日志
 > * 查看 API 的指标
 > * 针对 API 收到的未经授权的调用设置警报规则
 

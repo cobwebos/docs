@@ -4,21 +4,21 @@ description: 了解 Azure Analysis Services，它是一种可在云中提供企�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 02/20/2020
+ms.date: 04/13/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3a18218635b5fc576bd9255eb73c136756ac3caa
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b1c755176a62b7e362707da093a899ae96cfe69a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215545"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82128875"
 ---
 # <a name="what-is-azure-analysis-services"></a>什么是 Azure Analysis Services？
 
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
 
-Azure Analysis Services 是一个完全托管的平台即服务 (PaaS)，它在云中提供企业级的数据模型。 使用高级糅合和建模功能，可以在单个受信任的表格语义数据模型中合并多个数据源中的数据、定义指标以及保护数据。 该数据模型可让用户更快速轻松地浏览大量数据进行即席数据分析。
+Azure Analysis Services 是一个完全托管的平台即服务 (PaaS)，它在云中提供企业级的数据模型。 使用高级糅合和建模功能，可以在单个受信任的表格语义数据模型中合并多个数据源中的数据、定义指标以及保护数据。 数据模型可让用户更快速轻松地使用 Power BI 和 Excel 等工具执行即席数据分析。
 
 ![数据源](./media/analysis-services-overview/aas-overview-overall.png)
 
@@ -28,7 +28,7 @@ Azure Analysis Services 是一个完全托管的平台即服务 (PaaS)，它在�
 
 在 Azure 门户中，数分钟即可[创建服务器](analysis-services-create-server.md)。 借助 Azure 资源管理器[模板](../azure-resource-manager/resource-manager-create-first-template.md)和 PowerShell，可以使用声明性模板来创建服务器。 利用单个模板可以部署服务器资源及其他 Azure 组件，例如存储帐户和 Azure Functions。 
 
-**视频：** 观看 [Automating deployment](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation)（将部署自动化），详细了解如何使用 Azure 自动化来加速服务器的创建。
+**视频：** 请观看 [Automating deployment](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation)（将部署自动化），详细了解如何使用 Azure 自动化来加速服务器的创建。
 
 Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的分析解决方案。 集成 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) 后可以对关键数据进行安全的基于角色的访问。 只需包括一项将数据加载到模型中的活动，即可集成 [Azure 数据工厂](../data-factory/introduction.md)管道。 可通过自定义代码将 [Azure 自动化](../automation/automation-intro.md)和 [Azure Functions](../azure-functions/functions-overview.md) 用于模型的轻型业务流程。 
 
@@ -38,7 +38,7 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 
 ### <a name="developer-tier"></a>开发人员层
 
-对于评估、开发和测试方案，建议使用此层。 单个计划包含标准层的相同功能，但处理能力、QPU 和内存大小有限制。 查询副本横向扩展不适用于此层。  此层不提供 SLA。
+对于评估、开发和测试方案，建议使用此层。 单个计划包含标准层的相同功能，但处理能力、QPU 和内存大小有限制。 查询副本横向扩展*不适用于*此层。 此层不提供 SLA。
 
 |计划  |QPU  |内存 (GB)  |
 |---------|---------|---------|
@@ -64,12 +64,14 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 |S1    |    100     |    25     |
 |S2    |    200     |    50     |
 |S4    |    400     |    100     |
-|S8*    |    320     |    200     |
-|S9*    |    640    |    400     |
-|S8v2*    |    640     |    200     |
-|S9v2*    |    1280    |    400     |
+|S8 <sup>[1](#depr)</sup>、<sup>[2](#rec)</sup>    |    320    |    200     |
+|S9 <sup>[1](#depr)</sup>、<sup>[2](#rec)</sup>    |    640    |    400     |
+|S8v2 <sup>[1](#depr)</sup>   |    640     |    200     |
+|S9v2 <sup>[1](#depr)</sup>    |    1280    |    400     |
 
-\* 并未在所有区域推出。  
+<a name="depr">1</a> - 并未在所有区域推出。   
+<a name="rec">2</a> - 此计划已弃用。 建议使用 v2。
+
 
 ## <a name="availability-by-region"></a>按区域列出的可用性
 
@@ -83,15 +85,15 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 |加拿大中部    |     B1、B2、S0、S1、S2、S4、D1    |     1    |
 |美国东部     |     B1、B2、S0、S1、S2、S4、D1    |    1     |
 |美国东部 2     |     B1、B2、S0、S1、S2、S4、D1   |    7    |
-|美国东部 2     |     S8、S9、S8v2、S9v2   |    1    |
+|美国东部 2     |     S8<sup>[2](#rec)</sup>、S9<sup>[2](#rec)</sup>、S8v2、S9v2   |    1    |
 |美国中北部     |     B1、B2、S0、S1、S2、S4、D1     |    1     |
 |美国中部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 |美国中南部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 |美国中西部   |     B1、B2、S0、S1、S2、S4、D1    |    3     |
 |美国西部     |    B1、B2、S0、S1、S2、S4、D1    |    7   |
-|美国西部     |    S8、S9、S8v2、S9v2   |    2  |
+|美国西部     |    S8<sup>[2](#rec)</sup>、S9<sup>[2](#rec)</sup>、S8v2、S9v2   |    2  |
 |美国西部 2    |    B1、B2、S0、S1、S2、S4、D1    |    3   |
-|美国西部 2    |    S8、S9、S8v2、S9v2  |    1     |
+|美国西部 2    |    S8<sup>[2](#rec)</sup>、S9<sup>[2](#rec)</sup>、S8v2、S9v2  |    1     |
 
 ### <a name="europe"></a>欧洲
 
@@ -101,17 +103,17 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 |北欧     |    S8v2、S9v2      |    3     |
 |英国南部     |    B1、B2、S0、S1、S2、S4、D1      |     1    |
 |西欧     |    B1、B2、S0、S1、S2、S4、D1   |    7    |
-|西欧    |   S8、S9、S8v2、S9v2  |  1  |
+|西欧    |   S8<sup>[2](#rec)</sup>、S9<sup>[2](#rec)</sup>、S8v2、S9v2  |  1  |
 
 ### <a name="asia-pacific"></a>亚太区 
 
 |区域  | 支持的计划 | 查询副本（仅限标准计划） |
 |---------|---------|:---------:|
 |澳大利亚东部     |    B1、B2、S0、S1、S2、S4     |    3     |
-|澳大利亚东部     |    S8、S9、S8v2、S9v2    |    1     |
+|澳大利亚东部     |    S8<sup>[2](#rec)</sup>、S9<sup>[2](#rec)</sup>、S8v2、S9v2    |    1     |
 |澳大利亚东南部     | B1、B2、S0、S1、S2、S4、D1       |    1     |
 |日本东部     |   B1、B2、S0、S1、S2、S4、D1       |    1     |
-|东南亚     |     B1、B2、S0、S1、S2、S4、S8、S9、S8v2、S9v2、D1     |   1      |
+|东南亚     |     B1、B2、S0、S1、S2、S4、S8<sup>[2](#rec)</sup>、S9<sup>[2](#rec)</sup>、S8v2、S9v2、D1     |   1      |
 |印度西部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 
 ## <a name="scale-to-your-needs"></a>按需求缩放
@@ -161,7 +163,7 @@ Azure Analysis Services 为多个级别的敏感数据提供安全性。 作为�
 
 Azure Analysis Services 防火墙阻止所有客户端连接，规则中指定的 IP 地址除外。 默认情况下，没有为新服务器启用防火墙保护。 建议在创建服务器以后立即通过服务器预配脚本或门户启用防火墙保护并配置规则。 配置规则，按个人客户端 IP 或范围指定允许的 IP 地址。 也可允许或阻止 Power BI（服务）连接。 使用门户或 PowerShell 配置防火墙和规则。 有关详细信息，请参阅[配置服务器防火墙](analysis-services-qs-firewall.md)。
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>身份验证
 
 用户身份验证由 [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md) 处理。 登录时，用户需使用组织帐户标识对数据库进行基于角色的访问。 用户标识必须是服务器所在订阅的默认 Azure Active Directory 成员。 若要了解详细信息，请参阅[身份验证和用户权限](analysis-services-manage-users.md)。
 
@@ -208,6 +210,10 @@ Microsoft Analysis Services 项目作为免费的可安装 VSIX 包提供。 [�
 
 通过使用 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 管理服务器和模型数据库。 连接到云中的服务器。 直接从 XMLA 查询窗口运行 TMSL 脚本，然后通过 TMSL 脚本和 PowerShell 自动执行任务。 新特性和功能推出迅速 - SSMS 每月进行更新。
 
+### <a name="open-source-tools"></a>开源工具
+
+Analysis Services 有一个生机勃勃的开发人员社区，他们会创建各种工具。 请务必查看直观且轻型的[表格编辑器](https://tabulareditor.github.io/)，它是一个开源工具，可用于创建、维护和管理表格模型。 [DAX Studio](https://daxstudio.org/) 是一个强大的开源工具，可用于 DAX 创作、诊断、性能优化和分析。
+
 ### <a name="powershell"></a>PowerShell
 
 服务器资源管理任务，如创建服务器资源、挂起或恢复服务器操作，或更改服务级别（层），都要使用 Azure PowerShell cmdlet。 用于管理数据库的其他任务（例如添加或删除角色成员、处理或运行 TMSL 脚本）使用 SqlServer 模块中的 cmdlet。 有关详细信息，请参阅[使用 PowerShell 管理 Azure Analysis Services](analysis-services-powershell.md)。
@@ -224,7 +230,7 @@ Microsoft Analysis Services 项目作为免费的可安装 VSIX 包提供。 [�
 
 ## <a name="monitoring-and-diagnostics"></a>监视和诊断
 
-Azure Analysis Services 与 Azure 指标集成，提供多种多样的资源特定指标来帮助监视服务器的性能与运行状况。 有关详细信息，请参阅[监视服务器指标](analysis-services-monitor.md)。 使用 [Azure 资源诊断日志](../azure-monitor/platform/platform-logs-overview.md)记录指标。 监视日志并将其发送到 [Azure 存储](https://azure.microsoft.com/services/storage/)，将其流式传输到 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，并将其导出到 [Azure](https://azure.microsoft.com/services/log-analytics/) 服务 [Azure Monitor 日志](https://www.microsoft.com/cloud-platform/operations-management-suite)。 有关详细信息，请参阅[设置诊断日志记录](analysis-services-logging.md)。
+Azure Analysis Services 与 Azure Monitor 指标集成，提供数量众多的资源特定指标来帮助你监视服务器的性能与运行状况。 有关详细信息，请参阅[监视服务器指标](analysis-services-monitor.md)。 使用[资源平台日志](../azure-monitor/platform/platform-logs-overview.md)记录指标。 监视日志并将其发送到 [Azure 存储](https://azure.microsoft.com/services/storage/)，将其流式传输到 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，并将其导出到 [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite) 服务 [Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)。 有关详细信息，请参阅[设置诊断日志记录](analysis-services-logging.md)。
 
 Azure Analysis Services 还支持使用[动态管理视图 (DMV)](https://docs.microsoft.com/analysis-services/instances/use-dynamic-management-views-dmvs-to-monitor-analysis-services)。 DMV 基于 SQL 语法，能够与返回元数据和监视有关服务器实例的信息的架构行集相对接。
 
@@ -232,19 +238,15 @@ Azure Analysis Services 还支持使用[动态管理视图 (DMV)](https://docs.m
 
 本部分列出了特定于 Azure Analysis Services 的文档。 使用浏览器屏幕左侧的目录可查找文章。 
 
-由于 Azure Analysis Services 表格模型在很大程度上与 SQL Server Analysis Services 中的表格模型相同，因此可以参考 [SQL Server Analysis Services 文档](https://docs.microsoft.com/analysis-services/analysis-services-overview)中分享的大量数据建模教程、概念、过程、开发人员和参考文章。 SQL Server Analysis Services 文档中的文章在标题下方的“适用于”段落中说明了它们是否也适用于 Azure Analysis Services。
+由于 Azure Analysis Services 中的表格模型在很大程度上与 SQL Server Analysis Services 和 Power BI Premium 数据集中的表格模型相同，因此可以参考 [Analysis Services 文档](https://docs.microsoft.com/analysis-services/?view=azure-analysis-services-current)中分享的大量数据建模教程、概念、过程、开发人员和参考文章。 共享的 Analysis Services 文档中的文章在标题下方的“适用于”段落中说明了它们是否也适用于 Azure Analysis Services。 还可以使用“目录”上方的“版本”选择器，但只能查看适用于你所用的平台的文章。
 
 ![分享的文档](./media/analysis-services-overview/aas-overview-applies-to.png)
 
 ### <a name="contribute"></a>欢迎供稿！
 
-与本文一样，Analysis Services 文档也是开源的。 如果你有 GitHub 帐户，可以单击浏览器屏幕右上角的“编辑”（铅笔图标）来编辑某篇文章。 使用浏览器中的编辑器，并单击“提议文件更改”。 
+与本文一样，Analysis Services 文档也是开源的。 若要详细了解如何供稿，请参阅[文档供稿指南](https://docs.microsoft.com/contribute/)。 
 
-![分享的文档](./media/analysis-services-overview/aas-overview-edit.png)
-
-文档团队会审查你的供稿，如果获得批准，你的 GitHub 帐户名会显示为供稿人。 有关详细信息，请参阅[文档供稿人指南](https://docs.microsoft.com/contribute/)。
-
-Azure Analysis Services 文档还包含 [GitHub 问题](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs)。 可以提供有关产品或文档的反馈， 使用文章底部的“反馈”即可。  SQL Server Analysis Services 文档尚未启用“GitHub 问题”。 
+Azure Analysis Services 文档还包含 [GitHub 问题](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs)。 可以提供有关产品或文档的反馈， 使用文章底部的“反馈”即可。  共享的 Analysis Services 文档尚未启用“GitHub 问题”。 
 
 ## <a name="blogs"></a>博客
 

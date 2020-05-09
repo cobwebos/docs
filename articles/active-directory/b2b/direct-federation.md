@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 02/27/2019
+ms.date: 05/07/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b99a80a90df8fcfc5efe6dfa0c2cd7e8e5e04e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 474d2e0c31eed852ba96780ca996eca632bd5842
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050868"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926980"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>与来宾用户的 AD FS 和第三方提供程序的直接联合（预览）
 |     |
@@ -50,10 +50,13 @@ ms.locfileid: "80050868"
 
 ### <a name="authentication-url"></a>身份验证 URL
 仅当身份验证 URL 的域与目标域匹配或者身份验证 URL 是这些允许的标识提供者之一（此列表可能会更改）时，才允许直接联合身份验证：
+
 -   accounts.google.com
 -   pingidentity.com
 -   login.pingone.com
 -   okta.com
+-   oktapreview.com
+-   okta-emea.com
 -   my.salesforce.com
 -   federation.exostar.com
 -   federation.exostartest.com
@@ -98,7 +101,7 @@ Azure AD B2B 可以配置为与使用 SAML 协议的标识提供者联合，该�
 |属性  |值  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
-|读者     |`urn:federation:MicrosoftOnline`         |
+|目标受众     |`urn:federation:MicrosoftOnline`         |
 |颁发者     |合作伙伴 IdP 的颁发者 URI，例如`http://www.example.com/exk10l6w90DHM0yi...`         |
 
 
@@ -124,7 +127,7 @@ Azure AD B2B 可以配置为与使用 WS 送单协议的标识提供者联合，
 |属性  |值  |
 |---------|---------|
 |PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
-|读者     |`urn:federation:MicrosoftOnline`         |
+|目标受众     |`urn:federation:MicrosoftOnline`         |
 |颁发者     |合作伙伴 IdP 的颁发者 URI，例如`http://www.example.com/exk10l6w90DHM0yi...`         |
 
 IdP 颁发的 WS-AT 令牌所需的声明：
@@ -138,7 +141,7 @@ IdP 颁发的 WS-AT 令牌所需的声明：
 接下来，你将配置与 Azure AD 中的步骤1中配置的标识提供程序的联合。 可以使用 Azure AD 门户或 PowerShell。 直接联合身份验证策略生效之前可能需要5-10 分钟。 在此期间，不要尝试兑换直接联盟域的邀请。 需要以下属性：
 - Partner IdP 的颁发者 URI
 - 合作伙伴 IdP 的被动身份验证终结点（仅支持 https）
-- 证书
+- Certificate
 
 ### <a name="to-configure-direct-federation-in-the-azure-ad-portal"></a>在 Azure AD 门户中配置直接联合
 
@@ -157,7 +160,7 @@ IdP 颁发的 WS-AT 令牌所需的声明：
    - 合作伙伴 IdP 的域名
    - 合作伙伴 IdP 的实体 ID
    - 合作伙伴 IdP 的被动请求者终结点
-   - 证书
+   - Certificate
    > [!NOTE]
    > 元数据 URL 是可选的，但我们强烈建议这样做。 如果提供元数据 URL，Azure AD 可以在签名证书过期时自动续订该证书。 如果出于任何原因在过期时间之前旋转证书，或者未提供元数据 URL，则 Azure AD 将无法续订该证书。 在这种情况下，你将需要手动更新签名证书。
 

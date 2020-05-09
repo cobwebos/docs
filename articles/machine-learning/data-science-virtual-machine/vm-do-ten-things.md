@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 6574ccd7616ac1442b1c8c69b6218431ad912ab3
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
-ms.translationtype: MT
+ms.openlocfilehash: 47663072be0931961d0f2fded938322027148d7a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204213"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929275"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows 数据科学虚拟机的十大功能
 
@@ -68,7 +68,7 @@ Jupyter Notebook 提供基于浏览器的 IDE，用于数据探索和建模。 �
 
 若要启动 Jupyter Notebook，请在“开始”菜单或桌面上选择“Jupyter Notebook”图标。   在 DSVM 命令提示符处，还可以从包含现有笔记本或想在其中创建新笔记本的目录中运行 ```jupyter notebook``` 命令。  
 
-启动 Jupyter 后，应当会看到一个目录，其中包含预打包到 DSVM 中的多个示例笔记本。 现在可以：
+启动 Jupyter 后，导航到已预`/notebooks`打包到 DSVM 的示例笔记本的目录。 现在可以：
 
 * 单击笔记本以查看代码。
 * 选择 Shift+Enter 以运行每个单元格。
@@ -883,6 +883,6 @@ DSVM 中预构建的工具可以满足很多常规数据分析需求。 这能�
 
 - [文本文档分类](https://github.com/anargyri/lstm_han)：本演练演示如何构建和训练两个神经网络体系结构：分层注意网络和长短期内存（LSTM）网络。 这些神经网络使用用于深度学习的 Keras API 对文本文档进行分类。 Keras 是、TensorFlow 和 Theano 的三个最受欢迎的深度学习 Microsoft Cognitive Toolkit 框架的前端。
 
-## <a name="summary"></a>“摘要”
+## <a name="summary"></a>总结
 本文仅介绍了可在 Microsoft Data Science Virtual Machine 上执行的部分操作。 你还可以执行很多其他操作，使 DSVM 成为有效的分析环境。
 
