@@ -1,5 +1,5 @@
 ---
-title: 在商业应用商店中创建新的托管服务产品/服务
+title: 在 Microsoft 商业应用商店中创建托管服务产品/服务
 description: 如何使用合作伙伴中心的商业应用商店门户在 Azure Marketplace 中创建新的托管服务产品/服务。
 author: JnHs
 ms.author: jenhayes
@@ -8,56 +8,60 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: c82c3e0b6e6d11ccc33bf8556b06aeb04a6d37b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 41b2e12a94f5751e31f482c913c71b4731b1cf6c
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147910"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871901"
 ---
-# <a name="create-a-new-managed-service-offer"></a>创建新的托管服务产品/服务
+# <a name="create-a-managed-service-offer"></a>创建托管服务产品
 
-> [!IMPORTANT]
-> 我们正在将你的托管服务产品/服务的管理从云合作伙伴门户迁移到合作伙伴中心。 在迁移你的产品/服务之前，请按照将[托管服务提供程序发布到 Azure Marketplace](../../lighthouse/how-to/publish-managed-services-offers.md)中的说明来管理云合作伙伴门户中的产品/服务。
+托管服务提供了帮助来启用[Azure Lighthouse](../../lighthouse/overview.md)方案。 当客户接受托管服务产品/服务后，他们就可以为[Azure 委托的资源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)加入资源。 在开始之前，请[在合作伙伴中心创建一个商用 Marketplace 帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)（如果尚未这样做）。 确保你的帐户已在 "商用 marketplace 计划" 中注册。
 
-托管服务提供了帮助来启用[Azure Lighthouse](../../lighthouse/overview.md)方案。 当客户接受托管服务产品/服务后，他们就可以为[Azure 委托的资源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)加入资源。
-
-若要开始创建托管服务产品/服务，请确保先[创建合作伙伴中心帐户](./create-account.md)并打开 "[商业市场" 仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)，并选择 "**概述**" 页。 若要发布托管服务产品/服务，你必须拥有[银牌或金牌云平台资格认证级别](https://partner.microsoft.com/membership/cloud-platform-competency)或[Azure 专家 MSP](https://partner.microsoft.com/membership/azure-expert-msp) 。
-
-![合作伙伴中心的商业应用商店仪表板](./media/new-offer-overview.png)
-
->[!Note]
-> 发布产品/服务后，将仅在系统中更新对合作伙伴中心提供的产品/服务，并在重新发布后存储。 进行更改后，请确保提交产品/服务进行发布。
+若要发布托管服务产品/服务，你必须拥有[银牌或金牌云平台资格认证级别](https://partner.microsoft.com/membership/cloud-platform-competency)或[Azure 专家 MSP](https://partner.microsoft.com/membership/azure-expert-msp) 。
 
 ## <a name="create-a-new-offer"></a>创建新套餐
 
-选择 " **+ 新建产品**/服务" 按钮，然后选择 "**托管服务**" 菜单项。 将显示 "**新建产品/服务**" 对话框。
+1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+2. 在左侧导航菜单中，选择 "**商业市场** > **概述**"。
+3. 在 "概述" 页上，选择 " **+ 新建产品** > /**服务**"。
 
-### <a name="offer-id-and-alias"></a>产品/服务 ID 和别名
+    ![阐释左侧导航菜单。](./media/new-offer-managed-service.png)
 
-- **产品/服务 ID**：帐户中每个产品/服务的唯一标识符。 在 marketplace 产品/服务的 URL 地址中，客户可看到此 ID。 此 ID 只能包含小写字母数字字符（包括连字符和下划线，但不能包含空格），限制为50个字符，并且在你选择 "**创建**" 后将无法更改。  例如，如果在此处输入 "*测试/服务-1* "，则 "产品/ `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`服务" URL 将为。
+>[!NOTE]
+>发布产品/服务后，在 "合作伙伴中心" 中对其进行的编辑仅在重新发布产品/服务后出现在商店中。 请确保在进行更改后始终重新发布。
 
-- **产品/服务别名**：用于引用合作伙伴中心内的产品/服务的名称。 此名称不会在 marketplace 中使用，并且不同于将向客户显示的产品/服务名称和其他值。 选择 "**创建**" 后，不能更改此值。
+## <a name="new-offer"></a>新产品/服务
 
-输入产品/服务**ID**和**提供别名**后，选择 "**创建**"。 然后，你将能够使用产品/服务的所有不同部分。
+输入**产品/服务 ID**。 这是你的帐户中每个产品/服务的唯一标识符。
+
+* 适用于 marketplace 产品/服务和 Azure 资源管理器模板的 web 地址中的客户可看到此 ID （如果适用）。
+* 只使用小写字母和数字。 它可以包括连字符和下划线，但不能包含空格，并且限制为50个字符。 例如，如果输入了 "**测试/服务-1**"，则 "产品/服务`https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`" 网址为。
+* 选择 "**创建**" 后，无法更改产品/服务 ID。
+
+输入**提议别名**。 这是在合作伙伴中心中用于产品/服务的名称。
+
+* 此名称不能在 marketplace 中使用，它与向客户显示的产品/服务名称和其他值不同。
+* 选择 "**创建**" 后，无法更改第一个产品/服务别名。
+
+选择 "**创建**" 以生成产品/服务并继续。
 
 ## <a name="offer-setup"></a>产品/服务设置
-
-"**产品/服务设置**" 页面要求提供以下信息。 请确保在完成这些字段后选择 "**保存**"。
 
 ## <a name="connect-lead-management"></a>连接潜在客户管理
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
-请注意，根据[托管服务认证策略](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)，需要**潜在顾客目标**。 这会在每次客户部署产品/服务时，在 CRM 系统中创建一条记录。
+根据[托管服务认证策略](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)，需要**潜在客户目标**。 这会在每次客户部署产品/服务时，在 CRM 系统中创建一条记录。
 
 有关详细信息，请参阅[潜在客户管理概述](./commercial-marketplace-get-customer-leads.md)。
 
-请记住在转到下一节之前**保存**页面。
+选择 "**保存草稿**"，然后继续。
 
 ## <a name="properties"></a>属性
 
-使用 "**属性**" 页，可以定义用于在 marketplace 上对产品/服务进行分组的类别，以及支持产品/服务的法律合同。 完成此页后，选择 "**保存**"。
+在此页上，你可以定义用于在 marketplace 上对产品/服务进行分组的类别，以及支持你的产品/服务的法律合同。
 
 ### <a name="category"></a>类别
 
@@ -67,12 +71,14 @@ ms.locfileid: "82147910"
 
 在**条款和条件**字段中提供自己的法律条款和条件。 你还可以提供 URL，你可以在其中找到你的条款和条件。 客户需要接受这些条款，然后才能试用你的产品/服务。
 
+选择 "**保存草稿**"，然后继续。
+
 ## <a name="offer-listing"></a>产品/服务列表
 
-"**产品/服务列表**" 页可用于定义产品/服务的 marketplace 详细信息（产品/服务名称、说明、图像等）。
+此页可让你为产品/服务定义 marketplace 详细信息（如产品/服务的名称、描述和图像）。
 
 > [!NOTE]
-> 产品/服务列表内容（如描述、文档、屏幕截图、使用条款等）无需使用英语，只要提议说明以短语开头，"此应用程序仅在 [非英语语言] 中可用"。 还可以提供一个*有用的链接 URL*来提供与产品/服务列表内容中所用语言不同的内容。
+> 产品/服务列表内容（如描述、文档、屏幕截图和使用条款）不要求使用英语，只要产品/服务说明以短语开头，"此应用程序仅在 [非英语语言] 中可用"。 还可以提供一个*有用的链接 URL*来提供与产品/服务列表内容中所用语言不同的内容。
 
 ### <a name="name"></a>名称
 
@@ -100,23 +106,13 @@ ms.locfileid: "82147910"
 - 不要依赖于特性和功能来销售产品。 而应该强调提供的价值。  
 - 尽可能多使用行业特定用语或基于优势的措辞。
 
-若要使您的产品/服务说明更具吸引力，请使用富文本编辑器来设置说明格式。
+若要使您的产品/服务说明更具吸引力，请使用富文本编辑器应用格式设置。
 
-![使用富文本编辑器](./media/text-editor2.png)
+![使用富文本编辑器](./media/rich-text-editor.png)
 
-使用以下说明来使用富文本编辑器：
-
-- 若要更改内容的格式，请突出显示要设置格式的文本并选择文本样式，如下所示：
-
-     ![使用富文本编辑器更改文本格式](./media/text-editor3.png)
-
-- 若要向文本添加项目符号列表或编号列表，请使用以下选项：
-
-     ![使用富文本编辑器添加列表](./media/text-editor4.png)
-
-- 若要在文本中添加或删除缩进，请使用以下选项：
-
-     ![使用富文本编辑器缩进](./media/text-editor5.png)
+| <center>更改文本格式 | <center>添加项目符号或编号 | <center>添加或删除文本缩进 |
+| --- | --- | --- |
+| <center>![使用富文本编辑器更改文本格式](./media/text-editor3.png) |  <center>![使用富文本编辑器添加列表](./media/text-editor4.png) |  <center>![使用富文本编辑器缩进](./media/text-editor5.png) |
 
 ### <a name="privacy-policy-link"></a>隐私策略链接
 
@@ -138,12 +134,19 @@ ms.locfileid: "82147910"
 
 在本部分中，可以提供向客户显示产品/服务时要使用的徽标和图像。 所有图像必须采用 .png 格式。
 
->[!Note]
+>[!NOTE]
 >如果上传文件时遇到问题，请确保你的本地网络不会阻止https://upload.xboxlive.com合作伙伴中心使用的服务。
 
 #### <a name="marketplace-logos"></a>Marketplace 徽标
 
-需要四种徽标大小：**小（40x40）**、**中（90x90）**、**大（115x115）** 和**宽（255x115）**。 请遵守徽标适用的下述准则：
+提供产品/服务的徽标，大小为四个像素：
+
+- **小型**（40 x 40）
+- **中**（90 x 90）
+- **大**（115 x 115）
+- **宽**（255 x 115）
+
+请遵守徽标适用的下述准则：
 
 - Azure 设计具有简单的调色板。 限制徽标上的主要和次要颜色数。
 - 门户的主题颜色为白色和黑色。 请勿将这些颜色用作徽标的背景色。 使用可使徽标在门户中更为突出的颜色。 建议使用简单的主颜色。
@@ -164,6 +167,8 @@ ms.locfileid: "82147910"
 
 - [Marketplace 产品/服务列表的最佳实践](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
+选择 "**保存草稿**"，然后继续。
+
 ## <a name="preview"></a>预览
 
 在将产品/服务实时发布到更广泛的 marketplace 产品/服务之前，首先需要将其提供给有限的预览受众。 这样，你就可以在将其提供给客户之前，确认你的产品/服务在 Azure Marketplace 中的显示方式。 在此预览期间，Microsoft 支持团队和工程团队还将能够查看你的产品/服务。
@@ -171,6 +176,8 @@ ms.locfileid: "82147910"
 可以通过在**预览受众**部分输入 Azure 订阅 id 来定义预览受众。 可以手动输入最多10个订阅 Id，或上传最多包含100个订阅 Id 的 .csv 文件。
 
 与这些订阅关联的任何客户都可以在 Azure Marketplace 中查看该产品/服务。 请确保在此处包含你自己的订阅，以便可以预览你的产品/服务。
+
+选择 "**保存草稿**"，然后继续。
 
 ## <a name="plan-overview"></a>计划概述
 
@@ -237,18 +244,20 @@ ms.locfileid: "82147910"
 
 完成计划的所有部分后，可以根据需要选择 " **+ 创建新计划**" 来创建其他计划。 完成后，选择“保存”****。
 
+选择 "**保存草稿**"，然后继续。
+
 ## <a name="publish"></a>发布
 
 ### <a name="submit-offer-to-preview"></a>将产品/服务提交到预览版
 
-完成产品/服务的所有必需部分后，请选择门户右上角的 "**发布**"。 你将被重定向到 "**查看并发布**" 页面。
+完成产品/服务的所有必需部分后，请选择门户右上角的 "**查看并发布**"。
 
 如果你是首次发布此产品/服务，则可以：
 
 - 请参阅产品/服务的每个部分的完成状态。
-  - *未开始*-表示该部分尚未接触，需要完成。
-  - *不完整*-表示部分包含需要修复的错误或需要提供更多信息。 返回到部分并对其进行更新。
-  - *Complete* -表示该部分已完成，所有必需的数据都已提供并且没有错误。 产品/服务的所有部分必须处于完整状态，然后才能提交产品/服务。
+  - **未开始**-部分未被接触，需要完成。
+  - **不完整**-部分包含需要修复的错误或需要提供更多信息的信息。 返回到部分并对其进行更新。
+  - **完成**-该部分已完成，所有必需的数据都已提供，且没有错误。 产品/服务的所有部分必须处于完整状态，然后才能提交产品/服务。
 - 在 "**认证说明**" 部分中，向认证团队提供测试说明，以确保正确测试应用程序，以及任何有助于了解应用程序的补充说明。
 - 通过选择 "**提交**" 提交产品/服务进行发布。 当提供预览版时，我们将向你发送一封电子邮件，供你查看和批准。 返回到 "合作伙伴中心"，并选择 "产品 **/** 服务"，以将你的产品/服务发布到公共（如果是专用受众）。
 

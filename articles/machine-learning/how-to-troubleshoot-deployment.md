@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: fab46f7d7ae74ad643ce3f122b27b0dc767f5a78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 01fa9c111371c3ede5d3be33f4066f325bad4680
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78399685"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929241"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Azure 机器学习 Azure Kubernetes 服务和 Azure 容器实例部署的故障排除
 
@@ -24,12 +24,12 @@ ms.locfileid: "78399685"
 
 在 Azure 机器学习中部署模型时，系统将执行大量任务。
 
-推荐使用的也是最新的模型部署方法是使用 [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 并以 [Environment](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) 对象作为输入参数。 在这种情况下，我们的服务将在部署阶段为你创建一个基本的 docker 映像，并在一次调用中装载所需的全部模型。 基本部署任务包括：
+推荐使用的也是最新的模型部署方法是使用 [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 并以 [Environment](how-to-use-environments.md) 对象作为输入参数。 在这种情况下，我们的服务将在部署阶段为你创建一个基本的 docker 映像，并在一次调用中装载所需的全部模型。 基本部署任务包括：
 
 1. 在工作区模型注册表中注册模型。
 
 2. 定义推理配置：
-    1. 基于你在环境 yaml 文件中指定的依赖项创建一个 [Environment](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) 对象，或者使用我们获得的环境之一。
+    1. 基于你在环境 yaml 文件中指定的依赖项创建一个 [Environment](how-to-use-environments.md) 对象，或者使用我们获得的环境之一。
     2. 基于环境和评分脚本创建推理配置（InferenceConfig 对象）。
 
 3. 将模型部署到 Azure 容器实例 (ACI) 服务或 Azure Kubernetes 服务 (AKS)。
@@ -50,7 +50,7 @@ ms.locfileid: "78399685"
 
 如果遇到任何问题，首先需要将部署任务（上述）分解为单独的步骤，以查出问题所在。
 
-假设你使用新的/推荐的部署方法，也就是使用 [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 并以 [Environment](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) 对象作为输入参数，则你的代码可以分为三个主要步骤：
+假设你使用新的/推荐的部署方法，也就是使用 [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 并以 [Environment](how-to-use-environments.md) 对象作为输入参数，则你的代码可以分为三个主要步骤：
 
 1. 注册模型。 下面是一些示例代码：
 

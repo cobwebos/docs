@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: fbaca387dd8062f50bb7555c7be6e7f65ce346bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79136f86c647c0453d600fe2601be56571ee6fed
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77062466"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625878"
 ---
 # <a name="manage-your-connected-organizations-from-the-organizations-page"></a>在 "组织" 页中管理连接的组织
 
@@ -34,7 +34,7 @@ ms.locfileid: "77062466"
 
 ## <a name="view-your-organizations"></a>查看组织
 
-1. 登录到你的工作或学校帐户，然后中转到**我的帐户**（https://myprofile.microsoft.com/)页面）。
+1. 登录到你的工作或学校帐户，然后中转到**我的帐户**（https://myaccount.microsoft.com/)页面）。
 
 2. 从左侧导航窗格中选择“组织”，或从“组织”块中选择“管理组织”链接************。
 
