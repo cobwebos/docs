@@ -22,7 +22,7 @@
           href: native-app.md
         - name: 守护程序或服务器应用程序
           href: service-to-service.md
-    - name: Authentication
+    - name: 身份验证
       items:
         - name: 身份验证基础知识
           href: v1-authentication-scenarios.md
@@ -81,9 +81,9 @@
       href: conditional-access-dev-guide.md
     - name: 国家云
       href: ../develop/authentication-national-cloud.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
-- name: 操作方法指南
+- name: 操作指南
   items:
-    - name: Authentication
+    - name: 身份验证
       items:
         - name: 配置单一登录
           displayName: SSO
@@ -158,7 +158,7 @@
     - name: 使用 Microsoft Graph API
       href: ../develop/microsoft-graph-intro.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
     - name: 针对开发人员的 AD FS
-      href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers'
+      href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/ad-fs-overview'
 - name: 参考
   items:
     - name: 身份验证库
@@ -170,7 +170,7 @@
       href: ../develop/reference-app-manifest.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
     - name: 身份验证和授权错误代码
       href: ../develop/reference-aadsts-error-codes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
-    - name: 重大更改
+    - name: 中断性变更
       href: ../develop/reference-breaking-changes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
 - name: 资源
   items:

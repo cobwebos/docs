@@ -1,18 +1,18 @@
 ---
 title: Azure HDInsight 中群集节点的磁盘空间不足
 description: 排查 Azure HDInsight 中 Apache Hadoop 群集节点磁盘空间问题。
-ms.service: hdinsight
-ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.date: 08/05/2019
-ms.openlocfilehash: fbfd82473b68f5032d19834ac809191d498a5a67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.date: 04/30/2020
+ms.openlocfilehash: ead79ca0a37a270f03a305064c80426553db59ca
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75894129"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628531"
 ---
 # <a name="scenario-cluster-node-runs-out-of-disk-space-in-azure-hdinsight"></a>方案：Azure HDInsight 中群集节点的磁盘空间不足
 
@@ -36,7 +36,17 @@ Apache Yarn 应用程序缓存可能占用了所有可用磁盘空间。 Spark �
 
 1. 若要缓解此问题，请终止应用程序，以释放该应用程序使用的磁盘空间。
 
-1. 若要最终解决该问题，请优化应用程序。
+1. 如果此问题在工作节点上频繁发生，则可以优化群集上的 YARN 本地缓存设置。
+
+    打开 Ambari UI 导航到 YARN--> 配置--> Advanced。  
+    将以下2个属性添加到 "自定义 yarn-site.xml" 部分，并保存：
+
+    ```
+    yarn.nodemanager.localizer.cache.target-size-mb=2048
+    yarn.nodemanager.localizer.cache.cleanup.interval-ms=300000
+    ```
+
+1. 如果上述不能永久修复此问题，请优化你的应用程序。
 
 ## <a name="next-steps"></a>后续步骤
 

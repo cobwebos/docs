@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: add0d27ae6a612fed0320b5329d19236b7bbbd01
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3fb5f1df0eb4473483c9298cdbf36909b75065e7
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79370638"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927201"
 ---
 # <a name="what-is-the-speech-devices-sdk"></a>什么是语音设备 SDK？
 
@@ -37,19 +37,19 @@ ms.locfileid: "79370638"
 
 ### <a name="android"></a>Android
 
-对于 Android，设备会下载最新版本的[Android 语音设备 SDK](https://aka.ms/sdsdk-download-android)。
+对于 Android，设备将下载最新版本的 [Android 语音设备 SDK](https://aka.ms/sdsdk-download-android)。
 
 ### <a name="windows"></a>Windows
 
-对于 Windows，示例应用程序是以跨平台的 Java 应用程序的形式提供的。 下载最新版本的 [JRE 语音设备 SDK](https://aka.ms/sdsdk-download-JRE)。
+对于 Windows，示例应用程序以跨平台 Java 应用程序的形式提供。 下载最新版本的 [JRE 语音设备 SDK](https://aka.ms/sdsdk-download-JRE)。
 该应用程序是使用语音 SDK 程序包和 Eclipse Java IDE (v4) 在 64 位 Windows 上构建的。 它在 64 位 Java 8 运行时环境 (JRE) 中运行。
 
 ### <a name="linux"></a>Linux
 
-对于 Linux，示例应用程序是以跨平台 Java 应用程序的形式提供的。 下载最新版本的 [JRE 语音设备 SDK](https://aka.ms/sdsdk-download-JRE)。
-该应用程序是通过语音 SDK 包生成的，并且 Eclipse Java IDE （v4）在64位 Linux （Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8）上。 它在 64 位 Java 8 运行时环境 (JRE) 中运行。
+对于 Linux，示例应用程序以跨平台 Java 应用程序的形式提供。 下载最新版本的 [JRE 语音设备 SDK](https://aka.ms/sdsdk-download-JRE)。
+该应用程序是使用语音 SDK 程序包和 Eclipse Java IDE (v4) 在 64 位 Linux（Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8）上构建的。 它在 64 位 Java 8 运行时环境 (JRE) 中运行。
 
-提供额外的二进制文件以支持即将推出的设备、 [Roobo V2 ddk](https://aka.ms/sdsdk-download-roobov2)、 [Urbetter](https://aka.ms/sdsdk-download-urbetter)和[GGEC 扬声器](https://aka.ms/sdsdk-download-speaker)。
+提供额外的二进制文件以支持即将推出的设备、 [Roobo V2 DDK](https://aka.ms/sdsdk-download-roobov2)、 [Urbetter 的 Ddk](https://aka.ms/sdsdk-download-urbetter)、 [GGEC 发言人](https://aka.ms/sdsdk-download-speaker)、 [linux ARM32](https://aka.ms/sdsdk-download-linux-arm32)和[linux ARM64](https://aka.ms/sdsdk-download-linux-arm64)。
 
 ## <a name="next-steps"></a>后续步骤
 

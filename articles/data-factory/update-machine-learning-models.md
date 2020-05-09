@@ -11,23 +11,23 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.openlocfilehash: 4488c174ba5ff35ec2709d7c1b9f3093b4ee90a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8fb39e8762d31f00029a0eeea33f1e630fb15a6
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81409077"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927372"
 ---
-# <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>使用“更新资源”活动更新 Azure 机器学习模型
+# <a name="update-ml-studio-classicv-models-by-using-update-resource-activity"></a>使用 "更新资源" 活动更新 ML Studio （经典） v 模型
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文是 Azure 数据工厂和 Azure 机器学习集成主要文章[使用 Azure 机器学习和 Azure 数据工厂创建预测管道](transform-data-using-machine-learning.md)的补充。 如果尚未执行此操作，请在阅读本文之前查阅此主要文章。
+本文补充了 Azure 数据工厂-ML Studio （经典）集成的主要文章：[使用 Azure 机器学习和 Azure 数据工厂创建预测管道](transform-data-using-machine-learning.md)。 如果尚未执行此操作，请在阅读本文之前查阅此主要文章。
 
 ## <a name="overview"></a>概述
-在操作 Azure 机器学习模型的过程中会训练并保存模型。 然后使用它来创建预测 Web 服务。 然后可以在网站、仪表板和移动应用中使用 Web 服务。
+作为实现 ML Studio （经典）模型过程的一部分，将对模型进行定型和保存。 然后使用它来创建预测 Web 服务。 然后可以在网站、仪表板和移动应用中使用 Web 服务。
 
-使用机器学习创建的模型通常不是静态的。 当新数据变得可用时，或当 API 使用者拥有其自己的数据时，需要重新训练模型。 如果如何在 Azure 机器学习中重新训练模型的详细信息，请参阅 [Retrain a Machine Learning Model](../machine-learning/machine-learning-retrain-machine-learning-model.md)（重新训练机器学习模型）。
+使用机器学习创建的模型通常不是静态的。 当新数据变得可用时，或当 API 使用者拥有其自己的数据时，需要重新训练模型。 
 
 重新训练可能会经常发生。 使用“批处理执行”活动和“更新资源”活动，可以使用数据工厂将重新训练 Azure 机器学习模型及更新预测性 Web 服务操作化。
 
@@ -35,9 +35,9 @@ ms.locfileid: "81409077"
 
 ![Web 服务](./media/update-machine-learning-models/web-services.png)
 
-## <a name="azure-machine-learning-update-resource-activity"></a>Azure 机器学习“更新资源”活动
+## <a name="ml-studio-classic-update-resource-activity"></a>ML Studio （经典）更新资源活动
 
-以下 JSON 代码片段定义了一个 Azure 机器学习“批处理执行”活动。
+下面的 JSON 代码片段定义了 ML Studio （经典）批处理执行活动。
 
 ```json
 {
@@ -59,7 +59,7 @@ ms.locfileid: "81409077"
 }
 ```
 
-| properties                      | 说明                              | 必需 |
+| 属性                      | 说明                              | 必须 |
 | :---------------------------- | :--------------------------------------- | :------- |
 | name                          | 管道中活动的名称     | 是      |
 | description                   | 描述活动用途的文本。  | 否       |

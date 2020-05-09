@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: 89d894a5125a16f95e6ef8a15c2503d48f3a8e55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 046946bb9d3ce1ae86d49409d024c862d2edb982
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632176"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856058"
 ---
 # <a name="application-gateway-configuration-overview"></a>应用程序网关配置概述
 
@@ -101,22 +101,22 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 
    可以创建一个 UDR，用于将 0.0.0.0/0 流量直接发送到 Internet。 
 
-  **方案 3**：对 Azure Kubernetes 服务 kubenet 使用 UDR
+  **方案 3**： UDR For Azure Kubernetes Service with kubenet
 
-  如果使用包含 Azure Kubernetes 服务 (AKS) 和应用程序网关入口控制器 (AGIC) 的 kubenet，则需要设置一个路由表，以允许将发送到 pod 的流量路由到正确的节点。 如果使用 Azure CNI，则不需要这样做。 
+  如果将 kubenet 与 Azure Kubernetes 服务（AKS）和应用程序网关入口控制器（AGIC）结合使用，则需要一个路由表，以允许从应用程序网关发送到 pod 的流量路由到正确的节点。 如果使用 Azure CNI，则不需要这样做。 
 
-   若要设置路由表以使 kubenet 能够正常工作，请使用以下步骤：
+  若要使用路由表来允许 kubenet 工作，请执行以下步骤：
 
-  1. 在 Azure 中创建一个“路由表”资源。 
-  2. 创建路由表后，转到“路由”页。  
-  3. 添加新路由：
+  1. 中转到由 AKS 创建的资源组（资源组的名称应以 "MC_" 开头）
+  2. 在该资源组中查找由 AKS 创建的路由表。 应填写路由表，其中包含以下信息：
      - 地址前缀应是要在 AKS 中访问的 pod 的 IP 范围。 
-     - 下一跃点类型应是“虚拟设备”。  
-     - 下一跃点地址应是在地址前缀字段中定义的 IP 范围内托管 pod 的节点的 IP 地址。 
+     - 下一跃点类型应为虚拟设备。 
+     - 下一个跃点地址应是托管 pod 的节点的 IP 地址。
+  3. 将此路由表关联到应用程序网关子网。 
     
   **v2 不支持的方案**
 
-  **场景 1**：对虚拟设备使用 UDR
+  **方案 1**：虚拟设备的 UDR
 
   任何需要通过任何虚拟设备重定向 0.0.0.0/0、中心/辐射虚拟网络或本地（强制隧道）的情况下，V2 都不支持此方案。
 
@@ -124,15 +124,15 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 
 可将应用程序网关配置为使用公共 IP 地址和/或专用 IP 地址。 托管需要由客户端在 Internet 中通过面向 Internet 的虚拟 IP (VIP) 访问的后端时，必须使用公共 IP。 
 
-不向 Internet 公开的内部终结点不需要公共 IP。 该终结点称为内部负载均衡器 (ILB) 终结点或专用前端 IP。  应用程序网关 ILB 适合用于不向 Internet 公开的内部业务线应用程序。 对于位于不向 Internet 公开的安全边界内的多层级应用程序中的服务和层级，ILB 也很有用，但需要启用轮循机制负载分配、会话粘性或 TLS 终止。
+不向 Internet 公开的内部终结点不需要公共 IP。 该终结点称为内部负载均衡器 (ILB) 终结点或专用前端 IP。** 应用程序网关 ILB 适合用于不向 Internet 公开的内部业务线应用程序。 这对于不向 internet 公开但需要轮循负载分发、会话粘性或 TLS 终止的安全边界内的多层应用程序中的服务和层也很有用。
 
-仅支持 1 个公共 IP 地址或 1 个专用 IP 地址。 在创建应用程序网关时选择前端 IP。
+仅支持1个公共 IP 地址或一个专用 IP 地址。 在创建应用程序网关时选择前端 IP。
 
 - 对于公共 IP，可以在应用程序网关所在的同一位置创建新的公共 IP 地址或使用现有的公共 IP。 有关详细信息，请参阅[静态与动态公共 IP 地址](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address)。
 
 - 对于专用 IP，可以在创建应用程序网关的子网中指定一个专用 IP 地址。 如果不显式指定专用 IP 地址，则系统会在子网中自动选择一个任意 IP 地址。 以后无法更改选定的 IP 地址类型（静态或动态）。 有关详细信息，请参阅[创建包含内部负载均衡器的应用程序网关](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm)。
 
-某个前端 IP 地址将关联到检查前端 IP 上的传入请求的侦听器。 
+某个前端 IP 地址将关联到检查前端 IP 上的传入请求的侦听器。**
 
 ## <a name="listeners"></a>侦听器
 
@@ -142,7 +142,7 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 
 ### <a name="listener-type"></a>侦听器类型
 
-创建新侦听器时，可以选择[“基本”或“多站点”](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#types-of-listeners)。  
+创建新侦听器时，可以选择[“基本”或“多站点”](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#types-of-listeners)。****
 
 - 如果你希望自己的所有请求（针对任何域）都能够被接受并转发到后端池，请选择“基本”。 了解[如何创建包含基本侦听器的应用程序网关](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)。
 
@@ -150,7 +150,7 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 
 #### <a name="order-of-processing-listeners"></a>侦听器的处理顺序
 
-对于 v1 SKU，请求根据规则顺序和侦听器类型进行匹配。 如果某项使用基本侦听器的规则在顺序上排第一，系统会先处理它，它会接受该端口和 IP 组合的任何请求。 为了避免这种情况，请先使用多站点侦听器配置规则，然后将包含基本侦听器的规则推送到列表中的最后。
+对于 v1 SKU，请求根据规则顺序和侦听器类型进行匹配。 如果使用基本侦听器的规则最先出现在订单中，则会先处理该规则，并接受该端口和 IP 组合的任何请求。 为了避免这种情况，请先使用多站点侦听器配置规则，然后将包含基本侦听器的规则推送到列表中的最后。
 
 对于 v2 SKU，在基本侦听器之前处理多站点侦听器。
 
@@ -168,7 +168,7 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 
 - 如果选择 HTTP，则客户端与应用程序网关之间的流量将不会加密。
 
-- 如果想要实现 [TLS 终止](features.md#secure-sockets-layer-ssltls-termination)或[端到端 TLS 加密](https://docs.microsoft.com/azure/application-gateway/ssl-overview)，请选择 HTTPS。 客户端与应用程序网关之间的流量将会加密。 TLS 连接将在应用程序网关上终止。 若要实现端到端的 TLS 加密，必须选择 HTTPS，并配置“后端 HTTP”设置。  这可以确保流量在从应用程序网关传输到后端时重新得到加密。
+- 如果需要[tls 终止](features.md#secure-sockets-layer-ssltls-termination)或[端到端 tls 加密](https://docs.microsoft.com/azure/application-gateway/ssl-overview)，请选择 "HTTPS"。 客户端与应用程序网关之间的流量将会加密。 TLS 连接在应用程序网关上终止。 如果需要端到端 TLS 加密，则必须选择 "HTTPS" 并配置**后端 HTTP**设置。 这可以确保流量在从应用程序网关传输到后端时重新得到加密。
 
 
 若要配置 TLS 终止和端到端 TLS 加密，你必须将证书添加到侦听器，以使应用程序网关能够派生对称密钥。 这由 TLS 协议规范决定。 使用该对称密钥可以加密和解密发送到网关的流量。 网关证书必须采用个人信息交换 (PFX) 格式。 使用此格式可以导出私钥，供网关用来加密和解密流量。
@@ -317,7 +317,7 @@ Azure 应用程序网关使用网关管理的 cookie 来维护用户会话。 �
 
 此设置与侦听器中的 HTTPS 组合支持[端到端 TLS](ssl-overview.md)。 这样，就可以安全地将敏感数据以加密的形式传输到后端。 后端池中启用了端到端 TLS 的每个后端服务器都必须配置证书以允许安全通信。
 
-### <a name="port"></a>端口
+### <a name="port"></a>Port
 
 此设置指定后端服务器要在哪个端口上侦听来自应用程序网关的流量。 可以配置 1 到 65535 的端口号。
 

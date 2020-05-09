@@ -4,14 +4,14 @@ description: 本文介绍如何使用 Azure 自动化为 Azure Analysis Services
 author: chrislound
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: 7908b168adcaa00819990d7ced04ba4888d67d63
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: HT
+ms.openlocfilehash: bbbc2863e06b4602a4175d46bbe21414041583ba
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871317"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926555"
 ---
 # <a name="refresh-with-azure-automation"></a>使用 Azure 自动化进行刷新
 
@@ -27,7 +27,7 @@ ms.locfileid: "82871317"
 
 若要详细了解如何创建服务主体，请参阅[使用 Azure 门户创建服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 > [!IMPORTANT]
 > 下面的示例假定 Azure Analysis Services 防火墙已禁用。 如果启用了防火墙，则需要在防火墙中加入请求发起方的公共 IP 地址。
@@ -44,7 +44,7 @@ ms.locfileid: "82871317"
  
     ![导入模块](./media/analysis-services-refresh-azure-automation/2.png)
 
-4. 单击“确定”。 
+4. 单击" **确定**"。
  
 ### <a name="create-a-service-principal-spn"></a>创建服务主体 (SPN)
 
@@ -60,7 +60,7 @@ ms.locfileid: "82871317"
 
     ![创建凭据](./media/analysis-services-refresh-azure-automation/6.png)
 
-2. 输入凭据的详细信息。  对于 "**用户名**"，请输入**spn ClientId**，对于**密码**，请输入**spn 机密**。
+2. 输入凭据的详细信息。 在 "**用户名**" 中输入服务主体应用程序 Id （appid），然后在 "**密码**" 中输入服务主体机密。
 
     ![创建凭据](./media/analysis-services-refresh-azure-automation/7.png)
 
@@ -111,7 +111,7 @@ ms.locfileid: "82871317"
 
     ![配置参数](./media/analysis-services-refresh-azure-automation/16.png)
 
-5. 单击“确定”。 
+5. 单击" **确定**"。
 
 ## <a name="consume-with-data-factory"></a>使用数据工厂
 

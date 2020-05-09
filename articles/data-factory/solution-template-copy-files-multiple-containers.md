@@ -11,15 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
-ms.openlocfilehash: 383b70bbb02e7a200c7ec0a994f7cf11e9b9520e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 73560c49e10ab96c934d4dd3cea9395093a26420
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414821"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629040"
 ---
 # <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>使用 Azure 数据工厂复制多个容器中的文件
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文介绍一种解决方案模板，可用于从文件存储之间的多个容器复制文件。 例如，可以使用它将 data lake 从 AWS S3 迁移到 Azure Data Lake Store。 或者，可以使用模板将所有内容从一个 Azure Blob 存储帐户复制到另一个。
 
@@ -51,7 +52,7 @@ ms.locfileid: "81414821"
 
     ![与目标建立新的连接](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image2.png)
 
-3. 选择“使用此模板”****。
+3. 选择“使用此模板”  。
 
     ![使用此模板](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image3.png)
     
@@ -59,7 +60,7 @@ ms.locfileid: "81414821"
 
     ![显示管道](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image4.png)
 
-5. 选择“调试”，输入**参数**，然后选择“完成”。********
+5. 选择“调试”，输入**参数**，然后选择“完成”。  
 
     ![运行管道](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image5.png)
 

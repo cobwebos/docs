@@ -5,21 +5,20 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 05/06/2020
 ms.author: jgao
-ms.openlocfilehash: 99db4ec61a515301224691d7c2e4e3c905fee1c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b938e2072daec56261e529ab8a2a8b15b55d143
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188903"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872331"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>在模板中使用部署脚本（预览）
 
 了解如何使用 Azure 资源模板中的部署脚本。 使用名`Microsoft.Resources/deploymentScripts`为的新资源类型，用户可以在模板部署中执行部署脚本并查看执行结果。 这些脚本可用于执行自定义步骤，如：
 
 - 将用户添加到目录
-- 创建应用注册
 - 执行数据平面操作，例如，复制 blob 或种子数据库
 - 查找并验证许可证密钥
 - 创建自签名证书
@@ -37,14 +36,14 @@ ms.locfileid: "82188903"
 部署脚本资源仅在 Azure 容器实例可用的区域中可用。  请参阅[azure 区域中 Azure 容器实例的资源可用性](../../container-instances/container-instances-region-availability.md)。
 
 > [!IMPORTANT]
-> 在同一资源组中会创建两个部署脚本资源（一个存储帐户和一个容器实例），用于执行脚本和进行故障排除。 当部署脚本在终端状态中执行时，这些资源通常由脚本服务删除。 在这些资源删除之前，这些资源会一直向你收费。 若要了解详细信息，请参阅[清理部署脚本资源](#clean-up-deployment-script-resources)。
+> 脚本执行和故障排除需要一个存储帐户和一个容器实例。 你可以选择指定现有的存储帐户，否则脚本服务会自动创建存储帐户和容器实例。 在部署脚本以终端状态执行时，脚本服务通常会删除两个自动创建的资源。 在这些资源删除之前，这些资源会一直向你收费。 若要了解详细信息，请参阅[清理部署脚本资源](#clean-up-deployment-script-resources)。
 
 ## <a name="prerequisites"></a>先决条件
 
 - **用户分配的托管标识，其中包含参与者的角色到目标资源组**。 此标识用来执行部署脚本。 若要在资源组外部执行操作，需要授予其他权限。 例如，如果要创建新的资源组，请将该标识分配到订阅级别。
 
   > [!NOTE]
-  > 部署脚本引擎在后台创建一个存储帐户和一个容器实例。  如果订阅尚未注册 Azure 存储帐户（Microsoft 存储）和 Azure 容器实例（ContainerInstance）资源提供程序，则需要一个用户分配的托管标识，其中包含参与者在订阅级别的角色。
+  > 脚本服务将创建一个存储帐户（除非指定现有存储帐户），并在后台创建一个容器实例。  如果订阅尚未注册 Azure 存储帐户（Microsoft 存储）和 Azure 容器实例（ContainerInstance）资源提供程序，则需要一个用户分配的托管标识，其中包含参与者在订阅级别的角色。
 
   若要创建标识，请参阅[使用 Azure 门户创建用户分配的托管标识](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)，或通过使用[Azure CLI](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)或[Azure PowerShell 使用](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)。 部署模板时需要此标识 ID。 标识符的格式为：
 
@@ -101,6 +100,13 @@ ms.locfileid: "82188903"
   },
   "properties": {
     "forceUpdateTag": 1,
+    "containerSettings": {
+      "containerGroupName": "mycustomaci"
+    },
+    "storageAccountSettings": {
+      "storageAccountName": "myStorageAccount",
+      "storageAccountKey": "myKey"
+    },
     "azPowerShellVersion": "3.0",  // or "azCliVersion": "2.0.80"
     "arguments": "[concat('-name ', parameters('name'))]",
     "environmentVariables": [
@@ -132,6 +138,8 @@ ms.locfileid: "82188903"
 - **标识**：部署脚本服务使用用户分配的托管标识来执行脚本。 目前仅支持用户分配的托管标识。
 - **kind**：指定脚本的类型。 目前，Azure PowerShell 和 Azure CLI 脚本都是支持的。 值为**AzurePowerShell**和**AzureCLI**。
 - **forceUpdateTag**：在模板部署之间更改此值会强制重新执行部署脚本。 使用需要设置为参数的 defaultValue 的 newGuid （）或 utcNow （）函数。 若要了解详细信息，请参阅[多次运行脚本](#run-script-more-than-once)。
+- **containerSettings**：指定用于自定义 Azure 容器实例的设置。  **containerGroupName**用于指定容器组名称。  如果未指定，则将自动生成组名称。
+- **storageAccountSettings**：指定用于使用现有存储帐户的设置。 如果未指定，则会自动创建存储帐户。 请参阅[使用现有的存储帐户](#use-an-existing-storage-account)。
 - **azPowerShellVersion**/**azCliVersion**：指定要使用的模块版本。 有关支持的 PowerShell 和 CLI 版本的列表，请参阅[先决条件](#prerequisites)。
 - **arguments**：指定参数值。 请以空格分隔这些值。
 - **environmentVariables**：指定要传递到脚本的环境变量。 有关详细信息，请参阅[开发部署脚本](#develop-deployment-scripts)。
@@ -241,7 +249,7 @@ reference('<ResourceName>').output.text
 ### <a name="handle-non-terminating-errors"></a>处理非终止错误
 
 您可以通过使用部署脚本中的[**$ErrorActionPreference**](/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7#erroractionpreference
-)变量来控制 PowerShell 如何响应非终止错误。 部署脚本引擎未设置/更改值。  尽管你为 $ErrorActionPreference 设置的值，但当脚本遇到错误时，部署脚本会将资源预配状态设置为 "*失败*"。
+)变量来控制 PowerShell 如何响应非终止错误。 脚本服务未设置/更改值。  尽管你为 $ErrorActionPreference 设置的值，但当脚本遇到错误时，部署脚本会将资源预配状态设置为 "*失败*"。
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>将安全字符串传递到部署脚本
 
@@ -249,7 +257,7 @@ reference('<ResourceName>').output.text
 
 ## <a name="debug-deployment-scripts"></a>调试部署脚本
 
-脚本服务将创建一个[存储帐户](../../storage/common/storage-account-overview.md)和一个用于执行脚本的[容器实例](../../container-instances/container-instances-overview.md)。 这两个资源在资源名称中都有**azscripts**后缀。
+脚本服务将创建一个[存储帐户](../../storage/common/storage-account-overview.md)（除非指定了现有存储帐户）和一个用于执行脚本的[容器实例](../../container-instances/container-instances-overview.md)。 如果这些资源由脚本服务自动创建，则这两个资源的资源名称中都有**azscripts**后缀。
 
 ![资源管理器模板部署脚本资源名称](./media/deployment-script-template/resource-manager-template-deployment-script-resources.png)
 
@@ -292,22 +300,53 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 
 ![资源管理器模板部署脚本、显示隐藏的类型、门户](./media/deployment-script-template/resource-manager-deployment-script-portal-show-hidden-types.png)
 
+## <a name="use-an-existing-storage-account"></a>使用现有的存储帐户
+
+脚本执行和故障排除需要一个存储帐户和一个容器实例。 你可以选择指定现有的存储帐户，否则脚本服务会自动创建存储帐户和容器实例。 使用现有存储帐户的要求：
+
+- 支持的存储帐户类型为：常规用途 v2、常规用途 v1 和 FileStorage 帐户。 只有 FileStorage 支持高级 SKU。 有关详细信息，请参阅[存储帐户的类型](../../storage/common/storage-account-overview.md)。
+- 尚不支持存储帐户防火墙规则。 有关详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](../../storage/common/storage-network-security.md)。
+- 部署脚本的用户分配的托管标识必须有权管理存储帐户，其中包括读取、创建和删除文件共享。
+
+若要指定现有存储帐户，请将以下 json 添加到的属性元素`Microsoft.Resources/deploymentScripts`中：
+
+```json
+"storageAccountSettings": {
+  "storageAccountName": "myStorageAccount",
+  "storageAccountKey": "myKey"
+},
+```
+
+- **storageAccountName**：指定存储帐户的名称。
+- **storageAccountKey "**：指定存储帐户密钥之一。 您可以使用[`listKeys()`](./template-functions-resource.md#listkeys)函数来检索密钥。 例如：
+
+    ```json
+    "storageAccountSettings": {
+        "storageAccountName": "[variables('storageAccountName')]",
+        "storageAccountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').keys[0].value]"
+    }
+    ```
+
+有关完整`Microsoft.Resources/deploymentScripts`定义示例，请参阅[示例模板](#sample-templates)。
+
+使用现有存储帐户时，脚本服务将创建一个具有唯一名称的文件共享。 有关脚本服务如何清理文件共享的详细说明，请参阅[清理部署脚本资源](#clean-up-deployment-script-resources)。
+
 ## <a name="clean-up-deployment-script-resources"></a>清理部署脚本资源
 
-部署脚本将创建一个存储帐户和一个用于执行部署脚本并存储调试信息的容器实例。 这两个资源是在预配资源所在的资源组中创建的，并且在脚本过期时将由脚本服务删除。 您可以控制这些资源的生命周期。  在删除之前，将对这两个资源进行计费。 有关价格信息，请参阅[容器实例定价](https://azure.microsoft.com/pricing/details/container-instances/)和[Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)。
+脚本执行和故障排除需要一个存储帐户和一个容器实例。 你可以选择指定现有存储帐户，否则脚本服务将自动创建一个存储帐户以及一个容器实例。 当部署脚本在终端状态中执行时，脚本服务将删除两个自动创建的资源。 在这些资源删除之前，这些资源会一直向你收费。 有关价格信息，请参阅[容器实例定价](https://azure.microsoft.com/pricing/details/container-instances/)和[Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)。
 
 这些资源的生命周期由模板中的以下属性控制：
 
-- **cleanupPreference**：当脚本执行处于终端状态时进行清理。  支持的值包括：
+- **cleanupPreference**：当脚本执行处于终端状态时进行清理。 支持的值包括：
 
-  - **始终**：在脚本执行进入终端状态后删除资源。 由于在清理资源后，deploymentScripts 资源可能仍然存在，因此在删除资源之前，系统脚本会将脚本执行结果（例如，stdout、输出、返回值等）复制到 DB。
-  - **OnSuccess**：仅当脚本执行成功时才删除资源。 你仍可以访问资源来查找调试信息。
-  - **OnExpiration**：仅当**retentionInterval**设置为 "已过期" 时才删除资源。 此属性当前被禁用。
+  - **始终**：在脚本执行进入终端状态后，删除自动创建的资源。 如果使用现有的存储帐户，则脚本服务会删除存储帐户中创建的文件共享。 由于在清理资源后，deploymentScripts 资源可能仍然存在，因此在删除资源之前，脚本服务将保留脚本执行结果，例如 stdout、输出、返回值等。
+  - **OnSuccess**：仅当脚本执行成功时才删除自动创建的资源。 如果使用现有的存储帐户，则脚本服务仅在脚本执行成功时才删除文件共享。 你仍可以访问资源来查找调试信息。
+  - **OnExpiration**：仅当**retentionInterval**设置为 "已过期" 时才删除自动资源。 如果使用了现有的存储帐户，则脚本服务将删除文件共享，但保留存储帐户。
 
 - **retentionInterval**：指定将保留脚本资源的时间间隔，超过此时间间隔后，将过期并删除。
 
 > [!NOTE]
-> 建议不要将部署脚本资源用于其他目的。
+> 不建议使用由脚本服务生成的存储帐户和容器实例来实现其他目的。 可能会删除这两个资源，具体取决于脚本生命周期。
 
 ## <a name="run-script-more-than-once"></a>多次运行脚本
 

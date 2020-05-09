@@ -2,25 +2,20 @@
 title: 使用范围筛选器预配应用 | Microsoft Docs
 description: 了解如何使用范围筛选器阻止应用中支持自动用户预配的对象进行预配（如果对象不满足业务要求）。
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: mimart
-ms.custom: H1Hack27Feb2017
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c667409f2abb9f1cf89ae3b34f08e0f9eec067e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71c2e3a83c3d63d375935294a25a369ca7e54d80
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79138529"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593738"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>使用范围筛选器进行基于属性的应用程序预配
 本文的目的是说明如何使用范围筛选器定义基于属性的规则，用于确定哪些用户将预配到应用程序。
@@ -83,9 +78,9 @@ ms.locfileid: "79138529"
 
    b. **不等于**。 如果评估的属性与输入字符串值不匹配（区分大小写），则子句返回“true”。
 
-   c. **IS TRUE**。 如果评估的属性包含为 true 的布尔值，则子句返回“true”。
+   c. **为 TRUE**。 如果评估的属性包含为 true 的布尔值，则子句返回“true”。
 
-   d. **IS FALSE**。 如果评估的属性包含为 false 的布尔值，则子句返回“true”。
+   d. **为 FALSE**。 如果评估的属性包含为 false 的布尔值，则子句返回“true”。
 
    e. **为 NULL**。 如果评估的属性为空，则子句返回“true”。
 
@@ -121,7 +116,7 @@ ms.locfileid: "79138529"
 
 
 ## <a name="common-scoping-filters"></a>常见范围筛选器
-| 目标属性| 操作员 | 值 | 说明|
+| 目标属性| 运算符 | 值 | 说明|
 |----|----|----|----|
 |userPrincipalName|正则表达式匹配|.\*@domain.com |具有域@domain.com的 userPrincipal 的所有用户将处于预配范围内|
 |userPrincipalName|不匹配 REGEX|.\*@domain.com|具有域@domain.com的 userPrincipal 的所有用户将不在预配范围内|
