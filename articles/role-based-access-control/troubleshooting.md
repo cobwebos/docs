@@ -15,12 +15,12 @@ ms.date: 05/01/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 9eabd6d2a8f3179c5553bc6ca6d59407388c4d42
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: HT
+ms.openlocfilehash: 58e7a46633b7bbdd6074fa7e511569ff9e2aebdf
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735551"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996599"
 ---
 # <a name="troubleshoot-azure-rbac"></a>排查 Azure RBAC 问题
 
@@ -28,7 +28,7 @@ ms.locfileid: "82735551"
 
 ## <a name="azure-role-assignments-limit"></a>Azure 角色分配限制
 
-Azure 对于每个订阅最多支持 **2000** 个角色分配。 如果你收到错误消息 "无法创建更多的角色分配（code： RoleAssignmentLimitExceeded）"，则尝试分配角色时，请尝试减少订阅中的角色分配数。
+Azure 对于每个订阅最多支持 **2000** 个角色分配。 此限制包括订阅、资源组和资源范围内的角色分配。 如果你收到错误消息 "无法创建更多的角色分配（code： RoleAssignmentLimitExceeded）"，则尝试分配角色时，请尝试减少订阅中的角色分配数。
 
 > [!NOTE]
 > 每个订阅的**2000**角色分配限制是固定的，不能增加。
@@ -205,7 +205,7 @@ Azure 资源管理器有时会缓存配置和数据以提高性能。 添加或�
 * 终结点  
 * IP 地址  
 * 磁盘  
-* 扩展  
+* Extensions  
 
 这些项需要对**虚拟机**和其所在的**资源组**（以及域名）具有**写**访问权限：  
 

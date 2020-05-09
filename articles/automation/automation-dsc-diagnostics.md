@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: badd8ba676ef25c33a5034bb04d616faeb4ef1b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0b0ee75c39ba87503f150ffb72b7ab95aaf83999
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81392103"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996055"
 ---
-# <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>将 Azure Automation State Configuration 报表数据转发到 Azure Monitor 日志
+# <a name="forward-state-configuration-reporting-data-to-azure-monitor-logs"></a>将状态配置报告数据转发到 Azure Monitor 日志
 
 Azure Automation State Configuration 会将节点状态数据保留 30 天。 如果希望节点状态数据能够保留更长的时间，则可将其发送到 Log Analytics 工作区。 节点和节点配置中的单个 DSC 资源的符合性状态可以通过 Azure 门户或 PowerShell 查看。 
 
@@ -30,8 +30,6 @@ Azure Monitor 日志可以更直观地显示 Automation State Configuration 数�
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
->[!NOTE]
->本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az 模块安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于自动化帐户，可参阅[如何更新 Azure 自动化中的 Azure PowerShell 模块](automation-update-azure-modules.md)，将模块更新到最新版本。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -158,7 +156,7 @@ Azure 自动化诊断在 Azure Monitor 日志中创建两类记录：
 | ResourceId |Azure Automation 帐户的资源标识符。 |
 | ResultDescription | 此操作的资源说明。 |
 | SubscriptionId | 自动化帐户的 Azure 订阅 ID （GUID）。 |
-| ResourceGroup | 自动化帐户的资源组的名称。 |
+| resourceGroup | 自动化帐户的资源组的名称。 |
 | ResourceProvider | 微软.自动化. |
 | ResourceType | AUTOMATIONACCOUNTS. |
 | CorrelationId | GUID，它是相容性报告的相关标识符。 |
@@ -189,7 +187,7 @@ Azure 自动化诊断在 Azure Monitor 日志中创建两类记录：
 | ResourceId |Azure 自动化帐户的标识符。 |
 | ResultDescription | 此操作的说明。 |
 | SubscriptionId | 自动化帐户的 Azure 订阅 ID （GUID）。 |
-| ResourceGroup | 自动化帐户的资源组的名称。 |
+| resourceGroup | 自动化帐户的资源组的名称。 |
 | ResourceProvider | 微软.自动化. |
 | ResourceType | AUTOMATIONACCOUNTS. |
 | CorrelationId |作为相容性报告的相关性 ID 的 GUID。 |

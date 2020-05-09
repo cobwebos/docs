@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0b36651a40267ec3ea8bfe7285c5f6c5d5c31562
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: c02a61366b05fa2750c581a1dedefb0d6239dada
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871654"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994762"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>混合 Runbook 辅助角色概述
 
@@ -42,7 +42,7 @@ Azure 自动化中的 Runbook 可能无权访问其他云或本地环境中的�
 
 推荐的安装方法是使用 Azure 自动化 runbook 来完全自动完成配置 Windows 计算机的过程。 第二种方法是按照分步过程来手动安装和配置角色。 对于 Linux 计算机，运行 Python 脚本，在计算机上安装代理。
 
-## <a name="network-configuration"></a><a name="network-planning"></a>网络配置
+## <a name="network-planning"></a><a name="network-planning"></a>网络规划
 
 要使混合 Runbook 辅助角色连接到 Azure 自动化并向其注册，它必须有权访问此部分中所述的端口号和 Url。 辅助角色还必须有权访问 Log Analytics 代理连接到 Azure Monitor Log Analytics 工作区[所需的端口和 url](../azure-monitor/platform/agent-windows.md) 。
 

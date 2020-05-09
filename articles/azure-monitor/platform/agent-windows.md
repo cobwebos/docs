@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 70fa66a96291e0c2a638bf69bdce7da531d32bb7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 644d1094ec57e148804941297d50398e36b1b068
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80637469"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996428"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>将 Windows 计算机连接到 Azure Monitor
 
@@ -92,7 +92,7 @@ ms.locfileid: "80637469"
 
 下表突出显示了代理的安装程序支持的特定参数，包括使用 Automation DSC 进行部署的时间。
 
-|特定于 MMA 的选项                   |注意         |
+|特定于 MMA 的选项                   |注释         |
 |---------------------------------------|--------------|
 | NOAPM=1                               | 可选参数。 安装不带 .NET 应用程序性能监视的代理。|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = 将代理配置为向工作区报告                |
@@ -176,8 +176,8 @@ Configuration MMAgent
 ```
 
 4. 按照先前建议的方法，使用从最新版本的代理安装包中提取的产品代码更新脚本中的 `ProductId` 值。 
-5. [将 MMAgent.ps1 配置脚本导入](../../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation)到自动化帐户。 
-5. [将 Windows 计算机或节点分配](../../automation/automation-dsc-getting-started.md#onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration)到配置。 15 分钟内，该节点会检查其配置，代理会被推送到该节点。
+5. [将 MMAgent.ps1 配置脚本导入](../../automation/automation-dsc-getting-started.md#import-a-configuration-into-azure-automation)到自动化帐户。 
+6. [将 Windows 计算机或节点分配](../../automation/automation-dsc-getting-started.md#enable-an-azure-resource-manager-vm-for-management-with-state-configuration)到配置。 15 分钟内，该节点会检查其配置，代理会被推送到该节点。
 
 ## <a name="verify-agent-connectivity-to-log-analytics"></a>验证代理与 Log Analytics 的连接
 

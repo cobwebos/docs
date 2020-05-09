@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0c61a431b985e494148500ed0a7aeb106534ed2c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 278c6ee05fdf78cbfa8653381b65233fbb513593
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81392124"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996122"
 ---
 # <a name="provide-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>使用自动化状态配置和 Chocolatey 为虚拟机提供持续部署
 
@@ -21,9 +21,6 @@ Azure 自动化是 Microsoft Azure 中的一种托管服务，可让你使用 ru
 本文演示如何为 Windows 计算机设置持续部署（CD）。 您可以轻松扩展该技术，使其包含在角色中所需的多个 Windows 计算机（例如，网站），并从该角色中转到其他角色。
 
 ![IaaS VM 的持续部署](./media/automation-dsc-cd-chocolatey/cdforiaasvm.png)
-
->[!NOTE]
->本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az 模块安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于自动化帐户，可参阅[如何更新 Azure 自动化中的 Azure PowerShell 模块](automation-update-azure-modules.md)，将模块更新到最新版本。
 
 ## <a name="at-a-high-level"></a>概括而言
 
@@ -49,7 +46,7 @@ DSC 资源是具有特定功能的代码模块，例如管理网络、Active Dir
 
 ## <a name="quick-trip-around-the-diagram"></a>示意图速览
 
-从顶部开始，你编写代码，生成代码，对其进行测试，然后创建安装包。 Chocolatey 可以处理各种类型的安装包，例如 MSI、MSU、ZIP。 如果 Chocolatey 的本机功能不是最新的，则可以使用 PowerShell 的全部功能来执行实际安装。 将包放入可访问的位置 – 包存储库。 本用例使用 Azure Blob 存储帐户中的公共文件夹，但它可以位于任何位置。 Chocolatey 原生可配合 NuGet 服务器和其他某些工具一起管理包元数据。 [本文](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed)介绍了相应的选项。 用法示例使用 NuGet。 Nuspec 是包的元数据。 Nuspec 信息编译到 NuPkg 中，并存储在 NuGet 服务器上。 当配置通过名称请求包并引用 NuGet 服务器时，VM 上的 Chocolatey DSC 资源会获取包并进行安装。 也可以请求特定版本的包。
+从顶部开始，你编写代码，生成代码，对其进行测试，然后创建安装包。 Chocolatey 可以处理各种类型的安装包，例如 MSI、MSU、ZIP。 如果 Chocolatey 的本机功能不是最新的，则可以使用 PowerShell 的全部功能来执行实际安装。 将包放入可访问的位置 – 包存储库。 本用例使用 Azure Blob 存储帐户中的公共文件夹，但它可以位于任何位置。 Chocolatey 原生可配合 NuGet 服务器和其他某些工具一起管理包元数据。 [本文](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed) 介绍了相应的选项。 用法示例使用 NuGet。 Nuspec 是包的元数据。 Nuspec 信息编译到 NuPkg 中，并存储在 NuGet 服务器上。 当配置通过名称请求包并引用 NuGet 服务器时，VM 上的 Chocolatey DSC 资源会获取包并进行安装。 也可以请求特定版本的包。
 
 在图片的左下角有一个 Azure 资源管理器模板。 在此示例中，VM 扩展以节点的形式向 Azure 自动化状态配置请求服务器注册 VM。 此配置存储在拉取服务器两次：一次是纯文本，并编译为 MOF 文件。 在 Azure 门户中，MOF 表示节点配置，而与简单配置不同。 这是与节点相关联的项目，因此节点将知道其配置。 以下详细信息演示如何将节点配置分配给节点。
 

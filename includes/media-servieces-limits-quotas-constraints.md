@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 03/31/2020
 ms.author: juliako
-ms.openlocfilehash: 99aeb5384b317d1b4d291c769b5402e829247b30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6ff823951e6474a35a514036f02c0aabb17bf01
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80656202"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82997668"
 ---
 > [!NOTE]
 > 对于不固定的资源，请开具支持票证，要求增加配额。 请勿尝试通过创建更多 Azure 媒体服务帐户的方式来提高配额限制。
@@ -66,7 +66,7 @@ ms.locfileid: "80656202"
 | --- | --- | 
 | 每个媒体服务帐户的直播活动数 <sup>(4)</sup> |5|
 | 每个直播活动的实时输出 |3 <sup>(5)</sup> |
-| 最长实时输出持续时间 | 25 小时 |
+| 最长实时输出持续时间 | [DVR 窗口的大小](../articles/media-services/latest/live-event-cloud-dvr.md) |
 
 <sup>4</sup> 有关直播活动限制的详细信息，请参阅[直播活动类型比较和限制](../articles/media-services/latest/live-event-types-comparison.md)。
 

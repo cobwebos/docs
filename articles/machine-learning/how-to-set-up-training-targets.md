@@ -11,19 +11,19 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0ac0352fbca73aca7cc8c19a851dad9149af14a1
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: fc5d2b8f7673488169ee3ae393efcb74ef0a27a2
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872101"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996456"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>设置并使用模型训练的计算目标 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 使用 Azure 机器学习，你可以在各种资源或环境（统称为[__计算目标__](concept-azure-machine-learning-architecture.md#compute-targets)）中训练模型。 计算目标可以是本地计算机，也可以是云资源，例如 Azure 机器学习计算、Azure HDInsight 或远程虚拟机。  还可以为模型部署创建计算目标，如[“部署模型的位置和方式”](how-to-deploy-and-where.md)中所述。
 
-可以使用 Azure 机器学习 SDK、Azure 机器学习工作室、Azure CLI 或 Azure 机器学习 VS Code 扩展创建和管理计算目标。 如果通过其他服务（例如 HDInsight 群集）创建了计算目标，可以通过将其附加到 Azure 机器学习工作区来使用它们。
+可以使用 Azure 机器学习 SDK、Azure 机器学习 studio、Azure CLI 或 Azure 机器学习 VS Code 扩展来创建和管理计算目标。 如果通过其他服务（例如 HDInsight 群集）创建了计算目标，可以通过将其附加到 Azure 机器学习工作区来使用它们。
  
 本文介绍如何使用各种计算目标进行模型训练。  适用于所有计算目标的步骤遵循相同的工作流：
 1. 如果还没有计算目标，请__创建__一个。
@@ -36,7 +36,7 @@ ms.locfileid: "82872101"
 
 ## <a name="compute-targets-for-training"></a>训练的计算目标
 
-Azure 机器学习为不同的计算目标提供不同的支持。 典型的模型开发生命周期从开发/试验少量的数据开始。 在此阶段，我们建议使用本地环境。 例如，本地计算机或基于云的 VM。 针对更大的数据集扩展训练或执行分布式训练时，我们建议使用 Azure 机器学习计算来创建可在每次提交运行时自动缩放的单节点或多节点群集。 你也可以附加自己的计算资源，不过，为各种方案提供的支持可能有所不同，详情如下：
+Azure 机器学习为不同的计算目标提供不同的支持。 典型的模型开发生命周期从开发/试验少量的数据开始。 在此阶段，我们建议使用本地环境。 例如，本地计算机或基于云的 VM。 随着对较大数据集的培训或执行分布式培训进行扩展，我们建议使用 Azure 机器学习计算来创建每次提交运行时措施的单节点或多节点群集。 你也可以附加自己的计算资源，不过，为各种方案提供的支持可能有所不同，详情如下：
 
 [!INCLUDE [aml-compute-target-train](../../includes/aml-compute-target-train.md)]
 
@@ -64,7 +64,7 @@ Azure 机器学习为不同的计算目标提供不同的支持。 典型的模�
 
 使用 ML 管道，可以在简洁性、速度、可移植性和重用性方面优化工作流。 使用 Azure 机器学习来生成管道时，你可以专注于自己的专业，即机器学习，而不需要关注基础设施和自动化。
 
-ML 管道由多个步骤构造而成，步骤是管道中的独特计算单位  。 每个步骤都可以独立运行，并使用独立的计算资源。 这样一来，多个数据科学家就可以同时使用同一管道，而不会过度占用计算资源，同时还可以轻松将不同的计算类型/大小用于每个步骤。
+ML 管道由多个步骤构造而成，步骤是管道中的独特计算单位  。 每个步骤都可以独立运行，并使用独立的计算资源。 此方法允许多个数据科学家在同一时间同时处理相同的计算资源，同时还可以轻松地为每个步骤使用不同的计算类型/大小。
 
 > [!TIP]
 > 训练模型时，ML 管道可以使用运行配置或估算器。
@@ -101,9 +101,10 @@ Azure 机器学习计算对可以分配的核心数等属性实施默认限制�
 
 > [!TIP]
 > 只要有足够的配额来满足所需的核心数，分类通常可以扩展到100个节点。 默认情况下，群集在群集节点之间启用了节点间通信，以支持 MPI 作业。 不过，你可以通过简单地[提供支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)并请求将你的订阅、工作区或特定群集的允许列表用于禁用节点间通信，将群集缩放到1000次的节点。 
->
 
-可以在运行之间重复使用 Azure 机器学习计算。 计算可与工作区中的其他用户共享，并在运行之间保留，根据提交的运行数和群集上设置的 max_nodes 自动向上或向下缩放节点。
+可以在运行之间重复使用 Azure 机器学习计算。 计算可与工作区中的其他用户共享，并在运行之间保留，根据提交的运行数和群集上设置的 max_nodes 自动向上或向下缩放节点。 Min_nodes 设置控制可用节点的最小值。
+
+[!INCLUDE [min-nodes-note](../../includes/machine-learning-min-nodes.md)]
 
 1. **创建和附加**：若要在 Python 中创建持久性 Azure 机器学习计算资源，请指定**vm_size**和**max_nodes**属性。 然后，Azure 机器学习将对其他属性使用智能默认值。 计算在不使用时自动缩减为零个节点。   按需创建专用 VM 来运行作业。
     
@@ -300,7 +301,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 1. 填写表单。 提供必需属性的值，尤其是“VM 系列”，以及用于运转计算的**最大节点数**。****  
 
-1. 选择“创建”。 
+1. 选择“创建”  。
 
 
 1. 通过在列表中选择计算目标来查看创建操作的状态：
@@ -483,7 +484,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
 
 请注意 .runconfig 和 HyperDrive config 中的*参数空间*中的*参数*部分。它们包含要传递给训练脚本的命令行参数。 在每次迭代中，运行配置中的值保持不变，而 HyperDrive 配置中的范围将会更迭。 请勿在这两个文件中指定相同的参数。
 
-有关这些 ```az ml``` CLI 命令和完整参数集的更多详细信息，请参阅[参考文档](reference-azure-machine-learning-cli.md)。
+有关这些```az ml``` CLI 命令的详细信息，请参阅[参考文档](reference-azure-machine-learning-cli.md)。
 
 <a id="gitintegration"></a>
 

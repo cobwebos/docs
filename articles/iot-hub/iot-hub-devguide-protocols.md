@@ -11,12 +11,12 @@ ms.date: 01/29/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 3e7f31371a0582a6f4941efbfa0087119278d2d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 433e4160972a06ee3652410e062f6602e9ca6767
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729115"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996924"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>参考 - 选择通信协议
 
@@ -46,7 +46,7 @@ IoT 中心允许设备使用以下协议进行设备端通信：
 
 * **低资源设备**。 相比 AMQP 库的占用空间，MQTT 和 HTTPS 库的占用空间更小。 因此，如果设备的资源很少（如低于 1 MB RAM），可能只可实现这些协议。
 
-* **网络遍历**。 标准 AMQP 协议使用端口 5671，而 MQTT 侦听端口 8883。 使用这些端口可能会给未向非 HTTPS 协议开放的网络带来问题。 在此情况下，使用基于 WebSockets 的 MQTT、基于 WebSockets 的 AMQP 或者 HTTPS。
+* **网络遍历**。 标准 AMQP 协议使用端口 5671，而 MQTT 侦听端口 8883。 使用这些端口可能会导致在关闭到非 HTTPS 协议的网络中出现问题。 在此情况下，使用基于 WebSockets 的 MQTT、基于 WebSockets 的 AMQP 或者 HTTPS。
 
 * **有效负载大小**。 MQTT 和 AMQP 是二进制协议，因此，其有效负载比 HTTPS 的有效负载更精简。
 
@@ -57,7 +57,7 @@ IoT 中心允许设备使用以下协议进行设备端通信：
 
 设备可在 Azure 中使用各种协议来与 IoT 中心通信。 通常，选择的协议根据解决方案的具体要求而定。 下表列出了必须打开的、使设备能够使用特定协议的出站端口：
 
-| 协议 | 端口 |
+| 协议 | Port |
 | --- | --- |
 | MQTT |8883 |
 | 基于 WebSocket 的 MQTT |443 |
