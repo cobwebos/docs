@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: fbd8e03b1f8af7802133c35ae4860116aaea0c3c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab25b2e300f9fe9b0b1d077a42538c69fa543af2
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81430560"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982694"
 ---
 # <a name="ingesting-data-into-a-sql-pool"></a>将数据引入到 SQL 池中
 
@@ -39,7 +39,7 @@ ms.locfileid: "81430560"
 
 ## <a name="create-pipeline"></a>创建管道
 
-管道包含执行一组活动的逻辑流。 在本部分中，你将创建一个包含复制活动的管道，该活动将数据从 ADLS gen 2 引入到 SQL 池中。
+管道包含执行一组活动的逻辑流。 在本部分中，你将创建一个包含复制活动的管道，该活动将 ADLS Gen2 中的数据引入到 SQL 池中。
 
 1. 请在 "**协调**" 选项卡上，单击 "管道" 标头旁边的加号图标，然后选择 "**管道**"。
 1. 在 "活动" 窗格中的 "**移动和转换**" 下，将 "**复制数据**" 拖到管道画布上。

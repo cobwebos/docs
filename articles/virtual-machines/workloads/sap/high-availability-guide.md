@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aa0810818bf7cfea21f925ee639b4b5a50dcb23b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d9cf3d739054422d219bb6536129c5eb22a2994a
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79246118"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594876"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM 上的 SAP NetWeaver 高可用性
 
@@ -452,7 +452,7 @@ Azure 虚拟机是面向在最短时间内需要计算、存储和网络资源�
 ## <a name="prerequisites"></a><a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a>先决条件
 在开始之前，请确保满足以下部分中所述的先决条件。 此外，务必要检查[资源][sap-ha-guide-2]部分中列出的所有资源。
 
-在本文中，我们为[三层 SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image/) 使用 Azure 资源管理器模板。 有关模板的有用概述，请参阅 [SAP Azure 资源管理器模板](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/)。
+在本文中，我们为[三层 SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/) 使用 Azure 资源管理器模板。 有关模板的有用概述，请参阅 [SAP Azure 资源管理器模板](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/)。
 
 ## <a name="resources"></a><a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a>中心
 这些文章介绍了 Azure 中的 SAP 部署：
@@ -469,7 +469,7 @@ Azure 虚拟机是面向在最短时间内需要计算、存储和网络资源�
 
 以下 SAP 说明与 Azure 中的 SAP 主题相关：
 
-| 说明文档编号 | 标题 |
+| 说明文档编号 | Title |
 | --- | --- |
 | [1928533] |Azure 上的 SAP 应用程序：支持的产品和规模 |
 | [2015553] |Microsoft Azure 上的 SAP：支持先决条件 |
@@ -503,7 +503,7 @@ Azure 资源管理器和 Azure 经典部署模型在以下方面有所不同：
 若要使用 Azure 经典部署模型，请遵循 [Azure 中的 SAP NetWeaver：配合 SIOS DataKeeper 使用 Azure 中的 Windows Server 故障转移群集来组建 SAP ASCS/SCS 实例的群集](https://go.microsoft.com/fwlink/?LinkId=613056)中所述的过程。
 
 > [!IMPORTANT]
-> 强烈建议为 SAP 安装使用 Azure 资源管理器部署模型。 它提供经典部署模型所不具备的多种优势。 详细了解 Azure[部署模型][virtual-machines-azure-resource-manager-architecture-benefits-arm]。   
+> 强烈建议为 SAP 安装使用 Azure 资源管理器部署模型。 它提供经典部署模型所不具备的多种优势。 详细了解 Azure [部署模型][virtual-machines-azure-resource-manager-architecture-benefits-arm]。   
 >
 >
 
@@ -677,8 +677,8 @@ Azure 资源管理器中的三层模板还支持高可用性方案，例如体�
 
 可在以下位置获取本文中所述的示例方案的 Azure 资源管理器模板：
 
-* [Azure 市场映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image)  
-* [自定义映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image)
+* [Azure 市场映像](https://github.com/Azure/azure-quickstart-templates/)  
+* [自定义映像](https://github.com/Azure/azure-quickstart-templates/)
 
 准备体系结构模板 1 的基础结构：
 
@@ -768,8 +768,8 @@ Azure 资源管理器中的三层模板还支持高可用性方案，例如体�
 
 可从以下位置获取适用于此部署方案的 Azure 资源管理器模板：
 
-* [Azure 市场映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged)  
-* [自定义映像](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged)
+* [Azure 市场映像](https://github.com/Azure/azure-quickstart-templates/)  
+* [自定义映像](https://github.com/Azure/azure-quickstart-templates/)
 
 
 ### <a name="prepare-the-infrastructure-for-architectural-template-3"></a>准备体系结构模板 3 的基础结构

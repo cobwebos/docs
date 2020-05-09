@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 149fb5818ee360c7333997655ea9eb8d7ded346c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 294a59ed94344ecf590eb9b34f991deaaa10db69
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81270887"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607378"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>使用 Azure NetApp 文件为主机池创建 FSLogix 配置文件容器
 
@@ -23,7 +23,7 @@ ms.locfileid: "81270887"
 
 本指南将演示如何设置 Azure NetApp 文件帐户，以及如何在 Windows 虚拟桌面中创建 FSLogix 配置文件容器。
 
-本文假设已在 Windows 虚拟桌面环境中设置了[主机池](create-host-pools-azure-marketplace.md)并将其分组到一个或多个租户。 若要了解如何设置租户，请参阅[在 Windows 虚拟桌面中创建租户](tenant-setup-azure-active-directory.md)和[我们的技术社区博客文章](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054)。
+本文假设已在 Windows 虚拟桌面环境中设置了[主机池](create-host-pools-azure-marketplace.md)并将其分组到一个或多个租户。 若要了解如何设置租户，请参阅[在 Windows 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)和[我们的技术社区博客文章](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054)。
 
 本指南中的说明专门针对 Windows 虚拟桌面用户。 如果要了解有关如何在 Windows 虚拟桌面之外设置 Azure NetApp 文件和创建 FSLogix 配置文件容器的更多常规指导，请参阅[设置 Azure Netapp 文件和创建 NFS 卷快速入门](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md)。
 
@@ -33,7 +33,7 @@ ms.locfileid: "81270887"
 >[!NOTE]
 >如果正在查找有关 Azure 上不同 FSLogix 配置文件容器存储选项的比较资料，请参阅[FSLogix 配置文件容器的存储选项](store-fslogix-profile.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 必须先执行以下操作，然后才能为主机池创建 FSLogix 配置文件容器：
 
@@ -210,7 +210,7 @@ ms.locfileid: "81270887"
 
 ## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>确保用户可以访问 Azure NetApp 文件共享
 
-1. 打开 internet 浏览器，然后访问<https://rdweb.wvd.microsoft.com/webclient/index.html>。
+1. 打开 internet 浏览器，然后访问<https://rdweb.wvd.microsoft.com/arm/webclient>。
 
 2. 使用分配给远程桌面组的用户的凭据登录。
 

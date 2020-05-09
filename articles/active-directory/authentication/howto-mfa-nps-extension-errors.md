@@ -11,12 +11,13 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 330363a78aa9b642f4794cee40bbf040d3484b4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 09468272397925d9afd1d3014f4fcc1d6a222198
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80653717"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611375"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>解决 Azure 多重身份验证的 NPS 扩展出现的错误消息
 
@@ -66,9 +67,9 @@ ms.locfileid: "80653717"
 
 有时，由于身份验证请求失败，用户可能会收到多重身份验证发出的消息。 在配置产品中，这些消息并不属于错误，而是有意发出的警告，旨在解释身份验证请求被拒绝的原因。
 
-| 错误代码 | 错误消息 | 建议的步骤 | 
+| 错误代码 | 错误消息 | 建议的步骤 |
 | ---------- | ------------- | ----------------- |
-| **OathCodeIncorrect** | 输入了错误的代码\OATH 代码不正确 | 用户输入了错误的代码。 让他们通过请求新的代码或重新登录来重试。 | 
+| **OathCodeIncorrect** | 输入了错误的代码\OATH 代码不正确 | 用户输入了错误的代码。 让他们通过请求新的代码或重新登录来重试。 |
 | **SMSAuthFailedMaxAllowedCodeRetryReached** | 达到了允许的代码重试次数上限 | 用户通不过验证质询的次数过多。 根据设置，管理员可能需要立即将他们解除阻止。  |
 | **SMSAuthFailedWrongCodeEntered** | 输入了错误的代码/短信 OTP 不正确 | 用户输入了错误的代码。 让他们通过请求新的代码或重新登录来重试。 |
 
