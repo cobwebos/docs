@@ -7,19 +7,21 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/16/2019
-ms.openlocfilehash: 9c43b141608e5a9051499fdfb2adb5d8b0b593df
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/07/2020
+ms.openlocfilehash: 805b51bf4e6d8feab9539f660dfc72ca78b82d5c
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232458"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982626"
 ---
 # <a name="exists-transformation-in-mapping-data-flow"></a>映射数据流中存在转换
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Exists 转换是一个行筛选转换，用于检查数据是否存在于另一个源或流中。 输出流包括左侧流中存在或不存在于右侧流中的所有行。 Exists 转换类似于```SQL WHERE EXISTS```和。 ```SQL WHERE NOT EXISTS```
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4vZKz]
 
 ## <a name="configuration"></a>Configuration
 

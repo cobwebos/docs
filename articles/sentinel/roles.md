@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: yelevin
-ms.openlocfilehash: e7629a53190433c6c331ce372476b0ed768fc5eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2e1b1a4786670974a40b22d44fc219c6be5d97a3
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77587169"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744751"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel 中的权限
 
@@ -44,7 +44,7 @@ Azure Sentinel 使用 [基于角色的访问控制（RBAC）](../role-based-acc
 > Log Analytics 角色还会授予对所有 Azure 资源的读取访问权限，但只会为 Log Analytics 资源分配写入权限。
 
 
-例如，使用**Azure sentinel reader**和**azure 捐助**者（而不是**azure sentinel 参与者**）角色分配的用户将可以在 Azure sentinel 中编辑数据，不过它们只具有**Sentinel 读取器**权限。 因此，如果希望仅在 Azure Sentinel 中授予权限，则应仔细删除此用户的以前权限，确保不会中断其他资源所需的任何权限角色。
+例如，使用**Azure sentinel reader**和**azure 捐助**者（而不是**azure sentinel 参与者**）角色分配的用户将可以在 Azure sentinel 中编辑数据，不过它们只具有**Sentinel 读取器**权限。 因此，如果希望仅在 Azure Sentinel 中向用户授予权限，则应仔细删除此用户以前的权限，确保不会中断其他资源所需的任何权限角色。
 
 > [!NOTE]
 >- Azure Sentinel 使用自动响应的行动手册。 行动手册利用 Azure 逻辑应用，是单独的 Azure 资源。 你可能想要将安全操作团队的特定成员指定为使用逻辑应用进行安全业务流程、自动化和响应（之忠诚度）操作的选项。 可以使用[逻辑应用参与者](../role-based-access-control/built-in-roles.md#logic-app-contributor)角色或[逻辑应用操作员](../role-based-access-control/built-in-roles.md#logic-app-operator)角色分配显式权限来使用行动手册。
@@ -56,7 +56,7 @@ Azure Sentinel 使用 [基于角色的访问控制（RBAC）](../role-based-acc
 
 下表显示 Azure Sentinel 中的角色和允许的操作。 X 指示允许该角色执行该操作。
 
-| Role | 创建和运行行动手册| 创建和编辑仪表板、分析规则和其他 Azure Sentinel 资源 | 管理事件（解除、分配等） | 查看数据、事件、仪表板和其他 Azure Sentinel 资源 |
+| 角色 | 创建和运行行动手册| 创建和编辑仪表板、分析规则和其他 Azure Sentinel 资源 | 管理事件（解除、分配等） | 查看数据、事件、仪表板和其他 Azure Sentinel 资源 |
 |--- |---|---|---|---|
 | Azure Sentinel 读取器 | -- | -- | -- | X |
 | Azure Sentinel 响应程序|--|--| X | X |

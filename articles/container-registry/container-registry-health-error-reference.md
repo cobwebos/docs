@@ -3,12 +3,12 @@ title: 运行状况检查的错误引用
 description: 在 Azure 容器注册表中运行 az acr check-health 命令时出现的问题的错误代码及可能的解决方法
 ms.topic: article
 ms.date: 07/02/2019
-ms.openlocfilehash: 971b28b2bf8d9ac22cec0efe979837886762cf17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a23b95ea0eaffc053c47b70107c95d2b1cdc0645
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80289135"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82978308"
 ---
 # <a name="health-check-error-reference"></a>运行状况检查错误参考
 
@@ -58,7 +58,7 @@ ms.locfileid: "80289135"
 
 ## <a name="connectivity_forbidden_error"></a>CONNECTIVITY_FORBIDDEN_ERROR
 
-此错误表示给定注册表的质询终结点响应了“403 禁止”HTTP 状态。 此错误表示用户无权访问注册表，原因很可能是虚拟网络配置有问题。 若要查看当前配置的防火墙规则，请运行 `az acr show --query networkRuleSet --name <registry>`。
+此错误表示给定注册表的质询终结点响应了“403 禁止”HTTP 状态。 此错误表示用户无权访问注册表，很可能是因为存在虚拟网络配置，或者是因为不允许访问注册表的公共终结点。 若要查看当前配置的防火墙规则，请运行 `az acr show --query networkRuleSet --name <registry>`。
 
 *可能的解决方法*：删除虚拟网络规则，或将当前的客户端 IP 地址添加到允许列表。
 

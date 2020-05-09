@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: d3e456d57d98b796fb1aea2e82de51f9fae40c68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1b299cf21652c23451aed735b10597adb85dc3db
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81733167"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982722"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>了解 Azure IoT Edge 如何使用证书
 
@@ -36,7 +36,7 @@ ms.locfileid: "81733167"
 
 ### <a name="root-ca-certificate"></a>根 CA 证书
 
-根 CA 证书是整个过程的信任根。 在生产方案中，此 CA 证书通常从受信任的商业证书颁发机构（如 Baltimore、Verisign 或 DigiCert）购买。 如果可完全控制连接到 IoT Edge 设备的设备，即可使用公司级证书颁发机构。 在任一情况下，IoT Edge 中心的整个证书链都会汇集在一起，因此叶 IoT 设备必须信任根证书。 可将根 CA 证书存储在受信任的根证书颁发机构存储中，也可以在应用程序代码中提供证书详细信息。
+根 CA 证书是整个过程的信任根。 在生产方案中，此 CA 证书通常从受信任的商业证书颁发机构（如 Baltimore、Verisign 或 DigiCert）购买。 如果可完全控制连接到 IoT Edge 设备的设备，即可使用公司级证书颁发机构。 无论在哪种情况下，都 IoT Edge 中心的整个证书链向上滚动到它，因此，叶 IoT 设备必须信任根证书。 可将根 CA 证书存储在受信任的根证书颁发机构存储中，也可以在应用程序代码中提供证书详细信息。
 
 ### <a name="intermediate-certificates"></a>中间证书
 
