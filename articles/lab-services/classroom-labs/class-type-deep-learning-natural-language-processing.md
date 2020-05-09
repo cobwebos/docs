@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 889d0d1e98f5c9947588011774d02e54f05edca1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0dab5f3dcdfb6ddabbd94960dcf8a8bf2bce98af
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257753"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890776"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>使用 Azure 实验室服务设置专注于自然语言处理中的深度学习的实验室
 本文介绍如何使用 Azure 实验室服务，设置以自然语言处理（NLP）为深度学习的实验室。 自然语言处理 (NLP) 是某种形式的人工智能 (AI)，可在计算机中实现翻译、语音识别和其他语言理解功能。  
@@ -40,7 +40,7 @@ ms.locfileid: "81257753"
 | ------------ | ------------------ |
 | 虚拟机（VM）大小 | 小型 GPU （计算）。 此大小最适用于计算密集型和网络密集型应用程序，如人工智能和深度学习。 |
 | VM 映像 | [适用于 Linux （Ubuntu）的 Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)。 此图提供了用于机器学习和数据科学的深度学习框架和工具。 若要查看此映像上安装的工具的完整列表，请参阅以下文章： [DSVM 上包含的内容？](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm)。 |
-| 启用远程桌面连接 | 启用。 <p>如果启用此设置，教师和学生可以使用远程桌面（RDP）连接到他们的虚拟机（VM）。</p><p>**重要提示**：已在 Linux 映像的 Data Science Virtual Machine 上安装并配置了 RDP。 因此，教师/学生可以通过 RDP 连接到 Vm，而无需执行任何其他步骤。 此外，如果需要连接到图形桌面，此映像已经在虚拟机上安装了[X2Go 服务器](https://wiki.x2go.org/doku.php/doc:newtox2go)。 学生必须在本地计算机上安装 X2Go 客户端，并且必须使用客户端进行连接。 有关详细信息，请参阅以下指南： <ul><li>[如何访问适用于 Linux 的数据科学虚拟机](../../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)</li><li>[连接到模板 VM 以安装 RDP 和 GUI 包](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm)</li></ul></p>   |
+| 启用远程桌面连接 | <p>如果启用此设置，教师和学生可以使用远程桌面（RDP）连接到他们的虚拟机（VM）。</p><p>**重要提示**：启用此设置只会打开 Linux 计算机上的**RDP**端口。 如果已在虚拟机映像上安装并配置了 RDP，你/学生可以通过 RDP 连接到 Vm，而无需执行任何其他步骤。 <p>如果 VM 映像未安装和配置 RDP，则需要首次使用 SSH 连接到 Linux 计算机，并安装 RDP 和 GUI 包，以便你/学生以后可以使用 RDP 连接到 Linux 计算机。 有关详细信息，请参阅[安装和配置远程桌面以连接到 Azure 中的 LINUX VM](../../virtual-machines/linux/use-remote-desktop.md)。 然后，发布该映像，以便学生可以通过 RDP 登录到学生 Linux Vm。  |
 
 适用于 Linux 映像的 Data Science Virtual Machine 提供此类类型所需的深入学习框架和工具。 因此，在创建模板计算机之后，无需进一步自定义。 可以将其发布以供学生使用。 选择 "模板" 页上的 "**发布**" 按钮，将模板发布到实验室。  
 

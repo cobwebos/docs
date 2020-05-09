@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: eb3db23189cbfd07362b1bd5be9aaa181064a2d6
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: b1c19ed556a55dec8c84686e80ec988bc593a7a2
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583222"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996030"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>通过语音合成标记语言 (SSML) 改善合成
 
@@ -209,21 +209,21 @@ speechConfig!.setPropertyTo(
 
 | 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `style` | 指定讲话风格。 目前，讲话风格特定于语音。 | 如果调整神经语音的讲话风格，则此属性是必需的。 如果使用`mstts:express-as`，则必须提供样式。 如果提供无效的值，将忽略此元素。 |
+| `style` | 指定讲话风格。 目前，讲话风格特定于语音。 | 如果调整神经语音的讲话风格，则此属性是必需的。 如果使用 `mstts:express-as`，则必须提供风格。 如果提供无效的值，将忽略此元素。 |
 
 参考下表来确定每种神经语音支持的讲话风格。
 
-| 语音                   | 样式                     | 说明                                                 |
+| 语音                   | Style                     | 说明                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
-| `en-US-AriaNeural`      | `style="newscast"`        | 为 narrating 新闻表达一种正式的职业语调 |
-|                         | `style="customerservice"` | 为客户支持提供友好且有用的音调  |
-|                         | `style="chat"`            | 表达随意和宽松的音调                         |
-|                         | `style="cheerful"`        | 表达一个正负音                         |
+| `en-US-AriaNeural`      | `style="newscast"`        | 以正式专业的语气叙述新闻 |
+|                         | `style="customerservice"` | 以友好热情的语气为客户提供支持  |
+|                         | `style="chat"`            | 表达轻松随意的语气                         |
+|                         | `style="cheerful"`        | 表达积极愉快的语气                         |
 |                         | `style="empathetic"`      | 表达关心和理解               |
-| `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | 为 narrating 新闻表达一种正式的职业语调 |
-|                         | `style="customerservice"` | 为客户支持提供友好且有用的音调  |
-|                         | `style="assistant"`       | 表达数字助理的宽松和放松音    |
-|                         | `style="lyrical"`         | 以 melodic 和 sentimental 方式表达情感         |
+| `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | 以正式专业的语气叙述新闻 |
+|                         | `style="customerservice"` | 以友好热情的语气为客户提供支持  |
+|                         | `style="assistant"`       | 以热情而轻松的语气对数字助理讲话    |
+|                         | `style="lyrical"`         | 以优美又带感伤的方式表达情感         |
 
 **示例**
 
@@ -254,12 +254,12 @@ speechConfig!.setPropertyTo(
 <break time="string" />
 ```
 
-**特性**
+**属性**
 
-| 特性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `strength` | 使用以下值之一指定暂停的相对持续时间：<ul><li>none</li><li>x-weak</li><li>weak</li><li>medium（默认值）</li><li>strong</li><li>x-strong</li></ul> | 可选 |
-| `time` | 指定暂停的绝对持续时间，以秒或毫秒为单位。 有效值的示例有`2s`和`500` | 可选 |
+| `strength` | 使用以下值之一指定暂停的相对持续时间：<ul><li>无</li><li>x-weak</li><li>weak</li><li>medium（默认值）</li><li>strong</li><li>x-strong</li></ul> | 可选 |
+| `time` | 指定暂停的绝对持续时间，以秒或毫秒为单位。 例如，`2s` 和 `500` 是有效值 | 可选 |
 
 | Strength                      | 说明 |
 |-------------------------------|-------------|
@@ -324,11 +324,11 @@ speechConfig!.setPropertyTo(
 <phoneme alphabet="string" ph="string"></phoneme>
 ```
 
-**特性**
+**属性**
 
-| 特性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `alphabet` | 指定在 `ph` 属性中合成字符串发音时要使用的音标。 指定音标的字符串必须以小写字母指定。 下面是可以指定的可能音标。<ul><li>`ipa`&ndash; <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">国际注音字母<span class="docon docon-navigate-external x-hidden-focus"></span> </a></li><li>`sapi`&ndash; [语音服务拼音字母](speech-ssml-phonetic-sets.md)</li><li>`ups`&ndash;通用电话集</li></ul><br>字母表仅适用于元素中`phoneme`的。 | 可选 |
+| `alphabet` | 指定在 `ph` 属性中合成字符串发音时要使用的音标。 指定音标的字符串必须以小写字母指定。 下面是可以指定的可能音标。<ul><li>`ipa`&ndash; <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">国际注音字母<span class="docon docon-navigate-external x-hidden-focus"></span> </a></li><li>`sapi` &ndash; [语音服务音标](speech-ssml-phonetic-sets.md)</li><li>`ups` &ndash; 通用音素集</li></ul><br>音标仅适用于元素中的 `phoneme`。 | 可选 |
 | `ph` | 一个字符串，包含用于在 `phoneme` 元素中指定单词发音的音素。 如果指定的字符串包含无法识别的音素，则文本转语音 (TTS) 服务将拒绝整个 SSML 文档，并且不会生成文档中指定的任何语音输出。 | 如果使用音素，则此属性是必需的。 |
 
 **示例**
@@ -359,7 +359,10 @@ speechConfig!.setPropertyTo(
 
 ## <a name="use-custom-lexicon-to-improve-pronunciation"></a>使用自定义词典改善发音
 
-TTS 有时不能准确地对某个词发音，例如，公司名称或外文名称。 开发人员可以使用 `phoneme` 和 `sub` 标记在 SSML 中定义这些实体的读取，或使用 `lexicon` 标记来引用自定义词典文件以定义多个实体的读取。
+有时文本到语音服务无法准确地发音字词。 例如，公司的名称或医学术语。 开发人员可以使用`phoneme`和`sub`标记定义在 SSML 中读取单个实体的方式。 但是，如果需要定义多个实体的读取方式，则可以使用`lexicon`标记创建自定义词典。
+
+> [!NOTE]
+> 自定义词典当前支持 UTF-8 编码。 
 
 **语法**
 
@@ -375,14 +378,10 @@ TTS 有时不能准确地对某个词发音，例如，公司名称或外文名�
 
 **使用情况**
 
-步骤 1：定义自定义词典 
-
-可以按自定义字典项的列表（存储为 .xml 或 .pls 文件）定义实体的读取。
-
-**示例**
+若要定义多个实体的读取方式，可以创建一个以 .xml 或 pls 文件形式存储的自定义词典。 下面是一个示例 .xml 文件。
 
 ```xml
-<?xml version="1.0" encoding="UTF-16"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <lexicon version="1.0" 
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
@@ -400,26 +399,46 @@ TTS 有时不能准确地对某个词发音，例如，公司名称或外文名�
 </lexicon>
 ```
 
-每个 `lexeme` 元素都是一个词典项。 `grapheme` 包含描述 `lexeme` 的拼字法的文本。 读出形式可作为 `alias` 提供。 可以在 `phoneme` 元素中提供语音字符串。
+`lexicon` 元素包含至少一个 `lexeme` 元素。 每个 `lexeme` 元素包含至少一个 `grapheme` 元素以及一个或多个 `grapheme`、`alias` 和 `phoneme` 元素。 `grapheme` 元素包含描述<a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">拼字法 <span class="docon docon-navigate-external x-hidden-focus"></span></a> 的文本。 `alias` 元素用于指示某个首字母缩写词或某个缩写词的发音。 `phoneme` 元素提供了描述 `lexeme` 发音方式的文本。
 
-`lexicon` 元素包含至少一个 `lexeme` 元素。 每个 `lexeme` 元素包含至少一个 `grapheme` 元素以及一个或多个 `grapheme`、`alais` 和 `phoneme` 元素。 `grapheme` 元素包含描述<a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">拼字法 <span class="docon docon-navigate-external x-hidden-focus"></span></a> 的文本。 `alias` 元素用于指示某个首字母缩写词或某个缩写词的发音。 `phoneme` 元素提供了描述 `lexeme` 发音方式的文本。
+需要特别注意的是，您不能使用自定义词典直接设置单词的发音。 如果需要设置的发音，请首先提供`alias`，然后将`phoneme`与相关联。 `alias` 例如：
 
-有关自定义词典文件的详细信息，请参阅 W3C 网站上的 [Pronunciation Lexicon Specification (PLS) Version 1.0](https://www.w3.org/TR/pronunciation-lexicon/)（发音词典规范 (PLS) 版本 1.0）。
+```xml
+  <lexeme>
+    <grapheme>Scotland MV</grapheme> 
+    <alias>ScotlandMV</alias> 
+  </lexeme>
+  <lexeme>
+    <grapheme>ScotlandMV</grapheme> 
+    <phoneme>ˈskɒtlənd.ˈmiːdiəm.weɪv</phoneme>
+  </lexeme>
+```
 
-步骤 2：将在步骤 1 中创建的自定义词典文件上传到网上。可以将其存储在任何位置。建议你将其存储在 Microsoft Azure（例如 [Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)）中。
+> [!IMPORTANT]
+> 当`phoneme`使用 IPA 时，元素不能包含空格。
 
-步骤 3：请参阅 SSML 中的自定义词典文件
+有关自定义词典文件的详细信息，请参阅[发音词典规范（PLS）版本 1.0](https://www.w3.org/TR/pronunciation-lexicon/)。
+
+接下来，发布自定义词典文件。 虽然我们不会对此文件的存储位置有限制，但建议使用[Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)。
+
+发布自定义词典后，可以从 SSML 引用它。
+
+> [!NOTE]
+> `lexicon`元素必须在`voice`元素内部。
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" 
           xmlns:mstts="http://www.w3.org/2001/mstts" 
           xml:lang="en-US">
-<lexicon uri="http://www.example.com/customlexicon.xml"/>
-BTW, we will be there probably 8:00 tomorrow morning.
-Could you help leave a message to Robert Benigni for me?
+    <voice name="en-US-AriaRUS">
+        <lexicon uri="http://www.example.com/customlexicon.xml"/>
+        BTW, we will be there probably at 8:00 tomorrow morning.
+        Could you help leave a message to Robert Benigni for me?
+    </voice>
 </speak>
 ```
-“BTW”将读作“By the way”。 “Benigni”将通过提供的 IPA“bɛˈniːnji”朗读。  
+
+使用此自定义词典时，"顺便" 将以 "方式" 读取。 将用提供的 IPA "bɛˈ ni ː nji" 读取 "Benigni"。  
 
 **限制**
 - 文件大小：自定义词典文件大小的最大限制为 100KB。如果超过此大小，合成请求会失败。
@@ -427,12 +446,14 @@ Could you help leave a message to Robert Benigni for me?
 
 **语音服务语音集**
 
-在上面的示例中，我们使用的是国际音标（也称为 IPA 语音集）。 我们建议开发人员使用 IPA，因为它是国际标准。 考虑到 IPA 不容易记住，语音服务为七种语言（`en-US`、`fr-FR`、`de-DE`、`es-ES`、`ja-JP`、`zh-CN`和 `zh-TW`）定义语音集。
+在上面的示例中，我们使用的是国际音标（也称为 IPA 语音集）。 我们建议开发人员使用 IPA，因为它是国际标准。 对于某些 IPA 字符，当使用 Unicode 表示时，它们具有 "预构成" 和 "分解" 版本。 自定义词典仅支持分解后的 unicodes。
+
+考虑到 IPA 不容易记住，语音服务为七种语言（`en-US`、`fr-FR`、`de-DE`、`es-ES`、`ja-JP`、`zh-CN`和 `zh-TW`）定义语音集。
 
 可以使用 `sapi` 作为 `alphabet` 属性的值，而自定义词典则如下所示：
 
 ```xml
-<?xml version="1.0" encoding="UTF-16"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <lexicon version="1.0" 
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -454,7 +475,7 @@ Could you help leave a message to Robert Benigni for me?
 
 ## <a name="adjust-prosody"></a>调整韵律
 
-`prosody`元素用于指定文本到语音输出的音调、等高线、范围、速率、持续时间和音量的更改。 `prosody` 元素可包含文本和以下元素：`audio`、`break`、`p`、`phoneme`、`prosody`、`say-as`、`sub` 和 `s`。
+`prosody` 元素用于指定文本转语音输出的音节、调型、范围、速率、持续时间和音量的变化。 `prosody` 元素可包含文本和以下元素：`audio`、`break`、`p`、`phoneme`、`prosody`、`say-as`、`sub` 和 `s`。
 
 由于韵律属性值可在较大范围内变化，因此，语音识别器会将分配的值解释为所选语音的建议实际韵律值。 文本转语音服务将限制或替代不支持的值。 例如，音节 1 MHz 或音量 120 就是不支持的值。
 
@@ -468,7 +489,7 @@ Could you help leave a message to Robert Benigni for me?
 
 | 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `pitch` | 指示文本的基线音节。 可将音节表述为：<ul><li>以某个数字后接“Hz”（赫兹）表示的绝对值。 例如，600 Hz。</li><li>以前面带有“+”或“-”的数字，后接“Hz”或“st”（用于指定音节的变化量）表示的相对值。 例如：+80 Hz 或 -2st。 “st”表示变化单位为半音，即，标准全音阶中的半调（半步）。</li><li>常量值：<ul><li>x-low</li><li>low</li><li>中</li><li>high</li><li>x-high</li><li>默认值</li></ul></li></ul>上获取。 | 可选 |
+| `pitch` | 指示文本的基线音节。 可将音节表述为：<ul><li>以某个数字后接“Hz”（赫兹）表示的绝对值。 例如，600 Hz。</li><li>以前面带有“+”或“-”的数字，后接“Hz”或“st”（用于指定音节的变化量）表示的相对值。 例如：+80 Hz 或 -2st。 “st”表示变化单位为半音，即，标准全音阶中的半调（半步）。</li><li>常量值：<ul><li>x-low</li><li>low</li><li>中</li><li>high</li><li>x-high</li><li>default</li></ul></li></ul>. | 可选 |
 | `contour` |等高线现在同时支持神经和标准语音。 调型表示音节的变化。 这些变化以语音输出中指定时间处的目标数组形式表示。 每个目标由参数对的集定义。 例如： <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每参数集中的第一个值以文本持续时间百分比的形式指定音节变化的位置。 第二个值使用音节的相对值或枚举值指定音节的升高或降低量（请参阅 `pitch`）。 | 可选 |
 | `range` | 表示文本音节范围的值。 可以使用用于描述 `pitch` 的相同绝对值、相对值或枚举值表示 `range`。 | 可选 |
 | `rate` | 指示文本的讲出速率。 可将 `rate` 表述为：<ul><li>以充当默认值倍数的数字表示的相对值。 例如，如果值为 *1*，则速率不会变化。 如果值为 *0.5*，则速率会减慢一半。 如果值为 *3*，则速率为三倍。</li><li>常量值：<ul><li>x-slow</li><li>slow</li><li>中</li><li>fast</li><li>x-fast</li><li>默认值</li></ul></li></ul> | 可选 |
@@ -547,11 +568,11 @@ Could you help leave a message to Robert Benigni for me?
 <say-as interpret-as="string" format="digit string" detail="string"> <say-as>
 ```
 
-**特性**
+**属性**
 
-| 特性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `interpret-as` | 指示元素文本的内容类型。 有关类型列表，请参阅下表。 | 必选 |
+| `interpret-as` | 指示元素文本的内容类型。 有关类型列表，请参阅下表。 | 必须 |
 | `format` | 为可能具有不明确格式的内容类型提供有关元素文本的精确格式设置的更多信息。 SSML 为使用它们的内容类型定义格式（请参阅下表）。 | 可选 |
 | `detail` | 指示要朗读的详细信息的级别。 例如，此属性可以要求语音合成引擎朗读标点符号。 没有为 `detail` 定义标准值。 | 可选 |
 
@@ -561,7 +582,7 @@ Could you help leave a message to Robert Benigni for me?
 
 | interpret-as | format | 解释 |
 |--------------|--------|----------------|
-| `address` | | 此文本朗读为地址。 语音合成引擎将以下内容：<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />作为 "我在150th 的法庭 redmond 华盛顿州"。 |
+| `address` | | 此文本朗读为地址。 语音合成引擎将以下内容：<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />朗读为：“I'm at 150th court north east redmond washington.” |
 | `cardinal`, `number` | | 此文本朗读为基数。 语音合成引擎将以下内容：<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />朗读为“There are three alternatives.”。 |
 | `characters`, `spell-out` | | 此文本朗读为各个字符（拼读出来）。 语音合成引擎将以下内容：<br /><br />`<say-as interpret-as="characters">test</say-as>`<br /><br />朗读为“T E S T.” |
 | `date` | dmy, mdy, ymd, ydm, ym, my, md, dm, d, m, y | 此文本朗读为日期。 `format` 属性指定日期的格式 (*d=day, m=month, and y=year*)。 语音合成引擎将以下内容：<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />朗读为“Today is October nineteenth two thousand sixteen.” |
@@ -569,7 +590,7 @@ Could you help leave a message to Robert Benigni for me?
 | `fraction` | | 此文本朗读为分数。 语音合成引擎将以下内容：<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />朗读为“three eighths of an inch.” |
 | `ordinal` | | 此文本朗读为基数。 语音合成引擎将以下内容：<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />朗读为“Select the third option”。 |
 | `telephone` | | 此文本朗读为电话号码。 `format` 属性可以包含表示国家/地区代码的数字。 例如，“1”表示美国，“39”表示意大利。 语音合成引擎可以使用此信息来指导其电话号码的发音。 电话号码中也可能包含国家/地区代码，如果是，则它优先于 `format` 中的国家/地区代码。 语音合成引擎将以下内容：<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />朗读为“My number is area code eight eight eight five five five one two one two.” |
-| `time` | hms12, hms24 | 此文本朗读为时间。 `format` 属性指定时间是使用 12 小时制 (hms12) 还是 24 小时制 (hms24) 指定的。 请使用冒号分隔表示小时、分钟和秒的数字。 下面是有效的时间示例：12:35、1:14:32、08:15 和02:50:45。 语音合成引擎将以下内容：<br /><br />`The train departs at <say-as interpret-as="time" format="hms12">4:00am</say-as>`<br /><br />朗读为“The train departs at four A M.” |
+| `time` | hms12, hms24 | 此文本朗读为时间。 `format` 属性指定时间是使用 12 小时制 (hms12) 还是 24 小时制 (hms24) 指定的。 请使用冒号分隔表示小时、分钟和秒的数字。 下面是有效的时间示例：12:35、1:14:32、08:15 和 02:50:45。 语音合成引擎将以下内容：<br /><br />`The train departs at <say-as interpret-as="time" format="hms12">4:00am</say-as>`<br /><br />朗读为“The train departs at four A M.” |
 
 **使用情况**
 
@@ -577,7 +598,7 @@ Could you help leave a message to Robert Benigni for me?
 
 **示例**
 
-语音合成引擎的示例如下所示： "第一次请求的时间是10月第19个 20 10 上的一个房间，早到 12 35 下午。"
+语音合成引擎将以下示例朗读为“Your first request was for one room on October nineteenth twenty ten with early arrival at twelve thirty five PM.”
  
 ```XML
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -596,10 +617,10 @@ Could you help leave a message to Robert Benigni for me?
 
 包含在 SSML 文档中的任何音频必须满足以下要求：
 
-* MP3 必须托管在可通过 Internet 访问的 HTTPS 终结点上。 HTTPS 是必需的，托管 MP3 文件的域必须提供有效的受信任的 TLS/SSL 证书。
+* MP3 必须托管在可通过 Internet 访问的 HTTPS 终结点上。 必须使用 HTTPS，托管 MP3 文件的域必须提供有效的受信任 TLS/SSL 证书。
 * MP3 必须是有效的 MP3 文件 (MPEG v2)。
 * 比特率必须是 48 kbps。
-* 采样率必须为 16000 Hz。
+* 采样率必须是 16,000 Hz。
 * 单个响应中所有文本和音频文件的总时间不能超过 90 秒。
 * MP3 不得包含任何客户特定的信息或其他敏感信息。
 
@@ -609,9 +630,9 @@ Could you help leave a message to Robert Benigni for me?
 <audio src="string"/></audio>
 ```
 
-**特性**
+**属性**
 
-| 特性 | 描述                                   | 必需/可选                                        |
+| 属性 | 说明                                   | 必需/可选                                        |
 |-----------|-----------------------------------------------|------------------------------------------------------------|
 | `src`     | 指定音频文件的位置/URL。 | 在 SSML 文档中使用音频元素时，此属性是必需的。 |
 
@@ -645,14 +666,14 @@ Could you help leave a message to Robert Benigni for me?
 <mstts:backgroundaudio src="string" volume="string" fadein="string" fadeout="string"/>
 ```
 
-**特性**
+**属性**
 
-| 特性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `src` | 指定背景音频文件的位置/URL。 | 如果在 SSML 文档中使用背景音频，则此属性是必需的。 |
-| `volume` | 指定背景音频文件的音量。 **接受值**： `0`到`100`包含的值。 默认值为 `1`。 | 可选 |
-| `fadein` | 指定背景音频 "淡入" 的持续时间（以毫秒为单位）。 默认值为 `0`，即，不淡入。 **接受值**： `0`到`10000`包含的值。  | 可选 |
-| `fadeout` | 指定背景音频淡出的持续时间，以毫秒为单位。 默认值为`0`，它等效于不淡出。**接受值**： `0`到`10000`包含的值。  | 可选 |
+| `volume` | 指定背景音频文件的音量。 **接受的值**：`0` 到 `100`（含）。 默认值为 `1`。 | 可选 |
+| `fadein` | 指定背景音频淡入的持续时间，以毫秒为单位。 默认值为 `0`，即，不淡入。 **接受的值**：`0` 到 `10000`（含）。  | 可选 |
+| `fadeout` | 指定背景音频淡出的持续时间，以毫秒为单位。 默认值为 `0`，即，不淡出。**接受的值**：`0` 到 `10000`（含）。  | 可选 |
 
 **示例**
 

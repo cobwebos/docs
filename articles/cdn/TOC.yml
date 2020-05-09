@@ -8,10 +8,10 @@
       href: cdn-features.md
 - name: 快速入门
   items:
-    - name: 创建配置文件和终结点
-      href: cdn-create-new-endpoint.md
     - name: 集成存储帐户
       href: cdn-create-a-storage-account-with-cdn.md
+    - name: 创建配置文件和终结点
+      href: cdn-create-new-endpoint.md
     - name: 使用 Azure 资源管理器模板创建配置文件
       href: create-profile-resource-manager-template.md
 - name: 教程
@@ -46,7 +46,7 @@
       href: cdn-migrate.md
     - name: DDOS 保护
       href: cdn-ddos.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 优化内容
       href: cdn-optimization-overview.md
@@ -128,7 +128,7 @@
           href: cdn-app-dev-net.md
         - name: Node.js
           href: cdn-app-dev-node.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 404 状态
           href: cdn-troubleshoot-endpoint.md
@@ -191,7 +191,7 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=cdn'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-cdn'
     - name: 视频
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=cdn'

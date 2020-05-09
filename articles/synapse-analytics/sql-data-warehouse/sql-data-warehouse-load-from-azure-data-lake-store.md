@@ -11,12 +11,12 @@ ms.date: 04/08/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 9713d73ee132f743ceea98cbaca6a83f36fd3a45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f26aafc771998ea73d1a4f97f0e960a94f6775c3
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416116"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626711"
 ---
 # <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>从 SQL Analytics Azure Data Lake Storage 加载数据
 
@@ -33,11 +33,11 @@ ms.locfileid: "81416116"
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 开始本教程之前，请下载并安装最新版 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS)。
 
-若要运行本教程，需要：
+要运行本教程，需要：
 
 * SQL 池。 请参阅[创建 SQL 池和查询数据](create-data-warehouse-portal.md)。
 * Data Lake Storage 帐户。 请参阅[Azure Data Lake Storage 入门](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 对于此存储帐户，你将需要配置或指定以下要加载的凭据之一：存储帐户密钥、Azure 目录应用程序用户，或拥有存储帐户的相应 RBAC 角色的 AAD 用户。
@@ -93,7 +93,7 @@ WITH
 
 ## <a name="create-the-external-data-source"></a>创建外部数据源
 
-使用此 [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 命令存储数据的位置。 如果要使用 AAD 传递进行身份验证，则不需要凭据参数。 如果要使用托管标识为服务终结点进行身份验证，请按照此[文档](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#azure-sql-data-warehouse-polybase)设置外部数据源。
+使用此 [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 命令存储数据的位置。 如果要使用 AAD 传递进行身份验证，则不需要凭据参数。 如果要使用托管标识为服务终结点进行身份验证，请按照此[文档](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#azure-synapse-analytics-polybase)设置外部数据源。
 
 ```sql
 -- C (for Gen1): Create an external data source
@@ -189,7 +189,7 @@ Data Lake Storage Gen1 使用基于角色的访问控制 (RBAC) 控制对数据�
 
 若要从加载数据 Data Lake Storage 请使用[CREATE TABLE AS SELECT （transact-sql）](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)语句。
 
-CTAS 将创建新表，并在该表中填充 select 语句的结果。 CTAS 将新表定义为包含与 select 语句结果相同的列和数据类型。 如果选择了外部表中的所有列，则新表将是外部表中的列和数据类型的副本。
+CTAS 会创建新表，并在该表中填充 select 语句的结果。 CTAS 将新表定义为包含与 select 语句结果相同的列和数据类型。 如果选择了外部表中的所有列，则新表将是外部表中的列和数据类型的副本。
 
 在此示例中，我们将从外部表 DimProduct_external 创建名为 DimProduct 的哈希分布表。
 
@@ -218,7 +218,7 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 
 最好是在加载之后马上创建单列统计信息。 对于统计信息，可以使用多个选项。 例如，如果针对每个列创建单列统计信息，则重新生成所有统计信息可能需要花费很长时间。 如果知道某些列不会在查询谓词中使用，可以不创建有关这些列的统计信息。
 
-如果决定针对每个表的每个列创建单列统计信息，可以使用 [统计信息](sql-data-warehouse-tables-statistics.md)一文中的存储过程代码示例 `prc_sqldw_create_stats`。
+如果决定针对每个表的每个列创建单列统计信息，可以使用 [statistics](sql-data-warehouse-tables-statistics.md)（统计信息）一文中的存储过程代码示例 `prc_sqldw_create_stats`。
 
 以下示例是创建统计信息的不错起点。 它会针对维度表中的每个列以及事实表中的每个联接列创建单列统计信息。 以后，随时可以将单列或多列统计信息添加到其他事实表列。
 

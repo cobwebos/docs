@@ -5,17 +5,17 @@ description: 了解如何在存储帐户的主终结点不可用时启动帐户�
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 8de5290c41e6213e61b7b5b09cffba1f4638df30
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: HT
+ms.openlocfilehash: 2d07195e28c964a540eafdfba94a958e6c9f6981
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857040"
+ms.locfileid: "82871351"
 ---
 # <a name="initiate-a-storage-account-failover"></a>启动存储帐户故障转移
 
@@ -28,7 +28,7 @@ ms.locfileid: "82857040"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在存储帐户上执行帐户故障转移之前，请确保为异地复制配置了存储帐户。 你的存储帐户可以使用以下任一冗余选项：
 

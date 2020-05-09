@@ -1,22 +1,22 @@
 ---
-title: 共同出售省市自治区和直辖市市Azure Marketplace
-description: 在产品/服务的共同销售页面上提供联系人信息时，请使用这些州和省号。
+title: Azure Marketplace 中的共同销售州和省/自治区代码
+description: 在 Azure Marketplace 中提供产品/服务的共同销售页上提供联系人信息时，获取可用省/市/自治区代码。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 782f2d6facb28630989f086a68c551314e02e48e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a39cb5f49c9f038f567b7f3322b5962bc1dc9fc8
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619360"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744707"
 ---
-# <a name="co-sell-state-and-province-codes"></a>共同出售省市自治区和省份代码
+# <a name="co-sell-state-and-province-codes-in-azure-marketplace"></a>Azure Marketplace 中的共同销售州和省/自治区代码
 
-如果适用，请使用以下代码提供省/直辖市/自治区信息，在[产品/服务的共同销售页面上提供联系人信息](commercial-marketplace-co-sell.md#contacts)。
+本文列出了在产品/服务的共同销售页面上提供联系人信息时的可用州和省/市/自治区代码。 如果适用，请使用以下代码提供省/直辖市/自治区信息，在[产品/服务的共同销售页面上提供联系人信息](commercial-marketplace-co-sell.md#contacts)。
 
 ## <a name="us-states-and-territories"></a>美国州和区域
 
