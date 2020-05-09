@@ -38,6 +38,8 @@
           href: relay-authentication-and-authorization.md
         - name: 内置安全控件
           href: service-bus-relay-security-controls.md
+        - name: 网络安全
+          href: network-security.md
     - name: 混合连接协议
       href: relay-hybrid-connections-protocol.md
 - name: 操作方式
@@ -59,6 +61,12 @@
               href: relay-hybrid-connections-dotnet-api-overview.md
             - name: 节点
               href: relay-hybrid-connections-node-ws-api-overview.md
+    - name: 安全
+      items:
+        - name: 配置 IP 防火墙（预览版）
+          href: ip-firewall-virtual-networks.md
+        - name: 配置专用终结点（预览版）
+          href: private-link-service.md
     - name: 管理和监视
       items:
         - name: 使用 Azure 监视来监视 Azure 中继

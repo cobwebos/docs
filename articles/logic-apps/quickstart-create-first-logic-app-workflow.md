@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: c2a26f2f40e0312fbfa0962e69ddfd0cfdabad5f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3087b964ff5f9754d6552fc95625541ce94a6535
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77191277"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82147998"
 ---
 # <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>快速入门：使用 Azure 逻辑应用创建第一个工作流 - Azure 门户
 
@@ -20,9 +20,10 @@ ms.locfileid: "77191277"
 
 ![高级示例逻辑应用工作流](./media/quickstart-create-first-logic-app-workflow/quickstart-workflow-overview.png)
 
-对于此方案，需要 Azure 逻辑应用支持的服务（例如 Office 365 Outlook、Outlook.com 或 Gmail）提供的电子邮件帐户。 如需其他受支持的电子邮件服务，请[在这里查看连接器列表](https://docs.microsoft.com/connectors/)。 在此示例中，逻辑应用使用 Office 365 Outlook。 如果使用其他电子邮件服务，则总体常规步骤相同，但用户界面可能略有不同。
+对于此方案，需要一个 Azure 订阅或[注册一个免费的 Azure 帐户](https://azure.microsoft.com/free/)，并需要一个由 Azure 逻辑应用支持的服务（例如 Office 365 Outlook、Outlook.com 或 Gmail）提供的电子邮件帐户。 如需其他受支持的电子邮件服务，请[在这里查看连接器列表](https://docs.microsoft.com/connectors/)。 在此示例中，逻辑应用使用 Office 365 Outlook 帐户。 如果使用其他电子邮件服务，则总体常规步骤相同，但用户界面可能略有不同。
 
-另外，如果还没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
+> [!IMPORTANT]
+> 如果要使用 Gmail 连接器，则只有 G-Suite 商业帐户可以在逻辑应用中不受限制地使用此连接器。 如果有 Gmail 用户帐户，则只能将此连接器与 Google 批准的特定服务一起使用，也可以[创建用于通过 Gmail 连接器进行身份验证的 Google 客户端应用](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。 有关详细信息，请参阅 [Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 

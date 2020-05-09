@@ -1,6 +1,6 @@
 ---
 title: 排查 Azure 自动化管理解决方案的载入问题
-description: 了解如何排查解决方案载入错误。
+description: 了解如何排查 Azure Automation 解决方案载入错误。
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,16 +8,16 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: da5152b459f54cbaae5ec168f103f23a237edebd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 371094ecba5168fd32a7af9fb81a71eb722efc91
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679235"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82836523"
 ---
 # <a name="troubleshoot-solution-onboarding"></a>解决解决方案载入问题
 
-在载入更新管理解决方案或更改跟踪和清单解决方案时，可能会收到错误。 本文介绍了可能发生的各种错误以及如何解决这些错误。
+在载入 Azure 自动化更新管理解决方案或更改跟踪和清单解决方案时，可能会收到错误消息。 本文介绍了可能发生的各种错误以及如何解决这些错误。
 
 ## <a name="known-issues"></a>已知问题
 
@@ -35,11 +35,11 @@ ms.locfileid: "81679235"
 
 从 Azure 自动化状态配置中注销节点，然后重新注册。 在该时间之前发布到服务的报表将不再可用。
 
-### <a name="scenario-re-signing-certificates-via-https-proxy-is-not-supported"></a><a name="resigning-cert"></a>方案：不支持通过 https 代理重新签名证书
+### <a name="scenario-re-signing-certificates-via-https-proxy-isnt-supported"></a><a name="resigning-cert"></a>方案：不支持通过 HTTPS 代理重新签名证书
 
 #### <a name="issue"></a>问题
 
-当通过使用新证书终止 HTTPS 流量并重新加密流量的代理解决方案进行连接时，该服务不允许连接。
+当你通过代理解决方案进行连接，该解决方案将终止 HTTPS 流量，然后使用新证书重新加密流量时，该服务不允许连接。
 
 #### <a name="cause"></a>原因
 
@@ -51,7 +51,7 @@ Azure 自动化不支持对用于加密流量的证书进行重新签名。
 
 ## <a name="general-errors"></a>常规错误
 
-### <a name="scenario-onboarding-fails-with-the-message---the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>方案：载入失败并出现消息-无法启用解决方案
+### <a name="scenario-onboarding-fails-with-the-message-the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>方案：载入失败，并出现消息 "无法启用解决方案"
 
 #### <a name="issue"></a>问题
 
@@ -71,9 +71,9 @@ The solution cannot be enabled on this VM because the permission to read the wor
 
 #### <a name="resolution"></a>解决方法
 
-请确保你具有[板载计算机所需](../automation-role-based-access-control.md#onboarding-permissions)的正确权限，然后再次尝试载入解决方案。 如果收到错误`The solution cannot be enabled on this VM because the permission to read the workspace is missing`，请确保你有`Microsoft.OperationalInsights/workspaces/read`权查看 VM 是否已载入到工作区。
+请确保你具有[板载计算机所需](../automation-role-based-access-control.md#onboarding-permissions)的正确权限，然后再次尝试载入解决方案。 如果收到错误消息`The solution cannot be enabled on this VM because the permission to read the workspace is missing`，请确保你有`Microsoft.OperationalInsights/workspaces/read`权查看 VM 是否已载入到工作区。
 
-### <a name="scenario-onboarding-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>方案：载入失败，并出现以下消息：未能配置用于诊断日志记录的自动化帐户
+### <a name="scenario-onboarding-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>方案：载入失败，并出现消息 "无法配置用于诊断日志记录的自动化帐户"
 
 #### <a name="issue"></a>问题
 
@@ -85,7 +85,7 @@ Failed to configure automation account for diagnostic logging
 
 #### <a name="cause"></a>原因
 
-如果定价层与订阅的计费模型不匹配，则可能会导致此错误。 请参阅[Azure Monitor 中的监视使用情况和预估成本](https://aka.ms/PricingTierWarning)。
+如果定价层与订阅的计费模型不匹配，则可能会导致此错误。 有关详细信息，请参阅[Azure Monitor 中的监视使用情况和预估成本](https://aka.ms/PricingTierWarning)。
 
 #### <a name="resolution"></a>解决方法
 
@@ -103,7 +103,7 @@ Failed to configure automation account for diagnostic logging
 
 #### <a name="resolution"></a>解决方法
 
-您可以删除解决方案的查询，然后再次载入解决方案，这将重新创建查询。 可在工作区中的 "**保存的搜索**" 下找到该查询。 查询的名称为**MicrosoftDefaultComputerGroup**，查询的类别为关联解决方案的名称。 如果启用多个解决方案， **MicrosoftDefaultComputerGroup**查询会在 "保存的**搜索**" 下多次显示。
+您可以删除解决方案的查询，然后再次载入解决方案，这将重新创建查询。 可以在工作区中的 "保存的**搜索**" 下找到该查询。 查询的名称为**MicrosoftDefaultComputerGroup**，查询的类别为关联解决方案的名称。 如果启用多个解决方案， **MicrosoftDefaultComputerGroup**查询会在 "保存的**搜索**" 下多次显示。
 
 ### <a name="scenario-policyviolation"></a><a name="policy-violation"></a>场景：PolicyViolation
 
@@ -117,20 +117,20 @@ Failed to configure automation account for diagnostic logging
 
 #### <a name="resolution"></a>解决方法
 
-为了成功部署解决方案，您必须考虑更改指定的策略。 由于可以定义多种不同类型的策略，因此所需的更改取决于所违反的策略。 例如，如果对某个资源组定义了一个策略，而该资源组拒绝更改某些包含资源的内容，则可以选择以下其中一个修复程序：
+若要成功部署解决方案，您必须考虑更改指定的策略。 由于可以定义多种不同类型的策略，因此所需的更改取决于所违反的策略。 例如，如果对某个资源组定义了一个策略，而该资源组拒绝更改某些包含资源的内容，则可以选择以下其中一个修复程序：
 
 * 将该策略完全删除。
 * 尝试将解决方案载入其他资源组。
-* 将策略重新定位到特定的资源，例如自动化帐户。
+* 将策略重定位到特定的资源，例如自动化帐户。
 * 修改策略配置为拒绝的资源集。
 
-检查 Azure 门户右上角的通知，或导航到包含自动化帐户的资源组，然后选择 "**设置**" 下的 "**部署**" 以查看失败的部署。 若要了解有关 Azure 策略的详细信息，请参阅[Azure 策略概述](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json)。
+检查 Azure 门户右上角的通知，或者前往包含自动化帐户的资源组，然后选择 "**设置**" 下的 "**部署**" 以查看失败的部署。 若要了解有关 Azure 策略的详细信息，请参阅[Azure 策略概述](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json)。
 
 ### <a name="scenario-errors-trying-to-unlink-a-workspace"></a><a name="unlink"></a>方案：尝试取消链接工作区时出错
 
 #### <a name="issue"></a>问题
 
-尝试取消链接工作区时，会收到以下错误：
+尝试取消链接工作区时，会收到以下错误消息：
 
 ```error
 The link cannot be updated or deleted because it is linked to Update Management and/or ChangeTracking Solutions.
@@ -148,10 +148,10 @@ The link cannot be updated or deleted because it is linked to Update Management 
 * 更改跟踪和库存
 * 在非工作时间启动/停止 VM
 
-删除解决方案后，可以取消链接工作区。 从工作区和自动化帐户中清理这些解决方案中的任何现有项目非常重要。 
+删除解决方案后，可以取消链接工作区。 从工作区和自动化帐户中清理这些解决方案中的所有现有项目非常重要。
 
-* 对于更新管理，请从自动化帐户中删除更新部署（计划）。
-* 对于在空闲时间启动/停止 VM，请在 "**设置** > " "**锁定**" 下删除自动化帐户中解决方案组件的所有锁定。 请参阅[删除在空闲时间启动/停止 VM 解决方案](../automation-solution-vm-management.md#remove-the-solution)。
+* 对于更新管理，请从自动化帐户中删除**更新部署（计划）** 。
+* 对于在空闲时间启动/停止 VM，请在 "**设置** > " "**锁定**" 下删除自动化帐户中解决方案组件的所有锁定。 有关详细信息，请参阅[删除在空闲时间启动/停止 VM 解决方案](../automation-solution-vm-management.md#remove-the-solution)。
 
 ## <a name="log-analytics-for-windows-extension-failures"></a><a name="mma-extension-failures"></a>Windows 扩展故障 Log Analytics
 
@@ -180,7 +180,7 @@ Please verify the VM has a running VM agent, and can establish outbound connecti
 
 #### <a name="cause"></a>原因
 
-此错误的部分潜在原因包括：
+此错误的一些可能原因是：
 
 * VM 中配置的代理仅允许特定端口。
 * 某个防火墙设置已阻止访问所需的端口和地址。
@@ -189,9 +189,9 @@ Please verify the VM has a running VM agent, and can establish outbound connecti
 
 确保已打开正确的端口和地址用于通信。 有关端口和地址的列表，请参阅[规划网络](../automation-hybrid-runbook-worker.md#network-planning)。
 
-### <a name="scenario-install-failed-because-of-a-transient-environment-issues"></a><a name="transient-environment-issue"></a>方案：由于暂时性环境问题而导致安装失败
+### <a name="scenario-install-failed-because-of-transient-environment-issues"></a><a name="transient-environment-issue"></a>方案：由于暂时性环境问题而导致安装失败
 
-在部署过程中安装 Windows extension Log Analytics 失败，因为另一个安装或操作阻止了安装
+在部署过程中安装 Windows extension Log Analytics 失败，因为另一个安装或操作阻止了安装。
 
 #### <a name="issue"></a>问题
 
@@ -211,7 +211,7 @@ The Microsoft Monitoring Agent failed to install on this machine. Please try to 
 
 #### <a name="cause"></a>原因
 
-此错误的部分潜在原因包括：
+此错误的一些可能原因是：
 
 * 正在进行另一个安装。
 * 在模板部署期间，系统会触发重新启动。
@@ -242,8 +242,8 @@ Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftM
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你没有看到你的问题或无法解决你的问题，请尝试以下通道之一以获取其他支持：
+如果在此处看不到你的问题，或者无法解决你的问题，请尝试以下通道之一以获取其他支持：
 
 * 通过[Azure 论坛](https://azure.microsoft.com/support/forums/)获取 azure 专家的解答。
-* 与[@AzureSupport](https://twitter.com/azuresupport)官方 Microsoft Azure 帐户联系，通过将 Azure 社区连接到适当的资源来改进客户体验：答案、支持和专家。
+* 与[@AzureSupport](https://twitter.com/azuresupport)官方 Microsoft Azure 帐户联系，以改善客户体验。 Azure 支持将 Azure 社区连接到答案、支持和专家。
 * 提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 "**获取支持**"。
