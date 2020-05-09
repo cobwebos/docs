@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54e3821d269d11397ec4f9f5833e33ac6b555abc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: faa80bf09113786e35a6ce98157f18639e30d210
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80755118"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582649"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>在 Azure Active Directory 中集成 LinkedIn 帐户连接
 
@@ -30,8 +30,8 @@ ms.locfileid: "80755118"
 > 异常：
 >
 > * 此设置不适用于使用以下软件的客户：美国政府版 Microsoft 云、德国 Microsoft 云或者在中国通过 21Vianet 运营的 Azure 和 Office 365。
-> * 对于在德国预配的租户，此设置默认为关闭。 请注意，此设置不适用于使用德国 Microsoft 云的客户。
-> * 对于在法国预配的租户，此设置默认为关闭。
+> * 对于在德国预配 Azure AD 组织，默认设置为 off。 请注意，此设置不适用于使用德国 Microsoft 云的客户。
+> * 对于在法国预配的组织，默认设置为 off。
 >
 > 为你的组织启用 LinkedIn 帐户连接后，帐户连接将在用户同意应用代表他们访问公司数据的应用后工作。 有关用户同意设置的信息，请参阅[如何删除用户对应用程序的访问权限](https://docs.microsoft.com/azure/active-directory/application-access-assignment-how-to-remove-assignment)。
 
@@ -96,8 +96,8 @@ ms.locfileid: "80755118"
   
    状态 | 效果
    ------ | ------
-   **已启用** | Office 2016“选项”中的“在 Office 应用程序中显示领英功能”设置已启用。**** 你的组织中的用户可以在其 Office 2016 应用程序中使用 LinkedIn 功能。
-   **已禁用** | Office 2016“选项”中的“在 Office 应用程序中显示领英功能”设置已禁用，最终用户不能更改此设置。**** 组织中的用户无法在其 Office 2016 应用程序中使用 LinkedIn 功能。
+   **Enabled** | Office 2016“选项”中的“在 Office 应用程序中显示领英功能”设置已启用。**** 你的组织中的用户可以在其 Office 2016 应用程序中使用 LinkedIn 功能。
+   **禁用** | Office 2016“选项”中的“在 Office 应用程序中显示领英功能”设置已禁用，最终用户不能更改此设置。**** 组织中的用户无法在其 Office 2016 应用程序中使用 LinkedIn 功能。
 
 此组策略只会影响本地计算机上的 Office 2016 应用。 如果用户在其 Office 2016 应用中禁用 LinkedIn，则他们仍可在 Office 365 中看到 LinkedIn 功能。
 

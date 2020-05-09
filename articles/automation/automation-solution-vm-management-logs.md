@@ -1,32 +1,32 @@
 ---
-title: 如何从 "启动/停止 Vm" 解决方案查询日志
-description: 本文介绍如何从 Azure Monitor 查询启动/停止 Vm 解决方案生成的日志数据。
+title: 如何从在空闲时间启动/停止 VM 查询日志
+description: 本文介绍如何从 Azure Monitor 查询在空闲时间启动/停止 VM 解决方案生成的日志数据。
 services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 472f3762ca18f71ba95053576daf025d8477fee9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 472baa3f4b3cbb970a8f365ccc94929ad565c421
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81604728"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864226"
 ---
-# <a name="how-to-query-logs-from-startstop-vms-solution"></a>如何从 "启动/停止 Vm" 解决方案查询日志
+# <a name="how-to-query-logs-from-startstop-vms-during-off-hours"></a>如何从在空闲时间启动/停止 VM 查询日志
 
-Azure Automation 将两种类型的记录转发到链接的 Log Analytics 工作区：作业日志和作业流。 此数据可用于 Azure Monitor 中的[查询](../azure-monitor/log-query/log-query-overview.md)。
+Azure Automation 将两种类型的记录转发到链接的 Log Analytics 工作区：作业日志和作业流。 本文将回顾 Azure Monitor 中可用于[查询](../azure-monitor/log-query/log-query-overview.md)的数据。
 
 ## <a name="job-logs"></a>作业日志
 
-|属性 | 说明|
+|properties | 说明|
 |----------|----------|
 |调用方 |  谁启动了该操作。 可能的值为电子邮件地址或计划作业的系统。|
 |类别 | 数据类型的分类。 对于自动化，该值为 JobLogs。|
 |CorrelationId | 用作 Runbook 作业相关性 ID 的 GUID。|
 |JobId | 用作 Runbook 作业 ID 的 GUID。|
 |operationName | 指定在 Azure 中执行的操作类型。 对于自动化，该值为 Job。|
-|resourceId | 指定 Azure 中的资源类型。 对于自动化，该值是与 Runbook 关联的自动化帐户。|
-|ResourceGroup | 指定 Runbook 作业的资源组名称。|
+|ResourceId | 指定 Azure 中的资源类型。 对于自动化，该值是与 Runbook 关联的自动化帐户。|
+|resourceGroup | 指定 Runbook 作业的资源组名称。|
 |ResourceProvider | 指定  Azure 服务，它提供可部署和管理的资源。 对于自动化，该值为 Azure Automation。|
 |ResourceType | 指定 Azure 中的资源类型。 对于自动化，该值是与 Runbook 关联的自动化帐户。|
 |resultType | Runbook 作业的状态。 可能的值为：<br>- Started（已启动）<br>- Stopped（已停止）<br>- Suspended（已暂停）<br>- Failed（失败）<br>- Succeeded（成功）|
@@ -39,14 +39,14 @@ Azure Automation 将两种类型的记录转发到链接的 Log Analytics 工作
 
 ## <a name="job-streams"></a>作业流
 
-|属性 | 说明|
+|properties | 说明|
 |----------|----------|
 |调用方 |  谁启动了该操作。 可能的值为电子邮件地址或计划作业的系统。|
 |类别 | 数据类型的分类。 对于自动化，该值为 JobStreams。|
 |JobId | 用作 Runbook 作业 ID 的 GUID。|
 |operationName | 指定在 Azure 中执行的操作类型。 对于自动化，该值为 Job。|
-|ResourceGroup | 指定 Runbook 作业的资源组名称。|
-|resourceId | 指定 Azure 中的资源 ID。 对于自动化，该值是与 Runbook 关联的自动化帐户。|
+|resourceGroup | 指定 Runbook 作业的资源组名称。|
+|ResourceId | 指定 Azure 中的资源 ID。 对于自动化，该值是与 Runbook 关联的自动化帐户。|
 |ResourceProvider | 指定  Azure 服务，它提供可部署和管理的资源。 对于自动化，该值为 Azure Automation。|
 |ResourceType | 指定 Azure 中的资源类型。 对于自动化，该值是与 Runbook 关联的自动化帐户。|
 |resultType | 生成事件时 Runbook 作业的结果。 可能的值为：<br>- InProgress|

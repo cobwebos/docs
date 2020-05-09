@@ -6,14 +6,14 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 4/29/2020
+ms.date: 05/06/2020
 ms.reviewer: sngun
-ms.openlocfilehash: d069df0a095cc0356cd61155dde875a5d92ed18d
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: aa9b090627b6f27a54b67c361b45b6f99e3a6338
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594145"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982371"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB 更改源处理器
 
@@ -100,6 +100,7 @@ ms.locfileid: "82594145"
 现在，可以通过以下文章继续详细了解更改源处理器：
 
 * [更改源概述](change-feed.md)
+* [更改源请求模型](change-feed-pull-model.md)
 * [如何从更改源处理器库迁移](how-to-migrate-from-change-feed-library.md)
 * [使用更改源估算器](how-to-use-change-feed-estimator.md)
 * [更改源处理器开始时间](how-to-configure-change-feed-start-time.md)

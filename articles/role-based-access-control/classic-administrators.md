@@ -1,5 +1,5 @@
 ---
-title: Azure 经典订阅管理员 | Microsoft Docs
+title: Azure 经典订阅管理员
 description: 介绍如何添加或更改 Azure 共同管理员和服务管理员角色，以及如何查看帐户管理员。
 services: active-directory
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2493e893f9afda0642bd838c94538dd0b984bce5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cacdeee4512c512b058be96c4fe3a829c2933f06
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243479"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734852"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure 经典订阅管理员
 
-Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源的访问权限。 但是，如果你仍在使用经典部署模型，则需要使用经典订阅管理员角色：服务管理员和共同管理员。 有关详细信息，请参阅 [Azure 资源管理器与经典部署](../azure-resource-manager/management/deployment-models.md)。
+Microsoft 建议使用 Azure 基于角色的访问控制（Azure RBAC）来管理对 Azure 资源的访问权限。 但是，如果你仍在使用经典部署模型，则需要使用经典订阅管理员角色：服务管理员和共同管理员。 有关详细信息，请参阅 [Azure 资源管理器与经典部署](../azure-resource-manager/management/deployment-models.md)。
 
 本文介绍如何添加或更改共同管理员和服务管理员角色，以及如何查看帐户管理员。
 
@@ -71,9 +71,9 @@ Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源�
 
 你希望用户 B 可以管理所有内容。 此区别的原因在于，Microsoft 帐户作为来宾用户（而不是成员用户）添加到订阅。 与成员用户相比，来宾用户在 Azure AD 中具有不同的默认权限。 例如，成员用户可以在 Azure AD 中读取其他用户，而来宾用户不能。 成员用户可以在 Azure AD 中注册新的服务主体，而来宾用户不能。
 
-如果来宾用户需要能够执行这些任务，则可能的解决方案是分配来宾用户所需的特定 Azure AD 管理员角色。 例如，在上一方案中，你可以分配[目录读取者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)角色以便读取其他用户，并分配[应用程序开发人员](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer)角色以便能够创建服务主体。 有关成员和来宾用户及其权限的详细信息，请参阅 [Azure Active Directory 中的默认用户权限是什么？](../active-directory/fundamentals/users-default-permissions.md)。 有关为来宾用户授予访问权限的详细信息，请参阅[使用 RBAC 管理外部来宾用户对 Azure 资源的访问权限](role-assignments-external-users.md)。
+如果来宾用户需要能够执行这些任务，一种可能的解决方法是分配来宾用户需要的特定 Azure AD 角色。 例如，在上一方案中，你可以分配[目录读取者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)角色以便读取其他用户，并分配[应用程序开发人员](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer)角色以便能够创建服务主体。 有关成员和来宾用户及其权限的详细信息，请参阅 [Azure Active Directory 中的默认用户权限是什么？](../active-directory/fundamentals/users-default-permissions.md)。 有关为来宾用户授予访问权限的详细信息，请参阅[使用 Azure 门户添加或删除外部来宾用户的 Azure 角色分配](role-assignments-external-users.md)。
 
-请注意，[Azure 资源的内置角色](../role-based-access-control/built-in-roles.md)与 [Azure AD 管理员角色](../active-directory/users-groups-roles/directory-assign-admin-roles.md)不同。 内置角色不授予对 Azure AD 的任何访问权限。 有关详细信息，请参阅[了解不同角色](../role-based-access-control/rbac-and-directory-admin-roles.md)。
+请注意， [Azure 内置角色](../role-based-access-control/built-in-roles.md)不同于[Azure AD 角色](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。 内置角色不授予对 Azure AD 的任何访问权限。 有关详细信息，请参阅[了解不同角色](../role-based-access-control/rbac-and-directory-admin-roles.md)。
 
 有关比较成员用户和来宾用户的信息，请参阅 [Azure Active Directory 中的默认用户权限是什么？](../active-directory/fundamentals/users-default-permissions.md)。
 
@@ -138,7 +138,7 @@ Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源�
 
 遵循以下步骤查看帐户管理员：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 1. 打开[订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)并选择一个订阅。
 
@@ -150,6 +150,6 @@ Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解 Azure 中的不同角色](../role-based-access-control/rbac-and-directory-admin-roles.md)
-* [使用 RBAC 和 Azure 门户管理对 Azure 资源的访问权限](../role-based-access-control/role-assignments-portal.md)
+* [了解不同角色](../role-based-access-control/rbac-and-directory-admin-roles.md)
+* [使用 Azure 门户添加或删除 Azure 角色分配](../role-based-access-control/role-assignments-portal.md)
 * [添加或更改 Azure 订阅管理员](../cost-management-billing/manage/add-change-subscription-administrator.md)

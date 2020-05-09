@@ -2,13 +2,13 @@
 title: Azure Migrate 设备
 description: 提供服务器评估和迁移中所使用的 Azure Migrate 设备的概述。
 ms.topic: conceptual
-ms.date: 04/23/2020
-ms.openlocfilehash: 71a17211a530b4cb55764f3b3ab84ff5a4d5f3e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: 439f6d9c80a0b93f071d30d580facc4604cabbac
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106336"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780328"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 设备
 
@@ -18,7 +18,7 @@ ms.locfileid: "82106336"
 
 在以下方案中使用 Azure Migrate 设备。
 
-**方案** | **工具** | **用途** 
+**方案** | **工具** | **用于** 
 --- | --- | ---
 **VMware VM 评估** | Azure Migrate：服务器评估 | 发现 VMware Vm<br/><br/> 发现计算机应用和依赖项<br/><br/> 收集计算机元数据和性能元数据以进行评估。
 **VMware VM 无代理迁移** | Azure Migrate：服务器迁移 | 发现 VMware Vm <br/><br/> 复制 VMware Vm 和无代理迁移。
@@ -42,6 +42,7 @@ ms.locfileid: "82106336"
 
 **要求** | **VMware** 
 --- | ---
+**权限** | 若要在本地或远程访问设备 web 应用，你需要是域管理员，或者是设备计算机上的本地管理员。
 **设备组件** | 设备包含以下组件：<br/><br/> - **管理应用**：这是在设备部署期间用于用户输入的 web 应用。 评估要迁移到 Azure 的计算机时使用。<br/> - **发现代理**：代理收集计算机配置数据。 评估要迁移到 Azure 的计算机时使用。<br/>- **评估代理**：代理收集性能数据。 评估要迁移到 Azure 的计算机时使用。<br/>- **自动更新服务**：更新设备组件（每24小时运行一次）。<br/>- **DRA 代理**：协调 VM 复制，并协调复制的计算机与 Azure 之间的通信。 仅当使用无代理迁移将 VMware Vm 复制到 Azure 时使用。<br/>- **网关**：将复制的数据发送到 Azure。 仅当使用无代理迁移将 VMware Vm 复制到 Azure 时使用。
 **支持的部署** | 使用 .OVA 模板部署为 VMware VM。<br/><br/> 使用 PowerShell 安装脚本部署为 VMware VM 或物理计算机。
 **项目支持** |  设备可以与单个项目关联。 <br/> 可以将任意数量的设备与单个项目相关联。<br/> 
@@ -61,6 +62,7 @@ ms.locfileid: "82106336"
 
 **要求** | **Hyper-V** 
 --- | ---
+**权限** | 若要在本地或远程访问设备 web 应用，你需要是域管理员，或者是设备计算机上的本地管理员。
 **设备组件** | 设备包含以下组件：<br/><br/>- **管理应用**：这是在设备部署期间用于用户输入的 web 应用。 评估要迁移到 Azure 的计算机时使用。<br/> - **发现代理**：代理收集计算机配置数据。 评估要迁移到 Azure 的计算机时使用。<br/>- **评估代理**：代理收集性能数据。 评估要迁移到 Azure 的计算机时使用。<br/>- **自动更新服务**：更新设备组件（每24小时运行一次）。
 **支持的部署** | 使用 VHD 模板部署为 Hyper-v VM。<br/><br/> 使用 PowerShell 安装脚本部署为 Hyper-v VM 或物理计算机。
 **项目支持** |  设备可以与单个项目关联。 <br/> 可以将任意数量的设备与单个项目相关联。<br/> 
@@ -77,12 +79,13 @@ ms.locfileid: "82106336"
 
 **要求** | **物理** 
 --- | ---
+**权限** | 若要在本地或远程访问设备 web 应用，你需要是域管理员，或者是设备计算机上的本地管理员。
 **设备组件** | 设备包含以下组件： <br/><br/> - **管理应用**：这是在设备部署期间用于用户输入的 web 应用。 评估要迁移到 Azure 的计算机时使用。<br/> - **发现代理**：代理收集计算机配置数据。 评估要迁移到 Azure 的计算机时使用。<br/>- **评估代理**：代理收集性能数据。 评估要迁移到 Azure 的计算机时使用。<br/>- **自动更新服务**：更新设备组件（每24小时运行一次）。
 **支持的部署** | 使用 PowerShell 安装脚本部署为专用物理计算机或 VM。 可以从门户下载该脚本。
 **项目支持** |  设备可以与单个项目关联。 <br/> 可以将任意数量的设备与单个项目相关联。<br/> 
 **发现限制** | 一个设备最多可以发现250个物理服务器。
 **PowerShell 脚本** | 从门户下载压缩文件夹中的脚本（AzureMigrateInstaller）。 [了解详细信息](tutorial-assess-physical.md#set-up-the-appliance)。 或者，[直接下载](https://go.microsoft.com/fwlink/?linkid=2105112)。<br/><br/> 下载大小为 59.7 MB。
-**软件/硬件** |  设备应在具有 Windows Server 2016、32-GB RAM、8个 vcpu、大约 80 GB 磁盘存储和外部虚拟交换机的计算机上运行。<br/> 设备需要静态或动态 IP 地址，并且需要直接或通过代理访问 internet。<br/><br/> 如果在物理计算机上运行设备，请确保它正在运行 Windows Server 2016，并满足硬件要求。 
+**软件/硬件** |  设备应在具有 Windows Server 2016、32-GB RAM、8个 vcpu、大约 80 GB 磁盘存储和外部虚拟交换机的计算机上运行。<br/> 设备需要静态或动态 IP 地址，并且需要直接或通过代理访问 internet。<br/><br/> 如果在物理计算机上运行设备，请确保它正在运行 Windows Server 2016，并满足硬件要求。<br/> 不支持在具有 Windows Server 2019 的计算机上运行设备。
 **哈希值** | [验证](deploy-appliance-script.md#verify-file-security)PowerShell 脚本哈希值。
 
 ## <a name="url-access"></a>URL 访问
@@ -90,7 +93,8 @@ ms.locfileid: "82106336"
 Azure Migrate 设备需要连接到 internet。
 
 - 部署设备时，Azure Migrate 会对所需的 Url 进行连接性检查。
-- 如果使用基于 URL 的代理连接到 internet，则需要允许访问这些 Url，确保代理解析查找 Url 时收到的任何 CNAME 记录。
+- 你需要允许访问列表中的所有 Url。 如果只是执行评估，则可以跳过标记为 "仅 VMware 无代理迁移所需的 Url"。
+-  如果使用基于 URL 的代理连接到 internet，请确保代理在查找 Url 时解析接收到的任何 CNAME 记录。
 
 ### <a name="public-cloud-urls"></a>公有云 Url
 
@@ -100,7 +104,7 @@ Azure Migrate 设备需要连接到 internet。
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | 登录到 Azure 订阅。
 *.microsoftonline.com <br/> *.microsoftonline-p.com | 为设备创建 Azure Active Directory （AD）应用程序，以便与 Azure Migrate 通信。
 management.azure.com | 为设备创建 Azure AD 应用程序，以便与 Azure Migrate 服务通信。
-dc.services.visualstudio.com | 上传用于内部监视的应用日志。
+*.services.visualstudio.com | 上传用于内部监视的应用日志。
 *.vault.azure.net | 管理 Azure Key Vault 中的机密。
 aka.ms/* | 允许访问称为 "链接"。 用于 Azure Migrate 设备更新。
 download.microsoft.com/download | 允许从 Microsoft 下载下载。
@@ -191,7 +195,7 @@ IPv6 地址 | vm.Guest.Net
 
 下面是设备收集并发送到 Azure 的 VMware VM 性能数据。
 
-**数据** | **对抗** | **评估影响**
+**数据** | **计数器** | **评估影响**
 --- | --- | ---
 CPU 使用率 | cpu.usage.average | 建议的 VM 大小/成本
 内存利用率 | mem.usage.average | 建议的 VM 大小/成本
@@ -218,7 +222,7 @@ NIC 写入吞吐量（MB/秒） | net.transmitted.average  |VM 大小的计算
 远程 IP 地址 | netstat
 TCP 连接状态 | netstat
 进程 ID | netstat
-不能。 活动连接 | netstat
+否。 活动连接 | netstat
 
 #### <a name="process-data"></a>处理数据
 以下是设备从每个已启用无代理依赖关系分析的 VM 收集的处理数据。 此数据会发送到 Azure。
@@ -240,7 +244,7 @@ TCP 连接状态 | netstat
 远程端口 | netstat 
 远程 IP 地址 | netstat 
 TCP 连接状态 | netstat 
-不能。 活动连接 | netstat
+否。 活动连接 | netstat
 进程 ID  | netstat 
 进程名称 | ps
 处理参数 | ps
@@ -257,7 +261,7 @@ Azure Migrate 设备发现的元数据可帮助你确定计算机和应用是否
 
 下面是设备收集并发送到 Azure 的 Hyper-v VM 元数据的完整列表。
 
-**数据* | **WMI 类** | **WMI 类属性**
+**数据** | **WMI 类** | **WMI 类属性**
 --- | --- | ---
 **计算机详细信息** | 
 BIOS Msvm_BIOSElement 的序列号 | BIOSSerialNumber
@@ -286,7 +290,7 @@ NIC MAC ID （旧 Nic） | MsvmEmulatedEthernetPortSetting 数据 | 地址
 
 下面是设备收集并发送到 Azure 的超级 VM 性能数据。
 
-**性能计数器类** | **对抗** | **评估影响**
+**性能计数器类** | **计数器** | **评估影响**
 --- | --- | ---
 Hyper-v 虚拟机监控程序虚拟处理器 | % Guest 运行时间 | 建议的 VM 大小/成本
 Hyper-v 动态内存 VM | 当前压力（%）<br/> 来宾可见物理内存（MB） | 建议的 VM 大小/成本
@@ -298,6 +302,84 @@ Hyper-V 虚拟网络适配器 | 发送的字节数/秒 | VM 大小的计算
 - "CPU 使用率" 是所有附加到 VM 的虚拟处理器的所有使用量之和。
 - 内存使用率为（当前压力 * 来宾可见物理内存）/100。
 - 磁盘和网络利用率值从列出的 Hyper-v 性能计数器中收集。
+
+
+## <a name="collected-data---physical"></a>收集的数据-物理
+
+设备收集元数据、性能数据和依赖关系分析数据（如果使用无代理[依赖项分析](concepts-dependency-visualization.md)）。
+
+### <a name="windows-metadata"></a>Windows 元数据
+
+Azure Migrate 设备发现的元数据可帮助你确定计算机和应用是否已准备好迁移到 Azure、适合计算机和应用的规模、计划成本，以及分析应用程序依赖关系。 Microsoft 不会在任何许可证相容性审核中使用此数据。
+
+下面是设备收集并发送到 Azure 的 Windows server 元数据的完整列表。
+
+**数据** | **WMI 类** | **WMI 类属性**
+--- | --- | ---
+FQDN | Win32_ComputerSystem | Domain、Name、PartOfDomain
+处理器核心计数 | Win32_PRocessor | NumberOfCores
+分配的内存 | Win32_ComputerSystem | TotalPhysicalMemory
+BIOS 序列号 | Win32_ComputerSystemProduct | IdentifyingNumber
+BIOS GUID | Win32_ComputerSystemProduct | UUID
+启动类型 | Win32_DiskPartition | 检查类型为 GPT 的分区 **：** EFI/BIOS 系统
+OS 名称 | Win32_OperatingSystem | Caption
+OS 版本 |Win32_OperatingSystem | 版本
+操作系统体系结构 | Win32_OperatingSystem | OSArchitecture
+磁盘计数 | Win32_DiskDrive | 型号，大小，DeviceID，媒体名称，名称
+磁盘大小 | Win32_DiskDrive | 大小
+NIC 列表 | Win32_NetworkAdapterConfiguration | 说明，索引
+NIC IP 地址 | Win32_NetworkAdapterConfiguration | IPAddress
+NIC MAC 地址 | Win32_NetworkAdapterConfiguration | MACAddress
+
+### <a name="linux-metadata"></a>Linux 元数据
+
+下面是设备收集并发送到 Azure 的 Linux 服务器元数据的完整列表。
+
+**数据** | **LINUX** 
+--- | --- 
+FQDN | cat/proc/sys/kernel/hostname，主机名-f
+处理器核心计数 |  /proc/cpuinfo \| awk "/^ processor/{print $3}" \| wc.exe-l
+分配的内存 | cat/proc/meminfo \| grep MemTotal \| awk "{printf"%. 0f "，$ 2/1024}"
+BIOS 序列号 | lshw \| grep "串行：" \| head-n1 \| awk "{print $2}" <br/> /usr/sbin/dmidecode-t 1 \| Grep "串行" \| awk "{$1 =" "; $2 =" "; print}"
+BIOS GUID | cat/sys/class/dmi/id/product_uuid
+启动类型 | [-d/sys/firmware/efi]  && echo efi \| \| echo BIOS
+操作系统名称/版本 | 我们将为 OS 版本和名称访问以下文件：<br/><br/> /etc/os-release<br/> /usr/lib/os-release <br/> /etc/enterprise-release <br/> /etc/redhat-release<br/> /etc/oracle-release<br/>  /etc/SuSE-release<br/>  /etc/lsb-release  <br/> /etc/debian_version
+操作系统体系结构 | Uname-m
+磁盘计数 | fdisk-l \| Egrep ' Disk. * bytes ' \| awk ' {print $2} ' \| cut-d '： '
+启动磁盘 | df/boot \| sed-n 2 p \| awk "{print $1}"
+磁盘大小 | fdisk-l \| Egrep "Disk. * bytes" \| egrep $disk： \| awk "{print $5}"
+NIC 列表 | ip-o-4 地址显示\| awk "{print $2}"
+NIC IP 地址 | ip 地址显示 $nic \| grep inet \| awk "{print $2}" \| cut-d "/" 
+NIC MAC 地址 | ip 地址显示 $nic \| grep 网\| awk "{print $2}"
+
+### <a name="windows-performance-data"></a>Windows 性能数据
+
+下面是设备收集并发送到 Azure 的 Windows server 性能数据。
+
+**数据** | **WMI 类** | **WMI 类属性**
+--- | --- | ---
+CPU 使用率 | Win32_PerfFormattedData_PerfOS_Processor | PercentIdleTime
+内存使用率 | Win32_PerfFormattedData_PerfOS_Memory | AvailableMBytes
+NIC 计数 | Win32_PerfFormattedData_Tcpip_NetworkInterface | 获取网络设备计数。
+每 NIC 接收的数据 | Win32_PerfFormattedData_Tcpip_NetworkInterface  | BytesReceivedPerSec
+按 NIC 传输的数据 | BWin32_PerfFormattedData_Tcpip_NetworkInterface | BytesSentPersec
+磁盘计数 | BWin32_PerfFormattedData_PerfDisk_PhysicalDisk | 磁盘计数
+磁盘详细信息 | Win32_PerfFormattedData_PerfDisk_PhysicalDisk | DiskWritesPerSec, DiskWriteBytesPerSec, DiskReadsPerSec, DiskReadBytesPerSec.
+
+### <a name="linux-performance-data"></a>Linux 性能数据
+
+下面是设备收集并发送到 Azure 的 Linux 服务器性能数据。
+
+**数据** | **Linux** 
+--- | --- 
+CPU 使用率 | cat/proc/stat/| grep ' cpu '/proc/stat
+内存使用率 | 免费\| grep Mem \| awk "{print $ 3/$ 2 * 100.0}"
+NIC 计数 | lshw 类网络\| grep eth [0-60] \| wc.exe-l
+每 NIC 接收的数据 | cat/sys/class/net/eth $ nic/statistics/rx_bytes
+按 NIC 传输的数据 | cat/sys/class/net/eth $ nic/statistics/tx_bytes
+磁盘计数 | fdisk-l \| Egrep ' Disk. * bytes ' \| awk ' {print $2} ' \| cut-d '： '
+磁盘详细信息 | cat/proc/diskstats
+
 
 ## <a name="appliance-upgrades"></a>设备升级
 

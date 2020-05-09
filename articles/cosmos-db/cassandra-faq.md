@@ -6,16 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: thvankra
-ms.openlocfilehash: 9b771a82d88f9902aeb6022f07811ded8a6e0e62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7d4618382c31f0b1f2efa42fe87a6efe4bc85319
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192827"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608245"
 ---
-# <a name="frequently-asked-questions-about-the-cassandra-api-for-azure-cosmos-db"></a>有关 Azure Cosmos DB Cassandra API 的常见问题
+# <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>有关 Azure Cosmos DB 中的 Cassandra API 的常见问题
 
-## <a name="what-are-some-key-differences-between-apache-cassandra-and-the-cassandra-api"></a>Apache Cassandra 和 Cassandra API 有哪些重要区别？
+本文介绍了 Azure Cosmos DB 中 Apache Cassandra 与 Cassandra API 之间的功能差异。 它还提供有关 Azure Cosmos DB 中 Cassandra API 的常见问题的解答。
+
+## <a name="key-differences-between-apache-cassandra-and-the-cassandra-api"></a>Apache Cassandra 和 Cassandra API 之间的主要差异
 
 - Apache Cassandra 建议对分区键大小的限制为 100 MB。 Azure Cosmos DB 的 Cassandra API 允许每个分区最多 20 GB。
 - Apache Cassandra 允许禁用持久提交。 可以跳过写入提交日志，直接转到 memtables。 如果在将 memtables 刷新到磁盘上的 SSTables 之前节点出现故障，则可能导致数据丢失。 Azure Cosmos DB 始终执行持久提交，以帮助防止数据丢失。
@@ -131,7 +133,7 @@ Azure Cosmos DB 提供读取、写入和吞吐量的性能保证。 因此，您
 
 ### <a name="how-can-i-monitor-infrastructure-along-with-throughput"></a>如何监视基础结构以及吞吐量？
 
-Azure Cosmos DB 是一个平台服务，可帮助你提高工作效率，而无需担心如何管理和监视基础结构。 例如，你不需要通过各种工具来监视节点状态、副本状态、gc 和 OS 参数。 只需处理门户指标中可用的吞吐量即可查看是否受到限制，然后增加或减少该吞吐量。 可以：
+Azure Cosmos DB 是一个平台服务，可帮助你提高工作效率，而无需担心如何管理和监视基础结构。 例如，你不需要通过各种工具来监视节点状态、副本状态、gc 和 OS 参数。 只需处理门户指标中可用的吞吐量即可查看是否受到限制，然后增加或减少该吞吐量。 你可以：
 
 - 监视[sla](monitor-accounts.md)
 - 使用[度量值](use-metrics.md)
@@ -163,7 +165,7 @@ Azure Cosmos DB 提供了在所有 Api 中以四个小时为间隔创建的两�
 
 Cassandra API 从 Azure Cosmos DB 的全局分布式平台借用。 若要确保应用程序可以容忍数据中心停机，请在 Azure 门户中至少为帐户启用一个区域。 有关详细信息，请参阅[Azure Cosmos DB 的高可用性](high-availability.md)。
 
-可为帐户添加任意数目的区域，并通过提供故障转移优先级控制可将帐户故障转移到的区域。 若要使用数据库，还需要在那里提供一个应用程序。 这样，客户就不会遇到停机情况。
+可以视需要为帐户添加任意数目的区域，并通过提供故障转移优先级来控制可将该帐户故障转移到哪个位置。 若要使用数据库，还需要在那里提供一个应用程序。 这样，客户就不会遇到停机情况。
 
 ### <a name="does-the-cassandra-api-index-all-attributes-of-an-entity-by-default"></a>默认情况下，Cassandra API 是否为实体的所有属性编制索引？
 
