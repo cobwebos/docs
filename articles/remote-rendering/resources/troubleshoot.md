@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: b86af2ff8fad3793fc47cec9399fd499c1cabba7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c1b807c6e4fa269ac2ab8d7eacd3ca1d4f81a1ca
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681860"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792609"
 ---
 # <a name="troubleshoot"></a>疑难解答
 
@@ -98,6 +98,10 @@ ms.locfileid: "81681860"
 
 ### <a name="common-client-side-issues"></a>常见的客户端问题
 
+**模型超出了所选 VM 的限制，尤其是最大多边形数量：**
+
+请参阅特定[VM 大小限制](../reference/limits.md#overall-number-of-polygons)。
+
 **模型不在视图的 "截锥" 中：**
 
 在许多情况下，模型会正确显示，但位于相机的 "截锥" 的外部。 常见的原因是该模型已使用远距离中心轴进行了导出，因此它被照相机的最远的剪辑平面剪切。 它有助于以编程方式查询模型的边界框，并将 Unity 显示为线条框，或将其值输出到调试日志。
@@ -139,8 +143,20 @@ Azure 远程呈现挂钩到 Unity 呈现管道，以通过视频进行帧合成�
 
 ## <a name="unity-code-using-the-remote-rendering-api-doesnt-compile"></a>使用远程呈现 API 的 Unity 代码不会编译
 
+### <a name="use-debug-when-compiling-for-unity-editor"></a>在编译 Unity 编辑器时使用 Debug
+
 切换要**调试**的 Unity 解决方案的*生成类型*。 在 Unity 编辑器中测试 ARR 时，定义`UNITY_EDITOR`仅在 "调试" 生成中可用。 请注意，这与用于[部署的应用程序](../quickstarts/deploy-to-hololens.md)的生成类型无关，你应首选 "发布" 版本。
 
+### <a name="compile-failures-when-compiling-unity-samples-for-hololens-2"></a>编译 HoloLens 2 的 Unity 示例时编译失败
+
+尝试编译 HoloLens 2 的 Unity 示例（快速入门、ShowCaseApp、...）时出现虚假故障。 Visual Studio 投诉原因不能复制某些文件，而不能复制这些文件。 如果遇到此问题：
+* 请从项目中删除所有临时 Unity 文件，然后重试。
+* 请确保这些项目位于磁盘上具有合理短路径的目录，因为复制步骤有时会遇到长文件名问题。
+* 如果这没有帮助，则可能是 MS 感知干扰复制步骤。 若要设置异常，请从命令行运行此注册表命令（需要管理员权限）：
+    ```cmd
+    reg.exe ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Advanced Threat Protection" /v groupIds /t REG_SZ /d "Unity”
+    ```
+    
 ## <a name="unstable-holograms"></a>不稳定全息影像
 
 如果呈现的对象看上去与头运动一起移动，则可能会遇到*后期阶段 Reprojection* （LSR）的问题。 有关如何解决此类情况的指导，请参阅有关 Reprojection 的最[晚阶段](../overview/features/late-stage-reprojection.md)的部分。

@@ -1,21 +1,25 @@
 ---
-title: 使用 Azure CLI 捕获 Linux VM 的映像
-description: 使用 Azure CLI 捕获 Azure VM 的映像以用于批量部署。
+title: 使用 Azure CLI 捕获 Linux VM 的托管映像
+description: 使用 Azure CLI 捕获 Azure VM 的托管映像以用于批量部署。
 author: cynthn
-ms.service: virtual-machines-linux
-ms.topic: article
+ms.service: virtual-machines
+ms.subservice: imaging
+ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 77f6244651551763f5460432655d66267775a256
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: legacy
+ms.openlocfilehash: 70282879b64054d48d904b5ada9284f844448851
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250395"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792677"
 ---
-# <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>如何创建虚拟机或 VHD 的映像
+# <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>如何创建虚拟机或 VHD 的托管映像
 
-若要创建虚拟机 (VM) 的多个副本以便在 Azure 中使用，请捕获 VM 或 OS VHD 的映像。 若要创建用于部署的映像，需要删除个人帐户信息。 执行下列步骤可取消预配现有 VM、将其解除分配，然后创建映像。 可以使用此映像，在订阅内的任何资源组中创建 VM。
+若要创建虚拟机（VM）的多个副本以用于开发和测试，请捕获 VM 或 OS VHD 的托管映像。 若要按比例创建、存储和共享图像，请参阅[共享图像库](../shared-images-cli.md)。
+
+若要创建托管映像，需要删除个人帐户信息。 执行下列步骤可取消预配现有 VM、将其解除分配，然后创建映像。 可以使用此映像，在订阅内的任何资源组中创建 VM。
 
 若要创建一份现有 Linux VM 的副本以用于备份或调试，或从本地 VM 上传专用 Linux VHD，请参阅[上传自定义磁盘映像并根据该映像创建 Linux VM](upload-vhd.md)。  
 
@@ -48,7 +52,7 @@ ms.locfileid: "79250395"
 4. 该命令完成后，请输入“退出”以关闭 SSH 客户端****。  此时 VM 仍将运行。
 
 ## <a name="step-2-create-vm-image"></a>步骤 2：创建 VM 映像
-使用 Azure CLI 将 VM 标记为通用化并捕获映像。 在以下示例中，请将示例参数名称替换为自己的值。 示例参数名称包括 *myResourceGroup*、*myVnet* 和 *myVM*。
+使用 Azure CLI 将 VM 标记为通用化并捕获映像。 在以下示例中，请将示例参数名称替换成自己的值。 示例参数名称包括 *myResourceGroup*、*myVnet* 和 *myVM*。
 
 1. 对使用 [az vm deallocate](/cli/azure/vm) 取消设置的 VM 解除分配。 以下示例解除分配名为*myResourceGroup*的资源组中名为*myVM*的 VM。  
    
@@ -131,11 +135,4 @@ az vm show \
 ```
 
 ## <a name="next-steps"></a>后续步骤
-可以从源 VM 映像创建多个 VM。 更改映像： 
-
-- 从映像创建 VM。
-- 进行任何更新或配置更改。
-- 再次执行相关步骤，对 VM 执行取消预配、解除分配、通用化和创建操作。
-- 将此新映像用于将来的部署。 可以删除原始映像。
-
-有关使用 CLI 管理 VM 的详细信息，请参阅 [Azure CLI](/cli/azure)。
+若要按比例创建、存储和共享图像，请参阅[共享图像库](shared-images.md)。
