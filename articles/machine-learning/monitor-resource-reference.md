@@ -5,17 +5,17 @@ description: 了解 Azure 机器学习收集的数据和资源，以及 Azure Mo
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: reference
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 04/27/2020
-ms.openlocfilehash: 1abd52c98cb1fa6ebe1014fc7a65e756d038d683
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e9a43f4a7da39869e002e2da9fb9638381e57cb8
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187590"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856035"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Azure 机器学习监视数据引用
 
@@ -186,9 +186,9 @@ ms.locfileid: "82187590"
 
 | 指标 | 单位 | 说明 |
 | ----- | ----- | ----- |
-| 已完成的运行数 | Count | 已完成运行的数量。 |
-| 失败运行数 | Count | 失败运行的数量。 |
-| 已开始运行 | Count | 已开始运行的数量。 |
+| 已完成的运行数 | 计数 | 已完成运行的数量。 |
+| 失败运行数 | 计数 | 失败运行的数量。 |
+| 已开始运行 | 计数 | 已开始运行的数量。 |
 
 下面是可用于筛选运行指标的维度：
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: a32c9fab3877a693d2df26571b9fae4aa7b4380c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a3423b908ac5e089faa30b19914d3b74ae9a547
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76271081"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735413"
 ---
 # <a name="deprecated-use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>（已弃用）使用 Helm 在 Kubernetes 群集上部署容器
 
@@ -34,7 +34,7 @@ Helm 具有两个组件：
 
 * 在本地计算机上[安装和配置 `kubectl`](../container-service-connect.md)
 
-* 在本地计算机上[安装 Helm](https://github.com/kubernetes/helm/blob/master/docs/install.md)
+* 在本地计算机上[安装 Helm](https://helm.sh/docs/intro/quickstart/)
 
 ## <a name="helm-basics"></a>Helm 基础知识 
 
@@ -149,5 +149,5 @@ sudo mysql –h v1-mariadb
  
 ## <a name="next-steps"></a>后续步骤
 
-* 有关管理 Kubernetes 图表的详细信息，请参阅 [Helm 文档](https://github.com/kubernetes/helm/blob/master/docs/index.md)。 
+* 有关管理 Kubernetes 图表的详细信息，请参阅 [Helm 文档](https://helm.sh/docs/)。 
 

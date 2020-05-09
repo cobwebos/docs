@@ -5,12 +5,12 @@ author: radicmilos
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: edcf2774873cc23a74a47cc1c9a12e2daa2ed419
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d81feaede7658de69e255c32d3a3ef570156f93
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984531"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793085"
 ---
 # <a name="introduction-to-auto-scaling"></a>自动缩放简介
 自动扩展是 Service Fabric 的附加功能，可根据服务正在报告的负载或基于资源的使用情况来动态扩展服务。 自动缩放提供了很大的弹性，并可实现按需配置服务的其他实例或分区。 整个自动缩放过程是自动且透明的，一旦在服务上设置策略，就无需在服务级别进行手动缩放操作。 可在创建服务时启用自动缩放，也可在任何时候通过更新服务启用。
@@ -130,7 +130,7 @@ Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName
 * 最小实例计数定义了缩放的下限  。 如果服务的分区数量达到此限制，则无论负载如何，都不会缩小服务。
 
 > [!WARNING] 
-> 当 AddRemoveIncrementalNamedPartitionScalingMechanism 与有状态服务一起使用时，Service Fabric 将添加或删除分区，**而不会发出通知或警告**。 触发缩放机制时，不会执行数据的重新分区。 在纵向扩展操作的情况下，新分区将为空；在纵向缩减操作的情况下，**分区将与其包含的所有数据一起被删除**。
+> 当 AddRemoveIncrementalNamedPartitionScalingMechanism 与有状态服务一起使用时，Service Fabric 将添加或删除分区，**而不会发出通知或警告**。 触发缩放机制时，不会执行数据的重新分区。 对于 scale out 操作，新分区将为空，并且在操作中，**分区将连同它包含的所有数据一起被删除**。
 
 ## <a name="setting-auto-scaling-policy"></a>设置自动缩放策略
 

@@ -53,6 +53,8 @@
           href: api-management-policies.md
     - name: 安全性
       items:
+        - name: 安全基线
+          href: security-baseline.md
         - name: 内置安全控件
           href: api-management-security-controls.md
     - name: 订阅
