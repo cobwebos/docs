@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f4f6de807628704051cdddf74bcefbed678f8fcd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ffc7c289fd675a68c8b02af1777fea3d4530e17a
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457886"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889500"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>为 Azure 应用服务配置 Linux Java 应用
 
@@ -25,7 +25,7 @@ Linux 上的 Azure App Service 允许 Java 开发人员在完全托管的基于 
 
 ## <a name="deploying-your-app"></a>部署应用
 
-你可以使用用于[Azure App Service 的 Maven 插件](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)来部署 .jar 和 war 文件。 [Azure Toolkit for IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij) 或 [Azure Toolkit for Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse) 还支持通过流行的 IDE 进行部署。
+你可以使用用于[Azure App Service 的 Maven 插件](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)来部署 .jar 和 war 文件。 [Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/) 或 [Azure Toolkit for Eclipse](/azure/developer/java/toolkit-for-eclipse) 还支持通过流行的 IDE 进行部署。
 
 如果不使用这些方法，则部署方法将取决于存档类型：
 
@@ -305,7 +305,7 @@ keyStore.load(
 
 默认情况下，应用服务需要 JAR 应用程序的名称为*app.config*。 如果它具有此名称，它将自动运行。 对于 Maven 用户，你可以通过在*pom*的`<build>`部分中`<finalName>app</finalName>`包含来设置 JAR 名称。 可以通过设置`archiveFileName`属性[在 Gradle 中执行相同的操作](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Jar.html#org.gradle.api.tasks.bundling.Jar:archiveFileName)。
 
-如果要将其他名称用于 JAR，则还必须提供执行 JAR 文件的[启动命令](app-service-linux-faq.md#built-in-images)。 例如，`java -jar my-jar-app.jar` 。 可以在门户中的 "配置" > "常规设置" 下或使用名为`STARTUP_COMMAND`的应用程序设置中设置 "启动" 命令的值。
+如果要将其他名称用于 JAR，则还必须提供执行 JAR 文件的[启动命令](app-service-linux-faq.md#built-in-images)。 例如 `java -jar my-jar-app.jar`。 可以在门户中的 "配置" > "常规设置" 下或使用名为`STARTUP_COMMAND`的应用程序设置中设置 "启动" 命令的值。
 
 ### <a name="server-port"></a>服务器端口
 
@@ -561,21 +561,25 @@ xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl 
 
 8. 更新应用`azure-webapp-maven-plugin`的*pom*文件中的配置，以引用你的 Redis 帐户信息。 此文件使用您之前设置的环境变量来保留源文件中的帐户信息。
 
-    如有必要，请将 `1.7.0` 更改为[适用于 Azure 应用服务的 Maven 插件](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)的当前版本。
+    如有必要，请将 `1.9.1` 更改为[适用于 Azure 应用服务的 Maven 插件](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)的当前版本。
 
     ```xml
     <plugin>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.7.0</version>
-        <configuration>
-
+        <version>1.9.1</version>
+        <configuration>            
             <!-- Web App information -->
+            <schemaVersion>v2</schemaVersion>
             <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
             <appServicePlanName>${WEBAPP_PLAN_NAME}-${REGION}</appServicePlanName>
             <appName>${WEBAPP_NAME}-${REGION}</appName>
-            <region>${REGION}</region>
-            <linuxRuntime>tomcat 9.0-jre8</linuxRuntime>
+            <region>${REGION}</region>            
+            <runtime>
+                <os>linux</os>
+                <javaVersion>jre8</javaVersion>
+                <webContainer>tomcat 9.0</webContainer>
+            </runtime>
 
             <appSettings>
                 <property>

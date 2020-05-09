@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 173e663b66eeca676e8120dd46e8eca8b0126a17
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: e818de4885d3859199108d7d88e4cbcb215dc4cc
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204196"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780736"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>准备在生产环境中部署 IoT Edge 解决方案
 
@@ -107,7 +107,7 @@ IoT Edge 中心默认已进行性能优化，因此它会尝试分配较大的�
 
 当 **OptimizeForPerformance** 设置为 **true** 时，MQTT 协议标头将使用 PooledByteBufferAllocator（具有更佳性能，但会分配更多内存）。 分配器在 32 位操作系统或内存不足的设备上不能很好地工作。 此外，如果针对性能进行了优化，RocksDb 会为其作为本地存储提供程序的角色分配更多内存。
 
-有关详细信息，请参阅[资源受限设备的稳定性问题](troubleshoot.md#stability-issues-on-resource-constrained-devices)。
+有关详细信息，请参阅[小型设备上的稳定性问题](troubleshoot-common-errors.md#stability-issues-on-smaller-devices)。
 
 #### <a name="disable-unused-protocols"></a>禁用未使用的协议
 
@@ -200,7 +200,7 @@ timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。
 
 ### <a name="review-outboundinbound-configuration"></a>检查出站/入站配置
 
-Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大多数 IoT Edge 方案，只需建立三个连接。 容器引擎需要连接到保存模块映像的一个或多个容器注册表。 IoT Edge 运行时需要连接到 IoT 中心，以检索设备配置信息，以及发送消息和遥测数据。 如果使用自动预配，则 IoT Edge 守护程序需要连接到设备预配服务。 有关详细信息，请参阅[防火墙和端口配置规则](troubleshoot.md#firewall-and-port-configuration-rules-for-iot-edge-deployment)。
+Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大多数 IoT Edge 方案，只需建立三个连接。 容器引擎需要连接到保存模块映像的一个或多个容器注册表。 IoT Edge 运行时需要连接到 IoT 中心，以检索设备配置信息，以及发送消息和遥测数据。 如果使用自动预配，则 IoT Edge 守护程序需要连接到设备预配服务。 有关详细信息，请参阅[防火墙和端口配置规则](troubleshoot.md#check-your-firewall-and-port-configuration-rules)。
 
 ### <a name="allow-connections-from-iot-edge-devices"></a>允许从 IoT Edge 设备进行连接
 
@@ -216,7 +216,7 @@ Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大�
 
 此清单可作为防火墙规则的入手点：
 
-   | URL（\* = 通配符） | 出站 TCP 端口 | 使用情况 |
+   | URL（\* = 通配符） | 出站 TCP 端口 | 用法 |
    | ----- | ----- | ----- |
    | mcr.microsoft.com  | 443 | Microsoft 容器注册表 |
    | global.azure-devices-provisioning.net  | 443 | DPS 访问（可选） |

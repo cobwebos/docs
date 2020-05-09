@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/28/2020
+ms.date: 05/06/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 61c0202d12756201d45fe829078d84382e44b54e
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: b905b8f3fe99b83bafdd61b1daa25549354c5275
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584293"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926776"
 ---
 # <a name="authentication-vs-authorization"></a>身份验证与授权
 
@@ -26,19 +26,25 @@ ms.locfileid: "82584293"
 
 ## <a name="authentication"></a>身份验证
 
-**身份验证**就是证明自己的身份的过程。 身份验证有时缩写为 AuthN。 Microsoft 标识平台实现了用于处理身份验证的[OpenID connect](https://openid.net/connect/)协议。
+**身份验证**就是证明自己的身份的过程。 身份验证有时缩写为 AuthN。 Microsoft 标识平台实现了用于处理身份验证的[OpenID connect](https://openid.net/connect/)和[SAML 2.0](http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-tech-overview-2.0.html)协议。
 
 ## <a name="authorization"></a>授权
 
 **授权**是指授予经过身份验证的一方执行某项操作的权限的措施。 它指定了你可以访问的数据，以及可对该数据执行的操作。 授权有时缩写为 AuthZ。 Microsoft 标识平台实现了[OAuth 2.0](https://oauth.net/2/)协议来处理授权。
 
-## <a name="authentication-and-authorization-using-the-microsoft-identity-platform"></a>使用 Microsoft 标识平台进行身份验证和授权
+## <a name="authentication-and-authorization-using-microsoft-identity-platform"></a>使用 Microsoft 标识平台进行身份验证和授权
 
 无需创建每个需要维护自身用户名和密码信息的应用（需要在多个应用中添加或删除用户时，这会产生较高的管理负担），而可以让应用将这种责任委托给一个集中式标识提供者。
 
 Azure Active Directory (Azure AD) 是云中的集中式标识提供者。 向其委托身份验证和授权可以实现条件访问策略等方案以要求用户位于特定位置、使用多重身份验证，以及允许用户登录一次后自动登录到共享同一集中式目录的所有 Web 应用。 此功能称为**单一登录（SSO）**。
 
-Microsoft 标识平台通过提供标识即服务简化了应用程序开发人员的身份验证和授权，并支持行业标准协议（例如 OAuth 2.0 和 OpenID Connect）以及用于不同平台的开源库来帮助你快速开始编码。 开发人员可以通过它来生成应用程序，以便进行所有 Microsoft 标识的登录，以及获取令牌来调用 [Microsoft Graph](https://developer.microsoft.com/graph/)、其他 Microsoft API 或者开发人员生成的 API。 有关详细信息，请参阅 [Microsoft 标识平台的发展](about-microsoft-identity-platform.md)。
+Microsoft 标识平台通过提供标识即服务简化了应用程序开发人员的身份验证和授权，并支持行业标准协议（例如 OAuth 2.0、OpenID Connect 和 SAML 2.0），并提供了适用于不同平台的开源库来帮助你快速开始编码。 开发人员可以通过它来生成应用程序，以便进行所有 Microsoft 标识的登录，以及获取令牌来调用 [Microsoft Graph](https://developer.microsoft.com/graph/)、其他 Microsoft API 或者开发人员生成的 API。 有关详细信息，请参阅 [Microsoft 标识平台的发展](about-microsoft-identity-platform.md)。
+
+下面是 Microsoft 标识平台使用的各种协议的简短比较：
+
+* **Oauth 与 Openid connect**： oauth 用于授权，OpenID CONNECT （OIDC）用于身份验证。 OpenID Connect 建立在 OAuth 2.0 的基础之上，因此，这两者之间的术语和流是相似的。 甚至可以对用户进行身份验证（使用 OpenID Connect），并获取授权，以便在一个请求中访问用户拥有（使用 OAuth 2.0）的受保护资源。 有关详细信息，请参阅[OAuth 2.0 和 Openid connect](active-directory-v2-protocols.md)协议和[openid connect 协议](v2-protocols-oidc.md)。
+* **Oauth 与 SAML**： oauth 用于授权，SAML 用于身份验证。 有关如何结合使用这两个协议来对用户进行身份验证（使用 SAML）和获取访问受保护资源的授权（使用 OAuth 2.0）的详细信息，请参阅[Microsoft 标识平台和 OAuth 2.0 SAML 持有者断言流](v2-saml-bearer-assertion.md)。
+* **Openid connect 与 saml**： openid CONNECT 和 saml 均用于对用户进行身份验证，并用于启用单一登录。 SAML 身份验证通常用于标识提供者（如 Active Directory 联合身份验证服务（ADFS）联合到 Azure AD，因此经常用于企业应用程序。
 
 ## <a name="next-steps"></a>后续步骤
 
