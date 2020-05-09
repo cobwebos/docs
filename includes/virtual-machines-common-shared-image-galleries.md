@@ -1,42 +1,41 @@
 ---
 title: include 文件
 description: include 文件
-services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/06/2019
+ms.date: 04/16/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: a477114bda7d138a6860d21f2fad75e27d968833
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5cb3e6d53f6840b8f4e535976739c188daed18b2
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80116939"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789024"
 ---
 共享映像库是一种可以帮助你围绕托管映像构建结构和组织的服务。 共享映像库提供以下功能：
 
 - 对映像进行托管式全局复制。
 - 对映像进行版本控制和分组，以便于管理。
 - 具有区域冗余存储（ZRS）帐户的高度可用映像，位于支持可用性区域的区域中。 ZRS 提供更好的复原能力来应对区域性的故障。
+- 高级存储支持（Premium_LRS）。
 - 使用 RBAC 跨订阅以及甚至在 Active Directory (AD) 租户之间共享。
 - 使用每个区域中的映像副本缩放部署。
 
 使用共享映像库，可以将映像共享给组织内的不同用户、服务主体或 AD 组。 共享映像可以复制到多个区域，以便更快地扩展部署。
 
-托管映像是完整 VM（包括任何附加的数据磁盘）的副本或者只是 OS 磁盘的副本，具体取决于映像的创建方式。 从映像创建 VM 时，将使用该映像中的 VHD 副本来为新 VM 创建磁盘。 托管映像保留在存储中，可反复用来创建新的 VM。
+映像是完整 VM （包括任何附加的数据磁盘）或操作系统磁盘（具体取决于创建它的方式）的副本。 从映像创建 VM 时，将使用该映像中的 VHD 副本来为新 VM 创建磁盘。 映像将保留在存储中，并可再次用于创建新 Vm。
 
-如果你有大量的托管映像需要维护，并想要使其在整个公司中可用，可将共享映像库用作存储库，以便更轻松地共享映像。 
+如果你有大量需要维护的映像，并且想要使其在整个公司内可用，则可以使用共享映像库作为存储库。 
 
 共享映像库功能具有多种资源类型：
 
 | 资源 | 说明|
 |----------|------------|
-| **托管映像** | 一个基本映像，可以单独使用，也可用于在映像库中创建**映像版本**。 托管映像是从[通用化](#generalized-and-specialized-images)vm 创建的。 托管映像是一种特殊的 VHD 类型，可用于生成多个 VM，并且现在可用于创建共享映像版本。 |
-| **快照** | 可用于创建**映像版本**的 VHD 副本。 可以从[专用化](#generalized-and-specialized-images) VM（一个尚未通用化的 VM）创建快照，然后单独使用该快照，或者将其与数据磁盘的快照配合使用，以创建专用化的映像版本。
+| **图像源** | 这是可用于在映像库中创建**映像版本**的资源。 映像源可以是[通用或专用](#generalized-and-specialized-images)的现有 Azure VM，也可以是托管映像、快照或其他映像库中的映像版本。 |
 | **映像库** | 与 Azure 市场一样，**映像库**是用于管理和共享映像的存储库，但你可以控制谁有权访问这些映像。 |
-| **映像定义** | 映像在库中定义，携带有关该映像及其在组织内部使用的要求的信息。 可以包含映像是通用化还是专用化映像、操作系统、最小和最大内存要求以及发行说明等信息。 它是某种映像类型的定义。 |
+| **映像定义** | 映像定义是在库中创建的，它包含映像的相关信息以及在内部使用该映像的要求。 这包括了该映像是 Windows 还是 Linux 映像、发行说明以及最低和最高内存要求。 它是某种映像类型的定义。 |
 | **映像版本** | 使用库时，将使用**映像版本**来创建 VM。 可根据环境的需要创建多个映像版本。 与托管映像一样，在使用**映像版本**创建 VM 时，将使用映像版本来创建 VM 的新磁盘。 可以多次使用映像版本。 |
 
 <br>
@@ -45,7 +44,7 @@ ms.locfileid: "80116939"
 
 ## <a name="image-definitions"></a>映像定义
 
-映像定义是映像版本的逻辑分组。 映像定义包含有关创建映像的原因、它适用于哪个 OS 的信息，以及映像的用法信息。 映像定义类似于一个计划，提供了有关如何创建特定映像的所有详细信息。 不要从映像定义部署 VM，而要从基于该定义创建的映像版本部署 VM。
+映像定义是映像版本的逻辑分组。 映像定义包含有关创建映像的原因、其适用的操作系统以及有关使用映像的其他信息。 映像定义类似于一个计划，提供了有关如何创建特定映像的所有详细信息。 不从映像定义部署 VM，而是从通过定义创建的映像版本中部署。
 
 对于每个映像定义，将组合使用“发布者”、“套餐”和“SKU”这三个参数。************ 这些参数用于查找特定的映像定义。 可以拥有共享一个或两个但不是全部三个值的映像版本。  例如，以下是三个映像定义及其值：
 
@@ -68,23 +67,18 @@ ms.locfileid: "80116939"
 * 标记 - 创建映像定义时可以添加标记。 有关标记的详细信息，请参阅[使用标记来组织资源](../articles/azure-resource-manager/management/tag-resources.md)。
 * 最小和最大 vCPU 与内存建议量 - 如果映像附带 vCPU 和内存建议量，则你可以将该信息附加到映像定义。
 * 不允许的磁盘类型 - 可以提供有关 VM 所需存储的信息。 例如，如果映像不适合用于标准 HDD 磁盘，请将此类磁盘添加到禁止列表。
+* Hyper-v 生成-可以指定映像是从第1代还是第2代 Hyper-v VHD 创建的。
 
 ## <a name="generalized-and-specialized-images"></a>通用化和专用映像
 
 共享映像库支持两种操作系统状态。 通常，映像要求在创建映像之前，用于创建映像的 VM 已通用化。 通用化是从 VM 中删除计算机和用户特定信息的过程。 对于 Windows，也可以使用 Sysprep。 对于 Linux，可以使用 [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` 或 `-deprovision+user` 参数。
 
-专用化 VM 尚未经历删除计算机特定信息和帐户的过程。 此外，从专用化映像创建的 VM 没有关联的 `osProfile`。 这意味着，专用化映像存在一些限制。
+专用化 VM 尚未经历删除计算机特定信息和帐户的过程。 此外，从专用化映像创建的 VM 没有关联的 `osProfile`。 这意味着，除了某些优点之外，专用映像还会有一些限制。
 
+- 从专用映像创建的 Vm 和规模集可以更快地启动和运行。 由于它们是从已经开始启动的源创建的，因此，从这些映像创建的 Vm 将更快启动。
 - 也可以在使用专用化映像创建的任何 VM 上（该映像是从该 VM 创建的），使用可用于登录到 VM 的帐户。
 - VM 具有用于创建映像的 VM 的**计算机名**。 应更改计算机名以避免冲突。
 - `osProfile` 是使用 `secrets` 将某些敏感信息传递给 VM 的方式。 在使用 KeyVault、WinRM，以及在 `osProfile` 中使用 `secrets` 的其他功能时，这可能会导致出现问题。 在某些情况下，可以使用托管服务标识 (MSI) 来解决这些限制。
-
-> [!IMPORTANT]
-> 专用化映像目前以公共预览版提供。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
->
-> **预览版的已知限制**：只能使用门户或 API 从专用化映像创建 VM。 预览版不提供 CLI 或 PowerShell 支持。
-
 
 ## <a name="regional-support"></a>区域支持
 
@@ -113,6 +107,7 @@ ms.locfileid: "80116939"
 - 每个区域的每个订阅限制为 100 个共享映像库
 - 每个区域的每个订阅限制为 1,000 个映像定义
 - 每个区域的每个订阅限制为 10,000 个映像版本
+- 10个映像版本副本，每个订阅，每个区域
 - 附加到映像的任何磁盘的大小必须小于或等于 1 TB
 
 有关详细信息，请参阅[根据限制检查资源用量](https://docs.microsoft.com/azure/networking/check-usage-against-limits)，其中提供了有关如何检查当前用量的示例。
@@ -196,11 +191,11 @@ ms.locfileid: "80116939"
 可以使用模板创建共享映像库资源。 提供多个 Azure 快速入门模板： 
 
 - [创建共享映像库](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [在共享的映像库中创建映像定义](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
+- [在共享映像库中创建映像定义](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [在共享映像库中创建映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
-- [根据映像版本创建 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
+- [从映像版本创建 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
-## <a name="frequently-asked-questions"></a>常见问题解答 
+## <a name="frequently-asked-questions"></a>常见问题 
 
 * [如何列出不同订阅中的所有共享映像库资源？](#how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions) 
 * [是否可将现有的映像移到共享映像库？](#can-i-move-my-existing-image-to-the-shared-image-gallery)
@@ -217,31 +212,32 @@ ms.locfileid: "80116939"
 * [使用共享映像库会产生哪些费用？](#what-are-the-charges-for-using-the-shared-image-gallery)
 * [应使用哪个 API 版本来创建共享映像库、映像定义和映像版本？](#what-api-version-should-i-use-to-create-shared-image-gallery-and-image-definition-and-image-version)
 * [应使用哪个 API 版本基于映像版本创建共享 VM 或虚拟机规模集？](#what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version)
+* [能否将使用托管映像创建的虚拟机规模集更新为使用共享映像库映像？]
 
 ### <a name="how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions"></a>如何列出不同订阅中的所有共享映像库资源？
 
 若要在 Azure 门户上列出不同订阅中你有权访问的所有共享映像库资源，请执行以下步骤：
 
 1. 打开 [Azure 门户](https://portal.azure.com)。
-1. 中转到 "**所有资源**"。
+1. 向下滚动页面并选择 "**所有资源**"。
 1. 选择要列出其中的所有资源的所有订阅。
-1. 查找类型为“专用库”的资源。****
- 
-   若要查看映像定义和映像版本，还应选择“显示隐藏的类型”。****
- 
-   若要列出不同订阅中你有权访问的所有共享映像库资源，请在 Azure CLI 中使用以下命令：
+1. 查找类型为 "**共享映像库**" 的资源。
+  
+若要列出不同订阅中你有权访问的所有共享映像库资源，请在 Azure CLI 中使用以下命令：
 
-   ```azurecli
+```azurecli
    az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
-   ```
+```
+
+有关详细信息，请参阅使用[Azure CLI](../articles/virtual-machines/update-image-resources-cli.md)或[PowerShell](../articles/virtual-machines/update-image-resources-powershell.md)**管理库资源**。
 
 ### <a name="can-i-move-my-existing-image-to-the-shared-image-gallery"></a>是否可将现有的映像移到共享映像库？
  
 是的。 根据映像的类型，可能存在 3 种场景。
 
- 方案1：如果你的托管映像与 SIG 在同一订阅中，则可以创建映像定义和映像版本。
+ 场景 1：如果你有托管映像，则可以从该映像创建映像定义和映像版本。 有关详细信息，请参阅使用[Azure CLI](../articles/virtual-machines/image-version-managed-image-cli.md)或[PowerShell](../articles/virtual-machines/image-version-managed-image-powershell.md)**从托管映像迁移到映像版本**。
 
- 方案2：如果你的非托管映像与 SIG 在同一订阅中，你可以从该映像创建一个托管映像，然后从该映像创建映像定义和映像版本。 
+ 方案2：如果有非托管映像，可以从其创建一个托管映像，然后从该映像创建映像定义和映像版本。 
 
  方案3：如果本地文件系统中有 VHD，则需要将 VHD 上传到托管映像，然后可以从其创建映像定义和映像版本。
 
@@ -250,11 +246,17 @@ ms.locfileid: "80116939"
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>是否可以从专用化磁盘创建映像版本？
 
-是，将专用化磁盘用作映像的支持已推出预览版。 只能使用门户（[Windows](../articles/virtual-machines/linux/shared-images-portal.md) 或 [Linux](../articles/virtual-machines/linux/shared-images-portal.md)）和 API 从专用化映像创建 VM。 预览版不提供 PowerShell 支持。
+是，将专用化磁盘用作映像的支持已推出预览版。 只能使用门户、PowerShell 或 API 从专用映像创建 VM。 
+
+
+使用[PowerShell 创建专用 VM 的映像](../articles/virtual-machines/image-version-vm-powershell.md)。
+
+使用门户创建[Windows](../articles/virtual-machines/linux/shared-images-portal.md)或 [Linux] （。/articles/virtual-machines/linux/shared-images-portal.md）映像。 
+
 
 ### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>创建共享映像库资源后，是否可将它移到其他订阅？
 
-不可以，无法将共享映像库资源移到其他订阅。 但是，可根据需要将库中的映像版本复制到其他区域。
+不可以，不能将共享的映像库资源移到其他订阅。 可以将库中的映像版本复制到其他区域，也可以使用[Azure CLI](../articles/virtual-machines/image-version-another-gallery-cli.md)或[PowerShell](../articles/virtual-machines/image-version-another-gallery-powershell.md)从其他库复制图像。
 
 ### <a name="can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud"></a>是否可以跨云（例如，Azure 中国世纪互联、Azure 德国云或 Azure 政府云）复制映像版本？
 
@@ -308,3 +310,7 @@ ms.locfileid: "80116939"
 ### <a name="what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version"></a>应使用哪个 API 版本基于映像版本创建共享 VM 或虚拟机规模集？
 
 若要使用映像版本部署 VM 和虚拟机规模集，我们建议使用 API 2018-04-01 或更高版本。
+
+### <a name="can-i-update-my-virtual-machine-scale-set-created-using-managed-image-to-use-shared-image-gallery-images"></a>能否将使用托管映像创建的虚拟机规模集更新为使用共享映像库映像？
+
+是的，你可以将规模集映像引用从托管映像更新为共享映像库映像，前提是这些映像之间的操作系统类型、Hyper-v 生成和数据磁盘布局均匹配。 

@@ -3,13 +3,13 @@ title: 限制对 Azure Kubernetes 服务 (AKS) 中的 kubeconfig 的访问
 description: 了解如何控制群集管理员和群集用户对 Kubernetes 配置文件 (kubeconfig) 的访问
 services: container-service
 ms.topic: article
-ms.date: 01/28/2020
-ms.openlocfilehash: 25c710cce2855d6af985d3f46082f47573bbc101
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/06/2020
+ms.openlocfilehash: 87f4dc18fc595242117e10233d4fecd77e66373f
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259547"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890896"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>使用 Azure 基于角色的访问控制定义对 Azure Kubernetes 服务 (AKS) 中的 Kubernetes 配置文件的访问
 
@@ -40,7 +40,8 @@ ms.locfileid: "79259547"
 
 这些 RBAC 角色可以应用到 Azure Active Directory (AD) 用户或组。
 
-> ![NOTE] 在使用 Azure AD 的群集上，具有 clusterUser  角色的用户有一个提示登录的空 kubeconfig  文件。 登录后，用户可以根据其 Azure AD 用户或组设置进行访问。 具有 clusterAdmin  角色的用户拥有管理员访问权限。
+> [!NOTE]
+> 在使用 Azure AD 的群集上，具有*clusterUser*角色的用户有一个提示登录的空*kubeconfig*文件。 登录后，用户可以根据其 Azure AD 用户或组设置进行访问。 具有 clusterAdmin  角色的用户拥有管理员访问权限。
 >
 > 不使用 Azure AD 的群集仅使用 clusterAdmin  角色。
 

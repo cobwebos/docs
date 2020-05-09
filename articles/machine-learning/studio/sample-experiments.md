@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: 1a913e714565ffb99237357e331ef5cf0189c40f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a8743aeea6278588da308feb37016b679a4f0509
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79204215"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929258"
 ---
 # <a name="create-azure-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>根据 Azure AI 库中的工作示例创建 Azure 机器学习工作室（经典）试验
 
@@ -60,5 +60,4 @@ ms.locfileid: "79204215"
 
 ## <a name="next-steps"></a>后续步骤
 * [从各种源导入数据](import-data.md)
-* [适用于机器学习的 R 语言快速入门教程](r-quickstart.md)
 * [部署机器学习 Web 服务](deploy-a-machine-learning-web-service.md)

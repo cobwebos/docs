@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: 6e357e98d6c5190c6dfef675dc1ab9cf30a717c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: b27fe2abc50396b527e61487acf9797db59c1cce
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81455081"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82627579"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>通过 SSMS 将 SQL Server 代理作业迁移到 ADF
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 在[将本地 SQL Server Integration Services （SSIS）工作负荷迁移到 ADF 中的 ssis](scenario-ssis-migration-overview.md)时，迁移 ssis 包后，可以通过 SQL SERVER MANAGEMENT STUDIO （SSMS） **SSIS 作业迁移向导**，将作业步骤类型为 SQL Server Integration Services 包的 SQL Server 代理作业批处理迁移到 AZURE 数据工厂（ADF）管道/活动/计划触发器。
 
@@ -29,7 +31,7 @@ ms.locfileid: "81455081"
     > 仅支持文件系统的包位置。
 - 按如下所示将适用的作业迁移到相应的 ADF 资源：
 
-|SQL 代理作业对象  |ADF 资源  |注意|
+|SQL 代理作业对象  |ADF 资源  |说明|
 |---------|---------|---------|
 |SQL 代理作业|管道     |将*为\<作业名称>生成*管道名称。 <br> <br> 内置代理作业不适用： <li> SSIS 服务器维护作业 <li> syspolicy_purge_history <li> collection_set_ * <li> mdw_purge_data_ * <li> sysutility_ *|
 |SSIS 作业步骤|执行 SSIS 包活动|<li> 活动名称将是\<步骤名称>。 <li> 在作业步骤中使用的代理帐户将作为此活动的 Windows 身份验证进行迁移。 <li> 迁移中将忽略在作业步骤中定义的 "*使用32位运行时*" 之外的*执行选项*。 <li> 在迁移中将忽略在作业步骤中定义的*验证*。|
@@ -37,7 +39,7 @@ ms.locfileid: "81455081"
 
 - 在本地输出文件夹中生成 Azure 资源管理器（ARM）模板，并直接或在以后手动部署到数据工厂。 有关 ADF 资源管理器模板的详细信息，请参阅[DataFactory 资源类型](https://docs.microsoft.com/azure/templates/microsoft.datafactory/allversions)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本文中所述的功能需要 SQL Server Management Studio 版本18.5 或更高版本。 若要获取 SSMS 最新版本，请参阅[下载 SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)。
 

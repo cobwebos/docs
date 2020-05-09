@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: 06e5abe04ed1ec75dcbf1b216bfaab1a7458ce72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 75564ea463198967c6ed170851058202b5ba3478
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77064047"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625946"
 ---
 # <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>从 "更改密码" 页更改工作或学校帐户密码
 
@@ -27,7 +27,7 @@ ms.locfileid: "77064047"
 
 ## <a name="update-a-password-from-the-change-password-page"></a>从 "更改密码" 页更新密码
 
-1. 使用你的现有密码登录到你的工作或学校帐户，然后再中转到**我的帐户**（https://myprofile.microsoft.com/)页面）。
+1. 使用你的现有密码登录到你的工作或学校帐户，然后再中转到**我的帐户**（https://myaccount.microsoft.com/)页面）。
 
 2. 从左侧导航窗格中选择 "**密码**"，或从**密码**块中选择 "**更改密码**" 链接。
 

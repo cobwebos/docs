@@ -56,6 +56,11 @@
       href: sql-database-single-database-quickstart-guide.md
     - name: SQL 托管实例
       href: sql-database-managed-instance-quickstart-guide.md
+- name: 示例
+  items:
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 功能比较
@@ -189,7 +194,7 @@
               href: /sql/connect/sql-server-drivers
               items:
                 - name: ADO.NET
-                  href: /sql/connect/ado-net/microsoft-ado-net-for-sql-server
+                  href: /sql/connect/ado-net/microsoft-ado-net-sql-server
                 - name: JDBC
                   href: /sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server
                 - name: Node.js

@@ -11,18 +11,18 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 86b68b794928900717bea25623e7eb833c23e86c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92b3fd2453a4fb121c97f8f25f1d3ca129826092
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655351"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926963"
 ---
 # <a name="frequently-asked-questions-faqs"></a>常见问题 (FAQ)
 
 本页回答了有关 Azure Active Directory 域服务的常见问题。
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
 * [是否可为单个 Azure AD 目录创建多个托管域？](#can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory)
 * [能否在经典虚拟网络中启用 Azure AD 域服务？](#can-i-enable-azure-ad-domain-services-in-a-classic-virtual-network)
@@ -39,7 +39,7 @@ ms.locfileid: "80655351"
 * [域服务是否包含高可用性选项 Azure AD？](#does-azure-ad-domain-services-include-high-availability-options)
 
 ### <a name="can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory"></a>是否可为单个 Azure AD 目录创建多个托管域？
-不能。 对于单个 Azure AD 目录，只能创建一个由 Azure AD 域服务提供服务的托管域。
+不是。 对于单个 Azure AD 目录，只能创建一个由 Azure AD 域服务提供服务的托管域。
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-a-classic-virtual-network"></a>能否在经典虚拟网络中启用 Azure AD 域服务？
 新部署不支持经典虚拟网络。 在2023年3月1日之前，将继续支持经典虚拟网络中部署的现有托管域。 对于现有部署，可以将[Azure AD 的域服务从经典虚拟网络模型迁移到资源管理器](migrate-from-classic-vnet.md)。
@@ -56,7 +56,7 @@ ms.locfileid: "80655351"
 是的。 有关详细信息，请参阅[如何在 AZURE CSP 订阅中启用 Azure AD 域服务](csp.md)。
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-a-federated-azure-ad-directory-i-do-not-synchronize-password-hashes-to-azure-ad-can-i-enable-azure-ad-domain-services-for-this-directory"></a>能否启用联合 Azure AD 目录中的 Azure AD 域服务？ 我不会将密码哈希同步到 Azure AD。 能否为此目录启用 Azure AD 域服务？
-不能。 若要通过 NTLM 或 Kerberos 对用户进行身份验证，Azure AD 域服务需要访问用户帐户的密码哈希。 在联合目录中，密码哈希不会存储在 Azure AD 目录中。 因此，Azure AD 域服务不能与此类 Azure AD 目录一起使用。
+不是。 若要通过 NTLM 或 Kerberos 对用户进行身份验证，Azure AD 域服务需要访问用户帐户的密码哈希。 在联合目录中，密码哈希不会存储在 Azure AD 目录中。 因此，Azure AD 域服务不能与此类 Azure AD 目录一起使用。
 
 ### <a name="can-i-make-azure-ad-domain-services-available-in-multiple-virtual-networks-within-my-subscription"></a>是否可以在订阅中的多个虚拟网络内使用 Azure AD 域服务？
 服务本身不会直接支持这种情况。 托管域每次只能在一个虚拟网络中使用。 但是，你可以配置多个虚拟网络之间的连接，以向其他虚拟网络公开 Azure AD 域服务。 有关详细信息，请参阅如何使用 VPN 网关或[虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)[在 Azure 中连接虚拟网络](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)。
@@ -68,13 +68,13 @@ ms.locfileid: "80655351"
 是的，你可以使用资源管理器模板创建 Azure AD 域服务托管域。 在部署模板之前，必须使用 Azure 门户或 Azure PowerShell 创建用于管理的服务主体和 Azure AD 组。 有关详细信息，请参阅[使用 Azure 资源管理器模板创建 AZURE AD DS 托管域](template-create-instance.md)。 在 Azure 门户中创建 Azure AD 域服务托管域时，还可以选择导出该模板以便与其他部署一起使用。
 
 ### <a name="can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain"></a>是否可将域控制器添加到 Azure AD 域服务托管域？
-不能。 Azure AD 域服务提供的域是托管域。 不需要设置、配置或以其他方式管理此域的域控制器。 这些管理活动是由 Microsoft 提供的服务。 因此，不能添加托管域的其他域控制器（读写或只读）。
+不是。 Azure AD 域服务提供的域是托管域。 不需要设置、配置或以其他方式管理此域的域控制器。 这些管理活动是由 Microsoft 提供的服务。 因此，不能添加托管域的其他域控制器（读写或只读）。
 
 ### <a name="can-guest-users-invited-to-my-directory-use-azure-ad-domain-services"></a>邀请到我的目录中的来宾用户能否使用 Azure AD 域服务？
-不能。 使用 [Azure AD B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) 邀请进程邀请到 Azure AD 目录的来宾用户会同步到 Azure Active Directory 域服务托管域。 但是，这些用户的密码未存储在 Azure AD 目录中。 因此，Azure AD 域服务无法将这些用户的 NTLM 和 Kerberos 哈希同步到托管域。 此类用户无法登录或将计算机加入托管域。
+不是。 使用 [Azure AD B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) 邀请进程邀请到 Azure AD 目录的来宾用户会同步到 Azure Active Directory 域服务托管域。 但是，这些用户的密码未存储在 Azure AD 目录中。 因此，Azure AD 域服务无法将这些用户的 NTLM 和 Kerberos 哈希同步到托管域。 此类用户无法登录或将计算机加入托管域。
 
 ### <a name="can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network"></a>是否可以将现有 Azure AD 域服务托管域移到不同的订阅、资源组、区域或虚拟网络？
-不能。 创建 Azure AD 域服务托管域后，不能将实例移动到不同的资源组、虚拟网络、订阅等。部署 Azure AD DS 实例时，请注意选择最适当的订阅、资源组、区域和虚拟网络。
+不是。 创建 Azure AD 域服务托管域后，不能将实例移动到不同的资源组、虚拟网络、订阅等。部署 Azure AD DS 实例时，请注意选择最适当的订阅、资源组、区域和虚拟网络。
 
 ### <a name="does-azure-ad-domain-services-include-high-availability-options"></a>域服务是否包含高可用性选项 Azure AD？
 
@@ -91,15 +91,16 @@ ms.locfileid: "80655351"
 * [是否可以在托管域中修改或添加 DNS 记录？](#can-i-modify-or-add-dns-records-in-my-managed-domain)
 * [什么是托管域上的密码生存期策略？](#what-is-the-password-lifetime-policy-on-a-managed-domain)
 * [Azure AD 域服务是否提供 AD 帐户锁定保护？](#does-azure-ad-domain-services-provide-ad-account-lockout-protection)
+* [能否在 Azure AD 域服务中配置分布式文件系统（DFS）和复制？](#can-i-configure-distributed-file-system-and-replication-within-azure-ad-domain-services)
 
 ### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop"></a>是否可以使用远程桌面连接到托管域的域控制器？
-不能。 你没有权限使用远程桌面连接到托管域的域控制器。 *AAD DC 管理员*组的成员可以使用 ad 管理工具（例如 Active Directory 管理中心（ADAC）或 ad PowerShell）来管理托管域。 这些工具是使用已加入托管域的 Windows 服务器上的*远程服务器管理工具*功能安装的。 有关详细信息，请参阅[创建管理 VM 以配置和管理 Azure AD 域服务托管域](tutorial-create-management-vm.md)。
+不是。 你没有权限使用远程桌面连接到托管域的域控制器。 *AAD DC 管理员*组的成员可以使用 ad 管理工具（例如 Active Directory 管理中心（ADAC）或 ad PowerShell）来管理托管域。 这些工具是使用已加入托管域的 Windows 服务器上的*远程服务器管理工具*功能安装的。 有关详细信息，请参阅[创建管理 VM 以配置和管理 Azure AD 域服务托管域](tutorial-create-management-vm.md)。
 
 ### <a name="ive-enabled-azure-ad-domain-services-what-user-account-do-i-use-to-domain-join-machines-to-this-domain"></a>我已启用 Azure AD 域服务。 应使用哪个用户帐户将计算机加入此域？
 属于 Azure AD DS 托管域的任何用户帐户都可以加入 VM。 *AAD DC 管理员*组的成员被授予对已加入托管域的计算机的远程桌面访问权限。
 
 ### <a name="do-i-have-domain-administrator-privileges-for-the-managed-domain-provided-by-azure-ad-domain-services"></a>我是否具有 Azure AD 域服务提供的托管域的域管理员特权？
-不能。 你没有获得托管域的管理权限。 *域管理员*和*企业管理员*权限不可用于域中。 本地 Active Directory 中的域管理员或企业管理员组的成员也未被授予托管域上的域/企业管理员权限。
+不是。 你没有获得托管域的管理权限。 *域管理员*和*企业管理员*权限不可用于域中。 本地 Active Directory 中的域管理员或企业管理员组的成员也未被授予托管域上的域/企业管理员权限。
 
 ### <a name="can-i-modify-group-memberships-using-ldap-or-other-ad-administrative-tools-on-managed-domains"></a>能否在托管域上使用 LDAP 或其他 AD 管理工具修改组成员身份？
 无法修改从 Azure Active Directory 同步到 Azure AD 域服务的用户和组，因为其源源 Azure Active Directory。 可能会修改托管域中的任何用户或组。
@@ -108,7 +109,7 @@ ms.locfileid: "80655351"
 使用 Azure AD UI 或 PowerShell 在 Azure AD 目录中所做的更改将自动同步到托管域。 此同步过程在后台运行。 没有定义用于完成所有对象更改的时间段。
 
 ### <a name="can-i-extend-the-schema-of-the-managed-domain-provided-by-azure-ad-domain-services"></a>能否扩展 Azure AD 域服务提供的托管域的架构？
-不能。 托管域的架构由 Microsoft 管理。 Azure AD 域服务不支持架构扩展。
+不是。 托管域的架构由 Microsoft 管理。 Azure AD 域服务不支持架构扩展。
 
 ### <a name="can-i-modify-or-add-dns-records-in-my-managed-domain"></a>是否可以在托管域中修改或添加 DNS 记录？
 是的。 *AAD DC Administrators*组的成员被授予*DNS 管理员*权限，以修改托管域中的 dns 记录。 这些用户可以使用已加入托管域的运行 Windows Server 的计算机上的 DNS 管理器控制台来管理 DNS。 若要使用 DNS 管理器控制台，请在服务器上安装*远程服务器管理工具*可选功能的一部分 " *dns 服务器工具*"。 有关详细信息，请参阅[管理 Azure AD 域服务托管域中的 DNS](manage-dns.md)。
@@ -118,6 +119,9 @@ Azure AD 域服务托管域上的默认密码生存期为 90 天。 此密码生
 
 ### <a name="does-azure-ad-domain-services-provide-ad-account-lockout-protection"></a>Azure AD 域服务是否提供 AD 帐户锁定保护？
 是的。 在托管域上于 2 分钟内尝试五个无效密码将导致用户帐户锁定 30 分钟。 30 分钟后用户帐户将自动解锁。 托管域上的无效密码尝试不会 Azure AD 中锁定用户帐户。 仅在 Azure AD 域服务托管域中锁定用户帐户。 有关详细信息，请参阅[托管域上的密码和帐户锁定策略](password-policy.md)。
+
+### <a name="can-i-configure-distributed-file-system-and-replication-within-azure-ad-domain-services"></a>能否在 Azure AD 域服务内配置分布式文件系统和复制？
+不是。 使用 Azure AD 域服务时，分布式文件系统（DFS）和复制不可用。
 
 ## <a name="billing-and-availability"></a>计费和可用性
 
@@ -135,13 +139,13 @@ Azure AD 域服务托管域上的默认密码生存期为 90 天。 此密码生
 Azure 的免费试用版中包含 Azure AD 域服务。 可以注册 [Azure 一个月免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ### <a name="can-i-pause-an-azure-ad-domain-services-managed-domain"></a>我能否暂停 Azure AD 域服务托管域？
-不能。 启用 Azure AD 域服务托管域后，该服务将在所选虚拟网络内可用，直到你删除托管域。 无法暂停服务。 删除托管域前，会按小时对服务计费。
+不是。 启用 Azure AD 域服务托管域后，该服务将在所选虚拟网络内可用，直到你删除托管域。 无法暂停服务。 删除托管域前，会按小时对服务计费。
 
 ### <a name="can-i-failover-azure-ad-domain-services-to-another-region-for-a-dr-event"></a>对于 DR 事件，是否可以将 Azure AD 域服务故障转移到另一个区域？
-不能。 Azure AD 域服务当前不提供地域冗余部署模型。 它仅限于 Azure 区域中的单个虚拟网络。 如果希望利用多个 Azure 区域，需要在 Azure IaaS VM 上运行 Active Directory 域控制器。 有关体系结构指南，请参阅将[本地 Active Directory 域扩展到 Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain)。
+不是。 Azure AD 域服务当前不提供地域冗余部署模型。 它仅限于 Azure 区域中的单个虚拟网络。 如果希望利用多个 Azure 区域，需要在 Azure IaaS VM 上运行 Active Directory 域控制器。 有关体系结构指南，请参阅将[本地 Active Directory 域扩展到 Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain)。
 
 ### <a name="can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services"></a>是否可以从企业移动性套件 (EMS) 获取 Azure AD 域服务？ 是否需要 Azure AD Premium 才能使用 Azure AD 域服务？
-不能。 Azure AD 域服务是即用即付 Azure 服务，不属于 EMS。 Azure AD 域服务可用于所有版本的 Azure AD （免费和高级）。 按小时计费，具体取决于使用情况。
+不是。 Azure AD 域服务是即用即付 Azure 服务，不属于 EMS。 Azure AD 域服务可用于所有版本的 Azure AD （免费和高级）。 按小时计费，具体取决于使用情况。
 
 ### <a name="what-azure-regions-is-the-service-available-in"></a>哪些 Azure 区域提供此服务？
 请参阅[按区域列出的 Azure 服务](https://azure.microsoft.com/regions/#services/)页，获取提供 Azure AD 域服务的 Azure 区域列表。

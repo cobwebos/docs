@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 04/13/2020
+ms.date: 05/06/2020
 tags: connectors
-ms.openlocfilehash: d7fafdd5830ec2825771d4d611a5f4bd5d87260a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7635d98bb48543dd07f05f34ea854af870876cc3
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393633"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927439"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>使用 SSH 和 Azure 逻辑应用监视、创建和管理 SFTP 文件
 
@@ -34,7 +34,7 @@ ms.locfileid: "81393633"
 * 支持[分块](../logic-apps/logic-apps-handle-large-messages.md)的 SFTP-SSH 操作最多可以处理 1 GB 的文件，而不支持分块的 SFTP-SSH 操作最多可以处理 50 MB 的文件。 尽管默认的区块大小为 15 MB，但此大小可以根据网络延迟、服务器响应时间等因素动态变化，从 5 MB 开始逐渐增加到最大值 50 MB。
 
   > [!NOTE]
-  > 对于[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，此连接器的 ise 标记版本会改用[ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
+  > 对于[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，此连接器的 ISE 标记版本需要使用[ise 消息限制来改用 ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
   当你指定要改用[的常量块大小](#change-chunk-size)时，可以重写此自适应行为。 此大小的范围为 5 MB 到 50 MB。 例如，假设您有一个 45 MB 的文件和一个可以支持该文件的大小不受延迟的网络。 自适应块会导致多次调用，而不是调用。 若要减少调用次数，可以尝试设置 50 MB 的区块大小。 在不同的情况下，如果逻辑应用超时（例如，使用 15 MB 的区块），可以尝试将大小减小到 5 MB。
 
@@ -167,7 +167,7 @@ SFTP-SSH 触发器的工作原理是轮询 SFTP 文件系统并查找自上次�
 
 1. 对于空白逻辑应用，请在 "搜索" 框`sftp ssh`中输入作为筛选器。 在触发器列表下，选择所需的触发器。
 
-   \- 或 -
+   -或-
 
    对于现有的逻辑应用，在要添加操作的最后一个步骤下，选择 "**新建步骤**"。 在搜索框中，输入 `sftp ssh` 作为筛选器。 在操作列表下，选择所需的操作。
 
@@ -248,7 +248,7 @@ SFTP-SSH 触发器的工作原理是轮询 SFTP 文件系统并查找自上次�
 有关此连接器的更多技术详细信息，如连接器的 Swagger 文件所述的触发器、操作和限制，请参阅[连接器的参考页](https://docs.microsoft.com/connectors/sftpwithssh/)。
 
 > [!NOTE]
-> 对于[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，此连接器的 ise 标记版本会改用[ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
+> 对于[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，此连接器的 ISE 标记版本需要使用 " [ise 消息限制" 来改用 ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
 ## <a name="next-steps"></a>后续步骤
 

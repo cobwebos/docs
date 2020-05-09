@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 38c0d7d93d00d31a8efa508a635b471a73da0419
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d8a10f81cd9a73b9b77e68f15f7bc7c98d60ac0
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80123286"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891043"
 ---
 你可以查看本部分中的链接，了解有关合作伙伴提供的服务的更多信息。 如果你的分支设备合作伙伴未在下面的部分中列出，请让你的分支设备提供商联系我们。 他们可以通过向 azurevirtualwan@microsoft.com 发送电子邮件来与我们联系。
 
@@ -29,6 +29,7 @@ ms.locfileid: "80123286"
 |[Palo Alto Networks](https://researchcenter.paloaltonetworks.com/2018/09/azure-vwan-integration/) |* |
 |[Riverbed Technology](https://www.riverbed.com/go/steelconnect-azurewan.html)|* |
 |[银高峰]( https://www.silver-peak.com/silver-peak-expands-integration-with-microsoft-cloud-services)|[EdgeConnect 和 Microsoft Azure 虚拟 WAN 集成指南](https://www.silver-peak.com/documentation/edgeconnect-and-azure-vwan-integration-guide)|
+|[Velocloud-VMWare]( https://wan.velocloud.com/rs/098-RBR-178/images/sdwan-654-connect-azure-vwan-so-0819.pdf)|[Azure 虚拟 WAN Velocloud 部署指南](https://kb.vmware.com/s/article/79000)|
 | [Versa](https://www.versa-networks.com/partners/microsoft-azure-virtual-WAN) | [反向配置 SD-WAN 和 Microsoft Azure vWAN （适用于已注册客户）](https://docs.versa-networks.com/Versa_Director/Versa_Director_Configuration/Integrate_Director_and_Azure_Virtual_WAN) |
 
 *\*直接链接不可用。请与合作伙伴公司联系以获取支持。*

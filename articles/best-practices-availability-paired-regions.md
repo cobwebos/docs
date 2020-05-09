@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure 配对区域确保业务连续性 & 灾难恢复
 description: 使用 Azure 区域配对确保应用程序复原
-author: jpconnock
-manager: angrobe
+author: barbkess
+manager: barbkess
 ms.service: multiple
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.author: jeconnoc
-ms.openlocfilehash: 778943dad9a04632797d5d9165b6f1f9a3eb9850
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: barbkess
+ms.openlocfilehash: be6d2fb590dfefb170b3f23378c507b4d6b2295d
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248250"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980042"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>业务连续性和灾难恢复 (BCDR)：Azure 配对区域
 
@@ -32,17 +32,17 @@ Azure 地理位置定义了一个世界区域，其中包含至少一个 Azure �
 
 ## <a name="can-i-select-my-regional-pairs"></a>能否选择区域对？
 
-不能。 某些 Azure 服务依赖于区域对（如 Azure[冗余存储](./storage/common/storage-redundancy.md)）。 这些服务不允许你创建新的区域配对。  同样，由于 Azure 控制区域对的计划维护和恢复优先级，因此你不能定义自己的区域对以利用这些服务。 但是，你可以创建自己的灾难恢复解决方案，方法是在任意数量的区域中生成服务，并利用 Azure 服务对其进行配对。 
+不是。 某些 Azure 服务依赖于区域对（如 Azure[冗余存储](./storage/common/storage-redundancy.md)）。 这些服务不允许你创建新的区域配对。  同样，由于 Azure 控制区域对的计划维护和恢复优先级，因此你不能定义自己的区域对以利用这些服务。 但是，你可以创建自己的灾难恢复解决方案，方法是在任意数量的区域中生成服务，并利用 Azure 服务对其进行配对。 
 
 例如，你可以使用 Azure 服务（如[AzCopy](./storage/common/storage-use-azcopy-v10.md) ）将数据备份到其他区域中的存储帐户。  使用[Azure DNS 和 Azure 流量管理器](./networking/disaster-recovery-dns-traffic-manager.md)，客户可以为其应用程序设计可在主要区域丢失的情况下提供弹性体系结构。
 
 ## <a name="am-i-limited-to-using-services-within-my-regional-pairs"></a>我是否限制使用区域对中的服务？
 
-不能。 虽然给定的 Azure 服务可能依赖于区域对，但你可以在满足业务需求的任何区域中托管其他服务。  使用美国东部的计算资源，Azure GRS 存储解决方案可以将加拿大中部的数据与加拿大东部的对等互连。  
+不是。 虽然给定的 Azure 服务可能依赖于区域对，但你可以在满足业务需求的任何区域中托管其他服务。  使用美国东部的计算资源，Azure GRS 存储解决方案可以将加拿大中部的数据与加拿大东部的对等互连。  
 
 ## <a name="must-i-use-azure-regional-pairs"></a>是否必须使用 Azure 区域对？
 
-不能。 客户可以利用 Azure 服务来构建可复原的服务，而无需依赖 Azure 的区域对。  但是，我们建议跨区域对配置业务连续性灾难恢复（BCDR），以便从[隔离](./security/fundamentals/isolation-choices.md)和提高[可用性](./availability-zones/az-overview.md)中获益。 对于支持多个活动区域的应用程序，建议尽可能使用区域对中的这两个区域。 这可确保应用程序的最佳可用性，并确保在发生灾难时最短的恢复时间。 尽可能设计你的应用程序以实现[最大](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)的恢复能力和简化[灾难恢复](https://docs.microsoft.com/azure/architecture/framework/resiliency/backup-and-recovery)。
+不是。 客户可以利用 Azure 服务来构建可复原的服务，而无需依赖 Azure 的区域对。  但是，我们建议跨区域对配置业务连续性灾难恢复（BCDR），以便从[隔离](./security/fundamentals/isolation-choices.md)和提高[可用性](./availability-zones/az-overview.md)中获益。 对于支持多个活动区域的应用程序，建议尽可能使用区域对中的这两个区域。 这可确保应用程序的最佳可用性，并确保在发生灾难时最短的恢复时间。 尽可能设计你的应用程序以实现[最大](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)的恢复能力和简化[灾难恢复](https://docs.microsoft.com/azure/architecture/framework/resiliency/backup-and-recovery)。
 
 ## <a name="azure-regional-pairs"></a>Azure 区域对
 

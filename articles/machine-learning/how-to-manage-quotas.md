@@ -9,20 +9,21 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
-ms.date: 03/05/2020
-ms.openlocfilehash: 530647c3d32b62f0cac250795ccce580b182fa92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/08/2020
+ms.custom: contperfq4
+ms.openlocfilehash: b8af654e14d8a5fa48c60ae62c590c4c99e66edb
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756602"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891518"
 ---
-# <a name="manage-and-request-quotas-for-azure-resources"></a>管理和请求 Azure 资源的配额
+# <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>管理 & 增加 Azure 机器学习的资源配额
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文详细说明订阅的预配置 Azure 资源限制。 此外，说明如何请求提高每种类型的资源的配额。 这些限制用于防止由于欺诈导致的预算超支，并且符合 Azure 容量限制。
+本文为[Azure 机器学习](overview-what-is-azure-ml.md)用户提供了有关订阅的 Azure 资源预配置限制的详细信息。 此外，说明如何请求提高每种类型的资源的配额。 这些限制用于防止由于欺诈导致的预算超支，并且符合 Azure 容量限制。
 
-与其他 Azure 服务一样，与 Azure 机器学习关联的某些资源存在限制。 这些限制包括工作区数量上限，以及用于模型训练或推理/评分的实际基础计算的限制，等等。 
+与其他 Azure 服务一样，与 Azure 机器学习关联的某些资源存在限制。 这些限制范围从[工作区](concept-workspace.md)数量的上限到用于模型定型或推理/计分的实际基础计算的限制范围内。 
 
 为生产工作负荷设计和缩放 Azure 机器学习资源时，请考虑到这些限制。 例如，如果群集未达到节点目标数量，那么可能是已达到订阅的 Azure 机器学习计算核心限制。 如果想将限制或配额提高到默认值限制以上，可以免费打开联机客户支持请求。 由于 Azure 容量限制，无法将限制提高到超过下表中显示的最大限制值。 如果没有“最大限制”列，则资源没有可调整的限制。
 
@@ -48,10 +49,10 @@ ms.locfileid: "80756602"
 
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../../includes/azure-subscription-limits-azure-resource-manager.md)]
 
-有关配额限制更详细的最新列表，请在[此处](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)查看适用于 Azure 的配额文章。
+有关配额限制的更详细和最新列表，请查看[Azure 范围配额一文](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。
 
 ### <a name="azure-machine-learning-compute"></a>Azure 机器学习计算
-在 Azure 机器学习计算中，订阅中每个区域所允许的核心数和唯一计算资源数都有默认配额限制。 此配额不同于上述 VM 核心配额，核心限制不会在两种资源类型之间共享，因为 AmlCompute 是在托管的代理模型中部署资源的托管服务。
+对于[Azure 机器学习计算](concept-compute-target.md#azure-machine-learning-compute-managed)，订阅中每个区域所允许的核心数和唯一计算资源数都有默认的配额限制。 此配额不同于上述 VM 核心配额，核心限制不会在两种资源类型之间共享，因为 AmlCompute 是在托管的代理模型中部署资源的托管服务。
 
 可用资源：
 + 每个区域的专用核心数的默认限制为 24 - 300 个，具体取决于订阅套餐的类型，EA 和 CSP 套餐类型的默认限制较高。  每个订阅的专用核心数可以提高，每个 VM 系列的此项限制各不相同。 某些专业化 VM 系列（例如 NCv2、NCv3 或 ND 系列）最初的默认限制为零个核心。 可以通过提出配额请求来联系 Azure 支持部门，以讨论限制提升选项。
@@ -76,7 +77,7 @@ ms.locfileid: "80756602"
 <sup>2</sup> 每当存在容量约束时，低优先级节点上的作业可能会预先清空。 我们建议在作业中实施检查点。
 
 ### <a name="azure-machine-learning-pipelines"></a>Azure 机器学习管道
-对于 Azure 机器学习管道，管道中的步骤数有配额限制，订阅中每个区域的基于计划的已发布管道运行数也有配额限制。
+对于[Azure 机器学习管道](concept-ml-pipelines.md)，管道中的步骤数和订阅中每个区域基于计划的已发布管道的运行数有限制。
 - 管道中允许的最大步骤数为 30,000
 - 每个月根据每个订阅的已发布管道的博客触发计划执行的基于计划的运行数与 Blob 提取数之和的最大数目为 100,000
 
@@ -97,7 +98,7 @@ ms.locfileid: "80756602"
 
 ## <a name="workspace-level-quota"></a>工作区级别的配额
 
-为了更好地管理不同工作区之间的 Amlcompute 资源分配，我们引入了一项功能用于分配订阅级别的配额（按 VM 系列），并在工作区级别配置这些配额。 默认行为是所有工作区的配额与任何 VM 系列的订阅级配额相同。 但是，随着工作区数量的增大，不同优先级的工作负荷将开始共享相同的资源，用户需要通过某种方式来更好地共享容量和避免资源争用问题。 Azure 机器学习允许用户针对每个工作区中的特定 VM 系列设置最大配额，通过其托管计算产品/服务来提供解决方案。 这类似于在工作区之间分配容量，而用户也可以选择过度分配资源来促成最大利用率。 
+为了更好地管理不同[工作区](concept-workspace.md)之间 Azure 机器学习计算目标（Amlcompute）的资源分配，我们引入了一项功能，该功能允许你分发订阅级别配额（按 VM 系列）并在工作区级别配置它们。 默认行为是所有工作区的配额与任何 VM 系列的订阅级配额相同。 但是，随着工作区数量的增大，不同优先级的工作负荷将开始共享相同的资源，用户需要通过某种方式来更好地共享容量和避免资源争用问题。 Azure 机器学习允许用户针对每个工作区中的特定 VM 系列设置最大配额，通过其托管计算产品/服务来提供解决方案。 这类似于在工作区之间分配容量，而用户也可以选择过度分配资源来促成最大利用率。 
 
 若要在工作区级别设置配额，请转到订阅中的任何工作区，并在左侧窗格中单击“用量 + 配额”。  然后选择“配置配额”选项卡查看配额，展开任一 VM 系列，并针对该 VM 系列下面列出的任何工作区设置配额限制。  请记住，不能设置负值或大于订阅级配额的值。 此外，可以看到，默认将为所有工作区分配整个订阅配额，以充分利用分配的配额。
 
@@ -105,7 +106,7 @@ ms.locfileid: "80756602"
 
 
 > [!NOTE]
-> 此功能仅在“企业”版中提供。 如果订阅中同时包含“基本”和“企业”版工作区，可以使用此功能来仅针对“企业”工作区设置配额。 “基本”工作区将继续采用订阅级配额，这是默认行为。
+> 此功能仅在“企业”版中提供。 如果订阅中同时具有 "[基本" 和 "企业版](overview-what-is-azure-ml.md#sku)" 工作区，则可以使用此方法仅在企业工作区上设置配额。 “基本”工作区将继续采用订阅级配额，这是默认行为。
 >
 > 需要拥有订阅级别的权限才能在工作区级别设置配额。 这是一项强制性的要求，目的是避免单个工作区所有者编辑或提高其配额，然后开始侵占为其他工作区预留的资源。 因此，最适合由订阅管理员分配这些配额并将其分摊到各个工作区。
 
@@ -136,9 +137,17 @@ ms.locfileid: "80756602"
 
 如果想将限制或配额提高到默认值限制以上，可以免费[打开联机客户支持请求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/)。
 
-无法将限制提高到表中所示的最大限制值。 如果没有最大限制，则资源没有可调整的限制。 [这篇文章](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors)详细介绍了配额增加过程。
+无法将限制提高到表中所示的最大限制值。 如果没有最大限制，则资源没有可调整的限制。 [请参阅分步说明如何增加配额](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors)。
 
 请求配额增加时，需要选择要请求提高配额的服务，这可能是机器学习服务配额、容器实例或存储配额的服务。 此外，对于 Azure 机器学习计算，可以单击“请求配额”按钮，然后按照上述步骤查看配额  。
 
 > [!NOTE]
 > [免费试用版订阅](https://azure.microsoft.com/offers/ms-azr-0044p)不符合增加限制或配额的条件。 如果有[免费试用版订阅](https://azure.microsoft.com/offers/ms-azr-0044p)，可将其升级到[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)订阅。 有关详细信息，请参阅[将 Azure 免费试用版订阅升级到即用即付订阅](../billing/billing-upgrade-azure-subscription.md)和[免费试用版订阅常见问题解答](https://azure.microsoft.com/free/free-account-faq)。
+
+## <a name="next-steps"></a>后续步骤
+
+通过以下文章，了解详细信息：
+
++ [计划 & 管理 Azure 机器学习的成本](concept-plan-manage-cost.md)
+
++ [如何增加配额](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors)。

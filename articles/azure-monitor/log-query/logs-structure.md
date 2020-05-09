@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 1d647ba7e8d4f0e29252dfff95099e39bab87895
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1463415a464fe1d7a7146cec20f2c17d7c8eb03
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77662070"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738076"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure Monitor 日志的结构
 使用[日志查询](log-query-overview.md)快速洞察数据是 Azure Monitor 提供的一项强大功能。 若要创建高效且有用的查询，应该了解一些基本概念，例如，所需数据的位置及其构建方式。 本文将会介绍可帮助你入门的基本概念。
@@ -54,18 +54,19 @@ union withsource = table *
 
 | 表 | 说明 | 
 |:---|:---|
-| availabilityResults | 可用性测试中的摘要数据。 |
-| browserTimings      | 有关客户端性能的数据，例如处理传入数据所用的时间。 |
-| customEvents        | 应用程序创建的自定义事件。 |
-| customMetrics       | 应用程序创建的自定义指标。 |
-| dependencies        | 从应用程序对外部组件发出的调用。 |
-| exceptions          | 应用程序运行时引发的异常。 |
-| pageViews           | 每个网站的浏览情况数据，以及浏览器信息。 |
-| performanceCounters | 支持该应用程序的计算资源的性能度量值。 |
-| 请求            | 每个应用程序请求的详细信息。  |
-| traces              | 分布式跟踪的结果。 |
+| availabilityResults   | 可用性测试中的摘要数据。
+| browserTimings      |     有关客户端性能的数据，例如处理传入数据所用的时间。
+| customEvents        | 应用程序创建的自定义事件。
+| customMetrics       | 应用程序创建的自定义指标。
+| dependencies        | 从应用程序调用到通过 TrackDependency （）记录的其他组件（包括外部组件）-例如，对 REST API、数据库或文件系统的调用。 
+| exceptions            | 应用程序运行时引发的异常捕获服务器端和客户端（浏览器）异常。
+| pageViews           | 每个网站的浏览情况数据，以及浏览器信息。
+| performanceCounters   | 支持应用程序的计算资源的性能度量，例如 Windows 性能计数器。
+| 请求            | 应用程序收到的请求。 例如，将为 web 应用接收的每个 HTTP 请求记录一个单独的请求记录。 
+| traces                | 通过 TrackTrace （）记录的应用程序代码/日志记录框架发出的详细日志（跟踪）。
 
-可以在应用程序的 Log Analytics 中的“架构”选项卡上查看每个表的架构。 
+
+可以在应用程序的 Log Analytics 中的“架构”选项卡上查看每个表的架构。****
 
 ![应用程序架构](media/scope/application-schema.png)
 
@@ -81,5 +82,5 @@ union withsource = table *
 | _BilledSize   |            | 指定要计费的数据大小（以字节为单位）。 |
 
 ## <a name="next-steps"></a>后续步骤
-- 了解如何使用 [Log Analytics 来创建并编辑日志搜索](../log-query/portals.md)。
+- 了解如何使用[Log Analytics 来创建和编辑日志搜索](../log-query/portals.md)。
 - 查看使用新查询语言的[查询编写教程](../log-query/get-started-queries.md)。

@@ -2,13 +2,13 @@
 title: 使用 PowerShell 自动化 Azure Application Insights | Microsoft Docs
 description: 使用 Azure 资源管理器模板在 PowerShell 中自动创建和管理资源、警报和可用性测试。
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: 9494b659b5b4357f3190c45d8cc72c4e130f0ecc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/02/2020
+ms.openlocfilehash: fba85981f32611164c328945e45de4032ad949eb
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275875"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780481"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>使用 PowerShell 管理 Application Insights 资源
 
@@ -21,10 +21,10 @@ ms.locfileid: "79275875"
 ## <a name="one-time-setup"></a>一次性设置
 如果之前尚未将 PowerShell 与 Azure 订阅结合使用：
 
-在要运行脚本的计算机上安装 Azure Powershell 模块：
+在要运行脚本的计算机上安装 Azure PowerShell 模块：
 
 1. 安装 [Microsoft Web 平台安装程序（v5 或更高版本）](https://www.microsoft.com/web/downloads/platform.aspx)。
-2. 使用它来安装 Microsoft Azure Powershell。
+2. 使用它安装 Microsoft Azure PowerShell。
 
 除了使用资源管理器模板，还可以使用许多 [Application Insights PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights)，以编程方式轻松地配置 Application Insights 资源。 通过这些 cmdlet 启用的功能包括：
 
@@ -229,9 +229,23 @@ Get-AzApplicationInsights -ResourceGroupName Fabrikam -Name FabrikamProd | Forma
 
 请参阅此[详细文档](https://docs.microsoft.com/powershell/module/az.applicationinsights)以获取这些 cmdlet 的参数。  
 
-## <a name="set-the-data-retention"></a>设置数据保留期 
+## <a name="set-the-data-retention"></a>设置数据保留期
 
-若要获取 Application Insights 资源的当前数据保留期，可以使用 OSS 工具 [ARMClient](https://github.com/projectkudu/ARMClient)。  （请在 [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) 和 [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/) 的文章中了解有关 ARMClient 的详细信息。）下面是一个使用 `ARMClient` 的示例，目的是获取当前的保留期：
+以下三种方法可通过编程方式设置 Application Insights 资源上的数据保留。
+
+### <a name="setting-data-retention-using-a-powershell-commands"></a>使用 PowerShell 命令设置数据保留
+
+下面是一组简单的 PowerShell 命令，用于设置 Application Insights 资源的数据保留：
+
+```PS
+$Resource = Get-AzResource -ResourceType Microsoft.Insights/components -ResourceGroupName MyResourceGroupName -ResourceName MyResourceName
+$Resource.Properties.RetentionInDays = 365
+$Resource | Set-AzResource -Force
+```
+
+### <a name="setting-data-retention-using-rest"></a>使用 REST 设置数据保留
+
+若要获取 Application Insights 资源的当前数据保留期，可以使用 OSS 工具 [ARMClient](https://github.com/projectkudu/ARMClient)。  （了解有关 ARMClient 的详细信息，请参阅[David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html)和[Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/)。） 下面是使用`ARMClient`的一个示例，用于获取当前的保留期：
 
 ```PS
 armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName?api-version=2018-05-01-preview
@@ -251,6 +265,8 @@ New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
        -retentionInDays 365 `
        -appName myApp
 ```
+
+### <a name="setting-data-retention-using-a-powershell-script"></a>使用 PowerShell 脚本设置数据保留
 
 也可使用以下脚本来更改保留期。 请复制此脚本，将其另存为 `Set-ApplicationInsightsRetention.ps1`。
 
@@ -366,7 +382,7 @@ Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <
 
 `priceCode`定义为：
 
-|价格代码|计划|
+|价格代码|plan|
 |---|---|
 |1|“每 GB”计划（以前名为“基本”计划）|
 |2|“每节点”计划（以前名为“企业”计划）|

@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 10/16/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4384d29811d29f06422802abba5d3eb1ea5737e9
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 9cb2647cc5ac2dc60f5ae7327ee39ed2ff625193
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72430073"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901377"
 ---
 # <a name="backup-and-restore"></a>备份和还原
 
@@ -162,7 +162,7 @@ Azure 上的 SAP HANA（大型实例）为 SAP HANA 数据卷和日志卷使用�
 
 ### <a name="step-6-get-the-snapshot-scripts-configure-the-snapshots-and-test-the-configuration-and-connectivity"></a>步骤 6：获取快照脚本、配置快照及测试配置和连接
 
-从 [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/tree/master/snapshot_tools_v4.1) 下载最新版本的脚本。 脚本的安装方式随版本4.1 的脚本而更改。 有关详细信息，请参阅[Azure 上的 SAP HANA 的 Microsoft 快照工具中的](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)"启用与 SAP HANA 的通信"。
+从 [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md) 下载最新版本的脚本。 脚本的安装方式随版本4.1 的脚本而更改。 有关详细信息，请参阅[Azure 上的 SAP HANA 的 Microsoft 快照工具中的](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)"启用与 SAP HANA 的通信"。
 
 有关命令的确切顺序，请参阅在[Azure 上的 SAP HANA 的 Microsoft 快照工具](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)中的 "轻松安装快照工具（默认）"。 建议使用默认安装。 
 
