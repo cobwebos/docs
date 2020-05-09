@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 93c21656a768ae458572e0b4917412c8103b2f2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd23745f811cf67aa5e7ef7aa96b877b5980c270
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80992209"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793119"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的访问控制
 
@@ -108,7 +108,7 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 
 **RWX** 用于表示“读取 + 写入 + 执行”。**** 还有更精简的数字形式，“读取=4”，“写入=2”，“执行=1”，其总和表示各种不同的权限。************ 下面是一些示例。
 
-| 数字形式 | 简短形式 |      含义     |
+| 数字形式 | 缩写形式 |      含义     |
 |--------------|------------|------------------------|
 | 7            | `RWX`        | RWX |
 | 5            | `R-X`        | 读取 + 执行         |
@@ -123,7 +123,7 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 
 下表列出了一些常见方案，可帮助你了解对存储帐户执行特定操作所需的权限。
 
-|    Operation             |    /    | Oregon/ | Portland/ | Data.txt     |
+|    操作             |    /    | Oregon/ | Portland/ | Data.txt     |
 |--------------------------|---------|----------|-----------|--------------|
 | Read Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
 | Append to Data.txt       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
@@ -251,7 +251,7 @@ return ( (desired_perms & perms & mask ) == desired_perms)
 
 Azure Data Lake Storage Gen2 的 umask 是设置为 007 的常量值。 此值将转换为：
 
-| umask 组件     | 数字形式 | 简短形式 | 含义 |
+| umask 组件     | 数字形式 | 缩写形式 | 含义 |
 |---------------------|--------------|------------|---------|
 | umask.owning_user   |    0         |   `---`      | 对于拥有用户，将父项的默认 ACL 复制到子项的访问 ACL | 
 | umask.owning_group  |    0         |   `---`      | 对于拥有组，将父项的默认 ACL 复制到子项的访问 ACL | 
@@ -281,13 +281,13 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>是否必须启用 ACL 的支持？
 
-不能。 只要开启了分层命名空间 (HNS) 功能，存储帐户就能通过 ACL 进行访问控制。
+否。 只要开启了分层命名空间 (HNS) 功能，存储帐户就能通过 ACL 进行访问控制。
 
 即使关闭了 HNS 功能，Azure RBAC 授权规则仍适用。
 
 ### <a name="what-is-the-best-way-to-apply-acls"></a>应用 ACL 的最佳方式是什么？
 
-始终将 Azure AD 安全组用作 ACL 中分配的主体。 拒绝直接分配各个用户或服务主体。 使用此结构，你可以添加和删除用户或服务主体，不需要向整个目录结构重新应用 ACL。 而只需要从相应的 Azure AD 安全组添加或删除它们。 请记住，ACL 不是继承的，重新应用 ACL 需要更新每个文件和子目录上的 ACL。 
+始终将 Azure AD 安全组用作 ACL 中分配的主体。 拒绝直接分配各个用户或服务主体。 使用此结构，你可以添加和删除用户或服务主体，不需要向整个目录结构重新应用 ACL。 相反，只需在适当的 Azure AD 安全组中添加或删除它们。 请记住，ACL 不是继承的，重新应用 ACL 需要更新每个文件和子目录上的 ACL。 
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-directory-and-its-contents"></a>以递归方式删除目录及其内容需要哪些权限？
 

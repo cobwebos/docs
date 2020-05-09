@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 383a28e90c093c0885c34af03371608261ece110
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 88e58fbf6acc15b71fd135184cf8806a793140f3
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692631"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983204"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>保护你的 Synapse 工作区（预览）
 
@@ -145,7 +145,7 @@ Synapse Studio 将根据用户角色的行为有所不同。 如果用户未分�
 | 打开 Synapse Studio | YES | YES | YES |
 | 查看本中心 | YES | YES | YES |
 | 查看数据中心 | YES | YES | YES |
-| 数据中心/请参阅链接的 ADLSGen2 帐户和容器 | 是 [1] | 是 [1] | 是 [1] |
+| 数据中心/请参阅链接 ADLS Gen2 帐户和容器 | 是 [1] | 是 [1] | 是 [1] |
 | 数据中心/请参阅数据库 | YES | YES | YES |
 | 数据中心/查看数据库中的对象 | YES | YES | YES |
 | 数据中心/访问 SQL 池中数据库中的数据 | YES   | 是   | YES   |
@@ -179,8 +179,8 @@ Synapse Studio 将根据用户角色的行为有所不同。 如果用户未分�
 
 
 > [!NOTE]
-> [1] 对容器中的数据的访问权限取决于 ADLSGen2 中的访问控制。 </br>
-> [2] SQL OD 表和 Spark 表将其数据存储在 ADLSGen2 中，access 需要 ADLSGen2 的适当权限。
+> [1] 对容器中的数据的访问权限取决于 ADLS Gen2 中的访问控制。 </br>
+> [2] SQL OD 表和 Spark 表将其数据存储在 ADLS Gen2 中，访问权限需要对 ADLS Gen2 具有适当的权限。
 
 ## <a name="next-steps"></a>后续步骤
 

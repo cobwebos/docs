@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: a4117acb2fada5c4422e177e9e6b84d7a0a51b69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c0cf8a91ee1dbdd70f1b911dba24fb69ee7bc0e3
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129325"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744394"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
 
@@ -35,7 +35,7 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 下面是有关专用终结点的一些重要详细信息： 
 - 专用终结点使用 [VPN](https://azure.microsoft.com/services/vpn-gateway/) 或 [Express Route](https://azure.microsoft.com/services/expressroute/) 以及专用链接驱动的服务，在同一 VNet、区域对等互连的 VNet、全球对等互连的 VNet 和本地的使用者之间实现连接。
  
-- 创建专用终结点时，也会为资源的生命周期创建一个网络接口。 为该接口分配了子网中映射到专用链接服务的专用 IP 地址。
+- 创建专用终结点时，还会为资源的生命周期创建只读网络接口。 将从映射到专用链接资源的子网中为接口分配一个专用 IP 地址。
  
 - 专用终结点必须部署在与虚拟网络相同的区域中。 
  
@@ -67,9 +67,9 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 |**Azure 容器注册表** | Microsoft.ContainerRegistry/registries    | 注册表 |
 |**Azure 应用配置** | Appconfiguration/configurationStores    | configurationStore |
 |**Azure 备份** | Microsoft.RecoveryServices/vaults    | 保管库 |
-|**Azure 事件中心** | Microsoft.EventHub/namespaces    | namespace |
-|**Azure 服务总线** | Microsoft.ServiceBus/namespaces | namespace |
-|**Azure 中继** | Microsoft.Relay/namespaces | namespace |
+|**Azure 事件中心** | Microsoft.EventHub/namespaces    | 命名空间 |
+|**Azure 服务总线** | Microsoft.ServiceBus/namespaces | 命名空间 |
+|**Azure 中继** | Microsoft.Relay/namespaces | 命名空间 |
 |**Azure 事件网格** | Microsoft.EventGrid/topics    | 主题 |
 |**Azure 事件网格** | Microsoft.EventGrid/domains    | 域 |
 |**Azure WebApps** | Microsoft.Web/sites    | site |
@@ -115,7 +115,7 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 下表列出了使用专用终结点时的已知限制： 
 
 
-|限制 |说明 |缓解操作  |
+|限制 |说明 |缓解措施  |
 |---------|---------|---------|
 |网络安全组 (NSG) 规则和用户定义的路由不适用于专用终结点    |专用终结点不支持 NSG。 尽管包含专用终结点的子网可以有关联的 NSG，但这些规则不会针对专用终结点处理的流量生效。 必须[禁用网络策略的强制实施](disable-private-endpoint-network-policy.md)，才能在子网中部署专用终结点。 NSG 仍会在同一子网中托管的其他工作负荷上强制实施。 任何客户端子网上的路由将使用 /32 前缀，更改默认路由行为需要类似的 UDR  | 对源客户端上的出站流量使用 NSG 规则来控制流量。 部署具有/32 前缀的各个路由以替代专用终结点路由。 仍支持出站连接的 NSG 流日志和监视信息，并且可以使用这些信息        |
 
