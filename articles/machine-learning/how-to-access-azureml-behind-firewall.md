@@ -1,7 +1,7 @@
 ---
-title: 使用防火墙后面的 Azure 机器学习
+title: 使用防火墙
 titleSuffix: Azure Machine Learning
-description: 安全地使用 Azure 防火墙后面的 Azure 机器学习。 了解必须通过防火墙允许 Azure 机器学习正常运行的主机。
+description: 使用 Azure 防火墙控制对 Azure 机器学习工作区的访问。 了解必须通过防火墙允许 Azure 机器学习正常运行的主机。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 04/27/2020
-ms.openlocfilehash: 2c5fe9d46ef408775cc4b99d4820a652a91683c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 40c25dda3fefa9c54df832e16149a68a4aa5a33b
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82196317"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981959"
 ---
-# <a name="use-azure-machine-learning-workspace-behind-azure-firewall"></a>使用 Azure 防火墙后面的 Azure 机器学习工作区
+# <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>使用 Azure 防火墙后面的工作区进行 Azure 机器学习
 
-本文介绍如何配置用于 Azure 机器学习的 Azure 防火墙。
+本文介绍如何将 Azure 防火墙配置为用于 Azure 机器学习工作区。
 
 Azure 防火墙可用于控制对 Azure 机器学习工作区和公共 internet 的访问。 如果配置不正确，则防火墙可能会在使用工作区时出现问题。
 
@@ -36,7 +36,7 @@ Azure 防火墙可用于控制对 Azure 机器学习工作区和公共 internet 
 
 本部分中的主机由 Microsoft 所有，并提供工作区正常工作所需的服务。
 
-| **主机名** | **目的** |
+| **主机名** | **目标** |
 | ---- | ---- |
 | **\*。 batchai.core.windows.net** | 训练群集 |
 | **ml.azure.com** | Azure 机器学习工作室 |
@@ -55,7 +55,7 @@ Azure 防火墙可用于控制对 Azure 机器学习工作区和公共 internet 
 
 本部分中的主机用于安装 Python 包。 它们在开发、培训和部署过程中是必需的。 
 
-| **主机名** | **目的** |
+| **主机名** | **目标** |
 | ---- | ---- |
 | **anaconda.com** | 安装 conda 包时使用 |
 | **pypi.org** | 安装 pip 包时使用 |
@@ -67,7 +67,7 @@ Azure 防火墙可用于控制对 Azure 机器学习工作区和公共 internet 
 > [!IMPORTANT]
 > 在内部，R SDK for Azure 机器学习使用 Python 包。 因此，你还必须通过防火墙允许 Python 主机。
 
-| **主机名** | **目的** |
+| **主机名** | **目标** |
 | ---- | ---- |
 | **cloud.r-project.org** | 安装 CRAN 包时使用。 |
 

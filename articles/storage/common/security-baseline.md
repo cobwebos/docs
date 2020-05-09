@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 184b60f6147089cbdfd855b473b3346d021f7fbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92f2102d8d6353da2002a4ee9d5bfbe57a774e10
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176594"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792065"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure 存储的 azure 安全基线
 
@@ -20,11 +20,11 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 此服务的基线取自[Azure 安全基准1.0 版](https://docs.microsoft.com/azure/security/benchmarks/overview)，其中提供了有关如何在 Azure 上利用我们的最佳实践指南来保护云解决方案的建议。
 
-有关详细信息，请参阅 [Azure 安全基线概述](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)。
+有关详细信息，请参阅[Azure 安全基线概述](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)。
 
 ## <a name="network-security"></a>网络安全
 
-有关详细信息，请参阅[安全控制：  网络安全性](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)。
+*有关详细信息，请参阅[安全控制：网络安全](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)。*
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1：在虚拟网络中使用网络安全组或 Azure 防火墙保护资源
 
@@ -60,7 +60,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保护关键 Web 应用程序
 
-**指南**：不适用;建议适用于在 Azure App Service 或计算资源上运行的 web 应用程序。
+**指导**：不适用；建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -82,7 +82,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 **指南**：网络观察程序数据包捕获允许您创建捕获会话以跟踪存储帐户和虚拟机之间的流量。 为捕获会话提供了筛选器以确保仅捕获所需的流量。 数据包捕获有助于以主动和被动方式诊断网络异常。 其他用途包括收集网络统计信息，获得网络入侵信息，调试客户端与服务器之间的通信，等等。 远程触发数据包捕获能够减轻在所需虚拟机上手动运行数据包捕获的负担，并节省宝贵的时间。 
 
-- [在门户中使用 Azure 网络观察程序管理数据包捕获](https://docs.microsoft.comazure/network-watcher/network-watcher-packet-capture-manage-portal)
+- [在门户中使用 Azure 网络观察程序管理数据包捕获](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-manage-portal)
 
 **Azure 安全中心监视**：是
 
@@ -100,7 +100,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 ### <a name="17-manage-traffic-to-your-web-applications"></a>1.7：管理 web 应用程序的流量
 
-**指南**：不适用;建议适用于在 Azure App Service 或计算资源上运行的 web 应用程序。
+**指导**：不适用；建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -108,7 +108,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：最大程度地降低网络安全规则的复杂性和管理开销
 
-**指南**：对于需要访问你的存储帐户的虚拟网络中的资源，请使用配置的虚拟网络的虚拟网络服务标记来定义网络安全组或 Azure 防火墙上的网络访问控制。 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 通过在规则的相应 "源" 或 "目标" 字段中指定服务标记名称（例如 "存储"），可以允许或拒绝相应服务的流量。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。 
+**指南**：对于需要访问你的存储帐户的虚拟网络中的资源，请使用配置的虚拟网络的虚拟网络服务标记来定义网络安全组或 Azure 防火墙上的网络访问控制。 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 通过在规则的相应 "源" 或 "目标" 字段中指定服务标记名称（例如 "存储"），可以允许或拒绝相应服务的流量。 Microsoft 管理服务标记包含的地址前缀，并在地址更改时自动更新服务标记。 
 
 如果需要将网络访问的作用域限定为特定的存储帐户，请使用虚拟网络服务终结点策略。
 
@@ -116,7 +116,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 - [有关 Azure 存储的虚拟网络服务终结点策略的详细信息](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：服务
 
@@ -148,13 +148,13 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 - [如何创建使用安全配置的 NSG](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自动工具来监视网络资源配置和检测更改
 
-**指南**：使用 Azure 策略记录网络资源的配置更改。 在 Azure Monitor 中创建警报，以便在对关键网络资源进行更改时触发。 
+**指南**：使用 Azure 策略记录网络资源的配置更改。 在 Azure Monitor 中创建当关键网络资源发生更改时触发的警报。 
 
 - [如何配置和管理 Azure 策略](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -166,7 +166,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
-*有关详细信息，请参阅[安全控制：日志记录和监视](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)。*
+有关详细信息，请参阅[安全控制：  日志记录和监视](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)。
 
 ### <a name="21-use-approved-time-synchronization-resource"></a>2.1：使用批准的时间同步资源
 
@@ -192,13 +192,13 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 - [如何配置 Azure 存储帐户的监视](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-monitoring-for-a-storage-account)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2.4：从操作系统收集安全日志
 
-**指南**：不适用;此建议用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -212,7 +212,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 - [更改中的数据保持期 Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
@@ -226,7 +226,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 - [如何启用高级威胁防护](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
@@ -262,13 +262,13 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 - [使用 DNS Analytics 预览解决方案收集有关 DNS 基础结构的见解](https://docs.microsoft.com/azure/azure-monitor/insights/dns-analytics)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
 ### <a name="210-enable-command-line-audit-logging"></a>2.10：启用命令行审核日志记录
 
-**指南**：不适用;基准测试用于计算资源。
+**指导**：不适用；基准适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -312,7 +312,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 - [Privileged Identity Management 概述](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
@@ -326,7 +326,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 - [使用 Azure Active Directory 授予对 Blob 和队列的访问权限](https://docs.microsoft.com/azure/storage/common/storage-auth-aad)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
@@ -374,7 +374,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 - [如何在 Azure 中配置命名位置](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
@@ -392,7 +392,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 - [使用共享访问签名 (SAS) 授予对 Azure 存储资源的受限访问权限](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
@@ -418,7 +418,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 - [管理存储帐户访问密钥](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
@@ -434,7 +434,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 - [如何配置 Azure 存储帐户的指标警报](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
@@ -448,7 +448,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 - [如何载入 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
@@ -472,7 +472,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 - [如何创建和使用标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
@@ -506,7 +506,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 - [了解 Azure 中的客户数据保护](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
@@ -522,13 +522,13 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 **责任**：共享
 
-### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5：使用活动发现工具识别敏感数据
+### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5：使用有效的发现工具识别敏感数据
 
 **指南**：对于 Azure 存储帐户和相关资源，数据标识功能尚不可用。 如果需要，请实现第三方解决方案以实现符合性。 
 
 - [了解 Azure 中的客户数据保护](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
@@ -546,13 +546,13 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 - [授权访问 Azure 存储中的数据](https://docs.microsoft.com/azure/storage/common/storage-auth)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7：使用基于主机的数据丢失防护来强制实施访问控制
 
-**指南**：不适用;此建议用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -568,7 +568,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 **责任**：客户
 
-### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：对关键 Azure 资源的更改进行记录和警报
+### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：记录对关键 Azure 资源的更改并对此类更改发出警报
 
 **指南**：将 Azure Monitor 与 Azure 活动日志结合使用，以创建有关存储帐户资源发生更改的警报。 还可以启用 Azure 存储日志记录，以跟踪对 Azure 存储的每个请求的授权方式。 日志可指示请求是匿名提出的，还是使用 OAuth 2.0 令牌、共享密钥或共享访问签名 (SAS) 提出的。 此外，使用 Azure Monitor 可以使用匿名身份验证条件来对存储帐户的匿名访问进行警报。
 
@@ -578,7 +578,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 - [如何配置 Azure 存储帐户的指标警报](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
@@ -598,7 +598,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2：部署自动操作系统修补程序管理解决方案
 
-**指南**：不适用;此建议用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -606,7 +606,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3：部署自动第三方软件修补程序管理解决方案
 
-**指南**：不适用;此建议用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -644,7 +644,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 - [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
@@ -654,13 +654,13 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 - [如何创建和使用标记](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：删除未经授权的 Azure 资源
 
-**指南**：使用标记、管理组和单独的订阅（如果适用）来组织和跟踪存储帐户和相关资源。 定期协调清点，并确保及时地从订阅中删除未经授权的资源。 
+**指南**：使用标记、管理组和单独的订阅（如果适用）来组织和跟踪存储帐户和相关资源。 定期核对清单，确保及时地从订阅中删除未经授权的资源。 
 
 此外，请使用 Azure 存储的高级威胁防护来检测未经授权的 Azure 资源。 
 
@@ -687,12 +687,12 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：监视未经批准的 Azure 资源
 
-**指南**：使用 Azure 策略将限制添加到可使用以下内置策略定义在客户订阅中创建的资源类型： 
+**指导**：在 Azure Policy 中使用以下内置策略定义，对可以在客户订阅中创建的资源类型施加限制： 
 
  - 不允许的资源类型 
  - 允许的资源类型 
 
-此外，使用 Azure 资源关系图来查询/发现订阅中的资源。 这可以帮助实现基于高安全性的环境，如具有存储帐户的环境。 
+此外，请使用 Azure Resource Graph 来查询/发现订阅中的资源。 这可以帮助实现基于高安全性的环境，如具有存储帐户的环境。 
 
 - [如何配置和管理 Azure 策略](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -704,7 +704,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6：监视计算资源中未经批准的软件应用程序
 
-**指南**：不适用;此建议用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -720,9 +720,9 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 **责任**：客户
 
-### <a name="68-use-only-approved-applications"></a>6.8：仅使用批准的应用程序
+### <a name="68-use-only-approved-applications"></a>6.8：仅使用已批准的应用程序
 
-**指南**：不适用;此建议用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -730,7 +730,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9：仅使用批准的 Azure 服务
 
-**指南**：使用 Azure 策略将限制添加到可使用以下内置策略定义在客户订阅中创建的资源类型： 
+**指导**：在 Azure Policy 中使用以下内置策略定义，对可以在客户订阅中创建的资源类型施加限制： 
 
 - 不允许的资源类型 
 - 允许的资源类型 
@@ -743,9 +743,9 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 **责任**：客户
 
-### <a name="610-implement-approved-application-list"></a>6.10：实现已批准的应用程序列表
+### <a name="610-implement-approved-application-list"></a>6.10：实施已批准的应用程序列表
 
-**指南**：不适用;此建议用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -763,7 +763,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12：限制用户在计算资源中执行脚本的能力
 
-**指南**：不适用;此建议用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -799,7 +799,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 ### <a name="72-establish-secure-configurations-for-your-operating-system"></a>7.2：建立适用于你的操作系统的安全配置
 
-**指南**：不适用;此建议用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -819,7 +819,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 ### <a name="74-maintain-secure-configurations-for-operating-systems"></a>7.4：维护操作系统的安全配置
 
-**指南**：不适用;此建议用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -839,7 +839,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6：安全存储自定义操作系统映像
 
-**指南**：不适用;此建议用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -847,7 +847,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 ### <a name="77-deploy-system-configuration-management-tools"></a>7.7：部署系统配置管理工具
 
-**指南**：利用 Azure 策略来对存储帐户进行警报、审核和强制实施系统配置。 此外，开发用于管理策略异常的进程和管道。 
+**指南**：利用 Azure 策略来对存储帐户进行警报、审核和强制实施系统配置。 另外，开发一个用于管理策略例外的流程和管道。 
 
 - [如何配置和管理 Azure 策略](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -857,7 +857,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 ### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8：部署适用于操作系统的系统配置管理工具
 
-**指南**：不适用;此建议用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -875,7 +875,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10：为操作系统实现自动配置监视
 
-**指南**：不适用;此建议用于计算资源。
+**指导**：不适用；此建议适用于计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -887,7 +887,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 此外，经常会定期轮换存储帐户密钥，以限制丢失或泄露存储帐户密钥的影响。
 
-- [静态数据的 Azure 存储加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
+- [适用于静态数据的 Azure 存储加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
 
 - [管理存储帐户访问密钥](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage)
 
@@ -901,13 +901,13 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 - [如何使用托管标识授予对 Azure blob 和队列数据的访问权限](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
-### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除意外的凭据公开
+### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除意外的凭据透露
 
-**指南**：通过实现凭据扫描器来识别代码中的凭据。 凭据扫描器还鼓励将发现的凭据迁移到更安全的位置，例如 Azure Key Vault。 
+**指导**：实施凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。 
 
 - [如何设置凭据扫描器](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
@@ -921,13 +921,13 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反恶意软件
 
-**指南**：不适用;此建议用于计算资源。 Microsoft 处理底层平台的反恶意软件。
+**指导**：不适用；此建议适用于计算资源。 Microsoft 处理底层平台的反恶意软件。
 
 **Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预扫描要上载到非计算 Azure 资源的文件
+### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预先扫描要上传到非计算 Azure 资源的文件
 
 **指南**：对 azure 存储使用威胁防护，使用哈希信誉分析来检测恶意软件上传到 Azure 存储，并使用活动 Tor 出口节点（匿名代理）进行可疑访问。 
 
@@ -941,7 +941,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8.3：确保更新反恶意软件和签名
 
-**指南**：不适用;此建议用于计算资源。 Microsoft 处理底层平台的反恶意软件。
+**指导**：不适用；此建议适用于计算资源。 Microsoft 处理底层平台的反恶意软件。
 
 **Azure 安全中心监视**：不适用
 
@@ -1040,9 +1040,9 @@ AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAcco
 
 ### <a name="102-create-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件计分和优先级过程
 
-**指南**：安全中心为每个警报分配一个严重性，以帮助你确定应该首先调查的警报的优先级。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。 
+**指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。 
 
-此外，清楚地标记订阅（例如 生产、非生产）使用标记并创建命名系统，以便清晰地识别和分类 Azure 资源，尤其是处理敏感数据的资源。 根据发生事件的 Azure 资源和环境的严重程度确定警报修正的优先级。
+此外，请明确标记订阅（例如 生产、非生产）使用标记并创建命名系统，以便清晰地识别和分类 Azure 资源，尤其是处理敏感数据的资源。 根据发生事件的 Azure 资源和环境的严重程度确定警报修正的优先级。
 
 - [Azure 安全中心的安全警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
 
@@ -1054,7 +1054,7 @@ AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAcco
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指导**：执行试验以测试定期事件的事件响应功能，以帮助保护 Azure 资源。 确定薄弱点和间隙，并根据需要修改计划。
+**指导**：执行试验以测试定期事件的事件响应功能，以帮助保护 Azure 资源。 识别弱点和差距，并根据需要修改计划。
 
 - [NIST 发布指南，适用于 IT 计划和功能的测试、培训和试验计划](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
@@ -1080,7 +1080,7 @@ AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAcco
 
 - [如何将警报流式传输到 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
@@ -1090,7 +1090,7 @@ AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAcco
 
 - [如何配置工作流自动化和逻辑应用](https://docs.microsoft.com/azure/security-center/workflow-automation)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 

@@ -1,28 +1,35 @@
 ---
-title: 适用于 Async Java 的 Azure Cosmos DB 性能提示
-description: 了解用于提高 Azure Cosmos 数据库性能的客户端配置选项
-author: SnehaGunda
+title: Azure Cosmos DB Async Java SDK v2 的性能提示
+description: 了解用于提高 Async Java SDK v2 的 Azure Cosmos 数据库性能的客户端配置选项
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.author: sngun
-ms.openlocfilehash: b892b1f4ff73679ab425d0e97f5361e0f3712252
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/08/2020
+ms.author: anfeldma
+ms.openlocfilehash: 1a3ec22b9d1375f1c438d24791389284c1d4ee84
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80549193"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982541"
 ---
-# <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>适用于 Azure Cosmos DB 和 Async Java 的性能提示
+# <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Azure Cosmos DB Async Java SDK v2 的性能提示
 
 > [!div class="op_single_selector"]
-> * [异步 Java](performance-tips-async-java.md)
-> * [Java](performance-tips-java.md)
+> * [Java SDK v4](performance-tips-java-sdk-v4-sql.md)
+> * [Async Java SDK v2](performance-tips-async-java.md)
+> * [同步 Java SDK v2](performance-tips-java.md)
 > * [.NET](performance-tips.md)
 > 
 
-Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供延迟与吞吐量保证的情况下无缝缩放。 凭借 Azure Cosmos DB，无需对体系结构进行重大更改或编写复杂的代码即可缩放数据库。 扩展和缩减操作就像执行单个 API 调用或 SDK 方法调用一样简单。 但是，由于 Azure Cosmos DB 是通过网络调用访问的，因此，使用 [SQL Async Java SDK](sql-api-sdk-async-java.md) 时，可以通过客户端优化来获得最高性能。
+> [!IMPORTANT]  
+> 这*不*是最新的 Java SDK for Azure Cosmos DB！ 请考虑将 Azure Cosmos DB Java SDK v4 用于项目。 若要升级，请按照[迁移到 Azure Cosmos DB JAVA SDK v4](migrate-java-v4-sdk.md)指南和[反应器 vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md)指南中的说明进行操作。 
+> 
+> 本文中的性能提示仅适用于 Azure Cosmos DB Async Java SDK v2。 有关详细信息，请参阅 Azure Cosmos DB Async Java SDK v2[发行说明](sql-api-sdk-async-java.md)、 [Maven 存储库](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)和 Azure Cosmos DB Async java sdk v2[疑难解答指南](troubleshoot-java-async-sdk.md)。
+>
+
+Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供延迟与吞吐量保证的情况下无缝缩放。 凭借 Azure Cosmos DB，无需对体系结构进行重大更改或编写复杂的代码即可缩放数据库。 扩展和缩减操作就像执行单个 API 调用或 SDK 方法调用一样简单。 但是，由于通过网络调用访问 Azure Cosmos DB，因此，在使用[Azure Cosmos DB Async JAVA SDK v2](sql-api-sdk-async-java.md)时，可以通过客户端优化来实现最高性能。
 
 如果有“如何改善数据库性能？”的疑问， 请考虑以下选项：
 
@@ -31,15 +38,17 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 * **连接模式：使用直接模式**
 <a id="direct-connection"></a>
     
-    客户端连接到 Azure Cosmos DB 对性能有重要影响，特别是在客户端延迟方面。 *ConnectionMode*是可用于配置客户端*ConnectionPolicy*的密钥配置设置。 对于 Async Java SDK，两个可用的 Connectionmode 是：  
+    客户端连接到 Azure Cosmos DB 的方式对性能有重大影响（尤其在客户端延迟方面）。 ConnectionMode 是可用于配置客户端 ConnectionPolicy 的关键配置设置   。 对于 Azure Cosmos DB Async Java SDK v2，两个可用的 Connectionmode 是：  
       
     * [网关（默认值）](/java/api/com.microsoft.azure.cosmosdb.connectionmode)  
     * [直接](/java/api/com.microsoft.azure.cosmosdb.connectionmode)
 
-    网关模式受所有 SDK 平台的支持，默认情况下它是配置的选项。 如果你的应用程序在具有严格防火墙限制的企业网络中运行，则网关模式是最佳选择，因为它使用标准 HTTPS 端口和单个终结点。 但是，对于性能的影响是每次在 Azure Cosmos DB 中读取或写入数据时，网关模式都涉及到额外的网络跃点。 因此，由于网络跃点较少，直接模式提供更好的性能。
+    网关模式受所有 SDK 平台支持，默认情况下，它是已配置的选项。 如果应用程序在有严格防火墙限制的企业网络中运行，则网关模式是最佳选择，因为它使用标准 HTTPS 端口与单个终结点。 但是，对于性能的影响是每次在 Azure Cosmos DB 中读取或写入数据时，网关模式都涉及到额外的网络跃点。 因此，由于涉及的网络跃点较少，直接模式会提供更好的性能。
 
-    *ConnectionMode*是在*DocumentClient*实例和*ConnectionPolicy*参数的构造过程中配置的。
-    
+    ConnectionMode 是在构造 DocumentClient 实例期间使用 ConnectionPolicy 参数配置的    。
+
+    ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-connectionpolicy"></a>Async Java SDK V2 （Maven：： azure-cosmosdb）
+
     ```java
         public ConnectionPolicy getConnectionPolicy() {
           ConnectionPolicy policy = new ConnectionPolicy();
@@ -52,18 +61,18 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
         DocumentClient client = new DocumentClient(HOST, MASTER_KEY, connectionPolicy, null);
     ```
 
-* **归置同一 Azure 区域中的客户端性能**<a id="same-region"></a>
+* **将客户端并置在同一 Azure 区域内以提高性能** <a id="same-region"></a>
 
-    如果可能，请将任何调用 Azure Cosmos DB 的应用程序放在与 Azure Cosmos 数据库所在的相同区域中。 通过大致的比较发现，在同一区域中对 Azure Cosmos DB 的调用可在 1-2 毫秒内完成，而美国西海岸和美国东海岸之间的延迟则大于 50 毫秒。 根据请求采用的路由，各项请求从客户端传递到 Azure 数据中心边界时的此类延迟可能有所不同。 通过确保在与预配 Azure Cosmos DB 终结点所在的同一 Azure 区域中调用应用程序，可能会实现最低的延迟。 有关可用区域的列表，请参阅[Azure 区域](https://azure.microsoft.com/regions/#services)。
+    如果可能，请将任何调用 Azure Cosmos DB 的应用程序放在与 Azure Cosmos 数据库所在的相同区域中。 通过大致的比较发现，在同一区域中对 Azure Cosmos DB 的调用可在 1-2 毫秒内完成，而美国西海岸和美国东海岸之间的延迟则大于 50 毫秒。 根据请求采用的路由，各项请求从客户端传递到 Azure 数据中心边界时的此类延迟可能有所不同。 通过确保在与预配 Azure Cosmos DB 终结点所在的同一 Azure 区域中调用应用程序，可能会实现最低的延迟。 有关可用区域的列表，请参阅 [Azure Regions](https://azure.microsoft.com/regions/#services)（Azure 区域）。
 
     ![Azure Cosmos DB 连接策略演示](./media/performance-tips/same-region.png)
 
 ## <a name="sdk-usage"></a>SDK 用法
 * **安装最新的 SDK**
 
-    Azure Cosmos DB SDK 正在不断改进以提供最佳性能。 请参阅 [Azure Cosmos DB SDK](sql-api-sdk-async-java.md) 页以了解最新的 SDK 并查看改进内容。
+    Azure Cosmos DB SDK 正在不断改进以提供最佳性能。 请参阅 Azure Cosmos DB Async Java SDK v2[发行说明](sql-api-sdk-async-java.md)页，以确定最新的 SDK 并查看改进。
 
-* **在应用程序的生存期内使用单一实例 Azure Cosmos DB 客户端**
+* **在应用程序生存期内使用单一实例 Azure Cosmos DB 客户端**
 
     每个 AsyncDocumentClient 实例都是线程安全的，可执行高效的连接管理和地址缓存。 若要通过 AsyncDocumentClient 获得高效的连接管理和更好的性能，建议在应用程序生存期内对每个 AppDomain 使用单个 AsyncDocumentClient 实例。
 
@@ -71,67 +80,67 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
 * **优化 ConnectionPolicy**
 
-    默认情况下，使用 Async Java SDK 时，直接模式 Cosmos DB 通过 TCP 进行请求。 在内部，SDK 使用特殊的直接模式体系结构来动态管理网络资源并获得最佳性能。
+    默认情况下，使用 Azure Cosmos DB Async Java SDK v2 时，直接模式 Cosmos DB 通过 TCP 进行请求。 在内部，SDK 使用特殊的直接模式体系结构来动态管理网络资源并获得最佳性能。
 
-    在 Async Java SDK 中，直接模式是提高大多数工作负荷的数据库性能的最佳选择。 
+    在 Azure Cosmos DB Async Java SDK v2 中，直接模式是在大多数工作负载下提高数据库性能的最佳选择。 
 
     * ***直接模式概述***
 
-        ![直接模式体系结构的图示](./media/performance-tips-async-java/rntbdtransportclient.png)
+        ![直接模式体系结构插图](./media/performance-tips-async-java/rntbdtransportclient.png)
 
-        直接模式中采用的客户端体系结构支持可预测的网络利用率，并可对 Azure Cosmos DB 副本进行多路复用。 上图显示了直接模式如何将客户端请求路由到 Cosmos DB 后端中的副本。 直接模式体系结构在每个数据库副本的客户端分配最多10个**通道**。 通道是前面带有请求缓冲区的 TCP 连接，其中30个请求深度为30个。 属于副本的通道根据副本的**服务终结点**的需要动态分配。 当用户在直接模式下发出请求时， **TransportClient**会根据分区键将请求路由到相应的服务终结点。 **请求队列**会在服务终结点之前缓冲请求。
+        在直接模式下采用的客户端体系结构使得网络利用率可预测，并实现对 Azure Cosmos DB 副本的多路访问。 上图显示了直接模式如何将客户端请求路由到 Cosmos DB 后端中的副本。 直接模式体系结构在客户端上为每个数据库副本最多分配 10 个通道  。 一个通道是前面带有请求缓冲区（深度为 30 个请求）的 TCP 连接。 属于某个副本的通道由该副本的服务终结点按需动态分配  。 当用户在直接模式下发出请求时，TransportClient 会根据分区键将请求路由到适当的服务终结点  。 请求队列在服务终结点之前缓冲请求  。
 
     * ***直接模式的 ConnectionPolicy 配置选项***
 
-        第一步，请使用下面的推荐配置设置。 如果遇到本主题中的问题，请联系[Azure Cosmos DB 团队](mailto:CosmosDBPerformanceSupport@service.microsoft.com)。
+        第一步是使用下面推荐的配置设置。 如果遇到有关此特定主题方面的问题，请与 [Azure Cosmos DB 团队](mailto:CosmosDBPerformanceSupport@service.microsoft.com)联系。
 
-        如果使用 Azure Cosmos DB 作为引用数据库（即，数据库用于多个点读取操作和少量写入操作），则将*idleEndpointTimeout*设置为0（即无超时）可能是可以接受的。
+        如果使用 Azure Cosmos DB 作为参考数据库（即，该数据库用于多个点读取操作和少量的写入操作），可以接受将 idleEndpointTimeout 设置为 0（即无超时）  。
 
 
         | 配置选项       | 默认    |
         | :------------------:       | :-----:    |
         | bufferPageSize             | 8192       |
         | connectionTimeout          | “PT1M”     |
-        | idleChannelTimeout         | PT0S     |
+        | idleChannelTimeout         | "PT0S"     |
         | idleEndpointTimeout        | "PT1M10S"  |
         | maxBufferCapacity          | 8388608    |
         | maxChannelsPerEndpoint     | 10         |
         | maxRequestsPerChannel      | 30         |
         | receiveHangDetectionTime   | "PT1M5S"   |
-        | requestExpiryInterval      | PT5S     |
+        | requestExpiryInterval      | "PT5S"     |
         | requestTimeout             | “PT1M”     |
-        | requestTimerResolution     | "PT 0.5 S"   |
+        | requestTimerResolution     | "PT0.5S"   |
         | sendHangDetectionTime      | "PT10S"    |
-        | shutdownTimeout            | PT15S    |
+        | shutdownTimeout            | "PT15S"    |
 
     * ***直接模式的编程提示***
 
-        查看 Azure Cosmos DB [Async JAVA SDK 故障排除](troubleshoot-java-async-sdk.md)文章，作为解决任何异步 java sdk 问题的基线。
+        查看 Azure Cosmos DB Async Java SDK v2[疑难解答](troubleshoot-java-async-sdk.md)文章作为解决任何 SDK 问题的基线。
 
-        使用直接模式时的一些重要编程技巧：
+        使用直接模式时的一些重要编程提示：
 
-        + **在应用程序中使用多线程处理以实现高效的 TCP 数据传输**-发出请求后，应用程序应订阅以接收其他线程上的数据。 如果未执行此操作，则不会强制执行 "半双工" 操作，并且后续请求会被阻止，等待上一个请求的答复。
+        + **在应用程序中使用多线程以高效进行 TCP 数据传输** - 发出请求后，应用程序应订阅接收另一线程上的数据。 否则就会强制执行非预期的“半双工”操作，后续请求会被阻止并等待上一个请求的回复。
 
-        + **在专用线程上执行计算密集型工作负荷**-出于类似于上一提示的类似原因，复杂数据处理等操作最好放置在单独的线程中。 请求从另一个数据存储提取数据（例如，如果线程同时利用 Azure Cosmos DB 和 Spark 数据存储）可能会导致延迟，并且建议生成一个等待其他数据存储的响应的其他线程。
+        + **在专用线程上执行计算密集型工作负荷** - 出于类似于上一提示的原因，最好是将复杂数据处理等操作放置在单独的线程中。 从另一数据存储提取数据的请求（例如，如果线程同时利用 Azure Cosmos DB 和 Spark 数据存储）可能会遇到延迟增大的情况，建议生成一个等待其他数据存储做出响应的附加线程。
 
-            + Async Java SDK 中的基础网络 IO 由 Netty 管理，请参阅这些[提示以避免阻止 NETTY IO 线程的编码模式](troubleshoot-java-async-sdk.md#invalid-coding-pattern-blocking-netty-io-thread)。
+            + Azure Cosmos DB Async Java SDK v2 中的基础网络 IO 由 Netty 管理，请参阅这些[提示以避免阻止 NETTY IO 线程的编码模式](troubleshoot-java-async-sdk.md#invalid-coding-pattern-blocking-netty-io-thread)。
 
-        + **数据建模**-Azure Cosmos DB SLA 假定文档大小小于1kb。 优化你的数据模型和编程以支持较小的文档大小通常会导致延迟下降。 如果需要存储和检索大于1KB 的文档，建议使用的方法是将文档链接到 Azure Blob 存储中的数据。
+        + **数据建模** - Azure Cosmos DB SLA 假定文档大小小于 1KB。 优化数据模型和编程以优先使用较小的文档大小，往往可以减小延迟。 如果需要存储和检索大于 1KB 的文档，建议的方法是在文档中链接到 Azure Blob 存储中的数据。
 
 
 * **优化分区集合的并行查询。**
 
-    Azure Cosmos DB SQL 异步 Java SDK 支持并行查询，使你能够并行查询分区集合。 有关详细信息，请参阅与使用这些 SDK 相关的[代码示例](https://github.com/Azure/azure-cosmosdb-java/tree/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples)。 并行查询旨改善查询延迟和串行配对物上的吞吐量。
+    Azure Cosmos DB Async Java SDK v2 支持并行查询，这使你能够并行查询分区集合。 有关详细信息，请参阅与使用这些 SDK 相关的[代码示例](https://github.com/Azure/azure-cosmosdb-java/tree/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples)。 并行查询旨改善查询延迟和串行配对物上的吞吐量。
 
     * ***优化 setMaxDegreeOfParallelism\:***
     
         并行查询的工作原理是并行查询多个分区。 但就查询本身而言，会按顺序提取单个已分区集合中的数据。 因此，通过使用 setMaxDegreeOfParallelism 设置分区数，最有可能实现查询的最高性能，但前提是所有其他系统条件仍保持不变。 如果不知道分区数，可使用 setMaxDegreeOfParallelism 设置一个较高的数值，系统会选择最小值（分区数、用户输入）作为最大并行度。
 
-        请务必注意：如果数据能均匀地分散在与查询相关的所有分区上，并行查询就能带来最大的好处。 如果对分区集合进行分区，其中全部或大部分查询所返回的数据集中于几个分区（最坏的情况下为一个分区），则这些分区将遇到查询的性能瓶颈。
+        必须注意，如果查询时数据均衡分布在所有分区之间，则并行查询可提供最大的优势。 如果对分区集合进行分区，其中全部或大部分查询所返回的数据集中于几个分区（最坏的情况下为一个分区），则这些分区会遇到查询的性能瓶颈。
 
     * ***优化 setMaxBufferedItemCount\:***
     
-        并行查询专用于在客户端处理当前结果批时预提取结果。 预提取帮助改进查询中的的总体延迟。 setMaxBufferedItemCount 会限制预提取结果的数目。 通过将 setMaxBufferedItemCount 设置为预期返回的结果数（或较高的数值），可使查询从预提取获得最大的好处。
+        并行查询设计为当客户端正在处理当前结果批时预提取结果。 预提取帮助改进查询中的的总体延迟。 setMaxBufferedItemCount 会限制预提取结果的数目。 通过将 setMaxBufferedItemCount 设置为预期返回的结果数（或较高的数值），可使查询从预提取获得最大的好处。
 
         预提取的工作方式不因 MaxDegreeOfParallelism 而异，并且有一个单独的缓冲区用来存储所有分区的数据。
 
@@ -159,9 +168,11 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
 * **使用相应的计划程序（避免窃取事件循环 IO Netty 线程）**
 
-    Async Java SDK 对非阻塞 IO使用 [netty](https://netty.io/)。 SDK 使用固定数量的 IO netty 事件循环线程（数量与计算机提供的 CPU 核心数相同）来执行 IO 操作。 API 返回的可观测对象针对某个共享的 IO 事件循环 netty 线程发出结果。 因此，切勿阻塞共享的 IO 事件循环 netty 线程。 针对 IO 事件循环 netty 线程执行 CPU 密集型工作或者阻塞操作可能导致死锁，或大大减少 SDK 吞吐量。
+    Azure Cosmos DB Async Java SDK v2 将[netty](https://netty.io/)用于非阻止 IO。 SDK 使用固定数量的 IO netty 事件循环线程（数量与计算机提供的 CPU 核心数相同）来执行 IO 操作。 API 返回的可观测对象针对某个共享的 IO 事件循环 netty 线程发出结果。 因此，切勿阻塞共享的 IO 事件循环 netty 线程。 针对 IO 事件循环 netty 线程执行 CPU 密集型工作或者阻塞操作可能导致死锁，或大大减少 SDK 吞吐量。
 
     例如，以下代码针对事件循环 IO netty 线程执行 CPU 密集型工作：
+
+    ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-noscheduler"></a>Async Java SDK V2 （Maven：： azure-cosmosdb）
 
     ```java
     Observable<ResourceResponse<Document>> createDocObs = asyncDocumentClient.createDocument(
@@ -178,6 +189,8 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
     ```
 
     收到结果后，如果想要针对结果执行 CPU 密集型工作，应避免针对事件循环 IO netty 线程执行。 可以提供自己的计划程序，以提供自己的线程来运行工作。
+
+    ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-scheduler"></a>Async Java SDK V2 （Maven：： azure-cosmosdb）
 
     ```java
     import rx.schedulers;
@@ -196,13 +209,13 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
       });
     ```
 
-    根据工作的类型，应该使用相应的现有 RxJava 计划程序来执行工作。 在此处[``Schedulers``](http://reactivex.io/RxJava/1.x/javadoc/rx/schedulers/Schedulers.html)阅读。
+    根据工作的类型，应该使用相应的现有 RxJava 计划程序来执行工作。 请阅读 [``Schedulers``](http://reactivex.io/RxJava/1.x/javadoc/rx/schedulers/Schedulers.html)。
 
-    有关详细信息，请查看适用于 Async Java SDK 的[GitHub 页面](https://github.com/Azure/azure-cosmosdb-java)。
+    有关详细信息，请查看 Azure Cosmos DB Async Java SDK v2 的[GitHub 页面](https://github.com/Azure/azure-cosmosdb-java)。
 
 * **禁用 netty 的日志记录**
 
-    Netty 库日志记录很多，需要关闭（禁止登录配置可能不足）以避免额外的 CPU 开销。 如果不处于调试模式，请一起禁用 netty 日志记录。 因此，如果要使用 log4j 来消除 netty 中 ``org.apache.log4j.Category.callAppenders()`` 产生的额外 CPU 开销，请将以下行添加到基代码：
+    Netty 库日志记录非常琐碎，因此需要将其关闭（在配置中禁止登录可能并不足够），以避免产生额外的 CPU 开销。 如果不处于调试模式，请一起禁用 netty 日志记录。 因此，如果要使用 log4j 来消除 netty 中 ``org.apache.log4j.Category.callAppenders()`` 产生的额外 CPU 开销，请将以下行添加到基代码：
 
     ```java
     org.apache.log4j.Logger.getLogger("io.netty").setLevel(org.apache.log4j.Level.OFF);
@@ -232,7 +245,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
 * **使用 netty 的本机 TLS/SSL 实现**
 
-    Netty 可以直接将 OpenSSL 用于 TLS 实现堆栈，以获得更好的性能。 如果没有此配置，netty 将回退到 Java 的默认 TLS 实现。
+    Netty 可以直接对 TLS 实现堆栈使用 OpenSSL，以获得更好的性能。 如果没有此配置，netty 将回退到 Java 的默认 TLS 实现。
 
     在 Ubuntu 上：
     ```bash
@@ -256,7 +269,9 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
  
 * **从索引中排除未使用的路径以加快写入速度**
 
-    Azure Cosmos DB 的索引策略允许使用索引路径（setIncludedPaths 和 setExcludedPaths）指定要在索引中包括或排除的文档路径。 在事先知道查询模式的方案中，使用索引路径可改善写入性能并降低索引存储空间，因为索引成本与索引的唯一路径数目直接相关。 例如，下面的代码演示如何使用 "*" 通配符从索引中排除文档的整个部分（也称为子树）。
+    Azure Cosmos DB 的索引策略允许使用索引路径（setIncludedPaths 和 setExcludedPaths）指定要在索引中包括或排除的文档路径。 在事先知道查询模式的方案中，使用索引路径可改善写入性能并降低索引存储空间，因为索引成本与索引的唯一路径数目直接相关。 例如，以下代码演示如何使用“*”通配符从索引编制中排除文档的整个部分（也称为子树）。
+
+    ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-indexing"></a>Async Java SDK V2 （Maven：： azure-cosmosdb）
 
     ```Java
     Index numberIndex = Index.Range(DataType.Number);
@@ -268,7 +283,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
     collectionDefinition.setIndexingPolicy(indexingPolicy);
     ```
 
-    有关详细信息，请参阅 [Azure Cosmos DB 索引策略](indexing-policies.md)。
+    有关索引的详细信息，请参阅 [Azure Cosmos DB 索引策略](indexing-policies.md)。
 
 ## <a name="throughput"></a>吞吐量
 <a id="measure-rus"></a>
@@ -283,6 +298,8 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
     若要测量任何操作（创建、更新或删除）的开销，请检查 [x-ms-request-charge](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) 标头来测量这些操作占用的请求单位数。 还可以查看 ResourceResponse\<T> 或 FeedResponse\<T> 中等效的 RequestCharge 属性。
 
+    ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-requestcharge"></a>Async Java SDK V2 （Maven：： azure-cosmosdb）
+
     ```Java
     ResourceResponse<Document> response = asyncClient.createDocument(collectionLink, documentDefinition, null,
                                                      false).toBlocking.single();
@@ -294,7 +311,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 <a id="429"></a>
 * **处理速率限制/请求速率太大**
 
-    当客户端尝试超过帐户保留的吞吐量时，服务器的性能不会降低，并且不使用超过保留级别的吞吐量容量。 服务器将抢先结束 RequestRateTooLarge（HTTP 状态代码 429）的请求并返回 [x-ms-retry-after-ms](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) 标头，该标头指示重新尝试请求前用户必须等待的时间量（以毫秒为单位）。
+    客户端尝试超过帐户保留的吞吐量时，服务器的性能不会降低，并且不会使用超过保留级别的吞吐量容量。 服务器将抢先结束 RequestRateTooLarge（HTTP 状态代码 429）的请求并返回 [x-ms-retry-after-ms](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) 标头，该标头指示重新尝试请求前用户必须等待的时间量（以毫秒为单位）。
 
         HTTP Status 429,
         Status Line: RequestRateTooLarge
@@ -302,7 +319,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
     SDK 全部都会隐式捕获此响应，并遵循服务器指定的 retry-after 标头，并重试请求。 除非多个客户端同时访问帐户，否则下次重试就会成功。
 
-    如果存在多个高于请求速率的请求操作，则客户端当前在内部设置为 9 的默认重试计数可能无法满足需要；在此情况下，客户端就会向应用程序引发 DocumentClientException，其状态代码为 429。 可以通过在 ConnectionPolicy 实例上使用 setRetryOptions 来更改默认重试计数。 默认情况下，如果请求继续以高于请求速率的方式运行，则在 30 秒的累积等待时间后将返回 DocumentClientException 和状态代码 429。 即使当前的重试计数小于最大重试计数（默认值 9 或用户定义的值），也会发生这种情况。
+    如果存在多个高于请求速率的请求操作，则客户端当前在内部设置为 9 的默认重试计数可能无法满足需要；在此情况下，客户端就会向应用程序引发 DocumentClientException，其状态代码为 429。 可以通过在 ConnectionPolicy 实例上使用 setRetryOptions 来更改默认重试计数。 默认情况下，如果请求继续以高于请求速率的方式运行，则在 30 秒的累积等待时间后返回 DocumentClientException 和状态代码 429。 即使当前的重试计数小于最大重试计数（默认值 9 或用户定义的值），也会发生这种情况。
 
     尽管自动重试行为有助于改善大多数应用程序的复原能力和可用性，但是在执行性能基准测试时可能会造成冲突（尤其是在测量延迟时）。 如果实验达到服务器限制并导致客户端 SDK 静默重试，则客户端观测到的延迟会剧增。 若要避免性能实验期间出现延迟高峰，可以测量每个操作返回的费用，并确保请求以低于保留请求速率的方式运行。 有关详细信息，请参阅[请求单位](request-units.md)。
 

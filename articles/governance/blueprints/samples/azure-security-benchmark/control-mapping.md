@@ -3,18 +3,18 @@ title: Azure 安全基准蓝图示例控制
 description: Azure 安全基准蓝图示例到 Azure Policy 的控制映射。
 ms.date: 04/16/2020
 ms.topic: sample
-ms.openlocfilehash: 0f2d24d7d8c9f7ce2568f11b15e65ed1fcd02afb
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: f80b72f06532adef28bf5e5afd1eb94c2e34ee2d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538659"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691307"
 ---
 # <a name="control-mapping-of-the-azure-security-benchmark-blueprint-sample"></a>Azure 安全基准蓝图示例的控制映射
 
-以下文章详细说明了 Azure 蓝图 Azure 安全基准蓝图示例如何映射到 Azure 安全基准控制。 有关控制的详细信息，请参阅 [Azure 安全基准](https://docs.microsoft.com/azure/security/benchmarks/overview)。
+以下文章详细说明了 Azure 蓝图 Azure 安全基准蓝图示例如何映射到 Azure 安全基准控制。 有关控制的详细信息，请参阅 [Azure 安全基准](../../../../security/benchmarks/overview.md)。
 
-以下映射是到 Azure 安全基准  控制的映射。 使用右侧的导航栏可直接跳转到特定的控制映射。 映射的控制是通过 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。   然后，找到并选择“\[预览\]:  审核 Azure 安全基准建议并部署特定的支持 VM 扩展”内置策略计划。
+以下映射是到 Azure 安全基准  控制的映射。 使用右侧的导航栏可直接跳转到特定的控制映射。 映射的控制是通过 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。   然后，找到并选择“ **\[预览\]：** 审核 Azure 安全基准建议并部署特定的支持 VM 扩展”内置策略计划。
 
 > [!IMPORTANT]
 > 下面的每个控件都与一个或多个 [Azure Policy](../../../policy/overview.md) 定义关联。 这些策略可以帮助你[评估控件的符合性](../../../policy/how-to/get-compliance-data.md)；但是，控件与一个或多个策略之间通常不是 1:1 或完全匹配。 因此，Azure Policy 中的符合性  仅引用策略本身；这不确保你完全符合控件的所有要求。 此外，符合性标准可能包含目前未由任何 Azure Policy 定义处理的控制。 因此，Azure Policy 中的符合性只是整体符合性状态的部分视图。 此符合性蓝图示例的控件和 Azure Policy 定义之间的关联可能会随着时间的推移而发生变化。 若要查看更改历史记录，请参阅 [GitHub 提交历史记录](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/azure-security-benchmark/control-mapping.md)。
@@ -67,7 +67,7 @@ ms.locfileid: "81538659"
 
 ## <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11 使用自动化工具监视网络资源配置并检测更改
 
-- 部署必备组件以审核“安全选项 - 网络访问”中的 Windows VM 配置
+- 部署必备组件用于审核“安全选项 - 网络访问”中的 Windows VM 配置
 - 显示“安全选项 - Microsoft 网络客户端”中 Windows VM 配置的审核结果
 - 部署必备组件以审核“安全选项 - 网络安全性”中的 Windows VM 配置
 - 显示“安全选项 - 网络安全性”中 Windows VM 配置的审核结果

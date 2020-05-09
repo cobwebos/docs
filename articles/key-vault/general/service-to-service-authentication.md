@@ -10,12 +10,12 @@ ms.date: 08/28/2019
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: cd630acfd65f0a79c186ba35bc15627bf7ccfdbe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84cf12aa91de72ae54e63f2cfe7a61586b6bf457
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686194"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857087"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 向 Azure Key Vault 进行服务到服务身份验证
 
@@ -272,7 +272,7 @@ AzureServiceTokenProvider 在默认安装位置查找 Azure CLI。 如果找不�
 
 #### <a name="unauthorized-access-access-denied-forbidden-or-similar-error"></a>未授权访问、访问被拒绝、禁止访问或类似错误
 
-使用的主体无法访问其尝试访问的资源。 为你的用户帐户或应用服务的 MSI 授予对资源的“参与者”访问权限。 向哪个主体授予此权限取决于是在本地计算机上运行示例，还是在 Azure 中将示例部署到应用服务。 某些资源（例如 Key Vault）还具有自身的[访问策略](https://docs.microsoft.com/azure/key-vault/secure-your-key-vault#data-plane-and-access-policies)，可以使用这些策略向用户、应用和组等主体授予访问权限。
+使用的主体无法访问其尝试访问的资源。 为你的用户帐户或应用服务的 MSI 授予对资源的“参与者”访问权限。 向哪个主体授予此权限取决于是在本地计算机上运行示例，还是在 Azure 中将示例部署到应用服务。 某些资源（例如 Key Vault）还具有自身的[访问策略](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#data-plane-and-access-policies)，可以使用这些策略向用户、应用和组等主体授予访问权限。
 
 ### <a name="common-issues-when-deployed-to-azure-app-service"></a>部署到 Azure 应用服务后出现的常见问题
 
