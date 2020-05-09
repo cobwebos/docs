@@ -11,12 +11,12 @@ metadata:
   author: DCtheGeek
   ms.author: dacoulte
   ms.date: 03/24/2020
-  ms.openlocfilehash: 2df970e3aa36f69dc6f2d990ee307db6536a8ac9
-  ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+  ms.openlocfilehash: 8bb9c305a67ca1d87de31188d8455e210a414a42
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/26/2020
-  ms.locfileid: "80282029"
+  ms.lasthandoff: 04/28/2020
+  ms.locfileid: "82234156"
 highlightedContent:
   items:
   - title: 治理概述
@@ -180,9 +180,6 @@ additionalContent:
         url: /cli/azure/ext/resource-graph/graph
       - text: Azure PowerShell
         url: /powershell/module/az.resourcegraph/
-      - text: Azure PowerShell
-        url: https://www.powershellgallery.com/packages/Az.ResourceGraph
-        note: （PS 库模块）
       - text: 用于 .NET 的 Azure SDK
         url: /dotnet/api/Microsoft.Azure.Management.ResourceGraph
       - text: 用于 .NET 的 Azure SDK
@@ -204,6 +201,8 @@ additionalContent:
         note: (Gem)
       - text: REST
         url: /rest/api/azure-resourcegraph/
+      - text: 资源管理器模板
+        url: /azure/templates/microsoft.resourcegraph/allversions
     - title: 成本管理
       links:
       - text: REST

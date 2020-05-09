@@ -12,22 +12,22 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: b8708aec1137836516852135412c4c7cec2feba4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a89c5e3fb84f797d9ad7f81626fb7185ce3e076
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79408396"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854164"
 ---
-# <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>为应用程序配置组声明 Azure Active Directory （公共预览版）
+# <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>为应用程序配置组声明 Azure Active Directory
 
 Azure Active Directory 可以提供令牌中的用户组成员身份信息，以供在应用程序中使用。  支持以下两种主要模式：
 
-- 由其 Azure Active Directory 对象标识符（OID）属性（已正式发布）标识的组
-- 由 sAMAccountName 或 GroupSID 属性标识的组 Active Directory （AD）同步组和用户（公共预览版）
+- 由其 Azure Active Directory 对象标识符（OID）特性标识的组
+- 由 sAMAccountName 或 GroupSID 属性为 Active Directory （AD）同步组和用户标识的组
 
 > [!IMPORTANT]
-> 此预览功能需要注意一些注意事项：
+> 此功能需要注意一些注意事项：
 >
 >- 支持使用从本地同步的 sAMAccountName 和安全标识符（SID）特性，旨在实现从 AD FS 和其他标识提供程序移动现有应用程序。 在 Azure AD 中管理的组不包含发出这些声明所需的属性。
 >- 在较大的组织中，用户所属的组的数量可能会超出 Azure Active Directory 将添加到令牌中的限制。 150组适用于 SAML 令牌，200用于 JWT。 这可能导致不可预知的结果。 如果用户的组成员数量很大，我们建议使用选项将在声明中发出的组限制为应用程序的相关组。  
@@ -182,7 +182,7 @@ Azure Active Directory 可以提供令牌中的用户组成员身份信息，以
    | **路径名** | 必须是“groups” |
    | **源程序** | 未使用。 省略或指定 null |
    | **或缺** | 未使用。 省略或指定 false |
-   | **additionalProperties：** | 其他属性的列表。  有效选项为“sam_account_name”、“dns_domain_and_sam_account_name”、“netbios_domain_and_sam_account_name”、“emit_as_roles” |
+   | **AdditionalProperties** | 其他属性的列表。  有效选项为“sam_account_name”、“dns_domain_and_sam_account_name”、“netbios_domain_and_sam_account_name”、“emit_as_roles” |
 
    在 additionalProperties 中，只需要指定“sam_account_name”、“dns_domain_and_sam_account_name”和“netbios_domain_and_sam_account_name”中的一个。  如果存在其中的多个选项，将使用第一个，并忽略其他所有选项。
 

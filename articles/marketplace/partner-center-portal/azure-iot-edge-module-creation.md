@@ -1,36 +1,30 @@
 ---
-title: 使用合作伙伴中心创建 Azure IoT Edge 模块产品-Azure Marketplace
-description: 了解如何使用合作伙伴中心在 Azure Marketplace 中创建 IoT Edge 模块产品/服务
+title: 在 Azure Marketplace 中使用合作伙伴中心创建 Azure IoT Edge 模块产品
+description: 了解如何使用合作伙伴中心在 Azure Marketplace 中创建、配置和发布 IoT Edge 模块产品
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: cca54e4e456fe766b190f64657cd1aca1d9520e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d69090eb07159c2c188c54499a167f127269df24
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869149"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857664"
 ---
-# <a name="create-an-iot-edge-module-offer"></a>创建 IoT Edge 模块产品/服务
+# <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>在 Azure Marketplace 中创建、配置和发布 IoT Edge 模块产品
 
-> [!IMPORTANT]
-> 我们正在将 IoT Edge 模块的管理从云合作伙伴门户迁移到合作伙伴中心。 在迁移你的产品/服务之前，请按照[IoT Edge 模块提供发布概述](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-offer-process-parts)中的说明云合作伙伴门户来管理你的产品/服务。
-
-本文介绍如何创建和发布适用于 Azure Marketplace 的物联网（IoT）边缘模块产品。
-
-你必须在合作伙伴中心创建一个商用 marketplace 帐户，然后才能创建 IoT Edge 模块产品/服务。 如果尚未创建，请参阅[在合作伙伴中心创建商业 marketplace 帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。
+本文介绍如何创建和发布适用于 Azure Marketplace 的物联网（IoT）边缘模块产品。 在开始之前，请[在合作伙伴中心创建一个商用 Marketplace 帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)（如果尚未这样做）。 确保你的帐户已在 "商用 marketplace 计划" 中注册。
 
 ## <a name="create-a-new-offer"></a>创建新套餐
 
-1. 登录到合作伙伴中心。
+1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
 2. 在左侧导航菜单中，选择 "**商业市场** > **概述**"。
+3. 在 "概述" 页上，选择 " **+ 新产品/服务** > **IoT Edge 模块**。
 
-    ![阐释左侧导航菜单。](./media/cs-menu-overview.png)
-
-3. 选择 " **+ 新产品/服务** > **IoT Edge 模块**。 此时将显示 "**新建产品/服务**" 对话框。
+    ![阐释左侧导航菜单。](./media/new-offer-iot-edge.png)
 
 > [!IMPORTANT]
 > 发布产品/服务后，在 "合作伙伴中心" 中对其进行的编辑仅在重新发布产品/服务后出现在商店中。 请确保在进行更改后始终重新发布。
@@ -41,14 +35,14 @@ ms.locfileid: "81869149"
 
 - 适用于 marketplace 产品/服务和 Azure 资源管理器模板的 web 地址中的客户可看到此 ID （如果适用）。
 - 只使用小写字母和数字。 它可以包括连字符和下划线，但不能包含空格，并且限制为50个字符。 例如，如果输入了 "**测试/服务-1**"，则 "产品/服务`https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`" 网址为。
-- 选择 "创建" 后，无法更改产品/服务 ID。
+- 选择 "**创建**" 后，无法更改产品/服务 ID。
 
-输入**提议别名**。 这是用于引用合作伙伴中心中的产品/服务的名称。
+输入**提议别名**。 这是在合作伙伴中心中用于产品/服务的名称。
 
 - 此名称不能在 marketplace 中使用，它与向客户显示的产品/服务名称和其他值不同。
 - 选择 "**创建**" 后无法更改此。
 
-在输入这两个值后，请选择 "**创建**"，然后继续下一页 "产品/服务概述"。
+选择 "**创建**" 以生成产品/服务并继续。
 
 ## <a name="offer-overview"></a>产品/服务概述
 
@@ -86,10 +80,10 @@ ms.locfileid: "81869149"
 
 - [潜在客户管理概述](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
 - [潜在顾客管理常见问题解答](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [常见的潜在顾客配置错误](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [常见的潜在顾客配置错误](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
 - [潜在客户管理概述](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)PDF （请确保弹出窗口阻止程序处于关闭状态）。
 
-选择 "**保存草稿**"，然后继续下一部分的 "属性"。
+选择 "**保存草稿**"，然后继续。
 
 ### <a name="properties"></a>属性
 

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: d62fa84711bd8cba57d07f3464c21344bc5c32c6
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: HT
+ms.openlocfilehash: 76ecc3ee17353ebd0bbead1bba959f85d521d0df
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731725"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982133"
 ---
 # <a name="programmatically-manage-workbooks"></a>以编程方式管理工作簿
 
@@ -42,7 +42,7 @@ ms.locfileid: "82731725"
 2. 下面是一个示例 Azure 资源管理器模板，用于将工作簿模板部署到 Azure Monitor 工作簿库。 粘贴复制的用于代替的`<PASTE-COPIED-WORKBOOK_TEMPLATE_HERE>`JSON。 可在[此处](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/ARM-template-for-creating-workbook-template)找到用于创建工作簿模板的引用 Azure 资源管理器模板。
 
     ```json
-          {
+    {
         "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
@@ -114,7 +114,7 @@ ms.locfileid: "82731725"
 | 资源组中的工作簿                   | `microsoft.resources/subscriptions/resourcegroups` | `workbook`    |
 | Azure Active Directory 中的工作簿            | `microsoft.aadiam/tenant`                          | `workbook`    |
 | 虚拟机中的 VM Insights                | `microsoft.compute/virtualmachines`                | `insights`    |
-| 虚拟机规模集中的 VM Insights                   | `microsoft.compute/virtualmachinescalesets`        | `insights`    |
+| 虚拟机规模集中的 VM Insights      | `microsoft.compute/virtualmachinescalesets`        | `insights`    |
 
 ## <a name="azure-resource-manager-template-for-deploying-a-workbook-instance"></a>用于部署工作簿实例的 Azure 资源管理器模板
 

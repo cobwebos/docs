@@ -2,31 +2,27 @@
 title: 了解 Azure AD 预配的工作方式 |Microsoft Docs
 description: 了解 Azure AD 预配的工作原理
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 241d90981ed9ba54d253e6c22c00f9e5a9197863
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ee685da3492b6915a687151beea3e82e46185de
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884879"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593720"
 ---
 # <a name="how-provisioning-works"></a>预配工作原理
 
 自动设置是指在用户需要访问的云应用程序中创建用户标识和角色。 除了创建用户标识外，自动预配还包括在状态或角色发生更改时维护和删除用户标识。 在开始部署之前，你可以查看本文，了解 Azure AD 预配的工作原理以及如何获取配置建议。 
 
-**Azure AD 预配服务**通过连接到应用程序供应商提供的跨域标识管理（SCIM）2.0 用户管理 API 终结点的系统，将用户预配到 SaaS 应用和其他系统。 此 SCIM 端点允许 Azure AD 以编程方式创建、更新和删除用户。 对于所选的应用程序，预配服务还可以创建、更新和删除其他标识相关对象，如组和角色。 用于在 Azure AD 和应用程序之间预配的通道使用 HTTPS TLS 加密进行加密。
+**Azure AD 预配服务**通过连接到应用程序供应商提供的跨域标识管理（SCIM）2.0 用户管理 API 终结点的系统，将用户预配到 SaaS 应用和其他系统。 此 SCIM 端点允许 Azure AD 以编程方式创建、更新和删除用户。 对于所选的应用程序，预配服务还可以创建、更新和删除其他标识相关对象，如组和角色。 用于在 Azure AD 和应用程序之间预配的通道使用 HTTPS TLS 1.2 加密进行加密。
 
 
 ![Azure AD 预配](./media/how-provisioning-works/provisioning0.PNG)

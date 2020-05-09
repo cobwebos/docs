@@ -26,6 +26,11 @@
       href: tutorial-custom-role-powershell.md
     - name: 创建自定义角色 - CLI
       href: tutorial-custom-role-cli.md
+- name: 示例
+  items:
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 最佳做法
