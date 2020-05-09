@@ -1,25 +1,20 @@
 ---
 title: 教程 - 在 Azure 门户中备份 Windows 虚拟机
 description: 本教程介绍如何在 Azure 门户中使用 Azure 备份保护 Windows 虚拟机。
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
+ms.subservice: recovery
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e1fa85dc63bc23760888192f2118158e73320a86
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 4b5e4fe585b01670c06d5ff08fb3d221086d94d2
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81456101"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82100424"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>教程：在 Azure 中备份和还原 Windows 虚拟机的文件
 
@@ -76,15 +71,15 @@ ms.locfileid: "81456101"
 1. 在左侧菜单中，选择“虚拟机”，并从列表中选择 VM。 
 1. 在 VM 边栏选项卡上的“操作”部分中，单击“备份”。   此时会打开“备份”边栏选项卡。  
 1. 在边栏选项卡顶部的菜单中，选择“文件恢复”。  此时会打开“文件恢复”边栏选项卡。 
-1. 在**步骤 1：选择恢复点**中，从下拉列表中选择恢复点。
-1. 在**步骤 2：下载脚本以浏览并恢复文件”中，单击“下载可执行文件”按钮**  。 复制该文件的密码，并将其保存到安全的位置。
+1. 在“步骤 1: 选择恢复点”中，从下拉列表中选择恢复点。 
+1. 在“步骤 2: 下载脚本以浏览并恢复文件”中，单击“下载可执行文件”按钮。   复制该文件的密码，并将其保存到安全的位置。
 1. 在本地计算机上，打开**文件资源管理器**，导航到**下载**文件夹并复制所下载的 .exe 文件。 该文件名以 VM 名称作为前缀。 
 1. 在 VM 上（使用 RDP 连接），将该 .exe 文件粘贴到 VM 的桌面。 
 1. 导航到 VM 的桌面并双击该 .exe 文件。 此时会启动命令提示符。 程序会将恢复点装载为可供你访问的文件共享。 完成该共享创建时，键入 **q** 以关闭命令提示符。
 1. 在 VM 上，打开**文件资源管理器**，导航到用于该文件共享的驱动器号。
 1. 导航到 \inetpub\wwwroot，从文件共享中复制 **iisstart.png** 并将其粘贴到 \inetpub\wwwroot 中。 例如，复制 F:\inetpub\wwwroot\iisstart.png 并将其粘贴到 c:\inetpub\wwwroot 中以恢复该文件。
 1. 在本地计算机上，打开从中连接到 VM 的 IP 地址的浏览器选项卡，其中显示了 IIS 默认页面。 按 CTRL + F5 刷新浏览器页面。 现在，应该会看到图像已还原。
-1. 在本地计算机上，返回 Azure 门户的浏览器选项卡，在**步骤 3：恢复后卸载磁盘**中，单击“卸载磁盘”按钮  。 如果忘记执行此步骤，与装入点的连接会在 12 小时后自动关闭。 12 个小时后，若要创建新的装入点，需要下载新脚本。
+1. 在本地计算机上，返回到 Azure 门户的浏览器选项卡，并在“步骤 3: 恢复后卸载磁盘”中单击“卸载磁盘”按钮。   如果忘记执行此步骤，与装入点的连接会在 12 小时后自动关闭。 12 个小时后，若要创建新的装入点，需要下载新脚本。
 
 
 

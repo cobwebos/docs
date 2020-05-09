@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 11/08/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16b6e4f521568c89e415e6e9fa621175052cf34d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 616910eda33b3ddc49fa6233ccb3989c5e4214e2
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74026898"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582843"
 ---
 # <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>快速入门：将 Azure Active Directory 中的 Office 365 组设置为过期
 
@@ -73,7 +73,7 @@ ms.locfileid: "74026898"
 
 ### <a name="to-remove-the-expiration-policy"></a>删除过期策略
 
-1. 确保已使用一个其身份为租户全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 确保已使用 Azure AD 组织的全局管理员帐户登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择“Azure Active Directory”   >   “组” >   “过期”。
 3. 将“为这些 Office 365 组启用过期”设置为“无”。  
 

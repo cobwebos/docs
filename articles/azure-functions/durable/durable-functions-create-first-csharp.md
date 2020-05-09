@@ -7,10 +7,10 @@ ms.date: 03/18/2020
 ms.author: azfuncdf
 zone_pivot_groups: code-editors-set-one
 ms.openlocfilehash: eda3afdf8deb3336cd0c5293c2422e694caa69c8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80132773"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>使用 C\# 创建你的第一个持久函数
@@ -23,9 +23,9 @@ ms.locfileid: "80132773"
 
 ![在 Azure 中运行持久函数](./media/durable-functions-create-first-csharp/functions-vscode-complete.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-为完成此教程：
+完成本教程：
 
 * 安装 [Visual Studio Code](https://code.visualstudio.com/download)。
 
@@ -167,11 +167,11 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 ![在 Azure 中运行持久函数](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-为完成此教程：
+完成本教程：
 
-* 安装 [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)。 确保还安装了“Azure 开发”工作负荷。  Visual Studio 2017 也支持 Durable Functions 开发，但 UI 和步骤不同。
+* 安装 [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)。 确保还安装了 **Azure 开发**工作负荷。 Visual Studio 2017 也支持 Durable Functions 开发，但 UI 和步骤不同。
 
 * 验证 [Azure 存储模拟器](../../storage/common/storage-use-emulator.md)是否已安装且正在运行。
 
@@ -181,7 +181,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 Azure Functions 模板创建一个项目，该项目可发布到 Azure 中的函数应用。 函数应用可将函数分组为逻辑单元，以便更轻松地管理、部署、缩放和共享资源。
 
-1. 在 Visual Studio 中，从“文件”  菜单中选择“新建”   > “项目”  。
+1. 在 Visual Studio 中，从“文件”  菜单中选择“新建” >   “项目”  。
 
 1. 在“创建新项目”  对话框中，搜索 `functions`，选择“Azure Functions”  模板，然后选择“下一步”  。 
 
@@ -205,7 +205,7 @@ Azure Functions 模板创建一个项目，该项目可发布到 Azure 中的函
 
 以下步骤使用模板在项目中创建持久函数代码。
 
-1. 在 Visual Studio 中右键单击该项目并选择“添加” > “新建 Azure 函数”。  
+1. 在 Visual Studio 中右键单击该项目并选择“添加” **“新建 Azure 函数”。**  >  
 
     ![添加新函数](./media/durable-functions-create-first-csharp/functions-vs-add-function.png)
 
@@ -235,7 +235,7 @@ Azure Functions 模板创建一个项目，该项目可发布到 Azure 中的函
 
     ![Azure 本地运行时](./media/durable-functions-create-first-csharp/functions-vs-debugging.png)
 
-3. 将 HTTP 请求的 URL 粘贴到浏览器的地址栏中并执行请求。 下面显示了该函数返回的对本地 GET 请求在浏览器中的响应：
+3. 将 HTTP 请求的 URL 粘贴到浏览器的地址栏中并执行请求。 下面演示浏览器中函数返回的对本地 GET 请求的响应：
 
     ![浏览器中的函数 localhost 响应](./media/durable-functions-create-first-csharp/functions-vs-status.png)
 

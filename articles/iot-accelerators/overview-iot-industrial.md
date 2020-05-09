@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: c5d70e5a8784e88d3f2906d500768735dced1ee0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3c474b57533cb6165ce7fe77defccd4cb7042b06
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73828125"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82189916"
 ---
 # <a name="what-is-industrial-iot-iiot"></a>什么是工业 IoT (IIoT)
 
@@ -23,12 +23,12 @@ IIoT 是指“工业物联网”。 IIoT 通过在制造业中应用 IoT 来增�
 
 通过互联工厂解决方案加速器来增强操作效率和盈利能力。 在云中连接并监视工业设施和设备，包括工厂车间中已在运转的机器。 分析 IoT 数据，从而获取有助于提高整个工厂车间绩效的见解。
 
-使用 OPC 孪生减少访问工厂车间机器的耗时流程，并专注于生成 IIoT 解决方案。 使用 OPC 保管库简化证书管理和工业资产集成，并确信资产连接受到保护。 这些微服务在 [Azure 工业 IoT 组件](https://github.com/Azure/azure-iiot-opc-ua)的顶层提供类似于 REST 的 API。 使用服务 API 可以控制边缘模块的功能。 
+使用 OPC 孪生减少访问工厂车间机器的耗时流程，并专注于生成 IIoT 解决方案。 使用 OPC 保管库简化证书管理和工业资产集成，并确信资产连接受到保护。 这些微服务在 [Azure 工业 IoT 组件](https://github.com/Azure/Industrial-IoT)的顶层提供类似于 REST 的 API。 使用服务 API 可以控制边缘模块的功能。 
 
 ![工业 IoT 概述](media/overview-iot-industrial/overview.png)
 
 > [!NOTE]
-> 有关 Azure 工业 IoT 服务的详细信息，请参阅 GitHub [存储库](https://github.com/Azure/azure-iiot-services)。
+> 有关 Azure 工业 IoT 服务的详细信息，请参阅 GitHub [存储库](https://github.com/Azure/Industrial-IoT)和[文档](https://azure.github.io/Industrial-IoT/)。
 如果你不熟悉 Azure IoT Edge 模块的工作原理，请先阅读以下文章：
 - [关于 Azure IoT Edge](../iot-edge/about-iot-edge.md)
 - [Azure IoT Edge 模块](../iot-edge/iot-edge-modules.md)

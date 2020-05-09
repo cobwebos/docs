@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2ed7f27e2145f666f38eec5ddc6c985a4d32138
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1c685fa231bc1f40a78aae0d4fa89569ec146eea
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266372"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582910"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>在 Azure Active Directory 中创建或更新动态组
 
@@ -46,7 +46,7 @@ Azure AD 提供了一个规则生成器，以便更快地创建和更新重要�
 
 ## <a name="to-create-a-group-membership-rule"></a>要创建组成员资格规则，请执行以下操作：
 
-1. 使用租户中 "全局管理员"、"Intune 管理员" 或 "用户管理员" 角色中的帐户登录到[Azure AD 管理中心](https://aad.portal.azure.com)。
+1. 使用 Azure AD 组织中 "全局管理员"、"Intune 管理员" 或 "用户管理员" 角色中的帐户登录到[Azure AD 管理中心](https://aad.portal.azure.com)。
 1. 搜索并选择 "**组**"。
 1. 选择“所有组”****，然后选择“新组”****。
 
@@ -66,7 +66,7 @@ Azure AD 提供了一个规则生成器，以便更快地创建和更新重要�
 
 ## <a name="to-update-an-existing-rule"></a>更新现有规则
 
-1. 使用租户中 "全局管理员"、"组管理员"、"Intune 管理员" 或 "用户管理员" 角色中的帐户登录到[Azure AD 管理中心](https://aad.portal.azure.com)。
+1. 使用 Azure AD 组织中 "全局管理员"、"组管理员"、"Intune 管理员" 或 "用户管理员" 角色中的帐户登录到[Azure AD 管理中心](https://aad.portal.azure.com)。
 1. 选择 "**组** > " "**所有组**"。
 1. 选择组以打开其配置文件。
 1. 在该组的 "配置文件" 页上，选择 "**动态成员身份规则**"。 规则生成器支持最多五个表达式。 若要添加五个以上的表达式，必须使用文本框。
@@ -102,7 +102,7 @@ Azure AD 提供了一个规则生成器，以便更快地创建和更新重要�
 - **正在进行**：目前正在进行更新。
 - **未知**：无法检索上次更新时间。 该组可能是新的。
 
-如果在处理特定组的成员资格规则时出错误，则该组的“概述”页顶部会显示警报****。 如果无法为租户中的所有组处理任何挂起的动态成员身份更新24小时以上，则会在**所有组**的顶部显示警报。
+如果在处理特定组的成员资格规则时出错误，则该组的“概述”页顶部会显示警报****。 如果在组织内的所有组中无法处理任何挂起的动态成员身份更新，则会在**所有组**的顶部显示警报。
 
 ![正在处理错误消息警报](./media/groups-create-rule/processing-error.png)
 

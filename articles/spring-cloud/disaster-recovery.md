@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: brendm
-ms.openlocfilehash: 4961e5a63e5bc1933cf19b1f291b521d89cbda0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8f32f574a4ff7be0cc3cc7915b8203b53824c63
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76279140"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792320"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Azure 春季云灾难恢复
 
@@ -32,3 +32,32 @@ Azure 春季云应用程序在特定区域中运行。  Azure 在世界各地的
 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md)提供基于 DNS 的流量负载平衡，并可将网络流量分布到多个区域。  使用 Azure 流量管理器将客户定向到最近的 Azure 春季云服务实例。  为了获得最佳性能和冗余，请在将所有应用程序流量发送到 Azure 春季云服务之前，直接通过 Azure 流量管理器进行。
 
 如果有多个区域的 Azure 春季云应用程序，请使用 Azure 流量管理器控制每个区域中的应用程序的流量流。  使用服务 IP 定义每个服务的 Azure 流量管理器终结点。 客户应连接到指向 Azure 春季云服务的 Azure 流量管理器 DNS 名称。  Azure 流量管理器对已定义终结点的流量进行负载均衡。  如果发生灾难，Azure 流量管理器会将该区域的流量定向到其对，确保服务的连续性。
+
+## <a name="create-azure-traffic-manager-for-azure-spring-cloud"></a>创建 azure 春季云的 Azure 流量管理器
+
+1. 在两个不同的区域创建 Azure 春季 Cloud。
+需要在两个不同的区域（美国东部和西欧）部署两个 Azure 春季云服务实例。 使用 Azure 门户启动现有的 Azure 春季云应用程序，以创建两个服务实例。 每个都将用作流量的主要和故障转移终结点。 
+
+**两个服务实例信息：**
+
+| 服务名称 | 位置 | 应用程序 |
+|--|--|--|
+| 服务-示例-a | 美国东部 | 网关/身份验证-服务/帐户 |
+| 服务-示例-b | 西欧 | 网关/身份验证-服务/帐户 |
+
+2. 为服务设置自定义域跟随[自定义域文档](spring-cloud-tutorial-custom-domain.md)为这两个现有服务实例设置自定义域。 成功设置后，这两个服务实例将绑定到自定义域： bcdr-test.contoso.com
+
+3. 创建流量管理器和两个终结点：[使用 Azure 门户创建流量管理器配置文件](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile)。
+
+下面是流量管理器配置文件：
+* 流量管理器 DNS 名称：http://asc-bcdr.trafficmanager.net
+* 终结点配置文件： 
+
+| 配置文件 | 类型 | 目标 | Priority | 自定义标头设置 |
+|--|--|--|--|--|
+| 终结点 A 配置文件 | 外部终结点 | service-sample-a.asc-test.net | 1 | 主机： bcdr-test.contoso.com |
+| 终结点 B 配置文件 | 外部终结点 | service-sample-b.asc-test.net | 2 | 主机： bcdr-test.contoso.com |
+
+4. 在 DNS 区域中创建 CNAME 记录： bcdr-test.contoso.com CNAME asc-bcdr.trafficmanager.net。 
+
+5. 现在，环境已完全设置。 客户应能够通过以下方式访问应用： bcdr-test.contoso.com

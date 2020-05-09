@@ -1,16 +1,14 @@
 ---
 title: 管理 Azure Service Fabric 应用程序机密
 description: 了解如何保护 Service Fabric 应用程序中的机密值（与平台无关）。
-author: vturecek
 ms.topic: conceptual
 ms.date: 01/04/2019
-ms.author: vturecek
-ms.openlocfilehash: 4d2138935122b9e08b21963519fce3f72466ab1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 18090dd3e4046da2069e3035be4edb4d2f979204
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414519"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583233"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>管理 Service Fabric 应用程序中的已加密机密
 本指南逐步讲解管理 Service Fabric 应用程序中的机密的步骤。 机密可以是任何敏感信息，例如存储连接字符串、密码或其他不应以明文形式处理的值。
@@ -144,7 +142,7 @@ string MyEnvVariable = Environment.GetEnvironmentVariable("MyEnvVariable");
 
 ## <a name="next-steps"></a>后续步骤
 * Service Fabric[密钥存储](service-fabric-application-secret-store.md) 
-* 深入了解[应用程序和服务安全性](service-fabric-application-and-service-security.md)
+* 详细了解[应用程序和服务安全性](service-fabric-application-and-service-security.md)
 
 <!-- Links -->
 [parameters-link]:service-fabric-how-to-parameterize-configuration-files.md

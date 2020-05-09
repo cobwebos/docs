@@ -7,17 +7,17 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: dfa17720b34962611d240aa7c35ba8092bf99082
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74158147"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>教程：使用 Azure Functions 进行 Azure SignalR 服务身份验证
 
 本教程逐步讲解如何使用 Azure Functions、应用服务身份验证和 SignalR 服务生成一个支持身份验证和私密消息传送的聊天室。
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 ### <a name="technologies-used"></a>使用的技术
 

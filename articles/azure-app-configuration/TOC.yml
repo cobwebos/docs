@@ -62,6 +62,9 @@
   items:
     - name: Azure CLI
       href: cli-samples.md
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 键值存储

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 7f927d230efba580cff163d31c6f572a10d0b4aa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2e225d4d37f6bdb3d50b32f6464456e4f7fa0036
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80991132"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853953"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>快速入门：向 ASP.NET Web 应用添加 Microsoft 标识平台登录功能
 在本快速入门中，你将通过代码示例了解 ASP.NET Web 应用如何从任何 Azure Active Directory (Azure AD) 实例登录个人帐户（hotmail.com、outlook.com 和其他）以及工作和学校帐户。  （有关说明，请参阅[示例工作原理](#how-the-sample-works)。）
@@ -43,7 +43,7 @@ ms.locfileid: "80991132"
 > 1. 选择“新注册”。 
 > 1. “注册应用程序”页出现后，请输入应用程序的注册信息： 
 >      - 在“名称”  部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `ASPNET-Quickstart`。
->      - 在“重定向 URI”中添加 `http://localhost:44368/`，  然后单击“注册”。 
+>      - 在“重定向 URI”中添加 `https://localhost:44368/`，  然后单击“注册”。 
 >      - 在“管理”部分下的左侧导航窗格中，选择“身份验证” 
 >          - 在“隐式授权”  子部分下，选择“ID 令牌”  。
 >          - 然后选择“保存”  。

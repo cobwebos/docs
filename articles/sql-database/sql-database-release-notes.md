@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: sstein
-ms.openlocfilehash: aa8d1634c015f338053a4d167db34ef0b5a83505
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
-ms.translationtype: HT
+ms.openlocfilehash: 2d89320b4e5237017b51d19495c60c03ce6288f7
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801682"
+ms.locfileid: "82838478"
 ---
 # <a name="sql-database-release-notes"></a>SQL 数据库发行说明
 
@@ -93,12 +93,12 @@ ms.locfileid: "82801682"
 |[sp_send_db_mail 中不支持 @query 参数](#-parameter-not-supported-in-sp_send_db_mail)|2019 年 4 月|无解决方法| |
 |[异地故障转移之后，必须重新配置事务复制](#transactional-replication-must-be-reconfigured-after-geo-failover)|2019 年 3 月|无解决方法| |
 |[在还原操作过程中使用临时数据库](#temporary-database-is-used-during-restore-operation)||具有解决方法| |
-|[将重新创建 TEMPDB 结构和内容](#tempdb-structure-and-content-is-re-created)||无解决方法| |
-|[小型数据库文件超出存储空间](#exceeding-storage-space-with-small-database-files)||具有解决方法| |
-|[显示 GUID 值而不是数据库名称](#guid-values-shown-instead-of-database-names)||具有解决方法| |
+|[将重新创建 TEMPDB 结构和内容](#tempdb-structure-and-content-is-re-created)| |无解决方法| |
+|[小型数据库文件超出存储空间](#exceeding-storage-space-with-small-database-files)| |具有解决方法| |
+|[显示 GUID 值而不是数据库名称](#guid-values-shown-instead-of-database-names) ||具有解决方法| |
 |[不保留错误日志](#error-logs-arent-persisted)||无解决方法| |
-|[跨同一实例中的两个数据库的事务范围不受支持](#transaction-scope-on-two-databases-within-the-same-instance-isnt-supported)||具有解决方法|2020 年 3 月|
-|[CLR 模块和链接的服务器有时无法引用本地 IP 地址](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)||具有解决方法| |
+|[CLR 模块和链接的服务器有时无法引用本地 IP 地址](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)| |具有解决方法| |
+|[跨同一实例中的两个数据库的事务范围不受支持](#transaction-scope-on-two-databases-within-the-same-instance-isnt-supported)| |已解决|2020 年 3 月|
 |从 Azure Blob 存储还原数据库后未使用 DBCC CHECKDB 验证数据库一致性。| |已解决|2019 年 11 月|
 |如果源数据库包含内存中 OLTP 对象，则从“业务关键”层级到“常规用途”层级的时间点数据库还原将不会成功。| |已解决|2019 年 10 月|
 |使用具有安全连接的外部（非 Azure）邮件服务器时出现数据库邮件功能问题| |已解决|2019 年 10 月|

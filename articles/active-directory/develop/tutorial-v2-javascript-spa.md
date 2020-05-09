@@ -11,17 +11,17 @@ ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ec47850ce4cccb6a891c7e5aef2644550bc3e39a
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 6f0253490d39e69d491dd5fd3ab0d0d0a32d47bb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80990950"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181556"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>让用户登录并从 JavaScript 单页应用程序 (SPA) 调用 Microsoft 图形 API
 
 本指南演示 JavaScript 单页应用程序 (SPA) 如何执行以下操作：
-- 将个人帐户以及工作和学校帐户登录 
+- 将个人帐户以及工作和学校帐户登录
 - 获取访问令牌
 - 从 Microsoft 标识平台终结点调用需要访问令牌的 Microsoft Graph API 或其他 API 
 
@@ -32,14 +32,10 @@ ms.locfileid: "80990950"
 
 ![显示本教程生成的示例应用的工作原理](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
 
-<!--start-collapse-->
 ### <a name="more-information"></a>详细信息
 
 本指南创建的示例应用程序允许 JavaScript SPA 查询从 Microsoft 标识平台终结点接受令牌的 Microsoft 图形 API 或 Web API。 在此方案中，用户登录后请求了访问令牌，并通过授权标头将其添加到 HTTP 请求。 此令牌将用于通过 **MS Graph API** 获取用户的个人资料和邮件。 令牌获取和更新由**适用于 JavaScript 的 Microsoft 身份验证库 (MSAL)** 处理。
 
-<!--end-collapse-->
-
-<!--start-collapse-->
 ### <a name="libraries"></a>库
 
 本指南使用以下库：
@@ -47,12 +43,6 @@ ms.locfileid: "80990950"
 |库|说明|
 |---|---|
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|适用于 JavaScript 的 Microsoft 身份验证库|
-
-> [!NOTE]
-> *Msal.js* 面向 Microsoft 标识平台终结点，个人帐户以及学校和工作帐户可通过该终结点登录并获取令牌。 Microsoft 标识平台终结点有[一些限制](../azuread-dev/azure-ad-endpoint-comparison.md#limitations)。
-> 若要了解 v1.0 和 v2.0 终结点之间的差异，请参阅[终结点比较指南](../azuread-dev/azure-ad-endpoint-comparison.md)。
-
-<!--end-collapse-->
 
 ## <a name="set-up-your-web-server-or-project"></a>设置 Web 服务器或项目
 
@@ -68,7 +58,7 @@ ms.locfileid: "80990950"
 
 ## <a name="create-your-project"></a>创建项目
 
-确保已安装 [Node.js](https://nodejs.org/en/download/)，然后创建一个用于托管应用程序的文件夹。 我们将在此处实现一个简单的 [Express](https://expressjs.com/) Web 服务器来为 `index.html` 文件提供服务。 
+确保已安装 [Node.js](https://nodejs.org/en/download/)，然后创建一个用于托管应用程序的文件夹。 我们将在此处实现一个简单的 [Express](https://expressjs.com/) Web 服务器来为 `index.html` 文件提供服务。
 
 1. 首先，使用 Visual Studio Code 集成终端找到项目文件夹，然后使用 NPM 安装 Express。
 
@@ -170,7 +160,7 @@ ms.locfileid: "80990950"
 
        <!-- importing bootstrap.js and supporting js libraries -->
        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>  
+       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
        <!-- importing app scripts (load order is important) -->
@@ -188,7 +178,7 @@ ms.locfileid: "80990950"
 
    > [!TIP]
    > 可以将上述脚本中的 MSAL.js 版本替换为 [MSAL.js 版本](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)下的最新发布版本。
-   
+
 2. 现在，创建名为 `ui.js` 的、用于访问和更新 DOM 元素的 .js 文件，并添加以下代码：
 
    ```JavaScript
@@ -304,7 +294,7 @@ ms.locfileid: "80990950"
       cacheLocation: "sessionStorage", // This configures where your cache will be stored
       storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
     }
-  };  
+  };
 
   // Add here scopes for id token to be used at MS Identity Platform endpoints.
   const loginRequest = {
@@ -350,7 +340,7 @@ ms.locfileid: "80990950"
    function signOut() {
      myMSALObj.logout();
    }
-   
+
    function callMSGraph(theUrl, accessToken, callback) {
        var xmlHttp = new XMLHttpRequest();
        xmlHttp.onreadystatechange = function () {
@@ -404,7 +394,6 @@ ms.locfileid: "80990950"
    }
    ```
 
-<!--start-collapse-->
 ### <a name="more-information"></a>详细信息
 
 用户首次选择“登录”按钮后，`signIn` 方法将调用 `loginPopup` 以将用户登录。  此方法会打开一个包含 Microsoft 标识平台终结点的弹出窗口，以提示并验证用户的凭据。  成功登录后，用户将重定向回到原始的 *index.html* 页。 他们将接收到一个由 `msal.js` 处理的令牌，该令牌包含的信息已缓存。 该令牌称为 ID令牌，并包含有关用户的基本信息，如用户显示名  。 如果计划将此令牌提供的数据用于任何目的，则需确保此令牌已由后端服务器验证，以保证将令牌颁发给应用程序的有效用户。
@@ -430,8 +419,7 @@ ms.locfileid: "80990950"
 1. 应用程序还可以直观地提示用户以交互方式登录，用户可以选择在合适的时间登录，或者应用程序可以稍后重试 `acquireTokenSilent`。 如果用户可以在不中断应用程序的情况下使用应用程序的其他功能，则通常会使用此方法。 例如，应用程序中有可用的未经身份验证的内容。 在这种情况下，用户可以决定何时登录并访问受保护的资源，或何时刷新已过时的信息。
 
 > [!NOTE]
-> 本快速入门默认使用 `loginPopup` 和 `acquireTokenPopup` 方法。 如果使用 Internet Explorer 作为浏览器，我们建议使用 `loginRedirect` 和 `acquireTokenRedirect` 方法，因为 Internet Explorer 处理弹出窗口的方式存在一个[已知问题](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues)。 若要了解如何使用 `Redirect methods` 实现相同的结果，请参阅[此文](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/blob/quickstart/JavaScriptSPA/authRedirect.js)。 
-<!--end-collapse-->
+> 本快速入门默认使用 `loginPopup` 和 `acquireTokenPopup` 方法。 如果使用 Internet Explorer 作为浏览器，我们建议使用 `loginRedirect` 和 `acquireTokenRedirect` 方法，因为 Internet Explorer 处理弹出窗口的方式存在一个[已知问题](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues)。 若要了解如何使用 `Redirect methods` 实现相同的结果，请参阅[此文](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/blob/quickstart/JavaScriptSPA/authRedirect.js)。
 
 ## <a name="call-the-microsoft-graph-api-by-using-the-token-you-just-acquired"></a>使用刚刚获取的令牌调用 Microsoft Graph API
 
@@ -462,7 +450,7 @@ ms.locfileid: "80990950"
      };
 
      console.log('request made to Graph API at: ' + new Date().toString());
-  
+
      fetch(endpoint, options)
        .then(response => response.json())
        .then(response => callback(response, endpoint))
@@ -470,13 +458,9 @@ ms.locfileid: "80990950"
    }
    ```
 
-<!--start-collapse-->
-
 ### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>对受保护 API 进行 REST 调用的详细信息
 
 在本指南创建的示例应用程序中，将使用 `callMSGraph()` 方法对需要令牌的受保护资源发出 HTTP `GET` 请求。 然后，该请求将内容返回给调用方。 此方法可在 HTTP 授权标头中添加获取的令牌  。 本指南创建的示例应用程序中的资源是 Microsoft Graph API *me* 终结点，它显示用户个人资料信息。
-
-<!--end-collapse-->
 
 ## <a name="test-your-code"></a>测试代码
 
@@ -506,7 +490,6 @@ ms.locfileid: "80990950"
 
 ![Microsoft Graph API 调用的结果](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptsparesults.png)
 
-<!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>有关作用域和委派权限的详细信息
 
 Microsoft Graph API 需要 *user.read* 作用域来读取用户的个人资料。 默认情况下，在注册门户上注册的每个应用程序中，都会自动添加此范围。 Microsoft Graph 的其他 API 以及后端服务器的自定义 API 可能需要其他作用域。 例如，Microsoft Graph API 需要使用 *Mail.Read* 范围列出用户的邮件。
@@ -515,7 +498,5 @@ Microsoft Graph API 需要 *user.read* 作用域来读取用户的个人资料�
 > 当你增加作用域数量时，可能会提示用户另外进行许可。
 
 如果后端 API 不需要范围（不建议），则你可以将 *clientId* 用作调用中的范围来获取令牌。
-
-<!--end-collapse-->
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

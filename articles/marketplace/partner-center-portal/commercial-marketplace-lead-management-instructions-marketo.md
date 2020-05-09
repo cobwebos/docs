@@ -1,22 +1,22 @@
 ---
-title: 在 Marketo 中配置潜在客户管理 |Azure Marketplace
-description: 为 Azure Marketplace 客户配置 Marketo 的潜在客户管理。
+title: Marketo-Microsoft 商用 marketplace 中的潜在客户管理
+description: 了解如何使用 Marketo CRM 系统管理 Microsoft AppSource 和 Azure Marketplace 中的潜在顾客。
 author: qianw211
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: b142e0ab1aaa242157e207ceecf958be51bb1721
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f3a097629f8c5f4a3f0ecefa5ee50f2d3e62162
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133655"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789872"
 ---
-# <a name="configure-lead-management-in-marketo"></a>在 Marketo 中配置潜在顾客管理
+# <a name="use-marketo-to-manage-commercial-marketplace-leads"></a>使用 Marketo 管理商业市场主管
 
-本文介绍如何设置 Marketo CRM 系统，以处理来自商业 marketplace 产品/服务的销售潜在顾客。
+本文介绍如何设置 Marketo CRM 系统，以便通过 Microsoft AppSource 和 Azure Marketplace 中的产品/服务来处理销售线索。
 
 ## <a name="set-up-your-marketo-crm-system"></a>设置 Marketo CRM 系统
 
@@ -67,9 +67,11 @@ ms.locfileid: "82133655"
 
 准备好在发布门户中为产品/服务配置潜在顾客管理信息时，请执行以下步骤。 
 
-1. 请参阅产品/服务的**产品/服务设置**页。
+1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
 
-1. 选择 "**潜在顾客管理**" 部分下的 "**连接**"。 
+1. 选择产品/服务，并中转到 "**产品/服务" 设置**选项卡。
+
+1. 在 "**潜在客户管理**" 部分下，选择 "**连接**"。 
 
     ![潜在客户管理部分连接按钮](./media/commercial-marketplace-lead-management-instructions-marketo/lead-management-connect.png)
 
@@ -86,6 +88,6 @@ ms.locfileid: "82133655"
 
 1. 选择“确定”  。
 
-   若要确保已成功连接到潜在客户目标，请选择 "**验证**" 按钮。 如果成功，则在潜在客户目标中会出现测试主管。
+   若要确保已成功连接到潜在客户目标，请选择 "**验证**"。 如果成功，则在潜在客户目标中会出现测试主管。
 
    !["连接详细信息" 弹出窗口](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-connection-details.png)

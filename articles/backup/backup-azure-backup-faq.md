@@ -3,12 +3,12 @@ title: 常见问题的解答
 description: '针对以下常见问题的解答：包括恢复服务保管库在内的 Azure 备份功能、能够备份的内容、原理、加密和限制。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 039666c4b54da6ac5444f5aa5acda5f1bb438782
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee6df940dd36a325d3638c3ad29ebfd8dec713d8
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80156049"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801699"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 备份 - 常见问题
 
@@ -65,7 +65,7 @@ ms.locfileid: "80156049"
 
 ### <a name="are-there-limits-on-backup-scheduling"></a>备份计划是否有限制？
 
-是的。
+可以。
 
 - 可以备份 Windows Server 或 Windows 计算机，最多一天三次。 可以将计划策略设置为每日或每周计划。
 - 可以备份 DPM，最多一天两次。 可以将计划策略设置为每日、每周、每月或每年。
@@ -82,7 +82,7 @@ Windows 10 64 位 | Enterprise、Pro、Home | 计算机应运行最新服务包�
 Windows 8.1 64 位 | Enterprise、Pro | 计算机应运行最新服务包和更新。
 Windows 8 64 位 | Enterprise、Pro | 计算机应运行最新服务包和更新。
 Windows 7 64 位 | Ultimate、Enterprise、Professional、Home Premium、Home Basic、Starter | 计算机应运行最新服务包和更新。
-Server (服务器) | |
+服务器 | |
 Windows Server 2019 64 位 | Standard、Datacenter、Essentials | 使用最新服务包/更新。
 Windows Server 2016 64 位 | Standard、Datacenter、Essentials | 使用最新服务包/更新。
 Windows Server 2012 R2 64 位 | Standard、Datacenter、Foundation | 使用最新服务包/更新。
@@ -107,7 +107,7 @@ Windows 8 或更高版本 | 54,400 GB
 Windows 7 |1700 GB
 Windows Server 2012 或更高版本 | 54,400 GB
 Windows Server 2008、Windows Server 2008 R2 | 1700 GB
-Azure VM | 16 个数据磁盘<br/> 若要注册获取包含 16 个以上磁盘（最多 32 个磁盘）的个人预览版 VM，请向我们发送电子邮件：AskAzureBackupTeam@microsoft.com <br><br> 容量高达 32 TB 的数据磁盘
+Azure VM | 16 个数据磁盘<br/> 若要注册包含16个以上磁盘（最多32个磁盘）的有限预览版 Vm，请在AskAzureBackupTeam@microsoft.com <br><br> 容量高达 32 TB 的数据磁盘
 
 ### <a name="how-is-the-data-source-size-determined"></a>如何确定数据源大小？
 
@@ -201,7 +201,7 @@ Azure 备份存储体系结构提供这两个领域的最佳产品，它以最�
 
 ### <a name="is-the-backup-data-on-azure-encrypted-as-well"></a>Azure 中的备份数据也会加密吗？
 
-是的。 Azure 中的数据为静态加密。
+可以。 Azure 中的数据为静态加密。
 
 - 对于本地备份，使用在备份到 Azure 时提供的密码提供静态加密。
 - 对于 Azure VM，使用存储服务加密 (SSE) 对数据进行静态加密。

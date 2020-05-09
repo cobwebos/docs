@@ -4,14 +4,15 @@ description: 本文介绍如何创建新的用户帐户，以与 Azure Database 
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
+ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 1/8/2019
-ms.openlocfilehash: 674fd4372bdf7c3782d18aaf04b48eb0067a9b2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 684116f92544e61a892b3653f8539f9f8f03e0c9
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77484921"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82584083"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>在 Azure Database for PostgreSQL 中创建用户超大规模（Citus）
 
@@ -49,7 +50,7 @@ PostgreSQL 引擎使用[角色](https://www.postgresql.org/docs/current/sql-crea
 
    !["角色" 页](media/howto-hyperscale-create-users/1-role-page.png)
 
-2. 输入 "角色名称" 和 "密码"。 单击 **“保存”** 。
+2. 输入 "角色名称" 和 "密码"。 单击“保存”  。
 
    ![添加角色](media/howto-hyperscale-create-users/2-add-user-fields.png)
 

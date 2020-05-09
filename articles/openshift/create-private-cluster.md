@@ -8,16 +8,16 @@ author: ms-jasondel
 ms.author: jasondel
 keywords: aro，openshift，az aro，red hat，cli
 ms.custom: mvc
-ms.openlocfilehash: a0f726d32f2f63cf85101254fded005fc0b5a1db
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cfc28577f089ef22457e9f66ff08106969a5a4b2
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233544"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857389"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>创建 Azure Red Hat OpenShift 4 专用群集
 
-本文介绍如何准备环境，以创建运行 OpenShift 4 的 Azure Red Hat OpenShift 专用群集。 将了解如何执行以下操作：
+本文介绍如何准备环境，以创建运行 OpenShift 4 的 Azure Red Hat OpenShift 专用群集。 你将了解如何：
 
 > [!div class="checklist"]
 > * 安装必备组件并创建所需的虚拟网络和子网
@@ -25,7 +25,7 @@ ms.locfileid: "82233544"
 
 如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 版本2.0.75 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 ### <a name="install-the-az-aro-extension"></a>安装 "az aro" 扩展
 使用`az aro`此扩展，可以使用 Azure CLI 从命令行直接创建、访问和删除 Azure Red Hat OpenShift 群集。
@@ -65,15 +65,21 @@ aro                                1.0.0
 ...
 ```
 
-### <a name="obtain-a-red-hat-pull-secret-optional"></a>获取 Red Hat 请求机密（可选）
+### <a name="get-a-red-hat-pull-secret-optional"></a>获取 Red Hat 请求机密（可选）
 
 Red Hat pull secret 使群集能够访问 Red Hat 容器注册表以及其他内容。 此步骤是可选的，但建议执行。
 
-通过导航到https://cloud.redhat.com/openshift/install/azure/aro-provisioned并单击 "*下载请求机密*" 获取你的请求机密。
+1. **[中转到 Red Hat OpenShift 群集管理器门户](https://cloud.redhat.com/openshift/install/azure/aro-provisioned)并登录。**
 
-你将需要使用你的企业电子邮件登录 Red Hat 帐户或创建一个新的 Red Hat 帐户，并接受条款和条件。
+   你将需要使用你的企业电子邮件登录 Red Hat 帐户或创建一个新的 Red Hat 帐户，并接受条款和条件。
+
+2. **单击 "下载 pull secret"。**
 
 将保存`pull-secret.txt`的文件保存在安全的位置-在每次创建群集时使用。
+
+运行`az aro create`命令时，可以使用`--pull-secret @pull-secret.txt`参数引用请求机密。 从`az aro create`存储`pull-secret.txt`文件的目录执行。 否则，请`@pull-secret.txt`将`@<path-to-my-pull-secret-file`替换为。
+
+如果要复制你的 pull 机密或在其他脚本中引用它，则应该将你的请求格式设置为有效的 JSON 字符串。
 
 ### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>创建包含两个子网的虚拟网络
 
@@ -177,7 +183,10 @@ Red Hat pull secret 使群集能够访问 Red Hat 容器注册表以及其他内
 
 ## <a name="create-the-cluster"></a>创建群集
 
-运行以下命令以创建群集。 请注意`apiserver-visibility`和`ingress-visibility`参数。 可以选择传递一个请求机密，使群集能够访问 Red Hat 容器注册表以及其他内容。 导航到[Red Hat OpenShift 群集管理器](https://cloud.redhat.com/openshift/install/azure/installer-provisioned)，然后单击 "复制请求机密"，以访问你的请求机密。
+运行以下命令以创建群集。 （可选）可以[传递 Red hat 请求机密](#get-a-red-hat-pull-secret-optional)，使群集能够访问 red hat 容器注册表以及其他内容。
+
+>[!NOTE]
+> 如果要复制/粘贴命令并使用一个可选的参数，请确保删除初始井号标签和尾随注释文本。 同样，使用尾随反斜杠关闭命令前面的命令行上的参数。
 
 ```azurecli-interactive
 az aro create \
@@ -185,15 +194,12 @@ az aro create \
   --name $CLUSTER \
   --vnet aro-vnet \
   --master-subnet master-subnet \
-  --worker-subnet worker-subnet \
-  --apiserver-visibility Private \
-  --ingress-visibility Private
-  # --domain aro.example.com # [OPTIONAL] custom domain
-  # --pull-secret 'Pull secret from https://cloud.redhat.com/openshift/install/azure/installer-provisioned/' # [OPTIONAL]
+  --worker-subnet worker-subnet
+  # --domain foo.example.com # [OPTIONAL] custom domain
+  # --pull-secret @pull-secret.txt # [OPTIONAL]
 ```
 
->[!NOTE]
-> 创建群集通常需要大约35分钟。
+执行`az aro create`命令后，创建群集通常需要大约35分钟。
 
 >[!IMPORTANT]
 > 如果选择指定自定义域（例如**foo.example.com**），则 OpenShift 控制台将出现在 URL （如`https://console-openshift-console.apps.foo.example.com`）中，而不是内置域。 `https://console-openshift-console.apps.<random>.<location>.aroapp.io`
@@ -262,7 +268,7 @@ oc login $apiServer -u kubeadmin -p <kubeadmin password>
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，部署了一个运行 OpenShift 4 的 Azure Red Hat OpenShift 群集。 你已了解如何执行以下操作：
+在本文中，部署了一个运行 OpenShift 4 的 Azure Red Hat OpenShift 群集。 你已了解如何：
 
 > [!div class="checklist"]
 > * 安装必备组件并创建所需的虚拟网络和子网

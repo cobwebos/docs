@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 03/09/2020
+ms.date: 04/27/2020
 ms.author: aahi
-ms.openlocfilehash: b3c112876bfd2578e6ebaa95c6902aa9b8f832d9
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 99a62daf6dced88efd9bda591a0ca44a8b259a75
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79203451"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195632"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>如何：使用文本分析 API 检测情绪
 
@@ -58,7 +58,9 @@ ms.locfileid: "79203451"
 
 ### <a name="sentiment-labeling"></a>情绪标记
 
-情绪分析 v3 可以在句子和文档级别返回评分和标签。 评分和标签为 `positive`、`negative` 和 `neutral`。 在文档级别，也可返回没有分数的 `mixed` 情绪标签。 文档的情绪由以下内容确定：
+情绪分析 v3 会返回句子和文档级别的情绪标签（`positive`、`negative` 和 `neutral`）以及置信度分数。 也可以在文档级别返回 `mixed` 情绪标签。 
+
+文档的情绪由以下内容确定：
 
 | 句子情绪                                                                            | 返回的文档标签 |
 |-----------------------------------------------------------------------------------------------|-------------------------|

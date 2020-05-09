@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 363dc4d469d912c14f5f89ef6ff433a2243587e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6a0a84050cb8f1b3ad0c04aa66c5b3797282f2e
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81428896"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983221"
 ---
 # <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>创建到数据源的托管专用终结点（预览）
 
@@ -30,17 +30,17 @@ ms.locfileid: "81428896"
 
 ## <a name="step-3-select-the-data-source-type"></a>步骤3：选择数据源类型
 
-选择数据源类型。 在这种情况下，目标数据源是 ADLS gen2 帐户。 选择**继续**。
+选择数据源类型。 在这种情况下，目标数据源是 ADLS Gen2 帐户。 选择“继续”  。
 ![选择目标数据源类型](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-3.png)
 
 ## <a name="step-4-enter-information-about-the-data-source"></a>步骤4：输入有关数据源的信息
 
-在下一个窗口中，输入有关数据源的信息。 在此示例中，我们将创建一个托管专用终结点到 ADLS gen2 帐户。 输入托管专用终结点的**名称**。 提供**Azure 订阅**和**存储帐户名称**。 选择“创建”。 
+在下一个窗口中，输入有关数据源的信息。 在此示例中，我们要创建一个 ADLS Gen2 帐户的托管专用终结点。 输入托管专用终结点的**名称**。 提供**Azure 订阅**和**存储帐户名称**。 选择“创建”。 
 ![输入目标数据源详细信息](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-4.png)
 
 ## <a name="step-5-verify-that-your-managed-private-endpoint-was-successfully-created"></a>步骤5：验证托管专用终结点是否已成功创建
 
-提交请求后，你将看到其状态。 若要验证是否创建了已成功创建托管专用终结点，请检查其*设置状态*。 可能需要等待1分钟，然后选择 "**刷新**" 以更新预配状态。 你可以看到已成功创建 ADLS gen2 帐户的托管专用终结点。
+提交请求后，你将看到其状态。 若要验证是否创建了已成功创建托管专用终结点，请检查其*设置状态*。 可能需要等待1分钟，然后选择 "**刷新**" 以更新预配状态。 你可以看到已成功创建 ADLS Gen2 帐户的托管专用终结点。
 
 你还可以看到*审批状态*为 "*挂起*"。 目标资源的所有者可以批准或拒绝专用终结点连接请求。 如果所有者批准专用终结点连接请求，则建立一个专用链接。 如果拒绝，则不建立专用链接。
 ![托管专用终结点创建请求状态](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-5.png)

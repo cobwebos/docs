@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: kumud
-ms.openlocfilehash: 4b8f91d7d9fc414ed0ae6387c25f71b1601e0b6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e3e37347c8c23ccc9746bbb98ef6a822743848b
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76043405"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790280"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-cli"></a>使用 Azure CLI 创建具有静态公共 IP 地址的虚拟机
 
@@ -31,7 +31,7 @@ ms.locfileid: "76043405"
 可以从本地计算机或通过使用 Azure Cloud Shell 完成以下步骤。 若要使用本地计算机，请确保[安装 Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)。 若要使用 Azure Cloud Shell，请在接下来出现的任何命令框的右上角选择“试用”。**** Cloud Shell 会将你登录到 Azure。
 
 1. 如果使用 Cloud Shell，请跳到步骤 2。 打开命令会话并使用 `az login` 登录到 Azure。
-2. 使用“[az group create](/cli/azure/group#az-group-create)”命令创建资源组。 以下示例在美国东部 Azure 区域创建一个资源组：
+2. 使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 以下示例在美国东部 Azure 区域创建一个资源组：
 
    ```azurecli-interactive
    az group create --name myResourceGroup --location eastus
@@ -50,7 +50,7 @@ ms.locfileid: "76043405"
      --public-ip-address-allocation static
    ```
 
-   如果公共 IP 地址必须是标准 SKU，请将 `--public-ip-sku Standard` 添加到上述命令。 详细了解[公共 IP 地址 SKU](virtual-network-ip-addresses-overview-arm.md#sku)。 如果虚拟机将添加到公共 Azure 负载均衡器的后端池，则虚拟机公共 IP 地址的 SKU 必须与负载均衡器的公共 IP 地址的 SKU 相匹配。 有关详细信息，请参阅 [Azure 负载均衡器](../load-balancer/concepts-limitations.md#skus)。
+   如果公共 IP 地址必须是标准 SKU，请将 `--public-ip-sku Standard` 添加到上述命令。 详细了解[公共 IP 地址 SKU](virtual-network-ip-addresses-overview-arm.md#sku)。 如果虚拟机将添加到公共 Azure 负载均衡器的后端池，则虚拟机公共 IP 地址的 SKU 必须与负载均衡器的公共 IP 地址的 SKU 相匹配。 有关详细信息，请参阅 [Azure 负载均衡器](../load-balancer/skus.md)。
 
 4. 使用 [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) 查看分配的公共 IP 地址，并确认它是否创建为静态基本 SKU 地址：
 

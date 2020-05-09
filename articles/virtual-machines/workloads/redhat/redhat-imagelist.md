@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/16/2020
 ms.author: alsin
-ms.openlocfilehash: 028c30fced14a60af9f5683e6c6e087b15591735
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 089858c789bb11245e98f32047cabb4117ece904
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605479"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838580"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Azure 中提供 Red Hat Enterprise Linux （RHEL）映像
 Azure 针对不同用例提供各种 RHEL 映像。
@@ -28,7 +28,10 @@ Azure 针对不同用例提供各种 RHEL 映像。
 ## <a name="list-of-rhel-images"></a>RHEL 映像列表
 这是 Azure 中提供的 RHEL 映像的列表。 除非另有说明，否则所有映像均为 LVM 分区，并附加到常规 RHEL 存储库（不是 EUS，而不是 E4S）。 以下映像当前可供一般使用：
 
-产品/服务| SKU | 分区 | 设置 | 注意
+> [!NOTE]
+> 不会再生成原始映像以支持 LVM 分区映像。 LVM 与较旧的原始（非 LVM）分区方案相比具有几个优点，包括更灵活的分区调整大小选项。
+
+产品/服务| SKU | 分区 | 设置 | 说明
 :----|:----|:-------------|:-------------|:-----
 RHEL          | 6.7      | RAW    | Linux 代理 |
 |             | 6.8      | RAW    | Linux 代理 |
@@ -47,6 +50,9 @@ RHEL          | 6.7      | RAW    | Linux 代理 |
 |             | 7.6      | RAW    | Linux 代理 | 默认情况下，附加到 EUS 存储库，可能为2019。
 |             | 76-gen2  | RAW    | Linux 代理 | 默认情况下附加到 EUS 存储库。
 |             | 7.7      | LVM    | Linux 代理 | 默认情况下附加到 EUS 存储库。
+|             | 77-gen2  | LVM    | Linux 代理 | 默认情况下附加到 EUS 存储库。
+|             | 7.8      | LVM    | Linux 代理 | 已附加到常规存储库（RHEL 7.8 不可用 EUS）
+|             | 78-gen2  | LVM    | Linux 代理 | 已附加到常规存储库（RHEL 7.8 不可用 EUS）
 |             | 8-LVM    | LVM    | Linux 代理 | RHEL 2.x 映像系列。 已附加到常规存储库。
 |             | 8-lvm-gen2| LVM    | Linux 代理 | Hyper-v 第2代-RHEL 8.x 版映像。 已附加到常规存储库。
 |             | 8        | LVM    | Linux 代理 | RHEL 8.0 映像

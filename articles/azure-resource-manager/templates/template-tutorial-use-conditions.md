@@ -2,15 +2,15 @@
 title: 在模板中使用条件
 description: 了解如何根据条件部署 Azure 资源。 演示如何部署新资源或使用现有资源。
 author: mumian
-ms.date: 05/21/2019
+ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f88f141257e8e614f62c7441c313002b5735116d
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: b73598da2b34847a38485db9952302f7c5b33c98
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239195"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82185024"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>教程：在 ARM 模板中使用条件
 
@@ -55,23 +55,25 @@ ms.locfileid: "80239195"
 Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建模板，只需找到一个示例模板并对其自定义即可。 本教程中使用的模板称为[部署简单的 Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)。
 
 1. 在 Visual Studio Code 中，选择“文件”>“打开文件”。  
-2. 在“文件名”中粘贴以下 URL： 
+1. 在“文件名”中粘贴以下 URL： 
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 
-3. 选择“打开”以打开该文件。 
-4. 有五个通过此模板定义的资源：
+1. 选择“打开”以打开该文件。 
+1. 有六个通过此模板定义的资源：
 
-   * `Microsoft.Storage/storageAccounts` 列中的一个值匹配。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)。
-   * `Microsoft.Network/publicIPAddresses` 列中的一个值匹配。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)。
-   * `Microsoft.Network/virtualNetworks` 列中的一个值匹配。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)。
-   * `Microsoft.Network/networkInterfaces` 列中的一个值匹配。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)。
-   * `Microsoft.Compute/virtualMachines` 列中的一个值匹配。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)。
+   * [Microsoft.Storage/storageAccounts](/azure/templates/Microsoft.Storage/storageAccounts)  。
+   * [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)  。
+   * [Microsoft.Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)  。
+   * [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)  。
+   * [Microsoft.Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)  。
+   * [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)  。
 
-     在自定义模板之前，不妨对其进行一些基本的了解。
-5. 选择“文件”>“另存为”，将该文件的副本保存到名为 **azuredeploy.json** 的本地计算机。  
+    在自定义模板之前查看模板参考会很有帮助。
+
+1. 选择“文件”>“另存为”，将该文件的副本保存到名为 **azuredeploy.json** 的本地计算机。  
 
 ## <a name="modify-the-template"></a>修改模板
 
@@ -83,12 +85,12 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
 下面是进行更改的过程：
 
 1. 在 Visual Studio Code 中打开 **azuredeploy.json**。
-2. 在整个模板中，将三个 **variables('storageAccountName')** 替换为 **parameters('storageAccountName')** 。
-3. 删除以下变量定义：
+1. 在整个模板中，将三个 **variables('storageAccountName')** 替换为 **parameters('storageAccountName')** 。
+1. 删除以下变量定义：
 
     ![资源管理器模板使用条件关系图](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
 
-4. 将以下两个参数添加到模板：
+1. 将以下两个参数添加到 parameters 节的开头：
 
     ```json
     "storageAccountName": {
@@ -103,11 +105,13 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
     },
     ```
 
+    在 Visual Studio Code 中按“[ALT]+[SHIFT]+F”  ，设置模板格式。
+
     更新的参数定义如下所示：
 
     ![在资源管理器中使用条件](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-parameters.png)
 
-5. 将以下行添加到存储帐户定义的开头。
+1. 将以下行添加到存储帐户定义的开头。
 
     ```json
     "condition": "[equals(parameters('newOrExisting'),'new')]",
@@ -118,7 +122,7 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
     更新的存储帐户定义如下所示：
 
     ![在资源管理器中使用条件](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
-6. 使用以下值更新虚拟机资源定义的 **storageUri** 属性：
+1. 使用以下值更新虚拟机资源定义的 **storageUri** 属性：
 
     ```json
     "storageUri": "[concat('https://', parameters('storageAccountName'), '.blob.core.windows.net')]"
@@ -126,44 +130,63 @@ Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建�
 
     如果使用另一资源组中的现有存储帐户，则此更改是必需的。
 
-7. 保存更改。
+1. 保存更改。
 
 ## <a name="deploy-the-template"></a>部署模板
 
-按照[部署模板](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)中的说明打开 Cloud shell 并上传修改后的模板，然后运行以下 PowerShell 脚本来部署模板。
+1. 登录到 [Azure Cloud Shell](https://shell.azure.com)
 
-```azurepowershell
-$resourceGroupName = Read-Host -Prompt "Enter the resource group name"
-$storageAccountName = Read-Host -Prompt "Enter the storage account name"
-$newOrExisting = Read-Host -Prompt "Create new or use existing (Enter new or existing)"
-$location = Read-Host -Prompt "Enter the Azure location (i.e. centralus)"
-$vmAdmin = Read-Host -Prompt "Enter the admin username"
-$vmPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
-$dnsLabelPrefix = Read-Host -Prompt "Enter the DNS Label prefix"
+1. 通过在左上角选择“PowerShell”  或“Bash”  （适用于 CLI）来选择你喜欢使用的环境。  进行切换时，需重启 shell。
 
-New-AzResourceGroup -Name $resourceGroupName -Location $location
-New-AzResourceGroupDeployment `
-    -ResourceGroupName $resourceGroupName `
-    -adminUsername $vmAdmin `
-    -adminPassword $vmPassword `
-    -dnsLabelPrefix $dnsLabelPrefix `
-    -storageAccountName $storageAccountName `
-    -newOrExisting $newOrExisting `
-    -TemplateFile "$HOME/azuredeploy.json"
-```
+    ![Azure 门户 - Cloud Shell - 上传文件](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-> [!NOTE]
-> 如果 **newOrExisting** 为 **new**，但具有指定存储帐户名称的存储帐户已存在，则部署将会失败。
+1. 依次选择“上传/下载文件”、“上传”。   请参阅上面的屏幕截图。 选择在上一部分保存的文件。 上传文件后，可以使用 ls  命令和 cat  命令验证文件是否已成功上传。
+
+1. 运行以下 PowerShell 脚本以部署该模板。
+
+    > [!IMPORTANT]
+    > 存储帐户名称在 Azure 中必须是唯一的。 该名称只能包含小写字母或数字。 其长度不能超过 24 个字符。 存储帐户名称是追加了“store”的项目名称。 请确保项目名称和生成的存储帐户名称符合存储帐户名称要求。
+
+    ```azurepowershell
+    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name and resource names"
+    $newOrExisting = Read-Host -Prompt "Create new or use existing (Enter new or existing)"
+    $location = Read-Host -Prompt "Enter the Azure location (i.e. centralus)"
+    $vmAdmin = Read-Host -Prompt "Enter the admin username"
+    $vmPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
+    $dnsLabelPrefix = Read-Host -Prompt "Enter the DNS Label prefix"
+
+    $resourceGroupName = "${projectName}rg"
+    $storageAccountName = "${projectName}store"
+
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+    New-AzResourceGroupDeployment `
+        -ResourceGroupName $resourceGroupName `
+        -adminUsername $vmAdmin `
+        -adminPassword $vmPassword `
+        -dnsLabelPrefix $dnsLabelPrefix `
+        -storageAccountName $storageAccountName `
+        -newOrExisting $newOrExisting `
+        -TemplateFile "$HOME/azuredeploy.json"
+
+    Write-Host "Press [ENTER] to continue ..."
+    ```
+
+    > [!NOTE]
+    > 如果 **newOrExisting** 为 **new**，但具有指定存储帐户名称的存储帐户已存在，则部署将会失败。
 
 通过将 **newOrExisting** 设置为“existing”并指定现有存储帐户来尝试进行另一个部署。 若要提前创建存储帐户，请参阅[创建存储帐户](../../storage/common/storage-account-create.md)。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要 Azure 资源时，请通过删除资源组来清理部署的资源。 若要删除资源组，请选择“试一试”，打开 Cloud shell  。 若要粘贴 PowerShell 脚本，请右键单击 shell 窗格，然后选择“粘贴”  。
+不再需要 Azure 资源时，请通过删除资源组来清理部署的资源。 若要删除资源组，请选择“试用”以打开 Cloud Shell  。 若要粘贴 PowerShell 脚本，请右键单击 shell 窗格，然后选择“粘贴”  。
 
 ```azurepowershell-interactive
-$resourceGroupName = Read-Host -Prompt "Enter the same resource group name you used in the last procedure"
+$projectName = Read-Host -Prompt "Enter the same project name you used in the last procedure"
+$resourceGroupName = "${projectName}rg"
+
 Remove-AzResourceGroup -Name $resourceGroupName
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 ## <a name="next-steps"></a>后续步骤

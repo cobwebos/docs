@@ -1,6 +1,6 @@
 ---
-title: 列出拒绝 Azure 资源的分配 Azure PowerShell
-description: 了解如何通过 Azure PowerShell 列出已被拒绝在特定范围内访问特定 Azure 资源操作的用户、组、服务主体和托管标识。
+title: 使用 Azure PowerShell 列出 Azure 拒绝分配-Azure RBAC
+description: 了解如何使用 Azure PowerShell 和 Azure 基于角色的访问控制（Azure RBAC）来列出已拒绝使用特定范围内的特定 Azure 资源操作的用户、组、服务主体和管理标识。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,25 +13,25 @@ ms.workload: identity
 ms.date: 06/12/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 5ba18b89bd37dbd55350321c503e37ab0590ab87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cd852d19b284f97995855fe06c97ea0ea69be293
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77137398"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733956"
 ---
-# <a name="list-deny-assignments-for-azure-resources-using-azure-powershell"></a>使用 Azure PowerShell 列出 Azure 资源的拒绝分配
+# <a name="list-azure-deny-assignments-using-azure-powershell"></a>使用 Azure PowerShell 列出 Azure 拒绝分配
 
-即使角色分配向用户授予了访问权限，[拒绝分配](deny-assignments.md)也会阻止用户执行特定的 Azure 资源操作。 本文介绍如何使用 Azure PowerShell 列出拒绝分配。
+[Azure 拒绝分配](deny-assignments.md)会阻止用户执行特定的 Azure 资源操作，即使角色分配授予访问权限。 本文介绍如何使用 Azure PowerShell 列出拒绝分配。
 
 > [!NOTE]
-> 不能直接创建自己的拒绝分配。 有关如何创建拒绝分配的详细信息，请参阅[拒绝分配](deny-assignments.md)。
+> 不能直接创建自己的拒绝分配。 有关如何创建拒绝分配的信息，请参阅[Azure 拒绝分配](deny-assignments.md)。
 
 ## <a name="prerequisites"></a>必备条件
 
 如要获取拒绝分配的相关信息，必须具有：
 
-- `Microsoft.Authorization/denyAssignments/read` 权限，其包括在大多数 [Azure 资源的内置角色](built-in-roles.md)中
+- `Microsoft.Authorization/denyAssignments/read`权限包括在大多数[Azure 内置角色](built-in-roles.md)中
 - Azure Cloud Shell 或[Azure PowerShell](/powershell/azure/install-az-ps) [中的 PowerShell](/azure/cloud-shell/overview)
 
 ## <a name="list-deny-assignments"></a>列出拒绝分配
@@ -125,6 +125,6 @@ PS C:\> Get-AzDenyAssignment -Scope /subscriptions/11111111-1111-1111-1111-11111
 
 ## <a name="next-steps"></a>后续步骤
 
-- [了解 Azure 资源的拒绝分配](deny-assignments.md)
-- [使用 Azure 门户列出 Azure 资源的拒绝分配](deny-assignments-portal.md)
-- [使用 REST API 列出 Azure 资源的拒绝分配](deny-assignments-rest.md)
+- [了解 Azure 拒绝分配](deny-assignments.md)
+- [使用 Azure 门户列出 Azure 拒绝分配](deny-assignments-portal.md)
+- [使用 REST API 列出 Azure 拒绝分配](deny-assignments-rest.md)

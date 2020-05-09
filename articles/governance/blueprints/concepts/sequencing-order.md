@@ -1,14 +1,14 @@
 ---
 title: 了解部署排序顺序
 description: 了解在蓝图分配过程中部署蓝图项目的默认顺序，以及如何自定义部署顺序。
-ms.date: 08/22/2019
+ms.date: 05/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 41b1b1ada5b7c6c919f227927001570332eeccbf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 91e11f8127ba2532ad48362de1689f4be2b6f935
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80677562"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864515"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>了解 Azure 蓝图中的部署排序
 
@@ -47,8 +47,7 @@ JSON 示例中的有些变量需要用自己的值替换：
 排序是通过在 JSON 中定义 `dependsOn` 属性来实现的。 资源组和项目对象的蓝图定义支持此属性。 `dependsOn` 是在创建特定项目之前需要创建的项目名称的字符串数组。
 
 > [!NOTE]
-> 创建蓝图对象时，如果使用[REST API](/rest/api/blueprints/artifacts/createorupdate)，则每个项目资源都将从文件名中获取其名称（如果使用[POWERSHELL](/powershell/module/az.blueprint/new-azblueprintartifact)）或 URL 端点。
-> 项目中的 ResourceGroup 引用必须与蓝图定义中定义的_资源_组引用匹配。
+> 创建蓝图对象时，如果使用[REST API](/rest/api/blueprints/artifacts/createorupdate)，则每个项目资源都将从文件名中获取其名称（如果使用[POWERSHELL](/powershell/module/az.blueprint/new-azblueprintartifact)）或 URL 端点。 项目中的 ResourceGroup 引用必须与蓝图定义中定义的_资源_组引用匹配。
 
 ### <a name="example---ordered-resource-group"></a>示例-有序资源组
 
@@ -137,7 +136,8 @@ standard-rg 将按默认排序顺序进行处理****。
 
 在创建过程中，将使用拓扑排序来创建蓝图项目的依赖项关系图。 此检查可确保资源组与项目之间每个级别的依赖项都得到支持。
 
-如果声明了不会更改默认顺序的依赖项，则不会进行任何更改。 一个示例是依赖于订阅级策略的资源组。 另一个示例是资源组“standard-rg”子策略分配，它依赖于资源组“standard-rg”子角色分配。 这两种情况下，`dependsOn` 都不会更改默认的排序顺序且不会进行任何更改。
+如果声明了不会更改默认顺序的依赖项，则不会进行任何更改。
+一个示例是依赖于订阅级策略的资源组。 另一个示例是资源组“standard-rg”子策略分配，它依赖于资源组“standard-rg”子角色分配。 这两种情况下，`dependsOn` 都不会更改默认的排序顺序且不会进行任何更改。
 
 ## <a name="next-steps"></a>后续步骤
 
