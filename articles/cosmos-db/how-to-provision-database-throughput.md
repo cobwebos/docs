@@ -6,22 +6,22 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: ef7d06dfb074a3453f5589284cbdaf079c48d111
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ba86d6955805fc97743a1a51aa586b179d82235
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78933763"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82869863"
 ---
 # <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中的数据库上预配吞吐量
 
-本文介绍如何在 Azure Cosmos DB 中的数据库上预配吞吐量。 可以为单个[容器](how-to-provision-container-throughput.md)预配吞吐量，也可以为数据库预配吞吐量，并在数据库中的容器之间共享吞吐量。 若要了解何时使用容器级别和数据库级别的吞吐量，请参阅在[容器和数据库上预配吞吐量的用例](set-throughput.md)。 可以使用 Azure 门户或 Azure Cosmos DB SDK 来预配数据库级别吞吐量。
+本文介绍如何在 Azure Cosmos DB 中的数据库上预配吞吐量。 可以为单个[容器](how-to-provision-container-throughput.md)预配吞吐量，也可以为数据库预配吞吐量，并在数据库中的容器之间共享吞吐量。 若要了解何时使用容器级和数据库级吞吐量，请参阅[在容器和数据库上预配吞吐量的用例](set-throughput.md)一文。 可以使用 Azure 门户或 Azure Cosmos DB SDK 来预配数据库级别吞吐量。
 
 ## <a name="provision-throughput-using-azure-portal"></a>使用 Azure 门户预配吞吐量
 
 ### <a name="sql-core-api"></a><a id="portal-sql"></a>SQL（核心）API
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 1. [创建新的 Azure Cosmos 帐户](create-sql-api-dotnet.md#create-account)，或选择现有的 Azure Cosmos 帐户。
 
@@ -48,7 +48,7 @@ ms.locfileid: "78933763"
 
 ### <a name="all-apis"></a><a id="dotnet-all"></a>所有 API
 
-### <a name="net-v2-sdk"></a>.Net V2 SDK
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 ```csharp
 //set the throughput for the database
@@ -63,12 +63,16 @@ await client.CreateDatabaseIfNotExistsAsync(
     options);
 ```
 
-### <a name="net-v3-sdk"></a>.Net V3 SDK
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
 [!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/DatabaseDocsSampleCode.cs?name=DatabaseCreateWithThroughput)]
 
+---
+
 ### <a name="cassandra-api"></a><a id="dotnet-cassandra"></a>Cassandra API
-类似的命令可以通过任何 CQL 兼容的驱动程序执行。 
+
+类似的命令可以通过任何 CQL 兼容的驱动程序执行。
+
 ```csharp
 // Create a Cassandra keyspace and provision throughput of 400 RU/s
 session.Execute("CREATE KEYSPACE IF NOT EXISTS myKeySpace WITH cosmosdb_provisioned_throughput=400");

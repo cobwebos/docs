@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 521a0ef4053be55e6c7322da5af26ccfc6c844e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c8cbfb619c9eed325161503f705bf5c4c0746265
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74790739"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612327"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>在 Azure 逻辑应用中创建并管理贸易合作伙伴协议
 
@@ -69,35 +69,43 @@ ms.locfileid: "74790739"
    | **发送设置** | 多种多样 | 多种多样 | 这些属性指定主机合作伙伴如何向协议中的来宾合作伙伴发送所有传出消息。 有关详细信息，请参阅相应的协议类型： <p>- [AS2 消息设置](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT 消息设置](logic-apps-enterprise-integration-edifact.md) <br>- [X12 消息设置](logic-apps-enterprise-integration-x12.md) |
    |||||
 
-1. 创建完协议后，请在“添加”页上选择“确定”，返回到集成帐户。  
+   > [!IMPORTANT]
+   > 协议的解决方法取决于与合作伙伴和传入消息中定义的项匹配：
+   >
+   > * 发件人的限定符和标识符
+   > * 接收方的限定符和标识符
+   >
+   > 如果合作伙伴的这些值发生更改，请确保也更新协议。
 
-   “协议”  列表现在会显示新协议。
+1. 创建完协议后，在 "**添加**" 页上，选择 **"确定"**，并返回到集成帐户。
+
+   **协议**列表现在显示你的新协议。
 
 ## <a name="edit-agreements"></a>编辑协议
 
-1. 在 [Azure 门户](https://portal.azure.com)中的 Azure 主菜单上，选择“所有服务”  。
+1. 在[Azure 门户](https://portal.azure.com)的 Azure 主菜单中，选择 "**所有服务**"。
 
-1. 在搜索框中，输入“集成”作为筛选器。 从结果中选择此资源：**集成帐户**
+1. 在搜索框中，输入 "集成" 作为筛选器。 在结果中，选择 "此资源：**集成帐户**"
 
-1. 在“集成帐户”下，选择要编辑其协议的集成帐户。 
+1. 在 "**集成帐户**" 下，选择具有要编辑的协议的集成帐户。
 
-1. 在右侧窗格的“组件”  下，选择“协议”  磁贴。
+1. 在右侧窗格中的 "**组件**" 下，选择 "**协议**" 磁贴。
 
-1. 在“协议”  下选择协议，然后选择“编辑”  。
+1. 在 "**协议**" 下，选择协议，然后选择 "**编辑**"。
 
 1. 进行更改，并保存所做的更改。
 
 ## <a name="delete-agreements"></a>删除协议
 
-1. 在 [Azure 门户](https://portal.azure.com)中的 Azure 主菜单上，选择“所有服务”  。
+1. 在[Azure 门户](https://portal.azure.com)的 Azure 主菜单中，选择 "**所有服务**"。
 
-1. 在搜索框中，输入“集成”作为筛选器。 从结果中选择此资源：**集成帐户**
+1. 在搜索框中，输入 "集成" 作为筛选器。 在结果中，选择 "此资源：**集成帐户**"
 
-1. 在“集成帐户”下，选择要删除其协议的集成帐户。 
+1. 在 "**集成帐户**" 下，选择具有要删除的协议的集成帐户。
 
-1. 在右侧窗格的“组件”  下，选择“协议”  磁贴。
+1. 在右侧窗格中的 "**组件**" 下，选择 "**协议**" 磁贴。
 
-1. 在“协议”  下选择协议，然后选择“删除”  。
+1. 在 "**协议**" 下，选择协议，然后选择 "**删除**"。
 
 1. 确认要删除所选协议。
 

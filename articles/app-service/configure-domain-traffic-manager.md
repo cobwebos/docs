@@ -5,12 +5,12 @@ ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
 ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: f8322c12669e41fc7c9aa88e99f95cf1b26ea87d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5ae68a8871bc2894191644e4ab183be4b469bf16
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78944123"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610235"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>使用流量管理器集成在 Azure 应用服务中配置自定义域名
 
@@ -66,12 +66,18 @@ ms.locfileid: "78944123"
 
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records-no-h.md)]
 
-虽然每个域提供程序的具体内容各不相同，但你*可以将自*定义域名（例如**contoso.com**）映射*到*与你的应用集成的流量管理器域名（**contoso.trafficmanager.net**）。
+虽然每个域提供程序的具体内容各不相同，但你可以将[非根自定义域名](#what-about-root-domains)（例如**www.contoso.com** *）映射**到*与你的应用集成的流量管理器域名（**contoso.trafficmanager.net**）。 
 
 > [!NOTE]
 > 如果某条记录已被使用并且你需要先将你的应用绑定到该记录，可以创建一条额外的 CNAME 记录。 例如，若要提前将**www\.contoso.com**绑定到你的应用，请创建从**awverify**到**contoso.trafficmanager.net**的 CNAME 记录。 然后，可以将 "www\.contoso.com" 添加到应用程序，而无需更改 "WWW" CNAME 记录。 有关详细信息，请参阅[将活动 DNS 名称迁移到 Azure App Service](manage-custom-dns-migrate-domain.md)。
 
 在域提供商处添加或修改完 DNS 记录后，请保存这些更改。
+
+### <a name="what-about-root-domains"></a>根域怎么样？
+
+由于流量管理器仅支持与 CNAME 记录进行自定义域映射，并且 DNS 标准不支持用于映射根域的 CNAME 记录（例如， **contoso.com**），因此流量管理器不支持映射到根域。 若要解决此问题，请在应用级别使用 URL 重定向。 例如，在 ASP.NET Core 中，可以使用[URL 重写](/aspnet/core/fundamentals/url-rewriting)。 然后，使用流量管理器对子域进行负载平衡（**www.contoso.com**）。
+
+对于高可用性方案，可以通过创建从根域指向每个应用副本的 IP 地址的多个*a 记录*，来实现容错 DNS 设置，而无需流量管理器。 然后，将[同一根域映射到所有应用副本](app-service-web-tutorial-custom-domain.md#map-an-a-record)。 由于不能将相同的域名映射到同一区域中的两个不同的应用，因此仅当你的应用副本位于不同区域时，此设置才有效。
 
 ## <a name="enable-custom-domain"></a>启用自定义域
 在域名称的记录传播完成后，使用浏览器验证自定义域名是否解析为应用服务应用。

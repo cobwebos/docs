@@ -3,18 +3,18 @@ title: 在 Azure 门户中备份 Azure 文件共享
 description: 了解如何使用 Azure 门户在恢复服务保管库中备份 Azure 文件共享
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: da2c7fa4cc5c3b7b948604a6f6d3999671cb3697
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a77f7fd0ec21eae60a7313a9ffa889fbef4372c6
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82101234"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82977946"
 ---
 # <a name="back-up-azure-file-shares-in-a-recovery-services-vault"></a>在恢复服务保管库中备份 Azure 文件共享
 
 本文介绍如何使用 Azure 门户备份[Azure 文件共享](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)。
 
-本文将指导如何进行以下操作：
+本文介绍如何执行以下操作：
 
 * 创建恢复服务保管库。
 * 发现文件共享并配置备份。
@@ -50,35 +50,70 @@ ms.locfileid: "82101234"
 
 ## <a name="discover-file-shares-and-configure-backup"></a>发现文件共享并配置备份
 
-1. 在[Azure 门户](https://portal.azure.com/)中，打开要用于备份文件共享的恢复服务保管库。
+1. 在[Azure 门户](https://portal.azure.com/)中，打开要用于为文件共享配置备份的恢复服务保管库。
 
-1. 在**恢复服务保管库**仪表板中，选择 " **+ 备份**"。
+1. 在 "**恢复服务保管库**" 窗格中，选择顶部菜单中的 " **+ 备份**"。
 
    ![恢复服务保管库](./media/backup-afs/recovery-services-vault.png)
 
-    a. 在“备份目标”中，将“工作负荷的运行位置”设置为“Azure”。************
+    1. 在 "**备份目标**" 窗格中，通过从下拉列表中选择 " **azure** " 选项，将**工作负荷的运行位置**设置为 " **azure** "。
 
-    ![选择 Azure 文件共享作为备份目标](./media/backup-afs/backup-goal.png)
+          ![选择 Azure 作为工作负荷](./media/backup-afs/backup-goal.png)
 
-    b.  在 **"要备份的内容"** 中，从下拉列表中选择 " **Azure 文件共享**"。
+    2. 在 **"要备份的内容"** 中，从下拉列表中选择 " **Azure 文件共享**"。
 
-    c.  选择 "**备份**"，将 Azure 文件共享扩展注册到保管库中。
+          ![选择 Azure 文件共享](./media/backup-afs/select-azure-file-share.png)
 
-    ![选择 "备份"，将 Azure 文件共享与保管库相关联](./media/backup-afs/register-extension.png)
+    3. 选择 "**备份**"，将 Azure 文件共享扩展注册到保管库中。
 
-1. 选择 "**备份**" 后，将打开 "**备份**" 窗格，并提示你从已发现支持的存储帐户列表中选择一个存储帐户。 它们要么与此保管库关联，要么位于与保管库相同的区域中，但尚未关联到任何恢复服务保管库。
+          ![选择 "备份"，将 Azure 文件共享与保管库相关联](./media/backup-afs/register-extension.png)
 
-1. 从已发现的存储帐户列表中，选择一个帐户，然后选择 **"确定"**。 Azure 将在存储帐户中搜索可备份的文件共享。 如果你最近添加了文件共享，但在列表中看不到它们，则留出一些时间让文件共享出现。
+1. 选择 "**备份**" 后，将打开 "**备份**" 窗格。 若要选择承载要保护的文件共享的存储帐户，请单击 "**存储帐户**" 文本框下的 "**选择**链接文本"。
 
-    ![发现文件共享](./media/backup-afs/discovering-file-shares.png)
+   ![选择 "选择" 链接](./media/backup-afs/choose-select-link.png)
 
-1. 从 "**文件共享**" 列表中，选择要备份的一个或多个文件共享。 选择“确定”  。
+1. 此时会在右侧打开 "**选择存储帐户" 窗格**，其中列出了一组已发现的受支持的存储帐户。 它们要么与此保管库关联，要么位于与保管库相同的区域中，但尚未关联到任何恢复服务保管库。
+
+1. 从已发现的存储帐户列表中，选择一个帐户，然后选择 **"确定"**。
+
+   ![选择发现的存储帐户](./media/backup-afs/select-discovered-storage-account.png)
+
+1. 下一步是选择要备份的文件共享。 单击 "**要备份的文件共享**" 部分中的 "**添加**" 按钮。
+
+   ![选择要备份的文件共享](./media/backup-afs/select-file-shares-to-back-up.png)
+
+1. 右侧会打开 "**选择文件共享**" 上下文窗格。 Azure 将在存储帐户中搜索可备份的文件共享。 如果你最近添加了文件共享，但在列表中看不到它们，则留出一些时间让文件共享出现。
+
+1. 从 "**选择文件共享**" 列表中，选择要备份的一个或多个文件共享。 选择“确定”  。
 
    ![选择文件共享](./media/backup-afs/select-file-shares.png)
 
-1. 选择文件共享后，"**备份**" 菜单将切换到 "**备份策略**"。 从此菜单中，选择现有的备份策略或创建新的备份策略。 然后选择 "**启用备份**"。
+1. 若要为文件共享选择备份策略，有三个选项：
 
-    ![选择“备份策略”](./media/backup-afs/select-backup-policy.png)
+   * 选择默认策略。<br>
+   此选项允许你启用每日备份，该备份将保留30天。 如果保管库中没有现有的备份策略，则会打开 "备份" 窗格，其中包含默认策略设置。 如果要选择默认设置，可以直接单击 "**启用备份**"。
+
+   * 创建新策略 <br>
+
+      1. 若要为文件共享创建新的备份策略，请单击 "**备份策略**" 部分下拉列表下方的链接文本。<br>
+
+         ![创建新策略](./media/backup-afs/create-new-policy.png)
+
+      1. 此时会在右侧打开 "**备份策略**" 上下文窗格。 在文本框中指定策略名称，并根据需要选择保持期。 默认情况下，只启用每日保留选项。 如果希望每周、每月或每年保留，请选择相应的复选框，并提供所需的保留值。
+
+      1. 指定保留值和有效策略名称后，单击 "确定"。<br>
+
+         ![指定策略名称和保持期值](./media/backup-afs/policy-name.png)
+
+   * 选择现有的备份策略之一 <br>
+
+   若要选择现有的备份策略之一来配置保护，请从 "**备份策略**" 下拉列表中选择所需的策略。<br>
+
+   ![选择现有策略](./media/backup-afs/choose-existing-policy.png)
+
+1. 单击 "**启用备份**" 以开始保护文件共享。
+
+   ![选择 "启用备份"](./media/backup-afs/enable-backup.png)
 
 设置备份策略后，将在计划的时间获取文件共享快照。 还会在所选期间保留恢复点。
 
@@ -126,7 +161,7 @@ ms.locfileid: "82101234"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何操作：
+了解如何：
 
 * [还原 Azure 文件共享](restore-afs.md)
 * [管理 Azure 文件共享备份](manage-afs-backup.md)

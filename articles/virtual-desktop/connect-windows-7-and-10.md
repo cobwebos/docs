@@ -8,18 +8,21 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b6436059cc8b3637edfc2a146d0aab3e2beae6a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b16818856ca8196b82eb8f618cf22b5fc1b6854
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154332"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612684"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>使用 Windows 桌面客户端进行连接
 
 > 适用于： Windows 7、Windows 10 和 Windows 10 IoT 企业版
 
 使用 windows 桌面客户端，你可以使用 Windows 7、Windows 10 和 Windows 10 IoT Enterprise 在设备上访问 Windows 虚拟桌面资源。
+
+>[!NOTE]
+>Windows 客户端自动默认为 Windows 虚拟桌面秋季2019版。 但是，如果客户端检测到用户还具有 Azure 资源管理器资源，则会自动添加资源或通知用户这些资源可用。 
 
 > [!IMPORTANT]
 > Windows 虚拟桌面不支持 RemoteApp 和桌面连接 (RADC) 客户端或远程桌面连接 (MSTSC) 客户端。

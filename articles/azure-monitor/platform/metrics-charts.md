@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 8d15c217f2e65877ea3baa18f6ba847492bc7fa1
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: e6ff33b6a23cb85649a8811a8bef27ab455ab9e6
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509816"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980892"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Azure 指标资源管理器的高级功能
 
@@ -137,9 +137,6 @@ ms.locfileid: "82509816"
 若要更改图表线条的颜色，请在与图表相对应的图例中单击彩色条。 "颜色选取器" 对话框将打开。 使用颜色选取器配置线条的颜色。
 
 图表颜色配置完成后，当您将图表固定到仪表板时，它们将保持为这种方式。 以下部分说明如何固定图表。
-
-> [!NOTE]
-> 由于发布和发布计划有限制，因此，在开始 Azure 门户[https://portal.azure.com/?feature.colorpicker=true](https://portal.azure.com/?feature.colorpicker=true)时，更改图表线颜色会暂时要求传递特殊参数 **？ colorpicker = true** 。 此限制很快就会取消。 
 
 ![图表上的](./media/metrics-charts/018.png)
 
