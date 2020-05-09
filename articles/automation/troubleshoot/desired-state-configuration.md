@@ -9,25 +9,22 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d0801bb44fc0c08df1adee1f817e8fccab166fb5
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
-ms.translationtype: HT
+ms.openlocfilehash: 4c9e7b6d93fb4bbc3e3b05d9346ec84197665a55
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652812"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995309"
 ---
-# <a name="troubleshoot-issues-with-azure-automation-state-configuration"></a>排查 Azure 自动化状态配置问题
+# <a name="troubleshoot-azure-automation-state-configuration-issues"></a>排查 Azure 自动化状态配置问题
 
 本文提供了有关在 Azure 自动化状态配置中编译或部署配置时出现的问题的疑难解答信息。
-
->[!NOTE]
->本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az 模块安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于你的自动化帐户，可以按照[如何更新 Azure 自动化中的 Azure PowerShell 模块](../automation-update-azure-modules.md)中的步骤操作，将模块更新到最新版本。
 
 ## <a name="diagnose-an-issue"></a>诊断问题
 
 当你收到用于配置的编译或部署错误时，以下是一些帮助你诊断问题的步骤。
 
-### <a name="1-ensure-that-your-configuration-compiles-successfully-on-the-local-machine"></a>1. 确保你的配置在本地计算机上成功编译
+### <a name="1-ensure-that-your-configuration-compiles-successfully-on-the-local-machine"></a>1.确保配置在本地计算机上编译成功
 
 Azure 自动化状态配置基于 PowerShell Desired State Configuration （DSC）构建。 可以在 [PowerShell DSC 文档](https://docs.microsoft.com/powershell/scripting/overview)中找到 DSC 语言和语法的文档。
 
@@ -37,17 +34,17 @@ Azure 自动化状态配置基于 PowerShell Desired State Configuration （DSC�
    - 语法错误。
    - 逻辑错误。
 
-### <a name="2-view-dsc-logs-on-your-node"></a>2. 查看节点上的 DSC 日志
+### <a name="2-view-dsc-logs-on-your-node"></a>2.在节点上查看 DSC 日志
 
-如果配置成功编译，但在应用于节点时失败，则可以在 DSC 日志中找到详细信息。 有关在何处查找这些日志的信息，请参阅[DSC 事件日志的位置](/powershell/scripting/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs)。
+如果配置编译成功，但在应用到节点时失败，则可在 DSC 日志中查找详细信息。 若要了解在何处查找这些日志，请参阅 [DSC 事件日志在哪里](/powershell/scripting/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs)。
 
-[XDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics)模块可以帮助你分析 DSC 日志中的详细信息。 如果联系支持人员，则需要这些日志来诊断问题。
+[xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) 模块可以帮助你分析 DSC 日志中的详细信息。 如果你联系支持部门，他们会要求你提供这些日志，以便对你的问题进行诊断。
 
 可以按照`xDscDiagnostics` [安装稳定版本模块](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module)中的说明在本地计算机上安装该模块。
 
 若要在`xDscDiagnostics` Azure 计算机上安装模块，请使用[AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0)。 还可以按照使用[运行命令在 WINDOWS VM 中运行 PowerShell 脚本](../../virtual-machines/windows/run-command.md)中的步骤，使用 Azure 门户中的 "**运行命令**" 选项。
 
-有关使用**xDscDiagnostics**的信息，请参阅[使用 xDscDiagnostics 分析 DSC 日志](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs)。 另请参阅[XDscDiagnostics cmdlet](https://github.com/PowerShell/xDscDiagnostics#cmdlets)。
+有关使用**xDscDiagnostics**的信息，请参阅[使用 xDscDiagnostics 分析 DSC 日志](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs)。 另请参阅 [xDscDiagnostics Cmdlet](https://github.com/PowerShell/xDscDiagnostics#cmdlets)。
 
 ### <a name="3-ensure-that-nodes-and-the-automation-workspace-have-required-modules"></a>3. 确保节点和自动化工作区具有所需的模块
 
@@ -112,7 +109,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 ### <a name="cause"></a>原因
 
-此问题是由证书损坏或过期引起的。 请参阅[证书过期和重新注册](../automation-dsc-onboarding.md#re-registering-a-node)。
+此问题是由证书损坏或过期引起的。 请参阅[重新注册节点](../automation-dsc-onboarding.md#re-register-a-node)。
 
 此问题也可能是由于代理配置不允许访问 ***. azure-automation.net**。 有关详细信息，请参阅[专用网络的配置](../automation-dsc-overview.md#network-planning)。 
 
@@ -239,11 +236,11 @@ System.InvalidOperationException error processing property 'Credential' of type 
 
 请确保为配置中提到的`ConfigurationData`每个`PSDscAllowPlainTextPassword`节点配置将正确的设置为 "true"。 请参阅[在 Azure 自动化状态配置中编译 DSC 配置](../automation-dsc-compile.md)。
 
-## <a name="scenario-failure-processing-extension-error-when-onboarding-from-a-dsc-extension"></a><a name="failure-processing-extension"></a>方案：从 DSC 扩展载入时出现 "失败处理扩展" 错误
+## <a name="scenario-failure-processing-extension-error-when-enabling-a-machine-from-a-dsc-extension"></a><a name="failure-processing-extension"></a>方案：从 DSC 扩展启用计算机时出现 "失败处理扩展" 错误
 
 ### <a name="issue"></a>问题
 
-使用 DSC 扩展插件时，会发生包含错误的失败：
+使用 DSC 扩展启用计算机时，会发生包含错误的失败：
 
 ```error
 VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. Error message: \"DSC COnfiguration 'RegistrationMetaConfigV2' completed with error(s). Following are the first few: Registration of the Dsc Agent with the server <url> failed. The underlying error is: The attempt to register Dsc Agent with Agent Id <ID> with the server <url> return unexpected response code BadRequest. .\".
@@ -256,7 +253,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. 
 ### <a name="resolution"></a>解决方法
 
 * 请确保分配的名称与服务中的名称完全匹配。
-* 你可以选择不包括节点配置名称，这将导致加入该节点但不分配节点配置。
+* 你可以选择不包括节点配置名称，这将导致使节点不会分配节点配置。
 
 ## <a name="scenario-one-or-more-errors-occurred-error-when-registering-a-node-by-using-powershell"></a><a name="cross-subscription"></a>方案：使用 PowerShell 注册节点时出现 "出现一个或多个错误" 错误
 
@@ -274,10 +271,10 @@ One or more errors occurred.
 
 ### <a name="resolution"></a>解决方法
 
-处理跨订阅节点，就像它是为单独的云或本地定义的一样。 使用下列载入选项之一注册节点：
+处理跨订阅节点，就像它是为单独的云或本地定义的一样。 使用以下选项之一注册节点以启用计算机：
 
-* Windows：[本地或 Azure/AWS 以外的云中的物理/虚拟 Windows 计算机](../automation-dsc-onboarding.md#onboarding-physicalvirtual-windows-machines)。
-* Linux：[本地或 Azure 以外的云中的物理/虚拟 Linux 计算机](../automation-dsc-onboarding.md#onboarding-physicalvirtual-linux-machines)。
+* Windows：[本地或 Azure/AWS 以外的云中的物理/虚拟 Windows 计算机](../automation-dsc-onboarding.md#enable-physicalvirtual-windows-machines)。
+* Linux：[本地或 Azure 以外的云中的物理/虚拟 Linux 计算机](../automation-dsc-onboarding.md#enable-physicalvirtual-linux-machines)。
 
 ## <a name="scenario-provisioning-has-failed-error-message"></a><a name="agent-has-a-problem"></a>方案： "预配失败" 错误消息
 

@@ -9,18 +9,18 @@ ms.author: nibaccam
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: a0d5bf795e4759a105b9a235770f37aa10bd6751
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52716e070437dd7a6b3b880a5a7f3a4afafe8738
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80385540"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995010"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>Azure 机器学习的分布式培训
 
 本文介绍分布式培训以及 Azure 机器学习如何为深度学习模型提供支持。 
 
-在分布式培训中，用于定型模型的工作负荷将在多个称为辅助角色节点的小型处理器之间拆分和共享。 这些工作节点会并行工作以加速模型定型。 分布式培训可用于传统的 ML 模型，但更适合用于计算和时间密集型任务，如[深入了解](concept-deep-learning-vs-machine-learning.md)培训 deep 神经网络。
+在分布式培训中，用于定型模型的工作负荷将在多个称为辅助角色节点的小型处理器之间拆分和共享。 这些工作节点会并行工作以加速模型定型。 分布式培训可用于传统的 ML 模型，但更适合用于计算和时间密集型任务，如[深入了解](concept-deep-learning-vs-machine-learning.md)培训 deep 神经网络。 
 
 ## <a name="deep-learning-and-distributed-training"></a>深度学习和分布式培训 
 
@@ -36,7 +36,9 @@ ms.locfileid: "80385540"
 
 数据并行性是实现两种分布式定型方法的最简单方法，对于大多数用例来说已经足够了。
 
-在此方法中，数据划分为多个分区，其中分区数等于计算群集中可用节点的总数。 将在这些工作节点中复制每个工作节点的模型，并且每个工作线程都在其自己的数据子集上运行。 请记住，每个节点都必须具有支持正在进行训练的模型的能力，这是模型必须完全适合每个节点。
+在此方法中，数据划分为多个分区，其中分区数等于计算群集中可用节点的总数。 将在这些工作节点中复制每个工作节点的模型，并且每个工作线程都在其自己的数据子集上运行。 请记住，每个节点都必须具有支持正在进行训练的模型的能力，这是模型必须完全适合每个节点。 下图提供了此方法的直观演示。
+
+![数据并行-概念-关系图](./media/concept-distributed-training/distributed-training.svg)
 
 每个节点单独计算其定型样本和标记输出的预测之间的错误。 反过来，每个节点会根据错误更新其模型，并且必须将其所有更改传达给其他节点，以更新其对应的模型。 这意味着，辅助角色节点需要在批处理计算结束时同步模型参数或渐变，以确保它们定型一致的模型。 
 
