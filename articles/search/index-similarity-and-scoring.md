@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 9f9cc4c29b117c83595a36c4e28b1edb428c3cde
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4b02039c86f43e6bebed58dfff475816f09a3da1
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82254117"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890142"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Azure 认知搜索中的相似性和评分
 
@@ -59,18 +59,11 @@ Azure 认知搜索支持两种不同的相似性排名算法：*典型的相似�
 
 现在，你可以指定要使用的相似性排名算法。 有关详细信息，请参阅[排名算法](index-ranking-similarity.md)。
 
-## <a name="watch-this-video"></a>观看此视频
+以下视频段快进到 Azure 认知搜索中使用的排名算法的说明。 可以观看完整的视频以获得更多背景。
 
-在此16分钟的视频中，软件工程师 Raouf Merouche 介绍了创建评分配置文件的过程。 这使您可以很好地了解正在索引和检索文档时，会发生什么情况。
+> [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=322&end=643]
 
->[!VIDEO https://channel9.msdn.com/Shows/AI-Show/Similarity-and-Scoring-in-Azure-Cognitive-Search/player]
-
-+ 2-3 分钟覆盖索引：文本处理和词法分析。
-+ 3-4 分钟覆盖索引：反转索引。
-+ 4-6 分钟涵盖查询：检索和排名。
-+ 7-16 分钟涵盖计分配置文件。
-
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
  [计分配置文件](index-add-scoring-profiles.md) [REST API 参考](https://docs.microsoft.com/rest/api/searchservice/)   
  [搜索文档 API](https://docs.microsoft.com/rest/api/searchservice/search-documents)   

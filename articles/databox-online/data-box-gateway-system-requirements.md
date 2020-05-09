@@ -8,16 +8,16 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: alkohli
-ms.openlocfilehash: e8932097bcdef782b1a551d386c2872e02d8abfd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aadaedfd2c9ecf544d142e42a0fbeb410324b7d8
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260184"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562434"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Azure Data Box Gateway 系统要求
 
-本文介绍了 Microsoft Azure Data Box Gateway 解决方案以及连接到 Azure Data Box Gateway 的客户端的重要系统要求。 建议在部署 Data Box Gateway 之前仔细查看信息，然后在部署和后续操作期间根据需要重新参考。
+本文介绍了 Microsoft Azure Data Box Gateway 解决方案以及连接到 Azure Data Box Gateway 的客户端的重要系统要求。 建议在部署 Data Box Gateway 之前仔细查看信息，然后在部署和后续操作期间根据需要重新参考。 
 
 Data Box Gateway 虚拟设备的系统要求包括：
 
@@ -93,7 +93,7 @@ Data Box Gateway 的基础主机系统可以提供以下资源来预配虚拟设
 
 [!INCLUDE [Internet bandwidth](../../includes/data-box-edge-gateway-internet-bandwidth.md)]
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>后续步骤
 
 * [部署 Azure Data Box Gateway](data-box-gateway-deploy-prep.md)
 

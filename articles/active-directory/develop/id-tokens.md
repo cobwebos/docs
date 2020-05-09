@@ -1,5 +1,6 @@
 ---
-title: Microsoft 标识平台 ID 令牌引用
+title: Microsoft 标识平台 ID 标记 |Microsoft
+titleSuffix: Microsoft identity platform
 description: 了解如何使用 Azure AD v1.0 和 Microsoft 标识平台 (v2.0) 终结点发出的访问令牌。
 services: active-directory
 author: hpsin
@@ -8,21 +9,21 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 05/06/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 0d1a5ee3ae56e8b5c4886308624159853c52b52c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: e0e327d169c246d023be1aca27d6844b9b92f03e
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690185"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926708"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft 标识平台 ID 令牌
 
-`id_tokens` 是在 [OpenID Connect](v2-protocols-oidc.md) 流中发送到客户端应用程序的。 它们可以一起发送来代替访问令牌，可供客户端用来对用户进行身份验证。
+`id_tokens`作为[OpenID connect](v2-protocols-oidc.md) （OIDC）流程的一部分发送到客户端应用程序。 它们可以一起发送来代替访问令牌，可供客户端用来对用户进行身份验证。
 
 ## <a name="using-the-id_token"></a>使用 id_token
 
@@ -30,7 +31,7 @@ ID 令牌应该用来验证某个用户是否符合其声称的身份，以及�
 
 ## <a name="claims-in-an-id_token"></a>id_token 中的声明
 
-Microsoft 标识的 `id_tokens` 为 [JWT](https://tools.ietf.org/html/rfc7519)，这意味着它们由标头、有效负载和签名部分组成。 可以使用标头和签名来验证令牌的真实性，而有效负载则包含客户端请求的用户信息。 除非另有说明，否则此处列出的所有声明均出现在 v1.0 和 v2.0 令牌中。
+`id_tokens`Microsoft 标识是[jwt](https://tools.ietf.org/html/rfc7519) （JSON Web 令牌），这意味着它们由标头、有效负载和签名部分组成。 可以使用标头和签名来验证令牌的真实性，而有效负载则包含客户端请求的用户信息。 除非另行说明，否则此处列出的所有 JWT 声明都显示在 v1.0 和 v2.0 令牌中。
 
 ### <a name="v10"></a>v1.0
 
@@ -52,14 +53,14 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 
 |声明 | 格式 | 说明 |
 |-----|--------|-------------|
-|`typ` | 字符串 - 始终为“JWT” | 指示令牌是 JWT。|
+|`typ` | 字符串 - 始终为“JWT” | 指示令牌为 JWT 标记。|
 |`alg` | String | 指示用于对令牌签名的算法。 示例：“RS256” |
 |`kid` | String | 用于对此令牌进行签名的公钥的指纹。 已在 v1.0 和 v2.0 `id_tokens` 中发出。 |
 |`x5t` | String | 与 `kid` 相同（在用法和值方面）。 但是，这是在 v1.0 `id_tokens` 中仅出于兼容目的而发出的旧式声明。 |
 
 ### <a name="payload-claims"></a>有效负载声明
 
-此列表显示了默认情况下位于 most id_tokens 中的声明（另外说明的除外）。  但是，应用可以使用[可选声明](active-directory-optional-claims.md)来请求 id_token 中的其他声明。  这些声明的范围可以从 `groups` 声明到有关用户名称的信息。
+此列表显示默认情况下处于最 id_tokens 状态的 JWT 声明（除了注明的情况除外）。  但是，你的应用可以使用[可选声明](active-directory-optional-claims.md)来请求 id_token 中的其他 JWT 声明。  这些声明的范围可以从 `groups` 声明到有关用户名称的信息。
 
 |声明 | 格式 | 说明 |
 |-----|--------|-------------|
@@ -85,23 +86,23 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |`uti` | 不透明字符串 | Azure 用来重新验证令牌的内部声明。 应忽略。 |
 |`ver` | 字符串，1.0 或 2.0 | 指示 id_token 的版本。 |
 
-
 > [!NOTE]
-> v1 和 v2 id_token 携带的信息量存在差异，如上述示例所示。 该版本实质上指定了从其颁发它的 Azure AD 平台终结点。 [Azure AD Oauth 实现](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform)多年来一直在发展。 目前，我们有两个不同的用于 AzureAD 应用程序的 oAuth 终结点。 可以使用归类为 v2 的任何新终结点，也可以使用称为 v1 的旧终结点。 这两个终结点的 Oauth 终结点是不同的。 V2 终结点是更新的终结点，我们尝试在其中迁移 v1 终结点的所有功能。建议新开发人员使用 v2 终结点。 
+> v1 和 v2 id_token 携带的信息量存在差异，如上述示例所示。 该版本实质上指定了从其颁发它的 Azure AD 平台终结点。 [Azure AD Oauth 实现](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform)多年来一直在发展。 目前，我们有两个不同的用于 AzureAD 应用程序的 oAuth 终结点。 可以使用归类为 v2 的任何新终结点，也可以使用称为 v1 的旧终结点。 这两个终结点的 Oauth 终结点是不同的。 V2 终结点是更新的终结点，我们尝试在其中迁移 v1 终结点的所有功能。建议新开发人员使用 v2 终结点。
+>
 > - V1： Azure Active Directory 终结点：`https://login.microsoftonline.com/common/oauth2/authorize`
 > - V2： Microsoft 标识平台终结点：`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
 
 ## <a name="validating-an-id_token"></a>验证 id_token
 
-验证 `id_token` 与[验证访问令牌](access-tokens.md#validating-tokens)的第一步类似 - 客户端应验证是否是正确的颁发者发送回令牌且令牌未遭篡改。 由于 `id_tokens` 始终是 JWT，因此可以使用许多现有的库来验证这些令牌 - 建议使用这其中的一个库来验证，而不要自行进行验证。
+验证 `id_token` 与[验证访问令牌](access-tokens.md#validating-tokens)的第一步类似 - 客户端应验证是否是正确的颁发者发送回令牌且令牌未遭篡改。 由于`id_tokens`始终是 JWT 标记，因此存在许多用于验证这些令牌的库，我们建议你使用其中一种，而不是自己执行此操作。
 
-若要手动验证令牌，请参阅[验证访问令牌](access-tokens.md#validating-tokens)中详述的步骤。 验证令牌上的签名以后，应验证 id_token 中的以下声明（这些也可以由令牌验证库来完成）：
+若要手动验证令牌，请参阅[验证访问令牌](access-tokens.md#validating-tokens)中详述的步骤。 验证令牌上的签名后，应在 id_token 中验证以下 JWT 声明（也可以通过令牌验证库来实现）：
 
-* 时间戳：`iat`、`nbf` 和 `exp` 时间戳全都应位于当前时间之前或之后（具体取决于需要）。 
+* 时间戳：`iat`、`nbf` 和 `exp` 时间戳全都应位于当前时间之前或之后（具体取决于需要）。
 * 受众：`aud` 声明应该与应用程序的应用 ID 匹配。
 * Nonce：有效负载中的 `nonce` 声明必须与进行初始请求时传递到 /authorize 终结点中的 nonce 参数匹配。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 了解[访问令牌](access-tokens.md)
-* 使用[可选声明](active-directory-optional-claims.md)自定义 id_token 中的声明。
+* 使用[可选声明](active-directory-optional-claims.md)自定义 id_token 中的 JWT 声明。

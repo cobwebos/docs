@@ -4,14 +4,14 @@ description: 了解如何使用 Azure 门户、PowerShell、CLI 和 Azure 资源
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 04/30/2020
 ms.author: mjbrown
-ms.openlocfilehash: 61670d757611bd0c1dd11c389282b18edb3d7fa1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 24eec27f0bc6357942420595a1318e3eb0945a5f
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247379"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82745025"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>管理 Azure Cosmos 帐户
 
@@ -29,11 +29,11 @@ ms.locfileid: "79247379"
 
 ### <a name="azure-powershell"></a><a id="create-database-account-via-ps"></a>Azure PowerShell
 
-请参阅[使用 Powershell 创建 Azure Cosmos DB 帐户](manage-with-powershell.md#create-account)
+请参阅[使用 PowerShell 创建 Azure Cosmos DB 帐户](manage-with-powershell.md#create-account)
 
 ### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Azure 资源管理器模板
 
-此 Azure 资源管理器模板将为 SQL API 创建一个 Azure Cosmos 帐户（配置有两个区域以及用于选择一致性级别、自动故障转移和多主数据库的选项）。 若要部署此模板，请在自述文件页[创建 Azure Cosmos 帐户](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-sql)上，单击“部署到 Azure”
+请参阅[创建 Azure 资源管理器模板 Azure Cosmos DB 帐户](manage-sql-with-resource-manager.md)
 
 ## <a name="addremove-regions-from-your-database-account"></a>在数据库帐户中添加/删除区域
 
@@ -61,7 +61,7 @@ ms.locfileid: "79247379"
 
 ### <a name="azure-powershell"></a><a id="add-remove-regions-via-ps"></a>Azure PowerShell
 
-请参阅[使用 Powershell 添加或删除区域](manage-with-powershell.md#update-account)
+请参阅[在 PowerShell 中添加或删除区域](manage-with-powershell.md#update-account)
 
 ## <a name="configure-multiple-write-regions"></a><a id="configure-multiple-write-regions"></a>配置多个写入区域
 
@@ -77,7 +77,7 @@ ms.locfileid: "79247379"
 
 ### <a name="azure-powershell"></a><a id="configure-multiple-write-regions-ps"></a>Azure PowerShell
 
-请参阅[使用 Powershell 启用多写入区域](manage-with-powershell.md#multi-master)
+请参阅[使用 PowerShell 启用多写区域](manage-with-powershell.md#multi-master)
 
 ### <a name="resource-manager-template"></a><a id="configure-multiple-write-regions-arm"></a>资源管理器模板
 
@@ -163,7 +163,7 @@ ms.locfileid: "79247379"
 
 ### <a name="azure-powershell"></a><a id="enable-automatic-failover-via-ps"></a>Azure PowerShell
 
-请参阅[使用 Powershell 启用自动故障转移](manage-with-powershell.md#enable-automatic-failover)
+请参阅[使用 PowerShell 启用自动故障转移](manage-with-powershell.md#enable-automatic-failover)
 
 ## <a name="set-failover-priorities-for-your-azure-cosmos-account"></a>为 Azure Cosmos 帐户设置故障转移优先级
 
@@ -194,7 +194,7 @@ Cosmos 帐户配置为自动故障转移后，可以更改区域的故障转移�
 
 ### <a name="azure-powershell"></a><a id="set-failover-priorities-via-ps"></a>Azure PowerShell
 
-请参阅[使用 Powershell 设置故障转移优先级](manage-with-powershell.md#modify-failover-priority)
+请参阅[设置故障转移优先级和 PowerShell](manage-with-powershell.md#modify-failover-priority)
 
 ## <a name="perform-manual-failover-on-an-azure-cosmos-account"></a><a id="manual-failover"></a>在 Azure Cosmos 帐户上执行手动故障转移
 
@@ -226,7 +226,7 @@ Cosmos 帐户配置为自动故障转移后，可以更改区域的故障转移�
 
 ### <a name="azure-powershell"></a><a id="enable-manual-failover-via-ps"></a>Azure PowerShell
 
-请参阅[使用 Powershell 触发手动故障转移](manage-with-powershell.md#trigger-manual-failover)
+请参阅[通过 PowerShell 触发手动故障转移](manage-with-powershell.md#trigger-manual-failover)
 
 ## <a name="next-steps"></a>后续步骤
 
