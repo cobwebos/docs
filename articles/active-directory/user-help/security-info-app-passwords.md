@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: curtand
-ms.openlocfilehash: 787fa67ee77997fd1f9967db3abdbfc83d4ffad2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77619f7bc24943b2b7051ff51f92cf96d439775e
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77064064"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628412"
 ---
 # <a name="create-app-passwords-from-the-security-info-preview-page"></a>通过 "安全信息（预览版）" 页创建应用密码
 
@@ -45,7 +45,7 @@ ms.locfileid: "77064064"
 
 ### <a name="to-create-a-new-app-password"></a>创建新的应用密码
 
-1. 登录到工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页。
+1. 登录到工作或学校帐户，然后转到 https://myaccount.microsoft.com/ 页。
 
     ![“我的个人资料”页，其中突出显示了“安全信息”链接](media/security-info/securityinfo-myprofile-page.png)
 

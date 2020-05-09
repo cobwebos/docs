@@ -8,15 +8,16 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: babanisa
-ms.openlocfilehash: 03bc2f9de6f50f08c9f62f86a3d1791a067cecd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5f8b0a779e6cb70537d126c251e1e065892934a9
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78899277"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629501"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>授权访问事件网格资源
 借助 Azure 事件网格，可以控制授予不同用户用来执行各种管理操作的访问级别，例如列出事件订阅、创建新的事件订阅及生成密钥。 事件网格使用 Azure 的基于角色的访问控制 (RBAC)。
+
 
 ## <a name="operation-types"></a>操作类型
 
@@ -182,6 +183,23 @@ EventGridContributorRole.json****：允许所有事件网格操作。
 ### <a name="encryption-at-rest"></a>静态加密
 
 事件网格服务写入到磁盘的所有事件或数据都通过 Microsoft 托管的密钥进行加密，确保静态加密。 此外，事件或数据保留的最长时间为24小时，并遵循[事件网格重试策略](delivery-and-retry.md)。 事件网格将在 24 小时或事件生存时间（以两者中较小者为准）过后自动删除所有事件或数据。
+
+## <a name="permissions-for-event-subscriptions"></a>事件订阅的权限
+如果你使用不是 WebHook 的事件处理程序（例如事件中心或队列存储），则需要对该资源具有写入访问权限。 此权限检查可防止未经授权的用户向你的资源发送事件。
+
+你必须在作为事件源的资源上具有 **Microsoft.EventGrid/EventSubscriptions/Write** 权限。 因为要在资源范围内写入新的订阅，所以需要此权限。 所需资源因是订阅系统主题还是订阅自定义主题而异。 本部分介绍了这两种类型。
+
+### <a name="system-topics-azure-service-publishers"></a>系统主题（Azure 服务发布服务器）
+对于系统主题，需要在资源范围内写入新事件订阅的权限，才能发布该事件。 该资源的格式为：`/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}`
+
+例如，若要订阅存储帐户上名为“myacct”的事件，需要 `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct` 的 Microsoft.EventGrid/EventSubscriptions/Write 权限****
+
+### <a name="custom-topics"></a>自定义主题
+对于自定义主题，需要在事件网格主题范围内写入新事件订阅的权限。 该资源的格式为：`/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.EventGrid/topics/{topic-name}`
+
+例如，若要订阅名为“mytopic”的自定义主题，需要 `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic` 的 Microsoft.EventGrid/EventSubscriptions/Write 权限****
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

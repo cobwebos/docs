@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 04/30/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: c56db99b056d4b1e9b7dd75bc2f21bf582ee2ab7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d039a7e21ac1ef6415cc363201c9754b47503add
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756833"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82627766"
 ---
 # <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>有关 Microsoft Authenticator 应用的常见问题（Faq）
 
@@ -25,10 +25,11 @@ ms.locfileid: "80756833"
 
 Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使用 Azure 多重身份验证时使用该应用。 Microsoft Authenticator 应用可用于 [Android](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.azure.authenticator) 和 [iOS](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458)。
 
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 
-| 问题 | 解决方案 |
-| -------- | -------- |
+| 问题 | Answer |
+| -------- | ------ |
+| 正在注册一个设备，以允许公司或服务访问我的设备？ | 通过注册设备，你的设备可以访问你的组织的服务，而不允许你的组织访问你的设备。 |
 | 能否在 Android Microsoft Authenticator 上使用我的 OTP 代码的屏幕截图？ | 从 Microsoft Authenticator Android release 6.2003.1704，默认情况下，当执行身份验证器的屏幕截图时，将隐藏所有 OTP 代码，以便更好地保护用户。 如果用户想要在屏幕截图中查看其 OTP 代码，或允许其他应用捕获验证器的屏幕，可以在其验证器应用中启用 "屏幕捕获" 设置，然后重新启动应用。 |
 | 哪些数据是 Authenticator 以我的名义存储的，我如何删除它？ | Microsoft Authenticator 应用收集三种类型的信息：<ul><li>你在添加帐户时提供的帐户信息。 可以通过删除帐户删除此数据。</li><li>仅保留在应用中的诊断日志数据，直到你选择 "**发送日志**" **Help** ，以将日志发送到 Microsoft。 这些日志文件包含个人数据，如电子邮件地址（例如、 alain@contoso.com）、服务器或 IP 地址以及设备数据（例如，设备名称和操作系统版本），其中的个人数据限制为有助于排查应用程序问题。 任何时候都可以在应用中查看这些日志文件来查看所收集的信息。 如果你发送日志文件，则身份验证应用工程师可以使用它来解决客户报告的问题。</li><li>非个人身份使用数据，如 "已启动添加帐户流/已成功添加帐户" 或 "通知已批准"。 此数据是我们的工程决策不可或缺的一部分，并帮助我们确定哪些功能对你很重要，以及什么地方需要以应用更新的形式进行改进。 作为应用用户，你可以在首次启动应用时看到此数据收集的通知，并通知你可以在应用的 "**设置**" 页上关闭此数据收集。 可以在任何时候启用或禁用此设置。</li></ul> |
 | 此应用中的代码有哪些用途？ | 打开 Microsoft Authenticator 应用时，你会看到添加的帐户作为磁贴。<li>在 iOS 设备上，你的工作或学校帐户以及你的个人 Microsoft 帐户将有六位或八位数字显示在该帐户的全屏视图中（通过点击 "帐户" 磁贴进行访问）。<br><br>![应用中的“帐户”屏幕](./media/user-help-auth-app-faq/auth-app-accounts.png)<li>对于 iOS 设备上的其他帐户和 Android 设备上的所有帐户，你将在应用的 "帐户" 页中看到六位或八位数字。 你将使用这些代码来验证自己声明的身份。 用用户名和密码登录后，将键入与该帐户相关联的验证码。 例如，如果要 Katy 登录到 Contoso 帐户并且使用的是 iOS 设备，请点击 "帐户" 磁贴，并使用验证码验证身份。 如果 Katy 登录到 Outlook 帐户，则需执行相同的步骤。<br><br>![在应用中点击 "帐户" 磁贴后](./media/user-help-auth-app-faq/katy-signin.png)<br><br>点击 Contoso 帐户磁贴后，Katy 将在全屏视图中看到验证代码，并输入895823以完成登录。<br><br>![应用中的验证代码屏幕](./media/user-help-auth-app-faq/verification-code.png) |
