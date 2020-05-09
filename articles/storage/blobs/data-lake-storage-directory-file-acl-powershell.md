@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: db098210d6de28d9dc1db7e264459f57bc0f4d86
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: c859176857f64559b9a2994c9cfc2d4ec5f61e57
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82161017"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691081"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的目录、文件和 Acl
 
@@ -30,7 +30,7 @@ ms.locfileid: "82161017"
 > * 已安装 .NET Framework 4.7.2 或更高版本。 请参阅[下载 .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework)。
 > * PowerShell `5.1` 或更高版本。
 
-## <a name="install-the-powershell-module"></a>安装 Powershell 模块
+## <a name="install-the-powershell-module"></a>安装 PowerShell 模块
 
 1. 使用以下命令验证安装的 PowerShell 版本是否为 `5.1` 或以上。    
 
@@ -351,15 +351,25 @@ $file.ACL
 
 ### <a name="set-acls-on-all-items-in-a-file-system"></a>对文件系统中的所有项目设置 Acl
 
-可以在 `Update-AzDataLakeGen2Item` cmdlet 中结合使用 `Get-AzDataLakeGen2Item` 和 `-Recurse` 参数，以递归方式设置文件系统中所有目录和文件的 ACL。 
+可以将`Get-AzDataLakeGen2Item`和`-Recurse`参数与`Update-AzDataLakeGen2Item` cmdlet 一起使用，以便在文件系统中以递归方式设置目录和文件的 ACL。 
 
 ```powershell
 $filesystemName = "my-file-system"
 $acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rw- 
 $acl = set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
 $acl = set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission -wx -InputObject $acl
-Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse | Update-AzDataLakeGen2Item -Acl $acl
+
+$Token = $Null
+do
+{
+     $items = Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse -ContinuationToken $Token    
+     if($items.Length -le 0) { Break;}
+     $items | Update-AzDataLakeGen2Item -Acl $acl
+     $Token = $items[$items.Count -1].ContinuationToken;
+}
+While ($Token -ne $Null) 
 ```
+
 ### <a name="add-or-update-an-acl-entry"></a>添加或更新 ACL 条目
 
 首先，获取 ACL。 然后，使用`set-AzDataLakeGen2ItemAclObject` cmdlet 添加或更新 ACL 条目。 使用`Update-AzDataLakeGen2Item` CMDLET 提交 ACL。
@@ -412,7 +422,7 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirna
 |AzDataLakeStoreItemOwner<br>AzDataLakeStoreItemPermission<br>AzDataLakeStoreItemAcl|更新-AzDataLakeGen2Item|AzDataLakeGen2Item cmdlet 仅更新单个项，而不是以递归方式更新。 如果要以递归方式进行更新，请使用 AzDataLakeStoreChildItem cmdlet 将项列出，然后使用 AzDataLakeGen2Item cmdlet 将管道列出。|
 |AzDataLakeStoreItem|AzDataLakeGen2Item|如果项不存在，AzDataLakeGen2Item cmdlet 将报告错误。|
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [已知问题](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 * [存储 PowerShell cmdlet](/powershell/module/az.storage)

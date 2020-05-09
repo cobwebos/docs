@@ -7,43 +7,30 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 04/07/2020
-ms.openlocfilehash: 7d741e2fc787c057ebfcdeceeab2ea096df3f9ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: f41a15fb52698eaa17d6f76b991cbd31a56ba14f
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195207"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731967"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>自动缩放 Azure HDInsight 群集
 
-> [!Important]
-> Azure HDInsight 自动缩放功能已发布，适用于 Spark 和 Hadoop 群集的2019年11月7日，并随附了功能预览版本中未提供的改进。 如果你在2019年11月7日之前创建了一个 Spark 群集，并且想要在群集上使用自动缩放功能，则建议的路径是创建一个新的群集，并在新群集上启用自动缩放。
->
-> 交互式查询（LLAP）和 HBase 群集的自动缩放仍处于预览阶段。 自动缩放仅适用于 Spark、Hadoop、交互式查询和 HBase 群集。
-
-Azure HDInsight 的群集自动缩放功能会自动增加和减少群集中的辅助角色节点数。 目前无法缩放群集中其他类型的节点。  创建新 HDInsight 群集期间，可以设置最小和最大工作节点数。 自动缩放功能随后监视分析负载的资源需求，并增加或减少工作器节点数。 此功能不会产生额外的费用。
-
-## <a name="cluster-compatibility"></a>群集兼容性
-
-下表描述了与自动缩放功能兼容的群集类型和版本。
-
-| 版本 | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
-|---|---|---|---|---|---|---|---|
-| 不包含 ESP 的 HDInsight 3.6 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
-| 不包含 ESP 的 HDInsight 4.0 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
-| 包含 ESP 的 HDInsight 3.6 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
-| 包含 ESP 的 HDInsight 4.0 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
-
-\*只能将 HBase 群集配置为基于计划的缩放，而不能配置基于负载的群集。
+Azure HDInsight 的 "免费自动缩放" 功能可根据先前设置的条件自动增加或减少群集中的辅助角色节点数。 在群集创建过程中，可以设置最小和最大节点数，使用日期时间计划或特定性能指标建立缩放条件，而 HDInsight 平台会执行其他任务。
 
 ## <a name="how-it-works"></a>工作原理
 
-可为 HDInsight 群集选择基于负载的缩放或基于计划的缩放。 基于负载的缩放会在你设置的范围内更改群集中的节点数，以确保 CPU 使用最佳并且最大程度地降低运行成本。
+自动缩放功能使用两种类型的条件来触发缩放事件：不同群集性能指标的阈值（称为*基于负载的缩放*）和基于时间的触发器（称为*基于计划的缩放*）。 基于负载的缩放会在你设置的范围内更改群集中的节点数，以确保 CPU 使用最佳并且最大程度地降低运行成本。 基于计划的缩放根据与特定日期和时间关联的操作更改群集中的节点数。
 
-基于计划的缩放根据特定时间生效的条件更改群集中的节点数。 这些条件将群集缩放到预期数量的节点。
+### <a name="choosing-load-based-or-schedule-based-scaling"></a>选择基于负载或基于计划的缩放
 
-### <a name="metrics-monitoring"></a>指标监视
+选择缩放类型时，请考虑以下因素：
+
+* 负载变化：群集的负载是否在特定的时间内按特定的时间使用一致的模式？ 如果不是，则最好使用基于负载的计划。
+* SLA 要求：自动缩放缩放为反应性，而不是预测。 在负载开始增加以后，是否有足够的延迟来确保将群集设置为目标大小？ 如果存在严格的 SLA 要求并且负载为固定的已知模式，则 "基于计划" 是一个更好的选择。
+
+### <a name="cluster-metrics"></a>群集指标
 
 自动缩放会持续监视群集并收集以下指标：
 
@@ -56,7 +43,7 @@ Azure HDInsight 的群集自动缩放功能会自动增加和减少群集中的�
 |每个节点使用的内存|工作节点上的负载。 使用了 10 GB 内存的工作节点的负载被认为比使用了 2 GB 内存的工作节点的负载更大。|
 |每个节点的应用程序主机数|在工作节点上运行的应用程序主机 (AM) 容器的数量。 托管两个 AM 容器的工作节点被认为比托管零个 AM 容器的工作节点更重要。|
 
-每 60 秒检查一次上述指标。 自动缩放根据这些指标作出决策。
+每 60 秒检查一次上述指标。 可以使用任何这些指标设置群集的缩放操作。
 
 ### <a name="load-based-scale-conditions"></a>基于负载的缩放条件
 
@@ -70,6 +57,24 @@ Azure HDInsight 的群集自动缩放功能会自动增加和减少群集中的�
 对于纵向扩展，自动缩放会发出扩展请求，以添加所需数量的节点。 向上缩放基于所需的新工作节点数量，以满足当前的 CPU 和内存要求。
 
 对于向下缩放，自动缩放会发出删除一定数量节点的请求。 根据每个节点的 AM 容器数向下缩放。 以及当前的 CPU 和内存要求。 该服务还会根据当前的作业执行来检测哪些节点可以删除。 纵向缩减操作首先会解除节点，然后从群集中删除它们。
+
+### <a name="cluster-compatibility"></a>群集兼容性
+
+> [!Important]
+> Azure HDInsight 自动缩放功能已发布，适用于 Spark 和 Hadoop 群集的2019年11月7日，并随附了功能预览版本中未提供的改进。 如果你在2019年11月7日之前创建了一个 Spark 群集，并且想要在群集上使用自动缩放功能，则建议的路径是创建一个新的群集，并在新群集上启用自动缩放。
+>
+> 交互式查询（LLAP）和 HBase 群集的自动缩放仍处于预览阶段。 自动缩放仅适用于 Spark、Hadoop、交互式查询和 HBase 群集。
+
+下表描述了与自动缩放功能兼容的群集类型和版本。
+
+| 版本 | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
+|---|---|---|---|---|---|---|---|
+| 不包含 ESP 的 HDInsight 3.6 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
+| 不包含 ESP 的 HDInsight 4.0 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
+| 包含 ESP 的 HDInsight 3.6 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
+| 包含 ESP 的 HDInsight 4.0 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
+
+\*只能将 HBase 群集配置为基于计划的缩放，而不能配置基于负载的群集。
 
 ## <a name="get-started"></a>入门
 
@@ -205,16 +210,35 @@ https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{res
 
 请参阅介绍如何[启用基于负载的自动缩放](#load-based-autoscaling)的上一部分，详尽了解所有的有效负载参数。
 
-## <a name="guidelines"></a>指南
+## <a name="monitoring-autoscale-activities"></a>监视自动缩放活动
 
-### <a name="choosing-load-based-or-schedule-based-scaling"></a>选择基于负载或基于计划的缩放
+### <a name="cluster-status"></a>群集状态
 
-在决定选择哪个模式之前，请考虑以下因素：
+Azure 门户中列出的群集状态可帮助你监视自动缩放活动。
 
-* 在群集创建期间启用“自动缩放”。
-* 节点最小数目至少应为 3。
-* 负载差异：群集的负载是否在特定日期的特定时间遵循一致的模式。 如果不是，则最好使用基于负载的计划。
-* SLA 要求：自动缩放缩放为反应性，而不是预测。 在负载开始增加以后，是否有足够的延迟来确保将群集设置为目标大小？ 如果存在严格的 SLA 要求并且负载为固定的已知模式，则 "基于计划" 是一个更好的选择。
+![启用工作器节点的基于负载的自动缩放群集状态](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-cluster-status.png)
+
+以下列表解释了你可能会看到的所有群集状态消息。
+
+| 群集状态 | 说明 |
+|---|---|
+| 运行 | 群集在正常运行。 所有以前的自动缩放活动已成功完成。 |
+| 更新  | 正在更新群集自动缩放配置。  |
+| HDInsight 配置  | 某个群集纵向扩展或缩减操作正在进行。  |
+| 更新时出错  | HDInsight 在自动缩放配置更新期间遇到问题。 客户可以选择重试更新或禁用自动缩放。  |
+| 错误  | 群集出现问题，无法使用。 请删除此群集，然后新建一个。  |
+
+若要查看群集中节点的当前数目，请在群集的 "**概述**" 页上，中转到 "**群集大小**" 图表。 或在 "**设置**" 下选择**群集大小**。
+
+### <a name="operation-history"></a>操作历史记录
+
+可查看群集指标中包含的群集增加和减少历史记录。 还可以列出过去一天、过去一周或其他时间段的所有缩放操作。
+
+在“监视”下选择“指标”。******** 然后从 "**指标**" 下拉框中选择 "**添加度量值**" 和 "**活动工作线程数**"。 选择右上角的按钮以更改时间范围。
+
+![启用工作器节点的基于计划的自动缩放指标](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
+
+## <a name="other-considerations"></a>其他注意事项
 
 ### <a name="consider-the-latency-of-scale-up-or-scale-down-operations"></a>考虑纵向扩展或纵向缩减操作的延迟
 
@@ -229,34 +253,6 @@ https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{res
 ### <a name="minimum-cluster-size"></a>最小的群集大小
 
 不要将群集缩小到少于三个节点。 将群集缩放成少于三个节点可能导致系统停滞在安全模式下，因为没有进行充分的文件复制。  有关详细信息，请参阅[进入安全模式](./hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode)。
-
-## <a name="monitoring"></a>监视
-
-### <a name="cluster-status"></a>群集状态
-
-Azure 门户中列出的群集状态可帮助你监视自动缩放活动。
-
-![启用工作器节点的基于负载的自动缩放群集状态](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-cluster-status.png)
-
-以下列表解释了你可能会看到的所有群集状态消息。
-
-| 群集状态 | 说明 |
-|---|---|
-| 运行 | 群集在正常运行。 所有以前的自动缩放活动已成功完成。 |
-| 正在更新  | 正在更新群集自动缩放配置。  |
-| HDInsight 配置  | 某个群集纵向扩展或缩减操作正在进行。  |
-| 更新时出错  | HDInsight 在自动缩放配置更新期间遇到问题。 客户可以选择重试更新或禁用自动缩放。  |
-| 错误  | 群集出现问题，无法使用。 请删除此群集，然后新建一个。  |
-
-若要查看群集中节点的当前数目，请在群集的 "**概述**" 页上，中转到 "**群集大小**" 图表。 或在 "**设置**" 下选择**群集大小**。
-
-### <a name="operation-history"></a>操作历史记录
-
-可查看群集指标中包含的群集增加和减少历史记录。 还可以列出过去一天、过去一周或其他时间段的所有缩放操作。
-
-在“监视”下选择“指标”。******** 然后从 "**指标**" 下拉框中选择 "**添加度量值**" 和 "**活动工作线程数**"。 选择右上角的按钮以更改时间范围。
-
-![启用工作器节点的基于计划的自动缩放指标](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
 
 ## <a name="next-steps"></a>后续步骤
 

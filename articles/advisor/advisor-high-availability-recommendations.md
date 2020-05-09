@@ -3,12 +3,12 @@ title: 使用 Azure 顾问提高应用程序的可用性
 description: 使用 Azure 顾问提高 Azure 部署的高可用性。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 997681ed62fa9985e3122ece22565dbae0e65b53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e38a1fb5e07e3811c53e24a5e324575d6774a75
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443106"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788019"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>使用 Azure 顾问提高应用程序的可用性
 
@@ -28,6 +28,10 @@ Azure 顾问可帮助确保并提高业务关键应用程序的连续性。 可�
 ## <a name="use-managed-disks-to-improve-data-reliability"></a>使用托管磁盘提高数据可靠性
 
 具有共享存储帐户或存储缩放单元的磁盘的可用性集中的虚拟机在中断期间不可对单个存储规模单元故障进行复原。 顾问将确定这些可用性集，并建议迁移到 Azure 托管磁盘。 这将确保可用性集中的不同虚拟机的磁盘彼此完全独立，以避免单点故障。 
+
+## <a name="known-issue-with-check-point-network-virtual-appliance-image-version"></a>检查点网络虚拟设备映像版本的已知问题
+
+顾问可以确定虚拟机是否运行的检查点映像版本已已知，以便在执行平台服务操作时丢失网络连接。 顾问建议将帮助你升级到用于解决此问题的较新版本的映像。 这将通过更好的网络连接来确保业务连续性。
 
 ## <a name="ensure-application-gateway-fault-tolerance"></a>确保应用程序网关容错
 
@@ -83,7 +87,7 @@ Azure Advisor 将识别使用旧版本的 .NET SDK Azure Cosmos DB 帐户，并�
 
 ## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>将 Azure Cosmos DB Java SDK 升级到 Maven 提供的最新版本
 
-Azure Advisor 将识别使用旧版本 Java SDK Azure Cosmos DB 帐户，并建议升级到 Maven 的最新版本，以获取最新的修补程序、性能改进和新功能。 [了解有关 Cosmos DB Java SDK 的详细信息](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+Azure Advisor 将识别使用旧版本 Java SDK Azure Cosmos DB 帐户，并建议升级到 Maven 的最新版本，以获取最新的修补程序、性能改进和新功能。 [了解有关 Cosmos DB Java SDK 的详细信息](https://aka.ms/cosmosdb/sql-api-sdk-async-java)
 
 ## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>将 Azure Cosmos DB Spark 连接器升级到 Maven 提供的最新版本
 

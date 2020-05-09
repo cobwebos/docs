@@ -3,12 +3,12 @@ title: 使用 Azure 顾问降低服务成本
 description: 使用 Azure 顾问优化 Azure 部署的成本。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 0237feab59551ecab87d78b0d4d66b9fc7b47e90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13e7b1d7c6b0fe342020c40e1bb4abeba97d18bb
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259690"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788087"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>使用 Azure 顾问降低服务成本
 
@@ -49,6 +49,9 @@ Azure 顾问会检测到反复发生故障的 Azure 数据工厂管道，并建�
 
 ## <a name="utilize-lifecycle-management"></a>利用生命周期管理
 Azure 顾问将利用有关 Azure blob 存储对象计数、总大小和事务的智能，以检测是否有一个或多个存储帐户最适合用于对数据进行数据的生命周期管理。 它将提示你创建生命周期管理规则，以便将你的数据自动分层为 "冷" 或 "存档"，以优化存储成本，同时保留 Azure blob 存储中的数据以实现应用程序兼容性。
+
+## <a name="create-an-ephemeral-os-disk-recommendation"></a>创建临时操作系统磁盘建议
+通过[临时操作系统磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks)，客户可以获得以下好处：节省了 OS 磁盘的存储成本。 获取更低的操作系统磁盘读/写延迟。 通过将 OS （和临时磁盘）重置为其原始状态，加速 VM 重置操作。 对于具有无状态工作负荷的短期 IaaS Vm 或 Vm，更非繁忙使用临时 OS 磁盘。 顾问对资源的建议，这些资源可以利用临时 OS 磁盘。 
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>如何访问 Azure 顾问中的成本建议
 

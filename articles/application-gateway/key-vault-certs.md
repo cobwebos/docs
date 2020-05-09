@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 934cf854b0c526ed994c7dc91763f65de64fd14b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 780f2774cb37e3d6d43ed5137c29119c0f63fd0a
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617504"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82743698"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>TLS 终止，Key Vault 证书
 
@@ -50,7 +50,21 @@ Key Vault 集成为 TLS 终止提供两种模型：
    然后导入现有的证书，或者在密钥保管库中创建新证书。 此证书将供通过应用程序网关的应用程序使用。 在此步骤中，你还可以使用存储为不带密码的64编码的 PFX 文件的密钥保管库机密。 我们建议使用证书类型是因为适用于密钥保管库中证书类型对象的自动续订功能。 在创建证书或机密以后，即可在密钥保管库中定义访问策略，此类策略允许为标识授予对机密的“获取”  访问权限。
    
    > [!NOTE]
-   > 如果通过 ARM 模板部署应用程序网关，可以使用 Azure CLI 或 PowerShell，也可以通过从 Azure 门户部署的 Azure 应用程序来部署，作为64编码的 PFX 文件存储在密钥保管库中的 SSL 证书**必须为无密码**。 此外，必须完成[使用 Azure Key Vault 在部署期间传递安全参数值](../azure-resource-manager/templates/key-vault-parameter.md)中所述的步骤。 尤其重要的是，将`enabledForTemplateDeployment`设置`true`为。
+   > 如果通过 ARM 模板部署应用程序网关，可以使用 Azure CLI 或 PowerShell，也可以通过从 Azure 门户部署的 Azure 应用程序进行部署，SSL 证书以 base64 编码的 PFX 文件的形式存储在密钥保管库中。 必须完成[使用 Azure Key Vault 在部署期间传递安全参数值](../azure-resource-manager/templates/key-vault-parameter.md)中所述的步骤。 
+   >
+   > 尤其重要的是，将`enabledForTemplateDeployment`设置`true`为。 此证书可能是无密码的，也可能是密码。 对于包含密码的证书，以下示例显示了`sslCertificates` `properties`适用于应用程序网关的 ARM 模板配置的中项的可能配置。 `appGatewaySSLCertificateData`和的值将`appGatewaySSLCertificatePassword`从密钥保管库中查找，如[通过动态 ID 引用机密](../azure-resource-manager/templates/key-vault-parameter.md#reference-secrets-with-dynamic-id)部分中所述。 从后面的引用开始`parameters('secretName')` ，查看查找如何发生。 如果证书为无密码，则忽略该`password`条目。
+   >   
+   > ```
+   > "sslCertificates": [
+   >     {
+   >         "name": "appGwSslCertificate",
+   >         "properties": {
+   >             "data": "[parameters('appGatewaySSLCertificateData')]",
+   >             "password": "[parameters('appGatewaySSLCertificatePassword')]"
+   >         }
+   >     }
+   > ]
+   > ```
 
 1. **配置应用程序网关**
 

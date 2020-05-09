@@ -1,14 +1,14 @@
 ---
 title: 支持的资源管理器资源类型
 description: 提供 Azure Resource Graph 和更改历史记录支持的资源管理器资源类型的列表。
-ms.date: 04/24/2020
+ms.date: 04/29/2020
 ms.topic: reference
-ms.openlocfilehash: 7092a6dccc2870c7fd7b6dc6feb3af16f0fd3b7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ab079bcd1e7e8558d754a413068ca9f0ae276c6
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82141898"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594247"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph 表和资源类型引用
 
@@ -62,6 +62,7 @@ Azure Resource Graph 支持 **Azure 资源管理器**的下列[资源类型](../
 - appconfiguration/configurationstores
 - appplatform/春季
 - microsoft. 存档/集合
+- attestationproviders/
 - automationaccounts/
 - automationaccounts/配置
 - automationaccounts/runbook
@@ -75,6 +76,7 @@ Azure Resource Graph 支持 **Azure 资源管理器**的下列[资源类型](../
 - azuredata/sqlinstances
 - azuredata/sqlserverregistrations
 - test-azurestack/注册
+- azurestackhci/群集
 - baremetal/consoleconnections
 - baremetal/crayservers
 - baremetal/monitoringservers
@@ -146,6 +148,7 @@ Azure Resource Graph 支持 **Azure 资源管理器**的下列[资源类型](../
 - databricks/工作区
 - microsoft.datacatalog/目录
 - microsoft.datacatalog/datacatalogs
+- datadog/监视器
 - datafactory/microsoft.azure.management.datafactories
 - datafactory/工厂
 - datalakeanalytics/帐户

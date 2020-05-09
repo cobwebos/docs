@@ -9,10 +9,10 @@ ms.date: 02/27/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 1bef4e5f4129ddc8300d61d609392ce0b07b74b8
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80656251"
 ---
 # <a name="what-is-azure-private-link"></a>什么是 Azure 专用链接？ 

@@ -1,16 +1,16 @@
 ---
-title: 在非工作时间启动 Azure Automation 启动/停止 Vm 解决方案
-description: 本文介绍如何为 Azure 虚拟机启用 Azure 自动化启动/停止 VM 解决方案。
+title: 启用 Azure 自动化在空闲时间启动/停止 VM 解决方案
+description: 本文介绍如何在 Azure 虚拟机的非工作时间解决方案中启用 Azure 自动化启动/停止 VM。
 services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: d47daa29c65f847fdeb33b9e24a892ac1f31b52a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed9937576334fcba6707f2737e92c3cddce2d7f7
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82096956"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864209"
 ---
 # <a name="enable-azure-automation-startstop-vms-solution"></a>启用 Azure Automation 启动/停止 Vm 解决方案
 

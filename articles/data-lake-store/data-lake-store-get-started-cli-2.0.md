@@ -1,23 +1,19 @@
 ---
-title: 通过 Azure CLI 开始使用 Azure Data Lake Storage Gen1 | Microsoft Docs
-description: 使用 Azure CLI 创建 Data Lake Storage Gen1 帐户并执行基本操作
-services: data-lake-store
-documentationcenter: ''
+title: 管理 Azure Data Lake Storage Gen1 帐户-Azure CLI
+description: 使用 Azure CLI 创建 Data Lake Storage Gen1 帐户并执行基本操作。
 author: twooley
-manager: mtillman
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 9431cc7fa12b86371ce6b2325aca8e13d264442e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e278981ce7647a53d2e80c5b835c8ed666db541
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60885334"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688174"
 ---
-# <a name="get-started-with-azure-data-lake-store-using-azure-cli"></a>Azure Data Lake Store 入门（使用 Azure CLI）
+# <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-cli"></a>使用 Azure CLI 开始使用 Azure Data Lake Storage Gen1
 
 [!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
 

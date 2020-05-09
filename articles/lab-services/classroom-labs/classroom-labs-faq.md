@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
+ms.date: 05/01/2020
 ms.author: spelluru
-ms.openlocfilehash: 8d1ed128181d036af0026ae273c2c5bf1d3a066e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ee64f26d0ff685a83718c5d5e3d6f6eaf9230807
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77443493"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691817"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Azure 实验室服务中的教室实验室—常见问题（FAQ）
 获取有关 Azure 实验室服务中的教室实验室的一些最常见问题的解答。 
@@ -29,12 +29,12 @@ ms.locfileid: "77443493"
 为实验室设置的配额是针对实验室的整个持续时间的每个学生。 而且， [vm 的计划运行时间](how-to-create-schedules.md)不会计为分配给用户的配额。 配额是指学生在 VM 上花费的计划外时间。  有关配额的详细信息，请参阅为[用户设置配额](how-to-configure-student-usage.md#set-quotas-for-users)。
 
 ### <a name="if-professor-turns-on-a-student-vm-does-that-affect-the-student-quota"></a>如果教授启用了学生 VM，会影响学生配额吗？ 
-不能。 不是。 当教授开启学生 VM 时，它不会影响分配给该学生的配额。 
+否。 不是。 当教授开启学生 VM 时，它不会影响分配给该学生的配额。 
 
 ## <a name="schedules"></a>计划
 
 ### <a name="do-all-vms-in-the-lab-start-automatically-when-a-schedule-is-set"></a>设置计划后，实验室中的所有 Vm 是否自动启动？ 
-不能。 并非所有 Vm。 仅按计划分配给用户的 Vm。 未分配给用户的 Vm 不会自动启动。 这是由设计决定的。 
+否。 并非所有 Vm。 仅按计划分配给用户的 Vm。 未分配给用户的 Vm 不会自动启动。 这是由设计决定的。 
 
 ## <a name="lab-accounts"></a>实验室帐户
 
@@ -57,6 +57,9 @@ ms.locfileid: "77443493"
 ### <a name="as-a-lab-creator-why-cant-i-enable-additional-image-options-in-the-virtual-machine-images-dropdown-when-creating-a-new-lab"></a>作为实验室创建者，为什么在创建新实验室时无法在虚拟机映像下拉列表中启用其他映像选项？
 
 当管理员将你作为实验室创建者添加到实验室帐户时，你将获得创建实验室的权限。 但是，你没有权限编辑实验室帐户中的任何设置，包括已启用的虚拟机映像的列表。 若要启用其他映像，请联系你的实验室帐户管理员为你执行此操作，或者要求管理员将你作为参与者角色添加到实验室帐户。 参与者角色将授予你编辑实验室帐户中的虚拟机映像列表的权限。
+
+### <a name="can-i-attach-additional-disks-to-a-virtual-machine"></a>是否可以将更多的磁盘附加到虚拟机？
+否。 不能将其他磁盘附加到教室实验室中的 VM。 
 
 ## <a name="users"></a>用户
 

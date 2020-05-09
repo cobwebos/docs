@@ -3,13 +3,13 @@ title: 使用 Azure Kubernetes 服务中的系统节点池（AKS）
 description: 了解如何在 Azure Kubernetes Service （AKS）中创建和管理系统节点池
 services: container-service
 ms.topic: article
-ms.date: 04/06/2020
-ms.openlocfilehash: b567d9e618877463e1e659f368d35fbb787a4ef2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/28/2020
+ms.openlocfilehash: 04322bdaa2e0e72c5fbdbadb07f2608ee360e1e3
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259062"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790552"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中管理系统节点池
 
@@ -18,7 +18,7 @@ ms.locfileid: "81259062"
 > [!Important]
 > 如果在生产环境中为 AKS 群集运行单个系统节点池，则建议使用至少三个节点作为节点池。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 * 需要安装并配置 Azure CLI 版本2.3.1 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
@@ -29,6 +29,8 @@ ms.locfileid: "81259062"
 * 请参阅[Azure Kubernetes Service （AKS）中的配额、虚拟机大小限制和区域可用性][quotas-skus-regions]。
 * 必须采用虚拟机规模集作为 VM 类型构建 AKS 群集。
 * 节点池的名称只能包含小写字母数字字符，且必须以小写字母开头。 对于 Linux 节点池，长度必须在1到12个字符之间。 对于 Windows 节点池，长度必须介于1到6个字符之间。
+* 必须使用 API 版本2020-03-01 或更高版本来设置节点池模式。
+* 节点池的模式是必需的属性，并且在使用 ARM 模板或直接 API 调用时必须显式设置。
 
 ## <a name="system-and-user-node-pools"></a>系统和用户节点池
 
@@ -175,4 +177,4 @@ az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster -n mynodep
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
 [vm-sizes]: ../virtual-machines/linux/sizes.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
-[maximum-pods]: faq.md#why-cant-i-set-maxpods-below-30
+[maximum-pods]: configure-azure-cni.md#maximum-pods-per-node
