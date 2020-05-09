@@ -67,6 +67,9 @@
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ../policy-samples.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
 - name: 概念
   items:
     - name: 映像
@@ -702,8 +705,6 @@
           href: disks-shared-enable.md
         - name: 将 vhd 上传到磁盘 - CLI
           href: disks-upload-vhd-to-managed-disk-cli.md
-        - name: 调整带有 GPT 分区的 OS 磁盘的大小
-          href: resize-os-disk-gpt-partition.md
         - name: 调整磁盘大小
           href: expand-disks.md
         - name: 使用存储资源管理器管理磁盘

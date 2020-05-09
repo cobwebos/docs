@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/18/2020
+ms.date: 05/01/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 6baa83037d51e850a9f3535be3cc365e7c35e0a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9eabd6d2a8f3179c5553bc6ca6d59407388c4d42
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131436"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735551"
 ---
 # <a name="troubleshoot-azure-rbac"></a>排查 Azure RBAC 问题
 
@@ -28,7 +28,7 @@ ms.locfileid: "82131436"
 
 ## <a name="azure-role-assignments-limit"></a>Azure 角色分配限制
 
-对于每个订阅，Azure 最多支持**2000**个角色分配。 如果你收到错误消息 "无法创建更多的角色分配（code： RoleAssignmentLimitExceeded）"，则尝试分配角色时，请尝试减少订阅中的角色分配数。
+Azure 对于每个订阅最多支持 **2000** 个角色分配。 如果你收到错误消息 "无法创建更多的角色分配（code： RoleAssignmentLimitExceeded）"，则尝试分配角色时，请尝试减少订阅中的角色分配数。
 
 > [!NOTE]
 > 每个订阅的**2000**角色分配限制是固定的，不能增加。
@@ -57,7 +57,7 @@ $ras.Count
 
 - 如果需要有关如何创建自定义角色的步骤，请参阅使用[Azure 门户](custom-roles-portal.md)（当前为预览版）的自定义角色教程、 [Azure PowerShell](tutorial-custom-role-powershell.md)或[Azure CLI](tutorial-custom-role-cli.md)。
 - 如果你无法更新现有的自定义角色，请检查你当前登录时使用的用户是否分配有具有 `Microsoft.Authorization/roleDefinition/write` 权限的角色，例如[所有者](built-in-roles.md#owner)或[用户访问管理员](built-in-roles.md#user-access-administrator)。
-- 如果无法删除自定义角色并收到错误消息 "存在角色分配引用角色（code： RoleDefinitionHasAssignments）"，则仍在使用自定义角色的角色分配。 请删除这些角色分配，然后再次尝试删除自定义角色。
+- 如果你无法删除自定义角色并且收到错误消息“已存在引用此角色的角色分配(代码:RoleDefinitionHasAssignments)”，则表明存在仍然使用此自定义角色的角色分配。 请删除这些角色分配，然后再次尝试删除自定义角色。
 - 如果尝试创建新的自定义角色时收到错误消息“角色定义超限。 创建新的自定义角色时，无法创建更多的角色定义（code： RoleDefinitionLimitExceeded） "。请删除任何未使用的自定义角色。 Azure 最多支持**5000**目录中的自定义角色。 （对于 Azure 德国和 Azure 中国世纪互联，此限制为2000个自定义角色。）
 - 如果收到类似于 "客户端有权在范围"/subscriptions/{subscriptionid} "上执行操作" roleDefinitions/write "的错误，但在尝试更新自定义角色时找不到链接的订阅"，请检查是否已在目录中删除一个或多个可[分配的作用域](role-definitions.md#assignablescopes)。 如果删除了作用域，请创建一个支持票证，因为目前没有自助服务解决方案可用。
 
@@ -76,20 +76,29 @@ $ras.Count
 
 ## <a name="issues-with-service-admins-or-co-admins"></a>服务管理员或共同管理员出现问题
 
-- 如果你在服务管理员或协同管理员方面遇到问题，请参阅[添加或更改 azure 订阅管理员](../cost-management-billing/manage/add-change-subscription-administrator.md)和[经典订阅管理员角色、Azure 角色和 Azure AD 管理员角色](rbac-and-directory-admin-roles.md)。
+- 如果你在服务管理员或协同管理员方面遇到问题，请参阅[添加或更改 azure 订阅管理员](../cost-management-billing/manage/add-change-subscription-administrator.md)和[经典订阅管理员角色、Azure 角色和 Azure AD 角色](rbac-and-directory-admin-roles.md)。
 
 ## <a name="access-denied-or-permission-errors"></a>访问被拒绝或权限错误
 
-- 如果你在尝试创建资源时收到权限错误 "具有对象 id 的客户端无权执行操作（code： AuthorizationFailed）"，请检查你当前是否已使用分配了对所选作用域内的资源具有写入权限的用户登录。 例如，若要管理某个资源组中的虚拟机，则你应当在该资源组（或父作用域）中具有[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)角色。 有关每个内置角色的权限列表，请参阅 [Azure 资源的内置角色](built-in-roles.md)。
+- 如果尝试创建资源时收到权限错误“具有此对象 id 的客户端无权在此作用域内执行操作(代码:AuthorizationFailed)”，请检查你当前登录时使用的用户是否分配有在所选作用域内对资源具有写入权限的角色。 例如，若要管理某个资源组中的虚拟机，则你应当在该资源组（或父作用域）中具有[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)角色。 有关每个内置角色的权限列表，请参阅[Azure 内置角色](built-in-roles.md)。
 - 如果尝试创建或更新支持票证时收到权限错误“无权创建支持票证”，请检查你当前登录时使用的用户是否分配有具有 `Microsoft.Support/supportTickets/write` 权限的角色，例如[支持请求参与者](built-in-roles.md#support-request-contributor)。
 
-## <a name="role-assignments-with-unknown-security-principal"></a>具有未知安全主体的角色分配
+## <a name="role-assignments-with-identity-not-found"></a>找不到标识为的角色分配
 
-如果将角色分配给安全主体（用户、组、服务主体或托管标识），然后在未删除角色分配的情况下删除该安全主体，则该角色分配的安全主体类型将列为“未知”****。 以下屏幕截图显示了 Azure 门户中的示例。 安全主体名称列为“标识已删除”**** 和“标识不再存在”****。 
+在 Azure 门户的角色分配列表中，你可能会注意到，安全主体（用户、组、服务主体或托管标识）列出为**找不到**且类型**未知**的标识。
 
 ![Web 应用程序资源组](./media/troubleshooting/unknown-security-principal.png)
 
-如果使用 Azure PowerShell 列出此角色分配，你将看到空的 `DisplayName` 和设置为“Unknown”的 `ObjectType`。 例如，[Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) 返回的角色分配如下所示：
+出于以下两个原因，可能找不到该标识：
+
+- 你最近在创建角色分配时邀请了用户
+- 删除了具有角色分配的安全主体
+
+如果你最近在创建角色分配时邀请了用户，则此安全主体可能仍处于跨区域的复制过程中。 如果是这样，请稍等片刻，并刷新角色分配列表。
+
+但是，如果此安全主体不是最近邀请的用户，则可能是已删除的安全主体。 如果向安全主体分配角色，然后在不首先删除角色分配的情况下删除该安全主体，则会将安全主体列为 "**找不到标识**" 和 "**未知**类型"。
+
+如果使用 Azure PowerShell 列出此角色分配，则可能会看到一个空`DisplayName`的， `ObjectType`并且设置为 "**未知**"。 例如， [AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment)返回类似于以下输出的角色分配：
 
 ```
 RoleAssignmentId   : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222
@@ -103,7 +112,7 @@ ObjectType         : Unknown
 CanDelegate        : False
 ```
 
-同样，如果使用 Azure CLI 列出此角色分配，你将看到空的 `principalName`。 例如，[az role assignment list](/cli/azure/role/assignment#az-role-assignment-list) 返回的角色分配如下所示：
+同样，如果使用 Azure CLI 列出此角色分配，则可能会看到一个空`principalName`的。 例如， [az role 赋值 list](/cli/azure/role/assignment#az-role-assignment-list)返回类似于以下输出的角色分配：
 
 ```
 {
@@ -119,9 +128,9 @@ CanDelegate        : False
 }
 ```
 
-保留这些角色分配不是问题，但你可以使用与其他角色分配相似的步骤将其删除。 有关如何删除角色分配的信息，请参阅 [Azure 门户](role-assignments-portal.md#remove-a-role-assignment)、[Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment) 或 [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
+在删除安全主体的情况下，不会保留这些角色分配的问题。 如果需要，可以使用类似于其他角色分配的步骤来删除这些角色分配。 有关如何删除角色分配的信息，请参阅 [Azure 门户](role-assignments-portal.md#remove-a-role-assignment)、[Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment) 或 [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
 
-在 PowerShell 中，如果尝试使用对象 ID 和角色定义名称删除角色分配，并且有多个角色分配与参数匹配，则将收到错误消息： "提供的信息未映射到角色分配"。 下面显示了错误消息示例：
+在 PowerShell 中，如果尝试使用对象 ID 和角色定义名称删除角色分配，并且有多个角色分配与参数匹配，则将收到错误消息： "提供的信息未映射到角色分配"。 以下输出显示了错误消息的示例：
 
 ```
 PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -RoleDefinitionName "Storage Blob Data Contributor"
@@ -217,5 +226,5 @@ Azure 资源管理器有时会缓存配置和数据以提高性能。 添加或�
 ## <a name="next-steps"></a>后续步骤
 
 - [来宾用户故障排除](role-assignments-external-users.md#troubleshoot)
-- [使用 RBAC 和 Azure 门户管理对 Azure 资源的访问权限](role-assignments-portal.md)
-- [查看 Azure 资源的 RBAC 更改的活动日志](change-history-report.md)
+- [使用 Azure 门户添加或删除 Azure 角色分配](role-assignments-portal.md)
+- [查看 Azure RBAC 更改的活动日志](change-history-report.md)

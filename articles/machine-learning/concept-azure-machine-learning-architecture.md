@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/17/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 9f1d23f11cf73680a8861c9f1ac6cbd40ad497a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e70401bbaa97920163f3c7e76e32b9b9be2f5e72
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257328"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871476"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure 机器学习的工作原理：体系结构和概念
 
@@ -119,7 +119,7 @@ Azure 机器学习在试验中记录所有运行并存储以下信息：
 提交运行时，Azure 机器学习会将包含该脚本的目录压缩为 zip 文件并将其发送到计算目标。 然后解压缩 zip 文件并运行脚本。 Azure 机器学习还将该 zip 文件存储为快照，作为运行记录的一部分。 有权限访问工作区的任何用户都可以浏览运行记录并下载快照。
 
 > [!NOTE]
-> 为了防止在快照中包含不必要的文件，请使用 ignore 文件（.gitignore 或 .amlignore）。 将此文件放在 Snapshot 目录中，并在其中添加要忽略的文件名。 .amlignore 文件使用的[语法和模式与 .gitignore 文件相同](https://git-scm.com/docs/gitignore)。 如果这两个文件都存在，则 .amlignore 文件的优先级更高。
+> [!INCLUDE [amlinclude-info](../../includes/machine-learning-amlignore-gitignore.md)]
 
 ### <a name="github-tracking-and-integration"></a>GitHub 跟踪与集成
 
@@ -127,7 +127,7 @@ Azure 机器学习在试验中记录所有运行并存储以下信息：
 
 有关详细信息，请参阅 [Azure 机器学习的 Git 集成](concept-train-model-git-integration.md)。
 
-### <a name="logging"></a>日志记录
+### <a name="logging"></a>Logging
 
 开发解决方案时，请在 Python 脚本中使用 Azure 机器学习 Python SDK 记录任意指标。 运行后，查询指标以确定运行是否生成了要部署的模型。
 
@@ -135,7 +135,7 @@ Azure 机器学习在试验中记录所有运行并存储以下信息：
 
 使用机器学习管道可以创建和管理将各个机器学习阶段整合到一起的工作流。 例如，管道可以包括数据准备、模型训练、模型部署以及推理/评分阶段。 每个阶段可以包含多个步骤，每个步骤都能够以无人参与方式在各种计算目标中运行。 
 
-管道步骤可重用，如果这些步骤的输出没有更改，则无需重新运行前面的步骤即可运行。 例如，如果数据未更改，则无需重新运行高开销的数据准备步骤，即可重新训练模型。 管道还使数据科学家能够展开协作，同时可以处理机器学习工作流的不同环节。
+管道步骤可重复使用，如果这些步骤的输出未发生更改，则可以运行，而无需重新运行前面的步骤。 例如，如果数据未更改，则无需重新运行高开销的数据准备步骤，即可重新训练模型。 管道还使数据科学家能够展开协作，同时可以处理机器学习工作流的不同环节。
 
 有关机器学习管道与此服务的详细信息，请参阅[管道和 Azure 机器学习](concept-ml-pipelines.md)。
 
@@ -147,9 +147,9 @@ Azure 机器学习在试验中记录所有运行并存储以下信息：
 
 Azure 机器学习与框架无关。 创建模型时，可以使用任何流行的机器学习框架，例如 Scikit-learn、XGBoost、PyTorch、TensorFlow 和 Chainer。
 
-有关使用 Scikit-learn 和估算器训练模型的示例，请参阅[教程：使用 Azure 机器学习训练图像分类模型](tutorial-train-models-with-aml.md)。
+有关使用 Scikit-learn 和估计器为模型定型的示例，请参阅[教程：使用 Azure 机器学习训练图像分类模型](tutorial-train-models-with-aml.md)。
 
-**模型注册表**跟踪 Azure 机器学习工作区中的所有模型。
+**模型注册表**将跟踪 Azure 机器学习工作区中的所有模型。
 
 模型按名称和版本标识。 每次使用与现有相同的名称注册模型时，注册表都会假定它是新版本。 该版本将递增并且新模型会以同一名称注册。
 
@@ -180,11 +180,11 @@ Azure ML 环境用于指定在为数据准备、模型训练和模型服务创�
 
 为了便于使用流行框架进行模型训练，可以通过估算器类轻松构造运行配置。 可以创建并使用泛型[估算器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)来提交使用所选任何学习框架（例如 scikit-learn）的训练脚本。
 
-对于 PyTorch、TensorFlow 和 Chainer 任务，Azure 机器学习还提供了相应的 [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) 和 [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) 估算器，以便使用这些框架进行简化。
+对于 PyTorch、TensorFlow 和 Chainer 任务，Azure 机器学习还提供相应的[PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、 [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)和[Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)估算以简化使用这些框架的操作。
 
 有关详细信息，请参阅以下文章：
 
-* [使用估算器训练 ML 模型](how-to-train-ml-models.md)。
+* [用估算训练 ML 模型](how-to-train-ml-models.md)。
 * [使用 Azure 机器学习大规模训练 Pytorch 深度学习模型](how-to-train-pytorch.md)
 * [使用 Azure 机器学习大规模训练并注册 TensorFlow 模型](how-to-train-tensorflow.md)
 * [使用 Azure 机器学习大规模训练并注册 Chainer 模型](how-to-train-ml-models.md)
@@ -224,9 +224,9 @@ Azure IoT Edge 将确保模块正在运行并且监视托管它的设备。
 
 数据集提供多种方法用于处理常用格式的数据，例如使用 `from_delimited_files()` 或 `to_pandas_dataframe()`。
 
-有关详细信息，请参阅[创建和注册 Azure 机器学习数据集](how-to-create-register-datasets.md)。  有关使用数据集的更多示例，请参阅[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets)。
+有关详细信息，请参阅[创建和注册 Azure 机器学习数据集](how-to-create-register-datasets.md)。  有关使用数据集的更多示例，请参阅[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets-tutorial)。
 
-**数据存储**是通过 Azure 存储帐户实现的存储抽象。 数据存储可以使用 Azure blob 容器或 Azure 文件共享作为后端存储。 每个工作区都有默认数据存储，并且你可以注册其他数据存储。 使用 Python SDK API 或 Azure 机器学习 CLI 可从数据存储中存储和检索文件。
+**数据**存储是通过 Azure 存储帐户进行的存储提取。 数据存储可以使用 Azure blob 容器或 Azure 文件共享作为后端存储。 每个工作区都有默认数据存储，并且你可以注册其他数据存储。 使用 Python SDK API 或 Azure 机器学习 CLI 可从数据存储中存储和检索文件。
 
 ### <a name="compute-targets"></a>计算目标
 
@@ -240,4 +240,4 @@ Azure IoT Edge 将确保模块正在运行并且监视托管它的设备。
 
 * [什么是 Azure 机器学习？](overview-what-is-azure-ml.md)
 * [创建 Azure 机器学习工作区](how-to-manage-workspace.md)
-* [教程（第 1 部分）：训练模型](tutorial-train-models-with-aml.md)
+* [教程（第1部分）：定型模型](tutorial-train-models-with-aml.md)

@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: curtand
-ms.openlocfilehash: ee868ded0dc3a46f2ec20d0141aa2576cbf71f45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 016a09432499c5fd2be8fd488c7ef7a644c00bca
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77062330"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628327"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>将安全密钥设置为验证方法
 
@@ -49,7 +49,7 @@ ms.locfileid: "77062330"
 > [!Note]
 > 如果你无法使用 FIDO2 安全密钥，则可以使用其他无密码验证方法，例如 Microsoft Authenticator 应用或 Windows Hello。 有关 Microsoft Authenticator 应用的详细信息，请参阅[什么是 Microsoft Authenticator 应用？](user-help-auth-app-overview.md)。 有关 Windows Hello 的详细信息，请参阅[Windows hello 概述](https://www.microsoft.com/windows/windows-hello)。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 在能够注册安全密钥之前，必须满足以下条件：
 
@@ -63,7 +63,7 @@ ms.locfileid: "77062330"
 
 你必须创建安全密钥并为其指定唯一的 PIN，然后才能使用密钥登录到你的工作或学校帐户。 你最多可以有10个注册到你的帐户的密钥。 
 
-1. 请在上https://myprofile.microsoft.com的 "**我的配置文件**" 页，并登录（如果尚未这样做）。
+1. 请在上https://myaccount.microsoft.com的 "**我的配置文件**" 页，并登录（如果尚未这样做）。
 
 2. 选择 "**安全信息**"，选择 "**添加方法**"，然后从 "**添加方法**" 下拉列表中选择 "**安全密钥**"。
 
@@ -92,7 +92,7 @@ ms.locfileid: "77062330"
 
     你将返回到 "**设置新登录方法**" 框。
 
-7. 选择“下一步”  。
+7. 选择“**下一步**”。
 
 8. 返回到 "**安全信息**" 页，为新的安全密钥键入稍后将识别的名称，然后选择 "**下一步**"。
 

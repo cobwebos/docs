@@ -1,5 +1,5 @@
 ---
-title: 适用于 Windows 的 Azure N 系列 GPU 驱动程序设置
+title: 适用于 Windows 的 Azure N 系列 NVIDIA GPU 驱动程序设置
 description: 如何为 Azure 中运行 Windows Server 或 Windows 的 N 系列 VM 安装 NVIDIA GPU 驱动程序
 author: vikancha
 manager: jkabat
@@ -10,18 +10,18 @@ ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: vikancha
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bc11937410bf0307a00895e0ebd1f01a58bd1b1b
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 0b00b2340445e7d103c78c1d8c1ea0e08ecabba5
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81865784"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628106"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>在运行 Windows 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序 
 
-若要利用运行 Windows 的 Azure N 系列 VM 的 GPU 功能，必须安装 NVIDIA GPU 驱动程序。 [NVIDIA GPU 驱动程序扩展](../extensions/hpccompute-gpu-windows.md)可在 N 系列 VM 上安装适当的 NVIDIA CUDA 或 GRID 驱动程序。 请使用 Azure 门户或工具（例如 Azure PowerShell 或 Azure 资源管理器模板）安装或管理该扩展。 有关受支持的操作系统和部署步骤，请参阅 [NVIDIA GPU 驱动程序扩展文档](../extensions/hpccompute-gpu-windows.md)。
+若要利用 NVIDIA Gpu 支持的 Azure N 系列 Vm 的 GPU 功能，必须安装 NVIDIA GPU 驱动程序。 [NVIDIA GPU 驱动程序扩展](../extensions/hpccompute-gpu-windows.md)可在 N 系列 VM 上安装适当的 NVIDIA CUDA 或 GRID 驱动程序。 请使用 Azure 门户或工具（例如 Azure PowerShell 或 Azure 资源管理器模板）安装或管理该扩展。 有关受支持的操作系统和部署步骤，请参阅 [NVIDIA GPU 驱动程序扩展文档](../extensions/hpccompute-gpu-windows.md)。
 
-如果选择手动安装 GPU 驱动程序，本文提供了受支持的操作系统、驱动程序以及安装和验证步骤。 针对 [Linux VM](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 也提供了驱动程序手动安装信息。
+如果选择手动安装 NVIDIA GPU 驱动程序，本文将提供受支持的操作系统、驱动程序以及安装和验证步骤。 针对 [Linux VM](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 也提供了驱动程序手动安装信息。
 
 有关基本规范、存储容量和磁盘详细信息，请参阅 [GPU Windows VM 大小](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
 
@@ -37,7 +37,7 @@ ms.locfileid: "81865784"
 
 ## <a name="verify-driver-installation"></a>验证驱动程序安装
 
-请注意，Nvidia 控制面板只能通过 GRID 驱动程序安装进行访问。 如果已安装 CUDA 驱动程序，则 Nvidia 控制面板将不可见。
+请注意，只有安装了网格驱动程序才能访问 Nvidia 控制面板。 如果已安装 CUDA 驱动程序，则 Nvidia 控制面板将不可见。
 
 可以在设备管理器中验证驱动程序安装。 以下示例展示了如何在 Azure NC VM 上成功配置 Tesla K80 卡。
 

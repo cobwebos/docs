@@ -9,12 +9,12 @@ ms.custom: subject-moving-resources
 ms.date: 04/14/2020
 ms.author: spelluru
 ms.reviewer: shvija
-ms.openlocfilehash: 2dfc9c517605bbb48bee0b306fb275464cfebe39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b96bf1c538b3c5589a1993a0353292fadd0936d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606803"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690487"
 ---
 # <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>将 Azure 事件中心命名空间移动到另一个区域
 在各种情况下，你想要将现有的事件中心命名空间从一个区域移到另一个区域。 例如，你可能想要创建一个具有相同配置的命名空间进行测试。 在[灾难恢复规划](event-hubs-geo-dr.md#setup-and-failover-flow)过程中，可能还需要在另一个区域中创建辅助命名空间。
@@ -22,12 +22,12 @@ ms.locfileid: "81606803"
 > [!NOTE]
 > 本文介绍如何导出现有事件中心命名空间的 Azure 资源管理器模板，然后使用该模板在另一个区域中创建具有相同配置设置的命名空间。 但是，此过程不会移动尚未处理的事件。 你需要先处理原始命名空间中的事件，然后再将其删除。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 确保帐户使用的服务和功能在目标区域中受支持。
 - 对于预览版功能，请确保你的订阅已列入目标区域的允许列表。
 - 如果为命名空间中的事件中心启用了**捕获功能**，请在移动事件中心命名空间之前移动[Azure 存储或 Azure Data Lake Store 第2代](../storage/common/storage-account-move.md)或[Azure Data Lake Store 第1代](../data-lake-store/data-lake-store-migration-cross-region.md)帐户。 还可以按照本文中所述的步骤，将包含存储和事件中心命名空间的资源组移动到另一个区域。 
-- 如果事件中心命名空间位于**事件中心群集**中，请在执行本文中的步骤之前，在**目标区域**中[创建一个专用群集](event-hubs-dedicated-cluster-create-portal.md)。 
+- 如果事件中心命名空间位于**事件中心群集**中，请在执行本文中的步骤之前，在**目标区域**中[创建一个专用群集](event-hubs-dedicated-cluster-create-portal.md)。 你还可以使用[GitHub 上的快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-cluster-namespace-eventhub/)来创建事件中心群集。 在模板中，删除 JSON 的命名空间部分以仅创建群集。 
 
 ## <a name="prepare"></a>准备
 若要开始，请导出资源管理器模板。 此模板包含描述事件中心命名空间的设置。
@@ -54,7 +54,7 @@ ms.locfileid: "81606803"
 
 1. 在 Azure 门户中，选择 "**创建资源**"。
 
-2. 在“搜索市场”中键入“模板部署”，然后按 **ENTER**。********
+2. 在“搜索市场”中键入“模板部署”，然后按 **ENTER**。  
 
 3. 选择“模板部署”。****
 
