@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2e94d9f56a865999f9169650f621a6af892c27ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 094939ee62046c72f07ac46f0781e687034f731f
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74014362"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690618"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>如何将 Azure Monitor 工作簿用于 Azure Active Directory 报表
 
@@ -42,7 +42,7 @@ ms.locfileid: "74014362"
 
 - 更深入地了解登录日志查询，该工作簿会报告被授予或拒绝了多少用户的访问权限，以及在访问资源时有多少用户跳过了条件性访问策略。
 
-- 为了帮助解决这些问题，Active Directory 提供了用于监视的工作簿。 [Azure Monitor 工作簿](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)将文本、分析查询、指标和参数合并到丰富的交互式报表中。
+- 为了帮助解决这些问题，Azure Active Directory 提供了用于监视的工作簿。 [Azure Monitor 工作簿](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)将文本、分析查询、指标和参数合并到丰富的交互式报表中。
 
 
 
@@ -58,7 +58,7 @@ ms.locfileid: "74014362"
 
 若要使用监视器工作簿，需要：
 
-- 具有高级（P1 或 P2）许可证的 Active Directory 租户。 了解如何[获取高级许可证](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium)。
+- 具有高级（P1 或 P2）许可证的 Azure Active Directory 租户。 了解如何[获取高级许可证](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium)。
 
 - [Log Analytics 工作区](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)。
 
@@ -97,7 +97,7 @@ ms.locfileid: "74014362"
 
 - 所有登录
 
-- 成功
+- Success
 
 - 挂起的用户操作
 
@@ -134,7 +134,7 @@ ms.locfileid: "74014362"
 
 - 所有登录
 
-- 成功
+- Success
 
 
 可以按以下类别筛选每个趋势：
@@ -225,7 +225,7 @@ ms.locfileid: "74014362"
 
 此工作簿显示了以下已禁用的登录趋势：
 
-- 要求 MFA
+- 需要进行 MFA
  
 - 需要使用条款
 
@@ -267,7 +267,7 @@ ms.locfileid: "74014362"
 
 - 所有登录
 
-- 成功
+- Success
 
 - 挂起的操作
 

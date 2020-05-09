@@ -1,23 +1,17 @@
 ---
-title: 使用 Power BI 分析 Azure Data Lake Storage Gen1 中的数据 | Microsoft Docs
-description: 使用 Power BI 分析 Azure Data Lake Storage Gen1 中存储的数据
-services: data-lake-store
-documentationcenter: ''
+title: 分析 Azure Data Lake Storage Gen1 Power BI 中的数据
+description: 使用 Power BI 分析存储在 Azure Data Lake Storage Gen1 中的数据。
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 57d19d27-e135-49d9-a7ea-46c48ef4e3bd
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: d8717b8f365e692b5f27bf8a04d65c5147b8f31b
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 952be68a1675732857969f875cd2b39c2feab674
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "65603211"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691659"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>使用 Power BI 分析 Azure Data Lake Storage Gen1 中的数据
 本文介绍如何使用 Power BI Desktop 分析和可视化 Azure Data Lake Storage Gen1 中存储的数据。
@@ -38,7 +32,7 @@ ms.locfileid: "65603211"
 4. 在“Azure Data Lake Store”**** 对话框中，提供 Data Lake Storage Gen1 帐户的 URL，并单击“确定”****。
    
     ![Data Lake Storage Gen1 的 URL](./media/data-lake-store-power-bi/get-data-lake-store-account-url.png "Data Lake Storage Gen1 的 URL")
-5. 在下一个对话框中，单击“登录”**** 以登录到 Data Lake Storage Gen1 帐户。 将重定向到组织的登录页面。 按照提示登录到该帐户。
+5. 在下一个对话框中，单击“登录”**** 以登录到 Data Lake Storage Gen1 帐户。 你将重定向到组织的登录页面。 按照提示登录到该帐户。
    
     ![登录 Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "登录 Data Lake Storage Gen1")
 6. 登录成功后，单击“连接”****。
@@ -96,6 +90,6 @@ ms.locfileid: "65603211"
 ## <a name="publish-report-to-power-bi-service"></a>将报表发布到 Power BI 服务
 在 Power BI Desktop 中创建可视化后，可将其发布到 Power BI 服务中与他人共享。 有关如何发布的说明，请参阅[从 Power BI Desktop 发布](https://powerbi.microsoft.com/documentation/powerbi-desktop-upload-desktop-files/)。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 * [使用 Data Lake Analytics 分析 Data Lake Storage Gen1 中的数据](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 
