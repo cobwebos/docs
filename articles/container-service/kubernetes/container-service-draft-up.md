@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 8d688d2918c9100019d033e93e9a3dca9e492de2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 039879cb725c20af3c40698947ea9abe189d08ad
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76271134"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731757"
 ---
 # <a name="deprecated-use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>（已弃用）结合使用 Draft 与 Azure 容器服务和 Azure 容器注册表，生成应用程序并将其部署到 Kubernetes
 
@@ -102,7 +102,7 @@ waiting for AAD role to propagate.done
 
 
 1. 在 https://github.com/Azure/draft/releases 为环境下载 Draft 并安装到路径中，以便可使用此命令。
-2. 在 https://github.com/kubernetes/helm/releases 为环境下载 Helm 并[安装到路径中，以便可使用此命令](https://github.com/kubernetes/helm/blob/master/docs/install.md#installing-the-helm-client)。
+2. 在 https://github.com/kubernetes/helm/releases 为环境下载 Helm 并[安装到路径中，以便可使用此命令](https://helm.sh/docs/intro/quickstart#install-helm)。
 3. 配置 Draft 来使用注册表并为所创建的每个 Helm 图表创建子域。 若要配置 Draft，需要：
    - Azure 容器注册表名称（此示例中为 `draftacsdemo`）
    - `az acr credential show -n <registry name> --output tsv --query "passwords[0].value"` 中的注册表项或密码。
