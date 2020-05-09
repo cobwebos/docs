@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure RBAC 和 Azure CLI 添加或删除角色分配
-description: 了解如何使用 Azure 基于角色的访问控制 (RBAC) 和 Azure CLI 为用户、组、服务主体或托管标识授予对 Azure 资源的访问权限。
+title: 使用 Azure CLI 添加或删除 Azure 角色分配-Azure RBAC
+description: 了解如何使用 Azure CLI 和 Azure 基于角色的访问控制（Azure RBAC）为用户、组、服务主体或托管标识授予对 Azure 资源的访问权限。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b32df50715d5e7276861e0696df1bd6ceb3f684e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a66482aeee7832baa91fe98357b870e2a280912
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245663"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735770"
 ---
-# <a name="add-or-remove-role-assignments-using-azure-rbac-and-azure-cli"></a>使用 Azure RBAC 和 Azure CLI 添加或删除角色分配
+# <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>使用 Azure CLI 添加或删除 Azure 角色分配
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] 本文介绍如何使用 Azure CLI 分配角色。
 
@@ -62,7 +62,7 @@ az ad sp list --display-name "{name}" --query [].objectId --output tsv
 
 ## <a name="add-a-role-assignment"></a>添加角色分配
 
-在 RBAC 中，若要授予访问权限，请添加角色分配。
+在 Azure RBAC 中，若要授予访问权限，请添加角色分配。
 
 ### <a name="user-at-a-resource-group-scope"></a>资源组范围内的用户
 
@@ -97,7 +97,7 @@ az role assignment create --role "Virtual Machine Contributor" --assignee patlon
 az role assignment create --role <role_id> --assignee <assignee> --resource-group <resource_group>
 ```
 
-以下示例将[“虚拟机参与者”角色](built-in-roles.md#virtual-machine-contributor)分配给 *pharma-sales\@ 资源组范围内的* patlong*contoso.com* 用户。 若要获取唯一的角色 ID，可以使用 [az role definition list](/cli/azure/role/definition#az-role-definition-list) 命令，也可以参阅 [Azure 资源的内置角色](built-in-roles.md)。
+以下示例将[“虚拟机参与者”角色](built-in-roles.md#virtual-machine-contributor)分配给 *pharma-sales\@ 资源组范围内的* patlong*contoso.com* 用户。 若要获取唯一角色 ID，可以使用[az role definition list](/cli/azure/role/definition#az-role-definition-list)或参阅[Azure 内置角色](built-in-roles.md)。
 
 ```azurecli
 az role assignment create --role 9980e02c-c2be-4d73-94e8-173b1dc7cf3c --assignee patlong@contoso.com --resource-group pharma-sales
@@ -187,7 +187,7 @@ az role assignment create --role "Virtual Machine Contributor" --assignee-object
 
 ## <a name="remove-a-role-assignment"></a>删除角色分配
 
-在 RBAC 中，若要删除访问权限，请使用 [az role assignment delete](/cli/azure/role/assignment#az-role-assignment-delete) 删除角色分配：
+在 Azure RBAC 中，若要删除访问权限，请使用[az role 赋值 delete](/cli/azure/role/assignment#az-role-assignment-delete)删除角色分配：
 
 ```azurecli
 az role assignment delete --assignee <assignee> --role <role_name_or_id> --resource-group <resource_group>
@@ -213,5 +213,5 @@ az role assignment delete --assignee alain@example.com --role "Billing Reader" -
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure RBAC 和 Azure CLI 列出角色分配](role-assignments-list-cli.md)
+- [使用 Azure CLI 列出 Azure 角色分配](role-assignments-list-cli.md)
 - [使用 Azure CLI 管理 Azure 资源和资源组](../azure-resource-manager/cli-azure-resource-manager.md)

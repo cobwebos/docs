@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 4f87f2de3747f55562d3f683e1738595624940dd
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: HT
+ms.openlocfilehash: 3ee84c0c868f47dca1aee0401865563a326df3db
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854635"
+ms.locfileid: "82864396"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>对 Azure 备份失败进行故障排除：代理或扩展的问题
 
@@ -45,14 +45,16 @@ Azure VM 代理可能已停止、已过期、处于不一致状态或未安装�
 
 **原因4：[未设置 VM 代理配置选项（适用于 Linux vm）](#vm-agent-configuration-options-are-not-set-for-linux-vms)**
 
+**原因5：[应用程序控制解决方案正在阻止 IaaSBcdrExtension](#application-control-solution-is-blocking-iaasbcdrextensionexe)**
+
 ## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed - VM 处于预配失败状态
 
-**错误代码**： UserErrorVmProvisioningStateFailed<br>
-**错误消息**： VM 处于失败预配状态<br>
+**错误代码**：UserErrorVmProvisioningStateFailed<br>
+**错误消息**：VM 处于预配失败状态<br>
 
-当其中一个扩展失败将 VM 状态置于预配失败状态时，会发生此错误。<br>**打开 Azure 门户 > VM > 设置 > 扩展 > 扩展状态**，并检查所有扩展是否处于**预配已成功**状态。 若要了解详细信息，请参阅[预配状态](https://docs.microsoft.com/azure/virtual-machines/windows/states-lifecycle#provisioning-states)。
+当其中一个扩展失败将 VM 状态置于预配失败状态时，会发生此错误。<br>打开 Azure 门户>“VM”>“设置”>“扩展”>“扩展状态”，然后检查所有扩展是否都处于“预配成功”状态   。 若要了解详细信息，请参阅[预配状态](https://docs.microsoft.com/azure/virtual-machines/windows/states-lifecycle#provisioning-states)。
 
-- 如果 VMSnapshot 扩展处于失败状态，则右键单击失败的扩展并将其删除。 触发按需备份。 此操作会重新安装扩展并运行备份作业。  <br>
+- 如果 VMSnapshot 扩展处于失败状态，则右键单击失败的扩展并将其删除。 触发按需备份。 此操作将重新安装扩展，并运行备份作业。  <br>
 - 如果其他任何扩展处于失败状态，则可能会干扰备份。 确保这些扩展问题已解决，然后重试备份操作。
 - 如果 VM 预配状态为 "正在更新" 状态，则它可能会干扰备份。 请确保它运行正常，然后重试备份操作。
 
@@ -102,45 +104,45 @@ Azure VM 代理可能已停止、已过期、处于不一致状态或未安装�
 ## <a name="backupoperationfailed--backupoperationfailedv2---backup-fails-with-an-internal-error"></a>BackUpOperationFailed/BackUpOperationFailedV2 - 备份失败并出现内部错误
 
 **错误代码**：BackUpOperationFailed/BackUpOperationFailedV2 <br>
-**错误消息**：发生内部错误，备份失败 - 请在几分钟后重试操作 <br>
+**错误消息**：备份失败并出现内部错误-请在几分钟后重试该操作 <br>
 
-注册和计划 Azure 备份服务的 VM 后，备份会通过与 VM 备份扩展通信来获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：  
+注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：  
 **原因 1：[代理安装在 VM 中，但无响应（针对 Windows VM）](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
-**原因 2：[VM 中安装的代理已过时（针对 Linux VM）](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**原因2： [VM 中安装的代理已过时（适用于 Linux vm）](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 **原因 3：[无法检索快照状态或无法创建快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **原因4：[备份服务由于资源组锁定而无权删除旧的还原点](#remove_lock_from_the_recovery_point_resource_group)**<br>
 
-## <a name="usererrorunsupporteddisksize---the-configured-disk-sizes-is-currently-not-supported-by-azure-backup"></a>UserErrorUnsupportedDiskSize-Azure 备份当前不支持配置的磁盘大小
+## <a name="usererrorunsupporteddisksize---the-configured-disk-sizes-is-currently-not-supported-by-azure-backup"></a>UserErrorUnsupportedDiskSize - Azure 备份当前不支持配置的磁盘大小
 
 **错误代码**：UserErrorUnsupportedDiskSize <br>
-**错误消息**： Azure 备份当前不支持配置的磁盘大小。 <br>
+**错误消息**：Azure 备份当前不支持配置的磁盘大小。 <br>
 
 对磁盘大小大于 32 TB 的 VM 进行备份时，备份操作可能会失败。 此外，目前不支持备份大小超过 4 TB 的加密磁盘。 通过拆分磁盘，确保磁盘大小于或等于支持的限制。
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress - 无法启动备份，因为另一个备份操作当前正在进行中
 
-**错误代码**： UserErrorBackupOperationInProgress <br>
+**错误代码**：UserErrorBackupOperationInProgress <br>
 **错误消息**：无法启动备份，因为另一个备份操作当前正在进行中<br>
 
-最近的备份作业失败，因为有一个正在进行的备份作业。 在当前作业完成前，无法启动新的备份作业。 在触发或计划其他备份操作之前，请确保完成当前正在进行的备份操作。 若要查看备份作业的状态，请执行以下步骤：
+最近的备份作业失败，因为某个现有的备份作业正在进行。 在当前作业完成前，无法启动新的备份作业。 在触发或计划其他备份操作之前，请确保完成当前正在进行的备份操作。 若要检查备份作业状态，请执行以下步骤：
 
-1. 登录 Azure 门户，单击“所有服务”****。 键入“恢复服务”，然后单击“恢复服务保管库”。**** 此时会显示恢复服务保管库列表。
+1. 登录 Azure 门户，单击“所有服务”  。 键入“恢复服务”，然后单击“恢复服务保管库”。  此时显示恢复服务保管库列表。
 2. 在恢复服务保管库列表中，选择在其中配置了备份的保管库。
-3. 在保管库仪表板菜单中，单击“备份作业”显示所有备份作业****。
+3. 在保管库仪表板菜单中，单击“备份作业”显示所有备份作业  。
    - 如果某个备份作业正在进行，请等待它完成或取消备份作业。
-     - 若要取消备份作业，请右键单击备份作业，然后单击 "**取消**" 或 "使用[PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0)"。
-   - 如果已在其他保管库中重新配置备份，请确保旧保管库中没有运行的备份作业。 如果存在，则取消备份作业。
-     - 若要取消备份作业，请右键单击备份作业，然后单击 "**取消**" 或 "使用[PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0) "
-4. 请重试备份操作。
+     - 若要取消备份作业，请右键单击备份作业并单击“取消”或使用 [PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0)  。
+   - 如果已在另一个保管库中重新配置了备份，则确保旧保管库中没有正在运行的备份作业。 如果存在，则取消备份作业。
+     - 若要取消备份作业，请右键单击备份作业并单击“取消”  或使用 [PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0)
+4. 重试备份操作。
 
 如果计划备份操作花费时间长且与下一个备份配置冲突，请查看[最佳做法](backup-azure-vms-introduction.md#best-practices)、[备份性能](backup-azure-vms-introduction.md#backup-performance)和[还原注意事项](backup-azure-vms-introduction.md#backup-and-restore-considerations)。
 
-## <a name="usererrorcrpreportedusererror---backup-failed-due-to-an-error-for-details-see-job-error-message-details"></a>UserErrorCrpReportedUserError-备份由于错误而失败。 有关详细信息，请参阅作业错误消息详细信息
+## <a name="usererrorcrpreportedusererror---backup-failed-due-to-an-error-for-details-see-job-error-message-details"></a>UserErrorCrpReportedUserError - 由于出现错误，备份失败。 有关详细信息，请参阅“作业错误消息详细信息”
 
-**错误代码**： UserErrorCrpReportedUserError <br>
-**错误消息**：备份由于错误而失败。 有关详细信息，请参阅作业错误消息详细信息。
+**错误代码**：UserErrorCrpReportedUserError <br>
+**错误消息**：由于出现错误，备份失败。 有关详细信息，请参阅“作业错误消息详细信息”。
 
-从 IaaS VM 报告此错误。 若要确定问题的根本原因，请参阅恢复服务保管库设置。 在 "**监视**" 部分下，选择 "**备份作业**" 以筛选和查看状态。 单击 "**失败**" 以查看基本错误消息详细信息。 根据错误详细信息页中的建议采取进一步操作。
+此错误从 IaaS VM 报告。 若要确定问题的根本原因，请访问恢复服务保管库设置。 在“监视”部分选择“备份作业”，筛选并查看状态。   单击“失败”  ，查看基本错误消息详细信息。 根据错误详细信息页中的建议采取进一步操作。
 
 ## <a name="usererrorbcmdatasourcenotpresent---backup-failed-this-virtual-machine-is-not-actively-protected-by-azure-backup"></a>UserErrorBcmDatasourceNotPresent-备份失败：此虚拟机不受 Azure 备份保护（主动）
 
@@ -202,6 +204,14 @@ VM 代理可能已损坏或服务可能已停止。 重新安装 VM 代理可帮
 
 配置文件 (/etc/waagent.conf) 可控制 waagent 的操作。 配置文件选项**扩展。 "启用**" 应设置为 " **y** " 和 "设置" **。代理**应设置为 "**自动**"，以便备份工作。
 有关 VM 代理配置文件选项的完整列表，请参阅<https://github.com/Azure/WALinuxAgent#configuration-file-options>
+
+### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>应用程序控制解决方案正在阻止 IaaSBcdrExtension
+
+如果运行的是[AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) （或另一个应用程序控制解决方案），并且规则基于发布服务器或路径，则可能会阻止**IaaSBcdrExtension**可执行文件运行。
+
+#### <a name="solution"></a>解决方案
+
+从 AppLocker `/var/lib` （或其他应用程序控制软件）中排除路径或**IaaSBcdrExtension**可执行文件。
 
 ### <a name="the-snapshot-status-cant-be-retrieved-or-a-snapshot-cant-be-taken"></a><a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>无法检索快照状态或无法创建快照
 

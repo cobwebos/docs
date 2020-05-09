@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 673a801e218d055bf482dc97972e36584cddd402
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ae03a655347d7be7372bae93eb0c3aaf75a8ea29
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76721330"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891687"
 ---
 # <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>生成并优化表以便快速将数据并行导入到 Azure VM 上的 SQL Server
 
@@ -99,7 +99,7 @@ ms.locfileid: "76721330"
 * [更改数据库](https://msdn.microsoft.com/library/bb522682.aspx)，以将事务日志记录方案更改为 BULK_LOGGED 以最大限度降低日志记录开销，例如：
   
         ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
-* 若要加快数据加载，请并行启动批量导入操作。 有关将大数据大容量导入到 SQL Server 数据库中的提示，请参阅[在不到1小时内加载 1 TB](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx)。
+* 若要加快数据加载，请并行启动批量导入操作。 有关将大数据大容量导入到 SQL Server 数据库中的提示，请参阅[在不到1小时内加载 1 TB](https://docs.microsoft.com/archive/blogs/sqlcat/load-1tb-in-less-than-1-hour)。
 
 下面的 PowerShell 脚本是使用 BCP并行加载数据的示例。
 

@@ -10,14 +10,16 @@ ms.technology: integration-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
-ms.openlocfilehash: 0c4cdc3481fb58efd8eaa4cd83e1d6167f203a4e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 6f2983b375e3eeb73a0372e123d4d2763b3c65ec
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81760181"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629382"
 ---
 # <a name="access-data-stores-and-file-shares-with-windows-authentication-from-ssis-packages-in-azure"></a>从 Azure 的 SSIS 包中使用 Windows 身份验证访问数据存储和文件共享
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 可以从 Azure 数据工厂 (ADF) 的 Azure-SSIS Integration Runtime (IR) 上运行的 SSIS 包中使用 Windows 身份验证访问数据存储（如 SQL Server、文件共享、Azure 文件存储等）。 数据存储可以位于本地环境，可以托管在 Azure 虚拟机 (VM) 上，也可以作为托管服务在 Azure 中运行。 如果它们位于本地，则需要将 Azure-SSIS IR 加入到连接到本地网络的虚拟网络（Microsoft Azure 虚拟网络），请参阅将[Azure-SSIS IR 加入到 Microsoft Azure 虚拟网络](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。 以下四种方法可从 Azure-SSIS IR 上运行的 SSIS 包中使用 Windows 身份验证访问数据存储：
 

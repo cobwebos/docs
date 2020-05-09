@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 300f44daeeea5e8a774575dabcb00686906bb5de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b212316970b77d325552956cfacded2dc570234f
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804361"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778968"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>结合 Azure Active Directory 和 API 管理使用 OAuth 2.0 保护 API
 
@@ -79,7 +79,7 @@ ms.locfileid: "80804361"
     - 在“名称”  部分中，输入一个将显示给应用用户的有意义的应用程序名称，例如 *client-app*。 
     - 在“支持的帐户类型”部分中，选择“任何组织目录(任何 Azure AD 目录 - 多租户)中的帐户”。   
 
-1. 在“重定向 URI”  部分中，选择 `Web` 并输入 URL `https://contoso5.portal.azure-api.net/signin`。
+1. 在 "**重定向 URI** " 部分`Web`中，选择并将 "URL" 字段保留为空。
 
 1. 选择“注册”  以创建应用程序。 
 
@@ -149,9 +149,9 @@ ms.locfileid: "80804361"
 
 1. 选择“创建”。 
 
-1. 返回到客户端应用并选择“身份验证”****。
+1. 返回到 Azure Active Directory 中的客户端应用注册，然后选择 "**身份验证**"。
 
-1. 在“重定向 URI”**** 下，选择类型为 **Web**，在“重定向 URI”**** 下粘贴 **redirect_url**，然后单击“保存”。
+1. 在 "**平台配置**" 下，单击 "**添加平台**"，然后选择 " **Web**" 类型，将**redirect_url**粘贴到 "**重定向 URI**" 下，然后单击 "**配置**" 按钮保存。
 
 配置 OAuth 2.0 授权服务器后，开发人员控制台可从 Azure AD 获取访问令牌。 
 
@@ -161,7 +161,7 @@ ms.locfileid: "80804361"
 
 2. 选择要保护的 API。 例如，可以使用 `Echo API`。
 
-3. 转到 **“设置”**。
+3. 转到“设置”  。
 
 4. 在“安全性”下，选择“OAuth 2.0”并选择前面配置的 OAuth 2.0 服务器。******** 
 

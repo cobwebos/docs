@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: 16cb512d3f8f8afcc199cb52c13e09b12107576f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 264b2803774bcec000fc767693cf96d15e684790
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77062415"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628395"
 ---
 # <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>将 Microsoft Authenticator 应用设置为验证方法
 
@@ -48,7 +48,7 @@ ms.locfileid: "77062415"
 
 ### <a name="to-set-up-the-microsoft-authenticator-app"></a>设置 Microsoft Authenticator 应用
 
-1. 登录到工作或学校帐户，然后转到 https://myprofile.microsoft.com/ 页。
+1. 登录到工作或学校帐户，然后转到 https://myaccount.microsoft.com/ 页。
 
     ![“我的个人资料”页，其中突出显示了“安全信息”链接](media/security-info/securityinfo-myprofile-page.png)
 

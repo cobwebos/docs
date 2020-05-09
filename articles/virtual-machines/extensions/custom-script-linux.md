@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: 959e473cb52e23c9d04586f0b24da34537f4e660
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92bb254873669ae7c0894d633f17b5701b7ddc97
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115595"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594723"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>在 Linux 虚拟机上使用 Azure 自定义脚本扩展版本 2
 自定义脚本扩展版本 2 在 Azure 虚拟机上下载和运行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或其他可访问的 Internet 位置下载脚本，或者将脚本提供给扩展运行时。 
@@ -116,7 +116,7 @@ ms.locfileid: "82115595"
 | publisher | Microsoft.Compute.Extensions | string |
 | type | CustomScript | string |
 | typeHandlerVersion | 2.1 | int |
-| fileUris（例如） | https://github.com/MyProject/Archive/MyPythonScript.py | array |
+| fileUris（例如） | `https://github.com/MyProject/Archive/MyPythonScript.py` | array |
 | commandToExecute（例如） | python MyPythonScript.py \<my-param1> | string |
 | 脚本 | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | string |
 | skipDos2Unix（示例） | false | boolean |
@@ -218,7 +218,7 @@ CustomScript （版本2.1 以上版本）支持用于从 "fileUris" 设置中提
 
 若要在目标 VM/VMSS 上使用系统分配的标识，请将 "对 microsoft.managedidentity" 字段设置为空的 json 对象。 
 
-> 例如：
+> 示例：
 >
 > ```json
 > {
@@ -230,7 +230,7 @@ CustomScript （版本2.1 以上版本）支持用于从 "fileUris" 设置中提
 
 若要在目标 VM/VMSS 上使用用户分配的标识，请将 "对 microsoft.managedidentity" 字段配置为具有托管标识的客户端 ID 或对象 ID。
 
-> 示例：
+> 示例:
 >
 > ```json
 > {
@@ -251,7 +251,7 @@ CustomScript （版本2.1 以上版本）支持用于从 "fileUris" 设置中提
 > 对 microsoft.managedidentity 属性**不**能与 StorageAccountName 或 storageAccountKey 属性一起使用
 
 ## <a name="template-deployment"></a>模板部署
-可使用 Azure 资源管理器模板部署 Azure VM 扩展。 可以在 Azure 资源管理器模板中使用上一部分中详细介绍的 JSON 架构，以便在 Azure 资源管理器模板部署过程中运行自定义脚本扩展。 可在此处（[GitHub](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)）中找到包含自定义脚本扩展的示例模板。
+可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 可以在 Azure 资源管理器模板中使用上一部分中详细介绍的 JSON 架构，以便在 Azure 资源管理器模板部署过程中运行自定义脚本扩展。 可在此处（[GitHub](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)）中找到包含自定义脚本扩展的示例模板。
 
 
 ```json

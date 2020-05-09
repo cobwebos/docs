@@ -3,13 +3,12 @@ title: 监视 Azure 应用服务性能 | Microsoft Docs
 description: Azure 应用服务的应用程序性能监视。 对加载和响应时间、依赖项信息绘制图表，并针对性能设置警报。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.custom: fasttrack-edit
-ms.openlocfilehash: dd0d3be6ed7e5185183618cc2bdeff5ee8d749f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0f4d4dedab30839db56cb47ac7ac103413f2d4be
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729792"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733436"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 
@@ -71,7 +70,7 @@ ms.locfileid: "81729792"
 
     * 例如，若要更改初始采样百分比，可以创建名为 `MicrosoftAppInsights_AdaptiveSamplingTelemetryProcessor_InitialSamplingPercentage`、值为 `100` 的应用程序设置。
 
-    * 有关受支持自适应采样遥测处理器设置的列表，可以参阅[代码](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/master/src/ServerTelemetryChannel/AdaptiveSamplingTelemetryProcessor.cs)和[相关的文档](https://docs.microsoft.com/azure/azure-monitor/app/sampling)。
+    * 有关受支持自适应采样遥测处理器设置的列表，可以参阅[代码](https://github.com/microsoft/ApplicationInsights-dotnet/blob/master/BASE/Test/ServerTelemetryChannel.Test/TelemetryChannel.Tests/AdaptiveSamplingTelemetryProcessorTest.cs)和[相关的文档](https://docs.microsoft.com/azure/azure-monitor/app/sampling)。
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
@@ -399,7 +398,11 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 ### <a name="php-and-wordpress-are-not-supported"></a>不支持 PHP 和 WordPress
 
-不支持 PHP 和 WordPress 站点。 对于这些工作负荷的服务器端监视，当前没有正式支持的 SDK/代理。 但是，通过将客户端 javascript 添加到网页，可以使用[JAVASCRIPT SDK](https://docs.microsoft.com/azure/azure-monitor/app/javascript)在 PHP 或 WordPress 站点上手动检测客户端事务。 
+不支持 PHP 和 WordPress 站点。 对于这些工作负荷的服务器端监视，当前没有正式支持的 SDK/代理。 但是，通过将客户端 javascript 添加到网页，可以使用[JAVASCRIPT SDK](https://docs.microsoft.com/azure/azure-monitor/app/javascript)在 PHP 或 WordPress 站点上手动检测客户端事务。
+
+### <a name="connection-string-and-instrumentation-key"></a>连接字符串和检测密钥
+
+如果正在使用无代码置备监视，则只需要连接字符串。 但是，我们仍建议在执行手动检测时设置检测密钥，以保持与早期版本的 SDK 之间的向后兼容性。
 
 ## <a name="next-steps"></a>后续步骤
 * [在实时应用上运行探查器](../app/profiler.md)。

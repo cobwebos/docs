@@ -4,12 +4,12 @@ description: 逐步介绍如何从 Azure 备份中还原 Windows Server 系统�
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 08/18/2017
-ms.openlocfilehash: 6d46a091a4e620e26d05735f12a201009663e65d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 39cac84c4a33c1da209d0a0cc7b0f8ac8ee390a0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77602465"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610779"
 ---
 # <a name="restore-system-state-to-windows-server"></a>将系统状态还原为 Windows Server
 
@@ -124,33 +124,33 @@ ms.locfileid: "77602465"
 
 2. 重新启动后，打开 Windows Server 备份管理单元。 如果不知道该管理单元的安装位置，请在计算机或服务器中搜索“Windows Server 备份”  。
 
-    该桌面应用将显示在搜索结果中。
+    该桌面应用将显示在搜索结果中。 如果未显示该应用程序，或者在打开应用程序时遇到错误，则必须安装**服务器管理器**中的 "**添加功能向导**" 中提供的**Windows Server 备份功能**及其相关组件。
 
-3. 在该管理单元中，选择“本地备份”  。
+3. 在该管理单元中，选择“本地备份”****。
 
     ![选择“本地备份”以便从本地备份还原](./media/backup-azure-restore-system-state/win-server-backup-local-backup.png)
 
-4. 在本地备份控制台中的“操作窗格”中，单击“恢复”，打开“恢复向导”   。
+4. 在本地备份控制台中的“操作窗格”中，单击“恢复”，打开“恢复向导”********。
 
-5. 选择“存储在其他位置的备份”选项，然后单击“下一步”   。
+5. 选择“存储在其他位置的备份”选项，然后单击“下一步”********。
 
    ![选择恢复到其他服务器](./media/backup-azure-restore-system-state/backup-stored-in-diff-location.png)
 
-6. 指定位置类型时，如果系统状态备份已恢复到另一服务器，请选择“远程共享文件夹”  。 如果在本地恢复系统状态，则选择“本地驱动器”  。
+6. 指定位置类型时，如果系统状态备份已恢复到另一服务器，请选择“远程共享文件夹”****。 如果在本地恢复系统状态，则选择“本地驱动器”****。
 
     ![选择是从本地服务器还是从另一服务器进行恢复](./media/backup-azure-restore-system-state/ss-recovery-remote-shared-folder.png)
 
-7. 输入 WindowsImageBackup 目录的路径，或选择包含此目录的本地驱动器（如 D:\WindowsImageBackup），该目录已在系统状态文件恢复过程中使用 Azure 恢复服务代理恢复，然后单击“下一步”   。
+7. 输入 WindowsImageBackup 目录的路径，或选择包含此目录的本地驱动器（如 D:\WindowsImageBackup），该目录已在系统状态文件恢复过程中使用 Azure 恢复服务代理恢复，然后单击“下一步”******。
 
     ![共享文件的路径](./media/backup-azure-restore-system-state/ss-recovery-remote-folder.png)
 
-8. 选择要还原的系统状态版本，然后单击“下一步”  。
+8. 选择要还原的系统状态版本，然后单击“下一步”****。
 
-9. 在“选择恢复类型”窗格中选择“系统状态”，并单击“下一步”   。
+9. 在“选择恢复类型”窗格中选择“系统状态”，并单击“下一步”********。
 
-10. 对于系统状态恢复的位置，请选择“原始位置”，然后单击“下一步”   。
+10. 对于系统状态恢复的位置，请选择“原始位置”，然后单击“下一步”********。
 
-11. 查看确认详细信息，验证重新启动设置，然后单击“恢复”，应用已还原的系统状态文件  。
+11. 查看确认详细信息，验证重新启动设置，然后单击“恢复”，应用已还原的系统状态文件****。
 
     ![启动还原系统状态文件](./media/backup-azure-restore-system-state/launch-ss-recovery.png)
 
@@ -159,7 +159,7 @@ ms.locfileid: "77602465"
 系统状态备份包括 Active Directory 数据。 使用以下步骤将 Active Directory 域服务 (AD DS) 从当前状态还原为以前的状态。
 
 1. 在目录服务还原模式 (DSRM) 下重启域控制器。
-2. 按照[此处](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore)的步骤使用 Windows Server 备份 cmdlet 恢复 AD DS。
+2. 请按照[此处](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore)的步骤使用 Windows Server 备份 cmdlet 来恢复 AD DS。
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>解决系统状态还原失败的问题
 
@@ -171,7 +171,7 @@ ms.locfileid: "77602465"
 
     ![打开菜单](./media/backup-azure-restore-system-state/winre-1.png)
 
-3. 在“高级选项”屏幕中，选择“命令提示符”并提供服务器管理员用户名和密码   。
+3. 在“高级选项”屏幕中，选择“命令提示符”并提供服务器管理员用户名和密码********。
 
    ![打开菜单](./media/backup-azure-restore-system-state/winre-2.png)
 
