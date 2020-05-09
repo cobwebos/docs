@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: 857a4da0b24d600ecc572933af578e2e8faf501a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5a5ffdf217483c60836f67213c20ff3afd9043d5
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80366328"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608909"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>在 Service Fabric 群集中修补 Windows 操作系统
 
@@ -63,7 +63,7 @@ POA 由以下子组件构成：
 > [!NOTE]
 > POA 使用 Service Fabric 的修复管理器服务来禁用/启用节点和执行运行状况检查。 POA 创建的修复任务跟踪每个节点的 Windows 更新进度。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 > [!NOTE]
 > 所需的最低 .NET Framework 版本为 4.6。
@@ -160,13 +160,13 @@ POA 要求在群集上启用修复管理器服务。
 |MaxResultsToCache    |Long                              | 应缓存的 Windows 更新结果的最大数目。 <br><br>在假定以下情况时，默认值为 3000： <br> &nbsp;&nbsp;- 节点数为 20。 <br> &nbsp;&nbsp;- 节点上每月发生的更新次数为 5。 <br> &nbsp;&nbsp;- 每个操作的结果数可为 10。 <br> &nbsp;&nbsp;- 应存储过去三个月的结果。 |
 |TaskApprovalPolicy   |枚举 <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy 指示协调器服务用于跨 Service Fabric 群集节点安装 Windows 更新的策略。<br><br>允许的值为： <br>*NodeWise*：每次一个节点安装 Windows 更新。 <br> *UpgradeDomainWise*：每次安装一个更新域的 Windows 更新。 （在最大程度情况下，属于更新域的所有节点都可进行 Windows 更新。）<br><br> 若要帮助确定哪种策略最适合你的群集，请参阅[常见问题解答](#frequently-asked-questions)部分。
 |LogsDiskQuotaInMB   |Long  <br> （默认值： *1024*）               | 可在节点本地持久保存的修补业务流程应用日志的最大大小，以 MB 为单位。
-| WUQuery               | 字符串<br>（默认值： *IsInstalled = 0*）                | 用于获取 Windows 更新的查询。 有关详细信息，请参阅 [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)。
+| WUQuery               | string<br>（默认值： *IsInstalled = 0*）                | 用于获取 Windows 更新的查询。 有关详细信息，请参阅 [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)。
 | InstallWindowsOSOnlyUpdates | *布尔值* <br> （默认值：false）                 | 使用此标志来控制应当下载并安装哪些更新。 允许以下值 <br>true - 仅安装 Windows 操作系统更新。<br>false - 在计算机上安装所有可用的更新。          |
 | WUOperationTimeOutInMinutes | Int <br>（默认值： *90*）                   | 指示任何 Windows 更新操作（搜索、下载或安装）的超时。 在指定的超时内未完成的操作会被中止。       |
 | WURescheduleCount     | Int <br> （默认值： *5*）                  | 在操作持续失败的情况下，服务重新计划 Windows 更新的最大次数。          |
 | WURescheduleTimeInMinutes | Int <br>（默认值： *30*） | 在持续失败的情况下，服务重新计划 Windows 更新的间隔。 |
-| WUFrequency           | 逗号分隔的字符串（默认值：*每周、星期三、7:00:00*）     | 安装 Windows 更新的频率。 其格式和可能的值包括： <br>&nbsp;&nbsp;-月度： DD，HH： MM： SS （例如，*月度，5，12：22： 32*）<br>字段 DD（日）允许的值为范围 1 到 28 中的数字和“last”。 <br> &nbsp;&nbsp;-周历，DAY，HH： MM： SS （例如，*每周、星期二、12:22:32*）  <br> &nbsp;&nbsp;-每天，HH： MM： SS （例如*每日、12:22:32*）  <br> &nbsp;&nbsp;-  *None* 表示不应执行 Windows 更新。  <br><br> 时间为 UTC 时间。|
-| AcceptWindowsUpdateEula | 布尔值 <br>（默认值： *true*） | 通过设置此标志，该应用程序将代表计算机所有者接受 Windows 更新的最终用户许可协议。              |
+| WUFrequency           | 逗号分隔的字符串（默认值：*每周、星期三、7:00:00*）     | 安装 Windows 更新的频率。 其格式和可能的值包括： <br>-每月，DD，HH： MM： SS （例如：*月度，5，12:22:32*）。 字段_DD_ （day）的允许值是从1到28和_最后_的数字。 <br>-周历，Day，HH： MM： SS （示例：*周历，12:22:32*）  <br>-每天，HH： MM： SS （示例：*每天，12:22:32*）  <br>-Week，Day，HH： MM： SS （例如： *2，星期五，21:00:00* 9:00 表示每月第二周的星期五下午） <br>- *None* 表示不应执行 Windows 更新。  <br><br> 时间为 UTC 时间。|
+| AcceptWindowsUpdateEula | 布尔 <br>（默认值： *true*） | 通过设置此标志，该应用程序将代表计算机所有者接受 Windows 更新的最终用户许可协议。              |
 
 > [!TIP]
 > 若要立即进行 Windows 更新，请依据应用程序部署时间设置 `WUFrequency`。 例如，假设拥有一个 5 节点测试群集，并计划在大约 UTC 下午 5:00 部署应用。 如果假定应用程序升级或部署最多需要 30 分钟，请将 WUFrequency 设置为 *Daily, 17:30:00*。
@@ -353,7 +353,7 @@ HResult | 0 - 成功<br> 其他 - 失败| 指示 Windows 更新失败并出现 u
 
    如果在群集上找不到修复管理器服务，将会针对协调器服务生成警告级别的运行状况报告。
 
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 
 **问：当 POA 正在运行时，为什么会看到群集处于错误状态？**
 

@@ -3,12 +3,12 @@ title: 教程：构建策略以强制实施符合性
 description: 本教程中将使用策略来强制执行标准、控制成本、维护安全性并施加企业范围的设计原则。
 ms.date: 03/24/2020
 ms.topic: tutorial
-ms.openlocfilehash: 15a6c3df26938332d42ecbcfff43f958577062c4
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: dcebbbfcc2f86ace7ea4400a2fdb6f1392f4efe6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239960"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82190820"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>教程：创建和管理策略以强制实施符合性
 
@@ -126,7 +126,7 @@ ms.locfileid: "80239960"
 
    策略规则中的 _field_ 属性必须是支持的值。 可以在[策略定义结构字段](../concepts/definition-structure.md#fields)上找到值的完整列表。 例如，别名为 `"Microsoft.Compute/VirtualMachines/Size"`。
 
-   若要查看其他 Azure Policy 示例，请参阅 [Azure Policy 示例](../samples/index.md)。
+   若要查看更多 Azure Policy 示例，请参阅 [Azure Policy 示例](../samples/index.md)。
 
 1. 选择“保存”。 
 

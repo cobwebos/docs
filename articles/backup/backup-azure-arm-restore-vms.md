@@ -4,12 +4,12 @@ description: 使用 Azure 门户从恢复点还原 Azure 虚拟机
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 687406676320f93bab22e34ca95951035187718d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a170755673c05448d1bb86af993cad929664949
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182882"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597767"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 门户中还原 Azure VM 数据
 
@@ -23,7 +23,7 @@ Azure 备份提供多种方法用于还原 VM。
 --- | ---
 **创建新 VM** | 从还原点快速创建并正常运行一个基本的 VM。<br/><br/> 可以为 VM 指定名称，选择要将其放入的资源组和虚拟网络 (VNet)，并为还原的 VM 指定存储帐户。 新 VM 必须在源 VM 所在的区域创建。
 **还原磁盘** | 还原某个 VM 磁盘，然后使用它来创建新的 VM。<br/><br/> Azure 备份提供一个模板来帮助你自定义和创建 VM。 <br/><br> 还原作业会生成一个模板，可以下载该模板，并使用它来指定自定义的 VM 设置和创建 VM。<br/><br/> 磁盘将复制到指定的资源组。<br/><br/> 或者，可将磁盘附加到现有 VM，或使用 PowerShell 创建新的 VM。<br/><br/> 若要自定义 VM、添加在备份时不存在的配置设置，或添加必须使用模板或 PowerShell 配置的设置，则此选项非常有用。
-**替换现有项** | 可以还原某个磁盘，并使用它来替换现有 VM 上的磁盘。<br/><br/> 当前 VM 必须存在。 如果已将其删除，则无法使用此选项。<br/><br/> Azure 备份将在替换磁盘前创建现有 VM 的快照，并将其存储在指定的暂存位置中。 连接到该 VM 的现有磁盘将替换为所选的还原点。<br/><br/> 该快照将复制到保管库，并根据保留策略予以保留。 <br/><br/> 替换磁盘操作完成后，原始磁盘会保留在资源组中。 如果不需要原始磁盘，可以选择手动删除它们。 <br/><br/>不加密的托管 Vm 支持 Replace 现有的，包括[使用自定义映像创建](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/)的 vm。 对于经典 Vm，不支持此方法。<br/><br/> 如果还原点中的磁盘数多于或少于当前 VM 中的磁盘数，则还原点中的磁盘数只反映 VM 配置。<br><br> 包含链接资源（如[用户分配的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 或 [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)）的 VM 不支持替换现有磁盘，因为备份客户端应用在执行还原时对这些资源没有权限。
+**替换现有项** | 可以还原某个磁盘，并使用它来替换现有 VM 上的磁盘。<br/><br/> 当前 VM 必须存在。 如果已将其删除，则无法使用此选项。<br/><br/> Azure 备份将在替换磁盘前创建现有 VM 的快照，并将其存储在指定的暂存位置中。 连接到该 VM 的现有磁盘将替换为所选的还原点。<br/><br/> 该快照将复制到保管库，并根据保留策略予以保留。 <br/><br/> 替换磁盘操作完成后，原始磁盘会保留在资源组中。 你可以选择手动删除不需要的原始磁盘。 <br/><br/>不加密的托管 Vm 支持 Replace 现有的，包括[使用自定义映像创建](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/)的 vm。 对于经典 Vm，不支持此方法。<br/><br/> 如果还原点中的磁盘数多于或少于当前 VM 中的磁盘数，则还原点中的磁盘数只反映 VM 配置。<br><br> 包含链接资源（如[用户分配的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 或 [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)）的 VM 不支持替换现有磁盘，因为备份客户端应用在执行还原时对这些资源没有权限。
 **跨区域（次要区域）** | 跨区域还原可用于还原次要区域（[Azure 配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#what-are-paired-regions)）中的 Azure VM。<br><br> 如果备份在次要区域中完成，则可针对所选恢复点还原所有 Azure VM。<br><br> 此功能适用于以下选项：<br> <li> [创建 VM](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#create-a-vm) <br> <li> [还原磁盘](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) <br><br> 当前不支持[替换现有磁盘](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#replace-existing-disks)选项。<br><br> 权限<br> 次要区域中的还原操作可由备份管理员和应用管理员执行。
 
 > [!NOTE]
@@ -190,7 +190,7 @@ Azure 备份提供多种方法用于还原 VM。
 **裸机还原** | Azure VM 与本地虚拟机监控程序之间的主要差别是 Azure 中不提供 VM 控制台。 某些方案（如使用裸机恢复 (BMR) 类型备份进行恢复）需要控制台。 但是，通过保管库进行 VM 还原完全取代了 BMR。
 **还原采用特殊网络配置的 VM** | 特殊网络配置包括使用内部或外部负载均衡、使用多个 NIC 或多个保留 IP 地址的 VM。 可使用[还原磁盘选项](#restore-disks)还原这些 VM。 此选项将 Vhd 的副本复制到指定的存储帐户中，然后可以根据你的配置创建具有[内部](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)或[外部](/azure/load-balancer/quickstart-create-standard-load-balancer-powershell)负载均衡器、[多个 NIC](../virtual-machines/windows/multiple-nics.md)或[多个保留 IP 地址](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)的 VM。
 **NIC/子网上的网络安全组（NSG）** | Azure VM 备份支持在 VNet、子网和 NIC 级别备份和还原 NSG 信息。
-**区域固定的 VM** | Azure Backup 支持备份和还原区域固定的 VM。 [了解详细信息](https://azure.microsoft.com/global-infrastructure/availability-zones/)
+**区域固定的 VM** | 如果备份固定到区域的 Azure VM （使用 Azure 备份），则可以将其在固定的区域中还原。 [了解详细信息](https://docs.microsoft.com/azure/availability-zones/az-overview)
 
 ## <a name="track-the-restore-operation"></a>跟踪还原操作
 
@@ -218,7 +218,7 @@ Azure 备份提供多种方法用于还原 VM。
 - 如果备份的 VM 使用了静态 IP 地址，则还原的 VM 将使用动态 IP 地址，以避免冲突。 可[将静态 IP 地址添加到还原的 VM](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkinterfaceipconfig?view=azps-3.5.0#description)。
 - 还原的 VM 没有可用性集。 如果使用了还原磁盘选项，则使用提供的模板或 PowerShell 从磁盘创建 VM 时，可以[指定可用性集](../virtual-machines/windows/tutorial-availability-sets.md)。
 - 如果使用基于 cloud-init 的 Linux 分发版（例如 Ubuntu），出于安全原因，还原后将阻止密码。 请在还原的 VM 上使用 VMAccess 扩展 [重置密码](../virtual-machines/linux/reset-password.md)。 我们建议在这些分发版中使用 SSH 密钥，这样，在还原后就无需重置密码。
-- 如果在还原后因 VM 与域控制器的关系被破坏而无法访问 VM，请按以下步骤操作，以便启动 VM：
+- 如果由于 VM 与域控制器断开关系而无法访问 VM，请按照下面的步骤操作以启动 VM：
   - 将 OS 磁盘作为数据磁盘附加到恢复的 VM。
   - 如果发现 Azure 代理无响应，请按此[链接](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline)的要求手动安装 VM 代理。
   - 在 VM 上启用串行控制台访问，以允许对 VM 进行命令行访问
@@ -239,7 +239,7 @@ Azure 备份提供多种方法用于还原 VM。
     cmd /c "netdom remove <<MachineName>> /domain:<<DomainName>> /userD:<<DomainAdminhere>> /passwordD:<<PasswordHere>> /reboot:10 /Force"
     ```
 
-- VM 脱离并重启后，即可使用本地管理员凭据成功地通过 RDP 连接到 VM，并将 VM 成功地重新加入域。
+- 当 VM 退出并重新启动后，可以通过本地管理员凭据成功通过 RDP 连接到 VM，并成功将 VM 重新加入域。
 
 ## <a name="backing-up-restored-vms"></a>备份已还原的 VM
 

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: vkukke
-ms.openlocfilehash: ed3b70ad267252981110e7970bc5c5fad6cf4b4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6d6d8df8f3c5da762ac672b304ec072a723e7d7
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79300149"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857047"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Azure 事件网格资源的网络安全
 本文介绍如何通过 Azure 事件网格使用以下安全功能： 
@@ -25,11 +25,11 @@ ms.locfileid: "79300149"
 ## <a name="service-tags"></a>服务标记
 服务标记代表给定 Azure 服务中的一组 IP 地址前缀。 Microsoft 管理服务标记包含的地址前缀，并在地址发生更改时自动更新服务标记，从而最大程度地降低频繁更新网络安全规则的复杂性。 有关服务标记的详细信息，请参阅[服务标记概述](../virtual-network/service-tags-overview.md)。
 
-你可以使用服务标记来定义[网络安全组](../virtual-network/security-overview.md#security-rules) 或 [Azure 防火墙](../firewall/service-tags.md)上的网络访问控制。 创建安全规则时，使用服务标记代替特定的 IP 地址。 通过在规则的相应 "*源* " 或 " *目标* " 字段中指定服务标记名称（例如， **AzureEventGrid**），可以允许或拒绝相应服务的流量。
+可以在[网络安全组](../virtual-network/security-overview.md#security-rules) 或  [Azure 防火墙](../firewall/service-tags.md)中使用服务标记来定义网络访问控制。 创建安全规则时，请使用服务标记代替特定 IP 地址。 通过在规则的相应 "*源* " 或 " *目标* " 字段中指定服务标记名称（例如， **AzureEventGrid**），可以允许或拒绝相应服务的流量。
 
-| 服务标记 | 目的 | 可以使用入站或出站？ | 可以是区域？ | 是否可在 Azure 防火墙中使用？ |
+| 服务标记 | 目的 | 可以使用入站还是出站连接？ | 可以支持区域范围？ | 是否可在 Azure 防火墙中使用？ |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| AzureEventGrid | Azure 事件网格。 <br/><br/>*注意：* 此标记涵盖美国中南部、美国东部、美国东部2、美国西部2和美国中部的 Azure 事件网格端点。 | 双向 | 否 | 否 |
+| AzureEventGrid | Azure 事件网格。 <br/><br/>*注意：* 此标记涵盖美国中南部、美国东部、美国东部2、美国西部2和美国中部的 Azure 事件网格端点。 | 推送、请求和匿名 | 否 | 否 |
 
 
 ## <a name="ip-firewall"></a>IP 防火墙 
@@ -61,7 +61,7 @@ Azure 事件网格支持基于 IP 的访问控制，可用于发布到主题和�
 | 名称                                          | 类型      | 值                                         |
 | --------------------------------------------- | ----------| --------------------------------------------- |  
 | `topicA.westus.eventgrid.azure.net`             | CNAME     | `topicA.westus.privatelink.eventgrid.azure.net` |
-| `topicA.westus.privatelink.eventgrid.azure.net` | CNAME     | \<azure 流量管理器配置文件\>
+| `topicA.westus.privatelink.eventgrid.azure.net` | CNAME     | \<Azure 流量管理器配置文件\>
 
 你可以通过使用[IP 防火墙](#ip-firewall)的公共终结点，拒绝或控制对 VNet 之外的客户端的访问。 
 
@@ -92,10 +92,9 @@ Azure 事件网格支持基于 IP 的访问控制，可用于发布到主题和�
 若要成功发布，应**批准**专用终结点连接状态。 如果连接被拒绝，则无法使用 Azure 门户进行批准。 唯一的可能性是删除连接并改为创建一个新连接。
 
 ## <a name="pricing-and-quotas"></a>定价和配额
-**专用终结点**仅适用于高级层主题和域。 事件网格允许每个主题或域创建多达64的专用终结点连接。 若要从基本层升级到高级层，请参阅[更新定价层](update-tier.md)一文。
+在事件网格的 "基本" 和 "高级" 层中提供了**专用终结点**。 事件网格允许每个主题或域创建多达64的专用终结点连接。 
 
 事件网格的 "基本" 和 "高级" 层中提供了**IP 防火墙**功能。 对于每个主题或域，最多允许创建16个 IP 防火墙规则。
-
 
 ## <a name="next-steps"></a>后续步骤
 你可以将事件网格资源的 IP 防火墙配置为仅允许从一组选择的 IP 地址或 IP 地址范围通过公共 internet 进行访问。 有关分步说明，请参阅[配置 IP 防火墙](configure-firewall.md)。

@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 1d08770d81ade2d976142b2ce1fd94dae044cf32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 7feb6282f3a3551e08d1bb8db2cf6ad2fcd754a8
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461389"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626150"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL 数据库安全功能概述
 
@@ -30,7 +30,7 @@ Microsoft Azure SQL 数据库为云和企业应用程序提供关系数据库服
 
 ### <a name="ip-firewall-rules"></a>IP 防火墙规则
 
-IP 防火墙规则基于每个请求的起始 IP 地址授予对数据库的访问权限。 有关详细信息，请参阅 [Azure SQL 数据库和 SQL 数据仓库防火墙规则概述](sql-database-firewall-configure.md)。
+IP 防火墙规则基于每个请求的起始 IP 地址授予对数据库的访问权限。 有关详细信息，请参阅[AZURE SQL 数据库概述和 Azure Synapse Analytics 防火墙规则](sql-database-firewall-configure.md)。
 
 ### <a name="virtual-network-firewall-rules"></a>虚拟网络防火墙规则
 
@@ -56,7 +56,7 @@ IP 防火墙规则基于每个请求的起始 IP 地址授予对数据库的访�
 
 - **Azure Active Directory 身份验证**：
 
-    Azure Active Directory 身份验证是使用 Azure Active Directory (Azure AD) 中的标识连接到 Azure [SQL 数据库](sql-database-technical-overview.md)和 [SQL 数据仓库](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的一种机制。 使用 Azure AD 身份验证，管理员可在一个中心位置集中管理数据库用户以及其他 Microsoft 服务的标识和权限。 这包括最小化密码存储并启用集中式密码轮换策略。
+    Azure Active Directory 身份验证是一种使用 Azure Active Directory （Azure AD）中的标识连接到[AZURE SQL 数据库](sql-database-technical-overview.md)和[azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的机制。 使用 Azure AD 身份验证，管理员可在一个中心位置集中管理数据库用户以及其他 Microsoft 服务的标识和权限。 这包括最小化密码存储并启用集中式密码轮换策略。
 
      必须创建一个名为“Active Directory 管理员”  的服务器管理员，以便在 SQL 数据库中使用 Azure AD 身份验证。 有关详细信息，请参阅[使用 Azure Active Directory 身份验证连接到 SQL 数据库](sql-database-aad-authentication.md)。 Azure AD 身份验证同时支持托管帐户和联合帐户。 联合帐户支持与 Azure AD 联合的客户域的 Windows 用户和组。
 
@@ -97,7 +97,7 @@ SQL 数据库审核可跟踪数据库活动，通过将数据库事件记录到�
 
 SQL 数据库通过使用[传输层安全](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)加密动态数据来保护客户数据。
 
-SQL Server 始终对所有连接强制要求加密 (SSL/TLS)。 这样可以确保在客户端与服务器之间传输的所有数据经过加密，而不管连接字符串中的 **Encrypt** 或 **TrustServerCertificate** 设置如何。
+对于所有连接，Sql Server 始终强制执行加密（TLS）。 这样可以确保在客户端与服务器之间传输的所有数据经过加密，而不管连接字符串中的 **Encrypt** 或 **TrustServerCertificate** 设置如何。
 
 作为最佳做法，我们建议在应用程序的连接字符串中指定加密的连接，而不要信任服务器证书。 __ 这会强制应用程序验证服务器证书，从而防止应用程序容易受到中间人类型的攻击。
 

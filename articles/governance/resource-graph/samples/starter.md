@@ -1,14 +1,14 @@
 ---
 title: 初学者查询示例
 description: 使用 Azure 资源图来运行一些初学者查询，包括计算资源数、对资源进行排序或按特定标记排序。
-ms.date: 11/21/2019
+ms.date: 04/27/2020
 ms.topic: sample
-ms.openlocfilehash: b966d8c239cb6ff706c967174bcea23bf25de374
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: fc499f466d61fb665cc31075a2c310372d993f2d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79221964"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82185857"
 ---
 # <a name="starter-resource-graph-query-samples"></a>初学者 Resource Graph 查询示例
 
@@ -31,6 +31,7 @@ ms.locfileid: "79221964"
 > - [显示虚拟机资源的别名](#show-aliases)
 > - [显示特定别名的非重复值](#distinct-alias-values)
 > - [显示未关联的网络安全组](#unassociated-nsgs)
+> - [从 Azure 顾问获取成本节约摘要](#advisor-savings)
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free)。
 
@@ -103,7 +104,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.keyvault/vaults' | c
 
 ## <a name="list-resources-sorted-by-name"></a><a name="list-resources" /> 列出按名称排序的资源
 
-此查询返回任意类型的资源，但只返回“名称”、“类型”和“位置”属性。    它使用 `order by`  以升序 (`asc`) 按“名称”属性对属性排序。
+此查询返回任意类型的资源，但只返回“名称”、“类型”和“位置”属性。    它使用 `order by` 以升序 (`asc`) 按“名称”属性对属性排序。
 
 ```kusto
 Resources
@@ -558,6 +559,49 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.network/networksecur
 - Azure 门户：<a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fnetworksecuritygroups'%20and%20isnull(properties.networkInterfaces)%20and%20isnull(properties.subnets)%20%7C%20project%20name%2C%20resourceGroup%20%7C%20sort%20by%20name%20asc" target="_blank">portal.azure.com</a> ![“在新窗口中打开链接”图标](../../media/new-window.png)
 - Azure 政府门户：<a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fnetworksecuritygroups'%20and%20isnull(properties.networkInterfaces)%20and%20isnull(properties.subnets)%20%7C%20project%20name%2C%20resourceGroup%20%7C%20sort%20by%20name%20asc" target="_blank">portal.azure.us</a> ![“在新窗口中打开链接”图标](../../media/new-window.png)
 - Azure 中国门户：<a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fnetworksecuritygroups'%20and%20isnull(properties.networkInterfaces)%20and%20isnull(properties.subnets)%20%7C%20project%20name%2C%20resourceGroup%20%7C%20sort%20by%20name%20asc" target="_blank">portal.azure.cn</a> ![“在新窗口中打开链接”图标](../../media/new-window.png)
+
+---
+
+## <a name="get-cost-savings-summary-from-azure-advisor"></a><a name="advisor-savings" />从 Azure 顾问获取成本节约情况摘要
+
+此查询汇总了每个 [Azure 顾问](../../../advisor/advisor-overview.md)建议的成本节约情况。
+
+```kusto
+advisorresources
+| where type == 'microsoft.advisor/recommendations'
+| where properties.category == 'Cost'
+| extend
+    resources = tostring(properties.resourceMetadata.resourceId),
+    savings = todouble(properties.extendedProperties.savingsAmount),
+    solution = tostring(properties.shortDescription.solution),
+    currency = tostring(properties.extendedProperties.savingsCurrency)
+| summarize
+    dcount(resources), 
+    bin(sum(savings), 0.01)
+    by solution, currency
+| project solution, dcount_resources, sum_savings, currency
+| order by sum_savings desc
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az graph query -q "advisorresources | where type == 'microsoft.advisor/recommendations' | where properties.category == 'Cost' | extend resources = tostring(properties.resourceMetadata.resourceId), savings = todouble(properties.extendedProperties.savingsAmount), solution = tostring(properties.shortDescription.solution), currency = tostring(properties.extendedProperties.savingsCurrency) | summarize dcount(resources), bin(sum(savings), 0.01) by solution, currency | project solution, dcount_resources, sum_savings, currency | order by sum_savings desc"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+Search-AzGraph -Query "advisorresources | where type == 'microsoft.advisor/recommendations' | where properties.category == 'Cost' | extend resources = tostring(properties.resourceMetadata.resourceId), savings = todouble(properties.extendedProperties.savingsAmount), solution = tostring(properties.shortDescription.solution), currency = tostring(properties.extendedProperties.savingsCurrency) | summarize dcount(resources), bin(sum(savings), 0.01) by solution, currency | project solution, dcount_resources, sum_savings, currency | order by sum_savings desc"
+```
+
+# <a name="portal"></a>[门户](#tab/azure-portal)
+
+![Resource Graph 浏览器图标](../media/resource-graph-small.png) 在 Azure Resource Graph 浏览器中尝试此查询：
+
+- Azure 门户：<a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/advisorresources%20%7C%20where%20type%20%3D%3D%20%27microsoft.advisor%2Frecommendations%27%20%7C%20where%20properties.category%20%3D%3D%20%27Cost%27%20%7C%20extend%20resources%20%3D%20tostring%28properties.resourceMetadata.resourceId%29%2C%20savings%20%3D%20todouble%28properties.extendedProperties.savingsAmount%29%2C%20solution%20%3D%20tostring%28properties.shortDescription.solution%29%2C%20currency%20%3D%20tostring%28properties.extendedProperties.savingsCurrency%29%20%7C%20summarize%20dcount%28resources%29%2C%20bin%28sum%28savings%29%2C%200.01%29%20by%20solution%2C%20currency%20%7C%20project%20solution%2C%20dcount_resources%2C%20sum_savings%2C%20currency%20%7C%20order%20by%20sum_savings%20desc" target="_blank">portal.azure.com</a> ![“在新窗口中打开链接”图标](../../media/new-window.png)
+- Azure 政府门户：<a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/advisorresources%20%7C%20where%20type%20%3D%3D%20%27microsoft.advisor%2Frecommendations%27%20%7C%20where%20properties.category%20%3D%3D%20%27Cost%27%20%7C%20extend%20resources%20%3D%20tostring%28properties.resourceMetadata.resourceId%29%2C%20savings%20%3D%20todouble%28properties.extendedProperties.savingsAmount%29%2C%20solution%20%3D%20tostring%28properties.shortDescription.solution%29%2C%20currency%20%3D%20tostring%28properties.extendedProperties.savingsCurrency%29%20%7C%20summarize%20dcount%28resources%29%2C%20bin%28sum%28savings%29%2C%200.01%29%20by%20solution%2C%20currency%20%7C%20project%20solution%2C%20dcount_resources%2C%20sum_savings%2C%20currency%20%7C%20order%20by%20sum_savings%20desc" target="_blank">portal.azure.us</a> ![“在新窗口中打开链接”图标](../../media/new-window.png)
+- Azure 中国门户：<a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/advisorresources%20%7C%20where%20type%20%3D%3D%20%27microsoft.advisor%2Frecommendations%27%20%7C%20where%20properties.category%20%3D%3D%20%27Cost%27%20%7C%20extend%20resources%20%3D%20tostring%28properties.resourceMetadata.resourceId%29%2C%20savings%20%3D%20todouble%28properties.extendedProperties.savingsAmount%29%2C%20solution%20%3D%20tostring%28properties.shortDescription.solution%29%2C%20currency%20%3D%20tostring%28properties.extendedProperties.savingsCurrency%29%20%7C%20summarize%20dcount%28resources%29%2C%20bin%28sum%28savings%29%2C%200.01%29%20by%20solution%2C%20currency%20%7C%20project%20solution%2C%20dcount_resources%2C%20sum_savings%2C%20currency%20%7C%20order%20by%20sum_savings%20desc" target="_blank">portal.azure.cn</a> ![“在新窗口中打开链接”图标](../../media/new-window.png)
 
 ---
 

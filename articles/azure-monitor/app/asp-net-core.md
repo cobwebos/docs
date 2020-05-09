@@ -2,19 +2,19 @@
 title: ASP.NET Core 应用程序的 Azure 应用程序见解 |Microsoft Docs
 description: 监视 ASP.NET Core Web 应用程序的可用性、性能和使用情况。
 ms.topic: conceptual
-ms.date: 05/22/2019
-ms.openlocfilehash: e8ace92c39ed6b7bdcca0bae14cc0ae95aced2c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: 9c7c2e22d2befb503a388df1fa8a42c3d6eb07c5
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82145259"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652771"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>适用于 ASP.NET Core 应用程序的 Application Insights
 
 本文介绍如何为 [ASP.NET Core](https://docs.microsoft.com/aspnet/core) 应用程序启用 Application Insights。 完成本文中所述的步骤后，Application Insights 将从 ASP.NET Core 应用程序收集请求、依赖项、异常、性能计数器、检测信号和日志。
 
-本文所用的示例是一个面向 `netcoreapp2.2` 的 [MVC 应用程序](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app)。 这些说明适用于所有 ASP.NET Core 应用程序。
+本文所用的示例是一个面向 `netcoreapp3.0` 的 [MVC 应用程序](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app)。 这些说明适用于所有 ASP.NET Core 应用程序。
 
 ## <a name="supported-scenarios"></a>支持的方案
 
@@ -28,7 +28,7 @@ ms.locfileid: "82145259"
 * **IDE**：Visual Studio、VS Code 或命令行。
 
 > [!NOTE]
-> 如果使用 ASP.NET Core 1.x 以及 Application Insights，请使用[2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0)版本或更高版本。 这是支持 ASP.NET Core 1.x 的唯一版本。
+> ASP.NET Core 1.x 需要[Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0)或更高版本。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,19 +40,19 @@ ms.locfileid: "82145259"
 1. 在 Visual Studio 中打开项目。
 
     > [!TIP]
-    > 如果需要，可为项目设置源代码管理，以便可以跟踪 Application Insights 做出的所有更改。 若要启用源代码管理，请选择“文件” > “添加到源代码管理”。  
+    > 如果需要，可为项目设置源代码管理，以便可以跟踪 Application Insights 做出的所有更改。 若要启用源代码管理，请选择 "**文件** > " "**添加到源代码管理**"。
 
-2. 选择“项目” > “添加 Application Insights 遥测”   。
+2. 选择 "**项目** > " "**添加 Application Insights 遥测**"。
 
-3. 选择“入门”。  选项文本根据 Visual Studio 版本的不同而异。 在某些早期版本中，使用的是“免费开始”按钮。 
+3. 选择 "**开始**"。 选项文本根据 Visual Studio 版本的不同而异。 在某些早期版本中，使用的是“免费开始”按钮。****
 
-4. 选择订阅。 然后选择“资源” > “注册”。  
+4. 选择订阅。 然后选择 "**资源** > **寄存器**"。
 
-5. 将 Application Insights 添加到项目后，确认使用的是最新稳定版本的 SDK。 转到“项目” > “管理 NuGet 包” > “Microsoft.ApplicationInsights.AspNetCore”。    根据需要选择“更新”。 
+5. 将 Application Insights 添加到项目后，确认使用的是最新稳定版本的 SDK。 请参阅**项目** > **管理 NuGet 包** > **applicationinsights.config. AspNetCore**。 根据需要选择“更新”。****
 
      ![显示在何处选择要更新的 Application Insights 包的屏幕截图](./media/asp-net-core/update-nuget-package.png)
 
-6. 如果你已遵循可选的提示操作并已将项目添加到源代码管理，请转到“视图” > “团队资源管理器” > “更改”。    然后选择每个文件，以查看 Application Insights 遥测功能所做的更改的差异视图。
+6. 如果按照可选提示操作并将项目添加到源代码管理，请参阅**查看** > **团队资源管理器** > **更改**。 然后选择每个文件，以查看 Application Insights 遥测功能所做的更改的差异视图。
 
 ## <a name="enable-application-insights-server-side-telemetry-no-visual-studio"></a>启用 Application Insights 服务器端遥测（不使用 Visual Studio）
 
@@ -109,7 +109,9 @@ ms.locfileid: "82145259"
 
     * `SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
-    通常，`APPINSIGHTS_INSTRUMENTATIONKEY` 指定要部署到 Azure Web 应用的应用程序的检测密钥。
+    * `APPINSIGHTS_INSTRUMENTATIONKEY`通常用于[Azure Web 应用](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=net)，但也可用于支持此 SDK 的所有位置。 （如果要执行无代码置备 web 应用监视，如果不使用连接字符串，则需要此格式。）
+
+    你现在还可以使用[连接字符串](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net)来代替设置检测密钥。
 
     > [!NOTE]
     > 在代码中指定的检测密钥优先于环境变量 `APPINSIGHTS_INSTRUMENTATIONKEY`，而后者又优先于其他选项。
@@ -126,16 +128,16 @@ ms.locfileid: "82145259"
 
 自动捕获通过 `Warning` 或更高严重性的 `ILogger` 发出的日志。 遵循 [ILogger 文档](ilogger.md#control-logging-level)自定义 Application Insights 捕获的日志级别。
 
-### <a name="dependencies"></a>依赖项
+### <a name="dependencies"></a>依赖关系
 
 默认情况已启用依赖项收集。 [此文](asp-net-dependencies.md#automatically-tracked-dependencies)介绍了自动收集的依赖项，并提供了执行手动跟踪的步骤。
 
 ### <a name="performance-counters"></a>性能计数器
 
-对 ASP.NET Core 中的[性能计数器](https://azure.microsoft.com/documentation/articles/app-insights-web-monitor-performance/)的支持限制如下：
+对 ASP.NET Core 中[性能计数器](https://azure.microsoft.com/documentation/articles/app-insights-web-monitor-performance/)的支持受到限制：
 
 * 如果应用程序在 Azure Web 应用 (Windows) 中运行，则 SDK 2.4.1 和更高版本将收集性能计数器。
-* 如果应用程序在 Windows 中运行，并且面向 `NETSTANDARD2.0` 或更高版本，则 SDK 2.7.1 和更高版本将收集性能计数器。
+* 如果应用程序在 Windows 中运行，并且面向 `NETSTANDARD2.0` 或更高版本，则 SDK 2.7.1 版和更高版本将收集性能计数器。
 * 对于面向 .NET Framework 的应用程序，所有版本的 SDK 都支持性能计数器。
 * SDK 2.8.0 版和更高版本支持 Linux 中的 cpu/内存计数器。 Linux 不支持其他计数器。 在 Linux（和其他非 Windows 环境）中，获取系统计数器的建议方法是使用 [EventCounter](#eventcounter)
 
@@ -160,7 +162,7 @@ ms.locfileid: "82145259"
         </head>
     ```
     
-从 SDK v2.14 开始，除了使用 `FullScript` 之外，还可以使用 `ScriptBody`。 如果需要控制 `<script>` 标记以设置内容安全策略，请使用此标记：
+或者，若要`FullScript`使用`ScriptBody` ，请从 SDK v 2.14 开始使用。 如果需要控制`<script>`标记来设置内容安全策略，请使用此操作：
 
 ```cshtml
  <script> // apply custom changes to this script tag.
@@ -205,12 +207,12 @@ public void ConfigureServices(IServiceCollection services)
 |EnableRequestTrackingTelemetryModule   | 启用/禁用`RequestTrackingTelemetryModule` | 是
 |EnableEventCounterCollectionModule   | 启用/禁用`EventCounterCollectionModule` | 是
 |EnableDependencyTrackingTelemetryModule   | 启用/禁用`DependencyTrackingTelemetryModule` | 是
-|EnableAppServicesHeartbeatTelemetryModule  |  启用/禁用`AppServicesHeartbeatTelemetryModule` | true
-|EnableAzureInstanceMetadataTelemetryModule   |  启用/禁用`AzureInstanceMetadataTelemetryModule` | true
-|EnableQuickPulseMetricStream | Enable/Disable LiveMetrics feature | true
-|EnableAdaptiveSampling | 启用/禁用自适应采样 | true
-|EnableHeartbeat | 启用/禁用检测信号功能，该功能定期（默认间隔为 15 分钟）发送名为“HeartBeatState”的自定义指标，其中包含有关运行时等的信息，例如 .NET 版本、Azure 环境信息（如果适用）等。 | true
-|AddAutoCollectedMetricExtractor | 启用/禁用 AutoCollectedMetrics 提取程序 - 一个 TelemetryProcessor，在采样发生之前发送有关请求/依赖项的聚合前指标。 | true
+|EnableAppServicesHeartbeatTelemetryModule  |  启用/禁用`AppServicesHeartbeatTelemetryModule` | 是
+|EnableAzureInstanceMetadataTelemetryModule   |  启用/禁用`AzureInstanceMetadataTelemetryModule` | 是
+|EnableQuickPulseMetricStream | Enable/Disable LiveMetrics feature | 是
+|EnableAdaptiveSampling | 启用/禁用自适应采样 | 是
+|EnableHeartbeat | 启用/禁用检测信号功能，该功能定期（15分钟默认值）发送名为 "HeartbeatState" 的自定义指标，其中包含有关运行时（如 .NET 版本、Azure 环境信息，如果适用）等的信息。 | 是
+|AddAutoCollectedMetricExtractor | 启用/禁用 AutoCollectedMetrics 提取程序 - 一个 TelemetryProcessor，在采样发生之前发送有关请求/依赖项的聚合前指标。 | 是
 |RequestCollectionOptions.TrackExceptions | 启用/禁用请求收集模块的未经处理的异常跟踪报告。 | 在 NETSTANDARD2.0 中为 false（因为异常是通过 ApplicationInsightsLoggerProvider 跟踪的），否则为 true。
 
 有关最新列表，请参阅 [`ApplicationInsightsServiceOptions` 中的可配置设置](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs)。
@@ -361,7 +363,7 @@ using Microsoft.ApplicationInsights.Channel;
 
 上述操作不会阻止任何自动收集模块收集遥测数据。 使用上述方法只会禁止向 Application Insights 发送遥测数据。 如果不需要某个特定的自动收集模块，最好是[删除遥测模块](#configuring-or-removing-default-telemetrymodules)
 
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 
 ### <a name="does-application-insights-support-aspnet-core-3x"></a>Application Insights 是否支持 ASP.NET Core 2.x？
 
@@ -418,7 +420,7 @@ public class HomeController : Controller
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>是否可以使用状态监视器之类的工具来启用 Application Insights 监视？
 
-不能。 [状态监视器](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now)和[状态监视器 v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) 目前仅支持 ASP.NET 4.x。
+否。 [状态监视器](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now)和[状态监视器 v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) 目前仅支持 ASP.NET 4.x。
 
 ### <a name="is-application-insights-automatically-enabled-for-my-aspnet-core-20-application"></a>系统是否会自动为 ASP.NET Core 2.0 应用程序启用 Application Insights？
 

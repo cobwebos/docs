@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.openlocfilehash: 056e23f0f0cf1a3a1c70042cef3c92dd41f14f82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23a5d2c0e52a22872a8b9a64503d61493018b611
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80247004"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839158"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>在 Azure 存储中托管静态网站
 
@@ -159,8 +159,11 @@ ms.locfileid: "80247004"
 此示例假设正在 Azure Cloud Shell 会话中运行命令。
 
 ```azurecli-interactive
-az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-account-name> --content-type 'text/html; charset=utf-8'
+az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-account-name>
 ```
+
+> [!NOTE] 
+> 如果浏览器提示用户下载文件而不是呈现内容，你可以将追加`--content-type 'text/html; charset=utf-8'`到命令。 
 
 * 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
 
@@ -178,11 +181,13 @@ az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-a
 ```powershell
 # upload a file
 set-AzStorageblobcontent -File "<path-to-file>" `
--Properties @{ ContentType = "text/html; charset=utf-8";} `
 -Container `$web `
 -Blob "<blob-name>" `
 -Context $ctx
 ```
+
+> [!NOTE] 
+> 如果浏览器提示用户下载文件而不是呈现内容，你可以将追加`-Properties @{ ContentType = "text/html; charset=utf-8";}`到命令。
 
 * 将`<path-to-file>`占位符值替换为要上传的文件的完全限定路径（例如： `C:\temp\index.html`）。
 
@@ -194,7 +199,7 @@ set-AzStorageblobcontent -File "<path-to-file>" `
 
 通过使用网站的公共 URL，你可以从浏览器查看站点的页面。
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 <a id="portal-find-url" />
 

@@ -10,12 +10,12 @@ ms.subservice: security-fundamentals
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 59103f7a8841985f463e085b54d5c8461b797778
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9c3657a5b55303429d7825bd317c6f9eeb8c06c5
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476026"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583267"
 ---
 # <a name="index-of-built-in-security-controls-articles-for-azure-services"></a>Azure 服务的 "内置安全控件" 文章的索引
 
@@ -33,6 +33,7 @@ ms.locfileid: "79476026"
 - [Azure 服务总线消息传送](../../service-bus-messaging/service-bus-messaging-security-controls.md)
 - [Azure 服务总线中继](../../service-bus-relay/service-bus-relay-security-controls.md)
 - [Azure Service Fabric](../../service-fabric/service-fabric-security-controls.md)
+- [Azure Spring Cloud](../../spring-cloud/spring-cloud-concept-security-controls.md)
 - [Azure SQL 数据库](../../sql-database/sql-database-security-controls.md)
 - [Azure 虚拟机规模集](../../virtual-machine-scale-sets/virtual-machine-scale-sets-security-controls.md)
 - [Linux 虚拟机](../../virtual-machines/linux/virtual-machines-linux-security-controls.md)
