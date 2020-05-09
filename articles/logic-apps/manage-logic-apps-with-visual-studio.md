@@ -3,16 +3,16 @@ title: 通过将 Visual Studio 与 Cloud Explorer 配合使用来编辑和管理
 description: 通过将 Visual Studio 与 Cloud Explorer 配合使用来编辑、更新、管理和部署逻辑应用以及将其添加到源代码管理
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.custom: mvc
-ms.date: 10/29/2019
-ms.openlocfilehash: 73df5b7f10e038b6894996eb83dec7b6914a4536
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: 62807ef25fe6ee70844e72c90751eb383d0ece7c
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80803184"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598430"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>使用 Visual Studio 管理逻辑应用
 
@@ -202,7 +202,7 @@ ms.locfileid: "80803184"
 
 * 在 Visual Studio 中的逻辑应用设计器工具栏上，选择“刷新”。****
 
-  \- 或 -
+  -或-
 
 * 在 Visual Studio Cloud Explorer 中打开逻辑应用的快捷菜单，选择“刷新”。****
 
@@ -259,7 +259,11 @@ ms.locfileid: "80803184"
 ![从 Azure 门户删除逻辑应用](./media/manage-logic-apps-with-visual-studio/delete-logic-app-from-azure-portal.png)
 
 > [!NOTE]
-> 删除逻辑应用后，任何新运行都不会实例化。 所有正在进行和挂起的运行都将取消。 如果有成千上万个运行，取消操作可能需要很长时间才能完成。 
+> 删除逻辑应用后，任何新运行都不会实例化。 所有正在进行和挂起的运行都将取消。 如果有成千上万个运行，取消操作可能需要很长时间才能完成。
+
+> [!NOTE]
+> 如果删除并重新创建子逻辑应用，则必须重新保存父逻辑应用。 重新创建的子应用程序将具有不同的元数据。
+> 如果在重新创建父逻辑应用的子逻辑应用后不重新保存父逻辑应用，则对子逻辑应用的调用将失败并出现 "未授权" 错误。 此行为适用于父子逻辑应用，例如，使用集成帐户中的项目或调用 Azure 函数。
 
 ## <a name="troubleshooting"></a>疑难解答
 
