@@ -7,16 +7,16 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: ec96189185a06c1fcbd95eed6216ade47f3089c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 14849dd1f68f281009808d1bd1dc1cae62927ab4
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79214643"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594230"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>将 Azure HDInsight 3.6 Hive 工作负荷迁移到 HDInsight 4.0
 
-本文档介绍如何将 HDInsight 3.6 上的 Apache Hive 和 LLAP 工作负荷迁移到 HDInsight 4.0。 HDInsight 4.0 提供较新的 Hive 和 LLAP 功能，例如具体化视图和查询结果缓存。 将工作负荷迁移到 HDInsight 4.0 时，可以使用 HDInsight 3.6 中所不能提供的许多较新 Hive 3 功能。
+本文档介绍如何在 HDInsight 3.6 到 HDInsight 4.0 上迁移 Apache Hive 和 LLAP 工作负荷。 HDInsight 4.0 提供较新的 Hive 和 LLAP 功能，例如具体化视图和查询结果缓存。 将工作负荷迁移到 HDInsight 4.0 时，可以使用 HDInsight 3.6 中所不能提供的许多较新 Hive 3 功能。
 
 本文介绍以下主题：
 
@@ -25,109 +25,29 @@ ms.locfileid: "79214643"
 * 在不同的 HDInsight 版本之间保留 Hive 安全策略
 * 从 HDInsight 3.6 迁移到 HDInsight 4.0 之后执行查询和调试
 
-Hive 的一项优势是能够将元数据导出到外部数据库（也称为 Hive 元存储）。 **Hive 元存储**负责存储表统计信息，包括表存储位置、列名称和表索引信息。 元存储数据库架构根据 Hive 版本的不同而异。 安全升级 Hive 元存储的建议方法是创建一个副本并升级该副本，而不是升级当前生产环境。
+Hive 的一项优势是能够将元数据导出到外部数据库（也称为 Hive 元存储）。 **Hive 元存储**负责存储表统计信息，包括表存储位置、列名称和表索引信息。 HDInsight 3.6 和 HDInsight 4.0 需要不同的元存储架构，并且不能共享单个元存储。 安全升级 Hive 元存储的推荐方法是在当前生产环境中升级副本而不是原始环境。 本文档要求原始群集和新群集访问相同的存储帐户。 因此，它不涉及到其他区域的数据迁移。
 
-## <a name="copy-metastore"></a>复制元存储
+## <a name="migrate-from-external-metastore"></a>从外部元存储迁移
 
-HDInsight 3.6 和 HDInsight 4.0 需要不同的元存储架构，并且不能共享单个元存储。
+### <a name="1-run-major-compaction-on-acid-tables-in-hdinsight-36"></a>1. 在 HDInsight 3.6 中对 ACID 表运行重大压缩
 
-### <a name="external-metastore"></a>外部元存储
+HDInsight 3.6 和 HDInsight 4.0 ACID 表以不同的方式了解 ACID 增量。 迁移之前唯一需要执行的操作是对3.6 群集上的每个 ACID 表运行 "主要" 压缩。 有关压缩的详细信息，请参阅[Hive 语言手册](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-AlterTable/Partition/Compact)。
 
+### <a name="2-copy-sql-database"></a>2. 复制 SQL 数据库
 创建外部元存储的新副本。 如果使用外部元存储，创建元存储副本的安全且简便方法之一是使用 SQL 数据库还原功能以不同的名称[还原数据库](../../sql-database/sql-database-recovery-using-backups.md#point-in-time-restore)。  请参阅[在 Azure HDInsight 中使用外部元数据存储](../hdinsight-use-external-metadata-stores.md)，以详细了解如何将外部元存储附加到 HDInsight 群集。
 
-### <a name="internal-metastore"></a>内部元存储
+### <a name="3-upgrade-metastore-schema"></a>3. 升级元存储架构
+完成元存储的**复制**后，在现有 HDInsight 3.6 群集上运行[脚本操作](../hdinsight-hadoop-customize-cluster-linux.md)中的架构升级脚本，将新的元存储升级到 Hive 3 架构。 （此步骤不需要将新的元存储连接到群集。）这允许将数据库附加为 HDInsight 4.0 元存储。
 
-如果使用内部元存储，则可以使用查询来导出 Hive 元存储中的对象定义，然后将其导入到新数据库。
+接下来使用下表中的值。 替换`SQLSERVERNAME DATABASENAME USERNAME PASSWORD`为 Hive 元存储**复制**的适当值，以空格分隔。 指定 SQL 服务器名称时，请不要包含“.database.windows.net”。
 
-此脚本完成后，将假定不再使用旧群集访问脚本中引用的任何表或数据库。
-
-> [!NOTE]
-> 对于 ACID 表，将创建该表下数据的新副本。
-
-1. 使用[安全外壳 (SSH) 客户端](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到 HDInsight 群集。
-
-1. 输入以下命令，通过 [Beeline 客户端](../hadoop/apache-hadoop-use-hive-beeline.md)从打开的 SSH 会话连接到 HiveServer2：
-
-    ```hiveql
-    for d in `beeline -u "jdbc:hive2://localhost:10001/;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show databases;"`; 
-    do
-        echo "Scanning Database: $d"
-        echo "create database if not exists $d; use $d;" >> alltables.hql; 
-        for t in `beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show tables;"`;
-        do
-            echo "Copying Table: $t"
-            ddl=`beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show create table $t;"`;
-
-            echo "$ddl;" >> alltables.hql;
-            lowerddl=$(echo $ddl | awk '{print tolower($0)}')
-            if [[ $lowerddl == *"'transactional'='true'"* ]]; then
-                if [[ $lowerddl == *"partitioned by"* ]]; then
-                    # partitioned
-                    raw_cols=$(beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show create table $t;" | tr '\n' ' ' | grep -io "CREATE TABLE .*" | cut -d"(" -f2- | cut -f1 -d")" | sed 's/`//g');
-                    ptn_cols=$(beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show create table $t;" | tr '\n' ' ' | grep -io "PARTITIONED BY .*" | cut -f1 -d")" | cut -d"(" -f2- | sed 's/`//g');
-                    final_cols=$(echo "(" $raw_cols "," $ptn_cols ")")
-
-                    beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "create external table ext_$t $final_cols TBLPROPERTIES ('transactional'='false');";
-                    beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "insert into ext_$t select * from $t;";
-                    staging_ddl=`beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show create table ext_$t;"`;
-                    dir=$(echo $staging_ddl | grep -io " LOCATION .*" | grep -m1 -o "'.*" | sed "s/'[^-]*//2g" | cut -c2-);
-
-                    parsed_ptn_cols=$(echo $ptn_cols| sed 's/ [a-z]*,/,/g' | sed '$s/\w*$//g');
-                    echo "create table flattened_$t $final_cols;" >> alltables.hql;
-                    echo "load data inpath '$dir' into table flattened_$t;" >> alltables.hql;
-                    echo "insert into $t partition($parsed_ptn_cols) select * from flattened_$t;" >> alltables.hql;
-                    echo "drop table flattened_$t;" >> alltables.hql;
-                    beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "drop table ext_$t";
-                else
-                    # not partitioned
-                    beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "create external table ext_$t like $t TBLPROPERTIES ('transactional'='false');";
-                    staging_ddl=`beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show create table ext_$t;"`;
-                    dir=$(echo $staging_ddl | grep -io " LOCATION .*" | grep -m1 -o "'.*" | sed "s/'[^-]*//2g" | cut -c2-);
-
-                    beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "insert into ext_$t select * from $t;";
-                    echo "load data inpath '$dir' into table $t;" >> alltables.hql;
-                    beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "drop table ext_$t";
-                fi
-            fi
-            echo "$ddl" | grep -q "PARTITIONED\s*BY" && echo "MSCK REPAIR TABLE $t;" >> alltables.hql;
-        done;
-    done
-    ```
-
-    此命令会生成一个名为“alltables.hql”  的文件。
-
-1. 退出 SSH 会话。 然后输入一条 scp 命令，以在本地下载 alltables.hql  。
-
-    ```bash
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:alltables.hql c:/hdi
-    ```
-
-1. 将 alltables.hql  上传到新的 HDInsight 群集。 
-
-    ```bash
-    scp c:/hdi/alltables.hql sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/home/sshuser/
-    ```
-
-1. 然后使用 SSH 连接到新的 HDInsight 群集。  在 SSH 会话中运行以下代码：
-
-    ```bash
-    beeline -u "jdbc:hive2://localhost:10001/;transportMode=http" -i alltables.hql
-    ```
-
-
-## <a name="upgrade-metastore"></a>升级元存储
-
-完成元存储的**复制**后，在现有 HDInsight 3.6 群集上运行[脚本操作](../hdinsight-hadoop-customize-cluster-linux.md)中的架构升级脚本，将新的元存储升级到 Hive 3 架构。 这样，便可以将数据库附加为 HDInsight 4.0 元存储。
-
-接下来使用下表中的值。 请将 `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` 替换为**复制的** Hive 元存储的相应值，并以空格分隔。 指定 SQL 服务器名称时，请不要包含“.database.windows.net”。
-
-|properties | 值 |
+|属性 | 值 |
 |---|---|
 |脚本类型|- Custom|
 |名称|Hive 升级|
 |Bash 脚本 URI|`https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh`|
 |节点类型|Head|
-|parameters|SQLSERVERNAME DATABASENAME USERNAME PASSWORD|
+|参数|SQLSERVERNAME DATABASENAME USERNAME PASSWORD|
 
 > [!Warning]  
 > 将 HDInsight 3.6 元数据架构转换为 HDInsight 4.0 架构的升级过程不可逆。
@@ -138,54 +58,124 @@ HDInsight 3.6 和 HDInsight 4.0 需要不同的元存储架构，并且不能共
 select * from dbo.version
 ```
 
-## <a name="migrate-hive-tables-to-hdinsight-40"></a>将 Hive 表迁移到 HDInsight 4.0
+### <a name="4-deploy-a-new-hdinsight-40-cluster"></a>4. 部署新的 HDInsight 4.0 群集
 
-完成上述步骤将 Hive 元存储迁移到 HDInsight 4.0 之后，可以通过在 HDInsight 4.0 群集中执行 `show tables` 或 `show databases`，从群集内部查看元存储中记录的表和数据库。 有关 HDInsight 4.0 群集中的查询执行的信息，请参阅[跨 HDInsight 版本执行查询](#query-execution-across-hdinsight-versions)。
+1. 将升级的元存储指定为新群集的 Hive 元存储。
 
-但是，只有群集有权访问所需的存储帐户之后，才能访问表中的实际数据。 为了确保 HDInsight 4.0 群集能够访问与旧的 HDInsight 3.6 群集相同的数据，请完成以下步骤：
+1. 但是，只有群集有权访问所需的存储帐户之后，才能访问表中的实际数据。
+请确保将 HDInsight 3.6 群集中的 Hive 表的存储帐户指定为新 HDInsight 4.0 群集的主存储帐户或辅助存储帐户。
+有关将存储帐户添加到 HDInsight 群集的详细信息，请参阅[将其他存储帐户添加到 HDInsight](../hdinsight-hadoop-add-storage.md)。
 
-1. 确定表或数据库的 Azure 存储帐户。
+### <a name="5-complete-migration-with-a-post-upgrade-tool-in-hdinsight-40"></a>5. 使用 HDInsight 4.0 中的升级后工具完成迁移
 
-1. 如果 HDInsight 4.0 群集已运行，请通过 Ambari 将 Azure 存储帐户附加到群集。 如果尚未创建 HDInsight 4.0 群集，请确保将 Azure 存储帐户指定为主要或辅助群集存储帐户。 有关将存储帐户添加到 HDInsight 群集的详细信息，请参阅[将其他存储帐户添加到 HDInsight](../hdinsight-hadoop-add-storage.md)。
-
-## <a name="deploy-new-hdinsight-40-and-connect-to-the-new-metastore"></a>部署新的 HDInsight 4.0 并连接到新的元存储
-
-架构升级完成后，部署新的 HDInsight 4.0 群集并连接已升级的元存储。 如果已部署 4.0，请对其进行设置，以便可以从 Ambari 连接到元存储。
-
-## <a name="run-schema-migration-script-from-hdinsight-40"></a>从 HDInsight 4.0 运行架构迁移脚本
-
-HDInsight 3.6 和 HDInsight 4.0 中的表将以不同的方式进行处理。 出于此原因，无法为不同版本的群集共享相同的表。 若要同时使用 HDInsight 3.6 和 HDInsight 4.0，必须为每个版本单独创建数据副本。
-
-Hive 工作负荷可以包含 ACID 和非 ACID 表的混合形式。 HDInsight 3.6 上的 Hive (Hive 2) 与 HDInsight 4.0 上的 Hive (Hive 3) 之间的一个主要差别在于表的 ACID 合规性。 在 HDInsight 3.6 中，启用 Hive ACID 合规性需要进行额外的配置，但 HDInsight 4.0 表默认已符合 ACID 规范。 在迁移之前唯一需要执行的操作是针对 3.6 版群集上的 ACID 表运行主要压缩。 在 Hive 视图或 Beeline 中运行以下查询：
-
-```sql
-alter table myacidtable compact 'major';
-```
-
-之所以需要运行这种压缩，是因为 HDInsight 3.6 和 HDInsight 4.0 ACID 表以不同的方式理解 ACID 增量数据。 压缩可强制实施某种干净状态，以保证一致性。 [Hive 迁移文档](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.3.0/bk_ambari-upgrade-major/content/prepare_hive_for_upgrade.html)的第 4 部分包含了有关批量压缩 HDInsight 3.6 ACID 表的指导。
-
-完成元存储迁移和压缩步骤后，可以迁移实际仓库。 完成 Hive 仓库迁移后，HDInsight 4.0 仓库将具有以下属性：
+默认情况下，托管表在 HDInsight 4.0 上必须符合 ACID。 完成元存储迁移后，请运行升级后工具，使以前与 HDInsight 4.0 群集兼容的非 ACID 托管表。 此工具将应用以下转换：
 
 |3.6 |4.0 |
 |---|---|
 |外部表|外部表|
-|非事务性托管表|外部表|
-|事务性托管表|托管表|
+|非 ACID 托管表|具有属性 "external. table" 的外部表 "true"|
+|ACID 托管表|ACID 托管表|
 
-在执行迁移之前，可能需要调整仓库的属性。 例如，如果预期某个表会由第三方（例如 HDInsight 3.6 群集）访问，则迁移完成后，该表必须是外部表。 在 HDInsight 4.0 中，所有托管表都是事务性的。 因此，HDInsight 4.0 中的托管表只能由 HDInsight 4.0 群集访问。
-
-正确设置表属性后，使用 SSH shell 从某个群集头节点执行 Hive 仓库迁移工具：
+使用 SSH shell 从 HDInsight 4.0 群集执行 Hive 升级后工具：
 
 1. 使用 SSH 连接到群集头节点。 有关说明，请参阅[使用 SSH 连接到 HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)
 1. 以 Hive 用户的身份运行 `sudo su - hive`，以打开登录 shell
-1. 执行 `ls /usr/hdp` 确定数据平台堆栈版本。 此命令会显示要在下一条命令中使用的版本字符串。
-1. 从 shell 执行以下命令。 请将 `STACK_VERSION` 替换为在上一步骤中获取的版本字符串：
+1. 从 shell 执行以下命令。
 
-```bash
-/usr/hdp/STACK_VERSION/hive/bin/hive --config /etc/hive/conf --service  strictmanagedmigration --hiveconf hive.strict.managed.tables=true -m automatic --modifyManagedTables
-```
+    ```bash
+    STACK_VERSION=$(hdp-select status hive-server2 | awk '{ print $3; }')
+    /usr/hdp/$STACK_VERSION/hive/bin/hive --config /etc/hive/conf --service  strictmanagedmigration --hiveconf hive.strict.managed.tables=true -m automatic --modifyManagedTables
+    ```
 
-执行完迁移工具后，Hive 仓库可供 HDInsight 4.0 使用。
+工具完成后，你的 Hive 仓库将准备就绪，可用于 HDInsight 4.0。
+
+## <a name="migrate-from-internal-metastore"></a>从内部元存储迁移
+
+如果你的 HDInsight 3.6 群集使用内部 Hive 元存储，请按照以下步骤运行脚本，该脚本将生成 Hive 查询以导出元存储中的对象定义。
+
+HDInsight 3.6 和4.0 群集必须使用相同的存储帐户。
+
+> [!NOTE]
+>
+> * 对于 ACID 表，将创建该表下的数据的新副本。
+>
+> * 此脚本仅支持迁移 Hive 数据库、表和分区。 需要手动复制其他元数据对象，如视图、Udf 和表约束。
+>
+> * 此脚本完成后，假设旧群集将不再用于访问脚本中引用的任何表或数据库，。
+>
+> * 所有托管表在 HDInsight 4.0 中将变为事务性的。 （可选）通过将数据导出到具有属性 "external. table" = ' true ' 的外部表，使表保持非事务性。 例如，
+>
+>    ```SQL
+>    create table tablename_backup like tablename;
+>    insert overwrite table tablename_backup select * from tablename;
+>    create external table tablename_tmp like tablename;
+>    insert overwrite table tablename_tmp select * from tablename;
+>    alter table tablename_tmp set tblproperties('external.table.purge'='true');
+>    drop table tablename;
+>    alter table tablename_tmp rename to tablename;
+>    ```
+
+1. 使用[安全外壳（SSH）客户端](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到 HDInsight 3.6 群集。
+
+1. 从打开的 SSH 会话中，下载以下脚本文件以生成名为**alltables.sql**的文件。
+
+    ```bash
+    wget https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/exporthive_hdi_3_6.sh
+    chmod 755 exporthive_hdi_3_6.sh
+    ```
+
+    * 对于常规 HDInsight 群集，不使用 ESP，只需`exporthive_hdi_3_6.sh`执行。
+
+    * 对于带有 ESP 的群集，kinit 并修改 beeline 的参数：运行以下，为具有完全 Hive 权限的 Azure AD 用户定义用户和域。
+
+        ```bash
+        USER="USER"  # replace USER
+        DOMAIN="DOMAIN"  # replace DOMAIN
+        DOMAIN_UPPER=$(printf "%s" "$DOMAIN" | awk '{ print toupper($0) }')
+        kinit "$USER@$DOMAIN_UPPER"
+        ```
+
+        ```bash
+        hn0=$(grep hn0- /etc/hosts | xargs | cut -d' ' -f4)
+        BEE_CMD="beeline -u 'jdbc:hive2://$hn0:10001/default;principal=hive/_HOST@$DOMAIN_UPPER;auth-kerberos;transportMode=http' -n "$USER@$DOMAIN" --showHeader=false --silent=true --outputformat=tsv2 -e"
+        ./exporthive_hdi_3_6.sh "$BEE_CMD"
+        ```
+
+1. 退出 SSH 会话。 然后输入 scp 命令以在本地下载**alltables.sql** 。
+
+    ```bash
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:alltables.hql c:/hdi
+    ```
+
+1. 将**alltables.sql**上传到*新*的 HDInsight 群集。
+
+    ```bash
+    scp c:/hdi/alltables.hql sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/home/sshuser/
+    ```
+
+1. 然后，使用 SSH 连接到*新*的 HDInsight 4.0 群集。 从与此群集的 SSH 会话运行以下代码：
+
+    不含 ESP：
+
+    ```bash
+    beeline -u "jdbc:hive2://localhost:10001/;transportMode=http" -f alltables.hql
+    ```
+
+    带有 ESP：
+
+    ```bash
+    USER="USER"  # replace USER
+    DOMAIN="DOMAIN"  # replace DOMAIN
+    DOMAIN_UPPER=$(printf "%s" "$DOMAIN" | awk '{ print toupper($0) }')
+    kinit "$USER@$DOMAIN_UPPER"
+    ```
+
+    ```bash
+    hn0=$(grep hn0- /etc/hosts | xargs | cut -d' ' -f4)
+    beeline -u "jdbc:hive2://$hn0:10001/default;principal=hive/_HOST@$DOMAIN_UPPER;auth-kerberos;transportMode=http" -n "$USER@$DOMAIN" -f alltables.hql
+    ```
+
+外部元存储迁移的升级后工具不适用于此处，因为 HDInsight 3.6 中的非 ACID 托管表转换为 HDInsight 4.0 中的 ACID 托管表。
 
 > [!Important]  
 > HDInsight 4.0 中的托管表（包括从 3.6 迁移的表）不应由其他服务或应用程序（包括 HDInsight 3.6 群集）访问。
@@ -197,7 +187,7 @@ alter table myacidtable compact 'major';
 1. 在 HDInsight 3.6 群集中导航到 Ranger 服务管理器面板。
 2. 导航到名为 **HIVE** 的策略，并将该策略导出到某个 JSON 文件。
 3. 确保导出的策略 JSON 中引用的所有用户都存在于新群集中。 如果该策略 JSON 中引用的某个用户不存在于新群集中，请将该用户添加到新群集，或者从策略中删除引用。
-4. 在 HDInsight 4.0 群集中导航到“Ranger 服务管理器”面板。 
+4. 在 HDInsight 4.0 群集中导航到“Ranger 服务管理器”面板。****
 5. 导航到名为 **HIVE** 的策略，并导入步骤 2 中导出的 Ranger 策略 JSON。
 
 ## <a name="check-compatibility-and-modify-codes-as-needed-in-test-app"></a>在测试应用中检查兼容性并根据需要修改代码

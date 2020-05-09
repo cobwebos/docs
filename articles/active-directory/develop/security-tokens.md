@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/28/2020
+ms.date: 05/06/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: faaf4a9c4fe37bc184b9860390f1eb99eede035c
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 1161575104efe8cfc797f84c109a12116f723cad
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584280"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926572"
 ---
 # <a name="security-tokens"></a>安全令牌
 
@@ -29,6 +29,9 @@ ms.locfileid: "82584280"
 访问令牌仅在短时间内有效，因此，在颁发访问令牌的同时，授权服务器有时会颁发**刷新令牌**。 然后，客户端应用程序可以在需要时为新的访问令牌交换此刷新令牌。 若要详细了解 Microsoft 标识平台如何使用刷新令牌来废除权限，请参阅[令牌吊销](access-tokens.md#token-revocation)。
 
 **ID 令牌**作为[OpenID connect](v2-protocols-oidc.md)流的一部分发送到客户端应用程序。 它们可以一起发送来代替访问令牌，可供客户端用来对用户进行身份验证。 若要了解有关 Microsoft 标识平台如何颁发 ID 令牌的详细信息，请参阅[id 令牌](id-tokens.md)。
+
+> [!NOTE]
+> 本文介绍了 OAuth2 和 OpenID Connect 协议的安全令牌。 许多企业应用程序使用 SAML 对用户进行身份验证。 有关 SAML 断言的信息，请参阅[AZURE AD saml 令牌参考](reference-saml-tokens.md)。
 
 ## <a name="validating-security-tokens"></a>验证安全令牌
 
@@ -45,7 +48,7 @@ ms.locfileid: "82584280"
 
 Microsoft 标识平台将安全令牌实现为包含**声明**的**JSON Web 令牌（jwt）** 。
 
-[声明](developer-glossary.md#claim)向另一个实体（例如资源服务器）提供有关一个实体（例如客户端应用程序或[资源所有者](developer-glossary.md#resource-owner)）的断言。
+[声明](developer-glossary.md#claim)向另一个实体（例如资源服务器）提供有关一个实体（例如客户端应用程序或[资源所有者](developer-glossary.md#resource-owner)）的断言。 声明还可以称为 JWT 声明或 JSON Web 令牌声明。
 
 声明是对令牌主体相关事实进行中继的名称/值对。 例如，声明可能包含由授权服务器进行身份验证的安全主体的相关事实。 给定令牌中存在的声明取决于许多因素，包括令牌类型、用于验证主体身份的凭据类型和应用程序配置等。
 

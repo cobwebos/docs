@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60bfc964ffc394b3f79c9d279158003f383b7331
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 340cf77ae6b4c5677ed91f6a0626b73d259e5fd2
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78943443"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690509"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>使用主领域发现策略为应用程序配置 Azure Active Directory 登录行为
 
@@ -168,7 +168,7 @@ ms.locfileid: "78943443"
 
 如果未返回任何内容，则表示租户中未创建任何策略。
 
-### <a name="example-set-hrd-policy-for-an-application"></a>示例：为应用程序设置 HRD 策略 
+### <a name="example-set-an-hrd-policy-for-an-application"></a>示例：为应用程序设置 HRD 策略 
 
 此示例创建一个策略。将此策略分配到应用程序后，它会： 
 - 当租户中包含单个域时，在用户登录到应用程序期间，自动加速将用户转到 AD FS 登录屏幕的过程。 
@@ -251,7 +251,7 @@ Get-AzureADPolicy
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 
-### <a name="example-remove-an-hrd-policy-for-an-application"></a>示例：删除应用程序的 HRD 策略
+### <a name="example-remove-an-hrd-policy-from-an-application"></a>示例：从应用程序中删除 HRD 策略
 #### <a name="step-1-get-the-objectid"></a>步骤 1：获取 ObjectID
 使用前一个示例获取策略的“ObjectID”，以及希望从中删除策略的应用程序服务主体的“ObjectID”****。 
 
