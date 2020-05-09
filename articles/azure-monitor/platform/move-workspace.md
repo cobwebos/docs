@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: 9213ddf034e725f6e31c9280d47bd13e4703b3f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ca9bb3853698b831fe87f48de346183e4bcd0976
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77659486"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731696"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>将 Log Analytics 工作区移动到不同的订阅或资源组
 
@@ -29,16 +29,17 @@ ms.locfileid: "77659486"
 ```
 
 ## <a name="workspace-move-considerations"></a>工作区移动注意事项
-工作区中安装的托管解决方案将随 Log Analytics 工作区移动操作一起移动。 在移动后，连接的代理将保持连接，并将数据发送到工作区。 由于移动操作要求从工作区到任何自动化帐户没有链接，因此必须删除依赖于该链接的解决方案。
+工作区中安装的托管解决方案将随 Log Analytics 工作区移动操作一起移动。 在移动后，连接的代理将保持连接，并将数据发送到工作区。 由于移动操作要求工作区中没有任何链接的服务，因此必须删除依赖于该链接的解决方案以允许工作区移动。
 
 取消链接自动化帐户之前必须先删除的解决方案：
 
 - 更新管理
 - 更改跟踪
 - 在非工作时间启动/停止 VM
+- Azure 安全中心
 
 
-### <a name="delete-in-azure-portal"></a>在 Azure 门户中进行删除
+### <a name="delete-solutions-in-azure-portal"></a>删除 Azure 门户中的解决方案
 使用以下过程删除使用 Azure 门户的解决方案：
 
 1. 打开在其中安装了任何解决方案的资源组的菜单。
@@ -57,8 +58,8 @@ Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -Reso
 Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -ResourceName "Start-Stop-VM(<workspace-name>)" -ResourceGroupName <resource-group-name>
 ```
 
-### <a name="remove-alert-rules"></a>删除警报规则
-对于 "**启动/停止 vm** " 解决方案，还需要删除解决方案创建的警报规则。 在 Azure 门户中使用以下过程删除这些规则。
+### <a name="remove-alert-rules-for-startstop-vms-solution"></a>删除启动/停止 Vm 解决方案的警报规则
+若要删除**启动/停止 vm**解决方案，还需要删除解决方案创建的警报规则。 在 Azure 门户中使用以下过程删除这些规则。
 
 1. 打开 "**监视**" 菜单，然后选择 "**警报**"。
 2. 单击 "**管理警报规则**"。
@@ -98,8 +99,6 @@ Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -Reso
 ``` PowerShell
 Move-AzResource -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyResourceGroup01/providers/Microsoft.OperationalInsights/workspaces/MyWorkspace" -DestinationSubscriptionId "00000000-0000-0000-0000-000000000000" -DestinationResourceGroupName "MyResourceGroup02"
 ```
-
-
 
 > [!IMPORTANT]
 > 移动操作完成后，应重新配置删除的解决方案和自动化帐户链接，使工作区恢复为其以前的状态。

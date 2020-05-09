@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8cb641f95e7327e80f42df86a56eba8c34e7e598
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cbe43b298c57d266f0b031b5192f25fe3df07c05
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79367017"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582434"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>使用 webhook 启动 Azure 自动化 runbook
 
@@ -31,7 +31,7 @@ ms.locfileid: "79367017"
 | 属性 | 说明 |
 |:--- |:--- |
 | 名称 |Webhook 的名称。 您可以提供所需的任何名称，因为它不会公开给客户端。 它只用来标识 Azure 自动化中的 Runbook。 最好是为 Webhook 提供一个名称，该名称需要与使用它的客户端相关。 |
-| 代码 |Webhook 的 URL。 这是客户端使用 HTTP POST 调用的唯一地址，用于启动链接到 webhook 的 runbook。 它是在创建 Webhook 时自动生成的。 无法指定自定义 URL。 <br> <br> URL 包含一个安全令牌，该令牌允许第三方系统调用 runbook，而无需进行进一步的身份验证。 出于此原因，应将 URL 视为密码。 出于安全考虑，只能在创建 webhook 时查看 Azure 门户中的 URL。 请将保存在安全位置的 URL 记下来，供将来使用。 |
+| URL |Webhook 的 URL。 这是客户端使用 HTTP POST 调用的唯一地址，用于启动链接到 webhook 的 runbook。 它是在创建 Webhook 时自动生成的。 无法指定自定义 URL。 <br> <br> URL 包含一个安全令牌，该令牌允许第三方系统调用 runbook，而无需进行进一步的身份验证。 出于此原因，应将 URL 视为密码。 出于安全考虑，只能在创建 webhook 时查看 Azure 门户中的 URL。 请将保存在安全位置的 URL 记下来，供将来使用。 |
 | 到期日期 | Webhook 的到期日期，超过此时间后，将无法再使用它。 如果 webhook 尚未过期，则可以修改创建 webhook 后的到期日期。 |
 | 已启用 | 指示是否在创建时默认启用 webhook 的设置。 如果将此属性设置为 "禁用"，则客户端不能使用 webhook。 您可以在创建 webhook 时设置此属性，也可以在创建后的任何其他时间设置此属性。 |
 
@@ -88,7 +88,7 @@ Webhook 的安全性取决于其 URL 的隐私，其中包含的安全令牌允�
 
 另一种策略是让 runbook 在收到 webhook 请求时对外部条件执行某些验证。 例如，假设有一个在 GitHub 存储库有新的提交时由 GitHub 调用的 runbook。 Runbook 在继续之前，可能会连接到 GitHub 来验证是否已发生新的提交。
 
-## <a name="creating-a-webhook"></a>创建 Webhook
+## <a name="create-a-webhook"></a>创建 Webhook
 
 在 Azure 门户中使用以下过程来创建新的链接到 Runbook 的 Webhook。
 
@@ -106,7 +106,7 @@ Webhook 的安全性取决于其 URL 的隐私，其中包含的安全令牌允�
 1. 单击“参数”**** 为 Runbook 参数提供值。 如果 runbook 包含必需的参数，除非提供值，否则无法创建 webhook。
 1. 单击“创建”**** 以创建 Webhook。
 
-## <a name="using-a-webhook"></a>使用 Webhook
+## <a name="use-a-webhook"></a>使用 webhook
 
 若要在创建 webhook 后使用该 webhook，客户端必须使用 webhook 的`POST` URL 发出 HTTP 请求。 语法为：
 
@@ -116,7 +116,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 客户端从`POST`请求中接收以下返回代码之一。
 
-| 代码 | Text | 说明 |
+| 代码 | 文本 | 说明 |
 |:--- |:--- |:--- |
 | 202 |已接受 |已接受该请求，并已成功将 Runbook 排队。 |
 | 400 |错误的请求 |出于以下原因之一，未接受该请求： <ul> <li>Webhook 已过期。</li> <li>Webhook 已禁用。</li> <li>URL 中的令牌无效。</li>  </ul> |
@@ -131,7 +131,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 客户端无法从 Webhook 确定 Runbook 的作业何时完成或其完成状态。 它可以通过其他机制（例如[Windows PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjob)或[Azure 自动化 API](/rest/api/automation/job)）使用作业 ID 来了解此信息。
 
-## <a name="renewing-a-webhook"></a><a name="renew-webhook"></a>续订 webhook
+## <a name="renew-a-webhook"></a>续订 Webhook
 
 创建 webhook 后，其有效期为十年，超过该时间段后，它将自动过期。 Webhook 过期后，将无法重新激活它。 只能删除然后重新创建它。 
 
@@ -200,7 +200,7 @@ else {
 }
 ```
 
-## <a name="testing-the-sample"></a>测试示例
+## <a name="test-the-sample"></a>测试示例
 
 以下示例使用 Windows PowerShell 并配合 Webhook 来启动 Runbook。 任何可以发出 HTTP 请求的语言都可以使用 webhook。 此处使用 Windows PowerShell 作为示例。
 
