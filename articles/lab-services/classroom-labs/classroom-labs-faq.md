@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2020
+ms.date: 05/07/2020
 ms.author: spelluru
-ms.openlocfilehash: ee64f26d0ff685a83718c5d5e3d6f6eaf9230807
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: HT
+ms.openlocfilehash: 2c8cc4c01b172cd11c13558cd195673d21499b41
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691817"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983901"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Azure 实验室服务中的教室实验室—常见问题（FAQ）
 获取有关 Azure 实验室服务中的教室实验室的一些最常见问题的解答。 
@@ -29,12 +29,12 @@ ms.locfileid: "82691817"
 为实验室设置的配额是针对实验室的整个持续时间的每个学生。 而且， [vm 的计划运行时间](how-to-create-schedules.md)不会计为分配给用户的配额。 配额是指学生在 VM 上花费的计划外时间。  有关配额的详细信息，请参阅为[用户设置配额](how-to-configure-student-usage.md#set-quotas-for-users)。
 
 ### <a name="if-professor-turns-on-a-student-vm-does-that-affect-the-student-quota"></a>如果教授启用了学生 VM，会影响学生配额吗？ 
-否。 不是。 当教授开启学生 VM 时，它不会影响分配给该学生的配额。 
+不是。 不是。 当教授开启学生 VM 时，它不会影响分配给该学生的配额。 
 
 ## <a name="schedules"></a>计划
 
 ### <a name="do-all-vms-in-the-lab-start-automatically-when-a-schedule-is-set"></a>设置计划后，实验室中的所有 Vm 是否自动启动？ 
-否。 并非所有 Vm。 仅按计划分配给用户的 Vm。 未分配给用户的 Vm 不会自动启动。 这是由设计决定的。 
+不是。 并非所有 Vm。 仅按计划分配给用户的 Vm。 未分配给用户的 Vm 不会自动启动。 这是由设计决定的。 
 
 ## <a name="lab-accounts"></a>实验室帐户
 
@@ -59,7 +59,7 @@ ms.locfileid: "82691817"
 当管理员将你作为实验室创建者添加到实验室帐户时，你将获得创建实验室的权限。 但是，你没有权限编辑实验室帐户中的任何设置，包括已启用的虚拟机映像的列表。 若要启用其他映像，请联系你的实验室帐户管理员为你执行此操作，或者要求管理员将你作为参与者角色添加到实验室帐户。 参与者角色将授予你编辑实验室帐户中的虚拟机映像列表的权限。
 
 ### <a name="can-i-attach-additional-disks-to-a-virtual-machine"></a>是否可以将更多的磁盘附加到虚拟机？
-否。 不能将其他磁盘附加到教室实验室中的 VM。 
+不是。 不能将其他磁盘附加到教室实验室中的 VM。 
 
 ## <a name="users"></a>用户
 
@@ -67,7 +67,7 @@ ms.locfileid: "82691817"
 最多可以向一个教室实验室添加400个用户。 
 
 ## <a name="blog-post"></a>博客文章
-订阅[Azure 实验室服务博客](https://azure.microsoft.com/blog/tag/azure-lab-services/)。
+订阅[Azure 实验室服务博客](https://aka.ms/azlabs-blog)。
 
 ## <a name="update-notifications"></a>更新通知
 订阅[实验室服务更新](https://azure.microsoft.com/updates/?product=lab-services)，随时了解实验室服务中的新增功能。

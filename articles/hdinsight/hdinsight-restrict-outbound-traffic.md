@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: c65e3ad7ed02ddd4e6ed1d60628a738d333e9a9c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eaf51f6778d38d236808c3fd809082bc3b2d54b2
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189375"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82863427"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>使用防火墙配置 Azure HDInsight 群集的出站网络流量
 
@@ -64,7 +64,7 @@ HDInsight 出站流量依赖关系几乎完全定义为 Fqdn。 它们后面没�
     | properties|  值|
     |---|---|
     |名称| FwAppRule|
-    |Priority|200|
+    |优先级|200|
     |操作|Allow|
 
     **FQDN 标记部分**
@@ -83,7 +83,7 @@ HDInsight 出站流量依赖关系几乎完全定义为 Fqdn。 它们后面没�
 
    ![标题：输入应用程序规则集合详细信息](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
-1. 选择 **添加** 。
+1. 选择“添加”  。
 
 ### <a name="configure-the-firewall-with-network-rules"></a>使用网络规则配置防火墙
 
@@ -98,7 +98,7 @@ HDInsight 出站流量依赖关系几乎完全定义为 Fqdn。 它们后面没�
     | properties|  值|
     |---|---|
     |名称| FwNetRule|
-    |Priority|200|
+    |优先级|200|
     |操作|Allow|
 
     **IP 地址部分**
@@ -118,7 +118,7 @@ HDInsight 出站流量依赖关系几乎完全定义为 Fqdn。 它们后面没�
 
    ![标题：输入应用程序规则集合](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
-1. 选择 **添加** 。
+1. 选择“添加”  。
 
 ### <a name="create-and-configure-a-route-table"></a>创建并配置路由表
 
@@ -145,7 +145,7 @@ HDInsight 出站流量依赖关系几乎完全定义为 Fqdn。 它们后面没�
 | 168.61.48.131 | 168.61.48.131/32 | Internet | 不可用 |
 | 138.91.141.162 | 138.91.141.162/32 | Internet | 不可用 |
 | 13.82.225.233 | 13.82.225.233/32 | Internet | 不可用 |
-| 40.71.175.99 | 40.71.175.99/32 | Internet | NA |
+| 40.71.175.99 | 40.71.175.99/32 | Internet 的虚拟网络适配器 | NA |
 | 0.0.0.0 | 0.0.0.0/0 | 虚拟设备 | 10.0.2.4 |
 
 完成路由表配置：
@@ -188,61 +188,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 若要使用公共终结点 (`https://CLUSTERNAME.azurehdinsight.net`) 或 SSH 终结点 (`CLUSTERNAME-ssh.azurehdinsight.net`)，请确保路由表和 NSG 规则中包含适当的路由，以避免出现[此处](../firewall/integrate-lb.md)所述的非对称路由问题。 具体而言，在这种情况下，需要允许入站 NSG 规则中的客户端 IP 地址，并在将下一跃点设置为 `internet` 的情况下，将此地址添加到用户定义的路由表中。 如果未正确设置路由，你会看到超时错误。
 
-## <a name="configure-another-network-virtual-appliance"></a>配置另一个网络虚拟设备
-
-> [!Important]
-> **仅当**所要配置的网络虚拟设备 (NVA) 不是 Azure 防火墙时，才需要以下信息。
-
-前面的说明可帮助你配置 Azure 防火墙，以限制来自 HDInsight 群集的出站流量。 对于许多常见的重要方案，Azure 防火墙已自动配置为允许流量。 使用另一个网络虚拟设备将需要配置多个附加功能。 配置网络虚拟设备时，请注意以下因素：
-
-* 应在支持服务终结点的服务中配置服务终结点。
-* IP 地址依赖项适用于非 HTTP/S 流量（TCP 和 UDP 流量）。
-* 可将 FQDN HTTP/HTTPS 终结点放在 NVA 设备中。
-* 通配符 HTTP/HTTPS 终结点是可以根据许多限定符变化的依赖项。
-* 将创建的路由表分配到 HDInsight 子网。
-
-### <a name="service-endpoint-capable-dependencies"></a>支持服务终结点的依赖项
-
-| **终结点** |
-|---|
-| Azure SQL |
-| Azure 存储 |
-| Azure Active Directory |
-
-#### <a name="ip-address-dependencies"></a>IP 地址依赖项
-
-| **终结点** | **详细信息** |
-|---|---|
-| \*:123 | NTP 时钟检查。 在端口 123 上的多个终结点中检查流量 |
-| [此处](hdinsight-management-ip-addresses.md)发布的 IP | 这些 Ip 是 HDInsight 服务 |
-| ESP 群集的 AAD-DS 专用 IP |
-| \*:16800，用于 KMS Windows 激活 |
-| \*12000，用于 Log Analytics |
-
-#### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS 依赖项
-
-> [!Important]
-> 以下列表仅提供了一些最重要的 FQDN。 你可以[在此文件中](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json)获取其他 fqdn （主要是 Azure 存储和 Azure 服务总线）来配置你的 NVA。
-
-| **终结点**                                                          |
-|---|
-| azure.archive.ubuntu.com:80                                           |
-| security.ubuntu.com:80                                                |
-| ocsp.msocsp.com:80                                                    |
-| ocsp.digicert.com:80                                                  |
-| wawsinfraprodbay063.blob.core.windows.net:443                         |
-| registry-1.docker.io:443                                              |
-| auth.docker.io:443                                                    |
-| production.cloudflare.docker.com:443                                  |
-| download.docker.com:443                                               |
-| us.archive.ubuntu.com:80                                              |
-| download.mono-project.com:80                                          |
-| packages.treasuredata.com:80                                          |
-| security.ubuntu.com:80                                                |
-| azure.archive.ubuntu.com:80                                           |
-| ocsp.msocsp.com:80                                                    |
-| ocsp.digicert.com:80                                                  |
-
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure HDInsight 虚拟网络体系结构](hdinsight-virtual-network-architecture.md)
+* [配置网络虚拟设备](./network-virtual-appliance.md)

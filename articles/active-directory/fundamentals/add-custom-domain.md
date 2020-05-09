@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de91bd7e1e4c5f9909213f663dd3ede0f979d4de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69c96d123ebe97ba4a7a6df0395efe698924fef1
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262147"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734733"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>使用 Azure Active Directory 门户添加自定义域名
 
@@ -37,7 +37,7 @@ ms.locfileid: "79262147"
 >[!IMPORTANT]
 >租户的创建者将自动成为该租户的全局管理员。 全局管理员可将其他管理员添加到租户中。
 
-有关订阅角色的详细信息，请参阅 [Azure RBAC 角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles)。
+有关订阅角色的详细信息，请参阅[Azure 角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)。
 
 >[!TIP]
 > 如果你打算将本地 Windows Server AD 与 Azure AD 相联合，则需要在运行 Azure AD Connect 工具同步目录时选中“我计划将此域配置为使用本地 Active Directory 进行单一登录”  。

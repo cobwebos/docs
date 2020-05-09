@@ -8,25 +8,26 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 04/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 648578563a0e53d3ed5bda6ab47f85c3c6a2a24e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1487cbb7885711beca969604316fd151defb114a
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476648"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580605"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的时序模型
 
 本文介绍时序模型及其功能，以及如何在 Azure 时序见解预览版环境中开始生成和更新自己的模型。
 
 > [!TIP]
->  * 有关实时时序模型的示例，请转到  [Contoso 风力发电厂演示](https://insights.timeseries.azure.com/preview/samples)环境。
+>
+> * 有关实时时序模型的示例，请转到  [Contoso 风力发电厂演示](https://insights.timeseries.azure.com/preview/samples)环境。
 > * 若要了解如何在时序模型 UI 中导航，请阅读有关 [Azure 时序见解预览版资源管理器](time-series-insights-update-explorer.md)的文章。
 > * 通过时序见解 Web 资源管理器了解[如何使用时序模型](time-series-insights-update-how-to-tsm.md)。
 
-## <a name="summary"></a>“摘要”
+## <a name="summary"></a>总结
 
 一直以来，从 IoT 设备收集的数据缺少上下文信息，以致难以快速查找和分析传感器。 时序模型的主要动机是简化 IoT 或时序数据的查找和分析。 为了实现此目标，它会启用时序数据的策划、维护和扩充，以帮助准备随时可供使用的分析数据集。
 
@@ -51,9 +52,9 @@ ms.locfileid: "79476648"
 
 [![时序模型智能烤箱图表示例](media/v2-update-tsm/time-series-model-smart-oven.png)](media/v2-update-tsm/time-series-model-smart-oven.png#lightbox)
 
-* 时序模型在查询和导航中起着至关重要的作用，因为它允许跨时间范围以及在传感器与设备类型之间绘制比较比较，因此可将数据上下文化。 （**A**） 
+* 时序模型在查询和导航中起着至关重要的作用，因为它允许跨时间范围以及在传感器与设备类型之间绘制比较比较，因此可将数据上下文化。 （**A**）
 * 数据之所以能够进一步上下文化，是因为时序模型中保存的数据将时序查询计算结果作为变量保留，并在查询时重新使用这些结果。
-* 时序模型对数据进行组织与聚合，以改进可视化和管理功能。 （**B**） 
+* 时序模型对数据进行组织与聚合，以改进可视化和管理功能。 （**B**）
 
 ### <a name="key-capabilities"></a>关键功能
 
@@ -147,7 +148,7 @@ ms.locfileid: "79476648"
 
 | 属性 | 说明 |
 | ---| ---|
-| ID | 层次结构的唯一标识符，例如，在定义实例时使用。 |
+| id | 层次结构的唯一标识符，例如，在定义实例时使用。 |
 | name | 用于提供层次结构名称的字符串。 |
 | source | 指定组织的层次结构或路径，即，用户想要创建的层次结构的自上而下的父子顺序。 父子属性映射实例字段。 |
 
@@ -239,7 +240,7 @@ ms.locfileid: "79476648"
 
 | 属性 | 说明 |
 | ---| ---|
-| ID | 类型的 UUID。 |
+| id | 类型的 UUID。 |
 | name | 用于提供类型名称的字符串。 |
 | description | 类型的字符串说明。 |
 | variables | 指定与类型关联的变量。 |
@@ -290,7 +291,7 @@ ms.locfileid: "79476648"
 
 每个变量可以是以下三个种类之一：数字、分类和聚合。********
 
-* “数字”种类适用于连续值。**** 
+* “数字”种类适用于连续值。****
 * “分类”种类适用于一组定义的离散值。****
 * “聚合”值组合单个种类（要么全为数字，要么全为分类）的多个变量。****
 

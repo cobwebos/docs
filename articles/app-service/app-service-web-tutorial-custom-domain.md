@@ -5,14 +5,14 @@ keywords: 应用服务, Azure 应用服务, 域映射, 域名, 现有域, 主机
 ms.assetid: dc446e0e-0958-48ea-8d99-441d2b947a7c
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 06/06/2019
+ms.date: 04/27/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: adc9b60ce1c31076a91ec44b9656752b464e024d
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 116ec218b1f3947b85b4ab865df30477f05c601a
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811788"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559929"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教程：将现有的自定义 DNS 名称映射到 Azure 应用服务
 
@@ -93,6 +93,12 @@ ms.locfileid: "80811788"
 
 <a name="cname" aria-hidden="true"></a>
 
+## <a name="get-domain-verification-id"></a>获取域验证 ID
+
+若要将自定义域添加到应用，需要使用域提供程序添加验证 ID 作为 TXT 记录来验证你对域的所有权。 在应用页的左侧导航栏中，单击“开发工具”  下的“资源浏览器”  ，然后单击“运行”  。
+
+在应用属性的 JSON 视图中搜索“`customDomainVerificationId`”，将其值复制到双引号中。 下一步需要此验证 ID。
+
 ## <a name="map-your-domain"></a>映射域
 
 可以使用 **CNAME 记录**或 **A 记录**将自定义 DNS 名称映射到应用服务。 请按照相应的步骤操作：
@@ -114,11 +120,14 @@ ms.locfileid: "80811788"
 
 #### <a name="create-the-cname-record"></a>创建 CNAME 记录
 
-添加一条 CNAME 记录，以便将子域映射到应用的默认域名（`<app_name>.azurewebsites.net`，其中 `<app_name>` 是应用的名称）。
+将子域映射到应用的默认域名（`<app_name>.azurewebsites.net`，其中 `<app_name>` 是应用的名称）。 若要为 `www` 子域创建 CNAME 映射，请创建两条记录：
 
-在 `www.contoso.com` 域示例中，添加将名称 `www` 映射到 `<app_name>.azurewebsites.net` 的 CNAME 记录。
+| 记录类型 | 主机 | 值 | 注释 |
+| - | - | - |
+| CNAME | `www` | `<app_name>.azurewebsites.net` | 域映射本身。 |
+| TXT | `asuid.www` | [之前获得的验证 ID](#get-domain-verification-id) | 应用服务访问 `asuid.<subdomain>` TXT 记录以验证你对自定义域的所有权。 |
 
-添加 CNAME 后，DNS 记录页与以下示例相似：
+添加 CNAME 和 TXT 记录后，DNS 记录页如下例所示：
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-custom-domain/cname-record.png)
 
@@ -183,17 +192,12 @@ ms.locfileid: "80811788"
 
 #### <a name="create-the-a-record"></a>创建 A 记录
 
-若要将 A 记录映射到应用，应用服务需要两个  DNS 记录：
+若要将 A 记录映射到应用（通常是根域），请创建两条记录：
 
-- 要映射到应用 IP 地址的 A  记录。
-- 要映射到应用默认域名 `<app_name>.azurewebsites.net` 的 **TXT** 记录。 应用服务仅在配置时使用此记录，以验证你是否拥有自定义域。 自定义域经过验证并且在应用服务中配置后，可以删除此 TXT 记录。
-
-`contoso.com` 域示例根据下表创建 A 和 TXT 记录（`@` 通常表示根域）。
-
-| 记录类型 | 主机 | 值 |
+| 记录类型 | 主机 | 值 | 注释 |
 | - | - | - |
-| A | `@` | 在[复制应用的 IP 地址](#info)步骤中复制的 IP 地址 |
-| TXT | `@` | `<app_name>.azurewebsites.net` |
+| A | `@` | 在[复制应用的 IP 地址](#info)步骤中复制的 IP 地址 | 域映射本身（`@` 通常表示根域）。 |
+| TXT | `asuid` | [之前获得的验证 ID](#get-domain-verification-id) | 应用服务访问 `asuid.<subdomain>` TXT 记录以验证你对自定义域的所有权。 对于根域，请使用 `asuid`。 |
 
 > [!NOTE]
 > 若要使用 A 记录（而不是建议的 [CNAME 记录](#map-a-cname-record)）添加子域（如 `www.contoso.com`），A 记录和 TXT 记录应改为类似于下表：
@@ -201,7 +205,7 @@ ms.locfileid: "80811788"
 > | 记录类型 | 主机 | 值 |
 > | - | - | - |
 > | A | `www` | 在[复制应用的 IP 地址](#info)步骤中复制的 IP 地址 |
-> | TXT | `www` | `<app_name>.azurewebsites.net` |
+> | TXT | `asuid.www` | `<app_name>.azurewebsites.net` |
 >
 
 添加记录后，DNS 记录页与以下示例相似：

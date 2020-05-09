@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/28/2019
+ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1f7be4d01dd930e9ff421b2a163f1648f1793da9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ea8c40faad4ee709ae98f868e36fd42e46501bea
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82230907"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927031"
 ---
 # <a name="azure-ad-b2c-session"></a>Azure AD B2C 会话
 
@@ -99,22 +99,20 @@ Azure AD B2C 会话可以配置为以下作用域：
    - SAML-如果标识提供程序元数据包含`SingleLogoutService`位置。
 1. 还可以从其他应用程序中注销。 有关详细信息，请参阅[单一登录](#single-sign-out)部分。
 
-> [!NOTE]
-> 注销会清除用户与 Azure AD B2C 的单一登录状态，但它可能不会将用户从其社交标识提供者会话中注销。 如果用户在后续登录期间选择同一标识提供者，则他们可能会在不输入其凭据的情况下进行身份验证。 如果用户想要从应用程序中注销，则不一定意味着他们要注销其 Facebook 帐户。 但是，如果使用了本地帐户，则用户的会话将正常结束。
+注销会清除用户与 Azure AD B2C 的单一登录状态，但它可能不会将用户从其社交标识提供者会话中注销。 如果用户在后续登录期间选择同一标识提供者，则他们可能会在不输入其凭据的情况下进行身份验证。 如果用户想要从应用程序中注销，则不一定意味着他们要注销其 Facebook 帐户。 但是，如果使用了本地帐户，则用户的会话将正常结束。
 
-### <a name="single-sign-out"></a>单一登录
+### <a name="single-sign-out"></a>单一登录 
+
+
+> [!NOTE]
+> 此功能仅限[自定义策略](custom-policy-overview.md)。
 
 将用户重定向到 Azure AD B2C 注销终结点（适用于 OAuth2 和 SAML 协议）时，Azure AD B2C 从浏览器中清除用户的会话。 但是，用户可能仍登录到其他使用 Azure AD B2C 进行身份验证的应用程序。 若要使这些应用程序能够同时注销用户，Azure AD B2C 会将 HTTP GET 请求发送到用户`LogoutUrl`当前登录到的所有应用程序的注册。
 
-应用程序必须通过清除任何标识用户的会话并返回 `200` 响应来响应此请求。 如果要在应用程序中支持单一注销，则必须`LogoutUrl`在应用程序的代码中实现。 可以从 Azure 门户设置 `LogoutUrl`：
 
-1. 导航到[Azure 门户](https://portal.azure.com)。
-1. 通过单击页面右上角的帐户选择活动 B2C 目录。
-1. 从左侧导航面板中，选择 " **Azure AD B2C**"，选择 "**应用注册**"，然后选择你的应用程序。
-1. 选择 "**设置**"，选择 "**属性**"，然后找到 "**注销 URL** " 文本框。 
-
+应用程序必须通过清除任何标识用户的会话并返回 `200` 响应来响应此请求。 如果要在应用程序中支持单一注销，则必须`LogoutUrl`在应用程序的代码中实现。 
 
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何[在用户流中配置会话行为](session-behavior.md)。
-- 了解如何[在自定义策略中配置会话行为](custom-policy-manage-sso-and-token-config.md#session-behavior-and-sso)。
+- 了解如何[在自定义策略中配置会话行为](session-behavior-custom-policy.md)。

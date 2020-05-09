@@ -8,16 +8,16 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: 673c6e2ed0aedcc186baf8c7e1884dd537f9567d
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: f435a33befdde96a92c900663a2ddcca1d319260
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81459842"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82201187"
 ---
 # <a name="what-is-azure-stream-analytics"></a>什么是 Azure 流分析？
 
-Azure 流分析是一个实时分析和复杂事件处理引擎，旨在同时分析和处理来自多个源的大量快速流式处理数据。 可以在从许多输入源（包括设备、传感器、点击流、社交媒体源和应用程序）提取的信息中识别模式和关系。 这些模式可用于触发操作和启动工作流，例如创建警报、向报告工具馈送信息或存储转换后的数据以供以后使用。 此外，流分析可在 Azure IoT Edge 运行时上使用，并支持与云完全相同的语言或语法。 
+Azure 流分析是一个实时分析和复杂事件处理引擎，旨在同时分析和处理来自多个源的大量快速流式处理数据。 可以在从许多输入源（包括设备、传感器、点击流、社交媒体源和应用程序）提取的信息中识别模式和关系。 这些模式可用于触发操作和启动工作流，例如创建警报、向报告工具馈送信息或存储转换后的数据供以后使用。 此外，流分析可在 Azure IoT Edge 运行时上使用，并支持与云完全相同的语言或语法。 
 
 下面是可以使用 Azure 流分析的示例场景：
 

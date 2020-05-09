@@ -8,29 +8,27 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/28/2020
+ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f2887ab23dd89f1a3e1e3112ce3713ef1139de8e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4aa9f4839c8bfc04cee4bb03ea0eac98cb8b25c0
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229674"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926113"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的单一登录会话管理
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C （Azure AD B2C）中的[单一登录（SSO）会话](session-overview.md)管理使管理员能够在用户已经过身份验证后控制与用户的交互。 例如，管理员可以控制是否显示所选的标识提供者，或者是否需要再次输入帐户详细信息。 本文介绍如何配置 Azure AD B2C SSO 的设置。
-
-SSO 会话管理使用的语义，与自定义策略中其他任何技术配置文件使用的语义相同。 执行某个业务流程步骤时，会在与该步骤关联的技术配置文件中查询 `UseTechnicalProfileForSessionManagement` 引用。 如果存在该引用，则会检查引用的 SSO 会话提供程序，确定用户是否为会话参与者。 如果是，则使用 SSO 会话提供程序来重新填充会话。 同样，在完成执行某个业务流程步骤后，如果已指定 SSO 会话提供程序，则使用该提供程序将信息存储在会话中。
+[单一登录（SSO）会话](session-overview.md)管理在自定义策略中使用与任何其他技术配置文件相同的语义。 执行某个业务流程步骤时，会在与该步骤关联的技术配置文件中查询 `UseTechnicalProfileForSessionManagement` 引用。 如果存在该引用，则会检查引用的 SSO 会话提供程序，确定用户是否为会话参与者。 如果是，则使用 SSO 会话提供程序来重新填充会话。 同样，在完成执行某个业务流程步骤后，如果已指定 SSO 会话提供程序，则使用该提供程序将信息存储在会话中。
 
 Azure AD B2C 定义了大量可用的 SSO 会话提供程序：
 
 |会话提供程序  |范围  |
 |---------|---------|
-|[NoopSSOSessionProvider](#noopssosessionprovider)     |  无       |       
+|[NoopSSOSessionProvider](#noopssosessionprovider)     |  None       |       
 |[DefaultSSOSessionProvider](#defaultssosessionprovider)    | Azure AD B2C 内部会话管理器。      |       
 |[ExternalLoginSSOSessionProvider](#externalloginssosessionprovider)     | 介于 Azure AD B2C 和 OAuth1、OAuth2 或 OpenId Connect 标识提供程序之间。        |         |
 |[OAuthSSOSessionProvider](#oauthssosessionprovider)     | OAuth2 或 OpenId connect 信赖方应用程序与 Azure AD B2C。        |        
@@ -123,7 +121,7 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 
 #### <a name="metadata"></a>元数据
 
-| 特性 | 必选 | 说明|
+| 特性 | 必需 | 说明|
 | --- | --- | --- |
 | AlwaysFetchClaimsFromProvider | 否 | 当前未使用，可以忽略。 |
 
@@ -165,7 +163,7 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 
 #### <a name="metadata"></a>元数据
 
-| 特性 | 必选 | 说明|
+| 特性 | 必需 | 说明|
 | --- | --- | --- |
 | IncludeSessionIndex | 否 | 当前未使用，可以忽略。|
 | RegisterServiceProviders | 否 | 指示提供程序应注册已颁发断言的所有 SAML 服务提供程序。 可能的值为 `true`（默认）或 `false`。|
@@ -174,3 +172,4 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 ## <a name="next-steps"></a>后续步骤
 
 - 了解[Azure AD B2C 会话](session-overview.md)的详细信息。
+- 了解如何[在自定义策略中配置会话行为](session-behavior-custom-policy.md)。

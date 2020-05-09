@@ -50,7 +50,7 @@
     - name: 部署指南
       items:
         - name: 部署 30 天、90 天及之后的时间
-      href: active-directory-deployment-checklist-p2.md
+          href: active-directory-deployment-checklist-p2.md
     - name: 数据存储
       items:
         - name: 用于欧洲的标识数据存储

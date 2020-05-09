@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 2760033cd66e99a7a7f6d331e03c6f98c486d286
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 93015da810f163a48529704e69e1747ac1aec401
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231962"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889400"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Azure 机器学习的已知问题和故障排除
 
@@ -39,7 +39,7 @@ ms.locfileid: "82231962"
 了解使用 Azure 机器学习时可能遇到的[资源配额](how-to-manage-quotas.md)。
 
 ## <a name="installation-and-import"></a>安装和导入
-
+                           
 * **Pip 安装：不保证依赖项与单行安装一致**： 
 
    这是 pip 的已知限制，因为当你作为单行安装时，它不具有正常运行的依赖关系解析程序。 第一个唯一的依赖项是唯一的依赖项。 
@@ -56,7 +56,29 @@ ms.locfileid: "82231962"
         pip install azure-ml-datadrift
         pip install azureml-train-automl 
      ```
-
+     
+* **说明安装 guarateed 时不会安装的包-automl-客户端：** 
+   
+   在启用了模型解释的情况运行远程 automl 运行时，将看到一条错误消息，指出 "" 请安装 azureml-模型说明的模型包。 " 这是一个已知问题，作为一种解决方法，请执行以下步骤之一：
+  
+  1. 在本地安装 azureml-说明模型。
+   ```
+      pip install azureml-explain-model
+   ```
+  2. 通过在 automl 配置中传递 model_explainability = False 来完全禁用 explainability 功能。
+   ```
+      automl_config = AutoMLConfig(task = 'classification',
+                             path = '.',
+                             debug_log = 'automated_ml_errors.log',
+                             compute_target = compute_target,
+                             run_configuration = aml_run_config,
+                             featurization = 'auto',
+                             model_explainability=False,
+                             training_data = prepped_data,
+                             label_column_name = 'Survived',
+                             **automl_settings)
+    ``` 
+    
 * **Panda 错误：通常在 AutoML 试验期间出现：**
    
    使用 pip 手动设置 environmnet 时，你会发现属性错误（尤其是从 pandas），因为安装了不受支持的包版本。 若要防止此类错误，[请使用 automl_setup 命令安装 AUTOML SDK](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md)：
