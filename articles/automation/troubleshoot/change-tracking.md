@@ -9,19 +9,19 @@ ms.author: magoedte
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 11c1fd05055922b07801c20d525d852d5360b069
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 4f230cd0965d58f690d333cd62f2c7c1d499e8d1
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679351"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582147"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>排查更改跟踪和清单问题
 
-本文介绍如何解决更改跟踪和清单问题。
+本文介绍如何排查 Azure 自动化更改跟踪和清单问题。
 
 >[!NOTE]
->本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az 模块安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于自动化帐户，可参阅[如何更新 Azure 自动化中的 Azure PowerShell 模块](../automation-update-azure-modules.md)，将模块更新到最新版本。
+>本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az 模块安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于你的自动化帐户，你可以通过使用[如何在 Azure 自动化中更新 Azure PowerShell 模块](../automation-update-azure-modules.md)，将模块更新到最新版本。
 
 ## <a name="windows"></a>Windows
 
@@ -35,14 +35,14 @@ ms.locfileid: "81679351"
 
 此错误可能有以下原因：
 
-* 适用于 Windows 的 Log Analytics 代理未运行。
+* 适用于 Windows 的 Azure Log Analytics 代理未运行。
 * 正在阻止回发到自动化帐户的通信。
 * 不会下载更改跟踪和库存管理包。
 * 要载入的 VM 可能来自克隆的计算机，该计算机未与安装的 Windows 的 Log Analytics 代理经过系统准备。
 
 #### <a name="resolution"></a>解决方法
 
-在 Log Analytics 代理计算机上，导航到**C:\Program Files\Microsoft Monitoring Agent\Agent\Tools** ，并运行以下命令：
+在 Log Analytics 代理计算机上，请参阅**C:\Program Files\Microsoft Monitoring Agent\Agent\Tools** ，并运行以下命令：
 
 ```cmd
 net stop healthservice
@@ -51,10 +51,10 @@ StartTracing.cmd VER
 net start healthservice
 ```
 
-如果仍需要帮助，可以收集诊断信息并联系支持人员。 
+如果仍需要帮助，可以收集诊断信息并联系支持人员。
 
 > [!NOTE]
-> 默认情况下，Log Analyticss agent 启用错误跟踪。 若要启用如前面的示例所示的详细错误消息`VER` ，请使用参数。 要进行信息跟踪，请在调用 `StartTracing.cmd` 时使用 `INF`。
+> 默认情况下，Log Analytics 代理启用错误跟踪。 若要启用如前面的示例所示的详细错误消息`VER` ，请使用参数。 对于信息跟踪，请`INF`在调用`StartTracing.cmd`时使用。
 
 ##### <a name="log-analytics-agent-for-windows-not-running"></a>适用于 Windows 的 Log Analytics 代理未运行
 
@@ -62,9 +62,9 @@ net start healthservice
 
 ##### <a name="communication-to-automation-account-blocked"></a>已阻止与自动化帐户通信
 
-检查计算机上的事件查看器并查看包含 `changetracking` 一词的任何事件。
+检查计算机上的事件查看器，并查找其中包含单词`changetracking`的任何事件。
 
-请参阅[使用混合 Runbook 辅助角色自动执行数据中心或云中的资源](../automation-hybrid-runbook-worker.md#network-planning)，了解更改跟踪和清单工作时必须允许的地址和端口。
+若要了解更改跟踪和清单工作时必须允许的地址和端口，请参阅[使用混合 Runbook 辅助角色自动执行数据中心或云中的资源](../automation-hybrid-runbook-worker.md#network-planning)。
 
 ##### <a name="management-packs-not-downloaded"></a>未下载管理包
 
@@ -84,7 +84,7 @@ net start healthservice
 
 #### <a name="issue"></a>问题
 
-对于载入解决方案的 Linux 计算机，你看不到任何清单和更改跟踪结果。 
+对于载入解决方案的 Linux 计算机，不会看到任何更改跟踪和清单结果。 
 
 #### <a name="cause"></a>原因
 下面是特定于此问题的可能原因：
@@ -103,7 +103,7 @@ Heartbeat
 | summarize by Computer, Solutions
 ```
 
-如果未在查询结果中看到您的计算机，则该计算机最近未签入。 可能存在本地配置问题，应重新安装代理。 有关安装和配置的详细信息，请参阅[用 Log Analytics Agent 收集日志数据](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)。 
+如果未在查询结果中看到您的计算机，则该计算机最近未签入。 可能存在本地配置问题，应重新安装代理。 有关安装和配置的详细信息，请参阅[用 Log Analytics Agent 收集日志数据](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)。
 
 如果计算机显示在查询结果中，请验证作用域配置。 请参阅将[监视解决方案定位到 Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting)。
 
@@ -111,7 +111,7 @@ Heartbeat
 
 ##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>适用于 Linux 的 Log Analytics 代理配置不正确
 
-对于使用 OMS 日志收集器工具的日志和命令行输出收集，可能未正确配置适用于 Linux 的 Log Analytics 代理。 请参阅[跟踪环境中的更改，并提供更改跟踪和清单解决方案](../change-tracking.md)。
+对于使用 OMS 日志收集器工具进行日志和命令行输出收集，可能未正确配置适用于 Linux 的 Log Analytics 代理。 请参阅[跟踪环境中的更改，并提供更改跟踪和清单解决方案](../change-tracking.md)。
 
 ##### <a name="fim-conflicts"></a>FIM 冲突
 
@@ -119,8 +119,8 @@ Azure 安全中心的 FIM 功能可能会不正确地验证 Linux 文件的完�
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你没有看到你的问题或无法解决你的问题，请尝试以下通道之一以获取其他支持：
+如果在此处看不到你的问题，或者无法解决你的问题，请尝试以下通道之一以获取其他支持：
 
 * 通过[Azure 论坛](https://azure.microsoft.com/support/forums/)获取 azure 专家的解答。
-* 与[@AzureSupport](https://twitter.com/azuresupport)官方 Microsoft Azure 帐户联系，通过将 Azure 社区连接到适当的资源来改进客户体验：答案、支持和专家。
+* 与[@AzureSupport](https://twitter.com/azuresupport)官方 Microsoft Azure 帐户联系，以改善客户体验。 Azure 支持将 Azure 社区连接到答案、支持和专家。
 * 提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 "**获取支持**"。
