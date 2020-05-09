@@ -4,18 +4,22 @@ description: 使用 Azure CLI 创建区块链联盟的 Azure 区块链服务成�
 ms.date: 03/30/2020
 ms.topic: quickstart
 ms.reviewer: ravastra
-ms.openlocfilehash: 322b1884726b6dfe322560032ed1b8a98c600154
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 1561f485917ecbb64d51ffbe045ab4120fbf58ad
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529622"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82116802"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>快速入门：通过 Azure CLI 创建 Azure 区块链服务区块链成员
 
 本快速入门介绍如何使用 Azure CLI 在 Azure 区块链服务中部署新的区块链成员和联盟。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="prerequisites"></a>先决条件
+
+无。
 
 ## <a name="launch-azure-cloud-shell"></a>启动 Azure Cloud Shell
 
