@@ -10,18 +10,18 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 11/22/2017
+ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 359b90cc434dad04fc0296c54fcc762f3a75062d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7b1fd34824bec9641edc94ce278fa21a1b57b2c0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74107659"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202734"
 ---
 # <a name="import-soap-api"></a>导入 SOAP API
 
-本文介绍如何导入 SOAP API 的标准 XML 表示形式。 此外，介绍如何测试 APIM API。
+本文介绍如何导入 SOAP API 的标准 XML 表示形式。 本文还介绍如何测试 API 管理 API。
 
 在本文中，学习如何：
 
@@ -30,15 +30,15 @@ ms.locfileid: "74107659"
 > * 在 Azure 门户中测试 API
 > * 在开发人员门户中测试 API
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)
+请完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>导入和发布后端 API
 
-1. 在“API 管理”下面选择“API”。  
+1. 在 Azure 门户中导航到 API 管理服务，然后从菜单中选择“API”  。
 2. 从“添加新的 API”列表中选择“WSDL”   。
 
     ![Soap api](./media/import-soap-api/wsdl-api.png)
@@ -49,16 +49,17 @@ ms.locfileid: "74107659"
 5. 按 Tab 键。
 
     以下字段中填充了来自 SOAP API 的信息：显示名称、名称、说明。
-6. 添加 API URL 后缀。 后缀是用于在该 APIM 实例中标识此特定 API 的名称。 它在此 APIM 实例中必须唯一。
-9. 通过关联 API 与产品来发布 API。 本例中使用了“无限制”产品  。  如果想要发布 API 并使其对开发人员可用，请将其添加到产品中。 可在 API 创建期间执行此操作，或稍后进行设置。
+6. 添加 API URL 后缀。 后缀是用于在该 API 管理实例中标识此特定 API 的名称。 在该 API 管理实例中，后缀必须唯一。
+7. 通过关联 API 与产品来发布 API。 本例中使用了“无限制”产品  。  如果想要发布 API 并使其对开发人员可用，请将其添加到产品中。 可在 API 创建期间执行此操作，或稍后进行设置。
 
-    产品是一个或多个 API 的关联。 可以包含多个 API，并通过开发人员门户将其提供给开发人员。 开发人员必须先订阅产品才能访问 API。 订阅时，他们会得到一个订阅密钥，此密钥对该产品中的任何 API 都有效。 如果创建了 APIM 实例，那么你已是管理员，因此默认情况下订阅了每个产品。
+    产品是一个或多个 API 的关联。 可以包含多个 API，并通过开发人员门户将其提供给开发人员。 开发人员必须先订阅产品才能访问 API。 订阅时，他们会得到一个订阅密钥，此密钥对该产品中的任何 API 都有效。 如果你创建了 API 管理实例，那么你已是管理员，因此默认情况下订阅了每个产品。
 
     默认情况下，每个 API 管理实例附带两个示例产品：
 
     * **入门**
     * **不受限制**   
-10. 选择“创建”  。
+8. 输入其他 API 设置。 可以在创建过程中设置这些值，也可以稍后转到“设置”  选项卡来配置这些值。在[导入和发布第一个 API](import-and-publish.md#-import-and-publish-a-backend-api) 教程中对这些设置进行了说明。
+9. 选择“创建”  。
 
 ### <a name="test-the-new-api-in-the-administrative-portal"></a>在管理门户中测试新的 API
 
@@ -68,7 +69,7 @@ ms.locfileid: "74107659"
 2. 按“测试”选项卡  。
 3. 选择某个操作。
 
-    该页将显示查询参数的字段和标头的字段。 其中一个标头是“Ocp-Apim-Subscription-Key”，用于提供和此 API 关联的产品订阅密钥。 如果创建了 APIM 实例，那么你已是管理员，因此会自动填充该密钥。 
+    该页将显示查询参数的字段和标头的字段。 其中一个标头是“Ocp-Apim-Subscription-Key”，用于提供和此 API 关联的产品订阅密钥。 如果创建了 API 管理实例，那么你已是管理员，因此会自动填充该密钥。 
 1. 按“发送”。 
 
     后端以“200 正常”和某些数据做出响应  。

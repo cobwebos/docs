@@ -1,26 +1,26 @@
 ---
-title: SaaS 履单 Api-常见问题 |Azure Marketplace
-description: Azure Marketplace 中 SaaS 产品/服务的客户发现和购买体验。
+title: SaaS 履单 API 常见问题-Microsoft 商用 marketplace
+description: 了解 Microsoft 商用 marketplace 允许 Azure 客户订阅 SaaS 产品/服务的几个集成要求。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 6d3a84341d5221950da20f39456461dafc5d2e75
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a1ba6f393eba257fcbe2757b8b4bced00bef8fe
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80275690"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792898"
 ---
-# <a name="saas-fulfillment-apis---faq"></a>SaaS 履行 API - 常见问题解答
+# <a name="common-questions-about-saas-fulfillment-apis"></a>有关 SaaS 履单 Api 的常见问题
 
-列出了用于启用 Azure 客户订阅 SaaS 产品/服务的 Azure Marketplace 集成要求。
+本文介绍了 Microsoft 商业应用商店允许 Azure 客户订阅 SaaS 产品/服务的几个集成要求。
 
 ## <a name="discovery-experience"></a>发现体验
 
-发布产品/服务后，Azure 用户可以在 Azure Marketplace 中发现 SaaS 产品/服务。 你的客户将能够根据产品类型（SaaS）筛选产品/服务，并发现他们感兴趣的 SaaS 服务。
+一旦发布了 SaaS 产品，Azure 用户就可以在 Azure Marketplace 中发现它。 你的客户可以根据产品类型（SaaS）筛选产品/服务，并发现他们感兴趣的 SaaS 服务。
 
 ## <a name="purchase-experience"></a>购买体验
 
@@ -30,7 +30,7 @@ ms.locfileid: "80275690"
 
 这意味着，用户可以查看与 SaaS 服务相关联的使用条款和隐私声明，并同意根据你在 Microsoft 发票上提供的 "SaaS 条款" 发布者所设置的计费条款为其付费。 用户可以在 Azure 中使用其现有的付款配置文件来支付 SaaS 服务消耗量。
 
-由于许多原因，这一点很有用。 现在，客户可以使用 Microsoft 云平台作为受信任的源在一个位置发现和订阅，而不必来审查要使用的每个 ISV 软件。 此外，客户可以使用其现有的付款配置文件，而无需单独单独支付每个 ISV 软件。
+此功能在很多方面都很有用。 现在，客户可以使用 Microsoft 云平台作为受信任的源在一个位置发现和订阅，而不必来审查要使用的每个 ISV 软件。 此外，客户可以使用其现有的付款配置文件，而无需单独单独支付每个 ISV 软件。
 
 ### <a name="is-the-user-charged-automatically-when-the-offer-is-subscribed"></a>订阅产品/服务时，用户是否自动收费？
 
@@ -38,15 +38,15 @@ ms.locfileid: "80275690"
 
 ### <a name="how-are-you-notified-when-a-user-subscribes-to-your-saas-offer"></a>当用户订阅 SaaS 产品/服务时，如何通知你？
 
-订阅产品/服务后，Azure 用户可以在 Azure 中发现和管理其所有产品/服务。 默认情况下，新订阅的 SaaS 产品/服务的状态为 **"预配，履单待定"**。 在此状态下，会提示 Azure 用户使用 **"配置帐户"** 操作，以便浏览到 Azure 门户中的 SaaS 订阅管理体验。
+订阅产品/服务后，Azure 用户可以在 Azure 中发现和管理其所有产品/服务。 默认情况下，新订阅的 SaaS 产品/服务的状态显示为**预配，履单完成**。 在此状态下，系统将提示 Azure 用户**配置帐户**，以便浏览到 Azure 门户中的 SaaS 订阅管理体验。
 
-当用户单击 **"配置帐户"** 时，他们将被重定向到 SaaS 服务网站。 发布产品/服务时，发布者会提供导航到的 URL。 此页面称为发布者登录页。 Azure 用户应该能够根据其在 Azure 中的现有 AAD 凭据登录到 SaaS 登陆页面。
+当用户选择 "**配置帐户**" 时，它们将被重定向到 SaaS 服务网站。 发布者在发布产品/服务时配置了 URL。 此页面称为发布者登录页。 Azure 用户基于 Azure 中现有的 AAD 凭据登录到 SaaS 登陆页面。
 
 将 Azure 用户重定向到登陆页面后，会将一个令牌添加到查询 URL。 此令牌生存期较短，且有效期为24小时。 然后，你可以检测该令牌是否存在，并调用 Microsoft 的 API 来获取与该令牌关联的更多上下文。
 
 ![客户订阅流](media/saas-metering-service-integration-flow-a.png)
 
-请参阅[saas 履单 API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2)文档，了解有关在 SaaS 产品生命周期中处理事务的 api 约定的详细信息。
+有关用于处理 SaaS 产品生命周期中的事务的 API 协定的详细信息，请参阅[saas 履单 API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2)。
 
 ### <a name="how-do-you-know-the-saas-offer-to-which-the-user-subscribes-in-azure"></a>如何知道用户在 Azure 中订阅的 SaaS 产品/服务？
 
@@ -56,7 +56,7 @@ ms.locfileid: "80275690"
 
 * Azure 用户可以直接在 SaaS 体验或 Microsoft 平台中更改与 SaaS 订阅关联的计划。
 
-* 在计费周期内随时可以执行转换。 您必须确认任何转换，这将在确认后生效。
+* 在计费周期内随时可以执行转换。 系统将提示你确认任何转换，这将在确认之后生效。
 
 * 预先支付的计划（**每月**或**每年**）费率按比例收费。 在下一张发票中，将按下一张发票对发出到转换时间的任何超额费用收费。 新的超额将根据新计划发出。
 
@@ -85,4 +85,4 @@ Azure 用户在 Microsoft 店面中取消订阅时，以下序列捕获流：
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关详细信息，请参阅[Marketplace 计量服务 api](./marketplace-metering-service-apis.md) 。
+[Azure 市场计量服务 API](./marketplace-metering-service-apis.md)

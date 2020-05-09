@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: efe2c96c619aaf92efc5b4abf76b6b89c96ebd37
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 56a2246b4f1da51d9b18a34279eff04264530ef5
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878028"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82160079"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>教程：在 Front Door 自定义域中配置 HTTPS
 
 本教程介绍如何在前端主机部分为 Front Door 关联的自定义域启用 HTTPS 协议。 通过在自定义域（例如 https:\//www.contoso.com）上使用 HTTPS 协议，可以确保敏感数据在通过 Internet 发送时可以通过 TLS/SSL 加密安全地进行分发。 Web 浏览器通过 HTTPS 连接到网站时，它会验证网站的安全证书并验证该证书是否是由合法的证书颁发机构颁发的。 此过程提供安全性并保护 Web 应用程序免受攻击。
 
-默认情况下，Azure Front Door 支持 Front Door 默认主机名中的 HTTPS。 例如，如果你创建一个 Front Door（例如 https:\//contoso.azurefd.net），则会自动为向 https://contoso.azurefd.net 发出的请求启用 HTTPS。 但是，载入自定义域“www.contoso.com”之后，需要另外为此前端主机启用 HTTPS。   
+默认情况下，Azure Front Door 支持 Front Door 默认主机名中的 HTTPS。 例如，如果创建一个 Front Door（例如 `https://contoso.azurefd.net`），则会自动为向 `https://contoso.azurefd.net` 发出的请求启用 HTTPS。 但是，载入自定义域“www.contoso.com”之后，需要另外为此前端主机启用 HTTPS。   
 
 自定义 HTTPS 功能的一些关键属性包括：
 

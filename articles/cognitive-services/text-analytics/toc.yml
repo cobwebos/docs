@@ -52,7 +52,9 @@
       href: language-support.md
     - name: 文本偏移量
       href: concepts/text-offsets.md
-- name: 操作指南
+    - name: 数据限制
+      href: concepts/data-limits.md
+- name: 操作方法指南
   items:
     - name: 调用文本分析 API
       href: How-tos/text-analytics-how-to-call-api.md
@@ -122,7 +124,7 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: 合规性
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/text-analytics-api'
     - name: 试试看！
       href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'

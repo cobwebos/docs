@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: 89bae60c30cfe82d38c61f385dbaef574b4152d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4ec81ef69f21fc74864e437a3c6de46550a70c18
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80547787"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891662"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Desired State Configuration 扩展与 Azure 资源管理器模板
 
-本文介绍 [Desired State Configuration (DSC) 扩展处理程序](dsc-overview.md)的 Azure 资源管理器模板。 许多示例将 **RegistrationURL**（以字符串形式提供）和 **RegistrationKey**（作为 [PSCredential](/dotnet/api/system.management.automation.pscredential) 提供）与 Azure 自动化一起使用。 有关获取这些值的详细信息，请参阅[登记由 Azure 自动化状态配置管理的计算机 - 安全注册](/azure/automation/automation-dsc-onboarding#onboarding-securely-using-registration)。
+本文介绍 [Desired State Configuration (DSC) 扩展处理程序](dsc-overview.md)的 Azure 资源管理器模板。 许多示例使用 **RegistrationURL**（以字符串形式提供）和 **RegistrationKey**（以 [PSCredential](/dotnet/api/system.management.automation.pscredential) 形式提供）来通过 Azure 自动化进行加入。 有关获取这些值的详细信息，请参阅[加入 Azure Automation State Configuration 管理的计算机 - 安全注册](/azure/automation/automation-dsc-onboarding#onboarding-securely-using-registration)。
 
 > [!NOTE]
 > 你可能会遇到略有不同的架构示例。 2016 年 10 月发行版中发生了架构更改。 有关详细信息，请参阅[从以前的格式更新](#update-from-a-previous-format)。
@@ -179,17 +179,17 @@ DSC 扩展继承默认扩展属性。
 
 | 属性名称 | 类型 | 说明 |
 | --- | --- | --- |
-| settings.wmfVersion |字符串 |指定应在 VM 上安装的 Windows Management Framework (WMF) 版本。 将此属性设置为 **latest** 可安装最新版本的 WMF。 目前，此属性的可能值只有“4.0”、“5.0”、“5.1”和“latest”     。 这些可能值将来可能会更新。 默认值为 **latest**。 |
-| settings.configuration.url |字符串 |指定要从中下载 DSC 配置 .zip 文件的 URL 位置。 如果提供的 URL 需要 SAS 令牌才能访问，请将 **protectedSettings.configurationUrlSasToken** 属性设置为 SAS 令牌的值。 如果已定义 **settings.configuration.script** 或 **settings.configuration.function**，则需要此属性。 如果未为这些属性指定任何值，则扩展将调用默认配置脚本设置位置配置管理器 (LCM) 元数据，并应提供参数。 |
-| settings.configuration.script |字符串 |指定包含 DSC 配置定义的脚本的文件名。 此脚本必须位于从 **settings.configuration.url** 属性所指定的 URL 下载的 zip 文件的根文件夹中。 如果已定义 **settings.configuration.url** 或 **settings.configuration.script**，则需要此属性。 如果未为这些属性指定任何值，则扩展将调用默认配置脚本设置 LCM 元数据，并应提供参数。 |
-| settings.configuration.function |字符串 |指定 DSC 配置的名称。 命名的配置必须包含在 **settings.configuration.script** 定义的脚本中。 如果已定义 **settings.configuration.url** 或 **settings.configuration.function**，则需要此属性。 如果未为这些属性指定任何值，则扩展将调用默认配置脚本设置 LCM 元数据，并应提供参数。 |
+| settings.wmfVersion |string |指定应在 VM 上安装的 Windows Management Framework (WMF) 版本。 将此属性设置为 **latest** 可安装最新版本的 WMF。 目前，此属性的可能值只有 **4.0**、**5.0**、**5.1** 和 **latest**。 这些可能值将来可能会更新。 默认值为 **latest**。 |
+| settings.configuration.url |string |指定要从中下载 DSC 配置 .zip 文件的 URL 位置。 如果提供的 URL 需要 SAS 令牌才能访问，请将 **protectedSettings.configurationUrlSasToken** 属性设置为 SAS 令牌的值。 如果已定义 **settings.configuration.script** 或 **settings.configuration.function**，则需要此属性。 如果未为这些属性指定任何值，则扩展将调用默认配置脚本设置位置配置管理器 (LCM) 元数据，并应提供参数。 |
+| settings.configuration.script |string |指定包含 DSC 配置定义的脚本的文件名。 此脚本必须位于从 **settings.configuration.url** 属性所指定的 URL 下载的 zip 文件的根文件夹中。 如果已定义 **settings.configuration.url** 或 **settings.configuration.script**，则需要此属性。 如果未为这些属性指定任何值，则扩展将调用默认配置脚本设置 LCM 元数据，并应提供参数。 |
+| settings.configuration.function |string |指定 DSC 配置的名称。 命名的配置必须包含在 **settings.configuration.script** 定义的脚本中。 如果已定义 **settings.configuration.url** 或 **settings.configuration.function**，则需要此属性。 如果未为这些属性指定任何值，则扩展将调用默认配置脚本设置 LCM 元数据，并应提供参数。 |
 | settings.configurationArguments |集合 |定义想要传递到 DSC 配置的任何参数。 此属性未加密。 |
-| settings.configurationData.url |字符串 |指定 URL，将从中下载配置数据 (.pds1) 文件用作 DSC 配置的输入。 如果提供的 URL 需要 SAS 令牌才能访问，请将 **protectedSettings.configurationDataUrlSasToken** 属性设置为 SAS 令牌的值。 |
-| settings.privacy.dataCollection |字符串 |启用或禁用遥测数据收集。 此属性的可能值只有 **Enable**、**Disable**、 **''** 或 **$null**。 将此属性留空或 null 可启用遥测。 默认值为 **''** 。 有关详细信息，请参阅 [Azure DSC 扩展数据集合](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/)。 |
-| settings.advancedOptions.downloadMappings |集合 |定义要从中下载 WMF 的备选位置。 有关详细信息，请参阅 [Azure DSC 扩展 2.8 以及如何将扩展依赖项下载内容映射到自己的位置](https://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx)。 |
+| settings.configurationData.url |string |指定 URL，将从中下载配置数据 (.pds1) 文件用作 DSC 配置的输入。 如果提供的 URL 需要 SAS 令牌才能访问，请将 **protectedSettings.configurationDataUrlSasToken** 属性设置为 SAS 令牌的值。 |
+| settings.privacy.dataCollection |string |启用或禁用遥测数据收集。 此属性的可能值只有 **Enable**、**Disable**、 **''** 或 **$null**。 将此属性保留为空或 null 可启用遥测。 默认值为 **''** 。 有关详细信息，请参阅 [Azure DSC 扩展数据集合](https://devblogs.microsoft.com/powershell/azure-dsc-extension-data-collection-2/)。 |
+| settings.advancedOptions.downloadMappings |集合 |定义要从中下载 WMF 的备选位置。 有关详细信息，请参阅 [Azure DSC 扩展 2.8 以及如何将扩展依赖项下载内容映射到自己的位置](https://devblogs.microsoft.com/powershell/azure-dsc-extension-2-8-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location/)。 |
 | protectedSettings.configurationArguments |集合 |定义想要传递到 DSC 配置的任何参数。 此属性已加密。 |
-| protectedSettings.configurationUrlSasToken |字符串 |指定用于访问 **settings.configuration.url** 所定义的 URL 的 SAS 令牌。 此属性已加密。 |
-| protectedSettings.configurationDataUrlSasToken |字符串 |指定用于访问 **settings.configurationData.url** 所定义的 URL 的 SAS 令牌。 此属性已加密。 |
+| protectedSettings.configurationUrlSasToken |string |指定用于访问 **settings.configuration.url** 所定义的 URL 的 SAS 令牌。 此属性已加密。 |
+| protectedSettings.configurationDataUrlSasToken |string |指定用于访问 **settings.configurationData.url** 所定义的 URL 的 SAS 令牌。 此属性已加密。 |
 
 ## <a name="default-configuration-script"></a>默认配置脚本
 
@@ -198,14 +198,14 @@ DSC 扩展继承默认扩展属性。
 
 | 属性名称 | 类型 | 说明 |
 | --- | --- | --- |
-| protectedSettings.configurationArguments.RegistrationKey |PSCredential |必需的属性。 指定节点用于注册到 Azure 自动化服务的密钥作为 PowerShell 凭据对象的密码。 可以使用 **listkeys** 方法针对自动化帐户自动发现此值。  请参阅[示例](#example-using-referenced-azure-automation-registration-values)。 |
-| settings.configurationArguments.RegistrationUrl |字符串 |必需的属性。 指定节点将尝试注册的自动化终结点的 URL。 可以使用 **reference** 方法针对自动化帐户自动发现此值。 |
-| settings.configurationArguments.NodeConfigurationName |字符串 |必需的属性。 在自动化帐户中指定要分配给节点的节点配置。 |
-| settings.configurationArguments.ConfigurationMode |字符串 |指定 LCM 的模式。 有效选项包括 **ApplyOnly**、**ApplyandMonitor** 和 **ApplyandAutoCorrect**。  默认值为 **ApplyandMonitor**。 |
+| protectedSettings.configurationArguments.RegistrationKey |PSCredential |必需的属性。 指定节点用于注册到 Azure 自动化服务的密钥作为 PowerShell 凭据对象的密码。 可以使用 **listkeys** 方法针对自动化帐户自动发现此值。  参阅[示例](#example-using-referenced-azure-automation-registration-values)。 |
+| settings.configurationArguments.RegistrationUrl |string |必需的属性。 指定节点将尝试注册的自动化终结点的 URL。 可以使用 **reference** 方法针对自动化帐户自动发现此值。 |
+| settings.configurationArguments.NodeConfigurationName |string |必需的属性。 在自动化帐户中指定要分配给节点的节点配置。 |
+| settings.configurationArguments.ConfigurationMode |string |指定 LCM 的模式。 有效选项包括 **ApplyOnly**、**ApplyandMonitor** 和 **ApplyandAutoCorrect**。  默认值为 **ApplyandMonitor**。 |
 | settings.configurationArguments.RefreshFrequencyMins | uint32 | 指定 LCM 将尝试向自动化帐户查询更新的频率。  默认值为 **30**。  最小值为 **15**。 |
 | settings.configurationArguments.ConfigurationModeFrequencyMins | uint32 | 指定 LCM 将验证当前配置的频率。 默认值为 **15**。 最小值为 **15**。 |
 | settings.configurationArguments.RebootNodeIfNeeded | boolean | 指定在 DSC 操作请求时是否可能会自动重新启动节点。 默认值为“false”  。 |
-| settings.configurationArguments.ActionAfterReboot | 字符串 | 指定在应用配置时重新启动后会发生什么情况。 有效选项为 **ContinueConfiguration** 和 **StopConfiguration**。 默认值为 **ContinueConfiguration**。 |
+| settings.configurationArguments.ActionAfterReboot | string | 指定在应用配置时重新启动后会发生什么情况。 有效选项为 **ContinueConfiguration** 和 **StopConfiguration**。 默认值为 **ContinueConfiguration**。 |
 | settings.configurationArguments.AllowModuleOverwrite | boolean | 指定 LCM 是否会覆盖节点上的现有模块。 默认值为“false”  。 |
 
 ## <a name="settings-vs-protectedsettings"></a>settings 与 protectedSettings
@@ -275,7 +275,7 @@ DSC 扩展继承默认扩展属性。
 
 ## <a name="example-using-referenced-azure-automation-registration-values"></a>使用引用的 Azure 自动化注册值的示例
 
-以下示例通过引用 Azure 自动化帐户属性并使用 **listkeys** 方法检索主键 (0) 来获取 **RegistrationUrl** 和 **RegistrationKey**。  在此示例中，参数 **automationAccountName** 和 **NodeConfigName** 已提供给模板。
+以下示例通过引用 Azure 自动化帐户属性并使用 **listkeys** 方法检索主键 (0)，来获取 **RegistrationUrl** 和 **RegistrationKey**。  在此示例中，参数 **automationAccountName** 和 **NodeConfigName** 已提供给模板。
 
 ```json
 "settings": {
@@ -294,7 +294,7 @@ DSC 扩展继承默认扩展属性。
 
 ## <a name="update-from-a-previous-format"></a>从以前的格式更新
 
-以前扩展格式中的所有设置（包含公共属性 **ModulesUrl**、**ModuleSource**、**ModuleVersion**、**ConfigurationFunction**、**SasToken** 或 **Properties**）会自动调整为当前扩展格式。
+以前的扩展格式中的所有设置（包含 **ModulesUrl**、**ModuleSource**, **ModuleVersion**、**ConfigurationFunction**、**SasToken** 或 **Properties** 公共属性）会自动调整为当前扩展格式。
 它们按以前的相同方式运行。
 
 以下架构显示了以前的 settings 架构的大致形式：
@@ -331,7 +331,7 @@ DSC 扩展继承默认扩展属性。
 
 | 当前属性名称 | 以前架构的等效值 |
 | --- | --- |
-| settings.wmfVersion |settings.WMFVersion |
+| settings.wmfVersion |settings.wmfVersion |
 | settings.configuration.url |settings.ModulesUrl |
 | settings.configuration.script |settings.ConfigurationFunction 的第 1 个部分（在 \\\\ 前面） |
 | settings.configuration.function |settings.ConfigurationFunction 的第 2 个部分（在 \\\\ 后面） |
@@ -340,7 +340,7 @@ DSC 扩展继承默认扩展属性。
 | settings.configurationArguments |settings.Properties |
 | settings.configurationData.url |protectedSettings.DataBlobUri（没有 SAS 令牌） |
 | settings.privacy.dataCollection |settings.Privacy.dataCollection |
-| settings.advancedOptions.downloadMappings |settings.AdvancedOptions.DownloadMappings |
+| settings.advancedOptions.downloadMappings |settings.advancedOptions.downloadMappings |
 | protectedSettings.configurationArguments |protectedSettings.Properties |
 | protectedSettings.configurationUrlSasToken |settings.SasToken |
 | protectedSettings.configurationDataUrlSasToken |protectedSettings.DataBlobUri 中的 SAS 令牌 |
@@ -351,32 +351,32 @@ DSC 扩展继承默认扩展属性。
 
 ### <a name="invalid-values"></a>无效值
 
-“Privacy.dataCollection 为‘{0}’。
+“Privacy.dataCollection 为 '{0}'。
 可能的值只有 ''、'Enable' 和 'Disable'”。
-“WmfVersion 为‘{0}’。
+“WmfVersion 为 '{0}'。
 唯一的可能值为 ... 和 'latest'”。
 
 **问题**：不允许使用提供的值。
 
-**解决方法**：将无效值更改为有效值。
+**解决方案**：将无效值更改为有效值。
 有关详细信息，请参阅[详细信息](#details)中的表格。
 
 ### <a name="invalid-url"></a>无效的 URL
 
-“ConfigurationData.url 为‘{0}’。 这不是有效的 URL”。“DataBlobUri 为‘{0}’。 这不是有效的 URL”。“Configuration.url 为‘{0}’。 这不是有效的 URL”
+“ConfigurationData.url 为 '{0}'。 这不是有效的 URL”。“DataBlobUri 为 '{0}'。 这不是有效的 URL”。“Configuration.url 为 '{0}'。 这不是有效的 URL”
 
 **问题**：提供的 URL 无效。
 
-**解决方法**：检查提供的所有 URL。
+**解决方案**：检查提供的所有 URL。
 确保所有 URL 都解析为扩展可在远程计算机上访问的有效位置。
 
-### <a name="invalid-registrationkey-type"></a>无效 RegistrationKey 类型
+### <a name="invalid-registrationkey-type"></a>RegistrationKey 类型无效
 
-“PSCredential 类型的参数 RegistrationKey 的类型无效。”
+“类型 PSCredential 的 RegistrationKey 参数类型无效。”
 
-**问题**：protectedSettings.configurationArguments 中的 *RegistrationKey* 值不能以 PSCredential 以外的任何类型提供。
+**问题**：protectedSettings.configurationArguments 中的 *RegistrationKey* 值不能提供为 PSCredential 以外的任何类型。
 
-**解决方法**：使用以下格式将 RegistrationKey 的 protectedSettings.configurationArguments 条目更改为 PSCredential 类型：
+**解决方案**：将 RegistrationKey 的 protectedSettings.configurationArguments 条目更改为使用以下格式的 PSCredential 类型：
 
 ```json
 "configurationArguments": {
@@ -393,16 +393,16 @@ DSC 扩展继承默认扩展属性。
 
 **问题**：*ConfigurationArguments* 属性无法解析为**哈希表**对象。
 
-**解决方法**：将 *ConfigurationArguments* 属性设置为**哈希表**。
+**解决方案**：将 *ConfigurationArguments* 属性设置为**哈希表**。
 遵循上述示例中提供的格式。 请注意引号、逗号和括号。
 
 ### <a name="duplicate-configurationarguments"></a>重复的 ConfigurationArguments
 
-“在公共和受保护的 configurationArguments 中发现重复的参数‘{0}’”
+“在公共和受保护的 configurationArguments 中找到重复的参数 '{0}'”
 
 **问题**：公共设置中的 *ConfigurationArguments* 和受保护设置中的 *ConfigurationArguments* 包含同名属性。
 
-**解决方法**：删除其中一个重复的属性。
+**解决方案**：删除其中一个重复的属性。
 
 ### <a name="missing-properties"></a>缺少属性
 
