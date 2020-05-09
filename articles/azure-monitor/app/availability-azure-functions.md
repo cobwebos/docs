@@ -2,15 +2,15 @@
 title: 使用 Azure Functions 创建和运行自定义可用性测试
 description: 本文档将介绍如何创建包含 TrackAvailability （）的 Azure 函数，该函数将根据 TimerTrigger 函数中给定的配置定期运行。 此测试的结果将发送到 Application Insights 资源，你可以在其中查询可用性结果数据并对其发出警报。 自定义测试使你可以编写比使用门户 UI 更复杂的可用性测试、监视 Azure VNET 内的应用、更改终结点地址，或者在你的区域中不可用时创建可用性测试。
 ms.topic: conceptual
-author: morgangrobin
-ms.author: mogrobin
-ms.date: 11/22/2019
-ms.openlocfilehash: 476d66c51c10a5fcfb3cb0319c47b3338d28812c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+author: mrbullwinkle
+ms.author: mbullwin
+ms.date: 05/04/2020
+ms.openlocfilehash: 81040adf6cfbb8820ec7f306c7d614830e3a2613
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77665793"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791097"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>使用 Azure Functions 创建和运行自定义可用性测试
 
@@ -37,7 +37,7 @@ ms.locfileid: "77665793"
     - 默认情况下，在创建 Azure Functions 应用程序时，它将为你创建一个 Application Insights 资源。
     - 按照有关如何[创建 Azure Functions 资源和计时器触发函数](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function)（在清理之前停止）的说明进行操作。
 
-## <a name="sample-code"></a>代码示例
+## <a name="sample-code"></a>示例代码
 
 将下面的代码复制到 run.csx 文件中（这将替换预先存在的代码）。 为此，请进入 Azure Functions 应用程序，并选择左侧的计时器触发器函数。
 
@@ -160,12 +160,10 @@ public async static Task RunAvailbiltyTestAsync(ILogger log)
 若要确保一切正常，可以在 Application Insights 资源的 "可用性" 选项卡中查看图形。
 
 > [!NOTE]
-> 如果你在 runAvailabilityTest 中实现自己的业务逻辑，则会看到如以下屏幕截图中所示的成功结果，如果你没有这样做，则会看到失败的结果。
+> 如果你在 runAvailabilityTest 中实现自己的业务逻辑，则会看到如以下屏幕截图中所示的成功结果，如果你没有这样做，则会看到失败的结果。 用`TrackAvailability()`创建的测试将在测试名称旁显示为 "**自定义**"。
 
 >[!div class="mx-imgBorder"]
->![成功结果的 "可用性" 选项卡](media/availability-azure-functions/availtab.png)
-
-Azure Functions 使用在设置测试时，你会注意到，与在 "可用性" 选项卡中使用 "**添加测试**" 不同，你的测试的名称将不会出现，并且你将无法与之进行交互。 将显示结果，但会获得一个摘要视图，而不是通过门户创建可用性测试时获得的相同详细视图。
+>![成功结果的 "可用性" 选项卡](media/availability-azure-functions/availability-custom.png)
 
 若要查看端到端事务详细信息，请在 "深化到" 下选择 "**成功**" 或 "**失败**"，然后选择一个示例。 还可以通过选择关系图上的数据点来访问端到端事务详细信息。
 

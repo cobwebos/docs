@@ -3,17 +3,26 @@ title: 在 Azure Migrate 中添加评估/迁移工具
 description: 介绍如何创建 Azure Migrate 项目并添加评估/迁移工具。
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: 48bdea31d17ea1ddf0b983af962dce30b22d8dcf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1294831162df973e1f87052c1520d5d95990cf8f
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537723"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901192"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>第一次添加评估/迁移工具
 
 本文介绍如何首次将评估或迁移工具添加到[Azure Migrate](migrate-overview.md)项目。  
 Azure Migrate 提供了一个中心，用于跟踪对 Azure 的本地应用程序、工作负荷以及专用/公有云 Vm 的发现、评估和迁移。 该中心提供用于评估和迁移的 Azure Migrate 工具，以及其他工具和独立软件供应商（ISV）[产品](migrate-services-overview.md#isv-integration)。 
+
+## <a name="check-permissions-to-create-project"></a>检查创建项目的权限
+
+如果尚未创建 Azure Migrate 项目，请检查您是否具有正确的权限。
+
+1. 在 Azure 门户中打开订阅，然后选择“访问控制(IAM)”。 
+2. 在“检查访问权限”中找到相关的帐户，然后单击它以查看权限。  你应该拥有“参与者”或“所有者”权限。  
+    - 如果你刚刚创建了免费的 Azure 帐户，那么你就是订阅的所有者。
+    - 如果你不是订阅所有者，请让所有者分配该角色。
 
 ## <a name="create-a-project-and-add-a-tool"></a>创建项目并添加工具
 
@@ -66,4 +75,6 @@ Azure Migrate 提供了一个中心，用于跟踪对 Azure 的本地应用程�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何添加其他[评估](how-to-assess.md)和[迁移](how-to-migrate.md)工具。 
+- 开始[Azure Migrate：服务器评估](migrate-services-overview.md#azure-migrate-server-assessment-tool)或[Azure Migrate：服务器迁移](migrate-services-overview.md#azure-migrate-server-migration-tool)。
+- 如果添加了 ISV 工具或 Movere，请查看用于将工具链接到 Azure Migrate 的[步骤](prepare-isv-movere.md)。
+- 了解如何添加其他[评估](how-to-assess.md)和[迁移](how-to-migrate.md)工具。 
