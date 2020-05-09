@@ -5,27 +5,27 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 07/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7dc218416e3b91998a6f06a62670ff8d2158d533
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 8ca1bd7a724d3256bc2e171ce39fd6a06e2e5935
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509121"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779291"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>管理更改跟踪和清单
 
 添加要跟踪的新文件或注册表项时，Azure 自动化将为[更改跟踪和清单](change-tracking.md)功能启用此功能。 本文包括使用此功能的过程。
 
-## <a name="enable-the-full-change-tracking-and-inventory-solution"></a>启用完整更改跟踪和清单解决方案
+## <a name="enable-the-full-change-tracking-and-inventory-feature"></a>启用完整更改跟踪和清单功能
 
-如果已启用[Azure 安全中心文件完整性监视（FIM）](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)，可以使用以下所述的完整更改跟踪和清单解决方案。 此过程不会删除您的设置。
+如果已启用[Azure 安全中心文件完整性监视（FIM）](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)，可以使用如下所述的完整更改跟踪和清单功能。 此过程不会删除您的设置。
 
 > [!NOTE]
-> 启用完整更改跟踪和清单解决方案可能会产生额外费用。 请参阅[自动化定价](https://azure.microsoft.com/pricing/details/automation/)。
+> 启用 "完全更改跟踪和清单" 功能可能会导致额外的费用。 请参阅[自动化定价](https://azure.microsoft.com/pricing/details/automation/)。
 
 1. 通过导航到工作区并在[已安装的监视解决方案列表](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions)中找到该解决方案，删除该监视解决方案。
 2. 单击解决方案的名称以打开其 "摘要" 页，然后单击 "**删除**"，如[删除监视解决方案](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution)中所述。
-3. 若要重新启用解决方案，请导航到自动化帐户，并选择 "**配置管理**" 下的 "**更改跟踪**"。
+3. 若要重新启用更改跟踪和清单，请导航到自动化帐户，并选择 "**配置管理**" 下的 "**更改跟踪**"。
 4. 选择 "Log Analytics" 工作区和自动化帐户，确认工作区设置，然后单击 "**启用**"。
 
 ## <a name="onboard-machines-to-change-tracking-and-inventory"></a><a name="onboard"></a>要更改跟踪和清点的计算机上架
@@ -48,7 +48,7 @@ ms.locfileid: "82509121"
 3. 在 "工作区配置" 页上，选择 " **Windows 文件**"，然后单击 " **+ 添加**" 以添加要跟踪的新文件。
 4. 在 "为更改跟踪添加 Windows 文件" 窗格中，输入要跟踪的文件的信息，然后单击 "**保存**"。 下表定义了可用于信息的属性。
 
-    |properties  |说明  |
+    |属性  |说明  |
     |---------|---------|
     |已启用     | 如果应用了该设置，则为 True; 否则为 False。        |
     |项名称     | 要跟踪的文件的友好名称。        |
@@ -69,7 +69,7 @@ ms.locfileid: "82509121"
 3. 在 "工作区配置" 页上，选择 " **Linux 文件**"，然后单击 " **+ 添加**" 以添加要跟踪的新文件。
 4. 在 "为更改跟踪添加 Linux 文件" 窗格中，输入要跟踪的文件或目录的信息，然后单击 "**保存**"。 下表定义了可用于信息的属性。
 
-    |properties  |说明  |
+    |属性  |说明  |
     |---------|---------|
     |已启用     | 如果应用了该设置，则为 True; 否则为 False。        |
     |项名称     | 要跟踪的文件的友好名称。        |
@@ -139,7 +139,7 @@ ms.locfileid: "82509121"
 4. 单击 " **+ 添加**" 添加要跟踪的新注册表项。
 5. 在 "为更改跟踪添加 Windows 注册表" 窗格上，输入要跟踪的密钥信息，然后单击 "**保存**"。 下表定义了可用于信息的属性。
 
-    |properties  |说明  |
+    |属性  |说明  |
     |---------|---------|
     |已启用     | 如果应用了设置，则为 True; 否则为 False。        |
     |项名称     | 要跟踪的注册表项的友好名称。        |
