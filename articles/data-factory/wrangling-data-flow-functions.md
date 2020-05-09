@@ -7,16 +7,16 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 7235e95e5b33fb931411a51796a8dbec96c46355
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a0947a5e2b57f728023b0f923428814b3e439ec
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417651"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626677"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>整理数据流中的转换函数
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 通过 Azure 数据工厂中的整理数据流，可以在云规模进行无代码的敏捷数据准备和整理。 整理数据流与[Power Query Online](https://docs.microsoft.com/powerquery-m/power-query-m-reference)集成，使 Power Query M 功能可用于通过 spark 执行的数据整理。 
 

@@ -14,16 +14,16 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jonbeck
-ms.openlocfilehash: 73a878d791997169b0823bb949e78bdced77cae6
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 5d36ba05d2138a06ebb2ef4e49aadb6032b62b92
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509680"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82627035"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU 优化虚拟机大小
 
-GPU 优化 VM 大小是具有单个或多个 NVIDIA GPU 的专用虚拟机。 这些大小是针对计算密集型、图形密集型和可视化工作负荷设计的。 本文介绍有关 GPU、vCPU、数据磁盘和 NIC 的数量和类型的信息。 此分组中的每个大小还包括存储吞吐量及网络带宽。
+GPU 优化 VM 大小是专用虚拟机，可以使用单个、多个或部分 Gpu。 这些大小是针对计算密集型、图形密集型和可视化工作负荷设计的。 本文介绍有关 GPU、vCPU、数据磁盘和 NIC 的数量和类型的信息。 此分组中的每个大小还包括存储吞吐量及网络带宽。
 
 - [NC 系列](nc-series.md)、 [NCv2 系列](ncv2-series.md)、 [NCv3 系列](ncv3-series.md)大小针对计算密集型和网络密集型应用程序和算法进行了优化。 一些示例包括基于 CUDA 和 OpenCL 的应用程序以及模拟、AI 和深度学习。 NCv3 系列专用于采用 NVIDIA Tesla V100 GPU 的高性能计算工作负载。 NC 系列使用 Intel 2690 v3 2.60 GHz v3 （Haswell）处理器，NCv2 系列和 NCv3 系列 Vm 使用 Intel 至强 E5-2690 v4 （Broadwell）处理器。
 
@@ -37,11 +37,11 @@ GPU 优化 VM 大小是具有单个或多个 NVIDIA GPU 的专用虚拟机。 �
 
 若要利用 Azure N 系列 Vm 的 GPU 功能，必须安装 NVIDIA 或 AMD GPU 驱动程序。
 
-[NVIDIA GPU 驱动程序扩展](/azure/virtual-machines/extensions/hpccompute-gpu-windows)可在 N 系列 VM 上安装适当的 NVIDIA CUDA 或 GRID 驱动程序。 请使用 Azure 门户或工具（例如 Azure PowerShell 或 Azure 资源管理器模板）安装或管理该扩展。 有关受支持的操作系统和部署步骤，请参阅 [NVIDIA GPU 驱动程序扩展文档](/azure/virtual-machines/extensions/hpccompute-gpu-windows)。 有关 VM 扩展的常规信息，请参阅 [Azure 虚拟机扩展和功能](/azure/virtual-machines/extensions/overview)。
+- 对于 NVIDIA Gpu 支持的 Vm， [NVIDIA Gpu 驱动程序扩展](/azure/virtual-machines/extensions/hpccompute-gpu-windows)会安装适当的 nvidia CUDA 或网格驱动程序。 请使用 Azure 门户或工具（例如 Azure PowerShell 或 Azure 资源管理器模板）安装或管理该扩展。 有关受支持的操作系统和部署步骤，请参阅 [NVIDIA GPU 驱动程序扩展文档](/azure/virtual-machines/extensions/hpccompute-gpu-windows)。 有关 VM 扩展的常规信息，请参阅 [Azure 虚拟机扩展和功能](/azure/virtual-machines/extensions/overview)。
 
-如果选择手动安装 NVIDIA GPU 驱动程序，请参阅适用于[Windows 的 n 系列 gpu 驱动程序设置](/azure/virtual-machines/windows/n-series-driver-setup)或适用于[Linux 的 n 系列 gpu 驱动程序设置](/azure/virtual-machines/linux/n-series-driver-setup)，以支持操作系统、驱动程序、安装和验证步骤。
+   或者，你可以手动安装 NVIDIA GPU 驱动程序。 请参阅[在运行 Windows 的 n 系列 vm 上安装 NVIDIA gpu 驱动程序](/azure/virtual-machines/windows/n-series-driver-setup)或[在运行 Linux 的 n 系列 VM 上安装 nvidia gpu 驱动](/azure/virtual-machines/linux/n-series-driver-setup)程序，以支持操作系统、驱动程序、安装和验证步骤。
 
-若要手动安装 AMD GPU 驱动程序，请参阅适用于[Windows 的 N 系列 AMD gpu 驱动程序安装](/azure/virtual-machines/windows/n-series-amd-driver-setup)程序，以获取支持的操作系统、驱动程序、安装和验证步骤。
+- 对于 AMD Gpu 支持的 Vm，请参阅[在运行 Windows 的 N 系列 vm 上安装 AMD GPU 驱动程序](/azure/virtual-machines/windows/n-series-amd-driver-setup)以获取支持的操作系统、驱动程序、安装和验证步骤。
 
 ## <a name="deployment-considerations"></a>部署注意事项
 

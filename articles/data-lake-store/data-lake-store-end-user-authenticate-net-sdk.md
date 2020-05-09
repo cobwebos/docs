@@ -1,22 +1,17 @@
 ---
-title: 最终用户身份验证：对 Azure Data Lake Storage Gen1 结合使用 Azure Active Directory 和 .NET SDK | Microsoft Docs
+title: 最终用户身份验证-带有 Data Lake Storage Gen1 的 .NET-Azure
 description: 了解如何结合使用 .NET SDK 和 Azure Active Directory 进行 Azure Data Lake Storage Gen1 最终用户身份验证
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: cgronlun
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 215b839c21c2590c08ac2f4250086eaf97914ce1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 37507f686ad2cf3fc66087b89ae77242ec79afdd
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "66243707"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688158"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>使用 .NET SDK 进行 Azure Data Lake Storage Gen1 最终用户身份验证
 > [!div class="op_single_selector"]

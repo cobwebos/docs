@@ -10,35 +10,40 @@ manager: anandsub
 ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/09/2019
-ms.openlocfilehash: 3007865c15ceb03b104282c29179ec59a8196b38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: f327844be57d7f8e177f3bf72b1e3b56c5147e00
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81604586"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629314"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure 数据工厂中的源代码管理
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure 数据工厂用户界面体验（UX）有两种可用于视觉创作的体验：
+默认情况下，Azure 数据工厂用户界面体验（UX）作者直接针对数据工厂服务。 此体验具有以下限制：
 
-- 直接使用数据工厂服务
-- 创作 Azure Repos Git 或 GitHub 集成
+- 数据工厂服务不包括存储所做的更改的 JSON 实体的存储库。 保存更改的唯一方法是通过 "**全部发布**" 按钮，并将所有更改直接发布到数据工厂服务。
+- 数据工厂服务未针对协作和版本控制进行优化。
+
+为了提供更好的创作体验，Azure 数据工厂允许使用 Azure Repos 或 GitHub 配置 Git 存储库。 Git 是一种版本控制系统，可用于更轻松地进行更改跟踪和协作。 本教程概述了如何在 git 存储库中配置和工作，并突出显示了最佳实践和故障排除指南。
 
 > [!NOTE]
-> Azure 政府版云仅支持直接在数据工厂服务中进行创作。
+> Azure 政府版云中未提供 azure 数据工厂 git 集成。
 
-## <a name="author-directly-with-the-data-factory-service"></a>直接使用数据工厂服务
+## <a name="advantages-of-git-integration"></a>Git 集成的优点
 
-直接在数据工厂服务中创作时，保存更改的唯一方法是通过 "**全部发布**" 按钮。 单击后，所做的所有更改都将直接发布到数据工厂服务。 
+下面列出了 git 集成为创作体验提供的一些优点：
 
-![发布模式](media/author-visually/data-factory-publish.png)
-
-直接创作数据工厂服务具有以下限制：
-
-- 数据工厂服务不包括存储所做的更改的 JSON 实体的存储库。
-- 数据工厂服务未优化协作或版本控制。
+-   **源代码管理：** 随着数据工厂工作负荷变得至关重要，你需要将工厂与 Git 集成，以利用以下几个源代码管理的优点：
+    -   跟踪/审核更改的功能。
+    -   还原导致 bug 的更改的功能。
+-   **部分保存：** 针对数据工厂服务进行创作时，无法将更改保存为草稿，所有发布都必须通过数据工厂验证。 无论你的管道是否未完成，或者你不希望在计算机崩溃的情况下丢失更改，git 集成都允许对数据工厂资源进行增量更改，而不管它们处于何种状态。 通过配置 git 存储库，你可以保存更改，使你能够仅在测试了你对你的满意度所做的更改时发布。
+-   **协作和控制：** 如果有多个参与同一工厂的团队成员，则可能需要让你的团队成员通过代码审阅过程相互合作。 你还可以设置工厂，以便不是每个参与者都具有相同的权限。 某些团队成员可能只允许通过 Git 进行更改，并且仅允许团队中的某些人员将更改发布到工厂。
+-   **更好的 CI/CD：** 如果要部署到具有[持续交付过程](continuous-integration-deployment.md)的多个环境，git 集成使某些操作更容易。 部分此类操作包括：
+    -   将发布管道配置为在对 "dev" 工厂进行任何更改后自动触发。
+    -   自定义工厂中可用作资源管理器模板中的参数的属性。 仅将所需属性集保留为参数并将其他所有内容进行硬编码可能很有用。
+-   **更好的性能：** 带有 git 集成的平均工厂负载比针对数据工厂服务的一次创作快10倍。 性能改进是因为资源是通过 Git 下载的。
 
 > [!NOTE]
 > 如果配置了 Git 存储库，则在 Azure 数据工厂 UX 中，直接使用数据工厂服务进行创作是禁用的。 可以通过 PowerShell 或 SDK 直接对服务进行更改。
@@ -78,7 +83,7 @@ Azure 数据工厂用户界面体验（UX）有两种可用于视觉创作的体
 | **Azure Repos 组织** | Azure Repos 组织名称。 可以在 `https://{organization name}.visualstudio.com` 中找到 Azure Repos 组织名称。 可以[登录到 Azure Repos 组织](https://www.visualstudio.com/team-services/git/)来访问 Visual Studio 配置文件并查看存储库和项目。 | `<your organization name>` |
 | **ProjectName** | Azure Repos 项目名称。 可以在 `https://{organization name}.visualstudio.com/{project name}` 中找到 Azure Repos 项目名称。 | `<your Azure Repos project name>` |
 | **Event.pushnotification.repositoryname** | Azure Repos 代码存储库名称。 Azure Repos 项目包含 Git 存储库，随着项目的发展来管理源代码。 要么创建一个新的存储库，要么使用项目中已有的存储库。 | `<your Azure Repos code repository name>` |
-| **协作分支** | 将用于发布的 Azure Repos 协作分支。 该名称默认为 `master`。 如果希望从其他分支发布资源，可更改此设置。 | `<your collaboration branch name>` |
+| **协作分支** | 将用于发布的 Azure Repos 协作分支。 默认情况下， `master`它的。 如果希望从其他分支发布资源，可更改此设置。 | `<your collaboration branch name>` |
 | **根文件夹** | Azure Repos 协作分支中的根文件夹。 | `<your root folder name>` |
 | 确认选中“将现有的数据工厂资源导入存储库”选项。**** | 指定是否从 UX 创作画布**** 将现有数据工厂资源导入 Azure Repos Git 存储库。 选择相应的框以将你的数据工厂资源导入 JSON 格式关联的 Git 存储库。 此操作单独导出每个资源（即，链接的服务和数据集导出到单独的 JSON）。 如果未选中此框，不能导入现有的资源。 | 已选择（默认） |
 | **要将资源导入到的分支** | 指定要将数据工厂资源（管道、数据集、链接服务等）导入哪个分支。 可将资源导入以下分支之一：a. 协作；b. 新建；c. 使用现有项 |  |
@@ -88,7 +93,7 @@ Azure 数据工厂用户界面体验（UX）有两种可用于视觉创作的体
 
 ### <a name="use-a-different-azure-active-directory-tenant"></a>使用不同的 Azure Active Directory 租户
 
-可在不同的 Azure Active Directory 租户中创建 Azure Repos Git 存储库。 若要指定不同的 Azure AD 租户，必须对所用 Azure 订阅拥有管理员权限。
+Azure Repos Git 存储库可以位于不同的 Azure Active Directory 租户中。 若要指定不同的 Azure AD 租户，必须对所用 Azure 订阅拥有管理员权限。
 
 ### <a name="use-your-personal-microsoft-account"></a>使用 Microsoft 个人帐户
 
@@ -142,10 +147,10 @@ GitHub 与数据工厂的集成支持公共 GitHub （即[https://github.com](ht
 |:--- |:--- |:--- |
 | **存储库类型** | Azure Repos 代码存储库的类型。 | GitHub |
 | **使用 GitHub Enterprise** | 用于选择 GitHub Enterprise 的复选框 | 未选择（默认值） |
-| **GitHub Enterprise URL** | GitHub 企业根 URL （对于本地 GitHub 企业服务器必须为 HTTPS）。 例如：https://github.mydomain.com。 仅当选择了 "**使用 GitHub Enterprise** " 时才是必需的 | `<your GitHub enterprise url>` |                                                           
+| **GitHub Enterprise URL** | GitHub 企业根 URL （对于本地 GitHub 企业服务器必须为 HTTPS）。 例如：`https://github.mydomain.com`。 仅当选择了 "**使用 GitHub Enterprise** " 时才是必需的 | `<your GitHub enterprise url>` |                                                           
 | **GitHub 帐户** | GitHub 帐户名。 可从 https:\//github.com/{account name}/{repository name} 找到此名称。 导航到此页时，系统会提示输入 GitHub 帐户的 GitHub OAuth 凭据。 | `<your GitHub account name>` |
 | **存储库名称**  | GitHub 代码存储库名称。 GitHub 帐户包含用于管理源代码的 Git 存储库。 可以创建新存储库，或使用帐户中现有的存储库。 | `<your repository name>` |
-| **协作分支** | 将用于发布的 GitHub 协作分支。 默认情况下，它是 master。 如果希望从其他分支发布资源，可更改此设置。 | `<your collaboration branch>` |
+| **协作分支** | 将用于发布的 GitHub 协作分支。 默认情况下，它的主节点。 如果希望从其他分支发布资源，可更改此设置。 | `<your collaboration branch>` |
 | **根文件夹** | GitHub 协作分支中的根文件夹。 |`<your root folder name>` |
 | 确认选中“将现有的数据工厂资源导入存储库”选项。**** | 指定是否将现有数据工厂资源从 UX 创作画布导入到 GitHub 存储库中。 选择相应的框以将你的数据工厂资源导入 JSON 格式关联的 Git 存储库。 此操作单独导出每个资源（即，链接的服务和数据集导出到单独的 JSON）。 如果未选中此框，不能导入现有的资源。 | 已选择（默认） |
 | **要将资源导入到的分支** | 指定要将数据工厂资源（管道、数据集、链接服务等）导入哪个分支。 可将资源导入以下分支之一：a. 协作；b. 新建；c. 使用现有项 |  |
@@ -159,18 +164,6 @@ GitHub 与数据工厂的集成支持公共 GitHub （即[https://github.com](ht
 - 与数据工厂视觉创作工具的 GitHub 集成仅适用于数据工厂的公开版本。
 
 - 每个资源类型（如管道和数据集）最多可以从单个 GitHub 分支提取1000个实体。 如果达到此限制，则建议将资源拆分为单独的工厂。 Azure DevOps Git 没有此限制。
-
-## <a name="switch-to-a-different-git-repo"></a>切换到不同 Git 存储库
-
-若要切换到另一个 Git 存储库，请单击 "数据工厂概述" 页右上角的 "Git 存储库**设置**" 图标。 如果看不到该图标，请清除本地浏览器缓存。 选择该图标以删除与当前存储库的关联。
-
-![“Git”图标](media/author-visually/remove-repo.png)
-
-显示 "存储库设置" 窗格后，选择 "**删除 Git**"。 输入数据工厂名称，并单击 "**确认**" 以删除与数据工厂关联的 Git 存储库。
-
-![删除与当前 Git 存储库的关联](media/author-visually/remove-repo2.png)
-
-删除与当前存储库的关联后，可以将 Git 设置配置为使用不同的存储库，然后将现有的数据工厂资源导入到新的存储库。 
 
 ## <a name="version-control"></a>版本控制
 
@@ -188,7 +181,7 @@ GitHub 与数据工厂的集成支持公共 GitHub （即[https://github.com](ht
 
 ### <a name="configure-publishing-settings"></a>配置发布设置
 
-若要配置发布分支（即在其中保存资源管理器模板的分支），将 `publish_config.json` 文件添加到协作分支的根文件夹中。 数据工厂读取此文件，查找字段 `publishBranch`，并使用所提供的值创建新的分支（如果尚不存在）。 然后它将所有资源管理器模板都保存到指定位置。 例如：
+默认情况下，数据工厂生成已发布工厂的资源管理器模板，并将其保存到名`adf_public`为的分支中。 若要配置自定义发布分支，请`publish_config.json`将文件添加到协作分支的根文件夹中。 发布时，ADF 会读取此文件，查找字段`publishBranch`，并将所有资源管理器模板保存到指定位置。 如果该分支不存在，数据工厂会自动创建它。 下面是此文件的外观示例：
 
 ```json
 {
@@ -196,7 +189,7 @@ GitHub 与数据工厂的集成支持公共 GitHub （即[https://github.com](ht
 }
 ```
 
-当指定新的发布分支，数据工厂不会删除以前的发布分支。 如果要删除以前的发布分支，请手动将其删除。
+Azure 数据工厂一次只能有一个发布分支。 当指定新的发布分支，数据工厂不会删除以前的发布分支。 如果要删除以前的发布分支，请手动将其删除。
 
 > [!NOTE]
 > 加载工厂时数据工厂仅读取 `publish_config.json` 文件。 如果已在门户中加载工厂，请刷新浏览器，以便所做的更改生效。
@@ -214,17 +207,6 @@ GitHub 与数据工厂的集成支持公共 GitHub （即[https://github.com](ht
 > [!IMPORTANT]
 > 主分支不表示数据工厂服务中部署的内容。 必须将主分支手动发布到数据工厂服务**。
 
-## <a name="advantages-of-git-integration"></a>Git 集成的优点
-
--   **源代码管理**。 随着数据工厂工作负载变得至关重要，你可能需要将工厂与 Git 集成，以利用以下几种源代码管理优势：
-    -   跟踪/审核更改的功能。
-    -   还原导致 bug 的更改的功能。
--   **部分保存**。 当你在工厂中做了大量更改时，你将会发现，在常规实时模式下，你无法将更改保存为草稿，因为你未准备就绪，或者你不希望在计算机崩溃时丢失所做的更改。 通过 Git 集成，可以继续以增量方式保存更改，并且仅在准备就绪后才发布到工厂。 Git 会充当工作的暂存位置，直到对更改进行测试并感到满意为止。
--   **协作和控制**。 如果有多个团队成员参与同一工厂，则可能需要通过代码评审流程让团队成员相互协作。 此外，还可以设置工厂，以免工厂的每一位参与者都有权部署到工厂。 可以仅允许团队成员通过 Git 进行更改，但只允许团队中的某些人将更改“发布”到工厂。
--   **显示差异**。 在 Git 模式下，你可以看到即将发布到工厂的有效负载的很大差异。 此差异显示了自上次发布到工厂后已修改/添加/删除的所有资源/实体。 基于此差异，可以继续进行发布，也可以返回并检查更改，稍后再回来。
--   **更好的 CI/CD**。 如果使用的是 Git 模式，则可以将发布管道配置为开发工厂中发生任何更改后立即自动触发。 此外，还可以自定义工厂中可用作资源管理器模板的参数的属性。 仅将所需属性集保留为参数并将其他所有内容进行硬编码可能很有用。
--   **提高性能**。 在 Git 模式下，平均工厂的加载速度快十倍于常规实时模式，因为资源是通过 Git 下载的。
-
 ## <a name="best-practices-for-git-integration"></a>Git 集成的最佳做法
 
 ### <a name="permissions"></a>权限
@@ -238,9 +220,9 @@ GitHub 与数据工厂的集成支持公共 GitHub （即[https://github.com](ht
 
 ### <a name="using-passwords-from-azure-key-vault"></a>使用 Azure Key Vault 中的密码
 
-建议使用 Azure Key Vault 来存储用于数据工厂链接服务的任何连接字符串或密码。 出于安全原因，我们不会在 Git 中存储任何此类机密信息，因此对链接服务所做的任何更改都会立即发布到 Azure 数据工厂服务。
+建议使用 Azure Key Vault 为数据工厂链接服务存储任何连接字符串或密码或托管标识身份验证。 出于安全原因，数据工厂不会在 Git 中存储机密。 对包含机密（如密码）的链接服务所做的任何更改都会立即发布到 Azure 数据工厂服务。
 
-使用 Key Vault 还可以更轻松地进行持续集成和部署，因为在资源管理器模板部署期间不必提供这些机密。
+使用 Key Vault 或 MSI 身份验证还可以更轻松地进行持续集成和部署，因为在资源管理器模板部署期间不必提供这些机密。
 
 ## <a name="troubleshooting-git-integration"></a>Git 集成故障排除
 
@@ -253,15 +235,25 @@ GitHub 与数据工厂的集成支持公共 GitHub （即[https://github.com](ht
 1. 创建用于将更改合并到协作分支的拉取请求 
 
 下面是可能导致过时发布分支的一些情况示例：
-- 用户有多个分支。 在一个功能分支中，它们删除了未 AKV 关联的链接服务（不会立即发布非 AKV 链接服务，而不考虑它们是否在 Git 中），并且永远不会将该功能分支合并到协作 brnach 中。
+- 用户有多个分支。 在一个功能分支中，它们删除了未 AKV 关联的链接服务（将立即发布非 AKV 链接服务，而不考虑它们是否在 Git 中，而不会立即发布，而不会将功能分支合并到协作分支中）。
 - 用户使用 SDK 或 PowerShell 修改了数据工厂
 - 用户将所有资源移至新的分支，并尝试第一次发布。 导入资源时应手动创建链接服务。
 - 用户手动上传非 AKV 链接服务或 Integration Runtime JSON。 它们从另一个资源（例如数据集、链接服务或管道）引用资源。 通过 UX 创建的非 AKV 链接服务立即发布，因为需要对凭据进行加密。 如果上传引用此链接服务的数据集，并尝试发布，则 UX 将允许其，因为它存在于 git 环境中。 它将在发布时被拒绝，因为它在数据工厂服务中不存在。
 
-## <a name="provide-feedback"></a>提供反馈
-选择“反馈”可发表有关功能的看法，或者告知 Microsoft 出现了工具问题****：
+## <a name="switch-to-a-different-git-repository"></a>切换到另一个 Git 存储库
 
-![反馈](media/author-visually/provide-feedback.png)
+若要切换到另一个 Git 存储库，请单击 "数据工厂概述" 页右上角的 "Git 存储库**设置**" 图标。 如果看不到该图标，请清除本地浏览器缓存。 选择该图标以删除与当前存储库的关联。
+
+![“Git”图标](media/author-visually/remove-repo.png)
+
+显示 "存储库设置" 窗格后，选择 "**删除 Git**"。 输入数据工厂名称，并单击 "**确认**" 以删除与数据工厂关联的 Git 存储库。
+
+![删除与当前 Git 存储库的关联](media/author-visually/remove-repo2.png)
+
+删除与当前存储库的关联后，可以将 Git 设置配置为使用不同的存储库，然后将现有的数据工厂资源导入到新的存储库。
+
+> [!IMPORTANT]
+> 从数据工厂中删除 Git 配置不会从存储库中删除任何内容。 工厂将包含所有已发布的资源。 你可以继续直接针对服务编辑工厂。
 
 ## <a name="next-steps"></a>后续步骤
 
