@@ -3,14 +3,14 @@ title: 设置过渡环境
 description: 了解如何将应用部署到非生产槽并自动交换到生产环境中。 提高可靠性并消除部署中的应用停机时间。
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
-ms.date: 03/04/2020
+ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 21e025088e59c7f65f848b332ecb393b05918261
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 11e133a24ff728cc864e50e898e9db982b186337
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78300837"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597887"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure 应用服务中的过渡环境
 <a name="Overview"></a>
@@ -58,11 +58,11 @@ ms.locfileid: "78300837"
    
     ![部署槽标题](./media/web-sites-staged-publishing/StagingTitle.png)
 
-    过渡槽具有管理页面，就像任何其他应用服务应用一样。 可以更改此槽的配置。 槽的名称将出现在页面顶部，提醒你正在查看部署槽位。
+    过渡槽具有管理页面，就像任何其他应用服务应用一样。 可以更改此槽的配置。 为了提醒你正在查看部署槽，应用名称显示为** \<应用名称>/\<槽名称>**，应用类型为**应用服务（槽）**。 你还可以在资源组中将槽显示为单独的应用，具有相同的标识。
 
-6. 选择此槽资源页中的应用 URL。 部署槽有其自己的主机名，同时也是动态应用。 若要限制对部署槽的公共访问权限，请参阅 [Azure 应用服务 IP 限制](app-service-ip-restrictions.md)。
+6. 选择此槽资源页中的应用 URL。 部署槽有其自己的主机名，同时也是动态应用。 若要限制对部署槽的公共访问权限，请参阅[AZURE APP SERVICE IP 限制](app-service-ip-restrictions.md)。
 
-即使从其他槽克隆设置，新部署槽位也无内容。 例如，可以[使用 Git 发布到此槽](app-service-deploy-local-git.md)。 可以从其他存储库分支或不同的存储库部署到槽。 
+即使从其他槽克隆设置，新部署槽位也无内容。 例如，可以[通过 Git 发布到此槽](app-service-deploy-local-git.md)。 可以从其他存储库分支或不同的存储库部署到槽。
 
 <a name="AboutConfiguration"></a>
 
@@ -73,7 +73,7 @@ ms.locfileid: "78300837"
 交换两个槽时（通常是从过渡槽交换到生产槽），应用服务将执行以下操作，以确保目标槽不会出现停机：
 
 1. 将目标槽（例如生产槽）中的以下设置应用到源槽的所有实例： 
-    - [特定于槽的](#which-settings-are-swapped)应用设置和连接字符串（如果适用）。
+    - [槽特定的](#which-settings-are-swapped)应用设置和连接字符串（如果适用）。
     - [持续部署](deploy-continuous-deployment.md)设置（如果已启用）。
     - [应用服务身份验证](overview-authentication-authorization.md)设置（如果已启用）。
     
@@ -210,7 +210,7 @@ ms.locfileid: "78300837"
 
 还可以使用以下一项或两项[应用设置](configure-common.md)来自定义预热行为：
 
-- `WEBSITE_SWAP_WARMUP_PING_PATH`：用于预热站点的 ping 的路径。 通过指定以斜杠开头的自定义路径作为值来添加此应用设置。 示例为 `/statuscheck`。 默认值为 `/`。 
+- `WEBSITE_SWAP_WARMUP_PING_PATH`：用于预热站点的 ping 的路径。 通过指定以斜杠开头的自定义路径作为值来添加此应用设置。 例如 `/statuscheck`。 默认值为 `/`。 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`：用于预热操作的有效 HTTP 响应代码。 使用以逗号分隔的 HTTP 代码列表添加此应用设置。 例如 `200,202`。 如果返回的状态代码不在列表中，则预热和交换操作会停止。 默认情况下，所有响应代码都是有效的。
 
 > [!NOTE]
@@ -272,7 +272,7 @@ ms.locfileid: "78300837"
 
 ## <a name="delete-a-slot"></a>删除槽
 
-搜索并选择应用。 选择*\<要删除>*  > **概述**的**部署槽** > 槽。 在命令栏上选择“删除”。****  
+搜索并选择应用。 选择*\<要删除>*  > **概述**的**部署槽** > 槽。 应用程序类型显示为**应用服务（槽）** ，提醒你正在查看部署槽位。 在命令栏上选择“删除”。****  
 
 ![删除部署槽](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 

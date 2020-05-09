@@ -4,10 +4,10 @@ description: 语言理解 (LUIS) 是一种基于云的 API 服务，可在用户
 ms.topic: overview
 ms.date: 02/23/2020
 ms.openlocfilehash: 98fb936422f8e23e728efea19fa2cd75d90fac57
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80053351"
 ---
 # <a name="what-is-language-understanding-luis"></a>什么是语言理解 (LUIS)？

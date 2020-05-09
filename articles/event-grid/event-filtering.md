@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: spelluru
-ms.openlocfilehash: ab5dd716253875e4a992b94a4e143cb3e806a4b0
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 0f503b21d5a7d0fdfbee79354c198775789c0b91
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509646"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82888783"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>了解事件网格订阅的事件筛选
 
@@ -121,13 +121,13 @@ ms.locfileid: "82509646"
 
 所有字符串比较都**不**区分大小写。
 
-### <a name="key"></a>键
+### <a name="key"></a>Key
 
 对于事件网格架构中的事件，请使用以下键值：
 
 * ID
 * 主题
-* Subject
+* 使用者
 * EventType
 * DataVersion
 * 事件数据（如 Data.key1）
@@ -146,10 +146,10 @@ ms.locfileid: "82509646"
 
 值可以是：
 
-* 数字
-* 字符串
+* number
+* string
 * boolean
-* 数组
+* array
 
 ### <a name="limitations"></a>限制
 
@@ -158,6 +158,7 @@ ms.locfileid: "82509646"
 * 每个事件网格订阅有五个高级筛选器
 * 每个字符串值有 512 个字符
 * “in”和“not in”运算符有 5 个值********
+* 其中包含** `.` （点）** 字符的键。 例如： `http://schemas.microsoft.com/claims/authnclassreference` 或 `john.doe@contoso.com` 。 当前不支持密钥中的转义符。 
 
 可以在多个筛选器中使用相同的键。
 

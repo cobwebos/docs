@@ -4,20 +4,19 @@ description: 本文介绍将 cloud HR 系统（如 Workday 和 SuccessFactors）
 services: active-directory
 author: martincoetzer
 manager: CelesteDG
-tags: azuread
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/22/2019
 ms.author: martinco
-ms.reviewer: arvindha
-ms.openlocfilehash: 28abe2dfa5a1a13ba09e20202180cb5e47d94072
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: arvindha, celested
+ms.openlocfilehash: 86b858b628dc2ed9eac730d4c3f090f4d7d6c7e2
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77522426"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593295"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>规划云 HR 应用程序以 Azure Active Directory 用户预配
 
@@ -80,7 +79,7 @@ HR 驱动的 IT 预配的这一功能提供以下重要的业务优势：
 
 还需要一个有效的 Azure AD Premium P1 或更高版本的订阅许可证，该许可证将源自 cloud HR 应用并设置为 Active Directory 或 Azure AD。 云 HR 应用中拥有的任何不正确的许可证数可能会导致用户预配时出现错误。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 - Azure AD 全局管理员访问权限来配置 Azure AD Connect 预配代理。
 - Cloud HR 应用的测试和生产实例。
@@ -88,7 +87,7 @@ HR 驱动的 IT 预配的这一功能提供以下重要的业务优势：
 - 要 Active Directory 的用户预配，需要运行 Windows Server 2012 或更高版本的服务器来承载[Azure AD Connect 预配代理](https://go.microsoft.com/fwlink/?linkid=847801)。
 - 用于在 Active Directory 和 Azure AD 之间同步用户的[Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) 。
 
-### <a name="training-resources"></a>定型资源
+### <a name="training-resources"></a>培训资源
 
 | **资源** | **链接和说明** |
 |:-|:-|
@@ -122,7 +121,7 @@ HR 驱动的 IT 预配的这一功能提供以下重要的业务优势：
 
 ## <a name="plan-the-deployment-project"></a>规划部署项目
 
-在环境中确定此部署的策略时，请考虑你的组织需求。
+在环境中确定此部署的策略时，请考虑组织的需求。
 
 ### <a name="engage-the-right-stakeholders"></a>吸引适当的利益干系人
 
@@ -130,7 +129,7 @@ HR 驱动的 IT 预配的这一功能提供以下重要的业务优势：
 
 包括 HR 组织的代表，可以提供现有 HR 业务流程的输入和工作人员标识以及作业数据处理要求。
 
-### <a name="plan-communications"></a>计划通信
+### <a name="plan-communications"></a>规划沟通
 
 沟通对于任何新服务的成功至关重要。 主动与用户交流其体验的发生时间和方式。 如果遇到问题，请让他们知道如何获得支持。
 
@@ -354,7 +353,7 @@ SSPR 是 IT 管理员允许用户重置其密码或解锁其帐户的简单方�
 
 在部署新服务的过程中，通常需要安全审查。 如果需要安全评审或未执行安全检查，请参阅许多 Azure AD 白皮书，这些[白皮书](https://www.microsoft.com/download/details.aspx?id=36391)提供标识即服务的概述。
 
-### <a name="plan-rollback"></a>计划回滚
+### <a name="plan-rollback"></a>规划回滚
 
 云 HR 用户预配实现在生产环境中可能无法正常工作。 如果是这样，以下回滚步骤可以帮助您恢复到以前已知的良好状态。
 

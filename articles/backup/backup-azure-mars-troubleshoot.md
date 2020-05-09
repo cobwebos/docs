@@ -4,12 +4,12 @@ description: 本文介绍如何排查 Azure 备份代理的安装和注册问题
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: a15f8a4531bc31dab5b99e125454b0d9c4fd4521
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1d1397519b39ffbc439cdd0d3e78d9b553ea302e
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80421279"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598005"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>排查 Microsoft Azure 恢复服务 (MARS) 代理问题
 
@@ -24,6 +24,7 @@ ms.locfileid: "80421279"
 - 确保 MARS 正在运行（在服务控制台中）。 如果需要，请在重启后重试操作。
 - [确保暂存文件夹位置有 5% 到 10% 的可用卷空间](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#whats-the-minimum-size-requirement-for-the-cache-folder)
 - [检查其他进程或防病毒软件是否正在干扰 Azure 备份](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)。
+- 如果备份作业已完成但出现警告，请参阅[备份作业已完成，但出现警告](#backup-jobs-completed-with-warning)
 - 如果计划的备份失败，但手动备份可正常进行，请参阅[备份不按计划运行](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#backups-dont-run-according-to-schedule)。
 - 确保 OS 中已安装最新的更新。
 - [确保从备份中排除使用不受支持的属性的不受支持驱动器和文件](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup)。
@@ -37,12 +38,12 @@ ms.locfileid: "80421279"
 
 ## <a name="invalid-vault-credentials-provided"></a>提供的保管库凭据无效
 
-**错误消息**：提供的保管库凭据无效。 该文件已损坏，或者没有与恢复服务关联的最新凭据。 (ID:34513)
+**错误消息**：提供的保管库凭据无效。 该文件已损坏，或者没有与恢复服务关联的最新凭据。 (ID: 34513)
 
 | 原因 | 建议的操作 |
 | ---     | ---    |
-| **保管库凭据无效** <br/> <br/> 保管库凭据文件可能已损坏或过期。 （例如，它们可能是在注册时的 48 以前下载的。）| 请从 Azure 门户上的恢复服务保管库下载新凭据。 （请参阅[下载 MARS 代理](https://docs.microsoft.com/azure/backup/install-mars-agent#download-the-mars-agent)部分中的步骤 6。）然后相应地执行以下步骤： <ul><li> 如果已安装并注册 MARS，请打开 Microsoft Azure 备份代理 MMC 控制台，然后在“操作”窗格中选择“注册服务器”，以使用新凭据完成注册。   <br/> <li> 如果新的安装失败，请尝试使用新凭据重新安装。</ul> **注意**：如果已下载多个保管库凭据文件，在接下来的 48 小时，只有最新文件才有效。 我们建议下载新的保管库凭据文件。
-| **代理服务器/防火墙正在阻止注册** <br/>或 <br/>**未建立 Internet 连接** <br/><br/> 如果计算机或代理服务器限制了 Internet 连接，并且你无法确保能够访问所需的 URL，则注册将会失败。| 请执行以下步骤：<br/> <ul><li> 与 IT 团队协作，确保系统已建立 Internet 连接。<li> 如果没有代理服务器，请确保在注册代理时不要选择代理选项。 [检查代理设置](#verifying-proxy-settings-for-windows)。<li> 如果你使用了防火墙/代理服务器，请与网络团队协作，确保这些 URL 和 IP 地址能够访问：<br/> <br> **URL**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP 地址**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>完成上述故障排除步骤后，再次尝试注册。<br></br> 如果是通过 Azure ExpressRoute 进行连接，请确保按照[Azure expressroute 支持](backup-support-matrix-mars-agent.md#azure-expressroute-support)中的说明配置设置。
+| **保管库凭据无效** <br/> <br/> 保管库凭据文件可能已损坏或过期。 （例如，它们可能是在注册时的 48 以前下载的。）| 请从 Azure 门户上的恢复服务保管库下载新凭据。 （请参阅[下载 MARS agent](https://docs.microsoft.com/azure/backup/install-mars-agent#download-the-mars-agent)部分中的步骤6。）然后，根据需要执行以下步骤： <ul><li> 如果已安装并注册 MARS，请打开 Microsoft Azure 备份代理 MMC 控制台，然后在“操作”窗格中选择“注册服务器”，以使用新凭据完成注册。******** <br/> <li> 如果新的安装失败，请尝试使用新凭据重新安装。</ul> **注意**：如果已下载多个保管库凭据文件，则在接下来的48小时内仅可使用最新的文件。 我们建议下载新的保管库凭据文件。
+| **代理服务器/防火墙正在阻止注册** <br/>or <br/>**未建立 Internet 连接** <br/><br/> 如果计算机或代理服务器限制了 Internet 连接，并且你无法确保能够访问所需的 URL，则注册将会失败。| 请执行以下步骤：<br/> <ul><li> 与 IT 团队协作，确保系统已建立 Internet 连接。<li> 如果没有代理服务器，请确保在注册代理时不要选择代理选项。 [检查代理设置](#verifying-proxy-settings-for-windows)。<li> 如果你使用了防火墙/代理服务器，请与网络团队协作，确保这些 URL 和 IP 地址能够访问：<br/> <br> **Url**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP 地址**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>完成上述故障排除步骤后，再次尝试注册。<br></br> 如果通过 Azure ExpressRoute 连接，请确保按照[Azure expressroute 支持](backup-support-matrix-mars-agent.md#azure-expressroute-support)中的说明配置设置。
 | **防病毒软件正在阻止注册** | 如果你在服务器上安装了防病毒软件，请将所需的排除规则添加到这些文件和文件夹的防病毒扫描项中： <br/><ul> <li> CBengine.exe <li> CSC.exe<li> scratch 文件夹。 其默认位置为 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。 <li> bin 文件夹 C:\Program Files\Microsoft Azure Recovery Services Agent\Bin。
 
 ### <a name="additional-recommendations"></a>其他建议
@@ -73,7 +74,33 @@ ms.locfileid: "80421279"
 
 | 错误  | 可能的原因 | 建议的操作 |
 | ---     | ---     | ---    |
-| <br /><ul><li>Microsoft Azure 恢复服务代理无法连接到 Microsoft Azure 备份。 （ID：100050）检查你的网络设置，并确保你能够连接到 internet。<li>(407) 需要代理身份验证。 |代理正在阻止连接。 |  <ul><li>在 internet Explorer 中，前往 "**工具** > " "**internet 选项** > " "**安全** > **internet**"。 选择“自定义级别”，向下滚动到“文件下载”部分。******** 选择“启用”****。<p>可能还需要将这些 [URL 和 IP 地址](install-mars-agent.md#verify-internet-access)添加到 Internet Explorer 中的受信任站点。<li>更改设置以使用代理服务器。 然后提供代理服务器详细信息。<li> 如果计算机的 Internet 访问状态受限，请确保计算机或代理上的防火墙设置允许以下 [URL 和 IP 地址](install-mars-agent.md#verify-internet-access)： <li>如果服务器中安装了防病毒软件，请从防病毒软件扫描中排除这些文件： <ul><li>CBEngine.exe（而非 dpmra.exe）。<li>CSC.exe（与 .NET Framework 相关）。 服务器上安装的每个 .NET Framework 版本都有一个 CSC.exe。 排除受影响服务器上的所有 .NET Framework 版本的 CSC.exe 文件。 <li>scratch 文件夹或缓存位置。 <br>scratch 文件夹的默认位置或缓存路径为 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。<li>bin 文件夹 C:\Program Files\Microsoft Azure Recovery Services Agent\Bin。
+| <br /><ul><li>Microsoft Azure 恢复服务代理无法连接到 Microsoft Azure 备份。 （ID：100050）检查你的网络设置，并确保你能够连接到 internet。<li>(407) 需要代理身份验证。 |代理正在阻止连接。 |  <ul><li>在 internet Explorer 中，前往 "**工具** > " "**internet 选项** > " "**安全** > **internet**"。 选择“自定义级别”，向下滚动到“文件下载”部分。******** 选择“启用”  。<p>可能还需要将这些 [URL 和 IP 地址](install-mars-agent.md#verify-internet-access)添加到 Internet Explorer 中的受信任站点。<li>更改设置以使用代理服务器。 然后提供代理服务器详细信息。<li> 如果计算机的 Internet 访问状态受限，请确保计算机或代理上的防火墙设置允许以下 [URL 和 IP 地址](install-mars-agent.md#verify-internet-access)： <li>如果服务器中安装了防病毒软件，请从防病毒软件扫描中排除这些文件： <ul><li>CBEngine.exe（而非 dpmra.exe）。<li>CSC.exe（与 .NET Framework 相关）。 服务器上安装的每个 .NET Framework 版本都有一个 CSC.exe。 排除受影响服务器上的所有 .NET Framework 版本的 CSC.exe 文件。 <li>scratch 文件夹或缓存位置。 <br>scratch 文件夹的默认位置或缓存路径为 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。<li>bin 文件夹 C:\Program Files\Microsoft Azure Recovery Services Agent\Bin。
+
+## <a name="backup-jobs-completed-with-warning"></a>备份作业已完成，但出现警告
+
+- 当 MARS 代理在备份过程中循环访问文件和文件夹时，可能会遇到各种情况，这可能会导致备份标记为已完成但出现警告。 在这些情况下，作业显示为 "已完成" 但出现警告。 这很好，但这意味着至少有一个文件无法备份。 这样，作业就会跳过该文件，但会在数据源中备份相关的所有其他文件。
+
+  ![备份作业已完成，但出现警告](./media/backup-azure-mars-troubleshoot/backup-completed-with-warning.png)
+
+- 可能导致备份跳过文件的情况包括：
+  - 不受支持的文件属性（例如：在 OneDrive 文件夹中，压缩流，重新分析点）。 有关完整列表，请参阅[支持矩阵](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent#supported-file-types-for-backup)。
+  - 文件系统问题
+  - 其他干扰的进程（例如：包含文件句柄的防病毒软件可能会阻止 MARS 代理访问文件）
+  - 应用程序锁定的文件  
+
+- 备份服务会将日志文件中的这些文件标记为失败，以下命名约定为： *LastBackupFailedFilesxxxx*在*C:\Program Files\Microsoft Azure Recovery 服务 Agent\temp*文件夹下。
+- 若要解决此问题，请查看日志文件以了解问题的性质：
+
+  | 错误代码             | 原因                                             | 建议                                              |
+  | ---------------------- | --------------------------------------------------- | ------------------------------------------------------------ |
+  | 0x80070570             | 文件或目录已损坏且无法读取。 | 在源卷上运行**chkdsk** 。                             |
+  | 0x80070002、0x80070003 | 系统找不到指定的文件。         | [确保暂存文件夹未满](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)  <br><br>  检查是否存在配置了暂存空间的卷（未删除）  <br><br>   [确保已在计算机上安装的防病毒程序中排除了 MARS 代理](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)  |
+  | 0x80070005             | 拒绝访问                                    | [检查防病毒或其他第三方软件是否正在阻止访问](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)     |
+  | 0x8007018b             | 拒绝访问云文件。                | OneDrive 文件、Git 文件或计算机上可处于脱机状态的任何其他文件 |
+
+- 你可以使用 "[将排除规则添加到现有策略](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#add-exclusion-rules-to-existing-policy)"，从备份策略中排除不受支持的、缺少的或已删除的文件，以确保备份成功。
+
+- 避免在顶级文件夹中删除并重新创建具有相同名称的受保护文件夹。 这样做可能会导致备份完成，并出现警告，并出现错误 "*检测到严重的不一致，因此无法复制更改。*  如果需要删除和重新创建文件夹，请考虑在受保护的顶级文件夹下的子文件夹中执行此操作。
 
 ## <a name="failed-to-set-the-encryption-key-for-secure-backups"></a>未能设置安全备份的加密密钥
 
@@ -121,7 +148,7 @@ ms.locfileid: "80421279"
  Get-ExecutionPolicy -List
 
 Set-ExecutionPolicy Unrestricted
-```
+ ```
 
 - 确保 PowerShell 模块的 MSOnlineBackup 文件无缺失或损坏。 如果有任何文件缺失或损坏，请执行以下步骤：
 
@@ -138,7 +165,6 @@ Set-ExecutionPolicy Unrestricted
 错误 | 可能的原因 | 建议的操作
 --- | --- | ---
 由于发生内部服务错误 "未在服务戳记中预配资源"，当前操作失败。 请稍后重试操作。 （ID：230006） | 已重命名受保护的服务器。 | <li> 将服务器重命名为已向保管库注册的原始名称。 <br> <li> 用新名称将服务器重新注册到保管库。
-
 
 ## <a name="troubleshoot-restore-problems"></a>排查还原问题
 
@@ -172,7 +198,7 @@ Set-ExecutionPolicy Unrestricted
 
 如果缓存文件夹（也称为暂存文件夹）配置不正确、缺少必备项或具有受限访问权限，则备份操作可能会失败。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 要使 MARS 代理操作成功，缓存文件夹需要符合以下要求：
 
@@ -206,25 +232,25 @@ Set-ExecutionPolicy Unrestricted
 
 ### <a name="salchecksumstoreinitializationfailed"></a>SalChecksumStoreInitializationFailed
 
-错误消息 | 建议操作 |
+错误消息 | 建议操作
 -- | --
 Microsoft Azure 恢复服务代理无法访问存储在暂存位置的备份校验和 | 若要解决此问题，请执行以下，然后重新启动服务器 <br/> - [检查是否存在防病毒或其他进程锁定暂存位置文件](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [检查暂存位置是否有效并可由 mars 代理访问。](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
 
 ### <a name="salvhdinitializationerror"></a>SalVhdInitializationError
 
-错误消息 | 建议操作 |
+错误消息 | 建议操作
 -- | --
 Microsoft Azure 恢复服务代理无法访问暂存位置，因此无法初始化 VHD | 若要解决此问题，请执行以下，然后重新启动服务器 <br/> - [检查是否存在防病毒或其他进程锁定暂存位置文件](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [检查暂存位置是否有效并可由 mars 代理访问。](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
 
 ### <a name="sallowdiskspace"></a>SalLowDiskSpace
 
-错误消息 | 建议操作 |
+错误消息 | 建议操作
 -- | --
 备份失败，因为暂存文件夹所在的卷中有足够的存储空间 | 若要解决此问题，请验证以下步骤，然后重试该操作：<br/>- [确保 MARS 代理是最新的](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)<br/> - [验证并解决影响备份暂存空间的存储问题](#prerequisites)
 
 ### <a name="salbitmaperror"></a>SalBitmapError
 
-错误消息 | 建议操作 |
+错误消息 | 建议操作
 -- | --
 找不到文件中的更改。 这可能是由于各种原因。 请重试该操作 | 若要解决此问题，请验证以下步骤，然后重试该操作：<br/> - [确保 MARS 代理是最新的](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> - [验证并解决影响备份暂存空间的存储问题](#prerequisites)
 

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/29/2019
-ms.openlocfilehash: bbcbb19530aebe777a91cbe4c5487e1b50ace2e5
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: HT
+ms.openlocfilehash: 3b417e7c4589f3a4214400a877812d196a63349b
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559769"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82870035"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>创建翻转窗口触发器依赖项
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -90,7 +90,10 @@ ms.locfileid: "82559769"
 
 ## <a name="tumbling-window-self-dependency-properties"></a>翻转窗口自我依赖项属性
 
-对于在上一个窗口成功完成之前触发器不应转到下一个窗口的情况，请生成自我依赖项。 依赖于前一小时内自身运行是否成功的自我依赖项触发器将具有以下属性：
+如果触发器不应继续到下一个窗口，直到上一窗口成功完成，则生成一个自依赖项。 依赖项触发器的依赖项依赖项在前一小时内的以前运行是否成功，将具有以下代码中所示的属性。
+
+> [!NOTE]
+> 如果触发管道依赖于先前触发的 windows 中管道的输出，则建议只使用翻转窗口触发器自依赖项。 若要限制并行触发器运行，请设置最触发器并发。
 
 ```json
 {

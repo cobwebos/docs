@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b945beaa7497e1ad19315bacf1284dd0cbc24d6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f657e18d7185d6b3c63ac8f1424da9d36d4189e9
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81868078"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793034"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>优化 CloudSimple 私有云以安装 Oracle RAC
 
@@ -44,7 +44,7 @@ Oracle RAC 虚拟机具有多个磁盘，这些磁盘用于特定功能。  共�
 
 以下示例使用下表中定义的磁盘。
 
-| 磁盘                                      | 目的                                       | 共享磁盘 |
+| 磁盘                                      | 目标                                       | 共享磁盘 |
 |-------------------------------------------|-----------------------------------------------|-------------|
 | 操作系统                                        | 操作系统磁盘                         | 否          |
 | 格                                      | Oracle 网格软件的安装位置     | 否          |
@@ -244,7 +244,7 @@ Oracle 使用共享磁盘来存储数据、日志和重做日志文件。  可�
 VM 到主机关联规则确保 VM 在所需的主机上运行。  你可以在 vCenter 上定义规则，以确保 Oracle VM 在具有足够资源的主机上运行，并满足任何特定的许可要求。
 
 1. 在 CloudSimple 门户中，[升级](escalate-private-cloud-privileges.md)cloudowner 用户的权限。
-2. [登录到私有云的 vSphere 客户端](https://docs.azure.cloudsimple.com/vsphere-access)。
+2. 登录到私有云的 vSphere 客户端。
 3. 在 vSphere 客户端中，选择部署了 Oracle Vm 的群集，然后单击 "**配置**"。
 4. 在 "配置" 下，选择 " **VM/主机组**"。
 5. 单击“+”  。

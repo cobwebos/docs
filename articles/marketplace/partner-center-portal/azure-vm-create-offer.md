@@ -1,25 +1,25 @@
 ---
-title: 创建 Azure 虚拟机产品/服务-Azure Marketplace
-description: 了解如何在商业应用商店中创建虚拟机产品/服务。
+title: 在 Azure Marketplace 中创建 Azure 虚拟机产品/服务
+description: 了解如何使用所需 SKU 在 Azure Marketplace 中创建虚拟机产品/服务。
 author: emuench
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/10/2020
-ms.openlocfilehash: d598f741c5add58a89aa2b7aa01802a7e35f9a19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.openlocfilehash: 31b8960f5617566a72545510cf03771f7a3bfcbd
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869059"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82745011"
 ---
-# <a name="create-an-azure-virtual-machine-offer"></a>创建 Azure 虚拟机产品/服务
+# <a name="create-an-azure-virtual-machine-offer-in-the-azure-marketplace"></a>在 Azure Marketplace 中创建 Azure 虚拟机产品/服务
 
 > [!IMPORTANT]
 > 我们正在将 Azure VM 产品/服务的管理从云合作伙伴门户迁移到合作伙伴中心。 在迁移你的产品/服务之前，请继续按照云合作伙伴门户中 "[创建虚拟机产品/服务](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-offer)" 中的说明来管理你的产品/服务。
 
-本文介绍如何创建 Azure 虚拟机产品/服务并将其发布到[Azure Marketplace](https://azuremarketplace.microsoft.com/)。 它介绍了基于 Windows 和 Linux 的虚拟机，这些虚拟机包含一个操作系统、一个虚拟硬盘（VHD）和多达16个数据磁盘。
+本文介绍如何创建 Azure 虚拟机产品/服务并将其发布到[Azure Marketplace](https://azuremarketplace.microsoft.com/)。 它介绍了基于 Windows 和 Linux 的虚拟机，这些虚拟机包含一个操作系统、一个虚拟硬盘（VHD）和多达16个数据磁盘。 在开始之前，请[在合作伙伴中心创建一个商用 Marketplace 帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)（如果尚未这样做）。 确保你的帐户已在 "商用 marketplace 计划" 中注册。
 
 ## <a name="introduction"></a>简介
 
@@ -32,7 +32,7 @@ ms.locfileid: "81869059"
 - 从这些市场获取高质量的潜在顾客
 - 获取由 Microsoft 现场和电话销售团队升级的服务
 
-### <a name="before-you-begin"></a>在开始之前
+### <a name="before-you-begin"></a>开始之前
 
 如果尚未这样做，请查看[虚拟机产品/服务发布指南](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines)和此 Azure 虚拟机材料：
 
@@ -58,17 +58,18 @@ ms.locfileid: "81869059"
 - 如何[设计和架构 Azure 应用程序](https://azure.microsoft.com/solutions/architecture/)
 - [Azure 虚拟机](https://azure.microsoft.com/services/virtual-machines/)、[Azure 存储](https://azure.microsoft.com/services/?filter=storage#storage)和 [Azure 网络](https://azure.microsoft.com/services/?filter=networking#networking)的实践知识
 
-## <a name="create-an-azure-virtual-machine-offer"></a>创建 Azure 虚拟机产品/服务
+## <a name="create-a-new-offer"></a>创建新套餐
 
-在创建 Azure 虚拟机产品/服务之前，必须在合作伙伴中心创建一个商用 marketplace 帐户。 如果尚未创建，请参阅[在合作伙伴中心创建商业 marketplace 帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。
+1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+2. 在左侧导航菜单中，选择 "**商业市场** > **概述**"。
+3. 在 "概述" 页上，选择 " **+ 新建产品/服务** > " "**Azure 虚拟机**"。
 
-1. 登录到 "[合作伙伴中心](https://partner.microsoft.com/dashboard/home)"，然后在顶部菜单中选择 "**仪表板**"。
-2. 在左侧导航栏中，选择 "**商业 Marketplace**"，然后选择 "**概述**"。
-3. 在 "**概述**" 页上，依次选择 " **+ 新产品/服务**"、" **Azure 虚拟机**"。 此时将显示 "**新建产品/服务**" 对话框。
+    ![阐释左侧导航菜单。](./media/new-offer-azure-vm.png)
 
-    ![说明合作伙伴中心中的 "概述" 页面，其中包含 "新产品/服务" 按钮和 "Azure 虚拟机产品/服务"](media/avm-create7.png)
+> [!NOTE]
+> 发布产品/服务后，在 "合作伙伴中心" 中对其进行的编辑仅在重新发布产品/服务后出现在商店中。 请确保在进行更改后始终重新发布。
 
-## <a name="offer-id-and-alias"></a>产品/服务 ID 和别名
+## <a name="new-offer"></a>新产品/服务
 
 输入**产品/服务 ID**。 这是你的帐户中每个产品/服务的唯一标识符。
 
@@ -76,7 +77,9 @@ ms.locfileid: "81869059"
 - 只使用小写字母和数字。 它可以包括连字符和下划线，但不能包含空格，并且限制为50个字符。 例如，如果在此处输入了 "**测试/服务-1** "，则 "产品/ `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`服务" 网址为。
 - 选择 "**创建**" 后，无法更改产品/服务 ID。
 
-输入**提议别名**。 这是在合作伙伴中心中用于产品/服务的名称。 此名称不能在 marketplace 中使用，它与向客户显示的产品/服务名称和其他值不同。
+输入**提议别名**。 这是在合作伙伴中心中用于产品/服务的名称。
+
+- 此名称不能在 marketplace 中使用，它与向客户显示的产品/服务名称和其他值不同。
 
 选择 "**创建**" 以生成产品/服务并继续。
 
@@ -84,15 +87,15 @@ ms.locfileid: "81869059"
 
 ### <a name="test-drive"></a>体验版
 
-设置演示（测试驱动器），让客户在购买前试用产品/服务。 若要创建允许客户在固定时间段内试用你的产品/服务的演示环境，请参阅[在商业应用商店中试用你的产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/test-drive)。
+通过向客户提供 "在购买前试用" 的选项，测试驱动器是向潜在客户展示你的产品/服务的一种很好的方法，导致增加转换和产生高度合格的潜在顾客。 [了解有关测试驱动器的详细信息](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)。
 
-若要启用某个测试驱动器，请选中 "**启用测试驱动器**" 复选框。 若要从产品/服务中删除测试驱动器，请清除此复选框。
+若要在固定时间段内启用测试驱动器，请选中 "**启用测试驱动器**" 复选框。 若要从产品/服务中删除测试驱动器，请清除此复选框。
 
 其他测试驱动器资源：
 
 - [技术最佳做法](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [市场营销最佳做法](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
-- [测试驱动器概述](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)PDF （请确保弹出窗口阻止程序处于关闭状态）。
+- [测试驱动器概述](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)PDF （确保弹出窗口阻止程序处于关闭状态）
 
 ### <a name="lead-management"></a>潜在顾客管理
 
@@ -213,9 +216,13 @@ ms.locfileid: "81869059"
 - 不要依赖特性和功能来出售产品/服务。 而是专注于你的产品/服务提供的价值。
 - 使用行业特定的或基于收益的字词。
 
-若要使您的产品/服务说明更具吸引力，请使用富文本编辑器来设置说明格式。 利用富文本编辑器，您可以添加数字、项目符号、粗体、斜体和缩进，使说明更具可读性。
+若要使您的产品/服务说明更具吸引力，请使用富文本编辑器应用格式设置。
 
-![说明合作伙伴中心中的 "概述" 页，其中选择了 "新产品/服务" 按钮和 "咨询服务" 产品。](media/power-bi-rich-text-editor.png)
+![使用富文本编辑器](./media/rich-text-editor.png)
+
+| <center>更改文本格式 | <center>添加项目符号或编号 | <center>添加或删除文本缩进 |
+| --- | --- | --- |
+| <center>![使用富文本编辑器更改文本格式](./media/text-editor3.png) |  <center>![使用富文本编辑器添加列表](./media/text-editor4.png) |  <center>![使用富文本编辑器缩进](./media/text-editor5.png) |
 
 #### <a name="privacy-policy-link"></a>隐私策略链接
 
@@ -240,7 +247,7 @@ ms.locfileid: "81869059"
 提供客户在客户打开支持票证时要使用的 Microsoft 合作伙伴联系信息。 这不会在 marketplace 中列出。
 
 - 名称
-- 电子邮件
+- Email
 - 电话
 
 ### <a name="engineering-contact"></a>工程联系人
@@ -248,7 +255,7 @@ ms.locfileid: "81869059"
 向 Microsoft 提供联系信息，以便在你的产品/服务出现问题时使用，包括认证问题。 这不会在 marketplace 中列出。
 
 - 名称
-- 电子邮件
+- Email
 - 电话
 
 ### <a name="marketplace-media"></a>Marketplace 媒体
@@ -256,7 +263,7 @@ ms.locfileid: "81869059"
 提供要用于产品/服务的徽标和图像。 所有图像必须为 PNG 格式。 模糊图像将导致提交遭到拒绝。
 
 >[!Note]
->如果上传文件时遇到问题，请确保你的本地网络不会阻止https://upload.xboxlive.com合作伙伴中心使用的服务。
+>如果上传文件时遇到问题，请确保你的本地网络不会https://upload.xboxlive.com阻止合作伙伴中心使用的服务。
 
 #### <a name="marketplace-logos"></a>Marketplace 徽标
 
@@ -271,11 +278,11 @@ ms.locfileid: "81869059"
 
 #### <a name="screenshots"></a>屏幕截图
 
-最多可添加五个屏幕截图，其中显示了产品/服务的工作方式。 每个屏幕截图的大小必须为 1280 x 720 像素，格式为 PNG。 还必须添加描述屏幕截图的标题。
+最多可添加五个屏幕截图，其中显示了产品/服务的工作方式。 每个屏幕截图的大小必须为 1280 x 720 像素，格式为 PNG。 每个屏幕截图都必须包含一个标题。
 
 #### <a name="videos"></a>视频
 
-添加最多5个视频来演示产品/服务。 这些应托管在外部视频服务上。 输入每个视频的名称、web 地址以及以 1280 x 720 像素大小显示的视频缩略图 PNG 图像。
+添加最多5个视频来演示产品/服务。 这些应托管在外部视频服务上。 输入每个视频的名称、web 地址以及以 1280 x 720 像素为单位的视频缩略图 PNG 图像。
 
 有关更多应用商店列出资源，请参阅[marketplace 产品/服务列表的最佳实践](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)。
 
@@ -331,7 +338,7 @@ ms.locfileid: "81869059"
 
 设置计划类型的高级配置，它是否重复使用其他计划中的技术配置，以及计划应在哪个 Azure 区域中可用。 此处所做的选择将确定在同一计划的其他选项卡上显示的字段。
 
-#### <a name="reuse-technical-configuration"></a>重复使用技术配置
+#### <a name="re-use-technical-configuration"></a>重复使用技术配置
 
 如果有多个相同类型的计划，并且这些包在它们之间完全相同，则可以选择此计划，重新使用**其他计划中的技术配置**。 使用此选项，你可以为此服务选择同一类型的其他计划之一，并重复使用其技术配置。
 
@@ -342,7 +349,7 @@ ms.locfileid: "81869059"
 
 你的计划必须至少在一个 Azure 区域中提供。
 
-选择**Azure 全局**选项，以使你的计划对所有具有商业市场集成的公共 Azure 区域中的客户可用。 有关详细信息，请参阅[地理可用性和货币支持](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)。
+选择**Azure 全局**选项，使你的计划对所有具有商业市场集成的 Azure 全局区域中的客户可用。 有关详细信息，请参阅[地理可用性和货币支持](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)。
 
 选择**Azure 政府**版选项，使你的计划在[Azure 政府](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)版区域中可用。 此区域为美国联邦、州、地方或部落实体的客户以及有资格提供服务的合作伙伴提供控制访问权限。 作为发布者，你将负责任何符合性控制、安全措施和最佳实践。 Azure 政府版使用物理上隔离的数据中心和网络（仅限美国）。
 
@@ -353,7 +360,7 @@ ms.locfileid: "81869059"
 
 #### <a name="azure-government-certifications"></a>Azure 政府认证
 
-仅当你在 " **azure 区域**" 下选择 " **azure 政府**" 时，此选项才可见。
+仅当选择了 " **Azure 政府**" 时，此选项才可见。
 
 Azure 政府服务处理受特定政府法规和要求约束的数据。 例如，FedRAMP、NIST 800.171 （DIB）、ITAR、IRS 1075、DoD L4 和 CJIS。 若要对这些程序进行了解，可以提供多达100的链接。 这些链接可以是直接链接到您的程序上的列表，也可以是您自己的网站上的符合性说明。 这些链接仅对 Azure 政府客户可见。
 
@@ -488,9 +495,9 @@ Azure 政府服务处理受特定政府法规和要求约束的数据。 例如�
 
 其他测试驱动器资源：
 
-- 技术最佳做法
-- 市场营销最佳做法
-- 测试驱动器概述（PDF; 请确保弹出窗口阻止程序处于关闭状态）。
+- [市场营销最佳做法](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
+- [技术最佳做法](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
+- [概述](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)（PDF; 请确保弹出窗口阻止程序处于关闭状态）
 
 选择 "**保存草稿**"，然后继续。
 
@@ -555,6 +562,6 @@ Azure 政府服务处理受特定政府法规和要求约束的数据。 例如�
 
 ![Azure 门户计划详细信息屏幕示例](media/avm-create6.png)
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>后续步骤
 
 - [更新商业应用商店中的现有产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)
