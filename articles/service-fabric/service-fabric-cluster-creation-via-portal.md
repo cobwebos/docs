@@ -3,12 +3,12 @@ title: 在 Azure 门户中创建 Service Fabric 群集
 description: 了解如何使用 Azure 门户和 Azure Key Vault 在 Azure 中设置安全的 Service Fabric 群集。
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: e0cd3d5e5a37720134a5bce596bba211b375f19d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 64a4c430cc7402419d64b77fdcc9a6389cf9de6d
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458311"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792473"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>使用 Azure 门户在 Azure 中创建 Service Fabric 群集
 > [!div class="op_single_selector"]
@@ -107,7 +107,7 @@ ms.locfileid: "81458311"
 2. 主节点类型的 VM **大小**下限取决于为群集选择的**持久性**层。 持久性层的默认值为 bronze。 有关持久性的详细信息，请参阅[如何选择 Service Fabric 群集持久性][service-fabric-cluster-durability]。
 3. 选择**虚拟机大小**。 D 系列 VM 具有 SSD 驱动器，强烈建议用于有状态应用程序。 不要使用任何具有部分核心或可用磁盘容量小于 10 GB 的 VM SKU。 如需选择 VM 大小的帮助，请参阅 [Service Fabric 群集规划注意事项文档][service-fabric-cluster-capacity]。
 4.  **单节点群集和三节点群集**仅供用于测试。 它们不支持任何正在运行的生产工作负荷。
-5. 为节点类型选择**初始 VM 规模集容量**。 可在以后增加或减少节点类型中的 VM 数目，但对主节点类型，生产工作负荷的最小数是 5。 其他节点类型可以具有最少一台 VM。 主节点类型的 VM **数目**下限决定了群集的**可靠性**。  
+5. 为节点类型选择**初始 VM 规模集容量**。 稍后，可以在节点类型中扩大或缩小 Vm 的数量，但在主节点类型上，生产工作负荷的最小值为5。 其他节点类型可以具有最少一台 VM。 主节点类型的 VM **数目**下限决定了群集的**可靠性**。  
 6. 配置**自定义终结点**。 可在此字段中输入以逗号分隔的端口列表，可以通过 Azure 负载均衡器针对应用程序向公共 Internet 公开这些端口。 例如，如果计划在群集中部署 Web 应用程序，请在此处输入“80”，允许端口 80 的流量进入群集。 有关终结点的详细信息，请参阅[与应用程序进行通信][service-fabric-connect-and-communicate-with-services]
 7. **启用反向代理**。  借助 [Service Fabric 反向代理](service-fabric-reverseproxy.md)，Service Fabric 群集中运行的微服务可以发现包含 http 终结点的其他服务，并与之通信。
 8. 返回“群集配置”  边栏选项卡，在“+显示可选设置”  下，配置群集**诊断**。 默认情况下，已在群集上启用诊断，以帮助排查问题。 若要禁用诊断，请将其“状态”  切换为“关”  。 **不**建议关闭诊断。 如果已创建 Application Insights 项目，则提供该项目密钥，以便向其路由应用程序跟踪。

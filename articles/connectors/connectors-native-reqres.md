@@ -3,20 +3,20 @@ title: 使用 HTTPS 接收和响应呼叫
 description: 使用 Azure 逻辑应用处理来自外部服务的入站 HTTPS 请求
 services: logic-apps
 ms.suite: integration
-ms.reviewers: klam, logicappspm
+ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/04/2020
+ms.date: 05/06/2020
 tags: connectors
-ms.openlocfilehash: 8137bea37c25554d814e237380ba5c57c5b24d57
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
-ms.translationtype: HT
+ms.openlocfilehash: c6d8dc087e6306173fc4d55368cd3c4c624d5302
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900953"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82978563"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>在 Azure 逻辑应用中接收和响应入站 HTTPS 请求
 
-使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和内置的“请求”触发器或“响应”操作，可以创建自动化任务和工作流用于接收和响应传入的 HTTPS 请求。 例如，可以使用逻辑应用：
+通过[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和内置请求触发器和响应操作，你可以创建可接收和响应传入 HTTPS 请求的自动化任务和工作流。 例如，可以使用逻辑应用：
 
 * 接收并响应对本地数据库中数据的 HTTPS 请求。
 * 发生外部 Webhook 事件时触发工作流。
@@ -49,11 +49,11 @@ Request 触发器支持[Azure Active Directory 开放身份验证](../active-dir
 
 ## <a name="add-request-trigger"></a>添加请求触发器
 
-此内置触发器创建可手动调用的 HTTPS 终结点，该终结点只能接收** 传入的 HTTPS 请求。 发生此事件时，该触发器将会激发，并运行逻辑应用。
+此内置触发器创建可手动调用的 HTTPS 终结点，该终结点只能接收** 传入的 HTTPS 请求。 发生此事件时，该触发器将会激发，并运行逻辑应用。 有关触发器的基础 JSON 定义以及如何调用此触发器的详细信息，请参阅[请求触发器类型](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)和[在 Azure 逻辑应用中通过 HTTPS 终结点调用、触发或嵌套工作流](../logic-apps/logic-apps-http-endpoint.md)。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 创建空白逻辑应用。
 
-1. 逻辑应用设计器打开后，在搜索框中输入“http 请求”作为筛选器。 在触发器列表中，选择“收到 HTTP 请求时”触发器（逻辑应用工作流中的第一个步骤）。****
+1. 逻辑应用设计器打开后，在 "搜索" 框`http request`中，输入作为筛选器。 在触发器列表中，选择“收到 HTTP 请求时”触发器（逻辑应用工作流中的第一个步骤）。****
 
    ![选择请求触发器](./media/connectors-native-reqres/select-request-trigger.png)
 
@@ -61,7 +61,7 @@ Request 触发器支持[Azure Active Directory 开放身份验证](../active-dir
 
    ![请求触发器](./media/connectors-native-reqres/request-trigger.png)
 
-   | 属性名称 | JSON 属性名称 | 必须 | 说明 |
+   | 属性名称 | JSON 属性名称 | 必需 | 说明 |
    |---------------|--------------------|----------|-------------|
    | **HTTP POST URL** | {无} | 是 | 保存逻辑应用后生成的终结点 URL，用于调用逻辑应用 |
    | **请求正文 JSON 架构** | `schema` | 否 | 描述传入请求正文中的属性和值的 JSON 架构 |
@@ -160,7 +160,7 @@ Request 触发器支持[Azure Active Directory 开放身份验证](../active-dir
 
 1. 若要添加其他属性，请打开“添加新参数”列表，并选择要添加的参数。****
 
-   | 属性名称 | JSON 属性名称 | 必须 | 说明 |
+   | 属性名称 | JSON 属性名称 | 必需 | 说明 |
    |---------------|--------------------|----------|-------------|
    | **方法** | `method` | 否 | 传入的请求在调用逻辑应用时必须使用的方法 |
    | **相对路径** | `relativePath` | 否 | 逻辑应用终结点 URL 可接受的参数的相对路径 |
@@ -251,7 +251,7 @@ Request 触发器支持[Azure Active Directory 开放身份验证](../active-dir
 
    下面是有关可在“响应”操作中设置的属性的详细信息。 
 
-   | 属性名称 | JSON 属性名称 | 必须 | 说明 |
+   | 属性名称 | JSON 属性名称 | 必需 | 说明 |
    |---------------|--------------------|----------|-------------|
    | **状态代码** | `statusCode` | 是 | 要在响应中返回的状态代码 |
    | **标头** | `headers` | 否 | 一个 JSON 对象，描述要包含在响应中的一个或多个标头 |

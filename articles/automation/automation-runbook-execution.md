@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: ace701a6c19f4fe3af1c9ae6f5e63097dd59d405
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 1a9a503fd566c9b50f1503e0955bf12f69ac9960
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871691"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927915"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>在 Azure 自动化中执行 Runbook
 
@@ -86,7 +86,7 @@ Azure Automation 利用[Azure Monitor](https://docs.microsoft.com/azure/azure-mo
 
 ### <a name="log-analytics-agent-for-windows"></a>适用于 Windows 的 Log Analytics 代理
 
-适用于[windows 的 Log Analytics 代理](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windowsmonitor)使用 Azure Monitor 管理 windows vm 和物理计算机。 计算机可以在 Azure 中运行，也可以在非 Azure 环境（例如本地数据中心）中运行。 您必须将代理配置为向一个或多个 Log Analytics 工作区报告。 
+适用于[windows 的 Log Analytics 代理](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows)使用 Azure Monitor 管理 windows vm 和物理计算机。 计算机可以在 Azure 中运行，也可以在非 Azure 环境（例如本地数据中心）中运行。 您必须将代理配置为向一个或多个 Log Analytics 工作区报告。 
 
 >[!NOTE]
 >Windows 的 Log Analytics 代理之前称为 Microsoft Monitoring Agent （MMA）。
@@ -151,7 +151,7 @@ Azure 自动化支持从同一自动化帐户运行作业的环境。 一个 run
 
 在 Azure 自动化中执行 runbook 会在自动化帐户的活动日志中写入详细信息。 有关使用日志的详细信息，请参阅[从活动日志中检索详细信息](manage-runbooks.md#retrieve-details-from-activity-log)。 
 
-## <a name="exceptions"></a>例外
+## <a name="exceptions"></a>异常
 
 本部分介绍在 runbook 中处理异常或间歇问题的一些方法。 例如，WebSocket 异常。 更正异常处理可防止暂时性的网络故障导致 runbook 失败。 
 

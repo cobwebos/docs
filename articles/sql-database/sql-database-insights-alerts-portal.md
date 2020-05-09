@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 67c47b35e84a93d7d9032ad55b425ae2bb6971fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: 37eabd4b2f61a82388b1c8d0aaf4aef2320f008e
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79209476"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801801"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-databases-using-azure-portal"></a>使用 Azure 门户为 Azure SQL 数据库和 Azure Synapse Analytics 数据库创建警报
 
@@ -24,21 +24,21 @@ ms.locfileid: "79209476"
 
 本文介绍如何使用 Azure 门户为 Azure SQL 数据库和 Azure Synapse Analytics（以前称为 Azure SQL 数据仓库）中的单一、共用和数据仓库数据库设置警报。 当某些指标（例如数据库大小或 CPU 使用率）达到阈值时，警报可以向你发送电子邮件或调用 Webhook。 本文还提供了有关设置警报期限的最佳做法。
 
-> [!IMPORTANT]
-> 此功能在托管实例中尚不可用。 作为替代方法，你可以使用 SQL 代理根据[动态管理视图](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)发送某些指标的电子邮件警报。
+> [!NOTE]
+> 有关特定于 SQL 托管实例的说明，请参阅为[AZURE SQL 托管实例创建警报](sql-database-managed-instance-alerts.md)。
 
 可以根据监控指标或事件接收 Azure 服务的警报。
 
-* **指标值** - 指定指标的值超过在任一方向分配的阈值时，将触发警报。 也就是说，当首次满足条件时，以及之后不再满足条件时，都会触发此警报。
-* **活动日志事件** - 每个  事件发生，或仅当出现一定次数的事件时，触发警报。
+* **指标值** - 当指定指标的值在任一方向越过了指定的阈值时警报将触发。 也就是说，当条件先是满足以及之后不再满足该条件时，警报都会触发。
+* **活动日志事件** - 警报可以在发生 *每个* 事件时都触发，也可以仅在发生特定数量的事件时触发。
 
-可配置警报，使警报触发时执行以下操作：
+可以配置警报以在其触发时执行以下操作：
 
 * 向服务管理员和共同管理员发送电子邮件通知
 * 将电子邮件发送到指定的其他电子邮件地址。
 * 调用 Webhook
 
-可使用以下项配置并获取有关警报规则的信息
+可以使用以下工具配置和获取关于警报的信息：
 
 * [Azure 门户](../monitoring-and-diagnostics/insights-alerts-portal.md)
 * [PowerShell](../azure-monitor/platform/alerts-classic-portal.md)
@@ -58,10 +58,10 @@ ms.locfileid: "79209476"
 4. 在“条件”部分中，单击“添加”。  
   ![定义条件](media/sql-database-insights-alerts-portal/create-rule.png)
 5. 在“配置信号逻辑”页中，选择一个信号。 
-  ![选择信号](media/sql-database-insights-alerts-portal/select-signal.png)。
+  ![选择 "](media/sql-database-insights-alerts-portal/select-signal.png)信号"。
 6. 在选择某个信号（例如“CPU 百分比”  ）后，将会显示“配置信号逻辑”  页。
   ![配置信号逻辑](media/sql-database-insights-alerts-portal/configure-signal-logic.png)
-7. 在此页面上，配置该阈值类型、运算符、聚合类型、阈值、聚合粒度和评估频率。 然后单击“完成”  。
+7. 在此页面上，配置该阈值类型、运算符、聚合类型、阈值、聚合粒度和评估频率。 然后单击“完成”。 
 8. 在“创建规则”中，选择一个现有的“操作组”或创建一个新组。   操作组用于定义在发生警报条件时要执行的操作。
   ![定义操作组](media/sql-database-insights-alerts-portal/action-group.png)
 

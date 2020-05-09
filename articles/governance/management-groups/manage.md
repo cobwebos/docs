@@ -4,10 +4,10 @@ description: 了解如何查看、维护、更新和删除管理组层次结构�
 ms.date: 04/15/2020
 ms.topic: conceptual
 ms.openlocfilehash: 423d1837c3d5710e24abb94f5411200319e8a8aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 05/01/2020
 ms.locfileid: "81381678"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>使用管理组管理资源
@@ -93,7 +93,7 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 
    :::image type="content" source="./media/delete_confirm.png" alt-text="“确认删除组”窗口" border="false":::
 
-1. 请选择“是”。 
+1. 选择 **“是”** 。
 
 ### <a name="delete-in-powershell"></a>在 PowerShell 中删除
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 7f0c4da7caf71670746e84d5cfaa457ebae57156
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9091d3bd6b57f14bd12083319595cb855a0d42ee
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80755044"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858713"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 和8600迁移到 Azure 文件同步
 
@@ -23,7 +23,7 @@ StorSimple 8000 系列[将在 12](https://support.microsoft.com/en-us/lifecycle/
 ## <a name="azure-file-sync"></a>Azure 文件同步
 
 > [!IMPORTANT]
-> Microsoft 致力于帮助客户完成其迁移。 用于AzureFilesMigration@microsoft自定义迁移计划的电子邮件，并在迁移过程中提供帮助。
+> Microsoft 致力于帮助客户完成其迁移。 用于AzureFiles@microsoft.com自定义迁移计划的电子邮件，并在迁移过程中提供帮助。
 
 Azure 文件同步是一种 Microsoft 云服务，基于两个主要组件：
 
@@ -252,7 +252,7 @@ Azure 文件同步用于将文件从已装载的 iSCSI StorSimple 卷移动到�
 > [!IMPORTANT]
 > 为此，必须先在服务器上设置注册表项，然后才能配置 Azure 文件同步。
 
-1. 在 VM 的系统驱动器上创建新目录。 需要将 Azure 文件同步信息保存在该卷中，而不是保存在已装载的卷克隆中。 例如：`"C:\syncmetadata"`
+1. 在 VM 的系统驱动器上创建新目录。 需要将 Azure 文件同步信息保存在该卷中，而不是保存在已装载的卷克隆中。 例如： `"C:\syncmetadata"`
 2. 打开 regedit，找到以下注册表配置单元：`HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync`
 3. 创建名为 "String" 的新密钥，名为： ***MetadataRootPath***
 4. 设置在系统卷上创建的目录的完整路径，例如：`C:\syncmetadata"`

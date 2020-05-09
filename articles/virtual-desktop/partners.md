@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/10/2020
+ms.date: 05/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e10908a3ce0ad372ab7d05fda9a15481d0efc5a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 15bfb1e4d21e4f91cb37fed6e43b4e03f5643b13
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127570"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692203"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows 虚拟桌面合作伙伴集成
 
@@ -82,6 +82,16 @@ ControlUp 是一个 Windows 虚拟桌面增值服务提供程序，它使 IT 团
 - [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit)。
 - [请参阅合作伙伴网站](https://www.controlup.com/solutions/ms_wvd/)。
 
+## <a name="dell"></a>Dell
+
+![Dell 徽标](./media/partners/dell.png)
+
+优化了 Dell 技术的瘦客户端，以访问 Microsoft Azure 和 Windows 虚拟桌面服务。 Wyse 瘦客户端能够满足从协作知识工作者到图形密集型超级用户的需求，可提供高质量的计算体验，充分利用不断增长的应用和内容。 适用于空间受限的环境，Wyse 瘦客户端适应用户使用各种外形规格的方式，以及用于装载选项的各种选项。
+
+Wyse 瘦客户端在设计时需要考虑到有限的攻击面、对安全遵从标准的支持以及高级多重身份验证解决方案。 使用 Dell 专用的 Wyse ThinOS 部署高度安全的瘦客户端，或者通过使用 Dell 附加的安全功能，使用经过商业验证的设计和 Windows 10 IoT 企业安全地访问云应用程序和虚拟工作区。 通过基于 HTTPS 的安全、基于 HTTPS 的通信和 active directory 身份验证来实现基于角色的管理，Wyse 管理套件将始终保持最新状态，而适用于 WMS Pro 的移动应用允许 IT 人员随时查看关键警报并发送实时命令。
+
+- [请参阅合作伙伴网站](https://www.delltechnologies.com/en-us/wyse/index.htm#scroll=off&overlay=//www.dellemc.com/en-us/collaterals/unauth/brochures/products/thin-clients/Wyse_Windows_Embedded_Standard_thin_clients_brochure.pdf)。
+
 ## <a name="devicetrust"></a>deviceTRUST
 
 ![deviceTRUST 徽标](./media/partners/devicetrust.png)
@@ -110,6 +120,7 @@ IGEL 是经过批准和验证的 Microsoft Azure 和 Windows 虚拟桌面服务�
  
 IGEL OS 支持 Citrix、Microsoft 和 VMware 中的所有常用虚拟应用、桌面和云工作区客户端协议。 它包括85外设、接口和协议合作伙伴提供的集成技术，可帮助组织快速将 Windows 虚拟桌面服务采用其自己独特的用户环境。 IGEL OS 是一个只读的模块化终结点操作系统，可帮助防止其被篡改。 它现在还包括了一个完整的 "信任链"，它可验证在终结点上运行的所有主要进程的完整性，从终结点硬件（某些选定的模型）或 UEFI 过程一直到 Azure 云和 Windows 虚拟桌面服务。 借助 IGEL 操作系统，企业可以从 Azure 云中订阅 Windows 虚拟桌面，以完全相信其用户终结点设备的完整性、安全性和可管理性。
 
+- [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vviO)。
 - [请参阅合作伙伴网站](https://www.igel.com/igel-os-universal-desktop-operating-system/)。
 
 ## <a name="ivanti"></a>Ivanti
@@ -191,6 +202,7 @@ PolicyPak Software 是一种 Windows 虚拟桌面合作伙伴，用于执行应�
 
 PolicyPak 的主要用例是删除本地管理员权限并克服 UAC 提示，阻止勒索软件，管理多个浏览器，管理 Internet Explorer 的企业和兼容性模式，减少 Gpo 的数量，管理 Windows 10 文件关联，管理 Windows 10 开始菜单和任务栏，并管理 Windows 10 功能和可选功能。  
 
+- [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vviN)。
 - [请参阅合作伙伴网站](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html)。
 
 ## <a name="printerlogic"></a>PrinterLogic
@@ -211,8 +223,8 @@ Printix 是一个 Windows 虚拟桌面增值服务提供程序，可自动执行
 
 打印只是每个办公环境和小型企业环境中的基本任务。 为了充分利用 Windows 虚拟桌面并提供出色的用户体验，请务必确保用户能够以最小的工作量和最大可靠性连接到打印机。 借助 Printix，你可以通过单一登录（SSO）、无提示配置、定期更新以及持续监视打印环境，充分利用 Windows 虚拟桌面。
 
-- [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4aiK2)
-- [请参阅合作伙伴网站](https://www.printix.net/printix-for-windows-virtual-desktop)
+- [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4aiK2)。
+- [请参阅合作伙伴网站](https://www.printix.net/printix-for-windows-virtual-desktop)。
 
 ## <a name="rdpsoft"></a>RDPSoft
 
@@ -222,7 +234,7 @@ RDPSoft 是一个 Windows 虚拟桌面合作伙伴，可提供功能强大、价
  
 RDPSoft 的远程桌面指挥解决方案增强了 Windows 虚拟桌面管理。 高级管理功能通过提供远程协助、用户会话和流程管理，简化了对 Windows 虚拟桌面管理任务的委派以支持桌面人员。 同时，远程桌面指挥套件会收集有关每个用户的性能和负载、用户活动和审核、Windows 虚拟桌面连接质量（延迟和带宽）、授权和安全性的丰富指标，以便进行查看。 使用 RDPSoft，只需单击一下即可了解丰富的历史报告和全面的仪表板。
 
-- [请参阅合作伙伴网站](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
+- [请参阅合作伙伴网站](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)。
 
 ## <a name="sepago"></a>sepago
 
@@ -232,7 +244,8 @@ sepago 由 Cologne 中的四个朋友构建在2002中。 如今，sepago 是一�
 
 sepago 的创新和开发实验室使用大数据和 AI 技术构建智能解决方案。 这些解决方案侧重于提高企业虚拟桌面等合作伙伴产品的业务、用户体验和管理中心。
 
-- [请参阅合作伙伴网站](https://www.sepago.de/wvd-value-add-tools/)
+- [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4qMsm)。
+- [请参阅合作伙伴网站](https://www.sepago.de/wvd-value-add-tools/)。
 
 ## <a name="thinprint"></a>ThinPrint
 
@@ -263,7 +276,18 @@ uberAgent 公司的大规模限制提供 Windows 虚拟桌面部署的可见性�
 
 uberAgent 是针对最终用户计算而设计的一种监视和分析产品，它不只是收集数据，它为客户提供了重要的信息。 uberAgent 有自己的指标，涵盖了用户体验、应用程序性能和终结点安全性的关键方面，告诉你需要了解的有关 Windows 虚拟桌面 Vm 的一切，而不会影响系统的用户密度。 uberAgent 简化了疑难解答，有助于调整大小，并提供了对信息安全至关重要的信息。
 
-- [请参阅合作伙伴网站](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop)
+- [请参阅合作伙伴网站](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop)。
+
+## <a name="workspace-365"></a>工作区365
+
+![工作区365徽标](./media/partners/workspace-365.png)
+
+工作区365将您的所有信息（业务数据、文档、通信和微应用程序），并提供对一个工作区中任何本地、web 或托管应用程序的访问权限。 它可自动适应你的角色、位置、设备、浏览器等，以提供个性化工作区。 无论技术在哪一种技术下，用户都可以获得简单而一致的体验。 你可以集成当前的解决方案，如 RDP、Citrix 和旧版应用程序，并将它们移动到 Windows 虚拟桌面，同时保持相同的用户体验。 此外，您可以在一个文档管理应用程序中集成所有文件位置，如 SharePoint、OneDrive、团队和文件服务器。
+
+使用工作区365，IT 管理员可以使基于权限的 Windows 虚拟桌面应用程序可供用户使用。 然后，管理员可以将这些应用程序添加到共享应用程序组。 当 Windows 虚拟桌面应用程序在工作区365中可见时，用户可以在工作区中打开该应用程序，而无需再次登录。 
+
+- [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vARh)。
+- [请参阅合作伙伴网站](https://workspace365.net/product-tour/hybrid-workspace-365/)。
 
 ## <a name="workspot"></a>Workspot
 
@@ -279,4 +303,4 @@ Workspot 通过简化云桌面基础结构的设置过程来扩展 Windows 虚�
 ## <a name="next-steps"></a>后续步骤
 
 - [详细了解 Windows 虚拟桌面](overview.md)。
-- [在 Windows 虚拟桌面中创建租户](tenant-setup-azure-active-directory.md)。
+- [在 Windows 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。

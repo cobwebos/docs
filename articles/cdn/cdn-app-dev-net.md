@@ -14,19 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 7e3ad3a5928b36c221bb83b1c4012c3c9e14f35d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: e03616bf0d02f7ce063c027912cba4ab4e8f8d3f
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67594181"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611460"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN 开发入门
 > [!div class="op_single_selector"]
 > * [Node.js](cdn-app-dev-node.md)
 > * [.NET](cdn-app-dev-net.md)
-> 
-> 
+>
+>
 
 你可以使用[适用于 .net 的 Azure CDN 库](/dotnet/api/overview/azure/cdn)来自动创建和管理 CDN 配置文件和终结点。  本教程介绍一个简单的 .NET 控制台应用程序的创建示例，演示几个可用的操作。  本教程不打算详细描述适用于 .NET 的 Azure CDN 库的所有方面。
 
@@ -34,35 +35,35 @@ ms.locfileid: "67594181"
 
 > [!TIP]
 > 可在 MSDN 上下载[本教程中已完成的项目](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c)。
-> 
-> 
+>
+>
 
 [!INCLUDE [cdn-app-dev-prep](../../includes/cdn-app-dev-prep.md)]
 
 ## <a name="create-your-project-and-add-nuget-packages"></a>创建项目并添加 Nuget 包
 现在我们已经为 CDN 配置文件创建了一个资源组，并已将管理该组中的 CDN 配置文件和终结点的权限授予 Azure AD 应用程序，我们可以开始创建我们的应用程序。
 
-在 Visual Studio 2015 中依次单击“**文件**”、“**新建**”和“**项目...**”以打开新项目对话框。  展开“**Visual C#**”，并在左侧窗格中选择“**Windows**”。  在中心窗格中单击“**控制台应用程序**”。  命名项目，然后单击“**确定**”。  
+在 Visual Studio 2015 中依次单击“**文件**”、“**新建**”和“**项目...**”以打开新项目对话框。  展开“**Visual C#**”，并在左侧窗格中选择“**Windows**”。  在中心窗格中单击“**控制台应用程序**”。  命名项目，然后单击“**确定**”。
 
 ![新建项目](./media/cdn-app-dev-net/cdn-new-project.png)
 
 我们的项目将使用 Nuget 包中包含的部分 Azure 库。  让我们将它们添加到项目。
 
 1. 依次单击“**工具**”菜单、“**Nuget 包管理器**”和“**包管理器控制台**”。
-   
+
     ![管理 NuGet 包](./media/cdn-app-dev-net/cdn-manage-nuget.png)
 2. 在“包管理器控制台”中，执行以下命令以安装 **Active Directory 验证库 (ADAL)**：
-   
+
     `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory`
 3. 执行以下命令来安装 **Azure CDN 管理库**:
-   
+
     `Install-Package Microsoft.Azure.Management.Cdn`
 
 ## <a name="directives-constants-main-method-and-helper-methods"></a>指令、常量、主方法和帮助器方法
 让我们来编写程序的基本结构。
 
 1. 返回“Program.cs”选项卡，将顶部的 `using` 指令替换为以下内容：
-   
+
     ```csharp
     using System;
     using System.Collections.Generic;
@@ -74,13 +75,13 @@ ms.locfileid: "67594181"
     using Microsoft.Rest;
     ```
 2. 我们需要定义我们的方法将使用的一些常量。  在 `Program` 类中，但在 `Main` 方法之前，添加以下内容。  请确保将占位符（包括** &lt;尖括号&gt;**）替换为所需的值。
-   
+
     ```csharp
     //Tenant app constants
     private const string clientID = "<YOUR CLIENT ID>";
     private const string clientSecret = "<YOUR CLIENT AUTHENTICATION KEY>"; //Only for service principals
     private const string authority = "https://login.microsoftonline.com/<YOUR TENANT ID>/<YOUR TENANT DOMAIN NAME>";
-   
+
     //Application constants
     private const string subscriptionId = "<YOUR SUBSCRIPTION ID>";
     private const string profileName = "CdnConsoleApp";
@@ -89,48 +90,48 @@ ms.locfileid: "67594181"
     private const string resourceLocation = "<YOUR PREFERRED AZURE LOCATION, SUCH AS Central US>";
     ```
 3. 也要在该类级别上定义这两个变量。  我们稍后将使用这些变量来确定我们的配置文件和终结点是否已存在。
-   
+
     ```csharp
     static bool profileAlreadyExists = false;
     static bool endpointAlreadyExists = false;
     ```
 4. 按如下所示替换 `Main` 方法：
-   
+
    ```csharp
    static void Main(string[] args)
    {
        //Get a token
        AuthenticationResult authResult = GetAccessToken();
-   
+
        // Create CDN client
        CdnManagementClient cdn = new CdnManagementClient(new TokenCredentials(authResult.AccessToken))
            { SubscriptionId = subscriptionId };
-   
+
        ListProfilesAndEndpoints(cdn);
-   
+
        // Create CDN Profile
        CreateCdnProfile(cdn);
-   
+
        // Create CDN Endpoint
        CreateCdnEndpoint(cdn);
-   
+
        Console.WriteLine();
-   
+
        // Purge CDN Endpoint
        PromptPurgeCdnEndpoint(cdn);
-   
+
        // Delete CDN Endpoint
        PromptDeleteCdnEndpoint(cdn);
-   
+
        // Delete CDN Profile
        PromptDeleteCdnProfile(cdn);
-   
+
        Console.WriteLine("Press Enter to end program.");
        Console.ReadLine();
    }
    ```
 5. 我们的一些其他方法会用“是/否”问题提示用户。  添加以下方法，使其更容易：
-   
+
     ```csharp
     private static bool PromptUser(string Question)
     {
@@ -161,9 +162,9 @@ ms.locfileid: "67594181"
 ```csharp
 private static AuthenticationResult GetAccessToken()
 {
-    AuthenticationContext authContext = new AuthenticationContext(authority); 
+    AuthenticationContext authContext = new AuthenticationContext(authority);
     ClientCredential credential = new ClientCredential(clientID, clientSecret);
-    AuthenticationResult authResult = 
+    AuthenticationResult authResult =
         authContext.AcquireTokenAsync("https://management.core.windows.net/", credential).Result;
 
     return authResult;
@@ -174,8 +175,8 @@ private static AuthenticationResult GetAccessToken()
 
 > [!IMPORTANT]
 > 仅选择个人用户身份验证而不是服务主体身份验证时，才使用此代码示例。
-> 
-> 
+>
+>
 
 ```csharp
 private static AuthenticationResult GetAccessToken()
@@ -271,8 +272,8 @@ private static void CreateCdnEndpoint(CdnManagementClient cdn)
 
 > [!NOTE]
 > 上面的示例为终结点分配了名为 *Contoso* 的源，主机名为 `www.contoso.com`。  应该将其更改为指向你自己的源的主机名。
-> 
-> 
+>
+>
 
 ## <a name="purge-an-endpoint"></a>清除终结点
 假设已经创建终结点，我们可能想在程序中执行的一个常见任务是清除终结点中的内容。
@@ -292,8 +293,8 @@ private static void PromptPurgeCdnEndpoint(CdnManagementClient cdn)
 
 > [!NOTE]
 > 在上面的示例中，字符串 `/*` 表示我想清除终结点路径根目录中的所有内容。  这相当于在 Azure 门户的“清除”对话框中勾选“**清除所有**”。 在 `CreateCdnProfile` 方法中，我使用代码 `Sku = new Sku(SkuName.StandardVerizon)` 创建了 **Verizon 中的 Azure CDN** 配置文件。  但是，**Akamai 中的 Azure CDN** 配置文件不支持 **清除所有** 功能，因此如果我在本教程中使用 Akamai 配置文件，则需要包含特定的清除路径。
-> 
-> 
+>
+>
 
 ## <a name="delete-cdn-profiles-and-endpoints"></a>删除 CDN 配置文件和终结点
 最后的方法将删除我们的终结点和配置文件。
@@ -341,4 +342,3 @@ private static void PromptDeleteCdnProfile(CdnManagementClient cdn)
 要查找与适用于 .NET 的 Azure CDN 管理库有关的其他文档，请查看 [MSDN 参考](/dotnet/api/overview/azure/cdn)。
 
 使用 [PowerShell](cdn-manage-powershell.md) 管理 CDN 资源。
-
