@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 2af20a1ddf4239b7eec6cceabf2ff9711959c128
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dfdf6e1f8edfb4dafaf93e62090ed51878f9b2aa
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77189110"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734818"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>（已弃用）在 Azure 容器服务 DC/OS 群集上使用 Vamp 通过 Canary 发布微服务
 
@@ -129,11 +129,11 @@ Vamp 启动并运行后，请从蓝图部署一个服务。
 
 最简单形式的 [Vamp 蓝图](https://docs.vamp.io/how-vamp-works/vamp-and-kubernetes#vamp-deployments)描述了要部署的终结点（网关）、群集和服务。 Vamp 使用群集将相同服务的不同变体分组成逻辑组，以用于 Canary 发布或 A/B 测试。  
 
-此方案使用名为 [**sava**](https://github.com/magneticio/sava)、版本为 1.0 的示例整体应用程序。 该整体应用程序打包在一个 Docker 容器中，该容器位于 Docker 中心的 magneticio/sava:1.0.0 下面。 正常情况下，该应用在端口 8080 上运行，但在本例中，你希望在端口 9050 下将它公开。 使用简单的蓝图通过 Vamp 部署该应用。
+此方案使用名为 [**sava**](https://github.com/magneticio/sava-product)、版本为 1.0 的示例整体应用程序。 该整体应用程序打包在一个 Docker 容器中，该容器位于 Docker 中心的 magneticio/sava:1.0.0 下面。 正常情况下，该应用在端口 8080 上运行，但在本例中，你希望在端口 9050 下将它公开。 使用简单的蓝图通过 Vamp 部署该应用。
 
 1. 转到“部署”。****
 
-2. 单击 **“添加”** 。
+2. 单击“添加”  。
 
 3. 粘贴以下蓝图 YAML。 此蓝图包含一个群集，该群集只包含一个要在后续步骤中更改的服务变体：
 
@@ -151,7 +151,7 @@ Vamp 启动并运行后，请从蓝图部署一个服务。
               webport: 8080/http # cluster endpoint, used for canary releasing
    ```
 
-4. 单击“ **保存**”。 Vamp 将启动部署。
+4. 单击“保存”  。 Vamp 将启动部署。
 
 该部署将列在“部署”页上。**** 单击该部署监视其状态。
 
@@ -211,7 +211,7 @@ Vamp 在 DC/OS 代理节点上部署了 sava 服务，从而在端口 9050 上�
               webport: 8080/http # cluster endpoint to update
    ```
   
-3. 单击“ **保存**”。 该蓝图会存储，并列在“蓝图”页上。****
+3. 单击“保存”  。 该蓝图会存储，并列在“蓝图”页上。****
 
 4. 在 sava:1.1 蓝图中打开操作菜单，并单击“合并到”。****
 

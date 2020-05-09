@@ -1,20 +1,20 @@
 ---
-title: 为商业应用商店中的 Azure 应用服务提供处理评审反馈
-description: 如何在 Azure Marketplace、AppSource 或通过云解决方案提供商（CSP）计划使用 Microsoft 合作伙伴中心上的商业 Marketplace 门户来处理查看或销售 Azure 应用的查看反馈。
+title: 为 Microsoft 商业应用商店中的 Azure 应用服务提供处理评审反馈
+description: 如何使用 Microsoft 合作伙伴中心的商业应用商店门户来处理 Azure 应用提供的查看反馈，以便在 Azure Marketplace、AppSource 或云解决方案提供商（CSP）计划中列出或销售。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 3932f3fc71dc6427b6cdf93d3a7bc58534a9981c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 464f4d5434c8c0b8615e24eb1a323ae66a52273c
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80279787"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744869"
 ---
-# <a name="handling-review-feedback"></a>处理评审反馈
+# <a name="handling-review-feedback-for-azure-apps-offer-before-publishing-in-the-azure-marketplace"></a>在 Azure Marketplace 中发布之前，处理 Azure 应用提供的反馈
 
 本文介绍如何访问 Microsoft Azure 市场评审团队使用的 Azure DevOps 环境。 如果 **Microsoft 评审**步骤发现你的 Azure 应用程序套餐存在严重问题，你可以登录到此系统来查看有关这些问题（评审反馈）的详细信息。 解决这些问题后，必须重新提交套餐才能继续将其发布到 Azure 市场中。 下图演示了此反馈过程与发布过程之间的关系。
 

@@ -10,12 +10,12 @@ ms.author: rezas
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 13936a55baed59d5b6257f13f69305a1ce72927a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 9fb2242f6e3f8ce78a0e5043a53ce3055819725b
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730392"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583681"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>了解和调用 IoT 中心的直接方法
 
@@ -83,11 +83,19 @@ ms.locfileid: "81730392"
 
 #### <a name="example"></a>示例
 
-有关使用 `curl` 的精简示例，请参阅下方。 
+此示例将允许你安全地启动请求，以便在注册到 Azure IoT 中心的 IoT 设备上调用直接方法。
+
+若要开始，请使用[Azure CLI 的 Microsoft Azure IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)创建 SharedAccessSignature。 
+
+```bash
+az iot hub generate-sas-token -n <iothubName> -du <duration>
+```
+
+接下来，将 Authorization 标头替换为新生成的 SharedAccessSignature，然后`iothubName`在`deviceId`下面`methodName`的`payload`示例`curl`命令中修改、和参数以匹配你的实现。  
 
 ```bash
 curl -X POST \
-  https://iothubname.azure-devices.net/twins/myfirstdevice/methods?api-version=2018-06-30 \
+  https://<iothubName>.azure-devices.net/twins/<deviceId>/methods?api-version=2018-06-30 \
   -H 'Authorization: SharedAccessSignature sr=iothubname.azure-devices.net&sig=x&se=x&skn=iothubowner' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -100,18 +108,26 @@ curl -X POST \
 }'
 ```
 
+执行修改后的命令以调用指定的直接方法。 成功的请求将返回 HTTP 200 状态代码。
+
+> [!NOTE]
+> 上面的示例演示如何调用设备上的直接方法。  如果要在 IoT Edge 模块中调用直接方法，则需要修改 url 请求，如下所示：
+
+```bash
+https://<iothubName>.azure-devices.net/twins/<deviceId>/modules/<moduleName>/methods?api-version=2018-06
+```
 ### <a name="response"></a>响应
 
 后端应用接收响应，响应由以下项构成：
 
-* HTTP 状态代码  ：
-  * 200 表示成功执行直接方法；
-  * 404 表示设备 ID 无效，或者设备在调用直接方法后 `connectTimeoutInSeconds` 秒内未联机（请使用伴随的错误消息来了解根本原因）；
-  * 504 表示由于设备在 `responseTimeoutInSeconds` 秒内未响应直接方法调用而导致网关超时。
+* *HTTP 状态代码*：
+  * 200指示成功执行直接方法;
+  * 404指示设备 ID 无效，或者在调用直接方法时设备未联机，并且之后为`connectTimeoutInSeconds` （使用附带的错误消息来了解根本原因）;
+  * 504指示设备未响应内`responseTimeoutInSeconds`的直接方法调用而导致的网关超时。
 
-* 标头  ，包含 ETag、请求 ID、内容类型和内容编码。
+* 标头**，包含 ETag、请求 ID、内容类型和内容编码。
 
-* 采用以下格式的 JSON 正文  ：
+* 采用以下格式的 JSON 正文**：
 
     ```json
     {
@@ -128,7 +144,7 @@ curl -X POST \
 
 为此，请使用 `ServiceClient.InvokeDeviceMethodAsync()` 方法并传入 `deviceId` 和 `moduleId` 作为参数。
 
-## <a name="handle-a-direct-method-on-a-device"></a>处理针对设备的直接方法
+## <a name="handle-a-direct-method-on-a-device"></a>在设备上处理直接方法
 
 让我们看看如何在 IoT 设备上处理直接方法。
 
@@ -138,7 +154,7 @@ curl -X POST \
 
 #### <a name="method-invocation"></a>方法调用
 
-设备通过 MQTT 主题接收直接方法请求：`$iothub/methods/POST/{method name}/?$rid={request id}`。 每个设备的订阅数限制为 5。 因此，建议不要单独订阅每种直接方法。 而是考虑订阅 `$iothub/methods/POST/#`，然后根据所需的方法名称筛选传递的消息。
+设备通过 MQTT 主题接收直接方法请求：`$iothub/methods/POST/{method name}/?$rid={request id}`。 每个设备的订阅数被限制为 5。 因此，建议不要分别订阅每个直接方法。 而是考虑订阅 `$iothub/methods/POST/#`，然后基于所需的方法名称筛选所传递的消息。
 
 设备接收的正文采用以下格式：
 
@@ -193,21 +209,21 @@ AMQP 消息会到达表示方法请求的接收链接。 它包含以下部分�
 
 IoT 中心开发人员指南中的其他参考主题包括：
 
-* [IoT 中心终结点](iot-hub-devguide-endpoints.md)介绍了每个 IoT 中心针对运行时和管理操作公开的各种终结点。
+* [Iot 中心终结点](iot-hub-devguide-endpoints.md)介绍了每个 iot 中心针对运行时和管理操作公开的各种终结点。
 
 * [限制和配额](iot-hub-devguide-quotas-throttling.md)介绍了适用的配额，以及使用 IoT 中心时预期会碰到的限制行为。
 
 * [Azure IoT 设备和服务 SDK](iot-hub-devguide-sdks.md) 列出了开发与 IoT 中心交互的设备和服务应用时可使用的各种语言 SDK。
 
-* [设备孪生、作业和消息路由的 IoT 中心查询语言](iot-hub-devguide-query-language.md)介绍了可用于从 IoT 中心检索设备孪生和作业相关信息的 IoT 中心查询语言。
+* [设备孪生、作业和消息路由的 IoT 中心查询语言](iot-hub-devguide-query-language.md)一文介绍了可用于从 IoT 中心检索设备孪生和作业相关信息的 IoT 中心查询语言。
 
-* [IoT 中心 MQTT 支持](iot-hub-mqtt-support.md)提供了有关 IoT 中心对 MQTT 协议的支持的详细信息。
+* [IoT 中心 MQTT 支持](iot-hub-mqtt-support.md)提供有关 IoT 中心对 MQTT 协议的支持的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 
 了解如何使用直接方法后，可根据兴趣参阅以下 IoT 中心开发人员指南文章：
 
-* [在多台设备上计划作业](iot-hub-devguide-jobs.md)
+* [在多个设备上计划作业](iot-hub-devguide-jobs.md)
 
 若要尝试本文中介绍的一些概念，可以根据兴趣学习以下 IoT 中心教程：
 

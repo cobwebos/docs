@@ -1,5 +1,5 @@
 ---
-title: 合作伙伴中心的商业 marketplace 分析中的下载仪表板
+title: 合作伙伴中心的 Microsoft 商业 marketplace 分析中的 "下载" 仪表板
 description: 了解如何访问适用于 marketplace 产品/服务的下载请求。
 author: dsindona
 ms.author: dsindona
@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: f81b8ae927df6c95bbc34be7ad9916c88aeba03b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 136a65e47327007d7a28c2777051be61f475323e
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81251667"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732712"
 ---
 # <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>商业 marketplace 分析中的下载仪表板
 

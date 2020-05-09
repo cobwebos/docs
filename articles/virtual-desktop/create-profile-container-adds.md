@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: dd01b950435fadb96a961b6bb1c6b28ff436907a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 916d34abfaf8223e3cf29977e13dfddf15a3fbf9
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81265767"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607276"
 ---
 # <a name="create-an-fslogix-profile-container-with-azure-files"></a>使用 Azure 文件创建 FSLogix 配置文件容器
 
 本文将演示如何使用 Azure 文件和 Azure Active Directory 域服务（AD DS）创建 FSLogix 配置文件容器。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本文假设已设置 Azure AD DS 实例。 如果还没有，请按照[创建基本托管域](../active-directory-domain-services/tutorial-create-instance.md)中的说明进行操作，然后返回此处。
 
@@ -219,7 +219,7 @@ ms.locfileid: "81265767"
 
 验证配置文件：
 
-1. 打开浏览器并中转到[Windows 虚拟桌面 web 客户端](https://rdweb.wvd.microsoft.com/webclient/index.html)。
+1. 打开浏览器并中转到[Windows 虚拟桌面 web 客户端](https://rdweb.wvd.microsoft.com/arm/webclient)。
 
 2. 用分配给远程桌面组的用户帐户登录。
 

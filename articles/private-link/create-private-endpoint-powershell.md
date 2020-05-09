@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 60032677594537f1e7791b7108eebd5d4cfad5b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8af33e95c92cf51bdabe3325bd9249b4662b7d28
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75430346"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583770"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>使用 Azure PowerShell 创建专用终结点
 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。 
@@ -137,7 +137,7 @@ $subnet = $virtualNetwork `
 $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName "myResourceGroup" `
   -Name "myPrivateEndpoint" `
   -Location "westcentralus" `
-  -Subnet  $subnet`
+  -Subnet  $subnet `
   -PrivateLinkServiceConnection $privateEndpointConnection
 ``` 
 
@@ -198,9 +198,10 @@ mstsc /v:<publicIpAddress>
 ## <a name="access-sql-database-server-privately-from-the-vm"></a>以私密方式从 VM 访问 SQL 数据库服务器
 
 1. 在 myVM 的远程桌面中，打开 PowerShell。
-2. 输入 `nslookup myserver.database.windows.net`。 
+2. 输入 `nslookup myserver.database.windows.net`。 请记得将`myserver`替换为您的 SQL server 名称。
 
     将收到类似于下面的消息：
+    
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -209,15 +210,22 @@ mstsc /v:<publicIpAddress>
     Address:  10.0.0.5
     Aliases:   myserver.database.windows.net
     ```
-3. 安装 SQL Server Management Studio
-4. 在 "连接到服务器" 中，输入或选择以下信息：设置值服务器类型选择数据库引擎。
-      服务器名称选择 "myserver.database.windows.net 用户名" 输入创建过程中提供的用户名。
-      密码  输入在创建过程中提供的密码。
-      记住密码 选择“是”。
-5. 选择“连接”。
-6. 浏览左侧菜单中的“数据库”。 
-7. （可选）创建或查询 mydatabase 中的信息
-8. 关闭与*myVM*的远程桌面连接。 
+    
+3. 安装 SQL Server Management Studio。
+4. 在“连接服务器”中，输入或选择以下信息  ：
+
+    | 设置 | 值 |
+    | --- | --- |
+    | 服务器类型 | 数据库引擎 |
+    | 服务器名称 | myserver.database.windows.net |
+    | 用户名 | 输入创建过程中提供的用户名 |
+    | Password | 输入在创建过程中提供的密码 |
+    | 记住密码 | 是 |
+    
+5. 选择“连接”  。
+6. 浏览左侧菜单中的 "**数据库**"。 
+7. （可选）创建或查询 mydatabase 中的信息。
+8. 关闭与 *myVM* 的远程桌面连接。 
 
 ## <a name="clean-up-resources"></a>清理资源 
 使用专用终结点、SQL 数据库服务器和 VM 后，请使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 删除资源组和组内所有资源：

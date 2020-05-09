@@ -7,14 +7,14 @@ ms.service: mysql
 ms.devlang: azurepowershel
 ms.topic: conceptual
 ms.date: 4/28/2020
-ms.openlocfilehash: 1e63a6e57e1dc929c78e5278df6ef0e4ab2a17d7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 871b1ba81f672459378b23705ad5b96213667a73
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82230842"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609037"
 ---
-# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-powershell"></a>如何在 Azure Database for MySQL 中使用 PowerShell 备份和还原服务器
+# <a name="how-to-back-up-and-restore-an-azure-database-for-mysql-server-using-powershell"></a>如何使用 PowerShell 备份和还原 Azure Database for MySQL 服务器
 
 定期备份 Azure Database for MySQL 服务器，以启用还原功能。 通过此功能，用户可将服务器及其所有数据库还原到新服务器上的某个较早时间点。
 
@@ -74,10 +74,10 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 Cmdlet 的 PointInTimeRestore 参数集需要以下参数： **PointInTimeRestore** `Restore-AzMySqlServer`
 
-| 设置 | 建议的值 | 描述  |
+| 设置 | 建议的值 | 说明  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  源服务器所在的资源组。  |
-| “属性” | mydemoserver-restored | 通过还原命令创建的新服务器的名称。 |
+| 名称 | mydemoserver-restored | 通过还原命令创建的新服务器的名称。 |
 | RestorePointInTime | 2020-03-13T13：59：00Z | 选择要还原的时间点。 此日期和时间必须在源服务器的备份保留期限内。 使用 ISO8601 日期和时间格式。 例如，你可以使用自己的本地时区，例如**2020-03-13T05：59： 00-08： 00**。 你还可以使用 UTC 祖鲁语格式，例如， **2018-03-13T13：59： 00Z**。 |
 | UsePointInTimeRestore | `<SwitchParameter>` | 使用时间点模式还原。 |
 
@@ -85,9 +85,9 @@ Cmdlet 的 PointInTimeRestore 参数集需要以下参数： **PointInTimeRestor
 
 还原的服务器的位置值和定价层值与原始服务器保持相同。
 
-还原过程完成后，找到新服务器，验证数据是否已按预期还原。 新服务器具有在启动还原时对现有服务器有效的相同服务器管理员登录名和密码。 可以从新服务器的“概述”**** 页更改密码。
+还原过程完成后，找到新服务器，验证数据是否已按预期还原。 新服务器具有在启动还原时对现有服务器有效的相同服务器管理员登录名和密码。 可以从新服务器的“概述”  页更改密码。
 
-在还原过程中创建的新服务器没有原始服务器上存在的 VNet 服务终结点。 必须为新服务器单独设置这些规则。 还原原始服务器的防火墙规则。
+在还原期间创建的新服务器没有原始服务器上存在的 VNet 服务终结点。 必须为新服务器单独设置这些规则。 将从原始服务器还原防火墙规则。
 
 ## <a name="geo-restore"></a>异地还原
 
@@ -105,7 +105,7 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
   Restore-AzMySqlServer -Name mydemoserver-georestored -ResourceGroupName myresourcegroup -Location eastus -Sku GP_Gen5_8 -UseGeoRestore
 ```
 
-此示例将在 "美国东部" 区域中创建一个名为**mydemoserver-georestored**的新服务器，该服务器属于**myresourcegroup**。 它是一台常规用途第 5 代服务器，具有 8 个 vCore。 服务器是从**mydemoserver**的异地冗余备份创建的，也是在资源组**myresourcegroup**中创建的。
+此示例将在 "美国东部" 区域中创建一个名为**mydemoserver-georestored**的新服务器，该服务器属于**myresourcegroup**。 它是第 5 代常规用途服务器，具有 8 个 vCore。 服务器是从**mydemoserver**的异地冗余备份创建的，也是在资源组**myresourcegroup**中创建的。
 
 若要从现有服务器在不同的资源组中创建新的服务器，请使用**ResourceGroupName**参数指定新的资源组名称，如以下示例中所示：
 
@@ -116,21 +116,20 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 Cmdlet 的 GeoRestore 参数集需要以下参数： **GeoRestore** `Restore-AzMySqlServer`
 
-| 设置 | 建议的值 | 描述  |
+| 设置 | 建议的值 | 说明  |
 | --- | --- | --- |
 |ResourceGroupName | myresourcegroup | 新服务器所属的资源组的名称。|
-|“属性” | mydemoserver-georestored | 新服务器的名称。 |
+|名称 | mydemoserver-georestored | 新服务器的名称。 |
 |位置 | eastus | 新服务器的位置。 |
 |UseGeoRestore | `<SwitchParameter>` | 使用地理模式还原。 |
 
 使用异地还原创建新服务器时，它将继承与源服务器相同的存储大小和定价层，除非指定了**Sku**参数。
 
-还原过程完成后，找到新服务器，验证数据是否已按预期还原。 新服务器具有在启动还原时对现有服务器有效的相同服务器管理员登录名和密码。 可以从新服务器的“概述”**** 页更改密码。
+还原过程完成后，找到新服务器，验证数据是否已按预期还原。 新服务器具有在启动还原时对现有服务器有效的相同服务器管理员登录名和密码。 可以从新服务器的“概述”  页更改密码。
 
-在还原过程中创建的新服务器没有原始服务器上存在的 VNet 服务终结点。 必须为此新服务器单独设置这些规则。 还原原始服务器的防火墙规则。
+在还原期间创建的新服务器没有原始服务器上存在的 VNet 服务终结点。 必须为此新服务器单独设置这些规则。 将从原始服务器还原防火墙规则。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解有关服务[备份](concepts-backup.md)的详细信息
-- 了解[副本](concepts-read-replicas.md)
-- 详细了解[业务连续性](concepts-business-continuity.md)选项
+> [!div class="nextstepaction"]
+> [使用 PowerShell 自定义 Azure Database for MySQL 服务器参数](howto-configure-server-parameters-using-powershell.md)

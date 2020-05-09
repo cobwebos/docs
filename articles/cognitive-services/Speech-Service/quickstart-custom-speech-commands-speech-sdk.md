@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 9e324af0b90f595b5b7af2a417a562efb193d854
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 186b684cc7e4442d1a8ce14f06e16c839e117a26
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76156771"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872486"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>快速入门：使用 Speech SDK （预览版）连接到自定义命令应用程序
 
@@ -24,19 +24,20 @@ ms.locfileid: "76156771"
 本文介绍如何执行以下操作：
 
 - 发布自定义命令应用程序并获取应用程序标识符（应用程序 ID）
-- 使用语音 SDK 创建一个客户端应用，以允许你与自定义命令应用程序对话
+- 使用语音 SDK 创建通用 Windows 平台（UWP）客户端应用程序，以便与自定义命令应用程序对话
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 需要自定义命令应用程序才能完成本文。 如果尚未创建自定义命令应用程序，可以在前面的快速入门中执行此操作：
-
-- [快速入门：创建自定义命令（预览）](./quickstart-custom-speech-commands-create-new.md)
-- [快速入门：使用参数创建自定义命令（预览）](./quickstart-custom-speech-commands-create-parameters.md)
+> [!div class = "checklist"]
+> * [快速入门：创建自定义命令（预览）](./quickstart-custom-speech-commands-create-new.md)
+> * [快速入门：使用参数创建自定义命令（预览）](./quickstart-custom-speech-commands-create-parameters.md)
 
 还需要：
-
-- [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-- 语音服务的 Azure 订阅密钥。 [免费获取一个](get-started.md)或创建一个[Azure 门户](https://portal.azure.com)
+> [!div class = "checklist"]
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+> * 语音服务的 Azure 订阅密钥。 [免费获取一个](get-started.md)或创建一个[Azure 门户](https://portal.azure.com)
+> * [启用设备进行开发](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
 
 ## <a name="optional-get-started-fast"></a>可选：快速入门
 
@@ -44,12 +45,13 @@ ms.locfileid: "76156771"
 
 ## <a name="step-1-publish-custom-commands-application"></a>步骤1：发布自定义命令应用程序
 
-1. 打开[之前创建的自定义命令应用程序](./quickstart-custom-speech-commands-create-new.md)并选择 "**发布**"
+1. 打开[之前创建的自定义命令应用程序（预览版）](./quickstart-custom-speech-commands-create-new.md) ，然后选择 "**发布**"
 
    > [!div class="mx-imgBorder"]
    > ![发布应用程序](media/custom-speech-commands/fulfill-sdk-publish-application.png)
 
 1. 复制发布通知中的应用 ID 供以后使用
+1. 复制语音资源密钥以供将来使用
 
 ## <a name="step-2-create-a-visual-studio-project"></a>步骤2：创建 Visual Studio 项目
 
@@ -129,7 +131,7 @@ ms.locfileid: "76156771"
 
 1. 在**解决方案资源管理器**中，打开代码隐藏源文件`MainPage.xaml.cs` （在下`MainPage.xaml`分组）
 
-1. 将文件的内容替换为以下代码：
+1. 将文件的内容替换为以下代码： 
 
    ```csharp
    using Microsoft.CognitiveServices.Speech;
@@ -298,6 +300,11 @@ ms.locfileid: "76156771"
        }
    }
    ```
+    > [!NOTE]
+    > 如果看到错误： "类型" 对象 "在未被引用的程序集中定义
+    > 1. 向右客户端解决方案。
+    > 1. 选择 "**管理解决方案的 NuGet 包**"，选择 "**更新**" 
+    > 1. 如果在更新列表中看到**NETCore** ，请将**NETCore**更新到最新版本
 
 1. 将以下代码添加到的方法体中：`InitializeDialogServiceConnector`
 
@@ -400,7 +407,7 @@ ms.locfileid: "76156771"
 
 1. 从菜单栏中，选择 "**文件** > " "**全部保存**" 以保存所做的更改
 
-## <a name="build-and-run-the-application"></a>构建并运行应用程序
+## <a name="build-and-run-the-application"></a>生成并运行应用程序
 
 1. 从菜单栏中，选择“构建”   > “构建解决方案”  以构建应用程序。 编译代码时应不会出错。
 
@@ -408,7 +415,7 @@ ms.locfileid: "76156771"
 
    ![C# 中的示例 UWP 虚拟助手应用程序 - 快速入门](media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 
-1. 选择“启用麦克风”。**** 如果弹出了访问权限请求，请选择 **"是"**。
+1. 选择“启用麦克风”。  如果弹出了访问权限请求，请选择 **"是"**。
 
    ![麦克风访问权限请求](media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
@@ -419,3 +426,6 @@ ms.locfileid: "76156771"
 > [!div class="nextstepaction"]
 > [如何：在客户端上利用语音 SDK 完成命令（预览）](./how-to-custom-speech-commands-fulfill-sdk.md)
 > [如何：向自定义命令参数添加验证（预览版）](./how-to-custom-speech-commands-validations.md)
+
+## <a name="sample-source-code"></a>示例源代码
+查看 GitHub 上的客户端示例代码[-VoiceAssistant](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant)

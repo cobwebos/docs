@@ -4,15 +4,15 @@ description: 概要介绍 Azure 托管磁盘，这种磁盘在你使用 VM 时�
 author: roygara
 ms.service: virtual-machines
 ms.topic: overview
-ms.date: 12/02/2019
+ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: edcde9c5192791e88da57d158bab3e79b171bfc8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c66324841989580712d893ada9121ae40f5161a3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78944768"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82147760"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Azure 托管磁盘简介
 

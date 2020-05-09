@@ -5,20 +5,20 @@ ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 37d4c27d3033545c523cefc2f317073af531f095
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 03076a711041812f7587aa1c388b0889b49725d2
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78199710"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787127"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric 节点类型与虚拟机规模集
 
-[虚拟机规模集](/azure/virtual-machine-scale-sets)是一种 Azure 计算资源。 可使用规模集以集的形式部署和管理虚拟机集合。 在 Azure Service Fabric 群集中定义的每个节点类型都只设置一个规模集：多个节点类型不能由同一规模集支持，一个节点类型不应（在大多数情况下）由多个规模集支持。 这种情况的一个例外是，如果在将副本从原始迁移到已升级规模集时，临时具有相同`nodeTypeRef`值的两个规模集，则在[垂直缩放](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations)节点类型时，这种情况例外。
+[虚拟机规模集](/azure/virtual-machine-scale-sets)是一种 Azure 计算资源。 可使用规模集以集的形式部署和管理虚拟机集合。 在 Azure Service Fabric 群集中定义的每个节点类型都只设置了一个规模集：多个节点类型不能由同一规模集提供支持，而一个节点类型（在大多数情况下）不应由多个规模集提供支持。 此情况的一个例外是[垂直缩放](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations)节点类型这一罕见情况，即当副本从原始规模集迁移到已升级规模集时，临时有两个具有相同 `nodeTypeRef` 值的规模集。
 
-Service Fabric 运行时安装在由*ServiceFabric*虚拟机扩展的规模集中的每个虚拟机上。 可独立增加或减少每个节点类型、更改每个群集节点上运行的 OS SKU、打开不同的端口集，并使用不同的容量指标。
+规模集中每个虚拟机上均通过 Microsoft.Azure.ServiceFabric  虚拟机扩展安装了 Service Fabric 运行时。 可独立增加或减少每个节点类型、更改每个群集节点上运行的 OS SKU、打开不同的端口集，并使用不同的容量指标。
 
-下图显示了一个具有两个节点类型的群集，分别名为*前端*和*后端*。 每个节点类型具有五个节点。
+下图显示了一个具有两个节点类型（分别名为“FrontEnd”  和“BackEnd”  ）的群集。 每个节点类型具有五个节点。
 
 ![具有两个节点类型的群集][NodeTypes]
 
@@ -26,11 +26,11 @@ Service Fabric 运行时安装在由*ServiceFabric*虚拟机扩展的规模集�
 
 如上图中所示，缩放集实例以实例 0 开始，然后以基数 1 递增。 编号反映在节点名称中。 例如，节点 BackEnd_0 是 BackEnd 规模集的实例 0。 此特定规模集具有五个实例，名称分别为 BackEnd_0、BackEnd_1、BackEnd_2、BackEnd_3、BackEnd_4。
 
-扩展规模集时，将创建新的实例。 新的规模集实例名称通常是规模集名称加上下一个实例编号。 在本示例中，即 BackEnd_5。
+横向扩展规模集时，将创建一个新实例。 新的规模集实例名称通常是规模集名称加上下一个实例编号。 在本示例中，即 BackEnd_5。
 
 ## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>将规模集负载均衡器映射到节点类型和规模集
 
-如果已在 Azure 门户部署群集，或使用了示例 Azure 资源管理器模板，将列出资源组下所有的资源。 可看到每个规模集或节点类型的负载均衡器。 负载均衡器名称使用以下格式：LB-&lt;节点类型名称&gt;****。 例如，下图中显示的 LB-sfcluster4doc-0：
+如果已在 Azure 门户部署群集，或使用了示例 Azure 资源管理器模板，将列出资源组下所有的资源。 可看到每个规模集或节点类型的负载均衡器。 负载均衡器名称使用以下格式：LB-&lt;节点类型名称&gt;  。 例如，下图中显示的 LB-sfcluster4doc-0：
 
 ![资源][Resources]
 
@@ -72,21 +72,21 @@ Service Fabric 虚拟机扩展用于将 Service Fabric 启动到 Azure 虚拟机
 
 下面是属性说明：
 
-| **Name** | **允许的值** | **指南或简短说明** |
+| **名称** | **允许的值** | **指导或简短说明** |
 | --- | --- | --- | --- |
-| name | 字符串 | 扩展的唯一名称 |
-| type | "ServiceFabricLinuxNode" 或 "ServiceFabricWindowsNode" | 确定 OS Service Fabric 正启动到 |
-| autoUpgradeMinorVersion | True 或 False | 启用自动升级 SF 运行时次要版本的功能 |
-| publisher | Microsoft.Azure.ServiceFabric | Service Fabric 扩展发布服务器的名称 |
-| clusterEndpont | 字符串 | 管理终结点的 URI:PORT |
-| nodeTypeRef | 字符串 | NodeType 的名称 |
-| durabilityLevel | 青铜、白银、黄金、白金 | 允许暂停不可变的 Azure 基础结构的时间 |
-| enableParallelJobs | True 或 False | 启用计算 ParallelJobs，例如在同一规模集中以并行方式删除 VM 和重启 VM |
-| nicPrefixOverride | 字符串 | 子网前缀，例如“10.0.0.0/24” |
+| name | string | 扩展的唯一名称 |
+| type | “ServiceFabricLinuxNode”或“ServiceFabricWindowsNode” | 确定 OS Service Fabric 正启动到 |
+| autoUpgradeMinorVersion | true 或 false | 启用自动升级 SF 运行时次要版本的功能 |
+| publisher | Microsoft.Azure.ServiceFabric | Service Fabric 扩展发布者的名称 |
+| clusterEndpont | string | 管理终结点的 URI:PORT |
+| nodeTypeRef | string | nodeType 的名称 |
+| durabilityLevel | 青铜、白银、黄金、白金 | 允许用于暂停不可变 Azure 基础结构的时间 |
+| enableParallelJobs | true 或 false | 启用计算 ParallelJobs，例如在同一规模集中以并行方式删除 VM 和重启 VM |
+| nicPrefixOverride | string | 子网前缀，例如“10.0.0.0/24” |
 | commonNames | string[] | 已安装群集证书的公用名 |
-| x509StoreName | 字符串 | 已安装群集证书所在的存储的名称 |
+| x509StoreName | string | 已安装群集证书所在的存储的名称 |
 | typeHandlerVersion | 1.1 | 扩展版本。 建议使用 1.0 经典版扩展来升级到 1.1 |
-| dataPath | 字符串 | 用于保存 Service Fabric 系统服务状态和应用程序数据的驱动器路径。
+| dataPath | string | 用于保存 Service Fabric 系统服务状态和应用程序数据的驱动器路径。
 
 ## <a name="next-steps"></a>后续步骤
 
