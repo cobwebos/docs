@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ed7f2b57df97a99a73ad191e45fb900a04f8021f
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.openlocfilehash: a4c02369f44255dfa472202215496378d41f8c6c
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983017"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735719"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>使用 Azure 门户列出 Azure 角色分配
 
@@ -32,9 +32,7 @@ ms.locfileid: "82983017"
 
 要查看分配给订阅中的用户或组的角色，最简单的方法是使用“Azure 资源”窗格****。
 
-1. 在 Azure 门户中，从 "Azure 门户" 菜单中选择 "**所有服务**"。
-
-1. 选择 " **Azure Active Directory** "，然后选择 "**用户**或**组**"。
+1. 在 Azure 门户中单击“所有服务”，然后选择“用户”或“组”************。
 
 1. 单击要列出其角色分配的用户或组。
 

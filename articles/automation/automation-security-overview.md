@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 109bb6dd29ea9c4239e0abcfc668f1185f7e9783
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d3dbaad18f6acbe1ddf17d81f54e4232c838dd7
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82114524"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787407"
 ---
 # <a name="introduction-to-authentication-in-azure-automation"></a>Azure 自动化中的身份验证简介
 
@@ -25,7 +25,7 @@ Azure 自动化让可以通过其他云提供程序（如 Amazon Web Services (A
 
 每个自动化帐户的自动化资源与单个 Azure 区域相关联，但自动化帐户可以管理订阅中的所有资源。 在不同区域中创建自动化帐户的主要原因是，策略要求数据和资源隔离到特定的区域。
 
-所有使用 Azure 资源管理器和 Azure 自动化中的 Azure cmdlet 对资源执行的任务必须使用 Azure Active Directory 组织标识基于凭据的身份验证向 Azure 进行身份验证。 Azure Automation 中的运行方式帐户在 azure 中使用 Azure cmdlet 为管理资源提供身份验证。 创建运行方式帐户时，它会在 Azure Active Directory （AD）中创建新的服务主体用户，并在订阅级别向此用户分配参与者角色。 对于在 Azure 虚拟机上使用混合 Runbook 辅助角色的 Runbook，可以使用 [Azure 资源托管标识](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources)而不是运行方式帐户来对 Azure 资源进行身份验证。
+所有使用 Azure 资源管理器和 Azure 自动化中的 Azure cmdlet 对资源执行的任务必须使用 Azure Active Directory 组织标识基于凭据的身份验证向 Azure 进行身份验证。 Azure Automation 中的运行方式帐户在 azure 中使用 Azure cmdlet 为管理资源提供身份验证。 创建运行方式帐户时，它会在 Azure Active Directory （AD）中创建新的服务主体用户，并在订阅级别向此用户分配参与者角色。 对于在 Azure 虚拟机上使用混合 Runbook 辅助角色的 runbook，你可以将[Runbook 身份验证与托管标识](automation-hrw-run-runbooks.md#runbook-auth-managed-identities)（而不是运行方式帐户）配合使用来对 azure 资源进行身份验证。
 
 默认情况下，运行方式帐户的服务主体不具有读取 Azure AD 的权限。 如果要添加读取或管理 Azure AD 的权限，则需要在**API 权限**下授予对服务主体的权限。 若要了解详细信息，请参阅[添加用于访问 Web API 的权限](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)。
 

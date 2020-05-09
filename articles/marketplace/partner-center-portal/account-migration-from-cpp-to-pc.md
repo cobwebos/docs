@@ -1,20 +1,20 @@
 ---
-title: 从云合作伙伴门户到合作伙伴中心的帐户迁移-适用于 Azure 的商业 marketplace
-description: 如何将帐户从 CPP 迁移到合作伙伴中心-适用于 Azure 的商业 marketplace
+title: 将帐户从云合作伙伴门户迁移到 Microsoft 商用 marketplace
+description: 了解如何在适用于 Azure 的 Microsoft 商业 marketplace 中将你的帐户从云合作伙伴门户迁移到合作伙伴中心
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 49fb2da05b7284fff10e6271de177551000995ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 033b603630fc219fc378556a2ccbaef4eae524e4
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024415"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82743534"
 ---
-# <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>将帐户从云合作伙伴门户迁移到合作伙伴中心
+# <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>如何将帐户从云合作伙伴门户迁移到合作伙伴中心
 
 如果你有现有云合作伙伴门户（CPP）帐户，则需要将你的帐户设置迁移到合作伙伴中心。
 
@@ -87,6 +87,6 @@ ms.locfileid: "82024415"
 
 如果需要有关发布、验证或管理 marketplace 产品/服务的帮助，请[提交支持票证](https://partner.microsoft.com/support/v2/?stage=1)。
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>后续步骤
 
 - [在合作伙伴中心管理你的商业应用商店帐户](./manage-account.md)

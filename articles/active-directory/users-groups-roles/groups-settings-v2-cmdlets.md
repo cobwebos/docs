@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a218e956c72f8005e533db7b8800e98ee72ce223
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cc12e571ca955a0ddc47e1c1dd73c2717161df4b
+ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74233115"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82739307"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>用于组管理的 Azure Active Directory 版本 2 cmdlet
 
@@ -52,9 +52,13 @@ ms.locfileid: "74233115"
 
 现在可以开始使用模块中的 cmdlet 了。 有关 Azure AD 模块中 cmdlet 的完整说明，请参阅 [Azure Active Directory PowerShell 版本 2](/powershell/azure/install-adv2?view=azureadps-2.0) 的联机参考文档。
 
+> [!NOTE]
+> Azure AD PowerShell cmdlet 不适用于新的 Powershell 7，因为它基于 .net Core。 我们知道，这正在进行更新。 从现在开始，我们建议使用要用于 Azure AD Powershell 操作的 Windows Powershell 1.x 模块。 
+
+
 ## <a name="connect-to-the-directory"></a>连接到目录
 
-在开始使用 Azure AD PowerShell cmdlet 管理组之前，必须将 PowerShell 会话连接到要管理的目录。 请使用以下命令：
+在开始使用 Azure AD PowerShell cmdlet 管理组之前，必须将 PowerShell 会话连接到要管理的目录。 使用以下命令：
 
 ```powershell
     PS C:\Windows\system32> Connect-AzureAD
@@ -63,8 +67,8 @@ ms.locfileid: "74233115"
 该 cmdlet 会提示用户输入访问目录时需要使用的凭据。 在此示例中，我们将使用 karen@drumkit.onmicrosoft.com 访问演示目录。 该 cmdlet 会返回一个确认，表明会话已成功连接到目录：
 
 ```powershell
-    Account                       Environment Tenant
-    -------                       ----------- ------
+    Account                       Environment Tenant ID
+    -------                       ----------- ---------
     Karen@drumkit.onmicrosoft.com AzureCloud  85b5ff1e-0402-400c-9e3c-0f…
 ```
 
@@ -130,7 +134,7 @@ ms.locfileid: "74233115"
 ```
 
 > [!NOTE]
-> Azure AD PowerShell cmdlet 实现 OData 查询标准。 有关详细信息，请参阅[使用 OData 终结点的 OData 系统查询选项](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter)中的 $filter  。
+> Azure AD PowerShell cmdlet 实现 OData 查询标准。 有关详细信息，请参阅[使用 OData 终结点的 OData 系统查询选项](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter)中的 $filter****。
 
 ## <a name="create-groups"></a>创建组
 
@@ -308,17 +312,17 @@ ObjectId 参数是要将成员添加到的组的 ObjectID，-RefObjectId 是要�
 
 ## <a name="reserved-aliases"></a>保留的别名
 
-创建组后，某些终结点允许最终用户指定一个 mailNickname 或别名，用作组的电子邮件地址的一部分。 仅 Azure AD 全局管理员可以创建具有以下权限较高的电子邮件别名的组。 
+创建组后，某些终结点允许最终用户指定一个 mailNickname 或别名，用作组的电子邮件地址的一部分。仅 Azure AD 全局管理员可以创建具有以下权限较高的电子邮件别名的组。 
   
 * abuse
 * admin
-* 主要区域中的
+* administrator
 * hostmaster
 * majordomo
 * postmaster
 * root
 * secure
-* security
+* 安全性
 * ssl-admin
 * webmaster
 

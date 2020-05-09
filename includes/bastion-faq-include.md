@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 03/25/2020
+ms.date: 05/04/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 57a764b62fcda333f042794e176c24c8e6cc5526
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b8d30e7fe3138a26d9b64ec35d18260933df7999
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80374043"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780295"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>面向哪些区域提供？
 
@@ -31,17 +31,19 @@ ms.locfileid: "80374043"
 
 无需 RDP 或 SSH 客户端即可在 Azure 门户中访问 RDP/SSH 来连接到 Azure 虚拟机。 使用 [Azure 门户](https://portal.azure.com) 能够直接在浏览器中通过 RDP/SSH 来访问虚拟机。
 
-### <a name="does-azure-bastion-require-an-rds-cal-for-administrative-purposes-on-azure-hosted-vms"></a><a name="rdscal"></a>Azure Bastion 是否需要 RDS CAL 才能在 Azure 托管的 VM 上实现管理目的？
-不需要，通过 Azure Bastion 访问 Windows Server VM 时，不需要 [RDS CAL](https://www.microsoft.com/en-us/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab)（如果仅用于管理目的）。
+### <a name="do-i-need-an-agent-running-in-the-azure-virtual-machine"></a><a name="agent"></a>是否需要在 Azure 虚拟机中运行代理？
+
+无需在浏览器或 Azure 虚拟机上安装代理或任何软件。 Bastion 服务没有代理，不需要任何其他软件即可使用 RDP/SSH。
 
 ### <a name="how-many-concurrent-rdp-and-ssh-sessions-does-each-azure-bastion-support"></a><a name="limits"></a>每个 Azure Bastion 支持多少个并发 RDP 和 SSH 会话？
+
 RDP 和 SSH 都是基于使用率的协议。 会话的使用率高将导致堡垒主机支持的会话总数较少。 下面的数字假设采用了标准的日常工作流。
 
 [!INCLUDE [limits](bastion-limits.md)]
 
-### <a name="do-i-need-an-agent-running-in-the-azure-virtual-machine"></a><a name="agent"></a>是否需要在 Azure 虚拟机中运行代理？
+### <a name="what-features-are-supported-in-an-rdp-session"></a><a name="rdpfeaturesupport"></a>RDP 会话支持哪些功能？
 
-无需在浏览器或 Azure 虚拟机上安装代理或任何软件。 Bastion 服务没有代理，不需要任何其他软件即可使用 RDP/SSH。
+目前仅支持文本复制/粘贴。 不支持文件复制等功能。 请随时在 [Azure Bastion 反馈页](https://feedback.azure.com/forums/217313-networking?category_id=367303)上分享有关新功能的反馈。
 
 ### <a name="which-browsers-are-supported"></a><a name="browsers"></a>支持哪些浏览器？
 
@@ -59,9 +61,8 @@ RDP 和 SSH 都是基于使用率的协议。 会话的使用率高将导致堡�
 
 有关详细信息，请参阅[定价页](https://aka.ms/BastionHostPricing)。
 
-### <a name="why-do-i-get-your-session-has-expired-error-message-before-the-bastion-session-starts"></a><a name="session"></a>为什么在 Bastion 会话启动前收到了“你的会话已过期”的错误消息？
-
-会话只能从 Azure 门户启动。 登录到 Azure 门户，并重新开始会话。 如果直接从另一个浏览器会话或选项卡转到 URL，则会出现此错误。 它有助于确保会话更安全，并且该会话只能通过 Azure 门户来访问。
+### <a name="does-azure-bastion-require-an-rds-cal-for-administrative-purposes-on-azure-hosted-vms"></a><a name="rdscal"></a>Azure Bastion 是否需要 RDS CAL 才能在 Azure 托管的 VM 上实现管理目的？
+不需要，通过 Azure Bastion 访问 Windows Server VM 时，不需要 [RDS CAL](https://www.microsoft.com/en-us/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab)（如果仅用于管理目的）。
 
 ### <a name="what-keyboard-layouts-are-supported-during-the-bastion-remote-session"></a><a name="keyboard"></a>Bastion 远程会话期间支持哪些键盘布局？
 
@@ -72,9 +73,9 @@ Azure Bastion 目前在 VM 内支持 en-us-qwerty 键盘布局。  对其他区�
 不是。 Azure Bastion 子网不支持 UDR。
 对于在同一虚拟网络中同时包含 Azure Bastion 和 Azure 防火墙/网络虚拟设备 (NVA) 的方案，无需强制流量从 Azure Bastion 子网发往 Azure 防火墙，因为 Azure Bastion 与 VM 之间的通信是专用的。 有关详细信息，请参阅[通过 Bastion 访问 Azure 防火墙后的 VM](https://azure.microsoft.com/blog/accessing-virtual-machines-behind-azure-firewall-with-azure-bastion/)。
 
-### <a name="is-file-transfer-supported-with-azure-bastion-rdp-session"></a><a name="filetransfer"></a>Azure Bastion RDP 会话是否支持文件传输？
+### <a name="why-do-i-get-your-session-has-expired-error-message-before-the-bastion-session-starts"></a><a name="session"></a>为什么在 Bastion 会话启动前收到了“你的会话已过期”的错误消息？
 
-我们正在努力添加新功能。 目前还不支持文件传输，但它是我们路线图的一部分。 请随时在 [Azure Bastion 反馈页](https://feedback.azure.com/forums/217313-networking?category_id=367303)上分享有关新功能的反馈。
+会话只能从 Azure 门户启动。 登录到 Azure 门户，并重新开始会话。 如果直接从另一个浏览器会话或选项卡转到 URL，则会出现此错误。 它有助于确保会话更安全，并且该会话只能通过 Azure 门户来访问。
 
 ### <a name="how-do-i-handle-deployment-failures"></a><a name="udr"></a>如何处理部署失败？
 
