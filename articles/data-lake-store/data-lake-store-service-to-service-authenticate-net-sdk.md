@@ -1,22 +1,17 @@
 ---
-title: 服务到服务身份验证：通过 Azure Active Directory 将 .NET SDK 与 Azure Data Lake Storage Gen1 配合使用 | Microsoft Docs
+title: .NET-服务到服务身份验证-Data Lake Storage Gen1
 description: 了解如何通过 .NET SDK 使用 Azure Active Directory 实现 Azure Data Lake Storage Gen1 服务到服务身份验证
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: cgronlun
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 96c496ef67e26a3079577bf52e9d019d963467b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bac5fa95ca5ce4e289d4dd18cba9238da7b8a2e2
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265527"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691622"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>使用 .NET SDK 进行 Azure Data Lake Storage Gen1 服务到服务身份验证
 > [!div class="op_single_selector"]
@@ -29,7 +24,7 @@ ms.locfileid: "79265527"
 
 本文介绍如何使用 .NET SDK 进行 Azure Data Lake Storage Gen1 服务到服务身份验证。 有关使用 .NET SDK 进行 Data Lake Storage Gen1 最终用户身份验证的信息，请参阅[使用 .NET SDK 进行 Data Lake Storage Gen1 最终用户身份验证](data-lake-store-end-user-authenticate-net-sdk.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 * **Visual Studio 2013 或更高**版本。 以下说明使用 Visual Studio 2019。
 
 * **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
