@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviwer: ''
 ms.date: 03/08/2019
-ms.openlocfilehash: 82c3c3274a8a9d66019ce906ee7be47cedac7470
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e7da8905adfbddd7241aff84e4b55917ddbdb6d1
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73822043"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82888953"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-the-windows-certificate-store"></a>Always Encrypted：保护敏感数据并将加密密钥存储在 Windows 证书存储中
 
@@ -543,4 +543,4 @@ namespace AlwaysEncryptedConsoleApp
 * [透明数据加密](https://msdn.microsoft.com/library/bb934049.aspx)
 * [SQL Server 加密](https://msdn.microsoft.com/library/bb510663.aspx)
 * [始终加密向导](https://msdn.microsoft.com/library/mt459280.aspx)
-* [Always Encrypted 博客](https://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
+* [Always Encrypted 博客](https://docs.microsoft.com/archive/blogs/sqlsecurity/always-encrypted-key-metadata)

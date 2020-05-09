@@ -9,25 +9,28 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 25f3734a2a12ddf87862cc1d127f88f175225e07
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
-ms.translationtype: HT
+ms.openlocfilehash: 1b4467128fae3fd71a6e588e3c05d287c153e168
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900289"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927881"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>Windows update 代理问题疑难解答
 
-在更新管理中，计算机未显示为 "就绪" （正常）的原因有很多。 在更新管理中，可以检查混合 Runbook 辅助角色代理的运行状况，以确定基本问题。 本文介绍如何在[脱机方案](#troubleshoot-offline)中从 Azure 门户和非 Azure 计算机运行 Azure 计算机的疑难解答。
-
-下面是计算机的三个就绪状态：
+在更新管理中，计算机未显示为 "就绪" （正常）的原因有很多。 可以检查 Windows 混合 Runbook 辅助角色代理的运行状况，以确定基本问题。 下面是计算机的三个就绪状态：
 
 * 准备就绪：混合 Runbook 辅助角色已部署，最后发现不到1小时前。
-* 断开连接：已部署混合 Runbook 辅助角色，最后在1小时前查看。
+* 已断开连接：混合 Runbook 辅助角色已部署，上次在一小时前查看。
 * 未配置：混合 Runbook 辅助角色找不到或未完成加入。
 
 > [!NOTE]
 > 在 Azure 门户显示的内容和计算机的当前状态之间可能会有轻微的延迟。
+
+本文介绍如何在[脱机方案](#troubleshoot-offline)中从 Azure 门户和非 Azure 计算机运行 Azure 计算机的疑难解答。 疑难解答现在包括对 Windows Server Update Services （WSUS）以及 autodownload 和安装密钥的检查。
+
+> [!NOTE]
+> 如果配置了一个代理服务器，则疑难解答脚本当前不会通过代理服务器路由流量。
 
 ## <a name="start-the-troubleshooter"></a>启动“故障排除”
 
