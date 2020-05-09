@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: d1a972a1d89066b961f2dcc28fba830e3a04ebc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 446beca9b8491fb252a1e3284a9ec9a0e6dabef5
+ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274757"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82739358"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure Monitor 中的 Windows 和 Linux 性能数据源
 Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和应用程序性能的见解。  除聚合性能数据以用于长期分析和报告外，Azure Monitor 还可以定期收集性能计数器以进行近实时 (NRT) 分析。
@@ -175,7 +175,7 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
     </source>
 
 ## <a name="data-collection"></a>数据收集
-Azure Monitor 以指定的采样间隔在已安装相应计数器的所有代理上收集所有指定的性能计数器。  数据未聚合，原始数据在订阅指定的持续时间内在所有日志查询视图中提供。
+Azure Monitor 以指定的采样间隔在已安装相应计数器的所有代理上收集所有指定的性能计数器。  数据未聚合，原始数据在日志分析工作区指定的持续时间内的所有日志查询视图中均可用。
 
 ## <a name="performance-record-properties"></a>性能记录属性
 性能记录具有 **Perf** 类型，并且具有下表中的属性。
