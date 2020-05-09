@@ -655,7 +655,7 @@
             - name: 缩放
               items:
                 - name: 手动横向扩展
-                  href: service-fabric-cluster-scale-up-down.md
+                  href: service-fabric-cluster-scale-in-out.md
                 - name: 以编程方式横向扩展
                   href: service-fabric-cluster-programmatic-scaling.md
                 - name: 纵向扩展主节点类型
