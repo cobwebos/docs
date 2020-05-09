@@ -1,22 +1,17 @@
 ---
-title: 服务到服务身份验证：使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 验证 | Microsoft Docs
-description: 了解如何使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 服务到服务身份验证
-services: data-lake-store
-documentationcenter: ''
+title: 服务到服务身份验证-Data Lake Storage Gen1-Azure
+description: 了解如何使用 Azure Active Directory 通过 Azure Data Lake Storage Gen1 实现服务到服务身份验证。
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 3fbf2f2540e8f1ca84aad2759b9a1fc790e4065d
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 74ad40eb7f7483bb010cf8eb002776893c50a256
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "66241371"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688183"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 服务到服务身份验证
 > [!div class="op_single_selector"]
@@ -68,12 +63,12 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证。
 5. 单击“添加”**** 图标打开“添加自定义访问”**** 边栏选项卡。 在此边栏选项卡中，单击“选择用户或组”****，并在“选择用户或组”**** 边栏选项卡中，查找之前创建的 Azure Active Directory 应用程序。 如果搜索范围中存在大量的组，请使用顶部的文本框筛选组名称。 单击要添加的组，并单击“选择”****。
    
     ![添加组](./media/data-lake-store-authenticate-using-active-directory/adl.acl.3.png "添加组")
-6. 单击“选择权限”****，选择权限以及是将这些权限分配为默认 ACL、访问 ACL 还是同时分配为这两类。 单击" **确定**"。
+6. 单击“选择权限”****，选择权限以及是将这些权限分配为默认 ACL、访问 ACL 还是同时分配为这两类。 单击“确定”。 
    
     ![分配权限给组](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "分配权限给组")
    
     有关 Data Lake Storage Gen1 中的权限和默认/访问 ACL 的详细信息，请参阅 [Data Lake Storage Gen1 中的访问控制](data-lake-store-access-control.md)。
-7. 在“添加自定义访问”**** 边栏选项卡中，单击“确定”****。 “访问”边栏选项卡中列出新添加的组以及相关的权限****。
+7. 在“添加自定义访问”**** 边栏选项卡中，单击“确定”****。 将在 "**访问**" 边栏选项卡中列出新添加的具有关联权限的组。
    
     ![分配权限给组](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "分配权限给组")
 

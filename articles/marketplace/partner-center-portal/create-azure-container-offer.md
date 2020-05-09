@@ -1,33 +1,33 @@
 ---
-title: 在合作伙伴中心创建 Azure 容器服务-Azure Marketplace
-description: 本文介绍如何创建和发布 Azure Marketplace 的容器产品/服务。
+title: 创建 Azure 容器服务-Azure Marketplace
+description: 本文介绍如何创建容器产品并将其发布到 Azure Marketplace。
 author: mingshen
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/07/2020
-ms.openlocfilehash: 3170849955485c0d098ed9f39c22332456e46fe4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f2a3b6355fdaa8cd90525fac9d29324270dfad02
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81867368"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791929"
 ---
 # <a name="create-an-azure-container-offer"></a>创建 Azure 容器产品/服务
 
 > [!IMPORTANT]
 > 我们正在将 Azure 容器提供的管理从云合作伙伴门户迁移到合作伙伴中心。 在迁移你的产品/服务之前，请按照云合作伙伴门户[容器](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer)中的说明来管理你的产品/服务。
 
-本文介绍如何创建和发布 Azure Marketplace 的容器产品/服务。 在开始之前，请[在合作伙伴中心创建一个商用 Marketplace 帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。
+本文介绍如何创建和发布 Azure Marketplace 的容器产品/服务。 在开始之前，请[在合作伙伴中心创建一个商用 Marketplace 帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)（如果尚未这样做）。 确保你的帐户已在 "商用 marketplace 计划" 中注册。
 
 ## <a name="create-a-new-offer"></a>创建新套餐
 
-1. 登录到 "[合作伙伴中心](https://partner.microsoft.com/dashboard/home)"，然后在顶部菜单中选择 "**仪表板**"。
-2. 在左侧菜单中，选择 "**商业 Marketplace**"，然后选择 "**概述**"。
-3. 在 "**概述**" 页上，依次选择 " **+ 新产品/服务**"、" **Azure 容器**"。 此时将显示 "**新建产品/服务**" 对话框。
+1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+2. 在左侧导航菜单中，选择 "**商业市场** > **概述**"。
+3. 在 "概述" 页上，选择 " **+ 新建提供** > **Azure 容器**"。
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-new-container.png" alt-text="在合作伙伴中心的 "概述" 页中进行了说明。新的 "产品/服务" 按钮和咨询服务产品已突出显示。":::
+    ![阐释左侧导航菜单。](./media/new-offer-azure-container.png)
 
 > [!TIP]
 > 发布产品/服务后，在 "合作伙伴中心" 中对其进行的编辑仅在重新发布产品/服务后出现在商店中。 请确保在进行更改后始终重新发布。
@@ -36,16 +36,16 @@ ms.locfileid: "81867368"
 
 输入**产品/服务 ID**。 这是你的帐户中每个产品/服务的唯一标识符。
 
-- 适用于 marketplace 产品/服务和 Azure 资源管理器模板的 web 地址中的客户可查看此 ID （如果适用）。
+- 适用于 marketplace 产品/服务和 Azure 资源管理器模板的 web 地址中的客户可看到此 ID （如果适用）。
 - 只使用小写字母和数字。 它可以包括连字符和下划线，但不能包含空格，并且限制为50个字符。 例如，如果输入了 "**测试/服务-1**"，则 "产品/服务`https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`" 网址为。
 - 选择 "**创建**" 后，无法更改产品/服务 ID。
 
-**输入****提议别名**。 这是用于引用合作伙伴中心中的产品/服务的名称。
+输入**提议别名**。 这是在合作伙伴中心中用于产品/服务的名称。
 
 - 此名称不能在 marketplace 中使用，它与向客户显示的产品/服务名称和其他值不同。
 - 选择 "**创建**" 后无法更改此。
 
-选择 "**创建**"，然后继续。
+选择 "**创建**" 以生成产品/服务并继续。
 
 ## <a name="offer-overview"></a>产品/服务概述
 
@@ -64,7 +64,7 @@ ms.locfileid: "81867368"
 
 ### <a name="connect-lead-management--optional"></a>连接潜在客户管理-可选
 
-当你的产品/服务通过合作伙伴中心向 marketplace 发布产品/服务时，你可以将其连接到你的客户关系管理（CRM）系统。 这使你可以在有人向你的产品表达兴趣或使用你的产品时立即收到客户联系信息。
+当你的产品/服务通过合作伙伴中心向商业市场发布产品/服务时，你可以将其连接到你的客户关系管理（CRM）系统。 这使你可以在有人向你的产品表达兴趣或使用你的产品时立即收到客户联系信息。
 
 1. **选择希望我们向其发送客户主管的潜在客户目标**。 合作伙伴中心支持以下 CRM 系统：
 
@@ -83,10 +83,10 @@ ms.locfileid: "81867368"
 
 - [潜在客户管理概述](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
 - [潜在顾客管理常见问题解答](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [常见的潜在顾客配置错误](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [常见的潜在顾客配置错误](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
 - [潜在客户管理概述](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)PDF （确保弹出窗口阻止程序处于关闭状态）
 
-选择 "**保存草稿**"，然后继续下一部分的 "属性"。
+选择 "**保存草稿**"，然后继续。
 
 ### <a name="properties"></a>属性
 
@@ -432,6 +432,6 @@ Azure 政府服务负责处理特定政府法规和要求的数据。 例如，F
 
 若要将产品/服务发布到公共产品/服务（如果是专用用户），请访问合作伙伴中心，并选择 "**上线**"。
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>后续步骤
 
-- [在商业市场中更新现有的套餐](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)
+- [更新商业应用商店中的现有产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)
