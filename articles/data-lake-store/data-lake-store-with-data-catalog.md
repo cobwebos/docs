@@ -1,23 +1,17 @@
 ---
-title: 在 Azure 数据目录中从 Azure Data Lake Storage Gen1 注册数据 | Microsoft Docs
-description: 在 Azure 数据目录中从 Azure Data Lake Storage Gen1 注册数据
-services: data-lake-store,data-catalog
-documentationcenter: ''
+title: 将 Data Lake Storage Gen1 与 Azure 数据目录集成
+description: 了解如何在 Azure 数据目录中的 Azure Data Lake Storage Gen1 中注册数据，以便在组织中发现数据。
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 3294d91e-a723-41b5-9eca-ace0ee408a4b
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: fd887560c0011fb1ec2141e33f02f7e3d8a39c81
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 66191a52c6ef1f3d19afd2a47356487b07e9eff4
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60196488"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692340"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>在 Azure 数据目录中从 Azure Data Lake Storage Gen1 注册数据
 本文介绍如何将 Azure Data Lake Storage Gen1 与 Azure 数据目录集成，以便通过将其与数据目录集成，使数据在组织内可发现。 了解对数据进行分类的详细信息，请参阅 [Azure 数据目录](../data-catalog/data-catalog-what-is-data-catalog.md)。 若要了解可以在其中使用数据目录的方案，请参阅 [Azure 数据目录常见方案](../data-catalog/data-catalog-common-scenarios.md)。
@@ -27,7 +21,7 @@ ms.locfileid: "60196488"
 
 * **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **为 Data Lake Storage Gen1 启用 Azure 订阅**。 请参阅[说明](data-lake-store-get-started-portal.md)。
-* **Data Lake Storage Gen1 帐户**。 按照[使用 Azure 门户中的 Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)中的说明进行操作。 在本教程中，创建一个名为 datacatalogstore 的 Data Lake Storage Gen1 帐户****。
+* **Data Lake Storage Gen1 帐户**。 请遵循[通过 Azure 门户开始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 中的说明进行操作。 在本教程中，创建一个名为 datacatalogstore 的 Data Lake Storage Gen1 帐户****。
 
     创建帐户后，将示例数据集上传到其中。 在本教程中，上传 [Azure Data Lake Git存储库](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/)中 **AmbulanceDota** 文件夹下的所有.csv文件。 可以使用各种客户端（[Azure 存储资源管理器](https://storageexplorer.com/)将数据上传到 blob 容器。
 * **Azure 数据目录**。 组织必须已具有为组织创建的 Azure数据目录。 每个组织只允许有一个目录。
@@ -56,7 +50,7 @@ ms.locfileid: "60196488"
 
     b. **可用对象**框中列出 **AmbulanceData** 文件夹下的文件和文件夹。
 
-    c. “要注册的对象”**** 框中列出要在 Azure 数据目录中注册的文件和文件夹。
+    c. "**要注册的对象**" 框将列出要在 Azure 数据目录中注册的文件和文件夹。
 
     ![查看数据结构](./media/data-lake-store-with-data-catalog/view-data-structure.png "查看数据结构")
 1. 在本教程中，应在目录中注册所有文件。 为此，请单击（![移动对象](./media/data-lake-store-with-data-catalog/move-objects.png "移动对象")）按钮以将所有文件移到**要注册的对象**框。
@@ -77,7 +71,7 @@ ms.locfileid: "60196488"
     * [在数据目录中批注数据源](../data-catalog/data-catalog-how-to-annotate.md)
     * [在数据目录中阐述数据源](../data-catalog/data-catalog-how-to-documentation.md)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 * [在数据目录中批注数据源](../data-catalog/data-catalog-how-to-annotate.md)
 * [在数据目录中阐述数据源](../data-catalog/data-catalog-how-to-documentation.md)
 * [将 Data Lake Storage Gen1 与其他 Azure 服务集成](data-lake-store-integrate-with-other-services.md)

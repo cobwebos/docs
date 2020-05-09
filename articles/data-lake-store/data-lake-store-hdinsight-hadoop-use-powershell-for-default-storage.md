@@ -1,23 +1,17 @@
 ---
-title: 通过 PowerShell 创建使用 Azure Data Lake Storage Gen1 作为默认存储的 HDInsight 群集 | Microsoft Docs'
-description: 在 Azure PowerShell 中创建和使用包含 Azure Data Lake Storage Gen1 的 HDInsight 群集
-services: data-lake-store,hdinsight
-documentationcenter: ''
+title: Data Lake Storage Gen1 Azure 的 PowerShell HDInsight 群集
+description: 使用 Azure PowerShell 通过 Azure Data Lake Storage Gen1 创建和使用 Azure HDInsight 群集。
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 8917af15-8e37-46cf-87ad-4e6d5d67ecdb
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: c57a45145d9abc43d0ca79839ea297dfc025db9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b4e5fad65d2ad358bca6b5a2b87d4aa36b77e73
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "66161418"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692075"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>通过 PowerShell 创建使用 Azure Data Lake Storage Gen1 作为默认存储的 HDInsight 群集
 

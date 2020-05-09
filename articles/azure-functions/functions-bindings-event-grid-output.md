@@ -6,16 +6,16 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e7a2611312ffc33703dd5cc9d0a2d7142ddb0532
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0237bcbf98578d9f83f3c9652661c786df54e73a
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77368943"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82627681"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>Azure Functions 的 Azure 事件网格输出绑定
 
-使用事件网格输出绑定将事件写入到自定义主题。 必须具有有效的[自定义主题访问密钥](../event-grid/security-authentication.md#custom-topic-publishing)。
+使用事件网格输出绑定将事件写入到自定义主题。 必须具有有效的[自定义主题访问密钥](../event-grid/security-authentication.md#authenticate-publishing-clients-using-sas-or-key)。
 
 若要了解设置和配置详细信息，请参阅[概述](./functions-bindings-event-grid.md)。
 
@@ -213,9 +213,9 @@ JavaScript 不支持特性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type  | n/a | 必须设置为 "eventGrid"。 |
+|type  | 不适用 | 必须设置为 "eventGrid"。 |
 |**方向键** | 不适用 | 必须设置为“out”。 在 Azure 门户中创建绑定时，会自动设置该参数。 |
-|**name** | n/a | 函数代码中使用的表示事件的变量名称。 |
+|**name** | 不适用 | 函数代码中使用的表示事件的变量名称。 |
 |**topicEndpointUri** |**TopicEndpointUri** | 包含自定义主题的 URI 的应用设置的名称，例如`MyTopicEndpointUri`。 |
 |**topicKeySetting** |**TopicKeySetting** | 应用设置的名称，该设置包含自定义主题的访问密钥。 |
 
@@ -224,7 +224,7 @@ JavaScript 不支持特性。
 > [!IMPORTANT]
 > 确保将 " `TopicEndpointUri`配置" 属性的值设置为包含自定义主题的 URI 的应用设置的名称。 不要在此属性中直接指定自定义主题的 URI。
 
-## <a name="usage"></a>使用情况
+## <a name="usage"></a>用法
 
 # <a name="c"></a>[C#](#tab/csharp)
 

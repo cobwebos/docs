@@ -1,23 +1,17 @@
 ---
-title: 将数据从流分析流式传输至 Azure Data Lake Storage Gen1 中 | Microsoft Docs
-description: 使用 Azure 流分析，将数据流式传输至 Azure Data Lake Storage Gen1 中
-services: data-lake-store,stream-analytics
-documentationcenter: ''
+title: 将数据从流分析流式传输到 Data Lake Storage Gen1-Azure
+description: 使用 Azure 流分析将数据流式传输到 Azure Data Lake Storage Gen1。
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: edb58e0b-311f-44b0-a499-04d7e6c07a90
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: twooley
-ms.openlocfilehash: d3dbacd58b3bda3fbf8ee8ad5f175eccc2cb2a24
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: f1740d167bedd20f51ad5bf24a56b7e7e787f754
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60194806"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690980"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>使用 Azure 流分析将 Azure 存储 Blob 中的数据流式传输至 Azure Data Lake Storage Gen1 中
 本文介绍如何使用 Azure Data Lake Storage Gen1 作为 Azure 流分析作业的输出。 本文演示了一个简单的方案：从 Azure 存储 blob（输入）读取数据并将数据写入 Data Lake Storage Gen1（输出）。
@@ -29,12 +23,12 @@ ms.locfileid: "60194806"
 
 * **Azure 存储帐户**。 将用此帐户的 blob 容器来输入流分析作业的数据。 在本教程中，假设有一个名为 **storageforasa** 的存储帐户，并且在该帐户中有一个名为 **storageforasacontainer** 的容器。 创建容器后，将示例数据文件上传到其中。 
   
-* **Data Lake Storage Gen1 帐户**。 按照[使用 Azure 门户中的 Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)中的说明进行操作。 假设有名为“myadlsg1”的 Data Lake Storage Gen1 帐户****。 
+* **Data Lake Storage Gen1 帐户**。 请遵循[通过 Azure 门户开始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 中的说明进行操作。 假设有名为“myadlsg1”的 Data Lake Storage Gen1 帐户****。 
 
 ## <a name="create-a-stream-analytics-job"></a>创建流分析作业
 首先创建流分析作业，其中包括输入源和输出目标。 在本教程中，源是 Azure blob 容器，目标是 Data Lake Storage Gen1。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录到[Azure 门户](https://portal.azure.com)。
 
 2. 在左窗格中，单击“流分析作业”****，并单击“添加”****。
 
@@ -64,7 +58,7 @@ ms.locfileid: "60194806"
    * 对于“分隔符”****，选择“制表符”****。
    * 对于“编码”****，选择“UTF-8”****。
 
-     单击“创建”。  现在门户将添加该输入并测试与其的连接。
+     单击 **“创建”** 。 现在门户将添加该输入并测试与其的连接。
 
 
 ## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>为作业创建 Data Lake Storage Gen1 输出
@@ -92,7 +86,7 @@ ms.locfileid: "60194806"
    * 对于“分隔符”****，选择“制表符”****。
    * 对于“编码”****，选择“UTF-8”****。
     
-     单击“创建”。  现在门户将添加该输出并测试与其的连接。
+     单击 **“创建”** 。 现在门户将添加该输出并测试与其的连接。
     
 ## <a name="run-the-stream-analytics-job"></a>运行流分析作业
 
@@ -118,5 +112,5 @@ ms.locfileid: "60194806"
 
     在“数据资源管理器”窗格中，可以看到输出已写入到 Data Lake Storage Gen1 输出设置中指定的文件夹路径 (`streamanalytics/job/output/{date}/{time}`)。  
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 * [创建使用 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)

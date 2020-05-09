@@ -2,7 +2,7 @@
 title: Microsoft 标识平台和 OAuth2.0 代理流 | Azure
 description: 本文介绍如何使用 OAuth2.0 代理流通过 HTTP 消息实现服务到服务身份验证。
 services: active-directory
-author: rwike77
+author: hpsin
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -12,12 +12,12 @@ ms.date: 1/3/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: f33350dd076d0386c7518c91b77da59c3b09d0dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57497c7bd8cd1d0b46c40b6977079f4a6a2d876f
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181505"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82689551"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft 标识平台和 OAuth 2.0 代理流
 
@@ -56,18 +56,18 @@ https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
 
 有两种情况，具体取决于客户端应用程序选择由共享密钥还是由证书保护。
 
-### <a name="first-case-access-token-request-with-a-shared-secret"></a>第一种情况：使用共享机密的访问令牌请求
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>第一种情况：使用共享机密访问令牌请求
 
-使用共享机密时，服务到服务访问令牌请求包含以下参数：
+使用共享密钥时，服务到服务访问令牌请求包含以下参数：
 
 | 参数 |  | 说明 |
 | --- | --- | --- |
-| `grant_type` | 必需 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须为 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
-| `client_id` | 必选 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给应用的应用程序（客户端）ID。 |
+| `grant_type` | 必须 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须为 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
+| `client_id` | 必须 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给应用的应用程序（客户端）ID。 |
 | `client_secret` | 必须 | 在“Azure 门户 - 应用注册”页中为应用生成的客户端机密。 |
-| `assertion` | 必须 | 请求中使用的令牌的值。  此令牌必须有发出此 OBO 请求的应用（由 `client-id` 字段表示的应用）的受众。 |
-| `scope` | 必选 | 令牌请求范围的空格分隔列表 有关详细信息，请参阅[作用域](v2-permissions-and-consent.md)。 |
-| `requested_token_use` | 必选 | 指定应如何处理请求。 在 OBO 流中，该值必须设置为 `on_behalf_of`。 |
+| `assertion` | 必须 | 请求中使用的令牌值。  此令牌必须有发出此 OBO 请求的应用（由 `client-id` 字段表示的应用）的受众。 |
+| `scope` | 必须 | 空格分隔的令牌请求作用域的列表。 有关详细信息，请参阅[作用域](v2-permissions-and-consent.md)。 |
+| `requested_token_use` | 必须 | 指定应如何处理请求。 在 OBO 流中，该值必须设置为 `on_behalf_of`。 |
 
 #### <a name="example"></a>示例
 
@@ -88,19 +88,19 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 &requested_token_use=on_behalf_of
 ```
 
-### <a name="second-case-access-token-request-with-a-certificate"></a>第二种情况：使用证书的访问令牌请求
+### <a name="second-case-access-token-request-with-a-certificate"></a>第二种情况：使用证书访问令牌请求
 
 使用证书的服务到服务访问令牌请求包含以下参数：
 
 | 参数 |  | 说明 |
 | --- | --- | --- |
-| `grant_type` | 必需 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须为 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
-| `client_id` | 必选 |  [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给应用的应用程序（客户端）ID。 |
+| `grant_type` | 必须 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须为 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
+| `client_id` | 必须 |  [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给应用的应用程序（客户端）ID。 |
 | `client_assertion_type` | 必须 | 值必须是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`。 |
-| `client_assertion` | 必须 | 需要使用注册为应用程序凭据的证书进行创建和签名的断言（JSON Web 令牌）。 若要了解如何注册证书以及断言的格式，请参阅[证书凭据](active-directory-certificate-credentials.md)。 |
-| `assertion` | 必选 | 请求中使用的令牌的值。 |
+| `client_assertion` | 必须 | 断言（JSON Web 令牌），需使用作为凭据向应用程序注册的证书进行创建和签名。 若要了解如何注册证书以及断言的格式，请参阅[证书凭据](active-directory-certificate-credentials.md)。 |
+| `assertion` | 必须 | 请求中使用的令牌值。 |
 | `requested_token_use` | 必须 | 指定应如何处理请求。 在 OBO 流中，该值必须设置为 `on_behalf_of`。 |
-| `scope` | 必选 | 空格分隔的令牌请求范围的列表。 有关详细信息，请参阅[作用域](v2-permissions-and-consent.md)。|
+| `scope` | 必须 | 空格分隔的令牌请求范围的列表。 有关详细信息，请参阅[作用域](v2-permissions-and-consent.md)。|
 
 请注意，这些参数与共享密钥请求的参数几乎相同，只不过 `client_secret` 参数替换为以下两个参数：`client_assertion_type` 和 `client_assertion`。
 
@@ -133,8 +133,8 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 | `token_type` | 指示令牌类型值。 Microsoft 标识平台支持的唯一类型是 `Bearer`。 有关持有者令牌的详细信息，请参阅[OAuth 2.0 Authorization Framework：持有者令牌用法（RFC 6750）](https://www.rfc-editor.org/rfc/rfc6750.txt)。 |
 | `scope` | 令牌中授予的访问权限的范围。 |
 | `expires_in` | 访问令牌有效的时间长度（以秒为单位）。 |
-| `access_token` | 请求的访问令牌。 调用服务可以使用此令牌向接收服务进行身份验证。 |
-| `refresh_token` | 所请求访问令牌的刷新令牌。 在当前访问令牌过期后，调用服务可以使用此令牌请求另一个访问令牌。 仅当已请求 `offline_access` 作用域时提供刷新令牌。 |
+| `access_token` | 请求的访问令牌。 调用方服务可以使用此令牌向接收方服务进行身份验证。 |
+| `refresh_token` | 所请求的访问令牌的刷新令牌。 当前访问令牌过期后，调用方服务可以使用此令牌请求另一个访问令牌。 仅当已请求 `offline_access` 作用域时提供刷新令牌。 |
 
 ### <a name="success-response-example"></a>成功响应示例
 

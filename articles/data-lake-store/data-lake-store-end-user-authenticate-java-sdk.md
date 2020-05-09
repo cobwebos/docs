@@ -1,22 +1,17 @@
 ---
-title: 最终用户身份验证：通过 Azure Active Directory 将 Java 与 Azure Data Lake Storage Gen1 配合使用 | Microsoft Docs
+title: 最终用户身份验证-Java 与 Data Lake Storage Gen1-Azure
 description: 了解如何通过 Java 使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 最终用户身份验证
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 8b558fca964f33d47d331e007329d1bae2626877
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 1e03ad657fd40dce22a17f2fff5b67a65eb3eb52
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60878095"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691762"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-java"></a>通过 Java 使用 Azure Data Lake Storage Gen1 进行最终用户身份验证
 > [!div class="op_single_selector"]
@@ -56,7 +51,7 @@ ms.locfileid: "60878095"
           </dependency>
         </dependencies>
    
-    第一个依赖项从 maven 存储库使用 Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`)。 第二个依赖项指定此应用程序使用的日志记录框架 (`slf4j-nop`)。 Data Lake Storage Gen1 SDK 使用 [slf4j](https://www.slf4j.org/) 日志记录体系，允许用户从多种流行的记录框架（如 log4j、Java 日志记录、logback 等）中进行选择，或者不使用日志记录。 本示例禁用日志记录，因此我们使用 slf4j-nop 绑定****。 若要在应用中使用其他日志记录选项，请参阅[此文](https://www.slf4j.org/manual.html#projectDep)。
+    第一个依赖项从 maven 存储库使用 Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`)。 第二个依赖项指定此应用程序使用的日志记录框架 (`slf4j-nop`)。 Data Lake Storage Gen1 SDK 使用[SLF4J](https://www.slf4j.org/)日志记录外观，使你可以从多种常用的日志记录框架（如 Log4j、Java 日志记录、Logback 等）中进行选择，或者不使用日志记录。 本示例禁用日志记录，因此我们使用 slf4j-nop 绑定****。 若要在应用中使用其他日志记录选项，请参阅[此文](https://www.slf4j.org/manual.html#projectDep)。
 
 3. 将以下导入语句添加到应用程序。
 

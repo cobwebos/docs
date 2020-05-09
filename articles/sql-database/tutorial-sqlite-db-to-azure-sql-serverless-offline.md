@@ -9,15 +9,15 @@ ms.service: sql-database
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: c718daa4bc99bffd6fcfeb084299bed6682fe884
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2aed3a66f70864b3445418a51b0e79280e6884bd
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75780504"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629195"
 ---
 # <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>如何将 SQLite 数据库迁移到 Azure SQL 数据库无服务器
-许多人在 SQLite 中首次体验了数据库和 SQL 编程。 SQLite 包含在许多操作系统和热门应用程序中，是世界上最广泛部署和使用的数据库引擎之一。 此外，它可能是许多人首次使用的数据库引擎，因此往往成为项目或应用程序的核心组成部分。 当项目或应用程序超过最初的 SQLite 实施规模时，开发人员可能需要将其数据迁移到可靠的集中式数据存储。
+许多人在 SQLite 中首次体验了数据库和 SQL 编程。 它包含在许多操作系统中，最常用的应用程序使您能够在世界上部署和使用最广泛的数据库引擎。 此外，它可能是许多人首次使用的数据库引擎，因此往往成为项目或应用程序的核心组成部分。 当项目或应用程序超过最初的 SQLite 实施规模时，开发人员可能需要将其数据迁移到可靠的集中式数据存储。
 
 Azure SQL 数据库无服务器计算层是适用于单一数据库的计算层，可根据工作负荷需求自动缩放，并根据每秒使用的计算资源量计费。 此外，当仅对存储计费时，无服务器计算层将在非活动期间自动暂停数据库；当活动返回时，它将自动恢复数据库。
 
