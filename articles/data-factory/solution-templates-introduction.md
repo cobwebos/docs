@@ -11,15 +11,16 @@ author: djpmsft
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 01/04/2019
-ms.openlocfilehash: 14f1d3b58996d438279bfa2a234c754a6d840c79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b5e4512030431b6d2e5d0f849e82a281c882b177
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414731"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628940"
 ---
 # <a name="templates"></a>模板
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 模板是预定义的 Azure 数据工厂管道，可让你快速开始使用数据工厂。 如果你是数据工厂的新手并想要快速入门，则模板很有帮助。 这些模板减少了生成数据集成项目所需的开发时间，从而提高了开发人员的工作效率。
 
@@ -81,11 +82,11 @@ ms.locfileid: "81414731"
 
 ### <a name="my-templates"></a>我的模板
 
-还可以通过在“管道”选项卡上选择“另存为模板”，将管道另存为模板。****
+还可以通过在“管道”选项卡上选择“另存为模板”，将管道另存为模板。 
 
 ![将管道另存为模板](media/solution-templates-introduction/templates-intro-image4.png)
 
-可以在模板库的“我的模板”部分查看另存为模板的管道。**** 也可以在资源浏览器的“模板”部分查看这些管道。****
+可以在模板库的“我的模板”部分查看另存为模板的管道。  也可以在资源浏览器的“模板”部分查看这些管道。 
 
 ![我的模板](media/solution-templates-introduction/templates-intro-image5.png)
 

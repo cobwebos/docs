@@ -11,6 +11,9 @@
   items:
     - name: 将 Azure VM 复制到另一个区域
       href: azure-to-azure-quickstart.md
+    - name: 创建保管库 - ARM 模板
+      displayName: Resource Manager
+      href: quickstart-create-vault-template.md
 - name: 教程
   items:
     - name: Azure VM 灾难恢复到 Azure

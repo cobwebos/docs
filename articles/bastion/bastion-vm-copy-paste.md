@@ -5,20 +5,24 @@ services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 05/04/2020
 ms.author: charwen
-ms.openlocfilehash: 0af0fdfa1b0bcbb06d9424390e7ca8c8f406bcb3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8580b7e28c8a4860739efa0763ebb7c20a80585e
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619308"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780277"
 ---
 # <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>复制并粘贴到虚拟机： Azure 堡垒
 
 本文将帮助你在使用 Azure 堡垒时，将文本复制并粘贴到虚拟机中。 使用 VM 之前，请确保已按照[创建堡垒主机](bastion-create-host-portal.md)的步骤进行操作。 然后，使用[RDP](bastion-connect-vm-rdp.md)或[SSH](bastion-connect-vm-ssh.md)连接到要使用的虚拟机。
 
 对于支持高级剪贴板 API 访问的浏览器，你可以使用在本地设备上的应用程序之间进行复制和粘贴的相同方式在本地设备与远程会话之间复制和粘贴文本。 对于其他浏览器，可以使用堡垒剪贴板访问工具面板。
+
+>[!NOTE]
+>目前仅支持文本复制/粘贴。
+>
 
    ![允许剪贴板](./media/bastion-vm-manage/allow.png)
 

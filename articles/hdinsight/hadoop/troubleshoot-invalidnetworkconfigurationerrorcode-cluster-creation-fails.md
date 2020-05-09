@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: 6dd4db999cb130c9816ad023888a4333e968c224
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1fb5b78f210a9bd817a2987dcb30fa25d156d5d2
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76720378"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780430"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>在 Azure HDInsight 中创建群集失败并出现 InvalidNetworkConfigurationErrorCode
 
@@ -54,7 +54,7 @@ ms.locfileid: "76720378"
 
 ### <a name="cause"></a>原因
 
-Azure 存储和 SQL 没有固定 IP 地址，因此，我们需要允许与所有 Ip 的出站连接，以允许访问这些服务。 确切的解决步骤取决于设置的是网络安全组 (NSG) 还是用户定义的规则 (UDR)。 有关这些配置的详细信息，请参阅有关[使用网络安全组和用户定义的路由控制 HDInsight 网络流量](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ip)的部分。
+Azure 存储和 SQL 没有固定 IP 地址，因此，我们需要允许与所有 Ip 的出站连接，以允许访问这些服务。 确切的解决步骤取决于设置的是网络安全组 (NSG) 还是用户定义的规则 (UDR)。 有关这些配置的详细信息，请参阅有关[使用网络安全组和用户定义的路由控制 HDInsight 网络流量](../control-network-traffic.md)的部分。
 
 ### <a name="resolution"></a>解决方法
 

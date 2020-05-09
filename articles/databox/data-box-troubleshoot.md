@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 06/24/2019
+ms.date: 04/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 51935516e26f263e44a926bf9b7d7ec24a5eeb9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 12ca4df6e5dd4ba86ece8469255195e2fa1c155e
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77560059"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628889"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>排查 Azure Data Box 和 Azure Data Box Heavy 的相关问题
 
@@ -92,6 +92,17 @@ Data Box 和 Data Box Heavy 中的错误概括如下：
     - 无效名称的示例：`my-folder_1`、`my`、`--myfolder`、`myfolder--`、`myfolder!`
 
     有关详细信息，请参阅[容器名称](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)和[共享名称](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)的 Azure 命名约定。
+    
+### <a name="error_file_or_directory_name_illegal"></a>ERROR_FILE_OR_DIRECTORY_NAME_ILLEGAL
+
+**错误说明**：目录或容器名称包含非法字符。
+
+**建议的解决方法**：已复制的目录或容器名称包含不支持的字符。
+
+- 在本地 web UI 的 "连接和复制" 页上，下载并查看错误文件以标识包含问题的文件夹名称。 
+- 重命名目录或容器，以确保它们符合 Azure 命名约定。
+
+有关详细信息，请参阅 [目录](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) 和[容器](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)的 Azure 命名约定。
 
 ## <a name="container-or-share-size-limit-errors"></a>容器或共享大小限制错误
 
@@ -99,9 +110,9 @@ Data Box 和 Data Box Heavy 中的错误概括如下：
 
 ### <a name="error_container_or_share_capacity_exceeded"></a>ERROR_CONTAINER_OR_SHARE_CAPACITY_EXCEEDED
 
- 错误说明：Azure 文件共享将单个共享限制为 5 TB 数据。 某些共享已超过此限制。
+**错误说明：** Azure 文件共享将共享限制为 5 TB 的数据。 某些共享已超过此限制。
 
-**建议的解决方法：** 在本地 Web UI 的“连接和复制”页上，下载并查看错误文件。 
+**建议的解决方法：** 在本地 web UI 的 "**连接和复制**" 页上，下载并查看错误文件。
 
 在错误日志中找到存在此问题的文件夹，并确保该文件夹中的文件小于 5 TB。
 
@@ -112,11 +123,11 @@ Data Box 和 Data Box Heavy 中的错误概括如下：
 
 ### <a name="error_blob_or_file_size_limit"></a>ERROR_BLOB_OR_FILE_SIZE_LIMIT
 
- 错误说明：文件大小超过了最大上传文件大小。
+**错误说明：** 文件大小超过上传的最大文件大小。
 
-**建议的解决方法：** Blob 或文件大小超过了允许的最大上传限制。
+**建议的解决方法：** Blob 或文件大小超出了上载所允许的最大限制。
 
-- 在本地 Web UI 的“连接和复制”页上，下载并查看错误文件。 
+- 在本地 Web UI 的“连接和复制”页上，下载并查看错误文件。****
 - 确保 Blob 和文件大小不超过 Azure 对象大小限制。
 
 ## <a name="data-or-file-type-errors"></a>数据或文件类型错误
@@ -125,9 +136,9 @@ Data Box 和 Data Box Heavy 中的错误概括如下：
 
 ### <a name="error_blob_or_file_size_alignment"></a>ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT
 
- 错误说明：Blob 或文件未正确对齐。
+**错误说明：** Blob 或文件的对齐不正确。
 
-**建议的解决方法：** Data Box 或 Data Box Heavy 上的页 Blob 共享仅支持经过 512 字节对齐的文件（例如 VHD/VHDX）。 复制到页 Blob 共享的任何数据将作为页 Blob 上传到 Azure。
+**建议的解决方法：** Data Box 或 Data Box Heavy 上的 blob 共享仅支持512字节（如 VHD/VHDX）的文件。 复制到页 Blob 共享的任何数据将作为页 Blob 上传到 Azure。
 
 从页 Blob 共享中删除任何非 VHD/VHDX 数据。 可以使用块 Blob 或 Azure 文件的共享还存储一般数据。
 
@@ -135,18 +146,18 @@ Data Box 和 Data Box Heavy 中的错误概括如下：
 
 ### <a name="error_blob_or_file_type_unsupported"></a>ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED
 
- 错误说明：托管磁盘共享中存在不受支持的文件类型。 只允许固定的 VHD。
+**错误说明：** 托管磁盘共享中存在不受支持的文件类型。 只允许固定的 VHD。
 
 **建议的解决方法：**
 
 - 确保仅上传固定的 VHD 来创建托管磁盘。
-- 不支持 VHDX 文件或者**动态** VHD 和**差异** VHD。
+- 不支持 VHDX 文件或**动态**vhd 和**差异**vhd。
 
 ### <a name="error_directory_disallowed_for_type"></a>ERROR_DIRECTORY_DISALLOWED_FOR_TYPE
 
- 错误说明：托管磁盘的任何现有文件夹中不允许某个目录。 这些文件夹中只允许固定的 VHD。
+**错误说明：** 托管磁盘的任何预先存在的文件夹中都不允许使用目录。 这些文件夹中只允许固定的 VHD。
 
-**建议的解决方法：** 对于托管磁盘，会在每个共享中创建对应于存储帐户中的容器的以下三个文件夹：高级 SSD、标准 HDD 和标准 SSD。 这些文件夹对应于托管磁盘的性能层。
+**建议的解决方法：** 对于托管磁盘，在每个共享中，会创建以下三个文件夹，它们对应于存储帐户中的容器：高级 SSD、标准 HDD 和标准 SSD。 这些文件夹对应于托管磁盘的性能层。
 
 - 确保将页 Blob 数据 (VHD) 复制到其中一个现有文件夹。
 - 这些现有的文件夹中不允许某个文件夹或目录。 请删除在这些现有文件夹中创建的所有文件夹。
@@ -155,18 +166,18 @@ Data Box 和 Data Box Heavy 中的错误概括如下：
 
 ### <a name="reparse_point_error"></a>REPARSE_POINT_ERROR
 
- 错误说明：不允许在 Linux 中使用符号链接。 
+**错误说明：** 不允许在 Linux 中使用符号链接。 
 
-**建议的解决方法：** 符号链接通常是链接、竖线和文件等其他元素。 请删除链接，或解决链接错误并复制数据。
+**建议的解决方法：** 符号链接通常是链接、管道和其他此类文件。 请删除链接，或解决链接错误并复制数据。
 
 
 ## <a name="non-critical-blob-or-file-errors"></a>非关键 Blob 或文件错误
 
-以下部分总结了与在数据复制期间看到的 blob、文件或容器的名称有关的所有非关键错误。 如果出现这些错误，则会修改名称，使其符合 Azure 命名约定。 数据上传的相应订单状态将为“已完成，但出现警告”  。  
+以下部分总结了与在数据复制期间看到的 blob、文件或容器的名称有关的所有非关键错误。 如果出现这些错误，则会修改名称，使其符合 Azure 命名约定。 数据上传的相应订单状态将为“已完成，但出现警告”****。  
 
 ### <a name="error_blob_or_file_name_character_control"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_CONTROL
 
- 错误说明：Blob 或文件的名称包含不受支持的控制字符。
+**错误说明：** Blob 或文件名包含不受支持的控制字符。
 
 **建议的解决方法：** 复制的 Blob 或文件的名称包含不受支持的字符。
 
@@ -177,7 +188,7 @@ Data Box 和 Data Box Heavy 中的错误概括如下：
 
 ### <a name="error_blob_or_file_name_character_illegal"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_ILLEGAL
 
- 错误说明：Blob 或文件的名称包含非法字符。
+**错误说明：** Blob 或文件名称包含非法字符。
 
 **建议的解决方法：** 复制的 Blob 或文件的名称包含不受支持的字符。
 
@@ -189,32 +200,32 @@ Data Box 和 Data Box Heavy 中的错误概括如下：
 
 ### <a name="error_blob_or_file_name_ending"></a>ERROR_BLOB_OR_FILE_NAME_ENDING
 
- 错误说明：Blob 或文件的名称以错误的字符结尾。
+**错误说明：** Blob 或文件名以错误字符结尾。
 
-**建议的解决方法：** 复制的 Blob 或文件的名称包含不受支持的字符。
+**建议的解决方法：** 已复制的 blob 或文件包含的名称包含不支持的字符。
 
-在本地 Web UI 的“连接和复制”页上，下载并查看错误文件。 
+在本地 Web UI 的“连接和复制”页上，下载并查看错误文件。****
 删除或重命名这些文件，以删除不受支持的字符。
 
-有关详细信息，请参阅 [Blob 名称](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)和[文件名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)的 Azure 命名约定。
+有关详细信息，请参阅适用于[blob 名称](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)和[文件名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)的 Azure 命名约定。
 
 
 ### <a name="error_blob_or_file_name_segment_count"></a>ERROR_BLOB_OR_FILE_NAME_SEGMENT_COUNT
 
- 错误说明：Blob 或文件的名称包含过多的路径段。
+**错误说明：** Blob 或文件名包含太多路径段。
 
-**建议的解决方法：** 复制的文件或 Blob 超过了最大路径段数。 路径段是指连续分隔符（例如正斜杠 /）之间的字符串。
+**建议的解决方法：** 已复制的 blob 或文件超过了最大路径段数。 路径段是指连续分隔符（例如正斜杠 /）之间的字符串。
 
-- 在本地 Web UI 的“连接和复制”页上，下载并查看错误文件。 
+- 在本地 Web UI 的“连接和复制”页上，下载并查看错误文件。****
 - 确保 [Blob 名称](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)和[文件名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)符合 Azure 命名约定。
 
 ### <a name="error_blob_or_file_name_aggregate_length"></a>ERROR_BLOB_OR_FILE_NAME_AGGREGATE_LENGTH
 
- 错误说明：Blob 或文件名太长。
+**错误说明：** Blob 或文件名太长。
 
-**建议的解决方法：** Blob 或文件的名称超过了最大长度。
+**建议的解决方法：** Blob 或文件名超过了最大长度。
 
-- 在本地 Web UI 的“连接和复制”页上，下载并查看错误文件。 
+- 在本地 Web UI 的“连接和复制”页上，下载并查看错误文件。****
 - Blob 名称不得超过 1,024 个字符。
 - 删除或者重命名 Blob 或文件，使其名称不超过 1,024 个字符。
 
@@ -222,19 +233,19 @@ Data Box 和 Data Box Heavy 中的错误概括如下：
 
 ### <a name="error_blob_or_file_name_component_length"></a>ERROR_BLOB_OR_FILE_NAME_COMPONENT_LENGTH
 
- 错误说明：Blob 或文件名中的某个段太长。
+**错误说明：** Blob 或文件名中的某个段太长。
 
-**建议的解决方法：** Blob 或文件名称中的某个路径段超过了最大字符数。 路径段是指连续分隔符（例如正斜杠 /）之间的字符串。
+**建议的解决方法：** Blob 或文件名中的某个路径段超出了最大字符数。 路径段是指连续分隔符（例如正斜杠 /）之间的字符串。
 
-- 在本地 Web UI 的“连接和复制”页上，下载并查看错误文件。 
+- 在本地 Web UI 的“连接和复制”页上，下载并查看错误文件。****
 - 确保 [Blob 名称](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)和[文件名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)符合 Azure 命名约定。
 
 
 ### <a name="error_container_or_share_name_disallowed_for_type"></a>ERROR_CONTAINER_OR_SHARE_NAME_DISALLOWED_FOR_TYPE
 
- 错误说明：为托管磁盘共享指定的容器名称不正确。
+**错误说明：** 为托管磁盘共享指定了不正确的容器名称。
 
-**建议的解决方法：** 对于托管磁盘，会在每个共享中创建对应于存储帐户中的容器的以下文件夹：高级 SSD、标准 HDD 和标准 SSD。 这些文件夹对应于托管磁盘的性能层。
+**建议的解决方法：** 对于托管磁盘，在每个共享中，会创建以下文件夹，它们对应于存储帐户中的容器：高级 SSD、标准 HDD 和标准 SSD。 这些文件夹对应于托管磁盘的性能层。
 
 - 确保将页 Blob 数据 (VHD) 复制到其中一个现有文件夹。 只有这些现有容器中的数据才会上传到 Azure。
 - 在与高级 SSD、标准 HDD 和标准 SSD 相同的级别创建的任何其他文件夹不对应于有效的性能层，因此不能使用。
