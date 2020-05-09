@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: be76c665e1f5319b3e1ff1976e44fee9cd90ea6b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: HT
+ms.openlocfilehash: d46d5618d7e3dc26775401f4a90d0c98d75ea31a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607192"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929207"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>使用新的会话主机展开现有的主机池
 
@@ -58,7 +58,7 @@ ms.locfileid: "82607192"
 
 7. 选择要在其下创建 Vm 的资源组，然后选择区域。 您可以选择当前使用的区域或新区域。
    
-8. 输入所需的**虚拟机主机数**的新总数。 例如，如果要将主机池从5个会话主机扩展到8个，请输入**8**。 
+8. 输入要添加到主机池的会话主机数，并将其添加到**vm 的数目**。 例如，如果要将主机池扩展到五台主机，请输入**5**。
    
     >[!NOTE]
     >不能编辑 Vm 的大小或图像，因为确保主机池中的所有 Vm 大小相同都非常重要。

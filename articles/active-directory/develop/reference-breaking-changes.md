@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 重大更改引用
+title: Azure Active Directory 中断性变更参考
 description: 了解对可能会影响应用程序的 Azure AD 协议所做的更改。
 services: active-directory
 author: rwike77
@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/13/2020
+ms.date: 5/4/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a60b927f7239818b582ffcd85ddb4b7d69594482
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09f27c922df4a15858236b2635b962f4bc92811b
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535955"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871534"
 ---
 # <a name="whats-new-for-authentication"></a>身份验证的新增功能
 
@@ -37,13 +37,31 @@ ms.locfileid: "81535955"
 
 目前没有计划。  请参阅下面的内容，了解已经进入或即将进入生产环境中的变更。
 
+## <a name="may-2020"></a>2020 年 5 月
+
+### <a name="azure-government-endpoints-are-changing"></a>Azure 政府版终结点正在更改
+
+**生效日期**：5月5日（完成2020年6月） 
+
+**受影响的终结点**：全部
+
+**受影响的协议**：所有流
+
+2018年6月1日，Azure 政府版的官方 Azure Active Directory （AAD）机构`https://login-us.microsoftonline.com`已`https://login.microsoftonline.us`从更改为。 此更改也适用于 Microsoft 365 GCC 高和 DoD，Azure 政府版 AAD 也服务。 如果你拥有美国政府租户中的应用程序，则必须更新应用程序，以便登录到`.us`终结点上的用户。  
+
+从5月5日开始，Azure AD 将开始强制终结点更改，阻止政府用户使用公共终结点（`microsoftonline.com`）登录美国政府租户中托管的应用。  受影响的应用将开始显示`AADSTS900439`  -  `USGClientNotSupportedOnPublicEndpoint`错误。 此错误表示应用正尝试在公有云终结点上登录美国政府用户。 如果你的应用处于公有云租户中，并旨在支持我们的政府用户，则需要[更新你的应用以明确支持它们](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)。 这可能需要在美国政府云中创建新的应用注册。 
+
+此更改的执行将通过以下方式进行：使用逐步推出：美国政府版中的用户登录到应用程序时，不经常会看到强制执行，而美国政府用户经常使用的应用将在最后应用强制实施。 预计会在6月2020的所有应用中完成强制。 
+
+有关更多详细信息，请参阅[此迁移中的 Azure 政府博客文章](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/)。 
+
 ## <a name="march-2020"></a>2020 年 3 月
 
 ### <a name="user-passwords-will-be-restricted-to-256-characters"></a>用户密码将限制为 256 个字符。
 
 **生效日期**：2020 年 3 月 13 日
 
-**受影响的终结点**：v1.0 和 v2.0
+**受影响的终结点**：全部
 
 **受影响的协议**：所有用户流。
 
@@ -99,7 +117,7 @@ ms.locfileid: "81535955"
 
 **受影响的协议**：[客户端凭据（仅限应用的令牌）](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
 
-一项安全更改已在 7 月 26 日上线，它会更改颁发仅限应用的令牌的方式（通过客户端凭据授予）。 以前，允许应用程序获取令牌来调用任何其他应用，无论该应用程序是否在租户中存在或者是否向其许可了角色。  此行为已更新，使得资源（有时称为 web Api）设置为单租户（默认值）时，客户端应用程序必须存在于资源租户中。  请注意，仍不需要客户端与 API 之间的现有许可，应用应该仍会执行其自身的授权检查，以确保 `roles` 声明存在并且包含 API 所需的值。
+一项安全更改已在 7 月 26 日上线，它会更改颁发仅限应用的令牌的方式（通过客户端凭据授予）。 以前，允许应用程序获取令牌来调用任何其他应用，无论该应用程序是否在租户中存在或者是否向其许可了角色。  此行为现已更新，对于设置为单租户（默认值）的资源（有时称为 Web API），客户端应用程序必须在资源租户中存在。  请注意，仍不需要客户端与 API 之间的现有许可，应用应该仍会执行其自身的授权检查，以确保 `roles` 声明存在并且包含 API 所需的值。
 
 此方案的错误消息目前会指出：
 
@@ -121,7 +139,7 @@ ms.locfileid: "81535955"
 
 **受影响的协议**：所有流
 
-对于每个[RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2)，Azure AD 应用程序现在可以注册并使用具有静态查询参数（例如`https://contoso.com/oauth2?idp=microsoft`）的重定向（回复） uri 来处理 OAuth 2.0 请求。  动态重定向 URI 仍旧受禁用，因为它们表示存在安全风险，不可将其用于保留身份验证请求的状态信息 - 为此，请使用 `state` 参数。
+根据 [RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2)，Azure AD 应用程序现在可以在 OAuth 2.0 请求的静态查询参数中注册并使用重定向（回复）URI（例如 `https://contoso.com/oauth2?idp=microsoft`）。  动态重定向 URI 仍旧受禁用，因为它们表示存在安全风险，不可将其用于保留身份验证请求的状态信息 - 为此，请使用 `state` 参数。
 
 与重定向 URI 的任何其他部分一样，静态查询参数需要接受重定向 URI 的字符串匹配 - 如果未注册与 URI 解码的 redirect_uri 匹配的字符串，则会拒绝请求。  如果在应用注册中找到了 URI，则会使用整个字符串（包括静态查询参数）来重定向用户。
 
@@ -189,7 +207,7 @@ ms.locfileid: "81535955"
 
 要解决此更改，可以执行以下操作：
 
-1. 为应用程序创建一个包含一个或多个作用域的 web API。 此显式入口点可实现更精细的控制和安全性。
+1. 使用一个或多个作用域为应用程序创建 Web API。 此显式入口点可实现更精细的控制和安全性。
 1. 在 [Azure 门户](https://portal.azure.com)或[应用注册门户](https://apps.dev.microsoft.com)的应用清单中，确保允许应用通过隐式流发出访问令牌。 这通过 `oauth2AllowImplicitFlow` 密钥进行控制。
-1. 当客户端应用程序通过`response_type=id_token`请求 id_token 时，还将为上面创建`response_type=token`的 web API 请求访问令牌（）。 因此，使用 v2.0 终结点时，`scope` 参数应与 `api://GUID/SCOPE` 类似。 在 v1.0 终结点上，`resource` 参数应为 Web API 应用 URI。
+1. 客户端应用程序通过 `response_type=id_token` 请求 id_token 时，还会请求上面创建的 Web API 的访问令牌 (`response_type=token`)。 因此，使用 v2.0 终结点时，`scope` 参数应与 `api://GUID/SCOPE` 类似。 在 v1.0 终结点上，`resource` 参数应为 Web API 应用 URI。
 1. 将此访问令牌传递到中间层，代替 id_token。

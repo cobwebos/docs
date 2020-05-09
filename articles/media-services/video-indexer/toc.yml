@@ -15,6 +15,8 @@
   items:
     - name: 使用视频索引器 API
       href: video-indexer-use-apis.md
+    - name: 逻辑应用连接器
+      href: logic-apps-connector-tutorial.md
 - name: 示例
   items:
     - name: 视频索引器示例
