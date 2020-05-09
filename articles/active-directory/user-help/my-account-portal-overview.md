@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 01/15/2020
+ms.date: 04/20/2020
 ms.author: curtand
-ms.openlocfilehash: 4c9d421fd9ac8305c27dfa798f2869e59a04f9fb
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: fd22f3b9d365bfee543712f680d504bb134f24d7
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77062449"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625691"
 ---
 # <a name="what-is-the-my-account-portal"></a>什么是“我的帐户”门户？
 
 “我的帐户”（预览）门户可以通过设置和管理安全信息、管理连接的组织和设备，以及查看组织使用数据的方式，来帮助你管理工作或学校帐户  。
 
-可以使用下述任何浏览器的最新版本转到“我的帐户”门户 ( **)** https://myprofile.microsoft.com) ：
+可以使用下述任何浏览器的最新版本转到“我的帐户”门户 ( **)** https://myaccount.microsoft.com) ：
 
 - Chrome
 - Microsoft Edge

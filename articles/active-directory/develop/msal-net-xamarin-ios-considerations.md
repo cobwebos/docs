@@ -13,13 +13,12 @@ ms.date: 07/16/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76e614b605cd07cd5dc454824dd204447f806907
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7125559dd39e1626634dae7c45b0744bfff57d8c
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262706"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652653"
 ---
 # <a name="considerations-for-using-xamarin-ios-with-msalnet"></a>将 Xamarin iOS 与 MSAL.NET 配合使用时的注意事项
 在 Xamarin iOS 上使用适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 时，应该： 
