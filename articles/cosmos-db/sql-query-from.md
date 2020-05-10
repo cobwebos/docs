@@ -4,22 +4,22 @@ description: 了解 Azure Cosmos DB 的 FROM 子句的 SQL 语法和示例。 �
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 05/08/2020
 ms.author: tisande
-ms.openlocfilehash: 3939594064b63c567720378b9d316acca64d3266
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e4bbb27a2f49027ed5a456ad824f54b9c92a899c
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77587679"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005861"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 FROM 子句
 
 FROM (`FROM <from_specification>`) 子句是可选的，除非稍后在查询中对源进行筛选或投影。 `SELECT * FROM Families` 之类的查询枚举整个 `Families` 容器。 还可以对容器使用特殊标识符 ROOT，而无需使用容器名称。
 
-FROM 子句对每个查询强制实施以下规则：
+`FROM`子句强制执行每个查询的以下规则：
 
-* 容器可以使用别名，如 `SELECT f.id FROM Families AS f` 或只需为 `SELECT f.id FROM Families f`。 此处的 `f` 是 `Families` 的别名。 AS 是可选的关键字，用于指定标识符的[别名](sql-query-aliasing.md)。  
+* 容器可以使用别名，如 `SELECT f.id FROM Families AS f` 或只需为 `SELECT f.id FROM Families f`。 此处的 `f` 是 `Families` 的别名。 AS 是可选的关键字，用于指定标识符的[别名](sql-query-working-with-json.md#aliasing)。  
 
 * 指定别名后，无法绑定原始的源名称。 例如，`SELECT Families.id FROM Families f` 在语法上是无效的，原因是标识符 `Families` 已指定别名，因此不再可以解析。  
 
@@ -30,15 +30,15 @@ FROM 子句对每个查询强制实施以下规则：
 ```sql  
 FROM <from_specification>  
   
-<from_specification> ::=   
+<from_specification> ::=
         <from_source> {[ JOIN <from_source>][,...n]}  
   
-<from_source> ::=   
+<from_source> ::=
           <container_expression> [[AS] input_alias]  
         | input_alias IN <container_expression>  
   
-<container_expression> ::=   
-        ROOT   
+<container_expression> ::=
+        ROOT
      | container_name  
      | input_alias  
      | <container_expression> '.' property_name  
@@ -49,11 +49,11 @@ FROM <from_specification>
   
 - `<from_source>`  
   
-  指定一个具有或不具有别名的数据源。 如果未指定别名，将从 `<container_expression>` 中使用以下规则推断：  
+  指定数据源，可以带别名，也可以不带别名。 如果未指定别名，则会使用以下规则从 `<container_expression>` 推断别名：  
   
-  -  如果表达式为 container_name，那么 container_name 将用作别名。  
+-  如果表达式为 container_name，那么 container_name 将用作别名。  
   
-  -  如果表达式为 `<container_expression>`，其次是 property_name，那么 property_name 将用作别名。 如果表达式为 container_name，那么 container_name 将用作别名。  
+-  如果表达式是 `<container_expression>`，则会将 property_name 用作别名。 如果表达式为 container_name，那么 container_name 将用作别名。  
   
 - AS `input_alias`  
   
@@ -77,11 +77,11 @@ FROM <from_specification>
   
 - `input_alias`  
   
-  指定应从提供的别名定义的其他源中检索文档。  
+  指定应当从由提供的别名定义的其他源检索文档。  
   
 - `<container_expression> '.' property_name`  
   
-  指定应通过访问`property_name`属性来检索文档。  
+  指定应通过访问 `property_name` 属性来检索文档。  
   
 - `<container_expression> '[' "property_name" | array_index ']'`  
   
@@ -89,7 +89,7 @@ FROM <from_specification>
   
 ## <a name="remarks"></a>备注
   
-`<from_source>(`) 中提供或推断的所有别名必须唯一。 语法 `<container_expression>.`property_name 等同于 `<container_expression>' ['"property_name"']'`。 但是，如果属性名称包含非标识符字符，则可以使用后一种语法。  
+在 `<from_source>(` 中提供或推断出的所有别名都必须是唯一的。 语法 `<container_expression>.`property_name 与 `<container_expression>' ['"property_name"']'` 相同。 但是，如果属性名称包含非标识符字符，则可以使用后一种语法。  
   
 ### <a name="handling-missing-properties-missing-array-elements-and-undefined-values"></a>处理未命中属性、未命中数组元素和未定义值
   
@@ -99,9 +99,9 @@ FROM <from_specification>
   
 容器表达式的范围可以是集合或文档：  
   
--   如果容器表达式的基础源是 ROOT 或 `container_name`，则表达式的范围是容器。 此类表达式表示从容器中直接检索的一组文档，且不依赖于其他容器表达式的处理。  
+- 如果容器表达式的基础源是 ROOT 或 `container_name`，则表达式的范围是容器。 此类表达式表示从容器中直接检索的一组文档，且不依赖于其他容器表达式的处理。  
   
--   如果容器表达式的基础源是之前在查询中引入的 `input_alias`，则表达式的范围是文档。 此类表达式表示通过计算每个文档范围内的容器表达式获得的一组文档，该文档属于与别名容器相关联的集。  结果集为多个集的合并，通过计算基础集中每个文档的容器表达式获得。 
+- 如果容器表达式的基础源是之前在查询中引入的 `input_alias`，则表达式的范围是文档。 此类表达式表示通过计算每个文档范围内的容器表达式获得的一组文档，该文档属于与别名容器相关联的集。 结果集为多个集的合并，通过计算基础集中每个文档的容器表达式获得。
 
 ## <a name="examples"></a>示例
 
@@ -147,7 +147,7 @@ FROM 子句可将源化简为更小的子集。 要在每个项中仅枚举子�
     ]
 ```
 
-上述查询使用数组作为源，但你也可以使用对象作为源。 该查询考虑将源中任何有效的已定义 JSON 值包含在结果中。 下面的示例将排除`Families`没有`address.state`值的。
+上述查询使用数组作为源，但你也可以使用对象作为源。 该查询考虑将源中任何有效的已定义 JSON 值包含在结果中。 以下示例将排除不带 `address.state` 值的 `Families`。
 
 ```sql
     SELECT *

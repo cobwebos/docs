@@ -7,19 +7,19 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 3648bb102d539156067cdc259c1cf9b6e73d6a49
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: 3be8ce241817b3b2fa03976eebe3147c1dc9c877
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82884483"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005153"
 ---
 # <a name="frequently-asked-questions"></a>常见问题
 
 ## <a name="what-types-of-load-balancer-exist"></a>存在哪些类型的负载均衡器？
-内部负载均衡器，用于平衡 VNET 和外部负载均衡器中的流量，这会平衡进出 internet 连接的终结点的流量。 有关详细信息，请参阅 [负载均衡器类型https://docs.microsoft.com/azure/load-balancer/concepts-limitations#load-balancer-types)] （。 
+内部负载均衡器，用于平衡 VNET 和外部负载均衡器中的流量，这会平衡进出 internet 连接的终结点的流量。 有关详细信息，请参阅[负载均衡器类型](components.md#frontend-ip-configurations)。 
 
-对于这两种类型，Azure 提供基本 SKU 和标准 SKU，具有不同的功能、性能、安全性和运行状况跟踪功能。 [SKU 比较] （https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)一文中介绍了这些差异。
+对于这两种类型，Azure 提供基本 SKU 和标准 SKU，具有不同的功能、性能、安全性和运行状况跟踪功能。 我们的[SKU 比较](skus.md)一文中介绍了这些差异。
 
  ## <a name="how-can-i-upgrade-from-a-basic-to-a-standard-load-balancer"></a>如何从基本版升级到标准负载均衡器？
 请参阅[从基本到标准版升级](upgrade-basic-standard.md)一文，以获取自动脚本和升级负载平衡器 SKU 的指南。

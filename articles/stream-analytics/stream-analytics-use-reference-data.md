@@ -7,16 +7,27 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/8/2019
-ms.openlocfilehash: b3808524706b13761dd8eccffa301c602d08f481
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b98e89d98295a7cefbc4c0c0906f5c4e10c11280
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267282"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006155"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>使用参考数据在流分析中查找
 
 参考数据（也称为查找表）是一个静态的或本质上缓慢变化的有限数据集，用于执行查找或增大数据流。 例如，在 IoT 方案中，可以将关于传感器的元数据（不经常更改）存储在参考数据中，并将其与实时 IoT 数据流相联接。 Azure 流分析在内存中加载参考数据以实现低延迟流处理。 为了在 Azure 流分析作业中利用参考数据，通常会在查询中使用[参考数据联接](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics)。 
+
+## <a name="example"></a>示例  
+ 如果某商用车在 Toll Company 登记，则它们无需停车检查，即可通过收费站。 我们将使用商用车登记查找表来标识所有登记期已过的商用车。  
+  
+```SQL  
+SELECT I1.EntryTime, I1.LicensePlate, I1.TollId, R.RegistrationId  
+FROM Input1 I1 TIMESTAMP BY EntryTime  
+JOIN Registration R  
+ON I1.LicensePlate = R.LicensePlate  
+WHERE R.Expired = '1'
+```  
 
 流分析支持将 Azure Blob 存储和 Azure SQL 数据库用作参考数据的存储层。 你还可以通过 Azure 数据工厂对参考数据进行转换并/或将其复制到 Blob 存储，以使用[任意数量的基于云的数据存储和本地数据存储](../data-factory/copy-activity-overview.md)。
 
@@ -26,17 +37,17 @@ ms.locfileid: "79267282"
 
 ### <a name="configure-blob-reference-data"></a>配置 blob 参考数据
 
-若要配置引用数据，首先需要创建一个属于“引用数据”**** 类型的输入。 下表介绍在根据说明创建引用数据输入时需要提供的每个属性：
+若要配置引用数据，首先需要创建一个属于 **引用数据**类型的输入。 下表介绍你在根据属性说明创建引用数据输入时需要提供的每个属性：
 
 |**属性名称**  |**说明**  |
 |---------|---------|
 |输入别名   | 一个友好名称会用于作业查询，以便引用此输入。   |
-|存储帐户   | 存储 blob 的存储帐户的名称。 如果其与流分析作业所在订阅相同，则可从下拉菜单中进行选择。   |
+|存储帐户   | 存储 Blob 所在的存储帐户的名称。 如果其与流分析作业所在订阅相同，则可从下拉菜单中进行选择。   |
 |存储帐户密钥   | 与存储帐户关联的密钥。 如果存储帐户的订阅与流分析作业相同，则自动填充此密钥。   |
 |存储容器   | 容器对存储在 Microsoft Azure Blob 服务中的 blob 进行逻辑分组。 将 blob 上传到 Blob 服务时，必须为该 blob 指定一个容器。   |
-|路径模式   | 用于对指定容器中的 blob 进行定位的路径。 在路径中，可以选择指定一个或多个使用以下 2 个变量的实例：<BR>{date}、{time}<BR>示例 1：products/{date}/{time}/product-list.csv<BR>示例 2：products/{date}/product-list.csv<BR>示例 3：product-list.csv<BR><br> 如果指定路径中不存在 blob，流分析作业将无限期地等待 blob 变为可用状态。   |
-|日期格式 [可选]   | 如果在指定的路径模式中使用了 {date}，则可从支持格式的下拉列表中选择组织 blob 所用的日期格式。<BR>示例：YYYY/MM/DD、MM/DD/YYYY，等等。   |
-|时间格式 [可选]   | 如果在指定的路径模式中使用了 {time}，则可从支持格式的下拉列表中选择组织 blob 所用的时间格式。<BR>示例：HH、HH/mm、或 HH-mm。  |
+|路径模式   | 这是一个必需的属性，用于定位指定容器中的 blob。 在路径中，可以选择指定一个或多个使用以下 2 个变量的实例：<BR>{date}、{time}<BR>示例 1：products/{date}/{time}/product-list.csv<BR>示例 2：products/{date}/product-list.csv<BR>示例 3：product-list.csv<BR><br> 如果指定路径中不存在 blob，流分析作业将无限期地等待 blob 变为可用状态。   |
+|日期格式 [可选]   | 如果在指定的路径模式中使用了 {date}，则可以从支持格式的下拉列表中选择组织 Blob 所用的日期格式。<BR>示例：YYYY/MM/DD、MM/DD/YYYY 等。   |
+|时间格式 [可选]   | 如果在指定的路径模式中使用了 {time}，则可以从支持格式的下拉列表中选择组织 Blob 所用的时间格式。<BR>示例：HH、HH/mm 或 HH-mm。  |
 |事件序列化格式   | 为确保查询按预计的方式运行，流分析需要了解你对传入数据流使用哪种序列化格式。 对于引用数据，所支持的格式是 CSV 和 JSON。  |
 |编码   | 目前只支持 UTF-8 这种编码格式。  |
 
@@ -46,12 +57,12 @@ ms.locfileid: "79267282"
 
 ### <a name="generate-reference-data-on-a-schedule"></a>按计划生成参考数据
 
-如果引用数据是缓慢变化的数据集，则使用 {date} 和 {time} 替换令牌在输入配置中指定路径模式即可实现对刷新引用数据的支持。 流分析会根据此路径模式选取更新的引用数据定义。 例如，日期格式`sample/{date}/{time}/products.csv`为 **"yyyy-mm-dd"** ，时间格式为 **"HH-Mm"** 的模式指示流分析在5:30 年4月 16 2015 日上午时选取更新的 blob `sample/2015-04-16/17-30/products.csv` 。
+如果引用数据是缓慢变化的数据集，则使用 {date} 和 {time} 替换令牌在输入配置中指定路径模式即可实现对刷新引用数据的支持。 流分析根据此路径模式选取更新的引用数据定义。 例如，使用 `sample/{date}/{time}/products.csv` 模式时，日期格式为 **“YYYY-MM-DD”** ，时间格式为 **“HH-mm”** ，可指示流分析在 2015 年 4 月 16 日下午 5:30（UTC 时区）提取更新的 Blob`sample/2015-04-16/17-30/products.csv`。
 
 Azure 流分析每间隔一分钟都会自动扫描刷新的参考数据 Blob。 如果以较小的延迟（例如，10:30:30）上传时间戳为 10:30:00 的 blob，你将注意到引用此 blob 的流分析作业有一个小延迟。 为了避免这种情况，建议在目标生效时间（本例中为 10:30:00）之前上传 blob，以便流分析作业有足够的时间来发现它并将其加载到内存中执行操作。 
 
 > [!NOTE]
-> 当前，流分析作业仅在计算机时间提前于 blob 名称中的编码时间时才查找 blob 刷新。 例如，该作业将尽可能查找 `sample/2015-04-16/17-30/products.csv`，但不会早于 2015 年 4 月 16 日下午 5:30（UTC 时区）。 它*永远不会*查找编码时间早于发现的上一个 blob 的 blob。
+> 当前，流分析作业仅在计算机时间提前于 blob 名称中的编码时间时才查找 blob 刷新。 例如，该作业将尽可能查找 `sample/2015-04-16/17-30/products.csv` ，但不会早于 2015 年 4 月 16 日下午 5:30（UTC 时区）。 它*永远不会*查找编码时间早于发现的上一个 blob 的 blob。
 > 
 > 例如，作业找到 blob `sample/2015-04-16/17-30/products.csv` 后，它将忽略编码日期早于 2015 年 4 月 16 日下午 5:30 的任何文件，因此如果晚到达的 `sample/2015-04-16/17-25/products.csv` blob 在同一容器中创建，该作业不会使用它。
 > 
@@ -67,11 +78,11 @@ Azure 流分析每间隔一分钟都会自动扫描刷新的参考数据 Blob。
 2. 刷新参考数据的推荐方法是：
     * 使用路径模式中的 {date}/{time}
     * 使用作业输入中定义的相同容器和路径模式来添加新 Blob
-    * 使用大于序列中最后一个 Blob 指定的日期/时间****。
+    * 使用大于序列中最后一个 Blob 指定的日期/时间  。
 3. 引用数据 blob 并**不**按 blob 的 "上次修改时间" 时间排序，而只按 blob 名称中使用 {date} 和 {time} 替换指定的时间和日期排序。
 3. 为了避免必须列出大量 blob，请考虑删除不再对其进行处理的非常旧的 blob。 请注意，在某些情况下（如重新启动），ASA 可能需要重新处理一小部分 blob。
 
-## <a name="azure-sql-database"></a>Azure SQL Database
+## <a name="azure-sql-database"></a>Azure SQL 数据库
 
 Azure SQL 数据库参考数据由流分析作业进行检索并作为快照存储在内存中以用于处理。 参考数据的快照还存储在你在配置设置中指定的存储帐户中的一个容器中。 作业启动时自动创建容器。 如果作业已停止或进入失败状态，则在重新启动作业时将删除自动创建的容器。  
 
@@ -85,15 +96,15 @@ Azure SQL 数据库参考数据由流分析作业进行检索并作为快照存�
 
 若要配置 SQL 数据库参考数据，首先需要创建**参考数据**输入。 下表介绍了在创建参考数据输入时需要提供的每个属性及其说明。 有关详细信息，请参阅[将 SQL 数据库中的参考数据用于 Azure 流分析作业](sql-reference-data.md)。
 
-您可以使用[Azure SQL 数据库托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)作为引用数据输入。 你必须[在 Azure SQL 数据库托管实例中配置公共终结点](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)，然后在 Azure 流分析中手动配置以下设置。 通过手动配置以下设置，还支持运行与附加了数据库的 SQL Server 的 Azure 虚拟机。
+您可以使用[Azure SQL 数据库托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)作为引用数据输入。 必须[在 Azure SQL 数据库托管实例中配置公共终结点](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)，然后在 Azure 流分析中手动配置以下设置。 还可以通过手动配置以下设置来支持运行附加了数据库的 SQL Server 的 Azure 虚拟机。
 
 |**属性名称**|**说明**  |
 |---------|---------|
 |输入别名|一个友好名称会用于作业查询，以便引用此输入。|
-|订阅|选择订阅|
-|数据库|包含参考数据的 Azure SQL 数据库。 对于 Azure SQL 数据库托管实例，需要指定端口 3342。 例如，sampleserver.public.database.windows.net,3342**|
+|订阅|选择自己的订阅|
+|数据库|包含参考数据的 Azure SQL 数据库。 对于 Azure SQL 数据库托管实例，需要指定端口 3342。 例如，sampleserver.public.database.windows.net,3342 |
 |用户名|与 Azure SQL 数据库关联的用户名。|
-|Password|与 Azure SQL 数据库关联的密码。|
+|密码|与 Azure SQL 数据库关联的密码。|
 |定期刷新|此选项用来选择刷新率。 选择“开启”将允许你以 DD:HH:MM 格式指定刷新率。|
 |快照查询|这是从 SQL 数据库中检索参考数据的默认查询选项。|
 |增量查询|对于使用大型数据集和较短刷新率的高级方案，可选择此项来添加增量查询。|
@@ -110,7 +121,24 @@ Azure SQL 数据库参考数据由流分析作业进行检索并作为快照存�
 
 作业增加的流单元数量超过 6 不会增加参考数据支持的最大大小。
 
-对压缩的支持不可用于参考数据。 
+对压缩的支持不可用于参考数据。
+
+## <a name="joining-multiple-reference-datasets-in-a-job"></a>在作业中联接多个引用数据集
+在查询的单个步骤中，您只能使用一个引用数据输入来联接一个流输入。 但是，可以通过将查询分解成多个步骤来联接多个引用数据集。 下面显示了一个示例。
+
+```SQL  
+With Step1 as (
+    --JOIN input stream with reference data to get 'Desc'
+    SELECT streamInput.*, refData1.Desc as Desc
+    FROM    streamInput
+    JOIN    refData1 ON refData1.key = streamInput.key 
+)
+--Now Join Step1 with second reference data
+SELECT *
+INTO    output 
+FROM    Step1
+JOIN    refData2 ON refData2.Desc = Step1.Desc 
+``` 
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]

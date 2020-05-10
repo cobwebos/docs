@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/08/2020
 ms.author: juliako
-ms.openlocfilehash: 2093132abaa7aed06113b1856c85ac54fd7ae60d
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 405533aad8247350d45cc53009abe6b58a511264
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995719"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005933"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>创建连接到 Azure 的视频索引器帐户
 
@@ -23,7 +23,7 @@ ms.locfileid: "82995719"
 
 本文介绍如何创建链接到 Azure 订阅和 Azure 媒体服务帐户的视频索引器帐户。 本主题提供使用自动（默认）流连接 Azure 的步骤。 它还演示如何手动连接到 Azure（高级）。
 
-如果要从*试用版*移动到*付费*视频索引器帐户，可以选择将所有视频和模型自定义复制到新帐户，如[从试用帐户导入内容](#import-your-content-from-the-trial-account)中所述。
+如果要从*试用版*移动到*付费*视频索引器帐户，可以选择将所有视频和模型自定义复制到新帐户，如[从试用帐户导入内容](#import-your-content-from-the-trial-account)部分中所述。
 
 ## <a name="prerequisites"></a>先决条件
 

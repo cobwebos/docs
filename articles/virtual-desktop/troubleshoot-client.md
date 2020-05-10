@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e42a4d738d375b4bceeb32f6159b4476843cf281
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 76348a0aee48cc6d768e8233e376f266eca31917
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612650"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006001"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>远程桌面客户端疑难解答
 
@@ -59,6 +59,12 @@ nslookup rdweb.wvd.microsoft.com
 2. 清除浏览器 cookie。 请参阅[如何在 Internet Explorer 中删除 cookie 文件](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer)。
 3. 清除浏览器缓存。 请参阅[清除浏览器缓存](https://binged.it/2RKyfdU)。
 4. 以专用模式打开浏览器。
+
+## <a name="web-client-does-not-show-my-resources"></a>Web 客户端未显示我的资源
+
+首先，请检查正在使用的 Azure Active Directory 帐户。 如果你已使用与 Winodws 虚拟桌面所要使用的帐户 Azure Active Directory 不同的帐户登录，则应使用专用浏览器窗口进行签名。
+
+如果你使用的是 Windows 虚拟桌面秋季2019版，请使用[本文](./virtual-desktop-fall-2019/connect-web-2019.md)中的 web 客户端链接连接到你的资源。
 
 ## <a name="web-client-stops-responding-or-disconnects"></a>Web 客户端停止响应或断开连接
 

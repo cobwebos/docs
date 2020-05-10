@@ -7,15 +7,15 @@ author: njray
 manager: edprice
 editor: edprice
 ms.author: larryme
-ms.date: 04/02/2019
+ms.date: 05/09/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: cf02ff7078fe5d33f220c0abc2d941d483e5c125
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 07234e5f456a5467adde4d899341a6124d128567
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76293498"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006125"
 ---
 # <a name="mainframe-workloads-supported-on-azure"></a>Azure 上支持的大型机工作负荷
 
@@ -25,20 +25,24 @@ ms.locfileid: "76293498"
 
 ## <a name="migrate-mainframe-closer-to-azure"></a>将大型机迁移到更近的 Azure
 
+- 通过 Visual Studio 插件为 .NET Framework 提供适用于 .NET 编译器的[ASNA VISUAL RPG](https://asna.com/us/products/visual-rpg) 。
+- [ASYSCO AMT COBOL](https://www.asysco.com/cobol/)开发环境（UNISYS、IBM 大型机和其他 COBOL 方言，如微集中 COBOL）。
+- [ASYSCO AMT](https://www.asysco.com/amt-go/)适用于高端工作负荷的基于云的部署体系结构。
+- 用于转换数据、代码、脚本、安全、接口和其他大型机项目的[ASYSCO AMT 转换](https://www.asysco.com/amt-transform/)。
+- [Fujitsu NetCOBOL](https://www.fujitsu.com/global/products/software/developer-tool/netcobol/)开发和集成工具。
 - [微聚焦视觉 COBOL](https://www.microfocus.com/products/visual-cobol/)开发和集成工具。
 - 适用于 .NET 平台的[微重心 PL/i](https://www.microfocus.com/campaign/download/pli-modernization/)旧编译器，支持大型机 PL/i 语法、数据类型和行为。
 - [微聚焦企业服务器](https://www.microfocus.com/products/enterprise-suite/enterprise-server/)大型机集成平台。
-- [Fujitsu NetCOBOL](https://www.fujitsu.com/global/products/software/developer-tool/netcobol/)开发和集成工具。
+- [新式系统 CTU （COBOL）](https://modernsystems.com/automatic-cobol-to-java-conversion/)开发和集成工具。
 - [NTT Data ENTERPRISE COBOL](https://us.nttdata.com/en/digital/application-development-and-modernization)开发和集成工具。
 - NTT 为 .NET 平台[打开 PL/i](https://us.nttdata.com/en/digital/application-development-and-modernization)旧编译器，支持大型机 PL/i 语法、数据类型和行为。
 - [RAINCODE COBOL 编译器](https://www.raincode.com/products/cobol/)开发和集成工具。
 - 适用于 .NET 平台的[RAINCODE PL/i 编译器](https://www.raincode.com/products/pli/)支持大型机 PL/i 语法、数据类型和行为。
 - 适用于大型机汇编程序370和 HLASM 语法的[RAINCODE ASM370 编译器](https://www.raincode.com/technical-landscape/asm370/)。
-- 通过 Visual Studio 插件为 .NET Framework 提供适用于 .NET 编译器的[ASNA VISUAL RPG](https://asna.com/us/products/visual-rpg) 。
-- [新式系统 CTU （COBOL）](https://modernsystems.com/automatic-cobol-to-java-conversion/)开发和集成工具。
 
 ## <a name="deploy-an-emulation-environment-for-online-and-batch-processing"></a>部署用于联机和批处理的仿真环境
 
+- [ASYSCO AMT 中转](https://www.asysco.com/amt-go/)部署体系结构支持 CICS、IMS、TIP、HVTIP 和其他常见大型机环境。
 - [微聚焦企业服务器](https://www.microfocus.com/products/enterprise-suite/enterprise-server/)大型机集成平台。
 - [NTT DATA 大型机重新承载开发环境](https://us.nttdata.com/en/-/media/assets/white-paper/apps-mainframe-re-hosting-development-environment-whitepaper.pdf)本机事务处理环境。
 - [NTT 数据批处理环境](https://us.nttdata.com/en/-/media/assets/white-paper/apps-mainframe-re-hosting-development-environment-whitepaper.pdf)（BPE），包括 JCL 事务功能。
@@ -47,10 +51,11 @@ ms.locfileid: "76293498"
 
 ## <a name="code-conversion"></a>代码转换
 
-- [Asysco](https://www.asysco.com/azure-cloud/)源代码转换。
-- [Cresswell 软件定义的大型机](https://www.lzlabs.com/)托管软件容器，用于将大型机应用程序迁移到 Linux 计算机或私有、公共和混合云环境。
+- [Asysco](https://www.asysco.com/azure-cloud/)系统转换技术，涵盖源代码、数据、批处理、计划、TP 监视器、接口、安全、管理等。
+- [ASYSCO AMT 服务](https://www.asysco.com/migration-services/)用于迁移项目的端到端服务，包括清单和分析、设计定型、装饰 rehearsals、上线和迁移后支持。
 - 用于数字化旧版业务应用程序和数据库的[蓝光存储](https://www.bluage.com/)工具。
 - [Heirloom 计算](https://www.heirloomcomputing.com/tag/convert-cobol-to-java/)服务，将大型机 COBOL、CICS 和 VSAM 转换为 Java。
+- [Cresswell 软件定义的大型机](https://www.lzlabs.com/)托管软件容器，用于将大型机应用程序迁移到 Linux 计算机或私有、公共和混合云环境。
 
 ## <a name="modernization-services"></a>现代化服务
 

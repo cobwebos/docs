@@ -12,12 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 4587909ad6fca6cdf21d54d11d89f797bbb29833
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 380b61df8a774e69454577d201cebf1c495b4f74
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80335839"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83004745"
 ---
 # <a name="configure-a-custom-domain-name"></a>配置自定义域名
 
@@ -64,19 +64,19 @@ ms.locfileid: "80335839"
 1. 选择要更新的终结点。
 1. 在右侧窗口中，单击“自定义”****。
 
-    - 在“自定义域名”**** 中，指定要使用的名称。 例如，`api.contoso.com` 。
+    - 在“自定义域名”**** 中，指定要使用的名称。 例如，`api.contoso.com`。
     - 在**证书**中，从密钥保管库中选择证书。 如果证书受密码保护，你还可以上传有效的 .PFX 文件并提供其**密码**。
 
     > [!NOTE]
     > 通配符域名（例如`*.contoso.com` ）在所有层中受支持，但使用层除外。
 
     > [!TIP]
-    > 我们建议使用 Azure Key Vault 来管理证书并将其设置为“自动轮换”。
+    > 建议使用[Azure Key Vault 来管理证书](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates)，并将其设置为 autorenew。
     > 如果使用 Azure Key Vault 管理自定义域 TLS/SSL 证书，请确保将证书[以_证书_形式](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate)插入 Key Vault，而不是_机密_。
     >
     > 若要提取 TLS/SSL 证书，API 管理必须对包含该证书的 Azure Key Vault 具有列表并获得机密权限。 使用 Azure 门户时，所有必要的配置步骤都将自动完成。 使用命令行工具或管理 API 时，必须手动授予这些权限。 此过程分为两个步骤。 首先，使用 API 管理实例上的“托管标识”页确保已启用“托管标识”并记下该页上显示的主体 ID。 其次，在包含证书的 Azure Key Vault 上为此主体 ID 提供权限列表并获取机密权限。
     >
-    > 如果证书设置为“自动轮换”，API 管理将自动选取最新版本，而不会对服务造成任何停机（如果你的 API 管理层具有SLA - 即在除了开发人员层之外的所有层中）。
+    > 如果将证书设置为 autorenew，则 API 管理将自动选取最新版本，而不会对服务造成任何停机（如果你的 API 管理层在开发人员层以外的所有层中都有 SLA-i. e）。
 
 1. 单击“应用”。
 

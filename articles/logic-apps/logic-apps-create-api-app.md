@@ -3,15 +3,15 @@ title: 为 Azure 逻辑应用创建 Web API 和 REST API
 description: 创建用于调用 API、服务或系统的 Web API 和 REST API，以便在 Azure 逻辑应用中进行系统集成
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, jehollan, logicappspm
-ms.topic: article
+ms.reviewer: jonfan, logicappspm
+ms.topic: conceptual
 ms.date: 05/26/2017
-ms.openlocfilehash: bb6c99ea12e5b53631d42a04b36b7bfef2337e42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d892dc75d4e745912ceaf444b56494a2e0ed2a19
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270532"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005255"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>创建可从 Azure 逻辑应用调用的自定义 API
 
@@ -136,11 +136,13 @@ ms.locfileid: "79270532"
 
 ![Webhook 操作模式](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
-> [!NOTE]
-> 目前，逻辑应用设计器不支持通过 Swagger 发现 Webhook 终结点。 因此对于此模式，需要添加 [Webhook **** 操作](../connectors/connectors-native-webhook.md)并指定 URL、标头以及请求正文。 另请参阅[工作流操作和触发器](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action)。 若要传入回叫 URL，可以根据需要使用以前任何字段中的 `@listCallbackUrl()` 工作流函数。
+目前，逻辑应用设计器不支持通过 Swagger 发现 Webhook 终结点。 因此对于此模式，需要添加 [Webhook **** 操作](../connectors/connectors-native-webhook.md)并指定 URL、标头以及请求正文。 另请参阅[工作流操作和触发器](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action)。 有关 Webhook 模式的示例，查看 [GitHub 中的 Webhook 触发器示例](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)。
 
-> [!TIP]
-> 有关 Webhook 模式的示例，查看 [GitHub 中的 Webhook 触发器示例](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)。
+下面是一些其他提示和说明：
+
+* 若要传入回叫 URL，可以根据需要使用以前任何字段中的 `@listCallbackUrl()` 工作流函数。
+
+* 如果同时拥有逻辑应用和订阅服务，则在调用回调 URL 之后，无需`unsubscribe`调用终结点。 否则，逻辑应用运行时需要调用`unsubscribe`终结点，以指示不需要更多调用，也不允许服务器端的资源清理。
 
 <a name="triggers"></a>
 
@@ -198,13 +200,15 @@ Webhook 触发器的行为非常类似于之前本主题中所述的 [Webhook �
 
 ![Webhook 触发器模式](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
 
-> [!NOTE]
-> 目前，逻辑应用设计器不支持通过 Swagger 发现 Webhook 终结点。 因此对于此模式，需要添加 [Webhook 触发器](../connectors/connectors-native-webhook.md)**** 并指定 URL、 标头以及请求正文。 另请参阅 [HTTPWebhook 触发器](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger)。 若要传入回叫 URL，可以根据需要使用以前任何字段中的 `@listCallbackUrl()` 工作流函数。
->
-> 若要防止多次处理相同数据，触发器应清理已读取且传递到逻辑应用的数据。
+目前，逻辑应用设计器不支持通过 Swagger 发现 Webhook 终结点。 因此对于此模式，需要添加 [Webhook 触发器](../connectors/connectors-native-webhook.md)**** 并指定 URL、 标头以及请求正文。 另请参阅 [HTTPWebhook 触发器](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger)。 有关 Webhook 模式的示例，请查看 [GitHub 中的 Webhook 触发器控制器示例](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)。
 
-> [!TIP]
-> 有关 Webhook 模式的示例，请查看 [GitHub 中的 Webhook 触发器控制器示例](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)。
+下面是一些其他提示和说明：
+
+* 若要传入回叫 URL，可以根据需要使用以前任何字段中的 `@listCallbackUrl()` 工作流函数。
+
+* 若要防止多次处理相同数据，触发器应清理已读取且传递到逻辑应用的数据。
+
+* 如果同时拥有逻辑应用和订阅服务，则在调用回调 URL 之后，无需`unsubscribe`调用终结点。 否则，逻辑应用运行时需要调用`unsubscribe`终结点，以指示不需要更多调用，也不允许服务器端的资源清理。
 
 ## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>提高从逻辑应用对 Api 的调用的安全性
 

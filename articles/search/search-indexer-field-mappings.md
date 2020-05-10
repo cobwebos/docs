@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a5820856f7d4c51e41162f01a9687304cb223088
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: fa815d9fb653ee61d647023f7867549aa8d655aa
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791912"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005800"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>使用 Azure 认知搜索索引器进行字段映射和转换
 
@@ -36,7 +36,7 @@ ms.locfileid: "82791912"
 
 1. `sourceFieldName`，它表示数据源中的字段。 此属性是必需项。
 2. 可选的 `targetFieldName`，它表示搜索索引中的字段。 如果已省略，则使用数据源中相同的名称。
-3. 可选的 `mappingFunction`，它可以使用几个预定义函数中的一个来转换数据。 函数的完整列表[如下](#mappingFunctions)。
+3. 可选的 `mappingFunction`，它可以使用几个预定义函数中的一个来转换数据。 这可以同时应用于输入和输出字段映射。 函数的完整列表[如下](#mappingFunctions)。
 
 字段映射将添加到索引器定义的 `fieldMappings` 数组中。
 
@@ -120,7 +120,7 @@ api-key: [admin key]
 
 #### <a name="example---document-key-lookup"></a>示例 - 文档键查找
 
-Azure 认知搜索文档键中只能使用 URL 安全字符（因为客户必须能够使用[查找 API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) 来寻址文档）。 如果键的源字段包含 URL 不安全的字符，在编制索引时，你可以使用 `base64Encode` 函数来转换该字段。 但是，文档键（转换之前和之后）的长度不能超过1024个字符。
+Azure 认知搜索文档键中只能使用 URL 安全字符（因为客户必须能够使用[查找 API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) 来寻址文档）。 如果键的源字段包含 URL 不安全的字符，在编制索引时，你可以使用 `base64Encode` 函数来转换该字段。 但是，文档键（转换前后）的长度不能超过 1,024 个字符。
 
 在搜索时检索编码的键时，可以使用 `base64Decode` 函数获取原始键值，然后使用该值来检索源文档。
 
@@ -145,7 +145,7 @@ Azure 认知搜索支持两种不同的 Base64 编码： 在编码和解码同�
 
 ### <a name="base64decode-function"></a>base64Decode 函数
 
-执行输入字符串的 Base64 解码。 假设输入是 URL 安全的 Base64 编码字符串。**
+执行输入字符串的 Base64 解码。 假设输入是 URL 安全的 Base64 编码字符串。 
 
 #### <a name="example---decode-blob-metadata-or-urls"></a>示例 - 解码 Blob 元数据或 URL
 
@@ -188,7 +188,7 @@ Azure 认知搜索中的 .NET 库采用完整的 .NET 框架来提供内置编�
 | 带填充的 Base64 | `MDA+MDA/MDA=` | 使用 URL 安全字符并删除填充 | 使用标准 base64 字符并添加填充 |
 | 不带填充的 Base64 | `MDA+MDA/MDA` | 使用 URL 安全字符 | 使用标准 base64 字符 |
 | 带填充的 URL 安全 Base64 | `MDA-MDA_MDA=` | 删除填充 | 添加填充 |
-| 不带填充的 URL 安全 Base64 | `MDA-MDA_MDA` | None | 无 |
+| 不带填充的 URL 安全 Base64 | `MDA-MDA_MDA` | 无 | 无 |
 
 <a name="extractTokenAtPositionFunction"></a>
 
@@ -297,9 +297,9 @@ Azure SQL 数据库不具有能自然映射到 Azure 认知搜索中 `Collection
  
  此函数将任意长度的字符串转换为固定长度的字符串。
  
- ### <a name="example---map-document-keys-that-are-too-long"></a>示例-映射过长的文档键
+ ### <a name="example---map-document-keys-that-are-too-long"></a>示例 - 映射过长的文档键
  
-当面对的错误抱怨文档键的长度超过1024个字符时，可应用此函数以减少文档键的长度。
+当遇到文档键长度超过 1024 个字符的错误时，可以应用此函数来减少文档键的长度。
 
  ```JSON
 

@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f2fd8f4b7d03be8822c3ec12e2be589054942ce3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13c85dff40e266287d893d9e45b32a66a33f027e
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74270601"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006023"
 ---
 # <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>定位关系和在 Azure 空间锚中查找的方式
 
@@ -73,7 +73,7 @@ ms.locfileid: "74270601"
 
 ### <a name="verify-anchor-connections"></a>验证定位点连接
 
-应用可以通过发出对附近锚的查询来验证是否已连接两个锚。 当查询的结果包含目标定位点时，将验证定位点连接。 如果定位点未连接，应用可以尝试再次连接。
+应用程序可以通过对附近的定位点发出查询来验证是否已连接两个定位点，这是`NearAnchorCriteria`通过在`CloudSpatialAnchorWatcher`上设置的来实现的。 当查询的结果包含目标定位点时，将验证定位点连接。 如果定位点未连接，应用可以尝试再次连接。
 
 下面是定位点可能无法连接的一些原因：
 

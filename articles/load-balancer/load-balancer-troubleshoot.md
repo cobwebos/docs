@@ -13,16 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 0db91f3c661ebd3087a4389f4112a7214c992227
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 3959dd115e340a3407c4f30a22ff4b6b51dab4e7
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82925943"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005776"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>对 Azure 负载均衡器进行故障排除
 <p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=fb23185b-6c56-d9f1-7ce1-758c978e08e1" target='_blank'>Start</a></span><span class="has-padding-small">通过使用虚拟代理运行<b>自动诊断</b>，快速开始解决问题。</span><div align="right"> <sub>Privacy Statement</sub>隐私声明<span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'></div></a></span></p>
-本页提供有关基本和标准常见 Azure 负载均衡器问题的疑难解答信息。 有关标准负载均衡器的详细信息，请参阅[标准负载均衡器概述](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics)。
+
+本页提供有关基本和标准常见 Azure 负载均衡器问题的疑难解答信息。 有关标准负载均衡器的详细信息，请参阅[标准负载均衡器概述](load-balancer-standard-diagnostics.md)。
 
 当负载均衡器连接不可用时，最常见的症状如下： 
 

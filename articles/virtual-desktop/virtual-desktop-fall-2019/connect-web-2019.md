@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 357687a80325554c7dbb28eae6e42d946bb012dc
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: c264006d51f8f0f9ee2a56e994a0dc52d24bd7a8
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614858"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006039"
 ---
 # <a name="connect-with-the-web-client"></a>使用 Web 客户端进行连接
 
@@ -29,7 +29,7 @@ Web 客户端允许从 web 浏览器访问 Windows 虚拟桌面资源，而无�
 
 尽管任何支持 HTML5 的浏览器都应该运行，但我们正式支持以下操作系统和浏览器。
 
-| 浏览者           | 支持的 OS                     | 说明               |
+| 浏览器           | 支持的 OS                     | 注释               |
 |-------------------|----------------------------------|---------------------|
 | Microsoft Edge    | Windows                          |                     |
 | Internet Explorer | Windows                          |                     |
@@ -40,6 +40,9 @@ Web 客户端允许从 web 浏览器访问 Windows 虚拟桌面资源，而无�
 ## <a name="access-remote-resources-feed"></a>访问远程资源源
 
 在浏览器中，导航到[Windows 虚拟桌面 web 客户端](https://rdweb.wvd.microsoft.com/webclient)，并使用用户帐户登录。
+
+>[!NOTE]
+>如果使用的是 Windows 虚拟桌面2020版，请使用[本文](../connect-web.md)中的 web 客户端链接连接到资源。
 
 >[!NOTE]
 >如果你已使用与要用于 Windows 虚拟桌面的帐户 Azure Active Directory 不同的帐户登录，则应注销或使用专用浏览器窗口。
