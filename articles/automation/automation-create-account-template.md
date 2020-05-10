@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/24/2020
-ms.openlocfilehash: 19aee9d5fdf3f4a3d74484bb7cb2e609bc2807b4
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: HT
+ms.openlocfilehash: 949b07a16b2c2b08891d721e46948481cfe572b2
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927849"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996103"
 ---
 # <a name="create-an-automation-account-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建自动化帐户
 
@@ -22,7 +22,7 @@ ms.locfileid: "82927849"
 * 自动创建 Azure 自动化帐户。
 * 将自动化帐户链接到 Log Analytics 工作区。
 
-该模板不会自动载入 Azure 或非 Azure 虚拟机或解决方案。 
+该模板不会自动启用 Azure 或非 Azure 虚拟机。 
 
 >[!NOTE]
 >使用 Azure 资源管理器模板时，不支持创建自动化运行方式帐户。 若要从门户或 PowerShell 手动创建运行方式帐户，请参阅[管理运行方式](manage-runas-account.md)帐户。

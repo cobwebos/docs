@@ -6,12 +6,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7e7625ae95d5355ae1122a16ea4828eed5f78c73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1840f4049f8450295e179a89b472d7710c5f61a0
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81682931"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993777"
 ---
 # <a name="composing-dsc-configurations-in-azure-automation-state-configuration-using-composite-resources"></a>使用复合资源在 Azure 自动化状态配置中撰写 DSC 配置
 
@@ -34,9 +34,9 @@ Azure 自动化支持[导入和撰写复合资源](automation-dsc-compile.md)。
 1. 在 "**参数**" 步骤中，将公开每个复合资源的参数，以便可以提供值。 如果参数具有说明，则它会显示在参数字段旁边。 如果参数的`PSCredential`类型为，则下拉列表将提供当前自动化帐户中的**凭据**对象的列表。 还可以使用“+ 添加凭据”  选项。 提供所有必需的参数后，单击“保存并编译”  。
    ![“撰写配置”页面的参数步骤的屏幕截图](./media/compose-configurationwithcompositeresources/compose-configuration-parameters.png)
 
-一旦保存新配置，将会立即提交它进行编译。 可以像任何已导入的配置一样查看编译作业的状态。 有关详细信息，请参阅[查看编译作业](automation-dsc-getting-started.md#viewing-a-compilation-job)。
+一旦保存新配置，将会立即提交它进行编译。 可以像任何已导入的配置一样查看编译作业的状态。 有关详细信息，请参阅[查看编译作业](automation-dsc-getting-started.md#view-a-compilation-job)。
 
-成功完成编译后，新的配置将出现在 "**已编译的配置**" 选项卡中。然后，可以使用将[节点重新分配到另一个节点配置](automation-dsc-getting-started.md#reassigning-a-node-to-a-different-node-configuration)中的步骤，将配置分配给托管节点。
+成功完成编译后，新的配置将出现在 "**已编译的配置**" 选项卡中。然后，可以使用将[节点重新分配到另一个节点配置](automation-dsc-getting-started.md#reassign-a-node-to-a-different-node-configuration)中的步骤，将配置分配给托管节点。
 
 ## <a name="next-steps"></a>后续步骤
 

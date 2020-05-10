@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1bf60d17af1d9866de6a62ac538fa0bd9a15ce52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92919d2e0cc7ca685d2b60a8e7a8cf20433bbefc
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82113385"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994714"
 ---
 # <a name="authenticate-azure-automation-runbooks-with-amazon-web-services"></a>使用 Amazon Web Services 对 Azure 自动化 runbook 进行身份验证
 
@@ -33,4 +33,4 @@ ms.locfileid: "82113385"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 查看解决方案文章 [Amazon Web Services 中 VM 的自动化部署](automation-scenario-aws-deployment.md)，了解如何创建 Runbook，自动执行 AWS 中的任务。
+* 查看[Amazon Web Services 中的 VM 自动部署](automation-scenario-aws-deployment.md)，了解如何创建 runbook 来自动执行 AWS 中的任务。

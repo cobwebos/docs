@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a4c02369f44255dfa472202215496378d41f8c6c
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: HT
+ms.openlocfilehash: 04a13b2b3b8cd6e696f0ac6601b5f23b9d6cb24d
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735719"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996649"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>使用 Azure 门户列出 Azure 角色分配
 
@@ -32,7 +32,9 @@ ms.locfileid: "82735719"
 
 要查看分配给订阅中的用户或组的角色，最简单的方法是使用“Azure 资源”窗格****。
 
-1. 在 Azure 门户中单击“所有服务”，然后选择“用户”或“组”************。
+1. 在 Azure 门户中，从 "Azure 门户" 菜单中选择 "**所有服务**"。
+
+1. 选择 " **Azure Active Directory** "，然后选择 "**用户**或**组**"。
 
 1. 单击要列出其角色分配的用户或组。
 
@@ -128,7 +130,7 @@ ms.locfileid: "82735719"
 
 ## <a name="list-number-of-role-assignments"></a>列出角色分配数
 
-每个订阅最多可以有**2000**个角色分配。 为了帮助您跟踪此限制，"**角色分配**" 选项卡包含一个图表，其中列出了当前订阅的角色分配数。
+每个订阅最多可以有**2000**个角色分配。 此限制包括订阅、资源组和资源范围内的角色分配。 为了帮助您跟踪此限制，"**角色分配**" 选项卡包含一个图表，其中列出了当前订阅的角色分配数。
 
 ![访问控制 - 角色分配数目图表](./media/role-assignments-list-portal/access-control-role-assignments-chart.png)
 

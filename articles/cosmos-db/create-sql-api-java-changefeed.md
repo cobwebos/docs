@@ -1,27 +1,29 @@
 ---
-title: 教程 - 使用更改源的端到端 Async Java SQL API 应用程序示例
-description: 本教程演练一个简单的 Java SQL API 应用程序，它可将文档插入到 Azure Cosmos DB 容器，同时使用更改源维护该容器的具体化视图。
+title: 使用更改源创建端到端 Azure Cosmos DB Java SDK v4 应用程序示例
+description: 本操作方法指南将指导你完成一个简单的 Java SQL API 应用程序，该应用程序将文档插入 Azure Cosmos DB 容器，同时使用更改源维护容器的具体化视图。
 author: anfeldma
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
-ms.topic: tutorial
-ms.date: 04/01/2020
+ms.topic: conceptual
+ms.date: 05/08/2020
 ms.author: anfeldma
-ms.openlocfilehash: 5eab523dde2a13a85b0c8ff5bcbb3ecb5912e78e
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
-ms.translationtype: HT
+ms.openlocfilehash: 9e28eb4f766677ebbd5cfcc5f61fe54e53a45523
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80587214"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996512"
 ---
-# <a name="tutorial---an-end-to-end-async-java-sql-api-application-sample-with-change-feed"></a>教程 - 使用更改源的端到端 Async Java SQL API 应用程序示例
+# <a name="how-to-create-a-java-application-that-uses-azure-cosmos-db-sql-api-and-change-feed-processor"></a>如何创建使用 Azure Cosmos DB SQL API 和更改源处理器的 Java 应用程序
 
-本指南教程演练一个简单的 Java SQL API 应用程序，它可将文档插入到 Azure Cosmos DB 容器，同时使用更改源维护该容器的具体化视图。
+> [!IMPORTANT]  
+> 有关 Azure Cosmos DB Java SDK v4 的详细信息，请查看 Azure Cosmos DB Java SDK v4 发行说明、 [Maven 存储库](https://mvnrepository.com/artifact/com.azure/azure-cosmos)、AZURE COSMOS DB java sdk v4[性能提示](performance-tips-java-sdk-v4-sql.md)和 Azure Cosmos DB Java sdk v4[故障排除指南](troubleshoot-java-sdk-v4-sql.md)。
+>
+
+本操作方法指南将指导你完成一个简单的 Java 应用程序，该应用程序使用 Azure Cosmos DB SQL API 将文档插入 Azure Cosmos DB 容器中，同时使用更改源和更改源处理器维护容器的具体化视图。 Java 应用程序使用 Azure Cosmos DB Java SDK v4 与 Azure Cosmos DB SQL API 通信。
 
 ## <a name="prerequisites"></a>先决条件
-
-* 个人计算机
 
 * Azure Cosmos DB 帐户的 URI 和密钥
 
@@ -45,8 +47,6 @@ Azure Cosmos DB 更改源提供事件驱动的接口，用于在响应文档插�
 git clone https://github.com/Azure-Samples/azure-cosmos-java-sql-app-example.git
 ```
 
-> 可以选择使用 Java SDK 4.0 或 Java SDK 3.7.0 来学习本快速入门。 若要使用 Java SDK 3.7.0，请在终端中键入 ```git checkout SDK3.7.0```。  否则，请仍旧使用 ```master``` 分支，该分支默认为 Java SDK 4.0。
-
 在存储库目录中打开终端。 运行以下命令来生成应用
 
 ```bash
@@ -55,7 +55,7 @@ mvn clean package
 
 ## <a name="walkthrough"></a>演练
 
-1. 首先检查是否有一个 Azure Cosmos DB 帐户。 在浏览器中打开 Azure 门户，转到你的 Azure Cosmos DB 帐户，然后在左侧窗格中导航到“数据资源管理器”。  
+1. 首先检查是否有一个 Azure Cosmos DB 帐户。 在浏览器中打开**Azure 门户**，转到你的 Azure Cosmos DB 帐户，然后在左窗格中导航到 "**数据资源管理器**"。
 
     ![Azure Cosmos DB 帐户](media/create-sql-api-java-changefeed/cosmos_account_empty.JPG)
 
@@ -89,8 +89,8 @@ mvn clean package
 
     按 Enter。 现在，以下代码块将在另一个线程中执行并初始化更改源处理器： 
 
+    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-connection-policy-async"></a>Java SDK V4 （Maven：： azure-cosmos） Async API
 
-    **Java SDK 4.0**
     ```java
     changeFeedProcessorInstance = getChangeFeedProcessor("SampleHost_1", feedContainer, leaseContainer);
     changeFeedProcessorInstance.start()
@@ -103,28 +103,16 @@ mvn clean package
     while (!isProcessorRunning.get()); //Wait for Change Feed processor start
     ```
 
-    **Java SDK 3.7.0**
-    ```java
-    changeFeedProcessorInstance = getChangeFeedProcessor("SampleHost_1", feedContainer, leaseContainer);
-    changeFeedProcessorInstance.start()
-        .subscribeOn(Schedulers.elastic())
-        .doOnSuccess(aVoid -> {
-            isProcessorRunning.set(true);
-        })
-        .subscribe();
-
-    while (!isProcessorRunning.get()); //Wait for Change Feed processor start    
-    ```
-
     ```"SampleHost_1"``` 是更改源处理器工作线程的名称。 ```changeFeedProcessorInstance.start()``` 是实际启动更改源处理器的组件。
 
-    在浏览器中返回到 Azure 门户数据资源管理器。 在“InventoryContainer-leases”容器下，单击“项”以查看其内容。   此时会看到，更改源处理器已填充了租约容器，即，处理器已在 InventoryContainer 的某些分区中为 ```SampleHost_1``` 工作线程分配了一个租约。 
+    返回到浏览器中的 Azure 门户数据资源管理器。 在“InventoryContainer-leases”容器下，单击“项”以查看其内容。   此时会看到，更改源处理器已填充了租约容器，即，处理器已在 InventoryContainer 的某些分区中为 ```SampleHost_1``` 工作线程分配了一个租约。 
 
     ![租约](media/create-sql-api-java-changefeed/cosmos_leases.JPG)
 
 1. 再次在终端中按 Enter。 这会触发将 10 个文档插入 InventoryContainer 的事件。  每个文档插入事件在更改源中以 JSON 显示；以下回调代码通过将 JSON 文档镜像到具体化视图来处理这些事件：
 
-    **Java SDK 4.0**
+    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-connection-policy-async"></a>Java SDK V4 （Maven：： azure-cosmos） Async API
+
     ```java
     public static ChangeFeedProcessor getChangeFeedProcessor(String hostName, CosmosAsyncContainer feedContainer, CosmosAsyncContainer leaseContainer) {
         ChangeFeedProcessorOptions cfOptions = new ChangeFeedProcessorOptions();
@@ -150,33 +138,7 @@ mvn clean package
     }
     ```
 
-    **Java SDK 3.7.0**
-    ```java
-    public static ChangeFeedProcessor getChangeFeedProcessor(String hostName, CosmosContainer feedContainer, CosmosContainer leaseContainer) {
-        ChangeFeedProcessorOptions cfOptions = new ChangeFeedProcessorOptions();
-        cfOptions.feedPollDelay(Duration.ofMillis(100));
-        cfOptions.startFromBeginning(true);
-        return ChangeFeedProcessor.Builder()
-            .options(cfOptions)
-            .hostName(hostName)
-            .feedContainer(feedContainer)
-            .leaseContainer(leaseContainer)
-            .handleChanges((List<CosmosItemProperties> docs) -> {
-                for (CosmosItemProperties document : docs) {
-                        //Duplicate each document update from the feed container into the materialized view container
-                        updateInventoryTypeMaterializedView(document);
-                }
-
-            })
-            .build();
-    }
-
-    private static void updateInventoryTypeMaterializedView(CosmosItemProperties document) {
-        typeContainer.upsertItem(document).subscribe();
-    }    
-    ```
-
-1. 让代码运行 5-10 秒。 然后返回到 Azure 门户数据资源管理器，并导航到“InventoryContainer”>“项”。  此时会看到，项正在插入到库存容器；请记下分区键 (```id```)。
+1. 让代码运行 5-10 秒。 然后返回到 Azure 门户数据资源管理器并导航到**InventoryContainer > 项**。 此时会看到，项正在插入到库存容器；请记下分区键 (```id```)。
 
     ![源容器](media/create-sql-api-java-changefeed/cosmos_items.JPG)
 
@@ -184,41 +146,14 @@ mvn clean package
 
     ![具体化视图](media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG)
 
-1. 我们将同时从 InventoryContainer 和 InventoryContainer-pktype 删除某个文档，只需使用一个 ```upsertItem()``` 调用即可。   首先查看 Azure 门户数据资源管理器。 我们将删除 ```/type == "plums"``` 的文档；下面以红框突出显示了此项
+1. 我们将同时从 InventoryContainer 和 InventoryContainer-pktype 删除某个文档，只需使用一个 ```upsertItem()``` 调用即可。   首先，请查看 Azure 门户数据资源管理器。 我们将删除 ```/type == "plums"``` 的文档；下面以红框突出显示了此项
 
     ![具体化视图](media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG)
 
     再次按 Enter，以调用示例代码中的函数 ```deleteDocument()```。 此函数（如下所示）更新插入 ```/ttl == 5``` 的文档的新版本，这会将该文档的生存时间 (TTL) 设置为 5 秒。 
     
-    **Java SDK 4.0**
-    ```java
-    public static void deleteDocument() {
+    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-connection-policy-async"></a>Java SDK V4 （Maven：： azure-cosmos） Async API
 
-        String jsonString =    "{\"id\" : \"" + idToDelete + "\""
-                + ","
-                + "\"brand\" : \"Jerry's\""
-                + ","
-                + "\"type\" : \"plums\""
-                + ","
-                + "\"quantity\" : \"50\""
-                + ","
-                + "\"ttl\" : 5"
-                + "}";
-
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode document = null;
-
-        try {
-            document = mapper.readTree(jsonString);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        feedContainer.upsertItem(document,new CosmosItemRequestOptions()).block();
-    }    
-    ```
-
-    **Java SDK 3.7.0**
     ```java
     public static void deleteDocument() {
 

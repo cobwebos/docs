@@ -8,20 +8,22 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 04/22/2020
+ms.date: 05/08/2020
 ms.author: juliako
-ms.openlocfilehash: 89360f062f0198a6b0c857395b4956caa1109e82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2093132abaa7aed06113b1856c85ac54fd7ae60d
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82097148"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995719"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>创建连接到 Azure 的视频索引器帐户
 
 创建视频索引器帐户时，可以选择一个免费试用帐户（在其中获得特定数量的可用索引分钟数）或付费选项（不受配额限制）。 使用免费试用版，视频索引器可向网站用户提供最多600分钟的免费索引，最多可向 API 用户提供2400分钟的免费索引。 使用付费选项，可以创建连接到 Azure 订阅和 Azure 媒体服务帐户的视频索引器帐户。 你需要为索引分钟数和与媒体帐户相关的费用付费。
 
 本文介绍如何创建链接到 Azure 订阅和 Azure 媒体服务帐户的视频索引器帐户。 本主题提供使用自动（默认）流连接 Azure 的步骤。 它还演示如何手动连接到 Azure（高级）。
+
+如果要从*试用版*移动到*付费*视频索引器帐户，可以选择将所有视频和模型自定义复制到新帐户，如[从试用帐户导入内容](#import-your-content-from-the-trial-account)中所述。
 
 ## <a name="prerequisites"></a>先决条件
 

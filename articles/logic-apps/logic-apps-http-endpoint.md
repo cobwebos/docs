@@ -6,12 +6,12 @@ ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/06/2020
-ms.openlocfilehash: 734ddcacf46804db8d9aac091b0a9ac0ca512e18
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: aa3733b1231b92f30f5fd36dab64794129e62b07
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983693"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995338"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 HTTPS 终结点调用、触发或嵌套逻辑应用
 
@@ -36,7 +36,7 @@ ms.locfileid: "82983693"
 
 ## <a name="create-a-callable-endpoint"></a>创建可调用的终结点
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中创建并打开一个空白逻辑应用。
+1. 登录到 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中创建并打开一个空白逻辑应用。
 
    此示例使用请求触发器，但你可以使用任何可接收传入 HTTPS 请求的触发器。 所有原则同样适用于这些触发器。 有关请求触发器的详细信息，请参阅[使用 Azure 逻辑应用接收和响应入站 HTTPS 调用](../connectors/connectors-native-reqres.md)。
 
@@ -140,17 +140,19 @@ ms.locfileid: "82983693"
 
    ![选择触发器所需的请求方法](./media/logic-apps-http-endpoint/select-method-request-trigger.png)
 
-## <a name="accept-parameters-in-endpoint-url"></a>接受终结点 URL 中的参数
+<a name="endpoint-url-parameters"></a>
 
-如果希望终结点 URL 通过终结点的 URL 接受参数值，则可以使用以下选项：
+## <a name="pass-parameters-through-endpoint-url"></a>通过终结点 URL 传递参数
+
+如果希望通过终结点的 URL 接受参数值，可以使用以下选项：
 
 * [通过 GET 参数](#get-parameters)或 URL 参数接受值。
 
-  将请求发送到终结点的 URL 时，这些值将作为名称/值对传递。 对于此选项，需要在请求触发器中使用 GET 方法。 在后续操作中，可以通过在表达式中使用`triggerOutputs()`函数，将参数值作为触发器输出来获取。
+  这些值在终结点的 URL 中作为名称/值对传递。 对于此选项，需要在请求触发器中使用 GET 方法。 在后续操作中，可以通过在表达式中使用`triggerOutputs()`函数，将参数值作为触发器输出来获取。
 
 * 通过请求触发器中参数的[相对路径接受值](#relative-path)。
 
-  将请求发送到终结点的 URL 时，将传递这些值。 还需要显式选择触发器需要的[方法](#select-method)。 在后续操作中，可以通过直接引用这些输出，将参数值作为触发器输出来获取。
+  这些值是通过终结点 URL 中的相对路径传递的。 还需要显式选择触发器需要的[方法](#select-method)。 在后续操作中，可以通过直接引用这些输出，将参数值作为触发器输出来获取。
 
 <a name="get-parameters"></a>
 
@@ -353,7 +355,7 @@ ms.locfileid: "82983693"
 |--------------------|-----------------|-------------|
 | **状态代码** | `statusCode` | 要在传入请求的响应中使用的 HTTPS 状态代码。 该代码可以是以 2xx、4xx 或 5xx 开头的任何有效状态代码。 但是，不允许使用 3xx 状态代码。 |
 | **标头** | `headers` | 要包含在响应中的一个或多个标头 |
-| **大量** | `body` | 正文对象，可以是字符串、JSON 对象甚至是从上一步引用的二进制内容 |
+| **正文** | `body` | 正文对象，可以是字符串、JSON 对象甚至是从上一步引用的二进制内容 |
 ||||
 
 若要查看“响应”操作的 JSON 定义以及逻辑应用的完整 JSON 定义，请在逻辑应用设计器工具栏上选择“代码视图”。****

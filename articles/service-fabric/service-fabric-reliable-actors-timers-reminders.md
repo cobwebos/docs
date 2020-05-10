@@ -1,16 +1,14 @@
 ---
 title: Reliable Actors 计时器和提醒
 description: 介绍 Service Fabric Reliable Actors 的计时器和提醒，包括有关何时使用每项的指导。
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
-ms.openlocfilehash: 02d6220b31ee9c991e8450759bf46759af6177a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67dc5d9706c2176b2fe70d2540be00d0af79fd80
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75639609"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996359"
 ---
 # <a name="actor-timers-and-reminders"></a>执行组件计时器和提醒
 执行组件可通过注册计时器或提醒来计划自身的定期工作。 本文演示如何使用计时器和提醒，并说明它们之间的差异。
@@ -122,12 +120,17 @@ public class VisualObjectActorImpl extends FabricActor implements VisualObjectAc
 
 执行组件运行时会保存在回叫完成时，对执行组件的状态管理器所做的更改。 如果在保存状态时发生错误，则会停用该执行组件对象并激活一个新实例。
 
+与[提醒](#actor-reminders)不同，计时器不能更新。 如果`RegisterTimer`再次调用，将注册新的计时器。
+
 如果在垃圾回收过程中停用了执行组件，所有计时器会停止。 此后不会调用任何计时器回调。 此外，执行组件运行时不保留有关在停用之前运行的计时器的任何信息。 这主要归功于执行组件可以注册在将来重新激活时需要的任何计时器。 有关详细信息，请参阅[执行组件垃圾回收](service-fabric-reliable-actors-lifecycle.md)的部分。
 
 ## <a name="actor-reminders"></a>执行组件提醒
-提醒是一种机制，用于在指定时间对执行组件触发持久回调。 其功能类似于计时器。 但与计时器不同的是，提醒会在所有情况下触发，直到执行组件显式注销提醒或显式删除执行组件。 具体而言，提醒会在执行组件停用和故障转移间触发，因为 执行组件运行时会使用执行组件状态提供程序保存有关执行组件提醒的信息。 请注意，提醒的可靠性关系到执行组件状态提供程序提供的状态可靠性保证。 这意味着，对于状态持久性设置为 None 的执行组件，故障转移后将不会触发提醒。 
+提醒是一种机制，用于在指定时间对执行组件触发持久回调。 其功能类似于计时器。 但与计时器不同的是，提醒会在所有情况下触发，直到执行组件显式注销提醒或显式删除执行组件。 具体而言，提醒会在执行组件停用和故障转移间触发，因为 执行组件运行时会使用执行组件状态提供程序保存有关执行组件提醒的信息。 与计时器不同的是，可以通过使用相同的*reminderName*再次调用注册`RegisterReminderAsync`方法（）来更新现有提醒。
 
-要注册提醒，执行组件将调用基类上提供的 `RegisterReminderAsync` 方法，如以下示例所示：
+> [!NOTE]
+> 提醒的可靠性依赖于执行组件状态提供程序所提供的状态可靠性保证。 这意味着，如果将状态持久性设置为 "*无*"，则在故障转移后将不会触发提醒。
+
+为了注册提醒，执行组件会调用基类[`RegisterReminderAsync`](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync?view=azure-dotnet#remarks)上提供的方法，如以下示例中所示：
 
 ```csharp
 protected override async Task OnActivateAsync()
@@ -216,7 +219,7 @@ ActorReminder reminder = getReminder("Pay cell phone bill");
 CompletableFuture reminderUnregistration = unregisterReminderAsync(reminder);
 ```
 
-如上所示， `UnregisterReminderAsync`(C#) 或 `unregisterReminderAsync`(Java) 方法接受 `IActorReminder`(C#) 或 `ActorReminder`(Java) 接口。 执行组件基类支持 `GetReminder`(C#) 或 `getReminder`(Java) 方法，该方法可用于通过传入提醒名称来检索 `IActorReminder`(C#) 或 `ActorReminder`(Java) 接口。 这十分方便，因为执行组件无需保存从 `IActorReminder`(C#) 或 `ActorReminder`(Java) 方法调用返回的 `RegisterReminder`(C#) 或 `registerReminder`(Java) 接口。
+如上所示， `UnregisterReminderAsync`(C#) 或 `unregisterReminderAsync`(Java) 方法接受 `IActorReminder`(C#) 或 `ActorReminder`(Java) 接口。 执行组件基类支持 `GetReminder`(C#) 或 `getReminder`(Java) 方法，该方法可用于通过传入提醒名称来检索 `IActorReminder`(C#) 或 `ActorReminder`(Java) 接口。 这十分方便，因为执行组件无需保存从 `RegisterReminder`(C#) 或 `registerReminder`(Java) 方法调用返回的 `IActorReminder`(C#) 或 `ActorReminder`(Java) 接口。
 
 ## <a name="next-steps"></a>后续步骤
 了解 Reliable Actor 事件和可重入性：

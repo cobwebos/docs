@@ -6,18 +6,15 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: 7e85175cbee53bd5984a38a587a90b98eaf8dcad
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.date: 05/08/2020
+ms.openlocfilehash: 626dc5a7d1cd52182e68eb0d217b2ac4c653330e
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791895"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994354"
 ---
 # <a name="create-a-consulting-service-offer"></a>创建咨询服务套餐
-
-> [!IMPORTANT]
-> 我们正在将你的咨询服务产品/服务的管理从云合作伙伴门户转移到合作伙伴中心。 在迁移你的产品/服务之前，请按照[Azure 和 Dynamics 365 咨询服务提供](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer)的说明进行操作，以便云合作伙伴门户管理你的产品/服务。
 
 本文介绍如何将咨询服务产品/服务发布到[Microsoft AppSource](https://appsource.microsoft.com/)或[Azure Marketplace](https://azuremarketplace.microsoft.com/)。 基于 AppSource 上的 Microsoft [Dynamics 365](https://dynamics.microsoft.com/)和 Power Platform 列出咨询服务产品/服务。 基于 Azure Marketplace 上的 Microsoft Azure 列出咨询服务产品/服务。 在开始之前，请[在合作伙伴中心创建一个商用 marketplace 帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)（如果尚未这样做）。 确保你的帐户已在 "商用 marketplace 计划" 中注册。
 
@@ -99,10 +96,10 @@ ms.locfileid: "82791895"
     - **概念证明：** 进行有限范围的实施，以确定解决方案是否满足客户的要求。
     - **研讨会**：在客户的本地开展互动。 它可能涉及到基于客户数据或环境构建的培训、简报、评估或演示。
 
-1. 如果选择了**Azure**的主要产品，最多可选择三个**解决方案区域**。 这使得 Azure Marketplace 中的客户能够更轻松地找到你的产品/服务。 如果未选择 "Azure"，请跳过此步骤。
-2. 如果选择了除_Azure 之外的主要产品，_ 请选择最多三个适用的**产品**。 这使 AppSource 中的客户能够更轻松地找到你的产品/服务。 有关详细信息，请参阅[Microsoft AppSource 咨询服务列表准则](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409)（PDF）。
-3. 选择最多六个适用于你的产品/服务的**行业**。 这会使客户更容易找到你的产品/服务。
-4. 添加最多三项**技能**，使其能够在你的咨询服务产品列表中显示。 至少需要一项能力，Azure 专家 Msp 和 Azure 网络 Msp 除外。
+3. 如果选择了**Azure**的主要产品，最多可选择三个**解决方案区域**。 这使得 Azure Marketplace 中的客户能够更轻松地找到你的产品/服务。 如果未选择 "Azure"，请跳过此步骤。
+4. 如果选择了除_Azure 之外的主要产品，_ 请选择最多三个适用的**产品**。 这使 AppSource 中的客户能够更轻松地找到你的产品/服务。 有关详细信息，请参阅[Microsoft AppSource 咨询服务列表准则](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409)（PDF）。
+5. 选择最多六个适用于你的产品/服务的**行业**。 这会使客户更容易找到你的产品/服务。
+6. 添加最多三项**技能**，使其能够在你的咨询服务产品列表中显示。 至少需要一项能力，Azure 专家 Msp 和 Azure 网络 Msp 除外。
 
 选择 "**保存草稿**"，然后继续。
 
@@ -156,7 +153,7 @@ ms.locfileid: "82791895"
 | --- | --- | --- |
 | <center>![使用富文本编辑器更改文本格式](./media/text-editor3.png) |  <center>![使用富文本编辑器添加列表](./media/text-editor4.png) |  <center>![使用富文本编辑器缩进](./media/text-editor5.png) |
 
-### <a name="keywords"></a>Keywords
+### <a name="keywords"></a>关键字
 
 输入与你的主要产品和咨询服务相关的最多三个搜索关键字。 这样可以更轻松地找到产品/服务。
 

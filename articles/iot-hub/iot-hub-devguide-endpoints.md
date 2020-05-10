@@ -11,12 +11,12 @@ ms.date: 06/10/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 53660ad93ab2218d546ae6f363873c4d66872e2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9554713e50e7a2ead2e25f274428ad0ecba4934d
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730312"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996960"
 ---
 # <a name="reference---iot-hub-endpoints"></a>参考 - IoT 中心终结点
 
@@ -54,9 +54,9 @@ Azure IoT 中心属于多租户服务，向各种执行组件公开功能。 下
 
   * *接收直接方法请求*。 设备使用此终结点侦听[直接方法](iot-hub-devguide-direct-methods.md)的请求。
 
-    这些终结点使用 [MQTT v3.1.1](https://mqtt.org/)、HTTPS 1.1 和 [AMQP 1.0](https://www.amqp.org/) 协议进行公开。 还可通过端口 443 上的 [WebSocket](https://tools.ietf.org/html/rfc6455) 来实现 AMQP。
+    这些终结点使用 [MQTT v3.1.1](https://mqtt.org/)、HTTPS 1.1 和 [AMQP 1.0](https://www.amqp.org/) 协议进行公开。 AMQP 和 MQTT 在端口443上也可通过[websocket](https://tools.ietf.org/html/rfc6455)获得。
 
-* **服务终结点**。 每个 IoT 中心公开一组终结点，供解决方案后端用于与设备通信。 除了一个例外，这些终结点只使用 [AMQP](https://www.amqp.org/) 协议进行公开。 方法调用终结点通过 HTTPS 协议进行公开。
+* **服务终结点**。 每个 IoT 中心公开一组终结点，供解决方案后端用于与设备通信。 除了一个例外，这些终结点仅使用[AMQP](https://www.amqp.org/)和 AMQP over websocket 协议公开。 直接方法调用终结点通过 HTTPS 协议公开。
   
   * *接收设备到云的消息*。 此终结点与 [Azure 事件中心](https://azure.microsoft.com/documentation/services/event-hubs/)兼容。 后端服务可用它来读取由设备发送的[设备到云的消息](iot-hub-devguide-messages-d2c.md)。 可以在此内置终结点之外的 IoT 中心创建自定义终结点。
   

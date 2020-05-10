@@ -4,17 +4,17 @@ description: 了解如何定型模型，如何将其转换为 ONNX，将其部�
 keywords: 部署 sql 数据库边缘
 services: sql-database-edge
 ms.service: sql-database-edge
-ms.subservice: machine-learning
+ms.subservice: ''
 ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 04/23/2020
-ms.openlocfilehash: aa2bf5473bf5bd76cfdad39310ce793ab3921652
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: de1f7db9ca9b8e8d4228ec822a92d43e9b7853f8
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129279"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996081"
 ---
 # <a name="deploy-and-make-predictions-with-an-onnx-model-in-sql-database-edge-preview"></a>使用 SQL 数据库边缘预览版中的 ONNX 模型进行部署和预测
 
@@ -22,7 +22,7 @@ ms.locfileid: "82129279"
 
 本快速入门基于**scikit-learn-了解**并使用[波士顿机架数据集](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html)。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 * 如果尚未部署 Azure SQL 数据库边缘模块，请按照[使用 Azure 门户部署 SQL 数据库边缘预览](deploy-portal.md)中的步骤操作。
 

@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: de6be27183ecc621edeb0f3b89c509fa39f239cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 21a5de3d80c3452a3364f14997b942e2874dd739
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678390"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995919"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Azure Synapse Analytics 数据集成合作伙伴
 
@@ -24,7 +24,7 @@ ms.locfileid: "81678390"
 
 ## <a name="data-integration-partners"></a>数据集成合作伙伴
 
-| 合作伙伴 | 说明 | 网站/产品链接 |
+| Partner | 说明 | 网站/产品链接 |
 | ------- | ----------- | -------------------- |
 | ![Alooma](./media/sql-data-warehouse-partner-data-integration/alooma_logo.png) |**Alooma**<br> Alooma 是一种提取、转换和加载（ETL）解决方案，使数据团队能够实时将各种数据接收器的数据集成、丰富并流式传输到 Azure Synapse 数据仓库。 |[产品页](https://www.alooma.com/) |
 | ![Alteryx](./media/sql-data-warehouse-partner-data-integration/alteryx_logo.png) |**Alteryx**<br> Alteryx Designer 通过可重复的工作流进行自助性数据分析，在数小时内即可获得深入的见解，这与传统方法动辄需数周的时间形成鲜明的对比！ Alteryx Designer 使用同一种直观的用户界面将数据准备、数据混合和分析组合在一起，有助于数据分析师进行预测、统计和空间分析。 |[产品页](https://www.alteryx.com/partners/microsoft/)<br>[Azure 市场](https://azure.microsoft.com/marketplace/partners/alteryx/alteryx-designer/)<br>|
@@ -33,10 +33,10 @@ ms.locfileid: "81678390"
 | ![Fivetran](./media/sql-data-warehouse-partner-data-integration/fivetran_logo.png) |**Fivetran**<br>Fivetran 可帮助你集中来自不同源的数据。 它提供零维护、零配置数据管道产品，其中包含不断增长的针对所有常用数据源的连接器列表。 在对数据源和目标数据仓库进行身份验证后，安装需要5分钟。|[产品页](https://fivetran.com/)<br> |
 | ![Informatica](./media/sql-data-warehouse-partner-data-integration/informatica_logo.png) |**1. 适用于 Azure 的 Informatica 云服务**<br> Informatica 云提供了一个同类最佳解决方案，可用于自助服务数据迁移、集成和管理功能。 客户可从不同类型的源快速并可靠地导入和导出到 Azure 的数据量。 适用于 Azure 的 Informatica 云服务提供与 Azure Synapse、SQL 数据库、Blob 存储、Data Lake Store 和 Azure Cosmos DB 的本机、高容量、高性能连接。 <br><br> **2. Informatica PowerCenter**PowerCenter 是一种元数据驱动的数据集成平台，它 jumpstarts 并加速数据集成项目，以便比手动编码将数据传递到业务更快。 它充当数据集成投资的基础 |**适用于 Azure 的 Informatica 云服务**<br>[产品页](https://www.informatica.com/products/cloud-integration.html)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/informatica.iics-winter)<br><br> **Informatica PowerCenter**<br>[产品页](https://www.informatica.com/products/data-integration/powercenter.html)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/informatica.powercenter/)<br>|
 | ![信息构建者](./media/sql-data-warehouse-partner-data-integration/informationbuilders_logo.png) |**信息生成器（全代数据管理）**<br>信息构建者的全生成数据管理平台提供数据集成、数据质量和主数据管理解决方案。 无论采用何种格式、位置、卷或延迟，都可以轻松地访问、移动和混合所有数据。|[产品页](https://www.informationbuilders.com/3i-platform)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/informationbuilders.omni-gen-mdm) |
-| ![Matillion](./media/sql-data-warehouse-partner-data-integration/matillion-logo.png) |**Matillion**<br>Matillion 是云数据仓库的数据转换软件。 只有 Matillion 专用于 Azure Synapse，使企业能够实现更高级别的简单性、速度、缩放和节省。 Matillion 产品由各种规模的公司高度评级和信任，以满足其数据集成和转换需求。 详细了解如何通过 Matillion 的基于云的方法进行数据转换来解锁数据的潜力。| [产品页](https://www.matillion.com/technology/cloud-data-warehouse/microsoft-azure-synapse/)<br> [请求提前访问](https://www.matillion.com/lp/etl-azure-synapse-access) |
+| ![Matillion](./media/sql-data-warehouse-partner-data-integration/matillion-logo.png) |**Matillion**<br>Matillion 是云数据仓库的数据转换软件。 只有 Matillion 专用于 Azure Synapse，使企业能够实现更高级别的简单性、速度、缩放和节省。 Matillion 产品由各种规模的公司高度评级和信任，以满足其数据集成和转换需求。 详细了解如何通过 Matillion 的基于云的方法进行数据转换来解锁数据的潜力。| [产品页](https://www.matillion.com/technology/cloud-data-warehouse/microsoft-azure-synapse/)<br> [Azure 市场](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/matillion.matillion-etl-azure-synapse?tab=Overview) |
 | ![oh22 HEDDA.排](./media/sql-data-warehouse-partner-data-integration/heddaiowhitebg-logo.png) |**oh22 HEDDA<span></span>。排**<br>oh22's HEDDA<span></span>。IO 是为 Microsoft Azure 构建的知识驱动型数据质量产品。 它使您可以生成知识库，并使用它来执行各种关键数据质量任务，包括数据的更正、扩充和标准化。 HEDDA<span></span>。IO 还允许您通过使用引用数据提供程序提供的基于云的引用数据服务执行数据清理，或由您开发和提供。| [产品页](https://hedda.io)<br> [Azure 市场]( https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oh22.hedda-io) |
 | ![Qubole](./media/sql-data-warehouse-partner-data-integration/qubole_logo.png) |**Qubole**<br>Qubole 提供了一个云本机平台，使用户能够执行 ETL、分析和 AI/ML 工作负荷。 它支持不同种类的开源引擎-Apache Spark、TensorFlow、Presto、气流、Hadoop、Hive 等。 它提供易于使用的最终用户工具，用于从 SQL 查询工具、笔记本和利用强大开源引擎的仪表板进行数据处理。|[产品页](https://www.qubole.com/)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/qubole-inc.qubole-data-service?tab=Overview) |
-| ![段](./media/sql-data-warehouse-partner-data-integration/segment_logo.png) |**段**<br>段是一种数据管理和分析解决方案，可帮助用户了解来自各种来源的客户数据。 它允许你将数据连接到超过200个工具，以创建更好的决策、产品和体验。 段会将多个数据源转换并加载到仓库中，以便你使用其内置的数据连接器|[产品页](https://segment.com/)<br> |
+| ![段](./media/sql-data-warehouse-partner-data-integration/segment_logo.png) |**细分**<br>段是一种数据管理和分析解决方案，可帮助用户了解来自各种来源的客户数据。 它允许你将数据连接到超过200个工具，以创建更好的决策、产品和体验。 段会将多个数据源转换并加载到仓库中，以便你使用其内置的数据连接器|[产品页](https://segment.com/)<br> |
 | ![Skyvia](./media/sql-data-warehouse-partner-data-integration/skyvia_logo.png) |**Skyvia （数据集成）**<br>Skyvia 数据集成提供了一个向导，可自动导入数据。 此向导允许您在不同类型的源之间迁移数据-Crm、应用程序数据库、CSV 文件等。 |[产品页](https://skyvia.com/)<br> |
 | ![SnapLogic](./media/sql-data-warehouse-partner-data-integration/snaplogic_logo.png) |**SnapLogic**<br>SnapLogic 平台使客户能够快速将数据传入和传出 Azure Synapse 数据仓库。 它可以在一个解决方案中集成数百个应用程序、服务和 IoT 方案。|[产品页](https://www.snaplogic.com/)<br>[Azure 市场](https://azure.microsoft.com/marketplace/partners/snaplogic/snaplogic-elastic-integration-windows/)<br> |
 | ![StreamSets](./media/sql-data-warehouse-partner-data-integration/streamsets_logo.png) |**StreamSets**<br>Streamsets data collector 提供了用于 DataOps 的数据集成平台。 它 operationalizes 将数据集成到 Azure Synapse 数据仓库的完整的设计部署操作生命周期。 您可以通过流式处理、批处理或已更改的数据捕获数据交付方法，迅速引入数据并将数据集成到仓库。 此外，还可以确保具有智能数据管道的连续操作，这些管道提供端到端的数据流可见性和复原能力。|[产品页](https://streamsets.com/partners/microsoft)|

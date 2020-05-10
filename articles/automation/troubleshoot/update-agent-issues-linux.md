@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 1f9c8d449fb060d5b1a5f810f9e387057eac3252
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: a4082ddfd8c092a6f9223a0894f21bc734b6efb6
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927966"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82997016"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>排查 Linux 更新代理问题
 
@@ -55,7 +55,7 @@ ms.locfileid: "82927966"
 
 操作系统检查会验证混合 Runbook 辅助角色是否正在运行以下操作系统之一。
 
-|操作系统  |说明  |
+|操作系统  |注释  |
 |---------|---------|
 |CentOS 6 (x86/x64) 和 7 (x64)      | Linux 代理必须具有访问更新存储库的权限。 基于分类的修补需要使用 "yum" 来返回安全数据，CentOS 不能使用这些数据。         |
 |Red Hat Enterprise 6 (x86/x64) 和 7 (x64)     | Linux 代理必须具有访问更新存储库的权限。        |
@@ -82,14 +82,14 @@ sudo /opt/microsoft/omsagent/bin/service_control restart
 
 ### <a name="hybrid-runbook-worker"></a>混合 Runbook 辅助角色
 
-此检查将验证适用于 Linux 的 Log Analytics 代理是否具有混合 Runbook 辅助角色包。 更新管理需要此包才能工作。
+此检查将验证适用于 Linux 的 Log Analytics 代理是否具有混合 Runbook 辅助角色包。 更新管理需要此包才能工作。 若要了解详细信息，请参阅[适用于 Linux 的 Log Analytics 代理未运行](hybrid-runbook-worker.md#oms-agent-not-running)。
+
+更新管理从操作终结点下载混合 Runbook 辅助角色包。 因此，如果混合 Runbook 辅助角色未运行并且[操作终结点](#operations-endpoint)失败，则更新可能会失败。
 
 ### <a name="hybrid-runbook-worker-status"></a>混合 Runbook 辅助角色状态
 
-此检查可确保混合 Runbook 辅助角色在计算机上运行。 如果混合 Runbook 辅助角色正常运行，则应存在以下进程。 若要了解详细信息，请参阅[排查适用于 Linux 的 Log Analytics 代理](hybrid-runbook-worker.md#oms-agent-not-running)。
+此检查可确保混合 Runbook 辅助角色在计算机上运行。 如果混合 Runbook 辅助角色运行正常，则应出现以下示例中的进程。
 
-> [!NOTE]
-> 如果混合 Runbook 辅助角色未运行并且操作终结点失败，则更新可能会失败。 更新管理从操作终结点下载混合辅助角色包。
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
@@ -107,13 +107,13 @@ nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 
 此检查确定混合 Runbook 辅助角色能否与 Log Analytics 工作区中的 Azure 自动化进行正确通信。
 
-代理和防火墙配置必须允许混合 Runbook 辅助角色代理与注册终结点通信。 有关要打开的地址和端口的列表，请参阅[混合辅助角色的网络规划](../automation-hybrid-runbook-worker.md#network-planning)。
+代理和防火墙配置必须允许混合 Runbook 辅助角色代理与注册终结点通信。 有关要打开的地址和端口的列表，请参阅[网络规划](../automation-hybrid-runbook-worker.md#network-planning)。
 
 ### <a name="operations-endpoint"></a>操作终结点
 
-此检查用于确定代理是否可以与作业运行时数据服务正确通信。
+此检查确定 Log Analytics 代理能否与作业运行时数据服务正确通信。
 
-代理和防火墙配置必须允许混合 Runbook 辅助角色代理与作业运行时数据服务通信。 有关要打开的地址和端口的列表，请参阅[混合辅助角色的网络规划](../automation-hybrid-runbook-worker.md#network-planning)。
+代理和防火墙配置必须允许混合 Runbook 辅助角色代理与作业运行时数据服务通信。 有关要打开的地址和端口的列表，请参阅[网络规划](../automation-hybrid-runbook-worker.md#network-planning)。
 
 ### <a name="log-analytics-endpoint-1"></a>Log Analytics 终结点 1
 

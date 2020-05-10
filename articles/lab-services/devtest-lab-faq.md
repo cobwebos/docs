@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: de99e9b1e4adceaf08beaf8ad3b5ea114b31a586
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8697c7a82e271919f8d5aaa48160aa93c833809b
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270779"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996893"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure 开发测试实验室常见问题
 获取关于 Azure 开发测试实验室的某些最常见问题的解答。
@@ -210,6 +210,9 @@ $policyRoleDef = New-AzRoleDefinition -Role $policyRoleDef
 
 可以，可将多个磁盘附加到 VM 中。
 
+### <a name="are-gen-2-images-supported-by-devtest-labs"></a>开发测试实验室是否支持第2代映像？
+否。 开发测试实验室服务不支持[第2代映像](../virtual-machines/windows/generation-2.md)。 如果第1代和第2代版本均可用于映像，则在创建 VM 时，开发测试 Labs 只显示映像的第1代版本。 如果只有第2代可用版本，你将看不到映像。 
+
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>如果要将 Windows OS 映像用于我的测试，是否需要购买 MSDN 订阅？
 若要在 Azure 中使用 Windows 客户端 OS 映像（Windows 7 或更高版本）进行开发或测试，请执行以下步骤之一：
 
@@ -285,7 +288,7 @@ foreach($labVM in $labVMs)
 
 查找与实验室关联的目标存储帐户：
 
-1.  登录 [Azure 门户](https://portal.azure.com)。
+1.  登录到 [Azure 门户](https://portal.azure.com)。
 2.  在左侧菜单上，选择“资源组”****。
 3.  查找并选择与实验室关联的资源组。
 4.  在“概述”下，选择一个存储帐户****。
@@ -375,7 +378,7 @@ foreach($labVM in $labVMs)
 
 此外，还可以将网络安全组用于虚拟机或子网。 此步骤增添了一层额外的保护以允许/阻止流量。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 ### <a name="why-isnt-my-existing-virtual-network-saving-properly"></a>为什么我的虚拟网络没有正确保存？
 一种可能是虚拟网络名称包含具句号。 如果包含句号，请尝试将其删除，或将其替换为连字符。 然后再次尝试保存虚拟网络。

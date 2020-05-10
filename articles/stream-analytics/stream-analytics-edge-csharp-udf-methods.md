@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: c15f16692e92c4d25d8194aaf93a3da907ae0e67
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 53ebf8adb99362b5aaf27676bbd50fb8b525f526
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82598141"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994490"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>为 Azure 流分析作业开发 .NET Standard 用户定义函数（预览版）
 
@@ -46,24 +46,24 @@ Azure 流分析的 Visual Studio 工具可用于轻松编写 UDF、在本地（�
 
 |**Azure 流分析类型** |**C # 类型** |
 |---------|---------|
-|bigint | long |
-|float | double |
+|bigint | 长整型 |
+|float | Double |
 |nvarchar(max) | string |
 |datetime | DateTime |
 |Record | 字典\<字符串，对象> |
-|Array | Array\<object> |
+|数组 | Object [] |
 
 当需要将数据从 c # 封送到 Azure 流分析时，就会出现这种情况。 下表显示了受支持的类型：
 
 |**C # 类型**  |**Azure 流分析类型**  |
 |---------|---------|
-|long  |  bigint   |
+|长整型  |  bigint   |
 |Double  |  float   |
 |string  |  nvarchar(max)   |
 |DateTime  |  dateTime   |
 |struct  |  Record   |
-|对象 (object)  |  Record   |
-|Array\<object>  |  Array   |
+|对象  |  Record   |
+|Object []  |  数组   |
 |字典\<字符串，对象>  |  Record   |
 
 ## <a name="codebehind"></a>CodeBehind
@@ -140,6 +140,43 @@ Azure 流分析的 Visual Studio 工具可用于轻松编写 UDF、在本地（�
    |自定义代码存储设置容器|<你的存储容器>|
    |自定义代码程序集源|云中的现有程序集包|
    |自定义代码程序集源|UserCustomCode.zip|
+
+## <a name="user-logging"></a>用户日志记录
+使用日志记录机制，可以在作业运行时捕获自定义信息。 您可以使用日志数据实时调试或评估自定义代码的正确性。
+
+`StreamingContext`类可让你使用`StreamingDiagnostics.WriteError`函数发布诊断信息。 下面的代码显示了由 Azure 流分析公开的接口。
+
+```csharp
+public abstract class StreamingContext
+{
+    public abstract StreamingDiagnostics Diagnostics { get; }
+}
+
+public abstract class StreamingDiagnostics
+{
+    public abstract void WriteError(string briefMessage, string detailedMessage);
+}
+```
+
+`StreamingContext`作为输入参数传递到 UDF 方法，并可在 UDF 中使用以发布自定义日志信息。 在下面的示例中`MyUdfMethod` ，定义一个由查询提供的**数据**输入，并定义一个作为**context**的`StreamingContext`上下文输入，由运行时引擎提供。 
+
+```csharp
+public static long MyUdfMethod(long data, StreamingContext context)
+{
+    // write log
+    context.Diagnostics.WriteError("User Log", "This is a log message");
+    
+    return data;
+}
+```
+
+此`StreamingContext`值不需要由 SQL 查询传入。 如果存在输入参数，Azure 流分析会自动提供上下文对象。 不`MyUdfMethod`会更改的使用，如下面的查询所示：
+
+```sql
+SELECT udf.MyUdfMethod(input.value) as udfValue FROM input
+```
+
+可以通过[诊断日志](data-errors.md)访问日志消息。
 
 ## <a name="limitations"></a>限制
 UDF 预览目前有以下限制：

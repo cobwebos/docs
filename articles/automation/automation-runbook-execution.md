@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1a9a503fd566c9b50f1503e0955bf12f69ac9960
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: HT
+ms.openlocfilehash: 1933688459cd02ee4da448d2e83b0a7a92a1d2c8
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927915"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994739"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>在 Azure 自动化中执行 Runbook
 
@@ -46,7 +46,7 @@ Azure Automation 中的 runbook 可以在 Azure 沙盒或[混合 Runbook 辅助�
 
 下表列出了一些 runbook 执行任务，其中每个任务都列出了建议的执行环境。
 
-|任务|建议|说明|
+|任务|建议|注释|
 |---|---|---|
 |与 Azure 资源集成|Azure 沙盒|在 Azure 中托管，身份验证更简单。 如果在 Azure VM 上使用混合 Runbook 辅助角色，则可以[将 Runbook 身份验证用于托管标识](automation-hrw-run-runbooks.md#runbook-auth-managed-identities)。|
 |获得最佳性能来管理 Azure 资源|Azure 沙盒|脚本运行在相同的环境中，延迟较低。|
@@ -68,7 +68,7 @@ Runbook 必须包含用于处理[资源](https://docs.microsoft.com/rest/api/res
 
 ## <a name="security"></a>安全性
 
-Azure Automation 使用[Azure 安全中心（ASC）](https://docs.microsoft.com/azure/security-center/security-center-introAzure)为你的资源提供安全性，并在 Linux 系统中检测到危害。 不管资源是否在 Azure 中，均跨工作负荷提供安全。 请参阅[Azure 自动化中的身份验证简介](automation-security-overview.md)。
+Azure Automation 使用[Azure 安全中心（ASC）](../security-center/security-center-intro.md)为你的资源提供安全性，并在 Linux 系统中检测到危害。 不管资源是否在 Azure 中，均跨工作负荷提供安全。 请参阅[Azure 自动化中的身份验证简介](automation-security-overview.md)。
 
 ASC 对可在 VM 上运行任何脚本（有符号或无符号）的用户施加限制。 如果你是具有 VM 的根访问权限的用户，则必须使用数字签名显式配置计算机，或将其关闭。 否则，只有在创建自动化帐户并启用适当的功能之后，才能运行脚本来应用操作系统更新。
 
@@ -151,7 +151,7 @@ Azure 自动化支持从同一自动化帐户运行作业的环境。 一个 run
 
 在 Azure 自动化中执行 runbook 会在自动化帐户的活动日志中写入详细信息。 有关使用日志的详细信息，请参阅[从活动日志中检索详细信息](manage-runbooks.md#retrieve-details-from-activity-log)。 
 
-## <a name="exceptions"></a>异常
+## <a name="exceptions"></a>例外
 
 本部分介绍在 runbook 中处理异常或间歇问题的一些方法。 例如，WebSocket 异常。 更正异常处理可防止暂时性的网络故障导致 runbook 失败。 
 

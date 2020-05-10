@@ -3,12 +3,12 @@ title: 在 Azure Migrate 服务器评估中设置基于代理的依赖项分析
 description: 本文介绍如何在 Azure Migrate 服务器评估中设置基于代理的依赖项分析。
 ms.topic: how-to
 ms.date: 2/24/2020
-ms.openlocfilehash: e61b7b4e6c3e566aa67d2bd585d2049ae885083b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 47fd7e7c864e82400288bb67da952a18b648849e
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79453609"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996879"
 ---
 # <a name="set-up-dependency-visualization"></a>设置依赖项可视化
 
@@ -73,9 +73,9 @@ ms.locfileid: "79453609"
 2. 在“欢迎”**** 页上，单击“下一步”****。 在 "**许可条款**" 页上，单击 "**我同意**接受许可"。
 3. 在“目标文件夹”**** 中，保留或修改默认安装文件夹，然后选择“下一步”****。
 4. 在“代理安装选项”**** 中，选择“Azure Log Analytics”**** > “下一步”****。
-5. 单击“添加”**** 以添加 Log Analytics 工作区。 粘贴从门户复制的工作区 ID 和密钥。 单击“下一步”。 
+5. 单击“添加”**** 以添加 Log Analytics 工作区。 粘贴从门户复制的工作区 ID 和密钥。 单击“下一步”  。
 
-你可以从命令行安装代理，也可以使用自动方法（如 Configuration Manager 或[Intigua](https://go.microsoft.com/fwlink/?linkid=2104196)）来安装代理。
+你可以从命令行安装代理，也可以使用自动方法（如 Configuration Manager 或[Intigua](https://www.intigua.com/intigua-for-azure-migration)）来安装代理。
 - [详细了解](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)如何使用这些方法安装 MMA 代理。
 - 还可使用此[脚本](https://go.microsoft.com/fwlink/?linkid=2104394)安装 MMA 代理。
 - [了解](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-windows-operating-systems)有关 MMA 支持的 Windows 操作系统的详细信息。

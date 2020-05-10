@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/22/2017
 ms.author: robinsh
-ms.openlocfilehash: a6bd8a766f3205358a65ef2fd0816643e4261cab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1550254e969e96fbc83c4c344189d414a8fa8d3
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68414282"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995503"
 ---
 # <a name="use-ip-filters"></a>使用 IP 筛选器
 
@@ -66,7 +66,7 @@ ms.locfileid: "68414282"
 > 拒绝 IP 地址可以防止其他 Azure 服务（例如门户中的 Azure 流分析、Azure 虚拟机或设备资源管理器）与 IoT 中心交互。
 
 > [!WARNING]
-> 如果使用 Azure 流分析 (ASA) 并启用 IP 筛选从 IoT 中心读取消息，请在 ASA 连接字符串中使用与事件中心兼容的名称和 IoT 中心的终结点。
+> 如果使用 Azure 流分析（ASA）从启用了 IP 筛选的 IoT 中心读取消息，请使用 IoT 中心与事件中心兼容的名称和终结点在 ASA 中手动添加[事件中心流输入](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-inputs#stream-data-from-event-hubs)。
 
 ## <a name="delete-an-ip-filter-rule"></a>删除 IP 筛选器规则
 

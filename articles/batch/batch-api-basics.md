@@ -4,12 +4,12 @@ description: 从开发的角度了解 Batch 服务的功能及其 API。
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 590ce6d6804c25ea9a3c1104f8fea2ea00c66356
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: c983588bd3d135729541bf6bf51e5dc9d979ca84
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509187"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994262"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>使用 Batch 开发大规模并行计算解决方案
 
@@ -49,7 +49,7 @@ ms.locfileid: "82509187"
 * [池](#pool)
 * [作业](#job)
   * [作业计划](#scheduled-jobs)
-* [任务](#task)
+* [Task](#task)
   * [启动任务](#start-task)
   * [作业管理器任务](#job-manager-task)
   * [作业准备和释放任务](#job-preparation-and-release-tasks)
@@ -429,7 +429,7 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
 * **资源度量值** 基于 CPU 使用率、带宽使用率、内存使用率和节点的数目。
 * **任务指标**基于任务状态，例如“活动”（已排队）、“正在运行”或“已完成”。******
 
-如果自动缩放会减少池中的计算节点数，则必须考虑如何处理在执行减少操作时运行的任务。 为满足这一需要，Batch 提供可包含在公式中的[*节点解除分配选项*](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes#computenodedeallocationoption)。 例如，可以指定运行中的任务立即停止，然后重新排入队列，以便在另一个节点上运行，或允许先完成再从池中删除节点。 请注意，将节点释放选项设置`taskcompletion`为`retaineddata`或将会阻止池调整大小操作，直到所有任务都已完成，或者所有任务保留周期都已过期。
+如果自动缩放会减少池中的计算节点数，则必须考虑如何处理在执行减少操作时运行的任务。 为满足这一需要，Batch 提供可包含在公式中的[*节点解除分配选项*](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes#computenodedeallocationoption)。 例如，可以指定运行中的任务立即停止，然后重新排入队列，以便在另一个节点上运行，或允许先完成再从池中删除节点。 请注意，将节点释放选项设置`taskcompletion`为`retaineddata`或将会阻止池调整大小操作，直到所有任务都已完成，或者所有任务保留期都已过期。
 
 有关自动缩放应用程序的详细信息，请参阅 [自动缩放 Azure Batch 池中的计算节点](batch-automatic-scaling.md)。
 
@@ -446,7 +446,7 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
 
 如果将证书添加到 *现有* 池，必须重新启动其计算节点，证书才会应用到节点。
 
-## <a name="error-handling"></a>错误处理。
+## <a name="error-handling"></a>错误处理
 
 有时你可能需要处理 Batch 解决方案中的任务和应用程序失败。
 
@@ -586,4 +586,4 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
 [rest_offline]: https://msdn.microsoft.com/library/azure/mt637904.aspx
 [rest_online]: https://msdn.microsoft.com/library/azure/mt637907.aspx
 
-[vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
+[vm_marketplace]: https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images&page=1

@@ -4,14 +4,14 @@ description: 在 Application Insights 中管理遥测量并监视成本。
 ms.topic: conceptual
 author: DaleKoetke
 ms.author: dalek
-ms.date: 11/27/2019
+ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0225484de06ae4e595f1dcbcdd520f4e0e4d53f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c597ea559e7337c9c84914d168f1055e0631886
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81405391"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995541"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -62,7 +62,7 @@ E. 设置每日数据量上限。
 
 若要更深入地调查 Application Insights 使用情况，请打开“指标”**** 页，添加名为“数据点容量”的指标，然后选择“应用拆分”** 选项以按“遥测项类型”拆分数据。
 
-Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计费”部分或在 [Azure 计费门户](https://account.windowsazure.com/Subscriptions)中查看 Azure 账单的详细信息****。
+Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户的 "**成本管理 + 计费**" 部分或在[Azure 计费门户](https://account.windowsazure.com/Subscriptions)中查看 azure 账单的详细信息。  有关将此用于 Application Insights 的详细信息，[请参阅下面](https://docs.microsoft.com/azure/azure-monitor/app/pricing#viewing-application-insights-usage-on-your-azure-bill)的详细信息。 
 
 ![在左侧菜单中，选择“账单”](./media/pricing/02-billing.png)
 
@@ -129,7 +129,7 @@ dependencies
 
 ## <a name="viewing-application-insights-usage-on-your-azure-bill"></a>查看 Azure 帐单上的 Application Insights 使用情况
 
-Azure 在 [Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json)中心提供大量有用的功能。 例如，使用“成本分析”功能可以查看 Azure 资源的开支。 按资源类型添加筛选器（添加到 Application Insights 的 microsoft.insights/components）可以跟踪开支。
+Azure 在 [Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json)中心提供大量有用的功能。 例如，使用“成本分析”功能可以查看 Azure 资源的开支。 按资源类型添加筛选器（添加到 Application Insights 的 microsoft.insights/components）可以跟踪开支。 然后，对于 "分组依据"，选择 "计量类别" 或 "计量器"。  对于当前定价计划 Application Insights 资源，大多数使用情况都将显示为计量器类别的 Log Analytics，因为所有 Azure Monitor 组件都有一个登录后端。 
 
 [从 Azure 门户下载使用情况](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)可以更好地了解使用情况。
 在下载的电子表格中，可以看到每天每个 Azure 资源的使用情况。 在此 Excel 电子表格中，可通过以下方式查找 Application Insights 资源的使用情况：先按“计量类别”列进行筛选，以显示“Application Insights”和“Log Analytics”，然后按“实例 ID”列添加一个“包含 microsoft.insights/components”的筛选器。  由于所有 Azure Monitor 组件只有一个日志后端，因此，大多数 Application Insights 使用情况都是根据计量类别为 Log Analytics 的计量表报告的。  只有传统定价层和多步骤 Web 测试中的 Application Insights 资源才使用计量类别 Application Insights 进行报告。  使用情况显示在“使用的数量”列中，每个条目的单位显示在“度量单位”列中。  有更多详细信息可帮助你[了解自己的 Microsoft Azure 帐单](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)。
@@ -212,7 +212,7 @@ Azure 在 [Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-ma
 
 ## <a name="change-the-data-retention-period"></a>更改数据保留期
 
-Application Insights 资源的默认保留期为 90 天。 可以为每个 Application Insights 资源选择不同的保留期。 完整的可用保留期集为 30、60、90、120、180、270、365、550 或 730 天。
+Application Insights 资源的默认保留期为 90 天。 可以为每个 Application Insights 资源选择不同的保留期。 完整的可用保留期集为 30、60、90、120、180、270、365、550 或 730 天。 [详细了解更](https://azure.microsoft.com/pricing/details/monitor/)长的数据保留期。 
 
 若要更改保留期，请从 Application Insights 资源转到“使用情况和预估成本”**** 页，然后选择“数据保留”**** 选项：
 

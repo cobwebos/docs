@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
-ms.date: 04/09/2020
-ms.openlocfilehash: 87c3e2439d1b4bef4a58663e3ea06d8bb7cb9b19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/08/2020
+ms.openlocfilehash: 98bb643e1a780754fcb3b9f4eb91d8f04dc4e90b
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192529"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996389"
 ---
-# <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight 提供了哪些 Apache Hadoop 组件和版本？
+# <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>适用于 Azure HDInsight 的 Apache 组件和版本
 
 了解 Microsoft Azure HDInsight 和企业安全性套餐中[Apache Hadoop](https://hadoop.apache.org/)环境组件和版本。 另外，还将了解如何检查 HDInsight 中的 Hadoop 组件版本。
 
-## <a name="apache-hadoop-components-available-with-different-hdinsight-versions"></a>随不同 HDInsight 版本提供的 Apache Hadoop 组件
+## <a name="apache-components-available-with-different-hdinsight-versions"></a>不同 HDInsight 版本中提供的 Apache 组件
 
 Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 2017年4月4日，Azure HDInsight 使用的默认群集版本为3.6。
 
@@ -53,7 +53,7 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 2017年4�
 > [!NOTE]
 > 出于系统性能考量，对 Kafka 版本 0.10 的支持已在 2019 年 3 月过期。
 
-## <a name="check-for-current-hadoop-component-version-information"></a>检查当前的 Hadoop 组件版本信息
+## <a name="check-for-current-apache-component-version-information"></a>检查当前 Apache 组件版本信息
 
 与 HDInsight 群集版本关联的 Hadoop 环境组件版本可能会随 HDInsight 的更新而更改。 若要检查 Hadoop 组件并验证正在为群集使用哪些版本，请使用 Ambari REST API。 **GetComponentInformation** 命令检索有关服务组件的信息。 有关详细信息，请参阅 [Apache Ambari 文档](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)。
 
@@ -104,50 +104,6 @@ Spark 2.1，2.2 & Kafka 1.0 支持将在年6月 30 2020 日过期。
 > [!NOTE]  
 > 对于 HDInsight 2.1 和更高版本，默认情况下会集部署具有两个头节点的高度可用群集。 它们不适用于 HDInsight 1.6 版本的群集。
 
-## <a name="enterprise-security-package-for-hdinsight"></a>适用于 HDInsight 的 Enterprise Security 包
-
-Enterprise Security 是一种可选包，可在 HDInsight 群集上作为创建群集工作流的一部分添加。 Enterprise Security 包支持：
-
-- 与 Active Directory 集成进行身份验证。
-
-    过去，你创建了包含本地管理员用户和本地 SSH 用户的 HDInsight 群集。 本地管理员用户可以访问所有文件、文件夹、表和列。  使用企业安全性套餐，可以通过将 HDInsight 与 Active Directory 集成来启用基于角色的访问控制。 其中包括本地 Active Directory Azure Active Directory 域服务。 或 Active Directory。 群集上的域管理员可以授予用户使用其自己的公司（域）用户名和密码的权限。
-
-    有关详细信息，请参见:
-
-    - [已加入域的 HDInsight 群集的 Apache Hadoop 安全性简介](./domain-joined/hdinsight-security-overview.md)
-    - [在 HDInsight 中计划 Azure 已加入域的 Apache Hadoop 群集](./domain-joined/apache-domain-joined-architecture.md)
-    - [配置已加入域的沙盒环境](./domain-joined/apache-domain-joined-configure.md)
-    - [使用 Azure Active Directory 域服务设置和配置已加入域的 HDInsight 群集](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)
-
-- 数据授权
-
-  - 与 Apache Ranger 集成以对 Hive、Spark SQL 和 Yarn 队列授权。
-  - 可以对文件和文件夹设置访问控制。
-
-    有关详细信息，请参见:
-
-  - [在已加入域的 HDInsight 中配置 Apache Hive 策略](./domain-joined/apache-domain-joined-run-hive.md)
-
-- 查看审核日志以监视访问和配置的策略。
-
-### <a name="supported-cluster-types"></a>支持的群集类型
-
-目前只有以下群集类型支持 Enterprise Security 包：
-
-- Hadoop（仅限 HDInsight 3.6）
-- Spark
-- Kafka
-- HBase
-- 交互式查询
-
-### <a name="support-for-azure-data-lake-storage"></a>支持 Azure Data Lake Storage
-
-Enterprise Security 包支持使用 Azure Data Lake Storage 作为主存储和附加存储。
-
-### <a name="pricing-and-service-level-agreement-sla"></a>定价和服务级别协议（SLA）
-
-有关 Enterprise Security 包的定价和 SLA 的信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight/)。
-
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>HDInsight 群集版本的服务级别协议
 
 服务级别协议（SLA）定义为 "支持"_窗口_。 支持窗口是支持 HDInsight 版本的时间段`Microsoft Customer Service and Support`。 如果版本具有已通过的_支持过期日期_，则 HDInsight 群集不在支持范围内。 支持 HDInsight 版本 X 的过期（在更新的 X + 1 版本可用之后）为后面的版本：  
@@ -166,3 +122,4 @@ _停用日期_是指在此后不能在 HDInsight 上创建群集版本的日期�
 - [为 HDInsight 上的 Apache Hadoop、Spark 和其他组件设置群集](hdinsight-hadoop-provision-linux-clusters.md)
 - [使用 Windows 电脑在 HDInsight 上的 Apache Hadoop 中工作](hdinsight-hadoop-windows-tools.md)
 - [与 Azure HDInsight 版本相关的 Hortonworks 发行说明](./hortonworks-release-notes.md)
+- [企业安全性套餐](./enterprise-security-package.md)
