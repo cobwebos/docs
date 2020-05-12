@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: a29fd66cf264b09cc5e0db7ac1a329be3f297bb8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 64895e5f48168305aea3e83596cdbcae982a6cb9
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82096327"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692419"
 ---
 # <a name="quickstart-using-synapse-studio-preview"></a>快速入门：使用 Synapse Studio（预览版）
 
@@ -56,7 +56,7 @@ ms.locfileid: "82096327"
 
    ![查询存储中的文件](./media/quickstart-synapse-studio/query-files-on-storage.png)
 
-3. 运行生成的查询或笔记本来查看文件内容：
+3. 运行生成的查询或笔记本以查看文件的内容。
 
    ![查看文件内容](./media/quickstart-synapse-studio/query-files-on-storage-result.png)
 
@@ -64,7 +64,7 @@ ms.locfileid: "82096327"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 通过[在 Azure 存储上分配**存储 Blob 数据读者**或**存储 Blob 数据参与者** RBAC 权限](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)，使 Azure AD 用户能够查询文件。
+- 通过[在 Azure 存储上分配“存储 Blob 数据读取者”  或“存储 Blob 数据参与者”  RBAC 权限](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)，使 Azure AD 用户能够查询文件。
 - [使用 SQL 按需版本查询 Azure 存储中的文件](sql/on-demand-workspace-overview.md)
-- [创建 Apache Spark 池](quickstart-create-apache-spark-pool.md)
+- [使用 Azure 门户创建 Apache Spark 池](quickstart-create-apache-spark-pool.md)
 - [创建有关 Azure 存储中存储的文件的 Power BI 报表](sql/tutorial-connect-power-bi-desktop.md)

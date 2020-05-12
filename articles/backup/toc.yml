@@ -357,6 +357,8 @@
               href: soft-delete-sql-saphana-in-azure-vm.md
         - name: 混合备份的安全性
           href: backup-azure-security-feature.md
+        - name: 专用终结点
+          href: private-endpoints.md
         - name: 加密
           href: backup-encryption.md
         - name: 内置安全控件

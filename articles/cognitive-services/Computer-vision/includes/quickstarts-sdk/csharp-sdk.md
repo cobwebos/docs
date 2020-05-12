@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 522adc0f07f4ab21e391b952284dff97b089dccc
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 5a2de6cb4c7de6f789041d8df7ca562e97ee0863
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81791682"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82595330"
 ---
 <a name="HOLTop"></a>
 
@@ -23,7 +23,7 @@ ms.locfileid: "81791682"
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
-* [.NET Core](https://dotnet.microsoft.com/download/dotnet-core) 的当前版本。
+* 最新版本的 [.NET Core SDK](https://dotnet.microsoft.com/download/)。
 
 ## <a name="setting-up"></a>设置
 
@@ -42,13 +42,13 @@ Azure 认知服务由你订阅的 Azure 资源表示。 在本地计算机上使
 
 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，使用 `dotnet new` 命令创建名为 `computer-vision-quickstart` 的新控制台应用。 此命令将创建包含单个源文件的简单“Hello World”C# 项目：ComputerVisionQuickstart.cs  。
 
-```console
+```dotnetcli
 dotnet new console -n computer-vision-quickstart
 ```
 
 将目录更改为新创建的应用文件夹。 可使用以下代码生成应用程序：
 
-```console
+```dotnetcli
 dotnet build
 ```
 
@@ -74,7 +74,7 @@ Build succeeded.
 
 在应用程序目录中，使用以下命令安装适用于 .NET 的计算机视觉客户端库：
 
-```console
+```dotnetcli
 dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --version 5.0.0
 ```
 
@@ -253,7 +253,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --ver
 
 从应用程序目录使用 `dotnet run` 命令运行应用程序。
 
-```dotnet
+```dotnetcli
 dotnet run
 ```
 

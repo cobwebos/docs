@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 02/19/2020
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 0cfe58ab0d161019d5f53d9135c65db7beff2bb4
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: ac4cacd8233935362ed155dab22a66459ed9126d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397996"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691342"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>使用示例标记工具通过标签来训练表单识别器模型
 
@@ -37,7 +37,7 @@ ms.locfileid: "80397996"
 你将使用 Docker 引擎来运行示例标记工具。 请按以下步骤设置 Docker 容器。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。
 
 > [!TIP]
-> OCR 窗体标签工具也可用作 GitHub 上的开源项目。 该工具是使用 React + Redux 生成并采用 TypeScript 编写的 web 应用程序。 若要了解详细信息或参与，请参阅 [OCR 窗体标记工具](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md#run-as-web-application)。
+> OCR 窗体标签工具也可用作 GitHub 上的开源项目。 该工具是使用 React + Redux 生成的 TypeScript Web 应用程序。 若要了解详细信息或进行参与，请参阅 [OCR 窗体标记工具](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md#run-as-web-application)存储库。 若要在线试用该工具，请访问 [FOTT 网站](https://fott.azurewebsites.net/)。   
 
 1. 首先，在主计算机上安装 Docker。 本指南介绍如何将本地计算机用作主机。 若要在 Azure 中使用 Docker 托管服务，请参阅[部署示例标记工具](../deploy-label-tool.md)操作指南。 
 
@@ -61,7 +61,7 @@ ms.locfileid: "80397996"
     docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
     ```
 
-   此命令将使示例标记工具可通过 web 浏览器提供。 转到[http://localhost:3000](http://localhost:3000)。
+   此命令将使示例标记工具可通过 web 浏览器提供。 转到  `http://localhost:3000` 。
 
 > [!NOTE]
 > 还可以使用表单识别器 REST API 来标记文档和训练模型。 若要使用 REST API 进行训练和分析，请参阅[使用 REST API 和 Python 通过标签进行训练](./python-labeled-data.md)。
@@ -104,7 +104,7 @@ ms.locfileid: "80397996"
 在示例标记工具中，项目会存储你的配置和设置。 创建新项目并在字段中填写以下值：
 
 * **显示名称** - 项目显示名称
-* **安全令牌** - 某些项目设置可以包含敏感值，如 API 密钥或其他共享机密。 每个项目都会生成一个安全令牌，可用于加密/解密敏感项目设置。 可以在“应用程序设置”中找到安全令牌，方法是单击左侧导航栏下方角的齿轮图标。
+* **安全令牌** - 某些项目设置可以包含敏感值，如 API 密钥或其他共享机密。 每个项目都会生成一个安全令牌，可用于加密/解密敏感项目设置。 可以在“应用程序设置”中找到安全令牌，方法是单击左侧导航栏底部的齿轮图标。
 * **源连接** - 上一步中创建的、用于此项目的 Azure Blob 存储连接。
 * **文件夹路径** -（可选）如果源表单位于 blob 容器上的某个文件夹中，请在此处指定文件夹名称
 * **表单识别器服务 Uri** - 表单识别器终结点 URL。
@@ -130,9 +130,9 @@ ms.locfileid: "80397996"
 接下来创建标记（标签），并将其应用到希望模型识别的文本元素。
 
 1. 首先，使用标记编辑器窗格创建要识别的标记。
-  1. 单击 **+** 创建新标记。
-  1. 输入标记名称。
-  1. 按 Enter 保存标记。
+   1. 单击 **+** 创建新标记。
+   1. 输入标记名称。
+   1. 按 Enter 保存标记。
 1. 在主编辑器中，单击并拖动以从突出显示的文本元素中选择一个或多个字词。
 1. 单击要应用的标记，或按相应的键盘键。 数字键已分配为前 10 个标记的热键。 可以使用标记编辑器窗格中的向上和向下箭头图标对标记进行重新排序。
     > [!Tip]
@@ -144,15 +144,30 @@ ms.locfileid: "80397996"
     > * 不要在标记的字段中包含键 &mdash; 仅包含值。
     > * 系统应自动检测表数据，最终的输出 JSON 文件中将提供这些数据。 但是，如果模型无法检测所有表数据，你也可以手动标记这些字段。 使用不同的标签标记表中的每个单元格。 如果窗体中的表包含不同的行数，请确保使用可能最大的表标记至少一个窗体。
 
-
-按照上述步骤来标记五个表单，然后进行下一步。
-
 ![示例标记工具的主编辑器窗口](../media/label-tool/main-editor.png)
 
+按照上述步骤标记至少五个窗体。
+
+### <a name="specify-tag-value-types"></a>指定标记值类型
+
+（可选）你可以为每个标记设置所需的数据类型。 打开标记右侧的上下文菜单，然后从菜单中选择一个类型。 此功能可让检测算法做出某些假设，从而提高文本检测准确性。 它还确保在最终 JSON 输出中以标准格式返回检测到的值。 
+
+> [!div class="mx-imgBorder"]
+> ![使用示例标记工具选择值类型](../media/whats-new/formre-value-type.png)
+
+目前支持以下值类型和变体：
+* `string`
+    * default、`no-whitespaces`、`alphanumeric`
+* `number`
+    * default、`currency`
+* `date` 
+    * default、`dmy`、`mdy`、`ymd`
+* `time`
+* `integer`
 
 ## <a name="train-a-custom-model"></a>训练自定义模型
 
-单击左侧窗格中的训练图标（火车车厢），打开“训练”页。 然后单击“训练”按钮，开始训练模型  。 训练过程完成后，你将看到以下信息：
+单击左侧窗格中的“训练”图标以打开“训练”页。 然后单击“训练”按钮，开始训练模型  。 训练过程完成后，你将看到以下信息：
 
 * **模型 ID** - 已创建和训练的模型的 ID。 每个训练调用都将创建一个具有自己的 ID 的新模型。 将此字符串复制到安全位置；如果要通过 REST API 进行预测调用，则需要使用此字符串。
 * **平均准确度** - 模型的平均准确性。 可以通过再次标记其他表单和训练来创建新的模型，从而提高模型准确度。 建议首先标记五个表单，然后根据需要添加更多表单。
@@ -167,7 +182,7 @@ ms.locfileid: "80397996"
 
 ## <a name="analyze-a-form"></a>分析表单
 
-单击左侧的“预测（矩形）”图标，测试模型。 上传训练过程中未使用的表单文档。 然后单击右侧的“预测”按钮，获取表单的键/值预测  。 该工具将在边界框中应用标记，并报告每个标记的置信度。
+单击左侧的“预测(灯泡)”图标以测试模型。 上传训练过程中未使用的表单文档。 然后单击右侧的“预测”按钮，获取表单的键/值预测  。 该工具将在边界框中应用标记，并报告每个标记的置信度。
 
 > [!TIP]
 > 还可以通过 REST 调用运行分析 API。 若要了解如何执行此操作，请参阅[使用 Python 通过标签进行训练](./python-labeled-data.md)。
