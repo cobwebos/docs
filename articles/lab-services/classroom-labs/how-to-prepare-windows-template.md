@@ -10,12 +10,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: enewman
-ms.openlocfilehash: c1aaf588f61b329fa3b838b8a92f3e287897315b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ed2a506fc4446f78685c6cd6ae9dec2b65e1743
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80521190"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83119291"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>在 Azure 实验室服务中设置 Windows 模板计算机的指南
 
@@ -32,7 +32,7 @@ ms.locfileid: "80521190"
 
 若要手动下载和安装 OneDrive，请参阅[onedrive](https://onedrive.live.com/about/download/)或[onedrive for](https://onedrive.live.com/about/business/) business 下载页。
 
-你还可以使用以下 PowerShell 脚本。  它将自动下载并安装最新版本的 OneDrive。  安装 OneDrive 客户端后，运行安装程序。  在我们的示例中，我们`/allUsers`使用开关为计算机上的所有用户安装 OneDrive。 我们还使用`/silent`开关以无提示方式安装 OneDrive。
+你还可以使用以下 PowerShell 脚本。  它将自动下载并安装最新版本的 OneDrive。  安装 OneDrive 客户端后，运行安装程序。  在我们的示例中，我们使用 `/allUsers` 开关为计算机上的所有用户安装 OneDrive。 我们还使用 `/silent` 开关以无提示方式安装 OneDrive。
 
 ```powershell
 Write-Host "Downloading OneDrive Client..."
@@ -136,9 +136,9 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive\DiskSpaceChec
 如果你的模板计算机需要 Office，则建议通过[Office 部署工具（ODT）](https://www.microsoft.com/download/details.aspx?id=49117 )安装 office。 你将需要使用[office 365 客户端配置服务](https://config.office.com/)创建一个可重用的配置文件，以选择哪些体系结构、需要从 Office 了解哪些功能以及更新的频率。
 
 1. 请参阅[Office 365 客户端配置服务](https://config.office.com/)并下载你自己的配置文件。
-2. 下载[Office 部署工具](https://www.microsoft.com/download/details.aspx?id=49117)。  下载的文件将`setup.exe`是。
-3. 运行`setup.exe /download configuration.xml`下载 Office 组件。
-4. 运行`setup.exe /configure configuration.xml`以安装 Office 组件。
+2. 下载[Office 部署工具](https://www.microsoft.com/download/details.aspx?id=49117)。  下载的文件将是 `setup.exe` 。
+3. 运行 `setup.exe /download configuration.xml` 下载 Office 组件。
+4. 运行 `setup.exe /configure configuration.xml` 以安装 Office 组件。
 
 ### <a name="change-the-microsoft-office-365-update-channel"></a>更改 Microsoft Office 365 更新通道
 
@@ -211,11 +211,11 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AU"
 2. 搜索 "语言包"
 3. 选择要安装的语言
 
-如果你已登录到模板 VM，请使用["安装语言包" 快捷方式](ms-settings:regionlanguage?activationSource=SMC-IA-4027670)直接跳到相应的 "设置" 页。
+如果你已登录到模板 VM，请使用 "安装语言包" 快捷方式（ `ms-settings:regionlanguage?activationSource=SMC-IA-4027670` ）直接前往适当的设置页面。
 
 ## <a name="remove-unneeded-built-in-apps"></a>删除不需要的内置应用
 
-Windows 10 附带了许多内置的应用程序，这些应用程序可能不是您的特定类所必需的。 若要简化学生的计算机映像，可能需要从模板计算机中卸载某些应用程序。  若要查看已安装应用程序的列表，请`Get-AppxPackage`使用 PowerShell cmdlet。  下面的示例显示了可以删除的所有已安装的应用程序。
+Windows 10 附带了许多内置的应用程序，这些应用程序可能不是您的特定类所必需的。 若要简化学生的计算机映像，可能需要从模板计算机中卸载某些应用程序。  若要查看已安装应用程序的列表，请使用 PowerShell `Get-AppxPackage` cmdlet。  下面的示例显示了可以删除的所有已安装的应用程序。
 
 ```powershell
 Get-AppxPackage | Where {$_.NonRemovable -eq $false} | select Name
@@ -231,7 +231,7 @@ Get-AppxPackage -Name *xbox* | foreach { if (-not $_.NonRemovable) { Remove-Appx
 
 安装通常用于通过 Windows 应用商店应用进行教学的其他应用。 建议包括应用程序，如[Microsoft 白板应用](https://www.microsoft.com/store/productId/9MSPC6MP8FM4)、 [Microsoft 团队](https://www.microsoft.com/store/productId/9MSPC6MP8FM4)和[Minecraft 教育版](https://education.minecraft.net/)。 必须通过 Windows 应用商店或模板 VM 上各自的网站手动安装这些应用程序。
 
-## <a name="conclusion"></a>结束语
+## <a name="conclusion"></a>结论
 
 本文介绍了为有效类准备 Windows 模板 VM 的可选步骤。  步骤包括安装 OneDrive 和安装 Office 365、安装 Windows 更新和安装 Microsoft Store 应用的更新。  还介绍了如何设置最适合你的类的计划的更新。  
 

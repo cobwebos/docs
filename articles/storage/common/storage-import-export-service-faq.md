@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 03/12/2020
+ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 904f93aa705a4e327f29bbec109bdf3b937f6c70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c8af4cafb2c7ab4d39a591f5972803161c2aa0f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80519480"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120379"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure 导入/导出服务：常见问题解答
 
@@ -109,7 +109,7 @@ ms.locfileid: "80519480"
 
 要求取决于特定的 Azure 数据中心限制。
 
-- 有一些站点（如澳大利亚、德国和英国南部）需要出于安全原因在包裹上写入 Microsoft datacenter Inbound ID 号。 将驱动器或磁盘寄送到数据中心之前，请联系 Azure DataBox Operationsadbops@microsoft.com（）获取此号码。 如果没有此编号，将拒绝包。
+- 有一些站点（如澳大利亚、德国和英国南部）需要出于安全原因在包裹上写入 Microsoft datacenter Inbound ID 号。 将驱动器或磁盘寄送到数据中心之前，请联系 Azure DataBox Operations （ adbops@microsoft.com ）获取此号码。 如果没有此编号，将拒绝包。
 - 印度数据中心需要驱动程序的个人详细信息，例如政府 ID 卡或证明不需要。 （例如，PAN、AADHAR、DL）、name、contact 和 car 盘子编号，用于获取入口经历。 若要避免交付延迟，请向您的运营商通知这些要求。
 
 ### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>创建作业时，寄送地址是一个不同于存储帐户位置的位置。   应采取何种操作？
@@ -128,7 +128,7 @@ Azure 数据中心会将不符合支持要求的驱动器返还给你。 如果�
 
 ### <a name="does-the-service-format-the-drives-before-returning-them"></a>该服务是否会在返还驱动器之前将其格式化？
 
-不能。 所有驱动器都使用 BitLocker 加密。
+不是。 所有驱动器都使用 BitLocker 加密。
 
 ### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>如何才能访问此服务导入的数据？
 
@@ -144,7 +144,7 @@ Azure 数据中心会将不符合支持要求的驱动器返还给你。 如果�
 
 ### <a name="is-the-waimportexport-tool-compatible-with-32-bit-operating-systems"></a>WAImportExport 工具是否与 32 位操作系统兼容？
 
-不能。 WAImportExport 工具仅兼容 64 位 Windows 操作系统。 有关受支持的 OS 的完整列表，请转到[受支持的操作系统](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements)。
+不是。 WAImportExport 工具仅兼容 64 位 Windows 操作系统。 有关受支持的 OS 的完整列表，请转到[受支持的操作系统](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements)。
 
 ### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Azure 导入/导出支持的最大块 Blob 和页 Blob 大小是多少？
 
@@ -153,7 +153,7 @@ Azure 数据中心会将不符合支持要求的驱动器返还给你。 如果�
 
 ### <a name="does-azure-importexport-support-aes-256-encryption"></a>Azure 导入/导出是否支持 AES-256 加密？
 
-不能。 Azure 导入/导出服务使用 AES-128 BitLocker 加密。
+是的。 Azure 导入/导出服务使用 AES-256 BitLocker 加密。
 
 ## <a name="next-steps"></a>后续步骤
 

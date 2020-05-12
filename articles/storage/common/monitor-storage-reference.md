@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/01/2020
 ms.author: normesta
 ms.subservice: logs
-ms.openlocfilehash: ba268e623a2858c2863ffc86eacfe25284a1e37a
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 7ba66441a87e3e02483ae27400f9900d2d052af4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82722955"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118152"
 ---
 # <a name="azure-storage-monitoring-data-reference"></a>Azure 存储监视数据引用
 
@@ -135,14 +135,14 @@ Azure 存储支持对 Azure Monitor 中的指标使用以下维度。
 |**operationName** | 执行的 REST 操作的类型。 <br> 有关操作的完整列表，请参阅[存储分析记录的操作和状态消息主题](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。 |
 |**operationVersion** | 发出请求时指定的存储服务版本。 这等效于**x-ms 版本**标头的值。 例如：`2017-04-17`。|
 |**schemaVersion** | 日志的架构版本。 例如：`1.0`。|
-|**statusCode** | 请求的 HTTP 状态代码。 如果请求中断，此值可能会设置为`Unknown`。 <br> 例如： `206` |
-|**statusText** | 所请求操作的状态。  有关状态消息的完整列表，请参阅[存储分析记录的操作和状态消息主题](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。 在版本2017-04-17 及更高版本中， `ClientOtherError`不使用状态消息。 相反，此字段包含错误代码。 例如： `SASSuccess`  |
+|**statusCode** | 请求的 HTTP 状态代码。 如果请求中断，此值可能会设置为 `Unknown` 。 <br> 例如： `206` |
+|**statusText** | 所请求操作的状态。  有关状态消息的完整列表，请参阅[存储分析记录的操作和状态消息主题](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。 在版本2017-04-17 及更高版本中， `ClientOtherError` 不使用状态消息。 相反，此字段包含错误代码。 例如： `SASSuccess`  |
 |**durationMs** | 执行所请求操作的总时间（以毫秒为单位）。 这包括读取传入请求和向请求者发送响应的时间。 例如：`12`。|
 |**callerIpAddress** | 请求者的 IP 地址，包括端口号。 例如：`192.100.0.102:4362`。 |
 |**correlationId** | 用于跨资源关联日志的 ID。 例如：`b99ba45e-a01e-0042-4ea6-772bbb000000`。 |
 |**location** | 存储帐户的位置。 例如：`North Europe`。 |
-|**protocol**|操作中使用的协议。 例如： `HTTP`、 `HTTPS`、或`SMB``NFS`|
-| **oma-uri** | 请求的统一资源标识符。 例如：http://myaccountname.blob.core.windows.net/cont1/blobname?timeout=10。 |
+|**protocol**|操作中使用的协议。 例如： `HTTP` 、 `HTTPS` 、 `SMB` 或`NFS`|
+| **uri** | 请求的统一资源标识符。 例如：`http://myaccountname.blob.core.windows.net/cont1/blobname?timeout=10`。 |
 
 ### <a name="fields-that-describe-how-the-operation-was-authenticated"></a>描述如何对操作进行身份验证的字段
 
@@ -177,7 +177,7 @@ Azure 存储支持对 Azure Monitor 中的指标使用以下维度。
 
 | 属性 | 说明 |
 |:--- |:---|
-|**标识/类型** | 用于发出请求的身份验证类型。 例如： `OAuth`、 `SAS Key`、或`Account Key``Anonymous` |
+|**标识/类型** | 用于发出请求的身份验证类型。 例如： `OAuth` 、 `SAS Key` 、 `Account Key` 或`Anonymous` |
 |**identity/tokenHash**|此字段保留为仅供内部使用。 |
 |**授权/操作** | 分配给请求的操作。 例如： `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` |
 |**authorization/roleAssignmentId** | 角色分配 ID。 例如：`4e2521b7-13be-4363-aeda-111111111111`。|
@@ -240,7 +240,7 @@ Azure 存储支持对 Azure Monitor 中的指标使用以下维度。
 |**etag** | 所返回对象的 ETag 标识符（用引号引起）。 例如：`0x8D101F7E4B662C4`。  |
 |**Azurestoragelog.serverlatencyms** | 执行请求的操作所用的总时间（以毫秒为单位）。 此值不包括网络延迟（读取传入请求和向请求者发送响应的时间）。 例如：`22`。 |
 |**serviceType** | 与此请求关联的服务。 例如：`blob`、`table`、`files` 或 `queue`。 |
-|**operationCount** | 请求中涉及的每个记录的操作的数目。 此计数从的`0`索引开始。 某些请求需要多个操作，如复制 blob 的请求。 大多数请求仅执行一个操作。 例如：`1`。 |
+|**operationCount** | 请求中涉及的每个记录的操作的数目。 此计数从的索引开始 `0` 。 某些请求需要多个操作，如复制 blob 的请求。 大多数请求仅执行一个操作。 例如：`1`。 |
 |**requestHeaderSize** | 以字节表示的请求标头的大小。 例如：`578`。 <br>如果请求失败，此值可能为空。 |
 |**requestBodySize** | 存储服务读取的请求数据包的大小（以字节为单位）。 <br> 例如：`0`。 <br>如果请求失败，此值可能为空。  |
 |**responseHeaderSize** | 以字节表示的响应标头的大小。 例如：`216`。 <br>如果请求失败，此值可能为空。  |

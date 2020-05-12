@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: b712148b9e619cbf5c6886bf0510b4015183d018
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: 4287bd766d73d7fae42aec54950ad5a3f09b5ba3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82883324"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120413"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Azure Blob 存储中的更改源支持（预览版）
 
@@ -36,6 +36,8 @@ ms.locfileid: "82883324"
   - 生成解决方案来备份、镜像或复制帐户中的对象状态，以满足灾难管理或合规性要求。
 
   - 生成连接的应用程序管道，以便根据创建的或更改的对象来响应更改事件或计划执行。
+  
+更改源是适用于[块 blob 的时间点还原](point-in-time-restore-overview.md)的先决条件功能。
 
 > [!NOTE]
 > 更改源提供一个持久且有序的日志模型来记录发生在 Blob 中的更改。 在发生更改后的几分钟内，这些更改就会写入并出现在更改源日志中。 如果应用程序必须以比这快得多的速度对事件做出反应，请考虑改用 [Blob 存储事件](storage-blob-event-overview.md)。 [Blob 存储事件](storage-blob-event-overview.md)提供实时的一次性事件，使 Azure Functions 或应用程序能够快速对 Blob 中发生的更改做出反应。 
@@ -55,7 +57,7 @@ ms.locfileid: "82883324"
 - 只有 GPv2 和 Blob 存储帐户可以启用更改源。 目前不支持高级 BlockBlobStorage 帐户和已启用分层命名空间的帐户。 不支持 GPv1 存储帐户，但可以在不停机的情况下将其升级到 GPv2。有关详细信息，请参阅[升级到 GPv2 存储帐户](../common/storage-account-upgrade.md)。
 
 > [!IMPORTANT]
-> 更改源以公共预览版提供，并在**westcentralus**和**westus2**区域中提供。 请参阅本文的 "[条件](#conditions)" 一节。 若要注册预览版，请参阅本文的[注册订阅](#register)部分。 必须先注册你的订阅，然后才能在存储帐户上启用更改源。
+> 更改源以公共预览版提供，在**美国西部**、**美国西部 2**、**法国中部**、**法国南部**、**加拿大中部**和**加拿大东部**区域提供。 请参阅本文的 "[条件](#conditions)" 一节。 若要注册预览版，请参阅本文的[注册订阅](#register)部分。 必须先注册你的订阅，然后才能在存储帐户上启用更改源。
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -209,6 +211,12 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 
 更改源文件以[追加 Blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) 的形式存储在 `$blobchangefeed/log/` 虚拟目录中。 每个路径下的第一个更改源文件的文件名包含 `00000`（例如 `00000.avro`）。 添加到该路径的每个后续日志文件的名称编号将递增 1（例如：`00001.avro`）。
 
+更改源记录中捕获以下事件类型：
+- BlobCreated
+- BlobDeleted
+- BlobPropertiesUpdated
+- BlobSnapshotCreated
+
 下面是更改源文件中已转换为 JSON 的更改事件记录的示例。
 
 ```json
@@ -238,7 +246,7 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 }
 ```
 
-有关每个属性的说明，请参阅 [Blob 存储的 Azure 事件网格事件架构](https://docs.microsoft.com/azure/event-grid/event-schema-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#event-properties)。
+有关每个属性的说明，请参阅 [Blob 存储的 Azure 事件网格事件架构](https://docs.microsoft.com/azure/event-grid/event-schema-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#event-properties)。 BlobPropertiesUpdated 和 BlobSnapshotCreated 事件当前独占更改源，但尚不支持 Blob 存储事件。
 
 > [!NOTE]
 > 创建某个段后，该段的更改源文件不会立即显示。 延迟时长处于正常的更改源发布延迟间隔范围内，而该间隔为更改后的几分钟内。
@@ -310,13 +318,13 @@ az provider register --namespace 'Microsoft.Storage'
 ## <a name="conditions-and-known-issues-preview"></a>条件和已知问题（预览版）
 
 本部分介绍当前的更改源公共预览版中的已知问题和条件。 
-- 对于预览版，必须先[注册订阅](#register)，然后才能在 westcentralus 或 westus2 区域中为存储帐户启用更改源。 
-- 更改源只捕获创建、更新、删除和复制操作。 预览版目前不会捕获元数据更新。
+- 对于预览版，你必须先[注册你的订阅](#register)，然后才能在美国西部、美国西部2、法国中部、法国南部、加拿大中部和加拿大东部区域为你的存储帐户启用更改源。 
+- 更改源只捕获创建、更新、删除和复制操作。 还会捕获 Blob 属性和元数据更改。 但当前未捕获访问层属性。 
 - 任何一项更改的更改事件记录可能会在更改源中出现多次。
-- 暂时无法通过对更改源日志文件设置基于时间的保留策略来管理其生存期，且无法删除 Blob 
+- 你还不能通过设置基于时间的保留策略来管理更改源日志文件的生存期，并且无法删除 blob。
 - 日志文件的 `url` 属性目前始终是空的。
 - segments.json 文件的 `LastConsumable` 属性不会列出更改源最终处理的第一个段。 此问题只会在对第一个段进行最终处理之后才出现。 第一个小时之后的所有后续段会准确捕获到 `LastConsumable` 属性中。
-- 目前，在调用 ListContainers API 时看不到 $blobchangefeed 容器，且在 Azure 门户或存储资源管理器中也看不到该容器 
+- 当你调用 ListContainers API 时，你当前无法看到 **$blobchangefeed**容器，并且容器未显示在 Azure 门户或存储资源管理器上。 可以通过直接在 $blobchangefeed 容器上调用 ListBlobs API 来查看内容。
 - 以前启动了[帐户故障转移](../common/storage-disaster-recovery-guidance.md)的存储帐户可能会出现不显示日志文件的问题。 在预览期，将来的任何帐户故障转移也可能会影响日志文件。
 
 ## <a name="faq"></a>常见问题

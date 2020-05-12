@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: spelluru
-ms.openlocfilehash: 9e53b6bdb041bfac5a82ed607b75b25ab0513f57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d8f2c747a4bc0ab2119c92e61188e3c57f2b212
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187998"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118356"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>在 Azure 实验室服务中将实验室的网络与对等虚拟网络连接
 
@@ -48,7 +48,7 @@ ms.locfileid: "82187998"
 
 还可以选择为实验室提供虚拟机的**地址范围**。  "**地址范围**" 属性仅适用于为实验室启用了**对等互连虚拟网络**的情况。  如果提供了地址范围，则将在该地址范围内创建实验室帐户下的实验室中的所有虚拟机。 地址范围应为 CIDR 表示法（例如 10.20.0.0/20），且不与任何现有地址范围重叠。  提供地址范围时，请考虑要创建的*实验室*数量，并提供一个地址范围来满足这一点。 实验室服务每个实验室最多假设有512的虚拟机。  例如，使用 "/23" 的 ip 范围只能创建一个实验室。  具有 "/21" 的范围将允许创建四个实验室。
 
-如果未指定**地址范围**，则在创建要与虚拟网络对等互连的虚拟网络时，实验室服务将使用 Azure 提供的默认地址范围。  范围通常类似于 .0/16。  这可能会导致 ip 范围重叠，因此请确保在实验室设置中指定和寻址范围，或检查要对等互连的虚拟网络的地址范围。
+如果未指定**地址范围**，则在创建要与虚拟网络对等互连的虚拟网络时，实验室服务将使用 Azure 提供的默认地址范围。  范围通常类似于 .0/16。  这可能会导致 ip 范围重叠，因此请确保在实验室设置中指定地址范围，或检查要对等互连的虚拟网络的地址范围。
 
 ## <a name="configure-after-the-lab-is-created"></a>创建实验室后进行配置
 

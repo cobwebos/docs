@@ -11,24 +11,28 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/24/2020
+ms.date: 05/08/2020
 ms.author: spelluru
-ms.openlocfilehash: 00dbef7b4453ffcb54020340bde51f55827759a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce79674462f82e05cc07e9e470cb82ff8e47f672
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79284312"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118475"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>在 Azure 实验室服务中附加或分离共享映像库
-教师/实验室管理员可以在 Azure[共享映像库](../../virtual-machines/windows/shared-image-galleries.md)中保存模板 VM 映像，使其可供其他人重复使用。 作为第一步，实验室管理员将现有的共享映像库附加到实验室帐户。 附加共享映像库后，在实验室帐户中创建的实验室可以将映像保存到共享映像库。 其他教师可以从共享图像库中选择此映像，以创建其类的模板。 
-
-将映像保存到共享映像库时，Azure 实验室服务会将已保存的映像复制到相同[地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中可用的其他区域。 它确保映像可用于在同一地理区域中的其他区域创建的实验室。 将映像保存到共享映像库会产生额外的费用，其中包括所有复制映像的成本。 此成本不同于 Azure 实验室服务的使用成本。 有关共享映像库定价的详细信息，请参阅[共享图像库–计费]( https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#billing)。
-
 本文介绍如何将共享映像库附加到实验室帐户或将其分离。 
 
-> [!NOTE]
-> 目前，Azure 实验室服务仅支持创建基于共享映像库中的**一般化**VM 映像（而非专用映像）的模板 vm。 
+## <a name="scenarios"></a>方案
+此功能支持以下两种方案： 
+
+- 实验室帐户管理员将共享映像库附加到实验室帐户，并将图像上传到实验室上下文外部的共享映像库。 然后，实验室创建者可以使用共享映像库中的映像创建实验室。 
+- 实验室帐户管理员将共享的映像库附加到实验室帐户。 实验室创建者（讲师）将其实验室的自定义映像保存到共享映像库。 然后，其他实验室创建者可以从共享图像库中选择此映像，为其实验室创建模板。 
+
+    将映像保存到共享映像库时，Azure 实验室服务会将已保存的映像复制到相同[地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中可用的其他区域。 它确保映像可用于在同一地理区域中的其他区域创建的实验室。 将映像保存到共享映像库会产生额外的费用，其中包括所有复制映像的成本。 此成本不同于 Azure 实验室服务的使用成本。 有关共享映像库定价的详细信息，请参阅[共享图像库–计费]( https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#billing)。
+
+    > [!NOTE]
+    > Azure 实验室服务支持基于共享映像库中的**通用**映像和**专用**映像创建模板 vm。 
 
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>创建实验室帐户时进行配置
@@ -45,7 +49,7 @@ ms.locfileid: "79284312"
 
 ## <a name="create-and-attach-a-shared-image-gallery"></a>创建和附加共享映像库
 1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 在左侧菜单中，选择“所有服务”****。 在“DEVOPS”部分中，选择“实验室服务”********。 如果选择“实验室服务”旁边的星星 (`*`)，则会将其添加到左侧菜单上的“收藏夹”部分。******** 从下次开始，请在“收藏夹”下选择“实验室服务”。********
+2. 在左侧菜单中选择 "**所有服务**"。 在“DEVOPS”部分中，选择“实验室服务”********。 如果选择“实验室服务”旁边的星星 (`*`)，则会将其添加到左侧菜单上的“收藏夹”部分。******** 从下次开始，请在“收藏夹”下选择“实验室服务”。********
 
     ![“所有服务”->“实验室服务”](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
 3. 选择实验室帐户以查看 "**实验室帐户**" 页。 

@@ -4,12 +4,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI�
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: 17778c367eb731a7e41f5017c3ae630dc152454e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 592376c1ff1686429d71496099f55c5009e07f20
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207490"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120923"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI 网络
 
@@ -67,7 +67,9 @@ AKS 群集中每个节点的最大 Pod 数为 250。 每个节点的默认** 最
 
 ### <a name="configure-maximum---new-clusters"></a>配置最大值 - 新群集
 
-只能在群集部署时配置每个节点的最大 Pod 数**。 如果使用 Azure CLI 或资源管理器模板进行部署，则可以设置每个节点的最大 Pod 数，最高可以设置为 250。
+在部署群集时，可以配置每个节点的最大 pod 数，也可以在添加新的节点池时配置。 如果使用 Azure CLI 或资源管理器模板进行部署，则可以设置每个节点的最大 Pod 数，最高可以设置为 250。
+
+如果在创建新节点池时没有指定 maxPods，则会收到 Azure CNI 的默认值30。
 
 强制执行每个节点最大 Pod 的最小值，以保证对于群集运行状况而言至关重要的系统 Pod 空间。 当且仅当每个节点池的配置有至少 30 个 Pod 的空间时，可以为每个节点的最大 Pod 数设置的最小值为 10。 例如，如果将每个节点的最大 Pod 数设置为最少 10 个，则要求每个单独的节点池至少有 3 个节点。 此要求也适用于创建的每个新节点池，因此，如果将每个节点的最大 Pod 数定义为 10，则后续添加的每个节点池必须至少有 3 个节点。
 
@@ -85,7 +87,7 @@ AKS 群集中每个节点的最大 Pod 数为 250。 每个节点的默认** 最
 
 ### <a name="configure-maximum---existing-clusters"></a>配置最大值 - 现有群集
 
-无法在现有 AKS 群集上更改每个节点的最大 Pod 数。 只能在最初部署群集时调整数量。
+创建新的节点池时，可以定义 "每个节点 maxPod" 设置。 如果需要增加现有群集上每个节点的 maxPod 设置，请使用新的所需 maxPod 计数添加新的节点池。 将盒迁移到新池后，请删除旧的池。 若要删除群集中的任何较旧池，请确保设置的节点池模式为 [系统节点池文档[系统节点]池。
 
 ## <a name="deployment-parameters"></a>部署参数
 
@@ -143,13 +145,13 @@ az aks create \
 
 ![Azure 门户中的高级网络配置][portal-01-networking-advanced]
 
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 
 以下问题和解答适用于 **Azure CNI** 网络配置。
 
 * 是否可以在群集子网中部署 VM？**
 
-  不能。 不支持在 Kubernetes 群集使用的子网中部署 VM。 可将 VM 部署在同一虚拟网络中，但必须部署在不同的子网中。
+  不是。 不支持在 Kubernetes 群集使用的子网中部署 VM。 可将 VM 部署在同一虚拟网络中，但必须部署在不同的子网中。
 
 * *能否配置每个 pod 网络策略？*
 
@@ -212,3 +214,4 @@ az aks create \
 [network-policy]: use-network-policies.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [network-comparisons]: concepts-network.md#compare-network-models
+[系统节点池]: use-system-pools.md

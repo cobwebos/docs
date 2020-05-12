@@ -14,24 +14,28 @@ ms.topic: how-to
 ms.custom: mvc
 ms.date: 03/17/2020
 ms.author: spelluru
-ms.openlocfilehash: db1e60ccd7e05cb8b6923d6b2ec008cdfb76eaa1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ebda7ecec363abc1b58cdc3fc6c0799ca879adcc
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79501930"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118390"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>如何访问 Azure 实验室服务中的课堂实验室
 本文介绍如何注册到课堂实验室、查看可以访问的所有实验室、在实验室中启动/停止 VM 以及连接到 VM。 
 
 ## <a name="register-to-the-lab"></a>注册到实验室
 
-1. 导航到从教授/教师处收到的注册 URL****。 完成注册后，不需使用注册 URL。 请改用 URL： [https://labs.azure.com](https://labs.azure.com)。 目前尚不支持 Internet Explorer 11。 
+1. 导航到从教授/教师处收到的注册 URL****。 完成注册后，不需使用注册 URL。 请改用 URL： [https://labs.azure.com](https://labs.azure.com) 。 目前尚不支持 Internet Explorer 11。 
+
+    ![注册到实验室](../media/tutorial-connect-vm-in-classroom-lab/register-lab.png)
 1. 使用学校帐户登录服务以完成注册。 
 
     > [!NOTE]
     > 使用 Azure 实验室服务需要 Microsoft 帐户。 如果尝试使用非 Microsoft 帐户（例如 Yahoo 或 Google 帐户）登录到门户，请按照说明创建将链接到非 Microsoft 帐户的 Microsoft 帐户。 然后，按照步骤完成注册过程。 
 1. 注册后，请确认可看到你有权访问的实验室的虚拟机。 
+
+    ![可访问 Vm](../media/tutorial-connect-vm-in-classroom-lab/accessible-vms.png)
 1. 等到虚拟机准备就绪。 在“VM”磁贴上，请注意以下字段：
     1. 在磁贴的顶部，可以看到**实验室的名称**。
     1. 在其右侧，可以看到代表 VM 的**操作系统 (OS)** 的图标。 在此示例中，它是 Windows OS。 
@@ -60,7 +64,7 @@ ms.locfileid: "79501930"
     3. 对于 **Linux** 虚拟机，可以使用 **SSH** 或 **RDP**（如果已启用）连接到它们。 有关详细信息，请参阅[为 Linux 计算机启用远程桌面连接](how-to-enable-remote-desktop-linux.md)。 
     1. 如果使用 **Mac** 连接到实验室 VM，请按照下一部分中的说明进行操作。 
 
-## <a name="progress-bar"></a>进度栏 
+## <a name="progress-bar"></a>进度条 
 磁贴上的进度栏会显示对分配给你的[配额小时](how-to-configure-student-usage.md#set-quotas-for-users)数已使用的小时数。 此时间是在实验室的计划时间之外，额外分配给你的时间。 进度栏和进度栏下文本的颜色会根据以下情况而变化：
 
 - 如果课程正在进行（在课程计划内），则进度栏呈灰色显示，表示未使用配额小时数。 

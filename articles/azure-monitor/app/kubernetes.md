@@ -5,19 +5,18 @@ ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: 56a0cb66f5b54c817067970ab369d7ca471a1696
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c3b2b4e8868b73e22706c684d94371fe37885b9a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80132341"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83119243"
 ---
-# <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Kubernetes 托管应用程序的零检测应用程序监视
+# <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications-with-istio---deprecated"></a>使用 Istio 的 Kubernetes 托管应用程序监视零检测应用程序
 
 > [!IMPORTANT]
-> 此功能目前以公共预览版提供。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 此功能当前已被弃用，在2020年8月1日之后将不再受支持。
+> 当前推荐的版本仅适用于[Java 通过独立代理](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)。
 
 Azure Monitor 现在使用 Kubernetes 群集上的服务网格技术提供针对任何 Kubernetes 托管应用的现成应用程序监视。 默认的 Application Insight 功能包括用于为依赖项建模的[应用程序映射](../../azure-monitor/app/app-map.md)、用于实时监视的[实时指标流](../../azure-monitor/app/live-stream.md)，以及使用[默认仪表板](../../azure-monitor/app/overview-dashboard.md)、[指标资源管理器](../../azure-monitor/platform/metrics-getting-started.md)和[工作簿](../../azure-monitor/app/usage-workbooks.md)生成丰富的可视化效果。 此功能可帮助用户找出选定 Kubernetes 命名空间中所有 Kubernetes 工作负荷的性能瓶颈和故障热点。 Azure Monitor 可以通过 Istio 等技术将现有的服务网格投资变现，在不对应用程序代码进行任何修改的情况下实现自动检测的应用监视。
 
@@ -35,7 +34,7 @@ Azure Monitor 现在使用 Kubernetes 群集上的服务网格技术提供针对
 
 借助 Kubernetes 托管应用的零检测应用程序监视，可以使用：
 
-- [应用程序地图](../../azure-monitor/app/app-map.md)
+- [应用程序映射](../../azure-monitor/app/app-map.md)
 - [实时流指标](../../azure-monitor/app/live-stream.md)
 - [仪表板](../../azure-monitor/app/overview-dashboard.md)
 - [指标资源管理器](../../azure-monitor/platform/metrics-getting-started.md)
@@ -127,11 +126,11 @@ kubectl label namespace <my-app-namespace> istio-injection=enabled
    ```
    查看任何错误，尤其是与 *applicationinsightsadapter* 适配器通信相关的错误。
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>常见问题解答
 
 有关此项目的进度的最新信息，请访问[用于 Istio Mixer 项目的 Application Insights 适配器 GitHub](https://github.com/Microsoft/Application-Insights-Istio-Adapter/blob/master/SETUP.md#faq)。
 
-## <a name="uninstall"></a>卸载
+## <a name="uninstall"></a>“卸载”
 
 若要卸载此产品，请针对 *src/kubernetes/* 下的每个 YAML 文件运行：**
 

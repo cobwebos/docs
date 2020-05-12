@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/15/2020
 ms.author: nicolela
-ms.openlocfilehash: c499b7a0f1cd16bf57fef21742b01bda71249916
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3035b9debdd46c1a8ba246882312e28d1a2087e4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538773"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118424"
 ---
 # <a name="set-up-a-lab-to-big-data-analytics-using-docker-deployment-of-hortonworks-data-platform"></a>使用 HortonWorks 数据平台的 Docker 部署将实验室设置为大数据分析
 
@@ -102,7 +102,7 @@ ms.locfileid: "81538773"
 1. 部署并运行适用于 HDP 沙箱的 Docker 容器后，可以通过启动浏览器并按照 Cloudera 的说明打开[沙盒欢迎页面](https://www.cloudera.com/tutorials/learning-the-ropes-of-the-hdp-sandbox.html#welcome-page)并启动 HDP 仪表板来访问该环境。
 
     > [!NOTE] 
-    > 这些说明假定你已首先将沙盒环境的本地 IP 地址映射到模板 VM 上的主机文件中的 sandbox-hdp.hortonworks.com。  如果**未**执行此映射，则可以通过导航到来[http://localhost:8080](http://localhost:8080)访问沙盒欢迎页面。
+    > 这些说明假定你已首先将沙盒环境的本地 IP 地址映射到模板 VM 上的主机文件中的 sandbox-hdp.hortonworks.com。  如果**未**执行此映射，则可以通过导航到来访问沙盒欢迎页面 `http://localhost:8080` 。
 
 ### <a name="automatically-start-docker-containers-when-students-log-in"></a>学生登录时自动启动 Docker 容器
 
@@ -121,7 +121,7 @@ ms.locfileid: "81538773"
 
 有关定价的更多详细信息，请参阅[Azure 实验室服务定价](https://azure.microsoft.com/pricing/details/lab-services/)。
 
-## <a name="conclusion"></a>结束语
+## <a name="conclusion"></a>结论
 
 本文指导你完成使用部署了 Docker 的 Hortonworks 数据平台为大数据分析类创建实验室所需的步骤。  此类类型的设置可用于类似的数据分析类。  此设置还适用于其他类型的类，这些类使用 Docker 进行部署。
 

@@ -2,14 +2,14 @@
 title: 使用 Azure 门户创建 Durable Functions
 description: 了解如何针对门户开发安装 Azure Functions 的 Durable Functions 扩展。
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 04/10/2020
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 0060088acb100036c094406e01d0d736a4af88eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6416ae4aba8b045c6c4fb0fe6557bdcd1efb3a9b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75769636"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120128"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>使用 Azure 门户创建 Durable Functions
 
@@ -30,15 +30,17 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 
 ## <a name="install-the-durable-functions-npm-package-javascript-only"></a>安装 Durable Functions npm 程序包（仅限 JavaScript）
 
-如果要创建 JavaScript Durable Functions，需要安装 [`durable-functions` npm 程序包](https://www.npmjs.com/package/durable-functions)。
+如果要 Durable Functions 创建 JavaScript，则需要安装[ `durable-functions` npm 包](https://www.npmjs.com/package/durable-functions)：
 
-1. 选择你的函数应用的名称，然后依次选择“平台功能”和“高级工具(Kudu)”。  
+1. 在函数应用的页面上，选择左窗格中的 "**开发工具**" 下的 "**高级工具**"。
 
-   ![函数 平台功能 选择 Kudu](./media/durable-functions-create-portal/function-app-platform-features-choose-kudu.png)
+   :::image type="content" source="./media/durable-functions-create-portal/function-app-platform-features-choose-kudu.png" alt-text="函数 平台功能 选择 Kudu":::
 
-2. 在 Kudu 控制台中，选择“调试控制台”  ，然后选择“CMD”  。
+2. 在 "**高级工具**" 页上，选择 "**开始**"。
 
-   ![Kudu 调试控制台](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+3. 在 Kudu 控制台中，选择 "**调试控制台**"，然后选择 " **CMD**"。
+
+   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Kudu 调试控制台":::
 
 3. 此时应当会显示你的函数应用的文件目录结构。 导航到 `site/wwwroot` 文件夹。 在这里，可以通过将 `package.json` 文件拖放到文件目录窗口中来将其上传。 下面是一个示例 `package.json`：
 
@@ -50,7 +52,7 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
     }
     ```
 
-   ![Kudu 上传 package.json](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Kudu 上传 package.json":::
 
 4. 上传你的 `package.json` 后，从 Kudu 远程执行控制台中运行 `npm install` 命令。
 
@@ -58,29 +60,23 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 
 ## <a name="create-an-orchestrator-function"></a>创建一个业务流程协调程序函数
 
-1. 展开 Function App，单击“Functions”旁边的  **按钮+**  。 如果这是函数应用中的第一个函数，请依次选择“门户中”  、“继续”  。 否则，请转到第三步。
+1. 在 function app 中，从左窗格中选择 "**函数**"，然后从顶部菜单中选择 "**添加**"。 
 
-   ![Azure 门户中的 Functions 快速入门页](./media/durable-functions-create-portal/function-app-quickstart-choose-portal.png)
+1. 在 "**新建函数**" 页的 "搜索" 字段中，输入 `durable` ，然后选择 " **Durable Functions HTTP 初学者**模板"。
 
-1. 依次选择“更多模板”  、“完成并查看模板”  。
+   :::image type="content" source="./media/durable-functions-create-portal/durable-functions-http-starter-template.png" alt-text="选择 Durable Functions HTTP starter":::
 
-    ![Functions 快速入门选择更多模板](./media/durable-functions-create-portal/add-first-function.png)
+1. 对于**新的函数**名称，输入 `HttpStart` ，然后选择 "**创建函数**"。
 
-1. 在搜索字段中键入 `durable`，然后选择“Durable Functions HTTP 初学者”  模板。
+   创建的函数用于启动业务流程。
 
-1. 系统提示时，请选择“安装”  以在函数应用中安装 Azure DurableTask 扩展和任何依赖项。 对于给定的函数应用，只需安装该扩展一次。 安装成功后，选择“继续”  。
+1. 在函数应用中创建另一个函数，这次使用**Durable Functions orchestrator**模板。 将新的业务流程函数命名为 `HelloSequence`。
 
-    ![安装绑定扩展](./media/durable-functions-create-portal/install-durabletask-extension.png)
-
-1. 安装完成后，请将新函数命名为 `HttpStart`，然后选择“创建”。  创建的函数用于启动业务流程。
-
-1. 在函数应用中创建另一函数，这次使用 **Durable Functions 业务流程协调程序**模板。 将新的业务流程函数命名为 `HelloSequence`。
-
-1. 使用 `Hello`Durable Functions 活动**模板创建第三个函数，该函数名为** 。
+1. `Hello`使用**Durable Functions 活动**模板创建名为的第三个函数。
 
 ## <a name="test-the-durable-function-orchestration"></a>测试持久函数业务流程
 
-1. 回到 **HttpStart** 函数，选择“</> 获取函数 URL”  并**复制**此 URL。 请使用此 URL 启动 **HelloSequence** 函数。
+1. 返回到**HttpStart**函数，选择 "**获取函数 Url**"，并选择 "**复制到剪贴板**" 图标来复制 Url。 请使用此 URL 启动 **HelloSequence** 函数。
 
 1. 使用 HTTP 工具（例如 Postman 或 cURL）将 POST 请求发送到已复制的 URL。 以下示例是一个 cURL 命令，该命令将 POST 请求发送到持久函数：
 
@@ -112,7 +108,7 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
         }
     ```
 
-1. 继续调用 `statusQueryGetUri` 终结点，直到状态更改为“Completed”  ，此时会看到一个响应，如以下示例所示：
+1. 继续调用 `statusQueryGetUri` 终结点，直到状态更改为“Completed”****，此时会看到一个响应，如以下示例所示：
 
     ```json
     {

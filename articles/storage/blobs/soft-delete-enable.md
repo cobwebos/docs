@@ -1,26 +1,32 @@
 ---
-title: 为 blob 启用软删除
+title: 启用和管理 blob 的软删除
 titleSuffix: Azure Storage
 description: 为 blob 对象启用软删除，以便在错误地修改或删除数据时更轻松地恢复数据。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/02/2020
+ms.date: 05/11/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 26a16d0eeb81c12faede1c00bdf5a0d724f7a6c6
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: bbefa2a5d40d047d8885e4a0db8239d79a24feae
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82884678"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120090"
 ---
-# <a name="enable-soft-delete-for-blobs"></a>为 blob 启用软删除
+# <a name="enable-and-manage-soft-delete-for-blobs"></a>启用和管理 blob 的软删除
 
-以下步骤演示如何完成软删除入门。
+软删除可防止意外或错误地修改或删除 blob 数据。 为存储帐户启用软删除后，在指定的保持期内，在删除该存储帐户中的 blob、blob 版本（预览版）和快照之后，可以恢复这些 blob。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+如果某个应用程序或其他存储帐户用户可能无意中修改或删除了数据，则 Microsoft 建议启用软删除。
+
+本文介绍如何开始软删除。
+
+## <a name="enable-soft-delete"></a>启用软删除
+
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 使用 Azure 门户为存储帐户上的 Blob 启用软删除：
 
@@ -71,6 +77,7 @@ Set-AzContext -Subscription "<subscription-name>"
 $MatchingAccounts = Get-AzStorageAccount | where-object{$_.StorageAccountName -match "<matching-regex>"}
 $MatchingAccounts | Enable-AzStorageDeleteRetentionPolicy -RetentionDays 7
 ```
+
 可以使用以下命令验证是否启用了软删除：
 
 ```powershell
@@ -174,3 +181,7 @@ blockBlob.StartCopy(copySource);
 
 ---
 
+## <a name="next-steps"></a>后续步骤
+
+- [Blob 存储的软删除](soft-delete-overview.md)
+- [Blob 版本控制（预览）](versioning-overview.md)

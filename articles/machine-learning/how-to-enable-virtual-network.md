@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 05/10/2020
+ms.date: 05/11/2020
 ms.custom: contperfq4
-ms.openlocfilehash: 50c1d7e35b1c4e92664d810836fe1213183fbf83
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 5099cc2ce2228bcdbf49d3484e488e7373883ec0
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927337"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83119042"
 ---
 # <a name="secure-your-machine-learning-lifecycles-with-private-virtual-networks"></a>通过专用虚拟网络保护机器学习生命周期
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,8 +29,9 @@ ms.locfileid: "82927337"
 > - 自动机器学习的 UI
 > - 用于数据标记的 UI
 > - 数据集的 UI
+> - 笔记本
 > 
->  如果尝试执行此操作，将在从虚拟网络中的存储帐户可视化数据时收到错误，如下所示：`__Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.__`
+> 如果尝试，将收到类似于以下错误的消息：`__Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.__`
 
 ## <a name="what-is-a-vnet"></a>什么是 VNET？
 
@@ -56,7 +57,7 @@ Azure 机器学习依赖于其他 Azure 服务（也称为[计算目标](concept
 > [!TIP]
 > 你可以将虚拟网络和专用链接组合在一起，以保护你的工作区和其他 Azure 资源之间的通信。 但是，某些组合需要 Enterprise edition 工作区。 使用下表了解需要 Enterprise edition 的方案：
 >
-> | 方案 | 企业</br>edition | 基本</br>edition |
+> | 方案 | Enterprise</br>edition | 基本</br>edition |
 > | ----- |:-----:|:-----:| 
 > | 无虚拟网络或专用链接 | ✔ | ✔ |
 > | 无专用链接的工作区。 虚拟网络中的其他资源（Azure 容器注册表除外） | ✔ | ✔ |
@@ -133,8 +134,8 @@ Azure 机器学习依赖于其他 Azure 服务（也称为[计算目标](concept
 - 使用 NSG 规则拒绝出站 Internet 连接。
 
 - 对于__计算实例__或__计算群集__，请将出站流量限制为以下各项：
-   - Azure 存储，使用__RegionName__的__服务标记__。 其中`{RegionName}`是 Azure 区域的名称。
-   - Azure 容器注册表，使用__AzureContainerRegistry. RegionName__的__服务标记__。 其中`{RegionName}`是 Azure 区域的名称。
+   - Azure 存储，使用__RegionName__的__服务标记__。 其中 `{RegionName}` 是 Azure 区域的名称。
+   - Azure 容器注册表，使用__AzureContainerRegistry. RegionName__的__服务标记__。 其中 `{RegionName}` 是 Azure 区域的名称。
    - Azure 机器学习 - 使用 __AzureMachineLearning__ 的服务标记____
    - Azure 资源管理器，使用__AzureResourceManager__ __服务标记__
    - Azure Active Directory，使用__AzureActiveDirectory__的__服务标记__
@@ -176,7 +177,7 @@ Azure 机器学习依赖于其他 Azure 服务（也称为[计算目标](concept
 
 * 为资源所在区域中的 Azure Batch 服务使用的每个 IP 地址建立一个 UDR。 这些 UDR 使 Batch 服务能够与计算节点通信，以计划任务。 另外，请添加资源存在的 Azure 机器学习服务的 IP 地址，因为访问计算实例时需要此地址。 若要获取 Batch 服务和 Azure 机器学习服务的 IP 地址列表，请使用以下方法之一：
 
-    * 下载[AZURE IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)，并在文件中搜索`BatchNodeManagement.<region>`和`AzureMachineLearning.<region>`，其中`<region>`是你的 Azure 区域。
+    * 下载[AZURE IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)，并在文件中搜索 `BatchNodeManagement.<region>` 和 `AzureMachineLearning.<region>` ，其中 `<region>` 是你的 Azure 区域。
 
     * 使用 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 下载信息。 以下示例下载 IP 地址信息，并筛选出“美国东部 2”区域的信息：
 
@@ -201,7 +202,7 @@ Azure 机器学习依赖于其他 Azure 服务（也称为[计算目标](concept
 
 1. 选择左侧的“计算”  。
 
-1. 从中心选择 "__训练群集__"，然后选择__+__。
+1. 从中心选择 "__训练群集__"，然后选择 __+__ 。
 
 1. 在 "__新建定型群集__" 对话框中，展开 "__高级设置__" 部分。
 
@@ -288,7 +289,7 @@ except ComputeTargetException:
 >
 > 创建工作区时，会自动预配默认存储帐户。
 >
-> 对于非默认存储帐户，此`storage_account` [ `Workspace.create()`函数](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)中的参数允许你按 Azure 资源 ID 指定自定义存储帐户。
+> 对于非默认存储帐户，此 `storage_account` [ `Workspace.create()` 函数](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)中的参数允许你按 Azure 资源 ID 指定自定义存储帐户。
 
 
 <a id="aksvnet"></a>
@@ -309,7 +310,7 @@ except ComputeTargetException:
 
 1. 选择左侧的“计算”  。
 
-1. 从中心选择 "__推理群集__"，然后选择__+__。
+1. 从中心选择 "__推理群集__"，然后选择 __+__ 。
 
 1. 在 "__新建推理群集__" 对话框中，选择 "__网络配置__" 下的 "__高级__"。
 
@@ -406,7 +407,7 @@ __Azure CLI__
 az rest --method put --uri https://management.azure.com"/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-id>?api-version=2018-11-19 --body @body.json
 ```
 
-命令引用的`body.json`文件的内容类似于以下 JSON 文档：
+`body.json`命令引用的文件的内容类似于以下 JSON 文档：
 
 ```json
 { 
@@ -439,9 +440,9 @@ az rest --method put --uri https://management.azure.com"/subscriptions/<subscrip
 1. 若要在虚拟网络上启用子网委托，请使用 "[添加或删除子网委派" 一](../virtual-network/manage-subnet-delegation.md)文中的信息。 可以在创建虚拟网络时启用委派，或将其添加到现有网络。
 
     > [!IMPORTANT]
-    > 启用委派时，请`Microsoft.ContainerInstance/containerGroups`使用作为 "__委托子网到服务__" 值。
+    > 启用委派时，请使用 `Microsoft.ContainerInstance/containerGroups` 作为 "__委托子网到服务__" 值。
 
-2. 使用[Deploy_configuration AciWebservice （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-)部署模型，使用`vnet_name`和`subnet_name`参数。 将这些参数设置为启用了委派的虚拟网络名称和子网。
+2. 使用[Deploy_configuration AciWebservice （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-)部署模型，使用 `vnet_name` 和 `subnet_name` 参数。 将这些参数设置为启用了委派的虚拟网络名称和子网。
 
 ## <a name="azure-firewall"></a>Azure 防火墙
 
@@ -469,7 +470,7 @@ az rest --method put --uri https://management.azure.com"/subscriptions/<subscrip
 
     __Azure CLI__
 
-    如果已[为 Azure CLI 安装机器学习扩展](reference-azure-machine-learning-cli.md)，则可以使用`az ml workspace show`命令来显示工作区信息。
+    如果已[为 Azure CLI 安装机器学习扩展](reference-azure-machine-learning-cli.md)，则可以使用 `az ml workspace show` 命令来显示工作区信息。
 
     ```azurecli-interactive
     az ml workspace show -w yourworkspacename -g resourcegroupname --query 'containerRegistry'
@@ -558,7 +559,7 @@ Azure Data Lake Storage 第2代是一组功能，用于在 Azure Blob 存储基�
 
 在虚拟网络中将 Azure 机器学习与 Data Lake Storage Gen 2 一起使用时，请使用以下指南：
 
-* 如果使用__SDK 创建数据集__，并且运行代码的系统__不在虚拟网络中__，请使用`validate=False`参数。 此参数跳过验证，如果系统与存储帐户不在同一虚拟网络中，则会失败。 有关详细信息，请参阅[from_files （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-)方法。
+* 如果使用__SDK 创建数据集__，并且运行代码的系统__不在虚拟网络中__，请使用 `validate=False` 参数。 此参数跳过验证，如果系统与存储帐户不在同一虚拟网络中，则会失败。 有关详细信息，请参阅[from_files （）](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-)方法。
 
 * 使用 Azure 机器学习计算实例或计算群集来使用数据集来训练模型时，该数据集必须与存储帐户位于同一虚拟网络中。
 
@@ -607,7 +608,7 @@ Azure 机器学习使用与工作区关联的 Key Vault 实例来存储以下凭
 
 若要在工作区中使用虚拟网络中的虚拟机或 Azure HDInsight 群集，请执行以下步骤：
 
-1. 使用 Azure 门户或 Azure CLI 创建 VM 或 HDInsight 群集，并将群集放入 Azure 虚拟网络。 有关详细信息，请参阅以下文章：
+1. 使用 Azure 门户或 Azure CLI 创建 VM 或 HDInsight 群集，并将群集放入 Azure 虚拟网络。 有关详细信息，请参阅下列文章：
     * [创建和管理适用于 Linux Vm 的 Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
 
     * [使用 Azure 虚拟网络扩展 HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network)
