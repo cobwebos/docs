@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/20/2020
+ms.date: 05/10/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: dfa4d65464192b90d4a6f74255faaf8b664ce118
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e80d1a05765d224dc4682c6f64faccc8c81f8ebd
+ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767973"
+ms.lasthandoff: 05/11/2020
+ms.locfileid: "83007477"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
 
@@ -70,12 +70,11 @@ Blob API 和 Data Lake Storage Gen2 API 可以对相同的数据执行操作。
 
 ## <a name="lifecycle-management-policies"></a>生命周期管理策略
 
-* 尚不支持删除 Blob 快照的功能。  
+尚不支持删除 Blob 快照的功能。 
 
 ## <a name="archive-tier"></a>存档层
 
 当前有一个影响存档访问层的 bug。
-
 
 ## <a name="blobfuse"></a>Blobfuse
 
@@ -91,7 +90,7 @@ Blob API 和 Data Lake Storage Gen2 API 可以对相同的数据执行操作。
 
 ## <a name="azure-storage-explorer"></a>Azure 存储资源管理器
 
-仅使用或 `1.6.0` 更高版本。
+仅使用  `1.6.0`   或更高版本。
 
 <a id="explorer-in-portal" />
 
@@ -108,6 +107,39 @@ Blob API 和 Data Lake Storage Gen2 API 可以对相同的数据执行操作。
 ## <a name="access-control-lists-acl-and-anonymous-read-access"></a>访问控制列表（ACL）和匿名读取访问
 
 如果已将[匿名读取访问权限](storage-manage-access-to-resources.md)授予某个容器，则 acl 不会影响该容器或该容器中的文件。
+
+## <a name="premium-performance-block-blob-storage-accounts"></a>高级-性能块 blob 存储帐户
+
+### <a name="diagnostic-logs"></a>诊断日志
+
+尚未使用 Azure 门户启用诊断日志。 你可以使用 PowerShell 启用它们。 例如：
+
+```powershell
+#To login
+Connect-AzAccount
+
+#Set default block blob storage account.
+Set-AzCurrentStorageAccount -Name premiumGen2Account -ResourceGroupName PremiumGen2Group
+
+#Enable logging
+Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays 14
+```
+
+### <a name="lifecycle-management-policies"></a>生命周期管理策略
+
+- 高级块 blob 存储帐户中尚不支持生命周期管理策略。 
+
+- 不能将数据从 "高级" 层移到更低的层级。 
+
+- 当前不支持**删除 Blob**操作。 
+
+### <a name="hdinsight-support"></a>HDInsight 支持
+
+创建 n HDInsight 群集时，还无法选择在其上启用了分层命名空间功能的块 blob 存储帐户。 但是，在创建群集后，可以将该帐户附加到该群集。
+
+### <a name="dremio-support"></a>Dremio 支持
+
+Dremio 尚未连接到在其上启用了分层命名空间功能的块 blob 存储帐户。 
 
 ## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>Windows Azure 存储 Blob （WASB）驱动程序（不受 Data Lake Storage Gen2 支持）
 

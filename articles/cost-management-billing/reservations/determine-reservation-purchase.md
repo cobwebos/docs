@@ -5,20 +5,20 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/22/2020
+ms.date: 04/30/2020
 ms.author: banders
-ms.openlocfilehash: 1b639da3494c0527141347ca61e77980d29a59ea
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: feee7475dcadc6d06693d9e60020097f8dc9149c
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80135549"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628599"
 ---
 # <a name="determine-what-reservation-to-purchase"></a>确定要购买的预留项
 
 除 Azure Databricks 以外的所有预留项都是按小时应用的。 应该根据稳定的基本用量来购买预留项。 可按多种方式确定要购买的内容，本文将帮助你确定要购买的预留项。
 
-如果购买的容量超过以往的用量，会导致预留利用不足的情况。 应尽量避免利用不足的情况。 过去一小时未使用的预留容量不会转结到下一小时。  超过预留数量的用量将按照更高的即用即付费率收费。
+如果购买的容量超过以往的用量，会导致预留利用不足的情况。 应尽量避免利用不足的情况。 过去一小时未使用的预留容量不会转结到下一小时。 超过预留数量的用量将按照更高的即用即付费率收费。
 
 ## <a name="analyze-usage-data"></a>分析用量数据
 
@@ -40,11 +40,11 @@ ms.locfileid: "80135549"
 
 若要在实例大小系列级别进行分析，可以从 [https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv) 获取实例大小灵活性值。 将这些值与数据合并即可执行分析。 有关实例大小灵活性的详细信息，请参阅[虚拟机预留实例的虚拟机大小灵活性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)。
 
-### <a name="analyze-usage-for-a-sql-database-reserved-instance-purchase"></a>分析用量以确定要购买哪种 SQL 数据库预留实例
+### <a name="analyze-usage-for-an-azure-synapse-analytics-reserved-instance-purchase"></a>分析所购买的 Azure Synapse Analytics 预留实例的用量
 
-预留容量适用于 SQL 数据库 vCore 计算定价。 它不适用于基于 DTU 的定价、SQL 许可成本，或者除计算以外的任何成本。
+预留容量应用于 Azure Synapse Analytics DWU 定价。 它不应用于 Azure Synapse Analytics 许可成本，也不应用于除了计算以外的任何成本。
 
-若要缩小符合条件的 SQL 用量，请对用量数据应用以下筛选器：
+若要缩小符合条件的用量范围，请对用量数据应用以下筛选器：
 
 
 - 筛选“计量类别”以显示“SQL 数据库”。  
@@ -60,22 +60,22 @@ ms.locfileid: "80135549"
 - 代系。 例如“第 5 代”。
 - 资源位置
 
-### <a name="analysis-for-sql-data-warehouse"></a>SQL 数据仓库的分析
+### <a name="analysis-for-azure-synapse-analytics"></a>对 Azure Synapse Analytics 的分析
 
-预留容量适用于 SQL 数据仓库的 DWU 用量，以 100 个 DWU 为增量购买。 若要缩小符合条件的 SQL 用量，请对用量数据应用以下筛选器：
+预留容量应用于 Azure Synapse Analytics DWU 用量，以 100 个 DWU 为增量购买。 若要缩小符合条件的用量范围，请对用量数据应用以下筛选器：
 
 - 筛选“计量名称”以显示“100 个 DWU”。  
 - 筛选“计量子类别”以显示“第 2 代计算优化”。  
 
-使用“资源位置”字段确定区域中 SQL 数据仓库的用量。 
+使用“资源位置”字段确定某个区域中 Azure Synapse Analytics 的用量。 
 
-可以整天纵向扩展和缩减 SQL 数据仓库用量。 请咨询管理 SQL 数据仓库实例的团队来了解基本用量。
+Azure Synapse Analytics 用量在一天中可能会上下波动。 请咨询管理 Azure Synapse Analytics 实例的团队来了解基本用量。
 
-在 Azure 门户中转到“预留”，以 100 个 DWU 的倍数购买 SQL 数据仓库预留容量。
+在 Azure 门户中转到“预留”，以 100 个 DWU 的倍数购买 Azure Synapse Analytics 预留容量。
 
 ## <a name="reservation-purchase-recommendations"></a>预留项购买建议
 
-预留项购买建议是在分析过去 7 天、30 天和 60 天的每小时用量数据后计算出来的。 如果你购买了预留项，Azure 将会计算现有的成本，并将其与某个持续时间内的实际即用即付成本进行比较。 这种计算是针对该时间范围内使用的每个数量执行的。 Azure 会推荐一个可以最大程度地实现节省的数量。 
+预留项购买建议是在分析过去 7 天、30 天和 60 天的每小时用量数据后计算出来的。 如果你购买了预留项，Azure 将会计算现有的成本，并将其与某个持续时间内的实际即用即付成本进行比较。 这种计算是针对该时间范围内使用的每个数量执行的。 Azure 会推荐一个可以最大程度地实现节省的数量。
 
 例如，你可能在大多数时间使用 500 个 VM，偶尔会在高峰期使用 700 个 VM。 在此示例中，Azure 会计算使用 500 和 700 个 VM 可实现的节省。 由于使用 700 个 VM 是偶发性的，因此建议计算会确定为 500 个 VM 购买预留项可实现的最大节省，并针对数量 500 提供建议。
 

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 03/18/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 084b364f4a1414febb7b6f11c9cf70958ee823c4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f28b660a2afc97cf9faf0f601e247a97e99098cd
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82176663"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853362"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob 存储简介
 
@@ -65,7 +65,7 @@ Azure 存储支持三种类型的 Blob：
 
 存在许多用于将现有数据迁移到 Blob 存储的解决方案：
 
-- AzCopy 是一种易于使用的适用于 Windows 和 Linux 的命令行工具，可以跨容器或跨存储帐户将数据复制到 Blob 存储，以及从 Blob 存储复制数据  。 有关 AzCopy 的详细信息，请参阅[使用 AzCopy v10（预览版）传输数据](../common/storage-use-azcopy-v10.md)。
+- AzCopy 是一种易于使用的适用于 Windows 和 Linux 的命令行工具，可以跨容器或跨存储帐户将数据复制到 Blob 存储，以及从 Blob 存储复制数据  。 有关 AzCopy 的详细信息，请参阅[使用 AzCopy v10 传输数据](../common/storage-use-azcopy-v10.md)。
 - Azure 存储数据移动库是一个 .NET 库，用于在 Azure 存储服务之间移动数据  。 AzCopy 实用程序是使用数据移动库生成的。 有关详细信息，请参阅数据移动库的[参考文档](/dotnet/api/microsoft.azure.storage.datamovement)。
 - **Azure 数据工厂**支持使用 Azure 资源的帐户密钥、共享访问签名、服务主体或托管标识向/从 Blob 存储复制数据。 有关详细信息，请参阅[使用 Azure 数据工厂向/从 Azure Blob 存储复制数据](../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 - **Blobfuse** 是 Azure Blob 存储的虚拟文件系统驱动程序。 可以使用 Blobfuse 通过 Linux 文件系统访问存储帐户中的现有块 Blob 数据。 有关详细信息，请参阅[如何使用 Blobfuse 将 Blob 存储装载为文件系统](storage-how-to-mount-container-linux.md)。

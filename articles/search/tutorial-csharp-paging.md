@@ -1,21 +1,21 @@
 ---
 title: 有关搜索结果分页的 C# 教程
 titleSuffix: Azure Cognitive Search
-description: 本教程演示如何对搜索结果进行分页。 它基于现有的酒店项目，通过第一个、下一个、前一个、最后一个和编号按钮进行分页。 第二个分页系统使用无限滚动，它通过将垂直滚动条移到其下限进行触发。
+description: 将“分页”和“导航”按钮添加到搜索结果，并在现有酒店项目的基础上添加“第一页”、“下一页”、“上一页”、“最后一页”和“页号”按钮。 第二个分页系统使用无限滚动，它通过将垂直滚动条移到其下限进行触发。
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: 9abfeb54be6e22885b8e973034a6d89df8272146
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0dce3852d2b0489b373162fe754d745b01bd3074
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77121516"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780566"
 ---
-# <a name="c-tutorial-search-results-pagination---azure-cognitive-search"></a>C# 教程：搜索结果分页 - Azure 认知搜索
+# <a name="tutorial-add-paging-to-search-results-using-the-net-sdk"></a>教程：使用 .NET SDK 为搜索结果添加分页功能
 
 了解如何实现这两个不同的分页系统，其中第一个基于页码，第二个基于无限滚动。 这两个分页系统都得到广泛使用，请根据要用于结果的用户体验选择合适的系统。 本教程将分页系统构建到在 [C# 教程：创建第一个应用 - Azure 认知搜索](tutorial-csharp-create-first-app.md)教程中创建的项目。
 

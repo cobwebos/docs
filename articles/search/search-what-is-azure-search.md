@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 01/06/2020
-ms.openlocfilehash: fee7c8eb73fe0bb7c9fd0bd9de9aa57bd8c40215
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: df970ad31c3fd132f9081b90aa8877f0e29e195b
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77580645"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891558"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure 认知搜索是什么？
 
@@ -154,11 +154,6 @@ Azure 订户可以[在免费层中预配服务](search-create-service-portal.md)
 
 搜索引擎是在移动应用中、网站上和公司数据存储中检索信息时常用的驱动程序。 Azure 认知搜索提供了用于打造与大型商业网站上的搜索体验类似的搜索体验的工具。
 
-这段时长为 9 分钟的视频出自项目经理 Liam Cavanagh 之手，其中介绍了集成搜索引擎如何让应用受益。 简短的演示介绍了 Azure 认知搜索中的主要功能以及典型的工作流。 
+在这个 15 分钟的视频中，项目经理 Luis Cabrera 介绍了 Azure 认知搜索。 
 
->[!VIDEO https://channel9.msdn.com/Events/Connect/2016/138/player]
- 
-+ 0-3 分钟介绍了主要功能和用例。
-+ 3-4 分钟介绍了服务预配。 
-+ 4-6 分钟介绍了用来使用内置的房地产业数据集创建索引的“导入数据”向导。
-+ 6-9 分钟介绍了搜索浏览器和各种查询。
+>[!VIDEO https://www.youtube.com/embed/kOJU0YZodVk?version=3]

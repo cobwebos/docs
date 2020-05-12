@@ -4,12 +4,12 @@ description: 了解如何持续构建、测试和部署 Azure 资源管理器模
 ms.date: 04/22/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d1c56ce913a1b63bab90f5dd5aaada382abbf493
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: dacbdbcbebbbd696c14745e055ed9f7bd7905b1d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82084322"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731928"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>教程：使用 Azure Pipelines 持续集成 Azure 资源管理器模板
 
@@ -57,7 +57,7 @@ GitHub 用于存储项目源代码，包括资源管理器模板。 有关其他
 
 1. 选择“新建”（一个绿色的按钮）  。
 1. 在“存储库名称”中，输入存储库名称  。  例如，“AzureRmPipeline-repo”  。 请将任意“AzureRmPipeline”替换为自己的项目名称  。 可以选择“公共”或“专用”以完成本教程   。 然后，选择“创建存储库”  。
-1. 记下 URL。 存储库 URL 采用以下格式： https://github.com/ [YourAccountName]/[YourRepositoryName]  。
+1. 记下 URL。 存储库 URL 的格式为：`https://github.com/[YourAccountName]/[YourRepositoryName]` 。
 
 此存储库称为远程存储库  。 同一项目中的每个开发人员都可以克隆自己的本地存储库，并将更改合并到远程存储库  。
 
@@ -104,7 +104,7 @@ azuredeploy.json 已添加到本地存储库。 下一步，将模板上传到�
     ```
 
     可能会收到一条有关 LF 的警告。 可以忽略该警告。 “主干”表示主分支  。  通常，每次更新创建一个分支。 若要简化本教程，请直接使用主分支。
-1. 从浏览器浏览到 GitHub 存储库。  URL 为 https://github.com/ [YourAccountName]/[YourGitHubRepository]  。 应会看到 **CreateWebApp** 文件夹以及其中的三个文件。
+1. 从浏览器浏览到 GitHub 存储库。  该 URL 为 `https://github.com/[YourAccountName]/[YourGitHubRepository]` 。 应会看到 **CreateWebApp** 文件夹以及其中的三个文件。
 1. 选择“linkedStorageAccount.json”打开模板。 
 1. 选择“原始”按钮。  URL 以 **raw.githubusercontent.com** 开头。
 1. 复制 URL。  稍后在本教程中配置管道时需要提供此值。

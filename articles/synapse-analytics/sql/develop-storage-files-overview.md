@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2126996620d6f891dde4e7530c057d2c7f31a996
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 941fa8d2570d22b6c2a54de02a61b4a7ece2e632
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81676672"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691875"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>使用 SQL 按需版本（预览版）资源在 Synapse SQL 中查询存储文件
 
@@ -123,11 +123,15 @@ OPENROWSET(
 BULK N'path_to_file(s)', FORMAT='PARQUET');
 ```
 
+请确保使用[适当的推断数据类型](best-practices-sql-on-demand.md#check-inferred-data-types)以获得最佳性能。 
+
 ### <a name="filename-function"></a>Filename 函数
 
-此函数返回行的来源文件的名称。
+此函数返回行的来源文件的名称。 
 
 若要查询特定的文件，请阅读[查询特定文件](query-specific-files.md#filename)一文中的“Filename”部分。
+
+返回数据类型为 nvarchar(1024)。 为了获得最佳性能，请始终将 filename 函数的结果强制转换为适当的数据类型。 如果使用字符数据类型，请确保使用适当的长度。
 
 ### <a name="filepath-function"></a>Filepath 函数
 
@@ -137,6 +141,8 @@ BULK N'path_to_file(s)', FORMAT='PARQUET');
 - 如果在使用参数的情况下调用此函数，此函数将返回与该参数中指定的位置上的通配符相匹配的路径部分。 例如，参数值 1 将返回与第一个通配符匹配的路径部分。
 
 有关更多信息，请阅读[查询特定文件](query-specific-files.md#filepath)一文的“Filepath”部分。
+
+返回数据类型为 nvarchar(1024)。 为了获得最佳性能，请始终将 filepath 函数的结果强制转换为适当的数据类型。 如果使用字符数据类型，请确保使用适当的长度。
 
 ### <a name="work-with-complex-types-and-nested-or-repeated-data-structures"></a>处理复杂类型以及嵌套或重复的数据结构
 

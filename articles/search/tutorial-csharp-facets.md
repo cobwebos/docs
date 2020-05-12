@@ -1,21 +1,21 @@
 ---
 title: 有关使用分面辅助导航的 C# 教程
 titleSuffix: Azure Cognitive Search
-description: 本教程是在“搜索结果分页 - Azure 认知搜索”项目的基础上编写的，目的是添加分面导航。 了解如何使用分面来轻松缩小搜索范围。
+description: 从“分页结果”继续添加分面导航。 了解如何使用分面来轻松缩小搜索范围。
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: d88a9d7efdabd493fd31b961748bb6ad3bd8d738
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bc25ba6d95fe58a80c90881c6ad60cdb8801cce4
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77121570"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780583"
 ---
-# <a name="c-tutorial-use-facets-to-aid-navigation---azure-cognitive-search"></a>C# 教程：使用分面辅助导航 - Azure 认知搜索
+# <a name="tutorial-add-faceted-navigation-using-the-net-sdk"></a>教程：使用 .NET SDK 添加分面导航
 
 使用分面可为导航提供辅助，因为它能为用户提供一组链接，让他们专注于搜索。 分面是指数据的特性（例如，我们的示例数据中酒店的类别，即特定的特征）。
 

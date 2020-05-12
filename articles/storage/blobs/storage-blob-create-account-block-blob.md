@@ -5,25 +5,26 @@ author: tamram
 services: storage
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/23/2019
+ms.date: 05/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 6303644ada5c6f093611dba94daf8006f8cc5819
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4767c0310783e7e2cc51b4caa7d6e6a052d0a05a
+ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79536898"
+ms.lasthandoff: 05/11/2020
+ms.locfileid: "83007298"
 ---
 # <a name="create-a-blockblobstorage-account"></a>创建 BlockBlobStorage 帐户
 
 BlockBlobStorage 帐户类型允许创建具有高级性能特征的块 Blob。 此类存储帐户针对事务处理速率高或需要极快速访问的工作负载进行了优化。 本文介绍如何使用 Azure 门户、Azure CLI 或 Azure PowerShell 创建 BlockBlobStorage 帐户。
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+> [!NOTE]
+> 块 blob 存储帐户中的分层命名空间功能以公共预览版提供，可在美国东部、美国东部2、美国中部、美国中南部、美国西部2、英国南部、加拿大中部和澳大利亚东部地区获得。 若要查看限制，请参阅[Azure Data Lake Storage Gen2 中可用的 Blob 存储功能](data-lake-storage-supported-blob-storage-features.md)和[已知问题](data-lake-storage-known-issues.md)。 若要注册预览版，请参阅[此窗体](https://aka.ms/adlspremiumonboard)。
 
-有关 BlockBlobStorage 帐户的详细信息，请参阅 [Azure 存储帐户概述](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。
+有关 BlockBlobStorage 帐户的详细信息，请参阅[Azure 存储帐户概述](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
@@ -33,7 +34,7 @@ BlockBlobStorage 帐户类型允许创建具有高级性能特征的块 Blob。 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-本操作指南文章需要 Azure PowerShell 模块 Az 1.2.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找当前版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。
+本操作指南文章需要 Azure PowerShell 模块 Az version 1.2.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找当前版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -91,21 +92,21 @@ az login
 
 1. 在 Azure 门户中，选择 "**所有服务**" **> 存储 "** 类别 >**存储帐户**。
 
-1. 在 "**存储帐户**" 下，选择 "**添加**"。
+2. 在 "**存储帐户**" 下，选择 "**添加**"。
 
-1. 在 "**订阅**" 字段中，选择要在其中创建存储帐户的订阅。
+3. 在 "**订阅**" 字段中，选择要在其中创建存储帐户的订阅。
 
-1. 在 "**资源组**" 字段中，选择现有资源组，或选择 "**新建"，** 然后输入新资源组的名称。
+4. 在 "**资源组**" 字段中，选择现有资源组，或选择 "**新建"，** 然后输入新资源组的名称。
 
-1. 在 "**存储帐户名称**" 字段中，输入帐户的名称。 请注意以下准则：
+5. 在 "**存储帐户名称**" 字段中，输入帐户的名称。 请注意以下准则：
 
    - 该名称在 Azure 中必须唯一。
    - 名称长度必须介于3到24个字符之间。
    - 名称只能包含数字和小写字母。
 
-1. 在 "**位置**" 字段中，选择存储帐户的位置，或使用默认位置。
+6. 在 "**位置**" 字段中，选择存储帐户的位置，或使用默认位置。
 
-1. 对于其余设置，请配置以下各项：
+7. 对于其余设置，请配置以下各项：
 
    |字段     |值  |
    |---------|---------|
@@ -115,29 +116,38 @@ az login
 
    ![显示用于创建块 blob 存储帐户的门户 UI](media/storage-blob-create-account-block-blob/create-block-blob-storage-account.png)
 
-1. 选择 "查看" " **+ 创建**"，查看存储帐户设置。
+8. 选择“高级”选项卡****。
 
-1. 选择“创建”。 
+9. 如果要为数据分析优化存储帐户，请将 "**分层命名空间**" 设置为 "**已启用**"。 否则，请将此选项设置为默认值。
 
-## <a name="azure-powershell"></a>[Azure Powershell](#tab/azure-powershell)
+   若要了解详细信息，请参阅[Azure Data Lake Storage Gen2 简介](data-lake-storage-introduction.md)。
+
+   > [!NOTE]
+   > 块 blob 存储帐户中的分层命名空间功能以公共预览版提供，可在美国东部、美国东部2、美国中部、美国中南部、美国西部2、英国南部、加拿大中部和澳大利亚东部地区获得。 若要查看限制，请参阅[Azure Data Lake Storage Gen2 中可用的 Blob 存储功能](data-lake-storage-supported-blob-storage-features.md)和[已知问题](data-lake-storage-known-issues.md)。 若要注册预览版，请参阅[此窗体](https://aka.ms/adlspremiumonboard)。
+
+8. 选择 "查看" " **+ 创建**"，查看存储帐户设置。
+
+9. 选择“创建”  。
+
+## <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 1. 打开提升的 Windows PowerShell 会话（以管理员身份运行）。
 
-1. 运行以下命令，确保已安装最新版本的`Az` PowerShell 模块。
+2. 运行以下命令，确保已安装最新版本的 `Az` PowerShell 模块。
 
    ```powershell
    Install-Module -Name Az -AllowClobber
    ```
 
-1. 打开新的 PowerShell 控制台，并使用 Azure 帐户登录。
+3. 打开新的 PowerShell 控制台，并使用 Azure 帐户登录。
 
    ```powershell
    Connect-AzAccount -SubscriptionId <SubscriptionID>
    ```
 
-1. 如果需要，请创建新的资源组。 替换引号中的值，并运行以下命令。
+4. 如果需要，请创建新的资源组。 替换引号中的值，并运行以下命令。
 
    ```powershell
    $resourcegroup = "new_resource_group_name"
@@ -145,7 +155,7 @@ az login
    New-AzResourceGroup -Name $resourceGroup -Location $location
    ```
 
-1. 创建 BlockBlobStorage 帐户。 替换引号中的值，并运行以下命令。
+5. 创建 BlockBlobStorage 帐户。 替换引号中的值，并运行以下命令。
 
    ```powershell
    $resourcegroup = "resource_group_name"
@@ -154,6 +164,10 @@ az login
 
    New-AzStorageAccount -ResourceGroupName $resourcegroup -Name $storageaccount -Location $location -Kind "BlockBlobStorage" -SkuName "Premium_LRS"
    ```
+   如果要为数据分析优化存储帐户，请将添加 `-EnableHierarchicalNamespace $True` 到命令。 若要了解详细信息，请参阅[Azure Data Lake Storage Gen2 简介](data-lake-storage-introduction.md)。
+
+   > [!NOTE]
+   > 块 blob 存储帐户中的分层命名空间功能以公共预览版提供，可在美国东部、美国东部2、美国中部、美国中南部、美国西部2、英国南部、加拿大中部和澳大利亚东部地区获得。 若要查看限制，请参阅[Azure Data Lake Storage Gen2 中可用的 Blob 存储功能](data-lake-storage-supported-blob-storage-features.md)和[已知问题](data-lake-storage-known-issues.md)。 若要注册预览版，请参阅[此窗体](https://aka.ms/adlspremiumonboard)。
 
 ## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -165,7 +179,7 @@ az login
    az login
    ```
 
-1. 如果需要，请创建新的资源组。 替换括号中的值（包括括号），并运行以下命令。
+2. 如果需要，请创建新的资源组。 替换括号中的值（包括括号），并运行以下命令。
 
    ```azurecli
    az group create \
@@ -173,7 +187,7 @@ az login
     --location "<location>"
    ```
 
-1. 创建 BlockBlobStorage 帐户。 替换括号中的值（包括括号），并运行以下命令。
+3. 创建 BlockBlobStorage 帐户。 替换括号中的值（包括括号），并运行以下命令。
 
    ```azurecli
    az storage account create \
@@ -184,6 +198,11 @@ az login
     --sku "Premium_LRS"
    ```
 
+   如果要为数据分析优化存储帐户，请将添加 `--hierarchical-namespace true` 到命令。 若要了解详细信息，请参阅[Azure Data Lake Storage Gen2 简介](data-lake-storage-introduction.md)。
+
+   > [!NOTE]
+   > 块 blob 存储帐户中的分层命名空间功能以公共预览版提供，可在美国东部、美国东部2、美国中部、美国中南部、美国西部2、英国南部、加拿大中部和澳大利亚东部地区获得。 若要查看限制，请参阅[Azure Data Lake Storage Gen2 中可用的 Blob 存储功能](data-lake-storage-supported-blob-storage-features.md)和[已知问题](data-lake-storage-known-issues.md)。 若要注册预览版，请参阅[此窗体](https://aka.ms/adlspremiumonboard)。
+   
 ---
 
 ## <a name="next-steps"></a>后续步骤

@@ -6,14 +6,14 @@ ms.reviewer: adwise
 tags: billing
 ms.service: cost-management-billing
 ms.topic: reference
-ms.date: 04/01/2020
+ms.date: 05/04/2020
 ms.author: banders
-ms.openlocfilehash: a9e1d838e7d3322ddf218c5cbec40b652709b5d7
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 633ca5cd16b8e730225900c30c575e74a0956ada
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586382"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791674"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>使用 Azure 预算管理成本
 
@@ -273,7 +273,7 @@ ms.locfileid: "80586382"
 1. 将值设置为使用最后一节末尾的 ArmClient 创建的令牌  。
 1. 在 Postman 中选择“正文”选项卡  。
 1. 选择“原始”按钮选项  。
-1. 在文本框中，粘贴以下预算定义示例，但必须将 subscriptionID、budgetname 和 actiongroupname 参数替换为你的订阅 ID、预算的唯一名称，以及在 URL 和请求正文中创建的操作组名称    ：
+1. 在文本框中，粘贴以下示例预算定义，但必须将 `subscriptionID`、`resourcegroupname` 和 `actiongroupname` 参数替换为你的订阅 ID、资源组的唯一名称，以及在 URL 和请求正文中创建的操作组名称：
 
     ```
         {
