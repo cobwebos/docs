@@ -1,21 +1,21 @@
 ---
 title: 有关结果排序的 C# 教程
 titleSuffix: Azure Cognitive Search
-description: 本教程演示如何对搜索结果进行排序。 它基于之前的酒店项目，按主要属性和次要属性排序，并包含计分概要文件，以添加提升条件。
+description: 本 C# 教程演示如何对搜索结果排序。 它在前一个酒店项目的基础上编写，按主要属性和次要属性排序，并包含计分概要文件以添加提升条件。
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: 812085a5a4b3e8d1233f19c947d2fd5e433f6ab7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 699b3e5b7e51e12ec0bf39ec0c9045dd3a27a6fd
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77121550"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780600"
 ---
-# <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C# 教程：对结果排序 - Azure 认知搜索
+# <a name="tutorial-order-search-results-using-the-net-sdk"></a>教程：使用 .NET SDK 对搜索结果排序
 
 一直到本系列教程的此部分为止，结果都是按默认顺序返回并显示的。 这可以是数据所在的顺序，或者可能已定义了一个默认计分概要文件，将在未指定任何排序参数时使用该文件  。 在本教程中，我们将探讨如何根据主属性对结果排序，然后对于主属性相同的结果，如何根据辅助属性对所选结果进行排序。 除了根据数值进行排序，最后一个示例还介绍了如何根据自定义计分概要文件进行排序。 我们还将再深入一些探讨复杂类型的显示  。
 

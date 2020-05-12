@@ -1,21 +1,21 @@
 ---
-title: 自动完成和建议
+title: 有关自动完成和建议功能的 C# 教程
 titleSuffix: Azure Cognitive Search
-description: 本教程演示使用下拉列表收集用户的搜索词输入时的自动完成功能和建议。 它基于现有的酒店项目。
+description: 添加自动完成和建议功能，以便使用下拉列表从用户收集搜索词输入。 本教程在现有的酒店项目的基础上编写。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: 6b74c3bbb811c122950fd969a8797e87f8f77f86
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 63c098ccd42a438f8daab787afb54cf13cd053c3
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641077"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780549"
 ---
-# <a name="c-tutorial-add-autocomplete-and-suggestions---azure-cognitive-search"></a>C# 教程：添加自动完成和建议 - Azure 认知搜索
+# <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>教程：使用 .NET SDK 添加自动完成和建议功能
 
 了解如何在用户开始在搜索框中键入内容时实现自动完成功能（提前键入查询和建议的文档）。 在本教程中，我们先分别显示自动完成的查询和建议结果，然后将它们一起显示。 用户可能只需键入两个或三个字符就能找到所有可用的结果。
 

@@ -12,12 +12,12 @@ metadata:
   author: julieMSFT
   ms.author: jrasnick
   ms.date: 04/15/2020
-  ms.openlocfilehash: a2abb47c7f4f0f4ada47f923b1c1a722ef568841
-  ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+  ms.openlocfilehash: 23dfa368ae94cada2cd2150fb05a7a294b190860
+  ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/05/2020
-  ms.locfileid: "82793102"
+  ms.lasthandoff: 05/09/2020
+  ms.locfileid: "82996855"
 landingContent:
 - title: 关于 Azure Synapse Analytics（以前称为 Azure SQL 数据仓库）
   linkLists:
@@ -57,6 +57,8 @@ landingContent:
     links:
     - text: 使用 COPY 语句快速引入数据
       url: quickstart-bulk-load-copy-tsql.md
+    - text: COPY 语句示例
+      url: quickstart-bulk-load-copy-tsql-examples.md
   - linkListType: concept
     links:
     - text: 设计数据加载策略

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 37fdd42adf66ebcb11b357ece6ea63384630d9f4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 878c3aa766559e455ee4456d84b86dc486e43fa5
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222634"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610677"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>针对本地 VMware VM 设置到 Azure 的灾难恢复
 
@@ -65,11 +65,11 @@ ms.locfileid: "79222634"
 - **主目标服务器**：主目标服务器处理从 Azure 进行故障回复期间产生的复制数据。
 
 
-所有这些组件一起安装在称作“配置服务器”的一台本地计算机上。  默认情况下，为了实现 VMware 灾难恢复，我们会将一个高度可用的 VMware VM 设置为配置服务器。 为此，请下载一个已准备好的开放虚拟化应用程序 (OVA) 模板，并将该模板导入 VMware 以创建该 VM。 
+所有这些组件一起安装在称作“配置服务器”的一台本地计算机上。  默认情况下，为了实现 VMware 灾难恢复，我们会将一个高度可用的 VMware VM 设置为配置服务器。 为此，请下载一个已准备好的开放虚拟化应用程序 (OVA) 模板，并将该模板导入 VMware 以创建该 VM。
 
 - 门户中提供了最新版本的配置服务器。 也可以直接从 [Microsoft 下载中心](https://aka.ms/asrconfigurationserver)下载该服务器。
 - 如果出于某种原因无法使用 OVA 模板来设置 VM，请遵照[这些说明](physical-manage-configuration-server.md)手动设置配置服务器。
-- 通过 OVF 模板提供的许可证是有效期为 180 天的评估许可证。 在 VM 上运行的 Windows 必须使用所需许可证进行激活。 
+- 通过 OVF 模板提供的许可证是有效期为 180 天的评估许可证。 在 VM 上运行的 Windows 必须使用所需许可证进行激活。
 
 
 ### <a name="download-the-vm-template"></a>下载 VM 模板
@@ -77,7 +77,7 @@ ms.locfileid: "79222634"
 1. 在保管库中，转到“准备基础结构” > “源”   。
 2. 在“准备源”中，选择“+配置服务器”。  
 3. 在“添加服务器”中，检查“VMware 的配置服务器”是否已显示在“服务器类型”中    。
-4. 下载配置服务器的 OVF 模板。
+4. 下载配置服务器的 OVA 模板。
 
 
 
@@ -85,7 +85,7 @@ ms.locfileid: "79222634"
 
 
 1. 使用 VMWare vSphere 客户端登录到 VMware vCenter 服务器或 vSphere ESXi 主机。
-2. 在“文件”菜单中，选择“部署 OVF 模板”以启动“部署 OVF 模板”向导    。 
+2. 在“文件”菜单中，选择“部署 OVF 模板”以启动“部署 OVF 模板”向导    。
 
      ![OVF 模板](./media/vmware-azure-tutorial/vcenter-wizard.png)
 
@@ -105,11 +105,11 @@ ms.locfileid: "79222634"
 
 1. 在 vSphere 客户端库存中，右键单击 VM 并选择“编辑设置”  。
 2. 在“硬件”中，选择“添加” > “以太网适配器”    。 然后，选择“下一步”  。
-3. 选择适配器类型和网络。 
+3. 选择适配器类型和网络。
 4. 若要在打开 VM 时连接虚拟 NIC，请选择“打开时连接”  。 选择“下一步”   >   “完成”。 然后选择“确定”。 
 
 
-## <a name="register-the-configuration-server"></a>注册配置服务器 
+## <a name="register-the-configuration-server"></a>注册配置服务器
 
 设置配置服务器后，将它注册到保管库中。
 
@@ -179,7 +179,7 @@ ms.locfileid: "79222634"
 3. 在“计算机类型”中，选择“虚拟机”   。
 4. 在“vCenter/vSphere 虚拟机监控程序”中选择 vSphere 主机或管理该主机的 vCenter 服务器。 
 5. 选择进程服务器（默认安装在配置服务器 VM 上）。 然后选择“确定”。  每个进程服务器的运行状况状态是根据建议的限制和其他参数指示的。 选择一个正常运行的进程服务器。 不能选择[有严重错误的](vmware-physical-azure-monitor-process-server.md#process-server-alerts)进程服务器。 你可以[进行故障排除并解决](vmware-physical-azure-troubleshoot-process-server.md)错误**或者**设置一个[横向扩展进程服务器](vmware-azure-set-up-process-server-scale.md)。
-6. 在“目标”中，选择要创建故障转移 VM 的订阅和资源组  。 我们将使用资源管理器部署模型。 
+6. 在“目标”中，选择要创建故障转移 VM 的订阅和资源组  。 我们将使用资源管理器部署模型。
 7. 选择 Azure VM 在故障转移后创建时所要连接的 Azure 网络和子网。
 8. 选择“立即为选定的计算机配置”，以便将网络设置应用到在其上启用了复制的所有 VM  。 选择“稍后配置”以选择每个计算机的 Azure 网络。 
 9. 在“虚拟机” > “选择虚拟机”中，选择要复制的每个虚拟机   。 只能选择可以启用复制的计算机。 然后选择“确定”。  如果无法查看/选择特定的虚拟机，请[详细了解](https://aka.ms/doc-plugin-VM-not-showing)如何解决此问题。

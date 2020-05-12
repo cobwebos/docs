@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0d543abc88c1e45f2c1f5503473d8e92566fc582
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 43f361fbaf4ab0462af0a720d7711f219134a165
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457376"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692175"
 ---
 # <a name="quickstart-using-sql-on-demand"></a>快速入门：使用 SQL 按需版本
 
@@ -41,19 +41,18 @@ Synapse SQL 按需版本（预览版）是一个无服务器查询服务，可�
 
 ## <a name="first-time-setup"></a>首次设置
 
-使用示例之前：
+在使用示例之前，请执行以下操作：
 
 - 为视图创建数据库（若要使用视图）
 - 创建供 SQL 按需版本用来访问存储中的文件的凭据
 
 ### <a name="create-database"></a>创建数据库
 
-创建自己的用于演示目的的数据库。 这是要在其中创建视图的数据库。 本文将在示例查询中使用此数据库。
+创建自己的用于演示目的的数据库。 你将使用此数据库来创建视图，并将此数据库用于本文中的示例查询。
 
 > [!NOTE]
 > 数据库仅用于视图元数据，而不用于实际数据。
->
-> 请记下数据库名称，以便稍后在本快速入门中使用。
+>请记下数据库名称，以便稍后在本快速入门中使用。
 
 使用以下查询（请将 `mydbname` 更改为所选名称）：
 
@@ -66,9 +65,15 @@ CREATE DATABASE mydbname
 若要使用 SQL 按需版本运行查询，请创建供 SQL 按需版本用来访问存储中的文件的凭据。
 
 > [!NOTE]
-> 请注意，需要创建用于访问存储帐户的凭据。 尽管 SQL 按需版本可以访问不同区域中的存储，但将存储和 Azure Synapse 工作区置于同一区域可提供性能更好的体验。
+> 若要成功运行本部分中的示例，必须使用 SAS 令牌。
+>
+> 若要开始使用 SAS 令牌，必须删除[此文](sql/develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through)中所述的 UserIdentity。
+>
+> 默认情况下，SQL 按需版本始终使用 AAD 直通身份验证。
 
-修改以下代码片段，以创建 CSV、JSON 和 Parquet 容器的凭据：
+有关如何管理存储访问控制的详细信息，请参阅[控制 SQL 按需版本的存储帐户访问](sql/develop-storage-files-storage-access-control.md)一文。
+
+执行以下代码片段，以创建此部分的示例中使用的凭据：
 
 ```sql
 -- create credentials for containers in our demo storage account
@@ -90,7 +95,7 @@ GO
 
 ![不带标题的 CSV 文件的前 10 行，Windows 样式的换行符。](./sql/media/query-single-csv-file/population.png)
 
-以下查询演示如何读取不包含标题行、包含 Windows 样式换行符和逗号分隔列的 CSV 文件：
+以下查询展示了如何读取不包含标题行、包含 Windows 样式换行符和逗号分隔列的 CSV 文件：
 
 ```sql
 SELECT TOP 10 *
@@ -155,7 +160,7 @@ FROM OPENROWSET
 
 ### <a name="querying-json-files"></a>查询 JSON 文件
 
-以下查询演示如何使用 [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 在标题为“Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected articles”的书籍中检索标量值（标题、出版商）： 
+以下查询展示了如何使用 [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 在标题为“Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected articles”的书籍中检索标量值（标题、出版商）： 
 
 ```sql
 SELECT
@@ -177,11 +182,11 @@ WHERE
 ```
 
 > [!IMPORTANT]
-> 我们将以单行/单列的形式读取整个 JSON 文件，因此 FIELDTERMINATOR、FIELDQUOTE 和 ROWTERMINATOR 已设置为 0x0b，原因是我们预期不会在文件中找到它。
+> 我们将整个 JSON 文件读取为单个行/列。 因此 FIELDTERMINATOR、FIELDQUOTE 和 ROWTERMINATOR 已设置为 0x0b，原因是我们预期不会在文件中找到它。
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，可以开始学习以下快速入门文章了：
+现在，你可以继续学习以下文章了：
 
 - [查询单个 CSV 文件](sql/query-single-csv-file.md)
 - [查询文件夹和多个 CSV 文件](sql/query-folders-multiple-csv-files.md)
@@ -192,7 +197,4 @@ WHERE
 - [创建和使用视图](sql/create-use-views.md)
 - [创建和使用外部表](sql/create-use-external-tables.md)
 - [将查询结果保存到 Azure 存储](sql/create-external-table-as-select.md)
-
-请继续学习下一篇文章，了解如何查询单个 CSV 文件。
-> [!div class="nextstepaction"]
-> [查询单个 CSV 文件](sql/query-single-csv-file.md)
+- [查询单个 CSV 文件](sql/query-single-csv-file.md)

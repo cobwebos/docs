@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: cephalin
-ms.openlocfilehash: 5c5b2a0c6e27f83e94b8f6a0ba3bb09ed1831680
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 5f9e50f0d4969e10d3c01496ea29652712a407c5
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73471568"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592378"
 ---
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -19,4 +19,4 @@ ms.locfileid: "73471568"
 
 在“myResourceGroup”页中，确保列出的资源是要删除的资源。 
 
-选择“删除”  ，在文本框中键入 **myResourceGroup**，然后选择“删除”  。
+选择“删除资源组”  ，在文本框中键入“myResourceGroup”  以确认，然后选择“删除”  。

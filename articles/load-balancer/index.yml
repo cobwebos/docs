@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: asudbring
   ms.author: allensu
-  ms.date: 12/05/2019
-  ms.openlocfilehash: 527b6a1c14d544a713e8eb3ef0ac1d3eeb340e93
-  ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+  ms.date: 05/07/2020
+  ms.openlocfilehash: 73d36c795ca4be905ac6e9bab31cfe00374bfa13
+  ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/07/2020
-  ms.locfileid: "82883070"
+  ms.lasthandoff: 05/08/2020
+  ms.locfileid: "82930618"
 landingContent:
 - title: 关于负载均衡器
   linkLists:
@@ -28,11 +28,13 @@ landingContent:
       url: concepts.md
     - text: 负载均衡器组件
       url: components.md
+    - text: 负载均衡器 SKU
+      url: skus.md
 - title: 入门
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 创建标准负载均衡器以对 VM 进行负载均衡
+    - text: 创建负载均衡器以对 VM 进行负载均衡
       url: quickstart-load-balancer-standard-public-portal.md
   - linkListType: tutorial
     links:
@@ -54,25 +56,27 @@ landingContent:
       url: load-balancer-multivip-overview.md
   - linkListType: how-to-guide
     links:
-    - text: 使用 Azure CLI 在标准负载均衡器中配置负载均衡和出站规则
+    - text: 在负载均衡器中配置负载均衡和出站规则 (Azure CLI)
       url: configure-load-balancer-outbound-cli.md
-    - text: 使用 PowerShell 创建支持 IPv6 的面向 Internet 的负载均衡器
+    - text: 创建使用 IPv6 的面向 Internet 的负载均衡器 (PowerShell)
       url: load-balancer-ipv6-internet-ps.md
     - text: 配置分布模式
       url: load-balancer-distribution-mode.md
+    - text: 从“基本”升级到“标准”
+      url: upgrade-basic-standard.md
 - title: 部署
   linkLists:
   - linkListType: concept
     links:
     - text: 标准负载均衡器和可用性区域
       url: load-balancer-standard-availability-zones.md
-    - text: 负载均衡器空闲情况下的 TCP 重置（公共预览版）
+    - text: 带有“在空闲超时的情况下重置 TCP”功能的负载均衡器
       url: load-balancer-tcp-reset.md
   - linkListType: how-to-guide
     links:
-    - text: 通过区域冗余的前端创建标准负载均衡器
+    - text: 创建带有区域冗余前端的负载均衡器
       url: load-balancer-get-started-internet-az-portal.md
-    - text: 通过区域的前端创建标准负载均衡器
+    - text: 创建带有区域前端的负载均衡器
       url: load-balancer-get-started-internet-availability-zones-zonal-portal.md
     - text: 在多个 IP 配置上进行负载均衡
       url: load-balancer-multiple-ip.md

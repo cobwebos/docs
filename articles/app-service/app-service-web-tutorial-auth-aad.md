@@ -1,23 +1,21 @@
 ---
-title: 教程：端到端 AuthN/AuthO
-description: 了解如何使用应用服务身份验证和授权来确保应用服务应用的安全性，包括确保访问远程 API 时的安全性。
+title: 教程：对用户进行 E2E 身份验证
+description: 了解如何使用应用服务身份验证和授权来确保应用服务应用端到端的安全性，包括确保访问远程 API 时的安全性。
 keywords: 应用服务, azure 应用服务, authN, authZ, 安全, 安全性, 多层, azure active directory, azure ad
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 04/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 46750383c1436a2d053d6db7fed858c7c0f8a9fe
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b95d5d6eb52806e5b43a495b875d30846297c465
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78226303"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592428"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>教程：在 Azure 应用服务中对用户进行端到端身份验证和授权
 
-[Azure 应用服务](overview.md)提供高度可缩放、自修复的 Web 托管服务。 另外，应用服务提供对[用户身份验证和授权](overview-authentication-authorization.md)的内置支持。 本教程介绍如何通过应用服务身份验证和授权来确保应用的安全性。 本教程使用带 Angular.js 前端的 ASP.NET Core 应用，但这只是为了举例。 应用服务身份验证和授权支持所有的语言运行时，你可以按照本教程的说明来了解如何将其应用到首选语言。
-
-本教程使用示例应用来演示如何确保自包含应用的安全性（参见[为后端应用启用身份验证和授权](#enable-authentication-and-authorization-for-back-end-app)）。
+[Azure 应用服务](overview.md)提供高度可缩放、自修复的 Web 托管服务。 另外，应用服务提供对[用户身份验证和授权](overview-authentication-authorization.md)的内置支持。 本教程介绍如何通过应用服务身份验证和授权来确保应用的安全性。 本教程使用带 Angular.js 前端的 ASP.NET Core 应用作为示例。 应用服务身份验证和授权支持所有的语言运行时，你可以按照本教程的说明来了解如何将其应用到首选语言。
 
 ![简单身份验证和授权](./media/app-service-web-tutorial-auth-aad/simple-auth.png)
 
@@ -46,8 +44,8 @@ ms.locfileid: "78226303"
 
 为完成此教程：
 
-* [安装 Git](https://git-scm.com/)。
-* [安装 .NET Core](https://www.microsoft.com/net/core/)。
+* <a href="https://git-scm.com/" target="_blank">安装 Git</a>
+* <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">安装最新的 .NET Core 3.1 SDK</a>
 
 ## <a name="create-local-net-core-app"></a>创建本地 .NET Core 应用
 
@@ -139,47 +137,47 @@ private static readonly HttpClient _client = new HttpClient();
 private static readonly string _remoteUrl = "https://<back-end-app-name>.azurewebsites.net";
 ```
 
-找到 `GetAll()` 方法，将大括号中的代码替换为：
+找到用 `[HttpGet]` 修饰的方法，并将大括号中的代码替换为：
 
 ```cs
-var data = _client.GetStringAsync($"{_remoteUrl}/api/Todo").Result;
+var data = await _client.GetStringAsync($"{_remoteUrl}/api/Todo");
 return JsonConvert.DeserializeObject<List<TodoItem>>(data);
 ```
 
 第一行向后端 API 应用进行 `GET /api/Todo` 调用。
 
-接下来，请找到 `GetById(long id)` 方法，将大括号中的代码替换为：
+接下来，找到用 `[HttpGet("{id}")]` 修饰的方法，并将大括号中的代码替换为：
 
 ```cs
-var data = _client.GetStringAsync($"{_remoteUrl}/api/Todo/{id}").Result;
+var data = await _client.GetStringAsync($"{_remoteUrl}/api/Todo/{id}");
 return Content(data, "application/json");
 ```
 
 第一行向后端 API 应用进行 `GET /api/Todo/{id}` 调用。
 
-接下来，请找到 `Create([FromBody] TodoItem item)` 方法，将大括号中的代码替换为：
+接下来，找到用 `[HttpPost]` 修饰的方法，并将大括号中的代码替换为：
 
 ```cs
-var response = _client.PostAsJsonAsync($"{_remoteUrl}/api/Todo", item).Result;
-var data = response.Content.ReadAsStringAsync().Result;
+var response = await _client.PostAsJsonAsync($"{_remoteUrl}/api/Todo", todoItem);
+var data = await response.Content.ReadAsStringAsync();
 return Content(data, "application/json");
 ```
 
 第一行向后端 API 应用进行 `POST /api/Todo` 调用。
 
-接下来，请找到 `Update(long id, [FromBody] TodoItem item)` 方法，将大括号中的代码替换为：
+接下来，找到用 `[HttpPut("{id}")]` 修饰的方法，并将大括号中的代码替换为：
 
 ```cs
-var res = _client.PutAsJsonAsync($"{_remoteUrl}/api/Todo/{id}", item).Result;
+var res = await _client.PutAsJsonAsync($"{_remoteUrl}/api/Todo/{id}", todoItem);
 return new NoContentResult();
 ```
 
 第一行向后端 API 应用进行 `PUT /api/Todo/{id}` 调用。
 
-接下来，请找到 `Delete(long id)` 方法，将大括号中的代码替换为：
+接下来，找到用 `[HttpDelete("{id}")]` 修饰的方法，并将大括号中的代码替换为：
 
 ```cs
-var res = _client.DeleteAsync($"{_remoteUrl}/api/Todo/{id}").Result;
+var res = await _client.DeleteAsync($"{_remoteUrl}/api/Todo/{id}");
 return new NoContentResult();
 ```
 
@@ -209,37 +207,39 @@ git push frontend master
 
 ### <a name="enable-authentication-and-authorization-for-back-end-app"></a>启用针对后端应用的身份验证和授权
 
-1. 在 [Azure 门户](https://portal.azure.com)菜单上，选择“资源组”，或在任意页面中搜索并选择“资源组”   。
+在 [Azure 门户](https://portal.azure.com)菜单上，选择“资源组”，或在任意页面中搜索并选择“资源组”   。
 
-1. 在“资源组”中，查找并选择资源组  。 在“概述”中，选择后端应用的管理页  。
+在“资源组”中，查找并选择资源组  。 在“概述”中，选择后端应用的管理页  。
 
-   ![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/portal-navigate-back-end.png)
+![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/portal-navigate-back-end.png)
 
-1. 在后端应用的左侧菜单中，选择“身份验证/授权”，然后选择“启用”以启用应用服务身份验证   。
+在后端应用的左侧菜单中，选择“身份验证/授权”，然后选择“启用”以启用应用服务身份验证   。
 
-1. 在“请求未经身份验证时需执行的操作”中，选择“使用 Azure Active Directory 登录”。  
+在“请求未经身份验证时需执行的操作”中，选择“使用 Azure Active Directory 登录”。  
 
-1. 在“身份验证提供程序”下，选择“Azure Active Directory”   
+在“身份验证提供程序”  下，选择“Azure Active Directory”  。
 
-   ![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/configure-auth-back-end.png)
+![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/configure-auth-back-end.png)
 
-1. 选择“快速”，接受创建新 AD 应用所需的默认设置，然后选择“确定”   。
+选择“快速”，接受创建新 AD 应用所需的默认设置，然后选择“确定”   。
 
-1. 在“身份验证/授权”页中，选择“保存”   。
+在“身份验证/授权”页中，选择“保存”   。
 
-   看到包含消息`Successfully saved the Auth Settings for <back-end-app-name> App`的通知后，刷新页面。
+看到包含消息`Successfully saved the Auth Settings for <back-end-app-name> App`的通知后，刷新门户页。
 
-1. 再次选择“Azure Active Directory”，然后选择“Azure AD 应用”   。
+再次选择“Azure Active Directory”，然后选择“Azure AD 应用”   。
 
-1. 将 Azure AD 应用程序的**客户端 ID** 复制到记事本。 稍后需要用到此值。
+将 Azure AD 应用程序的**客户端 ID** 复制到记事本。 稍后需要用到此值。
 
-   ![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/get-application-id-back-end.png)
+![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/get-application-id-back-end.png)
+
+如果到此为止，你将拥有一个已受应用服务身份验证和授权保护的独立应用。 其余部分介绍如何将经过身份验证的用户从前端“流式传输”到后端，以便保护多应用解决方案。 
 
 ### <a name="enable-authentication-and-authorization-for-front-end-app"></a>启用针对前端应用的身份验证和授权
 
-按照后端应用的相同步骤进行操作，但跳过最后一步。 对于前端应用，不需要客户端 ID。
+遵循前端应用的步骤进行操作，但跳过最后一步。 对于前端应用，不需要客户端 ID。
 
-根据需要导航到 `http://<front-end-app-name>.azurewebsites.net`。 现在你会被定向到安全登录页。 登录后仍无法从后端应用访问数据，因为仍需执行三项操作：
+根据需要导航到 `http://<front-end-app-name>.azurewebsites.net`。 现在你会被定向到安全登录页。 登录后，你仍然无法从后端应用访问数据  ，因为后端应用现在要求从前端应用登录 Azure Active Directory。 你需要执行以下三项操作：
 
 - 授予前端访问后端的权限
 - 对应用服务进行配置，使之返回可用令牌
@@ -252,27 +252,29 @@ git push frontend master
 
 启用对两种应用的身份验证和授权以后，即可通过 AD 应用程序对每种应用提供支持。 在此步骤中，请为前端应用授予代表用户访问后端的权限。 （严格说来就是，请为前端的  AD 应用程序授予代表用户访问后端的  AD 应用程序的权限。）
 
-1. 在 [Azure 门户](https://portal.azure.com)菜单中，选择“Azure Active Directory”，或在任意页面中搜索并选择“Azure Active Directory”   。
+在 [Azure 门户](https://portal.azure.com)菜单中，选择“Azure Active Directory”，或在任意页面中搜索并选择“Azure Active Directory”   。
 
-1. 选择“应用注册” > “拥有的应用程序”   。 选择前端应用名称，然后选择“API 权限”  。
+选择“应用注册”   > “拥有的应用程序”   > “查看此目录中的所有应用程序”  。 选择前端应用名称，然后选择“API 权限”  。
 
-   ![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/add-api-access-front-end.png)
+![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/add-api-access-front-end.png)
 
-1. 选择“添加权限”  ，然后选择“我的 API”   > “\<back-end-app-name>”  。
+选择“添加权限”  ，然后选择“我的组织使用的 API”   > “\<back-end-app-name>”  。
 
-1. 在后端应用的“请求 API 权限”  页中，选择“委托的权限”  和“user_impersonation”  ，然后选择“添加权限”  。
+在后端应用的“请求 API 权限”  页中，选择“委托的权限”  和“user_impersonation”  ，然后选择“添加权限”  。
 
-   ![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/select-permission-front-end.png)
+![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/select-permission-front-end.png)
 
 ### <a name="configure-app-service-to-return-a-usable-access-token"></a>对应用服务进行配置，使之返回可用的访问令牌
 
 现在，前端应用具有以登录用户身份访问后端应用所需的权限。 在此步骤中，请配置应用服务身份验证和授权，以便获取可以用来访问后端的访问令牌。 执行此步骤时，需要后端的客户端 ID，该 ID 是从[为后端应用启用身份验证和授权](#enable-authentication-and-authorization-for-back-end-app)复制的。
 
-登录到 [Azure 资源浏览器](https://resources.azure.com)。 在页面顶部单击“读/写”  ，以便启用编辑 Azure 资源的功能。
+在前端应用的左侧菜单中，选择“开发工具”  下的“资源浏览器”  ，然后选择“运行”  。
+
+此时会打开 [Azure 资源浏览器](https://resources.azure.com)，前端应用在资源树中处于选中状态。 在页面顶部单击“读/写”  ，以便启用编辑 Azure 资源的功能。
 
 ![在 Azure 应用服务中运行的 ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/resources-enable-write.png)
 
-在左侧浏览器中，单击“订阅”   >    \<your-subscription>  > “resourceGroups”   > “myAuthResourceGroup”   > “提供程序”   > “Microsoft.Web”   > “站点”   > \<front-end-app-name>    > “配置”   > “authsettings”  。
+在左侧浏览器中，向下钻取到“config”   > “authsettings”  。
 
 在“authsettings”  视图中，单击“编辑”  。 使用复制的客户端 ID 将 `additionalLoginParams` 设置为以下 JSON 字符串。 
 
@@ -310,7 +312,7 @@ public override void OnActionExecuting(ActionExecutingContext context)
 }
 ```
 
-此代码将标准的 HTTP 标头 `Authorization: Bearer <access-token>` 添加到所有远程 API 调用。 在 ASP.NET Core MVC 请求执行管道中，`OnActionExecuting` 刚好在相应的操作方法（例如 `GetAll()`）执行之前执行，因此每个传出 API 调用现在都提供访问令牌。
+此代码将标准的 HTTP 标头 `Authorization: Bearer <access-token>` 添加到所有远程 API 调用。 在 ASP.NET Core MVC 请求执行管道中，`OnActionExecuting` 就在相应的操作执行之前执行，因此每个传出 API 调用现在都提供访问令牌。
 
 保存所有更改。 在本地终端窗口中，使用以下 Git 命令将所做的更改部署到前端应用：
 
@@ -333,15 +335,15 @@ git push frontend master
 服务器代码可以访问请求标头，而客户端代码则可以访问 `GET /.auth/me` 以获取相同的访问令牌（请参阅[在应用代码中检索令牌](app-service-authentication-how-to.md#retrieve-tokens-in-app-code)）。
 
 > [!TIP]
-> 此部分使用标准的 HTTP 方法来演示安全的 HTTP 调用。 但是，可以使用[适用于 JavaScript 的 Active Directory 身份验证库 (ADAL)](https://github.com/AzureAD/azure-activedirectory-library-for-js) 来简化 Angular.js 应用程序模式。
+> 此部分使用标准的 HTTP 方法来演示安全的 HTTP 调用。 但是，可以使用[适用于 JavaScript 的 Microsoft 身份验证库](https://github.com/AzureAD/microsoft-authentication-library-for-js)来帮助简化 Angular.js 应用程序模式。
 >
 
 ### <a name="configure-cors"></a>配置 CORS
 
-在 Cloud Shell 中，使用 [`az resource update`](/cli/azure/resource#az-resource-update) 命令对客户端的 URL 启用 CORS。 替换 _\<back-end-app-name>_ 和 _\<front-end-app-name>_ 占位符。
+在 Cloud Shell 中，使用 [`az webapp cors add`](/cli/azure/webapp/cors#az-webapp-cors-add) 命令对客户端的 URL 启用 CORS。 替换 _\<back-end-app-name>_ 和 _\<front-end-app-name>_ 占位符。
 
 ```azurecli-interactive
-az resource update --name web --resource-group myAuthResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<back-end-app-name> --set properties.cors.allowedOrigins="['https://<front-end-app-name>.azurewebsites.net']" --api-version 2015-06-01
+az webapp cors add --resource-group myAuthResourceGroup --name <back-end-app-name> --allowed-origins 'https://<front-end-app-name>.azurewebsites.net'
 ```
 
 此步骤与身份验证和授权无关。 但是，只有执行此步骤，才能使用浏览器从 Angular.js 应用进行跨域 API 调用。 有关详细信息，请参阅[添加 CORS 功能](app-service-web-tutorial-rest-api.md#add-cors-functionality)。
@@ -350,7 +352,7 @@ az resource update --name web --resource-group myAuthResourceGroup --namespace M
 
 在本地存储库中，打开 _wwwroot/index.html_。
 
-在第 51 行中，将 `apiEndpoint` 变量设置为后端应用的 URL (`https://<back-end-app-name>.azurewebsites.net`)。 在应用服务中将 _\<back-end-app-name>_ 替换为你的应用名称。
+在第 51 行中，将 `apiEndpoint` 变量设置为后端应用的 HTTPS URL (`https://<back-end-app-name>.azurewebsites.net`)。 在应用服务中将 _\<back-end-app-name>_ 替换为你的应用名称。
 
 在本地存储库中打开 _wwwroot/app/scripts/todoListSvc.js_，然后就会看到 `apiEndpoint` 已前置到所有 API 调用。 Angular.js 应用现在可以调用后端 API 了。 
 
@@ -436,7 +438,7 @@ az group delete --name myAuthResourceGroup
 > * 使用服务器代码中的访问令牌
 > * 使用客户端（浏览器）代码中的访问令牌
 
-转到下一教程，了解如何向 Web 应用映射自定义 DNS 名称。
+继续学习下一篇教程，了解如何将自定义 DNS 名称映射到应用。
 
 > [!div class="nextstepaction"]
 > [将现有的自定义 DNS 名称映射到 Azure 应用服务](app-service-web-tutorial-custom-domain.md)
