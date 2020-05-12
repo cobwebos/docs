@@ -373,9 +373,11 @@
             - name: 语音 SDK
               items:
                 - name: C++
-                  href: 'https://aka.ms/csspeech/cppref'
+                  href: 'https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-transcription-namespace'
                 - name: 'C#'
-                  href: 'https://aka.ms/csspeech/csharpref'
+                  href: 'https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription'
+                - name: Java
+                  href: 'https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.transcription'
 - name: 语音助手
   items:
     - name: 语音助手文档
@@ -424,13 +426,31 @@
           items:
             - name: 语音助手常见问题解答
               href: faq-voice-assistants.md
+    - name: Windows 上的语音助手
+      items:
+        - name: Windows 上的语音助手的概述
+          href: windows-voice-assistants-overview.md
+        - name: 操作指南
+          items:
+            - name: 开始在 Windows 上开发助手
+              href: how-to-windows-voice-assistants-get-started.md
+            - name: 启用语音激活
+              href: windows-voice-assistants-implementation-guide.md
+        - name: 资源
+          items:
+            - name: 隐私要求和指导原则
+              href: windows-voice-assistants-automatic-enablement-guidelines.md
+            - name: 适用于助手体验的最佳做法
+              href: windows-voice-assistants-best-practices.md
+            - name: 示例和常见问题
+              href: windows-voice-assistants-faq.md
     - name: 自定义关键字
       items:
         - name: 自定义关键字概述
           href: custom-keyword-overview.md
         - name: 自定义关键字命名准则
           href: speech-devices-sdk-kws-guidelines.md
-        - name: 自定义关键字发现
+        - name: 自定义关键字识别
           href: speech-devices-sdk-create-kws.md
 - name: Hosting
   items:

@@ -127,6 +127,8 @@
               items:
                 - name: 漏洞评估
                   href: sql-vulnerability-assessment.md
+                - name: 漏洞评估规则
+                  href: sql-database-vulnerability-assessment-rules.md
                 - name: 将 VA 扫描存储在防火墙和 VNet 后面
                   href: sql-database-vulnerability-assessment-storage.md
             - name: 高级威胁防护

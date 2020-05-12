@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73aa01ea08c8bab1395516c31bb46dbfd88045db
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 10d0f949fb2a5755512a30dcca011690d86a7e7b
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79481409"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597716"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问
 
@@ -47,10 +47,12 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 为了在生产环境中实现高可用性，我们建议提供多个 Windows 服务器。 对于本教程，使用一个 Windows 服务器便已足够。
 
 > [!IMPORTANT]
-> 如果在 Windows Server 2019 上安装连接器，则存在 HTTP2 限制。 若要在此版本上使用连接器，请添加以下注册表项并重新启动服务器。 请注意，这是一个计算机注册表宽项。 
-    ```
-    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
-    ```
+> 如果要在 Windows Server 2019 上安装连接器，则必须在 WinHttp 组件中禁用 HTTP2 协议支持。 默认情况下，在受支持的操作系统的早期版本中已禁用此功能。 添加以下注册表项并重启服务器会在 Windows Server 2019 上禁用此功能。 请注意，这是计算机范围的注册表项。
+>
+> ```
+> HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
+> ```
+>
 
 #### <a name="recommendations-for-the-connector-server"></a>有关连接器服务器的建议
 

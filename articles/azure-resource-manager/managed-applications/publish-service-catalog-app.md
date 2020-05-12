@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: 48aaca64949aafecff27c76ad7572b3c2fa44732
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 47eda62810b1098fcaca5b734be4f74edc0db49a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81391504"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609351"
 ---
 # <a name="quickstart-create-and-publish-a-managed-application-definition"></a>快速入门：创建并发布托管应用程序定义
 
@@ -290,7 +290,7 @@ az managedapp definition create \
 
 * **资源组**：在其中创建托管应用程序定义的资源组的名称。
 * **锁定级别**：在托管资源组上放置的锁的类型。 它防止客户对此资源组执行不良操作。 当前，ReadOnly 是唯一受支持的锁级别。 当指定了 ReadOnly 时，客户只能读取托管资源组中存在的资源。 授予对托管资源组的访问权限的发布者标识不受该锁控制。
-* **authorizations**：描述用于授予对托管资源组权限的主体 ID 和角色定义 ID。 它是以 `<principalId>:<roleDefinitionId>` 格式指定的。 如果需要多个值，请以 `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>` 格式指定它们。 请以空格分隔这些值。
+* **authorizations**：描述用于授予对托管资源组权限的主体 ID 和角色定义 ID。 它是以 `<principalId>:<roleDefinitionId>` 格式指定的。 如果需要多个值，请以 `<principalId1>:<roleDefinitionId1>,<principalId2>:<roleDefinitionId2>` 格式指定它们。 请用逗号分隔这些值。
 * **包文件 URI**：包含所需文件的 .zip 包的位置。
 
 ## <a name="bring-your-own-storage-for-the-managed-application-definition"></a>自带符合托管应用程序定义的存储

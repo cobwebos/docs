@@ -3,12 +3,12 @@ title: CAF 基础蓝图示例概述
 description: 适用于 Azure 的云采用框架 (CAF) 基础蓝图示例的概述和体系结构。
 ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 1f14b4d4811b9bdcb64f3860b2cf25b82825d5c4
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 3291fdc299652d2b22bff89f5b1dadbdc064e561
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81458465"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901303"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>适用于 Azure 的 Microsoft 云采用框架基础蓝图示例概述
 
@@ -31,7 +31,7 @@ CAF 基础蓝图示例在 Azure 中部署建议的基础结构资源，这些资
   - 资源和资源组允许的 Azure 区域
   - 允许的存储帐户 SKU（在部署时选择）
   - 允许的 Azure VM SKU（在部署时选择）
-  - 要求部署网络监视 
+  - 要求部署网络观察程序 
   - 要求 Azure 存储帐户安全传输加密
   - 拒绝资源类型（在部署时选择）  
 - 计划

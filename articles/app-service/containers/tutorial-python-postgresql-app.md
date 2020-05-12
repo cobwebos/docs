@@ -9,12 +9,12 @@ ms.custom:
 - seodec18
 - seo-python-october2019
 - cli-validate
-ms.openlocfilehash: 0c9329b46d096df1afab6f7e457d143f9c6504be
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 504e2f7c07d8d29e4fe4dad52dc008c895517a3d
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82085750"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609776"
 ---
 # <a name="tutorial-deploy-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>教程：在 Azure 应用服务中部署使用 PostgreSQL 的 Python (Django) Web 应用
 
@@ -133,7 +133,7 @@ az postgres up --resource-group myResourceGroup --location westus2 --server-name
 
 <!-- not all locations support az postgres up -->
 > [!TIP]
-> 若要指定 Postgres 服务器的位置，请包含参数 `--location <location-name>`，其中，`<location_name>` 是某个 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)。 可以使用 [`az account list-locations`](/cli/azure/account#az-account-list-locations) 命令获取可供你的订阅使用的区域。
+> `--location <location-name>` 可以设置为任一个 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)。 可以使用 [`az account list-locations`](/cli/azure/account#az-account-list-locations) 命令获取可供你的订阅使用的区域。 对于生产应用，请将数据库和应用放置在同一位置。
 
 ## <a name="deploy-the-app-service-app"></a>部署应用服务应用
 
@@ -149,7 +149,7 @@ az postgres up --resource-group myResourceGroup --location westus2 --server-name
 如以下示例所示，使用 [`az webapp up`](/cli/azure/webapp#az-webapp-up) 命令创建应用服务应用。 请将 \<app-name> 替换为唯一名称（服务器终结点为 https://\<app-name>.azurewebsites.net）。    \<app-name> 允许的字符为 `A`-`Z`、`0`-`9` 和 `-`。 
 
 ```azurecli
-az webapp up --plan myAppServicePlan --sku B1 --name <app-name>
+az webapp up --plan myAppServicePlan --location westus2 --sku B1 --name <app-name>
 ```
 <!-- !!! without --sku creates PremiumV2 plan!! -->
 
@@ -183,10 +183,10 @@ az webapp up --plan myAppServicePlan --sku B1 --name <app-name>
 复制 \<app-resource-group> 的值。  稍后需要使用该值来配置应用。 
 
 > [!TIP]
-> 稍后可以使用相同的命令来部署任何更改，并使用以下命令立即启用诊断日志：
+> 相关设置会保存到存储库中隐藏的 .azure  目录中。 稍后可以使用简单命令来重新部署任何更改，并使用以下命令立即启用诊断日志：
 > 
 > ```azurecli
-> az webapp up --name <app-name>
+> az webapp up
 > ```
 
 现已部署示例代码，但该应用尚未连接到 Azure 中的 Postgres 数据库。 接下来将执行此操作。
@@ -219,8 +219,6 @@ cd site/wwwroot
 
 # Activate default virtual environment in App Service container
 source /antenv/bin/activate
-# Install requirements in environment
-pip install -r requirements.txt
 # Run database migrations
 python manage.py migrate
 # Create the super user (follow prompts)
@@ -358,7 +356,7 @@ python manage.py runserver
 若要重新部署更改，请从存储库根目录运行以下命令：
 
 ```azurecli
-az webapp up --name <app-name>
+az webapp up
 ```
 
 应用服务将检测该应用是否存在，并只部署代码。

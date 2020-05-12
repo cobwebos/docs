@@ -3,24 +3,24 @@ title: 专用链接
 description: 专用终结点功能概述
 author: rohitnayakmsft
 ms.author: rohitna
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: ab9c5c5c1134d2e09a790a788a3b7e55f807dd9b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: dd717d653e57fbb8c540e4ef023011c64778a3b0
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78945366"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628991"
 ---
-# <a name="private-link-for-azure-sql-database-and-data-warehouse"></a>Azure SQL 数据库和数据仓库的专用链接
+# <a name="private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 数据库和 Azure Synapse Analytics 的专用链接
 
-使用专用链接可以通过**专用终结点**连接到 Azure 中的各种 PaaS 服务。 若要查看支持专用链接功能的 PaaS 服务列表，请参阅[专用链接文档](../private-link/index.yml)页。 专用终结点是特定 [VNet](../virtual-network/virtual-networks-overview.md) 和子网中的专用 IP 地址。 
+使用专用链接可以通过**专用终结点**连接到 Azure 中的各种 PaaS 服务。 若要查看支持专用链接功能的 PaaS 服务列表，请转到[专用链接文档](../private-link/index.yml)页。 专用终结点是特定 [VNet](../virtual-network/virtual-networks-overview.md) 和子网中的专用 IP 地址。 
 
 > [!IMPORTANT]
-> 本文适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。 本文不适用于 Azure SQL 数据库中的**托管实例**部署。 
+> 本文适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 Azure Synapse Analytics 数据库。 为简单起见，在提到 SQL 数据库和 Azure Synapse Analytics 时，本文将二者统称为 SQL 数据库。 本文不适用于 Azure SQL 数据库中的**托管实例**部署。 
 
 ## <a name="data-exfiltration-prevention"></a>数据渗透防护
 
@@ -28,7 +28,7 @@ Azure SQL 数据库中的数据渗透是指已获授权的用户（例如数据�
 
 假设某个用户在连接到 SQL 数据库的 Azure VM 中运行 SQL Server Management Studio (SSMS)。 此 SQL 数据库位于“美国西部”数据中心。 以下示例演示如何使用网络访问控制来限制通过公共终结点对 SQL 数据库进行访问。
 
-1. 通过将“允许 azure 服务”设置为“关闭”，禁止所有 Azure 服务流量通过公共终结点进入 SQL 数据库。  确保不要在服务器和数据库级防火墙规则中允许任何 IP 地址。 有关详细信息，请参阅 [Azure SQL 数据库和数据仓库网络访问控制](sql-database-networkaccess-overview.md)。
+1. 通过将“允许 azure 服务”设置为“关闭”，禁止所有 Azure 服务流量通过公共终结点进入 SQL 数据库。  确保不要在服务器和数据库级防火墙规则中允许任何 IP 地址。 有关详细信息，请参阅 [Azure SQL 数据库和 Azure Synapse Analytics 网络访问控制](sql-database-networkaccess-overview.md)。
 1. 仅允许流量使用 VM 的专用 IP 地址进入 SQL 数据库。 有关详细信息，请参阅有关[服务终结点](sql-database-vnet-service-endpoint-rule-overview.md)和 [VNet 防火墙规则](sql-database-firewall-configure.md)的文章。
 1. 在 Azure VM 上，按如下所示使用[网络安全组 (NSG)](../virtual-network/manage-network-security-group.md) 和服务标记缩小传出连接的范围
     - 指定一个 NSG 规则以允许服务标记 SQL.WestUs 的流量 - 仅允许连接到“美国西部”的 SQL 数据库
@@ -142,7 +142,6 @@ Nmap done: 256 IP addresses (1 host up) scanned in 207.00 seconds
 
 结果显示，一个对应于专用终结点 IP 地址的 IP 地址已启动。
 
-
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio (SSMS) 检查连接
 > [!NOTE]
 > 在客户端的连接字符串中使用服务器的**完全限定域名 (FQDN)** 。 直接登录 IP 地址的任何尝试都将失败。 此行为是设计使然，因为专用终结点会将流量路由到该区域中的 SQL 网关，并且需要指定 FQDN 才能成功登录。
@@ -174,11 +173,9 @@ where session_id=@@SPID
 - [ExpressRoute 线路](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
 
 
-## <a name="connecting-from-an-azure-sql-data-warehouse-to-azure-storage-using-polybase"></a>使用 Polybase 从 Azure SQL 数据仓库连接到 Azure 存储
+## <a name="connecting-from-azure-synapse-analytics-to-azure-storage-using-polybase"></a>使用 Polybase 从 Azure Synapse Analytics 连接到 Azure 存储
 
-PolyBase 通常用于将数据从 Azure 存储帐户加载到 Azure SQL 数据仓库中。 如果要从中加载数据的 Azure 存储帐户仅允许通过专用终结点、服务终结点或基于 IP 的防火墙访问一组 VNet 子网，则通过 PolyBase 与该帐户建立的连接将会断开。 对于连接到 Azure 存储（已通过安全方式连接到 VNet）的 Azure SQL 数据仓库，若要启用 PolyBase 导入和导出方案，请遵循[此处](sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)提供的步骤。 
-
-
+PolyBase 通常用于将数据从 Azure 存储帐户加载到 Azure Synapse Analytics 中。 如果要从中加载数据的 Azure 存储帐户仅允许通过专用终结点、服务终结点或基于 IP 的防火墙访问一组 VNet 子网，则通过 PolyBase 与该帐户建立的连接将会断开。 对于连接到 Azure 存储（已通过安全方式连接到 VNet）的 Azure Synapse Analytics，若要启用 PolyBase 导入和导出方案，请执行[此处](sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)提供的步骤。 
 
 ## <a name="next-steps"></a>后续步骤
 

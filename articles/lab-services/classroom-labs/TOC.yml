@@ -130,11 +130,13 @@
       href: reference-powershell-module.md
 - name: 资源
   items:
+    - name: Azure 实验室服务博客
+      href: 'https://aka.ms/azlabs-blog'
     - name: Azure 更新
       href: 'https://azure.microsoft.com/updates/?product=lab-services'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/lab-services/'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-lab-services'
     - name: 常见问题
       href: classroom-labs-faq.md

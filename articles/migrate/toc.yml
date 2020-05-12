@@ -92,6 +92,8 @@
       href: create-manage-projects.md
     - name: 首次添加工具
       href: how-to-add-tool-first-time.md
+    - name: 准备使用 ISV 工具/Movere
+      href: prepare-isv-movere.md
     - name: 添加评估工具
       href: how-to-assess.md
     - name: 部署 Azure Migrate 设备

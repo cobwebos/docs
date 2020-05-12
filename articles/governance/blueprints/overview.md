@@ -1,14 +1,14 @@
 ---
 title: Azure 蓝图概述
 description: 了解如何通过 Azure 蓝图服务在 Azure 环境中创建、定义和部署项目。
-ms.date: 11/21/2019
+ms.date: 05/06/2020
 ms.topic: overview
-ms.openlocfilehash: 4787f2d559daffcbf5d4057ac381f0f7e1ae0c57
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 68baeb8030caa17a9880cb0846688f1db6a15c87
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80677418"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864498"
 ---
 # <a name="what-is-azure-blueprints"></a>什么是 Azure 蓝图？
 
@@ -21,12 +21,11 @@ ms.locfileid: "80677418"
 - Azure 资源管理器模板
 - 资源组
 
-Azure 蓝图服务由全球分布的 [Azure Cosmos DB](../../cosmos-db/introduction.md) 提供支持。
-蓝图对象将复制到多个 Azure 区域。 无论 Azure 蓝图将资源部署到哪个区域，此复制提供的对蓝图对象的访问都具有低延迟、高可用性和一致性。
+Azure 蓝图服务由全球分布的 [Azure Cosmos DB](../../cosmos-db/introduction.md) 提供支持。 蓝图对象将复制到多个 Azure 区域。 无论 Azure 蓝图将资源部署到哪个区域，此复制提供的对蓝图对象的访问都具有低延迟、高可用性和一致性。
 
 ## <a name="how-its-different-from-resource-manager-templates"></a>与资源管理器模板的不同之处
 
-此服务旨在帮助进行  环境设置。 此设置通常包括一组资源组、策略、角色分配和资源管理器模板部署。 蓝图是将每个项目类型组合在一起的包，通过蓝图可编写和版本化该包 - 包括通过 CI/CD 管道  。 最终可在一个可审计和跟踪的操作中将每个蓝图分配给订阅。
+此服务旨在帮助进行  环境设置。 此设置通常包括一组资源组、策略、角色分配和资源管理器模板部署。 蓝图是将每个项目类型组合在一起的包，通过蓝图可编写和版本化该包（包括通过 CI/CD 管道）  。 最终可在一个可审计和跟踪的操作中将每个蓝图分配给订阅。
 
 几乎所有要包含在 Azure 蓝图中部署的一切都可以使用资源管理器模板完成。 但是，资源管理器模板是 Azure 中不以本机方式存在的文档 – 每个模板均存储在本地或源代码管理中。 该模板用于部署一个或多个 Azure 资源，但部署了这些资源后，资源与模板之间就不再存在有效的连接或关系。
 
@@ -57,7 +56,7 @@ Azure 蓝图服务由全球分布的 [Azure Cosmos DB](../../cosmos-db/introduct
 
 ### <a name="blueprint-definition-locations"></a>蓝图定义位置
 
-创建蓝图定义时，将定义蓝图的保存位置。 蓝图可以保存到你有[参与者](../management-groups/overview.md)访问权限的**管理组**或订阅。 如果位置是一个管理组，则蓝图可以分配给该管理组的任何子级订阅。
+创建蓝图定义时，将定义蓝图的保存位置。 蓝图可以保存到你有**参与者**访问权限的[管理组](../management-groups/overview.md)或订阅。 如果位置是一个管理组，则蓝图可以分配给该管理组的任何子级订阅。
 
 ### <a name="blueprint-parameters"></a>蓝图参数
 
@@ -72,8 +71,8 @@ Azure 蓝图服务由全球分布的 [Azure Cosmos DB](../../cosmos-db/introduct
 
 ### <a name="blueprint-publishing"></a>蓝图发布
 
-首次创建蓝图时，将视其为处于“草稿”模式  。 准备分配蓝图时，它必须处于“已发布”模式  。 发布需要定义“版本”字符串（字母、数字和连字符，最大长度为 20 个字符）以及可选的“更改注释”   。 该版本将其与针对同一蓝图的未来更改进行区别，并允许分配每个版本  。 此版本控制也意味着可将同一蓝图的不同版本分配给同一订阅  。 对蓝图进行其他更改时，除未发布的更改外，已发布**版本仍然存在**
-   。 更改完成后，更新的蓝图是使用新的唯一版本发布的，现也可进行分配   。
+首次创建蓝图时，将视其为处于“草稿”模式  。 准备分配蓝图时，它必须处于“已发布”模式  。 发布需要定义“版本”字符串（字母、数字和连字符，最大长度为 20 个字符）以及可选的“更改注释”   。 该版本将其与针对同一蓝图的未来更改进行区别，并允许分配每个版本  。 此版本控制也意味着可将同一蓝图的不同版本分配给同一订阅  。 对蓝图进行其他更改时，除未发布的更改外，已发布
+版本仍然存在    。 更改完成后，更新的蓝图是使用新的唯一版本发布的，现也可进行分配   。
 
 ## <a name="blueprint-assignment"></a>蓝图分配
 
@@ -122,7 +121,7 @@ Azure 蓝图服务由全球分布的 [Azure Cosmos DB](../../cosmos-db/introduct
 
 某些字段存在以下限制：
 
-|Object|字段|允许的字符|最大 长度|
+|对象|字段|允许的字符|最大 长度|
 |-|-|-|-|
 |蓝图|名称|字母、数字、连字符和句点|48|
 |蓝图|版本|字母、数字、连字符和句点|20|

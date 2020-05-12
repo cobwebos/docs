@@ -3,15 +3,15 @@ title: 使用 TLS/SSL 绑定保护自定义 DNS
 description: 通过证书创建 TLS/SSL 绑定，以便保护对自定义域进行的 HTTPS 访问。 通过强制实施 HTTPS 或 TLS 1.2 提高网站的安全性。
 tags: buy-ssl-certificates
 ms.topic: tutorial
-ms.date: 10/25/2019
+ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 9792181379bfa6f9e0337bf14208fe853c16b745
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: c93938db4632f6509e386d440c9be75596ea254f
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811746"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597889"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称
 
@@ -83,7 +83,7 @@ ms.locfileid: "80811746"
 |-|-|
 | 自定义域 | 要为其添加 TLS/SSL 绑定的域名。 |
 | 私有证书指纹 | 要绑定的证书。 |
-| TLS/SSL 类型 | <ul><li>[SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication) - 可添加多个 SNI SSL 绑定  。 选择此选项可以使用多个 TLS/SSL 证书来保护同一 IP 地址上的多个域。 大多数新式浏览器（包括 Internet Explorer、Chrome、Firefox 和 Opera）都支持 SNI（有关详细信息，请参阅[服务器名称指示](https://wikipedia.org/wiki/Server_Name_Indication)）。</li><li>**IP SSL** - 只能添加一个 IP SSL 绑定。 选择此选项只能使用一个 TLS/SSL 证书来保护专用公共 IP 地址。 配置绑定后，请按照[重新映射 IP SSL 的 A 记录](#remap-a-record-for-ip-ssl)中的步骤进行操作。<br/>仅生产或隔离层中支持 IP SSL。 </li></ul> |
+| TLS/SSL 类型 | <ul><li>[SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication) - 可添加多个 SNI SSL 绑定  。 选择此选项可以使用多个 TLS/SSL 证书来保护同一 IP 地址上的多个域。 大多数新式浏览器（包括 Internet Explorer、Chrome、Firefox 和 Opera）都支持 SNI（有关详细信息，请参阅[服务器名称指示](https://wikipedia.org/wiki/Server_Name_Indication)）。</li><li>**IP SSL** - 只能添加一个 IP SSL 绑定。 选择此选项只能使用一个 TLS/SSL 证书来保护专用公共 IP 地址。 配置绑定后，请按照[重新映射 IP SSL 的记录](#remap-records-for-ip-ssl)中的步骤进行操作。<br/>IP SSL 仅在“标准”  层或更高层中受支持。 </li></ul> |
 
 操作完成之后，自定义域的 TLS/SSL 状态会更改为“安全”  。
 
@@ -92,15 +92,17 @@ ms.locfileid: "80811746"
 > [!NOTE]
 > “自定义域”中的状态为“安全”意味着已使用证书保护该域，但应用服务并未检查该证书是自签名证书还是已过期证书，这可能也会导致浏览器异常，例如显示错误或警告。  
 
-## <a name="remap-a-record-for-ip-ssl"></a>重新映射 IP SSL 的 A 记录
+## <a name="remap-records-for-ip-ssl"></a>重新映射 IP SSL 的记录
 
 如果不在应用中使用 IP SSL，请跳到[针对自定义域测试 HTTPS](#test-https)。
 
-默认情况下，应用使用共享的公共 IP 地址。 将证书与 IP SSL 绑定时，应用服务会为应用创建新的专用 IP 地址。
+可能需要进行两项更改：
 
-如果已将 A 记录映射到应用，请使用这个新的专用 IP 地址更新域注册表。
+- 默认情况下，应用使用共享的公共 IP 地址。 将证书与 IP SSL 绑定时，应用服务会为应用创建新的专用 IP 地址。 如果已将 A 记录映射到应用，请使用这个新的专用 IP 地址更新域注册表。
 
-将使用新的专用 IP 地址更新应用的“自定义域”页。  [复制此 IP 地址](app-service-web-tutorial-custom-domain.md#info)，然后[将 A 记录重新映射](app-service-web-tutorial-custom-domain.md#map-an-a-record)到此新 IP 地址。
+    将使用新的专用 IP 地址更新应用的“自定义域”页。  [复制此 IP 地址](app-service-web-tutorial-custom-domain.md#info)，然后[将 A 记录重新映射](app-service-web-tutorial-custom-domain.md#map-an-a-record)到此新 IP 地址。
+
+- 如果已有到 `<app-name>.azurewebsites.net` 的 SNI SSL 绑定，请[重新映射任何 CNAME 映射](app-service-web-tutorial-custom-domain.md#map-a-cname-record)，让其改为指向 `sni.<app-name>.azurewebsites.net`（添加 `sni` 前缀）。
 
 ## <a name="test-https"></a>测试 HTTPS
 

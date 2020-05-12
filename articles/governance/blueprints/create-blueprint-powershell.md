@@ -1,14 +1,14 @@
 ---
 title: 快速入门：使用 PowerShell 创建蓝图
 description: 本快速入门中通过 PowerShell 使用 Azure 蓝图创建、定义和部署项目。
-ms.date: 11/21/2019
+ms.date: 05/06/2020
 ms.topic: quickstart
-ms.openlocfilehash: 53fcf53bdcc3b5fcd1c6ec07a7d8ab45b39955b6
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 79feafa48d5d180949b8a23163f2ee9b686e6076
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80676590"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864107"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>快速入门：使用 PowerShell 定义和分配 Azure 蓝图
 
@@ -29,7 +29,7 @@ ms.locfileid: "80676590"
 > [!NOTE]
 > 使用 PowerShell 时，首先创建 blueprint 对象  。 对于每个要添加的具有参数的项目，需要在初始蓝图上提前定义该参数   。
 
-1. 创建初始 blueprint 对象  。 **BlueprintFile** 参数接受一个 JSON 文件，该文件包含有关蓝图、要创建的任何资源组和所有蓝图级别参数的属性。 参数在分配过程中设置并由在后续步骤中添加的项目使用。
+1. 创建初始 blueprint 对象  。 BlueprintFile  参数接受一个 JSON 文件，该文件包含有关蓝图、要创建的任何资源组和所有蓝图级别参数的属性。 参数在分配过程中设置并由在后续步骤中添加的项目使用。
 
    - JSON 文件 - blueprint.json
 

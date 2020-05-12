@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: tutorial
 ms.date: 03/18/2020
 ms.author: victorh
-ms.openlocfilehash: 738be1361bfbd944575abceb08781b241336f6e8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7a9e0cc3977892fd899b4a25e17ad72f13481506
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79472539"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608807"
 ---
 # <a name="tutorial-create-a-waf-policy-on-azure-cdn-using-the-azure-portal"></a>教程：使用 Azure 门户在 Azure CDN 上创建 WAF 策略
 
@@ -22,12 +22,12 @@ ms.locfileid: "79472539"
 
 > [!div class="checklist"]
 > * 创建 WAF 策略
-> * 将其与 CDN 终结点关联
+> * 将其与 CDN 终结点关联。 只能将 WAF 策略与 Microsoft 的 Azure CDN 标准版  SKU 上托管的终结点相关联。
 > * 配置 WAF 规则
 
 ## <a name="prerequisites"></a>先决条件
 
-按照[快速入门：创建 Azure CDN 配置文件和终结点](../../cdn/cdn-create-new-endpoint.md)中的说明创建 Azure CDN 配置文件和终结点。 
+按照[快速入门：创建 Azure CDN 配置文件和终结点](../../cdn/cdn-create-new-endpoint.md)。 
 
 ## <a name="create-a-web-application-firewall-policy"></a>创建 Web 应用程序防火墙策略
 

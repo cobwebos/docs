@@ -4,15 +4,15 @@ description: 通过将合作伙伴 ID 链接到用于管理客户资源的用户
 author: dhirajgandhi
 ms.reviewer: dhgandhi
 ms.author: banders
-ms.date: 02/13/2020
+ms.date: 05/04/2020
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.openlocfilehash: c3f5dd4d1b67f5b1079a56d5c3428d286fd9d77f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f0d45c9dd8dc33226ca75fe34467a8695c8aae4d
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79204794"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778815"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>将合作伙伴 ID 链接到 Azure 帐户
 
@@ -40,7 +40,7 @@ PAL 使 Microsoft 能够识别哪些合作伙伴促成了 Azure 客户的成功�
 
 1. 可以在 Azure 门户中[链接到合作伙伴 ID](https://portal.azure.com/#blade/Microsoft_Azure_Billing/managementpartnerblade)。
 
-2. 登录到 Azure 门户。
+2. 登录到 Azure 门户。  
 
 3. 输入 Microsoft 合作伙伴 ID。 合作伙伴 ID 是组织的 [Microsoft 合作伙伴网络](https://partner.microsoft.com/) ID。
 
@@ -159,4 +159,5 @@ C:\ az managementpartner delete --partner-id 12345
 
 **如果我的公司使用 [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) 访问客户资源，则如何关联我的合作伙伴 ID？**
 
-如果[将托管服务套餐发布到 Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)，以便将客户加入 Azure 委托的资源管理，则 MPN ID 会自动进行关联。 如果[通过部署 Azure 资源管理器模板来加入客户](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer)，则需将 Microsoft 合作伙伴网络 (MPN) ID 与至少一个可访问每个载入的订阅的用户帐户相关联。 请注意，你需要在服务提供商租户中这样做。 简单起见，我们建议在租户中创建一个与你的 MPN ID 相关联的服务主体帐户，并授予它对你载入的每个客户的“读者”访问权限。
+如果[将托管服务套餐发布到 Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)，以便将客户加入 Azure 委托的资源管理，则 MPN ID 会自动进行关联。 如果[通过部署 Azure 资源管理器模板来加入客户](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer)，则需将 Microsoft 合作伙伴网络 (MPN) ID 与至少一个可访问每个载入的订阅的用户帐户相关联。 请注意，你需要在服务提供商租户中这样做。 简单起见，我们建议在租户中创建一个与你的 MPN ID 相关联的服务主体帐户，并授予它对你载入的每个客户的“读者”访问权限。 在此示例中，我们使用了“RBAC 读者”角色，它是没资格获得“合作伙伴赚取的返点”的角色之一。 有关角色的更多信息，请参阅[与合作伙伴赚取的返点相关的角色和权限](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3QuW2)。
+

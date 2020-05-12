@@ -27,10 +27,13 @@
   items:
     - name: “用于 Redis 的 Azure 缓存”示例
       href: cache-redis-samples.md
-    - name: Azure PowerShell
+    - name: Azure
       href: cache-how-to-manage-redis-cache-powershell.md
     - name: Azure CLI
       href: cli-samples.md
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 安全性
@@ -43,7 +46,7 @@
       href: cache-best-practices.md
     - name: 针对缓存的体系结构最佳做法
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 计划
       items:
@@ -63,7 +66,7 @@
           href: cache-migrate-to-redis.md
     - name: 自动化
       items:
-        - name: 使用 Azure Powershell 进行部署和管理
+        - name: 使用 Azure PowerShell 进行部署和管理
           href: cache-how-to-manage-redis-cache-powershell.md
         - name: 使用 Azure CLI 进行部署和管理
           href: cli-samples.md
@@ -130,7 +133,7 @@
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.redis
     - name: Java
-      href: /java/api/com.microsoft.azure.management.redis._redis_cache
+      href: /java/api/com.microsoft.azure.management.redis.rediscache
     - name: Redis 客户端
       href: 'https://redis.io/clients'
     - name: Redis 命令

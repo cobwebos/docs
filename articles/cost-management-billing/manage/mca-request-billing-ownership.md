@@ -5,14 +5,14 @@ author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 05/01/2020
 ms.author: banders
-ms.openlocfilehash: 10f1052f9acf9bf91c1d7fb0b64a1d3285487cf3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3aaf2a949d5b3e6670e7885adea4579ac2802428
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200721"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692330"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>从其他帐户获取 Azure 订阅的计费所有权
 
@@ -177,7 +177,7 @@ Azure 市场产品将连同各自的订阅一起转移。
 
 ### <a name="azure-reservations-transfer"></a>Azure 预留项转移
 
-Azure 预留项不会随订阅一起自动移动。 请[联系 Azure 支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)移动预留项。
+如果正在转移企业协议 (EA) 订阅，则 Azure 预留项不会自动与订阅一起移动。 请[联系 Azure 支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)移动预留项。
 
 ### <a name="access-to-azure-services"></a>对 Azure 服务的访问权限
 

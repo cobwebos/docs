@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/17/2020
 ms.reviewer: jeking
-ms.openlocfilehash: 346795b79a78589d949b035a803a67a9e5a2e8e5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b6dd1aab4c0ce6c656600d7cc7c71233d256aa0b
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77470728"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780532"
 ---
 # <a name="quickstart-analyze-data-with-databricks"></a>快速入门：使用 Databricks 分析数据
 
@@ -78,7 +78,7 @@ ms.locfileid: "77470728"
 
 有关创建群集的详细信息，请参阅[在 Azure Databricks 中创建 Spark 群集](https://docs.azuredatabricks.net/user-guide/clusters/create.html)。
 
-## <a name="create-storage-account-container"></a>创建存储帐户容器
+## <a name="create-notebook"></a>创建笔记本
 
 在本部分中，你将在 Azure Databricks 工作区中创建一个 Notebook，然后运行代码片段来配置存储帐户。
 

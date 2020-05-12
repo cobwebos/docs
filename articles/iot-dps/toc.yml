@@ -15,7 +15,7 @@
           href: quick-setup-auto-provision-cli.md
         - name: Azure RM 模板
           href: quick-setup-auto-provision-rm.md
-    - name: 预配单个模拟设备
+    - name: 预配单个设备
       items:
         - name: 对称密钥证明
           items:
@@ -233,7 +233,7 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=iot-hub'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-iot-hub'
     - name: 技术案例研究
       href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'

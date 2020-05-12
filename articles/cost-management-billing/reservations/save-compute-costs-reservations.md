@@ -5,18 +5,18 @@ author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/30/2020
 ms.author: banders
-ms.openlocfilehash: 97bd03fb2aa8f5b486ef87a04f260fec43eb81bd
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: ae94a5c8d7e9ff93098e85535aea3699206b9e03
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396700"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626951"
 ---
 # <a name="what-are-azure-reservations"></a>什么是 Azure 预留项？
 
-Azure 预留项可帮助你节省资金，因为它可以承诺多种产品的一年期或三年期计划。 通过承诺预付，能够以折扣价购买所用资源。 预留可显著将资源的成本，最多减少至即用即付价格的 72%。 预订提供计费折扣，并且不会影响资源的运行时状态。 购买预留项后，折扣会自动应用于匹配的资源。
+Azure 预留项通过承诺多种产品的一年期或三年期计划，帮助你节省资金。 通过承诺预付，能够以折扣价购买所用资源。 预留可显著将资源的成本，最多减少至即用即付价格的 72%。 预订提供计费折扣，并且不会影响资源的运行时状态。 购买预留项后，折扣会自动应用于匹配的资源。
 
 可以提前或每月为预留项付费。 预付和每月预留的总费用相同，选择每月支付不会产生额外的费用。 每月付款适用于 Azure 预留项，而不适用于第三方产品。
 
@@ -86,11 +86,11 @@ Azure 预留可以灵活地满足你不断变化的需求。 可以用一个预�
 
 ## <a name="charges-covered-by-reservation"></a>预留项涵盖的费用
 
-- **虚拟机预留实例** - 预留项仅涵盖虚拟机计算成本。 它不涵盖其他软件、Windows、网络或存储费用。
+- **虚拟机预留实例** - 预留项仅涵盖虚拟机和云服务的计算成本。 它不涵盖其他软件、Windows、网络或存储费用。
 - **Azure 存储预留容量** - 该预留项涵盖用于 Blob 存储或 Azure Data Lake Gen2 存储的标准存储帐户的存储容量。 不涵盖带宽或事务费率。
 - **Azure Cosmos DB 预留容量** - 预留项涵盖为资源预配的吞吐量的费用。 但它不涵盖存储和网络费用。
 - **SQL 数据库预留 vCore** - 预留项仅包含计算成本。 SQL 许可证单独计费。
-- **SQL 数据仓库** - 预留项涵盖 cDWU 用量。 它不涵盖与 SQL 数据仓库用量相关的存储或网络费用。
+- **Azure Synapse Analytics** - 预留项涵盖 cDWU 使用量。 它不涵盖与 Azure Synapse Analytics 使用量相关的存储或网络费用。
 - **Azure Databricks** - 预留项仅涵盖 DBU 使用费。 计算、存储和网络等其他费用单独计收。
 - **应用服务印花费** - 预留项涵盖印花使用费。 它不适用于辅助角色，因此与印花相关的任何其他资源将单独收费。
 - **Azure Database for MySQL** - 预留项仅包含计算费用。 预留容量不包括与 MySQL 数据库服务器关联的软件、网络或存储费用。

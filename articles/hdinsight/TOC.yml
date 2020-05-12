@@ -37,8 +37,10 @@
           href: 'https://azure.microsoft.com/resources/samples/?service=hdinsight'
     - name: 概念
       items:
-        - name: HDInsight 上的 Apache Hadoop 组件
+        - name: HDInsight 上的 Apache 组件
           href: ./hdinsight-component-versioning.md
+        - name: 企业安全性套餐
+          href: ./enterprise-security-package.md
         - name: Hortonworks 发行说明
           href: ./hortonworks-release-notes.md
         - name: 高可用性组件

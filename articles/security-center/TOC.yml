@@ -37,6 +37,11 @@
       href: tutorial-security-incident.md
     - name: 提高合规性
       href: security-center-compliance-dashboard.md
+- name: 示例
+  items:
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 安全功能分数
@@ -69,6 +74,8 @@
           href: alerts-schemas.md
         - name: 管理安全警报
           href: security-center-managing-and-responding-alerts.md
+        - name: 安全警报的抑制规则
+          href: alerts-suppression-rules.md
         - name: 管理安全事件
           href: security-center-incident.md
         - name: 云智能警报关联（事件）
@@ -107,7 +114,7 @@
           href: custom-security-policies.md
         - name: 使用 Azure 策略 REST API 管理策略
           href: configure-security-policy-azure-policy.md
-    - name: 添加动态符合性包
+    - name: 为符合性仪表板选择标准
       href: update-regulatory-compliance-packages.md
     - name: 自定义信息保护策略
       href: security-center-info-protection-policy.md

@@ -1,6 +1,6 @@
 ---
-title: 教程：使用 RBAC 和资源管理器模板授予用户对 Azure 资源的访问权限
-description: 本教程介绍如何通过 Azure 资源管理器模板使用基于角色的访问控制 (RBAC) 授予用户对 Azure 资源的访问权限。
+title: 教程：使用 Azure 资源管理器模板授予用户对 Azure 资源的访问权限 - Azure RBAC
+description: 本教程介绍如何使用 Azure 资源管理器模板和 Azure 基于角色的访问控制 (Azure RBAC) 授予用户对 Azure 资源的访问权限。
 services: role-based-access-control,azure-resource-manager
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 05/15/2019
 ms.author: rolyon
-ms.openlocfilehash: 96ca4f65d2def5f5004388c533410f09cc2a71fa
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f98b1e9c57cf9f624c5af3e59c8afd56d073dd28
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77138201"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735464"
 ---
-# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-resource-manager-template"></a>教程：使用 RBAC 和 Azure 资源管理器模板授予用户对 Azure 资源的访问权限
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-an-azure-resource-manager-template"></a>教程：使用 Azure 资源管理器模板授予用户对 Azure 资源的访问权限
 
-可以通过[基于角色的访问控制 (RBAC)](overview.md) 管理对 Azure 资源的访问权限。 在本教程中，将创建资源组并授予用户在资源组中创建和管理虚拟机的访问权限。 本教程重点介绍部署资源管理器模板以授予访问权限的过程。 有关开发资源管理器模板的详细信息，请参阅[资源管理器文档](/azure/azure-resource-manager/)和[模板参考](/azure/templates/microsoft.authorization/allversions
+可以通过 [Azure 基于角色的访问控制 (Azure RBAC)](overview.md) 管理对 Azure 资源的访问权限。 在本教程中，将创建资源组并授予用户在资源组中创建和管理虚拟机的访问权限。 本教程重点介绍部署资源管理器模板以授予访问权限的过程。 有关开发资源管理器模板的详细信息，请参阅[资源管理器文档](/azure/azure-resource-manager/)和[模板参考](/azure/templates/microsoft.authorization/allversions
 )。
 
 在本教程中，你将了解如何执行以下操作：
@@ -83,4 +83,4 @@ Remove-AzResourceGroup -Name $resourceGroupName
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [教程：使用 RBAC 和 Azure PowerShell 授予用户对 Azure 资源的访问权限](tutorial-role-assignments-user-powershell.md)
+> [教程：使用 Azure PowerShell 授予用户对 Azure 资源的访问权限](tutorial-role-assignments-user-powershell.md)

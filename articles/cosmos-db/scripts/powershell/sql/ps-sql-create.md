@@ -5,14 +5,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 03/17/2020
+ms.date: 05/01/2020
 ms.author: mjbrown
-ms.openlocfilehash: 719e2cd831a982c62ab965cd7dc8a37c4cb41265
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 434cc6df326a0028f327c6d9e2eda0d19989ca01
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365612"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82653168"
 ---
 # <a name="create-a-database-and-container-for-azure-cosmos-db---sql-api"></a>创建 Azure Cosmos DB 的数据库和容器 - SQL API
 
@@ -43,8 +43,9 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 |**Azure Cosmos DB**| |
 | [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | 新建 Cosmos DB 帐户。 |
 | [Set-AzCosmosDBSqlDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqldatabase) | 新建或更新现有 Cosmos DB SQL 数据库。 |
-| [New-AzCosmosDBSqlUniqueKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqluniquekey) | 新建 Cosmos DB SQL UniqueKey 对象。 |
-| [New-AzCosmosDBSqlUniqueKeyPolicy](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqluniquekeypolicy) | 新建 Cosmos DB SQL UniqueKeyPolicy 对象。 |
+| [New-AzCosmosDBSqlUniqueKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqluniquekey) | 新建一个 Cosmos DB SQL PSSqlUniqueKey 对象，用作 New-AzCosmosDBSqlUniqueKeyPolicy 的参数。 |
+| [New-AzCosmosDBSqlUniqueKeyPolicy](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqluniquekeypolicy) | 新建一个 Cosmos DB SQL PSSqlUniqueKeyPolicy 对象，用作 Set-AzCosmosDBSqlContainer 的参数。 |
+| [New-AzCosmosDBSqlCompositePath](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlcompositepath) | 新建一个 Cosmos DB SQL PSCompositePath 对象，用作 New-AzCosmosDBSqlIndexingPolicy 的参数。 |
 | [New-AzCosmosDBSqlIncludedPathIndex](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlincludedpathindex) | 创建一个类型为 PSIndexes 的新对象，用作 Set-AzCosmosDBSqlIncludedPath 的参数。 |
 | [New-AzCosmosDBSqlIncludedPath](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlincludedpath) | 创建一个类型为 PSIncludedPath 的新对象，用作 New-AzCosmosDBSqlIndexingPolicy 的参数。 |
 | [New-AzCosmosDBSqlIndexingPolicy](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlindexingpolicy) | 创建一个类型为 PSSqlIndexingPolicy 的新对象，用作 Set-AzCosmosDBSqlContainer 的参数。 |
