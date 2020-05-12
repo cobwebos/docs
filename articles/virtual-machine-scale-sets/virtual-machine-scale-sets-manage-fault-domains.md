@@ -1,18 +1,20 @@
 ---
 title: 在 Azure 虚拟机规模集中管理容错域
 description: 了解如何在创建虚拟机规模集时选择适当数量的 FD。
-author: rajsqr
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
+author: mimckitt
+ms.author: mimckitt
 ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: availability
 ms.date: 12/18/2018
-ms.author: drewm
-ms.openlocfilehash: 297837354cea4bb5ccdcc03261810dcffd144243
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: 1f5b253dbc2161892bcc2aee07c8cd3788fa5fb5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76275729"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200034"
 ---
 # <a name="choosing-the-right-number-of-fault-domains-for-virtual-machine-scale-set"></a>为虚拟机规模集选择适当数量的容错域
 默认情况下，系统会在没有区域的 Azure 区域中创建具有五个容错域的虚拟机规模集。 对于支持虚拟机规模集的区域部署并且选中了此选项的区域，容错域计数的默认值为1（适用于每个区域）。 在这种情况下，FD = 1 意味着尽最大努力将属于规模集的 VM 实例分布在多个机架上。

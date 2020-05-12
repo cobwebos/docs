@@ -3,12 +3,12 @@ title: 常见问题的解答
 description: '针对以下常见问题的解答：包括恢复服务保管库在内的 Azure 备份功能、能够备份的内容、原理、加密和限制。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: ee6df940dd36a325d3638c3ad29ebfd8dec713d8
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: c82942c17d330eb5f632ef3ce43f00b338ba85f8
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801699"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196263"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 备份 - 常见问题
 
@@ -65,7 +65,7 @@ ms.locfileid: "82801699"
 
 ### <a name="are-there-limits-on-backup-scheduling"></a>备份计划是否有限制？
 
-可以。
+是的。
 
 - 可以备份 Windows Server 或 Windows 计算机，最多一天三次。 可以将计划策略设置为每日或每周计划。
 - 可以备份 DPM，最多一天两次。 可以将计划策略设置为每日、每周、每月或每年。
@@ -75,14 +75,14 @@ ms.locfileid: "82801699"
 
 Azure 备份支持操作系统对文件和文件夹以及使用 Azure 备份服务器和 DPM 保护的工作负载应用程序进行备份。
 
-操作系统  | **SKU** | **详细信息**
+**OS** | **SKU** | **详细信息**
 --- | --- | ---
 工作站 | |
 Windows 10 64 位 | Enterprise、Pro、Home | 计算机应运行最新服务包和更新。
 Windows 8.1 64 位 | Enterprise、Pro | 计算机应运行最新服务包和更新。
 Windows 8 64 位 | Enterprise、Pro | 计算机应运行最新服务包和更新。
 Windows 7 64 位 | Ultimate、Enterprise、Professional、Home Premium、Home Basic、Starter | 计算机应运行最新服务包和更新。
-服务器 | |
+Server (服务器) | |
 Windows Server 2019 64 位 | Standard、Datacenter、Essentials | 使用最新服务包/更新。
 Windows Server 2016 64 位 | Standard、Datacenter、Essentials | 使用最新服务包/更新。
 Windows Server 2012 R2 64 位 | Standard、Datacenter、Foundation | 使用最新服务包/更新。
@@ -107,7 +107,7 @@ Windows 8 或更高版本 | 54,400 GB
 Windows 7 |1700 GB
 Windows Server 2012 或更高版本 | 54,400 GB
 Windows Server 2008、Windows Server 2008 R2 | 1700 GB
-Azure VM | 16 个数据磁盘<br/> 若要注册包含16个以上磁盘（最多32个磁盘）的有限预览版 Vm，请在AskAzureBackupTeam@microsoft.com <br><br> 容量高达 32 TB 的数据磁盘
+Azure VM | 请参阅[AZURE VM 备份的支持矩阵](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-storage-support)
 
 ### <a name="how-is-the-data-source-size-determined"></a>如何确定数据源大小？
 
@@ -135,7 +135,7 @@ BMR/系统状态 |正在备份计算机的 BMR 或系统状态的每个副本。
 
 ### <a name="if-i-cancel-a-backup-job-after-it-starts-is-the-transferred-backup-data-deleted"></a>如果在备份作业开始后取消，是否会删除已传输的备份数据？
 
-不能。 在备份作业取消之前传输到保管库中的所有数据将保留在保管库中。
+不是。 在备份作业取消之前传输到保管库中的所有数据将保留在保管库中。
 
 - Azure 备份使用检查点机制，在备份过程中偶尔要对备份数据添加检查点。
 - 由于备份数据中有检查点，下次备份过程可以验证文件的完整性。
@@ -155,13 +155,13 @@ BMR/系统状态 |正在备份计算机的 BMR 或系统状态的每个副本。
 
 ### <a name="can-i-use-different-times-for-backup-scheduling-and-retention-policies"></a>是否可以对备份计划和保留策略使用不同时间？
 
-不能。 只能在备份时间点应用保留策略。 例如，此图显示了午夜 12 点和下午 6 点创建的备份的保留策略。
+不是。 只能在备份时间点应用保留策略。 例如，此图显示了午夜 12 点和下午 6 点创建的备份的保留策略。
 
 ![计划备份和保持](./media/backup-azure-backup-faq/Schedule.png)
 
 ### <a name="if-a-backup-is-kept-for-a-long-time-does-it-take-more-time-to-recover-an-older-data-point"></a>如果备份保留了很长一段时间，是否需要更多时间才能恢复较旧的数据点？
 
-不能。 恢复最旧或最新时间点所需的时间相同。 每个恢复点的行为类似一个完整的点。
+不是。 恢复最旧或最新时间点所需的时间相同。 每个恢复点的行为类似一个完整的点。
 
 ### <a name="if-each-recovery-point-is-like-a-full-point-does-it-impact-the-total-billable-backup-storage"></a>如果每个恢复点相当于完整的点，它会影响总体可计费备份存储吗？
 
@@ -184,7 +184,7 @@ Azure 备份存储体系结构提供这两个领域的最佳产品，它以最�
 
 ### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure"></a>还原数据时，Azure 的出口流量是否需要付费？
 
-不能。 恢复是免费的，不收取传出流量费。
+不是。 恢复是免费的，不收取传出流量费。
 
 ### <a name="what-happens-when-i-change-my-backup-policy"></a>如果更改备份策略，会发生什么情况？
 
@@ -201,7 +201,7 @@ Azure 备份存储体系结构提供这两个领域的最佳产品，它以最�
 
 ### <a name="is-the-backup-data-on-azure-encrypted-as-well"></a>Azure 中的备份数据也会加密吗？
 
-可以。 Azure 中的数据为静态加密。
+是的。 Azure 中的数据为静态加密。
 
 - 对于本地备份，使用在备份到 Azure 时提供的密码提供静态加密。
 - 对于 Azure VM，使用存储服务加密 (SSE) 对数据进行静态加密。

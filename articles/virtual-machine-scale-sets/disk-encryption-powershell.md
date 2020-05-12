@@ -1,19 +1,20 @@
 ---
 title: 使用 Azure PowerShell 加密 Azure 规模集磁盘
 description: 了解如何使用 Azure PowerShell 来加密 Windows 虚拟机规模集中的 VM 实例和附加的磁盘
-author: msmbaldwin
-manager: rkarlin
-tags: azure-resource-manager
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: disks
 ms.date: 10/15/2019
-ms.author: mbaldwin
-ms.openlocfilehash: bd7f92c104e06896f4b3c8bb2adef45983cf5d4d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: a20abec6ab9925408dd769c5238186af9b7c3d1c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76278988"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195892"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-azure-powershell"></a>通过 Azure PowerShell 对虚拟机规模集中的操作系统和附加的数据磁盘进行加密
 

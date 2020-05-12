@@ -1,19 +1,20 @@
 ---
 title: 使用大型 Azure 虚拟机规模集
 description: 为了在应用程序中使用大型 Azure 虚拟机规模集，需要了解的内容。
-author: cynthn
-ms.author: cynthn
-tags: azure-resource-manager
-ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
-ms.service: virtual-machine-scale-sets
+author: mimckitt
+ms.author: mimckitt
 ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
 ms.date: 11/9/2017
-ms.openlocfilehash: 6a872e749bae6bd29dbf73d4946e631af1660a39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: c2490d8dc1d828992d309f07de1f75fa61ecb3be
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79531033"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200957"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>使用大型虚拟机规模集
 用户现在可以创建容量高达 1,000 台 VM 的 Azure [虚拟机规模集](/azure/virtual-machine-scale-sets/)。 在本文档中，_大型虚拟机规模集_定义为能够扩展到 100 台 VM 以上的规模集。 此功能通过规模集属性 (_singlePlacementGroup=False_) 设置。 
@@ -75,7 +76,7 @@ az vmss create --help
     }
 ```
 
-有关大规模集模板的完整示例，请参阅[https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json)。
+有关大规模集模板的完整示例，请参阅 [https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json) 。
 
 ## <a name="converting-an-existing-scale-set-to-span-multiple-placement-groups"></a>将现有的规模集转换为跨多个放置组
 要使现有的虚拟机规模集能够扩展到 100 个以上的 VM，需在规模集模型中将 _singlePlacementGroup_ 属性更改为 _false_。 可以使用 [Azure 资源浏览器](https://resources.azure.com/)对该属性进行测试性更改。 找到现有的规模集，选择“编辑”，并更改 _singlePlacementGroup_ 属性。__ 如果看不到该属性，则可能是在使用旧版 Microsoft.Compute API 查看规模集。

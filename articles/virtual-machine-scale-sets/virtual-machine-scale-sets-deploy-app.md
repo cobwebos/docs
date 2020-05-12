@@ -2,18 +2,19 @@
 title: 将应用程序部署到 Azure 虚拟机规模集
 description: 了解如何将应用程序部署到规模集中的 Linux 和 Windows 虚拟机实例
 author: ju-shim
-tags: azure-resource-manager
-ms.assetid: f8892199-f2e2-4b82-988a-28ca8a7fd1eb
-ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.date: 05/29/2018
 ms.author: jushiman
-ms.openlocfilehash: e157db79f1835a8ca891dd360a99e3319565d1d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
+ms.date: 05/29/2018
+ms.reviewer: avverma
+ms.custom: avverma
+ms.openlocfilehash: 7c39088890680b6cfc903083283ed09cb7618d16
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81011457"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124918"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>在虚拟机规模集上部署应用程序
 
