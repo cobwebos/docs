@@ -4,14 +4,14 @@ description: Azure PowerShell 脚本示例 - 更新 Azure Cosmos 帐户的区域
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 03/21/2020
+ms.date: 05/01/2020
 ms.author: mjbrown
-ms.openlocfilehash: 4a8e24b4445e2bf29b35e87600de260c523d4376
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: c58f59a08b99c3ce9f69e0c6b0633ac8d0d9c00b
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80367170"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652015"
 ---
 # <a name="update-an-azure-cosmos-accounts-regions-using-powershell"></a>使用 PowerShell 更新 Azure Cosmos 帐户的区域
 
@@ -42,8 +42,10 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 | Command | 说明 |
 |---|---|
-|**Azure 资源**| |
-| [Set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) | 更新资源。 |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | 列出 Cosmos DB 帐户或获取指定的 Cosmos DB 帐户。 |
+| [New-AzCosmosDBLocationObject](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdblocationobject) | 创建一个 PSLocation 类型对象，用作 Update-AzCosmosDBAccountRegion 的参数。 |
+| [Update-AzCosmosDBAccountRegion](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbaccountregion) | 更新 Cosmos DB 帐户的区域。 |
 |**Azure 资源组**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 |||

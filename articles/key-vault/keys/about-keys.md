@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3d89275e1418035fed8aad3ffddd8def2c1d59ce
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: f96ec80b529c594a383be8d668fd28b77372cd80
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81686061"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900922"
 ---
 # <a name="about-azure-key-vault-keys"></a>关于 Azure Key Vault 密钥
 
@@ -103,9 +103,9 @@ Key Vault 支持对密钥对象执行以下操作：
 
 在 Key Vault 中创建密钥后，即可使用密钥执行以下加密操作：  
 
--   **签名并验证**：严格来讲，此操作应该为“签名哈希”或“验证哈希”，因为 Key Vault 不支持创建签名过程中的内容哈希。 应用程序应哈希要在本地签名的数据，然后请求 Key Vault 对哈希签名。 支持签名哈希的验证，作为可能无法访问 [公共] 密钥材料的应用程序的一种便捷操作。 为获得最佳应用程序性能，请验证操作在本地执行。  
+-   **签名并验证**：严格来讲，此操作应该为“签名哈希”或“验证哈希”，因为 Key Vault 不支持创建签名过程中的内容哈希。 应用程序应哈希要在本地签名的数据，然后请求 Key Vault 对哈希签名。 支持签名哈希的验证，作为可能无法访问 [公共] 密钥材料的应用程序的一种便捷操作。 为获得最佳应用程序性能，VERIFY 操作应在本地执行。  
 -   **密钥加密/包装**：Key Vault 中存储的一个密钥可以用来保护另一个密钥，通常是对称内容加密密钥 (CEK)。 如果 Key Vault 中的密钥是非对称密钥，将使用密钥加密。 例如，RSA-OAEP 和 WRAPKEY/UNWRAPKEY 操作等同于 ENCRYPT/DECRYPT。 如果 Key Vault 中的密钥是对称密钥，则使用密钥包装。 例如，AES-KW。 支持 WRAPKEY 操作，作为可能无法访问 [公共] 密钥材料的应用程序的一种便捷操作。 为获得最佳应用程序性能，WRAPKEY 操作应在本地执行。  
--   **加密和解密**：存储在 Key Vault 中的密钥可用于加密或解密单个数据块。 块大小取决于密钥类型和所选加密算法。 支持加密操作，作为可能无法访问 [公共] 密钥材料的应用程序的一种便捷操作。 为获得最佳应用程序性能，加密操作应在本地执行。  
+-   **加密和解密**：存储在 Key Vault 中的密钥可用于加密或解密单个数据块。 块大小取决于密钥类型和所选加密算法。 支持加密操作，作为可能无法访问 [公共] 密钥材料的应用程序的一种便捷操作。 为获得最佳应用程序性能，ENCRYPT 操作应在本地执行。  
 
 虽然使用非对称密钥的 WRAPKEY/UNWRAPKEY 可能看似多余（因为操作等同于 ENCRYPT/DECRYPT），但使用不同的操作却非常重要。 此不同提供了这些操作的语义和授权分离，并在服务支持其他密钥类型时提供一致性。  
 

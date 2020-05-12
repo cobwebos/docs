@@ -1,6 +1,6 @@
 ---
-title: 快速入门 - 查看用户对 Azure 资源的访问权限
-description: 本快速入门介绍如何使用基于角色的访问控制 (RBAC) 和 Azure 门户查看用户或其他安全主体对 Azure 资源的访问权限。
+title: 快速入门 - 查看用户对 Azure 资源的访问权限 - Azure RBAC
+description: 本快速入门介绍如何使用 Azure 门户和 Azure 基于角色的访问控制 (Azure RBAC) 查看用户或其他安全主体对 Azure 资源的访问权限。
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b23c10fc2a551b8044b208911dbc048968b06564
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 9be53aa964e75bab0b90495640537fe927a5af0e
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74419619"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734155"
 ---
 # <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>快速入门：查看用户对 Azure 资源的访问权限
 
-可以使用[基于角色的访问控制 (RBAC)](overview.md) 中的“访问控制(IAM)”  边栏选项卡来查看用户或其他安全主体对 Azure 资源的访问权限。 但是，有时你只需要快速查看单个用户或其他安全主体的访问权限。 执行此操作的最简单方法是使用 Azure 门户中的**检查访问权限**功能。
+可以使用 [Azure 基于角色的访问控制 (Azure RBAC)](overview.md) 中的“访问控制(标识和访问管理)”  边栏选项卡来查看用户或其他安全主体对 Azure 资源的访问权限。 但是，有时你只需要快速查看单个用户或其他安全主体的访问权限。 执行此操作的最简单方法是使用 Azure 门户中的**检查访问权限**功能。
 
 ## <a name="view-role-assignments"></a>查看角色分配
 
@@ -54,4 +54,4 @@ ms.locfileid: "74419619"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [教程：使用 RBAC 和 Azure 门户授予用户对 Azure 资源的访问权限](quickstart-assign-role-user-portal.md)
+> [教程：使用 Azure 门户授予用户对 Azure 资源的访问权限](quickstart-assign-role-user-portal.md)

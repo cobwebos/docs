@@ -5,14 +5,14 @@ author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 04/30/2020
 ms.author: banders
-ms.openlocfilehash: 21c4b7de0324abd2755644265bec61de5e16724f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d6d91b455501e2deec4f5ea36e48fafd17144b2c
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199409"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628140"
 ---
 # <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>通过预留容量节省 Azure 独立应用服务印花费
 
@@ -41,7 +41,7 @@ ms.locfileid: "77199409"
 可在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D)中购买独立印花预留容量。 通过[提前付款或按月付款](monthly-payments-reservations.md)的方式为预留付款。 若要购买预留容量，你必须拥有至少一个企业订阅的所有者角色，或者拥有使用即用即付费率的单个订阅的所有者角色。
 
 - 对于企业订阅，必须在 [EA 门户](https://ea.azure.com/)中启用“添加预留实例”选项  。 或者，如果禁用了该设置，则必须是 EA 管理员。
-- 对于云解决方案提供商 (CSP) 计划，只有管理员代理或销售代理可以购买 SQL 数据仓库预留容量。
+- 对于云解决方案提供商 (CSP) 计划，只有管理员代理或销售代理可以购买 Azure Synapse Analytics 预留容量。
 
 **若要进行购买，请执行以下操作：**
 

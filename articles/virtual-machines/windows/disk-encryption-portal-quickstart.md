@@ -7,12 +7,12 @@ ms.service: virtual-machines-windows
 ms.subservice: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 3a5fb354ab32dd560a94875dd84d891ce0b9d68c
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 2d1600a688af09515b069a3161d724bb8882596a
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82081738"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791164"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-with-the-azure-portal"></a>快速入门：使用 Azure 门户创建和加密 Windows 虚拟机
 
@@ -34,8 +34,18 @@ ms.locfileid: "82081738"
 1. 对于“区域”，请选择在构建密钥保管库时使用的区域（例如“美国东部”）。  
 1. 确定“大小”为“标准 D2s v3”。  
 1. 在“管理员帐户”下，选择“密码”。   输入用户名和密码。
-    ![ResourceGroup 创建屏幕](../media/disk-encryption/portal-qs-windows-vm-creation.png)
-1. 选择“管理”选项卡，验证自己是否有一个诊断存储帐户。 如果没有存储帐户，请选择“新建”，为新帐户提供一个名称，然后选择“确定”![ResourceGroup 创建屏幕](../media/disk-encryption/portal-qs-vm-creation-storage.png)
+
+    :::image type="content" source="../media/disk-encryption/portal-qs-windows-vm-creation.png" alt-text="ResourceGroup 创建屏幕":::
+
+    > [!WARNING]
+    > “磁盘”选项卡在“磁盘选项”  下提供了一个“加密类型”字段。 此字段用于指定[托管磁盘](managed-disks-overview.md) + CMK 的加密选项，而不是用于 Azure 磁盘加密。 
+    >
+    > 为了避免混淆，建议在完成本教程时完全跳过“磁盘”  选项卡。 
+
+1. 选择“管理”选项卡，验证自己是否有一个诊断存储帐户。 如果没有存储帐户，请选择“新建”，为新帐户指定一个名称，然后选择“确定”
+
+    :::image type="content" source="../media/disk-encryption/portal-qs-vm-creation-storage.png" alt-text="ResourceGroup 创建屏幕":::
+
 1. 单击“查看 + 创建”。
 1. 在“创建虚拟机”页上，  可以查看要创建的 VM 的详细信息。 准备好以后，选择“创建”  。
 
@@ -47,19 +57,19 @@ ms.locfileid: "82081738"
 1. 在左侧边栏上，选择“磁盘”。 
 1. 在“磁盘”屏幕上，选择“加密”  。 
 
-    ![磁盘和加密选择](../media/disk-encryption/portal-qs-disks-to-encryption.png)
+    :::image type="content" source="../media/disk-encryption/portal-qs-disks-to-encryption.png" alt-text="磁盘和加密选择":::
 
 1. 在加密屏幕的“要加密的磁盘”下，选择“OS 和数据磁盘”。  
 1. 在“加密设置”下，选择“选择密钥保管库和用于加密的密钥”   。
 1. 在“从 Azure Key Vault 选择密钥”屏幕上选择“新建”   。
 
-    ![磁盘和加密选择](../media/disk-encryption/portal-qs-keyvault-create.png)
+    :::image type="content" source="../media/disk-encryption/portal-qs-keyvault-create.png" alt-text="磁盘和加密选择":::
 
 1. 在“创建密钥保管库”屏幕上，确保资源组与用于创建 VM 的资源组相同  。
 1. 为密钥保管库命名。  Azure 中的每个密钥保管库都必须具有唯一名称。
 1. 在“访问策略”选项卡上，选中“用于卷加密的 Azure 磁盘加密”框   。
 
-    ![磁盘和加密选择](../media/disk-encryption/portal-qs-keyvault-enable.png)
+    :::image type="content" source="../media/disk-encryption/portal-qs-keyvault-enable.png" alt-text="磁盘和加密选择":::
 
 1. 选择“查看 + 创建”  。  
 1. 在密钥保管库通过验证后，选择“创建”  。 这将让你返回“从 Azure Key Vault 选择密钥”屏幕  。

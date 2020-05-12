@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: e24684063e73b8f8b659304987f46632f3601e8c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 07ae08f87c9a3e788944a48f6d5a24e2b076d16f
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426116"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732319"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>访问防火墙保护下的 Azure 密钥保管库
 
@@ -25,7 +25,7 @@ ms.locfileid: "81426116"
 
 * 通过 Azure Active Directory (Azure AD) 进行身份验证。
 * Azure 密钥保管库的管理。 这包括通过 Azure 资源管理器创建、读取、更新、删除和设置访问策略。
-* 通过密钥保管库特定的终结点（例如 [https://yourvaultname.vault.azure.net](https://yourvaultname.vault.azure.net)），访问和管理密钥保管库本身存储的对象（密钥和机密）。  
+* 通过密钥保管库特定的终结点（例如 `https://yourvaultname.vault.azure.net`），访问和管理密钥保管库本身存储的对象（密钥和机密）。  
 
 根据配置和环境，会有一些不同。
 
@@ -64,7 +64,13 @@ ms.locfileid: "81426116"
 
 ## <a name="ip-address-ranges"></a>IP 地址范围
 
-密钥保管库服务使用其他 Azure 资源，如 PaaS 基础结构。 因此，不可能提供密钥保管库服务终结点在任何特定时间具有的 IP 地址的特定范围。 如果防火墙仅支持 IP 地址范围，请参阅 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)文档。 身份验证和标识 (Azure Active Directory) 是一项全球性服务，可能会故障转移到其他区域或移动流量，恕不另行通知。 在这种情况下，[身份验证和标识 IP 地址](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity_ip)中列出的所有 IP 范围都应添加到防火墙中。
+密钥保管库服务使用其他 Azure 资源，如 PaaS 基础结构。 因此，不可能提供密钥保管库服务终结点在任何特定时间具有的 IP 地址的特定范围。 如果防火墙仅支持 IP 地址范围，请参阅“Microsoft Azure 数据中心 IP 范围”文档，网址为：
+* [公共](https://www.microsoft.com/en-us/download/details.aspx?id=56519)
+* [US Gov](https://www.microsoft.com/en-us/download/details.aspx?id=57063)
+* [德国](https://www.microsoft.com/en-us/download/details.aspx?id=57064)
+* [中国](https://www.microsoft.com/en-us/download/details.aspx?id=57062)
+
+身份验证和标识 (Azure Active Directory) 是一项全球性服务，可能会故障转移到其他区域或移动流量，恕不另行通知。 在这种情况下，[身份验证和标识 IP 地址](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity_ip)中列出的所有 IP 范围都应添加到防火墙中。
 
 ## <a name="next-steps"></a>后续步骤
 

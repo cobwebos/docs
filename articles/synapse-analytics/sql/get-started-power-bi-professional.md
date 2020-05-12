@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 0ce8f3a447f1896ae6d96d343782f8cdb44d4c6f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 4bedcc1f7375cb83131b00be93c785069a7d3e7d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81425326"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692395"
 ---
 # <a name="connect-to-synapse-sql-with-power-bi-professional"></a>通过 Power BI Professional 连接到 Synapse SQL
 
@@ -26,7 +26,7 @@ ms.locfileid: "81425326"
 > - [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > - [SSMS](get-started-ssms.md)
 
-在本教程中，我们将完成将 Power BI Desktop 连接到 SQL 按需版本（预览版）的步骤。
+在本教程中，我们需完成将 Power BI Desktop 连接到 SQL 按需版本（预览版）的步骤。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -46,7 +46,7 @@ ms.locfileid: "81425326"
 | SQL 按需版本服务终结点地址    | 将用作服务器名称                                   |
 | SQL 按需版本服务终结点区域     | 将用来确定我们在示例中将使用什么存储 |
 | 用来访问终结点的用户名和密码 | 将用来访问终结点                               |
-| 将用来创建视图的数据库     | 在示例中，我们将从此数据库着手       |
+| 用于创建视图的数据库     | 在示例中，我们将从此数据库着手       |
 
 ## <a name="first-time-setup"></a>首次设置
 
@@ -57,12 +57,12 @@ ms.locfileid: "81425326"
 
 ### <a name="create-database"></a>创建数据库
 
-你将使用演示环境，因此应当创建自己的用于演示的数据库。 数据库是必需的，需要在其中创建视图。 在本文档中的一些示例查询中，你将使用此数据库。
+在此入门文章中，你应创建自己的用作演示的数据库。 创建视图时需要数据库。 你将在本文档的一些示例查询中使用此数据库。
 
 > [!NOTE]
-> 请注意，数据库仅用于查看元数据，不用于查看实际数据。
+> 数据库仅用于查看元数据，而不用于实际数据。
 >
-> 记下你使用的数据库名称，稍后需要用到它。
+> 请记下使用的数据库名称，稍后需要用到它。
 
 ```sql
 DROP DATABASE IF EXISTS demo;
@@ -73,7 +73,7 @@ DROP DATABASE IF EXISTS demo;
 需要先创建凭据，然后才能运行查询。 SQL 按需版本服务将使用此凭据访问存储中的文件。
 
 > [!NOTE]
-> 请注意，需要创建用于访问存储帐户的凭据。 尽管 SQL 按需版本可以访问不同区域中的存储，但将存储和 Azure Synapse 工作区置于同一区域可提供性能更好的体验。
+> 你需要创建用于访问存储帐户的凭据。 尽管 SQL 按需版本可以访问不同区域中的存储，但将存储和 Azure Synapse 工作区置于同一区域中可提供性能更好的体验。
 
 **有关如何为人口普查数据容器创建凭据的代码片段**，请运行：
 
@@ -92,12 +92,13 @@ GO
 
 ## <a name="creating-power-bi-desktop-report"></a>创建 Power BI Desktop 报表
 
-打开 Power BI Desktop 应用程序并选择“获取数据”选项。
+打开 Power BI Desktop 应用程序并选择“获取数据”选项。 
+
 ![打开 Power BI Desktop 应用程序并选择“获取数据”。](./media/get-started-power-bi-professional/step-0-open-powerbi.png)
 
 ### <a name="step-1---select-data-source"></a>步骤 1 - 选择数据源
 
-在菜单中选择“Azure”，然后选择“Azure SQL 数据库”。
+在菜单中选择“Azure”  ，然后选择“Azure SQL 数据库”  。
 ![选择数据源。](./media/get-started-power-bi-professional/step-1-select-data-source.png)
 
 ### <a name="step-2---select-database"></a>步骤 2 - 选择数据库

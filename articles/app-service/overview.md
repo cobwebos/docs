@@ -3,14 +3,14 @@ title: 概述
 description: 了解 Azure 应用服务如何帮助用户开发和托管 Web 应用程序
 ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
-ms.date: 01/04/2017
+ms.date: 04/30/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: f8449c516bce3f3ab949e88808f73c7240995f99
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 7db55a420a9789ef15a5296a6b0200d6b8910ec6
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535632"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597852"
 ---
 # <a name="app-service-overview"></a>应用服务概述
 
@@ -25,6 +25,7 @@ Azure 应用服务是一项基于 HTTP 的服务，用于托管 Web 应用程序
 下面是应用服务的一些主要功能：
 
 * **多个语言和框架** - 应用服务针对 ASP.NET、ASP.NET Core、Java、Ruby、Node.js、PHP 或 Python 提供一流支持。 我们还能以后台服务的形式运行 [PowerShell 和其他脚本或可执行文件](webjobs-create.md)。
+* **托管生产环境** - 应用服务会自动[修补并维护 OS 和语言框架](overview-patch-os-runtime.md)。 将时间花在编写优秀应用上，让 Azure 来考虑平台问题。
 * **DevOps 优化** - 使用 Azure DevOps、GitHub、BitBucket、Docker 中心或 Azure 容器注册表设置[持续集成和部署](deploy-continuous-deployment.md)。 通过 [测试和过渡环境](deploy-staging-slots.md)提升更新。 在应用服务中，利用 [Azure PowerShell](/powershell/azureps-cmdlets-docs) 或[跨平台命令行接口 (CLI)](/cli/azure/install-azure-cli) 来管理应用。
 * **具有高可用性的全局缩放** - 以手动或自动方式进行[增大](manage-scale-up.md)或[扩大](../monitoring-and-diagnostics/insights-how-to-scale.md)。 在 Microsoft 全球数据中心基础结构中的任意位置托管应用，并且应用服务 [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) 承诺高可用性。
 * **与 SaaS 平台和本地数据建立连接** - 从适用于企业系统（例如 SAP）的 50 多个[连接器](../connectors/apis-list.md)、SaaS 服务（例如 Salesforce）以及 Internet 服务（例如 Facebook）中进行选择。 使用[混合连接](app-service-hybrid-connections.md)和 [Azure 虚拟网络](web-sites-integrate-with-vnet.md)访问本地数据。

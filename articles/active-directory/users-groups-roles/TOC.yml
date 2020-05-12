@@ -68,7 +68,7 @@
           href: /azure/active-directory/b2b/use-dynamic-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: 管理目录
       items:
-        - name: 管理目录
+        - name: Azure AD 组织
           href: /azure/active-directory/fundamentals/active-directory-administer?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: 管理域名
           href: domains-manage.md
@@ -84,7 +84,7 @@
           href: /azure/active-directory/connect/active-directory-aadconnect?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: 管理组
       items:
-        - name: 使用 Azure AD 组管理访问权限
+        - name: 使用组管理访问权限
           href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: 创建组（Azure 门户）
           href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
@@ -134,6 +134,8 @@
           href: groups-assign-sensitivity-labels.md
     - name: 分配许可证
       items:
+        - name: 将许可证分配给用户
+          href: /azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: 将许可证分配给组
           href: licensing-groups-assign.md
         - name: 解决组的许可证问题

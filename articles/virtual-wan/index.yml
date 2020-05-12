@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: cherylmc
   ms.author: cherylmc
-  ms.date: 11/13/2019
-  ms.openlocfilehash: f004b965901f161d16034f0cea91a99c50cc2575
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 05/08/2020
+  ms.openlocfilehash: 02385eaefec2ed095b0922d5b098139caf56daec
+  ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "74072233"
+  ms.lasthandoff: 05/10/2020
+  ms.locfileid: "83005454"
 landingContent:
 - title: 关于虚拟 WAN
   linkLists:
@@ -53,10 +53,12 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: 全球传输网络体系结构
-      url: virtual-wan-global-transit-network-architecture.md
     - text: 迁移到虚拟 WAN
       url: migrate-from-hub-spoke-topology.md
+    - text: 全球传输网络体系结构
+      url: virtual-wan-global-transit-network-architecture.md
+    - text: SD-WAN 连接体系结构
+      url: sd-wan-connectivity-architecture.md
 - title: 参考
   linkLists:
   - linkListType: reference
