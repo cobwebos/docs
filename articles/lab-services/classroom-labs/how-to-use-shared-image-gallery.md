@@ -11,20 +11,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/24/2020
+ms.date: 05/08/2020
 ms.author: spelluru
-ms.openlocfilehash: c611ecdb5a2534f7368e533e3e19e6e3f96de57f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 294a270107033590e340db49b85e8a67acbbb701
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78190443"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116860"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>在 Azure 实验室服务中使用共享映像库
-本文介绍了教师/实验室管理员如何保存模板虚拟机映像，使其可供其他人重复使用。 这些映像保存在 Azure[共享映像库](../../virtual-machines/windows/shared-image-galleries.md)中。 作为第一步，实验室管理员将现有的共享映像库附加到实验室帐户。 附加共享映像库后，在实验室帐户中创建的实验室可以将映像保存到共享映像库。 其他教师可以从共享图像库中选择此映像，以创建其类的模板。 
+本文介绍了教师/实验室管理员如何将模板虚拟机映像保存到[共享映像库](../../virtual-machines/windows/shared-image-galleries.md)，以便其他人可以使用它创建实验室。 
 
-> [!NOTE]
-> 目前，Azure 实验室服务仅支持创建基于共享映像库中的**一般化**VM 映像（而非专用映像）的模板 vm。 
+## <a name="scenarios"></a>方案
+此功能支持以下两种方案： 
+
+- 实验室帐户管理员将共享映像库附加到实验室帐户，并将图像上传到实验室上下文外部的共享映像库。 然后，实验室创建者可以使用共享映像库中的映像创建实验室。 
+- 实验室帐户管理员将共享的映像库附加到实验室帐户。 实验室创建者（讲师）将其实验室的自定义映像保存到共享映像库。 然后，其他实验室创建者可以从共享图像库中选择此映像，为其实验室创建模板。 
+
+    将映像保存到共享映像库时，Azure 实验室服务会将已保存的映像复制到相同[地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中可用的其他区域。 它确保映像可用于在同一地理区域中的其他区域创建的实验室。 将映像保存到共享映像库会产生额外的费用，其中包括所有复制映像的成本。 此成本不同于 Azure 实验室服务的使用成本。 有关共享映像库定价的详细信息，请参阅[共享图像库–计费]( https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#billing)。
+
+    > [!NOTE]
+    > Azure 实验室服务支持基于共享映像库中的**通用**映像和**专用**映像创建模板 vm。 
+
 
 ## <a name="prerequisites"></a>必备条件
 - 使用[Azure PowerShell](../../virtual-machines/windows/shared-images.md)或[Azure CLI](../../virtual-machines/linux/shared-images.md)创建共享映像库。
@@ -47,7 +56,12 @@ ms.locfileid: "78190443"
 
     ![导出已完成](../media/how-to-use-shared-image-gallery/exporting-image-completed.png)
 
-您还可以将图像上传到实验室上下文之外的共享映像库。 有关详细信息，请参阅[共享映像库概述](../../virtual-machines/windows/shared-images.md)。 
+    > [!NOTE]
+    > 将图像保存到共享图像库后，可以在创建其他实验室时从库中使用该图像。 
+    > 
+    > 您还可以将图像上传到实验室上下文之外的共享映像库。 有关详细信息，请参阅[共享映像库概述](../../virtual-machines/windows/shared-images.md)。 
+
+    
 
 ## <a name="use-an-image-from-the-shared-image-gallery"></a>使用共享映像库中的映像
 在创建新的实验室期间，教师/教授可以在模板的共享映像库中选择可用的自定义映像。

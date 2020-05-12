@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/06/2020
+ms.date: 05/11/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 1161575104efe8cfc797f84c109a12116f723cad
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: def198a15710d0aff4a943300eedc338a7772e46
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926572"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115789"
 ---
 # <a name="security-tokens"></a>安全令牌
 
@@ -31,7 +31,7 @@ ms.locfileid: "82926572"
 **ID 令牌**作为[OpenID connect](v2-protocols-oidc.md)流的一部分发送到客户端应用程序。 它们可以一起发送来代替访问令牌，可供客户端用来对用户进行身份验证。 若要了解有关 Microsoft 标识平台如何颁发 ID 令牌的详细信息，请参阅[id 令牌](id-tokens.md)。
 
 > [!NOTE]
-> 本文介绍了 OAuth2 和 OpenID Connect 协议的安全令牌。 许多企业应用程序使用 SAML 对用户进行身份验证。 有关 SAML 断言的信息，请参阅[AZURE AD saml 令牌参考](reference-saml-tokens.md)。
+> 本文讨论 OAuth2 和 OpenID Connect 协议使用的安全令牌。 许多企业应用程序使用 SAML 对用户进行身份验证。 有关 SAML 断言的信息，请参阅[AZURE AD saml 令牌参考](reference-saml-tokens.md)。
 
 ## <a name="validating-security-tokens"></a>验证安全令牌
 
@@ -46,7 +46,7 @@ ms.locfileid: "82926572"
 
 ## <a name="json-web-tokens-jwts-and-claims"></a>JSON Web 令牌（Jwt）和声明
 
-Microsoft 标识平台将安全令牌实现为包含**声明**的**JSON Web 令牌（jwt）** 。
+Microsoft 标识平台将安全令牌实现为包含**声明**的**JSON Web 令牌（jwt）** 。 由于使用 Jwt 作为安全令牌，因此这种形式的身份验证有时称为**JWT 身份验证**。
 
 [声明](developer-glossary.md#claim)向另一个实体（例如资源服务器）提供有关一个实体（例如客户端应用程序或[资源所有者](developer-glossary.md#resource-owner)）的断言。 声明还可以称为 JWT 声明或 JSON Web 令牌声明。
 

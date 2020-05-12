@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9002447df44a1f0c87ec9de03e316d7d12d8a626
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cfde52db9cbe5bc14be7b30c1063215472bff699
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105652"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116282"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>配置 Azure 多重身份验证设置
 
 本文介绍如何在 Azure 门户中管理多重身份验证设置。 本文涵盖了各种主题，可帮助你充分利用 Azure 多重身份验证。 并非所有版本的 Azure 多重身份验证都提供所有这些功能。
 
-通过浏览到**Azure Active Directory** > **安全** > **MFA**，你可以从 Azure 门户访问与 Azure 多重身份验证相关的设置。
+通过浏览到**Azure Active Directory**  >  **安全**  >  **MFA**，你可以从 Azure 门户访问与 Azure 多重身份验证相关的设置。
 
 ![Azure 门户 - Azure AD 多重身份验证设置](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-portal.png)
 
@@ -30,13 +30,13 @@ ms.locfileid: "82105652"
 
 这些设置中的一部分适用于 MFA 服务器和/或 Azure MFA。
 
-| Feature | 说明 |
+| 功能 | 说明 |
 | ------- | ----------- |
 | 帐户锁定 | 如果连续有过多的身份验证尝试遭到拒绝，则将暂时在多重身份验证服务中锁定帐户。 此功能仅适用于输入 PIN 进行身份验证的用户。 （MFA 服务器） |
 | [阻止/解除阻止用户](#block-and-unblock-users) | 用于阻止特定用户接收多重身份验证请求。 自动拒绝任何针对受阻止用户的身份验证尝试。 用户将在阻止日起 90 天内受到阻止。 |
 | [欺诈警报](#fraud-alert) | 配置与用户报告欺诈验证请求相关的设置 |
 | [通知](#notifications) | 允许通过 MFA 服务器来通知事件。 |
-| [OATH 令牌](concept-authentication-methods.md#oath-hardware-tokens-public-preview) | 用在基于云的 Azure MFA 环境中，为用户托管 OATH 令牌。 |
+| [OATH 令牌](concept-authentication-methods.md#oath-hardware-tokens) | 用在基于云的 Azure MFA 环境中，为用户托管 OATH 令牌。 |
 | [电话呼叫设置](#phone-call-settings) | 为云和本地环境配置与电话呼叫和问候语相关的设置。 |
 | 提供程序 | 此项会显示任何现有的与帐户相关联的身份验证提供程序。 自 2018 年 9 月 1 日起，可能无法创建新的身份验证提供程序 |
 
@@ -44,7 +44,7 @@ ms.locfileid: "82105652"
 
 此部分的设置仅适用于 MFA 服务器。
 
-| Feature | 说明 |
+| 功能 | 说明 |
 | ------- | ----------- |
 | 服务器设置 | 下载 MFA 服务器并生成激活凭据，以便初始化环境 |
 | [免验证一次](#one-time-bypass) | 在有限的时间内，允许用户在不执行双重验证的情况下进行身份验证。 |
@@ -62,15 +62,15 @@ ms.locfileid: "82105652"
 ### <a name="block-a-user"></a>阻止用户
 
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-2. 浏览到**Azure Active Directory** > **安全** > **MFA** > **阻止/解除阻止用户**。
+2. 浏览到**Azure Active Directory**  >  **安全**  >  **MFA**  >  **阻止/解除阻止用户**。
 3. 选择“添加”以阻止用户****。
-4. 选择“复制组”****。 将被阻止的用户的用户名输入**为\@用户名 domain.com**。 在“原因”字段输入注释****。
+4. 选择“复制组”****。 将被阻止的用户的用户名输入为**用户名 \@ domain.com**。 在“原因”字段输入注释****。
 5. 选择“添加”，完成阻止用户操作****。
 
 ### <a name="unblock-a-user"></a>解除阻止用户
 
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-2. 浏览到**Azure Active Directory** > **安全** > **MFA** > **阻止/解除阻止用户**。
+2. 浏览到**Azure Active Directory**  >  **安全**  >  **MFA**  >  **阻止/解除阻止用户**。
 3. 在“操作”列中要解除阻止的用户旁，选择“解除阻止”********。
 4. 在“解除阻止原因”字段输入注释****。
 5. 选择“解除阻止”完成解除阻止用户操作****。
@@ -82,14 +82,14 @@ ms.locfileid: "82105652"
 ### <a name="turn-on-fraud-alerts"></a>打开欺诈警报
 
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-2. 浏览到**Azure Active Directory** > **安全** > **MFA** > **欺诈警报**。
+2. 浏览到**Azure Active Directory**  >  **安全**  >  **MFA**  >  **欺诈警报**。
 3. 将“允许用户提交欺诈警报”设置为“打开”。********
 4. 选择“保存”  。
 
 ### <a name="configuration-options"></a>配置选项
 
 * **报告欺诈时阻止用户** - 如果用户报告欺诈，那么他们的帐户将被阻止 90 天，或者直到管理员解除阻止他们的帐户。 管理员可以使用登录报表查看登录并采取相应的操作阻止将来的欺诈。 然后管理员可以[解除阻止](#unblock-a-user)用户帐户。
-* **初始问候期间报告欺诈的代码** - 当用户接收电话呼叫来执行双重验证时，他们通常按 **#** 来确认其登录。 若要报告欺诈行为，用户需要在按下**#** 时输入代码。 此代码默认为 **0**，但可以自定义此代码。
+* **初始问候期间报告欺诈的代码** - 当用户接收电话呼叫来执行双重验证时，他们通常按 **#** 来确认其登录。 若要报告欺诈行为，用户需要在按下时输入代码 **#** 。 此代码默认为 **0**，但可以自定义此代码。
 
    >[!NOTE]
    >Microsoft 的默认问候语音将指示用户按 0# 以提交欺诈警报。**** 如果要使用 0 以外的代码，请录制并上传自定义语音问候，为用户提供相应指示。****
@@ -98,11 +98,11 @@ ms.locfileid: "82105652"
 ### <a name="view-fraud-reports"></a>查看欺诈报告
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 选择**Azure Active Directory** > **登录** > **身份验证详细信息**。 欺诈报表现在是标准 Azure AD 登录报表的一部分，它将显示为 "MFA 已拒绝"、"欺诈代码已进入 **" 的 "结果详细信息"** 。
+2. 选择**Azure Active Directory**  >  **登录**  >  **身份验证详细信息**。 欺诈报表现在是标准 Azure AD 登录报表的一部分，它将显示为 "MFA 已拒绝"、"欺诈代码已进入 **" 的 "结果详细信息"** 。
  
 ## <a name="notifications"></a>通知
 
-在此处为将接收欺诈警报电子邮件**Azure Active Directory** > **安全** > **多重身份验证** > **通知**的用户配置电子邮件地址。
+在此处为将接收欺诈警报电子邮件**Azure Active Directory**  >  **安全**  >  **多重身份验证**  >  **通知**的用户配置电子邮件地址。
 
 ![通知欺诈警报电子邮件示例](./media/howto-mfa-mfasettings/multi-factor-authentication-fraud-alert-email.png)
 
@@ -145,12 +145,12 @@ ms.locfileid: "82105652"
 ### <a name="set-up-a-custom-message"></a>设置自定义消息
 
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-1. 浏览到**Azure Active Directory** > **安全** > **MFA** > **电话呼叫设置**。
+1. 浏览到**Azure Active Directory**  >  **安全**  >  **MFA**  >  **电话呼叫设置**。
 1. 选择“添加问候语”****。
 1. 选择问候的类型。
 1. 选择语言。
 1. 选择要上传的 .mp3 或 .wav 声音文件。
-1. 选择 **添加** 。
+1. 选择“添加”  。
 
 ### <a name="custom-voice-message-defaults"></a>自定义语音消息默认值
 
@@ -184,16 +184,16 @@ ms.locfileid: "82105652"
 ### <a name="create-a-one-time-bypass"></a>创建免验证一次
 
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-2. 浏览到**Azure Active Directory** > **安全** > **MFA** > **一次性跳过**。
-3. 选择 **添加** 。
+2. 浏览到**Azure Active Directory**  >  **安全**  >  **MFA**  >  **一次性跳过**。
+3. 选择“添加”  。
 4. 如有必要，可选择要免验证的复制组。
-5. 输入用户名 domain.com 作为**用户名\@**。 输入免验证应持续的秒数。 输入免验证的原因。
-6. 选择 **添加** 。 时间限制将立即生效。 用户需在免验证一次过期前登录。
+5. 输入用户名 domain.com 作为**用户名 \@ **。 输入免验证应持续的秒数。 输入免验证的原因。
+6. 选择“添加”  。 时间限制将立即生效。 用户需在免验证一次过期前登录。
 
 ### <a name="view-the-one-time-bypass-report"></a>查看免验证一次报告
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 浏览到**Azure Active Directory** > **安全** > **MFA** > **一次性跳过**。
+2. 浏览到**Azure Active Directory**  >  **安全**  >  **MFA**  >  **一次性跳过**。
 
 ## <a name="caching-rules"></a>缓存规则
 
@@ -205,15 +205,15 @@ ms.locfileid: "82105652"
 ### <a name="set-up-caching"></a>设置缓存
 
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-2. 浏览到**Azure Active Directory** > **安全** > **MFA** > **缓存规则**。
-3. 选择 **添加** 。
+2. 浏览到**Azure Active Directory**  >  **安全**  >  **MFA**  >  **缓存规则**。
+3. 选择“添加”  。
 4. 从下拉列表中选择缓存类型****。 输入最大缓存秒数****。
 5. 如有必要，可选择身份验证类型并指定应用程序。
-6. 选择 **添加** 。
+6. 选择“添加”  。
 
 ## <a name="mfa-service-settings"></a>MFA 服务设置
 
-Azure 多重身份验证的应用密码、受信任 IP、验证选项以及“记住多重身份验证”设置可以在服务设置中找到。 可以通过浏览到**Azure Active Directory** > **安全** > **MFA** > **Getting started** > 入门**配置** > **其他基于云的 mfa 设置**，从 Azure 门户访问服务设置。
+Azure 多重身份验证的应用密码、受信任 IP、验证选项以及“记住多重身份验证”设置可以在服务设置中找到。 可以通过浏览到**Azure Active Directory**  >  **安全**  >  **MFA**  >  **入门**  >  **配置**  >  **其他基于云的 mfa 设置**，从 Azure 门户访问服务设置。
 
 ![Azure 多重身份验证服务设置](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-service-settings.png)
 
@@ -278,8 +278,8 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 默认情况下，用户无法创建应用密码。 必须启用应用密码功能。 若要允许用户创建应用密码，请使用以下过程：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 在左侧，选择 " **Azure Active Directory** > **用户**"。
-3. 选择 "**多重身份验证**"。
+2. 在左侧，选择 " **Azure Active Directory**  >  **用户**"。
+3. 选择“多重身份验证”  。
 4. 在“多重身份验证”下，选择“服务设置”。****
 5. 在“服务设置”页上，选择“允许用户创建应用密码，以登录非浏览器应用”选项。********
 
@@ -318,17 +318,17 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 ### <a name="enable-named-locations-by-using-conditional-access"></a>通过使用条件访问启用命名位置
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 在左侧，选择 " **Azure Active Directory** > **安全** > **条件性访问** > **命名位置**"。
+2. 在左侧，选择 " **Azure Active Directory**  >  **安全**  >  **条件性访问**  >  **命名位置**"。
 3. 选择“新建位置”。****
 4. 输入位置的名称。
 5. 选择 "**标记为受信任位置**"。
 6. 以 CIDR 表示法输入 IP 范围（例如 192.168.1.1/24）。****
-7. 选择“创建”。 
+7. 选择“创建”  。
 
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>通过使用条件访问启用受信任的 Ip 功能
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 在左侧，选择 " **Azure Active Directory** > **安全** >  **条件性访问** > **命名位置**"。
+2. 在左侧，选择 " **Azure Active Directory**  >  **安全**  >   **条件性访问**  >  **命名位置**"。
 3. 选择 "**配置 MFA 受信任的 ip**"。
 4. 在“服务设置”页的“受信任的 IP”下，从以下两个选项中进行选择********：
 
@@ -346,8 +346,8 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 ### <a name="enable-the-trusted-ips-feature-by-using-service-settings"></a>使用服务设置启用受信任的 IP 功能
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 在左侧，选择 " **Azure Active Directory** > **用户**"。
-3. 选择 "**多重身份验证**"。
+2. 在左侧，选择 " **Azure Active Directory**  >  **用户**"。
+3. 选择“多重身份验证”  。
 4. 在“多重身份验证”下，选择“服务设置”。****
 5. 在“服务设置”页的“受信任的 IP”下，选择以下两个选项中的一个（或两个）********：
 
@@ -378,11 +378,11 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 ### <a name="enable-and-disable-verification-methods"></a>启用和禁用可选择验证方法
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 在左侧，选择 " **Azure Active Directory** > **用户**"。
-3. 选择 "**多重身份验证**"。
+2. 在左侧，选择 " **Azure Active Directory**  >  **用户**"。
+3. 选择“多重身份验证”  。
 4. 在“多重身份验证”下，选择“服务设置”。****
 5. 在“服务设置”页上的“验证选项”**** 下，选择/取消选择要向用户提供的方法。****
-6. 单击 **“保存”** 。
+6. 单击“保存”  。
 
 若要更详细地了解如何使用身份验证方法，可参阅[有哪些身份验证方法](concept-authentication-methods.md)一文。
 
@@ -414,8 +414,8 @@ Azure AD 支持通过联合或单一登录使用本地 Windows Server Active Dir
 ### <a name="enable-remember-multi-factor-authentication"></a>启用“记住多重身份验证”
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 在左侧，选择 " **Azure Active Directory** > **用户**"。
-3. 选择 "**多重身份验证**"。
+2. 在左侧，选择 " **Azure Active Directory**  >  **用户**"。
+3. 选择“多重身份验证”  。
 4. 在“多重身份验证”下，选择“服务设置”。****
 5. 在“服务设置”页的“管理记住多重身份验证设置”下，选择“允许用户在其信任的设备上记住多重身份验证”************ 选项。
 6. 设置允许受信任设备免除双重验证的天数。 默认值为 14 天。

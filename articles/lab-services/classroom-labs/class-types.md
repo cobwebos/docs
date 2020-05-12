@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 27619a69a1f7fbded8ce6430afc2b8e9a8b4a00c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45043718664eb1b3b6b865821b3f6b2a51199194
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79296721"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115024"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>类类型概述 - Azure 实验室服务
 
@@ -61,6 +61,10 @@ ms.locfileid: "79296721"
 
 有关如何设置此类实验室的详细信息，请参阅[设置实验室以使用 Android Studio 讲授移动应用程序开发](class-type-mobile-dev-android-studio.md)。
 
+## <a name="big-data-analytics"></a>大数据分析
+可以设置实验室来讲授大数据分析类。 使用此类类，学员可以了解如何处理大量数据，并应用计算机和统计学习算法来获取数据见解。 学生的主要目标是了解如何使用数据分析工具，例如 Apache Hadoop 的开源软件包，该软件包提供存储、管理和处理大数据的工具。 
+
+有关如何设置此类实验室的详细信息，请参阅[使用 HortonWorks 数据平台的 Docker 部署将实验室设置为大数据分析](class-type-big-data-analytics.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

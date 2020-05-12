@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 05/08/2020
 ms.author: spelluru
-ms.openlocfilehash: 15fd3c18d059466c2b2bd5e2431013f393092b4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a34af2ef779a41c19d4bfb831360948af1a66724
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77526223"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115041"
 ---
 # <a name="classroom-labs-concepts"></a>教室实验室概念
 
@@ -50,7 +50,7 @@ ms.locfileid: "77526223"
 
 ### <a name="lab-account-owner"></a>实验室帐户所有者
 
-通常情况下，组织云资源的 IT 管理员（其拥有 Azure 订阅）充当实验室帐户所有者并执行以下任务：
+通常，拥有 Azure 订阅的组织云资源的 IT 管理员将充当实验室帐户所有者，并执行以下任务：
 
 - 为组织设置实验室帐户。
 - 管理并配置所有实验室的策略。

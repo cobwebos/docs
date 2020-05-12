@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 3b423a25b6b13ad543ef4a74bc0335ce19f5766d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aea252772bfd911899ebdc00c902996b32475a90
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77461794"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115126"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>为 Azure SQL 数据库配置故障转移组
 
@@ -643,6 +643,19 @@ ms.locfileid: "77461794"
    ```
 
 ---
+
+## <a name="use-private-link"></a>使用专用链接
+
+使用专用链接，可以将逻辑服务器关联到虚拟网络和子网中的特定专用 IP 地址。 
+
+若要将私有链接与故障转移组一起使用，请执行以下操作：
+
+1. 确保主服务器和辅助服务器在配对的[区域](/azure/best-practices-availability-paired-regions)中。 
+1. 在每个区域中创建虚拟网络和子网，以承载主服务器和辅助服务器的专用终结点，以使它们具有不重叠的 IP 地址空间。 例如，主虚拟网络地址范围为 10.0.0.0/16，辅助虚拟网络地址范围为 10.0.0.1/16。 有关虚拟网络地址范围的详细信息，请参阅博客[设计 Azure 虚拟网络](https://devblogs.microsoft.com/premier-developer/understanding-cidr-notation-when-designing-azure-virtual-networks-and-subnets/)。
+1. [为主服务器创建专用终结点和 Azure 专用 DNS 区域](../private-link/create-private-endpoint-portal.md#create-a-private-endpoint)。 
+1. 同时为辅助服务器创建专用终结点，但这次请选择重复使用为主服务器创建的同一专用 DNS 区域。 
+1. 建立专用链接后，可以按照本文前面所述的步骤创建故障转移组。 
+
 
 ## <a name="locate-listener-endpoint"></a>定位侦听器终结点
 

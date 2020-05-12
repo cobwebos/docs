@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/11/2019
+ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 56975cebbfe4f6dd6452c850c338d431faea27bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7c26780cdba37a2bddc201928dbcbd5f86e0170
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050498"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115891"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft 标识平台最佳做法和建议
 
@@ -27,7 +27,10 @@ ms.locfileid: "80050498"
 
 使用以下查检表确保应用程序与 [Microsoft 标识平台](https://docs.microsoft.com/azure/active-directory/develop/)有效集成。
 
-## <a name="basics"></a>基础
+> [!TIP]
+> Azure 门户中的 "*集成助手*" 可帮助你应用其中许多最佳实践和建议。 在 Azure 门户中选择任意[应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)，然后选择 "**集成助手（预览版）** " 菜单项以开始助手。
+
+## <a name="basics"></a>基础知识
 
 |   |   |
 |---|---|
@@ -56,7 +59,7 @@ ms.locfileid: "80050498"
 
 |   |   |
 |---|---|
-| ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 管理重定向 URI： <ul><li>保留所有重定向 URI 的所有权，并使其 DNS 记录保持最新。</li><li>不要在 URI 中使用通配符 (*)。</li><li>对于 Web 应用，请确保所有 URI 安全且已经过加密（例如，使用 https 方案）。</li><li>对于公共客户端，在适用的情况下请使用特定于平台的重定向 URI（主要适用于 iOS 和 Android）。 否则，请使用包含大量随机内容的重定向 URI，以防在回调应用时发生冲突。</li><li>如果在隔离的 Web 代理中使用应用，则可以使用 `https://login.microsoftonline.com/common/oauth2/nativeclient` 。</li><li>定期审查并修剪所有未使用或不必要的重定向 URI。</li></ul> |
+| ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 管理重定向 URI： <ul><li>保留所有重定向 URI 的所有权，并使其 DNS 记录保持最新。</li><li>不要在 URI 中使用通配符 (*)。</li><li>对于 Web 应用，请确保所有 URI 安全且已经过加密（例如，使用 https 方案）。</li><li>对于公共客户端，在适用的情况下请使用特定于平台的重定向 URI（主要适用于 iOS 和 Android）。 否则，请使用包含大量随机内容的重定向 URI，以防在回调应用时发生冲突。</li><li>如果在隔离的 Web 代理中使用应用，则可以使用 `https://login.microsoftonline.com/common/oauth2/nativeclient`。</li><li>定期审查并修剪所有未使用或不必要的重定向 URI。</li></ul> |
 | ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 如果应用已注册到目录中，请最小化并手动监视应用注册所有者的列表。 |
 | ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 除非有明确的要求，否则请不要启用对 [OAuth2 隐式授权流](v2-oauth2-implicit-grant-flow.md)的支持。 在[此处](v2-oauth2-implicit-grant-flow.md#suitable-scenarios-for-the-oauth2-implicit-grant)了解有效方案。 |
 | ![复选框](./media/active-directory-integration-checklist/checkbox-two.svg) | 不要只是使用用户名/密码。 不要使用[资源所有者密码凭据流 (ROPC)](v2-oauth-ropc.md)，因为它会直接处理用户的密码。 此流所需的信任度和用户公开度很高，仅当无法使用其他更安全的流时，才应使用此流。 在某些方案（比如 DevOps）中仍需要此流，但请注意，使用该流将对应用程序施加约束。  有关其他新式方法，请阅读[身份验证流和应用程序方案](authentication-flows-app-scenarios.md)。|

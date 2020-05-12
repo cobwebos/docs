@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 05/11/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: d37e790b8a77a48cb5ef53292712164dcdcf459b
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 65d898112396755bb2518cade0ac94c21bc52685
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872012"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117710"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 存储冗余
 
@@ -102,7 +102,7 @@ GRS 和 GZRS 之间的主要区别在于如何在主要区域中复制数据。 
 
 使用 GZRS 存储帐户，可以在可用性区域变得不可用或无法恢复时继续读取和写入数据。 此外，在发生整个区域中断或发生主要区域无法恢复的灾难时，数据也是持久的。 GZRS 设计为在给定的一年内提供至少99.99999999999999% （16个9）的对象持久性。
 
-仅常规用途 v2 存储帐户支持 GZRS 和 GZRS。 有关存储帐户类型的详细信息，请参阅 [Azure 存储帐户概述](storage-account-overview.md)。 GZRS 和 GZRS 支持块 blob、页 blob （VHD 磁盘除外）、文件、表和队列。 GZRS 和 GZRS 在所有 Azure 区域中均可用。
+仅常规用途 v2 存储帐户支持 GZRS 和 GZRS。 有关存储帐户类型的详细信息，请参阅 [Azure 存储帐户概述](storage-account-overview.md)。 GZRS 和 GZRS 支持块 blob、页 blob （VHD 磁盘除外）、文件、表和队列。
 
 以下区域支持 GZRS 和 GZRS：
 
@@ -126,7 +126,7 @@ GRS 和 GZRS 之间的主要区别在于如何在主要区域中复制数据。 
 
 如果你的存储帐户已配置为对次要区域进行读取访问，则可以将应用程序设计为无缝切换，以便在主要区域由于任何原因而变得不可用的情况下从次要区域读取数据。 辅助区域始终可用于读取访问，因此你可以对应用程序进行测试，以确保在发生服务中断时，它将从辅助区域读取。 有关如何设计应用程序以实现高可用性的详细信息，请参阅[使用异地冗余设计高度可用的应用程序](geo-redundant-design.md)。
 
-启用辅助数据库的读取访问权限后，可以从辅助终结点以及存储帐户的主终结点读取数据。 辅助终结点将后缀 *–辅助*点追加到帐户名称。 例如，如果 Blob 存储的主终结点是`myaccount.blob.core.windows.net`，则辅助终结点是。 `myaccount-secondary.blob.core.windows.net` 存储帐户的帐户访问密钥对于主终结点和辅助终结点是相同的。
+启用辅助数据库的读取访问权限后，可以从辅助终结点以及存储帐户的主终结点读取数据。 辅助终结点将后缀 *–辅助*点追加到帐户名称。 例如，如果 Blob 存储的主终结点是 `myaccount.blob.core.windows.net` ，则辅助终结点是 `myaccount-secondary.blob.core.windows.net` 。 存储帐户的帐户访问密钥对于主终结点和辅助终结点是相同的。
 
 ### <a name="check-the-last-sync-time-property"></a>检查“上次同步时间”属性
 
@@ -140,7 +140,7 @@ GRS 和 GZRS 之间的主要区别在于如何在主要区域中复制数据。 
 
 下表显示了在给定方案中数据持久和可用的方式，具体取决于存储帐户的冗余类型：
 
-| 场景                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
+| 方案                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
 | 数据中心内的节点变为不可用                                                                 | 是                             | 是                              | 是                                  | 是                                  |
 | 整个数据中心（区域性或非区域性）不可用                                           | 否                              | 是                              | 是                                  | 是                                  |

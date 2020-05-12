@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3fe3ee79318ab9fdc9f2c0e9585051439b76b5cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f3b37a6336c578ed25d8ab9553bc1ea9c79872f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77617144"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117201"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>灾难恢复故障转移过程
 
@@ -34,7 +34,7 @@ ms.locfileid: "77617144"
 >[!NOTE]
 >必须在 HANA 大型实例单元上执行以下步骤，它表示 DR 单元。 
  
-若要还原到最新的复制存储快照，请按照[azure 上的 SAP HANA 的 Microsoft 快照工具](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf)中的 "执行完全 DR 故障转移-azure_hana_dr_failover" 中的步骤进行操作。 
+若要还原到最新的复制存储快照，请按照[azure 上的 SAP HANA 的 Microsoft 快照工具](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.3/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.3.pdf)中的 "执行完全 DR 故障转移-azure_hana_dr_failover" 中的步骤进行操作。 
 
 如果要对多个 SAP HANA 实例进行故障转移，请多次运行 azure_hana_dr_failover 命令。 请求时，输入要故障转移和还原的 SAP HANA SID。 
 
@@ -104,7 +104,7 @@ ms.locfileid: "77617144"
 
 在灾难恢复站点中，你一直在运行 SAP 生产工作负荷一段时间。 随着生产站点中问题的解决，需要故障回复到生产站点。 由于不能丢失数据，因此回到生产站点这一过程涉及到几个步骤且需要与 Azure 上的 SAP HANA 运营团队进行紧密协作。 问题解决后，需要联系运营团队，以便开始同步回到生产站点。
 
-执行以下步骤:
+请执行这些步骤：
 
 1. Azure 上的 SAP HANA 运营团队获取从灾难恢复存储卷同步生产存储卷（现表示生产状态）的触发指令。 在此状态中，生产站点中的 HANA 大型实例单元处于关闭状态。
 1. Azure 操作团队的 SAP HANA 会监视复制并确保在通知你之前已将其捕获。
@@ -115,7 +115,7 @@ ms.locfileid: "77617144"
 
 ## <a name="monitor-disaster-recovery-replication"></a>监视灾难恢复复制
 
-若要监视存储复制进度的状态，请运行脚本`azure_hana_replication_status`。 必须从灾难恢复位置中运行的单元运行此命令，才能正常运行。 无论复制是否处于活动状态，命令都有效。 可为灾难恢复位置中租户的每个 HANA 大型实例单元运行该命令。 不能使用它来获取有关启动卷的详细信息。 
+若要监视存储复制进度的状态，请运行脚本 `azure_hana_replication_status` 。 必须从灾难恢复位置中运行的单元运行此命令，才能正常运行。 无论复制是否处于活动状态，命令都有效。 可为灾难恢复位置中租户的每个 HANA 大型实例单元运行该命令。 不能使用它来获取有关启动卷的详细信息。 
 
 有关命令及其输出的详细信息，请参阅[azure 上的 SAP HANA 的 Microsoft 快照工具中的](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf)"获取 DR 复制状态-azure_hana_replication_status"。
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2020
 ms.author: spelluru
-ms.openlocfilehash: 2c8cc4c01b172cd11c13558cd195673d21499b41
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: cb645b5adfcd937758a950eaf596bc60e4d55f3f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983901"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115143"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Azure 实验室服务中的教室实验室—常见问题（FAQ）
 获取有关 Azure 实验室服务中的教室实验室的一些最常见问题的解答。 
@@ -77,6 +77,6 @@ ms.locfileid: "82983901"
 如果你的问题未在此处列出，请告知我们，以便我们可以帮助你找到答案。
 
 - 在本常见问题解答的末尾发布问题。 
-- 若要访问更广大的受众，请在[Azure 实验室服务（Stack Overflow 论坛）](https://stackoverflow.com/questions/tagged/azure-lab-services)上发布问题。 
+- 若要访问更广大的受众，请在[Azure 实验室服务（技术社区论坛）](https://techcommunity.microsoft.com/t5/azure-lab-services/bd-p/AzureLabServices)上发布问题。 
 - 对于功能请求，请将请求和想法提交到[Azure 实验室服务-用户语音](https://feedback.azure.com/forums/320373-lab-services?category_id=352774)。
 

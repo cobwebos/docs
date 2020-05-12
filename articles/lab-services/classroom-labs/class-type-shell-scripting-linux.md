@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 100a485588c77f6977001dae984b30ebcb1de557
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1199bca9e2ab7c85ccf5c90879fe5141a55a7bb5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77443544"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115058"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>设置在 Linux 上讲授 shell 脚本的实验室
 本文介绍如何设置实验室，以在 Linux 上讲授 shell 脚本。 脚本编写是系统管理的有用组成部分，可让管理员避免重复性的任务。 在此示例场景中，类涵盖了传统的 bash 脚本和增强的脚本。 增强的脚本是结合了 bash 命令和 Ruby 的脚本。 这样，Ruby 便可以传递数据和 bash 命令来与 shell 交互。 
@@ -32,22 +32,22 @@ ms.locfileid: "77443544"
 
 | 实验室帐户设置 | 说明 |
 | ----------- | ------------ |  
-| Marketplace 映像 | 启用[Ubuntu Server 18.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic)映像，以便在实验室帐户中使用。 有关详细信息，请参阅[指定可用于实验室创建者的 Marketplace 映像](specify-marketplace-images.md)。 | 
+| Marketplace 映像 | 启用 Ubuntu Server 18.04 LTS 映像，以便在实验室帐户中使用。 有关详细信息，请参阅[指定可用于实验室创建者的 Marketplace 映像](specify-marketplace-images.md)。 | 
 
 按照[本教程](tutorial-setup-classroom-lab.md)创建新的实验室并应用以下设置：
 
 | 实验室设置 | 值/说明 | 
 | ------------ | ------------------ |
 | 虚拟机（VM）大小 | 小型  |
-| VM 映像 | [Ubuntu Server 18.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) |
+| VM 映像 | Ubuntu Server 18.04 LTS |
 | 启用远程桌面连接 | 启用。 <p>如果启用此设置，教师和学生可以使用远程桌面（RDP）连接到其 Vm。 有关详细信息，请参阅在[Azure 实验室服务中的实验室中启用适用于 Linux 虚拟机的远程桌面](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm)。 </p>|
 
 
 ## <a name="install-desktop-and-xrdp"></a>安装桌面和 xrdp
-[Ubuntu server 18.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic)映像默认情况下未安装远程桌面服务器。 按照[安装和配置远程桌面以连接到 Azure 中的 LINUX VM 一](../../virtual-machines/linux/use-remote-desktop.md)文中的说明，安装要通过远程桌面协议连接的模板计算机上所需的包。
+Ubuntu Server 18.04 LTS 映像默认情况下未安装远程桌面服务器。 按照[安装和配置远程桌面以连接到 Azure 中的 LINUX VM 一](../../virtual-machines/linux/use-remote-desktop.md)文中的说明，安装要通过远程桌面协议连接的模板计算机上所需的包。
 
 ## <a name="install-ruby"></a>安装 Ruby
-Ruby 是一种开放源动态语言，可与 bash 脚本结合使用。 本部分演示如何使用`apt-get`安装最新版本的[Ruby](https://www.ruby-lang.org/)。
+Ruby 是一种开放源动态语言，可与 bash 脚本结合使用。 本部分演示如何使用 `apt-get` 安装最新版本的[Ruby](https://www.ruby-lang.org/)。
 
 1. 通过运行以下命令来安装更新：
 
@@ -89,7 +89,7 @@ Ruby 是一种开放源动态语言，可与 bash 脚本结合使用。 本部�
 
 有关定价的详细信息，请参阅以下文档： [Azure 实验室服务定价](https://azure.microsoft.com/pricing/details/lab-services/)。
 
-## <a name="conclusion"></a>结束语
+## <a name="conclusion"></a>结论
 本文指导你完成为脚本编写类创建实验室的步骤。 尽管本文重点介绍了如何在 Linux 计算机上设置 Ruby 脚本编写工具，但相同的设置可用于其他脚本类，如 Linux 上的 Python。
 
 ## <a name="next-steps"></a>后续步骤

@@ -2,13 +2,13 @@
 title: 用于处理自定义事件和指标的 Application Insights API | Microsoft 文档
 description: 在设备、桌面应用、网页或服务中插入几行代码，即可跟踪使用情况和诊断问题。
 ms.topic: conceptual
-ms.date: 03/27/2019
-ms.openlocfilehash: 74ca6d6a13967c2139d3d47dd425b6cb1a3ee31a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.date: 05/11/2020
+ms.openlocfilehash: ae96609446818802b70cab9c31f6527264046eb9
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927932"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115653"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -56,7 +56,7 @@ ms.locfileid: "82927932"
 
 获取 `TelemetryClient` 的实例（网页中的 JavaScript 除外）：
 
-对于适用于 .NET/.NET Core 应用的[ASP.NET Core](asp-net-core.md#how-can-i-track-telemetry-thats-not-automatically-collected)应用和[非 HTTP/辅助角色](worker-service.md#how-can-i-track-telemetry-thats-not-automatically-collected)，建议`TelemetryClient`从依赖关系注入容器中获取实例，如各自的文档中所述。
+对于适用于 .NET/.NET Core 应用的[ASP.NET Core](asp-net-core.md#how-can-i-track-telemetry-thats-not-automatically-collected)应用和[非 HTTP/辅助角色](worker-service.md#how-can-i-track-telemetry-thats-not-automatically-collected)，建议 `TelemetryClient` 从依赖关系注入容器中获取实例，如各自的文档中所述。
 
 如果使用 AzureFunctions v2 + 或 Azure WebJobs v3 +-请遵循以下文档：https://docs.microsoft.com/azure/azure-functions/functions-monitoring#version-2x-and-higher
 
@@ -1096,16 +1096,14 @@ telemetry.Context.Operation.Name = "MyOperationName";
 * [Java 参考](https://docs.microsoft.com/java/api/overview/azure/appinsights?view=azure-java-stable/)
 * [JavaScript 参考](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 
-
 ## <a name="sdk-code"></a>SDK 代码
 
-* [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
+* [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [ASP.NET](https://github.com/Microsoft/ApplicationInsights-dotnet)
-* [Windows Server 包](https://github.com/Microsoft/applicationInsights-dotnet-server)
+* [Windows Server 包](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [Java SDK](https://github.com/Microsoft/ApplicationInsights-Java)
 * [Node.js SDK](https://github.com/Microsoft/ApplicationInsights-Node.js)
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
-
 
 ## <a name="questions"></a>问题
 
@@ -1119,4 +1117,4 @@ telemetry.Context.Operation.Name = "MyOperationName";
 ## <a name="next-steps"></a><a name="next"></a>后续步骤
 
 * [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)
-* [疑难解答](../../azure-monitor/app/troubleshoot-faq.md)
+* [故障排除](../../azure-monitor/app/troubleshoot-faq.md)

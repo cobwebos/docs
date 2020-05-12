@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2020
+ms.date: 05/08/2020
 ms.author: spelluru
-ms.openlocfilehash: 155806222f9e11fec177487b7147d81054ac06ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 54fd8caef51a17148714d9cf90328572433c59db
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76717979"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115109"
 ---
 # <a name="use-classroom-labs-for-trainings"></a>使用课堂实验室培训
-可以为培训设置实验室。 使用 Azure 实验室服务的教室实验室，您可以为您的培训创建实验室，其中每个学员都使用完全相同的隔离环境进行定型。 可应用策略以确保为每个学员提供培训环境（需要时）并包含培训所需的足够资源（例如虚拟机）。 
+Azure 实验室服务允许教授、讲师或教授助手快速轻松地创建联机实验室，为学员预配置的学习环境。 每个学员都可以为定型使用完全相同的隔离环境。 可以应用策略，以确保仅当培训环境需要时才可用于每个学员，并且包含足够的资源（例如虚拟机）（培训所需的虚拟机）。 
 
 ![课堂实验室](../media/classroom-labs-scenarios/classroom.png)
 

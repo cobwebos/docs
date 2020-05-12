@@ -2,17 +2,17 @@
 title: 如何在 Azure Functions 中禁用函数
 description: 了解如何在 Azure Functions 中禁用与启用函数。
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.openlocfilehash: 11585e92e7d239731b02d06c5093f979cd65cfba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/08/2020
+ms.openlocfilehash: 8922edb7aaa41bcf50dcce5257b6600f1bde224a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686889"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115553"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>如何在 Azure Functions 中禁用函数
 
-本文介绍如何在 Azure Functions 中禁用函数。 禁用某个函数意味着运行时将忽略针对该函数定义的自动触发器。  这样就可以在不停止整个函数应用的情况下阻止特定函数运行。
+本文介绍如何在 Azure Functions 中禁用函数。 若要*禁用*某个函数，这意味着会使运行时忽略为该函数定义的自动触发器。 这样就可以在不停止整个函数应用的情况下阻止特定函数运行。
 
 若要禁用函数，建议的方式是使用格式为 `AzureWebJobs.<FUNCTION_NAME>.Disabled` 的应用设置。 可以通过多种方式创建和修改此应用程序设置，包括使用 [Azure CLI](/cli/azure/) 以及从 [Azure 门户](https://portal.azure.com)中函数的“管理”  选项卡。 
 
@@ -39,12 +39,12 @@ az functionapp config appsettings set --name <myFunctionApp> \
 
 ## <a name="use-the-portal"></a>使用门户
 
-也可以使用函数“管理”选项卡上的“函数状态”开关。   此开关的工作方式是创建和删除 `AzureWebJobs.<FUNCTION_NAME>.Disabled` 应用设置。
+你还可以使用该函数的 "**概述**" 页上的 "**启用**" 和 "**禁用**" 按钮。 这些按钮的工作方式是创建和删除 `AzureWebJobs.<FUNCTION_NAME>.Disabled` 应用设置。
 
 ![函数状态开关](media/disable-function/function-state-switch.png)
 
 > [!NOTE]  
-> 门户集成的测试功能将忽略该`Disabled`设置。 这意味着，在门户中的 "**测试**" 窗口启动时，禁用的函数仍将运行。 
+> 门户集成的测试功能将忽略该 `Disabled` 设置。 这意味着，在门户中的 "**测试**" 窗口启动时，禁用的函数仍将运行。 
 
 ## <a name="other-methods"></a>其他方法
 
@@ -122,9 +122,8 @@ public static class QueueFunctions
 
 在第二个示例中，当存在名为 IS_DISABLED 的应用设置且其值设置为 `true` 或 1 时，将禁用相应的函数。
 
-可以在 Azure 门户中编辑文件，或在函数的 "**管理**" 选项卡上使用 "**函数状态**" 开关。门户切换通过更改*函数 json*文件来工作。
+您可以在 Azure 门户中编辑该文件，也可以使用该函数的 "**概述**" 页上的 "**启用**" 和 "**禁用**" 按钮。 门户开关的工作方式是更改 *function.json* 文件。
 
-![函数状态开关](media/disable-function/function-state-switch.png)
 
 ## <a name="next-steps"></a>后续步骤
 

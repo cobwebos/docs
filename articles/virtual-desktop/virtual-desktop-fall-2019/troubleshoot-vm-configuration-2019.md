@@ -5,20 +5,20 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 03/30/2020
+ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7f3eaa54ecb39922a155e2ea65e15d38f2b138e4
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: eeccf0031e28bdcb719c0d534874d2c240ba46d3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615300"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117421"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>会话主机虚拟机配置
 
 >[!IMPORTANT]
->此内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的秋季2019版本。 如果尝试管理春季2020更新中引入的 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../troubleshoot-vm-configuration.md)。
+>本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。 如果要尝试管理 2020 年春季版更新中引入的 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../troubleshoot-vm-configuration.md)。
 
 本文介绍配置 Windows 虚拟桌面会话主机虚拟机（Vm）时遇到的问题。
 
@@ -84,7 +84,7 @@ ms.locfileid: "82615300"
 
 按照以下说明确认是否已安装组件并检查是否有错误消息。
 
-1. 检查 "**控制面板" "程序" "** > **Programs** > 程序**和功能**"，确认是否已安装这两个组件。 如果**Windows 虚拟桌面代理**和**Windows 虚拟桌面代理启动加载程序**不可见，则不会在 VM 上安装它们。
+1. 检查 "**控制面板" "程序" "** 程序  >  **Programs**  >  **和功能**"，确认是否已安装这两个组件。 如果**Windows 虚拟桌面代理**和**Windows 虚拟桌面代理启动加载程序**不可见，则不会在 VM 上安装它们。
 2. 打开**文件资源管理器**并导航到**C:\Windows\Temp\ScriptLog.log**。 如果缺少该文件，则表示安装了这两个组件的 PowerShell DSC 无法在提供的安全上下文中运行。
 3. 如果文件**C:\Windows\Temp\ScriptLog.log**存在，请将其打开，并检查错误消息。
 
@@ -237,7 +237,7 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 按照以下说明从同一子网和域运行修正：
 
 1. 将与标准远程桌面协议（RDP）连接到将应用修复的 VM。
-2. 从https://docs.microsoft.com/sysinternals/downloads/psexec下载 PsExec。
+2. 从下载 PsExec https://docs.microsoft.com/sysinternals/downloads/psexec 。
 3. 解压缩下载的文件。
 4. 以本地管理员身份启动命令提示符。
 5. 导航到在其中解压缩了 PsExec 的文件夹。
@@ -313,7 +313,7 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>禁用 "远程桌面授权模式" 组策略设置
 
-通过在 VM 中打开组策略编辑器并导航到**管理模板** > **Windows 组件** > "，然后导航到" 组策略 "设置**远程桌面服务** > **远程桌面会话主机** > "**授权** > **"设置" 远程桌面授权 "模式**。 如果 "组策略" 设置已**启用**，请将其更改为 "**已禁用**"。 如果已禁用，则将其保持原样。
+通过在 VM 中打开组策略编辑器并导航到**管理模板**Windows 组件 "，然后导航到" 组策略 "设置  >  **Windows Components**  >  **远程桌面服务**  >  **远程桌面会话主机**  >  **Licensing**  >  **" 授权 "设置" 远程桌面授权 "模式**。 如果 "组策略" 设置已**启用**，请将其更改为 "**已禁用**"。 如果已禁用，则将其保持原样。
 
 >[!NOTE]
 >如果通过域设置组策略，则在面向这些 Windows 10 企业多会话 Vm 的策略上禁用此设置。
@@ -338,6 +338,12 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 ### <a name="version-1903"></a>版本1903
 
 通过 Azure 库中的最新版本的 Windows 10 版本1903映像重新部署主机操作系统。
+
+## <a name="we-couldnt-connect-to-the-remote-pc-because-of-a-security-error"></a>由于安全错误，无法连接到远程电脑
+
+如果用户看到一条错误消息，"我们无法连接到远程 PC，因为出现安全错误。 如果此问题仍然存在，请向管理员或技术支持人员求助于 "验证更改默认 RDP 权限的任何现有策略"。 可能导致此错误的一种策略是 "允许通过远程桌面服务安全策略登录"。
+
+若要了解有关此策略的详细信息，请参阅[允许通过远程桌面服务登录](/windows/security/threat-protection/security-policy-settings/allow-log-on-through-remote-desktop-services)。
 
 ## <a name="next-steps"></a>后续步骤
 
