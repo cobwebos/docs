@@ -3,17 +3,17 @@ title: 使用 Azure 成本管理优化云投资
 description: 本文有助于最大程度利用云投资、减少成本以及对资金使用情况进行评估。
 author: bandersmsft
 ms.author: banders
-ms.date: 04/07/2020
+ms.date: 05/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 8df98514545a2670ea18a2b4b131a097244d7b46
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 759c69544c083e95cbd5198eecf9f7bb0e882aa8
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80874579"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791606"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>如何通过 Azure 成本管理优化云投资
 
@@ -104,6 +104,12 @@ Azure 提供了有助于评估过程的工具。 借助这些工具，可以充�
 
 - 可选择预先货币承诺付款
 - 可享受 Azure 价格优惠
+
+#### <a name="azure-in-csp"></a>[Azure in CSP](https://azure.microsoft.com/offers/ms-azr-0145p/)
+
+- 云解决方案提供商合作伙伴是负责解决客户需求的第一个联系点，也是客户关系中心
+- 云解决方案提供商合作伙伴可以预配新客户、订购订阅、管理订阅，以及代表其客户执行管理任务
+- 云解决方案提供商合作伙伴会将服务与独特的解决方案捆绑在一起或转售 Azure，同时还可以控制定价、条款和计费
 
 ## <a name="estimate-the-cost-of-your-solution"></a>估算解决方案的成本
 

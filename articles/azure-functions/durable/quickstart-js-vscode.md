@@ -3,28 +3,26 @@ title: 使用 JavaScript 在 Azure 中创建你的第一个持久函数
 description: 使用 Visual Studio Code 创建并发布 Azure 持久函数。
 author: anthonychu
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/07/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 55098daa69d3e878140b20095b0a3e08811269e1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6544cd115dbae2268492a8775a780d2f045f4e4a
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80257642"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889673"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>使用 JavaScript 创建你的第一个持久函数
 
 *Durable Functions* 是 [Azure Functions](../functions-overview.md) 的一个扩展，可用于在无服务器环境中编写有状态函数。 该扩展可用于管理状态、检查点和重启。
 
-[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
-
 本文介绍了如何使用 Visual Studio Code Azure Functions 扩展在本地创建并测试“hello world”持久函数。  此函数将协调对其他函数的调用并将其链接在一起。 然后将函数代码发布到 Azure。
 
 ![在 Azure 中运行持久函数](./media/quickstart-js-vscode/functions-vs-code-complete.png)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+为完成此教程：
 
 * 安装 [Visual Studio Code](https://code.visualstudio.com/download)。
 
@@ -61,7 +59,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 此外，还会在根文件夹中创建 package.json 文件。
 
-### <a name="enable-azure-functions-v2-compatibility-mode"></a>启用 Azure Functions V2 兼容模式
+### <a name="enable-compatibility-mode"></a>启用兼容模式
 
 目前，JavaScript Durable Functions 要求启用 Azure Functions V2 兼容模式。
 
@@ -86,7 +84,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 1. 使用“视图”菜单或按 Ctrl+Shift+`，在 VS Code 中打开新的终端。 
 
-1. 通过运行函数应用的根目录中的 `durable-functions` 来安装 `npm install durable-functions` npm 包。
+1. 通过运行函数应用的根目录中的 `npm install durable-functions` 来安装 `durable-functions` npm 包。
 
 ## <a name="creating-your-functions"></a>创建函数
 
@@ -204,7 +202,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 [!INCLUDE [functions-publish-project-vscode](../../../includes/functions-publish-project-vscode.md)]
 
-### <a name="enable-azure-functions-v2-compatibility-mode"></a>启用 Azure Functions V2 兼容模式
+### <a name="enable-compatibility-mode"></a>启用兼容模式
 
 需要在 Azure 上的应用中启用本地所启用的相同 Azure Functions V2 兼容性。
 

@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7242b82ee5c43878a33731bd1f02b685020f22b0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: aeced8c4108760fc3e10dbf891a469792c210707
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78673626"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780056"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>使用 Jupyter Notebook 探索 Azure 机器学习
 
@@ -55,7 +55,13 @@ Data Science Virtual Machine (DSVM) 是专为研究数据科学而构建的自�
 
 ## <a name="next-steps"></a>后续步骤
 
-浏览[示例笔记本](https://aka.ms/aml-notebooks)，了解 Azure 机器学习的功能，或者尝试以下教程：
+浏览[示例笔记本](https://aka.ms/aml-notebooks)，了解 Azure 机器学习的功能。
+
+有关 GitHub 示例项目和示例的详细信息，请参阅以下存储库：
++ [Microsoft/MLOps](https://github.com/Microsoft/MLOps)
++ [Microsoft/MLOpsPython](https://github.com/microsoft/MLOpsPython)
+
+试用以下教程：
 
 - [通过 MNIST 训练并部署图像分类模型](tutorial-train-models-with-aml.md)
 

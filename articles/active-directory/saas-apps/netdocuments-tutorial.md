@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71e5e13485c4a10664d98363e8e99bfd3b4f4bcf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 79038152dd40b213b92a379c4b50ddd840eb8e6c
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72035700"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732495"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>教程：Azure Active Directory 单一登录 (SSO) 与 NetDocuments 集成
 
@@ -82,11 +82,11 @@ ms.locfileid: "72035700"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值  ：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>`
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>`
     
-    c. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`http://netdocuments.com/VAULT` 
+    c. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`http://netdocuments.com/VAULT`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际的登录 URL 和回复 URL 更新这些值。 存储库 ID 是一个值，它以 **CA-** 开头，后跟与 NetDocuments 存储库关联的由 8 个字符组成的代码。 有关详细信息，可以检查 [NetDocuments 联合身份支持文档](https://support.netdocuments.com/hc/en-us/articles/205220410-Federated-Identity-Login)。 或者，如果在使用上述信息进行配置时遇到困难，可以联系 [NetDocuments 客户端支持团队](https://support.netdocuments.com/hc/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -137,49 +137,48 @@ ms.locfileid: "72035700"
 
 1. 在另一 Web 浏览器窗口中，以管理员身份登录到 NetDocuments 公司站点。
 
-2. 转到“管理员”。 
+2. 在右上角，选择你的姓名>“管理员”  。
 
-3. 单击“添加和删除用户和组”。 
+3. 选择“安全中心”  。
    
-    ![存储库](./media/netdocuments-tutorial/ic795047.png "存储库")
+    ![存储库](./media/netdocuments-tutorial/security-center.png "安全中心")
 
-4. 单击“配置高级身份验证选项”。 
+4. 选择“高级身份验证”  。
     
-    ![配置高级身份验证选项](./media/netdocuments-tutorial/ic795048.png "配置高级身份验证选项")
+    ![配置高级身份验证选项](./media/netdocuments-tutorial/advance-authentication.png "配置高级身份验证选项")
 
-5. 在“联合身份”对话框中，执行以下步骤： 
+5.  在“联合 ID”  选项卡上，执行以下步骤：   
    
-    ![联合标识](./media/netdocuments-tutorial/ic795049.png "联合身份")
+    ![联合标识](./media/netdocuments-tutorial/federated-id.png "联合身份")
    
     a. 选择“Active Directory 联合身份验证服务”作为“联合身份服务器类型”。  
-   
-    b. 单击“选择文件”，上传从 Azure 门户下载的元数据文件  。
-   
-    c. 单击“确定”。 
+    
+    b.  选择“选取文件”，以上传从 Azure 门户下载的元数据文件  。
+    
+    c.  选择“保存”  。
 
 ### <a name="create-netdocuments-test-user"></a>创建 NetDocuments 测试用户
 
-为了使 Azure AD 用户登录 NetDocuments，必须将其预配到 NetDocuments 中。  
-使用 NetDocuments 时，预配属手动任务。
+为了使 Azure AD 用户登录 NetDocuments，必须将其预配到 NetDocuments 中。 使用 NetDocuments 时，预配属手动任务。
 
 **若要预配用户帐户，请执行以下步骤：**
 
 1. 以管理员身份登录 **NetDocuments** 公司站点。
 
-2. 在顶部菜单中，单击“管理员”。 
+2. 在右上角，选择你的姓名>“管理员”  。
    
-    ![管理员](./media/netdocuments-tutorial/ic795051.png "管理员")
+    ![管理员](./media/netdocuments-tutorial/user-admin.png "管理员")
 
-3. 单击“添加和删除用户和组”。 
+3. 选择“用户和组”  。
    
-    ![存储库](./media/netdocuments-tutorial/ic795047.png "存储库")
+    ![存储库](./media/netdocuments-tutorial/users-groups.png "存储库")
 
 4. 在“电子邮件地址”文本框中，键入要预配的有效 Azure Active Directory 帐户的电子邮件地址，并单击“添加用户”。  
    
-    ![电子邮件地址](./media/netdocuments-tutorial/ic795053.png "电子邮件地址")
+    ![电子邮件地址](./media/netdocuments-tutorial/user-mail.png "电子邮件地址")
    
-    >[!NOTE]
-    >Azure Active Directory 帐户持有者会获得一封电子邮件，该邮件包含在激活帐户前确认帐户的链接。 可以使用任何其他 NetDocuments 用户帐户创建工具或 NetDocuments 提供的 API 来预配 Azure Active Directory 用户帐户。
+    > [!NOTE]
+    > Azure Active Directory 帐户持有者会获得一封电子邮件，该邮件包含在激活帐户前确认帐户的链接。 可以使用任何其他 NetDocuments 用户帐户创建工具或 NetDocuments 提供的 API 来预配 Azure Active Directory 用户帐户。
 
 ## <a name="test-sso"></a>测试 SSO 
 
@@ -196,4 +195,3 @@ ms.locfileid: "72035700"
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [在 Azure AD 中试用 NetDocuments](https://aad.portal.azure.com/)
-

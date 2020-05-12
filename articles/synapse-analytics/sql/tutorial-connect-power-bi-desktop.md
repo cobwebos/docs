@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: e0ac6ccde2443a7b374d9eb85f6f960af79c69dc
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 1bdf2d0e3613af7eec339194d6d8a446be83f365
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81769485"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692412"
 ---
-# <a name="tutorial-connect-sql-on-demand-preview-to-power-bi-desktop--create-report"></a>教程：将 SQL 按需版本（预览版）连接到 Power BI Desktop 并创建报表
+# <a name="tutorial-use-sql-on-demand-preview-with-power-bi-desktop--create-a-report"></a>教程：在 Power BI Desktop 中使用 SQL 按需版本（预览版）并创建报表
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -24,7 +24,7 @@ ms.locfileid: "81769485"
 >
 > - 创建演示数据库
 > - 创建用于报表的视图
-> - 连接到 Power BI Desktop
+> - 将 Power BI Desktop 连接到 SQL 按需版本
 > - 基于视图创建报表
 
 ## <a name="prerequisites"></a>先决条件
@@ -130,11 +130,11 @@ FROM
 
     - AAD 示例 
   
-    ![单击“登录”。](./media/tutorial-connect-power-bi-desktop/step-2.1-select-aad-auth.png)
+        ![单击“登录”。](./media/tutorial-connect-power-bi-desktop/step-2.1-select-aad-auth.png)
 
     - SQL 登录示例 - 键入你的用户名和密码。
 
-    ![使用 SQL 登录。](./media/tutorial-connect-power-bi-desktop/step-2.2-select-sql-auth.png)
+        ![使用 SQL 登录。](./media/tutorial-connect-power-bi-desktop/step-2.2-select-sql-auth.png)
 
 
 5. 选择 `usPopulationView` 视图，然后选择“加载”  。 

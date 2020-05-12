@@ -4,14 +4,12 @@ description: 将第一个 Python 应用部署到 Azure 应用服务中的 Linux 
 ms.topic: quickstart
 ms.date: 04/03/2020
 ms.custom: seo-python-october2019, cli-validate
-experimental: true
-experiment_id: 01a9132f-eaab-4c
-ms.openlocfilehash: 7f8d21cbccc1a6eec7f62ab5d129f3f0637b8d13
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5b055c3ed93d5f093295b52c7a28a73e242bfe75
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085121"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690874"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>快速入门：在 Linux 上的 Azure 应用服务中创建 Python 应用
 
@@ -104,6 +102,11 @@ az login
 ```azurecli
 az webapp up --sku F1 -n <app-name>
 ```
+> [!CAUTION]
+> 如果使用的是 Azure CLI 版本 2.5.0  ，则 `az webapp up` 中存在回归，在未提供 `-l <location-name>` 参数的情况下，某些方案会失败。 此问题[在此跟踪](https://github.com/Azure/azure-cli/issues/13257)。  
+> 
+>可以使用 `az --version` 命令查看所使用的 Azure CLI 的版本。
+>
 
 `--sku F1` 参数在“免费”定价层上创建 Web 应用。 省略此参数即可改用高级层，这会按小时计费。
 
