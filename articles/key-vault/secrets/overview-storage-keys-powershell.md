@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: f8c526148e37ba1b716aafd32dcc3f242358f1eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 454420d9b2f4e3cf834490da79f3571691f25bc1
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81427778"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121110"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>使用 Key Vault 和 Azure PowerShell 管理存储帐户密钥
 
@@ -45,16 +45,16 @@ Key Vault 是已在所有 Azure AD 租户中预先注册的 Microsoft 应用程�
 
 | 租户 | 云 | 应用程序 ID |
 | --- | --- | --- |
-| Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
+| Azure AD | Azure Government  | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Azure 公有云 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
-| 其他  | Any | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| 其他  | 任意 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本指南，必须先执行以下操作：
 
 - [安装 Azure PowerShell 模块](/powershell/azure/install-az-ps?view=azps-2.6.0)。
-- [创建 key vault](quick-create-powershell.md)
+- [创建密钥保管库](quick-create-powershell.md)
 - [创建 Azure 存储帐户](../../storage/common/storage-account-create.md?tabs=azure-powershell)。 存储帐户名必须仅使用小写字母和数字。 名称的长度必须为 3 到 24 个字符。
       
 
@@ -84,18 +84,22 @@ $resourceGroupName = <YourResourceGroupName>
 $storageAccountName = <YourStorageAccountName>
 $keyVaultName = <YourKeyVaultName>
 $keyVaultSpAppId = "cfa8b339-82a2-471a-a3c9-0fc0be7a4093"
-$storageAccountKey = "key1"
+$storageAccountKey = "key1" #(key1 or key2 are allowed)
 
 # Get your User Id
 $userId = (Get-AzContext).Account.Id
 
 # Get a reference to your Azure storage account
 $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName
+
 ```
+>[!Note]
+> 对于经典存储帐户，请使用 "主要" 和 "辅助" 作为 $storageAccountKey <br>
+> 对于经典存储帐户，请使用 "AzResource-Name" ClassicStorageAccountName "-ResourceGroupName $resourceGroupName" 改为 "of'Get-AzStorageAccount"
 
 ### <a name="give-key-vault-access-to-your-storage-account"></a>向 Key Vault 授予对你的存储帐户的访问权限
 
-只有在授权 Key Vault 访问你的存储帐户之后，它才可以访问和管理存储帐户密钥。 Key Vault 应用程序标识需要有权列出** 和重新生成** 存储帐户的密钥。 可通过内置的 RBAC 角色[存储帐户密钥操作员服务角色](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)启用这些权限。 
+只有在授权 Key Vault 访问你的存储帐户之后，它才可以访问和管理存储帐户密钥。 Key Vault 应用程序标识需要有权列出  和重新生成  存储帐户的密钥。 可通过内置的 RBAC 角色[存储帐户密钥操作员服务角色](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)启用这些权限。 
 
 使用 Azure PowerShell [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment?view=azps-2.6.0) cmdlet 将此角色分配到 Key Vault 服务主体，以将范围限定为你的存储帐户。
 
@@ -118,7 +122,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-如果 Key Vault 已添加到存储帐户中的角色，则你会收到“角色分配已存在”** 错误。 还可以使用 Azure 门户中存储帐户的“访问控制(IAM)”页验证角色分配。  
+如果 Key Vault 已添加到存储帐户中的角色，则你会收到“角色分配已存在”  ”错误。 还可以使用 Azure 门户中存储帐户的“访问控制(IAM)”页验证角色分配。  
 
 ### <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>向托管存储帐户授予用户帐户权限
 
@@ -160,7 +164,7 @@ Tags                :
 
 ### <a name="enable-key-regeneration"></a>启用密钥重新生成
 
-如果希望 Key Vault 定期重新生成存储帐户密钥，可以使用 Azure PowerShell [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) cmdlet 设置重新生成周期。 此示例将重新生成周期设置为 3 天。 3 天后，Key Vault 将重新生成“key2”，并将活动密钥从“key2”交换为“key1”。
+如果希望 Key Vault 定期重新生成存储帐户密钥，可以使用 Azure PowerShell [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) cmdlet 设置重新生成周期。 此示例将重新生成周期设置为 3 天。 三天后 Key Vault 将重新生成 "key2"，并将活动密钥从 "key2" 交换为 "key1" （替换为经典存储帐户的 "primary" 和 "辅助"）。
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)
@@ -205,7 +209,7 @@ Tags                :
 $storageAccountName = <YourStorageAccountName>
 $keyVaultName = <YourKeyVaultName>
 
-$storageContext = New-AzStorageContext -StorageAccountName $storageAccountName -Protocol Https -StorageAccountKey Key1
+$storageContext = New-AzStorageContext -StorageAccountName $storageAccountName -Protocol Https -StorageAccountKey Key1 #(or "Primary" for Classic Storage Account)
 ```
 
 ### <a name="create-a-shared-access-signature-token"></a>创建共享访问签名令牌

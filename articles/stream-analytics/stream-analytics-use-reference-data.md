@@ -6,20 +6,20 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/8/2019
-ms.openlocfilehash: b98e89d98295a7cefbc4c0c0906f5c4e10c11280
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.date: 5/11/2020
+ms.openlocfilehash: 524fc747e8e3dc70bdcc594a38b2a083b8381daa
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006155"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124068"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>使用参考数据在流分析中查找
 
 参考数据（也称为查找表）是一个静态的或本质上缓慢变化的有限数据集，用于执行查找或增大数据流。 例如，在 IoT 方案中，可以将关于传感器的元数据（不经常更改）存储在参考数据中，并将其与实时 IoT 数据流相联接。 Azure 流分析在内存中加载参考数据以实现低延迟流处理。 为了在 Azure 流分析作业中利用参考数据，通常会在查询中使用[参考数据联接](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics)。 
 
 ## <a name="example"></a>示例  
- 如果某商用车在 Toll Company 登记，则它们无需停车检查，即可通过收费站。 我们将使用商用车登记查找表来标识所有登记期已过的商用车。  
+当汽车传递收费亭时，可以生成一个实时事件流。 收费亭可以实时捕获许可证盘子，并与具有注册详细信息的静态数据集进行联接，以识别已过期的许可证印版。  
   
 ```SQL  
 SELECT I1.EntryTime, I1.LicensePlate, I1.TollId, R.RegistrationId  
@@ -111,15 +111,13 @@ Azure SQL 数据库参考数据由流分析作业进行检索并作为快照存�
 
 ## <a name="size-limitation"></a>大小限制
 
-流分析支持**最大大小为 300 MB** 的参考数据。 只有简单的查询才能达到参考数据最大大小 300 MB 限制。 随着查询复杂性增加以包括有状态处理（如开窗聚合、临时联接接和临时分析函数），支持的参考数据最大大小将会减小。 如果 Azure 流分析无法加载参考数据并执行复杂操作，则作业将耗尽内存并失败。 在这种情况下，SU % 利用率指标将达到 100%。    
+建议使用小于 300 MB 的引用数据集，以获得最佳性能。 包含6个或更多的作业支持使用大于 300 MB 的引用数据。 此功能处于预览阶段，不得在生产环境中使用。 使用非常大的引用数据可能会影响作业的性能。 随着查询复杂性增加以包括有状态处理（如开窗聚合、临时联接接和临时分析函数），支持的参考数据最大大小将会减小。 如果 Azure 流分析无法加载参考数据并执行复杂操作，则作业将耗尽内存并失败。 在这种情况下，SU % 利用率指标将达到 100%。    
 
-|**流单元数**  |**大约支持的最大大小（以 MB 为单位）**  |
+|**流单元数**  |**建议大小**  |
 |---------|---------|
-|1   |50   |
-|3   |150   |
-|至少 6   |300   |
-
-作业增加的流单元数量超过 6 不会增加参考数据支持的最大大小。
+|1   |50 MB 或更低   |
+|3   |150 MB 或更低   |
+|至少 6   |300 MB 或更低。 预览版支持使用大于 300 MB 的引用数据，并可能影响作业的性能。    |
 
 对压缩的支持不可用于参考数据。
 

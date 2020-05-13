@@ -3,12 +3,12 @@ title: 有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 description: 查找有关 Azure Kubernetes 服务 (AKS) 的某些常见问题的解答。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 112060e72f36bfe5d11a997fc4161e26c36259ff
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 5ba776424462b3a8b586b1f90e83f409770e5597
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854241"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123813"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
@@ -20,15 +20,15 @@ ms.locfileid: "82854241"
 
 ## <a name="can-i-spread-an-aks-cluster-across-regions"></a>能否跨区域分散 AKS 群集？
 
-否。 AKS 群集是区域资源，不能跨区域。 请参阅[业务连续性和灾难恢复的最佳实践][bcdr-bestpractices]，了解有关如何创建包含多个区域的体系结构的指南。
+不是。 AKS 群集是区域资源，不能跨区域。 请参阅[业务连续性和灾难恢复的最佳实践][bcdr-bestpractices]，了解有关如何创建包含多个区域的体系结构的指南。
 
 ## <a name="can-i-spread-an-aks-cluster-across-availability-zones"></a>是否可以将 AKS 群集分散到不同的可用性区域？
 
-可以。 可以在[支持其的区域][az-regions]中的一个或多个[可用性区域][availability-zones]中部署 AKS 群集。
+是的。 可以在[支持其的区域][az-regions]中的一个或多个[可用性区域][availability-zones]中部署 AKS 群集。
 
 ## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>能否限制谁有权访问 Kubernetes API 服务器？
 
-可以。 有两个选项可用于限制对 API 服务器的访问：
+是的。 有两个选项可用于限制对 API 服务器的访问：
 
 - 如果要为 API 服务器维护公用终结点但限制对一组受信任的 IP 范围的访问，请使用[Api 服务器授权的 Ip 范围][api-server-authorized-ip-ranges]。
 - 如果要将 API 服务器限制为*只能*从虚拟网络内部访问，请使用[专用群集][private-clusters]。
@@ -62,7 +62,7 @@ AKS 基于多个 Azure 基础结构资源（包括虚拟机规模集、虚拟网
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>我是否可为 AKS 节点资源组提供自己的名称？
 
-可以。 默认情况下，AKS 将节点资源组命名为 MC_resourcegroupname_clustername_location**，但你也可以提供自己的名称。
+是的。 默认情况下，AKS 将节点资源组命名为 MC_resourcegroupname_clustername_location**，但你也可以提供自己的名称。
 
 若要指定自己的资源组名称，请安装 [aks-preview][aks-preview-cli] Azure CLI 扩展版本 *0.3.2* 或更高版本。 使用 [az aks create][az-aks-create] 命令创建 AKS 群集时，请使用 *--node-resource-group* 参数并指定资源组的名称。 如果[使用 Azure 资源管理器模板][aks-rm-template]来部署 AKS 群集，则可以使用*nodeResourceGroup*属性来定义资源组名称。
 
@@ -113,7 +113,7 @@ namespaceSelector:
 
 如果你有一个用于在 kube （不推荐）上部署某些内容的关键用例，而你需要将其包含在你的自定义许可 webhook 中，则可以添加以下标签或批注，以便招生 Enforcer 将其忽略。
 
-标签： ```"admissions.enforcer/disabled": "true"```或批注：```"admissions.enforcer/disabled": true```
+标签： ```"admissions.enforcer/disabled": "true"``` 或批注：```"admissions.enforcer/disabled": true```
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>不是，它没有与 Azure Key Vault 集成。
 
@@ -126,6 +126,8 @@ AKS 目前尚未与 Azure Key Vault 本机集成。 不过，[适用于 CSI 密�
 Windows Server 对节点池的支持在 Kubernetes 项目中包含属于上游 Windows Server 的一些限制。 有关这些限制的详细信息，请参阅[Windows Server 容器中的 AKS 限制][aks-windows-limitations]。
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>AKS 是否提供服务级别协议？
+
+AKS 提供了通过 [运行时间 SLA] [正常运行时间-sla.md] 实现 API 服务器的99.95% 可用性的功能。
 
 在服务级别协议 (SLA) 中，如果未满足已发布的服务级别，提供商同意向客户偿还服务费用。 由于 AKS 是免费的，不存在偿还费用，因此也就没有正式的 SLA。 不过，AKS 会设法将 Kubernetes API 服务器的可用性维持在不小于 99.5% 的水平上。
 
@@ -143,7 +145,7 @@ AKS 代理节点按标准 Azure 虚拟机计费，因此，如果你已为在 AK
 
 目前不支持在订阅之间移动群集。
 
-## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>是否可以将 AKS 群集从当前的 Azure 订阅移到另一个订阅？ 
+## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>是否可以将我的 AKS 群集从当前的 Azure 订阅移到另一个？ 
 
 不支持在 Azure 订阅之间移动 AKS 群集及其关联的资源。
 
@@ -209,6 +211,7 @@ AKS 代理节点按标准 Azure 虚拟机计费，因此，如果你已为在 AK
 [bcdr-bestpractices]: ./operator-best-practices-multi-region.md#plan-for-multiregion-deployment
 [availability-zones]: ./availability-zones.md
 [az-regions]: ../availability-zones/az-region.md
+[运行时间-sla]./uptime-sla.mdd
 
 <!-- LINKS - external -->
 [aks-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

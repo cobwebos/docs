@@ -3,14 +3,14 @@ title: 利用 Azure Monitor 日志监视 Azure Functions
 description: 了解如何在 Azure Functions 中使用 Azure Monitor 日志来监视函数执行。
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 13c72a1cf8a0dd4a1124e51b9ceee04ae04bf261
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4b21912de95ccba1d97d187922bfada4d9dc2c56
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77649868"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121609"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>利用 Azure Monitor 日志监视 Azure Functions
 
@@ -25,17 +25,23 @@ Azure Monitor 使用 Azure 数据资源管理器使用的 [Kusto 查询语言](/
 
 ## <a name="setting-up"></a>设置
 
-从 "**监视**" 部分，选择 "**诊断设置**"，然后单击 "**添加诊断设置**"。
+1. 在[Azure 门户](https://portal.azure.com)的函数应用的 "**监视**" 部分中，选择 "**诊断设置**"，然后选择 "**添加诊断设置**"。
 
-![添加诊断设置](media/functions-monitor-log-analytics/diagnostic-settings-add.png)
+   :::image type="content" source="media/functions-monitor-log-analytics/diagnostic-settings-add.png" alt-text="选择诊断设置":::
 
-在 "**诊断设置**" 页上，选择 "**发送到 Log Analytics**"，然后选择 Log Analytics 工作区。 在 "**日志**" 下，选择 " **FunctionAppLogs**"，此表包含所需的日志。
+1. 在 "**诊断设置**" 页的 "**类别详细信息**和**日志**" 下，选择 " **FunctionAppLogs**"。
 
-![添加诊断设置](media/functions-monitor-log-analytics/choose-table.png)
+   **FunctionAppLogs**表包含所需的日志。
+
+1. 在 "**目标详细信息**" 下，选择 "**发送到 Log Analytics**"。然后选择**Log Analytics 工作区**。 
+
+1. 输入**诊断设置名称**，然后选择 "**保存**"。
+
+   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="添加诊断设置":::
 
 ## <a name="user-generated-logs"></a>用户生成的日志
 
-若要生成自定义日志，可以使用特定的日志记录语句，具体取决于你的语言，下面是示例代码片段：
+若要生成自定义日志，请使用特定于你的语言的日志记录语句。 下面是示例代码片段：
 
 
 # <a name="c"></a>[C#](#tab/csharp)
@@ -72,11 +78,19 @@ logging.info('My app logs here.')
 
 ## <a name="querying-the-logs"></a>查询日志
 
-若要查询生成的日志，请参阅配置为将函数日志发送到的 Log Analytics 工作区，并单击 "**日志**"。
+查询生成的日志：
+ 
+1. 在函数应用中，选择 "**诊断设置**"。 
 
-![LA 工作区中的查询窗口](media/functions-monitor-log-analytics/querying.png)
+1. 从 "**诊断设置**" 列表中，选择配置用于将函数日志发送到的 Log Analytics "工作区。 
 
-Azure Functions 将所有日志写入**FunctionAppLogs**表，以下是一些示例查询。
+1. 从 " **Log Analytics 工作区**" 页上，选择 "**日志**"。
+
+   Azure Functions 将所有日志写入**LogManagement**下的**FunctionAppLogs**表中。 
+
+   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="Log Analytics 工作区中的查询窗口":::
+
+下面是一些示例查询：
 
 ### <a name="all-logs"></a>所有日志
 
@@ -87,7 +101,7 @@ FunctionAppLogs
 
 ```
 
-### <a name="a-specific-function-logs"></a>特定函数日志
+### <a name="specific-function-logs"></a>特定函数日志
 
 ```
 
@@ -108,6 +122,6 @@ FunctionAppLogs
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看[Azure Functions 概述](functions-overview.md)
-- 详细了解[Azure Monitor 日志](../azure-monitor/platform/data-platform-logs.md)
+- 查看[Azure Functions 概述](functions-overview.md)。
+- 详细了解[Azure Monitor 日志](../azure-monitor/platform/data-platform-logs.md)。
 - 详细了解[查询语言](../azure-monitor/log-query/get-started-queries.md)。

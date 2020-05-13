@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: dsindona
-ms.openlocfilehash: cee28c65b97d4ac163f78b746dc7be9ee210843c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e65f2041cdb2e25341bfd63783c70ec09c1216b5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80280348"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124697"
 ---
 # <a name="lead-management-instructions-for-table-storage"></a>表存储的潜在客户管理说明
 
@@ -98,7 +98,7 @@ ms.locfileid: "80280348"
 
    - **筛选查询**：如果选择此字段，"**获取过去时间**" 图标将显示在弹出窗口中。 选择 "**过去时间**" 可将此值用作时间戳来筛选查询。 或者，可以将以下函数粘贴到字段中：
    
-      `CreatedTime Timestamp gt datetime'@{body('Get_past_time')}'` 
+      `CreatedTime Timestamp gt '@{body('Get_past_time')}'` 
 
      ![设置 filter query 函数](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-filterquery.png)
 
@@ -111,7 +111,7 @@ ms.locfileid: "80280348"
      ![添加条件控件](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-action-condition-control.png)
 
 1. 在 "**条件**" 窗口中，选择 "**选择值**"，然后在弹出窗口中选择 "**表达式**"。
-1. 粘贴`length(body('Get_entities')?['value'])`到***fx***字段。 选择“确定”以添加此功能****。 
+1. 粘贴 `length(body('Get_entities')?['value'])` 到***fx***字段。 选择“确定”以添加此功能****。 
 
 
 
@@ -133,7 +133,7 @@ ms.locfileid: "80280348"
 
       - **若为，** 则为将收到通知的所有人发送电子邮件地址。
       - **Subject**：电子邮件的主题。 例如：*新潜在顾客！*
-      - **Body**：要包含在每封电子邮件中的文本（可选）。 还可将`body('Get_entities')?['value']`作为函数粘贴，以插入潜在客户信息。
+      - **Body**：要包含在每封电子邮件中的文本（可选）。 还可将 `body('Get_entities')?['value']` 作为函数粘贴，以插入潜在客户信息。
 
         >[!NOTE] 
         >可以在电子邮件的正文中插入其他静态或动态数据点。

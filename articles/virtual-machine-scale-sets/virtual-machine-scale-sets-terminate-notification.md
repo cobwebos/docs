@@ -2,17 +2,19 @@
 title: Azure 虚拟机规模集实例的终止通知
 description: 了解如何为 Azure 虚拟机规模集实例启用终止通知
 author: avirishuv
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.date: 02/26/2020
 ms.author: avverma
-ms.openlocfilehash: 6023e9bf7539b79446d0135ba731b61be166dd6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
+ms.date: 02/26/2020
+ms.reviewer: jushiman
+ms.custom: avverma
+ms.openlocfilehash: 695fd03d7c1856ad39b7672d826f85bc4c68a99c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250746"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125173"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Azure 虚拟机规模集实例的终止通知
 规模集实例可以选择接收实例终止通知，并将预定义的延迟超时设置为终止操作。 终止通知通过 Azure Metadata Service 发送– [Scheduled Events](../virtual-machines/windows/scheduled-events.md)，它提供有影响力操作（如重新启动和重新部署）的通知。 解决方案将另一个事件（终止–）添加到 Scheduled Events 列表，而终止事件的关联延迟将取决于其规模集模型配置中用户指定的延迟限制。
@@ -140,7 +142,7 @@ az vmss update \
 ### <a name="query-response"></a>查询响应
 响应包含计划事件的数组。 空数组表示目前没有计划事件。
 
-在有计划事件的情况下，响应包含事件数组。 对于 "终止" 事件，响应将如下所示：
+如果有计划事件，响应会包含事件的数组。 对于 "终止" 事件，响应将如下所示：
 ```
 {
     "DocumentIncarnation": {IncarnationID},

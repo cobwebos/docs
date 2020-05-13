@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 87cb7c57aab048e1b7acf211d58c850a41afa5a2
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 54ff58735b6831bb45a9477360ffca3439d2f6b4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628209"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124714"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure 数据工厂中的持续集成和交付
 
@@ -88,7 +88,7 @@ ms.locfileid: "82628209"
 
 1.  在 "**阶段名称**" 框中，输入环境的名称。
 
-1.  选择 "**添加项目**"，然后选择配置了开发数据工厂的 git 存储库。 选择**默认分支**的存储库的 "[发布" 分支](source-control.md#configure-publishing-settings)。 默认情况下，此发布分支`adf_publish`是。 对于**默认版本**，请**从 "默认分支" 中选择 "最新**"。
+1.  选择 "**添加项目**"，然后选择配置了开发数据工厂的 git 存储库。 选择**默认分支**的存储库的 "[发布" 分支](source-control.md#configure-publishing-settings)。 默认情况下，此发布分支是 `adf_publish` 。 对于**默认版本**，请**从 "默认分支" 中选择 "最新**"。
 
     ![添加项目](media/continuous-integration-deployment/continuous-integration-image7.png)
 
@@ -104,13 +104,13 @@ ms.locfileid: "82628209"
 
     d.  在 "**操作**" 列表中，选择 "**创建或更新资源组**"。
 
-    e.  选择**模板**框旁边的省略号按钮（**...**）。 浏览在配置的 git 存储库的发布分支中生成的 Azure 资源管理器模板。 在 adf_publish 分支的`ARMTemplateForFactory.json` <FactoryName>文件夹中查找文件。
+    e.  选择**模板**框旁边的省略号按钮（**...**）。 浏览在配置的 git 存储库的发布分支中生成的 Azure 资源管理器模板。 `ARMTemplateForFactory.json`在 adf_publish 分支的文件夹中查找文件 <FactoryName> 。
 
-    f.  选择 **...** 在 "**模板参数**" 框旁边，选择参数文件。 在 adf_publish 分支的`ARMTemplateParametersForFactory.json` <FactoryName>文件夹中查找文件。
+    f.  选择 **...** 在 "**模板参数**" 框旁边，选择参数文件。 `ARMTemplateParametersForFactory.json`在 adf_publish 分支的文件夹中查找文件 <FactoryName> 。
 
     g.  选择 **...** 在 "**替代模板参数**" 框旁边，为目标数据工厂输入所需的参数值。 对于来自 Azure Key Vault 的凭据，请在双引号之间输入密钥的名称。 例如，如果密码的名称为 cred1，请输入此值的 **"$ （cred1）"** 。
 
-    h. 选择**部署模式**的 "**增量**"。
+    h.如果该值不存在，请单击“添加行”。 选择**部署模式**的 "**增量**"。
 
     > [!WARNING]
     > 如果为**部署模式**选择 "**完成**"，则可能会删除现有资源，其中包括未在资源管理器模板中定义的目标资源组中的所有资源。
@@ -165,7 +165,7 @@ ms.locfileid: "82628209"
 
 #### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>向 Azure Pipelines 代理授权
 
-如果未设置正确的权限，Azure Key Vault 任务可能会失败并出现 "拒绝访问" 错误。 下载版本的日志，并找到包含命令的 ps1 文件，以便向 Azure Pipelines 代理提供权限。 可以直接运行该命令。 或者，你可以从文件复制主体 ID 并在 Azure 门户中手动添加访问策略。 `Get`和`List`是所需的最小权限。
+如果未设置正确的权限，Azure Key Vault 任务可能会失败并出现 "拒绝访问" 错误。 下载版本的日志，并找到包含命令的 ps1 文件，以便向 Azure Pipelines 代理提供权限。 可以直接运行该命令。 或者，你可以从文件复制主体 ID 并在 Azure 门户中手动添加访问策略。 `Get`和 `List` 是所需的最小权限。
 
 ### <a name="updating-active-triggers"></a>更新活动触发器
 
@@ -183,7 +183,7 @@ ms.locfileid: "82628209"
     $triggersADF | ForEach-Object { Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.name -Force }
     ```
 
-部署后，可以完成类似的步骤`Start-AzDataFactoryV2Trigger`来重新启动触发器。
+部署后，可以完成类似的步骤 `Start-AzDataFactoryV2Trigger` 来重新启动触发器。
 
 数据工厂团队已经在本文底部提供了一个[示例预先部署脚本和后期部署脚本](#script)。 
 
@@ -228,14 +228,14 @@ ms.locfileid: "82628209"
 下面是在创建自定义参数文件时需要遵循的一些准则： **arm 模板-参数定义。** 该文件由每个实体类型的部分组成：触发器、管道、链接服务、数据集、集成运行时和数据流。
 
 * 输入相关实体类型下的属性路径。
-* 将属性名称设置为 `*` ，表示要将其下的所有属性参数化（仅向下到第一级，而不是以递归方式）。 你还可以为此配置提供例外情况。
-* 将属性的值设置为字符串表示你要参数化该属性。 使用格式 `<action>:<name>:<stype>`。
+* 将属性名称设置为，  `*` 表示要将其下的所有属性参数化（仅向下到第一级，而不是以递归方式）。 你还可以为此配置提供例外情况。
+* 将属性的值设置为字符串表示你要参数化该属性。 使用格式  `<action>:<name>:<stype>` 。
    *  `<action>` 可以是下列字符之一：
       * `=` 表示保留当前值作为参数的默认值。
       * `-` 表示不要保留参数的默认值。
       * `|` 是 Azure Key Vault 用于连接字符串或键的密码的特例。
-   * `<name>` 参数的名称。 如果为空，则采用属性的名称。 如果值以`-`字符开头，则将缩短名称。 例如， `AzureStorage1_properties_typeProperties_connectionString`将缩短为`AzureStorage1_connectionString`。
-   * `<stype>` 参数的类型。 如果 `<stype>` 为空，则默认类型为`string`。 支持的值`string`： `bool`、 `number`、 `object`、和`securestring`。
+   * `<name>` 参数的名称。 如果为空，则采用属性的名称。 如果值以 `-` 字符开头，则将缩短名称。 例如，将 `AzureStorage1_properties_typeProperties_connectionString` 缩短为 `AzureStorage1_connectionString` 。
+   * `<stype>` 参数的类型。 如果  `<stype>`   为空，则默认类型为 `string` 。 支持的值： `string` 、 `bool` 、 `number` 、 `object` 和 `securestring` 。
 * 如果在定义文件中指定数组，则表明模板中的匹配属性是数组。 数据工厂使用数组的 integration runtime 对象中指定的定义来循环访问数组中的所有对象。 第二个对象（一个字符串）成为属性的名称，这用作每次遍历的参数的名称。
 * 定义不能特定于资源实例。 任何定义都适用于该类型的所有资源。
 * 默认情况下，所有安全字符串（如 Key Vault 机密）和安全字符串（如连接字符串、密钥和令牌）都是参数化的。
@@ -307,27 +307,27 @@ ms.locfileid: "82628209"
 
 #### <a name="pipelines"></a>管道
     
-* 路径`activities/typeProperties/waitTimeInSeconds`中的任何属性都已参数化。 管道中具有名为`waitTimeInSeconds` （例如， `Wait`活动）的代码级别属性的任何活动均被参数化为数字，并且具有默认名称。 但资源管理器模板中没有默认值。 在资源管理器部署过程中，它将是必需的输入。
-* 同样，名`headers`为的属性（例如，在`Web`活动中）使用 type `object` （JObject）进行参数化。 它有一个默认值，该值与源工厂的值相同。
+* 路径中的任何属性 `activities/typeProperties/waitTimeInSeconds` 都已参数化。 管道中具有名为（例如，活动）的代码级别属性的任何活动 `waitTimeInSeconds` `Wait` 均被参数化为数字，并且具有默认名称。 但资源管理器模板中没有默认值。 在资源管理器部署过程中，它将是必需的输入。
+* 同样，名为的属性 `headers` （例如，在 `Web` 活动中）使用 type `object` （JObject）进行参数化。 它有一个默认值，该值与源工厂的值相同。
 
 #### <a name="integrationruntimes"></a>IntegrationRuntimes
 
-* 路径`typeProperties`下的所有属性均由其各自的默认值参数化。 例如，在 "类型属性" 下`IntegrationRuntimes`有两个`computeProperties`属性`ssisProperties`：和。 这两个属性类型都是用各自的默认值和类型（对象）创建的。
+* 路径下的所有属性 `typeProperties` 均由其各自的默认值参数化。 例如，在 "类型属性" 下有两个属性 `IntegrationRuntimes` ： `computeProperties` 和 `ssisProperties` 。 这两个属性类型都是用各自的默认值和类型（对象）创建的。
 
 #### <a name="triggers"></a>触发器
 
-* 在`typeProperties`下，参数化两个属性。 第一个是`maxConcurrency`，它被指定为具有默认值，并且的类型`string`为。 它具有默认的参数名称`<entityName>_properties_typeProperties_maxConcurrency`。
-* 此`recurrence`属性也是参数化的。 在该级别下，将指定该级别的所有属性指定为字符串，并将默认值和参数名称指定为参数。 异常是参数为`interval`类型`number`的属性。 参数名称的后缀为`<entityName>_properties_typeProperties_recurrence_triggerSuffix`。 同样，此`freq`属性是一个字符串，参数化为字符串。 但是，属性`freq`的参数化没有默认值。 名称将被缩短并带有后缀。 例如 `<entityName>_freq`。
+* 在下 `typeProperties` ，参数化两个属性。 第一个是 `maxConcurrency` ，它被指定为具有默认值，并且的类型为 `string` 。 它具有默认的参数名称 `<entityName>_properties_typeProperties_maxConcurrency` 。
+* 此 `recurrence` 属性也是参数化的。 在该级别下，将指定该级别的所有属性指定为字符串，并将默认值和参数名称指定为参数。 异常是 `interval` 参数为类型的属性 `number` 。 参数名称的后缀为 `<entityName>_properties_typeProperties_recurrence_triggerSuffix` 。 同样，此 `freq` 属性是一个字符串，参数化为字符串。 但是， `freq` 属性的参数化没有默认值。 名称将被缩短并带有后缀。 例如，`<entityName>_freq`。
 
 #### <a name="linkedservices"></a>Linkedservices.json
 
-* 链接服务是唯一的。 由于链接服务和数据集具有各种类型，因此你可以提供特定于类型的自定义。 在此示例中，对于所有类型`AzureDataLakeStore`的链接服务，将应用特定模板。 对于其他所有内容（ `*`通过），将应用不同的模板。
-* `connectionString`属性将参数化为`securestring`值。 它没有默认值。 它将具有一个带有`connectionString`后缀的短参数名称。
-* 属性`secretAccessKey`碰巧为`AzureKeyVaultSecret` （例如，在 Amazon S3 链接服务中）。 它自动参数化为 Azure Key Vault 机密，并从配置的密钥保管库提取。 还可以参数化密钥保管库本身。
+* 链接服务是唯一的。 由于链接服务和数据集具有各种类型，因此你可以提供特定于类型的自定义。 在此示例中，对于所有类型的链接服务 `AzureDataLakeStore` ，将应用特定模板。 对于其他所有内容（通过 `*` ），将应用不同的模板。
+* `connectionString`属性将参数化为 `securestring` 值。 它没有默认值。 它将具有一个带有后缀的短参数名称 `connectionString` 。
+* 属性 `secretAccessKey` 碰巧为 `AzureKeyVaultSecret` （例如，在 Amazon S3 链接服务中）。 它自动参数化为 Azure Key Vault 机密，并从配置的密钥保管库提取。 还可以参数化密钥保管库本身。
 
 #### <a name="datasets"></a>数据集
 
-* 尽管特定于类型的自定义可用于数据集，但你可以提供配置， \*而无需显式设置级别配置。 在前面的示例中，所有位于下`typeProperties`的数据集属性都是参数化的。
+* 尽管特定于类型的自定义可用于数据集，但你可以提供配置，而无需显式设置 \* 级别配置。 在前面的示例中，所有位于下的数据集属性 `typeProperties` 都是参数化的。
 
 ### <a name="default-parameterization-template"></a>默认参数化模板
 
@@ -443,7 +443,7 @@ ms.locfileid: "82628209"
 
 ### <a name="example-parameterizing-an-existing-azure-databricks-interactive-cluster-id"></a>示例：参数化现有 Azure Databricks 交互式群集 ID
 
-下面的示例演示如何将单个值添加到默认参数化模板。 我们只想要将 Databricks 链接服务的现有 Azure Databricks 交互式群集 ID 添加到参数文件。 请注意，此文件与上一个文件相同，只是`existingClusterId`在的属性字段下添加了。 `Microsoft.DataFactory/factories/linkedServices`
+下面的示例演示如何将单个值添加到默认参数化模板。 我们只想要将 Databricks 链接服务的现有 Azure Databricks 交互式群集 ID 添加到参数文件。 请注意，此文件与上一个文件相同，只是 `existingClusterId` 在的属性字段下添加了 `Microsoft.DataFactory/factories/linkedServices` 。
 
 ```json
 {
@@ -569,6 +569,26 @@ ms.locfileid: "82628209"
 不要忘记在执行部署任务之前和之后在 CI/CD 管道中添加数据工厂脚本。
 
 如果未配置 Git，则可以通过**Arm 模板**列表中的 "**导出 ARM 模板**" 访问链接模板。
+
+## <a name="exclude-azure-ssis-integration-runtimes-from-cicd"></a>从 CI/CD 中排除 Azure SSIS 集成运行时
+
+如果你的开发工厂包含 Azure SSIS 集成运行时，则可以在以下情况下从 CI/CD 进程中排除所有 Azure SSIS 集成运行时：
+
+- Azure-SSIS IR 基础结构是很复杂的，每个环境都是不同的。  
+- 为具有相同名称的每个环境手动设置 Azure-SSIS IR。 否则，如果存在活动，则发布将失败，具体取决于 Azure-SSIS IR。
+
+排除 Azure SSIS 集成运行时：
+
+1. 将 publish_config 的 json 文件添加到协作分支的根文件夹中（如果不存在）。
+1. 将以下设置添加到 publish_config。 json： 
+
+```json
+{
+    " excludeIRs": "true"
+}
+```
+
+从协作分支进行发布时，将从生成的资源管理器模板中排除 Azure SSIS 集成运行时。
 
 ## <a name="hotfix-production-branch"></a>修补程序生产分支
 

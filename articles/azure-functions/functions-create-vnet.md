@@ -3,15 +3,15 @@ title: 将 Azure Functions 与 Azure 虚拟网络集成
 description: 演示如何将函数连接到 Azure 虚拟网络的分步教程
 author: alexkarcher-msft
 ms.topic: article
-ms.date: 5/03/2019
+ms.date: 4/23/2020
 ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: 0c70c69f547405eb8ebdcf6dcc6ae597db151e53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e1babfa188a29e79cb52cd14af19d552123345f1
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75433212"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83122620"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>教程：将 Functions 与 Azure 虚拟网络集成
 
@@ -32,7 +32,7 @@ ms.locfileid: "75433212"
 
 高级计划中运行的函数与 Azure App Service 中的 web 应用具有相同的承载功能，其中包括 VNet 集成功能。 若要了解有关 VNet 集成的详细信息，包括疑难解答和高级配置，请参阅将[应用与 Azure 虚拟网络集成](../app-service/web-sites-integrate-with-vnet.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 对于本教程，请务必了解 IP 寻址和子网。 可以从本文开始[，其中介绍了寻址和子网的基本知识](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics)。 其他更多的文章和视频可在线获得。
 
@@ -50,7 +50,7 @@ ms.locfileid: "75433212"
 
 接下来，创建一个在虚拟网络中运行 WordPress 的预配置 VM （[WORDPRESS LEMP7 Max Performance](https://jetware.io/appliances/jetware/wordpress4_lemp7-170526/profile?us=azure) by Jetware）。 使用 WordPress VM 的原因是成本较低且方便。 此同一方案适用于虚拟网络中的任何资源，例如 REST Api、应用服务环境和其他 Azure 服务。 
 
-1. 在门户中，在左侧导航窗格中选择 " **+ 创建资源**"，在搜索字段类型`WordPress LEMP7 Max Performance`中选择，然后按 enter。
+1. 在门户中，在左侧导航窗格中选择 " **+ 创建资源**"，在搜索字段类型中选择， `WordPress LEMP7 Max Performance` 然后按 enter。
 
 1. 在搜索结果中选择 " **WORDPRESS LEMP Max 性能**"。 选择**WORDPRESS LEMP Max Performance For CentOS**的**软件计划，并选择 "** **创建**"。
 
@@ -60,8 +60,8 @@ ms.locfileid: "75433212"
 
     | 设置      | 建议的值  | 说明      |
     | ------------ | ---------------- | ---------------- |
-    | **订阅** | 订阅 | 用于创建资源的订阅。 | 
-    | **[资源组](../azure-resource-manager/management/overview.md)**  | myResourceGroup | 选择`myResourceGroup`或你用 function app 创建的资源组。 对于 function app、WordPress VM 和托管计划使用同一资源组，可以在完成本教程后更轻松地清理资源。 |
+    | **订阅** | 你的订阅 | 用于创建资源的订阅。 | 
+    | **[资源组](../azure-resource-manager/management/overview.md)**  | myResourceGroup | 选择 `myResourceGroup` 或你用 function app 创建的资源组。 对于 function app、WordPress VM 和托管计划使用同一资源组，可以在完成本教程后更轻松地清理资源。 |
     | **虚拟机名称** | VNET-Wordpress | VM 名称在资源组中必须是唯一的 |
     | **[区域](https://azure.microsoft.com/regions/)** | 东欧西欧 | 在访问 VM 的函数附近或附近选择一个区域。 |
     | **大小** | B1s | 选择 "**更改大小**"，然后选择 B1s 标准映像，其中包含1个 vCPU 和 1 GB 的内存。 |
@@ -100,17 +100,15 @@ ms.locfileid: "75433212"
 
 通过在虚拟网络中的 VM 上运行 WordPress 站点，你现在可以将函数应用连接到该虚拟网络。
 
-1. 在新的函数应用中，选择 "**平台功能** > **网络**"。
-
-    ![在 function app 中选择网络](./media/functions-create-vnet/networking-0.png)
+1. 在新的函数应用中，选择左侧菜单中的 "**网络**"。
 
 1. 在 " **VNet 集成**" 下，选择 **"单击此处进行配置**"。
 
-    ![配置网络功能的状态](./media/functions-create-vnet/Networking-1.png)
+    :::image type="content" source="./media/functions-create-vnet/networking-0.png" alt-text="在 function app 中选择网络":::
 
-1. 在 "虚拟网络集成" 页上，选择 "**添加 VNet （预览版）**"。
+1. 在 " **VNET 集成**" 页上，选择 "**添加 VNET**"。
 
-    ![添加 VNet 集成预览](./media/functions-create-vnet/networking-2.png)
+    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="添加 VNet 集成预览":::
 
 1. 在 "**网络功能状态**" 中，使用映像下表中的设置：
 
@@ -122,9 +120,9 @@ ms.locfileid: "75433212"
     | **子网** | 创建新子网 | 在虚拟网络中创建一个子网，以便函数应用使用。 必须将 VNet 集成配置为使用空子网。 函数使用不同于 VM 的子网并不重要。 虚拟网络自动在两个子网之间路由流量。 |
     | **子网名称** | 函数-Net | 新子网的名称。 |
     | **虚拟网络地址块** | 10.10.0.0/16 | 选择 WordPress 站点使用的同一个地址块。 只应定义一个地址块。 |
-    | **地址范围** | 10.10.2.0/24   | 子网大小限制高级计划函数应用可以向外扩展到的实例总数。 此示例使用具有`/24` 254 个可用主机地址的子网。 此子网过度预配，但易于计算。 |
+    | **地址范围** | 10.10.2.0/24   | 子网大小限制高级计划函数应用可以向外扩展到的实例总数。 此示例使用 `/24` 具有254个可用主机地址的子网。 此子网过度预配，但易于计算。 |
 
-1. 选择 **"确定"** 以添加子网。 关闭 "VNet 集成" 和 "网络功能状态" 页，返回到 "function app" 页。
+1. 选择 **"确定"** 以添加子网。 关闭 " **VNet 集成**" 和 "**网络功能状态**" 页，返回到 "function app" 页。
 
 函数应用现在可以访问运行 WordPress 站点的虚拟网络。 接下来，使用[Azure Functions 代理](functions-proxies.md)从 WordPress 站点返回文件。
 
@@ -132,15 +130,15 @@ ms.locfileid: "75433212"
 
 启用 VNet 集成后，可以在 function app 中创建一个代理，以将请求转发到虚拟网络中运行的 VM。
 
-1. 在函数应用中，选择 "**代理** > **+**"，然后使用映像下表中的代理设置：
+1. 在 function app 中，从左侧菜单中选择 "**代理**"，然后选择 "**添加**"。 使用映像下表中的代理设置：
 
-    ![定义代理设置](./media/functions-create-vnet/create-proxy.png)
+    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="定义代理设置":::
 
     | 设置  | 建议的值  | 说明      |
     | -------- | ---------------- | ---------------- |
     | **名称** | PlAnT | 该名称可以是任何值。 它用于标识代理。 |
     | **路由模板** | /plant | 映射到 VM 资源的路由。 |
-    | **后端 URL** | http://<YOUR_VM_IP>/wp-content/themes/twentyseventeen/assets/images/header.jpg | 将`<YOUR_VM_IP>`替换为前面创建的 WordPress VM 的 IP 地址。 此映射返回站点中的单个文件。 |
+    | **后端 URL** | http://<YOUR_VM_IP>/wp-content/themes/twentyseventeen/assets/images/header.jpg | 将替换 `<YOUR_VM_IP>` 为前面创建的 WORDPRESS VM 的 IP 地址。 此映射返回站点中的单个文件。 |
 
 1. 选择 "**创建**"，将代理添加到 function app。
 

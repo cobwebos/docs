@@ -5,13 +5,13 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
-ms.date: 04/20/2020
-ms.openlocfilehash: 250fd242e76f64002a6e55e7caf616ac201b593b
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.date: 05/11/2020
+ms.openlocfilehash: 4d0d56dc4d6e7fa7765439e7387d67bb80a6ec9f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692257"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124629"
 ---
 # <a name="known-issues"></a>已知问题 #
 
@@ -41,6 +41,7 @@ ms.locfileid: "82692257"
 
 - 当在浏览器中安装 ad-阻止程序时，广告可能会遇到插入（点播或实时）的问题
 - 移动设备在播放广告时可能会出现问题。
+- Midroll 目前不 Azure Media Player 支持广告。
 
 ## <a name="azurehtml5js"></a>AzureHtml5JS ##
 
@@ -51,7 +52,7 @@ ms.locfileid: "82692257"
   - 如果想要播放不带音频的资产，可以通过使用[Azure 媒体服务资源管理器工具](https://aka.ms/amse)插入空白音频来实现此目的。
   - 可在[此处](https://azure.microsoft.com/documentation/articles/media-services-advanced-encoding-with-mes/#silent_audio)找到有关如何插入静态音频的说明
 
-## <a name="flash"></a>闪烁 ##
+## <a name="flash"></a>Flash ##
 
 - 由于 Adobe 的缓存逻辑中的 bug，AES 内容不会播放到 Flash 版本30.0.0.134。 Adobe 修复了此问题，并在30.0.0.154 中发布了该问题
 - 技术和 http 故障（例如404网络超时），播放机所需的恢复时间比其他方面要长。
@@ -62,7 +63,7 @@ ms.locfileid: "82692257"
 
 - 缺少的功能
 - 技术和 http 故障（例如404网络超时），播放机所需的恢复时间比其他方面要长。
-- 在带有 Silverlight 的 Mac 上播放 Safari 和 Firefox 需要`"http://`为`https://`源显式定义或。
+- 在带有 Silverlight 的 Mac 上播放 Safari 和 Firefox 需要 `"http://` 为源显式定义或 `https://` 。
 - 如果此技术缺少 API，则它通常将返回 null。
 - 如果用户已安装了闪存但未提供在站点上加载它的权限，则可能会发生无限旋转。 这是因为播放机认为插件已安装并且可用，并认为该插件正在运行内容。 JavaScript 代码已发送，但浏览器设置阻止了插件执行，直到用户接受允许插件的提示。 这种情况可能发生在所有浏览器中。  
 

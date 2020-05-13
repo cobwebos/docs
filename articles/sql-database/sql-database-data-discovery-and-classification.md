@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/21/2020
 tags: azure-synapse
-ms.openlocfilehash: f05b4d4fec99aaa2fb79da46e2167d883d1f15ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 27989687934719be5f1d18b85d3ead92f28b3f60
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81766984"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123847"
 ---
 # <a name="data-discovery--classification-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 数据库和 Azure Synapse Analytics 的数据发现和分类
 
@@ -61,7 +61,7 @@ ms.locfileid: "81766984"
 
 ### <a name="define-and-customize-your-classification-taxonomy"></a>定义和自定义分类
 
-数据发现 & 分类附带了一组内置的敏感度标签和一个内置的信息类型和发现逻辑集。 现在，可以自定义此分类并专门针对你的环境定义分类构造的集合和级别。
+数据发现和分类附带了一组内置的敏感度标签和一组内置的信息类型和发现逻辑。 现在，可以自定义此分类并专门针对你的环境定义分类构造的集合和级别。
 
 你可以在一个中心位置为你的整个 Azure 组织定义和自定义你的分类分类。 此位置位于[Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)，作为安全策略的一部分。 只有对组织根管理组具有管理权限的人员才能执行此任务。
 
@@ -87,7 +87,7 @@ ms.locfileid: "81766984"
 
 5. <a id="step-5"></a>若要开始对数据进行分类，请选择 "**数据发现 & 分类**" 页上的 "**分类**" 选项卡。
 
-    分类引擎会扫描你的数据库中是否包含可能敏感的数据，并提供建议的列分类列表。
+    分类引擎会扫描数据库，查找包含潜在敏感数据的列，并提供“建议列分类”列表  。
 
 6. 查看并应用分类建议：
 
@@ -113,15 +113,15 @@ ms.locfileid: "81766984"
 
 ## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>审核对敏感数据的访问
 
-信息保护范例的一个重要方面是能够监视对敏感数据的访问。 [AZURE SQL 数据库审核](sql-database-auditing.md)已经过增强，在审核日志中包含一个名`data_sensitivity_information`为的新字段。 此字段记录查询返回的数据的敏感度分类（标签）。 下面是一个示例：
+信息保护范例的一个重要方面是能够监视对敏感数据的访问。 [AZURE SQL 数据库审核](sql-database-auditing.md)已经过增强，在审核日志中包含一个名为的新字段 `data_sensitivity_information` 。 此字段记录查询返回的数据的敏感度分类（标签）。 下面是一个示例：
 
 ![审核日志](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
-## <a name="permissions"></a><a id="permissions"></a>访问
+## <a name="permissions"></a><a id="permissions"></a>权限
 
 这些内置角色可以读取 Azure SQL 数据库的数据分类：
 
-- “所有者”
+- 所有者
 - 读取器
 - 参与者
 - SQL 安全管理器
@@ -129,7 +129,7 @@ ms.locfileid: "81766984"
 
 这些内置角色可以修改 Azure SQL 数据库的数据分类：
 
-- “所有者”
+- 所有者
 - 参与者
 - SQL 安全管理器
 
@@ -152,18 +152,6 @@ ms.locfileid: "81766984"
 - 删除一个或多个列的分类：删除[敏感度分类](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - 查看数据库中的所有分类： [sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-### <a name="use-the-rest-api"></a>使用 Rest API
-
-您可以使用 REST API 以编程方式管理分类和建议。 已发布的 REST API 支持以下操作：
-
-- [创建或更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate)：创建或更新指定列的敏感度标签。
-- [删除](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete)：删除指定列的敏感度标签。
-- [禁用建议](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation)：对指定列禁用敏感性建议。
-- [启用建议](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation)：对指定列启用敏感性建议。 （默认情况下，对所有列启用建议。）
-- [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get)：获取指定列的敏感度标签。
-- [按数据库列出当前的列表](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase)：获取指定数据库的当前敏感度标签。
-- [数据库推荐的列表](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase)：获取指定数据库的建议敏感度标签。
-
 ### <a name="use-powershell-cmdlets"></a>使用 PowerShell cmdlet
 可以使用 PowerShell 管理 Azure SQL 数据库和托管实例的分类和建议。
 
@@ -185,6 +173,17 @@ ms.locfileid: "81766984"
 - [Enable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqlinstancedatabasesensitivityrecommendation)
 - [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
 
+### <a name="use-the-rest-api"></a>使用 Rest API
+
+您可以使用 REST API 以编程方式管理分类和建议。 已发布的 REST API 支持以下操作：
+
+- [创建或更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate)：创建或更新指定列的敏感度标签。
+- [删除](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete)：删除指定列的敏感度标签。
+- [禁用建议](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation)：对指定列禁用敏感性建议。
+- [启用建议](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation)：对指定列启用敏感性建议。 （默认情况下，对所有列启用建议。）
+- [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get)：获取指定列的敏感度标签。
+- [按数据库列出当前的列表](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase)：获取指定数据库的当前敏感度标签。
+- [数据库推荐的列表](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase)：获取指定数据库的建议敏感度标签。
 
 ## <a name="next-steps"></a><a id="next-steps"></a>后续步骤
 

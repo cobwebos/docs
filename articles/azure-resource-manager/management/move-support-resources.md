@@ -3,12 +3,12 @@ title: 资源类型支持的移动操作
 description: 列出可移到新资源组或订阅的 Azure 资源类型。
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 45450b21b1cd3236712043629f433c2c5fe20f80
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 81d545066ea6bcc1d3e2eecd884671324155d796
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900977"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124680"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 本文列出某个 Azure 资源类型是否支持移动操作。 它还提供了有关移动资源时要考虑的特殊条件的信息。
@@ -41,13 +41,13 @@ ms.locfileid: "82900977"
 > - [Microsoft.Cache](#microsoftcache)
 > - [Microsoft.Cdn](#microsoftcdn)
 > - [Microsoft.CertificateRegistration](#microsoftcertificateregistration)
-> - [Microsoft.classiccompute](#microsoftclassiccompute)
-> - [Microsoft.classicnetwork](#microsoftclassicnetwork)
+> - [Microsoft.ClassicCompute](#microsoftclassiccompute)
+> - [Microsoft.ClassicNetwork](#microsoftclassicnetwork)
 > - [Microsoft.ClassicStorage](#microsoftclassicstorage)
 > - [认知](#microsoftcognition)
 > - [Microsoft.CognitiveServices](#microsoftcognitiveservices)
 > - [Microsoft.Compute](#microsoftcompute)
-> - [Microsoft. 消耗](#microsoftconsumption)
+> - [Microsoft.Consumption](#microsoftconsumption)
 > - [Microsoft.Container](#microsoftcontainer)
 > - [Microsoft.ContainerInstance](#microsoftcontainerinstance)
 > - [Microsoft.ContainerRegistry](#microsoftcontainerregistry)
@@ -57,7 +57,7 @@ ms.locfileid: "82900977"
 > - [Microsoft.CostManagement](#microsoftcostmanagement)
 > - [Microsoft.CustomerInsights](#microsoftcustomerinsights)
 > - [CustomProviders](#microsoftcustomproviders)
-> - [DataBox](#microsoftdatabox)
+> - [Microsoft.DataBox](#microsoftdatabox)
 > - [Microsoft.DataBoxEdge](#microsoftdataboxedge)
 > - [Microsoft.Databricks](#microsoftdatabricks)
 > - [Microsoft.DataCatalog](#microsoftdatacatalog)
@@ -88,7 +88,7 @@ ms.locfileid: "82900977"
 > - [Microsoft 试验](#microsoftexperimentation)
 > - [Falcon](#microsoftfalcon)
 > - [Microsoft.Genomics](#microsoftgenomics)
-> -  Microsoft.GuestConfiguration
+> - [Microsoft.GuestConfiguration](#microsoftguestconfiguration)
 > - [Microsoft.HanaOnAzure](#microsofthanaonazure)
 > - [Microsoft.HDInsight](#microsofthdinsight)
 > - [HealthcareApis](#microsofthealthcareapis)
@@ -100,7 +100,7 @@ ms.locfileid: "82900977"
 > - [Microsoft.IoTCentral](#microsoftiotcentral)
 > - [Microsoft.IoTSpaces](#microsoftiotspaces)
 > - [Microsoft.KeyVault](#microsoftkeyvault)
-> - [Kubernetes](#microsoftkubernetes)
+> - [Microsoft.Kubernetes](#microsoftkubernetes)
 > - [Microsoft.Kusto](#microsoftkusto)
 > - [Microsoft.LabServices](#microsoftlabservices)
 > - [Microsoft.LocationBasedServices](#microsoftlocationbasedservices)
@@ -112,7 +112,7 @@ ms.locfileid: "82900977"
 > - [Microsoft.MachineLearningModelManagement](#microsoftmachinelearningmodelmanagement)
 > - [Microsoft.MachineLearningOperationalization](#microsoftmachinelearningoperationalization)
 > - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
-> - [Microsoft. 维护](#microsoftmaintenance)
+> - [Microsoft.Maintenance](#microsoftmaintenance)
 > - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
 > - [ManagedNetwork](#microsoftmanagednetwork)
 > - [Microsoft.ManagedServices](#microsoftmanagedservices)
@@ -126,7 +126,7 @@ ms.locfileid: "82900977"
 > - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
 > - [ObjectStore](#microsoftobjectstore)
 > - [Microsoft.OperationalInsights](#microsoftoperationalinsights)
-> - [为 microsoft.operationsmanagement](#microsoftoperationsmanagement)
+> - [Microsoft.OperationsManagement](#microsoftoperationsmanagement)
 > - [Microsoft。对等互连](#microsoftpeering)
 > - [Microsoft.PolicyInsights](#microsoftpolicyinsights)
 > - [Microsoft.Portal](#microsoftportal)
@@ -144,7 +144,7 @@ ms.locfileid: "82900977"
 > - [Microsoft.ResourceHealth](#microsoftresourcehealth)
 > - [Microsoft.Resources](#microsoftresources)
 > - [Microsoft.SaaS](#microsoftsaas)
-> - [Microsoft. 搜索](#microsoftsearch)
+> - [Microsoft.Search](#microsoftsearch)
 > - [Microsoft.Security](#microsoftsecurity)
 > - [Microsoft.SecurityInsights](#microsoftsecurityinsights)
 > - [Microsoft.ServerManagement](#microsoftservermanagement)
@@ -160,7 +160,7 @@ ms.locfileid: "82900977"
 > - [Microsoft.SqlVM](#microsoftsqlvm)
 > - [Microsoft.Storage](#microsoftstorage)
 > - [StorageCache](#microsoftstoragecache)
-> - [Microsoft.StorageSync](#microsoftstoragesync)
+> - [Storagesync.sys](#microsoftstoragesync)
 > - [Microsoft.StorageSyncDev](#microsoftstoragesyncdev)
 > - [Microsoft.StorageSyncInt](#microsoftstoragesyncint)
 > - [Microsoft.StorSimple](#microsoftstorsimple)
@@ -173,7 +173,7 @@ ms.locfileid: "82900977"
 > - [Microsoft.TimeSeriesInsights](#microsofttimeseriesinsights)
 > - [Microsoft Token](#microsofttoken)
 > - [Microsoft.VirtualMachineImages](#microsoftvirtualmachineimages)
-> - [microsoft.visualstudio](#microsoftvisualstudio)
+> - [visualstudio](#microsoftvisualstudio)
 > - [VMwareCloudSimple](#microsoftvmwarecloudsimple)
 > - [VnfManager](#microsoftvnfmanager)
 > - [VSOnline](#microsoftvsonline)
@@ -230,7 +230,7 @@ ms.locfileid: "82900977"
 > | 服务 | 是 | 是 |
 
 > [!IMPORTANT]
-> 无法移动设置为使用情况 SKU 的 API 管理服务。
+> 无法移动设置为消耗 SKU 的 API 管理服务。
 
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 
@@ -494,15 +494,15 @@ ms.locfileid: "82900977"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | aggregatedcost | 否 | 否 |
-> | 平衡 | 否 | 否 |
+> | balances | 否 | 否 |
 > | 预算 | 否 | 否 |
-> | 话费 | 否 | 否 |
+> | charges | 否 | 否 |
 > | costtags | 否 | 否 |
 > | credits | 否 | 否 |
-> | 活动 | 否 | 否 |
-> | 预测 | 否 | 否 |
+> | events | 否 | 否 |
+> | forecasts | 否 | 否 |
 > | lots | 否 | 否 |
-> | 市场 | 否 | 否 |
+> | marketplaces | 否 | 否 |
 > | operationresults | 否 | 否 |
 > | operationstatus | 否 | 否 |
 > | pricesheets | 否 | 否 |
@@ -537,10 +537,10 @@ ms.locfileid: "82900977"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | registries | 是 | 是 |
-> | 注册表/agentpools | 否 | 否 |
+> | registries/agentpools | 否 | 否 |
 > | registries/buildtasks | 是 | 是 |
 > | registries/replications | 是 | 是 |
-> | 注册表/taskruns | 是 | 是 |
+> | registries/taskruns | 是 | 是 |
 > | registries/tasks | 是 | 是 |
 > | registries/webhooks | 是 | 是 |
 
@@ -558,7 +558,7 @@ ms.locfileid: "82900977"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 服务 | 否 | 否 |
+> | applications | 否 | 否 |
 
 ## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
 
@@ -877,9 +877,9 @@ ms.locfileid: "82900977"
 > | clusters | 是 | 是 |
 
 > [!IMPORTANT]
-> 可以将 HDInsight 群集移到新的订阅或资源组。 但是，无法在订阅之间移动链接到 HDInsight 群集的网络资源（例如虚拟网络、NIC 或负载均衡器）。 此外，无法将连接到群集的虚拟机的 NIC 移到新的资源组。
+> 可以将 HDInsight 群集移到新订阅或资源组。 但是，无法在订阅之间移动链接到 HDInsight 群集的网络资源（例如虚拟网络、NIC 或负载均衡器）。 此外，无法将连接到群集的虚拟机的 NIC 移到新的资源组。
 >
-> 将 HDInsight 群集移到新的订阅时，首先移动其他资源（如存储帐户）。 然后移动 HDInsight 群集本身。
+> 将 HDInsight 群集移至新订阅时，请先移动其他资源（例如存储帐户）。 然后移动 HDInsight 群集本身。
 
 ## <a name="microsofthealthcareapis"></a>HealthcareApis
 
@@ -893,7 +893,7 @@ ms.locfileid: "82900977"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 造 | 是 | 是 |
+> | machines | 是 | 是 |
 > | 计算机/扩展 | 否 | 否 |
 
 ## <a name="microsofthybriddata"></a>Microsoft.HybridData
@@ -983,7 +983,7 @@ ms.locfileid: "82900977"
 > [!IMPORTANT]
 > 用于磁盘加密的 Key Vault 不能移到同一订阅中的资源组，也不能跨订阅移动。
 
-## <a name="microsoftkubernetes"></a>Kubernetes
+## <a name="microsoftkubernetes"></a>Microsoft.Kubernetes
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
@@ -1026,7 +1026,7 @@ ms.locfileid: "82900977"
 > | hostingenvironments | 否 | 否 |
 > | integrationaccounts | 是 | 是 |
 > | integrationserviceenvironments | 是 | 否 |
-> | integrationserviceenvironments / managedapis | 是 | 否 |
+> | integrationserviceenvironments/managedapis | 是 | 否 |
 > | isolatedenvironments | 否 | 否 |
 > | workflows | 是 | 是 |
 
@@ -1080,7 +1080,7 @@ ms.locfileid: "82900977"
 > | workspaces | 否 | 否 |
 > | workspaces / computes | 否 | 否 |
 
-## <a name="microsoftmaintenance"></a>Microsoft. 维护
+## <a name="microsoftmaintenance"></a>Microsoft.Maintenance
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
@@ -1088,14 +1088,14 @@ ms.locfileid: "82900977"
 > | applyupdates | 否 | 否 |
 > | configurationassignments | 否 | 否 |
 > | maintenanceconfigurations | 是 | 是 |
-> | 更新 | 否 | 否 |
+> | updates | 否 | 否 |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 标识 | 否 | 否 |
+> | identities | 否 | 否 |
 > | userassignedidentities | 否 | 否 |
 
 ## <a name="microsoftmanagednetwork"></a>ManagedNetwork
@@ -1199,7 +1199,7 @@ ms.locfileid: "82900977"
 > | networksecuritygroups | 是 | 是 |
 > | networkwatchers | 是 | 否 |
 > | networkwatchers/connectionmonitors | 是 | 否 |
-> | networkwatchers / flowlogs | 是 | 否 |
+> | networkwatchers/flowlogs | 是 | 否 |
 > | networkwatchers/pingmeshes | 是 | 否 |
 > | p2svpngateways | 否 | 否 |
 > | privatednszones | 是 | 是 |
@@ -1253,8 +1253,7 @@ ms.locfileid: "82900977"
 
 > [!IMPORTANT]
 > 请确保移动到新订阅不超过[订阅配额](azure-subscription-service-limits.md#azure-monitor-limits)。
-
-> [!IMPORTANT]
+> 
 > 不能移动具有链接的自动化帐户的工作区。 在开始移动操作之前，请确保取消所有自动化帐户的链接。   
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
@@ -1382,7 +1381,7 @@ ms.locfileid: "82900977"
 > | availabilitystatuses | 否 | 否 |
 > | childavailabilitystatuses | 否 | 否 |
 > | childresources | 否 | 否 |
-> | 活动 | 否 | 否 |
+> | events | 否 | 否 |
 > | 通知 | 否 | 否 |
 
 ## <a name="microsoftresources"></a>Microsoft.Resources
@@ -1391,7 +1390,7 @@ ms.locfileid: "82900977"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | deploymentscripts | 否 | 否 |
-> | links | 否 | 否 |
+> | 链接 | 否 | 否 |
 > | tags | 否 | 否 |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
@@ -1399,7 +1398,7 @@ ms.locfileid: "82900977"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 服务 | 是 | 否 |
+> | applications | 是 | 否 |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
@@ -1422,7 +1421,7 @@ ms.locfileid: "82900977"
 > | assessments | 否 | 否 |
 > | automations | 是 | 是 |
 > | complianceresults | 否 | 否 |
-> | 符合性要求 | 否 | 否 |
+> | compliances | 否 | 否 |
 > | datacollectionagents | 否 | 否 |
 > | devicesecuritygroups | 否 | 否 |
 > | informationprotectionpolicies | 否 | 否 |
@@ -1443,7 +1442,7 @@ ms.locfileid: "82900977"
 > | dataconnectorscheckrequirements | 否 | 否 |
 > | 实体 | 否 | 否 |
 > | entityqueries | 否 | 否 |
-> | 发生 | 否 | 否 |
+> | incidents | 否 | 否 |
 > | officeconsents | 否 | 否 |
 > | 设置 | 否 | 否 |
 
@@ -1467,7 +1466,7 @@ ms.locfileid: "82900977"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 服务 | 否 | 否 |
+> | applications | 否 | 否 |
 > | clusters | 是 | 是 |
 > | clusters/applications | 否 | 否 |
 > | containergroups | 否 | 否 |
@@ -1483,7 +1482,7 @@ ms.locfileid: "82900977"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 服务 | 是 | 是 |
+> | applications | 是 | 是 |
 > | containergroups | 否 | 否 |
 > | gateways | 是 | 是 |
 > | networks | 是 | 是 |
@@ -1517,7 +1516,7 @@ ms.locfileid: "82900977"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | applicationdefinitions | 否 | 否 |
-> | 服务 | 否 | 否 |
+> | applications | 否 | 否 |
 > | jitrequests | 否 | 否 |
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
@@ -1526,18 +1525,18 @@ ms.locfileid: "82900977"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | instancepools | 否 | 否 |
-> | 位置 | 是 | 是 |
+> | locations | 是 | 是 |
 > | managedinstances | 否 | 否 |
 > | managedinstances/databases | 否 | 否 |
 > | servers | 是 | 是 |
 > | servers/databases | 是 | 是 |
 > | servers/elasticpools | 是 | 是 |
-> | 服务器/jobaccounts | 是 | 是 |
-> | 服务器/jobagents | 是 | 是 |
+> | servers/jobaccounts | 是 | 是 |
+> | servers/jobagents | 是 | 是 |
 > | virtualclusters | 是 | 是 |
 
 > [!IMPORTANT]
-> 数据库和服务器必须位于同一个资源组中。 当移动 SQL 服务器时，其所有数据库也会一起移动。 此行为适用于 Azure SQL 数据库和 Azure SQL 数据仓库数据库。
+> 数据库和服务器必须位于同一个资源组中。 移动 SQL 服务器时，也会移动其所有数据库。 此行为适用于 Azure SQL 数据库和 Azure SQL 数据仓库数据库。
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
 
@@ -1646,7 +1645,7 @@ ms.locfileid: "82900977"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | providerregistrations | 否 | 否 |
-> | 资源 | 否 | 否 |
+> | resources | 否 | 否 |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 
@@ -1677,8 +1676,8 @@ ms.locfileid: "82900977"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | account | 否 | 否 |
-> | 帐户/扩展 | 是 | 是 |
-> | 帐户/项目 | 是 | 是 |
+> | 帐户/扩展 | 否 | 否 |
+> | 帐户/项目 | 否 | 否 |
 
 > [!IMPORTANT]
 > 若要更改 Azure DevOps 的订阅，请参阅[更改用于计费的 Azure 订阅](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)。
@@ -1705,8 +1704,8 @@ ms.locfileid: "82900977"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | accounts | 是 | 是 |
-> | plans | 是 | 是 |
+> | accounts | 否 | 否 |
+> | plans | 否 | 否 |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 
@@ -1754,7 +1753,7 @@ ms.locfileid: "82900977"
 
 ## <a name="third-party-services"></a>第三方服务
 
-第三方服务当前不支持移动操作。
+第三方服务目前不支持移动操作。
 
 ## <a name="next-steps"></a>后续步骤
 有关用于移动资源的命令，请参阅[将资源移到新资源组或订阅](move-resource-group-and-subscription.md)。

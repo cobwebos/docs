@@ -1,20 +1,20 @@
 ---
 title: 在地图上显示流量 |Microsoft Azure 映射
 description: 在本文中，你将学习如何使用 Microsoft Azure map Web SDK 显示地图上的流量数据。
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 9bd5ae462013924a46a3da8400719e83abae3424
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9c17c3cc22d478d81ed3c2b2ae9f61c173aad6cd
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79534808"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123915"
 ---
 # <a name="show-traffic-on-the-map"></a>在地图上显示交通信息
 
@@ -50,7 +50,7 @@ map.setTraffic({
 <br/>
 
 <iframe height="700" style="width: 100%;" scrolling="no" title="交通状况叠加选项" src="//codepen.io/azuremaps/embed/RwbPqRY/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅<a href='https://codepen.io'>CodePen</a>上的 "笔<a href='https://codepen.io/azuremaps/pen/RwbPqRY/'>流量重叠" 选项</a>Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）。
+请参阅 CodePen 上的 "笔<a href='https://codepen.io/azuremaps/pen/RwbPqRY/'>流量重叠" 选项</a>Azure Maps （ <a href='https://codepen.io/azuremaps'>@azuremaps</a> ） <a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
 ## <a name="next-steps"></a>后续步骤
@@ -58,7 +58,7 @@ map.setTraffic({
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [将](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [映射](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
 > [TrafficOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.trafficoptions)

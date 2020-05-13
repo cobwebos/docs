@@ -1,19 +1,19 @@
 ---
 title: 缩放级别和磁贴网格 |Microsoft Azure 映射
 description: 在本文中，你将了解 Microsoft Azure 图中的缩放级别和磁贴网格。
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 01/22/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: d58c9f6940dceefdc25211f4540b34522aec935d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b7dde6e1a77cebd1e88cc574d99e781ab55f0934
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79530285"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123898"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>缩放级别和磁贴网格
 
@@ -140,12 +140,12 @@ var tileY = Math.floor(pixelY / tileSize);
 
 ## <a name="quadkey-indices"></a>Quadkey 索引
 
-某些映射平台使用`quadkey`索引命名约定，该约定将磁贴 ZY 坐标合并为一维字符串（ `quadtree`称为键`quadkeys`或 short）。 每`quadkey`个磁贴在特定的详细级别上唯一标识一个磁贴，并且可用作公用数据库 B 树索引中的键。 Azure Maps Sdk 除了[添加图块层](map-add-tile-layer.md)文档中所述`quadkey`的其他命名约定外，还支持使用命名约定覆盖图块层。
+某些映射平台使用 `quadkey` 索引命名约定，该约定将磁贴 ZY 坐标合并为一维字符串（称为 `quadtree` 键或 `quadkeys` short）。 每个 `quadkey` 磁贴在特定的详细级别上唯一标识一个磁贴，并且可用作公用数据库 B 树索引中的键。 Azure Maps Sdk `quadkey` 除了[添加图块层](map-add-tile-layer.md)文档中所述的其他命名约定外，还支持使用命名约定覆盖图块层。
 
 > [!NOTE]
 > `quadkeys`命名约定仅适用于一个或更高的缩放级别。 Azure Maps SDK 的支持缩放级别0，它是整个世界的单个地图图块。 
 
-若要将图块坐标`quadkey`转换为，则 Y 和 X 坐标的位是交错的，并将结果解释为以4为基数的数字（保留了前导零），并转换为字符串。 例如，给定的平铺的图块 XY 坐标（3，5）， `quadkey`则按如下方式确定：
+若要将图块坐标转换为 `quadkey` ，则 Y 和 X 坐标的位是交错的，并将结果解释为以4为基数的数字（保留了前导零），并转换为字符串。 例如，给定的平铺的图块 XY 坐标（3，5）， `quadkey` 则按如下方式确定：
 
 ```
 tileX = 3 = 011 (base 2)
@@ -155,13 +155,13 @@ tileY = 5 = 1012 (base 2)
 quadkey = 100111 (base 2) = 213 (base 4) = "213"
 ```
 
-`Qquadkeys`有几个有趣的属性。 首先，的`quadkey`长度（位数）等于相应磁贴的缩放级别。 其次， `quadkey`任何图块`quadkey`的均以其父磁贴（包含上一个级别的磁贴）的开头。 如以下示例中所示，磁贴2是磁贴20到23的父级：
+`Qquadkeys`有几个有趣的属性。 首先，的长度 `quadkey` （位数）等于相应磁贴的缩放级别。 其次， `quadkey` 任何图块的均以 `quadkey` 其父磁贴（包含上一个级别的磁贴）的开头。 如以下示例中所示，磁贴2是磁贴20到23的父级：
 
 <center>
 
 ![Quadkey 平铺棱锥图](media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png)</center>
 
-最后， `quadkeys`提供一维索引键，通常在 XY 空间中保留磁贴的邻近性。 换句话说，具有附近 XY 坐标的两个磁贴通常具有`quadkeys`相对接近的点。 这对于优化数据库性能非常重要，因为相邻磁贴通常是在组中请求的，因此最好将这些磁贴保存在相同的磁盘块上，以最大程度地减少磁盘读取次数。
+最后， `quadkeys` 提供一维索引键，通常在 XY 空间中保留磁贴的邻近性。 换句话说，具有附近 XY 坐标的两个磁贴通常具有 `quadkeys` 相对接近的点。 这对于优化数据库性能非常重要，因为相邻磁贴通常是在组中请求的，因此最好将这些磁贴保存在相同的磁盘块上，以最大程度地减少磁盘读取次数。
 
 ## <a name="tile-math-source-code"></a>磁贴数学源代码
 

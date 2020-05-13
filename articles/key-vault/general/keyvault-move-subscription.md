@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: 4046d4ec5f62ffc4fab50e8c5a4a08fad326aa04
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 450aa58d4ad9cbb721e621ec3db8b4ca7e914aa1
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82796949"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121178"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>将 Azure Key Vault 移到另一个订阅
 
@@ -50,7 +50,7 @@ ms.locfileid: "82796949"
 
 请确保转到 Azure 门户上的 "Azure 策略" 页，并查看当前订阅的策略分配以及要移到的订阅，并确保没有不匹配。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 参与者级别的访问权限或更高级别，用于在密钥保管库所在的当前订阅。
 * 参与者级别访问权限或更高级别，用于要移动密钥保管库的订阅。
@@ -83,6 +83,9 @@ $vault.Properties.AccessPolicies = @()                                     # Acc
                                                                            # applications/users/rights so that it does not need to be                             # done after this whole activity. Here we are not setting 
                                                                            # any access policies. 
 Set-AzResource -ResourceId $vaultResourceId -Properties $vault.Properties  # Modifies the key vault's properties.
+
+Clear-AzContext                                                            #Clear the context from PowerShell
+Connect-AzAccount                                                          #Log in again to confirm you have the correct tenant id
 ````
 
 ```azurecli

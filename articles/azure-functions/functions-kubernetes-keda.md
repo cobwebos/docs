@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
-ms.openlocfilehash: 2c06fdba8f60243acf4e0fabd23df8b832c210db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c050eb38e47ce2ab9d11e5c92eb7bdd3ac8e572
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78301669"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121688"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>在 Kubernetes 上通过 KEDA Azure Functions
 
@@ -28,11 +28,11 @@ Azure Functions 服务由两个关键组件组成：运行时和缩放控制器�
 
 ### <a name="installing-with-helm"></a>通过 Helm 安装
 
-可以通过多种方式在任何 Kubernetes 群集中安装 KEDA，包括 Helm。  [KEDA 站点](https://keda.sh/deploy/)上介绍了部署选项。
+可以通过多种方式在任何 Kubernetes 群集中安装 KEDA，包括 Helm。  [KEDA 站点](https://keda.sh/docs/deploy/)上介绍了部署选项。
 
 ## <a name="deploying-a-function-app-to-kubernetes"></a>将 function app 部署到 Kubernetes
 
-可以将任何函数应用部署到运行 KEDA 的 Kubernetes 群集。  由于函数在 Docker 容器中运行，因此，项目需要`Dockerfile`。  如果还没有，可以通过在函数项目的根目录中运行以下命令来添加 Dockerfile：
+可以将任何函数应用部署到运行 KEDA 的 Kubernetes 群集。  由于函数在 Docker 容器中运行，因此，项目需要 `Dockerfile` 。  如果还没有，可以通过在函数项目的根目录中运行以下命令来添加 Dockerfile：
 
 ```cli
 func init --docker-only
@@ -41,7 +41,7 @@ func init --docker-only
 若要生成映像并将函数部署到 Kubernetes，请运行以下命令：
 
 > [!NOTE]
-> 核心工具将利用 docker CLI 生成并发布映像。 请确保已安装 docker，并使用连接到你的`docker login`帐户。
+> 核心工具将利用 docker CLI 生成并发布映像。 请确保已安装 docker，并使用连接到你的帐户 `docker login` 。
 
 ```cli
 func kubernetes deploy --name <name-of-function-deployment> --registry <container-registry-username>
@@ -49,15 +49,15 @@ func kubernetes deploy --name <name-of-function-deployment> --registry <containe
 
 > 将 `<name-of-function-deployment>` 替换为你的函数应用的名称。
 
-这会创建 Kubernetes `Deployment`资源、 `ScaledObject`资源和`Secrets`，其中包括从`local.settings.json`文件导入的环境变量。
+这会创建 Kubernetes `Deployment` 资源、 `ScaledObject` 资源和 `Secrets` ，其中包括从文件导入的环境变量 `local.settings.json` 。
 
 ### <a name="deploying-a-function-app-from-a-private-registry"></a>从专用注册表部署函数应用
 
-上述流也适用于私有注册表。  如果要从专用注册表拉取容器映像，请在`--pull-secret`运行`func kubernetes deploy`时包括引用持有专用注册表凭据的 Kubernetes 机密的标志。
+上述流也适用于私有注册表。  如果要从专用注册表拉取容器映像，请在 `--pull-secret` 运行时包括引用持有专用注册表凭据的 Kubernetes 机密的标志 `func kubernetes deploy` 。
 
 ## <a name="removing-a-function-app-from-kubernetes"></a>从 Kubernetes 中删除函数应用
 
-部署后，可以通过删除关联`Deployment`的、 `ScaledObject`和`Secrets`创建的来删除函数。
+部署后，可以通过删除关联的、和创建的来删除函数 `Deployment` `ScaledObject` `Secrets` 。
 
 ```cli
 kubectl delete deploy <name-of-function-deployment>

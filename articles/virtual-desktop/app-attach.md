@@ -5,21 +5,21 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/14/2019
+ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ec69a9906eabb4ce56f79b1b88c2b5f2440f84b1
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 94ec85ae658ca6012cd1f1594b431d12bb73013d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612463"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121059"
 ---
 # <a name="set-up-msix-app-attach"></a>设置 MSIX 应用附加
 
 > [!IMPORTANT]
 > .MSIX 应用附加当前为公共预览版。
-> 此预览版本在提供时没有服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 本主题将指导你完成如何在 Windows 虚拟桌面环境中设置 .MSIX app attach。
 
@@ -41,7 +41,7 @@ ms.locfileid: "82612463"
      >[!NOTE]
      >你必须是 Windows 预览体验计划的成员才能访问 Windows 预览体验门户。 若要了解有关 Windows 预览体验计划的详细信息，请查看我们的[Windows 预览体验文档](/windows-insider/at-home/)。
 
-2. 向下滚动到 "**选择版本**" 部分，并选择 " **Windows 10 预览体验版（快速）-生成 19035** " 或更高版本。
+2. 向下滚动到 "**选择版本**" 部分，并选择 " **Windows 10 预览体验版（快速）-生成 19041** " 或更高版本。
 
 3. 选择 "**确认**"，然后选择要使用的语言，然后再次选择 "**确认**"。
     
@@ -73,6 +73,14 @@ rem Disable Windows Update:
 
 sc config wuauserv start=disabled
 ```
+
+禁用自动更新后，你必须启用 Hyper-v，因为你将使用球场命令来暂存和卸载 VHD 到 "转储"。 
+
+```powershell
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
+```
+>[!NOTE]
+>此更改将需要你重新启动虚拟机。
 
 接下来，准备 Azure 的 VM VHD，并将生成的 VHD 磁盘上传到 Azure。 若要了解详细信息，请参阅[准备和自定义主 VHD 映像](set-up-customize-master-image.md)。
 
@@ -207,11 +215,11 @@ sc config wuauserv start=disabled
 
 4.  打开父文件夹。 如果正确扩展，则会看到一个与包同名的文件夹。 更新 **$packageName**变量以匹配此文件夹的名称。
 
-    例如 `VSCodeUserSetup-x64-1.38.1_1.38.1.0_x64__8wekyb3d8bbwe`。
+    例如，`VSCodeUserSetup-x64-1.38.1_1.38.1.0_x64__8wekyb3d8bbwe`。
 
 5.  打开命令提示符并输入**mountvol**。 此命令将显示卷及其 Guid 的列表。 将驱动器号与安装了 VHD 的驱动器的 GUID 复制到步骤2中。
 
-    例如，在此 mountvol 命令的示例输出中，如果已将 VHD 安装到驱动器 C，则需要复制上述`C:\`值：
+    例如，在此 mountvol 命令的示例输出中，如果已将 VHD 安装到驱动器 C，则需要复制上述值 `C:\` ：
 
     ```cmd
     Possible values for VolumeName along with current mount points are:
@@ -257,7 +265,7 @@ sc config wuauserv start=disabled
 
     {
 
-    Mount-Diskimage -ImagePath $vhdSrc -NoDriveLetter -Access ReadOnly
+    Mount-VHD -Path $vhdSrc -NoDriveLetter -ReadOnly
 
     Write-Host ("Mounting of " + $vhdSrc + " was completed!") -BackgroundColor Green
 

@@ -1,20 +1,20 @@
 ---
 title: 处理映射事件 |Microsoft Azure 映射
 description: 在本文中，你将了解如何使用 Microsoft Azure map web SDK 将交互式 Web SDK 映射与地图事件一起使用。
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 09/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: b97371d1b63ad4abfe1635e426df1449ab5f3f14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92108873d4a91c845f4a1f2685cf50942513510e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79534892"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124000"
 ---
 # <a name="interact-with-the-map"></a>与地图交互
 
@@ -57,9 +57,9 @@ ms.locfileid: "79534892"
 | `close`             | 手动或以编程方式关闭弹出窗口时激发。|
 | `contextmenu`       | 单击鼠标右键时激发。|
 | `data`              | 当任何地图数据加载或更改时激发。 |
-| `dataadded`         | 在将`DataSource`形状添加到时引发。|
-| `dataremoved`       | 当从中移除形状时引发`DataSource`。|
-| `datasourceupdated` | 当更新`DataSource`对象时触发。|
+| `dataadded`         | 在将形状添加到时引发 `DataSource` 。|
+| `dataremoved`       | 当从中移除形状时引发 `DataSource` 。|
+| `datasourceupdated` | 当 `DataSource` 更新对象时触发。|
 | `dblclick`          | 当在地图上同一点上单击指针设备两次时激发。|
 | `drag`              | 在地图、popup 或 HTML 标记上的 "拖动到平移" 交互过程中重复激发。|
 | `dragend`           | 当地图、popup 或 HTML 标记上的 "拖动到平移" 交互结束时激发。|
@@ -87,15 +87,15 @@ ms.locfileid: "79534892"
 | `pitchend`          | 在地图的螺距（倾斜）之后立即触发，作为用户交互或方法的结果进行更改。|
 | `pitchstart`        | 每当地图的螺距（斜度）开始更改作为用户交互或方法的结果时，就会触发。|
 | `ready`             | 在映射准备好以编程方式交互之前，在加载所需的最小映射资源时引发。|
-| `render`            | <p>在将地图绘制到屏幕上时触发，作为的结果：<ul><li>地图位置、缩放、音调或轴承的更改。</li><li>地图样式的更改。</li><li>对`DataSource`源的更改。</li><li>矢量磁贴、GeoJSON 文件、标志符号或子画面的加载。</li></ul></p>|
+| `render`            | <p>在将地图绘制到屏幕上时触发，作为的结果：<ul><li>地图位置、缩放、音调或轴承的更改。</li><li>地图样式的更改。</li><li>对源的更改 `DataSource` 。</li><li>矢量磁贴、GeoJSON 文件、标志符号或子画面的加载。</li></ul></p>|
 | `resize`            | 调整地图后立即触发。|
 | `rotate`            | 在 "拖动以旋转" 交互的过程中重复激发。|
 | `rotateend`         | "拖动到旋转时" 交互结束时激发。|
 | `rotatestart`       | "拖动到旋转时" 交互开始时激发。|
 | `shapechanged`      | 形状对象属性更改时激发。|
 | `sourcedata`        | 当某个映射的源中的一个加载或更改时（包括属于源的磁贴加载或更改时）触发。 |
-| `sourceadded`       | 向映射添加`DataSource`或`VectorTileSource`时激发。|
-| `sourceremoved`     | 当从映射`DataSource`中`VectorTileSource`移除或时激发。|
+| `sourceadded`       | 向 `DataSource` 映射添加或时激发 `VectorTileSource` 。|
+| `sourceremoved`     | 当 `DataSource` `VectorTileSource` 从映射中移除或时激发。|
 | `styledata`         | 当地图的样式加载或更改时激发。|
 | `styleimagemissing` | 当层尝试从不存在的图像子画面中加载图像时激发 |
 | `tokenacquired`     | 获取 AAD 访问令牌时触发。|

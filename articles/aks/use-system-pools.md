@@ -4,12 +4,12 @@ description: 了解如何在 Azure Kubernetes Service （AKS）中创建和管�
 services: container-service
 ms.topic: article
 ms.date: 04/28/2020
-ms.openlocfilehash: 04322bdaa2e0e72c5fbdbadb07f2608ee360e1e3
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 85cc699d6ef8c632663775e91f2b5cad6ca7a7b6
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790552"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125241"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中管理系统节点池
 
@@ -50,6 +50,7 @@ ms.locfileid: "82790552"
 * 删除用户节点池。
 * 你可以删除系统节点池，前提是你有另一个要在 AKS 群集中使用的系统节点池。
 * AKS 群集可以有多个系统节点池，并且至少需要一个系统节点池。
+* 如果要更改现有节点池的各种不可变设置，可以创建新的节点池来替换它们。 例如，使用新的 maxPods 设置添加新的节点池，并删除旧的节点池。
 
 ## <a name="create-a-new-aks-cluster-with-a-system-node-pool"></a>使用系统节点池创建新的 AKS 群集
 

@@ -5,16 +5,16 @@ ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: a96d2ede80b4c57e7b85048379a4bfb66cacfd52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 030af8a289daaf03d17f8402e8d603e893657853
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80754847"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123596"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>在 Azure 门户中创建第一个函数
 
-Azure Functions 用于在无服务器环境中运行代码，无需先创建虚拟机 (VM) 或发布 Web 应用程序。 本文介绍如何使用 Azure Functions 在 Azure 门户中创建 HTTP 触发的“hello world”函数。
+Azure Functions 用于在无服务器环境中运行代码，无需先创建虚拟机 (VM) 或发布 Web 应用程序。 本文介绍如何使用 Azure Functions 在 Azure 门户中创建 "hello world" HTTP 触发器函数。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -32,29 +32,31 @@ Azure Functions 用于在无服务器环境中运行代码，无需先创建虚�
 
 接下来，在新的 function app 中创建函数。
 
-## <a name="create-an-http-triggered-function"></a><a name="create-function"></a>创建 HTTP 触发的函数
+## <a name="create-an-http-trigger-function"></a><a name="create-function"></a>创建 HTTP 触发器函数
 
-1. 展开新的 function app，选择 " **+** **函数**" 旁边的按钮，选择 "**门户**"，然后选择 "**继续**"。
+1. 从 "**函数**" 窗口的左侧菜单中，选择 "**函数**"，然后从顶部菜单中选择 "**添加**"。 
+ 
+1. 在 "**新建函数**" 窗口中，选择 " **Http 触发器**"。
 
-    ![有关选择平台的 Functions 快速入门。](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
+    ![选择 HTTP 触发器函数](./media/functions-create-first-azure-function/function-app-select-http-trigger.png)
 
-1. 选择 " **WebHook + API**"，然后选择 "**创建**"。
+1. 在 "**新建函数**" 窗口中，接受**new 函数**的默认名称，或输入新名称。 
 
-    ![Azure 门户中的函数快速入门。](./media/functions-create-first-azure-function/function-app-quickstart-node-webhook.png)
+1. 从 "**授权级别**" 下拉列表中选择 "**匿名**"，然后选择 "**创建函数**"。
 
-   此时将使用 HTTP 触发的函数的特定于语言模板创建函数。
-
-现在，可以通过发送 HTTP 请求来运行新函数了。
+    Azure 创建 HTTP 触发器函数。 现在，可以通过发送 HTTP 请求来运行新函数了。
 
 ## <a name="test-the-function"></a>测试函数
 
-1. 在新函数中，选择右上角的 " **</> 获取函数 URL** "。 
+1. 在新的 HTTP 触发器函数中，从左侧菜单中选择 "**代码 + 测试**"，然后从顶部菜单中选择 "**获取函数 URL** "。
 
-1. 在 "**获取函数 URL** " 对话框中，从下拉列表中选择 "**默认（函数密钥）** "，然后选择 "**复制**"。 
+    ![选择获取函数 URL](./media/functions-create-first-azure-function/function-app-select-get-function-url.png)
+
+1. 在 "**获取函数 URL** " 对话框中，从下拉列表中选择 "**默认**"，然后选择 "**复制到剪贴板**" 图标。 
 
     ![从 Azure 门户复制函数 URL](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
-1. 将函数 URL 粘贴到浏览器的地址栏中。 将查询字符串值`&name=<your_name>`添加到此 URL 的末尾，然后按 enter 运行该请求。 
+1. 将函数 URL 粘贴到浏览器的地址栏中。 将查询字符串值添加 `?name=<your_name>` 到此 URL 的末尾，然后按 enter 运行该请求。 
 
     以下示例显示了浏览器中的响应：
 
@@ -62,7 +64,7 @@ Azure Functions 用于在无服务器环境中运行代码，无需先创建虚�
 
     请求 URL 包含通过 HTTP 访问函数默认所需的密钥。
 
-1. 运行函数时，会在日志中写入跟踪信息。 若要查看前一次执行的跟踪输出，请返回到门户中的函数，并选择屏幕底部的箭头展开**日志**。
+1. 运行函数时，会在日志中写入跟踪信息。 若要查看跟踪输出，请返回到门户中的 "**代码 + 测试**" 页，然后展开页面底部的 "**日志**" 箭头。
 
    ![Azure 门户中的“函数日志”查看器。](./media/functions-create-first-azure-function/function-view-logs.png)
 

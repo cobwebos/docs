@@ -1,26 +1,22 @@
 ---
 title: 在 Azure 中创建由队列消息触发的函数
-description: 使用 Azure Functions 创建由提交到 Azure 存储队列的消息调用的无服务器函数。
+description: 使用 Azure Functions 创建一个无服务器函数，该函数由提交到 Azure 中的队列的消息调用。
 ms.assetid: 361da2a4-15d1-4903-bdc4-cc4b27fc3ff4
 ms.topic: how-to
 ms.date: 10/01/2018
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 98f0290aad9971bdb0c0b265d96e96d8ac34b99d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4c20579f2306b61741f3c6ab1549285271435a3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756520"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123157"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>创建由 Azure 队列存储触发的函数
 
 了解如何创建在将消息提交到 Azure 存储队列时触发的函数。
 
-![查看日志中的消息。](./media/functions-create-storage-queue-triggered-function/function-app-in-portal-editor.png)
-
-## <a name="prerequisites"></a>必备条件
-
-- 下载并安装 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)。
+## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -28,7 +24,7 @@ ms.locfileid: "80756520"
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-![已成功创建 Function App。](./media/functions-create-first-azure-function/function-app-create-success.png)
+   :::image type="content" source="./media/functions-create-storage-queue-triggered-function/function-app-create-success.png" alt-text="已成功创建 Function app。" border="true":::
 
 接下来，在新的 Function App 中创建一个函数。
 
@@ -36,23 +32,16 @@ ms.locfileid: "80756520"
 
 ## <a name="create-a-queue-triggered-function"></a>创建队列触发的函数
 
-1. 展开 Function App，单击“Functions”旁边的  **按钮+**  。 如果这是函数应用中的第一个函数，请依次选择“门户中”  、“继续”  。 否则，请转到第三步。
+1. 选择 "**函数**"，然后选择 " **+ 添加**" 以添加新函数。
 
-   ![Azure 门户中的 Functions 快速入门页](./media/functions-create-storage-queue-triggered-function/function-app-quickstart-choose-portal.png)
+   :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-app-quickstart-choose-template.png" alt-text="选择 Azure 门户中的函数模板。" border="true":::
 
-1. 依次选择“更多模板”  、“完成并查看模板”  。
-
-    ![Functions 快速入门选择更多模板](./media/functions-create-storage-queue-triggered-function/add-first-function.png)
-
-1. 在搜索字段中，键入 `queue`，然后选择“队列触发器”  模板。
-
-1. 如果系统提示，请选择“安装”  以在函数应用中安装 Azure 存储扩展以及任何依赖项。 安装成功后，选择“继续”  。
-
-    ![安装绑定扩展](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png)
+1. 选择 " **Azure 队列存储" 触发器**模板。
 
 1. 使用图像下的表中指定的设置。
 
-    ![配置存储队列触发的函数。](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal-2.png)
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png" alt-text="命名和配置队列存储触发的函数。" border="true":::
+
 
     | 设置 | 建议的值 | 说明 |
     |---|---|---|
@@ -60,45 +49,53 @@ ms.locfileid: "80756520"
     | **队列名称**   | myqueue-items    | 要连接到存储帐户中的队列的名称。 |
     | **存储帐户连接** | AzureWebJobsStorage | 可以使用 Function App 已在使用的存储帐户连接，也可以创建一个新的存储帐户连接。  |    
 
-1. 单击“创建”以创建函数  。
+1. 选择 "**创建函数**" 以创建函数。
 
-接下来，连接到 Azure 存储帐户并创建 **myqueue-items** 存储队列。
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal-3.png" alt-text="创建队列存储触发的函数。" border="true":::
+
+接下来，连接到 Azure 存储帐户并创建**myqueue**存储队列。
 
 ## <a name="create-the-queue"></a>创建队列
 
-1. 在函数中，单击“集成”  ，展开“文档”  ，并复制**帐户名称**和**帐户密钥**。 在 Azure 存储资源管理器中使用这些凭据连接到存储帐户。 如果已连接存储帐户，请跳到步骤 4。
+1. 在函数中的 "**概述**" 页上，选择资源组。
 
-    ![获取存储帐户连接凭据。](./media/functions-create-storage-queue-triggered-function/functions-storage-account-connection.png)
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-resource-group.png" alt-text="选择 Azure 门户资源组。" border="true":::
 
-1. 运行 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)工具，单击左侧的“连接”图标，选择“使用存储帐户名称和密钥”****，并单击“下一步”****。
+1. 查找并选择资源组的存储帐户。
 
-    ![运行“存储帐户资源管理器”工具。](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-connect-1.png)
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-account-access.png" alt-text="访问存储帐户。" border="true":::
 
-1. 输入步骤 1 中的**帐户名称**和**帐户密钥**，单击“下一步”  ，并单击“连接”  。
+1. 选择 "**队列**"，然后选择 " **+ 队列**"。 
 
-    ![输入存储凭据和连接。](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-connect-2.png)
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-add-queue.png" alt-text="将队列添加到 Azure 门户中的存储帐户。" border="true":::
 
-1. 展开附加的存储帐户，右键单击“队列”  ，单击“创建队列”  ，键入 `myqueue-items`，并按 Enter。
+1. 在 "**名称**" 字段中键入 `myqueue-items` ，然后选择 "**创建**"。
 
-    ![创建存储队列。](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-create-queue.png)
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-name-queue.png" alt-text="命名队列存储容器。" border="true":::
 
 现在已有存储队列，可以通过将消息添加到队列来测试函数。
 
 ## <a name="test-the-function"></a>测试函数
 
-1. 返回到 Azure 门户中，浏览到函数，展开页面底部的“日志”  并确保日志流式处理未暂停。
+1. 返回到 Azure 门户中，浏览到函数，展开页面底部的“日志”**** 并确保日志流式处理未暂停。
 
-1. 在存储资源管理器中，依次展开存储帐户、“队列”  和 **myqueue-items**，然后单击“添加消息”  。
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-queue-storage-log-expander.png" alt-text="展开 Azure 门户中的日志。" border="true":::
 
-    ![将消息添加到队列。](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-add-message.png)
+1. 在单独的浏览器窗口中，在 Azure 门户中中转到资源组，并选择存储帐户。
 
-1. 将“Hello World!” 消息键入到“消息文本”  中，单击“确定”  。
+1. 选择 "**队列**"，然后选择 " **myqueue** " 容器。
+
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-queue.png" alt-text="中转到 Azure 门户中的 myqueue 队列。" border="true":::
+
+1. 选择 "**添加消息**"，然后键入 "Hello World！" 在 "**消息正文**" 中。 选择“确定”  。
+
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-queue-test.png" alt-text="中转到 Azure 门户中的 myqueue 队列。" border="true":::
 
 1. 等待几秒钟，返回到函数日志并验证是否已从队列中读取新消息。
 
-    ![查看日志中的消息。](./media/functions-create-storage-queue-triggered-function/functions-queue-storage-trigger-view-logs.png)
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/function-app-in-portal-editor.png" alt-text="查看日志中的消息。" border="true":::
 
-1. 返回到存储资源管理器中，单击“刷新”  ，并验证该消息是否已处理且不再在队列中。
+1. 返回到存储队列中，选择 "**刷新**"，并验证该消息是否已处理并且不再在队列中。
 
 ## <a name="clean-up-resources"></a>清理资源
 

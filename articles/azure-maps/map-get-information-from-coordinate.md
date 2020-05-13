@@ -1,20 +1,20 @@
 ---
 title: 显示有关地图上的坐标的信息 |Microsoft Azure 映射
 description: 了解如何在用户选择坐标时显示有关地图上的地址的信息。
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 174bdc496e52a6ac8f2a2d631db92e0f21a819be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 274d1102649dade1b3295bd02feba03f64a26ad5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80371422"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123983"
 ---
 # <a name="get-information-from-a-coordinate"></a>从坐标获取信息
 
@@ -29,11 +29,11 @@ ms.locfileid: "80371422"
 
 在上面的代码中，第一个块构造一个 map 对象，并将身份验证机制设置为使用访问令牌。 有关说明，可以参阅[创建地图](./map-create.md)。
 
-第二个代码块创建`TokenCredential`用于对 HTTP 请求进行身份验证，以使用访问令牌 Azure Maps。 然后，它将`TokenCredential`传递`atlas.service.MapsURL.newPipeline()`给并创建[管道](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest)实例。 `searchURL` 表示 Azure Maps [搜索](https://docs.microsoft.com/rest/api/maps/search)操作的 URL。
+第二个代码块创建 `TokenCredential` 用于对 HTTP 请求进行身份验证，以使用访问令牌 Azure Maps。 然后，它将传递 `TokenCredential` 给 `atlas.service.MapsURL.newPipeline()` 并创建[管道](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest)实例。 `searchURL` 表示 Azure Maps [搜索](https://docs.microsoft.com/rest/api/maps/search)操作的 URL。
 
 第三个代码块将鼠标光标的样式更新到指针，并创建一个[popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open)对象。 有关说明，可以参阅[在地图上添加弹出窗口](./map-add-popup.md)。
 
-第四个代码块添加鼠标单击[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)。 触发时，它将创建一个具有单击的点坐标的搜索查询。 然后，它使用[getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-iot-typescript-latest#searchaddressreverse-aborter--geojson-position--searchaddressreverseoptions-)方法在[获取搜索地址反向 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)中查询坐标地址。 然后，使用响应中的`geojson.getFeatures()`方法提取 GeoJSON 的功能集合。
+第四个代码块添加鼠标单击[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)。 触发时，它将创建一个具有单击的点坐标的搜索查询。 然后，它使用[getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-iot-typescript-latest#searchaddressreverse-aborter--geojson-position--searchaddressreverseoptions-)方法在[获取搜索地址反向 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)中查询坐标地址。 然后，使用响应中的方法提取 GeoJSON 的功能集合 `geojson.getFeatures()` 。
 
 第五个代码块设置 HTML 弹出内容，以显示单击的坐标位置的响应地址。
 
@@ -62,7 +62,7 @@ ms.locfileid: "80371422"
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [将](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [映射](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [弹出项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)

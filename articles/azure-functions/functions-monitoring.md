@@ -4,12 +4,12 @@ description: 了解如何通过 Azure Functions 使用 Azure 应用程序 Insigh
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 9997a44d14f5b4ca4de4e5b135efc453b12bff01
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 0b4d0f43d00a919c589a11c81df2818f3a058ed8
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82202407"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121510"
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
 
@@ -29,7 +29,7 @@ ms.locfileid: "82202407"
 
 [启用 Application Insights 集成](#enable-application-insights-integration)后，可以在 "**监视**" 选项卡中查看遥测数据。
 
-1. 在 "函数应用" 页中，选择在配置 Application Insights 后至少运行一次的函数。 然后选择 "**监视**" 选项卡。选择 "定期**刷新**"，直到出现函数调用列表。
+1. 在 "函数应用" 页中，选择在配置 Application Insights 后至少运行一次的函数。 然后从左窗格中选择 "**监视器**"。 选择 "定期**刷新**"，直到出现函数调用列表。
 
    ![调用列表](media/functions-monitoring/monitor-tab-ai-invocations.png)
 
@@ -40,9 +40,9 @@ ms.locfileid: "82202407"
 
    ![调用详细信息](media/functions-monitoring/invocation-details-ai.png)
 
-1. 选择 "**在 Application Insights 中运行**" 链接，以查看在订阅中首次使用 azure Log Analytics 时在 azure 日志中检索 Azure Monitor 日志数据的查询源，系统会要求你启用。
+1. 选择 "**在 Application Insights 中运行"** 以查看在 Azure 日志中检索 Azure Monitor 日志数据的查询源。 如果这是你第一次在订阅中使用 Azure Log Analytics，系统会要求你启用此项。
 
-1. 选择该链接并选择启用日志分析。 将显示以下查询。 你可以看到，查询结果限制为过去30天（`where timestamp > ago(30d)`）。 此外，结果显示的行数不超过20行（`take 20`）。 相反，函数的 "调用详细信息" 列表适用于过去30天，没有任何限制。
+1. 启用 Log Analytics 后，将显示以下查询。 你可以看到，查询结果限制为过去30天（ `where timestamp > ago(30d)` ）。 此外，结果显示的行数不超过20行（ `take 20` ）。 相反，函数的 "调用详细信息" 列表适用于过去30天，没有任何限制。
 
    ![Application Insights Analytics 调用列表](media/functions-monitoring/ai-analytics-invocation-list.png)
 
@@ -50,7 +50,7 @@ ms.locfileid: "82202407"
 
 ## <a name="view-telemetry-in-application-insights"></a>在 Application Insights 中查看遥测
 
-若要从 Azure 门户中的函数应用打开 Application Insights，请参阅函数应用的 "**概述**" 页。 在 "**已配置功能**" 下，选择**Application Insights**。
+若要从 Azure 门户中的函数应用打开 Application Insights，请在左侧页面的 "**设置**" 下选择 " **Application Insights** "。 如果这是你首次在订阅中使用 Application Insights，系统将提示你启用它：选择 "**打开 Application Insights**，然后在下一页上选择"**应用**"。
 
 ![从 "函数应用概述" 页打开 Application Insights](media/functions-monitoring/ai-link.png)
 
@@ -104,7 +104,7 @@ traces
 | where customDimensions.LogLevel == "Error"
 </pre>
 
-运行时提供了`customDimensions.LogLevel`和`customDimensions.Category`字段。 您可以在 "日志" 中提供您在函数代码中编写的其他字段。 请参阅本文后面部分中的[结构化日志记录](#structured-logging)。
+运行时提供了 `customDimensions.LogLevel` 和 `customDimensions.Category` 字段。 您可以在 "日志" 中提供您在函数代码中编写的其他字段。 请参阅本文后面部分中的[结构化日志记录](#structured-logging)。
 
 ## <a name="configure-categories-and-log-levels"></a>配置类别和日志级别
 
@@ -116,16 +116,16 @@ traces
 
 | 类别 | 说明 |
 | ----- | ----- | 
-| Host.Results | 这些日志在 Application Insights 中显示为**请求**。 它们指示函数的成功或失败。 所有这些日志都以`Information`级别编写。 如果你在`Warning`或更高版本中进行筛选，你将看不到此数据。 |
-| Host. 聚合器 | 这些日志在一段[可配置](#configure-the-aggregator)的时间内提供函数调用的计数和平均值。 默认时段为 30 秒或 1,000 个结果，以先满足的条件为准。 日志位于 Application Insights 中的 **customMetrics** 表内。 例如，运行数、成功率和持续时间。 所有这些日志都以`Information`级别编写。 如果你在`Warning`或更高版本中进行筛选，你将看不到此数据。 |
+| Host.Results | 这些日志在 Application Insights 中显示为**请求**。 它们指示函数的成功或失败。 所有这些日志都以级别编写 `Information` 。 如果你在 `Warning` 或更高版本中进行筛选，你将看不到此数据。 |
+| Host. 聚合器 | 这些日志在一段[可配置](#configure-the-aggregator)的时间内提供函数调用的计数和平均值。 默认时段为 30 秒或 1,000 个结果，以先满足的条件为准。 日志位于 Application Insights 中的 **customMetrics** 表内。 例如，运行数、成功率和持续时间。 所有这些日志都以级别编写 `Information` 。 如果你在 `Warning` 或更高版本中进行筛选，你将看不到此数据。 |
 
 Application Insights 的**跟踪**表中提供了除这些类别之外的所有类别的日志。
 
-所有类别以开头的日志`Host`都由函数运行时写入。 **函数已启动**并具有 "**函数已完成**" 日志的类别`Host.Executor`。 如果成功运行，则这些日志`Information`为 level。 在`Error`级别记录异常。 运行时还创建 `Warning` 级别日志，例如：已发送到病毒邮件队列的队列邮件。
+所有类别以开头的日志 `Host` 都由函数运行时写入。 **函数已启动**并具有 "**函数已完成**" 日志的类别 `Host.Executor` 。 如果成功运行，则这些日志为 `Information` level。 在级别记录异常 `Error` 。 运行时还创建 `Warning` 级别日志，例如：已发送到病毒邮件队列的队列邮件。
 
-函数运行时创建具有以 "Host" 开头的类别的日志。 在版本1.x 中`function started`，、 `function executed`和`function completed`日志具有类别。 `Host.Executor` 从版本2.x 开始，这些日志具有类别`Function.<YOUR_FUNCTION_NAME>`。
+函数运行时创建具有以 "Host" 开头的类别的日志。 在版本1.x 中， `function started` 、 `function executed` 和 `function completed` 日志具有类别 `Host.Executor` 。 从版本2.x 开始，这些日志具有类别 `Function.<YOUR_FUNCTION_NAME>` 。
 
-如果在函数代码中编写日志，则类别为， `Function.<YOUR_FUNCTION_NAME>.User`并且可以是任何日志级别。 在函数运行时的版本1.x 中，类别为`Function`。
+如果在函数代码中编写日志，则类别为 `Function.<YOUR_FUNCTION_NAME>.User` ，可以为任何日志级别。 在函数运行时的版本1.x 中，类别为 `Function` 。
 
 ### <a name="log-levels"></a>日志级别
 
@@ -138,7 +138,7 @@ Azure Functions 记录器还包括每个日志的*日志级别*。 [LogLevel](/d
 |信息 | 2 |
 |警告     | 3 |
 |错误       | 4 |
-|严重    | 5 |
+|关键    | 5 |
 |无        | 6 |
 
 日志级别 `None` 将在下一节中进行介绍。 
@@ -184,13 +184,13 @@ Host.json[] 文件配置函数应用发送到 Application Insights 的日志记�
 
 此示例设置以下规则：
 
-* 对于类别`Host.Results`为或`Function`的日志，仅`Error`将级别和更高级别发送到 Application Insights。 `Warning` 级别及以下级别的日志将被忽略。
+* 对于类别为或的日志 `Host.Results` `Function` ，仅将 `Error` 级别和更高级别发送到 Application Insights。 `Warning` 级别及以下级别的日志将被忽略。
 * 对于 `Host.Aggregator` 类别的日志，将所有日志发送到 Application Insights。 `Trace` 日志级别与某些记录器称为 `Verbose` 的日志级别相同，但在 [host.json] 文件中请使用 `Trace`。
 * 对于所有其他日志，仅向 Application Insights 发送 `Information` 级别及更高级别。
 
-[host.json] 中的类别值控制所有以相同值开头的类别的日志记录。 `Host`在中`Host.General`，[会控制、] `Host.Executor` `Host.Results`、等的日志记录。
+[host.json] 中的类别值控制所有以相同值开头的类别的日志记录。 `Host`在中，[会控制]、、等的日志记录 `Host.General` `Host.Executor` `Host.Results` 。
 
-如果 [host.json] 包含以相同字符串开头的多个类别，则先匹配较长的类别。 假设你想要从运行时中`Host.Aggregator`除日志`Error`级别以外的所有内容， `Host.Aggregator`但想要在`Information`级别进行记录：
+如果 [host.json] 包含以相同字符串开头的多个类别，则先匹配较长的类别。 假设你想要从运行时中除日志级别以外的所有内容 `Host.Aggregator` `Error` ，但想要 `Host.Aggregator` 在 `Information` 级别进行记录：
 
 ### <a name="version-2x-and-later"></a>版本2.x 和更高版本
 
@@ -281,9 +281,9 @@ Application Insights 提供了一项[采样](../azure-monitor/app/sampling.md)�
 
 ### <a name="ilogger"></a>ILogger
 
-在函数中使用 [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) 参数，而不是 `TraceWriter` 参数。 使用`TraceWriter` "中转到 Application Insights" 创建的日志`ILogger` ，但允许您执行[结构化日志记录](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)。
+在函数中使用 [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) 参数，而不是 `TraceWriter` 参数。 使用 `TraceWriter` "中转到 Application Insights" 创建的日志，但 `ILogger` 允许您执行[结构化日志记录](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)。
 
-使用`ILogger`对象，可以调用`Log<level>` [ILogger 上的扩展方法](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods)来创建日志。 下面的代码以`Information`类别 "Function. <YOUR_FUNCTION_NAME> 写入日志。用户。 "
+使用 `ILogger` 对象，可以调用 `Log<level>` [ILogger 上的扩展方法](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods)来创建日志。 下面的代码 `Information` 以类别 "Function. <YOUR_FUNCTION_NAME> 写入日志。用户。 "
 
 ```cs
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger logger)
@@ -305,7 +305,7 @@ logger.LogInformation("partitionKey={partitionKey}, rowKey={rowKey}", partitionK
 
 以这种方式处理占位符，以便可以执行结构化日志记录。 Application Insights 存储参数名称-值对和消息字符串。 结果是消息参数变为可以查询的字段。
 
-如果记录器方法调用与前面的示例类似，则可以查询该字段`customDimensions.prop__rowKey`。 添加`prop__`前缀以确保运行时添加的字段和函数代码添加的字段之间没有冲突。
+如果记录器方法调用与前面的示例类似，则可以查询该字段 `customDimensions.prop__rowKey` 。 `prop__`添加前缀以确保运行时添加的字段和函数代码添加的字段之间没有冲突。
 
 此外，可以通过引用字段 `customDimensions.prop__{OriginalFormat}` 查询原始消息字符串。  
 
@@ -330,7 +330,7 @@ logger.LogInformation("partitionKey={partitionKey}, rowKey={rowKey}", partitionK
 logger.LogMetric("TestMetric", 1234);
 ```
 
-此代码是使用适用于 .NET `TrackMetric`的 Application Insights API 进行调用的替代方法。
+此代码是 `TrackMetric` 使用适用于 .net 的 APPLICATION INSIGHTS API 进行调用的替代方法。
 
 ## <a name="write-logs-in-javascript-functions"></a>在 JavaScript 函数中写入日志
 
@@ -342,13 +342,13 @@ context.log('JavaScript HTTP trigger function processed a request.' + context.in
 
 ### <a name="custom-metrics-logging"></a>自定义指标日志记录
 
-当你在函数运行时的[版本](functions-versions.md#creating-1x-apps)1.x 上运行时，node.js 函数可以使用`context.log.metric`方法在 Application Insights 中创建自定义度量值。 此方法目前在版本2.x 和更高版本中不受支持。 下面是示例方法调用：
+当你在函数运行时的[版本](functions-versions.md#creating-1x-apps)1.x 上运行时，node.js 函数可以使用 `context.log.metric` 方法在 Application Insights 中创建自定义度量值。 此方法目前在版本2.x 和更高版本中不受支持。 下面是示例方法调用：
 
 ```javascript
 context.log.metric("TestMetric", 1234);
 ```
 
-此代码是使用 node.js SDK for `trackMetric` Application Insights 调用的替代方法。
+此代码是 `trackMetric` 使用 NODE.JS SDK for Application Insights 调用的替代方法。
 
 ## <a name="log-custom-telemetry-in-c-functions"></a>在 C# 函数中记录自定义遥测
 
@@ -368,13 +368,13 @@ Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -Version <VE
 
 ---
 
-在此命令中， `<VERSION>`将替换为此包的版本，该版本支持所安装的[Microsoft Azure web 作业](https://www.nuget.org/packages/Microsoft.Azure.WebJobs/)版本。 
+在此命令中， `<VERSION>` 将替换为此包的版本，该版本支持所安装的[Microsoft Azure web 作业](https://www.nuget.org/packages/Microsoft.Azure.WebJobs/)版本。 
 
 以下 c # 示例使用[自定义遥测 API](../azure-monitor/app/api-custom-events-metrics.md)。 示例针对的是 .NET 类库，但对于 C# 脚本，Application Insights 代码是相同的。
 
 ### <a name="version-2x-and-later"></a>版本2.x 和更高版本
 
-版本2.x 和更高版本的运行时使用 Application Insights 中的更新功能，以自动将遥测与当前操作相关联。 无需手动设置操作`Id`、 `ParentId`或`Name`字段。
+版本2.x 和更高版本的运行时使用 Application Insights 中的更新功能，以自动将遥测与当前操作相关联。 无需手动设置操作 `Id` 、 `ParentId` 或 `Name` 字段。
 
 ```cs
 using System;
@@ -527,9 +527,9 @@ namespace functionapp0915
 }
 ```
 
-请勿调用`TrackRequest`或`StartOperation<RequestTelemetry>` ，因为你将看到对函数调用的重复请求。  Functions 运行时自动跟踪请求。
+请勿调用 `TrackRequest` 或 `StartOperation<RequestTelemetry>` ，因为你将看到对函数调用的重复请求。  Functions 运行时自动跟踪请求。
 
-不要设置 `telemetryClient.Context.Operation.Id`。 当许多函数同时运行时，此全局设置将导致相关错误。 请改为创建新的遥测实例（`DependencyTelemetry`、`EventTelemetry`）并修改其 `Context` 属性。 然后，将遥测实例传递到`Track` （ `TelemetryClient` `TrackDependency()`， `TrackEvent()`， `TrackMetric()`）上的相应方法。 此方法确保遥测为当前函数调用提供了正确的相关详细信息。
+不要设置 `telemetryClient.Context.Operation.Id`。 当许多函数同时运行时，此全局设置将导致相关错误。 请改为创建新的遥测实例（`DependencyTelemetry`、`EventTelemetry`）并修改其 `Context` 属性。 然后，将遥测实例传递到 `Track` `TelemetryClient` （ `TrackDependency()` ， `TrackEvent()` ，）上的相应方法 `TrackMetric()` 。 此方法确保遥测为当前函数调用提供了正确的相关详细信息。
 
 ## <a name="log-custom-telemetry-in-javascript-functions"></a>在 JavaScript 函数中记录自定义遥测
 
@@ -583,7 +583,7 @@ module.exports = function (context, req) {
 };
 ```
 
-`tagOverrides`参数将设置`operation_Id`为该函数的调用 ID。 通过此设置，可为给定的函数调用关联所有自动生成的遥测和自定义遥测。
+`tagOverrides`参数将设置 `operation_Id` 为该函数的调用 ID。 通过此设置，可为给定的函数调用关联所有自动生成的遥测和自定义遥测。
 
 ## <a name="dependencies"></a>依赖项
 
@@ -605,7 +605,7 @@ module.exports = function (context, req) {
 
 ![在创建函数应用时启用 Application Insights](media/functions-monitoring/enable-ai-new-function-app.png)
 
-选择 "**创建**" 时，将创建一个 Application Insights 资源，其中包含 "应用程序设置`APPINSIGHTS_INSTRUMENTATIONKEY` " 中的 "设置"。 一切准备就绪。
+选择 "**创建**" 时，将创建一个 Application Insights 资源，其中包含 " `APPINSIGHTS_INSTRUMENTATIONKEY` 应用程序设置" 中的 "设置"。 一切准备就绪。
 
 <a id="manually-connect-an-app-insights-resource"></a>
 ### <a name="add-to-an-existing-function-app"></a>添加到现有函数应用 

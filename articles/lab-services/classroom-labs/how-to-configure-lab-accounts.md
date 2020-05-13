@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: fa9dba62b3b58687ec6a2bfc29e8722f7016b679
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 14f66701d3a375807829493f866dcb91b131f2e5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79284299"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121076"
 ---
 # <a name="configure-lab-accounts-in-azure-lab-services"></a>在 Azure 实验室服务中配置实验室帐户 
 在 Azure 实验室服务中，实验室帐户是托管实验室类型的容器，例如教室实验室。 管理员可以设置一个具有 Azure 实验室服务的实验室帐户，并为能够在帐户中创建实验室的实验室所有者提供访问权限。 
@@ -38,6 +38,9 @@ ms.locfileid: "79284299"
 
 1. 在 "**实验室帐户**" 页的左侧菜单中，选择 "**实验室设置**"。
 2. 为 "**地址范围**" 字段指定将在实验室中创建的 vm 的地址范围。 地址范围应为无类域间路由（CIDR）表示法（例如： 10.20.0.0/23）。 将在此地址范围内创建实验室中的虚拟机。
+
+    > [!NOTE]
+    > "地址范围" 属性仅适用于为实验室启用了对等互连虚拟网络的情况。 
 3. 在工具栏上选择“保存”。  
 
     ![配置地址范围](../media/how-to-manage-lab-accounts/labs-configuration-page-address-range.png)

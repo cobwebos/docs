@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: 8a9c1ba8e6316ea79941fbec1fbd339893afdb35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d78390aac51ea6fa70e1285b15dcc7ade74434ee
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131206"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124578"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure 媒体服务视频索引器发行说明
 
@@ -34,9 +34,9 @@ ms.locfileid: "82131206"
 
 ### <a name="new-widget-parameters-capabilities"></a>新小组件参数功能
 
-**Insights**小组件包含新参数： `language`和`control`。
+**Insights**小组件包含新参数： `language` 和 `control` 。
 
-**播放机**小组件具有新`locale`参数。 和`locale` `language`参数都控制播放机的语言。
+**播放机**小组件具有新 `locale` 参数。 `locale`和 `language` 参数都控制播放机的语言。
 
 有关详细信息，请参阅[小组件类型](video-indexer-embed-widgets.md#widget-types)部分。 
 
@@ -53,19 +53,19 @@ ms.locfileid: "82131206"
     * [获取帐户-授权](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Accounts-Authorization)
     * [带令牌的获取帐户](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Accounts-With-Token)
  
-    帐户对象的`Url`字段指向[视频索引器网站](https://www.videoindexer.ai/)的位置。
-对于付费帐户， `Url`该字段当前指向内部 URL，而不是公共网站。
+    帐户对象的 `Url` 字段指向[视频索引器网站](https://www.videoindexer.ai/)的位置。
+对于付费帐户，该 `Url` 字段当前指向内部 URL，而不是公共网站。
 在接下来的几周，我们将更改它并返回所有帐户的[视频索引器网站](https://www.videoindexer.ai/)URL （试用版和付费版）。
 
     不要使用内部 Url，你应该使用[视频索引器公共 api](https://api-portal.videoindexer.ai/)。
-* 如果要在应用程序中嵌入视频索引器 Url 并且 Url 未指向[视频索引器网站](https://www.videoindexer.ai/)或[视频索引器 API 终结点](https://api.videoindexer.ai)，而不是指向区域终结点（例如`https://wus2.videoindexer.ai`），请重新生成 url。
+* 如果要在应用程序中嵌入视频索引器 Url 并且 Url 未指向[视频索引器网站](https://www.videoindexer.ai/)或视频索引器 API 终结点（），而不是指向 `https://api.videoindexer.ai` 区域终结点（例如 `https://wus2.videoindexer.ai` ），请重新生成 url。
 
    为此，可以执行以下任一操作：
 
     * 将 URL 替换为指向视频索引器小组件 Api 的 URL （例如， [insights 小组件](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Insights-Widget)）
     * 使用视频索引器网站生成新的嵌入 URL：
          
-         按 "**播放**" 转到视频页面-> 单击 " ** &lt; / &gt;嵌入**" 按钮-> 将 URL 复制到应用程序中：
+         按 "**播放**" 转到视频页面-> 单击 " ** &lt; / &gt; 嵌入**" 按钮-> 将 URL 复制到应用程序中：
    
     区域 Url 不受支持，将在未来几周内被阻止。
 
@@ -73,7 +73,7 @@ ms.locfileid: "82131206"
  
 ### <a name="custom-language-support-for-additional-languages"></a>针对其他语言的自定义语言支持
 
-视频索引器现在支持、 `ar-SY` `en-UK`和`en-AU`的自定义语言模型（仅适用于 API）。
+视频索引器现在支持、和的自定义语言模型 `ar-SY` `en-UK` （仅适用于 `en-AU` API）。
  
 ### <a name="delete-account-timeframe-action-update"></a>删除帐户时限操作更新
 
@@ -127,7 +127,7 @@ ms.locfileid: "82131206"
  
 * 朝鲜语自定义语言模型支持
 
-    视频索引器现在支持 API 和门户中的`ko-KR`朝鲜语（）的自定义语言模型。 
+    视频索引器现在支持 API 和门户中的朝鲜语（）的自定义语言模型 `ko-KR` 。 
 * 支持语音到文本的新语言（STT）
 
     视频索引器 Api 现在支持阿拉伯语 Levantine （ar-SY）、英语英国方言（en-GB）和英语澳大利亚方言（zh-cn）中的 STT。

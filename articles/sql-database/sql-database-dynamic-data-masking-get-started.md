@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/06/2020
 tags: azure-synpase
-ms.openlocfilehash: e5b281d59245d8fbd32b18f4ac5fe577fc7ff309
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2759644c68d65e76de222a0ac74f1d4900caddc0
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78192908"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121246"
 ---
 # <a name="dynamic-data-masking-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 数据库和 Azure Synapse Analytics 的动态数据掩码
 
@@ -58,8 +58,28 @@ DDM 建议引擎会将数据库中的某些字段标记为可能的敏感字段�
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>使用 PowerShell cmdlet 为数据库设置动态数据掩码
 
-请参阅 [Azure SQL 数据库 Cmdlet](https://docs.microsoft.com/powershell/module/az.sql)。
+### <a name="data-masking-policy"></a>数据屏蔽策略
+
+- [AzSqlDatabaseDataMaskingPolicy](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseDataMaskingPolicy)
+- [AzSqlDatabaseDataMaskingPolicy](https://docs.microsoft.com/powershell/module/az.sql/Set-AzSqlDatabaseDataMaskingPolicy)
+
+### <a name="data-masking-rules"></a>数据屏蔽规则
+
+- [AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseDataMaskingRule)
+- [新-AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/New-AzSqlDatabaseDataMaskingRule)
+- [AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/Remove-AzSqlDatabaseDataMaskingRule)
+- [AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/Set-AzSqlDatabaseDataMaskingRule)
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-rest-api"></a>使用 REST API 为数据库设置动态数据屏蔽
 
-请参阅[对 Azure SQL 数据库的操作](https://docs.microsoft.com/rest/api/sql/)。
+您可以使用 REST API 以编程方式管理数据屏蔽策略和规则。 已发布的 REST API 支持以下操作：
+
+### <a name="data-masking-policies"></a>数据掩码策略
+
+- [创建或更新](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/createorupdate)：创建或更新指定列的敏感度标签。
+- [Get](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/get)：获取数据库数据掩码策略。 
+
+### <a name="data-masking-rules"></a>数据屏蔽规则
+
+- [创建或更新](https://docs.microsoft.com/rest/api/sql/datamaskingrules/createorupdate)：创建或更新数据库数据屏蔽规则。
+- [按数据库列出](https://docs.microsoft.com/rest/api/sql/datamaskingrules/listbydatabase)：获取数据库数据屏蔽规则的列表。

@@ -1,21 +1,20 @@
 ---
 title: 垂直缩放 Azure 虚拟机规模集
 description: 如何使用 Azure 自动化垂直缩放虚拟机以响应监视警报
-author: mimckitt
-tags: azure-resource-manager
-ms.assetid: 16b17421-6b8f-483e-8a84-26327c44e9d3
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-multiple
-ms.topic: conceptual
+ms.subservice: autoscale
 ms.date: 04/18/2019
-ms.author: mimckitt
-ms.openlocfilehash: c28c50ef78f67daa6adc4022d8feb559f5c1c1f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: avverma
+ms.custom: avverma
+ms.openlocfilehash: 69c613de02b9601966cae2d36c13428ca6c7becc
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273352"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120991"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>使用虚拟机规模集垂直自动缩放
 
@@ -157,7 +156,7 @@ Add-AzMetricAlertRule  -Name  $alertName `
 * [Azure Monitor PowerShell 快速入门示例](../azure-monitor/platform/powershell-quickstart-samples.md)
 * [Azure Monitor 跨平台 CLI 快速入门示例](../azure-monitor/platform/cli-samples.md)
 
-## <a name="summary"></a>“摘要”
+## <a name="summary"></a>摘要
 
 本文对简单的垂直缩放示例进行了介绍。 借助这些构建基块 - 自动化帐户、Runbook、Webhook、警报，可以使用一组自定义操作连接各种事件。
 

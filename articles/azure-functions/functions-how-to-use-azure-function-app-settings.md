@@ -3,14 +3,14 @@ title: 在 Azure 中配置函数应用设置
 description: 了解如何配置 Azure Function App 设置。
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
-ms.date: 08/14/2019
+ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 662a04dbcc39f3fa95b0098eb8fe556b18b3495b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 057c030b060343d5bc6f85c38d61feee0b01dfde
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276941"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83122285"
 ---
 # <a name="manage-your-function-app"></a>管理函数应用 
 
@@ -27,15 +27,17 @@ ms.locfileid: "79276941"
 
 ## <a name="get-started-in-the-azure-portal"></a>在 Azure 门户中开始
 
-要开始，请转到 [Azure 门户]，并使用 Azure 帐户登录。 在门户顶端的搜索栏中，键入函数应用的名称，并从列表中将其选中。 选择 Function App 后，将看到以下页面：
+1. 要开始，请转到 [Azure 门户]，并使用 Azure 帐户登录。 在门户顶部的搜索栏中，输入函数应用的名称，并从列表中选择它。 
 
-![Azure 门户中 Function App 的概述](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
+2. 在左窗格中的 "**设置**" 下，选择 "**配置**"。
+
+    :::image type="content" source="./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png" alt-text="Azure 门户中 Function App 的概述":::
 
 可以从概述页导航到管理函数应用所需的所有内容，特别是 **[应用程序设置](#settings)** 和 **[平台功能](#platform-features)** 。
 
 ## <a name="application-settings"></a><a name="settings"></a>应用程序设置
 
-“应用程序设置”  选项卡维护函数应用使用的设置。 这些设置是加密存储的，必须选择“显示值”  才能查看门户中的值。 也可使用 Azure CLI 访问应用程序设置。
+"**应用程序设置**" 选项卡维护函数应用使用的设置。 这些设置是加密存储的，必须选择“显示值”  才能查看门户中的值。 也可使用 Azure CLI 访问应用程序设置。
 
 ### <a name="portal"></a>门户
 
@@ -69,9 +71,7 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 
 ## <a name="platform-features"></a>平台功能
 
-![Function App 平台功能选项卡。](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-features-tab.png)
-
-Function App 运行于 Azure 应用服务平台，并由该平台维护。 在这种情况下，Function App 有权访问 Azure 核心 Web 托管平台的大多数功能。 可在“平台功能”  选项卡中访问应用服务平台中许多可用于 Function App 的功能。 
+函数应用在中运行，并由 Azure App Service 平台维护。 在这种情况下，Function App 有权访问 Azure 核心 Web 托管平台的大多数功能。 在左侧窗格中，可以访问可在函数应用中使用的应用服务平台的许多功能。 
 
 > [!NOTE]
 > Function App 运行于消耗托管计划中时，并非所有应用服务功能均可用。
@@ -79,8 +79,8 @@ Function App 运行于 Azure 应用服务平台，并由该平台维护。 在�
 本文的其余部分侧重于 Azure 门户中以下可用于 Functions 的应用服务功能：
 
 + [应用服务编辑器](#editor)
-+ [Console](#console)
-+ [高级工具 (Kudu)](#kudu)
++ [控制台](#console)
++ [高级工具（Kudu）](#kudu)
 + [部署选项](#deployment)
 + [CORS](#cors)
 + [身份验证](#auth)
@@ -107,7 +107,7 @@ Function App 运行于 Azure 应用服务平台，并由该平台维护。 在�
 
 ![配置 Kudu](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-kudu.png)
 
-应用服务的高级工具（也称为 Kudu）提供对 Function App 高级管理功能的访问。 从 Kudu 中，可以管理系统信息、应用设置、环境变量、站点扩展、HTTP 头和服务器变量。 也可以通过浏览到 Function App 的 SCM 终结点（如 **），启动 Kudu**`https://<myfunctionapp>.scm.azurewebsites.net/` 
+应用服务的高级工具（也称为 Kudu）提供对 Function App 高级管理功能的访问。 从 Kudu 中，可以管理系统信息、应用设置、环境变量、站点扩展、HTTP 头和服务器变量。 也可以通过浏览到 Function App 的 SCM 终结点（如 `https://<myfunctionapp>.scm.azurewebsites.net/`），启动 Kudu**** 
 
 
 ### <a name="deployment-center"></a><a name="deployment"></a>部署中心
@@ -120,13 +120,13 @@ Function App 运行于 Azure 应用服务平台，并由该平台维护。 在�
 
 #### <a name="portal"></a>门户
 
-配置函数应用的“允许的域”列表时，  `Access-Control-Allow-Origin` 标头会自动添加到函数应用中 HTTP 终结点发出的所有响应。 
+配置函数应用的“允许的域”列表时，****`Access-Control-Allow-Origin` 标头会自动添加到函数应用中 HTTP 终结点发出的所有响应。 
 
 ![配置函数应用的 CORS 列表](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-cors.png)
 
 使用星号 (`*`) 时，会忽略所有其他的域。 
 
-使用 [`az functionapp cors add`](/cli/azure/functionapp/cors#az-functionapp-cors-add) 命令将域添加到“允许的域”列表。 以下示例添加 contoso.com 域：
+使用 [`az functionapp cors add`](/cli/azure/functionapp/cors#az-functionapp-cors-add) 命令将域添加到 "允许的来源" 列表中。 以下示例添加 contoso.com 域：
 
 ```azurecli-interactive
 az functionapp cors add --name <FUNCTION_APP_NAME> \
@@ -134,7 +134,7 @@ az functionapp cors add --name <FUNCTION_APP_NAME> \
 --allowed-origins https://contoso.com
 ```
 
-使用 [`az functionapp cors show`](/cli/azure/functionapp/cors#az-functionapp-cors-show) 命令列出目前允许的域。
+使用 [`az functionapp cors show`](/cli/azure/functionapp/cors#az-functionapp-cors-show) 命令列出当前允许的来源。
 
 ### <a name="authentication"></a><a name="auth"></a>身份验证
 

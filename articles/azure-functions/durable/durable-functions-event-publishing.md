@@ -2,13 +2,13 @@
 title: 从 Durable Functions 发布到 Azure 事件网格（预览）
 description: 了解如何配置 Durable Functions 的自动 Azure 事件网格发布。
 ms.topic: conceptual
-ms.date: 03/14/2019
-ms.openlocfilehash: 671f7bd5221a936ea9dad0f0cece895bdbe9512f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/25/2020
+ms.openlocfilehash: c0106f3754e0cdcbf1f295fbe3f1b5def8dc3ca1
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535479"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124216"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>从 Durable Functions 发布到 Azure 事件网格（预览）
 
@@ -30,7 +30,7 @@ ms.locfileid: "81535479"
 
 ## <a name="create-a-custom-event-grid-topic"></a>创建自定义事件网格主题
 
-创建事件网格主题，以便从 Durable Functions 发送事件。 以下说明介绍如何使用 Azure CLI 创建主题。 还可以通过[使用 PowerShell](../../event-grid/custom-event-quickstart-powershell.md)或[使用 Azure 门户](../../event-grid/custom-event-quickstart-portal.md)来执行此操作。
+创建事件网格主题，以便从 Durable Functions 发送事件。 以下说明介绍如何使用 Azure CLI 创建主题。 还可以[使用 PowerShell](../../event-grid/custom-event-quickstart-powershell.md)或[Azure 门户](../../event-grid/custom-event-quickstart-portal.md)创建主题。
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
@@ -83,7 +83,7 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 ### <a name="durable-functions-2x"></a>Durable Functions 2.x
 
-将`notifications`节添加到文件`durableTask`的属性中，并将`<topic_name>`替换为所选的名称。 如果`durableTask`或`extensions`属性不存在，则创建它们，如以下示例所示：
+将 `notifications` 节添加到 `durableTask` 文件的属性中，并将替换为 `<topic_name>` 所选的名称。 如果 `durableTask` 或 `extensions` 属性不存在，则创建它们，如以下示例所示：
 
 ```json
 {
@@ -101,7 +101,7 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 }
 ```
 
-可能的 Azure 事件网格配置属性可以在 [host.json 文档](../functions-host-json.md#durabletask)中找到。 配置`host.json`文件后，函数应用将生命周期事件发送到事件网格主题。 这适用于在本地和 Azure 中运行函数应用的情况。
+可能的 Azure 事件网格配置属性可以在 [host.json 文档](../functions-host-json.md#durabletask)中找到。 配置 `host.json` 文件后，函数应用将生命周期事件发送到事件网格主题。 当你在本地和 Azure 中运行函数应用时，将启动此操作。
 
 在函数应用和 `local.settings.json` 中设置主题密钥的应用设置。 以下 JSON 是用于本地调试的 `local.settings.json` 示例。 将 `<topic_key>` 替换为主题密钥。  
 
@@ -118,7 +118,7 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 如果使用的是[存储模拟器](../../storage/common/storage-use-emulator.md)（仅限 Windows），请确保它正常工作。 最好是在执行之前运行 `AzureStorageEmulator.exe clear all` 命令。
 
-如果你正在使用现有的 Azure 存储帐户，请`UseDevelopmentStorage=true`将`local.settings.json`替换为它的连接字符串。
+如果正在使用现有的 Azure 存储帐户，请将 `UseDevelopmentStorage=true` 替换 `local.settings.json` 为它的连接字符串。
 
 ## <a name="create-functions-that-listen-for-events"></a>创建用于侦听事件的函数
 
@@ -126,52 +126,65 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 ### <a name="create-an-event-grid-trigger-function"></a>创建事件网格触发器函数
 
-创建用于接收生命周期事件的函数。 选择“自定义函数”。****
+1. 在函数应用中，选择 "**函数**"，然后选择 " **+ 添加**" 
 
-![选择“创建自定义函数”。](./media/durable-functions-event-publishing/functions-portal.png)
+   :::image type="content" source="./media/durable-functions-event-publishing/function-add-function.png" alt-text="在 Azure 门户中添加函数。" border="true":::
 
-选择 "事件网格触发器"，然后选择一种语言。
+1. 搜索 "**事件网格**"，然后选择 " **Azure 事件网格" 触发器**模板。 
 
-![选择“事件网格触发器”。](./media/durable-functions-event-publishing/eventgrid-trigger.png)
+    :::image type="content" source="./media/durable-functions-event-publishing/function-select-event-grid-trigger.png" alt-text="在 Azure 门户中选择 "事件网格" 触发器模板。" border="true":::
 
-输入函数的名称，然后选择 `Create`。
+1. 命名新的触发器，然后选择 "**创建函数**"。
 
-![创建事件网格触发器。](./media/durable-functions-event-publishing/eventgrid-trigger-creation.png)
+    :::image type="content" source="./media/durable-functions-event-publishing/function-name-event-grid-trigger.png" alt-text="在 Azure 门户中命名事件网格触发器。" border="true":::
 
-创建包含以下代码的函数：
 
-# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
+    创建包含以下代码的函数：
 
-```csharp
-#r "Newtonsoft.Json"
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Microsoft.Extensions.Logging;
+    # <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
 
-public static void Run(JObject eventGridEvent, ILogger log)
-{
-    log.LogInformation(eventGridEvent.ToString(Formatting.Indented));
-}
-```
+    ```csharp
+    #r "Newtonsoft.Json"
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+    using Microsoft.Extensions.Logging;
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+    public static void Run(JObject eventGridEvent, ILogger log)
+    {
+        log.LogInformation(eventGridEvent.ToString(Formatting.Indented));
+    }
+    ```
 
-```javascript
-module.exports = async function(context, eventGridEvent) {
-    context.log(typeof eventGridEvent);
-    context.log(eventGridEvent);
-}
-```
+   # <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+   ```javascript
+   module.exports = async function(context, eventGridEvent) {
+       context.log(typeof eventGridEvent);
+       context.log(eventGridEvent);
+   }
+   ```
 
 ---
 
-选择 `Add Event Grid Subscription`。 此操作为添加的事件网格主题创建事件网格订阅。 有关详细信息，请参阅 [Azure 事件网格中的概念](https://docs.microsoft.com/azure/event-grid/concepts)。
+### <a name="add-an-event-grid-subscription"></a>添加事件网格订阅
 
-![选择“事件网格触发器”链接。](./media/durable-functions-event-publishing/eventgrid-trigger-link.png)
+你现在可以为创建的事件网格主题添加事件网格订阅。 有关详细信息，请参阅[Azure 事件网格中的概念](https://docs.microsoft.com/azure/event-grid/concepts)。
 
-为“主题类型”选择 `Event Grid Topics`。**** 选择为事件网格主题创建的资源组。 然后选择事件网格主题的实例。 按 `Create`。
+1. 在新函数中，选择 "**集成**"，然后选择 "**事件网格触发器（eventGridEvent）**"。 
 
-![创建事件网格订阅。](./media/durable-functions-event-publishing/eventsubscription.png)
+    :::image type="content" source="./media/durable-functions-event-publishing/eventgrid-trigger-link.png" alt-text="选择“事件网格触发器”链接。" border="true":::
+
+1. 选择 "**创建事件网格描述**"。
+
+    :::image type="content" source="./media/durable-functions-event-publishing/create-event-grid-subscription.png" alt-text="创建事件网格订阅。" border="true":::
+
+1. 为事件订阅命名，并选择 "**事件网格主题**" 主题类型。 
+
+1. 选择订阅。 然后，选择为事件网格主题创建的资源组和资源。 
+
+1. 选择“创建”  。
+
+    :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="创建事件网格订阅。" border="true":::
 
 现已准备好接收生命周期事件。
 

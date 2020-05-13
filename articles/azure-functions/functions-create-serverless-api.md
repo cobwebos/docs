@@ -3,19 +3,19 @@ title: 在 Azure Functions 中自定义 HTTP 终结点
 description: 了解如何在 Azure Functions 中自定义 HTTP 触发器终结点
 author: mattchenderson
 ms.topic: conceptual
-ms.date: 05/04/2017
+ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 61b930eec1385b8c4054f9c202547a82e61e55e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5607a737fa4616d4eda3d174144c1717125f4181
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75769262"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83122761"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>在 Azure Functions 中自定义 HTTP 终结点
 
-本文介绍如何使用 Azure Functions 构建高度可缩放的 API。 Azure Functions 附带了一组内置的 HTTP 触发器和绑定，方便你使用各种语言（包括 Node.js、C# 等等）创建终结点。 在本文中，将自定义一个 HTTP 触发器来处理 API 设计中的特定操作。 此外，还要通过将 API 与 Azure Functions 代理集成并设置模拟 API，来准备扩展 API。 所有这些操作会在 Functions 无服务器计算环境的顶层完成，因此，不需要考虑如何缩放资源 - 只需专注于自己的 API 逻辑。
+本文介绍如何使用 Azure Functions 构建高度可缩放的 API。 Azure Functions 附带了一组内置的 HTTP 触发器和绑定，方便你使用各种语言（包括 Node.js、C# 等等）创建终结点。 本文介绍如何自定义 HTTP 触发器，以处理 API 设计中的特定操作。 你还可以通过将 API 与 Azure Functions 代理和设置模拟 Api 来进行集成，为扩展 API 做好准备。 这些任务是在 "无服务器" 计算环境的基础上完成的，因此无需担心缩放资源，只需专注于 API 逻辑即可。
 
 ## <a name="prerequisites"></a>先决条件 
 
@@ -23,47 +23,54 @@ ms.locfileid: "75769262"
 
 本文的余下内容将使用生成的函数。
 
-### <a name="sign-in-to-azure"></a>登录 Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
 
-打开 Azure 门户。 为此，请使用 Azure 帐户登录到 [https://portal.azure.com](https://portal.azure.com)。
+使用 Azure 帐户登录到 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="customize-your-http-function"></a>自定义 HTTP 函数
 
-默认情况下，HTTP 触发的函数已配置为接受任何 HTTP 方法。 此外，还有一个采用 `http://<yourapp>.azurewebsites.net/api/<funcname>?code=<functionkey>` 格式的默认 URL。 如果已完成快速入门教程，`<funcname>` 可能类似于“HttpTriggerJS1”。 在本部分，将修改该函数，以便只响应针对 `/api/hello` 路由发出的 GET 请求。 
+默认情况下，HTTP 触发器函数配置为接受任何 HTTP 方法。 你还可以使用默认 URL， `http://<yourapp>.azurewebsites.net/api/<funcname>?code=<functionkey>` 。 在本部分中，将修改函数，使其仅对获取请求 `/api/hello` 。 
 
-1. 在 Azure 门户中导航到该函数。 在左侧导航栏中选择“集成”。 
+1. 在 Azure 门户中导航到该函数。 在左侧菜单中选择 "**集成**"，然后在 "**触发器**" 下选择 " **HTTP （请求）** "。
 
-    ![自定义 HTTP 函数](./media/functions-create-serverless-api/customizing-http.png)
+    :::image type="content" source="./media/functions-create-serverless-api/customizing-http.png" alt-text="自定义 HTTP 函数":::
 
-1. 使用表中指定的 HTTP 触发器设置。
+1. 使用下表中指定的 HTTP 触发器设置。
 
     | 字段 | 示例值 | 说明 |
     |---|---|---|
-    | 允许的 HTTP 方法 | 选定的方法 | 确定可以使用哪些 HTTP 方法来调用此函数 |
-    | 选定的 HTTP 方法 | GET | 只允许使用选定的 HTTP 方法来调用此函数 |
     | 路由模板 | /hello | 确定可以使用哪个路由来调用此函数 |
     | 授权级别 | 匿名 | 可选：无需 API 密钥便可访问函数 |
+    | 选定的 HTTP 方法 | GET | 只允许使用选定的 HTTP 方法来调用此函数 |
 
-    > [!NOTE] 
-    > 请注意，并未在路由模板中包含 `/api` 基路径前缀，因为此操作由某个全局设置处理。
+    不会在 `/api` 路由模板中包含基路径前缀，因为它是由全局设置来处理的。
 
-1. 单击“保存”  。
+1. 选择“保存”  。
 
-可以在 [Azure Functions HTTP 绑定](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook)中详细了解如何自定义 HTTP 函数。
+有关自定义 HTTP 函数的详细信息，请参阅[AZURE FUNCTIONS http 绑定](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook)。
 
 ### <a name="test-your-api"></a>测试 API
 
-接下来，请测试函数，确定它是否适用于新的 API 图面。
-1. 在左侧导航栏中单击该函数的名称，导航回到开发页。
-1. 单击“获取函数 URL”并复制该 URL。  应会看到它现在使用了 `/api/hello` 路由。
-1. 将 URL 复制到新的浏览器标签页或偏好的 REST 客户端中。 浏览器默认使用 GET。
-1. 在 URL 中将参数添加到查询字符串，如 `/api/hello/?name=John`
-1. 按“Enter”确认其正常工作。 应当可以看到响应“Hello John” 
-1. 也可以尝试使用其他 HTTP 方法调用终结点，确认是否未执行该函数。 为此，需要使用 REST 客户端，例如 cURL、Postman 或 Fiddler。
+接下来，请测试你的函数，以了解它如何与新的 API 图面配合工作：
+1. 在 "函数" 页上，从左侧菜单中选择 "**代码 + 测试**"。
+
+1. 从顶部菜单中选择 "**获取函数 URL** " 并复制 URL。 确认它现在使用 `/api/hello` 路径。
+ 
+1. 将 URL 复制到新的浏览器标签页或偏好的 REST 客户端中。 
+
+   默认情况下，浏览器使用 GET。
+ 
+1. 将参数添加到 URL 中的查询字符串。 
+
+   例如，`/api/hello/?name=John`。
+ 
+1. 按 Enter 以确认它是否正常工作。 应该会看到响应 "*Hello John*"。
+
+1. 还可以尝试用其他 HTTP 方法调用终结点，以确认不执行该函数。 为此，请使用 REST 客户端，如卷曲、Postman 或 Fiddler。
 
 ## <a name="proxies-overview"></a>代理概述
 
-在下一部分，将通过代理呈现 API。 Azure Functions 代理可将请求转发到其他资源。 定义 HTTP 终结点的过程与定义 HTTP 触发器类似，但调用终结点时不能写入要执行的代码，而要提供远程实现的 URL。 这样，便可以将多个 API 源组合到可方便客户端使用的单个 API 图面中。 如果要以微服务的形式构建 API，这种做法特别有效。
+在下一部分中，你将通过代理来呈现你的 API。 Azure Functions 代理可将请求转发到其他资源。 像使用 HTTP 触发器一样定义 HTTP 终结点。 但是，您可以向远程实现提供 URL，而不是在调用终结点时编写要执行的代码。 这样一来，你就可以将多个 API 源组合到单个 API 图面中，这对客户端而言很容易使用，如果你希望将 API 构建为微服务，这非常有用。
 
 代理可以指向任何 HTTP 资源，例如：
 - Azure Functions 
@@ -75,52 +82,53 @@ ms.locfileid: "75769262"
 
 ## <a name="create-your-first-proxy"></a>创建第一个代理
 
-在本部分，将创建充当整个 API 的前端的新代理。 
+在本部分中，将创建一个新的代理，它充当整个 API 的前端。 
 
 ### <a name="setting-up-the-frontend-environment"></a>设置前端环境
 
-重复[创建 Function App](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app) 中的步骤，创建要在其中创建代理的新 Function App。 此新应用的 URL 将充当 API 的前端，之前编辑的 Function App 将充当后端。
+重复[创建 Function App](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app) 中的步骤，创建要在其中创建代理的新 Function App。 此新应用的 URL 充当 API 的前端，你之前编辑的 function app 将充当后端。
 
 1. 在门户中导航到新的前端 Function App。
 1. 选择“平台功能”，并选择“应用程序设置”********。
-1. 向下滚动到存储键/值对的“应用程序设置”，然后使用键“HELLO_HOST”创建新设置****。 将其值设置为后端 Function App 的主机，例如 `<YourBackendApp>.azurewebsites.net`。 这是前面在测试 HTTP 函数时复制的 URL 的一部分。 稍后会在配置中引用此设置。
+1. 向下滚动到 "**应用程序设置**"，其中存储了键/值对，并使用键创建新的设置 `HELLO_HOST` 。 将其值设置为后端 Function App 的主机，例如 `<YourBackendApp>.azurewebsites.net`。 此值是你之前在测试 HTTP 函数时复制的 URL 的一部分。 稍后会在配置中引用此设置。
 
     > [!NOTE] 
     > 建议在主机配置中使用应用设置，以防止对代理的环境依赖关系进行硬编码。 使用应用设置意味着可以在环境之间移动代理配置，并应用特定于环境的应用设置。
 
-1. 单击“ **保存**”。
+1. 选择“保存”  。
 
 ### <a name="creating-a-proxy-on-the-frontend"></a>在前端上创建代理
 
-1. 在门户中导航回到前端 Function App。
-1. 在左侧导航栏中，单击“代理”旁边的加号“+”。
-    ![创建代理](./media/functions-create-serverless-api/creating-proxy.png)
-1. 使用表中指定的代理设置。 
+1. 在门户中导航回到前端函数应用。
+
+1. 在左侧菜单中选择 "**代理**"，然后选择 "**添加**"。 
+
+1. 在 "**新建代理**" 页上，使用下表中的设置，然后选择 "**创建**"。
 
     | 字段 | 示例值 | 说明 |
     |---|---|---|
     | 名称 | HelloProxy | 仅用于管理的友好名称 |
     | 路由模板 | /api/remotehello | 确定可以使用哪个路由来调用此代理 |
     | 后端 URL | https://%HELLO_HOST%/api/hello | 指定请求应代理的终结点 |
+
     
-1. 请注意，代理不提供 `/api` 基路径前缀，必须在路由模板中包含此前缀。
-1. `%HELLO_HOST%` 语法将引用前面创建的应用设置。 解析的 URL 将指向原始函数。
-1. 单击“创建”。 
-1. 可以通过复制代理 URL 或使用偏好的 HTTP 客户端在浏览器中对其进行测试来试验新代理。
-    1. 对于匿名函数，请使用：
-        1. `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?name="Proxies"`
-    1. 对于具有授权的函数，请使用：
-        1. `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?code=YOURCODE&name="Proxies"`
+    :::image type="content" source="./media/functions-create-serverless-api/creating-proxy.png" alt-text="创建代理":::
+
+    Azure Functions 代理不提供 `/api` 必须包含在路由模板中的基本路径前缀。 `%HELLO_HOST%`语法引用之前创建的应用设置。 解析的 URL 将指向原始函数。
+
+1. 通过复制代理 URL 并在浏览器中或使用喜爱的 HTTP 客户端对其进行测试，尝试新的代理：
+    - 对于匿名函数，请使用： `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?name="Proxies"` 。
+    - 对于授权使用的函数： `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?code=YOURCODE&name="Proxies"` 。
 
 ## <a name="create-a-mock-api"></a>创建模拟 API
 
-接下来，使用代理来为解决方案创建模拟 API。 这样，客户端开发便可以继续进行，而无需完全实现后端。 以后在开发时，可以创建新的 Function App 来支持此逻辑并将代理重定向到此逻辑。
+接下来，你将使用代理为解决方案创建模拟 API。 此代理可让客户端进行开发，而无需完全实现后端。 以后在开发时，可以创建新的 function app，它支持此逻辑并将代理重定向到此逻辑。
 
-为了创建此模拟 API，我们将创建一个新代理，但这一次我们使用的是[应用服务编辑器](https://github.com/projectkudu/kudu/wiki/App-Service-Editor)。 要开始，请在门户中导航到 Function App。 选择“平台功能”并在“开发工具”下找到“应用服务编辑器”************。 单击该按钮会在新选项卡中打开应用服务编辑器。
+若要创建此模拟 API，我们将创建一个新代理，这次使用[应用服务编辑器](https://github.com/projectkudu/kudu/wiki/App-Service-Editor)。 要开始，请在门户中导航到 Function App。 选择 "**平台功能**"，然后在 "**开发工具**" 下查找**应用服务编辑器**。 应用服务编辑器在新选项卡中打开。
 
-在左侧导航栏中选择 `proxies.json`。 这是用于存储所有代理的配置的文件。 如果使用某种 [Functions 部署方法](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment)，则此文件是在源代码管理中维护的文件。 若要详细了解此文件，请参阅[代理高级配置](https://docs.microsoft.com/azure/azure-functions/functions-proxies#advanced-configuration)。
+在左侧导航栏中选择 `proxies.json`。 此文件存储所有代理的配置。 如果使用某个[函数部署方法](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment)，则在源代码管理中维护此文件。 若要详细了解此文件，请参阅[代理高级配置](https://docs.microsoft.com/azure/azure-functions/functions-proxies#advanced-configuration)。
 
-到目前为止，proxies.json 应如下所示：
+如果已按照目前的步骤进行操作，则你的代理应如下所示：
 
 ```json
 {
@@ -136,7 +144,7 @@ ms.locfileid: "75769262"
 }
 ```
 
-接下来，请添加模拟 API。 将 proxies.json 文件替换为以下内容：
+接下来，将添加模拟 API。 将代理 json 文件替换为以下代码：
 
 ```json
 {
@@ -172,7 +180,7 @@ ms.locfileid: "75769262"
 }
 ```
 
-这会添加一个不带 backendUri 属性的新代理“GetUserByName”。 此代理不会调用另一个资源，而是使用响应重写来修改代理的默认响应。 也可以将请求和响应重写与后端 URL 结合使用。 当代理到旧系统时（可能需要修改标头、查询参数等），此方法特别有用。若要了解有关请求和响应替代的详细信息，请参阅[在代理中修改请求和响应](https://docs.microsoft.com/azure/azure-functions/functions-proxies)。
+此代码将添加新的代理， `GetUserByName` 而不包含 `backendUri` 属性。 此代理不会调用另一个资源，而是使用响应重写来修改代理的默认响应。 也可以将请求和响应重写与后端 URL 结合使用。 当代理到旧系统时，此方法特别有用，你可能需要修改标头、查询参数等。 若要详细了解请求和响应重写，请参阅[修改代理中的请求和响应](https://docs.microsoft.com/azure/azure-functions/functions-proxies)。
 
 通过使用浏览器或偏好的 REST 客户端调用 `<YourProxyApp>.azurewebsites.net/api/users/{username}` 终结点来测试模拟 API。 请务必将 _{username}_ 替换为表示用户名的字符串值。
 

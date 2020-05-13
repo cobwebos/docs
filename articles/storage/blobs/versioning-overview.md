@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: fa28e07c28c36c03ab9e85d8436e3f1a2b36ad1c
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 7e4bc74a51e3d6b19957bdd12512e18fa594c811
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993961"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123830"
 ---
 # <a name="blob-versioning-preview"></a>Blob 版本控制（预览）
 
@@ -167,7 +167,7 @@ Blob 快照是在特定时间点拍摄的 blob 的只读副本。 Blob 快照和
 您可以使用以下方法之一来授予对 blob 版本的访问权限：
 
 - 通过使用基于角色的访问控制（RBAC）向 Azure Active Directory （Azure AD）安全主体授予权限。 Microsoft 建议使用 Azure AD，以实现更高的安全性和易用性。 有关将 Azure AD 与 blob 操作一起使用的详细信息，请参阅[使用 Azure Active Directory 授予对 blob 和队列的访问权限](../common/storage-auth-aad.md)。
-- 使用共享访问签名（SAS）委派对 blob 版本的访问权限。 指定已签名资源类型`bv`（表示 blob 版本）的版本 ID，以创建针对特定版本的操作的 SAS 令牌。 有关共享访问签名的详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../common/storage-sas-overview.md)。
+- 使用共享访问签名（SAS）委派对 blob 版本的访问权限。 指定已签名资源类型 `bv` （表示 blob 版本）的版本 ID，以创建针对特定版本的操作的 SAS 令牌。 有关共享访问签名的详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../common/storage-sas-overview.md)。
 - 通过使用帐户访问密钥向使用共享密钥的 blob 版本授权操作。 有关详细信息，请参阅[通过共享密钥进行授权](/rest/api/storageservices/authorize-with-shared-key)。
 
 Blob 版本控制用于保护数据免遭意外或恶意删除。 若要增强保护，删除 blob 版本需要特殊权限。 以下各节描述了删除 blob 版本所需的权限。
@@ -183,7 +183,7 @@ Blob 版本控制用于保护数据免遭意外或恶意删除。 若要增强�
 
 ### <a name="shared-access-signature-sas-parameters"></a>共享访问签名（SAS）参数
 
-Blob 版本的已签名资源为`bv`。 有关详细信息，请参阅[创建服务 sas](/rest/api/storageservices/create-service-sas)或[创建用户委托 SAS](/rest/api/storageservices/create-user-delegation-sas)。
+Blob 版本的已签名资源为 `bv` 。 有关详细信息，请参阅[创建服务 sas](/rest/api/storageservices/create-service-sas)或[创建用户委托 SAS](/rest/api/storageservices/create-user-delegation-sas)。
 
 下表显示了在 SAS 上删除 blob 版本所需的权限。
 
@@ -224,9 +224,10 @@ Blob 版本控制可用于以下类型的存储帐户：
 若要向 PowerShell 注册，请调用[AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature)命令。
 
 ```powershell
+# Register for blob versioning (preview)
 Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName Versioning
-    
+
 # Refresh the Azure Storage provider namespace
 Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```
@@ -308,7 +309,7 @@ Blob 版本（如 blob 快照）按与活动数据相同的费率进行计费。
 
 #### <a name="scenario-4"></a>方案 4
 
-在方案 4 中，已完全更新基本 Blob，并且其中不包含任何原始块。 因此，将对基本 blob 中的所有八个唯一块&mdash;进行收费，在以前的版本中对此帐户进行收费。 如果使用 Put Blob 操作写入 blob，则会发生这种情况，因为它会替换基本 blob 的全部内容。
+在方案 4 中，已完全更新基本 Blob，并且其中不包含任何原始块。 因此，将对基本 blob 中的所有八个唯一块进行收费，在 &mdash; 以前的版本中对此帐户进行收费。 如果使用 Put Blob 操作写入 blob，则会发生这种情况，因为它会替换基本 blob 的全部内容。
 
 ![Azure 存储资源](./media/versioning-overview/versions-billing-scenario-4.png)
 

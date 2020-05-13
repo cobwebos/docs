@@ -2,21 +2,20 @@
 title: 对 Azure 虚拟机规模集使用自定义横向缩减策略
 description: 了解如何对使用自动缩放配置管理实例计数的 Azure 虚拟机规模集使用自定义横向缩减策略
 services: virtual-machine-scale-sets
-author: avirishuv
-manager: vashan
-tags: azure-resource-manager
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm
-ms.topic: conceptual
+ms.subservice: autoscale
 ms.date: 02/26/2020
-ms.author: avverma
-ms.openlocfilehash: ffcdaf76bdd08ee5505ddbeff6a6698e231b6171
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: avverma
+ms.custom: avverma
+ms.openlocfilehash: 479bbfaf8468329cd515799e5822497df2bb4c1d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77919832"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125156"
 ---
 # <a name="use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>对 Azure 虚拟机规模集使用自定义横向缩减策略
 

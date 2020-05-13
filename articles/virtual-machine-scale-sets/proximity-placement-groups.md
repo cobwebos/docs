@@ -1,19 +1,20 @@
 ---
 title: 虚拟机规模集的邻近位置组预览
 description: 了解如何在 Azure 中创建和使用用于 Windows 虚拟机规模集的邻近放置组。
-author: cynthn
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
+ms.subservice: availability
 ms.date: 07/01/2019
-ms.author: cynthn
-ms.openlocfilehash: 4fa2949e2a7e1b99ac26caa35f967e9dc9cf359a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 18cb1ae3e549995d7b4732025906329bc609f360
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76273622"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124340"
 ---
 # <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>预览：使用 PowerShell 创建和使用邻近感应布局组
 

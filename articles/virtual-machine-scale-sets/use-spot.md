@@ -2,17 +2,19 @@
 title: 使用 Azure 点 Vm 创建规模集
 description: 了解如何创建使用点 Vm 节省成本的 Azure 虚拟机规模集。
 author: cynthn
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.topic: article
-ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: a7bd22032a554c83a2ea2323ffdb3ae52dfe4faf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.service: virtual-machine-scale-sets
+ms.subservice: spot
+ms.date: 03/25/2020
+ms.reviewer: jagaveer
+ms.custom: jagaveer
+ms.openlocfilehash: 59de7a8decef807b548ff4b85f06fc1115ce110b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80545937"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125020"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>适用于虚拟机规模集的 Azure 点 Vm 
 
@@ -26,7 +28,7 @@ ms.locfileid: "80545937"
 基于区域和 SKU，专色实例的定价是可变的。 有关详细信息，请参阅适用于[Linux](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/)和[Windows](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/)的定价。 
 
 
-使用可变定价，可以选择设置最大价格（美元），最多可使用5个小数位数。 例如，该值`0.98765`的最大价格为 $0.98765 美元/小时。 如果将最大价格设置为`-1`，则不会根据价格收回实例。 此实例的价格将是当前的价格价格或标准实例的价格，但只要容量和配额可用即可。
+使用可变定价，可以选择设置最大价格（美元），最多可使用5个小数位数。 例如，该值的 `0.98765` 最大价格为 $0.98765 美元/小时。 如果将最大价格设置为 `-1` ，则不会根据价格收回实例。 此实例的价格将是当前的价格价格或标准实例的价格，但只要容量和配额可用即可。
 
 ## <a name="eviction-policy"></a>逐出策略
 
@@ -45,16 +47,16 @@ ms.locfileid: "80545937"
 - [Azure 门户](#portal)
 - [Azure CLI](#azure-cli)
 - [Azure PowerShell](#powershell)
-- [Azure Resource Manager 模板](#resource-manager-templates)
+- [Azure 资源管理器模板](#resource-manager-templates)
 
 ## <a name="portal"></a>门户
 
-创建使用专色 Vm 的规模集的过程与入门[文章](quick-create-portal.md)中详述的过程相同。 部署规模集时，可以选择设置点标志和逐出策略： ![使用污点 vm 创建规模集](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-max-price.png)
+创建使用专色 Vm 的规模集的过程与入门[文章](quick-create-portal.md)中详述的过程相同。 部署规模集时，可以选择设置点标志和逐出策略： ![ 使用污点 vm 创建规模集](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-max-price.png)
 
 
 ## <a name="azure-cli"></a>Azure CLI
 
-使用专色 Vm 创建规模集的过程与[入门文章](quick-create-cli.md)中详述的过程相同。 只需添加 "--Priority 污点"，并添加`--max-price`。 在此示例中，我们`-1`将`--max-price`用于，因此不会根据价格收回实例。
+使用专色 Vm 创建规模集的过程与[入门文章](quick-create-cli.md)中详述的过程相同。 只需添加 "--Priority 污点"，并添加 `--max-price` 。 在此示例中，我们将用于， `-1` `--max-price` 因此不会根据价格收回实例。
 
 ```azurecli
 az vmss create \
@@ -71,7 +73,7 @@ az vmss create \
 ## <a name="powershell"></a>PowerShell
 
 使用专色 Vm 创建规模集的过程与[入门文章](quick-create-powershell.md)中详述的过程相同。
-只需添加 "-Priority 污点"，并`-max-price`向[AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig)提供。
+只需添加 "-Priority 污点"，并 `-max-price` 向[AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig)提供。
 
 ```powershell
 $vmssConfig = New-AzVmssConfig `
@@ -87,7 +89,7 @@ $vmssConfig = New-AzVmssConfig `
 
 创建使用点 Vm 的规模集的过程与适用于[Linux](quick-create-template-linux.md)或[Windows](quick-create-template-windows.md)的入门文章中详述的过程相同。 
 
-对于部署点模板，请`"apiVersion": "2019-03-01"`使用或更高版本。 将`priority`、 `evictionPolicy`和`billingProfile`属性添加到模板`"virtualMachineProfile":`中的部分： 
+对于部署点模板，请使用 `"apiVersion": "2019-03-01"` 或更高版本。 将 `priority` 、 `evictionPolicy` 和属性添加 `billingProfile` 到 `"virtualMachineProfile":` 模板中的部分： 
 
 ```json
                 "priority": "Spot",
@@ -97,9 +99,9 @@ $vmssConfig = New-AzVmssConfig `
                 }
 ```
 
-若要在逐出实例后将其删除，请将`evictionPolicy`参数更改`Delete`为。
+若要在逐出实例后将其删除，请将 `evictionPolicy` 参数更改为 `Delete` 。
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>常见问题解答
 
 **问：** 创建后，点实例是否与标准实例相同？
 
@@ -123,12 +125,12 @@ $vmssConfig = New-AzVmssConfig `
 
 **问：** 是否可以将现有规模集转换为污点规模集？
 
-**答：** 不，仅在`Spot`创建时支持设置标志。
+**答：** 不， `Spot` 仅在创建时支持设置标志。
 
 
-**问：** 如果使用`low`的是低优先级规模集，是否需要开始使用`Spot` ？
+**问：** 如果使用 `low` 的是低优先级规模集，是否需要开始使用 `Spot` ？
 
-**答：** 目前，和`low` `Spot`都将起作用，但你应使用`Spot`开始转换为。
+**答：** 目前，和都 `low` `Spot` 将起作用，但你应使用开始转换为 `Spot` 。
 
 
 **问：** 是否可以同时创建具有常规 Vm 和虚拟机的规模集？
@@ -164,7 +166,7 @@ $vmssConfig = New-AzVmssConfig `
 
 **问：** 可以在何处发布问题？
 
-**答：** 您可以使用`azure-spot` [Q&](https://docs.microsoft.com/answers/topics/azure-spot.html)来发布和标记问题。 
+**答：** 您可以使用 `azure-spot` [Q&](https://docs.microsoft.com/answers/topics/azure-spot.html)来发布和标记问题。 
 
 ## <a name="next-steps"></a>后续步骤
 
