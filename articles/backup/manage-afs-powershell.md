@@ -3,19 +3,19 @@ title: 通过 PowerShell 管理 Azure 文件共享备份
 description: 了解如何使用 PowerShell 管理和监视 Azure 备份服务备份的 Azure 文件共享。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: a9dc421db740963fc5cd11e868eb383694376ce1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ee5fb92e4a66a9d6db66514f966c3650d3a4f13
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77083177"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201967"
 ---
 # <a name="manage-azure-file-share-backups-with-powershell"></a>通过 PowerShell 管理 Azure 文件共享备份
 
 本文介绍如何使用 Azure PowerShell 来管理和监视 Azure 备份服务备份的 Azure 文件共享。
 
 > [!WARNING]
-> 请确保将 PS 版本升级到最小版本的 Microsoft.recoveryservices 2.6.0。 有关更多详细信息，请参阅概述此更改要求的[部分](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups)。
+> 请确保将 PS 版本升级到最小版本的 Microsoft.recoveryservices 2.6.0。 有关更多详细信息，请参阅概述此更改要求的[部分](backup-azure-afs-automation.md#important-notice-backup-item-identification)。
 
 ## <a name="modify-the-protection-policy"></a>修改保护策略
 

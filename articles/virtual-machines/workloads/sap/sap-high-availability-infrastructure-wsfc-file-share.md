@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4abae94ded92aca075fcb41a7cd42491e92d41d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2ccaf662488203e346065cfee082018128f37d95
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77591534"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201670"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 SAP 高可用性的 Azure 基础结构
 
@@ -222,8 +222,8 @@ ms.locfileid: "77591534"
 | --- | --- | --- | --- |
 | 第一个群集节点 ASCS/SCS 群集 | ascs-1 | 10.0.6.4 | ascs-as |
 | 第二个群集节点 ASCS/SCS 群集 | ascs-2 | 10.0.6.5 | ascs-as |
-| 群集网络名称 |ascs-cl | 10.0.6.6 | n/a |
-| SAP PR1 ASCS 群集网络名称 |pr1-ascs | 10.0.6.7 | n/a |
+| 群集网络名称 |ascs-cl | 10.0.6.6 | 不适用 |
+| SAP PR1 ASCS 群集网络名称 |pr1-ascs | 10.0.6.7 | 不适用 |
 
 
 **表 1**：ASCS/SCS 群集
@@ -240,8 +240,8 @@ ms.locfileid: "77591534"
 | 第一个群集节点 | sofs-1 | 10.0.6.10 | sofs-as |
 | 第二个群集节点 | sofs-2 | 10.0.6.11 | sofs-as |
 | 第三个群集节点 | sofs-3 | 10.0.6.12 | sofs-as |
-| 群集网络名称 | sofs-cl | 10.0.6.13 | n/a |
-| SAP 全局主机名 | sapglobal | 使用所有群集节点的 IP | n/a |
+| 群集网络名称 | sofs-cl | 10.0.6.13 | 不适用 |
+| SAP 全局主机名 | sapglobal | 使用所有群集节点的 IP | 不适用 |
 
 **表 3**：横向扩展文件服务器群集
 
@@ -348,7 +348,7 @@ _**图 2**：不带托管磁盘的横向扩展文件服务器 Azure 资源管理
 
 - SameSubNetDelay = 2000
 - SameSubNetThreshold = 15
-- RoutingHistoryLength = 30
+- RouteHistoryLength = 30
 
 这些设置已经过客户测试，可以提供合理的折衷。 它们具有足够的弹性，但在真正的错误情况下或 VM 发生故障时，它们还提供足够快速的故障转移。
 

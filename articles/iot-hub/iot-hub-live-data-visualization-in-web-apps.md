@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
-ms.openlocfilehash: 138e077f7b47fa9f38a4710db95eb7208cef78e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e27cf51d50b3094adca6ce8d3846ef358f78482
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78675323"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201535"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>在 Web 应用程序中可视化 Azure IoT 中心内的实时传感器数据
 
@@ -35,7 +35,7 @@ ms.locfileid: "78675323"
 * 打开一个网页，以查看 IoT 中心内的实时温度和湿度数据
 * （可选）使用 Azure CLI 在 Azure 应用服务中托管 Web 应用
 
-## <a name="what-you-need"></a>所需条件
+## <a name="what-you-need"></a>需要什么
 
 * 完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程；例如[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)。 这包括以下要求：
 
@@ -174,7 +174,7 @@ set EventHubConsumerGroup=YourConsumerGroupName
 3. 现在，为指定 IoT 中心连接字符串和事件中心使用者组的环境变量添加应用程序设置。 `-settings` 参数中的每项设置以空格分隔。 请使用 IoT 中心的服务连接字符串，以及前面在本教程中创建的使用者组。 不要将值括在引号中。
 
    ```azurecli-interactive
-   az webapp config appsettings set -n <your web app name> -g <your resource group name> --settings EventHubConsumerGroup=<your consumer group> IotHubConnectionString=<your IoT hub connection string>
+   az webapp config appsettings set -n <your web app name> -g <your resource group name> --settings EventHubConsumerGroup=<your consumer group> IotHubConnectionString="<your IoT hub connection string>"
    ```
 
 4. 为 Web 应用启用 Web 套接字协议，并将 Web 应用设置为仅接收 HTTPS 请求（HTTP 请求将重定向到 HTTPS）。
@@ -227,7 +227,7 @@ set EventHubConsumerGroup=YourConsumerGroupName
     az webapp show -n <your web app name> -g <your resource group name> --query state
     ```
 
-11. 在浏览器中导航至 `https://<your web app name>.azurewebsites.net` 。 此时会显示一个网页，它类似于在本地运行 Web 应用时所看到的网页。 假设你的设备正在运行且正在发送数据，则应会显示该设备最近发送的 50 个温度和湿度读数的运行图。
+11. 在浏览器中导航到 `https://<your web app name>.azurewebsites.net`。 此时会显示一个网页，它类似于在本地运行 Web 应用时所看到的网页。 假设你的设备正在运行且正在发送数据，则应会显示该设备最近发送的 50 个温度和湿度读数的运行图。
 
 ## <a name="troubleshooting"></a>疑难解答
 

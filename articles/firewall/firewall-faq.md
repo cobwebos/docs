@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 04/10/2020
+ms.date: 05/11/2020
 ms.author: victorh
-ms.openlocfilehash: ea94e452b463fffc1800e09fa1302abacdf015cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb065f10664f46578f84e59501d75d510ccb3c6a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81383074"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201585"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火墙常见问题解答
 
@@ -50,7 +50,7 @@ Azure 防火墙支持规则和规则集合。 规则集合是一组共享相同�
 
 * *应用程序规则*：配置可从子网访问的完全限定域名 (FQDN)。
 * *网络规则*：配置包含源地址、协议、目标端口和目标地址的规则。
-* *NAT 规则*：配置 DNAT 规则以允许传入 Internet 连接。
+* *NAT 规则*：将 DNAT 规则配置为允许传入的 Internet 连接。
 
 ## <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Azure 防火墙是否支持入站流量筛选？
 
@@ -78,7 +78,7 @@ Azure 防火墙是具有多个保护层的托管服务，这些层包括使用 N
 
 ## <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>如何使用服务终结点设置 Azure 防火墙？
 
-若要安全访问 PaaS 服务，我们建议使用服务终结点。 可以选择在 Azure 防火墙子网中启用服务终结点，并在连接的分支虚拟网络中禁用它们。 这样，你就可以从这两种功能中受益：服务终结点安全性和所有通信的中心日志记录。
+若要安全访问 PaaS 服务，我们建议使用服务终结点。 可以选择在 Azure 防火墙子网中启用服务终结点，并在连接的分支虚拟网络中禁用它们。 这样可以受益于以下两个功能：服务终结点安全性和针对所有流量的集中日志记录。
 
 ## <a name="what-is-the-pricing-for-azure-firewall"></a>Azure 防火墙采用何种定价方式？
 
@@ -117,7 +117,7 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ## <a name="can-azure-firewall-in-a-hub-virtual-network-forward-and-filter-network-traffic-between-two-spoke-virtual-networks"></a>中心虚拟网络中的 Azure 防火墙能否转发并筛选两个分支虚拟网络之间的网络流量？
 
-能，可以在中心虚拟网络中使用 Azure 防火墙来路由和筛选两个分支虚拟网络之间的流量。 每个辐射虚拟网络中的子网必须具有指向 Azure 防火墙作为默认网关的 UDR，此应用程序才能正常工作。
+能，可以在中心虚拟网络中使用 Azure 防火墙来路由和筛选两个分支虚拟网络之间的流量。 每个分支虚拟网络中的子网必须具有指向 Azure 防火墙的 UDR，作为此方案生效所需的默认网关。
 
 ## <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Azure 防火墙能否转发和筛选同一虚拟网络或对等互连虚拟网络中子网之间的网络流量？
 
@@ -129,7 +129,7 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>是否支持与网络虚拟设备强制建立隧道/链接？
 
-支持强制隧道。 有关详细信息，请参阅[Azure 防火墙强制隧道（预览版）](forced-tunneling.md)。 
+支持强制隧道。 有关详细信息，请参阅 [Azure 防火墙强制隧道](forced-tunneling.md)。 
 
 Azure 防火墙必须具有直接的 Internet 连接。 如果 AzureFirewallSubnet 知道通过 BGP 的本地网络的默认路由，则必须将其替代为 0.0.0.0/0 UDR，将 NextHopType 值设置为 Internet 以保持 Internet 直接连接   。
 
@@ -137,26 +137,26 @@ Azure 防火墙必须具有直接的 Internet 连接。 如果 AzureFirewallSubn
 
 ## <a name="are-there-any-firewall-resource-group-restrictions"></a>是否有任何防火墙资源组限制？
 
-是的。 防火墙、VNet 和公共 IP 地址必须位于同一个资源组中。
+是的。 防火墙、VNet 和公共 IP 地址都必须位于同一资源组中。
 
 ## <a name="when-configuring-dnat-for-inbound-internet-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>为入站 Internet 网络流量配置 DNAT 时，是否还需要配置相应的网络规则以允许该流量？
 
-不能。 NAT 规则会隐式添加一个对应的网络规则来允许转换后的流量。 可以通过以下方法替代此行为：显式添加一个网络规则集合并在其中包含将匹配转换后流量的拒绝规则。 若要详细了解 Azure 防火墙规则处理逻辑，请参阅 [Azure 防火墙规则处理逻辑](rule-processing.md)。
+不是。 NAT 规则会隐式添加一个对应的网络规则来允许转换后的流量。 可以通过以下方法替代此行为：显式添加一个网络规则集合并在其中包含将匹配转换后流量的拒绝规则。 若要详细了解 Azure 防火墙规则处理逻辑，请参阅 [Azure 防火墙规则处理逻辑](rule-processing.md)。
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>应用程序规则目标 FQDN 中的通配符有什么作用？
 
-如果配置 ***.contoso.com**，则允许 *anyvalue*.contoso.com，但不允许 contoso.com（域顶点）。 如果希望允许域顶点，必须显式将其配置为目标 FQDN。
+如果配置 * **.contoso.com**，则允许 *anyvalue*.contoso.com，但不允许 contoso.com（域顶点）。 如果希望允许域顶点，必须显式将其配置为目标 FQDN。
 
-## <a name="what-does-provisioning-state-failed-mean"></a>*预配状态的定义：失败*意味着？
+## <a name="what-does-provisioning-state-failed-mean"></a>“预配状态:  失败”意味着什么？
 
-每当应用配置更改时，Azure 防火墙就会尝试更新其所有底层后端实例。 在极少见的情况下，其中的某个后端实例可能无法使用新配置进行更新，并且更新过程将会停止，并出现预配失败状态。 Azure 防火墙仍可正常运行，但应用的配置可能处于不一致状态，有些实例使用以前的配置，而有些实例则使用更新的规则集。 如果发生这种情况，请尝试再一次更新配置，直到操作成功，并且防火墙处于“成功”预配状态。**
+每当应用配置更改时，Azure 防火墙就会尝试更新其所有底层后端实例。 在极少见的情况下，其中的某个后端实例可能无法使用新配置进行更新，并且更新过程将会停止，并出现预配失败状态。 Azure 防火墙仍可正常运行，但应用的配置可能处于不一致状态，有些实例使用以前的配置，而有些实例则使用更新的规则集。 如果发生这种情况，请尝试再一次更新配置，直到操作成功，并且防火墙处于“成功”预配状态。 
 
 ## <a name="how-does-azure-firewall-handle-planned-maintenance-and-unplanned-failures"></a>Azure 防火墙如何处理计划内维护和计划外故障？
 Azure 防火墙包含多个采用主动-主动配置的后端节点。  对于任何计划内维护，我们都可以通过连接清空逻辑来正常更新节点。  更新安排在每个 Azure 区域的非营业时间，这样可以进一步限制中断风险。  对于计划外问题，我们会实例化一个新节点来代替故障节点。  通常情况下，我们会在发生故障后 10 秒钟内重新建立到新节点的连接。
 
-## <a name="how-does-connection-draining-work"></a>连接排出如何工作？
+## <a name="how-does-connection-draining-work"></a>连接清空的工作原理
 
-对于任何计划内维护，连接排出逻辑会正常更新后端节点。 Azure 防火墙将等待90秒，以便关闭现有连接。 如果需要，客户端可以自动重新建立与另一个后端节点的连接。
+对于任何计划内维护，连接清空逻辑会正常更新后端节点。 Azure 防火墙会等待 90 秒，以便关闭现有连接。 如果需要，客户端可以自动重建到另一个后端节点的连接。
 
 ## <a name="is-there-a-character-limit-for-a-firewall-name"></a>防火墙名称是否存在字符限制？
 
@@ -168,11 +168,11 @@ Azure 防火墙在缩放时必须预配更多的虚拟机实例。 /26 地址空
 
 ## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>在服务缩放时，防火墙子网大小是否需要更改？
 
-不能。 Azure 防火墙不需要大于 /26 的子网。
+不是。 Azure 防火墙不需要大于 /26 的子网。
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>如何提高防火墙吞吐量？
 
-Azure 防火墙的初始吞吐量容量为 2.5-3 Gbps，可扩展到 30 Gbps。 它会根据 CPU 使用情况和吞吐量自动扩展。
+Azure 防火墙的初始吞吐容量为 2.5 - 3 Gbps，可以横向扩展到 30 Gbps。 它会根据 CPU 使用情况和吞吐量自动扩展。
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Azure 防火墙横向扩展需要多长时间？
 
@@ -180,11 +180,11 @@ Azure 防火墙的初始吞吐量容量为 2.5-3 Gbps，可扩展到 30 Gbps。 
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>默认情况下，Azure 防火墙是否允许访问 Active Directory？
 
-不能。 Azure 防火墙默认阻止 Active Directory 访问。 若要允许访问，请配置 AzureActiveDirectory 服务标记。 有关详细信息，请参阅 [Azure 防火墙服务标记](service-tags.md)。
+否。 Azure 防火墙默认阻止 Active Directory 访问。 若要允许访问，请配置 AzureActiveDirectory 服务标记。 有关详细信息，请参阅 [Azure 防火墙服务标记](service-tags.md)。
 
 ## <a name="can-i-exclude-a-fqdn-or-an-ip-address-from-azure-firewall-threat-intelligence-based-filtering"></a>能否从基于 Azure 防火墙威胁情报的筛选中排除 FQDN 或 IP 地址？
 
-是的，你可以使用 Azure PowerShell 执行此操作：
+能。可以使用 Azure PowerShell 执行该操作：
 
 ```azurepowershell
 # Add a Threat Intelligence Whitelist to an Existing Azure Firewall

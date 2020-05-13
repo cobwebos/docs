@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: e73ba110128f6d4f0bea008840b06572d7aee140
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/12/2020
+ms.openlocfilehash: c8265f641afb4164f26b8b2663b9f904f95b2b67
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80517926"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201454"
 ---
 # <a name="co-sell-option-in-partner-center"></a>合作伙伴中心的联合销售选项
 
@@ -22,11 +22,11 @@ ms.locfileid: "80517926"
 
 | **产品类型** | **合作伙伴中心提供的共同销售页面** |
 |    -----------------------    |    -----------------------------  |
-| 软件即服务（SaaS） |     公开上市2020年4月      |
+| 软件即服务（SaaS） |      目前可用      |
 | Dynamics 365 for Customer Engagement & PowerApps      |     目前可用      |
 | Dynamics 365 for Operations     |     目前可用       |
-| Dynamics 365 Business Central      |  公开上市2020年4月     |
-| Azure 应用程序     |     公开上市2020年4月     |
+| Dynamics 365 Business Central      |   目前可用     |
+| Azure 应用程序     |      目前可用     |
 | Azure 虚拟机      |     即将公布       |
 | Azure 容器     |     即将公布       |
 | 咨询服务      |     即将公布       |
@@ -58,7 +58,7 @@ ms.locfileid: "80517926"
 
 解决方案领域有助于进一步定义您的解决方案。
 
-最多可为产品/服务添加三个解决方案区域。 对于每个解决方案区域，最多可以选择两个解决方案子区域。 若要选择多个子类别， `Ctrl`请使用键（在 Windows 上）或命令键（在 Mac OS 上）。
+最多可为产品/服务添加三个解决方案区域。 对于每个解决方案区域，最多可以选择两个解决方案子区域。 若要选择多个子类别，请使用 `Ctrl` 键（在 Windows 上）或命令键（在 Mac OS 上）。
 
 ## <a name="documents"></a>文档
 
