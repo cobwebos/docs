@@ -8,12 +8,13 @@ ms.topic: troubleshooting
 ms.date: 01/09/2020
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: 62ad337646cf3fc0bbe4305dccad5adb56f8ee15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 50f76d9b4f3061e6e9a1e4a0b510146dbded422a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81410229"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199012"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>排查 Azure 数据工厂连接器问题
 
@@ -198,7 +199,7 @@ ms.locfileid: "81410229"
 
 - **原因**：如果错误消息包含 "SqlException"，SQL 数据库将引发错误，指示某些特定操作失败。
 
-- **建议**：请按照此参考文档中的 SQL 错误代码进行搜索，以https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors了解更多详细信息：。 如需进一步的帮助，请联系 Azure SQL 支持。
+- **建议**：请按照此参考文档中的 SQL 错误代码进行搜索，以了解更多详细信息： https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors 。 如需进一步的帮助，请联系 Azure SQL 支持。
 
 - **原因**：如果错误消息包含 "具有 IP 地址的客户端 ..."不允许访问服务器 "，并且你正在尝试连接到 Azure SQL 数据库，这通常是由 Azure SQL 数据库防火墙问题导致的。
 
@@ -211,8 +212,8 @@ ms.locfileid: "81410229"
 
 - **原因**：如果错误消息包含 "SqlException"，SQL 数据库将引发错误，指示某些特定操作失败。
 
-- **建议**：如果不清楚 SQL 错误，请尝试将数据库更改为最新兼容级别 "150"。 它可能会引发最新版本的 SQL 错误。 请参阅详细信息文档： https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#backwardCompat。
-        若要解决 SQL 问题，请按此参考文档中的 SQL 错误代码进行搜索， https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors以了解更多详细信息：。 如果需要更多帮助，请联系 Azure SQL 支持。
+- **建议**：如果不清楚 SQL 错误，请尝试将数据库更改为最新兼容级别 "150"。 它可能会引发最新版本的 SQL 错误。 请参阅详细信息文档： https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#backwardCompat 。
+        若要解决 SQL 问题，请按此参考文档中的 SQL 错误代码进行搜索，以了解更多详细信息： https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors 。 如果需要更多帮助，请联系 Azure SQL 支持。
 
 - **原因**：如果错误消息包含 "PdwManagedToNativeInteropException"，则通常是由于 source 和 sink 列大小不匹配造成的。
 
@@ -545,7 +546,7 @@ ms.locfileid: "81410229"
 
 - **原因**： Azure 数据工厂不支持 parquet 格式。
 
-- **建议**：仔细检查源数据。 请参阅文档： https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs。
+- **建议**：仔细检查源数据。 请参阅文档： https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs 。
 
 
 ### <a name="error-code--parquetmisseddecimalprecisionscale"></a>错误代码： ParquetMissedDecimalPrecisionScale
@@ -581,7 +582,7 @@ ms.locfileid: "81410229"
 
 - **原因**：无法将数据转换为在映射中指定的类型。源
 
-- **建议**：请在复制活动列映射中仔细检查源数据或指定此列的正确数据类型。 请参阅文档： https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs。
+- **建议**：请在复制活动列映射中仔细检查源数据或指定此列的正确数据类型。 请参阅文档： https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs 。
 
 
 ### <a name="error-code--parquetdatacountnotmatchcolumncount"></a>错误代码： ParquetDataCountNotMatchColumnCount

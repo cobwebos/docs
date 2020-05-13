@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: aebb590d93b3fb26151f15c176a2941845cdd50c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e6feca8cc87eadb2be5f43cafaa82195a18c3c75
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426500"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200379"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>将 SQL 数据库中的参考数据用于 Azure 流分析作业
 
@@ -156,16 +156,16 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
  
 2. 创作增量查询。 
    
-   此查询检索从开始时间 **\@deltaStartTime** 到结束时间 **\@deltaEndTime** 范围内，在 SQL 数据库中插入或删除的所有行。 增量查询必须返回与快照查询以及列**操作**相同的列。  此列定义在 **\@deltaStartTime** 到 **\@deltaEndTime** 时间范围内是否插入或删除了行。 如果插入了记录，则生成的行将标记为 **1**；如果删除了记录，则标记为 **2**。 
+   此查询检索从开始时间 **\@deltaStartTime** 到结束时间 **\@deltaEndTime** 范围内，在 SQL 数据库中插入或删除的所有行。 增量查询必须返回与快照查询以及列**操作**相同的列。  此列定义在 **\@deltaStartTime** 到 **\@deltaEndTime** 时间范围内是否插入或删除了行。 如果插入了记录，则生成的行将标记为 **1**；如果删除了记录，则标记为 **2**。 查询还必须从 SQL Server 端添加**水印**，以确保在增量期间内进行的所有更新都得到适当的捕获。 使用不带**水印**的增量查询可能导致引用数据集不正确。  
 
    对于更新的记录，时态表将通过捕获插入和删除操作来执行簿记。 然后，流分析运行时将增量查询的结果应用到前一快照，以保持参考数据的最新状态。 下面显示了增量查询的示例：
 
    ```SQL
-      SELECT DeviceId, GroupDeviceId, Description, 1 as _operation_
+      SELECT DeviceId, GroupDeviceId, Description, ValidFrom as watermark 1 as _operation_
       FROM dbo.DeviceTemporal
       WHERE ValidFrom BETWEEN @deltaStartTime AND @deltaEndTime   -- records inserted
       UNION
-      SELECT DeviceId, GroupDeviceId, Description, 2 as _operation_
+      SELECT DeviceId, GroupDeviceId, Description, ValidTo as watermark 2 as _operation_
       FROM dbo.DeviceHistory   -- table we created in step 1
       WHERE ValidTo BETWEEN @deltaStartTime AND @deltaEndTime     -- record deleted
    ```
@@ -175,7 +175,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 ## <a name="test-your-query"></a>测试查询
    请务必验证查询是否返回流分析作业将用作参考数据的所需数据集。 若要测试查询，请转到门户上“作业拓扑”部分下的“输入”。 然后，可以在“SQL 数据库参考输入”中选择“示例数据”。 示例可用后，可以下载该文件并检查返回的数据是否符合预期。 如果希望优化开发和测试迭代，建议使用[适用于 Visual Studio 的流分析工具](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install)。 也可以使用你喜欢的任何其他工具，首先确保查询从 Azure SQL 数据库返回正确的结果，然后在流分析作业中使用该查询。 
 
-## <a name="faqs"></a>常见问题
+## <a name="faqs"></a>常见问题解答
 
 **在 Azure 流分析中使用 SQL 参考数据输入是否会产生额外的费用？**
 
@@ -185,8 +185,8 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 可以使用两个按“逻辑名称”筛选的指标（在指标 Azure 门户中）来监视 SQL 数据库参考数据输入的运行状况。
 
-   * InputEvents：此指标度量从 SQL 数据库参考数据集载入的记录数。
-   * InputEventBytes：此指标度量流分析作业内存中载入的参考数据快照大小。 
+   * 大于：此指标测量从 SQL 数据库引用数据集中加载的记录数。
+   * InputEventBytes：此指标测量在流分析作业的内存中加载的引用数据快照的大小。 
 
 可以使用这两个指标的组合来推断作业是否正在查询 SQL 数据库以提取参考数据集，然后将其载入内存。
 
@@ -202,4 +202,4 @@ Azure 流分析可与任何类型的 Azure SQL 数据库配合工作。 但必�
 
 * [使用参考数据在流分析中查找](stream-analytics-use-reference-data.md)
 * [快速入门：使用用于 Visual Studio 的 Azure 流分析工具创建流分析作业](stream-analytics-quick-create-vs.md)
-* [使用用于 Visual Studio 的 Azure 流分析工具在本地测试实时数据（预览）](stream-analytics-live-data-local-testing.md)
+* [使用适用于 Visual Studio 的 Azure 流分析工具在本地测试实时数据（预览版）](stream-analytics-live-data-local-testing.md)

@@ -11,12 +11,13 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc1be4637d56d7205d50ebfc6f7d1d5d22e62edf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 9dce9e2f63afc50e367d650f93f293b974d912e9
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617662"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199554"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>将现有 NPS 基础结构与 Azure 多重身份验证集成
 
@@ -76,15 +77,15 @@ Windows Server 2008 R2 SP1 或更高版本。
 
 NPS 服务器必须能够通过端口 80 和 443 与以下 URL 通信。
 
-- https：\//adnotifications.windowsazure.com
+- https： \/ /adnotifications.windowsazure.com
 - https:\//login.microsoftonline.com
-- https：\//credentials.azure.com
+- https： \/ /credentials.azure.com
 
 此外，还需要连接到以下 Url，才能[使用提供的 PowerShell 脚本完成适配器的设置](#run-the-powershell-script)
 
 - https:\//login.microsoftonline.com
-- https：\//provisioningapi.microsoftonline.com
-- https：\//aadcdn.msauth.net
+- https： \/ /provisioningapi.microsoftonline.com
+- https： \/ /aadcdn.msauth.net
 
 ## <a name="prepare-your-environment"></a>准备环境
 
@@ -110,7 +111,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 此步骤可能已在租户上完成，但最好仔细检查 Azure AD Connect 最近是否已同步数据库。
 
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择**Azure Active Directory** > **Azure AD Connect**
+2. 选择**Azure Active Directory**  >  **Azure AD Connect**
 3. 确认同步状态是“已启用”****，并确认上次同步时间是在不到一小时前。
 
 如果需要启动新一轮的同步，可使用 [Azure AD Connect 同步：计划程序](../hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler)中的说明。
@@ -139,7 +140,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 
 使用以下步骤以启动一个测试帐户：
 
-1. 使用测试帐户[https://aka.ms/mfasetup](https://aka.ms/mfasetup)登录到。
+1. [https://aka.ms/mfasetup](https://aka.ms/mfasetup)使用测试帐户登录到。
 2. 按照提示设置验证方法。
 3. [创建条件性访问策略](howto-mfa-getstarted.md#create-conditional-access-policy)，要求对测试帐户进行多重身份验证。
 
@@ -223,9 +224,9 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 
 对于 NPS 扩展的 release 1.0.1.32，现在支持读取多个证书。 此功能有助于在证书更新过期之前方便滚动。 如果你的组织运行的是早期版本的 NPS 扩展，则应升级到版本1.0.1.32 或更高版本。
 
-`AzureMfaNpsExtnConfigSetup.ps1`脚本创建的证书有效期为2年。 IT 组织应监视证书的过期时间。 NPS 扩展的证书放置在 "个人" 下的 "本地计算机" 证书存储中，并颁发给脚本提供的租户 ID。
+脚本创建的证书 `AzureMfaNpsExtnConfigSetup.ps1` 有效期为2年。 IT 组织应监视证书的过期时间。 NPS 扩展的证书放置在 "个人" 下的 "本地计算机" 证书存储中，并颁发给脚本提供的租户 ID。
 
-当证书接近到期日期时，应创建新的证书来替换证书。  此过程通过`AzureMfaNpsExtnConfigSetup.ps1`再次运行并在出现提示时保留相同的租户 ID 来完成。 应在环境中的每个 NPS 服务器上重复此过程。
+当证书接近到期日期时，应创建新的证书来替换证书。  此过程通过再次运行并在 `AzureMfaNpsExtnConfigSetup.ps1` 出现提示时保留相同的租户 ID 来完成。 应在环境中的每个 NPS 服务器上重复此过程。
 
 ## <a name="configure-your-nps-extension"></a>配置 NPS 扩展
 
@@ -247,7 +248,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 
 如果你的某些用户未注册 MFA，你可以确定当他们尝试身份验证时要发生什么行为。 使用注册表路径 *HKLM\Software\Microsoft\AzureMFA* 中的注册表设置 *REQUIRE_USER_MATCH* 可以控制功能行为。 此项设置提供单个配置选项：
 
-| 密钥 | 值 | 默认值 |
+| 键 | 值 | 默认值 |
 | --- | ----- | ------- |
 | REQUIRE_USER_MATCH | TRUE/FALSE | 未设置（相当于 TRUE） |
 

@@ -6,15 +6,15 @@ author: normesta
 ms.service: storage
 ms.subservice: common
 ms.topic: article
-ms.date: 09/27/2019
+ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: c8578c518ac45bea147790028c2904c7ce36fffb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34f1c96d8336447b6ca2a4f55fefa9a061c38fa2
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459026"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198488"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>将 Azure 存储帐户移到另一个区域
 
@@ -137,7 +137,7 @@ ms.locfileid: "81459026"
          "location": "centralus"
          }]          
     ```
-    若要获取区域位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是不包含空格、**美国** = 中部**centralus**的区域名称。
+    若要获取区域位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是不包含空格、**美国中部**  =  **centralus**的区域名称。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -232,25 +232,10 @@ ms.locfileid: "81459026"
 
 ### <a name="move-data-to-the-new-storage-account"></a>将数据移到新的存储帐户
 
-下面是移动数据的一些方法。
+AzCopy 是移动数据的首选工具。 此方法已针对性能进行优化。  速度较快的原因之一是数据直接在存储服务器之间复制。因此，AzCopy 不会占用计算机的网络带宽。 可在命令行或自定义脚本中使用 AzCopy。 请参阅 [AzCopy 入门](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
-： heavy_check_mark： **Azure 存储资源管理器**
+你还可以使用 Azure 数据工厂移动数据。 它提供直观的用户界面。 若要使用 Azure 数据工厂，请参阅以下任意链接：。 
 
-  此工具易于使用，适合用于小型数据集。 可以复制容器和文件共享，然后将其粘贴到目标帐户中。
-
-  请参阅 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)；
-
-： heavy_check_mark： **AzCopy**
-
-  这是首选方法。 此方法已针对性能进行优化。  速度较快的原因之一是数据直接在存储服务器之间复制。因此，AzCopy 不会占用计算机的网络带宽。 可在命令行或自定义脚本中使用 AzCopy。
-
-  请参阅[AzCopy 入门](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-
-： heavy_check_mark： **Azure 数据工厂** 
-
-  仅当当前的 AzCopy 版本不支持所需的功能时，才使用此工具。 例如，在当前的 AzCopy 版本中，无法在使用分层命名空间的帐户之间复制 Blob。 另外，AzCopy 不会保留文件访问控制列表或文件时间戳（例如：创建和修改时间戳）。 
-
-  请参阅以下链接：
   - [使用 Azure 数据工厂将数据复制到 Azure Blob 存储或从 Azure Blob 存储复制数据](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
   - [使用 Azure 数据工厂向/从 Azure Data Lake Storage Gen2 复制数据](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
   - [使用 Azure 数据工厂从/向 Azure 文件存储复制数据](https://docs.microsoft.com/azure/data-factory/connector-azure-file-storage)

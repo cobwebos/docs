@@ -1,28 +1,28 @@
 ---
 title: 向地图添加多边形层 |Microsoft Azure 映射
 description: 在本文中，你将了解如何在 Microsoft Azure map Web SDK 中的地图上呈现多边形和多个多边形。
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 9191f054ca3c7374bcbc7bec46573289a512612c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 91d6ed24c85d08c4b3358204980498d64e1b36ba
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79535046"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124034"
 ---
 # <a name="add-a-polygon-layer-to-the-map"></a>向地图添加多边形层
 
-本文介绍如何使用多边形层在地图上呈现`Polygon`和`MultiPolygon`功能几何。 Azure Maps Web SDK 还支持按[扩展 GeoJSON 架构](extend-geojson.md#circle)中的定义创建圆形几何。 在地图上呈现时，这些圆圈将转换为多边形。 用阿特拉斯包装时，所有功能几何都可以轻松地进行更新[。Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest)类。
+本文介绍如何 `Polygon` `MultiPolygon` 使用多边形层在地图上呈现和功能几何。 Azure Maps Web SDK 还支持按[扩展 GeoJSON 架构](extend-geojson.md#circle)中的定义创建圆形几何。 在地图上呈现时，这些圆圈将转换为多边形。 用阿特拉斯包装时，所有功能几何都可以轻松地进行更新[。Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest)类。
 
 ## <a name="use-a-polygon-layer"></a>使用多边形层 
 
-当多边形层连接到数据源并将其加载到地图上时，它将呈现带有`Polygon`和`MultiPolygon`功能的区域。 若要创建多边形，请将其添加到数据源，并使用[PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest)类将其呈现为多边形层。
+当多边形层连接到数据源并将其加载到地图上时，它将呈现带有 `Polygon` 和功能的区域 `MultiPolygon` 。 若要创建多边形，请将其添加到数据源，并使用[PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest)类将其呈现为多边形层。
 
 ```javascript
 //Create a data source and add it to the map.
@@ -63,12 +63,12 @@ map.layers.add(new atlas.layer.PolygonLayer(dataSource, null,{
 
 ## <a name="fill-a-polygon-with-a-pattern"></a>使用图案填充多边形
 
-除了使用颜色填充多边形以外，还可以使用图像模式来填充多边形。 将图像模式加载到地图图像 sprite 资源，然后使用多边形层的`fillPattern`属性引用此图像。
+除了使用颜色填充多边形以外，还可以使用图像模式来填充多边形。 将图像模式加载到地图图像 sprite 资源，然后使用多边形层的属性引用此图像 `fillPattern` 。
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="多边形填充图案" src="//codepen.io/azuremaps/embed/JzQpYX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅<a href='https://codepen.io'>CodePen</a>上的 "笔<a href='https://codepen.io/azuremaps/pen/JzQpYX/'>多边形填充模式</a>" Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）。
+请参阅 CodePen 上的 "笔<a href='https://codepen.io/azuremaps/pen/JzQpYX/'>多边形填充模式</a>" Azure Maps （ <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>）。
 </iframe>
 
 
@@ -88,7 +88,7 @@ map.layers.add(new atlas.layer.PolygonLayer(dataSource, null,{
 
 ## <a name="add-a-circle-to-the-map"></a>将圆添加到地图
 
-Azure Maps 使用 GeoJSON 架构的扩展版本，它提供了圆形的定义，如[此处](extend-geojson.md#circle)所述。 通过创建一`Point`项功能，在地图上呈现一个圆圈。 此`Point` `subType`属性具有值为的`"Circle"`属性和`radius`属性，该属性的值表示以米为单位的半径。 
+Azure Maps 使用 GeoJSON 架构的扩展版本，它提供了圆形的定义，如[此处](extend-geojson.md#circle)所述。 通过创建一项功能，在地图上呈现一个圆圈 `Point` 。 此 `Point` 属性具有 `subType` 值为的属性和属性，该属性的值 `"Circle"` `radius` 表示以米为单位的半径。 
 
 ```javascript
 {
@@ -104,7 +104,7 @@ Azure Maps 使用 GeoJSON 架构的扩展版本，它提供了圆形的定义，
 }  
 ```
 
-Azure Maps Web SDK 将这些`Point`功能转换为`Polygon`功能。 然后，使用多边形和线条层在地图上呈现这些功能，如下面的代码示例中所示。
+Azure Maps Web SDK 将这些 `Point` 功能转换为 `Polygon` 功能。 然后，使用多边形和线条层在地图上呈现这些功能，如下面的代码示例中所示。
 
 <br/>
 
@@ -113,7 +113,7 @@ Azure Maps Web SDK 将这些`Point`功能转换为`Polygon`功能。 然后，�
 
 ## <a name="make-a-geometry-easy-to-update"></a>使几何易于更新
 
-类包装[几何](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry?view=azure-iot-typescript-latest)或特征，使更新和维护这些功能变得轻松。 [Feature](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) `Shape` 若要实例化形状变量，请将一个或一组属性传递给形状构造函数。
+`Shape`类包装[几何](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry?view=azure-iot-typescript-latest)或[特征](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest)，使更新和维护这些功能变得轻松。 若要实例化形状变量，请将一个或一组属性传递给形状构造函数。
 
 ```javascript
 //Creating a shape by passing in a geometry and a object containing properties.

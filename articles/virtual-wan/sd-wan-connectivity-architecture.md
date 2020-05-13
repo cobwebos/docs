@@ -8,16 +8,16 @@ ms.service: virtual-wan
 ms.topic: article
 ms.date: 05/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 15e44b9c048f167935fe8660228581e5bac0f43d
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 34b2282421b9c95ad99ad040cb11847a30d3b52c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006256"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199997"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>SD-具有 Azure 虚拟 WAN 的广域网连接体系结构
 
-Azure 虚拟 WAN 是一种网络服务，它通过单一操作接口将许多云连接和安全服务结合在一起。 这些服务包括分支（通过站点到站点 VPN）、远程用户（点到站点 VPN）、专用（ExpressRoute）连接，以及适用于 Vnet、VPN 和 ExpressRoute 互连、路由、Azure 防火墙和专用连接加密的云间传递连接。
+Azure 虚拟 WAN 是一种网络服务，它通过单一操作接口将许多云连接和安全服务结合在一起。 这些服务包括分支（通过站点到站点 VPN）、远程用户（点到站点 VPN）、专用（ExpressRoute）连接、适用于 Vnet 的内部可传递连接、VPN 和 ExpressRoute 互连、路由、Azure 防火墙，以及用于专用连接的加密。
 
 尽管 Azure 虚拟 WAN 本身是一个软件定义的 WAN （SD-WAN），但它也设计用于实现与基于本地的 SD 的技术和服务的无缝互连。 许多此类服务都是由我们的[虚拟广域网](virtual-wan-locations-partners.md)生态系统和 Azure 网络托管服务合作伙伴[（msp）](../networking/networking-partners-msp.md)提供的。 如果企业将其专用广域网转换为 SD 广域网，则在将其专用 SD 广域网与 Azure 虚拟 WAN 建立互连时，会有一些选择。 企业可以从以下选项中进行选择：
 
@@ -39,7 +39,7 @@ SD WAN CPE 继续是实现和强制执行流量优化以及路径选择的位置
 
 在此模型中，可能不支持基于实时流量特征的某些供应商专用流量优化，因为与虚拟 WAN 的连接是通过 IPsec 进行的，并且 IPsec VPN 在虚拟 WAN VPN 网关上终止。 例如，分支 CPE 上的动态路径选择是可行的，因为分支设备将各种网络数据包信息与另一个 SD WAN 节点交换在一起，从而确定在分支上动态地使用各种优先级的流量的最佳链接。 此功能在需要最后一英里优化（分支到最近的 Microsoft POP）的区域中可能非常有用。
 
-利用虚拟广域网，用户可以获得 Azure 路径选择，这是从分支 CPE 到虚拟 WAN VPN 网关的多个 ISP 链接中的基于策略的路径选择。 虚拟 WAN 允许将多个链接（路径）设置为同一 SD WAN branch CPE，每个链接在 SD WAN CPE 的不同公共 IP 接口上终止。 SD-WAN 供应商可以利用此功能，根据这些路径特定的流量策略，选择 Azure 的最佳路径。
+利用虚拟广域网，用户可以获得 Azure 路径选择，这是从分支 CPE 到虚拟 WAN VPN 网关的多个 ISP 链接中的基于策略的路径选择。 虚拟 WAN 允许从同一 SD WAN branch CPE 中设置多个链接（路径）;每个链接表示从 SD 的唯一公共 IP 到 Azure 虚拟 WAN VPN 网关的两个不同实例的双隧道连接。 SD-WAN 供应商可以根据其策略引擎在 CPE 链接上设置的流量策略，实现 Azure 的最佳路径。
 
 ## <a name="indirect-interconnect-model"></a><a name="indirect"></a>间接互连模型
 

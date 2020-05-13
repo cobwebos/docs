@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 027efd268ee80fbaf921b42d09cc424c8e8483ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9266f20d276b0b8d315cc83cd96fc235c79e773
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82136917"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198958"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure 托管磁盘的服务器端加密
 
@@ -75,11 +75,11 @@ Azure 托管磁盘使用[信封加密](../../storage/common/storage-client-side-
 - 仅支持大小为2048的["soft" 和 "hard" RSA 密钥](../../key-vault/keys/about-keys.md)，无其他密钥或大小。
 - 使用服务器端加密和客户托管密钥加密的自定义映像创建的磁盘必须使用相同的客户托管密钥进行加密，且必须位于同一订阅中。
 - 从用服务器端加密和客户管理的密钥加密的磁盘创建的快照必须用相同的客户托管密钥进行加密。
-- 使用服务器端加密和客户管理的密钥加密的自定义映像不能用于共享映像库。
 - 与客户托管的密钥（Azure 密钥保管库、磁盘加密集、Vm、磁盘和快照）相关的所有资源必须位于同一订阅和区域中。
 - 用客户管理的密钥加密的磁盘、快照和映像不能移到另一个订阅。
 - 如果使用 Azure 门户创建磁盘加密集，则目前无法使用快照。
 - 使用客户管理的密钥加密的托管磁盘也不能使用 Azure 磁盘加密进行加密。
+- 有关将客户托管的密钥用于共享映像库的信息，请参阅[预览版：使用客户管理的密钥加密映像](../image-version-encryption.md)。
 
 ### <a name="cli"></a>CLI
 #### <a name="setting-up-your-azure-key-vault-and-diskencryptionset"></a>设置 Azure Key Vault 和 DiskEncryptionSet
@@ -233,12 +233,12 @@ az disk show -g yourResourceGroupName -n yourDiskName --query [encryption.type] 
 
 ## <a name="server-side-encryption-versus-azure-disk-encryption"></a>服务器端加密与 Azure 磁盘加密
 
-[适用于虚拟机和虚拟机规模集的 Azure 磁盘加密](../../security/fundamentals/azure-disk-encryption-vms-vmss.md)利用 Windows 的[BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview)功能和 Linux 的[DM-CRYPT](https://en.wikipedia.org/wiki/Dm-crypt)功能，通过来宾 VM 中的客户托管密钥来加密托管磁盘。  使用客户托管密钥的服务器端加密通过加密存储服务中的数据，使你能够将任何 OS 类型和映像用于 VM，从而改进了 ADE。
+[适用于虚拟机和虚拟机规模集的 Azure 磁盘加密](../../security/fundamentals/azure-disk-encryption-vms-vmss.md)利用 Windows 的 [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) 功能和 Linux 的 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能，在来宾 VM 中使用客户托管密钥加密托管磁盘。  使用客户托管密钥的服务器端加密通过加密存储服务中的数据，使你能够将任何 OS 类型和映像用于 VM，从而改进了 ADE。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [探索 Azure 资源管理器模板，以便通过客户托管的密钥创建加密磁盘](https://github.com/ramankumarlive/manageddiskscmkpreview)
-- [什么是 Azure Key Vault？](../../key-vault/general/overview.md)
+- [探索 Azure 资源管理器模板以使用客户管理密钥创建加密磁盘](https://github.com/ramankumarlive/manageddiskscmkpreview)
+- [什么是 Azure 密钥保管库？](../../key-vault/general/overview.md)
 - [复制已启用客户托管密钥的计算机](../../site-recovery/azure-to-azure-how-to-enable-replication-cmk-disks.md)
 - [使用 PowerShell 设置 VMware VM 到 Azure 的灾难恢复](../../site-recovery/vmware-azure-disaster-recovery-powershell.md#replicate-vmware-vms)
-- [使用 PowerShell 和 Azure 资源管理器对 Hyper-V VM 设置到 Azure 的灾难恢复](../../site-recovery/hyper-v-azure-powershell-resource-manager.md#step-7-enable-vm-protection)
+- [使用 PowerShell 和 Azure 资源管理器为 Hyper-V VM 设置到 Azure 的灾难恢复](../../site-recovery/hyper-v-azure-powershell-resource-manager.md#step-7-enable-vm-protection)

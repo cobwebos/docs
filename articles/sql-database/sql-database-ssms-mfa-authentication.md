@@ -5,7 +5,7 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: security
 titleSuffix: Azure SQL Database and Azure Synapse
-ms.custom: seoapril2019
+ms.custom: seoapril2019, has-adal-ref
 ms.devlang: ''
 ms.topic: conceptual
 author: GithubMirek
@@ -13,12 +13,12 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 02/06/2020
 tags: azure-synapse
-ms.openlocfilehash: 137e1919f460d2f5631810edbc09b6e213bfe651
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 611a238fd829d9b1beb391da967c0f6c6d3b46ed
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133194"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198538"
 ---
 # <a name="using-multi-factor-aad-authentication-with-azure-sql-database-and-azure-synapse-analytics-ssms-support-for-mfa"></a>在 Azure SQL 数据库和 Azure Synapse Analytics 中使用多重 AAD 身份验证（SSMS 支持 MFA）
 Azure SQL 数据库和 Azure Synapse 支持使用 *Active Directory 通用身份验证*从 SQL Server Management Studio (SSMS) 进行连接。 本文讨论了各种身份验证选项之间的差异，以及与使用通用身份验证相关的限制。 
@@ -59,7 +59,7 @@ Azure MFA 可帮助保护对数据和应用程序的访问，同时满足用户�
    ![mfa-tenant-ssms](./media/sql-database-ssms-mfa-auth/mfa-no-tenant-ssms.png)
 
 ### <a name="azure-ad-business-to-business-support"></a>Azure AD 企业到企业支持   
-Azure AD 作为来宾用户的 Azure AD B2B 方案支持的用户（请参阅[什么是 AZURE B2B 协作](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)）只能作为在当前 Azure AD 中创建的组的成员的一部分连接到 SQL 数据库和 Azure Synapse，并使用给定的数据库中的`CREATE USER` transact-sql 语句手动映射。 例如，如果`steve@gmail.com`受邀 Azure AD `contosotest` （使用 Azure AD 域`contosotest.onmicrosoft.com`），则`usergroup`必须在包含`steve@gmail.com`成员的 Azure AD 中创建 Azure AD 组（如）。 然后，必须由 Azure AD SQL 管理员或 Azure AD DBO 执行 Transact-SQL `CREATE USER [usergroup] FROM EXTERNAL PROVIDER` 语句，为特定数据库（即 MyDatabase）创建此组。 创建数据库用户之后，用户 `steve@gmail.com` 随后可以使用 SSMS 身份验证选项 `Active Directory – Universal with MFA support` 登录 `MyDatabase`。 默认情况下，用户只拥有连接权限以及需要采用正常方式授予的任何其他数据访问权限。 请注意，作为来宾用户的用户 `steve@gmail.com` 必须在 SSMS“连接属性”  对话框中选中该框，并添加 AD 域名 `contosotest.onmicrosoft.com`。 仅对“通用且具有 MFA 连接”选项支持“AD 域名或租户 ID”  ，否则它处于灰显状态。
+Azure AD 作为来宾用户的 Azure AD B2B 方案支持的用户（请参阅[什么是 AZURE B2B 协作](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)）只能作为在当前 Azure AD 中创建的组的成员的一部分连接到 SQL 数据库和 Azure Synapse，并使用 `CREATE USER` 给定的数据库中的 transact-sql 语句手动映射。 例如，如果 `steve@gmail.com` 受邀 Azure AD `contosotest` （使用 Azure AD 域 `contosotest.onmicrosoft.com` ），则 `usergroup` 必须在包含成员的 Azure AD 中创建 Azure AD 组（如） `steve@gmail.com` 。 然后，必须由 Azure AD SQL 管理员或 Azure AD DBO 执行 Transact-SQL `CREATE USER [usergroup] FROM EXTERNAL PROVIDER` 语句，为特定数据库（即 MyDatabase）创建此组。 创建数据库用户之后，用户 `steve@gmail.com` 随后可以使用 SSMS 身份验证选项 `Active Directory – Universal with MFA support` 登录 `MyDatabase`。 默认情况下，用户只拥有连接权限以及需要采用正常方式授予的任何其他数据访问权限。 请注意，作为来宾用户的用户 `steve@gmail.com` 必须在 SSMS“连接属性”  对话框中选中该框，并添加 AD 域名 `contosotest.onmicrosoft.com`。 仅对“通用且具有 MFA 连接”选项支持“AD 域名或租户 ID”  ，否则它处于灰显状态。
 
 ## <a name="universal-authentication-limitations-for-sql-database-and-azure-synapse"></a>针对 SQL 数据库和 Azure Synapse 的通用身份验证限制
 - SSMS 和 SqlPackage.exe 是目前唯一通过 Active Directory 通用身份验证针对 MFA 启用的工具。

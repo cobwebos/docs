@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0015beadfea61fc31bf3f37232105b9cfd2ced71
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: a1a33404982b16e458e97aaf9959ff5dd52d1cce
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692148"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198884"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中 SQL 点播（预览版）的最佳实践
 
@@ -44,7 +44,7 @@ SQL 点播允许查询 Azure 存储帐户中的文件。 它没有本地存储�
 
 如果可能，可以准备文件以获得更好的性能：
 
-- 将 CSV 转换为 Parquet-Parquet 的格式为柱状。 由于它已经过压缩，因此，其文件大小要小于具有相同数据的 CSV 文件。 SQL 点播需要更少的时间和存储请求来读取它。
+- 将 CSV 和 JSON 转换为 Parquet-Parquet 的格式为柱状。 由于它是压缩文件，因此其文件大小小于 CSV 或具有相同数据的 JSON 文件。 SQL 点播需要更少的时间和存储请求来读取它。
 - 如果查询以单个大文件为目标，则将其拆分为多个较小的文件将会带来好处。
 - 请尝试将 CSV 文件的大小保持低于 10 GB。
 - 最好为单个 OPENROWSET 路径或外部表位置设置大小相同的文件。
@@ -118,7 +118,14 @@ FROM
 > [!TIP]
 > 始终将 filepath 和 fileinfo 函数的结果强制转换为相应的数据类型。 如果使用字符数据类型，请确保使用适当的长度。
 
+> [!NOTE]
+> 对于在 Synapse Spark 中创建的每个表创建的外部表，目前不支持用于分区排除、filepath 和 fileinfo 的函数。
+
 如果存储的数据未分区，请考虑将其分区，以便可以使用这些函数来优化针对这些文件的查询。 从 SQL 按需[查询分区 Spark 表](develop-storage-files-spark-tables.md)时，查询将自动仅针对所需的文件。
+
+## <a name="use-parser_version-20-for-querying-csv-files"></a>使用 PARSER_VERSION 2.0 查询 CSV 文件
+
+查询 CSV 文件时，可以使用性能优化分析器。 有关详细信息，请查看[PARSER_VERSION](develop-openrowset.md) 。
 
 ## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>使用 CETAS 增强查询性能和联接
 
@@ -127,6 +134,12 @@ FROM
 您可以使用 CETAS 将经常使用的查询部分（如联接的引用表）存储到一组新的文件。 接下来，可以联接到此单个外部表，而不是重复多个查询中的常用联接。
 
 当 CETAS 生成 Parquet 文件时，当第一个查询针对此外部表时，将自动创建统计信息，从而提高性能。
+
+## <a name="aad-pass-through-performance"></a>AAD 传递性能
+
+SQL 点播允许使用 AAD 传递或 SAS 凭据访问存储中的文件。 AAD 传递与 SAS 的比较可能会遇到较慢的性能。 
+
+如果需要更好的性能，请先尝试使用 SAS 凭据访问存储，再提高 AAD 传递性能。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72c18e48c27942c7bea47931ec79a31af941064e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1ca4ff3ed35371fe7454c242da8c9107badc659
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79126654"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199534"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>将 Google 添加为 B2B 来宾用户的标识提供者
 
@@ -37,16 +37,16 @@ ms.locfileid: "79126654"
 
 ## <a name="limitations"></a>限制
 
-团队完全支持所有设备上的 Google guest 用户。 Google 用户可以使用类似`https://teams.microsoft.com`的常见终结点登录到团队。
+团队完全支持所有设备上的 Google guest 用户。 Google 用户可以使用类似的常见终结点登录到团队 `https://teams.microsoft.com` 。
 
 其他应用程序的常见终结点可能不支持 Google 用户。 Google guest 用户必须使用包含租户信息的链接登录。 下面是一些示例：
   * `https://myapps.microsoft.com/?tenantid=<your tenant id>`
   * `https://portal.azure.com/<your tenant id>`
   * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
 
-   如果 Google guest 用户尝试使用链接（如`https://myapps.microsoft.com`或`https://portal.azure.com`），则会收到错误。
+   如果 Google guest 用户尝试使用链接（如 `https://myapps.microsoft.com` 或 `https://portal.azure.com` ），则会收到错误。
 
-你还可以为 Google guest 用户提供指向应用程序或资源的直接链接，前提是此链接包含你的租户信息，例如`https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>`。 
+你还可以为 Google guest 用户提供指向应用程序或资源的直接链接，前提是此链接包含你的租户信息，例如 `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>` 。 
 
 ## <a name="step-1-configure-a-google-developer-project"></a>步骤 1：配置 Google 开发人员项目
 首先，在 Google Developers Console 中创建一个新项目，以获取稍后要添加到 Azure AD 的客户端 ID 和客户端机密。 
@@ -89,9 +89,9 @@ ms.locfileid: "79126654"
 现在请设置 Google 客户端 ID 和客户端机密：在 Azure AD 门户中输入，或者使用 PowerShell 进行设置。 请务必测试 Google 联合配置，方法是使用 Gmail 地址邀请自己，然后尝试使用受邀的 Google 帐户根据邀请操作。 
 
 #### <a name="to-configure-google-federation-in-the-azure-ad-portal"></a>在 Azure AD 门户中配置 Google 联合 
-1. 转到 [Azure 门户](https://portal.azure.com)。 在左窗格中选择“Azure Active Directory”****。 
-2. 选择“组织关系”。****
-3. 选择“标识提供者”，单击“Google”按钮。********
+1. 转到 [Azure 门户](https://portal.azure.com)。 在左窗格中选择“Azure Active Directory”  。 
+2. 选择**组织关系**（或**外部标识**）。
+3. 选择 "**所有标识提供者**"，然后单击 " **Google** " 按钮。
 4. 输入名称。 然后输入前面获取的客户端 ID 和客户端机密。 选择“保存”  。 
 
    ![显示 "添加 Google 标识提供程序" 页的屏幕截图](media/google-federation/google-identity-provider.png)
@@ -100,7 +100,7 @@ ms.locfileid: "79126654"
 1. 安装最新版本的 Azure AD PowerShell for Graph 模块 ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview))。
 2. 运行以下命令：`Connect-AzureAD`。
 3. 根据登录提示使用托管的全局管理员帐户登录。  
-4. 运行以下命令： 
+4. 运行下面的命令： 
    
    `New-AzureADMSIdentityProvider -Type Google -Name Google -ClientId [Client ID] -ClientSecret [Client secret]`
  
@@ -111,9 +111,9 @@ ms.locfileid: "79126654"
 可以删除 Google 联合设置。 如果删除，则已按邀请操作的 Google 来宾用户将无法登录，但你可以通过从目录中删除然后重新邀请他们，使他们再次能够访问你的资源。 
  
 ### <a name="to-delete-google-federation-in-the-azure-ad-portal"></a>在 Azure AD 门户中删除 Google 联合： 
-1. 转到 [Azure 门户](https://portal.azure.com)。 在左窗格中选择“Azure Active Directory”****。 
-2. 选择“组织关系”。****
-3. 选择 "**标识提供者**"。
+1. 转到 [Azure 门户](https://portal.azure.com)。 在左窗格中选择“Azure Active Directory”  。 
+2. 选择**组织关系**（或**外部标识**）。
+3. 选择 "**所有标识提供者**"。
 4. 在**Google**行上，选择上下文菜单（**...**），然后选择 "**删除**"。 
    
    ![显示社交标识提供程序的删除选项的屏幕截图](media/google-federation/google-social-identity-providers.png)

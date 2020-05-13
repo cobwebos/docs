@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 05/07/2020
-ms.openlocfilehash: c78d8d603b6686d382ec7edcccc24d5dacc4745a
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 2838051d8e75ffbe3b7ecc9fbc655f24b57199e4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982218"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198682"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor 客户管理的密钥 
 
@@ -20,10 +20,6 @@ ms.locfileid: "82982218"
 建议你在配置之前查看下面的[限制和约束](#limitations-and-constraints)。
 
 ## <a name="disclaimers"></a>免责声明
-
-- Azure Monitor CMK 是一项早期访问功能，并且已对已注册的订阅启用。
-
-- 本文中所述的 CMK 部署以生产质量形式提供，并受支持，尽管这是一项早期的访问功能。
 
 - CMK 功能以专用 Log Analytics 群集的形式提供，该群集是物理群集，适用于每日或更多1TB 客户的数据存储
 
@@ -42,7 +38,7 @@ Azure Monitor 存储访问 Key Vault 进行包装和解包操作的频率介于6
 
 ## <a name="how-cmk-works-in-azure-monitor"></a>CMK 在 Azure Monitor 中的工作原理
 
-Azure Monitor 利用系统分配的托管标识授予对 Azure Key Vault 的访问权限。系统分配的托管标识只能与单个 Azure 资源关联。 群集级别支持专用 Log Analytics 群集的标识，这规定 CMK 功能在专用 Log Analytics 群集上提供。 为了支持多个工作区上的 CMK，新的 Log Analytics*群集*资源作为 Key Vault 和 Log Analytics 工作区之间的中间标识连接执行。 此概念维护专用 Log Analytics 群集与 Log Analytics*群集*资源之间的标识，而相关工作区的数据则受 Key Vault 密钥保护。 专用 Log Analytics 群集存储使用与*群集*资源关联的\'托管标识通过 Azure Active Directory 进行身份验证和访问 Azure Key Vault。
+Azure Monitor 利用系统分配的托管标识授予对 Azure Key Vault 的访问权限。系统分配的托管标识只能与单个 Azure 资源关联。 群集级别支持专用 Log Analytics 群集的标识，这规定 CMK 功能在专用 Log Analytics 群集上提供。 为了支持多个工作区上的 CMK，新的 Log Analytics*群集*资源作为 Key Vault 和 Log Analytics 工作区之间的中间标识连接执行。 此概念维护专用 Log Analytics 群集与 Log Analytics*群集*资源之间的标识，而相关工作区的数据则受 Key Vault 密钥保护。 专用 Log Analytics 群集存储使用 \' 与*群集*资源关联的托管标识通过 Azure Active Directory 进行身份验证和访问 Azure Key Vault。
 
 ![CMK 概述](media/customer-managed-keys/cmk-overview-8bit.png)
 1.    客户的 Key Vault。
@@ -72,7 +68,7 @@ Azure Monitor 利用系统分配的托管标识授予对 Azure Key Vault 的访�
 
 ## <a name="cmk-provisioning-procedure"></a>CMK 预配过程
 
-1. 订阅允许列表--这是早期访问功能所必需的
+1. 订阅允许列表-若要确保在你的区域中拥有专用 Log Analytics 群集所需的容量，我们需要事先验证和加入你的订阅
 2. 创建 Azure Key Vault 和存储密钥
 3. 创建*群集*资源
 5. 授予 Key Vault 的权限
@@ -173,7 +169,7 @@ CMK 功能是一项早期的访问功能。 你计划创建*群集*资源的订�
 
 此资源用作 Key Vault 与 Log Analytics 工作区之间的中间标识连接。 收到订阅处于白名单状态的确认后，请在工作区所在的区域创建 Log Analytics*群集*资源。
 
-创建*群集*资源时，必须指定*容量预留*级别（sku）。 *容量预留*级别可以在1000到 2000 GB （每天）范围内，你可以在稍后100的步骤中对其进行更新。 如果需要的容量预留级别超过 2000 GB，请联系我们LAIngestionRate@microsoft.com。 [了解详细信息](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-clusters)
+创建*群集*资源时，必须指定*容量预留*级别（sku）。 *容量预留*级别可以在1000到 2000 GB （每天）范围内，你可以在稍后100的步骤中对其进行更新。 如果需要的容量预留级别超过 2000 GB，请联系我们 LAIngestionRate@microsoft.com 。 [了解详细信息](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-clusters)
     
 *BillingType*属性确定*群集*资源及其数据的计费归属：
 - *群集*（默认值）--计费属于托管*群集*资源的订阅
@@ -420,16 +416,17 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 ## <a name="cmk-kek-revocation"></a>CMK （KEK）吊销
 
-可以通过在 Key Vault 中禁用密钥或删除*群集*资源访问策略，来撤销对数据的访问权限。 Azure Monitor 存储始终会在一小时内对关键权限进行更改，通常更快，存储将不可用。 与*群集*资源关联的工作区的任何数据引入将被删除，并且查询将失败。 只要你是*群集*资源并且工作区不会被删除，以前引入的数据在 Azure Monitor 存储中仍将无法访问。 不可访问的数据由数据保留策略控制，当达到保留时，将被清除。 
+可以通过禁用密钥，或在 Key Vault 中删除*群集*资源访问策略，来撤销对数据的访问权限。 专用 Log Analytics 群集存储在一小时或更短时间内将始终遵循关键权限的更改，并且存储将变为不可用。 与*群集*资源关联的工作区的任何数据引入会被删除，并且查询将失败。 以前引入的数据在存储中保持不可访问，因为*群集*资源和工作区不会被删除。 不可访问的数据由数据保留策略控制，当达到保留时，将被清除。 
 
-在过去14天内引入的数据也保存在热缓存（SSD 支持的）中，以实现高效的查询引擎操作。 此数据将通过 Microsoft 密钥保持加密，而不考虑 CMK 配置，但会在密钥吊销操作中被删除，并且也会变为不可访问。
+在过去14天内引入的数据也保存在热缓存（SSD 支持的）中，以实现高效的查询引擎操作。 这会在密钥吊销操作中被删除，也会变得不可访问。
 
-存储会定期轮询 Key Vault 来尝试解包加密密钥，一旦访问，数据引入和查询将在30分钟内恢复。
+存储会定期轮询你的 Key Vault，尝试解包加密密钥，一旦访问，数据引入和查询将在30分钟内恢复。
 
 ## <a name="cmk-kek-rotation"></a>CMK （KEK）旋转
 
-旋转 CMK 需要在 Azure Key Vault 中用新的密钥版本显式更新*群集*资源。 若要用新的密钥版本更新 Azure Monitor，请按照 "用密钥标识符详细信息更新*群集*资源" 步骤中的说明进行操作。 如果在 Key Vault 更新密钥版本，但不更新*群集*资源中的新密钥标识符详细信息，Azure Monitor 存储将继续使用以前的密钥。
-你的所有数据都可以在循环之前和之后的密钥旋转操作后访问，因为所有数据都将通过帐户加密密钥（AEK）进行加密，而 AEK 现在正在由新的密钥加密密钥（KEK）版本加密。
+CMK 的旋转需要在 Azure Key Vault 中用新的密钥版本显式更新*群集*资源。 按照 "通过密钥标识符详细信息更新*群集*资源" 步骤中的说明进行操作。 如果未更新*群集*资源中的新密钥标识符详细信息，专用 Log Analytics 群集存储将继续使用以前的密钥。
+
+你的所有数据在循环之前和之后都保持可访问的密钥旋转操作（包括数据引入），因为数据始终用帐户加密密钥（AEK）加密，而 AEK 现在是用新的密钥加密密钥（KEK）版本在 Key Vault 中进行加密。
 
 ## <a name="limitations-and-constraints"></a>限制和约束
 
@@ -575,8 +572,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 - **恢复*群集*资源和数据** 
   
-  在过去14天内删除的*群集*资源处于软删除状态，可以恢复。 这是当前由产品组手动执行的。 使用你的 Microsoft 渠道进行恢复请求。
-
+  在过去14天内删除的*群集*资源处于软删除状态，可以使用其数据进行恢复。 由于在删除时所有工作区都与*群集*资源解除关联，因此需要在恢复 CMK 加密后重新关联工作区。 当前，该产品组手动执行恢复操作。 使用你的 Microsoft 渠道进行恢复请求。
 
 ## <a name="troubleshooting"></a>疑难解答
 - Key Vault 可用性的行为
@@ -595,3 +591,10 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 - 如果在创建*群集*资源时出现冲突错误，可能是您在过去14天内删除了*群集*资源，而且它在软删除期间。 *群集*资源名称在软删除期间仍然保留，因此无法使用该名称创建新群集。 删除*群集*资源后，该名称将在软删除期间释放。
 
 - 如果在操作过程中更新*群集*资源，操作将失败。
+
+- 如果无法部署*群集*资源，请验证 Azure Key Vault、 *群集*   资源和关联 Log Analytics 工作区是否位于同一区域。 可以位于不同的订阅中。
+
+- 如果你 Key Vault 更新密钥版本，但未更新*群集*资源中的新密钥标识符详细信息，Log Analytics 群集将继续使用以前的密钥，你的数据将变得不可访问。 更新*群集*资源中的新密钥标识符详细信息，恢复数据引入和查询数据。
+
+- 有关与客户托管密钥相关的支持和帮助，请使用你的联系人加入 Microsoft。
+

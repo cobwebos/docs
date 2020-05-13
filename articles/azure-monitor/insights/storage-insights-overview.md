@@ -1,25 +1,25 @@
 ---
-title: 监视 Azure 存储服务的存储 Azure Monitor （预览版） |Microsoft Docs
+title: 监视 Azure 存储服务的存储 Azure MonitorMicrosoft Docs
 description: 本文介绍存储功能的 Azure Monitor，该功能可让存储管理员快速了解 Azure 存储帐户的性能和利用率问题。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/15/2019
-ms.openlocfilehash: 497ea5a27a56ed5f8192b694fac1c52c8bf57ca6
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.date: 05/11/2020
+ms.openlocfilehash: b0fd0343e7a072c0da0a5af0fa2d39eb2284cb06
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691107"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199957"
 ---
-# <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>监视存储服务的存储 Azure Monitor （预览版）
+# <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>监视存储服务的存储 Azure Monitor
 
-针对存储（预览版）的 Azure Monitor 提供 Azure 存储服务性能、容量和可用性的统一视图，从而全面监视 Azure 存储帐户。 你可以通过两种方式观察存储容量和性能，直接从存储帐户或查看 Azure Monitor 查看跨存储帐户组。 
+针对存储的 Azure Monitor 通过提供 Azure 存储服务性能、容量和可用性的统一视图提供对 Azure 存储帐户的全面监视。 你可以通过两种方式观察存储容量和性能，直接从存储帐户或查看 Azure Monitor 查看跨存储帐户组。 
 
-本文将帮助你了解存储（预览版） Azure Monitor 的体验，它提供有关大规模存储帐户的运行状况和性能的可操作知识，并能够专注于热点并诊断延迟、限制和可用性问题。
+本文将帮助你了解适用于存储的体验 Azure Monitor 提供针对大规模存储帐户的运行状况和性能的可操作知识，并能够专注于热点并诊断延迟、限制和可用性问题。
 
-## <a name="introduction-to-azure-monitor-for-storage-preview"></a>存储 Azure Monitor 简介（预览版）
+## <a name="introduction-to-azure-monitor-for-storage"></a>存储 Azure Monitor 简介
 
 在深入体验之前，您应该了解它是如何呈现和可视化信息的。 无论是直接从存储帐户选择存储功能还是从 Azure Monitor 中选择存储功能，Azure Monitor 为存储提供一致的体验。 
 
@@ -48,7 +48,7 @@ ms.locfileid: "82691107"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 从 "Azure 门户中的左窗格中选择"**监视器**"，然后在"**见解**"部分，选择"**存储帐户（预览）**"。
+2. 从 "Azure 门户中的左窗格中选择"**监视器**"，然后在"**见解**"部分，选择"**存储帐户**"。
 
     ![多个存储帐户视图](./media/storage-insights-overview/multiple-storage-accounts-view-01.png)
 
@@ -92,7 +92,7 @@ ms.locfileid: "82691107"
 
 1. 在 Azure 门户中，选择 "存储帐户"。
 
-2. 从列表中选择一个存储帐户。 在“监视”部分选择“见解(预览版)”。
+2. 从列表中选择一个存储帐户。 在 "监视" 部分，选择 "见解"。
 
     ![选择的存储帐户概述页](./media/storage-insights-overview/storage-account-direct-overview-01.png)
 
@@ -138,7 +138,7 @@ ms.locfileid: "82691107"
 
 ![导出工作簿网格结果示例](./media/storage-insights-overview/workbook-export-example.png)
 
-## <a name="customize-azure-monitor-for-storage-preview"></a>为存储自定义 Azure Monitor （预览）
+## <a name="customize-azure-monitor-for-storage"></a>为存储自定义 Azure Monitor
 
 本部分重点介绍编辑工作簿以自定义以支持数据分析需求的常见方案：
 
@@ -155,7 +155,7 @@ ms.locfileid: "82691107"
 
 你可以配置多订阅和存储帐户**概述**或**容量**工作簿，使其在每次运行时都作用于特定的一个或多个存储帐户，请执行以下步骤。
 
-1. 从门户中选择 "**监视器**"，然后从左侧窗格中选择 "**存储帐户（预览）** "。
+1. 从门户中选择 "**监视器**"，然后从左侧窗格中选择 "**存储帐户**"。
 
 2. 在**概述**工作簿上，从命令栏中选择 "**编辑**"。
 
@@ -176,7 +176,7 @@ ms.locfileid: "82691107"
 
 你可以对任何一个预生成的**故障**、**性能**、**可用性**和**容量**工作簿执行相同的更改。
 
-1. 从门户中选择 "**监视器**"，然后从左侧窗格中选择 "**存储帐户（预览）** "。
+1. 从门户中选择 "**监视器**"，然后从左侧窗格中选择 "**存储帐户**"。
 
 2. 选择 "**容量**" 要切换到容量工作簿，从命令栏中选择命令栏中的 "**编辑**"。
 
@@ -210,7 +210,7 @@ ms.locfileid: "82691107"
 
 1. 从门户中选择**存储帐户**，然后从列表中选择一个存储帐户。
 
-2. 从左侧窗格中选择 "**见解（预览版）** "。
+2. 从左侧窗格中选择 "**见解**"。
 
 3. 在工作簿中，选择 "**可用性**" 以切换到可用性工作簿，然后从命令栏中选择 "**编辑**"。 
 
@@ -228,11 +228,11 @@ ms.locfileid: "82691107"
 
 ## <a name="troubleshooting"></a>疑难解答
 
-本部分将帮助你诊断和解决在使用 Azure Monitor 进行存储（预览版）时可能遇到的一些常见问题。 使用下面的列表来查找与具体问题相关的信息。
+本部分将帮助你诊断和排查在使用 Azure Monitor 进行存储时可能会遇到的一些常见问题。 使用下面的列表来查找与具体问题相关的信息。
 
 ### <a name="resolving-performance-capacity-or-availability-issues"></a>解决性能、容量或可用性问题
 
-若要帮助解决你在存储（预览版） Azure Monitor 标识的任何存储相关问题，请参阅 Azure 存储[故障排除指南](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance)。  
+若要帮助解决你在存储 Azure Monitor 中标识的与存储相关的任何问题，请参阅 Azure 存储[故障排除指南](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance)。  
 
 ### <a name="why-can-i-only-see-200-storage-accounts"></a>为什么只能看到200存储帐户？
 
@@ -311,8 +311,8 @@ ms.locfileid: "82691107"
 
 若要更改已保存工作簿中某个步骤的名称，请在该步骤下选择 "编辑"，然后在 "设置" 的底部选择 "齿轮"。
 
-![选择工作簿步骤底部的 "编辑" 以打开 "设置"](./media/storage-insights-overview/fqa-edit.png)
-![中的 "设置" 选择底部的齿轮，以更改步骤名称](./media/storage-insights-overview/fqa-change-name.png)
+![选择工作簿步骤底部的 "编辑" 以打开 "设置" 中的 "设置" ](./media/storage-insights-overview/fqa-edit.png)
+ ![ 选择底部的齿轮，以更改步骤名称](./media/storage-insights-overview/fqa-change-name.png)
 
 ## <a name="next-steps"></a>后续步骤
 

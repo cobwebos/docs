@@ -12,12 +12,13 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92496fa572c5c1cae4588f82ac61c18de3024045
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 4b5836ffe721aa3e329651c3709ce64344363728
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76512821"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197875"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>计划单一登录部署
 
@@ -272,7 +273,7 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 
 建议设置定期节奏，以便查看 SaaS 应用安全性的不同方面，并执行所需的任何补救措施。
 
-### <a name="troubleshooting"></a>故障排除
+### <a name="troubleshooting"></a>疑难解答
 
 以下链接显示故障排除方案。 你可能想要为你的支持人员创建特定指南，其中包含这些方案和修复这些方案的步骤。
 

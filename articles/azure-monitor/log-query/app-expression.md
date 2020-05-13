@@ -5,38 +5,39 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/25/2019
-ms.openlocfilehash: 5502df1cd119c0f63c65945d73431a17282ebc0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/09/2019
+ms.openlocfilehash: 5d31c829487400f8eb239c0b837e53eecafeb900
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670247"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201106"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>Azure Monitor 查询中的 app() 表达式
 
 `app` 表达式用于 Azure Monitor 查询中，可从特定 Application Insights 应用中的同一资源组、另一个资源组或另一个订阅中检索数据。 此表达式适用于在 Azure Monitor 日志查询中包含应用程序数据以及在 Application Insights 查询中跨多个应用程序查询数据。
 
-
+> [!IMPORTANT]
+> 如果你使用[基于工作区的 Application Insights 资源](../app/create-workspace-resource.md)，则不使用应用（）表达式，因为日志数据存储在 Log Analytics 工作区中。 使用 log （）表达式编写包含多个工作区中的应用程序的查询。 对于同一工作区中的多个应用程序，不需要跨工作区查询。
 
 ## <a name="syntax"></a>语法
 
-`app(`标识符  `)`
+`app(`*标志*`)`
 
 
 ## <a name="arguments"></a>参数
 
-- 标识符：使用下表中的某种格式标识应用  。
+- 标识符：使用下表中的某种格式标识应用**。
 
 | 标识符 | 说明 | 示例
 |:---|:---|:---|
-| 资源名称 | 人工可读的应用名称（又称“组件名称”） | app("fabrikamapp") |
+| 资源名称 | 用户可读的应用名称（也称为 "组件名称"） | app("fabrikamapp") |
 | 限定的名称 | 窗体中应用的完整名称：“subscriptionName/resourceGroup/componentName” | app('AI-Prototype/Fabrikam/fabrikamapp') |
 | ID | 应用的 GUID | app("988ba129-363e-4415-8fe7-8cbab5447518") |
 | Azure 资源 ID | Azure 资源的标识符 |app("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
 
 
-## <a name="notes"></a>说明
+## <a name="notes"></a>注释
 
 * 必须具有该应用程序的读取权限。
 * 按应用程序的名称来标识应用程序，即假定该名称在所有可访问订阅中唯一。 如果拥有多个采用指定名称的应用程序，查询将因多义性而失败。 在这种情况下，必须使用一个其他的标识符。

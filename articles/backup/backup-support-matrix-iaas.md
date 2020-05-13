@@ -3,12 +3,12 @@ title: Azure VM 备份的支持矩阵
 description: 提供有关在使用 Azure 备份服务备份 Azure VM 时的支持设置和限制摘要。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 86141532e0db80f75c6e79277b36060ecb939a53
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: b7201972811c5b9cc8187b671c9e688236667860
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801427"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199865"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 备份的支持矩阵
 
@@ -140,7 +140,7 @@ DPM/MABS 磁盘上的恢复点数 | 文件服务器为 64 个，应用服务器�
 
 ## <a name="vm-compute-support"></a>VM 计算支持
 
-**Compute** | **支持**
+**计算** | **支持**
 --- | ---
 VM 大小 |至少有 2 个 CPU 核心和 1-GB RAM 的任意 Azure VM 大小。<br/><br/> [了解详细信息。](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
 备份[可用性集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/availability#availability-sets)中的 VM | 。<br/><br/> 无法使用快速创建 VM 的选项来还原可用性集中的 VM。 还原 VM 时，需要还原磁盘并使用它来部署 VM，或者还原磁盘并使用它来替换现有磁盘。
@@ -158,7 +158,7 @@ Gen2 Vm | 支持 <br> Azure 备份支持[Gen2 vm](https://azure.microsoft.com/up
 
 **组件** | **支持**
 --- | ---
-Azure VM 数据磁盘 | 备份包含16个或更少数据磁盘的虚拟机。<BR> 若要注册包含16个以上磁盘（最多32个磁盘）的有限预览版 Vm，请在AskAzureBackupTeam@microsoft.com
+Azure VM 数据磁盘 | 支持备份最多包含32个磁盘的 Azure Vm 在[这些区域](#backup-of-azure-virtual-machines-with-up-to-32-disks)提供公共预览版。<br><br> 支持备份具有非托管磁盘的 Azure Vm 或经典 Vm 仅限16个磁盘。
 数据磁盘大小 | 对于 VM 中的所有磁盘，单个磁盘大小最大为 32 TB，组合磁盘大小最大为 256 TB。
 存储类型 | 标准 HDD、标准 SSD、高级 SSD。
 托管磁盘 | 。
@@ -169,6 +169,13 @@ Azure VM 数据磁盘 | 备份包含16个或更少数据磁盘的虚拟机。<BR
 调整受保护 VM 上的磁盘大小 | 。
 共享存储| 不支持使用群集共享卷（CSV）或横向扩展文件服务器备份 Vm。 在备份期间，CSV 写入器可能会失败。 还原时，包含 CSV 卷的磁盘可能不会启动。
 [共享磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared-enable) | 不支持。
+
+### <a name="backup-of-azure-virtual-machines-with-up-to-32-disks"></a>备份最多包含32磁盘的 Azure 虚拟机
+
+Azure 备份现在支持备份最多包含32个附加磁盘的 Azure Vm。  此功能在美国中南部公开预览版。  如果你对其他地区的此功能感兴趣，请通过向我们写信以注册有限预览版 AskAzureBackupTeam@microsoft.com 。  
+
+>[!NOTE]
+>Azure 备份最多支持16个磁盘，适用于具有非托管磁盘的 Azure Vm 或经典 Vm。
 
 ## <a name="vm-network-support"></a>VM 网络支持
 
@@ -224,8 +231,8 @@ Azure 备份支持对备份流量进行压缩，详细情况汇总在下表中�
 
 **计算机** | **压缩到 MABS/DPM (TCP)** | **压缩到保管库 (HTTPS)**
 --- | --- | ---
-没有 DPM/MABS 的本地 Windows 计算机 | NA | ![是][green]
-Azure VM | NA | NA
+没有 DPM/MABS 的本地 Windows 计算机 | 不可用 | ![是][green]
+Azure VM | 不可用 | 不可用
 本地计算机/装有 DPM 的 Azure VM | ![是][green] | ![是][green]
 本地计算机/装有 MABS 的 Azure VM | ![是][green] | ![是][green]
 

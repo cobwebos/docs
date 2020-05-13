@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6c597ea559e7337c9c84914d168f1055e0631886
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: b99c1c9348f8442233eeee8fd4442736c78ee4e4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995541"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199040"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -29,6 +29,10 @@ ms.locfileid: "82995541"
 [多步骤 Web 测试](../../azure-monitor/app/availability-multistep.md)会额外收费。 多步骤 Web 测试是指执行一系列操作的 Web 测试。 单页“ping 测试”不单独计费  。 进行 ping 测试和多步测试时发送的遥测数据与应用发送的其他遥测数据计费方式相同。
 
 用于对[自定义指标维度启用警报](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation)的 Application Insights 选项也可能会产生额外的费用，因为这可能会导致创建其他预聚合度量值。 [详细了解](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics)Application Insights 中基于日志和预聚合的度量值，以及有关 Azure Monitor 自定义指标的[定价](https://azure.microsoft.com/pricing/details/monitor/)。
+
+### <a name="workspace-based-application-insights"></a>基于工作区的 Application Insights
+
+对于将数据发送到 Log Analytics 工作区的 Application Insights 资源（称为[基于工作区的 Application Insights 资源](create-workspace-resource.md)），数据引入和保留的计费由 Application Insights 数据所在的工作区完成。 这使客户能够利用除即用即付之外的 Log Analytics[定价模型](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#pricing-model)的所有选项。 Log Analytics 还提供了更多的数据保留选项，包括[按数据类型进行保留](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#retention-by-data-type)。 工作区中的 Application Insights 数据类型接收90天的保留期，无需支付费用。 使用 web 测试和启用自定义指标维度上的警报时，仍通过 Application Insights 来报告。 了解如何使用[使用情况和估计成本](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs)、 [Azure 成本管理 + 计费](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#viewing-log-analytics-usage-on-your-azure-bill)和[Log Analytics 查询](#data-volume-for-workspace-based-application-insights-resources)，在 Log Analytics 中跟踪数据引入和保留成本。 
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>估算应用程序的管理成本
 
@@ -75,7 +79,7 @@ Application Insights 费用将添加到 Azure 帐单。 可以在 Azure 门户�
 
 ### <a name="queries-to-understand-data-volume-details"></a>用于了解数据量详细信息的查询
 
-可通过两种方法调查 Application Insights 的数据量。 第一个使用`systemEvents`表中的聚合信息，第二个使用`_BilledSize`属性，该属性可在每个引入事件上使用。
+可通过两种方法调查 Application Insights 的数据量。 第一个使用表中的聚合信息 `systemEvents` ，第二个使用 `_BilledSize` 属性，该属性可在每个引入事件上使用。 `systemEvents`对于[基于工作区的应用程序](#data-volume-for-workspace-based-application-insights-resources)，不会有数据大小信息。
 
 #### <a name="using-aggregated-data-volume-information"></a>使用聚合数据卷信息
 
@@ -116,15 +120,56 @@ systemEvents
 
 #### <a name="using-data-size-per-event-information"></a>对每个事件信息使用数据大小
 
-若要了解有关数据卷源的详细信息，可以使用每个引入`_BilledSize`事件上出现的属性。
+若要了解有关数据卷源的详细信息，可以使用 `_BilledSize` 每个引入事件上出现的属性。
 
-例如，若要查看最近30天内哪些操作生成的数据量最多，可以对所有依赖`_BilledSize`项事件求和：
+例如，若要查看最近30天内哪些操作生成的数据量最多，可以 `_BilledSize` 对所有依赖项事件求和：
 
 ```kusto
 dependencies
 | where timestamp >= startofday(ago(30d))
 | summarize sum(_BilledSize) by operation_Name
 | render barchart  
+```
+
+#### <a name="data-volume-for-workspace-based-application-insights-resources"></a>基于工作区的 Application Insights 资源的数据量
+
+若要查看上周工作区中所有[基于工作区的 Application Insights 资源](create-workspace-resource.md)的数据量趋势，请参阅 Log Analytics 工作区并运行查询：
+
+```kusto
+union (AppAvailabilityResults),
+      (AppBrowserTimings),
+      (AppDependencies),
+      (AppExceptions),
+      (AppEvents),
+      (AppMetrics),
+      (AppPageViews),
+      (AppPerformanceCounters),
+      (AppRequests),
+      (AppSystemEvents),
+      (AppTraces)
+| where TimeGenerated >= startofday(ago(7d) and TimeGenerated < startofday(now())
+| summarize sum(_BilledSize) by _ResourceId, bin(TimeGenerated, 1d)
+| render areachart
+```
+
+若要在 "Log Analytics" 工作区中按类型为特定于工作区的 Application Insights 资源查询数据量趋势，请使用：
+
+```kusto
+union (AppAvailabilityResults),
+      (AppBrowserTimings),
+      (AppDependencies),
+      (AppExceptions),
+      (AppEvents),
+      (AppMetrics),
+      (AppPageViews),
+      (AppPerformanceCounters),
+      (AppRequests),
+      (AppSystemEvents),
+      (AppTraces)
+| where TimeGenerated >= startofday(ago(7d) and TimeGenerated < startofday(now())
+| where _ResourceId contains "<myAppInsightsResourceName>"
+| summarize sum(_BilledSize) by Type, bin(TimeGenerated, 1d)
+| render areachart
 ```
 
 ## <a name="viewing-application-insights-usage-on-your-azure-bill"></a>查看 Azure 帐单上的 Application Insights 使用情况
@@ -220,7 +265,7 @@ Application Insights 资源的默认保留期为 90 天。 可以为每个 Appli
 
 如果保留时间降低，则在删除最旧的数据之前，会有几天的宽限期。
 
-还可以使用[PowerShell](powershell.md#set-the-data-retention)通过`retentionInDays`参数以编程方式设置保留。 如果将数据保留设置为30天，则可以使用`immediatePurgeDataOn30Days`参数触发对旧数据的立即清除，这对于符合性相关的方案可能很有用。 此清除功能仅通过 Azure 资源管理器公开，使用时应十分小心。 可以使用 Azure 资源管理器配置数据卷上限的每日重置时间来设置`dailyQuotaResetTime`参数。
+还可以使用 PowerShell 通过参数以[编程方式设置](powershell.md#set-the-data-retention)保留 `retentionInDays` 。 如果将数据保留设置为30天，则可以使用参数触发对旧数据的立即清除 `immediatePurgeDataOn30Days` ，这对于符合性相关的方案可能很有用。 此清除功能仅通过 Azure 资源管理器公开，使用时应十分小心。 可以使用 Azure 资源管理器配置数据卷上限的每日重置时间来设置 `dailyQuotaResetTime` 参数。
 
 ## <a name="data-transfer-charges-using-application-insights"></a>使用 Application Insights 时的数据传输费
 

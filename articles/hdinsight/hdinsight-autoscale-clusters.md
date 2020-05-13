@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: f41a15fb52698eaa17d6f76b991cbd31a56ba14f
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 8354be28203f1d466df6a22159fef87c9ae6f803
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731967"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199736"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>自动缩放 Azure HDInsight 群集
 
@@ -22,6 +22,11 @@ Azure HDInsight 的 "免费自动缩放" 功能可根据先前设置的条件自
 ## <a name="how-it-works"></a>工作原理
 
 自动缩放功能使用两种类型的条件来触发缩放事件：不同群集性能指标的阈值（称为*基于负载的缩放*）和基于时间的触发器（称为*基于计划的缩放*）。 基于负载的缩放会在你设置的范围内更改群集中的节点数，以确保 CPU 使用最佳并且最大程度地降低运行成本。 基于计划的缩放根据与特定日期和时间关联的操作更改群集中的节点数。
+
+以下视频概述了自动缩放解决的难题，以及它如何帮助你使用 HDInsight 控制成本。
+
+
+> [!VIDEO https://www.youtube.com/embed/UlZcDGGFlZ0?WT.mc_id=dataexposed-c9-niner]
 
 ### <a name="choosing-load-based-or-schedule-based-scaling"></a>选择基于负载或基于计划的缩放
 

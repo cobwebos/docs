@@ -1,18 +1,20 @@
 ---
 title: 详细了解 Azure 中虚拟机规模集的业务流程模式
 description: 详细了解 Azure 中虚拟机规模集的业务流程模式。
-author: shandilvarun
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
+author: mimckitt
+ms.author: mimckitt
 ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
 ms.date: 10/23/2019
-ms.author: vashan
-ms.openlocfilehash: 4a0be30f181921461ad0bacea6f18ce439d22353
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: cbe080b4c2b6e73ae15fd186589bd43535bfc13d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76279063"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198392"
 ---
 # <a name="orchestration-mode-preview"></a>业务流程模式（预览版）
 
@@ -39,7 +41,7 @@ ms.locfileid: "76279063"
 
 |                             | "orchestrationMode"： "VM" （VirtualMachine） | "orchestrationMode": "ScaleSetVM" (VirtualMachineScaleSetVM) |
 |-----------------------------|--------------------------------------------|--------------------------------------------------------------|
-| VM 配置模型      | 无                                       | 必选 |
+| VM 配置模型      | 无                                       | 必须 |
 | 将新 VM 添加到规模集  | 创建 VM 时，会显式将 VM 添加到规模集。 | VM 是隐式创建的，将会根据 VM 配置模型、实例计数和自动缩放规则添加到规模集 | |
 | 删除 VM                   | 必须单独删除 VM；如果规模集中包含任何 VM，则不会删除规模集。 | 可以单独删除 VM，删除规模集会删除所有 VM 实例。  |
 | 附加/分离 VM           | 不支持                              | 不支持 |

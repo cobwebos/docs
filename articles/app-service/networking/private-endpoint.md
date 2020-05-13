@@ -4,17 +4,17 @@ description: 使用 Azure 专用终结点将专用连接到 Web 应用
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 05/12/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4d139cfa50afa94621066995314737fac70bbafe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a95c021153a458a4e3f804e64724b73ea1f1937
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756276"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198821"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>使用 Azure Web 应用的专用终结点（预览）
 
@@ -65,11 +65,19 @@ ms.locfileid: "80756276"
 由于此功能处于预览阶段，我们不会在预览过程中更改 DNS 条目。 你需要自行管理专用 DNS 服务器或 Azure DNS 专用区域中的 DNS 条目。
 如果需要使用自定义 DNS 名称，则必须在 Web 应用中添加自定义名称。 在预览期间，必须使用公共 DNS 解析方式验证自定义名称是否与任何自定义名称相同。 有关详细信息，请参阅[自定义 DNS 验证][dnsvalidation]。
 
+如果需要使用 Kudu 控制台或 Kudu REST API （例如，使用 Azure DevOps 自托管代理进行部署），则需要在 Azure DNS 专用区域或自定义 DNS 服务器中创建两个记录。 
+- PrivateEndpointIP yourwebappname.azurewebsites.net 
+- PrivateEndpointIP yourwebappname.scm.azurewebsites.net 
+
 ## <a name="pricing"></a>定价
 
 有关定价详细信息，请参阅 [Azure 专用链接定价][pricing]。
 
 ## <a name="limitations"></a>限制
+
+在使用专用终结点的弹性高级计划中使用 Azure 函数时，若要在 Azure Web 门户中运行或执行该函数，则必须具有直接网络访问权限，否则将收到 HTTP 403 错误。 换句话说，浏览器必须能够访问专用终结点，以便从 Azure Web 门户执行该功能。 
+
+在预览期间，仅在专用终结点后公开生产槽，其他槽仅可通过公共终结点访问。
 
 我们会定期改善私有链接功能和私有终结点，查看[本文][pllimitations]，了解有关限制的最新信息。
 
