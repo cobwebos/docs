@@ -227,8 +227,6 @@
           href: how-to-configure-cloud-metrics-logs.md
         - name: 为自托管网关配置本地指标和日志
           href: how-to-configure-local-metrics-logs.md
-        - name: 使用 Azure Application Insights 记录请求
-          href: api-management-howto-app-insights.md
         - name: 使用备份/还原设置灾难恢复
           href: api-management-howto-disaster-recovery-backup-restore.md
         - name: 管理用户帐户

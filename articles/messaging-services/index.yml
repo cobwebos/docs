@@ -11,12 +11,12 @@ metadata:
   author: spelluru
   ms.author: spelluru
   ms.date: 03/15/2020
-  ms.openlocfilehash: 65a4312d01d6f3652ebc37ee0276c912178d4ccd
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: f70bdf831d5b65aab9d6d01f88122d1a0fdd9957
+  ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "79472248"
+  ms.lasthandoff: 05/12/2020
+  ms.locfileid: "83200404"
 highlightedContent:
   items:
   - title: 在 Azure 消息传送服务之间进行选择
@@ -33,7 +33,7 @@ highlightedContent:
     url: ../service-bus-messaging/service-bus-messaging-overview.md
   - title: 什么是中继？
     itemType: overview
-    url: ../service-bus-relay/relay-what-is-it.md
+    url: ../azure-relay/relay-what-is-it.md
 conceptualContent:
   items:
   - title: 路由事件
@@ -160,12 +160,12 @@ conceptualContent:
       text: 查看详细信息
   - title: 混合连接
     links:
-    - url: ../service-bus-relay/relay-hybrid-connections-dotnet-get-started.md
+    - url: ../azure-relay/relay-hybrid-connections-dotnet-get-started.md
       itemType: tutorial
       text: 开始在 .NET 中使用中继混合连接 WebSocket
-    - url: ../service-bus-relay/relay-hybrid-connections-http-requests-dotnet-get-started.md
+    - url: ../azure-relay/relay-hybrid-connections-http-requests-dotnet-get-started.md
       itemType: tutorial
       text: 开始在 .NET 中使用中继混合连接 HTTP 请求
     footerLink:
-      url: ../service-bus-relay/index.yml
+      url: ../azure-relay/index.yml
       text: 查看详细信息

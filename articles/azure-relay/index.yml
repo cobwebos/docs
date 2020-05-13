@@ -1,0 +1,65 @@
+### YamlMime:Landing
+title: Azure 中继文档
+summary: 了解如何使用 Azure 中继服务来安全地向公有云公开企业网络中运行的服务。
+metadata:
+  title: Azure 中继文档
+  description: 了解如何使用 Azure 中继服务来安全地向公有云公开企业网络中运行的服务。
+  services: service-bus-relay
+  ms.service: service-bus-relay
+  ms.subservice: 
+  ms.topic: landing-page
+  ms.collection: collection
+  author: spelluru
+  ms.author: spelluru
+  ms.date: 09/06/2019
+  ms.openlocfilehash: f4d186169998aad628dc8efa4781dc55f457edd4
+  ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 05/12/2020
+  ms.locfileid: "83202908"
+landingContent:
+- title: 关于 Azure 中继
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 中继？
+      url: relay-what-is-it.md
+- title: 混合连接
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 使用 Websockets 发送和接收消息 - .NET
+      url: relay-hybrid-connections-dotnet-get-started.md
+    - text: 使用 HTTP 发送和接收消息 - .NET
+      url: relay-hybrid-connections-http-requests-dotnet-get-started.md
+    - text: 使用 Websockets 发送和接收消息 - Node.js
+      url: relay-hybrid-connections-node-get-started.md
+    - text: 使用 HTTP 发送和接收消息 - Node.js
+      url: relay-hybrid-connections-http-requests-node-get-started.md
+  - linkListType: download
+    links:
+    - text: GitHub 上的示例
+      url: https://github.com/Azure/azure-relay/tree/master/samples/hybrid-connections
+- title: WCF 中继
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 向云中的 Web 应用程序公开本地 WCF 服务
+      url: service-bus-dotnet-hybrid-app-using-service-bus-relay.md
+    - text: 向网络外部的 WCF 服务公开本地 WCF 服务
+      url: service-bus-relay-tutorial.md
+    - text: 向网络外部的客户端公开本地 WCF REST 服务
+      url: service-bus-relay-rest-tutorial.md
+  - linkListType: download
+    links:
+    - text: GitHub 上的示例
+      url: https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay
+- title: API 参考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: .NET
+      url: /dotnet/api/microsoft.azure.relay?view=azure-dotnet
+    - text: REST
+      url: /rest/api/relay/

@@ -212,6 +212,8 @@
     - name: 疑难解答
       items:
         - name: 故障排除指南
+          href: troubleshooting-guide.md
+        - name: .NET 异常
           href: event-hubs-messaging-exceptions.md
         - name: 资源管理器异常
           href: resource-manager-exceptions.md

@@ -106,6 +106,8 @@
           items:
             - name: Azure 应用配置
               href: event-schema-app-configuration.md
+            - name: Azure 应用服务
+              href: event-schema-app-service.md
             - name: Azure Blob 存储
               href: event-schema-blob-storage.md
             - name: Azure 容器注册表

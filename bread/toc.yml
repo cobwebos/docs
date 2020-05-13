@@ -171,7 +171,7 @@
     - name: Azure 澳大利亚
       tocHref: /azure/azure-australia/
       topicHref: /azure/azure-australia/
-    - name: 'Azure Government '
+    - name: Azure Government
       tocHref: /azure/azure-government/
       topicHref: /azure/azure-government/
     - name: Azure 德国
@@ -605,7 +605,7 @@
         - name: 服务总线消息传送
           tocHref: /azure/service-bus-messaging/
           topicHref: /azure/service-bus-messaging/
-        - name: Service Bus 中继
+        - name: Azure 中继
           tocHref: /azure/service-bus-relay/
           topicHref: /azure/service-bus-relay/
     - name: 迁移
