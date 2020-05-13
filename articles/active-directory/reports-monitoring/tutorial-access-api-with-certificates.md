@@ -16,16 +16,17 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2808c8431a6b98b162920fb58a6e2ac0498d2055
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: a6699d7a117eee95ba635c8c94ed9b2955f21a7b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82081704"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196880"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>教程：使用证书通过 Azure Active Directory 报告 API 获取数据
 
-[Azure Active Directory (Azure AD) 报告 API](concept-reporting-api.md) 通过一组基于 REST 的 API，可让你以编程方式访问数据。 可从各种编程语言和工具中调用这些 API。 如果想要访问 Azure AD 报告 API 而无需用户干预，则必须配置对证书的访问权限。
+[Azure Active Directory （Azure AD）报表 api](concept-reporting-api.md)通过一组基于 REST 的 api，提供对数据的编程访问。 可从各种编程语言和工具中调用这些 API。 如果想要访问 Azure AD 报告 API 而无需用户干预，则必须配置对证书的访问权限。
 
 本教程介绍如何使用测试证书访问 MS 图形 API 以进行报告。 建议不要在生产环境中使用测试证书。 
 
@@ -44,7 +45,7 @@ ms.locfileid: "82081704"
     - 使用 ADAL 的用户、应用程序密钥和证书中的访问令牌
     - 处理分页结果的图形 API
 
-6. 如果是第一次使用模块，请运行**MSCloudIdUtilsModule**，否则请使用**import-module** PowerShell 命令将其导入。 会话应类似于此屏幕： ![Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
+6. 如果是第一次使用模块，请运行**MSCloudIdUtilsModule**，否则请使用**import-module** PowerShell 命令将其导入。 会话应类似于此屏幕： ![ Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
   
 7. 使用**New-selfsignedcertificate** PowerShell commandlet 创建测试证书。
 

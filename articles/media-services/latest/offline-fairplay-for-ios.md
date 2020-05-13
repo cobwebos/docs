@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 41893c2460ecb2d17e3893f867bc460105d57bbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e65bf39db00f1277635d600da87346f19a881a6
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80887208"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197166"
 ---
 # <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>适用于 iOS 的脱机 FairPlay 流式处理与媒体服务 v3
 
@@ -46,7 +46,7 @@ ms.locfileid: "80887208"
 > [!NOTE]
 > 下载内容时，脱机 DRM 仅针对发出单个许可证请求进行计费。 任何错误都不收费。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在 iOS 10+ 设备上为 FairPlay 实现 脱机 DRM 之前：
 
@@ -54,12 +54,12 @@ ms.locfileid: "80887208"
 
     - [Apple FairPlay 许可要求和配置](fairplay-license-overview.md)
     - [使用 DRM 动态加密和许可证传送服务](protect-with-drm.md)
-    - 包含配置联机 FPS 流式处理的 .NET 示例： [ConfigureFairPlayPolicyOptions](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L505)
+    - 包含联机 FPS 流式处理配置的 .NET 示例：[ConfigureFairPlayPolicyOptions](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L505)
 * 从 Apple Developer Network 获取 FPS SDK。 FPS SDK 包含两个组件：
 
     - FPS Server SDK，该组件包含密钥安全模块 (KSM)、客户端示例、规格和一组测试矢量。
     - FPS 开发包，该组件包含 D 函数、规格和 FPS 证书生成说明、客户特定的私钥以及应用程序密钥。 Apple 仅对许可的内容提供商发布 FPS 开发包。
-* 克隆 https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git。 
+* 克隆 https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git 。 
 
     需要修改[使用 .NET 通过 DRM 加密](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/EncryptWithDRM)中的代码以添加 FairPlay 配置。  
 
@@ -87,7 +87,7 @@ options.Add(
 
 ## <a name="enable-offline-mode"></a>启用脱机模式
 
-若要启用脱机模式，请在 [CreateStreamingLocatorAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L563) 中创建 StreamingLocator 时创建自定义 StreamingPolicy 并使用其名称。
+若要启用脱机模式，请在 [CreateStreamingLocatorAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L561) 中创建 StreamingLocator 时创建自定义 StreamingPolicy 并使用其名称。
  
 ```csharp
 CommonEncryptionCbcs objStreamingPolicyInput= new CommonEncryptionCbcs()
@@ -96,23 +96,24 @@ CommonEncryptionCbcs objStreamingPolicyInput= new CommonEncryptionCbcs()
     {
         FairPlay = new StreamingPolicyFairPlayConfiguration()
         {
-            AllowPersistentLicense = true  //this enables offline mode
+            AllowPersistentLicense = true // This enables offline mode
         }
     },
     EnabledProtocols = new EnabledProtocols()
     {
         Hls = true,
-        Dash = true //Even though DASH under CBCS is not supported for either CSF or CMAF, HLS-CMAF-CBCS uses DASH-CBCS fragments in its HLS playlist
+        Dash = true // Even though DASH under CBCS is not supported for either CSF or CMAF, HLS-CMAF-CBCS uses DASH-CBCS fragments in its HLS playlist
     },
 
     ContentKeys = new StreamingPolicyContentKeys()
     {
-        //Default key must be specified if keyToTrackMappings is present
+        // Default key must be specified if keyToTrackMappings is present
         DefaultKey = new DefaultKey()
         {
             Label = "CBCS_DefaultKeyLabel"
         }
     }
+}
 
 ```
 
@@ -123,7 +124,7 @@ CommonEncryptionCbcs objStreamingPolicyInput= new CommonEncryptionCbcs()
 FPS 脱机模式支持仅适用于 iOS 10 及更高版本。 FPS Server SDK（3.0 或更高版本）包含 FPS 脱机模式文档和示例。 具体而言，FPS Server SDK（3.0 或更高版本）包含以下与脱机模式相关的两项：
 
 * 文档：“使用 FairPlay Streaming 和 HTTP Live Streaming 的脱机播放”。 2016 年 9 月 14 日由 Apple 提供。 在 FPS Server SDK 版本 4.0 中，此文档已合并到主要 FPS 文档。
-* 示例代码： \FairPlay 流式处理服务器 SDK 版本 3.1 \ Development\Client\ HLSCatalog_With_FPS \HLSCatalog\. 中的 FPS 脱机模式的 HLSCatalog 示例（Apple 的 FPS Server SDK 的一部分） 在 HLSCatalog 示例应用中，以下代码文件用于实现脱机模式功能：
+* 示例代码：\FairPlay Streaming Server SDK version 3.1\Development\Client\HLSCatalog_With_FPS\HLSCatalog\ 中 FPS 脱机模式的 HLSCatalog 示例（Apple 的 FPS Server SDK 的一部分）。 在 HLSCatalog 示例应用中，以下代码文件用于实现脱机模式功能：
 
     - AssetPersistenceManager.swift 代码文件：AssetPersistenceManager 是此示例中的主类，演示如何：
 
@@ -201,7 +202,7 @@ func requestApplicationCertificate() throws -> Data {
 可在[此演示站点](https://aka.ms/poc#22)上找到这些示例，相应的应用程序证书托管在 Azure Web 应用中。
 使用 FPS Server SDK 的版本 3 或版本 4 示例时，如果在脱机模式期间主播放列表包含备用的音频，则只播放音频。 因此，需要删除备用音频。 换言之，前面所列的第二和第三个示例在联机和脱机模式下都可正常运行。 所列的第一个示例在脱机模式期间只播放音频，联机流式处理可正常运行。
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>常见问题
 
 请参阅[常见问题解答提供故障排除帮助](frequently-asked-questions.md#why-does-only-audio-play-but-not-video-during-offline-mode)。
 

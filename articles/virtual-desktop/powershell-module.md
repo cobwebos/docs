@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 54501e7e00ba8a28dd7cb421232b9a9587604338
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 6741c034351099f544c20749eb7c7a39e7932181
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82653139"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195131"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>设置适用于 Windows 虚拟桌面的 PowerShell 模块
 
 >[!IMPORTANT]
->此内容适用于带有 Azure 资源管理器 Windows 虚拟桌面对象的弹簧2020更新。
+>本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 2020 春季更新版。
 >
-> Windows 虚拟桌面春季2020更新目前为公共预览版。 此预览版本在提供时没有服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 
+> Windows 虚拟桌面 2020 春季更新版目前为公共预览版。 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Windows 虚拟桌面 PowerShell 模块已集成到 Azure PowerShell 模块中。 本文介绍如何设置 PowerShell 模块，以便可以运行 Windows 虚拟桌面的 cmdlet。
@@ -46,7 +46,7 @@ Install-Module -Name Az.DesktopVirtualization
 Connect-AzAccount
 ```
 
-登录到 Azure 帐户需要在运行 Connect cmdlet 时生成的代码。 若要登录， <https://microsoft.com/devicelogin>请使用 Azure 管理员凭据登录，然后输入代码。
+登录到 Azure 帐户需要在运行 Connect cmdlet 时生成的代码。 若要登录，请 <https://microsoft.com/devicelogin> 使用 Azure 管理员凭据登录，然后输入代码。
 
 ```powershell
 Account SubscriptionName TenantId Environment
@@ -63,7 +63,7 @@ Youradminupn subscriptionname AzureADTenantID AzureCloud
 如果要在登录后更改默认订阅，请运行以下 cmdlet：
 
 ```powershell
-Select-AzureSubscription -SubscriptionName <preferredsubscriptionname>
+Select-AzSubscription -SubscriptionName <preferredsubscriptionname>
 ```
 
 选择要使用的新订阅时，无需在以后运行的 cmdlet 中指定该订阅的 ID。 例如，以下 cmdlet 检索特定的会话主机，而无需订阅 ID：

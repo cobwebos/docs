@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: reference
-ms.openlocfilehash: 9bb8818d2bb91c14eafc272774e0b633c51e58e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe684d15e2ce9b8d302db4eb6bd31dd1416abf21
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617874"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196549"
 ---
 # <a name="network-requirements"></a>网络要求
 
@@ -20,7 +20,7 @@ ms.locfileid: "81617874"
 
 确切的网络要求取决于您的特定用例，如对远程场景图进行修改的数量和频率，以及呈现的视图的复杂性，但有许多准则可以确保您的体验尽可能好：
 
-* Internet 连接需要为 Azure 远程呈现的单个用户会话至少支持**50 mbps 下游**和**10 mbps 上游**，前提是网络上没有竞争的流量。 建议采用更高的速度，以便获得更好的体验。 对于同一网络中的更多用户，这些要求会相应增加。
+* 如果网络上没有竞争的流量，internet 连接需要为 Azure 远程呈现的单个用户会话至少支持**40 mbps 下游**和**5 Mbps 上游**。 建议采用更高的速度，以便获得更好的体验。 对于同一网络中的更多用户，这些要求会相应增加。
 * 尽管这两个应用程序都可以正常工作，但使用**5 Ghz wi-fi 波段**通常会产生比 2.4 ghz wi-fi 波段更好的结果。
 * 如果附近有其他 Wi-fi 网络，请避免使用这些其他网络使用的 Wi-fi 通道。 可以使用网络扫描工具（如[WifiInfoView](https://www.nirsoft.net/utils/wifi_information_view.html) ）来验证 wi-fi 网络使用的通道是否可以使用竞争性流量。
 * 严格**避免使用 wi-fi 中继器**或 powerline 转发。

@@ -4,15 +4,15 @@ description: 了解如何在应用服务环境中创建、发布和缩放应用�
 author: ccompy
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
-ms.date: 3/26/2020
+ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 4565580feeddc2df8f6ed3011302016bb39977b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fd1ffc8636e11ca20bc32b4b6f600e03d923d8b5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80586137"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125802"
 ---
 # <a name="use-an-app-service-environment"></a>使用应用服务环境
 
@@ -104,14 +104,14 @@ ms.locfileid: "80586137"
 
 ## <a name="app-access"></a>应用访问
 
-在外部 ASE 中，用于创建应用的域后缀是 *。&lt;asename&gt;. p.azurewebsites.net*。 如果 ASE 命名为_外部 ase_ ，而你在该 ASE 中托管名为_contoso_的应用，则可通过以下 url 访问该应用：
+在外部 ASE 中，用于创建应用的域后缀是 *。 &lt;asename &gt; . p.azurewebsites.net*。 如果 ASE 命名为_外部 ase_ ，而你在该 ASE 中托管名为_contoso_的应用，则可通过以下 url 访问该应用：
 
 - contoso.external-ase.p.azurewebsites.net
 - contoso.scm.external-ase.p.azurewebsites.net
 
 有关如何创建外部 ASE 的信息，请参阅[创建应用服务环境][MakeExternalASE]。
 
-在 ILB ASE 中，用于创建应用的域后缀是 *。&lt;asename&gt;. appserviceenvironment.net*。 如果 ASE 命名为_ilb_ ，并且在该 ase 中托管名为_contoso_的应用，则可在以下 url 中找到它：
+在 ILB ASE 中，用于创建应用的域后缀是 *。 &lt;asename &gt; . appserviceenvironment.net*。 如果 ASE 命名为_ilb_ ，并且在该 ase 中托管名为_contoso_的应用，则可在以下 url 中找到它：
 
 - contoso.ilb-ase.appserviceenvironment.net
 - contoso.scm.ilb-ase.appserviceenvironment.net
@@ -122,19 +122,26 @@ SCM URL 用于访问 Kudu 控制台或使用 Web 部署来发布应用程序。 
 
 ### <a name="dns-configuration"></a>DNS 配置 
 
-使用外部 ASE 时，在 ASE 中创建的应用将注册到 Azure DNS。 使用 ILB ASE 时，必须管理自己的 DNS。 
+使用外部 ASE 时，在 ASE 中创建的应用将注册到 Azure DNS。 外部 ASE 中无附加步骤，应用可供公开使用。 使用 ILB ASE 时，必须管理自己的 DNS。 可以在自己的 DNS 服务器或 Azure DNS 专用区域中执行此操作。
 
-若要为 ILB ASE 配置 DNS：
+若要在自己的 DNS 服务器中通过 ILB ASE 配置 DNS：
 
-    create a zone for <ASE name>.appserviceenvironment.net
-    create an A record in that zone that points * to the ILB IP address
-    create an A record in that zone that points @ to the ILB IP address
-    create a zone in <ASE name>.appserviceenvironment.net named scm
-    create an A record in the scm zone that points * to the ILB IP address
+1. 为 appserviceenvironment.net 创建区域 <ASE name>
+1. 在该区域中创建一条指向* ILB IP 地址的 A 记录
+1. 在该区域中创建一条指向 @ ILB IP 地址的 A 记录
+1. 在 <ASE name> 名为 scm 的 appserviceenvironment.net 中创建区域
+1. 在 scm 区域中创建一条指向 * ILB IP 地址的 A 记录
 
-ASE 默认域后缀的 DNS 设置不会将你的应用限制为只能由这些名称访问。 可以在 ILB ASE 中设置自定义域名，无需对应用进行任何验证。 如果随后想要创建名为*contoso.net*的区域，则可以将其指向 ILB IP 地址。 自定义域名适用于应用请求，但不适用于 scm 站点。 Scm 站点仅在* &lt;appname&gt;中可用。&lt;asename&gt;. appserviceenvironment.net*。 
+若要在 Azure DNS 专用区域中配置 DNS：
 
-名为的*区域&lt; 。asename&gt;. appserviceenvironment.net*是全局唯一的。 在5月 2019 5 日之前，客户可以指定 ILB ASE 的域后缀。 如果要将 *. contoso.com*用于域后缀，则可以这样做，这将包括 scm 站点。 该模型有一些挑战，其中包括：管理默认的 SSL 证书，缺少对 scm 站点的单一登录，并要求使用通配符证书。 ILB ASE 默认证书升级过程也会中断，并导致应用程序重新启动。 为了解决这些问题，ILB ASE 行为已更改为使用基于 ASE 名称和 Microsoft 拥有的后缀的域后缀。 对 ILB ASE 行为的更改仅影响在5月2019日后发出的 ILB Ase。 预先存在的 ILB Ase 仍必须管理 ASE 及其 DNS 配置的默认证书。
+1. 创建名为 appserviceenvironment.net 的 Azure DNS 专用区域 <ASE name> 。
+1. 在该区域中创建一条指向* ILB IP 地址的 A 记录
+1. 在该区域中创建一条指向 @ ILB IP 地址的 A 记录
+1. 在该区域中创建 A 记录，将 *. scm 指向 ILB IP 地址
+
+ASE 默认域后缀的 DNS 设置不会将你的应用限制为只能由这些名称访问。 可以在 ILB ASE 中设置自定义域名，无需对应用进行任何验证。 如果随后想要创建名为*contoso.net*的区域，则可以将其指向 ILB IP 地址。 自定义域名适用于应用请求，但不适用于 scm 站点。 Scm 站点仅在 appname 中可用* &lt; &gt; 。 &lt;asename &gt; . appserviceenvironment.net*。 
+
+名为的区域 *。 &lt;asename &gt; . appserviceenvironment.net*是全局唯一的。 在5月 2019 5 日之前，客户可以指定 ILB ASE 的域后缀。 如果要将 *. contoso.com*用于域后缀，则可以这样做，这将包括 scm 站点。 该模型有一些挑战，其中包括：管理默认的 SSL 证书，缺少对 scm 站点的单一登录，并要求使用通配符证书。 ILB ASE 默认证书升级过程也会中断，并导致应用程序重新启动。 为了解决这些问题，ILB ASE 行为已更改为使用基于 ASE 名称和 Microsoft 拥有的后缀的域后缀。 对 ILB ASE 行为的更改仅影响在5月2019日后发出的 ILB Ase。 预先存在的 ILB Ase 仍必须管理 ASE 及其 DNS 配置的默认证书。
 
 ## <a name="publishing"></a>发布
 
@@ -152,28 +159,28 @@ ASE 默认域后缀的 DNS 设置不会将你的应用限制为只能由这些�
 
 如果没有其他更改，则基于 internet 的 CI 系统（例如 GitHub 和 Azure DevOps）不能使用 ILB ASE，因为发布终结点不可访问 internet。 可以通过在包含 ILB ASE 的虚拟网络中安装自承载发布代理，从 Azure DevOps 启用到 ILB ASE 的发布。 或者，可以利用某个使用提取模型的 CI 系统，例如 Dropbox。
 
-ILB ASE 中应用的发布终结点使用创建该 ILB ASE 所用的域。 可以在应用的发布配置文件和应用的门户窗格中查看（在 "**概述** > **" 和 "** **属性**" 中）。
+ILB ASE 中应用的发布终结点使用创建该 ILB ASE 所用的域。 可以在应用的发布配置文件和应用的门户窗格中查看（在 "概述" **Overview**  >  **Essentials**和 "**属性**" 中）。
 
 ## <a name="storage"></a>存储
 
-ASE 为 ASE 中的所有应用提供了 1 TB 的存储空间。 默认情况下，隔离定价 SKU 中的应用服务计划的限制为 250 GB。 如果有五个或更多应用服务计划，请注意不要超出 ASE 的 1 TB 限制。 如果在一个应用服务计划中需要超过 250 GB 的限制，请联系支持人员，将应用服务计划限制调整到最大 1 TB。 当调整计划限制时，ASE 中所有应用服务计划的限制仍为 1 TB。
+ASE 为 ASE 中的所有应用提供了 1 TB 的存储空间。 隔离定价 SKU 中的应用服务计划的限制为 250 GB。 在 ASE 中，每个应用服务计划增加了 250 GB 的存储空间，最大限制为 1 TB。 你的应用服务计划比只是四个多，但没有超过 1 TB 限制增加的存储空间。
 
-## <a name="logging"></a>日志记录
+## <a name="logging"></a>Logging
 
 可以将 ASE 与 Azure Monitor 集成，将有关 ASE 的日志发送到 Azure 存储、Azure 事件中心或 Log Analytics。 今天记录以下项：
 
 | 场景 | 消息 |
 |---------|----------|
-| ASE 不正常 | 由于虚拟网络配置无效，指定的 ASE 不正常。 如果不正常状态继续，则将挂起 ASE。 请确保遵循此处定义的准则： https://docs.microsoft.com/azure/app-service/environment/network-info。 |
-| ASE 子网几乎用尽了空间 | 指定的 ASE 位于几乎用尽空间的子网中。 存在剩余{0}的地址。 一旦这些地址用尽，ASE 将无法缩放。  |
-| ASE 接近实例限制 | 指定的 ASE 接近 ASE 的总实例限制。 它当前包含{0}最多201个实例的应用服务计划实例。 |
-| ASE 无法访问依赖项 | 指定的 ASE 无法连接{0}。  请确保遵循此处定义的准则： https://docs.microsoft.com/azure/app-service/environment/network-info。 |
+| ASE 不正常 | 由于虚拟网络配置无效，指定的 ASE 不正常。 如果不正常状态继续，则将挂起 ASE。 请确保遵循此处定义的准则： https://docs.microsoft.com/azure/app-service/environment/network-info 。 |
+| ASE 子网几乎用尽了空间 | 指定的 ASE 位于几乎用尽空间的子网中。 存在 {0} 剩余的地址。 一旦这些地址用尽，ASE 将无法缩放。  |
+| ASE 接近实例限制 | 指定的 ASE 接近 ASE 的总实例限制。 它当前包含 {0} 最多201个实例的应用服务计划实例。 |
+| ASE 无法访问依赖项 | 指定的 ASE 无法连接 {0} 。  请确保遵循此处定义的准则： https://docs.microsoft.com/azure/app-service/environment/network-info 。 |
 | ASE 已挂起 | 指定的 ASE 处于挂起状态。 ASE 暂停的原因可能是帐户能力远远弥补或虚拟网络配置无效。 解决根本原因并恢复 ASE 以继续提供流量。 |
 | ASE 升级已启动 | 已开始升级到指定 ASE 的平台。 缩放操作需要延迟。 |
 | ASE 升级已完成 | 到指定 ASE 的平台升级已完成。 |
-| 缩放操作已开始 | 应用服务计划（{0}）已开始缩放。 所需状态{1} ：{2}我的辅助角色。
-| 缩放操作已完成 | 应用服务计划（{0}）已完成缩放。 当前状态： {1}我{2}的工作线程数。 |
-| 缩放操作失败 | 应用服务计划（{0}）未能缩放。 当前状态： {1}我{2}的工作线程数。 |
+| 缩放操作已开始 | 应用服务计划（ {0} ）已开始缩放。 所需状态： {1} 我 {2} 的辅助角色。
+| 缩放操作已完成 | 应用服务计划（ {0} ）已完成缩放。 当前状态： {1} 我 {2} 的工作线程数。 |
+| 缩放操作失败 | 应用服务计划（ {0} ）未能缩放。 当前状态： {1} 我 {2} 的工作线程数。 |
 
 启用 ASE 上的日志记录：
 
@@ -200,16 +207,16 @@ ASE 为 ASE 中的所有应用提供了 1 TB 的存储空间。 默认情况下�
 
 ## <a name="upgrade-preference"></a>升级首选项
 
-如果有多个 Ase，则可能需要先升级某些 Ase，然后再进行其他设置。 在 ASE **HostingEnvironment 资源管理器**对象中，可以设置**upgradePreference**的值。 可以**upgradePreference**使用模板、ARMClient 或https://resources.azure.com配置 upgradePreference 设置。 这三个可能的值是：
+如果有多个 Ase，则可能需要先升级某些 Ase，然后再进行其他设置。 在 ASE **HostingEnvironment 资源管理器**对象中，可以设置**upgradePreference**的值。 可以使用模板、ARMClient 或配置**upgradePreference**设置 https://resources.azure.com 。 这三个可能的值是：
 
 - **无**： Azure 将在无特定批次中升级 ASE。 此值为默认值。
 - **早**于： ASE 将在应用服务升级的前半部分升级。
 - **晚**：你的 ASE 将在应用服务升级的下半年升级。
 
-如果使用https://resources.azure.com的是，请按照以下步骤设置**upgradePreferences**值：
+如果使用的是 https://resources.azure.com ，请按照以下步骤设置**upgradePreferences**值：
 
 1. 请参阅 resources.azure.com，然后用 Azure 帐户登录。
-1. \/\[浏览资源到订阅订阅名称\]\/resourceGroups\/\[资源组名称\]\/提供程序\/\/hostingEnvironments\/\[ASE 名称。\]
+1. 浏览资源到订阅 \/ \[ 订阅名称 \] \/ resourceGroups \/ \[ 资源组名称 \] \/ 提供程序 \/ \/ hostingEnvironments \/ \[ ASE 名称 \] 。
 1. 在顶部选择 "**读/写**"。
 1. 选择“编辑”  。
 1. 将**upgradePreference**设置为所需的三个值中的任何一个。

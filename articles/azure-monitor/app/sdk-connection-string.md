@@ -6,12 +6,12 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 25eda0ae2b0d873fe9850e5b886489a5f2590e69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92c4ccf7246c4e763cbf92aee3c48398d79e0ecc
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80410614"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125700"
 ---
 # <a name="connection-strings"></a>连接字符串
 
@@ -31,7 +31,7 @@ ms.locfileid: "80410614"
 
 - 防火墙例外或代理重定向 
 
-    在需要监视 intranet web 服务器的情况下，我们的早期解决方案要求客户将单独的服务终结点添加到你的配置中。 有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#can-i-monitor-an-intranet-web-server)。 
+    在需要监视 intranet web 服务器的情况下，我们的早期解决方案要求客户将单独的服务终结点添加到你的配置中。 有关详细信息，请参阅[此处](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#can-i-monitor-an-intranet-web-server)。 
     通过减少对单个设置的这一努力，连接字符串提供了更好的替代方法。 后缀修正允许将所有终结点的自动填充和重定向到正确的服务。 
 
 - 主权或混合云环境
@@ -64,10 +64,10 @@ ms.locfileid: "80410614"
 - `EndpointSuffix`（例如： applicationinsights.azure.cn）设置终结点后缀将指示 SDK 要连接到的 Azure 云。 SDK 将为各个服务组装其余的终结点。
 - 显式终结点。
   任何服务都可以在连接字符串中显式重写。
-   - `IngestionEndpoint`例如https://dc.applicationinsights.azure.com)
-   - `LiveEndpoint`例如https://live.applicationinsights.azure.com)
-   - `ProfilerEndpoint`例如https://profiler.applicationinsights.azure.com)
-   - `SnapshotEndpoint`例如https://snapshot.applicationinsights.azure.com)
+   - `IngestionEndpoint`（例如： `https://dc.applicationinsights.azure.com` ）
+   - `LiveEndpoint`（例如： `https://live.applicationinsights.azure.com` ）
+   - `ProfilerEndpoint`（例如： `https://profiler.applicationinsights.azure.com` ）
+   - `SnapshotEndpoint`（例如： `https://snapshot.applicationinsights.azure.com` ）
 
 #### <a name="endpoint-schema"></a>终结点架构
 
@@ -106,10 +106,10 @@ ms.locfileid: "80410614"
 - 授权方案默认为 "ikey" 
 - 检测密钥：00000000-0000-0000-0000-000000000000
 - 区域服务 Uri 基于[SDK 默认设置](https://github.com/microsoft/ApplicationInsights-dotnet/blob/e50d569cebf485e72e98f4a08a0bc0e30cdf42bc/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/Endpoints/Constants.cs#L6)，将连接到公共全局 Azure：
-   - 引入https://dc.services.visualstudio.com/
-   - 实时指标：https://rt.services.visualstudio.com/
-   - 档案https://agent.azureserviceprofiler.net/
-   - 程序https://agent.azureserviceprofiler.net/  
+   - 引入`https://dc.services.visualstudio.com/`
+   - 实时指标：`https://rt.services.visualstudio.com/`
+   - 档案`https://agent.azureserviceprofiler.net/`
+   - 程序`https://agent.azureserviceprofiler.net/`
 
 
 
@@ -122,10 +122,10 @@ ms.locfileid: "80410614"
 - 授权方案默认为 "ikey" 
 - 检测密钥：00000000-0000-0000-0000-000000000000
 - 区域服务 Uri 基于提供的终结点后缀： 
-   - 引入https://dc.ai.contoso.com
-   - 实时指标：https://live.ai.contoso.com
-   - 档案https://profiler.ai.contoso.com 
-   - 程序https://snapshot.ai.contoso.com   
+   - 引入`https://dc.ai.contoso.com`
+   - 实时指标：`https://live.ai.contoso.com`
+   - 档案`https://profiler.ai.contoso.com`
+   - 程序`https://snapshot.ai.contoso.com`  
 
 
 
@@ -138,10 +138,10 @@ ms.locfileid: "80410614"
 - 授权方案默认为 "ikey" 
 - 检测密钥：00000000-0000-0000-0000-000000000000
 - 区域服务 Uri 基于显式重写值： 
-   - 引入： https：\//custom.com:111/
-   - 实时指标： https：\//custom.com:222/
-   - Profiler： https：\//custom.com:333/ 
-   - 调试器： https：\//custom.com:444/   
+   - 引入`https://custom.com:111/`
+   - 实时指标：`https://custom.com:222/`
+   - 档案`https://custom.com:333/`
+   - 程序`https://custom.com:444/`  
 
 
 ## <a name="how-to-set-a-connection-string"></a>如何设置连接字符串

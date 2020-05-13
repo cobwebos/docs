@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: 658543dc96f23fc86ea50f64d7a3265ba64150e7
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 0a29ee1536c7c808fe7d15c0abe26f27042bc962
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982201"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196248"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics 代理概述
 之所以开发 Azure Log Analytics 代理，是为了跨任意云中的虚拟机、本地计算机以及通过 [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/) 监视的计算机进行全面的管理。 Windows 和 Linux 代理将从不同源收集的数据发送到 Azure Monitor 中的 Log Analytics 工作区，并发送在监视解决方案中定义的任何特有日志或指标。 Log Analytics 代理还支持[用于 VM 的 Azure Monitor](../insights/vminsights-enable-overview.md)、 [azure 安全中心](/azure/security-center/)和[azure 自动化](../../automation/automation-intro.md)等 Azure Monitor 中的见解和其他服务。
@@ -70,7 +70,7 @@ Log Analytics 代理将数据发送到 Azure Monitor 中的 Log Analytics 工作
 
 有多种方法可安装 Log Analytics 代理，并将计算机连接到 Azure Monitor，具体取决于你的要求。 下表详细介绍了每种方法，以便用户确定组织中最适用的方法。
 
-|源 | 方法 | 说明|
+|Source | 方法 | 说明|
 |-------|-------------|-------------|
 |Azure VM| [手动从 Azure 门户](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json) | 指定要从 Log Analytics 工作区部署的 Vm。 |
 | | 使用 Azure CLI 或 Azure 资源管理器模板 Log Analytics 适用于[Windows](../../virtual-machines/extensions/oms-windows.md)或[Linux](../../virtual-machines/extensions/oms-linux.md)的 VM 扩展 | 该扩展在 Azure 虚拟机上安装 Log Analytics 代理，并将虚拟机注册到现有的 Azure Monitor 工作区中。 |
@@ -115,11 +115,11 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 >如果使用的是当前不受支持且与我们的支持模型不一致的发行版或版本，我们建议对此存储库创建分支，并接受 Microsoft 支持不会为已分支的代理版本提供帮助。
 
 * Amazon Linux 2017.09 (x64)
-* CentOS Linux 6 (x86/x64) 和 7 (x64)  
-* Oracle Linux 6 和 7 (x86/x64) 
-* Red Hat Enterprise Linux Server 6 (x86/x64) 和 7 (x64)
-* Debian GNU/Linux 8 和 9 (x86/x64)
-* Ubuntu 14.04 LTS (x86/x64)、16.04 LTS (x86/x64) 和 18.04 LTS (x64)
+* CentOS Linux 6 （x64）和7（x64）  
+* Oracle Linux 6 和7（x64） 
+* Red Hat Enterprise Linux Server 6 （x64）、7（x64）和8（x64）
+* Debian GNU/Linux 8 和9（x64）
+* Ubuntu 14.04 LTS （x86/x64）、16.04 LTS （x64）和 18.04 LTS （x64）
 * SUSE Linux Enterprise Server 12 (x64) 和 15 (x64)
 
 >[!NOTE]
@@ -201,7 +201,7 @@ Windows 和 Linux 代理支持使用 HTTPS 协议通过代理服务器或 Log An
 例如： `https://user01:password@proxy01.contoso.com:30443`
 
 > [!NOTE]
-> 如果你在密码中使用特殊字符\@（如 ""），则会收到代理连接错误，因为未正确分析值。  若要解决此问题，请使用 [URLDecode](https://www.urldecoder.org/) 等工具在 URL 中对密码进行编码。  
+> 如果你在密码中使用特殊字符（如 " \@ "），则会收到代理连接错误，因为未正确分析值。  若要解决此问题，请使用 [URLDecode](https://www.urldecoder.org/) 等工具在 URL 中对密码进行编码。  
 
 
 

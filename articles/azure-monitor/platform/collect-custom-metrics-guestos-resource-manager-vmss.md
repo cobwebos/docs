@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: fe550bb4f5e63761bb645c9904816048584b1bca
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 9a7aa512c636f700cf9c6d990814d9367007c942
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82733239"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125768"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>使用 Windows 虚拟机规模集的 Azure 资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
 
@@ -252,7 +252,7 @@ MSI 扩展中的以下代码还会将诊断扩展和配置作为扩展资源添�
    ```
 
    > [!NOTE]  
-   > 请记得使用为自定义指标启用的 Azure 区域。 请记得使用[为自定义指标启用的 Azure 区域](https://github.com/MicrosoftDocs/azure-docs-pr/blob/master/articles/azure-monitor/platform/metrics-custom-overview.md#supported-regions)。
+   > 请记得使用为自定义指标启用的 Azure 区域。 请记得使用[为自定义指标启用的 Azure 区域](./metrics-custom-overview.md#supported-regions)。
  
 1. 运行以下命令以部署 VM：  
 

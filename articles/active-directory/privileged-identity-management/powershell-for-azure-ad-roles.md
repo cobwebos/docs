@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/28/2020
+ms.date: 05/11/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99a6c0153105627e272d05af5514a030577431f7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c42c0dd3848ec913f991e4b07612669c5a25c9f1
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233986"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197273"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>适用于 Privileged Identity Management 中 Azure AD 角色的 PowerShell
 
@@ -29,7 +29,7 @@ ms.locfileid: "82233986"
 
 > [!Note]
 > 仅当使用新版 Azure AD Privileged Identity Management 时，我们的官方 PowerShell 才受支持。 请转到“Privileged Identity Management”，并确保快速启动边栏选项卡中出现了以下横幅。
-> [![检查所用的 Privileged Identity Management 版本](media/pim-how-to-add-role-to-user/pim-new-version.png "选择 Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)如果未看到此横幅，请等待，因为我们会在未来几周内推出此更新的体验。
+> [![检查所用的 Privileged Identity Management 版本](media/pim-how-to-add-role-to-user/pim-new-version.png "选择“Azure AD”>“Privileged Identity Management”")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)如果未看到此横幅，请等待，因为我们会在未来几周内推出此更新的体验。
 > 支持通过 Azure AD 预览版模块使用 Privileged Identity Management PowerShell cmdlet。 如果你一直使用在其他模块，并且该模块现在会返回错误消息，请开始使用此新模块。 如果你在不同的模块基础之上构建了任何生产系统，请联系 pim_preview@microsoft.com
 
 ## <a name="installation-and-setup"></a>安装和设置
@@ -45,7 +45,7 @@ ms.locfileid: "82233986"
         $AzureAdCred = Get-Credential  
         Connect-AzureAD -Credential $AzureAdCred
 
-1. 转到**Azure Active Directory** > **Properties** > **Directory id**查找 Azure AD 组织的租户 ID。 在“cmdlet”部分，每当需要提供 resourceId 时，都使用此 ID。
+1. 转到**Azure Active Directory**  >  **Properties**  >  **Directory id**查找 Azure AD 组织的租户 ID。 在“cmdlet”部分，每当需要提供 resourceId 时，都使用此 ID。
 
     ![在 Azure AD 组织的属性中查找组织 ID](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
 
@@ -97,7 +97,7 @@ roleDefinitionId 特定于 Azure AD 组织，不同于角色管理 API 返回的
     $schedule.StartDateTime = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
     $schedule.endDateTime = "2020-07-25T20:49:11.770Z"
 > [!Note]
-> 如果 endDateTime 的值设置为 null，则表示永久赋值。
+> 如果 endDateTime 的值设置为 null，则表示永久分配。
 
 ## <a name="activate-a-role-assignment"></a>激活角色分配
 
@@ -108,9 +108,9 @@ roleDefinitionId 特定于 Azure AD 组织，不同于角色管理 API 返回的
 此 cmdlet 与用于创建角色分配的 cmdlet 几乎完全相同。 Cmdlet 之间的主要区别在于，对于– Type 参数，激活为 "userAdd" 而不是 "adminAdd"。 另一个不同之处在于– AssignmentState 参数是 "活动"，而不是 "符合条件"。
 
 > [!Note]
-> 通过 PowerShell 实现角色激活有两种限制方案。
-> 1. 如果你的角色设置中需要票证系统/票证号，则无法将其作为参数提供。 因此，不能在 Azure 门户之外激活角色。 此功能将在接下来的几个月内推出给 PowerShell。
-> 1. 如果你需要多重身份验证来激活角色，则当前无法通过 PowerShell 在用户激活其角色时质询用户。 相反，当用户通过在我们的一位工程师中执行[此博客文章](http://www.anujchaudhary.com/2020/02/connect-to-azure-ad-powershell-with-mfa.html)连接到 Azure AD 时，用户将需要触发 MFA 质询。 如果要为 PIM 开发应用程序，一种可能的实现方法是质询用户，并在收到 "MfaRule" 错误后将其重新连接到模块。
+> 通过 PowerShell 激活角色会出现两种限制性的情况。
+> 1. 如果角色设置中需要票证系统/票证编号，则无法提供这些值作为参数。 这样，就只能通过 Azure 门户激活角色。 在未来的几个月中，此项功能即会在 PowerShell 中推出。
+> 1. 如果你需要将多重身份验证用于角色激活，PowerShell 目前还无法在用户激活其角色时质询用户。 在此情况下，用户在连接到 Azure AD 时，需要根据我们的某位工程师撰写的[此篇博客文章](http://www.anujchaudhary.com/2020/02/connect-to-azure-ad-powershell-with-mfa.html)触发 MFA 质询。 如果你正在开发 PIM 相关的应用，那么，一种可行的实施方案是质询用户，并在他们收到“MfaRule”错误后将其重新连接到模块。
 
 ## <a name="retrieving-and-updating-role-settings"></a>检索和更新角色设置
 
@@ -118,17 +118,16 @@ roleDefinitionId 特定于 Azure AD 组织，不同于角色管理 API 返回的
 
     Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "ResourceId eq '926d99e7-117c-4a6a-8031-0cc481e9da26'" 
 
-设置中有四个主要对象。 PIM 当前只使用其中的三个对象。 UserMemberSettings 是 "激活" 设置，"AdminEligibleSettings" 是适用于符合条件的分配的 "分配设置"，而 "AdminmemberSettings" 是活动分配的分配设置。
+设置中有四个主要对象。 PIM 目前只使用其中的三个对象。 UserMemberSettings 是激活设置，AdminEligibleSettings 是用于符合条件的分配的分配设置，AdminmemberSettings 是用于活动分配的分配设置。
 
 [![](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png "Get and update role settings")](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png#lightbox)
 
-若要更新角色设置，需要先定义设置对象，如下所示：
+若要更新角色设置，必须获取特定角色的现有设置对象，并对其进行更改：
 
-    $setting = New-Object Microsoft.Open.MSGraph.Model.AzureADMSPrivilegedRuleSetting 
-    $setting.RuleIdentifier = "JustificationRule"
-    $setting.Setting = "{'required':false}"
+    $setting = Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "roleDefinitionId eq 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'"
+    $setting.UserMemberSetting.justificationRule = '{"required":false}'
 
-然后，可以继续将设置应用于特定角色的对象之一，如下所示。 此处的 ID 是可以从 list role settings cmdlet 的结果中检索的角色设置 ID。
+然后，可以继续将设置应用到特定角色的某个对象，如下所示。 此处的 ID 是可以从“列出角色设置”cmdlet 的结果中检索到的角色设置 ID。
 
     Set-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Id 'ff518d09-47f5-45a9-bb32-71916d9aeadf' -ResourceId '3f5887ed-dd6e-4821-8bde-c813ec508cf9' -RoleDefinitionId '2387ced3-4e95-4c36-a915-73d803f93702' -UserMemberSettings $setting 
 

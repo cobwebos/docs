@@ -4,19 +4,19 @@ description: 使用 SqlAuthenticationMethod.ActiveDirectoryInteractive 模式连
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: active directory
+ms.custom: active directory, has-adal-ref
 ms.devlang: ''
 ms.topic: conceptual
 author: GithubMirek
 ms.author: MirekS
 ms.reviewer: GeneMi, vanto
 ms.date: 10/11/2019
-ms.openlocfilehash: 5e7d58e5e0fc79e407e77ae9d73314a1d5d22666
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc597881d15dbd534b36109fc653ffbc671f1f4d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73692304"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197084"
 ---
 # <a name="connect-to-azure-sql-database-with-azure-multi-factor-authentication"></a>使用 Azure 多重身份验证连接到 Azure SQL 数据库
 
@@ -118,7 +118,7 @@ SQL 数据库服务器的 Azure AD 管理员可以运行 C# 示例程序。 数�
 | 静态字段名称 | 示例值 | Azure 门户中的位置 |
 | :---------------- | :------------ | :-------------------- |
 | Az_SQLDB_svrName | "my-sqldb-svr.database.windows.net" | “SQL 服务器” > “按名称筛选”   |
-| AzureAD_UserID | "用户名\@abc.onmicrosoft.com" | “Azure Active Directory”   > “用户”   > “新建来宾用户”  |
+| AzureAD_UserID | "用户名 \@ abc.onmicrosoft.com" | “Azure Active Directory”   > “用户”   > “新建来宾用户”  |
 | Initial_DatabaseName | "myDatabase" | “SQL 服务器”   > “SQL 数据库”  |
 | ClientApplicationID | “a94f9c62-97fe-4d19-b06d-111111111111” | “Azure Active Directory” > “应用注册” > “按名称搜索” > “应用程序 ID”     |
 | RedirectUri | new Uri("https://mywebserver.com/") | “Azure Active Directory” > “应用注册” > “按名称搜索” > “[你的应用注册]” > “设置” > “RedirectURI”      <br /><br />在本文中，任何有效值均适用于 RedirectUri，因为此处并不使用 RedirectUri。 |

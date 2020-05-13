@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/08/2020
+ms.date: 05/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a5e0e459800e7cb57672518597f3d04a74f53118
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5f14a269478541eaa5852697a917afb3d771841a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81008618"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196945"
 ---
 目前，超磁盘有其他限制，如下所示：
 
@@ -22,23 +22,30 @@ ms.locfileid: "81008618"
 下表概述了可在中使用的超级磁盘区域，以及相应的可用性选项：
 
 > [!NOTE]
-> 这些区域中的某些可用性区域不提供超磁盘。
+> 如果以下列表中的某个区域没有支持虚拟磁盘的可用性区域，则该区域中的 Vm 必须在没有任何基础结构冗余选项的情况下部署，才能附加超磁盘。
 
-|区域  |无基础结构冗余  |可用性区域  |
-|---------|---------|---------|
-|美国西部     |是         |否         |
-|美国西部 2    |否         |是         |
-|美国东部     |否         |是         |
-|美国东部 2     |否         |是         |
-|东南亚     |否         |是         |
-|北欧     |否         |是         |
-|西欧     |否         |是         |
-|英国南部     |否         |是         |
+|区域  |支持超磁盘的可用性区域数  |
+|---------|---------|
+|US Gov 弗吉尼亚州     |无         |
+|美国中南部     |无         |
+|美国中部     |三个区域         |
+|美国西部     |无         |
+|美国西部 2    |三个区域         |
+|美国东部     |三个区域         |
+|美国东部 2     |两个区域         |
+|东南亚     |三个区域         |
+|北欧     |三个区域          |
+|西欧     |三个区域          |
+|英国南部     |三个区域          |
+|日本东部     |两个区域         |
+
+
 
 - 仅支持以下 VM 系列：
-    - [ESv3](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)
-    - [DSv3](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)
-    - FSv2
+    - [ESv3](../articles/virtual-machines/ev3-esv3-series.md#esv3-series)
+    - [DSv3](../articles/virtual-machines/dv3-dsv3-series.md#dsv3-series)
+    - [FSv2](../articles/virtual-machines/fsv2-series.md)
+    - [LSv2](../articles/virtual-machines/lsv2-series.md)
     - [M](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
     - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
 - 并非每个 VM 大小都可在包含 ultra 磁盘的每个受支持区域中使用

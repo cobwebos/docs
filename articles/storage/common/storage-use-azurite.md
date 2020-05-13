@@ -7,12 +7,12 @@ ms.date: 05/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: e20271e381f2e7023dca3c3382c9f329a5149a62
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: f4e0bbd546b770b9e81bb9142cdd97e3927db7bd
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872577"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195943"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>使用 Azurite 模拟器进行本地 Azure 存储开发和测试（预览）
 
@@ -70,7 +70,7 @@ Azurite 是未来的存储仿真器平台。 Azurite 取代了 [Azure 存储仿�
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>使用 NPM 安装并运行 Azurite
 
-此安装方法需要安装 [Node.js 8.0 或更高版本](https://nodejs.org)。 Node 包管理器（npm）是每个 node.js 安装附带的包管理工具。 安装 node.js 后，执行以下`npm`命令以安装 Azurite。
+此安装方法需要安装 [Node.js 8.0 或更高版本](https://nodejs.org)。 Node 包管理器（npm）是每个 node.js 安装附带的包管理工具。 安装 node.js 后，执行以下 `npm` 命令以安装 Azurite。
 
 ```console
 npm install -g azurite
@@ -142,7 +142,7 @@ npm install -g
 azurite --silent --location c:\azurite --debug c:\azurite\debug.log
 ```
 
-此命令告知 Azurite 要将所有数据存储在特定目录 *c:\azurite* 中。 如果省略`--location`该选项，它将使用当前工作目录。
+此命令告知 Azurite 要将所有数据存储在特定目录 *c:\azurite* 中。 如果 `--location` 省略该选项，它将使用当前工作目录。
 
 ## <a name="command-line-options"></a>命令行选项
 
@@ -150,7 +150,7 @@ azurite --silent --location c:\azurite --debug c:\azurite\debug.log
 
 ### <a name="help"></a>帮助
 
-**可选**-通过使用`-h`或`--help`开关获取命令行帮助。
+**可选**-通过使用或开关获取命令行帮助 `-h` `--help` 。
 
 ```console
 azurite -h
@@ -159,7 +159,7 @@ azurite --help
 
 ### <a name="blob-listening-host"></a>Blob 侦听主机
 
-**可选**-默认情况下，Azurite 将以本地服务器的形式侦听127.0.0.1。 使用`--blobHost`开关将地址设置为你的要求。
+**可选**-默认情况下，Azurite 将以本地服务器的形式侦听127.0.0.1。 使用 `--blobHost` 开关将地址设置为你的要求。
 
 仅接受本地计算机上的请求：
 
@@ -178,7 +178,7 @@ azurite --blobHost 0.0.0.0
 
 ### <a name="blob-listening-port-configuration"></a>Blob 侦听端口配置
 
-**可选**-默认情况下，Azurite 将在端口10000上侦听 Blob 服务。 使用`--blobPort`开关指定所需的侦听端口。
+**可选**-默认情况下，Azurite 将在端口10000上侦听 Blob 服务。 使用 `--blobPort` 开关指定所需的侦听端口。
 
 > [!NOTE]
 > 使用自定义端口后，需要在 Azure 存储工具或 SDK 中更新连接字符串或相应的配置。
@@ -199,7 +199,7 @@ Azurite 启动期间，会显示正在使用的端口。
 
 ### <a name="queue-listening-host"></a>队列侦听主机
 
-**可选**-默认情况下，Azurite 将以本地服务器的形式侦听127.0.0.1。 使用`--queueHost`开关将地址设置为你的要求。
+**可选**-默认情况下，Azurite 将以本地服务器的形式侦听127.0.0.1。 使用 `--queueHost` 开关将地址设置为你的要求。
 
 仅接受本地计算机上的请求：
 
@@ -218,7 +218,7 @@ azurite --queueHost 0.0.0.0
 
 ### <a name="queue-listening-port-configuration"></a>队列侦听端口配置
 
-**可选**-默认情况下，Azurite 会侦听端口10001上的队列服务。 使用`--queuePort`开关指定所需的侦听端口。
+**可选**-默认情况下，Azurite 会侦听端口10001上的队列服务。 使用 `--queuePort` 开关指定所需的侦听端口。
 
 > [!NOTE]
 > 使用自定义端口后，需要在 Azure 存储工具或 SDK 中更新连接字符串或相应的配置。
@@ -239,7 +239,7 @@ Azurite 启动期间，会显示正在使用的端口。
 
 ### <a name="workspace-path"></a>工作区路径
 
-**可选**-Azurite 在执行过程中将数据存储到本地磁盘。 使用`-l`或`--location`开关将路径指定为工作区位置。 默认将使用当前进程的工作目录。 请注意小写的 "l"。
+**可选**-Azurite 在执行过程中将数据存储到本地磁盘。 使用 `-l` 或 `--location` 开关将路径指定为工作区位置。 默认将使用当前进程的工作目录。 请注意小写的 "l"。
 
 ```console
 azurite -l c:\azurite
@@ -248,7 +248,7 @@ azurite --location c:\azurite
 
 ### <a name="access-log"></a>访问日志
 
-**可选**-默认情况下，访问日志显示在控制台窗口中。 使用`-s`或`--silent`开关禁用访问日志的显示。
+**可选**-默认情况下，访问日志显示在控制台窗口中。 使用或开关禁用访问日志的显示 `-s` `--silent` 。
 
 ```console
 azurite -s
@@ -256,7 +256,7 @@ azurite --silent
 ```
 ### <a name="debug-log"></a>调试日志
 
-**可选**-调试日志包含每个请求和异常堆栈跟踪的详细信息。 通过提供到`-d`或`--debug`开关的有效本地文件路径来启用调试日志。
+**可选**-调试日志包含每个请求和异常堆栈跟踪的详细信息。 通过提供到或开关的有效本地文件路径来启用调试 `-d` 日志 `--debug` 。
 
 ```console
 azurite -d path/debug.log
@@ -265,7 +265,7 @@ azurite --debug path/debug.log
 
 ### <a name="loose-mode"></a>松散模式
 
-**可选**-默认情况下，Azurite 应用严格模式来阻止不受支持的请求标头和参数。 使用`-L`或`--loose`开关禁用严格模式。 请注意大写 "L"。
+**可选**-默认情况下，Azurite 应用严格模式来阻止不受支持的请求标头和参数。 使用或开关禁用严格模式 `-L` `--loose` 。 请注意大写 "L"。
 
 ```console
 azurite -L
@@ -273,7 +273,7 @@ azurite --loose
 ```
 ### <a name="version"></a>版本
 
-**可选**-使用`-v`或`--version`开关显示已安装的 Azurite 版本号。
+**可选**-使用或开关显示已安装的 Azurite 版本号 `-v` `--version` 。
 
 ```console
 azurite -v
@@ -282,15 +282,15 @@ azurite --version
 
 ### <a name="certificate-configuration-https"></a>证书配置（HTTPS）
 
-**可选**-默认情况下，AZURITE 使用 HTTP 协议。 通过向`--cert`交换机提供隐私增强邮件（pem）或[个人信息交换（.pfx）](https://docs.microsoft.com/windows-hardware/drivers/install/personal-information-exchange---pfx--files)证书文件的路径，启用 HTTPS 模式。
+**可选**-默认情况下，AZURITE 使用 HTTP 协议。 通过向交换机提供隐私增强邮件（pem）或[个人信息交换（.pfx）](https://docs.microsoft.com/windows-hardware/drivers/install/personal-information-exchange---pfx--files)证书文件的路径，启用 HTTPS 模式 `--cert` 。
 
-为`--cert` PEM 文件提供时，必须提供相应`--key`的开关。
+为 `--cert` PEM 文件提供时，必须提供相应的 `--key` 开关。
 
 ```console
 azurite --cert path/server.pem --key path/key.pem
 ```
 
-为`--cert` PFX 文件提供时，必须提供相应`--pwd`的开关。
+为 `--cert` PFX 文件提供时，必须提供相应的 `--pwd` 开关。
 
 ```console
 azurite --cert path/server.pfx --pwd pfxpassword
@@ -300,22 +300,22 @@ azurite --cert path/server.pfx --pwd pfxpassword
 
 ### <a name="oauth-configuration"></a>OAuth 配置
 
-**可选**-使用`--oauth`开关为 Azurite 启用 OAuth 身份验证。
+**可选**-使用开关为 Azurite 启用 OAuth 身份验证 `--oauth` 。
 
 ```console
 azurite --oauth basic --cert path/server.pem --key path/key.pem
 ```
 
 > [!NOTE]
-> OAuth 需要 HTTPS 终结点。 请确保通过提供`--cert`开关以及`--oauth`开关来启用 HTTPS。
+> OAuth 需要 HTTPS 终结点。 请确保通过提供 `--cert` 开关以及开关来启用 HTTPS `--oauth` 。
 
-Azurite 通过指定`basic` `--oauth`开关的参数来支持基本身份验证。 Azurite 将执行基本身份验证，如验证传入持有者令牌、检查颁发者、受众和到期时间。 Azurite 不会检查令牌签名或权限。
+Azurite 通过指定开关的参数来支持基本身份验证 `basic` `--oauth` 。 Azurite 将执行基本身份验证，如验证传入持有者令牌、检查颁发者、受众和到期时间。 Azurite 不会检查令牌签名或权限。
 
 ## <a name="authorization-for-tools-and-sdks"></a>工具和 SDK 的授权
 
 使用任何身份验证策略从 Azure 存储 SDK 或工具（例如 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)）连接到 Azurite。 需要身份验证。 Azurite 支持使用 OAuth、共享密钥和共享访问签名（SAS）进行授权。 Azurite 还支持匿名访问公共容器。
 
-如果使用的是 Azure Sdk，请使用`--oauth basic and --cert --key/--pwd`选项启动 Azurite。
+如果使用的是 Azure Sdk，请使用选项启动 Azurite `--oauth basic and --cert --key/--pwd` 。
 
 ### <a name="well-known-storage-account-and-key"></a>已知的存储帐户和密钥
 
@@ -393,7 +393,7 @@ export AZURITE_ACCOUNTS="account1:key1:key2;account2:key1:key2"
 
 `DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;QueueEndpoint=https://127.0.0.1:10001/devstoreaccount1;`
 
-如果你使用`dotnet dev-certs`生成自签名证书，请使用以下连接字符串。
+如果你使用 `dotnet dev-certs` 生成自签名证书，请使用以下连接字符串。
 
 `DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://localhost:10000/devstoreaccount1;QueueEndpoint=https://localhost:10001/devstoreaccount1;`
 
@@ -461,20 +461,22 @@ var client = new QueueClient(
 
 在存储资源管理器中，按照以下步骤连接到 Azurite：
 
- 1. 选择 "**添加帐户**" 图标
+ 1. 选择 "**管理帐户**" 图标
+ 1. 选择 "**添加帐户**"
  1. 选择 "**附加到本地模拟器**"
  1. 选择 **“下一步”**。
+ 1. 将 "**显示名称**" 字段编辑为你选择的名称
  1. 再次选择 "**下一步**"
  1. 选择**连接**
 
 #### <a name="connect-to-azurite-using-https"></a>使用 HTTPS 连接到 Azurite
 
-默认情况下，存储资源管理器不会打开使用自签名证书的 HTTPS 终结点。 如果正在使用 HTTPS 运行 Azurite，则可能使用的是自签名证书。 在存储资源管理器中，通过 "**编辑** -> **ssl 证书** -> " "**导入证书**" 对话框导入 ssl 证书。
+默认情况下，存储资源管理器不会打开使用自签名证书的 HTTPS 终结点。 如果正在使用 HTTPS 运行 Azurite，则可能使用的是自签名证书。 在存储资源管理器中，通过 "**编辑**  ->  **ssl 证书**" "  ->  **导入证书**" 对话框导入 ssl 证书。
 
 ##### <a name="import-certificate-to-storage-explorer"></a>将证书导入存储资源管理器
 
 1. 查找本地计算机上的证书。
-1. 在存储资源管理器中，请参阅**编辑** -> **SSL 证书** -> **导入证书**和导入证书。
+1. 在存储资源管理器中，请参阅**编辑**  ->  **SSL 证书**  ->  **导入证书**和导入证书。
 
 如果不导入证书，则会出现错误：
 
@@ -488,7 +490,7 @@ var client = new QueueClient(
 1. 选择**本地 &**
 1. 右键单击 "**存储帐户**"，然后选择 "**连接到 Azure 存储**"。
 1. 选择 "**使用连接字符串**"
-1. 选择“**下一步**”。
+1. 选择“下一步”  。
 1. 在 "**显示名称**" 字段中输入一个值。
 1. 在本文档的上一节中输入[HTTPS 连接字符串](#https-connection-strings)
 1. 选择 **“下一步”**。
@@ -535,13 +537,13 @@ Azurite 的服务终结点不同于 Azure 存储帐户的终结点。 本地计�
 
 Azurite 不支持大量连接的客户端。 它不提供性能方面的保证。 Azurite 用于开发和测试目的。
 
-### <a name="error-handling"></a>错误处理。
+### <a name="error-handling"></a>错误处理
 
 Azurite 的错误处理逻辑与 Azure 存储相符，但存在一些差别。 例如，错误消息可能不同，而错误状态代码是一致的。
 
 ### <a name="ra-grs"></a>RA-GRS
 
-Azurite 支持读取访问异地冗余复制 (RA-GRS)。 对于存储资源，通过在帐户名称后面追加`-secondary`来访问辅助位置。 例如，以下地址可用于访问 Azurite 中使用只读辅助副本的 Blob：
+Azurite 支持读取访问异地冗余复制 (RA-GRS)。 对于存储资源，通过在帐户名称后面追加来访问辅助位置 `-secondary` 。 例如，以下地址可用于访问 Azurite 中使用只读辅助副本的 Blob：
 
 `http://127.0.0.1:10000/devstoreaccount1-secondary/mycontainer/myblob.txt`
 

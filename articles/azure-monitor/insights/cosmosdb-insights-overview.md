@@ -1,21 +1,21 @@
 ---
-title: 监视 Azure Cosmos DB Azure Monitor Cosmos DB （预览版） |Microsoft Docs
+title: 监视 Cosmos DB 的 Azure Monitor Azure Cosmos DB |Microsoft Docs
 description: 本文介绍 Cosmos DB 功能的 Azure Monitor，该功能提供 Cosmos DB 所有者快速了解 CosmosDB 帐户的性能和使用问题。
 ms.subservice: ''
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 10/27/2019
-ms.openlocfilehash: 9a900a2f2e950fe9b9846ebcc047d7c344284948
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.openlocfilehash: 68b1b8c92b5119da400b0ada0fe792c855dd1f33
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78250679"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195398"
 ---
-# <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>探索 Azure Cosmos DB Azure Monitor （预览）
+# <a name="explore-azure-monitor-for-azure-cosmos-db"></a>探索 Azure Cosmos DB Azure Monitor
 
-Azure Monitor for Azure Cosmos DB （预览版）提供了一个统一的交互式体验，可查看所有 Azure Cosmos DB 资源的总体性能、故障、容量和操作运行状况。 本文将帮助你了解这一新的监视体验的好处，以及如何修改和调整体验以满足你的组织的独特需求。   
+Azure Cosmos DB 的 Azure Monitor 提供了一个统一的交互式体验中所有 Azure Cosmos DB 资源的总体性能、故障、容量和操作运行状况的视图。 本文将帮助你了解这一新的监视体验的好处，以及如何修改和调整体验以满足你的组织的独特需求。   
 
 ## <a name="introduction"></a>简介
 
@@ -44,7 +44,7 @@ Azure Monitor for Azure Cosmos DB （预览版）提供了一个统一的交互�
 
     ![带有单词 "Monitor" 的搜索框和一个显示速度计样式图像的服务 "Monitor" 的下拉框](./media/cosmosdb-insights-overview/search-monitor.png)
 
-3. 选择**Cosmos DB （预览）**。
+3. 选择“Cosmos DB”。****
 
     ![Cosmos DB 概述工作簿的屏幕截图](./media/cosmosdb-insights-overview/cosmos-db.png)
 
@@ -92,7 +92,7 @@ Azure Monitor for Azure Cosmos DB （预览版）提供了一个统一的交互�
 
 选择页面顶部的 "**操作**"，将打开工作簿模板的 "**操作**" 部分。 它使你能够查看按发出的请求类型细分的请求。 
 
-因此，在下面的示例中， `eastus-billingint`你看到的主要是接收读取请求，但使用少量的 upsert 和创建请求。 `westeurope-billingint`从请求角度来看，在过去四小时内，工作簿的时间范围参数的当前范围限制为只读。
+因此，在下面的示例中，你看到的 `eastus-billingint` 主要是接收读取请求，但使用少量的 upsert 和创建请求。 `westeurope-billingint`从请求角度来看，在过去四小时内，工作簿的时间范围参数的当前范围限制为只读。
 
 ![操作工作簿](./media/cosmosdb-insights-overview/operation.png) 
 
@@ -110,9 +110,9 @@ Azure Monitor for Azure Cosmos DB （预览版）提供了一个统一的交互�
 
 ![展开工作簿图标](./media/cosmosdb-insights-overview/expand.png)
 
-## <a name="customize-azure-monitor-for-azure-cosmos-db-preview"></a>自定义 Azure Cosmos DB 的 Azure Monitor （预览）
+## <a name="customize-azure-monitor-for-azure-cosmos-db"></a>自定义 Azure Cosmos DB 的 Azure Monitor
 
-由于此体验是基于 Azure Monitor 工作簿模板构建的，因此您可以**自定义** > **编辑**并将修改后的版本的副本**保存**到自定义工作簿中。 
+由于此体验是基于 Azure Monitor 工作簿模板构建的，因此您可以**自定义**  >  **编辑**并**将**修改后的版本的副本保存到自定义工作簿中。 
 
 ![自定义栏](./media/cosmosdb-insights-overview/customize.png)
 

@@ -5,19 +5,22 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/22/2019
-ms.openlocfilehash: b1463415a464fe1d7a7146cec20f2c17d7c8eb03
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.date: 05/09/2020
+ms.openlocfilehash: 58724656dd407f09687b57d0ab034f3a1f808b76
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82738076"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196285"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure Monitor 日志的结构
 使用[日志查询](log-query-overview.md)快速洞察数据是 Azure Monitor 提供的一项强大功能。 若要创建高效且有用的查询，应该了解一些基本概念，例如，所需数据的位置及其构建方式。 本文将会介绍可帮助你入门的基本概念。
 
 ## <a name="overview"></a>概述
 Azure Monitor 日志中的数据存储在 Log Analytics 工作区或 Application Insights 应用程序中。 两者都由 [Azure 数据资源管理器](/azure/data-explorer/)提供支持，这意味着，它们将利用数据资源管理器的强大数据引擎和查询语言。
+
+> [!IMPORTANT]
+> 如果使用的是[基于工作区的 Application Insights 资源](../app/create-workspace-resource.md)，遥测数据将存储在包含所有其他日志数据的 Log Analytics 工作区中。 表已重命名并重构，但其信息与 Application Insights 应用程序中的表相同。
 
 工作区和应用程序中的数据组织成表，每个表存储不同类型的数据，并且有自身独特的属性集。 大多数[数据源](../platform/data-sources.md)将数据写入到 Log Analytics 工作区中其自身的表内，而 Application Insights 将数据写入到 Application Insights 应用程序中一组预定义的表内。 日志查询非常灵活，可让你轻松组合多个表的数据，甚至使用跨资源查询组合多个工作区中的表的数据，或者编写查询来组合工作区数据和应用程序数据。
 
@@ -30,7 +33,7 @@ Azure Monitor 日志收集的所有数据（Application Insights 数据除外）
 
 不同类型的数据存储在工作区中的不同表内，每个表具有独特的属性集。 创建工作区后，会将一组标准表添加到其中；加入不同的数据源、解决方案和服务后，将添加其新表。 还可以使用[数据收集器 API](../platform/data-collector-api.md) 创建自定义表。
 
-可以在工作区的 Log Analytics 中的“架构”选项卡上浏览工作区中的表及其架构。 
+可以在工作区的 Log Analytics 中的“架构”选项卡上浏览工作区中的表及其架构。****
 
 ![工作区架构](media/scope/workspace-schema.png)
 
@@ -42,29 +45,32 @@ union withsource = table *
 | summarize count() by table
 | sort by table asc
 ```
-有关每个数据源创建的表的详细信息，请参阅相应数据源的文档。 例如，参阅有关[代理数据源](../platform/agent-data-sources.md)、[资源日志](../platform/diagnostic-logs-schema.md)和[监视解决方案](../insights/solutions-inventory.md)的文章。
+有关每个数据源创建的表的详细信息，请参阅相应数据源的文档。 示例包括用于[代理数据源](../platform/agent-data-sources.md)、[资源日志](../platform/diagnostic-logs-schema.md)和[监视解决方案](../insights/solutions-inventory.md)的文章。
 
 ### <a name="workspace-permissions"></a>工作区权限
 请参阅[设计 Azure Monitor 日志部署](../platform/design-logs-deployment.md)，以了解访问控制策略和提供对工作区中数据的访问的建议。 除了授予对工作区本身的访问权限以外，还可以使用[表级别 RBAC](../platform/manage-access.md#table-level-rbac) 限制对单个表的访问。
 
 ## <a name="application-insights-application"></a>Application Insights 应用程序
+
+> [!IMPORTANT]
+> 如果你使用的是[基于工作区的 Application Insights 资源](../app/create-workspace-resource.md)遥测存储在具有所有其他日志数据的 Log Analytics 工作区中。 表已重命名并重构，但其信息与经典 Application Insights 资源中的表相同。
+
 在 Application Insights 中创建应用程序时，会自动在 Azure Monitor 日志中创建相应的应用程序。 无需进行任何配置即可收集数据，应用程序会自动写入页面查看次数、请求和异常等监视数据。
 
 与 Log Analytics 工作区不同，Application Insights 应用程序具有固定的一组表。 无法将其他数据源配置为写入到应用程序，因此无法创建其他表。 
 
 | 表 | 说明 | 
 |:---|:---|
-| availabilityResults   | 可用性测试中的摘要数据。
-| browserTimings      |     有关客户端性能的数据，例如处理传入数据所用的时间。
-| customEvents        | 应用程序创建的自定义事件。
-| customMetrics       | 应用程序创建的自定义指标。
-| dependencies        | 从应用程序调用到通过 TrackDependency （）记录的其他组件（包括外部组件）-例如，对 REST API、数据库或文件系统的调用。 
-| exceptions            | 应用程序运行时引发的异常捕获服务器端和客户端（浏览器）异常。
-| pageViews           | 每个网站的浏览情况数据，以及浏览器信息。
-| performanceCounters   | 支持应用程序的计算资源的性能度量，例如 Windows 性能计数器。
-| 请求            | 应用程序收到的请求。 例如，将为 web 应用接收的每个 HTTP 请求记录一个单独的请求记录。 
-| traces                | 通过 TrackTrace （）记录的应用程序代码/日志记录框架发出的详细日志（跟踪）。
-
+| availabilityResults | 可用性测试中的摘要数据。 |
+| browserTimings      | 有关客户端性能的数据，例如处理传入数据所用的时间。 |
+| customEvents        | 应用程序创建的自定义事件。 |
+| customMetrics       | 应用程序创建的自定义指标。 |
+| dependencies        | 从应用程序调用到通过 TrackDependency （）记录的其他组件（包括外部组件）-例如，对 REST API、数据库或文件系统的调用。 |
+| exceptions          | 应用程序运行时引发的异常捕获服务器端和客户端（浏览器）异常。|
+| pageViews           | 每个网站的浏览情况数据，以及浏览器信息。 |
+| performanceCounters | 支持应用程序的计算资源的性能度量，例如 Windows 性能计数器。 |
+| 请求            | 应用程序收到的请求。 例如，将为 web 应用接收的每个 HTTP 请求记录一个单独的请求记录。  |
+| traces              | 通过 TrackTrace （）记录的应用程序代码/日志记录框架发出的详细日志（跟踪）。 |
 
 可以在应用程序的 Log Analytics 中的“架构”选项卡上查看每个表的架构。****
 

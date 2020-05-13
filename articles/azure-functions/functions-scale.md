@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3b000776c04550e1deb883039d94deeb735061ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 40d6768b528d132b3d238227098d4340fce37cca
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985875"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125785"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管
 
@@ -109,7 +109,7 @@ ms.locfileid: "80985875"
 
 ## <a name="determine-the-hosting-plan-of-an-existing-application"></a>确定现有应用程序的托管计划
 
-要确定你的函数应用所使用的托管计划，请在 [Azure 门户](https://portal.azure.com)中参阅函数应用的“概览”选项卡中的“应用服务计划/定价层”********。 对于应用服务计划，还指明了定价层。
+若要确定 function app 使用的托管计划，请参阅[Azure 门户](https://portal.azure.com)中函数应用的 "**概览**" 选项卡中的 "**应用服务计划**"。 若要查看定价层，请选择**应用服务计划**的名称，然后从左窗格中选择 "**属性**"。
 
 ![在门户中查看缩放计划](./media/functions-scale/function-app-overview-portal.png)
 
@@ -124,7 +124,7 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 
 ## <a name="storage-account-requirements"></a>存储帐户要求
 
-在任何计划中，函数应用需要一个支持 Azure Blob、队列、文件和表存储的常规 Azure 存储帐户。 这是因为 Functions 依赖 Azure 存储来执行管理触发器和记录函数执行等操作，但某些存储帐户不支持队列和表。 这些帐户包括仅限 blob 的存储帐户（包括高级存储）和使用区域冗余存储空间复制的常规用途存储帐户，已在创建函数应用时将从现有的“存储帐户”选项中过滤掉****。
+在任何计划中，函数应用需要一个支持 Azure Blob、队列、文件和表存储的常规 Azure 存储帐户。 这是因为 Azure Functions 依赖于 Azure 存储来执行管理触发器和记录函数执行等操作，但某些存储帐户不支持队列和表。 这些帐户包括仅限 blob 的存储帐户（包括高级存储）和使用区域冗余存储空间复制的常规用途存储帐户，已在创建函数应用时将从现有的“存储帐户”选项中过滤掉****。
 
 触发器和绑定也可以使用函数应用使用的相同存储帐户来存储应用程序数据。 但是，对于存储密集型操作，应使用单独的存储帐户。  
 
@@ -162,7 +162,7 @@ Azure Functions 的缩放单位为函数应用。 横向扩展函数应用时，
 
 函数应用的许多方面会影响其缩放，包括主机配置、运行时占用空间和资源效率。  有关详细信息，请查看[性能注意事项一文的“可扩展”部分](functions-best-practices.md#scalability-best-practices)。 还要注意随着函数应用的扩展，连接是如何实施的。 有关详细信息，请参阅[如何在 Azure Functions 中管理连接](manage-connections.md)。
 
-有关 Python 和 node.js 中的缩放的其他信息，请参阅[Azure Functions Python 开发人员指南-缩放和并发性](functions-reference-python.md#scaling-and-concurrency)和[Azure Functions node.js 开发人员指南-缩放和并发](functions-reference-node.md#scaling-and-concurrency)。
+有关 Python 和 node.js 中的缩放的详细信息，请参阅[Azure Functions Python 开发人员指南-缩放和并发性](functions-reference-python.md#scaling-and-concurrency)和[Azure Functions node.js 开发人员指南-缩放和并发](functions-reference-node.md#scaling-and-concurrency)。
 
 ### <a name="billing-model"></a>计费模式
 

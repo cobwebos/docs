@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/02/2020
 ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: 3df79fb1e103ddfaafeb348641e675cd250f5858
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 555ba9a55a135bd38dcc46e1ff7a3d751083d47e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81271686"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196419"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>双重验证和工作或学校帐户常见问题
 
@@ -32,7 +32,7 @@ ms.locfileid: "81271686"
 >[!Important]
 >如果你是管理员，则可以在[Azure AD 文档](https://docs.microsoft.com/azure/active-directory)中找到有关如何设置和管理你的 Azure AD 环境的详细信息。
 >
->此内容还仅适用于工作或学校帐户，这是你的组织提供的帐户（例如alain@contoso.com）。 如果你遇到双重验证问题和个人 Microsoft 帐户（例如， danielle@outlook.com你为自己设置的帐户（例如），请参阅[打开或关闭 Microsoft 帐户的双重验证](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)。
+>此内容还仅适用于工作或学校帐户，这是你的组织提供的帐户（例如 alain@contoso.com ）。 如果你遇到双重验证问题和个人 Microsoft 帐户（例如，你为自己设置的帐户（例如 danielle@outlook.com ），请参阅[打开或关闭 Microsoft 帐户的双重验证](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)。
 
 ## <a name="i-dont-have-my-mobile-device-with-me"></a>我的移动设备没有显示
 
@@ -99,9 +99,9 @@ ms.locfileid: "81271686"
 
 ## <a name="i-cant-turn-two-factor-verification-off"></a>无法关闭双重验证
 
-如果对工作或学校帐户（例如alain@contoso.com）使用双重验证，则很可能意味着你的组织已决定必须使用此添加的安全功能。 由于你的组织已决定你必须使用此功能，因此无法单独将其关闭。 然而，如果使用个人帐户（如alain@outlook.com）进行双重验证，则可以打开和关闭该功能。 有关如何控制个人帐户的双因素验证的说明，请参阅[打开或关闭 Microsoft 帐户的双重验证](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)。
+如果对工作或学校帐户（例如）使用双重验证 alain@contoso.com ，则很可能意味着你的组织已决定必须使用此添加的安全功能。 由于你的组织已决定你必须使用此功能，因此无法单独将其关闭。 然而，如果使用个人帐户（如）进行双重验证， alain@outlook.com 则可以打开和关闭该功能。 有关如何控制个人帐户的双因素验证的说明，请参阅[打开或关闭 Microsoft 帐户的双重验证](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)。
 
-如果无法关闭双重验证，还可能是因为在组织级别应用了安全默认值。 有关安全性默认值的详细信息，请参阅[什么是安全 defulta？](../fundamentals/concept-fundamentals-security-defaults.md)
+如果无法关闭双重验证，还可能是因为在组织级别应用了安全默认值。 有关安全性默认值的详细信息，请参阅[什么是安全默认值？](../fundamentals/concept-fundamentals-security-defaults.md)
 
 ## <a name="i-didnt-find-an-answer-to-my-problem"></a>我找不到问题的解答
 

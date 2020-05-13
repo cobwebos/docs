@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 99a9e68a2e0c39364cc5105f230b00ffb90d867d
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 76a5e12eee7a325a73b3c17dba6c775b6984b89a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82888797"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195908"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>使用诊断功能 Log Analytics
 
 >[!IMPORTANT]
->此内容适用于带有 Azure 资源管理器 Windows 虚拟桌面对象的弹簧2020更新。 如果使用的是不带 Azure 资源管理器对象的 Windows 虚拟桌面2019版，请参阅[此文](./virtual-desktop-fall-2019/diagnostics-log-analytics-2019.md)。
+>本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 2020 春季更新版。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面 2019 秋季版，请参阅[此文](./virtual-desktop-fall-2019/diagnostics-log-analytics-2019.md)。
 >
-> Windows 虚拟桌面春季2020更新目前为公共预览版。 此预览版本在提供时没有服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 
+> Windows 虚拟桌面 2020 春季更新版目前为公共预览版。 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Windows 虚拟桌面使用[Azure Monitor](../azure-monitor/overview.md)来监视和警报，例如许多其他 Azure 服务。 这样，管理员便可以通过单个界面识别问题。 此服务为用户和管理操作创建活动日志。 每个活动日志分为以下类别：  
@@ -96,7 +96,7 @@ Azure Monitor 使你能够分析 Windows 虚拟桌面数据并查看虚拟机（
 
 ### <a name="access-log-analytics-on-a-log-analytics-workspace"></a>Log Analytics 工作区上的访问 Log Analytics
 
-1. 登录到 Azure 门户。
+1. 登录到 Azure 门户。  
 
 2. 搜索**Log Analytics 工作区**。 
 
@@ -124,9 +124,9 @@ Azure Monitor 使你能够分析 Windows 虚拟桌面数据并查看虚拟机（
 
 仅 Log Analytics 连接活动的以下中间状态的报表：
 
-- Started
-- 连续
-- 已完成
+- 已启动：用户在远程桌面客户端中选择并连接到应用或桌面。
+- 已连接：当用户成功连接到承载应用或桌面的 VM 时。
+- 已完成：当用户或服务器断开与活动发生时所在的会话时。
 
 ## <a name="example-queries"></a>查询示例
 

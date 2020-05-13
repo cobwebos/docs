@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/22/2020
+ms.date: 05/11/2020
 ms.author: radeltch
-ms.openlocfilehash: e04b37d0c95f2176581c7d13f3641a13ecddfd8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 501d49feef877addd2f3e5364a06caf1d273ca83
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82101206"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196867"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上 Azure VM 中 SAP HANA 的高可用性
 
@@ -112,7 +112,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
     - **系统可用性**：选择“HA”。****
     - **管理员用户名和管理员密码**：创建可用于登录计算机的新用户。
     - **新子网或现有子网**：确定是要创建新的虚拟网络和子网，还是使用现有子网。 如果已有连接到本地网络的虚拟网络，请选择“现有”。****
-    - **子网 ID**：如果想要将 vm 部署到现有的 VNet，而该 VNet 定义了 vm 应分配到的子网，请命名该特定子网的 ID。 ID 通常类似于 **/subscriptions/\<订阅 ID>/resourcegroups/\<资源组名称>/providers/microsoft.network/virtualnetworks/\<虚拟网络名称>/subnets/\<子网名称>**。
+    - **子网 ID**：如果想要将 vm 部署到现有的 VNet，而该 VNet 定义了 vm 应分配到的子网，请命名该特定子网的 ID。 ID 通常类似于 **/subscriptions/ \< 订阅 ID>/resourcegroups/ \< 资源组名称>/providers/microsoft.network/virtualnetworks/ \< 虚拟网络名称>/subnets/ \< 子网名称>**。
 
 ### <a name="manual-deployment"></a>手动部署
 
@@ -150,7 +150,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
       1. 选择“添加虚拟机”。****
       1. 选择 "虚拟机"。
       1. 选择 SAP HANA 群集的虚拟机及其 IP 地址。
-      1. 选择 **添加** 。
+      1. 选择“添加”  。
    
    1. 接下来创建运行状况探测：
    
@@ -277,10 +277,10 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    sudo vgcreate vg_hana_shared_<b>HN1</b> /dev/disk/azure/scsi1/lun3
    </code></pre>
 
-   创建逻辑卷。 线性卷是使用不带 `-i` 开关的 `lvcreate` 创建的。 建议创建一个条带化卷以获得更好的 i/o 性能，并将条带大小与[SAP HANA VM 存储配置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)中所述的值对齐。 `-i`参数应为基础物理卷的数目，而`-I`参数是条带大小。 在本文档中，两个物理卷用于数据卷，因此 `-i` 开关参数设置为 **2**。 数据卷的条带大小为**256KiB**。 一个物理卷用于日志卷，因此不会将任何`-i`或`-I`开关显式用于日志卷命令。  
+   创建逻辑卷。 线性卷是使用不带 `-i` 开关的 `lvcreate` 创建的。 建议创建一个条带化卷以获得更好的 i/o 性能，并将条带大小与[SAP HANA VM 存储配置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)中所述的值对齐。 `-i`参数应为基础物理卷的数目，而 `-I` 参数是条带大小。 在本文档中，两个物理卷用于数据卷，因此 `-i` 开关参数设置为 **2**。 数据卷的条带大小为**256KiB**。 一个物理卷用于日志卷，因此不 `-i` 会将任何或 `-I` 开关显式用于日志卷命令。  
 
    > [!IMPORTANT]
-   > 对每个数据、日志或共享卷使用多个物理卷时，请使用 `-i` 开关，并将其设置为基础物理卷的数量。 创建带`-I`区卷时，请使用开关指定条带大小。  
+   > 对每个数据、日志或共享卷使用多个物理卷时，请使用 `-i` 开关，并将其设置为基础物理卷的数量。 `-I`创建带区卷时，请使用开关指定条带大小。  
    > 有关推荐的存储配置，请参阅[SAP HANA VM 存储配置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)，其中包括条带大小和磁盘数。  
 
    <pre><code>sudo lvcreate <b>-i 2</b> <b>-I 256</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
@@ -407,14 +407,14 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
    如果使用的是 SAP HANA 2.0 或 MDC，请为 SAP NetWeaver 系统创建一个租户数据库。 将**NW1**替换为 SAP 系统的 SID。
 
-   执行以下命令 <hanasid\>adm：
+   执行以下命令 <hanasid \> adm：
 
    <pre><code>hdbsql -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> -d SYSTEMDB 'CREATE DATABASE <b>NW1</b> SYSTEM USER PASSWORD "<b>passwd</b>"'
    </code></pre>
 
 1. **[1]** 在第一个节点上配置系统复制：
 
-   将数据库备份为 <hanasid\>adm：
+   将数据库备份为 <hanasid \> adm：
 
    <pre><code>hdbsql -d SYSTEMDB -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupSYS</b>')"
    hdbsql -d <b>HN1</b> -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupHN1</b>')"
@@ -434,7 +434,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 1. **[2]** 在第二个节点上配置系统复制：
     
-   注册第二个节点以启动系统复制。 运行以下命令作为 <hanasid\>adm：
+   注册第二个节点以启动系统复制。 运行以下命令作为 <hanasid \> adm：
 
    <pre><code>sapcontrol -nr <b>03</b> -function StopWait 600 10
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b> 
@@ -481,7 +481,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 1. **[1]** 在第一个节点上配置系统复制。
 
-   创建主站点作为 <hanasid\>adm：
+   创建主站点作为 <hanasid \> adm：
 
    <pre><code>su - <b>hdb</b>adm
    hdbnsutil -sr_enable –-name=<b>SITE1</b>
@@ -489,7 +489,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 1. **[2]** 在第二个节点上配置系统复制。
 
-   将辅助站点注册为 <hanasid\>adm：
+   将辅助站点注册为 <hanasid \> adm：
 
    <pre><code>sapcontrol -nr <b>03</b> -function StopWait 600 10
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b> 
@@ -547,7 +547,8 @@ sudo crm configure primitive rsc_ip_<b>HN1</b>_HDB<b>03</b> ocf:heartbeat:IPaddr
   op monitor interval="10s" timeout="20s" \
   params ip="<b>10.0.0.13</b>"
 
-sudo crm configure primitive rsc_nc_<b>HN1</b>_HDB<b>03</b> azure-lb port=625<b>03</b>
+sudo crm configure primitive rsc_nc_<b>HN1</b>_HDB<b>03</b> azure-lb port=625<b>03</b> \
+  meta resource-stickiness=0
 
 sudo crm configure group g_ip_<b>HN1</b>_HDB<b>03</b> rsc_ip_<b>HN1</b>_HDB<b>03</b> rsc_nc_<b>HN1</b>_HDB<b>03</b>
 
@@ -759,7 +760,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-   将以下命令作为 <hanasid\>adm 上的节点 hn1 上运行：
+   将以下命令作为 <hanasid \> adm 上的节点 hn1 上运行：
 
    <pre><code>hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
@@ -800,7 +801,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
-   在节点 hn1 上将以下命令\>作为 <hanasid adm 运行：
+   在节点 hn1 上将以下命令作为 <hanasid \> adm 运行：
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
@@ -841,7 +842,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-   将以下命令作为 <hanasid\>adm 上的节点 hn1 上运行：
+   将以下命令作为 <hanasid \> adm 上的节点 hn1 上运行：
 
    <pre><code>hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>
@@ -882,7 +883,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
-   在节点 hn1 上将以下命令\>作为 <hanasid adm 运行：
+   在节点 hn1 上将以下命令作为 <hanasid \> adm 运行：
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>
@@ -1025,7 +1026,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-   在节点 hn1 上将以下命令\>作为 <hanasid adm 运行：
+   在节点 hn1 上将以下命令作为 <hanasid \> adm 运行：
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
@@ -1062,7 +1063,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-   在节点 hn1 上将以下命令\>作为 <hanasid adm 运行：
+   在节点 hn1 上将以下命令作为 <hanasid \> adm 运行：
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>

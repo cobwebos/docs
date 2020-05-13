@@ -1,18 +1,18 @@
 ---
-title: 在 Azure Application Insights 中分隔遥测
+title: 如何设计 Application Insights 部署-一项与多项资源？
 description: 为开发、测试和生产戳记直接遥测不同的资源。
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.openlocfilehash: 92a1bb6cb0bb73ac67d38eeba5bd3cdafacf8b56
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.date: 05/11/2020
+ms.openlocfilehash: 6df6622cbba251c221533c3307dc194f08e871fb
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562145"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125683"
 ---
-# <a name="separating-telemetry-from-development-test-and-production"></a>分隔开发、测试和生产阶段的遥测
+# <a name="how-many-application-insights-resources-should-i-deploy"></a>应该部署多少个 Application Insights 资源
 
-部署 Web 应用程序的下一个版本时，不希望将新版本和已发布的版本中的 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 遥测混合使用。 为避免混淆，请使用不同的检测密钥 (ikey) 将遥测数据从不同的开发阶段发送到不同的 Application Insights 资源。 为了在版本从一个阶段移动到另一个阶段时更轻松地更改检测密钥，在代码中而非在配置文件中设置 ikey 可能比较有用。 
+部署 Web 应用程序的下一个版本时，不希望将新版本和已发布的版本中的 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 遥测混合使用。 为避免混淆，请使用不同的检测密钥 (ikey) 将遥测数据从不同的开发阶段发送到不同的 Application Insights 资源。 为了在版本从一个阶段移动到另一个阶段时更轻松地更改检测密钥，在代码中而非在配置文件中设置 ikey 可能比较有用。
 
 （如果系统是 Azure 云服务，有[另一种方法可以设置单独 ikey](../../azure-monitor/app/cloudservices.md)。）
 
@@ -22,7 +22,7 @@ ms.locfileid: "82562145"
 
 每个 Application Insights 资源随附了现成可用的指标。 如果完全不同的组件报告到相同的 Application Insights 资源，则这些指标可能对上的仪表板/警报没有意义。
 
-### <a name="use-a-single-application-insights-resource"></a>使用单个 Application Insights 资源
+### <a name="when-to-use-a-single-application-insights-resource"></a>何时使用单个 Application Insights 资源
 
 -   对于一起部署的应用程序组件。 通常由单个团队开发，由同一组 DevOps/ITOps 用户进行管理。
 -   如果有必要聚合关键绩效指标（Kpi）（如响应持续时间、仪表板中的故障率等），请在默认情况下，在所有这些指标之间进行聚合（可以选择按角色名称划分指标资源管理器体验）。
@@ -124,7 +124,7 @@ ms.locfileid: "82562145"
     若要允许 MSBuild 生成版本号，请在 AssemblyReference.cs 中设置类似于 `1.0.*` 的版本
 
 ## <a name="version-and-release-tracking"></a>版本和发行版本跟踪
-若要跟踪应用程序版本，请确保 Microsoft 生成引擎进程生成了 `buildinfo.config`。 在`.csproj`文件中，添加：  
+若要跟踪应用程序版本，请确保 Microsoft 生成引擎进程生成了 `buildinfo.config`。 在 `.csproj` 文件中，添加：  
 
 ```XML
 

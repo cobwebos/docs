@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 1af0161edb0f833cdd14d8157e6edd9644e21467
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aeee7558aeeb0c1a3de291abc66578d7d955d842
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100271"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196184"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>将 SQL Server 实例迁移到 Azure SQL 数据库托管实例
 
@@ -43,9 +43,7 @@ ms.locfileid: "82100271"
 
 首先，确定托管实例是否与应用程序的数据库要求相符。 托管实例部署选项旨在，方便直接迁移大多数在本地或在虚拟机中使用 SQL Server 的现有应用程序。 但是，有时可能需要功能或功能，但也可能需要执行解决方法的成本太高。
 
-使用[数据迁移助手 (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) 可以检测影响 Azure SQL 数据库功能的潜在兼容性问题。 虽然 DMA 尚不支持将托管实例用作迁移目标，但建议针对 Azure SQL 数据库运行评估，并根据产品文档仔细查看报告的功能奇偶一致性和兼容性问题列表。 请参阅 [Azure SQL 数据库功能](sql-database-features.md)，以检查托管实例中是否不存在报告的一些阻塞性问题，因为大多数阻止迁移到 Azure SQL 数据库的阻塞性问题已通过托管实例进行删除。 例如，托管实例中提供跨数据库查询、同一实例中的跨数据库事务、链接到到其他 SQL 源的链接服务器、CLR、全局临时表、实例级视图、Service Broker 等功能。
-
-如果报告的一些阻塞性问题未通过托管实例部署选项进行删除，可能需要考虑备用选项，如 [Azure 虚拟机上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)。 下面是一些示例：
+使用[数据迁移助手 (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) 可以检测影响 Azure SQL 数据库功能的潜在兼容性问题。 如果存在一些报告的阻止问题，你可能需要考虑使用替代选项，如[在 Azure 虚拟机上 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)。 下面是一些示例：
 
 - 需要直接访问操作系统或文件系统（例如，为了在装有 SQL Server 的同一个虚拟机上安装第三方代理或自定义代理）。
 - 严重依赖于目前尚不支持的功能，例如 FileStream/FileTable、PolyBase 和跨实例事务。
@@ -53,6 +51,7 @@ ms.locfileid: "82100271"
 - 计算要求比托管实例的要求低得多（例如，只需一个 vCore），并且数据库整合不可接受。
 
 如果已解决所有已识别的迁移阻碍并继续迁移到托管实例，请注意，某些更改可能会影响工作负荷的性能：
+
 - 如果你定期使用简单/批量记录的模型或按需停止备份，则强制性完整恢复模型和定期自动备份计划可能会影响工作负荷或维护/ETL 操作的性能。
 - 不同的服务器或数据库级别配置，例如跟踪标志或兼容性级别
 - 使用的新功能（例如透明数据库加密 (TDE) 或自动故障转移组）可能会影响 CPU 和 IO 使用率。

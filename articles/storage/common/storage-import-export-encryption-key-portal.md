@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 71426d131cdd46b176c387a31e3dc2ca66ae3761
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: d0a1826dafd1e6ce6202dc4f29417a1ce100e54f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871160"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195257"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>在导入/导出服务的 Azure Key Vault 中使用客户托管的密钥
 
@@ -23,7 +23,7 @@ Azure 导入/导出可通过加密密钥保护用于锁定驱动器的 BitLocker
 
 本文介绍如何在[Azure 门户](https://portal.azure.com/)中通过导入/导出服务使用客户管理的密钥。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保：
 
@@ -99,9 +99,10 @@ Azure 导入/导出可通过加密密钥保护用于锁定驱动器的 BitLocker
 
 | 错误代码     |详细信息     | 性?    |
 |----------------|------------|-----------------|
-| CmkErrorAccessRevoked | 应用了客户管理的密钥，但密钥访问权限当前被吊销。 有关详细信息，请参阅如何[启用密钥访问](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy)。                                                      | 是，检查： <ol><li>密钥保管库在访问策略中仍具有 MSI。</li><li>访问策略提供获取、包装、解包的权限。</li><li>如果密钥保管库位于防火墙后面的 vNet 中，请选中 "**允许 Microsoft 可信服务**已启用"。</li></ol>                                                                                            |
-| CmkErrorKeyDisabled      | 应用了客户管理的密钥，但该密钥已禁用。 有关详细信息，请参阅如何[启用密钥](https://docs.microsoft.com/rest/api/keyvault/vaults/createorupdate)。                                                                             | 是，通过启用密钥版本     |
-| CmkErrorKeyNotFound      | 应用了客户管理的密钥，但找不到与密钥关联的密钥保管库。<br>如果删除了密钥保管库，则无法恢复客户管理的密钥。  如果已将密钥保管库迁移到其他租户，请参阅在[订阅移动后更改密钥保管库租户 ID](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix)。 |   如果已删除密钥保管库：<ol><li>如果是，则为 "是"，如果它处于 "清除保护" 持续时间，请使用[恢复密钥保管库](https://docs.microsoft.com/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault)中的步骤。</li><li>否，如果超出了清除保护持续时间。</li></ol><br>如果密钥保管库耗费租户迁移，是的，可以使用以下步骤之一恢复： <ol><li>将密钥保管库还原回旧租户。</li><li>设置`Identity = None` ，然后将值设置回`Identity = SystemAssigned`。 创建新标识后，此操作将删除并重新创建标识。 对`Get`密钥`Wrap`保管库`Unwrap`的访问策略中的新标识启用、和权限。</li></ol>|
+| CmkErrorAccessRevoked | 撤消对客户托管密钥的访问权限。                                                       | 是，检查： <ol><li>密钥保管库在访问策略中仍具有 MSI。</li><li>访问策略启用了 Get、Wrap 和解包权限。</li><li>如果密钥保管库位于防火墙后面的 VNet 中，请选中 "**允许 Microsoft 可信服务**已启用"。</li><li>检查作业资源的 MSI 是否已重置为 `None` 使用 api。<br>如果是，则将值设置回 `Identity = SystemAssigned` 。 这将重新创建作业资源的标识。<br>创建新标识后， `Get` `Wrap` `Unwrap` 为密钥保管库访问策略中的新标识启用、和权限</li></ol>                                                                                            |
+| CmkErrorKeyDisabled      | 禁用客户管理的密钥。                                         | 是，通过启用密钥版本     |
+| CmkErrorKeyNotFound      | 找不到客户管理的密钥。 | 是的，如果已删除该密钥，但该密钥仍处于清除持续时间内，请[删除 "撤消密钥保管库密钥](https://docs.microsoft.com/powershell/module/az.keyvault/undo-azkeyvaultkeyremoval)"。<br>其它 <ol><li>是，如果客户已备份密钥并进行还原。</li><li>不，否则为。</li></ol>
+| CmkErrorVaultNotFound |找不到客户托管密钥的密钥保管库。 |   如果已删除密钥保管库：<ol><li>如果是，则为 "是"，如果它处于 "清除保护" 持续时间，请使用[恢复密钥保管库](https://docs.microsoft.com/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault)中的步骤。</li><li>否，如果超出了清除保护持续时间。</li></ol><br>如果密钥保管库已迁移到其他租户，可以使用以下步骤之一进行恢复：<ol><li>将密钥保管库还原回旧租户。</li><li>设置 `Identity = None` ，然后将值设置回 `Identity = SystemAssigned` 。 创建新标识后，此操作将删除并重新创建标识。 `Get` `Wrap` `Unwrap` 对密钥保管库的访问策略中的新标识启用、和权限。</li></ol>|
 
 ## <a name="next-steps"></a>后续步骤
 

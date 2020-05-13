@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/08/2020
+ms.date: 05/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: dfb094bc9f84e7129a3e1c733a054c5f6cd96372
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10b3a6bb9592c955d16b070ae412374b8a1f4444
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81008616"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196932"
 ---
 Azure ultra 磁盘为 Azure IaaS 虚拟机（Vm）提供高吞吐量、高 IOPS 和一致的低延迟磁盘存储。 此新产品提供出类拔萃的性能，其可用性级别与我们的现有磁盘产品相同。 超磁盘的一个主要优点是能够在不重新启动 Vm 的情况下动态更改 SSD 的性能和工作负荷。 超级磁盘适用于 SAP HANA、顶层数据库等数据密集型工作负荷，以及事务密集型工作负荷。
 
@@ -62,7 +62,7 @@ $vmSize = "Standard_E64s_v3"
 
 ### <a name="vms-with-no-redundancy-options"></a>无冗余选项的 Vm
 
-现在，必须部署在美国西部部署的 Ultra 磁盘，无需任何冗余选项。 但是，并非每个支持 ultra 磁盘的磁盘大小都可以在此区域中。 若要确定美国西部的哪些支持超磁盘，可以使用以下代码片段之一。 请确保首先替换`vmSize`和`subscription`值：
+现在，必须部署在美国西部部署的 Ultra 磁盘，无需任何冗余选项。 但是，并非每个支持 ultra 磁盘的磁盘大小都可以在此区域中。 若要确定美国西部的哪些支持超磁盘，可以使用以下代码片段之一。 请确保 `vmSize` 首先替换和 `subscription` 值：
 
 ```azurecli
 $subscription = "<yourSubID>"
@@ -79,7 +79,7 @@ $vmSize = "Standard_E64s_v3"
 (Get-AzComputeResourceSku | where {$_.Locations.Contains($region) -and ($_.Name -eq $vmSize) })[0].Capabilities
 ```
 
-响应将类似于以下形式， `UltraSSDAvailable   True`指示 VM 大小是否支持此区域中的超磁盘。
+响应将类似于以下形式， `UltraSSDAvailable   True` 指示 VM 大小是否支持此区域中的超磁盘。
 
 ```
 Name                                         Value
@@ -115,7 +115,7 @@ UltraSSDAvailable                            True
 
 若要创建具有多个超磁盘的 VM，请参阅示例[创建包含多个超磁盘的 vm](https://aka.ms/ultradiskArmTemplate)。
 
-如果要使用自己的模板，请确保将**apiVersion** `Microsoft.Compute/virtualMachines` `Microsoft.Compute/Disks`设置为`2018-06-01` （或更高版本）。
+如果要使用自己的模板，请确保将**apiVersion** `Microsoft.Compute/virtualMachines` 设置为 `Microsoft.Compute/Disks` `2018-06-01` （或更高版本）。
 
 将磁盘 sku 设置为**UltraSSD_LRS**，然后设置磁盘容量、IOPS、可用性区域和吞吐量（以 MBps 为单位），以创建一个超小型磁盘
 

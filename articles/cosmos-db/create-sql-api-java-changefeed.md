@@ -1,19 +1,19 @@
 ---
 title: 使用更改源创建端到端 Azure Cosmos DB Java SDK v4 应用程序示例
-description: 本操作方法指南将指导你完成一个简单的 Java SQL API 应用程序，该应用程序将文档插入 Azure Cosmos DB 容器，同时使用更改源维护容器的具体化视图。
-author: anfeldma
+description: 本指南将指导你完成一个简单的 Java SQL API 应用程序，该应用程序将文档插入 Azure Cosmos DB 容器中，同时使用更改源维护容器的具体化视图。
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: anfeldma
-ms.openlocfilehash: 9e28eb4f766677ebbd5cfcc5f61fe54e53a45523
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 5e8656e891d250547174aa3deb27a94eebaa0ba3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996512"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125666"
 ---
 # <a name="how-to-create-a-java-application-that-uses-azure-cosmos-db-sql-api-and-change-feed-processor"></a>如何创建使用 Azure Cosmos DB SQL API 和更改源处理器的 Java 应用程序
 
@@ -23,7 +23,7 @@ ms.locfileid: "82996512"
 
 本操作方法指南将指导你完成一个简单的 Java 应用程序，该应用程序使用 Azure Cosmos DB SQL API 将文档插入 Azure Cosmos DB 容器中，同时使用更改源和更改源处理器维护容器的具体化视图。 Java 应用程序使用 Azure Cosmos DB Java SDK v4 与 Azure Cosmos DB SQL API 通信。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure Cosmos DB 帐户的 URI 和密钥
 
@@ -33,11 +33,11 @@ ms.locfileid: "82996512"
 
 ## <a name="background"></a>背景
 
-Azure Cosmos DB 更改源提供事件驱动的接口，用于在响应文档插入时触发操作。 此功能有很多用途。 例如，在读取和写入负载繁重的应用程序中，更改源的主要用途是在引入文档时创建容器的实时具体化视图。  具体化视图容器包含相同的数据，但为了提高读取效率，该容器进行了分区，因此可以提高应用程序的读取和写入效率。
+Azure Cosmos DB 更改源提供事件驱动的接口来触发操作，以响应文档插入。 此功能有很多用途。 例如，在读取和写入繁重的应用程序中，更改源的主要用途是创建容器的实时**具体化视图**，因为它是引入的文档。 具体化视图容器包含相同的数据，但为了提高读取效率，该容器进行了分区，因此可以提高应用程序的读取和写入效率。
 
-管理更改源事件的工作主要由 SDK 中内置的更改源处理器库负责。 此库足够强大，可以根据需要在多个工作线程之间分配更改源事件。 你只需为更改源库提供一个回调。
+管理更改源事件的工作在很大程度上由 SDK 中内置的更改源处理器库负责。 如果需要，此库的功能非常强大，可以在多个工作线程之间分配更改源事件。 你只需为更改源库提供回调。
 
-此简单示例使用单个工作线程在具体化视图中创建和删除文档，以此演示更改源处理器库。
+这个简单的示例演示了如何使用单个辅助角色在具体化视图中创建和删除文档。
 
 ## <a name="setup"></a>设置
 
@@ -75,7 +75,7 @@ mvn clean package
 
     * **InventoryContainer** - 示例杂货店的库存记录，已按项 ```id```（一个 UUID）进行分区。
     * **InventoryContainer-pktype** - 库存记录的具体化视图，已针对项 ```type``` 的查询进行优化
-    * **InventoryContainer-leases** - 更改源始终需要一个租约容器；租约跟踪应用读取更改源的进度。
+    * **InventoryContainer** -更改源始终需要租赁容器;租约跟踪应用程序读取更改源的进度。
 
 
     ![空容器](media/create-sql-api-java-changefeed/cosmos_account_resources_lease_empty.JPG)
@@ -87,7 +87,7 @@ mvn clean package
     Press enter to start creating the materialized view...
     ```
 
-    按 Enter。 现在，以下代码块将在另一个线程中执行并初始化更改源处理器： 
+    按 Enter。 现在，下面的代码块将在另一个线程上执行并初始化更改源处理器： 
 
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-connection-policy-async"></a>Java SDK V4 （Maven：： azure-cosmos） Async API
 
@@ -100,7 +100,7 @@ mvn clean package
         })
         .subscribe();
 
-    while (!isProcessorRunning.get()); //Wait for Change Feed processor start
+    while (!isProcessorRunning.get()); //Wait for change feed processor start
     ```
 
     ```"SampleHost_1"``` 是更改源处理器工作线程的名称。 ```changeFeedProcessorInstance.start()``` 是实际启动更改源处理器的组件。
@@ -109,7 +109,7 @@ mvn clean package
 
     ![租约](media/create-sql-api-java-changefeed/cosmos_leases.JPG)
 
-1. 再次在终端中按 Enter。 这会触发将 10 个文档插入 InventoryContainer 的事件。  每个文档插入事件在更改源中以 JSON 显示；以下回调代码通过将 JSON 文档镜像到具体化视图来处理这些事件：
+1. 再次在终端中按 Enter。 这会触发将 10 个文档插入 InventoryContainer 的事件。  每个文档插入都在更改源中显示为 JSON;以下回调代码通过将 JSON 文档镜像到具体化视图来处理这些事件：
 
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-connection-policy-async"></a>Java SDK V4 （Maven：： azure-cosmos） Async API
 
@@ -142,7 +142,7 @@ mvn clean package
 
     ![源容器](media/create-sql-api-java-changefeed/cosmos_items.JPG)
 
-1. 现在，请在数据资源管理器中导航到“InventoryContainer-pktype”>“项”。  这是具体化视图 - 此容器中的项会镜像 InventoryContainer，因为它们已由更改源以编程方式插入。  记下分区键 (```type```)。 因此，此具体化视图已针对 ```type``` 查询筛选进行优化，但它在 InventoryContainer 中效率不高，因为此容器是按 ```id``` 分区的。 
+1. 现在，请在数据资源管理器中导航到“InventoryContainer-pktype”>“项”。  这是具体化视图-此容器中的项**InventoryContainer** ，因为它们是通过更改源以编程方式插入的。 记下分区键 (```type```)。 因此，此具体化视图已针对 ```type``` 查询筛选进行优化，但它在 InventoryContainer 中效率不高，因为此容器是按 ```id``` 分区的。 
 
     ![具体化视图](media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG)
 
@@ -181,10 +181,10 @@ mvn clean package
     }    
     ```
 
-    更改源 ```feedPollDelay``` 设置为 100 毫秒；因此，更改源几乎可以即时响应此更新，并按如上所示调用 ```updateInventoryTypeMaterializedView()```。 最后一个函数调用将 TTL 为 5 秒的新文档更新插入到 InventoryContainer-pktype。 
+    更改源 ```feedPollDelay``` 设置为 100ms; 因此，更改源几乎可立即响应此更新和 ```updateInventoryTypeMaterializedView()``` 上面所示的调用。 最后一个函数调用将 TTL 为 5 秒的新文档更新插入到 InventoryContainer-pktype。 
 
     效果是，在大约 5 秒后，该文档将会过期并从两个容器中删除。
 
-    之所以需要完成此过程，是因为更改源只会针对项插入或更新操作发出事件，而不会针对项删除操作发出事件。
+    此过程是必需的，因为更改源只能在项插入或更新时发出事件，而不会对项删除发出事件。
 
 1. 再次按 Enter 以关闭程序并清理其资源。

@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: article
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 19eaaa1ac442a04799bfa8d8d495b9c7dd393e5a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 72a96e04d308dbb2774d5b8f8aa909ab81bebee3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82928272"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195676"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>全局传输网络体系结构和虚拟 WAN
 
@@ -145,10 +145,10 @@ Azure Firewall 到虚拟 WAN 支持以下全球安全的传输连接路径。 �
 
 ### <a name="vnet-to-internet-or-third-party-security-service-i"></a>VNet 到 Internet 或第三方安全服务（i）
 
-通过 VNet 到 Internet 或第三方的安全传输，Vnet 可通过虚拟 WAN 集线器中的 Azure 防火墙连接到 internet 或受支持的第三方安全服务。
+通过 VNet 到 Internet，Vnet 可通过虚拟 WAN 集线器中的 Azure 防火墙连接到 internet。 通过受支持的第三方安全服务发往 internet 的流量不会流过 Azure 防火墙。 可以使用 Azure 防火墙管理器通过支持的第三方安全服务配置 Vnet 到 Internet 的路径。  
 
 ### <a name="branch-to-internet-or-third-party-security-service-j"></a>分支到 Internet 或第三方安全服务（j）
-分支到 Internet 或第三方安全传输允许分支通过虚拟 WAN 集线器中的 Azure 防火墙连接到 Internet 或受支持的第三方安全服务。
+分支到 Internet 使分支可以通过虚拟 WAN 集线器中的 Azure 防火墙连接到 internet。 通过受支持的第三方安全服务发往 internet 的流量不会流过 Azure 防火墙。 可以使用 Azure 防火墙管理器通过支持的第三方安全服务配置分支到 Internet 路径。 
 
 ### <a name="how-do-i-enable-default-route-00000-in-a-secured-virtual-hub"></a>如何实现在受保护的虚拟中心内启用默认路由（0.0.0.0/0）
 

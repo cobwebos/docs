@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/12/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: a2df89bc18ea5d0098ac5ebb0bc06b9df6728705
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: ea289dbdf22f76c8ea716acf87b0b1a2da6ef0f9
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993759"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196600"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>通过 Azure Monitor 日志管理使用情况和成本
 
@@ -40,15 +40,15 @@ Log Analytics 的默认定价采用**即用即付**模型，该模型基于数�
   
 除了即用即付模型以外，Log Analytics 还提供了**产能预留**层，与即用即付价格相比，该模型最多可将成本节省 25%。 容量预留定价模型允许每天购买 100 GB 的初始预留容量。 超过预留级别的任何用量将按即用即付费率计费。 产能预留层具有 31 天的套餐周期。 在套餐周期内，你可以更改为更高级别的产能预留层（这将重启 31 天的套餐周期），但在套餐周期结束之前，你不能返回到即用即付或更低级别的产能预留层。 产能预留层每天进行计费。 [详细了解](https://azure.microsoft.com/pricing/details/monitor/) Log Analytics 即用即付和产能预留定价。 
 
-在所有定价层中，数据量是在准备存储数据时从数据的字符串表示形式计算得出的。 事件大小的计算中不包括[所有数据类型共有](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties)的几个属性， `_ResourceId`包括、 `_ItemId` `_IsBillable`和。 `_BilledSize`
+在所有定价层中，数据量是在准备存储数据时从数据的字符串表示形式计算得出的。 事件大小的计算中不包括[所有数据类型共有](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties)的几个属性，包括 `_ResourceId` 、 `_ItemId` `_IsBillable` 和 `_BilledSize` 。
 
 另请注意，某些解决方案（例如[Azure 安全中心](https://azure.microsoft.com/pricing/details/security-center/)、 [Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/)和[配置管理](https://azure.microsoft.com/pricing/details/automation/)）有自己的定价模型。 
 
-### <a name="log-analytics-clusters"></a>Log Analytics 群集
+### <a name="log-analytics-dedicated-clusters"></a>Log Analytics 专用群集
 
-Log Analytics 群集是单个托管的 Azure 数据资源管理器群集的工作区集合，用于支持高级方案，如[客户管理的密钥](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys)。  与即用即付定价相比，Log Analytics 群集仅支持从 1000 GB/天开始、25% 折扣的容量保留定价模型。 超过预留级别的任何用量将按即用即付费率计费。 在增加预留级别后，群集容量预留具有31天承诺期。 在承诺期间，不能减少容量保留级别，但可以随时增加容量预留级别。 详细了解如何[创建 Log Analytics 群集](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource)并[将工作区关联到该](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#workspace-association-to-cluster-resource)群集。  
+Log Analytics 专用群集是数据资源管理器工作区的集合，以支持高级方案，如[客户管理的密钥](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys)。  与即用即付定价相比，Log Analytics 专用群集仅支持从 1000 GB/天开始、25% 折扣的容量保留定价模型。 超过预留级别的任何用量将按即用即付费率计费。 在增加预留级别后，群集容量预留具有31天承诺期。 在承诺期间，不能减少容量保留级别，但可以随时增加容量预留级别。 详细了解如何[创建 Log Analytics 群集](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource)并[将工作区关联到该](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#workspace-association-to-cluster-resource)群集。  
 
-使用下`Capacity` `Sku`的参数通过以编程方式使用 Azure 资源管理器配置群集容量预留级别。 以`Capacity` GB 为单位指定，可具有 1000 gb/天或更多的值，以 100 gb/天为增量。 详细信息见[此处](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource)。 如果群集需要超过 2000 GB/天的保留，请联系我们[LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com)。
+使用下的参数通过以编程方式使用 Azure 资源管理器配置群集容量预留级别 `Capacity` `Sku` 。 `Capacity`以 GB 为单位指定，可具有 1000 gb/天或更多的值，以 100 gb/天为增量。 详细信息见[此处](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource)。 如果群集需要超过 2000 GB/天的保留，请联系我们 [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com) 。
 
 由于引入数据的计费是在群集级别上完成的，因此与群集关联的工作区不再具有定价层。 将聚合与群集关联的每个工作区中的引入数据数量，以计算该分类的每日帐单。 请注意， [Azure 安全中心](https://docs.microsoft.com/azure/security-center/)的每个节点分配在此聚合数据在群集中的所有工作区上聚合之前，应用于工作区级别。 数据保留期仍按工作区级别计费。 请注意，群集计费在创建群集时开始，不管工作区是否已关联到群集。 
 
@@ -124,8 +124,10 @@ Azure 在 [Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-ma
     
 保留期也可使用 `retentionInDays` 参数[通过 Azure 资源管理器进行设置](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace)。 此外，如果将数据保留期设置为 30 天，则可以使用 `immediatePurgeDataOn30Days` 参数对旧数据触发立即清除，这对于合规性相关的方案可能很有用。 此功能仅通过 Azure 资源管理器公开。 
 
+
 两种数据类型（`Usage` 和 `AzureActivity`）默认保留 90 天，在这 90 天的保留期内不收费。 这些数据类型也没有数据引入费用。 
 
+默认情况下，基于工作区 Application Insights 资源的数据类型（、、、、、、、、 `AppAvailabilityResults` `AppBrowserTimings` `AppDependencies` `AppExceptions` `AppEvents` `AppMetrics` `AppPageViews` `AppPerformanceCounters` `AppRequests` `AppSystemEvents` 和 `AppTraces` ）在默认情况下也会保留90天，并且对于此90日保留期，不收取任何费用。 可以使用保留的数据类型功能调整其保留。 
 
 
 ### <a name="retention-by-data-type"></a>按数据类型分类的保留期
@@ -160,7 +162,7 @@ Azure 在 [Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-ma
     }
 ```
 
-的有效值为`retentionInDays` 30 到730。
+的有效值为 `retentionInDays` 30 到730。
 
 `Usage` 和 `AzureActivity` 数据类型不能使用自定义保留期进行设置。 它们会使用最大的默认工作区保留期（或 90 天）。 
 
@@ -253,7 +255,7 @@ union withsource = tt *
 ```
 
 > [!TIP]
-> 使用这些`union *`查询，因为跨数据类型的扫描会[消耗大量的资源](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane)来执行。 如果**每台计算机**不需要结果，则查询使用情况数据类型（见下文）。
+> 使用这些 `union *` 查询，因为跨数据类型的扫描会[消耗大量的资源](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane)来执行。 如果**每台计算机**不需要结果，则查询使用情况数据类型（见下文）。
 
 ## <a name="understanding-ingested-data-volume"></a>了解引入的数据量
 
@@ -261,7 +263,7 @@ union withsource = tt *
 
 ### <a name="data-volume-for-specific-events"></a>特定事件的数据量
 
-若要查看一组特定事件的引入数据的大小，您可以查询特定表（在本示例`Event`中），然后将查询限制为相关事件（在此示例中，事件 ID 为5145或5156）：
+若要查看一组特定事件的引入数据的大小，您可以查询特定表（在本示例中）， `Event` 然后将查询限制为相关事件（在此示例中，事件 ID 为5145或5156）：
 
 ```kusto
 Event
@@ -271,7 +273,7 @@ Event
 | summarize count(), Bytes=sum(_BilledSize) by EventID, bin(TimeGenerated, 1d)
 ``` 
 
-请注意，子句`where IsBillable = true`筛选出了某些解决方案中没有引入费用的数据类型。 
+请注意，子句 `where IsBillable = true` 筛选出了某些解决方案中没有引入费用的数据类型。 
 
 ### <a name="data-volume-by-solution"></a>按解决方案统计的数据量
 
@@ -285,7 +287,7 @@ Usage
 | summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution | render barchart
 ```
 
-与`TimeGenerated`的子句仅用于确保 Azure 门户中的查询体验在默认的24小时内会恢复。 使用 "使用情况" 数据类型`StartTime`时`EndTime` ，表示显示结果的时间桶。 
+与的子句 `TimeGenerated` 仅用于确保 Azure 门户中的查询体验在默认的24小时内会恢复。 使用 "使用情况" 数据类型时， `StartTime` `EndTime` 表示显示结果的时间桶。 
 
 ### <a name="data-volume-by-type"></a>按类型的数据量
 
@@ -312,7 +314,7 @@ Usage
 
 ### <a name="data-volume-by-computer"></a>按计算机的数据量
 
-`Usage`数据类型不包括计算机级别的信息。 若要查看每台计算机的引入数据**大小**，请`_BilledSize`使用[属性](log-standard-properties.md#_billedsize)，它以字节为单位提供大小：
+`Usage`数据类型不包括计算机级别的信息。 若要查看每台计算机的引入数据**大小**，请使用 `_BilledSize` [属性](log-standard-properties.md#_billedsize)，它以字节为单位提供大小：
 
 ```kusto
 union withsource = tt * 
@@ -335,8 +337,7 @@ union withsource = tt *
 ```
 
 > [!TIP]
-> 使用这些`union  *`查询，因为跨数据类型的扫描会[消耗大量的资源](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane)来执行。 如果**每台计算机**不需要结果，则查询使用情况数据类型。
-
+> 使用这些 `union  *` 查询，因为跨数据类型的扫描会[消耗大量的资源](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane)来执行。 如果**每台计算机**不需要结果，则查询使用情况数据类型。
 
 ### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>按 Azure 资源、资源组或订阅计算的数据量
 
@@ -349,7 +350,7 @@ union withsource = tt *
 | summarize BillableDataBytes = sum(_BilledSize) by _ResourceId | sort by Bytes nulls last
 ```
 
-对于 Azure 中托管的节点的数据，可以获取__每个 azure 订阅__的引入数据**大小**，并`_ResourceId`将属性分析为：
+对于 Azure 中托管的节点的数据，可以获取__每个 azure 订阅__的引入数据**大小**， `_ResourceId` 并将属性分析为：
 
 ```kusto
 union withsource = tt * 
@@ -363,15 +364,18 @@ union withsource = tt *
 将 `subscriptionId` 更改为 `resourceGroup` 后，就会显示可计费的已引入数据量（按 Azure 资源组计算）。 
 
 > [!TIP]
-> 使用这些`union  *`查询，因为跨数据类型的扫描会[消耗大量的资源](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane)来执行。 如果你不需要每个订阅的结果、资源组或资源名称，则查询使用情况数据类型。
+> 使用这些 `union  *` 查询，因为跨数据类型的扫描会[消耗大量的资源](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane)来执行。 如果你不需要每个订阅的结果、资源组或资源名称，则查询使用情况数据类型。
 
 > [!WARNING]
 > 使用情况数据类型的某些字段虽然仍在架构中，但已弃用，其值将不再填充。 这些是**计算机**以及与引入相关的字段（**TotalBatches**、**BatchesWithinSla**、**BatchesOutsideSla**、**BatchesCapped** 和 **AverageProcessingTimeMs**）。
+
 
 ### <a name="querying-for-common-data-types"></a>查询常见的数据类型
 
 若要更深入地了解特定数据类型的数据源，请使用下面这些有用的示例查询：
 
++ **基于工作区的 Application Insights**资源
+  - [在此处](https://docs.microsoft.com/azure/azure-monitor/app/pricing#data-volume-for-workspace-based-application-insights-resources)了解详细信息
 + “安全”解决方案****
   - `SecurityEvent | summarize AggregatedValue = count() by EventID`
 + “日志管理”解决方案****
@@ -463,9 +467,9 @@ union
 
 为了促进此评估，可以使用以下查询根据工作区的使用情况模式提出最佳定价层的建议。  此查询在过去7天内查看监视的节点和数据引入到工作区中，每一天评估哪一定价层是最佳的。 若要使用查询，需要指定
 
-1. 工作区是否使用 Azure 安全中心，方法是`workspaceHasSecurityCenter`将`true`设置`false`为或。 
+1. 工作区是否使用 Azure 安全中心，方法是将设置 `workspaceHasSecurityCenter` 为 `true` 或。 `false` 
 2. 如果有特定折扣，请更新价格，并
-3. 通过设置`daysToEvaluate`指定要回顾和分析的天数。 如果查询尝试查看7天的数据过长，则这很有用。 
+3. 通过设置指定要回顾和分析的天数 `daysToEvaluate` 。 如果查询尝试查看7天的数据过长，则这很有用。 
 
 以下是定价层建议查询：
 

@@ -7,25 +7,22 @@ author: mrcarter8
 ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 2664b1abd4131cf1dca186c7b044e338bf1efa84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.openlocfilehash: 0945743fb2cf3e37345ff562250e48511944cee6
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75945825"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125547"
 ---
-# <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search-preview"></a>创建用于连接到 Azure 认知搜索的专用终结点（预览）
+# <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>创建用于与 Azure 认知搜索建立安全连接的专用终结点
 
-本文介绍如何使用门户创建无法通过公共 IP 地址访问的新 Azure 认知搜索 service 实例。 接下来，配置同一虚拟网络中的 Azure 虚拟机，并使用它通过专用终结点访问搜索服务。
+本文介绍如何使用 Azure 门户创建无法通过 internet 访问的新 Azure 认知搜索服务实例。 接下来，你将配置同一虚拟网络中的 Azure 虚拟机，并使用它通过专用终结点访问搜索服务。
 
 > [!Important]
-> 针对 Azure 认知搜索的专用终结点支持[作为受限](https://aka.ms/SearchPrivateLinkRequestAccess)访问预览版提供。 提供的预览功能不带服务级别协议，不建议用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
->
-> 授予对预览版的访问权限后，便可以使用 Azure 门户或[管理 REST API 版本 2019-10-06-preview](https://docs.microsoft.com/rest/api/searchmanagement/)来配置服务的专用终结点。
->   
+> 可以使用 Azure 门户或[管理 REST API 版本 2020-03-13](https://docs.microsoft.com/rest/api/searchmanagement/)来配置 Azure 认知搜索的专用终结点支持。 当服务终结点为私有时，某些门户功能处于禁用状态。 你将能够查看和管理服务级别信息，但出于安全考虑，出于安全原因，对索引数据和服务中的各种组件（如索引、索引器和技能组合定义）的门户访问是受限的。
 
-## <a name="why-use-private-endpoint-for-secure-access"></a>为什么使用专用终结点进行安全访问？
+## <a name="why-use-a-private-endpoint-for-secure-access"></a>为什么使用私有终结点进行安全访问？
 
 Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview.md)允许虚拟网络上的客户端通过[专用链接](../private-link/private-link-overview.md)安全访问搜索索引中的数据。 专用终结点使用来自[虚拟网络地址空间](../virtual-network/virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)的 IP 地址来搜索服务。 客户端与搜索服务之间的网络流量将在 Microsoft 主干网络上遍历虚拟网络和专用链接，从而消除了公共 internet 的泄露。 有关支持专用链接的其他 PaaS 服务的列表，请查看产品文档中的 "[可用性" 部分](../private-link/private-link-overview.md#availability)。
 
@@ -35,47 +32,29 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 - 通过使你能够阻止渗透虚拟网络中的数据，提高虚拟网络的安全性。
 - 使用[VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)或[ExpressRoutes](../expressroute/expressroute-locations.md)与专用对等互连，从连接到虚拟网络的本地网络安全连接到搜索服务。
 
-> [!NOTE]
-> 预览中当前有一些限制，你应该注意：
-> * 仅可用于**基本**层上的搜索服务。 
-> * 可在美国西部2、美国中部、美国东部、美国中南部、澳大利亚东部和澳大利亚东南部地区获得。
-> * 当服务终结点为私有时，某些门户功能处于禁用状态。 你将能够查看和管理服务级别信息，但出于安全考虑，出于安全原因，对索引数据和服务中的各种组件（如索引、索引器和技能组合定义）的门户访问是受限的。
-> * 如果服务终结点是专用的，则必须使用[搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/)将文档上传到索引。
-> * 你必须使用以下链接来查看 Azure 门户中的专用终结点支持选项：https://portal.azure.com/?feature.enablePrivateEndpoints=true
-
-
-
-## <a name="request-access"></a>请求访问权限 
-
-单击 "[请求访问权限](https://aka.ms/SearchPrivateLinkRequestAccess)" 注册此预览功能。 此窗体请求有关您、您的公司和常规网络拓扑的信息。 查看请求后，将收到一封包含其他说明的确认电子邮件。
-
 ## <a name="create-the-virtual-network"></a>创建虚拟网络
 
 在本部分中，你将创建一个虚拟网络和子网来托管将用于访问搜索服务的专用终结点的 VM。
 
-1. 从 "Azure 门户主页" 选项卡中，选择 "**创建资源** > " "**网络** > " "**虚拟网络**"。
+1. 从 "Azure 门户主页" 选项卡中，选择 "**创建资源**" "网络" "  >  **Networking**  >  **虚拟网络**"。
 
-1. 在“创建虚拟网络”**** 中，输入或选择以下信息：
+1. 在“创建虚拟网络”  中，输入或选择以下信息：
 
     | 设置 | 值 |
     | ------- | ----- |
-    | 名称 | 输入*MyVirtualNetwork* |
-    | 地址空间 | 输入*10.1.0.0/16* |
     | 订阅 | 选择订阅|
     | 资源组 | 选择 "**新建**"，输入*myResourceGroup*，然后选择 **"确定"** |
-    | 位置 | 选择 "**美国西部**" 或任何所使用的区域|
-    | 子网 - 名称 | 输入*mySubnet* |
-    | 子网 - 地址范围 | 输入*10.1.0.0/24* |
+    | 名称 | 输入*MyVirtualNetwork* |
+    | 区域 | 选择所需的区域 |
     |||
 
-1. 将其余的设置保留默认值，然后选择“创建”****。
-
+1. 保留其余设置的默认值。 单击 "**查看 + 创建**"，然后单击 "**创建**"
 
 ## <a name="create-a-search-service-with-a-private-endpoint"></a>使用专用终结点创建搜索服务
 
 在本部分中，将创建一个具有专用终结点的新 Azure 认知搜索服务。 
 
-1. 在 Azure 门户屏幕的左上方，选择 "**创建资源** > " "**Web** > **Azure 认知搜索**"。
+1. 在 Azure 门户屏幕的左上方，选择 "**创建资源**" "  >  **Web**  >  **Azure 认知搜索**"。
 
 1. 在**新的搜索服务-基础知识**中，输入或选择以下信息：
 
@@ -86,8 +65,8 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
     | 资源组 | 选择“myResourceGroup”。  已在上一部分创建此内容。|
     | **实例详细信息** |  |
     | 代码 | 输入唯一名称。 |
-    | 位置 | 选择在请求访问此预览功能时指定的区域。 |
-    | 定价层 | 选择 "**更改定价层**" 并选择 "**基本**"。 预览需要此层。 |
+    | 位置 | 选择所需的区域。 |
+    | 定价层 | 选择 "**更改定价层**"，并选择所需的服务层。 （不支持**免费**级别。 必须为**Basic**或更高版本。） |
     |||
   
 1. 选择**下一步：缩放**。
@@ -98,9 +77,9 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 
 1. 在 "**新建搜索服务**" 中，选择 "在**私有终结点**下**添加 +** "。 
 
-1. 在“创建专用终结点”**** 中，输入或选择以下信息：
+1. 在“创建专用终结点”  中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 订阅 | 选择订阅。 |
     | 资源组 | 选择“myResourceGroup”。  已在上一部分创建此内容。|
@@ -111,7 +90,7 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
     | 虚拟网络  | 从资源组“myResourceGroup”** 中选择“MyVirtualNetwork” **。 |
     | 子网 | 选择“mySubnet”。 ** |
     | **专用 DNS 集成** |  |
-    | 与专用 DNS 区域集成  | 保留默认值“是”****。 |
+    | 与专用 DNS 区域集成  | 保留默认值“是”  。 |
     | 专用 DNS 区域  | 保留默认值 * * （New） privatelink.search.windows.net * *。 |
     |||
 
@@ -129,7 +108,7 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
 
-1. 在 Azure 门户屏幕的左上方，选择 "**创建资源** > " "**计算** > " "**虚拟机**"。
+1. 在 Azure 门户屏幕的左上方，选择 "**创建资源**" "计算" "  >  **Compute**  >  **虚拟机**"。
 
 1. 在“创建虚拟机 - 基本信息”  中，输入或选择以下信息：
 
@@ -206,7 +185,7 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 
 在本部分中，你将验证对搜索服务的专用网络访问，并使用专用终结点将其私下连接到。
 
-回忆一下，与搜索服务的所有交互都需要[搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/)。 此预览版不支持门户和 .NET SDK。
+当搜索服务终结点为私有时，某些门户功能处于禁用状态。 你将能够查看和管理服务级别设置，但出于安全原因，对索引数据和服务中的各种其他组件（如索引、索引器和技能组合定义）的门户访问是受限的。
 
 1. 在  *myVM* 的远程桌面中打开 PowerShell。
 
@@ -232,9 +211,9 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 
 ## <a name="clean-up-resources"></a>清理资源 
 使用完专用终结点、搜索服务和 VM 后，请删除资源组及其包含的所有资源：
-1. 在门户顶部的**搜索**框中输入 " *myResourceGroup* "，然后从搜索结果中选择 " *myResourceGroup* "。 
+1.  *myResourceGroup*   在门户顶部的**搜索**框中输入 "myResourceGroup"，然后 *myResourceGroup*   从搜索结果中选择 "myResourceGroup"。 
 1. 选择“删除资源组”  。 
-1. 输入 *myResourceGroup* 作为 **"资源组名称"** ，然后选择 "**删除**"。
+1. 输入 *myResourceGroup*   作为 **"资源组名称"** ，然后选择 "**删除**"。
 
 ## <a name="next-steps"></a>后续步骤
 本文介绍了如何在虚拟网络上创建虚拟机，以及如何使用专用终结点创建搜索服务。 你从 internet 连接到 VM，并使用专用链接安全地传达给搜索服务。 若要详细了解专用终结点，请参阅 [什么是 Azure 专用终结点？](../private-link/private-endpoint-overview.md)。

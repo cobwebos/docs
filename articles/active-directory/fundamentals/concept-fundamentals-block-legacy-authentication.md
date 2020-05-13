@@ -11,12 +11,13 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55ce0233fdefb8360376e94c0baafabe4c62ced7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 1799f676e8971726832cc50598e119f029bc331d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81309209"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196390"
 ---
 # <a name="blocking-legacy-authentication"></a>阻止旧身份验证
  
@@ -29,15 +30,15 @@ ms.locfileid: "81309209"
 
 ## <a name="identify-legacy-authentication-use"></a>识别旧式身份验证的用法
 
-需要先了解用户是否有使用旧式身份验证的应用，以及它如何影响整个目录，然后才能在目录中阻止旧式身份验证。 Azure AD 登录日志可用于了解你是否正在使用旧身份验证。
+需要先了解用户是否有使用旧式身份验证的应用，以及它如何影响整个目录，然后才能在目录中阻止旧式身份验证。 可以使用 Azure AD 登录日志来了解是否正在使用旧式身份验证。
 
-1. 导航到 **Azure 门户** > **Azure Active Directory** Azure Active Directory> **登录**。
-1. 如果未通过单击 **"客户端**应用" **列** >来显示 "**客户端应用**" 列，则添加它。
-1. 按 **客户端应用** 筛选> 检查显示的所有**旧版身份验证客户端**选项。
-1. 按**状态** > **成功**筛选。 
+1. 导航到 **Azure 门户**   >  **Azure Active Directory**   >  **登录**。
+1. 如果未通过单击 "客户端应用" **列**来显示 "**客户端应用**" 列，则添加它   >  **Client App**。
+1. 按 **客户端应用**筛选  > 检查显示的所有**旧版身份验证客户端**选项。
+1. 按**状态**  >  **成功**筛选。 
 1. 如果需要，请使用**日期**筛选器扩展日期范围。
 
-筛选只会显示所选旧身份验证协议进行的成功登录尝试。 单击每个单独的登录尝试将显示其他详细信息。 选择单个数据行后，"基本信息" 选项卡下的 "客户端应用" 列或 "客户端应用" 字段将指示使用的是旧身份验证协议。 这些日志将指示哪些用户仍然依赖于旧式身份验证，以及哪些应用程序使用旧式协议发出身份验证请求。 对于未出现在这些日志中并且已确认不使用旧身份验证的用户，请执行条件性访问策略或启用基线策略：仅阻止这些用户的旧身份验证。
+筛选只会显示所选旧身份验证协议进行的成功登录尝试。 单击每个单独的登录尝试将显示其他详细信息。 选择单个数据行后，"基本信息" 选项卡下的 "客户端应用" 列或 "客户端应用" 字段将指示使用的是旧身份验证协议。 这些日志将指示哪些用户仍然依赖于旧身份验证，以及哪些应用程序使用旧协议发出身份验证请求。 对于未出现在这些日志中并且已确认不使用旧身份验证的用户，请执行条件性访问策略或启用基线策略：仅阻止这些用户的旧身份验证。
 
 ## <a name="moving-away-from-legacy-authentication"></a>弃用旧式身份验证 
 
@@ -49,8 +50,8 @@ ms.locfileid: "81309209"
 
 启用新式身份验证的第一步是确保目录支持新式身份验证。 对于在 2017 年 8 月 1 日或之后创建的目录，默认已启用新式身份验证。 如果你的目录是在此日期之前创建的，则需要使用以下步骤手动为你的目录启用新式身份验证：
 
-1. 检查目录是否已通过从 `Get-CsOAuthConfiguration`  [Skype for business Online PowerShell 模块](https://docs.microsoft.com/office365/enterprise/powershell/manage-skype-for-business-online-with-office-365-powershell)运行来支持新式身份验证。
-1. 如果命令返回空 `OAuthServers` 属性，则会禁用新式身份验证。 更新设置以使用 `Set-CsOAuthConfiguration`启用新式身份验证。 如果您 `OAuthServers` 的属性包含一项，则您可以继续。
+1. 检查目录是否已通过  `Get-CsOAuthConfiguration`   从 [Skype For business Online PowerShell 模块](https://docs.microsoft.com/office365/enterprise/powershell/manage-skype-for-business-online-with-office-365-powershell)运行来支持新式身份验证。
+1. 如果命令返回空  `OAuthServers`   属性，则会禁用新式身份验证。 更新设置以使用启用新式身份验证  `Set-CsOAuthConfiguration` 。 如果您  `OAuthServers`   的属性包含一项，则您可以继续。
 
 请务必先完成此步骤，然后继续。 首先更改目录配置很重要，因为它们规定了将由所有 Office 客户端使用的协议。 即使你使用的是支持新式身份验证的 Office 客户端，如果在你的目录中禁用了新式身份验证，则它们将默认为使用旧协议。
 
@@ -58,7 +59,7 @@ ms.locfileid: "81309209"
 
 在目录中启用新式身份验证后，可以通过对 Office 客户端启用新式身份验证开始更新应用程序。 默认情况下，Office 2016 或更高版本的客户端支持新式身份验证。 无需执行额外的步骤。
 
-如果使用 Office 2013 Windows 客户端或更低版本，我们建议升级到 Office 2016 或更高版本。 即使完成了上述在目录中启用新式身份验证的步骤，早期的 Office 应用程序也仍会继续使用旧式身份验证协议。 如果你使用的是 Office 2013 客户端，但无法立即升级到 Office 2016 或更高版本，请按照以下文章中的步骤在 [Windows 设备上启用 Office 2013 新式身份验证](https://docs.microsoft.com/office365/admin/security-and-compliance/enable-modern-authentication)。 若要在使用旧身份验证时帮助保护你的帐户，我们建议你在目录中使用强密码。 请查看 [Azure AD 密码保护](../authentication/concept-password-ban-bad.md) ，禁止在目录中执行弱密码。
+如果使用 Office 2013 Windows 客户端或更低版本，我们建议升级到 Office 2016 或更高版本。 即使完成了上述在目录中启用新式身份验证的步骤，早期的 Office 应用程序也仍会继续使用旧式身份验证协议。 如果你使用的是 Office 2013 客户端，但无法立即升级到 Office 2016 或更高版本，请按照以下文章中的步骤在 [Windows 设备上启用 Office 2013 新式身份验证](https://docs.microsoft.com/office365/admin/security-and-compliance/enable-modern-authentication)。 若要在使用旧身份验证时帮助保护你的帐户，我们建议你在目录中使用强密码。 请查看 [Azure AD 密码保护](../authentication/concept-password-ban-bad.md)   ，禁止在目录中执行弱密码。
 
 Office 2010 不支持新式身份验证。 需将使用 Office 2010 的任何用户升级到最新版本的 Office。 我们建议升级到 Office 2016 或更高版本，因为它默认会阻止旧式身份验证。
 
