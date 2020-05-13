@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/31/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e1cf3905a34fdced878526cfcc55e6dd0a1a369f
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: e87b6ee4739818e25ee069986e299f8205d44a2a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82595315"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83343297"
 ---
 本文将对有关 Azure 托管磁盘和 Azure 高级 SSD 盘的一些常见问题进行解答。
 
@@ -97,7 +97,7 @@ ms.locfileid: "82595315"
 
 是否可以在同一 VM 上归置非托管和托管磁盘？****
 
-否。
+不是。
 
 **如果创建 128 GB 磁盘，然后将该大小增加到 130 GiB，是否会针对下一磁盘大小 (256 GiB) 进行收费？**
 
@@ -109,7 +109,7 @@ Azure 托管磁盘当前仅支持本地冗余存储托管磁盘。
 
 是否可以收缩或缩小托管磁盘？****
 
-否。 目前，不支持此功能。
+不是。 目前，不支持此功能。
 
 是否可以在磁盘上中断租用？****
 
@@ -178,7 +178,7 @@ Azure 磁盘保留适用于特定区域和 SKU （如美国东部2中的 P30）�
 
 **如果有现成的高级 SSD，是否可以在其上启用共享磁盘？**
 
-使用 API 2019-07-01 或更高版本创建的所有托管磁盘都可以启用共享磁盘。 要执行此操作，需要从其附加到的所有 Vm 中卸载该磁盘。 接下来，编辑`maxShares`磁盘上的属性。
+使用 API 2019-07-01 或更高版本创建的所有托管磁盘都可以启用共享磁盘。 要执行此操作，需要从其附加到的所有 Vm 中卸载该磁盘。 接下来，编辑 `maxShares` 磁盘上的属性。
 
 **如果我不想再使用共享模式下的磁盘，如何禁用它呢？**
 
@@ -190,7 +190,7 @@ Azure 磁盘保留适用于特定区域和 SKU （如美国东部2中的 P30）�
 
 **能否在同时启用共享磁盘的磁盘上启用写入加速器？**
 
-否。
+不是。
 
 **能否为启用了共享磁盘的磁盘启用主机缓存？**
 
@@ -240,11 +240,11 @@ Azure 磁盘保留适用于特定区域和 SKU （如美国东部2中的 P30）�
 
 **是否可将处于上传状态的磁盘附加到 VM？**
 
-否。
+不是。
 
 **是否可以创建处于上传状态的托管磁盘的快照？**
 
-否。
+不是。
 
 ## <a name="standard-ssd-disks"></a>标准 SSD 盘
 
@@ -256,32 +256,6 @@ Azure 标准 SSD 盘是什么？****
 
 **使用标准 SSD 时是否可以使用 Azure 备份？**
 是的，Azure 备份现已可用。
-
-如何创建标准 SSD 盘？****
-可以使用 Azure 资源管理器模板、SDK、PowerShell 或 CLI 创建标准 SSD 盘。 以下为创建标准 SSD 盘时资源管理器模板中所需的参数：
-
-* Microsoft.Compute 的 apiVersion** 必须设置为 `2018-04-01`（或更高）
-* 将 managedDisk.storageAccountType 指定为 `StandardSSD_LRS`**
-
-以下示例显示了使用标准 SSD 盘的 VM 的 properties.storageProfile.osDisk 部分**：
-
-```json
-"osDisk": {
-    "osType": "Windows",
-    "name": "myOsDisk",
-    "caching": "ReadWrite",
-    "createOption": "FromImage",
-    "managedDisk": {
-        "storageAccountType": "StandardSSD_LRS"
-    }
-}
-```
-
-有关如何使用模板创建标准 SSD 盘的完整模板示例，请参阅[使用标准 SSD 数据磁盘从 Windows 映像创建 VM](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/)。
-
-是否可以将现有磁盘转换为标准 SSD？****
-可以。 请参阅[将 Azure 托管磁盘存储从标准转换为高级，反之亦然](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage)，以了解有关转换托管磁盘的常规指南。 此外，使用以下值将磁盘类型更新为标准 SSD。
--AccountType StandardSSD_LRS
 
 **使用标准 SSD 盘而不使用 HDD 的好处是什么？**
 与 HDD 磁盘相比，标准 SSD 盘可以提供更好的延迟、一致性、可用性和可靠性。 因此，应用程序工作负荷可以更平稳地在标准 SSD 上运行。 注意，高级 SSD 盘是适用于大多数 IO 密集型生产工作负荷的建议解决方案。
@@ -312,11 +286,11 @@ Azure 标准 SSD 盘是什么？****
 
 **是否支持将现有虚拟机规模集从非托管磁盘自动迁移到托管磁盘？**
 
-否。 可以使用包含非托管磁盘的旧规模集中的映像创建包含托管磁盘的新规模集。
+不是。 可以使用包含非托管磁盘的旧规模集中的映像创建包含托管磁盘的新规模集。
 
 是否可以通过迁移到托管磁盘之前创建的页 Blob 快照创建托管磁盘？****
 
-否。 可将页 Blob 快照导出为页 Blob，然后从导出的页 Blob 创建托管磁盘。
+不是。 可将页 Blob 快照导出为页 Blob，然后从导出的页 Blob 创建托管磁盘。
 
 是否可将 Azure Site Recovery 保护的本地计算机故障转移到包含托管磁盘的 VM？****
 
@@ -324,7 +298,7 @@ Azure 标准 SSD 盘是什么？****
 
 迁移是否影响 Azure Site Recovery 通过 Azure 到 Azure 复制保护的 Azure VM？****
 
-否。 对于包含托管磁盘的 VM，提供 Azure Site Recovery Azure 到 Azure 保护。
+不是。 对于包含托管磁盘的 VM，提供 Azure Site Recovery Azure 到 Azure 保护。
 
 是否可以迁移位于存储帐户中现在或以前已加密的 VM 的非托管磁盘迁移到托管磁盘？****
 
@@ -332,9 +306,9 @@ Azure 标准 SSD 盘是什么？****
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>托管磁盘和存储服务加密
 
-创建托管磁盘时，是否会默认启用 Azure 存储服务加密？****
+**创建托管磁盘时是否默认启用服务器端加密？**
 
-是的。
+是的。 托管磁盘通过平台托管密钥的服务器端加密进行加密。 
 
 **默认情况下，托管磁盘上的启动卷是否已加密？**
 
@@ -342,30 +316,27 @@ Azure 标准 SSD 盘是什么？****
 
 **加密密钥由谁管理？**
 
-Microsoft 管理加密密钥。
+平台托管的密钥由 Microsoft 管理。 你还可以使用和管理 Azure Key Vault 中存储的你自己的密钥。 
 
-是否可以为托管磁盘禁用存储服务加密？****
+**是否可以为托管磁盘禁用服务器端加密？**
 
-否。
+不是。
 
-存储服务加密是否仅适用于特定区域？****
+**服务器端加密是否仅适用于特定区域？**
 
-否。 它适用于托管磁盘可用的所有区域。 托管磁盘适用于所有公共区域和德国。 这也适用于中国，但是，仅适用于 Microsoft 托管密钥，不适用于客户托管密钥。
+不是。 使用平台和客户托管密钥的服务器端加密可用于托管磁盘可用的所有区域。 
 
-如何确定我的托管磁盘是否已加密？****
+**Azure Site Recovery 是否支持将客户托管的密钥用于本地到 Azure 和 Azure 到 Azure 灾难恢复方案的服务器端加密？**
 
-你可以从 Azure 门户、Azure CLI 和 PowerShell 确定托管磁盘的创建时间。 如果时间是在 2017 年 6 月 9 日之后，则磁盘已加密。
+是的。 
 
-如何对 2017 年 6 月 10 日之前创建的现有磁盘加密？****
+**是否可以使用 Azure 备份服务将使用服务器端加密进行加密的托管磁盘与客户托管的密钥一起备份？**
 
-自 2017 年 6 月 10 日起，写入到现有托管磁盘的新数据会自动加密。 我们还打算对现有数据进行加密，且在后台以异步方式加密。 如果必须立即对现有数据进行加密，请创建磁盘的副本。 将对新磁盘进行加密。
-
-* [使用 Azure CLI 复制托管磁盘](../articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
-* [使用 PowerShell 复制托管磁盘](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
+是的。
 
 是否已加密托管快照和映像？****
 
-是的。 2017 年 6 月 9 日之后创建的所有托管快照和映像均会自动加密。 
+是的。 所有托管快照和映像均会自动加密。 
 
 是否可以将 VM 的位于存储帐户且现在或以前已加密的非托管磁盘转换为托管磁盘？****
 
@@ -373,7 +344,7 @@ Microsoft 管理加密密钥。
 
 是否同时会加密从托管磁盘或快照导出的 VHD？****
 
-否。 但如果将 VHD 从加密托管磁盘或快照导出到加密存储帐户，则会对其进行加密。 
+不是。 但如果将 VHD 从加密托管磁盘或快照导出到加密存储帐户，则会对其进行加密。 
 
 ## <a name="premium-disks-managed-and-unmanaged"></a>高级磁盘：托管和非托管
 
@@ -383,7 +354,7 @@ Microsoft 管理加密密钥。
 
 是否可以同时将高级和标准数据磁盘附加到不支持高级 SSD 盘的大小系列，例如 D、Dv2、G 或 F 系列？****
 
-否。 只可以将标准数据磁盘附加到不使用支持高级 SSD 盘的大小系列的 VM。
+不是。 只可以将标准数据磁盘附加到不使用支持高级 SSD 盘的大小系列的 VM。
 
 如果从现有的 VHD (80 GB) 创建高级数据磁盘，需要多少费用？****
 
