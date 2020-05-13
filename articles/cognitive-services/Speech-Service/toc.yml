@@ -557,6 +557,20 @@
       items:
         - name: 语音设备 SDK 发行说明
           href: devices-sdk-release-notes.md
+- name: 工具
+  items:
+    - name: SPX
+      items:
+        - name: 什么是 SPX？
+          href: spx-overview.md
+        - name: SPX 基础知识
+          href: spx-basics.md
+    - name: Speech Studio
+      items:
+        - name: 什么是 Speech Studio？
+          href: 'https://speech.microsoft.com'
+        - name: 使用 Speech Studio 创建自定义命令应用
+          href: quickstart-custom-speech-commands-create-new.md
 - name: 迁移
   items:
     - name: 从必应语音

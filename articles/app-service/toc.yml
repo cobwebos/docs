@@ -200,6 +200,8 @@
           href: web-sites-monitor.md
         - name: 启用日志
           href: troubleshoot-diagnostic-logs.md
+        - name: 获取资源事件
+          href: get-resource-events.md
     - name: 管理应用
       items:
         - name: 管理托管计划

@@ -18,6 +18,8 @@
       href: quickstart-create-workspace.md
     - name: 使用 Azure Synapse Studio
       href: quickstart-synapse-studio.md
+    - name: 链接 Power BI 工作区
+      href: quickstart-power-bi.md
     - name: 创建池
       items:
         - name: 使用 Web 工具创建 Apache Spark 笔记本
@@ -30,6 +32,8 @@
       items:
         - name: COPY 语句
           href: ./sql-data-warehouse/quickstart-bulk-load-copy-tsql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Synapse Studio
+          href: quickstart-load-studio-sql-pool.md
     - name: 使用 SQL 按需版本
       href: quickstart-sql-on-demand.md
 - name: 教程
@@ -188,6 +192,8 @@
               href: ./spark/apache-spark-what-is-delta-lake.md
             - name: Apache Spark 性能
               href: ./spark/apache-spark-performance.md
+            - name: Apache Spark 自动缩放行为
+              href: ./spark/apache-spark-autoscale.md
         - name: 开发
           items:
             - name: Azure Synapse Studio 笔记本

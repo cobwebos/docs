@@ -303,6 +303,113 @@
           href: ../windows/migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 常见问题解答
           href: migration-classic-resource-manager-faq.md
+    - name: 使用映像
+      displayName: 'SIG, AMI, image'
+      items:
+        - name: 共享映像库
+          items:
+            - name: CLI
+              items:
+                - name: 创建库
+                  href: ../shared-images-cli.md
+                - name: 创建映像
+                  items:
+                    - name: 从 VM
+                      href: ../image-version-vm-cli.md
+                    - name: 从托管映像迁移
+                      href: ../image-version-managed-image-cli.md
+                    - name: 从另一个库复制
+                      href: ../image-version-another-gallery-cli.md
+                - name: 创建 VM
+                  items:
+                    - name: 通用
+                      href: ../vm-generalized-image-version-cli.md
+                - name: 更新映像资源
+                  href: ../update-image-resources-cli.md
+                - name: 用于共享的应用注册
+                  href: share-images-across-tenants.md
+            - name: PowerShell
+              items:
+                - name: 创建库
+                  href: ../shared-images-powershell.md
+                - name: 创建映像版本
+                  items:
+                    - name: 从 VM
+                      href: ../image-version-vm-powershell.md
+                    - name: 从托管映像迁移
+                      href: ../image-version-managed-image-powershell.md
+                    - name: 从另一个库复制
+                      href: ../image-version-another-gallery-powershell.md
+                - name: 创建 VM
+                  items:
+                    - name: 通用
+                      href: ../vm-generalized-image-version-powershell.md
+                    - name: 专用
+                      href: ../vm-specialized-image-version-powershell.md
+                - name: 更新映像资源
+                  href: ../update-image-resources-powershell.md
+            - name: 门户
+              items:
+                - name: 创建库、映像和 VM
+                  href: shared-images-portal.md
+            - name: 资源管理器模板
+              items:
+                - name: 创建共享映像库
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
+                - name: 在共享映像库中创建映像定义
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
+                - name: 在共享映像库中创建映像版本
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
+                - name: 从映像版本创建 VM
+                  href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
+            - name: 排查共享映像问题
+              href: troubleshooting-shared-images.md
+            - name: 使用客户管理的密钥
+              displayName: 'SSE, CMK, encrypt'
+              href: ../image-version-encryption.md
+        - name: 映像生成器（预览版）
+          items:
+            - name: 概述
+              href: image-builder-overview.md
+            - name: 使用 Azure CLI
+              href: image-builder.md
+            - name: ARM 模板参考
+              href: image-builder-json.md
+              displayName: 'ARM,Resource Manager'
+            - name: 在映像库中生成映像
+              href: image-builder-gallery.md
+            - name: 更新现有映像
+              href: image-builder-gallery-update-image-version.md
+            - name: 疑难解答
+              href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
+        - name: 查找和使用映像
+          href: cli-ps-findimage.md
+        - name: 创建自定义映像
+          items:
+            - name: 一般步骤
+              href: create-upload-generic.md
+            - name: Ubuntu
+              href: create-upload-ubuntu.md
+            - name: CentOS
+              href: create-upload-centos.md
+            - name: Red Hat
+              href: redhat-create-upload-vhd.md
+            - name: Debian
+              href: debian-create-upload-vhd.md
+            - name: SUSE
+              href: suse-create-upload-vhd.md
+            - name: Oracle Linux
+              href: oracle-create-upload-vhd.md
+            - name: OpenBSD
+              href: create-upload-openbsd.md
+            - name: FreeBSD
+              href: freebsd-intro-on-azure.md
+        - name: 将 VM 捕获到映像
+          href: capture-image.md
+        - name: 使用 Packer 生成映像
+          href: build-image-with-packer.md
+        - name: 下载现有磁盘
+          href: download-vhd.md
     - name: 保护 VM
       items:
         - name: 建议
@@ -461,110 +568,6 @@
           href: ../../azure-monitor/platform/alerts-metric.md
         - name: 创建日志警报
           href: ../../azure-monitor/platform/alerts-log.md
-    - name: 使用映像
-      displayName: 'SIG, AMI, image'
-      items:
-        - name: 共享映像库
-          items:
-            - name: CLI
-              items:
-                - name: 创建库
-                  href: ../shared-images-cli.md
-                - name: 创建映像
-                  items:
-                    - name: 从 VM
-                      href: ../image-version-vm-cli.md
-                    - name: 从托管映像迁移
-                      href: ../image-version-managed-image-cli.md
-                    - name: 从另一个库复制
-                      href: ../image-version-another-gallery-cli.md
-                - name: 创建 VM
-                  items:
-                    - name: 通用
-                      href: ../vm-generalized-image-version-cli.md
-                - name: 更新映像资源
-                  href: ../update-image-resources-cli.md
-                - name: 用于共享的应用注册
-                  href: share-images-across-tenants.md
-            - name: PowerShell
-              items:
-                - name: 创建库
-                  href: ../shared-images-powershell.md
-                - name: 创建映像版本
-                  items:
-                    - name: 从 VM
-                      href: ../image-version-vm-powershell.md
-                    - name: 从托管映像迁移
-                      href: ../image-version-managed-image-powershell.md
-                    - name: 从另一个库复制
-                      href: ../image-version-another-gallery-powershell.md
-                - name: 创建 VM
-                  items:
-                    - name: 通用
-                      href: ../vm-generalized-image-version-powershell.md
-                    - name: 专用
-                      href: ../vm-specialized-image-version-powershell.md
-                - name: 更新映像资源
-                  href: ../update-image-resources-powershell.md
-            - name: 门户
-              items:
-                - name: 创建库、映像和 VM
-                  href: shared-images-portal.md
-            - name: 资源管理器模板
-              items:
-                - name: 创建共享映像库
-                  href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
-                - name: 在共享映像库中创建映像定义
-                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
-                - name: 在共享映像库中创建映像版本
-                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
-                - name: 从映像版本创建 VM
-                  href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
-            - name: 排查共享映像问题
-              href: troubleshooting-shared-images.md
-        - name: 映像生成器（预览版）
-          items:
-            - name: 概述
-              href: image-builder-overview.md
-            - name: 使用 Azure CLI
-              href: image-builder.md
-            - name: ARM 模板参考
-              href: image-builder-json.md
-              displayName: 'ARM,Resource Manager'
-            - name: 在映像库中生成映像
-              href: image-builder-gallery.md
-            - name: 更新现有映像
-              href: image-builder-gallery-update-image-version.md
-            - name: 疑难解答
-              href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
-        - name: 查找和使用映像
-          href: cli-ps-findimage.md
-        - name: 创建自定义映像
-          items:
-            - name: 一般步骤
-              href: create-upload-generic.md
-            - name: Ubuntu
-              href: create-upload-ubuntu.md
-            - name: CentOS
-              href: create-upload-centos.md
-            - name: Red Hat
-              href: redhat-create-upload-vhd.md
-            - name: Debian
-              href: debian-create-upload-vhd.md
-            - name: SUSE
-              href: suse-create-upload-vhd.md
-            - name: Oracle Linux
-              href: oracle-create-upload-vhd.md
-            - name: OpenBSD
-              href: create-upload-openbsd.md
-            - name: FreeBSD
-              href: freebsd-intro-on-azure.md
-        - name: 将 VM 捕获到映像
-          href: capture-image.md
-        - name: 使用 Packer 生成映像
-          href: build-image-with-packer.md
-        - name: 下载现有磁盘
-          href: download-vhd.md
     - name: 可用性和规模
       items:
         - name: 自动缩放

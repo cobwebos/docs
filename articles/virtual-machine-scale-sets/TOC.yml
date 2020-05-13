@@ -234,6 +234,11 @@
                       href: instance-generalized-image-version-cli.md
                 - name: 更新映像资源
                   href: ../virtual-machines/update-image-resources-cli.md
+            - name: 排查共享映像问题
+              href: ../virtual-machines/troubleshooting-shared-images.md
+            - name: 使用客户管理的密钥
+              displayName: 'SSE, CMK, encrypt'
+              href: ../virtual-machines/image-version-encryption.md
     - name: 创建模板
       items:
         - name: 了解规模集模板

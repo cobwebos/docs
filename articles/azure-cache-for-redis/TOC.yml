@@ -7,18 +7,26 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: ASP.NET 应用
-      href: cache-web-app-howto.md
-    - name: .NET Core 应用
-      href: cache-dotnet-core-quickstart.md
-    - name: .NET 应用
-      href: cache-dotnet-how-to-use-azure-redis-cache.md
-    - name: Java 应用
-      href: cache-java-get-started.md
-    - name: Node.js 应用
-      href: cache-nodejs-get-started.md
-    - name: Python 应用
-      href: cache-python-get-started.md
+    - name: 创建缓存
+      items:
+        - name: 基本层、标准层和高级层
+          href: quickstart-create-redis.md
+        - name: 企业层
+          href: quickstart-create-redis-enterprise.md
+    - name: 使用缓存
+      items:
+        - name: ASP.NET 应用
+          href: cache-web-app-howto.md
+        - name: .NET Core 应用
+          href: cache-dotnet-core-quickstart.md
+        - name: .NET 应用
+          href: cache-dotnet-how-to-use-azure-redis-cache.md
+        - name: Java 应用
+          href: cache-java-get-started.md
+        - name: Node.js 应用
+          href: cache-nodejs-get-started.md
+        - name: Python 应用
+          href: cache-python-get-started.md
 - name: 教程
   items:
     - name: 将缓存用于排名

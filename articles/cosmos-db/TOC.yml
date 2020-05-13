@@ -1018,7 +1018,7 @@
           href: how-to-use-change-feed-estimator.md
         - name: 从更改源处理器库迁移
           href: how-to-migrate-from-change-feed-library.md
-        - name: 使用更改源创建 Java SQL 应用程序
+        - name: 更改源 - Async Java 示例
           href: create-sql-api-java-changefeed.md
     - name: 将内置分析功能与 Apache Spark 配合使用
       items:
@@ -1080,6 +1080,8 @@
               href: monitor-server-side-latency.md
             - name: 监视请求单位使用情况
               href: monitor-request-unit-usage.md
+            - name: 监视规范化请求单位使用情况
+              href: monitor-normalized-request-units.md
         - name: 使用 Azure Monitor 日志
           items:
             - name: 使用诊断日志进行监视

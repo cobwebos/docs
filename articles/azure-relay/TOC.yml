@@ -1,0 +1,103 @@
+- name: Azure 中继文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是中继？
+      href: relay-what-is-it.md
+- name: 教程
+  items:
+    - name: 混合连接
+      items:
+        - name: 发送和接收消息 - .NET WebSocket
+          href: relay-hybrid-connections-dotnet-get-started.md
+        - name: 发送和接收消息 - .NET HTTP
+          href: relay-hybrid-connections-http-requests-dotnet-get-started.md
+        - name: 发送和接收消息 - Node WebSocket
+          href: relay-hybrid-connections-node-get-started.md
+        - name: 发送和接收消息 - Node HTTP
+          href: relay-hybrid-connections-http-requests-node-get-started.md
+    - name: Windows Communication Foundation (WCF)
+      items:
+        - name: 向云中的 Web 应用程序公开本地 WCF 服务
+          href: service-bus-dotnet-hybrid-app-using-service-bus-relay.md
+        - name: 向网络外部的 WCF 客户端公开本地 WCF 服务
+          href: service-bus-relay-tutorial.md
+        - name: 向网络外部的客户端公开本地 WCF REST 服务
+          href: service-bus-relay-rest-tutorial.md
+- name: 示例
+  items:
+    - name: 混合连接
+      href: 'https://github.com/Azure/azure-relay/tree/master/samples/hybrid-connections'
+    - name: WCF 中继
+      href: 'https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay'
+- name: 概念
+  items:
+    - name: 安全性
+      items:
+        - name: 身份验证和授权
+          href: relay-authentication-and-authorization.md
+        - name: 内置安全控件
+          href: service-bus-relay-security-controls.md
+        - name: 网络安全
+          href: network-security.md
+    - name: 混合连接协议
+      href: relay-hybrid-connections-protocol.md
+- name: 操作方式
+  items:
+    - name: 从 Azure Service Manager（经典）API 迁移到资源管理器 API
+      href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json
+    - name: 规划和设计
+      items:
+        - name: 从 ACS 迁移到 SAS
+          href: relay-migrate-acs-sas.md
+    - name: 开发
+      items:
+        - name: 创建命名空间
+          href: relay-create-namespace-portal.md
+        - name: 可用 API
+          href: relay-api-overview.md
+          items:
+            - name: .NET
+              href: relay-hybrid-connections-dotnet-api-overview.md
+            - name: 节点
+              href: relay-hybrid-connections-node-ws-api-overview.md
+    - name: 安全
+      items:
+        - name: 配置 IP 防火墙（预览版）
+          href: ip-firewall-virtual-networks.md
+        - name: 配置专用终结点（预览版）
+          href: private-link-service.md
+    - name: 管理和监视
+      items:
+        - name: 使用 Azure 监视来监视 Azure 中继
+          href: relay-metrics-azure-monitor.md
+        - name: 设置诊断日志
+          href: diagnostic-logs.md
+- name: 参考
+  items:
+    - name: .NET
+      items:
+        - name: Microsoft.Azure.Relay
+          href: /dotnet/api/microsoft.azure.relay
+        - name: Microsoft.ServiceBus
+          href: /dotnet/api/Microsoft.ServiceBus
+    - name: 例外
+      href: relay-exceptions.md
+    - name: 端口设置
+      href: relay-port-settings.md
+- name: 资源
+  items:
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=enterprise-integration'
+    - name: 常见问题解答
+      href: relay-faq.md
+    - name: 博客
+      href: 'https://blogs.msdn.microsoft.com/servicebus/'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/service-bus/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 示例
+      href: 'https://github.com/azure/azure-relay/tree/master/samples'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-servicebusrelay'

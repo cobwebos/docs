@@ -64,6 +64,10 @@
           href: hpccompute-gpu-linux.md
         - name: Windows
           href: hpccompute-gpu-windows.md
+    - name: AMD GPU 驱动程序
+      items:
+        - name: Windows
+          href: hpccompute-amd-gpu-windows.md
     - name: Azure Monitor
       items:
         - name: 诊断扩展

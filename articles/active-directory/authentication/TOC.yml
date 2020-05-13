@@ -15,7 +15,7 @@
       href: tutorial-enable-sspr-writeback.md
     - name: 配置自定义禁止密码列表
       href: tutorial-configure-custom-password-protection.md
-    - name: 集成 Azure 标识保护
+    - name: 启用基于风险的登录保护
       href: tutorial-risk-based-sspr-mfa.md
 - name: 概念
   expanded: true
@@ -229,7 +229,7 @@
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: 服务更新
       href: ../fundamentals/whats-new.md
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
     - name: 视频
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

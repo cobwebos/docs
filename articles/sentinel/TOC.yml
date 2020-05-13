@@ -89,16 +89,16 @@
               items:
                 - name: 步骤 1：部署日志转发器
                   href: connect-cef-agent.md
-                - name: 步骤 2：配置安全解决方案
+                - name: 步骤 2 配置安全解决方案
                   href: connect-cef-solution-config.md
                   items:
                     - name: 检查点
                       href: connect-checkpoint.md
-                    - name: Cisco
+                    - name: Cisco ASA
                       href: connect-cisco.md
                     - name: ExtraHop Reveal(x)
                       href: connect-extrahop.md
-                    - name: F5
+                    - name: F5 ASM
                       href: connect-f5.md
                     - name: Forcepoint 产品
                       href: connect-forcepoint-casb-ngfw.md
@@ -118,8 +118,10 @@
           href: connect-threat-intelligence.md
         - name: 连接 Azure Stack VM
           href: connect-azure-stack.md
-    - name: 多个租户 (MSSP)
+    - name: 与多个租户一起工作 (MSSP)
       href: multiple-tenants-service-providers.md
+    - name: 处理多个工作区中的事件
+      href: multiple-workspace-view.md
     - name: 设置客户管理的密钥 (CMK)
       href: customer-managed-keys.md
     - name: 从警报创建事件
@@ -145,3 +147,5 @@
       href: 'https://blogs.msdn.com/b/azuresecurity/'
     - name: 区域可用性
       href: 'https://azure.microsoft.com/regions/services/'
+    - name: 定价
+      href: 'https://azure.microsoft.com/en-us/pricing/details/azure-sentinel/'
