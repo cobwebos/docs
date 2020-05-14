@@ -7,14 +7,14 @@ manager: venkyv
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 05/11/2020
 ms.author: egeaney
-ms.openlocfilehash: 3ccc9820f38a8c32d0b390663eb6b4430b42e8f0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c2e52fbab8d984f7442d8a336e90e9f22c0bf061
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79372355"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198668"
 ---
 # <a name="speech-service-encryption-of-data-at-rest"></a>语音识别服务静态数据的加密
 
@@ -22,11 +22,11 @@ ms.locfileid: "79372355"
 
 ## <a name="about-cognitive-services-encryption"></a>关于认知服务加密
 
-数据是使用符合 [FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) 的 [256 位 AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 加密法加密和解密的。 加密和解密都是透明的，这意味着将替你管理加密和访问。 默认情况下，你的数据是安全的，无需修改你的代码或应用程序即可利用加密。
+使用符合[FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) [的256位 AES 加密对](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)数据进行加密和解密。 加密和解密都是透明的，这意味着将替你管理加密和访问。 你的数据默认情况下就是安全的，你无需修改代码或应用程序，即可利用加密。
 
 ## <a name="about-encryption-key-management"></a>关于加密密钥管理
 
-使用自定义语音识别和自定义语音时，语音识别服务可能会将以下数据存储在云中：  
+使用自定义语音和自定义语音时，语音服务可能会将以下数据存储在云中：  
 
 * 语音识别跟踪数据 - 仅当你为自定义终结点启用了跟踪时才存储
 * 已上传的训练和测试数据
@@ -42,13 +42,10 @@ ms.locfileid: "79372355"
 > [!IMPORTANT]
 > 如果禁用系统分配的托管标识，则将删除对存储帐户的访问权限。 这将导致需要访问存储帐户的语音服务部分停止工作。  
 
-## <a name="regional-availability"></a>区域可用性
+语音服务当前不支持客户密码箱。 但是，可以使用 BYOS 存储客户数据，从而使你可以实现类似的数据控件来[客户密码箱](../../security/fundamentals/customer-lockbox-overview.md)。 请记住，语音服务数据保持不变，并在创建语音资源的区域进行处理。 这适用于任何静态数据和传输中的数据。 使用自定义功能（如自定义语音和自定义语音）时，将在 BYOS （如果使用）和语音服务资源所在的同一区域内传输、存储和处理所有客户数据。
 
-BYOS 目前在以下区域中提供：
-
-* 美国中南部
-* 美国西部 2
-* 美国东部
+> [!IMPORTANT]
+> Microsoft 不**会**使用客户数据来改进其语音模型。 此外，如果禁用了终结点日志记录，并且未使用任何自定义，则不会存储任何客户数据。 
 
 ## <a name="next-steps"></a>后续步骤
 

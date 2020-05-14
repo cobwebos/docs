@@ -3,13 +3,13 @@ author: erhopf
 ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 07/23/2019
-ms.openlocfilehash: 8754504655cdd08c9bf9f89311cb6c5d1057f0e6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/11/2020
+ms.openlocfilehash: ddc61a0d0cb5a630282a9ba0589cef6fda29c4b5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78262721"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83343457"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>使用 Azure Active Directory 进行身份验证
 
@@ -101,3 +101,19 @@ ms.locfileid: "78262721"
    ```
 
 或者，可以使用证书对服务主体进行身份验证。 除了服务主体以外，还支持通过其他 AAD 应用程序委派权限的用户主体。 在这种情况下，在获取令牌时，系统将提示用户提供双因素身份验证，而不是密码或证书。
+
+## <a name="authorize-access-to-managed-identities"></a>授权访问托管标识
+ 
+认知服务支持[对 Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)进行 Azure Active Directory （Azure AD）身份验证。 Azure 资源的托管标识可以使用 Azure 虚拟机（Vm）、函数应用、虚拟机规模集和其他服务中运行的应用程序的 Azure AD 凭据，授权访问认知服务资源。 将 Azure 资源的托管标识与 Azure AD 身份验证结合使用，可避免将凭据随在云中运行的应用程序一起存储。  
+
+### <a name="enable-managed-identities-on-a-vm"></a>在 VM 上启用托管标识
+
+你必须在 VM 上为 Azure 资源启用托管标识，然后才能使用 Azure 资源的托管标识来授予对虚拟机中的认知服务资源的访问权限。 若要了解如何启用 Azure 资源的托管标识，请参阅：
+
+- [Azure 门户](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
+- [Azure PowerShell](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm)
+- [Azure CLI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm)
+- [Azure Resource Manager 模板](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm)
+- [Azure 资源管理器客户端库](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm)
+
+有关托管标识的详细信息，请参阅 [Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。

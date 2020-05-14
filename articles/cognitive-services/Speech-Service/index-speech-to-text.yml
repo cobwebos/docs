@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: 语音转文本文档
-summary: 来自语音服务的语音到文本（也称为语音识别）启用实时和批处理音频流到文本中。
+summary: 使用语音服务提供的语音转文本（也称为语音识别）功能，可将音频流实时听录为文本和批量听录为文本。
 metadata:
   title: 语音转文本文档 - 教程和 API 参考 - Azure 认知服务 | Microsoft Docs
   titleSuffix: Azure Cognitive Services
@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/19/2020
   ms.author: trbye
-  ms.openlocfilehash: 717c4e0322b48eca0acfacd20ed527a629bd1ff0
-  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+  ms.openlocfilehash: f496ba72f4f649a3ed5146f0b74caf3d8110adf9
+  ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
   ms.translationtype: MT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/29/2020
-  ms.locfileid: "81401409"
+  ms.lasthandoff: 05/12/2020
+  ms.locfileid: "83201914"
 landingContent:
 - title: 关于语音转文本
   linkLists:
@@ -28,6 +28,8 @@ landingContent:
       url: batch-transcription.md
     - text: 语音识别基础知识
       url: speech-to-text-basics.md
+    - text: 将 SPX 用于语音到文本，无代码
+      url: spx-overview.md
   - linkListType: quickstart
     links:
     - text: 识别来自麦克风输入的语音
@@ -36,7 +38,7 @@ landingContent:
       url: quickstarts/speech-to-text-from-file.md
     - text: 识别存储在 Blob 存储中的语音
       url: quickstarts/from-blob.md
-- title: 通过语音到文本进行开发
+- title: 使用语音转文本进行开发
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -68,5 +70,5 @@ landingContent:
       url: language-support.md#speech-to-text
     - text: 语音转文本常见问题解答
       url: faq-stt.md
-    - text: 语音到文本定价
+    - text: 语音转文本定价
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services

@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/13/2020
   ms.author: trbye
-  ms.openlocfilehash: 5d5c1cdae695b68f45d55b51b76d88c2f93c50d1
-  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+  ms.openlocfilehash: 230145ed072285b3ee91a317bc2d89fe16a65fb8
+  ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
   ms.translationtype: MT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/29/2020
-  ms.locfileid: "81401415"
+  ms.lasthandoff: 05/12/2020
+  ms.locfileid: "83201895"
 landingContent:
 - title: 关于语音翻译
   linkLists:
@@ -26,6 +26,8 @@ landingContent:
       url: speech-translation.md
     - text: 语音翻译基础知识
       url: speech-translation-basics.md
+    - text: 使用 SPX 翻译无代码的语音
+      url: spx-overview.md
   - linkListType: quickstart
     links:
     - text: 将语音翻译为文本

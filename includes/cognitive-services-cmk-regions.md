@@ -5,15 +5,15 @@ services: cognitive-services
 author: erindormier
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/11/2020
+ms.date: 05/11/2020
 ms.author: egeaney
 ms.custom: include
-ms.openlocfilehash: a4b8fcaab93144bb73c1a118d266dd871728a6c6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 409f8d602432f0ed0363e45790c47497450c5e6c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79372179"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83202027"
 ---
 ### <a name="regional-availability"></a>区域可用性
 
@@ -22,3 +22,5 @@ ms.locfileid: "79372179"
 * 美国中南部
 * 美国西部 2
 * 美国东部
+* US Gov 弗吉尼亚州
+* US Gov 亚利桑那州
