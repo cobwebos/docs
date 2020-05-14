@@ -61,7 +61,7 @@
       "branch": "master"
     },
     {
-      "path_to_root": "_repo.en-us",
+      "path_to_root": "_repo.zh-cn",
       "url": "https://github.com/MicrosoftDocs/azure-docs-pr",
       "branch": "live",
       "branch_mapping": {}
