@@ -228,7 +228,7 @@ ms.locfileid: "81409469"
         ![脚本设置](./media/tutorial-transform-data-using-hive-in-vnet-portal/confirm-hive-script-settings.png)
     5. 在“脚本”选项卡中，展开“高级”部分。   
     6. 单击“参数”对应的“从脚本自动填充”。   
-    7. 使用以下格式输入“输出”参数的值： **。** `wasbs://<Blob Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` 例如：`wasbs://adftutorial@mystorageaccount.blob.core.windows.net/outputfolder/`。
+    7. 使用以下格式输入“输出”参数的值：`wasbs://<Blob Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`。  例如：`wasbs://adftutorial@mystorageaccount.blob.core.windows.net/outputfolder/`。
  
         ![脚本参数](./media/tutorial-transform-data-using-hive-in-vnet-portal/script-arguments.png)
 1. 若要将项目发布到数据工厂，请单击“发布”。 

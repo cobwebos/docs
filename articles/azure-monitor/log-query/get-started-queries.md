@@ -95,7 +95,7 @@ SecurityEvent
 ## <a name="where-filtering-on-a-condition"></a>Where：按条件筛选
 顾名思义，筛选器可按特定的条件筛选数据。 这是将查询结果限制为相关信息的最常用方法。
 
-若要将筛选器添加到查询，请使用 **where** 运算符，后接一个或多个条件。 例如，以下查询只返回 *Level* 等于 _8_ 的 _SecurityEvent_ 记录：
+若要将筛选器添加到查询，请使用 **where** 运算符，后接一个或多个条件。 例如，以下查询只返回 _Level_ 等于 _8_ 的 *SecurityEvent* 记录：
 
 ```Kusto
 SecurityEvent

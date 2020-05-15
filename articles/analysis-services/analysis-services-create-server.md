@@ -30,7 +30,7 @@ ms.locfileid: "75442838"
 
 ## <a name="create-a-server"></a>创建服务器
 
-1. 依次单击“+ 创建资源” **“Analytics”** “Analysis Services” >    >   。
+1. 依次单击“+ 创建资源” > “Analytics” > “Analysis Services”    。
 
     ![门户](./media/analysis-services-create-server/aas-create-server-portal.png)
 

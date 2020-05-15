@@ -38,7 +38,7 @@ ms.locfileid: "80240079"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 *az group create* 创建名为 [myResourceGroupAG](/cli/azure/group#az-group-create) 的 Azure 资源组。
+资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/azure/group#az-group-create) 创建名为 *myResourceGroupAG* 的 Azure 资源组。
 
 ```azurecli-interactive
 az group create --name myResourceGroupAG --location eastus
@@ -143,7 +143,7 @@ az vmss extension set \
 
 ### <a name="create-a-storage-account"></a>创建存储帐户
 
-使用 *az storage account create* 创建名为 [myagstore1](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) 的存储帐户。
+使用 [az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) 创建名为 *myagstore1* 的存储帐户。
 
 ```azurecli-interactive
 az storage account create \

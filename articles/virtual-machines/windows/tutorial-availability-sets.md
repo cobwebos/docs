@@ -57,7 +57,7 @@ New-AzResourceGroup `
    -Location EastUS
 ```
 
-结合 [ 参数使用 ](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset)New-AzAvailabilitySet`-sku aligned` 创建托管的可用性集。
+结合 `-sku aligned` 参数使用 [New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset) 创建托管的可用性集。
 
 ```azurepowershell-interactive
 New-AzAvailabilitySet `
@@ -101,7 +101,7 @@ for ($i=1; $i -le 2; $i++)
 
 创建和配置这两个 VM 需要几分钟的时间完成。 完成后，你将拥有两个跨基础硬件分布的虚拟机。 
 
-如果转到“资源组” **“myResourceGroupAvailability”** “myAvailabilitySet”在门户中查看可用性集，应会看到 VM 在两个容错域和更新域之间的分布方式。 >    >  
+如果转到“资源组” > “myResourceGroupAvailability” > “myAvailabilitySet”在门户中查看可用性集，应会看到 VM 在两个容错域和更新域之间的分布方式。   
 
 ![门户中的可用性集](./media/tutorial-availability-sets/fd-ud.png)
 

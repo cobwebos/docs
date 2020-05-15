@@ -30,7 +30,7 @@ ms.locfileid: "75431554"
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
 
-2. 选择“创建资源” **“物联网”** “IoT 中心” >    >   。
+2. 选择“创建资源” > “物联网” > “IoT 中心”    。
 
 3. 在“IoT 中心”窗格中，输入以下信息： 
    
@@ -77,7 +77,7 @@ ms.locfileid: "75431554"
 
 ## <a name="create-a-stream-analytics-job"></a>创建流分析作业
 
-1. 登录到 Azure 门户。  
+1. 登录到 Azure 门户。
 
 2. 在 Azure 门户的左上角选择“创建资源”。   
 

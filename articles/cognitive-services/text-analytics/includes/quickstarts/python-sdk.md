@@ -75,7 +75,7 @@ endpoint = "<paste-your-text-analytics-endpoint-here>"
 
 文本分析客户端是一个 `TextAnalyticsClient` 对象，它使用你的密钥向 Azure 进行身份验证。 该客户端提供了几种方法来成批分析文本。 
 
-当成批处理时，文本将以 `documents` 的列表的形式发送到 API，该项是包含 `dictionary`、`id` 和 `text` 属性的组合的 `language` 对象，具体取决于所用的方法。 `text` 属性存储要以源 `language` 分析的文本，而 `id` 则可以是任何值。 
+当成批处理时，文本将以 `documents` 的列表的形式发送到 API，该项是包含 `id`、`text` 和 `language` 属性的组合的 `dictionary` 对象，具体取决于所用的方法。 `text` 属性存储要以源 `language` 分析的文本，而 `id` 则可以是任何值。 
 
 响应对象是一个列表，其中包含每个文档的分析信息。 
 
@@ -83,7 +83,7 @@ endpoint = "<paste-your-text-analytics-endpoint-here>"
 
 文本分析客户端是一个 [TextAnalyticsClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python) 对象，它使用你的密钥向 Azure 进行身份验证。 该客户端提供了几种方法来分析文本，文本可以是单个字符串，也可以是批处理。 
 
-文本将以 `documents` 的列表的形式发送到 API，该项是包含 `dictionary`、`id` 和 `text` 属性的组合的 `language` 对象，具体取决于所用的方法。 `text` 属性存储要以源 `language` 分析的文本，而 `id` 则可以是任何值。 
+文本将以 `documents` 的列表的形式发送到 API，该项是包含 `id`、`text` 和 `language` 属性的组合的 `dictionary` 对象，具体取决于所用的方法。 `text` 属性存储要以源 `language` 分析的文本，而 `id` 则可以是任何值。 
 
 ---
 
@@ -102,7 +102,7 @@ endpoint = "<paste-your-text-analytics-endpoint-here>"
 
 #### <a name="version-30-preview"></a>[版本 3.0-preview](#tab/version-3)
 
-创建一个函数，以便通过上面创建的 `TextAnalyticsClient` 和 `key` 来实例化 `endpoint` 对象。 然后创建一个新客户端。 
+创建一个函数，以便通过上面创建的 `key` 和 `endpoint` 来实例化 `TextAnalyticsClient` 对象。 然后创建一个新客户端。 
 
 ```python
 from azure.ai.textanalytics import TextAnalyticsClient
@@ -121,7 +121,7 @@ client = authenticate_client()
 
 [!code-python[imports statements](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=imports)]
 
-创建一个函数，以便通过上面创建的 `TextAnalyticsClient` 和 `key` 来实例化 `endpoint` 对象。 然后创建一个新客户端。 
+创建一个函数，以便通过上面创建的 `key` 和 `endpoint` 来实例化 `TextAnalyticsClient` 对象。 然后创建一个新客户端。 
 
 [!code-python[version 2 authentication](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=authentication)]
 

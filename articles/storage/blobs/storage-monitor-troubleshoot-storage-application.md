@@ -89,7 +89,7 @@ curl https://<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/<CONTAINER_NAME>/<INCO
 
 下载 [Microsoft Message Analyzer](https://www.microsoft.com/download/details.aspx?id=44226) 并安装该应用程序。
 
-启动应用程序并选择“文件” **“打开”** “从其他文件源” >    >   。
+启动应用程序并选择“文件” > “打开” > “从其他文件源”    。
 
 在“文件选择器”对话框中，选择“+ 添加 Azure 连接”   。 输入存储帐户名称和帐户密钥，并单击“确定”    。
 

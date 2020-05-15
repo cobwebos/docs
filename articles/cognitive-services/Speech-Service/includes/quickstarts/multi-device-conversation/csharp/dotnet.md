@@ -294,7 +294,7 @@ ms.locfileid: "80671581"
     }
     ```
 
-2. 将你的 `CreateConversationAsync();` 函数中的 `public static async Task Main(string[] args)` 替换为：
+2. 将你的 `public static async Task Main(string[] args)` 函数中的 `CreateConversationAsync();` 替换为：
 
     ```csharp
     // Set this to the conversation you want to join

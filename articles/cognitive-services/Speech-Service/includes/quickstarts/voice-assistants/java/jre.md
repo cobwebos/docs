@@ -40,9 +40,9 @@ ms.locfileid: "80671517"
 
 ## <a name="add-sample-code"></a>添加示例代码
 
-1. 若要向 Java 项目添加新的空类，请选择“文件” **“新建”** “类”。 >    >  
+1. 若要向 Java 项目添加新的空类，请选择“文件” > “新建” > “类”。   
 
-1. 在“新建 Java 类”窗口中，在“包”字段内输入 **speechsdk.quickstart**，在“名称”字段内输入 _Main_。   
+1. 在“新建 Java 类”窗口中，在“包”字段内输入 _speechsdk.quickstart_，在“名称”字段内输入 _Main_。   
 
    ![“新建 Java 类”窗口的屏幕截图](~/articles/cognitive-services/speech-service/media/sdk/qs-java-jre-06-create-main-java.png)
 
@@ -172,7 +172,7 @@ ms.locfileid: "80671517"
        });
    ```
 
-1. 调用 `DialogServiceConnector` 方法将 `connectAsync()` 连接到 Direct Line 语音。 若要测试机器人，可以调用 `listenOnceAsync` 方法以从麦克风发送音频输入。 此外，还可以使用 `sendActivityAsync` 方法以序列化字符串的形式发送自定义活动。 这些自定义活动可以提供机器人在聊天中使用的其他数据。
+1. 调用 `connectAsync()` 方法将 `DialogServiceConnector` 连接到 Direct Line 语音。 若要测试机器人，可以调用 `listenOnceAsync` 方法以从麦克风发送音频输入。 此外，还可以使用 `sendActivityAsync` 方法以序列化字符串的形式发送自定义活动。 这些自定义活动可以提供机器人在聊天中使用的其他数据。
 
    ```java
    connector.connectAsync();
@@ -185,9 +185,9 @@ ms.locfileid: "80671517"
 
 1. 保存对 `Main` 文件的更改。
 
-1. 为支持响应播放，请添加一个额外的类，该类用于将从 getAudio() API 返回的 PullAudioOutputStream 对象转换为一个 java InputStream 以方便处理。 此 `ActivityAudioStream` 是一个专用类，用于处理来自 Direct Line 语音通道的音频响应。 它提供访问器来提取处理播放所需的音频格式信息。 为此，请选择“文件” **“新建”** “类”。 >    >  
+1. 为支持响应播放，请添加一个额外的类，该类用于将从 getAudio() API 返回的 PullAudioOutputStream 对象转换为一个 java InputStream 以方便处理。 此 `ActivityAudioStream` 是一个专用类，用于处理来自 Direct Line 语音通道的音频响应。 它提供访问器来提取处理播放所需的音频格式信息。 为此，请选择“文件” > “新建” > “类”。   
 
-1. 在“新建 Java 类”窗口中，在“包”字段中输入 **speechsdk.quickstart**，在“名称”字段中输入 _ActivityAudioStream_。   
+1. 在“新建 Java 类”窗口中，在“包”字段中输入 _speechsdk.quickstart_，在“名称”字段中输入 _ActivityAudioStream_。   
 
 1. 打开新建的 `ActivityAudioStream` 类，将其内容替换为以下代码：
 
@@ -434,7 +434,7 @@ ms.locfileid: "80671517"
 
 ## <a name="build-and-run-the-app"></a>生成并运行应用
 
-选择 F11，或选择“运行” **“调试”。**  >  
+选择 F11，或选择“运行” > “调试”。  
 控制台会显示消息“请讲话。”
 此时，请讲出机器人能够理解的英语短语或句子。 你的语音将通过 Direct Line 语音通道传送到机器人，机器人将识别并处理你的语言， 然后返回活动形式的响应。 如果机器人返回了语音作为响应，则会使用 `AudioPlayer` 类播放音频。
 

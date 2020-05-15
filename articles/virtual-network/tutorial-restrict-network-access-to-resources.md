@@ -281,7 +281,7 @@ ms.locfileid: "74186374"
 
 1. 在门户顶部的“搜索资源、服务和文档”框中，输入 *myVmPublic*。 
 2. 当“myVmPublic”出现在搜索结果中时，将其选中。 
-3. 针对 [myVmPublic](#confirm-access-to-storage-account) VM 完成*确认对存储帐户的访问*中的步骤 1-6。
+3. 针对 *myVmPublic* VM 完成[确认对存储帐户的访问](#confirm-access-to-storage-account)中的步骤 1-6。
 
    稍等片刻，你会收到 `New-PSDrive : Access is denied` 错误。 访问被拒绝，因为 *myVmPublic* VM 部署在“公共”子网中。  “公共”  子网没有为 Azure 存储启用服务终结点。 存储帐户仅允许从“专用”  子网访问网络，而不允许从“公共”  子网访问。
 

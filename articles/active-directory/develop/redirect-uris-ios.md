@@ -74,7 +74,7 @@ App1 使用重定向 `msauth.com.contoso.app1://auth`，App2 使用 `msauth.com.
 
 MSAL 会验证重定向 URI 是否已正确注册，否则会返回错误。
     
-* 若要将通用链接用作重定向 URI，`<scheme>` 必须为 `https`，不需在 `CFBundleURLSchemes` 中声明。 只需在通过通用链接打开应用程序后，按照[开发人员的通用链接](https://developer.apple.com/ios/universal-links/)中 Apple 的说明配置应用和域，然后调用 `handleMSALResponse:sourceApplication:` 的 `MSALPublicClientApplication` 方法即可。
+* 若要将通用链接用作重定向 URI，`<scheme>` 必须为 `https`，不需在 `CFBundleURLSchemes` 中声明。 只需在通过通用链接打开应用程序后，按照[开发人员的通用链接](https://developer.apple.com/ios/universal-links/)中 Apple 的说明配置应用和域，然后调用 `MSALPublicClientApplication` 的 `handleMSALResponse:sourceApplication:` 方法即可。
 
 ## <a name="use-a-custom-redirect-uri"></a>使用自定义重定向 URI
 
@@ -110,7 +110,7 @@ do {
 
 ## <a name="handle-the-url-opened-event"></a>处理“URL 已打开”事件
 
-应用程序在通过 URL 方案或通用链接收到任何响应时，应调用 MSAL。 当应用程序打开后，调用 `handleMSALResponse:sourceApplication:` 的 `MSALPublicClientApplication` 方法。 下面是自定义方案的一个示例：
+应用程序在通过 URL 方案或通用链接收到任何响应时，应调用 MSAL。 当应用程序打开后，调用 `MSALPublicClientApplication` 的 `handleMSALResponse:sourceApplication:` 方法。 下面是自定义方案的一个示例：
 
 Objective-C：
 

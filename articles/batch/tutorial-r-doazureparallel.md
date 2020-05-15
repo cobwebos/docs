@@ -102,7 +102,7 @@ generateClusterConfig("cluster.json")
 对于本教程，请将配置更改如下：
 
 * 将 `maxTasksPerNode` 增加到 *2*，以便充分利用每个节点上的两个核心
-* 将 `dedicatedNodes` 设置为 *0*，以便尝试适用于 Batch 的低优先级 VM。 将 `min` 的 `lowPriorityNodes` 设置为 *5*， 并将 `max` 设置为 *10*，或者根据需要选择更小的数字。 
+* 将 `dedicatedNodes` 设置为 *0*，以便尝试适用于 Batch 的低优先级 VM。 将 `lowPriorityNodes` 的 `min` 设置为 *5*， 并将 `max` 设置为 *10*，或者根据需要选择更小的数字。 
 
 其余设置保留默认值，然后保存文件。 该属性应与下面类似：
 

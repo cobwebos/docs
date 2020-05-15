@@ -707,7 +707,7 @@ $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -Resou
     ```
 
 ## <a name="verify-the-output"></a>验证输出
-该管道自动在 *Blob 容器中创建名为*fromonprem`adftutorial` 的输出文件夹。 确认在输出文件夹中看到 *dbo.emp.txt* 文件。
+该管道自动在 `adftutorial` Blob 容器中创建名为 *fromonprem* 的输出文件夹。 确认在输出文件夹中看到 *dbo.emp.txt* 文件。
 
 1. 在 Azure 门户的“adftutorial”容器窗口中选择“刷新”，查看输出文件夹。  
 1. 选择文件夹列表中的 `fromonprem`。

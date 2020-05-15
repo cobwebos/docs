@@ -225,7 +225,7 @@ ms.locfileid: "80292038"
 
     ![Voting 应用 Java Azure](./media/service-fabric-tutorial-java-deploy-azure/votingappjavaazure.png)
 
-7. 若要从群集中卸载应用程序，请在 *Scripts* 文件夹中运行 **uninstall.sh** 脚本
+7. 若要从群集中卸载应用程序，请在 **Scripts** 文件夹中运行 *uninstall.sh* 脚本
 
     ```bash
     ./uninstall.sh

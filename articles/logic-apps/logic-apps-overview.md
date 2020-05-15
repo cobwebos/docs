@@ -102,7 +102,7 @@ ms.locfileid: "79290545"
 
 ### <a name="access-resources-inside-azure-virtual-networks"></a>访问 Azure 虚拟网络中的资源
 
-当你创建[集成服务环境](../virtual-network/virtual-networks-overview.md)[ (ISE) *时，逻辑应用可访问*Azure 虚拟网络](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的受保护资源，例如虚拟机 (VM) 以及其他系统或服务。 ISE 是逻辑应用服务的独立实例，该实例使用专用资源并独立于“全局”多租户逻辑应用服务运行。
+当你创建[集成服务环境  (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 时，逻辑应用可访问[Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)中的受保护资源，例如虚拟机 (VM) 以及其他系统或服务。 ISE 是逻辑应用服务的独立实例，该实例使用专用资源并独立于“全局”多租户逻辑应用服务运行。
 
 在你自己的独立隔离实例中运行逻辑应用有助于降低其他 Azure 租户对应用性能的影响，此影响也称为[“邻近干扰”影响](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors)。 ISE 还带来以下好处：
 
