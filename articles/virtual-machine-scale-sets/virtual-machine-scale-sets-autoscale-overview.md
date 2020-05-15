@@ -1,21 +1,20 @@
 ---
 title: Azure 虚拟机规模集自动缩放概述
 description: 了解可以通过哪些不同的方法，根据性能或固定的计划自动缩放 Azure 虚拟机规模集
-author: ju-shim
-tags: azure-resource-manager
-ms.assetid: d29a3385-179e-4331-a315-daa7ea5701df
+author: avirishuv
+ms.author: avverma
+ms.topic: overview
 ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.topic: conceptual
+ms.subservice: autoscale
 ms.date: 05/29/2018
-ms.author: jushiman
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b3af40de107fd9273ec50425c58afc9772ea426
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.reviewer: jushiman
+ms.custom: avverma
+ms.openlocfilehash: 90777b8303f2d31168e489c8e2a7ca3a779a11e6
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81010335"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124952"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集自动缩放概述
 Azure 虚拟机规模集可以自动增加或减少运行应用程序的 VM 实例数。 这种自动且弹性的行为可以减少监视和优化应用程序性能所需的管理开销。 创建规则，用于定义提供正面客户体验而可接受的性能。 如果满足定义的这些阈值，自动缩放规则会采取措施来调整规模集的容量。 还可以计划事件，以便在固定的时间自动增加或减少规模集的容量。 本文概述所提供的性能指标，以及自动缩放可以执行的操作。
@@ -78,7 +77,7 @@ Azure 虚拟机规模集可以自动增加或减少运行应用程序的 VM 实�
 | 最大值          |
 | 总计            |
 | 最后一个             |
-| 计数            |
+| Count            |
 
 使用以下运算符之一将指标与定义的阈值进行比较时，会触发自动缩放规则：
 
@@ -124,7 +123,7 @@ Azure 诊断扩展是在 VM 实例中运行的代理。 该代理可监视性能
 
 以下示例是能够从基于计划的自动缩放规则中受益的情景：
 
-- 在工作日开始且客户需求增大时自动增加 VM 实例数。 在工作日结束且应用程序用量较低时，在夜间自动减少 VM 实例数以最大程度地降低资源成本。
+- 在工作日开始且客户需求增大时自动增加 VM 实例数。 在工作日结束且应用程序用量较低时，在夜间自动横向缩减 VM 实例数以最大程度地降低资源成本。
 - 如果某个部门在月份或财政周期的某些时段重度使用某个应用程序，则自动增加 VM 实例数来适应额外的需求。
 - 开展市场营销活动、促销或假日销售时，可以在预测客户需求之前自动增加 VM 实例数。 
 
@@ -136,7 +135,7 @@ Azure 诊断扩展是在 VM 实例中运行的代理。 该代理可监视性能
 - [Azure CLI](tutorial-autoscale-cli.md)
 - [Azure 模板](tutorial-autoscale-template.md)
 
-本概述文章详细介绍了如何使用自动缩放规则来横向缩放以及增加或减少规模集中的 VM 实例数目。** 还可进行纵向缩放，即增大或减小 VM 实例的大小**。 有关详细信息，请参阅[虚拟机规模集垂直自动缩放](virtual-machine-scale-sets-vertical-scale-reprovision.md)。
+本概述文章详细介绍了如何使用自动缩放规则来横向缩放以及增加或减少规模集中的 VM 实例数目。  还可进行纵向缩放，即增大或减小 VM 实例的大小  。 有关详细信息，请参阅[虚拟机规模集的纵向自动缩放](virtual-machine-scale-sets-vertical-scale-reprovision.md)。
 
 有关如何管理 VM 实例的信息，请参阅[使用 Azure PowerShell 管理虚拟机规模集](virtual-machine-scale-sets-windows-manage.md)。
 

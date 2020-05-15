@@ -44,7 +44,7 @@ ms.locfileid: "82142619"
 
 4. 选择订阅并单击“注册”  。
 
-5. 选择“项目” **“管理 NuGet 包”** “包源: nuget.org” > “更新”，将 Application Insights SDK 包更新到最新稳定版本   >    >   。
+5. 选择“项目” > “管理 NuGet 包” > “包源: nuget.org” > “更新”，将 Application Insights SDK 包更新到最新稳定版本     。
 
 6. 通过从“调试”  菜单中选择“启动调试”  或通过按 F5 键来运行应用程序。
 

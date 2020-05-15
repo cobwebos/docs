@@ -81,7 +81,7 @@ az backup protection enable-for-vm \
 
 - `--container-name` 是 VM 的名称
 - `--item-name` 是 VM 的名称
-- 应以 UTC 时间格式 (`--retain-until`dd-mm-yyyy **) 将**  值设置为希望恢复点可用的最后一个日期
+- 应以 UTC 时间格式 (**dd-mm-yyyy**) 将 `--retain-until` 值设置为希望恢复点可用的最后一个日期
 
 以下示例备份名为 *myVM* 的 VM，并将恢复点的过期时间设置为 2017 年 10 月 18 日：
 

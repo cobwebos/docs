@@ -20,7 +20,7 @@ ms.locfileid: "75378460"
 # <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 Ruby 调用文本分析认知服务
 <a name="HOLTop"></a>
 
-本文展示了如何将[文本分析 API](#Detect)[与 Ruby 配合使用来](#SentimentAnalysis)检测语言[、](#KeyPhraseExtraction)分析情绪[、](#Entities)提取关键短语 [以及](//go.microsoft.com/fwlink/?LinkID=759711)识别链接的实体 。
+本文展示了如何将 [文本分析 API](//go.microsoft.com/fwlink/?LinkID=759711) 与 Ruby 配合使用来[检测语言](#Detect)、[分析情绪](#SentimentAnalysis)、[提取关键短语](#KeyPhraseExtraction)以及[识别链接的实体](#Entities)。
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 

@@ -268,13 +268,13 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
         ```
 
         ![第二个 Web 活动的设置](./media/tutorial-control-flow-portal/web-activity2-settings.png)         
-22. 在管道设计器中选择“复制”活动，单击  **按钮，然后选择“错误”。+->**   
+22. 在管道设计器中选择“复制”活动，单击 **+->** 按钮，然后选择“错误”。    
 
     ![第二个 Web 活动的设置](./media/tutorial-control-flow-portal/select-copy-failure-link.png)
 23. 将“复制”活动旁边的**红色**按钮拖放到第二个“Web”活动 **SendFailureEmailActivity**。 可以四处移动活动，使管道如下图所示：
 
     ![包含所有活动的完整管道](./media/tutorial-control-flow-portal/full-pipeline.png)
-24. 若要验证管道，请单击工具栏中的“验证”按钮。  单击  **按钮关闭“管道验证输出”窗口。>>**
+24. 若要验证管道，请单击工具栏中的“验证”按钮。  单击 **>>** 按钮关闭“管道验证输出”窗口。 
 
     ![验证管道](./media/tutorial-control-flow-portal/validate-pipeline.png)
 24. 若要将实体（数据集、管道等）发布到数据工厂服务，请选择“全部发布”。  等待“已成功发布”消息出现。 

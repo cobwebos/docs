@@ -78,7 +78,7 @@ ms.locfileid: "70067937"
 5. 从列表中选择“200 OK”。 
 6. 在右侧的“表示形式”标题下，选择“+ 添加表示形式”。  
 7. 在搜索框中输入“application/json”，选择“application/json”内容类型。  
-8. 在“示例”文本框中，输入 **。** `{ "sampleField" : "test" }`
+8. 在“示例”文本框中，输入 `{ "sampleField" : "test" }`。 
 9. 选择“创建”  。
 
 ## <a name="enable-response-mocking"></a>启用响应模拟

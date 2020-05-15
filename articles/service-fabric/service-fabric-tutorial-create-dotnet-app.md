@@ -241,7 +241,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 }
 ```
 
-在 `GetVotingDataServiceName` 的下面添加以下 `CreateServiceInstanceListeners()` 方法，然后保存所做更改。 `GetVotingDataServiceName` 在投票时返回服务名称。
+在 `CreateServiceInstanceListeners()` 的下面添加以下 `GetVotingDataServiceName` 方法，然后保存所做更改。 `GetVotingDataServiceName` 在投票时返回服务名称。
 
 ```csharp
 internal static Uri GetVotingDataServiceName(ServiceContext context)

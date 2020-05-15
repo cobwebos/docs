@@ -1,14 +1,14 @@
 ---
 title: CIS Microsoft Azure Foundations Benchmark 蓝图示例控件
 description: CIS Microsoft Azure Foundations Benchmark 蓝图示例到 Azure Policy 的建议映射。
-ms.date: 11/04/2019
+ms.date: 05/06/2020
 ms.topic: sample
-ms.openlocfilehash: ea61ae4ea05b34c785485cbb5fd39c8a772565e3
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 2163162f52eb4ad7f580c01d6539c242bd332645
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656964"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82863954"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure Foundations Benchmark 蓝图示例的建议映射
 
@@ -25,7 +25,7 @@ ms.locfileid: "80656964"
 未针对 Azure Active Directory 特权帐户启用多重身份验证时，此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你进行监视。
 
 - 应在对订阅拥有所有者权限的帐户上启用 MFA
-- 应在对订阅拥有写入权限的帐户上启用 MFA
+- 应对订阅中拥有写入权限的帐户启用 MFA
 
 ## <a name="12-ensure-that-multi-factor-authentication-is-enabled-for-all-non-privileged-users"></a>1.2 确保为所有非特权用户启用多重身份验证
 
@@ -37,9 +37,9 @@ ms.locfileid: "80656964"
 
 此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助监视可能需要删除的来宾帐户。
 
-- 应从订阅中删除拥有所有者权限的外部帐户
 - 应从订阅中删除拥有读取权限的外部帐户
 - 应从订阅中删除具有写入权限的外部帐户
+- 应从订阅中删除拥有所有者权限的外部帐户
 
 ## <a name="123-ensure-that-no-custom-subscription-owner-roles-are-created"></a>1.23 确保未创建任何自定义订阅所有者角色
 
@@ -51,7 +51,7 @@ ms.locfileid: "80656964"
 
 此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你监视未启用安全中心标准层的网络和虚拟机。
 
- - 应选择安全中心标准定价层
+- 应选择安全中心标准定价层
 
 ## <a name="22-ensure-that-automatic-provisioning-of-monitoring-agent-is-set-to-on"></a>2.2 确保“监视代理的自动预配”设置为“打开”
 
@@ -87,20 +87,14 @@ ms.locfileid: "80656964"
 
 此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你保护面向 Internet 的虚拟机。
 
-- 应该强化面向 Internet 的虚拟机的网络安全组规则
-
-## <a name="28-ensure-asc-default-policy-setting-monitor-web-application-firewall-is-not-disabled"></a>2.8 确保 ASC 默认策略设置“监视 Web 应用程序防火墙”不是处于“已禁用”状态
-
-此蓝图分配的 [Azure Policy](../../../policy/overview.md) 可帮助你保护运行 Web 应用程序的虚拟机。
-
-- 应该强化 IaaS 上 Web 应用程序的 NSG 规则
+- 应在面向 Internet 的虚拟机上应用自适应网络强化建议
 
 ## <a name="29-ensure-asc-default-policy-setting-enable-next-generation-firewallngfw-monitoring-is-not-disabled"></a>2.9 确保 ASC 默认策略设置“启用下一代防火墙(NGFW)监视”不是处于“已禁用”状态
 
 此蓝图分配的 [Azure Policy](../../../policy/overview.md) 可帮助你通过限制访问来防范子网和虚拟机受到威胁。 此 CIS Microsoft Azure Foundations Benchmark 建议参考的安全中心策略已由两条新建议替代。 下面参考的策略解释了新建议。
 
 - 子网应与网络安全组关联
-- 虚拟机应与网络安全组关联
+- 面向 Internet 的虚拟机应使用网络安全组进行保护
 
 ## <a name="210-ensure-asc-default-policy-setting-monitor-vulnerability-assessment-is-not-disabled"></a>2.10 确保 ASC 默认策略设置“监视漏洞评估”不是处于“已禁用”状态
 
@@ -128,7 +122,7 @@ ms.locfileid: "80656964"
 
 此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保启用 SQL 服务器审核。
 
-- 应在 SQL Server 的高级数据安全设置上启用审核
+- 应启用 SQL 服务器上的审核
 
 ## <a name="215-ensure-asc-default-policy-setting-monitor-sql-encryption-is-not-disabled"></a>2.15 确保 ASC 默认策略设置“监视 SQL 加密”不是处于“已禁用”状态
 
@@ -182,7 +176,7 @@ ms.locfileid: "80656964"
 
 此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保启用 SQL 服务器审核。 
 
-- 应在 SQL Server 的高级数据安全设置上启用审核
+- 应启用 SQL 服务器上的审核
 
 ## <a name="42-ensure-that-auditactiongroups-in-auditing-policy-for-a-sql-server-is-set-properly"></a>4.2 确保在“审核”策略中为 SQL 服务器正确设置“AuditActionGroups”
 
@@ -200,8 +194,8 @@ ms.locfileid: "80656964"
 
 此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保在 SQL 服务器和 SQL 托管实例上启用高级数据安全性。
 
-- 应在 SQL 托管实例上启用高级数据安全性
 - 应在 SQL 服务器上启用高级数据安全性
+- 应在 SQL 托管实例上启用高级数据安全性
 
 ## <a name="45-ensure-that-threat-detection-types-is-set-to-all"></a>4.5 确保“威胁检测类型”设置为“所有”
 
@@ -214,15 +208,15 @@ ms.locfileid: "80656964"
 
 此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保正确启用高级数据安全性通知。
 
-- SQL 托管实例的“高级数据安全性”设置应包含用于接收安全警报的电子邮件地址
 - SQL 服务器的“高级数据安全性”设置应包含用于接收安全警报的电子邮件地址
+- SQL 托管实例的“高级数据安全性”设置应包含用于接收安全警报的电子邮件地址
 
 ## <a name="47-ensure-that-email-service-and-co-administrators-is-enabled"></a>4.7 确保“电子邮件服务和协同管理员”设置为“已启用”
 
 此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保正确启用高级数据安全性通知。
 
-- 应在 SQL 托管实例高级数据安全设置中启用“向管理员和订阅所有者发送电子邮件通知”
 - 应在 SQL 服务器高级数据安全设置中为管理员和订阅所有者启用电子邮件通知
+- 应在 SQL 托管实例高级数据安全设置中启用“向管理员和订阅所有者发送电子邮件通知”
 
 ## <a name="48-ensure-that-azure-active-directory-admin-is-configured"></a>4.8 确保配置 Azure Active Directory 管理员
 
@@ -240,8 +234,8 @@ ms.locfileid: "80656964"
 
 此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保使用自己的密钥加密 SQL 服务器和 SQL 托管实例的透明数据加密保护器。
 
-- 应使用自己的密钥加密 SQL 托管实例的 TDE 保护器
 - 应使用自己的密钥加密 SQL 服务器的 TDE 保护器
+- 应使用自己的密钥加密 SQL 托管实例的 TDE 保护器
 
 ## <a name="411-ensure-enforce-ssl-connection-is-set-to-enabled-for-mysql-database-server"></a>4.11 确保 MySQL 数据库服务器的“强制 SSL 连接”设置为“已启用”
 
@@ -315,11 +309,83 @@ ms.locfileid: "80656964"
 
 - Azure Monitor 应从所有区域收集活动日志
 
+## <a name="516-ensure-the-storage-account-containing-the-container-with-activity-logs-is-encrypted-with-byok-use-your-own-key"></a>5.1.6 确保使用 BYOK（使用自己的密钥）对存储帐户（包含的容器具有活动日志）加密
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保使用 BYOK 对包含活动日志的存储帐户进行加密。
+
+- 必须使用 BYOK 对存储帐户（包含的容器具有活动日志）进行加密
+
 ## <a name="517-ensure-that-logging-for-azure-keyvault-is-enabled"></a>5.1.7 确保 Azure KeyVault 日志记录设置为“已启用”
 
 此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保为 Key Vault 启用诊断日志。
 
 - 应启用 Key Vault 中的诊断日志
+
+## <a name="521-ensure-that-activity-log-alert-exists-for-create-policy-assignment"></a>5.2.1 确保存在“创建策略分配”的活动日志警报
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保存在特定的活动日志警报。
+
+- 特定策略操作应有活动日志警报
+
+## <a name="522-ensure-that-activity-log-alert-exists-for-create-or-update-network-security-group"></a>5.2.2 确保存在“创建或更新网络安全组”的活动日志警报
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保存在特定的活动日志警报。
+
+- 特定管理操作应有活动日志警报
+
+## <a name="523-ensure-that-activity-log-alert-exists-for-delete-network-security-group"></a>5.2.3 确保存在“删除网络安全组”的活动日志警报
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保存在特定的活动日志警报。
+
+- 特定管理操作应有活动日志警报
+
+## <a name="524-ensure-that-activity-log-alert-exists-for-create-or-update-network-security-group-rule"></a>5.2.4 确保存在“创建或更新网络安全组规则”的活动日志警报
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保存在特定的活动日志警报。
+
+- 特定管理操作应有活动日志警报
+
+## <a name="525-ensure-that-activity-log-alert-exists-for-the-delete-network-security-group-rule"></a>5.2.5 确保存在“删除网络安全组规则”的活动日志警报
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保存在特定的活动日志警报。
+
+- 特定管理操作应有活动日志警报
+
+## <a name="526-ensure-that-activity-log-alert-exists-for-create-or-update-security-solution"></a>5.2.6 确保存在“创建或更新安全解决方案”的活动日志警报
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保存在特定的活动日志警报。
+
+- 特定安全操作应有活动日志警报
+
+## <a name="527-ensure-that-activity-log-alert-exists-for-delete-security-solution"></a>5.2.7 确保存在“删除安全解决方案”的活动日志警报
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保存在特定的活动日志警报。
+
+- 特定安全操作应有活动日志警报
+
+## <a name="528-ensure-that-activity-log-alert-exists-for-create-or-update-or-delete-sql-server-firewall-rule"></a>5.2.8 确保存在“创建、更新或删除 SQL Server 防火墙规则”的活动日志警报
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保存在特定的活动日志警报。
+
+- 特定管理操作应有活动日志警报
+
+## <a name="529-ensure-that-activity-log-alert-exists-for-update-security-policy"></a>5.2.9 确保存在“更新安全策略”的活动日志警报
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保存在特定的活动日志警报。
+
+- 特定安全操作应有活动日志警报
+
+## <a name="61-ensure-that-rdp-access-is-restricted-from-the-internet"></a>6.1 确保限制从 Internet 进行的 RDP 访问
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保 RDP 访问受到限制。
+
+- 应阻止来自 Internet 的 RDP 访问
+
+## <a name="62-ensure-that-ssh-access-is-restricted-from-the-internet"></a>6.2 确保限制从 Internet 进行的 SSH 访问
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保 SSH 访问受到限制。
+
+- 应阻止来自 Internet 的 SSH 访问
 
 ## <a name="65-ensure-that-network-watcher-is-enabled"></a>6.5 确保网络观察程序已启用
 
@@ -349,7 +415,7 @@ ms.locfileid: "80656964"
 
 此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保仅安装已批准的虚拟机扩展。 此策略需要一个指定所有已批准虚拟机扩展的参数数组。 此策略计划定义包含客户应该验证的建议默认值。 
 
- - 应仅安装已批准的 VM 扩展
+- 应仅安装已批准的 VM 扩展
 
 ## <a name="75-ensure-that-the-latest-os-patches-for-all-virtual-machines-are-applied"></a>7.5 确保已应用适用于所有虚拟机的最新 OS 修补程序
 
@@ -373,7 +439,15 @@ ms.locfileid: "80656964"
 
 此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保使用基于角色的访问控制来管理 Kubernetes 服务群集中的权限
 
-- \[预览\]：应在 Kubernetes 服务中使用基于角色的访问控制 (RBAC)
+- 应在 Kubernetes 服务中使用基于角色的访问控制 (RBAC)
+
+## <a name="91-ensure-app-service-authentication-is-set-on-azure-app-service"></a>9.1 确保在 Azure 应用服务上设置应用服务身份验证
+
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保对应用服务应用请求进行身份验证。
+
+- 应在 API 应用上启用身份验证
+- 应在函数应用上启用身份验证
+- 应在 Web 应用上启用身份验证
 
 ## <a name="92-ensure-web-app-redirects-all-http-traffic-to-https-in-azure-app-service"></a>9.2 确保 Web 应用将所有 HTTP 流量重定向到 Azure 应用服务中的 HTTPS
 
@@ -444,7 +518,6 @@ ms.locfileid: "80656964"
 - 确保用于运行 API 应用的“HTTP 版本”是最新的
 - 确保用于运行函数应用的“HTTP 版本”是最新的
 - 确保用于运行 Web 应用的“HTTP 版本”是最新的
-
 
 ## <a name="next-steps"></a>后续步骤
 

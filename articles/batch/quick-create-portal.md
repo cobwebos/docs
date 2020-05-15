@@ -101,7 +101,7 @@ Batch 会立即创建池，但分配和启动计算节点则需要数分钟。 �
 
 2. 输入名为“mytask”的**任务 ID**。  
 
-3. 在“命令行”中输入 **。** `cmd /c "set AZ_BATCH & timeout /t 90 > NUL"` 其余设置保留默认值，然后选择“确定”  。
+3. 在“命令行”中输入 `cmd /c "set AZ_BATCH & timeout /t 90 > NUL"`。  其余设置保留默认值，然后选择“确定”  。
 
    ![创建任务][task_create]
 

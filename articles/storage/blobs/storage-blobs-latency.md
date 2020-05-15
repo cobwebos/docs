@@ -19,7 +19,7 @@ ms.locfileid: "75749723"
 
 延迟（有时被称为响应时间）是指应用程序必须等待请求完成的时间。 延迟可能会直接影响应用程序的性能。 对于在循环中有人工操作的情况（如处理信用卡交易或加载网页），低延迟通常很重要。 需要以较高速率处理传入事件（如遥测日志记录或 IoT 事件）的系统，也需要低延迟。 本文介绍如何了解和测量块 blob 上操作的延迟，以及如何针对低延迟设计应用程序。
 
-Azure 存储为块 blob 提供两个不同的性能选项：高级和标准。 与标准块 blob 相比，高级块 blob 可以通过高性能 SSD 磁盘显著降低延迟并提高一致性。 有关详细信息，请参阅 **Azure Blob 存储：热、冷以及存档访问层**中的[高级性能块 blob存储](storage-blob-storage-tiers.md)。
+Azure 存储为块 blob 提供两个不同的性能选项：高级和标准。 与标准块 blob 相比，高级块 blob 可以通过高性能 SSD 磁盘显著降低延迟并提高一致性。 有关详细信息，请参阅 [Azure Blob 存储：热、冷以及存档访问层](storage-blob-storage-tiers.md)中的**高级性能块 blob存储**。
 
 ## <a name="about-azure-storage-latency"></a>关于 Azure 存储延迟
 
@@ -39,7 +39,7 @@ Azure 存储为块 blob 提供两个延迟指标。 可以在 Azure 门户中查
 
 - **服务器延迟**测量从 Azure 存储接收到请求的最后一个数据包直到从 Azure 存储返回响应的第一个数据包之间的时间间隔。
 
-下图显示了调用  **操作的示例工作负荷的**平均成功 E2E 延迟**和**平均成功服务器延迟`Get Blob`：
+下图显示了调用 `Get Blob` 操作的示例工作负荷的**平均成功 E2E 延迟**和**平均成功服务器延迟**：
 
 ![屏幕截图显示了 Get Blob 操作的延迟指标](media/storage-blobs-latency/latency-metrics-get-blob.png)
 

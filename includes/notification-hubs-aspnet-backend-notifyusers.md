@@ -141,7 +141,7 @@ ms.locfileid: "77193150"
 
     > [!NOTE]
     > 安全说明：`AuthenticationTestHandler` 类不提供真正的身份验证。 它仅用于模拟基本身份验证并且是不安全的。 必须在生产应用程序和服务中实现安全的身份验证机制。
-5. 若要注册消息处理程序，请在 `Register`App_Start/WebApiConfig.cs**类中** 方法的末尾添加以下代码：
+5. 若要注册消息处理程序，请在 **App_Start/WebApiConfig.cs** 类中 `Register` 方法的末尾添加以下代码：
 
     ```csharp
     config.MessageHandlers.Add(new AuthenticationTestHandler());

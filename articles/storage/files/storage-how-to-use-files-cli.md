@@ -275,7 +275,7 @@ az storage file copy start \
 ```
 
 ### <a name="delete-a-share-snapshot"></a>删除共享快照
-可以使用 [`az storage share delete`](/cli/azure/storage/share) 命令删除共享快照。 所使用的变量包含对 `$SNAPSHOT` 参数的 `--snapshot` 引用：
+可以使用 [`az storage share delete`](/cli/azure/storage/share) 命令删除共享快照。 所使用的变量包含对 `--snapshot` 参数的 `$SNAPSHOT` 引用：
 
 ```azurecli-interactive
 az storage share delete \

@@ -189,7 +189,7 @@ ms.locfileid: "74380103"
 
 在上一部分中，你已经了解如何评估模拟登录。 除了模拟之外，还应该测试条件访问策略，以确保其按预期工作。
 
-若要测试策略，请尝试使用 [Isabella Simonsen](https://portal.azure.com) 测试帐户登录 **Azure 门户**。 此时应会出现一个要求接受使用条款的对话框。
+若要测试策略，请尝试使用 **Isabella Simonsen** 测试帐户登录 [Azure 门户](https://portal.azure.com)。 此时应会出现一个要求接受使用条款的对话框。
 
 ![使用条款](./media/require-tou/57.png)
 

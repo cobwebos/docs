@@ -1,14 +1,14 @@
 ---
 title: 部署 CAF 迁移登陆区域蓝图示例
 description: CAF 迁移登陆区域蓝图示例的部署步骤，包括蓝图项目参数详细信息。
-ms.date: 08/20/2019
+ms.date: 05/06/2020
 ms.topic: sample
-ms.openlocfilehash: da17083e8e1b27739288a9d9ac087d071ff4861c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 109c9a2c4c5670d6f5a676498ae1010a4ab0e418
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74545468"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871186"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>部署适用于 Azure 的 Microsoft 云采用框架迁移登陆区域蓝图示例
 

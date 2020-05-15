@@ -1,14 +1,14 @@
 ---
 title: UK OFFICIAL 和 UK NHS 蓝图示例控件
 description: UK OFFICIAL 和 UK NHS 蓝图示例的控件映射。 每个控制都映射到一个或多个协助评估的 Azure 策略。
-ms.date: 12/04/2019
+ms.date: 05/08/2020
 ms.topic: sample
-ms.openlocfilehash: 5bef590013a9ef06b791e58dc6c82e74dffe1a17
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 88f9606df5c3dcbca6ade05be918e3500a6ba64c
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74851360"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005618"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK OFFICIAL 和 UK NHS 蓝图示例的控件映射
 
@@ -27,9 +27,6 @@ ms.locfileid: "74851360"
 - 应该启用安全传输到存储帐户
 - 显示未使用安全通信协议的 Windows Web 服务器中的审核结果
 - 部署先决条件，以便审核未使用安全通信协议的 Windows Web 服务器
-- 应在 API 应用中使用最新的 TLS 版本
-- 应在 Web 应用中使用最新的 TLS 版本
-- 应在函数应用中使用最新的 TLS 版本
 
 ## <a name="23-data-at-rest-protection"></a>2.3 静态数据保护
 
@@ -129,8 +126,8 @@ Azure 实施基于角色的访问控制 (RBAC)，以帮助管理谁有权访问 
 
 - \[预览\]：部署要求以审核具有不使用密码的帐户的 Linux VM
 - \[预览\]：部署要求以审核允许通过没有密码的帐户进行远程连接的 Linux VM
-- \[预览\]：审核具有不使用密码的帐户的 Linux VM
-- \[预览\]：审核允许通过没有密码的帐户进行远程连接的 Linux VM
+- \[预览\]：显示具有不使用密码的帐户的 Linux VM 中的审核结果
+- \[预览\]：显示允许通过没有密码的帐户进行远程连接的 Linux VM 中的审核结果
 - 应将存储帐户迁移到新 Azure 资源管理器资源
 - 应将虚拟机迁移到新的 Azure 资源管理器资源
 - 审核不使用托管磁盘的 VM
@@ -141,12 +138,10 @@ Azure 实施基于角色的访问控制 (RBAC)，以帮助管理谁有权访问 
 
 - 审核对存储帐户的不受限的网络访问
 - 应在虚拟机上启用自适应应用程序控制
-- 应该强化 IaaS 上 Web 应用程序的 NSG 规则
 - 应该限制通过面向 Internet 的终结点进行访问
-- 应该强化面向 Internet 的虚拟机的网络安全组规则
+- 应在面向 Internet 的虚拟机上应用自适应网络强化建议
 - 应在虚拟机规模集上安装 Endpoint Protection 解决方案
 - 应在虚拟机上应用实时网络访问控制
-- 审核对存储帐户的不受限的网络访问
 - 应对函数应用禁用远程调试
 - 应禁用 Web 应用程序的远程调试
 - 应为 API 应用禁用远程调试
@@ -179,13 +174,13 @@ Azure 实施基于角色的访问控制 (RBAC)，以帮助管理谁有权访问 
 
 此蓝图还将分配一个 Azure Policy 定义，用于审核 Linux VM 密码文件权限，以便在这些权限设置不正确时发出警报。 使用这种设计可以采取纠正措施，以确保验证器不会泄密。
 
-- \[预览\]：审核 Linux VM /etc/密码文件权限是否设置为 0644
+- \[预览\]：显示未将密码文件权限设为 0644 的 Linux VM 中的审核结果
 
 ## <a name="13-audit-information-for-users"></a>13 用户的审核信息
 
 此蓝图通过分配 [Azure Policy](../../../policy/overview.md) 定义来帮助确保记录系统事件，这些定义用于审核在 Azure 资源上的日志设置。 分配的策略还会审核虚拟机是否不向指定的 Log Analytics 工作区发送日志。
 
-- 应在 SQL Server 的高级数据安全设置上启用审核
+- 应在 SQL 服务器上启用高级数据安全性
 - 审核诊断设置
 - \[预览\]：为 Linux VM 部署 Log Analytics 代理
 - \[预览\]：为 Windows VM 部署 Log Analytics 代理

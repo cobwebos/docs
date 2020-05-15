@@ -1,5 +1,5 @@
 ---
-title: 教程：使用 Visual Studio Code 扩展来训练和部署模型
+title: 教程：训练和部署模型：VS Code
 titleSuffix: Azure Machine Learning
 description: 了解如何使用 TensorFlow 和 Azure 机器学习 Visual Studio Code 扩展训练和部署图像分类模型
 services: machine-learning
@@ -9,12 +9,13 @@ ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 04/13/2020
-ms.openlocfilehash: f793f8c4cb84f821c098cc5ce98e693d272e725f
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.custom: contperfq4
+ms.openlocfilehash: 05857641df22e03362eeee1590fef62fa3a45530
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272733"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857712"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension"></a>使用 Azure 机器学习 Visual Studio Code 扩展训练和部署图像分类 TensorFlow 模型
 
@@ -284,7 +285,7 @@ ms.locfileid: "81272733"
 
 `MNIST-rc` 运行配置添加到“TeamWkspc-com”  计算节点下，`MNIST-env` 环境配置添加到“环境”节点下。 
 
-## <a name="train-the-model"></a>训练模型
+## <a name="train-the-model"></a>定型模型
 
 在训练过程中创建 TensorFlow 模型的方式是这样的：针对要分类的每个相应的数字处理在该模型中嵌入的训练数据和学习模式。 
 

@@ -33,7 +33,7 @@ ms.locfileid: "74233013"
 
 ## <a name="durable-http-polling"></a>持久 HTTP 轮询
 
-如 [HTTP 功能](durable-functions-http-features.md)一文中所述，业务流程协调程序函数可对外部终结点发出长时间运行的 HTTP 调用。 在遵循**异步 202 模式**时，**CallHttpAsync** 方法 (C#) 和 [callHttp](durable-functions-http-features.md#http-202-handling) 方法 (JavaScript) 可在内部轮询 HTTP 终结点。
+如 [HTTP 功能](durable-functions-http-features.md)一文中所述，业务流程协调程序函数可对外部终结点发出长时间运行的 HTTP 调用。 在遵循[异步 202 模式](durable-functions-http-features.md#http-202-handling)时，**CallHttpAsync** 方法 (C#) 和 **callHttp** 方法 (JavaScript) 可在内部轮询 HTTP 终结点。
 
 内部 HTTP 轮询操作目前不会产生直接费用。 但是，内部轮询可能导致业务流程协调程序函数定期重播。 你要支付这些内部函数重播的标准费用。
 

@@ -47,7 +47,7 @@ ms.locfileid: "81400137"
 
 1. 你的设备应列在“选择设备”下。  选择设备旁边的“视图”按钮。 
 
-1. 选择文件夹图标，然后选择“设置” **“WLAN”连接到无线网络。**  >  
+1. 选择文件夹图标，然后选择“设置” > “WLAN”连接到无线网络。  
 
    ![Vysor WLAN](../media/speech-devices-sdk/qsg-4.png)
 
@@ -58,7 +58,7 @@ ms.locfileid: "81400137"
    >
    > ![Vysor 文件夹](../media/speech-devices-sdk/qsg-10.png)
    >
-   > 选择“设置”。  搜索“mac 地址”，然后选择“Mac 地址” **“高级 WLAN”。**  >   记下对话框底部附近显示的 MAC 地址。
+   > 选择“设置”。  搜索“mac 地址”，然后选择“Mac 地址” > “高级 WLAN”。   记下对话框底部附近显示的 MAC 地址。
    >
    > ![Vysor MAC 地址](../media/speech-devices-sdk/qsg-11.png)
    >

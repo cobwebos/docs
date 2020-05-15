@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 SmarterU 集成 | Microsoft 文档
+title: 教程：Azure Active Directory 与 SmarterU 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 SmarterU 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 712e7bcf513592f97950902faff2f7754093b9fc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9e44aecc5015986079afb3190101cdaabc4a6874
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76549285"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981946"
 ---
+# <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>教程：Azure Active Directory 与 SmarterU 集成
+
 > [!NOTE]
 > 将 SmarterU 与 Azure Active Directory 集成的过程也在 [SmarterU 帮助系统](https://help.smarteru.com/ID2053086)中记录和维护。
-
-# <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>教程：Azure Active Directory 与 SmarterU 集成
 
 在本教程中，了解如何将 SmarterU 与 Azure Active Directory (Azure AD) 集成。
 将 SmarterU 与 Azure AD 集成具有以下优势：
@@ -37,7 +37,7 @@ ms.locfileid: "76549285"
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 SmarterU 的集成，需要具有以下项：
 
@@ -108,7 +108,7 @@ ms.locfileid: "76549285"
 
     ![SmarterU 域和 URL 单一登录信息](common/idp-identifier.png)
 
-    在“标识符”文本框中键入 URL：  `https://www.smarteru.com/`
+    在“标识符”文本框中键入 URL：`https://www.smarteru.com/`
 
 5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
@@ -148,7 +148,7 @@ ms.locfileid: "76549285"
 
     f. 选择一个**标识符属性/声明**。
   
-    g. 单击“保存”  。
+    g. 单击“ **保存**”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -168,7 +168,7 @@ ms.locfileid: "76549285"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”  字段中键入 **brittasimon@yourcompanydomain.extension**  
+    b. 在“用户名”  字段中键入 brittasimon@yourcompanydomain.extension   
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -217,11 +217,11 @@ ms.locfileid: "76549285"
 
     a. 单击“+用户”  。
 
-    b. 在以下文本框中键入 Azure AD 用户帐户的相关属性值：**主电子邮件**、**员工 ID**、**密码**、**验证密码**、**名字**、**姓氏**。
+    b. 在以下文本框中键入 Azure AD 用户帐户的相关属性值：“主要电子邮件”、“员工 ID”、“密码”、“验证密码”、“名字”、“姓氏”       。
 
     c. 单击“活动”  。
 
-    d. 单击“保存”  。
+    d. 单击“ **保存**”。
 
 > [!NOTE]
 > 可以使用任何其他 SmarterU 用户帐户创建工具或 SmarterU 提供的 API 来预配 Azure AD 用户帐户。
