@@ -4,12 +4,12 @@ description: 了解如何准备好要通过 Azure Migrate 进行评估/迁移的
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 539e25f8b6cc92674fef567de6e6de16d0a9394a
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: b7bde5df943a35bfcf08ace3b454a26dae8c1d89
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535275"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901415"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>准备评估物理服务器并将其迁移到 Azure
 
@@ -105,10 +105,9 @@ ms.locfileid: "81535275"
 ### <a name="assign-azure-account-permissions"></a>分配 Azure 帐户权限
 
 将“虚拟机参与者”角色分配给 Azure 帐户。 这提供了执行以下操作的权限：
-
-    - 在所选资源组中创建 VM。
-    - 在所选虚拟网络中创建 VM。
-    - 写入 Azure 托管磁盘。 
+  - 在所选资源组中创建 VM。
+  - 在所选虚拟网络中创建 VM。
+  - 写入 Azure 托管磁盘。 
 
 ### <a name="create-an-azure-network"></a>创建 Azure 网络
 

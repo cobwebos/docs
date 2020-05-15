@@ -1,19 +1,20 @@
 ---
 title: Azure PowerShell 示例 - 区域冗余规模集
 description: 此脚本创建跨多个可用性区域运行 Windows Server 2016 的虚拟机规模集。
-author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
+author: mimckitt
+ms.author: mimckitt
 ms.topic: sample
+ms.service: virtual-machine-scale-sets
+ms.subservice: availability
 ms.date: 04/05/2018
-ms.author: jushiman
-ms.custom: mvc
-ms.openlocfilehash: 902233025f8d98a8e0966fca869634ed132976b5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: 57dfbb7ebdb2ca8d323dadfca570360211a16484
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81008431"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197522"
 ---
 # <a name="create-a-zone-redundant-virtual-machine-scale-set-with-powershell"></a>使用 PowerShell 创建区域冗余虚拟机规模集
 此脚本创建跨多个可用性区域运行 Windows Server 2016 的虚拟机规模集。 运行脚本后，可通过 RDP 访问虚拟机。

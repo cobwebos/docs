@@ -8,13 +8,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: dech
-Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 212dd243842a8bdacc8a77241f456795ef508d9e
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: ef493b6b21eb0ba0ad6d22a21e4e205a9fecacb6
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81731689"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858064"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>教程：使用 JavaScript SDK 生成 Node.js 控制台应用以管理 Azure Cosmos DB SQL API 数据
 
@@ -27,7 +26,7 @@ ms.locfileid: "81731689"
 
 作为开发人员，你可能有使用 NoSQL 文件数据的应用程序。 可以使用 Azure Cosmos DB 中的 SQL API 帐户存储和访问此文档数据。 本教程介绍如何生成 Node.js 控制台应用程序，以便创建 Azure Cosmos DB 资源并对其进行查询。
 
-在本教程中，将：
+在本教程中，你将：
 
 > [!div class="checklist"]
 > * 创建并连接到 Azure Cosmos DB 帐户。
@@ -49,7 +48,7 @@ ms.locfileid: "81731689"
 
 ## <a name="create-azure-cosmos-db-account"></a>创建 Azure Cosmos DB 帐户
 
-让我们创建一个 Azure Cosmos DB 帐户。 如果已经有想要使用的帐户，可以跳到 [安装 Node.js 应用程序](#SetupNode)。 如果使用 Azure Cosmos DB 模拟器，请遵循 [Azure Cosmos DB 模拟器](local-emulator.md)中的步骤设置该模拟器，并直接跳到[设置 Node.js 应用程序](#SetupNode)。 
+创建 Azure Cosmos DB 帐户。 如果已经有想要使用的帐户，可以跳到 [安装 Node.js 应用程序](#SetupNode)。 如果使用 Azure Cosmos DB 模拟器，请遵循 [Azure Cosmos DB 模拟器](local-emulator.md)中的步骤设置该模拟器，并直接跳到[设置 Node.js 应用程序](#SetupNode)。 
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -57,11 +56,11 @@ ms.locfileid: "81731689"
 
 在开始编写生成应用程序所需的代码之前，可以生成应用的框架。 运行以下步骤，设置包含框架代码的 Node.js 应用程序：
 
-1. 打开最喜爱的终端。
+1. 打开偏好的终端。
 2. 找到想要在其中保存 Node.js 应用程序的文件夹或目录。
 3. 使用以下命令创建空的 JavaScript 文件：
 
-   * Windows：
+   * Windows:
      * `fsutil file createnew app.js 0`
      * `fsutil file createnew config.js 0`
      * `md data`
@@ -73,10 +72,10 @@ ms.locfileid: "81731689"
      * `mkdir data`
      * `touch data/databaseContext.js`
 
-4. 创建并初始化 `package.json` 文件。 使用以下命令：
+4. 创建并初始化 `package.json` 文件。 请使用以下命令：
    * ```npm init -y```
 
-5. 通过 npm 安装 @azure/cosmos 模块。 使用以下命令：
+5. 通过 npm 安装 @azure/cosmos 模块。 请使用以下命令：
    * ```npm install @azure/cosmos --save```
 
 ## <a name="set-your-apps-configurations"></a><a id="Config"></a>设置应用的配置

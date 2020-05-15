@@ -1,19 +1,20 @@
 ---
 title: Azure PowerShell 示例 - 创建完整的虚拟机规模集
 description: 此脚本创建一个运行 Windows Server 2016 的虚拟机规模集，其中配置并创建了各个资源。
-author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
+author: mimckitt
+ms.author: mimckitt
 ms.topic: sample
+ms.service: virtual-machine-scale-sets
+ms.subservice: powershell
 ms.date: 05/29/2018
-ms.author: jushiman
-ms.custom: mvc
-ms.openlocfilehash: 2459aee8c93df3b039922ee53c0fe86d302505cf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: 2d4e252484515f43e53bdfbed58f7350d4d82cb3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81011508"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200285"
 ---
 # <a name="create-a-complete-virtual-machine-scale-set-with-powershell"></a>使用 PowerShell 创建完整的虚拟机规模集
 

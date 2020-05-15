@@ -6,12 +6,12 @@ ms.date: 04/15/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 3b68531319e83eece11833dba475020060e280b6
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 87f746108599928d3e1b4a022abc1b3a3779ef29
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583319"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853553"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>将 Hyper-V VM 迁移到 Azure 
 
@@ -56,7 +56,7 @@ ms.locfileid: "82583319"
 
 添加 Azure Migrate:服务器迁移工具。
 
-- 如果你已按照第二篇教程来[评估 VMware VM](/tutorial-assess-hyper-v.md)，则已设置了一个 Azure Migrate 项目，现在可以继续添加工具。
+- 如果你已按照第二篇教程来[评估 VMware VM](tutorial-assess-hyper-v.md)，则已设置了一个 Azure Migrate 项目，现在可以继续添加工具。
 - 如果未按照第二篇教程操作，请[按照这些说明](how-to-add-tool-first-time.md)设置 Azure Migrate 项目。 创建项目时，请添加 Azure Migrate:服务器迁移工具。
 
 如果已设置项目，请如下所述添加工具：
