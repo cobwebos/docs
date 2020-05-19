@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 12/30/2019
+ms.date: 04/30/2020
 ms.author: diberry
-ms.openlocfilehash: aac4ba3ec63d425cac782f5db65bba923d24ed71
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5f663379939f24d16fb63e8e5b002fe088a2d9f8
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75551992"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585583"
 ---
 # <a name="machine-learned-entity"></a>机器学习实体
 
@@ -38,7 +38,7 @@ ms.locfileid: "75551992"
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 预测终结点响应](#tab/V3)
 
-因为机器学习的实体可能具有多个具有约束和描述符的子组件，所以这只是一个示例。 应将其视为有关实体将返回的内容的指南。
+因为机器学习的实体可能具有多个具有所需功能的子实体，所以这只是一个示例。 应将其视为有关实体将返回的内容的指南。
 
 请考虑以下查询：
 

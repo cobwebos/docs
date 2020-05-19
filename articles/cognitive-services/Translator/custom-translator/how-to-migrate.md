@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 2fa90a8099778bf37ce8534e968a2b1b4345c2d8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5705e5f29bc851d615f91d902fd505a69b5cfd12
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75446786"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586975"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>将 Hub 工作区和项目迁移到自定义翻译
 
@@ -141,9 +141,9 @@ Microsoft Translator Hub 允许有选择性地迁移项目。
 
 ## <a name="new-languages"></a>新语言
 
-如果你是致力于创建 Microsoft Translator 的新语言系统的社区或组织，请访问以[custommt@microsoft.com](mailto:custommt@microsoft.com)获取详细信息。
+如果你是致力于创建 Microsoft Translator 的新语言系统的社区或组织，请访问以 [custommt@microsoft.com](mailto:custommt@microsoft.com) 获取详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [为模型定型](how-to-train-model.md)。
-- 通过 [Microsoft 文本翻译 API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) 开始使用已部署的自定义翻译模型。
+- 开始通过[转换器 V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)使用已部署的自定义翻译模型。

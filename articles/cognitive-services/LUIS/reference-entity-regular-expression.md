@@ -1,21 +1,14 @@
 ---
 title: 正则表达式实体类型 - LUIS
-titleSuffix: Azure Cognitive Services
 description: 正则表达式最适合用于原始话语文本。 不区分大小写，并忽略区域性变体。  完成字符级别而不是令牌级别的拼写检查更改后，会应用正则表达式匹配。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 09/29/2019
-ms.author: diberry
-ms.openlocfilehash: b9da76a80183f353a74d43e667bf6c9219eb6c05
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/14/2020
+ms.openlocfilehash: 90260fca10fc087225f6b1286e9fa2dd6d17c836
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74841211"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585600"
 ---
 # <a name="regular-expression-entity"></a>正则表达式实体
 
@@ -106,4 +99,7 @@ ms.locfileid: "74841211"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本[教程](tutorial-regex-entity.md)中，使用**正则表达式**实体创建应用，以便从查询文本中提取一致格式的数据。
+了解有关实体的详细信息：
+
+* [概念](luis-concept-entity-types.md)
+* [创建方法](luis-how-to-add-entities.md)

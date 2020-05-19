@@ -10,24 +10,18 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: a4973254c8a53917d99daf38b0d11e5dbecbb731
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 975efa9fdaff9175317794d8b6df7afbfc73cba8
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80875095"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585670"
 ---
 # <a name="deploy-an-anomaly-detector-container-to-azure-container-instances"></a>将异常探测器容器部署到 Azure 容器实例
 
 了解如何将认知服务[异常检测](../anomaly-detector-container-howto.md)容器容器部署到 Azure[容器实例](https://docs.microsoft.com/azure/container-instances/)。 此过程演示如何创建异常探测器资源。 然后讨论如何拉取关联的容器映像。 最后，我们重点介绍了从浏览器中执行这两个业务流程的能力。 使用容器可以将开发人员的注意力从管理基础结构转移到应用程序开发上。
 
 [!INCLUDE [Prerequisites](../../containers/includes/container-preview-prerequisites.md)]
-
-## <a name="request-access-to-the-private-container-registry"></a>请求访问专用容器注册表
-
-必须先完成并提交[异常探测器容器请求窗体](https://aka.ms/adcontainer)，才能请求访问容器。
-
-[!INCLUDE [Request access](../../../../includes/cognitive-services-containers-request-access-only.md)]
 
 [!INCLUDE [Create a Cognitive Services Anomaly Detector resource](../includes/create-anomaly-detector-resource.md)]
 

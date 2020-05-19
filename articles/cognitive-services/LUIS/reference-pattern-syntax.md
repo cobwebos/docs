@@ -4,19 +4,19 @@ description: 创建实体，以便从语言理解 (LUIS) 应用的用户话语�
 ms.topic: reference
 ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: cc24667f43dfedc032f52c40fc5f8fe5c80bad70
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1665f1ef8a868b011e9e4de8562aeda9edef5ce2
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382143"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585566"
 ---
 # <a name="pattern-syntax"></a>模式语法
 
 模式语法是一个话语模板。 模板应包含要匹配的字词和实体，以及要忽略的字词和[标点](luis-reference-application-settings.md#punctuation-normalization)。 它不是一个正则表达式  。
 
 > [!CAUTION]
-> 模式仅包括机器学习实体父项，而不包括子组件。
+> 模式仅包括计算机获知的实体父级，而不是子实体。
 
 模式中的实体用花括号 `{}` 括起。 模式可包含实体和带角色的实体。 [Pattern.any](luis-concept-entity-types.md#patternany-entity) 是仅在模式中使用的实体。
 

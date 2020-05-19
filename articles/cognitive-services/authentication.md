@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
-ms.openlocfilehash: 1c13c2cc4d4e562d3512de90338d874091dfeef6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d36961a12162a587def76b1ffeb2109f9ed63f4d
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74423947"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587674"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>对 Azure 认知服务的请求进行身份验证
 
@@ -35,15 +35,15 @@ ms.locfileid: "74423947"
 
 让我们快速查看可用于 Azure 认知服务的身份验证标头。
 
-| Header | 说明 |
+| 标头 | 说明 |
 |--------|-------------|
 | Ocp-Apim-Subscription-Key | 使用此标头通过特定服务订阅密钥或多服务订阅密钥进行身份验证。 |
-| Ocp-Apim-Subscription-Region | 只有在使用具有[文本翻译 API](./Translator/reference/v3-0-reference.md) 的多服务订阅密钥时才需要此标头。 使用此标头指定订阅区域。 |
+| Ocp-Apim-Subscription-Region | 仅当将多服务订阅密钥与[转换器服务](./Translator/reference/v3-0-reference.md)一起使用时，才需要此标头。 使用此标头指定订阅区域。 |
 | 授权 | 如果使用的是身份验证令牌，则使用此标头。 以下各节详细介绍了执行令牌交换的步骤。 提供的值遵循以下格式：`Bearer <TOKEN>`。 |
 
 ## <a name="authenticate-with-a-single-service-subscription-key"></a>使用单服务订阅密钥进行身份验证
 
-第一个选项是使用特定服务的订阅密钥对请求进行身份验证，例如文本翻译。 Azure 门户中的密钥可用于已创建的每个资源。 要使用订阅密钥对请求进行身份验证，必须将其作为 `Ocp-Apim-Subscription-Key` 标头传递。
+第一种方法是使用特定服务（例如转换器）的订阅密钥对请求进行身份验证。 Azure 门户中的密钥可用于已创建的每个资源。 要使用订阅密钥对请求进行身份验证，必须将其作为 `Ocp-Apim-Subscription-Key` 标头传递。
 
 这些示例请求演示了如何使用 `Ocp-Apim-Subscription-Key` 标头。 请记住，使用此示例时，需要包括有效的订阅密钥。
 
@@ -53,7 +53,7 @@ curl -X GET 'https://api.cognitive.microsoft.com/bing/v7.0/search?q=Welsch%20Pem
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' | json_pp
 ```
 
-这是对文本翻译 API 的调用示例：
+这是对转换器服务的示例调用：
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' \
@@ -76,9 +76,9 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 ### <a name="supported-regions"></a>支持的区域
 
-使用多服务订阅密钥向 `api.cognitive.microsoft.com` 发出请求时，必须在 URL 中包含该区域。 例如：`westus.api.cognitive.microsoft.com`。
+使用多服务订阅密钥向 `api.cognitive.microsoft.com` 发出请求时，必须在 URL 中包含该区域。 例如： `westus.api.cognitive.microsoft.com`。
 
-将多服务订阅密钥与文本翻译 API 一起使用时，必须使用 `Ocp-Apim-Subscription-Region` 标头指定订阅区域。
+将多服务订阅密钥与转换器服务一起使用时，必须使用标头指定订阅区域 `Ocp-Apim-Subscription-Region` 。
 
 以下区域支持多服务身份验证：
 
@@ -100,7 +100,7 @@ curl -X GET 'https://YOUR-REGION.api.cognitive.microsoft.com/bing/v7.0/search?q=
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' | json_pp
 ```
 
-这是对文本翻译 API 的调用示例：
+这是对转换器服务的示例调用：
 
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \
@@ -150,7 +150,7 @@ curl -v -X POST \
 | `southeastasia` | `uksouth` | `westcentralus` |
 | `westeurope` | `westus` | `westus2` |
 
-获得身份验证令牌后，需要在每个请求中将其作为 `Authorization` 标头传递。 这是对文本翻译 API 的调用示例：
+获得身份验证令牌后，需要在每个请求中将其作为 `Authorization` 标头传递。 这是对转换器服务的示例调用：
 
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \

@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 5b3a6f2e903d8178554b7a076ae1277633569353
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e01f3ddde96903716cf1fcff0426791ff3a90e07
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73836566"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587657"
 ---
 # <a name="create-a-project"></a>创建项目
 
@@ -52,7 +52,7 @@ ms.locfileid: "73836566"
 
 选择某个项目后，会在项目页上看到以下信息：
 
-- CategoryID：CategoryID 是通过连接 WorkspaceID、项目标签和类别代码创建的。 在文本翻译 API 中使用 CategoryID 可以获取自定义译文。
+- CategoryID：CategoryID 是通过连接 WorkspaceID、项目标签和类别代码创建的。 使用带有文本转换器的 "类别 Id" 来获取自定义翻译。
 
 - 训练按钮：使用此按钮可以开始[训练模型](how-to-train-model.md)。
 

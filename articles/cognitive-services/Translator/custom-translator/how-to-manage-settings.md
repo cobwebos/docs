@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: f90ada6b6cd1760b3b779010625f252533fa611d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fe2c0eed2d476d01dffd22a61dd431140f26c475
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219507"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587218"
 ---
 # <a name="how-to-manage-settings"></a>如何管理设置
 
@@ -29,11 +29,11 @@ ms.locfileid: "79219507"
 
 ## <a name="associating-microsoft-translator-subscription"></a>关联 Microsoft Translator 订阅
 
-需要将一个 Microsoft 文本翻译 API 订阅密钥关联到工作区才能训练或部署模型。
+需要有与工作区关联的转换器订阅密钥来定型或部署模型。
 
 如果没有订阅，请执行以下步骤：
 
-1. 订阅 Microsoft 文本翻译 API。 本文将介绍如何订阅 Microsoft 文本翻译 API。
+1. 订阅转换器。 本文介绍如何订阅转换器。
 2. 记下翻译程序订阅的密钥。 密钥 1 或密钥 2 均可接受。
 3. 导航回到自定义翻译门户。
 

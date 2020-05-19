@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: 3039276a49e7bb41660d114e78ca047a3f77f279
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 23a426bf8cc3f30516fff0a672d7118a49666433
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74109931"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584920"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>语音 SDK 的音频输入流 API 简介
 
@@ -25,14 +25,14 @@ ms.locfileid: "74109931"
 
 - 识别音频流的格式。 格式必须受语音 SDK 和语音服务支持。 目前仅支持以下配置：
 
-  PCM 格式的音频样本、一个频道、每秒 16000 次采样、每秒 32000 字节、两个块对齐、（16 位，包括样本的内边距）、每个样本 16 位。
+  PCM 格式的音频采样，一个通道，每个样本16位，8000或每秒16000样本数（16000或每秒32000字节数），两个块对齐（16位，其中包含样本的空白）。
 
   SDK 中用于创建音频格式的相应代码如下所示：
 
   ```csharp
   byte channels = 1;
   byte bitsPerSample = 16;
-  int samplesPerSecond = 16000;
+  int samplesPerSecond = 16000; // or 8000
   var audioFormat = AudioStreamFormat.GetWaveFormatPCM(samplesPerSecond, bitsPerSample, channels);
   ```
 
