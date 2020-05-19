@@ -2,13 +2,13 @@
 title: 列出实体类型 - LUIS
 description: 列表实体表示一组固定、封闭的相关单词及其同义词。 LUIS 不会为列表实体发现更多值。 使用“建议”功能根据当前列表查看有关新词的建议。
 ms.topic: reference
-ms.date: 03/12/2020
-ms.openlocfilehash: 273fabae38f6682cfaaffcdcc19e62adc41b7a47
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/14/2020
+ms.openlocfilehash: 339fb832ef4af069b6f040c5264426002189f93f
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82097568"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588881"
 ---
 # <a name="list-entity"></a>列表实体
 
@@ -132,4 +132,7 @@ ms.locfileid: "82097568"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本[教程](tutorial-list-entity.md)中，了解如何使用**列表实体**从已知项的列表中提取完全匹配的文本。
+了解有关实体的详细信息：
+
+* [概念](luis-concept-entity-types.md)
+* [创建方法](luis-how-to-add-entities.md)

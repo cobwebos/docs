@@ -2,13 +2,13 @@
 title: 开发人员资源 - 语言理解
 description: SDK、REST API、CLI 用于以编程语言开发语言理解 (LUIS) 应用。 管理 Azure 资源和 LUIS 预测。
 ms.topic: reference
-ms.date: 03/16/2020
-ms.openlocfilehash: 5e375157cef4789bc2980f6154ea8d59e765ff3b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/05/2020
+ms.openlocfilehash: 820811c53f143c9747cd11f45cafb075398b080b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79457978"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589000"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>用于语言理解 (LUIS) 的 SDK、REST 和 CLI 开发人员资源
 
@@ -71,6 +71,10 @@ LUIS 目前有 2 种类型的终结点：
 |`q` 或 `query`|从客户端应用程序（如聊天机器人）发送的话语文本|
 |`version`|10 字符版本名称|
 |`slot`| `production` 或 `staging`|
+
+## <a name="app-schema"></a>应用架构
+
+[应用架构](app-schema-definition.md)以或格式导入和导出 `.json` `.lu` 。
 
 ### <a name="language-based-sdks"></a>基于语言的 SDK
 

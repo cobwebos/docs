@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: d2f7903fa85c645357e46a753d1cb043e0893254
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a67e199af1ee6e68f00dbde9a0a43d02e4c7d638
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219430"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588660"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>什么是自定义翻译工作区？
 
@@ -39,7 +39,7 @@ ms.locfileid: "79219430"
 
 自定义翻译允许将项目标签分配到项目。 项目标签可以区分具有相同语言对和类别的多个项目。 最佳做法是，除非有必要，否则应避免使用项目标签。
 
-项目标签用作 CategoryID 的一部分。 如果未设置项目标签或者为不同的项目设置相同的项目标签，则具有相同类别和不同语言对的项目将共享同一个 CategoryID。** 这种方法比较有利，因为它允许你或你的客户在使用文本翻译 API 时切换语言，而无需考虑每个项目的 CategoryID 是否唯一。
+项目标签用作 CategoryID 的一部分。 如果未设置项目标签或者为不同的项目设置相同的项目标签，则具有相同类别和不同语言对的项目将共享同一个 CategoryID。** 此方法非常有利，因为它允许你或你的客户在使用转换器时在不同语言之间切换，而无需担心每个项目的唯一类别 Id。
 
 例如，若要在技术领域启用从英语到法语以及从法语到英语的翻译，可以创建两个项目：一个是英语到法语翻译项目，另一个是法语到英语翻译项目。 为这两个项目指定相同的类别（“技术”），并将项目标签留空。 这两个项目的 CategoryID 将会匹配，因此，无需修改 CategoryID，即可查询英语和法语翻译的 API。
 

@@ -8,22 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 09/29/2019
+ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: a5a1ad467074ee0aa55d14d50ae153ac68304e6f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bac37e91933d16f36f2d8917760968122a4f5619
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71695168"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588898"
 ---
-# <a name="composite-entity"></a>复合实体 
+# <a name="composite-entity"></a>复合实体
 
-复合实体由其他实体构成，例如预生成实体、简单实体、正则表达式实体和列表实体。 各种单独的实体构成整个实体。 
+复合实体由其他实体构成，例如预生成实体、简单实体、正则表达式实体和列表实体。 各种单独的实体构成整个实体。
+
+> [!CAUTION]
+> 此实体已**弃用**。 请迁移到[计算机学习的实体](reference-entity-machine-learned-entity.md)。
 
 **如果数据具有以下特征，则非常适合使用此实体：**
 
-* 彼此相关。 
+* 彼此相关。
 * 在使用陈述的情况下彼此相关。
 * 使用各种实体类型。
 * 需要由客户端应用程序作为一个信息单元进行分组和处理。
@@ -37,7 +40,7 @@ ms.locfileid: "71695168"
 
 `book 2 tickets to cairo`
 
-注意数字 `2` 和 ToLocation `cairo` 之间有单词，这些单词不属于任何实体。 [LUIS](luis-reference-regions.md) 网站中的已标记话语中使用的绿色下划线指示复合实体。
+注意数字 `2` 和 ToLocation `cairo` 之间有单词，这些单词不属于任何实体。 [LUIS](luis-reference-regions.md) 网站中的已标记陈述中使用的绿色下划线指示复合实体。
 
 ![复合实体](./media/luis-concept-data-extraction/composite-entity.png)
 
@@ -87,7 +90,7 @@ ms.locfileid: "71695168"
       ]
     }
   ]
-```    
+```
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 预测终结点响应](#tab/V3)
 
@@ -169,7 +172,7 @@ ms.locfileid: "71695168"
 }
 ```
 
-* * * 
+* * *
 
 
 |数据对象|实体名称|值|
@@ -179,4 +182,7 @@ ms.locfileid: "71695168"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本[教程](luis-tutorial-composite-entity.md)中，添加**复合实体**来将提取的各种类型的数据捆绑到单个包含实体中。 通过捆绑数据，客户端应用程序可以轻松提取各种数据类型的相关数据。
+了解有关实体的详细信息：
+
+* [概念](luis-concept-entity-types.md)
+* [创建方法](luis-how-to-add-entities.md)

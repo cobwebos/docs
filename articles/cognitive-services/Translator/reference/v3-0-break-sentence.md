@@ -1,7 +1,7 @@
 ---
-title: 文本翻译 API BreakSentence 方法
+title: 转换器 BreakSentence 方法
 titleSuffix: Azure Cognitive Services
-description: 文本翻译 API BreakSentence 方法可标识一段文本中句子边界的位置。
+description: 转换器 BreakSentence 方法标识句子边界在文本段中的位置。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 01/21/2020
 ms.author: swmachan
-ms.openlocfilehash: 4c314148b8e1495a8b5a12c42d4989d13cdd6a08
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 01a5404100da6c669da4513ac9fd08c959df220e
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76548112"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588626"
 ---
-# <a name="translator-text-api-30-breaksentence"></a>文本翻译 API 3.0：BreakSentence
+# <a name="translator-30-breaksentence"></a>翻译人员3.0： BreakSentence
 
 标识文本段中的句子边界的位置。
 
@@ -141,7 +141,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
   </tr>
 </table> 
 
-如果发生错误，请求也将返回 JSON 错误响应。 错误代码是一个 6 位数字，包括 3 位数的 HTTP 状态代码，后接用于进一步将错误分类的 3 位数。 常见错误代码可在 [v3 文本翻译 API 参考页面](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)上找到。 
+如果发生错误，请求也将返回 JSON 错误响应。 错误代码是一个 6 位数字，包括 3 位数的 HTTP 状态代码，后接用于进一步将错误分类的 3 位数。 可在[V3 转换器参考页](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)上找到常见错误代码。 
 
 ## <a name="examples"></a>示例
 

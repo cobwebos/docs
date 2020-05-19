@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 96108053e6b68a71532d1cf25f8a352b3e0e5ca7
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 885f92bfb7a49fb90f68d3d5c5a2a93e5880afbc
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83202078"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588327"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>配置 Azure 认知服务虚拟网络
 
@@ -70,7 +70,7 @@ Azure 认知服务提供分层的安全模型。 此模型使你能够将认知�
 > * [个性化体验创建服务](./personalizer/index.yml)
 > * [文本分析](./text-analytics/index.yml)
 > * [QnA Maker](./qnamaker/index.yml)
-> * [文本翻译](./translator/index.yml)
+> * [翻译工具](./translator/index.yml)
 > * [语音服务](./speech-service/index.yml)
 
 ## <a name="change-the-default-network-access-rule"></a>更改默认网络访问规则

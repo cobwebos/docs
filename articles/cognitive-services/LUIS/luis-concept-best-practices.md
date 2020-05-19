@@ -2,14 +2,14 @@
 title: 有关生成 LUIS 应用的最佳做法
 description: 学习最佳做法以从 LUIS 应用的模型中获取最佳结果。
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 525d450084723a53ae090319d9ebf3f68d63beee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 43ca033c98d9997aecaf919b994a89d4e618d49b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382394"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589799"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>有关生成语言理解 (LUIS) 应用的最佳做法
 使用应用创作过程生成 LUIS 应用：
@@ -31,11 +31,11 @@ ms.locfileid: "81382394"
 
 |要求事项|禁止事项|
 |--|--|
-|[应定义不同的意向](#do-define-distinct-intents)<br>[将描述符添加到意向](#do-add-descriptors-to-intents) |[将许多话语示例添加到意向](#dont-add-many-example-utterances-to-intents)<br>[使用少量或简单实体](#dont-use-few-or-simple-entities) |
+|[应定义不同的意向](#do-define-distinct-intents)<br>[向意向添加功能](#do-add-features-to-intents) |[将许多话语示例添加到意向](#dont-add-many-example-utterances-to-intents)<br>[使用少量或简单实体](#dont-use-few-or-simple-entities) |
 |[每个意向需采用合适的详细程度](#do-find-sweet-spot-for-intents)|[将 LUIS 用作培训平台](#dont-use-luis-as-a-training-platform)|
 |[使用版本以迭代方式生成应用](#do-build-your-app-iteratively-with-versions)<br>[为模型分解生成实体](#do-build-for-model-decomposition)|[添加许多相同格式的话语示例，忽略其他格式](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
 |[在后续迭代中添加模式](#do-add-patterns-in-later-iterations)|[混淆意向和实体的定义](#dont-mix-the-definition-of-intents-and-entities)|
-|[跨所有意向来平衡话语](#balance-your-utterances-across-all-intents)，None 意向除外。<br>[将话语示例添加到“None”意向](#do-add-example-utterances-to-none-intent)|[使用所有可能的值创建描述符](#dont-create-descriptors-with-all-the-possible-values)|
+|[跨所有意向来平衡话语](#balance-your-utterances-across-all-intents)，None 意向除外。<br>[将话语示例添加到“None”意向](#do-add-example-utterances-to-none-intent)|[使用所有可能的值创建短语列表](#dont-create-phrase-lists-with-all-the-possible-values)|
 |[利用主动学习的建议功能](#do-leverage-the-suggest-feature-for-active-learning)|[添加的模式过多](#dont-add-many-patterns)|
 |[通过批处理测试来监视应用的性能](#do-monitor-the-performance-of-your-app)|[使用添加的每个话语示例进行训练和发布](#dont-train-and-publish-with-every-single-example-utterance)|
 
@@ -53,9 +53,9 @@ ms.locfileid: "81382394"
 
 `Book a flight` 和 `Book a hotel` 使用相同的词汇 `book a `。 此格式相同，因此它应该是同一意向，只是使用不同的词语（`flight` 和 `hotel`）作为提取的实体。
 
-## <a name="do-add-descriptors-to-intents"></a>将描述符添加到意向
+## <a name="do-add-features-to-intents"></a>向意向添加功能
 
-描述符帮助描述意向的特征。 描述符可以是对该意向非常重要的单词短语列表，也可以是对该意向非常重要的实体。
+功能描述了意图的概念。 功能可以是对该意向非常重要的单词的短语列表，也可以是对该意向非常重要的实体。
 
 ## <a name="do-find-sweet-spot-for-intents"></a>请找到意向的平衡点
 使用 LUIS 中的预测数据来判定意向是否存在重叠的情况。 重叠的意向会困扰 LUIS。 结果是评分最高的意向会与另一个意向非常接近。 由于 LUIS 不会在每次训练的数据中使用完全相同的路径，所以重叠意向可能会在训练中排到第一或第二的位置。 各意向的话语分数应相互拉开差距以避免出现上述翻转情况。 更好地区分意向可以使得每次训练都得出预期的最高分意向。
@@ -73,17 +73,22 @@ ms.locfileid: "81382394"
 * 基于客户端应用的用户意向创建**意向**
 * 基于实际用户输入添加 15-30 个示例言语
 * 标记示例言语中的顶层数据概念
-* 将数据概念分解成子组件
-* 将描述符（特征）添加到子组件
-* 将描述符（特征）添加到意向
+* 将数据概念分解为子实体
+* 向子实体添加功能
+* 向意向添加功能
 
 创建意向并添加示例言语后，以下示例描述实体分解。
 
-首先标识要在言语中提取的整个数据概念。 这是机器学习实体。 然后将短语分解成各个组成部分。 这包括标识性的子组件（用作实体）以及描述符和约束。
+首先标识要在言语中提取的整个数据概念。 这是机器学习实体。 然后将短语分解成各个组成部分。 这包括识别子实体和功能。
 
-例如，若要提取某个地址，顶层机器学习实体可以命名为 `Address`。 创建地址时，标识其某些子组件，例如街道地址、城市、州/省和邮政编码。
+例如，若要提取某个地址，顶层机器学习实体可以命名为 `Address`。 在创建地址时，标识其某些子实体，如街道地址、城市、省/市/自治区和邮政编码。
 
-通过将邮政编码**约束**为正则表达式来继续分解这些元素。 将街道地址分解成街道编号（使用预生成的编号）、街道名称和街道类型组成部分。 可以使用“大道”、“环”、“路”和“巷”等**描述符**列表来描述街道类型。
+继续通过以下方式分解这些元素：
+* 作为正则表达式实体添加邮政编码的必需功能。
+* 将街道地址分解到各个部分：
+    * 具有编号的预生成实体的所需功能的**街道号**。
+    * **街道名称**。
+    * 具有列表实体所需功能的**街道类型**，其中包括 "公路"、"圆形"、"道路" 和 "路线" 等词。
 
 可以使用 V3 创作 API 进行模型分解。
 
@@ -143,11 +148,11 @@ LUIS 会预期一个意向的话语会存在变体。 在总体意思相同的�
 
 为聊天机器人将执行的任何操作创建一个意向。 将实体用作实现操作的参数。
 
-为预订航班的机器人创建一个“BookFlight”意向  。 请勿为每条航线或每个目的地都创建一个意向。 将这些数据用作[实体](luis-concept-entity-types.md)，并在话语示例中进行标记。
+为预订航班的机器人创建一个“BookFlight”意向****。 请勿为每条航线或每个目的地都创建一个意向。 将这些数据用作[实体](luis-concept-entity-types.md)，并在话语示例中进行标记。
 
-## <a name="dont-create-descriptors-with-all-the-possible-values"></a>不要创建具有所有可能值的描述符
+## <a name="dont-create-phrase-lists-with-all-the-possible-values"></a>请勿使用所有可能的值创建短语列表
 
-提供描述符[短语列表](luis-concept-feature.md)中的几个示例，而不是每个单词。 LUIS 会对上下文进行一般化并将其纳入考虑。
+提供[短语列表](luis-concept-feature.md)中的几个示例，而不是每个单词或短语。 LUIS 会对上下文进行一般化并将其纳入考虑。
 
 ## <a name="dont-add-many-patterns"></a>请勿添加许多模式
 

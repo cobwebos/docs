@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: c829579f3ad9922c8c621b6dbfa966b69a2497d1
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 5d0a9771e5b999028996676ea72f8def3c5d63cf
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690817"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589850"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>识别打印文本和手写文本
 
@@ -26,10 +26,9 @@ ms.locfileid: "82690817"
 
 读取 API 使用我们最新的识别模型检测图像中的文本内容，并将已识别的文本转换为机器可读的字符流。 该 API 已针对包含大量文本的图像（例如，数码扫描的文档）以及包含大量视觉噪点的图像进行优化。 它将确定用于每行文本的识别模型，并支持包含印刷文本和手写文本的图像。 读取 API 以异步方式执行，因为处理较大文档时，可能需要花费好几分钟才能返回结果。
 
-“读取”操作会在其输出中保留已识别字的原始行分组。 每一行附带边框坐标，行中的每个字也有其自身的坐标。 如果某个字的识别置信度较低，该结果中也会反映该信息。 若要了解详细信息，请参阅[读取 api v2.0 参考文档](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)或[读取 api v2.0 预览版参考文档](https://go.microsoft.com/fwlink/?linkid=2118322)。
+“读取”操作会在其输出中保留已识别字的原始行分组。 每一行附带边框坐标，行中的每个字也有其自身的坐标。 如果某个字的识别置信度较低，该结果中也会反映该信息。 若要了解详细信息，请参阅[读取 api v2.0 参考文档](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)或[读取 api 3.0 参考文档](https://aka.ms/computer-vision-v3-ref)。
 
-> [!NOTE]
-> 此功能仅适用于英语和西班牙语（3.0 预览版）文本。
+读取操作可以识别英语、西班牙语、德语、法语、意大利语、葡萄牙语和荷兰语中的文本。
 
 ### <a name="image-requirements"></a>图像要求
 

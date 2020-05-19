@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 108e5ebfa34db711af4ff33cbf4fbba897b8947d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c7dd916b27cd8005162c09f7e6a090293e336719
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73647693"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590632"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>认知服务的自定义子域名
 
@@ -66,11 +66,11 @@ Azure 认知服务对通过[Azure 门户](https://portal.azure.com)、 [Azure Cl
 是的。 下面提供了可用于 Azure 认知服务资源的区域终结点列表。
 
 > [!NOTE]
-> 文本翻译 API 和必应搜索 API 使用全局终结点。
+> 转换器服务和必应搜索 API 使用全局终结点。
 
 | 终结点类型 | 区域 | 终结点 |
 |---------------|--------|----------|
-| 公共 | Global （文本翻译 & 必应） | `https://api.cognitive.microsoft.com` |
+| 公用 | 全局（Translator & 必应） | `https://api.cognitive.microsoft.com` |
 | | 澳大利亚东部 | `https://australiaeast.api.cognitive.microsoft.com` |
 | | 巴西南部 | `https://brazilsouth.api.cognitive.microsoft.com` |
 | | 加拿大中部 | `https://canadacentral.api.cognitive.microsoft.com` |
@@ -96,7 +96,7 @@ Azure 认知服务对通过[Azure 门户](https://portal.azure.com)、 [Azure Cl
 | 中国 | 中国东部 2 | `https://chinaeast2.api.cognitive.azure.cn` |
 | | 中国北部 | `https://chinanorth.api.cognitive.azure.cn` |
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [什么是认知服务？](Welcome.md)
 * [身份验证](authentication.md)

@@ -1,7 +1,7 @@
 ---
-title: 文本翻译 API 语言方法
+title: 转换器语言方法
 titleSuffix: Azure Cognitive Services
-description: 语言方法可获取文本翻译 API 的其他操作当前支持的语言集。
+description: 语言方法获取当前由转换器的其他操作支持的语言集。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 37f70399e8125db559098869cdfffdf4533498d7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1f4dfc4b80aff01e4b7fe7ebae4850b28cd6a498
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73835837"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588592"
 ---
-# <a name="translator-text-api-30-languages"></a>文本翻译 API 3.0：语言
+# <a name="translator-30-languages"></a>翻译人员3.0：语言
 
-获取文本翻译 API 的其他操作当前支持的语言集。 
+获取转换器的其他操作当前支持的语言集。 
 
 ## <a name="request-url"></a>请求 URL
 
@@ -275,7 +275,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   </tr>
 </table> 
 
-如果发生错误，请求也将返回 JSON 错误响应。 错误代码是一个 6 位数字，包括 3 位数的 HTTP 状态代码，后接用于进一步将错误分类的 3 位数。 常见错误代码可在 [v3 文本翻译 API 参考页面](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)上找到。 
+如果发生错误，请求也将返回 JSON 错误响应。 错误代码是一个 6 位数字，包括 3 位数的 HTTP 状态代码，后接用于进一步将错误分类的 3 位数。 可在[V3 转换器参考页](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)上找到常见错误代码。 
 
 ## <a name="examples"></a>示例
 
