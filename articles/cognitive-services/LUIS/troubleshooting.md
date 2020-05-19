@@ -2,20 +2,20 @@
 title: 常见问题解答 (FAQ) - LUIS
 description: 本文包含有关语言理解 (LUIS) 的常见问题的解答。
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 3c7e191ab64d30ddb64f1c3ff4e31b9c20c87b5c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3a30dd1c55d1ee4314e5a9a2f14ffe832994c467
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101104"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592842"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>语言理解常见问题解答 (FAQ)
 
 本文包含有关语言理解 (LUIS) 的常见问题的解答。
 
-## <a name="whats-new"></a>新增功能
+## <a name="whats-new"></a>新变化
 
 [详细了解](whats-new.md)语言理解 (LUIS) 中的新增功能。
 
@@ -66,7 +66,7 @@ Cortana 预构建应用已于 2017 年弃用。 它们不再受支持。
 
 ### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>预生成实体在示例话语中标记，而不是在我的自定义实体中标记。 如何修复此问题？
 
-在 LUIS 门户中，可以为要提取的确切实体标记文本。 如果 LUIS 门户未显示正确的实体预测，则您可能需要添加更多最谈话并在文本中添加实体的标签，或者添加一个描述符（如功能）。
+在 LUIS 门户中，可以为要提取的确切实体标记文本。 如果 LUIS 门户未显示正确的实体预测，则您可能需要添加更多最谈话并在文本中添加实体或添加功能。
 
 ### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>我尝试导入应用或版本文件，但收到了错误，发生了什么情况？
 

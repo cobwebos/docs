@@ -1,21 +1,14 @@
 ---
 title: 迁移到 V3 计算机学习的实体
-titleSuffix: Azure Cognitive Services
 description: V3 创作提供了一个新的实体类型、计算机学习的实体，还提供了将关系添加到机器学习的实体以及应用程序的其他实体或功能的能力。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
-ms.topic: conceptual
-ms.date: 12/30/2019
-ms.author: diberry
-ms.openlocfilehash: b5dbcd9033d9a41e43ea907d043e0c0486b236db
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.date: 05/08/2020
+ms.openlocfilehash: 79fbe261f597f55ca6caff468d4d5c154a273c42
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75563830"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83593216"
 ---
 # <a name="migrate-to-v3-authoring-entity"></a>迁移到 V3 创作实体
 
@@ -23,14 +16,14 @@ V3 创作提供了一个新的实体类型、计算机学习的实体，还提�
 
 ## <a name="entities-are-decomposable-in-v3"></a>可以分解中的实体
 
-使用 "使用[api](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview) " 或 "[预览门户](https://preview.luis.ai/)" 创建使用 V3 创作 api 创建的实体时，可以生成具有父项和子项的分层实体模型。 父代称为计算机**学习的实体**，而子级被称为计算机学习实体的**子组件**。
+使用用于[api](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview)或门户的 V3 创作 api 创建的实体允许使用父和子元素生成分层实体模型。 父代称为 "计算机学习的**实体**"，而子级称为 "计算机学习实体" 的**子实体**。
 
-每个子组件也是机器学习的实体，但具有约束和描述符的添加配置选项。
+每个子实体也是一种计算机学习的实体，但其新增了功能的配置选项。
 
-* **约束**是精确的文本匹配规则，可保证在实体与规则匹配时提取实体。 规则由精确文本匹配实体定义，当前为：预生成的[实体](luis-reference-prebuilt-entities.md)、[正则表达式实体](reference-entity-regular-expression.md)或[列表实体](reference-entity-list.md)。
-* **描述符**是用于强指示实体的[功能](luis-concept-feature.md)，如短语列表或实体。
-
-V3 创作提供了一个新的实体类型、计算机学习的实体，还提供了将关系添加到机器学习的实体以及应用程序的其他实体或功能的能力。
+* **必需的功能**是保证实体与功能匹配时要提取的规则。 规则由模型所需的功能定义：
+    * [预生成实体](luis-reference-prebuilt-entities.md)
+    * [正则表达式实体](reference-entity-regular-expression.md)
+    * [列出实体](reference-entity-list.md)。
 
 ## <a name="how-do-these-new-relationships-compare-to-v2-authoring"></a>如何将这些新关系与 V2 创作进行比较
 
@@ -61,7 +54,7 @@ V2 创作提供层次结构和组合实体以及角色和功能来完成此相�
     * 实体
         * 分层实体
         * 复合实体
-    * 角色-角色仅可应用于计算机学习的（父）实体。 角色不能应用于子组件
+    * 角色-角色仅可应用于计算机学习的（父）实体。 角色不能应用于子实体
     * 使用层次结构和复合实体的批处理测试和模式
 
 在设计迁移计划时，请在迁移所有分层和复合实体后，保留查看最终的计算机学习实体的时间。 尽管直接迁移会起作用，但在进行更改并查看批处理测试结果和预测 JSON 后，更统一的 JSON 可能会导致更改，因此，传递到客户端应用的最终信息以不同的方式进行组织。 这类似于代码重构，应将其视为你的组织已有的审查过程。
@@ -70,7 +63,7 @@ V2 创作提供层次结构和组合实体以及角色和功能来完成此相�
 
 ## <a name="migrating-from-v2-entities"></a>从 V2 实体迁移
 
-当你开始移动到 V3 创作模型时，应考虑如何移动到计算机学习的实体及其子组件（包括约束和描述符）。
+当你开始转到 V3 创作模型时，应考虑如何移动到计算机学习的实体及其子实体和功能。
 
 下表说明了需要从 V2 迁移到 V3 实体设计的实体。
 
@@ -81,26 +74,26 @@ V2 创作提供层次结构和组合实体以及角色和功能来完成此相�
 
 ## <a name="migrate-v2-composite-entity"></a>迁移 V2 复合实体
 
-V2 组合的每个子项都应使用 V3 计算机学习实体的子组件来表示。 如果复合子级是预生成的、正则表达式或列表实体，则应在表示子级的子组件上将其应用为**约束**。
+V2 组合的每个子项都应使用 V3 计算机学习实体的子实体表示。 如果复合子级是预生成的、正则表达式或列表实体，则应在子实体上将其作为必需的功能应用。
 
 规划将复合实体迁移到计算机学习的实体时的注意事项：
 * 子实体不能用于模式
 * 子实体不再共享
 * 如果子实体用于非计算机学习，则需要将其标记为
 
-### <a name="existing-descriptors"></a>现有描述符
+### <a name="existing-features"></a>现有功能
 
-用于对复合实体中的单词进行提升的任何短语列表应作为描述符应用于计算机学习（父）实体、子组件（子）实体或意向（如果短语列表仅适用于一个意向）。 计划将描述符添加到实体，它应最大程度地提升。 如果该描述符将最大程度地提升子组件（子）的预测，请不要将其一般添加到计算机学习的（父）实体。
+用于在复合实体中提升字词的任何短语列表应作为一种功能应用于计算机学习（父）实体、子实体（子）实体或意向（如果短语列表仅适用于一个意向）。 计划将此功能添加到应显著提升的实体。 不要将此功能一般添加到计算机学习的（父）实体，如果它将最大程度地提高子实体（子）的预测。
 
-### <a name="new-descriptors"></a>新描述符
+### <a name="new-features"></a>新增功能
 
-在 V3 创作中，添加一个计划步骤，以便将实体作为所有实体和意向的可能描述符进行评估。
+在 V3 创作中，添加一个计划步骤，以便将实体评估为所有实体和意向的可能功能。
 
 ### <a name="example-entity"></a>示例实体
 
 此实体仅是一个示例。 你自己的实体迁移可能需要其他注意事项。
 
-请考虑使用 V2 组合来修改使用`order`的比萨饼：
+请考虑使用 V2 组合来修改使用的比萨饼 `order` ：
 * 预生成用于传递时间的 datetimeV2
 * 用于提升某些词的短语列表，如比萨饼、饼图、crust 和浇头
 * 列出实体以检测浇头，例如蘑菇、olives、意大利辣肠。
@@ -114,8 +107,8 @@ V2 组合的每个子项都应使用 V3 计算机学习实体的子组件来表�
 |V2 模型|V3 模型|
 |--|--|
 |父组件实体，名为`Order`|名为的父级计算机的实体`Order`|
-|子预生成的 datetimeV2|* 将预生成的实体迁移到新应用。<br>* 在父项上为预生成的 datetimeV2 添加约束。|
-|浇头的子列表实体|* 将列表实体迁移到新应用。<br>* 然后在父项上为列表实体添加约束。|
+|子预生成的 datetimeV2|* 将预生成的实体迁移到新应用。<br>* 在父项上为预生成的 datetimeV2 添加所需功能。|
+|浇头的子列表实体|* 将列表实体迁移到新应用。<br>* 然后在父项上为 list 实体添加所需的功能。|
 
 
 ## <a name="migrate-v2-hierarchical-entity"></a>迁移 V2 分层实体
@@ -124,11 +117,11 @@ V2 组合的每个子项都应使用 V3 计算机学习实体的子组件来表�
 
 在 V3 创作中：
 * 角色可应用于计算机学习的（父）实体。
-* 角色不能应用于任何子组件。
+* 角色不能应用于任何子实体。
 
 此实体仅是一个示例。 你自己的实体迁移可能需要其他注意事项。
 
-请考虑使用 V2 分层实体来修改比萨饼`order`：
+请考虑使用 V2 分层实体来修改比萨饼 `order` ：
 * 其中每个子元素确定原始浇头或最终浇头
 
 此实体的一个示例查询文本是：
@@ -140,7 +133,57 @@ V2 组合的每个子项都应使用 V3 计算机学习实体的子组件来表�
 |V2 模型|V3 模型|
 |--|--|
 |父组件实体，名为`Order`|名为的父级计算机的实体`Order`|
-|具有原始和最终比萨浇头的子层次结构实体|* 向每个`Order`浇头添加角色。|
+|具有原始和最终比萨浇头的子层次结构实体|* 向 `Order` 每个浇头添加角色。|
+
+## <a name="api-change-constraint-replaced-with-required-feature"></a>API 更改约束已替换为所需功能
+
+此更改是在 build 大会上的5月2020，仅适用于在应用程序使用受约束功能的 v3 创作 Api。 如果要从 v2 创作版本迁移到 v3 创作，或尚未使用 v3 约束功能，请跳过此部分。
+
+**功能**-能够要求现有实体作为另一个模型的功能，并且仅在检测到实体时才提取该模型。 此功能未发生更改，但 API 和术语已更改。
+
+|以前的术语|新术语|
+|--|--|
+|`constrained feature`<br>`constraint`<br>`instanceOf`|`required feature`<br>`isRequired`|
+
+#### <a name="automatic-migration"></a>自动迁移
+
+从**19 2020 年6月**开始，将不允许使用公开此功能的上一个创作 API 以编程方式创建约束。
+
+所有现有约束功能都将自动迁移到所需的功能标志。 不需要对预测 API 进行编程更改，也不会对预测准确性的质量产生任何更改。
+
+#### <a name="luis-portal-changes"></a>LUIS 门户更改
+
+LUIS 预览门户将此功能称为 "**约束**"。 当前 LUIS 门户将此功能指定为**必需功能**。
+
+#### <a name="previous-authoring-api"></a>以前的创作 API
+
+此功能是在预览版创作中应用的，使用实体的子级的属性将**[实体子 API 创建](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5d86cf3c6a25a45529767d77)** 为实体定义的一部分 `instanceOf` ：
+
+```json
+{
+    "name" : "dayOfWeek",
+    "instanceOf": "datetimeV2",
+    "children": [
+        {
+           "name": "dayNumber",
+           "instanceOf": "number",
+           "children": []
+        }
+    ]
+}
+```
+
+#### <a name="new-authoring-api"></a>新创作 API
+
+现在使用和属性将此功能应用于**[添加实体功能关系 API](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5d9dc1781e38aaec1c375f26)** `featureName` `isRequired` 。 属性的值 `featureName` 是模型的名称。
+
+```json
+{
+    "featureName": "YOUR-MODEL-NAME-HERE",
+    "isRequired" : true
+}
+```
+
 
 ## <a name="next-steps"></a>后续步骤
 

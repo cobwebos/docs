@@ -1,7 +1,7 @@
 ---
-title: 迁移到 V3 - 文本翻译 API
+title: 迁移到 V3-转换器
 titleSuffix: Azure Cognitive Services
-description: 本文提供了一些步骤，可帮助你从 V2 迁移到 Azure 认知服务文本翻译 API。
+description: 本文提供的步骤可帮助你从 V2 迁移到 Azure 认知服务转换器。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,21 +10,21 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: eb43d549d3e0cd449c865d533fc8701c4c3912fd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 47136ee9c2f0dee29571f310eb3b07d7c11888c0
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73837313"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592706"
 ---
-# <a name="translator-text-api-v2-to-v3-migration"></a>将文本翻译 API V2 迁移到 V3
+# <a name="translator-v2-to-v3-migration"></a>转换器 V2 到 V3 迁移
 
 > [!NOTE]
 > V2 已于2018年4月30日弃用。 请将你的应用程序迁移到 V3，以便充分利用 V3 中专门提供的新功能。
 > 
 > Microsoft Translator 中心将在 2019 5 月17日停用。 [查看重要的迁移信息和日期](https://www.microsoft.com/translator/business/hub/)。  
 
-Microsoft Translator 团队已发布文本翻译 API 版本 3 (V3)。 此版本包括新的功能、弃用了一些方法，并提供与 Microsoft Translator 服务相互发送和接收数据时所用的新格式。 本文档提供有关将应用程序更改为使用 V3 的信息。 
+Microsoft Translator 团队已发布转换器的版本3（V3）。 此版本包括新的功能、弃用了一些方法，并提供与 Microsoft Translator 服务相互发送和接收数据时所用的新格式。 本文档提供有关将应用程序更改为使用 V3 的信息。 
 
 本文档末尾包含有用的链接，便于你了解详细信息。
 
@@ -37,7 +37,7 @@ Microsoft Translator 团队已发布文本翻译 API 版本 3 (V3)。 此版本�
 * 音译 - 已将一个 transliterate 方法添加到 API。 此方法会将一个脚本（例如阿拉伯语） 中的单词和句子转换成另一个脚本（例如 拉丁语）。
 * 语言 - 新的“languages”方法会提供 JSON 格式的语言信息，以便与“translate”、“dictionary”和“transliterate”方法结合使用。
 * 新的翻译功能 - 已将新功能添加到“translate”方法，以支持 V2 API 中作为单独方法提供的某些功能。 示例包括 TranslateArray。
-* 讲述方法 - Microsoft Translator API 不再支持文本转语音功能。 [Microsoft 语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)中提供了文本转语音功能。
+* Microsoft Translator 不再支持讲述方法文本到语音功能。 [Microsoft 语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)中提供了文本转语音功能。
 
 以下 V2 和 V3 方法列表指明了能够提供 V2 随附的功能的 V3 方法和 API。
 
@@ -59,7 +59,7 @@ Microsoft Translator 团队已发布文本翻译 API 版本 3 (V3)。 此版本�
 
 ## <a name="move-to-json-format"></a>改为 JSON 格式
 
-Microsoft Translator 文本翻译 V2 接受 XML 格式的数据，并以此格式返回数据。 在 V3 中，使用 API 发送和接收的所有数据采用 JSON 格式。 在 V3 中，不再接受或返回 XML 数据。
+Microsoft Translator 翻译 V2 接受并返回 XML 格式的数据。 在 V3 中，使用 API 发送和接收的所有数据采用 JSON 格式。 在 V3 中，不再接受或返回 XML 数据。
 
 此项更改会影响针对 V2 文本翻译 API 编写的应用程序的多个方面。 例如：语言 API 返回文本翻译、音译和两个字典方法的语言信息。 可以通过一次调用请求所有方法的所有语言信息，或单独请求这些方法的信息。
 
@@ -86,7 +86,7 @@ Microsoft Translator V3 的定价方式与 V2 相同：按字符（包括空格�
 
 ## <a name="v3-end-points"></a>V3 终结点
 
-Global
+全球
 
 * api.cognitive.microsofttranslator.com
 
@@ -118,24 +118,24 @@ Microsoft Translator V3 默认使用神经机器翻译。 因此，它不能与 
 
 | |终结点|    GDPR 处理器符合性|  使用 Translator Hub| 使用自定义翻译器（预览版）|
 |:-----|:-----|:-----|:-----|:-----|
-|文本翻译 API 版本 2| api.microsofttranslator.com|    否  |是    |否|
-|文本翻译 API 版本 3| api.cognitive.microsofttranslator.com|  是|    否| 是|
+|翻译版本2|  api.microsofttranslator.com|    否  |是    |否|
+|翻译版本3|  api.cognitive.microsofttranslator.com|  是|    否| 是|
 
-**文本翻译 API 版本 3**
+**翻译版本3**
 * 已正式发布且完全受支持。
 * 作为处理器符合 GDPR，并满足所有 ISO 20001、20018 以及 SOC 3 认证要求。 
 * 可用于调用已使用自定义翻译器（预览版，新的 Translator NMT 自定义功能）自定义的神经网络翻译系统。 
 * 不提供对使用 Microsoft Translator Hub 创建的自定义翻译系统的访问权限。
 
-如果正在使用 api.cognitive.microsofttranslator.com 终结点，则使用的是文本翻译 API 版本 3。
+如果使用的是 api.cognitive.microsofttranslator.com 终结点，则使用的是版本3的转换器。
 
-**文本翻译 API 版本 2**
+**翻译版本2**
 * 不满足所有 ISO 20001、20018 和 SOC 3 认证要求。 
 * 不可用于调用已使用 Translator 自定义功能自定义的神经网络翻译系统。
 * 提供对使用 Microsoft Translator Hub 创建的自定义翻译系统的访问权限。
-* 如果正在使用 api.microsofttranslator.com 终结点，则使用的是文本翻译 API 版本 2。
+* 如果使用的是 api.microsofttranslator.com 终结点，则使用转换器版本2。
 
-任何版本的 Translator API 都不会创建翻译的记录。 永远不会与任何人共享你的翻译。 有关详细信息，请参阅 [Translator 无跟踪](https://www.aka.ms/NoTrace)网页。
+转换器的任何版本都不会创建你的翻译记录。 永远不会与任何人共享你的翻译。 有关详细信息，请参阅 [Translator 无跟踪](https://www.aka.ms/NoTrace)网页。
 
 ## <a name="links"></a>链接
 

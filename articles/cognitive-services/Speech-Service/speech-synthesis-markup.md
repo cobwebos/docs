@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: b1c19ed556a55dec8c84686e80ec988bc593a7a2
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 41de12c08dee52240f9b10c191ced4aacaea8e94
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996030"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592774"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>通过语音合成标记语言 (SSML) 改善合成
 
@@ -191,11 +191,14 @@ speechConfig!.setPropertyTo(
 > [!IMPORTANT]
 > 调整讲话风格的操作仅适用于神经语音。
 
-默认情况下，对于标准和神经语音，文本转语音服务将使用中性讲话风格合成文本。 使用神经语音时，可以使用 `<mstts:express-as>` 元素调整讲话风格，以表达喜悦、同情或情绪。 这是语音服务特有的可选元素。
+默认情况下，对于标准和神经语音，文本转语音服务将使用中性讲话风格合成文本。 使用神经声音，你可以调整说话样式，以表达不同的情感，例如 cheerfulness、理解和冷静，或使用 <mstts： express> 元素优化各种方案（例如，自定义服务、newscasting 和语音助手）的声音。 这是语音服务特有的可选元素。
 
 目前，支持调整以下神经语音的讲话风格：
 * `en-US-AriaNeural`
+* `pt-BR-FranciscaNeural`
 * `zh-CN-XiaoxiaoNeural`
+* `zh-CN-YunyangNeural`
+* `zh-CN-YunyeNeural`
 
 更改将在句子级别应用，风格因语音而异。 如果某种风格不受支持，该服务将以默认的中性讲话风格返回语音。
 
@@ -220,10 +223,15 @@ speechConfig!.setPropertyTo(
 |                         | `style="chat"`            | 表达轻松随意的语气                         |
 |                         | `style="cheerful"`        | 表达积极愉快的语气                         |
 |                         | `style="empathetic"`      | 表达关心和理解               |
+|   `pt-BR-FranciscaNeural`| `style="calm"`      | 表达冷静音               |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | 以正式专业的语气叙述新闻 |
 |                         | `style="customerservice"` | 以友好热情的语气为客户提供支持  |
 |                         | `style="assistant"`       | 以热情而轻松的语气对数字助理讲话    |
-|                         | `style="lyrical"`         | 以优美又带感伤的方式表达情感         |
+|                         | `style="lyrical"`         | 以优美又带感伤的方式表达情感         |   
+| `zh-CN-YunyangNeural`  | `style="customerservice"` | 以友好热情的语气为客户提供支持  |
+| `zh-CN-YunyeNeural`  | `style="calm"`      | 表达冷静音               |  
+|                         | `style="sad"`       | 表达不满意和不安的语气    |
+|                         | `style="serious"`         | 表达一种严肃的音调        |   
 
 **示例**
 
@@ -256,7 +264,7 @@ speechConfig!.setPropertyTo(
 
 **属性**
 
-| 属性 | 说明 | 必需/可选 |
+| 属性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `strength` | 使用以下值之一指定暂停的相对持续时间：<ul><li>无</li><li>x-weak</li><li>weak</li><li>medium（默认值）</li><li>strong</li><li>x-strong</li></ul> | 可选 |
 | `time` | 指定暂停的绝对持续时间，以秒或毫秒为单位。 例如，`2s` 和 `500` 是有效值 | 可选 |
@@ -326,9 +334,9 @@ speechConfig!.setPropertyTo(
 
 **属性**
 
-| 属性 | 说明 | 必需/可选 |
+| 属性 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `alphabet` | 指定在 `ph` 属性中合成字符串发音时要使用的音标。 指定音标的字符串必须以小写字母指定。 下面是可以指定的可能音标。<ul><li>`ipa`&ndash; <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">国际注音字母<span class="docon docon-navigate-external x-hidden-focus"></span> </a></li><li>`sapi` &ndash; [语音服务音标](speech-ssml-phonetic-sets.md)</li><li>`ups` &ndash; 通用音素集</li></ul><br>音标仅适用于元素中的 `phoneme`。 | 可选 |
+| `alphabet` | 指定在 `ph` 属性中合成字符串发音时要使用的音标。 指定音标的字符串必须以小写字母指定。 下面是可以指定的可能音标。<ul><li>`ipa`&ndash;<a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">国际注音字母 <span class="docon docon-navigate-external x-hidden-focus"></span> </a></li><li>`sapi` &ndash; [语音服务音标](speech-ssml-phonetic-sets.md)</li><li>`ups` &ndash; 通用音素集</li></ul><br>音标仅适用于元素中的 `phoneme`。 | 可选 |
 | `ph` | 一个字符串，包含用于在 `phoneme` 元素中指定单词发音的音素。 如果指定的字符串包含无法识别的音素，则文本转语音 (TTS) 服务将拒绝整个 SSML 文档，并且不会生成文档中指定的任何语音输出。 | 如果使用音素，则此属性是必需的。 |
 
 **示例**
@@ -359,7 +367,7 @@ speechConfig!.setPropertyTo(
 
 ## <a name="use-custom-lexicon-to-improve-pronunciation"></a>使用自定义词典改善发音
 
-有时文本到语音服务无法准确地发音字词。 例如，公司的名称或医学术语。 开发人员可以使用`phoneme`和`sub`标记定义在 SSML 中读取单个实体的方式。 但是，如果需要定义多个实体的读取方式，则可以使用`lexicon`标记创建自定义词典。
+有时文本到语音服务无法准确地发音字词。 例如，公司的名称或医学术语。 开发人员可以使用和标记定义在 SSML 中读取单个实体的方式 `phoneme` `sub` 。 但是，如果需要定义多个实体的读取方式，则可以使用标记创建自定义词典 `lexicon` 。
 
 > [!NOTE]
 > 自定义词典当前支持 UTF-8 编码。 
@@ -372,7 +380,7 @@ speechConfig!.setPropertyTo(
 
 **属性**
 
-| 属性 | 说明                               | 必需/可选 |
+| 属性 | 描述                               | 必需/可选 |
 |-----------|-------------------------------------------|---------------------|
 | `uri`     | 外部 PLS 文档的地址。 | 必需。           |
 
@@ -401,7 +409,7 @@ speechConfig!.setPropertyTo(
 
 `lexicon` 元素包含至少一个 `lexeme` 元素。 每个 `lexeme` 元素包含至少一个 `grapheme` 元素以及一个或多个 `grapheme`、`alias` 和 `phoneme` 元素。 `grapheme` 元素包含描述<a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">拼字法 <span class="docon docon-navigate-external x-hidden-focus"></span></a> 的文本。 `alias` 元素用于指示某个首字母缩写词或某个缩写词的发音。 `phoneme` 元素提供了描述 `lexeme` 发音方式的文本。
 
-需要特别注意的是，您不能使用自定义词典直接设置单词的发音。 如果需要设置的发音，请首先提供`alias`，然后将`phoneme`与相关联。 `alias` 例如：
+需要特别注意的是，您不能使用自定义词典直接设置单词的发音。 如果需要设置的发音，请首先提供 `alias` ，然后将与相关联 `phoneme` `alias` 。 例如：
 
 ```xml
   <lexeme>
@@ -415,7 +423,7 @@ speechConfig!.setPropertyTo(
 ```
 
 > [!IMPORTANT]
-> 当`phoneme`使用 IPA 时，元素不能包含空格。
+> `phoneme`当使用 IPA 时，元素不能包含空格。
 
 有关自定义词典文件的详细信息，请参阅[发音词典规范（PLS）版本 1.0](https://www.w3.org/TR/pronunciation-lexicon/)。
 
@@ -424,7 +432,7 @@ speechConfig!.setPropertyTo(
 发布自定义词典后，可以从 SSML 引用它。
 
 > [!NOTE]
-> `lexicon`元素必须在`voice`元素内部。
+> `lexicon`元素必须在 `voice` 元素内部。
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" 

@@ -1,7 +1,7 @@
 ---
-title: 文本翻译 API V3.0 参考
+title: 翻译员3.0 参考
 titleSuffix: Azure Cognitive Services
-description: 文本翻译 API v3.0 参考文档。 文本翻译 API 版本 3 提供了基于 JSON 的新型 Web API。
+description: 转换器 v4.0 的参考文档。 转换器版本3提供基于 JSON 的新式 Web API。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 4/17/2020
 ms.author: swmachan
-ms.openlocfilehash: bf7701055c8c325f02c0daca1755806f3ca17b76
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 2ddc3921c77f8861761ea37b8783e220c1242b97
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857308"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592264"
 ---
-# <a name="translator-text-api-v30"></a>文本翻译 API v3.0
+# <a name="translator-v30"></a>转换器3.0 版
 
 ## <a name="whats-new"></a>新增功能
 
-文本翻译 API 版本 3 提供了基于 JSON 的新型 Web API。 它通过将现有功能合并到更少的操作中来提高可用性和性能，并提供新功能。
+转换器版本3提供基于 JSON 的新式 Web API。 它通过将现有功能合并到更少的操作中来提高可用性和性能，并提供新功能。
 
  * 音译可将一种语言的文本从一个脚本转换为另一个脚本。
  * 在一个请求中翻译成多种语言。
@@ -37,41 +37,41 @@ Microsoft Translator 位于多个数据中心位置之外。 目前它们位于 
 * **亚太：** 韩国南部、日本东部、东南亚和澳大利亚东部
 * **欧洲：** 北欧和西欧
 
-在大多数情况下，对 Microsoft 文本翻译 API 的请求由距离请求的来源位置最近的数据中心处理。 如果数据中心出现故障，请求可能会路由到 Azure 地理区域之外。
+在大多数情况下，对 Microsoft Translator 的请求都是由最接近请求发出位置的数据中心处理的。 如果数据中心出现故障，请求可能会路由到 Azure 地理区域之外。
 
 若要强制由特定 Azure 地理区域处理请求，请将 API 请求中的全球终结点更改为所需的区域终结点：
 
 |说明|Azure 地理|基 URL|
 |:--|:--|:--|
 |Azure|全局（非区域）|   api.cognitive.microsofttranslator.com|
-|Azure|United States|   api-nam.cognitive.microsofttranslator.com|
+|Azure|美国|   api-nam.cognitive.microsofttranslator.com|
 |Azure|欧洲|  api-eur.cognitive.microsofttranslator.com|
 |Azure|亚太区|    api-apc.cognitive.microsofttranslator.com|
 
 ## <a name="authentication"></a>身份验证
 
-订阅 Azure 认知服务中的文本翻译 API 或[认知服务多服务](https://azure.microsoft.com/pricing/details/cognitive-services/)，并使用你的订阅密钥（在 Azure 门户中提供）进行身份验证。 
+在 Azure 认知服务中订阅翻译人员或[认知服务多服务](https://azure.microsoft.com/pricing/details/cognitive-services/)，并使用你的订阅密钥（在 Azure 门户中提供）进行身份验证。 
 
 有三个标头可用于对你的订阅进行身份验证。 下表描述了每种方法的使用方式：
 
-|头文件|说明|
+|标头|说明|
 |:----|:----|
-|Ocp-Apim-Subscription-Key|如果要传递密钥，请与认知服务订阅一起使用**。<br/>该值是文本翻译 API 订阅的 Azure 密钥。|
+|Ocp-Apim-Subscription-Key|如果要传递密钥，请与认知服务订阅一起使用**。<br/>此值是你的订阅的转换器的 Azure 密钥。|
 |授权|如果要传递身份验证令牌，请与认知服务订阅一起使用**。<br/>该值是持有者令牌：`Bearer <token>`。|
 |Ocp-Apim-Subscription-Region|*用于认知服务多服务和区域翻译人员资源。*<br/>值是多服务或区域翻译器资源的区域。 使用全局转换器资源时，此值是可选的。|
 
 ###  <a name="secret-key"></a>密钥
-第一个选项是使用 `Ocp-Apim-Subscription-Key` 标头进行身份验证。 将`Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>`标头添加到请求。
+第一个选项是使用 `Ocp-Apim-Subscription-Key` 标头进行身份验证。 将 `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` 标头添加到请求。
 
 #### <a name="authenticating-with-a-global-resource"></a>使用全局资源进行身份验证
 
-使用[全局转换器资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)时，需要包含一个标头来调用转换器 API。
+使用[全局转换器资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)时，需要包含一个标头来调用转换器。
 
-|头文件|说明|
+|标头|说明|
 |:-----|:----|
-|Ocp-Apim-Subscription-Key| 该值是文本翻译 API 订阅的 Azure 密钥。|
+|Ocp-Apim-Subscription-Key| 此值是你的订阅的转换器的 Azure 密钥。|
 
-下面是一个示例请求，使用全局转换器资源调用转换器 API
+下面是使用全局转换器资源调用转换器的示例请求
 
 ```curl
 // Pass secret key using headers
@@ -84,14 +84,14 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 #### <a name="authenticating-with-a-regional-resource"></a>使用区域资源进行身份验证
 
 使用[区域翻译人员资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)时。
-需要两个标头来调用转换器 API。
+需要两个标头来调用转换器。
 
-|头文件|说明|
+|标头|说明|
 |:-----|:----|
-|Ocp-Apim-Subscription-Key| 该值是文本翻译 API 订阅的 Azure 密钥。|
+|Ocp-Apim-Subscription-Key| 此值是你的订阅的转换器的 Azure 密钥。|
 |Ocp-Apim-Subscription-Region| 该值是转换器资源的区域。 |
 
-下面是使用区域翻译人员资源调用 Translator API 的示例请求
+下面是使用区域翻译人员资源调用转换器的示例请求
 
 ```curl
 // Pass secret key and region using headers
@@ -106,16 +106,16 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 使用认知服务的多服务资源时。 这样便可以使用一个密钥对多个服务的请求进行身份验证。 
 
-使用多服务密钥时，必须在请求中包括两个身份验证标头。 需要两个标头来调用转换器 API。
+使用多服务密钥时，必须在请求中包括两个身份验证标头。 需要两个标头来调用转换器。
 
-|头文件|说明|
+|标头|说明|
 |:-----|:----|
 |Ocp-Apim-Subscription-Key| 值是多服务资源的 Azure 密钥。|
 |Ocp-Apim-Subscription-Region| 值是多服务资源的区域。 |
 
 区域对于多服务文本 API 订阅是必需的。 你选择的区域是在使用多服务订阅密钥时可用于文本翻译的唯一区域，并且必须是通过 Azure 门户注册多服务订阅时所选的同一区域。
 
-可用区域包括`australiaeast`、 `brazilsouth` `canadacentral`、、 `centralindia`、 `centralus`、 `centraluseuap`、 `eastasia` `eastus` `eastus2` `francecentral` `japaneast` `japanwest` `koreacentral` `southafricanorth`、、 `northcentralus`、、、、、、、、、、、、、和。 `northeurope` `southcentralus` `southeastasia` `uksouth` `westcentralus` `westeurope` `westus` `westus2`
+可用区域包括、、、、、、、、、、、、、、、、、、、、、 `australiaeast` `brazilsouth` `canadacentral` `centralindia` `centralus` `centraluseuap` `eastasia` `eastus` `eastus2` `francecentral` `japaneast` `japanwest` `koreacentral` `northcentralus` `northeurope` `southcentralus` `southeastasia` `uksouth` `westcentralus` `westeurope` `westus` `westus2` 和 `southafricanorth` 。
 
 如果使用参数 `Subscription-Key` 传递查询字符串中的密钥，则必须使用查询参数 `Subscription-Region` 指定区域。
 
@@ -124,7 +124,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 | 资源类型     | 身份验证服务 URL                                |
 |-----------------|-----------------------------------------------------------|
-| Global          | `https://api.cognitive.microsoft.com/sts/v1.0/issueToken` |
+| 全球          | `https://api.cognitive.microsoft.com/sts/v1.0/issueToken` |
 | 区域或多服务 | `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken` |
 
 以下是根据给定密钥获取令牌的示例请求：
@@ -143,22 +143,22 @@ curl --data "" 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken?Subscrip
 Authorization: Bearer <Base64-access_token>
 ```
 
-身份验证令牌的有效期为 10 分钟。 对转换器 Api 进行多次调用时，应重新使用该令牌。 但是，如果程序在很长一段时间内向转换器 API 发出请求，则程序必须定期请求新的访问令牌（例如，每8分钟一次）。
+身份验证令牌的有效期为 10 分钟。 对转换器进行多次调用时，应重新使用该令牌。 但是，如果您的程序在很长一段时间内向转换器发出请求，则您的程序必须定期请求一个新的访问令牌（例如，每8分钟一次）。
 
 ## <a name="virtual-network-support"></a>虚拟网络支持
 
-转换器服务现在提供了`WestUS2`有限区域（、 `EastUS`、 `SouthCentralUS` `WestUS`、、 `CentralUSEUAP`、 `global`）中的虚拟网络功能。 若要启用虚拟网络，请参阅[配置 Azure 认知服务虚拟网络](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)。 
+转换器服务现在提供了有限区域（ `WestUS2` 、、、、 `EastUS` `SouthCentralUS` `WestUS` `CentralUSEUAP` 、 `global` ）中的虚拟网络功能。 若要启用虚拟网络，请参阅[配置 Azure 认知服务虚拟网络](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)。 
 
-启用此功能后，必须使用自定义终结点来调用转换器 API。 不能使用全局转换器终结点（"api.cognitive.microsofttranslator.com"），也不能使用访问令牌进行身份验证。
+启用此功能后，必须使用自定义终结点来调用转换器。 不能使用全局转换器终结点（"api.cognitive.microsofttranslator.com"），也不能使用访问令牌进行身份验证。
 
 创建[转换器资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)后，可以找到自定义终结点。
 
-|头文件|说明|
+|标头|说明|
 |:-----|:----|
-|Ocp-Apim-Subscription-Key| 该值是文本翻译 API 订阅的 Azure 密钥。|
+|Ocp-Apim-Subscription-Key| 此值是你的订阅的转换器的 Azure 密钥。|
 |Ocp-Apim-Subscription-Region| 该值是转换器资源的区域。 如果资源为，则此值是可选的`global`|
 
-下面是使用自定义终结点调用 Translator API 的示例请求
+下面是使用自定义终结点调用转换器的示例请求
 
 ```curl
 // Pass secret key and region using headers
@@ -218,7 +218,7 @@ curl -X POST "https://<your-custom-domain>.cognitiveservices.azure.com/translato
 | 400079| 请求用于在源语言与目标语言之间进行翻译的自定义系统不存在。|
 | 400080| 语言或脚本不支持音译。|
 | 401000| 由于凭据缺失或无效，请求未授权。|
-| 401015| “提供的凭据适用于语音 API。 此请求需要文本 API 的凭据。 使用订阅文本翻译 API。 "|
+| 401015| “提供的凭据适用于语音 API。 此请求需要文本 API 的凭据。 使用订阅进行翻译。 "|
 | 403000| 不允许该操作。|
 | 403001| 由于订阅已超过其免费配额，因此不允许该操作。|
 | 405000| 请求的资源不支持该请求方法。|

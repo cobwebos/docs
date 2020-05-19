@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/29/2020
+ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: efca7eceae74416945c568268edfe0b13a21861a
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: dc11d9d7dfa7ededa19e11c9e1bc38e1eaaec93f
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856428"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591008"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>安装和运行语音服务容器（预览）
 
@@ -26,7 +26,7 @@ ms.locfileid: "82856428"
 > [!IMPORTANT]
 > 所有语音容器当前均作为[公共 "封闭" 预览版](../cognitive-services-container-support.md#public-gated-preview-container-registry-containerpreviewazurecrio)的一部分提供。 语音容器推出正式发行版（GA）时将发出一则通知。
 
-| 函数 | 功能 | 最新版本 |
+| 函数 | 功能 | 最新 |
 |--|--|--|
 | 语音转文本 | 利用中间结果分析情绪和转录连续实时语音或批处理音频记录。  | 2.2.0 |
 | 自定义语音转文本 | 使用[自定义语音门户](https://speech.microsoft.com/customspeech)中的自定义模型，转录连续实时语音或批处理音频记录到带有中间结果的文本中。 | 2.2.0 |
@@ -39,7 +39,7 @@ ms.locfileid: "82856428"
 
 使用语音容器之前的先决条件如下：
 
-| 必选 | 目标 |
+| 必需 | 目标 |
 |--|--|
 | Docker 引擎 | 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> **在 Windows 上**，还必须将 Docker 配置为支持 Linux 容器。<br><br> |
 | 熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。 |
@@ -47,7 +47,7 @@ ms.locfileid: "82856428"
 
 ## <a name="request-access-to-the-container-registry"></a>请求访问容器注册表
 
-填写并提交[认知服务语音容器请求窗体](https://aka.ms/speechcontainerspreview/)，请求对容器的访问权限。 
+填写并提交[认知服务容器请求窗体](https://aka.ms/cognitivegate)，请求对容器的访问权限。
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 
@@ -85,7 +85,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 |-----------|---------|-------------|
 | 自定义语音转文本 | 2核，2 GB 内存 | 4核，4 GB 内存 |
 
-# <a name="text-to-speech"></a>[文本转语音](#tab/tts)
+# <a name="text-to-speech"></a>[文本到语音转换](#tab/tts)
 
 | 容器 | 最小值 | 建议 |
 |-----------|---------|-------------|
@@ -122,7 +122,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 |-----------|------------|
 | 自定义语音转文本 | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text:latest` |
 
-# <a name="text-to-speech"></a>[文本转语音](#tab/tts)
+# <a name="text-to-speech"></a>[文本到语音转换](#tab/tts)
 
 | 容器 | 存储库 |
 |-----------|------------|
@@ -151,11 +151,11 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 ```
 
 > [!IMPORTANT]
-> 标记`latest`将提取`en-US`区域设置。 有关其他区域设置，请参阅[语音到文本区域设置](#speech-to-text-locales)。
+> `latest`标记将提取 `en-US` 区域设置。 有关其他区域设置，请参阅[语音到文本区域设置](#speech-to-text-locales)。
 
 #### <a name="speech-to-text-locales"></a>语音到文本区域设置
 
-除之外的所有标记`latest`均采用以下格式，并区分大小写：
+除之外的所有标记 `latest` 均采用以下格式，并区分大小写：
 
 ```
 <major>.<minor>.<patch>-<platform>-<locale>-<prerelease>
@@ -180,9 +180,9 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-spee
 ```
 
 > [!NOTE]
-> 自`locale`定义`voice`语音容器的和由容器的自定义模型引入确定。
+> `locale` `voice` 自定义语音容器的和由容器的自定义模型引入确定。
 
-# <a name="text-to-speech"></a>[文本转语音](#tab/tts)
+# <a name="text-to-speech"></a>[文本到语音转换](#tab/tts)
 
 #### <a name="docker-pull-for-the-text-to-speech-container"></a>文本到语音容器的 Docker 拉取
 
@@ -197,7 +197,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 
 #### <a name="text-to-speech-locales"></a>文本到语音的区域设置
 
-除之外的所有标记`latest`均采用以下格式，并区分大小写：
+除之外的所有标记 `latest` 均采用以下格式，并区分大小写：
 
 ```
 <major>.<minor>.<patch>-<platform>-<locale>-<voice>-<prerelease>
@@ -212,7 +212,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 对于支持的**文本到语音转换**容器的所有区域设置和相应声音，请参阅[文本到语音图像标记](../containers/container-image-tags.md#text-to-speech)。
 
 > [!IMPORTANT]
-> 构造*标准文本到语音转换*HTTP POST 时，[语音合成标记语言（SSML）](speech-synthesis-markup.md)消息需要具有`voice` `name`属性的元素。 该值是对应的容器区域设置和语音，也称为["短名称"](language-support.md#standard-voices)。 例如， `latest`标记的语音名称将为`en-US-JessaRUS`。
+> 构造*标准文本到语音转换*HTTP POST 时，[语音合成标记语言（SSML）](speech-synthesis-markup.md)消息需要 `voice` 具有属性的元素 `name` 。 该值是对应的容器区域设置和语音，也称为["短名称"](language-support.md#standard-voices)。 例如，标记的 `latest` 语音名称将为 `en-US-JessaRUS` 。
 
 # <a name="custom-text-to-speech"></a>[自定义文本到语音转换](#tab/ctts)
 
@@ -225,7 +225,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-text
 ```
 
 > [!NOTE]
-> 自`locale`定义`voice`语音容器的和由容器的自定义模型引入确定。
+> `locale` `voice` 自定义语音容器的和由容器的自定义模型引入确定。
 
 ***
 
@@ -238,11 +238,11 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-text
 
 ## <a name="run-the-container-with-docker-run"></a>通过 `docker run` 运行容器
 
-使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行容器。 有关如何获取 `{Endpoint_URI}` 和 `{API_Key}` 值的详细信息，请参阅[收集所需的参数](#gathering-required-parameters)。 还[examples](speech-container-configuration.md#example-docker-run-commands)提供了`docker run`命令的其他示例。
+使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行容器。 有关如何获取 `{Endpoint_URI}` 和 `{API_Key}` 值的详细信息，请参阅[收集所需的参数](#gathering-required-parameters)。 还提供了命令的其他[示例](speech-container-configuration.md#example-docker-run-commands) `docker run` 。
 
 # <a name="speech-to-text"></a>[语音转文本](#tab/stt)
 
-若要运行*语音到文本*的容器，请执行以下`docker run`命令。
+若要运行*语音到文本*的容器，请执行以下 `docker run` 命令。
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
@@ -302,12 +302,12 @@ CloudAI:SentimentAnalysisSettings:SentimentAnalysisApiKey={SENTIMENT_APIKEY}
 
 ![自定义语音培训页](media/custom-speech/custom-speech-model-training.png)
 
-获取用于作为`ModelId` `docker run`命令参数的参数的**模型 ID** 。
+获取用于作为命令参数的参数的**模型 ID** `ModelId` `docker run` 。
 <br>
 
 ![自定义语音模型详细信息](media/custom-speech/custom-speech-model-details.png)
 
-下表表示各种`docker run`参数及其相应的说明：
+下表表示各种 `docker run` 参数及其相应的说明：
 
 | 参数 | 说明 |
 |---------|---------|
@@ -316,7 +316,7 @@ CloudAI:SentimentAnalysisSettings:SentimentAnalysisApiKey={SENTIMENT_APIKEY}
 | `{ENDPOINT_URI}` | 此终结点对于计量和计费是必需的。 有关详细信息，请参阅[收集所需的参数](#gathering-required-parameters)。 |
 | `{API_KEY}` | API 密钥是必需的。 有关详细信息，请参阅[收集所需的参数](#gathering-required-parameters)。 |
 
-若要运行*自定义语音到文本*的容器，请执行以下`docker run`命令：
+若要运行*自定义语音到文本*的容器，请执行以下 `docker run` 命令：
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 4 \
@@ -334,13 +334,13 @@ ApiKey={API_KEY}
 * 分配4个 CPU 核心和4千兆字节（GB）的内存。
 * 从卷输入装载中加载*自定义语音到文本*模型，例如*C:\CustomSpeech*。
 * 公开 TCP 端口 5000，并为容器分配伪 TTY。
-* 在给定的`ModelId`情况（如果在卷装载上找不到）中下载模型。
-* 如果先前已下载自定义模型， `ModelId`则将忽略。
+* 在给定的 `ModelId` 情况（如果在卷装载上找不到）中下载模型。
+* 如果先前已下载自定义模型， `ModelId` 则将忽略。
 * 退出后自动删除容器。 容器映像在主计算机上仍然可用。
 
-# <a name="text-to-speech"></a>[文本转语音](#tab/tts)
+# <a name="text-to-speech"></a>[文本到语音转换](#tab/tts)
 
-若要运行*文本到语音*的容器，请执行以下`docker run`命令。
+若要运行*文本到语音*的容器，请执行以下 `docker run` 命令。
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
@@ -364,12 +364,12 @@ ApiKey={API_KEY}
 
 ![自定义语音培训页](media/custom-voice/custom-voice-model-training.png)
 
-获取要用作 docker run 命令的`ModelId`参数参数的**模型 ID** 。
+获取要用作 docker run 命令的参数参数的**模型 ID** `ModelId` 。
 <br>
 
 ![自定义语音模型详细信息](media/custom-voice/custom-voice-model-details.png)
 
-下表表示各种`docker run`参数及其相应的说明：
+下表表示各种 `docker run` 参数及其相应的说明：
 
 | 参数 | 说明 |
 |---------|---------|
@@ -378,7 +378,7 @@ ApiKey={API_KEY}
 | `{ENDPOINT_URI}` | 此终结点对于计量和计费是必需的。 有关详细信息，请参阅[收集所需的参数](#gathering-required-parameters)。 |
 | `{API_KEY}` | API 密钥是必需的。 有关详细信息，请参阅[收集所需的参数](#gathering-required-parameters)。 |
 
-若要运行*自定义的文本到语音转换*容器，请执行`docker run`以下命令：
+若要运行*自定义的文本到语音转换*容器，请执行以下 `docker run` 命令：
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
@@ -396,8 +396,8 @@ ApiKey={API_KEY}
 * 分配2个 CPU 核心和1千兆字节（GB）的内存。
 * 从卷输入装载中加载*自定义的文本到语音转换*模型，例如*C:\CustomVoice*。
 * 公开 TCP 端口 5000，并为容器分配伪 TTY。
-* 在给定的`ModelId`情况（如果在卷装载上找不到）中下载模型。
-* 如果先前已下载自定义模型， `ModelId`则将忽略。
+* 在给定的 `ModelId` 情况（如果在卷装载上找不到）中下载模型。
+* 如果先前已下载自定义模型， `ModelId` 则将忽略。
 * 退出后自动删除容器。 容器映像在主计算机上仍然可用。
 
 ***
@@ -425,7 +425,7 @@ ApiKey={API_KEY}
 
 # <a name="simple-format"></a>[简单格式](#tab/simple-format)
 
-若要将语音客户端配置为使用简单格式， `"Sentiment"`请将添加为`Simple.Extensions`的值。 如果要选择特定的文本分析模型版本，请在`'latest'` `speechcontext-phraseDetection.sentimentAnalysis.modelversion`属性配置中替换。
+若要将语音客户端配置为使用简单格式，请将添加 `"Sentiment"` 为的值 `Simple.Extensions` 。 如果要选择特定的文本分析模型版本，请 `'latest'` 在 `speechcontext-phraseDetection.sentimentAnalysis.modelversion` 属性配置中替换。
 
 ```python
 speech_config.set_service_property(
@@ -459,7 +459,7 @@ speech_config.set_service_property(
 
 # <a name="detailed-format"></a>[详细格式](#tab/detailed-format)
 
-若要将语音客户端配置为使用详细格式， `"Sentiment"`请将添加为`Detailed.Extensions`、 `Detailed.Options`或的值。 如果要选择特定的文本分析模型版本，请在`'latest'` `speechcontext-phraseDetection.sentimentAnalysis.modelversion`属性配置中替换。
+若要将语音客户端配置为使用详细格式，请将添加 `"Sentiment"` 为 `Detailed.Extensions` 、 `Detailed.Options` 或的值。 如果要选择特定的文本分析模型版本，请 `'latest'` 在 `speechcontext-phraseDetection.sentimentAnalysis.modelversion` 属性配置中替换。
 
 ```python
 speech_config.set_service_property(
@@ -479,7 +479,7 @@ speech_config.set_service_property(
 )
 ```
 
-`Detailed.Extensions`提供响应根层中的情绪结果。 `Detailed.Options`提供响应`NBest`层的结果。 它们可以单独使用，也可以一起使用。
+`Detailed.Extensions`提供响应根层中的情绪结果。 `Detailed.Options`提供 `NBest` 响应层的结果。 它们可以单独使用，也可以一起使用。
 
 ```json
 {
@@ -524,7 +524,7 @@ speech_config.set_service_property(
 
 ---
 
-如果要完全禁用情绪分析，请将`false`值添加到。 `sentimentanalysis.enabled`
+如果要完全禁用情绪分析，请将值添加 `false` 到 `sentimentanalysis.enabled` 。
 
 ```python
 speech_config.set_service_property(
@@ -550,7 +550,7 @@ speech_config.set_service_property(
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 启动或运行容器时，可能会遇到问题。 使用输出[装载](speech-container-configuration.md#mount-settings)并启用日志记录。 这样，容器就可以生成日志文件，这些文件在解决问题时非常有用。
 
@@ -575,7 +575,7 @@ speech_config.set_service_property(
 * 语音为 Docker 提供四个 Linux 容器，封装各种功能：
   * *语音转文本*
   * *自定义语音转文本*
-  * *文本转语音*
+  * *文本到语音转换*
   * *自定义文本到语音转换*
 * 容器映像从 Azure 中的容器注册表下载。
 * 容器映像在 Docker 中运行。

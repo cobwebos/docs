@@ -1,7 +1,7 @@
 ---
-title: 请求限制 - 文本翻译 API
+title: 请求限制-转换器
 titleSuffix: Azure Cognitive Services
-description: 本文列出了文本翻译 API 的请求限制。 费用是根据字符数而不是请求频率产生的，每个请求限制为 5,000 个字符。 字符限制是基于订阅的，F0 限制为每小时 200 万个字符。
+description: 本文列出了转换器的请求限制。 费用是根据字符数而不是请求频率产生的，每个请求限制为 5,000 个字符。 字符限制是基于订阅的，F0 限制为每小时 200 万个字符。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: swmachan
-ms.openlocfilehash: 8d26efec2783d6f121c319e46b1b505b6e1b1e09
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 386f34e001457da4c5ae0e170ab2c090725ad5b7
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79498930"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592230"
 ---
-# <a name="request-limits-for-translator-text"></a>文本翻译的请求限制
+# <a name="request-limits-for-translator"></a>转换器的请求限制
 
-本文提供了文本翻译 API 的限制。 服务包括翻译、音译、句子长度检测、语言检测和备用翻译。
+本文提供了有关转换器的限制。 服务包括翻译、音译、句子长度检测、语言检测和备用翻译。
 
 ## <a name="character-and-array-limits-per-request"></a>每个请求的字符和数组限制
 
 每个翻译请求在你要翻译为的所有目标语言中都限制为 5,000 个字符。 例如，发送 1,500 个字符的翻译请求以翻译成 3 种不同的语言，则请求大小为 1,500x3 = 4,500 个字符，这满足请求限制。 按字符收费，而不是按请求数收费。 建议发送较短的请求。
 
-下表列出了文本翻译 API 的每个操作的数组元素和字符限制。
+下表列出了每个转换器操作的数组元素和字符限制。
 
 | Operation | 数组元素的最大大小 |   最大数组元素数 |  最大请求大小（字符数） |
 |:----|:----|:----|:----|
@@ -38,7 +38,7 @@ ms.locfileid: "79498930"
 
 ## <a name="character-limits-per-hour"></a>每小时的字符限制
 
-每小时的字符限制取决于文本翻译订阅层。 
+每小时的字符限制基于你的翻译人员订阅层。 
 
 每小时配额应在一小时内均匀使用。 例如，在 F0 层限制为每小时 200 万字符时，使用字符的速度不应超过大约 33,300 个字符/分钟滑动窗口（200 万个字符除以 60 分钟）。
 
@@ -58,7 +58,7 @@ ms.locfileid: "79498930"
 
 ## <a name="latency"></a>延迟
 
-使用标准模型时，文本翻译 API 的最大延迟为15秒，使用自定义模型时为120秒。 通常， *100 字符内的文本*响应会在150毫秒后返回到300毫秒。 自定义转换器模型对于持续的请求速率具有相似的延迟特征，在请求速率为间歇性时可能会有较高的延迟。 响应时间因请求大小和语言对而异。 如果在该时间范围内未收到翻译或[错误响应](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)，请检查你的代码和你的网络连接，然后重试。 
+使用标准模型时，转换器的最大延迟为15秒，使用自定义模型时为120秒。 通常， *100 字符内的文本*响应会在150毫秒后返回到300毫秒。 自定义转换器模型对于持续的请求速率具有相似的延迟特征，在请求速率为间歇性时可能会有较高的延迟。 响应时间因请求大小和语言对而异。 如果在该时间范围内未收到翻译或[错误响应](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)，请检查你的代码和你的网络连接，然后重试。 
 
 ## <a name="sentence-length-limits"></a>句子长度限制
 
@@ -82,4 +82,4 @@ ms.locfileid: "79498930"
 
 * [定价](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
 * [区域可用性](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
-* [v3 文本翻译 API 参考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+* [v3 转换器参考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

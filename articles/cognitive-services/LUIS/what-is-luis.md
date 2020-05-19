@@ -2,13 +2,13 @@
 title: 什么是语言理解 (LUIS)？
 description: 语言理解 (LUIS) 是一种基于云的 API 服务，可在用户对话的自然语言文本中应用自定义机器学习智能，以便预测整体含义并提炼出相关的详细信息。
 ms.topic: overview
-ms.date: 02/23/2020
-ms.openlocfilehash: 98fb936422f8e23e728efea19fa2cd75d90fac57
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/05/2020
+ms.openlocfilehash: d09aaabeec1d22132843ba98472e1cd89ba95815
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80053351"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592808"
 ---
 # <a name="what-is-language-understanding-luis"></a>什么是语言理解 (LUIS)？
 
@@ -55,9 +55,9 @@ LUIS 模型从称为 **[意向](luis-concept-intent.md)** 的用户意向的类�
 
 |示例用户话语|Intent|提取的数据|
 |-----------|-----------|-----------|
-|`Book a flight to __Seattle__?`|BookFlight|Seattle|
-|`When does your store __open__?`|店铺营业时间和位置|开门|
-|`Schedule a meeting at __1pm__ with __Bob__ in Distribution`|安排谈话|下午 1 点，何石|
+|`Book a flight to Seattle?`|BookFlight|Seattle|
+|`When does your store open?`|店铺营业时间和位置|开门|
+|`Schedule a meeting at 1pm with Bob in Distribution`|安排谈话|下午 1 点，何石|
 
 ## <a name="query-prediction-endpoint"></a>查询预测终结点
 

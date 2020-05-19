@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: aahi
-ms.openlocfilehash: 75a456c4a297b0465c34b8e0af2e87056ad565b3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 305242e13dab23b6a003c5d864073372a052601a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77560892"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83593165"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>从语音翻译 API 迁移到语音服务
 
@@ -26,7 +26,7 @@ ms.locfileid: "77560892"
 
 ## <a name="comparison-of-features"></a>功能比较
 
-| Feature                                           | 语音翻译 API                                  | 语音服务 | 详细信息                                                                                                                                                                                                                                                                            |
+| 功能                                           | 语音翻译 API                                  | 语音服务 | 详细信息                                                                                                                                                                                                                                                                            |
 |---------------------------------------------------|-----------------------------------------------------------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 翻译为文本                               | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | 翻译为语音                             | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
@@ -37,7 +37,7 @@ ms.locfileid: "77560892"
 | 在一个请求中翻译多种语言 | :heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | 可用 SDK                                    | :heavy_minus_sign:                                              | :heavy_check_mark:                 | 请参阅适用于 Sdk 的[语音服务文档](index.yml)。                                                                                                                                                    |
 | WebSocket 连接                            | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| 语言 API                                     | :heavy_check_mark:                                              | :heavy_minus_sign:                 | 语音服务支持 "[转换器 API 语言参考](../translator-speech/languages-reference.md)" 一文中介绍的相同语言范围。 |
+| 语言 API                                     | :heavy_check_mark:                                              | :heavy_minus_sign:                 | 语音服务支持 "[转换器语言参考](../translator-speech/languages-reference.md)" 一文中所述的相同语言范围。 |
 | 猥亵内容筛选器和标记                       | :heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | .WAV/PCM 作为输入                                 | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | 其他文件类型作为输入                         | :heavy_minus_sign:                                              | :heavy_minus_sign:                 |                                                                                                                                                                                                                                                                                    |
@@ -55,7 +55,7 @@ ms.locfileid: "77560892"
 
 * 如果应用程序使用长期有效的连接但无法使用可用的 SDK，则可以使用 WebSocket 连接。 通过在适当的时间重新连接来管理 10 分钟的超时限制。
 
-* 如果你的应用程序使用文本翻译 API 和语音翻译 API 来启用自定义翻译模型，则可以使用语音服务直接添加类别 Id。
+* 如果你的应用程序使用转换器服务并语音翻译 API 启用自定义翻译模型，则可以使用语音服务直接添加类别 Id。
 
 * 与语音翻译 API 不同，语音服务可以通过一个请求完成多种语言的翻译。
 

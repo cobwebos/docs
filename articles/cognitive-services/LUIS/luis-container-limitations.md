@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 7fe773b35c5aba31b2fea66bd2be7b2745eac3ee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e50dd636c1bd9403d5eca2157e4e46772418f92c
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80879235"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592893"
 ---
 # <a name="language-understanding-luis-container-limitations"></a>语言理解（LUIS）容器限制
 
@@ -23,7 +23,7 @@ LUIS 容器有几个值得注意的限制。 从支持的依赖项到支持的�
 
 ## <a name="supported-dependencies-for-latest-container"></a>支持的 `latest` 容器依赖项
 
-[Build/2019](https://news.microsoft.com/build2019/)上发布的最新 LUIS 容器将支持：
+最新的 LUIS 容器支持：
 
 * [新的预生成的域](luis-reference-prebuilt-domains.md)：这些聚焦于企业的域包括实体、示例话语以及模式。 扩展这些供自己使用的域。
 
@@ -35,9 +35,9 @@ LUIS 容器有几个值得注意的限制。 从支持的依赖项到支持的�
 
 不受支持的应用配置|详细信息|
 |--|--|
-|不受支持的容器区域性| 荷兰语（`nl-NL`）<br>日语（`ja-JP`）<br>仅 [1.0.2 tokenizer](luis-language-support.md#custom-tokenizer-versions) 支持德语。|
+|不受支持的容器区域性| 荷兰语（ `nl-NL` ）<br>日语（ `ja-JP` ）<br>仅 [1.0.2 tokenizer](luis-language-support.md#custom-tokenizer-versions) 支持德语。|
 |所有区域性不支持的实体|所有区域性的 [KeyPhrase](luis-reference-prebuilt-keyphrase.md) 预生成实体|
-|不受支持的英语`en-US`（）区域性实体|[GeographyV2](luis-reference-prebuilt-geographyV2.md) 预生成实体|
+|不受支持的英语（ `en-US` ）区域性实体|[GeographyV2](luis-reference-prebuilt-geographyV2.md) 预生成实体|
 |语音启动|容器中不支持外部依赖项。|
 |情绪分析|容器中不支持外部依赖项。|
 |必应拼写检查|容器中不支持外部依赖项。|
@@ -46,7 +46,7 @@ LUIS 容器有几个值得注意的限制。 从支持的依赖项到支持的�
 
 LUIS 容器支持 LUIS[支持的语言](luis-language-support.md#languages-supported)子集。 LUIS 容器能够理解以下语言的最谈话：
 
-| 语言 | Locale | 预生成域 | 预生成实体 | 短语列表建议 | **[文本分析](../text-analytics/language-support.md)<br>（情绪和<br>关键字）|
+| 语言 | 区域设置 | 预生成域 | 预生成实体 | 短语列表建议 | **[文本分析](../text-analytics/language-support.md)<br>（情绪和<br>关键字）|
 |--|--|:--:|:--:|:--:|:--:|
 | 美国英语 | `en-US` | ✔️ | ✔️ | ✔️ | ✔️ |
 | *[中文](#chinese-support-notes) |`zh-CN` | ✔️ | ✔️ | ✔️ | ❌ |
@@ -56,9 +56,9 @@ LUIS 容器支持 LUIS[支持的语言](luis-language-support.md#languages-suppo
 | Hindi | `hi-IN`| ❌ | ❌ | ❌ | ❌ |
 | 意大利语 |`it-IT` | ✔️ | ✔️ | ✔️ | ✔️ |
 | 韩语 |`ko-KR` | ✔️ | ❌ | ❌ | 仅限*关键短语* |
-| 葡萄牙语（巴西） |`pt-BR` | ✔️ | ✔️ | ✔️ | 并非所有亚区域性 |
-| 西班牙语(西班牙) |`es-ES` | ✔️ | ✔️ |✔️|✔️|
-| 西班牙语（墨西哥）|`es-MX` | ❌ | ❌ |✔️|✔️|
+| 葡萄牙语(巴西) |`pt-BR` | ✔️ | ✔️ | ✔️ | 并非所有亚区域性 |
+| 西班牙语（西班牙） |`es-ES` | ✔️ | ✔️ |✔️|✔️|
+| 西班牙语(墨西哥)|`es-MX` | ❌ | ❌ |✔️|✔️|
 | 土耳其语 | `tr-TR` |✔️| ❌ | ❌ | 仅*情绪* |
 
 [!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]

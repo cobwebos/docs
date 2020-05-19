@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
-ms.openlocfilehash: 44bb223dbc944be1b8769aa2572f1b88b916528b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 82b294cbda6e9d4b4cfa5ec560d802c8e5c6c51c
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79372234"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590887"
 ---
 # <a name="translator-encryption-of-data-at-rest"></a>静态数据的转换器加密
 
@@ -22,7 +22,7 @@ ms.locfileid: "79372234"
 
 ## <a name="about-cognitive-services-encryption"></a>关于认知服务加密
 
-使用符合[FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) [的256位 AES 加密对](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)数据进行加密和解密。 加密和解密是透明的，这意味着对加密和访问进行管理。 默认情况下，你的数据是安全的，无需修改你的代码或应用程序即可利用加密。
+使用符合[FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) [的256位 AES 加密对](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)数据进行加密和解密。 加密和解密都是透明的，这意味着将替你管理加密和访问。 默认情况下，你的数据是安全的，无需修改你的代码或应用程序即可利用加密。
 
 ## <a name="about-encryption-key-management"></a>关于加密密钥管理
 
@@ -41,7 +41,7 @@ ms.locfileid: "79372234"
 
 请按照以下步骤为转换器启用客户管理的密钥：
 
-1. 创建新的区域文本翻译或区域认知服务资源。 这不适用于全局资源。
+1. 创建新的区域翻译员或区域认知服务资源。 这不适用于全局资源。
 2. 已在 Azure 门户中启用托管标识，并添加客户托管的密钥信息。
 3. 在自定义转换器中创建新的工作区，并将此订阅信息关联起来。
 

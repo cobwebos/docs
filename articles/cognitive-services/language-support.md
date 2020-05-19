@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: d103b22338672f031fa4f91349a8376f86b703c8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 50c6d3ff6e1e8b979b3544c423a15ae8e1e42f6f
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81530960"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592145"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Azure 认知服务的自然语言支持
 
-Azure 认知服务使你能够构建可查看、听取、与用户交流并了解你的用户的应用程序。 这些服务支持三十多种语言，允许用户与应用程序自然地进行通信。 使用以下链接查看服务的语言可用性。
+使用 Azure 认知服务可以生成能够与用户进行看、听、说交流并能理解用户的应用程序。 这些服务支持三十多种语言，允许用户与应用程序自然地进行通信。 使用以下链接按服务查看语言可用性。
 
-这些认知服务是语言不可知的，没有基于人类语言的限制。
+这些认知服务不限语言，不受人类语言的限制。
 
 * [异常探测器（预览版）](./anomaly-detector/index.yml)
 * [自定义视觉](./Custom-Vision-Service/index.yml)
@@ -41,7 +41,7 @@ Azure 认知服务使你能够构建可查看、听取、与用户交流并了�
 * [语言理解 (LUIS)](./luis/luis-supported-languages.md)
 * [QnA Maker](./qnamaker/overview/languages-supported.md)
 * [文本分析](./text-analytics/text-analytics-supported-languages.md)
-* [文本翻译](./translator/languages.md)
+* [翻译工具](./translator/languages.md)
 
 ## <a name="speech"></a>语音
 
@@ -63,7 +63,7 @@ Azure 认知服务使你能够构建可查看、听取、与用户交流并了�
 
 * [内容审查器](./content-moderator/text-moderation-api-languages.md)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [什么是认知服务？](welcome.md)
 * [创建帐户](cognitive-services-apis-create-account.md)

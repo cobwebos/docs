@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 8cfa9114c5a5e57882cb84b604c1cf71be9acc52
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 27ce3931e6808c5ba7ee0dbf9d3354220bbc0177
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80878334"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592162"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>安装和运行窗体识别器容器（预览）
 
@@ -35,7 +35,7 @@ Azure 表单识别器应用机器学习技术从表单中识别和提取键值�
 
 使用表单识别器容器之前，必须满足以下先决条件：
 
-| 必选 | 目的 |
+| 必需 | 目标 |
 |----------|---------|
 | Docker 引擎 | 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br> |
 | 熟悉 Docker | 应对 Docker 概念（例如注册表、存储库、容器和容器映像）有一个基本的理解，并了解基本的 `docker` 命令。 |
@@ -44,21 +44,21 @@ Azure 表单识别器应用机器学习技术从表单中识别和提取键值�
 | 表单识别器资源 | 若要使用这些容器，必须具有：<br><br>用于获取关联的 API 密钥和终结点 URI 的 Azure**窗体识别器**资源。 Azure 门户**窗体识别器**概述和密钥页上都提供了这两个值，这两个值都是启动容器所必需的。<br><br>**{FORM_RECOGNIZER_API_KEY}**： "密钥" 页上有两个可用的资源键之一<br><br>**{FORM_RECOGNIZER_ENDPOINT_URI}**： "概述" 页中提供的终结点 |
 
 > [!NOTE]
-> 计算机视觉资源名称应为单个单词，无连`-`字符或其他任何特殊字符。 此限制旨在确保窗体识别器和识别文本容器兼容性。
+> 计算机视觉资源名称应为单个单词，无连字符 `-` 或其他任何特殊字符。 此限制旨在确保窗体识别器和识别文本容器兼容性。
 
 ## <a name="gathering-required-parameters"></a>正在收集所需参数
 
-所有认知服务容器都需要三个主要参数。 最终用户许可协议（EULA）的值必须为`accept`。 此外，需要终结点 URL 和 API 密钥。
+所有认知服务容器都需要三个主要参数。 最终用户许可协议（EULA）的值必须为 `accept` 。 此外，需要终结点 URL 和 API 密钥。
 
-### <a name="endpoint-uri-computer_vision_endpoint_uri-and-form_recognizer_endpoint_uri"></a>终结点`{COMPUTER_VISION_ENDPOINT_URI}` URI 和`{FORM_RECOGNIZER_ENDPOINT_URI}`
+### <a name="endpoint-uri-computer_vision_endpoint_uri-and-form_recognizer_endpoint_uri"></a>终结点 URI `{COMPUTER_VISION_ENDPOINT_URI}` 和`{FORM_RECOGNIZER_ENDPOINT_URI}`
 
-"**终结点**URI" 值在相应认知服务资源的 "Azure 门户*概述*" 页上可用。 导航到 "*概述*" 页，将鼠标悬停在终结点`Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span>上，将显示一个图标。 复制并在需要时使用。
+"**终结点**URI" 值在相应认知服务资源的 "Azure 门户*概述*" 页上可用。 导航到 "*概述*" 页，将鼠标悬停在终结点上， `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> 将显示一个图标。 复制并在需要时使用。
 
 ![收集终结点 uri 供以后使用](../containers/media/overview-endpoint-uri.png)
 
-### <a name="keys-computer_vision_api_key-and-form_recognizer_api_key"></a>密钥`{COMPUTER_VISION_API_KEY}`和`{FORM_RECOGNIZER_API_KEY}`
+### <a name="keys-computer_vision_api_key-and-form_recognizer_api_key"></a>密钥 `{COMPUTER_VISION_API_KEY}` 和`{FORM_RECOGNIZER_API_KEY}`
 
-此密钥用于启动容器，并在相应认知服务资源的 Azure 门户 "密钥" 页上可用。 导航到 "*密钥*" 页，然后单击`Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span>图标。
+此密钥用于启动容器，并在相应认知服务资源的 Azure 门户 "密钥" 页上可用。 导航到 "*密钥*" 页，然后单击 `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> 图标。
 
 ![获取两个密钥之一供以后使用](../containers/media/keys-copy-api-key.png)
 
@@ -67,7 +67,7 @@ Azure 表单识别器应用机器学习技术从表单中识别和提取键值�
 
 ## <a name="request-access-to-the-container-registry"></a>请求访问容器注册表
 
-在请求访问该容器之前，必须先填写并提交[认知服务表单识别器容器访问请求表单](https://aka.ms/FormRecognizerContainerRequestAccess)。 这也会注册计算机视觉。 不需要单独注册计算机视觉请求表单。 
+填写并提交[认知服务容器请求窗体](https://aka.ms/cognitivegate)，请求对容器的访问权限。
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 
@@ -133,7 +133,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-t
 
 ## <a name="run-the-container-by-using-the-docker-run-command"></a>使用 docker run 命令运行容器
 
-使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行容器。 有关如何`{COMPUTER_VISION_ENDPOINT_URI}`获取`{COMPUTER_VISION_API_KEY}` `{FORM_RECOGNIZER_ENDPOINT_URI}` 、和`{FORM_RECOGNIZER_API_KEY}`值的详细信息，请参阅[收集必需的参数](#gathering-required-parameters)。
+使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行容器。 有关如何[gathering required parameters](#gathering-required-parameters)获取 `{COMPUTER_VISION_ENDPOINT_URI}` 、 `{COMPUTER_VISION_API_KEY}` `{FORM_RECOGNIZER_ENDPOINT_URI}` 和值的详细信息，请参阅收集必需的参数 `{FORM_RECOGNIZER_API_KEY}` 。
 
 `docker run` 命令的[示例](form-recognizer-container-configuration.md#example-docker-run-commands)可用。
 
@@ -325,7 +325,7 @@ formrecognizer_config =
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>“摘要”
+## <a name="summary"></a>总结
 
 本文介绍了与下载、安装和运行表单识别器容器相关的概念与工作流。 综上所述：
 

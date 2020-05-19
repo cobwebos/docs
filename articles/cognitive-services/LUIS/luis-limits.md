@@ -2,13 +2,13 @@
 title: 限制 - LUIS
 description: 本文介绍 Azure 认知服务语言理解 (LUIS) 的已知限制。 LUIS 有几个限制区。 模型限制在 LUIS 中控制意向、实体和功能。 基于密钥类型的配额限制。 键盘组合可控制 LUIS 网站。
 ms.topic: reference
-ms.date: 04/02/2020
-ms.openlocfilehash: 0a734091ad2c9812f079d77c97c22872717aa7c9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/06/2020
+ms.openlocfilehash: 71f6126cbf9615d7f808f098202f29094a913982
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82103588"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83593233"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>LUIS 模型和密钥的限制
 LUIS 有几个限制区。 第一种是[模型限制](#model-limits)，它控制 LUIS 中的意向、实体和功能。 第二个是基于密钥类型的[配额限制](#key-limits)。 第三个区域的限制是用于控制 LUIS 网站的[键盘组合](#keyboard-controls)。 第四个是 LUIS 创作网站和 LUIS [终结点](luis-glossary.md#endpoint) API 之间的[世界区域映射](luis-reference-regions.md)。
@@ -19,7 +19,7 @@ LUIS 有几个限制区。 第一种是[模型限制](#model-limits)，它控制
 
 如果应用超过 LUIS 模型限制，请考虑使用[LUIS 调度](luis-concept-enterprise.md#dispatch-tool-and-model)应用或使用[LUIS 容器](luis-container-howto.md)。
 
-|区域|限制|
+|分区图|限制|
 |--|:--|
 | [应用名称][luis-get-started-create-app] | *默认最大字符长度 |
 | 应用程序| 每个 Azure 创作资源 500 个应用程序 |
@@ -28,8 +28,8 @@ LUIS 有几个限制区。 第一种是[模型限制](#model-limits)，它控制
 | 外部实体 | 无限制 |
 | [意向][intents]|每个应用程序500：499个自定义意向和必需的_无_意向。<br>[基于调度的](https://aka.ms/dispatch-tool)应用程序具有相应的500调度源。|
 | [列表实体](./luis-concept-entity-types.md) | 父级：50 项，子级：20,000 项。 规范名称是 *默认最大字符长度。同义词值没有长度限制。 |
-| [机器学习实体 + 角色](./luis-concept-entity-types.md)：<br> 复合、<br>简单、<br>实体角色|限制为 100 个父实体或 330 个实体，以用户先达到的限制为准。 出于此限制，角色将作为实体计数。 一个示例是一个简单的实体，其中包含2个角色：1个复合 + 1 个简单 + 2 个角色 = 4 个330实体。<br>子组件最多可以嵌套 5 层。|
-|作为特征的模型| 可用作特定模型的描述符（特征）的模型的最大数量为 10 个模型。 可用作特定模型的描述符（特征）的短语列表的最大数量为 10 个短语列表。|
+| [机器学习实体 + 角色](./luis-concept-entity-types.md)：<br> 复合、<br>简单、<br>实体角色|限制为 100 个父实体或 330 个实体，以用户先达到的限制为准。 出于此限制，角色将作为实体计数。 一个示例是一个简单的实体，其中包含2个角色：1个复合 + 1 个简单 + 2 个角色 = 4 个330实体。<br>子实体最多可以嵌套5级。|
+|作为特征的模型| 可用作特定模型的一种功能的最大模型数为10个模型。 用作特定模型的功能的短语列表的最大数目为10个短语列表。|
 | [预览 - 动态列表实体](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2 个列表，其中的每个查询预测终结点请求约 1k 个实体|
 | [模式](luis-concept-patterns.md)|每个应用程序 500 个模式。<br>模式的最大长度为 400 个字符。<br>每个模式 3 个 Pattern.any 实体<br>模式中最多 2 个嵌套可选文本|
 | [Pattern.any](./luis-concept-entity-types.md)|每个应用程序 100 个，每个模式 3 个 pattern.any 实体 |
@@ -40,7 +40,7 @@ LUIS 有几个限制区。 第一种是[模型限制](#model-limits)，它控制
 | [话语][utterances] | 500 个字符|
 | [陈述][utterances] | 每个应用程序 15,000 条 - 对每个意向的话语数量没有限制|
 | [版本](luis-concept-version.md)| 每个应用程序 100 个版本 |
-| [版本名称][luis-how-to-manage-versions] | 10 个字符，仅限字母数字和句点 (.) |
+| [版本名称][luis-how-to-manage-versions] | 128 个字符 |
 
 *默认最大字符长度为 50 个字符。
 
@@ -48,18 +48,14 @@ LUIS 有几个限制区。 第一种是[模型限制](#model-limits)，它控制
 
 ## <a name="name-uniqueness"></a>名称唯一性
 
-使用以下命名唯一性规则。
+与相同级别的其他对象进行比较时，对象名称必须是唯一的。
 
-以下项在 LUIS 应用中必须唯一：
-
-* 版本名称
-* 意向
-* 实体
-* 角色
-
-以下项在应用范围内必须唯一：
-
-* 短语列表
+|Objects|限制|
+|--|--|
+|意向，实体|所有意图和实体名称在应用的版本中必须是唯一的。|
+|ML 实体组件|对于处于同一级别的组件，所有机器学习的实体组件（子实体）都必须是唯一的。|
+|功能 | 所有命名功能（如短语列表）在应用的某个版本中必须是唯一的。|
+|实体角色|实体或实体组件上的所有角色在同一实体级别（父代、子级、孙级等）都必须是唯一的。|
 
 ## <a name="object-naming"></a>对象命名
 
@@ -78,7 +74,7 @@ LUIS 有几个限制区。 第一种是[模型限制](#model-limits)，它控制
 
 ### <a name="authoring-resource-limits"></a>创作资源限制
 
-筛选 Azure 门户_kind_中的`LUIS.Authoring`资源时，请使用类型。 LUIS 限制每个 Azure 创作资源的500个应用程序。
+_kind_ `LUIS.Authoring` 筛选 Azure 门户中的资源时，请使用类型。 LUIS 限制每个 Azure 创作资源的500个应用程序。
 
 |创作资源|创作 TPS|
 |--|--|
@@ -91,7 +87,7 @@ LUIS 有几个限制区。 第一种是[模型限制](#model-limits)，它控制
 
 ### <a name="query-prediction-resource-limits"></a>查询预测资源限制
 
-筛选 Azure 门户_kind_中的`LUIS`资源时，请使用类型。在运行时使用的 LUIS 查询预测终结点资源仅对终结点查询有效。
+_kind_ `LUIS` 筛选 Azure 门户中的资源时，请使用类型。在运行时使用的 LUIS 查询预测终结点资源仅对终结点查询有效。
 
 |查询预测资源|查询 TPS|
 |--|--|

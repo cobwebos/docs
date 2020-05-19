@@ -2,34 +2,29 @@
 title: 应用程序设置 - LUIS
 description: Azure 认知服务语言理解应用的应用程序设置存储在应用和门户中。
 ms.topic: reference
-ms.date: 04/14/2020
-ms.openlocfilehash: 9e17736cd6ff5074a6eab76a6cf5bdb8acedc185
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/04/2020
+ms.openlocfilehash: 7b545e0959a43520b7d643ef8c0658a1e1a3b295
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382201"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590973"
 ---
-# <a name="application-settings"></a>应用程序设置
+# <a name="app-and-version-settings"></a>应用和版本设置
 
-这些应用程序设置存储在[导出的](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)应用中，并使用 REST API 进行[更新](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings)。 更改应用版本设置会将应用训练状态重置为“未训练”。
+这些设置存储在[导出](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)的应用中，并通过 REST API 或 LUIS 门户更新。
 
-了解音调符号和标点的[概念](luis-concept-utterance.md#utterance-normalization-for-diacritics-and-punctuation)。
+更改应用版本设置会将应用训练状态重置为“未训练”。
 
-|设置|默认值|说明|
-|--|--|--|
-|NormalizePunctuation|True|删除标点。|
-|NormalizeDiacritics|True|删除音调符号。|
+[!INCLUDE [App and version settings](includes/app-version-settings.md)]
+
+
+文本参考和示例包括：
+
+* [标点符号](#punctuation-normalization)
+* [语音](#diacritics-normalization)
 
 ## <a name="diacritics-normalization"></a>音调符号规范化
-
-在 `settings` 参数中针对 LUIS JSON 应用文件的音调符号打开话语规范化。
-
-```JSON
-"settings": [
-    {"name": "NormalizeDiacritics", "value": "true"}
-]
-```
 
 以下话语显示了音调符号规范化如何影响话语：
 
@@ -133,16 +128,7 @@ ms.locfileid: "81382201"
 |`ü`|`u`|
 |`ñ`|`u`|
 
-
 ## <a name="punctuation-normalization"></a>标点规范化
-
-在 `settings` 参数中针对 LUIS JSON 应用文件的标点打开话语规范化。
-
-```JSON
-"settings": [
-    {"name": "NormalizePunctuation", "value": "true"}
-]
-```
 
 以下话语显示了标点如何影响话语：
 

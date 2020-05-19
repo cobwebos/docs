@@ -1,7 +1,7 @@
 ---
-title: 语言支持 - 文本翻译 API
+title: 语言支持-翻译人员
 titleSuffix: Azure Cognitive Services
-description: 对于使用神经机器翻译转换（NMT）的文本到文本转换，文本翻译 API 支持以下语言。
+description: 认知服务转换器支持使用神经机器翻译（NMT）转换文本到文本转换的以下语言。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 0ecde5acb7dc57ed9e5802c1589d5813a9206643
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 15c11a5b94b80a96c520696c45f3eec5c48b7b48
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81684828"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592723"
 ---
-# <a name="language-and-region-support-for-the-translator-text-api"></a>文本翻译 API 的语言和区域支持
+# <a name="language-and-region-support-for-translator"></a>翻译人员的语言和区域支持
 
-文本翻译 API 支持对以下语言进行文本到文本翻译。 神经机器翻译 (NMT) 是采用 AI 的高质量机器翻译的新标准，当神经系统可用时，其可使用文本翻译 API 的 V3 版作为默认值。
+转换器支持文本转换的以下语言。 对于高质量的 AI 计算机翻译，神经计算机翻译（NMT）是新标准，可在神经系统可用时使用转换器的 V3 作为默认值。
 
 [详细了解机器翻译的工作原理](https://www.microsoft.com/translator/mt.aspx)
 
 ## <a name="translation"></a>翻译
 
-**V2 Translator API**
+**V2 转换器**
 
 > [!NOTE]
 > V2 已于2018年4月30日弃用。 请将你的应用程序迁移到 V3，以便充分利用 V3 中专门提供的新功能。
@@ -35,7 +35,7 @@ ms.locfileid: "81684828"
 * 神经默认值：神经是默认的翻译系统。 使用参数 `category=smt` 可访问适用于 Microsoft Translator Hub 的统计系统。
 * 仅神经：仅神经翻译可用。
 
-**V3 Translator API** V3 Translator API 在默认情况下为神经，统计系统仅在没有神经系统时才可用。
+**V3 转换器**默认情况下，V3 转换器为神经，统计系统仅在不存在神经系统时可用。
 
 > [!NOTE]
 > 目前，可在自定义转换器中使用神经语言的子集，并逐渐添加其他翻译。 [查看自定义转换器中当前可用的语言](#customization)。
@@ -90,7 +90,7 @@ ms.locfileid: "81684828"
 |挪威语| `nb`    |   神经|
 |波斯语|   `fa`    |   神经|
 |波兰语|    `pl`    |   神经|
-|葡萄牙语（巴西）|   `pt-br` |   神经|
+|葡萄牙语(巴西)|   `pt-br` |   神经|
 |葡萄牙语(葡萄牙)| `pt-pt` | 神经
 |旁遮普语|`pa`|神经
 |克雷塔罗奥托米语|   `otq`   |   统计|
@@ -116,13 +116,13 @@ ms.locfileid: "81684828"
 |尤卡坦玛雅语|  `yua`   |   统计|
 
 > [!NOTE]
-> 语言代码`pt`将默认为`pt-br`、葡萄牙语（巴西）。
+> 语言代码 `pt` 将默认为 `pt-br` 、葡萄牙语（巴西）。
 
 ## <a name="transliteration"></a>音译
 
 Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”表示该语言可以从列出的两侧脚本互相音译。 “-->” 表示该语言只能从一个脚本音译到另一个脚本。
 
-| 语言    | 语言代码 | 脚本 | 音译方向 | 脚本|
+| 语言    | 语言代码 | 脚本 | 到/从 | 脚本|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | 阿拉伯语 | `ar` | 阿拉伯语 `Arab` | <--> | 拉丁语 `Latn` |
 |Bangla  | `bn` | 孟加拉语 `Beng` | <--> | 拉丁语 `Latn` |
@@ -186,7 +186,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 挪威语      | `nb`          |
 | 波斯语      | `fa`          |
 | 波兰语      | `pl`          |
-| 葡萄牙语（巴西）     | `pt-br`          |
+| 葡萄牙语(巴西)     | `pt-br`          |
 | 罗马尼亚语      | `ro`          |
 | 俄语      | `ru`          |
 | 塞尔维亚语（拉丁）      | `sr-Latn`          |
@@ -204,12 +204,12 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 
 ## <a name="detect"></a>Detect
 
-翻译工具文本 API 检测可用于翻译和音译的所有语言。
+转换器检测到可用于翻译和音译的所有语言。
 
 
-## <a name="access-the-translator-text-api-language-list-programmatically"></a>以编程方式访问文本翻译 API 语言列表
+## <a name="access-the-translator-language-list-programmatically"></a>以编程方式访问转换器语言列表
 
-可以使用 Languages 方法检索文本翻译 API v3.0 支持的语言列表。 可按功能、语言代码以及该语言在英文或任何其他受支持语言中的名称来查看列表。 当有新语言可用时，Microsoft Translator 服务会自动更新此列表。
+你可以使用 "语言" 方法检索翻译人员3.0 支持的语言的列表。 可按功能、语言代码以及该语言在英文或任何其他受支持语言中的名称来查看列表。 当有新语言可用时，Microsoft Translator 服务会自动更新此列表。
 
 [查看语言操作参考文档](reference/v3-0-languages.md)
 
@@ -252,7 +252,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 挪威语      | `nb`          |
 | 波斯语      | `fa`          |
 | 波兰语      | `pl`          |
-| 葡萄牙语（巴西） | `pt-br` |
+| 葡萄牙语(巴西) | `pt-br` |
 | 罗马尼亚语      | `ro`          |
 | 俄语      | `ru`          |
 | 萨摩亚语|   `sm`    |
@@ -269,6 +269,6 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 
 ## <a name="access-the-list-on-the-microsoft-translator-website"></a>访问 Microsoft Translator 网站上的列表
 
-若要快速查看语言，Microsoft Translator 网站上显示了文本翻译和语音 API 支持的所有语言。 此列表不包括特定于开发者的信息，例如语言代码。
+若要快速查看语言，Microsoft Translator 网站将显示翻译人员和语音 Api 支持的所有语言。 此列表不包括特定于开发者的信息，例如语言代码。
 
 [查看语言列表](https://www.microsoft.com/translator/languages.aspx)

@@ -1,7 +1,7 @@
 ---
-title: 动态字典 - 文本翻译 API
+title: 动态字典-转换器
 titleSuffix: Azure Cognitive Services
-description: 本文介绍如何使用 Azure 认知服务文本翻译 API 的动态字典功能。
+description: 本文介绍如何使用 Azure 认知服务转换器的动态字典功能。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 944bca8644da6127e73af04eb75d01697cd34399
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3ef881efc417a6c3816a92d9af7d77bba74355aa
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75446714"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592536"
 ---
 # <a name="how-to-use-a-dynamic-dictionary"></a>如何使用动态字典
 
@@ -27,8 +27,8 @@ ms.locfileid: "75446714"
 
 **要求：**
 
-* `From`和`To`语言必须包含英语和另一种受支持的语言。 
-* 你必须在 API `From`翻译请求中包含参数，而不是使用自动检测功能。 
+* `From`和 `To` 语言必须包含英语和另一种受支持的语言。 
+* 你必须 `From` 在 API 翻译请求中包含参数，而不是使用自动检测功能。 
 
 **示例：en-de：**
 
@@ -38,4 +38,4 @@ ms.locfileid: "75446714"
 
 无论使用还是不使用 HTML 模式，此功能都以相同的方式工作。
 
-请谨慎使用此功能。 自定义翻译的更好方法是使用自定义转换器。 自定义翻译工具能够充分利用上下文和统计概率。 如果必须或能够创建在上下文中显示工作或短语的训练数据，则会得到更好的结果。 可以在中找到有关自定义转换器的[https://aka.ms/CustomTranslator](https://aka.ms/CustomTranslator)详细信息。
+请谨慎使用此功能。 自定义翻译的更好方法是使用自定义转换器。 自定义翻译工具能够充分利用上下文和统计概率。 如果必须或能够创建在上下文中显示工作或短语的训练数据，则会得到更好的结果。 可以在中找到有关自定义转换器的详细信息 [https://aka.ms/CustomTranslator](https://aka.ms/CustomTranslator) 。

@@ -3,12 +3,12 @@ title: 发布区域和终结点 - LUIS
 description: Azure 门户中指定的区域就是你将在其中发布 LUIS 应用的区域，并会为此同一区域生成一个终结点 URL。
 ms.topic: reference
 ms.date: 11/19/2019
-ms.openlocfilehash: a7709d15a51637772d7a4775cd71c307dc21c52b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 680887ecda0843bf770c62a4b9a4d88305ea9e73
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80292087"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590904"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>创作和发布区域及关联的密钥
 
@@ -21,9 +21,9 @@ ms.locfileid: "80292087"
 
 |LUIS|创作区域|Azure 区域名称|
 |--|--|--|
-|[www.luis.ai][www.luis.ai] <br>[preview.luis.ai](https://preview.luis.ai)|美国<br>非欧洲<br>非澳大利亚| `westus`|
-|[au.luis.ai][au.luis.ai] <br>[preview.au.luis.ai](https://preview.au.luis.ai)|澳大利亚| `australiaeast`|
-|[eu.luis.ai][eu.luis.ai] <br>[preview.eu.luis.ai](https://preview.eu.luis.ai)|欧洲|`westeurope`|
+|[www.luis.ai][www.luis.ai] <br>[previous.luis.ai](https://previous.luis.ai)|美国<br>非欧洲<br>非澳大利亚| `westus`|
+|[au.luis.ai][au.luis.ai] <br>[previous.au.luis.ai](https://previous.au.luis.ai)|澳大利亚| `australiaeast`|
+|[eu.luis.ai][eu.luis.ai] <br>[previous.eu.luis.ai](https://previous.eu.luis.ai)|欧洲|`westeurope`|
 
 创作区域具有[配对故障转移区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。
 
@@ -45,7 +45,7 @@ https://www.luis.ai 上创建的 LUIS 应用可以发布到除[欧洲](#publishi
 
 ## <a name="publishing-to-europe"></a>发布到欧洲
 
-若要发布到欧洲区域，请仅在 https://eu.luis.ai 创建 LUIS 应用。 如果尝试使用欧洲区域中的密钥将应用发布到其他区域，LUIS 会显示警告消息。 请改用 https://eu.luis.ai。 创建的[https://eu.luis.ai][eu.luis.ai] LUIS 应用不会自动迁移到其他区域。 要实现迁移，请导出然后再导入 LUIS 应用。
+若要发布到欧洲区域，请仅在 https://eu.luis.ai 创建 LUIS 应用。 如果尝试使用欧洲区域中的密钥将应用发布到其他区域，LUIS 会显示警告消息。 请改用 https://eu.luis.ai。 创建的 LUIS 应用 [https://eu.luis.ai][eu.luis.ai] 不会自动迁移到其他区域。 要实现迁移，请导出然后再导入 LUIS 应用。
 
 ## <a name="europe-publishing-regions"></a>欧洲发布区域
 
@@ -58,7 +58,7 @@ https://www.luis.ai 上创建的 LUIS 应用可以发布到除[欧洲](#publishi
 
 ## <a name="publishing-to-australia"></a>发布到澳大利亚
 
-若要发布到澳大利亚区域，请仅在 https://au.luis.ai 创建 LUIS 应用。 如果尝试使用澳大利亚区域中的密钥将应用发布到其他区域，LUIS 会显示警告消息。 请改用 https://au.luis.ai。 创建的[https://au.luis.ai][au.luis.ai] LUIS 应用不会自动迁移到其他区域。 要实现迁移，请导出然后再导入 LUIS 应用。
+若要发布到澳大利亚区域，请仅在 https://au.luis.ai 创建 LUIS 应用。 如果尝试使用澳大利亚区域中的密钥将应用发布到其他区域，LUIS 会显示警告消息。 请改用 https://au.luis.ai。 创建的 LUIS 应用 [https://au.luis.ai][au.luis.ai] 不会自动迁移到其他区域。 要实现迁移，请导出然后再导入 LUIS 应用。
 
 ## <a name="australia-publishing-regions"></a>澳大利亚发布区域
 
@@ -68,7 +68,7 @@ https://www.luis.ai 上创建的 LUIS 应用可以发布到除[欧洲](#publishi
 
 ## <a name="publishing-to-other-regions"></a>发布到其他区域
 
-若要发布到其他区域， [https://www.luis.ai](https://www.luis.ai)只需要创建 LUIS 应用。
+若要发布到其他区域，只需要创建 LUIS 应用 [https://www.luis.ai](https://www.luis.ai) 。
 
 ## <a name="other-publishing-regions"></a>其他发布区域
 

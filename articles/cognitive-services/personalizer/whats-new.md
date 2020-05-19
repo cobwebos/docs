@@ -8,20 +8,26 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 04/23/2020
 ms.author: diberry
-ms.openlocfilehash: 21e1be094716ac1d43e1f4458b41e855315d1779
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 21669a214ff1646a8f331cbe2871b7d8c756f22f
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82192980"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591754"
 ---
 # <a name="whats-new-in-personalizer"></a>Personalizer 中的新增功能
 
-了解服务中的新增功能。 这些项目可能包括发行说明、视频、博客文章和其他类型的信息。 将此页加入书签，以随时了解服务的最新信息。
+了解该服务中的新增功能。 这些项目可能包括发行说明、视频、博客文章和其他类型的信息。 将此页加入书签，以随时了解服务的最新信息。
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="may-2020---build-conference"></a>可能为 2020-build 会议
+
+**公共预览版**中提供了以下内容：
+
+ * 作为学习行为的[Apprentice 模式](concept-apprentice-mode.md)。
 
 ### <a name="march-2020"></a>2020 年 3 月
 
