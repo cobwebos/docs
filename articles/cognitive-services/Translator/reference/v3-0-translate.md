@@ -1,7 +1,7 @@
 ---
-title: 文本翻译 API 翻译方法
+title: 转换器转换方法
 titleSuffix: Azure Cognitive Services
-description: 了解用于翻译文本的 Azure 认知服务文本翻译 API Translate 方法的参数、标头和正文消息。
+description: 了解 Azure 认知服务转换器转换方法转换文本时的参数、标头和正文消息。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/17/2020
 ms.author: swmachan
-ms.openlocfilehash: 14d1f042240fd045925afe1725b32ddade490dfe
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 563f4693c358c570caa2566f58002ddfe6c7bc69
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858541"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584631"
 ---
-# <a name="translator-text-api-30-translate"></a>文本翻译 API 3.0：翻译
+# <a name="translator-30-translate"></a>翻译人员3.0：翻译
 
 翻译文本。
 
@@ -103,7 +103,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 请求标头包括：
 
 <table width="100%">
-  <th width="20%">头文件</th>
+  <th width="20%">标头</th>
   <th>说明</th>
   <tr>
     <td>身份验证标头</td>
@@ -111,7 +111,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td><em>必需的请求标头</em>。<br/>指定有效负载的内容类型。<br/> 接受的值<code>application/json; charset=UTF-8</code>为。</td>
+    <td><em>必需的请求标头</em>。<br/>指定有效负载的内容类型。<br/> 接受的值为 <code>application/json; charset=UTF-8</code> 。</td>
   </tr>
   <tr>
     <td>Content-Length</td>
@@ -181,7 +181,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 ## <a name="response-headers"></a>响应头
 
 <table width="100%">
-  <th width="20%">头文件</th>
+  <th width="20%">标头</th>
   <th>说明</th>
     <tr>
     <td>X-RequestId</td>
@@ -234,7 +234,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
 </table> 
 
-如果发生错误，请求也将返回 JSON 错误响应。 错误代码是一个 6 位数字，包括 3 位数的 HTTP 状态代码，后接用于进一步将错误分类的 3 位数。 常见错误代码可在 [v3 文本翻译 API 参考页面](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)上找到。 
+如果发生错误，请求也将返回 JSON 错误响应。 错误代码是一个 6 位数字，包括 3 位数的 HTTP 状态代码，后接用于进一步将错误分类的 3 位数。 可在[V3 转换器参考页](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)上找到常见错误代码。 
 
 ## <a name="examples"></a>示例
 
@@ -366,7 +366,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
   <th>操作</th>
   <tr>
     <td><code>NoAction</code></td>
-    <td>这是默认行为。 不雅内容会从源传递到目标。<br/><br/>
+    <td>此选项为默认行为。 不雅内容会从源传递到目标。<br/><br/>
     <strong>示例源（日语）</strong>：彼はジャッカスです。<br/>
     <strong>示例翻译（中文）</strong>：他是一个笨蛋。
     </td>
@@ -383,7 +383,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
     <td>不雅词语会在输出中使用标记进行替换。 标记取决于 <code>ProfanityMarker</code> 参数。<br/><br/>
 如果 <code>ProfanityMarker=Asterisk</code>，不雅词语会被替换为 <code>***</code>：<br/>
     <strong>示例源（日语）</strong>：彼はジャッカスです。<br/>
-    <strong>示例翻译（英语）</strong>：他是\* \* \*。<br/><br/>
+    <strong>示例翻译（英语）</strong>：他是 \* \* \* 。<br/><br/>
 如果 <code>ProfanityMarker=Tag</code>，则不雅词语会被括在 XML 标记 &lt;profanity&gt; 和 &lt;/profanity&gt; 中：<br/>
     <strong>示例源（日语）</strong>：彼はジャッカスです。<br/>
     <strong>示例翻译（中文）</strong>：他是一个&lt;profanity&gt;笨蛋&lt;/profanity&gt;。

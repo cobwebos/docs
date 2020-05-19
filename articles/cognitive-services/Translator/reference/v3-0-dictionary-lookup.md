@@ -1,5 +1,5 @@
 ---
-title: 文本翻译 API 字典查找方法
+title: 转换器字典查找方法
 titleSuffix: Azure Cognitive Services
 description: 字典查找方法可为某个单词和少量的惯用语提供替代翻译。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 01/21/2020
 ms.author: swmachan
-ms.openlocfilehash: bd27827441082698bb4e0b43e7dd22d5b7e66539
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b2d111f22b8ef36b20b93b65ff1ea6f7b52ea8f7
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76548945"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584733"
 ---
-# <a name="translator-text-api-30-dictionary-lookup"></a>文本翻译 API 3.0：字典查找
+# <a name="translator-30-dictionary-lookup"></a>转换器3.0：字典查找
 
 为某个单词和少量的惯用语提供替代翻译。 每条翻译都包含语性和回译列表。 回译可让用户在语境中理解该翻译。 使用[字典示例](./v3-0-dictionary-examples.md)操作可以进一步向下钻取，以查看每个翻译对的用法示例。
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/24/2019
 ms.author: swmachan
-ms.openlocfilehash: 3c5c74fc853b5a2425a58e1704aad43350cba212
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 252759139de7f53cd7875efeb7f477219092aa0b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73837448"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584683"
 ---
 # <a name="unsupported-language-deployments"></a>不支持的语言部署
 
@@ -32,7 +32,7 @@ ms.locfileid: "73837448"
 * 迁移发生时，模型必须处于 "已部署" 状态。  
 * 模型的语言对必须是自定义转换器中不支持的语言对。  一种语言对，其中一种语言支持英语，但它本身不包含英语，这是不受支持的语言部署的候选项。  例如，法语到德语语言对的集线器模型被视为不受支持的语言对，即使法语到英语和英语到德语也是受支持的语言对。
 
-## <a name="process"></a>进程
+## <a name="process"></a>过程
 在迁移适用于部署的中心的模型后，可以转到工作区的 "**设置**" 页，滚动到页面末尾，其中显示了**不受支持的翻译人员中心培训**部分。  仅当你的项目满足上述先决条件时才会显示此部分。
 
 ![如何从 Hub 迁移](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)
@@ -57,4 +57,4 @@ ms.locfileid: "73837448"
 ## <a name="next-steps"></a>后续步骤
 
 - [为模型定型](how-to-train-model.md)。
-- 通过 [Microsoft 文本翻译 API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) 开始使用已部署的自定义翻译模型。
+- 开始通过[转换器 V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)使用已部署的自定义翻译模型。

@@ -2,13 +2,13 @@
 title: 配置个性化体验创建服务
 description: 服务配置包括服务处理奖励的方式、服务的探索频率、重新训练模型的频率，以及存储的数据量。
 ms.topic: conceptual
-ms.date: 02/19/2020
-ms.openlocfilehash: ac31a9f907defeb44dbd4748a4395d3aec34d30c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/29/2020
+ms.openlocfilehash: 8df851c70650f3d59efc4c7507ce4b1c8a00fbe3
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219353"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584648"
 ---
 # <a name="configure-personalizer-learning-loop"></a>配置 Personalizer 学习循环
 
@@ -18,6 +18,23 @@ ms.locfileid: "79219353"
 
 <a name="configure-service-settings-in-the-azure-portal"></a>
 <a name="configure-reward-settings-for-the-feedback-loop-based-on-use-case"></a>
+
+## <a name="planning-configuration-changes"></a>规划配置更改
+
+由于某些配置更改会[重置模型](#settings-that-include-resetting-the-model)，因此应计划配置更改。
+
+如果计划使用[Apprentice 模式](concept-apprentice-mode.md)，请确保在切换到 Apprentice 模式之前查看 Personalizer 配置。
+
+<a name="clear-data-for-your-learning-loop"></a>
+
+## <a name="settings-that-include-resetting-the-model"></a>包括重置模型的设置
+
+以下操作使用最多过去2天可用的数据触发模型的重新训练。
+
+* 回报
+* 浏览
+
+若要[清除](how-to-manage-model.md)所有数据，请使用 "**模型和学习设置**" 页。
 
 ## <a name="configure-rewards-for-the-feedback-loop"></a>配置反馈循环的奖励
 
@@ -50,7 +67,7 @@ ms.locfileid: "79219353"
 
 **模型更新频率**用于设置对模型进行定型的频率。
 
-|频率设置|目的|
+|频率设置|目标|
 |--|--|
 |1 分钟|使用 Personalizer**调试**应用程序的代码、执行演示或以交互方式测试机器学习方面时，一分钟的更新频率很有用。|
 |15 分钟|如果希望**密切跟踪**用户行为的更改，则高模型更新频率非常有用。 例如，涉及实时新闻、病毒内容或实时产品投标的站点。 在这些情况下，可以使用 15 分钟的频率。 |
@@ -66,16 +83,7 @@ ms.locfileid: "79219353"
 
 更改此值后，请确保选择 "**保存**"。
 
-<a name="clear-data-for-your-learning-loop"></a>
 
-## <a name="settings-that-include-resetting-the-model"></a>包括重置模型的设置
-
-以下操作包括使用过去2天的数据立即重新训练模型。
-
-* 回报
-* 浏览
-
-若要[清除](how-to-manage-model.md)所有数据，请使用 "模型和学习设置" 页。
 
 ## <a name="next-steps"></a>后续步骤
 
