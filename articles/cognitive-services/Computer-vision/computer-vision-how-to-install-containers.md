@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 05/05/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 5f36c429041a8182551d1f077f0a1229f520e8c1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 838b759f6b175b478dcd9b0559784975b5d24f70
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80879337"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83593320"
 ---
 # <a name="install-and-run-read-containers-preview"></a>安装和运行读取容器（预览）
 
@@ -30,7 +30,7 @@ ms.locfileid: "80879337"
 
 使用容器之前，必须满足以下先决条件：
 
-|必选|目的|
+|必需|目标|
 |--|--|
 |Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> **在 Windows 上**，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
@@ -68,7 +68,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 |-----------|------------|
 | 读取 | `containerpreview.azurecr.io/microsoft/cognitive-services-read:latest` |
 
-使用[`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/)命令下载容器映像。
+使用 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) 命令下载容器映像。
 
 ### <a name="docker-pull-for-the-read-container"></a>读取容器的 Docker 请求
 
@@ -125,13 +125,13 @@ ApiKey={API_KEY}
 
 ### <a name="asynchronous-read"></a>异步读取
 
-你可以使用`POST /vision/v2.0/read/core/asyncBatchAnalyze`和`GET /vision/v2.0/read/operations/{operationId}`操作来以异步方式读取图像，这与计算机视觉服务使用这些对应 REST 操作的方式类似。 异步 POST 方法将返回一个`operationId` ，用作 HTTP GET 请求的标识符。
+你可以使用 `POST /vision/v2.0/read/core/asyncBatchAnalyze` 和 `GET /vision/v2.0/read/operations/{operationId}` 操作来以异步方式读取图像，这与计算机视觉服务使用这些对应 REST 操作的方式类似。 异步 POST 方法将返回一个 `operationId` ，用作 HTTP GET 请求的标识符。
 
-在 swagger UI 中，选择`asyncBatchAnalyze`将其在浏览器中展开。 然后选择 "**试用** > **"。** 在此示例中，我们将使用下图：
+在 swagger UI 中，选择将 `asyncBatchAnalyze` 其在浏览器中展开。 然后选择 "**试用**"  >  **Choose file**。 在此示例中，我们将使用下图：
 
 ![选项卡和空格](media/tabs-vs-spaces.png)
 
-异步 POST 成功运行后，它将返回**HTTP 202**状态代码。 作为响应的一部分，有一个`operation-location`标头，其中包含请求的结果终结点。
+异步 POST 成功运行后，它将返回**HTTP 202**状态代码。 作为响应的一部分，有一个 `operation-location` 标头，其中包含请求的结果终结点。
 
 ```http
  content-length: 0
@@ -140,7 +140,7 @@ ApiKey={API_KEY}
  server: Kestrel
 ```
 
-`operation-location`是完全限定的 URL，通过 HTTP GET 访问。 下面是从上一个映像执行`operation-location` URL 的 JSON 响应：
+`operation-location`是完全限定的 URL，通过 HTTP GET 访问。 下面是从 `operation-location` 上一个映像执行 URL 的 JSON 响应：
 
 ```json
 {
@@ -186,7 +186,7 @@ ApiKey={API_KEY}
 
 ### <a name="synchronous-read"></a>同步读取
 
-您可以使用`POST /vision/v2.0/read/core/Analyze`操作来同步读取图像。 如果图像是完整的，则 API 会返回 JSON 响应。 唯一的例外情况是发生错误。 出现错误时，将返回以下 JSON：
+您可以使用 `POST /vision/v2.0/read/core/Analyze` 操作来同步读取图像。 如果图像是完整的，则 API 会返回 JSON 响应。 唯一的例外情况是发生错误。 出现错误时，将返回以下 JSON：
 
 ```json
 {
@@ -194,7 +194,7 @@ ApiKey={API_KEY}
 }
 ```
 
-JSON 响应对象与异步版本具有相同的对象关系图。 如果你是 JavaScript 用户并且需要类型安全，则可以使用以下类型将 JSON 响应转换为`AnalyzeResult`对象。
+JSON 响应对象与异步版本具有相同的对象关系图。 如果你是 JavaScript 用户并且需要类型安全，则可以使用以下类型将 JSON 响应转换为 `AnalyzeResult` 对象。
 
 ```typescript
 export interface AnalyzeResult {
@@ -241,7 +241,7 @@ export interface Word {
 }
 ```
 
-有关示例用例，请参阅<a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">此处<span class="docon docon-navigate-external x-hidden-focus"></span>的 TypeScript 沙箱</a>，并选择 "**运行**" 以可视化其易用性。
+有关示例用例，请参阅<a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">此处 <span class="docon docon-navigate-external x-hidden-focus"></span> 的 TypeScript 沙箱</a>，并选择 "**运行**" 以可视化其易用性。
 
 ## <a name="stop-the-container"></a>停止容器
 
@@ -265,7 +265,7 @@ export interface Word {
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>“摘要”
+## <a name="summary"></a>总结
 
 在本文中，你已学习相关概念，以及计算机视觉容器的下载、安装和运行工作流。 综上所述：
 

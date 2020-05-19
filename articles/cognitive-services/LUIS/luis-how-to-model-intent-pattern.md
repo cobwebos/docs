@@ -9,46 +9,46 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/09/2019
+ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 21afb12bf2464218119ebf52ebd980745e3d731d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 077e29856842972fae2c723d4a2c368cbb80df06
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76311710"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83593250"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>如何添加模式以提高预测准确性
 在 LUIS 应用接收到终结点话语后，请使用[模式](luis-concept-patterns.md)提高话语（按字词顺序和字词选择呈现模式）的预测准确性。 模式使用特定[语法](luis-concept-patterns.md#pattern-syntax)来指示的位置：[实体](luis-concept-entity-types.md)、实体[角色](luis-concept-roles.md)和可选文本。
 
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
-
 > [!CAUTION]
-> 模式仅包括机器学习实体父项，而不包括子组件。
+> 模式仅包括计算机获知的实体父级，而不是子实体。
 
 ## <a name="adding-example-utterances-as-pattern"></a>添加示例最谈话作为模式
 
 如果要为实体添加模式，_最简单_的方法是从意向详细信息页创建模式。 这可确保语法与示例查询文本匹配。
 
-1. 在[预览版 LUIS 门户](https://preview.luis.ai)中，从 "**我的应用**程序" 页中选择该应用程序。
+1. 登录到[LUIS 门户](https://www.luis.ai)，选择**订阅**和**创作资源**，查看分配给该创作资源的应用。
+1. 通过在 **"我的应用**" 页上选择应用程序的名称来打开应用。
 1. **在 "目的列表"** 页上，选择要从中创建模板查询文本的示例查询文本的意图名称。
 1. 在 "目的详细信息" 页上，选择要用作模板查询文本的示例查询文本的行，然后从上下文工具栏中选择 " **+ 添加为模式**"。
 
     > [!div class="mx-imgBorder"]
     > ![在意向详细信息页上选择示例查询文本作为模板模式的屏幕截图。](./media/luis-how-to-model-intent-pattern/add-example-utterances-as-pattern-template-utterance-from-intent-detail-page.png)
 
-1. 在弹出框中，选择 "**确认模式**" 页上的 "**完成**"。 不需要定义实体的子组件、约束或描述符。 只需列出机器学习的实体。
+1. 在弹出框中，选择 "**确认模式**" 页上的 "**完成**"。 不需要定义实体的 "子实体" 或 "功能"。 只需列出机器学习的实体。
 
     > [!div class="mx-imgBorder"]
     > ![在意向详细信息页上确认示例查询文本作为模板模式的屏幕截图。](./media/luis-how-to-model-intent-pattern/confirm-patterns-from-example-utterance-intent-detail-page.png)
 
-1. 如果需要编辑模板（例如，选择 " `[]`文本" （可选）和（方形）方括号），则需要从 "**模式**" 页进行此编辑。
+1. 如果需要编辑模板（例如，选择 "文本" （可选）和 `[]` （方形）方括号），则需要从 "**模式**" 页进行此编辑。
 
 1. 在导航栏中，选择 "**训练**" 以新模式训练应用。
 
 ## <a name="add-template-utterance-using-correct-syntax"></a>使用正确的语法添加模板查询文本
-
-1. 通过选择“我的应用”页上的应用名称来打开应用，然后选择“提高应用性能”下左侧面板中的“模式”************。
+1. 登录到[LUIS 门户](https://www.luis.ai)，选择**订阅**和**创作资源**，查看分配给该创作资源的应用。
+1. 通过在 **"我的应用**" 页上选择应用程序的名称来打开应用。
+1. 在左面板中选择 "**模式**" 下的 "**改善应用性能**"。
 
     > [!div class="mx-imgBorder"]
     > ![模式列表的屏幕截图](./media/luis-how-to-model-intent-pattern/patterns-1.png)
@@ -60,7 +60,7 @@ ms.locfileid: "76311710"
     > [!div class="mx-imgBorder"]
     > ![模式实体的屏幕截图](./media/luis-how-to-model-intent-pattern/patterns-3.png)
 
-    如果实体包含一个[角色](luis-concept-roles.md)，请在实体名称后面用一个冒号（ `:`）指示角色，如`{Location:Origin}`。 实体的角色列表将以列表形式显示。 选择该角色，然后按 Enter。
+    如果实体包含一个[角色](luis-concept-roles.md)，请在实体名称后面用一个冒号（）指示角色， `:` 如 `{Location:Origin}` 。 实体的角色列表将以列表形式显示。 选择该角色，然后按 Enter。
 
     > [!div class="mx-imgBorder"]
     > ![包含角色的实体的屏幕截图](./media/luis-how-to-model-intent-pattern/patterns-4.png)
