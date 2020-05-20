@@ -4,17 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: e47c8bc4dc814f1d4c5cb115a2da911544dd55f8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a93c478f0621bf62b710f58f3e6f06298bad9954
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399942"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673044"
 ---
 :::row:::
     :::column span="3":::
-        语音 SDK 仅支持以下目标体系结构上的**Ubuntu 16.04/18.04**、 **Debian 9**、 **Red Hat Enterprise Linux （RHEL） 7/8**和**CentOS 7/8** ：
-        - X64
+        语音 SDK 在 Linux 上使用时，仅支持以下目标体系结构上的 Ubuntu 16.04/18.04  、Debian 9  、Red Hat Enterprise Linux (RHEL) 7/8  和 CentOS 7/8  ：
     :::column-end:::
     :::column:::
         <br>
@@ -24,15 +23,17 @@ ms.locfileid: "81399942"
     :::column-end:::
 :::row-end:::
 
-> [!IMPORTANT]
-> 面向 Linux ARM64 并使用 c # 时，需要 .NET Core 2.x （dotnet package）。 如果面向的是 ARM32 或 ARM64，则不支持 Python。
+- x86 （Debian/Ubuntu）、x64、ARM32 （Debian/Ubuntu）以及用于 c + + 开发的 ARM64 （Debian/Ubuntu）
+- x64、ARM32 （Debian/Ubuntu）和适用于 Java 的 ARM64 （Debian/Ubuntu）
+- x64、ARM32 （Debian/Ubuntu）以及适用于 .NET Core 的 ARM64 （Debian/Ubuntu）
+- 适用于 Python 的 x64
 
-> [!NOTE]
-> Ubuntu 16.04、Ubuntu 18.04 和 Debian 9 的 x86 体系结构仅支持通过语音 SDK 进行 c + + 开发。
+> [!IMPORTANT]
+> 对于 Linux 上的 c # ARM64，需要 .NET Core 2.x （dotnet package）。
 
 ### <a name="system-requirements"></a>系统要求
 
-对于本机应用程序，语音 SDK 依赖于`libMicrosoft.CognitiveServices.Speech.core.so`。 请确保目标体系结构（x86、x64）与应用程序匹配。 可能需要其他依赖项，具体取决于 Linux 版本。
+对于本机应用程序，语音 SDK 依赖于 `libMicrosoft.CognitiveServices.Speech.core.so`。 请确保目标体系结构（x86、x64）与应用程序匹配。 可能需要其他依赖项，具体取决于 Linux 版本。
 
 - GNU C 库的共享库（包括 POSIX 线程编程库 `libpthreads`）
 - OpenSSL 库（`libssl.so.1.0.0` 或 `libssl.so.1.0.2`）
@@ -60,10 +61,8 @@ sudo yum install alsa-lib openssl
 ```
 
 > [!IMPORTANT]
-> 按照[如何配置 RHEL/CentOS 7 For SPEECH SDK](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md)中的说明进行操作。
-
-> [!TIP]
-> 在 RHEL/CentOS 8 上，按照[如何配置 OpenSSL for Linux](../how-to-configure-openssl-linux.md) 上的说明进行操作。
+> - 在 RHEL/CentOS 7 上，按照[如何配置 RHEL/CentOS 7 For SPEECH SDK](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md)中的说明进行操作。
+> - 在 RHEL/CentOS 8 上，按照[如何配置 OpenSSL for Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的说明进行操作。
 
 ---
 

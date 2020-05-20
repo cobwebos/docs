@@ -9,12 +9,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/16/2020
 ms.author: diberry
-ms.openlocfilehash: 02610e647e2138cbf52f86c22107feec2d61273b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1c3631b4a2964c5e3a8d8267d1934a5822966342
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81604970"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673435"
 ---
 认知服务提供两种自然语言处理服务，[语言理解](../luis/what-is-luis.md)和[QnA Maker](../qnamaker/overview/overview.md)，每个服务都有不同的用途。 本文介绍每个服务的使用时机，以及两者如何相辅相成。
 
@@ -37,6 +37,9 @@ ms.locfileid: "81604970"
 |LUIS|**确定文本中的用户意图** - 服务不会返回问题的答案。 例如，此文本分类为与 `FindLocation` 意向匹配。<br>|
 |QnA Maker|从自定义知识库**返回问题的答案**。 例如，此文本已确定为一个问题，其答案是静态文本 `Get on the #9 bus and get off at Franklin street`。|
 |||
+
+> [!div class="mx-imgBorder"]
+> ![信息图确定何时使用 LUIS 以及何时使用 QnA Maker](./luis-qna-maker-together-decision.png)
 
 ## <a name="when-do-you-use-luis"></a>何时使用 LUIS？
 
@@ -70,18 +73,18 @@ ms.locfileid: "81604970"
 
 如果聊天机器人所需的信息超过了服务能够提供的信息，请在客户端应用程序中使用这两个服务并处理两者的响应，这样才能在决策树中递进。
 
-借助 Bot Framework **[Dispatch CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** 工具生成一个流程来处理这两个服务。 此工具将为意向生成一个顶层 LUIS 应用，用于调度充当子应用的 LUIS 和 QnA Maker。
+借助 Bot Framework **[Dispatch CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** 工具生成一个流程来处理这两个服务。 此工具将为意向生成一个顶层 LUIS 应用，用于调度充当子应用的 LUIS 和 QnA Maker。 [详细了解](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=cs)如何与 LUIS、QnA Maker 和机器人框架集成。
 
 使用以 [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) 或 [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch) 编写的机器人生成器示例**具有调度功能的 NLP** 可以实现此类聊天机器人。
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
 实施适用于每个服务的最佳做法：
 
 * [LUIS](../luis/luis-concept-best-practices.md) 最佳做法
 * [QnA Maker](../qnamaker/concepts/best-practices.md)最佳实践
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [语言理解 (LUIS)](../luis/what-is-luis.md)
 * [QnA Maker](../qnamaker/overview/overview.md)
