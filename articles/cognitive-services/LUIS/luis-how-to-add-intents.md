@@ -8,23 +8,23 @@ manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/17/2020
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: b2cb7494ae3d26fa14bef906b8f5222b9dbc70e1
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f282bb0a80226afeb314aac4e8669634327f81d2
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584956"
+ms.locfileid: "83654048"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>添加意向以确定用户的话语意向
 
 向 LUIS 应用添加[意向](luis-concept-intent.md)，识别具有相同意向的问题或命令组。
 
-可以依次转到顶部导航栏的“生成”部分和左侧面板的“意向”来管理意向。********
+在 LUIS 门户中，从顶部导航**栏的 "****生成**" 部分管理意向，然后从左侧面板的 "管理"。
 
-## <a name="add-intent"></a>添加意向
+## <a name="add-an-intent-to-your-app"></a>向应用程序添加意向
 
 1. 登录到[LUIS 门户](https://www.luis.ai)，选择**订阅**和**创作资源**，查看分配给该创作资源的应用。
 1. 通过在 **"我的应用**" 页上选择应用程序的名称来打开应用。
@@ -34,7 +34,7 @@ ms.locfileid: "83584956"
     > [!div class="mx-imgBorder"]
     > ![添加意向](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
 
-    意向需要示例最谈话。
+    目的需要[最谈话示例](luis-concept-utterance.md)，以便在已发布的预测终结点预测最谈话。
 
 ## <a name="add-an-example-utterance"></a>添加示例话语
 
@@ -51,16 +51,16 @@ ms.locfileid: "83584956"
 
 ## <a name="intent-prediction-errors"></a>意向预测错误
 
-例如，查询文本中的示例可能在示例查询文本目前所在的意图与定型期间确定的意图之间出现意向预测错误。
+如果未使用训练的应用进行预测，则会确定意向预测错误查询文本。
 
-若要查找并修复查询文本预测错误，请使用与 "**详细信息视图**" 的 "**视图**" 选项相结合的**筛选器**选项。
+1. 若要查找并修复查询文本预测错误，请使用不正确和不明确的**筛选器**选项。
 
-![若要找出并修复话语预测错误，请使用“筛选器”选项。](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
+    > [!div class="mx-imgBorder"]
+    > ![若要找出并修复话语预测错误，请使用“筛选器”选项。](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
 
-应用筛选器和视图以后，如果示例话语出现错误，则示例话语列表会显示话语和问题。
+1. 若要在 "目的详细信息" 页上显示分数值，请从 "**查看**选项" 菜单中选择 "**显示详细信息意向评分**"。
 
-> [!div class="mx-imgBorder"]
-> ![![应用筛选器和视图以后，如果示例话语出现错误，则示例话语列表会显示话语和问题。](./media/luis-how-to-add-intents/find-errors-in-utterances.png)](./media/luis-how-to-add-intents/find-errors-in-utterances.png#lightbox)
+    应用筛选器和视图以后，如果示例话语出现错误，则示例话语列表会显示话语和问题。
 
 每一行会显示当前训练的示例话语预测分数、最接近的对手的分数，以及这两个分数之间的差异。
 

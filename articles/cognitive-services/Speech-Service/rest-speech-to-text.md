@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 05/13/2020
 ms.author: yinhew
-ms.openlocfilehash: 2f102199c14ba9611a83e3ed3b31ebcd189624d6
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 555ae9e48f538c1100bab8b35ce61742baa88451
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82978614"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659837"
 ---
 # <a name="speech-to-text-rest-api"></a>语音转文本 REST API
 
@@ -54,7 +54,6 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 | `language` | 标识所要识别的口语。 请参阅[支持的语言](language-support.md#speech-to-text)。 | 必需 |
 | `format` | 指定结果格式。 接受的值为 `simple` 和 `detailed`。 简单结果包括 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 详细的响应包括四种不同的显示文本表示形式。 默认设置为 `simple`。 | 可选 |
 | `profanity` | 指定如何处理识别结果中的不雅内容。 接受的值为 `masked`（将亵渎内容替换为星号）、`removed`（删除结果中的所有亵渎内容）或 `raw`（包含结果中的亵渎内容）。 默认设置为 `masked`。 | 可选 |
-| `pronunciationScoreParams` | 指定用于在识别结果中显示发音评分的参数，这些参数可评估语音输入的发音质量，并显示准确性、熟练、完整性等。此参数是 base64 编码的 json，其中包含多个详细参数。 有关如何生成此参数的详细说明，请参阅[发音评估参数](#pronunciation-assessment-parameters)。 | 可选 |
 | `cid` | 使用[自定义语音门户](how-to-custom-speech.md)创建自定义模型时，可以通过在“部署”  页上找到的其终结点 ID  使用自定义模型。 使用终结点 ID  作为 `cid` 查询字符串形式参数的实际参数。 | 可选 |
 
 ## <a name="request-headers"></a>请求标头
@@ -65,6 +64,7 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | 语音服务订阅密钥。 | 此标头或 `Authorization` 是必需的。 |
 | `Authorization` | 前面带有单词 `Bearer` 的授权令牌。 有关详细信息，请参阅[身份验证](#authentication)。 | 此标头或 `Ocp-Apim-Subscription-Key` 是必需的。 |
+| `Pronunciation-Assessment` | 指定用于在识别结果中显示发音评分的参数，这些参数可评估语音输入的发音质量，并显示准确性、熟练、完整性等。此参数是 base64 编码的 json，其中包含多个详细参数。 有关如何生成此标头，请参阅[发音评估参数](#pronunciation-assessment-parameters)。 | 可选 |
 | `Content-type` | 描述所提供音频数据的格式和编解码器。 接受的值为 `audio/wav; codecs=audio/pcm; samplerate=16000` 和 `audio/ogg; codecs=opus`。 | 必需 |
 | `Transfer-Encoding` | 指定要发送分块的音频数据，而不是单个文件。 仅当要对音频数据进行分块时才使用此标头。 | 可选 |
 | `Expect` | 如果使用分块传输，则发送 `Expect: 100-continue`。 语音服务将确认初始请求并等待附加的数据。| 如果发送分块的音频数据，则是必需的。 |
@@ -90,8 +90,8 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 |-----------|-------------|---------------------|
 | ReferenceText | 将对发音进行计算的文本。 | 必需 |
 | GradingSystem | 用于分数校准的点系统。 接受的值为 `FivePoint` 和 `HundredMark`。 默认设置为 `FivePoint`。 | 可选 |
-| 粒度 | 计算粒度。 接受的值`Phoneme`为，其中显示了全文本、单词和音素级别`Word`上的分数，其中显示了整个文本和 word 级别`FullText`的分数，只显示了完整文本级别的分数。 默认设置为 `Phoneme`。 | 可选 |
-| 维度 | 定义输出条件。 接受的值`Basic`为，只显示精确度评分， `Comprehensive`显示更多维度上的分数（例如，熟练分数和完整文本级别的完整性分数，word 级别上的错误类型）。 检查[响应参数](#response-parameters)以查看不同分数维度和 word 错误类型的定义。 默认设置为 `Basic`。 | 可选 |
+| 粒度 | 计算粒度。 接受的值为 `Phoneme` ，其中显示了全文本、单词和音素级别上的分数， `Word` 其中显示了整个文本和 word 级别的分数， `FullText` 只显示了完整文本级别的分数。 默认设置为 `Phoneme`。 | 可选 |
+| 维度 | 定义输出条件。 接受的值为 `Basic` ，只显示精确度评分， `Comprehensive` 显示更多维度上的分数（例如，熟练分数和完整文本级别的完整性分数，word 级别上的错误类型）。 检查[响应参数](#response-parameters)以查看不同分数维度和 word 错误类型的定义。 默认设置为 `Basic`。 | 可选 |
 | EnableMiscue | 启用 miscue 计算。 启用此功能后，会将发音为的单词与引用文本进行比较，并根据比较结果标记为省略/插入。 接受的值为 `False` 和 `True`。 默认设置为 `False`。 | 可选 |
 | ScenarioId | 指示自定义点系统的 GUID。 | 可选 |
 
@@ -106,13 +106,16 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 }
 ```
 
-下面的示例代码演示如何将发音评估参数生成到 URL 查询参数中：
+下面的示例代码演示如何将发音评估参数生成到 `Pronunciation-Assessment` 标头中：
 
 ```csharp
-var pronunciationScoreParamsJson = $"{{\"ReferenceText\":\"Good morning.\",\"GradingSystem\":\"HundredMark\",\"Granularity\":\"FullText\",\"Dimension\":\"Comprehensive\"}}";
-var pronunciationScoreParamsBytes = Encoding.UTF8.GetBytes(pronunciationScoreParamsJson);
-var pronunciationScoreParams = Convert.ToBase64String(pronunciationScoreParamsBytes);
+var pronAssessmentParamsJson = $"{{\"ReferenceText\":\"Good morning.\",\"GradingSystem\":\"HundredMark\",\"Granularity\":\"FullText\",\"Dimension\":\"Comprehensive\"}}";
+var pronAssessmentParamsBytes = Encoding.UTF8.GetBytes(pronAssessmentParamsJson);
+var pronAssessmentHeader = Convert.ToBase64String(pronAssessmentParamsBytes);
 ```
+
+>[!NOTE]
+>发音评估功能当前仅适用于 `westus` 和 `eastasia` 区域。 此功能目前仅适用于 `en-US` 语言。
 
 ## <a name="sample-request"></a>示例请求
 
@@ -126,6 +129,12 @@ Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 Host: westus.stt.speech.microsoft.com
 Transfer-Encoding: chunked
 Expect: 100-continue
+```
+
+若要启用发音评估，可以添加以下标头。 有关如何生成此标头，请参阅[发音评估参数](#pronunciation-assessment-parameters)。
+
+```HTTP
+Pronunciation-Assessment: eyJSZWZlcm...
 ```
 
 ## <a name="http-status-codes"></a>HTTP 状态代码
@@ -203,7 +212,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 `detailed`格式包括更多形式的可识别结果。
 使用 `detailed` 格式时，将以 `Display` 形式为 `NBest` 列表中的每条结果提供 `DisplayText`。
 
-`NBest`列表中的对象可以包括：
+列表中的对象 `NBest` 可以包括：
 
 | 参数 | 说明 |
 |-----------|-------------|
@@ -215,8 +224,8 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 | `AccuracyScore` | 指示给定语音的读音准确性的分数。 |
 | `FluencyScore` | 指示给定语音的熟练的分数。 |
 | `CompletenessScore` | 该分数指示给定语音的完整性，方法是计算要向整个输入的单词的比率。 |
-| `PronScore` | 指示给定语音的发音质量的总体分数。 这是通过`AccuracyScore` `FluencyScore`和`CompletenessScore`权重计算得出的。 |
-| `ErrorType` | 此值指示与相对应的字是省略、插入还是不正确`ReferenceText`。 可能的值`None`为（表示此词上无错误） `Omission`、 `Insertion`和`Mispronunciation`。 |
+| `PronScore` | 指示给定语音的发音质量的总体分数。 这是通过和权重计算得出的 `AccuracyScore` `FluencyScore` `CompletenessScore` 。 |
+| `ErrorType` | 此值指示与相对应的字是省略、插入还是不正确 `ReferenceText` 。 可能的值为 `None` （表示此词上无错误） `Omission` 、 `Insertion` 和 `Mispronunciation` 。 |
 
 ## <a name="sample-responses"></a>示例响应
 

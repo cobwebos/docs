@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: b342c4319064bd00681c914585e541ab0bc3e17e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 954562f3f88276b5aef7dbd4e2237d180a4c2e40
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585651"
+ms.locfileid: "83653952"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>将活动的已训练应用发布到过渡或生产终结点
 
@@ -57,7 +57,7 @@ ms.locfileid: "83585651"
 在选择槽后，为以下项配置发布设置：
 
 * 情绪分析
-* 拼写更正-仅限 v2 预测终结点
+* [拼写更正](luis-tutorial-bing-spellcheck.md)-仅限 v2 预测终结点
 * 语音启动
 
 发布以后，即可在“发布设置”页的“管理”部分查看这些设置。******** 可以在每次发布时更改设置。 如果取消发布，则在发布过程中所做的任何更改也会被取消。
@@ -78,7 +78,7 @@ ms.locfileid: "83585651"
 
 情绪数据是一个介于 0 到 1 之间的分数，指示数据的正面情绪（分数接近 1）或负面情绪（分数接近 0）。 `positive`、`neutral` 和 `negative` 的情绪标签针对每个支持的区域性。 目前，仅英语支持情绪标签。
 
-若要详细了解使用情绪分析时的 JSON 终结点响应，请参阅[情绪分析](luis-concept-data-extraction.md#sentiment-analysis)
+若要详细了解使用情绪分析时的 JSON 终结点响应，请参阅[情绪分析](luis-reference-prebuilt-sentiment.md)
 
 ## <a name="spelling-correction"></a>拼写更正
 

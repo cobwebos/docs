@@ -2,13 +2,13 @@
 title: 在 LUIS 门户中测试应用
 description: 使用语言理解 (LUIS) 持续优化应用程序并改进其语言理解能力。
 ms.topic: conceptual
-ms.date: 05/07/2020
-ms.openlocfilehash: cb4559e6d3582a337cbc32ef986bec5db5940ef9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/17/2020
+ms.openlocfilehash: 3608bb17b6d1ea8c9095fa54324993a9e40355b6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591856"
+ms.locfileid: "83653877"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>在 LUIS 门户中测试 LUIS 应用
 
@@ -44,7 +44,7 @@ ms.locfileid: "83591856"
 
     ![交互式测试识别错误意向](./media/luis-how-to-interactive-test/test-weather-1.png)
 
-## <a name="inspect-score"></a>检查分数
+## <a name="inspect-the-prediction"></a>检查预测
 
 在 "**检查**" 面板中检查测试结果的详细信息。
 
@@ -52,23 +52,21 @@ ms.locfileid: "83591856"
 
     ![选择“检查”按钮可查看有关测试结果的更多详细信息](./media/luis-how-to-interactive-test/inspect.png)
 
-1. 此时将显示 "**检查**" 面板。 此面板包括评分最高的意向以及任何已识别的实体。 此面板显示所选陈述的结果。
+1. 此时将显示 "**检查**" 面板。 此面板包括评分最高的意向以及任何已识别的实体。 该面板显示所选查询文本的预测。
 
-    ![此面板包括评分最高的意向以及任何已识别的实体。 此面板显示所选陈述的结果。](./media/luis-how-to-interactive-test/inspect-panel.png)
+## <a name="add-to-example-utterances"></a>添加到示例最谈话
 
-## <a name="correct-top-scoring-intent"></a>更正评分最高的意向
+从检查面板中，可以通过选择 "**添加到示例最谈话**" 将测试查询文本添加到目的。
 
-1. 如果评分最高的意向不正确，请选择“编辑”按钮****。
+## <a name="disable-required-features"></a>禁用所需的功能
 
-1.  在下拉列表中选择该陈述的正确意向。
+如果实体的功能不是必需的，则选择此开关可以查看预测的含义。
 
-    ![选择正确的意向](./media/luis-how-to-interactive-test/intent-select.png)
+此切换可帮助你确定经过训练的应用是否根据所需功能正确预测你的实体。 经过训练的应用可能会根据示例最谈话的错误标签或所需功能与文本不匹配，误预测机器学习的实体。
 
 ## <a name="view-sentiment-results"></a>查看情绪结果
 
 如果在[发布](luis-how-to-publish-app.md#enable-sentiment-analysis)页面上配置了“情绪分析”，则测试结果会包括在该陈述中发现的情绪********。
-
-![包含情绪分析的“测试”窗格的图像](./media/luis-how-to-interactive-test/sentiment.png)
 
 ## <a name="correct-matched-patterns-intent"></a>更正匹配的模式的意向
 

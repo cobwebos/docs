@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: diberry
-ms.openlocfilehash: 9beb6dbbba1c5855b8bfa97fc02f50aa59225d78
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8785484efec119f15ef53feefbd6e94181cd159a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80474854"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659560"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>使用 GenerateAnswer API 和元数据获取答案
 
@@ -64,7 +64,7 @@ QnA Maker 使你能够以键和值对的形式向问题和答案集添加元数�
 POST 请求使用：
 
 * 必需的[URI 参数](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
-* 必需的标头`Authorization`属性，用于安全性
+* 必需的标头属性， `Authorization` 用于安全性
 * 必需的[正文属性](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto)。
 
 GenerateAnswer URL 具有以下格式：
@@ -73,7 +73,7 @@ GenerateAnswer URL 具有以下格式：
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
-请记住， `Authorization`使用带有尾随空格的字符串`EndpointKey`的值设置的 HTTP 标头属性，然后在 "**设置**" 页上找到终结点键。
+请记住，使用带有尾随空格的字符串的值设置的 HTTP 标头属性， `Authorization` `EndpointKey` 然后在 "**设置**" 页上找到终结点键。
 
 示例 JSON 正文如下所示：
 
@@ -168,7 +168,7 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 
 ## <a name="use-metadata-to-filter-answers-by-custom-metadata-tags"></a>使用元数据筛选自定义元数据标记的答案
 
-通过添加元数据，可以按这些元数据标记筛选答案。 从 "**视图选项**" 菜单添加 "元数据" 列。 通过选择元**+** 数据图标来添加元数据对，将元数据添加到知识库中。 此对包含一个键和一个值。
+通过添加元数据，可以按这些元数据标记筛选答案。 从 "**视图选项**" 菜单添加 "元数据" 列。 通过选择元数据图标来添加元数据对，将元数据添加到知识库中 **+** 。 此对包含一个键和一个值。
 
 ![添加元数据的屏幕截图](../media/qnamaker-how-to-metadata-usage/add-metadata.png)
 
@@ -226,9 +226,9 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 
 ## <a name="match-questions-only-by-text"></a>仅匹配问题，按文本
 
-默认情况下，QnA Maker 搜索问题和答案。 如果只想要搜索问题，若要生成答案，请`RankerType=QuestionOnly`在 GenerateAnswer 请求的 POST 正文中使用。
+默认情况下，QnA Maker 搜索问题和答案。 如果只想要搜索问题，若要生成答案，请 `RankerType=QuestionOnly` 在 GenerateAnswer 请求的 POST 正文中使用。
 
-可以使用`isTest=true`在测试 kb 中搜索已发布`isTest=false`的 kb、使用或。
+可以 `isTest=false` 使用在测试 kb 中搜索已发布的 kb、使用或 `isTest=true` 。
 
 ```json
 {
@@ -243,7 +243,7 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 
 |代码|说明|
 |:--|--|
-|2xx|成功|
+|2xx|Success|
 |400|请求的参数不正确，这意味着所需的参数缺失、格式错误或太大|
 |400|请求的正文不正确，这意味着 JSON 缺失、格式错误或太大|
 |401|密钥无效|
@@ -256,4 +256,4 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 "**发布**" 页还提供了使用 Postman 或卷曲[生成答案](../Quickstarts/get-answer-from-knowledge-base-using-url-tool.md)的信息。
 
 > [!div class="nextstepaction"]
-> [创建知识库机器人](../tutorials/integrate-qnamaker-luis.md)
+> [获取有关知识库的分析](../how-to/get-analytics-knowledge-base.md)

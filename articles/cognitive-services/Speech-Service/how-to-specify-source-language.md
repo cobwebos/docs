@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/07/2020
+ms.date: 05/19/2020
 ms.author: qiohu
-zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: 07ca4c519a04910e7e126d3481afb17d2b5dc350
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+zone_pivot_groups: programming-languages-set-two
+ms.openlocfilehash: 32c08af129172fb1dbebf1679ea01694e8bd3d1a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82977679"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653280"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>指定语音转文本的源语言
 
@@ -142,9 +142,9 @@ speech_recognizer = speechsdk.SpeechRecognizer(
 
 ::: zone-end
 
-::: zone pivot="programming-language-javascript"
+::: zone pivot="programming-language-more"
 
-## <a name="how-to-specify-source-language-in-javascript"></a>如何在 JavaScript 中指定源语言
+## <a name="how-to-specify-source-language-in-javascript"></a>如何在 Javascript 中指定源语言
 
 第一步是创建 `SpeechConfig`：
 
@@ -163,29 +163,38 @@ speechConfig.speechRecognitionLanguage = "de-DE";
 ```Javascript
 speechConfig.endpointId = "The Endpoint ID for your custom model.";
 ```
-::: zone-end
-
-::: zone pivot="programming-language-objectivec"
 
 ## <a name="how-to-specify-source-language-in-objective-c"></a>如何在 Objective-C 中指定源语言
 
-第一步是创建 `speechConfig`：
+在此示例中，使用 `SPXSpeechRecognizer` 构造将源语言显式作为参数提供。
 
 ```Objective-C
-SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithSubscription:@"YourSubscriptionkey" region:@"YourRegion"];
+SPXSpeechRecognizer* speechRecognizer = \
+    [[SPXSpeechRecognizer alloc] initWithSpeechConfiguration:speechConfig language:@"de-DE" audioConfiguration:audioConfig];
 ```
 
-接下来，使用 `speechRecognitionLanguage` 指定音频的源语言：
+在此示例中，源语言是使用 `SPXSourceLanguageConfiguration` 提供的。 然后，将 `SPXSourceLanguageConfiguration` 作为参数传递给 `SPXSpeechRecognizer` 构造。
 
 ```Objective-C
-speechConfig.speechRecognitionLanguage = @"de-DE";
+SPXSourceLanguageConfiguration* sourceLanguageConfig = [[SPXSourceLanguageConfiguration alloc]init:@"de-DE"];
+SPXSpeechRecognizer* speechRecognizer = [[SPXSpeechRecognizer alloc] initWithSpeechConfiguration:speechConfig
+                                                                     sourceLanguageConfiguration:sourceLanguageConfig
+                                                                              audioConfiguration:audioConfig];
 ```
 
-如果使用自定义模型进行识别，则可使用 `endpointId` 指定终结点：
+在此示例中，源语言和自定义终结点是使用 `SPXSourceLanguageConfiguration` 提供的。 然后，将 `SPXSourceLanguageConfiguration` 作为参数传递给 `SPXSpeechRecognizer` 构造。
 
 ```Objective-C
-speechConfig.endpointId = @"The Endpoint ID for your custom model.";
+SPXSourceLanguageConfiguration* sourceLanguageConfig = \
+        [[SPXSourceLanguageConfiguration alloc]initWithLanguage:@"de-DE"
+                                                     endpointId:@"The Endpoint ID for your custom model."];
+SPXSpeechRecognizer* speechRecognizer = [[SPXSpeechRecognizer alloc] initWithSpeechConfiguration:speechConfig
+                                                                     sourceLanguageConfiguration:sourceLanguageConfig
+                                                                              audioConfiguration:audioConfig];
 ```
+
+>[!Note]
+> `speechRecognitionLanguage`和 `endpointId` 属性已从 `SPXSpeechConfiguration` 目标为 C 的类中弃用。 建议不要使用这些属性，在构造 `SPXSpeechRecognizer` 时不应使用它们。
 
 ::: zone-end
 

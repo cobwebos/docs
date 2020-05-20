@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: e50dd636c1bd9403d5eca2157e4e46772418f92c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 2f4751440d719a542d39f8d8e83260c8cb628de0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592893"
+ms.locfileid: "83659290"
 ---
 # <a name="language-understanding-luis-container-limitations"></a>语言理解（LUIS）容器限制
 
@@ -35,7 +35,7 @@ LUIS 容器有几个值得注意的限制。 从支持的依赖项到支持的�
 
 不受支持的应用配置|详细信息|
 |--|--|
-|不受支持的容器区域性| 荷兰语（ `nl-NL` ）<br>日语（ `ja-JP` ）<br>仅 [1.0.2 tokenizer](luis-language-support.md#custom-tokenizer-versions) 支持德语。|
+|不受支持的容器区域性| 荷兰语（ `nl-NL` ）、日语（ `ja-JP` ）和德语（ `de-DE` ）语言仅支持[1.0.2 标记器](luis-language-support.md#custom-tokenizer-versions)。|
 |所有区域性不支持的实体|所有区域性的 [KeyPhrase](luis-reference-prebuilt-keyphrase.md) 预生成实体|
 |不受支持的英语（ `en-US` ）区域性实体|[GeographyV2](luis-reference-prebuilt-geographyV2.md) 预生成实体|
 |语音启动|容器中不支持外部依赖项。|

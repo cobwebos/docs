@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/06/2019
 ms.author: trbye
-ms.openlocfilehash: 50dd7ddb636658ec6d29c2669d02320c73167fde
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1b837797bf0baf025d350cec1918cf4a5b639416
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399692"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650616"
 ---
 ## <a name="reference-docs"></a>参考文档
 
@@ -43,5 +43,6 @@ ms.locfileid: "81399692"
 有关各种语音服务 REST API 的参考，请参阅下面的列表：
 
 - [REST API：语音转文本](../rest-speech-to-text.md)
+- [REST API：发音评估](../rest-speech-to-text.md#pronunciation-assessment-parameters)
 - [REST API：文本转语音](../rest-text-to-speech.md)
-- <a href="https://cris.ai/swagger/ui/index" target="_blank" rel="noopener">REST API：批量听录和自定义 <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://cris.ai/swagger/ui/index" target="_blank" rel="noopener">REST API：批处理脚本和自定义<span class="docon docon-navigate-external x-hidden-focus"></span></a>

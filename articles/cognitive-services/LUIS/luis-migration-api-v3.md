@@ -2,14 +2,14 @@
 title: V3 API 中的预测终结点更改
 description: 查询预测终结点 V3 API 已更改。 请使用本指南了解如何迁移到终结点 API 版本 3。
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/15/2020
 ms.author: diberry
-ms.openlocfilehash: 4b6d28b24ffc6c0a848d1c7a34e863da0606d936
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d6e5981bcdc81383454c65d3cf7b6c1195b70a4a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81530379"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653863"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 的预测终结点更改
 
@@ -73,16 +73,9 @@ V3 预测终结点不支持此 API-继续使用 V2 API 预测终结点进行拼�
 
 ### <a name="changes-by-slot-name-and-version-name"></a>按槽名称和版本名称进行的更改
 
-V3 终结点 HTTP 调用的格式已更改。
+[V3 终结点 HTTP](developer-reference-resource.md#rest-endpoints)调用的格式已更改。
 
 如果希望按版本查询，首先需要使用 `"directVersionPublish":true`[通过 API 进行发布](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b)。 查询引用版本 ID 而不是槽名称的终结点。
-
-|预测 API 版本|METHOD|代码|
-|--|--|--|
-|V3|GET|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>prediction</b>/<b>v3.0</b>/apps/<b>{APP-ID}</b>/slots/<b>{SLOT-NAME}</b>/predict?query=<b>{QUERY}</b>|
-|V3|POST|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>prediction</b>/<b>v3.0</b>/apps/<b>{APP-ID}</b>/slots/<b>{SLOT-NAME}</b>/predict|
-|V2|GET|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>prediction</b>/<b>v3.0</b>/apps/<b>{APP-ID}</b>/versions/<b>{VERSION-ID}</b>/predict?query=<b>{QUERY}</b>|
-|V2|POST|https://<b>{REGION}</b>. api.cognitive.microsoft.com/luis/<b>预测</b>/<b>v2.0/apps/</b><b>{应用 ID}</b>/versions/<b>{版本 ID}</b>/predict|
 
 |`SLOT-NAME` 的有效值|
 |--|
@@ -95,7 +88,7 @@ V3 终结点 HTTP 调用的格式已更改。
 
 V3 API 包含不同的查询字符串参数。
 
-|参数名称|类型|版本|默认|目的|
+|参数名称|类型|版本|默认|目标|
 |--|--|--|--|--|
 |`log`|boolean|V2 和 V3|false|将查询存储在日志文件中。 默认值为 false。|
 |`query`|字符串|仅 V3|无默认值 - 在 GET 请求中是必需的|**在 V2 中**，要预测的言语位于 `q` 参数中。 <br><br>**在 V3 中**，该功能在 `query` 参数中传递。|
@@ -119,10 +112,10 @@ V3 API 包含不同的查询字符串参数。
 }
 ```
 
-|properties|类型|版本|默认|目的|
+|properties|类型|版本|默认|目标|
 |--|--|--|--|--|
-|`dynamicLists`|数组|仅 V3|不要求。|使用[动态列表](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time)可以扩展已在 LUIS 应用中的已训练且已发布的现有列表实体。|
-|`externalEntities`|数组|仅 V3|不要求。|[外部实体](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time)可让 LUIS 应用在运行时识别和标记实体，这些实体可用作现有实体的特征。 |
+|`dynamicLists`|array|仅 V3|不要求。|使用[动态列表](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time)可以扩展已在 LUIS 应用中的已训练且已发布的现有列表实体。|
+|`externalEntities`|array|仅 V3|不要求。|[外部实体](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time)可让 LUIS 应用在运行时识别和标记实体，这些实体可用作现有实体的特征。 |
 |`options.datetimeReference`|字符串|仅 V3|无默认值|用于确定 [datetimeV2 偏移量](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)。 datetimeReference 的格式是 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)。|
 |`options.preferExternalEntities`|boolean|仅 V3|false|指定是使用用户的[外部实体（与现有实体具有相同名称）](schema-change-prediction-runtime.md#override-existing-model-predictions)，还是使用模型中的现有实体进行预测。 |
 |`query`|字符串|仅 V3|必需。|**在 V2 中**，要预测的言语位于 `q` 参数中。 <br><br>**在 V3 中**，该功能在 `query` 参数中传递。|
