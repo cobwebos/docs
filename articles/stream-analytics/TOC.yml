@@ -58,6 +58,7 @@
       items:
         - name: 输出概述
           href: stream-analytics-define-outputs.md
+          displayName: 'adls, sql, blob, event hubs, power bi, table, service bus, cosmos, functions'
         - name: 输出到 Cosmos DB
           href: stream-analytics-documentdb-output.md
         - name: 输出到 Azure SQL DB
@@ -127,14 +128,22 @@
           href: copy-job.md
         - name: 进行作业配对以确保可靠性
           href: stream-analytics-job-reliability.md
-        - name: 使用托管标识进行身份验证 - ADLS Gen 1 输出
-          href: stream-analytics-managed-identities-adls.md
         - name: 使用 SQL 参考数据
           href: sql-reference-data.md
-        - name: 使用托管标识进行身份验证 - Blob 输出
-          href: blob-output-managed-identity.md
-        - name: 使用托管标识进行身份验证 - Power BI
-          href: powerbi-output-managed-identity.md
+        - name: 使用托管标识进行身份验证
+          items:
+            - name: ADLS Gen 1
+              href: stream-analytics-managed-identities-adls.md
+              displayName: 'managed identity, identities, authenticate'
+            - name: Blob 存储
+              href: blob-output-managed-identity.md
+              displayName: 'managed identity, identities, authenticate'
+            - name: Power BI
+              href: powerbi-output-managed-identity.md
+              displayName: 'managed identity, identities, authenticate'
+            - name: Azure SQL DB
+              href: sql-database-output-managed-identity.md
+              displayName: 'managed identity, identities, authenticate'
         - name: 加密数据
           href: data-protection.md
     - name: 构建解决方案
@@ -226,6 +235,18 @@
           href: stream-analytics-job-diagnostic-logs.md
         - name: 数据错误
           href: data-errors.md
+        - name: 错误代码
+          items:
+            - name: 配置错误
+              href: configuration-error-codes.md
+            - name: 数据错误
+              href: data-error-codes.md
+            - name: 外部可用性错误
+              href: external-availability-error-codes.md
+            - name: 外部错误
+              href: external-error-codes.md
+            - name: 内部错误
+              href: internal-error-codes.md
     - name: 与机器学习集成
       items:
         - name: 使用 ML 模型进行情绪分析

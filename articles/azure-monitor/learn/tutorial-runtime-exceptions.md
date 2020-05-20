@@ -47,7 +47,7 @@ Azure Application Insights 从应用程序收集遥测数据，帮助确定和�
 Application Insights 收集应用程序中出现的所有故障，让用户能够查看其在不同操作中出现的频率，帮助将精力集中在具有最大影响的故障上。  用户可随后深入探索这些故障的详细信息，从而确定根本原因。   
 
 1. 选择“Application Insights”，然后选择订阅  。  
-2. 若要打开“故障”  面板，请选择“调查”  菜单下的“故障”  ，或单击“失败的请求”  图表。
+2. 若要打开“故障”面板，请选择“调查”菜单下的“故障”，或单击“失败的请求”图表。
 
     ![失败的请求](media/tutorial-runtime-exceptions/failed-requests.png)
 

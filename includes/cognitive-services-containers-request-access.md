@@ -1,20 +1,20 @@
 ---
-author: IEvangelist
-ms.author: dapine
+author: aahill
+ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/04/2020
-ms.openlocfilehash: 88d83676de1e7fa18c4c1dcbf347da8d685ba2fa
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/18/2020
+ms.openlocfilehash: 66bd78c94e6c54d26959778cc059730c13d02629
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593319"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698564"
 ---
-填写并提交[认知服务容器请求窗体](https://aka.ms/cognitivegate)，请求对容器的访问权限。 通过该表单请求有关你、你的公司以及要使用该容器的用户方案的信息。 提交表单后，Azure 认知服务团队会对其进行检查，以确保满足访问专用容器注册表的条件。
+通过该表单请求有关你、你的公司以及要使用该容器的用户方案的信息。 提交表单后，Azure 认知服务团队会对其进行检查，以确保满足访问专用容器注册表的条件。
 
 > [!IMPORTANT]
-> 必须使用与 Microsoft 帐户（MSA）或 Azure Active Directory （Azure AD）帐户关联的电子邮件地址。 有关验收条件的详细信息，请参阅[认知服务-指导过程](../articles/cognitive-services/cognitive-services-gating-process.md)。
+> 必须使用与 Microsoft 帐户（MSA）或 Azure Active Directory （Azure AD）帐户关联的电子邮件地址。
 
 如果你的请求已获批准，则会收到一封电子邮件，其中包含描述如何获取凭据和访问专用容器注册表的说明。
 

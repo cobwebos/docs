@@ -57,7 +57,7 @@ ms.locfileid: "75974524"
 6. 单击“发送到 Log Analytics”以配置工作区。  也可使用事件中心和存储帐户保存诊断日志。
 7. 在“Log Analytics”下面  ，单击“配置”  。
 8. 在“Log Analytics 工作区”页中，单击“创建新工作区”。 
-9. 在“Log Analytics 工作区”页中，键入 **firewall-oms** 作为新 **Log Analytics 工作区**的名称。 
+9. 在“Log Analytics 工作区”页中，键入 **firewall-oms** 作为新 **Log Analytics 工作区**的名称。
 10. 选择订阅，使用现有的防火墙资源组 (**Test-FW-RG**)，选择“美国东部”作为位置，然后选择“免费”定价层。  
 11. 单击“确定”。 
    ![启动配置过程][1] OMS 工作区现在称为 Log Analytics 工作区。  

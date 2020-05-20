@@ -39,6 +39,8 @@
         - name: 学习策略
           href: concept-active-learning.md
           displayName: 'active, inactive'
+        - name: 学徒模式
+          href: concept-apprentice-mode.md
         - name: 活动和非活动事件
           href: concept-active-inactive-events.md
         - name: 奖励
@@ -58,13 +60,15 @@
           href: concept-feature-evaluation.md
     - name: 可伸缩性和性能
       href: concepts-scalability-performance.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 创建个性化体验创建服务资源
       href: how-to-create-resource.md
-    - name: 配置学习循环
+    - name: 配置个性化体验创建服务
       href: how-to-settings.md
       displayName: 'azure, portal, settings, evaluation, offline, policy, export, model, configure'
+    - name: 使用学徒模式
+      href: how-to-learning-behavior.md
     - name: 管理模型和学习设置
       href: how-to-manage-model.md
     - name: 使用脱机评估进行分析
@@ -101,7 +105,7 @@
               href: 'https://pypi.org/project/azure-cognitiveservices-personalizer/'
 - name: 资源
   items:
-    - name: 故障排除
+    - name: 疑难解答
       href: troubleshooting.md
     - name: 区域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
@@ -113,7 +117,7 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2092153'
     - name: 定价
       href: 'https://go.microsoft.com/fwlink/?linkid=2092154'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/personalizer'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/921562-personalizer'

@@ -57,13 +57,13 @@ ms.locfileid: "73176835"
 
 ![“添加版本”屏幕](media/api-management-getstarted-publish-versions/AddVersion.PNG)
 
-1. 保留选择“路径”作为**版本控制方案**。 
-2. 在“名称”  字段中键入 **demo-conference-api-v1**。
+1. 保留选择“路径”作为**版本控制方案**。
+2. 在“名称”字段中键入 **demo-conference-api-v1**。
 
     > [!NOTE]
     > 版本实际上是基于 API 修订版的新 API。 **名称**是新 API 的名称，必须在 API 管理实例中是唯一的。
 
-3. 在“版本标识符”  字段中键入 **v1**。
+3. 在“版本标识符”字段中键入 **v1**。
 
     > [!TIP]
     > 如果选择“标头”或“查询字符串”作为版本控制方案，需要提供附加的值 - 标头或查询字符串参数的名称。  

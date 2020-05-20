@@ -30,7 +30,7 @@ ms.locfileid: "76768575"
 
   # <a name="macos"></a>[macOS](#tab/macos)
 
-  若要安装 Homebrew 和 Python、ODBC 驱动程序和 SQLCMD 以及适用于 SQL Server 的 Python 驱动程序，请使用**在 macOS 上创建使用 SQL Server 的 Python 应用**中的步骤 **1.2**、**1.3** 和 [2.1](https://www.microsoft.com/sql-server/developer-get-started/python/mac/)。
+  若要安装 Homebrew 和 Python、ODBC 驱动程序和 SQLCMD 以及适用于 SQL Server 的 Python 驱动程序，请使用[在 macOS 上创建使用 SQL Server 的 Python 应用](https://www.microsoft.com/sql-server/developer-get-started/python/mac/)中的步骤 **1.2**、**1.3** 和 **2.1**。
 
   有关更多信息，请参阅 [macOS 上的 Microsoft ODBC 驱动程序](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)。
 

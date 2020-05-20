@@ -11,17 +11,17 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: d22dcf221bef40edb8bb2bd346dd5964000a4a68
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: efe76323b4159af01f1eaf470d9c1833edd0a186
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588362"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702130"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安装和运行文本分析容器
 
 > [!NOTE]
-> * 情绪分析 v3 的容器现已正式发布。 关键短语提取和语言检测容器作为[无选通公共预览版](../../cognitive-services-gating-process.md)提供。
+> * 情绪分析 v3 的容器现已正式发布。 关键短语提取和语言检测容器作为无选通公共预览版提供。
 > * 实体链接和 NER 当前不可用作容器。
 
 容器使你能够在自己的环境中运行文本分析 Api，这非常适合你的特定安全和数据管理要求。 文本分析容器提供对原始文本的高级自然语言处理，并包括三个主要功能：情绪分析、关键短语提取和语言检测。 
@@ -95,7 +95,7 @@ Microsoft 容器注册表中提供了文本分析的容器映像。
 
 将下面的占位符替换为你自己的值：
 
-| 占位符 | 值 | 格式或示例 |
+| 占位符 | Value | 格式或示例 |
 |-------------|-------|---|
 | **{API_KEY}** | 文本分析资源的键。 可以在资源的 "**密钥和终结点**" 页上的 "Azure 门户中找到它。 |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
 | **{ENDPOINT_URI}** | 用于访问文本分析 API 的终结点。 可以在资源的 "**密钥和终结点**" 页上的 "Azure 门户中找到它。 | `https://<your-custom-subdomain>.cognitiveservices.azure.com` |
@@ -135,7 +135,7 @@ Microsoft 容器注册表中提供了文本分析的容器映像。
 
 [!INCLUDE [How to stop the container](../../../../includes/cognitive-services-containers-stop.md)]
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 如果运行启用了输出[装入点](../text-analytics-resource-container-config.md#mount-settings)和日志记录的容器，该容器会生成有助于排查启动或运行容器时发生的问题的日志文件。
 
@@ -153,7 +153,7 @@ Microsoft 容器注册表中提供了文本分析的容器映像。
 
 [!INCLUDE [Discoverability of more container information](../../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 在本文中，我们已学习相关的概念，以及文本分析容器的下载、安装和运行工作流。 综上所述：
 

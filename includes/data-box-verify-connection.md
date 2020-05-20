@@ -17,7 +17,7 @@ ms.locfileid: "67173617"
 
     ![Data Box 仪表板](media/data-box-verify-connection/data-box-connect-via-rest-9.png)
 
-2. 粘贴**帐户名称**和**帐户密钥**（本地 Web UI 的“连接并复制”  页面中的“密钥 1”值）。 选择“其他(在下面输入)”  作为存储终结点域，然后如下所述提供 blob 服务终结点。 只有当通过 **http** 进行传输时才应选中“使用 HTTP”  选项。 如果使用 *https*，则不要选中此选项。 选择“**下一页**”。
+2. 粘贴**帐户名称**和**帐户密钥**（本地 Web UI 的“连接并复制”  页面中的“密钥 1”值）。 选择“其他(在下面输入)”  作为存储终结点域，然后如下所述提供 blob 服务终结点。 只有当通过 *http* 进行传输时才应选中“使用 HTTP”选项。 如果使用 *https*，则不要选中此选项。 选择“**下一页**”。
 
     ![Data Box 仪表板](media/data-box-verify-connection/data-box-connect-via-rest-11.png)    
 

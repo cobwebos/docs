@@ -1,10 +1,10 @@
-- name: 文本翻译文档
+- name: 翻译器文档
   href: index.yml
-- name: 文本翻译 API
+- name: 转换器
   items:
     - name: 概述
       items:
-        - name: 什么是文本翻译 API？
+        - name: 什么是翻译器？
           href: translator-info-overview.md
     - name: 快速入门
       items:
@@ -22,7 +22,7 @@
           href: quickstart-sentences.md
     - name: 教程
       items:
-        - name: '使用 C# 创建 WPF 应用程序以用于文本翻译'
+        - name: '通过 C# 创建一个使用翻译器的 WPF 应用'
           href: tutorial-wpf-translation-csharp.md
         - name: 使用 Python 创建 Flask 翻译应用
           href: tutorial-build-flask-app-translation-synthesis.md
@@ -34,7 +34,7 @@
           href: character-counts.md
     - name: 操作指南
       items:
-        - name: 注册文本翻译 API
+        - name: 注册到翻译器
           href: translator-text-how-to-signup.md
         - name: 迁移到 V3 文本 API
           href: migrate-to-v3.md
@@ -66,7 +66,7 @@
           href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Ruby'
     - name: 参考
       items:
-        - name: v3 文本翻译 API 参考
+        - name: v3 翻译器参考
           href: reference/v3-0-reference.md
           items:
             - name: Languages
@@ -83,7 +83,7 @@
               href: reference/v3-0-dictionary-lookup.md
             - name: 字典示例
               href: reference/v3-0-dictionary-examples.md
-        - name: v2 文本翻译 API 参考（已弃用）
+        - name: v2 翻译器参考（已弃用）
           href: reference/v2-0-reference.md
           items:
             - name: 转换文本
@@ -108,7 +108,7 @@
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
         - name: 请求限制
           href: request-limits.md
-        - name: 堆栈溢出
+        - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
 - name: 自定义翻译
   items:
@@ -174,5 +174,5 @@
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
         - name: 加密
           href: translator-encryption-of-data-at-rest.md
-        - name: 堆栈溢出
+        - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'

@@ -11,13 +11,13 @@ metadata:
   author: mtillman
   ms.author: mtillman
   manager: daveba
-  ms.date: 03/17/2020
-  ms.openlocfilehash: 7f953c7de34e5574deb843dc42092103c8d9b87a
-  ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+  ms.date: 05/19/2020
+  ms.openlocfilehash: 4e1b18e1037b37deba3e037f3e896bf1536f4fd7
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/17/2020
-  ms.locfileid: "81603330"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83591907"
 highlightedContent:
   items:
   - title: 什么是 Azure AD？
@@ -81,34 +81,6 @@ conceptualContent:
       text: 启用 Azure 多重身份验证
     footerLink:
       url: ./authentication/index.yml
-      text: 查看详细信息
-  - title: 企业对企业 (B2B)
-    links:
-    - url: ./b2b/what-is-b2b.md
-      itemType: overview
-      text: 什么是 Azure AD B2B？
-    - url: ./b2b/add-users-administrator.md
-      itemType: how-to-guide
-      text: 在门户中添加来宾用户
-    - url: ./b2b/o365-external-user.md
-      itemType: concept
-      text: B2B 和 Office 365 共享
-    footerLink:
-      url: ./b2b/index.yml
-      text: 查看详细信息
-  - title: 企业对客户 (B2C)
-    links:
-    - url: ../active-directory-b2c/active-directory-b2c-overview.md
-      itemType: overview
-      text: 什么是 Azure AD B2C？
-    - url: ../active-directory-b2c/tutorial-create-tenant.md
-      itemType: tutorial
-      text: 创建 Azure AD B2C 租户
-    - url: ../active-directory-b2c/active-directory-b2c-get-started-custom.md
-      itemType: how-to-guide
-      text: Azure AD B2C 中的自定义策略
-    footerLink:
-      url: ../active-directory-b2c/index.yml
       text: 查看详细信息
   - title: 云预配
     links:
@@ -193,6 +165,20 @@ conceptualContent:
       text: Azure AD 服务限制和局限性
     footerLink:
       url: ./users-groups-roles/index.yml
+      text: 查看详细信息
+  - title: 外部标识
+    links:
+    - url: ./b2b/compare-with-b2c.md
+      itemType: overview
+      text: 比较适用于外部用户的解决方案
+    - url: ../active-directory-b2c/active-directory-b2c-overview.md
+      itemType: overview
+      text: 将应用扩展到消费者 (B2C)
+    - url: ./b2b/what-is-b2b.md
+      itemType: overview
+      text: 与组织外部的用户协作 (B2B)
+    footerLink:
+      url: ./b2b/index.yml
       text: 查看详细信息
   - title: 混合标识
     links:

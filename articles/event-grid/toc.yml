@@ -141,8 +141,21 @@
         - name: 云事件架构
           href: cloud-event-schema.md
     - name: 事件处理程序
-      displayName: 'Azure Automation, Functions, Event Hubs, Hybrid Connections, Logic Apps, Service Bus, Queue Storage, Webhooks'
       href: event-handlers.md
+      items:
+        - name: Webhook
+          displayName: 'Azure Automation, Webhooks, Logic Apps'
+          href: handler-webhooks.md
+        - name: Azure Functions
+          href: handler-functions.md
+        - name: 事件中心
+          href: handler-event-hubs.md
+        - name: 服务总线
+          href: handler-service-bus.md
+        - name: 中继混合连接
+          href: handler-relay-hybrid-connections.md
+        - name: 存储队列
+          href: handler-storage-queues.md
     - name: 事件传送
       items:
         - name: 事件筛选
@@ -227,6 +240,8 @@
       href: /python/api/overview/azure/event-grid
     - name: Node.js
       href: /javascript/api/overview/azure/eventgrid
+    - name: 配额和限制
+      href: quotas-limits.md
     - name: 订阅架构
       href: subscription-creation-schema.md
     - name: 模板资源

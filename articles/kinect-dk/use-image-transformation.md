@@ -20,7 +20,7 @@ ms.locfileid: "73931693"
 
 ## <a name="k4a_transformation-functions"></a>k4a_transformation 函数
 
- 所有带有 *k4a_transformation* 前缀的函数针对整个图像运行。 它们需要通过 [k4a_transformation_create()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__transformation__t.html) 获取的转换句柄 [k4a_transformation_t](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga853a1a5b6d521bbdf523a69e890c4f10.html#ga853a1a5b6d521bbdf523a69e890c4f10)，并通过 [k4a_transformation_destroy()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga7d3ecaae66f26c1a89da9042b1bc6d44.html#ga7d3ecaae66f26c1a89da9042b1bc6d44) 取消分配. 你还可以参考 SDK [转换示例](https://github.com/Microsoft/Azure-Kinect-Sensor-SDK/tree/develop/examples/transformation)，其中演示了如何使用本主题所述的三个函数。
+ 所有带有 *k4a_transformation* 前缀的函数针对整个图像运行。 它们需要通过 [k4a_transformation_create()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga853a1a5b6d521bbdf523a69e890c4f10.html#ga853a1a5b6d521bbdf523a69e890c4f10) 获取转换句柄 [k4a_transformation_t](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__transformation__t.html)，并通过 [k4a_transformation_destroy()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga7d3ecaae66f26c1a89da9042b1bc6d44.html#ga7d3ecaae66f26c1a89da9042b1bc6d44) 取消分配. 你还可以参考 SDK [转换示例](https://github.com/Microsoft/Azure-Kinect-Sensor-SDK/tree/develop/examples/transformation)，其中演示了如何使用本主题所述的三个函数。
 
 本文将介绍以下函数：
 

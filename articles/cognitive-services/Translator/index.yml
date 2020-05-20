@@ -1,10 +1,10 @@
 ### YamlMime:Landing
-title: 文本翻译文档
-summary: 文本翻译是一种基于云的机器翻译服务，可用于通过简单的 REST API 调用几乎实时地翻译文本。 该 API 使用先进的神经机器翻译技术并提供统计机器翻译技术。 “自定义翻译器”是文本翻译 API 的扩展，用于构建神经翻译系统。 可以将自定义的翻译系统与文本翻译 API 或 Microsoft 语音服务配合使用来翻译文本。
+title: 翻译器文档
+summary: “翻译器”是一种基于云的机器翻译服务，可用于通过简单的 REST API 调用几乎实时地翻译文本。 该服务使用先进的神经机器翻译技术并提供统计机器翻译技术。 “自定义翻译器”是“翻译器”的扩展，用于构建神经翻译系统。 可以将自定义的翻译系统与“翻译器”或 Microsoft 语音服务配合使用来翻译文本。
 metadata:
-  title: 文本翻译文档 - 快速入门、教程和 API 参考
+  title: 翻译器文档 - 快速入门、教程和 API 参考
   titleSuffix: Azure Cognitive Services
-  description: 文本翻译是一种基于云的机器翻译服务，可用于通过简单的 REST API 调用几乎实时地翻译文本。 该 API 使用先进的神经机器翻译技术并提供统计机器翻译技术。 “自定义翻译器”是文本翻译 API 的扩展，用于构建神经翻译系统。 可以将自定义的翻译系统与文本翻译 API 或 Microsoft 语音服务配合使用来翻译文本。
+  description: “翻译器”是一种基于云的机器翻译服务，可用于通过简单的 REST API 调用几乎实时地翻译文本。 该服务使用先进的神经机器翻译技术并提供统计机器翻译技术。 “自定义翻译器”是“翻译器”的扩展，用于构建神经翻译系统。 可以将自定义的翻译系统与“翻译器”或 Microsoft 语音服务配合使用来翻译文本。
   services: cognitive-services
   author: erhopf
   manager: nitinme
@@ -13,18 +13,18 @@ metadata:
   ms.topic: landing-page
   ms.date: 10/14/2019
   ms.author: erhopf
-  ms.openlocfilehash: 47944b573cdc2a8121c525c7750aa868d4a4e696
-  ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+  ms.openlocfilehash: 26fc174ef0993339487a2edcc32cbb4fd864f96e
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/16/2020
-  ms.locfileid: "81529785"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83592740"
 landingContent:
 - title: 转换器
   linkLists:
   - linkListType: overview
     links:
-    - text: 文本翻译 API
+    - text: 转换器
       url: translator-info-overview.md
     - text: 自定义翻译
       url: translator-info-overview.md
@@ -36,7 +36,7 @@ landingContent:
       url: translator-text-how-to-signup.md
     - text: 常见问题解答
       url: https://www.microsoft.com/translator/faq.aspx
-- title: 文本翻译 API
+- title: 入门
   linkLists:
   - linkListType: quickstart
     links:
@@ -60,7 +60,7 @@ landingContent:
       url: tutorial-build-flask-app-translation-synthesis.md
   - linkListType: reference
     links:
-    - text: 文本翻译 API 参考 (v3)
+    - text: 翻译器参考 (v3)
       url: reference/v3-0-reference.md
     - text: 请求限制
       url: request-limits.md
@@ -104,5 +104,5 @@ landingContent:
     links:
     - text: GitHub 上的示例
       url: https://aka.ms/TranslatorGitHub
-    - text: 堆栈溢出
+    - text: Stack Overflow
       url: https://stackoverflow.com/questions/tagged/microsoft-translator

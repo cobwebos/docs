@@ -85,7 +85,7 @@ ms.locfileid: "81260990"
 4. 选择 API 并单击“选择”。 
 
 > [!TIP]
-> 可以[通过 REST API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/subscription/createorupdate) 或 PowerShell 命令使用自定义订阅密钥来创建用户的订阅或将其更新为某个产品  。
+> 可以[通过 REST API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/subscription/createorupdate) 或 PowerShell 命令使用自定义订阅密钥来创建用户的订阅或将其更新为某个产品。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -28,6 +28,24 @@
       items:
         - name: 将实验室用于上课
           href: classroom-labs-scenarios.md
+        - name: 教室实验室 - 课程类型
+          items:
+            - name: 课程类型概述
+              href: class-types.md
+            - name: 自然语言处理中的深度学习
+              href: class-type-deep-learning-natural-language-processing.md
+            - name: Linux 上的 Shell 脚本
+              href: class-type-shell-scripting-linux.md
+            - name: 道德黑客攻击
+              href: class-type-ethical-hacking.md
+            - name: 数据库管理
+              href: class-type-database-management.md
+            - name: Python 和 Jupyter Notebook
+              href: class-type-jupyter-notebook.md
+            - name: 使用 Android Studio 进行移动应用开发
+              href: class-type-mobile-dev-android-studio.md
+            - name: 大数据分析
+              href: class-type-big-data-analytics.md
 - name: 操作指南
   items:
     - name: 管理员指南
@@ -36,29 +54,13 @@
       href: account-setup-guide.md
     - name: 加速实验室设置指南
       href: setup-guide.md
-    - name: 教室实验室 - 课程类型
-      items:
-        - name: 课程类型概述
-          href: class-types.md
-        - name: 自然语言处理中的深度学习
-          href: class-type-deep-learning-natural-language-processing.md
-        - name: Linux 上的 Shell 脚本
-          href: class-type-shell-scripting-linux.md
-        - name: 道德黑客攻击
-          href: class-type-ethical-hacking.md
-        - name: 数据库管理
-          href: class-type-database-management.md
-        - name: Python 和 Jupyter Notebook
-          href: class-type-jupyter-notebook.md
-        - name: 使用 Android Studio 进行移动应用开发
-          href: class-type-mobile-dev-android-studio.md
-        - name: 大数据分析
-          href: class-type-big-data-analytics.md
     - name: 创建和配置实验室帐户（实验室帐户所有者）
       items:
         - name: 创建和管理实验室帐户
           href: how-to-manage-lab-accounts.md
-        - name: 配置实验室帐户
+        - name: 管理实验室帐户中的实验室
+          href: manage-labs.md
+        - name: 配置 VM 的自动关闭
           href: how-to-configure-lab-accounts.md
         - name: 添加实验室创建者
           href: add-lab-creator.md
@@ -76,7 +78,7 @@
           href: specify-marketplace-images.md
         - name: 指定支持信息（实验室帐户所有者）
           href: lab-account-owner-support-information.md
-    - name: 创建和配置课堂实验室（讲师）
+    - name: 创建和配置教室实验室（教师）
       items:
         - name: 创建和管理教室实验室
           href: how-to-manage-classroom-labs.md
@@ -108,9 +110,9 @@
           href: how-to-prepare-windows-template.md
         - name: 控制 Windows 关机行为
           href: how-to-windows-shutdown.md
-        - name: 查看支持信息（讲师）
+        - name: 查看支持信息（教师）
           href: lab-creator-support-information.md
-        - name: 从讲师视图访问学生 VM
+        - name: 从教师视图访问学生 VM
           href: instructor-access-virtual-machines.md
     - name: 连接到课堂实验室中的 VM（学生）
       items:

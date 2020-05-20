@@ -1,0 +1,61 @@
+- name: Azure 静态 Web 应用文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 关于静态 Web 应用
+      href: overview.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 构建第一个静态 Web 应用
+      href: getting-started.md
+- name: 概念
+  items:
+    - name: 通过 Azure Functions 提供 API 支持
+      href: apis.md
+    - name: 路由
+      href: routes.md
+    - name: 身份验证和授权
+      href: authentication-authorization.md
+    - name: 访问用户信息
+      href: user-information.md
+    - name: 查看预生产环境中的拉取请求
+      href: review-publish-pull-requests.md
+    - name: 自定义域
+      href: custom-domain.md
+    - name: 生成和工作流配置
+      href: github-actions-workflow.md
+- name: 操作指南
+  items:
+    - name: 设置本地开发
+      href: local-development.md
+    - name: 添加 API
+      href: add-api.md
+    - name: 配置应用设置
+      href: application-settings.md
+- name: 教程
+  items:
+    - name: 从静态站点生成器发布
+      items:
+        - name: Gatsby
+          href: publish-gatsby.md
+        - name: Hugo
+          href: publish-hugo.md
+        - name: VuePress
+          href: publish-vuepress.md
+    - name: 从框架部署
+      items:
+        - name: Next.js
+          href: deploy-nextjs.md
+        - name: Nuxt.js
+          href: deploy-nuxtjs.md
+- name: 资源
+  items:
+    - name: 利用 Microsoft Learn 掌握技能
+      items:
+        - name: 发布 Angular、React、Svelte 或 Vue JavaScript 应用和 API
+          href: /learn/modules/publish-app-service-static-web-app-api
+        - name: 使用 Gatsby 创建和发布静态 Web 应用
+          href: /learn/modules/create-deploy-static-webapp-gatsby-app-service
+    - name: 配额
+      href: quotas.md

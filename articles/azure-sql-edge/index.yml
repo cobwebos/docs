@@ -1,0 +1,55 @@
+### YamlMime:Landing
+title: Azure SQL Edge（预览版）文档
+summary: Azure SQL Edge 是已针对 IoT 和边缘部署进行了优化的关系数据库引擎。
+metadata:
+  title: Azure SQL Edge（预览版）文档
+  meta.description: Learn how to use Azure SQL Edge (Preview).
+  services: sql-database-edge
+  ms.service: sql-database-edge
+  ms.topic: landing-page
+  author: stevestein
+  ms.author: sstein
+  ms.date: 05/19/2020
+  ms.openlocfilehash: a2e26d4bfbec3a139987e2a7a0fe21c429c740a5
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83593131"
+landingContent:
+- title: SQL Edge
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 SQL Edge？
+      url: overview.md
+  - linkListType: deploy
+    links:
+    - text: 部署 SQL Edge
+      url: deploy-portal.md
+- title: 同步数据
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 使用 Azure 数据工厂同步 SQL Edge 数据
+      url: tutorial-sync-data-factory.md
+    - text: 将 SQL Edge 数据同步到 SQL 数据库
+      url: tutorial-sync-data-sync.md
+- title: 数据流式处理
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 数据流式处理
+      url: stream-data.md
+    - text: 流式处理目录视图
+      url: streaming-catalog-views.md
+- title: 机器学习
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 机器学习和人工智能
+      url: onnx-overview.md
+  - linkListType: quickstart
+    links:
+    - text: 在 SQL Edge 上部署 ONNX
+      url: deploy-onnx.md

@@ -3,7 +3,7 @@ title: 个性化体验创建服务文档
 summary: 了解如何使用个性化体验创建服务来让应用程序选择要显示给用户的最佳体验，并从其实时行为中学习信息。
 metadata:
   ms.topic: landing-page
-  ms.date: 10/03/2019
+  ms.date: 05/01/2020
   ms.author: nitinme
   author: nitinme
   ms.service: cognitive-services
@@ -12,12 +12,12 @@ metadata:
   title: 个性化体验创建服务文档
   titleSuffix: Azure Cognitive Services
   description: Azure 个性化体验创建服务是基于云的 API 服务，可让你选择要显示给用户的最佳体验，并从其实时行为中学习信息。
-  ms.openlocfilehash: c703673ec85cadb57e2cc69d1ee1a0d023d53436
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: ef18921e9211bb1a3659fffc84bde922d500d0b0
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "77525017"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83586314"
 landingContent:
 - title: 关于个性化体验创建服务
   linkLists:
@@ -101,6 +101,8 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
+    - text: 使用学徒模式
+      url: how-to-learning-behavior.md
     - text: 通过脱机评估改善循环
       url: concepts-offline-evaluation.md
     - text: 活动和非活动事件
@@ -115,7 +117,7 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: 故障排除
+    - text: 疑难解答
       url: troubleshooting.md
     - text: 在 Stack Overflow 上提出问题
       url: https://stackoverflow.com/questions/tagged/personalizer

@@ -109,7 +109,7 @@
       href: concept-recognizing-text.md
     - name: 成人内容检测
       href: concept-detecting-adult-content.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 调用计算机视觉 API
       href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
@@ -135,6 +135,8 @@
       href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
     - name: Azure PowerShell
       href: 'https://aka.ms/azure-powershell-cognitiveservices'
+    - name: 计算机视觉 API v3.0
+      href: 'https://aka.ms/computer-vision-v3-ref'
     - name: 计算机视觉 API v3.0-preview
       href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6'
     - name: 计算机视觉 API v2.1
@@ -173,7 +175,7 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/430309-computer-vision-api'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'

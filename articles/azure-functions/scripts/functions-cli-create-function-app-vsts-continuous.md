@@ -13,7 +13,7 @@ ms.locfileid: "75922645"
 ---
 # <a name="create-a-function-in-azure-that-is-deployed-from-azure-devops"></a>在 Azure 中创建从 Azure DevOps 部署的函数
 
-本主题演示如何使用 Azure Functions 创建使用[消耗计划](https://azure.microsoft.com/solutions/serverless/)的[无服务器](../functions-scale.md#consumption-plan)函数应用。 从 Azure DevOps 存储库连续部署函数应用（即函数的容器）。 
+本主题演示如何使用 Azure Functions 创建使用[消耗计划](../functions-scale.md#consumption-plan)的[无服务器](https://azure.microsoft.com/solutions/serverless/)函数应用。 从 Azure DevOps 存储库连续部署函数应用（即函数的容器）。 
 
 若要完成本主题，必须具备以下条件：
 

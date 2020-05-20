@@ -53,7 +53,7 @@ az group delete --resource-group sfmeshTutorial1RG
 Remove-AzureRmResourceGroup -Name sfmeshTutorial1RG
 ```
 
-或者，可以从[门户](../azure-resource-manager/management/manage-resource-groups-portal.md#delete-resource-groups)删除 sfmeshTutorial1RG 资源组  。 
+或者，可以从[门户](../azure-resource-manager/management/manage-resource-groups-portal.md#delete-resource-groups)删除 sfmeshTutorial1RG 资源组。 
 
 ## <a name="next-steps"></a>后续步骤
 

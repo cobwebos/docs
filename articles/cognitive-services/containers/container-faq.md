@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 0e4f9da3aec42df42cc43f73fdeefa7087de6db5
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bf30fc5e6ccfc0f59c1769245e58177428472156
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592179"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701810"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure 认知服务容器常见问题解答 (FAQ)
 
@@ -22,7 +22,7 @@ ms.locfileid: "83592179"
 
 **问：有哪些功能？**
 
-**答：** Azure 认知服务容器允许开发人员使用 Azure 中提供的相同智能 Api，但具有容器化的[优势](../cognitive-services-container-support.md#features-and-benefits)。 某些容器作为[封闭预览版](../cognitive-services-gating-process.md)提供，可能需要应用程序才能访问。 其他容器作为无选通预览版公开提供，或已正式发布。 可以在[Azure 认知服务中的容器支持](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services)一文中找到容器及其可用性的完整列表。 
+**答：** Azure 认知服务容器允许开发人员使用 Azure 中提供的相同智能 Api，但具有容器化的[优势](../cognitive-services-container-support.md#features-and-benefits)。 某些容器作为封闭预览版提供，可能需要应用程序进行访问。 其他容器作为无选通预览版公开提供，或已正式发布。 可以在[Azure 认知服务中的容器支持](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services)一文中找到容器及其可用性的完整列表。 
 
 **问：认知服务云和容器之间是否存在差异？**
 
@@ -49,7 +49,7 @@ ms.locfileid: "83592179"
 
 遗憾的是，主权云中并*不*本机支持认知服务容器。 容器可以在这些云中运行，但会从公有云中提取，并需要将使用情况数据发送到公共终结点。
 
-### <a name="versioning"></a>版本管理
+### <a name="versioning"></a>版本控制
 
 **问：容器如何更新到最新版本？**
 

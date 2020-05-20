@@ -61,7 +61,7 @@ az account set --subscription "<subscriptionName>"
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用以下命令在 eastus  位置创建名为 myResourceGroup  的资源组。
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用以下命令在 eastus 位置创建名为 myResourceGroup 的资源组。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -196,7 +196,7 @@ Service Fabric 网格应用程序是一种 Azure 资源，可以使用 Azure 资
 本教程使用待办事项示例作为示例。  下载 [mesh_rp.windows.json 部署模板](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json)和 [mesh_rp.windows.parameter.json 参数](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json)文件，而不是生成新的模板和参数文件。
 
 ### <a name="parameters"></a>parameters
-当模板中有希望在部署应用程序后进行更改的值，或者希望可以选择在每个部署的基础上进行更改时（如果计划重用此模板进行其他部署），最佳做法是参数化这些值。 执行此操作的正确方法是在部署模板的顶部创建“参数”部分，在其中可以指定参数名称和属性，稍后将在部署模板中引用这些内容。 每个参数定义包括类型  、defaultValue  和一个带有说明  的可选元数据  部分。
+当模板中有希望在部署应用程序后进行更改的值，或者希望可以选择在每个部署的基础上进行更改时（如果计划重用此模板进行其他部署），最佳做法是参数化这些值。 执行此操作的正确方法是在部署模板的顶部创建“参数”部分，在其中可以指定参数名称和属性，稍后将在部署模板中引用这些内容。 每个参数定义包括类型、defaultValue和一个带有说明的可选元数据部分。
 
 参数部分在部署模板的顶部定义，就在资源  部分之前：
 
