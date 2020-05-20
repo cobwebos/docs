@@ -90,7 +90,7 @@ ms.locfileid: "73157583"
 
 若要配置 CA PPM 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的 CA PPM 应用程序集成页上，选择“单一登录”   。
+1. 在 [Azure 门户](https://portal.azure.com/)中的 CA PPM 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -108,7 +108,7 @@ ms.locfileid: "73157583"
 
     a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://ca.ondemand.saml.20.post.<companyname>`
 
-    b. 在“回复 URL”文本框中键入：`https://fedsso.ondemand.ca.com/affwebservices/public/saml2assertionconsumer` 
+    b. 在“回复 URL”文本框中键入：`https://fedsso.ondemand.ca.com/affwebservices/public/saml2assertionconsumer`
 
     > [!NOTE]
     > 此值不是真实值。 请使用实际标识符更新此值。 若要获取此值，请与 [CA PPM 客户端支持团队](mailto:catechnicalsupport@ca.com)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -129,7 +129,7 @@ ms.locfileid: "73157583"
 
 ### <a name="configure-ca-ppm-single-sign-on"></a>配置 CA PPM 单一登录
 
-若要在 **CA PPM** 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [CA PPM 支持团队](mailto:catechnicalsupport@ca.com)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **CA PPM** 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [CA PPM 支持团队](mailto:catechnicalsupport@ca.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -149,7 +149,7 @@ ms.locfileid: "73157583"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -172,7 +172,7 @@ ms.locfileid: "73157583"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

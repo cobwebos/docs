@@ -157,7 +157,7 @@ ms.locfileid: "73160624"
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Mimecast Personal Portal。
 
-2. 转到“服务”\>“应用程序”  。
+2. 转到“服务”\>“应用程序”。
    
     ![应用程序](./media/mimecast-personal-portal-tutorial/ic794998.png "应用程序")
 
@@ -209,7 +209,7 @@ ms.locfileid: "73160624"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -232,7 +232,7 @@ ms.locfileid: "73160624"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -252,7 +252,7 @@ ms.locfileid: "73160624"
 
 1. 以管理员身份登录到 **Mimecast Personal Portal**。
 
-2. 转到“目录”\>“内部”。 
+2. 转到“目录”\>“内部”。
    
     ![Directories](./media/mimecast-personal-portal-tutorial/ic795003.png "目录")
 
@@ -268,7 +268,7 @@ ms.locfileid: "73160624"
    
     ![保存](./media/mimecast-personal-portal-tutorial/ic795006.png "保存")
    
-    a. 在“电子邮件地址”文本框中，键入用户的电子邮件地址（如 **BrittaSimon\@contoso.com**）。  
+    a. 在“电子邮件地址”文本框中，键入用户的电子邮件地址（如 **BrittaSimon\@contoso.com**）。
     
     b. 在“全局名称”  文本框中，将“用户名”  键入为“BrittaSimon”  。
 

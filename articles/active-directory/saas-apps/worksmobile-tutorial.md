@@ -110,9 +110,9 @@ ms.locfileid: "67086654"
 
     ![LINE WORKS 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://auth.worksmobile.com/d/login/<domain>/`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://auth.worksmobile.com/d/login/<domain>/`
 
-    b. 在“标识符(实体 ID)”文本框中，键入 URL：  `worksmobile.com`
+    b. 在“标识符(实体 ID)”文本框中，键入 URL：`worksmobile.com`
 
 5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求通过从给定的选项下载**证书(原始)** 并将其保存在计算机上。
 
@@ -153,7 +153,7 @@ ms.locfileid: "67086654"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 **。** `brittasimon@yourcompanydomain.extension` 例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -175,7 +175,7 @@ ms.locfileid: "67086654"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

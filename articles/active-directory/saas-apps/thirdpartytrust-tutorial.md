@@ -107,11 +107,11 @@ ms.locfileid: "67089030"
 
     在“标识符”  文本框中，键入一个 URL：`https://api.thirdpartytrust.com/sai3/saml/metadata`
 
-5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
+5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
     ![image](common/both-preintegrated-signon.png)
 
-    在“登录 URL”文本框中，键入 URL：  `https://api.thirdpartytrust.com/sai3/test`
+    在“登录 URL”文本框中，键入 URL：`https://api.thirdpartytrust.com/sai3/test`
 
 6. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
@@ -149,7 +149,7 @@ ms.locfileid: "67089030"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 **。** brittasimon@yourcompanydomain.extension 例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -171,7 +171,7 @@ ms.locfileid: "67089030"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

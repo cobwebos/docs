@@ -134,7 +134,7 @@ ms.locfileid: "67099519"
 
     a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<domain:port>/plugins/servlet/saml/auth`。
 
-    b. 在“标识符”框中，使用以下模式键入 URL：  `https://<domain:port>/`
+    b. 在“标识符”框中，使用以下模式键入 URL：`https://<domain:port>/`
 
     c. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<domain:port>/plugins/servlet/saml/auth`
 
@@ -172,7 +172,7 @@ ms.locfileid: "67099519"
     > [!TIP]
     > 请确保一个应用仅映射一个证书，以免在解析元数据时出错。 如果有多个证书，则管理员会在解析元数据时收到错误。
 
-    a. 在“元数据 URL”文本框中，粘贴从 Azure 门户复制的**应用联合元数据 URL**值，然后单击“解析”按钮。   它将读取 IdP 元数据 URL，并填充所有字段信息。
+    a. 在“元数据 URL”文本框中，粘贴从 Azure 门户复制的**应用联合元数据 URL**值，然后单击“解析”按钮。 它将读取 IdP 元数据 URL，并填充所有字段信息。
 
     b. 复制“标识符”、“回复 URL”和“登录 URL”值，并将其分别粘贴到 Azure 门户中“基本 SAML 配置”部分下的“标识符”、“回复 URL”和“登录 URL”文本框中    。
 
@@ -214,7 +214,7 @@ ms.locfileid: "67099519"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 **。** `brittasimon\@yourcompanydomain.extension` 例如，BrittaSimon@contoso.com 。
+    b. 在“用户名”字段中键入 `brittasimon\@yourcompanydomain.extension`。 例如，BrittaSimon@contoso.com 。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -236,7 +236,7 @@ ms.locfileid: "67099519"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -270,11 +270,11 @@ ms.locfileid: "67099519"
 
     ![添加员工](./media/jira52microsoft-tutorial/user4.png)
 
-    a. 在“电子邮件地址”文本框中，键入用户的电子邮件地址（例如 **）。** Brittasimon@contoso.com
+    a. 在“电子邮件地址”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
     b. 在“全名”文本框中，键入用户（例如 Britta Simon）的全名。 
 
-    c. 在“用户名”文本框中，键入用户的电子邮件地址（例如 **）。** Brittasimon@contoso.com
+    c. 在“用户名”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
     d. 在“密码”文本框中，键入用户的密码。 
 

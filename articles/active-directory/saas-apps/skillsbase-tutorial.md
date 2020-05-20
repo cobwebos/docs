@@ -141,7 +141,7 @@ ms.locfileid: "67090556"
 
     ![单人](./media/skillsbase-tutorial/tutorial_skillsbase_save.png)
 
-    a. 单击“状态”  选项旁边的“更新 IdP 元数据”  按钮，并将从 Azure 门户下载的元数据 XML 的内容粘贴到指定的文本框中。
+    a. 单击“状态”选项旁边的“更新 IdP 元数据”按钮，并将从 Azure 门户下载的元数据 XML 的内容粘贴到指定的文本框中。
 
     > [!Note]
     > 还可以通过上面屏幕截图中突出显示的“元数据验证器”  工具验证 idp 元数据。
@@ -166,7 +166,7 @@ ms.locfileid: "67090556"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”  字段中键入 **brittasimon@yourcompanydomain.extension**  
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -189,7 +189,7 @@ ms.locfileid: "67090556"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

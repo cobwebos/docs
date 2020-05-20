@@ -167,7 +167,7 @@ ms.locfileid: "68943288"
 
 3. 若要手动设置 Zscaler Beta，请打开新的 Web 浏览器窗口。 以管理员身份登录到 Zscaler Beta 公司站点，然后执行以下步骤。
 
-4. 转到“管理” **“身份验证”** “身份验证设置”，然后执行以下步骤。 >    >  
+4. 转到“管理” > “身份验证” > “身份验证设置”，然后执行以下步骤。
    
     ![管理](./media/zscaler-beta-tutorial/ic800206.png "管理")
 
@@ -181,17 +181,17 @@ ms.locfileid: "68943288"
     
     a. 在“SAML 门户 URL”框中，粘贴从 Azure 门户复制的“登录 URL”   。
 
-    b. 在“登录名属性”框中输入 **NameID**。 
+    b. 在“登录名属性”框中输入 **NameID**。
 
     c. 在“公共 SSL 证书”框中，选择“上传”以上传从 Azure 门户下载的 Azure SAML 签名证书。  
 
     d. 切换为“启用 SAML 自动预配”  。
 
-    e. 若要为 displayName 属性启用 SAML 自动预配，请在“用户显示名称属性”框中输入 **displayName**。 
+    e. 若要为 displayName 属性启用 SAML 自动预配，请在“用户显示名称属性”框中输入 **displayName**。
 
-    f. 若要为 memberOf 属性启用 SAML 自动预配，请在“组名称属性”框中输入 **memberOf**。 
+    f. 若要为 memberOf 属性启用 SAML 自动预配，请在“组名称属性”框中输入 **memberOf**。
 
-    g. 若要为 department 属性启用 SAML 自动预配，请在“部门名称属性”框中输入 **department**。 
+    g. 若要为 department 属性启用 SAML 自动预配，请在“部门名称属性”框中输入 **department**。
 
     h. 选择“保存”。 
 
@@ -208,7 +208,7 @@ ms.locfileid: "68943288"
 
 1. 启动 **Internet Explorer**。
 
-2. 从“工具”  菜单中选择“Internet 选项”  ，打开“Internet 选项”  对话框。 
+2. 从“工具”菜单中选择“Internet 选项”，打开“Internet 选项”对话框。 
     
      ![“Internet 选项”对话框](./media/zscaler-beta-tutorial/ic769492.png "Internet 选项")
 
@@ -224,9 +224,9 @@ ms.locfileid: "68943288"
 
     a. 选中“对 LAN 使用代理服务器”复选框。 
 
-    b. 在“地址”框中输入 **gateway.Zscaler Beta.net**。 
+    b. 在“地址”框中输入 **gateway.Zscaler Beta.net**。
 
-    c. 在“端口”框中输入 **80**。 
+    c. 在“端口”框中输入 **80**。
 
     d. 选中“对本地地址不使用代理服务器”复选框  。
 
@@ -238,7 +238,7 @@ ms.locfileid: "68943288"
 
 在 Azure 门户中，创建名为 Britta Simon 的测试用户。
 
-1. 在 Azure 门户的左窗格中，选择“Azure Active Directory” **“用户”** “所有用户”。 >    >  
+1. 在 Azure 门户的左窗格中，选择“Azure Active Directory” > “用户” > “所有用户”。
 
     ![“用户”和“所有用户”链接](common/users.png)
 
@@ -252,7 +252,7 @@ ms.locfileid: "68943288"
 
     a. 在“姓名”  框中，输入 **BrittaSimon**。
   
-    b. 在“用户名”框中输入  `brittasimon@yourcompanydomain.extension`。 示例为 BrittaSimon@contoso.com。
+    b. 在“用户名”框中输入 `brittasimon@yourcompanydomain.extension`。 示例为 BrittaSimon@contoso.com。
 
     c. 选中“显示密码”复选框  。 记下“密码”框中显示的值  。
 
@@ -262,7 +262,7 @@ ms.locfileid: "68943288"
 
 通过授予 Britta Simon 访问 Zscaler Beta 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，选择“企业应用程序” **“所有应用程序”** “Zscaler Beta”。 >    >  
+1. 在 Azure 门户中，选择“企业应用程序” > “所有应用程序” > “Zscaler Beta”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 

@@ -43,7 +43,7 @@ ms.locfileid: "74326579"
 
     ![创建示例模型](./media/analysis-services-create-sample-model/aas-create-sample-new-model.png)
 
-2. 在“新建模型” > “选择数据源”中，确认已选中“示例数据”，然后单击“添加”。    
+2. 在“新建模型” > “选择数据源”中，确认已选中“示例数据”，然后单击“添加”。
 
     ![选择“示例数据”](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
 
@@ -64,7 +64,7 @@ ms.locfileid: "74326579"
 
     ![登录](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-signin.png)
 
-3. 在“对象资源管理器”中，右键单击 `adventureworks` 示例数据库，然后单击“删除”。  
+3. 在“对象资源管理器”中，右键单击 `adventureworks` 示例数据库，然后单击“删除”。
 
     ![删除示例数据库](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-delete.png)
 

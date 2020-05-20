@@ -149,7 +149,7 @@ ms.locfileid: "74231938"
        
     d. 在记事本中打开从 Azure 门户下载的 base-64 编码的证书，将其内容复制到剪贴板，再将其粘贴到“公钥”  文本框中。
    
-    e. 选择“RSA”  ，作为**算法**。
+    e. 选择“RSA”，作为**算法**。
    
     f. 单击“确定”。 
 
@@ -171,7 +171,7 @@ ms.locfileid: "74231938"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -194,7 +194,7 @@ ms.locfileid: "74231938"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -215,9 +215,9 @@ ms.locfileid: "74231938"
 
 1. 以管理员身份登录到 **Zoho Mail** 公司站点。
 
-1. 转到“控制面板” **“邮件和文档”\>** 。
+1. 转到“控制面板”\>“邮件和文档”。
 
-1. 转到“用户详细信息**添加用户”\>** 。
+1. 转到“用户详细信息\>添加用户”。
    
     ![添加用户](./media/zoho-mail-tutorial/ic789611.png "添加用户")
 
@@ -229,7 +229,7 @@ ms.locfileid: "74231938"
 
     b. 在“姓氏”  文本框中，键入用户的姓氏（如“Simon”  ）。
 
-    c. 在“电子邮件 ID”文本框中，键入用户的电子邮件 ID，例如 brittasimon**Contoso.com** **\@** 。
+    c. 在“电子邮件 ID”文本框中，键入用户的电子邮件 ID，例如 brittasimon\@Contoso.com。
 
     d. 在“密码”文本框中，输入用户的密码。 
    

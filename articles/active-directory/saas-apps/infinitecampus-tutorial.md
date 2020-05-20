@@ -124,7 +124,7 @@ ms.locfileid: "67100368"
 
     ![管理](./media/infinitecampus-tutorial/tutorial_infinitecampus_admin.png)
 
-3. 导航到“用户安全性” **“SAML 管理”** “SSO 服务提供程序配置”。 >    >  
+3. 导航到“用户安全性” > “SAML 管理” > “SSO 服务提供程序配置”。
 
     ![SAML](./media/infinitecampus-tutorial/tutorial_infinitecampus_saml.png)
 
@@ -160,7 +160,7 @@ ms.locfileid: "67100368"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 **。** `brittasimon@yourcompanydomain.extension` 例如，BrittaSimon@contoso.com 。
+    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如，BrittaSimon@contoso.com 。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -185,7 +185,7 @@ ms.locfileid: "67100368"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

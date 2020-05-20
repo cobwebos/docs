@@ -75,7 +75,7 @@ ms.locfileid: "75438902"
 1. 在“数据工厂”边栏选项卡上，单击“复制数据”以启动“复制向导”。   
    
    > [!NOTE]
-   > 如果 Web 浏览器卡在“正在授权...”处，请在浏览器设置中禁用或取消选中“阻止第三方 Cookie 和站点数据”设置，或在保持启用的状态下为 **login.microsoftonline.com** 创建一个例外，并尝试再次启动该向导。 
+   > 如果 Web 浏览器卡在“正在授权...”处，请在浏览器设置中禁用或取消选中“阻止第三方 Cookie 和站点数据”设置，或在保持启用的状态下为 **login.microsoftonline.com** 创建一个例外，并尝试再次启动该向导。
 2. 在“属性”  页中：
    
    1. 输入 **CopyFromBlobToAzureSql** 作为**任务名称**
@@ -120,7 +120,7 @@ ms.locfileid: "75438902"
    6. 单击“下一步”。   
       
       ![复制工具 - 指定 Azure SQL 数据库](./media/data-factory-copy-data-wizard-tutorial/specify-azure-sql-database.png)
-10. 在“表映射”页上，在“目标”字段中通过下拉列表中选择“emp”，单击**向下箭头**查看架构并预览数据（可选）。   
+10. 在“表映射”页上，在“目标”字段中通过下拉列表中选择“emp”，单击**向下箭头**查看架构并预览数据（可选）。
     
      ![复制工具 - 表映射](./media/data-factory-copy-data-wizard-tutorial/copy-tool-table-mapping-page.png) 
 11. 在“架构映射”页上，单击“下一步”。  
@@ -134,7 +134,7 @@ ms.locfileid: "75438902"
     ![复制工具 - 性能设置](./media/data-factory-copy-data-wizard-tutorial/summary-page.png)
 
 ## <a name="launch-monitor-and-manage-application"></a>启动监视器和管理应用程序
-1. 在“部署”页上单击以下链接： **。** `Click here to monitor copy pipeline`
+1. 在“部署”页上单击以下链接：`Click here to monitor copy pipeline`。
    
    ![复制工具 - 部署成功](./media/data-factory-copy-data-wizard-tutorial/copy-tool-deployment-succeeded.png)  
 2. 监视应用程序会在 Web 浏览器的单独选项卡中启动。   

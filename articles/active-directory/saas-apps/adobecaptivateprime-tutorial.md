@@ -106,9 +106,9 @@ ms.locfileid: "73153990"
 
     ![Adobe Captivate Prime 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中键入 URL：`https://captivateprime.adobe.com` 
+    a. 在“标识符”文本框中键入 URL：`https://captivateprime.adobe.com`
 
-    b. 在“回复 URL”文本框中键入 URL：`https://captivateprime.adobe.com/saml/SSO` 
+    b. 在“回复 URL”文本框中键入 URL：`https://captivateprime.adobe.com/saml/SSO`
 
 5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
@@ -130,7 +130,7 @@ ms.locfileid: "73153990"
 
 ### <a name="configure-adobe-captivate-prime-single-sign-on"></a>配置 Adobe Captivate Prime 单一登录
 
-若要在“Adobe Captivate Prime”端配置单一登录，需要将下载的“联合元数据 XML”、复制的“用户访问 URL”以及从 Azure 门户复制的相应 URL 发送给 [Adobe Captivate Prime 支持团队](mailto:captivateprimesupport@adobe.com)    。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在“Adobe Captivate Prime”端配置单一登录，需要将下载的“联合元数据 XML”、复制的“用户访问 URL”以及从 Azure 门户复制的相应 URL 发送给 [Adobe Captivate Prime 支持团队](mailto:captivateprimesupport@adobe.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -150,7 +150,7 @@ ms.locfileid: "73153990"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -173,7 +173,7 @@ ms.locfileid: "73153990"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

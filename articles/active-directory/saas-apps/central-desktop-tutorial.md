@@ -161,7 +161,7 @@ ms.locfileid: "73157510"
     
     a. 选择“证书”。 
 
-    b. 从“SSO 证书”列表中，选择“RSH SHA256”   。
+    b. 从“SSO 证书”列表中，选择“RSH SHA256”。
 
     c. 在记事本中打开已下载的证书。 然后将证书内容复制并粘贴到“SSO 证书”  字段。
 
@@ -187,7 +187,7 @@ ms.locfileid: "73157510"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -210,7 +210,7 @@ ms.locfileid: "73157510"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

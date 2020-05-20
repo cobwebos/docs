@@ -107,9 +107,9 @@ ms.locfileid: "67107610"
 
     ![10,000ft Plans 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，键入 URL：`https://app.10000ft.com` 
+    a. 在“登录 URL”文本框中，键入 URL：`https://app.10000ft.com`
 
-    b. 在“标识符(实体 ID)”文本框中，键入 URL：`https://app.10000ft.com/saml/metadata` 
+    b. 在“标识符(实体 ID)”文本框中，键入 URL：`https://app.10000ft.com/saml/metadata`
 
     > [!NOTE]
     > 如果有自定义域，**Identifier** 的值将不同。 若要获取此值，请与 [10,000ft Plans 客户端支持团队](https://www.10000ft.com/plans/support)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -130,7 +130,7 @@ ms.locfileid: "67107610"
 
 ### <a name="configure-10000ft-plans-single-sign-on"></a>配置 10,000ft Plans 单一登录
 
-若要在 10,000ft Plans 端配置单一登录，需要将下载的“证书(原始)”以及从 Azure 门户复制的相应 URL 发送给 [10,000ft Plans 支持团队](https://www.10000ft.com/plans/support)   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 10,000ft Plans 端配置单一登录，需要将下载的“证书(原始)”以及从 Azure 门户复制的相应 URL 发送给 [10,000ft Plans 支持团队](https://www.10000ft.com/plans/support)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -150,7 +150,7 @@ ms.locfileid: "67107610"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -172,7 +172,7 @@ ms.locfileid: "67107610"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

@@ -105,7 +105,7 @@ ms.locfileid: "73158085"
 
     ![Gra-Pe 域和 URL 单一登录信息](common/sp-signonurl.png)
 
-    在“登录 URL”文本框中，键入 URL：  `https://btm.tts.co.jp/portal/apl/SSOLogin.aspx`
+    在“登录 URL”文本框中，键入 URL：`https://btm.tts.co.jp/portal/apl/SSOLogin.aspx`
 
 5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
@@ -143,7 +143,7 @@ ms.locfileid: "73158085"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -166,7 +166,7 @@ ms.locfileid: "73158085"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

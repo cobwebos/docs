@@ -105,9 +105,9 @@ ms.locfileid: "67086199"
 
     ![Ziflow 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://ziflow-production.auth0.com/login/callback?connection=<UniqueID>`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://ziflow-production.auth0.com/login/callback?connection=<UniqueID>`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：  `urn:auth0:ziflow-production:<UniqueID>`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`urn:auth0:ziflow-production:<UniqueID>`
 
     > [!NOTE]
     > 上面的值不是实际值。 本教程稍后将介绍如何使用实际值来更新“标识符”和“登录 URL”中的唯一 ID 值。
@@ -170,7 +170,7 @@ ms.locfileid: "67086199"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 **。** brittasimon@yourcompanydomain.extension 例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -192,7 +192,7 @@ ms.locfileid: "67086199"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -222,7 +222,7 @@ ms.locfileid: "67086199"
 
     ![Ziflow 配置添加用户](./media/ziflow-tutorial/tutorial_ziflow_adduser.png)
 
-    a. 在“电子邮件”文本框中，输入用户的电子邮件，如 **。** brittasimon@contoso.com
+    a. 在“电子邮件”文本框中，输入用户的电子邮件，如 brittasimon@contoso.com。
 
     b. 在“名字”文本框中，输入用户的名字，例如 Britta  。
 

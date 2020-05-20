@@ -41,7 +41,7 @@ Azure Service Fabric 是一款分布式系统平台，可用于部署和管理�
 
 Service Fabric SDK 和工具提供服务模板，用于将容器部署到 Service Fabric 群集。
 
-以“管理员”身份启动 Visual Studio。  选择“文件” > “新建” > “项目”    。
+以“管理员”身份启动 Visual Studio。  选择“文件” > “新建” > “项目”。
 
 选择“Service Fabric 应用程序”，将其命名为“MyFirstContainer”，并单击“创建”   。
 

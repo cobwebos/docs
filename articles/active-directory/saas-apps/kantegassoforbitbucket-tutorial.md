@@ -101,7 +101,7 @@ ms.locfileid: "67099213"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”  部分中执行以下步骤：
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
     ![Kantega SSO for Bitbucket 域和 URL 单一登录信息](common/idp-intiated.png)
 
@@ -109,7 +109,7 @@ ms.locfileid: "67099213"
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
-5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
+5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
     ![Kantega SSO for Bitbucket 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
@@ -172,7 +172,7 @@ ms.locfileid: "67099213"
 
     ![配置单一登录](./media/kantegassoforbitbucket-tutorial/addon6.png)
 
-    a. 复制“应用 ID URI”  值并将其用作 Azure 门户中“基本 SAML 配置”  部分中的“标识符、回复 URL 和登录 URL”  。
+    a. 复制“应用 ID URI”值并将其用作 Azure 门户中“基本 SAML 配置”部分中的“标识符、回复 URL 和登录 URL”。
 
     b. 单击“下一步”。 
 
@@ -236,7 +236,7 @@ ms.locfileid: "67099213"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入  `brittasimon@yourcompanydomain.extension`  
+    b. 在“用户名”字段中，键入 `brittasimon@yourcompanydomain.extension`  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -259,7 +259,7 @@ ms.locfileid: "67099213"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -293,11 +293,11 @@ ms.locfileid: "67099213"
 
     ![添加员工](./media/kantegassoforbitbucket-tutorial/user4.png) 
 
-    a. 在“用户名”文本框中，键入用户的电子邮件地址（例如 **）。** Brittasimon@contoso.com
+    a. 在“用户名”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
     b. 在“全名”文本框中，键入用户（例如 Britta Simon）的全名。 
 
-    c. 在“电子邮件地址”文本框中，键入用户的电子邮件地址（例如 **）。** Brittasimon@contoso.com
+    c. 在“电子邮件地址”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
     d. 在“密码”文本框中，键入用户的密码。 
 

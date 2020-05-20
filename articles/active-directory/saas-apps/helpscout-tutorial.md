@@ -92,22 +92,22 @@ ms.locfileid: "73159091"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”  部分中执行以下步骤：
+1. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
     ![Help Scout 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. “标识符”是 Help Scout 的“受众 URI (服务提供程序实体 ID)”，以  **开头**  `urn:`
+    a. “标识符”是 Help Scout 的“受众 URI (服务提供程序实体 ID)”，以 `urn:` 开头
 
-    b. “回复 URL”是 Help Scout 的“发回 URL (断言使用者服务 URL)”，以  **开头**  `https://` 
+    b. “回复 URL”是 Help Scout 的“发回 URL (断言使用者服务 URL)”，以 `https://` 开头 
 
     > [!NOTE]
     > 这些 URL 中的值仅用于演示。 需要使用实际回复 URL 和标识符更新这些值。 可从“身份验证”部分下面的“单一登录”选项卡获取这些值，本教程稍后将会介绍。 
 
-1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
+1. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
     ![Help Scout 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
-    在“登录 URL”文本框中，键入 URL  `https://secure.helpscout.net/members/login/`
+    在“登录 URL”文本框中，键入 URL `https://secure.helpscout.net/members/login/`
 
 1. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
@@ -141,7 +141,7 @@ ms.locfileid: "73159091"
 
     a. 在“姓名”字段中，输入“B.Simon”   。
   
-    b. 在“用户名”字段中，键入 B.Simon**yourcompanydomain.extension** **\@**  
+    b. 在“用户名”字段中，键入 B.Simon\@yourcompanydomain.extension  
     例如： B.Simon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -164,7 +164,7 @@ ms.locfileid: "73159091"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -208,7 +208,7 @@ ms.locfileid: "73159091"
 
     a. 在“单一登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
 
-    b. 单击“上传证书”，上传已从 Azure 门户下载的**证书 (Base64)**  。
+    b. 单击“上传证书”，上传已从 Azure 门户下载的**证书 (Base64)**。
 
     c. 在“电子邮件域”文本框中输入组织的电子邮件域，例如 `contoso.com`。  可使用逗号分隔多个域。 每当 Help Scout 用户或管理员在 [Help Scout 登录页](https://secure.helpscout.net/members/login/)上输入该特定域时，都会路由到“标识提供者”，以使用其凭据进行身份验证。
 

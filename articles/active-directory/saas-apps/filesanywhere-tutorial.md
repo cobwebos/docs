@@ -104,13 +104,13 @@ ms.locfileid: "73158213"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
 
     ![FilesAnywhere 域和 URL 单一登录信息](common/both-replyurl.png)
 
-    在“回复 URL”文本框中，使用以下模式键入 URL：`https://<company name>.filesanywhere.com/saml20.aspx?c=<Client Id>` 
+    在“回复 URL”文本框中，使用以下模式键入 URL：`https://<company name>.filesanywhere.com/saml20.aspx?c=<Client Id>`
 
-5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
+5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
     ![FilesAnywhere 域和 URL 单一登录信息](common/both-signonurl.png)
 
@@ -123,9 +123,9 @@ ms.locfileid: "73158213"
 
     ![image](common/edit-attribute.png)
 
-    当用户注册 FilesAnywhere 时，他们会从 [FilesAnywhere 团队](mailto:support@FilesAnywhere.com)那里获得“clientid”  属性的值。 必须为“Client ID”属性添加由 FilesAnywhere 提供的唯一值。
+    当用户注册 FilesAnywhere 时，他们会从 [FilesAnywhere 团队](mailto:support@FilesAnywhere.com)那里获得“clientid”属性的值。 必须为“Client ID”属性添加由 FilesAnywhere 提供的唯一值。
 
-7. 除了上述属性，FilesAnywhere 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
+7. 除了上述属性，FilesAnywhere 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
     | 名称 | 源属性|
     | ---------------| --------------- |    
@@ -185,7 +185,7 @@ ms.locfileid: "73158213"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -208,7 +208,7 @@ ms.locfileid: "73158213"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

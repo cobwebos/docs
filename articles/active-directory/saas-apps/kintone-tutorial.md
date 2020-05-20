@@ -105,7 +105,7 @@ ms.locfileid: "74227580"
 
     ![Kintone 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://<companyname>.kintone.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.kintone.com`
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL  ：
     
@@ -143,7 +143,7 @@ ms.locfileid: "74227580"
 
     ![用户和系统管理](./media/kintone-tutorial/ic785880.png "用户和系统管理")
 
-1. 在“系统管理” **“安全性”下\>** ，单击“登录”  。
+1. 在“系统管理”\>“安全性”下，单击“登录”。
 
     ![登录](./media/kintone-tutorial/ic785881.png "登录")
 
@@ -181,7 +181,7 @@ ms.locfileid: "74227580"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入  `brittasimon@yourcompanydomain.extension`  
+    b. 在“用户名”字段中，键入 `brittasimon@yourcompanydomain.extension`  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -204,7 +204,7 @@ ms.locfileid: "74227580"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

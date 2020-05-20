@@ -105,12 +105,12 @@ ms.locfileid: "67093359"
 
     ![Questetra BPM Suite 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://<subdomain>.questetra.net/saml/SSO/alias/bpm`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.questetra.net/saml/SSO/alias/bpm`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：  `https://<subdomain>.questetra.net/`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<subdomain>.questetra.net/`
 
     > [!NOTE]
-    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 可以从 **Questetra BPM Suite** 公司站点的“SP 信息”  部分获取这些值（在本教程中的后面部分进行说明），或者联系 [Questetra BPM Suite 客户端支持团队](https://www.questetra.com/contact/)来获取。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 可以从 **Questetra BPM Suite** 公司站点的“SP 信息”部分获取这些值（在本教程中的后面部分进行说明），或者联系 [Questetra BPM Suite 客户端支持团队](https://www.questetra.com/contact/)来获取。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 5. 在“使用 SAML 设置单一登录”  页上，在“SAML 签名证书”  部分中，单击“下载”  以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
@@ -180,7 +180,7 @@ ms.locfileid: "67093359"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 **。** brittasimon@yourcompanydomain.extension 例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -202,7 +202,7 @@ ms.locfileid: "67093359"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -226,9 +226,9 @@ ms.locfileid: "67093359"
    
     ![创建测试用户][300] 
    
-    a. 在“名称”文本框中，键入用户的**名称** **。** britta.simon@contoso.com
+    a. 在“名称”文本框中，键入用户的**名称**britta.simon@contoso.com。
    
-    b. 在“电子邮件”文本框中，键入用户的**电子邮件地址** **。** britta.simon@contoso.com
+    b. 在“电子邮件”文本框中，键入用户的**电子邮件地址**britta.simon@contoso.com。
    
     c. 在“密码”文本框中，键入用户的密码   。
     

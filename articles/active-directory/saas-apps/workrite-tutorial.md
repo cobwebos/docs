@@ -126,7 +126,7 @@ ms.locfileid: "67086761"
 
 ### <a name="configure-workrite-single-sign-on"></a>配置 Workrite 单一登录
 
-若要在 Workrite  端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [Workrite 支持团队](mailto:support@workrite.co.uk)  。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Workrite 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [Workrite 支持团队](mailto:support@workrite.co.uk)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -146,7 +146,7 @@ ms.locfileid: "67086761"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -168,7 +168,7 @@ ms.locfileid: "67086761"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -198,7 +198,7 @@ ms.locfileid: "67086761"
    
     ![创建用户对话框][402]
     
-    a. 在“电子邮件”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。 
+    a. 在“电子邮件”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
     b. 在“名字”文本框中，键入用户的名字（如 Britta）  。
 

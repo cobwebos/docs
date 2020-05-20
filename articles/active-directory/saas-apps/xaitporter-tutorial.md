@@ -105,9 +105,9 @@ ms.locfileid: "67086522"
 
     ![XaitPorter 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://<subdomain>.xaitporter.com/saml/login`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.xaitporter.com/saml/login`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：  `https://<subdomain>.xaitporter.com`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<subdomain>.xaitporter.com`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [XaitPorter 客户端支持团队](https://www.xait.com/support/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -116,7 +116,7 @@ ms.locfileid: "67086522"
 
     ![证书下载链接](common/copy-metadataurl.png)
 
-6. 向 **SmartRecruiters 支持团队**提供 **IP 地址**或[应用联合元数据 URL](https://www.smartrecruiters.com/about-us/contact-us/)，使 XaitPorter 能够确保可从其配置允许列表的 XaitPorter 实例访问该 IP 地址。 
+6. 向 [SmartRecruiters 支持团队](https://www.smartrecruiters.com/about-us/contact-us/)提供 **IP 地址**或**应用联合元数据 URL**，使 XaitPorter 能够确保可从其配置允许列表的 XaitPorter 实例访问该 IP 地址。 
 
 ### <a name="configure-xaitporter-single-sign-on"></a>配置 XaitPorter 单一登录
 
@@ -144,7 +144,7 @@ ms.locfileid: "67086522"
 
     a. 选择“启用单一登录身份验证”。 
 
-    b. 在“标识提供者设置”文本框中，粘贴从 Azure 门户复制的**应用联合元数据 URL**并单击“提取”。  
+    b. 在“标识提供者设置”文本框中，粘贴从 Azure 门户复制的**应用联合元数据 URL**并单击“提取”。
 
     c. 选择“启用用户自动创建”。 
 
@@ -168,7 +168,7 @@ ms.locfileid: "67086522"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 **。** brittasimon@yourcompanydomain.extension 例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -190,7 +190,7 @@ ms.locfileid: "67086522"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

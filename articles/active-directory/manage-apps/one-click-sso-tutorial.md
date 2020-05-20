@@ -59,7 +59,7 @@ ms.locfileid: "67872426"
 
    ![安装“我的应用”安全登录浏览器扩展](./media/one-click-sso-tutorial/install-myappssecure-extension.png)
 
-6. 将扩展添加到浏览器后，选择“设置 **应用程序名称\<”\>** 。 重定向到应用程序管理门户后，以管理员身份登录。
+6. 将扩展添加到浏览器后，选择“设置 \<应用程序名称\>”。 重定向到应用程序管理门户后，以管理员身份登录。
 
    ![设置应用程序名称](./media/one-click-sso-tutorial/setup-sso.png)
 

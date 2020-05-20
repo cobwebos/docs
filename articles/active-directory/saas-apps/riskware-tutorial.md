@@ -203,7 +203,7 @@ ms.locfileid: "72027117"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入  `brittasimon@yourcompanydomain.extension`  
+    b. 在“用户名”字段中，键入 `brittasimon@yourcompanydomain.extension`  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -226,7 +226,7 @@ ms.locfileid: "72027117"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -268,7 +268,7 @@ ms.locfileid: "72027117"
 
     a. 在“身份验证”部分下，选择设置的“身份验证”模式（例如“AZURE Configuration for SSO”）。  
 
-    b. 在“登录详细信息”部分下的“用户 ID”文本框中，输入类似于  **的用户电子邮件**  `brittasimon@contoso.com`。
+    b. 在“登录详细信息”部分下的“用户 ID”文本框中，输入类似于 `brittasimon@contoso.com` 的用户电子邮件。
 
     c. 在“密码”文本框中，输入用户的密码。 
 

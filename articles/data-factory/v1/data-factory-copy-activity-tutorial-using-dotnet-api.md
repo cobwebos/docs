@@ -346,7 +346,7 @@ ms.locfileid: "74931737"
     本步骤在 AzureStorageLinkedService 链接服务代表的 Azure 存储中创建名为 InputDataset 的数据集，该数据集指向 Blob 容器 (adftutorial) 根文件夹中的 Blob 文件 (emp.txt)。 如果不指定 fileName 的值（或者跳过此步骤），则会将输入文件夹中的所有 Blob 复制到目标。 在本教程中，请为 fileName 指定一个值。    
 
     本步骤创建名为 **OutputDataset** 的输出数据集。 此数据集指向 Azure SQL 数据库中 **AzureSqlLinkedService**所代表的 SQL 表。
-11. 将以下用于**创建和激活管道**的代码添加到 **Main** 方法。 本步骤创建管道，其中包含使用 InputDataset  作为输入和使用 OutputDataset  作为输出的复制活动  。
+11. 将以下用于**创建和激活管道**的代码添加到 **Main** 方法。 本步骤创建管道，其中包含使用 InputDataset 作为输入和使用 OutputDataset 作为输出的复制活动。
 
     ```csharp
     // create a pipeline
@@ -511,7 +511,7 @@ ms.locfileid: "74931737"
     John, Doe
     Jane, Doe
     ```
-18. 在菜单中单击“调试” **“开始调试”运行示例。**  ->   看到“正在获取数据切片的运行详细信息”时，请等待几分钟，并按 **ENTER**。 
+18. 在菜单中单击“调试” -> “开始调试”运行示例。 看到“正在获取数据切片的运行详细信息”时，请等待几分钟，并按 **ENTER**。
 19. 使用 Azure 门户验证是否创建了包含以下项目的数据工厂 **APITutorialFactory** ：
     * 链接服务：**LinkedService_AzureStorage**
     * 数据集：InputDataset  和 OutputDataset  。

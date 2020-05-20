@@ -171,7 +171,7 @@ ms.locfileid: "67090825"
 
     ![Azure AD 单一登录](./media/silkroad-life-suite-tutorial/tutorial_silkroad_06.png)
 
-1. 单击“下载联合元数据”  ，并在计算机上保存该元数据文件。 在 Azure 门户的“基本 SAML 配置”  部分中，使用所下载的联合元数据作为**服务提供程序元数据文件**。
+1. 单击“下载联合元数据”  ，并在计算机上保存该元数据文件。 在 Azure 门户的“基本 SAML 配置”部分中，使用所下载的联合元数据作为**服务提供程序元数据文件**。
 
     ![Azure AD 单一登录](./media/silkroad-life-suite-tutorial/tutorial_silkroad_07.png)
 
@@ -237,7 +237,7 @@ ms.locfileid: "67090825"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入  `brittasimon@yourcompanydomain.extension`  
+    b. 在“用户名”字段中，键入 `brittasimon@yourcompanydomain.extension`  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -260,7 +260,7 @@ ms.locfileid: "67090825"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

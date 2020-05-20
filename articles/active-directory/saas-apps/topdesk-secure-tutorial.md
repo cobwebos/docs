@@ -209,7 +209,7 @@ ms.locfileid: "74233402"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -232,7 +232,7 @@ ms.locfileid: "74233402"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -251,7 +251,7 @@ ms.locfileid: "74233402"
 
 1. 以管理员身份登录 **TOPdesk - Secure** 公司站点。
 
-2. 在顶部菜单中，单击“TOPdesk” **“新建”\>“支持文件”\>“操作员”\>** 。
+2. 在顶部菜单中，单击“TOPdesk”\>“新建”\>“支持文件”\>“操作员”。
 
     ![“运算符”](./media/topdesk-secure-tutorial/ic790610.png "操作员")
 
@@ -263,9 +263,9 @@ ms.locfileid: "74233402"
 
     b. 在“姓氏”文本框中，键入用户的姓氏（如 Simon）   。
 
-    c. 在“位置”  部分中选择帐户所在的**站点**。
+    c. 在“位置”部分中选择帐户所在的**站点**。
 
-    d. 在“TOPdesk 登录”  部分的“登录名”  文本框中，键入用户的登录名。
+    d. 在“TOPdesk 登录”部分的“登录名”文本框中，键入用户的登录名。
 
     e. 单击“保存”  。
 

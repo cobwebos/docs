@@ -101,13 +101,13 @@ ms.locfileid: "67095435"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
 
     ![OrgChart Now 域和 URL 单一登录信息](common/idp-identifier.png)
 
     在“标识符”  文本框中，键入一个 URL：`https://sso2.orgchartnow.com`
 
-5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
+5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
     ![image](common/both-preintegrated-signon.png)
 
@@ -132,7 +132,7 @@ ms.locfileid: "67095435"
 
 ### <a name="configure-orgchart-now-single-sign-on"></a>配置 OrgChart Now 单一登录
 
-若要在 **OrgChart Now** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [OrgChart Now 支持团队](mailto:ocnsupport@officeworksoftware.com)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **OrgChart Now** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [OrgChart Now 支持团队](mailto:ocnsupport@officeworksoftware.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -152,7 +152,7 @@ ms.locfileid: "67095435"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”  字段中键入 brittasimon@yourcompanydomain.extension   
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -175,7 +175,7 @@ ms.locfileid: "67095435"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -191,7 +191,7 @@ ms.locfileid: "67095435"
 
 1. OrgChart Now 支持在默认情况下启用的实时预配。 尝试访问 OrgChart Now 期间，如果尚不存在用户，则会创建一个新用户。 仅当 SSO 请求来自已识别的 IDP，并且在用户列表中未找到 SAML 断言中的电子邮件时，实时用户预配功能才会创建**只读**用户。 对于此自动预配功能，需要在 OrgChart Now 中创建标题为“常规”的访问组。  请遵循以下步骤创建访问组：
 
-    a. 单击 UI 右上角的**齿轮**图标后，转到“管理组”选项。 
+    a. 单击 UI 右上角的**齿轮**图标后，转到“管理组”选项。
 
     ![OrgChart Now 组](./media/orgchartnow-tutorial/tutorial_orgchartnow_manage.png)    
 
@@ -219,9 +219,9 @@ ms.locfileid: "67095435"
 
     ![OrgChart Now 管理](./media/orgchartnow-tutorial/tutorial_orgchartnow_manageusers.png)
 
-    * 在“用户 ID”文本框中输入用户 ID，例如 **brittasimon\@contoso.com**。 
+    * 在“用户 ID”文本框中输入用户 ID，例如 **brittasimon\@contoso.com**。
 
-    * 在“电子邮件地址”文本框中，输入用户的电子邮件地址，例如 brittasimon\@contoso.com   。
+    * 在“电子邮件地址”文本框中，输入用户的电子邮件地址，例如 brittasimon\@contoso.com。
 
     * 单击“添加”  。
 

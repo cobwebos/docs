@@ -66,11 +66,11 @@ ms.locfileid: "66242573"
     /s.Filter: Optional. Filter string to apply
     /s.Projection: Optional. List of columns to select
 
-在从 Azure 表存储进行导入时，若要检索源连接字符串，请打开 Azure 门户并单击“存储帐户” **“帐户”** “访问密钥”，然后使用复制按钮复制 > 连接字符串 **。**  >   
+在从 Azure 表存储进行导入时，若要检索源连接字符串，请打开 Azure 门户并单击“存储帐户” > “帐户” > “访问密钥”，然后使用复制按钮复制**连接字符串**。
 
 ![HBase 源选项的屏幕截图](./media/table-import/storage-table-access-key.png)
 
-在从 Azure 表存储进行导入时，若要检索源连接字符串，请打开 Azure 门户并单击“存储帐户” **“帐户”** “访问密钥”，然后使用复制按钮复制 > 连接字符串 **。**  >   
+在从 Azure 表存储进行导入时，若要检索源连接字符串，请打开 Azure 门户并单击“存储帐户” > “帐户” > “访问密钥”，然后使用复制按钮复制**连接字符串**。
 
 ![HBase 源选项的屏幕截图](./media/table-import/cosmos-connection-string.png)
 

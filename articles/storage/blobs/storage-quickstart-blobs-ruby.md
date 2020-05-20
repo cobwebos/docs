@@ -115,7 +115,7 @@ Blob 存储支持块 blob、追加 blob 和页 blob。 块 blob 是最常用的 
 
 若要将文件上传到 blob，请通过将本地驱动器上的目录名称和文件名称联接在一起来获取文件的完整路径。 然后可以使用 **create\_block\_blob()** 方法将文件上传到指定的路径。 
 
-示例代码将创建一个本地文件，以供上传和下载，并将要上传的此文件存储为 file**path\_to\_file\_** ，将 blob 的名称存储为 local**file\_name\_** 。 以下示例将文件上传到名为“quickstartblobs”的容器  。
+示例代码将创建一个本地文件，以供上传和下载，并将要上传的此文件存储为 file\_path\_to\_file，将 blob 的名称存储为 local\_file\_name。 以下示例将文件上传到名为“quickstartblobs”的容器  。
 
 ```ruby
 # Create a file in Documents to test the upload and download.

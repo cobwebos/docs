@@ -51,7 +51,7 @@ ms.locfileid: "76988254"
 > * CSS - 定义页面的外观
 > * JavaScript - 定义页面的行为
 
-大部分 HTML 和 CSS 是常规的，因此本教程不做讨论。 HTML 包含搜索表单，用户可以在其中输入查询并选择搜索选项。 该表单会连接到使用 `onsubmit` 标记的 `<form>` 属性执行搜索的 JavaScript：
+大部分 HTML 和 CSS 是常规的，因此本教程不做讨论。 HTML 包含搜索表单，用户可以在其中输入查询并选择搜索选项。 该表单会连接到使用 `<form>` 标记的 `onsubmit` 属性执行搜索的 JavaScript：
 
 ```html
 <form name="bing" onsubmit="return bingWebSearch(this)">
@@ -64,7 +64,7 @@ HTML 还包含部门（HTML `<div>` 标记），其中显示搜索结果。
 
 为了避免将必应搜索 API 订阅密钥包含在代码中，我们使用浏览器的持久性存储来存储密钥。 在存储密钥之前，系统会提示我们输入用户的密钥。 如果该密钥稍后被 API 拒绝，我们将使已存储的密钥失效，因此系统会再次提示用户输入。
 
-我们定义使用 `storeValue` 对象（并非所有浏览器都支持它）或 cookie 的 `retrieveValue` 和 `localStorage` 函数。 `getSubscriptionKey()` 函数使用这些函数来存储和检索用户的密钥。
+我们定义使用 `localStorage` 对象（并非所有浏览器都支持它）或 cookie 的 `storeValue` 和 `retrieveValue` 函数。 `getSubscriptionKey()` 函数使用这些函数来存储和检索用户的密钥。
 
 ``` javascript
 // Cookie names for data we store

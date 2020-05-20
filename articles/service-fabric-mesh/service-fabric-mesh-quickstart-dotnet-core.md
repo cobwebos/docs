@@ -25,9 +25,9 @@ Azure Service Fabric 网格是一个完全托管的服务，由此开发者可�
 
 ## <a name="create-a-service-fabric-mesh-project"></a>创建 Service Fabric 网格项目
 
-打开 Visual Studio，并选择“文件” **“新建”** “项目...” >    >  
+打开 Visual Studio，并选择“文件” > “新建” > “项目...”
 
-在“新建项目”对话框顶部的“搜索”框中键入 **。**  `mesh` 选择“Service Fabric 网格应用程序”模板  。 （如果未看到该模板，请确保已根据[设置开发环境](service-fabric-mesh-howto-setup-developer-environment-sdk.md)中所述安装了网格 SDK 和 VS Tools 预览版。） 
+在“新建项目”对话框顶部的“搜索”框中键入 `mesh`。 选择“Service Fabric 网格应用程序”模板  。 （如果未看到该模板，请确保已根据[设置开发环境](service-fabric-mesh-howto-setup-developer-environment-sdk.md)中所述安装了网格 SDK 和 VS Tools 预览版。） 
 
 在“名称”框中键入 ServiceFabricMesh1，并在“位置”框中，将文件夹路径设置为要将项目文件存储到的位置    。
 
@@ -67,11 +67,11 @@ Visual Studio 创建 Service Fabric 网格应用程序项目和 ASP.NET Core 项
 
 选择自己的 Azure 帐户和订阅。 选择“位置”  。 本文使用“美国东部”  。
 
-在“资源组”下，选择“**创建新资源组...>”** **\<** 。 此时会显示“创建资源组”对话框  。 设置“资源组名称”和“位置”   。  本快速入门使用“美国东部”位置并将组命名为“sfmeshTutorial1RG”（如果组织有多个人使用同一订阅，请选择唯一的资源组名称）   。  单击“创建”以创建资源组，并返回发布对话框  。
+在“资源组”下，选择“\<创建新资源组...>”。 此时会显示“创建资源组”对话框  。 设置“资源组名称”和“位置”   。  本快速入门使用“美国东部”位置并将组命名为“sfmeshTutorial1RG”（如果组织有多个人使用同一订阅，请选择唯一的资源组名称）   。  单击“创建”以创建资源组，并返回发布对话框  。
 
 ![Visual Studio - Service Fabric 网格 - 新建资源组对话框](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-resource-group-dialog.png)
 
-返回“发布 Service Fabric 应用程序”对话框，在“Azure 容器注册表”下选择“**创建新容器注册表...>”**  **\<** 。 在“创建容器注册表”对话框中，为“容器注册表名称”使用唯一的名称   。 指定“位置”（本教程使用“美国东部”）   。 在下拉列表中选择在上一步骤创建的“资源组”，例如 sfmeshTutorial1RG   。 将“SKU”设置为“基本”，然后单击“创建”返回发布对话框    。
+返回“发布 Service Fabric 应用程序”对话框，在“Azure 容器注册表”下选择“\<创建新容器注册表...>”。 在“创建容器注册表”对话框中，为“容器注册表名称”使用唯一的名称   。 指定“位置”（本教程使用“美国东部”）   。 在下拉列表中选择在上一步骤创建的“资源组”，例如 sfmeshTutorial1RG   。 将“SKU”设置为“基本”，然后单击“创建”返回发布对话框    。
 
 ![Visual Studio - Service Fabric 网格 - 新建资源组对话框](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-container-registry-dialog.png)
 

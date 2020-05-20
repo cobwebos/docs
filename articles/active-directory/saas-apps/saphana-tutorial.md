@@ -117,7 +117,7 @@ ms.locfileid: "73161182"
 
     ![SAP HANA 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中键入以下值：  `HA100`
+    a. 在“标识符”文本框中键入以下值：`HA100`
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<Customer-SAP-instance-url>/sap/hana/xs/saml/login.xscfunc`
 
@@ -128,7 +128,7 @@ ms.locfileid: "73161182"
 
     ![image](common/edit-attribute.png)
 
-6. 在“用户属性和声明”对话框中的“用户属性”部分，执行以下步骤   ：
+6. 在“用户属性和声明”对话框中的“用户属性”部分，执行以下步骤：
  
     a. 单击“编辑图标”，打开“管理用户声明”对话框   。
 
@@ -174,7 +174,7 @@ ms.locfileid: "73161182"
 
     ![“保存”按钮](./media/saphana-tutorial/sap4.png)
 
-4. 在 HANA Studio 中“配置”选项卡的系统属性内，根据 **saml** 筛选设置。  然后将 **assertion_timeout** 从 **10 秒**调整为 **120 秒**。
+4. 在 HANA Studio 中“配置”选项卡的系统属性内，根据 **saml** 筛选设置。 然后将 **assertion_timeout** 从 **10 秒**调整为 **120 秒**。
 
     ![assertion_timeout 设置](./media/saphana-tutorial/sap7.png)
 
@@ -196,7 +196,7 @@ ms.locfileid: "73161182"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -219,7 +219,7 @@ ms.locfileid: "73161182"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

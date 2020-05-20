@@ -56,7 +56,7 @@ ms.locfileid: "67094155"
 
     ![选择“Azure Active Directory”](common/select-azuread.png)
 
-2. 转到“企业应用程序” > “所有应用程序”   ：
+2. 转到“企业应用程序” > “所有应用程序”：
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -159,7 +159,7 @@ ms.locfileid: "67094155"
 
     1. 在“姓名”  框中，输入 **BrittaSimon**。
   
-    1. 在“用户名”框中，输入 BrittaSimon@\<yourcompanydomain>.\<extension>   。 （例如：BrittaSimon@contoso.com。）
+    1. 在“用户名”框中，输入 BrittaSimon@\<yourcompanydomain>.\<extension>。 （例如：BrittaSimon@contoso.com。）
 
     1. 选择“显示密码”，然后记下“密码”框中的值   。
 

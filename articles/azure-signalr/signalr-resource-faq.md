@@ -52,7 +52,7 @@ SignalR 服务将监视应用程序服务器的检测信号。
 
 ## <a name="why-does-my-custom-iuseridprovider-throw-exception-when-switching-from-aspnet-core-signalr--sdk-to-azure-signalr-service-sdk"></a>从 ASP.NET Core SignalR SDK 切换到 Azure SignalR 服务 SDK 时，自定义 `IUserIdProvider` 为何引发异常？
 
-调用 `HubConnectionContext context` 时，ASP.NET Core SignalR SDK 与 Azure SignalR 服务 SDK 的 `IUserIdProvider` 参数不相同。
+调用 `IUserIdProvider` 时，ASP.NET Core SignalR SDK 与 Azure SignalR 服务 SDK 的 `HubConnectionContext context` 参数不相同。
 
 在 ASP.NET Core SignalR 中，`HubConnectionContext context` 是包含所有属性有效值的物理客户端连接的上下文。
 

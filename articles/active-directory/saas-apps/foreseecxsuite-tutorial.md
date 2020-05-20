@@ -119,7 +119,7 @@ ms.locfileid: "67550391"
 
     a. 在“登录 URL”文本框中，键入 URL：  `https://cxsuite.foresee.com/`
 
-    b. 在“标识符”文本框中，使用以下模式键入 URL：https:\//www.okta.com/saml2/service-provider/\<UniqueID> 
+    b. 在“标识符”文本框中，使用以下模式键入 URL：https:\//www.okta.com/saml2/service-provider/\<UniqueID>
 
     > [!Note]
     > 如果“标识符”值未自动填充，请根据上述模式手动填充该值  。 标识符非实际值。 请使用实际标识符更新此值。 请联系 [ForeSee CX Suite 客户端支持团队](mailto:support@foresee.com)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -140,7 +140,7 @@ ms.locfileid: "67550391"
 
 ### <a name="configure-foresee-cx-suite-single-sign-on"></a>配置 ForeSee CX Suite 单一登录
 
-若要在 ForeSee CX Suite 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [ 支持团队](mailto:support@foresee.com)   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 ForeSee CX Suite 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [ 支持团队](mailto:support@foresee.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -160,7 +160,7 @@ ms.locfileid: "67550391"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -182,7 +182,7 @@ ms.locfileid: "67550391"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

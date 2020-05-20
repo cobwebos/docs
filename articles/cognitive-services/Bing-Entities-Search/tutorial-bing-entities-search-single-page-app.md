@@ -90,7 +90,7 @@ HTML 还包含部门（HTML `<div>` 标记），其中显示搜索结果。
 
 为了避免必须将必应搜索和必应地图 API 订阅密钥包含在代码中这种情形，请使用浏览器的持久性存储来存储它们。 如果任何一种密钥尚未存储，我们会提示你进行存储，以备后用。 如果该密钥随后被 API 拒绝，我们会使已存储的密钥失效，并会在用户下次进行搜索时要求其提供密钥。
 
-我们定义使用 `storeValue` 对象（如果浏览器支持它）或 Cookie 的 `retrieveValue` 和 `localStorage` 函数。 `getSubscriptionKey()` 函数使用这些函数来存储和检索用户的密钥。 可以使用下面的全局终结点，也可以使用资源的 Azure 门户中显示的[自定义子域](../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
+我们定义使用 `localStorage` 对象（如果浏览器支持它）或 Cookie 的 `storeValue` 和 `retrieveValue` 函数。 `getSubscriptionKey()` 函数使用这些函数来存储和检索用户的密钥。 可以使用下面的全局终结点，也可以使用资源的 Azure 门户中显示的[自定义子域](../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
 ```javascript
 // cookie names for data we store
@@ -124,7 +124,7 @@ function getSearchSubscriptionKey() {
 }
 ```
 
-在页面完成加载后，HTML `<body>` 标记包括名为 `onload` 和 `getSearchSubscriptionKey()` 的 `getMapsSubscriptionKey()` 属性。 这些调用的作用是在用户未输入其密钥的情况下立即提示用户输入密钥。
+在页面完成加载后，HTML `<body>` 标记包括名为 `getSearchSubscriptionKey()` 和 `getMapsSubscriptionKey()` 的 `onload` 属性。 这些调用的作用是在用户未输入其密钥的情况下立即提示用户输入密钥。
 
 ```html
 <body onload="document.forms.bing.query.focus(); getSearchSubscriptionKey(); getMapsSubscriptionKey();">

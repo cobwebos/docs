@@ -134,7 +134,7 @@ ms.locfileid: "73158690"
 
     ![image](common/edit-attribute.png)
 
-6. 在“用户属性”  对话框的“用户声明”  部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
+6. 在“用户属性”对话框的“用户声明”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
     
     | 名称 | 源属性|
     | ---------| --------- |
@@ -174,7 +174,7 @@ ms.locfileid: "73158690"
 
 ### <a name="configure-ceridian-dayforce-hcm-single-sign-on"></a>配置 Ceridian Dayforce HCM 单一登录
 
-若要在 Ceridian Dayforce HCM 端配置单一登录，需要将下载的元数据 XML 以及从 Azure 门户复制的相应 URL 发送给 [Ceridian Dayforce HCM 支持团队](https://www.ceridian.com/support)   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Ceridian Dayforce HCM 端配置单一登录，需要将下载的元数据 XML 以及从 Azure 门户复制的相应 URL 发送给 [Ceridian Dayforce HCM 支持团队](https://www.ceridian.com/support)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -194,7 +194,7 @@ ms.locfileid: "73158690"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -217,7 +217,7 @@ ms.locfileid: "73158690"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

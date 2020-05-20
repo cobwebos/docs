@@ -105,7 +105,7 @@ ms.locfileid: "67094836"
 
     ![Perception United States (Non-UltiPro) 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中键入 URL：  `https://perception.kanjoya.com/sp`
+    a. 在“标识符”文本框中键入 URL：`https://perception.kanjoya.com/sp`
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://perception.kanjoya.com/sso?idp=<entity_id>`
 
@@ -143,11 +143,11 @@ ms.locfileid: "67094836"
 
     ![Perception United States (Non-UltiPro) 用户](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_account.png)
 
-    a. 在“公司名称”文本框中，键入**公司**的名称  。
+    a. 在“公司名称”文本框中，键入**公司**的名称。
     
-    b. 在“帐户名”文本框中，键入**帐户**的名称  。
+    b. 在“帐户名”文本框中，键入**帐户**的名称。
 
-    c. 在“默认收件人电子邮件”文本框中，键入有效的**电子邮件**。 
+    c. 在“默认收件人电子邮件”文本框中，键入有效的**电子邮件**。
 
     d. 选择“SAML 2.0”作为“SSO 标识提供者”。  
 
@@ -157,11 +157,11 @@ ms.locfileid: "67094836"
 
     a. 选择“电子邮件”作为“SAML NameID 类型”。  
 
-    b. 在“SSO 配置名称”文本框中，键入**配置**的名称。 
+    b. 在“SSO 配置名称”文本框中，键入**配置**的名称。
     
     c. 在“标识提供者名称”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值   。 
 
-    d. 在“SAML 域”文本框中，输入类似于  **的域。** @contoso.com
+    d. 在“SAML 域”文本框中，输入类似于 @contoso.com 的域。
 
     e. 单击“再次上传”以上传“元数据 XML”文件。  
 
@@ -185,7 +185,7 @@ ms.locfileid: "67094836"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 **。** brittasimon@yourcompanydomain.extension 例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -207,7 +207,7 @@ ms.locfileid: "67094836"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

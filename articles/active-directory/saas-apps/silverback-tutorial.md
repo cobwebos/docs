@@ -107,7 +107,7 @@ ms.locfileid: "67090908"
 
     a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<YOURSILVERBACKURL>.com/ssp`。
 
-    b. 在“标识符”框中，使用以下模式键入 URL：  `<YOURSILVERBACKURL>.com`
+    b. 在“标识符”框中，使用以下模式键入 URL：`<YOURSILVERBACKURL>.com`
 
     c. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<YOURSILVERBACKURL>.com/sts/authorize/login`
 
@@ -122,7 +122,7 @@ ms.locfileid: "67090908"
 
 1. 在另一 Web 浏览器中，以管理员身份登录 Silverback 服务器。
 
-2. 导航到“管理员” **“验证提供程序”**  >   。
+2. 导航到“管理员” > “验证提供程序”。
 
 3. 在“验证提供程序设置”页上，执行以下步骤  ：
 
@@ -164,7 +164,7 @@ ms.locfileid: "67090908"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”  字段中键入 **brittasimon@yourcompanydomain.extension**  
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -187,7 +187,7 @@ ms.locfileid: "67090908"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -211,13 +211,13 @@ ms.locfileid: "67090908"
 
     ![用户](./media/silverback-tutorial/tutorial_silverback_user.png)
 
-    a. 在“用户名”文本框中，输入用户的名字，例如 **Britta**  。
+    a. 在“用户名”文本框中，输入用户的名字，例如 **Britta**。
 
     b. 在“名字”文本框中，输入用户的名字，如 Britta   。
 
     c. 在“姓氏”文本框中，输入用户的名字，如 Simon   。
 
-    d. 在“电子邮件地址”文本框中，输入用户的电子邮件地址，例如  **Brittasimon@contoso.com** 。
+    d. 在“电子邮件地址”文本框中，输入用户的电子邮件地址，例如 **Brittasimon@contoso.com**。
 
     e. 在“密码”文本框中，输入密码  。
 
@@ -226,7 +226,7 @@ ms.locfileid: "67090908"
     g. 单击“保存”  。
 
 > [!NOTE]
-> 如果不想手动创建每个用户，请启用“管理员” **“验证提供程序”下的“动态用户创建”复选框**   >   。
+> 如果不想手动创建每个用户，请启用“管理员” > “验证提供程序”下的“动态用户创建”复选框。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

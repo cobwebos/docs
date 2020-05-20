@@ -134,7 +134,7 @@ ms.locfileid: "73160657"
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Mimecast Admin Console。
 
-2. 转到“服务” **“应用程序”。\>**
+2. 转到“服务”\>“应用程序”。
 
     ![服务](./media/mimecast-admin-console-tutorial/ic794998.png "服务")
 
@@ -165,7 +165,7 @@ ms.locfileid: "73160657"
     >[!NOTE]
     >对于 Mimecast Admin Console，“登录 URL”值和“注销 URL”值是相同的。
     
-    g. 在记事本中打开从 Azure 门户下载的 base-64 证书，删除第一行（“ *”）和最后一行（“--”），将剩余的内容复制到剪贴板中，然后将其粘贴到“标识提供者证书(元数据)”文本框中* *--*  。
+    g. 在记事本中打开从 Azure 门户下载的 base-64 证书，删除第一行（“--”）和最后一行（“--”），将剩余的内容复制到剪贴板中，然后将其粘贴到“标识提供者证书(元数据)”文本框中。
     
     h. 选择“允许单一登录”。 
     
@@ -189,7 +189,7 @@ ms.locfileid: "73160657"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -212,7 +212,7 @@ ms.locfileid: "73160657"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -232,7 +232,7 @@ ms.locfileid: "73160657"
 
 1. 以管理员身份登录到 **Mimecast Admin Console**。
 
-2. 转到“目录” **“内部”。\>**
+2. 转到“目录”\>“内部”。
    
     ![Directories](./media/mimecast-admin-console-tutorial/ic795003.png "目录")
 

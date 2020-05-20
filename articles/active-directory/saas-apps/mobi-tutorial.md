@@ -89,7 +89,7 @@ ms.locfileid: "73160440"
 
 若要配置 MOBI 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/) MOBI 应用程序集成页上，选择“单一登录”   。
+1. 在 [Azure 门户](https://portal.azure.com/) MOBI 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -101,7 +101,7 @@ ms.locfileid: "73160440"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”  部分中执行以下步骤：
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
     ![MOBI 域和 URL 单一登录信息](common/idp-intiated.png)
 
@@ -109,7 +109,7 @@ ms.locfileid: "73160440"
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<subdomain>.thefutureis.mobi/saml_consume`
 
-5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
+5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
     ![MOBI 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
@@ -134,7 +134,7 @@ ms.locfileid: "73160440"
 
 ### <a name="configure-mobi-single-sign-on"></a>配置 MOBI 单一登录
 
-若要在 **MOBI** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [MOBI 支持团队](mailto:sso@mobiwm.com)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **MOBI** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [MOBI 支持团队](mailto:sso@mobiwm.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -154,7 +154,7 @@ ms.locfileid: "73160440"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -177,7 +177,7 @@ ms.locfileid: "73160440"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

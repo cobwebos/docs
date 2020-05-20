@@ -105,7 +105,7 @@ ms.locfileid: "67088228"
 
     ![T&E Express 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入值作为 URL：  `https://<domain>.tyeexpress.com`
+    a. 在“标识符”文本框中，使用以下模式键入值作为 URL：`https://<domain>.tyeexpress.com`
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<domain>.tyeexpress.com/authorize/samlConsume.aspx`
 
@@ -158,7 +158,7 @@ ms.locfileid: "67088228"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”  字段中键入 **brittasimon@yourcompanydomain.extension**  
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -181,7 +181,7 @@ ms.locfileid: "67088228"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -203,7 +203,7 @@ ms.locfileid: "67088228"
 
     ![添加员工](./media/tyeexpress-tutorial/tye-adminusers.png)
 
-1. 在主页上单击“ **”+** 添加用户。
+1. 在主页上单击“+”添加用户。
 
     ![添加员工](./media/tyeexpress-tutorial/tye-usershome.png)
 

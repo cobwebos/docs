@@ -107,11 +107,11 @@ ms.locfileid: "67086475"
 
     在“标识符”  文本框中，键入一个 URL：`https://app.yodeck.com/api/v1/account/metadata/`
 
-5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
+5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
     ![image](common/both-preintegrated-signon.png)
 
-    在“登录 URL”文本框中，键入 URL：  `https://app.yodeck.com/login`
+    在“登录 URL”文本框中，键入 URL：`https://app.yodeck.com/login`
 
 6. 在“设置 SAML 单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 
@@ -155,7 +155,7 @@ ms.locfileid: "67086475"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 **。** brittasimon@yourcompanydomain.extension 例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -177,7 +177,7 @@ ms.locfileid: "67086475"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -211,7 +211,7 @@ ms.locfileid: "67086475"
 
     b. 在“姓氏”  文本框中，键入用户的姓氏（如“Simon”  ）。
 
-    c. 在“电子邮件”文本框中，键入用户的电子邮件地址（例如 **）。** brittasimon@contoso.com
+    c. 在“电子邮件”文本框中，键入用户的电子邮件地址（例如 brittasimon@contoso.com）。
 
     d. 根据组织要求选择适当的“帐户权限”选项  。
     

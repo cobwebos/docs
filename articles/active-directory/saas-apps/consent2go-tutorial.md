@@ -106,7 +106,7 @@ ms.locfileid: "73158479"
 
     ![Consent2Go 域和 URL 单一登录信息](common/sp-signonurl.png)
 
-    在“登录 URL”文本框中，键入 URL：  `https://www.mcbschools.com/Login`
+    在“登录 URL”文本框中，键入 URL：`https://www.mcbschools.com/Login`
 
 5. 在“设置 SAML 单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 
@@ -134,7 +134,7 @@ ms.locfileid: "73158479"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -157,7 +157,7 @@ ms.locfileid: "73158479"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

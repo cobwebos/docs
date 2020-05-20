@@ -64,7 +64,7 @@ ms.locfileid: "80067571"
 
    ![创建新的保管库](./media/tutorial-prepare-azure/new-vault-settings.png)
 
-   新保管库此时会列在“仪表板” > “所有资源”中，以及“恢复服务保管库”主页上。   
+   新保管库此时会列在“仪表板” > “所有资源”中，以及“恢复服务保管库”主页上。
 
 ## <a name="set-up-an-azure-network"></a>设置 Azure 网络
 

@@ -70,7 +70,7 @@ ms.locfileid: "79224124"
         ![选择一个库](./media/tutorial-create-custom-lab/new-virtual-machine.png)
 1. 选择“高级设置”选项卡  。
     1. 在“使此计算机可认领”中，选择“是”   。
-    2. 确认“实例计数”已设为“1”   。 如果将其设为 2，将创建 2 个带有名称  **的 VM**`<base image name>00' and <base image name>01`。 例如 `win10vm00` 和 `win10vm01`。     
+    2. 确认“实例计数”已设为“1”   。 如果将其设为 2，将创建 2 个带有名称 `<base image name>00' and <base image name>01` 的 VM。 例如 `win10vm00` 和 `win10vm01`。     
     3. 选择“提交”。  
 
         ![选择一个库](./media/tutorial-create-custom-lab/new-vm-advanced-settings.png)

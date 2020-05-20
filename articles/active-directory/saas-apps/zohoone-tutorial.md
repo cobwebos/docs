@@ -101,11 +101,11 @@ ms.locfileid: "67086232"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
 
     ![Zoho One 域和 URL 单一登录信息](common/idp-relay.png)
 
-    a. 在“标识符”文本框中键入 URL：  `one.zoho.com`
+    a. 在“标识符”文本框中键入 URL：`one.zoho.com`
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://accounts.zoho.com/samlresponse/<saml-identifier>`
 
@@ -114,7 +114,7 @@ ms.locfileid: "67086232"
 
     c. 单击“设置其他 URL”  。
 
-    d. 在“中继状态”文本框中键入 URL：  `https://one.zoho.com`
+    d. 在“中继状态”文本框中键入 URL：`https://one.zoho.com`
 
 5. 如果要在“SP”发起的模式下配置应用程序，请执行以下步骤  ：
 
@@ -160,7 +160,7 @@ ms.locfileid: "67086232"
 
     d. 单击“保存”  。
 
-4. 保存 SAML 身份验证设置后，复制“SAML 标识符”值并在其后追加“回复 URL”（替代 **，例如** ），然后在“基本 SAML 配置”部分的“回复 URL”文本框中粘贴生成的值。  `<saml-identifier>``https://accounts.zoho.com/samlresponse/one.zoho.com`  
+4. 保存 SAML 身份验证设置后，复制“SAML 标识符”值并在其后追加“回复 URL”（替代 `<saml-identifier>`，例如 `https://accounts.zoho.com/samlresponse/one.zoho.com`），然后在“基本 SAML 配置”部分的“回复 URL”文本框中粘贴生成的值。
 
     ![Zoho One SAML](./media/zohoone-tutorial/tutorial_zohoone_samlidenti.png)
 
@@ -197,7 +197,7 @@ ms.locfileid: "67086232"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 **。** `brittasimon@yourcompanydomain.extension` 例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -219,7 +219,7 @@ ms.locfileid: "67086232"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -247,7 +247,7 @@ ms.locfileid: "67086232"
     
     a. 在“姓名”文本框中，输入用户名，例如 Britta Simon   。
     
-    b. 在“电子邮件地址”文本框中，输入用户的电子邮件地址，例如  brittasimon@contoso.com。
+    b. 在“电子邮件地址”文本框中，输入用户的电子邮件地址，例如 brittasimon@contoso.com。
 
     >[!Note]
     >从域列表中选择已验证的域。

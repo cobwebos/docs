@@ -23,7 +23,7 @@ ms.locfileid: "74228158"
     1. 输入应用程序的名称。
     1. 对于“解决方案”  ，选择“添加到解决方案”  ，然后选择“创建”  以创建项目。
 
-1. 选择“工具” **“NuGet 包管理器”** “包管理器控制台”，然后在控制台窗口中运行以下命令 >    >   ：
+1. 选择“工具” > “NuGet 包管理器” > “包管理器控制台”，然后在控制台窗口中运行以下命令：
 
    ```powershell
    Install-Package Microsoft.Azure.NotificationHubs

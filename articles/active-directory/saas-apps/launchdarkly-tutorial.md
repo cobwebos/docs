@@ -103,18 +103,18 @@ ms.locfileid: "73159655"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”  部分中执行以下步骤：
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
     ![LaunchDarkly 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中键入 URL：  `app.launchdarkly.com`
+    a. 在“标识符”文本框中键入 URL：`app.launchdarkly.com`
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://app.launchdarkly.com/trust/saml2/acs/<customers-unique-id>`
 
     > [!NOTE]
     > 答复 URL 值不是真实值。 用户将使用实际的回复 URL 更新该值（本教程稍后将会介绍）。 如果想要在 IDP 模式下使用该应用程序，则需要将“登录 URL”字段留空，否则将无法从 IDP 启动登录    。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
+5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://app.launchdarkly.com`
 
@@ -180,7 +180,7 @@ ms.locfileid: "73159655"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -203,7 +203,7 @@ ms.locfileid: "73159655"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

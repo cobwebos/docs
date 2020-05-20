@@ -105,7 +105,7 @@ printf("%d: Device \"%s\"\n", deviceIndex, serial_number);
 
 ## <a name="open-the-default-device"></a>打开默认设备
 
-在大多数应用程序中，只会将单个 Azure Kinect DK 附加到同一台计算机。 如果只需连接到单个预期设备，可以结合 [ 的 `k4a_device_open()` 调用 ](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga3d4eb5dfbf4d576d4978b66ea419f113.html#ga3d4eb5dfbf4d576d4978b66ea419f113)`index``K4A_DEVICE_DEFAULT` 打开第一台设备。
+在大多数应用程序中，只会将单个 Azure Kinect DK 附加到同一台计算机。 如果只需连接到单个预期设备，可以结合 `K4A_DEVICE_DEFAULT` 的 `index` 调用 [`k4a_device_open()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga3d4eb5dfbf4d576d4978b66ea419f113.html#ga3d4eb5dfbf4d576d4978b66ea419f113) 打开第一台设备。
 
 ```C
 k4a_device_t device = NULL;

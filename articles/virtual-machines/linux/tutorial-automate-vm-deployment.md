@@ -102,7 +102,7 @@ runcmd:
 有关 cloud-init 配置选项的详细信息，请参阅 [cloud-init 配置示例](https://cloudinit.readthedocs.io/en/latest/topics/examples.html)。
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
-使用 [az group create](/cli/azure/group#az-group-create) 创建资源组，才能创建 VM。 以下示例在“eastus”  位置创建名为“myResourceGroupAutomate”  的资源组：
+使用 [az group create](/cli/azure/group#az-group-create) 创建资源组，才能创建 VM。 以下示例在“eastus”位置创建名为“myResourceGroupAutomate”的资源组：
 
 ```azurecli-interactive
 az group create --name myResourceGroupAutomate --location eastus
@@ -129,7 +129,7 @@ az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myAuto
 ```
 
 ## <a name="test-web-app"></a>测试 Web 应用
-现在可以打开 Web 浏览器，并在地址栏中输入“http:\/\/\<publicIpAddress>”  。 在 VM 创建过程中提供自己的公共 IP 地址。 将显示 Node.js 应用，如下例所示：
+现在可以打开 Web 浏览器，并在地址栏中输入“http:\/\/\<publicIpAddress>”。 在 VM 创建过程中提供自己的公共 IP 地址。 将显示 Node.js 应用，如下例所示：
 
 ![查看运行中的 NGINX 站点](./media/tutorial-automate-vm-deployment/nginx.png)
 
@@ -260,7 +260,7 @@ az vm open-port \
 ```
 
 ### <a name="test-secure-web-app"></a>测试 Web 应用是否安全
-现在可以打开 Web 浏览器，并在地址栏中输入“https:\/\/\<publicIpAddress>”  。 提供你自己的公共 IP 地址，如前面的 VM 创建过程的输出中所示。 若使用自签名的证书，请接受安全警告：
+现在可以打开 Web 浏览器，并在地址栏中输入“https:\/\/\<publicIpAddress>”。 提供你自己的公共 IP 地址，如前面的 VM 创建过程的输出中所示。 若使用自签名的证书，请接受安全警告：
 
 ![接受 Web 浏览器安全警告](./media/tutorial-automate-vm-deployment/browser-warning.png)
 

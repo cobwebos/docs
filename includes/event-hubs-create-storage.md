@@ -22,7 +22,7 @@ ms.locfileid: "75692527"
 
     ![创建资源菜单项，Microsoft Azure 门户](./media/event-hubs-create-storage/create-resource.png)
 
-2. 选择“存储” **“存储帐户”**  >   。
+2. 选择“存储” > “存储帐户”。
    
     ![选择存储帐户，Microsoft Azure 门户](./media/event-hubs-create-storage/select-storage-account.png)
 

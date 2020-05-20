@@ -47,7 +47,7 @@ ms.locfileid: "75382321"
 JSON.net 允许使用 API 返回的 JSON 响应。 将其 NuGet 包添加到项目中：
 
 - 在“解决方案资源管理器”中，右键单击项目并选择“管理 NuGet 包...”   。
-- 在“浏览”选项卡中，搜索  `Newtonsoft.Json`。 选择最新版本，然后单击“安装”  。
+- 在“浏览”选项卡中，搜索 `Newtonsoft.Json`。 选择最新版本，然后单击“安装”  。
 - 单击“查看更改”窗口中的“确定”按钮   。
 - 关闭标题为“NuGet: MyConsoleSearchApp”的 Visual Studio 选项卡  。
 
@@ -61,7 +61,7 @@ JSON.net 允许使用 API 返回的 JSON 响应。 将其 NuGet 包添加到项�
 
 ## <a name="add-some-necessary-using-statements"></a>添加一些必要的 using 语句
 
-本教程中的代码还需要三个 using 语句。 在 `using`Program.cs**顶部的现有** 语句下面添加这些语句：
+本教程中的代码还需要三个 using 语句。 在 **Program.cs** 顶部的现有 `using` 语句下面添加这些语句：
 
 ```csharp
 using System.Web;

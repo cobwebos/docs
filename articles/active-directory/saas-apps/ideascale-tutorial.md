@@ -106,7 +106,7 @@ ms.locfileid: "74227572"
 
     ![IdeaScale 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://<companyname>.ideascale.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.ideascale.com`
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL  ：
     
@@ -140,7 +140,7 @@ ms.locfileid: "74227572"
 
     ![社区设置](./media/ideascale-tutorial/ic790847.png "社区设置")
 
-3. 转到“安全性” **“单一登录设置”\>** 。
+3. 转到“安全性”\>“单一登录设置”。
 
     ![单一登录设置](./media/ideascale-tutorial/ic790848.png "单一登录设置")
 
@@ -178,7 +178,7 @@ ms.locfileid: "74227572"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -201,7 +201,7 @@ ms.locfileid: "74227572"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -223,7 +223,7 @@ ms.locfileid: "74227572"
 
     ![社区设置](./media/ideascale-tutorial/ic790847.png "社区设置")
 
-3. 转到“基本设置” **“成员管理”\>** 。
+3. 转到“基本设置”\>“成员管理”。
 
 4. 单击“添加成员”  。
 

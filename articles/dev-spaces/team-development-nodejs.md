@@ -53,7 +53,7 @@ ms.locfileid: "78251938"
 
 1. 克隆 [Dev Spaces 示例应用程序](https://github.com/Azure/dev-spaces)：`git clone https://github.com/Azure/dev-spaces && cd dev-spaces`
 1. 签出远程分支 *azds_updates*：`git checkout -b azds_updates origin/azds_updates`
-1. 选择 _dev_ 空间：`azds space select --name dev`。 当系统提示选择父 dev 空间时，请选择“_无\<”\>_ 。
+1. 选择 _dev_ 空间：`azds space select --name dev`。 当系统提示选择父 dev 空间时，请选择“\<无\>”。
 1. 导航到 _mywebapi_ 目录并执行 `azds up -d`
 1. 导航到 _webfrontend_ 目录并执行 `azds up -d`
 1. 执行 `azds list-uris` 以查看 _webfrontend_ 的公共终结点
@@ -98,7 +98,7 @@ azds space select --name scott
 让我们看看该项目的运行情况。
 
 ### <a name="make-a-code-change"></a>进行代码更改
-转到 `mywebapi` 的 VS Code 窗口，并在 `/` 中对默认的 GET `server.js` 处理程序进行代码编辑，例如：
+转到 `mywebapi` 的 VS Code 窗口，并在 `server.js` 中对默认的 GET `/` 处理程序进行代码编辑，例如：
 
 ```javascript
 app.get('/', function (req, res) {
@@ -131,7 +131,7 @@ http://localhost:53831 => mywebapi.scott:80                                Tunne
 http://scott.s.dev.webfrontend.6364744826e042319629.ce.azds.io/  Available
 ```
 
-请注意，*webfrontend* 的公共访问点 URL 带有 *scott.s* 前缀。 此 URL 对于 _dev/scott_ 空间是唯一的。 此 URL 前缀告知入口控制器将请求路由到服务的 _dev/scott_ 版本。 当 Dev Spaces 处理包含此 URL 的请求时，入口控制器首先尝试将请求路由到 *dev/scott* 空间中的 _webfrontend_ 服务。 如果该操作失败，则会将请求作为回退路由到 *dev* 空间中的 _webfrontend_ 服务。 另请注意，可以使用一个 localhost URL 通过 Kubernetes 的端口转发  功能经 localhost 访问服务。 若要详细了解 Azure Dev Spaces 中的 URL 和路由，请参阅 [Azure Dev Spaces 的工作原理及其配置方式](how-dev-spaces-works.md)。
+请注意，*webfrontend* 的公共访问点 URL 带有 *scott.s* 前缀。 此 URL 对于 _dev/scott_ 空间是唯一的。 此 URL 前缀告知入口控制器将请求路由到服务的 _dev/scott_ 版本。 当 Dev Spaces 处理包含此 URL 的请求时，入口控制器首先尝试将请求路由到 _dev/scott_ 空间中的 *webfrontend* 服务。 如果该操作失败，则会将请求作为回退路由到 _dev_ 空间中的 *webfrontend* 服务。 另请注意，可以使用一个 localhost URL 通过 Kubernetes 的端口转发  功能经 localhost 访问服务。 若要详细了解 Azure Dev Spaces 中的 URL 和路由，请参阅 [Azure Dev Spaces 的工作原理及其配置方式](how-dev-spaces-works.md)。
 
 ![空间路由](media/common/Space-Routing.png)
 
@@ -142,7 +142,7 @@ http://scott.s.dev.webfrontend.6364744826e042319629.ce.azds.io/  Available
 
 现在，删除该 URL 的“scott.s” 部分，并刷新浏览器。 应该会看到旧行为（*mywebapi* 版本在 _dev_ 中运行）。
 
-创建始终包含最新更改的 _dev_ 空间后，假设应用程序设计为利用 DevSpace 的基于空间的路由（如本教程部分中所述），则更容易发现，Dev Spaces 在较大应用程序的上下文中可为新功能的测试提供很大的帮助。 无需将所有服务部署到专用空间，可以创建派生自 _dev_ 的专用空间，并仅“启动”实际使用的服务。  Dev Spaces 路由基础结构将在专用空间中利用它所能找到的最多服务来处理剩余的工作，同时默认回到 _dev_ 空间中运行的最新版本。 更有利的是，多个开发人员可以同时在其自己的空间中积极开发不同的服务，而不会相互干扰。 
+创建始终包含最新更改的 _dev_ 空间后，假设应用程序设计为利用 DevSpace 的基于空间的路由（如本教程部分中所述），则更容易发现，Dev Spaces 在较大应用程序的上下文中可为新功能的测试提供很大的帮助。 无需将所有服务部署到专用空间，可以创建派生自 _dev_ 的专用空间，并仅“启动”实际使用的服务。 Dev Spaces 路由基础结构将在专用空间中利用它所能找到的最多服务来处理剩余的工作，同时默认回到 _dev_ 空间中运行的最新版本。 更有利的是，多个开发人员可以同时在其自己的空间中积极开发不同的服务，而不会相互干扰。 
 
 ### <a name="well-done"></a>干得不错！
 你已完成入门指南！ 你已了解如何执行以下操作：

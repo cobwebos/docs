@@ -101,17 +101,17 @@ ms.locfileid: "67089703"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”  部分中执行以下步骤：
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
     ![Springer Link 域和 URL 单一登录信息](common/idp-relay.png)
 
-    a. 在“标识符”文本框中键入 URL：`https://fsso.springer.com` 
+    a. 在“标识符”文本框中键入 URL：`https://fsso.springer.com`
 
-    b. 在“回复 URL”文本框中键入 URL：`https://fsso.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider` 
+    b. 在“回复 URL”文本框中键入 URL：`https://fsso.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`
 
     c. 单击“设置其他 URL”  。
 
-    d. 在“中继状态”文本框中键入 URL：`https://link.springer.com` 
+    d. 在“中继状态”文本框中键入 URL：`https://link.springer.com`
 
 5. 如果要在“SP”发起的模式下配置应用程序，请执行以下步骤  ：
 
@@ -158,7 +158,7 @@ ms.locfileid: "67089703"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”  字段中键入 brittasimon@yourcompanydomain.extension   
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -181,7 +181,7 @@ ms.locfileid: "67089703"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

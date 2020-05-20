@@ -128,7 +128,7 @@ ms.locfileid: "73157867"
 
 ### <a name="configure-asana-single-sign-on"></a>配置 Asana 单一登录
 
-1. 在其他浏览器窗口中，登录 Asana 应用程序。 若要在 Asana 中配置 SSO，请单击屏幕右上角的工作区名称，访问工作区设置。 然后，单击“**工作区名称\< 设置”\>** 。
+1. 在其他浏览器窗口中，登录 Asana 应用程序。 若要在 Asana 中配置 SSO，请单击屏幕右上角的工作区名称，访问工作区设置。 然后，单击“\<工作区名称\> 设置”。
 
     ![Asana SSO 设置](./media/asana-tutorial/tutorial_asana_09.png)
 
@@ -160,7 +160,7 @@ ms.locfileid: "73157867"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -183,7 +183,7 @@ ms.locfileid: "73157867"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -205,7 +205,7 @@ ms.locfileid: "73157867"
 
     ![创建 Azure AD 测试用户](./media/asana-tutorial/tutorial_asana_12.png)
 
-2. 在文本框中键入该用户的电子邮件（例如 britta.simon**contoso.com\@** ），然后选择“邀请”。 
+2. 在文本框中键入该用户的电子邮件（例如 britta.simon\@contoso.com），然后选择“邀请”。
 
 3. 单击“发送邀请”  。 新用户的电子邮件帐户中会收到一封电子邮件。 该用户需要创建并验证该帐户。
 

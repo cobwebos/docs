@@ -106,9 +106,9 @@ ms.locfileid: "67106548"
 
     ![Attendance Management Services 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://id.obc.jp/<tenant information >/`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://id.obc.jp/<tenant information >/`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：  `https://id.obc.jp/<tenant information >/`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://id.obc.jp/<tenant information >/`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Attendance Management Services 客户支持团队](https://www.obcnet.jp/)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -169,7 +169,7 @@ ms.locfileid: "67106548"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 **。** `brittasimon@yourcompanydomain.extension` 例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -191,7 +191,7 @@ ms.locfileid: "67106548"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -221,7 +221,7 @@ ms.locfileid: "67106548"
 
     ![添加员工](./media/attendancemanagementservices-tutorial/user4.png)
 
-    a. 在“OBCiD”文本框中，键入用户的电子邮件，例如  `BrittaSimon\@contoso.com`。
+    a. 在“OBCiD”文本框中，键入用户的电子邮件，例如 `BrittaSimon\@contoso.com`。
 
     b. 在“密码”文本框中，键入用户的密码。 
 

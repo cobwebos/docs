@@ -107,7 +107,7 @@ ms.locfileid: "73160516"
 
     a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<yourserverurl>/moconavi-saml2/saml/login`。
 
-    b. 在“标识符”框中，使用以下模式键入 URL：`https://<yourserverurl>/moconavi-saml2` 
+    b. 在“标识符”框中，使用以下模式键入 URL：`https://<yourserverurl>/moconavi-saml2`
 
     c. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<yourserverurl>/moconavi-saml2/saml/SSO`
 
@@ -130,7 +130,7 @@ ms.locfileid: "73160516"
 
 ### <a name="configure-moconavi-single-sign-on"></a>配置 moconavi 单一登录
 
-若要在 **moconavi** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [moconavi 支持团队](mailto:support@recomot.co.jp)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **moconavi** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [moconavi 支持团队](mailto:support@recomot.co.jp)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -150,7 +150,7 @@ ms.locfileid: "73160516"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -173,7 +173,7 @@ ms.locfileid: "73160516"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -197,7 +197,7 @@ ms.locfileid: "73160516"
 
     ![测试单一登录](./media/moconavi-tutorial/testing1.png)
 
-4. 在“连接到 URL”  文本框中输入 `https://mcs-admin.moconavi.biz/gateway`，然后单击“完成”  按钮。
+4. 在“连接到 URL”文本框中输入 `https://mcs-admin.moconavi.biz/gateway`，然后单击“完成”按钮。
 
     ![测试单一登录](./media/moconavi-tutorial/testing2.png)
 

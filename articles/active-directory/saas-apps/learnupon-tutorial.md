@@ -110,7 +110,7 @@ ms.locfileid: "67098245"
 
     ![LearnUpon 域和 URL 单一登录信息](common/idp-reply.png)
 
-    在“回复 URL”文本框中，使用以下模式键入 URL：  `https://<companyname>.learnupon.com/saml/consumer`
+    在“回复 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.learnupon.com/saml/consumer`
 
     > [!NOTE]
     > 此值不是真实值。 请使用实际回复 URL 更新此值。 若要获取此值，请与 [LearnUpon 客户端支持团队](https://www.learnupon.com/features/support/)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -151,7 +151,7 @@ ms.locfileid: "67098245"
 
     c. 将“跳过条件”  选择为“否”  。
 
-    d. 在“SAML 令牌 Post 参数名称”文本框中，键入上面指定的 SAML 使用者 URL 的请求 post 参数的名称（例如 **SAMLResponse**），该参数包含要验证和进行身份验证的 SAML 断言。 
+    d. 在“SAML 令牌 Post 参数名称”文本框中，键入上面指定的 SAML 使用者 URL 的请求 post 参数的名称（例如 **SAMLResponse**），该参数包含要验证和进行身份验证的 SAML 断言。
 
     e. 在“名称标识符格式”  文本框中，键入相应的值以指明用户标识符（电子邮件）在 SAML 断言中所处的位置，例如 `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`。
   
@@ -187,7 +187,7 @@ ms.locfileid: "67098245"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 **。** `brittasimon@yourcompanydomain.extension` 例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -209,7 +209,7 @@ ms.locfileid: "67098245"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

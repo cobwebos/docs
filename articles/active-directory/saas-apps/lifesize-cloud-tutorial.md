@@ -114,7 +114,7 @@ ms.locfileid: "73159574"
 
     c. 单击“设置其他 URL”  。
 
-    d. 在“中继状态”文本框中，使用以下模式键入 URL：  `https://webapp.lifesizecloud.com/?ent=<identifier>`
+    d. 在“中继状态”文本框中，使用以下模式键入 URL：`https://webapp.lifesizecloud.com/?ent=<identifier>`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL、标识符和中继状态更新这些值。 请联系 [Lifesize Cloud 客户端支持团队](https://www.lifesize.com/en/support)获取登录 URL 值和标识符值，可从本教程之后将介绍的 SSO 配置中获取中继状态值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -157,9 +157,9 @@ ms.locfileid: "73159574"
   
     d. 在“名字的 SAML 属性映射”文本框中以 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` 形式输入值
 
-    e. 在“姓氏的 SAML 属性映射”文本框中以  **形式输入值**`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`
+    e. 在“姓氏的 SAML 属性映射”文本框中以 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` 形式输入值
 
-    f. 在“电子邮件的 SAML 属性映射”文本框中以  **形式输入值**`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    f. 在“电子邮件的 SAML 属性映射”文本框中以 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` 形式输入值
 
 5. 若要检查配置，可以单击“测试”按钮。 
 
@@ -168,7 +168,7 @@ ms.locfileid: "73159574"
 
 6. 通过单击“启用 SSO”按钮启用 SSO。 
 
-7. 现在，单击“更新”按钮以便保存所有设置。  这会生成 RelayState 值。 复制文本框中生成的 RelayState 值，将其粘贴在“Lifesize Cloud 域和 URL”  部分下的“中继状态”  文本框中。
+7. 现在，单击“更新”按钮以便保存所有设置。  这会生成 RelayState 值。 复制文本框中生成的 RelayState 值，将其粘贴在“Lifesize Cloud 域和 URL”部分下的“中继状态”文本框中。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -188,7 +188,7 @@ ms.locfileid: "73159574"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -211,7 +211,7 @@ ms.locfileid: "73159574"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

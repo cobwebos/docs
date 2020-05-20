@@ -171,7 +171,7 @@ ms.locfileid: "67107507"
 
     f. 选择“Sha256”作为“签名类型”   。
 
-    g. 在“登录 URL”  框中，粘贴 Azure 门户应用程序的“属性”  页中的“用户访问 URL”  。
+    g. 在“登录 URL”框中，粘贴 Azure 门户应用程序的“属性”页中的“用户访问 URL”。
 
     h. 在“注销 URL”中，粘贴从 Azure 门户的“配置登录”窗口中复制的“注销 URL”值。   
 
@@ -199,7 +199,7 @@ ms.locfileid: "67107507"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入  `brittasimon\@yourcompanydomain.extension`  
+    b. 在“用户名”字段中，键入 `brittasimon\@yourcompanydomain.extension`  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -222,7 +222,7 @@ ms.locfileid: "67107507"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -269,7 +269,7 @@ ms.locfileid: "67107507"
     ![“仅允许 SSO 登录”切换](./media/absorblms-tutorial/save.png)
 
     > [!NOTE]
-    > 默认情况下，SSO 中未启用“用户预配”。 如果客户想启用此功能，需要按[此](https://support.absorblms.com/hc/en-us/articles/360014083294-Incoming-SAML-2-0-SSO-Account-Provisioning)文档所述进行设置。 另请注意，只有采用 ACS URL- **的 Absorb 5 - New Learner Experience 才能使用“用户预配”功能**`https://company.myabsorb.com/api/rest/v2/authentication/saml`
+    > 默认情况下，SSO 中未启用“用户预配”。 如果客户想启用此功能，需要按[此](https://support.absorblms.com/hc/en-us/articles/360014083294-Incoming-SAML-2-0-SSO-Account-Provisioning)文档所述进行设置。 另请注意，只有采用 ACS URL-`https://company.myabsorb.com/api/rest/v2/authentication/saml` 的 Absorb 5 - New Learner Experience 才能使用“用户预配”功能
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

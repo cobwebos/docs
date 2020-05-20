@@ -139,7 +139,7 @@ Uberflip 支持以下功能：
 
 在本部分中，将在 Azure 门户中创建一个名为 B. Simon 的测试用户。
 
-1. 在 Azure 门户的左窗格中，选择“Azure Active Directory” **“用户”** “所有用户”。 >    >  
+1. 在 Azure 门户的左窗格中，选择“Azure Active Directory” > “用户” > “所有用户”。
 
     ![“用户”和“所有用户”选项](common/users.png)
 
@@ -153,7 +153,7 @@ Uberflip 支持以下功能：
 
     1. 在“名称”框中，输入“BSimon”   。
   
-    1. 在“用户名”框中，输入“BSimon  yourcompanydomain>.**extension>”\@\<\<** 。 例如，BSimon**contoso.com\@** 。
+    1. 在“用户名”框中，输入“BSimon\@\<yourcompanydomain>.\<extension>”。 例如，BSimon\@contoso.com。
 
     1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
 
@@ -163,7 +163,7 @@ Uberflip 支持以下功能：
 
 在本部分中，通过授予 B. Simon 访问 Uberflip 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，选择“企业应用程序” **“所有应用程序”** “Uberflip” >    >   。
+1. 在 Azure 门户中，选择“企业应用程序” > “所有应用程序” > “Uberflip”。
 
     ![“企业应用程序”窗格](common/enterprise-applications.png)
 

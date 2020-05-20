@@ -105,7 +105,7 @@ ms.locfileid: "67091489"
 
     ![SCC LifeCycle 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<sub-domain>.scc.com/ic7/welcome/customer/PICTtest.aspx` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<sub-domain>.scc.com/ic7/welcome/customer/PICTtest.aspx`
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL  ：
     
@@ -133,7 +133,7 @@ ms.locfileid: "67091489"
 
 ### <a name="configure-scc-lifecycle-single-sign-on"></a>配置 SCC LifeCycle 单一登录
 
-若要在 **SCC LifeCycle** 端配置单一登录，需要将下载的“元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [SCC LifeCycle 支持团队](mailto:lifecycle.support@scc.com)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **SCC LifeCycle** 端配置单一登录，需要将下载的“元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [SCC LifeCycle 支持团队](mailto:lifecycle.support@scc.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
    > [!NOTE]
    > 单一登录必须由 [SCC LifeCycle 支持团队](mailto:lifecycle.support@scc.com)启用。
@@ -156,7 +156,7 @@ ms.locfileid: "67091489"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 `brittasimon@yourcompanydomain.extension`   
+    b. 在“用户名”字段中，键入 `brittasimon@yourcompanydomain.extension`  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -179,7 +179,7 @@ ms.locfileid: "67091489"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

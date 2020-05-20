@@ -28,7 +28,7 @@ ms.locfileid: "77598552"
 ## <a name="create-a-resource-group"></a>创建资源组
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 如果还没有 Azure 资源组，可以使用 [az group create](/cli/azure/group) 命令创建一个。 
 
-以下示例在“美国西部 2”  位置创建名为“myResourceGroup”  的资源组：
+以下示例在“美国西部 2”位置创建名为“myResourceGroup”的资源组：
 
 ```azurecli-interactive 
 export resourceGroupName="myResourceGroup"

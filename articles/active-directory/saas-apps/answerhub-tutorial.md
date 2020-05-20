@@ -106,9 +106,9 @@ ms.locfileid: "73152988"
 
     ![“基本 SAML 配置”部分](common/sp-identifier.png)
 
-    a. 在“登录 URL”框中，输入以下模式的 URL：  `https://<company>.answerhub.com`
+    a. 在“登录 URL”框中，输入以下模式的 URL：`https://<company>.answerhub.com`
 
-    b. 在“标识符(实体 ID)”框中，输入以下模式的 URL：  `https://<company>.answerhub.com`
+    b. 在“标识符(实体 ID)”框中，输入以下模式的 URL：`https://<company>.answerhub.com`
 
     > [!NOTE]
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 若要获取该值，请与 [AnswerHub 支持团队](mailto:success@answerhub.com)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -185,7 +185,7 @@ ms.locfileid: "73152988"
 
     a. 在“姓名”  框中，输入 **BrittaSimon**。
   
-    b. 在“用户名”框中，输入“brittasimon **<yourcompanydomain.extension>”** **\@** 。  
+    b. 在“用户名”框中，输入“brittasimon\@<yourcompanydomain.extension>”。  
     例如，BrittaSimon@contoso.com 。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  

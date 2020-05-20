@@ -65,7 +65,7 @@ ms.locfileid: "75438976"
 3. 必须在计算机上安装了以下软件：
    * Visual Studio 2013 或 Visual Studio 2015
    * 下载用于 Visual Studio 2013 或 Visual Studio 2015 的 Azure SDK。 导航到 [Azure 下载页](https://azure.microsoft.com/downloads/)，在“.NET”部分中单击“VS 2013”或“VS 2015”。   
-   * 下载用于 Visual Studio 的最新 Azure 数据工厂插件：[VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) 或 [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)。 还可通过执行以下步骤更新插件：在菜单上，依次单击“工具” **“扩展和更新”** “联机” -> “Visual Studio 库” **“适用于 Visual Studio 的 Microsoft Azure 数据工厂工具”** “更新”。 ->    ->    ->    ->  
+   * 下载用于 Visual Studio 的最新 Azure 数据工厂插件：[VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) 或 [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)。 还可通过执行以下步骤更新插件：在菜单上，依次单击“工具” -> “扩展和更新” -> “联机” -> “Visual Studio 库” -> “适用于 Visual Studio 的 Microsoft Azure 数据工厂工具” -> “更新”。
 
 现在，使用 Visual Studio 创建 Azure 数据工厂。
 
@@ -138,7 +138,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 
 #### <a name="create-input-dataset"></a>创建输入数据集
 1. 在“解决方案资源管理器”中，右键单击“表”，指向“添加”，并单击“新建项”。    
-2. 从列表中选择“Azure Blob”，将文件名更改为 **InputDataSet.json**，并单击“添加”。  
+2. 从列表中选择“Azure Blob”，将文件名更改为 **InputDataSet.json**，并单击“添加”。
 3. 在编辑器中将 **JSON** 替换为以下 JSON 代码片段：
 
     ```json
@@ -183,7 +183,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 现在，请创建一个输出数据集，用来表示 Azure Blob 存储中存储的输出数据。
 
 1. 在“解决方案资源管理器”中，右键单击“表”，指向“添加”，并单击“新建项”。    
-2. 从列表中选择“Azure Blob”，将文件名更改为 **OutputDataset.json**，并单击“添加”。  
+2. 从列表中选择“Azure Blob”，将文件名更改为 **OutputDataset.json**，并单击“添加”。
 3. 在编辑器中将 **JSON** 替换为以下 JSON：
     
     ```json
@@ -275,7 +275,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 
     在特定于 HDInsight Hive 活动的类型属性中，请指定包含 Hive 脚本文件的 Azure 存储链接服务、脚本文件的路径，以及脚本文件的参数。 
 
-    Hive 脚本文件 **partitionweblogs.hql** 存储在 Azure 存储帐户（由 scriptLinkedService 指定）中，以及 `script` 容器的 `adfgetstarted` 文件夹中。
+    Hive 脚本文件 **partitionweblogs.hql** 存储在 Azure 存储帐户（由 scriptLinkedService 指定）中，以及 `adfgetstarted` 容器的 `script` 文件夹中。
 
     `defines` 节用于指定运行时设置，这些设置将作为 Hive 配置值（例如 `${hiveconf:inputtable}`、`${hiveconf:partitionedtable})`）传递给 Hive 脚本。
 
@@ -288,7 +288,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 1. 在“解决方案资源管理器”窗口中右键单击“依赖项”，指向“添加”，并单击“现有项”。      
 2. 导航到 **C:\ADFGettingStarted**，选择 **partitionweblogs.hql** 和 **input.log** 文件，并单击“添加”。  已根据[教程概述](data-factory-build-your-first-pipeline.md)的部分先决条件创建上述两个文件。
 
-在下一步骤中发布解决方案时，请将 **partitionweblogs.hql** 文件上传到 **Blob 容器中的**script`adfgetstarted` 文件夹。   
+在下一步骤中发布解决方案时，请将 **partitionweblogs.hql** 文件上传到 `adfgetstarted` Blob 容器中的 **script** 文件夹。   
 
 ### <a name="publishdeploy-data-factory-entities"></a>发布/部署数据工厂实体
 在此步骤中，请将项目中的数据工厂实体（链接服务、数据集和管道）发布到 Azure 数据工厂服务。 在发布过程中，请指定数据工厂的名称。 
@@ -362,11 +362,11 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
     ![“打开管道”视图](./media/data-factory-build-your-first-pipeline-using-vs/open-pipeline-view.png)
 
     若要导航回到上一个视图，请单击顶部痕迹导航菜单中的“数据工厂”。 
-6. 在“图示视图”中，双击数据集 **AzureBlobInput**。   确认切片处于“就绪”状态。 可能需要几分钟时间，切片才显示为“就绪”状态。 如果一段时间后未显示此状态，请检查是否已将输入文件 (input.log) 放置在正确的容器 (`adfgetstarted`) 和文件夹 (`inputdata`) 中。 另外，请确保将输入数据集的 **external** 属性设置为 **true**。 
+6. 在“图示视图”中，双击数据集 **AzureBlobInput**。  确认切片处于“就绪”状态。 可能需要几分钟时间，切片才显示为“就绪”状态。 如果一段时间后未显示此状态，请检查是否已将输入文件 (input.log) 放置在正确的容器 (`adfgetstarted`) 和文件夹 (`inputdata`) 中。 另外，请确保将输入数据集的 **external** 属性设置为 **true**。 
 
    ![输入切片处于就绪状态](./media/data-factory-build-your-first-pipeline-using-vs/input-slice-ready.png)
 7. 单击“X”关闭“AzureBlobInput”边栏选项卡。  
-8. 在“图示视图”中，双击数据集 **AzureBlobOutput**。  此时会显示当前正在处理的切片。
+8. 在“图示视图”中，双击数据集 **AzureBlobOutput**。 此时会显示当前正在处理的切片。
 
    ![数据集](./media/data-factory-build-your-first-pipeline-using-vs/dataset-blade.png)
 9. 处理完成后，可以看到切片处于“就绪”状态。 
@@ -375,7 +375,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
    > 创建按需 HDInsight 群集通常需要一段时间（大约 20 分钟）。 因此，预期管道需要花费 **大约 30 分钟** 来处理切片。  
    
     ![数据集](./media/data-factory-build-your-first-pipeline-using-vs/dataset-slice-ready.png)    
-10. 当切片处于“就绪”状态时，检查 Blob 存储中 **容器内** 文件夹的输出数据。`partitioneddata``adfgetstarted`  
+10. 当切片处于“就绪”状态时，检查 Blob 存储中 `adfgetstarted` 容器内 `partitioneddata` 文件夹的输出数据。  
 
     ![输出数据](./media/data-factory-build-your-first-pipeline-using-vs/three-ouptut-files.png)
 11. 单击切片可在“数据切片”边栏选项卡中查看其详细信息。 
@@ -402,7 +402,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
     ![活动窗口详细信息](./media/data-factory-build-your-first-pipeline-using-vs/activity-window-details.png)
 
 > [!IMPORTANT]
-> 成功处理切片后，会删除输入文件。 因此，如果想要重新运行切片或重新学习本教程，请将输入文件 (input.log) 上传到 `inputdata` 容器的 `adfgetstarted` 文件夹中。
+> 成功处理切片后，会删除输入文件。 因此，如果想要重新运行切片或重新学习本教程，请将输入文件 (input.log) 上传到 `adfgetstarted` 容器的 `inputdata` 文件夹中。
 
 ### <a name="additional-notes"></a>附加说明
 - 数据工厂可以包含一个或多个数据管道。 管道可以包含一个或多个活动。 例如，将数据从源复制到目标数据存储的复制活动，以及运行 Hive 脚本来转换输入数据的 HDInsight Hive 活动。 有关复制活动支持的所有源和接收器，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 有关数据工厂支持的计算服务列表，请参阅[计算链接的服务](data-factory-compute-linked-services.md)。
@@ -419,7 +419,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 
 ## <a name="use-server-explorer-to-view-data-factories"></a>使用“服务器资源管理器”查看数据工厂
 1. 在 **Visual Studio** 中，在菜单上单击“视图”，并单击“服务器资源管理器”。  
-2. 在“服务器资源管理器”窗口中，依次展开“Azure”和“数据工厂”。   如果看到“登录到 Visual Studio”，请输入与 Azure 订阅关联的**帐户**，并单击“继续”。   输入**密码**，并单击“登录”。  Visual Studio 尝试获取有关订阅中所有 Azure 数据工厂的信息。 可在“数据工厂任务列表”窗口中查看此操作的状态。 
+2. 在“服务器资源管理器”窗口中，依次展开“Azure”和“数据工厂”。   如果看到“登录到 Visual Studio”，请输入与 Azure 订阅关联的**帐户**，并单击“继续”。 输入**密码**，并单击“登录”。  Visual Studio 尝试获取有关订阅中所有 Azure 数据工厂的信息。 可在“数据工厂任务列表”窗口中查看此操作的状态。 
 
     ![服务器资源管理器](./media/data-factory-build-your-first-pipeline-using-vs/server-explorer.png)
 3. 可右键单击数据工厂，并选择“将数据工厂导出到新项目”，创建基于现有数据工厂的 Visual Studio 项目。 
@@ -455,7 +455,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 执行以下步骤，为每个环境添加配置文件：   
 
 1. 在 Visual Studio 解决方案中右键单击数据工厂项目，指向“添加”，并单击“添加项”。  
-2. 在左侧的已安装模板列表中选择“配置”，选择“配置文件”，输入配置文件的**名称**，并单击“添加”。   
+2. 在左侧的已安装模板列表中选择“配置”，选择“配置文件”，输入配置文件的**名称**，并单击“添加”。
 
     ![添加配置文件](./media/data-factory-build-your-first-pipeline-using-vs/add-config-file.png)
 3. 使用以下格式添加配置参数及其值：

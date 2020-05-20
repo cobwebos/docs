@@ -106,9 +106,9 @@ ms.locfileid: "67097931"
 
     ![LiquidFiles 域和 URL 单一登录信息](common/sp-identifier-reply.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://<YOUR_SERVER_URL>/saml/init`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<YOUR_SERVER_URL>/saml/init`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：  `https://<YOUR_SERVER_URL>`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<YOUR_SERVER_URL>`
 
     c. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<YOUR_SERVER_URL>/saml/consume`
 
@@ -119,7 +119,7 @@ ms.locfileid: "67097931"
 
     ![编辑 SAML 签名证书](common/edit-certificate.png)
 
-6. 在“SAML 签名证书”部分中，复制**指纹**并将其保存在计算机上。 
+6. 在“SAML 签名证书”部分中，复制**指纹**并将其保存在计算机上。
 
     ![复制指纹值](common/copy-thumbprint.png)
 
@@ -137,13 +137,13 @@ ms.locfileid: "67097931"
 
 1. 以管理员身份登录 LiquidFiles 公司站点。
 
-1. 从菜单的“管理员”>“配置”  中单击“单一登录”  。
+1. 从菜单的“管理员”>“配置”中单击“单一登录”。
 
 1. 在“单一登录”  配置页上，执行以下步骤
 
     ![配置单一登录](./media/liquidfiles-tutorial/tutorial_single_01.png)
 
-    a. 选择“SAML 2”  作为“单一登录方法”  。
+    a. 选择“SAML 2”作为“单一登录方法”。
 
     b. 在“IDP 登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
 
@@ -175,7 +175,7 @@ ms.locfileid: "67097931"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 **。** `brittasimon@yourcompanydomain.extension` 例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -197,7 +197,7 @@ ms.locfileid: "67097931"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

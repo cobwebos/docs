@@ -188,7 +188,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ### <a name="critical-sections-durable-functions-2x-currently-net-only"></a>关键节（Durable Functions 2.x，当前仅限 .NET）
 
-业务流程实例是单线程的，因此无需考虑业务流程内部的争用情况。  但是，当业务流程与外部系统交互时，可能会出现争用情况。 若要在与外部系统交互时缓解争用情况，业务流程协调程序函数可以使用 .NET 中的 `LockAsync` 方法定义关键节。 
+业务流程实例是单线程的，因此无需考虑业务流程内部的争用情况。  但是，当业务流程与外部系统交互时，可能会出现争用情况。 若要在与外部系统交互时缓解争用情况，业务流程协调程序函数可以使用 .NET 中的 `LockAsync` 方法定义关键节。
 
 以下示例代码演示了一个定义关键节的业务流程协调程序函数。 它使用 `LockAsync` 方法进入关键节。 此方法要求向某个持久管理锁状态的[持久实体](durable-functions-entities.md)传递一个或多个引用。 此业务流程的单个实例每次只能执行关键节中的代码。
 

@@ -90,7 +90,7 @@ ms.locfileid: "67086678"
 
 若要配置 Workspot Control 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Workspot Control”  应用程序集成页上，选择“单一登录”  。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Workspot Control”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -176,7 +176,7 @@ ms.locfileid: "67086678"
 
     1. 在“姓名”  字段中，输入“BrittaSimon”  。
   
-    1. 在“用户名”  字段中，输入“brittasimon@yourcompanydomain.extension”*  ***。 例如，输入“BrittaSimon@contoso<i></i>com”  。
+    1. 在“用户名”  字段中，输入“brittasimon@yourcompanydomain.extension”*  ***。 例如，输入“BrittaSimon@contoso<i></i>com”。
 
     1. 选中“显示密码”复选框  。 然后记下“密码”框中显示的值  。
 
@@ -228,7 +228,7 @@ ms.locfileid: "67086678"
 
     1. 在“姓氏”框中，输入用户的姓氏，例如 Simon   。
 
-    1. 在“电子邮件”  框中，输入用户的电子邮件地址，如 Brittasimon@contoso.<i></i>com  。
+    1. 在“电子邮件”框中，输入用户的电子邮件地址，如 Brittasimon@contoso.<i></i>com。
 
     1. 从“角色”下拉列表中选择相应的用户角色  。
 

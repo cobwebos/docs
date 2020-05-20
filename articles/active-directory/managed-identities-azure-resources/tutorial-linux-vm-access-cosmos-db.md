@@ -118,7 +118,7 @@ az role assignment create --assignee <MI PRINCIPALID> --role '<ROLE NAME>' --sco
 
 1. 在 Azure 门户中，导航到“虚拟机”  ，转到 Linux 虚拟机，然后在“概述”  页中单击顶部的“连接”  。 复制用于连接到 VM 的字符串。 
 2. 使用 SSH 客户端连接到 VM。  
-3. 接下来，系统会提示你输入创建“Linux VM”  时添加的“密码”  。 然后应可以成功登录。  
+3. 接下来，系统会提示你输入创建“Linux VM”时添加的“密码”。 然后应可以成功登录。  
 4. 使用 CURL 获取 Azure 资源管理器的访问令牌： 
      
     ```bash

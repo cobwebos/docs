@@ -102,7 +102,7 @@ ms.locfileid: "73158550"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”  部分中执行以下步骤：
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
     ![Comeet Recruiting Software 域和 URL 单一登录信息](common/idp-intiated.png)
 
@@ -113,11 +113,11 @@ ms.locfileid: "73158550"
     > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Comeet Recruiting Software 客户端支持团队](https://support.comeet.co/knowledgebase/adfs-single-sign-on/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
+5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
     ![Comeet Recruiting Software 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
-    在“登录 URL”文本框中，键入 URL：`https://app.comeet.co` 
+    在“登录 URL”文本框中，键入 URL：`https://app.comeet.co`
 
 5. Comeet Recruiting Software 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。  在“使用 SAML 设置单一登录”  页上，单击“编辑”  按钮以打开“用户属性”  对话框。
 
@@ -164,7 +164,7 @@ ms.locfileid: "73158550"
 
 ### <a name="configure-comeet-recruiting-software-single-sign-on"></a>配置 Comeet Recruiting Software 单一登录
 
-若要在 **Comeet Recruiting Software** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Comeet Recruiting Software 支持团队](https://support.comeet.co/knowledgebase/adfs-single-sign-on/)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **Comeet Recruiting Software** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Comeet Recruiting Software 支持团队](https://support.comeet.co/knowledgebase/adfs-single-sign-on/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -184,7 +184,7 @@ ms.locfileid: "73158550"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -207,7 +207,7 @@ ms.locfileid: "73158550"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

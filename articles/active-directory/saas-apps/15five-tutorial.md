@@ -106,9 +106,9 @@ ms.locfileid: "73154890"
 
     ![15Five 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.15five.com` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.15five.com`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<companyname>.15five.com/saml2/metadata/` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<companyname>.15five.com/saml2/metadata/`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [15Five 客户端支持团队](https://www.15five.com/contact/)，获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -129,7 +129,7 @@ ms.locfileid: "73154890"
 
 ### <a name="configure-15five-single-sign-on"></a>配置 15Five 单一登录
 
-若要在 **15Five** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [15Five 支持团队](https://www.15five.com/contact/)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **15Five** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [15Five 支持团队](https://www.15five.com/contact/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -149,7 +149,7 @@ ms.locfileid: "73154890"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -172,7 +172,7 @@ ms.locfileid: "73154890"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -194,7 +194,7 @@ ms.locfileid: "73154890"
 
     ![管理公司](./media/15five-tutorial/ic784675.png "管理公司")
 
-3. 转到“人员”\>“添加人员”  。
+3. 转到“人员”\>“添加人员”。
 
     ![People](./media/15five-tutorial/ic784676.png "人员")
 

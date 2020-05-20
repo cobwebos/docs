@@ -80,7 +80,7 @@ k4arecorder.exe -d WFOV_2X2BINNED -c OFF --imu OFF -l 5 output.mkv
 
 可以使用 [Azure Kinect 查看器](azure-kinect-viewer.md)打开输出的 .mkv 文件。
 
-若要提取轨道或查看文件信息，可以使用 `mkvinfo`MKVToolNix[ 工具包中的 ](https://mkvtoolnix.download/) 等工具。
+若要提取轨道或查看文件信息，可以使用 [MKVToolNix](https://mkvtoolnix.download/) 工具包中的 `mkvinfo` 等工具。
 
 ## <a name="next-steps"></a>后续步骤
 

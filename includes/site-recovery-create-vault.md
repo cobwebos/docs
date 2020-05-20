@@ -19,4 +19,4 @@ ms.locfileid: "75980333"
 
    ![新保管库](./media/site-recovery-create-vault/new-vault-settings.png)
 
-   新保管库会显示在“仪表板” **“所有资源”中，以及“恢复服务保管库”主页面上。**  >   
+   新保管库会显示在“仪表板” > “所有资源”中，以及“恢复服务保管库”主页面上。

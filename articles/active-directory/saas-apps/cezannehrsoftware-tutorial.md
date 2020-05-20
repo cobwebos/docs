@@ -106,9 +106,9 @@ ms.locfileid: "73158696"
 
     ![Cezanne HR Software 域和 URL 单一登录信息](common/sp-identifier-reply.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://w3.cezanneondemand.com/CezanneOnDemand/-/<tenantidentifier>`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://w3.cezanneondemand.com/CezanneOnDemand/-/<tenantidentifier>`
 
-    b. 在“标识符(实体 ID)”文本框中，键入 URL：  `https://w3.cezanneondemand.com/CezanneOnDemand/`
+    b. 在“标识符(实体 ID)”文本框中，键入 URL：`https://w3.cezanneondemand.com/CezanneOnDemand/`
 
     c. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://w3.cezanneondemand.com:443/cezanneondemand/-/<tenantidentifier>/Saml/samlp`
     
@@ -185,7 +185,7 @@ ms.locfileid: "73158696"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -208,7 +208,7 @@ ms.locfileid: "73158696"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -246,7 +246,7 @@ ms.locfileid: "73158696"
 
     ![新建用户](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "新建用户")
 
-    a. 在“用户名”文本框中，键入用户的电子邮件地址（例如 **）。** Brittasimon@contoso.com
+    a. 在“用户名”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
     b. 在“密码”文本框中，键入用户的密码。 
 

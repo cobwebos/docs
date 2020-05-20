@@ -19,7 +19,7 @@ ms.locfileid: "68229178"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-1. 选择“创建资源” **“物联网”** “IoT 中心” >    >   。
+1. 选择“创建资源” > “物联网” > “IoT 中心”。
 
     ![选择安装 IoT 中心](media/iot-hub-tutorials-create-free-hub/selectiothub.png)
 

@@ -105,9 +105,9 @@ ms.locfileid: "76841619"
 
     ![Gigya 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `http://<companyname>.gigya.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`http://<companyname>.gigya.com`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：  `https://fidm.gigya.com/saml/v2.0/<companyname>`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://fidm.gigya.com/saml/v2.0/<companyname>`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Gigya 客户端支持团队](https://developers.gigya.com/display/GD/Opening+A+Support+Incident)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -130,7 +130,7 @@ ms.locfileid: "76841619"
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录 Gigya 公司站点。
 
-2. 转到“设置” **“SAML 登录”\>** ，并单击“添加”  按钮。
+2. 转到“设置”\>“SAML 登录”，并单击“添加”按钮。
    
     ![SAML 登录](./media/gigya-tutorial/ic789532.png "SAML 登录")
 
@@ -168,7 +168,7 @@ ms.locfileid: "76841619"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -191,7 +191,7 @@ ms.locfileid: "76841619"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -209,7 +209,7 @@ ms.locfileid: "76841619"
 
 1. 以管理员身份登录到 **Gigya** 公司站点。
 
-2. 转到“管理员” **“管理用户”\>** ，并单击“邀请用户”  。
+2. 转到“管理员”\>“管理用户”，并单击“邀请用户”。
    
     ![管理用户](./media/gigya-tutorial/ic789535.png "管理用户")
 

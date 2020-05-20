@@ -123,7 +123,7 @@ ms.locfileid: "75889227"
 
     ![Twitter 应用程序详细信息](./media/databricks-sentiment-analysis-cognitive-services/databricks-provide-twitter-app-details-create.png "Twitter 应用程序详细信息")
 
-3. 在应用程序页中选择“密钥和令牌”  选项卡，复制“使用者 API 密钥”  和“使用者 API 密钥”  的值。 此外，在“访问令牌和访问令牌机密”  下选择“创建”  以生成访问令牌。 复制“访问令牌”  和  “访问令牌机密”的值。
+3. 在应用程序页中选择“密钥和令牌”  选项卡，复制“使用者 API 密钥”  和“使用者 API 密钥”  的值。 此外，在“访问令牌和访问令牌机密”下选择“创建”以生成访问令牌。 复制“访问令牌”  和  “访问令牌机密”的值。
 
     ![Twitter 应用程序详细信息](./media/databricks-sentiment-analysis-cognitive-services/twitter-app-key-secret.png "Twitter 应用程序详细信息")
 
@@ -622,7 +622,7 @@ streamingDataFrame.writeStream.outputMode("append").format("console").option("tr
 
 ![停止 Databricks 群集](./media/databricks-sentiment-analysis-cognitive-services/terminate-databricks-cluster.png "停止 Databricks 群集")
 
-如果不手动终止群集，但在创建群集时选中了“在不活动 **\_ 分钟后终止”\_** 复选框，则该群集会自动停止。 在这种情况下，如果群集保持非活动状态超过指定的时间，则会自动停止。
+如果不手动终止群集，但在创建群集时选中了“在不活动 \_\_ 分钟后终止”复选框，则该群集会自动停止。 在这种情况下，如果群集保持非活动状态超过指定的时间，则会自动停止。
 
 ## <a name="next-steps"></a>后续步骤
 本教程介绍了如何使用 Azure Databricks 将数据流式传输到 Azure 事件中心，然后从事件中心实时读取流数据。 你已了解如何执行以下操作：

@@ -15,7 +15,7 @@ ms.locfileid: "67172639"
 
 在“解决方案资源管理器”中，右键单击“SharingService”项目，然后选择“发布”    。
 
-“发布向导”启动。 选择“应用服务” **“发布”以打开“创建应用服务”对话框** >    。
+“发布向导”启动。 选择“应用服务” > “发布”以打开“创建应用服务”对话框。
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -51,7 +51,7 @@ ms.locfileid: "67172639"
 
 ### <a name="create-and-publish-the-web-app"></a>创建并发布 Web 应用
 
-在“应用名称”中，输入唯一的应用名称（有效字符为 **、** 和 `a-z`），或接受自动生成的唯一名称`0-9``-`。 Web 应用的 URL 为 `https://<app_name>.azurewebsites.net`，其中 `<app_name>` 是应用名称。
+在“应用名称”中，输入唯一的应用名称（有效字符为 `a-z`、`0-9` 和 `-`），或接受自动生成的唯一名称。 Web 应用的 URL 为 `https://<app_name>.azurewebsites.net`，其中 `<app_name>` 是应用名称。
 
 选择“创建”  开始创建 Azure 资源。
 

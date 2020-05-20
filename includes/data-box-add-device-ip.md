@@ -27,7 +27,7 @@ ms.locfileid: "67173615"
 
     ![Data Box 仪表板](media/data-box-add-device-ip/data-box-connect-via-rest-4.png)
 
-5. 以管理员身份启动**记事本**，并打开位于 **的**hosts`C:\Windows\System32\Drivers\etc` 文件。
+5. 以管理员身份启动**记事本**，并打开位于 `C:\Windows\System32\Drivers\etc` 的 **hosts** 文件。
 6. 将以下条目添加到 **hosts** 文件中：`<device IP address> <Blob service endpoint>`
 7. 请使用以下图像作为参考。 保存 **hosts** 文件。
 

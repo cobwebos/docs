@@ -45,7 +45,7 @@ ms.locfileid: "74849201"
 
 由于你使用的是队列存储输出绑定，因此在运行项目之前，需要安装存储绑定扩展。 绑定（HTTP 和计时器触发器除外）将实现为扩展包。 
 
-1. 在“工具”菜单中，选择“NuGet 包管理器” > “包管理器控制台”。    
+1. 在“工具”菜单中，选择“NuGet 包管理器” > “包管理器控制台”。 
 
 1. 在控制台中，运行以下 [Install-Package](/nuget/tools/ps-ref-install-package) 命令安装存储扩展：
 
@@ -77,7 +77,7 @@ ms.locfileid: "74849201"
 
 1. 在“Cloud Explorer”中，展开你的 Azure 订阅和“存储帐户”，然后展开函数使用的存储帐户。   如果你忘记了存储帐户名称，请查看 *local.settings.json* 文件中的 `AzureWebJobsStorage` 连接字符串设置。  
 
-1. 展开“队列”节点，然后双击名为 **outqueue** 的队列，在 Visual Studio 中查看队列的内容。  
+1. 展开“队列”节点，然后双击名为 **outqueue** 的队列，在 Visual Studio 中查看队列的内容。 
 
    此队列包含在运行 HTTP 触发的函数时队列输出绑定创建的消息。 如果使用默认的 `name` 值 *Azure* 调用了此函数，则队列消息为“传递给函数的名称: Azure”。 
 

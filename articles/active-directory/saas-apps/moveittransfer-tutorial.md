@@ -173,9 +173,9 @@ ms.locfileid: "73161324"
     
     a. 对于“登录名”，选择“SAML NameID”。  
     
-    b. 选择“其他”作为“全名”并在“属性名称”文本框中输入以下值： **。**   `http://schemas.microsoft.com/identity/claims/displayname`
+    b. 选择“其他”作为“全名”并在“属性名称”文本框中输入以下值：`http://schemas.microsoft.com/identity/claims/displayname`。
     
-    c. 选择“其他”作为“电子邮件”并在“属性名称”文本框中输入以下值： **。**   `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    c. 选择“其他”作为“电子邮件”并在“属性名称”文本框中输入以下值：`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`。
     
     d. 对于“登录时自动创建帐户”，选择“是”。  
     
@@ -199,7 +199,7 @@ ms.locfileid: "73161324"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -222,7 +222,7 @@ ms.locfileid: "73161324"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

@@ -107,9 +107,9 @@ ms.locfileid: "67088265"
 
     ![Trisotech Digital Enterprise Server 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://<companyname>.trisotech.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.trisotech.com`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：  `https://<companyname>.trisotech.com`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<companyname>.trisotech.com`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Trisotech Digital Enterprise Server 客户端支持团队](mailto:support@trisotech.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -136,9 +136,9 @@ ms.locfileid: "67088265"
 
     a. 从“身份验证方法”中的下拉列表内选择“安全断言标记语言 2 (SAML 2)”。  
 
-    b. 在“元数据 URL”文本框中，粘贴从 Azure 门户复制的**应用联合元数据 URL**值。 
+    b. 在“元数据 URL”文本框中，粘贴从 Azure 门户复制的**应用联合元数据 URL**值。
 
-    c. 在“应用程序 ID”文本框中，使用以下模式输入 URL： **。** `https://<companyname>.trisotech.com`
+    c. 在“应用程序 ID”文本框中，使用以下模式输入 URL：`https://<companyname>.trisotech.com`。
 
     d. 单击“保存” 
 
@@ -164,7 +164,7 @@ ms.locfileid: "67088265"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 **。** brittasimon@yourcompanydomain.extension 例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -186,7 +186,7 @@ ms.locfileid: "67088265"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

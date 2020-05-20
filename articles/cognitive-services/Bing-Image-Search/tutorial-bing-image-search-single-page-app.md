@@ -104,7 +104,7 @@ bingSearchOptions(this), getSubscriptionKey())">
 
 ## <a name="send-search-requests"></a>发送搜索请求
 
-此应用程序通过 `<form>` 属性调用 `onsubmit`，来使用 HTML `newBingImageSearch()` 首先发送用户搜索请求。
+此应用程序通过 `onsubmit` 属性调用 `newBingImageSearch()`，来使用 HTML `<form>` 首先发送用户搜索请求。
 
 ```html
 <form name="bing" onsubmit="return newBingImageSearch(this)">
@@ -369,7 +369,7 @@ searchItemRenderers = {
     }, // relatedSearches renderer omitted
 ```
 
-`height` 标记以及缩略图 URL 的 `width` 和 `<img>` 字段中均使用了缩略图图像的 `h` 和 `w`。 这使得必应可以返回大小恰好的[缩略图](../bing-web-search/resize-and-crop-thumbnails.md)。
+`<img>` 标记以及缩略图 URL 的 `h` 和 `w` 字段中均使用了缩略图图像的 `height` 和 `width`。 这使得必应可以返回大小恰好的[缩略图](../bing-web-search/resize-and-crop-thumbnails.md)。
 
 ## <a name="persisting-client-id"></a>保留客户端 ID
 

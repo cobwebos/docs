@@ -108,9 +108,9 @@ ms.locfileid: "67086721"
 
     ![Yardi eLearning 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.yardielearning.com/login` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.yardielearning.com/login`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<companyname>.yardielearning.com/trust` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<companyname>.yardielearning.com/trust`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Yardi eLearning 客户端支持团队](mailto:elearning@yardi.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -131,7 +131,7 @@ ms.locfileid: "67086721"
 
 ### <a name="configure-yardi-elearning-single-sign-on"></a>配置 Yardi eLearning 单一登录
 
-若要在 **Yardi eLearning** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Yardi eLearning 支持团队](mailto:elearning@yardi.com)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **Yardi eLearning** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Yardi eLearning 支持团队](mailto:elearning@yardi.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -151,7 +151,7 @@ ms.locfileid: "67086721"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -173,7 +173,7 @@ ms.locfileid: "67086721"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

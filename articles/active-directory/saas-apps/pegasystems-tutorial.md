@@ -119,7 +119,7 @@ ms.locfileid: "72026799"
 
     1. 在“登录 URL”框中，输入登录 URL 值。 
 
-    1. 在“中继状态”框中，输入采用以下模式的 URL：  `https://<customername>.pegacloud.io/prweb/sso`
+    1. 在“中继状态”框中，输入采用以下模式的 URL：`https://<customername>.pegacloud.io/prweb/sso`
 
     > [!NOTE]
     > 此处提供的值为占位符。 使用实际的标识符、回复 URL、登录 URL 和中继状态 URL。 可以根据本教程稍后所述，从 Pega 应用程序获取标识符和回复 URL 值。 若要获取中继状态值，请联系 [Pega Systems 支持团队](https://www.pega.com/contact-us)。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -180,7 +180,7 @@ ms.locfileid: "72026799"
 
 1. 若要在 **Pega Systems** 端配置单一登录，请在另一个浏览器窗口中使用管理员帐户登录到 Pega 门户。
 
-2. 选择“创建” **“SysAdmin”** “身份验证服务”： >    >  
+2. 选择“创建” > “SysAdmin” > “身份验证服务”：
 
     ![选择“身份验证服务”](./media/pegasystems-tutorial/tutorial_pegasystems_admin.png)
     
@@ -190,7 +190,7 @@ ms.locfileid: "72026799"
 
     1. 在“类型”列表中，选择“SAML 2.0”。  
 
-    1. 在“名称”框中输入任意名称（例如 **Azure AD SSO**）。 
+    1. 在“名称”框中输入任意名称（例如 **Azure AD SSO**）。
 
     1. 在“简短说明”框中输入说明。   
 
@@ -234,7 +234,7 @@ ms.locfileid: "72026799"
 
     a. 在“姓名”  框中，输入 **BrittaSimon**。
   
-    b. 在“用户名”框中，输入 **brittasimon@** 公司域>.**扩展>\<。\<** （例如：BrittaSimon@contoso.com。）
+    b. 在“用户名”框中，输入 **brittasimon@\<公司域>.\<扩展>**。 （例如：BrittaSimon@contoso.com。）
 
     c. 选择“显示密码”，然后记下“密码”框中的值   。
 

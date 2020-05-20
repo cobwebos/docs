@@ -107,9 +107,9 @@ ms.locfileid: "68943444"
 
     ![PolicyStat 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://<companyname>.policystat.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.policystat.com`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：  `https://<companyname>.policystat.com/saml2/metadata/`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<companyname>.policystat.com/saml2/metadata/`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [PolicyStat 客户端支持团队](http://www.policystat.com/support/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -122,7 +122,7 @@ ms.locfileid: "68943444"
 
     ![image](common/edit-attribute.png)
 
-6. 除上述属性以外，PolicyStat 应用程序还要求在 SAML 响应中传回其他几个属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
+6. 除上述属性以外，PolicyStat 应用程序还要求在 SAML 响应中传回其他几个属性。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
     | 名称 | 源属性 |
     |------------------- | -------------------- |
@@ -178,7 +178,7 @@ ms.locfileid: "68943444"
 
     c. 在“姓氏属性”文本框中，键入用户的姓氏，如 Simon    。
 
-    d. 在“电子邮件属性”文本框中，键入用户的**电子邮件地址** **。** `BrittaSimon@contoso.com`
+    d. 在“电子邮件属性”文本框中，键入用户的**电子邮件地址**`BrittaSimon@contoso.com`。
 
     e. 单击 **“保存更改”** 。
 
@@ -208,7 +208,7 @@ ms.locfileid: "68943444"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 **。** brittasimon@yourcompanydomain.extension 例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -230,7 +230,7 @@ ms.locfileid: "68943444"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

@@ -101,7 +101,7 @@ Peakon 与 Azure AD 集成提供以下优势：
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
 
     ![Peakon 域和 URL 单一登录信息](common/idp-intiated.png)
 
@@ -109,11 +109,11 @@ Peakon 与 Azure AD 集成提供以下优势：
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://app.peakon.com/saml/<companyid>/assert`
 
-5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
+5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
     ![Peakon 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
-    在“登录 URL”文本框中，键入 URL：  `https://app.peakon.com/login`
+    在“登录 URL”文本框中，键入 URL：`https://app.peakon.com/login`
 
     > [!NOTE]
     > 这些不是实际值。 本教程稍后将介绍如何使用实际的标识符和回复 URL 来更新这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -158,9 +158,9 @@ Peakon 与 Azure AD 集成提供以下优势：
 
     c. 单击“选择文件”，将从 Azure 门户下载的证书上传到“证书”框中。 
 
-    d. 在 Azure 门户的“基本的 SAML 配置”部分，单击“图标”，复制**实体 ID** 值并将其粘贴到“标识符”文本框中。   
+    d. 在 Azure 门户的“基本的 SAML 配置”部分，单击“图标”，复制**实体 ID** 值并将其粘贴到“标识符”文本框中。
 
-    e. 在 Azure 门户的“基本的 SAML 配置”部分，单击“图标”，复制**回复 URL (ACS)** 并将其粘贴到“回复 URL”文本框中。   
+    e. 在 Azure 门户的“基本的 SAML 配置”部分，单击“图标”，复制**回复 URL (ACS)** 并将其粘贴到“回复 URL”文本框中。
 
     f. 单击“保存” 
 
@@ -182,7 +182,7 @@ Peakon 与 Azure AD 集成提供以下优势：
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”  字段中键入 **brittasimon@yourcompanydomain.extension**  
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -205,7 +205,7 @@ Peakon 与 Azure AD 集成提供以下优势：
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -236,9 +236,9 @@ Peakon 与 Azure AD 集成提供以下优势：
 
      ![新增员工](./media/peakon-tutorial/tutorial_peakon_create.png)
 
-    a. 在“姓名”文本框中，键入名字“Britta”和姓氏“Simon”    。
+    a. 在“姓名”文本框中，键入名字“Britta”和姓氏“Simon”。
 
-    b. 在“电子邮件”文本框中键入电子邮件，例如 **Brittasimon**contoso.com **。\@**
+    b. 在“电子邮件”文本框中键入电子邮件，例如 **Brittasimon\@contoso.com**。
 
     c. 单击“创建员工”  。
 

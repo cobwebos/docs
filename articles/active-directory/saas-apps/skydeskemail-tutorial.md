@@ -165,7 +165,7 @@ ms.locfileid: "67090433"
 
     d. 单击“从文件获取密钥”，从 Azure 门户选择已下载的证书，并单击“打开”上传证书   。
 
-    e. 选择“RSA”  ，作为**算法**。
+    e. 选择“RSA”，作为**算法**。
 
     f. 单击“确定”以保存更改  。
 
@@ -187,7 +187,7 @@ ms.locfileid: "67090433"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”  字段中键入 **brittasimon@yourcompanydomain.extension**  
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -210,7 +210,7 @@ ms.locfileid: "67090433"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

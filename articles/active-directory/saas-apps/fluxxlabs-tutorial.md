@@ -140,11 +140,11 @@ ms.locfileid: "67102392"
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Fluxx Labs 公司站点。
 
-2. 在“设置”  部分下，选择“管理员”  。
+2. 在“设置”部分下，选择“管理员”。
 
     ![Fluxx Labs 配置](./media/fluxxlabs-tutorial/config1.png)
 
-3. 在管理面板中，选择“插件” **“集成”，然后选择“SAML SSO (已禁用)”**  >   
+3. 在管理面板中，选择“插件” > “集成”，然后选择“SAML SSO (已禁用)”
 
     ![Fluxx Labs 配置](./media/fluxxlabs-tutorial/config2.png)
 
@@ -154,9 +154,9 @@ ms.locfileid: "67102392"
 
     a. 选中“SAML SSO”复选框。 
 
-    b. 在“请求路径”文本框中，键入 **/auth/saml**。 
+    b. 在“请求路径”文本框中，键入 **/auth/saml**。
 
-    c. 在“回调路径”文本框中，键入 **/auth/saml/callback**。 
+    c. 在“回调路径”文本框中，键入 **/auth/saml/callback**。
 
     d. 在“断言使用者服务 URL (单一登录 URL)”  文本框中，输入已在 Azure 门户中输入的“回复 URL”  值。
 
@@ -166,7 +166,7 @@ ms.locfileid: "67102392"
 
     g. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后将其粘贴到“标识提供者证书”  文本框。
 
-    h. 在“名称标识符格式”文本框中，输入值 **。** `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`
+    h. 在“名称标识符格式”文本框中，输入值 `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`。
 
     i. 单击“保存”  。
 
@@ -191,7 +191,7 @@ ms.locfileid: "67102392"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 **。** brittasimon@yourcompanydomain.extension 例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -213,7 +213,7 @@ ms.locfileid: "67102392"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

@@ -106,9 +106,9 @@ ms.locfileid: "73157746"
 
     ![BambooHR 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://<company>.bamboohr.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company>.bamboohr.com`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：  `BambooHR-SAML`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`BambooHR-SAML`
 
     > [!NOTE]
     > “登录 URL”  值不是实际值。 请使用实际登录 URL 更新此值。 若要获取此值，请与 [BambooHR 客户端支持团队](https://www.bamboohr.com/contact.php)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -169,7 +169,7 @@ ms.locfileid: "73157746"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -192,7 +192,7 @@ ms.locfileid: "73157746"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -214,7 +214,7 @@ ms.locfileid: "73157746"
 
 3. 选择“概述”。 
 
-4. 在左窗格中，选择“安全” **“用户”。**  >  
+4. 在左窗格中，选择“安全” > “用户”。
 
 5. 键入要设置的有效 Azure AD 帐户的用户名、密码和电子邮件地址。
 

@@ -75,8 +75,8 @@ ms.locfileid: "77200772"
 
 1. 转到 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator)。
 1. 在右上角，选择“登录”  。
-1. 在“程序和产品/服务” **“许可计划”下，选择“企业协议 (EA)”。**  >   
-1. 在“程序和产品/服务” **“所选协议”下，选择“未选择任何项”。**  >   
+1. 在“程序和产品/服务” > “许可计划”下，选择“企业协议 (EA)”。
+1. 在“程序和产品/服务” > “所选协议”下，选择“未选择任何项”。
 
     ![其中显示了价目表“下载 csv”按钮的屏幕截图](./media/ea-pricing/ea-pricing-calculator-estimate.png)
 

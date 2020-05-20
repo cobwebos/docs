@@ -105,7 +105,7 @@ ms.locfileid: "73177022"
 
     ![Picturepark 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://<companyname>.picturepark.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.picturepark.com`
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL  ：
 
@@ -123,11 +123,11 @@ ms.locfileid: "73177022"
 
     ![编辑 SAML 签名证书](common/edit-certificate.png)
 
-6. 在“SAML 签名证书”部分中，复制**指纹**并将其保存在计算机上。 
+6. 在“SAML 签名证书”部分中，复制**指纹**并将其保存在计算机上。
 
     ![复制指纹值](common/copy-thumbprint.png)
 
-7. 在“设置 Picturepark”部分，根据要求复制相应的 URL。  对于“登录 URL”，请使用模式如下的值：  `https://login.microsoftonline.com/_my_directory_id_/wsfed`
+7. 在“设置 Picturepark”部分，根据要求复制相应的 URL。  对于“登录 URL”，请使用模式如下的值：`https://login.microsoftonline.com/_my_directory_id_/wsfed`
 
     > [!Note]
     > _my_directory_id_ 是 Azure AD 订阅的租户 ID。
@@ -166,7 +166,7 @@ ms.locfileid: "73177022"
 
 5. 单击“JoinDefaultUsersGroup”。 
 
-6. 若要在“声明”文本框中设置“Emailaddress”属性，请键入  **并单击“保存”**  `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`  。
+6. 若要在“声明”文本框中设置“Emailaddress”属性，请键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` 并单击“保存”。
 
       ![配置](./media/picturepark-tutorial/ic795065.png "配置")
 
@@ -188,7 +188,7 @@ ms.locfileid: "73177022"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 **。** `brittasimon@yourcompanydomain.extension` 例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -210,7 +210,7 @@ ms.locfileid: "73177022"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -240,7 +240,7 @@ ms.locfileid: "73177022"
    
     ![创建用户](./media/picturepark-tutorial/ic795069.png "创建用户")
    
-    a. 在“电子邮件地址”文本框中，键入用户  **的**电子邮件地址  `BrittaSimon@contoso.com`。  
+    a. 在“电子邮件地址”文本框中，键入用户 `BrittaSimon@contoso.com` 的**电子邮件地址**。  
    
     b. 在“密码”和“确认密码”文本框中，键入密码（“BrittaSimon”）    。 
    
@@ -250,7 +250,7 @@ ms.locfileid: "73177022"
    
     e. 在“公司”文本框中，键入用户的公司名称   。 
    
-    f. 在“国家/地区”文本框中，选择用户的**国家/地区**  。
+    f. 在“国家/地区”文本框中，选择用户的**国家/地区**。
   
     g. 在“邮政编码”文本框中，键入城市的邮政编码   。
    

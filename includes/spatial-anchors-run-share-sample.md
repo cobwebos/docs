@@ -14,21 +14,21 @@ ms.locfileid: "72882317"
 ## <a name="android"></a>[Android](#tab/Android)
 
 Java android 示例支持跨设备共享。
-在 Android Studio 的示例文件夹中打开文件 `SharedActivity.java`。 在 `SharingAnchorsServiceUrl` 文件中输入之前步骤（从 ASP.NET Web 应用 Azure 部署）中获得的 URL 作为 `SharedActivity.java` 的值。 将 URL 中的 `index.html` 替换为 `api/anchors`。 它应如下所示： `https://<app_name>.azurewebsites.net/api/anchors`。
+在 Android Studio 的示例文件夹中打开文件 `SharedActivity.java`。 在 `SharedActivity.java` 文件中输入之前步骤（从 ASP.NET Web 应用 Azure 部署）中获得的 URL 作为 `SharingAnchorsServiceUrl` 的值。 将 URL 中的 `index.html` 替换为 `api/anchors`。 它应如下所示： `https://<app_name>.azurewebsites.net/api/anchors`。
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
 ## <a name="ios"></a>[iOS](#tab/iOS)
 
 Objective-C iOS 示例支持跨设备共享。
-打开示例文件夹中的文件 `SharedDemoViewController.m`。 在 `SharingAnchorsServiceUrl` 文件中输入之前步骤（从 ASP.NET Web 应用 Azure 部署）中获得的 URL 作为 `SharedActivity.java` 的值。 将 URL 中的 `index.html` 替换为 `api/anchors`。 它应如下所示： `https://<app_name>.azurewebsites.net/api/anchors`。
+打开示例文件夹中的文件 `SharedDemoViewController.m`。 在 `SharedActivity.java` 文件中输入之前步骤（从 ASP.NET Web 应用 Azure 部署）中获得的 URL 作为 `SharingAnchorsServiceUrl` 的值。 将 URL 中的 `index.html` 替换为 `api/anchors`。 它应如下所示： `https://<app_name>.azurewebsites.net/api/anchors`。
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
 ## <a name="xamarin"></a>[Xamarin](#tab/Xamarin)
 
 Xamarin Android 和 iOS 示例都支持跨设备共享。
-打开示例文件夹中的文件 `AccountDetails.cs`。 在 `AnchorSharingServiceUrl` 文件中输入之前步骤（从 ASP.NET Web 应用 Azure 部署）中获得的 URL 作为 `SharedActivity.java` 的值。 将 URL 中的 `index.html` 替换为 `api/anchors`。 它应如下所示： `https://<app_name>.azurewebsites.net/api/anchors`。
+打开示例文件夹中的文件 `AccountDetails.cs`。 在 `SharedActivity.java` 文件中输入之前步骤（从 ASP.NET Web 应用 Azure 部署）中获得的 URL 作为 `AnchorSharingServiceUrl` 的值。 将 URL 中的 `index.html` 替换为 `api/anchors`。 它应如下所示： `https://<app_name>.azurewebsites.net/api/anchors`。
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
@@ -46,13 +46,13 @@ Xamarin Android 和 iOS 示例都支持跨设备共享。
 
 ## <a name="configure-the-account-identifier-and-key"></a>配置帐户标识符和密钥
 
-在“项目”窗格中，导航到 **并打开** 场景文件`Assets/AzureSpatialAnchorsPlugin/Examples``AzureSpatialAnchorsLocalSharedDemo.unity`。
+在“项目”窗格中，导航到 `Assets/AzureSpatialAnchorsPlugin/Examples` 并打开 `AzureSpatialAnchorsLocalSharedDemo.unity` 场景文件。
 
 [!INCLUDE [Configure Unity Scene](spatial-anchors-unity-configure-scene.md)]
 
-在“项目”窗格中，导航到  `Assets\AzureSpatialAnchors.Examples\Resources`。 选择 `SpatialAnchorSamplesConfig`。 然后，在“检查器”  窗格中，输入 `Sharing Anchors Service url`（来自 ASP.NET Web 应用 Azure 部署）作为 `Base Sharing Url` 的值，将 `index.html` 替换为 `api/anchors`。 它应如下所示： `https://<app_name>.azurewebsites.net/api/anchors`。
+在“项目”窗格中，导航到 `Assets\AzureSpatialAnchors.Examples\Resources`。 选择 `SpatialAnchorSamplesConfig`。 然后，在“检查器”  窗格中，输入 `Sharing Anchors Service url`（来自 ASP.NET Web 应用 Azure 部署）作为 `Base Sharing Url` 的值，将 `index.html` 替换为 `api/anchors`。 它应如下所示： `https://<app_name>.azurewebsites.net/api/anchors`。
 
-选择“文件” **“保存”，从而保存场景** >   。
+选择“文件” > “保存”，从而保存场景。
 
 ## <a name="deploy-to-your-device"></a>部署到设备
 
@@ -60,7 +60,7 @@ Xamarin Android 和 iOS 示例都支持跨设备共享。
 
 登录 Android 设备并使用 USB 线将其连接到计算机上。
 
-通过选择“文件” **“生成设置”，打开“生成设置”**   >   。
+通过选择“文件” > “生成设置”，打开“生成设置”。
 
 在“生成中的场景”  下，确保所有场景旁边都有复选标记。
 
@@ -70,7 +70,7 @@ Xamarin Android 和 iOS 示例都支持跨设备共享。
 
 ### <a name="deploy-to-an-ios-device"></a>部署到 iOS 设备
 
-通过选择“文件” **“生成设置”，打开“生成设置”**   >   。
+通过选择“文件” > “生成设置”，打开“生成设置”。
 
 在“生成中的场景”  下，确保所有场景旁边都有复选标记。
 

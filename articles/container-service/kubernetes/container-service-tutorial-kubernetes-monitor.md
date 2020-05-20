@@ -40,7 +40,7 @@ ms.locfileid: "78273327"
 
 ## <a name="get-workspace-settings"></a>获取工作区设置
 
-如果可以访问 [Log Analytics 门户](https://mms.microsoft.com)，请转到“设置” **“连接的源”** “Linux 服务器” >    >   。 你可以在其中找到工作区 ID 和主要或辅助工作区密钥。   记下这些值，在群集上设置 Log Analytics 代理需要这些值。
+如果可以访问 [Log Analytics 门户](https://mms.microsoft.com)，请转到“设置” > “连接的源” > “Linux 服务器”。 你可以在其中找到工作区 ID 和主要或辅助工作区密钥。   记下这些值，在群集上设置 Log Analytics 代理需要这些值。
 
 ## <a name="create-kubernetes-secret"></a>创建 Kubernetes 机密
 

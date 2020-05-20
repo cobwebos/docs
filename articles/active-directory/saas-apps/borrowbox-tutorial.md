@@ -107,7 +107,7 @@ ms.locfileid: "73157628"
 
     ![[应用程序名称] 域和 URL 单一登录信息](common/preintegrated.png)
 
-5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
+5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
     ![[应用程序名称] 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
@@ -136,7 +136,7 @@ ms.locfileid: "73157628"
 
 ### <a name="configure-borrowbox-single-sign-on"></a>配置 BorrowBox 单一登录
 
-若要在 BorrowBox 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [BorrowBox 支持团队](mailto:borrowbox@bolinda.com)   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 BorrowBox 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [BorrowBox 支持团队](mailto:borrowbox@bolinda.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -156,7 +156,7 @@ ms.locfileid: "73157628"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -179,7 +179,7 @@ ms.locfileid: "73157628"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

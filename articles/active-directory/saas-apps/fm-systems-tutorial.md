@@ -105,7 +105,7 @@ ms.locfileid: "80048609"
 
     ![FM:Systems 域和 URL 单一登录信息](common/both-replyurl.png)
 
-    在“回复 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.fmshosted.com/fminteract/ConsumerService2.aspx` 
+    在“回复 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.fmshosted.com/fminteract/ConsumerService2.aspx`
     
     > [!NOTE]
     > 此值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [FM:Systems 客户端支持团队](https://fmsystems.com/support-services/)获取该值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -126,7 +126,7 @@ ms.locfileid: "80048609"
 
 ### <a name="configure-fmsystems-single-sign-on"></a>配置 FM:Systems 单一登录
 
-若要在 **FM:Systems** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [FM:Systems 支持团队](https://fmsystems.com/support-services/)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **FM:Systems** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [FM:Systems 支持团队](https://fmsystems.com/support-services/)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -146,7 +146,7 @@ ms.locfileid: "80048609"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -168,7 +168,7 @@ ms.locfileid: "80048609"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -182,7 +182,7 @@ ms.locfileid: "80048609"
 
 1. 在 Web 浏览器窗口中，以管理员身份登录到 FM:Systemsn 公司站点。
 
-2. 转到“系统管理”\>“管理安全性”\>“用户”\>“用户列表”  。
+2. 转到“系统管理”\>“管理安全性”\>“用户”\>“用户列表”。
    
     ![系统管理](./media/fm-systems-tutorial/ic795905.png "系统管理")
 

@@ -106,9 +106,9 @@ ms.locfileid: "73158287"
 
     ![eLuminate 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://ClientShortName.eluminate.ca/azuresso/account/SignIn`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://ClientShortName.eluminate.ca/azuresso/account/SignIn`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：  `Eluminate/ClientShortName`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`Eluminate/ClientShortName`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [eLuminate 客户端支持团队](mailto:support@intellimedia.ca)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -139,7 +139,7 @@ ms.locfileid: "73158287"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -162,7 +162,7 @@ ms.locfileid: "73158287"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

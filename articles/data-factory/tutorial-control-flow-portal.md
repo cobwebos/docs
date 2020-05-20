@@ -210,7 +210,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
     ![“新建接收器数据集”按钮](./media/tutorial-control-flow-portal/new-sink-dataset-button.png)
 14. 在“新建数据集”窗口中，选择“Azure Blob 存储”，然后单击“完成”。   
-15. 在数据集的“常规”设置页中，输入 **SinkBlobDataset** 作为**名称**。 
+15. 在数据集的“常规”设置页中，输入 **SinkBlobDataset** 作为**名称**。
 16. 切换到“连接”  选项卡，然后执行以下步骤：
 
     1. 为“LinkedService”选择“AzureStorageLinkedService”。  
@@ -247,7 +247,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 19. 将“复制”活动旁边的绿色按钮拖放到“Web”活动，以便将“复制”活动连接到“Web”活动。  
 
     ![将“复制”活动连接到第一个“Web”活动](./media/tutorial-control-flow-portal/connect-copy-web-activity1.png)
-20. 将“Web”活动从“活动”工具箱拖放到管道设计器图面，并将**名称**设置为 **SendFailureEmailActivity**。 
+20. 将“Web”活动从“活动”工具箱拖放到管道设计器图面，并将**名称**设置为 **SendFailureEmailActivity**。
 
     ![第二个 Web 活动的名称](./media/tutorial-control-flow-portal/web-activity2-name.png)
 21. 切换到“设置”选项卡，然后执行以下步骤： 
@@ -268,13 +268,13 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
         ```
 
         ![第二个 Web 活动的设置](./media/tutorial-control-flow-portal/web-activity2-settings.png)         
-22. 在管道设计器中选择“复制”活动，单击 **+->** 按钮，然后选择“错误”。    
+22. 在管道设计器中选择“复制”活动，单击 **+->** 按钮，然后选择“错误”。  
 
     ![第二个 Web 活动的设置](./media/tutorial-control-flow-portal/select-copy-failure-link.png)
 23. 将“复制”活动旁边的**红色**按钮拖放到第二个“Web”活动 **SendFailureEmailActivity**。 可以四处移动活动，使管道如下图所示：
 
     ![包含所有活动的完整管道](./media/tutorial-control-flow-portal/full-pipeline.png)
-24. 若要验证管道，请单击工具栏中的“验证”按钮。  单击 **>>** 按钮关闭“管道验证输出”窗口。 
+24. 若要验证管道，请单击工具栏中的“验证”按钮。  单击 **>>** 按钮关闭“管道验证输出”窗口。
 
     ![验证管道](./media/tutorial-control-flow-portal/validate-pipeline.png)
 24. 若要将实体（数据集、管道等）发布到数据工厂服务，请选择“全部发布”。  等待“已成功发布”消息出现。 

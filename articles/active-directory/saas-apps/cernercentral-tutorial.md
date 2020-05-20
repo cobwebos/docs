@@ -130,7 +130,7 @@ ms.locfileid: "67105773"
 
 ### <a name="configure-cerner-central-single-sign-on"></a>配置 Cerner Central 单一登录
 
-要在“Cerner Central”端配置单一登录，需要将“应用联合元数据 URL”发送给 [Cerner Central 支持团队](mailto:SISupport@cbre.com)   。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+要在“Cerner Central”端配置单一登录，需要将“应用联合元数据 URL”发送给 [Cerner Central 支持团队](mailto:SISupport@cbre.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -150,7 +150,7 @@ ms.locfileid: "67105773"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。  例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -160,7 +160,7 @@ ms.locfileid: "67105773"
 
 在本部分中，将通过向 Britta Simon 授予对 Cerner Centra 的访问权限使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Cerner Central”    。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Cerner Central”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -172,7 +172,7 @@ ms.locfileid: "67105773"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

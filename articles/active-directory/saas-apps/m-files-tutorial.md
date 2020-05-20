@@ -105,9 +105,9 @@ ms.locfileid: "73159443"
 
     ![M-Files 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：  `https://<tenantname>.cloudvault.m-files.com/authentication/MFiles.AuthenticationProviders.Core/sso`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenantname>.cloudvault.m-files.com/authentication/MFiles.AuthenticationProviders.Core/sso`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：  `https://<tenantname>.cloudvault.m-files.com`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<tenantname>.cloudvault.m-files.com`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [M-Files 客户端支持团队](mailto:support@m-files.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -145,11 +145,11 @@ ms.locfileid: "73159443"
 
     在“服务器”部分键入如下值：  
 
-    a. 键入  **作为“名称”** `<tenant-name>.cloudvault.m-files.com`。 
+    a. 键入 `<tenant-name>.cloudvault.m-files.com` 作为“名称”。 
  
-    b. 键入 **4466** 作为“端口号”。  
+    b. 键入 **4466** 作为“端口号”。 
 
-    c. 选择 **HTTPS** 作为“协议”。  
+    c. 选择 **HTTPS** 作为“协议”。 
 
     d. 在“身份验证”字段中，选择“特定 Windows 用户”。   然后，会出现签名页提示。 插入 Azure AD 凭据。 
 
@@ -175,7 +175,7 @@ ms.locfileid: "73159443"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -198,7 +198,7 @@ ms.locfileid: "73159443"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

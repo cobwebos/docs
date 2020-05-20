@@ -116,7 +116,7 @@ ms.locfileid: "68723061"
 
     ![image](common/edit-attribute.png)
 
-6. 除上述属性以外，Zscaler ZSCloud 应用程序还要求在 SAML 响应中传回其他几个属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
+6. 除上述属性以外，Zscaler ZSCloud 应用程序还要求在 SAML 响应中传回其他几个属性。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
     
     | 名称 | 源属性 |
     | ---------| ------------ |
@@ -181,17 +181,17 @@ ms.locfileid: "68723061"
     
     a. 在“SAML 门户 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”   。
 
-    b. 在“登录名属性”文本框中，输入 **NameID**。 
+    b. 在“登录名属性”文本框中，输入 **NameID**。
 
     c. 单击“上传”，以上传从 Azure 门户的“公共 SSL 证书”中下载的 Azure SAML 签名证书。  
 
     d. 切换“启用 SAML 自动预配”  。
 
-    e. 若要为 displayName 属性启用 SAML 自动预配，请在“用户显示名称属性”文本框中输入 **displayName**。 
+    e. 若要为 displayName 属性启用 SAML 自动预配，请在“用户显示名称属性”文本框中输入 **displayName**。
 
-    f. 若要为 memberOf 属性启用 SAML 自动预配，请在“组名称属性”文本框中输入 **memberOf**。 
+    f. 若要为 memberOf 属性启用 SAML 自动预配，请在“组名称属性”文本框中输入 **memberOf**。
 
-    g. 若要为 department 属性启用 SAML 自动预配，请在“部门名称属性”中输入 **department**。 
+    g. 若要为 department 属性启用 SAML 自动预配，请在“部门名称属性”中输入 **department**。
 
     h. 单击“保存”  。
 
@@ -252,7 +252,7 @@ ms.locfileid: "68723061"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 **。** brittasimon@yourcompanydomain.extension 例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -274,7 +274,7 @@ ms.locfileid: "68723061"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

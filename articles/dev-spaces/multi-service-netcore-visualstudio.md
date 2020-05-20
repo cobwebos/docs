@@ -28,7 +28,7 @@ ms.locfileid: "75438403"
 
 ### <a name="run-mywebapi"></a>运行 *mywebapi*
 1. 在单独的 Visual Studio 窗口中打开项目 `mywebapi`。 
-1. 像前面针对  **项目所做的一样，从启动设置下拉列表中选择“Azure Dev Spaces”。** `webfrontend` 这次不要创建新的 AKS 群集，而是选择已创建的群集。 如前所述，将“空间”保留默认值 `default`，并单击“确定”。  在“输出”窗口中可以看到，Visual Studio 开始在开发空间中“预热”此新服务，以便在开始调试时加速操作。
+1. 像前面针对 `webfrontend` 项目所做的一样，从启动设置下拉列表中选择“Azure Dev Spaces”。 这次不要创建新的 AKS 群集，而是选择已创建的群集。 如前所述，将“空间”保留默认值 `default`，并单击“确定”。  在“输出”窗口中可以看到，Visual Studio 开始在开发空间中“预热”此新服务，以便在开始调试时加速操作。
 1. 按 F5，等待服务生成和部署。 如果 Visual Studio 状态栏变为橙色，则表示服务已准备就绪
 1. 记下“输出”窗口中“Azre Dev Spaces for AKS”窗格内显示的终结点 URL。   该 URL 应类似于 `http://localhost:<portnumber>`。 容器看起来像是在本地运行，但实际上是在 Azure 的开发空间中运行。
 2. `mywebapi` 准备就绪后，在浏览器中打开 localhost 地址，并在 URL 后面追加 `/api/values` 以针对 `ValuesController` 调用默认的 GET API。 
@@ -66,10 +66,10 @@ ms.locfileid: "75438403"
 
 ### <a name="debug-across-multiple-services"></a>跨多个服务进行调试
 1. 此时，`mywebapi` 应该仍是在附加了调试程序的情况下运行。 如果不是，请在 `mywebapi` 项目中按 F5。
-1. 在 `Get(int id)` 文件中的 `Controllers/ValuesController.cs` 方法内，设置一个用于处理 `api/values/{id}` GET 请求的断点。
+1. 在 `Controllers/ValuesController.cs` 文件中的 `Get(int id)` 方法内，设置一个用于处理 `api/values/{id}` GET 请求的断点。
 1. 在上述代码粘贴到的 `webfrontend` 项目中，紧靠在向 `mywebapi/api/values` 发送 GET 请求的代码位置前面设置一个断点。
 1. 在 `webfrontend` 项目中按 F5。 Visual Studio 会再次打开浏览器并定向到相应的 localhost 端口，同时会显示 Web 应用。
-1. 单击页面顶部的“关于”链接，触发  **项目中的断点。** `webfrontend` 
+1. 单击页面顶部的“关于”链接，触发 `webfrontend` 项目中的断点。 
 1. 按 F10 继续。 随即会触发 `mywebapi` 项目中的断点。
 1. 按 F5 继续，然后返回到 `webfrontend` 项目中的代码。
 1. 再次按 F5 完成请求，并返回到浏览器中的某个页面。 在 Web 应用中，“关于”页将会显示一条由两个服务串联的消息：“Hello from webfrontend and Hello from mywebapi”。

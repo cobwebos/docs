@@ -104,7 +104,7 @@ ms.locfileid: "73154110"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”  部分中执行以下步骤：
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
     ![Adobe Experience Manager 域和 URL 单一登录信息](common/idp-intiated.png)
 
@@ -115,7 +115,7 @@ ms.locfileid: "73154110"
     > [!NOTE]
     > 答复 URL 值不是真实值。 请将回复 URL 值更新为实际回复 URL。 若要获取此值，请联系 [Adobe Experience Manager 客户端支持团队](https://helpx.adobe.com/support/experience-manager.html)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
+5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
     ![Adobe Experience Manager 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
@@ -139,7 +139,7 @@ ms.locfileid: "73154110"
 
 1. 在另一个浏览器窗口中打开“Adobe Experience Manager”管理门户  。
 
-2. 选择“设置” **“安全”** “用户” >    >   。
+2. 选择“设置” > “安全” > “用户”。
 
     ![配置单一登录“保存”按钮](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_user.png)
 
@@ -147,7 +147,7 @@ ms.locfileid: "73154110"
 
     ![配置单一登录“保存”按钮](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin6.png)
 
-4. 选择“帐户设置” **“管理信任存储”**  >   。
+4. 选择“帐户设置” > “管理信任存储”。
 
     ![配置单一登录“保存”按钮](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_managetrust.png)
 
@@ -163,11 +163,11 @@ ms.locfileid: "73154110"
 
     ![配置单一登录“保存”按钮](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin8.png)
 
-8. 选择“帐户设置” **“创建/管理密钥存储”**  >   。 通过提供密码创建密钥存储。
+8. 选择“帐户设置” > “创建/管理密钥存储”。 通过提供密码创建密钥存储。
 
     ![配置单一登录“保存”按钮](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin9.png)
 
-9. 返回管理屏幕。 然后选择“设置” **“操作”** “Web 控制台”。 >    >  
+9. 返回管理屏幕。 然后选择“设置” > “操作” > “Web 控制台”。
 
     ![配置单一登录“保存”按钮](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin1.png)
 
@@ -183,7 +183,7 @@ ms.locfileid: "73154110"
 
     ![配置单一登录“保存”按钮](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin4.png)
 
-    a. 在“路径”框中，输入  **/** 。
+    a. 在“路径”框中，输入 **/**。
 
     b. 在“IDP URL”框中，输入从 Azure 门户复制的“登录 URL”值   。
 
@@ -221,7 +221,7 @@ ms.locfileid: "73154110"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -244,7 +244,7 @@ ms.locfileid: "73154110"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

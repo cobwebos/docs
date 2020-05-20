@@ -30,7 +30,7 @@ ms.locfileid: "73932207"
 
 ## <a name="using-third-party-tools"></a>使用第三方工具
 
-可以使用 `ffmpeg` 等工具或者 `mkvinfo`MKVToolNix[ 工具包中的 ](https://mkvtoolnix.download/) 命令查看和提取录制文件中的信息。
+可以使用 `ffmpeg` 等工具或者 [MKVToolNix](https://mkvtoolnix.download/) 工具包中的 `mkvinfo` 命令查看和提取录制文件中的信息。
 
 例如，以下命令将深度轨道作为 16 位 PNG 序列提取到同一个文件夹：
 

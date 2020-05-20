@@ -118,7 +118,7 @@ ms.locfileid: "68943340"
 
     ![Recognize 域和 URL 单一登录信息](common/sp-identifier.png)
 
-     在“登录 URL”文本框中，使用以下模式键入 URL：  `https://recognizeapp.com/<your-domain>/saml/sso`
+     在“登录 URL”文本框中，使用以下模式键入 URL：`https://recognizeapp.com/<your-domain>/saml/sso`
 
     > [!Note]
     > 如果“标识符”值未自动填充，可通过打开“SSO 设置”部分的“服务提供程序元数据 URL”来获取“标识符”值，本教程的“配置 Recognize 单一登录”部分会对此予以介绍。   登录 URL 值不是实际值。 请使用实际登录 URL 更新此值。 请联系 [Recognize 客户端支持团队](mailto:support@recognizeapp.com)获取该值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -191,7 +191,7 @@ ms.locfileid: "68943340"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 **。** brittasimon@yourcompanydomain.extension 例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -213,7 +213,7 @@ ms.locfileid: "68943340"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

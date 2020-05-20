@@ -102,7 +102,7 @@ ms.locfileid: "67105464"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
 
     ![Clear Review 域和 URL 单一登录信息](common/idp-intiated.png)
 
@@ -110,7 +110,7 @@ ms.locfileid: "67105464"
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<customer name>.clearreview.com/sso/acs/`
 
-5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
+5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
     ![Clear Review 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
@@ -167,9 +167,9 @@ ms.locfileid: "67105464"
 
     a. 在“颁发者 URL”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值   。
 
-    b. 在“SAML 终结点”文本框中，粘贴从 Azure 门户复制的**登录 URL** 值。   
+    b. 在“SAML 终结点”文本框中，粘贴从 Azure 门户复制的**登录 URL** 值。  
 
-    c. 在“SLO 终结点”文本框中，粘贴从 Azure 门户复制的**注销 URL** 值。   
+    c. 在“SLO 终结点”文本框中，粘贴从 Azure 门户复制的**注销 URL** 值。  
 
     d. 在记事本中打开下载的证书，将其内容粘贴到“X.509 证书”文本框中。    
 
@@ -193,7 +193,7 @@ ms.locfileid: "67105464"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -216,7 +216,7 @@ ms.locfileid: "67105464"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

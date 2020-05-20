@@ -105,11 +105,11 @@ ms.locfileid: "73159415"
 
     ![MaxxPoint 域和 URL 单一登录信息](common/preintegrated.png)
 
-5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
+5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
     ![MaxxPoint 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：  `https://maxxpoint.westipc.com/default/sso/login/entity/<customer-id>-azure`
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://maxxpoint.westipc.com/default/sso/login/entity/<customer-id>-azure`
 
     >[!NOTE] 
     >这不是实际值。 请使用实际的登录 URL 更新此值。 请拨打 MaxxPoint 团队电话 888-728-0950 以获取此值。
@@ -150,7 +150,7 @@ ms.locfileid: "73159415"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon**yourcompanydomain.extension** **\@**  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -173,7 +173,7 @@ ms.locfileid: "73159415"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

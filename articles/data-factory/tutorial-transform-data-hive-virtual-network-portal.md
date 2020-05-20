@@ -220,7 +220,7 @@ ms.locfileid: "81409469"
     2. 对于“文件路径”，请单击“浏览存储”。   
  
         ![浏览存储](./media/tutorial-transform-data-using-hive-in-vnet-portal/browse-storage-hive-script.png)
-    3. 在“选择文件或文件夹”窗口中导航到 **adftutorial** 容器中的 **hivescripts** 文件夹，选择 **hivescript.hql**，然后单击“完成”。    
+    3. 在“选择文件或文件夹”窗口中导航到 **adftutorial** 容器中的 **hivescripts** 文件夹，选择 **hivescript.hql**，然后单击“完成”。  
         
         ![选择文件或文件夹](./media/tutorial-transform-data-using-hive-in-vnet-portal/choose-file-folder.png) 
     4. 确认“文件路径”中显示了 **adftutorial/hivescripts/hivescript.hql**。 
@@ -228,7 +228,7 @@ ms.locfileid: "81409469"
         ![脚本设置](./media/tutorial-transform-data-using-hive-in-vnet-portal/confirm-hive-script-settings.png)
     5. 在“脚本”选项卡中，展开“高级”部分。   
     6. 单击“参数”对应的“从脚本自动填充”。   
-    7. 使用以下格式输入“输出”参数的值：`wasbs://<Blob Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`。  例如：`wasbs://adftutorial@mystorageaccount.blob.core.windows.net/outputfolder/`。
+    7. 使用以下格式输入“输出”参数的值：`wasbs://<Blob Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`。 例如：`wasbs://adftutorial@mystorageaccount.blob.core.windows.net/outputfolder/`。
  
         ![脚本参数](./media/tutorial-transform-data-using-hive-in-vnet-portal/script-arguments.png)
 1. 若要将项目发布到数据工厂，请单击“发布”。 
@@ -237,7 +237,7 @@ ms.locfileid: "81409469"
 
 ## <a name="trigger-a-pipeline-run"></a>触发管道运行
 
-1. 首先，请单击工具栏中的“验证”按钮来验证管道。  单击**右箭头 (>>)** 关闭“管道验证输出”窗口。  
+1. 首先，请单击工具栏中的“验证”按钮来验证管道。  单击**右箭头 (>>)** 关闭“管道验证输出”窗口。 
 
     ![验证管道](./media/tutorial-transform-data-using-hive-in-vnet-portal/validate-pipeline.png) 
 2. 若要触发某个管道运行，请在工具栏中单击“触发器”，然后单击“立即触发”。 

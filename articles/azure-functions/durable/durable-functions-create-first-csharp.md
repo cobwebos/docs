@@ -181,7 +181,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 Azure Functions 模板创建一个项目，该项目可发布到 Azure 中的函数应用。 函数应用可将函数分组为逻辑单元，以便更轻松地管理、部署、缩放和共享资源。
 
-1. 在 Visual Studio 中，从“文件”  菜单中选择“新建”   > “项目”  。
+1. 在 Visual Studio 中，从“文件”菜单中选择“新建” > “项目”。
 
 1. 在“创建新项目”  对话框中，搜索 `functions`，选择“Azure Functions”  模板，然后选择“下一步”  。 
 
@@ -205,7 +205,7 @@ Azure Functions 模板创建一个项目，该项目可发布到 Azure 中的函
 
 以下步骤使用模板在项目中创建持久函数代码。
 
-1. 在 Visual Studio 中右键单击该项目并选择“添加” > “新建 Azure 函数”。  
+1. 在 Visual Studio 中右键单击该项目并选择“添加” > “新建 Azure 函数”。
 
     ![添加新函数](./media/durable-functions-create-first-csharp/functions-vs-add-function.png)
 

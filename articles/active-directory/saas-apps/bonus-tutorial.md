@@ -106,7 +106,7 @@ ms.locfileid: "74232065"
 
     ![Bonusly 域和 URL 单一登录信息](common/idp-reply.png)
 
-    在“回复 URL”文本框中，使用以下模式键入 URL：  `https://Bonus.ly/saml/<tenant-name>`
+    在“回复 URL”文本框中，使用以下模式键入 URL：`https://Bonus.ly/saml/<tenant-name>`
 
     > [!NOTE]
     > 此值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [Bonusly 客户端支持团队](https://bonus.ly/contact)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -115,7 +115,7 @@ ms.locfileid: "74232065"
 
     ![编辑 SAML 签名证书](common/edit-certificate.png)
 
-6. 在“SAML 签名证书”部分中，复制**指纹**并将其保存在计算机上。 
+6. 在“SAML 签名证书”部分中，复制**指纹**并将其保存在计算机上。
 
     ![复制指纹值](common/copy-thumbprint.png)
 
@@ -170,7 +170,7 @@ ms.locfileid: "74232065"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 **。** `brittasimon@yourcompanydomain.extension` 例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -192,7 +192,7 @@ ms.locfileid: "74232065"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -237,7 +237,7 @@ ms.locfileid: "74232065"
 
     b. 在“姓氏”文本框中，输入用户的姓氏（如“Simon”）   。
 
-    c. 在“电子邮件”文本框中，输入用户的电子邮件地址（例如 **）** `brittasimon\@contoso.com`。
+    c. 在“电子邮件”文本框中，输入用户的电子邮件地址（例如 `brittasimon\@contoso.com`）。
 
     d. 单击“保存”  。
 

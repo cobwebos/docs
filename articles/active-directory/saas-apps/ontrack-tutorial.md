@@ -124,7 +124,7 @@ ms.locfileid: "68944039"
 
     ![image](common/edit-attribute.png)
 
-6. 除了上述属性，OnTrack 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
+6. 除了上述属性，OnTrack 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
     | 名称 | 源属性|
     | -------------- | ----------------|    
@@ -168,7 +168,7 @@ ms.locfileid: "68944039"
 
 ### <a name="configure-ontrack-single-sign-on"></a>配置 OnTrack 单一登录
 
-若要在 OnTrack  端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [OnTrack 支持团队](mailto:CustomerService@insigniagroup.com)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 OnTrack 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [OnTrack 支持团队](mailto:CustomerService@insigniagroup.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -188,7 +188,7 @@ ms.locfileid: "68944039"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”  字段中键入 brittasimon@yourcompanydomain.extension   
+    b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -211,7 +211,7 @@ ms.locfileid: "68944039"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 

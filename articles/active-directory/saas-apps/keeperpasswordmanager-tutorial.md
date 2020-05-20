@@ -108,9 +108,9 @@ ms.locfileid: "73159896"
 
     ![Keeper Password Manager & Digital Vault 域和 URL 单一登录信息](common/sp-identifier-reply.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://{SSO CONNECT SERVER}/sso-connect/saml/login` 
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://{SSO CONNECT SERVER}/sso-connect/saml/login`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://{SSO CONNECT SERVER}/sso-connect` 
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://{SSO CONNECT SERVER}/sso-connect`
 
     c. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://{SSO CONNECT SERVER}/sso-connect/saml/sso`
 
@@ -133,7 +133,7 @@ ms.locfileid: "73159896"
 
 ### <a name="configure-keeper-password-manager--digital-vault-single-sign-on"></a>配置 Keeper Password Manager & Digital Vault 单一登录
 
-若要在“Keeper Password Manager & Digital Vault 配置”端配置单一登录，按 [Keeper 支持指南](https://keepersecurity.com/assets/pdf/KeeperSSOConnect_v11.pdf)所给出的准则操作。 
+若要在“Keeper Password Manager & Digital Vault 配置”端配置单一登录，按 [Keeper 支持指南](https://keepersecurity.com/assets/pdf/KeeperSSOConnect_v11.pdf)所给出的准则操作。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -153,7 +153,7 @@ ms.locfileid: "73159896"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension    
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
@@ -176,7 +176,7 @@ ms.locfileid: "73159896"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
