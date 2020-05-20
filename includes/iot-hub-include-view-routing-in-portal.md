@@ -23,6 +23,6 @@ ms.locfileid: "67235248"
 
 ![已设置的路由](./media/iot-hub-include-view-routing-in-portal/02-show-message-routes.png)
 
-在“消息路由”屏幕上  选择“自定义终结点”  ，查看为路由定义的终结点。
+在“消息路由”屏幕上选择“自定义终结点”，查看为路由定义的终结点。
 
 ![为路由设置的终结点](./media/iot-hub-include-view-routing-in-portal/03-show-routing-endpoints.png)

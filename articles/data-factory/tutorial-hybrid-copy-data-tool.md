@@ -113,7 +113,7 @@ ms.locfileid: "81418586"
 
    ![新建数据工厂](./media/doc-common-process/new-azure-data-factory-menu.png)
 
-1. 在“新建数据工厂”  页的“名称”下输入 **ADFTutorialDataFactory**  。
+1. 在“新建数据工厂”页的“名称”下输入 **ADFTutorialDataFactory** 。
 
    数据工厂的名称必须全局唯一。  如果看到名称字段的以下错误消息，请更改数据工厂的名称（例如，改为 yournameADFTutorialDataFactory）。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
 
@@ -141,7 +141,7 @@ ms.locfileid: "81418586"
 
    ![“入门”页](./media/doc-common-process/get-started-page.png)
 
-1. 在“复制数据”工具的“属性”页的“任务名称”下，输入 **CopyFromOnPremSqlToAzureBlobPipeline**。   然后，选择“下一步”  。 “复制数据”工具将使用在此字段中指定的名称创建一个管道。
+1. 在“复制数据”工具的“属性”页的“任务名称”下，输入 **CopyFromOnPremSqlToAzureBlobPipeline**。  然后，选择“下一步”  。 “复制数据”工具将使用在此字段中指定的名称创建一个管道。
   ![任务名称](./media/tutorial-hybrid-copy-data-tool/properties-page.png)
 
 1. 在“源数据存储”  页面上，单击“创建新连接”。 
@@ -156,7 +156,7 @@ ms.locfileid: "81418586"
 
    ![创建集成运行时](./media/tutorial-hybrid-copy-data-tool/create-integration-runtime-dialog0.png)
 
-1. 在“集成运行时安装”对话框中的“名称”下输入 **TutorialIntegrationRuntime**。   然后，选择“下一步”  。
+1. 在“集成运行时安装”对话框中的“名称”下输入 **TutorialIntegrationRuntime**。  然后，选择“下一步”  。
 
 
 1. 在“集成运行时安装”对话框中，选择“单击此处对此计算机启动快速安装”。   此操作在计算机上安装集成运行时，并将其注册到数据工厂。 或者，可以使用手动安装选项来下载安装文件、运行该文件，并使用密钥来注册集成运行时。
@@ -167,7 +167,7 @@ ms.locfileid: "81418586"
 
 1. 在“新建链接服务(SQL Server)”  对话框中，确认为“集成运行时”字段选择了 **TutorialIntegrationRuntime**。 然后执行以下步骤：
 
-    a. 在“名称”下输入 **SqlServerLinkedService**。 
+    a. 在“名称”下输入 **SqlServerLinkedService**。
 
     b. 在“服务器名称”下，输入本地 SQL Server 实例的名称。 
 
@@ -206,7 +206,7 @@ ms.locfileid: "81418586"
 
 1. 在“目标数据存储”  对话框中，确保选择了“Azure Blob 存储”  。 然后，选择“下一步”  。
 
-1. 在“选择输出文件或文件夹”对话框中，在“文件夹路径”下，输入 **adftutorial/fromonprem**。   在执行先决条件中的步骤时，你已创建了 **adftutorial** 容器。 如果输出文件夹（在本例中为 **fromonprem**）不存在，则数据工厂会自动创建它。 也可以使用“浏览”按钮来浏览 Blob 存储及其容器/文件夹。  如果没有在“文件名”  下指定任何值，则默认情况下将使用源中的名称（在本例中为 **dbo.emp**）。
+1. 在“选择输出文件或文件夹”对话框中，在“文件夹路径”下，输入 **adftutorial/fromonprem**。  在执行先决条件中的步骤时，你已创建了 **adftutorial** 容器。 如果输出文件夹（在本例中为 **fromonprem**）不存在，则数据工厂会自动创建它。 也可以使用“浏览”按钮来浏览 Blob 存储及其容器/文件夹。  如果没有在“文件名”  下指定任何值，则默认情况下将使用源中的名称（在本例中为 **dbo.emp**）。
 
    ![选择输出文件或文件夹](./media/tutorial-hybrid-copy-data-tool/choose-output-file-folder.png)
 

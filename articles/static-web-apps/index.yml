@@ -1,0 +1,70 @@
+### YamlMime:Landing
+title: Azure 静态 Web 应用文档
+summary: 使用 Azure 静态 Web 应用，可以构建自动根据 GitHub 中所做的更改发布的 JavaScript Web 应用程序。
+metadata:
+  title: Azure 静态 Web 应用文档
+  description: 使用 Azure 静态 Web 应用，可以构建自动根据 GitHub 中所做的更改发布的 JavaScript Web 应用程序。
+  ms.topic: landing-page
+  ms.service: static-web-apps
+  author: craigshoemaker
+  ms.author: cshoe
+  ms.date: 04/09/2020
+  ms.openlocfilehash: 8dd4f7420c4b58d621312f361beede1e48bc17b5
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83593063"
+landingContent:
+- title: 关于静态 Web 应用
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 静态 Web 应用？
+      url: overview.md
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 创建第一个 Angular 应用
+      url: /azure/static-web-apps/getting-started?tabs=angular
+    - text: 创建第一个 React 应用
+      url: /azure/static-web-apps/getting-started?tabs=react
+    - text: 创建第一个 Vue 应用
+      url: /azure/static-web-apps/getting-started?tabs=vue
+    - text: 创建第一个应用（无框架）
+      url: /azure/static-web-apps/getting-started?tabs=vanilla-javascript
+  - linkListType: learn
+    links:
+    - text: 发布 Angular、React、Svelte 或 Vue JavaScript 应用和 API
+      url: /learn/modules/publish-app-service-static-web-app-api
+- title: 关键概念
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 路由
+      url: routes.md
+    - text: 公共 API
+      url: apis.md
+    - text: 过渡
+      url: review-publish-pull-requests.md
+    - text: 限制访问
+      url: authentication-authorization.md
+- title: 发布方案
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 从 Gatsby 发布
+      url: publish-gatsby.md
+    - text: 从 Hugo 发布
+      url: publish-hugo.md
+    - text: 从 VuePress 发布
+      url: publish-vuepress.md
+    - text: 从 Next.js 部署
+      url: deploy-nextjs.md
+    - text: 从 Nuxt.js 部署
+      url: deploy-nuxtjs.md
+  - linkListType: learn
+    links:
+    - text: 使用 Gatsby 发布静态 Web 应用
+      url: /learn/modules/create-deploy-static-webapp-gatsby-app-service

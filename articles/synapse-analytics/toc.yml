@@ -36,6 +36,8 @@
           href: quickstart-load-studio-sql-pool.md
     - name: 使用 SQL 按需版本
       href: quickstart-sql-on-demand.md
+    - name: 连接到 Synapse Link for Cosmos DB
+      href: quickstart-connect-synapse-link-cosmos-db.md
 - name: 教程
   items:
     - name: 运行适用于 Spark 池的 Apache Spark 应用程序
@@ -324,6 +326,10 @@
               href: ./sql-data-warehouse/memory-concurrency-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 资源类
               href: ./sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+    - name: Synapse Link
+      items:
+        - name: Synapse Link 支持的功能
+          href: ./synapse-link/concept-synapse-link-cosmos-db-support.md
     - name: 工具集成（AI、ETL、BI）
       items:
         - name: 排查 Synapse Analytics Studio 的问题
@@ -406,6 +412,12 @@
               href: data-integration/data-integration-data-lake.md
     - name: 转换和分析数据
       items:
+        - name: Synapse Link
+          items:
+            - name: 连接到 Azure Synapse Link for Cosmos DB
+              href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
+            - name: 使用 Apache Spark for Azure Synapse Analytics 查询 Azure Cosmos DB 分析存储
+              href: ./synapse-link/how-to-query-analytical-store-spark.md
         - name: Synapse SQL
           items:
             - name: 查询存储中的数据

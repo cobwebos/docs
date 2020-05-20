@@ -62,7 +62,7 @@ Contoso 想在油泵上部署一个智能边缘模块用于检测温度异常情
 
 若要将 IoT Edge 设备添加到远程监视解决方案加速器，请在 Web UI 中导航到“设备资源管理器”页，然后单击“+ 新建设备”。  
 
-在“新建设备”面板中选择“IoT Edge 设备”，然后输入 **oil-pump** 作为设备 ID。   对于其他设置，可以保留默认值。 然后单击“应用”： 
+在“新建设备”面板中选择“IoT Edge 设备”，然后输入 **oil-pump** 作为设备 ID。  对于其他设置，可以保留默认值。 然后单击“应用”： 
 
 [![添加 IoT Edge 设备](./media/iot-accelerators-remote-monitoring-edge/addedgedevice-inline.png)](./media/iot-accelerators-remote-monitoring-edge/addedgedevice-expanded.png#lightbox)
 
@@ -167,13 +167,13 @@ Contoso 想在油泵上部署一个智能边缘模块用于检测温度异常情
     | 宿主环境 | Microsoft Edge |
     | 流式处理单位 | 1 |
 
-1. 在门户中打开“EdgeDeviceJob”流分析作业，单击“输入”，然后添加名为 **telemetry** 的 **Edge 中心**流输入。 
+1. 在门户中打开“EdgeDeviceJob”流分析作业，单击“输入”，然后添加名为 **telemetry** 的 **Edge 中心**流输入。
 
-1. 在门户上的“EdgeDeviceJob”流分析作业中，单击“输出”，然后添加名为 **output** 的 **Edge 中心**输出。  
+1. 在门户上的“EdgeDeviceJob”流分析作业中，单击“输出”，然后添加名为 **output** 的 **Edge 中心**输出。 
 
-1. 在门户上的“EdgeDeviceJob”流分析作业中，单击“输出”，然后添加名为 **alert** 的另一个 **Edge 中心**输出。  
+1. 在门户上的“EdgeDeviceJob”流分析作业中，单击“输出”，然后添加名为 **alert** 的另一个 **Edge 中心**输出。 
 
-1. 在门户上的“EdgeDeviceJob”流分析作业中，单击“查询”，然后添加以下 **select** 语句：  
+1. 在门户上的“EdgeDeviceJob”流分析作业中，单击“查询”，然后添加以下 **select** 语句： 
 
     ```sql
     SELECT  
@@ -205,15 +205,15 @@ Contoso 想在油泵上部署一个智能边缘模块用于检测温度异常情
 
 1. 在 IoT 中心，单击“自动设备管理”部分中的“IoT Edge”。   单击“添加 IoT Edge 部署”。 
 
-1. 在“创建部署”>“名称和标签”页上，输入名称 **oil-pump-device**。  单击“下一步”。 
+1. 在“创建部署”>“名称和标签”页上，输入名称 **oil-pump-device**。 单击“下一步”。 
 
 1. 在“创建部署”>“添加模块”页上，单击“+ 添加”。   选择“IoT Edge 模块”  。
 
-1. 在“IoT Edge 自定义模块”面板中，输入 **temperatureSensor** 作为名称，输入 **asaedgedockerhubtest/asa-edge-test-module:sensor-ad-linux-amd64** 作为映像 URI。  单击“保存”  。
+1. 在“IoT Edge 自定义模块”面板中，输入 **temperatureSensor** 作为名称，输入 **asaedgedockerhubtest/asa-edge-test-module:sensor-ad-linux-amd64** 作为映像 URI。 单击“保存”  。
 
 1. 在“创建部署”>“添加模块”页上，单击“+ 添加”以添加另一个模块。   选择“Azure 流分析模块”  。
 
-1. 在“Edge 部署”面板中选择你的订阅以及在上一部分创建的 **EdgeDeviceJob**。  单击“保存”  。
+1. 在“Edge 部署”面板中选择你的订阅以及在上一部分创建的 **EdgeDeviceJob**。 单击“保存”  。
 
 1. 在“创建部署”>“添加模块”页上，单击“下一步”。  
 
@@ -327,7 +327,7 @@ Contoso 想在油泵上部署一个智能边缘模块用于检测温度异常情
 
     单击“应用”  。
 
-1. 导航到“仪表板”页。  当 **oil-pump** 设备的温度超过 300 时，“警报”面板中会显示一条警报。 
+1. 导航到“仪表板”页。  当 **oil-pump** 设备的温度超过 300 时，“警报”面板中会显示一条警报。
 
 ## <a name="next-steps"></a>后续步骤
 

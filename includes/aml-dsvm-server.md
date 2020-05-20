@@ -26,7 +26,7 @@ ms.locfileid: "79486097"
 
 1. 使用下述方法之一，将工作区配置文件添加到克隆目录：
 
-    * 在[Azure 门户](https://ms.portal.azure.com)中，选择工作区的“概览”  部分中的“下载 config.json”  。 
+    * 在[Azure 门户](https://ms.portal.azure.com)中，选择工作区的“概览”部分中的“下载 config.json”。 
 
     ![下载 config.json](./media/aml-dsvm-server/download-config.png)
 

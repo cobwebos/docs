@@ -36,7 +36,7 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 命令创建资源组。
 
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机前创建资源组。 在以下示例中，在“EastUS”  区域中创建了名为“myResourceGroupVM”  的资源组：
+Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机前创建资源组。 在以下示例中，在“EastUS”区域中创建了名为“myResourceGroupVM”的资源组：
 
 ```azurepowershell-interactive
 New-AzResourceGroup `

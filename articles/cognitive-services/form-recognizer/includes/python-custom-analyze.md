@@ -14,9 +14,9 @@ ms.locfileid: "75446414"
 ---
 ## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>分析键值对和表的表单
 
-接下来，使用新的经过训练的模型分析文档并从中提取键值对和表。 在新的 Python 脚本中运行以下代码，以便调用**分析表单[ API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** 。 在运行该脚本之前，请进行以下更改：
+接下来，使用新的经过训练的模型分析文档并从中提取键值对和表。 在新的 Python 脚本中运行以下代码，以便调用[分析表单](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm) API。 在运行该脚本之前，请进行以下更改：
 
-1. 将 `<file path>` 替换为表单的文件路径（例如，C:\temp\file.pdf）。 此项也可以是远程文件的 URL。 对于本快速入门，可以使用**示例数据集**的 [Test](https://go.microsoft.com/fwlink/?linkid=2090451) 文件夹下的文件。
+1. 将 `<file path>` 替换为表单的文件路径（例如，C:\temp\file.pdf）。 此项也可以是远程文件的 URL。 对于本快速入门，可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)的 **Test** 文件夹下的文件。
 1. 将 `<model_id>` 替换为在上一部分收到的模型 ID。
 1. 将 `<endpoint>` 替换为从表单识别器订阅密钥中获得的终结点。 可以在表单识别器资源的“概览”选项卡中找到该终结点。 
 1. 将 `<file type>` 替换为文件类型。 支持的类型：`application/pdf`、`image/jpeg`、`image/png`、`image/tiff`。

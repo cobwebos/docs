@@ -126,7 +126,7 @@ az acr login --name <acrName>
 az acr credential show -n <acrName> --query passwords[0].value
 ```
 
-在“ApplicationManifest.xml”  中，会在前端服务的“ServiceManifestImport”  元素下添加代码片段。 为“AccountName”  字段插入 **acrName**，从上一命令返回的密码将用于“密码”  字段。 本文档末尾提供完整的“ApplicationManifest.xml”  。
+在“ApplicationManifest.xml”  中，会在前端服务的“ServiceManifestImport”  元素下添加代码片段。 为“AccountName”字段插入 **acrName**，从上一命令返回的密码将用于“密码”字段。 本文档末尾提供完整的“ApplicationManifest.xml”  。
 
 ```xml
 <Policies>
@@ -171,7 +171,7 @@ az acr credential show -n <acrName> --query passwords[0].value
 
 ### <a name="map-container-ports-to-a-service"></a>将容器端口映射到服务
 
-为了公开群集中的容器，我们还需要在“ApplicationManifest.xml”中创建一个端口绑定。 “PortBinding”  策略引用了我们在“ServiceManifest.xml”  文件中定义的“终结点”  。 对这些终结点的传入请求将映射到此处打开和绑定的容器端口。 在“ApplicationManifest.xml”  件中，添加以下代码以将端口 80 和 6379 绑定到终结点。 本文档末尾提供完整的“ApplicationManifest.xml”  。
+为了公开群集中的容器，我们还需要在“ApplicationManifest.xml”中创建一个端口绑定。 “PortBinding”策略引用了我们在“ServiceManifest.xml”文件中定义的“终结点”。 对这些终结点的传入请求将映射到此处打开和绑定的容器端口。 在“ApplicationManifest.xml”  件中，添加以下代码以将端口 80 和 6379 绑定到终结点。 本文档末尾提供完整的“ApplicationManifest.xml”  。
 
 ```xml
 <ContainerHostPolicies CodePackageRef="Code">

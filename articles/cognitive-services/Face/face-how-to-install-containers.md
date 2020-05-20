@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 74465bddb57c14af4d02c1d3bfdc46f3ac25bef3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bd1449501cdc9483621a5408a3a4926afe90212f
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80878538"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702146"
 ---
 # <a name="install-and-run-face-containers-preview"></a>安装并运行人脸容器（预览）
 
@@ -28,15 +28,17 @@ Azure 认知服务面部为 Docker 提供标准化的 Linux 容器，用于检�
 
 必须满足以下先决条件，然后才能使用人脸服务容器。
 
-|必选|目的|
+|必需|目标|
 |--|--|
 |Docker 引擎| Docker 引擎必须安装在[主计算机](#the-host-computer)上。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
-|熟悉 Docker | 你需要基本了解 Docker 概念，如注册表、存储库、容器和容器映像。 还需要了解基本`docker`命令。| 
+|熟悉 Docker | 你需要基本了解 Docker 概念，如注册表、存储库、容器和容器映像。 还需要了解基本 `docker` 命令。| 
 |人脸资源 |若要使用该容器，必须具备：<br><br>Azure**面部**资源以及关联的 API 密钥和终结点 URI。 此资源的 "**概述**" 和 "**键**" 页上提供了这两个值。 它们是启动容器所必需的。<br><br>**{API_KEY}**： "**密钥**" 页上有两个可用的资源键之一<br><br>**{ENDPOINT_URI}**： "**概述**" 页中提供的终结点
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
 ## <a name="request-access-to-the-private-container-registry"></a>请求访问专用容器注册表
+
+填写并提交[请求窗体](https://aka.ms/VisionContainersPreview)，请求对容器的访问权限。 
 
 [!INCLUDE [Request access to private container registry](../../../includes/cognitive-services-containers-request-access.md)]
 
@@ -104,7 +106,7 @@ ApiKey={API_KEY}
 提供 `docker run` 命令的多个[示例](./face-resource-container-config.md#example-docker-run-commands)。 
 
 > [!IMPORTANT]
-> 若`Eula`要`Billing`运行容器`ApiKey` ，则必须指定、和选项，否则容器将无法启动。 有关详细信息，请参阅[计费](#billing)。
+> `Eula` `Billing` `ApiKey` 若要运行容器，则必须指定、和选项，否则容器将无法启动。 有关详细信息，请参阅[计费](#billing)。
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -124,7 +126,7 @@ ApiKey={API_KEY}
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 如果在启用了输出[装载](./face-resource-container-config.md#mount-settings)并启用了日志记录的情况下运行容器，则容器将生成日志文件，这些文件有助于排查启动或运行容器时所发生的问题。
 
@@ -142,7 +144,7 @@ ApiKey={API_KEY}
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>“摘要”
+## <a name="summary"></a>摘要
 
 本文介绍了如何下载、安装和运行面部服务容器的概念和工作流。 综上所述：
 

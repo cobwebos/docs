@@ -9,12 +9,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 1/15/2020
-  ms.openlocfilehash: 852a01416b52c6a7b98c3b4883210749bf3cc509
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: b3e986c67c55af467ea6534dd7484a307ec08227
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "80132451"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83589255"
 landingContent:
 - title: 关于 Azure Maps
   linkLists:
@@ -56,6 +56,36 @@ landingContent:
       url: how-to-manage-pricing-tier.md
     - text: 查看 Azure Maps API 使用情况指标
       url: how-to-view-api-usage.md
+- title: 使用 Creator 进行开发
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 室内地图概念
+      url: creator-indoor-maps.md
+  - linkListType: tutorial
+    links:
+    - text: 使用 Creator 创建室内地图数据
+      url: tutorial-creator-indoor-maps.md
+  - linkListType: how-to-guide
+    links:
+    - text: 管理 Creator 室内地图
+      url: how-to-manage-creator.md
+    - text: 实现室内地图的动态样式设置
+      url: indoor-map-dynamic-styling.md
+    - text: 使用 Azure Maps 绘图错误可视化工具
+      url: drawing-error-visualizer.md
+    - text: 使用室内地图模块
+      url: how-to-use-indoor-module.md
+  - linkListType: reference
+    links:
+    - text: 转换服务
+      url: https://docs.microsoft.com/rest/api/maps/conversion
+    - text: 数据集服务
+      url: https://docs.microsoft.com/rest/api/maps/dataset
+    - text: 图块集服务
+      url: https://docs.microsoft.com/rest/api/maps/tileset
+    - text: 功能状态集服务
+      url: https://docs.microsoft.com/rest/api/maps/featurestate
 - title: 使用 Web SDK 进行开发
   linkLists:
   - linkListType: concept

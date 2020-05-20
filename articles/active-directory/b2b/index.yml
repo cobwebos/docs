@@ -1,28 +1,30 @@
 ### YamlMime:Landing
-title: Azure Active Directory B2B 文档
-summary: 了解如何使用 Azure AD 企业到企业 (B2B) 协作以安全地将公司的应用程序和服务与来自任何组织的来宾用户和外部合作伙伴共享，同时保持对自己公司数据的控制。
+title: 外部标识文档
+summary: “外部标识”是一组功能，可供组织用来保护和管理任何外部用户（包括客户和合作伙伴）。 “外部标识”以 B2B 协作为基础，提供了更多用来与组织外的用户进行交互和连接的功能。
 metadata:
-  title: 应用程序管理文档
-  description: 了解如何使用 Azure AD 企业到企业 (B2B) 协作以安全地将公司的应用程序和服务与来自任何组织的来宾用户和外部合作伙伴共享，同时保持对自己公司数据的控制。
+  title: 外部标识文档
+  description: “外部标识”是一组功能，可供组织用来保护和管理任何外部用户（包括客户和合作伙伴）。 “外部标识”以 B2B 协作为基础，提供了更多用来与组织外的用户进行交互和连接的功能。
   ms.service: active-directory
   ms.subservice: B2B
   ms.workload: identity
   ms.topic: landing-page
-  ms.date: 08/27/2019
+  ms.date: 05/19/2020
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: 2c0f418249d470c1454474012fb25e6670630108
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 3a26561b7789446aff70c9fb9e08d523d05d8d64
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "74272702"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83587470"
 landingContent:
-- title: 关于 B2B 协作
+- title: 关于外部标识
   linkLists:
   - linkListType: overview
     links:
+    - text: 比较外部标识解决方案
+      url: compare-with-b2c.md
     - text: 什么是 B2B 来宾用户访问权限？
       url: what-is-b2b.md
 - title: 邀请 B2B 来宾用户

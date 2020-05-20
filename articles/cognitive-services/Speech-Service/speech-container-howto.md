@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: dc11d9d7dfa7ededa19e11c9e1bc38e1eaaec93f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 84000016af4b16bd0716c15e7c27b4ab56614532
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591008"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702167"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>安装和运行语音服务容器（预览）
 
@@ -47,7 +47,8 @@ ms.locfileid: "83591008"
 
 ## <a name="request-access-to-the-container-registry"></a>请求访问容器注册表
 
-填写并提交[认知服务容器请求窗体](https://aka.ms/cognitivegate)，请求对容器的访问权限。
+填写并提交[请求窗体](https://aka.ms/speechcontainerspreview/)，请求对容器的访问权限。 
+
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 
@@ -550,7 +551,7 @@ speech_config.set_service_property(
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 启动或运行容器时，可能会遇到问题。 使用输出[装载](speech-container-configuration.md#mount-settings)并启用日志记录。 这样，容器就可以生成日志文件，这些文件在解决问题时非常有用。
 
@@ -568,7 +569,7 @@ speech_config.set_service_property(
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 本文已介绍语音容器的概念，及其下载、安装和运行工作流。 综上所述：
 

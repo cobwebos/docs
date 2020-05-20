@@ -4,6 +4,14 @@
   items:
     - name: 关于对等互连服务
       href: about.md
+- name: 教程
+  items:
+    - name: 注册对等互连服务连接
+      href: azure-portal.md
+    - name: 创建对等互连服务连接
+      href: create-connection.md
+    - name: 度量对等互连服务连接遥测数据
+      href: measure-connection-telemetry.md
 - name: 概念
   items:
     - name: 位置与合作伙伴
@@ -18,14 +26,10 @@
   items:
     - name: 注册对等互连服务
       items:
-        - name: Azure 门户
-          href: azure-portal.md
         - name: Azure PowerShell
           href: powershell.md
         - name: Azure CLI
           href: cli.md
-    - name: 度量连接遥测
-      href: measure-connection-telemetry.md
 - name: 参考
   items:
     - name: Azure PowerShell

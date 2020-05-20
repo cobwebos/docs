@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 27ce3931e6808c5ba7ee0dbf9d3354220bbc0177
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a3860b2cedbdf8154658449349439f918775cb25
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592162"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701857"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>安装和运行窗体识别器容器（预览）
 
@@ -67,7 +67,7 @@ Azure 表单识别器应用机器学习技术从表单中识别和提取键值�
 
 ## <a name="request-access-to-the-container-registry"></a>请求访问容器注册表
 
-填写并提交[认知服务容器请求窗体](https://aka.ms/cognitivegate)，请求对容器的访问权限。
+填写并提交[请求窗体](https://aka.ms/FormRecognizerContainerRequestAccess)，请求对容器的访问权限。
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 
@@ -307,7 +307,7 @@ formrecognizer_config =
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 如果运行启用了输出[装入点](form-recognizer-container-configuration.md#mount-settings)和日志记录的容器，该容器会生成有助于排查启动或运行容器时发生的问题的日志文件。
 
@@ -325,7 +325,7 @@ formrecognizer_config =
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 本文介绍了与下载、安装和运行表单识别器容器相关的概念与工作流。 综上所述：
 

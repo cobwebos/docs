@@ -117,7 +117,7 @@ Contoso 的操作员可以通过解决方案仪表板监视设备。 “设备�
 
 ### <a name="check-the-pressure-is-back-to-normal"></a>检查压力是否恢复正常
 
-若要查看冷却器的压力遥测数据，请导航到“仪表板”页，在遥测面板中选择“压力”，并确认 **chiller-02.0** 的压力已恢复正常：  
+若要查看冷却器的压力遥测数据，请导航到“仪表板”页，在遥测面板中选择“压力”，并确认 **chiller-02.0** 的压力已恢复正常： 
 
 [![压力恢复正常](./media/quickstart-remote-monitoring-deploy/pressurenormal-inline.png)](./media/quickstart-remote-monitoring-deploy/pressurenormal-expanded.png#lightbox)
 

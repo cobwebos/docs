@@ -1,0 +1,75 @@
+- name: SQL Edge 文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是 SQL Edge？
+      href: overview.md
+    - name: 支持的版本和功能
+      href: features.md
+- name: 快速入门
+  expanded: true
+  items:
+    - name: 部署 SQL Edge
+      href: deploy-portal.md
+    - name: 在 SQL Edge 上部署 ONNX 模型
+      href: deploy-onnx.md
+- name: 教程
+  items:
+    - name: 使用 Azure 数据工厂同步数据
+      href: tutorial-sync-data-factory.md
+    - name: 使用 SQL 数据同步来同步数据
+      href: tutorial-sync-data-sync.md
+    - name: 使用 SQL Edge 构建端到端 IoT 解决方案
+      items:
+        - name: 设置 Azure 资源
+          href: tutorial-deploy-azure-resources.md
+        - name: 设置 IoT Edge 模块
+          href: tutorial-set-up-iot-edge-modules.md
+        - name: 将模型部署到 SQL Edge
+          href: tutorial-run-ml-model-on-sql-edge.md
+- name: 如何
+  items:
+    - name: DAC 包和流分析作业
+      href: stream-analytics.md
+    - name: 配置复制
+      href: configure-replication.md
+    - name: 跟踪数据更改
+      href: track-data-changes.md
+    - name: 管理 T-SQL 流式处理作业
+      href: create-stream-analytics-job.md
+    - name: 连接到 SQL Edge
+      href: connect.md
+    - name: 配置 SQL Edge
+      href: configure.md
+    - name: 部署 DAC 包
+      href: deploy-dacpac.md
+- name: 概念
+  items:
+    - name: 支持 ONNX 的机器学习和 AI
+      href: onnx-overview.md
+    - name: 备份和还原
+      href: backup-restore.md
+    - name: SQL Edge 中的数据流式处理
+      items:
+        - name: 流式传输数据
+          href: stream-data.md
+        - name: 创建外部流 (Transact-SQL)
+          href: create-external-stream-transact-sql.md
+        - name: 更改外部流 (Transact-SQL)
+          href: alter-external-stream-transact-sql.md
+        - name: 删除外部流 (Transact-SQL)
+          href: drop-external-stream-transact-sql.md
+        - name: 流式处理视图和 DMV
+          items:
+            - name: 流式处理视图和 DMV
+              href: streaming-catalog-views.md
+            - name: sys.external_job_streams (Transact-SQL)
+              href: sys-external-job-streams.md
+            - name: sys.external-streaming_jobs (Transact-SQL)
+              href: sys-external-streaming-jobs.md
+            - name: sys.external_streams (Transact-SQL)
+              href: sys-external-streams.md
+    - name: 处理时序数据
+      items:
+        - name: Date_Bucket (Transact-SQL)
+          href: date-bucket-tsql.md
