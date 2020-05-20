@@ -54,7 +54,7 @@ ms.locfileid: "74380103"
 **创建使用条款：**
 
 1. 在 Microsoft Word 中创建一个新文档。
-1. 键入“我的使用条款”，然后在计算机上将此文档保存为 **mytou.pdf**。 
+1. 键入“我的使用条款”，然后在计算机上将此文档保存为 **mytou.pdf**。
 1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 [Azure 门户](https://portal.azure.com)。
 1. 在 Azure 门户的左侧导航栏中，单击“Azure Active Directory”。 
 

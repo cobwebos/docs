@@ -68,7 +68,7 @@ Contoso 正在现场测试某个新的**原型**设备。 在测试期间，Cont
 
 [![查看设备支持的方法](./media/iot-accelerators-remote-monitoring-maintain/maintenancemethods-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancemethods-expanded.png#lightbox)
 
-选择“DecreaseTemperature”，将作业名称设置为 **DecreaseTemperature**。  然后单击“应用”： 
+选择“DecreaseTemperature”，将作业名称设置为 **DecreaseTemperature**。 然后单击“应用”： 
 
 [![创建用于降低温度的作业](./media/iot-accelerators-remote-monitoring-maintain/maintenancecreatejob-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancecreatejob-expanded.png#lightbox)
 

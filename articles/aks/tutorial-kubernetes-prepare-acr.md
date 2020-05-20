@@ -77,7 +77,7 @@ tiangolo/uwsgi-nginx-flask   flask               788ca94b2313        9 months ag
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-现在，请使用容器注册表的 acrLoginServer  地址标记本地 azure-vote-front  映像。 若要指示映像版本，请将 *:v1* 添加到映像名称的末尾：
+现在，请使用容器注册表的 acrLoginServer 地址标记本地 azure-vote-front 映像。 若要指示映像版本，请将 *:v1* 添加到映像名称的末尾：
 
 ```console
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1

@@ -42,7 +42,7 @@ ms.locfileid: "61450498"
 
 可能会要求使用 Azure 订阅凭据登录。
 
-然后[在 Azure 中部署并运行 IoT 设备模拟](quickstart-device-simulation-deploy.md)快速入门中部署的设备模拟的磁贴上单击 **“启动”** 。
+然后在[在 Azure 中部署并运行 IoT 设备模拟](quickstart-device-simulation-deploy.md)快速入门中部署的设备模拟的磁贴上单击“启动”。
 
 ## <a name="view-your-device-models"></a>查看设备模型
 

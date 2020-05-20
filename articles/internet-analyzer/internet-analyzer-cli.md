@@ -36,7 +36,7 @@ Internet 分析器 CLI 将公开以下类型的资源：
 * **时序** - 时序显示指标如何随时间变化。
 
 ## <a name="profile-and-test-creation"></a>配置文件和测试创建
-1. 按照 [Azure Internet 分析器常见问题解答](internet-analyzer-faq.md)的“如何参与预览？”中的说明获得 Internet 分析器的预览版访问权限  。
+1. 按照 [Azure Internet 分析器常见问题解答](internet-analyzer-faq.md)的“如何参与预览？”中的说明获得 Internet 分析器的预览版访问权限。
 2. [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 3. 运行 `login` 命令以启动 CLI 会话：
     ```azurecli-interactive

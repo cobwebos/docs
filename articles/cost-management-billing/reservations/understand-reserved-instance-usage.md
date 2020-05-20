@@ -46,11 +46,11 @@ CSV 文件的此部分显示预留的总体使用情况。 将筛选器应用到
 
 ### <a name="daily-usage-section-of-csv-file"></a>CSV 文件的“每日使用情况”部分
 
-筛选“其他信息”，并键入**预留 ID**。  以下屏幕截图显示了与预订相关的字段。
+筛选“其他信息”，并键入**预留 ID**。 以下屏幕截图显示了与预订相关的字段。
 
 ![每日使用详细信息及收费的屏幕截图](./media/understand-reserved-instance-usage/billing-payg-reserved-instance-csv-details.png)
 
-1. “其他信息”  字段中的 **ReservationId** 是应用到 VM 的预留。
+1. “其他信息”字段中的 **ReservationId** 是应用到 VM 的预留。
 2. **ConsumptionMeter** 是 VM 的计量 ID。
 3. “预留-基础 VM”**计量子类别**行表示声明部分中的 0 美元成本。  已通过预留支付了运行此 VM 的成本。
 4. “计量 ID”是预留的计量 ID。  此计量的成本是 0 美元。 对于任何符合预留折扣条件的 VM，将显示此计量 ID。
@@ -79,11 +79,11 @@ CSV 文件的此部分显示预留的总体使用情况。 将筛选器应用到
 
 ### <a name="detail-section-of-csv-file"></a>CSV 文件的详细信息部分
 
-筛选“其他信息”，并键入**预留 ID**。  以下屏幕截图显示了与 SQL 数据库预留容量预订相关的字段。
+筛选“其他信息”，并键入**预留 ID**。 以下屏幕截图显示了与 SQL 数据库预留容量预订相关的字段。
 
 ![SQL 数据库预留容量的 CSV 文件](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
 
-1. “其他信息”  字段中的 **ReservationId** 是应用到 SQL 数据库资源的 SQL 数据库预留容量预订。
+1. “其他信息”字段中的 **ReservationId** 是应用到 SQL 数据库资源的 SQL 数据库预留容量预订。
 2. **ConsumptionMeter** 是 SQL 数据库资源的计量 ID。
 3. “计量 ID”  是预留计量。 此计量的成本是 0 美元。 任何符合预留折扣条件的 SQL 数据库资源将在 CSV 文件中显示此计量 ID。
 

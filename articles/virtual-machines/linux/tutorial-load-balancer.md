@@ -52,14 +52,14 @@ Azure 负载均衡器是位于第 4 层（TCP、UDP）的负载均衡器，通�
 
 
 ## <a name="create-azure-load-balancer"></a>创建 Azure 负载均衡器
-本部分详细介绍如何创建和配置负载均衡器的每个组件。 创建负载均衡器之前，需使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在“eastus”  位置创建名为“myResourceGroupLoadBalancer”  的资源组：
+本部分详细介绍如何创建和配置负载均衡器的每个组件。 创建负载均衡器之前，需使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在“eastus”位置创建名为“myResourceGroupLoadBalancer”的资源组：
 
 ```azurecli-interactive
 az group create --name myResourceGroupLoadBalancer --location eastus
 ```
 
 ### <a name="create-a-public-ip-address"></a>创建公共 IP 地址
-若要通过 Internet 访问应用，需要负载均衡器的一个公共 IP 地址。 使用 [az network public-ip create](/cli/azure/network/public-ip) 创建公共 IP 地址。 以下示例在“myResourceGroupLoadBalancer”  资源组中创建名为“myPublicIP”  的公共 IP 地址：
+若要通过 Internet 访问应用，需要负载均衡器的一个公共 IP 地址。 使用 [az network public-ip create](/cli/azure/network/public-ip) 创建公共 IP 地址。 以下示例在“myResourceGroupLoadBalancer”资源组中创建名为“myPublicIP”的公共 IP 地址：
 
 ```azurecli-interactive
 az network public-ip create \
@@ -267,7 +267,7 @@ az network public-ip show \
 建议对运行应用的 VM 执行维护，例如安装 OS 更新。 若要应对应用增加的流量，建议添加更多 VM。 本部分演示了如何在负载均衡器中删除或添加 VM。
 
 ### <a name="remove-a-vm-from-the-load-balancer"></a>从负载均衡器中删除 VM
-可使用 [az network nic ip-config address-pool remove](/cli/azure/network/nic/ip-config/address-pool) 从后端地址池中删除 VM。 以下示例从“myLoadBalancer”  中删除“myVM2”  的虚拟 NIC：
+可使用 [az network nic ip-config address-pool remove](/cli/azure/network/nic/ip-config/address-pool) 从后端地址池中删除 VM。 以下示例从“myLoadBalancer”中删除“myVM2”的虚拟 NIC：
 
 ```azurecli-interactive
 az network nic ip-config address-pool remove \

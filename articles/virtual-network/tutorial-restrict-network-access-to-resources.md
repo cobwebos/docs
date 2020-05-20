@@ -182,7 +182,7 @@ ms.locfileid: "74186374"
 
 ### <a name="restrict-network-access-to-a-subnet"></a>限制对子网的网络访问
 
-默认情况下，存储帐户接受来自任何网络（包括 Internet）中的客户端的网络连接。 除 *myVirtualNetwork* 虚拟网络中的“专用”  子网之外，拒绝来自 Internet 以及所有虚拟网络中的所有其他子网的网络访问。
+默认情况下，存储帐户接受来自任何网络（包括 Internet）中的客户端的网络连接。 除 *myVirtualNetwork* 虚拟网络中的“专用”子网之外，拒绝来自 Internet 以及所有虚拟网络中的所有其他子网的网络访问。
 
 1. 在存储帐户的“设置”下，选择“防火墙和虚拟网络”。  
 2. 选择“所选网络”。 
@@ -294,7 +294,7 @@ ms.locfileid: "74186374"
 
    ![访问被拒绝错误](./media/tutorial-restrict-network-access-to-resources/access-denied-error.png)
 
-   访问被拒绝，因为计算机不在 *MyVirtualNetwork* 虚拟网络的“专用”子网中。 
+   访问被拒绝，因为计算机不在 *MyVirtualNetwork* 虚拟网络的“专用”子网中。
 
 ## <a name="clean-up-resources"></a>清理资源
 

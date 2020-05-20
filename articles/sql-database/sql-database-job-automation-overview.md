@@ -205,7 +205,7 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 
  作业数据库不一定需要是新的，但应该干净且为空，其服务目标应该为 S0 或更高。 作业数据库的服务对象建议使用  S1 或更高，但最佳选择取决于作业的性能需求：作业步骤数，作业目标数，以及作业的运行频率。 例如，对于每小时只运行数个作业且以十个以下数据库为目标的作业代理，也许 S0 数据库就够用了，但 S0 数据库的每分钟运行一个作业的速度可能不够快，因此使用更高的服务层级可能会更好。
 
-如果针对作业数据库的操作的速度比预期慢，则在出现速度缓慢的情况时使用 Azure 门户或 [sys.dm_db_resource_stats](sql-database-monitor-tune-overview.md#sql-database-resource-monitoring) DMV [监视](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)作业数据库中的数据库性能和资源利用率。 如果资源（如 CPU、数据 IO 或日志写入）的使用率达到 100%，且与出现缓慢情况的时间段相关，请考虑以增量方式将数据库扩展到更高的服务目标（采用 [DTU 模型](sql-database-service-tiers-dtu.md)或 [vCore 模型](sql-database-service-tiers-vcore.md)），直到工作数据库性能得到充分改进。
+如果针对作业数据库的操作的速度比预期慢，则在出现速度缓慢的情况时使用 Azure 门户或 [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) DMV [监视](sql-database-monitor-tune-overview.md#sql-database-resource-monitoring)作业数据库中的数据库性能和资源利用率。 如果资源（如 CPU、数据 IO 或日志写入）的使用率达到 100%，且与出现缓慢情况的时间段相关，请考虑以增量方式将数据库扩展到更高的服务目标（采用 [DTU 模型](sql-database-service-tiers-dtu.md)或 [vCore 模型](sql-database-service-tiers-vcore.md)），直到工作数据库性能得到充分改进。
 
 ##### <a name="job-database-permissions"></a>作业数据库权限
 

@@ -33,7 +33,7 @@ Azure Kinect 传感器 SDK 提供对 Azure Kinect 设备配置和硬件传感器
 ## <a name="tools"></a>工具
 
 - 用于监视设备数据流和配置不同模式的 [Azure Kinect 查看器](azure-kinect-viewer.md)。
-- 使用 [Matroska 容器格式](azure-kinect-recorder.md)的 [Azure Kinect 录制器](record-file-format.md)和播放读取器 API。
+- 使用 [Matroska 容器格式](record-file-format.md)的 [Azure Kinect 录制器](azure-kinect-recorder.md)和播放读取器 API。
 - Azure Kinect DK [固件更新工具](azure-kinect-firmware-tool.md)。
 
 ## <a name="sensor-sdk"></a>传感器 SDK

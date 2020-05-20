@@ -32,7 +32,7 @@ ms.locfileid: "80235195"
 
 ## <a name="create-a-resource-group-and-a-virtual-network"></a>创建资源组和虚拟网络
 
-在创建虚拟网络之前，必须创建一个资源组用于托管该虚拟网络。 使用 [az group create](/cli/azure/group) 创建资源组。 此示例在 eastus  位置中创建一个名为 myResourceGroup  的资源组：
+在创建虚拟网络之前，必须创建一个资源组用于托管该虚拟网络。 使用 [az group create](/cli/azure/group) 创建资源组。 此示例在 eastus 位置中创建一个名为 myResourceGroup 的资源组：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus

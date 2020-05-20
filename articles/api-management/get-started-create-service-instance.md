@@ -35,7 +35,7 @@ Azure API 管理 (APIM) 可帮助组织将 API 发布给外部、合作伙伴和
 
 ## <a name="create-a-new-service"></a>创建新服务
 
-1. 在 Azure 门户菜单中，选择“创建资源”  。 还可以在 Azure“主页”上选择“创建资源”   。 
+1. 在 Azure 门户菜单中，选择“创建资源”  。 还可以在 Azure“主页”上选择“创建资源” 。 
    
    ![选择“创建资源”](./media/get-started-create-service-instance/00-CreateResource-01.png)
    
@@ -68,7 +68,7 @@ Azure API 管理 (APIM) 可帮助组织将 API 发布给外部、合作伙伴和
 
 如果不再需要资源组和所有相关资源，可以使用以下步骤将其删除：
 
-1. 在 Azure 门户中，搜索并选择“资源组”  。 还可以在“主页”上选择“资源组”   。 
+1. 在 Azure 门户中，搜索并选择“资源组”  。 还可以在“主页”上选择“资源组” 。 
 
    ![资源组导航](./media/get-started-create-service-instance/00-DeleteResource-01.png)
 

@@ -25,4 +25,4 @@ ms.locfileid: "67173380"
 
 若要在浏览器中查看远程监视解决方案仪表板，请首先导航到 [Microsoft Azure IoT 解决方案加速器](https://www.azureiotsolutions.com/Accelerators#dashboard)。 可能会要求使用 Azure 订阅凭据登录。
 
-然后，单击你在[快速入门](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md)中部署的远程监视解决方案加速器的磁贴上的“启动”  。
+然后，单击你在[快速入门](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md)中部署的远程监视解决方案加速器的磁贴上的“启动”。

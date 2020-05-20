@@ -24,12 +24,12 @@ Azure 防火墙管理器预览版是一种安全管理服务，可为基于云�
 
 - **安全虚拟中心**
 
-   [Azure 虚拟 WAN 中心](../virtual-wan/virtual-wan-about.md#resources)是一种 Microsoft 托管资源，可用于轻松创建中心辐射型体系结构。 当安全和路由策略与此类中心相关联时，它被称为[安全虚拟中心](secured-virtual-hub.md)  。 
+   [Azure 虚拟 WAN 中心](../virtual-wan/virtual-wan-about.md#resources)是一种 Microsoft 托管资源，可用于轻松创建中心辐射型体系结构。 当安全和路由策略与此类中心相关联时，它被称为[安全虚拟中心](secured-virtual-hub.md)。 
 - **中心虚拟网络**
 
    这是你自己创建并管理的标准 Azure 虚拟网络。 安全策略在与此类中心关联后，将称为中心虚拟网络。  目前仅支持 Azure 防火墙策略。 可将包含工作负荷服务器和服务的辐射虚拟网络对等互连。 还可以在未对等互连到任何辐射的独立虚拟网络中管理防火墙。
 
-有关安全虚拟中心与中心虚拟网络体系结构的详细比较，请参阅[有哪些 Azure 防火墙管理器体系结构选项？](vhubs-and-vnets.md)。  
+有关安全虚拟中心与中心虚拟网络体系结构的详细比较，请参阅[有哪些 Azure 防火墙管理器体系结构选项？](vhubs-and-vnets.md)。 
 
 ![防火墙管理器](media/overview/firewallmanagerv5.png)
 

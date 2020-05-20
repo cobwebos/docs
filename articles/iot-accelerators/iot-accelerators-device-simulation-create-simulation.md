@@ -42,7 +42,7 @@ ms.locfileid: "61448510"
 
 可能会要求使用 Azure 订阅凭据登录。
 
-然后，单击在**快速入门**中部署的设备模拟的磁贴上的[“启动”](quickstart-device-simulation-deploy.md)。
+然后，单击在[快速入门](quickstart-device-simulation-deploy.md)中部署的设备模拟的磁贴上的“启动”。
 
 ## <a name="view-simulations"></a>查看模拟
 

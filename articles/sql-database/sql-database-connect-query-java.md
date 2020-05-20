@@ -30,15 +30,15 @@ ms.locfileid: "76768645"
 
   # <a name="macos"></a>[macOS](#tab/macos)
 
-  安装 Homebrew 和 Java，然后使用**在 macOS 上创建使用 SQL Server 的 Java 应用**中的步骤 **1.2** 和 [1.3](https://www.microsoft.com/sql-server/developer-get-started/java/mac/) 安装 Maven。
+  安装 Homebrew 和 Java，然后使用[在 macOS 上创建使用 SQL Server 的 Java 应用](https://www.microsoft.com/sql-server/developer-get-started/java/mac/)中的步骤 **1.2** 和 **1.3** 安装 Maven。
 
   # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
 
-  安装 Java 和 Java 开发工具包，然后使用**在 Ubuntu 上创建使用 SQL Server 的 Java 应用**中的步骤 **1.2**、**1.3** 和 [1.4](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/) 安装 Maven。
+  安装 Java 和 Java 开发工具包，然后使用[在 Ubuntu 上创建使用 SQL Server 的 Java 应用](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/)中的步骤 **1.2**、**1.3** 和 **1.4** 安装 Maven。
 
   # <a name="windows"></a>[Windows](#tab/windows)
 
-  安装 Java，然后使用**在 Windows 上创建使用 SQL Server 的 Java 应用**中的步骤 **1.2** 和 [1.3](https://www.microsoft.com/sql-server/developer-get-started/java/windows/) 安装 Maven。
+  安装 Java，然后使用[在 Windows 上创建使用 SQL Server 的 Java 应用](https://www.microsoft.com/sql-server/developer-get-started/java/windows/)中的步骤 **1.2** 和 **1.3** 安装 Maven。
 
   ---
 

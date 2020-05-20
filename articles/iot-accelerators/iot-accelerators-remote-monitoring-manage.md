@@ -40,7 +40,7 @@ Contoso 购置了新的机器以扩建其某处生产场地。 在等待交付�
 
 [![预配模拟设备](./media/iot-accelerators-remote-monitoring-manage/devicesprovision-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesprovision-expanded.png#lightbox)
 
-在“新建设备”面板中选择“模拟”，将要预配的设备数保留为 **1**，选择“有故障的引擎”设备模型，然后选择“应用”以创建模拟设备：    
+在“新建设备”面板中选择“模拟”，将要预配的设备数保留为 **1**，选择“有故障的引擎”设备模型，然后选择“应用”以创建模拟设备：   
 
 [![预配模拟引擎设备](./media/iot-accelerators-remote-monitoring-manage/devicesprovisionengine-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesprovisionengine-expanded.png#lightbox)
 
@@ -64,7 +64,7 @@ Contoso 购置了新的机器以扩建其某处生产场地。 在等待交付�
 
 [![重新配置设备](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-expanded.png#lightbox)
 
-若要更新引擎的位置，请将作业名称设置为 **UpdateEngineLocation**，将经度设置为 **-122.15**，将位置设置为“工厂 2”，将纬度设置为 **47.62**，然后单击“应用”：  
+若要更新引擎的位置，请将作业名称设置为 **UpdateEngineLocation**，将经度设置为 **-122.15**，将位置设置为“工厂 2”，将纬度设置为 **47.62**，然后单击“应用”： 
 
 [![更新设备属性值](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-expanded.png#lightbox)
 
@@ -91,13 +91,13 @@ Contoso 购置了新的机器以扩建其某处生产场地。 在等待交付�
 
 选择所有“卡车”和“原型制作”设备。   然后单击“作业”  。
 
-在“作业”面板中，选择“标记”，将作业名称设置为 **AddConnectedVehicleTag**，添加名为 **FieldService** 且值为 **ConnectedVehicle** 的文本标记。   然后单击“应用”： 
+在“作业”面板中，选择“标记”，将作业名称设置为 **AddConnectedVehicleTag**，添加名为 **FieldService** 且值为 **ConnectedVehicle** 的文本标记。  然后单击“应用”： 
 
 [![将标记添加到原型制作和卡车设备](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag-expanded.png#lightbox)
 
 在设备页上，选择所有“冷却器”、“升降机”和“引擎”设备。    然后单击“作业”  。
 
-在“作业”面板中，选择“标记”，将作业名称设置为 **AddSmartBuildingTag**，添加名为 **FieldService** 且值为 **SmartBuilding** 的文本标记。   然后单击“应用”： 
+在“作业”面板中，选择“标记”，将作业名称设置为 **AddSmartBuildingTag**，添加名为 **FieldService** 且值为 **SmartBuilding** 的文本标记。  然后单击“应用”： 
 
 [![将标记添加到冷却器、升降机和引擎设备](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag2-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesaddtag2-expanded.png#lightbox)
 

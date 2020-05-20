@@ -41,7 +41,7 @@ JavaScript 用户定义的函数支持仅用于计算的且不需要外部连接
 > [!NOTE]
 > 这些步骤适用于配置为在云中运行的流分析作业。 如果流分析作业配置为在 Azure IoT Edge 上运行，请改用 Visual Studio 并[使用 C# 编写用户定义的函数](stream-analytics-edge-csharp-udf.md)。
 
-若要在流分析作业中创建 JavaScript 用户定义的函数，请在“作业拓扑”  下选择“函数”  。 然后，从“+ 添加”  下拉菜单中选择“JavaScript UDF”  。 
+若要在流分析作业中创建 JavaScript 用户定义的函数，请在“作业拓扑”下选择“函数”。 然后，从“+ 添加”下拉菜单中选择“JavaScript UDF”。 
 
 ![添加 JavaScript UDF](./media/javascript/stream-analytics-jsudf-add.png)
 

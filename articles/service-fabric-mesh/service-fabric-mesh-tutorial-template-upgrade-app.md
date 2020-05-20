@@ -68,7 +68,7 @@ az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-n
 
 保存对参数文件所做的更改。  
 
-frontEndCpu 参数在 [mesh_rp.windows.json 部署模板](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json)的 parameters 节中声明   ：
+frontEndCpu 参数在 [mesh_rp.windows.json 部署模板](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json)的 parameters 节中声明 ：
 
 ```json
 "frontEndCpu": {

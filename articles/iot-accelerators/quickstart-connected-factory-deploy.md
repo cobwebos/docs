@@ -38,7 +38,7 @@ ms.locfileid: "62127457"
 
 ![立即试用](./media/quickstart-connected-factory-deploy/connectedfactory.png)
 
-在“创建联网工厂解决方案”页上，为联网工厂解决方案加速器输入唯一的**解决方案名称**。  此名称是包含所有解决方案加速器资源的 Azure 资源组的名称。 本快速入门使用的名称为 **MyDemoConnectedFactory**。
+在“创建联网工厂解决方案”页上，为联网工厂解决方案加速器输入唯一的**解决方案名称**。 此名称是包含所有解决方案加速器资源的 Azure 资源组的名称。 本快速入门使用的名称为 **MyDemoConnectedFactory**。
 
 选择要用于部署解决方案加速器的**订阅**和**区域**。 通常，我们会选择离自己最近的区域。 本快速入门使用“Visual Studio Enterprise”和“美国东部”。   只有订阅中的[全局管理员或用户](iot-accelerators-permissions.md)才能完成部署。
 

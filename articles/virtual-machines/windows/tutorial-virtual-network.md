@@ -59,7 +59,7 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
 本教程会创建包含两个子网的单个虚拟网络。 一个前端子网用于托管 Web 应用程序，一个后端子网用于托管数据库服务器。
 
-创建虚拟网络之前，需使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 创建资源组。 以下示例在“EastUS”  位置创建名为 *myRGNetwork* 的资源组：
+创建虚拟网络之前，需使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 创建资源组。 以下示例在“EastUS”位置创建名为 *myRGNetwork* 的资源组：
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName myRGNetwork -Location EastUS
@@ -83,7 +83,7 @@ $backendSubnet = New-AzVirtualNetworkSubnetConfig `
 
 ## <a name="create-virtual-network"></a>创建虚拟网络
 
-通过 [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) 使用 *myFrontendSubnet* 和 *myBackendSubnet* 创建名为“myVNet”  的 VNET：
+通过 [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) 使用 *myFrontendSubnet* 和 *myBackendSubnet* 创建名为“myVNet”的 VNET：
 
 ```azurepowershell-interactive
 $vnet = New-AzVirtualNetwork `
@@ -178,7 +178,7 @@ $nsgFrontendRule = New-AzNetworkSecurityRuleConfig `
   -Access Allow
 ```
 
-可通过为后端子网创建 NSG，将内部流量限制为仅从 myFrontendVM  流向 myBackendVM  。 以下示例创建名为“myBackendNSGRule”  的 NSG 规则：
+可通过为后端子网创建 NSG，将内部流量限制为仅从 myFrontendVM 流向 myBackendVM。 以下示例创建名为“myBackendNSGRule”  的 NSG 规则：
 
 ```azurepowershell-interactive
 $nsgBackendRule = New-AzNetworkSecurityRuleConfig `

@@ -43,7 +43,7 @@ ms.locfileid: "74014356"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 在左侧窗格中，选择“Azure Active Directory”  ，然后从“安全性”  部分中选择“条件访问”  。
+2. 在左侧窗格中，选择“Azure Active Directory”，然后从“安全性”部分中选择“条件访问”。
 
     ![“条件访问”选项卡](./media/quickstart-configure-named-locations/entrypoint.png)
 
