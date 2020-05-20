@@ -3,12 +3,12 @@ title: 应用架构定义
 description: LUIS 应用以或表示， `.json` `.lu` 其中包括所有意图、实体、示例最谈话、功能和设置。
 ms.topic: reference
 ms.date: 05/05/2020
-ms.openlocfilehash: 21b58f79ffd2baf553c6f8b07daa84473e620f77
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: dbbeb4eacbe8e07cf080b3a1527ca39c2b9a5991
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599366"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684360"
 ---
 # <a name="app-schema-definition"></a>应用架构定义
 
@@ -25,8 +25,8 @@ LUIS 应用以或表示， `.json` `.lu` 其中包括所有意图、实体、示
 
 ## <a name="version-7x"></a>版本7、windows
 
-* 转到版本1.x，实体表示为嵌套的、计算机学习的实体。
-* 支持 `enableNestedChildren` 在以下创作 api 上创作具有属性的嵌套计算机学习实体：
+* 转到版本1.x 时，实体表示为嵌套式机器学习实体。
+* 支持 `enableNestedChildren` 在以下创作 api 上通过属性创作嵌套计算机学习实体：
     * [添加标签](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c08)
     * [添加批处理标签](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c09)
     * [查看标签](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c0a)

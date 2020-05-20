@@ -10,19 +10,19 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: bac37e91933d16f36f2d8917760968122a4f5619
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 81299751affe5f59e1132950ccb80844fcc1fae3
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588898"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681385"
 ---
 # <a name="composite-entity"></a>复合实体
 
 复合实体由其他实体构成，例如预生成实体、简单实体、正则表达式实体和列表实体。 各种单独的实体构成整个实体。
 
 > [!CAUTION]
-> 此实体已**弃用**。 请迁移到[计算机学习的实体](reference-entity-machine-learned-entity.md)。
+> 此实体已**弃用**。 请迁移到[机器学习实体](reference-entity-machine-learned-entity.md)。
 
 **如果数据具有以下特征，则非常适合使用此实体：**
 

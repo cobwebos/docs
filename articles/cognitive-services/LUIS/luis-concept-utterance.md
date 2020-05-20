@@ -2,17 +2,17 @@
 title: 良好的示例话语 - LUIS
 description: 话语是应用需要解释的用户输入。 收集你认为用户会输入的短语。 包括意思相同但在单词长度和单词位置上以不同方式构造的陈述。
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 184038ff2758fbe7c5834682c82c082ef6661234
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/19/2020
+ms.openlocfilehash: 6a17416183762893432841c27124ec6a0f8a289d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592859"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685270"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>了解哪些良好的话语适用于你的 LUIS 应用
 
-**陈述**是应用需要解释的用户输入。 若要训练 LUIS 从其中提取意向和实体，请务必为每个意向捕获各种不同的示例话语。 主动学习或继续针对新陈述训练的过程对于 LUIS 提供的机器学习智能至关重要。
+**陈述**是应用需要解释的用户输入。 若要训练 LUIS 从其中提取意向和实体，请务必为每个意向捕获各种不同的示例话语。 主动学习或继续培训新最谈话的过程对 LUIS 提供的机器学习情报至关重要。
 
 收集你认为用户会输入的话语。 请提供含义相同但以各种不同的方式构造的话语：
 
@@ -84,7 +84,7 @@ LUIS 使用由 LUIS 模型作者精心挑选的话语构建有效的模型。 �
 
 ### <a name="word-forms"></a>Word 窗体
 
-规范化**word 窗体**将忽略扩展到根以外的单词之间的差异。 例如，关键字 `run` 、 `running` 和 `runs` 根据谓词时态进行更改。
+规范化**word 窗体**将忽略扩展到根以外的单词之间的差异。
 
 <a name="utterance-normalization-for-diacritics-and-punctuation"></a>
 
@@ -126,7 +126,7 @@ LUIS 使用由 LUIS 模型作者精心挑选的话语构建有效的模型。 �
 
 在模型经过训练、发布并接收[终结点](luis-glossary.md#endpoint)查询后，请[审查 LUIS 建议的陈述](luis-how-to-review-endpoint-utterances.md)。 LUIS 会选择意向或实体得分较低的终结点陈述。
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
 查看[最佳做法](luis-concept-best-practices.md)并将其应用为常规创作周期的一部分。
 

@@ -2,14 +2,14 @@
 title: 有关生成 LUIS 应用的最佳做法
 description: 学习最佳做法以从 LUIS 应用的模型中获取最佳结果。
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 43ca033c98d9997aecaf919b994a89d4e618d49b
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 9c22256f6fac3647108b7078b774338d7f22d29a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589799"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683757"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>有关生成语言理解 (LUIS) 应用的最佳做法
 使用应用创作过程生成 LUIS 应用：
@@ -31,13 +31,27 @@ ms.locfileid: "83589799"
 
 |要求事项|禁止事项|
 |--|--|
-|[应定义不同的意向](#do-define-distinct-intents)<br>[向意向添加功能](#do-add-features-to-intents) |[将许多话语示例添加到意向](#dont-add-many-example-utterances-to-intents)<br>[使用少量或简单实体](#dont-use-few-or-simple-entities) |
+|[规划架构](#do-plan-your-schema)|[无计划生成和发布](#dont-publish-too-quickly)|
+|[应定义不同的意向](#do-define-distinct-intents)<br>[向意向添加功能](#do-add-features-to-intents)<br>
+[使用计算机学习的实体](#do-use-machine-learned-entities) |[将许多话语示例添加到意向](#dont-add-many-example-utterances-to-intents)<br>[使用少量或简单的实体](#dont-use-few-or-simple-entities) |
 |[每个意向需采用合适的详细程度](#do-find-sweet-spot-for-intents)|[将 LUIS 用作培训平台](#dont-use-luis-as-a-training-platform)|
-|[使用版本以迭代方式生成应用](#do-build-your-app-iteratively-with-versions)<br>[为模型分解生成实体](#do-build-for-model-decomposition)|[添加许多相同格式的话语示例，忽略其他格式](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
+|[利用版本以迭代方式生成应用](#do-build-your-app-iteratively-with-versions)<br>[生成模型分解的实体](#do-build-for-model-decomposition)|[添加许多相同格式的话语示例，忽略其他格式](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
 |[在后续迭代中添加模式](#do-add-patterns-in-later-iterations)|[混淆意向和实体的定义](#dont-mix-the-definition-of-intents-and-entities)|
-|[跨所有意向来平衡话语](#balance-your-utterances-across-all-intents)，None 意向除外。<br>[将话语示例添加到“None”意向](#do-add-example-utterances-to-none-intent)|[使用所有可能的值创建短语列表](#dont-create-phrase-lists-with-all-the-possible-values)|
+|[跨所有意向来平衡话语](#balance-your-utterances-across-all-intents)，None 意向除外。<br>[将示例言语添加到 None 意向](#do-add-example-utterances-to-none-intent)|[使用所有可能的值创建短语列表](#dont-create-phrase-lists-with-all-the-possible-values)|
 |[利用主动学习的建议功能](#do-leverage-the-suggest-feature-for-active-learning)|[添加的模式过多](#dont-add-many-patterns)|
-|[通过批处理测试来监视应用的性能](#do-monitor-the-performance-of-your-app)|[使用添加的每个话语示例进行训练和发布](#dont-train-and-publish-with-every-single-example-utterance)|
+|[通过批处理测试监视应用的性能](#do-monitor-the-performance-of-your-app)|[使用添加的每个话语示例进行训练和发布](#dont-train-and-publish-with-every-single-example-utterance)|
+
+## <a name="do-plan-your-schema"></a>规划架构
+
+开始构建应用的架构之前，应确定计划使用此应用的内容和位置。 您的计划越彻底和具体，应用就越好。
+
+* 调查目标用户
+* 定义端到端角色以表示你的应用程序-语音、头像、问题处理（主动、被动）
+* 标识用户交互（文本和语音），通道用于处理现有解决方案或为此应用创建新的解决方案
+* 端到端用户旅程
+    * 此应用应如何操作？ * 其工作原理的优先级是什么？
+    * 主要用例有哪些？
+* 收集数据-[了解](data-collection.md)收集和准备数据
 
 ## <a name="do-define-distinct-intents"></a>应定义不同的意向
 确保每个意向的词汇特定于该意向，而不会与其他意向的词汇重叠。 例如，如果要创建一款处理行程安排（例如航班和酒店）的应用，可以选择将这些主题领域视作彼此独立的意向或视为同一意向，其中包含话语中特定数据的实体。
@@ -60,6 +74,14 @@ ms.locfileid: "83589799"
 ## <a name="do-find-sweet-spot-for-intents"></a>请找到意向的平衡点
 使用 LUIS 中的预测数据来判定意向是否存在重叠的情况。 重叠的意向会困扰 LUIS。 结果是评分最高的意向会与另一个意向非常接近。 由于 LUIS 不会在每次训练的数据中使用完全相同的路径，所以重叠意向可能会在训练中排到第一或第二的位置。 各意向的话语分数应相互拉开差距以避免出现上述翻转情况。 更好地区分意向可以使得每次训练都得出预期的最高分意向。
 
+## <a name="do-use-machine-learned-entities"></a>使用计算机学习的实体
+
+计算机学习的实体针对你的应用进行定制，并要求标记为成功。 如果未使用计算机学习的实体，可能是因为使用了错误的工具。
+
+计算机学习的实体可以使用其他实体作为功能。 这些其他实体可以是自定义实体（如正则表达式实体或列表实体），也可以使用预生成实体作为功能。
+
+了解[有效的机器学习实体](luis-concept-entity-types.md#effective-machine-learned-entities)。
+
 <a name="#do-build-the-app-iteratively"></a>
 
 ## <a name="do-build-your-app-iteratively-with-versions"></a>使用版本以迭代方式生成应用
@@ -79,9 +101,9 @@ ms.locfileid: "83589799"
 
 创建意向并添加示例言语后，以下示例描述实体分解。
 
-首先标识要在言语中提取的整个数据概念。 这是机器学习实体。 然后将短语分解成各个组成部分。 这包括识别子实体和功能。
+首先标识要在言语中提取的整个数据概念。 这是您的机器学习实体。 然后将短语分解成各个组成部分。 这包括识别子实体和功能。
 
-例如，若要提取某个地址，顶层机器学习实体可以命名为 `Address`。 在创建地址时，标识其某些子实体，如街道地址、城市、省/市/自治区和邮政编码。
+例如，如果想要提取地址，则可以调用顶级机器学习实体 `Address` 。 在创建地址时，标识其某些子实体，如街道地址、城市、省/市/自治区和邮政编码。
 
 继续通过以下方式分解这些元素：
 * 作为正则表达式实体添加邮政编码的必需功能。
@@ -122,13 +144,21 @@ ms.locfileid: "83589799"
 
 保留一个独立的言语集，不将其用作[示例言语](luis-concept-utterance.md)或终结点言语。 针对测试集不断改进应用。 调整测试集以反映真实的用户话语。 使用此测试集来评估每次迭代的或每个版本的应用。
 
+## <a name="dont-publish-too-quickly"></a>发布速度太快
+
+如果你的应用程序发布速度过快，无需进行[适当的规划](#do-plan-your-schema)，则可能会导致一些问题，例如：
+
+* 在实际方案中，你的应用程序将无法正常运行。
+* 架构（意向和实体）不合适，如果在架构后开发了客户端应用逻辑，则可能需要从头开始重新编写。 这会导致意外的延迟，并为正在处理的项目带来额外的费用。
+* 添加到模型中的最谈话可能会导致难以调试和确定的示例查询文本集。 它还会在您提交到某个架构后消除歧义。
+
 ## <a name="dont-add-many-example-utterances-to-intents"></a>请勿将许多话语示例添加到意向
 
 发布应用后，仅在开发生命周期过程中添加主动学习中的言语。 如果话语太过相似，请添加模式。
 
 ## <a name="dont-use-few-or-simple-entities"></a>不要使用少量或简单的实体
 
-实体是为数据提取和预测而生成的。 重要的一点是，每个意向都包含机器学习实体，这些实体描述意向中的数据。 这可以帮助 LUIS 预测意向，即使客户端应用程序不需要使用提取的实体。
+实体是为数据提取和预测而生成的。 这一点非常重要，因为每个意向都具有用于描述数据的机器学习实体。 这可以帮助 LUIS 预测意向，即使客户端应用程序不需要使用提取的实体。
 
 ## <a name="dont-use-luis-as-a-training-platform"></a>请勿将 LUIS 用作培训平台
 

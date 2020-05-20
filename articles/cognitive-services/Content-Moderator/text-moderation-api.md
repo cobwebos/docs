@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 41e88dd5a08de485f770559959843ba3b54e590f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5f41330836edab647f379eb43130c078c46cce53
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81274004"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685062"
 ---
 # <a name="learn-text-moderation-concepts"></a>了解文本审查概念
 
-使用内容审查器计算机辅助的文本审核和[人工审阅](Review-Tool-User-Guide/human-in-the-loop.md)功能来适中文本内容。
+使用内容审查器的文本审核模型来分析文本内容。
 
-可根据策略和阈值阻止、批准或审核内容。 用它来增强对合作伙伴、员工和消费者生成文本内容的环境的人工审核。 这些环境包括聊天室、讨论区、聊天机器人、电子商务目录和文档。 
+您可以根据您的策略和阈值来阻止、批准或查看内容（请参阅[评审、工作流和作业](./review-api.md)了解如何设置人为审阅）。 使用文本审核模型，可以在合作伙伴、员工和消费者生成文本内容的环境中增加人员审核。 这些环境包括聊天室、讨论区、聊天机器人、电子商务目录和文档。 
 
 服务响应包含以下信息：
 
@@ -155,4 +155,4 @@ ms.locfileid: "81274004"
 
 ## <a name="next-steps"></a>后续步骤
 
-体验[文本审查 API 控制台](try-text-api.md)并使用 REST API 代码示例。 如果熟悉 Visual Studio 和 c #，请参阅[.NET SDK 快速入门](dotnet-sdk-quickstart.md)的 "文本审核" 部分。
+利用[文本审核 api 控制台](try-text-api.md)测试 api。 另请参阅[评审、工作流和作业](./review-api.md)，了解如何设置人为审阅。

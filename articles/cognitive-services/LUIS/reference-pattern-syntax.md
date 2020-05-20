@@ -4,19 +4,19 @@ description: 创建实体，以便从语言理解 (LUIS) 应用的用户话语�
 ms.topic: reference
 ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: 1665f1ef8a868b011e9e4de8562aeda9edef5ce2
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a0139cf5ef424288c41c436fb63313494404f841
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585566"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684545"
 ---
 # <a name="pattern-syntax"></a>模式语法
 
 模式语法是一个话语模板。 模板应包含要匹配的字词和实体，以及要忽略的字词和[标点](luis-reference-application-settings.md#punctuation-normalization)。 它不是一个正则表达式  。
 
 > [!CAUTION]
-> 模式仅包括计算机获知的实体父级，而不是子实体。
+> 模式仅包括机器学习实体父项，而不包括子实体。
 
 模式中的实体用花括号 `{}` 括起。 模式可包含实体和带角色的实体。 [Pattern.any](luis-concept-entity-types.md#patternany-entity) 是仅在模式中使用的实体。
 
@@ -85,7 +85,7 @@ ms.locfileid: "83585566"
 ## <a name="syntax-to-add-a-patternany-to-pattern-template"></a>用于向模式模板添加 pattern.any 的语法
 Pattern.any 实体可用于向模式添加不同长度的实体。 只要按照模式模板操作，pattern.any 即可为任意长度。
 
-要向模式模板添加 Pattern.any 实体，需用花括号将 Pattern.any 实体括起，比如  `How much does {Booktitle} cost and what format is it available in?`。
+要向模式模板添加 Pattern.any 实体，需用花括号将 Pattern.any 实体括起，比如 `How much does {Booktitle} cost and what format is it available in?`。
 
 |模式与 Pattern.any 实体|
 |--|
@@ -119,7 +119,7 @@ Pattern.any 实体可用于向模式添加不同长度的实体。 只要按照�
 
 在上表中，主题应当是 `the man from La Mancha`（书名），但因为主题包含可选字词 `from`，因此书名没有正确预测。
 
-要避免模式出现此异常，需使用`the man from la mancha`显式列表的创作 API[ 添加 ](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8) 作为 {subject} 实体的显式列表匹配。
+要避免模式出现此异常，需使用[显式列表的创作 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8) 添加 `the man from la mancha` 作为 {subject} 实体的显式列表匹配。
 
 ## <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>用于在模板话语中标记可选文本的语法
 使用正则表达式方括号语法 `[]` 标出话语中的可选文本。 最多能对两个括号使用方括号嵌套可选文本。

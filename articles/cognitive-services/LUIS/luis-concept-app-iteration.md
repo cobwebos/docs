@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: cc994875e39410ecf01417c4d08248d5bc7d034a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0545be9ebe067a62b398c6c89b79a8484f0b48d4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589816"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683115"
 ---
 # <a name="iterative-app-design-for-luis"></a>LUIS 的迭代应用设计
 
@@ -115,7 +115,7 @@ LUIS 需要在每个**意向**中添加几个示例言语。 示例言语需要�
 
 导出的文件**不**包含：
 
-* 机器学习信息，因为应用在导入后会经过重新训练
+* 计算机学习信息，因为该应用程序在导入后重新训练
 * 参与者信息
 
 若要备份 LUIS 应用架构，请从 [LUIS 门户](https://www.luis.ai/applications)导出版本。

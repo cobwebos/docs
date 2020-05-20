@@ -1,7 +1,7 @@
 ---
-title: 计算机学习的实体类型-LUIS
+title: 机器学习实体类型-LUIS
 titleSuffix: Azure Cognitive Services
-description: 计算机学习的实体是用于构建 LUIS 应用程序的首选实体。
+description: 机器学习实体是用于构建 LUIS 应用程序的首选实体。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/30/2020
 ms.author: diberry
-ms.openlocfilehash: 5f663379939f24d16fb63e8e5b002fe088a2d9f8
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: ddaf5c921f92aeaefd8a8b0cb13602bc70a4dd5d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585583"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684577"
 ---
-# <a name="machine-learned-entity"></a>机器学习实体
+# <a name="machine-learning-entity"></a>机器学习实体
 
-计算机学习的实体是用于构建 LUIS 应用程序的首选实体。
+机器学习实体是用于构建 LUIS 应用程序的首选实体。
 
 
 ## <a name="example-json"></a>示例 JSON
@@ -38,7 +38,7 @@ ms.locfileid: "83585583"
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 预测终结点响应](#tab/V3)
 
-因为机器学习的实体可能具有多个具有所需功能的子实体，所以这只是一个示例。 应将其视为有关实体将返回的内容的指南。
+因为机器学习实体可以有许多子实体所需的功能，所以这只是一个示例。 应将其视为有关实体将返回的内容的指南。
 
 请考虑以下查询：
 
@@ -348,6 +348,6 @@ ms.locfileid: "83585583"
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解计算机学习的实体，包括[教程](tutorial-machine-learned-entity.md)、[概念](luis-concept-entity-types.md#design-entities-for-decomposition)和操作[指南](luis-how-to-add-entities.md#create-a-machine-learned-entity)。
+了解有关计算机学习实体的详细信息，包括[教程](tutorial-machine-learned-entity.md)、[概念](luis-concept-entity-types.md#design-entities-for-decomposition)和操作[指南](luis-how-to-add-entities.md#create-a-machine-learned-entity)。
 
 了解 "[列表](reference-entity-list.md)实体" 和 "[正则表达式](reference-entity-regular-expression.md)" 实体。

@@ -3,12 +3,12 @@ title: 限制 - LUIS
 description: 本文介绍 Azure 认知服务语言理解 (LUIS) 的已知限制。 LUIS 有几个限制区。 模型限制在 LUIS 中控制意向、实体和功能。 基于密钥类型的配额限制。 键盘组合可控制 LUIS 网站。
 ms.topic: reference
 ms.date: 05/06/2020
-ms.openlocfilehash: 71f6126cbf9615d7f808f098202f29094a913982
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d4a6162758fab7e5c9592b98974620bbf06ba978
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593233"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684607"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>LUIS 模型和密钥的限制
 LUIS 有几个限制区。 第一种是[模型限制](#model-limits)，它控制 LUIS 中的意向、实体和功能。 第二个是基于密钥类型的[配额限制](#key-limits)。 第三个区域的限制是用于控制 LUIS 网站的[键盘组合](#keyboard-controls)。 第四个是 LUIS 创作网站和 LUIS [终结点](luis-glossary.md#endpoint) API 之间的[世界区域映射](luis-reference-regions.md)。
@@ -53,7 +53,7 @@ LUIS 有几个限制区。 第一种是[模型限制](#model-limits)，它控制
 |Objects|限制|
 |--|--|
 |意向，实体|所有意图和实体名称在应用的版本中必须是唯一的。|
-|ML 实体组件|对于处于同一级别的组件，所有机器学习的实体组件（子实体）都必须是唯一的。|
+|ML 实体组件|对于同一级别的组件，所有机器学习实体组件（子实体）都必须是唯一的。|
 |功能 | 所有命名功能（如短语列表）在应用的某个版本中必须是唯一的。|
 |实体角色|实体或实体组件上的所有角色在同一实体级别（父代、子级、孙级等）都必须是唯一的。|
 

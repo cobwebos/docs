@@ -7,15 +7,15 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: conceptual
-ms.date: 01/10/2019
+ms.topic: how-to
+ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 71858755fe31823d4d7ef8623b915db851530116
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 081f512fd421bf46a86f3789eadd75e178e1b6f5
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72755240"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685312"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>在 C# 中分析令人反感的视频内容
 
@@ -40,7 +40,7 @@ ms.locfileid: "72755240"
 
 在“Azure AD 应用程序”部分，选择“新建”并为新的 Azure AD 应用程序注册命名（例如“VideoModADApp”）。   单击“保存”并等待几分钟时间，让应用程序配置完成。  然后，页面的“Azure AD 应用”部分下应会显示新的应用注册。 
 
-选择该应用注册，并单击其下面的“管理应用程序”按钮。  记下“应用程序 ID”字段中的值，因为稍后需要用到。  选择“设置” **“密钥”，并输入新密钥的说明（例如“VideoModKey”）。**  >   单击“保存”，然后注意新密钥值。  复制此字符串并将其保存到安全的位置。
+选择该应用注册，并单击其下面的“管理应用程序”按钮。  记下“应用程序 ID”字段中的值，因为稍后需要用到。  选择“设置” > “密钥”，并输入新密钥的说明（例如“VideoModKey”）。 单击“保存”，然后注意新密钥值。  复制此字符串并将其保存到安全的位置。
 
 有关上述过程的全面演练，请参阅 [Azure AD 身份验证入门](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad)。
 
@@ -83,7 +83,7 @@ using System.Collections.Generic;
 
 ### <a name="set-up-resource-references"></a>设置资源引用
 
-向 Program.cs 中的 Program 类添加以下静态字段   。 这些字段包含连接到 AMS 订阅所需的信息。 请在这些字段内填充在上述步骤中获取的值。 请注意，`CLIENT_ID` 是 Azure AD 应用的“应用程序 ID”值， **是为该应用创建的“VideoModKey”的值。** `CLIENT_SECRET`
+向 Program.cs 中的 Program 类添加以下静态字段   。 这些字段包含连接到 AMS 订阅所需的信息。 请在这些字段内填充在上述步骤中获取的值。 请注意，`CLIENT_ID` 是 Azure AD 应用的“应用程序 ID”值，`CLIENT_SECRET` 是为该应用创建的“VideoModKey”的值。
 
 ```csharp
 // declare constants and globals

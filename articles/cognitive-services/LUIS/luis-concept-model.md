@@ -3,12 +3,12 @@ title: 使用模型进行设计 - LUIS
 description: 语言理解提供多种类型的模型。 某些模型可以通过多种方式使用。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 933588f96570e931cdc627aaae82bee1037bbdaa
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bbb1f0d43b2a3fd2e8a2dff2201a09622ecaf977
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591873"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683933"
 ---
 # <a name="design-with-intent-and-entity-models"></a>使用意向和实体模型进行设计
 
@@ -36,9 +36,9 @@ ms.locfileid: "83591873"
 
 ## <a name="entities-extract-data"></a>实体提取数据
 
-实体表示要从言语中提取的数据单位。 计算机学习的实体是包含子实体的顶级实体，也是机器学习的实体。
+实体表示要从言语中提取的数据单位。 机器学习实体是包含子实体的顶级实体，也是机器学习实体。
 
-机票预订就是机器学习实体的一个例子。 从概念上讲，机票预测是包含许多较小数据单位（例如日期、时间、座位数、座位类型（头等舱或经济舱）、出发地、目的地和餐饮选项）的单笔交易。
+机器学习实体的一个示例是为飞机票据提供订单。 从概念上讲，机票预测是包含许多较小数据单位（例如日期、时间、座位数、座位类型（头等舱或经济舱）、出发地、目的地和餐饮选项）的单笔交易。
 
 ## <a name="intents-versus-entities"></a>意向与实体
 
@@ -65,11 +65,11 @@ LUIS 支持使用创作 Api 进行_模型分解_，并将概念分解为更小�
 
 * [调色](#intents-classify-utterances)
     * [功能](#features)
-* [计算机学习的实体](reference-entity-machine-learned-entity.md)
-    * 子实体（也是机器学习的实体）
+* [机器学习实体](reference-entity-machine-learned-entity.md)
+    * 子实体（也是机器学习实体）
         * [功能](#features)
             * [短语列表](luis-concept-feature.md)
-            * [非计算机获知的实体](luis-concept-feature.md)，例如[正则表达式](reference-entity-regular-expression.md)、[列表](reference-entity-list.md)和[预生成实体](luis-reference-prebuilt-entities.md)
+            * [非计算机学习实体](luis-concept-feature.md)，如[正则表达式](reference-entity-regular-expression.md)、[列表](reference-entity-list.md)和预生成[实体](luis-reference-prebuilt-entities.md)
 
 <a name="entities-extract-data"></a>
 <a name="machine-learned-entities"></a>

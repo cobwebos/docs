@@ -2,13 +2,13 @@
 title: 特征 - LUIS
 description: 将特征添加到语言模型，提供有关如何识别需要标记或分类的输入的提示。
 ms.topic: conceptual
-ms.date: 04/23/2020
-ms.openlocfilehash: 906876e39eb7ff31c2e6b954d1514d8afc50bf3a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/14/2020
+ms.openlocfilehash: e0fd4470c9e1c2a56562b3783010ff1ef87ff466
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591890"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682166"
 ---
 # <a name="machine-learning-ml-features"></a>机器学习（ML）功能
 
@@ -38,9 +38,9 @@ ms.locfileid: "83591890"
 使用短语列表，LUIS 将上下文和通用化视为类似于的项，而不是精确的文本匹配项。
 
 使用短语列表的步骤：
-* 从计算机学习的实体开始
+* 开始使用机器学习实体
     * 添加示例话语
-    * 带有计算机学习实体的标签
+    * 使用机器学习实体进行标记
 * 添加短语列表
     * 添加具有相似含义的单词-**不要添加每**个可能的单词或短语。 相反，请一次添加几个字词或短语，然后重新训练并发布。
     * 查看并添加建议的字词
@@ -88,9 +88,21 @@ ms.locfileid: "83591890"
     * 国家（子实体）
     * 邮政编码（子实体）
 
+## <a name="nested-subentities-with-features"></a>带功能的嵌套子实体
+
+已学习子实体的计算机指示存在对父实体的概念，无论该父实体是另一个子实体还是顶级实体。 子实体的值充当其父项的功能。
+
+子实体可以将短语列表作为功能以及模型（另一实体）作为功能。
+
+当子实体包含短语列表时，这将提高概念的词汇，但不会将任何信息添加到预测的 JSON 响应。
+
+当子实体具有另一实体的功能时，JSON 响应将包含该其他实体的提取数据。
+
 ## <a name="required-features"></a>所需功能
 
 若要从预测终结点返回模型，必须找到必需的功能。 如果你知道传入数据必须与功能匹配，请使用所需功能。
+
+如果查询文本文本不匹配所需的功能，则不会提取该文本。
 
 **必需的功能使用了非计算机学习的实体**：
 * 正则表达式实体
@@ -143,7 +155,7 @@ ms.locfileid: "83591890"
 
 由于用户希望在任何意向或实体中使用第二种语言，因此应将其添加到短语列表，并将短语列表配置为全局功能。
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 了解[最佳实践](luis-concept-best-practices.md)。
 
 ## <a name="next-steps"></a>后续步骤

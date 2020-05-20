@@ -1,113 +1,112 @@
 ---
 title: 标记实体示例言语
-description: 了解如何使用 LUIS 门户的意向详细信息页中的示例言语中的子组件标记机器学习的实体。
+description: 了解如何使用 LUIS 门户的意向详细信息页中的示例查询文本中的子组件在计算机学习实体中进行标记。
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: ea5fbea902c9694d9a8a6a8a5bffcf5e7234bbbd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/17/2020
+ms.openlocfilehash: 0181057bd693280223806e9b5b7cd8c7f7345f79
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382402"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683778"
 ---
-# <a name="label-machine-learned-entity-in-an-example-utterance"></a>在示例言语中标记机器学习的实体
+# <a name="label-machine-learning-entity-in-an-example-utterance"></a>在示例查询文本中标记计算机学习实体
 
 在示例言语中标记实体可为 LUIS 提供示例，其中包含实体的示例，以及实体可以在言语中出现的位置的示例。
 
-## <a name="labeling-machine-learned-entity"></a>标记机器学习实体
+## <a name="label-example-utterances-from-the-intent-detail-page"></a>从意向详细信息页最谈话的标签示例
 
-不妨使用此短语：`hi, please I want a cheese pizza in 20 minutes`。
+1. 登录到[LUIS 门户](https://www.luis.ai)，选择**订阅**和**创作资源**，查看分配给该创作资源的应用。
+1. 通过在 **"我的应用**" 页上选择应用程序的名称来打开应用。
+1. 选择具有要为其添加实体的最谈话示例的目的。
+1. 选择要添加标签的文本，然后选择实体。
 
-1. 选择最左侧的文本，然后选择实体最右侧的文本，接下来选择想要进行标记的实体（在本例中为“完整订单”）。 下图中标记了完成顺序  。
+## <a name="label-with-the-entity-palette-visible"></a>显示实体调色板的标签
+
+在规划了包含实体的架构后，在标记时保持**实体调色板**可见。 **实体调色板**提醒您计划提取的实体。
+
+若要访问**实体调色板**，请在 " **@** 示例查询文本" 列表上方的上下文工具栏中选择符号。
+
+> [!div class="mx-imgBorder"]
+> ![意向详细信息页上的实体调色板的屏幕截图。](media/label-utterances/entity-palette-from-tool-bar.png)
+
+## <a name="label-entity-from-in-place-menu"></a>从就地菜单中标记实体
+
+请考虑示例查询文本， `hi, please I want a cheese pizza in 20 minutes` 。
+
+1. 选择最左侧的文本，然后选择实体的最右侧文本，然后从就地菜单中选择要用标签标记的实体。
 
     > [!div class="mx-imgBorder"]
-    > ![标记完整的机器学习实体](media/label-utterances/example-1-label-machine-learned-entity-complete-order.png)
+    > ![标记完整计算机-学习实体](media/label-utterances/label-steps-in-place-menu.png)
 
-1. 从弹出窗口中选择实体。 标记的完整的比萨订单实体包括所有被标记的单词（从左到右，英语）。
+
+## <a name="label-entity-from-entity-palette"></a>实体调色板中的标签实体
+
+实体调色板提供之前的标记体验的替代方法。 它允许对文本进行画笔处理，使其能够立即使用实体进行标记。
+
+1. 通过选择 **@** 查询文本表右上方的符号，打开实体调色板。
+
+2. 从调色板中选择要标记的实体。 此操作采用可视方式指示新的光标。 当你在 LUIS 门户中移动时，光标将跟随鼠标。
+
+3. 在示例言语中，用光标绘制__ 实体。
+
+    > [!div class="mx-imgBorder"]
+    > ![机器学习实体的实体调色板](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)
+
+## <a name="adding-entity-as-a-feature-from-the-entity-palette"></a>将实体作为功能添加到实体调色板
+
+实体调色板的下半部分允许您向当前选定的实体添加功能。 可以从 "现有实体和短语列表" 中进行选择，也可以创建新的短语列表。
+
+> [!div class="mx-imgBorder"]
+> ![实体调色板作为功能的实体调色板的屏幕截图](media/label-utterances/entity-palette-entity-as-a-feature.png)
+
+## <a name="labeling-entity-roles"></a>标记实体角色
+
+实体角色使用**实体调色板**进行标记。
+
+1. 在“意向详细信息”页上，从上下文工具栏中选择“实体调色板”****。
+1. 在实体调色板打开后，从实体列表中选择实体。
+1. 在实体列表下方，选择现有角色。
+1. 在示例言语文本中，使用实体角色标记文本。
 
 ## <a name="review-labeled-text"></a>查看标记的文本
 
 进行标记后，查看示例言语，并确保选定的一段文本中的选定实体带有下划线。 实线指示文本已被标记。
 
 > [!div class="mx-imgBorder"]
-> ![标记的完整机器学习实体](media/label-utterances/example-1-label-machine-learned-entity-complete-order-labeled.png)
+> ![标记为完整的计算机学习实体](media/label-utterances/example-1-label-machine-learned-entity-complete-order-labeled.png)
 
 ## <a name="confirm-predicted-entity"></a>确认预测的实体
 
-如果这一段文本被虚线框框起来，并且实体名称位于言语上方，则表示已预测文本，但_尚未标记_。 若要将预测转变为标签，依次选择该言语所在的行和“确认实体预测”  。
+如果在文本范围内有一个虚线框，则表示文本已预测但_尚未标记_。 若要将预测转换为标签，请选择 "查询文本" 行，然后从上下文工具栏中选择 "**确认实体**"。
 
-> [!div class="mx-imgBorder"]
-> ![预测完整的机器学习实体](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted.png)
+## <a name="relabeling-over-existing-entities"></a>在现有实体上重新标记
 
-或者，可选择文本上方的实体名称，然后从显示的菜单中选择“确认预测”  。
-
-> [!div class="mx-imgBorder"]
-> ![使用菜单预测完整的机器习得实体](media/label-utterances/example-1-label-machine-learned-entity-complete-order-predicted-menu.png)
-
-## <a name="label-entity-by-painting-with-entity-palette-cursor"></a>通过使用实体调色板光标进行绘制来标记实体
-
-实体调色板提供之前的标记体验的替代方法。 它允许对文本进行画笔处理，使其能够立即使用实体进行标记。
-
-1. 通过选择言语表右上方的荧光笔图标来打开实体调色板。
-
-    > [!div class="mx-imgBorder"]
-    > ![机器学习实体的实体调色板](media/label-utterances/example-1-label-machine-learned-entity-palette.png)
-
-2. 选择实体组件。 此操作采用可视方式指示新的光标。 当你在门户中移动时，光标将跟随鼠标。
-
-    > [!div class="mx-imgBorder"]
-    > ![机器学习实体的实体调色板](media/label-utterances/example-1-label-machine-learned-entity-palette-menu.png)
-
-3. 在示例言语中，用光标绘制  实体。
-
-    > [!div class="mx-imgBorder"]
-    > ![机器学习实体的实体调色板](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)
-
-## <a name="labeling-subcomponents-of-a-machine-learned-entity"></a>标记机器习得实体的子组件
-
-实体中子组件的标记方式与顶级实体的标记方式完全相同。 选择文本时，弹出窗口中可用的实体是相对于文本出现的上下文而言的。 例如，如果你有一个 5 级机器习得实体，并选择标记为第 1 级和第 2 级的文本（通过示例言语下已标记的实体名称表示），则弹出窗口中可用的实体会被限制为第 3 级组件的上下文。 若要使用其他实体标记文本，请选择“标记为其他实体”选项  。
-
-> [!div class="mx-imgBorder"]
-> ![机器学习实体的实体调色板](media/label-utterances/example-1-label-machine-learned-entity-subcomponent.png)
-
-仅当父组件也进行标记时，才可对子组件进行标记。
-
-## <a name="labeling-entity-roles"></a>标记实体角色
-
-实体角色使用实体调色板进行标记。
-
-1. 在“意向详细信息”页上，从上下文工具栏中选择“实体调色板”  。
-1. 在实体调色板打开后，从实体列表中选择实体。
-1. 转到“实体检查器”  ，选择现有角色或创建新角色。
-1. 在示例言语文本中，使用实体角色标记文本。
+如果重新标记已标记的文本，则 LUIS 可以拆分或合并现有标签。
 
 ## <a name="labeling-for-punctuation"></a>为标点符号标记
 
-不需要为标点符号添加标签。 使用[应用程序设置](luis-reference-application-settings.md)来控制标点符号是否会影响查询文本预测。
+不需要为标点符号添加标签。 使用[应用程序设置](luis-reference-application-settings.md) _word 窗体_来控制标点是否影响查询文本预测。
 
 ## <a name="unlabel-entities"></a>取消标记实体
 
-若要取消标记实体，请选择文本下方的实体名称，然后选择“取消标记”****。 如果尝试取消标记的实体具有已标记的子组件，则必须先取消标记子组件。
+> [!NOTE]
+> 仅可标记计算机的实体。
 
-## <a name="editing-labels-using-the-entity-palette"></a>使用实体调色板编辑标签
+若要 unlabel 某个实体，请选择该实体，并从就地菜单中选择 " **unlabel** "。
 
-如果在进行标记时出错，则可使用实体调色板轻松实现快速编辑。 例如，如果某个实体标签错误地多标记了一个字词，且其具有已标记的子组件，则可使用实体调色板来对所需的较短字词范围进行画笔处理。
+> [!div class="mx-imgBorder"]
+> ![显示 unlabeling 实体的屏幕截图](media/label-utterances/unlabel-entity-using-in-place-menu.png)
 
-例如：
+## <a name="automatic-labeling-for-parent-and-child-entities"></a>父实体和子实体的自动标记
 
-1. “披萨类型”子组件跨越“cheese pizza with”，其中包含多余的错误字词“with”
+如果您要为父实体添加标签，则会标记可根据当前训练版本预测的任何子实体。
 
-    > [!div class="mx-imgBorder"]
-    > ![机器学习实体的实体调色板](media/label-utterances/edit-label-with-palette-1.png)
+如果为子实体标记，则父项将自动标记。
 
-2. 使用实体调色板选取“披萨类型”并对“cheese pizza”进行画笔处理。 结果就是现在仅“cheese pizza”标记为“披萨类型”。
+## <a name="automatic-labeling-for-non-machine-learned-entities"></a>非计算机学习实体的自动标记
 
-    > [!div class="mx-imgBorder"]
-    > ![机器学习实体的实体调色板](media/label-utterances/edit-label-with-palette-2.png)
-
-## <a name="labels-for-matching-text-entities"></a>用于匹配文本实体的标签
-
-匹配文本实体包括预生成实体、正则表达式实体、列表实体和 pattern.any 实体。 这些实体由 LUIS 自动标记，因此无需用户手动标记它们。
+非计算机学习实体包括预生成的实体、正则表达式实体、列表实体和模式。任何实体。 这些实体由 LUIS 自动标记，因此无需用户手动标记它们。
 
 ## <a name="entity-prediction-errors"></a>实体预测错误
 

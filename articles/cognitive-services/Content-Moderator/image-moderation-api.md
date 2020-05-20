@@ -10,16 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 36777208dc8ac179f1aaf345c374a33001e3f8bd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dd6228ea50968c98c5ba151b8af9a0c2fa829582
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81404269"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684064"
 ---
 # <a name="learn-image-moderation-concepts"></a>了解图像审查概念
 
-使用内容审查器的计算机辅助图像审核和用户-[循环查看工具](Review-Tool-User-Guide/human-in-the-loop.md)来对成人和猥亵内容进行中等图像。 扫描图像以查找文本内容并提取该文本，以及检测人脸。 可以将图像与自定义列表进行匹配，并执行进一步操作。
+使用内容审查器的计算机辅助图像裁决和[查看工具](Review-Tool-User-Guide/human-in-the-loop.md)来对成人和猥亵内容使用中等图像。 扫描图像以查找文本内容并提取该文本，以及检测人脸。 可以将图像与自定义列表进行匹配，并执行进一步操作。
 
 ## <a name="evaluating-for-adult-and-racy-content"></a>评估成人和猥亵内容
 
@@ -147,4 +147,4 @@ ms.locfileid: "81404269"
 
 ## <a name="next-steps"></a>后续步骤
 
-试用[图像审查 API 控制台](try-image-api.md)并使用 REST API 代码示例。 如果熟悉 Visual Studio 和 c #，请参阅[.NET SDK 快速入门](dotnet-sdk-quickstart.md)中的 "图像裁决" 部分。
+试用[图像审查 API 控制台](try-image-api.md)并使用 REST API 代码示例。 另请参阅[评审、工作流和作业](./review-api.md)，了解如何设置人为审阅。

@@ -3,12 +3,12 @@ title: 术语表 - LUIS
 description: 术语表解释使用 LUIS API 服务时可能遇到的术语。
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: eb823e65acc55dd9d739b31e506ad27f6af9095a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1513099decc21a7d219bfcb84563619640028550
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589663"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681617"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>对包含常见词汇和概念的术语表进行语言理解
 语言理解（LUIS）词汇表说明了使用 LUIS 服务时可能会遇到的术语。
@@ -141,7 +141,7 @@ LUIS 预测终结点 URL 是在创作和发布[LUIS 应用](#application-app)后
 
 子实体是机器学习实体的子实体。
 
-### <a name="non-machine-learned-entity"></a>非计算机获知实体
+### <a name="non-machine-learning-entity"></a>非计算机学习实体
 
 使用文本匹配来提取数据的实体：
 * 列表实体
@@ -199,6 +199,10 @@ LUIS 预测终结点 URL 是在创作和发布[LUIS 应用](#application-app)后
 ## <a name="normalized-value"></a>规范化值
 
 向[列表](#list-entity)实体添加值。 其中每个值都可以包含一个或多个同义词的列表。 仅在响应中返回规范化值。
+
+## <a name="overfitting"></a>过度拟合
+
+当模型关注特定的示例并且无法很好地通用化时，会发生过度拟合。
 
 ## <a name="owner"></a>所有者
 
@@ -260,7 +264,7 @@ LUIS 配额是 Azure 订阅层的限制。 可同时通过每秒请求数（HTTP
 
 ## <a name="schema"></a>架构
 
-您的架构包含您的子实体和实体。 最初计划该架构，然后在一段时间内循环访问。 该架构不包括应用程序设置、功能或示例最谈话。 
+您的架构包含您的子实体和实体。 最初计划该架构，然后在一段时间内循环访问。 该架构不包括应用程序设置、功能或示例最谈话。
 
 ## <a name="sentiment-analysis"></a>情绪分析
 情绪分析提供[文本分析](../text-analytics/overview.md)所提供的话语的正值或负值。

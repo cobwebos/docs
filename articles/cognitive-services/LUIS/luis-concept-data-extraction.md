@@ -4,17 +4,17 @@ description: 从包含意向和实体的话语文本中提取数据。 了解可
 author: diberry
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 3b6b09fd1066a9caa745cddf30d76e2843c3f56c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 35f015691b15c6451a66509671c7dc2fc72f38e4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589714"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682190"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>从包含意向和实体的话语文本中提取数据
 使用 LUIS 可以从用户的自然语言陈述中获取信息。 信息以一种程序、应用程序或聊天机器人能够使用其来采取操作的方式进行提取。 在以下部分中，通过 JSON 示例了解从意向和实体返回了什么数据。
 
-最难提取的数据是机器学习的数据，因为它不是确切的文本匹配。 机器学习[实体](luis-concept-entity-types.md)的数据提取需要作为[创作周期](luis-concept-app-iteration.md)的一部分，直到你确信已接收到所需的数据。
+最难提取的数据是机器学习数据，因为它不是精确的文本匹配。 在您确信接收到所需的数据之前，计算机学习[实体](luis-concept-entity-types.md)的数据提取需要成为[创作周期](luis-concept-app-iteration.md)的一部分。
 
 ## <a name="data-location-and-key-usage"></a>数据位置和密钥用法
 LUIS 在已发布的[终结点](luis-glossary.md#endpoint)上从用户的查询文本中提取数据。 HTTPS 请求（POST 或 GET）包含陈述以及一些可选配置，例如暂存或生产环境  。
@@ -245,7 +245,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 ## <a name="patternany-entity-data"></a>Pattern.any 实体数据
 
-[Pattern。 any](reference-entity-pattern-any.md)是仅在模式的模板查询文本中使用的可变长度占位符，用于标记实体开始和结束的位置。 若要应用模式，必须找到模式中使用的实体。 
+[Pattern。 any](reference-entity-pattern-any.md)是仅在模式的模板查询文本中使用的可变长度占位符，用于标记实体开始和结束的位置。 若要应用模式，必须找到模式中使用的实体。
 
 ## <a name="sentiment-analysis"></a>情绪分析
 如果在[发布](luis-how-to-publish-app.md#sentiment-analysis)时配置了情绪分析，LUIS json 响应会包含情绪分析。 请在[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)文档中详细了解情绪分析。

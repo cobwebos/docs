@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 653882db4b62d7731123faf7b177da44dbd74e3f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: abf149d621d283744a71e08ea4ac2199a1994d57
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584988"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680956"
 ---
 # <a name="add-prebuilt-models-for-common-usage-scenarios"></a>为常见使用方案添加预构建的模型
 
@@ -40,7 +40,7 @@ LUIS 包含一组预构建的模型，用于快速添加常见的对话用户方
 
 1. **在 "方法" 页上**，从 "方法" 列表上方的工具栏中选择 "添加预生成的**域意向**"。
 
-1. 从弹出对话框中选择“Utilities.Cancel”**** 意向。
+1. 从弹出对话框中选择一个意向。
 
     > [!div class="mx-imgBorder"]
     > ![添加预生成意向](./media/luis-prebuilt-domains/add-prebuilt-domain-intents.png)
@@ -59,7 +59,18 @@ LUIS 包含一组预构建的模型，用于快速添加常见的对话用户方
     > [!div class="mx-imgBorder"]
     > ![“添加预构建实体”对话框](./media/luis-prebuilt-domains/add-prebuilt-entity.png)
 
-1. 选择“完成”  。 添加实体后，你不需要训练应用。
+1. 选择“完成”。 添加实体后，你不需要训练应用。
+
+## <a name="add-a-prebuilt-domain-entity"></a>添加预生成的域实体
+1. 登录到[LUIS 门户](https://www.luis.ai)，选择**订阅**和**创作资源**，查看分配给该创作资源的应用。
+1. 通过在 **"我的应用**" 页上选择应用程序的名称来打开应用。
+1. 选择左侧的**实体**。
+
+1. 在 "**实体**" 页上，选择 "**添加预生成的域实体**"。
+
+1. 在 "**添加预生成的域模型**" 对话框中，选择 "预生成的域" 实体。
+
+1. 选择“完成”。 添加实体后，你不需要训练应用。
 
 ## <a name="publish-to-view-prebuilt-model-from-prediction-endpoint"></a>发布以查看从预测终结点预生成的模型
 
@@ -67,7 +78,7 @@ LUIS 包含一组预构建的模型，用于快速添加常见的对话用户方
 
 ## <a name="entities-containing-a-prebuilt-entity-token"></a>包含预生成实体标记的实体
 
-如果你具有需要预生成实体的所需功能的机器学习的实体，请将子组件添加到计算机学习的实体，然后添加预生成实体的_所需_功能。
+如果你的机器学习实体需要预先生成的实体的必需功能，请将子实体添加到机器学习实体，然后添加预生成实体的_所需_功能。
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
