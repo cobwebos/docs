@@ -160,7 +160,7 @@ ms.locfileid: "67093663"
 
     a. 在“名称”  字段中，输入 BrittaSimon  。
   
-    b. 在“用户名”字段中键入 **。** `brittasimon@yourcompanydomain.extension` 例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
 
@@ -182,7 +182,7 @@ ms.locfileid: "67093663"
 
     ![“用户和组”链接](common/users-groups-blade.png)
 
-4. 单击“添加用户”  按钮，然后在“添加分配”  对话框中选择“用户和组”  。
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加分配”窗格](common/add-assign-user.png)
 
@@ -202,7 +202,7 @@ ms.locfileid: "67093663"
 
     ![配置单一登录](./media/procoresso-tutorial/Procore_sso_directory.png)
 
-3. 单击“添加人员”  选项以打开窗体，并执行以下选项 -
+3. 单击“添加人员”选项以打开窗体，并执行以下选项 -
 
     ![配置单一登录](./media/procoresso-tutorial/Procore_user_add.png)
 
@@ -210,7 +210,7 @@ ms.locfileid: "67093663"
 
     b. 在“姓氏”  文本框中，输入用户的姓氏（如 **Simon**）。
 
-    c. 在“电子邮件地址”文本框中，输入用户的电子邮件地址（如 **）** BrittaSimon@contoso.com。
+    c. 在“电子邮件地址”文本框中，输入用户的电子邮件地址（如 BrittaSimon@contoso.com）。
 
     d. 对“权限模板”  选择“稍后应用权限模板”  。
 

@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: QnA Maker 文档
   description: QnA Maker 是一种基于云的 API 服务，它创建基于数据的聊天式问答层。 使用 QnA Maker，可以根据常见问题解答文档、URL 和产品手册等半结构化内容打造一项问题与解答服务。 QnA Maker 服务通过将问题与知识库的 QnA 中的最可能答案进行匹配，来回答用户的自然语言问题。
-  ms.openlocfilehash: e566fdb18bdabe80447de9b2882cf7d57209d15e
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 189782ca4e8d9c6a098f6080a62be4da0f2be853
+  ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "76844103"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83651164"
 landingContent:
 - title: 关于 QnA Maker
   linkLists:
@@ -96,8 +96,6 @@ landingContent:
     links:
     - text: 门户：创建 QnA 机器人
       url: tutorials/create-qna-bot.md
-    - text: .Net：使用 QnA Maker 和语言理解创建机器人
-      url: tutorials/integrate-qnamaker-luis.md
     - text: 其他机器人示例
       url: https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md
 - title: 参考
@@ -120,7 +118,7 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: 故障排除
+    - text: 疑难解答
       url: troubleshooting.md
     - text: 在 Stack Overflow 上提出问题
       url: https://stackoverflow.com/questions/tagged/QnAMaker

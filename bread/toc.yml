@@ -352,7 +352,7 @@
           topicHref: /azure/cognitive-services/entitylinking/home
         - name: 异常查找器
           tocHref: /azure/cognitive-services/labs/anomaly-finder/
-          topicHref: /azure/cognitive-services/labs/anomaly-finder/overview
+          topicHref: /azure/cognitive-services/anomaly-detector/overview
         - name: 对话学习器
           tocHref: /azure/cognitive-services/labs/conversation-learner/
           topicHref: /azure/cognitive-services/labs/conversation-learner/overview
@@ -397,7 +397,7 @@
           topicHref: /azure/cognitive-services/web-language-model/home
         - name: 个性聊天
           tocHref: /azure/cognitive-services/project-personality-chat/
-          topicHref: /azure/cognitive-services/project-personality-chat/overview
+          topicHref: /azure/cognitive-services/qnamaker/overview/overview
         - name: 项目音响效果
           tocHref: /azure/cognitive-services/acoustics/
           topicHref: /azure/cognitive-services/acoustics/what-is-acoustics
@@ -575,10 +575,10 @@
           topicHref: /azure/machine-learning/data-science-virtual-machine/
     - name: 市场消费者
       tocHref: /azure/marketplace-consumer/
-      topicHref: /azure/marketplace-consumer/
+      topicHref: /azure/marketplace/
     - name: 市场发布
       tocHref: /azure/marketplace-publishing/
-      topicHref: /azure/marketplace-publishing/
+      topicHref: /azure/marketplace/marketplace-publishers-guide
     - name: 媒体服务
       tocHref: /azure/media-services/
       topicHref: /azure/media-services/
@@ -610,7 +610,7 @@
           topicHref: /azure/service-bus-messaging/
         - name: Azure 中继
           tocHref: /azure/service-bus-relay/
-          topicHref: /azure/service-bus-relay/
+          topicHref: /azure/azure-relay/
     - name: 迁移
       tocHref: /azure/migrate/
       topicHref: /azure/migrate/
@@ -619,7 +619,7 @@
       topicHref: /azure/mobile-engagement/
     - name: 移动服务
       tocHref: /azure/mobile-services/
-      topicHref: /azure/mobile-services/
+      topicHref: /previous-versions/azure/app-service-mobile/app-service-mobile-value-prop
     - name: 多重身份验证
       tocHref: /azure/multi-factor-authentication/
       topicHref: /azure/multi-factor-authentication/
@@ -723,7 +723,7 @@
       topicHref: /azure/remoteapp/
     - name: 复原
       tocHref: /azure/resiliency/
-      topicHref: /azure/resiliency/
+      topicHref: /azure/architecture/framework/resiliency/overview
     - name: 基于角色的访问控制
       tocHref: /azure/role-based-access-control/
       topicHref: /azure/role-based-access-control/
@@ -843,7 +843,7 @@
               topicHref: /azure/virtual-machines/windows/sql
     - name: 机密计算
       tocHref: /azure/confidential-computing/
-      topicHref: /azure/confidential-computing/
+      topicHref: /azure/confidential-computing/overview
     - name: Windows 虚拟桌面
       tocHref: /azure/virtual-desktop/
       topicHref: /azure/virtual-desktop/

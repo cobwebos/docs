@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概述
   items:
-    - name: 介绍
+    - name: 简介
       href: iot-introduction.md
     - name: 选择正确的 IoT 解决方案
       href: iot-solution-options.md

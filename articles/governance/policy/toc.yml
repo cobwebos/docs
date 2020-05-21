@@ -50,6 +50,8 @@
           href: ./samples/pattern-parameters.md
         - name: 效果详细信息
           href: ./samples/pattern-effect-details.md
+        - name: Tags
+          href: ./samples/pattern-tags.md
         - name: Value 运算符
           href: ./samples/pattern-value-operator.md
         - name: Count 运算符
@@ -76,13 +78,8 @@
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./concepts/policy-as-code.md
     - name: 适用于 Kubernetes 的 Azure Policy
-      items:
-        - name: 适用于 AKS 的策略
-          displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper, v3, crd, constraints'
-          href: ./concepts/rego-for-aks.md
-        - name: 适用于 AKS 引擎的策略
-          displayName: 'aks, k8s, opa, open policy agent, gatekeeper, v3, crd, constraints'
-          href: ./concepts/aks-engine.md
+      displayName: 'aks, engine, k8s, rego, opa, open policy agent, gatekeeper, v3, crd, constraints, arc'
+      href: ./concepts/policy-for-kubernetes.md
     - name: 使用来宾配置审核 VM
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md

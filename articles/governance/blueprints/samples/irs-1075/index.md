@@ -1,14 +1,14 @@
 ---
 title: IRS 1075 蓝图示例概述
 description: IRS 1075 蓝图示例概述。 此蓝图示例可帮助客户评估特定 IRS 1075 控制要求。
-ms.date: 11/19/2019
+ms.date: 05/13/2020
 ms.topic: sample
-ms.openlocfilehash: 1edd4b843c6cc8c486961cd2337f7b44e3b190e7
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 877621f4164b64c31d553d007da31a62892c3e3e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "74546791"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655027"
 ---
 # <a name="overview-of-the-irs-1075-blueprint-sample"></a>IRS 1075 蓝图示例概述
 

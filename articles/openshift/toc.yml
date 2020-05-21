@@ -16,7 +16,7 @@
   expanded: true
   items:
     - name: 创建专用 Azure Red Hat OpenShift 4 群集
-      href: create-private-cluster.md
+      href: howto-create-private-cluster-4x.md
     - name: 为 Azure Red Hat OpenShift 4 群集配置 DNS 转发
       href: dns-forwarding.md
     - name: 为 Azure Red Hat OpenShift 4 群集配置 Azure Active Directory 身份验证
@@ -48,7 +48,7 @@
         - name: 在 Azure Red Hat OpenShift 3.11 群集中管理项目
           href: howto-manage-projects.md
         - name: 创建专用 Azure Red Hat OpenShift 3.11 群集
-          href: howto-create-private-cluster.md
+          href: howto-create-private-cluster-3x.md
         - name: 为 Azure Red Hat OpenShift 3.11 执行监视和日志记录
           items:
             - name: Azure Red Hat OpenShift 3.11 中适用于容器的 Azure Monitor（预览版）
