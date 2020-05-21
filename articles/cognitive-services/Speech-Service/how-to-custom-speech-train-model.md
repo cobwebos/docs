@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: a2bc39a35299f56ba52a0143ce123560bd4d88fa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 09867d6739998902ea0fd11281d1b975866c1242
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77137771"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722620"
 ---
 # <a name="train-a-model-for-custom-speech"></a>训练自定义语音识别模型
 
@@ -42,7 +42,7 @@ ms.locfileid: "77137771"
 2. 导航到“语音转文本”&gt;“自定义语音识别”&gt;“训练”。 
 3. 单击“训练模型”。 
 4. 接下来，为训练提供**名称**和**说明**。
-5. 从“方案和基线模型”  下拉菜单中，选择最适合你的领域的方案。 如果不确定要选择哪个方案，请选择“通用”。  该基线模型是训练的起点。 如果没有首选项，可以使用最新的。
+5. 从“方案和基线模型”  下拉菜单中，选择最适合你的领域的方案。 如果不确定要选择哪个方案，请选择“通用”。  该基线模型是训练的起点。 最新的模型通常是最佳选择。
 6. 在“选择训练数据”页中，选择一个或多个要用于训练的音频和人为标记的听录数据集。 
 7. 完成训练后，可以选择对新训练的模型执行准确度测试。 此步骤是可选的。
 8. 选择“创建”，生成自定义模型。 
@@ -56,7 +56,7 @@ ms.locfileid: "77137771"
 - [检查数据](how-to-custom-speech-inspect-data.md)
 - [评估数据](how-to-custom-speech-evaluate-data.md)
 
-如果选择测试准确度，则在选择声学数据集时，该数据集必须不同于你对自己的模型使用的数据集，这样才能获得真正有意义的模型性能。
+如果选择测试准确性，请务必选择与模型中使用的数据集不同的声音数据集，以获得模型性能的真实认识。
 
 ## <a name="next-steps"></a>后续步骤
 

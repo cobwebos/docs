@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 28c5c1258c0733cd23f7c4ad3c901360461d5bdc
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 93dc831fa631a28b918ef5015a3c9ff107d41541
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682133"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726071"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>语音服务的语言和语音支持
 
@@ -24,7 +24,11 @@ ms.locfileid: "83682133"
 
 ## <a name="speech-to-text"></a>语音转文本
 
-Microsoft 语音 SDK 和 REST API 都支持以下语言（区域设置）。 若要提高准确性，可通过上传音频和人为标记的听录内容或相关文本，为语言子集提供自定义：句子。 通过上传相关文本提供了发音自定义：发音。 在[此处](how-to-custom-speech.md)详细了解自定义。
+Microsoft 语音 SDK 和 REST API 都支持以下语言（区域设置）。 
+
+若要提高准确性，可通过上传**音频和人贴标签的脚本**或**相关文本：句子**，为语言子集提供自定义项。 若要了解有关自定义的详细信息，请参阅[自定义语音入门](how-to-custom-speech.md)。
+
+有关如何改进发音的详细信息，请参阅[改善自定义语音模型](how-to-custom-speech-improve-accuracy.md#add-new-words-with-pronunciation)。
 
 <!--
 To get the AM and ML bits:
@@ -75,7 +79,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `ta-IN` | 泰米尔语（印度）                     | 是       | 语言模型                                    |
 | `te-IN` | 泰卢固语（印度）                    | 是       | 否                                                |
 | `th-TH` | 泰语（泰国）                   | 是       | 否                                                |
-| `tr-TR` | 土耳其语（土耳其）                  | 是       | 否                                                |
+| `tr-TR` | 土耳其语（土耳其）                  | 是       | 语言模型                                    |
 | `zh-CN` | 中文(普通话，简体)    | 是       | 声学模型<br>语言模型                  |
 | `zh-HK` | 中文(粤语，繁体)  | 是       | 语言模型                                    |
 | `zh-TW` | 中文(台湾普通话)      | 是       | 语言模型                                    |
@@ -95,29 +99,29 @@ Microsoft Speech SDK 和 REST API 均支持这些语音，每种语音支持区�
 
 有关区域可用性的详细信息，请参阅[区域](regions.md#standard-and-neural-voices)。
 
-|Locale  | 语言            | 性别 | 语音名称  | 双语言支持 | 样式支持 |
-|--|--|--|--|--|--|
-| `de-DE` | 德语（德国）    | 女 | "de-DE-KatjaNeural" | 是的。 英语（美国） | 常规 |
-| `en-AU` | 英语（澳大利亚） | 女 |  "en-us-NatashaNeural" | 否 | 常规 |
-| `en-CA` | 英语（加拿大）    | 女 |  "ClaraNeural"| 否 | 常规 |
-| `en-GB` | 英语(英国)        | 女 |  "LibbyNeural"| 否 | 常规 |
-|  |      | 女 |  "MiaNeural" | 否 | 常规 |
-| `en-US` | 英语（美国）        | 女 |  "en-US-AriaNeural"| 否 | 常规，提供多种语音样式 |
-|  |      | 男   | "en-US-GuyNeural" | 否 | 常规 |
-| `es-ES` | 西班牙语（西班牙）     | 女 |  "es-ElviraNeural"| 是的。 英语（美国） | 常规 |
-| `es-MX` | 西班牙语(墨西哥)    | 女 |  "DaliaNeural" | 是的。 英语（美国） | 常规 |
-| `fr-CA` | 法语（加拿大）     | 女 |  "fr-SylvieNeural" | 是的。 英语（美国） | 常规 |
-| `fr-FR` | 法语（法国）     | 女 | "fr-DeniseNeural"  | 是的。 英语（美国） | 常规 |
-| `it-IT` | 意大利语（意大利）     | 女 |  "it-IT-ElsaNeural"  | 是的。 英语（美国） | 常规 |
-| `ja-JP` | 日语            | 女 |  "ja-jp-NanamiNeural" | 是的。 英语（美国） | 常规 |
-| `ko-KR` | 韩语              | 女 |  "SunHiNeural" | 是的。 英语（美国） | 常规 |
-| `nb-NO` | 挪威语           | 女 | "nb-IselinNeural" | 否 | 常规 |
-| `pt-BR` | 葡萄牙语(巴西) | 女 |  "pt-BR-FranciscaNeural" | 否 | 常规 |
-| `tr-TR` | 土耳其语             | 女 | "tr-EmelNeural" | 否 | 常规 |
-| `zh-CN` | 中文(普通话，简体)  | 女 |  "zh-CN-XiaoxiaoNeural"  | 是的。 英语（美国） | 常规，提供多种语音样式 |
-|  |  | 女 |  "zh-chs-XiaoyouNeural"  | 是的。 英语（美国） | 儿童语音，针对故事 narrating 进行了优化 |
-|  |  | 男 |  "zh-chs-YunyangNeural"  | 是的。 英语（美国） | 针对新闻阅读进行了优化，提供了多种语音样式 |
-|  |  | 男 |  "zh-chs-YunyeNeural"  | 否 | 针对故事 narrating 进行了优化 |
+|Locale  | 语言            | 性别 | 语音名称 | 样式支持 |
+|--|--|--|--|--|
+| `de-DE` | 德语（德国）                | 女 | "de-DE-KatjaNeural"      | 常规 |
+| `en-AU` | 英语（澳大利亚）             | 女 | "en-us-NatashaNeural"    | 常规 |
+| `en-CA` | 英语（加拿大）                | 女 | "ClaraNeural"      | 常规 |
+| `en-GB` | 英语(英国)                    | 女 | "LibbyNeural"      | 常规 |
+|         |                                 | 女 | "MiaNeural"        | 常规 |
+| `en-US` | 英语（美国）                    | 女 | "en-US-AriaNeural"       | 常规，提供多种语音样式 |
+|         |                                 | 男   | "en-US-GuyNeural"        | 常规 |
+| `es-ES` | 西班牙语（西班牙）                 | 女 | "es-ElviraNeural"     | 常规 |
+| `es-MX` | 西班牙语(墨西哥)                | 女 | "DaliaNeural"      | 常规 |
+| `fr-CA` | 法语（加拿大）                 | 女 | "fr-SylvieNeural"     | 常规 |
+| `fr-FR` | 法语（法国）                 | 女 | "fr-DeniseNeural"     | 常规 |
+| `it-IT` | 意大利语（意大利）                 | 女 | "it-IT-ElsaNeural"       | 常规 |
+| `ja-JP` | 日语                        | 女 | "ja-jp-NanamiNeural"     | 常规 |
+| `ko-KR` | 韩语                          | 女 | "SunHiNeural"      | 常规 |
+| `nb-NO` | 挪威语                       | 女 | "nb-IselinNeural"     | 常规 |
+| `pt-BR` | 葡萄牙语(巴西)             | 女 | "pt-BR-FranciscaNeural"  | 常规 |
+| `tr-TR` | 土耳其语                         | 女 | "tr-EmelNeural"       | 常规 |
+| `zh-CN` | 中文(普通话，简体)  | 女 | "zh-CN-XiaoxiaoNeural"   | 常规，提供多种语音样式 |
+|         |                                 | 女 | "zh-chs-XiaoyouNeural"    | 儿童语音，针对故事 narrating 进行了优化 |
+|         |                                 | 男   | "zh-chs-YunyangNeural"    | 针对新闻阅读进行了优化，提供了多种语音样式 |
+|         |                                 | 男   | "zh-chs-YunyeNeural"      | 针对故事 narrating 进行了优化 |
 
 > [!IMPORTANT]
 > `en-US-JessaNeural` 语音已更改为 `en-US-AriaNeural`。 如果以前使用的是“Jessa”，请转换为“Aria”。

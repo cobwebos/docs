@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: a52735ee62f564a5dc536fd2b7d3539406388341
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5401957cb527d43e041345ac9e67e7f7a69ed0d0
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402066"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725527"
 ---
 # <a name="what-is-custom-speech"></a>什么是自定义语音识别？
 
@@ -37,32 +37,34 @@ ms.locfileid: "81402066"
 
 4. [评估准确度](how-to-custom-speech-evaluate-data.md) - 评估语音转文本模型的准确度。 [自定义语音识别门户](https://speech.microsoft.com/customspeech)会提供误字率，该指标可以用来确定是否需要更多的训练。  如果对准确度满意，可以直接使用语音服务 API。 如果希望提高准确度 5% - 20%（相对平均值），请在门户中使用“训练”选项卡  上传更多的训练数据，例如人为标记的听录和相关的文本。
 
-5. [训练模型](how-to-custom-speech-train-model.md) - 提供编写的脚本（10-1,000 小时）和相关的文本 (<200 MB) 以及音频测试数据，以便提高语音转文本模型的准确度。 该数据有助于训练语音转文本模型。 训练并重新测试后，如果对结果感到满意，则可部署模型。
+5. [提高准确性](how-to-custom-speech-improve-accuracy.md)-在战略上选择其他定型数据，以根据你的方案提高语音到文本模型的质量。
 
-6. [部署模型](how-to-custom-speech-deploy-model.md) - 为语音转文本模型创建自定义终结点，并在应用程序、工具或产品中使用它。
+6. [训练模型](how-to-custom-speech-train-model.md) - 提供编写的脚本（10-1,000 小时）和相关的文本 (<200 MB) 以及音频测试数据，以便提高语音转文本模型的准确度。 该数据有助于训练语音转文本模型。 训练并重新测试后，如果对结果感到满意，则可部署模型。
+
+7. [部署模型](how-to-custom-speech-deploy-model.md) - 为语音转文本模型创建自定义终结点，并在应用程序、工具或产品中使用它。
 
 ## <a name="set-up-your-azure-account"></a>设置 Azure 帐户
 
-在使用[“自定义语音识别”门户](https://speech.microsoft.com/customspeech)创建自定义模型之前，需要获取一个语音服务订阅。 请遵照这些说明创建标准语音服务订阅：[创建语音订阅](get-started.md#new-resource)。
+需要语音服务订阅，然后才能使用[自定义语音门户](https://speech.microsoft.com/customspeech)创建自定义模型。 按照以下说明创建标准语音服务订阅：[创建语音订阅](get-started.md#new-resource)。
 
 > [!NOTE]
 > 请务必创建标准 (S0) 订阅。免费试用 (F0) 订阅不受支持。
 
-创建 Azure 帐户和语音服务订阅后，需要登录到[“自定义语音识别”门户](https://speech.microsoft.com/customspeech)并连接订阅。
+创建 Azure 帐户和语音服务订阅后，需要登录到[自定义语音门户](https://speech.microsoft.com/customspeech)并连接订阅。
 
 1. 从 Azure 门户获取语音服务订阅密钥。
-2. 登录到[自定义语音识别门户](https://aka.ms/custom-speech)。
+2. 登录到[自定义语音门户](https://aka.ms/custom-speech)。
 3. 选择需在其上工作的订阅并创建语音项目。
 4. 若要修改订阅，请使用顶部导航栏中的**齿轮**图标。
 
 ## <a name="how-to-create-a-project"></a>如何创建项目
 
-数据、模型、测试和终结点等内容在[自定义语音识别门户](https://speech.microsoft.com/customspeech)中组织成**项目**。 每个项目特定于域和国家/地区或语言。 例如，可以为使用美式英语的呼叫中心创建一个项目。
+数据、模型、测试和终结点等内容在[自定义语音门户](https://speech.microsoft.com/customspeech)中组织成**项目**。 每个项目特定于域和国家/地区或语言。 例如，可以为使用美式英语的呼叫中心创建一个项目。
 
-若要创建第一个项目，请选择“语音转文本/自定义语音识别”选项卡，然后单击“新建项目”。   遵照向导中的说明创建项目。 创建项目后，应该看到四个选项卡：“数据”、“测试”、“训练”和“部署”。     使用[后续步骤](#next-steps)中提供的链接了解如何使用每个选项卡。
+若要创建第一个项目，请选择“语音转文本/自定义语音”选项卡，然后单击“新建项目”。******** 遵照向导中的说明创建项目。 创建项目后，应该会看到四个选项卡：**数据**、**测试**、**定型**和**部署**。 使用[后续步骤](#next-steps)中提供的链接了解如何使用每个选项卡。
 
 > [!IMPORTANT]
-> [“自定义语音识别”门户](https://aka.ms/custom-speech)最近已更新！ 如果以前已在 CRIS.ai 门户或使用 API 创建了数据、模型、测试并已发布了终结点，则需要在新门户中创建一个新项目以连接到这些旧实体。
+> [自定义语音门户](https://aka.ms/custom-speech)最近已更新！ 如果在 CRIS.ai 门户或 Api 中创建了以前的数据、模型、测试和已发布的终结点，则需要在新门户中创建一个新项目以连接到这些旧实体。
 
 ## <a name="next-steps"></a>后续步骤
 

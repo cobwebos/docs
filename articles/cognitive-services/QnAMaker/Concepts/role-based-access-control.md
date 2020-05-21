@@ -3,12 +3,12 @@ title: 与他人协作-QnA Maker
 description: ''
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: ef0823fc60424dc861ab70f4112e4689c1b97fb0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 080e6549579675e27486e6173d5907d92bbaad70
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83665978"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724915"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>与其他作者和编辑人员协作
 
@@ -40,7 +40,7 @@ ms.locfileid: "83665978"
 |3|QnA Maker API 验证令牌。|
 |4 |QnA Maker API 调用 QnAMaker 服务。|
 
-如果要调用创作 Api] （。/How-To/collaborate-knowledge-base.md），了解有关如何设置身份验证的详细信息。
+如果要调用[创作 api](../How-To/collaborate-knowledge-base.md)，请详细了解如何设置身份验证。
 
 ## <a name="authenticate-by-qna-maker-portal"></a>QnA Maker 门户进行身份验证
 

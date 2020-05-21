@@ -1,46 +1,48 @@
 ---
 title: 标记实体示例言语
-description: 了解如何使用 LUIS 门户的意向详细信息页中的示例查询文本中的子组件在计算机学习实体中进行标记。
+description: 了解如何在 LUIS 门户的意向详细信息页中使用子实体在示例查询文本中标记计算机学习实体。
 ms.topic: conceptual
-ms.date: 05/17/2020
-ms.openlocfilehash: 0181057bd693280223806e9b5b7cd8c7f7345f79
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 05/20/2020
+ms.openlocfilehash: 959b9c6b25a7a76a87112fcbd1a10e7da12db1dd
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683778"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722637"
 ---
 # <a name="label-machine-learning-entity-in-an-example-utterance"></a>在示例查询文本中标记计算机学习实体
 
 在示例言语中标记实体可为 LUIS 提供示例，其中包含实体的示例，以及实体可以在言语中出现的位置的示例。
 
+您可以标记计算机学习的实体和子实体。
+
+由于无法标记正则表达式、列出或预生成的实体，请创建一个实体或子实体，并将这些实体添加到实体或子实体的功能（如果适用）。
+
 ## <a name="label-example-utterances-from-the-intent-detail-page"></a>从意向详细信息页最谈话的标签示例
+
+若要标记查询文本中实体的示例，请选择查询文本的目的。
 
 1. 登录到[LUIS 门户](https://www.luis.ai)，选择**订阅**和**创作资源**，查看分配给该创作资源的应用。
 1. 通过在 **"我的应用**" 页上选择应用程序的名称来打开应用。
 1. 选择具有要为其添加实体的最谈话示例的目的。
 1. 选择要添加标签的文本，然后选择实体。
 
+## <a name="two-techniques-to-label-entities"></a>标记实体的两种方法
+
+"目的详细信息" 页支持两种标记技术。
+* 选择 "实体"[调色板](#label-with-the-entity-palette-visible)中的 "实体" 或 "子实体"，然后选择 "查询文本文本"。 这是建议的方法，因为您可以根据自己的架构，直观地验证您使用的是正确的实体还是子实体。
+* 在示例中选择 "查询文本"。 执行此操作时，将显示[标记选项](#how-to-label-entity-from-in-place-menu)的弹出菜单。
+
 ## <a name="label-with-the-entity-palette-visible"></a>显示实体调色板的标签
 
-在规划了包含实体的架构后，在标记时保持**实体调色板**可见。 **实体调色板**提醒您计划提取的实体。
+在[规划了包含实体的架构](luis-how-plan-your-app.md)后，在标记时保持**实体调色板**可见。 **实体调色板**提醒您计划提取的实体。
 
 若要访问**实体调色板**，请在 " **@** 示例查询文本" 列表上方的上下文工具栏中选择符号。
 
 > [!div class="mx-imgBorder"]
 > ![意向详细信息页上的实体调色板的屏幕截图。](media/label-utterances/entity-palette-from-tool-bar.png)
 
-## <a name="label-entity-from-in-place-menu"></a>从就地菜单中标记实体
-
-请考虑示例查询文本， `hi, please I want a cheese pizza in 20 minutes` 。
-
-1. 选择最左侧的文本，然后选择实体的最右侧文本，然后从就地菜单中选择要用标签标记的实体。
-
-    > [!div class="mx-imgBorder"]
-    > ![标记完整计算机-学习实体](media/label-utterances/label-steps-in-place-menu.png)
-
-
-## <a name="label-entity-from-entity-palette"></a>实体调色板中的标签实体
+## <a name="how-to-label-entity-from-entity-palette"></a>如何标记实体调色板中的实体
 
 实体调色板提供之前的标记体验的替代方法。 它允许对文本进行画笔处理，使其能够立即使用实体进行标记。
 
@@ -48,7 +50,7 @@ ms.locfileid: "83683778"
 
 2. 从调色板中选择要标记的实体。 此操作采用可视方式指示新的光标。 当你在 LUIS 门户中移动时，光标将跟随鼠标。
 
-3. 在示例言语中，用光标绘制__ 实体。
+3. 在示例言语中，用光标绘制  实体。
 
     > [!div class="mx-imgBorder"]
     > ![机器学习实体的实体调色板](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)
@@ -69,6 +71,17 @@ ms.locfileid: "83683778"
 1. 在实体列表下方，选择现有角色。
 1. 在示例言语文本中，使用实体角色标记文本。
 
+## <a name="how-to-label-entity-from-in-place-menu"></a>如何从就地菜单中标记实体
+
+标记就地标签使你可以快速选择查询文本中的文本并对其进行标记。 还可以从标记的文本创建机器学习实体或列表实体。
+
+请考虑示例查询文本， `hi, please I want a cheese pizza in 20 minutes` 。
+
+选择最左侧的文本，然后选择实体的最右侧文本，然后从就地菜单中选择要用标签标记的实体。
+
+> [!div class="mx-imgBorder"]
+> ![标记完整计算机-学习实体](media/label-utterances/label-steps-in-place-menu.png)
+
 ## <a name="review-labeled-text"></a>查看标记的文本
 
 进行标记后，查看示例言语，并确保选定的一段文本中的选定实体带有下划线。 实线指示文本已被标记。
@@ -86,12 +99,12 @@ ms.locfileid: "83683778"
 
 ## <a name="labeling-for-punctuation"></a>为标点符号标记
 
-不需要为标点符号添加标签。 使用[应用程序设置](luis-reference-application-settings.md) _word 窗体_来控制标点是否影响查询文本预测。
+不需要为标点符号添加标签。 使用[应用程序设置](luis-reference-application-settings.md)来控制标点如何影响查询文本预测。
 
 ## <a name="unlabel-entities"></a>取消标记实体
 
 > [!NOTE]
-> 仅可标记计算机的实体。
+> 仅可标记计算机的实体。 不能标记或 unlabel 正则表达式实体、列表实体或预生成的实体。
 
 若要 unlabel 某个实体，请选择该实体，并从就地菜单中选择 " **unlabel** "。
 
@@ -107,6 +120,12 @@ ms.locfileid: "83683778"
 ## <a name="automatic-labeling-for-non-machine-learned-entities"></a>非计算机学习实体的自动标记
 
 非计算机学习实体包括预生成的实体、正则表达式实体、列表实体和模式。任何实体。 这些实体由 LUIS 自动标记，因此无需用户手动标记它们。
+
+## <a name="intent-prediction-errors"></a>意向预测错误
+
+意向预测错误表明，假设当前训练的应用程序的示例查询文本不会预测目的。
+
+了解如何在意向详细信息页上[查看这些错误](luis-how-to-add-intents.md#intent-prediction-errors)。
 
 ## <a name="entity-prediction-errors"></a>实体预测错误
 

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/24/2020
 ms.author: aahi
-ms.openlocfilehash: 9025e016725a966061c557f16b610d8897c04c11
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6d47829d32ed0b7ded545c73748cda1019d94bde
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590651"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83720878"
 ---
 ### <a name="container-repositories-and-images"></a>容器存储库和映像
 
@@ -62,7 +62,7 @@ Microsoft 容器注册表（MCR） syndicates 了所有可用于认知服务的�
 
 #### <a name="public-gated-preview-container-registry-containerpreviewazurecrio"></a>公共 "封闭" 预览版（容器注册表： `containerpreview.azurecr.io` ）
 
-以下封闭预览版容器在容器预览注册表上承载，并要求应用程序进行访问。 有关详细信息，请参阅[认知服务控制过程](../../cognitive-services-gating-process.md)。
+以下封闭预览版容器在容器预览注册表上承载，并要求应用程序进行访问。 有关详细信息，请参阅以下容器文章。
 
 | 服务 | 容器 | 容器注册表/存储库/映像名称 |
 |--|--|--|
