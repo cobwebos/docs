@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: adamwa
-ms.openlocfilehash: 30df02062d3b94836f0131ac1124f56d1deefb5b
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: a9145c7c26f4d6caa1679052035b36f1ae88f878
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997487"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714774"
 ---
 # <a name="design-assistant-experiences-for-windows-10"></a>适用于 Windows 10 的设计助手体验
 
 在 Windows 10 上开发的语音助手必须实现下面的用户体验指导原则，以便为 Windows 10 上的语音激活提供最佳体验。 本文档将指导开发人员了解语音助手与 Windows 10 Shell 集成所需的关键工作。
 
-## <a name="contents"></a>内容
+## <a name="contents"></a>目录
 
 - [Windows 10 中支持的语音激活视图摘要](#summary-of-voice-activation-views-supported-in-windows-10)
 - [要求摘要](#requirements-summary)
@@ -63,25 +63,22 @@ Windows 10 根据设备上下文推断出客户上下文的激活体验。 下�
 - 助手正在处理并准备响应
 - 助手正在响应
 
-即使状态更改迅速，也值得考虑提供状态的 UX，因为在 Windows 生态系统中，持续时间是可变的。 视觉反馈以及 brief 音频 chimes 或鸟鸣（也称为&quot;earcons&quot;）都是解决方案的一部分。 同样，与音频说明耦合的视觉对象卡也能提供良好的响应选项。
+即使状态更改迅速，也值得考虑提供状态的 UX，因为在 Windows 生态系统中，持续时间是可变的。 视觉反馈以及 brief 音频 chimes 或鸟鸣（也称为 &quot; earcons &quot; ）都是解决方案的一部分。 同样，与音频说明耦合的视觉对象卡也能提供良好的响应选项。
 
 ## <a name="design-guidance-for-in-app-voice-activation"></a>应用内语音激活的设计指南
 
 当助手应用有焦点时，客户意向清楚地与应用程序进行交互，因此所有语音激活体验都应由主要的应用程序视图处理。 此视图可能已由客户调整大小。 为了帮助说明助手 shell 交互，本文档的其余部分使用名为 Contoso 的财务服务助理的具体示例。 在此和后续的关系图中，客户显示的内容将显示在左侧的卡通语音气泡中，在右侧的卡通气泡中显示助手响应。
 
-**应用内视图。语音激活开始时的初始状态：**
-![激活之前 Windows 上的语音助手屏幕截图](media/voice-assistants/windows_voice_assistant/initial_state.png)
+**应用内视图。语音激活开始时的初始状态：** 
+ ![ 激活之前 Windows 上的语音助手屏幕截图](media/voice-assistants/windows_voice_assistant/initial_state.png)
 
-**应用内视图。语音激活成功后，倾听体验开始：**![语音助手正在侦听时 Windows 上的语音助手屏幕截图](media/voice-assistants/windows_voice_assistant/listening.png)
+**应用内视图。语音激活成功后，倾听体验开始：** ![ 语音助手正在侦听时 Windows 上的语音助手屏幕截图](media/voice-assistants/windows_voice_assistant/listening.png)
 
-**应用内视图。所有响应都保持在应用程序体验中。**![作为助手回复的 Windows 上的语音助手屏幕截图](media/voice-assistants/windows_voice_assistant/response.png)
+**应用内视图。所有响应都保持在应用程序体验中。** ![作为助手回复的 Windows 上的语音助手屏幕截图](media/voice-assistants/windows_voice_assistant/response.png)
 
 ## <a name="design-guidance-for-voice-activation-above-lock"></a>超出锁定的语音激活的设计指南
 
 可用于19H2，在 Windows 语音激活平台上构建的助手可用于回答以上锁定。
-
-> [!NOTE]
-> 由于出现了某个活动问题，因此，绘制上述锁定 UI 的助手必须为所有 dismissals 实现 CloseWindow （）。 这将导致应用终止，但会降低技术问题，并使助手处于干净状态。 而且，若要在启用了应用程序的以上锁定声音激活的情况下保持干净状态，在设备锁定时，必须侦听锁定状态更改和 WindowService （）。
 
 ### <a name="customer-opt-in"></a>客户选择加入
 
@@ -108,16 +105,16 @@ Windows 10 根据设备上下文推断出客户上下文的激活体验。 下�
 - **上面显示锁定的所有助手都必须**在右上方包含一个关闭助手的 "X"。
 - **按任意键还必须关闭助手应用**。 键盘输入是客户想要登录的传统锁定应用信号。 因此，不应将任何键盘/文本输入定向到应用。 相反，应用程序应在检测到键盘输入时自行关闭，因此客户可以轻松登录到其设备。
 - **如果屏幕出现故障，则应用程序必须自行关闭。** 这可确保下一次客户使用其电脑时，登录屏幕将准备就绪并等待。
-- 如果应用正在&quot;使用&quot;中，则它可能会继续锁定。 &quot;使用&quot;中构成了任何输入或输出。 例如，当流式传输音乐或视频时，应用可能会继续锁定。 &quot;接下来&quot; ，还可以执行其他 multiturn 对话框步骤，使应用保持锁定。
+- 如果应用正在 &quot; 使用中 &quot; ，则它可能会继续锁定。 &quot;使用中 &quot; 构成了任何输入或输出。 例如，当流式传输音乐或视频时，应用可能会继续锁定。 &quot;接下来 &quot; ，还可以执行其他 multiturn 对话框步骤，使应用保持锁定。
 - **有关关闭应用程序的实现的详细信息**，请参阅[上述锁定实现指南](windows-voice-assistants-implementation-guide.md#closing-the-application)。
 
 ![激活之前 Windows 上的语音助手屏幕截图](media/voice-assistants/windows_voice_assistant/above_lock_response.png)
 
 ![激活之前 Windows 上的语音助手屏幕截图](media/voice-assistants/windows_voice_assistant/lock_screen2.png)
 
-### <a name="privacy-amp-security-considerations-above-lock"></a>超出&amp;锁定的隐私安全注意事项
+### <a name="privacy-amp-security-considerations-above-lock"></a>&amp;超出锁定的隐私安全注意事项
 
-许多 Pc 是可移植的，但并不总是在客户范围内。 它们可能暂时留在旅馆房间、飞机座位或工作区中，而其他人则具有物理访问权限。 如果启用上述锁定的助手未准备就绪，则它们可能会受到&quot;所谓的[maid](https://en.wikipedia.org/wiki/Evil_maid_attack) &quot;攻击。
+许多 Pc 是可移植的，但并不总是在客户范围内。 它们可能暂时留在旅馆房间、飞机座位或工作区中，而其他人则具有物理访问权限。 如果启用上述锁定的助手未准备就绪，则它们可能会受到所谓的 &quot; [maid](https://en.wikipedia.org/wiki/Evil_maid_attack) &quot; 攻击。
 
 因此，助手应遵循此部分中的指导来帮助保持安全安全。 如果未对 Windows 用户进行身份验证，则会发生锁定。 这意味着，通常情况下，**助手的输入还应视为未经身份验证**。
 
@@ -127,9 +124,9 @@ Windows 10 根据设备上下文推断出客户上下文的激活体验。 下�
 
 | **操作类** | **说明** | **示例（不是完整列表）** |
 | --- | --- | --- |
-| 无身份验证的安全 | 常规用途信息或基本应用程序命令和控制 | &quot;现在 几点钟？&quot;， &quot;播放下一个曲目&quot; |
-| 用发言人 ID 安全 | 模拟风险，泄露个人信息。 | &quot;下一个约会&#39;什么？&quot;， &quot;查看我的购物&quot;列表&quot;，答复呼叫&quot; |
-| 仅在 Windows 身份验证后安全 | 攻击者可能会用来损害客户的高风险操作 | &quot;购买更多&quot;杂货&quot;，删除我的（重要&quot;） &quot;约会，发送 a （均值）&quot;短&quot;信，启动（恶意）网页&quot; |
+| 无身份验证的安全 | 常规用途信息或基本应用程序命令和控制 | &quot;什么时间？ &quot; ， &quot; 播放下一个曲目&quot; |
+| 用发言人 ID 安全 | 模拟风险，泄露个人信息。 | &quot;下一次约会&#39;是什么？ &quot; ， &quot; 查看我的购物列表 &quot; ， &quot; 答复呼叫&quot; |
+| 仅在 Windows 身份验证后安全 | 攻击者可能会用来损害客户的高风险操作 | &quot;购买更多杂货 &quot; ， &quot; 删除我的（重要）约会 &quot; ， &quot; 发送 a （均值）短信 &quot; ， &quot; 启动（恶意）网页&quot; |
 
 对于 Contoso，有关公共股票信息的一般信息在未经身份验证的情况下是安全的。 特定于客户的信息（例如，拥有的共享数）很可能是通过扬声器 ID 来安全的。 但是，在没有 Windows 身份验证的情况下，不允许购买或销售股票。
 

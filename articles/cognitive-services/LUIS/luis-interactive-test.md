@@ -2,13 +2,13 @@
 title: 在 LUIS 门户中测试应用
 description: 使用语言理解 (LUIS) 持续优化应用程序并改进其语言理解能力。
 ms.topic: conceptual
-ms.date: 05/17/2020
-ms.openlocfilehash: 3608bb17b6d1ea8c9095fa54324993a9e40355b6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/20/2020
+ms.openlocfilehash: 91994418b50eb112582bbed1853dd85e9db3599d
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653877"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714374"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>在 LUIS 门户中测试 LUIS 应用
 
@@ -42,7 +42,8 @@ ms.locfileid: "83653877"
 
 1. 陈述的最高意向和分数会添加至文本框下方的陈述列表。
 
-    ![交互式测试识别错误意向](./media/luis-how-to-interactive-test/test-weather-1.png)
+    > [!div class="mx-imgBorder"]
+    > ![交互式测试识别错误意向](./media/luis-how-to-interactive-test/test-weather-1.png)
 
 ## <a name="inspect-the-prediction"></a>检查预测
 
@@ -50,9 +51,13 @@ ms.locfileid: "83653877"
 
 1. 打开“测试”滑出面板后，对想要比对的陈述选择“检查”********。
 
-    ![选择“检查”按钮可查看有关测试结果的更多详细信息](./media/luis-how-to-interactive-test/inspect.png)
+    > [!div class="mx-imgBorder"]
+    > ![选择“检查”按钮可查看有关测试结果的更多详细信息](./media/luis-how-to-interactive-test/inspect.png)
 
 1. 此时将显示 "**检查**" 面板。 此面板包括评分最高的意向以及任何已识别的实体。 该面板显示所选查询文本的预测。
+
+    > [!div class="mx-imgBorder"]
+    > ![测试检查面板的部分屏幕截图](./media/luis-how-to-interactive-test/inspect-panel.png)
 
 ## <a name="add-to-example-utterances"></a>添加到示例最谈话
 
@@ -76,12 +81,14 @@ ms.locfileid: "83653877"
 
 可以使用已发布的[终结点](luis-glossary.md#endpoint)版本测试应用的活动版本。 在“检查”面板中选择“与已发布版本进行比较”********。 针对该发布模型的任何测试都会从 Azure 订阅配额余量中扣除。
 
-![与已发布版本进行比较](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
+> [!div class="mx-imgBorder"]
+> ![与已发布版本进行比较](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
 
 ## <a name="view-endpoint-json-in-test-panel"></a>在测试面板中查看终结点 JSON
 选择“显示 JSON 视图”，可以查看该比较返回的终结点 JSON****。
 
-![已发布的 JSON 响应](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
+> [!div class="mx-imgBorder"]
+> ![已发布的 JSON 响应](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
 
 ## <a name="additional-settings-in-test-panel"></a>测试面板中的其他设置
 

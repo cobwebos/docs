@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 41de12c08dee52240f9b10c191ced4aacaea8e94
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8ec4c87dc4f19c140c5ac02779c5551016dfb0b3
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592774"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714315"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>通过语音合成标记语言 (SSML) 改善合成
 
@@ -195,10 +195,8 @@ speechConfig!.setPropertyTo(
 
 目前，支持调整以下神经语音的讲话风格：
 * `en-US-AriaNeural`
-* `pt-BR-FranciscaNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
-* `zh-CN-YunyeNeural`
 
 更改将在句子级别应用，风格因语音而异。 如果某种风格不受支持，该服务将以默认的中性讲话风格返回语音。
 
@@ -223,15 +221,11 @@ speechConfig!.setPropertyTo(
 |                         | `style="chat"`            | 表达轻松随意的语气                         |
 |                         | `style="cheerful"`        | 表达积极愉快的语气                         |
 |                         | `style="empathetic"`      | 表达关心和理解               |
-|   `pt-BR-FranciscaNeural`| `style="calm"`      | 表达冷静音               |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | 以正式专业的语气叙述新闻 |
 |                         | `style="customerservice"` | 以友好热情的语气为客户提供支持  |
 |                         | `style="assistant"`       | 以热情而轻松的语气对数字助理讲话    |
 |                         | `style="lyrical"`         | 以优美又带感伤的方式表达情感         |   
-| `zh-CN-YunyangNeural`  | `style="customerservice"` | 以友好热情的语气为客户提供支持  |
-| `zh-CN-YunyeNeural`  | `style="calm"`      | 表达冷静音               |  
-|                         | `style="sad"`       | 表达不满意和不安的语气    |
-|                         | `style="serious"`         | 表达一种严肃的音调        |   
+| `zh-CN-YunyangNeural`   | `style="customerservice"` | 以友好热情的语气为客户提供支持  | 
 
 **示例**
 
