@@ -276,6 +276,8 @@
       items:
         - name: 配置 Azure AD 集成
           href: howto-configure-sign-in-azure-ad-authentication.md
+        - name: 与托管标识连接
+          href: howto-connect-with-managed-identity.md
     - name: 拒绝公用网络访问
       items:
         - name: Azure 门户

@@ -4,8 +4,13 @@
   items:
     - name: 什么是 Azure 防火墙管理器？
       href: overview.md
-- name: 教程
+- name: 快速入门
   expanded: true
+  items:
+    - name: 安全虚拟中心
+      displayName: Resource Manager
+      href: quick-secure-virtual-hub.md
+- name: 教程
   items:
     - name: 保护虚拟 WAN - 门户
       href: secure-cloud-network.md
@@ -25,7 +30,7 @@
       href: rule-processing.md
     - name: 体系结构选项
       href: vhubs-and-vnets.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 部署信任的安全合作伙伴
       href: deploy-trusted-security-partner.md

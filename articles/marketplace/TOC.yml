@@ -1,7 +1,7 @@
 - name: 商业市场文档
   href: index.yml
   items:
-    - name: 商业市场路线图
+    - name: 商业市场更新
       href: ./marketplace-roadmap.md
     - name: 商业市场策略和条款
       href: ./policies-terms.md
@@ -76,10 +76,6 @@
 - name: 云合作伙伴门户
   href: ./cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md
   items:
-    - name: 通过云合作伙伴门户迁移到合作伙伴中心
-      href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-to-partner-center.md
-    - name: “迁移”常见问题解答
-      href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-faq.md
     - name: 门户教程
       href: ./cloud-partner-portal/portal-tour/cpp-portal-tour.md
       items:
@@ -134,8 +130,6 @@
           items:
             - name: 入门
               href: ./cloud-partner-portal-orig/si-getting-started.md
-            - name: 新增功能
-              href: ./cloud-partner-portal-orig/si-changes.md
             - name: Web analytics
               href: ./cloud-partner-portal-orig/web-analytics.md
             - name: 定义
@@ -264,67 +258,6 @@
           href: ./cloud-partner-portal/saas-app/cpp-saas-offer.md
         - name: 虚拟机套餐
           href: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
-          items:
-            - name: 先决条件
-              href: ./cloud-partner-portal/virtual-machine/cpp-prerequisites.md
-            - name: 创建 VM 套餐
-              href: ./cloud-partner-portal/virtual-machine/cpp-create-offer.md
-              items:
-                - name: “产品/服务设置”选项卡
-                  href: ./cloud-partner-portal/virtual-machine/cpp-offer-settings-tab.md
-                - name: “SKU”选项卡
-                  href: ./cloud-partner-portal/virtual-machine/cpp-skus-tab.md
-                - name: “体验版”选项卡
-                  href: ./cloud-partner-portal/virtual-machine/cpp-test-drive-tab.md
-                - name: “市场”选项卡
-                  href: ./cloud-partner-portal/virtual-machine/cpp-marketplace-tab.md
-                - name: “支持”选项卡
-                  href: ./cloud-partner-portal/virtual-machine/cpp-support-tab.md
-            - name: 创建 VM 技术资产
-              href: ./cloud-partner-portal/virtual-machine/cpp-create-technical-assets.md
-              items:
-                - name: 创建 VHD
-                  href: ./cloud-partner-portal/virtual-machine/cpp-create-vhd.md
-                - name: 常见 VHD 创建问题
-                  href: ./cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues.md
-                - name: 连接到 VM
-                  href: ./cloud-partner-portal/virtual-machine/cpp-connect-vm.md
-                - name: 配置 VM
-                  href: ./cloud-partner-portal/virtual-machine/cpp-configure-vm.md
-                - name: Windows 远程管理
-                  href: ./cloud-partner-portal/virtual-machine/cpp-winrm-over-https.md
-                  items:
-                    - name: 在创建 VM 后配置 WinRM
-                      href: ./cloud-partner-portal/virtual-machine/cpp-configure-winrm-after-vm-creation.md
-                - name: 部署 VM
-                  href: ./cloud-partner-portal/virtual-machine/cpp-deploy-vm-vhd.md
-                  items:
-                    - name: 创建用户 VM 映像
-                      href: ./cloud-partner-portal/virtual-machine/cpp-create-user-image.md
-                    - name: 创建密钥保管库证书
-                      href: ./cloud-partner-portal/virtual-machine/cpp-create-key-vault-cert.md
-                      items:
-                        - name: Key Vault 部署模板
-                          href: ./cloud-partner-portal/virtual-machine/cpp-key-vault-deploy-template.md
-                - name: 从用户 VHD 部署 VM
-                  href: ./cloud-partner-portal/virtual-machine/cpp-deploy-vm-user-image.md
-                  items:
-                    - name: VHD 部署模板
-                      href: ./cloud-partner-portal/virtual-machine/cpp-deploy-json-template.md
-                    - name: 从市场部署 VM
-                      href: ./cloud-partner-portal/virtual-machine/cpp-deploy-vm-marketplace.md
-                - name: 认证 VM 映像
-                  href: ./cloud-partner-portal/virtual-machine/cpp-certify-vm.md
-                - name: VM 自测试客户端
-                  href: ./cloud-partner-portal/virtual-machine/cpp-selftest-client.md
-                - name: 获取 SAS URI
-                  href: ./cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md
-                - name: 常见 SAS URL 问题
-                  href: ./cloud-partner-portal/virtual-machine/cpp-common-sas-url-issues.md
-            - name: 发布 VM 套餐
-              href: ./cloud-partner-portal/virtual-machine/cpp-publish-offer.md
-            - name: 更新现有套餐
-              href: ./cloud-partner-portal/virtual-machine/cpp-update-existing-offer.md
     - name: API 参考
       items:
         - name: 概述
@@ -361,6 +294,8 @@
   items:
     - name: 商业市场概述
       href: ./partner-center-portal/commercial-marketplace-overview.md
+    - name: “迁移”常见问题解答
+      href: ./cloud-partner-portal-migration-faq.md
     - name: 帐户管理
       items:
         - name: 创建新的合作伙伴中心帐户

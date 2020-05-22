@@ -278,6 +278,8 @@
           href: how-to-connect-sync-feature-scheduler.md
         - name: 创建和自定义同步规则
           href: how-to-connect-create-custom-sync-rule.md
+        - name: Azure AD Connect 同步 V2 终结点 API
+          href: how-to-connect-sync-endpoint-api-v2.md
         - name: Azure AD Connect 同步服务管理器
           items:
             - name: 管理“服务管理器操作”选项卡

@@ -71,10 +71,8 @@
       href: sql-api-dotnet-samples.md
     - name: .NET V3 SDK 示例
       href: sql-api-dotnet-v3sdk-samples.md
-    - name: Java 示例
-      href: sql-api-java-samples.md
-    - name: 异步 Java 示例
-      href: sql-api-async-java-samples.md
+    - name: Java SDK v4 示例
+      href: sql-api-java-sdk-samples.md
     - name: Node.js 示例
       href: sql-api-nodejs-samples.md
     - name: Python 示例
@@ -132,11 +130,13 @@
         - name: 请求单位
           displayName: 'RUs, RU'
           href: request-units.md
-        - name: 在容器和数据库上预配吞吐量
+        - name: 预配的吞吐量简介
           displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
           href: set-throughput.md
-        - name: 预配吞吐量 - 自动缩放
+        - name: 预配自动缩放吞吐量
           href: provision-throughput-autoscale.md
+        - name: 在自动缩放吞吐量和标准（手动）吞吐量之间选择
+          href: how-to-choose-offer.md
         - name: 自动缩放常见问题解答
           href: autoscale-faq.md
     - name: SQL 查询 (SQL query)
@@ -492,12 +492,14 @@
           href: change-feed-functions.md
         - name: 更改源请求模型
           href: change-feed-pull-model.md
-    - name: 使用 Synapse Link 进行分析
+    - name: 使用 Azure Synapse Link 进行分析
       items:
-        - name: Synapse Link for Azure Cosmos DB
+        - name: Azure Synapse Link for Cosmos DB
           href: synapse-link.md
         - name: 分析存储 - 概述
           href: analytical-store-introduction.md
+        - name: Synapse Link 支持的功能
+          href: ../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Synapse Link 常见问题解答
           href: synapse-link-frequently-asked-questions.md
         - name: Synapse Link 用例
@@ -568,6 +570,8 @@
           href: online-backup-and-restore.md
         - name: 合规性
           href: compliance.md
+        - name: Azure Policy 支持
+          href: policy.md
     - name: 服务配额
       href: concepts-limits.md
 - name: Cassandra、MongoDB 和其他 API
@@ -664,8 +668,6 @@
             - name: Xamarin
               href: create-mongodb-xamarin.md
             - name: Golang
-              href: create-mongodb-golang.md
-            - name: Go
               href: create-mongodb-go.md
         - name: 教程
           items:
@@ -922,12 +924,15 @@
           href: how-to-convert-session-token.md
     - name: 预配的吞吐量
       items:
-        - name: 预配容器吞吐量
+        - name: 在容器上预配标准（手动）吞吐量
           displayName: 'request units, RUs, RU, collection level'
           href: how-to-provision-container-throughput.md
-        - name: 预配数据库吞吐量
+        - name: 在数据库上预配标准（手动）吞吐量
           displayName: 'request units, RUs, RU, shared throughput, database level'
           href: how-to-provision-database-throughput.md
+        - name: 在数据库或容器上预配自动缩放吞吐量
+          displayName: 'request units, RUs, RU, shared throughput, database level, collection level, autoscale'
+          href: how-to-provision-autoscale-throughput.md
         - name: 使用 Cosmos 容量规划器估算 RU/秒
           displayName: 'request units, RUs, RU, capacity'
           href: estimate-ru-with-capacity-planner.md
@@ -1020,10 +1025,14 @@
           href: how-to-migrate-from-change-feed-library.md
         - name: 更改源 - Async Java 示例
           href: create-sql-api-java-changefeed.md
-    - name: 使用 Synapse Link 进行分析
+    - name: 使用 Azure Synapse Link 进行分析
       items:
-        - name: 配置 Synapse Link
+        - name: 配置 Azure Synapse Link
           href: configure-synapse-link.md
+        - name: 连接到 Azure Synapse Link
+          href: ../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: 使用 Azure Synapse Spark 进行查询
+          href: ../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
     - name: 将内置分析功能与 Apache Spark 配合使用
       items:
         - name: Azure Databricks Spark 连接器
@@ -1034,8 +1043,12 @@
       items:
         - name: 启用笔记本
           href: enable-notebooks.md
-        - name: 使用内置笔记本命令
-          href: use-notebook-features-and-commands.md
+        - name: 从 GitHub 导入笔记本
+          href: import-github-notebooks.md
+        - name: 使用内置 Python 笔记本命令
+          href: use-python-notebook-features-and-commands.md
+        - name: '使用内置 C# 笔记本命令'
+          href: use-csharp-notebook-features-and-commands.md
     - name: 服务器端编程
       items:
         - name: 编写存储过程、触发器和 UDF
@@ -1160,6 +1173,8 @@
           href: migrate-relational-to-cosmos-db-sql-api.md
         - name: 迁移 - Couchbase 到 SQL API
           href: couchbase-cosmos-migration.md
+        - name: 迁移 - DynamoDB 到 SQL API
+          href: dynamo-to-cosmos.md
     - name: 批量执行程序库
       items:
         - name: 关于批量执行程序库
@@ -1182,12 +1197,16 @@
       href: sql-api-sdk-dotnet-changefeed.md
     - name: .NET 批量执行程序库
       href: sql-api-sdk-bulk-executor-dot-net.md
-    - name: Java
-      href: sql-api-sdk-java.md
     - name: Java 批量执行程序库
       href: sql-api-sdk-bulk-executor-java.md
-    - name: 异步 Java
-      href: sql-api-sdk-async-java.md
+    - name: Java SDK v4 for Core
+      href: sql-api-sdk-java-v4.md
+    - name: 旧版 Java SDK for Core
+      items:
+        - name: Async Java SDK v2
+          href: sql-api-sdk-async-java.md
+        - name: Sync Java SDK v2
+          href: sql-api-sdk-java.md
     - name: Node.js
       href: sql-api-sdk-node.md
     - name: Python

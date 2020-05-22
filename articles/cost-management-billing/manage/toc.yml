@@ -87,18 +87,26 @@
           href: understand-ea-roles.md
         - name: Azure EA 门户管理
           href: ea-portal-administration.md
+        - name: 面向合作伙伴的 Azure EA 门户管理
+          href: ea-partner-portal-administration.md
+        - name: Azure Enterprise 传输
+          href: ea-transfers.md
         - name: Microsoft 客户协议中的 EA 任务
           href: mca-enterprise-operations.md
         - name: Azure EA 协议和修正合同
           href: ea-portal-agreements.md
         - name: Enterprise 注册发票
           href: ea-portal-enrollment-invoices.md
+        - name: Azure EA 定价
+          href: ea-pricing-overview.md
         - name: Azure Enterprise REST API
           href: ea-portal-rest-apis.md
         - name: Azure EA 虚拟机预留实例
           href: ea-portal-vm-reservations.md
         - name: 排查 Azure EA 门户访问问题
           href: ea-portal-troubleshoot.md
+        - name: Azure 市场
+          href: ea-azure-marketplace.md
 - name: 疑难解答
   items:
     - name: 找不到任何订阅

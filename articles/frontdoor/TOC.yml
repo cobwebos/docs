@@ -21,6 +21,8 @@
       href: front-door-tutorial-geo-filtering.md
     - name: 设置规则引擎
       href: front-door-tutorial-rules-engine.md
+    - name: Web 应用程序防火墙和 Front Door
+      href: front-door-waf.md
 - name: 示例
   items:
     - name: 资源管理器模板

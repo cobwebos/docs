@@ -13,6 +13,8 @@
       href: create-notification-hub-portal.md
     - name: 创建通知中心 - Azure CLI
       href: create-notification-hub-azure-cli.md
+    - name: 创建通知中心 - Azure 资源管理器模板
+      href: create-notification-hub-template.md
     - name: 配置通知中心
       href: configure-notification-hub-portal-pns-settings.md
 - name: 教程
@@ -94,7 +96,7 @@
           href: notification-hubs-templates-cross-platform-push-messages.md
     - name: 安全模型
       href: notification-hubs-push-notification-security.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 更改定价层
       href: change-pricing-tier.md
@@ -170,7 +172,7 @@
       href: 'https://azure.microsoft.com/pricing/details/notification-hubs/'
     - name: MSDN 论坛
       href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=notificationhubs'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-notificationhub'
     - name: 请求功能
       href: 'https://feedback.azure.com/forums/218849-notification-hubs'

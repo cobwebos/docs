@@ -4,12 +4,12 @@ description: 在本教程中，通过验证或更正通过 LUIS HTTP 终结点�
 services: cognitive-services
 ms.topic: tutorial
 ms.date: 04/01/2020
-ms.openlocfilehash: 307c18d3326cb1a64b884463a571985a015834ed
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 32d43b36910c8fbfd60463f4062b6a00b9272fdb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548727"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592570"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>教程：通过查看终结点话语来修复不确定的预测
 本教程介绍如何通过验证或更正 LUIS 不确定的、通过 LUIS HTTPS 终结点收到的言语来改进应用预测。 在日常的计划性 LUIS 维护过程中，应该评审终结点言语。
@@ -33,11 +33,11 @@ ms.locfileid: "80548727"
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="import-example-app"></a>导入示例应用
+## <a name="download-json-file-for-app"></a>下载适用于应用的 JSON 文件
 
-使用以下步骤导入应用。
+下载并保存[应用 JSON 文件](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true)。
 
-1.  下载并保存[应用 JSON 文件](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true)。
+## <a name="import-json-file-for-app"></a>导出适用于应用的 JSON 文件
 
 [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
@@ -73,23 +73,23 @@ ms.locfileid: "80548727"
 
 ## <a name="review-endpoint-utterances"></a>查看终结点话语
 
-评审终结点言语，使意向经过适当的调整。 尽管在所有版本中只需评审单个言语池，但适当调整意向的过程只会将示例言语添加到当前的活动模型。 
+评审终结点言语，使意向经过适当的调整。 尽管在所有版本中只需评审单个言语池，但适当调整意向的过程只会将示例言语添加到当前的活动模型。
 
-1. 在门户的“生成”部分，从左侧导航栏中选择“评审终结点言语”。   列表会筛选出 **ApplyForJob** 意向。
+1. 在门户的“生成”部分，从左侧导航栏中选择“评审终结点言语”。  列表会筛选出 **ApplyForJob** 意向。
 
     > [!div class="mx-imgBorder"]
     > ![左侧导航栏中“评审终结点言语”按钮的屏幕截图](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)
 
     此话语 (`I'm looking for a job with Natural Language Processing`) 的意向不正确。
 
-1.  若要调整此言语，请在言语行上，选择正确的“已调整意向”：`GetJobInformation`。  选择勾选标记将更改的言语添加到应用。
+1.  若要调整此言语，请在言语行上，选择正确的“已调整意向”：`GetJobInformation`。 选择勾选标记将更改的言语添加到应用。
 
     > [!div class="mx-imgBorder"]
     > ![左侧导航栏中“评审终结点言语”按钮的屏幕截图](./media/luis-tutorial-review-endpoint-utterances/select-correct-aligned-intent-for-endpoint-utterance.png)
 
     评审此意向中的剩余言语，并根据需要更正已调整的意向。 使用本教程中的初始言语表来查看已调整的意向。
 
-    “评审终结点言语”列表应不再包含已更正的言语。  如果显示了其他言语，请继续在列表中更正已调整的意向，直到列表为空。
+    “评审终结点言语”列表应不再包含已更正的言语。 如果显示了其他言语，请继续在列表中更正已调整的意向，直到列表为空。
 
     对实体标签进行的任何更正是在调整意向后，通过“意向详细信息”页完成的。
 

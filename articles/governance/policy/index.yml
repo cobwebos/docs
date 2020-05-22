@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 11/04/2019
-  ms.openlocfilehash: d4ebb4dbc8fb2bc71ac9f061ef6d4500b86831ff
-  ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+  ms.date: 05/20/2020
+  ms.openlocfilehash: 347e60c8b0c50db1bdba7c8262701542448fe12a
+  ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/26/2020
-  ms.locfileid: "80289186"
+  ms.lasthandoff: 05/20/2020
+  ms.locfileid: "83682074"
 landingContent:
 - title: 关于 Azure Policy
   linkLists:
@@ -73,10 +73,8 @@ landingContent:
       url: ./how-to/author-policies-for-arrays.md
   - linkListType: concept
     links:
-    - text: 适用于 AKS 的策略
-      url: ./concepts/rego-for-aks.md
-    - text: 适用于 AKS 引擎的策略
-      url: ./concepts/aks-engine.md
+    - text: 适用于 Kubernetes 的策略
+      url: ./concepts/policy-for-kubernetes.md
     - text: 适用于 VM 的策略
       url: ./concepts/guest-configuration.md
 - title: 评估并修正资源

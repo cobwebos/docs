@@ -134,10 +134,10 @@
           items:
             - name: 对 VM 和数据磁盘进行加密
               href: ./../scripts/virtual-machines-windows-cli-sample-encrypt-vm.md
-            - name: 监视
-              items:
-                - name: Azure Monitor
-                  href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-oms.md
+        - name: 监视
+          items:
+            - name: Azure Monitor
+              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-oms.md
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'
       href: ../policy-samples.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -149,6 +149,13 @@
       href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 区域
       href: regions.md
+      items:
+        - name: 关于 Azure 扩展
+          href: ../extensions/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Linux VM 代理
+          href: ../extensions/agent-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: 功能
+          href: ../extensions/features-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 可用性和性能
       items:
         - name: 可用性
@@ -319,12 +326,18 @@
           href: disk-encryption-overview.md
         - name: 内置安全控件
           href: virtual-machines-windows-security-controls.md
+        - name: Bastion
+          href: ../../bastion/bastion-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 状态和生命周期
       href: states-lifecycle.md
     - name: 监视
-      href: monitor.md
+      href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 备份和恢复
       href: backup-recovery.md
+    - name: 云采用框架
+      href: 'https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/get-started/?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json'
+    - name: 体系结构中心
+      href: 'https://docs.microsoft.com/en-us/azure/architecture/'
     - name: 基础结构示例
       href: infrastructure-example.md
 - name: 操作指南
@@ -493,6 +506,22 @@
           href: security-recommendations.md
         - name: 实时访问
           href: ../../security-center/security-center-just-in-time.md
+        - name: 使用 Bastion
+          items:
+            - name: 创建 Bastion 主机
+              items:
+                - name: 门户
+                  href: ../../bastion/bastion-create-host-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: PowerShell
+                  href: ../../bastion/bastion-create-host-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: CLI
+                  href: ../../bastion/create-host-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: 使用 Bastion 进行连接
+              items:
+                - name: Bastion SSH 连接
+              href: ../../bastion/bastion-connect-vm-ssh.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Bastion RDP 连接
+              href: ../../bastion/bastion-connect-vm-rdp.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 加密
           items:
             - name: 适用于 Windows 的磁盘加密方案
@@ -615,14 +644,113 @@
           href: scheduled-event-service.md
     - name: 监视 VM
       items:
+        - name: 监视 Azure 虚拟机
+          href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: 代理
+          items:
+            - name: 代理概述
+              href: ../../azure-monitor/platform/agents-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: 常见问题解答
+              href: '../../azure-monitor/faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json#agents'
+            - name: Azure 诊断扩展
+              items:
+                - name: 概述
+                  href: ../../azure-monitor/platform/diagnostics-extension-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                  items:
+                    - name: 发送到 Azure Monitor 指标存储
+                      items:
+                        - name: 虚拟机
+                          href: ../../azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                        - name: VM 规模集
+                          href: ../../azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vmss.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: 发送到事件中心
+                      href: ../../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: 发送到日志
+                      href: ../../azure-monitor/platform/diagnostics-extension-logs.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: 发送到 Application Insights
+                      href: ../../azure-monitor/platform/diagnostics-extension-to-application-insights.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: 版本历史记录
+                      href: ../../azure-monitor/platform/diagnostics-extension-versions.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: JSON Lines 资源日志格式
+                      href: ../../azure-monitor/platform/diagnostic-logs-append-blobs.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: 疑难解答
+                      href: ../../azure-monitor/platform/diagnostics-extension-troubleshooting.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Log Analytics 代理
+              items:
+                - name: 概述
+                  href: ../../azure-monitor/platform/log-analytics-agent.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: Windows 代理
+                  href: ../../azure-monitor/platform/agent-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: 适用于 Windows 的 VM 扩展
+                  href: ../../azure-monitor/../virtual-machines/windows/extensions-oms.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json?toc=/azure/azure-monitor/toc.json
+                - name: Log Analytics 网关
+                  href: ../../azure-monitor/platform/gateway.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: 代理管理
+                  href: ../../azure-monitor/platform/agent-manage.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: 代理运行状况
+                  href: ../../azure-monitor/insights/solution-agenthealth.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: 数据源
+                  items:
+                    - name: 概述
+                      href: ../../azure-monitor/platform/agent-data-sources.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: Windows 事件
+                      href: ../../azure-monitor/platform/data-sources-windows-events.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: 自定义 JSON 数据
+                      href: ../../azure-monitor/platform/data-sources-json.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: CollectD 性能数据
+                      href: ../../azure-monitor/platform/data-sources-collectd.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: Syslog
+                      href: ../../azure-monitor/platform/data-sources-syslog.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: 性能计数器
+                      href: ../../azure-monitor/platform/data-sources-performance-counters.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: IIS 日志
+                      href: ../../azure-monitor/platform/data-sources-iis-logs.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: 自定义日志
+                      href: ../../azure-monitor/platform/data-sources-custom-logs.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                    - name: 自定义字段
+                      href: ../../azure-monitor/platform/custom-fields.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: 疑难解答
+              items:
+                - name: Log Analytics VM 扩展
+                  displayname: 'troubleshoot, troubleshooting'
+                  href: ../../azure-monitor/platform/vmext-troubleshoot.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: Log Analytics Windows 代理
+                  displayname: 'troubleshoot, troubleshooting'
+                  href: ../../azure-monitor/platform/agent-windows-troubleshoot.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 用于 VM 的 Azure Monitor
-          href: ../../azure-monitor/insights/vminsights-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-        - name: 创建指标警报
-          href: ../../azure-monitor/platform/alerts-metric.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-        - name: 创建日志警报
-          href: ../../azure-monitor/platform/alerts-log.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-        - name: 使用 REST 获取使用情况指标
-          href: ../linux/metrics-vm-usage-rest.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+          items:
+            - name: 概述
+              href: ../../azure-monitor/insights/vminsights-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: 正式版常见问题解答
+              href: ../../azure-monitor/insights/vminsights-ga-release-faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: 常见问题解答
+              href: '../../azure-monitor/faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json#azure-monitor-for-vms'
+            - name: 启用监视
+              items:
+                - name: 启用监视概述
+                  href: ../../azure-monitor/insights/vminsights-enable-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: 为单个 Azure VM 启用
+                  href: ../../azure-monitor/insights/vminsights-enable-single-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: 使用 Azure Policy 启用
+                  href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: 使用 Azure PowerShell 启用
+                  href: ../../azure-monitor/insights/vminsights-enable-at-scale-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                - name: 为混合环境启用
+                  href: ../../azure-monitor/insights/vminsights-enable-hybrid-cloud.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: 映射依赖项
+              href: ../../azure-monitor/insights/vminsights-maps.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: 监视性能
+              href: ../../azure-monitor/insights/vminsights-performance.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: 使用日志查询分析数据
+              href: ../../azure-monitor/insights/vminsights-log-search.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: 通过工作簿实现数据可视化
+              href: ../../azure-monitor/insights/vminsights-workbooks.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: 创建警报规则
+              href: ../../azure-monitor/insights/vminsights-alerts.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: 升级依赖项代理
+              href: ../../azure-monitor/insights/vminsights-dependency-agent-maintenance.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: 禁用监视
+              href: ../../azure-monitor/insights/vminsights-optout.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 可用性和规模
       items:
         - name: 虚拟机规模集
@@ -751,20 +879,71 @@
     - name: 配置托管标识
       items:
         - name: 门户
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
+          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: CLI
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
+          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: PowerShell
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
+          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Azure 资源管理器模板
           displayName: ARM
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
+          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: REST
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm?context=azure/virtual-machines/windows/context/windows-vm-context
+          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Azure SDK
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
-    - name: 使用 VM 扩展
-      href: ../extensions/overview.md
+          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+    - name: 使用扩展
+      items:
+        - name: 限制扩展安装
+          href: ../extensions/extensions-rmpolicy-howto-ps.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: 导出扩展
+          href: ../extensions/export-templates.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: 疑难解答
+          href: ../extensions/troubleshoot.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Azure 磁盘加密
+          href: ../extensions/azure-disk-enc-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Azure Key Vault
+          href: ../extensions/key-vault-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: 适用于 SQL Server 的 Azure 备份
+          href: ../extensions/backup-azure-sql-server-running-azure-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: 自定义脚本
+          href: ../extensions/custom-script-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: 适用于 Windows 的 IaaS 反恶意软件
+          href: ../extensions/iaas-antimalware-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: VM 快照
+          href: ../extensions/vmsnapshot-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: 网络观察程序代理
+          href: ../extensions/network-watcher-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: NVIDIA GPU 驱动程序
+          href: ../extensions/hpccompute-gpu-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: AMD GPU 驱动程序
+          href: ../extensions/hpccompute-amd-gpu-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Azure Monitor
+          items:
+            - name: 诊断扩展
+              href: ../extensions/../../azure-monitor/platform/diagnostics-extension-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json?toc=/azure/virtual-machines/extensions/toc.json
+            - name: Log Analytics
+              href: ../extensions/oms-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Azure Monitor Windows Dependency Agent
+              href: ../extensions/agent-dependency-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: PowerShell DSC
+          href: ../extensions/dsc-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+          items:
+            - name: DSC 和窗口
+              href: ../extensions/dsc-windows.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: 处理凭据
+              href: ../extensions/dsc-credentials.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: 使用模板
+              href: ../extensions/dsc-template.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: 虚拟机访问
+          href: ../extensions/vmaccess.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: 第三方扩展
+          items:
+            - name: Chef
+              href: ../extensions/chef.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Stackify Retrace
+              href: ../extensions/stackify-retrace-linux.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Symantec
+              href: ../extensions/symantec.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 移动 VM
       items:
         - name: 更改订阅或资源组
@@ -821,7 +1000,7 @@
     - name: 社区模板
       href: 'https://azure.microsoft.com/documentation/templates'
     - name: 定价
-      href: 'https://azure.microsoft.com/pricing/details/#Linux'
+      href: 'https://azure.microsoft.com/pricing/details/#Windows'
     - name: 区域可用性
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Stack Overflow

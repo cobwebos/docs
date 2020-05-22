@@ -9,12 +9,12 @@ metadata:
   author: craigshoemaker
   ms.author: cshoe
   ms.date: 04/09/2020
-  ms.openlocfilehash: 8dd4f7420c4b58d621312f361beede1e48bc17b5
-  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.openlocfilehash: db4bccbc2b366cbd2997542b3b10068b0f5941a2
+  ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83593063"
+  ms.lasthandoff: 05/20/2020
+  ms.locfileid: "83701853"
 landingContent:
 - title: 关于静态 Web 应用
   linkLists:
@@ -38,18 +38,10 @@ landingContent:
     links:
     - text: 发布 Angular、React、Svelte 或 Vue JavaScript 应用和 API
       url: /learn/modules/publish-app-service-static-web-app-api
-- title: 关键概念
-  linkLists:
-  - linkListType: concept
+  - linkListType: video
     links:
-    - text: 路由
-      url: routes.md
-    - text: 公共 API
-      url: apis.md
-    - text: 过渡
-      url: review-publish-pull-requests.md
-    - text: 限制访问
-      url: authentication-authorization.md
+    - text: 构建和部署静态 Web 应用
+      url: https://channel9.msdn.com/Shows/Docs-Azure/Building-and-Deploying-a-Static-Web-App/
 - title: 发布方案
   linkLists:
   - linkListType: tutorial
@@ -68,3 +60,15 @@ landingContent:
     links:
     - text: 使用 Gatsby 发布静态 Web 应用
       url: /learn/modules/create-deploy-static-webapp-gatsby-app-service
+- title: 关键概念
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 路由
+      url: routes.md
+    - text: 公共 API
+      url: apis.md
+    - text: 过渡
+      url: review-publish-pull-requests.md
+    - text: 限制访问
+      url: authentication-authorization.md

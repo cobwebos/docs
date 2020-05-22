@@ -28,7 +28,9 @@
       items:
         - name: Angular
           href: quickstart-v2-angular.md
-        - name: JavaScript
+        - name: JavaScript - 身份验证代码流
+          href: quickstart-v2-javascript-auth-code.md
+        - name: JavaScript - 隐式流
           href: quickstart-v2-javascript.md
     - name: Web 应用
       items:
@@ -73,7 +75,9 @@
       items:
         - name: Angular
           href: tutorial-v2-angular.md
-        - name: JavaScript
+        - name: JavaScript - 身份验证代码流
+          href: tutorial-v2-javascript-auth-code.md
+        - name: JavaScript - 隐式流
           href: tutorial-v2-javascript-spa.md
     - name: Web 应用
       items:
@@ -479,6 +483,10 @@
           href: active-directory-optional-claims.md
         - name: 配置令牌生存期
           href: active-directory-configurable-token-lifetimes.md
+        - name: 在 Chrome 浏览器中处理 SameSite Cookie 更改
+          href: howto-handle-samesite-cookie-changes-chrome-browser.md
+        - name: 在 Safari 中处理 ITP
+          href: reference-third-party-cookies-spas.md
     - name: 应用程序配置
       displayName: App configuration
       items:

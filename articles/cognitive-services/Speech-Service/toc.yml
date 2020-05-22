@@ -32,6 +32,8 @@
           href: quickstarts/speech-to-text-from-file.md
         - name: 识别存储在 Blob 存储中的语音
           href: quickstarts/from-blob.md
+        - name: 通过参考输入进行发音评估
+          href: 'rest-speech-to-text.md#pronunciation-assessment-parameters'
     - name: 操作指南
       items:
         - name: 选择语音识别模式
@@ -61,6 +63,8 @@
           href: how-to-custom-speech-inspect-data.md
         - name: 评估自定义语音准确度
           href: how-to-custom-speech-evaluate-data.md
+        - name: 提升自定义语音准确度
+          href: how-to-custom-speech-improve-accuracy.md
         - name: 训练自定义语音的模型
           href: how-to-custom-speech-train-model.md
         - name: 部署自定义模型

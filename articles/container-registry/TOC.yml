@@ -91,7 +91,7 @@
           items:
             - name: 使用专用终结点限制访问
               href: container-registry-private-link.md
-            - name: 配置服务防火墙规则
+            - name: 配置公共注册表访问
               href: container-registry-access-selected-networks.md
             - name: 使用服务终结点限制访问（预览版）
               href: container-registry-vnet.md

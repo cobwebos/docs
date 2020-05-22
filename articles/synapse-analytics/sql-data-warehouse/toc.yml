@@ -366,7 +366,7 @@
         - name: 构建仪表板和报表
           items:
             - name: 使用 Power BI 进行可视化
-              href: /power-bi/service-azure-sql-data-warehouse-with-direct-connect.md
+              href: /power-bi/service-azure-sql-data-warehouse-with-direct-connect
     - name: 疑难解答
       items:
         - name: 连接
@@ -417,3 +417,5 @@
           href: sql-data-warehouse-partner-data-integration.md
         - name: 数据管理
           href: sql-data-warehouse-partner-data-management.md
+        - name: 公共预览版合作伙伴
+          href: sql-data-warehouse-partner-launch.md

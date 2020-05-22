@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: 3a26561b7789446aff70c9fb9e08d523d05d8d64
-  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.openlocfilehash: 694b5fee19a1c0dca752e02259e3cc398ae6e55e
+  ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83587470"
+  ms.locfileid: "83641877"
 landingContent:
 - title: 关于外部标识
   linkLists:
@@ -27,6 +27,18 @@ landingContent:
       url: compare-with-b2c.md
     - text: 什么是 B2B 来宾用户访问权限？
       url: what-is-b2b.md
+- title: 自助注册（预览版）
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是自助服务注册？
+      url: self-service-sign-up-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 添加自助注册用户流
+      url: self-service-sign-up-user-flow.md
+    - text: 定义用户流的自定义属性
+      url: user-flow-add-custom-attributes.md
 - title: 邀请 B2B 来宾用户
   linkLists:
   - linkListType: concept

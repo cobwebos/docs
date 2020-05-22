@@ -240,10 +240,7 @@
               displayname: 'functions, monitor functions, automation'
               href: ../azure-functions/functions-monitoring.md
             - name: Azure Kubernetes 服务
-              items:
-                - name: Kubernetes（已弃用）
-                  displayname: 'aks, microservice, istio, service mesh, application monitoring, monitor kubernetes, monitor aks'
-                  href: app/kubernetes.md
+              href: app/kubernetes-codeless.md
             - name: 独立 - 任何环境
               items:
                 - name: Java（预览版）
@@ -1000,8 +997,6 @@
           items:
             - name: 可用性
               href: app/monitor-web-app-availability.md
-            - name: 指标警报
-              href: app/alerts.md
         - name: 指标警报规则
           items:
             - name: 管理指标警报
@@ -1268,6 +1263,8 @@
           href: insights/azure-web-apps-analytics.md
         - name: Application Insights 连接器
           href: platform/app-insights-connector.md
+        - name: 用于 AKS 无代码的 Application Insights
+          href: app/kubernetes.md
         - name: 监视 Docker 应用程序
           href: app/docker.md
         - name: OMS 门户弃用

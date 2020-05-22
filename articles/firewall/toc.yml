@@ -17,13 +17,13 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 通过 IP 组进行部署
+    - name: 通过 IP 组进行部署 - ARM 模板
       displayName: Resource Manager
       href: quick-create-ipgroup-template.md
-    - name: 使用多个地址进行部署
+    - name: 使用多个地址进行部署 - ARM 模板
       displayName: Resource Manager
       href: quick-create-multiple-ip-template.md
-    - name: 使用可用性区域进行部署
+    - name: 使用可用性区域进行部署 - ARM 模板
       displayName: Resource Manager
       href: deploy-template.md
 - name: 示例

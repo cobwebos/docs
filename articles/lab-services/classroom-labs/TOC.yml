@@ -118,10 +118,12 @@
       items:
         - name: 访问教室实验室
           href: how-to-use-classroom-lab.md
-        - name: 对 Linux VM 使用远程桌面连接
+        - name: 连接到 Linux VM
           href: how-to-use-remote-desktop-linux-student.md
         - name: 使用 RDP 从 Mac 连接到 VM
-          href: connect-virtual-machine-mac-rdp.md
+          href: connect-virtual-machine-mac-remote-desktop.md
+        - name: 使用 RDP 从 Chromebook 连接到 VM
+          href: connect-virtual-machine-chromebook-remote-desktop.md
         - name: 设置或重置虚拟机的密码
           href: how-to-set-virtual-machine-passwords-student.md
         - name: 查看支持信息（学生）

@@ -4,15 +4,12 @@
   items:
     - name: 什么是用于服务器的 Azure Arc？
       href: ./servers/overview.md
-- name: 示例
-  items:
-    - name: Azure Policy 内置策略定义
-      displayName: 'samples, policies, definitions'
-      href: ./servers/policy-samples.md
 - name: 操作指南
   items:
     - name: 连接到 Azure Arc
       items:
+        - name: Connected Machine 代理概述
+          href: ./servers/agent-overview.md
         - name: 从 Azure 门户将计算机连接到 Azure Arc
           href: ./servers/onboard-portal.md
         - name: 使用服务主体大规模连接计算机
@@ -23,3 +20,8 @@
       items:
         - name: 管理代理
           href: ./servers/manage-agent.md
+- name: 示例
+  items:
+    - name: Azure Policy 内置策略定义
+      displayName: 'samples, policies, definitions'
+      href: ./servers/policy-samples.md

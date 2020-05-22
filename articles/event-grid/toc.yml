@@ -132,6 +132,14 @@
               href: event-schema-azure-signalr.md
             - name: Azure 订阅
               href: event-schema-subscriptions.md
+    - name: 合作伙伴主题
+      items:
+        - name: 合作伙伴主题概述
+          href: partner-topics-overview.md
+        - name: Auth0
+          href: auth0-overview.md
+        - name: 成为事件网格伙伴
+          href: partner-onboarding-overview.md
     - name: 事件域
       href: event-domains.md
     - name: 事件架构格式
@@ -186,6 +194,8 @@
   items:
     - name: 发布到自定义主题
       href: post-to-custom-topic.md
+    - name: 订阅 Auth0 事件
+      href: auth0-how-to.md
     - name: 在 HTTP 终结点接收事件
       href: receive-events.md
     - name: 死信与重试
@@ -214,6 +224,8 @@
           href: configure-firewall.md
         - name: 通过 AAD 保护 WebHook
           href: secure-webhook-delivery.md
+        - name: 使用托管标识进行事件传送
+          href: managed-service-identity.md
     - name: 疑难解答
       items:
         - name: 启用诊断日志

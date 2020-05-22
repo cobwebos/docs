@@ -184,6 +184,8 @@
           href: service-bus-nodejs-how-to-use-topics-subscriptions.md
     - name: 管理
       items:
+        - name: 自动更新消息传送单元
+          href: automate-update-messaging-units.md
         - name: 使用 Azure PowerShell 预配实体
           href: service-bus-manage-with-ps.md
         - name: 使用 Azure Monitor 监视服务总线
@@ -209,7 +211,7 @@
           href: service-bus-ip-filtering.md
         - name: 配置虚拟网络服务终结点
           href: service-bus-service-endpoints.md
-        - name: 配置专用终结点（预览版）
+        - name: 配置专用终结点
           href: private-link-service.md
         - name: 配置客户管理的密钥
           href: configure-customer-managed-key.md

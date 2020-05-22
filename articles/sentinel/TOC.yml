@@ -34,7 +34,7 @@
       items:
         - name: 进行服务到服务连接
           items:
-            - name: AWS
+            - name: AWS CloudTrail
               href: connect-aws.md
             - name: Azure AD
               href: connect-azure-active-directory.md
@@ -66,7 +66,7 @@
               href: connect-windows-security-events.md
         - name: 连接外部解决方案
           items:
-            - name: Barracuda
+            - name: Barracuda WAF
               href: connect-barracuda.md
             - name: Barracuda CloudGen 防火墙
               href: connect-barracuda-cloudgen-firewall.md
@@ -100,7 +100,7 @@
                       href: connect-extrahop.md
                     - name: F5 ASM
                       href: connect-f5.md
-                    - name: Forcepoint 产品
+                    - name: Forcepoint CASB，GFW
                       href: connect-forcepoint-casb-ngfw.md
                     - name: Fortinet
                       href: connect-fortinet.md

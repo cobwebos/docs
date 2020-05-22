@@ -1,0 +1,28 @@
+- name: 已启用 Azure Arc 的 Kubernetes
+  href: index.yml
+- name: 概述
+  items:
+    - name: 关于已启用 Azure Arc 的 Kubernetes
+      href: overview.md
+- name: 操作指南
+  items:
+    - name: 群集操作
+      items:
+        - name: 连接群集
+          href: connect-cluster.md
+        - name: 对连接的群集使用 GitOps
+          href: use-gitops-connected-cluster.md
+        - name: 将 GitOps 与 Helm 结合使用
+          href: use-gitops-with-helm.md
+        - name: 用于容器的 Azure Monitor
+          href: deploy-azure-monitor-for-containers.md
+        - name: 安装 Azure Policy 加载项
+          href: ../../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
+        - name: 使用 Azure Policy
+          href: use-azure-policy.md
+        - name: 部署 IoT 工作负载
+          href: deploy-azure-iot-edge-workloads.md
+        - name: 加入服务主体
+          href: create-onboarding-service-principal.md
+        - name: 疑难解答
+          href: Troubleshooting.md

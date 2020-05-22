@@ -259,6 +259,20 @@
           href: 'https://docs.microsoft.com/rest/api/maps/traffic'
         - name: 天气服务
           href: 'https://docs.microsoft.com/rest/api/maps/weather'
+        - name: 地图创建者服务
+          items:
+            - name: 别名服务
+              href: 'https://docs.microsoft.com/rest/api/maps/alias'
+            - name: 转换服务
+              href: 'https://docs.microsoft.com/rest/api/maps/conversion'
+            - name: 数据集服务
+              href: 'https://docs.microsoft.com/rest/api/maps/dataset'
+            - name: 功能状态服务
+              href: 'https://docs.microsoft.com/rest/api/maps/featurestate'
+            - name: 图块集服务
+              href: 'https://docs.microsoft.com/rest/api/maps/tileset'
+            - name: WFS 服务
+              href: 'https://docs.microsoft.com/rest/api/maps/wfs'
         - name: 地图帐户管理
           href: 'https://docs.microsoft.com/rest/api/maps-management'
     - name: JavaScript

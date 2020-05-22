@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: c065f3d12f98be85f45ed6233593d9ccab1cefa1
-  ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+  ms.openlocfilehash: 50252d0a308c4232b84bffddd905d8a84e1be0d8
+  ms.sourcegitcommit: a3c6efa4d4a48e9b07ecc3f52a552078d39e5732
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/12/2020
-  ms.locfileid: "83201652"
+  ms.lasthandoff: 05/20/2020
+  ms.locfileid: "83707966"
 highlightedContent:
   items:
   - title: 什么是语音服务？
@@ -47,7 +47,7 @@ conceptualContent:
       text: 语音识别基础知识
       url: speech-to-text-basics.md
     footerLink:
-      text: 查看详细信息
+      text: 更多
       url: index-speech-to-text.yml
   - title: 文本转语音
     links:
@@ -61,7 +61,7 @@ conceptualContent:
       text: 语音合成基础知识
       url: text-to-speech-basics.md
     footerLink:
-      text: 查看详细信息
+      text: 更多
       url: index-text-to-speech.yml
   - title: 语音翻译
     links:
@@ -75,7 +75,7 @@ conceptualContent:
       text: 语音翻译基础知识
       url: speech-translation-basics.md
     footerLink:
-      text: 查看详细信息
+      text: 更多
       url: index-speech-translation.yml
   - title: 意向识别
     links:
@@ -89,7 +89,7 @@ conceptualContent:
       text: 语言理解 (LUIS) 门户
       url: https://www.luis.ai
     footerLink:
-      text: 查看详细信息
+      text: 更多
       url: index-intent-recognition.yml
   - title: 对话方案
     links:
@@ -103,7 +103,7 @@ conceptualContent:
       text: 呼叫中心听录
       url: call-center-transcription.md
     footerLink:
-      text: 查看详细信息
+      text: 更多
       url: index-conversation-scenarios.yml
   - title: 语音助手
     links:
@@ -117,8 +117,16 @@ conceptualContent:
       text: 使用 Bot Framework 创建语音助手
       url: direct-line-speech.md
     footerLink:
-      text: 查看详细信息
+      text: 更多
       url: index-voice-assistants.yml
+  - title: 说话人识别
+    links:
+    - itemType: how-to-guide
+      text: 关于说话人识别
+      url: ../Speaker-recognition/Home.md
+    - itemType: how-to-guide
+      text: 说话人识别 API 参考
+      url: https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c3271984551c84ec6797
   - title: 工具
     links:
     - itemType: overview
@@ -142,7 +150,7 @@ conceptualContent:
       text: Azure 容器实例中的语音服务容器
       url: deploy-speech-on-container-instances.md
     footerLink:
-      text: 查看详细信息
+      text: 更多
       url: index-hosting.yml
   - title: 设备
     links:
@@ -156,7 +164,7 @@ conceptualContent:
       text: 使用语音设备 SDK
       url: speech-devices-sdk-quickstart.md
     footerLink:
-      text: 查看详细信息
+      text: 更多
       url: index-devices.yml
   - title: 迁移
     links:

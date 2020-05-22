@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: d84a0190e13d7bb7664e8792e0047338fe4bf5e2
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 04f90292b74593dece5f7e54268907e184fd084c
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75982688"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592757"
 ---
 # <a name="what-is-custom-translator"></a>什么是自定义翻译？
 
@@ -34,7 +34,7 @@ ms.locfileid: "75982688"
 |[生成了解业务术语的系统](what-are-parallel-documents.md)     |  使用并行文档自定义并生成翻译系统，该系统了解在你自己的业务和行业中使用的术语。       |
 |[使用字典来生成模型](what-is-dictionary.md)     |   如果没有训练数据集，可以只使用字典数据训练一个模型。       |
 |[与他人协作](how-to-manage-settings.md#share-your-workspace)     |   将工作与他人共享，与团队协作。     |
-|[访问自定义翻译模型](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)     |  可以通过 Microsoft 文本翻译 API V3 使用现有的应用程序/程序来随时访问自定义翻译模型。       |
+|[访问自定义翻译模型](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)     |  可以通过翻译 V3 使用现有的应用程序/程序来随时访问自定义翻译模型。       |
 
 ## <a name="get-better-translations"></a>获取更好的翻译
 
@@ -54,11 +54,11 @@ Microsoft Translator 在 2016 年发布了[神经机器翻译 (NMT)](https://www
 
 [自定义翻译](https://portal.customtranslator.azure.ai)也可通过[专用 API](https://custom-api.cognitive.microsofttranslator.com/swagger/)（目前为预览版）以编程方式进行访问。 有了该 API，用户就可以通过自己的应用或 Web 服务定期对训练的创建和更新进行管理。
 
-使用自定义模型来翻译内容时，其价格取决于用户的文本翻译 API 定价层。 如需定价层详细信息，请参阅认知服务[文本翻译 API 定价网页](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)。
+使用自定义模型来翻译内容时，其价格取决于用户的翻译定价层。 如需定价层详细信息，请参阅认知服务[翻译定价网页](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)。
 
 ## <a name="securely-translate-anytime-anywhere-on-all-your-apps-and-services"></a>随时随地在所有应用和服务上进行安全的翻译
 
-可以在任何设备上使用标准的 REST 技术通过 Microsoft 文本翻译 API 以无缝方式访问自定义系统，并将其集成到任意产品或业务工作流。
+可以在任何设备上使用标准的 REST 技术通过“翻译”以无缝方式访问自定义系统，并将其集成到任意产品或业务工作流。
 
 ## <a name="next-steps"></a>后续步骤
 

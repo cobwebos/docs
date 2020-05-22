@@ -25,9 +25,13 @@
         - name: 使用 Web 工具创建 Apache Spark 笔记本
           href: quickstart-apache-spark-notebook.md
         - name: 使用 Azure 门户创建 Apache Spark 池
-          href: quickstart-create-apache-spark-pool.md
-        - name: 创建 SQL 池
-          href: quickstart-create-sql-pool.md
+          href: quickstart-create-apache-spark-pool-portal.md
+        - name: 使用 Synapse Studio 创建 Apache Spark 池
+          href: quickstart-create-apache-spark-pool-studio.md
+        - name: 使用 Azure 门户创建 SQL 池
+          href: quickstart-create-sql-pool-portal.md
+        - name: 使用 Synapse Studio 创建 SQL 池
+          href: quickstart-create-sql-pool-studio.md
     - name: 使用 SQL 池加载数据
       items:
         - name: COPY 语句
@@ -308,9 +312,9 @@
                   href: sql/develop-storage-files-overview.md
                 - name: 存储访问控制
                   href: sql/develop-storage-files-storage-access-control.md
-                - name: Spark 表
+                - name: Apache Spark for Azure Synapse 外部表
                   href: sql/develop-storage-files-spark-tables.md
-        - name: 工作负荷管理
+        - name: 工作负载管理
           items:
             - name: 概述
               href: ./sql-data-warehouse/sql-data-warehouse-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -328,8 +332,16 @@
               href: ./sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: Synapse Link
       items:
+        - name: Synapse Link for Azure Cosmos DB
+          href: ../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: 分析存储 - 概述
+          href: ../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Synapse Link 支持的功能
           href: ./synapse-link/concept-synapse-link-cosmos-db-support.md
+        - name: Synapse Link 常见问题解答
+          href: ../cosmos-db/synapse-link-frequently-asked-questions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Synapse Link 用例
+          href: ../cosmos-db/synapse-link-use-cases.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: 工具集成（AI、ETL、BI）
       items:
         - name: 排查 Synapse Analytics Studio 的问题
@@ -414,6 +426,8 @@
       items:
         - name: Synapse Link
           items:
+            - name: 配置 Synapse Link
+              href: ../cosmos-db/configure-synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 连接到 Azure Synapse Link for Cosmos DB
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
             - name: 使用 Apache Spark for Azure Synapse Analytics 查询 Azure Cosmos DB 分析存储
@@ -860,14 +874,16 @@
   items:
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
+    - name: 功能请求
+      href: 'https://feedback.azure.com/forums/307516-sql-data-warehouse/'
     - name: 论坛
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/synapse-analytics/'
     - name: 定价计算器
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: 功能请求
-      href: 'https://feedback.azure.com/forums/307516-sql-data-warehouse/'
+    - name: 问题和回答
+      href: 'https://docs.microsoft.com/en-us/answers/questions/topics/single/25423.html'
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=sql-data-warehouse'
     - name: Stack Overflow

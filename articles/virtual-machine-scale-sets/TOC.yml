@@ -60,9 +60,39 @@
 - name: 示例
   items:
     - name: Azure CLI
-      href: cli-samples.md
+      items:
+        - name: 创建虚拟机规模集
+          href: ./scripts/cli-sample-create-simple-scale-set.md
+        - name: 从自定义 VM 映像创建规模集
+          href: ./scripts/cli-sample-create-scale-set-from-custom-image.md
+        - name: 将应用程序安装到规模集
+          href: ./scripts/cli-sample-install-apps.md
+        - name: 创建规模集并向其附加磁盘
+          href: ./scripts/cli-sample-attach-disks.md
+        - name: 启用基于主机的自动缩放
+          href: ./scripts/cli-sample-enable-autoscale.md
+        - name: 创建单区域规模集
+          href: ./scripts/cli-sample-single-availability-zone-scale-set.md
+        - name: 创建区域冗余规模集
+          href: ./scripts/cli-sample-zone-redundant-scale-set.md
     - name: PowerShell
-      href: powershell-samples.md
+      items:
+        - name: 创建简单的虚拟机规模集
+          href: ./scripts/powershell-sample-create-simple-scale-set.md
+        - name: 创建完整的虚拟机规模集
+          href: ./scripts/powershell-sample-create-complete-scale-set.md
+        - name: 从自定义 VM 映像创建规模集
+          href: ./scripts/powershell-sample-create-scale-set-from-custom-image.md
+        - name: 将应用程序安装到规模集
+          href: ./scripts/powershell-sample-install-apps.md
+        - name: 创建规模集并向其附加磁盘
+          href: ./scripts/powershell-sample-attach-disks.md
+        - name: 启用基于主机的自动缩放
+          href: ./scripts/powershell-sample-enable-autoscale.md
+        - name: 创建单区域规模集
+          href: ./scripts/powershell-single-av-zone-scale-set.md
+        - name: 创建区域冗余规模集
+          href: ./scripts/powershell-sample-zone-redundant-scale-set.md
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md

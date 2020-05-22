@@ -6,7 +6,6 @@
     - name: 什么是 Azure 预留项？
       href: save-compute-costs-reservations.md
 - name: 操作指南
-  expanded: true
   items:
     - name: 确定要购买的内容
       items:
@@ -56,12 +55,17 @@
           href: 'manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances'
         - name: 对预留执行交换和退款操作
           href: exchange-and-refund-azure-reservations.md
+    - name: 报告成本
+      items:
+        - name: 查看预留交易
+          href: view-purchase-refunds.md
+        - name: 撤回预留成本
+          href: charge-back-usage.md
     - name: 续订预留
       items:
         - name: 续订预留项
           href: reservation-renew.md
 - name: 概念
-  expanded: true
   items:
     - name: 如何创建预预留建议
       href: reserved-instance-purchase-recommendations.md

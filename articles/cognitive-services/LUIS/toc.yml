@@ -42,8 +42,6 @@
         - name: 2. 提取用户数据
           href: tutorial-machine-learned-entity.md
           displayName: 'n-depth, constraint, descriptor, phrase list, entity, feature'
-        - name: 3. 从用户话语获取情绪
-          href: tutorial-publish-settings.md
     - name: 改进应用
       items:
         - name: 修复不确定的预测
@@ -377,7 +375,7 @@
     - name: 预构建的域参考
       href: luis-reference-prebuilt-domains.md
       displayName: 'Calendar, Communication,Email,HomeAutomation,Note,Places, RestaurantReservation,ToDo,Utilities,Weather,Web'
-    - name: 自定义实体参考
+    - name: 自定义实体引用
       items:
         - name: 机器学习实体
           href: reference-entity-machine-learned-entity.md
