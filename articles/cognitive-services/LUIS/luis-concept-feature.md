@@ -3,12 +3,12 @@ title: 特征 - LUIS
 description: 将特征添加到语言模型，提供有关如何识别需要标记或分类的输入的提示。
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: e0fd4470c9e1c2a56562b3783010ff1ef87ff466
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c4f19ceed2e48f3f6ec2ed0958bccb7a85cff44f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682166"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742714"
 ---
 # <a name="machine-learning-ml-features"></a>机器学习（ML）功能
 
@@ -85,7 +85,7 @@ ms.locfileid: "83682166"
     * 街道地址（子实体）
     * City （子实体）
     * 省/直辖市/自治区（子实体）
-    * 国家（子实体）
+    * 国家/地区（子实体）
     * 邮政编码（子实体）
 
 ## <a name="nested-subentities-with-features"></a>带功能的嵌套子实体
@@ -118,7 +118,7 @@ ms.locfileid: "83682166"
     * 街道名称（子实体）
     * City （子实体）
     * 省/直辖市/自治区（子实体）
-    * 国家（子实体）
+    * 国家/地区（子实体）
     * 邮政编码（子实体）
 
 ### <a name="required-feature-using-prebuilt-entities"></a>使用预先构建的实体所需的功能
@@ -155,7 +155,7 @@ ms.locfileid: "83682166"
 
 由于用户希望在任何意向或实体中使用第二种语言，因此应将其添加到短语列表，并将短语列表配置为全局功能。
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 了解[最佳实践](luis-concept-best-practices.md)。
 
 ## <a name="next-steps"></a>后续步骤
