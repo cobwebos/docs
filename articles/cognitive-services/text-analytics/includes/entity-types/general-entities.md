@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: ba516a548fc8385ca86526a7f2dd082b27e53208
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 60cd6b8ba2cbfca497ae1b92113b12e85a34bf26
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77211426"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83778294"
 ---
 ## <a name="general-entity-types"></a>常规实体类型：
 
@@ -22,11 +22,11 @@ ms.locfileid: "77211426"
 识别文本中的人员姓名。
 
 语言：
-* 公共预览版： `Arabic`、 `Czech`、 `Chinese-Simplified`、 `Danish`、 `Dutch`、 `English` `Finnish` `French` `German` `Hungarian` `Italian` `Japanese` `Swedish` 、、 `Korean`、、、、、、、、、、、和`Norwegian (Bokmål)` `Polish` `Portuguese (Portugal)` `Portuguese (Brazil)` `Russian` `Spanish``Turkish`
+* 公共预览版： `Arabic` 、 `Czech` 、 `Chinese-Simplified` 、 `Danish` 、 `Dutch` 、 `English` `Finnish` `French` `German` `Hungarian` `Italian` `Japanese` `Korean` `Norwegian (Bokmål)` `Polish` `Portuguese (Portugal)` `Portuguese (Brazil)` `Russian` `Spanish` `Swedish` 、、、、、、、、、、、、、和`Turkish`
 
 | 子类型名称 | 说明                                                      | 开始使用模型版本 |
 |--------------|------------------------------------------------------------------|---------------------------------------|
-| 不可用          | 识别的人员姓名，例如`Bill Gates``Marie Curie` | `2019-10-01`                          | 
+| 空值          | 识别 `Bill Gates` 的人员姓名，例如`Marie Curie` | `2019-10-01`                          | 
 
 ### <a name="persontype"></a>PersonType
 人员持有的作业类型或角色。
@@ -36,7 +36,7 @@ ms.locfileid: "77211426"
 
 | 子类型名称 | 说明                                                                                | 开始使用模型版本 |
 |--------------|--------------------------------------------------------------------------------------------|----------------------------------------|
-| 不可用          | `civil engineer`作业类型例如`salesperson`，、 `chef`、、 `librarian``nursing aide` | `2020-02-01`                           |
+| 空值          | 作业类型例如 `civil engineer` ，、 `salesperson` `chef` 、 `librarian` 、`nursing aide` | `2020-02-01`                           |
 
 ### <a name="location"></a>位置
 
@@ -44,12 +44,12 @@ ms.locfileid: "77211426"
 
 语言：
 
-* 公共预览版： `Arabic`、 `Czech`、 `Chinese-Simplified`、 `Danish`、 `Dutch`、 `English` `Finnish` `French` `German` `Hungarian` `Italian` `Japanese` `Swedish` 、、 `Korean`、、、、、、、、、、、和`Norwegian (Bokmål)` `Polish` `Portuguese (Portugal)` `Portuguese (Brazil)` `Russian` `Spanish``Turkish`
+* 公共预览版： `Arabic` 、 `Czech` 、 `Chinese-Simplified` 、 `Danish` 、 `Dutch` 、 `English` `Finnish` `French` `German` `Hungarian` `Italian` `Japanese` `Korean` `Norwegian (Bokmål)` `Polish` `Portuguese (Portugal)` `Portuguese (Brazil)` `Russian` `Spanish` `Swedish` 、、、、、、、、、、、、、和`Turkish`
 
 | 子类型名称              | 说明                                                                              | 开始使用模型版本 |
 |---------------------------|------------------------------------------------------------------------------------------|----------------------------------------|
-| 不可用                       | 位置，例如`Atlantic Ocean` `library`，、 `Eiffel Tower`、`Statue of Liberty`  | `2019-10-01`                           |
-| 地缘政治实体（GPE）-仅限英语| 城市、国家/地区、省`Seattle`/ `Pennsylvania`市`South Africa`/自治区，例如，、、`Tokyo` | `2020-02-01`                           |
+| 空值                       | 位置，例如， `Atlantic Ocean` 、 `library` `Eiffel Tower` 、`Statue of Liberty`  | `2019-10-01`                           |
+| 地缘政治实体（GPE）-仅限英语| 城市、国家/地区、省/市/自治区，例如，、 `Seattle` `Pennsylvania` `South Africa` 、`Tokyo` | `2020-02-01`                           |
 
 ### <a name="organization"></a>组织  
 
@@ -57,11 +57,11 @@ ms.locfileid: "77211426"
 
 语言： 
 
-* 公共预览版： `Arabic`、 `Czech`、 `Chinese-Simplified`、 `Danish`、 `Dutch`、 `English` `Finnish` `French` `German` `Hungarian` `Italian` `Japanese` `Swedish` 、、 `Korean`、、、、、、、、、、、和`Norwegian (Bokmål)` `Polish` `Portuguese (Portugal)` `Portuguese (Brazil)` `Russian` `Spanish``Turkish`
+* 公共预览版： `Arabic` 、 `Czech` 、 `Chinese-Simplified` 、 `Danish` 、 `Dutch` 、 `English` `Finnish` `French` `German` `Hungarian` `Italian` `Japanese` `Korean` `Norwegian (Bokmål)` `Polish` `Portuguese (Portugal)` `Portuguese (Brazil)` `Russian` `Spanish` `Swedish` 、、、、、、、、、、、、、和`Turkish`
 
 | 子类型名称 | 说明                                                                                             | 开始使用模型版本 |
 |--------------|---------------------------------------------------------------------------------------------------------|----------------------------------------|
-| 不可用          | 组织，例如`Microsoft` `NASA`，、 `National Oceanic and Atmospheric Administration`、`VOA` | `2019-10-01`                           |
+| 空值          | 组织，例如， `Microsoft` 、 `NASA` `National Oceanic and Atmospheric Administration` 、`VOA` | `2019-10-01`                           |
 
 ### <a name="event"></a>事件  
 
@@ -73,9 +73,9 @@ ms.locfileid: "77211426"
 
 | 子类型名称 | 说明                                                            | 开始使用模型版本 |
 |--------------|------------------------------------------------------------------------|----------------------------------------|
-| 不可用          | 事件`wedding`，例如、 `hurricane` `car accident`、、 `solar eclipse`、`American Revolution` | `2020-02-01`                           |
+| 空值          | 事件，例如 `wedding` 、、、 `hurricane` `car accident` `solar eclipse` 、`American Revolution` | `2020-02-01`                           |
 
-### <a name="product"></a>Products  
+### <a name="product"></a>产品  
 
 各种类别的物理对象。  
 
@@ -85,7 +85,7 @@ ms.locfileid: "77211426"
 
 | 子类型名称 | 说明                                                                        | 开始使用模型版本 |
 |--------------|------------------------------------------------------------------------------------|----------------------------------------|
-| 不可用          | 例如`Microsoft Surface laptop` `sunglasses`，、、 `motorcycle`、、 `bag``Xbox` | `2020-02-01`                           |
+| 空值          | 例如，、 `Microsoft Surface laptop` 、 `sunglasses` `motorcycle` 、 `bag` 、`Xbox` | `2020-02-01`                           |
 | 计算    | `Azure Cosmos DB`, `Azure Kubernetes Service`                                     | `2020-02-01`                           |
 
 ### <a name="skill"></a>技能  
@@ -98,7 +98,7 @@ ms.locfileid: "77211426"
 
 | 子类型名称 | 说明                                                                 | 开始使用模型版本 |
 |--------------|-----------------------------------------------------------------------------|----------------------------------------|
-| 不可用          | `nursing`, `data mining`, `linguistics`, `critical thinking`, `photography` | `2020-02-01`                           |
+| 空值          | `nursing`, `data mining`, `linguistics`, `critical thinking`, `photography` | `2020-02-01`                           |
 
 ### <a name="phone-number"></a>电话号码
 
@@ -110,7 +110,7 @@ ms.locfileid: "77211426"
 
 | 子类型名称 | 说明                                    | 开始使用模型版本 |
 |--------------|------------------------------------------------|----------------------------------------|
-| 不可用          | 美国电话号码，例如`(312) 555-0176` | `2019-10-01`                           |
+| 空值          | 美国电话号码，例如`(312) 555-0176` | `2019-10-01`                           |
 
 ### <a name="email"></a>电子邮件
 
@@ -122,9 +122,9 @@ ms.locfileid: "77211426"
 
 | 子类型名称 | 说明                                      | 开始使用模型版本 |
 |--------------|--------------------------------------------------|----------------------------------------|
-| 不可用          | 电子邮件地址，例如`support@contoso.com` | `2019-10-01`                           |
+| 空值          | 电子邮件地址，例如`support@contoso.com` | `2019-10-01`                           |
 
-### <a name="url"></a>代码
+### <a name="url"></a>URL
 
 Internet Url。
 
@@ -134,7 +134,7 @@ Internet Url。
 
 | 子类型名称 | 说明                                          | 开始使用模型版本 |
 |--------------|------------------------------------------------------|----------------------------------------|
-| 不可用          | 指向网站的 Url，例如`https://www.bing.com` | `2019-10-01`                           |
+| 空值          | 指向网站的 Url，例如`https://www.bing.com` | `2019-10-01`                           |
 
 ### <a name="ip-address"></a>IP 地址
 
@@ -146,7 +146,7 @@ Internet 协议地址
 
 | 子类型名称 | 说明                              | 开始使用模型版本 |
 |--------------|------------------------------------------|----------------------------------------|
-| 不可用          | 示例的网络地址`10.0.0.101` | `2019-10-01`                           |
+| 空值          | 示例的网络地址`10.0.0.101` | `2019-10-01`                           |
 
 ###  <a name="datetime"></a>DateTime
 
@@ -156,16 +156,16 @@ Internet 协议地址
 
 语言：
 
-* 公共预览版： `Chinese-Simplified`、 `English`、 `French` `German`和`Spanish`
+* 公共预览版： `Chinese-Simplified` 、 `English` 、 `French` `German` 和`Spanish`
 
 | 子类型名称    | 示例                     |
 |-------------|------------------------------|
-| 不可用         | `6:30PM February 4, 2012`, `4/1/2011 2:45`                   |
+| 空值         | `6:30PM February 4, 2012`, `4/1/2011 2:45`                   |
 | 日期  | `May 2nd, 2017`, `05/02/2017`       |
 | 时间     | `8:15`, `6AM`              |
 | DateRange    | `August 2nd to August 5th`         |
 | TimeRange   | `4-6PM`, `10:00AM to Noon`          |
-| Duration | `2.5 minutes`, `one and a half hours`         |
+| 持续时间 | `2.5 minutes`, `one and a half hours`         |
 | 设置 | `every Saturday`         |
 
 ###  <a name="quantity"></a>数量
@@ -176,14 +176,14 @@ Internet 协议地址
 
 语言：
 
-* 公共预览版： `Chinese-Simplified`、 `English`、 `French` `German`和`Spanish`
+* 公共预览版： `Chinese-Simplified` 、 `English` 、 `French` `German` 和`Spanish`
 
 | 子类型名称    | 示例                     |
 |-------------|------------------------------|
-| 数字         | `6`, `six`                   |
+| Number         | `6`, `six`                   |
 | 百分比  | `50%`, `fifty percent`       |
 | Ordinal     | `2nd`, `second`              |
-| 年龄         | `90 day old`, `30 years old` |
-| 货币    | `$10.99`, `€30.00`           |
+| Age         | `90 day old`, `30 years old` |
+| 货币    | `$10.99`, `&euro;30.00`           |
 | 维度   | `10 miles`, `40 cm`          |
 | 温度 | `32 degrees`, `10°C`         |

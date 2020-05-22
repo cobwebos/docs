@@ -1631,20 +1631,6 @@
                       maintainContext: true
                     - name: 排查 Azure AD 访问令牌问题
                       href: /azure/databricks/dev-tools/api/latest/aad/troubleshoot-aad-token
-                  maintainContext: true
-                - name: Azure Active Directory 令牌
-                  items:
-                    - name: Azure AD 令牌身份验证概述
-                      href: /azure/databricks/dev-tools/api/latest/aad/index
-                      maintainContext: true
-                    - name: 使用 Azure AD 身份验证库获取 Azure AD 令牌
-                      href: /azure/databricks/dev-tools/api/latest/aad/app-aad-token
-                      maintainContext: true
-                    - name: 使用服务主体获取 Azure AD 令牌
-                      href: /azure/databricks/dev-tools/api/latest/aad/service-prin-aad-token
-                      maintainContext: true
-                    - name: 排查 Azure AD 访问令牌问题
-                      href: /azure/databricks/dev-tools/api/latest/aad/troubleshoot-aad-token
                       maintainContext: true
             - name: 群集
               href: /azure/databricks/dev-tools/api/latest/clusters
