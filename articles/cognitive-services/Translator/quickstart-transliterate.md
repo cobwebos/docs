@@ -1,7 +1,7 @@
 ---
-title: 快速入门：转换文本脚本 - 文本翻译
+title: 快速入门：转换文本脚本 - 翻译
 titleSuffix: Azure Cognitive Services
-description: 在本快速入门中，你将了解如何使用文本翻译 API 将文本从一个脚本直译（转换）为另一个脚本。 在此示例中，日语在经过直译后使用拉丁字母。
+description: 在本快速入门中，你将了解如何使用“翻译”将文本从一个脚本直译（转换）为另一个脚本。 在此示例中，日语在经过直译后使用拉丁字母。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 4247983fd39cd8d9acf256d313ae10aa2002585f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ca53abdecfdabb4a49bb45880c0f6c4856b3ed1a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77525105"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586476"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-transliterate-text"></a>快速入门：通过文本翻译 API 对文本进行直译
+# <a name="quickstart-use-the-translator-to-transliterate-text"></a>快速入门：通过“翻译”对文本进行直译
 
-本快速入门介绍如何使用文本翻译 REST API 将文本从一个脚本直译（转换）为另一个脚本。 在提供的示例中，日语在经过直译后使用拉丁字母。
+在本快速入门中，你将了解如何使用翻译 REST API 将文本从一个脚本直译（转换）为另一个脚本。 在提供的示例中，日语在经过直译后使用拉丁字母。
 
-此快速入门需要包含文本翻译资源的 [Azure 认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有帐户，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/)获取订阅密钥。
+此快速入门需要包含“翻译”资源的 [Azure 认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有帐户，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/)获取订阅密钥。
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](includes/transliterate-csharp.md)]

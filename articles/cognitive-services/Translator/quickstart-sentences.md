@@ -1,7 +1,7 @@
 ---
-title: 快速入门：获取句子长度 - 文本翻译 API
+title: 快速入门：获取句子长度 - 翻译
 titleSuffix: Azure Cognitive Services
-description: 本快速入门介绍如何使用文本翻译 API 来确定句子长度。
+description: 本快速入门介绍如何使用“翻译”来确定句子长度。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: b2569859a039739f2804a180be44e621421f0cd2
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ca468993798c02c02380eeac7f68e4d3504ec1d8
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77525102"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586698"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length"></a>快速入门：使用文本翻译 API 来确定句子长度
+# <a name="quickstart-use-the-translator-to-determine-sentence-length"></a>快速入门：使用“翻译”来确定句子长度
 
-本快速入门介绍如何使用文本翻译 API 来确定句子长度。
+本快速入门介绍如何使用“翻译”来确定句子长度。
 
-此快速入门需要包含文本翻译资源的 [Azure 认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有帐户，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/)获取订阅密钥。
+此快速入门需要包含“翻译”资源的 [Azure 认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有帐户，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/)获取订阅密钥。
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](includes/sentences-csharp.md)]

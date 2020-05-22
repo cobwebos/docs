@@ -1,8 +1,8 @@
-- name: Azure 静态 Web 应用文档
+- name: Azure Static Web Apps 文档
   href: index.yml
 - name: 概述
   items:
-    - name: 关于静态 Web 应用
+    - name: 关于 Static Web Apps
       href: overview.md
 - name: 快速入门
   expanded: true

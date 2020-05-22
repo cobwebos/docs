@@ -5,34 +5,34 @@ ms.topic: article
 ms.date: 04/17/2020
 ms.openlocfilehash: cfc27de8caae98dd1c3065b5ed06433c4baaa5d2
 ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/08/2020
 ms.locfileid: "82928714"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>更新 Azure 容器实例中的容器
 
-在正常操作容器实例期间，你可能认为有必要更新[容器组](./container-instances-container-groups.md)中正在运行的容器。 例如，你可能想要更新属性（如映像版本、DNS 名称或环境变量），或刷新应用程序崩溃的容器中的属性。
+在正常操作容器实例期间，你可能会发现有必要更新[容器组](./container-instances-container-groups.md)中正在运行的容器。 例如，你可能希望更新一个属性（例如，映像版本、DNS 名称或环境变量），或者刷新其应用程序已崩溃的容器中的属性。
 
-通过使用至少一个已修改的属性重新部署现有组，来更新正在运行的容器组中的容器。 更新某个容器组时，该组中所有正在运行的容器均会就地重启（通常在同一基础容器主机上）。
+通过使用至少一个已修改的属性重新部署现有组，来更新正在运行的容器组中的容器。 更新某个容器组时，该组中所有正在运行的容器会就地重启（通常在同一基础容器主机上进行）。
 
 > [!NOTE]
-> 已终止或已删除的容器组无法更新。 某个容器组已终止（处于“成功”或“失败”状态）或已删除后，必须将该组作为新组进行部署。 请参阅其他[限制](#limitations)。
+> 已终止或已删除的容器组无法更新。 容器组终止（处于“成功”或“失败”状态）或被删除后，必须将该组作为新组进行部署。 请参阅其他[限制](#limitations)。
 
 ## <a name="update-a-container-group"></a>更新容器组
 
-更新现有的容器组：
+若要更新现有容器组，请执行以下操作：
 
-* 发出 create 命令（或使用 Azure 门户）并指定现有组的名称 
-* 重新部署时，请修改或添加支持更新的组的至少一个属性。 某些属性[不支持更新](#properties-that-require-container-delete)。
-* 用先前提供的值设置其他属性。 如果没有为属性设置值，则它将恢复为其默认值。
+* 发出 create 命令（或使用 Azure 门户），指定现有组的名称 
+* 修改或添加至少一个支持在重新部署时进行更新的组属性。 某些属性[不支持更新](#properties-that-require-container-delete)。
+* 使用先前提供的值设置其他属性。 如果未为某个属性设置值，则该属性将恢复为其默认值。
 
 > [!TIP]
-> [YAML 文件](./container-instances-container-groups.md#deployment)帮助维护容器组的部署配置，并提供开始部署更新的组的起点。 如果你使用了不同的方法来创建组，则可以使用[az 容器 export][az-container-export]将配置导出到 YAML， 
+> [YAML 文件](./container-instances-container-groups.md#deployment)有助于维护容器组的部署配置，你可以从其着手来部署已更新的组。 如果使用了其他方法来创建组，则可使用 [az container export][az-container-export] 将配置导出到 YAML。 
 
 ### <a name="example"></a>示例
 
-以下 Azure CLI 示例更新具有新 DNS 名称标签的容器组。 由于该组的 DNS 名称标签属性可以更新，因此会重新部署容器组，并重启其容器。
+以下 Azure CLI 示例更新具有新 DNS 名称标签的容器组。 由于该组的 DNS 名称标签属性是可以更新的属性，因此会重新部署容器组，并重启其容器。
 
 具有 DNS 名称标签 *myapplication-staging* 的初始部署：
 
@@ -42,7 +42,7 @@ az container create --resource-group myResourceGroup --name mycontainer \
     --image nginx:alpine --dns-name-label myapplication-staging
 ```
 
-使用新的 DNS 名称标签*myapplication*更新容器组，并使用之前使用的值设置其余属性：
+使用新的 DNS 名称标签“myapplication”更新容器组，并使用先前使用的值设置其余属性：
 
 ```azurecli-interactive
 # Update DNS name label (restarts container), leave other properties unchanged
@@ -58,16 +58,16 @@ az container create --resource-group myResourceGroup --name mycontainer \
 
 ## <a name="limitations"></a>限制
 
-* 并非容器组的所有属性都支持更新。 若要更改某个容器组的某些属性，必须先删除，再重新部署该组。 请参阅[需要删除容器的属性](#properties-that-require-container-delete)。
+* 并非容器组的所有属性都支持更新。 若要更改某个容器组的某些属性，必须先删除，再重新部署该组。 请参阅[需要容器删除操作的属性](#properties-that-require-container-delete)。
 * 更新某个容器组时，该容器组中的所有容器会重启。 无法对多容器组中的特定容器执行更新或就地重启。
-* 容器组的 IP 地址通常在更新之间保留，但并不保证保持不变。 只要将容器组部署到相同的基础主机，容器组就会保留其 IP 地址。 虽然很少见，但有一些 Azure 内部事件可能会导致重新部署到不同的主机。 若要缓解此问题，我们建议为容器实例使用 DNS 名称标签。
-* 已终止或已删除的容器组无法更新。 容器组停止（处于*终止*状态）或被删除后，该组将部署为新组。
+* 容器组的 IP 地址通常会在更新之后保留，但不能保证保持不变。 只要将容器组部署到相同的基础主机，容器组就会保留其 IP 地址。 有些 Azure 内部事件可能会导致容器组重新部署到其他主机，尽管这很少见。 为了避免此问题，建议对容器实例使用 DNS 名称标签。
+* 已终止或已删除的容器组无法更新。 容器组停止（处于“已终止”状态）或被删除后，该组将作为新组进行部署。
 
 ## <a name="properties-that-require-container-delete"></a>需要容器删除操作的属性
 
-并非所有容器组属性都可以更新。 例如，若要更改容器的重启策略，你必须首先删除该容器组，然后重新创建它。
+并非所有容器组属性都可以更新。 例如，若要更改容器的重启策略，必须先删除容器组，然后再重新创建它。
 
-在重新部署之前，对这些属性所做的更改需要删除容器组：
+更改以下属性需要在重新部署容器组前将容器组删除：
 
 * OS 类型
 * CPU、内存或 GPU 资源

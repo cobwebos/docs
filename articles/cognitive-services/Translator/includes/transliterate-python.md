@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 86ef8f3730fe7ae3ab3428956aaafb86331c5cf5
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 1e9c3ccac9205e38c8df341a6f7ca286811d759b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69906504"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586478"
 ---
 [!INCLUDE [Prerequisites](prerequisites-python.md)]
 
@@ -27,11 +27,11 @@ import os, requests, uuid, json
 > [!NOTE]
 > 如果尚未使用这些模块，则需在运行程序之前安装它们。 若要安装这些包，请运行 `pip install requests uuid`。
 
-第一个注释告知 Python 解释器使用 UTF-8 编码。 然后导入必需的模块，以便从环境变量读取订阅密钥、构造 HTTP 请求、创建唯一标识符，以及处理文本翻译 API 返回的 JSON 响应。
+第一个注释告知 Python 解释器使用 UTF-8 编码。 然后导入必需的模块，以便从环境变量读取订阅密钥、构造 HTTP 请求、创建唯一标识符，以及处理“翻译”返回的 JSON 响应。
 
 ## <a name="set-the-subscription-key-endpoint-and-path"></a>设置订阅密钥、终结点和路径
 
-此示例将尝试从以下环境变量中读取文本翻译订阅密钥和终结点：`TRANSLATOR_TEXT_KEY` 和 `TRANSLATOR_TEXT_ENDPOINT`。 如果不熟悉环境变量，则可将 `subscription_key` 和 `endpoint` 设置为字符串并注释掉条件语句。
+此示例将尝试从以下环境变量中读取“翻译”订阅密钥和终结点：`TRANSLATOR_TEXT_KEY` 和 `TRANSLATOR_TEXT_ENDPOINT`。 如果不熟悉环境变量，则可将 `subscription_key` 和 `endpoint` 设置为字符串并注释掉条件语句。
 
 将以下代码复制到项目中：
 
@@ -47,12 +47,12 @@ if not endpoint_var_name in os.environ:
 endpoint = os.environ[endpoint_var_name]
 ```
 
-文本翻译全局终结点设置为 `endpoint`。 `path` 设置 `transliterate` 路由并确定我们需使用 API 的版本 3。
+“翻译”全局终结点设置为 `endpoint`。 `path` 设置 `transliterate` 路由并确定我们需使用 API 的版本 3。
 
 `params` 用于设置输入语言以及输入和输出脚本。 在此示例中，我们从日语直译为拉丁字母。
 
 >[!NOTE]
-> 有关终结点、路由和请求参数的详细信息，请参阅[文本翻译 API 3.0：直译](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate)。
+> 有关终结点、路由和请求参数的详细信息，请参阅[翻译 3.0：直译](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate)。
 
 ```python
 path = '/transliterate?api-version=3.0'
@@ -106,7 +106,7 @@ print(json.dumps(response, sort_keys=True, indent=4,
 
 ## <a name="put-it-all-together"></a>将其放在一起
 
-就是这样，你已构建了一个简单的程序。该程序可以调用文本翻译 API 并返回 JSON 响应。 现在，可以运行该程序了：
+就是这样，你已构建了一个简单的程序。该程序可以调用“翻译”并返回 JSON 响应。 现在，可以运行该程序了：
 
 ```console
 python transliterate-text.py
@@ -131,7 +131,7 @@ python transliterate-text.py
 
 ## <a name="next-steps"></a>后续步骤
 
-查看 API 参考，了解使用文本翻译 API 可以执行的所有操作。
+查看 API 参考，了解使用“翻译”可以执行的所有操作。
 
 > [!div class="nextstepaction"]
 > [API 参考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

@@ -1,7 +1,7 @@
 ---
-title: 快速入门：检测文本语言 - 文本翻译 API
+title: 快速入门：检测文本语言 - 翻译
 titleSuffix: Azure Cognitive Services
-description: 本快速入门介绍如何使用文本翻译 REST API 来检测所提供文本的语言。
+description: 本快速入门介绍如何使用翻译 REST API 来检测所提供文本的语言。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 3a7e8ef70f1dc1524de5d5b5908b7baee230df4a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: e6b7ac7ab8ee15e8562dd9cd4327229c64d6d2b4
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77525262"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587123"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-detect-text-language"></a>快速入门：使用文本翻译 API 来检测文本语言
+# <a name="quickstart-use-the-translator-to-detect-text-language"></a>快速入门：使用“翻译”来检测文本语言
 
-本快速入门介绍如何使用文本翻译 REST API 来检测所提供文本的语言。
+本快速入门介绍如何使用翻译 REST API 来检测所提供文本的语言。
 
-此快速入门需要包含文本翻译资源的 [Azure 认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有帐户，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/)获取订阅密钥。
+此快速入门需要包含“翻译”资源的 [Azure 认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有帐户，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/)获取订阅密钥。
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](includes/detect-csharp.md)]

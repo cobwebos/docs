@@ -1,5 +1,5 @@
 ---
-title: 教程：在 C# 中使用 WPF 创建翻译应用 - 文本翻译 API
+title: 教程：在 C# 中使用 WPF 创建翻译应用 - 翻译
 titleSuffix: Azure Cognitive Services
 description: 在本教程中，你将创建一个 WPF 应用，通过单个订阅密钥来执行文本翻译、语言检测和拼写检查。
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: ecb42d200eb8808f6bfa4cfb91e98909e350038b
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 0d500a7c24538adb139a42924134f784973f496b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77118608"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588515"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>教程：使用 WPF 创建翻译应用
 
-在本教程中，你将生成一个使用 Azure 认知服务通过单个订阅密钥进行文本翻译、语言检测和拼写检查的 [Windows Presentation Foundation (WPF)](https://docs.microsoft.com/visualstudio/designers/getting-started-with-wpf?view=vs-2019) 应用。 具体而言，该应用将调用文本翻译和[必应拼写检查](https://azure.microsoft.com/services/cognitive-services/spell-check/)中的 API。
+在本教程中，你将生成一个使用 Azure 认知服务通过单个订阅密钥进行文本翻译、语言检测和拼写检查的 [Windows Presentation Foundation (WPF)](https://docs.microsoft.com/visualstudio/designers/getting-started-with-wpf?view=vs-2019) 应用。 具体而言，该应用将调用“翻译”和[必应拼写检查](https://azure.microsoft.com/services/cognitive-services/spell-check/)中的 API。
 
 什么是 WPF？ WPF 是可以创建桌面客户端应用的 UI 框架。 WPF 开发平台支持广泛的应用开发功能，包括应用模型、资源、控件、图形、布局、数据绑定、文档和安全性。 它是 .NET Framework 的一个子集，因此，如果你以前曾经在 .NET Framework 中使用 ASP.NET 或 Windows 窗体生成过应用，则应会熟悉该编程体验。 WPF 使用可扩展应用标记语言 (XAML) 为应用编程提供声明性模型，后续部分将提供相关介绍。
 
@@ -29,7 +29,7 @@ ms.locfileid: "77118608"
 > * 在 Visual Studio 中创建 WPF 项目
 > * 将程序集和 NuGet 包添加到项目
 > * 使用 XAML 创建应用 UI
-> * 使用文本翻译 API 获取语言、翻译文本以及检测源语言
+> * 使用“翻译”获取语言、翻译文本以及检测源语言
 > * 使用必应拼写检查 API 验证输入和提高翻译准确度
 > * 运行 WPF 应用
 
@@ -39,9 +39,9 @@ ms.locfileid: "77118608"
 
 | 服务 | Feature | 说明 |
 |---------|---------|-------------|
-| 文本翻译 | [获取语言](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | 检索文本翻译支持的语言的完整列表。 |
-| 文本翻译 | [Translate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | 将文本翻译成 60 多种语言。 |
-| 文本翻译 | [Detect](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | 检测输入文本的语言。 包含检测置信度评分。 |
+| 转换器 | [获取语言](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | 检索文本翻译支持的语言的完整列表。 |
+| 转换器 | [Translate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | 将文本翻译成 60 多种语言。 |
+| 转换器 | [Detect](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | 检测输入文本的语言。 包含检测置信度评分。 |
 | 必应拼写检查 | [拼写检查](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | 更正拼写错误以提高翻译准确度。 |
 
 ## <a name="prerequisites"></a>先决条件
@@ -59,13 +59,13 @@ ms.locfileid: "77118608"
 
 要做的第一件事是在 Visual Studio 中设置项目。
 
-1. 打开 Visual Studio。 选择“创建新项目”。 
-1. 在“创建新项目”中，找到并选择“WPF 应用(.NET Framework)”。   可以在“语言”中选择“C#”，缩小选项范围。 
-1. 选择“下一步”，然后将项目命名为 `MSTranslatorTextDemo`。 
-1. 将框架版本设置为“.NET Framework 4.7.2”或更高版本，然后选择“创建”。  
+1. 打开 Visual Studio。 选择“创建新项目”。
+1. 在“创建新项目”中，找到并选择“WPF 应用(.NET Framework)”。  可以在“语言”中选择“C#”，缩小选项范围。
+1. 选择“下一步”，然后将项目命名为 `MSTranslatorDemo`。
+1. 将框架版本设置为“.NET Framework 4.7.2”或更高版本，然后选择“创建”。 
    ![在 Visual Studio 中输入名称和框架版本](media/name-wpf-project-visual-studio.png)
 
-现已创建项目。 你会注意到，有两个选项卡已打开：`MainWindow.xaml` 和 `MainWindow.xaml.cs`。 在整个教程中，我们会将代码添加到这两个文件。 我们将修改应用的用户界面的 `MainWindow.xaml`。 我们将修改用于调用文本翻译和必应拼写检查的 `MainWindow.xaml.cs`。
+现已创建项目。 你会注意到，有两个选项卡已打开：`MainWindow.xaml` 和 `MainWindow.xaml.cs`。 在整个教程中，我们会将代码添加到这两个文件。 我们将修改应用的用户界面的 `MainWindow.xaml`。 我们将修改用于调用“翻译”和“必应拼写检查”的 `MainWindow.xaml.cs`。
    ![检查环境](media/blank-wpf-project.png)
 
 在下一部分，我们会将程序集和 NuGet 包添加到项目以实现附加的功能，例如 JSON 分析。
@@ -78,15 +78,15 @@ ms.locfileid: "77118608"
 
 将程序集添加到项目，以序列化和反序列化对象，以及管理 HTTP 请求和响应。
 
-1. 在 Visual Studio 的解决方案资源管理器中找到你的项目。 右键单击项目，然后选择“添加”>“引用”，打开“引用管理器”。  
-1. “程序集”选项卡列出了可供引用的所有 .NET Framework 程序集。  使用右上方的搜索栏来搜索引用。
+1. 在 Visual Studio 的解决方案资源管理器中找到你的项目。 右键单击项目，然后选择“添加”>“引用”，打开“引用管理器”。 
+1. “程序集”选项卡列出了可供引用的所有 .NET Framework 程序集。 使用右上方的搜索栏来搜索引用。
    ![添加程序集引用](media/add-assemblies-2019.png)
 1. 为项目选择以下引用：
    * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization)
    * [System.Web](https://docs.microsoft.com/dotnet/api/system.web)
    * System.Web.Extensions
    * [System.Windows](https://docs.microsoft.com/dotnet/api/system.windows)
-1. 添加对项目的这些引用后，可以单击“确定”关闭“引用管理器”。  
+1. 添加对项目的这些引用后，可以单击“确定”关闭“引用管理器”。 
 
 > [!NOTE]
 > 若要详细了解程序集引用，请参阅[如何：使用引用管理器添加或删除引用](https://docs.microsoft.com/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019)。
@@ -95,13 +95,13 @@ ms.locfileid: "77118608"
 
 我们的应用将使用 NewtonSoft.Json 来反序列化 JSON 对象。 遵照以下说明安装相应的包。
 
-1. 在 Visual Studio 的解决方案资源管理器中找到你的项目，并右键单击该项目。 选择“管理 NuGet 包”。 
-1. 找到并选择“浏览”选项卡。 
+1. 在 Visual Studio 的解决方案资源管理器中找到你的项目，并右键单击该项目。 选择“管理 NuGet 包”。
+1. 找到并选择“浏览”选项卡。
 1. 在搜索栏中输入 [NewtonSoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/)。
 
     ![找到并安装 NewtonSoft.Json](media/nuget-package-manager.png)
 
-1. 选择该包并单击“安装”。 
+1. 选择该包并单击“安装”。
 1. 安装完成后，关闭该选项卡。
 
 ## <a name="create-a-wpf-form-using-xaml"></a>使用 XAML 创建 WPF 窗体
@@ -129,14 +129,14 @@ ms.locfileid: "77118608"
 将代码添加到项目。
 
 1. 在 Visual Studio 中，选择 `MainWindow.xaml` 对应的选项卡。
-1. 将以下代码复制到项目中，然后选择“文件”>“保存 MainWindow.xaml”以保存所做的更改。 
+1. 将以下代码复制到项目中，然后选择“文件”>“保存 MainWindow.xaml”以保存所做的更改。
    ```xaml
-   <Window x:Class="MSTranslatorTextDemo.MainWindow"
+   <Window x:Class="MSTranslatorDemo.MainWindow"
            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-           xmlns:local="clr-namespace:MSTranslatorTextDemo"
+           xmlns:local="clr-namespace:MSTranslatorDemo"
            mc:Ignorable="d"
            Title="Microsoft Translator" Height="400" Width="700" BorderThickness="0">
        <Grid>
@@ -173,15 +173,15 @@ ms.locfileid: "77118608"
 
 ## <a name="create-your-app"></a>创建应用
 
-`MainWindow.xaml.cs` 包含用于控制应用的代码。 在接下来的几个部分，我们将添加代码以填充下拉菜单，并调用文本翻译和必应拼写检查公开的几个 API。
+`MainWindow.xaml.cs` 包含用于控制应用的代码。 在接下来的几个部分，我们将添加代码以填充下拉菜单，并调用“翻译”和“必应拼写检查”公开的几个 API。
 
-* 启动程序并实例化 `MainWindow` 时，将调用文本翻译 API 的 `Languages` 方法来检索和填充语言选择下拉菜单。 此操作只会在每个会话开始时发生一次。
-* 单击“翻译”按钮时，将检索用户选择的语言和文本、针对输入执行拼写检查，然后向用户显示翻译内容和检测到的语言。 
-  * 调用文本翻译 API 的 `Translate` 方法来翻译 `TextToTranslate` 中的文本。 此调用还包括使用下拉菜单选择的 `to` 和 `from` 语言。
-  * 调用文本翻译 API 的 `Detect` 方法来确定 `TextToTranslate` 的文本语言。
+* 启动程序并实例化 `MainWindow` 时，将调用“翻译”的 `Languages` 方法来检索和填充语言选择下拉菜单。 此操作只会在每个会话开始时发生一次。
+* 单击“翻译”按钮时，将检索用户选择的语言和文本、针对输入执行拼写检查，然后向用户显示翻译内容和检测到的语言。
+  * 调用“翻译”的 `Translate` 方法来翻译 `TextToTranslate` 中的文本。 此调用还包括使用下拉菜单选择的 `to` 和 `from` 语言。
+  * 调用“翻译”的 `Detect` 方法来确定 `TextToTranslate` 的文本语言。
   * 使用必应拼写检查来验证 `TextToTranslate` 并调整拼写错误。
 
-整个项目封装在 `MainWindow : Window` 类中。 让我们先添加代码以设置订阅密钥、为文本翻译和必应拼写检查声明终结点，并初始化应用。
+整个项目封装在 `MainWindow : Window` 类中。 让我们先添加代码以设置订阅密钥、为“翻译”和“必应拼写检查”声明终结点，并初始化应用。
 
 1. 在 Visual Studio 中，选择 `MainWindow.xaml.cs` 对应的选项卡。
 1. 将预先填充的 `using` 语句替换为以下内容。  
@@ -202,7 +202,7 @@ ms.locfileid: "77118608"
        // This sample uses the Cognitive Services subscription key for all services. To learn more about
        // authentication options, see: https://docs.microsoft.com/azure/cognitive-services/authentication.
        const string COGNITIVE_SERVICES_KEY = "YOUR_COG_SERVICES_KEY";
-       // Endpoints for Translator Text and Bing Spell Check
+       // Endpoints for Translator and Bing Spell Check
        public static readonly string TEXT_TRANSLATION_API_ENDPOINT = "https://api.cognitive.microsofttranslator.com/{0}?api-version=3.0";
        const string BING_SPELL_CHECK_API_ENDPOINT = "https://westus.api.cognitive.microsoft.com/bing/v7.0/spellcheck/";
        // An array of language codes
@@ -263,7 +263,7 @@ ms.locfileid: "77118608"
 
 ## <a name="get-supported-languages"></a>获取支持的语言
 
-文本翻译 API 目前支持 60 多种语言。 由于支持的新语言会不会增加，我们建议调用文本翻译公开的语言资源，而不要对应用中的语言列表进行硬编码。
+“翻译”目前支持 60 多种语言。 由于支持的新语言会不断增加，建议调用“翻译”公开的语言资源，而不要对应用中的语言列表进行硬编码。
 
 在本部分，我们将对语言资源创建 `GET` 请求，并指定我们希望提供可用于翻译的语言列表。
 
@@ -328,7 +328,7 @@ ms.locfileid: "77118608"
 
 ## <a name="populate-language-drop-down-menus"></a>填充语言下拉菜单
 
-用户界面是使用 XAML 定义的，因此除了调用 `InitializeComponent()` 以外，不需要执行过多的操作即可对其进行设置。 需要做的一件事是将友好的语言名称添加到“翻译源语言”和“翻译目标语言”下拉菜单。   `PopulateLanguageMenus()` 方法用于添加这些名称。
+用户界面是使用 XAML 定义的，因此除了调用 `InitializeComponent()` 以外，不需要执行过多的操作即可对其进行设置。 需要做的一件事是将友好的语言名称添加到“翻译源语言”和“翻译目标语言”下拉菜单。  `PopulateLanguageMenus()` 方法用于添加这些名称。
 
 1. 在 Visual Studio 中，打开 `MainWindow.xaml.cs` 对应的选项卡。
 2. 将以下代码添加到项目中的 `GetLanguagesForTranslate()` 方法下面：
@@ -353,16 +353,16 @@ ms.locfileid: "77118608"
    // In the following sections, we'll add code below this.
    ```
 
-此方法循环访问 `languageCodesAndTitles` 字典并将每个密钥添加到两个菜单。 填充菜单后，默认的源语言和目标语言将分别设置为“检测”和“英语”。  
+此方法循环访问 `languageCodesAndTitles` 字典并将每个密钥添加到两个菜单。 填充菜单后，默认的源语言和目标语言将分别设置为“检测”和“英语”。 
 
 > [!TIP]
-> 如果没有为菜单设置默认选择，则用户可以单击“翻译”  而无需选择“目标语言”或“源语言”。 默认设置消除了处理此问题的需要。
+> 如果没有为菜单设置默认选择，则用户可以单击“翻译”而无需选择“目标语言”或“源语言”。 默认设置消除了处理此问题的需要。
 
-初始化 `MainWindow` 并创建用户界面后，只有在单击“翻译”按钮之后，此代码才会运行。 
+初始化 `MainWindow` 并创建用户界面后，只有在单击“翻译”按钮之后，此代码才会运行。
 
 ## <a name="detect-language-of-source-text"></a>检测源文本的语言
 
-现在，我们将创建一个方法用于通过文本翻译 API 检测源文本（在文本区域中输入的文本）的语言。 此请求返回的值将在稍后的翻译请求中使用。
+现在，我们将创建一个方法用于通过“翻译”检测源文本（在文本区域中输入的文本）的语言。 此请求返回的值将在稍后的翻译请求中使用。
 
 1. 在 Visual Studio 中，打开 `MainWindow.xaml.cs` 对应的选项卡。
 2. 将以下代码添加到项目中的 `PopulateLanguageMenus()` 方法下面：
@@ -372,7 +372,7 @@ ms.locfileid: "77118608"
    {
        string detectUri = string.Format(TEXT_TRANSLATION_API_ENDPOINT ,"detect");
 
-       // Create request to Detect languages with Translator Text
+       // Create request to Detect languages with Translator
        HttpWebRequest detectLanguageWebRequest = (HttpWebRequest)WebRequest.Create(detectUri);
        detectLanguageWebRequest.Headers.Add("Ocp-Apim-Subscription-Key", COGNITIVE_SERVICES_KEY);
        detectLanguageWebRequest.Headers.Add("Ocp-Apim-Subscription-Region", "westus");
@@ -418,7 +418,7 @@ ms.locfileid: "77118608"
 
 ## <a name="spell-check-the-source-text"></a>对源文本执行拼写检查
 
-现在，我们将创建一个方法，用于通过必应拼写检查 API 对源文本执行拼写检查。 拼写检查可以确保文本翻译 API 返回准确的翻译。 单击“翻译”按钮时，对源文本所做的任何更正将连同翻译请求一起传递。 
+现在，我们将创建一个方法，用于通过必应拼写检查 API 对源文本执行拼写检查。 拼写检查可以确保“翻译”返回准确的翻译。 单击“翻译”按钮时，对源文本所做的任何更正将连同翻译请求一起传递。
 
 1. 在 Visual Studio 中，打开 `MainWindow.xaml.cs` 对应的选项卡。
 2. 将以下代码添加到项目中的 `DetectLanguage()` 方法下面：
@@ -482,7 +482,7 @@ private string CorrectSpelling(string text)
 
 ## <a name="translate-text-on-click"></a>单击后翻译文本
 
-要做的最后一件事是，创建一个在用户界面中单击“翻译”按钮时要调用的方法。 
+要做的最后一件事是，创建一个在用户界面中单击“翻译”按钮时要调用的方法。
 
 1. 在 Visual Studio 中，打开 `MainWindow.xaml.cs` 对应的选项卡。
 1. 将以下代码添加到项目中的 `CorrectSpelling()` 方法下面并保存：  
@@ -559,7 +559,7 @@ private string CorrectSpelling(string text)
    }
    ```
 
-第一步是获取“源”和“目标”语言，以及用户在窗体中输入的文本。 如果源语言设置为“检测”，则调用 `DetectLanguage()` 来确定源文本的语言。  文本可能采用了翻译 API 不支持的语言。 在这种情况下，会显示一条消息来通知用户，并返回且不翻译文本。
+第一步是获取“源”和“目标”语言，以及用户在窗体中输入的文本。 如果源语言设置为“检测”，则调用 `DetectLanguage()` 来确定源文本的语言。 文本可能采用了“翻译”不支持的语言。 在这种情况下，会显示一条消息来通知用户，并返回且不翻译文本。
 
 如果源语言是英语（无论是指定的还是检测到的），将使用 `CorrectSpelling()` 进行文本拼写检查并应用任何更正。 更正的文本将添加回到文本区域，使用户能够看到已做出更正。
 
@@ -569,7 +569,7 @@ private string CorrectSpelling(string text)
 
 ## <a name="run-your-wpf-app"></a>运行 WPF 应用
 
-现已使用 WPF 生成了一个可正常运行的翻译应用。 若要运行该应用，请在 Visual Studio 中单击“启动”按钮。 
+现已使用 WPF 生成了一个可正常运行的翻译应用。 若要运行该应用，请在 Visual Studio 中单击“启动”按钮。
 
 ## <a name="source-code"></a>源代码
 
@@ -580,4 +580,4 @@ private string CorrectSpelling(string text)
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [Microsoft 文本翻译 API 参考](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
+> [Microsoft 翻译参考](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)

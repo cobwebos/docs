@@ -10,19 +10,18 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 27e6c7beb8c88a29b90b30e0c77e35e493f2480a
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 5c6580d4fe7431c942ec4886b9dafc6148635b18
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690903"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585362"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>什么是 Azure Synapse Analytics（以前称为 SQL DW）？
 
 > [!NOTE] 
-> 通过[请求访问 Azure Synapse（工作区预览版）](https://aka.ms/synapsepreview)，试用最新的 Azure Synapse 功能，如工作区、Spark、按需 SQL 版本和集成 Synapse Studio 体验。 
->
 >浏览 [Azure Synapse（工作区预览版）文档](../overview-what-is.md)。
+>
 
 Azure Synapse 是一种分析服务，它将企业数据仓库和大数据分析结合在一起。 借助它可以使用无服务器的按需资源或预配资源，任意执行自己定义的大规模数据查询。 Azure Synapse 将这两个领域结合在一起，以统一的体验引入、准备、管理和提供数据，以满足即时 BI 和机器学习的需求。
 
@@ -30,12 +29,10 @@ Azure Synapse 包含四个组件：
 
 - Synapse SQL：基于 T-SQL 的完整分析 - 正式发布
   - SQL 池（按预配的 DWU 付费）
-  - SQL 随选（按处理的 TB 付费）-（预览）
+  - SQL 按需（按处理的 TB 付费）（预览）
 - Spark：深度集成的 Apache Spark（预览）
 - Synapse 管道：混合数据集成（预览）
-- 工作室：统一的用户体验。  （预览版）
-
-
+- 工作室：统一的用户体验。 （预览版）
 
 ## <a name="synapse-sql-pool-in-azure-synapse"></a>Azure Synapse 中的 Synapse SQL 池
 

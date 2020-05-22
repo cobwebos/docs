@@ -1,6 +1,6 @@
 ---
 title: 分布式表设计指南
-description: 用于在 Synapse SQL 池中设计哈希分布式和轮循机制分布式表的建议。
+description: 有关在 Synapse SQL 池中设计哈希分布式表和轮循机制分布式表的一些建议。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 04255fb6fdf83e7249fad01c75425943b580393c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 599514f6e7b97208194fc4c1660712f4d5e0c4cb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80742869"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585345"
 ---
-# <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>用于在 Synapse SQL 池中设计分布式表的指南
+# <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>在 Synapse SQL 池中设计分布式表的指南
 
-用于在 Synapse SQL 池中设计哈希分布式和轮循机制分布式表的建议。
+在 Synapse SQL 池中设计哈希分布式表和轮循机制分布式表的一些建议。
 
-本文假设你熟悉 Synapse SQL 池中的数据分发和数据移动概念。有关详细信息，请参阅[Azure Synapse Analytics 大规模并行处理（MPP）体系结构](massively-parallel-processing-mpp-architecture.md)。
+本文要求读者熟悉 Synapse SQL 池中的数据分布和数据移动概念。  有关详细信息，请参阅 [Azure Synapse Analytics 大规模并行处理 (MPP) 体系结构](massively-parallel-processing-mpp-architecture.md)。
 
 ## <a name="what-is-a-distributed-table"></a>什么是分布式表？
 
@@ -32,11 +32,11 @@ ms.locfileid: "80742869"
 
 另一个表存储选项是跨所有计算节点复制一个小型表。 有关详细信息，请参阅[复制表的设计准则](design-guidance-for-replicated-tables.md)。 若要在这三个选项之间快速选择其一，请参阅[表概述](sql-data-warehouse-tables-overview.md)中的分布式表。
 
-作为表设计的一部分，请尽可能多地去了解你的数据及其查询方式。  例如，请考虑以下问题：
+在设计表的过程中，尽可能多地了解数据以及数据查询方式。  例如，考虑以下问题：
 
 - 表有多大？
 - 表的刷新频率是多少？
-- Synapse SQL 池中是否有事实数据表和维度表？
+- Synapse SQL 池中有事实数据表和维度表吗？
 
 ### <a name="hash-distributed"></a>哈希分布
 
@@ -44,14 +44,14 @@ ms.locfileid: "80742869"
 
 ![分布式表](./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png "分布式表")  
 
-由于相同的值始终哈希处理到相同的分布区，因此，数据仓库本身就具有行位置方面的信息。 在 Synapse SQL 池中，此知识用于最大程度地减少查询期间的数据移动，从而提高查询性能。
+由于相同的值始终哈希处理到相同的分布区，因此，数据仓库本身就具有行位置方面的信息。 在 Synapse SQL 池中，利用此信息可最大程度地减少查询期间的数据移动，从而提高查询性能。
 
 哈希分布表适用于星型架构中的大型事实数据表。 它们可以包含大量行，但仍实现高性能。 当然，用户应该了解一些设计注意事项，它们有助于获得分布式系统本应具有的性能。 本文所述的选择合适的分布列就是其中之一。
 
 在以下情况下，考虑使用哈希分布表：
 
 - 磁盘上的表大小超过 2 GB。
-- 表具有频繁的插入、更新和删除操作。
+- 对表进行频繁的插入、更新和删除操作。
 
 ### <a name="round-robin-distributed"></a>轮循机制分布
 
@@ -63,12 +63,12 @@ ms.locfileid: "80742869"
 
 - 在最开始将其用作一个简单的起点，因为该分布是默认选项
 - 没有明显的联接键时
-- 没有合适的候选列可供哈希分布表时
+- 没有合适的候选列对表进行哈希分布时
 - 表没有与其他表共享通用的联接键时
 - 该联接比查询中的其他联接更不重要时
 - 表是临时过渡表时
 
-教程[Load 纽约出租车数据](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse)提供了将数据加载到轮循机制临时表的示例。
+教程[加载纽约出租车数据](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse)提供了将数据加载到轮循机制临时表的示例。
 
 ## <a name="choosing-a-distribution-column"></a>选择分布列
 
@@ -92,11 +92,11 @@ WITH
 ;
 ```
 
-选择分布列是一个重要的设计决策，因为此列中的值确定行的分布方式。 最佳选择取决于多种因素，通常需要对各方面进行权衡。 但是，如果第一次未选择最合适的列，可以使用 [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 重新创建具有不同分布列的表。
+可以更新分布列中存储的数据。 对分布列中的数据进行更新可能导致数据无序操作。
 
-### <a name="choose-a-distribution-column-that-does-not-require-updates"></a>选择不需要更新的分布列
+选择分布列是一个重要的设计决策，因为此列中的值确定行的分布方式。 最佳选择取决于多种因素，通常需要对各方面进行权衡。 选择分布列后，将无法对其进行更改。  
 
-除非删除行并插入包含更新值的新行，否则无法更新分布列。 因此，应选择包含静态值的列。
+如果第一次未选择最合适的列，可以使用 [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 重新创建具有不同分布列的表。
 
 ### <a name="choose-a-distribution-column-with-data-that-distributes-evenly"></a>选择数据均衡分布的分布列
 
@@ -113,7 +113,7 @@ WITH
 
 ### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>选择能最大程度减少数据移动的分布列
 
-为了获取正确的查询结果，查询可能将数据从一个计算节点移至另一个计算节点。 当查询对分布式表执行联接和聚合操作时，通常会发生数据移动。 选择有助于最大程度减少数据移动的分布列是优化 Synapse SQL 池性能的最重要策略之一。
+为了获取正确的查询结果，查询可能将数据从一个计算节点移至另一个计算节点。 当查询对分布式表执行联接和聚合操作时，通常会发生数据移动。 选择能最大程度减少数据移动的分布列，这是优化 Synapse SQL 池性能最重要的策略之一。
 
 若要最大程度减少数据移动，请选择符合以下条件的分布列：
 
@@ -166,7 +166,7 @@ order by two_part_name, row_count
 
 若要避免在联接过程中移动数据，应遵循以下做法：
 
-- 参与联接的列的相关表必须哈希分布在 **一个** 联接列中。
+- 参与联接的列的相关表必须哈希分布在**一个**联接列中。
 - 两个表之间联接列的数据类型必须匹配。
 - 必须使用 equals 运算符联接列。
 - 联接类型不能是 `CROSS JOIN`。
@@ -225,5 +225,5 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 若要创建分布式表，请使用以下语句之一：
 
-- [CREATE TABLE （Synapse SQL 池）](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [CREATE TABLE AS SELECT （Synapse SQL 池）](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE（Synapse SQL 池）](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE AS SELECT（Synapse SQL 池）](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

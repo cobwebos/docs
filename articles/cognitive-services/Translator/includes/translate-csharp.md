@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 64a934196bb964561f36b9d95a2467b149847225
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 77242ab35416fb24a3a815e7137280e5f3698c30
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69906718"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586591"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
@@ -59,11 +59,11 @@ using Newtonsoft.Json;
 
 ## <a name="create-classes-for-the-json-response"></a>为 JSON 响应创建类
 
-接下来，我们将创建一组类，在反序列化文本翻译 API 返回的 JSON 响应时使用。
+接下来，我们将创建一组类，在反序列化翻译返回的 JSON 响应时使用。
 
 ```csharp
 /// <summary>
-/// The C# classes that represents the JSON returned by the Translator Text API.
+/// The C# classes that represents the JSON returned by the Translator.
 /// </summary>
 public class TranslationResult
 {
@@ -136,7 +136,7 @@ static Program()
 
 ```csharp
 // This sample requires C# 7.1 or later for async/await.
-// Async call to the Translator Text API
+// Async call to the Translator
 static public async Task TranslateTextRequest(string subscriptionKey, string endpoint, string route, string inputText)
 {
   /*
@@ -212,7 +212,7 @@ foreach (TranslationResult o in deserializedOutput)
 
 ## <a name="put-it-all-together"></a>将其放在一起
 
-最后一步是在 `TranslateTextRequest()` 函数中调用 `Main`。 在此示例中，我们将翻译为德语 (`de`)、意大利语 (`it`)、日语 (`ja`) 和泰语 (`th`)。 找到 `static void Main(string[] args)` 并将其替换为以下代码：
+最后一步是在 `Main` 函数中调用 `TranslateTextRequest()`。 在此示例中，我们将翻译为德语 (`de`)、意大利语 (`it`)、日语 (`ja`) 和泰语 (`th`)。 找到 `static void Main(string[] args)` 并将其替换为以下代码：
 
 ```csharp
 static async Task Main(string[] args)
@@ -293,7 +293,7 @@ Translated to th: หวัดดีชาวโลก!
 
 ## <a name="next-steps"></a>后续步骤
 
-查看 API 参考，了解使用文本翻译 API 可以执行的所有操作。
+查看 API 参考，了解使用“翻译”可以执行的所有操作。
 
 > [!div class="nextstepaction"]
 > [API 参考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 3d92d3f959e2ad44daa82d6b609b9357cee969c9
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: dc8afd5a61a40b14792bb564d394604010718888
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69906863"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586694"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
@@ -59,11 +59,11 @@ using Newtonsoft.Json;
 
 ## <a name="create-classes-for-the-json-response"></a>为 JSON 响应创建类
 
-接下来，我们将创建一个在反序列化由文本翻译 API 返回的 JSON 响应时使用的类。
+接下来，我们将创建一个类，在反序列化由“翻译”返回的 JSON 响应时使用。
 
 ```csharp
 /// <summary>
-/// The C# classes that represents the JSON returned by the Translator Text API.
+/// The C# classes that represents the JSON returned by the Translator.
 /// </summary>
 public class BreakSentenceResult
 {
@@ -177,7 +177,7 @@ foreach (BreakSentenceResult o in deserializedOutput)
 
 ## <a name="put-it-all-together"></a>将其放在一起
 
-最后一步是在 `BreakSentenceRequest()` 函数中调用 `Main`。 找到 `static void Main(string[] args)` 并将其替换为以下代码：
+最后一步是在 `Main` 函数中调用 `BreakSentenceRequest()`。 找到 `static void Main(string[] args)` 并将其替换为以下代码：
 
 ```csharp
 static async Task Main(string[] args)
@@ -234,7 +234,7 @@ The first sentence length is: 25
 
 ## <a name="next-steps"></a>后续步骤
 
-查看 API 参考，了解使用文本翻译 API 可以执行的所有操作。
+查看 API 参考，了解使用“翻译”可以执行的所有操作。
 
 > [!div class="nextstepaction"]
 > [API 参考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

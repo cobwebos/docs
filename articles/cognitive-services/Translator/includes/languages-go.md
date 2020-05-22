@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 05355ad37183d4c14cb8f6598141292ded0386d9
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: edde734409d064f1bff0212a1cbaecf136206772
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69906975"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586831"
 ---
 [!INCLUDE [Prerequisites](prerequisites-go.md)]
 
@@ -34,9 +34,9 @@ import (
 
 ## <a name="create-the-main-function"></a>创建 main 函数
 
-让我们为应用程序创建 main 函数。 你会注意到，它是单行代码。 这是因为，我们要创建的单一函数用于为文本翻译获取和输出受支持语言的列表。
+让我们为应用程序创建 main 函数。 你会注意到，它是单行代码。 这是因为，我们要创建的单一函数用于为翻译获取和输出受支持语言的列表。
 
-此示例将尝试从环境变量 `TRANSLATOR_TEXT_ENDPOINT` 读取文本翻译终结点。 如果不熟悉环境变量，则可将 `endpoint` 设置为字符串并注释掉条件语句。
+此示例将尝试从环境变量 `TRANSLATOR_TEXT_ENDPOINT` 读取“翻译”终结点。 如果不熟悉环境变量，则可将 `endpoint` 设置为字符串并注释掉条件语句。
 
 将以下代码复制到项目中：
 
@@ -76,11 +76,11 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> 有关终结点、路由和请求参数的详细信息，请参阅[文本翻译 API 3.0：语言](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages)。
+> 有关终结点、路由和请求参数的详细信息，请参阅[翻译 3.0：语言](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages)。
 
 ## <a name="build-the-request"></a>生成请求
 
-将请求正文编码为 JSON 后，可以生成 POST 请求并调用文本翻译 API。
+将请求正文编码为 JSON 后，可以生成 POST 请求并调用“翻译”。
 
 ```go
 // Build the HTTP GET request
@@ -91,7 +91,7 @@ if err != nil {
 // Add required headers
 req.Header.Add("Content-Type", "application/json")
 
-// Call the Translator Text API
+// Call the Translator
 res, err := http.DefaultClient.Do(req)
 if err != nil {
     log.Fatal(err)
@@ -117,7 +117,7 @@ fmt.Printf("%s\n", prettyJSON)
 
 ## <a name="put-it-all-together"></a>将其放在一起
 
-就是这样，你已构建了一个简单的程序。该程序可以调用文本翻译 API 并返回 JSON 响应。 现在，可以运行该程序了：
+就是这样，你已构建了一个简单的程序。该程序可以调用“翻译”并返回 JSON 响应。 现在，可以运行该程序了：
 
 ```console
 go run get-languages.go
@@ -217,7 +217,7 @@ go run get-languages.go
 
 ## <a name="next-steps"></a>后续步骤
 
-查看 API 参考，了解使用文本翻译 API 可以执行的所有操作。
+查看 API 参考，了解使用“翻译”可以执行的所有操作。
 
 > [!div class="nextstepaction"]
 > [API 参考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

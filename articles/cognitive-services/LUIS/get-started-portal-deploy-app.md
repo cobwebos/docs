@@ -2,13 +2,13 @@
 title: 快速入门：通过 LUIS 门户部署应用
 description: 本快速入门介绍如何通过创建预测终结点资源、分配资源、训练和发布应用来部署应用。
 ms.topic: quickstart
-ms.date: 04/06/2020
-ms.openlocfilehash: aaf86766c2357c5382b78cd4a35fd4b159e5c0f3
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.date: 05/06/2020
+ms.openlocfilehash: 9b22f1eda822b5354f0b434a04c2ea03e4c0ff2a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756301"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585044"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>快速入门：在 LUIS 门户中部署应用
 
@@ -30,15 +30,15 @@ LUIS 应用准备好将话语预测返回到客户端应用程序（例如聊天
 
 每次为 LUIS 创建新的创作或查询预测资源时，都需要将资源分配给 LUIS 应用。 分配后，除非创建新资源，否则无需再次执行此步骤。 可以创建新资源来扩展应用的区域或支持更多预测查询。
 
-1. 登录到[预览版 LUIS 门户](https://preview.luis.ai)，从应用列表中选择“myEnglishApp”应用  。
+1. 登录 [LUIS 门户](https://www.luis.ai)，从应用列表中选择“myEnglishApp”应用。
 
-1. 在右上角菜单中选择“管理”  ，然后选择“Azure 资源”  。
+1. 在右上角菜单中选择“管理”，然后选择“Azure 资源”。
 
-1. 若要添加 LUIS，请选择“添加预测资源”  。
+1. 若要添加 LUIS，请选择“添加预测资源”。
 
     ![若要添加 LUIS 预测资源，请选择“添加预测资源”](./media/get-started-portal-deploy-app/azure-resources-add-prediction-resource.png)
 
-1. 选择租户、订阅和资源名称。 选择“分配资源”。 
+1. 选择租户、订阅和资源名称。 选择“分配资源”。
 
    ![将资源分配给应用](./media/get-started-portal-deploy-app/assign-resource.png)
 
@@ -47,7 +47,7 @@ LUIS 应用准备好将话语预测返回到客户端应用程序（例如聊天
 1. 在表中找到新预测资源对应的新行，并复制终结点 URL。 它构造正确，可以向用于预测的 LUIS API 终结点发出 `HTTP GET` 请求。
 
 > [!TIP]
-> 如果要使用主动学习来改善 LUIS 应用，请选择“更改查询参数”，  然后选择“保存日志”  。 此操作通过添加 `log=true` 查询字符串参数来更改示例 URL。 对运行时终结点进行预测查询时，请复制并使用更改后的示例查询 URL。
+> 如果要使用主动学习来改善 LUIS 应用，请选择“更改查询参数”，然后选择“保存日志”。 此操作通过添加 `log=true` 查询字符串参数来更改示例 URL。 对运行时终结点进行预测查询时，请复制并使用更改后的示例查询 URL。
 
 ## <a name="train-the-app"></a>训练应用
 
@@ -59,7 +59,7 @@ LUIS 应用准备好将话语预测返回到客户端应用程序（例如聊天
 
 ## <a name="prediction-endpoint-request"></a>预测终结点请求
 
-在预览门户中，URL 末尾的 `query=` 为用户言语追加到 GET 请求的位置。 在 `query=` 之后，输入在上一个快速入门结束时使用的相同用户言语：
+在门户中，URL 末尾的 `query=` 为用户言语追加到 GET 请求的位置。 在 `query=` 之后，输入在上一个快速入门结束时使用的相同用户言语：
 
 ```Is there a form named hrf-234098```
 
@@ -107,13 +107,13 @@ LUIS 应用准备好将话语预测返回到客户端应用程序（例如聊天
 }
 ```
 
-若要在测试窗格中看到相同级别的信息，必须发布应用。 发布应用后，在测试窗格中选择“与已发布版本进行比较”  。 在发布的测试窗格中使用“显示 JSON 视图”，以查看与上一步相同的 JSON  。 这样，就可以将当前所用应用的更改与已发布到终结点的应用的更改进行比较。
+若要在测试窗格中看到相同级别的信息，必须发布应用。 发布应用后，在测试窗格中选择“与已发布版本进行比较”。 在发布的测试窗格中使用“显示 JSON 视图”，以查看与上一步相同的 JSON。 这样，就可以将当前所用应用的更改与已发布到终结点的应用的更改进行比较。
 
 [![比较当前正在编辑的应用和已发布版本的应用](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
 
 ## <a name="clean-up-resources"></a>清理资源
 
-完成此快速入门后，从顶部导航菜单中选择“我的应用”  。 在列表中选中应用的复选框，然后在列表上方上下文工具栏中选择“删除”  。
+完成此快速入门后，从顶部导航菜单中选择“我的应用”。 在列表中选中应用的复选框，然后在列表上方上下文工具栏中选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

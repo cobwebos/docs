@@ -1,7 +1,7 @@
 ---
-title: 快速入门：使用双语字典查找字词 - 文本翻译 API
+title: 快速入门：使用双语字典查找字词 - 翻译
 titleSuffix: Azure Cognitive Services
-description: 本快速入门介绍如何使用文本翻译 API 获取术语的备用翻译，以及这些备用翻译的使用示例。
+description: 本快速入门介绍如何使用“翻译”获取术语的备用翻译，以及这些备用翻译的使用示例。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 07fd984f72628ac4f6d6736bf0ab903619e96c72
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: fe2f4f2bea52650c2baa2ac3380b5b92f01c15eb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77525152"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586931"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary"></a>快速入门：使用双语字典查找字词
 
-本快速入门介绍如何使用文本翻译 API 获取术语的备用翻译，以及这些备用翻译的使用示例。
+本快速入门介绍如何使用“翻译”获取术语的备用翻译，以及这些备用翻译的使用示例。
 
-此快速入门需要包含文本翻译资源的 [Azure 认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有帐户，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/)获取订阅密钥。
+此快速入门需要包含“翻译”资源的 [Azure 认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有帐户，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/)获取订阅密钥。
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](includes/dictionary-csharp.md)]

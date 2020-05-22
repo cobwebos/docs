@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: a22ae3b4b11a4eac7da147cf3ad896bbad435448
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c86a387e66cce914f9d0b92793893b0cba08e7bc
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370181"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587081"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>快速入门：生成、部署和使用翻译的自定义模型
 
@@ -24,13 +24,13 @@ ms.locfileid: "80370181"
 
 1. 若要使用[自定义翻译](https://portal.customtranslator.azure.ai)门户，需要通过 [Microsoft 帐户](https://signup.live.com)或 [Azure AD 帐户](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)（在 Azure 上托管的组织帐户）进行登录。
 
-2. 通过 Azure 门户完成的对文本翻译 API 的订阅。 需要文本翻译 API 订阅密钥才能与自定义翻译中的工作区相关联。 请参阅[如何注册文本翻译 API](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup)。
+2. 通过 Azure 门户完成的对“翻译”的订阅。 需要“翻译”订阅密钥才能与自定义翻译器中的工作区相关联。 请参阅[如何注册“翻译”](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup)。
 
 3. 当你同时具备上述两个条件时，请登录到[自定义翻译器](https://portal.customtranslator.azure.ai)门户，以创建工作区、项目、上传文件和创建/部署模型。
 
 ## <a name="create-a-workspace"></a>创建工作区
 
-如果你是第一次使用，将要求你同意服务条款，以创建工作区并将工作区与 Microsoft 文本翻译 API 订阅相关联。
+如果你是第一次使用，将要求你同意服务条款，以创建工作区并将工作区与“翻译”订阅相关联。
 
 ![创建工作区](media/quickstart/terms-of-service.png)
 ![创建工作区](media/quickstart/create-workspace-1.png)
@@ -40,7 +40,7 @@ ms.locfileid: "80370181"
 ![创建工作区](media/quickstart/create-workspace-5.png)
 ![创建工作区](media/quickstart/create-workspace-6.png)
 
-以后访问“自定义翻译器”门户时，请导航到“设置”页，在这里你可以管理工作区、创建更多工作区、将 Microsoft 文本翻译 API 订阅密钥与工作区关联、添加共同所有者和更改订阅密钥。
+以后访问“自定义翻译器”门户时，请导航到“设置”页，在这里你可以管理工作区、创建更多工作区、将“翻译”订阅密钥与工作区关联、添加共同所有者和更改订阅密钥。
 
 ## <a name="create-a-project"></a>创建一个项目
 
@@ -83,7 +83,7 @@ ms.locfileid: "80370181"
 
 ## <a name="use-a-deployed-model"></a>使用已部署的模型
 
-部署的模型可以通过 Microsoft 文本[翻译 API V3 进行访问，方法是指定 CategoryID](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)。 有关文本翻译 API 的详细信息，可查看 [API 参考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)网页。
+部署的模型可以通过 Microsoft 文本[翻译 API V3 进行访问，方法是指定 CategoryID](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)。 有关“翻译”的详细信息，可查看 [API 参考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)网页。
 
 ## <a name="next-steps"></a>后续步骤
 
