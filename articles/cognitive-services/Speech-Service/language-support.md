@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 93dc831fa631a28b918ef5015a3c9ff107d41541
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 423d65cc77cb06a6084ad9ad56f3d7274e057ffb
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726071"
+ms.locfileid: "83746506"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>语音服务的语言和语音支持
 
@@ -140,7 +140,7 @@ Microsoft Speech SDK 和 REST API 均支持这些语音，每种语音支持区�
 | <sup>1</sup>`ar-EG` | 阿拉伯语（埃及） | 女 | "ar-EG-Hoda" |
 | `ar-SA` | 阿拉伯语（沙特阿拉伯） | 男 | "ar-SA-Naayf" |
 | `bg-BG` | 保加利亚语 | 男 |  "bg-BG-Ivan" |
-| `ca-ES` | 加泰罗尼亚语(西班牙) | 女 |  "ca-ES-HerenaRUS" |
+| `ca-ES` | 加泰罗尼亚语 | 女 |  "ca-ES-HerenaRUS" |
 | `cs-CZ` | 捷克语 | 男 | "cs-CZ-Jakub" |
 | `da-DK` | 丹麦语 | 女 |  "da-DK-HelleRUS" |
 | `de-AT` | 德语（奥地利） | 男 | "de-AT-Michael" |

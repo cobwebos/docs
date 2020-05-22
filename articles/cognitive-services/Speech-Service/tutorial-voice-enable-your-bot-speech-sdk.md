@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: cb016ec490dc14cbde1a1cb3f34caf39e4740961
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: c55d81db848dcb1aebe9dacb03387565b3d8db48
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732365"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745613"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>教程：使用语音 SDK 实现机器人的语音
 
@@ -71,7 +71,7 @@ ms.locfileid: "82732365"
    * 输入**资源组**的名称。 建议**SpeechEchoBotTutorial**。
    * 从 "**区域**" 下拉箭头中，选择 "**美国西部**"。
 1. 单击“审阅并创建”****。 应该会看到一个横幅，其中显示了已**通过的验证**。
-1. 单击 **“创建”** 。 创建资源组可能需要几分钟的时间。
+1. 单击**创建**。 创建资源组可能需要几分钟的时间。
 1. 与稍后在本教程中创建的资源一样，最好将此资源组固定到仪表板以便于访问。 如果要固定此资源组，请单击仪表板右上角的 "固定" 图标。
 
 ### <a name="choosing-an-azure-region"></a>选择 Azure 区域
@@ -121,7 +121,7 @@ ms.locfileid: "82732365"
    * 对于 "**区域**"，选择 "**美国西部**"。
    * 对于 "**定价层**"，请确保选择 "**标准 S1** "。 这应该是默认值。 如果不是这样，请确保将**操作系统**设置为**Windows** ，如上所述。
 5. 单击“审阅并创建”****。 应该会看到一个横幅，其中显示了已**通过的验证**。
-6. 单击 **“创建”** 。 创建资源组可能需要几分钟的时间。
+6. 单击**创建**。 创建资源组可能需要几分钟的时间。
 
 此时，请检查资源组（**SpeechEchoBotTutorial**）是否有两个资源：
 
@@ -146,7 +146,7 @@ ms.locfileid: "82732365"
    ```
 
 2. 启动 Visual Studio。
-3. 从工具栏中，选择 "**文件** > " "**打开** > **项目/解决方案**"，然后打开 Echo 机器人项目解决方案：
+3. 从工具栏中，选择 "**文件**" "  >  **打开**  >  **项目/解决方案**"，然后打开 Echo 机器人项目解决方案：
 
    ```
    samples\csharp_dotnetcore\02.echo-bot\EchoBot.sln
@@ -163,7 +163,7 @@ ms.locfileid: "82732365"
 
 1. 安装[机器人 Framework 模拟器](https://github.com/Microsoft/BotFramework-Emulator/releases/latest)版本4.3.0 或更高版本
 2. 启动 Bot Framework 模拟器并打开机器人：
-   * **文件** -> **打开机器人**。
+   * **文件**  -> **打开机器人**。
 3. 输入机器人的 URL。 例如：
 
    ```
@@ -178,7 +178,7 @@ ms.locfileid: "82732365"
 下一步是将回显机器人部署到 Azure。 可以通过多种方法来部署机器人，但在本教程中，我们将重点介绍如何直接从 Visual Studio 进行发布。
 
 > [!NOTE]
-> 或者，你可以使用[Azure CLI](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli)和[部署模板](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog/csharp_dotnetcore/04.core-bot/deploymentTemplates)部署机器人。
+> 或者，你可以使用[Azure CLI](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli)和[部署模板](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/adaptive-dialog/03.core-bot)部署机器人。
 
 1. 在 Visual Studio 中，打开已配置为与直接线路语音通道一起使用的回响机器人：
 
@@ -221,7 +221,7 @@ ms.locfileid: "82732365"
 2. 在**Azure 服务**导航中的 "**设置**" 下，单击 "**配置**"。
 3. 选择 "**常规设置**" 选项卡。
 4. 找到 " **Web 套接字**" 的切换，并将其设置为 **"开**"。
-5. 单击“保存”  。
+5. 单击“保存” 。
 
 > [!TIP]
 > 您可以使用 Azure App Service 页顶部的控件来停止或重新启动该服务。 故障排除时，这可能很方便。
@@ -241,7 +241,7 @@ ms.locfileid: "82732365"
    * 对于 "**资源组**"，选择 " **SpeechEchoBotTutorial**"。
    * 对于 "**位置**"，请选择 "**美国西部**"。
      * 对于 "**定价层**"，请选择**F0**。
-     * 对于 "**消息传递终结点**"，请输入 web 应用的`/api/messages` URL，路径后面追加了路径。 例如：如果全局唯一的应用名称为**EchoBot20190805125647**，则消息传递终结点将为`https://EchoBot20190805125647.azurewebsites.net/api/messages/`：。
+     * 对于 "**消息传递终结点**"，请输入 web 应用的 URL， `/api/messages` 路径后面追加了路径。 例如：如果全局唯一的应用名称为**EchoBot20190805125647**，则消息传递终结点将为： `https://EchoBot20190805125647.azurewebsites.net/api/messages/` 。
      * 对于**application insights**，你可以将其设置为**Off**。 有关详细信息，请参阅[机器人分析](https://docs.microsoft.com/azure/bot-service/bot-service-manage-analytics?view=azure-bot-service-4.0)。
      * 忽略**自动创建应用 ID 和密码**。
 5. 在 "**机器人频道注册**" 边栏选项卡底部，单击 "**创建**"。
@@ -267,11 +267,11 @@ ms.locfileid: "82732365"
    * 查找**更多通道**，找到并单击 "**直接连线语音**"。
    * 查看标题为 "**配置直接线路语音**" 的页面上的文本，然后展开标记为 "认知服务帐户" 的下拉菜单。
    * 从菜单中选择先前创建的语音资源（例如**SpeechEchoBotTutorial**），将机器人关联到语音订阅密钥。
-   * 单击“保存”  。
+   * 单击“保存” 。
 
 1. 在**机器人管理**导航中，单击 "**设置**"。
    * 选中标记为**启用流式处理终结点**的框。 这是在机器人和直接线路语音通道之间启用基于 web 套接字构建的通信协议所必需的。
-   * 单击“保存”  。
+   * 单击“保存” 。
 
 > [!TIP]
 > 若要了解详细信息，请参阅[连接机器人以定向语音](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0)。 此页包含其他信息和已知问题。
@@ -309,7 +309,7 @@ Windows 语音助手客户端具有一个简单的 UI，可用于配置与机器
 
 ### <a name="view-bot-activities"></a>查看机器人活动
 
-每个机器人发送和接收**活动**消息。 在 Windows 语音助手客户端的 "**活动日志**" 窗口中，你将看到带时间戳的日志，其中包含客户端从机器人接收的每个活动。 还可以查看客户端使用[`DialogServiceConnector.SendActivityAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.sendactivityasync)方法发送到机器人的活动。 选择日志项时，它会将关联活动的详细信息显示为 JSON。
+每个机器人发送和接收**活动**消息。 在 Windows 语音助手客户端的 "**活动日志**" 窗口中，你将看到带时间戳的日志，其中包含客户端从机器人接收的每个活动。 还可以查看客户端使用方法发送到机器人的活动 [`DialogServiceConnector.SendActivityAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.sendactivityasync) 。 选择日志项时，它会将关联活动的详细信息显示为 JSON。
 
 下面是客户端收到的活动的示例 json：
 
@@ -351,7 +351,7 @@ Windows 语音助手客户端具有一个简单的 UI，可用于配置与机器
 
 ### <a name="view-client-source-code-for-calls-to-the-speech-sdk"></a>查看调用语音 SDK 的客户端源代码
 
-Windows 语音助手客户端使用包含语音 SDK 的 NuGet 包[cognitiveservices account。](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) 开始查看示例代码的一个好方法是在文件[`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs)中使用 InitSpeechConnector （）方法，该方法可创建这两个语音 SDK 对象：
+Windows 语音助手客户端使用包含语音 SDK 的 NuGet 包[cognitiveservices account。](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) 开始查看示例代码的一个好方法是在文件中使用 InitSpeechConnector （）方法 [`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs) ，该方法可创建这两个语音 SDK 对象：
 - [`DialogServiceConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconfig)-对于配置设置（例如，语音订阅密钥、密钥区域）
 - [`DialogServiceConnector`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.-ctor)-管理通道连接和客户端订阅事件，以便处理识别的语音和机器人响应。
 
@@ -367,8 +367,8 @@ Windows 语音助手客户端使用包含语音 SDK 的 NuGet 包[cognitiveservi
 按照以下步骤创建关键字模型，将 Windows 语音助手客户端配置为使用此模型，最后使用机器人进行测试。
 
 1. 按照这些说明[使用语音服务创建自定义关键字](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws)。
-2. 解压缩在上一步中下载的模型文件。 应为关键字命名。 正在查找名为`kws.table`的文件。
-3. 在 Windows 语音助手客户端中，找到 "**设置**" 菜单（查找右上方的齿轮图标）。 查找 "**模型文件路径**" 并输入步骤2中的`kws.table`文件的完整路径名称。
+2. 解压缩在上一步中下载的模型文件。 应为关键字命名。 正在查找名为的文件 `kws.table` 。
+3. 在 Windows 语音助手客户端中，找到 "**设置**" 菜单（查找右上方的齿轮图标）。 查找 "**模型文件路径**" 并输入 `kws.table` 步骤2中的文件的完整路径名称。
 4. 确保选中标记为 "**已启用**" 的框。 在复选框旁边应会看到此消息： "下次连接时将侦听关键字"。 如果提供了错误的文件或路径无效，应会看到一条错误消息。
 5. 输入语音**订阅密钥**、**订阅密钥区域**，然后单击 **"确定"** 以关闭 "**设置**" 菜单。
 6. 单击 "**重新连接**"。 应该会看到一条消息，其中显示： "新会话已启动-类型，按下麦克风按钮，或说关键字为"。 应用现在正在持续侦听。
@@ -384,18 +384,18 @@ Windows 语音助手客户端使用包含语音 SDK 的 NuGet 包[cognitiveservi
 
 在 Windows 语音助手客户端源代码中，查看以下文件以查看用于启用关键字检测的代码：
 
-1. [`VoiceAssistantClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/Models.cs)包括对语音 SDK 方法的调用， [`KeywordRecognitionModel.fromFile()`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?view=azure-node-latest#fromfile-string-)该方法用于实例化磁盘上的本地文件中的模型。
-1. [`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs)包括对语音 SDK 方法的调用[`DialogServiceConnector.StartKeywordRecognitionAsync()`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.startkeywordrecognitionasync)，该方法激活连续关键字检测。
+1. [`VoiceAssistantClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/Models.cs)包括对语音 SDK 方法的调用 [`KeywordRecognitionModel.fromFile()`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?view=azure-node-latest#fromfile-string-) ，该方法用于实例化磁盘上的本地文件中的模型。
+1. [`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs)包括对语音 SDK 方法的调用 [`DialogServiceConnector.StartKeywordRecognitionAsync()`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.startkeywordrecognitionasync) ，该方法激活连续关键字检测。
 
 ## <a name="optional-change-the-language-and-bot-voice"></a>可有可无更改语言和机器人声音
 
-你创建的机器人将使用默认的美国英语文本语音语音来侦听并响应英语。 但是，你并不局限于使用英语或默认语音。 在本部分中，你将了解如何更改机器人侦听和响应的语言。 你还将了解如何为该语言选择其他语音。
+你创建的机器人将侦听并响应英语，其中默认为美国英语文本语音。 但是，你并不局限于使用英语或默认语音。 在本部分中，你将了解如何更改机器人侦听和响应的语言。 你还将了解如何为该语言选择其他语音。
 
 ### <a name="change-the-language"></a>更改语言
 
 你可以从 "[语音到文本](language-support.md#speech-to-text)" 表中所述的任何一种语言中进行选择。 在下面的示例中，我们将语言更改为德语。
 
-1. 打开 Windows 语音助手客户端应用程序，单击 "设置" 按钮（右上角的齿轮图标），并`de-de`在 "语言" 字段中输入（这是 "[语音到文本](language-support.md#speech-to-text)" 表中提到的 "区域设置" 值）。 这将设置要识别的口述语言，并覆盖默认`en-us`语言。 这也指示 "直接线路语音频道" 使用默认的德语语音进行机器人回复。
+1. 打开 Windows 语音助手客户端应用程序，单击 "设置" 按钮（右上角的齿轮图标），并 `de-de` 在 "语言" 字段中输入（这是 "[语音到文本](language-support.md#speech-to-text)" 表中提到的 "区域设置" 值）。 这将设置要识别的口述语言，并覆盖默认语言 `en-us` 。 这也指示 "直接线路语音频道" 使用默认的德语语音进行机器人回复。
 2. 关闭 "设置" 页，然后单击 "重新连接" 按钮，建立与 echo bot 的新连接。
 3. 单击麦克风按钮，并口述德语短语。 你将看到已识别的文本，并且 echo bot 将用默认的德语语音进行回复。
 
@@ -403,7 +403,7 @@ Windows 语音助手客户端使用包含语音 SDK 的 NuGet 包[cognitiveservi
 
 如果机器人以[语音合成标记语言](speech-synthesis-markup.md)（SSML）而不是简单文本的形式指定答复，则可以选择文本到语音声音并控制发音。 Echo bot 不使用 SSML，但我们可以轻松修改代码来执行此操作。 在下面的示例中，我们将 SSML 添加到回响机器人回复，以便使用德语语音 Stefan Apollo （一种男语音）而不是默认的女性声音。 请参阅你的语言支持的[标准语音](language-support.md#standard-voices)和[神经声音](language-support.md#neural-voices)列表。
 
-1. 首先打开`samples\csharp_dotnetcore\02.echo-bot\echo-bot.cs`。
+1. 首先打开 `samples\csharp_dotnetcore\02.echo-bot\echo-bot.cs` 。
 2. 找到以下两行：
     ```csharp
     var replyText = $"Echo: {turnContext.Activity.Text}";
@@ -428,7 +428,7 @@ Windows 语音助手客户端使用包含语音 SDK 的 NuGet 包[cognitiveservi
 1. 在 "解决方案资源管理器" 窗口中，右键单击**EchoBot**项目，然后选择 "**发布**"。
 2. 以前的部署配置已作为默认值加载。 只需单击 "EchoBot20190805125647" 旁边**Web 部署的**"**发布**"。
 3. "**发布成功**" 消息将显示在 Visual Studio 的 "输出" 窗口中，并且网页将启动并显示消息 "机器人已就绪！"。
-4. 打开 Windows 语音助手客户端应用程序，单击 "设置" 按钮（右上角的齿轮图标），并确保在 "语言`de-de` " 字段中仍有。
+4. 打开 Windows 语音助手客户端应用程序，单击 "设置" 按钮（右上角的齿轮图标），并确保 `de-de` 在 "语言" 字段中仍有。
 5. 按照[运行 Windows 语音助手客户端](#run-the-windows-voice-assistant-client)中的说明重新连接到你的新部署的机器人，并以新语言讲述，并听到你用新的语音回复该语言的机器人。
 
 ## <a name="clean-up-resources"></a>清理资源
@@ -444,7 +444,7 @@ Windows 语音助手客户端使用包含语音 SDK 的 NuGet 包[cognitiveservi
 > [!div class="nextstepaction"]
 > [通过语音 SDK 构建你自己的客户端应用](quickstart-voice-assistant-csharp-uwp.md)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * 部署到[附近的 Azure 区域](https://azure.microsoft.com/global-infrastructure/locations/)，查看机器人响应时间改进
 * 部署到[支持高质量神经 TTS 声音的 Azure 区域](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)

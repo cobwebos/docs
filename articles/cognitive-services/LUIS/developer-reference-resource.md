@@ -3,12 +3,12 @@ title: 开发人员资源 - 语言理解
 description: SDK、REST API、CLI 用于以编程语言开发语言理解 (LUIS) 应用。 管理 Azure 资源和 LUIS 预测。
 ms.topic: reference
 ms.date: 05/19/2020
-ms.openlocfilehash: c86dad46b09c2f761e73f38187b4824c0a17406f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c712a81e5b786ac980a0c48d358fef4caf2e7597
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655568"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758055"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>用于语言理解 (LUIS) 的 SDK、REST 和 CLI 开发人员资源
 
@@ -66,7 +66,7 @@ LUIS 目前有 2 种类型的终结点：
 
 下表说明了上表中用大括号 `{}` 表示的参数。
 
-|参数|目标|
+|参数|目的|
 |--|--|
 |`your-resource-name`|Azure 资源名称|
 |`q` 或 `query`|从客户端应用程序（如聊天机器人）发送的话语文本|
@@ -119,7 +119,7 @@ Bot Framework 提供有助于语言理解的[多种工具](https://github.com/mi
 * [LUISGen](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUISGen) - 为 LUIS 意向和实体自动生成 C#/Typescript 支持类。
 * [机器人 framework 模拟器](https://github.com/Microsoft/BotFramework-Emulator/releases)-一种桌面应用程序，允许机器人开发人员测试和调试使用 BOT Framework SDK 生成的机器人
 * [机器人 Framework 编辑器](https://github.com/microsoft/BotFramework-Composer/blob/stable/README.md)-一种集成开发工具，可供开发人员和多个专业团队使用 Microsoft bot Framework 构建机器人和会话体验
-
+* [机器人框架示例](https://github.com/microsoft/botbuilder-samples)-in #C、JavaScript、TypeScript 和 Python
 ## <a name="next-steps"></a>后续步骤
 
 * 了解常见的 [HTTP 错误代码](luis-reference-response-codes.md)
