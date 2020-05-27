@@ -2,19 +2,18 @@
 title: 快速入门 - 使用 Azure 模板创建 Windows 虚拟机规模集
 description: 了解如何使用 Azure 资源管理器模板来部署示例应用和配置自动缩放规则，以便快速创建 Windows 虚拟机规模集
 author: ju-shim
-ms.author: jushiman
-ms.topic: quickstart
+tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
-ms.subservice: windows
+ms.topic: quickstart
+ms.custom: mvc,subject-armqs
 ms.date: 03/27/2020
-ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: 8bf75dc08a033c254152cb6e5b6f3af6389d8380
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.author: jushiman
+ms.openlocfilehash: 030479a02b33a92c3917ba112d99c9bcef4f7f32
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198208"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81010437"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-scale-set-with-an-azure-template"></a>快速入门：使用 Azure 模板创建 Windows 虚拟机规模集
 
@@ -113,7 +112,7 @@ Update-AzVmss `
 Get-AzPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
-以“http: */publicIpAddress/MyApp”\/* 格式将负载均衡器的公共 IP 地址输入到 Web 浏览器中。 负载均衡器将流量分发到某个 VM 实例，如以下示例所示：
+以“http:\//publicIpAddress/MyApp”格式将负载均衡器的公共 IP 地址输入到 Web 浏览器中。 负载均衡器将流量分发到某个 VM 实例，如以下示例所示：
 
 ![运行 IIS 网站](./media/virtual-machine-scale-sets-create-powershell/running-iis-site.png)
 

@@ -388,7 +388,7 @@
               href: service-updates-how-to.md
             - name: 删除保管库
               href: delete-vault.md
-    - name: 对邻近放置组的 Site Recovery 支持
+    - name: 适用于邻近放置组的 Site Recovery
       href: how-to-enable-replication-proximity-placement-groups.md
     - name: 应用的灾难恢复
       items:

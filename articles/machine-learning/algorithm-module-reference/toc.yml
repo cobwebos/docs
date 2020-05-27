@@ -32,6 +32,8 @@
       href: clean-missing-data.md
     - name: 编辑元数据
       href: edit-metadata.md
+    - name: 将数据分组到箱中
+      href: group-data-into-bins.md
     - name: 联接数据
       href: join-data.md
     - name: 规范化数据
@@ -130,6 +132,8 @@
       href: execute-r-script.md
 - name: 文本分析
   items:
+    - name: 将单词转换为矢量
+      href: convert-word-to-vector.md
     - name: 从文本中提取 N 元语法特征
       href: extract-n-gram-features-from-text.md
     - name: 特征哈希

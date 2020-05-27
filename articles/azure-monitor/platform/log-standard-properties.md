@@ -8,22 +8,22 @@ ms.author: bwren
 ms.date: 05/01/2020
 ms.openlocfilehash: b0ec666f2cfadc3a1571f3ed1d26c92bcbbca3a2
 ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/12/2020
 ms.locfileid: "83196237"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Azure Monitor 日志中的标准属性
-Azure Monitor 日志中的数据[作为一组记录存储在 Log Analytics 工作区或 Application Insights 应用程序](../log-query/logs-structure.md)中，每条记录都具有特定的数据类型，该数据类型包含一组惟一的属性。 许多数据类型都具有在多种类型中通用的标准属性。 本文介绍这些属性，并提供如何在查询中使用它们的示例。
+Azure Monitor 日志中的数据[以一组记录的形式存储在 Log Analytics 工作区或 Application Insights 应用程序](../log-query/logs-structure.md)中，每个记录都有一个特定的数据类型，每个数据类型都有一组唯一的属性。 许多数据类型都具有在多种类型中通用的标准属性。 本文介绍这些属性，并提供如何在查询中使用它们的示例。
 
 > [!IMPORTANT]
-> 如果使用的是 APM 2.1，则 Application Insights 应用程序将存储在包含所有其他日志数据的 Log Analytics 工作区中。 表已重命名并重构，但其信息与 Application Insights 应用程序中的表相同。 这些新表与 Log Analytics 工作区中的其他表具有相同的标准属性。
+> 如果使用的是 APM 2.1，那么 Application Insights 应用与其他所有日志数据一起存储在 Log Analytics 工作区中。 表已重命名并重构，但其信息与 Application Insights 应用程序中的表相同。 这些新表与 Log Analytics 工作区中的其他表具有相同的标准属性。
 
 > [!NOTE]
-> 一些标准属性将不会在 Log Analytics 中的架构视图或 intellisense 中显示，并且它们不会显示在查询结果中，除非在输出中显式指定了属性。
+> 一些标准属性不会在 Log Analytics 的架构视图或 intellisense 中显示，并且不会显示在查询结果中，除非你在输出中显式指定了该属性。
 
 ## <a name="timegenerated-and-timestamp"></a>TimeGenerated 和 timestamp
-**TimeGenerated**（Log Analytics 工作区）和 **Timestamp**（Application Insights 应用程序）属性包含数据源创建记录的日期和时间。 如需更多详细信息，请参阅 [Azure Monitor 中的日志数据引入时间](data-ingestion-time.md)。
+**TimeGenerated**（Log Analytics 工作区）和 **timestamp**（Application Insights 应用程序）属性包含数据源创建记录的日期和时间。 有关更多详细信息，请参阅 [Azure Monitor 中的日志数据引入时间](data-ingestion-time.md)。
 
 **TimeGenerated** 和 **timestamp** 提供了一个用于按时间进行筛选或汇总的常用属性。 为 Azure 门户中的视图或仪表板选择时间范围时，它使用 TimeGenerated 或 timestamp 来筛选结果。 
 
@@ -39,7 +39,7 @@ Event
 | sort by TimeGenerated asc 
 ```
 
-以下查询返回过去一周内每天创建的异常数。
+以下查询返回过去一周内每天产生的异常数。
 
 ```Kusto
 exceptions
@@ -49,9 +49,9 @@ exceptions
 ```
 
 ## <a name="_timereceived"></a>\_TimeReceived
-** \_ TimeReceived**属性包含 Azure 云中 Azure Monitor 摄取点接收记录的日期和时间。 这可以用来确定数据源和云之间的延迟问题。 例如，从代理发送数据时，网络问题会导致延迟。 如需更多详细信息，请参阅 [Azure Monitor 中的日志数据引入时间](data-ingestion-time.md)。
+**\_TimeReceived** 属性包含 Azure 云中的 Azure Monitor 引入点接收记录的日期和时间。 这对于查明数据源与云之间的延迟问题非常有用。 例如，网络问题会导致从代理发送数据时出现延迟。 有关更多详细信息，请参阅 [Azure Monitor 中的日志数据引入时间](data-ingestion-time.md)。
 
-以下查询给出了从代理发送的事件记录的平均延迟（按小时）。 这包括从代理到云的时间，以及记录可用于日志查询的总时间。
+对于某个代理提供的事件记录，以下查询提供了按小时计的的平均延迟。 这包括从代理到云的时间，以及记录可供日志查询使用的总时间。
 
 ```Kusto
 Event
@@ -63,7 +63,7 @@ Event
 ``` 
 
 ## <a name="type-and-itemtype"></a>Type 和 itemType
-**Type**（Log Analytics 工作区）和 **itemType**（Application Insights 应用程序）属性保存从中检索记录的表的名称，也可以将其视为记录类型。 此属性可用于合并来自多个表（如使用运算符的记录）的记录， `search` 以区分不同类型的记录。 在某些地方，**$table** 可以用来替代 **Type**。
+**Type**（Log Analytics 工作区）和 **itemType**（Application Insights 应用程序）属性包含从中检索记录的表的名称，也可将其视为记录类型。 此属性在将多个表的记录进行组合的查询中非常有用，例如，使用 `search` 运算符区分不同类型的记录的那些查询。 在某些地方， **$table** 可以用来替代 **Type**。
 
 ### <a name="examples"></a>示例
 以下查询返回过去一小时内按类型收集的记录计数。
@@ -75,13 +75,13 @@ search *
 
 ```
 ## <a name="_itemid"></a>\_ItemId
-** \_ ItemId**属性保存记录的唯一标识符。
+**\_ItemId** 属性包含记录的唯一标识符。
 
 
 ## <a name="_resourceid"></a>\_ResourceId
-** \_ ResourceId**属性保存与记录关联的资源的唯一标识符。 这为你提供了一个标准属性，用于将查询范围限定为仅来自特定资源的记录，或者跨多个表联接相关数据。
+**\_ResourceId** 属性包含与记录关联的资源的唯一标识符。 这为你提供了一个标准属性，用于将查询范围限定为仅来自特定资源的记录，或者跨多个表联接相关数据。
 
-对于 Azure 资源，**_ResourceId** 的值是 [Azure 资源 ID URL](../../azure-resource-manager/templates/template-functions-resource.md)。 该属性目前仅限于 Azure 资源，但它将扩展到 Azure 之外的资源，例如本地计算机。
+对于 Azure 资源， **_ResourceId** 的值是 [Azure 资源 ID URL](../../azure-resource-manager/templates/template-functions-resource.md)。 该属性目前仅限于 Azure 资源，但它将扩展到 Azure 之外的资源，例如本地计算机。
 
 > [!NOTE]
 > 某些数据类型已具有包含 Azure 资源 ID 或至少包含其一部分（例如订阅 ID）的字段。 虽然为了实现向后兼容而保留了这些字段，但是建议使用 _ResourceId 来执行交叉关联，因为它将更为一致。
@@ -112,7 +112,7 @@ AzureActivity
 ) on _ResourceId  
 ```
 
-以下查询分析 **_ResourceId**，并聚合每个 Azure 订阅的计费数据量。
+以下查询分析 **_ResourceId** 并聚合每个 Azure 订阅的计费数据量。
 
 ```Kusto
 union withsource = tt * 
@@ -125,7 +125,7 @@ union withsource = tt *
 请谨慎使用这些 `union withsource = tt *` 查询，因为跨数据类型执行扫描的开销很大。
 
 ## <a name="_isbillable"></a>\_IsBillable
-** \_ IsBillable**属性指定引入数据是否可计费。 ** \_ IsBillable**等于的数据 `false` 是免费收集的，无计费到你的 Azure 帐户。
+**\_IsBillable** 属性指定是否对引入的数据进行计费。 **\_IsBillable** 等于 `false` 的数据是免费收集的，系统不会向你的 Azure 帐户收费。
 
 ### <a name="examples"></a>示例
 若要获取发送计费数据类型的计算机列表，请使用以下查询：
@@ -152,7 +152,7 @@ union withsource = tt *
 ```
 
 ## <a name="_billedsize"></a>\_BilledSize
-** \_ BilledSize**属性指定** \_ IsBillable**为 true 时，将对 Azure 帐户计费的数据的大小（以字节为单位）。
+**\_BilledSize** 属性指定 **\_IsBillable** 为 true 时将向 Azure 帐户计费的数据字节大小。
 
 
 ### <a name="examples"></a>示例
@@ -164,7 +164,7 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last 
 ```
 
-若要查看每个订阅引入的可计费事件的大小，请使用以下查询：
+若要查看每个订阅引入的可计费事件大小，请使用以下查询：
 
 ```Kusto
 union withsource=table * 
@@ -173,7 +173,7 @@ union withsource=table *
 | summarize Bytes=sum(_BilledSize) by  SubscriptionId | sort by Bytes nulls last 
 ```
 
-若要查看每个资源组引入的可计费事件的大小，请使用以下查询：
+若要查看每个资源组引入的可计费事件大小，请使用以下查询：
 
 ```Kusto
 union withsource=table * 
@@ -199,7 +199,7 @@ union withsource = tt *
 | summarize count() by Computer  | sort by count_ nulls last
 ```
 
-若要查看特定计算机中可计费数据类型的计数，请使用以下查询：
+若要查看特定计算机的可计费数据类型的计数，请使用以下查询：
 
 ```Kusto
 union withsource = tt *

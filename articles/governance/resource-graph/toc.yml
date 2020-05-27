@@ -17,6 +17,9 @@
     - name: 运行自己的第一个查询 - PowerShell
       displayName: 'module, docker, Az.ResourceGraph'
       href: first-query-powershell.md
+    - name: 运行自己的第一个查询 - Python
+      displayName: 'library, azure-mgmt, cli'
+      href: first-query-python.md
     - name: 部署共享查询 - ARM 模板
       displayName: 'resource manager, queries'
       href: shared-query-template.md
@@ -87,13 +90,13 @@
       href: ./reference/supported-tables-resources.md
 - name: 资源
   items:
+    - name: GitHub - 治理示例
+      href: 'https://github.com/Azure-Samples/Governance/tree/master/src/resource-graph'
+    - name: 治理 YouTube 频道
+      href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 定价计算器
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: GitHub 示例存储库
-      href: 'https://github.com/Azure-Samples/Governance/tree/master/src/resource-graph'
     - name: UserVoice
       href: 'https://feedback.azure.com/forums/915958-azure-governance?category_id=345061'
-    - name: 治理 YouTube 频道
-      href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'

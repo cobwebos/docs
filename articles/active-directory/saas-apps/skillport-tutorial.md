@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 328f3d0dc648b3c5fa96c3aab02e80a37cf4218f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 09ccb9f095e58d8fa22ec3d119853c729f0c7026
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680672"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67090573"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>教程：Azure Active Directory 与 Skillport 的集成
 
@@ -139,7 +139,7 @@ ms.locfileid: "83680672"
 
 ### <a name="configure-skillport-single-sign-on"></a>配置 Skillport 单一登录
 
-若要在 Skillport 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Skillport 支持团队](https://www.skillsoft.com/about/contact-us)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Skillport 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Skillport 支持团队](https://www.skillsoft.com/contact.asp) 。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -194,7 +194,7 @@ ms.locfileid: "83680672"
 
 ### <a name="create-skillport-test-user"></a>创建 Skillport 测试用户
 
-为创建 Skillport 测试用户，需联系 [Skillport 支持团队](https://www.skillsoft.com/about/contact-us)，他们会根据最终用户的需求提供多种业务方案。 并在与用户进行讨论后对其进行配置。
+为创建 Skillport 测试用户，需联系 [Skillport 支持团队](https://www.skillsoft.com/contact.asp)，他们会根据最终用户的需求提供多种业务方案。 并在与用户进行讨论后对其进行配置。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

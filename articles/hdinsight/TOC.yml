@@ -762,8 +762,12 @@
               href: ./hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md
             - name: 将 Python 与 Apache Hive 和 Apache Pig 配合使用
               href: ./hadoop/python-udf-hdinsight.md
-            - name: 将 Apache Hive 与 Apache Spark 配合使用
+            - name: 将 HWC 与 Apache Spark 和 Apache Hive 集成
               href: ./interactive-query/apache-hive-warehouse-connector.md
+            - name: HWC 和 Apache Spark 操作
+              href: ./interactive-query/apache-hive-warehouse-connector-operations.md
+            - name: 将 HWC 与 Apache Zeppelin 集成
+              href: ./interactive-query/apache-hive-warehouse-connector-zeppelin.md
             - name: 将 Apache Hive 与 Hadoop 配合使用
               href: ./hadoop/hdinsight-use-hive.md
             - name: 使用 Apache Hive 视图
