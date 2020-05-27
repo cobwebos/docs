@@ -69,7 +69,7 @@
               href: time-series-insights-update-query-data-csharp.md
             - name: Power BI 集成
               href: concepts-power-bi.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 授予数据访问权限
       href: time-series-insights-data-access.md
@@ -164,14 +164,14 @@
           href: 'https://azure.microsoft.com/support/options/'
         - name: Azure IoT 支持和帮助选项
           href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
-        - name: 堆栈溢出
+        - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
-        - name: MSDN 论坛
-          href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
+        - name: Microsoft Q&A 问题页面
+          href: 'https://docs.microsoft.com/answers/topics/azure-time-series-insights.html'
     - name: 反馈和论坛
       items:
-        - name: MSDN 论坛
-          href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
+        - name: Microsoft Q&A 问题页面
+          href: 'https://docs.microsoft.com/answers/topics/azure-time-series-insights.html'
         - name: 产品请求和建议
           href: 'https://feedback.azure.com/forums/906859-azure-time-series-insights'
     - name: Azure 视频

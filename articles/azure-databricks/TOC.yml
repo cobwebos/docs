@@ -1982,8 +1982,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=analytics'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/databricks/'
-    - name: 提出问题 - MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabricks'
+    - name: 提问 - Microsoft Q&A 问题页面
+      href: 'https://docs.microsoft.com/answers/topics/azure-databricks.html'
     - name: 提出问题 - Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-databricks'
     - name: 上市区域

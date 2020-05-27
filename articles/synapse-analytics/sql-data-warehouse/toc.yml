@@ -393,8 +393,8 @@
   items:
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
-    - name: 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSQLDataWarehouse'
+    - name: Microsoft Q&A 问题页面
+      href: 'https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/sql-data-warehouse/'
     - name: 定价计算器

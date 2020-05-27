@@ -196,6 +196,8 @@
           href: service-bus-diagnostic-logs.md
         - name: 暂停和重新激活消息传递实体
           href: entity-suspend.md
+        - name: 使用服务总线资源管理器在服务总线上执行数据操作
+          href: explorer.md
         - name: 使用 ARM 模板
           href: service-bus-resource-manager-overview.md
           items:

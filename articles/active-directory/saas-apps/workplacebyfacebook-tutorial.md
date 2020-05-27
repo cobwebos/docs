@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de84f2aee5f59d14ab70cb1687968643c4cdb31e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ec1818fe4fa0a7ea2f57732a4230fd3c2732ba91
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79136374"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799253"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Workplace by Facebook 集成
 
@@ -206,7 +206,7 @@ ms.locfileid: "79136374"
 在此部分中无需进行任何操作。 尝试访问 Workplace by Facebook 时，如果 Workplace by Facebook 中尚不存在用户，则系统会创建一个新用户。
 
 >[!Note]
->如需手动创建用户，请联系 [Workplace by Facebook 客户端支持团队](https://workplace.fb.com/faq/)
+>如需手动创建用户，请联系 [Workplace by Facebook 客户端支持团队](https://www.workplace.com/help/work/)
 
 ## <a name="test-sso"></a>测试 SSO 
 

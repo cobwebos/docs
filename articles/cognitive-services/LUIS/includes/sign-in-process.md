@@ -10,18 +10,18 @@ ms.subservice: language-understanding
 ms.date: 05/05/2020
 ms.topic: include
 ms.author: diberry
-ms.openlocfilehash: a09f995f4d022c47b573281183d07b7973215494
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ef7208596ead8f7d3903bb614ccb980df782e581
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83778280"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83837879"
 ---
 ## <a name="sign-in-to-luis-portal"></a>登录到 LUIS 门户
 
 LUIS 的新用户需要执行此过程：
 
-1. 登录到 [LUIS 门户](https://www.luis.ai)，选择你的国家/地区，并同意使用条款。 如果看到“我的应用”，则 LUIS 资源已存在，你应该跳过此过程，开始创建应用。
+1. 登录到 [LUIS 门户](https://www.luis.ai)，选择你的国家/地区，并同意使用条款。 如果看到“我的应用”，则 LUIS 资源已存在，你应该跳过此过程，开始创建应用。 有关受支持的区域，请访问[创作和发布区域及关联的密钥](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions)。
 
 1. 选择“创建 Azure资源” ，然后选择“创建要将应用迁移到的创作资源”。
 

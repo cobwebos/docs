@@ -10,7 +10,7 @@
       href: internet-analyzer-create-test-portal.md
     - name: 使用 CLI 创建 Internet 分析器测试
       href: internet-analyzer-cli.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 嵌入客户端
       href: internet-analyzer-embed-client.md
@@ -30,8 +30,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: 博客
       href: 'https://azure.microsoft.com/blog/topics/networking'
-    - name: 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: Microsoft Q&A 问题页面
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
     - name: 预览版 SLA
       href: 'https://azure.microsoft.com/support/legal/preview-supplemental-terms'
     - name: SLA
