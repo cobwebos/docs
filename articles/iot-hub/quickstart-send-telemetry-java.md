@@ -13,13 +13,13 @@ ms.custom:
 - seo-java-august2019
 - seo-java-september2019
 - mqtt
-ms.date: 06/21/2019
-ms.openlocfilehash: 954fe6f92b68d011aaff0fff7925b3409ee628cb
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.date: 05/26/2020
+ms.openlocfilehash: 225b9407bff4294288bb4834cbb0d919698b78c6
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81769116"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873169"
 ---
 # <a name="quickstart-send-telemetry-to-an-azure-iot-hub-and-read-it-with-a-java-application"></a>快速入门：将遥测数据发送到 Azure IoT 中心并使用 Java 应用程序读取它
 
@@ -133,7 +133,7 @@ az extension add --name azure-iot
 
     以下屏幕截图显示了模拟设备应用程序将遥测数据发送到 IoT 中心后的输出：
 
-    ![设备发送到 IoT 中心的遥测的输出](media/quickstart-send-telemetry-java/iot-hub-simulated-device.png)
+    ![设备发送到 IoT 中心的遥测的输出](media/quickstart-send-telemetry-java/simulated-device.png)
 
 ## <a name="read-the-telemetry-from-your-hub"></a>从中心读取遥测数据
 
@@ -145,9 +145,9 @@ az extension add --name azure-iot
 
     | 变量 | 值 |
     | -------- | ----------- |
-    | `eventHubsCompatibleEndpoint` | 将变量的值替换为之前记下的与事件中心兼容的终结点。 |
-    | `eventHubsCompatiblePath`     | 将变量的值替换为之前记下的与事件中心兼容的路径。 |
-    | `iotHubSasKey`                | 将变量的值替换为之前记下的服务主密钥。 |
+    | `EVENT_HUBS_COMPATIBLE_ENDPOINT` | 将变量的值替换为之前记下的与事件中心兼容的终结点。 |
+    | `EVENT_HUBS_COMPATIBLE_PATH`     | 将变量的值替换为之前记下的与事件中心兼容的路径。 |
+    | `IOT_HUB_SAS_KEY`                | 将变量的值替换为之前记下的服务主密钥。 |
 
 3. 在本地终端窗口中运行以下命令，以安装所需的库并生成后端应用程序：
 
@@ -163,7 +163,7 @@ az extension add --name azure-iot
 
     以下屏幕截图显示了后端应用程序接收模拟设备发送到 IoT 中心的遥测数据后的输出：
 
-    ![后端应用程序接收发送到 IoT 中心的遥测时的输出](media/quickstart-send-telemetry-java/iot-hub-read-device-to-cloud.png)
+    ![后端应用程序接收发送到 IoT 中心的遥测时的输出](media/quickstart-send-telemetry-java/read-device-to-cloud.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 
