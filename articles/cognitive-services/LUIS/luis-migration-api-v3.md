@@ -4,12 +4,12 @@ description: 查询预测终结点 V3 API 已更改。 请使用本指南了解�
 ms.topic: conceptual
 ms.date: 05/15/2020
 ms.author: diberry
-ms.openlocfilehash: d6e5981bcdc81383454c65d3cf7b6c1195b70a4a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 84afcbcd348c3fd91014096877de2315722b53a0
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653863"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849325"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 的预测终结点更改
 
@@ -88,7 +88,7 @@ V3 预测终结点不支持此 API-继续使用 V2 API 预测终结点进行拼�
 
 V3 API 包含不同的查询字符串参数。
 
-|参数名称|类型|版本|默认|目标|
+|参数名称|类型|版本|默认|目的|
 |--|--|--|--|--|
 |`log`|boolean|V2 和 V3|false|将查询存储在日志文件中。 默认值为 false。|
 |`query`|字符串|仅 V3|无默认值 - 在 GET 请求中是必需的|**在 V2 中**，要预测的言语位于 `q` 参数中。 <br><br>**在 V3 中**，该功能在 `query` 参数中传递。|
@@ -112,10 +112,10 @@ V3 API 包含不同的查询字符串参数。
 }
 ```
 
-|properties|类型|版本|默认|目标|
+|properties|类型|版本|默认|目的|
 |--|--|--|--|--|
-|`dynamicLists`|array|仅 V3|不要求。|使用[动态列表](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time)可以扩展已在 LUIS 应用中的已训练且已发布的现有列表实体。|
-|`externalEntities`|array|仅 V3|不要求。|[外部实体](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time)可让 LUIS 应用在运行时识别和标记实体，这些实体可用作现有实体的特征。 |
+|`dynamicLists`|数组|仅 V3|不要求。|使用[动态列表](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time)可以扩展已在 LUIS 应用中的已训练且已发布的现有列表实体。|
+|`externalEntities`|数组|仅 V3|不要求。|[外部实体](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time)可让 LUIS 应用在运行时识别和标记实体，这些实体可用作现有实体的特征。 |
 |`options.datetimeReference`|字符串|仅 V3|无默认值|用于确定 [datetimeV2 偏移量](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)。 datetimeReference 的格式是 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)。|
 |`options.preferExternalEntities`|boolean|仅 V3|false|指定是使用用户的[外部实体（与现有实体具有相同名称）](schema-change-prediction-runtime.md#override-existing-model-predictions)，还是使用模型中的现有实体进行预测。 |
 |`query`|字符串|仅 V3|必需。|**在 V2 中**，要预测的言语位于 `q` 参数中。 <br><br>**在 V3 中**，该功能在 `query` 参数中传递。|
@@ -283,4 +283,4 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 
 ## <a name="next-steps"></a>后续步骤
 
-使用 V3 API 文档更新对 LUIS [终结点](https://aka.ms/luis-api-v3) API 的现有 REST 调用。
+使用 V3 API 文档更新对 LUIS [终结点](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/operations/5cb0a9459a1fe8fa44c28dd8) API 的现有 REST 调用。
