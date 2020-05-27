@@ -3,7 +3,7 @@ title: CLI 示例 - 在 Azure SQL 数据库中创建托管实例
 description: 用于在 Azure SQL 数据库中创建托管实例的 Azure CLI 示例脚本
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: azurecli
 ms.topic: sample
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/25/2019
-ms.openlocfilehash: 998bd8e39863dd9520d1a05e7fff52095c3be6c1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f52a460be33b23da3da0cb32075ab5f75bb8d129
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067448"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772618"
 ---
 # <a name="use-cli-to-create-an-azure-sql-database-managed-instance"></a>使用 CLI 创建 Azure SQL 数据库托管实例
 
@@ -39,7 +39,7 @@ ms.locfileid: "80067448"
 
 ### <a name="clean-up-deployment"></a>清理部署
 
-使用以下命令删除资源组以及与其关联的所有资源。
+使用以下命令删除资源组及其相关的所有资源。
 
 ```azurecli-interactive
 az group delete --name $resource

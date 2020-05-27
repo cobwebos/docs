@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 9ba151aa1ddc7f4b14d5f4ec7f1990e2fd760602
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: cc82b6578b06323d8cf9a09644d50043dba8e554
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121229"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774332"
 ---
 # <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>利用 Blob 索引标记（预览版）管理和查找 Azure Blob 存储上的数据
 
@@ -36,7 +36,7 @@ Blob 索引标记使用键/值标记特性对存储帐户中的数据进行分�
 
    若要了解如何操作，请参阅[包源](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#package-sources)。
 
-2. 在 NuGet 包管理器中查找 **Azure.Storage.Blobs** 包，并将 **12.5.0-dev.20200422.2** 版本安装到你的项目。 还可以运行 ```Install-Package Azure.Storage.Blobs -Version12.5.0-dev.20200422.2``` 命令
+2. 在 NuGet 包管理器中查找 **Azure.Storage.Blobs** 包，并将 **12.5.0-dev.20200422.2** 版本安装到你的项目。 还可以运行 ```Install-Package Azure.Storage.Blobs -Version 12.5.0-dev.20200422.2``` 命令
 
    若要了解如何操作，请参阅[查找并安装包](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)。
 

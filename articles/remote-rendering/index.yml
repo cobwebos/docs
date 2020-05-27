@@ -9,12 +9,12 @@ metadata:
   author: florianborn71
   ms.author: flborn
   ms.date: 03/26/2020
-  ms.openlocfilehash: a257b294c105ca153a57afe90db95a1bd1b753e8
-  ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+  ms.openlocfilehash: e379515ea34206e21f80ceb23a465858d6d4da81
+  ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/06/2020
-  ms.locfileid: "80678308"
+  ms.lasthandoff: 05/21/2020
+  ms.locfileid: "83773213"
 landingContent:
 - title: 关于 Azure 远程渲染
   linkLists:
@@ -58,9 +58,11 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: 从头开始设置 Unity 项目
+    - text: Unity：从头开始设置项目
       url: tutorials/unity/project-setup.md
-    - text: 在 Unity 中使用远程实体
+    - text: Unity：使用远程实体
       url: tutorials/unity/working-with-remote-entities.md
-    - text: 更改环境和材料
+    - text: Unity：更改环境和材料
       url: tutorials/unity/changing-environment-and-materials.md
+    - text: 本机 C++：将远程渲染集成到 HoloLens Holographic 应用
+      url: tutorials/native-cpp/hololens/integrate-remote-rendering-into-holographic-app.md
