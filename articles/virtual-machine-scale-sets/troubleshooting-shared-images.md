@@ -1,6 +1,6 @@
 ---
-title: 排查 Azure 中共享映像的问题
-description: 了解如何对 Azure 虚拟机规模集中的共享映像库的问题进行故障排除。
+title: 排查与 Azure 中共享映像相关的问题
+description: 了解如何排查与 Azure 虚拟机规模集中共享映像库相关的问题。
 documentationcenter: virtual-machine-scale-sets
 author: axayjo
 ms.author: akjosh
@@ -12,7 +12,7 @@ ms.reviewer: cynthn
 ms.custom: akjosh
 ms.openlocfilehash: 47dd50848a4a2f811103e655880c0b00e1ed1452
 ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/12/2020
 ms.locfileid: "83125024"

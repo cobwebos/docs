@@ -10,7 +10,7 @@ ms.date: 01/01/2019
 ms.author: babanisa
 ms.openlocfilehash: 7c363fd4e55fdd6fe04a099ac833a256bbfd2eb2
 ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/12/2020
 ms.locfileid: "83116962"
@@ -20,15 +20,15 @@ ms.locfileid: "83116962"
 本文介绍如何[验证 HTTP 终结点](webhook-event-delivery.md)以接收来自事件订阅的事件并随后接收和反序列化事件。 本文使用 Azure 函数进行演示，但无论应用程序托管在何处，这些概念都适用。
 
 > [!NOTE]
-> 强烈推荐在通过事件网格触发 Azure 函数时使用[事件网格触发器](../azure-functions/functions-bindings-event-grid.md)****。 此处使用泛型 WebHook 触发器进行演示。
+> 强烈推荐在通过事件网格触发 Azure 函数时使用[事件网格触发器](../azure-functions/functions-bindings-event-grid.md)。 此处使用泛型 WebHook 触发器进行演示。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 需要包含 HTTP 触发函数的函数应用。
 
 ## <a name="add-dependencies"></a>添加依赖项
 
-如果是在 .NET 中进行开发，请为 NuGet 包[添加函数依赖项](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies) `Microsoft.Azure.EventGrid` [NuGet package](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)。 本文中的示例需要使用版本 1.4.0 或更高版本。
+若要使用 .NET 进行开发，请向 `Microsoft.Azure.EventGrid` [Nuget 包](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)的函数[添加依赖项](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies)。 本文中的示例需要使用版本 1.4.0 或更高版本。
 
 可通过[发布 SDKs](./sdk-overview.md#data-plane-sdks) 引用将 SDK 用于其他语言。 这些包中有用于本机事件类型（如 `EventGridEvent`、`StorageBlobCreatedEventData` 和 `EventHubCaptureFileCreatedEventData`）的模型。
 

@@ -10,7 +10,7 @@ ms.author: robb
 ms.custom: include file
 ms.openlocfilehash: 32a04518d3cd097a02ec3045da891237fc0e405a
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "80334907"

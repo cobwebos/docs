@@ -698,22 +698,16 @@
               href: data-lake-storage-supported-azure-services.md
             - name: 支持的开源平台
               href: data-lake-storage-supported-open-source-platforms.md
-        - name: 监视
+        - name: 监视和故障排除
           items:
-            - name: 监视存储帐户
-              href: ../common/monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 从经典指标迁移
+            - name: 监视、诊断和故障排除
+              href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Azure Monitor 中的指标
+              href: ../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 迁移到新指标
               href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 监视（经典）
-              items:
-                - name: 存储分析
-                  href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 指标
-                  href: ../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 日志
-                  href: ../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 监视、诊断和故障排除
-                  href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 存储分析日志
+              href: ../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: 如何
       items:
         - name: 创建

@@ -53,12 +53,26 @@
       items:
         - name: 安全基线
           href: security-baseline.md
-    - name: 开发人员功能
-      href: batch-api-basics.md
+    - name: Batch 服务工作流和资源
+      displayName: developer features
+      href: batch-service-workflow-features.md
+      items:
+        - name: 批处理帐户
+          displayName: storage account
+          href: accounts.md
+        - name: 节点和池
+          displayName: 'compute node, application package, scaling, schedule, os'
+          href: nodes-and-pools.md
+        - name: 作业和任务
+          displayName: Batch job
+          href: jobs-and-tasks.md
+        - name: 文件和目录
+          displayName: Batch file
+          href: files-and-directories.md
     - name: API 和工具
       href: batch-apis-tools.md
-    - name: 检测和处理 Batch 服务错误
-      href: batch-retry-after-errors.md
+    - name: 错误处理和检测
+      href: error-handling.md
     - name: 最佳做法
       href: best-practices.md
     - name: 配额和限制
@@ -91,6 +105,10 @@
           href: batch-aad-auth-management.md
         - name: 使用 Batch 安全地访问 Key Vault
           href: credential-access-key-vault.md
+        - name: 将证书与 Batch 配合使用
+          href: batch-certificates.md
+    - name: 使用应用程序包
+      href: batch-application-packages.md
     - name: 将文件和应用程序复制到池节点
       items:
         - name: 将应用程序和数据复制到池节点

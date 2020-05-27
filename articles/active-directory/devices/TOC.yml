@@ -32,7 +32,7 @@
       href: concept-primary-refresh-token.md
     - name: Azure 托管工作站
       href: concept-azure-managed-workstation.md
-- name: 操作方法指南
+- name: 操作指南
   expanded: false
   items:
     - name: 计划 Azure AD 加入实现
@@ -81,13 +81,13 @@
   items:
     - name: Azure 反馈论坛
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-    - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD'
+    - name: Microsoft Q&A 问题页面
+      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: 服务更新
       href: ../fundamentals/whats-new.md
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
     - name: 视频
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

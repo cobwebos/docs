@@ -330,8 +330,18 @@
           href: ./spark/spark-best-practices.md
         - name: 配置 Apache Spark 设置
           href: ./spark/apache-spark-settings.md
-        - name: 优化 Apache Spark 作业
-          href: ./spark/apache-spark-perf.md
+        - name: 优化
+          items:
+            - name: 优化 Apache Spark 作业
+              href: ./spark/apache-spark-perf.md
+            - name: 优化数据处理
+              href: ./spark/optimize-data-processing.md
+            - name: 优化数据存储
+              href: ./spark/optimize-data-storage.md
+            - name: 优化内存使用率
+              href: ./spark/optimize-memory-usage.md
+            - name: 优化群集配置
+              href: ./spark/optimize-cluster-configuration.md
         - name: 迁移到 Spark 2.3 或 2.4
           href: ./spark/migrate-versions.md
     - name: 如何

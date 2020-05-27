@@ -9,12 +9,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 1/15/2020
-  ms.openlocfilehash: b3e986c67c55af467ea6534dd7484a307ec08227
-  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.openlocfilehash: 83a51c7dff6d616297c7f558b20e7d1934c668d6
+  ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83589255"
+  ms.lasthandoff: 05/25/2020
+  ms.locfileid: "83829880"
 landingContent:
 - title: 关于 Azure Maps
   linkLists:
@@ -68,7 +68,7 @@ landingContent:
       url: tutorial-creator-indoor-maps.md
   - linkListType: how-to-guide
     links:
-    - text: 管理 Creator 室内地图
+    - text: 管理 Creator
       url: how-to-manage-creator.md
     - text: 实现室内地图的动态样式设置
       url: indoor-map-dynamic-styling.md

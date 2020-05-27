@@ -9,24 +9,24 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 03/05/2020
-ms.openlocfilehash: 2504245a14eee5308e046148f8073cf34ffa8143
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e289cf7aea6e0ea46ff049f3ea8bf9e1517e8aaf
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79486097"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673642"
 ---
 1. [创建 Azure 机器学习工作区](../articles/machine-learning/how-to-manage-workspace.md)。
 
 1. 克隆 [GitHub 存储库](https://aka.ms/aml-notebooks)。
 
-    ```bash
+    ```CLI
     git clone https://github.com/Azure/MachineLearningNotebooks.git
     ```
 
 1. 使用下述方法之一，将工作区配置文件添加到克隆目录：
 
-    * 在[Azure 门户](https://ms.portal.azure.com)中，选择工作区的“概览”部分中的“下载 config.json”。 
+    * 在[Azure 门户](https://ms.portal.azure.com)中，选择工作区的“概览”  部分中的“下载 config.json”  。 
 
     ![下载 config.json](./media/aml-dsvm-server/download-config.png)
 
@@ -34,6 +34,6 @@ ms.locfileid: "79486097"
 
 1. 从克隆目录启动 notebook 服务器。
 
-    ```bash
+    ```shell
     jupyter notebook
     ```

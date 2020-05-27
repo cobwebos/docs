@@ -56,6 +56,8 @@
               href: data-box-portal-admin.md
             - name: 通过本地 Web UI 进行管理
               href: data-box-local-web-ui-admin.md
+            - name: 使用自我托管交付
+              href: data-box-portal-customer-managed-shipping.md
             - name: 启用客户管理的密钥
               href: data-box-customer-managed-encryption-key-portal.md
             - name: 将数据移到 blob 层
@@ -117,6 +119,8 @@
           items:
             - name: 通过 Azure 门户管理
               href: data-box-portal-ui-admin.md
+            - name: 使用自我托管交付
+              href: data-box-disk-portal-customer-managed-shipping.md
             - name: 疑难解答
               items:
                 - name: 解锁问题

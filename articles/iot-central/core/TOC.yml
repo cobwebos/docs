@@ -131,6 +131,8 @@
               href: howto-manage-iot-central-from-cli.md
             - name: 从 Azure PowerShell 进行管理
               href: howto-manage-iot-central-from-powershell.md
+            - name: 以编程方式管理
+              href: howto-manage-iot-central-programmatically.md
             - name: 从云解决方案提供商门户进行管理
               href: howto-create-and-manage-applications-csp.md
         - name: 个性化应用程序
