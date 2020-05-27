@@ -11,18 +11,18 @@ ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: fab6e6742fa43e1e38ee661b67896ae4aa11b3ed
 ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/12/2020
 ms.locfileid: "83124816"
 ---
 # <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>在 Azure 规模集模板中添加对现有虚拟网络的引用
 
-本文介绍了如何修改[基本规模集模板](virtual-machine-scale-sets-mvss-start.md)，以便将其部署到现有虚拟网络而非创建新的虚拟网络。
+本文介绍了如何修改[基本规模集模板](virtual-machine-scale-sets-mvss-start.md)，以便将规模集部署到现有虚拟网络而非创建新的虚拟网络。
 
 ## <a name="change-the-template-definition"></a>更改模板定义
 
-在[此前的文章](virtual-machine-scale-sets-mvss-start.md)中，我们创建了基本的规模集模板。 我们现在将使用这个此前的模板并对其进行修改，以便创建一个模板来将规模集部署到现有的虚拟网络中。 
+在[前面的文章](virtual-machine-scale-sets-mvss-start.md)中，我们创建了一个基本规模集模板。 现在，我们将使用前面的模板并对其进行修改，以创建一个模板，该模板将一个规模集部署到现有虚拟网络中。 
 
 首先，添加一个 `subnetId` 参数。 此字符串将传递到规模集配置，使得规模集能够识别要将虚拟机部署到的预先创建的子网。 此字符串必须采用以下格式：`/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`
 

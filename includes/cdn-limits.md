@@ -6,7 +6,7 @@ ms.date: 04/29/2019
 ms.author: magattus
 ms.openlocfilehash: 7dd97fa49931168b9a42b5c9ac7887b84298a5f0
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335049"

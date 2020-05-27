@@ -388,6 +388,8 @@
               href: service-updates-how-to.md
             - name: 删除保管库
               href: delete-vault.md
+    - name: 对邻近放置组的 Site Recovery 支持
+      href: how-to-enable-replication-proximity-placement-groups.md
     - name: 应用的灾难恢复
       items:
         - name: 关于本地应用的灾难恢复
@@ -514,8 +516,8 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 博客
       href: 'https://azure.microsoft.com/blog/tag/azure-site-recovery/'
-    - name: 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hypervrecovmgr'
+    - name: Microsoft Q&A 问题页面
+      href: 'https://docs.microsoft.com/answers/topics/azure-site-recovery.html'
     - name: 学习路径
       href: /learn/azure/
     - name: 定价

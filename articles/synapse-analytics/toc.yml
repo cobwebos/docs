@@ -44,6 +44,8 @@
       href: quickstart-connect-synapse-link-cosmos-db.md
 - name: 教程
   items:
+    - name: 入门
+      href: get-started.md
     - name: 运行适用于 Spark 池的 Apache Spark 应用程序
       href: ./spark/intellij-tool-synapse.md
     - name: Spark 作业定义
@@ -314,7 +316,7 @@
                   href: sql/develop-storage-files-storage-access-control.md
                 - name: Apache Spark for Azure Synapse 外部表
                   href: sql/develop-storage-files-spark-tables.md
-        - name: 工作负载管理
+        - name: 工作负荷管理
           items:
             - name: 概述
               href: ./sql-data-warehouse/sql-data-warehouse-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
