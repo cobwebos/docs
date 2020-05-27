@@ -282,7 +282,7 @@
         - name: 存储资源管理器可访问性
           href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Azure 存储论坛
-      href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata'
+      href: 'https://docs.microsoft.com/answers/topics/azure-queue-storage.html'
     - name: Stack Overflow 上的 Azure 存储
       href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
     - name: Azure 存储的定价

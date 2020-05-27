@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 10/05/2018
 ms.custom: mvc
-ms.openlocfilehash: 756ce6c8551d259fc27855489b4276d90c7aa771
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8af1acb67961de105e5bf5900d7b10c437cb30d8
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77670366"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835863"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>借助 Azure Monitor 警报对事件做出响应
 Azure Monitor 中的警报可以标识 Log Analytics 存储库中的重要信息。 它们由定期自动运行日志搜索的警报规则创建；如果日志搜索的结果符合特定条件，则创建一条警报记录，并可将此记录配置为执行自动响应。  本教程是[创建和共享 Log Analytics 数据的仪表板](tutorial-logs-dashboards.md)教程的延续。   
@@ -23,7 +23,7 @@ Azure Monitor 中的警报可以标识 Log Analytics 存储库中的重要信息
 > * 创建警报规则
 > * 配置用于发送电子邮件通知的操作组
 
-要完成本教程中的示例，必须将现有虚拟机[连接到 Log Analytics 工作区](../../azure-monitor/learn/quick-collect-azurevm.md)。  
+要完成本教程中的示例，必须将现有虚拟机[连接到 Log Analytics 工作区](quick-collect-azurevm.md)。  
 
 ## <a name="sign-in-to-azure-portal"></a>登录到 Azure 门户
 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。 
@@ -69,4 +69,4 @@ Azure Monitor 中的警报可以标识 Log Analytics 存储库中的重要信息
 请访问以下链接，查看预生成的 Log Analytics 脚本示例。  
 
 > [!div class="nextstepaction"]
-> [Log Analytics 脚本示例](../../azure-monitor/platform/powershell-samples.md)
+> [Log Analytics 脚本示例](../samples/powershell-samples.md)

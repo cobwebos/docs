@@ -419,8 +419,8 @@
       href: 'https://azure.microsoft.com/services/storsimple/'
     - name: StorSimple 支持选项
       href: storsimple-8000-support-options.md
-    - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple'
+    - name: Microsoft Q&A 问题页面
+      href: 'https://docs.microsoft.com/answers/topics/azure-storsimple.html'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/storsimple/'
     - name: 定价计算器

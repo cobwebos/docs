@@ -168,8 +168,8 @@
       href: 'https://azure.microsoft.com/pricing/details/azure-migrate/'
     - name: UserVoice
       href: 'https://aka.ms/AzureMigrateUservoice'
-    - name: 论坛
-      href: 'https://aka.ms/AzureMigrateForum'
+    - name: Microsoft Q&A 问题页面
+      href: 'https://docs.microsoft.com/answers/topics/azure-migrate.html'
     - name: 博客
       href: 'https://azure.microsoft.com/blog/tag/azure-migrate/'
     - name: Azure Migrate

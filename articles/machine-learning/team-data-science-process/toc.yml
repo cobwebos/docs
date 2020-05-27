@@ -74,7 +74,7 @@
       href: team-data-science-process-for-data-scientists.md
     - name: 适用于 DevOps
       href: team-data-science-process-for-devops.md
-- name: 如何
+- name: 操作方式
   items:
     - name: 设置数据科学环境
       href: environment-setup.md
@@ -216,9 +216,9 @@
           href: 'https://www.blue-granite.com/blog/getting-more-from-your-data-science-teams-organization-and-process-considerations'
     - name: 相关 Microsoft 资源
       items:
-        - name: MSDN 论坛
-          href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning'
-        - name: 堆栈溢出
+        - name: Microsoft Q&A 问题页面
+          href: 'https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html'
+        - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning'
         - name: 视频
           href: 'https://azure.microsoft.com/resources/videos/index/?services=machine-learning'

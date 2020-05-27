@@ -4,18 +4,18 @@ description: 本文包含有关语言理解 (LUIS) 的常见问题的解答。
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 3a30dd1c55d1ee4314e5a9a2f14ffe832994c467
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 79cee94a0f04cb89aa65f65cde63e48b6f078d2c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592842"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834996"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>语言理解常见问题解答 (FAQ)
 
 本文包含有关语言理解 (LUIS) 的常见问题的解答。
 
-## <a name="whats-new"></a>新变化
+## <a name="whats-new"></a>新增功能
 
 [详细了解](whats-new.md)语言理解 (LUIS) 中的新增功能。
 
@@ -82,7 +82,7 @@ Cortana 预构建应用已于 2017 年弃用。 它们不再受支持。
 
 <a name="luis-endpoint"></a>
 
-## <a name="endpoint"></a>终结点
+## <a name="endpoint"></a>端点
 
 ### <a name="i-received-an-http-403-error-status-code-how-do-i-fix-it"></a>我收到了一个 HTTP 403 错误状态代码。 如何解决问题？
 
@@ -319,7 +319,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 
 以下功能是在 Build 2019 大会上发布的：
 
-* [V3 API 预览版迁移指南](luis-migration-api-v3.md)
+* [V3 API 迁移指南预览版](luis-migration-api-v3.md)
 * [改进的分析仪表板](luis-how-to-use-dashboard.md)
 * [改进的预生成域](luis-reference-prebuilt-domains.md)
 * [动态列表实体](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time)
@@ -327,10 +327,10 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 
 视频：
 
-* [如何使用 Azure 对话 AI 为下一代扩展业务](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
+* [如何使用 Azure 对话 AI 来扩展下一代业务](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
 
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关 LUIS 的详细信息，请参阅以下资源：
 * [标记了 LUIS 的 Stack Overflow 问题](https://stackoverflow.com/questions/tagged/luis)
-* [MSDN 语言理解智能服务 (LUIS) 论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=LUIS)
+* [Microsoft Q&MSDN 语言理解智能服务（LUIS）的问题页](https://docs.microsoft.com/answers/topics/azure-language-understanding.html)

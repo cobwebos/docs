@@ -12,7 +12,7 @@
       href: cloud-services-dotnet-get-started.md
     - name: Visual Studio 云服务的 Python 示例
       href: cloud-services-python-ptvs.md
-- name: 如何
+- name: 操作方式
   items:
     - name: 计划
       items:
@@ -125,7 +125,7 @@
           href: diagnostics-extension-to-storage.md
         - name: 使用诊断跟踪云服务
           href: cloud-services-dotnet-diagnostics-trace-flow.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 调试
           items:
@@ -191,8 +191,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: 学习路径
       href: 'https://azure.microsoft.com/documentation/learning-paths/cloud-services/'
-    - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/en-us/home?forum=windowsazuredevelopment'
+    - name: Microsoft Q&A 问题页面
+      href: 'https://docs.microsoft.com/answers/topics/azure-cloud-services.html'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
     - name: 定价计算器

@@ -27,13 +27,13 @@
       href: 'https://docs.microsoft.com/samples/browse/?service=data-share/'
     - name: Azure Powershell
       href: samples-powershell.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 监视
       href: how-to-monitor.md
     - name: 配置数据集映射
       href: how-to-configure-mapping.md
-    - name: 故障排除
+    - name: 疑难解答
       href: data-share-troubleshoot.md
     - name: 添加数据集
       href: how-to-add-datasets.md
@@ -53,9 +53,9 @@
       href: /rest/api/datashare
 - name: 资源
   items:
-    - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureDataShare'
-    - name: 堆栈溢出
+    - name: Microsoft Q&A 问题页面
+      href: 'https://docs.microsoft.com/answers/topics/azure-data-share.html'
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-share'
     - name: 博客
       href: 'https://techcommunity.microsoft.com/t5/Azure-Data-Share/bg-p/AzureDataShareBlog'

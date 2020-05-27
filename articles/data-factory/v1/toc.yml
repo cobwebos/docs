@@ -47,7 +47,7 @@
       href: data-factory-move-data-between-onprem-and-cloud.md
     - name: 常见问题解答
       href: data-factory-faq.md
-- name: 如何
+- name: 操作方式
   items:
     - name: 移动数据
       items:
@@ -78,7 +78,7 @@
               href: data-factory-azure-datalake-connector.md
             - name: Azure 认知搜索
               href: data-factory-azure-search-connector.md
-            - name: Azure SQL 数据库
+            - name: Azure SQL Database
               href: data-factory-azure-sql-connector.md
             - name: Azure SQL 数据仓库
               href: data-factory-azure-sql-data-warehouse-connector.md
@@ -201,8 +201,8 @@
       href: data-factory-customer-case-studies.md
     - name: 学习路径
       href: 'https://azure.microsoft.com/documentation/learning-paths/data-factory'
-    - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureDataFactory'
+    - name: Microsoft Q&A 问题页面
+      href: 'https://docs.microsoft.com/answers/topics/azure-data-factory.html'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/data-factory/'
     - name: 定价计算器
@@ -213,7 +213,7 @@
       href: 'https://feedback.azure.com/forums/270578-azure-data-factory'
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=data-factory'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-factory'
     - name: 视频
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=data-factory'

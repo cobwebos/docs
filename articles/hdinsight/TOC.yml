@@ -289,8 +289,8 @@
           href: ./hdinsight-hadoop-access-yarn-app-logs-linux.md
         - name: 为 Apache Hadoop 服务启用堆转储
           href: ./hdinsight-hadoop-collect-debug-heap-dump-linux.md
-        - name: 在论坛上获取帮助
-          href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=hdinsight'
+        - name: 在 Microsoft Q&A 问题页面上获取帮助
+          href: 'https://docs.microsoft.com/answers/topics/azure-hdinsight.html'
         - name: 定价计算器
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: 适用于 HDInsight 的 Windows 工具
@@ -330,7 +330,7 @@
           href: ./spark/spark-best-practices.md
         - name: 配置 Apache Spark 设置
           href: ./spark/apache-spark-settings.md
-        - name: 优化
+        - name: Optimization
           items:
             - name: 优化 Apache Spark 作业
               href: ./spark/apache-spark-perf.md

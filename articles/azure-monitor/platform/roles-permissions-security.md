@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 81309f0b5781e6302887a5b079ed359e70659834
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 86314fd5bfe103cef8332ee3113f46fb0e39dafc
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77658959"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836356"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Azure Monitor 中的角色、权限和安全性
 
@@ -28,7 +28,7 @@ Azure Monitor 的内置角色设计为帮助限制对订阅中资源的访问，
 
 * 在门户中查看监视仪表板和创建自己专用的监视仪表板。
 * 查看 [Azure 警报](alerts-overview.md)中定义的预警规则
-* 使用 [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx)、[PowerShell cmdlet](powershell-quickstart-samples.md) 或 [跨平台 CLI](cli-samples.md) 查询指标。
+* 使用 [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx)、[PowerShell cmdlet](powershell-quickstart-samples.md) 或 [跨平台 CLI](../samples/cli-samples.md) 查询指标。
 * 使用门户、Azure Monitor REST API、PowerShell cmdlet 或跨平台 CLI 查询活动日志。
 * 查看资源的[诊断设置](diagnostic-settings.md)。
 * 查看订阅的[日志配置文件](activity-log-export.md)。

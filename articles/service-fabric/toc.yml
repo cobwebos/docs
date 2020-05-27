@@ -892,8 +892,8 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 常见问题
       href: service-fabric-common-questions.md
-    - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureServiceFabric'
+    - name: Microsoft Q&A 问题页面
+      href: 'https://docs.microsoft.com/answers/topics/azure-service-fabric.html'
     - name: Azure 资源管理器部署准则
       href: service-fabric-azure-resource-manager-guardrails.md
     - name: 定价

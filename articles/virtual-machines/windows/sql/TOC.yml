@@ -54,7 +54,7 @@
               href: virtual-machines-windows-sql-automated-patching.md
             - name: 配置 Azure Key Vault 集成
               href: virtual-machines-windows-ps-sql-keyvault.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 创建 SQL VM
       items:
@@ -101,7 +101,7 @@
               href: virtual-machines-windows-sql-workgroup-availability-group.md
             - name: 手动配置
               items:
-                - name: 必备条件
+                - name: 先决条件
                   href: virtual-machines-windows-portal-sql-availability-group-prereq.md
                 - name: 教程
                   href: virtual-machines-windows-portal-sql-availability-group-tutorial.md
@@ -141,7 +141,7 @@
       href: 'https://docs.microsoft.com/sql/tools/overview-sql-tools'
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
-    - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesforWindows&filter=alltypes&brandIgnore=True&sort=relevancedesc&searchTerm=SQL+Server'
-    - name: 堆栈溢出
+    - name: Microsoft Q&A 问题页面
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-machines.html'
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server'

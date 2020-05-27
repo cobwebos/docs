@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: a385d3ed7ef46389f96de72c98ffc29cebf60ec4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 838835cf44b5ca5048ea6cb7bc1bba582b2a0926
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79278527"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647985"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Redis 缓存
 > [!div class="op_single_selector"]
@@ -26,9 +26,9 @@ ms.locfileid: "79278527"
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
-若要深入了解经典部署模型，请参阅 [Azure 资源管理器与经典部署：了解部署模型和资源状态](../azure-resource-manager/management/deployment-models.md)。
+有关经典部署模型的详细信息，请参阅 [Azure 资源管理器与经典部署：了解部署模型和资源状态](../azure-resource-manager/management/deployment-models.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 如果已安装 Azure PowerShell，则必须确保安装的是 Azure PowerShell 版本 1.0.0 或更高版本。 可以使用此命令在 Azure PowerShell 命令提示符下查看已安装的 Azure PowerShell 版本。
 
     Get-Module Az | format-table version
@@ -122,19 +122,19 @@ ms.locfileid: "79278527"
 | 名称 |缓存的名称 | |
 | 位置 |缓存的位置 | |
 | ResourceGroupName |将在其中创建缓存的资源组名称 | |
-| 大小 |缓存的大小。 有效值为：P1、P2、P3、P4、C0、C1、C2、C3、C4、C5、C6、250MB、1GB、2.5GB、6GB、13GB、26GB、53GB |1GB |
-| ShardCount |在启用群集的情况下创建高级缓存时要创建的分片数目。 有效值为：1、2、3、4、5、6、7、8、9、10 | |
-| SKU |指定缓存的 SKU。 有效值为：Basic、Standard、Premium |标准 |
+| 大小 |缓存的大小。 有效值是：P1、P2、P3、P4、C0、C1、C2、C3、C4、C5、C6、250MB、1GB、2.5GB、6GB、13GB、26GB、53GB |1GB |
+| ShardCount |在启用群集的情况下创建高级缓存时要创建的分片数目。 有效值是：1、2、3、4、5、6、7、8、9、10 | |
+| SKU |指定缓存的 SKU。 有效值是：基本、标准、高级 |Standard |
 | RedisConfiguration |指定 Redis 配置设置。 有关每个设置的详细信息，请参阅以下 [RedisConfiguration 属性](#redisconfiguration-properties)表。 | |
 | EnableNonSslPort |指出是否启用非 SSL 端口。 |False |
 | MaxMemoryPolicy |此参数已弃用 - 请改用 RedisConfiguration。 | |
 | StaticIP |在 VNET 中托管缓存时，指定缓存在子网中的唯一 IP 地址。 如果未提供此值，系统将从子网中选择一个。 | |
 | 子网 |在 VNET 中托管缓存时，指定要在其中部署缓存的子网。 | |
 | VirtualNetwork |在 VNET 中托管缓存时，指定要在其中部署缓存的 VNET 的资源 ID。 | |
-| KeyType |指定续订访问密钥时要重新生成哪个访问密钥。 有效值为：Primary、Secondary | |
+| KeyType |指定续订访问密钥时要重新生成哪个访问密钥。 有效值是：Primary、Secondary | |
 
 ### <a name="redisconfiguration-properties"></a>RedisConfiguration 属性
-| properties | 描述 | 定价层 |
+| properties | 说明 | 定价层 |
 | --- | --- | --- |
 | rdb-backup-enabled |是否已启用 [Redis 数据暂留](cache-how-to-premium-persistence.md) |仅限高级版 |
 | rdb-storage-connection-string |[Redis 数据暂留](cache-how-to-premium-persistence.md)存储帐户的连接字符串 |仅限高级版 |
@@ -332,7 +332,7 @@ ms.locfileid: "79278527"
 > * 不能从**标准**缓存向下缩放到**基本**缓存。
 > * 可从**基本**缓存缩放到**标准**缓存，但不能同时更改大小。 如果需要不同大小，则可以执行后续缩放操作以缩放为所需大小。
 > * 不能从**基本**缓存直接缩放到**高级**缓存。 必须在一个缩放操作中从**基本**缩放到**标准**，并在后续的缩放操作中从**标准**缩放到**高级**。
-> * 不能从较大的大小减小为 **C0 (250 MB)**。
+> * 不能从较大的大小减小为 **C0 (250 MB)** 。
 > 
 > 有关详细信息，请参阅[如何缩放 Azure Redis 缓存](cache-how-to-scale.md)。
 > 
@@ -776,8 +776,8 @@ ms.locfileid: "79278527"
 
 * [MSDN 上的 Azure Redis 缓存 cmdlet 文档](https://docs.microsoft.com/powershell/module/az.rediscache)
 * [Azure 资源管理器 Cmdlet](https://go.microsoft.com/fwlink/?LinkID=394765)：了解如何在 Azure 资源管理器模块中使用这些 cmdlet。
-* [使用资源组来管理 Azure 资源](../azure-resource-manager/templates/deploy-portal.md)：了解如何在 Azure 门户中创建和管理资源组。
+* [使用资源组管理 Azure 资源](../azure-resource-manager/templates/deploy-portal.md)：了解如何在 Azure 门户中创建和管理资源组。
 * [Azure 博客](https://azure.microsoft.com/blog/)：了解 Azure 中的新功能。
-* [Windows PowerShell 博客](https://blogs.msdn.com/powershell)：了解 Windows PowerShell 中的新功能。
-* [“你好，脚本编写专家！” 博客](https://blogs.technet.com/b/heyscriptingguy/)：从 Windows PowerShell 社区获取实用提示和技巧。
+* [Windows PowerShell 博客](https://devblogs.microsoft.com/powershell/)：了解 Windows PowerShell 中的新功能。
+* [“你好，脚本专家！”博客](https://blogs.technet.com/b/heyscriptingguy/)：从 Windows PowerShell 社区获取实用提示和技巧。
 
