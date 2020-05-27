@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: f1317989434cca9375c612c8af0525323c6dda3c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0348461e2a58bd8e71b8dff10667c512125d7b03
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82081653"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656706"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>创建和配置用于 Azure 磁盘加密的 Key Vault
 
@@ -31,7 +31,7 @@ Azure 磁盘加密使用 Azure Key Vault 来控制和管理磁盘加密密钥和
 以下快速入门说明了这些步骤：
 
 - [使用 Azure CLI 创建和加密 Windows VM](disk-encryption-cli-quickstart.md)
-- [使用 Azure PowerShell 创建和加密 Windows VM](disk-encryption-cli-quickstart.md)
+- [使用 Azure PowerShell 创建和加密 Windows VM](disk-encryption-powershell-quickstart.md)
 
 还可以根据需要生成或导入密钥加密密钥 (KEK)。
 
@@ -42,7 +42,7 @@ Azure 磁盘加密使用 Azure Key Vault 来控制和管理磁盘加密密钥和
 
 可以使用 [Azure CLI](/cli/azure/)、[Azure PowerShell Az 模块](/powershell/azure/overview)或 [Azure 门户](https://portal.azure.com)来完成本文中的步骤。
 
-当门户可通过浏览器访问时，Azure CLI 和 Azure PowerShell 需要本地安装;有关详细信息，请参阅适用[于 Windows 的 Azure 磁盘加密：安装工具](disk-encryption-windows.md#install-tools-and-connect-to-azure)。
+虽然可以通过浏览器访问门户，但 Azure CLI 和 Azure PowerShell 需要本地安装；有关详细信息，请参阅[适用于 Windows 的 Azure 磁盘加密：安装工具](disk-encryption-windows.md#install-tools-and-connect-to-azure)。
 
 ### <a name="connect-to-your-azure-account"></a>连接到 Azure 帐户
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
-ms.openlocfilehash: b0a596ee4c576ff98be302b15a86a8758b11ce25
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 01e7e6c84be13db839338928f8086bcceb2ea169
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596336"
+ms.locfileid: "83654424"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure 机器学习的强化学习（预览版）
 
@@ -49,7 +49,7 @@ ms.locfileid: "83596336"
  - 你自己的 Jupyter 笔记本服务器
 
     - 安装 [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
-    - 安装 [Azure 机器学习 RL SDK](https://review.docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py&branch=harnvirdebug)：`pip install --upgrade azureml-contrib-reinforcementlearning`
+    - 安装 [Azure 机器学习 RL SDK](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py)：`pip install --upgrade azureml-contrib-reinforcementlearning`
     - 创建[工作区配置文件](how-to-configure-environment.md#workspace)。
     - 运行虚拟网络[设置笔记本](https://aka.ms/azure-rl-env-setup)，打开用于分布式强化学习的网络端口。
 
@@ -210,7 +210,7 @@ else:
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>创建强化学习估算器
 
-本部分介绍如何使用 [ReinforcementLearningEstimator](https://review.docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py&branch=harnvirdebug) 将训练作业提交到 Azure 机器学习。
+本部分介绍如何使用 [ReinforcementLearningEstimator](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py) 将训练作业提交到 Azure 机器学习。
 
 Azure 机器学习使用估算器类来封装运行配置信息。 这样，你便可以轻松指定如何配置脚本执行。 有关 Azure 机器学习估算器模式的详细信息，请参阅[如何使用估算器训练模型](how-to-train-ml-models.md)。
 
