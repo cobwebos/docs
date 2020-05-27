@@ -6,7 +6,7 @@ ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: df237cdbb8944928641f2dbea2117bbef7ba9165
 ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/27/2020
 ms.locfileid: "74224419"

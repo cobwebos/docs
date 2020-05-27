@@ -10,7 +10,7 @@ ms.author: anavin
 ms.custom: include file
 ms.openlocfilehash: a9473f69d600a86ff71da69c7efe0dea3f2b0a08
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "76159258"

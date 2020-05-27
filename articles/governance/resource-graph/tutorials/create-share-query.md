@@ -1,14 +1,14 @@
 ---
 title: 教程：在 Azure 门户中管理查询
 description: 在本教程中，你会在 Azure 门户中创建 Resource Graph 查询并将这个新查询与其他人共享。
-ms.date: 11/21/2019
+ms.date: 05/20/2020
 ms.topic: tutorial
-ms.openlocfilehash: 00cb3f95112804c81beb6bce6fc35891e6197e60
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e63a92a4570a0713ed65e1090e4d77d25fb10f95
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74303955"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83637750"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>教程：在 Azure 门户中创建和共享 Azure Resource Graph 查询
 

@@ -1,5 +1,5 @@
 ---
-title: 将 Azure 自动缩放与 Linux 规模集模板中的来宾指标配合使用
+title: 结合 Linux 规模集模板中的来宾指标使用 Azure 自动缩放
 description: 了解如何使用 Linux 虚拟机规模集模板中的来宾指标执行自动缩放
 author: ju-shim
 ms.author: jushiman
@@ -11,20 +11,20 @@ ms.reviewer: avverma
 ms.custom: avverma
 ms.openlocfilehash: aa004cc3ad6c02937ae3c3c8bdb1d5ebd225f434
 ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/12/2020
 ms.locfileid: "83124799"
 ---
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>使用 Linux 规模集模板中的来宾指标执行自动缩放
 
-在 Azure 中，会从 VM 和规模集收集两类广泛的指标：主机指标和来宾指标。 粗略地讲，若要使用标准 CPU、磁盘和网络指标，则主机指标非常适合。 不过，如果需要更多指标，则应考虑使用来宾指标。
+在 Azure 中有两大类主要指标是从 VM 和规模集收集的：主机指标和来宾指标。 粗略地讲，如果想使用标准 CPU、磁盘和网络指标，则主机指标非常适合。 但是，如果需要选择更多的指标，则应考虑来宾指标。
 
-主机指标不需要其他设置，因为它们是由主机 VM 收集的，而来宾度量要求您在来宾 VM 中安装[Windows Azure 诊断扩展](../virtual-machines/windows/extensions-diagnostics-template.md)或[Linux Azure 诊断扩展](../virtual-machines/linux/diagnostic-extension.md)。 使用来宾指标而不是主机指标的一个常见原因是，与主机指标相比，来宾指标提供更大的指标选择范围。 内存消耗指标就是这样一个例子，它们只会通过来宾指标提供。 [此处](../azure-monitor/platform/metrics-supported.md)列出了支持的主机指标，[此处](../azure-monitor/platform/autoscale-common-metrics.md)列出了常用的来宾指标。 本文介绍如何修改[基本可行规模集模板](virtual-machine-scale-sets-mvss-start.md)，以根据 Linux 规模集的来宾指标使用自动缩放规则。
+主机指标不需要额外的设置，因为它们由主机 VM 收集；而来宾指标需要你在来宾 VM 中安装 [Windows Azure 诊断扩展](../virtual-machines/windows/extensions-diagnostics-template.md)或 [Linux Azure 诊断扩展](../virtual-machines/linux/diagnostic-extension.md)。 使用来宾指标而不是主机指标的一个常见原因是，与主机指标相比，来宾指标提供更大的指标选择范围。 内存消耗指标就是这样一个例子，它们只会通过来宾指标提供。 [此处](../azure-monitor/platform/metrics-supported.md)列出了支持的主机指标，[此处](../azure-monitor/platform/autoscale-common-metrics.md)列出了常用的来宾指标。 本文介绍如何修改[基本可行规模集模板](virtual-machine-scale-sets-mvss-start.md)，以根据 Linux 规模集的来宾指标使用自动缩放规则。
 
 ## <a name="change-the-template-definition"></a>更改模板定义
 
-在[此前的文章](virtual-machine-scale-sets-mvss-start.md)中，我们创建了基本的规模集模板。 我们现在将使用这个此前的模板并对其进行修改，以便创建一个模板来部署其自动缩放功能基于来宾指标的 Linux 规模集。
+在[前面的文章](virtual-machine-scale-sets-mvss-start.md)中，我们创建了一个基本规模集模板。 现在，我们将使用前面的模板并对其进行修改，以创建一个模板，该模板通过基于来宾指标的自动缩放来部署 Linux 规模集。
 
 首先，添加 `storageAccountName` 和 `storageAccountSasToken` 的参数。 诊断代理将指标数据存储在此存储帐户中的某个[表](../cosmos-db/table-storage-how-to-use-dotnet.md)内。 从 Linux 诊断代理版本 3.0 开始，不再支持使用存储访问密钥。 改为使用 [SAS 令牌](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
 

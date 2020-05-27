@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: b8dbbb2810277bef20cb3b9b47a63deeea3e0ff9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b97bae252b25c9ae2891506f08fc4955f84c1eb6
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79290465"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83593012"
 ---
 # <a name="what-is-azure-machine-learning"></a>什么是 Azure 机器学习？
 
@@ -23,7 +23,7 @@ Azure 机器学习可用于任何类型的机器学习，从传统 ml 到深度�
 
 开始在本地计算机上训练，然后横向扩展到云。 
 
-该服务还可与常用的开源工具（如 PyTorch、TensorFlow 和 scikit-learn）进行互操作。
+此服务还与常用的深度学习和强化学习开放源代码工具（如 PyTorch、TensorFlow、scikit-learn 和 Ray RLlib）进行互操作。 
 
 > [!VIDEO https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/player]
 
@@ -51,6 +51,8 @@ Azure 机器学习为其机器学习工作流提供了开发人员和数据科�
 + [机器学习 CLI](reference-azure-machine-learning-cli.md)
 
 + 使用开放源代码框架，如 PyTorch、TensorFlow 和 scikit-learn 等
+
++ 与 Ray RLlib 互操作的[强化学习](how-to-use-reinforcement-learning.md)
 
 甚至可以使用 [MLflow 跟踪指标并部署模型](how-to-use-mlflow.md)或使用 Kubeflow [生成端到端工作流管道](https://www.kubeflow.org/docs/azure/)。
 

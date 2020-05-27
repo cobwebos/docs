@@ -6,7 +6,7 @@ ms.date: 08/12/2019
 ms.author: jingwang
 ms.openlocfilehash: 2e90d218aa6dc90746ba0e928fb3393f0bdb5e5a
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "68966356"

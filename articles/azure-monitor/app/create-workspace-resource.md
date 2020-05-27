@@ -1,46 +1,46 @@
 ---
-title: 新建 Azure Monitor Application Insights 基于工作区的资源 |Microsoft Docs
-description: 了解启用新 Azure Monitor Application Insights 基于工作区的资源所需的步骤。
+title: 新建基于工作区的 Azure Monitor Application Insights 资源 | Microsoft Docs
+description: 了解启用基于工作区的新 Azure Monitor Application Insights 资源所需的步骤。
 author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: 65c2220bd3e9ea93e562b256e84796aed9046d00
 ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/12/2020
 ms.locfileid: "83211403"
 ---
 # <a name="workspace-based-application-insights-resources-preview"></a>基于工作区的 Application Insights 资源（预览版）
 
-基于工作区的资源支持 Application Insights 和 Log Analytics 之间的完全集成。 你现在可以选择将 Application Insights 遥测发送到公共 Log Analytics 工作区，这允许你完全访问 Log Analytics 的所有功能，同时将应用程序、基础结构和平台日志置于单个合并位置。
+基于工作区的资源支持 Application Insights 与 Log Analytics 之间的完全集成。 你现在可以选择将 Application Insights 遥测数据发送到一个公用 Log Analytics 工作区，这样就可以全权访问 Log Analytics 的所有功能，同时将应用程序、基础结构和平台日志置于单一的合并位置中。
 
-这也允许跨资源使用常见的基于角色的访问控制（RBAC），并消除跨应用/工作区查询的需要。
+这样还可以跨资源实现公用的基于角色的访问控制 (RBAC)，并消除进行跨应用/工作区查询的需要。
 
 > [!NOTE]
-> 基于工作区的 Application Insights 资源的数据引入和保留通过数据所在 Log Analytics 工作区进行计费。 [详细了解]( https://docs.microsoft.com/azure/azure-monitor/app/pricing#workspace-based-application-insights)基于工作区的 Application Insights 资源的计费。
+> 基于工作区的 Application Insights 资源的数据引入和保留操作通过数据所在的 Log Analytics 工作区计费。 [详细了解]( https://docs.microsoft.com/azure/azure-monitor/app/pricing#workspace-based-application-insights)基于工作区的 Application Insights 资源的计费。
 
-若要测试新体验，请登录到[Azure 门户](https://portal.azure.com)，并创建 Application Insights 资源：
+若要测试新体验，请登录到 [Azure 门户](https://portal.azure.com)，并创建 Application Insights 资源：
 
 ![基于工作区的 Application Insights 资源](./media/create-workspace-resource/create-workspace-based.png)
 
-如果还没有现有 Log Analytics 工作区，请[参阅 Log Analytics 工作区创建文档](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)。
+如果你还没有现有的 Log Analytics 工作区，请[参阅 Log Analytics 工作区创建文档](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)。
 
-对于基于公共预览**工作区的资源，当前限制为美国西部2、美国东部和美国中南部。**
+对于公共预览版，**基于工作区的资源当前仅限在“美国西部 2”、“美国东部”和“美国中南部”使用。**
 
-创建资源后，你将在 "**概述**" 窗格中看到相应的工作区信息：
+创建资源后，可在“概览”窗格中看到相应的工作区信息：
 
 ![工作区名称](./media/create-workspace-resource/workspace-name.png)
 
-单击蓝色链接文本将转到关联的 Log Analytics 工作区，你可以在其中利用新的统一工作区查询环境。
+单击蓝色链接文本会转到关联的 Log Analytics 工作区，你可以在其中利用新的统一工作区查询环境。
 
 > [!NOTE]
-> 我们仍提供 Application Insights 体验中 Application Insights 经典资源查询、工作簿和基于日志的警报的完全向后兼容性。 若要查询/查看[基于新的基于工作区的表结构/架构](apm-tables.md)，必须先导航到 Log Analytics 工作区。 在预览期间，从 "Application Insights" 窗格中选择 "**日志**" 可访问经典 Application Insights 查询体验。
+> 我们仍然针对 Application Insights 体验中的 Application Insights 经典资源查询、工作簿和基于日志的警报提供完全的后向兼容性。 若要根据[新的基于工作区的表结构/架构](apm-tables.md)进行查询/查看，必须先导航到 Log Analytics 工作区。 在预览版期间，从 Application Insights 窗格中选择“日志”即可访问经典 Application Insights 查询体验。
 
 ## <a name="copy-the-connection-string"></a>复制连接字符串
 
-[连接字符串]()标识您要与遥测数据关联的资源。 它还允许你修改资源将用作遥测目标的终结点。 你将需要复制连接字符串，并将其添加到你的应用程序的代码或环境变量。
+[连接字符串]()用于标识要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
 
 ![单击并复制检测密钥](./media/create-new-resource/instrumentation-key.png)
 
@@ -50,26 +50,26 @@ ms.locfileid: "83211403"
 
 ### <a name="code-based-application-monitoring"></a>基于代码的应用程序监视
 
-对于基于代码的应用程序监视，只需安装适当的 Application Insights SDK，并将其指向新创建的资源的检测密钥或连接字符串。  
+对于基于代码的应用程序监视，只需安装合适的 Application Insights SDK，并将其指向新建资源的检测密钥或连接字符串。  
 
-有关设置用于基于代码的监视的 Application Insights SDK 的详细文档，请参阅特定于语言/框架的文档：
+若要详细了解如何设置 Application Insights SDK 以进行基于代码的监视，请参阅特定于语言/框架的文档：
 
 - [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)
-- [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)
-- [& 新式控制台应用程序（.NET/.NET Core）的后台任务](https://docs.microsoft.com/azure/azure-monitor/app/worker-service)
-- [经典控制台应用程序（.NET）](https://docs.microsoft.com/azure/azure-monitor/app/console) 
-- [.Java](https://docs.microsoft.com/azure/azure-monitor/app/java-get-started?tabs=maven)
+- [ASP.NET Core ](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)
+- [后台任务和新式控制台应用程序 (.NET/.NET Core)](https://docs.microsoft.com/azure/azure-monitor/app/worker-service)
+- [经典控制台应用程序 (.NET)](https://docs.microsoft.com/azure/azure-monitor/app/console) 
+- [Java ](https://docs.microsoft.com/azure/azure-monitor/app/java-get-started?tabs=maven)
 - [JavaScript](https://docs.microsoft.com/azure/azure-monitor/app/javascript)
 - [Node.js](https://docs.microsoft.com/azure/azure-monitor/app/nodejs)
 - [Python](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python)
 
-### <a name="codeless-monitoring-and-visual-studio-resource-creation"></a>无代码置备监视和 Visual Studio 资源创建
+### <a name="codeless-monitoring-and-visual-studio-resource-creation"></a>无代码监视和 Visual Studio 资源创建
 
-对于 Azure Functions 和 Azure 应用服务等服务的无代码置备监视，你还需要先创建基于工作区的 Application Insights 资源，然后在监视配置阶段指向该资源。
+对于 Azure Functions 和 Azure 应用服务等服务的无代码监视，还需要先创建基于工作区的 Application Insights 资源，然后在监视配置阶段指向该资源。
 
 尽管这些服务提供了在其自己的资源创建过程中创建新 Application Insights 资源的选项，但通过这些 UI 选项创建的资源当前仅限于经典 Application Insights 体验。
 
-这同样适用于 Visual Studio for ASP.NET 和 ASP.NET Core 中 Application Insights 资源创建体验。 您必须从使用 Visual Studio 监视启用 UI 的中选择一个基于工作区的现有资源。 从 Visual Studio 中选择 "创建新资源" 会限制创建经典 Application Insights 资源。
+这同样适用于 Visual Studio for ASP.NET 和 Visual Studio for ASP.NET Core 中的 Application Insights 资源创建体验。 你必须从 Visual Studio 监视启用 UI 中选择一个基于工作区的现有资源。 选择从 Visual Studio 中创建新资源时，只能创建经典 Application Insights 资源。
 
 ## <a name="creating-a-resource-automatically"></a>自动创建资源
 
@@ -81,7 +81,7 @@ ms.locfileid: "83211403"
  az extension add -n application-insights
 ```
 
-如果不运行此 `az extension add` 命令，将看到一条错误消息，指出：`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
+如果不运行 `az extension add` 命令，则会看到一条错误消息，指出：`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
 
 现在，可以运行以下命令来创建 Application Insights 资源：
 
@@ -104,11 +104,11 @@ az monitor app-insights component create --app
 az monitor app-insights component create --app demoApp --location eastus --kind web -g my_resource_group --workspace "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test1234/providers/microsoft.operationalinsights/workspaces/test1234555"
 ```
 
-有关此命令的完整 Azure CLI 文档，请参阅[Azure CLI 文档](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)。
+有关此命令的完整 Azure CLI 文档，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-`New-AzApplicationInsights`PowerShell 命令当前不支持创建基于工作区的 Application Insights 资源。 若要使用 PowerShell 创建基于工作区的资源，可以使用以下 Azure 资源管理器模板，并使用 PowerShell 进行部署。
+PowerShell 命令 `New-AzApplicationInsights` 当前不支持创建基于工作区的 Application Insights 资源。 若要使用 PowerShell 创建基于工作区的资源，可以使用以下 Azure 资源管理器模板，并使用 PowerShell 进行部署。
 
 ### <a name="azure-resource-manager-templates"></a>Azure 资源管理器模板
 
@@ -191,7 +191,7 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 
 创建基于工作区的 Application Insights 资源后，可以修改关联的 Log Analytics 工作区。
 
-从 "Application Insights 资源" 窗格中，选择 "**属性**" "  >  **更改工作区**"  >  **Log Analytics 工作**区
+从“Application Insights 资源”窗格中，选择“属性” > “更改工作区” > “Log Analytics 工作区”  
 
 ## <a name="next-steps"></a>后续步骤
 

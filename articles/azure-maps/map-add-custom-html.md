@@ -1,6 +1,6 @@
 ---
-title: 向 map 添加 HTML 标记 |Microsoft Azure 映射
-description: 在本文中，你将了解如何使用 Microsoft Azure Map Web SDK 向地图添加 HTML 标记。
+title: 将 HTML 标记添加到地图 | Microsoft Azure Maps
+description: 本文介绍如何使用 Microsoft Azure Maps Web SDK 向地图添加 HTML 标记。
 author: Philmea
 ms.author: philmea
 ms.date: 07/29/2019
@@ -11,7 +11,7 @@ manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 30d9cf9848a8d99505bf9f9c97bef5aaa31065ee
 ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/12/2020
 ms.locfileid: "83119284"
@@ -24,13 +24,13 @@ ms.locfileid: "83119284"
 > HTML 标记不连接到数据源。 相反，位置信息将被直接添加到标记中，标记将被添加到地图 `markers` 属性中，即 [HtmlMarkerManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager?view=azure-iot-typescript-latest)。
 
 > [!IMPORTANT]
-> 与 Azure Maps Web 控件中使用 WebGL 进行呈现的大多数层不同，HTML 标记使用传统的 DOM 元素进行呈现。 同样，添加到页面中的 HTML 标记越多，DOM 元素越多。 添加几百个 HTML 标记后，可能会降低性能。 对于较大的数据集，可以考虑对数据进行聚类分析，或者使用符号或气泡层。
+> 与 Azure Maps Web 控件中使用 WebGL 进行呈现的大多数层不同，HTML 标记使用传统的 DOM 元素进行呈现。 因此，添加到页面的 HTML 标记越多，DOM 元素就越多。 添加几百个 HTML 标记后，可能会降低性能。 对于较大的数据集，可以考虑对数据进行聚类分析，或者使用符号或气泡层。
 
 ## <a name="add-an-html-marker"></a>添加 HTML 标记
 
-[HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest)类具有默认样式。 可以通过设置标记的颜色和文本选项自定义标记。 HTML 标记类的默认样式是包含和占位符的 SVG 模板 `{color}` `{text}` 。 在 HTML 标记选项中设置 "颜色" 和 "文本" 属性以便快速自定义。 
+[HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest) 类具有默认样式。 可以通过设置标记的颜色和文本选项自定义标记。 HTML 标记类的默认样式是具有 `{color}` 和 `{text}` 占位符的 SVG 模板。 在 HTML 标记选项中设置颜色和文本属性，以便进行快速自定义。 
 
-下面的代码创建一个 HTML 标记，并将 color 属性设置为 "DodgerBlue"，并将 text 属性设置为 "10"。 弹出项附加到标记， `click` 事件用于切换弹出窗口的可见性。
+下面的代码创建一个 HTML 标记，并将 color 属性设置为“DodgerBlue”，将 text 属性设置为“10”。 一个弹出窗口将附加到该标记，`click` 事件用于切换弹出窗口的可见性。
 
 ```javascript
 //Create an HTML marker and add it to the map.
@@ -69,7 +69,7 @@ Html 标记的默认 `htmlContent` 是 SVG 模板，其中包含文件夹 `{colo
 </iframe>
 
 > [!TIP]
-> Azure Maps web SDK 提供了可与 HTML 标记一起使用的多个 SVG 图像模板。 有关详细信息，请参阅[如何使用映像模板](how-to-use-image-templates-web-sdk.md)文档。
+> Azure Maps Web SDK 提供了多个可与 HTML 标记一起使用的 SVG 图像模板。 有关详细信息，请参阅[如何使用图像模板](how-to-use-image-templates-web-sdk.md)文档。
 
 ## <a name="add-a-css-styled-html-marker"></a>添加 CSS 样式化的 HTML 标记
 
@@ -82,7 +82,7 @@ HTML 标记的优点之一是，可以使用 CSS 来实现许多有用的自定�
 
 ## <a name="draggable-html-markers"></a>可拖动的 HTML 标记
 
-此示例演示如何使 HTML 标记可拖动。 HTML 标记支持 `drag` 、 `dragstart` 和 `dragend` 事件。
+此示例演示如何使 HTML 标记可拖动。 HTML 标记支持 `drag`、`dragstart` 和 `dragend` 事件。
 
 <br/>
 

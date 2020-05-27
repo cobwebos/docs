@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 8752585e731f905636f57d31741e2be67f7140b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95cb29e871cce2ba600ab654d48c685b90ed027e
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335036"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80573254"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>网络限制 - Azure 资源管理器
 以下限制仅适用于每个订阅每个订阅通过**Azure 资源管理器**管理的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
@@ -72,10 +72,12 @@ ms.locfileid: "80335036"
 | 每个 NIC 的规则（跨 NIC 上的所有 IP） | 300                           |
 | 前端 IP 配置              | 600                           |
 | 后端池大小                       | 1，000 个 IP 配置，单个虚拟网络 |
+| 每个负载平衡器<sup>的后端资源 1<sup> | 150                   |
 | 高可用性端口                 | 每个内部前端 1 个       |
 | 每个负载均衡器的出站规则        | 20                            |
 | [TCP 空闲超时](https://docs.microsoft.com/azure/load-balancer/load-balancer-tcp-idle-timeout#tcp-idle-timeout) | 4 分钟/30 分钟          |
 
+<sup>1</sup>限制是最多 150 种资源，采用独立虚拟机资源、可用性集资源和虚拟机规模集资源的任意组合。
 
 **基本负载平衡器**
 

@@ -11,46 +11,46 @@ ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: bbefa2a5d40d047d8885e4a0db8239d79a24feae
 ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/12/2020
 ms.locfileid: "83120090"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>启用和管理 blob 的软删除
 
-软删除可防止意外或错误地修改或删除 blob 数据。 为存储帐户启用软删除后，在指定的保持期内，在删除该存储帐户中的 blob、blob 版本（预览版）和快照之后，可以恢复这些 blob。
+软删除可防止意外地或错误地修改或删除 blob 数据。 为存储帐户启用了软删除时，该存储帐户中的 blob、blob 版本（预览版）和快照被删除后可以在指定的保留期内恢复。
 
-如果某个应用程序或其他存储帐户用户可能无意中修改或删除了数据，则 Microsoft 建议启用软删除。
+如果你的数据有可能被应用程序或其他存储帐户用户意外修改或删除，Microsoft 建议启用软删除。
 
-本文介绍如何开始软删除。
+本文介绍如何开始使用软删除。
 
 ## <a name="enable-soft-delete"></a>启用软删除
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 
-使用 Azure 门户为存储帐户上的 Blob 启用软删除：
+使用 Azure 门户为存储帐户上的 blob 启用软删除：
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择存储帐户。 
 
-2. 导航到“Blob 服务”  下的“数据保护”  选项。
+2. 导航到“Blob 服务”下的“数据保护”选项。
 
-3. 单击“Blob 软删除”**** 下的“启用”****
+3. 单击“Blob 软删除”下的“启用”
 
-4. 在“保留策略”**** 下输入要保留** 的天数
+4. 在“保留策略”下输入要保留的天数
 
-5. 选择“保存”  按钮以确认“数据保护”设置
+5. 选择“保存”按钮以确认数据保护设置
 
 ![](media/soft-delete-enable/storage-blob-soft-delete-portal-configuration.png)
 
-若要查看软删除 blob，请选择“显示已删除 blob”复选框****。
+若要查看软删除 blob，请选择“显示已删除 blob”复选框。
 
 ![](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted.png)
 
-若要查看给定 blob 的软删除快照，请选择相应 blob 并单击“查看快照”****。
+若要查看给定 blob 的软删除快照，请选择相应 blob 并单击“查看快照”。
 
 ![](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots.png)
 
-请确保已选择“显示已删除快照”复选框****。
+请确保已选择“显示已删除快照”复选框。
 
 ![](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots-check.png)
 
@@ -58,11 +58,11 @@ ms.locfileid: "83120090"
 
 ![](media/soft-delete-enable/storage-blob-soft-delete-portal-properties.png)
 
-请记住，撤销删除 blob 还将撤销删除所有相关快照。 若要撤销删除活动 blob 的软删除快照，请单击相应 blob 并选择“撤销删除所有快照”****。
+请记住，撤销删除 blob 还将撤销删除所有相关快照。 若要撤销删除活动 blob 的软删除快照，请单击相应 blob 并选择“撤销删除所有快照”。
 
 ![](media/soft-delete-enable/storage-blob-soft-delete-portal-undelete-all-snapshots.png)
 
-撤销删除 blob 的快照后，可单击“提升”将快照复制到根 blob，从而将 blob 还原到快照****。
+撤销删除 blob 的快照后，可单击“提升”将快照复制到根 blob，从而将 blob 还原到快照。
 
 ![](media/soft-delete-enable/storage-blob-soft-delete-portal-promote-snapshot.png)
 
@@ -85,7 +85,7 @@ $MatchingAccounts | $account = Get-AzStorageAccount -ResourceGroupName myresourc
    Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context | Select-Object -ExpandProperty DeleteRetentionPolicy
 ```
 
-若要恢复意外删除的 blob，请对这些 blob 调用撤销删除。 请记住，如果对活动和软删除 blob 调用撤销删除 Blob，则会将所有相关软删除快照还原为活动状态****。 下面的示例对容器中的所有软删除和活动 blob 调用了撤销删除：
+若要恢复意外删除的 blob，请对这些 blob 调用撤销删除。 请记住，如果对活动和软删除 blob 调用撤销删除 Blob，则会将所有相关软删除快照还原为活动状态。 下面的示例对容器中的所有软删除和活动 blob 调用了撤销删除：
 
 ```powershell
 # Create a context by specifying storage account name and key
@@ -153,7 +153,7 @@ serviceProperties.DeleteRetentionPolicy.RetentionDays = RetentionDays;
 blobClient.SetServiceProperties(serviceProperties);
 ```
 
-若要恢复意外删除的 blob，请对这些 blob 调用撤销删除。 请记住，如果对活动和软删除 blob 调用撤销删除 Blob，则会将所有相关软删除快照还原为活动状态****。 下面的示例对容器中的所有软删除和活动 blob 调用了撤销删除：
+若要恢复意外删除的 blob，请对这些 blob 调用撤销删除。 请记住，如果对活动和软删除 blob 调用撤销删除 Blob，则会将所有相关软删除快照还原为活动状态。 下面的示例对容器中的所有软删除和活动 blob 调用了撤销删除：
 
 ```csharp
 // Recover all blobs in a container
@@ -184,4 +184,4 @@ blockBlob.StartCopy(copySource);
 ## <a name="next-steps"></a>后续步骤
 
 - [Blob 存储的软删除](soft-delete-overview.md)
-- [Blob 版本控制（预览）](versioning-overview.md)
+- [Blob 版本控制（预览版）](versioning-overview.md)

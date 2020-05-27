@@ -10,7 +10,7 @@ ms.author: kgremban
 ms.custom: include file
 ms.openlocfilehash: b0b3825e5afe31f16553a5c7cacbe8cb1fb40295
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "70050287"

@@ -4,16 +4,16 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
-ms.openlocfilehash: fcfc86a3aca4aae042ce3589988aa91d821dce98
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 2d95055e79356b9e0fe9c4c0e64f5935619204b3
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76842089"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81112876"
 ---
 1. 在 Visual Studio Code 中，按 F1 键打开命令面板。 在命令面板中，搜索并选择 `Azure Functions: Open in portal`。
 
-1. 选择你的函数应用，然后按 Enter。 随即将在 [Azure 门户](https://portal.azure.com)中打开函数应用页面。
+1. 选择你的函数应用，然后按 Enter。 随即将在 Azure 门户中打开函数应用页面。
 
 1. 在“概述”选项卡上，选择“资源组”下的命名连接   。
 

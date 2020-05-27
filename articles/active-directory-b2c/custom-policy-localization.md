@@ -7,21 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/11/2020
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: be12bce8fa29076621bec35228838a4ebdd97433
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 090fecea44c7881920fcd087304f33f935a5e907
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80545871"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636266"
 ---
 # <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略来本地化应用程序的用户界面
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-你可以使用 Azure Active Directory B2C (Azure AD B2C) 中的语言自定义来容纳不同的语言以满足客户需求。 Microsoft 为[36 语言](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-language-customization#supported-languages)提供翻译，但你也可以为任何语言提供自己的翻译。 即使体验是针对一种语言提供的，也可以自定义页面上的任何文本。 
+你可以使用 Azure Active Directory B2C (Azure AD B2C) 中的语言自定义来容纳不同的语言以满足客户需求。 Microsoft 提供 [36 种语言](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-language-customization#supported-languages)的翻译，但你也可以为任何语言提供自己的翻译。 即使体验是针对一种语言提供的，也可以自定义页面上的任何文本。 
 
 本文将介绍如何在用户旅程的策略中支持多个区域设置或语言。 本地化需要执行三个步骤：设置受支持语言的显式列表，提供特定于语言的字符串和集合，以及编辑页面的[内容定义](contentdefinitions.md)。 
 
@@ -241,21 +241,21 @@ ms.locfileid: "80545871"
 ### <a name="upload-the-custom-policy"></a>上传自定义策略
 
 1. 保存扩展文件。
-1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录  。
-1. 搜索并选择“Azure AD B2C”  。
-1. 在“策略”下，选择“Identity Experience Framework”。  
-1. 选择“上传自定义策略”  。
+1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
+1. 搜索并选择“Azure AD B2C”。
+1. 在“策略”下，选择“Identity Experience Framework”。 
+1. 选择“上传自定义策略”。
 1. 上传以前已更改的扩展文件。
 
-### <a name="test-the-custom-policy-by-using-run-now"></a>使用“立即运行”测试自定义策略 
+### <a name="test-the-custom-policy-by-using-run-now"></a>使用“立即运行”测试自定义策略
 
-1. 选择已上传的策略，然后选择“立即运行”。 
+1. 选择已上传的策略，然后选择“立即运行”。
 1. 你应该能够看到已本地化的注册或登录页面。
 1. 单击注册链接，你应该能够看到已本地化的注册页面。
 1. 将浏览器默认语言切换为西班牙语。 还可以将查询字符串参数 `ui_locales` 添加到授权请求。 例如： 
 
 ```http
-https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1A_signup_signin&client_id=0239a9cc-309c-4d41-12f1-31299feb2e82&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login&ui_locales=es
+https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1A_signup_signin/oauth2/v2.0/authorize&client_id=0239a9cc-309c-4d41-12f1-31299feb2e82&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login&ui_locales=es
 ```
 
 ## <a name="next-steps"></a>后续步骤

@@ -6,7 +6,7 @@ ms.date: 07/30/2019
 ms.author: erhopf
 ms.openlocfilehash: ffefde7d692950fc272ab2502ad8afe254bf48f1
 ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/27/2020
 ms.locfileid: "73590420"

@@ -10,16 +10,24 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 02/28/2020
 ms.author: pafarley
-ms.openlocfilehash: 82e9c9a6dd8dc18f186a21e72a1a3d205094b707
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: bed9424fd7e7dfcb03610fb9d7796cefc5b016be
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80155182"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589085"
 ---
 # <a name="whats-new-in-computer-vision"></a>计算机视觉中的新增功能
 
-了解服务中的新增功能。 这些项可能包括发布说明、视频、博客文章和其他类型的信息。 将此页加入书签，以随时了解服务的最新信息。
+了解服务中的新增功能。 这些项可能包括发布说明、视频、博客文章和其他类型的信息。 请将本页加入书签，以随时了解该服务的最新信息。
+
+## <a name="may-2020"></a>2020 年 5 月
+计算机视觉 API v3.0 正式发布，并对[读取 API](concept-recognizing-text.md) 进行了更新：
+
+* 支持英语、荷兰语、法语、德语、意大利语、葡萄牙语和西班牙语
+* 准确度改进
+* 每个已提取单词的置信度分数
+* 新输出格式
 
 ## <a name="march-2020"></a>2020 年 3 月
 
@@ -30,7 +38,7 @@ ms.locfileid: "80155182"
 ### <a name="read-api-30-preview"></a>Read API 3.0 预览版
 
 现在，可以选择使用 Read API 3.0 版从图像中提取印刷体文本或手写文本。 与早期版本相比，3.0 版提供了：
-* 改进的准确度
+* 准确度改进
 * 新输出格式
 * 每个已提取单词的置信度分数
 * 使用附加的语言参数同时支持西班牙语和英语

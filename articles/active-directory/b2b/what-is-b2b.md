@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 02/12/2020
+ms.date: 05/19/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 167c7f7aa3dbf967575c0ee8905821fb9d3f77ce
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0effb6bb6e3d3f80775a3cee1ad8a63013a78805
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80050725"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585806"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>什么是 Azure Active Directory B2B 中的来宾用户访问权限？
 
@@ -88,6 +88,19 @@ ms.locfileid: "80050725"
 
 - 使用 [Azure AD 权利管理](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview)配置[管理外部用户访问权限](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users#how-access-works-for-external-users)的策略。
 - 使用 [B2B 协作邀请 API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) 自定义载入体验。
+
+## <a name="integrate-with-identity-providers"></a>与标识提供者集成
+
+Azure AD 支持外部标识提供者，如 Facebook、Microsoft 帐户、Google 或企业标识提供者。 可以设置与标识提供者的联合，这样外部用户就能使用现有的社交或企业帐户登录，而不用专门为应用新建一个帐户。 详细了解外部标识的标识提供者。
+
+![显示“标识提供者”页的屏幕截图](media/what-is-b2b/identity-providers.png)
+
+
+## <a name="create-a-self-service-sign-up-user-flow-preview"></a>创建自助注册用户流（预览）
+
+使用自助注册用户流，可以为要访问应用的外部用户创建注册体验。 在注册流中，可以提供不同的社交或企业标识提供者选项，并收集用户信息。 了解自助注册及其设置方法。
+
+![显示“用户流”页的屏幕截图](media/what-is-b2b/self-service-sign-up-user-flow-overview.png)
 
 ## <a name="next-steps"></a>后续步骤
 

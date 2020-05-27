@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 02/20/2020
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: b6f987eb283edea7f2d8e6b207b5b4e5b14f9120
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7a323bd9b9c605363963d5a25d1746727e379553
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81393183"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587589"
 ---
 # <a name="what-is-azure-event-grid"></a>什么是 Azure 事件网格？
 
@@ -52,25 +52,25 @@ ms.locfileid: "81393183"
 
 有关每个处理程序的功能的完整详细信息及相关文章，请参阅[事件处理程序](event-handlers.md)。 当前，以下 Azure 服务支持从事件网格处理事件： 
 
-* [Azure 自动化](event-handlers.md#azure-automation)
-* [Azure Functions](event-handlers.md#azure-functions)
-* [事件中心](event-handlers.md#event-hubs)
-* [混合连接](event-handlers.md#hybrid-connections)
-* [逻辑应用](event-handlers.md#logic-apps)
+* [Azure 自动化](handler-webhooks.md#azure-automation)
+* [Azure Functions](handler-functions.md)
+* [事件中心](handler-event-hubs.md)
+* [中继混合连接](handler-relay-hybrid-connections.md)
+* [逻辑应用](handler-webhooks.md#logic-apps)
 * [Power Automate（之前称为 Microsoft Flow）](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
-* [服务总线](event-handlers.md#service-bus)
-* [队列存储](event-handlers.md#queue-storage)
-* [WebHook](event-handlers.md#webhooks)
+* [服务总线](handler-service-bus.md)
+* [队列存储](handler-storage-queues.md)
+* [WebHook](handler-webhooks.md)
 
 ## <a name="concepts"></a>概念
 
 在可以开始进行操作的 Azure 事件网格中有五个概念：
 
-*  事件 - 发生了什么。
+* 事件 - 发生了什么。
 * **事件源** - 事件发生的地点。
-*  主题 - 其中发布者发送事件的终结点。
+* 主题 - 其中发布者发送事件的终结点。
 * **事件订阅** - 用于路由事件，有时用于多个处理程序的终结点或内置机制。 订阅还用于处理程序，以便智能地筛选传入事件。
-*  事件处理程序 - 对事件作出反应的应用或服务。
+* 事件处理程序 - 对事件作出反应的应用或服务。
 
 有关这些概念的详细信息，请参阅 [Azure 事件网格中的概念](concepts.md)。
 
@@ -78,14 +78,14 @@ ms.locfileid: "81393183"
 
 下面是 Azure 事件网格中的一些主要功能：
 
-*  简洁性 - 指向并单击从 Azure 资源到任何事件处理程序或终结点的目标事件。
+* 简洁性 - 指向并单击从 Azure 资源到任何事件处理程序或终结点的目标事件。
 * **高级筛选** - 筛选事件类型或事件发布路径，以确保事件处理程序仅接收相关的事件。
 * **扇出** - 订阅到相同事件的多个终结点，以将该事件的副本发送到所需的所有位置。
 * **可靠性** - 使用指数退避算法在 24 小时内重试，以确保事件成功传送。
-*  按事件支付 - 仅支付事件网格的使用量。
-*  高吞吐量 - 通过对每秒数以百万计事件的支持，在事件网格上生成大量工作负荷。
-*  内置事件 - 使用资源定义的内置事件快速启动和运行。
-*  自定义事件 - 在应用中使用事件网格路由、筛选并可靠地传送自定义事件。
+* 按事件支付 - 仅支付事件网格的使用量。
+* 高吞吐量 - 通过对每秒数以百万计事件的支持，在事件网格上生成大量工作负荷。
+* 内置事件 - 使用资源定义的内置事件快速启动和运行。
+* 自定义事件 - 在应用中使用事件网格路由、筛选并可靠地传送自定义事件。
 
 有关事件网格、事件中心和服务总线之间的比较，请参阅[在传送消息的 Azure 服务之间进行选择](compare-messaging-services.md)。
 
