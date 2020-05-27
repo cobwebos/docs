@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 34a1495d1a14e35bc5a94bfc01f4034c6fd6de72
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fb0293c66662c86723c31baebeed42dd42d33413
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596056"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677813"
 ---
 # <a name="creator-for-indoor-maps"></a>用于室内定位的 Creator
 
@@ -35,7 +35,7 @@ Creator 通过转换上传的绘图包收集室内定位数据。 此绘图包�
 
 ## <a name="convert-a-drawing-package"></a>转换绘图包
 
-[Azure Maps 转换服务](https://docs.microsoft.com/rest/api/maps/data/conversion)可以将上传的绘图包转换为室内定位数据。 转换服务还将验证包。 验证问题分为两类：错误和警告。 如果检测到任何错误，转换过程将失败。 如果检测到警告，转换将成功。 尽管如此，仍建议你审阅并解决所有警告。 警告表示转换的一部分被忽略或自动修复。 如果不解决警告，可能会导致后续进程出错。 有关详细信息，请参阅[绘图包警告和错误](drawing-conversion-error-codes.md)。
+[Azure Maps 转换服务](https://docs.microsoft.com/rest/api/maps/conversion)可以将上传的绘图包转换为室内定位数据。 转换服务还将验证包。 验证问题分为两类：错误和警告。 如果检测到任何错误，转换过程将失败。 如果检测到警告，转换将成功。 尽管如此，仍建议你审阅并解决所有警告。 警告表示转换的一部分被忽略或自动修复。 如果不解决警告，可能会导致后续进程出错。 有关详细信息，请参阅[绘图包警告和错误](drawing-conversion-error-codes.md)。
 
 当发生错误时，转换服务会提供指向 [Azure Maps 绘图错误可视化工具](drawing-error-visualizer.md)独立 Web 应用程序的链接。 可以使用“绘图错误可视化工具”来检查在转换过程中出现的[绘图包警告和错误](drawing-conversion-error-codes.md)。 修复错误后，可以尝试上传和转换包。
 
