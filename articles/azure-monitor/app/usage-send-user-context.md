@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.openlocfilehash: beb5a0f7ad3733aaf12b0880af4fba23a705a7e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ecdcc8a84cdccb05ec514003d63f808583d719c9
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670927"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797684"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>发送用户上下文 ID 以启用 Azure Application Insights 中的使用体验
 
@@ -22,7 +22,7 @@ Application Insights 通过一套产品使用工具监视并跟踪用户：
 - [用户、会话、事件](https://docs.microsoft.com/azure/application-insights/app-insights-usage-segmentation)
 - [漏斗图](https://docs.microsoft.com/azure/application-insights/usage-funnels)
 - [保留](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention)队列
-- [工作簿](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
+- [工作簿](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
 
 为了跟踪用户在各个时间进行的操作，Application Insights 需要每个用户或会话的 ID。 在每个自定义事件或页面视图中包含以下 ID。
 
@@ -134,4 +134,4 @@ namespace MvcWebRole.Telemetry
     - [用户、会话和事件](usage-segmentation.md)
     - [漏斗图](usage-funnels.md)
     - [保留](usage-retention.md)
-    - [工作簿](../../azure-monitor/app/usage-workbooks.md)
+    - [工作簿](../../azure-monitor/platform/workbooks-overview.md)

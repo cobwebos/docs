@@ -74,6 +74,8 @@
           href: tutorial-setup-vscode-extension.md
         - name: 训练并部署 TensorFlow 图像分类模型
           href: tutorial-train-deploy-image-classification-model-vscode.md
+    - name: 使用资源管理器模板创建工作区
+      href: tutorial-resource-manager-workspace.md
 - name: 示例
   items:
     - name: Jupyter Notebook

@@ -6,18 +6,16 @@ ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/30/2020
-ms.openlocfilehash: f9f789d2f2c6c21e38f241b445c72b330c689a8d
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 17f71d1c383c72fab748a9bdb789158095616f2d
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930414"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779872"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-a-resource-manager-template"></a>快速入门：使用资源管理器模板在 Azure 中部署容器实例
 
-使用 Azure 容器实例在 Azure 中快速方便地运行无服务器 Docker 容器。 当你不需要像 AzureKubernetes 服务这样的完整容器业务流程平台时，可以按需将应用程序部署到容器实例。
-
-在本快速入门中，你将使用 Azure 资源管理器模板部署一个独立的 Docker 容器，并使其 Web 应用程序可通过公共 IP 地址使用。 
+使用 Azure 容器实例在 Azure 中快速方便地运行无服务器 Docker 容器。 当你不需要像 AzureKubernetes 服务这样的完整容器业务流程平台时，可以按需将应用程序部署到容器实例。 在本快速入门中，你将使用 Azure 资源管理器模板部署一个独立的 Docker 容器，并使其 Web 应用程序可通过公共 IP 地址使用。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -31,9 +29,9 @@ ms.locfileid: "82930414"
 
 ### <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-linuxcontainer-public-ip)。
+本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/101-aci-linuxcontainer-public-ip/)。
 
-[!code-json[<Azure Resource Manager template create geo-replicated registry>](~/quickstart-templates/101-aci-linuxcontainer-public-ip/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-aci-linuxcontainer-public-ip/azuredeploy.json" range="1-107" highlight="61-100":::
 
 模板中定义了以下资源：
 

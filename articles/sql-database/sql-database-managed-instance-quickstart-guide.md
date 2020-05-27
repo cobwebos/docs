@@ -3,20 +3,20 @@ title: 快速入门 - SQL 托管实例
 description: 了解如何快速开始使用 Azure SQL 数据库 - 托管实例
 services: sql-database
 ms.service: sql-database
-ms.subservice: managed-instance
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: sstein, carlr
+author: davidtrigano
+ms.author: datrigan
+ms.reviewer: vanto
 ms.date: 07/11/2019
-ms.openlocfilehash: 602de3e23eb5419958f84b071e2220550d1d04d0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b873588393ed765fa21b30dfb3a71486d055373b
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73821721"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780468"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Azure SQL 数据库托管实例入门
 
@@ -37,7 +37,8 @@ ms.locfileid: "73821721"
   - 从装有 SQL Server Management Studio 和其他客户端连接应用程序的客户端计算机[与托管实例建立点到站点 VPN 连接](sql-database-managed-instance-configure-p2s.md)。 这是与托管实例及其 VNet 建立连接的两种方法之一。
 
   > [!NOTE]
-  > 也可以从本地网络使用 Express Route 或站点到站点连接，但这些方法不在这些快速入门的讨论范围内。
+  > - 也可以从本地网络使用 Express Route 或站点到站点连接，但这些方法不在这些快速入门的讨论范围内。
+  > - 如果将保留期从 0（无限期保留）更改为任何其他值，请注意：保留期仅应用于在保留期值更改后写入的日志（在保留期设置为“无限期”期间写入的日志会保留，即使在启用保留期后也是如此）。
 
 作为手动创建托管实例的替代方法，可使用 [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md)、[带资源管理器模板的 PowerShell](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) 来编写脚本并自动执行此过程。
 
