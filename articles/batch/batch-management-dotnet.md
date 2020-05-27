@@ -1,15 +1,15 @@
 ---
 title: 使用 Batch Management .NET 库管理帐户资源
 description: 使用 Batch Management .NET 库创建、删除和修改 Azure Batch 帐户资源。
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/24/2017
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 3cb44b89cacd9e597766ca8df3e4826dfabdb2bd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 05bc0c8a377517c4ab883e08a5a4848eb0042dcb
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201638"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726530"
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>通过用于 .NET 的 Batch Management 客户端库管理 Batch 帐户和配额
 

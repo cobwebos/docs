@@ -1,14 +1,14 @@
 ---
 title: Azure Batch 任务失败事件
 description: 批处理任务失败事件参考。 除了任务完成事件，还会发出此事件，此事件可用于检测任务何时已失败。
-ms.topic: article
+ms.topic: reference
 ms.date: 08/15/2019
-ms.openlocfilehash: 0e973a7e0a2ab67300a0f6762c837336e12bae3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 54a6965fbefeaf502372c611c2b3152dc43b0efe
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116445"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726343"
 ---
 # <a name="task-fail-event"></a>任务失败事件
 

@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: shuawan
-ms.openlocfilehash: 2aebccdf18aaba345beb344a8b6fc3b37754a4a1
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: aac42e6f782ac1e939ff955c5811238f99e703eb
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793261"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725663"
 ---
 # <a name="integrate-with-kubernetes-deployment-using-helm"></a>使用 Helm 来与 Kubernetes 部署集成
 
@@ -169,7 +169,7 @@ metadata:
   name: mysecret
 type: Opaque
 data:
-  password: {{ .Values.secrets.password }}
+  password: {{ .Values.secrets.password | b64enc }}
 ```
 
 最后，使用以下内容更新 values.yaml 文件，以便选择性地为 deployment.yaml 和 secrets.yaml 文件中引用的配置设置和机密提供默认值    。 从应用程序配置中提取的配置将覆盖其实际值。
