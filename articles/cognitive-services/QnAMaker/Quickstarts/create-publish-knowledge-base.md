@@ -2,13 +2,13 @@
 title: 快速入门：创建、定型和发布知识库-QnA Maker
 description: 可以根据自己的内容（例如常见问题解答或产品手册）创建一个 QnA Maker 知识库 (KB)。 本文包含一个从简单的 FAQ 网页创建 QnA Maker 知识库以回答 QnA Maker 相关问题的示例。
 ms.topic: conceptual
-ms.date: 02/08/2020
-ms.openlocfilehash: 5a3cd4a66ae3a7148b517050c3d1a8c6c8e7a712
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/26/2020
+ms.openlocfilehash: a35cbdea2d40e4b0df0ce0f0b36f1b6bf60dd42e
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80756820"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871453"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>快速入门：创建、定型和发布 QnA Maker 知识库
 
@@ -34,8 +34,8 @@ ms.locfileid: "80756820"
 
 1. 在“步骤 3”**** 中，为在服务中创建的所有知识库选择 Active Directory、订阅、服务（资源）和语言。
 
-   ![选择 QnA Maker 服务知识库的屏幕截图](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
-
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/qnaservice-selection.png" alt-text="选择 QnA Maker 服务知识库的屏幕截图":::
+    
 1. 在“步骤 3”中，将知识库命名为“我的示例 QnA KB”。********
 
 1. 在**步骤 4** 中，按照下表配置设置：
@@ -64,7 +64,7 @@ ms.locfileid: "80756820"
 
     ` * Azure QnA Maker service\n* Azure Cognitive Search\n* Azure web app\n* Azure app plan`
 
-    ![ 添加文本格式的问题和 markdown 格式的答案。](../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png)
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png" alt-text="添加文本格式的问题和 markdown 格式的答案。":::
 
     markdown 符号 `*` 用于项目符号点。 `\n` 用于新行。
 
@@ -81,7 +81,7 @@ ms.locfileid: "80756820"
 
     `How many Azure services are used by a knowledge base?`
 
-    ![ 在文本框中输入示例用户查询。 ](../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png)
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png" alt-text="在文本框中输入示例用户查询。":::
 
 1. 选择“检查”，更详细地检查响应。**** 测试窗口用于测试对知识库所做的更改，然后会发布知识库。
 
@@ -117,7 +117,7 @@ ms.locfileid: "80756820"
     * **看**
         * 更改机器人句柄 - 如果它不独一无二。
         * 选择 SDK 语言。 创建机器人后，可以将代码下载到本地开发环境，然后继续开发过程。
-    * **禁止做法**
+    * **禁止事项**
         * 创建机器人时，更改 Azure 门户中的以下设置。 这些值是为现有的知识库预先填充的：
            * QnA 身份验证密钥
            * 应用服务计划和位置
@@ -131,7 +131,7 @@ ms.locfileid: "80756820"
 
     聊天机器人使用知识库中的一个答案进行响应。
 
-    ![将用户查询输入测试性 Web 聊天中。](../media/qnamaker-create-publish-knowledge-base/test-web-chat.png)
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="将用户查询输入测试性 Web 聊天中。":::
 
 ## <a name="what-did-you-accomplish"></a>你完成了哪些操作？
 

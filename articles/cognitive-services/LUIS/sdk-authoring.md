@@ -2,14 +2,14 @@
 title: 快速入门：语言理解 (LUIS) 创作客户端库
 description: 参考本快速入门开始使用 LUIS 客户端库。 请按照以下步骤安装程序包并试用基本任务的示例代码。
 ms.topic: quickstart
-ms.date: 01/14/2020
+ms.date: 05/22/2020
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: 614d40bb3e5bc8b83a2307b89cd517fdf7913dbe
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: dab36a7688e510b4a23f285deedf7d670cd78d10
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77524438"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871270"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library"></a>快速入门：语言理解 (LUIS) 创作客户端库
 
