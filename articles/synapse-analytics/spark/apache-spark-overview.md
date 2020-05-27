@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: b6af42f09351df60beb2aa449f8fcd2ff6a554e8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 470cc8cc16c8bdb32bac32a7227690899abb9c51
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82116649"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83644672"
 ---
 # <a name="what-is-apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 Apache Spark 是什么
 
@@ -35,7 +35,7 @@ Azure Synapse 中的 Spark 池提供完全托管的 Spark 服务。 下面列出
 | Feature | 说明 |
 | --- | --- |
 | 速度和效率 |当节点数少于 60 个时，Spark 实例的启动时间大约为 2 分钟；当节点数超过 60 个时，启动时间大约为 5 分钟。 默认情况下，将在执行最后一个作业后的 5 分钟后关闭实例，除非笔记本连接使该实例保持活动状态。 |
-| 容易创建 |可以使用 Azure 门户、Azure PowerShell 或 Synapse Analytics .NET SDK，在 Azure Synapse 中快速创建新的 Spark 池。 请参阅 [Synapse Analytics 中的 Spark 池入门](../quickstart-create-apache-spark-pool.md)。 |
+| 容易创建 |可以使用 Azure 门户、Azure PowerShell 或 Synapse Analytics .NET SDK，在 Azure Synapse 中快速创建新的 Spark 池。 请参阅 [Synapse Analytics 中的 Spark 池入门](../quickstart-create-apache-spark-pool-studio.md)。 |
 | 易于使用 |Synapse Analytics 包含派生自 [Nteract](https://nteract.io/) 的自定义笔记本。 可以使用这些笔记本执行交互式数据处理和可视化。|
 | REST API |Synapse Analytics 中的 Spark 包含 [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)（基于 REST-API 的 Spark 作业服务器，用于远程提交和监视作业）。 |
 | 支持 Azure Data Lake Storage Generation 2| Azure Synapse 中的 Spark 池可以使用 Azure Data Lake Storage Generation 2 和 BLOB 存储。 有关 Data Lake Storage 的详细信息，请参阅 [Azure Data Lake Storage 概述](../../data-lake-store/data-lake-store-overview.md)。 |
@@ -78,7 +78,7 @@ Apache Spark 随附 [MLlib](https://spark.apache.org/mllib/) - 构建在 Spark �
 
 请通过以下文章来详细了解 Synapse Analytics 中的 Apache Spark：
 
-- [快速入门：在 Azure Synapse 中创建 Spark 池](../quickstart-create-apache-spark-pool.md)
+- [快速入门：在 Azure Synapse 中创建 Spark 池](../quickstart-create-apache-spark-pool-portal.md)
 - [快速入门：创建 Apache Spark 笔记本](../quickstart-apache-spark-notebook.md)
 - [教程：使用 Apache Spark 进行机器学习](./apache-spark-machine-learning-mllib-notebook.md)
 - [Apache Spark 官方文档](https://spark.apache.org/docs/latest/)
@@ -90,4 +90,4 @@ Apache Spark 随附 [MLlib](https://spark.apache.org/mllib/) - 构建在 Spark �
 
 在本概述文章中，你已大致了解了 Azure Synapse Analytics 中的 Apache Spark。 请继续阅读下一篇文章，了解如何在 Azure Synapse Analytics 中创建 Spark 池：
 
-- [在 Azure Synapse 中创建 Spark 池](../quickstart-create-apache-spark-pool.md)
+- [在 Azure Synapse 中创建 Spark 池](../quickstart-create-apache-spark-pool-portal.md)

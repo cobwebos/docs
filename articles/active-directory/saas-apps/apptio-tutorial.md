@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a421afc736399472a513dfc145321ba33ef6fdca
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d353aad9f0ecf871410dd94b0081381a0b1304c6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "71129727"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647329"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-apptio"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Apptio 集成
 
@@ -129,11 +129,11 @@ ms.locfileid: "71129727"
 
 ## <a name="configure-apptio-sso"></a>配置 Apptio SSO
 
-若要在 **Apptio** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Apptio 支持团队](https://www.apptio.com/about/contact)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **Apptio** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Apptio 支持团队](https://www.apptio.com/resources/customer-support/)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-apptio-test-user"></a>创建 Apptio 测试用户
 
-在本部分中，将在 Apptio 中创建名为 B.Simon 的用户。 请与  [Apptio 支持团队](https://www.apptio.com/about/contact)协作，在 Apptio 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 Apptio 中创建名为 B.Simon 的用户。 请与  [Apptio 支持团队](https://www.apptio.com/resources/customer-support/)协作，在 Apptio 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 

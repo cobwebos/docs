@@ -1,15 +1,15 @@
 ---
 title: Azure Lighthouse 的内置策略定义
 description: 列出 Azure Lighthouse 的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 05/05/2020
+ms.date: 05/13/2020
 ms.topic: sample
 ms.custom: subject-policy-samples
-ms.openlocfilehash: adfa0b208f69fe44c26d252f164ef1d620f76f55
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 61136afad86f7e7d65b52f920b001173234594ba
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837426"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647677"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-lighthouse"></a>Azure Lighthouse 的 Azure Policy 内置策略定义
 

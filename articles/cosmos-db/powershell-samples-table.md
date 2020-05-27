@@ -4,21 +4,21 @@ description: 获取用于在 Azure Cosmos DB 表 API 帐户中执行各种常见
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 12/02/2019
+ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: ab8f9f1428ecab09623060519e76052fc56d0ceb
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 1790edd41426a7395705485d764682bd47f75186
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366158"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649699"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---table-api"></a>适用于 Azure Cosmos DB 的 Azure PowerShell 示例 - 表 API
 
 下表包含用于 Azure Cosmos DB for Table API 的示例 Azure PowerShell 脚本的链接。
 
 > [!NOTE]
-> 该示例使用 [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) 管理 cmdlet。 请注意，`Az.CosmosDB` cmdlet 仍处于预览状态，可能会在发布前更改。 请定期检查 `Az.CosmosDB` 是否有更新。
+> 该示例使用 [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) 管理 cmdlet。 请定期检查 `Az.CosmosDB` 是否有更新。
 
 | | |
 |---|---|

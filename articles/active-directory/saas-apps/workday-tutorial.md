@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2f39b6f58b250d68a3b2ce962f158c7df36d812
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 83fd986e31410e34871d1b795db0c8c83ece688e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77046598"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648617"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Workday 集成
 
@@ -247,7 +247,7 @@ ms.locfileid: "77046598"
 
 ### <a name="create-workday-test-user"></a>创建 Workday 测试用户
 
-在本部分中，将在 Workday 中创建名为 B.Simon 的用户。 请与 [Workday 客户端支持团队](https://www.workday.com/partners-services/services/support.html)协作来在 Workday 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
+在本部分中，将在 Workday 中创建名为 B.Simon 的用户。 请与 [Workday 客户端支持团队](https://www.workday.com/en-us/partners-services/services/support.html)协作来在 Workday 平台中添加用户。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO
 

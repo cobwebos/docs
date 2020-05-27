@@ -1,15 +1,15 @@
 ---
-author: jasonwhowell
-ms.author: jasonh
+author: joshuapartlow
+ms.author: joshuapa
 ms.service: azure-notebooks
 ms.topic: include
 ms.date: 01/02/2020
-ms.openlocfilehash: de072af146802b7b062c18e503facd92879ab313
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6a5dc6fd0007711654d2b5c2e66493688d341bfc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75658997"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647540"
 ---
 > [!IMPORTANT]
 > Azure Notebooks 目前提供公开预览版。

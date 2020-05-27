@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a6ec5896a1bb6ae723d84ef6453522861f83d16
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8d9b246d8190a01b34fa0d2e8eba9e48ce879a76
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82183953"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647414"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cylanceprotect"></a>教程：Azure Active Directory 与 CylancePROTECT 的单一登录 (SSO) 集成
 
@@ -148,7 +148,7 @@ ms.locfileid: "82183953"
 
 ## <a name="configure-cylanceprotect-sso"></a>配置 CylancePROTECT SSO
 
-若要在 **CylancePROTECT** 端配置单一登录，需要将下载的**证书 (Base64)** 以及从 Azure 门户复制的相应 URL 发送给 [CylancePROTECT 支持团队](https://www.cylance.com/resources/support/support-overview.html)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。 有关详细信息，请参阅 Cylance 文档：[https://support.cylance.com/s/article/Use-Microsoft-Azure-with-CylancePROTECT4](https://support.cylance.com/s/article/Use-Microsoft-Azure-with-CylancePROTECT4)。
+若要在 **CylancePROTECT** 端配置单一登录，需要将下载的**证书 (Base64)** 以及从 Azure 门户复制的相应 URL 发送给 [CylancePROTECT 支持团队](https://www.cylance.com/en-us/resources/support/support-overview.html)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。 有关详细信息，请参阅 Cylance 文档：[https://support.cylance.com/s/article/Use-Microsoft-Azure-with-CylancePROTECT4](https://support.cylance.com/s/article/Use-Microsoft-Azure-with-CylancePROTECT4)。
 
 ### <a name="create-cylanceprotect-test-user"></a>创建 CylancePROTECT 测试用户
 

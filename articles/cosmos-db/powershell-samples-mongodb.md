@@ -4,14 +4,14 @@ description: 获取用于在 Azure Cosmos DB 的 API for MongoDB 中执行各种
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 12/02/2019
+ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 810161268df405d84f6c190d4d7f3b67f2a1def8
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: c8e0a7a60a3512d19a1dfdfdb07b20e523ce7b92
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366201"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649709"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db-mongodb-api"></a>适用于 Azure Cosmos DB 的 Azure PowerShell 示例 - MongoDB API
 
@@ -21,7 +21,7 @@ ms.locfileid: "80366201"
 > 目前，你只能使用 PowerShell、CLI 和资源管理器模板为 MongoDB 帐户创建 3.2 版的 Azure Cosmos DB API for MongoDB（即，使用格式为 `*.documents.azure.com` 的终结点的帐户）。 若要创建 3.6 版帐户，请改用 Azure 门户。
 
 > [!NOTE]
-> 该示例使用 [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) 管理 cmdlet。 请注意，`Az.CosmosDB` cmdlet 仍处于预览状态，可能会在发布前更改。 请定期检查 `Az.CosmosDB` 是否有更新。
+> 该示例使用 [Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) 管理 cmdlet。 请定期检查 `Az.CosmosDB` 是否有更新。
 
 | | |
 |---|---|
