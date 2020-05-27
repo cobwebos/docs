@@ -10,7 +10,7 @@
       items:
         - name: 开始分析成本
           href: quick-acm-cost-analysis.md
-        - name: 使用模板创建预算
+        - name: 创建预算 - ARM 模板
           href: quick-create-budget-template.md
           displayName: 'ARM template, resource manager template'
     - name: 教程

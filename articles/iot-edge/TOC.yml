@@ -263,8 +263,8 @@
       href: 'https://github.com/Azure/azure-iot-explorer'
     - name: iothub-diagnostics 工具
       href: 'https://github.com/Azure/iothub-diagnostics'
-    - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=iotedge'
+    - name: Microsoft Q&A 问题页面
+      href: 'https://docs.microsoft.com/answers/topics/azure-iot-edge.html'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/iot-edge/'
     - name: 定价计算器

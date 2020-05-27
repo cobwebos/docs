@@ -265,8 +265,8 @@
       href: 'https://github.com/Azure/Batch'
     - name: Batch 反馈
       href: 'https://feedback.azure.com/forums/269742-batch'
-    - name: Batch 论坛
-      href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch'
+    - name: 有关 Batch 的 Microsoft Q&A 问题页面
+      href: 'https://docs.microsoft.com/answers/topics/azure-batch.html'
     - name: Batch Shipyard
       href: 'https://github.com/Azure/batch-shipyard'
     - name: 博客
