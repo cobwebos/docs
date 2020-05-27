@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2b80efa30ac7e04b9eb21dd6f8a39ab4ee90adf6
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ff29b9ab87b2cd48297f5f1ee195f11fb56b428a
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421221"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700315"
 ---
 # <a name="sql-authentication"></a>SQL 身份验证
 
@@ -34,13 +34,13 @@ AAD 授权依赖于 Azure Active Directory，使你能够在单一位置进行�
 
 - **服务器管理员**
 
-  创建 Azure Synapse Analytics 时，必须指定服务器管理员登录名  。 SQL 服务器创建该帐户作为 master 数据库中的登录名。 此帐户通过 SQL Server 身份验证（用户名和密码）进行连接。 此类帐户只能存在一个。
+  创建 Azure Synapse Analytics 时，必须指定服务器管理员登录名。 SQL 服务器创建该帐户作为 master 数据库中的登录名。 此帐户通过 SQL Server 身份验证（用户名和密码）进行连接。 此类帐户只能存在一个。
 
 - **Azure Active Directory 管理员**
 
-  也可以将某个 Azure Active Directory 帐户（个人帐户或安全组帐户）配置为管理员。 配置 Azure AD 管理员的操作是可选操作，但如果需要使用 Azure AD 帐户连接到 Synapse SQL，则必须配置 Azure AD 管理员。 
+  也可以将某个 Azure Active Directory 帐户（个人帐户或安全组帐户）配置为管理员。 配置 Azure AD 管理员的操作是可选操作，但如果需要使用 Azure AD 帐户连接到 Synapse SQL，则必须配置 Azure AD 管理员。
 
-服务器管理员  和 Azure AD 管理员  帐户具有以下特征：
+服务器管理员和 Azure AD 管理员帐户具有以下特征：
 
 - 只有这些帐户才能自动连接到服务器上的任何 SQL 数据库。 （其他帐户若要连接到用户数据库，它们必须是数据库的所有者，或者在用户数据库中具有相应的用户帐户。）
 - 这些帐户以 `dbo` 用户的身份进入用户数据库，在用户数据库中拥有所有权限。 （用户数据库的所有者也以 `dbo` 用户的身份进入数据库。）
@@ -50,7 +50,7 @@ AAD 授权依赖于 Azure Active Directory，使你能够在单一位置进行�
 - 可以在 `dbmanager` 和 `loginmanager` 角色中添加和删除成员。
 - 可以查看 `sys.sql_logins` 系统表。
 
-## <a name="sql-on-demand-preview"></a>SQL 按需版本（预览版）
+## <a name="sql-on-demand-preview"></a>[SQL 按需版本（预览版）](#tab/serverless)
 
 若要管理有权访问 SQL 按需版本的用户，可以按以下说明操作。
 
@@ -72,7 +72,7 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 
 在创建登录名和用户后，可以使用常规 SQL Server 语法来授予权限。
 
-## <a name="sql-pool"></a>SQL 池
+## <a name="sql-pool"></a>[SQL 池](#tab/provisioned)
 
 ### <a name="administrator-access-path"></a>管理员访问路径
 
@@ -110,7 +110,7 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
    CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
    ```
 
-4. 使用 [ALTER ROLE](/sql/t-sql/statements/alter-role-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 语句将新用户添加到 `master` 中的 dbmanager 数据库角色  。 示例语句：
+4. 使用 [ALTER ROLE](/sql/t-sql/statements/alter-role-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 语句将新用户添加到 `master` 中的 dbmanager 数据库角色。 示例语句：
 
    ```sql
    ALTER ROLE dbmanager ADD MEMBER Mary;
@@ -127,6 +127,8 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 ### <a name="login-managers"></a>登录名管理器
 
 另一个管理角色是登录管理员角色。 此角色的成员可在 master 数据库中创建新登录名。 如果需要，可以完成相同的步骤（创建登录名和用户，并向 **loginmanager** 角色添加用户），使用户能够在 master 数据库中创建新登录名。 通常不必要创建登录名，因为 Microsoft 建议使用包含的数据库用户在数据库级别进行身份验证，而不要使用基于登录名的用户。 有关详细信息，请参阅 [包含的数据库用户 - 使你的数据库可移植](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
+
+---
 
 ## <a name="non-administrator-users"></a>非管理员用户
 
@@ -147,7 +149,7 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 GRANT ALTER ANY USER TO Mary;
 ```
 
-若要向其他用户授予对数据库的完全控制权限，可让这些用户成为 db_owner 固定数据库角色的成员  。
+若要向其他用户授予对数据库的完全控制权限，可让这些用户成为 db_owner 固定数据库角色的成员。
 
 在 Azure SQL 数据库中，请使用 `ALTER ROLE` 语句。
 
@@ -229,7 +231,7 @@ EXEC sp_addrolemember 'db_owner', 'Mary';
 - 在使用 `FOR/FROM LOGIN` 选项执行 `CREATE USER` 语句时，该语句必须是 Transact-SQL 批处理中的唯一语句。
 - 在使用 `WITH LOGIN` 选项执行 `ALTER USER` 语句时，该语句必须是 Transact-SQL 批处理中的唯一语句。
 - 若要执行 `CREATE/ALTER/DROP` 操作，用户需要对数据库拥有 `ALTER ANY USER` 权限。
-- 在数据库角色的所有者尝试在该数据库角色中添加或删除其他数据库用户时，可能会发生以下错误：“此数据库中不存在用户或角色‘Name’”  。 在用户对所有者不可见时，会发生此错误。 若要解决此问题，请向角色所有者授予对该用户的 `VIEW DEFINITION` 权限。 
+- 在数据库角色的所有者尝试在该数据库角色中添加或删除其他数据库用户时，可能会发生以下错误：“此数据库中不存在用户或角色‘Name’”。 在用户对所有者不可见时，会发生此错误。 若要解决此问题，请向角色所有者授予对该用户的 `VIEW DEFINITION` 权限。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -2,13 +2,13 @@
 title: 快速入门：在 LUIS 门户中创建新应用
 description: 本快速入门将创建应用的基本组成部分以及意向和实体，并在 LUIS 门户中使用示例言语进行测试。
 ms.topic: quickstart
-ms.date: 05/05/2020
-ms.openlocfilehash: b2ab2ec0fa5398ae8a69906aee25ef44ad5db3c9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/19/2020
+ms.openlocfilehash: 7cf55a7891b7e06c18c80d9d359b19e54f0413a9
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585171"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697270"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>快速入门：在 LUIS 门户中创建新应用
 
@@ -137,7 +137,7 @@ ms.locfileid: "83585171"
 
 1. 在左侧菜单中选择“意向”，以验证是否能够在“FindForm”意向中找到该实体。  然后，选择“FindForm”意向。
 
-   会标记该实体在示例言语中的显示位置。 若要查看原始文本而不是实体名称，请在工具栏中切换“实体视图”。
+   会标记该实体在示例言语中的显示位置。
 
    > [!div class="mx-imgBorder"]
    > [![标记有实体的所有示例言语的屏幕截图](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)

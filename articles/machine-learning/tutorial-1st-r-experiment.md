@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: 5b1c6561519bc25c2b7ac77f0a25eff89413a07a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: dea5b3fb6cf20924666668e59e370399664d6b28
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81256478"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684747"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model"></a>教程：使用 R 创建机器学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -338,7 +338,7 @@ inference_config <- inference_config(
 ```
 
 ### <a name="deploy-to-aci"></a>部署到 ACI
-本教程将服务部署到 ACI。 此代码预配单个容器来响应入站请求，此容器适合用于测试和轻量负载。 有关其他可配置选项，请参阅 [`aci_webservice_deployment_config()`](https://azure.github.io/azureml-sdk-for-r/reference/aci_webservice_deployment_config.html)。 （对于生产规模的部署，还可以[部署到 Azure Kubernetes 服务](https://azure.github.io/azureml-sdk-for-r/articles/deploy-to-aks/deploy-to-aks.html)。）
+本教程将服务部署到 ACI。 此代码预配单个容器来响应入站请求，此容器适合用于测试和轻量负载。 有关其他可配置选项，请参阅 [`aci_webservice_deployment_config()`](https://azure.github.io/azureml-sdk-for-r/reference/aci_webservice_deployment_config.html)。 （对于生产规模的部署，还可以[部署到 Azure Kubernetes 服务](https://azure.github.io/azureml-sdk-for-r/articles/deploy-to-aks.html)。）
 
 ``` R
 aci_config <- aci_webservice_deployment_config(cpu_cores = 1, memory_gb = 0.5)

@@ -5,12 +5,12 @@ ms.subservice: pod
 ms.topic: include
 ms.date: 05/22/2019
 ms.author: alkohli
-ms.openlocfilehash: bc156b8c18f46cccf6fc775b82f76383b8c43861
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f230fc247c6ad94bfdfb3cdbc0f897d66313b039
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "66242140"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696437"
 ---
 下面是 Data Box 设备支持的存储帐户和存储类型的列表。 有关所有不同类型的存储帐户及其完整功能的完整列表，请参阅[存储帐户类型](/azure/storage/common/storage-account-overview#types-of-storage-accounts)。
 
@@ -24,6 +24,3 @@ ms.locfileid: "66242140"
 | Blob 存储标准 |Y | | |支持热和冷。 |
 
 \* *- 上传到页 blob 的数据必须是 512 字节对齐，例如 VHD。*
-
->[!NOTE]
-> 不支持 Azure Data Lake Storage Gen 2 帐户。

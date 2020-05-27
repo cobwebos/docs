@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: dad9bb40161a2adc8654f50de5c1d876e3344e59
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c0c81f529dfc959916ff7c102b2b903a808b9672
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596636"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681903"
 ---
 # <a name="drawing-package-requirements"></a>绘图包要求
 
-使用 [Azure Maps 转换服务](https://docs.microsoft.com/rest/api/maps/data/conversion)，可以将上传的绘图包转换为定位数据。 本文介绍了适用于转换 API 的绘图包要求。 若要查看示例包，可以下载示例[绘图包](https://github.com/Azure-Samples/am-creator-indoor-data-examples)。
+使用 [Azure Maps 转换服务](https://docs.microsoft.com/rest/api/maps/conversion)，可以将上传的绘图包转换为定位数据。 本文介绍了适用于转换 API 的绘图包要求。 若要查看示例包，可以下载示例[绘图包](https://github.com/Azure-Samples/am-creator-indoor-data-examples)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -25,7 +25,7 @@ ms.locfileid: "83596636"
 
 可以选择任何 CAD 软件来生成绘图包中的绘图。  
 
-[Azure Maps 转换服务](https://docs.microsoft.com/rest/api/maps/data/conversion)可以将绘图包转换为定位数据。  转换服务已经过开发，并使用 AutoCAD DWG 文件格式进行了测试。 `AC1032` 是 DWG 文件的内部格式版本。 建议选择“`AC1032`”作为内部 DWG 文件格式版本。  
+[Azure Maps 转换服务](https://docs.microsoft.com/rest/api/maps/conversion)可以将绘图包转换为定位数据。  转换服务已经过开发，并使用 AutoCAD DWG 文件格式进行了测试。 `AC1032` 是 DWG 文件的内部格式版本。 建议选择“`AC1032`”作为内部 DWG 文件格式版本。  
 
 下面是本文档中使用的术语表。
 
@@ -54,7 +54,7 @@ DWG 文件可以在文件夹中以任何方式组织，而清单文件则必须�
 * 不得包含来自多个楼层的特征。
 * 不得包含来自多个设施的特征。
 
-[Azure Maps 转换服务](https://docs.microsoft.com/rest/api/maps/data/conversion)可以从 DWG 文件中提取以下特征类：
+[Azure Maps 转换服务](https://docs.microsoft.com/rest/api/maps/conversion)可以从 DWG 文件中提取以下特征类：
 
 * Levels
 * 单位
@@ -71,11 +71,11 @@ DWG 图层还必须遵循以下条件：
 
 * 所有 DWG 文件的绘图源都必须保持纬度和经度相同。
 * 每个楼层都必须与其他楼层的方向相同。
-* 自相交多边形会自动修复，[Azure Maps 转换服务](https://docs.microsoft.com/rest/api/maps/data/conversion)将会发出警告。 建议手动检查修复后的结果，因为它们可能与预期的结果不符。
+* 自相交多边形会自动修复，[Azure Maps 转换服务](https://docs.microsoft.com/rest/api/maps/conversion)将会发出警告。 建议手动检查修复后的结果，因为它们可能与预期的结果不符。
 
 所有图层实体都必须是以下类型之一：Line、PolyLine、Polygon、Circular Arc、Circle、Text（单行）。 其他任何实体类型都会被忽略。
 
-下表概述了支持的实体类型和每个图层支持的特征。 如果图层包含不受支持的实体类型，则 [Azure Maps 转换服务](https://docs.microsoft.com/rest/api/maps/data/conversion)会忽略这些实体。  
+下表概述了支持的实体类型和每个图层支持的特征。 如果图层包含不受支持的实体类型，则 [Azure Maps 转换服务](https://docs.microsoft.com/rest/api/maps/conversion)会忽略这些实体。  
 
 | 层 | 实体类型 | 功能 |
 | :----- | :-------------------| :-------
@@ -167,11 +167,11 @@ Azure Maps 数据集中的门开口表示为，与多个单元边界重叠的单
 
 ## <a name="manifest-file-requirements"></a>清单文件要求
 
-zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清单文件。 它描述了 DWG 文件，以便 [Azure Maps 转换服务](https://docs.microsoft.com/rest/api/maps/data/conversion)能够分析其内容。 只有由清单标识的文件才会被引入。 zip 文件夹中有、但在清单中没有正确列出的文件会被忽略。
+zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清单文件。 它描述了 DWG 文件，以便 [Azure Maps 转换服务](https://docs.microsoft.com/rest/api/maps/conversion)能够分析其内容。 只有由清单标识的文件才会被引入。 zip 文件夹中有、但在清单中没有正确列出的文件会被忽略。
 
 清单文件的 buildingLevels 对象中的文件路径必须相对于 zip 文件夹的根。 DWG 文件名必须与设施楼层的名称完全匹配。 例如，“Basement”楼层的 DWG 文件为“Basement.dwg”。 “Level 2”的 DWG 文件命名为“level_2.dwg”。 如果楼层名称中有空格，请使用下划线字符。 
 
-尽管有使用清单对象的要求，但并非所有对象都是必需的。 下表列出了 [Azure Maps 转换服务](https://docs.microsoft.com/rest/api/maps/data/conversion)版本 1.1 的必需和可选对象。
+尽管有使用清单对象的要求，但并非所有对象都是必需的。 下表列出了 [Azure Maps 转换服务](https://docs.microsoft.com/rest/api/maps/conversion)版本 1.1 的必需和可选对象。
 
 | 对象 | 必选 | 说明 |
 | :----- | :------- | :------- |
@@ -402,7 +402,7 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 
 ## <a name="next-steps"></a>后续步骤
 
-在绘图包符合要求后，可以使用 [Azure Maps 转换服务](https://docs.microsoft.com/rest/api/maps/data/conversion)将包转换为定位数据集。 然后，可以使用此数据集和“室内定位”模块来生成室内定位。 若要详细了解如何使用“室内定位”模块，请阅读以下文章：
+在绘图包符合要求后，可以使用 [Azure Maps 转换服务](https://docs.microsoft.com/rest/api/maps/conversion)将包转换为定位数据集。 然后，可以使用此数据集和“室内定位”模块来生成室内定位。 若要详细了解如何使用“室内定位”模块，请阅读以下文章：
 
 > [!div class="nextstepaction"]
 >[适用于室内定位的 Creator](creator-indoor-maps.md)

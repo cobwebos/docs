@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 0d73d0b395547c281a2dbbe6a6ac5e8dc6dfd849
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d79c42f3bdf84efcdf2187741ac270087be05272
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596776"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682001"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>绘图转换错误和警告
 
-使用 [Azure Maps 转换服务](https://docs.microsoft.com/rest/api/maps/data/conversion)，可以将上传的绘图包转换为定位数据。 绘图包必须符合[绘图包要求](drawing-requirements.md)。 如果不符合一个或多个要求，转换服务就会返回错误或警告。 本文列出了转换错误和警告代码，以及关于如何解决这些问题的建议。 此外，还提供了一些可能会导致转换服务返回这些代码的绘图示例。
+使用 [Azure Maps 转换服务](https://docs.microsoft.com/rest/api/maps/conversion)，可以将上传的绘图包转换为定位数据。 绘图包必须符合[绘图包要求](drawing-requirements.md)。 如果不符合一个或多个要求，转换服务就会返回错误或警告。 本文列出了转换错误和警告代码，以及关于如何解决这些问题的建议。 此外，还提供了一些可能会导致转换服务返回这些代码的绘图示例。
 
 如果有任何转换警告，转换服务也会成功。 尽管如此，仍建议你审阅并解决所有警告。 警告表示转换的一部分被忽略或自动修复。 如果不解决警告，可能会导致后续进程出错。
 
@@ -73,7 +73,7 @@ ms.locfileid: "83596776"
 
 下图展示了不受支持的实体类型，即标签层上的多行文本对象。
   
-![标签层上的多行文本对象的示例](./media/drawing-conversion-error-codes/multiline.png)
+![标签层上的多行文本对象的示例](./media/drawing-conversion-error-codes/multi-line.png)
 
 #### <a name="how-to-fix-unsupportedfeaturerepresentation"></a>如何修复 unsupportedFeatureRepresentation
 
@@ -494,7 +494,7 @@ manifest.json 文件因 JSON 格式或语法错误而无法读取。 若要详�
 
 下图展示了一个垂直渗透区域与相邻楼层上的多个垂直渗透区域重叠。
 
-![垂直渗透的示例 2](./media/drawing-conversion-error-codes/vrt.png)
+![垂直渗透的示例 2](./media/drawing-conversion-error-codes/vrt-1.png)
 
 #### <a name="how-to-fix-verticalpenetrationerror"></a>如何修复 verticalPenetrationError
 

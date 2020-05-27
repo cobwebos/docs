@@ -4,15 +4,15 @@ description: 本教程介绍如何在 Azure Analysis Services 中添加示例模
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a72236843c13e139f33a669b54f108e91679c8c6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 88ed58ea1eea80b4b890c31260fc65153377eaaa
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74326579"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697519"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>教程：从门户添加示例模型
 
@@ -39,15 +39,15 @@ ms.locfileid: "74326579"
 
 ## <a name="add-a-sample-model"></a>添加示例模型
 
-1. 在服务器“概述”  中，单击“新建模型”  。
+1. 在服务器“概述”中，单击“新建模型”。
 
     ![创建示例模型](./media/analysis-services-create-sample-model/aas-create-sample-new-model.png)
 
-2. 在“新建模型” > “选择数据源”中，确认已选中“示例数据”，然后单击“添加”。
+2. 在“新建模型” > “选择数据源”中，确认已选中“示例数据”，然后单击“添加”。   
 
     ![选择“示例数据”](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
 
-3. 在“概述”  中，确认是否添加了 `adventureworks` 示例模型。
+3. 在“概述”中，确认是否添加了 `adventureworks` 示例模型。
 
     ![选择“示例数据”](./media/analysis-services-create-sample-model/aas-create-sample-verify.png)
 
@@ -58,13 +58,13 @@ ms.locfileid: "74326579"
 
 下面的步骤介绍了如何使用 SSMS 从服务器中删除模型。
 
-1. 在 SSMS >“对象资源管理器”  中，单击“连接”   > “Analysis Services”  。
+1. 在 SSMS >“对象资源管理器”中，单击“连接” > “Analysis Services”。
 
-2. 在“连接到服务器”  中，粘贴服务器名称，然后在“身份验证”  中选择“Active Directory - 支持 MFA 的通用身份验证”  ，输入你的用户名，然后单击“连接”  。
+2. 在“连接到服务器”中，粘贴服务器名称，然后在“身份验证”中选择“Active Directory - 支持 MFA 的通用身份验证”，输入你的用户名，然后单击“连接”。
 
     ![登录](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-signin.png)
 
-3. 在“对象资源管理器”中，右键单击 `adventureworks` 示例数据库，然后单击“删除”。
+3. 在“对象资源管理器”中，右键单击 `adventureworks` 示例数据库，然后单击“删除”。 
 
     ![删除示例数据库](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-delete.png)
 

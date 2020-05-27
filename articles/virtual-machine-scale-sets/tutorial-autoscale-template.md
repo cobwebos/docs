@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 03/27/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 0d857a0066737cd7bdc14dff435e25add66f2cdd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 95baaaff0936d288b5a56efb8f6ce1ba87637d8a
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201385"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700923"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>教程：使用 Azure 模板自动缩放虚拟机规模集
 创建规模集时，可定义想运行的 VM 实例数。 若应用程序需要更改，可自动增加或减少 VM 实例数。 通过自动缩放功能，可随客户需求的改变而进行调整，或在应用的整个生命周期内响应应用程序性能更改。 本教程介绍如何执行下列操作：
@@ -33,7 +33,7 @@ ms.locfileid: "83201385"
 
 
 ## <a name="define-an-autoscale-profile"></a>定义自动缩放配置文件
-请使用 *Microsoft.insights/autoscalesettings* 资源提供程序在 Azure 模板中定义一个自动缩放配置文件。  配置文件提供规模集容量以及任何关联规则的详细信息。 下面的示例定义一个名为 *Autoscale by percentage based on CPU usage* 的配置文件，并设置 *2* 个 VM 实例的默认值、最小值、容量和最大值 (*10*)：
+请使用 *Microsoft.insights/autoscalesettings* 资源提供程序在 Azure 模板中定义一个自动缩放配置文件。 配置文件提供规模集容量以及任何关联规则的详细信息。 下面的示例定义一个名为 *Autoscale by percentage based on CPU usage* 的配置文件，并设置 *2* 个 VM 实例的默认值、最小值、容量和最大值 (*10*)：
 
 ```json
 {
@@ -72,8 +72,8 @@ ms.locfileid: "83201385"
 | *timeWindow*      | 比较指标与阈值之前监视的时长。                                   | 5 分钟       |
 | *operator*        | 用于比较指标数据和阈值的运算符。                                                     | 大于    |
 | *threshold*       | 使自动缩放规则触发操作的值。                                                      | 70%             |
-| direction        | 定义在应用规则的情况下，规模集应横向缩减还是扩展。                                              | 增加        |
-| type             | 表明 VM 实例数应该根据特定值进行更改。                                    | 更改计数    |
+| direction       | 定义在应用规则的情况下，规模集应横向缩减还是扩展。                                              | 增加        |
+| type            | 表明 VM 实例数应该根据特定值进行更改。                                    | 更改计数    |
 | *value*           | 应用规则时应减少或增加多少 VM 实例。                                             | 3               |
 | *cooldown*        | 为使自动缩放操作有时间生效，再次应用规则前需要等待的时间。 | 5 分钟       |
 
@@ -137,7 +137,7 @@ ms.locfileid: "83201385"
 ## <a name="create-an-autoscaling-scale-set"></a>创建自动缩放规模集
 让我们使用示例模板创建一个规模集并应用自动缩放规则。 可以[查看完整模板](https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/autoscale.json)，或者[参阅模板的 *Microsoft.insights/autoscalesettings* 资源提供程序节](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/scale_sets/autoscale.json#L220)。
 
-首先，使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
+首先，使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组： 
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -180,14 +180,14 @@ az vmss list-instance-connection-info \
 ssh azureuser@13.92.224.66 -p 50001
 ```
 
-登录后，安装 **stress** 实用工具。 启动 10  个生成 CPU 负载的 **stress** 辅助角色。 这些辅助角色运行 *420* 秒，此时间足以让自动缩放规则实施所需的操作。
+登录后，安装 **stress** 实用工具。 启动 10 个生成 CPU 负载的 **stress** 辅助角色。 这些辅助角色运行 *420* 秒，此时间足以让自动缩放规则实施所需的操作。
 
 ```console
 sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-当 **stress** 显示类似于 *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* 的输出时，按 *Enter* 键返回到提示符。
+当 **stress** 显示类似于 *stress: info: [2688] dispatching hogs:10 cpu, 0 io, 0 vm, 0 hdd* 的输出时，按 *Enter* 键返回到提示符。
 
 若要确认 **stress** 是否生成了 CPU 负载，请使用 **top** 实用工具检查活动的系统负载：
 
@@ -215,7 +215,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-当 **stress** 再次显示类似于 *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* 的输出时，按 *Enter* 键返回到提示符。
+当 **stress** 再次显示类似于 *stress: info: [2713] dispatching hogs:10 cpu, 0 io, 0 vm, 0 hdd* 的输出时，按 *Enter* 键返回到提示符。
 
 关闭与第二个 VM 实例的连接。 **stress** 继续在 VM 实例上运行。
 
@@ -253,7 +253,7 @@ Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name mySca
            6  True                  eastus      myScaleSet_6  Deleting             MYRESOURCEGROUP  9e4133dd-2c57-490e-ae45-90513ce3b336
 ```
 
-使用 *退出*watch`Ctrl-c`。 规模集继续每 5 分钟横向缩减一次，每次删除一个 VM 实例，直至达到最小实例计数 2。
+使用 `Ctrl-c` 退出 *watch*。 规模集继续每 5 分钟横向缩减一次，每次删除一个 VM 实例，直至达到最小实例计数 2。
 
 
 ## <a name="clean-up-resources"></a>清理资源
@@ -272,8 +272,3 @@ az group delete --name myResourceGroup --yes --no-wait
 > * 创建和使用自动缩放规则
 > * 对 VM 实例进行压力测试并触发自动缩放规则
 > * 在需求下降时自动横向缩减
-
-如需更多的虚拟机规模集操作示例，请参阅下面的 Azure CLI 示例脚本：
-
-> [!div class="nextstepaction"]
-> [适用于 Azure CLI 的规模集脚本示例](cli-samples.md)

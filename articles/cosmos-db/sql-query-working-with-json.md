@@ -1,33 +1,33 @@
 ---
-title: 在 Azure Cosmos DB 中使用 JSON
+title: 使用 Azure Cosmos DB 中的 JSON
 description: 了解如何查询和访问嵌套的 JSON 属性并在 Azure Cosmos DB 中使用特殊字符
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 05/19/2020
 ms.author: tisande
-ms.openlocfilehash: d0b11cdb0cf2719b576b7a4c4f3fa534ae09dfa8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: a569b0122f9122b141b64ded21dbd9be1d766a41
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117013"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699123"
 ---
-# <a name="working-with-json-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用 JSON
+# <a name="working-with-json-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的 JSON
 
-在 Azure Cosmos DB 的 SQL （核心） API 中，项存储为 JSON。 类型系统和表达式仅限于处理 JSON 类型。 有关详细信息，请参阅 [JSON 规范](https://www.json.org/)。
+在 Azure Cosmos DB 的 SQL (Core) API 中，项存储为 JSON。 类型系统和表达式仅限于处理 JSON 类型。 有关详细信息，请参阅 [JSON 规范](https://www.json.org/)。
 
-我们将概括介绍使用 JSON 的一些重要方面：
+我们将总结一些使用 JSON 的重要方面：
 
-- JSON 对象始终以 `{` 左大括号开头，以 `}` 右大括号结尾
-- 可以将 JSON 属性彼此[嵌套](#nested-properties)在一起
+- 始终使用大括号 `{` `}` 将 JSON 对象括起来
+- 可以将 JSON 属性彼此[嵌套](#nested-properties)
 - JSON 属性值可以是数组
 - JSON 属性名称区分大小写
 - JSON 属性名称可以是任何字符串值（包括空格或不是字母的字符）
 
 ## <a name="nested-properties"></a>嵌套属性
 
-您可以使用点访问器访问嵌套的 JSON。 您可以在查询中使用嵌套的 JSON 属性，其方式与使用任何其他属性的方式相同。
+可以使用 Dot 访问器访问嵌套的 JSON。 可以在查询中使用嵌套的 JSON 属性，其方式与使用任何其他属性的方式相同。
 
 下面是带有嵌套 JSON 的文档：
 
@@ -45,9 +45,9 @@ ms.locfileid: "83117013"
 }
 ```
 
-在这种情况下， `state` 、 `country` 和 `city` 属性都嵌套在属性中 `address` 。
+在这种情况下，`state`、`country` 和 `city` 属性都嵌套在 `address` 属性中。
 
-下面的示例投影两个嵌套的属性： `f.address.state` 和 `f.address.city` 。
+以下示例投影两个嵌套属性：`f.address.state` 和 `f.address.city`。
 
 ```sql
     SELECT f.address.state, f.address.city
@@ -98,7 +98,7 @@ FROM Families f
 WHERE f.children[0].givenName = "Jesse"
 ```
 
-但在大多数情况下，使用数组时将使用[子查询](sql-query-subquery.md)或[自联接](sql-query-join.md)。
+但在大多数情况下，在使用数组时，你将使用[子查询](sql-query-subquery.md)或[自联接](sql-query-join.md)。
 
 例如，下面的文档显示客户银行帐户的每日余额。
 
@@ -127,7 +127,7 @@ WHERE f.children[0].givenName = "Jesse"
 }
 ```
 
-如果你想要运行一个查询，该查询在某个时间点显示了具有负余额的所有客户，则可以将[EXISTS](sql-query-subquery.md#exists-expression)与子查询一起使用：
+如果你想要运行一个查询，该查询显示在某个时间点所有余额为负数的客户，则可以将 [EXISTS](sql-query-subquery.md#exists-expression) 与一个子查询一起使用：
 
 ```sql
 SELECT c.id
@@ -141,20 +141,18 @@ WHERE EXISTS(
 
 ## <a name="reserved-keywords-and-special-characters-in-json"></a>JSON 中的保留关键字和特殊字符
 
-您可以使用带引号的属性运算符访问属性 `[]` 。 例如，由于再也无法解析标识符“Families”，因此 `SELECT c.grade` and `SELECT c["grade"]` 是等效的。 此语法很适合用于转义包含空格和特殊字符的属性，或者其名称与 SQL 关键字或保留字相同的属性。
+可以使用带引号的属性运算符 `[]` 访问属性。 例如，由于再也无法解析标识符“Families”，因此 `SELECT c.grade` and `SELECT c["grade"]` 是等效的。 此语法很适合用于转义包含空格和特殊字符的属性，或者其名称与 SQL 关键字或保留字相同的属性。
 
 例如，下面是一个文档，具有一个名为 `order` 的属性和一个包含特殊字符的属性 `price($)`：
 
 ```json
 {
   "id": "AndersenFamily",
-  "order": [
-     {
+  "order": {
          "orderId": "12345",
          "productId": "A17849",
          "price($)": 59.33
-     }
-  ],
+   },
   "creationDate": 1431620472,
   "isRegistered": true
 }
@@ -208,7 +206,7 @@ SELECT * FROM c WHERE c["order"]["price($)"] > 50
     }]
 ```
 
-在前面的示例中， `SELECT` 子句需要创建 JSON 对象，并且由于该示例未提供任何键，因此子句使用隐式参数变量名称 `$1` 。 以下查询返回两个隐式参数变量：`$1` 和 `$2`。
+在上述示例中，`SELECT` 子句需要创建一个 JSON 对象；由于该示例未提供键，因此子句使用了隐式参数变量名称 `$1`。 以下查询返回两个隐式参数变量：`$1` 和 `$2`。
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city },
@@ -237,7 +235,7 @@ SELECT * FROM c WHERE c["order"]["price($)"] > 50
 
 ### <a name="examples"></a>示例
 
-`AS`用于别名的关键字是可选的，如下面的示例中所示，将第二个值投影为 `NameInfo` ：
+如以下示例所示，将第二个值投影为 `NameInfo` 时，用于别名的 `AS` 关键字是可选的：
 
 ```sql
     SELECT
@@ -263,7 +261,7 @@ SELECT * FROM c WHERE c["order"]["price($)"] > 50
 
 ### <a name="aliasing-with-reserved-keywords-or-special-characters"></a>带有保留关键字或特殊字符的别名
 
-不能使用别名将值投影为带有空格、特殊字符或保留字的属性名称。 例如，如果要将值的投影更改为，例如，具有一个带有空格的属性名称，则可以使用[JSON 表达式](#json-expressions)。
+不能使用别名将值投影为带有空格、特殊字符或保留字的属性名称。 例如，如果要将值的投影更改为带有空格的属性名称，则可以使用 [JSON 表达式](#json-expressions)。
 
 下面是一个示例：
 
