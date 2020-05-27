@@ -12,12 +12,12 @@ ms.date: 06/05/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ca73fac06649f801461e53130a67aa9ec0ad0d0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ee9a9d404e9a08d8b795a3d73907e84d25b73107
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77063316"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739747"
 ---
 # <a name="application-management-with-azure-active-directory"></a>使用 Azure Active Directory 进行应用程序管理
 
@@ -43,7 +43,7 @@ Azure Active Directory (Azure AD) 为云和本地应用程序提供单一标识�
 
 ## <a name="manage-risk-with-conditional-access-policies"></a>利用条件访问策略管理风险
 
-将 Azure AD 单一登录 (SSO) 与[条件访问](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)相结合可以提供访问应用程序时的高级安全性。 安全功能包括云级别标识保护、基于风险的访问控制、本机多重身份验证和条件访问策略。 这些功能可实现基于应用程序员的精细控制策略，或为组提供更高级别的安全性。
+将 Azure AD 单一登录 (SSO) 与[条件访问](../conditional-access/concept-conditional-access-cloud-apps.md)相结合可以提供访问应用程序时的高级安全性。 安全功能包括云级别标识保护、基于风险的访问控制、本机多重身份验证和条件访问策略。 这些功能可实现基于应用程序员的精细控制策略，或为组提供更高级别的安全性。
 
 ## <a name="improve-productivity-with-single-sign-on"></a>使用单一登录提高工作效率
 
