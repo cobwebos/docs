@@ -6,24 +6,16 @@ author: mamccrea
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.service: stream-analytics
-ms.openlocfilehash: c8c792d548fc953cb5d059f322ad1f3139c91562
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 2e101747322baac860cbde02aca341171aa0cc1d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595116"
+ms.locfileid: "83658345"
 ---
 # <a name="azure-stream-analytics-internal-error-codes"></a>Azure 流分析内部错误代码
 
 可以使用活动日志和资源日志来帮助调试 Azure 流分析作业中的意外行为。 本文列出了每个内部错误代码的说明。 内部错误是指当流分析无法区分错误是内部可用性错误还是系统中的 bug 时，流分析平台内引发的一般性错误。
-
-## <a name="kafkainvalidrequest"></a>KafkaInvalidRequest
-
-* **原因**：发送到 Kafka 服务器的请求无效。
-
-## <a name="kafkainputerror"></a>KafkaInputError
-
-* **原因**：Kafka 输入遇到问题。
 
 ## <a name="cosmosdboutputbatchsizetoolarge"></a>CosmosDBOutputBatchSizeTooLarge
 

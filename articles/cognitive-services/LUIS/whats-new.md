@@ -2,13 +2,13 @@
 title: 新增功能 - 语言理解 (LUIS)
 description: 本文会定期更新有关 Azure 认知服务语言理解 API 的资讯。
 ms.topic: overview
-ms.date: 05/08/2020
-ms.openlocfilehash: d7ef989d04132dedc79d2408b7083b57d8c926b0
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/19/2020
+ms.openlocfilehash: b4d287c8d1ddbeeee63390fb397718de1234c93e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592791"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83675952"
 ---
 # <a name="whats-new-in-language-understanding"></a>语言理解中的新增功能
 
@@ -27,6 +27,12 @@ ms.locfileid: "83592791"
 * 预览创作 API 更改
     * 适用于嵌套机器学习实体的应用架构 7.x
     * [迁移到所需功能](luis-migration-authoring-entities.md#api-change-constraint-replaced-with-required-feature)
+* 为开发人员提供的新资源
+    * [持续集成工具](developer-reference-resource.md#continuous-integration-tools)
+    * 研讨会 - [使用 LUIS 了解自然语言理解 (NLU) 的最佳实践](developer-reference-resource.md#workshops)
+* [客户托管密钥](luis-encryption-of-data-at-rest.md) - 通过使用自己的密钥加密所有在 LUIS 中使用的数据
+* [AI 展示](https://channel9.msdn.com/Shows/AI-Show/New-Features-in-Language-Understanding)（视频）- 查看 LUIS 的新功能
+
 
 
 ### <a name="march-2020"></a>2020 年 3 月
