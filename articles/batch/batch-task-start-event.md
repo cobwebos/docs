@@ -1,14 +1,14 @@
 ---
 title: Azure Batch 任务开始事件
 description: Batch 任务开始事件的参考信息。 当任务已计划由计划程序在计算节点上启动时，会发出此事件。
-ms.topic: article
+ms.topic: reference
 ms.date: 04/20/2017
-ms.openlocfilehash: 6e897cb02163d11657c915d31ee5564e5bbd7407
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f872e6c89e2f528729ae08125c6cc3eb5718e19a
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116394"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725782"
 ---
 # <a name="task-start-event"></a>任务开始事件
 

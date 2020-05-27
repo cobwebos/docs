@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: e550bc73a40b2c313f9ee2b8a7e9384d51844c38
-  ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+  ms.openlocfilehash: 9232082e845ef651d188adcc2ccd5cd3b96d90b4
+  ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/20/2020
-  ms.locfileid: "83701734"
+  ms.lasthandoff: 05/26/2020
+  ms.locfileid: "83849597"
 highlightedContent:
   items:
   - title: Azure 开发人员入门指南
@@ -204,13 +204,6 @@ productDirectory:
     azureCategories:
     - ai-machine-learning
     url: cognitive-services/luis/index.yml
-  - title: 机器学习工作室（经典版）
-    summary: 轻松生成、部署和管理预测分析解决方案
-    imageSrc: https://static.docs.com/ui/media/product/azure/machine-learning-studio-service.svg
-    azureCategories:
-    - ai-machine-learning
-    - iot
-    url: machine-learning/studio/index.yml
   - title: Microsoft 基因组学
     summary: 为基因组测序和研究提供支持
     imageSrc: https://static.docs.com/ui/media/product/azure/genomics.svg
