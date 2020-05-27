@@ -4,15 +4,15 @@ description: 了解如何通过 Azure CLI 在应用程序网关上使用 Web 应
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/21/2019
+ms.date: 05/21/2020
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 4882ac51af271625b8e61d862890beb6d5f63213
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a429d1a0f426002595f347794bc1cb97a649d6f6
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80240079"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770187"
 ---
 # <a name="enable-web-application-firewall-using-the-azure-cli"></a>使用 Azure CLI 启用 Web 应用程序防火墙
 
@@ -46,7 +46,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>创建网络资源
 
-虚拟网络和子网用于提供与应用程序网关及其关联资源的网络连接。 创建名为 myVNet  的虚拟网络和名为 myAGSubnet  的子网。 创建名为 myAGPublicIPAddress  的公共 IP 地址。
+虚拟网络和子网用于提供与应用程序网关及其关联资源的网络连接。 创建名为 myVNet 的虚拟网络和名为 myAGSubnet 的子网。 创建名为 myAGPublicIPAddress 的公共 IP 地址。
 
 ```azurecli-interactive
 az network vnet create \
@@ -72,7 +72,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway-with-a-waf"></a>创建具有 WAF 的应用程序网关
 
-可以使用 [az network application-gateway create](/cli/azure/network/application-gateway) 创建名为 *myAppGateway* 的应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 将应用程序网关分配给 myAGSubnet  和 myAGPublicIPAddress  。
+可以使用 [az network application-gateway create](/cli/azure/network/application-gateway) 创建名为 *myAppGateway* 的应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、sku 和 HTTP 设置。 将应用程序网关分配给 myAGSubnet 和 myAGPublicIPAddress。
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -151,7 +151,7 @@ az storage account create \
   --resource-group myResourceGroupAG \
   --location eastus \
   --sku Standard_LRS \
-  --encryption blob
+  --encryption-services blob
 ```
 
 ### <a name="configure-diagnostics"></a>配置诊断

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5a7f64ead6d2e19242950002feed1cd1491dbacc
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 4d150135e15fb167a9c2d56c74e7bc4fc91c0953
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596586"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745925"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>使用 Creator 创建室内定位
 
@@ -57,7 +57,7 @@ ms.locfileid: "83596586"
 
 4. 在“头”选项卡中，指定“`Content-Type`”键的值。 由于绘图包是压缩文件夹，因此使用的是 `application/octet-stream` 值。 在“正文”选项卡中，选择“二进制文件”。 单击“选择文件”，然后选择绘图包。
 
-     ![数据管理](./media/tutorial-creator-indoor-maps/enter-content-type.png)
+     ![数据管理](./media/tutorial-creator-indoor-maps/enter-content-type-dialog.png)
 
 5. 单击蓝色的“发送”按钮，然后等待请求处理完成。 在请求处理完成后，立即转到响应的“头”选项卡。 复制“位置”键的值，即 `status URL`。
 
@@ -215,7 +215,7 @@ ms.locfileid: "83596586"
     https://atlas.microsoft.com/wfs/datasets/{datasetId}/collections?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0
     ```
 
-3. 响应正文将以 GeoJSON 格式传递，并包含数据集中的所有集合。 为了简单起见，此部分的示例只显示 `unit` 集合。 若要查看包含所有集合的示例，请参阅 [WFS 描述集合 API](https://docs.microsoft.com/rest/api/maps/wfs/describecollectionspreview)。 若要详细了解任意集合，可以单击 `link` 元素中的任何一个 URL。
+3. 响应正文将以 GeoJSON 格式传递，并包含数据集中的所有集合。 为了简单起见，此部分的示例只显示 `unit` 集合。 若要查看包含所有集合的示例，请参阅 [WFS 描述集合 API](https://docs.microsoft.com/rest/api/maps/wfs/collectiondescriptionpreview)。 若要详细了解任意集合，可以单击 `link` 元素中的任何一个 URL。
 
     ```json
     {
@@ -285,7 +285,7 @@ ms.locfileid: "83596586"
 
 1. 在 Postman 应用中，选择“新建”。 在“新建”窗口中，选择“请求”。 在“请求名称”中输入名称，然后选择一个集合。 单击“保存”
 
-2. 向[创建状态集 API](https://docs.microsoft.com/rest/api/maps/featurestate/createstatepreview) 发出 POST 请求。 使用包含要修改的状态的数据集的 `datasetId`。 请求应如下面的 URL 所示：
+2. 向[创建状态集 API](https://docs.microsoft.com/rest/api/maps/featurestate/createstatesetpreview) 发出 POST 请求。 使用包含要修改的状态的数据集的 `datasetId`。 请求应如下面的 URL 所示：
 
     ```http
     https://atlas.microsoft.com/featureState/stateset?api-version=1.0&datasetId={datasetId}&subscription-key={Azure-Maps-Primary-Subscription-key}

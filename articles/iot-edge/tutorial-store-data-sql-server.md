@@ -9,12 +9,12 @@ ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 96106882c1c43c322afbf6517209621557de9d25
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c239c16103dc0c1f847c5d4354aed89a143a28c6
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592060"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745509"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>教程：使用 SQL Server 数据库存储边缘中的数据
 
@@ -41,7 +41,7 @@ ms.locfileid: "83592060"
 
 * Azure 中的免费或标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
 * 一个[运行 Azure IoT Edge 的 AMD64 Linux 设备](quickstart-linux.md)。
-  * ARM 设备（如 Raspberry Pi）无法运行 SQL Server。 如果要在 ARM 设备上使用 SQL，可以注册试用 [Azure SQL Edge](https://azure.microsoft.com/services/azure-sql-edge/) 预览版。
+  * ARM 设备（如 Raspberry Pi）无法运行 SQL Server。 如果要在 ARM 设备上使用 SQL，可以注册试用 [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/) 预览版。
 * 一个容器注册表，例如 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/)。
 * 配置了 [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 的 [Visual Studio Code](https://code.visualstudio.com/)。
 * 配置为运行 Linux 容器的 [Docker CE](https://docs.docker.com/install/)。

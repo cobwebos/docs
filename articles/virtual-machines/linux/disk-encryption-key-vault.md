@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0038d5fdb38fdcfd4130a710f51d764e0cf9d907
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2adb158032582dff7449c7c0fc7b13419745f36c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459808"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743565"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>创建和配置用于 Azure 磁盘加密的 Key Vault
 
@@ -56,12 +56,12 @@ Connect-AzAccount
 ```
 
 [!INCLUDE [disk-encryption-key-vault](../../../includes/disk-encryption-key-vault.md)]
- ```
  
-## Next steps
+ 
+## <a name="next-steps"></a>后续步骤
 
-- [Azure Disk Encryption prerequisites CLI script](https://github.com/ejarvi/ade-cli-getting-started)
-- [Azure Disk Encryption prerequisites PowerShell script](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
-- Learn [Azure Disk Encryption scenarios on Linux VMs](disk-encryption-linux.md)
-- Learn how to [troubleshoot Azure Disk Encryption](disk-encryption-troubleshooting.md)
-- Read the [Azure Disk Encryption sample scripts](disk-encryption-sample-scripts.md)
+- [Azure 磁盘加密先决条件 CLI 脚本](https://github.com/ejarvi/ade-cli-getting-started)
+- [Azure 磁盘加密先决条件 PowerShell 脚本](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
+- 了解 [Linux VM 上的 Azure 磁盘加密方案](disk-encryption-linux.md)
+- 了解如何[对 Azure 磁盘加密进行故障排除](disk-encryption-troubleshooting.md)
+- 阅读 [Azure 磁盘加密示例脚本](disk-encryption-sample-scripts.md)

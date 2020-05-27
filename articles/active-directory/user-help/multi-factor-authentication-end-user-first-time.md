@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: overview
+ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
-ms.openlocfilehash: 5a7f0e10b23bf1a541fe83c3112962c38f7e1331
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 47220bc721092005c7e4d65a00eb933cd5c49a8c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77062551"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746767"
 ---
 # <a name="what-is-the-additional-verification-page"></a>什么是“附加验证”页？
 

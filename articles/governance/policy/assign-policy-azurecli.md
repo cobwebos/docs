@@ -3,12 +3,12 @@ title: 快速入门：通过 Azure CLI 进行新策略分配
 description: 本快速入门介绍如何使用 Azure CLI 创建 Azure Policy 分配以识别不合规的资源。
 ms.date: 01/11/2020
 ms.topic: quickstart
-ms.openlocfilehash: 7f76191d97a936c745fc2b13b54011e787e0b5e6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b1d93cdb4dfa1c82e8004af4052c22bba60f3a3a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75978323"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745738"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>快速入门：使用 Azure CLI 创建策略分配以识别不符合的资源
 
@@ -67,7 +67,7 @@ az policy assignment list --query "[?displayName=='Audit VMs without managed dis
 接下来，运行以下命令，获取输出到 JSON 文件中的不合规资源的资源 ID：
 
 ```console
-armclient post "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-09-01&$filter=IsCompliant eq false and PolicyAssignmentId eq '<policyAssignmentID>'&$apply=groupby((ResourceId))" > <json file to direct the output with the resource IDs into>
+armclient post "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$filter=IsCompliant eq false and PolicyAssignmentId eq '<policyAssignmentID>'&$apply=groupby((ResourceId))" > <json file to direct the output with the resource IDs into>
 ```
 
 结果应如以下示例所示：

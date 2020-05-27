@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6edc114a2d69dfe8f1e6e5d3c0a2d4af26dbad67
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6d31edaea109f2969cc68c566594dc436be203d7
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596596"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743549"
 ---
 # <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>实现 Creator 室内定位的动态样式
 
-借助 Azure Maps Creator [特征状态服务](https://docs.microsoft.com/rest/api/maps/featurestate/featurestate)，可以根据室内定位数据特征的动态属性来应用样式。  例如，可以使用特定颜色来渲染设施会议室，以反映占用状态。 本文将介绍如何使用[特征状态服务](https://docs.microsoft.com/rest/api/maps/featurestate/featurestate)和[室内 Web 模块](how-to-use-indoor-module.md)来动态渲染室内定位特征。
+借助 Azure Maps Creator [特征状态服务](https://docs.microsoft.com/rest/api/maps/featurestate)，可以根据室内定位数据特征的动态属性来应用样式。  例如，可以使用特定颜色来渲染设施会议室，以反映占用状态。 本文将介绍如何使用[特征状态服务](https://docs.microsoft.com/rest/api/maps/featurestate)和[室内 Web 模块](how-to-use-indoor-module.md)来动态渲染室内定位特征。
 
 ## <a name="prerequisites"></a>先决条件
 
