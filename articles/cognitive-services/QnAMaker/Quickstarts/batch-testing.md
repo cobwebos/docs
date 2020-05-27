@@ -1,21 +1,14 @@
 ---
 title: 快速入门：使用成批的问题测试知识库
-titleSuffix: Azure Cognitive Services
-description: ''
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
+description: 使用 QnA Maker 批量测试工具在 QnA Maker 资源中测试知识库，以获取预期的解答、置信度分数和多轮提示。
 ms.topic: quickstart
-ms.date: 02/08/2020
-ms.author: diberry
-ms.openlocfilehash: 3bc095d8949f177ccb6c4cc111ba4b272027904e
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.date: 05/26/2020
+ms.openlocfilehash: 9845b7c7cc19550c450a1eb00ec02731ef2d9d44
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756699"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873675"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>快速入门：使用成批的问题和预期的解答测试知识库
 
@@ -34,8 +27,8 @@ ms.locfileid: "80756699"
 
 ## <a name="create-a-new-knowledge-base-from-the-multi-turn-sampledocx-file"></a>根据多轮示例 .docx 文件创建新知识库
 
-1. 从工具栏中选择“创建知识库”。 
-1. 跳过“步骤 1”（因为你应该已经有了一项 QnA Maker 资源），转到“步骤 2”来选择现有的资源信息：  
+1. 从工具栏中选择“创建知识库”。
+1. 跳过“步骤 1”（因为你应该已经有了一项 QnA Maker 资源），转到“步骤 2”来选择现有的资源信息： 
     * Azure Active Directory ID
     * Azure 订阅名称
     * Azure QnA 服务名称
@@ -49,16 +42,16 @@ ms.locfileid: "80756699"
     |**允许从 URL、.pdf 或 .docx 文件进行多轮提取。**|已选中|
     |**默认答案文本**| `Batch test - default answer not found.`|
     |**+ 添加文件**|选择先决条件中列出的已下载 `.docx` 文件。|
-    |**聊天内容**|选择“专业” |
+    |**聊天内容**|选择“专业”|
 
-1. 在“步骤 5”中，选择“创建 KB”   。
+1. 在“步骤 5”中，选择“创建 KB” 。
 
     创建过程完成后，门户会显示可编辑的知识库。
 
 ## <a name="save-train-and-publish-knowledge-base"></a>保存、训练和发布知识库
 
-1. 从工具栏选择“保存并训练”  ，以便保存知识库。
-1. 从工具栏选择“发布”  ，然后再次选择“发布”，以便发布知识库。  发布以后，即可从公共 URL 终结点对知识库进行查询。 发布完成后，保存在“发布”页上显示的主机 URL 和终结点密钥信息。 
+1. 从工具栏选择“保存并训练”，以便保存知识库。
+1. 从工具栏选择“发布”，然后再次选择“发布”，以便发布知识库。 发布以后，即可从公共 URL 终结点对知识库进行查询。 发布完成后，保存在“发布”页上显示的主机 URL 和终结点密钥信息。
 
     |所需数据| 示例|
     |--|--|
@@ -74,7 +67,7 @@ ms.locfileid: "80756699"
 |--|--|--|
 |知识库 ID|在“发布”页上找到的知识库 ID。 通过在单个文件中使用不同的知识库 ID，对单个文件中同一服务的多个知识库同时进行测试。|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`（在 `POST` 中显示的 36 个字符的字符串） |
 |问题|用户会输入的问题文本。 最多 1,000 个字符。|`How do I sign out?`|
-|元数据标记|可选|`topic:power` 使用“键:值”  格式|
+|元数据标记|可选|`topic:power` 使用“键:值”格式|
 |Top 参数|可选|`25`|
 |预期的答案 ID|可选|`13`|
 
@@ -108,7 +101,7 @@ ms.locfileid: "80756699"
 
 在命令行处使用以下 CLI 格式运行批量测试程序。
 
-将 `YOUR-RESOURCE-NAME` 和 `ENDPOINT-KEY` 替换为你自己的服务名称值和终结点密钥值。 这些值可以在 QnA Maker 门户的“设置”页上找到。 
+将 `YOUR-RESOURCE-NAME` 和 `ENDPOINT-KEY` 替换为你自己的服务名称值和终结点密钥值。 这些值可以在 QnA Maker 门户的“设置”页上找到。
 
 ```console
 batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.net ENDPOINT-KEY out.tsv
@@ -136,13 +129,13 @@ batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.
 
 |列号|可选列|数据位置|
 |--|--|--|
-|3|metadata|针对现有的键:值对导出现有的知识库。 |
+|3|metadata|针对现有的键:值对导出现有的知识库。|
 |4|top|建议使用默认值 `25`。|
 |5|问答集 ID|针对 ID 值导出现有的知识库。 另请注意，ID 已在输出文件中返回。|
 
 ## <a name="add-metadata-to-the-knowledge-base"></a>向知识库添加元数据
 
-1. 在 QnA 门户中的“编辑”页上，向以下问题添加元数据 `topic:power`： 
+1. 在 QnA 门户中的“编辑”页上，向以下问题添加元数据 `topic:power`：
 
     |问题|
     |--|
@@ -152,9 +145,9 @@ batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.
     两个 QnA 对已设置元数据。
 
     > [!TIP]
-    > 若要查看每个集的元数据和 QnA ID，请导出知识库。 选择“设置”页，然后选择以 `.xls` 文件形式“导出”。   找到此下载的文件，使用 Excel 将其打开，查看其中的元数据和 ID。
+    > 若要查看每个集的元数据和 QnA ID，请导出知识库。 选择“设置”页，然后选择以 `.xls` 文件形式“导出”。  找到此下载的文件，使用 Excel 将其打开，查看其中的元数据和 ID。
 
-1. 依次选择“保存并训练”、“发布”页、“发布”按钮。    这些操作使更改适用于批量测试。 从“设置”页下载知识库。 
+1. 依次选择“保存并训练”、“发布”页、“发布”按钮。   这些操作使更改适用于批量测试。 从“设置”页下载知识库。
 
     下载的文件有适用于元数据的正确格式，以及正确的问答集 ID。 在下一部分使用这些字段
 
@@ -203,8 +196,8 @@ batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.
 
 如果不打算继续使用此知识库，请按以下步骤删除知识库：
 
-1. 在 QnA Maker 门户中，从顶部菜单选择“我的知识库”。 
-1. 在知识库列表中，选择本快速入门的知识库所在行的“删除”图标。 
+1. 在 QnA Maker 门户中，从顶部菜单选择“我的知识库”。
+1. 在知识库列表中，选择本快速入门的知识库所在行的“删除”图标。
 
 ## <a name="next-steps"></a>后续步骤
 

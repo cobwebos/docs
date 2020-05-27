@@ -990,6 +990,8 @@
       href: /azure/templates/microsoft.compute/allversions
 - name: 资源
   items:
+    - name: 问答
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-machines.html'
     - name: 创作 ARM 模板
       displayName: Azure Resource Manager
       href: ../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
