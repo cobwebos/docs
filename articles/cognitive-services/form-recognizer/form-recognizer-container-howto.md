@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: a3860b2cedbdf8154658449349439f918775cb25
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 761cf5831bb2332ae8c3f7a9a8edee707e6810ee
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701857"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816329"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>安装和运行窗体识别器容器（预览）
 
@@ -35,7 +35,7 @@ Azure 表单识别器应用机器学习技术从表单中识别和提取键值�
 
 使用表单识别器容器之前，必须满足以下先决条件：
 
-| 必需 | 目标 |
+| 必选 | 目的 |
 |----------|---------|
 | Docker 引擎 | 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br> |
 | 熟悉 Docker | 应对 Docker 概念（例如注册表、存储库、容器和容器映像）有一个基本的理解，并了解基本的 `docker` 命令。 |
@@ -67,7 +67,7 @@ Azure 表单识别器应用机器学习技术从表单中识别和提取键值�
 
 ## <a name="request-access-to-the-container-registry"></a>请求访问容器注册表
 
-填写并提交[请求窗体](https://aka.ms/FormRecognizerContainerRequestAccess)，请求对容器的访问权限。
+填写并提交[请求窗体](https://aka.ms/cognitivegate)，请求对容器的访问权限。
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 
@@ -247,7 +247,7 @@ services:
 
 ## <a name="query-the-containers-prediction-endpoint"></a>查询容器的预测终结点
 
-|容器|终结点|
+|容器|端点|
 |--|--|
 |form-recognizer|http://localhost:5000
 
@@ -307,7 +307,7 @@ formrecognizer_config =
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 如果运行启用了输出[装入点](form-recognizer-container-configuration.md#mount-settings)和日志记录的容器，该容器会生成有助于排查启动或运行容器时发生的问题的日志文件。
 

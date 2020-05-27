@@ -1,6 +1,6 @@
 ---
 title: 使用大型 Azure 虚拟机规模集
-description: 为了在应用程序中使用大型 Azure 虚拟机规模集，需要了解的内容。
+description: 介绍在应用程序中使用大型 Azure 虚拟机规模集所需了解的内容。
 author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
@@ -11,7 +11,7 @@ ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: c2490d8dc1d828992d309f07de1f75fa61ecb3be
 ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/12/2020
 ms.locfileid: "83200957"
@@ -36,15 +36,15 @@ _大型_ 规模集之所以特别，不是因为 VM 数，而是因为其包含�
 - 对于由多个放置组组成的规模集，在进行第 4 层负载均衡时需要 [Azure 负载均衡器标准 SKU](../load-balancer/load-balancer-standard-overview.md)。 负载均衡器标准 SKU 还有其他优势，例如能够在多个规模集之间进行负载均衡。 标准 SKU 还要求规模集有与之关联的网络安全组，否则 NAT 池无法正常使用。 若需使用 Azure 负载均衡器基本 SKU，请确保将规模集配置为使用单个放置组，这是默认设置。
 - 所有规模集均支持通过 Azure 应用程序网关进行的第 7 层负载均衡。
 - 规模集按定义使用单个子网 - 请确保子网的地址空间能够容纳所需的所有 VM。 默认情况下，规模集会进行过度预配（在部署或扩展时创建额外的 VM，免费），目的是提高部署可靠性和性能。 请额外预留 20% 的地址空间（相对于计划扩展的目标 VM 数）。
-- 容错域和升级域仅在放置组内保持一致性。 此体系结构不会改变规模集的总体可用性，因为 VM 在不同的物理硬件中是均衡分布的，但却意味着，如果需要保证两台 VM 位于不同的硬件中，则必须确保其位于同一放置组的不同容错域中。 请参阅此链接[可用性选项](/azure/virtual-machines/windows/availability)。 
+- 容错域和升级域仅在放置组内保持一致性。 此体系结构不会改变规模集的总体可用性，因为 VM 在不同的物理硬件中是均衡分布的，但却意味着，如果需要保证两台 VM 位于不同的硬件中，则必须确保其位于同一放置组的不同容错域中。 请参阅此链接：[可用性选项](/azure/virtual-machines/windows/availability)。 
 - 容错域和放置组 ID 显示在规模集 VM 的_实例视图_ 中。 可以在 [Azure 资源浏览器](https://resources.azure.com/)中查看规模集 VM 的实例视图。
 
 ## <a name="creating-a-large-scale-set"></a>创建大型规模集
-在 Azure 门户中创建规模集时，请直接指定实例计数值（最大为 1,000）。** 如果超出 100 个实例，请将“允许缩放到 100 个实例以上”设置为“是”，这样就可以缩放成多个放置组。**** 
+在 Azure 门户中创建规模集时，请直接指定实例计数值（最大为 1,000）。 如果超出 100 个实例，请将“允许缩放到 100 个实例以上”设置为“是”，这样就可以缩放成多个放置组。  
 
 ![](./media/virtual-machine-scale-sets-placement-groups/portal-large-scale.png)
 
-可以使用 [Azure CLI 的 ](https://github.com/Azure/azure-cli) _az vmss create_ 命令创建大型虚拟机规模集。 该命令根据 _instance-count_ 参数设置智能默认值（例如子网大小）：
+可以使用 [Azure CLI](https://github.com/Azure/azure-cli) az vmss create 命令创建大型虚拟机规模集。 该命令根据 _instance-count_ 参数设置智能默认值（例如子网大小）：
 
 ```azurecli
 az group create -l southcentralus -n biginfra
@@ -57,7 +57,7 @@ _vmss create_ 命令会对某些配置值进行默认设置（如果用户未指
 az vmss create --help
 ```
 
-若要通过编写 Azure 资源管理器模板来创建大型规模集，请确保该模板基于 Azure 托管磁盘创建规模集。 可以在_virtualMachineScaleSets_资源的_properties_节中将_singlePlacementGroup_属性设置为_false_ 。 以下 JSON 片段显示了规模集模板的开头，包括 1,000 VM 容量和 _"singlePlacementGroup" : false_ 设置：
+若要通过编写 Azure 资源管理器模板来创建大型规模集，请确保该模板基于 Azure 托管磁盘创建规模集。 可以在 _Microsoft.Compute/virtualMachineScaleSets_ 资源的 _properties_ 节将 _singlePlacementGroup_ 属性设置为 _false_。 以下 JSON 片段显示了规模集模板的开头，包括 1,000 VM 容量和 _"singlePlacementGroup" : false_ 设置：
 
 ```json
 {
@@ -76,10 +76,10 @@ az vmss create --help
     }
 ```
 
-有关大规模集模板的完整示例，请参阅 [https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json) 。
+有关大型规模集模板的完整示例，请参阅 [https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json)。
 
 ## <a name="converting-an-existing-scale-set-to-span-multiple-placement-groups"></a>将现有的规模集转换为跨多个放置组
-要使现有的虚拟机规模集能够扩展到 100 个以上的 VM，需在规模集模型中将 _singlePlacementGroup_ 属性更改为 _false_。 可以使用 [Azure 资源浏览器](https://resources.azure.com/)对该属性进行测试性更改。 找到现有的规模集，选择“编辑”，并更改 _singlePlacementGroup_ 属性。__ 如果看不到该属性，则可能是在使用旧版 Microsoft.Compute API 查看规模集。
+要使现有的虚拟机规模集能够扩展到 100 个以上的 VM，需在规模集模型中将 _singlePlacementGroup_ 属性更改为 _false_。 可以使用 [Azure 资源浏览器](https://resources.azure.com/)对该属性进行测试性更改。 找到现有的规模集，选择“编辑”，并更改 _singlePlacementGroup_ 属性。 如果看不到该属性，则可能是在使用旧版 Microsoft.Compute API 查看规模集。
 
 > [!NOTE]
 > 可以将规模集从仅支持单个放置组（默认行为）更改为支持多个放置组，但不能反过来进行转换。 因此，请确保在进行转换之前了解大型规模集的属性。

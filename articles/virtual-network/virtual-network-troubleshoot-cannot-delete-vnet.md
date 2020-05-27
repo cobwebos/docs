@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c2152b872c82c224c786e56db0318c9df994ac25
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
-ms.translationtype: MT
+ms.openlocfilehash: 2a64f42c8672972939bb2870ba40876e5cc8d855
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801580"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591941"
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>故障排除：无法在 Azure 中删除虚拟网络
-<p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=a13a0908-28e0-f9f7-c6c7-301fcd187560" target='_blank'>Start</a></span><span class="has-padding-small">通过使用虚拟代理运行<b>自动诊断</b>，快速开始解决问题。</span><div align="right"> <sub>Privacy Statement</sub>隐私声明<span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'></div></a></span></p>
-尝试在 Microsoft Azure 中删除虚拟网络时，可能会收到错误。 本文提供解决此问题的故障排除步骤。 
+
+尝试在 Microsoft Azure 中删除虚拟网络时，可能会收到错误。 本文提供解决此问题的故障排除步骤。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -42,19 +42,19 @@ ms.locfileid: "82801580"
 
 若要删除虚拟网络，首先必须删除虚拟网络网关。
 
-对于经典虚拟网络，请在 Azure 门户中转到经典虚拟网络的“概述”页。**** 在“VPN 连接”部分中，如果网关正在虚拟网络中运行，则会显示该网关的 IP 地址。**** 
+对于经典虚拟网络，请在 Azure 门户中转到经典虚拟网络的“概述”页。 在“VPN 连接”部分中，如果网关正在虚拟网络中运行，则会显示该网关的 IP 地址。 
 
 ![检查网关是否正在运行](media/virtual-network-troubleshoot-cannot-delete-vnet/classic-gateway.png)
 
-对于虚拟网络，请转到虚拟网络的“概述”页。**** 检查虚拟网络网关的“已连接设备”。****
+对于虚拟网络，请转到虚拟网络的“概述”页。 检查虚拟网络网关的“已连接设备”。
 
 ![检查已连接的设备](media/virtual-network-troubleshoot-cannot-delete-vnet/vnet-gateway.png)
 
-在删除网关之前，请先删除该网关中的所有“连接”对象。**** 
+在删除网关之前，请先删除该网关中的所有“连接”对象。 
 
 ### <a name="check-whether-an-application-gateway-is-running-in-the-virtual-network"></a>检查应用程序网关是否在虚拟网络中运行
 
-转到虚拟网络的“概述”页。**** 检查应用程序网关的“已连接设备”。****
+转到虚拟网络的“概述”页。 检查应用程序网关的“已连接设备”。
 
 ![检查已连接的设备](media/virtual-network-troubleshoot-cannot-delete-vnet/app-gateway.png)
 

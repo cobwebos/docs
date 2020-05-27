@@ -7,7 +7,7 @@ ms.author: glenga
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 819eed1eb4e32469bf0572a6548f5a2a44091ef0
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "77279610"

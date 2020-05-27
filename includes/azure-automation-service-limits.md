@@ -10,7 +10,7 @@ ms.author: gwallace
 ms.custom: include file
 ms.openlocfilehash: d700dfcf5a7b6e9ada2a755335689ffa571e4c3d
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "80334612"

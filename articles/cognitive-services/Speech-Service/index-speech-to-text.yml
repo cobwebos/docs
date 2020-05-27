@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/19/2020
   ms.author: trbye
-  ms.openlocfilehash: be34def3c7aacc5419071028a3d3085fe69103fa
-  ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+  ms.openlocfilehash: c1f4b6b43f661251f764e65e5d5378952ab99d10
+  ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
   ms.translationtype: MT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83653478"
+  ms.lasthandoff: 05/22/2020
+  ms.locfileid: "83800858"
 landingContent:
 - title: 关于语音转文本
   linkLists:
@@ -28,7 +28,7 @@ landingContent:
       url: batch-transcription.md
     - text: 语音识别基础知识
       url: speech-to-text-basics.md
-    - text: 将 SPX 用于语音到文本，无代码
+    - text: 将语音 CLI 用于语音到文本，无代码
       url: spx-overview.md
   - linkListType: quickstart
     links:
@@ -38,7 +38,7 @@ landingContent:
       url: quickstarts/speech-to-text-from-file.md
     - text: 识别存储在 Blob 存储中的语音
       url: quickstarts/from-blob.md
-    - text: 带有引用输入的发音评估
+    - text: 通过参考输入进行发音评估
       url: rest-speech-to-text.md#pronunciation-assessment-parameters
 - title: 使用语音转文本进行开发
   linkLists:

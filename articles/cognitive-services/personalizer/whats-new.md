@@ -10,16 +10,16 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: diberry
-ms.openlocfilehash: 21669a214ff1646a8f331cbe2871b7d8c756f22f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0c52771573c1df6a7a0efefbf950e88e1f1728f7
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591754"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800633"
 ---
 # <a name="whats-new-in-personalizer"></a>Personalizer 中的新增功能
 
-了解该服务中的新增功能。 这些项目可能包括发行说明、视频、博客文章和其他类型的信息。 将此页加入书签，以随时了解服务的最新信息。
+了解服务中的新增功能。 这些项目可能包括发行说明、视频、博客文章和其他类型的信息。 将此页加入书签，以随时了解服务的最新信息。
 
 ## <a name="release-notes"></a>发行说明
 
@@ -31,7 +31,7 @@ ms.locfileid: "83591754"
 
 ### <a name="march-2020"></a>2020 年 3 月
 
-* 现在，将对此服务的所有 HTTP 请求强制执行 TLS 1.2。 有关详细信息，请参阅[Azure 认知服务安全性](../cognitive-services-security.md)。
+* 现在，将对此服务的所有 HTTP 请求强制执行 TLS 1.2。 有关详细信息，请参阅 [Azure 认知服务安全性](../cognitive-services-security.md)。
 
 ### <a name="november-2019---ignite-conference"></a>2019 年 11 月 - Ignite 大会
 
@@ -48,7 +48,7 @@ ms.locfileid: "83591754"
 
 ### <a name="2019-build-videos"></a>2019 Build 视频
 
-* [& 内容（如 Xbox 和认知服务 Personalizer）提供正确的体验](https://mybuild.techcommunity.microsoft.com/sessions/76970?source=sessions#top-anchor)
+* [& 内容（如 Xbox 和认知服务 Personalizer）提供正确的体验](https://azure.microsoft.com/resources/videos/build-2019-deliver-the-right-experiences-and-content-with-cognitive-services-personalizer/)
 
 ## <a name="service-updates"></a>服务更新
 

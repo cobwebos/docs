@@ -15,7 +15,7 @@ ms.date: 07/06/2015
 ms.author: lauraa
 ms.openlocfilehash: 7a241d3144b6220d0084b61de2dde7c36a68c257
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335135"

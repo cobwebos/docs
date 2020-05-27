@@ -4,12 +4,12 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: af0f7ef04ce746c502a8ddf7b0d3971f13a42484
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.openlocfilehash: 505e2d8eec20853fba3743b40cbe289585d14d61
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82844508"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "78304996"
 ---
 | 资源 | 免费 | Shared | 基本 | Standard | 高级 (v2) | 隔离 </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -17,10 +17,10 @@ ms.locfileid: "82844508"
 | [应用服务计划](../articles/app-service/overview-hosting-plans.md) |每个区域仅 10 个 |每个资源组 10 个 |每个资源组 100 个 |每个资源组 100 个 |每个资源组 100 个 |每个资源组 100 个|
 | 计算实例类型 |Shared |Shared |专用<sup>3</sup> |专用<sup>3</sup> |专用<sup>3</sup></p> |专用<sup>3</sup>|
 | [横向扩展](../articles/app-service/manage-scale-up.md)（最大实例数） |1 个共享 |1 个共享 |3 个专用<sup>3</sup> |10 个专用<sup>3</sup> |30个专用<sup>3</sup>|100 个专用<sup>4</sup>|
-| 存储<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup> <br/><br/> 对于超过 250 GB，请提交支持请求。 |1 TB<sup>5</sup> <br/><br/> 可用存储配额为 999 GB。 |
-| CPU 时间（5分钟）<sup>6</sup> |3 分钟 |3 分钟 |无限制，按标准[费率](https://azure.microsoft.com/pricing/details/app-service/)付费</a> |无限制，按标准[费率](https://azure.microsoft.com/pricing/details/app-service/)付费</a> |无限制，按标准[费率](https://azure.microsoft.com/pricing/details/app-service/)付费</a> |无限制，按标准[费率](https://azure.microsoft.com/pricing/details/app-service/)付费</a>|
+| 存储<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup></p> |1 TB<sup>5</sup>|
+| CPU 时间（5分钟）<sup>6</sup> |3 分钟 |3 分钟 |无限制，按标准[费率](https://azure.microsoft.com/pricing/details/app-service/)</a>付费 |无限制，按标准[费率](https://azure.microsoft.com/pricing/details/app-service/)付费</a> |无限制，按标准[费率](https://azure.microsoft.com/pricing/details/app-service/)付费</a> |无限制，按标准[费率](https://azure.microsoft.com/pricing/details/app-service/)付费</a>|
 | CPU 时间（天）<sup>6</sup> |60 分钟 |240 分钟 |无限制，按标准[费率](https://azure.microsoft.com/pricing/details/app-service/)付费</a> |无限制，按标准[费率](https://azure.microsoft.com/pricing/details/app-service/)付费</a> |无限制，按标准[费率](https://azure.microsoft.com/pricing/details/app-service/)付费</a> |无限制，按标准[费率](https://azure.microsoft.com/pricing/details/app-service/)付费</a> |
-| 内存（1 小时） |每个应用服务计划 1024 MB |每个应用 1024 MB |不可用 |不可用 |不可用 |不可用 |
+| 内存（1 小时） |每个应用服务计划 1024 MB |每个应用 1024 MB |空值 |空值 |空值 |空值 |
 | 带宽 |165 MB |无限制，收取[数据传输费](https://azure.microsoft.com/pricing/details/data-transfers/) |无限制，收取[数据传输费](https://azure.microsoft.com/pricing/details/data-transfers/) |无限制，收取[数据传输费](https://azure.microsoft.com/pricing/details/data-transfers/) |无限制，收取[数据传输费](https://azure.microsoft.com/pricing/details/data-transfers/) |无限制，收取[数据传输费](https://azure.microsoft.com/pricing/details/data-transfers/) |
 | 应用程序体系结构 |32 位 |32 位 |32 位/64 位 |32 位/64 位 |32 位/64 位 |32 位/64 位 |
 | 每个实例的 Web 套接字<sup>7</sup> |5 |35 |350 |无限制 |无限制 |无限制 |

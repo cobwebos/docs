@@ -10,7 +10,7 @@ ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: dc7c86ff1df48f9ce96769098f7aab76d33c8822
 ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/27/2020
 ms.locfileid: "68481392"

@@ -1,5 +1,5 @@
 ---
-title: 快速入门：创建 Apache Spark 笔记本
+title: 快速入门：创建 Apache Spark for Azure Synapse Analytics 笔记本
 description: 本快速入门介绍如何使用 Web 工具在 Azure Synapse Analytics 中创建 Apache Spark 池（预览版），并运行 Spark SQL 查询。
 services: synapse-analytics
 author: euangMS
@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: 47235ca0e420e0de9f6c4beb070e0b75b72e7549
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 9e8a539421a76b6f94f10d559ad0086c9d87abf4
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82786662"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592944"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-in-azure-synapse-analytics-using-web-tools"></a>快速入门：使用 Web 工具在 Azure Synapse Analytics 中创建 Apache Spark 池（预览版）
 
@@ -41,15 +41,15 @@ ms.locfileid: "82786662"
 
 笔记本是支持各种编程语言的交互式环境。 使用笔记本可与数据交互，将代码和 Markdown、文本相结合，以及执行简单的可视化操作。
 
-1. 在要使用的 Azure Synapse 工作区的 Azure 门户视图中，选择“启动 Synapse Studio”。 
-2. 启动 Synapse Studio 后，选择“开发”。  然后，将鼠标悬停在“笔记本”项上。  选择省略号图标 (...)。 
-3. 然后选择“新建笔记本”。  随即会创建并打开一个具有自动生成的名称的新笔记本。
+1. 在要使用的 Azure Synapse 工作区的 Azure 门户视图中，选择“启动 Synapse Studio”。
+2. 启动 Synapse Studio 后，选择“开发”。 然后，将鼠标悬停在“笔记本”项上。 选择省略号图标 (...)。
+3. 然后选择“新建笔记本”。 随即会创建并打开一个具有自动生成的名称的新笔记本。
   ![新建笔记本](./media/quickstart-apache-spark-notebook/spark-get-started-new-notebook.png "新建笔记本")
 
-4. 在“属性”窗口中提供笔记本的名称。 
-5. 在工具栏上单击“发布”。 
+4. 在“属性”窗口中提供笔记本的名称。
+5. 在工具栏上单击“发布”。
 6. 如果工作区中只有一个 Apache Spark 池，则默认选择该池。 如果未选择任何池，请使用下拉箭头选择合适的 Apache Spark 池。
-7. 单击“添加代码”。  默认语言为 `Pyspark`。 你将混合使用 Pyspark 和 Spark SQL，因此默认选择是适当的。
+7. 单击“添加代码”。 默认语言为 `Pyspark`。 你将混合使用 Pyspark 和 Spark SQL，因此默认选择是适当的。
 8. 接下来，创建一个用于操作的简单 Spark 数据帧对象。 在本例中，你将在代码中创建该对象。 有三行和三列：
 
    ```python
@@ -62,7 +62,7 @@ ms.locfileid: "82786662"
 
    - 按 **Shift + Enter**。
    - 选择单元左侧的蓝色播放图标。
-   - 选择工具栏上的“全部运行”按钮。 
+   - 选择工具栏上的“全部运行”按钮。
 
    ![创建数据帧对象](./media/quickstart-apache-spark-notebook/spark-get-started-create-data-frame-object.png "Spark 作业的输出")
 
@@ -113,29 +113,29 @@ ms.locfileid: "82786662"
 
     ![Azure Synapse Spark 中的查询输出](./media/quickstart-apache-spark-notebook/spark-get-started-query.png "Azure Synapse Spark 中的查询输出")
 
-3. 在“视图”切换器中，选择“图表”。  
-4. 选择最右侧的“视图选项”图标。 
-5. 在“图表类型”字段中选择“条形图”。 
+3. 在“视图”切换器中，选择“图表”。 
+4. 选择最右侧的“视图选项”图标。
+5. 在“图表类型”字段中选择“条形图”。
 6. 在“X 轴列”字段中选择“省/市/自治区”。
 7. 在“Y 轴列”字段中选择“工资”。
-8. 在“聚合”字段中，选择“平均”。 
-9. 选择“应用”。 
+8. 在“聚合”字段中，选择“平均”。
+9. 选择“应用”。
 
    ![Azure Synapse Spark 中的图表输出](./media/quickstart-apache-spark-notebook/spark-get-started-query-chart-output.png "Azure Synapse Spark 中的图表输出")
 
-10. 运行 SQL 时可以获得相同的体验，但不需要切换语言。 为此，可将上面的 SQL 单元替换为以下 PySpark 单元，其输出体验是相同的，因为使用了 display 命令： 
+10. 运行 SQL 时可以获得相同的体验，但不需要切换语言。 为此，可将上面的 SQL 单元替换为以下 PySpark 单元，其输出体验是相同的，因为使用了 display 命令：
 
     ```python
     display(spark.sql('SELECT * FROM demo_df'))
     ```
 
-11. 对于前面执行的每个单元，可以选择转到“History Server”和“监视”。   单击相应的链接会转到用户体验的不同组成部分。
+11. 对于前面执行的每个单元，可以选择转到“History Server”和“监视”。  单击相应的链接会转到用户体验的不同组成部分。
 
 ## <a name="clean-up-resources"></a>清理资源
 
 Azure Synapse 在 Azure Data Lake Storage 中保存数据。 可以放心地关闭未在使用的 Spark 实例。 只要 Azure Synapse Apache Spark 池正在运行，即使不使用它，它也会产生费用。 池的费用是存储费用的许多倍。 因此，当 Spark 实例未在使用时，将其关闭是有经济意义的。
 
-为了确保关闭 Spark 实例，请结束任何已连接的会话（笔记本）。 达到 Apache Spark 池中指定的空闲时间时，池将会关闭。  也可以在笔记本底部的状态栏中选择“结束会话”。 
+为了确保关闭 Spark 实例，请结束任何已连接的会话（笔记本）。 达到 Apache Spark 池中指定的空闲时间时，池将会关闭。 也可以在笔记本底部的状态栏中选择“结束会话”。
 
 ## <a name="next-steps"></a>后续步骤
 

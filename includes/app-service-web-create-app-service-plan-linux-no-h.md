@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/20/2019
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 25003269fb6e00cadcc14d2356308cae54c70bf7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c2711d102c9dfeb00394fa5b5b69065115ce235e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085237"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "75681003"
 ---
 在 Cloud Shell 中，使用 [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) 命令在资源组中创建应用服务计划。
 
@@ -27,7 +27,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 创建应用服务计划后，Azure CLI 会显示类似于以下示例的信息：
 
-<pre>
+```json
 { 
   "adminSiteName": null,
   "appServicePlanName": "myAppServicePlan",
@@ -38,9 +38,9 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
   "location": "West Europe",
   "maximumNumberOfWorkers": 1,
   "name": "myAppServicePlan",
-  &lt; JSON data removed for brevity. &gt;
+  < JSON data removed for brevity. >
   "targetWorkerSizeId": 0,
   "type": "Microsoft.Web/serverfarms",
   "workerTierName": null
 } 
-</pre>
+```

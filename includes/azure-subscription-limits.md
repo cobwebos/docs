@@ -10,7 +10,7 @@ ms.author: jroth
 ms.custom: include file
 ms.openlocfilehash: f49d91a2dffbd02067efd82b88963b5cb6eaa8b4
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "76021004"

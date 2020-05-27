@@ -10,7 +10,7 @@ ms.author: nzthiago
 ms.custom: include file
 ms.openlocfilehash: eca2d3359614875e5bff0c9bb67f006f0a8cdba1
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "77198320"

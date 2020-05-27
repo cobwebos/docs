@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
-ms.openlocfilehash: 41dfb809cdab00f4f9bee335d92522f37a438c68
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d8665b4cec3357baee5d6c1b77b5719645575419
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82109887"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81112883"
 ---
 ## <a name="publish-the-project-to-azure"></a>将项目发布到 Azure
 
@@ -24,8 +24,6 @@ ms.locfileid: "82109887"
     ![将项目发布到 Azure](media/functions-publish-project-vscode/function-app-publish-project.png)
 
 1. 根据提示提供以下信息：
-
-    + **选择文件夹**：从工作区中选择一个文件夹，或浏览到包含函数应用的文件夹。 如果已打开有效的函数应用，则不会看到此信息。
 
     + **选择订阅**：选择要使用的订阅。 如果只有一个订阅，则不会看到此项。
 

@@ -6,7 +6,7 @@ ms.topic: include
 ms.service: azure-functions
 ms.openlocfilehash: 1928a8238cd73087e3c199675574dd1395f4d76d
 ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/27/2020
 ms.locfileid: "68881331"

@@ -11,7 +11,7 @@ ms.author: vlvinogr
 ms.custom: include file
 ms.openlocfilehash: 072f13f5a0884cf95fe760e17ff0d770111f4da0
 ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "82204541"

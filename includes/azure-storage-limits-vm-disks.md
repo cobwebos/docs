@@ -6,7 +6,7 @@ ms.date: 03/18/2019
 ms.author: rogarana
 ms.openlocfilehash: c3028ed7629c41eece354dd2554ede9249bac4f8
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "80334968"

@@ -1,6 +1,6 @@
 ---
 title: 将 Desired State Configuration 与虚拟机规模集配合使用
-description: 将虚拟机规模集与 Azure Desired State Configuration 扩展配合使用来配置虚拟机。
+description: 结合使用虚拟机规模集和 Azure Desired State Configuration 扩展来配置虚拟机。
 author: ju-shim
 ms.author: jushiman
 ms.topic: how-to
@@ -11,7 +11,7 @@ ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 4a972cab0559ff8a4bb22588c712515daa2fab16
 ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/12/2020
 ms.locfileid: "83124835"

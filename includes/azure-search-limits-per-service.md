@@ -10,7 +10,7 @@ ms.author: heidist
 ms.custom: include file
 ms.openlocfilehash: 179f525b7b6a7e51889b14b66df6c537ca56bd75
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "80272735"

@@ -10,7 +10,7 @@ ms.author: jdial
 ms.custom: include file
 ms.openlocfilehash: c63160d7514dccb0d2a9c2879db6d3fd614e1a96
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "75646376"

@@ -1,5 +1,5 @@
 ---
-title: 引用 Azure 规模集模板中的自定义映像
+title: 在 Azure 规模集模板中引用自定义映像
 description: 了解如何向现有 Azure 虚拟机规模集模板添加自定义映像
 author: cynthn
 ms.author: cynthn
@@ -11,17 +11,17 @@ ms.reviewer: akjosh
 ms.custom: akjosh
 ms.openlocfilehash: 5ed9ee79dde73e738417031b928a675ea913179c
 ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/12/2020
 ms.locfileid: "83124901"
 ---
 # <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>向 Azure 规模集模板添加自定义映像
 
-本文介绍了如何修改[基本规模集模板](virtual-machine-scale-sets-mvss-start.md)，以便通过自定义映像进行部署。
+本文介绍如何修改[基本规模集模板](virtual-machine-scale-sets-mvss-start.md)以通过自定义映像进行部署。
 
 ## <a name="change-the-template-definition"></a>更改模板定义
-在[此前的文章](virtual-machine-scale-sets-mvss-start.md)中，我们创建了基本的规模集模板。 我们现在将使用这个此前的模板并对其进行修改，以便创建一个模板来从自定义映像部署规模集。  
+在[前面的文章](virtual-machine-scale-sets-mvss-start.md)中，我们创建了一个基本规模集模板。 现在，我们将使用前面的模板并对其进行修改，以创建一个模板，该模板通过自定义映像部署规模集。  
 
 ### <a name="creating-a-managed-disk-image"></a>创建托管磁盘映像
 
@@ -89,7 +89,7 @@ ms.locfileid: "83124901"
 
 ### <a name="changing-scale-set-properties-to-use-the-managed-disk-image"></a>更改规模集属性以使用托管磁盘映像
 
-在规模集 `imageReference` 的 `storageProfile` 中，请勿指定平台映像的发布者、产品/服务、SKU 和版本，而是指定 `id` 资源的 `Microsoft.Compute/images`：
+在规模集 `storageProfile` 的 `imageReference` 中，请勿指定平台映像的发布者、产品/服务、SKU 和版本，而是指定 `Microsoft.Compute/images` 资源的 `id`：
 
 ```json
          "virtualMachineProfile": {

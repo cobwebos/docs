@@ -10,7 +10,7 @@ ms.author: curtand
 ms.custom: include file
 ms.openlocfilehash: d906a3dd072770a05b818fd3ca8de359b8427728
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "80986682"

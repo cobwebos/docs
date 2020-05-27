@@ -48,6 +48,8 @@
       href: upgrade-virtual-wan.md
     - name: 配置自定义 IPsec 策略
       href: virtual-wan-custom-ipsec-portal.md
+    - name: 在中心安装 Azure 防火墙
+      href: howto-firewall.md
     - name: ExpressRoute
       items:
         - name: 创建 ExpressRoute 连接
@@ -84,6 +86,8 @@
           href: openvpn-azure-ad-client.md
         - name: 配置多应用程序 Azure AD 身份验证
           href: openvpn-azure-ad-tenant-multi-app.md
+        - name: 在中心安装 Azure 防火墙
+          href: howto-firewall.md
     - name: 路由
       items:
         - name: 将流量从虚拟中心路由到 NVA
@@ -94,6 +98,10 @@
               href: virtual-wan-route-table.md
         - name: 查看虚拟中心有效路由
           href: effective-routes-virtual-hub.md
+    - name: 安全性
+      items:
+        - name: 在中心安装 Azure 防火墙
+          href: howto-firewall.md
 - name: 参考
   items:
     - name: Azure PowerShell

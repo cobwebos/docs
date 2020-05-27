@@ -10,7 +10,7 @@ ms.author: twooley
 ms.custom: include file
 ms.openlocfilehash: d7c8d6c536bb27a762e21f15f69fae2d8e6915f9
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "73850277"

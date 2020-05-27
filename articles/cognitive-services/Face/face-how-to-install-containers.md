@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: bd1449501cdc9483621a5408a3a4926afe90212f
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 611ab503dfea44e8287e95cf607ce6af3b447d1f
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702146"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83815785"
 ---
 # <a name="install-and-run-face-containers-preview"></a>安装并运行人脸容器（预览）
 
@@ -28,7 +28,7 @@ Azure 认知服务面部为 Docker 提供标准化的 Linux 容器，用于检�
 
 必须满足以下先决条件，然后才能使用人脸服务容器。
 
-|必需|目标|
+|必选|目的|
 |--|--|
 |Docker 引擎| Docker 引擎必须安装在[主计算机](#the-host-computer)上。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 你需要基本了解 Docker 概念，如注册表、存储库、容器和容器映像。 还需要了解基本 `docker` 命令。| 
@@ -38,7 +38,7 @@ Azure 认知服务面部为 Docker 提供标准化的 Linux 容器，用于检�
 
 ## <a name="request-access-to-the-private-container-registry"></a>请求访问专用容器注册表
 
-填写并提交[请求窗体](https://aka.ms/VisionContainersPreview)，请求对容器的访问权限。 
+填写并提交[请求窗体](https://aka.ms/cognitivegate)，请求对容器的访问权限。 
 
 [!INCLUDE [Request access to private container registry](../../../includes/cognitive-services-containers-request-access.md)]
 
@@ -126,7 +126,7 @@ ApiKey={API_KEY}
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 如果在启用了输出[装载](./face-resource-container-config.md#mount-settings)并启用了日志记录的情况下运行容器，则容器将生成日志文件，这些文件有助于排查启动或运行容器时所发生的问题。
 

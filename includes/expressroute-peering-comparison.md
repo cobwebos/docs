@@ -6,7 +6,7 @@ ms.topic: include
 ms.author: cherylmc
 ms.openlocfilehash: b6ab3e80c7a27263039de3d371adea3d49ddfcc9
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "75436997"

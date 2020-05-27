@@ -159,6 +159,8 @@
               href: manage-self-service-access.md
             - name: 主领域发现
               href: configure-authentication-for-federated-users-portal.md
+        - name: 使用 MS Graph API 自动执行基于 SAML 的单一登录
+          href: application-saml-sso-configure-api.md
         - name: 将应用迁移到 Azure AD
           items:
             - name: 迁移资源
@@ -345,7 +347,7 @@
       href: 'https://azure.microsoft.com/pricing/details/active-directory'
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=active-directory'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
     - name: 视频
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'
