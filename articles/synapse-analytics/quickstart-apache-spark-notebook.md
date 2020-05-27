@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: 9e8a539421a76b6f94f10d559ad0086c9d87abf4
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 27ec09f1286f4e7999db56acdedaba1a37122aad
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592944"
+ms.locfileid: "83656189"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-in-azure-synapse-analytics-using-web-tools"></a>快速入门：使用 Web 工具在 Azure Synapse Analytics 中创建 Apache Spark 池（预览版）
 
@@ -29,7 +29,7 @@ ms.locfileid: "83592944"
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 - [Synapse Analytics 工作区](quickstart-create-workspace.md)
-- [Apache Spark 池](quickstart-create-apache-spark-pool.md)
+- [Apache Spark 池](quickstart-create-apache-spark-pool-studio.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -133,7 +133,9 @@ ms.locfileid: "83592944"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-Azure Synapse 在 Azure Data Lake Storage 中保存数据。 可以放心地关闭未在使用的 Spark 实例。 只要 Azure Synapse Apache Spark 池正在运行，即使不使用它，它也会产生费用。 池的费用是存储费用的许多倍。 因此，当 Spark 实例未在使用时，将其关闭是有经济意义的。
+Azure Synapse 在 Azure Data Lake Storage 中保存数据。 可以安全关闭未在使用的 Spark 实例。 只要 Azure Synapse Apache Spark 池正在运行，即使不使用它，它也会产生费用。 
+
+由于池的费用是存储费用的许多倍，关闭未在使用的 Spark 实例可以节省费用。
 
 为了确保关闭 Spark 实例，请结束任何已连接的会话（笔记本）。 达到 Apache Spark 池中指定的空闲时间时，池将会关闭。 也可以在笔记本底部的状态栏中选择“结束会话”。
 

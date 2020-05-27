@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 059e77c063d00ef850a171507ca2e06422ade426
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 514694dc2e3f06db2fb80f6b3ba0106343be11d8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82191764"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658507"
 ---
 # <a name="azure-synapse-analytics-preview-release-notes"></a>Azure Synapse Analytics（预览版）发行说明
 
@@ -38,6 +38,6 @@ ms.locfileid: "82191764"
 
 * [创建工作区](quickstart-create-workspace.md)
 * [使用 Synapse Studio](quickstart-synapse-studio.md)
-* [创建 SQL 池](quickstart-create-sql-pool.md)
+* [创建 SQL 池](quickstart-create-sql-pool-portal.md)
 * [使用 SQL 按需版本](quickstart-sql-on-demand.md)
-* [创建 Apache Spark 池](quickstart-create-apache-spark-pool.md)
+* [创建 Apache Spark 池](quickstart-create-apache-spark-pool-portal.md)

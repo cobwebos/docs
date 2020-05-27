@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: c4798fa9140f277d5383d2830eefb9bcc8d7c984
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 11902e363428a45bc158a99d251343e13b62540d
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72598329"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836424"
 ---
 # <a name="azure-media-services-community"></a>Azure 媒体服务社区  
 
@@ -40,7 +40,7 @@ ms.locfileid: "72598329"
 
 ### <a name="twitter"></a>Twitter
 
-使用[@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) twitter 句柄与我们联系或关注 twitter 上的更新。 可以使用[@AzureSupport](https://twitter.com/azuresupport) twitter 句柄请求 twitter 上的支持。  
+使用 [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) twitter 句柄，请与我们联系，或在 Twitter 上关注更新。 可以在 Twitter 上使用 [@AzureSupport](https://twitter.com/azuresupport) Twitter 用户名请求支持。  
 
 ### <a name="online-forums"></a>在线论坛
 
@@ -48,7 +48,7 @@ ms.locfileid: "72598329"
 
 目前，MSDN 为媒体服务团队的主社区论坛。
 
-[![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
+[![MSDN](./media/media-services-community/msdn.png)](https://docs.microsoft.com/answers/topics/azure-media-services.html) 
 
 团队还可以监控使用 Azure 媒体服务标记 Stack Overflow 的问题。
 
@@ -56,7 +56,7 @@ ms.locfileid: "72598329"
 
 ## <a name="need-help"></a>需要帮助？
 
-可以通过导航到 "[新建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)" 来打开支持票证
+可以通过导航到[新建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)来开具支持票证
 
 ## <a name="next-steps"></a>后续步骤
 

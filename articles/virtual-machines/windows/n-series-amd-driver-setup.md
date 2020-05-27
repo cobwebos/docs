@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 1bcc13db3f503c80fda71a2104d0ff8d99e67df6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 745ec7ebf792fe1165022516be4c83fb9e864cc9
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197996"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83799883"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>在运行 Windows 的 N 系列 VM 上安装 AMD GPU 驱动程序
 
@@ -38,13 +38,9 @@ NVv4 VM 仅支持 Microsoft 发布的 GPU 驱动程序。 请勿从任何其他�
 
 1. 通过远程桌面连接到每个 NVv4 系列 VM。
 
-2. 如果你是 NVv4 预览版客户，请停止 VM 并等待其转到“已停止(已解除分配)”状态。
+2. 下载并安装最新版驱动程序。
 
-3. 请启动 VM，并下载最新版 [AMD 清理实用程序](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe)。 通过运行“amdcleanuputility-x64.exe”卸载现有驱动程序。 请勿使用通过以前的驱动程序安装的任何现有清理实用程序。  
-
-4. 下载并安装最新版驱动程序。
-
-5. 重启 VM。
+3. 重启 VM。
 
 ## <a name="verify-driver-installation"></a>验证驱动程序安装
 

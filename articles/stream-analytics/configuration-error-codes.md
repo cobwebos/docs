@@ -6,28 +6,16 @@ author: mamccrea
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.service: stream-analytics
-ms.openlocfilehash: 9951a6ddfbd1c562184e2b7e02a9da98f7d94b12
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 5aa15ae4a234a56a172a0166070c32be4f822910
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595586"
+ms.locfileid: "83650079"
 ---
 # <a name="azure-stream-analytics-configuration-error-codes"></a>Azure 流分析配置错误代码
 
 可以使用活动日志和资源日志来帮助调试 Azure 流分析作业中的意外行为。 本文列出了每个配置错误代码的说明。 配置错误与作业配置或输入和输出配置相关。
-
-## <a name="kafkainvalidpermission"></a>KafkaInvalidPermission
-
-* **原因**：流分析作业没有适当的权限，无法执行某些操作。
-
-## <a name="kafkainvalidconfiguration"></a>KafkaInvalidConfiguration
-
-* **原因**：Kafka 适配器上的某些配置无效。
-
-## <a name="kafkainvalidtimestamptype"></a>KafkaInvalidTimestampType
-
-* **原因**：Kafka 使用的时间戳类型无效。
 
 ## <a name="eventhubunauthorizedaccess"></a>EventHubUnauthorizedAccess
 

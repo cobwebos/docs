@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/24/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8ef9f27546e9db95d5a41769e1b5bc7bc0c2f851
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a3b1b134afbc4a13d7888281a82609d444cee377
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77663056"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682867"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>将 Azure 自动化资源添加到管理解决方案（预览版）
 > [!NOTE]
@@ -25,7 +25,7 @@ ms.locfileid: "77663056"
 > 本文中的示例使用管理解决方案需要或通用的参数和变量，[在 Azure 中设计和开发解决方案]( solutions-creating.md)中对它们进行了介绍 
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 本文假设已熟悉以下信息。
 
 - 如何[创建管理解决方案]( solutions-creating.md)。
@@ -33,7 +33,7 @@ ms.locfileid: "77663056"
 - 如何[创作 Resource Manager 模板](../../azure-resource-manager/templates/template-syntax.md)
 
 ## <a name="automation-account"></a>自动化帐户
-Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/automation-security-overview.md#automation-account-overview)中。  如 [Log Analytics 工作区和自动化帐户]( solutions.md#log-analytics-workspace-and-automation-account)中所述，自动化帐户不包括在管理解决方案中，但必须存在才可以安装解决方案。  如果没有，解决方案安装会失败。
+Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/automation-security-overview.md)中。  如 [Log Analytics 工作区和自动化帐户]( solutions.md#log-analytics-workspace-and-automation-account)中所述，自动化帐户不包括在管理解决方案中，但必须存在才可以安装解决方案。  如果没有，解决方案安装会失败。
 
 每个自动化资源的名称都包含其自动化帐户的名称。  这是在具有 **accountName** 参数的解决方案中完成的，如以下 Runbook 资源示例所示。
 
@@ -207,7 +207,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 
 
 ### <a name="job-schedules"></a>作业计划
-作业计划资源将 runbook 与一个计划链接。  作业计划资源具有 Microsoft.Automation/automationAccounts/jobSchedules  类型和以下结构。  这包括常见变量和参数，以便可以将此代码片段复制并粘贴到解决方案文件，并更改参数名称。 
+作业计划资源将 runbook 与一个计划链接。  作业计划资源具有 Microsoft.Automation/automationAccounts/jobSchedules 类型和以下结构。  这包括常见变量和参数，以便可以将此代码片段复制并粘贴到解决方案文件，并更改参数名称。 
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Schedule').LinkGuid)]",
@@ -268,7 +268,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 | 值 | 变量的值。 |
 
 > [!NOTE]
-> 当前，“类型”  属性对正在创建的变量无效。  变量的数据类型由值决定。  
+> 当前，“类型”属性对正在创建的变量无效。  变量的数据类型由值决定。  
 
 如果设置变量的初始值，则该值必须配置为正确的数据类型。  下表提供了允许的不同数据类型及其语法。  请注意，JSON 中的值应始终使用引号括起来，任何特殊字符位于引号内。  例如，字符串值应通过将字符串用引号括起来进行指定（使用转义字符 (\\)），而数字值应使用一组引号进行指定。
 
@@ -276,7 +276,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 |:--|:--|:--|:--|
 | 字符串   | 将值括在双引号中。  | “\"Hello world\"” | “Hello world” |
 | numeric  | 用单引号将数字值括起来。| “64” | 64 |
-| boolean  | 引号中的“true”  或“false”  。  请注意，此值必须为小写。 | "true" | true |
+| boolean  | 引号中的“true”或“false”。  请注意，此值必须为小写。 | "true" | true |
 | datetime | 序列化日期值。<br>可以在 PowerShell 中使用 ConvertTo-Json cmdlet 为特定日期生成此值。<br>示例：get-date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>模块

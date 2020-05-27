@@ -1,30 +1,30 @@
 ---
 title: 快速入门：使用 Azure Cosmos DB SQL API 帐户生成 Python 应用
 description: 演示一个可以用来连接到 Azure Cosmos DB SQL API 并进行查询的 Python 代码示例
-author: SnehaGunda
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 03/09/2020
-ms.author: sngun
+ms.date: 05/11/2020
+ms.author: anfeldma
 ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: 10247e22b3fbe1250a15b06a0cce974905ca6b7f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 674b9d132f96b8807355955949463c000565bb38
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78942614"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654612"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>快速入门：使用 Azure Cosmos DB SQL API 帐户生成 Python 应用程序
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [.NET V4](create-sql-api-dotnet-V4.md)
-> * [Java](create-sql-api-java.md)
+> * [Java SDK v4](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -47,24 +47,24 @@ ms.locfileid: "78942614"
 
 现在可以在 Azure 门户中使用数据资源管理器工具来创建数据库和容器。 
 
-1. 选择“数据资源管理器” > “新建容器”。   
+1. 选择“数据资源管理器” > “新建容器”。  
     
-    “添加容器”区域显示在最右侧，可能需要向右滚动才能看到它。 
+    “添加容器”区域显示在最右侧，可能需要向右滚动才能看到它。
 
     ![Azure 门户 >“数据资源管理器”>“添加集合”窗格](./media/create-sql-api-python/azure-cosmosdb-data-explorer.png)
 
-2. 在“添加容器”页中，输入新容器的设置。 
+2. 在“添加容器”页中，输入新容器的设置。
 
     |设置|建议的值|说明
     |---|---|---|
-    |**数据库 ID**|任务|输入 *Tasks* 作为新数据库的名称。 数据库名称必须包含 1 到 255 个字符，不能包含 `/, \\, #, ?` 或尾随空格。 选中“预配数据库吞吐量”选项，这样就可以在数据库中的所有容器之间共享预配给该数据库的吞吐量。  此选项还有助于节省成本。 |
+    |**数据库 ID**|任务|输入 *Tasks* 作为新数据库的名称。 数据库名称必须包含 1 到 255 个字符，不能包含 `/, \\, #, ?` 或尾随空格。 选中“预配数据库吞吐量”选项，这样就可以在数据库中的所有容器之间共享预配给该数据库的吞吐量。 此选项还有助于节省成本。 |
     |**吞吐量**|400|将吞吐量保留为每秒 400 个请求单位 (RU/s)。 如果想要减少延迟，以后可以增加吞吐量。| 
     |**容器 ID**|Items|输入 *Items* 作为新容器的名称。 容器 ID 与数据库名称的字符要求相同。|
-    |**分区键**| /category| 本文中所述的示例使用 /category  作为分区键。|
+    |**分区键**| /category| 本文中所述的示例使用 /category 作为分区键。|
     
-    除了前面的设置，还可以选择为容器添加“唯一键”。  在此示例中，请将此字段留空。 开发人员可以使用唯一键向数据库添加一层数据完整性。 创建容器时，通过创建唯一键策略，可确保每个分区键的一个或多个值的唯一性。 若要了解详细信息，请参阅 [Azure Cosmos DB 中的唯一键](unique-keys.md)一文。
+    除了前面的设置，还可以选择为容器添加“唯一键”。 在此示例中，请将此字段留空。 开发人员可以使用唯一键向数据库添加一层数据完整性。 创建容器时，通过创建唯一键策略，可确保每个分区键的一个或多个值的唯一性。 若要了解详细信息，请参阅 [Azure Cosmos DB 中的唯一键](unique-keys.md)一文。
     
-    选择“确定”  。 数据资源管理器将显示新的数据库和容器。
+    选择“确定”。 数据资源管理器将显示新的数据库和容器。
 
 ## <a name="add-sample-data"></a>添加示例数据
 
@@ -105,7 +105,7 @@ ms.locfileid: "78942614"
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，在你的 Azure Cosmos DB 帐户中，选择左侧导航栏中的“密钥”。  使用屏幕右侧的复制按钮将 **URI** 和**主密钥**复制到下一步的 *cosmos_get_started.py* 文件中。
+1. 在 [Azure 门户](https://portal.azure.com/)中，在你的 Azure Cosmos DB 帐户中，选择左侧导航栏中的“密钥”。 使用屏幕右侧的复制按钮将 **URI** 和**主密钥**复制到下一步的 *cosmos_get_started.py* 文件中。
 
     ![在 Azure 门户的“密钥”设置中获取访问密钥和 URI](./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png)
 
@@ -115,7 +115,7 @@ ms.locfileid: "78942614"
 
     `endpoint = 'https://FILLME.documents.azure.com',`
 
-4. 然后从门户复制“主密钥”值，并在 *cosmos_get_started.py* 中将其设为 **key** 的值。  现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。 
+4. 然后从门户复制“主密钥”值，并在 *cosmos_get_started.py* 中将其设为 **key** 的值。 现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。 
 
     `key = 'FILLME'`
 
@@ -153,13 +153,13 @@ ms.locfileid: "78942614"
    
 ## <a name="run-the-app"></a>运行应用
 
-1. 在 Visual Studio Code 中，选择“视图” > “命令面板”。   
+1. 在 Visual Studio Code 中，选择“视图” > “命令面板”。  
 
-2. 在提示符处，输入 Python:  Select Interpreter，然后选择要使用的 Python 的版本。
+2. 在提示符处，输入 Python:Select Interpreter，然后选择要使用的 Python 的版本。
 
     Visual Studio Code 中的页脚将更新以指示所选的解释器。 
 
-3. 选择“视图” > “集成终端”以打开 Visual Studio Code 集成终端。  
+3. 选择“视图” > “集成终端”以打开 Visual Studio Code 集成终端。 
 
 4. 在集成的终端窗口中，确保位于 *azure-cosmos-db-python-getting-started* 文件夹中。 如果没有位于该文件夹中，请运行以下命令来切换到示例文件夹。 
 
@@ -181,7 +181,7 @@ ms.locfileid: "78942614"
     python cosmos_get_started.py
     ```
 
-7. 若要确认是否已创建并保存新项，请在 Azure 门户中选择“数据资源管理器” > “AzureSampleFamilyDatabase” > “项”。    查看创建的项。 例如，下面是 Andersen 家族的示例 JSON 文档：
+7. 若要确认是否已创建并保存新项，请在 Azure 门户中选择“数据资源管理器” > “AzureSampleFamilyDatabase” > “项”。   查看创建的项。 例如，下面是 Andersen 家族的示例 JSON 文档：
    
    ```json
    {

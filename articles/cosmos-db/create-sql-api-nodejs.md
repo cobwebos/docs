@@ -1,26 +1,26 @@
 ---
 title: 快速入门 - 使用 Node.js 查询 Azure Cosmos DB SQL API 帐户
 description: 如何使用 Node.js 创建连接 Azure Cosmos DB SQL API 帐户和查询数据的应用。
-author: deborahc
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 02/26/2020
-ms.author: dech
-ms.openlocfilehash: 0b29f9c1f395e079c97d5877d08bd7bd73c7ea53
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: 4f874bd77432ba9ee110a7304629a80f1ce5d0dd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80240319"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655352"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>快速入门：使用 Node.js 连接和查询 Azure Cosmos DB SQL API 帐户中的数据
 
 > [!div class="op_single_selector"]
 > - [.NET V3](create-sql-api-dotnet.md)
 > - [.NET V4](create-sql-api-dotnet-V4.md)
-> - [Java](create-sql-api-java.md)
+> - [Java SDK v4](create-sql-api-java.md)
 > - [Node.js](create-sql-api-nodejs.md)
 > - [Python](create-sql-api-python.md)
 > - [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -45,9 +45,9 @@ ms.locfileid: "80240319"
 
 1. 导航到[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 页。
 
-1. 选择 **SQL** API 帐户，然后选择“创建”  。 使用 Microsoft 帐户登录。
+1. 选择 **SQL** API 帐户，然后选择“创建”。 使用 Microsoft 帐户登录。
 
-1. 登录成功后，应该就可以使用 Azure Cosmos 帐户。 选择“在 Azure 门户中打开”，  打开新创建的帐户。
+1. 登录成功后，应该就可以使用 Azure Cosmos 帐户。 选择“在 Azure 门户中打开”，打开新创建的帐户。
 
 “免费试用 Azure Cosmos DB”选项不需要 Azure 订阅，它为你提供了有效期为 30 天的 Azure Cosmos 帐户。 若要延长 Azure Cosmos 帐户的使用时间，应改为在 Azure 订阅中[创建帐户](create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account)。
 
@@ -55,24 +55,24 @@ ms.locfileid: "80240319"
 
 现在可以在 Azure 门户中使用数据资源管理器工具来创建数据库和容器。
 
-1. 选择“数据资源管理器” > “新建容器”。  
+1. 选择“数据资源管理器” > “新建容器”。 
 
-   “添加容器”区域显示在最右侧，可能需要向右滚动才能看到它。 
+   “添加容器”区域显示在最右侧，可能需要向右滚动才能看到它。
 
    ![Azure 门户 >“数据资源管理器”>“添加集合”窗格](./media/create-sql-api-nodejs/azure-cosmosdb-data-explorer.png)
 
-2. 在“添加容器”页中，输入新容器的设置。 
+2. 在“添加容器”页中，输入新容器的设置。
 
    | 设置           | 建议的值 | 说明                                                                                                                                                                                                                                                                                                                                                                           |
    | ----------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **数据库 ID**   | 任务           | 输入 _Tasks_ 作为新数据库的名称。 数据库名称必须包含 1 到 255 个字符，不能包含 `/, \\, #, ?` 或尾随空格。 选中“预配数据库吞吐量”选项，这样就可以在数据库中的所有容器之间共享预配给该数据库的吞吐量。  此选项还有助于节省成本。 |
+   | **数据库 ID**   | 任务           | 输入 _Tasks_ 作为新数据库的名称。 数据库名称必须包含 1 到 255 个字符，不能包含 `/, \\, #, ?` 或尾随空格。 选中“预配数据库吞吐量”选项，这样就可以在数据库中的所有容器之间共享预配给该数据库的吞吐量。 此选项还有助于节省成本。 |
    | **吞吐量**    | 400             | 将吞吐量保留为每秒 400 个请求单位 (RU/s)。 如果想要减少延迟，以后可以增加吞吐量。                                                                                                                                                                                                                                                    |
    | **容器 ID**  | Items           | 输入 _Items_ 作为新容器的名称。 容器 ID 与数据库名称的字符要求相同。                                                                                                                                                                                                                                                               |
-   | **分区键** | /category       | 本文中所述的示例使用 /category  作为分区键。                                                                                                                                                                                                                                                                                                           |
+   | **分区键** | /category       | 本文中所述的示例使用 /category 作为分区键。                                                                                                                                                                                                                                                                                                           |
 
-   除了前面的设置，还可以选择为容器添加“唯一键”。  在此示例中，请将此字段留空。 开发人员可以使用唯一键向数据库添加一层数据完整性。 创建容器时，通过创建唯一键策略，可确保每个分区键的一个或多个值的唯一性。 若要了解详细信息，请参阅 [Azure Cosmos DB 中的唯一键](unique-keys.md)一文。
+   除了前面的设置，还可以选择为容器添加“唯一键”。 在此示例中，请将此字段留空。 开发人员可以使用唯一键向数据库添加一层数据完整性。 创建容器时，通过创建唯一键策略，可确保每个分区键的一个或多个值的唯一性。 若要了解详细信息，请参阅 [Azure Cosmos DB 中的唯一键](unique-keys.md)一文。
 
-   选择“确定”  。 数据资源管理器将显示新的数据库和容器。
+   选择“确定”。 数据资源管理器将显示新的数据库和容器。
 
 ## <a name="add-sample-data"></a>添加示例数据
 
@@ -96,7 +96,7 @@ ms.locfileid: "80240319"
 
 此步骤是可选的。 如果有意了解如何使用代码创建 Azure Cosmos 数据库资源，可以查看以下代码片段。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-string)。
 
-如果你熟悉旧版 SQL JavaScript SDK，则可能习惯于看到术语“集合”和“文档”。   由于 Azure Cosmos DB 支持[多 API 模型](introduction.md)，因此 [2.0+ 版的 JavaScript SDK](https://www.npmjs.com/package/@azure/cosmos) 使用通用术语“容器”  （可能为集合、图形或表），并使用“项”  来描述容器的内容。
+如果你熟悉旧版 SQL JavaScript SDK，则可能习惯于看到术语“集合”和“文档”。  由于 Azure Cosmos DB 支持[多 API 模型](introduction.md)，因此 [2.0+ 版的 JavaScript SDK](https://www.npmjs.com/package/@azure/cosmos) 使用通用术语“容器”（可能为集合、图形或表），并使用“项”来描述容器的内容。
 
 Cosmos DB JavaScript SDK 称为“@azure/cosmos”，可以从 npm 安装...
 
@@ -173,7 +173,7 @@ npm install @azure/cosmos
 
 现在，返回 Azure 门户，获取 Azure Cosmos 帐户的连接字符串详细信息。 将连接字符串复制到应用，以便其连接数据库。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，在你的 Azure Cosmos DB 帐户中，从左侧导航栏中选择“密钥”  ，然后选择“读写密钥”  。 在下一步中，使用屏幕右侧的复制按钮将 URI 和主密钥复制到 _app.js_ 文件中。
+1. 在 [Azure 门户](https://portal.azure.com/)中，在你的 Azure Cosmos DB 帐户中，从左侧导航栏中选择“密钥”，然后选择“读写密钥”。 在下一步中，使用屏幕右侧的复制按钮将 URI 和主密钥复制到 _app.js_ 文件中。
 
    ![在 Azure 门户的“密钥”边栏选项卡中查看并复制访问密钥](./media/create-sql-api-dotnet/keys.png)
 
