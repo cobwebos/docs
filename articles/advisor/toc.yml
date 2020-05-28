@@ -8,7 +8,7 @@
   items:
     - name: 顾问入门
       href: advisor-get-started.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 提高 Azure 应用程序的可用性
       href: advisor-high-availability-recommendations.md
@@ -34,7 +34,7 @@
   items:
     - name: 安全中心
       href: 'https://azure.microsoft.com/services/security-center/'
-    - name: SQL DB 顾问
+    - name: SQL 数据库顾问
       href: 'https://azure.microsoft.com/documentation/articles/sql-database-advisor/'
     - name: 应用服务
       href: 'https://docs.microsoft.com/azure/app-service/app-service-best-practices'
@@ -58,7 +58,7 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=advisor'
     - name: 视频
       href: 'https://azure.microsoft.com/resources/videos/index/?services=advisor'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/search?q=azure+advisor'
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?service=advisor'

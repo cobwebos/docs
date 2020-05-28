@@ -113,8 +113,6 @@
           href: how-to/ingress-https-nginx.md
         - name: 将开发计算机连接到 AKS 群集（预览版）
           href: how-to/connect.md
-        - name: 配置 AKS Dev Spaces 群集以使用 Helm 3（预览版）
-          href: how-to/helm-3.md
     - name: 疑难解答
       href: troubleshooting.md
     - name: 常见问题解答
