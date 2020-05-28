@@ -17,6 +17,9 @@
           href: container-registry-get-started-portal.md
         - name: 创建容器注册表 - PowerShell
           href: container-registry-get-started-powershell.md
+        - name: 创建容器注册表 - ARM 模板
+          displayName: Resource Manager
+          href: container-registry-get-started-geo-replication-template.md
         - name: 将事件发送到事件网格 - CLI
           href: container-registry-event-grid-quickstart.md
         - name: 生成和推送 Java 映像 - CLI
@@ -107,6 +110,8 @@
                   href: container-registry-auth-service-principal.md
                 - name: 使用托管标识进行身份验证
                   href: container-registry-authentication-managed-identity.md
+                - name: 使用令牌进行身份验证（预览版）
+                  href: container-registry-repository-scoped-permissions.md
                 - name: 从 Azure 容器实例进行身份验证
                   href: container-registry-auth-aci.md
                 - name: 使用请求密码从 Kubernetes 进行身份验证

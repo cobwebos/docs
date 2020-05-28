@@ -4,12 +4,12 @@ description: 内容类型包括许多标准结构化文档，如 PDF、DOC 和 T
 services: cognitive-services
 ms.topic: conceptual
 ms.date: 02/24/2020
-ms.openlocfilehash: 7c78f9ea261fa636cce50b69524802d0900e9d7b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e2569832f7f87ed7b8fccbc44e431fa45495ba67
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77650191"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996102"
 ---
 # <a name="content-types-of-documents-you-can-add-to-a-knowledge-base"></a>可以添加到知识库的文档内容类型
 内容类型包括许多标准结构化文档，如 PDF、DOC 和 TXT。
@@ -49,4 +49,4 @@ ms.locfileid: "77650191"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解[问题和答案（QnA）集中](question-answer-set.md)存储了哪些信息。
+了解[问题和答案（QnA）对](question-answer-set.md)中存储的信息。

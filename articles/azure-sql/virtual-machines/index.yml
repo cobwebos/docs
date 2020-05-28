@@ -1,0 +1,131 @@
+### YamlMime:Landing
+title: “Azure VM 上的 SQL Server”文档
+summary: 查找有关安装到 Azure 虚拟机（Windows 和 Linux）的 SQL Server 的概念、快速入门、教程和示例。
+metadata:
+  title: “Azure VM 上的 SQL Server”文档
+  description: 查找有关安装到 Azure 虚拟机（Windows 和 Linux）的 SQL Server 的文档。
+  services: sql-database
+  ms.service: sql-database
+  ms.subservice: single-database
+  ms.topic: landing-page
+  author: MashaMSFT
+  ms.author: mathoma
+  ms.reviewer: carlrab
+  ms.date: 05/27/2020
+  ms.openlocfilehash: a02a76e3d0080e731643ff82162aafdf3b783423
+  ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 05/27/2020
+  ms.locfileid: "84023766"
+landingContent:
+- title: Azure VM 上的 SQL Server
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 创建 Windows SQL VM（门户）
+      url: windows/sql-vm-create-portal-quickstart.md
+    - text: 创建 Windows SQL VM (PowerShell)
+      url: windows/sql-vm-create-powershell-quickstart.md
+    - text: 创建 Linux SQL VM（门户）
+      url: linux/sql-vm-create-portal-quickstart.md
+  - linkListType: overview
+    links:
+    - text: 新增功能
+      url: windows/doc-changes-updates-release-notes.md?
+    - text: 什么是 Windows VM 上的 SQL Server？
+      url: windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+    - text: 什么是 Linux VM 上的 SQL Server？
+      url: linux/sql-server-on-linux-vm-what-is-iaas-overview.md
+    - text: 从 SQL Server 迁移
+      url: windows/migrate-to-vm-from-sql-server.md
+    - text: 安全注意事项
+      url: windows/security-considerations-best-practices.md
+    - text: 性能准则
+      url: windows/performance-guidelines-best-practices.md
+    - text: 定价指南
+      url: windows/pricing-guidance.md
+- title: 管理
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: SQL Server IaaS 代理扩展
+      url: windows/sql-server-iaas-agent-extension-automate-management.md
+    - text: 使用 Azure 门户进行管理
+      url: windows/manage-sql-vm-portal.md
+    - text: 注册到 SQL VM 资源提供程序
+      url: windows/sql-vm-resource-provider-register.md
+    - text: 自动修补
+      url: windows/automated-patching.md
+    - text: 更改许可证类型
+      url: windows/licensing-model-azure-hybrid-benefit-ahb-change.md
+    - text: 更改 SQL Server 的版本
+      url: windows/change-sql-server-edition.md
+    - text: 移到新区域
+      url: windows/move-sql-vm-different-region.md
+    - text: 与 Azure Key Vault 集成
+      url: windows/azure-key-vault-integration-configure.md
+- title: 业务连续性
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 高可用性和灾难恢复
+      url: windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+    - text: 备份和还原
+      url: windows/backup-restore.md
+    - text: 可用性组
+      url: windows/availability-group-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 可用性组 (Az CLI)
+      url: windows/availability-group-az-cli-configure.md
+    - text: 无群集的可用性组
+      url: windows/availability-group-clusterless-workgroup-configure.md
+    - text: FCI（存储空间直通）
+      url: windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
+    - text: FCI（高级文件共享）
+      url: windows/failover-cluster-instance-premium-file-share-manually-configure.md
+  - linkListType: tutorial
+    links:
+    - text: 可用性组（手动）
+      url: windows/availability-group-manually-configure-prerequisites-tutorial.md
+    - text: Stonith 可用性组 (RHEL)
+      url: linux/rhel-high-availability-stonith-tutorial.md
+    - text: 可用性组侦听程序 (RHEL)
+      url: linux/rhel-high-availability-listener-tutorial.md
+- title: 参考
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: SQL 教育资源
+      url: /sql/sql-server/educational-sql-resources
+  - linkListType: deploy
+    links:
+    - text: Azure CLI 示例
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: PowerShell 示例
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: ARM 模板示例
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+  - linkListType: download
+    links:
+    - text: SQL Server Management Studio (SSMS)
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: Azure Data Studio
+      url: /sql/azure-data-studio/download-azure-data-studio
+    - text: SQL Server Data Tools
+      url: /sql/ssdt/download-sql-server-data-tools-ssdt
+    - text: Visual Studio 2019
+      url: https://visualstudio.microsoft.com/downloads/
+  - linkListType: reference
+    links:
+    - text: 迁移指南
+      url: https://datamigration.microsoft.com/
+    - text: Transact-SQL (T-SQL)
+      url: /sql/t-sql/language-reference
+    - text: Azure CLI
+      url: https://docs.microsoft.com/cli/azure/sql
+    - text: PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.sql
+    - text: REST API
+      url: https://docs.microsoft.com/rest/api/sql/

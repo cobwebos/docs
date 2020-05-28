@@ -7,14 +7,14 @@ manager: venkyv
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 05/26/2020
 ms.author: egeaney
-ms.openlocfilehash: 82b294cbda6e9d4b4cfa5ec560d802c8e5c6c51c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0a4a1f49735a30d7ad764e7f031610eabd09763e
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83590887"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995762"
 ---
 # <a name="translator-encryption-of-data-at-rest"></a>静态数据的转换器加密
 
@@ -22,7 +22,7 @@ ms.locfileid: "83590887"
 
 ## <a name="about-cognitive-services-encryption"></a>关于认知服务加密
 
-使用符合[FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) [的256位 AES 加密对](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)数据进行加密和解密。 加密和解密都是透明的，这意味着将替你管理加密和访问。 默认情况下，你的数据是安全的，无需修改你的代码或应用程序即可利用加密。
+使用符合[FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) [的256位 AES 加密对](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)数据进行加密和解密。 加密和解密都是透明的，这意味着将替你管理加密和访问。 你的数据默认情况下就是安全的，你无需修改代码或应用程序，即可利用加密。
 
 ## <a name="about-encryption-key-management"></a>关于加密密钥管理
 

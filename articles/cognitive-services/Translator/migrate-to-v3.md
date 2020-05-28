@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 47136ee9c2f0dee29571f310eb3b07d7c11888c0
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8fae863c03ccbc17e9ec6621e73ddf475f759569
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592706"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996204"
 ---
 # <a name="translator-v2-to-v3-migration"></a>转换器 V2 到 V3 迁移
 
@@ -32,19 +32,19 @@ Microsoft Translator 团队已发布转换器的版本3（V3）。 此版本包�
 
 * 无跟踪 - 在 V3 中，“无跟踪”将应用到 Azure 门户中的所有定价层。 此功能意味着，Microsoft 不会保存提交到 V3 API 的任何文本。
 * JSON - XML 将由 JSON 取代。 发送到服务的所有数据以及从服务接收的所有数据将采用 JSON 格式。
-* 单个请求中的多个目标语言 - Translate 方法接受单个请求中的多个翻译“目标”语言。 例如，单个请求可以是“从”英语翻译“到”德语、西班牙语和日语，或任何其他语言组。
-* 双语字典 - 已将一个双语字典方法添加到 API。 此方法包括“查找”和“示例”。
+* 单个请求中的多个目标语言-转换方法接受多个 "to" 语言以便在单个请求中进行转换。 例如，单个请求可能是 "从" 英语和 "到" 德语、西班牙语和日语，或者任何其他语言组。
+* 双语字典 - 已将一个双语字典方法添加到 API。 此方法包括 "lookup" 和 "示例"。
 * 音译 - 已将一个 transliterate 方法添加到 API。 此方法会将一个脚本（例如阿拉伯语） 中的单词和句子转换成另一个脚本（例如 拉丁语）。
-* 语言 - 新的“languages”方法会提供 JSON 格式的语言信息，以便与“translate”、“dictionary”和“transliterate”方法结合使用。
-* 新的翻译功能 - 已将新功能添加到“translate”方法，以支持 V2 API 中作为单独方法提供的某些功能。 示例包括 TranslateArray。
+* 语言-一种新的 "语言" 方法以 JSON 格式提供语言信息，用于 "翻译"、"字典" 和 "直译" 方法。
+* 新增了翻译-新功能已添加到 "翻译" 方法，以支持作为单独方法在 V2 API 中使用的某些功能。 示例包括 TranslateArray。
 * Microsoft Translator 不再支持讲述方法文本到语音功能。 [Microsoft 语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)中提供了文本转语音功能。
 
 以下 V2 和 V3 方法列表指明了能够提供 V2 随附的功能的 V3 方法和 API。
 
 | V2 API 方法   | V3 API 兼容性 |
 |:----------- |:-------------|
-| `Translate`     | [翻译](reference/v3-0-translate.md)          |
-| `TranslateArray`      | [翻译](reference/v3-0-translate.md)        |
+| `Translate`     | [Translate](reference/v3-0-translate.md)          |
+| `TranslateArray`      | [Translate](reference/v3-0-translate.md)        |
 | `GetLanguageNames`      | [语言](reference/v3-0-languages.md)         |
 | `GetLanguagesForTranslate`     | [语言](reference/v3-0-languages.md)       |
 | `GetLanguagesForSpeak`      | [Microsoft 语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
@@ -86,7 +86,7 @@ Microsoft Translator V3 的定价方式与 V2 相同：按字符（包括空格�
 
 ## <a name="v3-end-points"></a>V3 终结点
 
-全球
+Global
 
 * api.cognitive.microsofttranslator.com
 
@@ -116,10 +116,10 @@ Microsoft Translator V3 默认使用神经机器翻译。 因此，它不能与 
 
 使用 V3 文本 API 的神经翻译不支持使用标准类别（SMT、语音、技术、generalnn）。
 
-| |终结点|    GDPR 处理器符合性|  使用 Translator Hub| 使用自定义翻译器（预览版）|
+| |端点|    GDPR 处理器符合性|    使用 Translator Hub|    使用自定义翻译器（预览版）|
 |:-----|:-----|:-----|:-----|:-----|
-|翻译版本2|  api.microsofttranslator.com|    否  |是    |否|
-|翻译版本3|  api.cognitive.microsofttranslator.com|  是|    否| 是|
+|翻译版本2|    api.microsofttranslator.com|    否    |是    |否|
+|翻译版本3|    api.cognitive.microsofttranslator.com|    是|    否|    是|
 
 **翻译版本3**
 * 已正式发布且完全受支持。

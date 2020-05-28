@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 41b15cc998a7bacd033ef2fe083fc99f1bff0286
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e976b59c0128adef6536e78985e7cf89d256062c
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68595847"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83992702"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>文档格式和命名约定指南
 
@@ -22,7 +22,7 @@ ms.locfileid: "68595847"
 
 下表包含了可用于生成翻译系统的所有受支持文件格式：
 
-| 格式            | Extensions   | 说明                                                                                                                                                                                                                                                                    |
+| 格式            | 扩展   | 说明                                                                                                                                                                                                                                                                    |
 |-------------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | XLIFF             | .XLF、.XLIFF | 并行文档格式，是翻译记忆系统的导出格式。 使用的语言在该文件中定义。                                                                                                                                                              |
 | TMX               | .TMX         | 并行文档格式，是翻译记忆系统的导出格式。 使用的语言在该文件中定义。                                                                                                                                                              |
@@ -47,7 +47,7 @@ ms.locfileid: "68595847"
 
 {document name}\_{language code}：其中，{document name} 是文档的名称，{language code} 是 ISO 语言 ID（两个字符），指示文档包含采用该语言的句子。 语言代码的前面必须有下划线 (_)。
 
-例如，若要在 zip 中为英语到西班牙语翻译系统上传两个并行文档，则应将文件命名为“data_en”和“data_es”。
+例如，若要将一个 zip 中的两个并行文档上传到西班牙语系统，应将这些文件命名为 "data_en" 和 "data_es"。
 
 无需翻译记忆库文件（TMX、XLF、XLIFF、LCL、XLSX）即可遵循特定的语言命名约定。  
 

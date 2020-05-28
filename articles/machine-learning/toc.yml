@@ -311,11 +311,14 @@
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
         - name: 定义 ML 任务
-          displayName: 'machine learning, task type'
+          displayName: 'machine learning, task type, automl'
           href: how-to-define-task-type.md
         - name: 自动训练预测模型
           displayName: time series
           href: how-to-auto-train-forecast.md
+        - name: 自动化 ML 中的特征化 (Python)
+          displayName: 'automl, feature engineering, feature importance'
+          href: how-to-configure-auto-features.md
         - name: 在 ML 管道中使用自动化 ML (Python)
           displayName: machine learning automl
           href: how-to-use-automlstep-in-pipelines.md

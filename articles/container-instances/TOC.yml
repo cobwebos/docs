@@ -52,8 +52,12 @@
       href: container-instances-region-availability.md
     - name: 与协调器的关系
       href: container-instances-orchestrator-relationship.md
-    - name: 安全注意事项
-      href: container-instances-image-security.md
+    - name: 安全性
+      items:
+        - name: 安全基线
+          href: security-baseline.md
+        - name: 安全注意事项
+          href: container-instances-image-security.md
     - name: 虚拟网络
       href: container-instances-virtual-network-concepts.md
 - name: 操作指南
@@ -94,7 +98,7 @@
       items:
         - name: Azure 文件共享
           href: container-instances-volume-azure-files.md
-        - name: 机密
+        - name: Secret
           href: container-instances-volume-secret.md
         - name: 空目录
           href: container-instances-volume-emptydir.md

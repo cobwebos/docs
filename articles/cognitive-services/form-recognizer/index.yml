@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: de869fd9beb66a4122c1204648d17cff480e4b7f
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 953303c8726335c8f8cfdb0919fc33b724549974
+  ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "78206480"
+  ms.lasthandoff: 05/27/2020
+  ms.locfileid: "83997105"
 landingContent:
 - title: 关于表单识别器
   linkLists:
@@ -37,9 +37,13 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: 使用 .NET SDK
-      url: quickstarts/dotnet-sdk.md
-    - text: 使用 REST API (Python)
-      url: quickstarts/python-train-extract.md
+      url: quickstarts/client-library.md?pivots=programming-language-csharp
+    - text: 使用 Python SDK
+      url: quickstarts/client-library.md?pivots=programming-language-python
+    - text: 使用 Java SDK
+      url: quickstarts/client-library.md?pivots=programming-language-java
+    - text: 使用 JavaScript SDK
+      url: quickstarts/client-library.md?pivots=programming-language-javascript
     - text: 使用 REST API (cURL)
       url: quickstarts/curl-train-extract.md
   - linkListType: tutorial
@@ -68,14 +72,32 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 使用 REST API (Python)
-      url: quickstarts/python-receipts.md
+    - text: 使用 .NET SDK
+      url: quickstarts/client-library.md?pivots=programming-language-csharp
+    - text: 使用 Python SDK
+      url: quickstarts/client-library.md?pivots=programming-language-python
+    - text: 使用 Java SDK
+      url: quickstarts/client-library.md?pivots=programming-language-java
+    - text: 使用 JavaScript SDK
+      url: quickstarts/client-library.md?pivots=programming-language-javascript
+    - text: 使用 REST API (cURL)
+      url: quickstarts/curl-train-extract.md
     - text: 使用 REST API (cURL)
       url: quickstarts/curl-receipts.md
 - title: 获取文本布局信息
   linkLists:
   - linkListType: quickstart
     links:
+    - text: 使用 .NET SDK
+      url: quickstarts/client-library.md?pivots=programming-language-csharp
+    - text: 使用 Python SDK
+      url: quickstarts/client-library.md?pivots=programming-language-python
+    - text: 使用 Java SDK
+      url: quickstarts/client-library.md?pivots=programming-language-java
+    - text: 使用 JavaScript SDK
+      url: quickstarts/client-library.md?pivots=programming-language-javascript
+    - text: 使用 REST API (cURL)
+      url: quickstarts/curl-train-extract.md
     - text: 使用 REST API (Python)
       url: quickstarts/python-layout.md
 - title: 使用容器
@@ -112,5 +134,5 @@ landingContent:
     links:
     - text: UserVoice
       url: https://go.microsoft.com/fwlink/?linkid=2090535
-    - text: 堆栈溢出
+    - text: Stack Overflow
       url: https://go.microsoft.com/fwlink/?linkid=2087186

@@ -198,7 +198,7 @@
     - name: GitHub - 社区策略存储库
       href: 'https://github.com/Azure/Community-Policy'
     - name: 有关 Azure Policy 的 Microsoft Q&A
-      href: /answers/topics/azure-policy.html
+      href: /answers/topics/azure-policy.html.html
     - name: 治理 YouTube 频道
       href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
     - name: 来宾配置视频

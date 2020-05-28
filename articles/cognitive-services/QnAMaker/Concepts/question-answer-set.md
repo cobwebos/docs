@@ -1,29 +1,29 @@
 ---
 title: 设计知识库-QnA Maker
-description: QnA Maker 知识库由一组问题和答案（QnA）集以及与每个 QnA 对关联的可选元数据组成。
+description: QnA Maker 知识库包含一组问题和答案（QnA）对以及与每个 QnA 对关联的可选元数据。
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 1d24434d1343f4174cfbfeb3a30c36737b213168
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e75a9313f02a6b5cc4235cdcccb381585d2192ae
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80756788"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83992991"
 ---
-# <a name="question-and-answer-set-concepts"></a>问题和答案集概念
+# <a name="question-and-answer-pair-concepts"></a>问题和答案对概念
 
-知识库包含问题和答案（QnA）集。  每个集都有一个答案，一组包含与该_答案_关联的所有信息。 答案与数据库行或数据结构实例的可能松散类似。
+知识库包含问题和答案（QnA）对。  每个对都有一个答案，一对包含与该_答案_关联的所有信息。 答案与数据库行或数据结构实例的可能松散类似。
 
-## <a name="question-and-answer-sets"></a>问答集
+## <a name="question-and-answer-pairs"></a>问题和答案对
 
-问题和答案（QnA）集中的**必需**设置如下：
+问答（QnA）对中的**必需**设置如下：
 
 * 用户查询的**问题**文本，用于 QnA Maker 机器学习，与用户的问题文本与不同的措辞保持一致，但回答相同
-* **答案**-集的答案就是在用户查询与关联的问题匹配时返回的响应
+* **答案**-该对的答案是在用户查询与关联的问题匹配时返回的响应
 
-每个集均由**ID**表示。
+每个对由**ID**表示。
 
-集的**可选**设置包括：
+对的**可选**设置包括：
 
 * **问题的替代形式**-这有助于 QnA Maker 返回更多问题的正确答案句式
 * **元**数据：元数据是与 QnA 对关联的标记，以键值对的形式表示。 元数据标记用于筛选 QnA 对并限制对其执行查询匹配的集。

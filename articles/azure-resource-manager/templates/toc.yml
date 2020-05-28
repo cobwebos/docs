@@ -156,6 +156,8 @@
       href: templates-cloud-consistency.md
     - name: 部署模式
       href: deployment-modes.md
+    - name: 部署历史记录删除
+      href: deployment-history-deletions.md
     - name: 完整模式删除
       href: complete-mode-deletion.md
     - name: 部署管理器
