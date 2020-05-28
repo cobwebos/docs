@@ -1,7 +1,7 @@
 ---
 title: 将元数据与 GenerateAnswer API 配合使用 - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: 通过 QnA Maker，可将键值对形式的元数据添加到问/答集。 你可以将结果筛选为用户查询，并存储可在后续对话中使用的其他信息。
+description: QnA Maker 使你可以将元数据以键/值对的形式添加到问题/答案对。 你可以将结果筛选为用户查询，并存储可在后续对话中使用的其他信息。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: diberry
-ms.openlocfilehash: 8785484efec119f15ef53feefbd6e94181cd159a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 171efd0e5750555130588f783c4a858def11afec
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659560"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993501"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>使用 GenerateAnswer API 和元数据获取答案
 
 若要获取用户问题的预测答案，请使用 GenerateAnswer API。 发布知识库时，可以在 "**发布**" 页上查看有关如何使用此 API 的信息。 你还可以配置 API 来基于元数据标记筛选答案，并通过测试查询字符串参数来测试终结点中的知识库。
 
-QnA Maker 使你能够以键和值对的形式向问题和答案集添加元数据。 然后，你可以使用此信息对用户查询的结果进行筛选，以及存储可在后续对话中使用的其他信息。 有关详细信息，请参阅[知识库](../Concepts/knowledge-base.md)。
+QnA Maker 使你能够以键和值对的形式向你的问题和答案对添加元数据。 然后，你可以使用此信息对用户查询的结果进行筛选，以及存储可在后续对话中使用的其他信息。 有关详细信息，请参阅[知识库](../Concepts/knowledge-base.md)。
 
 <a name="qna-entity"></a>
 
@@ -37,7 +37,7 @@ QnA Maker 使你能够以键和值对的形式向问题和答案集添加元数�
 
 ## <a name="get-answer-predictions-with-the-generateanswer-api"></a>通过 GenerateAnswer API 获取答案预测
 
-在机器人或应用程序中使用[GENERATEANSWER API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)可以通过用户问题查询知识库，以便从问题和答案集中获取最佳匹配项。
+在机器人或应用程序中使用[GENERATEANSWER API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)可以通过用户问题查询知识库，以便从问题和答案对中获得最佳匹配。
 
 <a name="generateanswer-endpoint"></a>
 
@@ -196,7 +196,7 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 
 ## <a name="use-question-and-answer-results-to-keep-conversation-context"></a>使用问题和答案结果来保留会话上下文
 
-对 GenerateAnswer 的响应包含匹配的问题和答案集的相应元数据信息。 你可以在客户端应用程序中使用此信息来存储以前会话的上下文，以便在以后的会话中使用。
+对 GenerateAnswer 的响应包含匹配的问题和答案对的相应元数据信息。 你可以在客户端应用程序中使用此信息来存储以前会话的上下文，以便在以后的会话中使用。
 
 ```json
 {
@@ -243,7 +243,7 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 
 |代码|说明|
 |:--|--|
-|2xx|Success|
+|2xx|成功|
 |400|请求的参数不正确，这意味着所需的参数缺失、格式错误或太大|
 |400|请求的正文不正确，这意味着 JSON 缺失、格式错误或太大|
 |401|密钥无效|

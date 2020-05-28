@@ -10,12 +10,12 @@ metadata:
   author: DCtheGeek
   ms.author: dacoulte
   ms.date: 05/20/2020
-  ms.openlocfilehash: de9d2a95a19872e8f62a6ca412dabadadbfec3fb
-  ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+  ms.openlocfilehash: b28cae1fd59e863c04d744a5c17108f1bd942a4d
+  ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/26/2020
-  ms.locfileid: "83849920"
+  ms.lasthandoff: 05/27/2020
+  ms.locfileid: "84119348"
 landingContent:
 - title: 关于 Azure Policy
   linkLists:
@@ -92,7 +92,7 @@ landingContent:
   - linkListType: get-started
     links:
     - text: 有关 Azure Policy 的 Microsoft Q&A
-      url: /answers/topics/azure-policy.html
+      url: /answers/topics/azure-policy.html.html
     - text: Azure 治理 YouTube 频道
       url: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
     - text: 请求产品功能

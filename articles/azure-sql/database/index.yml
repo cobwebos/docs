@@ -1,0 +1,145 @@
+### YamlMime:Landing
+title: Azure SQL 数据库文档
+summary: 查找有关 Azure SQL 数据库中单一数据库和共用数据库的概念、快速入门、教程和示例。
+metadata:
+  title: Azure SQL 数据库文档
+  description: 查找有关 Azure SQL 数据库（一种基于 Microsoft SQL Server 最新稳定版的平台即服务 (PaaS)）的文档。
+  services: sql-database
+  ms.service: sql-database
+  ms.subservice: single-database
+  ms.topic: landing-page
+  author: MashaMSFT
+  ms.author: mathoma
+  ms.reviewer: carlrab
+  ms.date: 05/27/2020
+  ms.openlocfilehash: 0faf1311e3a570028884f826b7d8b4ff3cd5e9e2
+  ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 05/27/2020
+  ms.locfileid: "84023817"
+landingContent:
+- title: Azure SQL 数据库
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 创建 SQL 数据库
+      url: single-database-create-quickstart.md
+    - text: 配置防火墙
+      url: firewall-create-server-level-portal-quickstart.md
+  - linkListType: concept
+    links:
+    - text: 新增功能
+      url: doc-changes-updates-release-notes.md?tabs=single-database
+    - text: 什么是 SQL 数据库？
+      url: sql-database-paas-overview.md
+    - text: 购买选项
+      url: purchasing-models.md
+    - text: 服务层
+      url: service-tiers-general-purpose-business-critical.md
+    - text: 无服务器计算
+      url: serverless-tier-overview.md
+    - text: “超大规模”服务层级
+      url: service-tier-hyperscale.md
+    - text: 从 SQL Server 迁移
+      url: migrate-to-database-from-sql-server.md
+    - text: 与 SQL Server 之间的 T-SQL 差异
+      url: transact-sql-tsql-differences-sql-server.md
+- title: 业务连续性
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 业务连续性
+      url: business-continuity-high-availability-disaster-recover-hadr-overview.md
+    - text: 高可用性
+      url: high-availability-sla.md
+    - text: 活动异地复制
+      url: active-geo-replication-overview.md
+    - text: 自动故障转移组
+      url: auto-failover-group-overview.md
+    - text: 自动备份
+      url: automated-backups-overview.md
+    - text: 使用备份恢复
+      url: recovery-using-backups.md
+    - text: 长期备份保留
+      url: long-term-retention-overview.md
+- title: 高级安全
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 安全功能
+      url: security-overview.md
+    - text: 安全最佳做法
+      url: security-best-practice.md
+    - text: 登录名、用户帐户、角色和权限
+      url: logins-create-manage.md
+    - text: Azure Active Directory
+      url: authentication-aad-overview.md
+    - text: 审核
+      url: auditing-overview.md
+    - text: 透明数据加密 (TDE)
+      url: transparent-data-encryption-tde-overview.md
+    - text: 动态数据屏蔽
+      url: dynamic-data-masking-overview.md
+- title: 弹性池
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 什么是弹性池？
+      url: elastic-pool-overview.md
+    - text: 管理
+      url: elastic-pool-manage.md
+    - text: 缩放
+      url: elastic-pool-scale.md
+    - text: 资源管理
+      url: elastic-pool-resource-management.md
+- title: 参考
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: SQL 教育资源
+      url: /sql/sql-server/educational-sql-resources
+  - linkListType: deploy
+    links:
+    - text: Azure CLI 示例
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: PowerShell 示例
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: ARM 模板示例
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+  - linkListType: download
+    links:
+    - text: SQL Server Management Studio (SSMS)
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: Azure Data Studio
+      url: /sql/azure-data-studio/download-azure-data-studio
+    - text: SQL Server Data Tools
+      url: /sql/ssdt/download-sql-server-data-tools-ssdt
+    - text: Visual Studio 2019
+      url: https://visualstudio.microsoft.com/downloads/
+  - linkListType: reference
+    links:
+    - text: 迁移指南
+      url: https://datamigration.microsoft.com/
+    - text: Transact-SQL (T-SQL)
+      url: /sql/t-sql/language-reference
+    - text: Azure CLI
+      url: https://docs.microsoft.com/cli/azure/sql
+    - text: PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.sql
+    - text: REST API
+      url: https://docs.microsoft.com/rest/api/sql/
+- title: 可伸缩性
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 动态纵向扩展或缩减
+      url: scale-resources.md
+    - text: 读取横向扩展
+      url: read-scale-out.md
+    - text: 跨数据库作业
+      url: elastic-jobs-overview.md
+    - text: 弹性缩放
+      url: elastic-scale-introduction.md
+    - text: 弹性查询
+      url: elastic-query-overview.md
