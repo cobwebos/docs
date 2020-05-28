@@ -3,12 +3,12 @@ title: 编辑知识库 - QnA Maker
 description: QnA Maker 允许你通过提供易于使用的编辑体验来管理知识库的内容。
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 018e733dda06b7785b0a87ea3e08009967213134
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 66adf9e1fe227f11514276147de32e8691db7fab
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650796"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993569"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>编辑知识库中的 QnA 对
 
@@ -85,7 +85,7 @@ QnA 对是从数据源（如文件或 URL）添加的，或作为编辑源添加
 
 ## <a name="delete-a-qna-pair"></a>删除 QnA 对
 
-要删除 QnA，请单击 QnA 行最右侧的**** 删除图标。 这是一项永久性操作。 无法撤消。 请考虑在删除集之前从**发布**页导出 KB。
+要删除 QnA，请单击 QnA 行最右侧的**** 删除图标。 这是一项永久性操作。 无法撤消。 请考虑在删除对之前从“发布”**** 页面导出知识库。
 
 ![删除 QnA 对](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
 
@@ -110,7 +110,7 @@ QnA 对是从数据源（如文件或 URL）添加的，或作为编辑源添加
 
 ## <a name="add-metadata"></a>添加元数据
 
-首先选择 "**查看选项**"，然后选择 "**显示元数据**" 来添加元数据集。 这会显示元数据列。 接下来，选择 " **+** 签名" 以添加元数据集。 此集包含一个键和一个值。
+首先选择 "**查看选项**"，然后选择 "**显示元数据**"，添加元数据对。 这会显示元数据列。 接下来，选择 **+** 签名以添加元数据对。 此对包含一个键和一个值。
 
 ## <a name="save-changes-to-the-qna-pairs"></a>保存对 QnA 对的更改
 

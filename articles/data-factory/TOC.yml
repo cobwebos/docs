@@ -234,10 +234,10 @@
           href: connector-azure-database-for-postgresql.md
         - name: Azure 文件存储
           href: connector-azure-file-storage.md
-        - name: Azure SQL Database
+        - name: Azure SQL 数据库
           href: connector-azure-sql-database.md
-        - name: Azure SQL 数据库托管实例
-          href: connector-azure-sql-database-managed-instance.md
+        - name: Azure SQL 托管实例
+          href: connector-azure-sql-managed-instance.md
         - name: Azure Synapse Analytics（以前称为 SQL 数据仓库）
           href: connector-azure-sql-data-warehouse.md
         - name: Azure 表存储
@@ -697,7 +697,7 @@
       items:
         - name: SSIS 迁移概述
           href: scenario-ssis-migration-overview.md
-        - name: 将 SSISDB 迁移到 Azure SQL 数据库托管实例
+        - name: 将 SSISDB 迁移到 Azure SQL 托管实例
           href: scenario-ssis-migration-ssisdb-mi.md
 - name: 参考
   items:

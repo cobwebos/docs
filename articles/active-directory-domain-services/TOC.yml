@@ -47,6 +47,8 @@
       href: synchronization.md
     - name: 密码哈希同步的工作原理
       href: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
+    - name: 经典部署迁移优势
+      href: concepts-migration-benefits.md
     - name: 什么是 Azure Active Directory？
       href: ../active-directory/fundamentals/active-directory-whatis.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
     - name: Azure Active Directory 体系结构

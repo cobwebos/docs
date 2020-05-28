@@ -13,7 +13,7 @@
       href: create-notification-hub-portal.md
     - name: 创建通知中心 - Azure CLI
       href: create-notification-hub-azure-cli.md
-    - name: 创建通知中心 - Azure 资源管理器模板
+    - name: 创建通知中心 - Azure 模板
       href: create-notification-hub-template.md
     - name: 配置通知中心
       href: configure-notification-hub-portal-pns-settings.md

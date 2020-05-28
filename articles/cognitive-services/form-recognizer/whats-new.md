@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: c2b67989cbffb03eb182b4de2bf471a02ee33e7b
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: e3bf279142383ccdb3e82ffee49bd593640bb937
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82627987"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996816"
 ---
 # <a name="whats-new-in-form-recognizer"></a>表单识别器的新增功能
 
@@ -27,11 +27,10 @@ ms.locfileid: "82627987"
 
 ### <a name="new-features"></a>新增功能
 * **SDK 支持表单识别器 API V2.0 公共预览版**本月，我们扩展了服务支持，包括预览版 SDK for 窗体识别器 v2.0 （预览版）。 使用以下链接开始使用你选择的语言： 
-   * [.NET SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer)
-   * [Java SDK](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/formrecognizer/azure-ai-formrecognizer)
-   * [Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer)
-   * [JavaScript SDK](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer)
-
+   * [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer?view=azure-dotnet-preview)
+   * [Java SDK](https://docs.microsoft.com/java/api/overview/azure/formrecognizer?view=azure-java-preview)
+   * [Python SDK](https://docs.microsoft.com/python/api/overview/azure/formrecognizer?view=azure-python-previewr)
+   * [JavaScript SDK](https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer?view=azure-node-preview)
 
   新的 SDK 支持用于窗体识别器的 v2.0 REST API 的所有功能。 例如，你可以使用或不带标签来训练模型，并从窗体提取文本、键值对和表、从收据中提取数据以及预先生成的回执服务，并从文档中提取带有布局服务的文本和表。 可以通过[Sdk 反馈窗体](https://aka.ms/FR_SDK_v1_feedback)在 sdk 上共享你的反馈。
  
@@ -39,6 +38,10 @@ ms.locfileid: "82627987"
    * [生成复制授权](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/CopyCustomFormModelAuthorization)REST API
    * [复制自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/CopyCustomFormModel)REST API 
 
+### <a name="security-improvements"></a>安全性改进
+
+* 客户托管的密钥现在可用于 FormRecognizer。 有关详细信息，请参阅[窗体识别器的静态数据加密](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/form-recognizer-encryption-of-data-at-rest)。
+* 使用托管标识通过 Azure Active Directory 访问 Azure 资源。 有关详细信息，请参阅[授予对托管标识的访问权限](https://docs.microsoft.com/azure/cognitive-services/authentication#authorize-access-to-managed-identities)。
 
 ## <a name="march-2020"></a>2020 年 3 月 
 
@@ -46,11 +49,11 @@ ms.locfileid: "82627987"
 
 * **用于标记的值类型**你现在可以指定用窗体识别器示例标记工具标记的值的类型。 目前支持以下值类型和变体：
   * `string`
-    * 默认、 `no-whitespaces`、`alphanumeric`
+    * default、`no-whitespaces`、`alphanumeric`
   * `number`
-    * 缺省值`currency`
+    * default、`currency`
   * `date` 
-    * 默认、 `dmy`、 `mdy`、`ymd`
+    * default、`dmy`、`mdy`、`ymd`
   * `time`
   * `integer`
 
@@ -64,7 +67,7 @@ ms.locfileid: "82627987"
   > [!div class="mx-imgBorder"]
   > ![使用示例标签工具的表可视化效果](./media/whats-new/formre-table-viz.png)
 
-    提取的表在下`"pageResults"`的 JSON 输出中可用。
+    提取的表在下的 JSON 输出中可用 `"pageResults"` 。
 
   > [!IMPORTANT]
   > 不支持标记表。 如果无法识别表并自动 extrated，则只能将它们标记为键/值对。 如果将表标记为键/值对，则将每个单元标记为唯一值。
@@ -81,7 +84,7 @@ ms.locfileid: "82627987"
 
 ### <a name="tls-12-enforcement"></a>强制执行 TLS 1.2
 
-现在，将对此服务的所有 HTTP 请求强制执行 TLS 1.2。 有关详细信息，请参阅[Azure 认知服务安全性](../cognitive-services-security.md)。
+现在，将对此服务的所有 HTTP 请求强制执行 TLS 1.2。 有关详细信息，请参阅 [Azure 认知服务安全性](../cognitive-services-security.md)。
 
 ## <a name="january-2020"></a>2020 年 1 月
 

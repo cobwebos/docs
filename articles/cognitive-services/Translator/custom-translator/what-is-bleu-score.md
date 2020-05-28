@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 85c4ee27a828a05c64ca6cbf84bff438535328be
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b35dce5a2b572e5a3f11601d5e67efb2da02cdec
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73647360"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83997054"
 ---
 # <a name="what-is-a-bleu-score"></a>什么是 BLEU 分数？
 
@@ -26,7 +26,7 @@ BLEU 算法将自动翻译的连续短语与它在参考翻译中找到的连续
 
 ## <a name="how-bleu-works"></a>BLEU 如何工作？
 
-BLEU 的优势在于，它可以根据测试语料库对各个语句判断错误进行平均来与人为判断建立密切关联，而不试图为每个语句建议确切的人为判断。
+BLEU 的优点是，它通过对测试语料库的单个句子判断错误进行求和，而不是尝试为每个句子设计确切的人工判断，从而与人工判断非常关联。
 
 [此处](https://youtu.be/-UqDljMymMg)更详细地讨论了 BLEU 分数。
 

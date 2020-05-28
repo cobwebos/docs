@@ -29,7 +29,7 @@
           href: tutorial-run-ml-model-on-sql-edge.md
 - name: 如何
   items:
-    - name: DAC 包和流分析作业
+    - name: 部署流分析作业
       href: stream-analytics.md
     - name: 配置复制
       href: configure-replication.md

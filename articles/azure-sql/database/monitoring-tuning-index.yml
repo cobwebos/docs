@@ -1,0 +1,121 @@
+### YamlMime:Landing
+title: Azure SQL 数据库与 Azure SQL 托管实例监视和性能优化
+summary: Azure SQL 数据库和 Azure SQL 托管实例提供了工具来帮助你收集指标和诊断信息，以便监视数据库并提高其性能。
+metadata:
+  title: Azure SQL 数据库与 Azure SQL 托管实例监视和优化文档
+  description: 了解 Azure SQL 数据库监视和性能优化工具，这些工具可帮助你收集指标和诊断信息并提高数据库性能。
+  ms.service: sql-database
+  ms.subservice: performance
+  ms.custom: sqldbrb=2
+  ms.topic: landing-page
+  ms.collection: performance
+  author: CarlRabeler
+  ms.author: carlrab
+  ms.date: 03/10/2020
+  ms.openlocfilehash: d25dfaa9dc51fd781c2b8640f34cc5221f7990ec
+  ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 05/27/2020
+  ms.locfileid: "84117883"
+landingContent:
+- title: 监视和性能优化入门
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 监视和性能优化
+      url: monitor-tune-overview.md
+  - linkListType: learn
+    links:
+    - text: Microsoft Azure 数据库监视演练手册
+      url: https://app.pluralsight.com/library/courses/microsoft-azure-database-playbook-monitoring
+- title: Azure SQL 数据库智能性能建议
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: SQL 数据库顾问优化建议
+      url: database-advisor-implement-performance-recommendations.md
+    - text: 自动优化
+      url: automatic-tuning-enable.md
+    - text: 查询性能见解
+      url: query-performance-insight-use.md
+  - linkListType: video
+    links:
+    - text: 自动优化
+      url: https://channel9.msdn.com/Shows/Azure-Friday/Improve-Azure-SQL-Database-Performance-with-Automatic-Tuning/player
+- title: Azure SQL 数据库和 Azure SQL 托管实例资源限制
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 单一数据库 vCore 资源限制
+      url: resource-limits-vcore-single-databases.md
+    - text: 单一数据库 DTU 资源限制
+      url: resource-limits-dtu-single-databases.md
+    - text: 弹性池 vCore 资源限制
+      url: resource-limits-vcore-elastic-pools.md
+    - text: 弹性池 DTU 资源限制
+      url: resource-limits-dtu-elastic-pools.md
+    - text: SQL 托管实例资源限制
+      url: ../managed-instance/resource-limits.md
+    - text: 实例池资源限制
+      url: ../managed-instance/instance-pools-overview.md#resource-limitations
+- title: 适用于 Azure SQL 数据库和 Azure SQL 托管实例的智能性能分析
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 使用 AI 的智能见解
+      url: intelligent-insights-overview.md
+  - linkListType: concept
+    links:
+    - text: 指标和诊断日志记录
+      url: metrics-diagnostic-telemetry-logging-streaming-export-configure.md
+    - text: 了解性能诊断日志
+      url: intelligent-insights-use-diagnostics-log.md
+    - text: Azure SQL 分析
+      url: ../../azure-monitor/insights/azure-sql.md
+    - text: 可检测性能模式
+      url: intelligent-insights-troubleshoot-performance.md
+    - text: 智能查询处理
+      url: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing
+  - linkListType: video
+    links:
+    - text: Intelligent Insights
+      url: https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player
+- title: 针对 Azure SQL 数据库和 Azure SQL 托管实例进行手动性能优化
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 识别查询性能问题
+      url: ../identify-query-performance-issues.md
+  - linkListType: concept
+    links:
+    - text: 使用 DMV 进行监视
+      url: monitoring-with-dmvs.md
+    - text: 应用程序和数据库优化
+      url: performance-guidance.md
+    - text: 使用“查询存储”
+      url: https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store
+    - text: 使用扩展事件
+      url: xevent-db-diff-from-svr.md
+    - text: 超大规模性能诊断
+      url: hyperscale-performance-diagnostics.md
+- title: Azure SQL 数据库和 Azure SQL 托管实例资源缩放
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 动态缩放资源
+      url: scale-resources.md
+  - linkListType: concept
+    links:
+    - text: 缩放单一数据库资源
+      url: single-database-scale.md
+    - text: 缩放弹性池资源
+      url: elastic-pool-scale.md
+    - text: 缩放托管实例资源
+      url: ../managed-instance/sql-managed-instance-paas-overview.md#management-operations
+    - text: 读取横向扩展
+      url: read-scale-out.md
+  - linkListType: video
+    links:
+    - text: 动态可伸缩性
+      url: https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player

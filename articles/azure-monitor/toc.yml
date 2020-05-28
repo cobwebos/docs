@@ -972,6 +972,8 @@
           href: insights/container-insights-update-metrics.md
         - name: 运行状况监视配置
           href: insights/container-insights-health-monitors-config.md
+        - name: 管理成本和使用情况
+          href: insights/container-insights-cost.md
         - name: 禁用监视
           items:
             - name: 禁止监视 AKS
@@ -991,7 +993,7 @@
         - name: Azure Cosmos DB
           href: insights/cosmosdb-insights-overview.md
         - name: Key Vault
-          href: insights/key-vault-insights-overview.md
+          href: insights/key-vaults-insights-overview.md
         - name: 网络
           href: insights/network-insights-overview.md
         - name: 存储

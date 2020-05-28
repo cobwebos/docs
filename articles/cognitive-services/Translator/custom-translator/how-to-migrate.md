@@ -6,25 +6,25 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 5705e5f29bc851d615f91d902fd505a69b5cfd12
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: face605d756d2107c04b3df0c072602ac91d147d
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586975"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83992889"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>将 Hub 工作区和项目迁移到自定义翻译
 
 可轻松地将 [Microsoft Translator Hub](https://hub.microsofttranslator.com/) 工作区和项目迁移到自定义翻译器。 从 Microsoft Hub 启动迁移，具体方式是选择一个工作区或项目，然后在自定义翻译器中选择一个工作区，并选择想要迁移的训练。 迁移开始后，将迁移所选的训练设置及所有相关文档。 将训练已部署的模型，并且可在训练完成后自动部署它们。
 
 这些操作在迁移时执行：
-* 所有文档和项目定义的名称将附加“hub_”前缀，并随之迁移。 自动生成的测试和调整数据将命名为 hub_systemtune_\<modelid> 或 hub_systemtest_\<modelid>。
+* 所有文档和项目定义的名称都将通过添加 "hub_" 作为名称的前缀来传输。 自动生成的测试和优化数据将命名为 hub_systemtune_\<modelid> 或 hub_systemtest_\<modelid>。
 * 进行迁移时，将自动使用 Hub 训练文档训练处于已部署状态的训练。 订阅无需为此训练付费。 如果为迁移选择了自动部署，则训练完成后将自动部署已训练的模型。 将收取常规托管费用。
 * 如果迁移的训练未处于已部署状态，则会将它们置于迁移的草稿状态。 在此状态下，可以选择使用已迁移的定义训练模型，但需为常规训练费用付费。
-* 随时可以“MT Hub 中的 Bleu 分数”的标题在模型的 TrainingDetails 页面查看从 Hub 训练迁移的 BLEU 分数。
+* 在任何时候，都可以在 "MT 中心的 Bleu 评分" 标题中的模型的 TrainingDetails 页中找到从中心定型迁移的 BLEU 分数。
 
 > [!Note] 
 > 若要成功完成培训，自定义翻译人员需要至少10000个唯一的提取句子。 自定义转换程序不能执行比建议的[最小值](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment#suggested-minimum-number-of-sentences)更少的培训。
@@ -92,7 +92,7 @@ Microsoft Translator Hub 允许有选择性地迁移项目。
 
 ## <a name="migration-history"></a>迁移历史记录
 
-请求从 Hub 迁移工作区/项目后，在自定义翻译的“设置”页中可以看到迁移历史记录。
+从中心请求工作区/项目迁移后，可在 "自定义转换器设置" 页中找到迁移历史记录。
 
 若要查看迁移历史记录，请执行以下步骤：
 
@@ -132,11 +132,11 @@ Microsoft Translator Hub 允许有选择性地迁移项目。
 
 |   | Hub | 自定义翻译 |
 |:-----|:----:|:----:|
-|自定义功能状态   | 正式版  | 正式版 |
-| 文本 API 版本  | V2    | V3  |
-| SMT 自定义 | 是   | 否 |
-| NMT 自定义 | 否    | 是 |
-| 新的统一语音服务自定义 | 否    | 是 |
+|自定义功能状态    | 正式版    | 正式版 |
+| 文本 API 版本    | V2     | V3  |
+| SMT 自定义    | 是    | 否 |
+| NMT 自定义    | 否    | 是 |
+| 新的统一语音服务自定义    | 否    | 是 |
 | 无跟踪 | 是 | 是 |
 
 ## <a name="new-languages"></a>新语言

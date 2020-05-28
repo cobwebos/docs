@@ -1,0 +1,123 @@
+### YamlMime:Landing
+title: Azure SQL 托管实例文档
+summary: 查找有关 Azure SQL 托管实例（Azure 中基于 Microsoft SQL Server 最新稳定版的托管实例）的文档。
+metadata:
+  title: Azure SQL 托管实例文档
+  description: 查找有关 Azure SQL 托管实例（Azure 中基于 Microsoft SQL Server 最新稳定版的托管实例）的文档。
+  services: sql-database
+  ms.service: sql-database
+  ms.subservice: single-database
+  ms.topic: landing-page
+  author: MashaMSFT
+  ms.author: mathoma
+  ms.reviewer: carlrab
+  ms.date: 05/27/2020
+  ms.openlocfilehash: 967bf5461a1f4e6cf8869bcea6a0e7c74204d1a1
+  ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 05/27/2020
+  ms.locfileid: "84023613"
+landingContent:
+- title: Azure SQL 托管实例
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 创建 SQL 托管实例
+      url: instance-create-quickstart.md
+  - linkListType: concept
+    links:
+    - text: 新增功能
+      url: ../database/doc-changes-updates-release-notes.md?tabs=managed-instance
+    - text: 什么是 SQL 托管实例？
+      url: sql-managed-instance-paas-overview.md
+    - text: 购买选项
+      url: ../database/purchasing-models.md
+    - text: 服务层
+      url: ../database/service-tiers-general-purpose-business-critical.md
+    - text: 事务复制
+      url: replication-transactional-overview.md
+    - text: 从 SQL Server 迁移
+      url: migrate-to-instance-from-sql-server.md
+    - text: 与 SQL Server 之间的 T-SQL 差异
+      url: transact-sql-tsql-differences-sql-server.md
+- title: 高级安全
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 安全功能
+      url: ../database/security-overview.md
+    - text: 安全最佳做法
+      url: ../database/security-best-practice.md
+    - text: 登录名、用户帐户、角色和权限
+      url: ../database/logins-create-manage.md
+    - text: Azure Active Directory
+      url: ../database/authentication-aad-overview.md
+    - text: 审核
+      url: auditing-configure.md
+    - text: 透明数据加密 (TDE)
+      url: ../database/transparent-data-encryption-tde-overview.md
+    - text: 动态数据屏蔽
+      url: ../database/dynamic-data-masking-overview.md
+    - text: 公共终结点
+      url: public-endpoint-overview.md
+- title: 参考
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: SQL 教育资源
+      url: /sql/sql-server/educational-sql-resources
+  - linkListType: deploy
+    links:
+    - text: Azure CLI 示例
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: PowerShell 示例
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: ARM 模板示例
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+  - linkListType: download
+    links:
+    - text: SQL Server Management Studio (SSMS)
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: Azure Data Studio
+      url: /sql/azure-data-studio/download-azure-data-studio
+    - text: SQL Server Data Tools
+      url: /sql/ssdt/download-sql-server-data-tools-ssdt
+    - text: Visual Studio 2019
+      url: https://visualstudio.microsoft.com/downloads/
+  - linkListType: reference
+    links:
+    - text: 迁移指南
+      url: https://datamigration.microsoft.com/
+    - text: Transact-SQL (T-SQL)
+      url: /sql/t-sql/language-reference
+    - text: Azure CLI
+      url: https://docs.microsoft.com/cli/azure/sql
+    - text: PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.sql
+    - text: REST API
+      url: https://docs.microsoft.com/rest/api/sql/
+- title: 业务连续性
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 业务连续性
+      url: ../database/business-continuity-high-availability-disaster-recover-hadr-overview.md
+    - text: 高可用性
+      url: ../database/high-availability-sla.md
+    - text: 自动故障转移组
+      url: ../database/auto-failover-group-overview.md
+    - text: 自动备份
+      url: ../database/automated-backups-overview.md
+    - text: 使用备份恢复
+      url: ../database/recovery-using-backups.md
+    - text: 长期备份保留
+      url: ../database/long-term-retention-overview.md
+- title: 实例池
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 什么是实例池？
+      url: instance-pools-overview.md
+    - text: 配置
+      url: instance-pools-configure.md

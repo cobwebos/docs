@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: cf0d96414c40784210723e315da5d885d61198c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 22c982babbed1322e97127379be75e7b070ed81f
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68595577"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994236"
 ---
 # <a name="view-document-details"></a>查看文档详细信息
 
@@ -22,7 +22,7 @@ ms.locfileid: "68595577"
 
 单击单个文档可查看文档详细信息页。 文档详细信息页显示从文档提取的语句的列表。
 
-- 默认情况下，下拉字段中会选中“源”语言，但可以切换为以目标语言查看语句。
+- 默认情况下，在下拉列表字段中选择 "源" 语言，但您可以切换到以目标语言查看句子。
 - 默认情况下，每页显示 20 个语句。 可以使用分页控件在页面之间进行浏览。
 
 ![文档详细信息](media/how-to/how-to-view-document-details.png)
