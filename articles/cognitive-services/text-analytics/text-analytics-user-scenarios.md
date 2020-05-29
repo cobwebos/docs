@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 6847059de2a8685a56719f07a041a40456f2aa06
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eb82422aa0e3d45743539da623fcb919e8e77bbc
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219243"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141801"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>文本分析 API 的示例用户方案
 
@@ -41,7 +41,7 @@ ms.locfileid: "79219243"
 
 ## <a name="monitor-your-products-social-media-feeds"></a>监视产品的社交媒体源
 
-在产品的 Twitter 或 Facebook 页面监视用户对产品提供的反馈。 使用数据来分析客户对新推出产品的情绪，提取有关功能和功能请求的关键短语，或者在出现客户投诉时解决投诉。 请参阅 [Microsoft Flow 模板](https://flow.microsoft.com/galleries/public/templates/2680d2227d074c4d901e36c66e68f6f9/run-sentiment-analysis-on-tweets-and-push-results-to-a-power-bi-dataset/)示例。
+监视产品的 twitter 或 Facebook 页面上的用户产品反馈。 使用数据来分析客户对新推出产品的情绪，提取有关功能和功能请求的关键短语，或者在出现客户投诉时解决投诉。 请参阅 [Microsoft Flow 模板](https://flow.microsoft.com/galleries/public/templates/2680d2227d074c4d901e36c66e68f6f9/run-sentiment-analysis-on-tweets-and-push-results-to-a-power-bi-dataset/)示例。
 
 ![描述如何使用关键短语提取在社交媒体上监视产品和公司反馈的插图](media/use-cases/social-feed.svg)
 
@@ -50,6 +50,13 @@ ms.locfileid: "79219243"
 使用命名实体识别识别文档中的个人信息和敏感信息。 使用数据对文档进行分类或对它们进行标记，以便可以安全地共享它们。
 
 ![描述如何使用 NER 检测个人信息以及对文档进行分类和密文的图像](media/use-cases/sensitive-docs.jpg)
+
+## <a name="perform-opinion-mining"></a>执行观点挖掘
+
+将与产品或服务的特定方面相关的观点与调查、客户反馈或任何内容的内容进行分组。 使用它来帮助指导产品启动和改进、营销工作，或者重点介绍你的产品或服务的执行情况。 
+
+> [!div class="mx-imgBorder"] 
+> :::image type="content" source="media/use-cases/aspect-based-sentiment.png" alt-text="有关酒店的示例观点。":::
 
 ## <a name="next-steps"></a>后续步骤
 
