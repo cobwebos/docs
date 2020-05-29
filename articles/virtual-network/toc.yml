@@ -80,8 +80,10 @@
           href: virtual-network-for-azure-services.md
     - name: IP 服务
       items:
-        - name: IP 寻址
-          href: virtual-network-ip-addresses-overview-arm.md
+        - name: 公共 IP
+          href: public-ip-addresses.md
+        - name: 专用 IP
+          href: private-ip-addresses.md
         - name: 公共 IP 前缀
           href: public-ip-address-prefix.md
         - name: 适用于 Azure VNet 的 IPv6

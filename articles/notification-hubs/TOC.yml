@@ -14,6 +14,7 @@
     - name: 创建通知中心 - Azure CLI
       href: create-notification-hub-azure-cli.md
     - name: 创建通知中心 - Azure 模板
+      displayName: Resource Manager
       href: create-notification-hub-template.md
     - name: 配置通知中心
       href: configure-notification-hub-portal-pns-settings.md
@@ -23,21 +24,23 @@
       items:
         - name: Firebase Cloud Messaging
           items:
-            - name: 将通知推送到所有注册
+            - name: 向所有注册发送推送通知（SDK 版本 1.0.0-preview1）
+              href: android-sdk.md
+            - name: 向所有注册发送推送通知（SDK 版本 0.6）
               href: notification-hubs-android-push-notification-google-fcm-get-started.md
-            - name: 向特定设备推送通知
+            - name: 向特定设备发送推送通知
               href: push-notifications-android-specific-devices-firebase-cloud-messaging.md
-            - name: 向特定用户推送通知
+            - name: 向特定用户发送推送通知
               href: push-notifications-android-specific-users-firebase-cloud-messaging.md
-            - name: 向 Xamarin Android 应用推送通知
+            - name: 向 Xamarin Android 应用发送推送通知
               href: xamarin-notification-hubs-push-notifications-android-gcm.md
         - name: Google Cloud Message（已弃用）
           items:
-            - name: 将通知推送到所有注册
+            - name: 向所有注册发送推送通知
               href: notification-hubs-android-push-notification-google-gcm-get-started.md
-            - name: 向特定设备推送通知
+            - name: 向特定设备发送推送通知
               href: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
-            - name: 向特定用户推送通知
+            - name: 向特定用户发送推送通知
               href: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
     - name: iOS
       items:
@@ -139,7 +142,7 @@
     - name: 使用应用程序后端注册
       href: notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md
     - name: 在 Apple 设备中使用基于令牌的身份验证
-      href: notification-hubs-push-notification-http2-token-authentification.md
+      href: notification-hubs-push-notification-http2-token-authentication.md
     - name: 排查通知丢弃问题
       href: notification-hubs-push-notification-fixer.md
     - name: 使用百度云推送来推送通知
