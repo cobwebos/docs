@@ -2,13 +2,13 @@
 title: 设置 QnA Maker 服务-QnA Maker
 description: 在创建任何 QnA Maker 知识库之前，必须先在 Azure 中设置 QnA Maker 服务。 任何有权在订阅中创建新资源的人都可以设置 QnA Maker 服务。
 ms.topic: conceptual
-ms.date: 03/19/2020
-ms.openlocfilehash: 563a56fdb288568e7fe667fa54658400064a560f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/28/2020
+ms.openlocfilehash: 521d0388e4ee739b1ac840e482174ac466781f5f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402986"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171168"
 ---
 # <a name="manage-qna-maker-resources"></a>管理 QnA Maker 资源
 
@@ -51,13 +51,14 @@ ms.locfileid: "81402986"
     * 选择将在其中部署 Application Insights 资源的**App insights 位置**。
     * 为了节省成本，可以[共享](#configure-qna-maker-to-use-different-cognitive-search-resource)为 QnA Maker 创建的某些 Azure 资源，但不是所有。
 
-1. 验证所有字段后，选择 "**创建**"。 此过程可能需要几分钟才能完成。
+1. 验证所有字段后，选择 "**创建**"。 该过程可能需要几分钟才能完成。
 
 1. 部署完成后，你将看到在订阅中创建的以下资源：
 
    ![新建 QnA Maker 服务资源](../media/qnamaker-how-to-setup-service/resources-created.png)
 
     具有_认知服务_类型的资源具有您的_订阅_密钥。
+
 
 ## <a name="find-subscription-keys-in-the-azure-portal"></a>在 Azure 门户中查找订阅密钥
 
@@ -117,7 +118,7 @@ ms.locfileid: "81402986"
 
 如果计划有很多知识库，请升级 Azure 认知搜索服务定价层。
 
-目前不能执行 Azure 搜索 SKU 的就地升级。 但是，你可以使用所需的 SKU 创建新的 Azure 搜索资源、将数据还原到新资源，然后将其链接到 QnA Maker 堆栈。 为此，请执行以下步骤：
+目前不能执行 Azure 搜索 SKU 的就地升级。 但是，你可以使用所需的 SKU 创建新的 Azure 搜索资源、将数据还原到新资源，然后将其链接到 QnA Maker 堆栈。 为此，请按照下列步骤进行操作：
 
 1. 在 Azure 门户中创建新的 Azure 搜索资源，并选择所需的 SKU。
 
@@ -145,7 +146,7 @@ ms.locfileid: "81402986"
 
 QnAMaker 运行时是在 Azure 门户中[创建 QnAMaker 服务](./set-up-qnamaker-service-azure.md)时部署的 Azure App Service 实例的一部分。 对运行时的更新定期进行。 2019年4月版（版本 5 +）之后，QnA Maker 应用服务实例处于自动更新模式。 此更新旨在在升级过程中处理零停机时间。
 
-您可以在https://www.qnamaker.ai/UserSettings中检查当前版本。 如果版本低于版本1.x，则必须重启应用服务才能应用最新更新：
+您可以在中检查当前版本 https://www.qnamaker.ai/UserSettings 。 如果版本低于版本1.x，则必须重启应用服务才能应用最新更新：
 
 1. 在[Azure 门户](https://portal.azure.com)中转到你的 QnAMaker 服务（资源组）。
 
@@ -197,7 +198,7 @@ QnA Maker 的**应用服务**资源使用认知搜索资源。 若要更改 QnA 
 
 若要使预测终结点应用始终加载（即使没有流量），请将 "空闲" 设置为 "始终打开"。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 搜索并选择 QnA Maker 资源的应用服务。 它将具有与 QnA Maker 资源相同的名称，但它将具有不同**类型**的应用服务。
 1. 找到 "**设置**"，然后选择 "**配置**"。
 1. 在 "配置" 窗格上，选择 "**常规设置**"，然后找到 "**始终打开**"，并选择 **"打开**" 作为值。
@@ -206,9 +207,32 @@ QnA Maker 的**应用服务**资源使用认知搜索资源。 若要更改 QnA 
     > ![在 "配置" 窗格上，选择 "常规设置"，然后查找 * * Always on * *，然后选择 * * On * * 作为值。](../media/qnamaker-how-to-upgrade-qnamaker/configure-app-service-idle-timeout.png)
 
 1. 选择“保存”**** 以保存配置。
-1. 系统会询问你是否要重新启动应用程序以使用新设置。 选择**继续**。
+1. 系统会询问你是否要重新启动应用程序以使用新设置。 选择“继续”。
 
 详细了解如何配置应用服务[常规设置](../../../app-service/configure-common.md#configure-general-settings)。
+
+## <a name="business-continuity-with-traffic-manager"></a>流量管理器的业务连续性
+
+业务连续性计划的主要目标是创建弹性知识库终结点，确保机器人或应用程序使用该终结点时不会发生停机。
+
+> [!div class="mx-imgBorder"]
+> ![QnA Maker bcp 计划](../media/qnamaker-how-to-bcp-plan/qnamaker-bcp-plan.png)
+
+上述高级想法如下：
+
+1. 在 [Azure 配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)中设置两个并行 [QnA Maker 服务](set-up-qnamaker-service-azure.md)。
+
+1. [备份](../../../app-service/manage-backup.md)主 QnA Maker 应用服务，并在辅助安装程序中将其[还原](../../../app-service/web-sites-restore.md)。 这将确保两个设置使用相同的主机名和密钥。
+
+1. 使主要和辅助 Azure 搜索索引保持同步。在[此处](https://github.com/pchoudhari/QnAMakerBackupRestore)使用 GitHub 示例，了解如何备份-还原 Azure 索引。
+
+1. 使用[连续导出](../../../application-insights/app-insights-export-telemetry.md)备份 Application Insights。
+
+1. 主要和辅助堆栈设置完成后，使用[流量管理器](../../../traffic-manager/traffic-manager-overview.md)配置两个终结点并设置路由方法。
+
+1. 需要为流量管理器终结点创建一个传输层安全性（TLS）（以前称为安全套接字层（SSL））证书。 绑定应用服务中[的 TLS/SSL 证书](../../../app-service/configure-ssl-bindings.md)。
+
+1. 最后，在机器人或应用中使用流量管理器终结点。
 
 ## <a name="delete-azure-resources"></a>删除 Azure 资源
 
@@ -219,4 +243,4 @@ QnA Maker 的**应用服务**资源使用认知搜索资源。 若要更改 QnA 
 了解有关[应用服务](../../../app-service/index.yml)和[搜索服务](../../../search/index.yml)的详细信息。
 
 > [!div class="nextstepaction"]
-> [创建并发布知识库](../Quickstarts/create-publish-knowledge-base.md)
+> [了解如何与他人创作](../how-to/collaborate-knowledge-base.md)

@@ -42,6 +42,8 @@
   items:
     - name: 将表单识别器与逻辑应用搭配使用
       href: tutorial-form-recognizer-with-logic-apps.md
+    - name: 将表单识别器与认知搜索搭配使用
+      href: 'https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-form'
 - name: 操作指南
   items:
     - name: 生成训练数据集
