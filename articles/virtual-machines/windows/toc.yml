@@ -147,6 +147,9 @@
       href: shared-image-galleries.md
     - name: Azure 资源管理器
       href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+      items:
+        - name: 资源管理器模板
+          href: template-description.md
     - name: 区域
       href: regions.md
       items:

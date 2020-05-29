@@ -1,35 +1,33 @@
 ---
-title: 命名实体识别支持的类型
+title: 命名实体识别支持的类别
 titleSuffix: Azure Cognitive Services
-description: 了解文本分析 API 中支持的实体类型。
+description: 了解文本分析 API 中支持的实体类别。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 02/06/2020
+ms.date: 03/30/2020
 ms.author: aahi
-ms.openlocfilehash: 164e803a6af8a7d1ccdc9c70cc3e42b787857b3a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9800eb9ec8ae9aa800e5281131148b600e42725f
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77086872"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140902"
 ---
-# <a name="supported-types-for-named-entity-recognition-version-3-preview"></a>命名实体识别版本3支持的类型（预览）
+# <a name="supported-entity-categories-in-named-entity-recognition-v3"></a>命名实体识别 v3 中支持的实体类别
 
-文本分析 API 提供识别和消除文本中的实体的功能。 [命名实体识别](how-tos/text-analytics-how-to-entity-linking.md)（NER）是一种能够识别文本中的不同实体并将它们分类为预定义类的功能。
+使用本文查找可通过[命名实体识别](how-tos/text-analytics-how-to-entity-linking.md)（NER）返回的实体类别。 还提供了 NER 3.1 的预览，其中包括检测个人（ `PII` ）和运行状况（）信息的能力 `PHI` 。
 
-## <a name="entity-types"></a>实体类型
-
-下面列出了支持的实体类型和子类型（如果适用）：
+## <a name="entity-categories"></a>实体类别
 
 #### <a name="general"></a>[常规](#tab/general)
 
 [!INCLUDE [supported entity types - general](./includes/entity-types/general-entities.md)]
 
-#### <a name="personal-information"></a>[个人信息](#tab/personal)
+#### <a name="personal-and-health"></a>[个人和运行状况](#tab/personal)
 
 [!INCLUDE [supported entity types - personally identifying information](./includes/entity-types/personal-information-entities.md)]
 
