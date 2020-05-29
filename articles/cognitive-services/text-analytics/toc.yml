@@ -54,7 +54,9 @@
       href: concepts/text-offsets.md
     - name: 数据限制
       href: concepts/data-limits.md
-- name: 操作方法指南
+    - name: 模型版本控制
+      href: concepts/model-versioning.md
+- name: 操作指南
   items:
     - name: 调用文本分析 API
       href: How-tos/text-analytics-how-to-call-api.md
@@ -76,6 +78,8 @@
           href: how-tos/text-analytics-how-to-use-container-instances.md
         - name: 使用 Kubernetes 服务 (AKS)
           href: how-tos/text-analytics-how-to-use-kubernetes-service.md
+    - name: 迁移到 API 的版本 3
+      href: migration-guide.md
 - name: 参考
   items:
     - name: CLI 参考
