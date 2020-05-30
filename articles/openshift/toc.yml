@@ -75,7 +75,7 @@
       href: /rest/api/openshift
 - name: 资源
   items:
-    - name: 常见问题
+    - name: 常见问题解答
       href: openshift-faq.md
     - name: 疑难解答
       href: troubleshoot.md

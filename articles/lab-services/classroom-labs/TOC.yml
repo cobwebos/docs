@@ -46,6 +46,8 @@
               href: class-type-mobile-dev-android-studio.md
             - name: 大数据分析
               href: class-type-big-data-analytics.md
+            - name: MATLAB
+              href: class-type-matlab.md
 - name: 操作指南
   items:
     - name: 管理员指南

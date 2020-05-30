@@ -10,12 +10,12 @@ metadata:
   author: DCtheGeek
   ms.author: dacoulte
   ms.date: 05/20/2020
-  ms.openlocfilehash: b28cae1fd59e863c04d744a5c17108f1bd942a4d
-  ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+  ms.openlocfilehash: 4d7c02891330699978134dbb4d53faef0f16b1e9
+  ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/27/2020
-  ms.locfileid: "84119348"
+  ms.lasthandoff: 05/29/2020
+  ms.locfileid: "84204814"
 landingContent:
 - title: 关于 Azure Policy
   linkLists:
@@ -73,6 +73,8 @@ landingContent:
       url: ./how-to/author-policies-for-arrays.md
   - linkListType: concept
     links:
+    - text: 合规性
+      url: ./concepts/regulatory-compliance.md
     - text: 适用于 Kubernetes 的策略
       url: ./concepts/policy-for-kubernetes.md
     - text: 适用于 VM 的策略
@@ -92,7 +94,7 @@ landingContent:
   - linkListType: get-started
     links:
     - text: 有关 Azure Policy 的 Microsoft Q&A
-      url: /answers/topics/azure-policy.html.html
+      url: /answers/topics/azure-policy.html
     - text: Azure 治理 YouTube 频道
       url: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
     - text: 请求产品功能

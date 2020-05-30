@@ -1237,6 +1237,8 @@
       href: whitepapers.md
     - name: 合作伙伴
       href: partners-migration-cosmosdb.md
+    - name: Microsoft Q&A 问题页面
+      href: 'https://docs.microsoft.com/answers/topics/azure-cosmos-db.html'
     - name: 视频
       href: 'https://azure.microsoft.com/resources/videos/index/?services=cosmos-db'
     - name: Azure 路线图

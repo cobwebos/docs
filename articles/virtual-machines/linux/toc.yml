@@ -422,6 +422,8 @@
                       href: ../image-version-another-gallery-cli.md
                 - name: 创建 VM
                   items:
+                    - name: 专用
+                      href: ../vm-specialized-image-version-cli.md
                     - name: 通用
                       href: ../vm-generalized-image-version-cli.md
                 - name: 更新映像资源

@@ -87,8 +87,6 @@
           href: howto-manage-devices.md
         - name: 配置规则
           href: howto-configure-rules.md
-        - name: 使用工作流与其他服务集成
-          href: howto-configure-rules-advanced.md
         - name: 分析设备数据
           href: howto-create-analytics.md
         - name: 向仪表板添加磁贴
@@ -103,6 +101,8 @@
           href: howto-export-data.md
         - name: 根据规则创建 Webhook
           href: howto-create-webhooks.md
+        - name: 使用工作流与其他服务集成
+          href: howto-configure-rules-advanced.md
         - name: 根据规则连接 Azure Monitor 操作组
           href: howto-use-action-groups.md
         - name: 创建自定义规则

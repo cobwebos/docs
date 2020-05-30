@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: ec997c802f83b0d1eea54c0710b0ebc4684397fe
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 42717b1e9b4ba12c2fe42dbd13ef44223ef2ba43
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584614"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220218"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>认知服务和机器学习
 
@@ -22,7 +22,7 @@ ms.locfileid: "83584614"
 
 [认知服务](welcome.md)是一组服务，每个服务支持不同的通用化预测功能。 服务分为不同的类别，以帮助你找到正确的服务。 
 
-|服务类别|目标|
+|服务类别|用途|
 |--|--|
 |[决策](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|构建应用，用于呈现有助于做出明智和高效决策的建议。|
 |[语言](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|让应用能够通过预建的脚本处理自然语言、评估情绪，并了解如何识别用户需求。|
@@ -108,7 +108,7 @@ _利用_服务，你可以提供数据来增强其自身的数据。 服务可�
 |[语音转换到文本（STT）](speech-service/speech-to-text.md)|x|x||
 |[语音翻译](speech-service/speech-translation.md)|x|||
 |[文本分析](./text-analytics/overview.md)|x|||
-|[翻译工具](./translator/translator-info-overview.md)|x|||
+|[翻译](./translator/translator-info-overview.md)|x|||
 |[翻译人员-自定义转换器](./translator/custom-translator/overview.md)||x||
 
 * Personalizer 只需要服务收集的定型数据（它在实时运行时）来评估策略和数据。 Personalizer 不需要较大的历史数据集来进行前期或批处理培训。 
