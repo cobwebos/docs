@@ -24,6 +24,8 @@
       href: classroom-labs-concepts.md
     - name: 教室实验室体系结构基础知识
       href: classroom-labs-fundamentals.md
+    - name: 容量限制
+      href: capacity-limits.md
     - name: 方案
       items:
         - name: 将实验室用于上课

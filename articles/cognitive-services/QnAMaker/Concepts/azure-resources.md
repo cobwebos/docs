@@ -3,12 +3,12 @@ title: Azure 资源-QnA Maker
 description: QnA Maker 使用多个 Azure 源，每个都有不同的用途。 了解如何单独使用这些功能，可以规划和选择正确的定价层，或者知道何时更改定价层。 了解如何结合使用它们，可以在出现问题时查找并解决问题。
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 581029d2372f7a2ef704dcf02f266b66440aa246
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 916f5b9b012d233c6a28d5cbb75ea0b4e073d064
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80873899"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84236086"
 ---
 # <a name="azure-resources-for-qna-maker"></a>适用于 QnA Maker 的 Azure 资源
 
@@ -47,8 +47,8 @@ QnA Maker 使用多个 Azure 源，每个都有不同的用途。 了解如何�
 |                        | QnA Maker 管理 | 应用服务 | Azure 认知搜索 | 限制                      |
 | ---------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
 | 试验        | 免费 SKU             | 免费层   | 免费层    | 分别最多发布 2 KB、50 MB 大小  |
-| 开发/测试环境   | 标准 SKU         | Shared      | 基本        | 分别最多发布 14 KB、2 GB 大小    |
-| 生产环境 | 标准 SKU         | 基本       | Standard     | 分别最多发布 49 KB、25 GB 大小 |
+| 开发/测试环境   | 标准 SKU         | 共享      | 基本        | 分别最多发布 14 KB、2 GB 大小    |
+| 生产环境 | 标准 SKU         | 基本       | 标准     | 分别最多发布 49 KB、25 GB 大小 |
 
 ## <a name="recommended-settings"></a>建议的设置
 
@@ -72,7 +72,7 @@ QnA Maker 使用多个 Azure 源，每个都有不同的用途。 了解如何�
 
 ## <a name="resource-naming-considerations"></a>资源命名注意事项
 
-QnA Maker 资源的资源名称（如`qna-westus-f0-b`）还用于命名其他资源。
+QnA Maker 资源的资源名称（如 `qna-westus-f0-b` ）还用于命名其他资源。
 
 使用 "Azure 门户创建" 窗口，可以创建 QnA Maker 资源，并为其他资源选择定价层。
 
@@ -144,13 +144,13 @@ QnA Maker 资源的资源名称（如`qna-westus-f0-b`）还用于命名其他�
 
 QnA Maker 创建多个 Azure 资源。 若要减少成本共享的管理和权益，请使用下表来了解可以和不能共享的内容：
 
-|服务|分享|原因|
+|服务|共享|原因|
 |--|--|--|
 |认知服务|X|不能通过设计|
 |应用服务计划|✔|为应用服务计划分配的固定磁盘空间。 如果共享同一应用服务计划的其他应用使用了大量磁盘空间，QnAMaker 应用服务实例将会遇到问题。|
 |应用服务|X|不能通过设计|
 |Application Insights|✔|可以共享|
-|搜索服务|✔|1. `testkb`是 QnAMaker 服务的保留名称;其他用户不能使用它。<br>2. 名称`synonym-map`的同义词映射是为 QnAMaker 服务保留的。<br>3. 已发布的知识库数受搜索服务层限制。 如果有可用的可用索引，则其他服务可以使用这些索引。|
+|搜索服务|✔|1. `testkb` 是 QnAMaker 服务的保留名称; 其他名称不能使用它。<br>2. 名称的同义词映射 `synonym-map` 是为 QnAMaker 服务保留的。<br>3. 已发布的知识库数受搜索服务层限制。 如果有可用的可用索引，则其他服务可以使用这些索引。|
 
 ### <a name="using-a-single-cognitive-search-service"></a>使用单个认知搜索服务
 
@@ -172,7 +172,7 @@ QnA Maker 服务处理两种类型的密钥：**创作密钥**和用于在应用
 
 ![密钥管理](../media/qnamaker-how-to-key-management/key-management.png)
 
-|“属性”|位置|目的|
+|名称|位置|用途|
 |--|--|--|
 |创作密钥|[Azure 门户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|这些密钥用来访问 [QnA Maker 管理服务 API](https://go.microsoft.com/fwlink/?linkid=2092179)。 通过这些 Api，您可以编辑知识库中的问题和解答，并发布您的知识库。 这些密钥是在创建新的 QnA Maker 服务时创建的。<br><br>在 "**密钥**" 页上的 "**认知服务**" 资源上查找这些密钥。|
 |查询终结点密钥|[QnA Maker 门户](https://www.qnamaker.ai)|这些键用于查询已发布的知识库终结点，以获取用户问题的响应。 通常在聊天机器人中或连接到 QnA Maker 服务的客户端应用程序代码中使用此查询终结点。 这些密钥是在您发布 QnA Maker 知识库时创建的。<br><br>在 "**服务设置**" 页中查找这些密钥。 在下拉菜单上页面右上角的用户菜单中找到此页。|
@@ -182,6 +182,14 @@ QnA Maker 服务处理两种类型的密钥：**创作密钥**和用于在应用
 术语 "创作" 和 "查询" 终结点是纠正条款。 以前的术语是**订阅密钥**。 如果你看到其他文档引用订阅密钥，则这些文档等效于创作和查询终结点密钥（在运行时中使用）。
 
 您必须知道该密钥所访问的内容、知识库管理或知识库查询，才能知道您需要找到哪个密钥。
+
+## <a name="recommended-settings-for-network-isolation"></a>用于网络隔离的推荐设置
+
+* 通过[配置虚拟网络](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)来保护认知服务资源免受公共访问。
+* 保护应用服务（QnA 运行时）与公共访问：
+    * 仅允许来自认知服务 Ip 的流量。 服务标记 "CognitiveServicesManagement" 中已包含这些项。 这对于创作 Api （Create/Update KB）以调用应用服务和相应更新 Azure 搜索服务是必需的。
+    * 确保还允许其他入口点（如机器人服务）、QnA Maker 门户（可能是你的公司网络）等。
+    * 查看[有关服务标记的详细信息。](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,12 +3,12 @@ title: 设置 QnA Maker 服务-QnA Maker
 description: 在创建任何 QnA Maker 知识库之前，必须先在 Azure 中设置 QnA Maker 服务。 任何有权在订阅中创建新资源的人都可以设置 QnA Maker 服务。
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 521d0388e4ee739b1ac840e482174ac466781f5f
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 106796533f42250a2656735d97878ea04d6fa57f
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171168"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235524"
 ---
 # <a name="manage-qna-maker-resources"></a>管理 QnA Maker 资源
 
@@ -210,6 +210,11 @@ QnA Maker 的**应用服务**资源使用认知搜索资源。 若要更改 QnA 
 1. 系统会询问你是否要重新启动应用程序以使用新设置。 选择“继续”。
 
 详细了解如何配置应用服务[常规设置](../../../app-service/configure-common.md#configure-general-settings)。
+## <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>配置应用服务环境以托管 Qna Maker 应用服务
+应用服务环境可用于承载 QnA Maker 应用服务。 如果应用服务环境是内部的，则需要执行以下步骤：
+1. 创建应用服务和 azure 搜索服务。
+2. 公开公共 DNS 和白名单上的应用服务 QnA Maker 服务标记： CognitiveServicesManagement，或使其面向 internet。
+3. 使用 Azure 资源管理器创建 QnA Maker 认知服务实例（Cognitiveservices account/帐户），其中 QnA Maker 终结点应设置为应用服务环境。 
 
 ## <a name="business-continuity-with-traffic-manager"></a>流量管理器的业务连续性
 

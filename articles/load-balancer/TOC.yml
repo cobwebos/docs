@@ -60,8 +60,6 @@
       href: load-balancer-multivip-overview.md
     - name: 出站连接
       href: load-balancer-outbound-connections.md
-    - name: 出站规则
-      href: load-balancer-outbound-rules-overview.md
     - name: 在空闲超时的情况下重置 TCP
       href: load-balancer-tcp-reset.md
     - name: 标准负载均衡器和可用性区域
