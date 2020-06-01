@@ -49,6 +49,8 @@
       href: spring-cloud-quotas.md
     - name: 了解 Azure Spring Cloud 中的指标
       href: spring-cloud-concept-metrics.md
+    - name: 使用 Azure Spring Boot Actuator 管理和监视应用
+      href: spring-cloud-concept-manage-monitor-app-spring-boot-actuator.md
     - name: Azure Spring Cloud 服务的安全控制
       href: spring-cloud-concept-security-controls.md
     - name: 了解 Azure Spring Cloud 中的应用状态

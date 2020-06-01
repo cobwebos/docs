@@ -58,7 +58,7 @@
       items:
         - name: 导入数据
           href: import-data.md
-        - name: 使用本地 SQL 数据库中的数据
+        - name: 使用来自 SQL Server 的数据
           displayName: on-premises
           href: use-data-from-an-on-premises-sql-server.md
     - name: 训练模型

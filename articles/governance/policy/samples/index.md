@@ -1,14 +1,14 @@
 ---
 title: 策略示例索引
 description: Azure Policy 的内置项的索引。 类别标记、法规符合性、Key Vault、Kubernetes、来宾配置等。
-ms.date: 03/25/2020
+ms.date: 05/29/2020
 ms.topic: sample
-ms.openlocfilehash: 41a08a70df24f80ea324860d6d1db16c9ed99760
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 6e9c3b92942f24ae0a9972fa61340775262af761
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697180"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84203896"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy 示例
 
@@ -32,6 +32,14 @@ ms.locfileid: "83697180"
 - [Count 运算符](./pattern-count-operator.md)
 - [对计划中的策略定义进行分组](./pattern-group-with-initiative.md)
 - [使用 deployIfNotExists 部署资源](./pattern-deploy-resources.md)
+
+## <a name="regulatory-compliance"></a>合规性
+
+下面是[法规符合性](../concepts/regulatory-compliance.md)内置项：
+
+- [Azure 安全基准检验](./azure-security-benchmark.md)
+- [CIS Microsoft Azure 基础基准检验 v1.1.0](./cis-azure-1-1-0.md)
+- [NIST SP 800-53 R4](./nist-sp-800-53-r4.md)
 
 ## <a name="other-samples"></a>其他示例
 

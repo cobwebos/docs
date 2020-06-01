@@ -17,12 +17,12 @@
       href: quick-create-python.md
 - name: 教程
   items:
-    - name: 导入受 HSM 保护的密钥
+    - name: 导入受 HSM 保护的密钥（概述）
       href: hsm-protected-keys.md
-    - name: 导入 HSM 保护的密钥（预览版）
-      href: hsm-protected-keys-vendor-agnostic-byok.md
-    - name: 导入 HSM 保护的密钥（旧版）
-      href: hsm-protected-keys-legacy.md
+    - name: 导入受 HSM 保护的密钥 (BYOK)
+      href: hsm-protected-keys-byok.md
+    - name: 导入受 HSM 保护的密钥 (nCipher)
+      href: hsm-protected-keys-ncipher.md
 - name: 示例
   items:
     - name: Azure Policy 内置策略定义
@@ -47,6 +47,8 @@
     - name: 资源管理器模板
       href: /azure/templates/microsoft.keyvault/allversions
       displayName: ARM
+    - name: “创建自己的密钥”规范
+      href: byok-specification.md
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握技能

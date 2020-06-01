@@ -98,6 +98,8 @@
               href: virtual-wan-route-table.md
         - name: 查看虚拟中心有效路由
           href: effective-routes-virtual-hub.md
+        - name: 多个 ISP 链接 - Azure 路径选择
+          href: path-selection-multiple-links.md
     - name: 安全性
       items:
         - name: 在中心安装 Azure 防火墙

@@ -67,15 +67,17 @@
         - name: 创建首个 ML 试验 (R)
           href: tutorial-1st-r-experiment.md
     - name: 机器学习 CLI
-      href: tutorial-train-deploy-model-cli.md
+      items:
+        - name: 使用 CLI 进行训练和部署
+          href: tutorial-train-deploy-model-cli.md
+        - name: 使用资源管理器模板创建工作区
+          href: tutorial-resource-manager-workspace.md
     - name: Visual Studio Code
       items:
         - name: 安装 Azure 机器学习扩展
           href: tutorial-setup-vscode-extension.md
         - name: 训练并部署 TensorFlow 图像分类模型
           href: tutorial-train-deploy-image-classification-model-vscode.md
-    - name: 使用资源管理器模板创建工作区
-      href: tutorial-resource-manager-workspace.md
 - name: 示例
   items:
     - name: Jupyter Notebook

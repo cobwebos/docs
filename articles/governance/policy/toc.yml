@@ -60,20 +60,34 @@
           href: ./samples/pattern-group-with-initiative.md
         - name: 部署资源
           href: ./samples/pattern-deploy-resources.md
+    - name: 法规符合性内置项
+      items:
+        - name: Azure 安全基准
+          href: ./samples/azure-security-benchmark.md
+        - name: CIS Microsoft Azure 基础基准检验 1.1.0
+          href: ./samples/cis-azure-1-1-0.md
+        - name: NIST SP 800-53 R4
+          href: ./samples/nist-sp-800-53-r4.md
 - name: 概念
   items:
-    - name: Azure Policy 定义结构
+    - name: 定义结构
       displayName: 'parameters, location, rule, alias, initiatives'
       href: ./concepts/definition-structure.md
-    - name: 了解 Policy 效果
+    - name: 了解效果
       displayName: 'order, evaluation'
       href: ./concepts/effects.md
-    - name: Azure Policy 分配结构
+    - name: 计划结构
+      displayName: 'parameters, groups, domains, policies'
+      href: ./concepts/initiative-definition-structure.md
+    - name: 分配结构
       displayName: 'parameters, enforcementmode, policyDefinitionId'
       href: ./concepts/assignment-structure.md
     - name: 评估新策略的影响
       displayName: 'audit, enforcementmode, compliance'
       href: ./concepts/evaluate-impact.md
+    - name: 合规性
+      displayName: 'standards, domains, controls'
+      href: ./concepts/regulatory-compliance.md
     - name: 将策略设计为代码工作流
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./concepts/policy-as-code.md
@@ -127,6 +141,8 @@
         - name: 启用用于 VM 的 Azure Monitor（预览版）
           displayName: 'monitor, insights, log analytics, builtin'
           href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+- name: 疑难解答
+  href: ./troubleshoot/general.md
 - name: 参考
   items:
     - name: Azure CLI
@@ -198,7 +214,7 @@
     - name: GitHub - 社区策略存储库
       href: 'https://github.com/Azure/Community-Policy'
     - name: 有关 Azure Policy 的 Microsoft Q&A
-      href: /answers/topics/azure-policy.html.html
+      href: /answers/topics/azure-policy.html
     - name: 治理 YouTube 频道
       href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
     - name: 来宾配置视频

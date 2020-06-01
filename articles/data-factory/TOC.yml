@@ -25,6 +25,8 @@
       href: quickstart-create-data-factory-rest-api.md
     - name: 创建数据工厂 - 资源管理器模板
       href: quickstart-create-data-factory-resource-manager-template.md
+    - name: 安全性 - 启用客户管理的密钥加密
+      href: quickstart-enable-customer-managed-key.md
     - name: 创建数据流
       href: data-flow-create.md
 - name: 教程
@@ -39,7 +41,7 @@
               href: tutorial-copy-data-portal.md
             - name: .NET
               href: tutorial-copy-data-dot-net.md
-        - name: 从本地 SQL Server 数据库到 Azure Blob 存储
+        - name: 从 SQL Server 数据库到 Azure Blob 存储
           items:
             - name: 复制数据工具
               href: tutorial-hybrid-copy-data-tool.md
@@ -76,7 +78,7 @@
                   href: tutorial-incremental-copy-portal.md
                 - name: Azure PowerShell
                   href: tutorial-incremental-copy-powershell.md
-            - name: 从多个本地 SQL Server 表
+            - name: 从多个 SQL Server 数据库表
               items:
                 - name: 用户界面 (UI)
                   href: tutorial-incremental-copy-multiple-tables-portal.md
@@ -234,7 +236,7 @@
           href: connector-azure-database-for-postgresql.md
         - name: Azure 文件存储
           href: connector-azure-file-storage.md
-        - name: Azure SQL 数据库
+        - name: Azure SQL Database
           href: connector-azure-sql-database.md
         - name: Azure SQL 托管实例
           href: connector-azure-sql-managed-instance.md
@@ -605,6 +607,10 @@
           href: self-hosted-integration-runtime-proxy-ssis.md
         - name: 为 Azure-SSIS IR 启用 Azure AD 身份验证
           href: enable-aad-authentication-azure-ssis-ir.md
+        - name: 使用 Windows 身份验证连接到数据
+          href: ssis-azure-connect-with-windows-auth.md
+        - name: 保存文件并连接到文件共享
+          href: ssis-azure-files-file-shares.md
         - name: 预配 Azure-SSIS IR 的企业版
           href: how-to-configure-azure-ssis-ir-enterprise-edition.md
         - name: Azure-SSIS IR 上的内置和预安装组件
@@ -623,6 +629,8 @@
           href: how-to-use-sql-managed-instance-with-ir.md
         - name: 通过 SSMS 迁移 SSIS 作业
           href: how-to-migrate-ssis-job-ssms.md
+        - name: 使用 Azure-SSIS IR 包存储管理包
+          href: azure-ssis-integration-runtime-package-store.md
     - name: 创建触发器
       items:
         - name: 创建基于事件的触发器

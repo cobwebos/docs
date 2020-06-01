@@ -177,6 +177,8 @@
       items:
         - name: 监视 IoT Edge 部署
           href: how-to-monitor-iot-edge-deployments.md
+        - name: 监视模块孪生
+          href: how-to-monitor-module-twins.md
         - name: EdgeAgent 直接方法
           href: how-to-edgeagent-direct-method.md
     - name: 使用 IoT Edge 设备作为网关

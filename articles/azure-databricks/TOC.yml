@@ -12,7 +12,6 @@
         - name: 门户
           href: quickstart-create-databricks-workspace-portal.md
         - name: ARM 模板
-          displayName: Resource Manager
           href: quickstart-create-databricks-workspace-resource-manager-template.md
         - name: 虚拟网络
           href: quickstart-create-databricks-workspace-vnet-injection.md
@@ -368,6 +367,9 @@
           maintainContext: true
         - name: 使用笔记本
           href: /azure/databricks/notebooks/notebooks-use
+          maintainContext: true
+        - name: 笔记本范围内的 Python 库
+          href: /azure/databricks/notebooks/notebooks-python-libraries
           maintainContext: true
         - name: 版本控制
           items:
@@ -1029,7 +1031,7 @@
               href: /azure/databricks/security/access-control/pool-acl
               maintainContext: true
             - name: 作业访问控制
-              href: /azure/databricks/security/access-control/jobs-acl
+              href: /azure/databricks/security/access-control/job-acl
               maintainContext: true
             - name: 表访问控制
               items:
@@ -1665,7 +1667,7 @@
                 - name: SCIM API（用户）
                   href: /azure/databricks/dev-tools/api/latest/scim/scim-users
                 - name: SCIM API（组）
-                  href: /azure/databricks/dev-tools/api/latest/scim/scim-groups
+                  href: /azure/databricks/dev-tools/api/latest/scim/scim-group
               maintainContext: true
             - name: 机密
               href: /azure/databricks/dev-tools/api/latest/secrets
@@ -1721,6 +1723,8 @@
       href: /rest/api/databricks
     - name: 资源管理器模板
       href: /azure/templates/microsoft.databricks/workspaces
+    - name: Azure CLI
+      href: 'https://docs.microsoft.com/cli/azure/ext/databricks/databricks?view=azure-cli-latest'
 - name: 资源
   items:
     - name: Apache Spark
@@ -1862,13 +1866,13 @@
                 - name: Databricks Runtime 7.0 基因组学（Beta 版本）
                   href: /azure/databricks/release-notes/runtime/7.0genomics
                   maintainContext: true
-                - name: Databricks Runtime 6.6（Beta 版本）
+                - name: Databricks Runtime 6.6
                   href: /azure/databricks/release-notes/runtime/6.6
                   maintainContext: true
-                - name: Databricks Runtime 6.6 ML（Beta 版本）
+                - name: Databricks Runtime 6.6 ML
                   href: /azure/databricks/release-notes/runtime/6.6ml
                   maintainContext: true
-                - name: Databricks Runtime 6.6 基因组学（Beta 版本）
+                - name: Databricks Runtime 6.6 基因组学
                   href: /azure/databricks/release-notes/runtime/6.6genomics
                   maintainContext: true
                 - name: Databricks Runtime 6.5
