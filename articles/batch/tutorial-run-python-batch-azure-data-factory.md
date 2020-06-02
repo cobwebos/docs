@@ -1,5 +1,5 @@
 ---
-title: 通过数据工厂运行 Python 脚本 - Azure Batch Python
+title: 通过数据工厂运行 Python 脚本
 description: 教程 - 了解如何使用 Azure Batch 通过 Azure 数据工厂将 Python 脚本作为管道的一部分运行。
 author: mammask
 ms.devlang: python
@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 12/11/2019
 ms.author: komammas
 ms.custom: mvc
-ms.openlocfilehash: 6761896a6555c11d7957f923a5951641c1541012
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 433a652ffa3fa3ae5a570fac6160ef8a04ee11c8
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117057"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773179"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>教程：使用 Azure Batch 通过 Azure 数据工厂运行 Python 脚本
 
@@ -34,6 +34,7 @@ ms.locfileid: "82117057"
 
 * 已安装一个 [Python](https://www.python.org/downloads/) 分发版用于本地测试。
 * [Azure](https://pypi.org/project/azure/) `pip` 包。
+* [iris.csv 数据集](https://www.kaggle.com/uciml/iris/version/2#Iris.csv)
 * Azure Batch 帐户和关联的 Azure 存储帐户。 有关如何创建 Batch 帐户并将其链接到存储帐户的详细信息，请参阅[创建 Batch 帐户](quick-create-portal.md#create-a-batch-account)。
 * 一个 Azure 数据工厂帐户。 有关如何通过 Azure 门户创建数据工厂的详细信息，请参阅[创建数据工厂](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory)。
 * [Batch Explorer](https://azure.github.io/BatchExplorer/)。
@@ -51,13 +52,13 @@ ms.locfileid: "82117057"
 
 1. 使用 Azure 凭据登录到 Batch Explorer。
 1. 选择你的 Batch 帐户
-1. 选择左侧栏上的“池”来创建池，然后选择搜索窗体上方的“添加”按钮   。 
+1. 选择左侧栏上的“池”来创建池，然后选择搜索窗体上方的“添加”按钮 。 
     1. 选择 ID 和显示名称。 本示例使用 `custom-activity-pool`。
-    1. 将规模类型为“固定大小”，将专用节点计数设置为 2。 
-    1. 在“数据科学”下，选择“Dsvm Windows”作为操作系统。  
+    1. 将规模类型为“固定大小”，将专用节点计数设置为 2。
+    1. 在“数据科学”下，选择“Dsvm Windows”作为操作系统。 
     1. 选择 `Standard_f2s_v2` 作为虚拟机大小。
-    1. 启用启动任务，并添加命令 `cmd /c "pip install pandas"`。 用户标识可以保留为默认的“池用户”。 
-    1. 选择“确定”  。
+    1. 启用启动任务，并添加命令 `cmd /c "pip install pandas"`。 用户标识可以保留为默认的“池用户”。
+    1. 选择“确定”。
 
 ## <a name="create-blob-containers"></a>创建 Blob 容器
 
@@ -66,7 +67,7 @@ ms.locfileid: "82117057"
 1. 使用 Azure 凭据登录到存储资源管理器。
 1. 使用链接到批处理帐户的存储帐户，按照[创建 Blob 容器](../vs-azure-tools-storage-explorer-blobs.md#create-a-blob-container)的步骤创建两个 Blob 容器（一个用于输入文件，一个用于输出文件）。
     * 在本例中，我们将调用输入容器 `input` 和输出容器 `output`。
-1. 遵循[管理 Blob 容器中的 Blob](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container) 中的步骤，使用存储资源管理器将 `main.py` 和 `iris.csv` 上传到输入容器 `input`
+1. 遵循[管理 Blob 容器中的 Blob](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container) 中的步骤，使用存储资源管理器将 `main.py` 和 [`iris.csv`](https://www.kaggle.com/uciml/iris/version/2#Iris.csv) 上传到输入容器 `input`
 
 
 ## <a name="develop-a-script-in-python"></a>在 Python 中开发脚本
@@ -101,7 +102,7 @@ df.to_csv("iris_setosa.csv", index = False)
 blobService.create_blob_from_text(containerName, "iris_setosa.csv", "iris_setosa.csv")
 ```
 
-将脚本另存为 `main.py`，然后将其上传到“Azure 存储”容器。  在将其上传到 Blob 容器之前，请务必在本地测试并验证其功能：
+将脚本另存为 `main.py`，然后将其上传到“Azure 存储”容器。 在将其上传到 Blob 容器之前，请务必在本地测试并验证其功能：
 
 ``` bash
 python main.py
@@ -112,28 +113,28 @@ python main.py
 在本部分，你将使用 Python 脚本创建并验证一个管道。
 
 1. 遵循[此文](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory)的“创建数据工厂”部分中的步骤创建一个数据工厂。
-1. 在“工厂资源”框中选择“+”（加号）按钮，然后选择“管道”  
-1. 在“常规”选项卡中，将管道名称设置为“运行 Python” 
+1. 在“工厂资源”框中选择“+”（加号）按钮，然后选择“管道” 
+1. 在“常规”选项卡中，将管道名称设置为“运行 Python”
 
     ![](./media/run-python-batch-azure-data-factory/create-pipeline.png)
 
-1. 在“活动”框中展开“Batch 服务”。   将“活动”工具箱中的自定义活动拖到管道设计器图面。 
-1. 在“常规”选项卡中，指定 **testPipeline** 作为名称。 
+1. 在“活动”框中展开“Batch 服务”。  将“活动”工具箱中的自定义活动拖到管道设计器图面。
+1. 在“常规”选项卡中，指定 **testPipeline** 作为名称。
 
     ![](./media/run-python-batch-azure-data-factory/create-custom-task.png)
-1. 在“Azure Batch”选项卡中，添加在前面步骤中创建的 **Batch 帐户**，然后选择“测试连接”以确保连接成功  
+1. 在“Azure Batch”选项卡中，添加在前面步骤中创建的 **Batch 帐户**，然后选择“测试连接”以确保连接成功 
 
     ![](./media/run-python-batch-azure-data-factory/integrate-pipeline-with-azure-batch.png)
 
-1. 在“设置”选项卡中，输入命令 `python main.py`。 
-1. 对于“资源链接服务”，请添加在前面步骤中创建的存储帐户。  测试连接以确保连接成功。
-1. 在“文件夹路径”中，选择包含 Python 脚本和关联输入的“Azure Blob 存储”容器的名称。   这会在执行 Python 脚本之前，将所选文件从该容器下载到池节点实例。
+1. 在“设置”选项卡中，输入命令 `python main.py`。
+1. 对于“资源链接服务”，请添加在前面步骤中创建的存储帐户。 测试连接以确保连接成功。
+1. 在“文件夹路径”中，选择包含 Python 脚本和关联输入的“Azure Blob 存储”容器的名称。  这会在执行 Python 脚本之前，将所选文件从该容器下载到池节点实例。
 
     ![](./media/run-python-batch-azure-data-factory/create-custom-task-py-script-command.png)
-1. 在画布上面的管道工具栏中单击“验证”，以便验证管道设置。  确认已成功验证管道。 若要关闭验证输出，请选择 &gt;&gt;（右箭头）按钮。
-1. 单击“调试”以测试管道，确保管道正常运行。 
-1. 单击“发布”以发布管道。 
-1. 单击“触发”，以便在批处理过程中运行 Python 脚本。 
+1. 在画布上面的管道工具栏中单击“验证”，以便验证管道设置。 确认已成功验证管道。 若要关闭验证输出，请选择 &gt;&gt;（右箭头）按钮。
+1. 单击“调试”以测试管道，确保管道正常运行。
+1. 单击“发布”以发布管道。
+1. 单击“触发”，以便在批处理过程中运行 Python 脚本。
 
     ![](./media/run-python-batch-azure-data-factory/create-custom-task-py-success-run.png)
 
@@ -141,7 +142,7 @@ python main.py
 
 如果执行脚本时生成了警告或错误，可以查看 `stdout.txt` 或 `stderr.txt` 获取有关记录的输出的详细信息。
 
-1. 在 Batch Explorer 的左侧选择“作业”。 
+1. 在 Batch Explorer 的左侧选择“作业”。
 1. 选择数据工厂创建的作业。 假设池命名为 `custom-activity-pool`，请选择 `adfv2-custom-activity-pool`。
 1. 单击具有失败退出代码的任务。
 1. 查看 `stdout.txt` 和 `stderr.txt` 以调查和诊断问题。

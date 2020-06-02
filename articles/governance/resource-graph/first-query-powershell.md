@@ -1,14 +1,14 @@
 ---
 title: 快速入门：第一个 PowerShell 查询
 description: 本快速入门介绍为 Azure PowerShell 启用 Resource Graph 模块并运行第一个查询的步骤。
-ms.date: 11/21/2019
+ms.date: 05/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: dd96324671f46f98d5b6c8bae1839a5b02d38b23
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e98ca5974ba46d4d908cfe6dd8c04d3f6ba33a2a
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79215625"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872008"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 运行首个 Resource Graph 查询
 
@@ -38,7 +38,7 @@ Azure Resource Graph 模块需要以下软件：
 
 适用于 PowerShell 的 Resource Graph 模块是 **Az.ResourceGraph**。
 
-1. 从管理 PowerShell 提示符运行以下命令  ：
+1. 从管理 PowerShell 提示符运行以下命令：
 
    ```azurepowershell-interactive
    # Install the Resource Graph module from PowerShell Gallery
@@ -54,7 +54,7 @@ Azure Resource Graph 模块需要以下软件：
 
 ## <a name="run-your-first-resource-graph-query"></a>运行首个 Resource Graph 查询
 
-将 Azure PowerShell 模块添加到所选环境中后，即可尝试一个简单的 Resource Graph 查询。 该查询将返回前五个 Azure 资源，以及每个资源的名称和资源类型   。
+将 Azure PowerShell 模块添加到所选环境中后，即可尝试一个简单的 Resource Graph 查询。 该查询返回前五个 Azure 资源，以及每个资源的名称和资源类型 。
 
 1. 使用 `Search-AzGraph` cmdlet 运行首个 Azure Resource Graph 查询：
 
@@ -68,7 +68,7 @@ Azure Resource Graph 模块需要以下软件：
    > [!NOTE]
    > 由于此查询示例未提供排序修饰符（例如 `order by`），因此多次运行此查询可能会为每个请求生成一组不同的资源。
 
-1. 将查询更新为 `order by` Name 属性  ：
+1. 将查询更新为 `order by` Name 属性：
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with 'order by'
@@ -76,16 +76,16 @@ Azure Resource Graph 模块需要以下软件：
    ```
 
    > [!NOTE]
-   > 与第一个查询一样，多次运行此查询可能会为每个请求生成一组不同的资源。 查询命令的顺序非常重要。 在本例中，`order by` 位于 `limit` 之后。 这将首先限制查询结果，然后对其进行排序。
+   > 与第一个查询一样，多次运行此查询可能会为每个请求生成一组不同的资源。 查询命令的顺序非常重要。 在本例中，`order by` 位于 `limit` 之后。 命令按此顺序执行，首先会限制查询结果，然后对它们进行排序。
 
-1. 将查询更新为先 `order by` Name 属性，然后再 `limit` 为前五个结果  ：
+1. 将查询更新为先 `order by` Name 属性，然后再 `limit` 为前五个结果：
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`
    Search-AzGraph -Query 'Resources | project name, type | order by name asc | limit 5'
    ```
 
-假设环境中没有任何变化，则多次运行最后一个查询时，返回的结果将是一致的且符合预期的 -- 按 Name 属性排序，但仍限制为前五个结果  。
+假设环境中没有任何变化，则多次运行最后一个查询时，返回的结果将是一致的且按 Name 属性排序，但仍限制为前五个结果。
 
 > [!NOTE]
 > 如果查询未从你已有权访问的订阅返回结果，请注意 `Search-AzGraph` cmdlet 默认为默认上下文中的订阅。 若要查看作为默认上下文一部分的订阅 ID 列表，请运行此 `(Get-AzContext).Account.ExtendedProperties.Subscriptions`。如果你希望搜索你有权访问的所有订阅，可以通过运行 `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}` 为 `Search-AzGraph` cmdlet 设置 PSDefaultParameterValues

@@ -124,6 +124,10 @@
           href: storage-files-enable-soft-delete.md
         - name: 管理 Azure 独立云中的存储
           href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: 更改复制数据的方式
+          href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: 启动帐户故障转移
+          href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: 管理数据冗余
           items:
             - name: 更改复制数据的方式
@@ -136,6 +140,24 @@
               href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
             - name: 启动帐户故障转移
               href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Authenticate
+      items:
+        - name: 启用本地身份验证和授权
+          items:
+            - name: AD DS 概述
+              href: storage-files-identity-auth-active-directory-enable.md
+            - name: 启用 AD DS 身份验证
+              href: storage-files-identity-ad-ds-enable.md
+            - name: 分配权限
+              href: storage-files-identity-ad-ds-assign-permissions.md
+            - name: 配置权限
+              href: storage-files-identity-ad-ds-configure-permissions.md
+            - name: 装载文件共享
+              href: storage-files-identity-ad-ds-mount-file-share.md
+            - name: 更新密码
+              href: storage-files-identity-ad-ds-update-password.md
+        - name: 启用 Azure AD DS 身份验证和授权
+          href: storage-files-identity-auth-active-directory-domain-service-enable.md
     - name: 监视
       items:
         - name: 监视 Azure 文件同步
@@ -188,10 +210,6 @@
           href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: 需要安全传输
           href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: 启用 AD 身份验证和授权
-          href: storage-files-identity-auth-active-directory-enable.md
-        - name: 启用 Azure AD DS 身份验证和授权
-          href: storage-files-identity-auth-active-directory-domain-service-enable.md
         - name: 为 Azure 存储客户端启用安全 TLS
           href: ../common/storage-security-tls.md
     - name: 传输

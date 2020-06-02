@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: 491481156f026e9887244064297d0790a965158e
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: f318a500bd4ce256690ff59f68d99af5d7a25d9e
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735107"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869793"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>快速入门：使用必应拼写检查 REST API 和 Java 进行拼写检查
 
-根据此快速入门中的说明对必应拼写检查 REST API 进行第一次调用。 此简单的 Java 应用程序将向 API 发送请求并返回一系列建议的更正。 虽然此应用程序是使用 Java 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheck.java) 上提供了此应用程序的源代码。
+根据此快速入门中的说明对必应拼写检查 REST API 进行第一次调用。 此简单的 Java 应用程序将向 API 发送请求并返回一系列建议的更正。 
+
+虽然此应用程序是使用 Java 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheck.java) 上提供了此应用程序的源代码。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,7 +33,7 @@ ms.locfileid: "82735107"
 
 ## <a name="create-and-initialize-an-application"></a>创建并初始化应用程序
 
-1. 在常用的 IDE 或编辑器中使用所选类名新建一个 Java 项目，然后导入以下包。
+1. 在常用的 IDE 或编辑器中使用所选类名新建一个 Java 项目，然后导入以下包：
 
     ```java
     import java.io.*;
@@ -40,7 +42,7 @@ ms.locfileid: "82735107"
     import javax.net.ssl.HttpsURLConnection;
     ```
 
-2. 为 API 终结点主机、路径和订阅密钥创建变量。 然后，创建市场变量、要进行拼写检查的文本和拼写检查模式的字符串。 可以使用下面的全局终结点，也可以使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
+2. 为 API 终结点主机、路径和订阅密钥创建变量。 然后，创建市场变量、要进行拼写检查的文本和拼写检查模式的字符串。 你可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
     ```java
     static String host = "https://api.cognitive.microsoft.com";
@@ -55,7 +57,11 @@ ms.locfileid: "82735107"
 
 ## <a name="create-and-send-an-api-request"></a>创建和发送 API 请求
 
-1. 创建名为 `check()` 的函数，用于创建和发送 API 请求。 在其中，执行以下步骤。 创建请求参数的字符串。 向市场字符串追加 `?mkt=` 参数，向拼写检查模式追加 `&mode=` 参数。  
+1. 创建名为 `check()` 的函数，用于创建和发送 API 请求。 在此函数中，添加在后续步骤中指定的代码。 创建请求参数的字符串：
+
+   a. 用 `=` 运算符将市场代码分配到 `mkt` 参数。 
+
+   b. 使用 `&` 运算符添加 `mode` 参数，然后分配拼写检查模式。 
 
    ```java
    public static void check () throws Exception {
@@ -71,7 +77,7 @@ ms.locfileid: "82735107"
     HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
     ```
 
-3. 与 URL 建立连接。 将请求方法设置为 `POST`。 添加请求参数。 请务必将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头中。
+3. 与 URL 建立连接。 将请求方法设置为 `POST` 并添加请求参数。 请务必将订阅密钥添加到 `Ocp-Apim-Subscription-Key` 标头中。
 
     ```java
     connection.setRequestMethod("POST");
@@ -91,7 +97,7 @@ ms.locfileid: "82735107"
 
 ## <a name="format-and-read-the-api-response"></a>设置格式并读取 API 响应
 
-1. 将以下方法添加到类。 它会设置 JSON 的格式，以提高输出的可读性。
+1. 将 `prettify()` 方法添加到类，该方法将 JSON 格式设置为可读性更强的输出。
 
     ``` java
     // This function prettifies the json response.
@@ -117,7 +123,7 @@ ms.locfileid: "82735107"
 
 ## <a name="call-the-api"></a>调用 API
 
-在应用程序的主函数中，调用上面创建的 check() 方法。
+在应用程序的主函数中，调用之前创建的 `check()` 方法。
 ```java
         public static void main(String[] args) {
             try {
@@ -131,19 +137,19 @@ ms.locfileid: "82735107"
 
 ## <a name="run-the-application"></a>运行应用程序
 
-生成并运行项目。
+生成并运行项目。 如果使用命令行，则使用以下命令生成并运行应用程序：
 
-如果使用命令行，则使用以下命令生成并运行应用程序。
+1. 构建应用程序：
 
-**生成：**
-```bash
-javac -classpath .;gson-2.2.2.jar\* <CLASS_NAME>.java
-```
+   ```bash
+   javac -classpath .;gson-2.2.2.jar\* <CLASS_NAME>.java
+   ```
 
-**运行：**
-```bash
-java -cp .;gson-2.2.2.jar\* <CLASS_NAME>
-```
+2. 运行应用程序：
+
+   ```bash
+   java -cp .;gson-2.2.2.jar\* <CLASS_NAME>
+   ```
 
 ## <a name="example-json-response"></a>示例 JSON 响应
 

@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: b5fec8bbc0db78454b080a411702014bd96f7db9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4df49b4e68769a907423c4edef9f8820df4d20b7
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76887571"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006430"
 ---
 ## <a name="locate-a-cloud-spatial-anchor"></a>查找云空间定位点
 
@@ -12,6 +12,9 @@ ms.locfileid: "76887571"
 - 按标识符查找定位点。
 - 查找已连接到以前所找到的定位点的定位点。 可在[此处](/azure/spatial-anchors/concepts/anchor-relationships-way-finding/)了解定位点关系。
 - 使用[粗略重新定位](/azure/spatial-anchors/concepts/coarse-reloc/)查找定位点。
+
+> [!NOTE]
+> 每次当你查找定位点时，Azure 空间定位点都会尝试使用收集的环境数据来扩充定位点上的视觉对象信息。 如果在查找定位点时遇到问题，则可创建一个定位点，然后在不同角度和光照条件下多次定位，这样做可能有用。
 
 如果按标识符查找云空间定位点，需要将云空间定位点标识符存储在应用程序的后端服务中，并使可供能够对其进行适当身份验证的所有设备访问。 有关示例，请参阅[教程：跨设备共享空间定位点](/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices/)。
 

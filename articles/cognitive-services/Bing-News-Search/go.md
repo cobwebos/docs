@@ -8,29 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: aaeb905c9cdc1e7b74e21d3c191f6a24a94fcd7d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: e18605b75e4fcfcd8f2793e06801c309f9f23965
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80053808"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869263"
 ---
 # <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>快速入门：使用必应新闻搜索 REST API 和 Go 获取新闻结果
 
 本快速入门使用 Go 语言调用必应新闻搜索 API。 结果包含查询字符串标识的新闻源的名称和 URL。
 
 ## <a name="prerequisites"></a>先决条件
-* 安装 [Go 二进制文件](https://golang.org/dl/)
-* 安装 go-spew 库，以便代码美化器显示结果
-    * 安装此库：`$ go get -u https://github.com/davecgh/go-spew`
+* 安装 [Go 二进制文件](https://golang.org/dl/)。
+* 安装 go-spew 库，以使用代码深度美化器显示结果。 使用此命令安装库：`$ go get -u https://github.com/davecgh/go-spew`。
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
 ## <a name="create-a-project-and-import-libraries"></a>创建一个项目并导入库
 
-在 IDE 或编辑器中新建一个 Go 项目。 然后，导入用于请求的 `net/http`，导入 `ioutil` 来读取响应，导入 `encoding/json` 来处理结果的 JSON 文本。 若要分析 JSON，go-spew 库是必需的。 
+在 IDE 或编辑器中新建一个 Go 项目。 然后，导入用于请求的 `net/http`，导入 `ioutil` 来读取响应，导入 `encoding/json` 来处理结果的 JSON 文本，导入 `go-spew` 库来分析 JSON 结果。 
 
 ```go
 package main
@@ -47,7 +46,7 @@ import (
 
 ## <a name="create-a-struct-to-format-the-news-search-results"></a>创建一个结构来格式化新闻搜索结果
 
-`NewsAnswer` 结构对在响应中提供的数据进行格式化。 响应 JSON 分为多个层次，相当复杂。  以下实现涵盖了基础知识。
+`NewsAnswer` 结构设置响应 JSON 中提供的数据的格式，该数据是多层且复杂的。 以下实现涵盖了基础知识：
 
 ```go
 // This struct formats the answer provided by the Bing News Search API.
@@ -87,7 +86,7 @@ type NewsAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>声明主函数并定义变量  
 
-以下代码声明 main 函数并指定必需的变量。 确认终结点正确并将 `token` 值替换为来自你的 Azure 帐户的有效订阅密钥。 可以使用下面的全局终结点，也可以使用资源的 Azure 门户中显示的[自定义子域](../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
+以下代码声明主函数并指定必需的变量。 确认终结点正确并将 `token` 值替换为来自你的 Azure 帐户的有效订阅密钥。 你可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
 ```go
 func main() {
@@ -108,7 +107,7 @@ func main() {
 
 ## <a name="query-and-header"></a>查询和标头
 
-添加查询字符串和访问密钥标头
+添加查询字符串和访问密钥标头。
 
 ```go
 // Add the query to the request.  
@@ -121,9 +120,9 @@ req.Header.Add("Ocp-Apim-Subscription-Key", token)
 
 ```
 
-## <a name="get-request"></a>Get 请求
+## <a name="get-request"></a>GET 请求
 
-创建客户端并发送 Get 请求。 
+创建客户端并发送 GET 请求。 
 
 ```go
 // Instantiate a client.  
@@ -160,7 +159,7 @@ if err != nil {
 
 ## <a name="handle-the-response"></a>处理响应
 
-`Unmarshall` 函数从新闻搜索 API 返回的 JSON 文本提取信息。  然后，可以使用 `go-spew` 代码美化器显示结果中的节点。
+`Unmarshall` 函数从必应新闻搜索 API 返回的 JSON 文本提取信息。 然后，使用 `go-spew` 代码美化器显示结果中的节点。
 
 ```go
 // Create a new answer object 
@@ -181,7 +180,7 @@ spew.Dump(result.Name, result.URL)
 
 ## <a name="results"></a>结果
 
-结果包含每个结果的名称和 URL。
+以下输出包含每个结果的名称和 URL：
 
 ```
 (string) (len=91) "Cognitive Services Market: Global Industry Analysis and Opportunity Assessment, 2019 - 2025"

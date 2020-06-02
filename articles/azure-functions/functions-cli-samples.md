@@ -1,17 +1,16 @@
 ---
 title: Azure CLI 示例 - Azure Functions
 description: Azure CLI 示例 - Azure Functions
-author: syntaxc4
 ms.assetid: 577d2f13-de4d-40d2-9dfc-86ecc79f3ab0
 ms.topic: sample
 ms.date: 01/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 365275d291244d3c08f856d2d919c7ee7d79161a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 61ac1b95055b8ec9e65c3009d76f79581721f594
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79223744"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779547"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI 示例
 
@@ -21,9 +20,9 @@ ms.locfileid: "79223744"
 
 | 创建应用 | 说明 |
 |---|---|
-| [创建可无服务器执行的 Function App](scripts/functions-cli-create-serverless.md) | 在消耗计划中创建 Function App。  |
-| [创建无服务器 Python 函数应用](scripts/functions-cli-create-serverless-python.md) | 在专用应用服务计划中创建 Function App。 |
-| [在可缩放的高级计划中创建函数应用](scripts/functions-cli-create-premium-plan.md) | 在专用应用服务计划中创建 Function App。 |
+| [创建可无服务器执行的 Function App](scripts/functions-cli-create-serverless.md) | 在消耗计划中创建函数应用。  |
+| [创建无服务器 Python 函数应用](scripts/functions-cli-create-serverless-python.md) | 在消耗计划中创建 Python 函数应用。 |
+| [在可缩放的高级计划中创建函数应用](scripts/functions-cli-create-premium-plan.md) | 在高级计划中创建函数应用。 |
 | [在专用（应用服务）计划中创建函数应用](scripts/functions-cli-create-app-service-plan.md) | 在专用应用服务计划中创建 Function App。 |
 
 | 集成 | 说明|

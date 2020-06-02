@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: milismsft
 ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: 4dffe169908d0dd3effa4e46140b5f6696805a3e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6dad625bbbcb8279e83ac42e1492c251d5b0299c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77168649"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747004"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos 模拟器 - 发行说明和下载信息
 
@@ -25,6 +25,15 @@ ms.locfileid: "77168649"
 |**入门**|[使用 Azure Cosmos 模拟器在本地开发](local-emulator.md)|
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="2110"></a>2.11.0
+
+- 此版本引入了对自动缩放预配吞吐量的支持。 这些新功能包括：以请求单位 (RU/s) 设置自定义的最大预配吞吐量级别，在现有数据库和容器上启用自动缩放，以及通过 Azure Cosmos DB SDK 提供编程支持。
+- 解决了查询大量文档（超过 1GB）时模拟器会失败并出现内部错误状态代码 500 的问题。
+
+### <a name="292"></a>2.9.2
+
+- 此版本修复了实现对 MongoDb 终结点版本 3.2 的支持时的一个 bug。 它还添加了对使用 WPR 而不是 LOGMAN 生成 ETL 跟踪以进行故障排除的支持。
 
 ### <a name="291"></a>2.9.1
 

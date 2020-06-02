@@ -3,16 +3,16 @@ title: Azure Notebooks 预览版概述
 description: 使用免费的 Azure Notebooks 预览版服务在云中运行 Jupyter 笔记本，不需要进行设置或配置。
 ms.topic: overview
 ms.date: 04/05/2019
-ms.openlocfilehash: bd2355bdefcedca5026a25915dc1da55fdc33a36
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e40b7056aef7e59759c9e04ba9d98fbfb7d28ca3
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75646324"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647558"
 ---
 # <a name="overview-of-azure-notebooks-preview"></a>Azure Notebooks 预览版概述
 
-Azure Notebooks 是免费的托管服务，用于在云中开发和运行 Jupyter 笔记本而无需进行安装。 [Jupyter](https://jupyter.org/)（以前称为 IPython）是一个开放源代码项目，可让你将 Markdown 文本、可执行代码、持久性数据、图形和可视化效果轻松合并到单个可共享画布，即笔记本  （jupyter.org 提供的图片）：
+Azure Notebooks 是免费的托管服务，用于在云中开发和运行 Jupyter 笔记本而无需进行安装。 [Jupyter](https://jupyter.org/)（以前称为 IPython）是一个开放源代码项目，可让你将 Markdown 文本、可执行代码、持久性数据、图形和可视化效果轻松合并到单个可共享画布，称为笔记本（jupyter.org 提供的图片）：
 
 [![Jupyter 笔记本的示例](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
@@ -65,7 +65,7 @@ Notebook 服务器保证最多存在 8 小时。 在大多数情况下，你的�
 
 Azure Notebooks 还包括除基础发行版之外的额外包。 例如，Python 内核包括 numpy、pandas、scikit-learn、matplotlib 和 bokeh 库。
 
-也可自定义一个项目，为该项目中的所有笔记本创建一个环境。 有关更多信息，请参阅[快速入门：使用自定义环境创建项目](quickstart-create-jupyter-notebook-project-environment.md)。
+也可自定义一个项目，为该项目中的所有笔记本创建一个环境。 有关详细信息，请参阅[快速入门：在自定义环境下创建项目](quickstart-create-jupyter-notebook-project-environment.md)。
 
 除了基础发行版，Azure Notebooks 还预安装了许多额外的可供数据科学家使用的包。 也可使用每种语言的典型过程来安装你自己的包。
 

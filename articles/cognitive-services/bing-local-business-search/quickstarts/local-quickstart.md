@@ -8,27 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/12/2020
 ms.author: aahi
-ms.openlocfilehash: 62e975121c05bd4fde2438480f7042b0957a9c82
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: da7d210140bf348e734f16cef2aaa01caf7e4f8b
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475597"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873119"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>快速入门：使用 C# 将查询发送到必应当地企业搜索 API
 
-使用此快速入门开始向必应当地企业搜索 API 发送请求，该 API 是一项 Azure 认知服务。 虽然这个简单的应用程序是用 C# 编写的，但 API 是一种 RESTful Web 服务，可以与任何能够发出 HTTP 请求并解析 JSON 的编程语言兼容。
+使用此快速入门了解如何向必应当地企业搜索 API 发送请求，该 API 是一项 Azure 认知服务。 虽然这个简单的应用程序是用 C# 编写的，但 API 是一种 RESTful Web 服务，可以与任何能够发出 HTTP 请求并解析 JSON 的编程语言兼容。
 
-此示例应用程序从 API 获取搜索查询 `hotel in Bellevue` 的本地响应数据。
+此示例应用程序从 API 获取搜索查询的本地响应数据。
 
 ## <a name="prerequisites"></a>先决条件
 
 * 任何版本的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
 * 如果使用的是 Linux/MacOS，则可使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
-
-必须创建一个具有必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+* 具有必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 保存在激活免费试用版时提供的 API 密钥。 有关详细信息，请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
 ## <a name="create-the-request"></a>创建请求 
 
@@ -54,10 +53,10 @@ ms.locfileid: "80475597"
 
 ## <a name="run-the-complete-application"></a>运行完整应用程序
 
-必应当地企业搜索 API 从必应搜索引擎返回本地化的搜索结果。
-1. 在 Visual Studio 中（用社区版就可以）创建一个新的控制台解决方案。
+以下代码使用必应当地企业搜索 API 从必应搜索引擎返回本地化的搜索结果。 可按照以下步骤使用此代码：
+1. 在 Visual Studio 中（用社区版就足够）创建一个新的控制台解决方案。
 2. 将 Program.cs 替换为下面提供的代码。
-3. 将 accessKey 值替换为对你的订阅有效的访问密钥。
+3. 使用对订阅有效的访问密钥替换 `accessKey` 值。
 4. 运行该程序。
 
 ```csharp
@@ -210,5 +209,5 @@ namespace localSearch
 
 ## <a name="next-steps"></a>后续步骤
 - [当地企业搜索 Java 快速入门](local-search-java-quickstart.md)
-- [当地企业搜索 Node 快速入门](local-search-node-quickstart.md)
+- [当地企业搜索 Node.js 快速入门](local-search-node-quickstart.md)
 - [当地企业搜索 Python 快速入门](local-search-python-quickstart.md)

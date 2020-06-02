@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 5f552dfc320459d23e538e65e5f34c085f5b5ad9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 909c787c8ddc9443dca46dd80c0757cf099449c0
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80133666"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83778148"
 ---
 <a name="HOLTop"></a>
 
@@ -162,13 +162,13 @@ pip install --upgrade azure-cognitiveservices-vision-computervision
 
 ### <a name="call-the-read-api"></a>调用读取 API
 
-首先，使用以下代码对给定图像调用 **batch_read_file** 方法。 这会返回一个操作 ID 并启动异步进程来读取图像的内容。
+首先，使用以下代码对给定图像调用 read 方法。 这会返回一个操作 ID 并启动异步进程来读取图像的内容。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_read_call)]
 
 ### <a name="get-read-results"></a>获取读取结果
 
-接下来，获取从 **batch_read_file** 调用返回的操作 ID，并使用它查询服务以获取操作结果。 下面的代码每隔一秒钟检查一次操作，直到返回结果。 然后，它将提取的文本数据输出到控制台。
+接下来，获取从 read 调用返回的操作 ID，并使用它查询服务以获取操作结果。 下面的代码每隔一秒钟检查一次操作，直到返回结果。 然后，它将提取的文本数据输出到控制台。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_read_response)]
 

@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: quickstart
 ms.date: 04/22/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: de24895334ec4c864e6daae84a6aab47a47d7b9b
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 88dd1dc99f32d0539718c0f71206176cbfc16eec
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82103627"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830304"
 ---
 # <a name="quickstart-create-a-budget-with-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建预算
 
@@ -39,32 +39,34 @@ Azure 资源管理器模板仅支持 Azure 企业协议 (EA) 订阅。 该模板
 
 若要详细了解如何分配对成本管理数据的权限，请参阅[分配对成本管理数据的访问权限](assign-access-acm-data.md)。
 
-## <a name="review-the-template"></a>查看模板
+## <a name="create-a-budget"></a>创建预算
+
+### <a name="review-the-template"></a>查看模板
 
 本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/create-budget)。
 
-:::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json" range="1-146" highlight="110-139":::
 
 模板中定义了一个 Azure 资源：
 
 * [Microsoft.Consumption/budgets](/azure/templates/microsoft.consumption/budgets)：创建 Azure 预算。
 
-## <a name="deploy-the-template"></a>部署模板
+### <a name="deploy-the-template"></a>部署模板
 
 1. 选择下图登录到 Azure 并打开一个模板。 该模板将创建预算。
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fcreate-budget%2Fazuredeploy.json"><img src="./media/quick-create-budget-template/deploy-to-azure.png" alt="deploy to azure"/></a>
+   [![部署到 Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fcreate-budget%2Fazuredeploy.json)
 
 2. 选择或输入以下值。
 
    [![资源管理器模板，创建预算，部署门户](./media/quick-create-budget-template/create-budget-using-template-portal.png)](./media/quick-create-budget-template/create-budget-using-template-portal.png#lightbox)
 
     * **订阅**：选择一个 Azure 订阅。
-    * **资源组**：选择“新建”并输入资源组的唯一名称，然后单击“确定”；或者选择现有的资源组   。
-    * **位置**：选择一个位置。 例如“美国中部”。 
+    * **资源组**：选择“新建”并输入资源组的唯一名称，然后单击“确定”；或者选择现有的资源组 。
+    * **位置**：选择一个位置。 例如“美国中部”。
     * **预算名称**：为预算输入一个名称。 此名称在资源组中应是唯一的。 只允许输入字母数字、下划线和连字符。
     * **数量**：输入要通过预算跟踪的总成本或使用量。
-    * **预算类别**：选择预算的类别，以及预算是要跟踪“成本”还是“用量”   。
+    * **预算类别**：选择预算的类别，以及预算是要跟踪“成本”还是“用量” 。
     * **时间粒度**：输入预算覆盖的时间。 允许的值为“每月”、“每季度”或“每年”。 预算将在该时间粒度结束时重置。
     * **开始日期**：以 YYYY-MM-DD 格式输入预算月份的第一天作为开始日期。 将来的开始日期不能晚于自当前日期算起的三个月。 可以使用“时间粒度”时段指定过去的开始日期。
     * **结束日期**：以 YYYY-MM-DD 格式输入预算的结束日期。 如果未提供，则默认值设置为从开始日期算起的 10 年。
@@ -73,11 +75,11 @@ Azure 资源管理器模板仅支持 Azure 企业协议 (EA) 订阅。 该模板
     * **联系人电子邮件**：输入超出阈值时要将预算通知发送到的电子邮件地址列表。 预期格式为 `["user1@domain.com","user2@domain.com"]`。
     * **联系人角色**：输入超出阈值时要将预算通知发送到的联系人角色列表。 默认值为“所有者”、“参与者”和“读取者”。 预期格式为 `["Owner","Contributor","Reader"]`。
     * **联系人组**：输入超出阈值时要将预算通知发送到的操作组列表。 此字段接受字符串数组。 预期格式为 `["Action Group Name1","Action Group Name2"]`。 如果你不想使用操作组，请输入 `[]`。
-    * **资源筛选器**：输入针对资源的筛选器列表。 预期格式为 `["Resource Filter Name1","Resource Filter Name2"]`。 如果你不想应用筛选器，请输入 `[]`。 如果输入了资源筛选器，则还必须输入“计量器筛选器”值  。
-    * **计量器筛选器**：输入针对计量器的筛选器列表，对于“用量”预算类别的预算，必须填写此字段  。 预期格式为 `["Meter Filter Name1","Meter Filter Name2"]`。 如果未输入资源筛选器  ，请输入 `[]`。
+    * **资源筛选器**：输入针对资源的筛选器列表。 预期格式为 `["Resource Filter Name1","Resource Filter Name2"]`。 如果你不想应用筛选器，请输入 `[]`。 如果输入了资源筛选器，则还必须输入“计量器筛选器”值。
+    * **计量器筛选器**：输入针对计量器的筛选器列表，对于“用量”预算类别的预算，必须填写此字段。 预期格式为 `["Meter Filter Name1","Meter Filter Name2"]`。 如果未输入资源筛选器，请输入 `[]`。
     * **我同意上述条款和条件**：选中。
 
-3. 选择“购买”。  成功部署预算后，将会收到通知：
+3. 选择“购买”。 成功部署预算后，将会收到通知：
 
    ![资源管理器模板，预算，部署门户通知](./media/quick-create-budget-template/resource-manager-template-portal-deployment-notification.png)
 
@@ -85,7 +87,7 @@ Azure 资源管理器模板仅支持 Azure 企业协议 (EA) 订阅。 该模板
 
 ## <a name="validate-the-deployment"></a>验证部署
 
-可以在 Azure 门户中导航到“成本管理 + 计费”> 选择范围 >“预算”来验证是否已创建该预算   。 或者，使用以下 Azure CLI 或 Azure PowerShell 脚本来查看预算。
+可以在 Azure 门户中导航到“成本管理 + 计费”> 选择范围 >“预算”来验证是否已创建该预算 。 或者，使用以下 Azure CLI 或 Azure PowerShell 脚本来查看预算。
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -97,6 +99,37 @@ az consumption budget list
 
 ```azurepowershell-interactive
 Get-AzConsumptionBudget
+```
+
+---
+
+## <a name="clean-up-resources"></a>清理资源
+
+如果不再需要预算，请使用以下某种方法将其删除：
+
+### <a name="azure-portal"></a>Azure 门户
+
+导航到“成本管理 + 计费”> 选择“计费范围”>“预算”> 选择“预算”> 然后选择“删除预算”  。
+
+### <a name="command-line"></a>命令行
+
+可以使用 Azure CLI 或 Azure PowerShell 删除预算。
+
+# <a name="cli"></a>[CLI](#tab/CLI)
+
+```azurecli-interactive
+echo "Enter the budget name:" &&
+read budgetName &&
+az consumption budget delete --budget-name $budgetName &&
+echo "Press [ENTER] to continue ..."
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell-interactive
+$budgetName = Read-Host -Prompt "Enter the budget name"
+Remove-AzConsumptionBudget -Name $budgetName
+Write-Host "Press [ENTER] to continue..."
 ```
 
 ---

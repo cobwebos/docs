@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcd00972c2da0d3d5dafe76a8619e0f0ccaedc19
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b5d631143b839e052316490d3b3b89ca10469cb1
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222984"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83778836"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>教程：为托管域配置混合 Azure Active Directory 加入
 
@@ -30,7 +30,7 @@ ms.locfileid: "79222984"
 
 本文重点介绍混合 Azure AD 加入。
 
-将设备引入 Azure AD 可通过云和本地资源中的单一登录 (SSO) 最大程度地提高用户的工作效率。 同时，可以使用[条件访问](../active-directory-conditional-access-azure-portal.md)保护对云和本地资源的访问。
+将设备引入 Azure AD 可通过云和本地资源中的单一登录 (SSO) 最大程度地提高用户的工作效率。 同时，可以使用[条件访问](../conditional-access/howto-conditional-access-policy-compliant-device.md)保护对云和本地资源的访问。
 
 可以使用支持[无缝单一登录](../hybrid/how-to-connect-sso.md)的[密码哈希同步 (PHS)](../hybrid/whatis-phs.md) 或[直通身份验证 (PTA)](../hybrid/how-to-connect-pta.md) 来部署托管环境。 这些方案不需要配置联合服务器进行身份验证。
 
@@ -40,7 +40,7 @@ ms.locfileid: "79222984"
 > * 配置混合 Azure AD 联接
 > * 启用 Windows 下层设备
 > * 验证联接的设备
-> * 故障排除
+> * 疑难解答
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -85,43 +85,43 @@ ms.locfileid: "79222984"
 
 若要使用 Azure AD Connect 配置混合 Azure AD 加入：
 
-1. 启动 Azure AD Connect，然后选择“配置”  。
+1. 启动 Azure AD Connect，然后选择“配置”。
 
    ![欢迎使用](./media/hybrid-azuread-join-managed-domains/welcome-azure-ad-connect.png)
 
-1. 在“其他任务”中，依次选择“配置设备选项”、“下一步”。   
+1. 在“其他任务”中，依次选择“配置设备选项”、“下一步”。  
 
    ![其他任务](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-additional-tasks.png)
 
-1. 在“概述”中选择“下一步”。  
+1. 在“概述”中选择“下一步”。 
 
    ![概述](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-overview.png)
 
-1. 在“连接到 Azure AD”中，输入 Azure AD 租户的全局管理员凭据。   
+1. 在“连接到 Azure AD”中，输入 Azure AD 租户的全局管理员凭据。  
 
    ![连接到 Azure AD](./media/hybrid-azuread-join-managed-domains/connect-to-azure-ad-username-password.png)
 
-1. 在“设备选项”中，依次选择“配置混合 Azure AD 加入”、“下一步”。   
+1. 在“设备选项”中，依次选择“配置混合 Azure AD 加入”、“下一步”。  
 
    ![设备选项](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-device-options.png)
 
-1. 在“SCP 配置”中，对于你希望 Azure AD Connect 在其中配置 SCP 的每个林，请完成以下步骤，然后选择“下一步”。  
+1. 在“SCP 配置”中，对于你希望 Azure AD Connect 在其中配置 SCP 的每个林，请完成以下步骤，然后选择“下一步”。 
 
-   1. 选择“林”。 
-   1. 选择“身份验证服务”。 
-   1. 单击“添加”，输入企业管理员凭据  。
+   1. 选择“林”。
+   1. 选择“身份验证服务”。
+   1. 单击“添加”，输入企业管理员凭据。
 
    ![SCP](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-scp-configuration.png)
 
-1. 在“设备操作系统”中选择 Active Directory 环境中设备使用的操作系统，然后选择“下一步”。  
+1. 在“设备操作系统”中选择 Active Directory 环境中设备使用的操作系统，然后选择“下一步”。 
 
    ![设备操作系统](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-device-operating-systems.png)
 
-1. 在“已准备好配置”中选择“配置”。  
+1. 在“已准备好配置”中选择“配置”。 
 
    ![已准备好配置](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-ready-to-configure.png)
 
-1. 在“配置完成”中选择“退出”。  
+1. 在“配置完成”中选择“退出”。 
 
    ![配置完成](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-configuration-complete.png)
 
@@ -143,13 +143,13 @@ ms.locfileid: "79222984"
 - `https://device.login.microsoftonline.com`
 - `https://autologon.microsoftazuread-sso.com`
 
-此外，必须在用户的本地 Intranet 区域中启用“允许通过脚本更新状态栏”。 
+此外，必须在用户的本地 Intranet 区域中启用“允许通过脚本更新状态栏”。
 
 ### <a name="configure-seamless-sso"></a>配置无缝 SSO
 
 若要在使用[密码哈希同步](../hybrid/whatis-phs.md)或[直通身份验证](../hybrid/how-to-connect-pta.md)作为 Azure AD 云身份验证方法的托管域中完成 Windows 下层设备的混合 Azure AD 加入，还必须[配置无缝 SSO](../hybrid/how-to-connect-sso-quick-start.md#step-2-enable-the-feature)。
 
-### <a name="install-microsoft-workplace-join-for-windows-down-level-computers"></a>在 Windows 下层计算机上安装 Microsoft Workplace Join
+### <a name="install-microsoft-workplace-join-for-windows-down-level-computers"></a>在 Windows 下层计算机上安装 Microsoft 工作区加入
 
 若要注册 Windows 下层设备，组织必须安装[适用于非 Windows 10 计算机的 Microsoft Workplace Join](https://www.microsoft.com/download/details.aspx?id=53554)。 适用于 Windows 10 计算机的 Microsoft Workplace Join 在 Microsoft 下载中心提供。
 
@@ -159,25 +159,69 @@ ms.locfileid: "79222984"
 
 ## <a name="verify-the-registration"></a>验证注册
 
+可通过以下三种方法查找和验证设备状态：
+
+### <a name="locally-on-the-device"></a>在设备本地
+
+1. 打开 Windows PowerShell。
+2. 输入 `dsregcmd /status`。
+3. 确保“AzureAdJoined”和“DomainJoined”均设置为“是”。
+4. 可以使用 DeviceId，并使用 Azure 门户或 PowerShell 比较服务的状态。
+
+### <a name="using-the-azure-portal"></a>使用 Azure 门户
+
+1. 使用[直接链接](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)进入设备页面。
+2. 有关如何查找设备的信息，请参阅[如何使用 Azure 门户管理设备标识](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal#locate-devices)。
+3. 如果“已注册”列显示“挂起”，则表明混合 Azure AD 联接尚未完成。
+4. 如果“已注册”列包含日期/时间，则表明混合 Azure AD 联接已完成。
+
+### <a name="using-powershell"></a>使用 PowerShell
+
 使用 **[Get-MsolDevice](/powershell/msonline/v1/get-msoldevice)** 验证 Azure 租户中的设备注册状态。 [Azure Active Directory PowerShell 模块](/powershell/azure/install-msonlinev1?view=azureadps-2.0)中包含此 cmdlet。
 
-使用 Get-MSolDevice cmdlet 检查服务详细信息时  ：
+使用 Get-MSolDevice cmdlet 检查服务详细信息时：
 
 - 必须存在其**设备 ID** 与 Windows 客户端上的 ID 相匹配的对象。
-- **DeviceTrustType** 的值为 **Domain Joined**。 此设置相当于 Azure AD 门户中“设备”页上的“已加入混合 Azure AD”状态   。
+- **DeviceTrustType** 的值为 **Domain Joined**。 此设置相当于 Azure AD 门户中“设备”页上的“已加入混合 Azure AD”状态 。
 - 对于条件访问中使用的设备，**Enabled** 的值为 **True**，**DeviceTrustLevel** 的值为 **Managed**。
 
-若要检查服务详细信息：
-
 1. 以管理员身份打开 Windows PowerShell。
-1. 输入 `Connect-MsolService` 以连接到 Azure 租户。  
-1. 输入 `get-msoldevice -deviceId <deviceId>`。
-1. 确认“已启用”设置为 True   。
+2. 输入 `Connect-MsolService` 以连接到 Azure 租户。
+
+#### <a name="count-all-hybrid-azure-ad-joined-devices-excluding-pending-state"></a>统计所有已加入混合 Azure AD 的设备（不包括“挂起”状态）
+
+```azurepowershell
+(Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
+```
+
+#### <a name="count-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>统计所有已加入混合 Azure AD 并处于“挂起”状态的设备
+
+```azurepowershell
+(Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
+```
+
+#### <a name="list-all-hybrid-azure-ad-joined-devices"></a>列出所有已加入混合 Azure AD 的设备
+
+```azurepowershell
+Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
+```
+
+#### <a name="list-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>列出所有已加入混合 Azure AD 并处于“挂起”状态的设备
+
+```azurepowershell
+Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
+```
+
+#### <a name="list-details-of-a-single-device"></a>列出单个设备的详细信息：
+
+1. 输入 `get-msoldevice -deviceId <deviceId>`（这是在设备本地获取的 DeviceId）。
+2. 确认“已启用”设置为 True 。
 
 ## <a name="troubleshoot-your-implementation"></a>对实现进行故障排除
 
 如果在对已加入域的 Windows 设备完成混合 Azure AD 加入时遇到问题，请参阅：
 
+- [使用 dsregcmd 命令排查设备问题](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
 - [排查已加入混合 Azure Active Directory 的设备的问题](troubleshoot-hybrid-join-windows-current.md)
 - [排查已加入混合 Azure Active Directory 的下层设备问题](troubleshoot-hybrid-join-windows-legacy.md)
 

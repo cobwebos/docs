@@ -6,37 +6,33 @@ author: MikeRys
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7c1951c772dcd2f49f4f7c09021f69193af0a87e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 3e28a76a559603755d3d72e8d5e27cde72aa9533
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420831"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701061"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics 共享元数据表
 
 [!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
-Azure Synapse Analytics 允许不同的工作区计算引擎在其 Apache Spark 池（预览版）、SQL 按需版本（预览版）引擎与 SQL 池之间共享数据库和 Parquet 支持的表。
+Azure Synapse Analytics 允许不同的工作区计算引擎在其 Apache Spark 池（预览版）和 SQL 按需版本（预览版）引擎之间共享数据库和 Parquet 支持的表。
 
 Spark 作业创建数据库后，你可以通过 Spark，在该数据库中创建使用 Parquet 作为存储格式的表。 这些表将立即可供任何 Azure Synapse 工作区 Spark 池查询。 还可以在任何 Spark 作业中按权限使用这些表。
 
-Spark 创建的表、托管表和外部表还可以使用相同名称在 SQL 按需版本的相应已同步数据库中提供，以及在启用了元数据同步的 SQL 池内带有 `$` 前缀的相应架构中提供。 [在 SQL 中公开 Spark 表](#exposing-a-spark-table-in-sql)提供了有关表同步的更多详细信息。
+Spark 创建的表、托管表和外部表还可以使用相同名称在 SQL 按需版本的相应已同步数据库中以外部表形式提供。 [在 SQL 中公开 Spark 表](#exposing-a-spark-table-in-sql)提供了有关表同步的更多详细信息。
 
-由于表以异步方式同步到 SQL 按需版本和 SQL 池，因此这些表出现的时间会有延迟。
-
-将表映射到外部表、数据源和文件格式。
+由于表以异步方式同步到 SQL 按需版本，因此这些表出现的时间会有延迟。
 
 ## <a name="manage-a-spark-created-table"></a>管理 Spark 创建的表
 
 使用 Spark 管理 Spark 创建的数据库。 例如，通过 Spark 池作业删除数据库，通过 Spark 在数据库中创建表。
 
 如果通过 SQL 按需版本在此类数据库中创建对象，或者尝试删除数据库，则该操作将会成功，但原始 Spark 数据库不会更改。
-
-如果尝试删除 SQL 池中已同步的架构，或者尝试在 SQL 池中创建表，Azure 将返回错误。
 
 ## <a name="exposing-a-spark-table-in-sql"></a>在 SQL 中公开 Spark 表
 
@@ -193,27 +189,6 @@ id | name | birthdate
 ---+-------+-----------
 1 | Alice | 2010-01-01
 ```
-
-### <a name="querying-spark-tables-in-a-sql-pool"></a>查询 SQL 池中的 Spark 表
-
-现在，可以使用在前面示例中创建的表，在工作区中创建名为 `mysqlpool` 的 SQL 池，以用于实现元数据同步（或者使用[在 SQL 池中公开 Spark 数据库](database.md#exposing-a-spark-database-in-a-sql-pool)中已创建的池）。
-
-针对 `mysqlpool` SQL 池运行以下语句：
-
-```sql
-SELECT * FROM sys.tables;
-```
-
-请验证表 `myParquetTable` 和 `myExternalParquetTable` 是否显示在架构 `$mytestdb` 中。
-
-现在，可按如下所示从 SQL 按需版本读取数据：
-
-```sql
-SELECT * FROM [$mytestdb].myParquetTable WHERE name = 'Alice';
-SELECT * FROM [$mytestdb].myExternalParquetTable WHERE name = 'Alice';
-```
-
-获得的结果应与前面的 SQL 按需版本示例相同。
 
 ## <a name="next-steps"></a>后续步骤
 

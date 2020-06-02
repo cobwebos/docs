@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2d5d508afe81975cbeda448b497a098e8a3bbcf3
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7d9157993e8cdbb6f7976ee2d4ce67b9039e7b52
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589272"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835829"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>控制 SQL 按需版本（预览版）对存储帐户的访问
 
@@ -26,11 +26,7 @@ SQL 按需版本查询直接从 Azure 存储中读取文件。 对 Azure 存储�
 
 ## <a name="supported-storage-authorization-types"></a>支持的存储授权类型
 
-如果文件不是公开可用的，则已登录到 SQL 按需版本资源的用户必须获得访问和查询 Azure 存储中的文件的授权。 支持三种授权类型：
-
-- [共享访问签名](?tabs=shared-access-signature)
-- [用户标识](?tabs=user-identity)
-- [托管的标识](?tabs=managed-identity)
+如果文件不是公开可用的，则已登录到 SQL 按需版本资源的用户必须获得访问和查询 Azure 存储中的文件的授权。 可以使用三种授权类型来访问非公共存储 - [用户标识](?tabs=user-identity)、[共享访问签名](?tabs=shared-access-signature)和[托管标识](?tabs=managed-identity)。
 
 > [!NOTE]
 > [Azure AD 直通](#force-azure-ad-pass-through)是创建工作区时的默认行为。 如果使用 Azure AD 直通，则不需要为使用 Azure AD 登录名进行访问的每个存储帐户创建凭据。 可以[禁用此行为](#disable-forcing-azure-ad-pass-through)。
@@ -91,7 +87,7 @@ DROP CREDENTIAL [UserIdentity];
 
 如果要重新启用此功能，请参阅[强制使用 Azure AD 直通](#force-azure-ad-pass-through)部分。
 
-### <a name="managed-identity"></a>[托管的标识](#tab/managed-identity)
+### <a name="managed-identity"></a>[托管标识](#tab/managed-identity)
 
 托管标识也称为 MSI。 它是 Azure Active Directory (Azure AD) 的一项功能，为 SQL 按需版本提供 Azure 服务。 此外，它还会在 Azure AD 中部署一个自动托管的标识。 此标识可用于对有关访问 Azure 存储中的数据的请求授权。
 
@@ -99,7 +95,7 @@ DROP CREDENTIAL [UserIdentity];
 
 ### <a name="anonymous-access"></a>[匿名访问](#tab/public-access)
 
-你可以访问[允许匿名访问](/azure/storage/blobs/storage-manage-access-to-resources.md)的 Azure 存储帐户中放置的公开可用文件。
+你可以访问[允许匿名访问](/azure/storage/blobs/storage-manage-access-to-resources)的 Azure 存储帐户中放置的公开可用文件。
 
 ---
 
@@ -107,11 +103,11 @@ DROP CREDENTIAL [UserIdentity];
 
 在下表中，可以找到可用的授权类型：
 
-| 授权类型                    | *SQL 用户*    | *Azure AD 用户*     |
+| 授权类型                    | SQL 用户    | Azure AD 用户     |
 | ------------------------------------- | ------------- | -----------    |
 | [用户标识](?tabs=user-identity#supported-storage-authorization-types)       | 不支持 | 支持      |
 | [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)       | 支持     | 支持      |
-| [托管的标识](?tabs=managed-identity#supported-storage-authorization-types) | 不支持 | 支持      |
+| [托管标识](?tabs=managed-identity#supported-storage-authorization-types) | 不支持 | 支持      |
 
 ### <a name="supported-storages-and-authorization-types"></a>支持的存储和授权类型
 
@@ -119,9 +115,9 @@ DROP CREDENTIAL [UserIdentity];
 
 |                     | Blob 存储   | ADLS Gen1        | ADLS Gen2     |
 | ------------------- | ------------   | --------------   | -----------   |
-| *SAS*               | 支持      | 不支持   | 支持     |
-| *托管标识* | 支持      | 支持        | 支持     |
-| *用户标识*    | 支持      | 支持        | 支持     |
+| SAS               | 支持      | 不支持   | 支持     |
+| 托管标识 | 支持      | 支持        | 支持     |
+| 用户标识    | 支持      | 支持        | 支持     |
 
 ## <a name="credentials"></a>凭据
 
@@ -193,7 +189,7 @@ CREATE CREDENTIAL [UserIdentity]
 WITH IDENTITY = 'User Identity';
 ```
 
-### <a name="managed-identity"></a>[托管的标识](#tab/managed-identity)
+### <a name="managed-identity"></a>[托管标识](#tab/managed-identity)
 
 以下脚本将创建一个服务器级凭据，`OPENROWSET` 函数可以使用该凭据通过工作区托管标识访问 Azure 存储上的任何文件。
 
@@ -242,7 +238,7 @@ WITH IDENTITY = 'User Identity';
 GO
 ```
 
-### <a name="managed-identity"></a>[托管的标识](#tab/managed-identity)
+### <a name="managed-identity"></a>[托管标识](#tab/managed-identity)
 
 下面的脚本创建一个数据库范围的凭据，该凭据可用于以服务托管标识的身份模拟当前的 Azure AD 用户。 
 
@@ -271,7 +267,7 @@ WITH (    LOCATION   = 'https://*******.blob.core.windows.net/samples',
 
 ## <a name="examples"></a>示例
 
-**访问公开可用的数据源**
+访问公开可用的数据源
 
 使用以下脚本创建一个表，用以访问公开可用的数据源。
 
@@ -295,7 +291,7 @@ SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE 
 GO
 ```
 
-**使用凭据访问数据源**
+使用凭据访问数据源
 
 修改以下脚本来创建一个外部表，用以使用 SAS 令牌、用户的 Azure AD 标识或工作区的托管标识来访问 Azure 存储。
 

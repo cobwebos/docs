@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 07b563308e80055d699d1cefeb3b2db71ffa4cd7
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 43b440b631122f7057de68871f0a3f870588dc67
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448612"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650202"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>快速入门：使用 Python 向必应实体搜索 REST API 发送搜索请求
 
@@ -31,7 +31,7 @@ ms.locfileid: "75448612"
 
 ## <a name="create-and-initialize-the-application"></a>创建并初始化应用程序
 
-1. 在你喜欢使用的 IDE 或编辑器中创建一个新的 Python 文件，然后添加以下 import 语句。 为你的订阅密钥、终结点、市场和搜索查询创建变量。 可以使用下面的全局终结点，也可以使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
+1. 在你喜欢使用的 IDE 或编辑器中创建一个新的 Python 文件，然后添加以下 import 语句。 为你的订阅密钥、终结点、市场和搜索查询创建变量。 你可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
     ```python
     import http.client, urllib.parse
@@ -44,7 +44,7 @@ ms.locfileid: "75448612"
     query = 'italian restaurants near me'
     ```
 
-2. 通过将市场变量追加到 `?mkt=` 参数来创建请求 URL。 对你的查询进行 URL 编码并将其追加到 `&q=` 参数。 
+2. 通过将市场变量追加到 `?mkt=` 参数来创建请求 URL。 对查询进行 URL 编码并将其追加到 `&q=` 参数。 
     
     ```python
     params = '?mkt=' + mkt + '&q=' + urllib.parse.quote (query)
@@ -52,21 +52,24 @@ ms.locfileid: "75448612"
 
 ## <a name="send-a-request-and-get-a-response"></a>发送请求并获取响应
 
-1. 创建一个名为 `get_suggestions()` 的函数。 然后，执行以下步骤。
-   1. 将你的订阅密钥添加到一个字典中，使用 `Ocp-Apim-Subscription-Key` 作为键。
-   2. 使用 `http.client.HTTPSConnection()` 创建一个 HTTPS 客户端对象。 使用 `request()` 以及你的路径、参数和标头信息发送 `GET` 请求。
-   3. 通过 `getresponse()` 存储响应，并返回 `response.read()`。
+1. 创建一个名为 `get_suggestions()` 的函数。 
 
-      ```python
-      def get_suggestions ():
-       headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
-       conn = http.client.HTTPSConnection (host)
-       conn.request ("GET", path + params, None, headers)
-       response = conn.getresponse ()
-       return response.read()
-      ```
+2. 在此函数中，将你的订阅密钥添加到一个字典中，使用 `Ocp-Apim-Subscription-Key` 作为键。
 
-2. 调用 `get_suggestions()` 并输出 JSON 响应。
+3. 使用 `http.client.HTTPSConnection()` 创建一个 HTTPS 客户端对象。 使用 `request()` 以及你的路径、参数和标头信息发送 `GET` 请求。
+
+4. 通过 `getresponse()` 存储响应，并返回 `response.read()`。
+
+   ```python
+   def get_suggestions ():
+    headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
+    conn = http.client.HTTPSConnection (host)
+    conn.request ("GET", path + params, None, headers)
+    response = conn.getresponse ()
+    return response.read()
+   ```
+
+5. 调用 `get_suggestions()` 并输出 JSON 响应。
 
     ```python
     result = get_suggestions ()
@@ -143,5 +146,5 @@ ms.locfileid: "75448612"
 > [!div class="nextstepaction"]
 > [构建单页 Web 应用](../tutorial-bing-entities-search-single-page-app.md)
 
-* [什么是必应实体搜索 API](../search-the-web.md)
-* [必应实体搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [什么是必应实体搜索 API？](../search-the-web.md)
+* [必应实体搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)。

@@ -46,6 +46,8 @@
           href: test-createuidefinition.md
         - name: 请求实时访问
           href: request-just-in-time-access.md
+        - name: 使用现有虚拟网络
+          href: existing-vnet-integration.md
         - name: 更新托管资源
           href: update-managed-resources.md
         - name: 使用门户发布应用程序定义

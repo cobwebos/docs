@@ -1,26 +1,26 @@
 ---
-title: 使用 .Net V4 SDK 管理 Azure Cosmos DB SQL API 资源
-description: 关于使用 .Net V4 SDK 生成控制台应用以管理 Azure Cosmos DB SQL API 帐户资源的快速入门。
-author: ealsur
-ms.author: maquaran
+title: 使用 .NET V4 SDK 管理 Azure Cosmos DB SQL API 资源
+description: 关于使用 .NET V4 SDK 生成控制台应用以管理 Azure Cosmos DB SQL API 帐户资源的快速入门。
+author: anfeldma-ms
+ms.author: anfeldma
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 01/10/2020
-ms.openlocfilehash: b69d67a5c4fc1d907f676cf4e400f9fa7df2653b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/11/2020
+ms.openlocfilehash: eabcc53c03b156088179d5ab7216d8a3409a7b3e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77585928"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659127"
 ---
-# <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-to-manage-azure-cosmos-db-sql-api-account-resources"></a>快速入门：使用 .Net V4 SDK 生成控制台应用以管理 Azure Cosmos DB SQL API 帐户资源。
+# <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-to-manage-azure-cosmos-db-sql-api-account-resources"></a>快速入门：使用 .NET V4 SDK 生成控制台应用以管理 Azure Cosmos DB SQL API 帐户资源。
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [.NET V4](create-sql-api-dotnet-V4.md)
-> * [Java](create-sql-api-java.md)
+> * [Java SDK v4](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -51,9 +51,9 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 如果你有自己的 Azure 订阅或者免费创建了订阅，则应显式创建 Azure Cosmos 帐户。 以下代码将创建具有会话一致性的 Azure Cosmos 帐户。 该帐户在 `South Central US` 和 `North Central US` 中复制。  
 
-你可以使用 Azure Cloud Shell 创建 Azure Cosmos 帐户。 Azure Cloud Shell 是一个用于管理 Azure 资源的、可通过浏览器访问的交互式经验证 shell。 它使用户能够灵活选择最适合自己工作方式的 shell 体验，无论是 Bash 还是 PowerShell。 对于本快速入门教程，请选择“Bash”模式。  Azure Cloud Shell 还需要一个存储帐户，你可以在系统提示时创建一个。
+你可以使用 Azure Cloud Shell 创建 Azure Cosmos 帐户。 Azure Cloud Shell 是一个用于管理 Azure 资源的、可通过浏览器访问的交互式经验证 shell。 它使用户能够灵活选择最适合自己工作方式的 shell 体验，无论是 Bash 还是 PowerShell。 对于本快速入门教程，请选择“Bash”模式。 Azure Cloud Shell 还需要一个存储帐户，你可以在系统提示时创建一个。
 
-选择以下代码旁边的“试用”按钮，  依次选择“Bash”  模式和“创建存储帐户”  ，然后登录到 Cloud Shell。 接下来，将以下代码复制并粘贴到 Azure cloud shell 并运行该代码。 Azure Cosmos 帐户名必须是全局唯一的，请确保在运行该命令之前更新 `mysqlapicosmosdb` 值。
+选择以下代码旁边的“试用”按钮，依次选择“Bash”模式和“创建存储帐户”，然后登录到 Cloud Shell。 接下来，将以下代码复制并粘贴到 Azure Cloud Shell，然后运行该代码。 Azure Cosmos 帐户名必须是全局唯一的，请确保在运行该命令之前更新 `mysqlapicosmosdb` 值。
 
 ```azurecli-interactive
 
@@ -126,7 +126,7 @@ Time Elapsed 00:00:34.17
 
 1. 导航到 Azure Cosmos 帐户。
 
-1. 打开“键”窗格，复制帐户的 URI 和主键    。 下一步需将 URI 和键值添加到某个环境变量。
+1. 打开“键”窗格，复制帐户的 URI 和主键  。 下一步需将 URI 和键值添加到某个环境变量。
 
 ## <a name="object-model"></a><a id="object-model"></a>对象模型
 

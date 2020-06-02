@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: eac1f53d35f8175da814dba6172edc12f9e1a063
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: e9b990f7e79fe0d70a213db5739153fe1e558f3c
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80238931"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930193"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-ruby"></a>快速入门：使用必应自动建议 REST API 和 Ruby 建议搜索查询
 
-使用此快速入门开始调用必应自动建议 API 并获取 JSON 响应。 这个简单的 Ruby 应用程序向 API 发送部分搜索查询，并返回搜索建议。 虽然此应用程序是使用 Ruby 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
+按照此快速入门的要求，学习如何调用必应自动建议 API 并读取 JSON 响应。 这个简单的 Ruby 应用程序向 API 发送部分搜索查询，并返回搜索建议。 虽然此应用程序是使用 Ruby 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -38,7 +38,7 @@ ms.locfileid: "80238931"
     require 'json'
     ```
 
-2. 为 API 主机和路径、[市场代码](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)、部分搜索查询创建变量。 可以使用下面的全局终结点，也可以使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
+2. 为 API 主机和路径、[市场代码](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)和部分搜索查询创建变量。 使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
     ```ruby
     subscriptionKey = 'enter your key here'
@@ -48,7 +48,7 @@ ms.locfileid: "80238931"
     query = 'sail'
     ```
 
-3. 通过将市场代码追加到 `?mkt=` 参数并将查询追加到 `&q=` 参数来创建参数字符串。 然后通过组合 API 主机、路径和参数字符串来构造请求 URI。
+3. 通过将市场代码追加到 `mkt=` 参数并将查询追加到 `q=` 参数来创建参数字符串。 然后，通过组合 API 主机、路径和参数字符串来构造请求 URI。
 
     ```ruby
     params = '?mkt=' + mkt + '&q=' + query

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 9514398ec6a84becd1283e4b0975804101b64086
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5e344eb37af4fc1fae35a1f0c036ed1582054ea5
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77209726"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747421"
 ---
 # <a name="migrate-an-android-app-from-google-maps"></a>从 Google Maps 迁移 Android 应用
 
@@ -181,7 +181,7 @@ Azure Maps Android SDK 支持 API 21 的最低 Android 版本：Android 5.0.0 (L
         > [!Note]
         > Azure Maps Android SDK 会定期升级并增强。 可以查看 [Android 地图控件入门](how-to-use-android-map-control-library.md)来获取最新的 Azure Maps 版本号。 此外，可将版本号从“0.2”设置为“0+”，使代码始终指向最新版本。
     
-    4. 在工具栏中转到“文件”，然后单击“将项目与 Gradle 文件同步”。  
+    4. 在工具栏中转到“文件”，然后单击“将项目与 Gradle 文件同步”。 
 3. 将一个地图片段添加到 main 活动 (resources \> layout \> activity\_main.xml)：
     
     ```XML
@@ -310,11 +310,11 @@ Azure Maps Android SDK 支持 API 21 的最低 Android 版本：Android 5.0.0 (L
 请注意，Azure Maps 控件支持更大程度的缩小操作，并不仅提供世界视图。
 
 > [!TIP]
-> 如果在 Windows 计算机上使用 Android 仿真器，则地图可能无法呈现，因为与 OpenGL 和软件加速图形渲染之间存在冲突。 某些用户已通过以下方法解决了此问题。 打开 AVD 管理器，并选择要编辑的虚拟设备。 在“验证配置”面板中向下滚动。  在“仿真性能”部分，将“图形”选项设置为“硬件”。   
+> 如果在 Windows 计算机上使用 Android 仿真器，则地图可能无法呈现，因为与 OpenGL 和软件加速图形渲染之间存在冲突。 某些用户已通过以下方法解决了此问题。 打开 AVD 管理器，并选择要编辑的虚拟设备。 在“验证配置”面板中向下滚动。 在“仿真性能”部分，将“图形”选项设置为“硬件”。  
 
 ## <a name="localizing-the-map"></a>本地化地图
 
-如果你的受众遍布多个国家/地区或讲不同的语言，则本地化就非常重要。
+如果受众遍布多个国家/地区或讲不同的语言，则本地化就非常重要。
 
 **前者：Google Maps**
 

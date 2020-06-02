@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: a0d1ba696b39b9331c4a85c9cf37d13d545ffad5
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6debf422d0c16a6a2bfe180e6febb4973846e0f0
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593693"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870688"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>教程：将 Hugo 站点发布到 Azure 静态 Web 应用（预览版）
 
@@ -133,13 +133,11 @@ ms.locfileid: "83593693"
 
 1. 单击“下一步:生成 >”按钮以编辑生成配置
 
-1. 将“应用位置”设置为 /。
+1. 将“应用位置”设置为“公共”。
 
-1. 将“应用项目位置”设置为“公共”。
+1. “应用项目位置”留空。
 
    “API 位置”的值不是必需的，因为目前不会部署 API。
-
-   :::image type="content" source="./media/publish-hugo/build-details.png" alt-text="生成设置":::
 
 ### <a name="review-and-create"></a>查看并创建
 
@@ -155,12 +153,12 @@ ms.locfileid: "83593693"
 
 1. 在文本编辑器中打开 Hugo 应用，然后打开 .github/workflows/azure-pages-<WORKFLOW_NAME>.yml 文件。
 
-1. 将行 `- uses: actions/checkout@v1`（第 18 行）替换为以下行，以生成 Hugo 应用程序。
+1. 将行 `- uses: actions/checkout@v2`（第 18 行）替换为以下行，以生成 Hugo 应用程序。
 
    ```yml
    - uses: actions/checkout@v2
-        with:
-          submodules: true
+     with:
+       submodules: true
 
    - name: Setup Hugo
      uses: peaceiris/actions-hugo@v2.4.8

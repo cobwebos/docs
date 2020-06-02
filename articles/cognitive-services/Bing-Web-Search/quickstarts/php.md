@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 58192845e0119ce96ea2577007d211f075d3e419
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: bbb6acd4e976d345daa99cde7635febc3755963f
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76169729"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873825"
 ---
 # <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>快速入门：使用 PHP 调用必应 Web 搜索 API  
 
-使用本快速入门进行你的第一次必应 Web 搜索 API 并接收 JSON 响应。 这个 Node.js 应用程序会向该 API 发送一个搜索请求并显示响应。 虽然此应用程序是以 JavaScript 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
+根据此快速入门中的说明对必应 Web 搜索 API 进行第一次调用。 这个 Node.js 应用程序会向该 API 发送一个搜索请求并显示 JSON 响应。 虽然此应用程序是以 JavaScript 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 下面是在开始本快速入门之前需要准备好的项目：
 
@@ -33,7 +33,7 @@ ms.locfileid: "76169729"
 
 ## <a name="enable-secure-http-support"></a>启用安全 HTTP 支持
 
-在开始之前，请找到 `php.ini` 并取消以下行的注释：
+在开始之前，请找到 php.ini 并取消以下行的注释：
 
 ```php
 ; extension=php_openssl.dll
@@ -41,9 +41,13 @@ ms.locfileid: "76169729"
 
 ## <a name="create-a-project-and-define-variables"></a>创建项目并定义变量
 
-在喜欢使用的 IDE 或编辑器中新建一个 PHP 项目。 请勿忘记添加开始和结束标记 `<?php` 和 `?>`。
+1. 在喜欢使用的 IDE 或编辑器中新建一个 PHP 项目。 添加开始和结束标记：`<?php` 和 `?>`。
 
-必须设置几个变量，然后才能继续操作。 `$endpoint` 可以是下面的全局终结点，也可以是资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。 确认 `$endpoint` 正确并将 `$accesskey` 值替换为来自你的 Azure 帐户的有效订阅密钥。 可以通过替换 `$term` 的值随意自定义搜索查询。
+2. 对于 `$endpoint` 值，可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。 
+
+3. 确认 `$endpoint` 值正确并将 `$accesskey` 值替换为来自你的 Azure 帐户的有效订阅密钥。 
+
+4. （可选）通过替换 `$term` 的值自定义搜索查询。
 
 ```php
 $accessKey = 'enter key here';
@@ -113,7 +117,7 @@ if (strlen($accessKey) == 32) {
 
 ## <a name="put-it-all-together"></a>将其放在一起
 
-最后一步是验证代码并运行它！ 如果希望将你的代码与我们的进行比较，下面是完整的程序：
+最后一步是验证代码并运行它。 如果希望将你的代码与我们的进行比较，下面是完整的程序：
 
 ```php
 <?php
@@ -155,7 +159,7 @@ if (strlen($accessKey) == 32) {
 ?>
 ```
 
-## <a name="sample-response"></a>示例响应
+## <a name="example-json-response"></a>示例 JSON 响应
 
 来自必应 Web 搜索 API 的响应以 JSON 形式返回。 此示例响应已截断，仅显示了单个结果。  
 
@@ -284,6 +288,6 @@ if (strlen($accessKey) == 32) {
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [必应 Web 搜索单页应用教程](../tutorial-bing-web-search-single-page-app.md)
+> [必应 Web 搜索 API 单页应用教程](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

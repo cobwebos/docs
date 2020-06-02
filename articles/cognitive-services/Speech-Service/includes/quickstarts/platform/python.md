@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 924532318fc6638059bbe9eef0065349463523ae
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 7947c468f5d35869b9185062b8dc479234297486
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400874"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673231"
 ---
 本指南介绍如何安装用于 Python 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。 如果只是需要包名称以便自行开始，请运行 `pip install azure-cognitiveservices-speech`。
 
@@ -40,7 +40,7 @@ ms.locfileid: "81400874"
         sudo apt-get install build-essential libssl1.0.2 libasound2
         ```
 
-  - 在 RHEL/CentOS 8 上，请运行以下命令来安装所需的包：
+  - 在 RHEL/CentOS 上，请运行以下命令来安装所需的包：
 
         ```sh
         sudo yum update
@@ -48,7 +48,8 @@ ms.locfileid: "81400874"
         ```
 
 > [!NOTE]
-> 在 RHEL/CentOS 8 上，按照[如何配置 OpenSSL for Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的说明进行操作。
+> - 在 RHEL/CentOS 7 上，按照[如何为语音 SDK 配置 RHEL/CentOS 7](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md) 上的说明进行操作。
+> - 在 RHEL/CentOS 8 上，按照[如何配置 OpenSSL for Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的说明进行操作。
 
 - 在 Windows 上，需要安装适用于平台的 [Microsoft Visual C++ Redistributable for Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。 请注意，首次安装它时，可能需要重启 Windows 才能继续使用本指南。
 - 最后，需要 [Python 3.5 到 3.8](https://www.python.org/downloads/)。 若要检查安装，请打开命令提示符并键入命令 `python --version`，然后检查结果。 如果安装正确，将会收到“Python 3.5.1”或类似的响应。
@@ -78,12 +79,12 @@ import azure.cognitiveservices.speech as speechsdk
 1. 下载并安装适用于你的平台的最新受支持 [Python](https://www.python.org/downloads/) 版本（3.5 到 3.8）。
    - 在安装过程中，Windows 用户必须选择“将 Python 添加到 PATH”。
 1. 下载并安装 [Visual Studio Code](https://code.visualstudio.com/Download)。
-1. 打开 Visual Studio Code 并安装 Python 扩展。 在菜单中选择“文件”   >   “首选项” >   “扩展”。 搜索 **Python** 并单击“安装”。 
+1. 打开 Visual Studio Code 并安装 Python 扩展。 在菜单中选择“文件” > “首选项” > “扩展”。 搜索 **Python** 并单击“安装”。
 
    ![安装 Python 扩展](~/articles/cognitive-services/speech-service/media/sdk/qs-python-vscode-python-extension.png)
 
 1. 同样在 Visual Studio Code 中，通过集成式命令行安装语音 SDK Python 包：
-   1. 打开终端（在下拉菜单中选择“终端” > “新终端”）  
+   1. 打开终端（在下拉菜单中选择“终端” > “新终端”） 
    1. 在打开的终端中输入命令 `python -m pip install azure-cognitiveservices-speech`
 
 如果你不熟悉 Visual Studio Code，请参阅更详细的 [Visual Studio Code 文档](https://code.visualstudio.com/docs)。 有关 Visual Studio Code 和 Python 的详细信息，请参阅 [Visual Studio Code Python 教程](https://code.visualstudio.com/docs/python/python-tutorial)。

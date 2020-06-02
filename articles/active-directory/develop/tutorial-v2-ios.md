@@ -12,12 +12,12 @@ ms.date: 08/30/2019
 ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1251049add8c9d3c71b6ba13aff24e086613e84b
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 1dd0bc589b8290172d18482b36baf30c24d099b4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81450949"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83640581"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>从 iOS 或 macOS 应用将用户登录并调用 Microsoft Graph
 
@@ -57,25 +57,25 @@ ms.locfileid: "81450949"
 
 ## <a name="create-a-new-project"></a>创建新项目
 
-1. 打开 Xcode，并选择“新建 Xcode 项目”  。
-2. 对于 iOS 应用，请选择“iOS”   > “单一视图应用”  并选择“下一步”  。
-3. 对于 macOS 应用，请选择“macOS”   > “Cocoa 应用”  并选择“下一步”  。
+1. 打开 Xcode，并选择“新建 Xcode 项目”。
+2. 对于 iOS 应用，请选择“iOS” > “单一视图应用”并选择“下一步”。
+3. 对于 macOS 应用，请选择“macOS” > “Cocoa 应用”并选择“下一步”。
 4. 提供产品名称。
-5. 将“语言”设置为“Swift”，然后选择“下一步”。   
-6. 选择一个文件夹以创建应用，然后单击“创建”  。
+5. 将“语言”设置为“Swift”，然后选择“下一步”。  
+6. 选择一个文件夹以创建应用，然后单击“创建”。
 
 ## <a name="register-your-application"></a>注册应用程序
 
 1. 转到 [Azure 门户](https://aka.ms/MobileAppReg)
-2. 打开“应用注册”边栏选项卡，单击“+新建注册”。 
-3. 输入应用的“名称”，不设置重定向 URI。 
-4. 在“支持的帐户类型”下选择“任何组织目录(任何 Azure AD 目录 - 多租户)中的帐户和个人 Microsoft 帐户(例如，Skype、Xbox)”  
-5. 单击“注册” 
-6. 在显示的窗格的“管理”部分，  选择“身份验证”  。
+2. 打开“应用注册”边栏选项卡，单击“+新建注册”。
+3. 输入应用的“名称”，不设置重定向 URI。
+4. 在“支持的帐户类型”下选择“任何组织目录(任何 Azure AD 目录 - 多租户)中的帐户和个人 Microsoft 帐户(例如，Skype、Xbox)” 
+5. 单击“注册”
+6. 在显示的窗格的“管理”部分，选择“身份验证”。
 
-7. 单击靠近屏幕顶部的“尝试新体验”，  打开新的应用注册体验，然后单击“+ 新建注册”   > “+ 添加平台”   >   “iOS/macOS”。
-    - 输入项目的捆绑 ID。 如果下载了代码，则为 `com.microsoft.identitysample.MSALiOS`。 若要创建自己的项目，请在 Xcode 中选择项目，然后打开“常规”选项卡。  此时捆绑标识符会显示在“标识”部分。 
-8. 单击 `Configure` 并保存出现在“MSAL 配置”页中的“MSAL 配置”   ，以便在稍后配置应用时输入它。  单击“完成”  。
+7. 单击靠近屏幕顶部的“尝试新体验”，打开新的应用注册体验，然后单击“+ 新建注册” > “+ 添加平台” > “iOS/macOS”。
+    - 输入项目的捆绑 ID。 如果下载了代码，则为 `com.microsoft.identitysample.MSALiOS`。 若要创建自己的项目，请在 Xcode 中选择项目，然后打开“常规”选项卡。此时捆绑标识符会显示在“标识”部分。
+8. 单击 `Configure` 并保存出现在“MSAL 配置”页中的“MSAL 配置” ，以便在稍后配置应用时输入它。  单击“完成”。
 
 ## <a name="add-msal"></a>添加 MSAL
 
@@ -151,11 +151,17 @@ var currentAccount: MSALAccount?
 
 需要修改的唯一值是分配给 `kClientID` 作为[应用程序 ID](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#application-id-client-id) 的值。 此值是你在本教程开头的步骤中保存的 MSAL 配置数据的一部分，该步骤用于在 Azure 门户中注册应用程序。
 
+## <a name="configure-xcode-project-settings"></a>配置 Xcode 项目设置
+
+将新的密钥链组添加到项目的“签名和功能”。 密钥链组在 iOS 上应为 `com.microsoft.adalcache`，在 macOS 上应为 `com.microsoft.identity.universalstorage`。
+
+![显示应如何设置密钥链组的 Xcode UI](../../../includes/media/active-directory-develop-guidedsetup-ios-introduction/iosintro-keychainShare.png)
+
 ## <a name="for-ios-only-configure-url-schemes"></a>仅对于 iOS，配置 URL 方案
 
 在此步骤中需注册 `CFBundleURLSchemes`，以便用户在登录后可重定向回应用。 另外，`LSApplicationQueriesSchemes` 也允许应用使用 Microsoft Authenticator。
 
-在 Xcode 中将 `Info.plist` 作为源代码文件打开，在 `<dict>` 节中添加以下内容。 将 `[BUNDLE_ID]` 替换为在 Azure 门户中使用过的值。如果你已下载代码，则应知道该值为 `com.microsoft.identitysample.MSALiOS`。 若要创建自己的项目，请在 Xcode 中选择项目，然后打开“常规”选项卡。  此时捆绑标识符会显示在“标识”部分。 
+在 Xcode 中将 `Info.plist` 作为源代码文件打开，在 `<dict>` 节中添加以下内容。 将 `[BUNDLE_ID]` 替换为在 Azure 门户中使用过的值。如果你已下载代码，则应知道该值为 `com.microsoft.identitysample.MSALiOS`。 若要创建自己的项目，请在 Xcode 中选择项目，然后打开“常规”选项卡。此时捆绑标识符会显示在“标识”部分。
 
 ```xml
 <key>CFBundleURLTypes</key>
@@ -176,8 +182,8 @@ var currentAccount: MSALAccount?
 
 ## <a name="for-macos-only-configure-app-sandbox"></a>仅对于 macOS，配置应用沙盒
 
-1. 转到 Xcode 项目设置 >“功能”选项卡   >   “应用沙盒”
-2. 选中“传出连接(客户端)”  复选框。 
+1. 转到 Xcode 项目设置 >“功能”选项卡 > “应用沙盒”
+2. 选中“传出连接(客户端)”复选框。 
 
 ## <a name="create-your-apps-ui"></a>创建应用 UI
 
@@ -705,8 +711,8 @@ func acquireTokenInteractively() {
 
 若要启用令牌缓存，请执行以下操作：
 1. 确保应用程序已正确签名
-2. 转到 Xcode 项目设置 >“功能”选项卡   >   “启用密钥链共享”
-3. 单击 **+** 并输入以下“密钥链组”  条目：3.a 对于 iOS，输入 `com.microsoft.adalcache` 3.b 对于 macOS，输入 `com.microsoft.identity.universalstorage`
+2. 转到 Xcode 项目设置 >“功能”选项卡 > “启用密钥链共享”
+3. 单击 **+** 并输入以下“密钥链组”条目：3.a 对于 iOS，输入 `com.microsoft.adalcache` 3.b 对于 macOS，输入 `com.microsoft.identity.universalstorage`
 
 ### <a name="add-helper-methods"></a>添加帮助程序方法
 将以下帮助程序方法添加到 `ViewController` 类以完成此示例。

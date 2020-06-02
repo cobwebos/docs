@@ -1,23 +1,23 @@
 ---
 title: 加拿大联邦 PBMM 蓝图示例控件
 description: 加拿大联邦 PBMM 蓝图示例的控制映射。 每个控制都映射到一个或多个协助评估的 Azure 策略。
-ms.date: 09/04/2019
+ms.date: 05/08/2020
 ms.topic: sample
-ms.openlocfilehash: 943ca6849f9a55ce45b609a06cfcbb9b96b691c2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8fc5b2f369dbe174fb4d5ea8160d592e9aaef3af
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74545253"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005717"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>加拿大联邦 PBMM 蓝图示例的控制映射
 
 以下文章详细介绍了 Azure 蓝图加拿大联邦保护的 B、中等完整性、中等可用性 (PBMM) 蓝图示例如何映射到加拿大联邦 PBMM 控制。 有关控制的详细信息，请参阅[加拿大联邦 PBMM](https://www.canada.ca/en/government/system/digital-government/modern-emerging-technologies/cloud-services/government-canada-security-control-profile-cloud-based-it-services.html#toc4)。
 
-以下映射到**加拿大联邦 PBMM** 控制。 使用右侧的导航栏可直接跳转到特定的控制映射。 许多的映射控制措施都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。   然后，找到并选择“ **\[预览\]：** 审核加拿大联邦 PBMM 控制”内置策略计划。
+以下映射到**加拿大联邦 PBMM** 控制。 使用右侧的导航栏可直接跳转到特定的控制映射。 许多的映射控制措施都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。  然后，找到并选择“ **\[预览\]：** 审核加拿大联邦 PBMM 控制”内置策略计划。
 
 > [!IMPORTANT]
-> 下面的每个控件都与一个或多个 [Azure Policy](../../../policy/overview.md) 定义关联。 这些策略可以帮助你[评估控件的符合性](../../../policy/how-to/get-compliance-data.md)；但是，控件与一个或多个策略之间通常不是 1:1 或完全匹配。 因此，Azure Policy 中的符合性  仅引用策略本身；这不确保你完全符合控件的所有要求。 此外，符合性标准包含目前未由任何 Azure Policy 定义处理的控件。 因此，Azure Policy 中的符合性只是整体符合性状态的部分视图。 此符合性蓝图示例的控件和 Azure Policy 定义之间的关联可能会随着时间的推移而发生变化。 若要查看更改历史记录，请参阅 [GitHub 提交历史记录](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/canada-federal-pbmm/control-mapping.md)。
+> 下面的每个控件都与一个或多个 [Azure Policy](../../../policy/overview.md) 定义关联。 这些策略可以帮助你[评估控件的符合性](../../../policy/how-to/get-compliance-data.md)；但是，控件与一个或多个策略之间通常不是 1:1 或完全匹配。 因此，Azure Policy 中的符合性仅引用策略本身；这不确保你完全符合控件的所有要求。 此外，符合性标准包含目前未由任何 Azure Policy 定义处理的控件。 因此，Azure Policy 中的符合性只是整体符合性状态的部分视图。 此符合性蓝图示例的控件和 Azure Policy 定义之间的关联可能会随着时间的推移而发生变化。 若要查看更改历史记录，请参阅 [GitHub 提交历史记录](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/canada-federal-pbmm/control-mapping.md)。
 
 ## <a name="location-constraints"></a>位置约束
 
@@ -57,8 +57,8 @@ Azure 实施了[基于角色的访问控制](../../../../role-based-access-contr
 
 - 只多只为订阅指定 3 个所有者
 - 应该为你的订阅分配了多个所有者
-- 审核在其管理员组中包含任何指定成员的 Windows VM
-- 审核在其管理员组中不包含所有指定成员的 Windows VM
+- 显示其中的“管理员”组包含任意指定成员的 Windows VM 的审核结果
+- 显示来自 Windows VM 的审核结果，其中的管理员组不包含所有指定成员
 - 部署要求以审核在其管理员组中包含任何指定成员的 Windows VM
 - 部署要求以审核在其管理员组中不包含所有指定成员的 Windows VM
 
@@ -68,8 +68,8 @@ Azure 实施了[基于角色的访问控制](../../../../role-based-access-contr
 
 - 只多只为订阅指定 3 个所有者
 - 应该为你的订阅分配了多个所有者
-- 审核在其管理员组中包含任何指定成员的 Windows VM
-- 审核在其管理员组中不包含所有指定成员的 Windows VM
+- 显示其中的“管理员”组包含任意指定成员的 Windows VM 的审核结果
+- 显示来自 Windows VM 的审核结果，其中的管理员组不包含所有指定成员
 - 部署要求以审核在其管理员组中包含任何指定成员的 Windows VM
 - 部署要求以审核在其管理员组中不包含所有指定成员的 Windows VM
 
@@ -85,7 +85,7 @@ Azure SQL 数据库高级数据安全性的数据发现和分类功能提供用�
 
 此蓝图通过分配 [Azure Policy](../../../policy/overview.md) 定义来监视 Azure 应用服务应用程序的远程调试被关闭，从而帮助你监视和控制远程访问。 此蓝图还分配了审核 Linux 虚拟机的策略定义，这些虚拟机允许从没有密码的帐户进行远程连接。 此外，此蓝图还分配了一个 Azure Policy 定义，帮助你监视对存储帐户的不受限制的访问。 监视这些指标可以帮助确保远程访问方法符合安全策略。
 
-- \[预览\]：审核允许通过没有密码的帐户进行远程连接的 Linux VM
+- \[预览\]：显示允许通过没有密码的帐户进行远程连接的 Linux VM 中的审核结果
 - \[预览\]：部署要求以审核允许通过没有密码的帐户进行远程连接的 Linux VM
 - 审核对存储帐户的不受限的网络访问
 - 应为 API 应用禁用远程调试
@@ -107,7 +107,7 @@ Azure Monitor 收集的日志数据存储在支持集中配置和管理的 Log A
 此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义用于监视审核和事件日志记录配置。 监视这些配置可以提供审核系统故障或配置错误的指标，帮助你采取纠正措施。
 
 - 审核诊断设置
-- 审核 SQL 服务器级别审核设置
+- 应启用 SQL 服务器上的审核
 - 应在托管实例上启用高级数据安全性
 - 应在 SQL 服务器上启用高级数据安全性
 
@@ -131,7 +131,7 @@ Azure Monitor 收集的日志数据存储在支持集中报告和分析的 Log A
 - \[预览\]：为 Linux VM 部署 Log Analytics 代理
 - \[预览\]：为 Windows VM 部署 Log Analytics 代理
 - 审核诊断设置
-- 审核 SQL 服务器级别审核设置
+- 应启用 SQL 服务器上的审核
 - 应在托管实例上启用高级数据安全性
 - 应在 SQL 服务器上启用高级数据安全性
 - 在 SQL 服务器上部署高级数据安全
@@ -167,8 +167,8 @@ Azure Site Recovery 将在虚拟机上运行的工作负荷从主位置复制到
 
 此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义，用于审核允许来自无密码帐户的远程连接并/或在密码文件中设置了不正确权限的 Linux 虚拟机。 此蓝图还会分配一个策略定义用于审核 Windows 虚拟机密码加密类型的配置。 监视这些指标有助于确保系统验证器符合组织的标识和身份验证策略。
 
-- \[预览\]：审核未将密码文件权限设为 0644 的 Linux VM
-- \[预览\]：审核具有不使用密码的帐户的 Linux VM
+- \[预览\]：显示未将密码文件权限设为 0644 的 Linux VM 中的审核结果
+- \[预览\]：显示具有无密码帐户的 Linux VM 的审核结果
 - \[预览\]：部署要求以审核未将密码文件权限设置为 0644 的 Linux VM
 - \[预览\]：部署要求以审核具有不使用密码的帐户的 Linux VM
 
@@ -176,11 +176,11 @@ Azure Site Recovery 将在虚拟机上运行的工作负荷从主位置复制到
 
 此蓝图通过分配 [Azure Policy](../../../policy/overview.md) 定义用于审核不强制实施最低强度和其他密码要求的 Windows 虚拟机，来帮助你强制实施强密码。 感知虚拟机是否违反密码强度策略有助于采取纠正措施，确保所有虚拟机用户帐户的密码符合组织的密码策略。
 
-- \[预览\]：审核允许重用之前的 24 个密码的 Windows VM
-- \[预览\]：审核未将最长密码期限设为 70 天的 Windows VM
-- \[预览\]：审核未将最短密码期限设为 1 天的 Windows VM
-- \[预览\]：审核未启用密码复杂性设置的 Windows VM
-- \[预览\]：审核未将最短密码长度限制为 14 个字符的 Windows VM
+- \[预览\]：显示允许重用之前的 24 个密码的 Windows VM 中的审核结果
+- \[预览\]：显示未将最长密码期限设为 70 天的 Windows VM 中的审核结果
+- \[预览\]：显示未将最短密码期限设为 1 天的 Windows VM 中的审核结果
+- \[预览\]：显示未启用密码复杂性设置的 Windows VM 中的审核结果
+- \[预览\]：显示未将最短密码长度限制为 14 个字符的 Windows VM 中的审核结果
 - \[预览\]：部署要求以审核允许重用之前的 24 个密码的 Windows VM
 - \[预览\]：部署要求以审核未将最长密码期限设为 70 天的 Windows VM
 - \[预览\]：部署要求以审核未将最短密码期限设为 1 天的 Windows VM
@@ -217,10 +217,9 @@ Azure 的分布式拒绝服务 (DDoS) 标准层通过基本服务层提供额外
 此蓝图通过分配一个 [Azure Policy](../../../policy/overview.md) 定义用于根据 Azure 安全中心的网络安全组强化建议进行监视，以此帮助你管理和控制系统边界。 Azure 安全中心分析面向 Internet 的虚拟机的流量模式，并提供网络安全组规则建议，以减少潜在的攻击面。
 此外，此蓝图还会分配策略定义用于监视不受保护的终结点、应用程序和存储帐户。 不受防火墙保护的终结点和应用程序，以及具有无限制访问权限的存储帐户，可能会允许意外访问信息系统中包含的信息。
 
-- 应该强化面向 Internet 的虚拟机的网络安全组规则
+- 应在面向 Internet 的虚拟机上应用自适应网络强化建议
 - 应该限制通过面向 Internet 的终结点进行访问
 - 审核对存储帐户的不受限的网络访问
-- 应该强化 IaaS 上 Web 应用程序的 NSG 规则
 
 ## <a name="sc-7-3-boundary-protection--access-points"></a>SC-7 (3) 边界保护 | 接入点
 
@@ -239,7 +238,7 @@ Azure 的分布式拒绝服务 (DDoS) 标准层通过基本服务层提供额外
 此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义来帮助你监视针对通信协议实施的加密机制，以此帮助你保护传输信息的机密性和完整性。 确保通信得到适当的加密可帮助你满足组织的要求，或者防范信息遭到未经授权的泄漏和修改。
 
 - 只能通过 HTTPS 访问 API 应用
-- 审核未使用安全通信协议的 Windows Web 服务器
+- 显示未使用安全通信协议的 Windows Web 服务器的审核结果
 - 部署要求以审核未使用安全通信协议的 Windows Web 服务器
 - 应该只能通过 HTTPS 访问函数应用
 - 应该启用只能通过安全方式连接到 Redis 缓存

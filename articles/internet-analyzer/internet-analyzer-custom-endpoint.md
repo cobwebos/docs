@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: quickstart
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 6a781e767393f35a1ec22f195ba787e3018d8d1e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0b5647dd2e43c8a73bb999af559a579c14bb86a1
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76713096"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683974"
 ---
 # <a name="measure-custom-endpoints-to-evaluate-in-your-internet-analyzer-tests"></a>度量要在 Internet 分析器测试中评估的自定义终结点 
 
@@ -31,7 +31,7 @@ ms.locfileid: "76713096"
 
 1. [在此处](https://fpc.msedge.net/apc/trans.gif)下载透明的单像素测试图像。 这一单像素图像是客户端 JavaScript 为衡量性能而提取的资产。
 2. 在自定义 Web 应用程序中，部署可公开访问的路径中的测试图像。 该路径应通过 HTTPS 运作。 
-3. 在测试创建期间，将完整的自定义终结点 URL（例如 https://contoso.com/test/trans.gif) ）复制到“自定义终结点”字段。
+3. 在测试创建期间，将完整的自定义终结点 URL（例如 `https://contoso.com/test/trans.gif`）复制到“自定义终结点”字段。
 
 ## <a name="next-steps"></a>后续步骤
 

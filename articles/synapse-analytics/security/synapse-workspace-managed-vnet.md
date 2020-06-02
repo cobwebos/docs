@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 162d96244b01f8c5e1acf224475aadb9508f0aa5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 623b6325b88f42f0076c84a221864762cd3918f9
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419481"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83645235"
 ---
 # <a name="azure-synapse-analytics-managed-virtual-network-preview"></a>Azure Synapse Analytics 托管虚拟网络（预览版）
 
@@ -20,7 +20,7 @@ ms.locfileid: "81419481"
 
 ## <a name="managed-workspace-vnet"></a>托管工作区 VNet
 
-创建 Azure Synapse 工作区时，可以选择将其关联到一个 VNet。 与工作区关联的 VNet 由 Azure Synapse 管理。 此 VNet 称为托管工作区 VNet  。
+创建 Azure Synapse 工作区时，可以选择将其关联到一个 VNet。 与工作区关联的 VNet 由 Azure Synapse 管理。 此 VNet 称为托管工作区 VNet。
 
 托管工作区 VNet 以四种方式提供值：
 
@@ -40,7 +40,9 @@ SQL 池和 SQL 按需版本是多租户功能，因此位于托管工作区 VNet
 
 ## <a name="create-an-azure-synapse-workspace-with-a-managed-workspace-vnet"></a>创建具有托管工作区 VNet 的 Azure Synapse 工作区
 
-若要创建具有关联的托管工作区 VNet 的 Azure Synapse 工作区，请在 Azure 门户中选择“安全性 + 网络”  选项卡，然后选中“启用托管虚拟网络”  复选框。
+如果尚未注册网络资源提供程序，请注册它。 通过注册资源提供程序来配置订阅，以供资源提供程序使用。 [注册](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)时，从资源提供程序列表中选择“Microsoft.Network”。
+
+若要创建具有关联的托管工作区 VNet 的 Azure Synapse 工作区，请在 Azure 门户中选择“安全性 + 网络”选项卡，然后选中“启用托管虚拟网络”复选框。
 
 如果将此复选框保留为未选中状态，则工作区不会有与之关联的 VNet。
 
@@ -50,9 +52,9 @@ SQL 池和 SQL 按需版本是多租户功能，因此位于托管工作区 VNet
 ![启用托管工作区 VNet](./media/synapse-workspace-managed-vnet/enable-managed-vnet-1.png)
 
 >[!NOTE]
->未来，将阻止来自托管工作区 VNet 的所有出站流量。 建议使用托管专用终结点连接到所有数据源。
+>未来，将阻止来自托管工作区 VNet 的所有出站流量（通过托管专用终结点的出站流量除外）。 建议创建托管专用终结点来连接到工作区外部的所有 Azure 数据源。 
 
-可以通过在 Azure 门户中选择“概览”  来检查 Azure Synapse 工作区是否关联到某个托管工作区 VNet。
+可以通过在 Azure 门户中选择“概览”来检查 Azure Synapse 工作区是否关联到某个托管工作区 VNet。
 
 ![Azure 门户中的工作区概览](./media/synapse-workspace-managed-vnet/enable-managed-vnet-2.png)
 

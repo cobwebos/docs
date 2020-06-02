@@ -14,12 +14,12 @@ ms.date: 01/02/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6da6bffbc54bfa6e9c39ddace665eb7cfec58614
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 35d5bb13cf9c3735c61173177a3b94f4594c9272
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75638657"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714128"
 ---
 # <a name="microsoft-graph-apis-for-privileged-identity-management-preview"></a>适用于 Privileged Identity Management 的 Microsoft Graph API（预览版）
 
@@ -29,8 +29,6 @@ ms.locfileid: "75638657"
 
 > [!IMPORTANT]
 > Microsoft Graph 中 /beta 版本下的 API 为预览版，可能会进行更改。 不支持在生产应用程序中使用这些 API。
->
-> 尽管所有 PIM 操作都通过图形 API 命令进行支持，但我们使用另一个系统来批准激活请求。 用于批准的图形 API 目前正在开发中，将在接下来的几个月内发布。
 
 ## <a name="required-permissions"></a>所需的权限
 
@@ -51,7 +49,7 @@ ms.locfileid: "75638657"
 
 1. 以全局管理员身份登录到 [Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)。
 
-1. 单击“修改权限”。 
+1. 单击“修改权限”。
 
     ![Graph 浏览器 - 修改权限](./media/pim-apis/graph-explorer.png)
 
@@ -59,7 +57,7 @@ ms.locfileid: "75638657"
 
     ![Graph 浏览器 - 修改权限](./media/pim-apis/graph-explorer-modify-permissions.png)
 
-1. 单击“修改权限”以应用权限更改。 
+1. 单击“修改权限”以应用权限更改。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,23 +6,21 @@ author: MikeRys
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3b26d516080961a482a3ba67f314e98ece4c9f24
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7bd44a350b3c3eeb723b73b0ec416cdd1c0ec643
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420171"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698765"
 ---
 # <a name="azure-synapse-analytics-shared-metadata"></a>Azure Synapse Analytics 共享元数据
 
-Azure Synapse Analytics 允许不同的工作区计算引擎在其 Spark 池（预览版）、SQL 按需版本引擎（预览版）与 SQL 池之间共享数据库和表。
+Azure Synapse Analytics 允许不同的工作区计算引擎在其 Spark 池（预览版）和 SQL 按需版本引擎（预览版）之间共享数据库和表。
 
 [!INCLUDE [preview](../includes/note-preview.md)]
-
-
 
 共享支持所谓的新式数据仓库模式，可使工作区 SQL 引擎能够访问通过 Spark 创建的数据库和表。 它还允许 SQL 引擎创建自身的不与其他引擎共享的对象。
 
@@ -34,9 +32,7 @@ Azure Synapse Analytics 允许不同的工作区计算引擎在其 Spark 池（�
 
 2. Spark 创建的数据库及其所有表将显示在任何 Azure Synapse 工作区 Spark 池实例中，并可从任何 Spark 作业使用。 使用此功能需要拥有相应的[权限](#security-model-at-a-glance)，因为工作区中的所有 Spark 池共享同一个基础目录元存储。
 
-3. Spark 创建的数据库及其基于 Parquet 的表将显示在工作区 SQL 按需版本引擎中。 [数据库](database.md)将在 SQL 按需版本元数据中自动创建，而通过 Spark 作业创建的[外部表和托管表](table.md)可以外部表的形式在相应数据库的 `dbo` 架构内的 SQL 按需版本元数据中供访问。 <!--For more details, see [ADD LINK].-->
-
-4. 如果工作区中存在启用了元数据同步的 SQL 池实例 <!--[ADD LINK]--> 或者，如果创建了已启用元数据同步的新 SQL 池实例，则 Spark 创建的数据库及其基于 Parquet 的表将根据 [Azure Synapse Analytics 共享数据库](database.md)中所述，自动映射到 SQL 池数据库。
+3. Spark 创建的数据库及其基于 Parquet 的表将显示在工作区 SQL 按需版本引擎中。 [数据库](database.md)将在 SQL 按需版本元数据中自动创建，而通过 Spark 作业创建的[外部表和托管表](table.md)可以外部表的形式在相应数据库的 `dbo` 架构内的 SQL 按需版本元数据中供访问。 
 
 <!--[INSERT PICTURE]-->
 
@@ -56,7 +52,7 @@ Spark 数据库和表及其在 SQL 引擎中的已同步表示形式在基础存
 
 ## <a name="change-maintenance"></a>更改维护
 
-如果使用 Spark 删除或更改了元数据对象，系统会拾取更改，并将其传播到 SQL 按需版本引擎，以及已同步了对象的 SQL 池。 同步以异步方式进行，在短暂的延迟后，SQL 引擎中即会反映更改。
+如果使用 Spark 删除或更改了元数据对象，系统会拾取更改，并将其传播到 SQL 按需版本引擎。 同步以异步方式进行，在短暂的延迟后，SQL 引擎中即会反映更改。
 
 ## <a name="next-steps"></a>后续步骤
 

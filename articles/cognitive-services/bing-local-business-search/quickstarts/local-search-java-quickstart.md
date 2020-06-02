@@ -8,28 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 11/29/2019
+ms.date: 05/12/2020
 ms.author: aahi
-ms.openlocfilehash: 8ff70bea8d0e4810b6d5a0d35853077ed0a630cd
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: c50222c645926a6e48995e6c66d7844adc02699f
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74665179"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873003"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>快速入门：使用 Java 将查询发送到必应当地企业搜索 API
 
-使用此快速入门开始向必应当地企业搜索 API 发送请求，该 API 是一项 Azure 认知服务。 虽然这个简单的应用程序是用 Java 编写的，但 API 是一种 RESTful Web 服务，可以与任何能够发出 HTTP 请求并解析 JSON 的编程语言兼容。
+使用此快速入门了解如何向必应当地企业搜索 API 发送请求，该 API 是一项 Azure 认知服务。 尽管这个简单的应用程序是用 Java 编写的，但 API 是一种 RESTful Web 服务，可以与任何能够发出 HTTP 请求并解析 JSON 的编程语言兼容。
 
-此示例应用程序从 API 获取搜索查询 `hotel in Bellevue` 的本地响应数据。
+此示例应用程序从 API 获取搜索查询的本地响应数据。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-* [Java 开发工具包 (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* [Java 开发工具包 (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)。
+* 具有必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 保存在激活免费试用版时提供的 API 密钥。 有关详细信息，请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
-必须创建一个具有必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 你将需要使用在激活免费试用版时提供的访问密钥。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
-
-此示例应用程序从 *hotel in Bellevue* 的查询获取本地响应数据。
 
 ## <a name="create-the-request"></a>创建请求 
 
@@ -51,11 +49,11 @@ ms.locfileid: "74665179"
 
 ## <a name="run-the-complete-application"></a>运行完整应用程序
 
-必应当地企业搜索 API 从必应搜索引擎返回结果。
+以下代码使用必应当地企业搜索 API 从必应搜索引擎返回搜索结果。 按照以下步骤运行此代码：
 1. 下载或安装 gson 库。
 2. 在最喜爱的 IDE 或编辑器中新建一个 Java 项目。
 3. 添加以下提供的代码。
-4. 使用对订阅有效的访问密钥替换 subscriptionKey 值。
+4. 使用对订阅有效的访问密钥替换 `subscriptionKey` 值。
 5. 运行该程序。
 
 ```java
@@ -165,6 +163,6 @@ public class LocalSearchCls {
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- [当地企业搜索快速入门](local-quickstart.md)
-- [当地企业搜索 Node 快速入门](local-search-node-quickstart.md)
+- [当地企业搜索 C# 快速入门](local-quickstart.md)
+- [当地企业搜索 Node.js 快速入门](local-search-node-quickstart.md)
 - [当地企业搜索 Python 快速入门](local-search-python-quickstart.md)

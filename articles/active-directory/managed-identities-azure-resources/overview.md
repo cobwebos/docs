@@ -12,15 +12,15 @@ ms.subservice: msi
 ms.devlang: ''
 ms.topic: overview
 ms.custom: mvc
-ms.date: 04/18/2020
+ms.date: 05/20/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2231d70e6c4368a7c896f9063b58cc97ee292f53
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 738a5bd76cc15b9356275707aed0d0a695aa6367
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81682590"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83770918"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>什么是 Azure 资源的托管标识？
 
@@ -54,9 +54,6 @@ Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解
 此外，在创建用户分配的标识或系统分配的标识时，托管标识资源提供程序 (MSRP) 会在内部向该标识颁发证书。 
 
 代码可以使用托管标识来请求支持 Azure AD 身份验证的服务的访问令牌。 Azure 负责滚动更新服务实例使用的凭据。 
-
-## <a name="credential-rotation"></a>凭据轮换
-凭据轮换由托管 Azure 资源的资源提供程序控制。 默认情况下，凭据每隔 46 天会轮换一次。 新凭据是由资源提供程序请求的，因此，资源提供程序的等待时间可能会超过 46 天。
 
 下图演示了托管服务标识如何与 Azure 虚拟机 (VM) 协同工作：
 
@@ -107,6 +104,9 @@ Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解
 
 6. 调用了 Azure AD，以便使用在步骤 3 中配置的客户端 ID 和证书请求访问令牌（在步骤 5 中指定）。 Azure AD 返回 JSON Web 令牌 (JWT) 访问令牌。
 7. 代码在调用支持 Azure AD 身份验证的服务时发送访问令牌。
+
+## <a name="credential-rotation"></a>凭据轮换
+凭据轮换由托管 Azure 资源的资源提供程序控制。 默认情况下，凭据每隔 46 天会轮换一次。 新凭据是由资源提供程序请求的，因此，资源提供程序的等待时间可能会超过 46 天。
 
 ## <a name="how-can-i-use-managed-identities-for-azure-resources"></a>如何使用 Azure 资源的托管标识？
 

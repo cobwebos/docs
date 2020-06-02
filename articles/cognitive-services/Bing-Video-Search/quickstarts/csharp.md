@@ -8,31 +8,31 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 28c900adadf7d942c9e331e7b77a369db64acf55
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d9d69d4550a5cd4a162795261b7ab3d8b59b7297
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382695"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848934"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-c"></a>快速入门：使用必应视频搜索 REST API 和 C# 来搜索视频
 
-参考本快速入门首次调用必应视频搜索 API 并查看 JSON 响应中的搜索结果。 这个简单的 C# 应用程序会向该 API 发送一个 HTTP 视频搜索查询并显示响应。 虽然此应用程序是使用 C# 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
+根据此快速入门中的说明对必应视频搜索 API 进行第一次调用。 这个简单的 C# 应用程序会向该 API 发送一个 HTTP 视频搜索查询并显示 JSON 响应。 虽然此应用程序是使用 C# 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingVideoSearchv7.cs) 上提供了此示例的源代码以及更多的错误处理、功能和代码注释。
 
 ## <a name="prerequisites"></a>先决条件
 * 任何版本的 [Visual Studio 2017 或更高版本](https://www.visualstudio.com/downloads/)。
 * [Json.NET](https://www.newtonsoft.com/json) 框架，可以 NuGet 包的形式提供。
-* 如果使用的是 Linux/MacOS，则可使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
+* 如果使用的是 Linux/MacOS，则可以通过使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>创建并初始化项目
 
-1. 在 Visual Studio 中创建一个新的控制台解决方案。 然后将以下命名空间添加到主代码文件。
+1. 在 Visual Studio 中创建一个新的控制台解决方案。 然后，将以下命名空间添加到主代码文件：
 
     ```csharp
     using System;
@@ -42,7 +42,7 @@ ms.locfileid: "75382695"
     using System.Collections.Generic;
     ```
 
-2. 为你的订阅密钥、终结点和搜索词添加变量。 `uriBase` 可以是下面的全局终结点，也可以是资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
+2. 为你的订阅密钥、终结点和搜索词添加变量。 对于 `uriBase` 值，可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
     ```csharp
     const string accessKey = "enter your key here";
@@ -50,33 +50,34 @@ ms.locfileid: "75382695"
     const string searchTerm = "kittens";
     ```
 
-### <a name="create-a-struct-to-format-the-bing-video-search-api-response"></a>创建一个结构来格式化必应视频搜索 API 响应
+## <a name="create-a-struct-to-format-the-bing-video-search-api-response"></a>创建一个结构来格式化必应视频搜索 API 响应
 
-1. 定义 `SearchResult` 结构以包含图像搜索结果和 JSON 标头信息。
+定义 `SearchResult` 结构以包含图像搜索结果和 JSON 标头信息。
 
-    ```csharp
-    struct SearchResult
-        {
-            public String jsonResult;
-            public Dictionary<String, String> relevantHeaders;
-        }
-    ```
+```csharp
+struct SearchResult
+    {
+        public String jsonResult;
+        public Dictionary<String, String> relevantHeaders;
+    }
+```
 
 ## <a name="create-and-handle-a-video-search-request"></a>创建和处理视频搜索请求
 
-创建一个名为 `BingVideoSearch` 的方法来调用 API，并将返回类型设置为之前创建的 `SearchResult` 结构。 在此方法中，执行以下步骤：
+1. 创建一个名为 `BingVideoSearch` 的方法来调用 API，并将返回类型设置为先前创建的 `SearchResult` 结构。 
 
-1. 构造搜索请求的 URI。 注意，必须先设置搜索词 toSearch 的格式，然后才能将其附加到字符串。
+   在接下来的步骤中，将代码添加到此方法。
 
-    ```csharp
-    
+1. 构造搜索请求的 URI。 在将搜索词 `toSearch` 追加到字符串之前，先对其进行格式化。
+
+    ```csharp    
     static SearchResult BingVideoSearch(string toSearch){
     
         var uriQuery = uriBase + "?q=" + Uri.EscapeDataString(toSearch);
     //...
     ```
 
-2. 执行 Web 请求：将你的密钥添加到 `Ocp-Acpim-Subscription-Key` 标头并使用 `HttpWebResponse` 对象来存储 API 响应。 然后使用 `StreamReader` 来获取 JSON 字符串。
+2. 执行 Web 请求：将你的密钥添加到 `Ocp-Acpim-Subscription-Key` 标头并使用 `HttpWebResponse` 对象来存储 API 响应。 然后，使用 `StreamReader` 获取 JSON 字符串。
 
     ```csharp
     //...
@@ -89,7 +90,7 @@ ms.locfileid: "75382695"
 
 ## <a name="process-the-result"></a>处理结果
 
-1. 创建搜索结果对象，提取必应 HTTP 标头。 然后返回 `searchResult` 对象。 
+1. 创建搜索结果对象，提取必应 HTTP 标头。 然后，返回 `searchResult` 对象。 
 
     ```csharp
     var searchResult = new SearchResult();
@@ -105,7 +106,7 @@ ms.locfileid: "75382695"
     return searchResult;
     ```
 
-2. 然后你可以输出响应。
+2. 输出响应。
 
     ```csharp
     Console.WriteLine(result.jsonResult);

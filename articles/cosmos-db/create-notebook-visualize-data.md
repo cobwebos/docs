@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 45dd4e8dcfd74cdb5d96b935e239b9f4b5094a7c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3de73156618b0f5234cc8049c4ea70385b790388
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73720927"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743581"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>教程：在 Azure Cosmos DB 中创建笔记本用于分析和可视化数据
 
@@ -26,15 +26,15 @@ ms.locfileid: "73720927"
  
 在本部分，你将创建 Azure Cosmos 数据库和容器，并将零售数据导入该容器。
 
-1. 导航到你的 Azure Cosmos 帐户，打开“数据资源管理器”。 
+1. 导航到你的 Azure Cosmos 帐户，打开“数据资源管理器”。
 
-1. 转到“笔记本”选项卡，选择“我的笔记本”旁边的 `…`，然后创建一个**新笔记本**。   选择“Python 3”作为默认内核。 
+1. 转到“笔记本”选项卡，选择“我的笔记本”旁边的 `…`，然后创建一个**新笔记本**。  选择“Python 3”作为默认内核。
 
    ![创建新的 Notebook](./media/create-notebook-visualize-data/create-new-notebook.png)
 
 1. 创建新笔记本后，可将其重命名，例如 **VisualizeRetailData.ipynb**。
 
-1. 接下来，创建名为“RetailDemo”的数据库，并创建名为“WebsiteData”的容器来存储零售数据。 可以使用 /CardID 作为分区键。 将以下代码复制并粘贴到笔记本的新单元中，然后运行此代码：
+1. 接下来，创建名为“RetailDemo”的数据库和名为“WebsiteData”的容器来存储零售数据。 可以使用 /CartID 作为分区键。 将以下代码复制并粘贴到笔记本的新单元中，然后运行此代码：
 
    ```python
    import azure.cosmos
@@ -47,7 +47,7 @@ ms.locfileid: "73720927"
    print('Container WebsiteData created')
    ```
 
-   若要运行某个单元，请选择 `Shift + Enter`，或者选择该单元，然后选择数据资源管理器导航栏上的“运行活动单元”选项。 
+   若要运行某个单元，请选择 `Shift + Enter`，或者选择该单元，然后选择数据资源管理器导航栏上的“运行活动单元”选项。
 
    ![运行活动单元](./media/create-notebook-visualize-data/run-active-cell.png)
 
@@ -58,7 +58,7 @@ ms.locfileid: "73720927"
     Container WebsiteData created
    ```
 
-   也可以刷新“数据”选项卡并查看新建的资源： 
+   也可以刷新“数据”选项卡并查看新建的资源：
 
    ![刷新“数据”选项卡以查看新容器](media/create-notebook-visualize-data/refresh-data-tab.png)
 
@@ -121,7 +121,7 @@ ms.locfileid: "73720927"
 {Query text}
 ```
 
-有关详细信息，请参阅 [Azure Cosmos DB 中的内置笔记本命令和功能](use-notebook-features-and-commands.md)一文。 将运行查询 - `SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c`。 结果将保存到名为 df_cosmos 的 Pandas 数据帧中。 将以下命令粘贴到新的笔记本单元，然后运行此命令：
+有关详细信息，请参阅 [Azure Cosmos DB 中的内置笔记本命令和功能](use-python-notebook-features-and-commands.md)一文。 将运行查询 - `SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c`。 结果将保存到名为 df_cosmos 的 Pandas 数据帧中。 将以下命令粘贴到新的笔记本单元，然后运行此命令：
 
 ```python
 %%sql --database RetailDemo --container WebsiteData --output df_cosmos
@@ -141,7 +141,7 @@ df_cosmos.head(10)
 
 在本部分，你将对检索到的数据运行一些查询。
 
-* **查询 1：** 对数据帧运行 Group by 查询，以获取在每个国家/地区的总销售收入之和，并显示结果中的 5 个项。 在新的笔记本单元中运行以下代码：
+* **查询 1：** 对数据帧运行 Group by 查询，以获取每个国家/地区的总销售收入之和，并显示结果中的 5 项。 在新的笔记本单元中运行以下代码：
 
    ```python
    df_revenue = df_cosmos.groupby("Country").sum().reset_index()
@@ -176,10 +176,10 @@ df_cosmos.head(10)
    import urllib.request, json
    import geopandas as gpd
 
-   # Load country information for mapping
+   # Load country/region information for mapping
    countries = gpd.read_file("https://cosmosnotebooksdata.blob.core.windows.net/notebookdata/countries.json")
 
-   # Merge the countries dataframe with our data in Azure Cosmos DB, joining on country code
+   # Merge the countries/regions dataframe with our data in Azure Cosmos DB, joining on country/region code
    df_merged = countries.merge(df_revenue, left_on = 'admin', right_on = 'Country', how='left')
 
    # Convert to GeoJSON so bokeh can plot it
@@ -187,7 +187,7 @@ df_cosmos.head(10)
    json_data = json.dumps(merged_json)
    ```
 
-1. 通过在新笔记本单元中运行以下代码，在世界地图上可视化不同国家/地区的销售收入：
+1. 通过在新笔记本单元中运行以下代码，在世界地图上直观显示不同国家/地区的销售收入：
 
    ```python
    from bokeh.io import output_notebook, show
@@ -235,9 +235,9 @@ df_cosmos.head(10)
 
    输出将以不同的颜色显示在世界地图上。 颜色越深，表示所在国家/地区的收入越高。
 
-   ![地图上所在国家/地区的收入数据可视化](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
+   ![国家/地区收入地图可视化](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
 
-1. 让我们看看另一个数据可视化用例。 WebsiteData 容器包含查看了某个项、将该项添加到了购物车以及购买了该项的用户记录。 让我们绘制购买项的转换率。 在新的单元中运行以下代码，以可视化每个项的转换率：
+1. 让我们看看另一个数据可视化用例。 WebsiteData 容器包含查看了某个项、将该项添加到了购物车以及购买了该项的用户记录。 让我们绘制已购项的转换率。 在新的单元中运行以下代码，以可视化每个项的转换率：
 
    ```python
    from bokeh.io import show, output_notebook
@@ -290,4 +290,4 @@ df_cosmos.head(10)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解笔记本命令，请参阅[如何使用 Azure Cosmos DB 中的内置笔记本命令和功能](use-notebook-features-and-commands.md)一文。
+* 若要详细了解 Python 笔记本命令，请参阅[如何使用 Azure Cosmos DB 中的内置笔记本命令和功能](use-python-notebook-features-and-commands.md)一文。

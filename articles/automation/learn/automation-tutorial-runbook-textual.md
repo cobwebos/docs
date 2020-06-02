@@ -1,17 +1,16 @@
 ---
 title: 在 Azure 自动化中创建 PowerShell 工作流 Runbook
-description: 本教程介绍如何创建、测试和发布简单的 PowerShell 工作流 Runbook。
-keywords: powershell 工作流, powershell 工作流示例, 工作流 powershell
+description: 本文指导如何创建、测试和发布简单的 PowerShell 工作流 Runbook。
 services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: cdf43bb82baf28ba21e00d0f58dc8bafe84fbe42
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 80c84693f466ea30c4a65a8960472a55e98d1efe
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81725331"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714451"
 ---
 # <a name="tutorial-create-a-powershell-workflow-runbook"></a>教程：创建 PowerShell 工作流 Runbook
 
@@ -22,9 +21,6 @@ ms.locfileid: "81725331"
 > * 测试并发布 Runbook
 > * 运行 Runbook 作业并跟踪其状态
 > * 更新 Runbook 以使用 Runbook 参数启动 Azure 虚拟机
-
->[!NOTE]
->本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az 模块安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于你的自动化帐户，你可以参阅[如何更新 Azure 自动化中的 Azure PowerShell 模块](../automation-update-azure-modules.md)，了解如何将模块更新到最新版本。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -42,13 +38,13 @@ ms.locfileid: "81725331"
 
    通过自动化帐户页面可快速查看此帐户中的资源。 应该已拥有某些资产。 大多数此类资产是自动包括在新的自动化帐户中的模块。 你还应该有与你的订阅关联的凭据资产。
  
-2. 在“流程自动化”下选择“Runbook”，以打开 Runbook 的列表。  
+2. 在“流程自动化”下选择“Runbook”，以打开 Runbook 的列表。 
 
-3. 选择“创建 Runbook”，创建一个新的 Runbook  。
+3. 选择“创建 Runbook”，创建一个新的 Runbook。
 
 4. 将该 Runbook 命名为 **MyFirstRunbook-Workflow**。
 
-5. 在此示例中，我们将创建 [PowerShell Workflow Runbook](../automation-runbook-types.md#powershell-workflow-runbooks)。 选择“PowerShell 工作流”作为“Runbook 类型”。  
+5. 在此示例中，我们将创建 [PowerShell Workflow Runbook](../automation-runbook-types.md#powershell-workflow-runbooks)。 选择“PowerShell 工作流”作为“Runbook 类型”。 
 
 6. 单击“创建”以创建 Runbook 并打开文本编辑器  。
 
@@ -73,21 +69,21 @@ ms.locfileid: "81725331"
    }
    ```
 
-3. 通过单击“保存”  保存 Runbook。
+3. 通过单击“保存” 保存 Runbook。
 
 ## <a name="step-3---test-the-runbook"></a>步骤 3 - 测试 Runbook
 
 在发布 Runbook 使其可在生产中使用之前，应对其进行测试，确保其能正常运行。 测试 Runbook 时将运行其“草稿”版本，你可以通过交互方式查看其输出。
 
-1. 选择“测试窗格”  以打开“测试”窗格。
+1. 选择“测试窗格”以打开“测试”窗格。
 
-2. 单击“启动”以启动测试，只测试已启用的选项。 
+2. 单击“启动”以启动测试，只测试已启用的选项。
 
 3. 请注意，此时会创建一个 [Runbook 作业](../automation-runbook-execution.md)并在窗格中显示其状态。
 
    作业状态一开始为“排队”，表明作业正在等待云中的 Runbook 辅助角色变为可用状态。 在某个辅助角色认领该作业后，其状态会变为“正在启动”。 最后，当 Runbook 开始实际运行时，其状态会变为“正在运行”。
 
-4. Runbook 作业完成后，“测试”窗格会显示其输出。 在此示例中，你会看到 `Hello World`。
+4. Runbook 作业完成后，“测试”窗格会显示其输出。 在本例中，你会看到 `Hello World`。
 
    ![Hello World](../media/automation-tutorial-runbook-textual/test-output-hello-world.png)
 
@@ -97,37 +93,37 @@ ms.locfileid: "81725331"
 
 你创建的 Runbook 仍处于“草稿”模式。 必须先发布它，然后才能在生产中运行它。 当发布 Runbook 时，可以用草稿版本覆盖现有的已发布版本。 在本例中，还没有已发布版本，因为刚刚创建 Runbook。
 
-1. 单击“发布”以发布该 Runbook，并在出现提示时单击“是”   。
+1. 单击“发布”以发布该 Runbook，并在出现提示时单击“是” 。
 
-2. 在“Runbook”页中向左滚动以查看该 Runbook，请注意，“创作状态”字段设置为“已发布”    。
+2. 在“Runbook”页中向左滚动以查看该 Runbook，请注意，“创作状态”字段设置为“已发布”  。
 
-3. 向右滚动，查看 MyFirstRunbook-Workflow  的页面。
+3. 向右滚动，查看 MyFirstRunbook-Workflow 的页面。
 
    顶部的选项现在可用于启动 Runbook、计划将来的启动时间，或创建一个 [webhook](../automation-webhooks.md) 以便通过 HTTP 调用来启动 Runbook。
 
-4. 选择“启动”，并在出现提示时选择“是”   启动 runbook。
+4. 选择“启动”，并在出现提示时选择“是” 启动 runbook。
 
    ![启动 Runbook](../media/automation-tutorial-runbook-textual/automation-runbook-controls-start.png)
 
 5. 此时会为已创建的 Runbook 作业打开一个“作业”窗格。 在此示例中，请让窗格保持打开状态，以便观察作业的进度。
 
-6. 请注意，作业状态显示在“作业摘要”中  。 此状态与测试 Runbook 时看到的状态相符。
+6. 请注意，作业状态显示在“作业摘要”中。 此状态与测试 Runbook 时看到的状态相符。
 
    ![作业摘要](../media/automation-tutorial-runbook-textual/job-pane-status-blade-jobsummary.png)
 
-7. 在 Runbook 状态显示为“已完成”后，单击“输出”  。 此时会打开“输出”页，可以在其中看到 `Hello World` 消息。
+7. 在 Runbook 状态显示为“已完成”后，单击“输出”。 此时会打开“输出”页，可以在其中看到 `Hello World` 消息。
 
    ![作业摘要](../media/automation-tutorial-runbook-textual/job-pane-status-blade-outputtile.png)
 
 8. 关闭“输出”页。
 
-9. 单击“所有日志”打开 Runbook 作业的“流”窗格  。 在输出流中应该只会看到 `Hello World`。 请注意，“流”窗格可以显示 Runbook 作业的其他流，例如，详细流和错误流（如果 Runbook 向其写入内容）。
+9. 单击“所有日志”打开 Runbook 作业的“流”窗格。 在输出流中应该只会看到 `Hello World`。 请注意，“流”窗格可以显示 Runbook 作业的其他流，例如，详细流和错误流（如果 Runbook 向其写入内容）。
 
    ![作业摘要](../media/automation-tutorial-runbook-textual/job-pane-status-blade-alllogstile.png)
 
 10. 关闭“流”窗格和“作业”窗格以返回到 MyFirstRunbook 页。
 
-11. 在“资源”下单击“作业”，以打开此 Runbook 的“作业”页   。 此页列出你的 Runbook 创建的所有作业。 由于只将该作业运行了一次，应该只会看到一个列出的作业。
+11. 在“资源”下单击“作业”，以打开此 Runbook 的“作业”页 。 此页列出你的 Runbook 创建的所有作业。 由于只将该作业运行了一次，应该只会看到一个列出的作业。
 
    ![作业](../media/automation-tutorial-runbook-textual/runbook-control-job-tile.png)
 
@@ -140,7 +136,7 @@ ms.locfileid: "81725331"
 >[!NOTE]
 >对于 PowerShell Runbook，`Add-AzAccount` 和 `Add-AzureRMAccount` 是 `Connect-AzAccount` 的别名。 可以使用这些 cmdlet，也可以在自动化帐户中[将模块更新](../automation-update-azure-modules.md)为最新版本。 即使刚刚创建了一个新的自动化帐户，也可能需要更新你的模块。
 
-1. 导航到 MyFirstRunbook-Workflow 页，通过单击“编辑”打开文本编辑器  。
+1. 导航到 MyFirstRunbook-Workflow 页，通过单击“编辑”打开文本编辑器。
 
 2. 删除 `Write-Output` 行。
 
@@ -159,7 +155,7 @@ ms.locfileid: "81725331"
    $AzureContext = Select-AzSubscription -SubscriptionId $Conn.SubscriptionID
    ```
 
-5. 单击“测试”  窗格，以便测试 Runbook。
+5. 单击“测试”窗格，以便测试 Runbook。
 
 6. 单击“启动”以启动测试  。 完成后，你应该会看到类似以下内容的输出，它显示了帐户的基本信息。 此操作确认凭据有效。
 
@@ -187,7 +183,7 @@ ms.locfileid: "81725331"
    }
    ```
 
-2. 保存 Runbook，并单击“测试”窗格，以便可以测试 Runbook  。
+2. 保存 Runbook，并单击“测试”窗格，以便可以测试 Runbook。
 
 3. 单击“启动”以启动测试  。 测试完成后，检查 VM 是否已启动。
 
@@ -223,7 +219,7 @@ Runbook 当前启动的是你在 Runbook 中硬编码的 VM。 如果可以在�
 
 6. 单击“启动”以启动 Runbook **ResourceGroupName** 。 
 
-7. 键入要启动的 VM 的 VMNAME  和 RESOURCEGROUPNAME  的值。
+7. 键入要启动的 VM 的 VMNAME 和 RESOURCEGROUPNAME 的值。
 
    ![启动 Runbook](../media/automation-tutorial-runbook-textual/automation-pass-params.png)
 
@@ -231,10 +227,9 @@ Runbook 当前启动的是你在 Runbook 中硬编码的 VM。 如果可以在�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 PowerShell 的详细信息，包括语言参考和学习模块，请参阅 [PowerShell 文档](https://docs.microsoft.com/powershell/scripting/overview)。
-* 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)。
-* 若要开始使用图形 Runbook，请参阅[创建图形 Runbook](automation-tutorial-runbook-graphical.md)。
-* 若要开始使用 PowerShell Runbook，请参阅[创建 PowerShell Runbook](automation-tutorial-runbook-textual-powershell.md)。
-* 若要了解有关 Runbook 类型、其优点和限制的详细信息，请参阅 [Azure 自动化 Runbook 类型](../automation-runbook-types.md)。
-* 有关 PowerShell 脚本支持功能的详细信息，请参阅 [Azure 自动化中的本机 PowerShell 脚本支持](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)。
+* [PowerShell 文档](https://docs.microsoft.com/powershell/scripting/overview)
+* [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)
+* [创建图形 Runbook](automation-tutorial-runbook-graphical.md)
+* [创建 PowerShell Runbook](automation-tutorial-runbook-textual-powershell.md)
+* [Azure 自动化 Runbook 类型](../automation-runbook-types.md)
+* [Azure 自动化中的本机 PowerShell 脚本支持](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)

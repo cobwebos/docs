@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2b1d9748b243dcc2104ce7b8e0e8735a7b7276f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 27adab85f684143db29e248739492b68af869404
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79497681"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647353"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Azure Active Directory 标识保护是什么？
 
@@ -85,6 +85,8 @@ Microsoft 标识安全和保护团队的负责人 Alex Weinert 在他[于 2018 �
 | 安全管理员 | 对“标识保护”具有完全访问权限 | 重置用户密码 |
 | 安全操作员 | 查看所有标识保护报表和“概览”边栏选项卡 <br><br> 消除用户风险，确认安全登录，确认泄露 | 配置或更改策略 <br><br> 重置用户密码 <br><br> 配置警报 |
 | 安全读取者 | 查看所有标识保护报表和“概览”边栏选项卡 | 配置或更改策略 <br><br> 重置用户密码 <br><br> 配置警报 <br><br> 提供有关检测的反馈 |
+
+目前，安全操作员角色无法访问风险登录报告。
 
 条件访问管理员还可以创建将登录风险作为条件考虑进去的策略。有关详细信息，请参阅[条件访问：条件](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk)一文。
 

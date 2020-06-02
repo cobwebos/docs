@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 04/01/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 1d1da88d1e7eaf06ebf71da999ef8fb25c7cf066
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 77b801837be80749ca73dd4ae5c526a7980e83e0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81482202"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652711"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>教程：使用事件网格自动调整上传图像的大小
 
@@ -192,36 +192,36 @@ az functionapp deployment source config --name $functionapp \
 
 事件订阅指示要发送到特定终结点的提供程序生成的事件。 在这种情况下，终结点由函数公开。 使用以下步骤创建一个事件订阅，以便向 Azure 门户中的函数发送通知：
 
-1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单上选择“所有服务”，然后选择“Function App”。  
+1. 在 [Azure 门户](https://portal.azure.com)中，在页面顶部搜索并选择 `Function App`，然后选择刚才创建的函数应用。 选择“函数”，然后选择“Thumbnail”函数。
 
-    ![在 Azure 门户中导航到“函数应用”](./media/resize-images-on-storage-blob-upload-event/portal-find-functions.png)
+    :::image type="content" source="media/resize-images-on-storage-blob-upload-event/choose-thumbnail-function.png" alt-text="在门户中选择 Thumbnail 函数":::
 
-2. 展开函数应用，选择 **Thumbnail** 函数，然后选择“添加事件网格订阅”  。
+1.  选择“集成”，然后依次选择“事件网格触发器”和“创建事件网格订阅”。
 
-    ![在 Azure 门户中导航到“添加事件网格订阅”](./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png)
+    :::image type="content" source="./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png" alt-text="在 Azure 门户中导航到“添加事件网格订阅”" :::
 
-3. 使用表中指定的事件订阅设置。
+1. 使用表中指定的事件订阅设置。
     
     ![基于 Azure 门户中的函数创建事件订阅](./media/resize-images-on-storage-blob-upload-event/event-subscription-create.png)
 
     | 设置      | 建议的值  | 说明                                        |
     | ------------ | ---------------- | -------------------------------------------------- |
     | **名称** | imageresizersub | 标识新事件订阅的名称。 |
-    | 主题类型  | 存储帐户 | 选择存储帐户事件提供程序。 |
+    | 主题类型 | 存储帐户 | 选择存储帐户事件提供程序。 |
     | **订阅** | Azure 订阅 | 默认情况下，选择当前的 Azure 订阅。 |
-    | **资源组** | myResourceGroup | 选择“使用现有”  ，然后选择此教程中使用的资源组。 |
+    | **资源组** | myResourceGroup | 选择“使用现有”，然后选择此教程中使用的资源组。 |
     | **资源** | 你的 Blob 存储帐户 | 使用你创建 Blob 存储帐户。 |
-    | 事件类型  | 已创建 blob | 除“已创建 Blob”以外，取消选中所有其他类型  。 只有 `Microsoft.Storage.BlobCreated` 的事件类型传递给函数。 |
+    | 事件类型 | 已创建 blob | 除“已创建 Blob”以外，取消选中所有其他类型。 只有 `Microsoft.Storage.BlobCreated` 的事件类型传递给函数。 |
     | **终结点类型** | 自动生成 | 预定义为 **Azure Function**。 |
     | **终结点** | 自动生成 | 函数的名称。 在本例中，它是 **Thumbnail**。 |
 
-4. 切换到“筛选器”  选项卡，然后执行以下操作：
-    1. 选择“启用主题筛选”  选项。
-    2. 对于“主题开头为”  ，输入以下值： **/blobServices/default/containers/images/blobs/** 。
+1. 切换到“筛选器”选项卡，然后执行以下操作：
+    1. 选择“启用主题筛选”选项。
+    2. 对于“主题开头为”，输入以下值： **/blobServices/default/containers/images/blobs/** 。
 
         ![指定事件订阅筛选器](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png)
 
-5. 选择“创建”  以添加事件订阅。 这将创建一个事件订阅，当将一个 blob 添加到 `images` 容器时，该事件订阅将触发 `Thumbnail` 函数。 此函数重设图像大小，然后将图像添加到 `thumbnails` 容器。
+1. 选择“创建”以添加事件订阅。 这将创建一个事件订阅，当将一个 blob 添加到 `images` 容器时，该事件订阅将触发 `Thumbnail` 函数。 此函数重设图像大小，然后将图像添加到 `thumbnails` 容器。
 
 至此，已配置后端服务，可在示例 Web 应用中测试调整图像大小功能。
 
@@ -231,15 +231,15 @@ az functionapp deployment source config --name $functionapp \
 
 # <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
 
-单击“上传照片”  区域，选择并上传文件。 或者，也可以将照片拖动到此区域。
+单击“上传照片”区域，选择并上传文件。 或者，也可以将照片拖动到此区域。
 
-请注意，上传的图像消失后，上传图像的副本将显示在“生成的缩略图”  轮播中。 此图像在通过函数重设大小后会被添加到 *thumbnails* 容器中，再由 Web 客户端下载。
+请注意，上传的图像消失后，上传图像的副本将显示在“生成的缩略图”轮播中。 此图像在通过函数重设大小后会被添加到 *thumbnails* 容器中，再由 Web 客户端下载。
 
 ![在浏览器中发布的 Web 应用](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
 # <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
-单击“选择文件”  选择一个文件，然后单击“上传图像”  。 上传成功后，浏览器会导航到一个成功页面。 单击返回到主页的链接。 已上传图像的副本将显示在“生成的缩略图”  区域中。 （如果一开始没有显示图像，请尝试重新加载页面。）此图像在通过函数重设大小后会被添加到 *thumbnails* 容器中，再由 Web 客户端下载。
+单击“选择文件”选择一个文件，然后单击“上传图像”。 上传成功后，浏览器会导航到一个成功页面。 单击返回到主页的链接。 已上传图像的副本将显示在“生成的缩略图”区域中。 （如果一开始没有显示图像，请尝试重新加载页面。）此图像在通过函数重设大小后会被添加到 *thumbnails* 容器中，再由 Web 客户端下载。
 
 ![在浏览器中发布的 Web 应用](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 

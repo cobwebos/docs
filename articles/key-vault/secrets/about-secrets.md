@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: eabfa03aa70f54a967fe256f694ef59ad0fe7ebe
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 7aa2feba5a2b2fa47bbb0c055a2f556b8997ab34
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81685435"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930465"
 ---
 # <a name="about-azure-key-vault-secrets"></a>关于 Azure Key Vault 机密
 
@@ -27,13 +27,17 @@ Key Vault 为机密（例如密码和数据库连接字符串）提供安全存�
 
 Key Vault 还支持机密的 contentType 字段。 客户端可以指定机密的内容类型，以帮助在检索时解释机密数据。 此字段的最大长度为 255 个字符。 没有预定义的值。 建议用于解释机密数据的提示。 例如，实现可以将密码和证书都存储为机密，然后使用此字段进行区分。 没有预定义的值。  
 
+## <a name="encryption"></a>加密
+
+Key Vault 中的所有机密均已加密存储。 此加密是透明的，不需要用户执行任何操作。 Azure Key Vault 服务会在你添加机密时对其进行加密，并在你读取机密时自动对其进行解密。 加密密钥对于每个密钥保管库来说是唯一的。
+
 ## <a name="secret-attributes"></a>机密属性
 
 除机密数据外，还可以指定以下属性：  
 
-- *exp*：IntDate，可选，默认值为 **forever**。 exp（过期时间）属性标识在不应检索机密数据当时或之后的过期时间，[特定情况](#date-time-controlled-operations)除外  。 此字段仅供参考，因为它通知密钥保管库服务用户可能无法使用特定机密  。 其值必须是包含 IntDate 值的数字。   
-- *nbf*：IntDate，可选，默认值为 **now**。 nbf（非过去）属性标识在不应检索机密数据之前的时间，[特定情况](#date-time-controlled-operations)除外  。 此字段仅供参考  。 其值必须是包含 IntDate 值的数字。 
-- enabled：布尔型，可选，默认值为 true   。 此属性指定是否可以检索机密数据。 enabled 属性与 nbf 和 exp 结合使用，如果在 nbf 和 exp 之间出现操作，只有在 enabled 设置为 true 时，才允许该操作      。 nbf 和 exp 时段外的操作会自动禁止，[特定情况](#date-time-controlled-operations)除外   。  
+- *exp*：IntDate，可选，默认值为 **forever**。 exp（过期时间）属性标识在不应检索机密数据当时或之后的过期时间，[特定情况](#date-time-controlled-operations)除外。 此字段仅供参考，因为它通知密钥保管库服务用户可能无法使用特定机密。 其值必须是包含 IntDate 值的数字。   
+- *nbf*：IntDate，可选，默认值为 **now**。 nbf（非过去）属性标识在不应检索机密数据之前的时间，[特定情况](#date-time-controlled-operations)除外。 此字段仅供参考。 其值必须是包含 IntDate 值的数字。 
+- enabled：布尔型，可选，默认值为 true。 此属性指定是否可以检索机密数据。 enabled 属性与 nbf 和 exp 结合使用，如果在 nbf 和 exp 之间出现操作，只有在 enabled 设置为 true 时，才允许该操作   。 nbf 和 exp 时段外的操作会自动禁止，[特定情况](#date-time-controlled-operations)除外 。  
 
 在包含机密属性的任何响应中还包括以下其他只读属性：  
 
@@ -42,7 +46,7 @@ Key Vault 还支持机密的 contentType 字段。 客户端可以指定机密�
 
 ### <a name="date-time-controlled-operations"></a>日期时间控制的操作
 
-机密的获取操作在 nbf / exp 时段外适合尚未生效的机密和过期的机密    。 对于尚未生效的机密，调用机密的“获取”操作可用于测试目的  。 检索（获取）过期的密钥可以用于恢复操作  。
+机密的获取操作在 nbf / exp 时段外适合尚未生效的机密和过期的机密 。 对于尚未生效的机密，调用机密的“获取”操作可用于测试目的。 检索（获取）过期的密钥可以用于恢复操作。
 
 ## <a name="secret-access-control"></a>机密访问控制
 
@@ -68,7 +72,7 @@ Key Vault 中托管的机密的访问控制是在包含这些机密的 Key Vault
 可以用标记的形式指定其他特定于应用程序的元数据。 Key Vault 支持多达 15 种标记，每种标记可以有 256 个字符的名称和 256 个字符的值。  
 
 >[!Note]
->如果调用方具有“列表”  或“获取”  权限，则调用方可以读取标记。
+>如果调用方具有“列表”或“获取”权限，则调用方可以读取标记。
 
 ## <a name="azure-storage-account-key-management"></a>Azure 存储帐户密钥管理
 

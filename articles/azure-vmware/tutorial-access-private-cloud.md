@@ -3,18 +3,18 @@ title: 教程 - 了解如何访问私有云
 description: 了解如何访问 Azure VMware 解决方案 (AVS) 私有云
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: fcee332818c89d9c8b00795dca9e74f68260eefd
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 332b1b01f05ca97b03264201384ee38ac266470f
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82739582"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873602"
 ---
 # <a name="tutorial-learn-how-to-access-an-azure-vmware-solution-avs-private-cloud"></a>教程：了解如何访问 Azure VMware 解决方案 (AVS) 私有云
 
 在预览期，AVS 不允许使用本地 vCenter 管理私有云。 需要通过一个 Jumpbox 对本地 vCenter 实例执行额外的设置和连接。 
 
-在本教程中，我们为上一篇教程 [Tutorial:Configure networking for your VMWare private cloud in Azure](tutorial-configure-networking.md)（教程：在 Azure 中配置 VMWare 私有云的网络）中创建的资源组中的某个 Jumpbox 创建 Windows 虚拟机，然后登录到 vCenter。 此 VM 位于创建的同一虚拟网络中，提供对 vCenter 和 NSX 管理器的访问。 
+在本教程中，我们为上一篇教程 [Tutorial:在 Azure 中为 VMWare 私有云配置网络](tutorial-configure-networking.md)并登录到 vCenter。 此 VM 位于创建的同一虚拟网络中，提供对 vCenter 和 NSX 管理器的访问。 
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -24,11 +24,11 @@ ms.locfileid: "82739582"
 
 ## <a name="create-a-new-windows-virtual-machine"></a>创建新的 Windows 虚拟机
 
-在资源组中选择“+ 添加”，搜索并选择“Microsoft Windows 10”，然后单击“创建”    。
+在资源组中选择“+ 添加”，搜索并选择“Microsoft Windows 10”，然后单击“创建”  。
 
 :::image type="content" source="./media/tutorial-access-private-cloud/ss8-azure-w10vm-create.png" alt-text="为 Jumpbox 添加新的 Windows 10 VM" border="true":::
 
-在字段中输入所需信息，然后选择“查看 + 创建”  。 有关字段的详细信息，请参阅下表。
+在字段中输入所需信息，然后选择“查看 + 创建”。 有关字段的详细信息，请参阅下表。
 
 | 字段 | 值 |
 | --- | --- |
@@ -39,13 +39,13 @@ ms.locfileid: "82739582"
 | **可用性选项** | 保留选择的默认值。 |
 | **图像** | 选择 VM 映像。 |
 | **大小** | 保留默认大小值。 |
-| **身份验证类型**  | 选择“密码”。  |
+| **身份验证类型**  | 选择“密码”。 |
 | **用户名** | 输入用于登录到 VM 的用户名。 |
 | **密码** | 输入用于登录到 VM 的密码。 |
 | **确认密码** | 输入用于登录到 VM 的密码。 |
-| **公共入站端口** | 选择“无”。  如果选择“无”，可以使用 [JIT 访问](../security-center/security-center-just-in-time.md#configure-jit-access-from-an-azure-vms-page-)，以便仅在需要访问 VM 时才对其进行访问。  |
+| **公共入站端口** | 选择“无”。 如果选择“无”，可以使用 [JIT 访问](../security-center/security-center-just-in-time.md#configure-jit-access-from-an-azure-vms-page-)，以便仅在需要访问 VM 时才控制对 VM 的访问。  |
 
-输入适当的信息后，单击“查看 + 创建”  。 验证通过后，选择“创建”启动虚拟机创建过程  。
+输入适当的信息后，单击“查看 + 创建”。 验证通过后，选择“创建”启动虚拟机创建过程。
 
 :::image type="content" source="./media/tutorial-access-private-cloud/ss11-review-create-wjb01.png" alt-text="为 Jumpbox 创建新的 Windows 10 VM" border="true":::
 
@@ -53,7 +53,7 @@ ms.locfileid: "82739582"
 
 使用 VMware vCenter SSO 从 Jumpbox 登录到 vSphere 客户端。 使用云管理员用户名登录到 vSphere 客户端；看到有关潜在安全风险的警告时，请接受安全风险并继续；使用单一登录凭据登录到 VMware vCenter，并验证是否成功显示了用户界面。
 
-在 Azure 门户中选择你的私有云，然后在“概览”视图中选择“标识”>“默认”   。 此时会显示私有云 vCenter 和 NSX-T 管理器的 URL 和登录凭据。
+在 Azure 门户中选择你的私有云，然后在“概览”视图中选择“标识”>“默认” 。 此时会显示私有云 vCenter 和 NSX-T 管理器的 URL 和登录凭据。
 
 :::image type="content" source="./media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="显示私有云 vCenter 和 NSX 管理器 URL 和凭据" border="true":::
 

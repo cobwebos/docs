@@ -8,33 +8,33 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 12/12/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 1c424c75a4df193ec412355607c68abeda0560a5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 77795e654a2f3824a877b28c8d006090c0de7d15
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448494"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873217"
 ---
 # <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>快速入门：使用 Python 和必应新闻搜索 REST API 执行新闻搜索
 
-使用本快速入门对必应新闻搜索 API 进行你的第一次调用并接收 JSON 响应。 这个简单的 JavaScript 应用程序会向 API 发送一个搜索查询并处理结果。 虽然此应用程序是使用 Python 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
+根据此快速入门中的说明对必应资讯搜索 API 进行第一次调用。 这个简单的 askSpoke 应用程序会向 API 发送一个搜索查询并处理 JSON 结果。 
 
-可以通过单击启动活页夹锁屏提醒，在 [MyBinder](https://mybinder.org) 上将此代码示例作为 Jupyter Notebook 运行： 
+虽然此应用程序是使用 Python 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
-[![活页夹](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingNewsSearchAPI.ipynb)
+若要在 [MyBinder](https://mybinder.org) 上将此代码示例作为 Jupyter 笔记本运行，请选择“启动活页夹”锁屏提醒： 
+
+[![启动活页夹](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingNewsSearchAPI.ipynb)
 
 该示例的源代码还可在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingNewsSearchv7.py) 上获得。
-
-## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>创建并初始化应用程序
 
-1. 在你最喜欢使用的 IDE 或编辑器中新建一个 Python 文件，并导入请求模块。 为你的订阅密钥、终结点和搜索词创建变量。 可以使用下面的全局终结点，也可以使用资源的 Azure 门户中显示的[自定义子域](../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
+在你最喜欢使用的 IDE 或编辑器中新建一个 Python 文件，并导入请求模块。 为订阅密钥、终结点和搜索词创建变量。 你可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
 ```python
 import requests
@@ -44,14 +44,14 @@ search_term = "Microsoft"
 search_url = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
 ```
 
-### <a name="create-parameters-for-the-request"></a>为请求创建参数
+## <a name="create-parameters-for-the-request"></a>为请求创建参数
 
-1. 将你的订阅密钥添加到一个新字典中，使用 `"Ocp-Apim-Subscription-Key"` 作为键。 为搜索参数执行相同的操作。
+将你的订阅密钥添加到一个新字典中，使用 `Ocp-Apim-Subscription-Key` 作为键。 为搜索参数执行相同的操作。
 
-    ```python
-    headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
-    params  = {"q": search_term, "textDecorations": True, "textFormat": "HTML"}
-    ```
+```python
+headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
+params  = {"q": search_term, "textDecorations": True, "textFormat": "HTML"}
+```
 
 ## <a name="send-a-request-and-get-a-response"></a>发送请求并获取响应
 
@@ -63,15 +63,15 @@ search_url = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
     search_results = response.json()
     ```
 
-2. `search_results` 将来自 API 的响应包含为 JSON 对象。 访问响应中包含的对象的说明。
+2. 访问 API 响应中包含的项目的说明，该 API 以 JSON 对象的形式存储在 `search_results` 中。 
     
     ```python
     descriptions = [article["description"] for article in search_results["value"]]
     ```
 
-## <a name="displaying-the-results"></a>显示结果
+## <a name="display-the-results"></a>显示结果
 
-然后，这些说明可以呈现为表格，其中搜索关键字用粗体突出显示  。
+然后，这些说明可以呈现为表格，其中搜索关键字用粗体突出显示。
 
 ```python
 from IPython.display import HTML

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: fdac12350db785e6194cd3d057f4d2adfefa5969
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 113e745e078bd5d345845318af1b10ed98f2aecb
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80335736"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83746919"
 ---
 # <a name="what-is-azure-maps"></a>什么是 Azure Maps？
 
@@ -155,7 +155,7 @@ Azure Maps 空间操作服务获取位置信息。 它会快速分析位置信�
 
 ### <a name="ip-to-location-service"></a>IP to Location 服务
 
-使用 IP to Location 服务预览检索的 IP 地址的双字母国家/地区代码。 此服务可基于地理位置通过提供自定义的应用程序内容帮助你增强用户体验。
+使用定位 IP 服务预览检索的 IP 地址的双字母国家/地区代码。 此服务可基于地理位置通过提供自定义的应用程序内容帮助你增强用户体验。
 
 有关 REST API 中的 IP to Location 服务的详细信息，请阅读 [Azure Maps 地理位置 API 文档](https://docs.microsoft.com/rest/api/maps/geolocation)。
 

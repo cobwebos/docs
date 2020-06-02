@@ -8,12 +8,12 @@ ms.subservice: workloads
 ms.topic: overview
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: ae98325d98df1ac8a06e0c0bc950d89cc6b77eda
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 44006bdfd9ffe6e78380adefe9271f42c0a76f84
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82192257"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773273"
 ---
 # <a name="confidential-computing-on-azure"></a>Azure 上的机密计算
 
@@ -37,18 +37,18 @@ ms.locfileid: "82192257"
 - 如何防止公司内部的特权管理员造成安全威胁？
 - 还有哪些方法可以防止第三方访问敏感的客户数据？
 
-Microsoft Azure 可帮助你最小化受攻击面，以增强数据保护。 Azure 已提供了许多工具来通过客户端加密和服务器端加密等模型保护[静态数据](../security/fundamentals/encryption-atrest.md)  。 此外，Azure 还提供了通过安全协议（例如 TLS 和 HTTPS）加密[传输中数据](../security/fundamentals/data-encryption-best-practices.md#protect-data-in-transit)的机制  。 本页介绍了数据加密的第三个支柱 - 使用中数据的加密  。
+Microsoft Azure 可帮助你最小化受攻击面，以增强数据保护。 Azure 已提供了许多工具来通过客户端加密和服务器端加密等模型保护[静态数据](../security/fundamentals/encryption-atrest.md)。 此外，Azure 还提供了通过安全协议（例如 TLS 和 HTTPS）加密[传输中数据](../security/fundamentals/data-encryption-best-practices.md#protect-data-in-transit)的机制。 本页介绍了数据加密的第三个支柱 - 使用中数据的加密。
 
 
 ## <a name="introduction-to-confidential-computing"></a>机密计算简介 <a id="intro to acc"></a>
 
-机密计算是由[机密计算联盟](https://confidentialcomputing.io/) (CCC) 定义的一个行业术语。CCC 是专业定义机密计算并加速其采用的基金会。 执行计算时，机密计算将对使用中的数据提供保护。 这些计算是在基于硬件的受信任执行环境 (TEE) 中进行的。
+机密计算是由[机密计算联盟](https://confidentialcomputing.io/) (CCC) 定义的一个行业术语。CCC 是专业定义机密计算并加速其采用的基金会。 CCC 将机密计算定义为通过在基于硬件的受信任执行环境 (TEE) 中执行计算来保护使用中的数据。
 
 TEE 是强制仅执行已授权代码的环境。 TEE 外部的任何代码都无法读取或篡改该环境中的任何数据。
 
-### <a name="enclaves-and-trusted-execution-environments"></a>领地和受信任执行环境
+### <a name="enclaves"></a>领地
 
-在机密计算的上下文中，TEE 通常称为“领地”或“安全领地”   。 领地是硬件处理器和内存的受保护部分。 即使是使用调试器，也无法查看领地内部的数据或代码。 如果不受信任的代码尝试修改领地内存中的内容，则会禁用该环境并拒绝操作。
+领地是硬件处理器和内存的受保护部分。 即使是使用调试器，也无法查看领地内部的数据或代码。 如果不受信任的代码尝试修改领地内存中的内容，则会禁用该环境并拒绝操作。
 
 开发应用程序时，可以使用[软件工具](#oe-sdk)来屏蔽领地内部的代码和数据部分。 这些工具确保受信任环境外部的任何人都不能查看或修改你的代码和数据。 
 
@@ -96,11 +96,11 @@ Azure 机密计算基础结构目前由虚拟机 (VM) 的专用 SKU 组成。 �
 1. “不受信任的”组件（宿主）
 1. “受信任的”组件（领地）
 
-宿主是在不受信任的环境中运行的领地应用程序  。 宿主中的代码无法访问已载入领地的代码。 
+宿主是运行领地应用程序的不受信任的环境。 宿主无法访问部署在它上面的领地代码。 
 
-领地是 TEE 实现中运行代码和数据的位置  。 安全计算应在领地中进行，以确保机密和敏感数据保持受保护状态。 
+领地是应用程序代码及其缓存数据/内存运行的位置。 安全计算应在领地中进行，以确保机密和敏感数据保持受保护状态。 
 
-在开始开发领地应用程序时，你需要确定哪些代码和数据需要保护。 你选择放入受信任组件的代码将与应用程序其余组件中的数据相互隔离。 初始化领地并将代码加载到内存后，无法从受保护环境的外部读取或更改该代码。
+在应用程序设计过程中，识别并确定应用程序的哪个部分需要在领地中运行非常重要。 你选择放入受信任组件的代码将与应用程序其余组件中的数据相互隔离。 初始化领地并将代码加载到内存后，无法从不受信任的组件读取或更改该代码。 
 
 ### <a name="open-enclave-software-development-kit-oe-sdk"></a>Open Enclave 软件开发工具包 (OE SDK) <a id="oe-sdk"></a>
 

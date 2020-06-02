@@ -5,16 +5,16 @@ author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 05/01/2020
+ms.date: 05/07/2020
 ms.author: banders
-ms.openlocfilehash: b8c523acabd02dc30e9b13f7f83a4a44554cbd4d
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 79d0a648645743751eed3b50edb628a20023546e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690929"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660355"
 ---
-# <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>了解 Azure 中的 Azure 企业协议管理角色
+# <a name="managing-azure-enterprise-roles"></a>管理 Azure 企业角色
 
 签署了企业协议 (EA) 的 Azure 客户可以分配五个不同的管理角色，协助管理组织的使用情况和开支：
 
@@ -62,6 +62,19 @@ ms.locfileid: "82690929"
 - <sup>4</sup> 将会向通知联系人发送有关 Azure 企业协议的电子邮件通信。
 - <sup>5</sup> 任务局限于部门中的帐户。
 
+## <a name="add-a-new-enterprise-administrator"></a>添加新的企业管理员
+
+企业管理员拥有管理 Azure EA 注册的大部分特权。 设置 EA 协议时，会创建初始的 Azure EA 管理员。 但是，你随时可以添加或删除新管理员。 新管理员只能由现有的管理员添加。 有关添加更多企业管理员的详细信息，请参阅[创建另一个企业管理员](ea-portal-get-started.md#create-another-enterprise-administrator)。有关计费配置文件角色和任务的详细信息，请参阅[计费配置文件角色和任务](understand-mca-roles.md#billing-profile-roles-and-tasks)。
+
+## <a name="update-account-owner-state-from-pending-to-active"></a>将帐户所有者状态从“挂起”更新为“活动”
+
+首次将新的帐户所有者 (AO) 添加到 Azure EA 注册时，其状态将显示为“挂起”。 当新帐户所有者收到激活欢迎电子邮件时，他们可以登录以激活其帐户。 激活帐户后，其帐户状态将从“挂起”更新为“可用” 。 帐户所有者需要阅读“警告”消息，然后选择“继续”。 系统可能会提示新用户输入其名字和姓氏来创建商务帐户。 如果出现此提示，他们必须添加所需的信息以继续，然后其帐户将会激活。
+
+## <a name="add-a-department-admin"></a>添加部门管理员
+
+Azure EA 管理员创建部门后，Azure 企业管理员可以添加部门管理员并将每个管理员关联到某个部门。 部门管理员可以创建新帐户。 需要添加新帐户才能创建 Azure EA 订阅。
+
+有关添加部门管理员的详细信息，请参阅[创建 Azure EA 部门管理员](ea-portal-get-started.md#add-a-department-administrator)。
 
 ## <a name="usage-and-costs-access-by-role"></a>按角色访问使用情况和成本
 
@@ -74,11 +87,10 @@ ms.locfileid: "82690929"
 |查看使用情况和成本详细信息|✔|✔|✔<sup>6</sup>|✔<sup>6</sup>|✔<sup>7</sup>|✔|
 |管理 Azure 门户中的资源|✘|✘|✘|✘|✔|✘|
 
-- <sup>6</sup> 要求企业管理员在企业门户中启用“DA 视图费用”策略。  然后，部门管理员就可以查看部门的成本详细信息。
-- <sup>7</sup> 要求企业管理员在企业门户中启用“AO 视图费用”策略。  然后，帐户所有者就可以查看帐户的成本详细信息。
+- <sup>6</sup> 要求企业管理员在企业门户中启用“DA 视图费用”策略。 然后，部门管理员就可以查看部门的成本详细信息。
+- <sup>7</sup> 要求企业管理员在企业门户中启用“AO 视图费用”策略。 然后，帐户所有者就可以查看帐户的成本详细信息。
 
-
-## <a name="pricing-in-azure-portal"></a>Azure 门户中的定价
+## <a name="see-pricing-for-different-user-roles"></a>请参阅不同用户角色的定价
 
 可能会在 Azure 门户中看到不同的定价，具体取决于你的管理角色，以及企业管理员设置的视图费用策略。 企业门户中有下述两个策略，这两个策略影响你在 Azure 门户中看到的定价：
 
@@ -98,6 +110,8 @@ ms.locfileid: "82690929"
 |无|不适用 |“所有者”|零售定价|
 
 在企业门户中设置企业管理员角色和视图费用策略。 RBAC 角色可以在 Azure 门户中更新。 有关详细信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../../role-based-access-control/role-assignments-portal.md)。
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

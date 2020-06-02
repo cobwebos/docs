@@ -3,12 +3,12 @@ title: 快速入门 - 生成和运行容器映像
 description: 使用 Azure 容器注册表快速运行任务，以便在云中按需生成和运行 Docker 容器映像。
 ms.topic: quickstart
 ms.date: 01/31/2020
-ms.openlocfilehash: f08f10dd170acaa8594ad5a47f5ef58e27288b10
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e07dd9dd36bc2c5a2dc5ea7efe81f693784b8996
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76986268"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680587"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>快速入门：使用 Azure 容器注册表任务生成和运行容器映像
 
@@ -26,7 +26,7 @@ ms.locfileid: "76986268"
 
 如果还没有容器注册表，请先使用 [az group create][az-group-create] 命令创建一个资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-以下示例在“eastus”  位置创建名为“myResourceGroup”  的资源组。
+以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -40,7 +40,7 @@ az group create --name myResourceGroup --location eastus
 az acr create --resource-group myResourceGroup --name myContainerRegistry008 --sku Basic
 ```
 
-此示例创建一个基本注册表  ，这是为了解 Azure 容器注册表的开发人员提供的成本优化选项。 有关可用服务层级的详细信息，请参阅[容器注册表 SKU][container-registry-skus]。
+此示例创建一个基本注册表，这是为了解 Azure 容器注册表的开发人员提供的成本优化选项。 有关可用服务层级的详细信息，请参阅[容器注册表服务层级][container-registry-skus]。
 
 ## <a name="build-an-image-from-a-dockerfile"></a>基于 Dockerfile 生成映像
 

@@ -5,41 +5,77 @@ services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
-ms.date: 02/14/2020
+ms.date: 05/18/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: e879afdbd4c34e9d74405644de86421fb2cbab46
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: acf3968510bc45838f26c4b3cf366abdee06f298
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77279505"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655499"
 ---
 示例言语采用特定格式。
 
 `text` 字段包含示例话语的文本。 `intentName` 字段必须对应于 LUIS 应用中的现有意向名称。 `entityLabels` 字段是必填的。 如果不想标记任何实体，请提供一个空数组。
 
-如果 entityLabels 数组不为空，则 `startCharIndex` 和 `endCharIndex` 需要标记 `entityName` 字段中引用的实体。 索引从零开始，这意味着顶部示例中的 6 表示西雅图的“S”而不是大写字母 S 之前的空格。如果你在文本中的空格处开始或结束标签，则用于添加话语的 API 调用将失败。
+如果 entityLabels 数组不为空，则 `startCharIndex` 和 `endCharIndex` 需要标记 `entityName` 字段中引用的实体。 该索引从零开始。 如果标签的起始或结尾位于文本中的空白处，则添加话语的 API 调用将失败。
 
 ```JSON
 [
-  {
-    "text": "go to Seattle today",
-    "intentName": "BookFlight",
-    "entityLabels": [
-      {
-        "entityName": "Location::LocationTo",
-        "startCharIndex": 6,
-        "endCharIndex": 12
-      }
-    ]
-  },
-  {
-    "text": "purple dogs are difficult to work with",
-    "intentName": "BookFlight",
-    "entityLabels": []
-  }
+    {
+        "text": "order a cheese pizza",
+        "intentName": "ModifyOrder",
+        "entityLabels":[]
+    },
+    {
+        "text": "order a large pepperoni pizza",
+        "intentName": "ModifyOrder",
+        "entityLabels": [
+            {
+                "entityName": "Order",
+                "startCharIndex": 8,
+                "endCharIndex": 28
+            }
+        ]
+    },
+    {
+        "text": "order 2 large pepperoni pizzas on thin crust",
+        "intentName": "ModifyOrder",
+        "entityLabels": [
+            {
+                "entityName": "Order",
+                "startCharIndex": 6,
+                "endCharIndex": 61
+            },
+            {
+                "entityName": "FullPizzaWithModifiers",
+                "startCharIndex": 6,
+                "endCharIndex": 61
+            },
+            {
+                "entity": "Quantity",
+                "startPos": 6,
+                "endPos": 7
+            },
+            {
+                "entity": "PizzaType",
+                "startPos": 14,
+                "endPos": 22
+            },
+            {
+                "entity": "Size",
+                "startPos": 8,
+                "endPos": 12
+            },
+            {
+                "entity": "Crust",
+                "startPos": 34,
+                "endPos": 37
+            }
+        ]
+    }
 ]
 ```

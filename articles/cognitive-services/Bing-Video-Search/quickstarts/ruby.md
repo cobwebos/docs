@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 8f6022f03d28362e85fba3fd75e60c4d7032b41b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: cd02a0ea51faa7dae14e0f9d61c446aae55dcbe1
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448384"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849563"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-ruby"></a>快速入门：使用必应视频搜索 REST API 和 Ruby 来搜索视频
 
-参考本快速入门首次调用必应视频搜索 API 并查看 JSON 响应中的搜索结果。 这个简单的 Ruby 应用程序会向该 API 发送一个 HTTP 视频搜索查询并显示响应。 虽然此应用程序是使用 Python 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingVideoSearchv7.rb) 上提供了此示例的源代码以及附加的错误处理和代码注释。
+根据此快速入门中的说明对必应视频搜索 API 进行第一次调用。 这个简单的 Ruby 应用程序会向该 API 发送一个 HTTP 视频搜索查询并显示 JSON 响应。 虽然此应用程序是使用 Python 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。 
+
+[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingVideoSearchv7.rb) 上提供了此示例的源代码以及附加的错误处理和代码注释。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -29,7 +31,7 @@ ms.locfileid: "75448384"
 
 ## <a name="create-and-initialize-the-application"></a>创建并初始化应用程序
 
-1. 将以下包导入代码文件。
+1. 将以下包导入代码文件：
 
     ```ruby
     require 'net/https'
@@ -37,7 +39,7 @@ ms.locfileid: "75448384"
     require 'json'
     ```
 
-2. 为 API 终结点、视频 API 搜索路径、订阅密钥和搜索词创建变量。 `uri` 可以是下面的全局终结点，也可以是资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
+2. 为 API 终结点、视频 API 搜索路径、订阅密钥和搜索词创建变量。 对于 `url` 值，可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
     ```ruby
     uri  = "https://api.cognitive.microsoft.com"
@@ -48,7 +50,7 @@ ms.locfileid: "75448384"
 
 ## <a name="create-and-send-an-api-request"></a>创建和发送 API 请求
 
-1. 使用上一个步骤中的变量来设置请求的搜索 URL 的格式。 组合使用 uri 和 path，对搜索词进行 url 编码，然后将其追加​​到 `?q=` 参数。
+1. 使用前一个步骤中的变量来设置请求的搜索 URL 的格式。 组合使用 uri 和 path，对搜索词进行 url 编码，然后将其追加​​到 `?q=` 参数。
 
     ```ruby
     uri = URI(uri + path + "?q=" + URI.escape(term))
@@ -61,7 +63,7 @@ ms.locfileid: "75448384"
     request['Ocp-Apim-Subscription-Key'] = accessKey
     ```
 
-3. 发送请求并保存响应。
+3. 发送请求，然后保存响应。
     
     ```ruby
     response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -71,11 +73,11 @@ ms.locfileid: "75448384"
 
 ## <a name="process-and-view-the-response"></a>处理和查看响应
 
-1. 在收到响应后，可以输出 JSON 响应。
+在收到响应后，可以输出 JSON 响应。
 
-    ```ruby
-    puts JSON::pretty_generate(JSON(response.body))
-    ```
+```ruby
+puts JSON::pretty_generate(JSON(response.body))
+```
 
 ## <a name="json-response"></a>JSON 响应
 

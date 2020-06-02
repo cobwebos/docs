@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 09/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d3d6b33211f6f247d9f30c0f162b388085faabe6
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: d57bf7fa6d56c1704a78219f8a0af1182ce8a955
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80332532"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739093"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C 的技术和功能概述
 
@@ -23,19 +23,19 @@ ms.locfileid: "80332532"
 
 ## <a name="azure-ad-b2c-tenant"></a>Azure AD B2C 租户
 
-在 Azure Active Directory B2C (Azure AD B2C) 中，租户表示组织，也是用户的目录。  每个 Azure AD B2C 租户都是独特的，独立于其他 Azure AD B2C 租户。 Azure AD B2C 租户不同于你可能已有的 Azure Active Directory 租户。
+在 Azure Active Directory B2C (Azure AD B2C) 中，租户表示组织，也是用户的目录。 每个 Azure AD B2C 租户都是独特的，独立于其他 Azure AD B2C 租户。 Azure AD B2C 租户不同于你可能已有的 Azure Active Directory 租户。
 
 在 Azure AD B2C 租户中使用的主要资源包括：
 
-* **目录** - 目录是 Azure AD B2C 将用户的凭据和配置文件数据以及应用程序注册存储到的位置。 
+* **目录** - 目录是 Azure AD B2C 将用户的凭据和配置文件数据以及应用程序注册存储到的位置。
 * **应用程序注册** - 将 Web、移动和本机应用程序注册到 Azure AD B2C 以启用标识管理。 此外，应用程序注册还包括要使用 Azure AD B2C 保护的 API。
 * **用户流**和**自定义策略** - 应用程序的内置标识体验（用户流）和完全可自定义的标识体验（自定义策略）。
-  * 使用用户流可以快速配置和启用常见标识任务，例如注册、登录和配置文件编辑。 
-  * 使用自定义策略不仅可为常见标识任务启用用户体验，而且还能为组织、客户、员工、合作伙伴和市民的独特复杂标识工作流构建支持。 
+  * 使用用户流可以快速配置和启用常见标识任务，例如注册、登录和配置文件编辑。
+  * 使用自定义策略不仅可为常见标识任务启用用户体验，而且还能为组织、客户、员工、合作伙伴和市民的独特复杂标识工作流构建支持。
 * **标识提供者** - 以下对象的联合设置：
-  * 要在应用程序中支持的社交标识提供者，例如 Facebook、LinkedIn 或 Twitter。 
-  * 支持 OAuth 2.0、OpenID Connect 等标准标识协议的外部标识提供者。 
-  * 可让用户使用用户名（或者电子邮件地址或其他 ID）和密码注册和登录的本地帐户。 
+  * 要在应用程序中支持的社交标识提供者，例如 Facebook、LinkedIn 或 Twitter。
+  * 支持 OAuth 2.0、OpenID Connect 等标准标识协议的外部标识提供者。
+  * 可让用户使用用户名（或者电子邮件地址或其他 ID）和密码注册和登录的本地帐户。
 * **密钥** - 添加和管理用于签署与验证令牌的加密密钥。
 
 Azure AD B2C 租户是开始使用 Azure AD B2C 之前必须先创建的第一个资源。 有关如何创建该资源，请参阅[教程：创建 Azure Active Directory B2C 租户](tutorial-create-tenant.md)中的步骤创建一个。
@@ -52,7 +52,7 @@ Azure AD B2C 定义多种类型的用户帐户。 Azure Active Directory、Azure
 
 ### <a name="consumer-accounts"></a>使用者帐户
 
-用户可以通过使用者帐户登录到通过 Azure AD B2C 保护的应用程序。  但是，具有使用者帐户的用户无法访问 Azure 资源（例如 Azure 门户）。
+用户可以通过使用者帐户登录到通过 Azure AD B2C 保护的应用程序。 但是，具有使用者帐户的用户无法访问 Azure 资源（例如 Azure 门户）。
 
 可将使用者帐户关联到以下标识类型：
 
@@ -95,7 +95,7 @@ Azure AD B2C 的核心优势在于它的可扩展策略框架。 策略描述用
 
 ### <a name="user-flow"></a>用户流
 
-为了帮助你快速设置最常见的标识任务，Azure 门户中包含了多个称作“用户流”的预定义可配置策略。 
+为了帮助你快速设置最常见的标识任务，Azure 门户中包含了多个称作“用户流”的预定义可配置策略。
 
 可以配置如下所述的用户流设置，以控制应用程序中的标识体验行为：
 
@@ -150,13 +150,13 @@ Azure AD B2C 支持对用户旅程使用 [OpenID Connect 和 OAuth 2.0 协议](p
 
 ## <a name="application-integration"></a>应用程序集成
 
-当用户想要登录到你的应用程序时（无论是 Web、移动、桌面还是单页应用程序 (SPA)），该应用程序都会向用户流或自定义策略提供的终结点发起授权请求。 用户流或自定义策略定义并控制用户的体验。 当用户完成用户流（例如注册或登录流）后，Azure AD B2C 会生成一个令牌，然后将用户重定向回到应用程序。 
+当用户想要登录到你的应用程序时（无论是 Web、移动、桌面还是单页应用程序 (SPA)），该应用程序都会向用户流或自定义策略提供的终结点发起授权请求。 用户流或自定义策略定义并控制用户的体验。 当用户完成用户流（例如注册或登录流）后，Azure AD B2C 会生成一个令牌，然后将用户重定向回到应用程序。
 
 ![移动应用，其中的箭头显示 Azure AD B2C 登录页之间的流](media/technical-overview/app-integration.png)
 
 多个应用程序可以使用同一个用户流或自定义策略。 单个应用程序可以使用多个用户流或自定义策略。
 
-例如，若要登录到某个应用程序，该应用程序将使用注册或登录用户流。  用户登录后，他们可能想要编辑其配置文件，在这种情况下，应用程序将发起另一个授权请求（这一次使用的是配置文件编辑用户流）。 
+例如，若要登录到某个应用程序，该应用程序将使用注册或登录用户流。 用户登录后，他们可能想要编辑其配置文件，在这种情况下，应用程序将发起另一个授权请求（这一次使用的是配置文件编辑用户流）。
 
 ## <a name="seamless-user-experiences"></a>无缝用户体验
 

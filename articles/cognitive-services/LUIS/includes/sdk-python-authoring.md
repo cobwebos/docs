@@ -6,16 +6,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 02/14/2020
+ms.date: 05/26/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 631185c20b816191530158fab2b7cd1ed68c3092
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 1e51c4e9d0c3da8b6ad76b4b45869ea8b2394008
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77371943"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871275"
 ---
 可以使用适用于 Python 的语言理解 (LUIS) 创作客户端库执行以下操作：
 
@@ -28,53 +28,12 @@ ms.locfileid: "77371943"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 语言理解 (LUIS) 门户帐户：[免费创建一个](https://www.luis.ai)。
-* [Python 3.x](https://www.python.org/)
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
+* 最新版本的 [Python 3.x](https://www.python.org/)。
+* 有了 Azure 订阅后，在 Azure 门户中[创建语言理解创作资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)，以获取创作密钥和终结点。 等待其部署并单击“转到资源”按钮。
+    * 需要从[创建](../luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal)的资源获取密钥和终结点，以便将应用程序连接到语言理解创作。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。 可以使用免费定价层 (`F0`) 来试用该服务。
 
 ## <a name="setting-up"></a>设置
-
-### <a name="get-your-language-understanding-luis-starter-key"></a>获取语言理解 (LUIS) 初学者密钥
-
-通过创建 LUIS 创作资源，获取[初学者密钥](../luis-how-to-azure-subscription.md#starter-key)。 保留密钥和密钥区域，以便用于下一步。
-
-### <a name="create-an-environment-variable"></a>创建环境变量
-
-使用密钥和密钥区域，创建两个用于身份验证的环境变量：
-
-* `LUIS_AUTHORING_KEY` - 用于验证请求的资源密钥。
-* `LUIS_REGION` - 与密钥关联的区域。 例如，`westus`。
-
-使用操作系统的说明。
-
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-```console
-setx LUIS_AUTHORING_KEY <replace-with-your-luis-authoring-key
-setx LUIS_REGION <replace-with-your-luis-region>
-```
-
-添加环境变量后，请重启控制台窗口。
-
-#### <a name="linux"></a>[Linux](#tab/linux)
-
-```bash
-export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
-export LUIS_REGION=<replace-with-your-luis-region>
-```
-
-添加环境变量后，请从控制台窗口运行 `source ~/.bashrc`，使更改生效。
-
-#### <a name="macos"></a>[macOS](#tab/unix)
-
-编辑 `.bash_profile`，然后添加环境变量：
-
-```bash
-export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
-export LUIS_REGION=<replace-with-your-luis-region>
-```
-
-添加环境变量后，请从控制台窗口运行 `source .bash_profile`，使更改生效。
-***
 
 ### <a name="install-the-python-library-for-luis"></a>安装适用于 LUIS 的 Python 库
 
@@ -136,7 +95,7 @@ pip install azure-cognitiveservices-language-luis
 
 
 ## <a name="create-intent-for-the-app"></a>为应用创建意向
-LUIS 应用模型中的主要对象是意向。 意向与用户言语意向的分组相符。  用户可以提问，或者做出表述，指出希望机器人（或其他客户端应用程序）提供特定的有针对性响应。  意向的示例包括预订航班、询问目的地城市的天气，以及询问客户服务的联系信息。
+LUIS 应用模型中的主要对象是意向。 意向与用户言语意向的分组相符。 用户可以提问，或者做出表述，指出希望机器人（或其他客户端应用程序）提供特定的有针对性响应。 意向的示例包括预订航班、询问目的地城市的天气，以及询问客户服务的联系信息。
 
 将 [model.add_intent](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.modeloperations?view=azure-python#add-intent-app-id--version-id--name-none--custom-headers-none--raw-false----operation-config-) 方法与唯一意向的名称配合使用，然后传递应用 ID、版本 ID 和新的意向名称。
 

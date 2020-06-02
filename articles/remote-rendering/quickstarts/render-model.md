@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: b0af45ba4a6b1ca7f9e751af082ff0db80776ec0
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: be5bc8ec4e8f363d9b6079d22f3bba1af2d4d5fb
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677682"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682568"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>快速入门：使用 Unity 渲染模型
 
@@ -53,35 +53,35 @@ git clone https://github.com/Azure/azure-remote-rendering
 
 最后一个命令会在 ARR 目录中创建一个子目录，其中包含 Azure 远程渲染的各个示例项目。
 
-可在子目录 Unity/Quickstart 中找到 Unity 的快速入门示例应用。 
+可在子目录 Unity/Quickstart 中找到 Unity 的快速入门示例应用。
 
 ## <a name="rendering-a-model-with-the-unity-sample-project"></a>使用 Unity 示例项目渲染模型
 
-打开 Unity Hub，添加位于 ARR\azure-remote-rendering\Unity\Quickstart 文件夹中的示例项目。 
+打开 Unity Hub，添加位于“ARR\azure-remote-rendering\Unity\Quickstart”文件夹中的示例项目。
 打开项目。 如果需要，请允许 Unity 将该项目升级到已安装的版本。
 
 要渲染的默认模型是一个[内置示例模型](../samples/sample-model.md)。 [下一篇快速入门](convert-model.md)将介绍如何使用 ARR 转换服务来转换自定义模型。
 
 ### <a name="enter-your-account-info"></a>输入帐户信息
 
-1. 在 Unity 资产浏览器中，导航到“场景”文件夹并打开“快速入门”场景。  
-1. 从“层次结构”中选择“RemoteRendering”游戏对象。  
-1. 在“检查器”中输入你的[帐户凭据](../how-tos/create-an-account.md)。 
+1. 在 Unity 资产浏览器中，导航到“场景”文件夹并打开“快速入门”场景。
+1. 从“层次结构”中选择“RemoteRendering”游戏对象。
+1. 在“检查器”中输入你的[帐户凭据](../how-tos/create-an-account.md)。 如果还没有帐户，请[创建一个](../how-tos/create-an-account.md)。
 
 ![ARR 帐户信息](./media/arr-sample-account-info.png)
 
 > [!IMPORTANT]
-> Azure 门户只会将你的帐户的域显示为 mixedreality.azure.com。  这不足以成功建立连接。
-> 请将 AccountDomain 设置为 `<region>.mixedreality.azure.com`，其中，`<region>` 是[你附近的可用区域之一](../reference/regions.md)。 
+> Azure 门户只会将你的帐户的域显示为 mixedreality.azure.com。 这不足以成功建立连接。
+> 请将 AccountDomain 设置为 `<region>.mixedreality.azure.com`，其中，`<region>` 是[你附近的可用区域之一](../reference/regions.md)。
 
-稍后我们需要将此项目部署到 HoloLens，并从该设备连接到远程渲染服务。 由于没有便捷的方法在设备上输入凭据，因此快速入门示例会将凭据保存在 Unity 场景中。 
+稍后我们需要将此项目部署到 HoloLens，并从该设备连接到远程渲染服务。 由于没有便捷的方法在设备上输入凭据，因此快速入门示例会将凭据保存在 Unity 场景中。
 
 > [!WARNING]
 > 务必不要将含有所保存凭据的项目签入到会泄露机密登录信息的某个存储库！
 
 ### <a name="create-a-session-and-view-the-default-model"></a>创建会话并查看默认模型
 
-按下 Unity 的“播放”按钮以启动会话。  在“游戏”面板中的视区底部，应会看到一个包含状态文本的叠加层。  该会话将经历一系列状态转换。 处于“正在启动”状态时，表示远程 VM 已运转，启动过程需要几分钟时间。  成功后，会话将转换为“就绪”状态。  现在，会话已进入“正在连接”状态，此时它会尝试访问该 VM 上的渲染运行时。  成功后，示例将转换为“已连接”状态。  此时，它会开始下载要渲染的模型。 由于模型较大，下载过程可能需要额外的几分钟时间。 然后，远程渲染的模型将会显示。
+按下 Unity 的“播放”按钮以启动会话。 在“游戏”面板中的视区底部，应会看到一个包含状态文本的叠加层。 该会话将经历一系列状态转换。 处于“正在启动”状态时，表示远程 VM 已运转，启动过程需要几分钟时间。 成功后，会话将转换为“就绪”状态。 现在，会话已进入“正在连接”状态，此时它会尝试访问该 VM 上的渲染运行时。 成功后，示例将转换为“已连接”状态。 此时，它会开始下载要渲染的模型。 由于模型较大，下载过程可能需要额外的几分钟时间。 然后，远程渲染的模型将会显示。
 
 ![示例的输出](media/arr-sample-output.png)
 
@@ -93,7 +93,7 @@ git clone https://github.com/Azure/azure-remote-rendering
 
 ![Unity 示例播放](./media/arr-sample-configure-session-running.png)
 
-现在，可以通过选择新节点并单击“检查器”中的“显示子级”来浏览场景图。 
+现在，可以通过选择新节点并单击“检查器”中的“显示子级”来浏览场景图。
 
 ![Unity 层次结构](./media/unity-hierarchy.png)
 
@@ -101,7 +101,7 @@ git clone https://github.com/Azure/azure-remote-rendering
 
 ![更改裁切平面](media/arr-sample-unity-cutplane.png)
 
-若要同步变换，请单击“立即同步”或选中“同步每个帧”选项。   对于组件属性，只需更改它们就已足够。
+若要同步变换，请单击“立即同步”或选中“同步每个帧”选项。  对于组件属性，只需更改它们就已足够。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,14 +1,14 @@
 ---
 title: 快速入门：第一个门户查询
 description: 本快速入门介绍在 Azure 门户中使用 Azure Resource Graph 资源管理器运行第一个查询的步骤。
-ms.date: 11/21/2019
+ms.date: 05/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 5cf355e78ad51e06d7ba27d48dd352f35b4c0740
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 69fb1262de706185d8968e9381bb34dd0d84a3b7
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74406801"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872081"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>快速入门：使用 Azure Resource Graph Explorer 运行第一个 Resource Graph 查询
 
@@ -24,36 +24,36 @@ ms.locfileid: "74406801"
 
 打开 [Azure 门户](https://portal.azure.com)，遵循以下步骤找到并使用 Resource Graph Explorer 运行第一个 Resource Graph 查询：
 
-1. 在左侧窗格中，选择“所有服务”  。 搜索并选择 **Resource Graph Explorer**。
+1. 在左侧窗格中，选择“所有服务”。 搜索并选择 **Resource Graph Explorer**。
 
-1. 在窗口中的“查询 1”部分输入查询 `Resources | project name, type | limit 5`，然后选择“运行查询”。  
+1. 在窗口中的“查询 1”部分输入查询 `Resources | project name, type | limit 5`，然后选择“运行查询”。 
 
    > [!NOTE]
    > 由于此查询示例未提供排序修饰符（例如 `order by`），因此多次运行此查询可能会为每个请求生成一组不同的资源。
 
-1. 在“结果”选项卡中查看查询响应。  选择“消息”选项卡，以查看有关查询的详细信息，包括结果计数和查询持续时间。  出现的任何错误将显示在此选项卡下。
+1. 在“结果”选项卡中查看查询响应。选择“消息”选项卡，以查看有关查询的详细信息，包括结果计数和查询持续时间。 出现的任何错误将显示在此选项卡下。
 
-1. 更新查询，以将 `order by` 条件指定为 **Name** 属性：`Resources | project name, type | limit 5 | order by name asc`。 然后选择“运行查询”。 
+1. 更新查询，以将 `order by` 条件指定为 **Name** 属性：`Resources | project name, type | limit 5 | order by name asc`。 然后选择“运行查询”。
 
    > [!NOTE]
-   > 与第一个查询一样，多次运行此查询可能会为每个请求生成一组不同的资源。 查询命令的顺序非常重要。 在本例中，`order by` 位于 `limit` 之后。 这将首先限制查询结果，然后对其进行排序。
+   > 与第一个查询一样，多次运行此查询可能会为每个请求生成一组不同的资源。 查询命令的顺序非常重要。 在本例中，`order by` 位于 `limit` 之后。 命令按此顺序执行，首先会限制查询结果，然后对它们进行排序。
 
-1. 将查询更新为先按 **Name** 属性应用 `order by`，然后对前五个结果应用 `limit`：`Resources | project name, type | order by name asc | limit 5`。 然后选择“运行查询”。 
+1. 将查询更新为先按 **Name** 属性应用 `order by`，然后对前五个结果应用 `limit`：`Resources | project name, type | order by name asc | limit 5`。 然后选择“运行查询”。
 
-假设环境中没有任何变化，则多次运行最后一个查询时，返回的结果将是一致的且符合预期的 -- 按 **Name** 属性排序，但仍限制为前五个结果。
+假设环境中没有任何变化，则多次运行最后一个查询时，返回的结果将是一致的且按 Name 属性排序，但仍限制为前五个结果。
 
 ### <a name="schema-browser"></a>架构浏览器
 
-架构浏览器位于 Resource Graph Explorer 的左窗格中。 此资源列表显示 Azure 资源的所有资源类型，这些类型受 Azure Resource Graph 的支持，并且存在于你有权访问的租户中。  展开资源类型或附属属性会显示可用于创建 Resource Graph 查询的子属性。
+架构浏览器位于 Resource Graph Explorer 的左窗格中。 此资源列表显示 Azure 资源的所有资源类型，这些类型受 Azure Resource Graph 的支持，并且存在于你有权访问的租户中。 展开资源类型或附属属性会显示可用于创建 Resource Graph 查询的子属性。
 
 选择资源类型会将 `where type =="<resource type>"` 放入查询框中。 选择一个子属性会将 `where <propertyName> == "INSERT_VALUE_HERE"` 添加到查询框中。
 在架构浏览器中，可以十分方便地发现可在查询中使用的属性。 请确保将 _INSERT\_VALUE\_HERE_ 替换为自己的值，并调整包含条件、运算符和函数的查询，以获得预期结果。
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>基于 Resource Graph 查询创建图表
 
-运行上述最后一个查询后，如果你选择“图表”选项卡，则会看到一条消息，指出“该结果集与饼图可视化效果不兼容。”  列出结果的查询无法生成图表，但提供资源计数的查询则可以。 让我们使用[示例查询 - 按 OS 类型统计虚拟机数目](./samples/starter.md#count-virtual-machines-by-os-type)，基于 Resource Graph 查询创建可视化效果。
+运行上述最后一个查询后，如果你选择“图表”选项卡，则会看到一条消息，指出“该结果集与饼图可视化效果不兼容。” 列出结果的查询无法生成图表，但提供资源计数的查询则可以。 让我们使用[示例查询 - 按 OS 类型统计虚拟机数目](./samples/starter.md#count-virtual-machines-by-os-type)，基于 Resource Graph 查询创建可视化效果。
 
-1. 在窗口中的“查询 1”部分输入以下查询，然后选择“运行查询”。  
+1. 在窗口中的“查询 1”部分输入以下查询，然后选择“运行查询”。 
 
    ```kusto
    Resources
@@ -61,21 +61,21 @@ ms.locfileid: "74406801"
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
 
-1. 选择“结果”选项卡，可以看到，此查询的响应提供了计数。 
+1. 选择“结果”选项卡，可以看到，此查询的响应提供了计数。
 
-1. 选择“图表”选项卡。  现在，查询将会生成可视化效果。 在“选择图表类型...”中将类型更改为“条形图”或“圆环图”，以体验各种可用的可视化选项。   
+1. 选择“图表”选项卡。现在，查询将会生成可视化效果。 在“选择图表类型...”中将类型更改为“条形图”或“圆环图”，以体验各种可用的可视化选项。  
 
 ## <a name="pin-the-query-visualization-to-a-dashboard"></a>将查询可视化效果固定到仪表板
 
 如果查询返回的结果可以可视化，则你可以将该数据可视化效果固定到某个仪表板。 运行上述查询后，执行以下步骤：
 
-1. 选择“保存”，并提供名称“按 OS 类型统计的 VM 数目”。  然后在右窗格底部选择“保存”。 
+1. 选择“保存”，并提供名称“按 OS 类型统计的 VM 数目”。 然后在右窗格底部选择“保存”。
 
-1. 选择“运行查询”，以重新运行现已保存的查询。 
+1. 选择“运行查询”，以重新运行现已保存的查询。
 
-1. 在“图表”选项卡上，选择一种数据可视化效果。  然后选择“固定到仪表板”。 
+1. 在“图表”选项卡上，选择一种数据可视化效果。 然后选择“固定到仪表板”。
 
-1. 选择显示的门户通知，或者在左窗格中选择“仪表板”。 
+1. 选择显示的门户通知，或者在左窗格中选择“仪表板”。
 
 现在，该查询会显示在仪表板上，其磁贴标题与查询名称相匹配。 如果在固定时该查询未保存，则其名称将是“查询 1”。
 
@@ -101,9 +101,9 @@ ms.locfileid: "74406801"
 
 1. 选择并下载想要评估的示例仪表板。
 
-1. 在 Azure 门户上的左窗格中选择“仪表板”。 
+1. 在 Azure 门户上的左窗格中选择“仪表板”。
 
-1. 选择“上传”，找到并选择已下载的示例仪表板文件。  然后选择“打开”。 
+1. 选择“上传”，找到并选择已下载的示例仪表板文件。 然后选择“打开”。
 
 此时会自动显示已导入的仪表板。 由于该仪表板现已加载到 Azure 门户中，因此你可以根据需要进行探索和更改，或者基于示例创建可与团队共享的新仪表板。 有关使用仪表板的详细信息，请参阅[在 Azure 门户中创建和共享仪表板](../../azure-portal/azure-portal-dashboards.md)。
 
@@ -111,11 +111,11 @@ ms.locfileid: "74406801"
 
 若要从 Azure 门户环境中删除示例 Resource Graph 仪表板，可执行以下步骤：
 
-1. 在左窗格中选择“仪表板”。 
+1. 在左窗格中选择“仪表板”。
 
 1. 在仪表板下拉列表中，选择要删除的示例 Resource Graph 仪表板。
 
-1. 在仪表板顶部的菜单中选择“删除”，然后选择“确定”以确认。  
+1. 在仪表板顶部的菜单中选择“删除”，然后选择“确定”以确认。 
 
 ## <a name="next-steps"></a>后续步骤
 

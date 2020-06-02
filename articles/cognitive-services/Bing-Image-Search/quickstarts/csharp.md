@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 03/31/2020
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 6d9ceac5a63a7a644989430b0349a16369c7133a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 8018fa3935e780f8c4002483c5eebdade82b5f1c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478631"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83119021"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-c"></a>快速入门：使用必应图像搜索 REST API 和 C# 来搜索图像
 
-使用本快速入门开始向必应图像搜索 API 发送搜索请求。 此 C# 应用程序会向 API 发送搜索查询，并在结果中显示第一个图像的 URL。 虽然此应用程序是使用 C# 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
+使用此快速入门了解如何将搜索请求发送到必应图像搜索 API。 此 C# 应用程序会向 API 发送搜索查询，并在结果中显示第一个图像的 URL。 虽然此应用程序是使用 C# 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingImageSearchv7Quickstart.cs) 上提供了此示例的源代码以及附加的错误处理和注释。
 
@@ -32,7 +32,7 @@ ms.locfileid: "80478631"
 
 ## <a name="create-and-initialize-a-project"></a>创建并初始化项目
 
-1. 在 Visual Studio 中创建一个名为 `BingSearchApisQuickStart` 的新控制台解决方案。 然后将以下命名空间添加到主代码文件。
+1. 在 Visual Studio 中创建一个名为 `BingSearchApisQuickStart` 的新控制台解决方案。 然后，将以下命名空间添加到主代码文件：
 
     ```csharp
     using System;
@@ -42,7 +42,7 @@ ms.locfileid: "80478631"
     using Newtonsoft.Json.Linq;
     ```
 
-2. 为 API 终结点、订阅密钥和搜索词创建变量。 `uriBase` 可以是下面的全局终结点，也可以是资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
+2. 为 API 终结点、订阅密钥和搜索词创建变量。 对于 `uriBase`，你可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
     ```csharp
     //...
@@ -77,7 +77,7 @@ ms.locfileid: "80478631"
 
 ## <a name="create-a-method-to-send-search-requests"></a>创建一个用于发送搜索请求的方法
 
-创建一个名为 `BingImageSearch` 的方法来调用 API，并将返回类型设置为之前创建的 `SearchResult` 结构。
+创建一个名为 `BingImageSearch` 的方法来调用 API，并将返回类型设置为先前创建的 `SearchResult` 结构。
 
 ```csharp
 //...
@@ -95,9 +95,9 @@ namespace BingSearchApisQuickstart
 
 ## <a name="create-and-handle-an-image-search-request"></a>创建和处理图像搜索请求
 
-在 `BingImageSearch` 方法中，执行以下步骤。
+在 `BingImageSearch` 方法中，执行以下步骤：
 
-1. 构造搜索请求的 URI。 必须先设置搜索词 `SearchTerm` 的格式，然后才能将其附加到字符串。
+1. 构造搜索请求的 URI。 在将搜索词 `SearchTerm` 追加到字符串之前，先对其进行格式化。
 
     ```csharp
     static SearchResult BingImageSearch(string SearchTerm){
@@ -115,7 +115,7 @@ namespace BingSearchApisQuickstart
     string json = new StreamReader(response.GetResponseStream()).ReadToEnd();
     ```
 
-3. 创建搜索结果对象，提取必应 HTTP 标头。 然后返回 `searchResult`。
+3. 创建搜索结果对象，提取必应 HTTP 标头。 然后，返回 `searchResult`。
 
     ```csharp
     // Create the result object for return
@@ -136,7 +136,7 @@ namespace BingSearchApisQuickstart
 
 ## <a name="process-and-view-the-response"></a>处理和查看响应
 
-1. 在 main 方法中，调用 `BingImageSearch()` 并存储返回的响应。 然后将 JSON 反序列化到对象。
+1. 在 main 方法中，调用 `BingImageSearch()` 并存储返回的响应。 然后将 JSON 反序列化为一个对象。
 
     ```csharp
     SearchResult result = BingImageSearch(searchTerm);
@@ -208,9 +208,9 @@ namespace BingSearchApisQuickstart
 
 ## <a name="see-also"></a>另请参阅
 
-* [什么是必应图像搜索？](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [尝试在线互动演示](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
-* 必应搜索 API 的[定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。 
-* [获取免费的认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-* [Azure 认知服务文档](https://docs.microsoft.com/azure/cognitive-services)
-* [必应图像搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [什么是必应图像搜索 API？](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [尝试在线互动演示](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)。
+* [必应搜索 API 的定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。 
+* [获取免费的认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)。
+* [Azure 认知服务文档](https://docs.microsoft.com/azure/cognitive-services)。
+* [必应图像搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)。

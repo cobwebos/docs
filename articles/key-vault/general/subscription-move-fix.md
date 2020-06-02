@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 94bcba80e5768d57e3dc97bed1a74a8369ac60b9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 9e35f5c9288860056a910f54f9601b2178a628bb
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81425796"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828077"
 ---
 # <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>订阅移动后更改密钥保管库租户 ID
 
@@ -61,4 +61,4 @@ az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Upd
 
 ## <a name="next-steps"></a>后续步骤
 
-如果对 Azure 密钥保管库有任何疑问，请访问 [Azure 密钥保管库论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)。
+如果对 Azure 密钥保管库有任何疑问，请访问[面向 Azure 密钥保管库的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-key-vault.html)。

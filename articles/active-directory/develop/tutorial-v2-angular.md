@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c645ab45711698e4a6f582678e2a850e15dea62a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1ede6592b3da979136d70b873142af6d2bb8b593
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181590"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201329"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>教程：从 Angular 单页应用程序将用户登录并调用 Microsoft Graph API
 
@@ -27,7 +27,7 @@ ms.locfileid: "82181590"
 本教程演示了 Angular 单页应用程序 (SPA) 如何执行以下操作：
 - 将个人帐户、工作帐户或学校帐户登录。
 - 获取访问令牌。
-- 从 Microsoft 标识平台终结点调用需要访问令牌的 Microsoft Graph API 或其他 API。 
+- 从 Microsoft 标识平台终结点调用需要访问令牌的 Microsoft Graph API 或其他 API。
 
 >[!NOTE]
 >本教程引导你使用 Microsoft 身份验证库 (MSAL) 创建新的 Angular SPA。 若要下载示例应用，请参阅[快速入门](quickstart-v2-angular.md)。
@@ -75,13 +75,13 @@ ng generate component page-name                  # To add a new page (such as a 
 
 按照说明在 Azure 门户中[注册单页应用程序](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration)。
 
-在注册的应用“概述”页上，记下“应用程序(客户端) ID”值供稍后使用。  
+在注册的应用“概述”页上，记下“应用程序(客户端) ID”值供稍后使用。 
 
-注册 **http://localhost:4200/** 作为“重定向 URI”，并启用隐式授权设置。 
+注册 **http://localhost:4200/** 作为“重定向 URI”，并启用隐式授权设置。
 
 ## <a name="configure-the-application"></a>配置应用程序
 
-1. 在 src/app 文件夹中，编辑 app.module.ts，将 `MSALModule` 添加到 `imports` 并添加 `isIE` 常量：  
+1. 在 src/app 文件夹中，编辑 app.module.ts，将 `MSALModule` 添加到 `imports` 并添加 `isIE` 常量： 
 
     ```javascript
     const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;
@@ -125,9 +125,9 @@ ng generate component page-name                  # To add a new page (such as a 
 
     |值名称|关于|
     |---------|---------|
-    |Enter_the_Application_Id_Here|在应用程序注册的“概览”页中，这是你的“应用程序(客户端) ID”值。   |
+    |Enter_the_Application_Id_Here|在应用程序注册的“概览”页中，这是你的“应用程序(客户端) ID”值。  |
     |Enter_the_Cloud_Instance_Id_Here|这是 Azure 云的实例。 对于主要云或全球 Azure 云，请输入 **https://login.microsoftonline.com** 。 对于国家/地区云（例如中国云），请参阅[国家/地区云](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)。|
-    |Enter_the_Tenant_Info_Here| 设置为以下选项之一：如果应用程序支持此组织目录中的帐户，请将此值替换为目录（租户）ID 或租户名称（例如 contoso.microsoft.com）。   如果应用程序支持“任何组织目录中的帐户”，请将此值替换为 **organizations**  。 如果应用程序支持“任何组织目录中的帐户和个人 Microsoft 帐户”  ，请将此值替换为 **common**。 若要限制对“仅限个人 Microsoft 帐户”  的支持，请将此值替换为 **consumers**。 |
+    |Enter_the_Tenant_Info_Here| 设置为以下选项之一：如果应用程序支持此组织目录中的帐户，请将此值替换为目录（租户）ID 或租户名称（例如 contoso.microsoft.com）。 如果应用程序支持“任何组织目录中的帐户”，请将此值替换为 **organizations**。 如果应用程序支持“任何组织目录中的帐户和个人 Microsoft 帐户”，请将此值替换为 **common**。 若要限制对“仅限个人 Microsoft 帐户”的支持，请将此值替换为 **consumers**。 |
     |Enter_the_Redirect_Uri_Here|替换为 **http://localhost:4200** 。|
 
     有关可用的可配置选项的详细信息，请阅读[初始化客户端应用程序](msal-js-initializing-client-applications.md)。
@@ -319,7 +319,7 @@ logout() {
     npm install
     npm start
     ```
-1. 在浏览器中输入 **http://localhost:4200** 或 **http://localhost:{port}** ，其中，port 是 Web 服务器正在侦听的端口。 
+1. 在浏览器中输入 **http://localhost:4200** 或 **http://localhost:{port}** ，其中，port 是 Web 服务器正在侦听的端口。
 
 
 ### <a name="provide-consent-for-application-access"></a>许可应用程序访问
@@ -330,7 +330,7 @@ logout() {
 
 ## <a name="add-scopes-and-delegated-permissions"></a>添加范围和委托的权限
 
-Microsoft Graph API 需要 *user.read* 作用域来读取用户的个人资料。 默认情况下，在注册门户上注册的每个应用程序中，都会自动添加此范围。 Microsoft Graph 的其他 API 以及后端服务器的自定义 API 可能需要其他作用域。 例如，Microsoft Graph API 需要使用 Calendars.Read 作用域才能列出用户的日历。 
+Microsoft Graph API 需要 *user.read* 作用域来读取用户的个人资料。 默认情况下，在注册门户上注册的每个应用程序中，都会自动添加此范围。 Microsoft Graph 的其他 API 以及后端服务器的自定义 API 可能需要其他作用域。 例如，Microsoft Graph API 需要使用 Calendars.Read 作用域才能列出用户的日历。
 
 若要在应用程序上下文中访问用户的日历，请将 *Calendars.Read* 委派权限添加到应用程序注册信息。 然后，将 *Calendars.Read* 作用域添加到 `acquireTokenSilent` 调用。
 
@@ -343,7 +343,6 @@ Microsoft Graph API 需要 *user.read* 作用域来读取用户的个人资料�
 
 ## <a name="next-steps"></a>后续步骤
 
-接下来，在 Angular 教程中了解如何将用户登录和获取令牌：
+如果不熟悉标识和访问管理，可以参阅我们提供的几篇文章（从[身份验证与授权](authentication-vs-authorization.md)开始），以便学习新式身份验证概念。
 
-> [!div class="nextstepaction"]
-> [Angular 教程](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-angular)
+若要更深入地了解 Microsoft 标识平台上的单页应用程序开发，可以参阅由多部分组成的[方案：单页应用程序](scenario-spa-overview.md)系列文章，了解如何入门。

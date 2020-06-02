@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/23/2020
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 5bd20f98b10989da0a66acbf45b99d724664cf5d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6c2ed68c18cc7845d45bebffc31842879353f2c2
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82208119"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83846881"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>教程：在 Linux 上的 Azure 应用服务中生成 ASP.NET Core 和 SQL 数据库应用
 
@@ -69,7 +69,7 @@ dotnet ef database update
 dotnet run
 ```
 
-在浏览器中导航至 `http://localhost:5000` 。 选择“新建”  链接，创建几个待办事项  。
+在浏览器中导航至 `http://localhost:5000` 。 选择“新建”链接，创建几个待办事项。
 
 ![已成功连接到 SQL 数据库](./media/tutorial-dotnetcore-sqldb-app/local-app-in-browser.png)
 
@@ -91,7 +91,7 @@ dotnet run
 
 在 Cloud Shell 中，使用 [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) 命令创建 SQL 数据库逻辑服务器。
 
-将 \<server-name> 占位符替换为唯一的 SQL 数据库名称   。 此名称将用作全局唯一的 SQL 数据库终结点 (`<server-name>.database.windows.net`) 的一部分。 有效字符为 `a`-`z`、`0`-`9` 和 `-`。 此外，将 \<db-username> 和 \< 分别替换为所选用户名和密码   。 
+将 \<server-name> 占位符替换为唯一的 SQL 数据库名称 。 此名称将用作全局唯一的 SQL 数据库终结点 (`<server-name>.database.windows.net`) 的一部分。 有效字符为 `a`-`z`、`0`-`9` 和 `-`。 此外，将 \<db-username> 和 \< 分别替换为所选用户名和密码 。 
 
 
 ```azurecli-interactive
@@ -130,7 +130,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server <se
 > 你甚至可以让防火墙规则更严格，即[只使用应用所使用的出站 IP 地址](../overview-inbound-outbound-ips.md#find-outbound-ips)。
 >
 
-在 Cloud Shell 中再次运行该命令（将 \<your-ip-address> 替换为[本地 IPv4 IP 地址](https://www.whatsmyip.org/)），以便从本地计算机进行访问  。
+在 Cloud Shell 中再次运行该命令（将 \<your-ip-address> 替换为[本地 IPv4 IP 地址](https://www.whatsmyip.org/)），以便从本地计算机进行访问。
 
 ```azurecli-interactive
 az sql server firewall-rule create --name AllowLocalClient --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address>
@@ -152,7 +152,7 @@ az sql db create --resource-group myResourceGroup --server <server-name> --name 
 az sql db show-connection-string --client ado.net --server cephalin-core --name coreDB
 ```
 
-在命令输出中，将 \<username>  和 \<password>  替换为你先前使用的数据库管理员凭据。
+在命令输出中，将 \<username> 和 \<password> 替换为你先前使用的数据库管理员凭据。
 
 这是 .NET Core 应用的连接字符串。 将其进行复制，留待稍后使用。
 
@@ -180,7 +180,7 @@ services.AddDbContext<MyDatabaseContext>(options =>
 
 应用当前连接到本地 Sqlite 数据库。 配置 Azure SQL 数据库后，请重新创建以其为目标的初始迁移。 
 
-在存储库根目录中运行以下命令。 将 \<connection-string>  替换为之前创建的连接字符串。
+在存储库根目录中运行以下命令。 将 \<connection-string> 替换为之前创建的连接字符串。
 
 ```
 # Delete old migrations
@@ -208,7 +208,7 @@ dotnet ef database update
 dotnet run
 ```
 
-在浏览器中导航至 `http://localhost:5000` 。 选择“新建”  链接，创建几个待办事项  。 应用现在正在读取数据并将数据写入生产数据库。
+在浏览器中导航至 `http://localhost:5000` 。 选择“新建”链接，创建几个待办事项。 应用现在正在读取数据并将数据写入生产数据库。
 
 提交本地更改，然后将其提交到 Git 存储库。 
 
@@ -237,13 +237,13 @@ git commit -m "connect to SQLDB in Azure"
 
 ### <a name="configure-connection-string"></a>配置连接字符串
 
-若要为 Azure 应用设置连接字符串，请使用 Cloud Shell 中的 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令。 在下列命令中，将 \<app-name> 和 \<connection-string> 参数替换为先前创建的连接字符串   。
+若要为 Azure 应用设置连接字符串，请使用 Cloud Shell 中的 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令。 在下列命令中，将 \<app-name> 和 \<connection-string> 参数替换为先前创建的连接字符串 。
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app-name> --settings MyDbConnection="<connection-string>" --connection-string-type SQLAzure
 ```
 
-在 ASP.NET Core 中，可以通过标准模式使用此命名连接字符串 (`MyDbConnection`)，就像在 appsettings.json  中指定的任何连接字符串一样。 在本例中，`MyDbConnection` 也在 appsettings.json  中定义。 在应用服务中运行时，应用服务中定义的连接字符串优先于 appsettings.json  中定义的连接字符串。 此代码在本地开发过程中使用 appsettings.json  值，相同的代码在部署时使用应用服务值。
+在 ASP.NET Core 中，可以通过标准模式使用此命名连接字符串 (`MyDbConnection`)，就像在 appsettings.json 中指定的任何连接字符串一样。 在本例中，`MyDbConnection` 也在 appsettings.json 中定义。 在应用服务中运行时，应用服务中定义的连接字符串优先于 appsettings.json 中定义的连接字符串。 此代码在本地开发过程中使用 appsettings.json 值，相同的代码在部署时使用应用服务值。
 
 若要了解如何在代码中引用连接字符串，请参阅[配置应用以连接到生产数据库](#configure-app-to-connect-to-production-database)。
 
@@ -291,7 +291,7 @@ http://<app-name>.azurewebsites.net
 
 ![在 Azure 应用服务中运行的应用](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
-祝贺你！  正在 Linux 应用服务中运行数据驱动的 .NET Core 应用。
+祝贺你！ 正在 Linux 应用服务中运行数据驱动的 .NET Core 应用。
 
 ## <a name="update-locally-and-redeploy"></a>在本地更新并重新部署
 
@@ -299,7 +299,7 @@ http://<app-name>.azurewebsites.net
 
 ### <a name="update-your-data-model"></a>更新数据模型
 
-在代码编辑器中打开 Models/Todo.cs  。 将以下属性添加到 `ToDo` 类：
+在代码编辑器中打开 Models/Todo.cs。 将以下属性添加到 `ToDo` 类：
 
 ```csharp
 public bool Done { get; set; }
@@ -314,11 +314,15 @@ dotnet ef migrations add AddProperty
 dotnet ef database update
 ```
 
+> [!NOTE]
+> 如果打开新的终端窗口，则需要像在[运行到生产数据库的数据库迁移](#run-database-migrations-to-the-production-database)中一样，在终端中将连接字符串设置为生产数据库。
+>
+
 ### <a name="use-the-new-property"></a>使用新属性
 
 为使用 `Done` 属性，需要对代码做一些更改。 简单起见，本教程中将仅更改 `Index` 和 `Create` 视图，以便在操作过程中查看属性。
 
-打开 Controllers/TodosController.cs  。
+打开 Controllers/TodosController.cs。
 
 找到 `Create([Bind("ID,Description,CreatedDate")] Todo todo)` 方法，并将 `Done` 添加到 `Bind` 属性中的属性列表。 完成后，`Create()` 方法签名应如下面的代码所示：
 
@@ -326,7 +330,7 @@ dotnet ef database update
 public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")] Todo todo)
 ```
 
-打开 Views/Todos/Create.cshtml  。
+打开 Views/Todos/Create.cshtml。
 
 在 Razor 代码中，应能看到用于 `Description` 的 `<div class="form-group">` 元素，以及另一个用于 `CreatedDate` 的 `<div class="form-group">` 元素。 紧跟在这两个元素之后，添加另一个用于 `Done` 的 `<div class="form-group">` 元素：
 
@@ -340,7 +344,7 @@ public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")
 </div>
 ```
 
-打开 Views/Todos/Index.cshtml  。
+打开 Views/Todos/Index.cshtml。
 
 搜索空的 `<th></th>` 元素。 在此元素的正上方，添加下列 Razor 代码：
 
@@ -368,7 +372,11 @@ public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")
 dotnet run
 ```
 
-在浏览器中，导航到 `http://localhost:5000/`。 你现在可以添加一个待办事项，并检查''Done''  。 然后，它会在主页中显示为已完成的项。 请记住，由于未更改`Edit`视图，`Edit`视图不显示`Done`字段。
+> [!NOTE]
+> 如果打开新的终端窗口，则需要像在[运行到生产数据库的数据库迁移](#run-database-migrations-to-the-production-database)中一样，在终端中将连接字符串设置为生产数据库。
+>
+
+在浏览器中，导航到 `http://localhost:5000/`。 你现在可以添加一个待办事项，并检查''Done''。 然后，它会在主页中显示为已完成的项。 请记住，由于未更改`Edit`视图，`Edit`视图不显示`Done`字段。
 
 ### <a name="publish-changes-to-azure"></a>发布对 Azure 所做的更改
 
@@ -378,7 +386,7 @@ git commit -m "added done field"
 git push azure master
 ```
 
-`git push` 完成后，请导航至应用服务应用，尝试添加一个待办事项并选中“Done”  。
+`git push` 完成后，请导航至应用服务应用，尝试添加一个待办事项并选中“Done”。
 
 ![Code First 迁移后的 Azure 应用](./media/tutorial-dotnetcore-sqldb-app/this-one-is-done.png)
 
@@ -419,11 +427,11 @@ az webapp log tail --name <app-name> --resource-group myResourceGroup
 
 转到 [Azure 门户](https://portal.azure.com)查看创建的应用。
 
-在左侧菜单中单击“应用服务”，然后单击 Azure 应用的名称。 
+在左侧菜单中单击“应用服务”，然后单击 Azure 应用的名称。
 
 ![在门户中导航到 Azure 应用](./media/tutorial-dotnetcore-sqldb-app/access-portal.png)
 
-默认情况下，门户将显示应用的  “概述”页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 该页左侧的选项卡显示可以打开的不同配置页。
+默认情况下，门户将显示应用的“概述”页。 在此页中可以查看应用的运行状况。 在此处还可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。 该页左侧的选项卡显示可以打开的不同配置页。
 
 ![Azure 门户中的应用服务页](./media/tutorial-dotnetcore-sqldb-app/web-app-blade.png)
 

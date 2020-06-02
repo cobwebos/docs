@@ -9,19 +9,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 03/31/2020
+ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 15757d606a846a2951bc5c15d8d5ef0dbfd7a2a1
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 597a12353fa573c628162b110f4e08e6d3a69b86
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478591"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118916"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-nodejs"></a>快速入门：使用必应图像搜索 REST API 和 Node.js 来搜索图像
 
-使用本快速入门开始向必应图像搜索 API 发送搜索请求。 此 JavaScript 应用程序会向 API 发送搜索查询，并在结果中显示第一个图像的 URL。 虽然此应用程序是以 JavaScript 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
+使用此快速入门了解如何将搜索请求发送到必应图像搜索 API。 此 JavaScript 应用程序会向 API 发送搜索查询，并在结果中显示第一个图像的 URL。 虽然此应用程序是以 JavaScript 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingImageSearchv7Quickstart.js) 上提供了此示例的源代码以及附加的错误处理和注释。
 
@@ -29,22 +29,22 @@ ms.locfileid: "80478591"
 
 * 最新版本的 [Node.js](https://nodejs.org/en/download/)。
 
-* [JavaScript 请求库](https://github.com/request/request)  
+* [JavaScript 请求库](https://github.com/request/request)。
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+有关详细信息，请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
 ## <a name="create-and-initialize-the-application"></a>创建并初始化应用程序
 
-1. 在最喜爱的 IDE 或编辑器中创建新的 JavaScript 文件，并设置严格性和 https 要求。
+1. 在最喜爱的 IDE 或编辑器中创建新的 JavaScript 文件，并设置严格性和 HTTPS 要求。
 
     ```javascript
     'use strict';
     let https = require('https');
     ```
 
-2. 为 API 终结点、图像 API 搜索路径、订阅密钥和搜索词创建变量。 `host` 可以是下面的全局终结点，也可以是资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
+2. 为 API 终结点、图像 API 搜索路径、订阅密钥和搜索词创建变量。 对于 `host`，你可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
     ```javascript
     let subscriptionKey = 'enter key here';
@@ -55,7 +55,7 @@ ms.locfileid: "80478591"
 
 ## <a name="construct-the-search-request-and-query"></a>构造搜索请求和查询。
 
-1. 使用上一个步骤中的变量来设置 API 请求的搜索 URL 的格式。 将搜索词发送到 API 之前，必须进行 URL 编码。
+1. 使用上一个步骤中的变量来设置 API 请求的搜索 URL 的格式。 在将搜索词发送到 API 之前对其进行 URL 编码。
 
     ```javascript
     let request_params = {
@@ -68,7 +68,7 @@ ms.locfileid: "80478591"
     };
     ```
 
-2. 使用请求库将查询发送到 API。 `response_handler` 将在下节中定义。
+2. 使用请求库将查询发送到 API。 
     ```javascript
     let req = https.request(request_params, response_handler);
     req.end();
@@ -76,32 +76,34 @@ ms.locfileid: "80478591"
 
 ## <a name="handle-and-parse-the-response"></a>处理和分析响应
 
-1. 定义名为 `response_handler` 的函数，它将 HTTP 调用 `response` 作为参数。 在此函数内，执行以下步骤：
+1. 定义一个名为 `response_handler` 的函数，该函数使用 HTTP 调用 `response` 作为参数。 
 
-    1. 定义一个包含 JSON 响应的正文的变量。  
-        ```javascript
-        let response_handler = function (response) {
-            let body = '';
-        };
-        ```
+2. 在此函数中，定义一个包含 JSON 响应正文的变量。 
 
-    2. 在调用数据  标志时存储响应的正文
-        ```javascript
-        response.on('data', function (d) {
-            body += d;
-        });
-        ```
+    ```javascript
+    let response_handler = function (response) {
+        let body = '';
+    };
+    ```
 
-    3. 指示了 **end** 标志后，从 JSON 响应获取第一个结果。 输出第一个图像的 URL 以及返回的图像的总数。
+3. 调用 `data` 标志时，存储响应的正文。
 
-        ```javascript
-        response.on('end', function () {
-            let firstImageResult = imageResults.value[0];
-            console.log(`Image result count: ${imageResults.value.length}`);
-            console.log(`First image thumbnail url: ${firstImageResult.thumbnailUrl}`);
-            console.log(`First image web search url: ${firstImageResult.webSearchUrl}`);
-         });
-        ```
+    ```javascript
+    response.on('data', function (d) {
+        body += d;
+    });
+    ```
+
+4. 指示 `end` 标志后，从 JSON 响应获取第一个结果。 输出第一个图像的 URL 以及返回的图像的总数。
+
+    ```javascript
+    response.on('end', function () {
+        let firstImageResult = imageResults.value[0];
+        console.log(`Image result count: ${imageResults.value.length}`);
+        console.log(`First image thumbnail url: ${firstImageResult.thumbnailUrl}`);
+        console.log(`First image web search url: ${firstImageResult.webSearchUrl}`);
+     });
+    ```
 
 ## <a name="example-json-response"></a>示例 JSON 响应
 
@@ -158,9 +160,9 @@ ms.locfileid: "80478591"
 
 ## <a name="see-also"></a>另请参阅
 
-* [什么是必应图像搜索？](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [尝试在线互动演示](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
-* 必应搜索 API 的[定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。 
-* [获取免费的认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-* [Azure 认知服务文档](https://docs.microsoft.com/azure/cognitive-services)
-* [必应图像搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [什么是必应图像搜索 API？](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [尝试在线互动演示](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)。
+* [必应搜索 API 的定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。 
+* [获取免费的认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)。
+* [Azure 认知服务文档](https://docs.microsoft.com/azure/cognitive-services)。
+* [必应图像搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)。

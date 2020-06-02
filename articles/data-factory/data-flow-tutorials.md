@@ -5,13 +5,13 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 04/17/2020
-ms.openlocfilehash: 3abec9b0c37e0475e369ce3cd2f91e40a1040b75
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.date: 05/25/2020
+ms.openlocfilehash: 87bfd505edcb394bafd70a975b5b3d6bde341cb9
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628957"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848866"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>映射数据流视频教程
 
@@ -51,6 +51,8 @@ ms.locfileid: "82628957"
 
 [查找转换](https://www.youtube.com/watch?v=9U-0VPU2ZPU)
 
+[查找转换更新和提示](https://youtu.be/MBskWoeuTLw)
+
 [透视转换](https://www.youtube.com/watch?v=Tua14ZQA3F8&t=34s)
 
 [透视转换：映射偏移列](https://youtu.be/5MygzCX0wnM)
@@ -58,6 +60,8 @@ ms.locfileid: "82628957"
 [选择转换](http://youtu.be/F9VjQ_YyRyU?hd=1)
 
 [选择转换：基于规则的映射](https://youtu.be/5lf1lh1qMwU)
+
+[选择转换：大型数据集](https://www.youtube.com/watch?v=R5ea2_R0ouc)
 
 [代理键转换](https://www.youtube.com/watch?v=ISpegL9CbTM)
 
@@ -148,6 +152,8 @@ ms.locfileid: "82628957"
 [逻辑模型与物理模型](http://youtu.be/K5tgzLjEE9Q)
 
 [检测源数据更改](http://youtu.be/CaxIlI7oXfI?hd=1)
+
+[泛型类型 2 渐变维度](http://youtu.be/tc283k8CWh8)
 
 ## <a name="data-flow-expressions"></a>数据流表达式
 

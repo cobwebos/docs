@@ -3,12 +3,12 @@ title: 快速入门：创建应用 - LUIS
 description: 本快速入门演示如何创建使用预生成域 `HomeAutomation` 打开和关闭灯光和设备的 LUIS 应用。 此预生成的域为你提供意向、实体和示例话语。 完成本教程后，你会有一个在云中运行的 LUIS 终结点。
 ms.topic: quickstart
 ms.date: 05/05/2020
-ms.openlocfilehash: 186a60a7fd8315d68718ceedd3b5cadb4d3645e8
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: cefa9d5995f876ef3f07cc32324e747125e9cbf7
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589110"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701265"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>快速入门：使用预构建的家庭自动化应用
 
@@ -42,7 +42,8 @@ ms.locfileid: "83589110"
 1. 搜索“HomeAutomation”。
 1. 在 HomeAutomation 卡上选择“添加域”。
 
-    ![选择“预生成域”，然后搜索“HomeAutomation”。 在 HomeAutomation 卡上选择“添加域”。](media/luis-quickstart-new-app/home-automation.png)
+    > [!div class="mx-imgBorder"]
+    > ![选择“预生成域”，然后搜索“HomeAutomation”。 在 HomeAutomation 卡上选择“添加域”。](media/luis-quickstart-new-app/home-automation.png)
 
     成功添加域以后，预生成域框会显示“删除域”按钮。
 
@@ -50,7 +51,8 @@ ms.locfileid: "83589110"
 
 1. 选择“意向”以查看 HomeAutomation 域意向。 预生成的域意向具有示例言语。
 
-    ![HomeAutomation 意向列表的屏幕截图](media/luis-quickstart-new-app/home-automation-intents.png "HomeAutomation 意向列表的屏幕截图")
+    > [!div class="mx-imgBorder"]
+    > ![HomeAutomation 意向列表的屏幕截图](media/luis-quickstart-new-app/home-automation-intents.png "HomeAutomation 意向列表的屏幕截图")
 
     > [!NOTE]
     > “无”是由所有 LUIS 应用提供的意向。 可以使用它来处理与应用提供的功能无法对应的话语。
@@ -114,25 +116,25 @@ ms.locfileid: "83589110"
             "topIntent": "HomeAutomation.TurnOff",
             "intents": {
                 "HomeAutomation.TurnOff": {
-                    "score": 0.984315455
+                    "score": 0.969448864
                 },
                 "HomeAutomation.QueryState": {
-                    "score": 0.009912962
-                },
-                "HomeAutomation.TurnDown": {
-                    "score": 0.00626645749
+                    "score": 0.0122336326
                 },
                 "HomeAutomation.TurnUp": {
-                    "score": 0.00572059769
+                    "score": 0.006547436
+                },
+                "HomeAutomation.TurnDown": {
+                    "score": 0.0050634006
                 },
                 "HomeAutomation.SetDevice": {
-                    "score": 0.00379381469
+                    "score": 0.004951761
                 },
                 "HomeAutomation.TurnOn": {
-                    "score": 0.00366983772
+                    "score": 0.00312553928
                 },
                 "None": {
-                    "score": 0.000623856
+                    "score": 0.000552945654
                 }
             },
             "entities": {
@@ -156,7 +158,7 @@ ms.locfileid: "83589110"
                             "text": "living room",
                             "startIndex": 13,
                             "length": 11,
-                            "score": 0.907323956,
+                            "score": 0.902181149,
                             "modelTypeId": 1,
                             "modelType": "Entity Extractor",
                             "recognitionSources": [

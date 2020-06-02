@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 12/11/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: c4335e1ac0f0ffc7ee5570a8f0819827fc77dd18
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 6d4e7297ba0b325aa0045c16620d716ceb1418b4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75384145"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650262"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-java"></a>快速入门：使用 Java 向必应实体搜索 REST API 发送搜索请求
 
@@ -25,15 +25,15 @@ ms.locfileid: "75384145"
 
 ## <a name="prerequisites"></a>先决条件
 
-* [Java 开发工具包 (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
-* [Gson 库](https://github.com/google/gson)
+* [Java 开发工具包 (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)。
+* [Gson 库](https://github.com/google/gson)。
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>创建并初始化项目
 
-1. 在你最喜欢的 IDE 或编辑器中新建一个 Java 项目，并导入以下库。
+1. 在你最喜欢的 IDE 或编辑器中新建一个 Java 项目，并导入以下库：
 
    ```java
    import java.io.*;
@@ -50,7 +50,7 @@ ms.locfileid: "75384145"
    import com.google.gson.JsonParser;
    ```
 
-2. 在新类中，为 API 终结点、订阅密钥和搜索查询创建变量。 可以使用下面的全局终结点，也可以使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
+2. 在新类中，为 API 终结点、订阅密钥和搜索查询创建变量。 你可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
    ```java
    public class EntitySearch {
@@ -68,7 +68,7 @@ ms.locfileid: "75384145"
 
 ## <a name="construct-a-search-request-string"></a>构造搜索请求字符串
 
-1. 创建返回 JSON `String` 的名为 `search()` 的函数。 对搜索查询进行 URL 编码，并将其添加到包含 `&q=` 的参数字符串。 将市场添加到包含 `?mkt=` 的字符串。
+1. 创建返回 JSON `String` 的名为 `search()` 的函数。 对搜索查询进行 URL 编码，并将其添加到包含 `&q=` 的参数字符串。 将市场添加到包含 `?mkt=` 的参数字符串。
  
 2. 创建包含主机、路径和参数字符串的 URL 对象。
     
@@ -104,7 +104,7 @@ ms.locfileid: "75384145"
     //...
     ```
 
-3. 创建 `String` 对象用于存储 `BufferedReader` 的响应。 循环访问该对象，并将每行追加到字符串中。 然后关闭读取器并返回响应。 
+3. 创建 `String` 对象用于存储 `BufferedReader` 的响应。 循环访问该对象，并将每行追加到字符串中。 然后，关闭读取器并返回响应。 
     
     ```java
     String line;
@@ -121,7 +121,7 @@ ms.locfileid: "75384145"
 
 1. 创建名为 `prettify` 的新函数用于设置 JSON 响应的格式。 创建新的 `JsonParser`，针对 JSON 文本调用 `parse()`，然后将其存储为 JSON 对象。 
 
-2. 使用 Gson 库创建新的 `GsonBuilder()`，使用 `setPrettyPrinting().create()` 设置 JSON 的格式。 然后返回该 JSON 响应。    
+2. 使用 Gson 库创建新的 `GsonBuilder()`，使用 `setPrettyPrinting().create()` 设置 JSON 的格式，然后将其返回。    
   
    ```java
    //...
@@ -136,7 +136,7 @@ ms.locfileid: "75384145"
 
 ## <a name="call-the-search-function"></a>调用 search 函数
 
-1. 在项目的 main 方法中调用 `search()`，使用 `prettify()` 设置文本格式。
+- 在项目的 main 方法中调用 `search()`，使用 `prettify()` 设置文本格式。
     
     ```java
         public static void main(String[] args) {
@@ -220,5 +220,5 @@ ms.locfileid: "75384145"
 > [!div class="nextstepaction"]
 > [构建单页 Web 应用](../tutorial-bing-entities-search-single-page-app.md)
 
-* [什么是必应实体搜索 API？](../overview.md )
-* [必应实体搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [什么是必应实体搜索 API？](../overview.md)
+* [必应实体搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)。

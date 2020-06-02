@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 5ebd29b5fb6fdedcdfbc434209b350512c4cd5dc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 361a75c2e5951dc540830efd6be057753402daf1
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77657301"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006105"
 ---
 # <a name="azure-spatial-anchors-overview"></a>Azure 空间定位点概述
 
@@ -26,7 +26,7 @@ ms.locfileid: "77657301"
 
 空间定位点启用的一些示例用例包括：
 
-- [多用户体验](tutorials/tutorial-share-anchors-across-devices.md)。 空间定位点使同一地点的人们可以轻松参与多用户混合现实应用程序。 例如，两个人可以通过在桌子上放置虚拟棋盘来开始一场混合现实国际象棋游戏。 然后，通过在桌面上指向他们的设备，他们可以一起查看虚拟棋盘并与之交互。
+- [多用户体验](tutorials/tutorial-share-anchors-across-devices.md)。 Azure 空间定位点使同一地点的人们可以轻松参与多用户混合现实应用程序。 例如，两个人可以通过在桌子上放置虚拟棋盘来开始一场混合现实国际象棋游戏。 然后，通过在桌面上指向他们的设备，他们可以一起查看虚拟棋盘并与之交互。
 
 - [方法查找](concepts/anchor-relationships-way-finding.md)。 开发人员还可以将空间定位点连接在一起，在它们之间创建关系。 例如，应用可以包括具有两个或更多个兴趣点的体验，用户必须与其交互以完成任务。 这些兴趣点可以通过连接的方式创建。 稍后，当用户完成多步骤任务时，应用可以请求当前定位点附近的定位点将用户指向任务中的下一步骤。
 
@@ -36,7 +36,7 @@ Azure 空间定位点由受支持的设备平台的托管服务和客户端 SDK 
 
 ## <a name="next-steps"></a>后续步骤
 
-使用空间定位点创建你的第一个应用。
+使用 Azure 空间定位点创建你的第一个应用。
 
 > [!div class="nextstepaction"]
 > [Unity (HoloLens)](quickstarts/get-started-unity-hololens.md)

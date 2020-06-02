@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 03/05/2020
+ms.date: 05/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5190804180612e885b226f9b00d82b8d2f528a8a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b4cdb787fe65c52a77fa4761a65e9108e7927c40
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78668628"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83720977"
 ---
 >[!NOTE]
 >我们正在努力添加其他区域。 添加区域时，我们会将其添加到此列表中。
@@ -35,6 +35,8 @@ ms.locfileid: "78668628"
 * 法国中部
 * 北欧
 * 挪威东部
+* 挪威西部
+* 瑞士北部
 * 英国南部
 * 英国西部
 * 西欧
@@ -49,6 +51,7 @@ ms.locfileid: "78668628"
 * 韩国中部
 * 韩国南部
 * 东南亚
+* 印度中部
 * 印度西部
 
 **中东和非洲**

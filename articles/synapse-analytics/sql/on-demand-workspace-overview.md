@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8d4de424d5d4d6da1ee80e04b35e63ae29df57c8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: b3cca8403897227843b088a3985d54a3b164be0d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421301"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702055"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 SQL 按需版本（预览版） 
 
@@ -28,7 +28,7 @@ SQL 按需版本是专为大规模数据和计算构建的分布式数据处理�
 
 SQL 按需版本是无服务器服务，因此不需要设置基础结构，也不需要维护群集。 此服务的默认终结点将在每个 Azure Synapse 工作区内提供，因此在创建工作区后，可以立即开始查询数据。 保留的资源不产生任何费用，你只需为运行的查询所扫描的数据付费，因此，此模型是真正的按用量付费模型。  
 
-如果在数据管道中使用 Spark 进行数据准备、清理或扩充，可以直接从 SQL 按需版本[查询已在流程中创建的任何 Spark 表](develop-storage-files-spark-tables.md)。 使用[专用链接](../security/how-to-connect-to-workspace-with-private-links.md)可将 SQL 按需版本终结点整合到[托管工作区 VNet](../security/synapse-workspace-managed-vnet.md) 中。  
+如果在数据管道中使用 Apache Spark for Azure Synapse 进行数据准备、清理或扩充，可以直接从 SQL 按需版本[查询已在流程中创建的 Spark 外部表](develop-storage-files-spark-tables.md)。 使用[专用链接](../security/how-to-connect-to-workspace-with-private-links.md)可将 SQL 按需版本终结点整合到[托管工作区 VNet](../security/synapse-workspace-managed-vnet.md) 中。  
 
 ## <a name="who-is-sql-on-demand-for"></a>SQL 按需版本的目标用户
 
@@ -42,7 +42,7 @@ SQL 按需版本是无服务器服务，因此不需要设置基础结构，也�
 
 - 数据工程师可以使用此服务探索 Lake、转换和准备数据，以及简化数据转换管道。 有关详细信息，请查看[此教程](tutorial-data-analyst.md)。
 - 得益于 OPENROWSET 和自动架构推理等功能，数据科学家可以快速推理 Lake 中数据的内容和结构。
-- 数据分析师可以使用熟悉的 T-SQL 语言或他们偏好的、可连接到 SQL 按需版本的工具，[探索数据科学家或数据工程师创建的数据和 Spark 表](develop-storage-files-spark-tables.md)。
+- 数据分析师可以使用熟悉的 T-SQL 语言或他们偏好的、可连接到 SQL 按需版本的工具，[探索数据科学家或数据工程师创建的数据和 Spark 外部表](develop-storage-files-spark-tables.md)。
 - BI 专业人员可以快速[基于 Lake 中的数据创建 Power BI 报表](tutorial-connect-power-bi-desktop.md)和 Spark 表。
 
 ## <a name="what-do-i-need-to-do-to-start-using-it"></a>需要做好哪些准备才能开始使用 SQL 按需版本？
@@ -51,7 +51,7 @@ SQL 按需版本是无服务器服务，因此不需要设置基础结构，也�
 
 ## <a name="client-tools"></a>客户端工具
 
-使用 SQL 按需版本，可以将现有的 SQL 即席查询和商业智能工具连接到 Data Lake 中。 由于它提供用户熟悉的 T-SQL 语法，任何能够建立 TDS 连接的工具都可以[连接和查询 Synapse SQL 按需版本](connect-overview.md)。 可以与 Azure Data Studio 进行连接并运行即席查询，或者与 Power BI 进行连接以快速获取见解。
+使用 SQL 按需版本，可以将现有的 SQL 即席查询和商业智能工具连接到 Data Lake 中。 由于它提供用户熟悉的 T-SQL 语法，任何能够建立 TDS 连接 SQL 产品/服务的工具都可以[连接和查询 Synapse SQL 按需版本](connect-overview.md)。 可以与 Azure Data Studio 进行连接并运行即席查询，或者与 Power BI 进行连接以快速获取见解。
 
 ## <a name="is-full-t-sql-supported"></a>是否支持完整的 T-SQL？
 
@@ -110,7 +110,7 @@ SQL 按需版本提供了一些机制来保护对数据的访问。
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory 集成和多重身份验证
 
-借助 SQL 按需版本，可以使用 [Azure Active Directory 集成](../../sql-database/sql-database-Azure AD-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)集中管理数据库用户和其他 Microsoft 服务的标识。 此功能简化了权限管理，增强了安全性。 Azure Active Directory (Azure AD) 支持[多重身份验证](../../sql-database/sql-database-ssms-mfa-authentication-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA)，以便在支持单一登录过程的同时提高数据和应用程序安全性。
+借助 SQL 按需版本，可以使用 [Azure Active Directory 集成](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)集中管理数据库用户和其他 Microsoft 服务的标识。 此功能简化了权限管理，增强了安全性。 Azure Active Directory (Azure AD) 支持[多重身份验证](../../sql-database/sql-database-ssms-mfa-authentication-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA)，以便在支持单一登录过程的同时提高数据和应用程序安全性。
 
 #### <a name="authentication"></a>身份验证
 
@@ -136,9 +136,9 @@ SQL 按需版本身份验证指的是用户连接到终结点时如何证明其�
 
 登录到 SQL 按需版本服务的用户必须获得访问和查询 Azure 存储中的文件的授权。 SQL 按需版本支持以下授权类型：
 
-- 共享访问签名 (SAS) 提供对存储帐户中的资源的委托访问权限。  通过 SAS，可以授予客户端对存储帐户中资源的访问权限，而无需共享帐户密钥。 通过 SAS 可以精细控制向具有 SAS 的客户端授予的访问权限类型：有效期间隔、授予的权限、可接受的 IP 地址范围、可接受的协议 (https/http)。
+- 共享访问签名 (SAS) 提供对存储帐户中的资源的委托访问权限。 通过 SAS，可以授予客户端对存储帐户中资源的访问权限，而无需共享帐户密钥。 通过 SAS 可以精细控制向具有 SAS 的客户端授予的访问权限类型：有效期间隔、授予的权限、可接受的 IP 地址范围、可接受的协议 (https/http)。
 
-- 用户标识（也称为“直通”）是一种授权类型。在使用这种授权类型的情况下，登录到 SQL 按需版本的 Azure AD 用户的标识会用来授予对数据的访问权限。  在访问数据之前，Azure 存储管理员必须向访问数据的 Azure AD 用户授予权限。 此授权类型使用登录到 SQL 按需版本的 Azure AD 用户，因此不受 SQL 用户类型的支持。
+- 用户标识（也称为“直通”）是一种授权类型。在使用这种授权类型的情况下，登录到 SQL 按需版本的 Azure AD 用户的标识会用来授予对数据的访问权限。 在访问数据之前，Azure 存储管理员必须向访问数据的 Azure AD 用户授予权限。 此授权类型使用登录到 SQL 按需版本的 Azure AD 用户，因此不受 SQL 用户类型的支持。
 
 ## <a name="next-steps"></a>后续步骤
 可在以下文章中找到有关终结点连接和查询文件的更多信息： 

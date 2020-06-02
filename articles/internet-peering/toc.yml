@@ -10,7 +10,7 @@
   items:
     - name: 对等互连策略
       href: policy.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 设置与 Microsoft 之间的对等互连的先决条件
       href: prerequisites.md
@@ -56,6 +56,10 @@
           href: howto-legacy-exchange-portal.md
         - name: Azure PowerShell
           href: howto-legacy-exchange-powershell.md
+    - name: 创建或修改与路由服务器的 Exchange 对等互连
+      items:
+        - name: 门户
+          href: how-to-exchange-route-server-portal.md
 - name: 参考
   items:
     - name: Azure CLI

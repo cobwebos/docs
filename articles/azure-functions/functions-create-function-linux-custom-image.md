@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: fee4e16bd77664e541eeb36cb807a77d13191899
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dbd42668a0a1821e0ab7a6edc8ad05c79bfebe7d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82165716"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123515"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>在 Linux 上使用自定义容器创建函数
 
@@ -105,7 +105,7 @@ Maven 会请求你提供所需的值，以在部署上完成项目的生成。
 
 键入 `Y` 或按 Enter 进行确认。
 
-Maven 在名为 artifactId  的新文件夹（在此示例中为 `fabrikam-functions`）中创建项目文件。 
+Maven 在名为 artifactId 的新文件夹（在此示例中为 `fabrikam-functions`）中创建项目文件。 
 ::: zone-end
 `--docker` 选项生成该项目的 `Dockerfile`，其中定义了适合用于 Azure Functions 和所选运行时的自定义容器。
 
@@ -182,7 +182,7 @@ docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
 映像在本地容器中运行后，请浏览到 `http://localhost:8080/api/HttpExample?name=Functions`，此时会显示与前面相同的“hello”消息。 由于 Maven 原型会生成一个使用匿名身份验证的 HTTP 触发函数，因此你仍可以调用该函数，即使它在容器中运行。 
 ::: zone-end  
 
-验证容器中的函数应用后，按 Ctrl+C 停止 Docker   。
+验证容器中的函数应用后，按 Ctrl+C 停止 Docker 。
 
 ## <a name="push-the-image-to-docker-hub"></a>将映像推送到 Docker Hub
 
@@ -235,7 +235,7 @@ Docker Hub 是托管映像并提供映像和容器服务的容器注册表。 �
     
     在本教程中使用的存储帐户只会产生几美分的费用。
     
-1. 使用以下命令在“西欧”区域（`-location westeurope`，或使用附近的适当区域）和 Linux 容器 (`--is-linux`) 中的“弹性高级版 1”定价层 (`--sku EP1`) 中为 Azure Functions 创建名为 `myPremiumPlan` 的高级计划。 
+1. 使用以下命令在“西欧”区域（`-location westeurope`，或使用附近的适当区域）和 Linux 容器 (`--is-linux`) 中的“弹性高级版 1”定价层 (`--sku EP1`) 中为 Azure Functions 创建名为 `myPremiumPlan` 的高级计划。
 
     ```azurecli
     az functionapp plan create --resource-group AzureFunctionsContainers-rg --name myPremiumPlan --location westeurope --number-of-workers 1 --sku EP1 --is-linux
@@ -295,17 +295,24 @@ Azure 上的函数应用管理托管计划中函数的执行。 在本部分，�
 
     # <a name="portal"></a>[门户](#tab/portal)
 
-    1. 登录到 Azure 门户，在页面顶部的“搜索”框中输入函数应用的名称找到该函数应用。  在结果中选择“应用服务”资源。 
+    1. 登录到 Azure 门户，然后搜索并选择“函数应用”。
 
-    1. 在左侧导航面板中的“函数(只读)”下，选择你的函数的名称。 
+    1. 选择要验证的函数。
 
-    1. 在详细信息面板中，选择“</> 获取函数 URL”： 
+    1. 在左侧导航面板中，选择“函数”，然后选择要验证的函数。
+
+        ![Azure 门户上的“获取函数 URL”命令](./media/functions-create-function-linux-custom-image/functions-portal-select-function.png)   
+
     
-        ![Azure 门户上的“获取函数 URL”命令](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key.png)   
+    1. 选择“获取函数 URL”。
 
-    1. 在弹出窗口中，依次选择“默认(函数密钥)”、“复制”。   该密钥是 `?code=` 后面的字符串。
+        ![Azure 门户上的“获取函数 URL”命令](./media/functions-create-function-linux-custom-image/functions-portal-get-function-url.png)   
 
-        ![从 Azure 门户复制函数 URL](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key-popup.png)   
+    
+    1. 在弹出窗口中选择“默认(函数密钥)”，然后将 URL 复制到剪贴板。 该密钥是 `?code=` 后面的字符串。
+
+        ![Azure 门户上的“获取函数 URL”命令](./media/functions-create-function-linux-custom-image/functions-portal-copy-url.png)   
+
 
     > [!NOTE]  
     > 由于函数应用将部署为容器，因此无法在门户中对函数代码进行更改。 必须更新本地映像中的项目，再次将该映像推送到注册表，然后重新部署到 Azure。 可以在后面的部分设置持续部署。
@@ -336,15 +343,15 @@ Azure 上的函数应用管理托管计划中函数的执行。 在本部分，�
     1. 该命令的输出即为函数密钥。 那么，完整的函数 URL 是 `https://<app_name>.azurewebsites.net/api/<function_name>?code=<key>`（请将 `<app_name>`、`<function_name>` 和 `<key>` 替换为你的特定值）。
     
         > [!NOTE]
-        > 此处检索的密钥是适用于 Functions 应用中所有函数的宿主密钥；为门户显示的方法只检索一个函数的密钥。 
+        > 此处检索的密钥是适用于 Functions 应用中所有函数的宿主密钥；为门户显示的方法只检索一个函数的密钥。
 
     ---
 
-1. 将函数 URL 粘贴到浏览器的地址栏中，并将参数 `&name=Azure` 添加到此 URL 的末尾。 浏览器中应会显示类似于“Hello Azure”的文本。
+1. 将函数 URL 粘贴到浏览器的地址栏中，并将参数 `&name=Azure` 添加到此 URL 的末尾。 浏览器中会显示类似于“Hello, Azure”的文本。
 
     ![浏览器中的函数响应。](./media/functions-create-function-linux-custom-image/function-app-browser-testing.png)
 
-1. 若要测试授权，请从 URL 中删除 code= 参数，并验证该函数是否不返回任何响应。
+1. 若要测试授权，请从 URL 中删除 `code=` 参数，并验证该函数是否不返回任何响应。
 
 
 ## <a name="enable-continuous-deployment-to-azure"></a>启用到 Azure 的持续部署
@@ -361,7 +368,7 @@ Azure 上的函数应用管理托管计划中函数的执行。 在本部分，�
 
 1. 将部署 Webhook URL 复制到剪贴板。
 
-1. 打开 [Docker Hub](https://hub.docker.com/) 并登录，然后在导航栏上选择“存储库”。  找到并选择映像，选择“Webhook”选项卡，指定一个 **Webhook 名称**，将 URL 粘贴到“Webhook URL”中，然后选择“创建”：   
+1. 打开 [Docker Hub](https://hub.docker.com/) 并登录，然后在导航栏上选择“存储库”。 找到并选择映像，选择“Webhook”选项卡，指定一个 **Webhook 名称**，将 URL 粘贴到“Webhook URL”中，然后选择“创建”：  
 
     ![将 Webhook 添加到 DockerHub 存储库中](./media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
 
@@ -421,7 +428,7 @@ SSH 实现容器和客户端之间的安全通信。 启用 SSH 后，可以使�
 
 1. 在浏览器中打开 `https://<app_name>.scm.azurewebsites.net/`（请将 `<app_name>` 替换为你的唯一名称）。 此 URL 是函数应用容器的高级工具 (Kudu) 终结点。
 
-1. 登录到你的 Azure 帐户，然后选择“SSH”以便与容器建立连接。  如果 Azure 仍在更新容器映像，则连接可能需要一段时间。
+1. 登录到你的 Azure 帐户，然后选择“SSH”以便与容器建立连接。 如果 Azure 仍在更新容器映像，则连接可能需要一段时间。
 
 1. 与容器建立连接后，运行 `top` 命令查看当前正在运行的进程。 
 
@@ -429,7 +436,7 @@ SSH 实现容器和客户端之间的安全通信。 启用 SSH 后，可以使�
 
 ## <a name="write-to-an-azure-storage-queue"></a>写入 Azure 存储队列
 
-无需编写自己的集成代码，即可使用 Azure Functions 将函数连接到其他 Azure 服务和资源。 这些绑定表示输入和输出，在函数定义中声明。  绑定中的数据作为参数提供给函数。 触发器是一种特殊类型的输入绑定。  尽管一个函数只有一个触发器，但它可以有多个输入和输出绑定。 有关详细信息，请参阅 [Azure Functions 触发器和绑定的概念](functions-triggers-bindings.md)。
+无需编写自己的集成代码，即可使用 Azure Functions 将函数连接到其他 Azure 服务和资源。 这些绑定表示输入和输出，在函数定义中声明。 绑定中的数据作为参数提供给函数。 触发器是一种特殊类型的输入绑定。 尽管一个函数只有一个触发器，但它可以有多个输入和输出绑定。 有关详细信息，请参阅 [Azure Functions 触发器和绑定的概念](functions-triggers-bindings.md)。
 
 本部分介绍如何将函数与 Azure 存储队列集成。 添加到此函数的输出绑定会将 HTTP 请求中的数据写入到队列中的消息。
 

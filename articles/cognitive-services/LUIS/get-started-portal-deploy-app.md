@@ -3,12 +3,12 @@ title: 快速入门：通过 LUIS 门户部署应用
 description: 本快速入门介绍如何通过创建预测终结点资源、分配资源、训练和发布应用来部署应用。
 ms.topic: quickstart
 ms.date: 05/06/2020
-ms.openlocfilehash: 9b22f1eda822b5354f0b434a04c2ea03e4c0ff2a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 743c2fe311eeeabad5a3e957319be3a6e372e74f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585044"
+ms.locfileid: "83653231"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>快速入门：在 LUIS 门户中部署应用
 
@@ -40,7 +40,8 @@ LUIS 应用准备好将话语预测返回到客户端应用程序（例如聊天
 
 1. 选择租户、订阅和资源名称。 选择“分配资源”。
 
-   ![将资源分配给应用](./media/get-started-portal-deploy-app/assign-resource.png)
+   > [!div class="mx-imgBorder"]
+   > ![将资源分配给应用](./media/get-started-portal-deploy-app/assign-resource.png)
 
 1. 完成相同的步骤，将创作密钥添加到应用。
 
@@ -51,11 +52,11 @@ LUIS 应用准备好将话语预测返回到客户端应用程序（例如聊天
 
 ## <a name="train-the-app"></a>训练应用
 
-[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
+如果自上次训练后更改了应用，请[训练](get-started-portal-build-app.md)应用。
 
 ## <a name="publish-the-app-to-the-prediction-endpoint"></a>将应用发布到预测终结点
 
-[!INCLUDE [LUIS How to Train steps](includes/howto-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
 ## <a name="prediction-endpoint-request"></a>预测终结点请求
 

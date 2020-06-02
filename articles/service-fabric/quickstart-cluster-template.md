@@ -7,16 +7,16 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: edoyle
 ms.date: 04/24/2020
-ms.openlocfilehash: 60771d5a188df5dfeca3530a551a116c870e63f5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2db3dffbbf0f6d98fe6da7a0cec5400f7f2c03da
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82150482"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722450"
 ---
 # <a name="quickstart-create-a-service-fabric-cluster-using-resource-manager-template"></a>快速入门：使用资源管理器模板创建 Service Fabric 群集
 
-Azure Service Fabric 是一款分布式系统平台，可方便用户轻松打包、部署和管理可缩放的可靠微服务和容器。 Service Fabric 群集  是一组联网的虚拟机，可在其中部署和管理微服务。
+Azure Service Fabric 是一款分布式系统平台，可方便用户轻松打包、部署和管理可缩放的可靠微服务和容器。 Service Fabric 群集是一组联网的虚拟机，可在其中部署和管理微服务。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -38,7 +38,7 @@ Azure Service Fabric 是一款分布式系统平台，可方便用户轻松打�
 
 ### <a name="download-the-sample-template-and-certificate-helper-script"></a>下载示例模板和证书帮助程序脚本
 
-克隆或下载 [Azure 资源管理器快速入门模板](https://github.com/Azure/azure-quickstart-templates)存储库。 或者，在本地从 service-fabric-secure-cluster-5-node-1-nodetype  文件夹复制要使用的以下文件：
+克隆或下载 [Azure 资源管理器快速入门模板](https://github.com/Azure/azure-quickstart-templates)存储库。 或者，在本地从 service-fabric-secure-cluster-5-node-1-nodetype 文件夹复制要使用的以下文件：
 
 * [New-ServiceFabricClusterCertificate.ps1](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/New-ServiceFabricClusterCertificate.ps1)
 * [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json)
@@ -72,10 +72,10 @@ New-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $resourceGroupName -L
 .\New-ServiceFabricClusterCertificate.ps1
 ```
 
-此脚本会提示你输入以下内容（请务必修改下面的示例值中的 CertDNSName  和 KeyVaultName  ）：
+此脚本会提示你输入以下内容（请务必修改下面的示例值中的 CertDNSName 和 KeyVaultName）：
 
-* **密码：** Password!1
-* **CertDNSName：**  sfquickstart.southcentralus.cloudapp.azure.com
+* **密码:** Password!1
+* **CertDNSName：** sfquickstart.southcentralus.cloudapp.azure.com
 * **KeyVaultName：** *SFQuickstartKV*
 * **KeyVaultSecretName：** clustercert
 
@@ -91,7 +91,7 @@ $certThumbprint = "<Certificate Thumbprint>"
 
 ### <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/service-fabric-secure-cluster-5-node-1-nodetype)。 本文的模板太长，无法在此处显示。 若要查看该模板，请参阅 https://github.com/Azure/azure-quickstart-templates/blob/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json 。
+本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/)。 本文的模板太长，无法在此处显示。 若要查看模板，请参阅 [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json) 文件。
 
 该模板中已定义了多个 Azure 资源：
 
@@ -106,12 +106,12 @@ $certThumbprint = "<Certificate Thumbprint>"
 
 ### <a name="customize-the-parameters-file"></a>自定义参数文件
 
-打开 azuredeploy.parameters.json  并编辑参数值，以实现以下目的：
+打开 azuredeploy.parameters.json 并编辑参数值，以实现以下目的：
 
-* clusterName  与你在创建群集证书时为 CertDNSName  提供的值匹配
-* adminUserName  是不同于默认的 GEN-UNIQUE  令牌的某个值
-* adminPassword  是不同于默认的 GEN-PASSWORD  令牌的某个值
-* certificateThumbprint  、sourceVaultResourceId  和 certificateUrlValue  都是空字符串 (`""`)
+* clusterName 与你在创建群集证书时为 CertDNSName 提供的值匹配
+* adminUserName 是不同于默认的 GEN-UNIQUE 令牌的某个值
+* adminPassword 是不同于默认的 GEN-PASSWORD 令牌的某个值
+* certificateThumbprint、sourceVaultResourceId 和 certificateUrlValue 都是空字符串 (`""`)
 
 例如：
 

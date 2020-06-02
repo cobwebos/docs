@@ -410,6 +410,8 @@
               href: id-tokens.md
             - name: 访问令牌
               href: access-tokens.md
+            - name: UserInfo 终结点
+              href: userinfo.md
             - name: 证书凭据
               href: active-directory-certificate-credentials.md
         - name: SAML 2.0 协议

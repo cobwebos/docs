@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 03/19/2020
+ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e62b3c551f41bca0055f35cf6bf62c59d921c73b
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.openlocfilehash: ab1d0318464f6b44e1f46bd30dc76272584fde64
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80294830"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929819"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>什么是 Windows 虚拟桌面？ 
 
@@ -67,8 +67,8 @@ Windows 虚拟桌面是在云中运行的桌面和应用虚拟化服务。
 
 |OS|所需的许可证|
 |---|---|
-|Windows 10 Enterprise 多会话或 Windows 10 Enterprise|Microsoft 365 E3、E5、A3、A5、F1、Business<br>Windows E3、E5、A3、A5|
-|Windows 7 Enterprise |Microsoft 365 E3、E5、A3、A5、F1、Business<br>Windows E3、E5、A3、A5|
+|Windows 10 Enterprise 多会话或 Windows 10 Enterprise|Microsoft 365 E3、E5、A3、A5、F3、商业高级版<br>Windows E3、E5、A3、A5|
+|Windows 7 Enterprise |Microsoft 365 E3、E5、A3、A5、F3、商业高级版<br>Windows E3、E5、A3、A5|
 |Windows Server 2012 R2、2016、2019|附带软件保障的 RDS 客户端访问许可证 (CAL)|
 
 基础结构需要满足以下要求才能支持 Windows 虚拟桌面：
@@ -89,26 +89,44 @@ Windows 虚拟桌面是在云中运行的桌面和应用虚拟化服务。
 
 为 Windows 虚拟桌面创建的 Azure 虚拟机必须能够访问以下 URL：
 
-|地址|出站端口|目的|
-|---|---|---|
-|*.wvd.microsoft.com|TCP 端口 443|服务流量|
-|\* .blob.core.windows.net|TCP 端口 443|代理、SXS 堆栈更新和代理流量|
-|*.core.windows.net|TCP 端口 443|代理流量|
-|*.servicebus.windows.net|TCP 端口 443|代理流量|
-|prod.warmpath.msftcloudes.com|TCP 端口 443|代理流量|
-|catalogartifact.azureedge.net|TCP 端口 443|Azure 市场|
-|kms.core.windows.net|TCP 端口 1688|Windows 10 激活|
+|地址|出站 TCP 端口|目的|服务标记|
+|---|---|---|---|
+|*.wvd.microsoft.com|443|服务流量|WindowsVirtualDesktop|
+|mrsglobalsteus2prod.blob.core.windows.net|443|代理和 SXS 堆栈更新|AzureCloud|
+|*.core.windows.net|443|代理流量|AzureCloud|
+|*.servicebus.windows.net|443|代理流量|AzureCloud|
+|prod.warmpath.msftcloudes.com|443|代理流量|AzureCloud|
+|catalogartifact.azureedge.net|443|Azure 市场|AzureCloud|
+|kms.core.windows.net|1688|Windows 激活|Internet|
+|wvdportalstorageblob.blob.core.windows.net|443|Azure 门户支持|AzureCloud|
 
 >[!IMPORTANT]
->若要可靠部署 Windows 虚拟桌面，必须打开这些 URL。 不支持阻止访问这些 URL，否则会影响服务功能。 这些 URL 仅对应于 Windows 虚拟桌面站点和资源，而不包括 Azure Active Directory 等其他服务的 URL。
+>Windows 虚拟桌面现在支持 FQDN 标记。 有关详细信息，请参阅[使用 Azure 防火墙保护 Windows 虚拟桌面部署](../firewall/protect-windows-virtual-desktop.md)。
+>
+>建议使用 FQDN 标记或服务标记（而不是 URL）来防止服务问题。 列出的 URL 和标记只对应于 Windows 虚拟桌面站点和资源。 这些 URL 不包含其他服务（如 Azure Active Directory）的 URL。
+
+下表列出了 Azure 虚拟机可以访问的可选 URL：
+
+|地址|出站 TCP 端口|目的|服务标记|
+|---|---|---|---|
+|*.microsoftonline.com|443|向 MS Online Services 进行的身份验证|无|
+|*.events.data.microsoft.com|443|遥测服务|无|
+|www.msftconnecttest.com|443|检测 OS 是否已连接到 Internet|无|
+|*.prod.do.dsp.mp.microsoft.com|443|Windows 更新|无|
+|login.windows.net|443|登录到 MS Online Services、Office 365|无|
+|*.sfx.ms|443|OneDrive 客户端软件更新|无|
+|*.digicert.com|443|证书吊销检查|无|
+
 
 >[!NOTE]
 >Windows 虚拟桌面目前没有可以通过将其加入允许列表来允许网络流量的 IP 地址范围列表。 我们目前仅支持特定于允许列表操作的 URL。
 >
+>如需与 Office 相关的 URL（包括所需的 Azure Active Directory 相关 URL）的列表，请参阅 [Office 365 URL 和 IP 地址范围](/office365/enterprise/urls-and-ip-address-ranges)。
+>
 >对于涉及服务流量的 URL，必须使用通配符 (*)。 如果不希望为代理相关的流量使用 *，下面提供了有关如何在不使用通配符的情况下查找 URL 的信息：
 >
 >1. 向 Windows 虚拟桌面主机池注册你的虚拟机。
->2. 打开“事件查看器”  ，导航到“Windows 日志” > “应用程序” > “WVD-Agent”并查找事件 ID 3702。   
+>2. 打开“事件查看器”，导航到“Windows 日志” > “应用程序” > “WVD-Agent”并查找事件 ID 3702。  
 >3. 将在事件 ID 3702 下找到的 URL 加入允许列表。 事件 ID 3702 下的 URL 是特定于区域的。 你需要对要在其中部署虚拟机的每个区域的相关 URL 重复执行加入允许列表过程。
 
 Windows 虚拟桌面包括交付给用户的 Windows 桌面和应用，以及由 Microsoft 作为服务托管在 Azure 上的管理解决方案。 桌面和应用可以部署在任何 Azure 区域中的虚拟机 (VM) 上，这些 VM 的管理解决方案和数据将驻留在美国。 这可能会导致将数据传输到美国。
@@ -137,15 +155,15 @@ Windows 虚拟桌面包括交付给用户的 Windows 桌面和应用，以及由
 
 远程桌面客户端必须有权访问以下 URL：
 
-|地址|出站端口|目的|客户端|
+|地址|出站 TCP 端口|目的|客户端|
 |---|---|---|---|
-|*.wvd.microsoft.com|TCP 端口 443|服务流量|All|
-|*.servicebus.windows.net|TCP 端口 443|排查数据问题|All|
-|go.microsoft.com|TCP 端口 443|Microsoft FWLink|All|
-|aka.ms|TCP 端口 443|Microsoft URL 缩短符|All|
-|docs.microsoft.com|TCP 端口 443|文档|All|
-|privacy.microsoft.com|TCP 端口 443|隐私声明|All|
-|query.prod.cms.rt.microsoft.com|TCP 端口 443|客户端更新|Windows 桌面|
+|*.wvd.microsoft.com|443|服务流量|All|
+|*.servicebus.windows.net|443|排查数据问题|All|
+|go.microsoft.com|443|Microsoft FWLink|All|
+|aka.ms|443|Microsoft URL 缩短符|All|
+|docs.microsoft.com|443|文档|All|
+|privacy.microsoft.com|443|隐私声明|All|
+|query.prod.cms.rt.microsoft.com|443|客户端更新|Windows 桌面|
 
 >[!IMPORTANT]
 >若要获取可靠的客户端体验，必须打开这些 URL。 不支持阻止访问这些 URL，否则会影响服务功能。 这些 URL 仅对应于客户端站点和资源，而不包括 Azure Active Directory 等其他服务的 URL。
@@ -165,20 +183,22 @@ Windows 虚拟桌面不支持 x86（32 位）、Windows 10 企业版 N 或 Windo
 
 可用的自动化和部署选项取决于所选的 OS 和版本，如下表所示： 
 
-|操作系统|Azure 映像库|手动 VM 部署|Azure 资源管理器模板集成|在 Azure 市场中预配主机池|Windows 虚拟桌面代理更新|
-|--------------------------------------|:------:|:------:|:------:|:------:|:------:|
-|Windows 10 多会话版本 1903|是|是|是|是|自动|
-|Windows 10 多会话版本 1809|是|是|否|否|自动|
-|Windows 10 Enterprise 版本 1903|是|是|是|是|自动|
-|Windows 10 Enterprise 版本 1809|是|是|否|否|自动|
-|Windows 7 Enterprise|是|是|否|否|手动|
-|Windows Server 2019|是|是|否|否|自动|
-|Windows Server 2016|是|是|是|是|自动|
-|Windows Server 2012 R2|是|是|否|否|自动|
+|操作系统|Azure 映像库|手动 VM 部署|Azure 资源管理器模板集成|在 Azure 市场中预配主机池|
+|--------------------------------------|:------:|:------:|:------:|:------:|
+|Windows 10 多会话版本 1903|是|是|是|是|
+|Windows 10 多会话版本 1809|是|是|否|否|
+|Windows 10 Enterprise 版本 1903|是|是|是|是|
+|Windows 10 Enterprise 版本 1809|是|是|否|否|
+|Windows 7 Enterprise|是|是|否|否|
+|Windows Server 2019|是|是|否|否|
+|Windows Server 2016|是|是|是|是|
+|Windows Server 2012 R2|是|是|否|否|
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始使用本服务，需要创建一个租户。 若要详细了解如何创建租户，请继续学习有关创建租户的教程。
+如果使用的是 Windows 虚拟桌面 2019 秋季版，则可从[在 Windows 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)教程入门。
+
+如果使用的是 Windows 虚拟桌面 2020 春季版，则需要改为创建主机池。 若要开始学习，请访问下面的教程。
 
 > [!div class="nextstepaction"]
-> [在 Windows 虚拟桌面中创建租户](tenant-setup-azure-active-directory.md)
+> [使用 Azure 门户创建主机池](create-host-pools-azure-marketplace.md)

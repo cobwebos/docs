@@ -4,38 +4,38 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: e0bc7eeff276d44f3cd23e30eb54c9bd1ca94efd
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 49aaf9c748d75df8ffbb2adcd80aa6b966f88680
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80659291"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673180"
 ---
 1. 启动 Eclipse。
 
-1. 在 Eclipse Launcher 中，在“工作区”字段中输入某个新工作区目录的名称。  然后选择“启动”。 
+1. 在 Eclipse Launcher 中，在“工作区”字段中输入某个新工作区目录的名称。 然后选择“启动”。
 
    ![Eclipse Launcher 的屏幕截图](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-01-create-new-eclipse-workspace.png)
 
 1. 片刻之后，Eclipse IDE 的主窗口将会显示。 关闭**欢迎**屏幕（如果存在）。
 
-1. 从 Eclipse 菜单栏上，通过选择“文件” > “新建” > “项目”创建一个新项目。   
+1. 从 Eclipse 菜单栏上，通过选择“文件” > “新建” > “项目”创建一个新项目。  
 
-1. 将显示“新建项目”对话框  。 选择“Java 项目”  ，然后选择“下一步”  。
+1. 将显示“新建项目”对话框。 选择“Java 项目”，然后选择“下一步”。
 
    ![“新建项目”对话框的屏幕截图，其中突出显示了 Java 项目](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-02-select-wizard.png)
 
-1. 此时将启动“新建 Java 项目”向导  。 在“项目名称”  字段中，输入 **quickstart**，然后选择 **JavaSE 1.8** 作为执行环境。 选择“完成”  。
+1. 此时将启动“新建 Java 项目”向导。 在“项目名称”字段中，输入 **quickstart**，然后选择 **JavaSE 1.8** 作为执行环境。 选择“完成”。
 
    ![“新建 Java 项目”向导的屏幕截图](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-03-create-java-project.png)
 
-1. 如果出现了“打开关联的透视图?”窗口，请选择“打开透视图”。  
+1. 如果出现了“打开关联的透视图?”窗口，请选择“打开透视图”。 
 
-1. 在**包资源管理器**中，右键单击 **quickstart** 项目。 从上下文菜单中选择“配置” > “转换为 Maven 项目”。  
+1. 在**包资源管理器**中，右键单击 **quickstart** 项目。 从上下文菜单中选择“配置” > “转换为 Maven 项目”。 
 
    ![包资源管理器的屏幕截图](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-04-convert-to-maven-project.png)
 
-1. 此时将显示“新建 POM”窗口。  在“组 ID”  字段中输入 *com.microsoft.cognitiveservices.speech.samples*，然后在“项目 ID”  字段中输入 *quickstart*。 然后选择“完成”  。
+1. 此时将显示“新建 POM”窗口。 在“组 ID”字段中输入 *com.microsoft.cognitiveservices.speech.samples*，然后在“项目 ID”字段中输入 *quickstart*。 然后选择“完成”。
 
    ![“新建 POM”窗口的屏幕截图](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-05-configure-maven-pom.png)
 
@@ -45,7 +45,7 @@ ms.locfileid: "80659291"
 
      [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#repositories)]
 
-   * 此外，还添加一个 `dependencies` 元素（使用语音 SDK 版本 1.11.0 作为依赖项）：
+   * 此外，还添加一个 `dependencies` 元素（使用语音 SDK 版本 1.12.0 作为依赖项）：
 
      [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#dependencies)]
 

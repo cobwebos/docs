@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5c458b1c04a7f3be1a43d725591426e619286b7d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0f34b853728c91d9e3c6e32396c0f7eb427af101
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587863"
+ms.locfileid: "83656212"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>什么是 Azure Synapse Analytics（工作区预览版）？
 
@@ -63,7 +63,7 @@ Azure Synapse 消除了结合使用 SQL 和 Spark 时存在的传统技术阻碍
 
 Azure Synapse 内置了与 Azure 数据工厂相同的数据集成引擎和体验，使你可以创建丰富的数据管道，而无需使用单独的业务流程引擎。
 
-* 在 Synapse 与 85 个以上的本地数据源之间移动数据
+* 在 Azure Synapse 与 90 个以上的本地数据源之间移动数据
 * 协调 Notebooks、Pipelines、Spark 作业、SQL 脚本和存储过程
 * 使用数据流活动的无代码 ETL
 
@@ -87,6 +87,6 @@ Synapse Studio 是一个 Web 原生的体验，它将数据工程师所需的全
 
 * [创建工作区](quickstart-create-workspace.md)
 * [使用 Synapse Studio](quickstart-synapse-studio.md)
-* [创建 SQL 池](quickstart-create-sql-pool.md)
+* [创建 SQL 池](quickstart-create-sql-pool-portal.md)
 * [使用 SQL 按需版本](quickstart-sql-on-demand.md)
-* [创建 Apache Spark 池](quickstart-create-apache-spark-pool.md)
+* [创建 Apache Spark 池](quickstart-create-apache-spark-pool-portal.md)

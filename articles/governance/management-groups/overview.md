@@ -3,12 +3,12 @@ title: 使用管理组来组织资源 - Azure 治理
 description: 了解管理组、其权限的工作方式以及如何使用它们。
 ms.date: 04/15/2020
 ms.topic: overview
-ms.openlocfilehash: cc60e4555f0fb2b920b8061fb044ce5dde990d38
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 43c8bb2bdb71b0b75d2fcc31451952214978093c
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81381537"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773145"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>使用 Azure 管理组来组织资源
 
@@ -42,7 +42,7 @@ ms.locfileid: "81381537"
 
 ### <a name="important-facts-about-the-root-management-group"></a>关于根管理组的重要事实
 
-- 默认情况下，根管理组的显示名称是**租户根组**。 ID 是 Azure Active Directory ID。
+- 默认情况下，根管理组的显示名称是“租户根组”。 ID 是 Azure Active Directory ID。
 - 若要更改显示名称，必须在根管理组中为帐户分配“所有者”或“参与者”角色。 请参阅[更改管理组名称](manage.md#change-the-name-of-a-management-group)，了解如何更新管理组的名称。
 - 无法像操作其他管理组一样移动或删除根管理组。  
 - 所有订阅和管理组归并到目录中的一个根管理组下。
@@ -55,7 +55,7 @@ ms.locfileid: "81381537"
 - 在 SDK 中，根管理组（即“租户根”）作为一个管理组进行操作。
 
 > [!IMPORTANT]
-> 对根管理组进行的任何用户访问权限分配或策略分配都适用于在目录中的所有资源  。 因此，所有客户都应评估在此作用域中定义项目的需求。 仅在此范围内，用户访问权限和策略分配应为“必须具有”  
+> 对根管理组进行的任何用户访问权限分配或策略分配都适用于在目录中的所有资源。 因此，所有客户都应评估在此作用域中定义项目的需求。 仅在此范围内，用户访问权限和策略分配应为“必须具有”  
 > 。
 
 ## <a name="initial-setup-of-management-groups"></a>管理组的初始设置
@@ -75,29 +75,29 @@ ms.locfileid: "81381537"
   - 通过删除根管理组的所有策略和角色分配，服务会在下一个隔夜周期将所有订阅回填到层次结构中。 执行此过程后，所有租户订阅都不存在意外的访问权限授予或策略分配情况。
   - 在不影响服务的情况下执行此过程的最佳方法是在根管理组的下一个级别应用角色或策略分配。 然后可以从根范围删除所有分配。
 - 直接调用 API 以开始回填过程
-  - 目录中的任何客户都可以调用 _TenantBackfillStatusRequest_ 或 _StartTenantBackfillRequest_ API。 调用 StartTenantBackfillRequest API 时，它会启动将所有订阅移到层次结构中的初始设置过程。 此过程还会开始强制所有新订阅成为根管理组的子级。
+  - 目录中的任何客户都可以调用 TenantBackfillStatusRequest 或 StartTenantBackfillRequest API 。 调用 StartTenantBackfillRequest API 时，它会启动将所有订阅移到层次结构中的初始设置过程。 此过程还会开始强制所有新订阅成为根管理组的子级。
     无需更改根级别上的任何分配即可完成此过程。 通过调用该 API，可使根上的任何策略或访问权限分配应用到所有订阅。
 
 如果对此回填过程有疑问，请联系：`managementgroups@microsoft.com`
   
 ## <a name="management-group-access"></a>访问管理组
 
-Azure 管理组支持使用 [Azure 基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 来访问所有资源访问和定义角色。
+Azure 管理组支持使用 [Azure 基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 来访问所有资源和定义角色。
 层次结构中的子资源继承这些权限。 可将任何 RBAC 角色分配到管理组，该角色将继承资源的层次结构。 例如，可以向管理组分配 RBAC 角色 VM 参与者。 此角色不对管理组执行任何操作，但将继承该管理组下的所有 VM。
 
 下图列出了管理组的角色和支持的操作。
 
 | RBAC 角色名称             | 创建 | 重命名 | 移动\*\* | 删除 | 分配访问权限 | 分配策略 | 读取  |
 |:-------------------------- |:------:|:------:|:--------:|:------:|:-------------:| :------------:|:-----:|
-|“所有者”                       | X      | X      | X        | X      | X             | X             | X     |
+|所有者                       | X      | X      | X        | X      | X             | X             | X     |
 |参与者                 | X      | X      | X        | X      |               |               | X     |
 |MG 参与者\*            | X      | X      | X        | X      |               |               | X     |
-|读取器                      |        |        |          |        |               |               | X     |
+|读者                      |        |        |          |        |               |               | X     |
 |MG 读者\*                 |        |        |          |        |               |               | X     |
 |资源策略参与者 |        |        |          |        |               | X             |       |
 |用户访问管理员   |        |        |          |        | X             | X             |       |
 
-\*设置用户帐户 ：MG 参与者和 MG 读者只允许用户在管理组范围执行这些操作。  
+\*：MG 参与者和 MG 读者只允许用户在管理组范围执行这些操作。  
 \*\*：将订阅或管理组移入/移出层次结构不一定需要根管理组上的角色分配。 请参阅[使用管理组管理资源](manage.md)了解有关将项目移到层次结构中的详细信息。
 
 ## <a name="custom-rbac-role-definition-and-assignment"></a>自定义 RBAC 角色定义和分配
@@ -106,7 +106,7 @@ Azure 管理组支持使用 [Azure 基于角色的访问控制 (RBAC)](../../rol
 
 ### <a name="example-definition"></a>示例定义
 
-在包括管理组后，[定义和创建自定义角色](../../role-based-access-control/custom-roles.md)的操作不变。 使用完整路径来定义管理组 **/providers/Microsoft.Management/managementgroups/{groupId}** 。
+在包括管理组后，[定义和创建自定义角色](../../role-based-access-control/custom-roles.md)的操作不变。 使用完整路径来定义管理组 /providers/Microsoft.Management/managementgroups/{groupId}。
 
 使用管理组的 ID，而不是管理组的显示名称。 发生此常见错误是因为在创建管理组时二者都是自定义字段。
 
@@ -143,7 +143,7 @@ Azure 管理组支持使用 [Azure 基于角色的访问控制 (RBAC)](../../rol
 
 ### <a name="issues-with-breaking-the-role-definition-and-assignment-hierarchy-path"></a>中断角色定义和分配层次结构路径的问题
 
-角色定义是可分配的范围，处于管理组层次结构中的任意位置。 角色定义可以在父管理组中定义，而实际的角色分配存在于子订阅中。 由于两个项之间存在某种关系，因此尝试将分配与其定义分离时，会收到错误。
+角色定义是可分配的范围，处于管理组层次结构中的任意位置。 角色定义可以在父管理组中定义，而实际的角色分配存在于子订阅中。 由于两个项之间存在某种关系，因此尝试将分配与其定义分离时，将收到错误。
 
 例如，让我们看看某个视觉对象的层次结构的一小部分。
 
@@ -164,23 +164,24 @@ Azure 管理组支持使用 [Azure 基于角色的访问控制 (RBAC)](../../rol
 在管理组上使用自定义角色时存在限制。 
 
  - 在新角色的可分配范围中，只能定义一个管理组。 设置此限制是为了减少出现角色定义和角色分配不关联的情况的次数。 将进行了角色分配的订阅或管理组移到另一个没有角色定义的父项时，会出现此情况。  
- - 不允许在管理组自定义角色中定义 RBAC 数据平面操作。 存在此限制是因为，在通过 RBAC 操作更新数据平面资源提供程序时存在延迟问题。 我们会解决此延迟问题，并会在角色定义中禁用这些操作以降低风险。
+ - 不能在管理组自定义角色中定义 RBAC 数据平面操作。 存在此限制是因为，在通过 RBAC 操作更新数据平面资源提供程序时存在延迟问题。
+   我们会解决此延迟问题，并会在角色定义中禁用这些操作以降低风险。
  - Azure 资源管理器不验证管理组是否存在于角色定义的可分配范围中。 即使存在拼写错误或者列出的管理组 ID 不正确，仍会创建角色定义。  
 
 ## <a name="moving-management-groups-and-subscriptions"></a>移动管理组和订阅 
 
-只有在三项规则的计算结果都为 true 的情况下，某一管理组或订阅才能成为另一管理组的子项。
+若要将管理组或订阅移动为另一个管理组的子项，三项规则的计算结果都需要为 true。
 
 如果执行移动操作，你需要： 
 
 - 在子订阅或管理组上的管理组写入权限和角色分配写入权限。
-  - 内置角色示例：**所有者**
+  - 内置角色示例：所有者
 - 目标父管理组中的管理组写入访问权限。
-  - 内置角色示例：**所有者**、**参与者**、**管理组参与者**
+  - 内置角色示例：所有者、参与者、管理组参与者  
 - 现有父管理组中的管理组写入访问权限。
-  - 内置角色示例：**所有者**、**参与者**、**管理组参与者**
+  - 内置角色示例：所有者、参与者、管理组参与者  
 
-**例外**：如果目标或现有父管理组不是根管理组，则权限要求不适用。 由于根管理组是所有新管理组和订阅的默认登陆点，因此不需在其上具有相关权限即可移动某个项。
+例外：如果目标或现有父管理组不是根管理组，则权限要求不适用。 由于根管理组是所有新管理组和订阅的默认登陆点，因此不需在其上具有相关权限即可移动某个项。
 
 如果订阅上的“所有者”角色继承自当前管理组，你的移动目标会受限。 只能将订阅移到你在其中拥有“所有者”角色的另一管理组。 不能将它移到你在其中是参与者的管理组，因为你会失去订阅的所有权。 如果你是直接分配到订阅的“所有者”角色的（而不是从管理组继承的），则可将它移到你在其中是参与者的任何管理组。
 
@@ -190,7 +191,7 @@ Azure 管理组支持使用 [Azure 基于角色的访问控制 (RBAC)](../../rol
 
 :::image type="content" source="./media/al-mg.png" alt-text="支持管理组的活动日志" border="false":::
 
-如果要在 Azure 门户外针对管理组进行查询，管理组的目标范围将如下所示： **"/providers/Microsoft.Management/managementGroups/{yourMgID}"** 。
+如果要在 Azure 门户外针对管理组进行查询，管理组的目标范围将如下所示：“/providers/Microsoft.Management/managementGroups/{yourMgID}”。
 
 ## <a name="next-steps"></a>后续步骤
 

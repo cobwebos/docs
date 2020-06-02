@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 05/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d19a7cc8d81f9e6e913f147b24c5cce03ff82027
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2325259cd5e613223ee77371d7e563e8ab1e94ca
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76986727"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648457"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Tableau Server 集成
 
@@ -51,11 +51,11 @@ ms.locfileid: "76986727"
 要配置 Tableau Server 与 Azure AD 的集成，需要从库中将 Tableau Server 添加到托管 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序”   。
-1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入“Tableau Server”   。
-1. 从结果面板中选择“Tableau Server”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
+1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 若要添加新的应用程序，请选择“新建应用程序”。
+1. 在“从库中添加”部分的搜索框中，键入“Tableau Server” 。
+1. 从结果面板中选择“Tableau Server”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-tableau-server"></a>配置和测试 Tableau Server 的 Azure AD 单一登录
 
@@ -74,28 +74,28 @@ ms.locfileid: "76986727"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Tableau Server”应用程序集成页上，找到“管理”部分并选择“单一登录”。   
-1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Tableau Server”应用程序集成页上，找到“管理”部分并选择“单一登录”。  
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，输入以下字段的值  ：
+1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://azure.<domain name>.link`。
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://azure.<domain name>.link`。
 
-    b. 在“标识符”框中，使用以下模式键入 URL：`https://azure.<domain name>.link` 
+    b. 在“标识符”框中，使用以下模式键入 URL：`https://azure.<domain name>.link`
 
-    c. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://azure.<domain name>.link/wg/saml/SSO/index.html`
+    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://azure.<domain name>.link/wg/saml/SSO/index.html`
 
     > [!NOTE]
     > 上面的值不是实际值。 请使用来自 Tableau Server 配置页面的实际 URL 和标识符更新这些值，本教程下文中介绍了此页面。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上   。
 
     ![证书下载链接](common/metadataxml.png)
 
-1. 在“设置 Tableau Server”部分，根据要求复制相应的 URL。 
+1. 在“设置 Tableau Server”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -103,62 +103,62 @@ ms.locfileid: "76986727"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，将通过授予 B.Simon 访问 Tableau Server 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“Tableau Server”  。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在应用程序列表中，选择“Tableau Server”。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。  
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
-1. 在“添加分配”对话框中，单击“分配”按钮。  
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。  
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
+1. 在“添加分配”对话框中，单击“分配”按钮。 
 
 ## <a name="configure-tableau-server-sso"></a>配置 Tableau Server 单一登录
 
 1. 若要为应用程序配置 SSO，需要以管理员身份登录到 Tableau Server 租户。
 
-2. 在“配置”  选项卡上，选择“用户标识和访问”  ，然后选择“身份验证方法”  选项卡。
+2. 在“配置”选项卡上，选择“用户标识和访问”，然后选择“身份验证方法”选项卡。
 
     ![配置单一登录](./media/tableauserver-tutorial/tutorial-tableauserver-auth.png)
 
-3. 在“配置”  页上，执行以下步骤：
+3. 在“配置”页上，执行以下步骤：
 
     ![配置单一登录](./media/tableauserver-tutorial/tutorial-tableauserver-config.png)
 
     a. 对于**身份验证方法**，请选择“SAML”。
 
-    b. 选中“为服务器启用 SAML 身份验证”  复选框。
+    b. 选中“为服务器启用 SAML 身份验证”复选框。
 
-    c. Tableau Server 返回 URL（Tableau Server 用户将要访问的 URL），例如 <http://tableau_server>。 但不建议使用 `http://localhost`。 不支持使用带尾部反斜杠的 URL（例如 `http://tableau_server/`）。 复制“Tableau Server 返回 URL”，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“登录 URL”文本框中    。
+    c. Tableau Server 返回 URL（Tableau Server 用户将要访问的 URL），例如 <http://tableau_server>。 但不建议使用 `http://localhost`。 不支持使用带尾部反斜杠的 URL（例如 `http://tableau_server/`）。 复制“Tableau Server 返回 URL”，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“登录 URL”文本框中  。
 
-    d. SAML 实体 ID - 此实体 ID 唯一标识安装到 IdP 的 Tableau Server。 可以在此处再次输入 Tableau Server URL（如果需要），但它不必须是 Tableau Server URL。 复制“SAML 实体 ID”，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“标识符”文本框中    。
+    d. SAML 实体 ID - 此实体 ID 唯一标识安装到 IdP 的 Tableau Server。 可以在此处再次输入 Tableau Server URL（如果需要），但它不必须是 Tableau Server URL。 复制“SAML 实体 ID”，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“标识符”文本框中  。
 
-    e. 单击“下载 XML 元数据文件”  ，并在文本编辑器应用程序中打开该文件。 找到包含 Http Post 和索引 0 的断言使用者服务 URL 并复制该 URL。 现在，将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“回复 URL”文本框中   。
+    e. 单击“下载 XML 元数据文件”，并在文本编辑器应用程序中打开该文件。 找到包含 Http Post 和索引 0 的断言使用者服务 URL 并复制该 URL。 现在，将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“回复 URL”文本框中 。
 
-    f. 找到从 Azure 门户下载的联合元数据文件，然后在“SAML Idp 元数据文件”  中上传它。
+    f. 找到从 Azure 门户下载的联合元数据文件，然后在“SAML Idp 元数据文件”中上传它。
 
     g. 输入 IdP 用来保存用户名、显示名称和电子邮件地址的属性的名称。
 
-    h. 单击“保存” 
+    h. 单击“保存”
 
     > [!NOTE]
-    > 客户必须上传 Tableau Server SAML SSO 配置中的任何证书，SSO 流程中会将其忽略。 如果需要帮助在 Tableau Server 上配置 SAML，请参阅此文：[配置 SAML](https://help.tableau.com/current/online/en-us/saml_config_azure_ad.htm)。
+    > 客户必须上传 PEM 编码的 x509 证书文件（扩展名为 .crt）以及作为证书密钥文件的 RSA 或 DSA 私钥文件（扩展名为 .key）。 有关证书文件和证书密钥文件的详细信息，请参阅[此](https://help.tableau.com/current/server/en-us/saml_requ.htm)文档。 如果需要帮助在 Tableau Server 上配置 SAML，请参阅此文：[配置服务器端 SAML](https://help.tableau.com/current/server/en-us/config_saml.htm)。
 
 ### <a name="create-tableau-server-test-user"></a>创建 Tableau Server 测试用户
 

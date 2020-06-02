@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 71bc20680467d270436e28190bb49db5b9313ca0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: f3e53ac189e0d612b09c362e82ba5bc2fe5fec8d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420041"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696827"
 ---
 # <a name="cetas-with-synapse-sql"></a>Synapse SQL 提供的 CETAS
 
@@ -76,7 +76,10 @@ WITH *<common_table_expression>*
 
 SELECT <select_criteria>
 
-使用 SELECT 语句的结果填充新表。 select_criteria 是 SELECT 语句的主体，用于确定将哪些数据复制到新表中  。 有关 SELECT 语句的信息，请参阅 [SELECT (Transact-SQL)](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
+使用 SELECT 语句的结果填充新表。 select_criteria 是 SELECT 语句的主体，用于确定将哪些数据复制到新表中。 有关 SELECT 语句的信息，请参阅 [SELECT (Transact-SQL)](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
+
+> [!NOTE]
+> CETAS 的 SELECT 部分不支持 ORDER BY 子句。
 
 ## <a name="permissions"></a>权限
 
@@ -86,7 +89,9 @@ SELECT <select_criteria>
 
 这些示例使用 CETAS 将按年份和州聚合的总人口保存到 population_ds 数据源中的 aggregated_data 文件夹。
 
-此示例依赖于先前创建的凭据、数据源和外部文件格式。 请参阅[外部表](develop-tables-external-tables.md)文档。 若要将查询结果保存到同一数据源中的其他文件夹，请更改 LOCATION 参数。 若要将结果保存到不同的存储帐户，请为 DATA_SOURCE 参数创建并使用一个不同的数据源。
+此示例依赖于先前创建的凭据、数据源和外部文件格式。 请参阅[外部表](develop-tables-external-tables.md)文档。 若要将查询结果保存到同一数据源中的其他文件夹，请更改 LOCATION 参数。 
+
+若要将结果保存到不同的存储帐户，请为 DATA_SOURCE 参数创建并使用一个不同的数据源。
 
 > [!NOTE]
 > 下面的示例使用公共 Azure 开放式数据存储帐户。 它是只读的。 若要执行这些查询，需要提供你具有写入权限的数据源。
@@ -152,7 +157,8 @@ CETAS 可用于存储包含以下 SQL 数据类型的结果集：
 - tinyint
 - bit
 
-LOB 不能用于 CETAS。
+> [!NOTE]
+> LOB 不能用于 CETAS。
 
 以下数据类型不能在 CETAS 的 SELECT 部分中使用：
 
@@ -167,4 +173,4 @@ LOB 不能用于 CETAS。
 
 ## <a name="next-steps"></a>后续步骤
 
-可以尝试查询 [Spark 表](develop-storage-files-spark-tables.md)。
+可以尝试查询 [Apache Spark for Azure Synapse 外部表](develop-storage-files-spark-tables.md)。

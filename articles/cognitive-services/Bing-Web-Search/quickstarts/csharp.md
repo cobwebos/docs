@@ -8,19 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: cf12b279cf7bcb20aa655646ce34fb9df2bda016
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2c13931c7ab7c084b635abb7080f97de6d4bf4bb
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76167673"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873892"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>快速入门：使用必应 Web 搜索 REST API 和 C# 搜索网页
 
-使用本快速入门进行你的第一次必应 Web 搜索 API 并接收 JSON 响应。 这个 C# 应用程序会向该 API 发送一个搜索请求并显示响应。 虽然此应用程序是使用 C# 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
+根据此快速入门中的说明对必应 Web 搜索 API 进行第一次调用。 这个 C# 应用程序会向该 API 发送一个搜索请求并显示 JSON 响应。 虽然此应用程序是使用 C# 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
+
+本快速入门中的此示例程序仅使用 .NET Core 类。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -30,13 +32,11 @@ ms.locfileid: "76167673"
 * Linux/macOS：[Mono](https://www.mono-project.com/)  
 * 订阅密钥
 
-此示例程序仅使用 .NET Core 类。
-
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-declare-dependencies"></a>创建项目并声明依赖项
 
-在 Visual Studio 或 Mono 中创建新项目。 然后使用以下代码导入所需命名空间和类型。
+在 Visual Studio 或 Mono 中创建新项目。 使用以下代码导入所需命名空间和类型：
 
 ```csharp
 using System;
@@ -62,7 +62,13 @@ namespace BingSearchApisQuickstart
 
 ## <a name="define-variables"></a>定义变量
 
-必须设置几个变量，然后才能继续操作。  `uriBase` 可以是下面的全局终结点，也可以是资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。 确认 `uriBase` 有效并将 `accessKey` 值替换为来自你的 Azure 帐户的有效订阅密钥。 可以通过替换 `searchTerm` 的值随意自定义搜索查询。 请记住将此代码添加到 `Program` 类，如上所述。
+必须设置几个变量，然后才能继续操作。 将此代码添加到在上一部分中创建的 `Program` 类： 
+
+1. 对于 `uriBase` 值，可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。 
+
+2. 确认 `uriBase` 有效并将 `accessKey` 值替换为来自你的 Azure 帐户的订阅密钥。 
+
+3. （可选）通过替换 `searchTerm` 的值自定义搜索查询。 
 
 ```csharp
 // Enter a valid subscription key.
@@ -78,9 +84,9 @@ const string searchTerm = "Microsoft Cognitive Services";
 
 ## <a name="declare-the-main-method"></a>声明 Main 方法
 
-`Main()` 方法是必需的，它是启动程序时调用的第一个方法。 在此应用程序中，main 方法会验证 `accessKey`，发出一个请求，然后输出响应。
+`Main()` 方法是必需的，是启动程序时调用的第一个方法。 在此应用程序中，main 方法会验证 `accessKey`，发出一个请求，然后输出响应。
 
-请记住，`main()` 依赖于在随后几个部分中创建的方法。
+`main()` 方法依赖于在后续部分中创建的方法。
 
 ```csharp
 static void Main()
@@ -109,7 +115,7 @@ static void Main()
 
 ## <a name="create-a-struct-for-search-results"></a>创建一个适用于搜索结果的结构
 
-此结构返回带相关标头的搜索结果。 在向必应 Web 搜索 API 发出创建结果对象的请求时，将会调用它。
+创建一个返回带相关标头的搜索结果的结构。 在向必应 Web 搜索 API 发出创建结果对象的请求时，将会调用它。
 
 ```csharp
 // Returns search results with headers.
@@ -235,9 +241,9 @@ static string JsonPrettyPrint(string json)
 
 ## <a name="put-it-all-together"></a>将其放在一起
 
-最后一步是运行代码！ 如果希望将你的代码与我们的进行比较，请查看 [GitHub 上提供的示例代码](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingWebSearchv7.cs)。
+最后一步是运行代码。 如果希望将你的代码与我们的进行比较，请查看 [GitHub 上的示例代码](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingWebSearchv7.cs)。
 
-## <a name="sample-response"></a>示例响应
+## <a name="example-json-response"></a>示例 JSON 响应
 
 来自必应 Web 搜索 API 的响应以 JSON 形式返回。 此示例响应已截断，仅显示了单个结果。  
 
@@ -366,6 +372,6 @@ static string JsonPrettyPrint(string json)
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [必应 Web 搜索单页应用教程](../tutorial-bing-web-search-single-page-app.md)
+> [必应 Web 搜索 API 单页应用教程](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

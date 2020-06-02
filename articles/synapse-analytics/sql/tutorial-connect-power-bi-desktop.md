@@ -6,15 +6,15 @@ author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 1bdf2d0e3613af7eec339194d6d8a446be83f365
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 649c9a2e0dd9df21a9a59140d9f2999768aab555
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692412"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745400"
 ---
 # <a name="tutorial-use-sql-on-demand-preview-with-power-bi-desktop--create-a-report"></a>教程：在 Power BI Desktop 中使用 SQL 按需版本（预览版）并创建报表
 
@@ -51,10 +51,7 @@ ms.locfileid: "82692412"
 
 ```sql
 -- Drop database if it exists
-IF EXISTS (SELECT * FROM sys.databases WHERE name = 'Demo')
-BEGIN
-    DROP DATABASE Demo
-END;
+DROP DATABASE IF EXISTS Demo
 GO
 
 -- Create new database
@@ -62,23 +59,16 @@ CREATE DATABASE [Demo];
 GO
 ```
 
-## <a name="2---create-credential"></a>2 - 创建凭据
+## <a name="2---create-data-source"></a>2 - 创建数据源
 
-SQL 按需版本服务需要使用凭据来访问存储中的文件。 请为终结点所在区域中的存储帐户创建凭据。 尽管 SQL 按需版本可以访问不同区域中的存储帐户，但将存储和终结点置于同一区域可提供更好的性能。
+SQL 按需版本服务需要使用数据源来访问存储中的文件。 请为终结点所在区域中的存储帐户创建数据源。 尽管 SQL 按需版本可以访问不同区域中的存储帐户，但将存储和终结点置于同一区域可提供更好的性能。
 
-通过运行以下 Transact-SQL (T-SQL) 脚本来创建凭据：
+通过运行以下 Transact-SQL (T-SQL) 脚本来创建数据源：
 
 ```sql
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer')
-DROP CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer];
-GO
-
--- Create credentials for Census Data container which resides in a azure open data storage account
--- There is no secret. We are using public storage account which doesn't need a secret.
-CREATE CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer]
-WITH IDENTITY='SHARED ACCESS SIGNATURE',
-SECRET = '';
-GO
+-- There is no credential in data surce. We are using public storage account which doesn't need a secret.
+CREATE EXTERNAL DATA SOURCE AzureOpenData
+WITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/')
 ```
 
 ## <a name="3---prepare-view"></a>3 - 准备视图
@@ -96,7 +86,8 @@ SELECT
     *
 FROM
     OPENROWSET(
-        BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet',
+        BULK 'censusdatacontainer/release/us_population_county/year=20*/*.parquet',
+        DATA_SOURCE = 'AzureOpenData',
         FORMAT='PARQUET'
     ) AS uspv;
 ```
@@ -114,15 +105,15 @@ FROM
 
 使用以下步骤为 Power BI Desktop 创建报表：
 
-1. 打开 Power BI Desktop 应用程序并选择“获取数据”。 
+1. 打开 Power BI Desktop 应用程序并选择“获取数据”。
 
    ![打开 Power BI Desktop 应用程序并选择“获取数据”。](./media/tutorial-connect-power-bi-desktop/step-0-open-powerbi.png)
 
-2. 选择  “Azure” > “Azure SQL 数据库”  。 
+2. 选择“Azure” > “Azure SQL 数据库”。 
 
    ![选择数据源。](./media/tutorial-connect-power-bi-desktop/step-1-select-data-source.png)
 
-3. 在“服务器”  字段中键入数据库所在服务器的名称，然后在数据库名称中键入 `Demo`。 选择“导入”  选项，然后选择“确定”  。 
+3. 在“服务器”字段中键入数据库所在服务器的名称，然后在数据库名称中键入 `Demo`。 选择“导入”选项，然后选择“确定”。 
 
    ![选择终结点上的数据库。](./media/tutorial-connect-power-bi-desktop/step-2-db.png)
 
@@ -137,15 +128,15 @@ FROM
         ![使用 SQL 登录。](./media/tutorial-connect-power-bi-desktop/step-2.2-select-sql-auth.png)
 
 
-5. 选择 `usPopulationView` 视图，然后选择“加载”  。 
+5. 选择 `usPopulationView` 视图，然后选择“加载”。 
 
    ![选择所选数据库上的一个视图。](./media/tutorial-connect-power-bi-desktop/step-3-select-view.png)
 
-6. 等待操作完成，然后会显示一个弹出窗口，指出“`There are pending changes in your queries that haven't been applied`”。 选择“应用更改”。  
+6. 等待操作完成，然后会显示一个弹出窗口，指出“`There are pending changes in your queries that haven't been applied`”。 选择“应用更改”。 
 
    ![单击“应用更改”。](./media/tutorial-connect-power-bi-desktop/step-4-apply-changes.png)
 
-7. 等待“应用查询更改”  对话框消失，这可能需要几分钟时间。 
+7. 等待“应用查询更改”对话框消失，这可能需要几分钟时间。 
 
    ![等待查询完成。](./media/tutorial-connect-power-bi-desktop/step-5-wait-for-query-to-finish.png)
 
@@ -163,7 +154,7 @@ FROM
 1. 删除存储帐户的凭据
 
    ```sql
-   DROP CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer];
+   DROP EXTENAL DATA SOURCE AzureOpenData
    ```
 
 2. 删除视图

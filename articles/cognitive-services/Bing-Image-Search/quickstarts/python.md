@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 03/31/2020
+ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 6287b9b8e6129fd62a896e5ac1fcca29febbf01a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 6cdee6dd30c1af44b321b12c96f3e2ecdcd0d2b3
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478540"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871974"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>快速入门：使用必应图像搜索 REST API 和 Python 搜索图像
 
-使用本快速入门开始向必应图像搜索 API 发送搜索请求。 此 Python 应用程序会向 API 发送搜索查询，并在结果中显示第一个图像的 URL。 虽然此应用程序是使用 Python 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
+使用此快速入门了解如何将搜索请求发送到必应图像搜索 API。 此 Python 应用程序会向 API 发送搜索查询，并在结果中显示第一个图像的 URL。 虽然此应用程序是使用 Python 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
-可以通过单击启动活页夹锁屏提醒，在 [MyBinder](https://mybinder.org) 上将此示例作为 Jupyter Notebook 运行：
+若要在 [MyBinder](https://mybinder.org) 上将此示例作为 Jupyter 笔记本运行，请选择“启动活页夹”锁屏提醒：
 
 [![活页夹](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingImageSearchAPI.ipynb)
 
@@ -40,7 +40,7 @@ ms.locfileid: "80478540"
 
 ## <a name="create-and-initialize-the-application"></a>创建并初始化应用程序
 
-1. 在你最喜欢使用的 IDE 或编辑器中新建一个 Python 文件，并导入以下模块。 为你的订阅密钥、搜索终结点和搜索词创建变量。 `search_url` 可以是下面的全局终结点，也可以是资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
+1. 在你最喜欢使用的 IDE 或编辑器中新建一个 Python 文件，并导入以下模块。 为你的订阅密钥、搜索终结点和搜索词创建变量。 对于 `search_url`，你可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。
 
     ```python
     import requests
@@ -61,7 +61,7 @@ ms.locfileid: "80478540"
 
 ## <a name="create-and-send-a-search-request"></a>创建并发送搜索请求
 
-1. 为搜索请求的参数创建字典。 向 `q` 参数添加搜索词。 将 "public" 用于 `license` 参数，以便在公共域中搜索图像。 将 "photo" 用于 `imageType`，仅搜索照片。
+1. 为搜索请求的参数创建字典。 向 `q` 参数添加搜索词。 将 `license` 参数设置为 `public` 以便在公共域中搜索图像。 将 `imageType` 设置为 `photo` 以仅搜索照片。
 
     ```python
     params  = {"q": search_term, "license": "public", "imageType": "photo"}
@@ -152,6 +152,6 @@ ms.locfileid: "80478540"
 
 * [什么是必应图像搜索 API？](../overview.md)  
 * 必应搜索 API 的[定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。 
-* [获取免费的认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-* [Azure 认知服务文档](https://docs.microsoft.com/azure/cognitive-services)
-* [必应图像搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [获取免费的认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)。 
+* [Azure 认知服务文档](https://docs.microsoft.com/azure/cognitive-services)。
+* [必应图像搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)。

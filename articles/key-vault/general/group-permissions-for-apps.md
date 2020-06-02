@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 008058e42dfeb84cb2812ac4e8378cb5a8b5913a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0d2666e2b56e73b809a0480d45fa3a4a63f06490
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81425376"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652220"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>使用访问控制策略提供 Key Vault 身份验证
 
@@ -60,10 +60,10 @@ Key Vault 最多支持 1024 个访问策略条目，每个条目可向“主体�
 
 可通过两种方式获取应用程序的 objectId。  第一种方式是将应用程序注册到 Azure Active Directory。 为此，请遵循快速入门[将应用程序注册到 Microsoft 标识平台](../../active-directory/develop/quickstart-register-app.md)中的步骤。 完成注册后，objectID 将作为“应用程序(客户端) ID”列出。
 
-第二种方式是在终端窗口中创建服务主体。 在 Azure CLI 中使用 [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令。
+第二种方式是在终端窗口中创建服务主体。 在 Azure CLI 中，使用 [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令，并以“http://&lt;my-unique-service-principle-name&gt;”的格式为 -n 标志提供唯一服务主体名称。
 
 ```azurecli-interactive
-az ad sp create-for-rbac -n "http://mySP"
+az ad sp create-for-rbac -n "http://<my-unique-service-principle-name"
 ```
 
 objectId 将在输出中作为 `clientID` 列出。
@@ -72,7 +72,7 @@ objectId 将在输出中作为 `clientID` 列出。
 
 
 ```azurepowershell-interactive
-New-AzADServicePrincipal -DisplayName mySP
+New-AzADServicePrincipal -DisplayName <my-unique-service-principle-name>
 ```
 
 objectId 将在输出中作为 `Id`（而不是 `ApplicationId`）列出。
@@ -222,6 +222,9 @@ Add-AzADGroupMember -TargetGroupObjectId <groupId> -MemberObjectId <objectId>
 最后，使用 Azure CLI [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) 命令或 Azure PowerShell [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy?view=azps-2.7.0) cmdlet，为 AD 组授予对 Key Vault 的权限。 有关示例，请参阅前面的[为应用程序、Azure AD 组或用户授予对 Key Vault 的访问权限](#give-the-principal-access-to-your-key-vault)。
 
 应用程序还需要将至少一个标识和访问管理 (IAM) 角色分配给密钥保管库。 否则，它将无法登录并且会失败，因为没有足够权限来访问订阅。
+
+> [!WARNING]
+> 具有托管标识的 Azure AD 组可能最多需要 8 小时才能刷新令牌并生效。
 
 ## <a name="next-steps"></a>后续步骤
 

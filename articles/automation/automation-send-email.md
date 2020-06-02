@@ -1,44 +1,34 @@
 ---
 title: 从 Azure 自动化 runbook 发送电子邮件
-description: 了解如何使用 SendGrid 从 runbook 中发送电子邮件。
+description: 本文介绍如何从 runbook 中发送电子邮件。
 services: automation
 ms.subservice: process-automation
 ms.date: 07/15/2019
-ms.topic: tutorial
-ms.openlocfilehash: 4d825dee469497cbb56a91c913ff3ac51963058b
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.topic: conceptual
+ms.openlocfilehash: a92f65bd88a5aec79a179a6e2d53de15c274add4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82855684"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834554"
 ---
-# <a name="tutorial-send-an-email-from-an-azure-automation-runbook"></a>教程：从 Azure 自动化 runbook 发送电子邮件
+# <a name="send-an-email-from-a-runbook"></a>从 Runbook 发送电子邮件
 
-可以使用 PowerShell 通过 [SendGrid](https://sendgrid.com/solutions) 从 runbook 发送电子邮件。 在本教程中，你将了解如何执行以下操作：
-
-> [!div class="checklist"]
->
-> * 创建 Azure 密钥保管库。
-> * 将 `SendGrid` API 密钥存储在密钥保管库中。
-> * 创建一个可重用 runbook，该 runbook 检索你的 API 密钥并使用存储在 [Azure Key Vault](/azure/key-vault/) 中的 API 密钥发送电子邮件。
-
->[!NOTE]
->本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az 模块安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于你的自动化帐户，可参阅[如何更新 Azure 自动化中的 Azure PowerShell 模块](automation-update-azure-modules.md)，将模块更新到最新版本。
+可以使用 PowerShell 通过 [SendGrid](https://sendgrid.com/solutions) 从 runbook 发送电子邮件。 
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本教程需要以下各项：
-
-* Azure 订阅：如果还没有帐户，可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* [创建 SendGrid 帐户](/azure/sendgrid-dotnet-how-to-send-email#create-a-sendgrid-account)。
-* [自动化帐户](automation-offering-get-started.md)和 **Az** 模块以及[运行方式连接](automation-create-runas-account.md)，用于存储和执行 runbook。
+* Azure 订阅。 如果还没有 Azure 订阅，可以[激活 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* [一个 SendGrid 帐户](/azure/sendgrid-dotnet-how-to-send-email#create-a-sendgrid-account)。
+* 具有 Az 模块的[自动化帐户](automation-offering-get-started.md)。
+* 用于存储和执行 runbook 的[运行方式帐户](automation-create-runas-account.md)。
 
 ## <a name="create-an-azure-key-vault"></a>创建 Azure Key Vault
 
-可以使用以下 PowerShell 脚本创建 Azure Key Vault。 将变量值替换为特定于环境的值。 单击代码块右上角的**试运行**按钮，使用嵌入的 Azure Cloud Shell。 也可复制代码并在本地运行它，前提是已在本地计算机上安装 [Azure PowerShell 模块](/powershell/azure/install-az-ps)。
+可以使用以下 PowerShell 脚本创建 Azure Key Vault。 将变量值替换为特定于环境的值。 单击代码块右上角的**试运行**按钮，使用嵌入的 Azure Cloud Shell。 也可复制代码并在本地运行它，前提是已在本地计算机上安装 [Az 模块](/powershell/azure/install-az-ps)。
 
 > [!NOTE]
-> 若要检索 API 密钥，请使用在[查找 SendGrid API 密钥](/azure/sendgrid-dotnet-how-to-send-email#to-find-your-sendgrid-api-key)中发现的步骤。
+> 若要检索 API 密钥，请使用[查找 SendGrid API 密钥](/azure/sendgrid-dotnet-how-to-send-email#to-find-your-sendgrid-api-key)中的步骤。
 
 ```azurepowershell-interactive
 $SubscriptionId  =  "<subscription ID>"
@@ -71,35 +61,29 @@ $appID = $connection.FieldDefinitionValues.ApplicationId
 Set-AzKeyVaultAccessPolicy -VaultName $VaultName -ServicePrincipalName $appID -PermissionsToSecrets Set, Get
 ```
 
-若要通过其他方式创建 Azure Key Vault 并存储机密，请参阅 [Key Vault 快速入门](/azure/key-vault/)。
+若要通过其他方式创建 Azure 密钥保管库并存储机密，请参阅[密钥保管库快速入门](/azure/key-vault/)。
 
-## <a name="import-required-modules-to-your-automation-account"></a>将所需模块导入自动化帐户
+## <a name="import-required-modules-into-your-automation-account"></a>将所需模块导入自动化帐户
 
-若要在 runbook 中使用 Azure Key Vault，自动化帐户需要以下模块：
+若要在 runbook 中使用 Azure 密钥保管库，必须将以下模块导入到自动化帐户中：
 
-* [Az.Profile](https://www.powershellgallery.com/packages/Az.Profile)
-* [Az.KeyVault](https://www.powershellgallery.com/packages/Az.KeyVault)
+    * [Az.Profile](https://www.powershellgallery.com/packages/Az.Profile)
+    * [Az.KeyVault](https://www.powershellgallery.com/packages/Az.KeyVault)
 
-在“Azure 自动化”选项卡上的“安装选项”  下，单击“部署到 Azure 自动化”  。 此操作会打开 Azure 门户。 在“导入”页上，选择你的自动化帐户并单击“确定”  。
-
-如需通过其他方法来添加所需模块，请参阅[导入模块](/azure/automation/shared-resources/modules#importing-modules)。
+有关说明，请参阅[导入 Az 模块](shared-resources/modules.md#import-az-modules)。
 
 ## <a name="create-the-runbook-to-send-an-email"></a>创建用于发送电子邮件的 runbook
 
-在创建密钥保管库并存储 `SendGrid` API 密钥后，即可创建 runbook 来检索 API 密钥和发送电子邮件。
-
-此 Runbook 使用 `AzureRunAsConnection` 以[运行方式帐户](automation-create-runas-account.md)身份通过 Azure 进行身份验证，以便从 Azure Key Vault 检索机密。
-
-使用此示例创建名为 **Send-GridMailMessage** 的 Runbook。 可以修改此 PowerShell 脚本，并将其重用于不同的方案。
+在创建密钥保管库并存储 `SendGrid` API 密钥后，即可创建 runbook 来检索 API 密钥和发送电子邮件。 让我们使用 runbook，该 runbook 使用 `AzureRunAsConnection` 以[运行方式帐户](automation-create-runas-account.md)身份向 Azure 进行身份验证，以便从 Azure 密钥保管库检索机密。 我们将该 runbook 命名为 Send-GridMailMessage。 你可以修改用作示例的 PowerShell 脚本，并将其重用于不同的方案。
 
 1. 转到 Azure 自动化帐户。
-2. 在“过程自动化”下，选择“Runbook”。  
-3. 在 Runbook 列表的顶部选择“+ 创建 Runbook”。 
-4. 在“添加 Runbook”  页上，输入 **Send-GridMailMessage** 作为 Runbook 名称。 对于 runbook 类型，选择“PowerShell”  。 然后选择“创建”  。
+2. 在“过程自动化”下，选择“Runbook”。 
+3. 在 Runbook 列表的顶部选择“+ 创建 Runbook”。
+4. 在“添加 Runbook”页上，输入 Send-GridMailMessage 作为 runbook 名称。 对于 runbook 类型，选择“PowerShell”。 然后选择“创建”。
    ![创建 Runbook](./media/automation-send-email/automation-send-email-runbook.png)
-5. 此时会创建 Runbook 并打开“编辑 PowerShell Runbook”页面。 
+5. 此时会创建 Runbook 并打开“编辑 PowerShell Runbook”页。
    ![编辑 Runbook](./media/automation-send-email/automation-send-email-edit.png)
-6. 将以下 PowerShell 示例复制到“编辑”页中。  确保 `$VaultName` 是你在创建密钥保管库时指定的名称。
+6. 将以下 PowerShell 示例复制到“编辑”页中。 确保 `VaultName` 指定你为密钥保管库选择的名称。
 
     ```powershell-interactive
     Param(
@@ -148,16 +132,17 @@ Set-AzKeyVaultAccessPolicy -VaultName $VaultName -ServicePrincipalName $appID -P
     $response = Invoke-RestMethod -Uri https://api.sendgrid.com/v3/mail/send -Method Post -Headers $headers -Body $bodyJson
     ```
 
-7. 选择“发布”  以保存并发布 Runbook。
+7. 选择“发布”以保存并发布 Runbook。
 
 若要验证 runbook 是否成功执行，可以按[测试 runbook](manage-runbooks.md#test-a-runbook) 或[启动 runbook](start-runbooks.md) 下的步骤操作。
-如果一开始看不到测试电子邮件，请检查 **Junk** 和 **Spam** 文件夹。
 
-## <a name="clean-up"></a>清理
+如果一开始看不到测试电子邮件，请检查 Junk 和 Spam 文件夹。
 
-不再需要 Runbook 时，即可将其删除。 为此，请在 Runbook 列表中选择 Runbook，然后单击“删除”。 
+## <a name="clean-up-resources-after-the-email-operation"></a>在电子邮件操作后清理资源
 
-使用 [Remove-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/remove-azkeyvault?view=azps-3.7.0) cmdlet 删除密钥保管库。
+1. 如果不再需要该 runbook，请在 runbook 列表中选中它，然后单击“删除”。
+
+2. 使用 [Remove-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/remove-azkeyvault?view=azps-3.7.0) cmdlet 删除密钥保管库。
 
 ```azurepowershell-interactive
 $VaultName = "<your KeyVault name>"
@@ -167,7 +152,6 @@ Remove-AzKeyVault -VaultName $VaultName -ResourceGroupName $ResourceGroupName
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关如何创建或启动 Runbook 的问题，请参阅[排查 Runbook 错误](./troubleshoot/runbooks.md)。
-* 若要更新自动化帐户中的模块，请参阅[如何更新 Azure 自动化中的 Azure PowerShell 模块](automation-update-azure-modules.md)。
-* 若要监视 runbook 执行，请参阅[将作业状态和作业流从自动化转发到 Azure Monitor 日志](automation-manage-send-joblogs-log-analytics.md)。
-* 若要使用警报触发 Runbook，请参阅[使用警报触发 Azure 自动化 Runbook](automation-create-alert-triggered-runbook.md)。
+* 若要将 runbook 作业数据发送到 Log Analytics 工作区，请参阅[将 Azure 自动化作业数据转发到 Azure Monitor 日志](automation-manage-send-joblogs-log-analytics.md)。
+* 若要监视基本级别的指标和日志，请参阅[使用警报触发 Azure 自动化 runbook](automation-create-alert-triggered-runbook.md)。
+* 若要纠正 runbook 操作期间出现的问题，请参阅[排查 runbook 问题](./troubleshoot/runbooks.md)。

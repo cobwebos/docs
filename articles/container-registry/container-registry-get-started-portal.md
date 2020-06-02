@@ -4,12 +4,12 @@ description: 快速了解如何使用 Azure 门户在 Azure 容器注册表中�
 ms.topic: quickstart
 ms.date: 03/03/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 6fe6358655f50ab783b4017efa8ee1db351cd018
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0875e5be628ddfe47696a9d4fc537a8a07122804
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79409222"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682807"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建专用容器注册表
 
@@ -25,23 +25,23 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
 
-选择“创建资源” > “容器” > “容器注册表”。   
+选择“创建资源” > “容器” > “容器注册表”。  
 
 ![在 Azure 门户中创建容器注册表][qs-portal-01]
 
-在“基本信息”选项卡中，输入“资源组”和“注册表名称”的值   。  注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 对于本快速入门，在 `West US` 位置创建名为 `myResourceGroup` 的新资源组，对于 **SKU**，选择“基本”。 
+在“基本信息”选项卡中，输入“资源组”和“注册表名称”的值 。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 对于本快速入门，在 `West US` 位置创建名为 `myResourceGroup` 的新资源组，对于 **SKU**，选择“基本”。 
 
 ![在 Azure 门户中创建容器注册表][qs-portal-03]
 
-对于剩余的设置，请接受默认值。 然后选择“查看 + 创建”  。 查看设置后，选择“创建”  。
+对于剩余的设置，请接受默认值。 然后选择“查看 + 创建”。 查看设置后，选择“创建”。
 
-本快速入门将创建一个“基本”注册表。该注册表已针对成本进行优化，是可供开发人员了解 Azure 容器注册表的选项。  有关可用服务层级的详细信息，请参阅[容器注册表 SKU][container-registry-skus]。
+本快速入门将创建一个“基本”注册表。该注册表已针对成本进行优化，是可供开发人员了解 Azure 容器注册表的选项。 有关可用服务层级的详细信息，请参阅[容器注册表服务层级][container-registry-skus]。
 
-显示“部署成功”消息时，请在门户中选择容器注册表  。 
+显示“部署成功”消息时，请在门户中选择容器注册表。 
 
 ![Azure 门户中的容器注册表概述][qs-portal-05]
 
-记下“登录服务器”的值。  使用 Docker 推送和拉取映像时，请在以下步骤中使用此值。
+记下“登录服务器”的值。 使用 Docker 推送和拉取映像时，请在以下步骤中使用此值。
 
 ## <a name="log-in-to-registry"></a>登录到注册表
 
@@ -57,9 +57,9 @@ az acr login --name <acrName>
 
 ## <a name="list-container-images"></a>列出容器映像
 
-若要列出注册表中的映像，请在门户中导航到注册表并选择“存储库”，然后选择使用 `docker push` 创建的存储库  。
+若要列出注册表中的映像，请在门户中导航到注册表并选择“存储库”，然后选择使用 `docker push` 创建的存储库。
 
-在本示例中，选择 hello-world 存储库，并可在“标记”下看到 `v1` 标记的映像   。
+在本示例中，选择 hello-world 存储库，并可在“标记”下看到 `v1` 标记的映像 。
 
 ![在 Azure 门户中列出容器映像][qs-portal-09]
 
@@ -67,7 +67,7 @@ az acr login --name <acrName>
 
 ## <a name="clean-up-resources"></a>清理资源
 
-若要清理资源，请在门户中导航到 **myResourceGroup** 资源组。 加载该资源组后，单击“删除资源组”以删除该资源组、容器注册表以及其中存储的容器映像。 
+若要清理资源，请在门户中导航到 **myResourceGroup** 资源组。 加载该资源组后，单击“删除资源组”以删除该资源组、容器注册表以及其中存储的容器映像。
 
 ![在 Azure 门户中删除资源组][qs-portal-08]
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 6b165df42da35077c7ef252291d8e1514bb3b1b0
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: bfac12c6ef278072c6bb44d55dc12926fe906e6f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996003"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747680"
 ---
 ::: zone target="docs"
 
@@ -56,7 +56,7 @@ ms.locfileid: "82996003"
 如果在美国或加拿大退回设备，请执行以下步骤。
 
 1. 使用粘贴在包装箱上的透明塑料套管中提供的退件发货标签。 如果标签受损或丢失：
-    - 转至“概述”>“下载发货标签”  并下载退件发货标签。
+    - 转至“概述”>“下载发货标签”并下载退件发货标签。
     - 将标签粘贴在设备上。
 
 2. 密封包装箱，并确保退件发货标签可见。
@@ -72,13 +72,13 @@ ms.locfileid: "82996003"
 如果在欧洲退回设备，请执行以下步骤。
 
 1. 使用粘贴在包装箱上的透明塑料套管中提供的退件发货标签。 如果标签受损或丢失：
-    - 转至“概述”>“下载发货标签”  并下载退件发货标签。
+    - 转至“概述”>“下载发货标签”并下载退件发货标签。
     - 将标签粘贴在设备上。
 
 2. 密封包装箱，并确保退件发货标签可见。
 3. 如果在欧洲使用 DHL 退回设备，请访问 DHL 网站并指定航空运单号，请求 DHL 提货。
-4. 转到 DHL Express 运营国家/地区的网站，选择“Book a Courier Collection > eReturn Shipment”（“预订快递取件”>“eReturn 发货”）。     
-3. 指定运单号，然后单击“Schedule Pickup”（安排提货）以安排提货。 
+4. 转到 DHL Express 运营国家/地区的网站，选择“Book a Courier Collection > eReturn Shipment”（“预订快递取件”>“eReturn 发货”）。    
+3. 指定运单号，然后单击“Schedule Pickup”（安排提货）以安排提货。
 
 ### <a name="in-australia"></a>[在澳大利亚](#tab/in-australia)
 
@@ -119,13 +119,13 @@ ms.locfileid: "82996003"
 
 1. 请务必附上退还托运单。
 2. 若要在提供有托运单的情况下请求取件，请执行以下操作：
-    1. 在办公时间（星期一到星期五的上午 10 点到下午 5 点）拨打 *Quantium Solutions International* 热线 070-8231-1418。 请注明“Microsoft Azure 取件”  和服务请求编号，以便安排收件。  
-    2. 如果热线繁忙，请向 `microsoft@rocketparcel.com` 发送电子邮件，并附上电子邮件主题“Microsoft Azure 取件”  和服务请求编号作为参考。
+    1. 在办公时间（星期一到星期五的上午 10 点到下午 5 点）拨打 *Quantium Solutions International* 热线 070-8231-1418。 请注明“Microsoft Azure 取件”和服务请求编号，以便安排收件。  
+    2. 如果热线繁忙，请向 `microsoft@rocketparcel.com` 发送电子邮件，并附上电子邮件主题“Microsoft Azure 取件”和服务请求编号作为参考。
     3. 如果快递公司未前来收件，请拨打 *Quantium Solutions International* 热线安排其他快递公司。 
     4. 你将会收到取件安排的电子邮件确认函。
 3. 仅当托运单未提供时，才执行此步骤。 请求取件：
-    1. 在办公时间（星期一到星期五的上午 10 点到下午 5 点）拨打 *Quantium Solutions International* 热线 070-8231-1418。 请注明“Microsoft Azure 取件”  和服务请求编号，以便安排收件。 指明你需要新的托运单，以便安排收件。 请提供发件人（客户）、收件人信息（Azure 数据中心）以及参考编号（服务请求编号）。 
-    2. 如果热线繁忙，请向 `microsoft@rocketparcel.com` 发送电子邮件，并附上电子邮件主题“Microsoft Azure 取件”  和服务请求编号作为参考。
+    1. 在办公时间（星期一到星期五的上午 10 点到下午 5 点）拨打 *Quantium Solutions International* 热线 070-8231-1418。 请注明“Microsoft Azure 取件”和服务请求编号，以便安排收件。 指明你需要新的托运单，以便安排收件。 请提供发件人（客户）、收件人信息（Azure 数据中心）以及参考编号（服务请求编号）。 
+    2. 如果热线繁忙，请向 `microsoft@rocketparcel.com` 发送电子邮件，并附上电子邮件主题“Microsoft Azure 取件”和服务请求编号作为参考。
     3. 如果快递公司未前来收件，请拨打 *Quantium Solutions International* 热线安排其他快递公司。 
     4. 如果请求是通过电话进行的，你会收到口头确认。
 
@@ -133,7 +133,7 @@ ms.locfileid: "82996003"
 ### <a name="in-singapore"></a>[在新加坡](#tab/in-singapore)
 
 1. 打印发货标签并将其贴在盒子上。 如果标签受损或丢失：
-    - 转至“概述”>“下载发货标签”  并获取退件发货标签。
+    - 转至“概述”>“下载发货标签”并获取退件发货标签。
     - 将标签粘贴在设备上。 请确保该标签是可见的。
 
 2. 若要请求分拣，请使用以下模板和跟踪号（跟踪号可在送达的包裹中提供的退货标签上找到），向 SingPost 客户服务发送电子邮件。
@@ -142,10 +142,10 @@ ms.locfileid: "82996003"
     To: kadcustcare@singpost.com
     Subject: Microsoft Azure Pick-up - XZ00001234567 
     Body: 
-     a. Requestor name
-     b. Requestor contact number
-     c. Requestor collection address
-     d. Preferred collection date
+     a.    Requestor name
+     b.    Requestor contact number
+     c.    Requestor collection address
+     d.    Preferred collection date
     ```
 
    > [!NOTE]
@@ -161,13 +161,13 @@ ms.locfileid: "82996003"
 
 如果在日本、新加坡、韩国和西欧使用 Data Box Disk，并在创建订单时选择了自托管寄送选项，请按以下说明操作。 
 
-1. 在 Azure 门户中转到订单的“概览”边栏选项卡  。 如果选择“安排提货”  ，请查看显示的说明。 应会看到在进行订单送货时使用的授权代码。
+1. 在 Azure 门户中转到订单的“概览”边栏选项卡。 如果选择“安排提货”，请查看显示的说明。 应会看到在进行订单送货时使用的授权代码。
 
 2. 准备好返回设备时，请使用以下模板将电子邮件发送到 Azure Data Box 运营团队。
 
     ```
     To: adbops@microsoft.com
-    Subject: Request for Azure Data Box Disk drop-off for order: ‘orderName’
+    Subject: Request for Azure Data Box Disk drop-off for order: 'orderName'
     Body: 
      a. Order name
      b. Contact name of the person dropping off. You will need to display a Government approved ID during the drop off.

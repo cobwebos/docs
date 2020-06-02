@@ -3,12 +3,12 @@ title: 教程 - 备份 Azure VM 中的 SAP HANA 数据库
 description: 在本教程中，了解如何将 Azure VM 上运行的 SAP HANA 数据库备份到 Azure 备份恢复服务保管库。
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: f64dd74ad0e038c5cad152e20ae2255de03114e3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cb1fc4c1b9bfa2025850f16d175ba83bd5ee1470
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79501453"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747217"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>教程：备份 Azure VM 中的 SAP HANA 数据库
 
@@ -29,9 +29,14 @@ ms.locfileid: "79501453"
 * 允许从 VM 连接到 Internet，以便 VM 可以访问 Azure，如下面的[设置网络连接](#set-up-network-connectivity)过程中所述。
 * **hdbuserstore** 中应存在一个满足以下条件的密钥：
   * 它应该出现在默认的 **hdbuserstore** 中。
-  * 对于 MDC，该密钥应指向 **NAMESERVER** 的 SQL 端口。 对于 SDC，它应指向 **INDEXSERVER** 的 SQL 端口。
+  * 对于 MDC，该密钥应指向 **NAMESERVER** 的 SQL 端口。 对于 SDC，它应指向 INDEXSERVER 的 SQL 端口
   * 它应该包含用于添加和删除用户的凭据
 * 在安装了 HANA 的虚拟机中，以 root 用户身份运行 SAP HANA 备份配置脚本（注册前脚本）。 [此脚本](https://aka.ms/scriptforpermsonhana)可使 HANA 系统做好备份的准备。 请参阅[注册前脚本的功能](#what-the-pre-registration-script-does)部分来详细了解注册前脚本。
+
+>[!NOTE]
+>备份 Azure VM 中运行的 SAP HANA 数据库时，Azure 备份不会针对夏令时更改自动进行调整。
+>
+>请根据需要手动修改策略。
 
 ## <a name="set-up-network-connectivity"></a>设置网络连接
 
@@ -49,10 +54,10 @@ ms.locfileid: "79501453"
 
 若要使用门户创建规则，请执行以下操作：
 
-  1. 在“所有服务”  中转到“网络安全组”  ，然后选择“网络安全组”。
-  2. 在“设置”下，选择“出站安全规则”。  
-  3. 选择 **添加** 。 输入创建新规则所需的所有详细信息，如[安全规则设置](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)中所述。 请确保将选项“目标”  设置为“服务标记”  ，将“目标服务标记”  设置为 **AzureBackup**。
-  4. 单击“添加”  ，保存新创建的出站安全规则。
+  1. 在“所有服务”中转到“网络安全组”，然后选择“网络安全组”。
+  2. 在“设置”下，选择“出站安全规则”。 
+  3. 选择 **添加** 。 输入创建新规则所需的所有详细信息，如[安全规则设置](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)中所述。 请确保将选项“目标”设置为“服务标记”，将“目标服务标记”设置为 **AzureBackup**。
+  4. 单击“添加”，保存新创建的出站安全规则。
 
 若要使用 PowerShell 创建规则，请执行以下操作：
 
@@ -126,29 +131,29 @@ hdbuserstore list
 
 1. 在 [Azure 门户](https://portal.azure.com/)中登录到自己的订阅。
 
-2. 在左侧菜单中，选择“所有服务” 
+2. 在左侧菜单中，选择“所有服务”
 
    ![选择“所有服务”](./media/tutorial-backup-sap-hana-db/all-services.png)
 
-3. 在“所有服务”对话框中，输入“恢复服务”   。 资源列表根据输入进行筛选。 在资源列表中，选择“恢复服务保管库”  。
+3. 在“所有服务”对话框中，输入“恢复服务” 。 资源列表根据输入进行筛选。 在资源列表中，选择“恢复服务保管库”。
 
    ![选择恢复服务保管库](./media/tutorial-backup-sap-hana-db/recovery-services-vaults.png)
 
-4. 在“恢复服务保管库”仪表板上，选择“添加”   。
+4. 在“恢复服务保管库”仪表板上，选择“添加” 。
 
    ![添加恢复服务保管库](./media/tutorial-backup-sap-hana-db/add-vault.png)
 
-   此时会打开“恢复服务保管库”对话框  。 提供“名称”、“订阅”、“资源组”和“位置”的值  
+   此时会打开“恢复服务保管库”对话框。 提供“名称”、“订阅”、“资源组”和“位置”的值 
 
    ![创建恢复服务保管库](./media/tutorial-backup-sap-hana-db/create-vault.png)
 
-   * **Name**：此名称用于标识恢复服务保管库，并且必须对于 Azure 订阅是唯一的。 指定的名称应至少包含 2 个字符，最多不超过 50 个字符。 名称必须以字母开头且只能包含字母、数字和连字符。 对于本教程，我们使用了名称“SAPHanaVault”  。
-   * **订阅**：选择要使用的订阅。 如果你仅是一个订阅的成员，则会看到该名称。 如果不确定要使用哪个订阅，请使用默认的（建议的）订阅。 仅当工作或学校帐户与多个 Azure 订阅关联时，才会显示多个选项。 本教程中，我们使用了“SAP HANA 解决方案实验室订阅”订阅  。
-   * **资源组**：使用现有资源组，或创建一个新的资源组。 本教程中，我们使用了“SAPHANADemo”  。<br>
-   要查看订阅中可用的资源组列表，请选择“使用现有资源”  ，然后从下拉列表框中选择一个资源。 若要创建新资源组，请选择“新建”，然后输入名称  。 有关资源组的完整信息，请参阅 [Azure 资源管理器概述](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。
-   * **位置**：为保管库选择地理区域。 保管库必须与运行 SAP HANA 的虚拟机位于同一区域中。 我们使用了“美国东部 2”  。
+   * **Name**：此名称用于标识恢复服务保管库，并且必须对于 Azure 订阅是唯一的。 指定的名称应至少包含 2 个字符，最多不超过 50 个字符。 名称必须以字母开头且只能包含字母、数字和连字符。 对于本教程，我们使用了名称“SAPHanaVault”。
+   * **订阅**：选择要使用的订阅。 如果你仅是一个订阅的成员，则会看到该名称。 如果不确定要使用哪个订阅，请使用默认的（建议的）订阅。 仅当工作或学校帐户与多个 Azure 订阅关联时，才会显示多个选项。 本教程中，我们使用了“SAP HANA 解决方案实验室订阅”订阅。
+   * **资源组**：使用现有资源组，或创建一个新的资源组。 本教程中，我们使用了“SAPHANADemo”。<br>
+   要查看订阅中可用的资源组列表，请选择“使用现有资源”，然后从下拉列表框中选择一个资源。 若要创建新资源组，请选择“新建”，然后输入名称。 有关资源组的完整信息，请参阅 [Azure 资源管理器概述](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。
+   * **位置**：为保管库选择地理区域。 保管库必须与运行 SAP HANA 的虚拟机位于同一区域中。 我们使用了“美国东部 2”。
 
-5. 选择“查看 + 创建”  。
+5. 选择“查看 + 创建”。
 
    ![选择“查看和创建”](./media/tutorial-backup-sap-hana-db/review-create.png)
 
@@ -156,11 +161,11 @@ hdbuserstore list
 
 ## <a name="discover-the-databases"></a>发现数据库
 
-1. 在保管库中，单击“开始使用”中的“备份”   。 在“工作负荷在哪里运行?”中，选择“Azure VM 中的 SAP HANA”   。
-2. 单击“启动发现”  。 这会开始在保管库区域中发现未受保护的 Linux VM。 你将看到要保护的 Azure VM。
-3. 在“选择虚拟机”中，单击脚本下载链接。此脚本可为 Azure 备份服务提供访问 SAP HANA VM 的权限以进行数据库发现  。
+1. 在保管库中，单击“开始使用”中的“备份” 。 在“工作负荷在哪里运行?”中，选择“Azure VM 中的 SAP HANA” 。
+2. 单击“启动发现”。 这会开始在保管库区域中发现未受保护的 Linux VM。 你将看到要保护的 Azure VM。
+3. 在“选择虚拟机”中，单击脚本下载链接。此脚本可为 Azure 备份服务提供访问 SAP HANA VM 的权限以进行数据库发现。
 4. 在托管要备份的 SAP HANA 数据库的 VM 上运行此脚本。
-5. 在 VM 上运行此脚本后，在“选择虚拟机”中选择该 VM  。 然后单击“发现数据库”  。
+5. 在 VM 上运行此脚本后，在“选择虚拟机”中选择该 VM。 然后单击“发现数据库”。
 6. Azure 备份可发现该 VM 上的所有 SAP HANA 数据库。 在发现期间，Azure Backup 将 VM 注册到保管库，并在该 VM 上安装扩展。 不会在数据库中安装任何代理。
 
    ![发现数据库](./media/tutorial-backup-sap-hana-db/database-discovery.png)
@@ -169,23 +174,23 @@ hdbuserstore list
 
 发现我们要备份的数据库之后，现在可以启用备份。
 
-1. 单击“配置备份”  。
+1. 单击“配置备份”。
 
    ![配置备份](./media/tutorial-backup-sap-hana-db/configure-backup.png)
 
-2. 在“选择要备份的项”中，选择一个或多个要保护的数据库，然后单击“确定”   。
+2. 在“选择要备份的项”中，选择一个或多个要保护的数据库，然后单击“确定” 。
 
    ![选择要备份的项](./media/tutorial-backup-sap-hana-db/select-items-to-backup.png)
 
-3. 在“备份策略”>“选择备份策略”中，按照下一部分中的说明，为数据库创建一个新的备份策略  。
+3. 在“备份策略”>“选择备份策略”中，按照下一部分中的说明，为数据库创建一个新的备份策略。
 
    ![选择备份策略](./media/tutorial-backup-sap-hana-db/backup-policy.png)
 
-4. 创建策略后，在“备份”菜单中单击“启用备份”   。
+4. 创建策略后，在“备份”菜单中单击“启用备份” 。
 
    ![单击启用备份](./media/tutorial-backup-sap-hana-db/enable-backup.png)
 
-5. 在门户的“通知”区域跟踪备份配置进度  。
+5. 在门户的“通知”区域跟踪备份配置进度。
 
 ## <a name="creating-a-backup-policy"></a>创建备份策略
 
@@ -196,23 +201,23 @@ hdbuserstore list
 
 按以下方式指定策略设置：
 
-1. 在“策略名称”处输入新策略的名称  。 对于本例，请输入“SAPHANA”  。
+1. 在“策略名称”处输入新策略的名称。 对于本例，请输入“SAPHANA”。
 
    ![输入新策略的名称](./media/tutorial-backup-sap-hana-db/new-policy.png)
 
-2. 在“完整备份策略”中选择“备份频率”   。 可以选择“每日”或“每周”   。 对于本教程，我们选择了“每日”备份  。
+2. 在“完整备份策略”中选择“备份频率” 。 可以选择“每日”或“每周” 。 对于本教程，我们选择了“每日”备份。
 
    ![选择备份频率](./media/tutorial-backup-sap-hana-db/backup-frequency.png)
 
-3. 在“保持期”中，对完整备份配置保留设置  。
+3. 在“保持期”中，对完整备份配置保留设置。
    * 默认情况下，选择所有选项。 清除你不想使用的所有保持期限制，并设置要使用的选项。
    * 任何备份类型（完整/差异/日志）的最短保持期均为七天。
    * 恢复点已根据其保留范围标记为保留。 例如，如果选择每日完整备份，则每天只触发一次完整备份。
    * 根据每周保持期和设置，将会标记并保留特定日期的备份。
    * 每月和每年保留范围的行为类似。
-4. 在“完整备份策略”菜单中，单击“确定”接受设置   。
-5. 然后选择“差异备份”，以添加差异策略  。
-6. 在“差异备份策略”中，选择“启用”打开频率和保留控件。   我们在每个星期日的凌晨 2:00 启用了差异备份，保持期为 30 天    。
+4. 在“完整备份策略”菜单中，单击“确定”接受设置 。
+5. 然后选择“差异备份”，以添加差异策略。
+6. 在“差异备份策略”中，选择“启用”打开频率和保留控件。  我们在每个星期日的凌晨 2:00 启用了差异备份，保持期为 30 天  。
 
    ![差异备份策略](./media/tutorial-backup-sap-hana-db/differential-backup-policy.png)
 
@@ -220,10 +225,10 @@ hdbuserstore list
    >目前不支持增量备份。
    >
 
-7. 单击“确定”保存策略，并返回“备份策略”主菜单   。
-8. 请选择“日志备份”，以添加事务日志备份策略  。
-   * “日志备份”默认设为“启用”   。 由于 SAP HANA 管理所有日志备份，此类备份无法被禁用。
-   * 我们已将备份计划设置为 2 小时，保持期为 15 天   。
+7. 单击“确定”保存策略，并返回“备份策略”主菜单 。
+8. 请选择“日志备份”，以添加事务日志备份策略。
+   * “日志备份”默认设为“启用” 。 由于 SAP HANA 管理所有日志备份，此类备份无法被禁用。
+   * 我们已将备份计划设置为 2 小时，保持期为 15 天 。
 
     ![日志备份策略](./media/tutorial-backup-sap-hana-db/log-backup-policy.png)
 
@@ -231,8 +236,8 @@ hdbuserstore list
    > 日志备份仅在成功完成一次完整备份之后进行。
    >
 
-9. 单击“确定”保存策略，并返回“备份策略”主菜单   。
-10. 完成定义备份策略后，单击“确定”  。
+9. 单击“确定”保存策略，并返回“备份策略”主菜单 。
+10. 完成定义备份策略后，单击“确定”。
 
 现已成功为 SAP HANA 数据库配置备份。
 

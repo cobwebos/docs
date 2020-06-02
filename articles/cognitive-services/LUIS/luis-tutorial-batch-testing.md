@@ -3,12 +3,12 @@ title: 教程：用于查找问题的批处理测试 - LUIS
 description: 本教程演示如何使用批处理测试来验证语言理解 (LUIS) 应用的质量。
 ms.topic: tutorial
 ms.date: 05/07/2020
-ms.openlocfilehash: c823cbd854c28ab356dd9968e6f8f1a12b6421be
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 09e5ebc9f80eb51175b13e601983690b6229b747
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592587"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681630"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>教程：成批测试数据集
 
@@ -49,13 +49,13 @@ ms.locfileid: "83592587"
 
 ## <a name="what-should-the-batch-file-utterances-include"></a>批处理文件言语应包含的内容
 
-批处理文件中的言语应包含机器习得的带有标签的顶级实体（包括开始和结束位置）。 言语不应是已包含在应用中的示例的一部分。 它们应该是你要在其中积极预测意向和实体的言语。
+批处理文件中的言语应包含机器学习的带有标签的顶级实体（包括开始和结束位置）。 言语不应是已包含在应用中的示例的一部分。 它们应该是你要在其中积极预测意向和实体的言语。
 
 可以按意向和/或实体划分测试，或者将所有测试（最多 1000 个言语）包含在同一文件中。
 
 ## <a name="batch-file"></a>批处理文件
 
-示例 JSON 包含一个言语（该言语包含一个带标签的实体）用于演示测试文件的外观。 你自己的测试中应该包含多个言语，这些言语包含正确的意向以及机器习得的带标签实体。
+示例 JSON 包含一个言语（该言语包含一个带标签的实体）用于演示测试文件的外观。 你自己的测试中应该包含多个言语，这些言语标记了正确的意向和机器学习实体。
 
 1. 在文本编辑器中创建 `pizza-with-machine-learned-entity-test.json` 或[下载](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/batch-tests/pizza-with-machine-learned-entity-test.json?raw=true)它。
 

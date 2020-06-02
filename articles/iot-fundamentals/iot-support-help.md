@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
 ms.date: 1/23/2020
-ms.openlocfilehash: c40aa9b0a94940f48a8edbd046a744678f02cbd2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e5dfdd41d3770cc49ed7a1e40ad6fbb12e5b10ea
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76775339"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827229"
 ---
 # <a name="azure-iot-support-and-help-options"></a>Azure IoT 支持和帮助选项
 
@@ -35,7 +35,7 @@ ms.locfileid: "76775339"
     <img alt='Stack Overflow' src='https://docs.microsoft.com/media/logos/logo_stackoverflow.svg'>
 </div>
 
-若要从社区立即获得解答，请访问 Stack Overflow。 Stack Overflow 是解决**开发相关问题**的首选渠道。 在 Stack Overflow 中，社区成员和 Microsoft 团队成员可直接助你解决问题。
+若要从社区立即获得解答，请访问 Stack Overflow。 Stack Overflow 是解决开发相关问题的首选渠道。 在 Stack Overflow 中，社区成员和 Microsoft 团队成员可直接助你解决问题。
 
 如果通过搜索未找到你的问题的解答，请在 Stack Overflow 中提交新问题。 表述问题时，请使用以下标记之一：
 
@@ -49,15 +49,15 @@ ms.locfileid: "76775339"
 
 ## <a name="start-a-conversation-on-the-msdn-forums"></a>在 MSDN 论坛上开始对话
 
-探讨用于创建 IoT 解决方案的 Azure 技术和服务。 MSDN 是解决**解决方案相关问题**的首选渠道。 在 MSDN 中，社区成员和 Microsoft 团队成员可直接帮助你选择适合你项目的解决方案。
+探讨用于创建 IoT 解决方案的 Azure 技术和服务。 MSDN 是解决解决方案相关问题的首选渠道。 在 MSDN 中，社区成员和 Microsoft 团队成员可直接帮助你选择适合你项目的解决方案。
 
-如果通过搜索未找到你的问题的解答，请在 MSDN 上的服务相关论坛中提交新问题。
+如果通过搜索未找到你的问题的解答，请在 MSDN 上的服务相关论坛中提交新问题：
 
-- [Azure 数字孪生](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredigitaltwins)
-- [Azure IoT 中心](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azureiothub)
-- [Azure IoT Edge](https://social.msdn.microsoft.com/Forums/en-US/home?forum=iotedge)
-- [Azure Maps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelbs)
-- [Azure 时序见解](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureTimeSeriesInsights)
+- [有关 Azure 数字孪生的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-digital-twins.html)
+- [有关 Azure IoT 中心的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-iot-hub.html)
+- [有关 Azure IoT Edge 的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-iot-edge.html)
+- [有关 Azure Maps 的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-maps.html)
+- [有关 Azure 时序见解的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-time-series-insights.html)
 
 ## <a name="submit-feedback-on-azure-feedback"></a>在 Azure 反馈中提交反馈
 
@@ -75,7 +75,7 @@ ms.locfileid: "76775339"
 | Azure IoT Edge                | https://feedback.azure.com/forums/907045-azure-iot-edge |
 | Azure IoT 解决方案加速器 | https://feedback.azure.com/forums/916438-azure-iot-solution-accelerators |
 | Azure Maps                 | https://feedback.azure.com/forums/909172-azure-maps |
-| Azure Time Series Insights | https://feedback.azure.com/forums/906859-azure-time-series-insights |
+| Azure 时序见解 | https://feedback.azure.com/forums/906859-azure-time-series-insights |
 | Azure 数字孪生 | https://feedback.azure.com/forums/916621-azure-digital-twins |
 
 ## <a name="stay-informed-of-updates-and-new-releases"></a>随时了解更新和新的版本

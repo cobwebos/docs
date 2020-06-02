@@ -1,14 +1,14 @@
 ---
 title: Azure Batch 在云中运行大型并行作业
 description: 了解如何使用 Azure Batch 服务执行大规模并发工作负荷与 HPC 工作负荷
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: f2bdaeec47b50b715920b27d6adf6e078a354964
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c78aec238664520c8c8c02a793298cdc1d3ac7e1
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82116343"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779570"
 ---
 # <a name="what-is-azure-batch"></a>什么是 Azure Batch？
 
@@ -74,7 +74,7 @@ Batch 的常用方案涉及在计算节点池中横向扩展本质并行工作�
 
 请记住，这只是使用 Batch 的一种方式，此方案只介绍它的部分功能。 例如，可以在每个计算节点上执行[多个并行任务](batch-parallel-node-tasks.md)。 也可以使用[作业准备和完成任务](batch-job-prep-release.md)为作业准备节点，然后进行事后清理。 
 
-请参阅[适用于开发人员的 Batch 功能概述](batch-api-basics.md)，详细了解池、节点、作业、任务，以及生成 Batch 应用程序时可以使用的许多 API 功能。 另请参阅最新的 [Batch 服务更新](https://azure.microsoft.com/updates/?product=batch)。
+有关池、节点、作业和任务等功能的概述，请参阅 [Batch 服务工作流和主要资源](batch-service-workflow-features.md)。 另请参阅最新的 [Batch 服务更新](https://azure.microsoft.com/updates/?product=batch)。
 
 ## <a name="next-steps"></a>后续步骤
 

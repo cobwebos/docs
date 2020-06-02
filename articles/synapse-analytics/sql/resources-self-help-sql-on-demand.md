@@ -2,19 +2,19 @@
 title: SQL 按需版本预览版自助信息
 description: 本部分包含的信息可帮助你排查 SQL 按需版本（预览版）的问题。
 services: synapse analytics
-author: vvasic-msft
+author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
-ms.author: vvasic
+ms.date: 05/15/2020
+ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: e2c262915c928cf487cb84aeb3423d67e7a96e97
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8b2a9b6c5324240d71a80cde904057757d6ef421
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421191"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658869"
 ---
 # <a name="self-help-for-sql-on-demand-preview"></a>SQL 按需版本（预览版）的自助信息
 
@@ -33,13 +33,43 @@ ms.locfileid: "81421191"
 
 ## <a name="query-fails-because-it-cannot-be-executed-due-to-current-resource-constraints"></a>查询失败，原因是当前的资源约束导致查询无法执行 
 
-如果查询失败，并且出现“由于当前的资源约束，无法执行此查询”错误消息，则意味着由于资源约束，SQL OD 此时无法执行它： 
+如果查询失败并出现错误消息“由于当前的资源约束，无法执行此查询”，则表示由于资源约束，SQL 按需版本此时无法执行它： 
 
 - 请确保使用大小合理的数据类型。 另外，请为字符串列指定 Parquet 文件的架构，因为它们默认情况下将是 VARCHAR(8000)。 
 
 - 如果你的查询针对 CSV 文件，请考虑[创建统计信息](develop-tables-statistics.md#statistics-in-sql-on-demand-preview)。 
 
 - 若要优化查询，请参阅[适用于 SQL 按需版本的性能最佳做法](best-practices-sql-on-demand.md)。  
+
+## <a name="create-statement-is-not-supported-in-master-database"></a>主数据库不支持 CREATE 'STATEMENT' 语句
+
+如果查询失败并显示以下错误消息：
+
+> “未能执行查询。 错误：主数据不支持 CREATE EXTERNAL TABLE/DATA SOURCE/DATABASE SCOPED CREDENTIAL/FILE FORMAT。” 
+
+这意味着 SQL 按需版本的主数据库不支持创建以下内容：
+  - 外部表
+  - 外部数据源
+  - 数据库范围的凭据
+  - 外部文件格式
+
+解决方案：
+
+  1. 创建用户数据库：
+
+```sql
+CREATE DATABASE <DATABASE_NAME>
+```
+
+  2. 在 <DATABASE_NAME> 的上下文中执行 create 语句，该语句之前在主数据库中失败。 
+  
+  创建外部文件格式的示例：
+    
+```sql
+USE <DATABASE_NAME>
+CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat] 
+WITH ( FORMAT_TYPE = PARQUET)
+```
 
 ## <a name="next-steps"></a>后续步骤
 

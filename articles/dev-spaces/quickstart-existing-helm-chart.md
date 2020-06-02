@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: 本快速入门展示了如何使用 Azure Dev Spaces 和命令行通过 Azure Kubernetes 服务上的现有 Helm 图表开发应用程序
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: e767b1ade2a80882ee33ff1fdd718c691dcefcf3
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.openlocfilehash: c37ea0b04e99cf1bba555e098bdf33b8a8558cfa
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82025282"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996683"
 ---
 # <a name="quickstart-develop-an-application-with-an-existing-helm-chart-on-kubernetes---azure-dev-spaces"></a>快速入门：使用 Kubernetes 上的现有 Helm 图表开发应用程序 - Azure Dev Spaces
 本指南介绍如何：
@@ -48,7 +48,7 @@ az aks use-dev-spaces -g MyResourceGroup -n MyAKS --space dev --yes
 
 本文使用 [Azure Dev Spaces 示例应用程序](https://github.com/Azure/dev-spaces)来演示 Azure Dev Spaces 的用法。
 
-从 GitHub 克隆该应用程序，并导航到“dev-spaces/samples/python/getting-started/webfrontend”  目录：
+从 GitHub 克隆该应用程序，并导航到“dev-spaces/samples/python/getting-started/webfrontend”目录：
 
 ```cmd
 git clone https://github.com/Azure/dev-spaces
@@ -65,10 +65,10 @@ cd dev-spaces/samples/python/getting-started/webfrontend
 azds prep --enable-ingress --chart webfrontend/
 ```
 
-必须从“dev-spaces/samples/python/getting-started/webfrontend”  目录运行 `prep` 命令，并使用 `--chart` 指定 Helm 图表的位置。
+必须从“dev-spaces/samples/python/getting-started/webfrontend”目录运行 `prep` 命令，并使用 `--chart` 指定 Helm 图表的位置。
 
 > [!NOTE]
-> 你可能会看到以下警告：警告：  由于语言不受支持，无法生成 Dockerfile。 （在运行 `azds prep` 时）。 `azds prep` 命令会尝试为你的项目生成 [Dockerfile 和 Helm 图表](how-dev-spaces-works-prep.md#prepare-your-code)，但不会覆盖任何现有的 Dockerfile 或 Helm 图表。
+> 你可能会看到以下警告：*警告：* 由于语言不受支持，无法生成 Dockerfile。 （在运行 `azds prep` 时）。 `azds prep` 命令会尝试为你的项目生成 [Dockerfile 和 Helm 图表](how-dev-spaces-works-prep.md#prepare-your-code)，但不会覆盖任何现有的 Dockerfile 或 Helm 图表。
 
 ## <a name="build-and-run-code-in-kubernetes"></a>在 Kubernetes 中生成并运行代码
 
@@ -96,7 +96,7 @@ Press Ctrl+C to detach
 ...
 ```
 
-打开 `azds up` 命令输出中显示的公共 URL，可以看到服务正在运行。 在此示例中，公共 URL 为 *http://dev.service.1234567890abcdef1234.eus.azds.io/* 。
+打开 `azds up` 命令输出中显示的公共 URL，可以看到服务正在运行。 在此示例中，公共 URL 为 `http://dev.service.1234567890abcdef1234.eus.azds.io/`。
 
 > [!NOTE]
 > 在运行 `azds up` 时导航到服务时，HTTP 请求跟踪也会显示在 `azds up` 命令的输出中。 这些跟踪有助于对服务进行故障排除和调试。 可以在运行 `azds up` 时使用 `--disable-http-traces` 来禁用这些跟踪。

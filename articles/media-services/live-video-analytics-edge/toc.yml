@@ -1,0 +1,82 @@
+- name: “IoT Edge 上的实时视频分析（预览版）”文档
+  href: index.yml
+- name: 切换到 Azure 媒体服务 v3 文档
+  href: ../latest/index.yml
+- name: 概述
+  items:
+    - name: 关于 IoT Edge 上的实时视频分析
+      href: overview.md
+    - name: 术语
+      href: terminology.md
+    - name: 新增功能
+      items:
+        - name: 发行说明
+          href: release-notes.md
+- name: 快速入门
+  items:
+    - name: 入门 - IoT Edge 上的实时视频分析
+      href: get-started-detect-motion-emit-events-quickstart.md
+    - name: 检测运动，将视频录制到媒体服务
+      href: detect-motion-record-video-clips-media-services-quickstart.md
+    - name: 检测运动并发出事件
+      href: detect-motion-emit-events-quickstart.md
+    - name: 检测运动，将视频录制到边缘设备
+      href: detect-motion-record-video-clips-edge-devices-quickstart.md
+    - name: 使用自己的模型运行实时视频分析
+      href: use-your-model-quickstart.md
+- name: 教程
+  items:
+    - name: 连续视频录制
+      href: continuous-video-recording-tutorial.md
+    - name: 基于事件的视频录制
+      href: event-based-video-recording-tutorial.md
+    - name: 播放多天的录制内容
+      href: playback-multi-day-recordings-tutorial.md
+- name: 示例
+  items:
+    - name: '“ IoT Edge 上的实时视频分析”C# 示例'
+      href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp'
+- name: 概念
+  items:
+    - name: 媒体图
+      href: media-graph-concept.md
+    - name: 视频录制
+      href: video-recording-concept.md
+    - name: 视频播放
+      href: video-playback-concept.md
+    - name: 方案
+      items:
+        - name: 连续视频录制
+          href: continuous-video-recording-concept.md
+        - name: 基于事件的视频录制
+          href: event-based-video-recording-concept.md
+        - name: 在不录制视频的情况下进行实时视频分析
+          href: analyze-live-video-concept.md
+- name: 操作指南
+  items:
+    - name: 创建自定义 Azure 资源管理器角色
+      href: create-custom-azure-resource-manager-role-how-to.md
+    - name: 部署到 IoT Edge 设备
+      href: deploy-iot-edge-device.md
+    - name: 监视和日志记录
+      href: monitoring-logging.md
+    - name: 播放录制内容
+      href: playback-recordings-how-to.md
+    - name: 管理录制策略
+      href: manage-recording-policy-how-to.md
+    - name: 使用你选择的 AI 分析实时视频
+      href: analyze-with-ai-your-choice-how-to.md
+    - name: 疑难解答
+      href: troubleshoot-how-to.md
+- name: 参考
+  items:
+    - name: 直接方法
+      href: direct-methods.md
+    - name: 模块孪生配置架构
+      href: module-twin-configuration-schema.md
+    - name: 配额和限制
+      href: quotas-limitations.md
+    - name: 常见问题解答
+      href: faq.md
+    - name: 生产就绪情况和最佳做法
+      href: production-readiness.md

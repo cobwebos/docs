@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 1fdeffb5ee5b1e2d66fbf5586d307cd8d8b78858
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 0fa70cfb287cc4a68892ada1044283a996d8dd50
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76166727"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873932"
 ---
 # <a name="quickstart-use-java-to-search-the-web-with-the-bing-web-search-rest-api-an-azure-cognitive-service"></a>快速入门：使用 Java 通过必应 Web 搜索 REST API（一种 Azure 认知服务）搜索 Web
 
-在本快速入门中，你将使用 Java 应用程序进行你的第一次必应 Web 搜索 API 并接收 JSON 响应。 这个 Java 应用程序会向该 API 发送一个搜索请求并显示响应。 虽然此应用程序是使用 Java 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
+在本快速入门中，你将使用 Java 应用程序对必应 Web 搜索 API 进行第一次调用。 这个 Java 应用程序会向该 API 发送一个搜索请求并显示 JSON 响应。 虽然此应用程序是使用 Java 编写的，但 API 是一种 RESTful Web 服务，与大多数编程语言兼容。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -49,7 +49,7 @@ import com.google.gson.JsonParser;
 
 ### <a name="declare-gson-in-the-maven-pom-file"></a>在 Maven POM 文件中声明 Gson
 
-如果使用 Maven，请在 `POM.xml` 中声明 Gson。 如果已在本地安装 Gson，请跳过此步骤。
+如果使用 Maven，请在 POM.xml 中声明 Gson。 如果已在本地安装 Gson，请跳过此步骤。
 
 ```xml
 <dependency>
@@ -61,7 +61,7 @@ import com.google.gson.JsonParser;
 
 ## <a name="declare-the-bingwebsearch-class"></a>声明 BingWebSearch 类
 
-声明 `BingWebSearch` 类。 它将包括我们在本快速入门中查看的大多数代码，包括 `main` 方法。  
+声明 `BingWebSearch` 类。 它包括我们在本快速入门中查看的大多数代码，包括 `main()` 方法。  
 
 ```java
 public class BingWebSearch {
@@ -73,7 +73,13 @@ public class BingWebSearch {
 
 ## <a name="define-variables"></a>定义变量
 
-以下代码设置 `subscriptionKey`、`host`、`path`、`searchTerm`。 `host` 可以是下面的全局终结点，也可以是资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。 将 `subscriptionKey` 值替换为来自你的 Azure 帐户的有效订阅密钥。 可以通过替换 `searchTerm` 的值随意自定义搜索查询。 请记住将此代码添加到 `BingWebSearch` 类，如上所述。
+下面的代码设置 `subscriptionKey`、`host`、`path` 和 `searchTerm`。 将此代码添加到在上一部分中所述的 `BingWebSearch` 类：
+
+1. 对于 `host` 值，可以使用以下代码中的全局终结点，或者使用资源的 Azure 门户中显示的[自定义子域](../../../cognitive-services/cognitive-services-custom-subdomains.md)终结点。 
+
+2. 将 `subscriptionKey` 值替换为来自你的 Azure 帐户的有效订阅密钥。 
+
+3. （可选）通过替换 `searchTerm` 的值自定义搜索查询。 
 
 ```java
 // Enter a valid subscription key.
@@ -91,7 +97,7 @@ static String searchTerm = "Microsoft Cognitive Services";
 
 ## <a name="construct-a-request"></a>构造请求
 
-`BingWebSearch` 类中的此方法可构造 `url`、接收和分析响应，以及提取与必应相关的 HTTP 标头。  
+包含在 `BingWebSearch` 类中的 `SearchWeb()` 方法构造 `url`、接收和分析响应并提取与必应相关的 HTTP 标头。  
 
 ```java
 public static SearchResults SearchWeb (String searchQuery) throws Exception {
@@ -137,7 +143,7 @@ public static String prettify(String json_text) {
 
 ## <a name="declare-the-main-method"></a>声明 main 方法
 
-此方法是必需的，是启动程序时调用的第一个方法。 在此应用程序中，它包含的代码会验证 `subscriptionKey`，发出一个请求，然后输出 JSON 响应。
+`main()` 方法是必需的，是启动程序时调用的第一个方法。 在此应用程序中，它包含的代码会验证 `subscriptionKey`，发出一个请求，然后输出 JSON 响应。
 
 ```java
 public static void main (String[] args) {
@@ -167,7 +173,7 @@ public static void main (String[] args) {
 
 ## <a name="create-a-container-class-for-search-results"></a>创建一个适用于搜索结果的容器类
 
-`SearchResults` 容器类位于 `BingWebSearch` 类外面。 它包含响应的相关标头和 JSON 数据。
+`SearchResults` 容器类在 `BingWebSearch` 类的外部定义。 它包含响应的相关标头和 JSON 数据。
 
 ```java
 class SearchResults{
@@ -182,7 +188,7 @@ class SearchResults{
 
 ## <a name="put-it-all-together"></a>将其放在一起
 
-最后一步是编译代码并运行它！ 命令如下：
+最后一步是编译代码并运行它。 使用以下命令：
 
 ```powershell
 javac BingWebSearch.java -classpath ./gson-2.8.5.jar -encoding UTF-8
@@ -191,7 +197,7 @@ java -cp ./gson-2.8.5.jar BingWebSearch
 
 如果希望将你的代码与我们的进行比较，请查看 [GitHub 上提供的示例代码](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingWebSearchv7.java)。
 
-## <a name="sample-response"></a>示例响应
+## <a name="example-json-response"></a>示例 JSON 响应
 
 来自必应 Web 搜索 API 的响应以 JSON 形式返回。 此示例响应已截断，仅显示了单个结果。
 
@@ -320,6 +326,6 @@ java -cp ./gson-2.8.5.jar BingWebSearch
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [必应 Web 搜索单页应用教程](../tutorial-bing-web-search-single-page-app.md)
+> [必应 Web 搜索 API 单页应用教程](../tutorial-bing-web-search-single-page-app.md)
 
 [!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]  

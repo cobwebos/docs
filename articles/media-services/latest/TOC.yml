@@ -1,5 +1,7 @@
 - name: 媒体服务文档
   href: ./index.yml
+- name: 切换到“IoT Edge 上的实时视频分析”文档
+  href: ../live-video-analytics-edge/overview.md
 - name: 概述
   items:
     - name: 关于媒体服务
@@ -369,7 +371,7 @@
         - name: Python
           href: 'https://aka.ms/ams-v3-python-ref'
         - name: Node.js
-          href: 'https://aka.ms/ams-v3-nodejs-ref'
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/mediaservices/management'
         - name: Go
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: 资源管理器模板

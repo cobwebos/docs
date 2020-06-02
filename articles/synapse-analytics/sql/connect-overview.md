@@ -9,21 +9,24 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9748b0354ce09752296fb7d736e09af716f19351
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: f09f9a503348efc51fb50c283e7fe856869e0dd5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420871"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198519"
 ---
 # <a name="connect-to-synapse-sql"></a>连接到 Synapse SQL
 连接到 Azure Synapse Analytics 中的 Synapse SQL 功能。
 
 ## <a name="supported-tools-for-sql-on-demand-preview"></a>SQL 按需版本（预览版）支持的工具
 
-完全支持的工具是 Azure Data Studio（预览版）。
+从版本 1.18.0 开始，完全支持 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)。 从版本 18.5 开始，部分支持 SSMS，仅可以使用其进行连接和查询。
 
-版本 18.4 部分支持 SQL Server Management Studio。 有一些功能（例如连接和查询）受到限制。
+> [!NOTE]
+> 如果在查询执行时 AAD 登录的连接已打开超过 1 小时，则任何依赖于 AAD 的查询都将失败。 这包括使用 AAD 直通以及与 AAD 交互的语句（如 CREATE EXTERNAL PROVIDER）的查询存储。 这会影响使连接保持打开状态的每个工具，例如 SSMS 和 ADS 的查询编辑器中的工具。 打开新连接以执行查询的工具（如 Synapse Studio）不受影响。
+
+> 可以重启 SSMS，或在 ADS 中进行连接和断开连接以缓解此问题。 
 
 ## <a name="find-your-server-name"></a>查找服务器名称
 
@@ -33,7 +36,7 @@ ms.locfileid: "81420871"
 若要查找完全限定的服务器名称，请执行以下操作：
 
 1. 转到 [Azure 门户](https://portal.azure.com)。
-2. 单击“Synapse 工作区”。 
+2. 单击“Synapse 工作区”。
 3. 单击要连接到的工作区。
 4. 转到“概览”。
 5. 找到完整的服务器名称。
@@ -47,7 +50,7 @@ ms.locfileid: "81420871"
 ![SQL 按需版本的完整服务器名称](./media/connect-overview/server-connect-example-sqlod.png)
 
 ## <a name="supported-drivers-and-connection-strings"></a>支持的驱动程序和连接字符串
-Synapse SQL 支持 [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx)、[ODBC](https://msdn.microsoft.com/library/jj730314.aspx)、[PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396) 和 [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)。 单击前述的某个驱动程序，查找最新版本和文档。 若要自动生成通过 Azure 门户使用的驱动程序的连接字符串，请单击前述示例中的“显示数据库连接字符串”  。 下面也是一些示例，说明了每个驱动程序的连接字符串的样式。
+Synapse SQL 支持 [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx)、[ODBC](https://msdn.microsoft.com/library/jj730314.aspx)、[PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396) 和 [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)。 单击前述的某个驱动程序，查找最新版本和文档。 若要自动生成通过 Azure 门户使用的驱动程序的连接字符串，请单击前述示例中的“显示数据库连接字符串”。 下面也是一些示例，说明了每个驱动程序的连接字符串的样式。
 
 > [!NOTE]
 > 请考虑将连接超时值设置为 300 秒，以便连接可以经受住短时间内不可用。
@@ -88,7 +91,7 @@ Synapse SQL 在连接和创建对象期间会标准化一些设置。 这些设�
 
 ## <a name="recommendations"></a>建议
 
-若要执行 SQL 按需版本  查询，建议使用 [Azure Data Studio](get-started-azure-data-studio.md) 和 Azure Synapse Studio 这两个工具。
+若要执行 SQL 按需版本查询，建议使用 [Azure Data Studio](get-started-azure-data-studio.md) 和 Azure Synapse Studio 这两个工具。
 
 ## <a name="next-steps"></a>后续步骤
 若要使用 Visual Studio 进行连接和查询，请参阅[使用 Visual Studio 进行查询](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。 若要详细了解身份验证选项，请参阅[向 Synapse SQL 进行身份验证](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。

@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/10/2020
+ms.date: 05/19/2020
 ms.author: spelluru
-ms.openlocfilehash: b3a9c95233c2016dc35f4fcade3e2634e121d252
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1c9e594af96fd43bc03f67caa06f585ab57b4b6e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591771"
+ms.locfileid: "83643468"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>教程：设置教室实验室 
 在本教程中，请设置带虚拟机的课堂实验室，供学生在课堂上使用。  
@@ -70,6 +70,9 @@ ms.locfileid: "83591771"
     1. 选择“连接”以连接到模板 VM。 如果它是 Linux 模板 VM，请选择是要使用 SSH 还是 RDP（如果已启用 RDP）来建立连接。
     3. 在模板 VM 上安装并配置课堂所需软件。 
     4. **停止**模板 VM。  
+
+    > [!NOTE]
+    > 模板 VM 在运行时会产生成本，因此，请确保在不需要运行模板 VM 时将它关闭。 
 
 ## <a name="publish-the-template-vm"></a>发布模板 VM
 在此步骤中，我们发布模板 VM。 你发布模板 VM 时，Azure 实验室服务会使用该模板在实验室中创建 VM。 所有虚拟机的配置都与模板相同。

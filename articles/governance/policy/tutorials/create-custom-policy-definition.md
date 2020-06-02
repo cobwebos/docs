@@ -1,14 +1,14 @@
 ---
 title: 教程：创建自定义策略定义
 description: 本教程介绍如何创建 Azure Policy 的自定义策略定义以在 Azure 资源上强制实施自定义业务规则。
-ms.date: 11/25/2019
+ms.date: 05/20/2020
 ms.topic: tutorial
-ms.openlocfilehash: 7a1eb8abcfbf7513b4620f66c0a7fdbd288f8705
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4d91ae589adbadb7d03e318dc20d6b2b78a84a18
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82190701"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683253"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>教程：创建自定义策略定义
 
@@ -71,7 +71,7 @@ ms.locfileid: "82190701"
 #### <a name="existing-resource-in-the-portal"></a>门户中的现有资源
 
 查找属性的最简单方法是查找相同类型的现有资源。 已使用所要强制实施的设置配置的资源也会提供用于比较的值。
-在 Azure 门户中，找到该特定资源的“导出模板”页（在“设置”下）   。
+在 Azure 门户中，找到该特定资源的“导出模板”页（在“设置”下） 。
 
 :::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="现有资源上的“导出模板”页" border="false":::
 
@@ -119,13 +119,13 @@ ms.locfileid: "82190701"
 ...
 ```
 
-“属性”下面提供了名为 **supportsHttpsTrafficOnly**、设置为 **false** 的值。  此属性似乎是我们所要查找的属性。 此外，该资源的**类型**为 **Microsoft.Storage/storageAccounts**。 该类型告知我们，要将策略限定于此类型的资源。
+“属性”下面提供了名为 **supportsHttpsTrafficOnly**、设置为 **false** 的值。 此属性似乎是我们所要查找的属性。 此外，该资源的**类型**为 **Microsoft.Storage/storageAccounts**。 该类型告知我们，要将策略限定于此类型的资源。
 
 #### <a name="create-a-resource-in-the-portal"></a>在门户中创建资源
 
-另一种方式是通过门户中的资源创建体验。 通过门户创建存储帐户时，“高级”选项卡下会提供“需要安全传输”选项。   此属性具有“已禁用”和“已启用”选项。   信息图标包含附加文本，确认此选项可能是我们所需的属性。 但是，门户不会在此屏幕上显示属性名称。
+另一种方式是通过门户中的资源创建体验。 通过门户创建存储帐户时，“高级”选项卡下会提供“需要安全传输”选项。  此属性具有“已禁用”和“已启用”选项。  信息图标包含附加文本，确认此选项可能是我们所需的属性。 但是，门户不会在此屏幕上显示属性名称。
 
-在“查看 + 创建”选项卡上，页面底部提供了“下载自动化模板”链接。   选择该链接会打开用于创建所配置的资源的模板。 在这种情况下，我们会看到两段重要信息：
+在“查看 + 创建”选项卡上，页面底部提供了“下载自动化模板”链接。  选择该链接会打开用于创建所配置的资源的模板。 在这种情况下，我们会看到两段重要信息：
 
 ```json
 ...
@@ -155,7 +155,7 @@ GitHub 上的 [Azure 快速入门模板](https://github.com/Azure/azure-quicksta
 
 浏览 Azure 资源的另一种方式是使用 [Azure 资源浏览器](https://resources.azure.com)（预览版）。 此工具使用订阅的上下文，因此，你需要在网站中使用 Azure 凭据进行身份验证。 完成身份验证后，可按提供程序、订阅、资源组和资源进行浏览。
 
-找到存储帐户资源并查看属性。 在此处还可以查看 **supportsHttpsTrafficOnly** 属性。 选择“文档”选项卡，可以看到，属性说明与我们在前面的参考文档中找到的信息相匹配。 
+找到存储帐户资源并查看属性。 在此处还可以查看 **supportsHttpsTrafficOnly** 属性。 选择“文档”选项卡，可以看到，属性说明与我们在前面的参考文档中找到的信息相匹配。
 
 ## <a name="find-the-property-alias"></a>查找属性别名
 
@@ -457,11 +457,11 @@ Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccount
 
 如果今后不再使用本教程中的资源，请使用以下步骤删除前面创建的所有分配或定义：
 
-1. 在“Azure Policy”页左侧的“创作”下选择“定义”（如果尝试删除分配，则选择“分配”）    。
+1. 在“Azure Policy”页左侧的“创作”下选择“定义”（如果尝试删除分配，则选择“分配”）  。
 
 1. 搜索要删除的新计划或策略定义（或分配）。
 
-1. 右键单击定义（或分配）对应的行或选择其末尾的省略号，然后选择“删除定义”（或“删除分配”）。  
+1. 右键单击定义（或分配）对应的行或选择其末尾的省略号，然后选择“删除定义”（或“删除分配”）。 
 
 ## <a name="review"></a>审阅
 

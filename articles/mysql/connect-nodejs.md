@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 3/18/2020
-ms.openlocfilehash: a8c4f84fe958c1b2762509432596fea772e39d7e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 5/26/2020
+ms.openlocfilehash: 38ac57ca49608a528b8f810dac7967562f83d7d0
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067937"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870155"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>快速入门：使用 Node.js 进行连接并查询 Azure Database for MySQL 中的数据
 
@@ -25,6 +25,9 @@ ms.locfileid: "80067937"
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - Azure Database for MySQL 服务器。 [使用 Azure 门户创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-portal.md)或[使用 Azure CLI 创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-cli.md)。
+
+> [!IMPORTANT] 
+> 确保已使用 [Azure 门户](./howto-manage-firewall-using-portal.md)或 [Azure CLI](./howto-manage-firewall-using-cli.md) 将服务器的防火墙规则添加到连接的 IP 地址
 
 ## <a name="install-nodejs-and-the-mysql-connector"></a>安装 Node.js 和 MySQL 连接器
 
@@ -87,9 +90,9 @@ ms.locfileid: "80067937"
 获取连接到 Azure Database for MySQL 所需的连接信息。 需要完全限定的服务器名称和登录凭据。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在 Azure 门户的左侧菜单中，选择“所有资源”  ，然后搜索已创建的服务器（例如 mydemoserver  ）。
+2. 在 Azure 门户的左侧菜单中，选择“所有资源”，然后搜索已创建的服务器（例如 mydemoserver）。
 3. 选择服务器名称。
-4. 从服务器的“概览”面板中记下“服务器名称”和“服务器管理员登录名”。    如果忘记了密码，也可通过此面板来重置密码。
+4. 从服务器的“概览”面板中记下“服务器名称”和“服务器管理员登录名”。   如果忘记了密码，也可通过此面板来重置密码。
  ![Azure Database for MySQL 服务器名称](./media/connect-nodejs/server-name-azure-database-mysql.png)
 
 ## <a name="running-the-javascript-code-in-nodejs"></a>在 Node.js 中运行 JavaScript 代码
@@ -101,7 +104,7 @@ ms.locfileid: "80067937"
 
 ## <a name="connect-create-table-and-insert-data"></a>进行连接，创建表，然后插入数据
 
-通过以下代码进行连接，然后使用 CREATE TABLE  和 INSERT INTO  SQL 语句加载数据。
+通过以下代码进行连接，然后使用 CREATE TABLE 和 INSERT INTO SQL 语句加载数据。
 
 [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) 方法用于与 MySQL 服务器对接。 [connect()](https://github.com/mysqljs/mysql#establishing-connections) 函数用于与服务器建立连接。 [query()](https://github.com/mysqljs/mysql#performing-queries) 函数用于针对 MySQL 数据库执行 SQL 查询。 
 
@@ -169,7 +172,7 @@ function queryDatabase(){
 
 ## <a name="read-data"></a>读取数据
 
-使用以下代码进行连接，并使用 SELECT  SQL 语句读取数据。 
+使用以下代码进行连接，并使用 SELECT SQL 语句读取数据。 
 
 [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) 方法用于与 MySQL 服务器对接。 [connect()](https://github.com/mysqljs/mysql#establishing-connections) 方法用于与服务器建立连接。 [query()](https://github.com/mysqljs/mysql#performing-queries) 方法用于针对 MySQL 数据库执行 SQL 查询。 结果数组用于保存查询结果。
 
@@ -222,7 +225,7 @@ function readData(){
 
 ## <a name="update-data"></a>更新数据
 
-使用以下代码进行连接，并使用 UPDATE  SQL 语句读取数据。 
+使用以下代码进行连接，并使用 UPDATE SQL 语句读取数据。 
 
 [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) 方法用于与 MySQL 服务器对接。 [connect()](https://github.com/mysqljs/mysql#establishing-connections) 方法用于与服务器建立连接。 [query()](https://github.com/mysqljs/mysql#performing-queries) 方法用于针对 MySQL 数据库执行 SQL 查询。 
 
@@ -271,7 +274,7 @@ function updateData(){
 
 ## <a name="delete-data"></a>删除数据
 
-使用以下代码进行连接，并使用 DELETE  SQL 语句读取数据。 
+使用以下代码进行连接，并使用 DELETE SQL 语句读取数据。 
 
 [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) 方法用于与 MySQL 服务器对接。 [connect()](https://github.com/mysqljs/mysql#establishing-connections) 方法用于与服务器建立连接。 [query()](https://github.com/mysqljs/mysql#performing-queries) 方法用于针对 MySQL 数据库执行 SQL 查询。 
 

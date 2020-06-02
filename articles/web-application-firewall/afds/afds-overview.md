@@ -5,14 +5,14 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: overview
-ms.date: 02/01/2020
+ms.date: 05/22/2020
 ms.author: victorh
-ms.openlocfilehash: c8ff1849668d5effe15b6c25d00f3965a17b8e3e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a437e474a923edc15689639b7180ebed73242bb5
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77915633"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816363"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure Front Door 上的 Azure Web 应用程序防火墙
 
@@ -26,7 +26,7 @@ Front Door 上的 WAF 是一个全球性的集中式解决方案。 它部署在
 
 ## <a name="waf-policy-and-rules"></a>WAF 策略和规则
 
-可以配置一个 WAF 策略，然后将该策略与一个或多个 Front Door 前端关联，以提供保护。 WAF 策略包含两种类型的安全规则：
+可以配置一个 [WAF 策略](waf-front-door-create-portal.md)，然后将该策略与一个或多个 Front Door 前端关联，以提供保护。 WAF 策略包含两种类型的安全规则：
 
 - 客户创作的自定义规则。
 
@@ -42,7 +42,7 @@ Front Door 交付的 Web 应用程序一次只能与一个 WAF 策略关联。 �
 
 WAF 策略可配置为在以下两种模式下运行：
 
-- **检测模式：** 在检测模式下运行时，WAF 除进行监视并将请求及其匹配的 WAF 规则记录到 WAF 日志中以外，不会执行任何其他操作。 可为 Front Door 启用日志诊断。 如果使用门户，请转到“诊断”部分。 
+- **检测模式：** 在检测模式下运行时，WAF 除进行监视并将请求及其匹配的 WAF 规则记录到 WAF 日志中以外，不会执行任何其他操作。 可为 Front Door 启用日志诊断。 如果使用门户，请转到“诊断”部分。
 
 - **阻止模式：** 在阻止模式下，如果请求与规则匹配，WAF 将执行指定的操作。 如果找到匹配项，则不会评估优先级更低的规则。 任何匹配的请求也会记录在 WAF 日志中。
 
@@ -53,7 +53,7 @@ WAF 策略可配置为在以下两种模式下运行：
 - **允许：** 请求通过 WAF 传递并转发到后端。 没有其他优先级较低的规则可以阻止此请求。
 - **阻止：** 请求受阻，WAF 将响应发送到客户端，且不会将请求转发到后端。
 - **记录：** 请求记录在 WAF 日志中，且 WAF 继续评估优先级较低的规则。
-- **重定向：** WAF 将请求重定向到指定的 URI。 指定的 URI 是策略级别设置。 配置后，与“重定向”操作匹配的所有请求都将发送到该 URI  。
+- **重定向：** WAF 将请求重定向到指定的 URI。 指定的 URI 是策略级别设置。 配置后，与“重定向”操作匹配的所有请求都将发送到该 URI。
 
 ## <a name="waf-rules"></a>WAF 规则
 

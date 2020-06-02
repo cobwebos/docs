@@ -3,17 +3,17 @@ title: Internet 对等互连与对等互连服务
 titleSuffix: Azure
 description: Internet 对等互连与对等互连服务
 services: internet-peering
-author: prmitiki
+author: derekolo
 ms.service: internet-peering
 ms.topic: overview
-ms.date: 11/27/2019
-ms.author: prmitiki
-ms.openlocfilehash: 6c1205fcacd3d7228f1aecf1e603b66d9e1fcee5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 5/22/2020
+ms.author: derekol
+ms.openlocfilehash: 3ffef24d459a2864ffd3f2271e6bca9e4bc638cc
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75772804"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849376"
 ---
 # <a name="internet-peering-vs-peering-service"></a>Internet 对等互连与对等互连服务
 
@@ -38,15 +38,15 @@ Internet 对等互连是指 Microsoft 的全球网络 (AS8075) 与运营商或�
 
 **对等互连服务客户权益：**
 * 基于 Internet 的最佳公共路由可连接到 Microsoft 云服务，以实现最佳性能和可靠性。
-* 能够选择首选 SP 来连接到 Microsoft 云。
+* 能够选择首选服务提供商来连接到 Microsoft 云。
 * 流量见解，例如延迟报告和前缀监视。
 * Microsoft 云中的最佳网络跃点（AS 跃点）。
 * 路由分析和统计信息 - 边界网关协议 ([BGP](https://en.wikipedia.org/wiki/Border_Gateway_Protocol)) 路由异常事件（泄漏/劫持检测）和不理想路由。
 
 ## <a name="peering-service-partnership-requirements"></a>对等互连服务合作关系要求
-* 到 Microsoft 云的连接性（在距离客户最近的位置）。 合作伙伴服务提供商会将用户流量路由到最靠近用户的 Microsoft Edge。 同样，在向用户发送流量时，Microsoft 会将流量（使用 BGP 标记）路由到最靠近用户的边缘位置，而 SP 会将流量传递给用户。
+* 到 Microsoft 云的连接性（在距离客户最近的位置）。 合作伙伴服务提供商会将用户流量路由到最靠近用户的 Microsoft Edge。 同样，在向用户发送流量时，Microsoft 会将流量（使用 BGP 标记）路由到最靠近用户的边缘位置，而服务提供商会将流量传递给用户。
 * 合作伙伴将始终与 Microsoft 全球网络进行高可用、高吞吐量和异地冗余的连接。
-* 如果合作伙伴满足要求，可以利用其现有对等互连来支持对等互连服务
+* 如果合作伙伴满足要求，可以利用其现有对等互连来支持对等互连服务。
 
 ## <a name="faq"></a>常见问题解答
 有关常见问题解答，请参阅[对等互连服务 - 常见问题解答](service-faqs.md)。

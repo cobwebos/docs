@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/28/2020
+ms.date: 05/20/2020
 ms.author: allensu
-ms.openlocfilehash: c9b5aaefeb8ab21eed850f5bf291d38981239aab
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 7723e74b9617d5e8d56dd3c3e46145c4945ca21f
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82508422"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698097"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>排查 Azure 虚拟网络 NAT 连接问题
 
@@ -31,6 +31,7 @@ ms.locfileid: "82508422"
 * [ICMP ping 失败](#icmp-ping-is-failing)
 * [连接失败](#connectivity-failures)
 * [IPv6 共存](#ipv6-coexistence)
+* [连接不是源自 NAT 网关 IP](#connection-doesnt-originate-from-nat-gateway-ips)
 
 若要解决这些问题，请遵循以下部分中的步骤。
 
@@ -61,10 +62,10 @@ _**解决方法：**_ 使用适当的模式和最佳做法
 - 如果客户端不缓存 DNS 解析器的结果，DNS 可能会在卷上引入许多单独的流。 使用缓存。
 - UDP 流（例如 DNS 查找）根据空闲超时持续时间分配 SNAT 端口。 空闲超时越长，SNAT 端口上的压力越大。 使用较短的空闲超时（例如 4 分钟）。
 - 使用连接池来调整连接卷。
-- 切勿以静默方式丢弃 TCP 流，且不要依赖 TCP 计时器来清理流。 如果不允许 TCP 显式关闭连接，中间系统和终结点上将保持已分配状态，使 SNAT 端口不可用于其他连接。 这可能会触发应用程序故障和 SNAT 耗尽。 
+- 切勿以静默方式丢弃 TCP 流，且不要依赖 TCP 计时器来清理流。 如果不允许 TCP 显式关闭连接，中间系统和终结点上将保持已分配状态，使 SNAT 端口不可用于其他连接。 此模式可能会触发应用程序故障和 SNAT 耗尽。 
 - 在对造成的影响了解不深的情况下，请不要更改与 OS 级别的 TCP 关闭相关的计时器值。 当某个连接的终结点不符合预期时，尽管 TCP 堆栈会恢复，但应用程序的性能可能会受负面影响。 需要更改计时器往往意味着底层设计出现了问题。 查看以下建议：
 
-底层应用程序中的其他对立模式往往也会使 SNAT 耗尽问题变得严重。 请查看这些附加模式和最佳做法，以改善服务的可伸缩性和可靠性。
+底层应用程序中的其他反模式也会使 SNAT 耗尽问题变得严重。 请查看这些附加模式和最佳做法，以改善服务的可伸缩性和可靠性。
 
 - 了解将 [TCP 空闲超时](nat-gateway-resource.md#timers)减小到更小的值（包括默认的 4 分钟空闲超时）来提前释放 SNAT 端口库存所造成的影响。
 - 考虑对长时间运行的操作使用[异步轮询模式](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply)，以释放连接资源供其他操作使用。
@@ -116,7 +117,7 @@ _**解决方法：**_ 请改用 TCP 连接测试（例如“TCP ping”）和 UD
 
 #### <a name="configuration"></a>配置
 
-检查以下各项：
+检查配置：
 1. NAT 网关资源是至少具有一个公共 IP 资源还是一个公共 IP 前缀资源？ 它必须至少具有一个与 NAT 网关关联的 IP 地址，才能提供出站连接。
 2. 虚拟网络的子网是否配置为使用 NAT 网关？
 3. 是否正在使用 UDR（用户定义的路由）？是否要替代目标？  NAT 网关资源将在配置的子网上成为默认路由 (0/0)。
@@ -182,6 +183,18 @@ _**解决方法：**_
 _**解决方法：**_ 在不使用 IPv6 前缀的子网中部署 NAT 网关。
 
 可以通过[虚拟网络 NAT UserVoice](https://aka.ms/natuservoice) 来表明对其他功能的兴趣。
+
+### <a name="connection-doesnt-originate-from-nat-gateway-ips"></a>连接不是源自 NAT 网关 IP
+
+你可以配置 NAT 网关、要使用的 IP 地址以及应使用 NAT 网关资源的子网。 但是，在 NAT 网关进行部署之前存在的虚拟机实例中的连接不使用 IP 地址。  它们似乎使用不适用于 NAT 网关资源的 IP 地址。
+
+_**解决方法：**_
+
+[虚拟网络 NAT](nat-overview.md) 替换它于其上进行配置的子网的出站连接。 从默认 SNAT 或负载均衡器出站 SNAT 转换到使用 NAT 网关时，新连接将立即开始使用与 NAT 网关资源相关联的 IP 地址。  但是，如果虚拟机在切换到 NAT 网关资源的过程中仍具有已建立的连接，则连接将继续使用建立连接时分配的旧 SNAT IP 地址。  请确保你确实在建立新的连接，而不是重用已存在的连接，因为 OS 或浏览器正在连接池中缓存连接。  例如，在 PowerShell 中使用卷曲时，请确保指定了“-DisableKeepalive”参数以强制建立新连接 。  如果使用的是浏览器，则可能还会将连接汇集在池中。
+
+不需要重启为 NAT 网关资源配置子网的虚拟机。  但是，如果虚拟机重启，则连接状态会刷新。  刷新连接状态后，所有连接都将开始使用 NAT 网关资源的 IP 地址。  但是，这是重启虚拟机的后果之一，而不表示需要重启。
+
+如果仍然遇到问题，请打开支持案例进行进一步的故障排除。
 
 ## <a name="next-steps"></a>后续步骤
 

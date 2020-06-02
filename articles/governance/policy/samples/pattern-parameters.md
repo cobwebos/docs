@@ -1,14 +1,14 @@
 ---
 title: 模式：策略定义中的参数
 description: 此 Azure Policy 模式通过示例介绍了如何在策略定义中使用参数。
-ms.date: 01/31/2020
+ms.date: 05/20/2020
 ms.topic: sample
-ms.openlocfilehash: 4921bb216ef67b561bc8986cf48239e6448beafc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e163a243a0dc23f04d564287b630634eb4662cda
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77170175"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696721"
 ---
 # <a name="azure-policy-pattern-parameters"></a>Azure Policy 模式：参数
 
@@ -16,7 +16,10 @@ ms.locfileid: "77170175"
 
 ## <a name="sample-1-string-parameters"></a>示例 1：字符串参数
 
-此策略定义使用两个参数（**tagName** 和 **tagValue**）来设置策略分配在资源上查找的内容。 此格式允许将策略用于任意数量的标记名称和标记值组合，但只保留单个策略定义。
+此策略定义使用两个参数（**tagName** 和 **tagValue**）来设置策略分配在资源上查找的内容。 此格式允许将策略定义用于任意数量的标记名称和标记值组合，但只保留单个策略定义。
+
+> [!NOTE]
+> 有关使用 All 模式并与资源组配合使用的标记示例，请参阅[模式：标记 - 示例 #1](./pattern-tags.md#sample-1-parameterize-tags)。
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-1.json":::
 
@@ -47,6 +50,22 @@ ms.locfileid: "77170175"
 在这里，我们将其用于 **serviceProvider.bandwidthInMbps** 别名，作为定义的值之一。
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-2.json" range="21-24" highlight="3":::
+
+## <a name="sample-3-parameterized-effect"></a>示例 3：参数化效果
+
+使策略定义可重复使用的一种常见方法是参数化效果本身。 本示例使用单个参数“effect”。 通过参数化效果，可以将相同的定义分配给具有不同效果的不同作用域。
+
+:::code language="json" source="~/policy-templates/patterns/pattern-parameters-3.json":::
+
+### <a name="sample-3-explanation"></a>示例 3：说明
+
+:::code language="json" source="~/policy-templates/patterns/pattern-parameters-3.json" range="11-25":::
+
+在策略定义的此部分中，将“effect”参数定义为“string”。 策略定义将分配的默认值设置为“audit”，并将其他选项限制为“disabled”和“deny”。
+
+然后在 policyRule.then 块中将参数用于“effect”。
+
+:::code language="json" source="~/policy-templates/patterns/pattern-parameters-3.json" range="38-40" highlight="2":::
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.date: 09/04/2019
-ms.openlocfilehash: 58c5b3bdd6d50f2e512cccffe78bd4e70805d729
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 05/19/2020
+ms.openlocfilehash: 6da2537464e39ecb2c613a97b19f2d8f316818af
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78204729"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677551"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>教程：使用企业安全性套餐（预览版）在 HDInsight 中配置 Apache Kafka 策略
 
@@ -40,17 +40,17 @@ ms.locfileid: "78204729"
 
 ## <a name="create-domain-users"></a>创建域用户
 
-访问[使用企业安全性套餐创建 HDInsight 群集](./apache-domain-joined-configure-using-azure-adds.md)，以了解如何创建 sales_user  和 marketing_user  域用户。 在生产方案中，域用户来自你的 Active Directory·租户。
+访问[使用企业安全性套餐创建 HDInsight 群集](./apache-domain-joined-configure-using-azure-adds.md)，以了解如何创建 sales_user 和 marketing_user 域用户。 在生产方案中，域用户来自你的 Active Directory·租户。
 
 ## <a name="create-ranger-policy"></a>创建 Ranger 策略
 
-为 sales_user  和 marketing_user  创建 Ranger 策略。
+为 sales_user 和 marketing_user 创建 Ranger 策略。
 
-1. 打开“Ranger 管理 UI”  。
+1. 打开“Ranger 管理 UI”。
 
-2. 选择“Kafka”  下的“\<ClusterName>_kafka”  。 可以列出一个预先配置的策略。
+2. 选择“Kafka”下的“\<ClusterName>_kafka”。 可以列出一个预先配置的策略。
 
-3. 选择“添加新策略”  ，并输入以下值：
+3. 选择“添加新策略”，并输入以下值：
 
    |设置  |建议的值  |
    |---------|---------|
@@ -66,11 +66,11 @@ ms.locfileid: "78204729"
 
    ![Apache Ranger 管理 UI 创建策略 1](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)
 
-   如果“选择用户”  中未自动填充域用户，请等待片刻时间让 Ranger 与 Azure AD 同步。
+   如果“选择用户”中未自动填充域用户，请等待片刻时间让 Ranger 与 Azure AD 同步。
 
-4. 选择“添加”以保存策略。 
+4. 选择“添加”以保存策略。
 
-5. 选择“添加新策略”  ，然后输入以下值：
+5. 选择“添加新策略”，然后输入以下值：
 
    |设置  |建议的值  |
    |---------|---------|
@@ -81,7 +81,7 @@ ms.locfileid: "78204729"
 
    ![Apache Ranger 管理 UI 创建策略 2](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png)  
 
-6. 选择“添加”以保存策略。 
+6. 选择“添加”以保存策略。
 
 ## <a name="create-topics-in-a-kafka-cluster-with-esp"></a>使用 ESP 创建 Kafka 群集中的主题
 
@@ -125,7 +125,7 @@ ms.locfileid: "78204729"
 
 根据所配置的 Ranger 策略，**sales_user** 可以生成/使用主题 `salesevents`，但不能生成/使用主题 `marketingspend`。 相反，**marketing_user** 可以生成/使用主题 `marketingspend`，但不能生成/使用主题 `salesevents`。
 
-1. 打开与群集的新 SSH 连接。 使用以下命令来以 sales_user1  身份登录：
+1. 打开与群集的新 SSH 连接。 使用以下命令来以 sales_user1 身份登录：
 
    ```bash
    ssh sales_user1@CLUSTERNAME-ssh.azurehdinsight.net
@@ -147,7 +147,8 @@ ms.locfileid: "78204729"
 
 4. 按照以下文章的**生成并部署示例**下的步骤 3 进行操作：[教程：使用 Apache Kafka 生成者和使用者 API](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) 来确保 `kafka-producer-consumer.jar` 也可供 **sales_user** 使用。
 
-注意：**对于本教程，请使用“DomainJoined-Producer-Consumer”项目下的 kafka-producer-consumer.jar（而不是 Producer-Consumer 项目下的那个文件，它适用于非加入域方案）。**
+> [!NOTE]  
+> 对于本教程，请使用“DomainJoined-Producer-Consumer”项目下的 kafka-producer-consumer.jar（而不是 Producer-Consumer 项目下的那个文件，它适用于非加入域方案）。
 
 5. 执行以下命令来验证 **sales_user1** 可以生成主题 `salesevents`：
 
@@ -192,12 +193,12 @@ ms.locfileid: "78204729"
 如果不打算继续使用此应用程序，请使用以下步骤删除创建的 Kafka 群集：
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-1. 在顶部的“搜索”框中，键入 **HDInsight**。 
-1. 选择“服务”下的“HDInsight 群集”   。
-1. 在显示的 HDInsight 群集列表中，单击为本教程创建的群集旁边的“...”。  
+1. 在顶部的“搜索”框中，键入 **HDInsight**。
+1. 选择“服务”下的“HDInsight 群集” 。
+1. 在显示的 HDInsight 群集列表中，单击为本教程创建的群集旁边的“...”。 
 1. 单击 **“删除”** 。 单击 **“是”** 。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 如果 kafka-producer-consumer.jar 在已加入域的群集中不起作用，请确保使用“DomainJoined-Producer-Consumer”项目下的 kafka-producer-consumer.jar（而不是 Producer-Consumer 项目下的那个文件，它适用于非加入域方案）。
 
 ## <a name="next-steps"></a>后续步骤

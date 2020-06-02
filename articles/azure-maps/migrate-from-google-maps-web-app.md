@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: bdbf2a975cbdc3d06745b9375c1e6f8e751ddfd6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: df23226adfa8caa86b7ad91dd28a9352381f4170
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77914066"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747565"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>从 Google Maps 迁移 Web 应用
 
@@ -194,7 +194,7 @@ ms.locfileid: "77914066"
 
 ### <a name="localizing-the-map"></a>本地化地图
 
-如果你的受众遍布多个国家/地区或讲不同的语言，则本地化就非常重要。
+如果受众遍布多个国家/地区或讲不同的语言，则本地化就非常重要。
 
 **前者：Google Maps**
 

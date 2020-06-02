@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6ea52474f3b352fabf19050f20012438e9d0c19
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6c020bb70dc26945b013321b2d75cc2e231c39a4
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76120530"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83772890"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Confluence SAML SSO by Microsoft 集成
 
@@ -65,7 +65,7 @@ ms.locfileid: "76120530"
 
 - Confluence：5.0 到 5.10
 - Confluence：6.0.1 到 6.15.9
-- Confluence：7.0.1 到 7.1.0
+- Confluence：7.0.1 到 7.4.0
 
 > [!NOTE]
 > 请注意，Confluence 插件还适用于 Ubuntu 版本 16.04
@@ -81,15 +81,15 @@ ms.locfileid: "76120530"
 若要配置 Confluence SAML SSO by Microsoft 与 Azure AD 的集成，需要从库中将 Confluence SAML SSO by Microsoft 添加到托管 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序”   。
-1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入“Confluence SAML SSO by Microsoft”   。
-1. 从结果面板中选择“Confluence SAML SSO by Microsoft”，然后添加应用  。 在该应用添加到租户时等待几秒钟。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
+1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 若要添加新的应用程序，请选择“新建应用程序”。
+1. 在“从库中添加”部分的搜索框中，键入“Confluence SAML SSO by Microsoft” 。
+1. 从结果面板中选择“Confluence SAML SSO by Microsoft”，然后添加应用。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-confluence-saml-sso-by-microsoft"></a>配置和测试 Confluence SAML SSO by Microsoft 的 Azure AD 单一登录
 
-使用名为 B.Simon 的测试用户配置和测试 Confluence SAML SSO by Microsoft 的 Azure AD SSO  。 若要运行 SSO，需要在 Azure AD 用户与 Confluence SAML SSO by Microsoft 相关用户之间建立链接关系。
+使用名为 B.Simon 的测试用户配置和测试 Confluence SAML SSO by Microsoft 的 Azure AD SSO。 若要运行 SSO，需要在 Azure AD 用户与 Confluence SAML SSO by Microsoft 相关用户之间建立链接关系。
 
 若要配置和测试 Confluence SAML SSO by Microsoft 的 Azure AD SSO，请完成以下构建基块：
 
@@ -104,24 +104,24 @@ ms.locfileid: "76120530"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“Confluence SAML SSO by Microsoft”应用程序集成页上，找到“管理”部分，然后选择“单一登录”    。
-1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在 [Azure 门户](https://portal.azure.com/)的“Confluence SAML SSO by Microsoft”应用程序集成页上，找到“管理”部分，然后选择“单一登录”  。
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，输入以下字段的值  ：
+1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<domain:port>/plugins/servlet/saml/auth`。
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<domain:port>/plugins/servlet/saml/auth`。
 
-    b. 在“标识符”框中，使用以下模式键入 URL：`https://<domain:port>/` 
+    b. 在“标识符”框中，使用以下模式键入 URL：`https://<domain:port>/`
 
-    c. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<domain:port>/plugins/servlet/saml/auth`
+    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<domain:port>/plugins/servlet/saml/auth`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 端口可选，以防止其为命名 URL。 在配置 Confluence 插件的过程中，将接收这些值，这将在教程的后面部分进行说明。
 
-1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
 
@@ -129,41 +129,41 @@ ms.locfileid: "76120530"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 B.Simon 访问 Confluence SAML SSO by Microsoft 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“Confluence SAML SSO by Microsoft”  。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在应用程序列表中，选择“Confluence SAML SSO by Microsoft”。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。  
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
-1. 在“添加分配”对话框中，单击“分配”按钮。  
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。  
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
+1. 在“添加分配”对话框中，单击“分配”按钮。 
 
 ## <a name="configure-confluence-saml-sso-by-microsoft-sso"></a>配置 Confluence SAML SSO by Microsoft SSO
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录 Confluence 实例。
 
-1. 将鼠标悬停在小齿轮上，并单击“外接程序”  。
+1. 将鼠标悬停在小齿轮上，并单击“外接程序”。
 
     ![配置单一登录](./media/confluencemicrosoft-tutorial/addon1.png)
 
-1. 从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=56503)下载插件。 使用“上传加载项”  菜单手动上传由 Microsoft 提供的插件。 [Microsoft 服务协议](https://www.microsoft.com/servicesagreement/)涵盖了插件下载。
+1. 从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=56503)下载插件。 使用“上传加载项”菜单手动上传由 Microsoft 提供的插件。 [Microsoft 服务协议](https://www.microsoft.com/servicesagreement/)涵盖了插件下载。
 
     ![配置单一登录](./media/confluencemicrosoft-tutorial/addon12.png)
 
@@ -182,7 +182,7 @@ ms.locfileid: "76120530"
 
     ![配置单一登录](./media/confluencemicrosoft-tutorial/reverseproxy2.png)
 
-1. 插件安装后，它会显示在“管理加载项”部分的“用户已安装”加载项部分   。 单击“配置”  配置新的插件。
+1. 插件安装后，它会显示在“管理加载项”部分的“用户已安装”加载项部分 。 单击“配置”配置新的插件。
 
     ![配置单一登录](./media/confluencemicrosoft-tutorial/addon15.png)
 
@@ -193,34 +193,34 @@ ms.locfileid: "76120530"
     > [!TIP]
     > 请确保一个应用仅映射一个证书，以免在解析元数据时出错。 如果有多个证书，则管理员会在解析元数据时收到错误。
 
-    1. 在“元数据 URL”文本框中，粘贴从 Azure 门户复制的**应用联合元数据 URL**值，然后单击“解析”按钮。   它将读取 IdP 元数据 URL，并填充所有字段信息。
+    1. 在“元数据 URL”文本框中，粘贴从 Azure 门户复制的**应用联合元数据 URL**值，然后单击“解析”按钮。  它将读取 IdP 元数据 URL，并填充所有字段信息。
 
-    1. 复制“标识符”、“回复 URL”和“登录 URL”值，并将其分别粘贴到 Azure 门户中“基本 SAML 配置”部分下的“标识符”、“回复 URL”和“登录 URL”文本框中    。
+    1. 复制“标识符”、“回复 URL”和“登录 URL”值，并将其分别粘贴到 Azure 门户中“基本 SAML 配置”部分下的“标识符”、“回复 URL”和“登录 URL”文本框中  。
 
-    1. 在“登录按钮名”中键入组织希望用户在登录屏幕上看到的按钮名称  。
+    1. 在“登录按钮名”中键入组织希望用户在登录屏幕上看到的按钮名称。
     
     1. 在**登录按钮说明**中，键入你的组织希望用户在登录屏幕上看到的按钮的说明。
 
-    1. 在“SAML 用户 ID 位置”中，选择“用户 ID 位于 Subject 语句的 NameIdentifier 元素之中”或“用户 ID 位于 Attribute 元素之中”    。  此 ID 必须是 Confluence 用户 ID。 如果用户 ID 不匹配，系统将不允许用户登录。 
+    1. 在“SAML 用户 ID 位置”中，选择“用户 ID 位于 Subject 语句的 NameIdentifier 元素之中”或“用户 ID 位于 Attribute 元素之中”  。  此 ID 必须是 Confluence 用户 ID。 如果用户 ID 不匹配，系统将不允许用户登录。 
 
        > [!Note]
        > 默认 SAML 用户 ID 位置是名称标识符。 可将其更改为属性选项，并输入适当的属性名称。
 
-    1. 如果选择“用户 ID 位于属性元素之中”选项，则请在“属性名称”文本框内键入应该出现用户 ID 的属性名称   。 
+    1. 如果选择“用户 ID 位于属性元素之中”选项，则请在“属性名称”文本框内键入应该出现用户 ID 的属性名称 。 
 
-    1. 如果正在使用 Azure AD 的联合域（如 ADFS 等），请单击“启用主领域发现”选项，并配置“域名”   。
+    1. 如果正在使用 Azure AD 的联合域（如 ADFS 等），请单击“启用主领域发现”选项，并配置“域名” 。
 
-    1. 如果是基于 ADFS 的登录，请在“域名”中键入域名  。
+    1. 如果是基于 ADFS 的登录，请在“域名”中键入域名。
 
-    1. 当用户从 Confluence 注销时，如果要从 Azure AD 注销，请勾选“启用单一注销”  。 
+    1. 当用户从 Confluence 注销时，如果要从 Azure AD 注销，请勾选“启用单一注销”。 
 
-    1. 如果希望仅通过 Azure AD 凭据登录，请选中“强制 Azure 登录”  复选框。
+    1. 如果希望仅通过 Azure AD 凭据登录，请选中“强制 Azure 登录”复选框。
 
        > [!Note]
        > 若要在启用“强制 Azure 登录”时在登录页上启用管理员登录的默认登录表单，请在浏览器 URL 中添加查询参数。
        > `https://<domain:port>/login.action?force_azure_login=false`
 
-    1. 单击“保存”按钮保存设置。 
+    1. 单击“保存”按钮保存设置。
 
        > [!NOTE]
        > 有关安装和故障排除的详细信息，请访问 [MS Confluence SSO 连接器管理员指南](../ms-confluence-jira-plugin-adminguide.md)， 还可以参阅[常见问题解答](../ms-confluence-jira-plugin-faq.md)以获得帮助。
@@ -233,25 +233,25 @@ ms.locfileid: "76120530"
 
 1. 以管理员身份登录到 Confluence 本地服务器。
 
-1. 将鼠标悬停在小齿轮上，并单击“用户管理”  。
+1. 将鼠标悬停在小齿轮上，并单击“用户管理”。
 
     ![添加员工](./media/confluencemicrosoft-tutorial/user1.png)
 
-1. 在“用户”部分，单击“添加用户”  选项卡。在“添加用户”对话框页上，执行以下步骤： 
+1. 在“用户”部分，单击“添加用户”选项卡。在“添加用户”对话框页上，执行以下步骤：
 
     ![添加员工](./media/confluencemicrosoft-tutorial/user2.png)
 
-    a. 在“用户名”文本框中，键入用户的电子邮件（例如 B.Simon）。 
+    a. 在“用户名”文本框中，键入用户的电子邮件（例如 B.Simon）。
 
-    b. 在“全名”文本框中，键入用户的全名（例如 B.Simon）。 
+    b. 在“全名”文本框中，键入用户的全名（例如 B.Simon）。
 
-    c. 在“电子邮件”文本框中，键入用户的电子邮件地址（例如 B.Simon@contoso.com）。 
+    c. 在“电子邮件”文本框中，键入用户的电子邮件地址（例如 B.Simon@contoso.com）。
 
-    d. 在“密码”  文本框中，键入 B.Simon 的密码。
+    d. 在“密码”文本框中，键入 B.Simon 的密码。
 
-    e.  单击“确认密码”，重新输入该密码。
+    e. 单击“确认密码”，重新输入该密码。
 
-    f. 单击“添加”按钮。 
+    f. 单击“添加”按钮。
 
 ## <a name="test-sso"></a>测试 SSO
 

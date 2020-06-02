@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 563e2da8eba228636b05db2112739fdead4a4aa3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 046e438304991c4af7ea4a208e51b7a695a5bf23
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76844881"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83004466"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>有关 Azure 空间定位点的常见问题解答
 
@@ -49,6 +49,10 @@ Azure 空间定位点是一个托管云服务和开发人员平台，可跨 Holo
 
 **答:** 定位点按 Azure 帐户进行隔离。 只有你向帐户授予了访问权限的应用才能访问帐户中的定位点。
 
+**问：Azure 空间定位点如何存储数据？**
+
+**答:** 所有数据都使用 Microsoft 管理的数据加密密钥进行加密存储。
+
 **问：使用 Azure 空间定位点时，会在服务中传输和存储有关环境的哪些信息？是否会传输和存储环境的图片？**
 
 **答**：创建或查找定位点时，环境的图片会在设备上处理为派生格式。 此派生格式会传输到服务并存储在其中。
@@ -59,7 +63,6 @@ Azure 空间定位点遵守 [Azure 服务协议条款](https://go.microsoft.com/
 
 ![环境及其派生稀疏点云](./media/sparse-point-cloud.png)
 *图 1：环境及其派生稀疏点云*
-
 
 **问：我是否有方法可以向 Microsoft 发送诊断信息？**
 

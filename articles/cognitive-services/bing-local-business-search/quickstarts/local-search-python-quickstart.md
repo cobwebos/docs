@@ -8,38 +8,37 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 11/29/2019
+ms.date: 05/12/2020
 ms.author: aahi
-ms.openlocfilehash: c7e7ef7f052fccfea18b246f41109d5fa7528b4b
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 3a90d5455c0664ceabf80647fc94a37ad0c716b5
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75379737"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873023"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>快速入门：使用 Python 将查询发送到必应当地企业搜索 API
 
-使用此快速入门开始向必应当地企业搜索 API 发送请求，该 API 是一项 Azure 认知服务。 虽然这个简单的应用程序是用 Python 编写的，但 API 是一种 RESTful Web 服务，可以与任何能够发出 HTTP 请求并解析 JSON 的编程语言兼容。
+使用此快速入门了解如何向必应当地企业搜索 API 发送请求，该 API 是一项 Azure 认知服务。 尽管这个简单的应用程序是用 Python 编写的，但 API 是一种 RESTful Web 服务，可以与任何能够发出 HTTP 请求并解析 JSON 的编程语言兼容。
 
-此示例应用程序从 API 获取搜索查询 `hotel in Bellevue` 的本地响应数据。
+此示例应用程序从 API 获取搜索查询的本地响应数据。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-* [Python](https://www.python.org/) 2.x 或 3.x
- 
-必须拥有包含必应 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 使用免费试用版提供的访问密钥。  另请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+* [Python](https://www.python.org/) 2.x 或 3.x。
+* 具有必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 [免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)足以满足本快速入门的要求。 保存在激活免费试用版时提供的 API 密钥。 有关详细信息，请参阅[认知服务定价 - 必应搜索 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
 ## <a name="run-the-complete-application"></a>运行完整应用程序
 
-以下代码获取本地化结果。 该代码通过以下步骤实现：
+下面的示例将获取本地化结果，实现步骤如下：
 1. 声明变量，以按主机和路径指定终结点。
 2. 指定查询参数。 
-3. 定义搜索函数，用以创建请求并添加 Ocp-Apim-Subscription-Key 标头。
-4. 设置 Ocp-Apim-Subscription-Key 标头。 
+3. 定义搜索函数，用以创建请求并添加 `Ocp-Apim-Subscription-Key` 标头。
+4. 设置 `Ocp-Apim-Subscription-Key` 标头。 
 5. 建立连接，并发送请求。
 6. 输出 JSON 结果。
 
-本演示的完整代码如下：
+本演示的完整代码如下所示：
 
 ```python
 import http.client, urllib.parse
@@ -70,4 +69,4 @@ print (json.dumps(json.loads(result), indent=4))
 ## <a name="next-steps"></a>后续步骤
 - [当地企业搜索 Java 快速入门](local-search-java-quickstart.md)
 - [当地企业搜索 C# 快速入门](local-quickstart.md)
-- [当地企业搜索 Node 快速入门](local-search-node-quickstart.md)
+- [当地企业搜索 Node.js 快速入门](local-search-node-quickstart.md)

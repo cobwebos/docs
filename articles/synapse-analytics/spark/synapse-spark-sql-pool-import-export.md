@@ -9,28 +9,30 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: f92c05476c9e85690fdeacade5463a43d0a4af42
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1a2b9c739f3583fb5d842bd9d3834252d542cb7d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420421"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739271"
 ---
 # <a name="introduction"></a>简介
 
-Spark SQL Analytics 连接器设计用来高效地在 Azure Synapse 中的 Spark 池（预览版）与 SQL 池之间传输数据。 Spark SQL Analytics 连接器仅适用于 SQL 池，不适用于 SQL 按需版本。
+Azure Synapse Apache Spark 到 Synapse SQL 的连接器设计用来高效地在 Azure Synapse 中的 Spark 池（预览版）与 SQL 池之间传输数据。 Azure Synapse Apache Spark 到 Synapse SQL 的连接器仅适用于 SQL 池，不适用于 SQL 按需版本。
 
 ## <a name="design"></a>设计
 
 可以使用 JDBC 来执行 Spark 池与 SQL 池之间的数据传输。 但是，假设有两个分布式系统（例如 Spark 池和 SQL 池），则 JDBC 往往会成为串行数据传输的瓶颈。
 
-Spark 池到 SQL Analytics 连接器是适用于 Apache Spark 的一个数据源实现。 它使用 Azure Data Lake Storage Gen 2 以及 SQL 池中的 Polybase 高效地在 Spark 群集与 SQL Analytics 实例之间传输数据。
+Azure Synapse Apache Spark 池到 Synapse SQL 的连接器是适用于 Apache Spark 的一个数据源实现。 它使用 Azure Data Lake Storage Gen2 以及 SQL 池中的 Polybase 高效地在 Spark 群集与 Synapse SQL 实例之间传输数据。
 
 ![连接器体系结构](./media/synapse-spark-sqlpool-import-export/arch1.png)
 
 ## <a name="authentication-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的身份验证
 
-系统之间的身份验证在 Azure Synapse Analytics 中无缝进行。 有一个令牌服务，它与 Azure Active Directory 进行连接来获取在访问存储帐户或数据仓库服务器时使用的安全令牌。 因此，只要在存储帐户和数据仓库服务器上配置了 AAD 身份验证，就不需要创建凭据或在连接器 API 中指定凭据。 如果没有，则可以指定 SQL 身份验证。 可在[用法](#usage)部分中找到更多详细信息。
+系统之间的身份验证在 Azure Synapse Analytics 中无缝进行。 有一个令牌服务，它与 Azure Active Directory 进行连接来获取在访问存储帐户或数据仓库服务器时使用的安全令牌。 
+
+因此，只要在存储帐户和数据仓库服务器上配置了 AAD 身份验证，就不需要创建凭据或在连接器 API 中指定凭据。 如果没有，则可以指定 SQL 身份验证。 可在[用法](#usage)部分中找到更多详细信息。
 
 ## <a name="constraints"></a>约束
 
@@ -38,38 +40,38 @@ Spark 池到 SQL Analytics 连接器是适用于 Apache Spark 的一个数据源
 
 ## <a name="prerequisites"></a>先决条件
 
-- 在需要向其/从其传输数据的数据库/SQL 池中具有 db_exporter  角色。
+- 在需要向其/从其传输数据的数据库/SQL 池中具有 db_exporter 角色。
 
 若要创建用户，请连接到数据库，然后按照以下示例操作：
 
-```Sql
+```sql
 CREATE USER Mary FROM LOGIN Mary;
 CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 ```
 
 若要分配角色，请使用以下命令：
 
-```Sql
+```sql
 EXEC sp_addrolemember 'db_exporter', 'Mary';
 ```
 
-## <a name="usage"></a>用法
+## <a name="usage"></a>使用情况
 
-不需要提供 import 语句，对于笔记本体验，它们是预先导入的。
+不需要 import 语句，对于笔记本体验，它们是预先导入的。
 
 ### <a name="transferring-data-to-or-from-a-sql-pool-in-the-logical-server-dw-instance-attached-with-the-workspace"></a>将数据传输到与工作区相连的逻辑服务器（数据仓库实例）中的 SQL 池，或者从该池向外传输数据
 
 > [!NOTE]
 > **在笔记本体验中，import 不是必需的**
 
-```Scala
+```scala
  import com.microsoft.spark.sqlanalytics.utils.Constants
  import org.apache.spark.sql.SqlAnalyticsConnector._
 ```
 
 #### <a name="read-api"></a>读取 API
 
-```Scala
+```scala
 val df = spark.read.sqlanalytics("[DBName].[Schema].[TableName]")
 ```
 
@@ -77,13 +79,13 @@ val df = spark.read.sqlanalytics("[DBName].[Schema].[TableName]")
 
 #### <a name="write-api"></a>写入 API
 
-```Scala
+```scala
 df.write.sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
 ```
 
 其中的 TableType 可以是 Constants.INTERNAL 或 Constants.EXTERNAL
 
-```Scala
+```scala
 df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.INTERNAL)
 df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.EXTERNAL)
 ```
@@ -95,14 +97,14 @@ df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.EXTERNAL)
 > [!NOTE]
 > 在笔记本体验中，import 不是必需的
 
-```Scala
+```scala
  import com.microsoft.spark.sqlanalytics.utils.Constants
  import org.apache.spark.sql.SqlAnalyticsConnector._
 ```
 
 #### <a name="read-api"></a>读取 API
 
-```Scala
+```scala
 val df = spark.read.
 option(Constants.SERVER, "samplews.database.windows.net").
 sqlanalytics("<DBName>.<Schema>.<TableName>")
@@ -110,7 +112,7 @@ sqlanalytics("<DBName>.<Schema>.<TableName>")
 
 #### <a name="write-api"></a>写入 API
 
-```Scala
+```scala
 df.write.
 option(Constants.SERVER, "[samplews].[database.windows.net]").
 sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
@@ -122,7 +124,7 @@ sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
 
 目前，该连接器不支持对工作区外部的 SQL 池使用基于令牌的身份验证。 需要使用 SQL 身份验证。
 
-```Scala
+```scala
 val df = spark.read.
 option(Constants.SERVER, "samplews.database.windows.net").
 option(Constants.USER, [SQLServer Login UserName]).
@@ -132,7 +134,7 @@ sqlanalytics("<DBName>.<Schema>.<TableName>")
 
 #### <a name="write-api"></a>写入 API
 
-```Scala
+```scala
 df.write.
 option(Constants.SERVER, "[samplews].[database.windows.net]").
 option(Constants.USER, [SQLServer Login UserName]).
@@ -147,23 +149,51 @@ sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
 
 假设你有一个要写入到数据仓库的数据帧“pyspark_df”。
 
-在 PySpark 中使用此数据帧创建一个临时表
+在 PySpark 中使用此数据帧创建一个临时表：
 
-```Python
+```py
 pyspark_df.createOrReplaceTempView("pysparkdftemptable")
 ```
 
-使用 magic 在 PySpark 笔记本中运行 Scala 单元格
+使用 magic 在 PySpark 笔记本中运行 Scala 单元格：
 
-```Scala
+```scala
 %%spark
 val scala_df = spark.sqlContext.sql ("select * from pysparkdftemptable")
 
 pysparkdftemptable.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTERNAL)
 ```
+
 同样，在读取方案中，使用 Scala 读取数据并将其写入到一个临时表中，在 PySpark 中使用 Spark SQL 查询该临时表并将结果写入一个数据帧。
+
+## <a name="allowing-other-users-to-use-the-dw-connector-in-your-workspace"></a>允许其他用户在工作区中使用 DW 连接器
+
+你需要成为连接到工作区的 ADLS Gen2 存储帐户上的存储 Blob 数据所有者，才能改变其他用户缺少的权限。 确保用户有权访问工作区并具有运行笔记本的权限。
+
+### <a name="option-1"></a>选项 1
+
+- 使用户成为存储 Blob 数据参与者/所有者
+
+### <a name="option-2"></a>方法 2
+
+- 在文件夹结构上指定以下 ACL：
+
+| Folder | / | synapse | workspaces  | <workspacename> | sparkpools | <sparkpoolname>  | sparkpoolinstances  |
+|--|--|--|--|--|--|--|--|
+| 访问权限 | --X | --X | --X | --X | --X | --X | -WX |
+| 默认权限 | ---| ---| ---| ---| ---| ---| ---|
+
+- 应能够从“synapse”并从 Azure 门户向下对所有文件夹进行 ACL。 若要对根“/”文件夹进行 ACL，请按照下面的说明进行操作。
+
+- 使用 AAD 从存储资源管理器连接到与工作区连接的存储帐户
+- 选择帐户，并为工作区提供 ADLS Gen2 URL 和默认文件系统
+- 看到列出的存储帐户后，右键单击列出的工作区，然后选择“管理访问权限”
+- 将用户添加到具有“执行”访问权限的 / 文件夹中。 选择“确定”
+
+> [!IMPORTANT]
+> 如果不打算这样做，请勿选择“默认”。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建 SQL 池]([Create a new Apache Spark pool for an Azure Synapse Analytics workspace](../../synapse-analytics/quickstart-create-apache-spark-pool.md))
-- [为 Azure Synapse Analytics 工作区创建新的 Apache Spark 池](../../synapse-analytics/quickstart-create-apache-spark-pool.md) 
+- [使用 Azure 门户创建 SQL 池](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
+- [使用 Azure 门户新建 Apache Spark 池](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md) 

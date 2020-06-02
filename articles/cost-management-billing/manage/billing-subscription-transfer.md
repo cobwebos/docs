@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 84b36c1357bedfc120cec72af84fdd79f52a2f57
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8f259ba9c7da3d7c37ed3eb63c63d17b74f7fbdd
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238153"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745852"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>将 Azure 订阅的计费所有权转移到另一帐户
 
@@ -29,13 +29,13 @@ ms.locfileid: "79238153"
 
 1. 以包含所要转移订阅的计费帐户的管理员身份登录到 [Azure 门户](https://portal.azure.com)。 若要确定你是否为管理员，请参阅[常见问题解答](#faq)。
 
-1. 在“成本管理 + 计费”  中进行搜索。
+1. 在“成本管理 + 计费”中进行搜索。
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/billing-subscription-transfer/billing-search-cost-management-billing.png)
 
-1. 在左侧窗格中选择“订阅”。  根据你的访问权限，可能需要选择一个计费范围，然后选择“订阅”或“Azure 订阅”。  
+1. 在左侧窗格中选择“订阅”。 根据你的访问权限，可能需要选择一个计费范围，然后选择“订阅”或“Azure 订阅”。 
 
-1. 选择要转移的订阅对应的“转移计费所有权”。 
+1. 选择要转移的订阅对应的“转移计费所有权”。
 
    ![选择要转移的订阅](./media/billing-subscription-transfer/billing-select-subscription-to-transfer.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "79238153"
 
     ![“发送转移请求”页](./media/billing-subscription-transfer/billing-send-transfer-request.PNG)
 
-1. 选择“发送转移请求”。 
+1. 选择“发送转移请求”。
 
 1. 用户将收到一封电子邮件，其中包含查看转让请求的说明。
 
@@ -109,7 +109,7 @@ Azure 门户中的订阅转移适用于下面列出的订阅类型。 [免费试
 - [即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)
 - [即用即付开发/测试](https://azure.microsoft.com/offers/ms-azr-0023p/)
 - [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/)
-- [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/)
+- [Visual Studio Enterprise：BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/)
 - [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/)
 - [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/)
 - [Microsoft Azure 计划](https://azure.microsoft.com/offers/ms-azr-0017g/)\*\*
@@ -131,20 +131,20 @@ Azure 门户中的订阅转移适用于下面列出的订阅类型。 [免费试
 若要确定你是哪些帐户的计费管理员，请使用以下步骤：
 
 1. 访问 [Azure 门户中的“成本管理 + 计费”页](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview)。
-1. 在左窗格中选择“所有计费范围”。 
+1. 在左窗格中选择“所有计费范围”。
 1. 订阅页将列出你是其中的计费管理员的所有订阅。
 
 如果不确定谁是订阅的帐户管理员，可使用以下步骤查明。
 
 1. 请访问 [Azure 门户中的订阅页面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
-1. 选择要检查的订阅，并关注“设置”  下的信息。
-1. 选择“属性”  。 订阅的帐户管理员会显示在“帐户管理员”框中。 
+1. 选择要检查的订阅，并关注“设置”下的信息。
+1. 选择“属性”。 订阅的帐户管理员会显示在“帐户管理员”框中。
 
 ### <a name="does-everything-transfer-including-resource-groups-vms-disks-and-other-running-services"></a>所有内容都会转让吗？ 包括资源组、VM、磁盘和其他正在运行的服务吗？
 
 所有资源（例如 VM、磁盘和网站）将转移到新帐户。 但是，如果将订阅转移到了另一个 Azure AD 租户中的帐户，则订阅的任何[管理员角色](add-change-subscription-administrator.md)和[基于角色的访问控制 (RBAC)](../../role-based-access-control/role-assignments-portal.md) 分配将[不会转移](#transfer-a-subscription-to-another-azure-ad-tenant-account)。 此外，[应用注册](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)和其他特定于租户的服务不会随订阅一起转移。
 
-### <a name="can-i-transfer-ownership-to-an-account-in-another-country"></a>是否可将所有权转移到另一个国家/地区中的帐户？
+### <a name="can-i-transfer-ownership-to-an-account-in-another-countryregion"></a>是否可将所有权转移到另一个国家/地区中的帐户？
 遗憾的是，在 Azure 门户中无法执行跨国家/地区的转移。 若要跨国家/地区转移订阅，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 ### <a name="i-am-an-administrator-on-two-accounts-can-i-transfer-a-subscription-from-one-of-my-accounts-to-another"></a>我是两个帐户的管理员。 是否可将一个帐户的订阅转移到另一个帐户？
@@ -176,8 +176,8 @@ Azure 门户中的订阅转移适用于下面列出的订阅类型。 [免费试
 是的。 但是，可能会删除[管理员角色](add-change-subscription-administrator.md)和[基于角色的访问控制 (RBAC)](../../role-based-access-control/role-assignments-portal.md)。 如果你的帐户所在的 Azure AD 租户不同于订阅的租户，并且发送转移请求的用户将订阅移到了你的帐户的租户，则会发生访问权限丢失。 若要查看拥有[基于角色的访问权限 (RBAC)](../../role-based-access-control/overview.md)，可管理订阅中的资源的用户，请使用以下步骤：
 
 1. 访问 [Azure 门户中的“订阅”页](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
-1. 选择要检查的订阅，然后在左窗格中选择“访问控制(IAM)”。 
-1. 选择页面顶部的“角色分配”。  角色分配页将列出对订阅拥有 RBAC 访问权限的所有用户。
+1. 选择要检查的订阅，然后在左窗格中选择“访问控制(IAM)”。
+1. 选择页面顶部的“角色分配”。 角色分配页将列出对订阅拥有 RBAC 访问权限的所有用户。
 
 即使在转移过程中删除了[基于角色的访问控制 (RBAC)](../../role-based-access-control/role-assignments-portal.md) 分配，原始所有者帐户中的用户仍可以通过某些安全机制访问订阅，这些机制包括：
 
@@ -188,9 +188,9 @@ Azure 门户中的订阅转移适用于下面列出的订阅类型。 [免费试
 如果接收方需要限制对其资源的访问，他们应考虑更新与服务关联的任何机密。 可通过以下步骤更新大多数资源：
 
   1. 登录 [Azure 门户](https://portal.azure.com)。
-  2. 在“中心”菜单上，选择“所有资源”  。
+  2. 在“中心”菜单上，选择“所有资源”。
   3. 选择资源。
-  4. 在资源页中选择“设置”。  可以在这里查看和更新现有机密。
+  4. 在资源页中选择“设置”。 可以在这里查看和更新现有机密。
 
 ### <a name="if-i-take-over-the-billing-ownership-of-a-subscription-in-the-middle-of-the-billing-cycle-do-i-have-to-pay-for-the-entire-billing-cycle"></a>如果我在计费周期的中途接管了订阅的计费所有权，是否需要支付整个计费周期的费用？
 
@@ -204,7 +204,7 @@ Azure 门户中的订阅转移适用于下面列出的订阅类型。 [免费试
 
 即使原始帐户所有者不再属于组织，企业管理员也可以为任何帐户更新帐户所有权。 他们可以按照 EA 门户中[为所有订阅转让帐户所有权](https://ea.azure.com/helpdocs/changeAccountOwnerForASubscription)的说明进行操作。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 ### <a name="why-dont-i-see-the-transfer-subscription-button"></a><a id="no-button"></a> 为什么我没有看到“转让订阅”按钮？
 

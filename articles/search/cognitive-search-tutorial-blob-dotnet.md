@@ -1,5 +1,5 @@
 ---
-title: 教程：基于 Azure Blob 的 C# 和 AI
+title: C# 教程：在 Azure Blob 上使用 AI
 titleSuffix: Azure Cognitive Search
 description: 通过一个示例来逐步了解如何使用 C# 和 Azure 认知搜索 .NET SDK 基于 Blob 存储中的内容进行文本提取和自然语言处理。
 manager: nitinme
@@ -7,15 +7,15 @@ author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/27/2020
-ms.openlocfilehash: 169a33d12e98235dcb4e4f317dbb8d91eb7446a4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 05/05/2020
+ms.openlocfilehash: 57cb68726adf8818f9ef0c8804be9c388ea39ff5
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78851131"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872290"
 ---
-# <a name="tutorial-use-c-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教程：使用 C# 和 AI 从 Azure Blob 生成可搜索的内容
+# <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>教程：AI 使用 .NET SDK 从 Azure Blob 生成可搜索内容
 
 如果在 Azure Blob 存储中有使用非结构化文本或图像，则 [AI 扩充管道](cognitive-search-concept-intro.md)可以提取信息，并创建可用于全文搜索或知识挖掘方案的新内容。 本 C# 教程对图像应用光学字符识别 (OCR)，并执行自然语言处理来创建可在查询、分面和筛选器中利用的新字段。
 
@@ -41,9 +41,11 @@ ms.locfileid: "78851131"
 
 ## <a name="download-files"></a>下载文件
 
-1. 打开此 [OneDrive 文件夹](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)，然后单击左上角的“下载”将文件复制到计算机。  
+1. 打开此 [OneDrive 文件夹](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)，然后单击左上角的“下载”将文件复制到计算机。 
 
-1. 右键单击 zip 文件并选择“全部提取”。  有 14 个不同类型的文件。 本教程将使用所有这些文件。
+1. 右键单击 zip 文件并选择“全部提取”。 有 14 个不同类型的文件。 本练习将使用其中的 7 个文件。
+
+还可以下载本教程的源代码。 源代码位于 [azure-search-dotnet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) 存储库的 tutorial-ai-enrichment 文件夹中。
 
 ## <a name="1---create-services"></a>1 - 创建服务
 
@@ -53,44 +55,44 @@ ms.locfileid: "78851131"
 
 ### <a name="start-with-azure-storage"></a>从 Azure 存储开始
 
-1. [登录到 Azure 门户](https://portal.azure.com/)并单击“+ 创建资源”。 
+1. [登录到 Azure 门户](https://portal.azure.com/)并单击“+ 创建资源”。
 
-1. 搜索“存储帐户”，并选择“Microsoft 的存储帐户”产品/服务。 
+1. 搜索“存储帐户”，并选择“Microsoft 的存储帐户”产品/服务。
 
    ![创建存储帐户](media/cognitive-search-tutorial-blob/storage-account.png "创建存储帐户")
 
 1. 在“基本信息”选项卡中，必须填写以下项。 对于其他任何字段，请接受默认设置。
 
-   + 资源组  。 选择现有的资源组或创建新资源组，但对于所有服务请使用相同的组，以便可以统一管理这些服务。
+   + 资源组。 选择现有的资源组或创建新资源组，但对于所有服务请使用相同的组，以便可以统一管理这些服务。
 
    + **存储帐户名称**。 如果你认为将来可能会用到相同类型的多个资源，请使用名称来区分类型和区域，例如 *blobstoragewestus*。 
 
    + **位置**。 如果可能，请选择 Azure 认知搜索和认知服务所用的相同位置。 使用一个位置可以避免带宽费用。
 
-   + **帐户类型**。 选择默认设置“StorageV2 (常规用途 v2)”  。
+   + **帐户类型**。 选择默认设置“StorageV2 (常规用途 v2)”。
 
-1. 单击“查看 + 创建”以创建服务。 
+1. 单击“查看 + 创建”以创建服务。
 
-1. 创建后，单击“转到资源”打开“概述”页。 
+1. 创建后，单击“转到资源”打开“概述”页。
 
-1. 单击“Blob”服务。 
+1. 单击“Blob”服务。
 
-1. 单击“+ 容器”创建容器，并将其命名为 *basic-demo-data-pr*。 
+1. 单击“+ 容器”创建容器，并将其命名为 *cog-search-demo*。
 
-1. 选择“basic-demo-data-pr”，然后单击“上传”打开下载文件所保存到的文件夹。   选择所有 14 个文件，然后单击“确定”以上传。 
+1. 选择“cog-search-demo”，然后单击“上传”打开下载文件所保存到的文件夹。 选择所有 14 个文件，然后单击“确定”以上传。
 
    ![上传示例文件](media/cognitive-search-quickstart-blob/sample-data.png "上传示例文件")
 
 1. 在退出 Azure 存储之前获取一个连接字符串，以便可以在 Azure 认知搜索中构建连接。 
 
-   1. 向后浏览到存储帐户的“概述”页（我们使用了 *blobstragewestus* 作为示例）。 
+   1. 向后浏览到存储帐户的“概览”页（我们使用了“blobstoragewestus”作为示例）。 
    
-   1. 在左侧导航窗格中，选择“访问密钥”并复制其中一个连接字符串。  
+   1. 在左侧导航窗格中，选择“访问密钥”并复制其中一个连接字符串。 
 
    连接字符串是类似于以下示例的 URL：
 
       ```http
-      DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=<your account key>;EndpointSuffix=core.windows.net
+      DefaultEndpointsProtocol=https;AccountName=blobstoragewestus;AccountKey=<your account key>;EndpointSuffix=core.windows.net
       ```
 
 1. 将连接字符串保存到记事本中。 稍后在设置数据源连接时需要用到它。
@@ -99,7 +101,7 @@ ms.locfileid: "78851131"
 
 AI 扩充由认知服务（包括用于自然语言和图像处理的文本分析与计算机视觉）提供支持。 如果你的目标是完成实际原型或项目，则此时应预配认知服务（在 Azure 认知搜索所在的同一区域中），以便可将认知服务附加到索引操作。
 
-但是，对于本练习，可以跳过资源预配，因为 Azure 认知搜索在幕后可以连接到认知服务，并为每个索引器运行提供 20 个免费事务。 由于本教程使用 7 个事务，因此免费的分配已足够。 对于大型项目，请计划在即用即付 S0 层预配认知服务。 有关详细信息，请参阅[附加认知服务](cognitive-search-attach-cognitive-services.md)。
+但是，对于本练习，可以跳过资源预配，因为 Azure 认知搜索在幕后可以连接到认知服务，并为每个索引器运行提供 20 个免费事务。 由于本教程使用 14 个事务，因此免费的分配已足够。 对于大型项目，请计划在即用即付 S0 层预配认知服务。 有关详细信息，请参阅[附加认知服务](cognitive-search-attach-cognitive-services.md)。
 
 ### <a name="azure-cognitive-search"></a>Azure 认知搜索
 
@@ -109,9 +111,9 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 
 必须有 Azure 认知搜索服务 URL 和访问密钥，才能与此服务交互。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 认知搜索，则请按以下步骤获取必需信息：
 
-1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。  示例终结点可能类似于 `https://mydemo.search.windows.net`。
+1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。 示例终结点可能类似于 `https://mydemo.search.windows.net`。
 
-1. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥   。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
+1. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥 。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
    此外，获取查询密钥。 最好使用只读权限发出查询请求。
 
@@ -129,33 +131,33 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 
 对于此项目，请安装版本 9 或更高版本的 `Microsoft.Azure.Search` NuGet 包。
 
-1. 打开包管理器控制台。 选择“工具”   > “NuGet 包管理器”   > “包管理器控制台”  。 
-
-1. 导航到 [Microsoft.Azure.Search NuGet 包页](https://www.nuget.org/packages/Microsoft.Azure.Search)。
+1. 在浏览器中转到[“Microsoft.Azure.Search NuGet 包”页](https://www.nuget.org/packages/Microsoft.Azure.Search)。
 
 1. 选择最新版本（9 或以上）。
 
 1. 复制包管理器命令。
 
-1. 返回到包管理器控制台，运行在上一步骤中复制的命令。
+1. 打开包管理器控制台。 选择“工具” > “NuGet 包管理器” > “包管理器控制台”。 
+
+1. 粘贴并运行在上一步复制的命令。
 
 接下来，安装最新的 `Microsoft.Extensions.Configuration.Json` NuGet 包。
 
-1. 选择“工具” > “NuGet 包管理器” > “管理解决方案...的 NuGet 包”。    
+1. 选择“工具” > “NuGet 包管理器” > “管理解决方案...的 NuGet 包”。   
 
-1. 单击“浏览”并搜索 `Microsoft.Extensions.Configuration.Json` NuGet 包。  
+1. 单击“浏览”并搜索 `Microsoft.Extensions.Configuration.Json` NuGet 包。 
 
-1. 选择该包和你的项目，确认版本是否为最新稳定版，然后单击“安装”。 
+1. 选择该包和你的项目，确认版本是否为最新稳定版，然后单击“安装”。
 
 ### <a name="add-service-connection-information"></a>添加服务连接信息
 
-1. 在解决方案资源管理器中右键单击该项目，并选择“添加” > “新建项...”。   
+1. 在解决方案资源管理器中右键单击该项目，并选择“添加” > “新建项...”。  
 
-1. 将文件命名为“`appsettings.json`”，并选择“添加”  。 
+1. 将文件命名为“`appsettings.json`”，并选择“添加”。 
 
 1. 将此文件包含在输出目录中。
-    1. 右键单击 `appsettings.json` 并选择“属性”。  
-    1. 将“复制到输出目录”的值更改为“如果较新则复制”。  
+    1. 右键单击 `appsettings.json` 并选择“属性”。 
+    1. 将“复制到输出目录”的值更改为“如果较新则复制”。 
 
 1. 将以下 JSON 复制到新 JSON 文件中。
 
@@ -167,8 +169,10 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
       "AzureBlobConnectionString": "Put your Azure Blob connection string here",
     }
     ```
-
+    
 添加搜索服务信息和 Blob 存储帐户信息。 请注意，可以从上一部分所述的服务预配步骤获取此信息。
+
+对于“SearchServiceName”，请输入短服务名称而不是完整 URL。
 
 ### <a name="add-namespaces"></a>添加命名空间
 
@@ -246,7 +250,7 @@ private static DataSource CreateOrUpdateDataSource(SearchServiceClient serviceCl
     DataSource dataSource = DataSource.AzureBlobStorage(
         name: "demodata",
         storageConnectionString: configuration["AzureBlobConnectionString"],
-        containerName: "basic-demo-data-pr",
+        containerName: "cog-search-demo",
         description: "Demo files to demonstrate cognitive search capabilities.");
 
     // The data source does not need to be deleted if it was already created
@@ -282,41 +286,13 @@ public static void Main(string[] args)
     DataSource dataSource = CreateOrUpdateDataSource(serviceClient, configuration);
 ```
 
-
-<!-- 
-```csharp
-DataSource dataSource = DataSource.AzureBlobStorage(
-    name: "demodata",
-    storageConnectionString: configuration["AzureBlobConnectionString"],
-    containerName: "basic-demo-data-pr",
-    deletionDetectionPolicy: new SoftDeleteColumnDeletionDetectionPolicy(
-        softDeleteColumnName: "IsDeleted",
-        softDeleteMarkerValue: "true"),
-    description: "Demo files to demonstrate cognitive search capabilities.");
-```
-
-Now that you have initialized the `DataSource` object, create the data source. `SearchServiceClient` has a `DataSources` property. This property provides all the methods you need to create, list, update, or delete Azure Cognitive Search data sources.
-
-For a successful request, the method will return the data source that was created. If there is a problem with the request, such as an invalid parameter, the method will throw an exception.
-
-```csharp
-try
-{
-    serviceClient.DataSources.CreateOrUpdate(dataSource);
-}
-catch (Exception e)
-{
-    // Handle the exception
-}
-``` -->
-
 生成并运行解决方案。 由于这是发出的第一个请求，请检查 Azure 门户，确认是否在 Azure 认知搜索中创建了数据源。 在搜索服务的仪表板页上，检查“数据源”磁贴中是否包含一个新项。 可能需要等待几分钟让门户页刷新。
 
   ![门户中的“数据源”磁贴](./media/cognitive-search-tutorial-blob/data-source-tile.png "门户中的“数据源”磁贴")
 
 ### <a name="step-2-create-a-skillset"></a>步骤 2：创建技能集
 
-在此部分中，你将定义一组要应用于数据的扩充步骤。 每个扩充步骤称为“技能”  ，一组扩充步骤称为“技能集”  。 本教程对技能集使用以下[内置认知技能](cognitive-search-predefined-skills.md)：
+在此部分中，你将定义一组要应用于数据的扩充步骤。 每个扩充步骤称为“技能”，一组扩充步骤称为“技能集”。 本教程对技能集使用以下[内置认知技能](cognitive-search-predefined-skills.md)：
 
 + [光学字符识别](cognitive-search-skill-ocr.md)：用于识别图像文件中的印刷文本和手写文本。
 
@@ -338,7 +314,7 @@ catch (Exception e)
 
 ### <a name="ocr-skill"></a>OCR 技术
 
-OCR  技能从图像中提取文本。 此技能假定存在“normalized_images”字段。 为了生成此字段，本教程稍后会将索引器定义中的 ```"imageAction"``` 配置设置为 ```"generateNormalizedImages"```。
+OCR 技能从图像中提取文本。 此技能假定存在“normalized_images”字段。 为了生成此字段，本教程稍后会将索引器定义中的 ```"imageAction"``` 配置设置为 ```"generateNormalizedImages"```。
 
 ```csharp
 private static OcrSkill CreateOcrSkill()
@@ -367,7 +343,7 @@ private static OcrSkill CreateOcrSkill()
 
 ### <a name="merge-skill"></a>合并技能
 
-在此部分中，你将创建合并  技能，用于将文档内容字段与 OCR 技能生成的文本合并。
+在此部分中，你将创建合并技能，用于将文档内容字段与 OCR 技能生成的文本合并。
 
 ```csharp
 private static MergeSkill CreateMergeSkill()
@@ -402,7 +378,7 @@ private static MergeSkill CreateMergeSkill()
 
 ### <a name="language-detection-skill"></a>语言检测技能
 
-语言检测  技能检测输入文本的语言，并报告在请求中提交的每个文档的单一语言代码。 我们会将语言检测  技能的输出用作文本拆分  技能的输入的一部分。
+语言检测技能检测输入文本的语言，并报告在请求中提交的每个文档的单一语言代码。 我们会将语言检测技能的输出用作文本拆分技能的输入的一部分。
 
 ```csharp
 private static LanguageDetectionSkill CreateLanguageDetectionSkill()
@@ -429,7 +405,7 @@ private static LanguageDetectionSkill CreateLanguageDetectionSkill()
 
 ### <a name="text-split-skill"></a>文本拆分技能
 
-下面的拆分  技能按页面拆分文本，并将页面长度限制为 `String.Length` 度量的 4,000 个字符。 此算法会尝试将文本拆分为最大为 `maximumPageLength` 的区块。 在下面的示例中，此算法会尽可能在句子边界断开句子，所以区块大小可能略小于 `maximumPageLength`。
+下面的拆分技能按页面拆分文本，并将页面长度限制为 `String.Length` 度量的 4,000 个字符。 此算法会尝试将文本拆分为最大为 `maximumPageLength` 的区块。 在下面的示例中，此算法会尽可能在句子边界断开句子，所以区块大小可能略小于 `maximumPageLength`。
 
 ```csharp
 private static SplitSkill CreateSplitSkill()
@@ -462,7 +438,7 @@ private static SplitSkill CreateSplitSkill()
 
 ### <a name="entity-recognition-skill"></a>实体识别技能
 
-设置此 `EntityRecognitionSkill` 实例是为了识别类别类型 `organization`。 此外，实体识别  技能还可以识别类别类型 `person` 和 `location`。
+设置此 `EntityRecognitionSkill` 实例是为了识别类别类型 `organization`。 此外，实体识别技能还可以识别类别类型 `person` 和 `location`。
 
 请注意，“context”字段设置为包含星号的 ```"/document/pages/*"```；也就是说，将对 ```"/document/pages"``` 下的每个页面都调用扩充步骤。
 
@@ -496,7 +472,7 @@ private static EntityRecognitionSkill CreateEntityRecognitionSkill()
 
 ### <a name="key-phrase-extraction-skill"></a>关键短语提取技能
 
-与刚刚创建的 `EntityRecognitionSkill` 实例一样，关键短语提取  技能对文档的各个页面都调用。
+与刚刚创建的 `EntityRecognitionSkill` 实例一样，关键短语提取技能对文档的各个页面都调用。
 
 ```csharp
 private static KeyPhraseExtractionSkill CreateKeyPhraseExtractionSkill()
@@ -593,7 +569,7 @@ private static Skillset CreateOrUpdateDemoSkillSet(SearchServiceClient serviceCl
 
 此索引的字段是使用模型类进行定义。 模型类的每个属性都具有一些特性，这些特性决定了相应索引字段的与搜索相关的行为。 
 
-接下来，将把模型类添加到新 C# 文件中。 右键单击项目，并依次选择“添加”   > “新项...”  。选择“类”，并将文件命名为“`DemoIndex.cs`”，再选择“添加”  。
+接下来，将把模型类添加到新 C# 文件中。 右键单击项目，并依次选择“添加” > “新项...”。选择“类”，并将文件命名为“`DemoIndex.cs`”，再选择“添加”。
 
 请务必指明要使用 `Microsoft.Azure.Search` 和 `Microsoft.Azure.Search.Models` 命名空间中的类型。
 
@@ -629,33 +605,6 @@ namespace EnrichwithAI
     }
 }
 ```
-
-<!-- Add the below model class definition to `DemoIndex.cs` and include it in the same namespace where you'll create the index.
-
-```csharp
-// The SerializePropertyNamesAsCamelCase attribute is defined in the Azure Cognitive Search .NET SDK.
-// It ensures that Pascal-case property names in the model class are mapped to camel-case
-// field names in the index.
-[SerializePropertyNamesAsCamelCase]
-public class DemoIndex
-{
-    [System.ComponentModel.DataAnnotations.Key]
-    [IsSearchable, IsSortable]
-    public string Id { get; set; }
-
-    [IsSearchable]
-    public string Content { get; set; }
-
-    [IsSearchable]
-    public string LanguageCode { get; set; }
-
-    [IsSearchable]
-    public string[] KeyPhrases { get; set; }
-
-    [IsSearchable]
-    public string[] Organizations { get; set; }
-}
-``` -->
 
 至此，已定义模型类。返回到 `Program.cs`，可以轻松创建索引定义了。 此索引的名称为 `demoindex`。 如果已存在同名的索引，则会删除该索引。
 
@@ -696,27 +645,14 @@ private static Index CreateDemoIndex(SearchServiceClient serviceClient)
 ```csharp
     // Create the index
     Console.WriteLine("Creating the index...");
-    Index demoIndex = CreateDemoIndex(serviceClient);
+    Microsoft.Azure.Search.Models.Index demoIndex = CreateDemoIndex(serviceClient);
 ```
 
-<!-- ```csharp
-try
-{
-    bool exists = serviceClient.Indexes.Exists(index.Name);
+添加以下 using 语句以解析消歧引用。
 
-    if (exists)
-    {
-        serviceClient.Indexes.Delete(index.Name);
-    }
-
-    serviceClient.Indexes.Create(index);
-}
-catch (Exception e)
-{
-    // Handle exception
-}
+```csharp
+using Index = Microsoft.Azure.Search.Models.Index;
 ```
- -->
 
 若要详细了解如何定义索引，请参阅[创建索引（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index)。
 
@@ -799,7 +735,7 @@ private static Indexer CreateDemoIndexer(SearchServiceClient serviceClient, Data
 
 ```csharp
     // Create the indexer, map fields, and execute transformations
-    Console.WriteLine("Creating the indexer...");
+    Console.WriteLine("Creating the indexer and executing the pipeline...");
     Indexer demoIndexer = CreateDemoIndexer(serviceClient, dataSource, skillset, demoIndex);
 ```
 

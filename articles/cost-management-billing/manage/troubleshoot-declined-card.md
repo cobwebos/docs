@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 0eeddc26ac1a1f286d8ed253f3fe097f0e7de91f
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 7cf42950bc25ad501fd11b1b28c74b5f63066c32
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409386"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745528"
 ---
 # <a name="troubleshoot-a-declined-card-at-azure-sign-up"></a>对 Azure 注册时卡被拒进行故障排除
 
@@ -20,7 +20,7 @@ ms.locfileid: "80409386"
 
 若要解决问题，请在下面选择最接近错误的主题。
 
-## <a name="the-credit-card-provider-is-not-accepted-for-your-country"></a>你所在的国家/地区不接受此信用卡提供商
+## <a name="the-credit-card-provider-is-not-accepted-for-your-countryregion"></a>你所在的国家/地区不接受此信用卡提供商
 
 你选择卡时，Azure 会显示在所选国家/地区有效的卡选项。 请联系银行或卡颁发机构，确认你的信用卡能够进行国际交易。 有关支持的国家/地区和货币的详细信息，请参阅 [Azure 购买常见问题解答](https://azure.microsoft.com/pricing/faq/)。
 

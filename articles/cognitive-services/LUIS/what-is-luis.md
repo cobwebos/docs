@@ -3,12 +3,12 @@ title: 什么是语言理解 (LUIS)？
 description: 语言理解 (LUIS) 是一种基于云的 API 服务，可在用户对话的自然语言文本中应用自定义机器学习智能，以便预测整体含义并提炼出相关的详细信息。
 ms.topic: overview
 ms.date: 05/05/2020
-ms.openlocfilehash: d09aaabeec1d22132843ba98472e1cd89ba95815
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 26e1dfd5a610be9470d05080ca1559eec47196ab
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592808"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83675990"
 ---
 # <a name="what-is-language-understanding-luis"></a>什么是语言理解 (LUIS)？
 
@@ -32,7 +32,7 @@ LUIS 应用一旦发布，客户端应用程序即可向 LUIS 自然语言处理
 |步骤|操作|
 |:--|:--|
 |1|客户端应用程序将用户_话语_（采用自己的词汇的文本）“我想要呼叫 HR 代表”作为 HTTP 请求发送 给 LUIS 终结点。|
-|2|LUIS 使你能够创建自定义语言模型，以便将智能添加到你的应用程序。 计算机学习的语言模型采用用户的非结构化输入文本，并以最相关意向 `HRContact` 返回 JSON 格式的响应。 JSON 终结点响应至少包含查询话语和得分最高的意向。 它还可以提取数据，例如“联系人类型”  实体。|
+|2|LUIS 使你能够创建自定义语言模型，以便将智能添加到你的应用程序。 计算机学习的语言模型采用用户的非结构化输入文本，并以最相关意向 `HRContact` 返回 JSON 格式的响应。 JSON 终结点响应至少包含查询话语和得分最高的意向。 它还可以提取数据，例如“联系人类型”实体。|
 |3|客户端应用程序根据 JSON 响应来决定如何处理用户的请求。 这些决策可能包括机器人框架代码中的决策树，以及对其他服务的调用。 |
 
 LUIS 应用提供的智能有助于客户端应用程序进行智能选择。 LUIS 不提供这些选择。
@@ -46,7 +46,7 @@ LUIS 应用包含一个特定于域的自然语言模型。 可通过预构建�
 
 * **预构建的模型** LUIS 具有多个预构建的域模型，它们自带意向、话语和预构建的实体。 即使不使用预构建的模型中的意向和话语，也能使用预构建的实体。 [预构建的域模型](luis-how-to-use-prebuilt-domains.md)包含适合你的整个设计，是实现 LUIS 快速入门的绝佳方式。
 
-* “自定义模型”  LUIS 提供多种方法来识别自己的自定义模型，包括意向和实体。 实体包括计算机学习的实体、特定实体或文本实体，以及计算机学习的实体和文本实体的组合。
+* “自定义模型”LUIS 提供多种方法来识别自己的自定义模型，包括意向和实体。 实体包括机器学习的实体、特定实体或文本实体，以及机器学习的实体和文本实体的组合。
 
 ## <a name="build-the-luis-model"></a>构建 LUIS 模型
 使用[创作](https://go.microsoft.com/fwlink/?linkid=2092087) API 或 [LUIS 门户](https://www.luis.ai)生成模型。
@@ -63,7 +63,7 @@ LUIS 模型从称为 **[意向](luis-concept-intent.md)** 的用户意向的类�
 
 在训练应用并将其发布到终结点以后，客户端应用程序会将言语发送到预测[终结点](https://go.microsoft.com/fwlink/?linkid=2092356) API。 API 将应用程序应用到言语进行分析，并使用 JSON 格式的预测结果进行响应。
 
-JSON 终结点响应至少包含查询话语和得分最高的意向。 它还可以提取数据，例如下面的“联系人类型”  实体和整体情绪。
+JSON 终结点响应至少包含查询话语和得分最高的意向。 它还可以提取数据，例如下面的“联系人类型”实体和整体情绪。
 
 ```JSON
 {
