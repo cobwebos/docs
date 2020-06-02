@@ -50,6 +50,8 @@
               href: database/advanced-data-security.md
             - name: 高级威胁防护
               href: database/threat-detection-overview.md
+            - name: 数据发现和分类
+              href: database/data-discovery-and-classification-overview.md
             - name: 动态数据掩码
               href: database/dynamic-data-masking-overview.md
             - name: SQL 漏洞评估
@@ -73,8 +75,6 @@
                   href: database/transparent-data-encryption-tde-overview.md
                 - name: 创建自己的密钥 (BYOK)
                   href: database/transparent-data-encryption-byok-overview.md
-                - name: 数据发现和分类
-                  href: database/data-discovery-and-classification-overview.md
         - name: 业务连续性
           displayName: 'Backup, back up, restore, recovery'
           items:

@@ -123,6 +123,8 @@
               href: howto-customize-ui.md
             - name: 导出应用程序
               href: howto-use-app-templates.md
+            - name: 监视应用程序运行状况
+              href: howto-monitor-application-health.md
         - name: 从其他位置管理
           items:
             - name: 从 Azure 门户进行管理

@@ -92,6 +92,8 @@
       href: template-samples.md
     - name: 代码示例
       href: 'https://docs.microsoft.com/samples/browse/?term=Event%20Grid'
+    - name: Azure Policy 内置策略定义
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 事件网格术语

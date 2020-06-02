@@ -7,12 +7,8 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: '使用 C#'
-      href: Quickstart.md
-    - name: 使用 Node.js
-      href: quickstart-nodejs.md
-    - name: 使用 Swift (iOS)
-      href: ios-quickstart.md
+    - name: 使用客户端库
+      href: ./quickstarts/client-libraries.md
 - name: 教程
   items:
     - name: 启动沉浸式阅读器 (Python)

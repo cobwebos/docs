@@ -199,8 +199,6 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 案例研究
       href: data-factory-customer-case-studies.md
-    - name: 学习路径
-      href: 'https://azure.microsoft.com/documentation/learning-paths/data-factory'
     - name: Microsoft Q&A 问题页面
       href: 'https://docs.microsoft.com/answers/topics/azure-data-factory.html'
     - name: 定价

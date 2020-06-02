@@ -221,6 +221,8 @@
           href: resource-manager-exceptions.md
 - name: 参考
   items:
+    - name: SDK
+      href: sdks.md
     - name: .NET
       items:
         - name: 客户端库
@@ -271,6 +273,12 @@
               href: /javascript/api/@azure/event-hubs/?view=azure-node-legacy
         - name: 管理库
           href: /javascript/api/@azure/arm-eventhub/?view=azure-node-latest
+    - name: Go
+      items:
+        - name: 客户端库
+          href: 'https://pkg.go.dev/github.com/Azure/azure-event-hubs-go?tab=doc'
+        - name: 管理库
+          href: 'https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/eventhub/mgmt/2017-04-01/eventhub?tab=doc'
     - name: REST
       href: /rest/api/eventhub
     - name: 资源管理器模板
