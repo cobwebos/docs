@@ -1,0 +1,62 @@
+---
+title: Azure 发言人识别服务
+titleSuffix: Azure Cognitive Services
+description: Azure 认知服务演讲者识别提供根据扬声器独特的语音特征来验证和识别扬声器的算法。 演讲者识别用于回答 "谁在说" 的问题。
+services: cognitive-services
+author: trevorbye
+manager: nitinme
+ms.service: cognitive-services
+ms.subservice: speech-service
+ms.topic: conceptual
+ms.date: 05/27/2020
+ms.author: trbye
+ms.openlocfilehash: 2d4ce6f274efbd4d8afe2ac48856b0fc312f0a09
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84261782"
+---
+# <a name="what-is-the-azure-speaker-recognition-service"></a>什么是 Azure 发言人识别服务？
+
+演讲者识别服务提供根据其独特的语音特征来验证和识别扬声器的算法。 演讲者识别用于回答 "谁在说" 的问题。 你为单个演讲者提供音频定型数据，这将基于演讲者语音的独特特征创建注册配置文件。 然后，您可以对此配置文件交叉检查音频语音样本，以验证扬声器是同一个人（扬声器验证），还是对一*组*已注册的扬声器配置文件交叉检查音频语音样本，以查看它是否与组中的任何配置文件（发言人标识）匹配。 与此相反，[演讲者 Diarization](batch-transcription.md#speaker-separation-diarization)在批处理操作中对音频段进行分组。
+
+## <a name="speaker-verification"></a>说话人验证
+
+说话人验证利用密码或自由格式的语音输入来精简验证已注册的发言人标识的过程。 它可用于验证个人是否有各种解决方案的安全、顺畅的客户参与，从呼叫中心的客户标识验证到无联系的设施访问。
+
+### <a name="how-does-speaker-verification-work"></a>说话人验证是如何工作的？
+
+![扬声器验证的工作原理](media/speaker-recognition/speaker-rec.png)
+
+扬声器验证可以是文本相关的，也可以是与文本无关的。 **文本从属**验证表示扬声器需要选择要在注册和验证阶段中使用的相同通行短语。 与**文本无关**的验证意味着演讲者可以在注册和验证短语中以日常语言说话。
+
+对于**文本从属**验证，通过从一组预定义的短语中口述密码来注册演讲者的语音。 语音功能将从音频录音中提取，以形成唯一的语音签名，同时还会识别所选通行短语。 语音签名和通行短语一起用于验证扬声器。 
+
+与**文本无关**的验证在注册期间或在要验证的音频示例中不会有什么限制，因为它仅将语音功能提取到分数相似性。 
+
+这些 Api 并不用于确定音频是来自活动人员还是模拟/录制的发言人。 
+
+## <a name="speaker-identification"></a>说话人识别
+
+演讲者标识用于在一组已注册的发言人内确定未知扬声器的标识。 演讲者标识使你能够将语音特性应用到各个扬声器，并通过多个扬声器的方案解锁价值，如：
+
+* 远程会议工作效率的支持解决方案 
+* 构建多用户设备个性化
+
+### <a name="how-does-speaker-identification-work"></a>演讲者识别如何工作？
+
+发言人标识的注册与**文本无关**，这意味着音频中的演讲者不会有任何限制。 与说话人验证类似，在注册阶段，录制扬声器的声音，并提取语音功能以形成唯一的语音签名。 在标识阶段，将输入语音样本与指定的已注册语音（每个请求中最多50）的列表进行比较。
+
+## <a name="data-security-and-privacy"></a>数据安全和隐私
+
+发言人注册数据存储在受保护的系统中，其中包括用于注册的语音音频和语音签名功能。 仅在升级算法时才使用用于注册的语音音频，需要重新提取功能。 该服务不会保留语音记录或在识别阶段发送到服务的已提取语音功能。 
+
+您可以控制保留数据的时间长度。 可以通过 API 调用创建、更新和删除各个扬声器的注册数据。 删除订阅后，与该订阅关联的所有说话人注册数据也会一并删除。 
+
+与所有认知服务资源一样，使用扬声器识别服务的开发人员必须了解 Microsoft 针对客户数据的策略。 你应确保已收到用户的相应权限，可以识别扬声器。 有关详细信息，请参阅 Microsoft 信任中心上的 [认知服务页](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)   。 
+
+## <a name="next-steps"></a>后续步骤
+
+> [!div class="nextstepaction"]
+> * 请参阅[视频教程](https://azure.microsoft.com/resources/videos/speaker-recognition-text-independent-verification-developer-tutorial/)，了解与文本无关的扬声器验证。

@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
-ms.openlocfilehash: 7070cb3bcd1b519828a750cf4ba6caf7ecb34bbb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a3fd308ede17f510b3e9188f2bebc93a08a61181
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76169877"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263170"
 ---
 # <a name="get-face-detection-data"></a>获取人脸检测数据
 
@@ -145,7 +145,6 @@ foreach (var face in faces)
 本指南介绍了如何使用人脸检测的各项功能。 接下来，请按深度教程的说明操作，将这些功能集成到应用中。
 
 - [教程：创建一个用于显示图像中人脸数据的 WPF 应用](../Tutorials/FaceAPIinCSharpTutorial.md)
-- [教程：创建一个用于检测和定格图像中人脸的 Android 应用](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)
 
 ## <a name="related-topics"></a>相关主题
 

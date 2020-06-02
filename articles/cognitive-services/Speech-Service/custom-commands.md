@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 2e1b6ee0bd6c392804915fac6ff23278a00b6d33
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3c02e823202aa848a4de94885276835899562e4b
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79367833"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266009"
 ---
-# <a name="what-are-custom-commands-preview"></a>什么是自定义命令（预览）？
+# <a name="what-is-custom-commands-preview"></a>什么是自定义命令（预览）？
 
-语音应用程序（如[语音助手](voice-assistants.md)）会倾听用户的身份，并采取措施进行响应，这通常是一回活动。 他们使用[语音到文本](speech-to-text.md)转录用户的语音，然后对文本的自然语言理解采取措施。 此操作通常包含用[文本到语音功能](text-to-speech.md)生成的助手的语音输出。 设备通过语音 SDK `DialogServiceConnector`对象连接到助手。
+语音应用程序（如[语音助手](voice-assistants.md)）会倾听用户的身份，并采取措施进行响应，这通常是一回活动。 他们使用[语音到文本](speech-to-text.md)转录用户的语音，然后对文本的自然语言理解采取措施。 此操作通常包含用[文本到语音功能](text-to-speech.md)生成的助手的语音输出。 设备通过语音 SDK 对象连接到助手 `DialogServiceConnector` 。
 
 **自定义命令（预览版）** 是一种用于创建语音应用程序的简化解决方案。 它提供统一的创作体验、自动托管模型，以及相对较低的复杂性和其他选项，如[直接行语音](direct-line-speech.md)。 不过，这种简化的灵活性。 自定义命令（预览版）最适用于任务完成或命令和控制方案。 它对于物联网（IoT）和无外设设备特别适用。
 
