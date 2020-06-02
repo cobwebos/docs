@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 03/04/2020
+ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aba42e6bd9b11e47d793219c0ff06b9177d609f5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f149678bd65ff47b8582e56cf376d88284c8fa8b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78298813"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681324"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>为现有已同步的 AD 林试点云预配 
 
@@ -61,22 +61,22 @@ Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 
  1. 从桌面上的应用程序菜单启动同步编辑器，如下所示：</br>
  ![同步规则编辑器菜单](media/how-to-cloud-custom-user-rule/user8.png)</br>
  
- 2. 在“方向”下拉列表中选择“入站”，然后单击“添加新规则”。  
+ 2. 在“方向”下拉列表中选择“入站”，然后单击“添加新规则”。 
  ![自定义规则](media/how-to-cloud-custom-user-rule/user1.png)</br>
  
- 3. 在“说明”页上，输入以下内容并单击“下一步”：  
+ 3. 在“说明”页上，输入以下内容并单击“下一步”： 
 
     **名称：** 为规则指定一个有意义的名称<br>
     **说明：** 添加有意义的说明<br>
     **连接的系统：** 选择要为其编写自定义同步规则的 AD 连接器<br>
     **连接的系统对象类型：** 用户<br>
     **Metaverse 对象类型：** 人员<br>
-    **链接类型：** Join<br>
+    **链接类型：** 联接<br>
     **优先顺序：** 提供在系统中唯一的值<br>
     **标记：** 将此项留空<br>
     ![自定义规则](media/how-to-cloud-custom-user-rule/user2.png)</br>
  
- 4. 在“范围筛选器”页上，输入试运行所依据的 OU 或安全组。   若要按 OU 筛选，请添加可分辨名称的 OU 部分。 此规则将应用到该 OU 中的所有用户。  因此，如果 DN 以“OU=CPUsers,DC=contoso,DC=com”结尾，请添加此筛选器。  然后单击“下一步”  。 
+ 4. 在“范围筛选器”页上，输入试运行所依据的 OU 或安全组。  若要按 OU 筛选，请添加可分辨名称的 OU 部分。 此规则将应用到该 OU 中的所有用户。  因此，如果 DN 以“OU=CPUsers,DC=contoso,DC=com”结尾，请添加此筛选器。  然后单击“下一步”。 
 
     |规则|Attribute|操作员|值|
     |-----|----|----|-----|
@@ -85,18 +85,18 @@ Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 
 
     ![自定义规则](media/how-to-cloud-custom-user-rule/user3.png)</br>
  
- 5. 在“联接规则”页上，单击“下一步”。  
- 6. 在“转换”页上添加一个“常量”转换：将 True 流送到 cloudNoFlow 属性。  单击“添加”  。
+ 5. 在“联接规则”页上，单击“下一步”。 
+ 6. 在“转换”页上添加一个“常量”转换：将 True 流送到 cloudNoFlow 属性。 单击“添加”。
  ![自定义规则](media/how-to-cloud-custom-user-rule/user4.png)</br>
 
 需要针对所有对象类型（用户、组和联系人）遵循相同的步骤。 针对配置的每个 AD 连接器/每个 AD 林重复这些步骤。 
 
 ## <a name="create-custom-user-outbound-rule"></a>创建自定义用户出站规则
 
- 1. 在“方向”下拉列表中选择“出站”，然后单击“添加规则”。  
+ 1. 在“方向”下拉列表中选择“出站”，然后单击“添加规则”。 
  ![自定义规则](media/how-to-cloud-custom-user-rule/user5.png)</br>
  
- 2. 在“说明”页上，输入以下内容并单击“下一步”：  
+ 2. 在“说明”页上，输入以下内容并单击“下一步”： 
 
     **名称：** 为规则指定一个有意义的名称<br>
     **说明：** 添加有意义的说明<br>
@@ -109,11 +109,11 @@ Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 
     
     ![自定义规则](media/how-to-cloud-custom-user-rule/user6.png)</br>
  
- 3. 在“范围筛选器”页上，选择“cloudNoFlow”、“等于”、“True”。    然后单击“下一步”  。
+ 3. 在“范围筛选器”页上，选择“cloudNoFlow”、“等于”、“True”。   然后单击“下一步”。
  ![自定义规则](media/how-to-cloud-custom-user-rule/user7.png)</br>
  
- 4. 在“联接规则”页上，单击“下一步”。  
- 5. 在“转换”页上单击“添加”。  
+ 4. 在“联接规则”页上，单击“下一步”。 
+ 5. 在“转换”页上单击“添加”。 
 
 需要针对所有对象类型（用户、组和联系人）遵循相同的步骤。
 
@@ -121,19 +121,19 @@ Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 
 1. 以企业管理员权限登录到要使用的服务器。  如果使用的是[基本 AD 和 Azure 环境](tutorial-basic-ad-azure.md)教程，则该服务器是 CP1。
 2. 使用[此处](how-to-install.md#install-the-agent)列出的步骤下载 Azure AD Connect 云预配代理。
 3. 运行 Azure AD Connect 云预配 (AADConnectProvisioningAgent.Installer)
-3. 在初始屏幕上**接受**许可条款，然后单击“安装”。 </br>
+3. 在初始屏幕上**接受**许可条款，然后单击“安装”。</br>
 ![欢迎屏幕](media/how-to-install/install1.png)</br>
 
 4. 此操作完成后，将启动配置向导。  使用 Azure AD 全局管理员帐户登录。
-5. 在“连接 Active Directory”屏幕上单击“添加目录”，然后使用 Active Directory 管理员帐户登录。    此操作将添加本地目录。  单击“下一步”。 </br>
+5. 在“连接 Active Directory”屏幕上单击“添加目录”，然后使用 Active Directory 管理员帐户登录。   此操作将添加本地目录。  单击“下一步”。</br>
 ![欢迎屏幕](media/how-to-install/install3.png)</br>
 
-6. 在“配置完成”屏幕上，单击“确认”。    此操作将注册并重启代理。</br>
+6. 在“配置完成”屏幕上，单击“确认”。   此操作将注册并重启代理。</br>
 ![欢迎屏幕](media/how-to-install/install4.png)</br>
 
-7. 完成此操作后，应会看到通知“已成功验证”。   可以单击“退出”。 </br>
+7. 完成此操作后，应会看到通知“已成功验证”。  可以单击“退出”。</br>
 ![欢迎屏幕](media/how-to-install/install5.png)</br>
-8. 如果仍然显示了初始屏幕，请单击“关闭”。 
+8. 如果仍然显示了初始屏幕，请单击“关闭”。
 
 ## <a name="verify-agent-installation"></a>验证代理安装
 代理验证是在 Azure 门户中以及在运行该代理的本地服务器上进行的。
@@ -142,39 +142,39 @@ Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 
 若要验证 Azure 是否能够识别到代理，请执行以下步骤：
 
 1. 登录到 Azure 门户。
-2. 在左侧选择“Azure Active Directory”，单击“Azure AD Connect”，然后在中心位置选择“管理预配(预览版)”。   </br>
+2. 在左侧选择“Azure Active Directory”，单击“Azure AD Connect”，然后在中心位置选择“管理预配(预览版)”。  </br>
 ![Azure 门户](media/how-to-install/install6.png)</br>
 
-3.  在“Azure AD 预配(预览版)”屏幕上，单击“查看所有代理”。  
+3.  在“Azure AD 预配(预览版)”屏幕上，单击“查看所有代理”。 
 ![Azure AD 预配](media/how-to-install/install7.png)</br>
  
-4. 在**本地预配代理屏幕上**，将看到已安装的代理。  验证相关的代理是否在该屏幕上，并且标记为“已禁用”。   该代理默认已禁用 ![预配代理](media/how-to-install/verify1.png)</br>
+4. 在**本地预配代理屏幕上**，将看到已安装的代理。  验证相关的代理是否在该屏幕上，并且标记为“已禁用”。  该代理默认已禁用 ![预配代理](media/how-to-install/verify1.png)</br>
 
 ### <a name="on-the-local-server"></a>在本地服务器上
 若要验证代理是否正在运行，请执行以下步骤：
 
 1.  使用管理员帐户登录到服务器
-2.  导航到“服务”或者转到“开始”>“运行”并输入 Services.msc，打开“服务”。 
-3.  确保“Microsoft Azure AD Connect Agent Updater”和“Microsoft Azure AD Connect Provisioning Agent”包含在“服务”中，并且其状态为“正在运行”。    
+2.  导航到“服务”或者转到“开始”>“运行”并输入 Services.msc，打开“服务”。
+3.  确保“Microsoft Azure AD Connect Agent Updater”和“Microsoft Azure AD Connect Provisioning Agent”包含在“服务”中，并且其状态为“正在运行”。   
 ![服务](media/how-to-troubleshoot/troubleshoot1.png)
 
 ## <a name="configure-azure-ad-connect-cloud-provisioning"></a>配置 Azure AD Connect 云预配
 使用以下步骤配置预配：
 
  1. 登录到 Azure AD 门户。
- 2. 单击“Azure Active Directory” 
- 3. 单击“Azure AD Connect” 
- 4. 选择“管理预配(预览版)”  
+ 2. 单击“Azure Active Directory”
+ 3. 单击“Azure AD Connect”
+ 4. 选择“管理预配(预览版)”
  ![](media/how-to-configure/manage1.png)</br>
- 5.  单击“新建配置”  
+ 5.  单击“新建配置”
  ![](media/tutorial-single-forest/configure1.png)</br>
- 6.  在配置屏幕上输入一条**通知电子邮件**，将选择器切换到“启用”，然后单击“保存”。  
+ 6.  在配置屏幕上输入一条**通知电子邮件**，将选择器切换到“启用”，然后单击“保存”。 
  ![](media/tutorial-single-forest/configure2.png)</br>
- 7. 在“配置”下选择“所有用户”，以更改配置规则的范围。  
+ 7. 在“配置”下选择“所有用户”，以更改配置规则的范围。 
  ![](media/how-to-configure/scope2.png)</br>
  8. 在右侧，将范围更改为包括刚刚创建的特定 OU“OU=CPUsers,DC=contoso,DC=com”。
  ![](media/tutorial-existing-forest/scope2.png)</br>
- 9.  依次单击“完成”、“保存”。  
+ 9.  依次单击“完成”、“保存”。 
  10. 现在，范围应设置为一个组织单位。 
  ![](media/tutorial-existing-forest/scope3.png)</br>
  
@@ -183,10 +183,10 @@ Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 
 现在验证本地目录中的用户是否已同步并在 Azure AD 租户中存在。  请注意，这可能需要几个小时才能完成。  若要验证云预配是否预配用户，请执行以下步骤：
 
 1. 浏览到 [Azure 门户](https://portal.azure.com)，使用具有 Azure 订阅的帐户登录。
-2. 在左侧选择“Azure Active Directory” 
-3. 单击“Azure AD Connect” 
-4. 单击“管理预配(预览版)” 
-5. 单击“日志”按钮 
+2. 在左侧选择“Azure Active Directory”
+3. 单击“Azure AD Connect”
+4. 单击“管理预配(预览版)”
+5. 单击“日志”按钮
 6. 搜索某个用户名，确认云预配是否预配了相应的用户
 
 此外，可以验证相应的用户和组是否在 Azure AD 中存在。
@@ -199,7 +199,9 @@ Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 
 3.  运行 `Start-ADSyncSyncCycle`。  按 Enter。  
 
 >[!NOTE] 
->如果你正在针对 AAD Connect sync 运行自己的自定义计划程序，请启用该计划程序。 
+>如果你要运行用于 Azure AD Connect 同步的自定义计划程序，请启用该计划程序。 
+
+启用计划程序后，除非正在更新任何引用属性（例如管理器），否则 Azure AD Connect 将停止导出 Metaverse 中带有 `cloudNoFlow=true` 的对象 上的任何更改。 如果对象上存在任何引用属性更新，Azure AD Connect 将忽略 `cloudNoFlow` 信号，并导出对象上的所有更新。
 
 ## <a name="something-went-wrong"></a>出现问题
 如果试运行不按预期工作，可遵循以下步骤返回到 Azure AD Connect sync 设置：
@@ -210,16 +212,16 @@ Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 
 验证试运行 OU 中的用户已由云预配成功管理后，可以重新配置 Azure AD Connect，以排除前面创建的试运行 OU。  云预配代理今后将处理这些用户的同步。  使用以下步骤来限定 Azure AD Connect 的范围。
 
  1. 在运行 Azure AD Connect 的服务器上，双击“Azure AD Connect”图标。
- 2. 单击“配置”。 
- 3. 选择“自定义同步选项”，然后单击“下一步”。 
- 4. 登录到 Azure AD 并单击“下一步”。 
- 5. 在“连接目录”屏幕上，单击“下一步”。  
- 6. 在“域和 OU 筛选”屏幕上，选择“同步选定的域和 OU”。  
- 7. 展开自己的域，**取消选择**“CPUsers”OU。   单击“下一步”。 
+ 2. 单击“配置”。
+ 3. 选择“自定义同步选项”，然后单击“下一步”。
+ 4. 登录到 Azure AD 并单击“下一步”。
+ 5. 在“连接目录”屏幕上，单击“下一步”。 
+ 6. 在“域和 OU 筛选”屏幕上，选择“同步选定的域和 OU”。 
+ 7. 展开自己的域，**取消选择**“CPUsers”OU。  单击“下一步”。
 ![作用域](media/tutorial-existing-forest/scope1.png)</br>
- 9. 在“可选功能”屏幕上单击“下一步”。  
- 10. 在“准备好配置”  屏幕上，单击“配置”  。
- 11. 完成该操作后，单击“退出”。  
+ 9. 在“可选功能”屏幕上单击“下一步”。 
+ 10. 在“准备好配置”屏幕上，单击“配置”。
+ 11. 完成该操作后，单击“退出”。 
 
 ## <a name="next-steps"></a>后续步骤 
 

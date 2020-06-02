@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 14fd237b6437c15ede2da7c0694004f6c22736cc
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8de6e9cff8149423f4b00b07e3113be6606181b5
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599127"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714230"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>快速入门：生成第一个静态 Web 应用
 
@@ -81,7 +81,7 @@ Azure 静态 Web 应用通过从 GitHub 存储库生成应用来将网站发布�
 - 选择 Azure 订阅
 - 选择或创建新资源组
 - 将应用命名为 my-first-static-web-app。
-  - 有效字符为 `a-z`（不区分大小写）、`0-9` 和 `_`。
+  - 有效字符为 `a-z`（不区分大小写）、`0-9` 和 `-`。
 - 选择离你最近的区域
 - 选择免费 SKU
 - 单击“使用 GitHub 登录”按钮，然后使用 GitHub 进行身份验证
@@ -130,6 +130,8 @@ Azure 静态 Web 应用通过从 GitHub 存储库生成应用来将网站发布�
 单击“查看 + 创建”按钮。
 
 :::image type="content" source="media/getting-started/review-create.png" alt-text="“查看创建”按钮":::
+
+若要在创建应用后更改这些值，可编辑 [工作流文件](github-actions-workflow.md)。
 
 ### <a name="review--create"></a>查看 + 创建
 

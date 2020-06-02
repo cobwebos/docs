@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 15f8a3ac8c2777b3a878de92db495e559f64ad20
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: a1a55ceec2679034125ddd202402cabcbf71e17e
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81727594"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698304"
 ---
 # <a name="changelog"></a>更改日志 #
 
@@ -577,8 +577,8 @@ ms.locfileid: "81727594"
 - [Bug 修复][AzureHtml5JS] 当时间戳中存在轻微的不精准情况时，实时播放会在 MPD 更新时冻结
 - [Bug 修复][AzureHtml5JS] 缓解了多个实时播放问题
 - [Bug 修复][AzureHtml5JS] 当窗口大小启发算法启用时刷新缓冲区，并转到分辨率更高的屏幕
-- [Bug 修复][AzureHtml5JS] Chrome 现在会正确显示已结束的事件。 已链接到以前的已知问题：“Chrome 在使用 AzureHtml5JS 时不正确地发送 â&euro;œendedâ&euro; 事件。  底层浏览器中出现问题。”
-- [Bug 修复][AzureHtml5JS] 已针对此技术禁用 Safari，以解决“使用 AzureHtml5JS 技术的 OSX Yosemite 出现播放问题。MSE 存在实现问题。暂时的迁移措施: 强制以 â&euro;œflashSSâ&euro;、â&euro;œsilverlightSSâ&euro; 作为这些用户代理的技术指令”错误 
+- [Bug 修复][AzureHtml5JS] Chrome 现在会正确显示已结束的事件。 已链接到以前的已知问题：“Chrome 在使用 AzureHtml5JS 时不正确地发送已结束的事件。底层浏览器中出现问题。”
+- [Bug 修复][AzureHtml5JS] 已针对此技术禁用 Safari，以解决“使用 AzureHtml5JS *技术的 OSX Yosemite 出现播放问题。MSE 存在实现问题。* 临时的风险缓解措施：强制以 flashSS、silverlightSS 作为这些用户代理的技术指令”
 - [Bug 修复][FlashSS] 发生错误后触发 loadstart
 
 ## <a name="020-beta"></a>0.2.0 (Beta) ##
@@ -601,7 +601,7 @@ ms.locfileid: "81727594"
 - [Bug 修复] 已更新自动播放模式的 UI 加载体验
 - [Bug 修复] AMD 加载程序问题以及 define 方法冲突
 - [Bug 修复] WP 8.1 Cordova 应用加载问题
-- [Bug 修复] 受保护内容查询平台/技术支持的 ProtectionType，用于选择适当的播放技术。  修复了以前的已知问题：“在 Chrome（桌面版）/Safari 8（在 OSX Yosemite 上）上的 PlayReady 内容当前不会回退到 Silverlight 播放器” 
+- [Bug 修复] 受保护内容查询平台/技术支持的 ProtectionType，用于选择适当的播放技术。  修复了以前的已知问题：“在 Chrome（桌面版）/Safari 8（在 OSX Yosemite 上）上的 PlayReady 内容当前不会回退到 Silverlight 播放器”
 - [Bug 修复] WinServer 2012 R2 上出现未捕获到的异常，因为该计算机上默认不会安装 Media Foundation。  尝试使用了未实现的 HTML 视频标记 API，因而引发了错误。 当前的缓解措施是捕获该错误并返回 false，而不是引发错误。
 - [Bug 修复] 始终在搜寻或发生 http 失败后获取 init 片段，以防止在播放期间出现小问题
 - [Bug 修复] 发生错误时关闭跟踪模拟进度和时间更新的功能。
