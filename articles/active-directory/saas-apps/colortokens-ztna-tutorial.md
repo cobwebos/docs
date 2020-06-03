@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 315d8bce655cdf21160e3b4c75d2182ff41200a4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 37d3127ed9082c73218aede7daf054f0bfe3df2c
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662075"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204287"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-colortokens-ztna"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ColorTokens ZTNA 的集成
 
@@ -82,11 +82,8 @@ ms.locfileid: "83662075"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<COLORMASTER_HOST>/colormaster/api/v1/<TENANT_NAME>/saml/login?resourceId=<RESOURCEID>&iwa=<TRUE/FALSE>`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenantname>.spectrum.colortokens.com`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<COLORMASTER_HOST>.com/<TENANT_NAME>`
-
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<COLORMASTER_HOST>.com/<TENANT_NAME>`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [ColorTokens ZTNA 客户端支持团队](mailto:support@colortokens.com)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。

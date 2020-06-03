@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: trbye
-ms.openlocfilehash: 0e18fd0c52fd4090477599f53cd0ef0bc05855f2
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 550579b40470d7a1ad02031b8140e7d0a7164f46
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587334"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310591"
 ---
 # <a name="long-audio-api-preview"></a>长音频 API （预览）
 
@@ -48,7 +48,7 @@ ms.locfileid: "83587334"
   * 对于纯文本，每个段落都按 "**输入/返回**-查看[纯文本输入" 示例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt)分隔
   * 对于 SSML 文本，每个 SSML 部分都被视为一个段落。 SSML 部分应由不同的段落分隔-查看[ssml 文本输入示例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt)
 > [!NOTE]
-> 对于中文（大陆）、中文（香港特别行政区）、中文（台湾）、日语和韩语，一个字将被计为两个字符。 
+> 对于中文（大陆）、中文（香港特别行政区）、中文（台湾）、日语和朝鲜语，一个字将被计为两个字符。 
 
 ## <a name="submit-synthesis-requests"></a>提交合成请求
 
@@ -70,7 +70,7 @@ ms.locfileid: "83587334"
 |        | 400 | 输入文件应超过400个字符。 | 请确保输入文件超过400个字符。 |
 |        | 404 | 找不到语音合成定义中声明的模型： {modelID}。 | 请确保 {modelID} 是正确的。 |
 |        | 429 | 超出活动的语音合成限制。 请等待一些请求完成。 | 允许服务器运行每个 Azure 帐户，并为多达120请求排队。 请等待并避免提交新请求，直到完成一些请求。 |
-| 全部       | 429 | 请求太多。 | 对于每个 Azure 帐户，允许客户端每秒向服务器提交最多5个请求。 请减少每秒的请求数。 |
+| All       | 429 | 请求太多。 | 对于每个 Azure 帐户，允许客户端每秒向服务器提交最多5个请求。 请减少每秒的请求数。 |
 | 删除    | 400 | 语音合成任务仍在使用中。 | 只能删除**完成**或**失败**的请求。 |
 | GetByID   | 404 | 找不到指定的实体。 | 请确保合成 ID 是正确的。 |
 

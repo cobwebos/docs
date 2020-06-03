@@ -8,12 +8,12 @@ ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: e389df7cfe0e228030d2d0f730fc5e671ad4c052
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 55c462795b29cd678a5fd7816211bce720d554e1
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927626"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170352"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>诊断和排查在使用 Azure Cosmos DB .NET SDK 时出现的问题
 
@@ -94,7 +94,7 @@ ResponseTime: 2020-03-09T22:44:49.9279906Z, StoreResult: StorePhysicalAddress: r
 * 向 Azure 虚拟机虚拟网络的子网添加 Azure Cosmos DB 服务终结点。 有关详细信息，请参阅 [Azure 虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。 
 
     启用服务终结点后，不再从公共 IP 向 Azure Cosmos DB 发送请求， 而是发送虚拟网络和子网标识。 如果仅允许公共 IP，则此更改可能会导致防火墙丢失。 如果使用防火墙，则在启用服务终结点后，请使用[虚拟网络 ACL](../virtual-network/virtual-networks-acl.md) 将子网添加到防火墙。
-* [将公共 IP 分配给 Azure VM](../load-balancer/load-balancer-outbound-connections.md#assignilpip)。
+* [将公共 IP 分配给 Azure VM](../load-balancer/troubleshoot-outbound-connection.md#assignilpip)。
 
 ### <a name="http-proxy"></a>HTTP 代理
 如果使用 HTTP 代理，请确保它支持 SDK `ConnectionPolicy` 中配置的连接数。
