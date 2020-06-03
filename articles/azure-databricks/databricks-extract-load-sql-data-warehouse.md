@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: fa7750a6e7888b6ca13c1ec32cabee9bcf803e65
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: d97fae777b06625488234eb6d48a74a60a83f4d6
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382725"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018712"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>教程：使用 Azure Databricks 提取、转换和加载数据
 
@@ -370,7 +370,7 @@ ms.locfileid: "81382725"
    > [!NOTE]
    > 此示例使用 `forward_spark_azure_storage_credentials` 标志，Azure Synapse 可以根据该标志使用访问密钥访问 blob 存储中的数据。 这是唯一支持的身份验证方法。
    >
-   > 如果将 Azure Blob 存储限制为特选虚拟网络，则 Azure Synapse 需要[托管服务标识而非访问密钥](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 这将导致错误“此请求无权执行此操作”。
+   > 如果将 Azure Blob 存储限制为特选虚拟网络，则 Azure Synapse 需要[托管服务标识而非访问密钥](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 这将导致错误“此请求无权执行此操作”。
 
 6. 连接到 SQL 数据库，验证是否看到名为 **SampleTable** 的数据库。
 

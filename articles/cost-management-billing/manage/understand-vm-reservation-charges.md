@@ -6,12 +6,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: ca54d5a0d196cbc39256668f21e19bdf9162dfbf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a9d9a5661e8a094b7d92a9dd83db3cdcd76b8b65
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202784"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018376"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>如何将 Azure 预留折扣应用于虚拟机
 
@@ -102,7 +102,7 @@ VM 预留可以应用于从多个服务发出的 VM 使用量 - 而不仅应用�
 
 - [什么是 Azure 预留？](../reservations/save-compute-costs-reservations.md)
 - [通过 Azure 虚拟机预留实例为虚拟机预付费](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [通过 Azure SQL 数据库保留容量预付 SQL 数据库计算资源费用](../../sql-database/sql-database-reserved-capacity.md)
+- [通过 Azure SQL 数据库保留容量预付 SQL 数据库计算资源费用](../../azure-sql/database/reserved-capacity-overview.md)
 - [管理 Azure 预留](../reservations/manage-reserved-vm-instance.md)
 - [了解即用即付订阅的预留使用情况](../reservations/understand-reserved-instance-usage.md)
 - [了解企业合约的预留使用情况](../reservations/understand-reserved-instance-usage-ea.md)

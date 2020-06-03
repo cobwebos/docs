@@ -9,12 +9,12 @@ ms.date: 01/21/2020
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: b6a3f38e0b83dc927a225c630b8178be1dc539ce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 321417813346e7d5c92876c22516c627aff5ab12
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76310112"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300743"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>教程：使用 Azure 门户和主题/订阅更新库存
 
@@ -55,7 +55,7 @@ Microsoft Azure 服务总线是一种多租户云消息传送服务，可以在�
 
 预配命名空间和主题/订阅并且拥有所需的凭据后，便可以在订阅上创建筛选规则，然后发送和接收消息。 可以在[此 GitHub 示例文件夹](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters)中检查代码。
 
-### <a name="send-and-receive-messages"></a>发送和接收消息
+## <a name="send-and-receive-messages"></a>发送和接收消息
 
 若要运行此代码，请执行以下操作：
 

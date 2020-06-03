@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 05/18/2020
 ms.author: victorh
-ms.openlocfilehash: 8b67574f435681d8071eda1ad954dcafb5124cbf
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 1195bb2676634dd3e7c9310da4e8855c4ff814f3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655102"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015958"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>使用 SQL FQDN 配置 Azure 防火墙应用程序规则
 
@@ -63,4 +63,4 @@ ms.locfileid: "83655102"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解 SQL 代理和重定向模式，请参阅 [Azure SQL 数据库连接体系结构](../sql-database/sql-database-connectivity-architecture.md)。
+若要了解 SQL 代理和重定向模式，请参阅 [Azure SQL 数据库连接体系结构](../azure-sql/database/connectivity-architecture.md)。
