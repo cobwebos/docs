@@ -2,19 +2,19 @@
 title: 在 Azure SQL Edge（预览）中将机器学习和 AI 与 ONNX 结合使用
 description: Azure SQL Edge（预览）中的机器学习支持 Open Neural Network Exchange (ONNX) 格式的模型。 ONNX 是一种开放的格式，可用于在不同的机器学习框架和工具之间交换模型。
 keywords: 部署 SQL Edge
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.subservice: ''
 ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 05/19/2020
-ms.openlocfilehash: 12c1294a804c2063d405c5ec08440865283d51d3
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 3b36052fa3ee0d7d449be1719e67554b539d0207
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594586"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233176"
 ---
 # <a name="machine-learning-and-ai-with-onnx-in-sql-edge-preview"></a>在 SQL Edge（预览）中将机器学习和 AI 与 ONNX 结合使用
 

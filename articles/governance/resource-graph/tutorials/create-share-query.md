@@ -3,12 +3,12 @@ title: 教程：在 Azure 门户中管理查询
 description: 在本教程中，你会在 Azure 门户中创建 Resource Graph 查询并将这个新查询与其他人共享。
 ms.date: 05/20/2020
 ms.topic: tutorial
-ms.openlocfilehash: e63a92a4570a0713ed65e1090e4d77d25fb10f95
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 80725bd03d31a4985374005fe68a62e16aaef000
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83637750"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148015"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>教程：在 Azure 门户中创建和共享 Azure Resource Graph 查询
 
@@ -44,7 +44,7 @@ ms.locfileid: "83637750"
 
    选择“运行查询”  以在底部窗格中查看查询结果。
 
-   有关此查询的详细信息，请参阅[示例 – 按 OS 类型对虚拟机进行计数](../samples/starter.md#count-virtual-machines-by-os-type)。
+   有关此查询的详细信息，请参阅[示例 – 按 OS 类型对虚拟机进行计数](../samples/starter.md#count-os)。
 
 
 1. 选择“保存”或“另存为”，输入“按 OS 对 VM 进行计数”作为名称，将类型保留为“专用查询”，然后选择“保存查询”窗格底部的“保存”       。 选项卡标题从“查询 1”更改为“按 OS 对 VM 进行计数”   。
@@ -76,7 +76,7 @@ ms.locfileid: "83637750"
     
    选择“运行查询”  以在底部窗格中查看查询结果。
 
-   有关此查询的详细信息，请参阅[示例 – 按 OS 类型对虚拟机进行计数](../samples/starter.md#count-virtual-machines-by-os-type)。
+   有关此查询的详细信息，请参阅[示例 – 按 OS 类型对虚拟机进行计数](../samples/starter.md#count-os)。
 
 1. 选择“保存”或“另存为”   。
 
