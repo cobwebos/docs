@@ -11,12 +11,12 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 3bc6cbe025854286b0a24a34240396eea16292b6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 93afb5b52df7ac3ff638ff5fc180c3c4774880b8
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067411"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020381"
 ---
 # <a name="use-cli-to-configure-active-geo-replication-for-a-single-database-in-azure-sql-database"></a>使用 CLI 为 Azure SQL 数据库中的单一数据库配置活动异地复制
 
@@ -60,4 +60,4 @@ az group delete --name $resource
 
 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。
 
-其他 SQL 数据库 CLI 脚本示例可以在 [Azure SQL 数据库文档](../sql-database-cli-samples.md)中找到。
+其他 SQL 数据库 CLI 脚本示例可以在 [Azure SQL 数据库文档](../../azure-sql/database/az-cli-script-samples-content-guide.md)中找到。

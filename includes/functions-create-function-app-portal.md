@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: c590b61ee1424d32d83dc5f758682fde37492c3a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 439b312050f657566026a36c145e7b6dd5cc9bad
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80057116"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116307"
 ---
 1. 在 Azure 门户菜单或“主页”页中，选择“创建资源”   。
 
@@ -47,7 +47,7 @@ ms.locfileid: "80057116"
 
     | 设置      | 建议的值  | 说明 |
     | ------------ | ---------------- | ----------- |
-    | **[Application Insights](../articles/azure-functions/functions-monitoring.md)** | 默认 | 在最近的受支持的区域中，创建一个具有相同应用名称  的 Application Insights 资源。 展开此设置即可更改“新建资源名称”，或者在 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中选择另一个需要在其中存储数据的**位置**。  |
+    | **[Application Insights](../articles/azure-functions/functions-monitoring.md)** | 默认 | 在最近的受支持的区域中，创建一个具有相同应用名称  的 Application Insights 资源。 通过展开此设置或选择“新建”，可以更改 Application Insights 名称或在 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中选择要存储数据的其他区域。 |
 
     ![监视](./media/functions-create-function-app-portal/function-app-create-monitoring.png)
 
@@ -55,7 +55,7 @@ ms.locfileid: "80057116"
 
 1. 在“查看 + 创建”页上查看设置，然后选择“创建”来预配并部署函数应用   。
 
-1. 选择门户右上角的“通知”图标，留意是否显示“部署成功”消息。 
+1. 选择门户右上角的“通知”图标，留意是否显示了“部署成功”消息。 
 
 1. 选择“转到资源”  ，查看新的函数应用。 还可选择“固定到仪表板”  。 固定可以更轻松地从仪表板返回此函数应用资源。
 

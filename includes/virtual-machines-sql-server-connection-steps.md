@@ -4,15 +4,15 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
-ms.openlocfilehash: 297317ff33d88d6390220980ef35f2538579e310
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d679767f1a4be3ecdcf1811662c72dbbe2df33a0
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67172891"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014754"
 ---
 ### <a name="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine"></a>在 Windows 防火墙中为数据库引擎的默认实例打开 TCP 端口
-1. 通过远程桌面连接到虚拟机。 有关连接到 VM 的详细说明，请参阅[使用远程桌面打开 SQL VM](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md#remotedesktop)。
+1. 通过远程桌面连接到虚拟机。 有关连接到 VM 的详细说明，请参阅[使用远程桌面打开 SQL VM](../articles/azure-sql/virtual-machines/windows/create-sql-vm-portal.md#remotedesktop)。
 2. 登录后，在开始屏幕中，键入“WF.msc”  ，并按 ENTER。
    
     ![启动防火墙程序](./media/virtual-machines-sql-server-connection-steps/12Open-WF.png)
@@ -20,7 +20,7 @@ ms.locfileid: "67172891"
    
     ![新建规则](./media/virtual-machines-sql-server-connection-steps/13New-FW-Rule.png)
 4. 在“新建入站规则向导”对话框中，在“规则类型”下，选择“端口”，并单击“下一步”。    
-5. 在“协议和端口”对话框中，使用默认“TCP”。   然后，在“特定本地端口”框中，键入数据库引擎实例的端口号（即默认实例对应的端口号“1433”，或在终结点步骤中为专用端口选择的端口号）。  
+5. 在“协议和端口”对话框中，使用默认 **TCP**。 然后，在“特定本地端口”框中，键入数据库引擎实例的端口号（即默认实例对应的端口号 **1433**，或在终结点步骤中为专用端口选择的端口号）。
    
     ![TCP 端口 1433](./media/virtual-machines-sql-server-connection-steps/14Port-1433.png)
 6. 单击“下一步”。 

@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 08/01/2019
-ms.openlocfilehash: 4bd2b7093100ff24b21b67ea84613ac9b2ec8299
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1c3987e4f2f31dd0c2395f9b40cc40780c40a518
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68950234"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021596"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>教程：在 Azure 数据目录中注册数据资产
 
@@ -39,7 +39,7 @@ ms.locfileid: "68950234"
 
 ### <a name="register-a-data-source"></a>注册数据源
 
-你将注册 [Azure SQL 数据库示例](../sql-database/sql-database-single-database-get-started.md)中的数据资产（表），但如果想要使用熟悉且与角色相关的数据，也可以使用任何支持的数据源。 有关支持的数据源列表，请参阅 [Supported data sources](data-catalog-dsr.md)（支持的数据源）。
+你将注册 [Azure SQL 数据库示例](../azure-sql/database/single-database-create-quickstart.md)中的数据资产（表），但如果想要使用熟悉且与角色相关的数据，也可以使用任何支持的数据源。 有关支持的数据源列表，请参阅 [Supported data sources](data-catalog-dsr.md)（支持的数据源）。
 
 本教程使用的 Azure SQL 数据库名称为 *RLSTest*。
 

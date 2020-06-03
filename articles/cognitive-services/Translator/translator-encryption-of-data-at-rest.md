@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: egeaney
-ms.openlocfilehash: 0a4a1f49735a30d7ad764e7f031610eabd09763e
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: bc328efd648eb3dd522f5233e2a5c440911ac58c
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995762"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310829"
 ---
 # <a name="translator-encryption-of-data-at-rest"></a>静态数据的转换器加密
 
@@ -45,11 +45,11 @@ ms.locfileid: "83995762"
 2. 已在 Azure 门户中启用托管标识，并添加客户托管的密钥信息。
 3. 在自定义转换器中创建新的工作区，并将此订阅信息关联起来。
 
-[!INCLUDE [cognitive-services-cmk](../../../includes/cognitive-services-cmk-regions.md)]
+[!INCLUDE [cognitive-services-cmk](../includes/cognitive-services-cmk-regions.md)]
 
 ### <a name="enable-customer-managed-keys"></a>启用客户管理的密钥
 
-必须使用 Azure Key Vault 来存储客户管理的密钥。 可以创建自己的密钥并将其存储在 Key Vault 中，或者使用 Azure Key Vault API 来生成密钥。 认知服务资源和密钥保管库必须位于同一区域和相同的 Azure Active Directory （Azure AD）租户中，但它们可以位于不同的订阅中。 有关 Azure Key Vault 的详细信息，请参阅[什么是 Azure Key Vault？](https://docs.microsoft.com/azure/key-vault/key-vault-overview)。
+必须使用 Azure Key Vault 来存储客户管理的密钥。 可以创建自己的密钥并将其存储在密钥保管库中，也可以使用 Azure 密钥保管库 API 来生成密钥。 认知服务资源和密钥保管库必须位于同一区域和相同的 Azure Active Directory （Azure AD）租户中，但它们可以位于不同的订阅中。 有关 Azure Key Vault 的详细信息，请参阅[什么是 Azure Key Vault？](https://docs.microsoft.com/azure/key-vault/key-vault-overview)。
 
 新的认知服务资源始终使用 Microsoft 托管的密钥进行加密。 创建资源时，无法启用客户管理的密钥。 客户管理的密钥存储在 Azure Key Vault 中，并且必须使用访问策略对密钥保管库进行预配，此访问策略向与认知服务资源关联的托管标识授予密钥权限。 一旦创建了资源，托管标识就会立即可用。
 

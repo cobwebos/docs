@@ -5,27 +5,27 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: 514cc25e1959145c65fe60cd3054cec4ed28f44d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 70c36f9a18a85b90bb3a66d4083a71a00f61f14e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80617425"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016366"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证
 
 结合使用 Azure 容器注册表 (ACR) 和 Azure Kubernetes 服务 (AKS) 时，需要建立身份验证机制。 本文提供了在这两个 Azure 服务之间配置身份验证的示例。 
 
-可以使用 Azure CLI 通过几个简单的命令设置 AKS 与 ACR 的集成。 此集成将 AcrPull 角色分配给关联到 AKS 群集的服务主体。
+可以使用 Azure CLI 通过几个简单的命令设置 AKS 与 ACR 的集成。 此集成会将 AcrPull 角色分配给关联到 AKS 群集的服务主体。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 这些示例需要：
 
 * **Azure 订阅**上的**所有者**或 **Azure 帐户管理员**角色
 * Azure CLI 2.0.73 版或更高版本
 
-若要避免需要**所有者**或**Azure 帐户管理员**角色，可以手动配置服务主体或使用现有的服务主体对 AKS 中的 ACR 进行身份验证。 有关详细信息，请参阅[使用服务主体进行 ACR 身份验证](../container-registry/container-registry-auth-service-principal.md)或[使用请求密码从 Kubernetes 进行身份验证](../container-registry/container-registry-auth-kubernetes.md)。
+为了避免需要“所有者”或“Azure 帐户管理员”角色，可以手动配置服务主体或使用现有服务主体从 AKS 进行 ACR 身份验证。 有关详细信息，请参阅[使用服务主体进行 ACR 身份验证](../container-registry/container-registry-auth-service-principal.md)或[使用请求密码从 Kubernetes 进行身份验证](../container-registry/container-registry-auth-kubernetes.md)。
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>通过 ACR 集成创建新的 AKS 群集
 
@@ -33,7 +33,7 @@ ms.locfileid: "80617425"
 
 ```azurecli
 # set this to the name of your Azure Container Registry.  It must be globally unique
-$MYACR=myContainerRegistry
+MYACR=myContainerRegistry
 
 # Run the following line to create an Azure Container Registry if you do not already have one
 az acr create -n $MYACR -g myContainerRegistryResourceGroup --sku basic
@@ -42,7 +42,7 @@ az acr create -n $MYACR -g myContainerRegistryResourceGroup --sku basic
 az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-acr $MYACR
 ```
 
-或者，您可以使用 ACR 资源 ID 指定 ACR 名称，其格式如下：
+或者，可以使用 ACR 资源 ID 指定 ACR 名称，其格式如下：
 
 `/subscriptions/\<subscription-id\>/resourceGroups/\<resource-group-name\>/providers/Microsoft.ContainerRegistry/registries/\<name\>` 
 
@@ -60,7 +60,7 @@ az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-ac
 az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acrName>
 ```
 
-或
+或者，
 
 ```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-resource-id>
