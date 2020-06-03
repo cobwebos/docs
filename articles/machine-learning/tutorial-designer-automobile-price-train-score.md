@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 05/12/2020
 ms.custom: designer
-ms.openlocfilehash: 16f281cce70fb8d2a943b62c796c3037649c3c72
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f6d684829092d8be97785c46058186f3ca5542b2
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656581"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119038"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>教程：使用设计器预测汽车价格（预览）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -220,11 +220,9 @@ Azure 机器学习管道可将多个机器学习和数据处理步骤组织成�
 
 1. 选择“回归” > “线性回归”并将其拖到管道画布上 。
 
-1. 将“线性回归”模块的输出连接到“训练模型”模块的左侧输入。 
-
 1. 在模块控制板中展开“模块训练”部分，然后将“训练模型”模块拖到画布上。 
 
-1. 选择“训练模型”模块并将其拖到管道画布上。
+1. 将“线性回归”模块的输出连接到“训练模型”模块的左侧输入。 
 
 1. 将“拆分数据”模块的训练数据输出（左侧端口）连接到“训练模型”模块的右侧输入。 
     

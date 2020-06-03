@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 04/27/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 4af2d060c11b804c5fa09bfdabbcb9753f7d5885
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 79a12505ccc7cea709a88818513ba95710989954
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204677"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142361"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>文本分析 API 的数据和速率限制
 <a name="data-limits"></a>
@@ -36,7 +36,7 @@ ms.locfileid: "82204677"
 
 可以在单个请求中发送的最大文档数将取决于所使用的 API 版本和功能。
 
-#### <a name="version-30-preview"></a>[版本 3.0-preview](#tab/version-3)
+#### <a name="version-3"></a>[第 3 版](#tab/version-3)
 
 > [!NOTE]
 > 如果 v3 API 请求超出了这些限制，但在 v2 限制之内，则会在 API 响应中返回警告。 从 2020 年 7 月 15 日开始，将改为返回 400 错误代码。 

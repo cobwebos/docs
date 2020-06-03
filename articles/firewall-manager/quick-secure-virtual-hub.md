@@ -5,20 +5,19 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 05/19/2020
 ms.author: victorh
-ms.openlocfilehash: b9839e51fcea1e8fe4adc4760e16ae2d73b163ee
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 9c51fdb5142159e390ac4fcf59a04aa3dd747469
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83694130"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167190"
 ---
 # <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---resource-manager-template"></a>快速入门：使用 Azure 防火墙管理器保护虚拟中心安全 - 资源管理器模板
 
-在本快速入门中，你将通过 Azure 防火墙管理器预览版并使用资源管理器模板来保护虚拟中心的安全。
-
-部署的防火墙具有允许连接到 `www.microsoft.com` 的应用程序规则。 部署了两个 Windows Server 2019 虚拟机以测试防火墙。 一个跳转服务器用于连接到工作负载服务器。 从工作负载服务器，只能连接到 `www.microsoft.com`。
+在本快速入门中，你将通过 Azure 防火墙管理器预览版并使用资源管理器模板来保护虚拟中心的安全。 部署的防火墙具有允许连接到 `www.microsoft.com` 的应用程序规则。 部署了两个 Windows Server 2019 虚拟机以测试防火墙。 一个跳转服务器用于连接到工作负载服务器。 从工作负载服务器，只能连接到 `www.microsoft.com`。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -34,23 +33,23 @@ ms.locfileid: "83694130"
 
 ### <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/fwm-docs-qs/azuredeploy.json)。
+本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/fwm-docs-qs/)。
 
 :::code language="json" source="~/quickstart-templates/fwm-docs-qs/azuredeploy.json" range="001-477" highlight="47-76":::
 
 模板中定义了多个 Azure 资源：
 
-- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
-- [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
-- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
-- [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
-- [**Microsoft.Storage/storageAccounts**](/azure/templates/microsoft.storage/storageAccounts)
-- [**Microsoft.Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
-- [**Microsoft.Network/firewallPolicies**](/azure/templates/microsoft.network/firewallPolicies)
-- [**Microsoft.Network/routeTables**](/azure/templates/microsoft.network/routeTables)
 - [**Microsoft.Network/virtualWans**](/azure/templates/microsoft.network/virtualWans)
 - [**Microsoft.Network/virtualHubs**](/azure/templates/microsoft.network/virtualHubs)
+- [**Microsoft.Network/firewallPolicies**](/azure/templates/microsoft.network/firewallPolicies)
+- [**Microsoft.Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
+- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
+- [**Microsoft.Storage/storageAccounts**](/azure/templates/microsoft.storage/storageAccounts)
+- [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
+- [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
+- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
+- [**Microsoft.Network/routeTables**](/azure/templates/microsoft.network/routeTables)
 
 ### <a name="deploy-the-template"></a>部署模板
 

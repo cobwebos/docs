@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: f880f189b19b4909268b6e0b24654fc4682ab7c8
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 54f09c4b35f31619c3dcaa027c70444595c4352e
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83759177"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196516"
 ---
 # <a name="tutorial-create-a-labeling-project-preview-for-multi-class-image-classification"></a>教程：创建用于多类图像分类的标记项目（预览） 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -83,7 +83,7 @@ Azure 机器学习数据存储用于存储连接信息，例如订阅 ID 和令�
 
 1. 选择“+ 添加项目”。
 
-    ![创建一个项目](media/tutorial-labeling/create-project.png)
+    :::image type="content" source="media/tutorial-labeling/create-project.png" alt-text="创建项目":::
 
 ### <a name="project-details"></a>项目详细信息
 

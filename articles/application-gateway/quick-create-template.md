@@ -6,15 +6,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 03/23/2020
+ms.date: 05/28/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: cce3ef20a93c6d7a24bfa312501d2f8cc8ed9273
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 986e061c03634fe33af985c9d11569848500862c
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81604901"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170488"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---resource-manager-template"></a>快速入门：使用 Azure 应用程序网关定向 Web 流量 - 资源管理器模板
 
@@ -55,18 +55,20 @@ ms.locfileid: "81604901"
 
 将资源管理器模板部署到 Azure：
 
-1. 选择“部署到 Azure”  ，登录到 Azure 并打开模板。 该模板在运行 IIS 的后端池中创建应用程序网关、网络基础结构和两个虚拟机。
+1. 选择“部署到 Azure”，登录到 Azure 并打开模板。 该模板在运行 IIS 的后端池中创建应用程序网关、网络基础结构和两个虚拟机。
 
    [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-qs%2Fazuredeploy.json)
 
 2. 选择或创建资源组，键入虚拟机管理员用户名和密码。
-3. 选择“我同意上述条款和条件”，然后选择“购买”   。 部署可能需要 20 分钟或更长时间才能完成。
+3. 选择“查看 + 创建”，然后选择“创建”。 
+
+   部署可能需要 20 分钟或更长时间才能完成。
 
 ## <a name="validate-the-deployment"></a>验证部署
 
 虽然不需 IIS 即可创建应用程序网关，但安装它可以验证 Azure 是否已成功创建应用程序网关。 使用 IIS 测试应用程序网关：
 
-1. 在“概述”页面上查找应用程序网关的公共 IP 地址![记录应用程序网关公共 IP 地址](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png)或者，可以选择“所有资源”，在搜索框中输入“myAGPublicIPAddress”，然后在搜索结果中选择该地址    。 Azure 会在“概览”页上显示公共 IP 地址。 
+1. 在“概述”页面上查找应用程序网关的公共 IP 地址![记录应用程序网关公共 IP 地址](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png)或者，可以选择“所有资源”，在搜索框中输入“myAGPublicIPAddress”，然后在搜索结果中选择该地址 。 Azure 会在“概览”页上显示公共 IP 地址。
 2. 复制公共 IP 地址，然后将其粘贴到浏览器的地址栏中，以便浏览该 IP 地址。
 3. 检查响应。 有效响应验证应用程序网关是否已成功创建，以及是否能够成功连接后端。
 

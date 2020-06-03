@@ -9,25 +9,25 @@ ms.date: 02/14/2020
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: cc53f7ae6eb6254eaa05bf643ecfa0188650df95
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77461849"
 ---
 此部分介绍如何使用 [Azure 门户](https://portal.azure.com)创建 IoT 中心。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-1. 从 Azure 主页中选择“+ 创建资源”按钮，然后在“搜索市场”字段中输入“IoT 中心”。   
+1. 从 Azure 主页中选择“+ 创建资源”按钮，然后在“搜索市场”字段中输入“IoT 中心”。
 
-1. 在搜索结果中选择“IoT 中心”，然后选择“创建”   。
+1. 在搜索结果中选择“IoT 中心”，然后选择“创建” 。
 
-1. 在“基本信息”选项卡上，按如下所示填写字段： 
+1. 在“基本信息”选项卡上，按如下所示填写字段：
 
-   - **订阅**：选择要用于中心的订阅。
+   - 订阅：选择要用于中心的订阅。
 
-   - **资源组**：选择一个资源组或新建一个资源组。 若要新建资源组，请选择“新建”并填写要使用的名称。  若要使用现有的资源组，请选择它。 有关详细信息，请参阅[管理 Azure 资源管理器资源组](../articles/azure-resource-manager/management/manage-resource-groups-portal.md)。
+   - **资源组**：选择一个资源组或新建一个资源组。 若要新建资源组，请选择“新建”并填写要使用的名称。 若要使用现有的资源组，请选择它。 有关详细信息，请参阅[管理 Azure 资源管理器资源组](../articles/azure-resource-manager/management/manage-resource-groups-portal.md)。
 
    - **区域**：选择中心所在的区域。 选择最靠近你的位置。 某些功能（如 [IoT 中心设备流](../articles/iot-hub/iot-hub-device-streams-overview.md)）仅适用于特定区域。 对于这些受限功能，你必须选择受支持的区域之一。
 
@@ -37,7 +37,7 @@ ms.locfileid: "77461849"
 
    ![在 Azure 门户中创建中心](./media/iot-hub-include-create-hub/iot-hub-create-screen-basics.png)
 
-1. 在完成时选择“下一步:  大小和规模”，以继续创建中心。
+1. 在完成时选择“下一步:大小和规模”，以继续创建中心。
 
    ![使用 Azure 门户为新的中心设置大小和规模](./media/iot-hub-include-create-hub/iot-hub-create-screen-size-scale.png)
 
@@ -54,14 +54,14 @@ ms.locfileid: "77461849"
 
     - **高级设置** > **设备到云的分区**：此属性将设备到云消息与这些消息的同步读取器数目相关联。 大多数中心只需要 4 个分区。
 
-1.  在完成时选择“下一步:  标记”继续到下一屏幕。
+1.  在完成时选择“下一步:标记”继续到下一屏幕。
 
     标记是名称/值对。 可以为多个资源和资源组分配相同的标记，以便对资源进行分类并合并计费。 有关详细信息，请参阅[使用标记来组织 Azure 资源](../articles/azure-resource-manager/management/tag-resources.md)。
 
     ![使用 Azure 门户为中心分配标记](./media/iot-hub-include-create-hub/iot-hub-create-tabs.png)
 
-1.  在完成时选择“下一步:  查看+创建”可查看选择。 你会看到类似于此屏幕的内容，但其中包含创建中心时选择的值。 
+1.  在完成时选择“下一步:查看+创建”可查看选择。 你会看到类似于此屏幕的内容，但其中包含创建中心时选择的值。 
 
     ![查看用于创建新中心的信息](./media/iot-hub-include-create-hub/iot-hub-create-review.png)
 
-1.  选择“创建”以创建新的中心  。 创建中心需要几分钟时间。
+1.  选择“创建”以创建新的中心。 创建中心需要几分钟时间。

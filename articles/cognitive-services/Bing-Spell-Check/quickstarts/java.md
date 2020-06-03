@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: f318a500bd4ce256690ff59f68d99af5d7a25d9e
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 70ed795032c3d6d46aa57afaf5b5ece94bc74ea9
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83869793"
+ms.locfileid: "83995967"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>快速入门：使用必应拼写检查 REST API 和 Java 进行拼写检查
 
@@ -59,9 +59,9 @@ ms.locfileid: "83869793"
 
 1. 创建名为 `check()` 的函数，用于创建和发送 API 请求。 在此函数中，添加在后续步骤中指定的代码。 创建请求参数的字符串：
 
-   a. 用 `=` 运算符将市场代码分配到 `mkt` 参数。 
+   1. 用 `=` 运算符将市场代码分配到 `mkt` 参数。 
 
-   b. 使用 `&` 运算符添加 `mode` 参数，然后分配拼写检查模式。 
+   1. 使用 `&` 运算符添加 `mode` 参数，然后分配拼写检查模式。 
 
    ```java
    public static void check () throws Exception {

@@ -3,16 +3,16 @@ title: Azure EA 协议和修正合同
 description: 本文介绍 Azure EA 协议和修订如何影响 Azure EA 门户的使用。
 author: bandersmsft
 ms.author: banders
-ms.date: 05/07/2020
+ms.date: 06/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 356b08526d96b6aa51a537a3dd1f7266cbf47141
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4904390ce0642d0331e82610e8aef4b735b56f1f
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648185"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298136"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA 协议和修正合同
 
@@ -43,7 +43,7 @@ ms.locfileid: "83648185"
 
 **已过期** - EA 合约在达到企业协议结束日期时过期。 EA 客户将被取消延期，其所有服务将会禁用。
 
-从 2019 年 8 月 1 日起，Azure 商业客户无法接受新的取消形式。 所有注册将进入无限延期。 如果要停止使用 Azure 服务，请在 [Azure EA 门户](https://portal.azure.com)中关闭订阅。 或者，合作伙伴可以在 https://www.explore.ms 上提交终止请求。 对于使用政府协议类型的客户，措施没有变化。
+从 2019 年 8 月 1 日起，Azure 商业客户无法接受新的取消形式。 所有注册将进入无限延期。 如果要停止使用 Azure 服务，请在 [Azure 门户](https://portal.azure.com)中关闭订阅。 或者，合作伙伴可以在 https://www.explore.ms 上提交终止请求。 对于使用政府协议类型的客户，措施没有变化。
 
 **已转移** -“已转移”状态适用于其关联帐户和服务已转移到新注册的注册。 如果新注册编号是在续订期间生成的，则注册不会自动转移。 若要自动转移，必须将以前的注册编号包含在客户的续订请求中。
 
