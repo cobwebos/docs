@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: banders
-ms.openlocfilehash: ae94a5c8d7e9ff93098e85535aea3699206b9e03
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: b41435cb0b337edc2d73820c75da847913326315
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82626951"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015975"
 ---
 # <a name="what-are-azure-reservations"></a>什么是 Azure 预留项？
 
@@ -127,6 +127,6 @@ Azure 预留可以灵活地满足你不断变化的需求。 可以用一个预�
 - 详细了解服务计划的预留项：
     - [包含 Azure 虚拟机预留实例的虚拟机](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
     - [具有 Azure Cosmos DB 预留容量的 Azure Cosmos DB 资源](../../cosmos-db/cosmos-db-reserved-capacity.md)
-    - [具有 Azure SQL 数据库预留容量的 SQL 数据库计算资源](../../sql-database/sql-database-reserved-capacity.md)详细了解软件计划的预留项：
+    - [具有 Azure SQL 数据库预留容量的 SQL 数据库计算资源](../../azure-sql/database/reserved-capacity-overview.md)详细了解软件计划的预留项：
     - [Azure 预留项中的 Red Hat 软件计划](../../virtual-machines/linux/prepay-rhel-software-charges.md)
     - [Azure 预留项中的 SUSE 软件计划](../../virtual-machines/linux/prepay-suse-software-charges.md)
