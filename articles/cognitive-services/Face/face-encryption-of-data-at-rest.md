@@ -9,23 +9,23 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: egeaney
-ms.openlocfilehash: 1e0275c91b2243132650be7af256071589091c4b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 33495dd5b092cb51b3421e7204f3b529077d63b3
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201945"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309027"
 ---
 # <a name="face-service-encryption-of-data-at-rest"></a>静态数据的人脸服务加密
 
 在将数据保存到云时，人脸服务会自动加密数据。 人脸服务加密可以保护数据，并帮助你满足组织的安全性和符合性承诺。
 
-[!INCLUDE [cognitive-services-about-encryption](../../../includes/cognitive-services-about-encryption.md)]
+[!INCLUDE [cognitive-services-about-encryption](../includes/cognitive-services-about-encryption.md)]
 
 > [!IMPORTANT]
 > 客户托管的密钥仅可用于 E0 定价层。 若要请求使用客户管理的密钥的功能，请填写并提交[面部服务客户管理的密钥请求表单](https://aka.ms/cogsvc-cmk)。 大约需要3-5 个工作日内就会收到请求的状态。 根据需要，你可以将置于队列中并在空间可用时进行批准。 批准使用 CMK 与人脸服务后，你将需要创建新的人脸资源，并选择 E0 作为定价层。 创建具有 E0 定价层的面部资源后，可以使用 Azure Key Vault 来设置托管标识。
 
-### <a name="regional-availability"></a>区域可用性
+## <a name="regional-availability"></a>区域可用性
 
 客户托管的密钥目前在以下区域中提供：
 
@@ -34,11 +34,10 @@ ms.locfileid: "83201945"
 * 美国东部
 * US Gov 弗吉尼亚州
 
-[!INCLUDE [cognitive-services-cmk](../../../includes/cognitive-services-cmk.md)]
+[!INCLUDE [cognitive-services-cmk](../includes/configure-customer-managed-keys.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-* [人脸服务客户托管的密钥请求窗体](https://aka.ms/cogsvc-cmk)
-* [详细了解 Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
-
-
+* 有关支持 CMK 的服务的完整列表，请参阅[认知服务的客户托管密钥](../encryption/cognitive-services-encryption-keys-portal.md)
+* [什么是 Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)？
+* [认知服务客户托管的密钥请求表单](https://aka.ms/cogsvc-cmk)

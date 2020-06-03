@@ -10,12 +10,12 @@ ms.subservice: ink-recognizer
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: aahi
-ms.openlocfilehash: 36f2fa65f47f824ccc3544f5c13b5f5ee9afd21a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7e5c1c74a3659be855b3f846c16672d0d73b9de4
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67721739"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309690"
 ---
 # <a name="language-and-region-support-for-the-ink-recognizer-api"></a>手写识别器 API 的语言和区域支持
 
@@ -63,7 +63,7 @@ ms.locfileid: "67721739"
 | 挪威语(博克马尔语)                         |     `nb-NO`     |
 | 挪威语(尼诺斯克语)                        |     `nn-NO`     |
 | 波兰语                                     |     `pl-PL`     |
-| 葡萄牙语（巴西）                        |     `pt-BR`     |
+| 葡萄牙语(巴西)                        |     `pt-BR`     |
 | 葡萄牙语(葡萄牙)                      |     `pt-PT`     |
 | 罗曼什语                                    |     `rm-CH`     |
 | 罗马尼亚语                                   |     `ro-RO`     |
@@ -73,15 +73,15 @@ ms.locfileid: "67721739"
 | 塞尔维亚语(西里尔文，波斯尼亚和黑塞哥维那) |  `sr-Cyrl-BA`   |
 | 塞尔维亚语（西里尔文，黑山）             |  `sr-Cyrl-ME`   |
 | 塞尔维亚语(西里尔文，塞尔维亚)                 |  `sr-Cyrl-RS`   |
-| 塞尔维亚语（拉丁语系，波斯尼亚和黑塞哥维那）    |  `sr-Latn-BA`   |
+| 塞尔维亚语（拉丁语，波斯尼亚和黑塞哥维那）    |  `sr-Latn-BA`   |
 | 塞尔维亚语（拉丁语，黑山）                |  `sr-Latn-ME`   |
 | 塞尔维亚语(拉丁语，塞尔维亚)                    |  `sr-Latn-RS`   |
 | 茨瓦纳语(南非)                    |     `tn-ZA`     |
 | 斯洛伐克语                                     |     `sk-SK`     |
 | 斯洛文尼亚语                                  |     `sl-SI`     |
 | 西班牙语（阿根廷）                        |     `es-AR`     |
-| 西班牙语(西班牙)                            |     `es-ES`     |
-| 西班牙语（墨西哥）                           |     `es-MX`     |
+| 西班牙语（西班牙）                            |     `es-ES`     |
+| 西班牙语(墨西哥)                           |     `es-MX`     |
 | 瑞典语（瑞典）                           |     `sv-SE`     |
 | 土耳其语                                    |     `tr-TR`     |
 | 威尔士语                                      |     `cy-GB`     |
@@ -89,7 +89,7 @@ ms.locfileid: "67721739"
 | 班图语                                      |     `xh-ZA`     |
 | 祖鲁语                                       |     `zu-ZA`     |
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [什么是墨迹识别器 API？](overview.md)
 * [将数字墨迹笔划发送到手写识别器 API](concepts/send-ink-data.md)

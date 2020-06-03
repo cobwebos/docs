@@ -7,12 +7,12 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: 81818cc5ba2af1f9f0f70f7aa27fe62ed2c90c77
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bfa84a993fafe9240ba765de8d87ea4afb69cbd5
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80065672"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015941"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>了解如何将预留折扣应用于 Azure Cosmos DB
 
@@ -117,7 +117,7 @@ Azure 计费系统将向第一个处理且与预留配置相匹配的实例分�
 
 * [什么是适用于 Azure 的预留](save-compute-costs-reservations.md)  
 * [通过 Azure Cosmos DB 保留容量预付 Azure Cosmos DB 资源费用](../../cosmos-db/cosmos-db-reserved-capacity.md)  
-* [通过 Azure SQL 数据库保留容量预付 SQL 数据库计算资源费用](../../sql-database/sql-database-reserved-capacity.md)  
+* [通过 Azure SQL 数据库保留容量预付 SQL 数据库计算资源费用](../../azure-sql/database/reserved-capacity-overview.md)  
 * [管理 Azure 预留](manage-reserved-vm-instance.md)  
 * [了解即用即付订阅的预留使用情况](understand-reserved-instance-usage.md)  
 * [了解企业合约的预留使用情况](understand-reserved-instance-usage-ea.md)

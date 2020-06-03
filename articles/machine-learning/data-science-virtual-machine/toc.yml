@@ -6,8 +6,6 @@
   items:
     - name: Data Science Virtual Machine (DSVM) 是什么？
       href: overview.md
-    - name: Geo AI Data Science Virtual Machine 是什么？
-      href: geo-ai-dsvm-overview.md
     - name: Data Science Virtual Machine 包含的工具
       href: tools-included.md
 - name: 快速入门
@@ -17,8 +15,6 @@
       href: provision-vm.md
     - name: 创建 Ubuntu Data Science Virtual Machine
       href: dsvm-ubuntu-intro.md
-    - name: 创建 Geo AI Data Science Virtual Machine
-      href: provision-geo-ai-dsvm.md
 - name: 概念
   items:
     - name: 深度学习和人工智能框架
@@ -45,8 +41,6 @@
       href: vm-do-ten-things.md
     - name: 使用 Linux Data Science Virtual Machine
       href: linux-dsvm-walkthrough.md
-    - name: 使用 Geo AI Data Science Virtual Machine
-      href: use-geo-ai-dsvm.md
     - name: 创建自动缩放的 Data Science Virtual Machine 池
       href: dsvm-pools.md
     - name: 与 Azure Active Directory 集成
