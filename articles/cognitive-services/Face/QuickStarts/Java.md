@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 59c121f09858114cecfaeb45e257315d1ab92935
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 241aad3e9bf78d587c7f31d8046de171bd2638b3
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81403422"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263986"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>快速入门：使用 REST API 和 Java 检测图像中的人脸
 
@@ -248,7 +248,7 @@ public class Main {
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你创建了一个简单的 Java 控制台应用程序，该应用程序在 Azure 人脸 API 中使用 REST 调用检测图像中的人脸并返回其属性。 接下来，请了解如何在 Android 应用程序中更充分地使用此功能。
+在本快速入门中，你创建了一个简单的 Java 控制台应用程序，该应用程序在 Azure 人脸 API 中使用 REST 调用检测图像中的人脸并返回其属性。 接下来，请浏览人脸 API 参考文档，详细了解支持的方案。
 
 > [!div class="nextstepaction"]
-> [教程：创建一个用于检测和定格人脸的 Android 应用](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)
+> [人脸 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

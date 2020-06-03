@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: philmea
-ms.openlocfilehash: 5f88a21efd04c9dd24fe31e925a3b911b5ec9df2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 380e354beb2f58b958e3c88d9f93ad0bda655971
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77045892"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266468"
 ---
 # <a name="run-azure-iot-edge-on-windows-server-virtual-machines"></a>在 Windows Server 虚拟机上运行 Azure IoT Edge
 
@@ -22,11 +22,11 @@ ms.locfileid: "77045892"
 
 若要了解有关 IoT Edge 运行时如何工作以及包含哪些组件的详细信息，请参阅[了解 Azure IoT Edge 运行时及其体系结构](iot-edge-runtime.md)。
 
-本文列出了使用 [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure 市场套餐在 Windows Server 2019 虚拟机上运行 Azure IoT Edge 运行时的步骤。 若要在其他版本中使用，请遵照[在 Windows 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-windows.md)中的说明。
+本文列出了使用 [Windows Server](https://www.microsoft.com/cloud-platform/windows-server-pricing) Azure 市场套餐在 Windows Server 2019 虚拟机上运行 Azure IoT Edge 运行时的步骤。 若要在其他版本中使用，请遵照[在 Windows 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-windows.md)中的说明。
 
 ## <a name="deploy-from-the-azure-marketplace"></a>从 Azure 市场部署
 
-1. 导航到 [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure 市场套餐，或者在 [Azure 市场](https://azuremarketplace.microsoft.com/)中搜索“Windows Server”
+1. 导航到 [Windows Server](https://www.microsoft.com/cloud-platform/windows-server-pricing) Azure 市场套餐，或者在 [Azure 市场](https://azuremarketplace.microsoft.com/)中搜索“Windows Server”
 2. 选择“立即获取” 
 3. 在“软件计划”中，找到“包含容器的 Windows Server 2019 Datacenter Server Core”，并在下一个对话框中选择“继续”。  
     * 对于其他版本包含容器的 Windows Server，也可以遵照这些说明

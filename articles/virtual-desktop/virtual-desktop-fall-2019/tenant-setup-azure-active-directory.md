@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8b08e8e4d6623277d1935fc85e302e8ce3c88eea
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: da5211206c12f2fe3259fcbbf196a7728c026b26
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124391"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234109"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>教程：在 Windows 虚拟桌面中创建租户
 
@@ -152,9 +152,6 @@ New-RdsRoleAssignment -TenantName <TenantName> -SignInName <Upn> -RoleDefinition
 ```
 
 ## <a name="next-steps"></a>后续步骤
-
-有关更深入的演练，请查看我们的 [Windows 虚拟桌面学习路径](https://docs.microsoft.com/learn/paths/m365-wvd/)。
-
 创建租户后，需要在 Azure Active Directory 中创建服务主体并在 Windows 虚拟桌面中为其分配角色。 通过服务主体可成功部署 Windows 虚拟桌面 Azure 市场产品/服务，从而创建主机池。 若要详细了解主机池，请继续学习有关在 Windows 虚拟桌面中创建主机池的教程。
 
 > [!div class="nextstepaction"]
