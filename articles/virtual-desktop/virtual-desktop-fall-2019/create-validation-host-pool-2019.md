@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/30/2020
+ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 21c3e3c7ae515f5a740384d202451f61291bc05b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: fe6b047d10b8aef8faf81365cae940b05b3d798c
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613843"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117743"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>教程：创建主机池以验证服务更新
 
@@ -82,4 +82,4 @@ cmdlet 的结果应类似于以下输出：
 既然已创建了验证主机池，接下来可以了解如何使用 Azure 服务运行状况来监视 Windows 虚拟桌面部署。 
 
 > [!div class="nextstepaction"]
-> [设置服务警报](../set-up-service-alerts.md)
+> [设置服务警报](set-up-service-alerts-2019.md)

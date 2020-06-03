@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 03/04/2020
-ms.openlocfilehash: 8af412fb2660625ffb413052b06d4429d7844e70
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: cca09f53f90b43713c2b9b764568fb0a6d157c5d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656511"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118957"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>教程：使用 Azure 机器学习中的自动化 ML 创建分类模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -224,7 +224,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 + 详细了解[自动化机器学习](concept-automated-ml.md)。
 + 有关分类指标和图表的详细信息，请参阅[理解自动化机器学习结果](how-to-understand-automated-ml.md#classification)一文。
-+ 详细了解[特征化](how-to-use-automated-ml-for-ml-models.md#featurization)。
++ 详细了解[特征化](how-to-configure-auto-features.md#featurization)。
 + 详细了解[数据分析](how-to-use-automated-ml-for-ml-models.md#profile)。
 
 

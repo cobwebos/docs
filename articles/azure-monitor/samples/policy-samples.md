@@ -1,17 +1,17 @@
 ---
 title: Azure Monitor 的内置策略定义
 description: 列出 Azure Monitor 的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 05/13/2020
+ms.date: 05/29/2020
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 86fadc6d249f61f6b876f81e40c868f5cd10ecf3
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: defd6593b02a6a2805118654f61c4a5ea8cc72ed
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837251"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234475"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-monitor"></a>Azure Monitor 的 Azure Policy 内置策略定义
 

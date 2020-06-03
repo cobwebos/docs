@@ -6,12 +6,12 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
-ms.openlocfilehash: e5fbb14477275ca329243797b75550cfe92077b6
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: a92c5fde68227bf94342dd380250429675bd084d
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701551"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248849"
 ---
 # <a name="use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>使用 Azure Spring Cloud 的断路器仪表板
 Spring [Cloud Netflix Turbine](https://github.com/Netflix/Turbine) 广泛用于聚合多个 [Hystrix](https://github.com/Netflix/Hystrix) 指标流，以便可以使用 Hystrix 仪表板在单个视图中监视流。 本教程演示如何在 Azure Spring Cloud 上使用它们。
@@ -59,7 +59,7 @@ az spring-cloud app deploy -n hystrix-turbine --jar-path hystrix-turbine/target/
 使用公共终结点或专用测试终结点进行验证。
 
 ### <a name="using-public-endpoints"></a>使用公共终结点
-从浏览器使用路径 `https://<SERVICE-NAME>-hystrix-turbine azuremicroservices.io/hystrix` 访问 hystrix-turbine。  下图显示在此应用中运行的 Hystrix 仪表板。
+从浏览器使用路径 `https://<SERVICE-NAME>-hystrix-turbine.azuremicroservices.io/hystrix` 访问 hystrix-turbine。  下图显示在此应用中运行的 Hystrix 仪表板。
 
 ![Hystrix 仪表板](media/spring-cloud-circuit-breaker/hystrix-dashboard.png)
 

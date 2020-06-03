@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/30/2020
+ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9f87f5387fc97e3b697488b266cb2c3981409294
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: ad78fe2ce66511cb75e23a28a30c44b173da9020
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613863"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117726"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>教程：通过使用 PowerShell 创建服务主体和角色分配
 
@@ -116,4 +116,4 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com" -Credential $
 创建服务主体并在 Windows 虚拟桌面租户中为其分配角色后，可用它来创建主机池。 若要详细了解主机池，请继续学习有关在 Windows 虚拟桌面中创建主机池的教程。
 
  > [!div class="nextstepaction"]
- > [通过 Azure 市场创建主机池](../create-host-pools-azure-marketplace.md)
+ > [通过 Azure 市场创建主机池](create-host-pools-azure-marketplace-2019.md)
