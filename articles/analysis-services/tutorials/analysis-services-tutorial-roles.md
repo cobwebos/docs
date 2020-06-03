@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 0bedc88b78f2ac758d3201965425b42b69580719
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 6e757260c7cd8945ff75dd0e760f3afeffd992f9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81454248"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016383"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>教程：配置服务器管理员和用户角色
 
@@ -27,7 +27,7 @@ ms.locfileid: "81454248"
 
 若要详细了解 Azure Analysis Services 中的用户安全性，请参阅[身份验证和用户权限](../analysis-services-manage-users.md)。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 订阅中的一个 Azure Active Directory。
 - 已在订阅中创建 [Azure Analysis Services 服务器](../analysis-services-create-server.md)。
@@ -59,7 +59,7 @@ ms.locfileid: "81454248"
     ![在 SSMS 中连接](./media/analysis-services-tutorial-roles/aas-connect-ssms-auth.png)
 
     > [!TIP]
-    > 建议选择“具有 MFA 支持的 Active Directory 通用版”。 这种身份验证类型支持[非交互式多重身份验证](../../sql-database/sql-database-ssms-mfa-authentication.md)。 
+    > 建议选择“具有 MFA 支持的 Active Directory 通用版”。 这种身份验证类型支持[非交互式多重身份验证](../../azure-sql/database/authentication-mfa-ssms-overview.md)。 
 
 3. 在“对象资源管理器”  中，以展开方式查看服务器对象。 右键单击即可查看服务器属性。
    
@@ -100,7 +100,7 @@ ms.locfileid: "81454248"
 
 在此任务中，请使用 TMSL 脚本中的 [Create](https://docs.microsoft.com/analysis-services/tmsl/create-command-tmsl) 命令创建一个新的 Internet 销售全局角色，为该角色指定读取  权限，然后从 Azure AD 添加用户或组帐户。
 
-1. 在“对象资源管理器”中右键单击“adventureworks”，然后单击“新建查询”   >   “XMLA”。   
+1. 在“对象资源管理器”中右键单击“adventureworks”，然后单击“新建查询” > “XMLA”。  
 2. 将以下 TMSL 脚本复制并粘贴到查询编辑器中：
 
     ```JSON
@@ -129,8 +129,8 @@ ms.locfileid: "81454248"
 
 ## <a name="verify-your-changes"></a>验证所做的更改
 
-1. 在“对象资源管理器”中单击服务器名，然后单击“刷新”或按 **F5**。  
-2. 展开“数据库” > “adventureworks” > “角色”。    验证在前述任务中添加的用户帐户和新角色更改是否显示。   
+1. 在“对象资源管理器”中单击服务器名，然后单击“刷新”或按 **F5**。 
+2. 展开“数据库” > “adventureworks” > “角色”。   验证在前述任务中添加的用户帐户和新角色更改是否显示。   
 
     ![在对象资源管理器中验证](./media/analysis-services-tutorial-roles/aas-connect-ssms-verify.png)
 

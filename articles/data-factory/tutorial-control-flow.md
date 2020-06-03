@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 77fa8f72d4d4d929d15859fde71f112de1ddd14e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7746726775cd5230f48842ad9a9260efe0e540b5
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418722"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022106"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>数据工厂管道中的分支和链接活动
 
@@ -48,7 +48,7 @@ ms.locfileid: "81418722"
 
 * Azure 存储帐户。 可将 Blob 存储用作源数据存储。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)。
 * Azure 存储资源管理器下载。 若要安装此工具，请参阅 [Azure 存储资源管理器](https://storageexplorer.com/)。
-* Azure SQL 数据库。 将数据库用作接收器数据存储。 如果你没有 Azure SQL 数据库，请参阅[创建 Azure SQL 数据库](../sql-database/sql-database-get-started-portal.md)。
+* Azure SQL 数据库。 将数据库用作接收器数据存储。 如果你没有 Azure SQL 数据库，请参阅[创建 Azure SQL 数据库](../azure-sql/database/single-database-create-quickstart.md)。
 * Visual Studio。 本文使用 Visual Studio 2019。
 * Azure .NET SDK。 下载并安装 [Azure .NET SDK](https://azure.microsoft.com/downloads/)。
 

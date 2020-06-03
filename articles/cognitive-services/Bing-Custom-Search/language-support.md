@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: aahi
-ms.openlocfilehash: 85326ae9166f7ea15ec2f45c01755b8f9ef03aff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 004bd973651d5903db4254a8883be2c8a83d9b38
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "66388565"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310574"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>必应自定义搜索 API 的语言和区域支持
 
@@ -36,7 +36,7 @@ ms.locfileid: "66388565"
 |奥地利|AT|
 |比利时|BE|
 |巴西|BR|
-|Canada|CA|
+|加拿大|CA|
 |智利|CL|
 |丹麦|DK|
 |芬兰|FI|
@@ -44,7 +44,7 @@ ms.locfileid: "66388565"
 |德国|DE|
 |香港特别行政区|HK|
 |印度|IN|
-|印度尼西亚|ID|
+|印度尼西亚|Id|
 |意大利|IT|
 |日本|JP|
 |韩国|KR|
@@ -63,10 +63,10 @@ ms.locfileid: "66388565"
 |西班牙|ES|
 |瑞典|SE|
 |瑞士|CH|
-|中国台湾|TW|
+|台湾|TW|
 |土耳其|TR|
-|United Kingdom|GB|
-|United States|美国|
+|英国|GB|
+|美国|US|
 
 
 ## <a name="markets"></a>市场
@@ -79,8 +79,8 @@ ms.locfileid: "66388565"
 |比利时|荷兰语|nl-BE|
 |比利时|法语|fr-BE|
 |巴西|葡萄牙语|pt-BR|
-|Canada|英语|en-CA|
-|Canada|法语|fr-CA|
+|加拿大|英语|en-CA|
+|加拿大|法语|fr-CA|
 |智利|西班牙语|es-CL|
 |丹麦|丹麦语|da-DK|
 |芬兰|芬兰语|fi-FI|
@@ -108,8 +108,8 @@ ms.locfileid: "66388565"
 |瑞典|瑞典语|sv-SE|
 |瑞士|法语|fr-CH|
 |瑞士|德语|de-CH|
-|中国台湾|繁体中文|zh-TW|
+|台湾|繁体中文|zh-TW|
 |土耳其|土耳其语|tr-TR|
-|United Kingdom|英语|en-GB|
-|United States|英语|zh-CN|
-|United States|西班牙语|es-US|
+|英国|英语|en-GB|
+|美国|英语|zh-CN|
+|美国|西班牙语|es-US|
