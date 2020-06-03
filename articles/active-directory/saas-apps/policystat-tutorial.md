@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 4f467e061ad52fdcc6d1e8706bb902088b237c24
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 3e0e220467c8c16deb413f6c70f236f6de67f980
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848713"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142004"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>教程：Azure Active Directory 与 PolicyStat 的集成
 
@@ -175,11 +175,11 @@ ms.locfileid: "83848713"
    
     a. 在“用户名属性”文本框中，键入“uid”。 
 
-    b. 在“名字属性”文本框中，键入 Azure **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname** 中的名字属性声明名称。
+    b. 在“名字属性”文本框中，键入 Azure **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`** 中的名字属性声明名称。
 
-    c. 在“姓氏属性”文本框中，键入 Azure **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname** 中的姓氏属性声明名称。
+    c. 在“姓氏属性”文本框中，键入 Azure **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`** 中的姓氏属性声明名称。
 
-    d. 在“电子邮件属性”文本框中，键入 Azure **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** 中的电子邮件属性声明名称。
+    d. 在“电子邮件属性”文本框中，键入 Azure **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** 中的电子邮件属性声明名称。
 
     e. 单击 **“保存更改”** 。
 

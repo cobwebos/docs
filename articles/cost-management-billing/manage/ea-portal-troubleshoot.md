@@ -3,16 +3,16 @@ title: 排查 Azure EA 门户访问问题
 description: 本文介绍 Azure EA 门户中 Azure 企业协议 (EA) 可能会发生的一些常见问题。
 author: bandersmsft
 ms.author: banders
-ms.date: 05/07/2020
+ms.date: 06/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 97ba4e77c96859115c974b630a455f4bea62051a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ed40c6d55f380d979408003a2bd370083cf0e864
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654743"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299139"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>排查 Azure EA 门户访问问题
 
