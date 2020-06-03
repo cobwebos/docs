@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 741bd94b290560bdc850cbf7bc24ec57104d8a66
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 8afc8b70257f07c95b34c4e372e0e7425ae20fcd
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613853"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84112665"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>教程：通过使用 Azure 市场创建主机池
 
@@ -162,4 +162,4 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 现已创建一个主机池，并为用户分配了对该池的桌面的访问权限。 可以使用 RemoteApp 程序填充主机池。 若要详细了解如何在 Windows 虚拟桌面中管理应用，请参阅以下教程：
 
 > [!div class="nextstepaction"]
-> [管理应用组教程](../manage-app-groups.md)
+> [管理应用组教程](manage-app-groups-2019.md)

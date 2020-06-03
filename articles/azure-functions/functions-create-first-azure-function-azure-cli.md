@@ -4,12 +4,12 @@ description: 了解如何通过命令行创建函数，然后将本地项目发�
 ms.date: 03/30/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 7826701a2d328fe40ad75bb3d68b2764d53f9590
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 8b720a34268a1a43b65ef8a7b8afbf61b753f79a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82626245"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195014"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>快速入门：在 Azure 中创建用于响应 HTTP 请求的函数
 
@@ -105,7 +105,7 @@ Maven 会请求你提供所需的值，以在部署上完成项目的生成。
 | **groupId** | `com.fabrikam` | 一个值，用于按照 Java 的[包命名规则](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7)在所有项目中标识你的项目。 |
 | **artifactId** | `fabrikam-functions` | 一个值，该值是 jar 的名称，没有版本号。 |
 | **version** | `1.0-SNAPSHOT` | 选择默认值。 |
-| **package** | `com.fabrikam.functions` | 一个值，该值是所生成函数代码的 Java 包。 使用默认值。 |
+| **package** | `com.fabrikam` | 一个值，该值是所生成函数代码的 Java 包。 使用默认值。 |
 
 键入 `Y` 或按 Enter 进行确认。
 
@@ -145,7 +145,7 @@ cd fabrikam-functions
 #### <a name="functionjava"></a>Function.java
 Function.java 包含一个接收 `request` 变量中的请求数据的 `run` 方法，该变量是使用 [HttpTrigger](/java/api/com.microsoft.azure.functions.annotation.httptrigger) 注释修饰的 [HttpRequestMessage](/java/api/com.microsoft.azure.functions.httprequestmessage)，用于定义触发器行为。  
 
-:::code language="java" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/src/main/java/com/function/Function.java":::
+:::code language="java" source="~/azure-functions-samples-java/src/main/java/com/functions/Function.java":::
 
 响应消息由 [HttpResponseMessage.Builder](/java/api/com.microsoft.azure.functions.httpresponsemessage.builder) API 生成。
 
@@ -153,7 +153,7 @@ Function.java 包含一个接收 `request` 变量中的请求数据的 `run` 方
 
 为托管应用而创建的 Azure 资源的设置在插件的 configuration 元素中使用生成的 pom.xml 文件中 `com.microsoft.azure` 的 groupId 定义。   例如，以下 configuration 元素指示基于 Maven 的部署在 `westus` 区域中的 `java-functions-group` 资源组内创建一个函数应用。 该函数应用本身在 Windows 上运行，后者托管在 `java-functions-app-service-plan` 计划（默认情况下是一个无服务器消耗计划）中。    
 
-:::code language="java" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/pom.xml" range="116-155":::
+:::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-102":::
 
 若要控制在 Azure 中创建资源的方式，可以更改这些设置，例如，在初始部署之前将 `runtime.os` 从 `windows` 更改为 `linux`。 有关 Maven 插件支持的设置的完整列表，请参阅[配置详细信息](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details)。
 
@@ -414,3 +414,4 @@ az group delete --name java-functions-group
 
 > [!div class="nextstepaction"]
 > [连接到 Azure 存储队列](functions-add-output-binding-storage-queue-cli.md)
+ 

@@ -3,12 +3,12 @@ title: 快速入门：第一个门户查询
 description: 本快速入门介绍在 Azure 门户中使用 Azure Resource Graph 资源管理器运行第一个查询的步骤。
 ms.date: 05/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 69fb1262de706185d8968e9381bb34dd0d84a3b7
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: a4b8e0b792dfda1bbd1866444ddc6c4ec8d289b6
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872081"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148032"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>快速入门：使用 Azure Resource Graph Explorer 运行第一个 Resource Graph 查询
 
@@ -51,7 +51,7 @@ ms.locfileid: "83872081"
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>基于 Resource Graph 查询创建图表
 
-运行上述最后一个查询后，如果你选择“图表”选项卡，则会看到一条消息，指出“该结果集与饼图可视化效果不兼容。” 列出结果的查询无法生成图表，但提供资源计数的查询则可以。 让我们使用[示例查询 - 按 OS 类型统计虚拟机数目](./samples/starter.md#count-virtual-machines-by-os-type)，基于 Resource Graph 查询创建可视化效果。
+运行上述最后一个查询后，如果你选择“图表”选项卡，则会看到一条消息，指出“该结果集与饼图可视化效果不兼容。” 列出结果的查询无法生成图表，但提供资源计数的查询则可以。 让我们使用[示例查询 - 按 OS 类型统计虚拟机数目](./samples/starter.md#count-os)，基于 Resource Graph 查询创建可视化效果。
 
 1. 在窗口中的“查询 1”部分输入以下查询，然后选择“运行查询”。 
 

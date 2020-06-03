@@ -9,16 +9,16 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: skamal
-ms.openlocfilehash: f68112095bc8a8fd9bcc1bd67ff77827d6d00fd7
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d4fa61f8290f3bf9e2f065ec841fa94d8ecaaac1
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195615"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267199"
 ---
 # <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>教程：集成多个沉浸式阅读器资源
 
-在[概述](./overview.md)中，你了解了沉浸式阅读器是什么以及它如何实施经过验证的技术以提高语言学习者、新兴读者和有学习差异的学生的阅读理解能力。 在 [Node.js 快速入门](./quickstart-nodejs.md)中，你学习了如何将沉浸式阅读器与单个资源配合使用。 本教程介绍如何将多个沉浸式阅读器资源集成到同一个应用程序中。 在本教程中，你将了解如何执行以下操作：
+在[概述](./overview.md)中，你了解了沉浸式阅读器是什么以及它如何实施经过验证的技术以提高语言学习者、新兴读者和有学习差异的学生的阅读理解能力。 在 [Node.js 快速入门](./quickstarts/client-libraries.md?pivots=programming-language-nodejs)中，你学习了如何将沉浸式阅读器与单个资源配合使用。 本教程介绍如何将多个沉浸式阅读器资源集成到同一个应用程序中。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在现有资源组下创建多个沉浸式阅读器资源
@@ -28,7 +28,7 @@ ms.locfileid: "82195615"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 按照[快速入门](./quickstart-nodejs.md)操作，创建一个使用 NodeJS 来启动沉浸式阅读器的 Web 应用。 在该快速入门中，我们配置单个沉浸式阅读器资源。 在本教程中，我们将在其基础上进行构建。
+* 按照[快速入门](./quickstarts/client-libraries.md?pivots=programming-language-nodejs)操作，创建一个使用 NodeJS 来启动沉浸式阅读器的 Web 应用。 在该快速入门中，我们配置单个沉浸式阅读器资源。 在本教程中，我们将在其基础上进行构建。
 
 ## <a name="create-the-immersive-reader-resources"></a>创建沉浸式阅读器资源
 
