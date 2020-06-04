@@ -36,8 +36,8 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
 | 查询参数 | 说明 |
 | --------- | ----------- |
 | api-version <img width=200/> | 必需参数  。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。 |
-| 从 | 必需参数  。<br/>指定输入文本的语言。 源语言必须是 [ 范围中包含的](./v3-0-languages.md)支持的语言`dictionary`之一。 |
-| to | 必需参数  。<br/>指定输出文本的语言。 目标语言必须是 [ 范围中包含的](./v3-0-languages.md)支持的语言`dictionary`之一。  | 
+| 从 | 必需参数  。<br/>指定输入文本的语言。 源语言必须是 `dictionary` 范围中包含的[支持的语言](./v3-0-languages.md)之一。 |
+| to | 必需参数  。<br/>指定输出文本的语言。 目标语言必须是 `dictionary` 范围中包含的[支持的语言](./v3-0-languages.md)之一。  | 
 
 请求标头包括：
 
@@ -52,9 +52,9 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
 
 请求的正文是一个 JSON 数组。 每个数组元素都是一个具有以下属性的 JSON 对象：
 
-  * `Text`：一个字符串，指定要查找的术语。 这应该是前一个`normalizedText`字典查找[请求的反向翻译中 ](./v3-0-dictionary-lookup.md) 字段的值。 它也可以是 `normalizedSource` 字段的值。
+  * `Text`：一个字符串，指定要查找的术语。 这应该是前一个[字典查找](./v3-0-dictionary-lookup.md)请求的反向翻译中 `normalizedText` 字段的值。 它也可以是 `normalizedSource` 字段的值。
 
-  * `Translation`：一个字符串，指定[字典查找](./v3-0-dictionary-lookup.md)操作先前返回的翻译文本。 这应该是`normalizedTarget`字典查找`translations`响应的 [ 列表中 ](./v3-0-dictionary-lookup.md) 字段的值。 该服务将返回特定源-目标字对的示例。
+  * `Translation`：一个字符串，指定[字典查找](./v3-0-dictionary-lookup.md)操作先前返回的翻译文本。 这应该是[字典查找](./v3-0-dictionary-lookup.md)响应的 `translations` 列表中 `normalizedTarget` 字段的值。 该服务将返回特定源-目标字对的示例。
 
 示例如下：
 
@@ -79,11 +79,11 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
   
   * `examples`：（源术语、目标术语）对的示例列表。 每个列表元素都是一个具有以下属性的对象：
 
-    * `sourcePrefix`：在  _的值_之前`sourceTerm`连接以形成完整示例的字符串。 不要添加空格字符，因为它在应存在时已经存在了。 此值可能为空字符串。
+    * `sourcePrefix`：在 `sourceTerm` 的值_之前_连接以形成完整示例的字符串。 不要添加空格字符，因为它在应存在时已经存在了。 此值可能为空字符串。
 
     * `sourceTerm`：一个字符串，等于被查找的实际术语。 该字符串添加了 `sourcePrefix` 和 `sourceSuffix` 以形成完整示例。 其值是分开的，因此可以在用户界面中标记，例如通过将其标为粗体。
 
-    * `sourceSuffix`：在  _的值_之后`sourceTerm`连接以形成完整示例的字符串。 不要添加空格字符，因为它在应存在时已经存在了。 此值可能为空字符串。
+    * `sourceSuffix`：在 `sourceTerm` 的值_之后_连接以形成完整示例的字符串。 不要添加空格字符，因为它在应存在时已经存在了。 此值可能为空字符串。
 
     * `targetPrefix`：一个类似于 `sourcePrefix` 但用于目标的字符串。
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: mbaldwin
-ms.openlocfilehash: ce78ade4df3c5bcea9e4e44750c430065cbfc5b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c45839d622f4bad5097006a364a36db05ce5dacc
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81454639"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84012970"
 ---
 # <a name="azure-encryption-overview"></a>Azure 加密概述
 
@@ -28,7 +28,7 @@ ms.locfileid: "81454639"
 
 ## <a name="encryption-of-data-at-rest"></a>静态数据加密
 
-静态数据包括以任何数字格式驻留在物理介质上的永久性存储中的信息。 该介质可包括磁性介质或光学介质上的文件、归档数据和数据备份。 Microsoft Azure 提供各种数据存储解决方案，以满足不同需求，包括文件、磁盘、blob 和表存储。 Microsoft 还提供加密以保护 [Azure SQL 数据库](../../sql-database/sql-database-technical-overview.md)、[Azure Cosmos DB](../../data-factory/introduction.md) 和 Azure Data Lake。
+静态数据包括以任何数字格式驻留在物理介质上的永久性存储中的信息。 该介质可包括磁性介质或光学介质上的文件、归档数据和数据备份。 Microsoft Azure 提供各种数据存储解决方案，以满足不同需求，包括文件、磁盘、blob 和表存储。 Microsoft 还提供加密以保护 [Azure SQL 数据库](../../azure-sql/database/sql-database-paas-overview.md)、[Azure Cosmos DB](../../data-factory/introduction.md) 和 Azure Data Lake。
 
 静态数据加密可用于服务型软件 (SaaS)、平台即服务 (PaaS) 和基础结构即服务 (IaaS) 云模型中的服务。 本文总结并提供资源，以帮助使用 Azure 加密选项。
 
@@ -51,9 +51,9 @@ Azure 支持各种加密模型，包括使用服务托管密钥、Key Vault 中�
 
 三个服务器端加密模型提供不同的密钥管理特性，可根据要求进行选择：
 
-- **服务托管密钥：** 可带来低开销的控制和便利。
+- **服务托管密钥**：可带来低开销的控制和便利。
 
-- **客户托管密钥**：可用于控制密钥，包括支持“创建自己的密钥”(BYOK) 或生成新密钥。
+- **客户管理的密钥**：可用于控制密钥，包括支持“创建自己的密钥”(BYOK) 或生成新密钥。
 
 - **客户所控硬件上的服务托管密钥**：可用于管理不受 Microsoft 控制的专有存储库中的密钥。 此特性称为自留密钥 (HYOK)。 但是，配置相当复杂，并且大多数 Azure 服务都不支持此模式。
 
@@ -85,11 +85,11 @@ Azure Blob 存储和 Azure 文件共享中的静态数据都可以在服务器�
 
 ### <a name="encryption-of-data-at-rest-with-azure-sql-database"></a>使用 Azure SQL 数据库加密静态数据
 
-[Azure SQL 数据库](../../sql-database/sql-database-technical-overview.md)是 Azure 中通用的关系数据库服务，支持关系数据、JSON、空间和 XML 等结构。 SQL 数据库通过透明数据加密 (TDE) 功能支持服务器端加密，通过 Always Encrypted 功能支持客户端加密。
+[Azure SQL 数据库](../../azure-sql/database/sql-database-paas-overview.md)是 Azure 中通用的关系数据库服务，支持关系数据、JSON、空间和 XML 等结构。 SQL 数据库通过透明数据加密 (TDE) 功能支持服务器端加密，通过 Always Encrypted 功能支持客户端加密。
 
 #### <a name="transparent-data-encryption"></a>透明数据加密
 
-[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) 可通过数据库加密密钥 (DEK) 实时加密 [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016)、[Azure SQL 数据库](../../sql-database/sql-database-technical-overview.md)和 [Azure SQL 数据仓库](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)数据文件，该加密密钥存储在数据库启动记录中，可在恢复期间使用。
+[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) 可通过数据库加密密钥 (DEK) 实时加密 [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016)、[Azure SQL 数据库](../../azure-sql/database/sql-database-paas-overview.md)和 [Azure SQL 数据仓库](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)数据文件，该加密密钥存储在数据库启动记录中，可在恢复期间使用。
 
 TDE 使用 AES 和三重数据加密标准 (3DES) 加密算法保护数据和日志文件。 数据库文件加密在页面级执行。 加密数据库中的页面在写入磁盘之前被加密，在读入内存后被解密。 默认情况下，新创建的 Azure SQL 数据库启用 TDE。
 
@@ -105,7 +105,7 @@ CLE 具有内置函数，可通过函数使用对称或非对称密钥、证书�
 
 ### <a name="cosmos-db-database-encryption"></a>Cosmos DB 数据库加密
 
-[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md)是 Microsoft 的全球分布式多模型数据库。 存储在非易失性存储（固态硬盘）中的 Cosmos DB 中的用户数据默认加密。 无法将其打开或关闭。 静态加密是通过许多安全技术实现的，其中包括安全密钥存储系统、加密网络以及加密 API。 加密密钥由 Microsoft 管理，并根据 Microsoft 的内部指南进行轮换。
+[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) 由 Microsoft 提供，是全球分布式多模型数据库。 存储在非易失性存储（固态硬盘）中的 Cosmos DB 中的用户数据默认加密。 无法将其打开或关闭。 静态加密是通过许多安全技术实现的，其中包括安全密钥存储系统、加密网络以及加密 API。 加密密钥由 Microsoft 管理，并根据 Microsoft 的内部指南进行轮换。
 
 ### <a name="at-rest-encryption-in-data-lake"></a>Data Lake 中的静态加密
 
@@ -181,7 +181,7 @@ Microsoft 使用[传输层安全性](https://en.wikipedia.org/wiki/Transport_Lay
 
 可以使用 Azure门户、PowerShell 或 Azure CLI 将站点到站点 VPN 连接配置到虚拟网络。
 
-有关详细信息，请参见:
+有关详细信息，请参阅：
 
 [在 Azure 门户中创建站点到站点连接](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 

@@ -1,14 +1,14 @@
 ---
 title: 在 LUIS 门户中测试应用
 description: 使用语言理解 (LUIS) 持续优化应用程序并改进其语言理解能力。
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/20/2020
-ms.openlocfilehash: 91994418b50eb112582bbed1853dd85e9db3599d
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 86ee90e2d3bb322a4f55439d105941cf43462d3e
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714374"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344146"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>在 LUIS 门户中测试 LUIS 应用
 
@@ -22,7 +22,7 @@ ms.locfileid: "83714374"
 
 ## <a name="train-before-testing"></a>测试前训练
 
-1. 登录到[LUIS 门户](https://www.luis.ai)，选择**订阅**和**创作资源**，查看分配给该创作资源的应用。
+1. 登录到 [LUIS 门户](https://www.luis.ai)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
 1. 通过在 **"我的应用**" 页上选择应用程序的名称来打开应用。
 1. 若要针对活动应用的最新版本进行测试，请在测试前从顶部菜单中选择 "**训练**"。
 
@@ -30,7 +30,7 @@ ms.locfileid: "83714374"
 
 测试查询文本不应与应用中的任何示例最谈话完全相同。 测试查询文本应包括用户预期的 word 选择、短语长度和实体使用情况。
 
-1. 登录到[LUIS 门户](https://www.luis.ai)，选择**订阅**和**创作资源**，查看分配给该创作资源的应用。
+1. 登录到 [LUIS 门户](https://www.luis.ai)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
 1. 通过在 **"我的应用**" 页上选择应用程序的名称来打开应用。
 
 1. 若要访问**测试**滑出面板，请在应用程序的顶部面板中选择 "**测试**"。

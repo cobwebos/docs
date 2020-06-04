@@ -36,8 +36,8 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
 | 查询参数  | 说明 |
 | ------ | ----------- |
 | api-version <img width=200/>   | 必需参数  。<br/>客户端所请求的 API 的版本。 值必须是 `3.0` |
-| 从 | 必需参数  。<br/>指定输入文本的语言。 源语言必须是 [ 范围中包含的](./v3-0-languages.md)支持的语言`dictionary`之一。 |
-| to   | 必需参数  。<br/>指定输出文本的语言。 目标语言必须是 [ 范围中包含的](v3-0-languages.md)支持的语言`dictionary`之一。 |
+| 从 | 必需参数  。<br/>指定输入文本的语言。 源语言必须是 `dictionary` 范围中包含的[支持的语言](./v3-0-languages.md)之一。 |
+| to   | 必需参数  。<br/>指定输出文本的语言。 目标语言必须是 `dictionary` 范围中包含的[支持的语言](v3-0-languages.md)之一。 |
 
 
 请求标头包括：

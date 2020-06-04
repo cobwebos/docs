@@ -224,7 +224,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
 在不更改 API 版本的情况下，响应对象的结构不会更改。 对于相同的 API 版本，可用语言的列表可能会不断变化，因为 Microsoft Translator 在不断扩展其服务支持的语言列表。
 
-支持的语言列表不会频繁变化。 若要节省网络带宽并提高响应能力，客户端应用程序应考虑缓存语言资源和相应的实体标记 (`ETag`)。 然后，客户端应用程序可以定期（例如，每隔 24 小时）查询服务，以提取最新的受支持语言集。 在 `ETag` 标头字段中传递当前的 `If-None-Match` 值可让服务优化响应。 如果未修改资源，则服务将返回状态代码 304 和空响应正文。
+支持的语言列表不会频繁变化。 若要节省网络带宽并提高响应能力，客户端应用程序应考虑缓存语言资源和相应的实体标记 (`ETag`)。 然后，客户端应用程序可以定期（例如，每隔 24 小时）查询服务，以提取最新的受支持语言集。 在 `If-None-Match` 标头字段中传递当前的 `ETag` 值可让服务优化响应。 如果未修改资源，则服务将返回状态代码 304 和空响应正文。
 
 ## <a name="response-headers"></a>响应标头
 
@@ -233,7 +233,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   <th>说明</th>
   <tr>
     <td>ETag</td>
-    <td>所请求的受支持语言组的实体标记的当前值。 若要提高后续请求的效率，客户端可在 `ETag` 标头字段中发送 `If-None-Match` 值。
+    <td>所请求的受支持语言组的实体标记的当前值。 若要提高后续请求的效率，客户端可在 `If-None-Match` 标头字段中发送 `ETag` 值。
     </td>
   </tr>
   <tr>

@@ -8,23 +8,23 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: d9ae126753f55349f9bf3eefd20bc4d222866af1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0ff59819c3bfda6e19d14cbe2deaea43e1694375
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73888201"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345234"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>如何使用仪表板来改善应用
 
-使用示例言语时查找并修复已训练应用的意向问题。 仪表板显示整体性的应用信息，并突出显示应予以修复的意向。 
+使用示例言语时查找并修复已训练应用的意向问题。 仪表板显示整体性的应用信息，并突出显示应予以修复的意向。
 
 查看仪表板分析是一个迭代过程，请在更改和改进模型时重复此过程。
 
-对于在意向中不包含任何示例言语的应用（称为仅限模式的应用），此页不会提供相关的分析。  
+对于在意向中不包含任何示例言语的应用（称为仅限模式的应用），此页不会提供相关的分析。 
 
 ## <a name="what-issues-can-be-fixed-from-dashboard"></a>在仪表板中可以修复哪些问题？
 
@@ -38,37 +38,37 @@ ms.locfileid: "73888201"
 
 正确的预测以蓝色表示。
 
-仪表板将显示这些问题，告知哪些意向受到影响，并建议采取哪些措施来改进应用。 
+仪表板将显示这些问题，告知哪些意向受到影响，并建议采取哪些措施来改进应用。
 
-## <a name="before-app-is-trained"></a>训练应用之前 
+## <a name="before-app-is-trained"></a>训练应用之前
 
-训练应用之前，仪表板不包含任何修复建议。 训练应用即可看到这些建议。  
+训练应用之前，仪表板不包含任何修复建议。 训练应用即可看到这些建议。
 
 ## <a name="check-your-publishing-status"></a>检查发布状态
 
-“发布状态”卡片包含有关活动版本的上次发布情况的信息。  
+“发布状态”卡片包含有关活动版本的上次发布情况的信息。 
 
-请检查活动的版本是否为要修复的版本。 
+请检查活动的版本是否为要修复的版本。
 
 ![仪表板将显示应用的外部服务、发布区域，以及聚合的终结点访问次数。](./media/luis-how-to-use-dashboard/analytics-card-1-shows-app-summary-and-endpoint-hits.png)
 
-其中还会显示任何外部服务、发布区域，以及聚合的终结点访问次数。 
+其中还会显示任何外部服务、发布区域，以及聚合的终结点访问次数。
 
 ## <a name="review-training-evaluation"></a>检查训练评估
 
-“训练评估”卡片按区域显示应用总体准确度的聚合摘要。  评分指示意向的质量。 
+“训练评估”卡片按区域显示应用总体准确度的聚合摘要。  评分指示意向的质量。
 
 ![“训练评估”卡片包含有关应用总体准确度的信息的第一个区域。](./media/luis-how-to-use-dashboard/analytics-card-2-shows-app-overall-accuracy.png)
 
-图表以不同的颜色指示正确预测的意向和问题区域。 根据建议改善应用时，此评分会提高。 
+图表以不同的颜色指示正确预测的意向和问题区域。 根据建议改善应用时，此评分会提高。
 
-建议的修复按问题类型进行区分，对于你的应用而言最为重要。 若要按意向检查和修复问题，请使用页面底部的 **[有错误的意向](#intents-with-errors)** 卡片。 
+建议的修复按问题类型进行区分，对于你的应用而言最为重要。 若要按意向检查和修复问题，请使用页面底部的 **[有错误的意向](#intents-with-errors)** 卡片。
 
 每个问题区域包含需要修复的意向。 选择意向名称时，“意向”页将会打开，其中包含一个应用于言语的筛选器。  使用此筛选器可以专注于处理导致问题的言语。
 
 ### <a name="compare-changes-across-versions"></a>比较不同版本中的更改
 
-对应用进行更改之前创建新版本。 在新版本中，对意向的示例言语做出建议的更改，然后重新训练。 在仪表板页的“训练评估”卡片上，使用“显示已训练版本中的更改”来比较更改。   
+对应用进行更改之前创建新版本。 在新版本中，对意向的示例言语做出建议的更改，然后重新训练。 在仪表板页的“训练评估”卡片上，使用“显示已训练版本中的更改”来比较更改。  
 
 ![比较不同版本中的更改](./media/luis-how-to-use-dashboard/compare-improvement-across-versions.png)
 
@@ -84,27 +84,27 @@ ms.locfileid: "73888201"
 
 ### <a name="patterns-and-phrase-lists"></a>模式和短语列表
 
-分析页面并不指示何时使用[模式](luis-concept-patterns.md)或[短语列表](luis-concept-feature.md)。 如果添加了这些数据，则可以帮助进行不正确或不明确的预测，但不会帮助数据不平衡。 
+分析页面并不指示何时使用[模式](luis-concept-patterns.md)或[短语列表](luis-concept-feature.md)。 如果添加了这些数据，则可以帮助进行不正确或不明确的预测，但不会帮助数据不平衡。
 
 ### <a name="review-data-imbalance"></a>检查数据不平衡问题
 
 请从此问题着手 - 它可能是其他问题的根本原因。
 
-**数据不平衡**意向列表显示需要添加更多言语才能纠正数据不平衡问题的意向。 
+**数据不平衡**意向列表显示需要添加更多言语才能纠正数据不平衡问题的意向。
 
 **若要解决此问题**：
 
-* 请将更多言语添加到意向，然后重新训练。 
+* 请将更多言语添加到意向，然后重新训练。
 
 除非仪表板上有相关建议，否则不要将言语添加到 None 意向。
 
 > [!Tip]
-> 使用该页上的第三个部分 - 包含“言语(数目)”设置的“每个意向的言语”可以快速直观地了解哪些意向需要更多的言语。********  
+> 使用该页上的第三个部分 - 包含“言语(数目)”设置的“每个意向的言语”可以快速直观地了解哪些意向需要更多的言语。********
     ![使用“言语(数目)”查找存在数据不平衡的意向。](./media/luis-how-to-use-dashboard/predictions-per-intent-number-of-utterances.png)
 
 ### <a name="review-incorrect-predictions"></a>检查错误的预测
 
-**错误的预测**意向列表显示包含言语的意向，这些言语用作特定意向的示例，但已针对不同的意向做了预测。 
+**错误的预测**意向列表显示包含言语的意向，这些言语用作特定意向的示例，但已针对不同的意向做了预测。
 
 **若要解决此问题**：
 
@@ -132,11 +132,11 @@ ms.locfileid: "73888201"
 
 ![以下图表显示了一个适当平衡的应用，其中几乎不存在任何要修复的问题。](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-imbalance.png)
 
-将鼠标悬停在每个意向的条块上可以获取有关该意向的信息。 
+将鼠标悬停在每个意向的条块上可以获取有关该意向的信息。
 
 ![以下图表显示了一个适当平衡的应用，其中几乎不存在任何要修复的问题。](./media/luis-how-to-use-dashboard/utterances-per-intent-with-details-of-errors.png)
 
-使用“排序依据”功能可按问题类型排列意向，以便可以专注于处理存在该问题的最严重意向。**** 
+使用“排序依据”功能可按问题类型排列意向，以便可以专注于处理存在该问题的最严重意向。****
 
 ## <a name="intents-with-errors"></a>有错误的意向
 
@@ -144,13 +144,13 @@ ms.locfileid: "73888201"
 
 ![使用“有错误的意向”卡片可以检查特定意向的问题。 该卡片默认已根据问题最严重的意向进行筛选，让你知道要将工作重心放在何处。](./media/luis-how-to-use-dashboard/most-problematic-intents-with-errors.png)
 
-顶部的圆环图表以三种问题类型显示意向的问题。 如果出现了这三种类型的问题，每种问题类型会在下面绘制其自身的图表，以及另外两种问题类型的图表。 
+顶部的圆环图表以三种问题类型显示意向的问题。 如果出现了这三种类型的问题，每种问题类型会在下面绘制其自身的图表，以及另外两种问题类型的图表。
 
 ### <a name="filter-intents-by-issue-and-percentage"></a>按问题和百分比筛选意向
 
-在该卡片的此部分，可以查找超出错误阈值的示例言语。 理想情况下，正确的预测应该占有很高的比例。 该百分比由业务和客户驱动。 
+在该卡片的此部分，可以查找超出错误阈值的示例言语。 理想情况下，正确的预测应该占有很高的比例。 该百分比由业务和客户驱动。
 
-请确定最符合业务需求的阈值百分比。 
+请确定最符合业务需求的阈值百分比。
 
 使用筛选器可以查找存在特定问题的意向：
 
@@ -167,7 +167,7 @@ ms.locfileid: "73888201"
 
 ### <a name="unclear-or-incorrect-prediction-threshold"></a>不明确或错误的预测阈值
 
-使用这两个筛选器可以查找选定意向中超出阈值的言语。 可将这两个百分比视为错误百分比。 如果 10-15% 的预测错误率对你而较为合适，将筛选器阈值设置为 15% 即可找到高于此值的所有言语。 
+使用这两个筛选器可以查找选定意向中超出阈值的言语。 可将这两个百分比视为错误百分比。 如果 10-15% 的预测错误率对你而较为合适，将筛选器阈值设置为 15% 即可找到高于此值的所有言语。
 
 ## <a name="next-steps"></a>后续步骤
 

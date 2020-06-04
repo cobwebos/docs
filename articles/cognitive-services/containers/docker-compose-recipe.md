@@ -172,7 +172,7 @@ IMAGE ID            REPOSITORY                                                  
 
 ### <a name="test-containers"></a>测试容器
 
-在主计算机上打开浏览器，并使用*yaml*文件中的指定端口（例如http://localhost:5021/swagger/index.html）来使用**localhost** 。 例如，可以在 API 中使用 "**尝试 It** " 功能来测试窗体识别器终结点。 这两个容器 swagger 页面应可用且可测试。
+在主计算机上打开浏览器，并使用*yaml*文件中的指定端口（例如）来使用**localhost** http://localhost:5021/swagger/index.html 。 例如，可以在 API 中使用 "**尝试 It** " 功能来测试窗体识别器终结点。 这两个容器 swagger 页面应可用且可测试。
 
 ![“表单识别器”容器](media/form-recognizer-swagger-page.png)
 

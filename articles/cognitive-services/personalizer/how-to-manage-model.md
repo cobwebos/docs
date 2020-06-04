@@ -1,14 +1,14 @@
 ---
 title: 管理模型和学习设置-Personalizer
 description: 可以在自己的源代码管理系统中导出机器学习的模型和学习设置，以便进行备份。
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: c544d058019c8d507f65dc6bfd854376b364abd1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 59af5a64ea5752ec03fb44df91440e8d395e3782
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77624293"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344350"
 ---
 # <a name="how-to-manage-model-and-learning-settings"></a>如何管理模型和学习设置
 
@@ -49,7 +49,7 @@ ms.locfileid: "77624293"
 
 1. 打开[Azure 门户](https://portal.azure.com)，然后选择 Personalizer 资源。
 1. 选择 "**资源管理**" 部分中的 "**模型和学习设置**"。
-1. 对于 "**导入学习设置**"，请选择 "**导出学习设置**" 按钮。 这会将`json`该文件保存到本地计算机。
+1. 对于 "**导入学习设置**"，请选择 "**导出学习设置**" 按钮。 这会将该 `json` 文件保存到本地计算机。
 
 ## <a name="next-steps"></a>后续步骤
 

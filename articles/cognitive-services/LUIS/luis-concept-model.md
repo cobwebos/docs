@@ -24,7 +24,7 @@ ms.locfileid: "83683933"
 
 <a name="v3-authoring-model-decomposition"></a>
 
-## <a name="intents-classify-utterances"></a>意向将言语分类
+## <a name="intents-classify-utterances"></a>使用意向对言语进行分类
 
 意向将示例言语分类，以便向 LUIS 传授意向。 意向中的示例言语用作言语的积极示例。 相同的这些言语用作所有其他意向中的消极示例。
 
@@ -34,7 +34,7 @@ ms.locfileid: "83683933"
 
 `Buy the top-rated book on bot architecture.`
 
-## <a name="entities-extract-data"></a>实体提取数据
+## <a name="entities-extract-data"></a>使用实体提取数据
 
 实体表示要从言语中提取的数据单位。 机器学习实体是包含子实体的顶级实体，也是机器学习实体。
 
@@ -63,7 +63,7 @@ LUIS 支持使用创作 Api 进行_模型分解_，并将概念分解为更小�
 
 模型分解包括以下组成部分：
 
-* [调色](#intents-classify-utterances)
+* [意向](#intents-classify-utterances)
     * [功能](#features)
 * [机器学习实体](reference-entity-machine-learned-entity.md)
     * 子实体（也是机器学习实体）

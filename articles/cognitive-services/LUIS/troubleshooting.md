@@ -1,15 +1,15 @@
 ---
 title: 常见问题解答 (FAQ) - LUIS
 description: 本文包含有关语言理解 (LUIS) 的常见问题的解答。
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 79cee94a0f04cb89aa65f65cde63e48b6f078d2c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 15f2cf3c06e56656efd68d472cabd1da52c375cc
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834996"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343524"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>语言理解常见问题解答 (FAQ)
 
@@ -82,7 +82,7 @@ Cortana 预构建应用已于 2017 年弃用。 它们不再受支持。
 
 <a name="luis-endpoint"></a>
 
-## <a name="endpoint"></a>端点
+## <a name="endpoint"></a>终结点
 
 ### <a name="i-received-an-http-403-error-status-code-how-do-i-fix-it"></a>我收到了一个 HTTP 403 错误状态代码。 如何解决问题？
 
@@ -109,7 +109,7 @@ Cortana 预构建应用已于 2017 年弃用。 它们不再受支持。
 * 如果使用量超过了最高定价层相应的使用量，请添加更多的语言理解资源，并在这些资源前面放置一个负载均衡器。 带有 Kubernetes 或 Docker Compose 的[“语言理解”容器](luis-container-howto.md)可以帮助解决此问题。
 * 收到此状态代码时，可以使用你自己实现的[重试策略](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines)来限制客户端应用程序请求。
 
-### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>我的终结点查询返回了意外的结果。   应采取何种操作？
+### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>我的终结点查询返回了意外的结果。 我该怎么办？
 
 意外的查询预测结果基于已发布模型的状态。 若要更正模型，可能需要更改模型、进行训练，然后重新发布。
 
@@ -154,11 +154,11 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ### <a name="what-is-the-maximum-number-of-intents-and-entities-that-a-luis-app-can-support"></a>LUIS 应用可以支持的最大意向和实体数是多少？
 请查看[边界](luis-limits.md)参考文档。
 
-### <a name="i-want-to-build-a-luis-app-with-more-than-the-maximum-number-of-intents-what-should-i-do"></a>我希望生成一个 LUIS 应用，其意向数超出最大意向数。   应采取何种操作？
+### <a name="i-want-to-build-a-luis-app-with-more-than-the-maximum-number-of-intents-what-should-i-do"></a>我希望生成一个 LUIS 应用，其意向数超出最大意向数。 我该怎么办？
 
 请参阅[意向最佳做法](luis-concept-intent.md#if-you-need-more-than-the-maximum-number-of-intents)。
 
-### <a name="i-want-to-build-an-app-in-luis-with-more-than-the-maximum-number-of-entities-what-should-i-do"></a>我希望在 LUIS 中生成一个应用，其实体数超出最大实体数。   应采取何种操作？
+### <a name="i-want-to-build-an-app-in-luis-with-more-than-the-maximum-number-of-entities-what-should-i-do"></a>我希望在 LUIS 中生成一个应用，其实体数超出最大实体数。 我该怎么办？
 
 请参阅[实体最佳做法](luis-concept-entity-types.md#if-you-need-more-than-the-maximum-number-of-entities)。
 

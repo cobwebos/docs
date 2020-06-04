@@ -42,15 +42,15 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
   </tr>
   <tr>
     <td>语言</td>
-    <td>必需参数  。<br/>指定要从一个脚本转换为另一个脚本的文本的语言。 通过查询服务的`transliteration`支持的语言[获得的 ](./v3-0-languages.md) 范围中列出了可能的语言。</td>
+    <td>必需参数  。<br/>指定要从一个脚本转换为另一个脚本的文本的语言。 通过查询服务的[支持的语言](./v3-0-languages.md)获得的 `transliteration` 范围中列出了可能的语言。</td>
   </tr>
   <tr>
     <td>fromScript</td>
-    <td>必需参数  。<br/>指定输入文本所使用的脚本。 使用 [ 范围查找](./v3-0-languages.md)支持的语言`transliteration`，以找到可用于选定语言的输入脚本。</td>
+    <td>必需参数  。<br/>指定输入文本所使用的脚本。 使用 `transliteration` 范围查找[支持的语言](./v3-0-languages.md)，以找到可用于选定语言的输入脚本。</td>
   </tr>
   <tr>
     <td>toScript</td>
-    <td>必需参数  。<br/>指定输出脚本。 使用 [ 范围查找](./v3-0-languages.md)支持的语言`transliteration`，以找到可用于选定输入语言和输入脚本组合的输出脚本。</td>
+    <td>必需参数  。<br/>指定输出脚本。 使用 `transliteration` 范围查找[支持的语言](./v3-0-languages.md)，以找到可用于选定输入语言和输入脚本组合的输出脚本。</td>
   </tr>
 </table> 
 

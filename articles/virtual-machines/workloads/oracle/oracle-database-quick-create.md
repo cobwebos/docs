@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
-ms.openlocfilehash: 77a374a83c178639052e8db6fc85c31e366ac0e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 070477c638e5a625e0c03751a1778fa0a246cd77
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81683646"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995813"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>在 Azure VM 上创建 Oracle 数据库
 
@@ -33,7 +33,7 @@ ms.locfileid: "81683646"
 
 使用“[az group create](/cli/azure/group)”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
 
-以下示例在“eastus”  位置创建名为“myResourceGroup”  的资源组。
+以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -85,7 +85,7 @@ ssh azureuser@<publicIpAddress>
 1.  切换到 *oracle* 超级用户，然后初始化用于日志记录的侦听器：
 
     ```bash
-    $ sudo su - oracle
+    $ sudo -su oracle
     $ lsnrctl start
     ```
 
@@ -143,14 +143,14 @@ ssh azureuser@<publicIpAddress>
 
 3. 设置 Oracle 变量
 
-在连接之前，需要设置两个环境变量：*ORACLE_HOME* 和 *ORACLE_SID*。
+在连接之前，需要设置两个环境变量：ORACLE_HOME 和 ORACLE_SID。
 
 ```bash
 ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 ORACLE_SID=cdb1; export ORACLE_SID
 ```
 
-还可以将 ORACLE_HOME 和 ORACLE_SID 变量添加到 .bashrc 文件。 这会保存环境变量供将来登录时使用。请确认已使用所选编辑器将以下语句`~/.bashrc`添加到文件。
+还可以将 ORACLE_HOME 和 ORACLE_SID 变量添加到 .bashrc 文件。 这会保存环境变量供将来登录时使用。使用所选编辑器确认下列语句是否已被添加至 `~/.bashrc` 文件。
 
 ```bash
 # Add ORACLE_HOME. 
@@ -311,7 +311,7 @@ export ORACLE_SID=cdb1
     https://<VM ip address or hostname>:5502/em
     ```
 
-可以使用 **SYS** 帐户登录，并选中“以 sysdba 身份”复选框。**** 使用你在安装期间设置的密码 **OraPasswd1**。 
+可以使用 **SYS** 帐户登录，并选中“以 sysdba 身份”复选框。 使用你在安装期间设置的密码 **OraPasswd1**。 
 
 ![Oracle OEM Express 登录页面的屏幕截图](./media/oracle-quick-start/oracle_oem_express_login.png)
 

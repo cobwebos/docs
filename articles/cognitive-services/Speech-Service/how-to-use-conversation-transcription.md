@@ -19,7 +19,7 @@ ms.locfileid: "82735396"
 ---
 # <a name="real-time-conversation-transcription-preview"></a>实时对话脚本（预览）
 
-通过语音 SDK 的**ConversationTranscriber** API，你可以通过使用`PullStream`或`PushStream`将音频流式传输到语音服务，使用添加、删除和标识多个参与者的能力转录会议和其他对话。 本主题要求你了解如何在 Speech SDK （版本1.8.0 或更高版本）中使用语音到文本。 有关详细信息，请参阅[什么是语音服务](overview.md)。
+通过语音 SDK 的**ConversationTranscriber** API，你可以通过使用或将音频流式传输到语音服务，使用添加、删除和标识多个参与者的能力转录会议和其他对话 `PullStream` `PushStream` 。 本主题要求你了解如何在 Speech SDK （版本1.8.0 或更高版本）中使用语音到文本。 有关详细信息，请参阅[什么是语音服务](overview.md)。
 
 ## <a name="limitations"></a>限制
 
@@ -48,9 +48,9 @@ ms.locfileid: "82735396"
 - 用于创建语音签名的输入音频波形文件应为16位示例、16 kHz 采样率和单通道（单声道）格式。
 - 每个音频采样的建议长度介于30秒到2分钟之间。
 
-### <a name="sample-code"></a>代码示例
+### <a name="sample-code"></a>示例代码
 
-下面的示例演示了使用 c # 中[的 REST API](https://aka.ms/cts/signaturegenservice)以两种不同的方式创建语音签名。 请注意，需要将 "YourSubscriptionKey" 的实际信息、"speakerVoice" 的波形文件名和 "YourServiceRegion" （_centralus_或_eastasia_）的区域`{region}`替换为 ""。
+下面的示例演示了使用 c # 中[的 REST API](https://aka.ms/cts/signaturegenservice)以两种不同的方式创建语音签名。 请注意，需要将 "YourSubscriptionKey" 的实际信息、"speakerVoice" 的波形文件名和 " `{region}` YourServiceRegion" （_centralus_或_eastasia_）的区域替换为 ""。
 
 ```csharp
 class Program
@@ -108,12 +108,12 @@ class Program
 
 示例代码重点包括：
 
-- 使用通过`Conversation`生成的会议`SpeechConfig`标识符从对象创建对象`Guid.NewGuid()`
-- 创建`ConversationTranscriber`对象并将会话与结合使用`JoinConversationAsync()`来启动脚本
+- `Conversation` `SpeechConfig` 使用通过生成的会议标识符从对象创建对象`Guid.NewGuid()`
+- 创建 `ConversationTranscriber` 对象并将会话与结合使用 `JoinConversationAsync()` 来启动脚本
 - 注册相关事件
 - 使用会话对象在会话中添加或删除参与者
 - 流式传输音频
-- 在 Speech SDK 版本 1.9.0 `int`中，在语音`string`签名版本字段中支持和值类型。
+- 在 Speech SDK 版本1.9.0 中，在 `int` `string` 语音签名版本字段中支持和值类型。
 
 脚本和发言人标识符会返回到已注册的事件中。
 

@@ -41,7 +41,7 @@ ms.locfileid: "83120804"
 
 ## <a name="create-face-clients"></a>创建人脸客户端
 
-在 **Program.cs** 的 *Main* 方法中，创建两个 [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) 实例，分别对应于源订阅和目标订阅。 此示例使用东亚区域中的人脸订阅作为源，将美国西部订阅用作目标。 此示例演示如何将数据从一个 Azure 区域迁移到另一个 Azure 区域。 
+在 *Program.cs* 的 **Main** 方法中，创建两个 [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) 实例，分别对应于源订阅和目标订阅。 此示例使用东亚区域中的人脸订阅作为源，将美国西部订阅用作目标。 此示例演示如何将数据从一个 Azure 区域迁移到另一个 Azure 区域。 
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 

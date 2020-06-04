@@ -7,15 +7,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: fa7e2321d61721e370ef6b5924dc6f820dd1f724
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 61e53e6110e545d253dae81e94f8738ee17c4141
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685282"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344469"
 ---
 # <a name="add-entities-to-extract-data"></a>添加实体以提取数据
 
@@ -61,7 +61,7 @@ ms.locfileid: "83685282"
 
 此过程适用于计算机学习的实体、列表实体和正则表达式实体。
 
-1. 登录到[LUIS 门户](https://www.luis.ai)，选择**订阅**和**创作资源**，查看分配给该创作资源的应用。
+1. 登录到 [LUIS 门户](https://www.luis.ai)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
 1. 通过在 **"我的应用**" 页上选择应用程序的名称来打开应用。
 1. 选择 "**实体**" 页。
 1. 选择 " **+ 创建**"，然后选择实体类型。
@@ -69,10 +69,10 @@ ms.locfileid: "83685282"
 
 ## <a name="create-a-machine-learned-entity"></a>创建计算机学习实体
 
-1. 登录到[LUIS 门户](https://www.luis.ai)，选择**订阅**和**创作资源**，查看分配给该创作资源的应用。
+1. 登录到 [LUIS 门户](https://www.luis.ai)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
 1. 通过在 **"我的应用**" 页上选择应用程序的名称来打开应用。
 1. 从 "**生成**" 部分的左侧面板中选择 "**实体**"，然后选择 " **+ 创建**"。
-1. 在 "**创建实体类型**" 对话框中，输入实体的名称并选择 "**计算机**"，然后选择。 若要添加子实体，请选择 "**添加结构**"。 选择“创建”  。
+1. 在 "**创建实体类型**" 对话框中，输入实体的名称并选择 "**计算机**"，然后选择。 若要添加子实体，请选择 "**添加结构**"。 选择“创建”。
 
     > [!div class="mx-imgBorder"]
     > ![创建计算机学习实体的屏幕截图。](media/add-entities/machine-learned-entity-with-structure.png)
@@ -86,7 +86,7 @@ ms.locfileid: "83685282"
 
 ## <a name="add-a-feature-to-a-machine-learned-entity"></a>向计算机学习的实体添加功能
 
-1. 登录到[LUIS 门户](https://www.luis.ai)，选择**订阅**和**创作资源**，查看分配给该创作资源的应用。
+1. 登录到 [LUIS 门户](https://www.luis.ai)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
 1. 通过在 **"我的应用**" 页上选择应用程序的名称来打开应用。
 1. 从 "**生成**" 部分的左侧面板中选择 "**实体**"，然后选择 "已学习的计算机" 实体。
 1. 通过在实体或子实体行上选择 " **+ 添加功能**" 来添加功能。
@@ -98,7 +98,7 @@ ms.locfileid: "83685282"
 
 ## <a name="create-a-regular-expression-entity"></a>创建正则表达式实体
 
-1. 登录到[LUIS 门户](https://www.luis.ai)，选择**订阅**和**创作资源**，查看分配给该创作资源的应用。
+1. 登录到 [LUIS 门户](https://www.luis.ai)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
 1. 通过在 **"我的应用**" 页上选择应用程序的名称来打开应用。
 1. 从 "**生成**" 部分的左侧面板中选择 "**实体**"，然后选择 " **+ 创建**"。
 
@@ -123,7 +123,7 @@ ms.locfileid: "83685282"
 |绿色|王，酸橙色|
 
 使用过程来创建一个列表实体。 创建列表实体后，不需要在意向中标记示例最谈话。 使用精确文本匹配列表项和同义词。
-1. 登录到[LUIS 门户](https://www.luis.ai)，选择**订阅**和**创作资源**，查看分配给该创作资源的应用。
+1. 登录到 [LUIS 门户](https://www.luis.ai)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
 1. 通过在 **"我的应用**" 页上选择应用程序的名称来打开应用。
 1. 从 "**生成**" 部分的左侧面板中选择 "**实体**"，然后选择 " **+ 创建**"。
 
@@ -151,7 +151,7 @@ ms.locfileid: "83685282"
 `Pick up the package from Seattle and deliver to New York City.`
 
 在此过程中，将 `origin` 和 `destination` 角色添加到预生成的 geographyV2 实体。
-1. 登录到[LUIS 门户](https://www.luis.ai)，选择**订阅**和**创作资源**，查看分配给该创作资源的应用。
+1. 登录到 [LUIS 门户](https://www.luis.ai)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
 1. 通过在 **"我的应用**" 页上选择应用程序的名称来打开应用。
 1. 在“生成”部分的左侧面板中选择“实体”********。
 
@@ -173,7 +173,7 @@ ms.locfileid: "83685282"
 > [!TIP]
 > 可以通过使用机器学习实体的子实体标记来替换角色。
 
-1. 登录到[LUIS 门户](https://www.luis.ai)，选择**订阅**和**创作资源**，查看分配给该创作资源的应用。
+1. 登录到 [LUIS 门户](https://www.luis.ai)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
 1. 通过在 **"我的应用**" 页上选择应用程序的名称来打开应用。
 1. 请参阅意向详细信息页，其中包含使用角色的示例最谈话。
 1. 若要用角色标记，请选择示例查询文本中的实体标签（文本下的实线），然后从下拉列表中选择 "**在实体窗格中查看**"。

@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 4d3535d419b0f99491795b3920fdd295e3128299
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ee15d08c820492cfa2c0701dfe3b682d57e00187
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654022"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344401"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>使用一组示例话语进行批处理测试
 
@@ -30,7 +30,7 @@ ms.locfileid: "83654022"
 
     ![批处理测试链接](./media/luis-how-to-batch-test/batch-testing-link.png)
 
-2. 选择“导入数据集”  。 此时会显示“导入新数据集”对话框  。 选择“选择文件”并找到具有正确 [JSON 格式](luis-concept-batch-test.md#batch-file-format)的 JSON 文件，该文件包含的待测试话语数量不超过 1,000   。
+2. 选择“导入数据集”  。 此时会显示“导入新数据集”对话框  。 选择“选择文件”并找到具有正确 [JSON 格式](luis-concept-batch-test.md#batch-file-format)的 JSON 文件，该文件包含的待测试话语数量不超过 1,000。
 
     浏览器顶部的红色通知栏中将报告导入错误。 导入出现错误时，不会创建任何数据集。 有关详细信息，请参阅[常见错误](luis-concept-batch-test.md#common-errors-importing-a-batch)。
 

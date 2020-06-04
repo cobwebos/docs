@@ -1,14 +1,14 @@
 ---
 title: 快速入门：创建、定型和发布知识库-QnA Maker
 description: 可以根据自己的内容（例如常见问题解答或产品手册）创建一个 QnA Maker 知识库 (KB)。 本文包含一个从简单的 FAQ 网页创建 QnA Maker 知识库以回答 QnA Maker 相关问题的示例。
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: a35cbdea2d40e4b0df0ce0f0b36f1b6bf60dd42e
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 12f46e9a72f0a3b027fe67e5b8bf27c940685cfe
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871453"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84340583"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>快速入门：创建、定型和发布 QnA Maker 知识库
 
@@ -35,7 +35,7 @@ ms.locfileid: "83871453"
 1. 在“步骤 3”**** 中，为在服务中创建的所有知识库选择 Active Directory、订阅、服务（资源）和语言。
 
     :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/qnaservice-selection.png" alt-text="选择 QnA Maker 服务知识库的屏幕截图":::
-    
+
 1. 在“步骤 3”中，将知识库命名为“我的示例 QnA KB”。********
 
 1. 在**步骤 4** 中，按照下表配置设置：
@@ -45,7 +45,7 @@ ms.locfileid: "83871453"
     |**允许从 URL、.pdf 或 .docx 文件进行多轮提取。**|已选中|
     |**默认答案文本**| `Quickstart - default answer not found.`|
     |**+ 添加 URL**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
-    |**聊天内容**|选择“专业” |
+    |**聊天内容**|选择“专业”|
 
 1. 在**步骤 5**中，选择 "**创建知识库**"。
 

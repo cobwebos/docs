@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
 ms.custom: jagaveer
-ms.openlocfilehash: 59de7a8decef807b548ff4b85f06fc1115ce110b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 756e0d62927b67d26ae75af90c64facfe9c92d31
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125020"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310557"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>适用于虚拟机规模集的 Azure Spot VM 
 
@@ -160,7 +160,7 @@ $vmssConfig = New-AzVmssConfig `
 | 即用即付                | 是                               |
 | 云服务提供商 (CSP) | [联系你的合作伙伴](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
 | 优点                     | 不可用                     |
-| 赞助                    | 不可用                     |
+| 赞助                    | 是                               |
 | 免费试用版                   | 不可用                     |
 
 

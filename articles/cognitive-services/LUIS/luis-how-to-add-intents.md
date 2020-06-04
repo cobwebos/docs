@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/17/2020
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: f282bb0a80226afeb314aac4e8669634327f81d2
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: fe1c157d6847366a59739cd5128987127d01da94
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654048"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344418"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>添加意向以确定用户的话语意向
 
@@ -26,7 +26,7 @@ ms.locfileid: "83654048"
 
 ## <a name="add-an-intent-to-your-app"></a>向应用程序添加意向
 
-1. 登录到[LUIS 门户](https://www.luis.ai)，选择**订阅**和**创作资源**，查看分配给该创作资源的应用。
+1. 登录到 [LUIS 门户](https://www.luis.ai)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
 1. 通过在 **"我的应用**" 页上选择应用程序的名称来打开应用。
 1. 在 "**意向**" 页上，选择 " **+ 创建**"。
 1. 在 "**新建意向**" 对话框中，输入意向名称，例如 `ModifyOrder` ，并选择 "**完成**"。

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: terrylan
-ms.openlocfilehash: 997bd480fd8b552d7cff61d7a4798e0a3d4db5bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6242580e3f4199578d663456c14ee160603b372d
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548645"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266145"
 ---
 # <a name="microsoft-services-in-cybersecurity"></a>网络安全中的 Microsoft 服务
 
@@ -32,12 +32,12 @@ Microsoft 服务可以创建集成的解决方案，增强产品的最新安全�
 
 了解 Microsoft 服务提供的服务的详细信息：
 
-* [安全风险评估](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-security-risk-assessment-solution-brief.pdf)
+* [安全风险评估](https://download.microsoft.com/download/5/D/0/5D06F4EA-EAA1-4224-99E2-0C0F45E941D0/Microsoft%20Security%20Risk%20Asessment%20Datasheet.pdf)
 * [动态标识框架评估](https://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/dynamic-identity-framework-identity-assessment-datasheet.pdf)
-* [Active Directory 服务的脱机评估](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/offline-assessment-for-active-directory-security-datasheet.pdf)
-* [增强的安全管理环境](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/enhanced-security-administrative-environment-solution-brief.pdf)
+* [Active Directory 服务的脱机评估](https://download.microsoft.com/download/1/C/1/1C15BA51-840E-498D-86C6-4BD35D33C79E/Prerequisites_Offline_AD.pdf)
+* [增强的安全管理环境](https://download.microsoft.com/download/A/C/5/AC5D21A6-E04B-4DC4-B1F2-AE060319A4D7/Premier_Support_for_Security/Popis/Enhanced-Security-Admin-Environment-Solution-Datasheet-%5BEN%5D.pdf)
 * [Azure AD 实现服务](https://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/azure-active-directory-implementation-services-solution-brief.pdf)
-* [防范横向帐户移动](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/pop-securing-lateral-account-movement.pdf)
-* [事件响应和恢复](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-incident-response-and-recovery-process-brief.pdf)
+* [防范横向帐户移动](https://docs.microsoft.com/azure-advanced-threat-protection/use-case-lateral-movement-path)
+* [事件响应和恢复](https://docs.microsoft.com/microsoft-365/compliance/gdpr-breach-microsoft-support-professional-services?view=o365-worldwide#data-protection-incident-response-overview)
 
 [了解更多](https://aka.ms/cyberserv)关于 Microsoft Services Security 咨询服务的信息。
