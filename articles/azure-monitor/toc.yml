@@ -1081,20 +1081,6 @@
               href: platform/view-designer-parts.md
             - name: 筛选器
               href: platform/view-designer-filters.md
-        - name: 自定义解决方案
-          items:
-            - name: 设计和生成
-              href: insights/solutions-creating.md
-            - name: 解决方案文件
-              href: insights/solutions-solution-file.md
-            - name: 自动化资源
-              href: insights/solutions-resources-automation.md
-            - name: 日志搜索和警报
-              href: insights/solutions-resources-searches-alerts.md
-            - name: 视图
-              href: insights/solutions-resources-views.md
-            - name: 最佳做法
-              href: insights/solutions-best-practices.md
     - name: 工作簿
       items:
         - name: 概述
