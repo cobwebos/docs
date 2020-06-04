@@ -194,6 +194,8 @@
           href: metrics.md
 - name: 操作指南
   items:
+    - name: 创建、查看和管理系统主题
+      href: create-view-manage-system-topics.md
     - name: 发布到自定义主题
       href: post-to-custom-topic.md
     - name: 订阅 Auth0 事件

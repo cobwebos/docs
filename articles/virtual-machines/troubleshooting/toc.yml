@@ -69,6 +69,8 @@
       items:
         - name: 启动诊断
           href: boot-diagnostics.md
+        - name: 启动错误 - 出现磁盘读取错误
+          href: boot-error-disk-read-error-occurred.md
         - name: BitLocker 错误
           href: troubleshoot-bitlocker-boot-error.md
         - name: 蓝屏错误

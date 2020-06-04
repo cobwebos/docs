@@ -87,11 +87,11 @@
         - name: 注册 SAML 服务提供程序
           href: connect-with-saml-service-providers.md
           displayName: 'SP, RP, service provider, connect'
-        - name: 注册 Graph 应用程序
+        - name: 注册 Microsoft Graph 应用程序
           href: microsoft-graph-get-started.md
           displayName: 'migrate, migration, microsoft graph'
         - name: 添加 Web API 应用程序
-          href: add-web-application.md
+          href: add-web-api-application.md
         - name: 添加本机客户端应用程序
           href: add-native-application.md
         - name: 使用 App Auth 的 iOS ObjC
@@ -397,6 +397,8 @@
           href: user-migration.md
 - name: 参考
   items:
+    - name: 应用注册
+      href: app-registrations-training-guide.md
     - name: 计费模式
       href: billing.md
     - name: 代码示例

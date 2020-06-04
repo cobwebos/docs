@@ -57,11 +57,11 @@
       href: signalr-concept-messages-and-connections.md
     - name: 性能注意事项
       href: signalr-concept-performance.md
-    - name: Authentication
+    - name: 身份验证
       href: signalr-concept-authenticate-oauth.md
     - name: 事件处理
       href: signalr-concept-event-grid-integration.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 缩放
       items:
@@ -73,6 +73,12 @@
       items:
         - name: 访问密钥轮换
           href: signalr-howto-key-rotation.md
+        - name: 使用 Azure 服务标记
+          href: howto-service-tags.md
+        - name: 使用 Azure 专用终结点
+          href: howto-private-endpoints.md
+        - name: 管理网络访问控制
+          href: howto-network-access-control.md
     - name: 集成
       items:
         - name: Azure Functions 绑定

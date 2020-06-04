@@ -952,8 +952,10 @@
               href: configure-raid.md
             - name: 配置 LVM
               href: configure-lvm.md
-        - name: 查找未附加的磁盘
+        - name: 查找未附加的磁盘 - CLI
           href: find-unattached-disks.md
+        - name: 查找未附加的磁盘 - 门户
+          href: ../disks-find-unattached-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 使用文件存储
           href: mount-azure-file-storage-on-linux-using-smb.md
         - name: 磁盘常见问题解答

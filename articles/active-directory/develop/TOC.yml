@@ -548,6 +548,9 @@
               href: msal-js-pass-custom-state-authentication-request.md
             - name: 提示行为
               href: msal-js-prompt-behavior.md
+            - name: 将 SPA 从使用隐式授权迁移到使用身份验证代码流
+              href: migrate-spa-implicit-to-auth-code.md
+              displayName: 'authorization, single-page app, 2.0'
         - name: 适用于 iOS 和 MacOS 的 MSAL
           items:
             - name: 分别适用于 iOS 和 macOS 的 MSAL 的差异

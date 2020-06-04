@@ -16,7 +16,7 @@ ms.locfileid: "80632738"
 ---
 # <a name="azure-kinect-sensor-sdk-download"></a>Azure Kinect 传感器 SDK 下载
 
-本页提供各版本 Azure Kinect 传感器 SDK 的下载链接。 安装程序提供了全部所需的文件用于 Azure Kinect 方面的开发。
+本页提供各版本 Azure Kinect 传感器 SDK 的下载链接。 安装程序提供了 Azure Kinect 开发所需的所有文件。
 
 ## <a name="azure-kinect-sensor-sdk-contents"></a>Azure Kinect 传感器 SDK 的内容
 
@@ -39,13 +39,13 @@ ms.locfileid: "80632738"
 
 目前，唯一支持的分发版是 Ubuntu 18.04。 若要请求对其他分发版的支持，请参阅[此页](https://aka.ms/azurekinectfeedback)。
 
-首先，需要遵照[此处](https://packages.microsoft.com/)的说明，配置 [Microsoft 的包存储库](https://docs.microsoft.com/windows-server/administration/linux-package-repository-for-microsoft-software)。
+首先，需要遵照[此处](https://docs.microsoft.com/windows-server/administration/linux-package-repository-for-microsoft-software)的说明，配置 [Microsoft 的包存储库](https://packages.microsoft.com/)。
 
 现在，可以安装所需的包。 `k4a-tools` 包中包含 [Azure Kinect 查看器](azure-kinect-viewer.md)、[Azure Kinect 录制器](record-sensor-streams-file.md)和 [Azure Kinect 固件工具](azure-kinect-firmware-tool.md)。 若要安装该包，请运行
 
  `sudo apt install k4a-tools`
 
- `libk4a<major>.<minor>-dev` 包中包含标头以及要针对 `libk4a` 生成的 CMake 文件。
+ `libk4a<major>.<minor>-dev` 包中包含针对 `libk4a` 生成的头文件以及 CMake 文件。
 `libk4a<major>.<minor>` 包中包含共享对象，运行依赖于 `libk4a` 的可执行文件时需要这些对象。
 
  基本教程需要 `libk4a<major>.<minor>-dev` 包。 若要安装该包，请运行

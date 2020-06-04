@@ -24,6 +24,8 @@
           href: work-remotely-support.md
         - name: NVA 配置和远程工作
           href: nva-work-remotely-support.md
+    - name: 关于 VPN 网关设计
+      href: design.md
     - name: 关于 VPN 网关设置
       href: vpn-gateway-about-vpn-gateway-settings.md
     - name: 关于 VPN 设备

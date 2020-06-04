@@ -73,8 +73,8 @@
               href: how-dev-spaces-works-routing.md
             - name: 远程调试
               href: how-dev-spaces-works-remote-debugging.md
-            - name: 将开发计算机连接到 AKS
-              href: how-dev-spaces-works-connect.md
+            - name: Local Process with Kubernetes
+              href: how-dev-spaces-works-local-process-kubernetes.md
         - name: VS Code 如何与 Dev Spaces 配合工作
           href: how-vs-code-works-with-dev-spaces.md
         - name: 不同网络拓扑中的网络配置
@@ -111,8 +111,10 @@
           href: how-to/ingress-https-traefik.md
         - name: 将 NGINX 用于自定义入口和 HTTPS
           href: how-to/ingress-https-nginx.md
-        - name: 将开发计算机连接到 AKS 群集（预览版）
-          href: how-to/connect.md
+        - name: 在 Visual Studio Code 中使用 Local Process with Kubernetes（预览版）
+          href: how-to/local-process-kubernetes-vs-code.md
+        - name: 在 Visual Studio 中使用 Local Process with Kubernetes（预览版）
+          href: how-to/local-process-kubernetes-visual-studio.md
     - name: 疑难解答
       href: troubleshooting.md
     - name: 常见问题解答
