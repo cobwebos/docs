@@ -10,7 +10,7 @@ ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 83d1804aaebb20439f40cc0516b03f436837855c
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "75968308"

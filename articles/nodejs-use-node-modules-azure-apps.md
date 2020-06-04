@@ -16,7 +16,7 @@ ms.date: 08/17/2016
 ms.author: routlaw
 ms.openlocfilehash: 8621dde43ff38cee15feb1d30b6ea80ab681c855
 ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/30/2020
 ms.locfileid: "82594774"
@@ -24,11 +24,11 @@ ms.locfileid: "82594774"
 # <a name="using-nodejs-modules-with-azure-applications"></a>将 Node.js 模块与 Azure 应用程序一起使用
 本文档提供有关将 Node.js 模块与托管在 Azure 中的应用程序一起使用的指南。 其中提供有关确保应用程序使用特定版本的模块以及对 Azure 使用本机模块的指南。
 
-如果已了解如何使用 Node.js 模块、package.json 和 npm-shrinkwrap.json 文件，可参阅以下信息快速概览本文讨论的内容：  
+如果已了解如何使用 Node.js 模块、package.json 和 npm-shrinkwrap.json 文件，可参阅以下信息快速概览本文讨论的内容： 
 
 * Azure 应用服务了解 **package.json** 和 **npm-shrinkwrap.json** 文件，可基于这些文件中的条目安装模块。
 
-* Azure 云服务需要所有模块都安装在开发环境中，并将 node**modules 目录包含为部署包的一部分\_** 。 可为使用 package.json 或 npm-shrinkwrap.json 文件在云服务上安装模块提供相应支持，但此配置需要自定义云服务项目使用的默认脚本。   有关如何配置此环境的示例，请参阅[运行 npm install 避免部署 Node 模块的 Azure 启动任务](https://github.com/woloski/nodeonazure-blog/blob/master/articles/startup-task-to-run-npm-in-azure.markdown)
+* Azure 云服务需要所有模块都安装在开发环境中，并将 node\_modules 目录包含为部署包的一部分。 可为使用 package.json 或 npm-shrinkwrap.json 文件在云服务上安装模块提供相应支持，但此配置需要自定义云服务项目使用的默认脚本。  有关如何配置此环境的示例，请参阅[运行 npm install 避免部署 Node 模块的 Azure 启动任务](https://github.com/woloski/nodeonazure-blog/blob/master/articles/startup-task-to-run-npm-in-azure.markdown)
 
 > [!NOTE]
 > 本文不讨论 Azure 虚拟机，因为 VM 中的开发体验取决于虚拟机托管的操作系统。
@@ -36,11 +36,11 @@ ms.locfileid: "82594774"
 > 
 
 ## <a name="nodejs-modules"></a>Node.js 模块
-模块是可加载的 JavaScript 包，可为应用程序提供特定功能。 通常使用 npm 命令行工具安装模块，但一些模块（如 http 模块）作为核心 Node.js 包的一部分提供。 
+模块是可加载的 JavaScript 包，可为应用程序提供特定功能。 通常使用 npm 命令行工具安装模块，但一些模块（如 http 模块）作为核心 Node.js 包的一部分提供。
 
-在安装模块后，这些模块存储在应用程序目录结构根目录下的 **node\_modules** 目录中。 node**modules 目录中的每个模块都保留自己的目录，其中包含它依赖的所有模块，此行为对于依赖项链上的每个模块均是如此\_** 。 此环境使得安装的每个模块均对其依赖的模块具有自己的版本要求，但这会导致目录结构很大。
+在安装模块后，这些模块存储在应用程序目录结构根目录下的 **node\_modules** 目录中。 node\_modules 目录中的每个模块都保留自己的目录，其中包含它依赖的所有模块，此行为对于依赖项链上的每个模块均是如此。 此环境使得安装的每个模块均对其依赖的模块具有自己的版本要求，但这会导致目录结构很大。
 
-与使用 package.json 或 npm-shrinkwrap.json 文件相比时，随附应用程序部署 node**modules 目录会增加部署的大小；但是，它确实可保证生产中使用的模块版本与开发中使用的相同。\_**  
+与使用 package.json 或 npm-shrinkwrap.json 文件相比时，随附应用程序部署 node\_modules 目录会增加部署的大小；但是，它确实可保证生产中使用的模块版本与开发中使用的相同。  
 
 ### <a name="native-modules"></a>本机模块
 虽然多数模块都只是纯文本 JavaScript 文件，但一些模块是特定于平台的二进制映像。 这些模块通常是在安装时使用 Python 和 node-gyp 编译的。 由于 Azure 云服务依赖作为应用程序一部分部署的 **node\_modules** 文件夹，因此只要作为已安装模块一部分包含的任何本机模块是在 Windows 开发系统中安装和编译的，那么该模块都应在云服务中运行。
@@ -59,7 +59,7 @@ Azure 应用服务不支持部分本机模块，并且在编译具有特定先�
 
 在开发期间，可以在安装模块时使用 **--save**、 **--save-dev** 或 **--save-optional** 参数，自动将模块条目添加到 **package.json** 文件中。 有关详细信息，请参阅 [npm-install](https://docs.npmjs.com/cli/install)。
 
-package.json 文件的一个潜在问题是它仅指定顶级依赖项的版本。  安装的每个模块不一定会指定它所依赖的模块的版本，因此最终使用的依赖项链可能与开发过程中使用的不同。
+package.json 文件的一个潜在问题是它仅指定顶级依赖项的版本。 安装的每个模块不一定会指定它所依赖的模块的版本，因此最终使用的依赖项链可能与开发过程中使用的不同。
 
 > [!NOTE]
 > 部署到 Azure 应用服务时，如果 package.json 文件引用本机模块，在使用 Git 发布应用程序时可能会看到与以下示例类似的错误：<b></b>
@@ -71,9 +71,9 @@ package.json 文件的一个潜在问题是它仅指定顶级依赖项的版本�
 > 
 
 ### <a name="using-a-npm-shrinkwrapjson-file"></a>使用 npm-shrinkwrap.json 文件
-**npm-shrinkwrap.json** 文件用于尝试消除 **package.json** 文件的模块版本控制限制。 虽然 package.json 文件仅包含顶级模块的版本，但 npm-shrinkwrap.json 文件包含所有模块依赖项链的版本要求。  
+**npm-shrinkwrap.json** 文件用于尝试消除 **package.json** 文件的模块版本控制限制。 虽然 package.json 文件仅包含顶级模块的版本，但 npm-shrinkwrap.json 文件包含所有模块依赖项链的版本要求。 
 
-应用程序准备好生产后，便可锁定版本要求，使用 npm shrinkwrap 命令创建 npm-shrinkwrap.json 文件。   此命令会使用当前安装在 node**modules 文件夹中的版本，并将这些版本记录到 npm-shrinkwrap.json 文件。\_**  将应用程序部署到托管环境后，可使用 **npm install** 命令来分析 **npm-shrinkwrap.json** 文件并安装列出的所有依赖项。 有关详细信息，请参阅 [npm-shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap)。
+应用程序准备好生产后，便可锁定版本要求，使用 npm shrinkwrap 命令创建 npm-shrinkwrap.json 文件。  此命令会使用当前安装在 node\_modules 文件夹中的版本，并将这些版本记录到 npm-shrinkwrap.json 文件。  将应用程序部署到托管环境后，可使用 **npm install** 命令来分析 **npm-shrinkwrap.json** 文件并安装列出的所有依赖项。 有关详细信息，请参阅 [npm-shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap)。
 
 > [!NOTE]
 > 部署到 Azure 应用服务时，如果 npm-shrinkwrap.json 文件引用本机模块，在使用 Git 发布应用程序时可能会看到与以下示例类似的错误：<b></b>

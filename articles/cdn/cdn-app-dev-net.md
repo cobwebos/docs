@@ -17,7 +17,7 @@ ms.author: mazha
 ms.custom: has-adal-ref
 ms.openlocfilehash: e03616bf0d02f7ce063c027912cba4ab4e8f8d3f
 ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/30/2020
 ms.locfileid: "82611460"
@@ -29,7 +29,7 @@ ms.locfileid: "82611460"
 >
 >
 
-你可以使用[适用于 .net 的 Azure CDN 库](/dotnet/api/overview/azure/cdn)来自动创建和管理 CDN 配置文件和终结点。  本教程介绍一个简单的 .NET 控制台应用程序的创建示例，演示几个可用的操作。  本教程不打算详细描述适用于 .NET 的 Azure CDN 库的所有方面。
+可以使用[适用于 .NET 的 Azure CDN 库](/dotnet/api/overview/azure/cdn)来自动创建和管理 CDN 配置文件和终结点。  本教程介绍一个简单的 .NET 控制台应用程序的创建示例，演示几个可用的操作。  本教程不打算详细描述适用于 .NET 的 Azure CDN 库的所有方面。
 
 需要 Visual Studio 2015 来完成本教程。  可免费下载 [Visual Studio Community 2015](https://www.visualstudio.com/products/visual-studio-community-vs.aspx)。
 
@@ -43,7 +43,7 @@ ms.locfileid: "82611460"
 ## <a name="create-your-project-and-add-nuget-packages"></a>创建项目并添加 Nuget 包
 现在我们已经为 CDN 配置文件创建了一个资源组，并已将管理该组中的 CDN 配置文件和终结点的权限授予 Azure AD 应用程序，我们可以开始创建我们的应用程序。
 
-在 Visual Studio 2015 中依次单击“**文件**”、“**新建**”和“**项目...**”以打开新项目对话框。  展开“**Visual C#**”，并在左侧窗格中选择“**Windows**”。  在中心窗格中单击“**控制台应用程序**”。  命名项目，然后单击“**确定**”。
+在 Visual Studio 2015 中依次单击“**文件**”、“**新建**”和“**项目...** ”以打开新项目对话框。  展开“**Visual C#** ”，并在左侧窗格中选择“**Windows**”。  在中心窗格中单击“**控制台应用程序**”。  命名项目，然后单击“**确定**”。
 
 ![新建项目](./media/cdn-app-dev-net/cdn-new-project.png)
 
@@ -52,7 +52,7 @@ ms.locfileid: "82611460"
 1. 依次单击“**工具**”菜单、“**Nuget 包管理器**”和“**包管理器控制台**”。
 
     ![管理 NuGet 包](./media/cdn-app-dev-net/cdn-manage-nuget.png)
-2. 在“包管理器控制台”中，执行以下命令以安装 **Active Directory 验证库 (ADAL)**：
+2. 在“包管理器控制台”中，执行以下命令以安装 **Active Directory 验证库 (ADAL)** ：
 
     `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory`
 3. 执行以下命令来安装 **Azure CDN 管理库**:
@@ -74,7 +74,7 @@ ms.locfileid: "82611460"
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using Microsoft.Rest;
     ```
-2. 我们需要定义我们的方法将使用的一些常量。  在 `Program` 类中，但在 `Main` 方法之前，添加以下内容。  请确保将占位符（包括** &lt;尖括号&gt;**）替换为所需的值。
+2. 我们需要定义我们的方法将使用的一些常量。  在 `Program` 类中，但在 `Main` 方法之前，添加以下内容。  请务必根据需要使用值替换占位符，包括 **&lt;尖括号&gt;** 。
 
     ```csharp
     //Tenant app constants

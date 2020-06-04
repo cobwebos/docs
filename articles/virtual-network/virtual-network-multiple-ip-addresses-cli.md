@@ -16,7 +16,7 @@ ms.date: 11/17/2016
 ms.author: allensu
 ms.openlocfilehash: cb101095aa95f9d41f7891bc3c18f7e5bfeb59db
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "82148101"
@@ -205,7 +205,7 @@ az vm create \
         --dns-name mypublicdns3
         ```
 
-        若要新建具有静态专用 IP 地址和关联的 myPublicIP3  公共 IP 地址资源的 IP 配置，请输入下面的命令：
+        若要新建具有静态专用 IP 地址和关联的 myPublicIP3 公共 IP 地址资源的 IP 配置，请输入下面的命令：
 
         ```azurecli
         az network nic ip-config create \
@@ -233,7 +233,7 @@ az vm create \
             IPConfig-2  /subscriptions/[Id]/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP2
             IPConfig-3
 
-        由于输出中 **IpConfig-3** 的 *PublicIpAddressId* 列为空白，因此，当前没有公共 IP 地址资源与其关联。 可将现有公共 IP 地址资源添加到 IpConfig-3，或输入以下命令来创建一个：
+        由于输出中 *IpConfig-3* 的 **PublicIpAddressId** 列为空白，因此，当前没有公共 IP 地址资源与其关联。 可将现有公共 IP 地址资源添加到 IpConfig-3，或输入以下命令来创建一个：
 
         ```azurecli
         az network public-ip create \

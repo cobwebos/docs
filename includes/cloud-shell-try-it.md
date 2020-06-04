@@ -19,15 +19,15 @@ Azure 托管 Azure Cloud Shell（一个可通过浏览器使用的交互式 shel
 
 | 选项 | 示例/链接 |
 |-----------------------------------------------|---|
-| 选择代码块右上角的“试用”。  选择“试用”  不会自动将代码复制到 Cloud Shell。 | ![Azure Cloud Shell 的“试用”示例](./media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
-| 转到 [https://shell.azure.com](https://shell.azure.com) 或选择“启动 Cloud Shell”  按钮可在浏览器中打开 Cloud Shell。 | [![在新窗口中启动 Cloud Shell](media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |
+| 选择代码块右上角的“试用”。 选择“试用”不会自动将代码复制到 Cloud Shell。 | ![Azure Cloud Shell 的“试用”示例](./media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
+| 转到 [https://shell.azure.com](https://shell.azure.com) 或选择“启动 Cloud Shell”按钮可在浏览器中打开 Cloud Shell。 | [![在新窗口中启动 Cloud Shell](media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |
 | 选择 [Azure 门户](https://portal.azure.com)右上角菜单栏上的 **Cloud Shell** 按钮。 | ![Azure 门户中的“Cloud Shell”按钮](./media/cloud-shell-try-it/hdi-cloud-shell-menu.png) |
 
 若要在 Azure Cloud Shell 中运行本文中的代码，请执行以下操作：
 
 1. 启动 Cloud Shell。
 
-1. 选择代码块上的“复制”按钮以复制代码。 
+1. 选择代码块上的“复制”按钮以复制代码。
 
 1. 在 Windows 和 Linux 上选择 **Ctrl**+**Shift**+**V** 将代码粘贴到 Cloud Shell 会话中，或在 macOS 上选择 **Cmd**+**Shift**+**V** 将代码粘贴到 Cloud Shell 会话中。
 
