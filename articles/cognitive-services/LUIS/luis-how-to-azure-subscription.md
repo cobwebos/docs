@@ -2,14 +2,14 @@
 title: 如何使用创作密钥和运行时密钥 - LUIS
 description: 首次使用语言理解 (LUIS) 时，不需要创建创作密钥。 如果需要发布应用，然后使用运行时终结点，则需创建运行时密钥并将其分配给应用。
 services: cognitive-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: d9235b6ef1c7cddbfbbd36f8382439d781af6d5f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c566e8fe56d19856f5a577e472929b7610497d7c
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101019"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344452"
 ---
 # <a name="create-luis-resources"></a>创建 LUIS 资源
 
@@ -85,7 +85,7 @@ ms.locfileid: "82101019"
 
 1. 登录到[LUIS 门户](https://www.luis.ai)。
 1. 在右上角的导航栏中选择用户帐户，然后选择“设置”。****
-1. 在“用户设置”页上选择“添加创作资源”，然后选择现有的创作资源。******** 选择“保存”  。
+1. 在“用户设置”页上选择“添加创作资源”，然后选择现有的创作资源。******** 选择“保存”。
 
 ## <a name="assign-a-resource-to-an-app"></a>将资源分配给应用
 
@@ -111,7 +111,7 @@ ms.locfileid: "82101019"
 
     此 POST API 需要以下设置：
 
-    |Header|“值”|
+    |标头|值|
     |--|--|
     |`Authorization`|`Authorization` 的值为 `Bearer {token}`。 请注意，单词 `Bearer` 和空格前面必须是令牌值。|
     |`Ocp-Apim-Subscription-Key`|你的创作密钥。|
@@ -122,13 +122,13 @@ ms.locfileid: "82101019"
 
     此 POST API 需要以下设置：
 
-    |类型|设置|值|
+    |类型|设置|“值”|
     |--|--|--|
     |Header|`Authorization`|`Authorization` 的值为 `Bearer {token}`。 请注意，单词 `Bearer` 和空格前面必须是令牌值。|
     |Header|`Ocp-Apim-Subscription-Key`|你的创作密钥。|
     |Header|`Content-type`|`application/json`|
     |Querystring|`appid`|LUIS 应用 ID。
-    |Body||{"AzureSubscriptionId":"ddda2925-af7f-4b05-9ba1-2155c5fe8a8e",<br>"ResourceGroup": "resourcegroup-2",<br>"AccountName": "luis-uswest-S0-2"}|
+    |正文||{"AzureSubscriptionId":"ddda2925-af7f-4b05-9ba1-2155c5fe8a8e",<br>"ResourceGroup": "resourcegroup-2",<br>"AccountName": "luis-uswest-S0-2"}|
 
     此 API 成功时，将返回“201 - 已创建状态”。
 

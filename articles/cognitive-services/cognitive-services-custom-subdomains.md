@@ -43,7 +43,7 @@ Azure 认知服务对通过[Azure 门户](https://portal.azure.com)、 [Azure Cl
 
 区域终结点和自定义子域名均受支持，且可换用。 但是，必须提供完整的终结点。
 
-[Azure 门户](https://portal.azure.com)中资源的“概述”边栏选项卡内提供了区域信息。  有关区域终结点的完整列表，请参阅[是否有区域终结点的列表？](#is-there-a-list-of-regional-endpoints)
+[Azure 门户](https://portal.azure.com)中资源的“概述”边栏选项卡内提供了区域信息。 有关区域终结点的完整列表，请参阅[是否有区域终结点的列表？](#is-there-a-list-of-regional-endpoints)
 
 ## <a name="are-custom-subdomain-names-regional"></a>自定义子域名是否是区域性的？
 

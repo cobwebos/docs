@@ -15,16 +15,16 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: efc6d0c25c5186b391deb08ee0e41dcb8ae6edf0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3b977c0900178d64f202d4faa122f5d0ef90187c
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978084"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014649"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>在 Azure 虚拟机（经典）中对 SQL Server 进行自动修补
 > [!div class="op_single_selector"]
-> * [资源管理器](../sql/virtual-machines-windows-sql-automated-patching.md)
+> * [资源管理器](../../../azure-sql/virtual-machines/windows/automated-patching.md)
 > * [经典](../classic/sql-automated-patching.md)
 > 
 > 
@@ -32,14 +32,14 @@ ms.locfileid: "75978084"
 自动修补将为运行 SQL Server 的 Azure 虚拟机建立一个维护时段。 只能在此维护时段内安装自动更新。 对于 SQL Server，这可以确保在数据库的最佳可能时间发生系统更新和任何关联的重新启动。 
 
 > [!IMPORTANT]
-> 仅安装标记为“重要”的 Windows 更新  。 必须手动安装其他 SQL Server 更新，如累积更新。 
+> 仅安装标记为“重要”的 Windows 更新。 必须手动安装其他 SQL Server 更新，如累积更新。 
 
 自动修补依赖于 [SQL Server IaaS 代理扩展](../classic/sql-server-agent-extension.md)。
 
 > [!IMPORTANT] 
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Resource Manager 和经典模型](../../../azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 若要查看本文的 Resource Manager 版本，请参阅[在 Azure 虚拟机 Resource Manager 中自动修补 SQL Server](../sql/virtual-machines-windows-sql-automated-patching.md)。
+> Azure 具有用于创建和处理资源的两个不同部署模型：[资源管理器部署模型和经典部署模型](../../../azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用经典部署模型。 Microsoft 建议大多数新部署使用资源管理器模型。 若要查看本文的 Resource Manager 版本，请参阅[在 Azure 虚拟机 Resource Manager 中自动修补 SQL Server](../../../azure-sql/virtual-machines/windows/automated-patching.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 若要使用自动修补，请考虑以下先决条件：
 
 **操作系统**：
@@ -96,5 +96,5 @@ ms.locfileid: "75978084"
 ## <a name="next-steps"></a>后续步骤
 有关其他可用自动化任务的信息，请参阅 [SQL Server IaaS 代理扩展](../classic/sql-server-agent-extension.md)。
 
-有关在 Azure VM 中运行 SQL Server 的详细信息，请参阅 [Azure 虚拟机中的 SQL Server 概述](../sql/virtual-machines-windows-sql-server-iaas-overview.md)。
+有关在 Azure VM 中运行 SQL Server 的详细信息，请参阅 [Azure 虚拟机中的 SQL Server 概述](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)。
 

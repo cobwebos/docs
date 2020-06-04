@@ -4,13 +4,13 @@ description: 此基于 C# REST 的快速入门发布你的知识库，并创建�
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: 0a2f64795d82928e33a10c7e9d162f2333cdf7bf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: 7eaa8d7f7d86e215ea2e9906075c27dd2916dcd5
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851703"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342742"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>快速入门：在 QnA Maker 中通过 C# 发布知识库
 

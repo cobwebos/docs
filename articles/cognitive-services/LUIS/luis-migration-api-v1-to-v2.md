@@ -8,18 +8,18 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: 2f67bf0951ef8928297c71e8fc9f924cf05c63f4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c5880aac01e0611565afb825a61b682197baf5d6
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68932695"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344741"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>LUIS 应用的 API v1 到 v2 迁移指南
-第 1 版[终结点](https://aka.ms/v1-endpoint-api-docs)和[创作](https://aka.ms/v1-authoring-api-docs) API 已弃用。 使用此指南学习如何迁移至第 2 版[终结点](https://go.microsoft.com/fwlink/?linkid=2092356)和[创作](https://go.microsoft.com/fwlink/?linkid=2092087) API。 
+第 1 版[终结点](https://aka.ms/v1-endpoint-api-docs)和[创作](https://aka.ms/v1-authoring-api-docs) API 已弃用。 使用此指南学习如何迁移至第 2 版[终结点](https://go.microsoft.com/fwlink/?linkid=2092356)和[创作](https://go.microsoft.com/fwlink/?linkid=2092087) API。
 
 ## <a name="new-azure-regions"></a>新的 Azure 区域
 LUIS 为 LUIS API 提供新的[区域](https://aka.ms/LUIS-regions)。 LUIS 为区域组提供另一个门户。 必须在要用于查询的区域中编写应用程序。 应用程序不会自动迁移区域。 若要在新区域中使用应用，请从一个区域中将其导出，再将其导入到另一个区域。
@@ -112,7 +112,7 @@ v2 终结点成功响应：
 |1|/luis/v1.0/prog/subscriptions|
 |1|/luis/v1.0/prog/subscriptions/{subscriptionKey}|
 
-在 Azure 门户中生成了 Azure [终结点密钥](luis-how-to-azure-subscription.md)。 可在**发布[页上将密钥分配至 LUIS 应用](luis-how-to-azure-subscription.md)** 。 不需要知道实际的密钥值。 LUIS 使用订阅名称来进行分配。 
+在 Azure 门户中生成了 Azure [终结点密钥](luis-how-to-azure-subscription.md)。 可在[发布](luis-how-to-azure-subscription.md)页上将密钥分配至 LUIS 应用。 不需要知道实际的密钥值。 LUIS 使用订阅名称来进行分配。
 
 ## <a name="new-versioning-route"></a>新的版本控制路由
 [版本](luis-how-to-manage-versions.md)中现包含 v2 模型。 版本名称是路由中的 10 个字符。 默认版本为“0.1”。
@@ -153,22 +153,22 @@ LUIS 会从现有[终结点话语](luis-how-to-review-endpoint-utterances.md)中
 |/luis/api/v2.0/apps/customprebuiltdomains/{culture}  |get|
 
 ## <a name="importing-1x-app-into-2x"></a>将 1.x 应用导入至 2.x
-导出的 1.x 应用的 JSON 有某些区域需要在导入到 [LUIS][LUIS] 2.0 之前进行更改。 
+导出的 1.x 应用的 JSON 有某些区域需要在导入到 [LUIS][LUIS] 2.0 之前进行更改。
 
-### <a name="prebuilt-entities"></a>预生成的实体 
-已更改[预生成的实体](luis-prebuilt-entities.md)。 请确保使用 V2 预生成实体。 这包括使用 [datetimeV2](luis-reference-prebuilt-datetimev2.md) 而不是 datetime。 
+### <a name="prebuilt-entities"></a>预生成的实体
+已更改[预生成的实体](luis-prebuilt-entities.md)。 请确保使用 V2 预生成实体。 这包括使用 [datetimeV2](luis-reference-prebuilt-datetimev2.md) 而不是 datetime。
 
 ### <a name="actions"></a>操作
-操作属性不再有效。 应该为空 
+操作属性不再有效。 应该为空
 
 ### <a name="labeled-utterances"></a>标记的话语
-V1 允许标记的话语在字词或短语的开头或末尾包含空格。 删除了空格。 
+V1 允许标记的话语在字词或短语的开头或末尾包含空格。 删除了空格。
 
 ## <a name="common-reasons-for-http-response-status-codes"></a>HTTP 响应状态代码的常见原因
 请参阅 [LUIS API 响应代码](luis-reference-response-codes.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-使用 v2 API 文档更新对 LUIS [终结点](https://go.microsoft.com/fwlink/?linkid=2092356)和[创作](https://go.microsoft.com/fwlink/?linkid=2092087) API 的现有 REST 调用。 
+使用 v2 API 文档更新对 LUIS [终结点](https://go.microsoft.com/fwlink/?linkid=2092356)和[创作](https://go.microsoft.com/fwlink/?linkid=2092087) API 的现有 REST 调用。
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

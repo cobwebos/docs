@@ -8,26 +8,26 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: a1e43cfc55611c432652055db2ac8411d835608b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 98f35d0b3f37a7bb181f83b83a48ef113e02f1e2
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80396814"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344129"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>使用必应拼写检查更正拼写错误的字词
 
-在 LUIS 预测表述的分数和实体前，可将 LUIS 应用与[必应拼写检查 API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) 集成，以更正表述中拼写错误的字词。 
+在 LUIS 预测表述的分数和实体前，可将 LUIS 应用与[必应拼写检查 API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) 集成，以更正表述中拼写错误的字词。
 
 [!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
 
 ## <a name="create-first-key-for-bing-spell-check-v7"></a>为必应拼写检查 V7 创建第一个密钥
 
-[第一个必应拼写检查 API v7 密钥](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)是免费的。 
+[第一个必应拼写检查 API v7 密钥](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)是免费的。
 
 ![创建免费密钥](./media/luis-tutorial-bing-spellcheck/free-key.png)
 
@@ -36,7 +36,7 @@ ms.locfileid: "80396814"
 ## <a name="create-endpoint-key"></a>创建终结点密钥
 如果免费密钥已过期，请创建一个终结点密钥。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 2. 选择左上角的“创建资源”****。
 
@@ -44,9 +44,9 @@ ms.locfileid: "80396814"
 
     ![搜索必应拼写检查 API V7](./media/luis-tutorial-bing-spellcheck/portal-search.png)
 
-4. 选择该服务。 
+4. 选择该服务。
 
-5. 右侧随即出现一个包含“法律声明”等信息的信息面板。 选择“创建”开始创建订阅****。 
+5. 右侧随即出现一个包含“法律声明”等信息的信息面板。 选择“创建”开始创建订阅****。
 
 6. 在下一个面板中，输入服务设置。 等待服务创建过程完成。
 
@@ -54,13 +54,13 @@ ms.locfileid: "80396814"
 
 7. 在左侧导航的“收藏夹”标题下，选择“所有资源”********。
 
-8. 选择该新服务。 它的类型是“认知服务”，位置为“全局”********。 
+8. 选择该新服务。 它的类型是“认知服务”，位置为“全局”********。
 
 9. 在主面板中，选择“密钥”以查看新密钥****。
 
     ![获取密钥](./media/luis-tutorial-bing-spellcheck/grab-keys.png)
 
-10. 复制第一个密钥。 您只需要两个密钥中的一个即可。 
+10. 复制第一个密钥。 您只需要两个密钥中的一个即可。
 
 <!--
 ## Using the key in LUIS test panel
@@ -76,7 +76,7 @@ There are two places in LUIS to use the key. The first is in the [test panel](lu
 ## <a name="send-misspelled-utterance-to-luis"></a>将拼写错误的表述发送到 LUIS
 1. 在 Web 浏览器中，复制上面的字符串，并将 `region`、`appId`、`luisKey` 和 `bingKey` 替换为你自己的值。 如果终结点区域与你的发布[区域](luis-reference-regions.md)不同，请务必使用终结点区域。
 
-2. 添加拼写错误的表述，如“How far is the mountainn?”。 在英语中，含有一个 `n` 的 `mountain` 才是正确的拼写。 
+2. 添加拼写错误的表述，如“How far is the mountainn?”。 在英语中，含有一个 `n` 的 `mountain` 才是正确的拼写。
 
 3. 按 Enter，将查询发送到 LUIS。
 
@@ -96,15 +96,15 @@ There are two places in LUIS to use the key. The first is in the [test panel](lu
 
 ## <a name="ignore-spelling-mistakes"></a>忽略拼写错误
 
-如果不想使用必应拼写检查 API v7 服务，则需要添加正确且不正确的拼写。 
+如果不想使用必应拼写检查 API v7 服务，则需要添加正确且不正确的拼写。
 
 两种解决方案是：
 
 * 标签示例最谈话，其中包含所有不同的拼写，以便 LUIS 可以了解正确的拼写和打字错误。 使用此选项比使用拼写检查器需要更多标记操作。
-* 创建一个短语列表，其中包含该词的所有变体。 利用此解决方案，无需在示例最谈话中标记词变体。 
+* 创建一个短语列表，其中包含该词的所有变体。 利用此解决方案，无需在示例最谈话中标记词变体。
 
 ## <a name="publishing-page"></a>发布页面
-[发布](luis-how-to-publish-app.md)页面包含一个“启用必应拼写检查器”复选框****。 这便于创建密钥和了解终结点 URL 的更改。 为更正每个表述中的拼写，则仍必须使用正确的终结点参数。 
+[发布](luis-how-to-publish-app.md)页面包含一个“启用必应拼写检查器”复选框****。 这便于创建密钥和了解终结点 URL 的更改。 为更正每个表述中的拼写，则仍必须使用正确的终结点参数。
 
 > [!div class="nextstepaction"]
 > [详细了解示例陈述](luis-how-to-add-example-utterances.md)

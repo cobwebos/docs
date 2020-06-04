@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: f1bad4a8f178358ba33d1a14815b8630b447615a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 4af8f90abf2a5581ec18ea550cbc5f1a5df50a4e
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680400"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344894"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>如何添加模式以提高预测准确性
 在 LUIS 应用接收到终结点话语后，请使用[模式](luis-concept-patterns.md)提高话语（按字词顺序和字词选择呈现模式）的预测准确性。 模式使用特定[语法](luis-concept-patterns.md#pattern-syntax)来指示的位置：[实体](luis-concept-entity-types.md)、实体[角色](luis-concept-roles.md)和可选文本。
@@ -26,7 +26,7 @@ ms.locfileid: "83680400"
 
 ## <a name="add-template-utterance-using-correct-syntax"></a>使用正确的语法添加模板查询文本
 
-1. 登录到[LUIS 门户](https://www.luis.ai)，选择**订阅**和**创作资源**，查看分配给该创作资源的应用。
+1. 登录到 [LUIS 门户](https://www.luis.ai)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
 1. 通过在 **"我的应用**" 页上选择应用程序的名称来打开应用。
 1. 在左面板中选择 "**模式**" 下的 "**改善应用性能**"。
 
@@ -51,7 +51,7 @@ ms.locfileid: "83680400"
 
 [模式。任何](luis-concept-entity-types.md)实体仅适用于[模式](luis-how-to-model-intent-pattern.md)，而不是意向的示例最谈话。 此类实体有助于 LUIS 查找不同长度和字词选择的实体结尾。 由于此实体会在模式中使用，因此，LUIS 可识别实体末尾在话语模板中的位置。
 
-1. 登录到[LUIS 门户](https://www.luis.ai)，选择**订阅**和**创作资源**，查看分配给该创作资源的应用。
+1. 登录到 [LUIS 门户](https://www.luis.ai)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
 1. 通过在 **"我的应用**" 页上选择应用程序的名称来打开应用。
 1. 从 "**生成**" 部分的左侧面板中选择 "**实体**"，然后选择 " **+ 创建**"。
 
@@ -63,7 +63,7 @@ ms.locfileid: "83680400"
 
 如果要为实体添加模式，_最简单_的方法是从意向详细信息页创建模式。 这可确保语法与示例查询文本匹配。
 
-1. 登录到[LUIS 门户](https://www.luis.ai)，选择**订阅**和**创作资源**，查看分配给该创作资源的应用。
+1. 登录到 [LUIS 门户](https://www.luis.ai)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
 1. 通过在 **"我的应用**" 页上选择应用程序的名称来打开应用。
 1. **在 "目的列表"** 页上，选择要从中创建模板查询文本的示例查询文本的意图名称。
 1. 在 "目的详细信息" 页上，选择要用作模板查询文本的示例查询文本的行，然后从上下文工具栏中选择 " **+ 添加为模式**"。

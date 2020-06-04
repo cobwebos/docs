@@ -40,7 +40,7 @@ ms.locfileid: "83590802"
     |                  |                                                      |                    |                               |                  |
     |------------------|------------------------------------------------------|--------------------|-------------------------------|------------------|
     | 计算机视觉  | 内容审查器                                    | 人脸               | 语言理解 (LUIS) | 文本分析   |
-    | 翻译工具  | 必应搜索 v7 <br>（Web、图像、新闻、视频、视觉对象） | 必应自定义搜索 | 必应实体搜索            | 必应自动建议 |
+    | 转换器  | 必应搜索 v7 <br>（Web、图像、新闻、视频、视觉对象） | 必应自定义搜索 | 必应实体搜索            | 必应自动建议 |
     | 必应拼写检查 |                                                      |                    |                               |                  |
     
     #### <a name="single-service-resource"></a>[单服务资源](#tab/singleservice)
@@ -53,7 +53,7 @@ ms.locfileid: "83590802"
     | [自定义视觉服务](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [说话人识别](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [语言理解 (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [内容审查器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | [必应自定义搜索](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) |
     | [人脸](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)                    |                         | [QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)                     | [个性化体验创建服务](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)     | [必应实体搜索](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingEntitySearch) |
     | [墨迹识别器](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesInkRecognizer)        |                         | [文本分析](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |                      | [必应拼写检查](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSpellCheck-v7)   |
-    |           |                         | [翻译工具](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)               |                      | [必应自动建议](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)                       |
+    |           |                         | [翻译](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)               |                      | [必应自动建议](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)                       |
     ***
 
 3. 在“创建”页中提供以下信息： ****
@@ -62,7 +62,7 @@ ms.locfileid: "83590802"
 
     |    |    |
     |--|--|
-    | **Name** | 认知服务资源的描述性名称。 例如，*MyCognitiveServicesResource*。 |
+    | **名称** | 认知服务资源的描述性名称。 例如，*MyCognitiveServicesResource*。 |
     | **订阅** | 选择一个可用的 Azure 订阅。 |
     | **位置** | 认知服务实例的位置。 不同位置可能会导致延迟，但不会影响资源的运行时可用性。 |
     | **定价层** | 认知服务帐户的费用取决于你所选的选项和你的使用情况。 有关详细信息，请参阅 API [定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/)。
@@ -70,13 +70,13 @@ ms.locfileid: "83590802"
 
     ![“创建资源”屏幕](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
 
-    单击 **“创建”** 。
+    单击“创建”。
 
     #### <a name="single-service-resource"></a>[单服务资源](#tab/singleservice)
 
     |    |    |
     |--|--|
-    | **Name** | 认知服务资源的描述性名称。 例如，*TextAnalyticsResource*。 |
+    | **名称** | 认知服务资源的描述性名称。 例如，*TextAnalyticsResource*。 |
     | **订阅** | 选择一个可用的 Azure 订阅。 |
     | **位置** | 认知服务实例的位置。 不同位置可能会导致延迟，但不会影响资源的运行时可用性。 |
     | **定价层** | 认知服务帐户的费用取决于你所选的选项和你的使用情况。 有关详细信息，请参阅 API [定价详细信息](https://azure.microsoft.com/pricing/details/cognitive-services/)。
@@ -84,7 +84,7 @@ ms.locfileid: "83590802"
 
     ![“创建资源”屏幕](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
-    单击 **“创建”** 。
+    单击“创建”。
 
     ***
 
@@ -109,7 +109,7 @@ ms.locfileid: "83590802"
 2. 找到包含要删除的资源的资源组
 3. 右键单击资源组列表。 选择“删除资源组”并进行确认。****
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [对 Azure 认知服务的请求进行身份验证](authentication.md)
 * [什么是 Azure 认知服务？](Welcome.md)

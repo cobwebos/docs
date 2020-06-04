@@ -4,13 +4,13 @@ description: 此 Java 基于 REST 的快速入门详细介绍如何以编程方�
 ms.date: 12/16/2019
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: 90ab36389ceac2e8aad12332db433732525c62f5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: 5f1e1d8a8d2ac9ca3d14af09618cb0a2cc0cbb5f
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851824"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84341246"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>快速入门：通过 Java 在 QnA Maker 中创建知识库
 
@@ -20,7 +20,7 @@ ms.locfileid: "78851824"
 * [创建知识库](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
 * [获取操作详细信息](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
 
-[参考文档](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [Java 示例](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java)
+[参考文档](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)  | [Java 示例](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 

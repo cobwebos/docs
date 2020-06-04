@@ -1,14 +1,14 @@
 ---
 title: 配置个性化体验创建服务
 description: 服务配置包括服务处理奖励的方式、服务的探索频率、重新训练模型的频率，以及存储的数据量。
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/29/2020
-ms.openlocfilehash: 8df851c70650f3d59efc4c7507ce4b1c8a00fbe3
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 4c0cbf35a37f6b3eb134992b34b23fd9d7be47ed
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584648"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344333"
 ---
 # <a name="configure-personalizer-learning-loop"></a>配置 Personalizer 学习循环
 
@@ -67,7 +67,7 @@ ms.locfileid: "83584648"
 
 **模型更新频率**用于设置对模型进行定型的频率。
 
-|频率设置|目标|
+|频率设置|目的|
 |--|--|
 |1 分钟|使用 Personalizer**调试**应用程序的代码、执行演示或以交互方式测试机器学习方面时，一分钟的更新频率很有用。|
 |15 分钟|如果希望**密切跟踪**用户行为的更改，则高模型更新频率非常有用。 例如，涉及实时新闻、病毒内容或实时产品投标的站点。 在这些情况下，可以使用 15 分钟的频率。 |

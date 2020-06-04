@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/27/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d1b00aa8a5e7aea05950bcb86add8ea85e5a5edd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 06ac680ef48d9602f6e7487eb9ebecee9f3ae080
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120940"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017591"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure 高级存储：高性能设计
 [!INCLUDE [virtual-machines-common-premium-storage-introduction](../../../includes/virtual-machines-common-premium-storage-introduction.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "83120940"
 >
 > 如果 VM 支持加速网络，则应确保它已启用。 如果未启用，则可以在 [Windows](../../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) 和 [Linux](../../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms) 上已部署的 VM 上启用它。
 
-如果不熟悉高级存储，请在开始之前先阅读[为 IaaS VM 选择 Azure 磁盘类型](disks-types.md)和[高级页 blob 存储帐户的可伸缩性目标](../../storage/blobs/scalability-targets-premium-page-blobs.md)。
+如果尚不熟悉高级存储，请在开始之前首先阅读[为 IaaS VM 选择 Azure 磁盘类型](disks-types.md)和[高级页 blob 存储帐户的可伸缩性目标](../../storage/blobs/scalability-targets-premium-page-blobs.md)。
 
 [!INCLUDE [virtual-machines-common-premium-storage-performance.md](../../../includes/virtual-machines-common-premium-storage-performance.md)]
 
@@ -34,5 +34,5 @@ ms.locfileid: "83120940"
 
 SQL Server 用户请阅读有关 SQL Server 性能最佳实践的文章：
 
-* [Azure 虚拟机中 SQL Server 的性能最佳做法](sql/virtual-machines-windows-sql-performance.md)
-* [Azure 高级存储为 Azure VM 中的 SQL Server 提供最高性能](https://cloudblogs.microsoft.com/sqlserver/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm/)
+* [Azure 虚拟机中 SQL Server 的性能最佳实践](../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)
+* [Azure Premium Storage provides highest performance for SQL Server in Azure VM](https://cloudblogs.microsoft.com/sqlserver/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm/)（Azure 高级存储为 Azure VM 中的 SQL Server 提供最高性能）

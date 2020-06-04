@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: diberry
-ms.openlocfilehash: c976d3b74badc4eeb5978af352fe425089f2fbfb
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 687f2a80b362ca559d054b81d464daf2f6f85c09
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584955"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84340600"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>如何通过查看端点最谈话改善 LUIS 应用
 
@@ -28,7 +28,7 @@ ms.locfileid: "83584955"
 
 使用 LUIS 门户构造正确的终结点查询。
 
-1. 登录到[LUIS 门户](https://www.luis.ai)，选择**订阅**和**创作资源**，查看分配给该创作资源的应用。
+1. 登录到 [LUIS 门户](https://www.luis.ai)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
 1. 通过在 **"我的应用**" 页上选择应用程序的名称来打开应用。
 1. 请在 "**管理**" 部分，选择 " **Azure 资源**"。
 1. 对于分配的预测资源，请选择 "**更改查询参数**"。
