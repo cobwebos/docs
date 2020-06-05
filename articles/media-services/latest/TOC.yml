@@ -99,7 +99,7 @@
       items:
         - name: 概述
           href: live-streaming-overview.md
-        - name: 直播活动和实时输出
+        - name: 实时事件和实时输出
           href: live-events-outputs-concept.md
           displayName: 'vanity, ingest'
         - name: 经过测试的本地实时编码器
@@ -183,7 +183,7 @@
           items:
             - name: 流式处理终结点错误代码
               href: streaming-endpoint-error-codes.md
-            - name: 直播活动错误代码
+            - name: 实时事件错误代码
               href: live-event-error-codes.md
             - name: 作业错误代码
               href: job-error-codes.md
@@ -293,7 +293,7 @@
           href: live-events-wirecast-quickstart.md
         - name: 验证本地编码器
           href: become-on-premises-encoder-partner.md
-        - name: 直播活动错误代码
+        - name: 实时事件错误代码
           href: live-event-error-codes.md
     - name: 使用事件网格
       items:
@@ -349,7 +349,7 @@
           items:
             - name: 流式处理终结点错误代码
               href: streaming-endpoint-error-codes.md
-            - name: 直播活动错误代码
+            - name: 实时事件错误代码
               href: live-event-error-codes.md
             - name: 作业错误代码
               href: job-error-codes.md
@@ -376,6 +376,10 @@
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: 资源管理器模板
       href: /azure/templates/microsoft.media/allversions
+    - name: 标准编码器架构
+      items:
+        - name: 输出元数据
+          href: output-metadata-schema.md
 - name: 资源
   items:
     - name: Azure 媒体服务社区

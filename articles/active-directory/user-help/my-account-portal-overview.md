@@ -20,9 +20,9 @@ ms.locfileid: "83742205"
 ---
 # <a name="what-is-the-my-account-portal"></a>什么是“我的帐户”门户？
 
-“我的帐户”（预览）门户可以通过设置和管理安全信息、管理连接的组织和设备，以及查看组织使用数据的方式，来帮助你管理工作或学校帐户  。
+“我的帐户”（预览）门户可以通过设置和管理安全信息、管理连接的组织和设备，以及查看组织使用数据的方式，来帮助你管理工作或学校帐户。
 
-可以使用下述任何浏览器的最新版本转到“我的帐户”门户 ( **)** https://myaccount.microsoft.com) ：
+可以使用下述任何浏览器的最新版本转到“我的帐户”门户 (https://myaccount.microsoft.com) )：
 
 - Chrome
 - Microsoft Edge
@@ -51,8 +51,8 @@ ms.locfileid: "83742205"
 
 - [登录以管理 Office 产品](https://support.office.com/article/sign-in-to-manage-your-office-product-959ac957-8d37-4ae4-b1b6-d6e4874e013f)
 
-- [转到 Office“我的帐户”页面  ](https://portal.office.com/account/)
+- [转到 Office“我的帐户”页面](https://portal.office.com/account/)
 
-- [转到 Office“我的安装”页面  ](https://portal.office.com/account/#installs)
+- [转到 Office“我的安装”页面](https://portal.office.com/account/#installs)
 
-- [转到 Office“订阅”页面  ](https://portal.office.com/account/#subscriptions)
+- [转到 Office“订阅”页面](https://portal.office.com/account/#subscriptions)

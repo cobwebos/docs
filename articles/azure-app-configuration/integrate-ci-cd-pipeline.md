@@ -32,7 +32,7 @@ ms.locfileid: "82790756"
 
 你可以使用任何代码编辑器执行本教程中的步骤。 [Visual Studio Code](https://code.visualstudio.com/) 是 Windows、macOS 和 Linux 平台上提供的一个卓越选项。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 如果在本地生成，请下载并安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)（如果尚未安装）。
 
@@ -40,7 +40,7 @@ ms.locfileid: "82790756"
 
 ### <a name="export-an-app-configuration-store"></a>导出应用程序配置存储区
 
-1. 打开 .csproj 文件，然后添加以下脚本  ：
+1. 打开 .csproj 文件，然后添加以下脚本：
 
     ```xml
     <Target Name="Export file" AfterTargets="Build">
@@ -66,7 +66,7 @@ ms.locfileid: "82790756"
 
 ### <a name="build-and-run-the-app-locally"></a>在本地生成并运行应用
 
-1. 设置名为“ConnectionString”的环境变量，并将其设置为应用程序配置存储区的访问密钥  。 
+1. 设置名为“ConnectionString”的环境变量，并将其设置为应用程序配置存储区的访问密钥。 
     如果使用 Windows 命令提示符，则请运行以下命令并重启命令提示符，这样更改才会生效：
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"

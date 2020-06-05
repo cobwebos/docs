@@ -32,7 +32,7 @@ ms.locfileid: "80292038"
 > * [设置监视和诊断应用程序](service-fabric-tutorial-java-elk.md)
 > * [设置 CI/CD](service-fabric-tutorial-java-jenkins.md)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始学习本教程之前：
 
@@ -95,7 +95,7 @@ ms.locfileid: "80292038"
     Example: az storage account create -g teststorageaccountrg -l westus --name teststorageaccount --kind Storage
     ```
 
-7. 访问 [Azure 门户](https://portal.azure.com)，导航到供存储帐户使用的“共享访问签名”选项卡。  生成 SAS 令牌，如下所示。
+7. 访问 [Azure 门户](https://portal.azure.com)，导航到供存储帐户使用的“共享访问签名”选项卡。 生成 SAS 令牌，如下所示。
 
     ![生成用于存储的 SAS](./media/service-fabric-tutorial-java-deploy-azure/storagesas.png)
 
@@ -127,7 +127,7 @@ ms.locfileid: "80292038"
     Please provide string value for 'receiveAuthorizationRuleName' (? for help): receiver
     ```
 
-    将“输出”字段的内容复制到上一命令的 JSON 输出中。  创建 Service Fabric 群集时，使用发送方信息。 接收方名称和密钥应该保存，供下一教程使用。在下一教程中，Logstash 服务配置为接收事件中心的消息。 以下 Blob 为 JSON 输出示例：
+    将“输出”字段的内容复制到上一命令的 JSON 输出中。 创建 Service Fabric 群集时，使用发送方信息。 接收方名称和密钥应该保存，供下一教程使用。在下一教程中，Logstash 服务配置为接收事件中心的消息。 以下 Blob 为 JSON 输出示例：
 
     ```json
     "outputs": {
@@ -191,7 +191,7 @@ ms.locfileid: "80292038"
 
 ## <a name="deploy-your-application-to-the-cluster"></a>将应用程序部署到群集
 
-1. 在部署应用程序之前，需将以下代码片段添加到 *Voting/VotingApplication/ApplicationManifest.xml* 文件。 **X509FindValue** 字段是从“在 Azure 中创建 Service Fabric 群集”  部分的步骤 4 返回的指纹。 此代码片段嵌套在 **ApplicationManifest** 字段（根字段）下。
+1. 在部署应用程序之前，需将以下代码片段添加到 *Voting/VotingApplication/ApplicationManifest.xml* 文件。 **X509FindValue** 字段是从“在 Azure 中创建 Service Fabric 群集”部分的步骤 4 返回的指纹。 此代码片段嵌套在 **ApplicationManifest** 字段（根字段）下。
 
     ```xml
     <Certificates>

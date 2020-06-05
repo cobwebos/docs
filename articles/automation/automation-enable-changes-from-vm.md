@@ -5,12 +5,12 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 5379f2c46bbeaba4ee8509603b7b739b75d08f04
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 332ff4f6e63a831c1523c3f959708f9dc48a72a9
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836781"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171049"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-azure-vm"></a>从 Azure VM 启用更改跟踪和清单
 
@@ -41,15 +41,7 @@ ms.locfileid: "83836781"
 
 5. 选择 Log Analytics 工作区和自动化帐户，然后单击“启用”为 VM 启用更改跟踪和库存。 安装最多需要 15 分钟才能完成。 
 
-## <a name="check-the-scope-configuration"></a><a name="scope-configuration"></a>检查作用域配置
-
-更改跟踪和库存在工作区中使用作用域配置来确定要为功能启用的计算机。 作用域配置是包含一个或多个已保存搜索的组，该组用来将功能的作用域限制为特定计算机。 有关详细信息，请参阅[使用更改跟踪和库存的作用域配置](automation-scope-configurations-change-tracking.md)。
-
 ## <a name="next-steps"></a>后续步骤
 
 * 有关使用此功能的详细信息，请参阅[管理更改跟踪和库存](change-tracking-file-contents.md)。
-* 有关作用域配置的信息，请参阅[使用更改跟踪和库存的作用域配置](automation-scope-configurations-change-tracking.md)。
-* 若要了解如何使用此功能来识别环境中安装的软件，请参阅[发现 VM 上安装了哪些软件](automation-tutorial-installed-software.md)。
-* 如果不希望在启用此功能时将自动化帐户与 Log Analytics 工作区集成，请参阅[取消工作区与自动化帐户的链接](automation-unlink-workspace-change-tracking.md)。
-* 将更改部署到 VM 后，可以按照[从更改跟踪和库存中删除 VM](automation-remove-vms-from-change-tracking.md) 中的说明将其删除。
 * 若要对该功能的常规问题进行故障排除，请参阅[更改跟踪和库存问题故障排除](troubleshoot/change-tracking.md)。

@@ -31,20 +31,20 @@ ms.locfileid: "81400525"
 
 1. 在同一文件中，将字符串 `YourSubscriptionKey` 替换为你的订阅密钥。
 
-1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](https://aka.ms/speech/sdkregion)中的“区域标识符”（例如，对于免费试用版订阅，为 `westus`）。 
+1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](https://aka.ms/speech/sdkregion)中的“区域标识符”（例如，对于免费试用版订阅，为 `westus`）。
 
 1. 将 `whatstheweatherlike.wav` 字符串替换为你自己的文件名。
 
-1. 在菜单栏中，选择“文件”   > “全部保存”  。
+1. 在菜单栏中，选择“文件” > “全部保存”。
 
 > [!NOTE]
 > 语音 SDK 将默认使用 en-us 作为语言进行识别。若要了解如何选择源语言，请参阅[指定语音转文本的源语言](../../../../how-to-specify-source-language.md)。
 
 ## <a name="build-and-run-the-application"></a>构建并运行应用程序
 
-1. 从菜单栏中，选择“构建”   > “构建解决方案”  以构建应用程序。 现在，编译代码时应不会提示错误。
+1. 从菜单栏中，选择“构建” > “构建解决方案”以构建应用程序。 现在，编译代码时应不会提示错误。
 
-1. 选择“调试”   > “开始调试”  （或按 F5  ）以启动 helloworld  应用程序。
+1. 选择“调试” > “开始调试”（或按 F5）以启动 helloworld 应用程序。
 
 1. 你的音频文件将传输到语音服务，文件中的第一个言语将转录为文本，该文本将显示在同一窗口中。
 

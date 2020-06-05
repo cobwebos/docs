@@ -54,7 +54,7 @@ MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这
 
 ## <a name="set-up-your-project"></a>设置项目
 
-在本部分中，你将创建一个新项目，用于演示如何将 Windows 桌面 .NET 应用程序 (XAML) 与“使用 Microsoft 登录”集成，使该应用程序能够查询需要令牌的 Web API  。
+在本部分中，你将创建一个新项目，用于演示如何将 Windows 桌面 .NET 应用程序 (XAML) 与“使用 Microsoft 登录”集成，使该应用程序能够查询需要令牌的 Web API。
 
 使用本指南创建的应用程序将显示一个用于调用图的按钮、一个用于在屏幕上显示结果的区域和一个注销按钮。
 
@@ -64,13 +64,13 @@ MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这
 
 若要创建应用程序，请执行以下操作：
 
-1. 在 Visual Studio 中，选择“文件”   > “新建”   > “项目”  。
-2. 在“模板”下，选择“Visual C#”   。
-3. 选择“WPF 应用(.NET Framework)”  ，具体取决于所使用的 Visual Studio 版本。
+1. 在 Visual Studio 中，选择“文件” > “新建” > “项目”。
+2. 在“模板”下，选择“Visual C#” 。
+3. 选择“WPF 应用(.NET Framework)”，具体取决于所使用的 Visual Studio 版本。
 
 ## <a name="add-msal-to-your-project"></a>将 MSAL 添加到项目
 
-1. 在 Visual Studio 中，选择“工具” > “NuGet 包管理器”> “包管理器控制台”    。
+1. 在 Visual Studio 中，选择“工具” > “NuGet 包管理器”> “包管理器控制台”  。
 2. 在“包管理器控制台”窗口中，粘贴以下 Azure PowerShell 命令：
 
     ```powershell
@@ -89,7 +89,7 @@ MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这
 
 可以通过执行以下操作快速注册应用程序：
 1. 访问 [Azure 门户 - 应用程序注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs)。
-1. 输入应用程序的名称并选择“注册”  。
+1. 输入应用程序的名称并选择“注册”。
 1. 遵照说明下载内容，并只需单击一下自动配置新应用程序。
 
 ### <a name="option-2-advanced-mode"></a>选项 2：高级模式
@@ -98,16 +98,16 @@ MSAL 负责管理缓存和刷新访问令牌，因此应用程序无需执行这
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。
-1. 选择“新注册”。 
-   - 在“名称”  部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `Win-App-calling-MsGraph`。
-   - 在“支持的帐户类型”部分，选择“任何组织目录中的帐户和个人 Microsoft 帐户(例如 Skype、Xbox、Outlook.com)”。  
-   - 选择“注册”  以创建应用程序。
-1. 在应用的页面列表中，选择“身份验证”。 
-   1. 在“重定向 URI”  部分的重定向 URI 列表中：
-   1. 在“类型”  列中选择“公共客户端/本机(移动和桌面)”  。
-   1. 在“重定向 URI”列中输入  `https://login.microsoftonline.com/common/oauth2/nativeclient`
-1. 选择“注册”  。
-1. 转到 Visual Studio，打开 App.xaml.cs  文件，然后将下面代码片段中的 `Enter_the_Application_Id_here` 替换为刚注册并复制的应用程序 ID。
+1. 选择“新注册”。
+   - 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `Win-App-calling-MsGraph`。
+   - 在“支持的帐户类型”部分，选择“任何组织目录中的帐户和个人 Microsoft 帐户(例如 Skype、Xbox、Outlook.com)”。 
+   - 选择“注册”以创建应用程序。
+1. 在应用的页面列表中，选择“身份验证”。
+   1. 在“重定向 URI”部分的重定向 URI 列表中：
+   1. 在“类型”列中选择“公共客户端/本机(移动和桌面)”。
+   1. 在“重定向 URI”列中输入 `https://login.microsoftonline.com/common/oauth2/nativeclient`
+1. 选择“注册”。
+1. 转到 Visual Studio，打开 App.xaml.cs 文件，然后将下面代码片段中的 `Enter_the_Application_Id_here` 替换为刚注册并复制的应用程序 ID。
 
     ```csharp
     private static string ClientId = "Enter_the_Application_Id_here";
@@ -364,6 +364,6 @@ private void DisplayBasicTokenInfo(AuthenticationResult authResult)
 
 ### <a name="more-information"></a>详细信息
 
-除了用于调用 Microsoft Graph API 的访问令牌，MSAL 还可以在用户登录后获取 ID 令牌。 此令牌包含一小部分与用户相关的信息。 `DisplayBasicTokenInfo` 方法显示包含在令牌中的基本信息。 例如，它显示用户的显示名称和 ID，以及令牌到期日期和表示访问令牌本身的字符串。 多次选择“调用 Microsoft Graph API”按钮，便会发现后续请求使用了同一令牌。  而且还会注意到，在 MSAL 决定续订令牌时，到期日期也延长了。
+除了用于调用 Microsoft Graph API 的访问令牌，MSAL 还可以在用户登录后获取 ID 令牌。 此令牌包含一小部分与用户相关的信息。 `DisplayBasicTokenInfo` 方法显示包含在令牌中的基本信息。 例如，它显示用户的显示名称和 ID，以及令牌到期日期和表示访问令牌本身的字符串。 多次选择“调用 Microsoft Graph API”按钮，便会发现后续请求使用了同一令牌。 而且还会注意到，在 MSAL 决定续订令牌时，到期日期也延长了。
 
 [!INCLUDE [5. Test and Validate](../../../includes/active-directory-develop-guidedsetup-windesktop-test.md)]

@@ -29,7 +29,7 @@ ms.locfileid: "81400584"
 
 1. 在此新文件中，将字符串 `YourSubscriptionKey` 替换为你的语音服务订阅密钥。
 
-1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](https://aka.ms/speech/sdkregion)中的“区域标识符”（例如，对于免费试用版订阅，为 `westus`）。 
+1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](https://aka.ms/speech/sdkregion)中的“区域标识符”（例如，对于免费试用版订阅，为 `westus`）。
 
 1. 将 `whatstheweatherlike.wav` 字符串替换为你自己的文件名。
 
@@ -39,7 +39,7 @@ ms.locfileid: "81400584"
 ## <a name="build-the-app"></a>生成应用
 
 > [!NOTE]
-> 请确保将以下命令输入在单个命令行上。  执行该操作的最简单方法是使用每个命令旁边的“复制按钮”来复制命令，然后将其粘贴到 shell 提示符下。 
+> 请确保将以下命令输入在单个命令行上。 执行该操作的最简单方法是使用每个命令旁边的“复制按钮”来复制命令，然后将其粘贴到 shell 提示符下。
 
 * 运行以下命令以生成应用程序。
 

@@ -5,16 +5,16 @@ manager: carmonm
 ms.date: 06/05/2019
 ms.topic: include
 ms.openlocfilehash: 550ace93479278df2a592a87ee34d10f8763d2f6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67133815"
 ---
 > [!IMPORTANT]
 >
 > 使用 PowerShell 的 Azure 功能必须已安装 `AzureRM` 模块。 该模块是旧模块，仅适用于 Windows PowerShell 5.1，它不再接收新功能。
-> 针对相同版本的 PowerShell 进行安装时，`Az` 和 `AzureRM` 模块不兼容。 
+> 针对相同版本的 PowerShell 进行安装时，`Az` 和 `AzureRM` 模块不兼容。
 > 如果需要两个版本，请执行以下操作：
 >
 > 1. 在 PowerShell 5.1 会话中[卸载 Az 模块](/powershell/azure/uninstall-az-ps)。

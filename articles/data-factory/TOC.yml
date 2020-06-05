@@ -90,6 +90,10 @@
                   href: tutorial-incremental-copy-change-tracking-feature-portal.md
                 - name: Azure PowerShell
                   href: tutorial-incremental-copy-change-tracking-feature-powershell.md
+            - name: 在 Azure SQL MI 中使用 CDC
+              items:
+                - name: 用户界面 (UI)
+                  href: tutorial-incremental-copy-change-data-capture-feature-portal.md
             - name: 按上次修改日期复制新文件
               href: tutorial-incremental-copy-lastmodified-copy-data-tool.md
             - name: 按以时间分区的文件名称复制新文件
@@ -196,6 +200,8 @@
       items:
         - name: 直观创作数据工厂
           href: author-visually.md
+        - name: 管理中心
+          href: author-management-hub.md
         - name: 源代码管理
           href: source-control.md
         - name: 持续集成和交付

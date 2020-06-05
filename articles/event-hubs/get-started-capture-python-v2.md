@@ -37,7 +37,7 @@ ms.locfileid: "82159329"
 > * 使用 Python 脚本将数据发送到事件中心。
 > * 使用另一个 Python 脚本通过事件中心捕获功能读取并处理文件。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Python 2.7、3.5 或更高版本，已安装 PIP 并已更新。  
 - Azure 订阅。 如果没有订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。  
@@ -92,7 +92,7 @@ ms.locfileid: "82159329"
     * 将 `EVENT HUBS NAMESPACE CONNECTION STRING` 替换为事件中心命名空间的连接字符串。  
     * 将 `EVENT HUB NAME` 替换为事件中心的名称。  
 5. 运行脚本以将事件发送到事件中心。  
-6. 在 Azure 门户中，可以验证事件中心是否已收到消息。 在“指标”部分切换到“消息”视图。   刷新页面以更新图表。 可能需要等待几秒，页面才会显示已收到消息。 
+6. 在 Azure 门户中，可以验证事件中心是否已收到消息。 在“指标”部分切换到“消息”视图。  刷新页面以更新图表。 可能需要等待几秒，页面才会显示已收到消息。 
 
     [![验证事件中心是否已收到消息](./media/get-started-capture-python-v2/messages-portal.png)](./media/get-started-capture-python-v2/messages-portal.png#lightbox)
 
