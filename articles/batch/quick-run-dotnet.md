@@ -19,7 +19,7 @@ ms.locfileid: "82117210"
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 适用于 Linux、macOS 或 Windows 的 [Visual Studio 2017 或更高版本](https://www.visualstudio.com/vs)或 [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1)。 
 
@@ -60,7 +60,7 @@ private const string StorageAccountKey  = "xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfw
 
 若要查看运行中的 Batch 工作流，请在 Visual Studio 中构建并运行应用程序，或在命令行中使用 `dotnet build` 和 `dotnet run` 命令。 运行应用程序后，请查看代码，了解应用程序的每个部分的作用。 例如，在 Visual Studio 中：
 
-* 右键单击解决方案资源管理器中的解决方案，然后单击“生成解决方案”  。 
+* 右键单击解决方案资源管理器中的解决方案，然后单击“生成解决方案”。 
 
 * 出现提示时，请确认还原任何 NuGet 包。 如果需要下载缺少的包，请确保 [NuGet 包管理器](https://docs.nuget.org/consume/installing-nuget)已安装。
 
@@ -202,7 +202,7 @@ try
 
 ### <a name="create-tasks"></a>创建任务
 
-此应用创建 [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) 对象的列表。 每个任务都使用 `ResourceFile`CommandLine[ 属性来处理输入 ](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) 对象。 在示例中，命令行运行 Windows `type` 命令来显示输入文件。 此命令是一个用于演示的简单示例。 使用 Batch 时，可以在命令行中指定应用或脚本。 Batch 提供多种将应用和脚本部署到计算节点的方式。
+此应用创建 [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) 对象的列表。 每个任务都使用 [CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) 属性来处理输入 `ResourceFile` 对象。 在示例中，命令行运行 Windows `type` 命令来显示输入文件。 此命令是一个用于演示的简单示例。 使用 Batch 时，可以在命令行中指定应用或脚本。 Batch 提供多种将应用和脚本部署到计算节点的方式。
 
 然后，应用使用 [AddTask](/dotnet/api/microsoft.azure.batch.joboperations.addtask) 方法将任务添加到作业，使任务按顺序在计算节点上运行。
 
@@ -240,7 +240,7 @@ foreach (CloudTask task in completedtasks)
 
 应用自动删除所创建的存储容器，并允许你选择是否删除 Batch 池和作业。 只要有节点在运行，就会对池收费，即使没有计划作业。 不再需要池时，请将其删除。 删除池时会删除节点上的所有任务输出。
 
-若不再需要资源组、Batch 帐户和存储帐户，请将其删除。 为此，请在 Azure 门户中选择 Batch 帐户所在的资源组，然后单击“删除资源组”。 
+若不再需要资源组、Batch 帐户和存储帐户，请将其删除。 为此，请在 Azure 门户中选择 Batch 帐户所在的资源组，然后单击“删除资源组”。
 
 ## <a name="next-steps"></a>后续步骤
 

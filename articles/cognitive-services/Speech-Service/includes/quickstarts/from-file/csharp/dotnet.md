@@ -28,11 +28,11 @@ ms.locfileid: "81400570"
 1. 启动 Visual Studio 2019。
 2. 加载项目并打开 `Program.cs`。
 3. 下载 <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/whatstheweatherlike.wav" download="whatstheweatherlike" target="_blank">whatstheweatherlike.wav <span class="docon docon-download x-hidden-focus"></span></a>，并将其添加到项目。
-    - 将 whatstheweatherlike.wav  文件保存到 `Program.cs` 文件旁边。
-    - 在**解决方案资源管理器**中右键单击项目，选择“添加”>“现有项”  。
-    - 选择 whatstheweatherlike.wav  文件，然后选择“添加”  按钮。
-    - 右键单击新添加的文件，选择“属性”  。
-    - 将“复制到输出目录”  更改为“始终复制”  。
+    - 将 whatstheweatherlike.wav 文件保存到 `Program.cs` 文件旁边。
+    - 在**解决方案资源管理器**中右键单击项目，选择“添加”>“现有项”。
+    - 选择 whatstheweatherlike.wav 文件，然后选择“添加”按钮。
+    - 右键单击新添加的文件，选择“属性”。
+    - 将“复制到输出目录”更改为“始终复制”。
 
 ## <a name="start-with-some-boilerplate-code"></a>从一些样本代码入手
 
@@ -197,8 +197,8 @@ namespace HelloWorld
 
 现在，可以使用语音服务构建应用并测试语音识别。
 
-1. 编译代码：从 *Visual Studio* 的菜单栏中，选择“生成”   > “生成解决方案”  。
-2. 启动应用：在菜单栏中，选择“调试” > “开始调试”，或按 F5    。
+1. 编译代码：从 *Visual Studio* 的菜单栏中，选择“生成” > “生成解决方案”。
+2. 启动应用：在菜单栏中，选择“调试” > “开始调试”，或按 F5  。
 3. 开始识别：语音文件将发送到语音服务，转录为文本，并在控制台中呈现。
 
    ```console

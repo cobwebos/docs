@@ -32,6 +32,8 @@
           href: quickstarts/speech-to-text-from-file.md
         - name: 识别存储在 Blob 存储中的语音
           href: quickstarts/from-blob.md
+        - name: 在 Speech Studio 中使用音频文件测试模型
+          href: quickstarts/speech-studio-test-model.md
     - name: 操作指南
       items:
         - name: 选择语音识别模式

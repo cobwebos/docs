@@ -11,7 +11,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "69906623"
 ---
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本快速入门需要：
 

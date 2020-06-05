@@ -18,7 +18,7 @@ ms.locfileid: "83673129"
 
 示例应用程序的源代码随附在语音设备 SDK 中， 也可在 [GitHub 上获取](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 开始使用语音设备 SDK 之前，需要：
 
@@ -35,7 +35,7 @@ ms.locfileid: "83673129"
 
 - 如果计划使用语音服务来确定用户话语中的意向（或行动），则需[语言理解服务 (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) 订阅。 若要了解有关 LUIS 和意向识别的详细信息，请参阅[使用 LUIS、C# 识别语音意向](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)。
 
-  可[创建一个简单的 LUIS 模型](https://docs.microsoft.com/azure/cognitive-services/luis/)，或使用示例 LUIS 模型 LUIS-example.json。 可从[语音设备 SDK 下载站点](https://aka.ms/sdsdk-luis)获取示例 LUIS 模型。 选择“导入新应用”并选择 JSON 文件，将模型的 JSON 文件上传到 [LUIS 门户](https://www.luis.ai/home)。 
+  可[创建一个简单的 LUIS 模型](https://docs.microsoft.com/azure/cognitive-services/luis/)，或使用示例 LUIS 模型 LUIS-example.json。 可从[语音设备 SDK 下载站点](https://aka.ms/sdsdk-luis)获取示例 LUIS 模型。 选择“导入新应用”并选择 JSON 文件，将模型的 JSON 文件上传到 [LUIS 门户](https://www.luis.ai/home)。
 
 - 在电脑上安装 [Android Studio](https://developer.android.com/studio/) 和 [Vysor](https://vysor.io/download/)。
 
@@ -45,9 +45,9 @@ ms.locfileid: "83673129"
 
    ![Vysor](../media/speech-devices-sdk/qsg-3.png)
 
-1. 你的设备应列在“选择设备”下。  选择设备旁边的“视图”按钮。 
+1. 你的设备应列在“选择设备”下。 选择设备旁边的“视图”按钮。
 
-1. 选择文件夹图标，然后选择“设置” > “WLAN”连接到无线网络。  
+1. 选择文件夹图标，然后选择“设置” > “WLAN”连接到无线网络。 
 
    ![Vysor WLAN](../media/speech-devices-sdk/qsg-4.png)
 
@@ -58,7 +58,7 @@ ms.locfileid: "83673129"
    >
    > ![Vysor 文件夹](../media/speech-devices-sdk/qsg-10.png)
    >
-   > 选择“设置”。  搜索“mac 地址”，然后选择“Mac 地址” > “高级 WLAN”。   记下对话框底部附近显示的 MAC 地址。
+   > 选择“设置”。 搜索“mac 地址”，然后选择“Mac 地址” > “高级 WLAN”。  记下对话框底部附近显示的 MAC 地址。
    >
    > ![Vysor MAC 地址](../media/speech-devices-sdk/qsg-11.png)
    >
@@ -70,11 +70,11 @@ ms.locfileid: "83673129"
 
 1. 启动 Android Studio。
 
-1. 选择“打开现有 Android Studio 项目”  。
+1. 选择“打开现有 Android Studio 项目”。
 
    ![Android Studio - 打开现有项目](../media/speech-devices-sdk/qsg-5.png)
 
-1. 转到 C:\SDSDK\Android-Sample-Release\example。 选择“确定”打开示例项目。 
+1. 转到 C:\SDSDK\Android-Sample-Release\example。 选择“确定”打开示例项目。
 
 1. 配置 Gradle 以引用语音 SDK。 可以在 Android Studio 的 **Gradle Scripts** 下找到以下文件。
 
@@ -152,9 +152,9 @@ ms.locfileid: "83673129"
    |          |         | 使用所有麦克风的线性开发工具包：`Linear4` |
    |          |         | 使用两个麦克风的线性开发工具包：`Linear2` |
 
-1. 若要生成应用程序，请在“运行”菜单中选择“运行‘应用’”。   此时会显示“选择部署目标”对话框。 
+1. 若要生成应用程序，请在“运行”菜单中选择“运行‘应用’”。  此时会显示“选择部署目标”对话框。
 
-1. 选择设备，然后选择“确定”，将应用程序部署到设备。 
+1. 选择设备，然后选择“确定”，将应用程序部署到设备。
 
    ![“选择部署目标”对话框](../media/speech-devices-sdk/qsg-7.png)
 
@@ -168,7 +168,7 @@ ms.locfileid: "83673129"
 
 1. 尽情体验吧！
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 如果无法连接到语音设备。 在命令提示符窗口中键入以下命令。 这会返回设备列表：
 

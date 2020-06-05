@@ -16,4 +16,4 @@ ms.lasthandoff: 04/28/2020
 ms.locfileid: "76159414"
 ---
 >[!NOTE]
->本文介绍的功能仅在 IoT 中心的标准层中可用。 有关基本和标准/免费 IoT 中心层的详细信息，请参阅[选择合适的 IoT 中心层](../articles/iot-hub/iot-hub-scaling.md)。
+>本文所述的功能只能用于 IoT 中心的标准层。 有关 IoT 中心基本层和标准/免费层的详细信息，请参阅[选择合适的 IoT 中心层](../articles/iot-hub/iot-hub-scaling.md)。

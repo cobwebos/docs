@@ -98,7 +98,7 @@
       href: stream-analytics-window-functions.md
     - name: 地理空间函数
       href: stream-analytics-geospatial-functions.md
-    - name: 兼容级别
+    - name: 兼容性级别
       href: stream-analytics-compatibility-level.md
     - name: 通用查询模式
       href: stream-analytics-stream-analytics-query-patterns.md
@@ -114,6 +114,8 @@
   items:
     - name: 管理
       items:
+        - name: 自动缩放作业
+          href: stream-analytics-autoscale.md
         - name: 更新凭据
           href: stream-analytics-login-credentials-inputs-outputs.md
         - name: 配置事件排序策略
@@ -611,6 +613,8 @@
       href: /rest/api/streamanalytics
     - name: 资源管理器模板
       href: /azure/templates/microsoft.streamanalytics/allversions
+    - name: Azure CLI
+      href: /cli/azure/ext/stream-analytics/stream-analytics
 - name: 资源
   items:
     - name: 流分析预览版

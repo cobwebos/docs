@@ -177,6 +177,14 @@
               href: map-get-information-from-coordinate.md
             - name: 显示从 A 到 B 的路线
               href: map-route.md
+        - name: 室内定位模块
+          items:
+            - name: 室内定位模块
+              href: how-to-use-indoor-module.md
+            - name: 室内地图的动态样式设置
+              href: indoor-map-dynamic-styling.md
+            - name: 绘图错误可视化工具
+              href: drawing-error-visualizer.md
         - name: 空间 IO 模块
           items:
             - name: 使用空间 IO 模块
@@ -211,14 +219,6 @@
           href: how-to-add-tile-layer-android-map.md
         - name: 显示交通情况数据
           href: how-to-show-traffic-android.md
-    - name: 使用 Creator 室内地图进行开发
-      items:
-        - name: 室内地图模块
-          href: how-to-use-indoor-module.md
-        - name: 室内地图的动态样式设置
-          href: indoor-map-dynamic-styling.md
-        - name: 绘图错误可视化工具
-          href: drawing-error-visualizer.md
     - name: 提供数据反馈
       href: how-to-use-feedback-tool.md
 - name: 参考

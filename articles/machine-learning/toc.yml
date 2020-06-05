@@ -70,7 +70,8 @@
       items:
         - name: 使用 CLI 进行训练和部署
           href: tutorial-train-deploy-model-cli.md
-        - name: 使用资源管理器模板创建工作区
+        - name: 使用 ARM 模板创建工作区
+          displayName: Resource Manager
           href: tutorial-resource-manager-workspace.md
     - name: Visual Studio Code
       items:

@@ -42,19 +42,19 @@ ms.locfileid: "83673112"
 
 1. 启动 Eclipse。
 
-1. 在 Eclipse IDE Launcher 的“工作区”字段中，输入新工作区目录的名称   。 然后选择“启动”。 
+1. 在 Eclipse IDE Launcher 的“工作区”字段中，输入新工作区目录的名称 。 然后选择“启动”。
 
    ![Eclipse Launcher 的屏幕截图](../media/speech-devices-sdk/eclipse-launcher.png)
 
 1. 片刻之后，Eclipse IDE 的主窗口将会显示。 如果出现了欢迎屏幕，请将其关闭。
 
-1. 从 Eclipse 菜单栏上，依次选择“文件”   > “新建”   > “Java 项目”以新建一个项目  。 如果不可用，请依次选择“项目”  和“Java 项目”  。
+1. 从 Eclipse 菜单栏上，依次选择“文件” > “新建” > “Java 项目”以新建一个项目。 如果不可用，请依次选择“项目”和“Java 项目”。
 
-1. 此时将启动“新建 Java 项目”向导  。 **浏览**示例项目所在的位置。 选择“完成”  。
+1. 此时将启动“新建 Java 项目”向导。 **浏览**示例项目所在的位置。 选择“完成”。
 
    ![“新建 Java 项目”向导的屏幕截图](../media/speech-devices-sdk/eclipse-new-java-project.png)
 
-1. 在“包资源管理器”  中，右键单击你的项目。 从上下文菜单中选择“配置” > “转换为 Maven 项目”。   选择“完成”  。
+1. 在“包资源管理器”中，右键单击你的项目。 从上下文菜单中选择“配置” > “转换为 Maven 项目”。  选择“完成”。
 
    ![包资源管理器的屏幕截图](../media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
@@ -79,7 +79,7 @@ ms.locfileid: "83673112"
     </dependencies>
    ```
 
-1. 将 Windows-x64  的内容复制到 Java 项目位置，如 **C:\SDSDK\JRE-Sample-Release**
+1. 将 Windows-x64 的内容复制到 Java 项目位置，如 **C:\SDSDK\JRE-Sample-Release**
 
 1. 将 `kws.table`、`participants.properties`、`Microsoft.CognitiveServices.Speech.extension.pma.dll` 复制到项目文件夹 **target\classes**
 
@@ -112,7 +112,7 @@ ms.locfileid: "83673112"
 
     要使用新的关键字，请更新 `FunctionsList.java` 中的下面一行，并将关键字复制到应用。 例如，要使用关键字包 `machine.zip` 中的关键字“Machine”，请执行以下操作：
 
-   * 将 `kws.table` 文件从 zip 包复制到项目文件夹“target/classes”中  。
+   * 将 `kws.table` 文件从 zip 包复制到项目文件夹“target/classes”中。
    * 使用关键字名称更新 `FunctionsList.java`：
 
      ```java
@@ -121,7 +121,7 @@ ms.locfileid: "83673112"
 
 ## <a name="run-the-sample-application-from-eclipse"></a>从 Eclipse 运行示例应用程序
 
-1. 从 Eclipse 菜单栏中，依次选择“运行”   > “运行方式”   >   “Java 应用程序”。 然后选择“FunctionsList”和“确定”。  
+1. 从 Eclipse 菜单栏中，依次选择“运行” > “运行方式” > “Java 应用程序”。 然后选择“FunctionsList”和“确定”。 
 
    ![选择 Java 应用程序的屏幕截图](../media/speech-devices-sdk/eclipse-run-sample.png)
 
@@ -129,19 +129,19 @@ ms.locfileid: "83673112"
 
    ![示例语音设备 SDK 的示例应用程序和选项](../media/speech-devices-sdk/java-sample-app-windows.png)
 
-1. 试用新的“对话听录”演示  。 通过“会话”   > “启动”  来启动听录。 默认情况下，每个人都是来宾。 但是，如果你拥有参与者的语音签名，则这些签名可以放入项目文件夹 **target/classes** 的 `participants.properties` 文件中。 若要生成语音签名，请查看[听录对话 (SDK)](../how-to-use-conversation-transcription-service.md)。
+1. 试用新的“对话听录”演示。 通过“会话” > “启动”来启动听录。 默认情况下，每个人都是来宾。 但是，如果你拥有参与者的语音签名，则这些签名可以放入项目文件夹 **target/classes** 的 `participants.properties` 文件中。 若要生成语音签名，请查看[听录对话 (SDK)](../how-to-use-conversation-transcription-service.md)。
 
    ![演示对话听录应用程序](../media/speech-devices-sdk/cts-sample-app-windows.png)
 
 ## <a name="create-and-run-a-standalone-application"></a>创建并运行独立应用程序
 
-1. 在“包资源管理器”  中，右键单击你的项目。 选择“导出”  。
+1. 在“包资源管理器”中，右键单击你的项目。 选择“导出”。
 
-1. 此时将显示“导出”  窗口。 展开“Java”  ，选择“可运行的 JAR 文件”  ，然后选择“下一步”  。
+1. 此时将显示“导出”窗口。 展开“Java”，选择“可运行的 JAR 文件”，然后选择“下一步”。
 
    ![“导出”窗口的屏幕截图](../media/speech-devices-sdk/eclipse-export-windows.png)
 
-1. 此时将显示“可运行的 JAR 文件导出”  窗口。 为应用程序选择“导出目标”  ，然后选择“完成”  。
+1. 此时将显示“可运行的 JAR 文件导出”窗口。 为应用程序选择“导出目标”，然后选择“完成”。
 
    ![“可运行的 JAR 文件导出”的屏幕截图](../media/speech-devices-sdk/eclipse-export-jar-windows.png)
 

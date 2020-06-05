@@ -2,18 +2,19 @@
 title: 教程 - 创建和管理 Azure 虚拟机规模集
 description: 了解如何使用 Azure CLI 创建虚拟机规模集以及某些常见的管理任务，例如如何启动和停止实例，或者如何更改规模集容量。
 author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: tutorial
-ms.date: 03/27/2018
 ms.author: jushiman
-ms.custom: mvc
-ms.openlocfilehash: 882ace506ee55f09d1b0eb5227892398a7dd9237
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
+ms.date: 03/27/2018
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 252b3b3ecf2de24410d046473ee2cfd2215254a9
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81011251"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198229"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>教程：使用 Azure CLI 创建和管理虚拟机规模集
 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 在虚拟机规模集的整个生命周期内，可能需要运行一个或多个管理任务。 本教程介绍如何执行下列操作：
@@ -43,7 +44,7 @@ az group create --name myResourceGroup --location eastus
 
 
 ## <a name="create-a-scale-set"></a>创建规模集
-请使用 [az vmss create](/cli/azure/vmss) 命令创建虚拟机规模集。 以下示例创建名为“myScaleSet”  的规模集，并生成 SSH 密钥（如果不存在）：
+请使用 [az vmss create](/cli/azure/vmss) 命令创建虚拟机规模集。 以下示例创建名为“myScaleSet”的规模集，并生成 SSH 密钥（如果不存在）：
 
 ```azurecli-interactive
 az vmss create \
@@ -145,7 +146,7 @@ WindowsServer  MicrosoftWindowsServer  2012-Datacenter     MicrosoftWindowsServe
 WindowsServer  MicrosoftWindowsServer  2008-R2-SP1         MicrosoftWindowsServer:WindowsServer:2008-R2-SP1:latest         Win2008R2SP1         latest
 ```
 
-若要查看完整列表，请添加 `--all` 参数。 还可以按 `--publisher` 或 `–-offer` 筛选映像列表。 以下示例从列表中筛选出了产品/服务与“CentOS”  相匹配的所有映像：
+若要查看完整列表，请添加 `--all` 参数。 还可以按 `--publisher` 或 `–-offer` 筛选映像列表。 以下示例从列表中筛选出了产品/服务与“CentOS”相匹配的所有映像：
 
 ```azurecli-interactive
 az vm image list --offer CentOS --all --output table
@@ -164,7 +165,7 @@ CentOS   OpenLogic   7.3   OpenLogic:CentOS:7.3:7.3.20170707   7.3.20170707
 CentOS   OpenLogic   7.3   OpenLogic:CentOS:7.3:7.3.20170925   7.3.20170925
 ```
 
-若要部署使用特定映像的规模集，请使用“Urn”  列中的值。 指定映像时，可将映像版本号替换为 *latest*，以便选择最新的发行版。 在以下示例中，`--image` 参数用于指定最新版本的 CentOS 7.3 映像。
+若要部署使用特定映像的规模集，请使用“Urn”列中的值。 指定映像时，可将映像版本号替换为 *latest*，以便选择最新的发行版。 在以下示例中，`--image` 参数用于指定最新版本的 CentOS 7.3 映像。
 
 由于只需数分钟即可创建和配置所有的规模集资源和 VM 实例，因此不需部署以下规模集：
 
@@ -244,7 +245,7 @@ az vmss scale \
     --new-capacity 3
 ```
 
-更新规模集容量需要花费数分钟。 若要查看规模集中目前包含的实例数，请使用 [az vmss show](/cli/azure/vmss) 并对 sku.capacity  进行查询：
+更新规模集容量需要花费数分钟。 若要查看规模集中目前包含的实例数，请使用 [az vmss show](/cli/azure/vmss) 并对 sku.capacity 进行查询：
 
 ```azurecli-interactive
 az vmss show \

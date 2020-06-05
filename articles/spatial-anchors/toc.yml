@@ -78,7 +78,7 @@
       href: 'https://github.com/Azure/azure-spatial-anchors-samples'
 - name: 概念
   items:
-    - name: Authentication
+    - name: 身份验证
       href: concepts/authentication.md
     - name: 定位点关系
       href: concepts/anchor-relationships-way-finding.md
@@ -100,6 +100,8 @@
       href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/'
     - name: 适用于 HoloLens C++/WinRT 的 SDK
       href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/'
+    - name: Azure CLI
+      href: /cli/azure/ext/mixed-reality/spatial-anchors-account
 - name: 资源
   items:
     - name: 发行说明
@@ -110,7 +112,7 @@
       href: spatial-anchor-faq.md
     - name: 提供产品反馈
       href: 'https://feedback.azure.com/forums/919252-azure-spatial-anchors'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-spatial-anchors'
     - name: 支持
       href: spatial-anchor-support.md

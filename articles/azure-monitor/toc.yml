@@ -230,7 +230,7 @@
                     - name: 版本历史记录
                       href: platform/diagnostics-extension-versions.md
                     - name: JSON Lines 资源日志格式
-                      href: platform/diagnostic-logs-append-blobs.md
+                      href: platform/resource-logs-append-blobs.md
                     - name: 疑难解答
                       href: platform/diagnostics-extension-troubleshooting.md
                 - name: Linux
@@ -1173,8 +1173,10 @@
           href: platform/alerts-metric-near-real-time.md
     - name: 平台日志
       items:
+        - name: 支持的资源日志类型和类别
+          href: platform/resource-logs-categories.md
         - name: 资源日志架构
-          href: platform/diagnostic-logs-schema.md
+          href: platform/resource-logs-schema.md
         - name: 活动日志架构
           href: platform/activity-log-schema.md
     - name: 诊断扩展架构

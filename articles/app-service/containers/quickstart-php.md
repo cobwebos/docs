@@ -52,7 +52,7 @@ php -S localhost:8080
 
 打开 Web 浏览器并导航到 `http://localhost:8080` 处的示例应用。
 
-此时会看到来自示例应用的 Hello World!  消息显示在页面中。
+此时会看到来自示例应用的 Hello World! 消息显示在页面中。
 
 ![本地运行应用的示例](media/quickstart-php/localhost-hello-world-in-browser.png)
 
@@ -70,7 +70,7 @@ php -S localhost:8080
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-php-linux-no-h.md)] 
 
-浏览到该站点查看使用内置映像新建的应用。 将 &lt;app name>  替换为你的应用名称。
+浏览到该站点查看使用内置映像新建的应用。 将 &lt;app name> 替换为你的应用名称。
 
 ```bash
 http://<app-name>.azurewebsites.net
@@ -117,7 +117,7 @@ PHP 示例代码在包含内置映像的 Linux 上的应用服务中运行。
 
 ![在 Azure 中运行应用的示例](media/quickstart-php/hello-world-in-browser.png)
 
-祝贺你！  现已将第一个 PHP 应用部署到 Linux 应用服务。
+祝贺你！ 现已将第一个 PHP 应用部署到 Linux 应用服务。
 
 ## <a name="update-locally-and-redeploy-the-code"></a>在本地更新并重新部署代码
 

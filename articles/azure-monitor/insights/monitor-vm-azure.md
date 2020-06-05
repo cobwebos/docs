@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 1121b5324368f8b8c6c062868f5072f4a0e7ac86
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ebb25d49250b71ab8d948833ac982ef244225539
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654372"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84216446"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>使用 Azure Monitor 监视 Azure 虚拟机
 本文介绍如何使用 Azure Monitor 从 Azure 虚拟机收集和分析监视数据以维护其运行状况。 可以使用 Azure Monitor 监视虚拟机的可用性和性能，就像监视任何[其他 Azure 资源](monitor-azure-resource.md)一样，但是它们与其他资源不同，因为你还需要监视客户操作和系统以及在其中运行的工作负载。 
@@ -110,9 +110,7 @@ Azure 中的虚拟机为虚拟主机生成以下与其他 Azure 资源相同的�
 使用虚拟机的诊断设置收集平台指标。 与其他 Azure 资源不同，你无法在 Azure 门户中为虚拟机创建诊断设置，但必须使用[其他方法](../platform/diagnostic-settings.md#create-diagnostic-settings-using-powershell)。 以下示例演示如何使用 PowerShell 和 CLI 收集虚拟机指标。
 
 ```powershell
-Set-AzDiagnosticSetting -Name vm-diagnostics -ResourceId "/subscriptions/monitor diagnostic-settings create \
-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.Compute/virtualMachines/my-vm" -Enabled $true -MetricCategory AllMetrics -workspaceId "/subscriptions/monitor diagnostic-settings create \
-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace"
+Set-AzDiagnosticSetting -Name vm-diagnostics -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.Compute/virtualMachines/my-vm" -Enabled $true -MetricCategory AllMetrics -workspaceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace"
 ```
 
 ```CLI
