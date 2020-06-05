@@ -64,7 +64,7 @@ ms.locfileid: "80876388"
     }
     ```
 
-1. 将**showStats**设置`true`为。
+1. 将**showStats**设置为 `true` 。
 
 1. 选择“执行”**** 以确定文本的情绪。
 
@@ -100,4 +100,4 @@ ms.locfileid: "80876388"
     }
     ```
 
-我们现在可以将响应有效负载的 JSON 数据的文档 `id` 关联到原始请求有效负载文档 `id`。 生成的文档具有一个`keyPhrases`数组，其中包含已从相应输入文档中提取的关键短语的列表。 此外，每个生成的文档都`characterCount`有`transactionCount`各种统计信息，例如和。
+我们现在可以将响应有效负载的 JSON 数据的文档 `id` 关联到原始请求有效负载文档 `id`。 生成的文档具有一个 `keyPhrases` 数组，其中包含已从相应输入文档中提取的关键短语的列表。 此外， `characterCount` `transactionCount` 每个生成的文档都有各种统计信息，例如和。

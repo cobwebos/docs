@@ -25,7 +25,7 @@ ms.locfileid: "80877961"
 
 使用本地计算机视觉容器之前的先决条件如下：
 
-| 必选 | 目的 |
+| 必选 | 用途 |
 |----------|---------|
 | Azure 帐户 | 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户][free-azure-account]。 |
 | Kubernetes CLI | 需要使用 [Kubernetes CLI][kubernetes-cli] 来管理容器注册表中的共享凭据。 在安装 Helm（Kubernetes 包管理器）之前，也需要有 Kubernetes。 |
@@ -48,7 +48,7 @@ ms.locfileid: "80877961"
 
 ### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>与 Kubernetes 群集共享 Docker 凭据
 
-若要允许 Kubernetes 群集对 `containerpreview.azurecr.io` 容器注册表中配置的映像执行 `docker pull`，需将 Docker 凭据传输到群集中。 执行以下[`kubectl create`][kubectl-create]命令，根据容器注册表访问先决条件提供的凭据创建*docker 注册表机密*。
+若要允许 Kubernetes 群集对 `containerpreview.azurecr.io` 容器注册表中配置的映像执行 `docker pull`，需将 Docker 凭据传输到群集中。 执行 [`kubectl create`][kubectl-create] 以下命令，根据容器注册表访问先决条件提供的凭据创建*docker 注册表机密*。
 
 在所选的命令行接口中运行以下命令。 请务必将 `<username>`、`<password>` 和 `<email-address>` 替换为容器注册表凭据。
 
@@ -74,7 +74,7 @@ kubectl create secret docker-registry containerpreview \
 secret "containerpreview" created
 ```
 
-若要验证是否已创建密钥，请执行[`kubectl get`][kubectl-get]带有`secrets`标志的。
+若要验证是否已创建密钥，请执行 [`kubectl get`][kubectl-get] 带有标志的 `secrets` 。
 
 ```console
 kubectl get secrets
@@ -98,7 +98,7 @@ version: 1.0.0
 description: A Helm chart to deploy the microsoft/cognitive-services-read to a Kubernetes cluster
 ```
 
-若要配置 Helm 图表默认值，请将以下 YAML 复制并粘贴到名为`values.yaml`的文件中。 请将 `# {ENDPOINT_URI}` 和 `# {API_KEY}` 注释替换为自己的值。
+若要配置 Helm 图表默认值，请将以下 YAML 复制并粘贴到名为的文件中 `values.yaml` 。 请将 `# {ENDPOINT_URI}` 和 `# {API_KEY}` 注释替换为自己的值。
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
@@ -120,7 +120,7 @@ read:
 > [!IMPORTANT]
 > 如果未提供 `billing` 和 `apikey` 值，服务将在 15 分钟后过期。 同样，由于服务不可用，验证将会失败。
 
-在 "*读取*" 目录下创建 "*模板*" 文件夹。 将以下 YAML 复制并粘贴到名为 `deployment.yaml` 的文件。 该`deployment.yaml`文件将用作 Helm 模板。
+在 "*读取*" 目录下创建 "*模板*" 文件夹。 将以下 YAML 复制并粘贴到名为 `deployment.yaml` 的文件。 该 `deployment.yaml` 文件将用作 Helm 模板。
 
 > 模板可生成清单文件，这些文件是 Kubernetes 可以理解的 YAML 格式资源说明。 [-Helm 图表模板指南][chart-template-guide]
 
@@ -171,11 +171,11 @@ Helm 图表包含要从 `containerpreview.azurecr.io` 容器注册表提取的 D
 
 > [Helm 图表][helm-charts]是描述一组相关 Kubernetes 资源的文件集合。 单个图表既可用于部署简单的资源（例如 Memcached Pod），也可用于部署复杂的资源（例如，包含 HTTP 服务器、数据库、缓存等的完整 Web 应用堆栈）。
 
-提供的*Helm 图表*将从`containerpreview.azurecr.io`容器注册表中提取计算机视觉服务的 docker 映像和相应的服务。
+提供的*Helm 图表*将从容器注册表中提取计算机视觉服务的 docker 映像和相应的服务 `containerpreview.azurecr.io` 。
 
 ## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>在 Kubernetes 群集上安装 Helm 图表
 
-若要安装*helm 图表*，需要执行[`helm install`][helm-install-cmd]命令。 确保从`read`文件夹上方的目录执行安装命令。
+若要安装*helm 图表*，需要执行 [`helm install`][helm-install-cmd] 命令。 确保从文件夹上方的目录执行安装命令 `read` 。
 
 ```console
 helm install read ./read

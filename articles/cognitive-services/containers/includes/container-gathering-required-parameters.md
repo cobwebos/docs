@@ -21,7 +21,7 @@ ms.locfileid: "80875023"
 
 ### <a name="endpoint-uri-endpoint_uri"></a>终结点 URI `{ENDPOINT_URI}`
 
-在相应的认知服务资源的 Azure 门户“概览”  页上提供*终结点* URI 值。 导航到“概览”  页，将鼠标悬停在“终结点”上就会显示一个 `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> 图标。 复制后在需要时使用。
+在相应的认知服务资源的 Azure 门户“概览”页上提供**终结点** URI 值。 导航到“概览”  页，将鼠标悬停在“终结点”上就会显示一个 `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> 图标。 复制后在需要时使用。
 
 ![收集终结点 URI 供以后使用](../media/overview-endpoint-uri.png)
 

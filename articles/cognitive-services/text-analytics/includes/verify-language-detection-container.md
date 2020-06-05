@@ -49,7 +49,7 @@ ms.locfileid: "80876390"
     }
     ```
 
-1. 将**showStats**设置`true`为。
+1. 将**showStats**设置为 `true` 。
 
 1. 选择“执行”**** 以确定文本的情绪。
 
@@ -127,4 +127,4 @@ ms.locfileid: "80876390"
     }
     ```
 
-现在，我们可以按相应`id`的方式将响应负载的 JSON 数据的文档与原始请求负载文档关联。 每个文档独立对待`characterCount` ，其中包含各种统计信息`transactionCount`，例如和。 此外，每个生成的文档`detectedLanguages`都具有每`name`个`iso6391Name`检测到`score`的语言的、和的数组。 检测到多个语言时， `score`将使用来确定最可能的语言。
+现在，我们可以按相应的方式将响应负载的 JSON 数据的文档与原始请求负载文档关联 `id` 。 每个文档独立对待，其中包含各种统计信息 `characterCount` ，例如和 `transactionCount` 。 此外，每个生成的文档都具有 `detectedLanguages` `name` `iso6391Name` `score` 每个检测到的语言的、和的数组。 检测到多个语言时，将 `score` 使用来确定最可能的语言。

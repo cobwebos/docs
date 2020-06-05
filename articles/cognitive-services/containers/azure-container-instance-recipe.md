@@ -29,17 +29,17 @@ ms.locfileid: "80876651"
 * 认知服务**终结点 URL** -查看容器的特定服务 "如何安装"，以查找 endpoint URL 在 Azure 门户中的位置，以及正确的 url 示例。 确切的格式可以从服务更改为服务。
 * 认知服务**密钥**-密钥位于 Azure 资源的 "**密钥**" 页上。 您只需要两个密钥中的一个即可。 此键是32字母数字字符的字符串。
 * 本地主机（您的计算机）上的单个认知服务容器。 请确保可以：
-  * 使用`docker pull`命令拉取映像。
-  * 使用`docker run`命令通过所有必需的配置设置成功运行本地容器。
+  * 使用命令拉取映像 `docker pull` 。
+  * 使用命令通过所有必需的配置设置成功运行本地容器 `docker run` 。
   * 调用容器的终结点，获取 HTTP 2xx 和 JSON 响应的响应。
 
-尖括号`<>`中的所有变量都需要替换为自己的值。 此替换包括尖括号。
+尖括号中的所有变量都 `<>` 需要替换为自己的值。 此替换包括尖括号。
 
 [!INCLUDE [Create a Text Analytics Containers on Azure Container Instances](includes/create-container-instances-resource.md)]
 
 ## <a name="use-the-container-instance"></a>使用容器实例
 
-1. 选择 "**概述**" 并复制 "IP 地址"。 它将是数字 IP 地址，例如`55.55.55.55`。
+1. 选择 "**概述**" 并复制 "IP 地址"。 它将是数字 IP 地址，例如 `55.55.55.55` 。
 1. 打开新的浏览器选项卡，并使用 IP 地址（例如 `http://<IP-address>:5000 (http://55.55.55.55:5000`）。 你将看到容器的主页，让你知道容器正在运行。
 
 1. 选择 "**服务 API 说明**" 以查看容器的 swagger 页面。

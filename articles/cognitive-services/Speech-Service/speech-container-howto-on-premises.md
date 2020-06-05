@@ -25,7 +25,7 @@ ms.locfileid: "82608366"
 
 在本地使用语音容器之前，必须满足以下先决条件：
 
-| 必选 | 目的 |
+| 必选 | 用途 |
 |----------|---------|
 | Azure 帐户 | 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户][free-azure-account]。 |
 | 容器注册表访问权限 | Kubernetes 需要有权访问容器注册表才能将 Docker 映像提取到群集中。 |
@@ -39,8 +39,8 @@ ms.locfileid: "82608366"
 
 | 服务 | CPU/容器 | 内存/容器 |
 |--|--|--|
-| **语音转文本** | 一个解码器至少需要1150个 millicores。 `optimizedForAudioFile`如果已启用，则需要 1950 millicores。 （默认值：两个解码器） | 要求： 2 GB<br>限制： 4 GB |
-| **文本转语音** | 一个并发请求至少需要 500 个毫核心。 如果已启用 `optimizeForTurboMode`，则需要 1,000 个毫核心。 （默认值：两个并发请求） | 必需： 1 GB<br> 限制： 2 GB |
+| **语音转文本** | 一个解码器至少需要1150个 millicores。 如果已 `optimizedForAudioFile` 启用，则需要 1950 millicores。 （默认值：两个解码器） | 要求： 2 GB<br>限制： 4 GB |
+| **文本到语音转换** | 一个并发请求至少需要 500 个毫核心。 如果已启用 `optimizeForTurboMode`，则需要 1,000 个毫核心。 （默认值：两个并发请求） | 必需： 1 GB<br> 限制： 2 GB |
 
 ## <a name="connect-to-the-kubernetes-cluster"></a>连接到 Kubernetes 群集
 
@@ -48,7 +48,7 @@ ms.locfileid: "82608366"
 
 ### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>与 Kubernetes 群集共享 Docker 凭据
 
-若要允许 Kubernetes 群集对 `containerpreview.azurecr.io` 容器注册表中配置的映像执行 `docker pull`，需将 Docker 凭据传输到群集中。 执行以下[`kubectl create`][kubectl-create]命令，根据容器注册表访问先决条件提供的凭据创建*docker 注册表机密*。
+若要允许 Kubernetes 群集对 `containerpreview.azurecr.io` 容器注册表中配置的映像执行 `docker pull`，需将 Docker 凭据传输到群集中。 执行 [`kubectl create`][kubectl-create] 以下命令，根据容器注册表访问先决条件提供的凭据创建*docker 注册表机密*。
 
 在所选的命令行接口中运行以下命令。 请务必将 `<username>`、`<password>` 和 `<email-address>` 替换为容器注册表凭据。
 
@@ -74,7 +74,7 @@ kubectl create secret docker-registry mcr \
 secret "mcr" created
 ```
 
-若要验证是否已创建密钥，请执行[`kubectl get`][kubectl-get]带有`secrets`标志的。
+若要验证是否已创建密钥，请执行 [`kubectl get`][kubectl-get] 带有标志的 `secrets` 。
 
 ```console
 kubectl get secrets
@@ -142,7 +142,7 @@ Helm 图表包含要从 `containerpreview.azurecr.io` 容器注册表提取的 D
 
 > [Helm 图表][helm-charts]是描述一组相关 Kubernetes 资源的文件集合。 单个图表既可用于部署简单的资源（例如 Memcached Pod），也可用于部署复杂的资源（例如，包含 HTTP 服务器、数据库、缓存等的完整 Web 应用堆栈）。
 
-提供的*Helm 图表*从`containerpreview.azurecr.io`容器注册表中提取语音服务的 docker 图像，包括文本到语音和语音到文本服务。
+提供的*Helm 图表*从容器注册表中提取语音服务的 docker 图像，包括文本到语音和语音到文本服务 `containerpreview.azurecr.io` 。
 
 ## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>在 Kubernetes 群集上安装 Helm 图表
 

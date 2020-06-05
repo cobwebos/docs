@@ -24,7 +24,7 @@ ms.locfileid: "80877794"
     az login
     ```
 
-1. 登录到 AKS 群集。 用`your-cluster-name`适当`your-resource-group`的值替换和。
+1. 登录到 AKS 群集。 `your-cluster-name` `your-resource-group` 用适当的值替换和。
 
     ```azurecli
     az aks get-credentials -n your-cluster-name -g -your-resource-group
@@ -48,7 +48,7 @@ ms.locfileid: "80877794"
     code .
     ```
 
-1. 在文本编辑器中，创建名为*yaml*的新文件，然后将以下 yaml 粘贴到其中。 请确保将和`billing/value` `apikey/value`替换为自己的信息。
+1. 在文本编辑器中，创建名为*yaml*的新文件，然后将以下 yaml 粘贴到其中。 请确保将和替换为 `billing/value` `apikey/value` 自己的信息。
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -95,7 +95,7 @@ ms.locfileid: "80877794"
     ```
 
 1. 保存该文件并关闭文本编辑器。
-1. 运行 Kubernetes `apply`命令，并将*yaml*文件作为其目标：
+1. 运行 Kubernetes `apply` 命令，并将*yaml*文件作为其目标：
 
     ```console
     kubectl apply -f language.yaml

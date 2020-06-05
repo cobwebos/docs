@@ -36,5 +36,5 @@ ms.locfileid: "80876386"
 
     |门户中的“资源”选项卡|设置|值|
     |--|--|--|
-    |**概述**|端点|复制终结点。 它看起来类似`https://northeurope.api.cognitive.microsoft.com/text/analytics/v2.0`于。|
+    |**概述**|端点|复制终结点。 它看起来类似于 `https://northeurope.api.cognitive.microsoft.com/text/analytics/v2.0` 。|
     |**“键”**|API 密钥|复制两个密钥中的一个。 它是一个 32 个字符的字母数字字符串（不包含空格或短划线）：<`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`>。|
