@@ -38,6 +38,10 @@
       href: hpc-cache-manage.md
     - name: 配置可选设置
       href: configuration.md
+- name: 参考
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/hpc-cache/hpc-cache
 - name: 资源
   items:
     - name: 开具支持票证
