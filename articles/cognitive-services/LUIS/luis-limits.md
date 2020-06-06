@@ -2,13 +2,13 @@
 title: 限制 - LUIS
 description: 本文介绍 Azure 认知服务语言理解 (LUIS) 的已知限制。 LUIS 有几个限制区。 模型限制在 LUIS 中控制意向、实体和功能。 基于密钥类型的配额限制。 键盘组合可控制 LUIS 网站。
 ms.topic: reference
-ms.date: 05/06/2020
-ms.openlocfilehash: d4a6162758fab7e5c9592b98974620bbf06ba978
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 06/04/2020
+ms.openlocfilehash: aa4362fba09834758d47f3ef063068c1854b9280
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684607"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449492"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>LUIS 模型和密钥的限制
 LUIS 有几个限制区。 第一种是[模型限制](#model-limits)，它控制 LUIS 中的意向、实体和功能。 第二个是基于密钥类型的[配额限制](#key-limits)。 第三个区域的限制是用于控制 LUIS 网站的[键盘组合](#keyboard-controls)。 第四个是 LUIS 创作网站和 LUIS [终结点](luis-glossary.md#endpoint) API 之间的[世界区域映射](luis-reference-regions.md)。
@@ -19,14 +19,14 @@ LUIS 有几个限制区。 第一种是[模型限制](#model-limits)，它控制
 
 如果应用超过 LUIS 模型限制，请考虑使用[LUIS 调度](luis-concept-enterprise.md#dispatch-tool-and-model)应用或使用[LUIS 容器](luis-container-howto.md)。
 
-|分区图|限制|
+|领域|限制|
 |--|:--|
 | [应用名称][luis-get-started-create-app] | *默认最大字符长度 |
 | 应用程序| 每个 Azure 创作资源 500 个应用程序 |
 | [批处理测试][batch-testing]| 10 个数据集，每个数据集 1000 条话语|
 | 显式列表 | 每个应用程序 50 个实体|
 | 外部实体 | 无限制 |
-| [意向][intents]|每个应用程序500：499个自定义意向和必需的_无_意向。<br>[基于调度的](https://aka.ms/dispatch-tool)应用程序具有相应的500调度源。|
+| [调色][intents]|每个应用程序500：499个自定义意向和必需的_无_意向。<br>[基于调度的](https://aka.ms/dispatch-tool)应用程序具有相应的500调度源。|
 | [列表实体](./luis-concept-entity-types.md) | 父级：50 项，子级：20,000 项。 规范名称是 *默认最大字符长度。同义词值没有长度限制。 |
 | [机器学习实体 + 角色](./luis-concept-entity-types.md)：<br> 复合、<br>简单、<br>实体角色|限制为 100 个父实体或 330 个实体，以用户先达到的限制为准。 出于此限制，角色将作为实体计数。 一个示例是一个简单的实体，其中包含2个角色：1个复合 + 1 个简单 + 2 个角色 = 4 个330实体。<br>子实体最多可以嵌套5级。|
 |作为特征的模型| 可用作特定模型的一种功能的最大模型数为10个模型。 用作特定模型的功能的短语列表的最大数目为10个短语列表。|
@@ -37,8 +37,8 @@ LUIS 有几个限制区。 第一种是[模型限制](#model-limits)，它控制
 | [预生成的实体](./luis-prebuilt-entities.md) | 无限制|
 | [正则表达式实体](./luis-concept-entity-types.md)|20 个实体<br>每个正则表达式实体模式 最多 500 个字符|
 | [角色](luis-concept-roles.md)|每个应用程序 300 个角色。 每个实体 10 个角色|
-| [话语][utterances] | 500 个字符|
-| [陈述][utterances] | 每个应用程序 15,000 条 - 对每个意向的话语数量没有限制|
+| [话语][utterances] | 500 个字符<br><br>如果文本长度超过此字符限制，则需要在输入之前将查询文本分段，并相应地合并响应。 您可以使用明显的中断，如语音中的标点符号和长时间停顿。|
+| [查询文本示例][utterances] | 每个应用程序 15,000 条 - 对每个意向的话语数量没有限制<br><br>如果需要为应用程序定型更多示例，请使用[调度](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)模型方法。 使用一种或多种方法培训单独的 LUIS 应用（称为子应用程序），然后训练派单应用程序，该应用程序将从每个子 LUIS 应用的最谈话将预测请求定向到正确的子应用。 |
 | [版本](luis-concept-version.md)| 每个应用程序 100 个版本 |
 | [版本名称][luis-how-to-manage-versions] | 128 个字符 |
 
@@ -50,7 +50,7 @@ LUIS 有几个限制区。 第一种是[模型限制](#model-limits)，它控制
 
 与相同级别的其他对象进行比较时，对象名称必须是唯一的。
 
-|Objects|限制|
+|对象|限制|
 |--|--|
 |意向，实体|所有意图和实体名称在应用的版本中必须是唯一的。|
 |ML 实体组件|对于同一级别的组件，所有机器学习实体组件（子实体）都必须是唯一的。|

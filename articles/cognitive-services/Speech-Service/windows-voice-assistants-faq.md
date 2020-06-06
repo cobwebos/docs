@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: aa71057d3819acb335153ee5b4b65960320405be
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 3cb4dd16592f3af962b32fe3005d2ad4b241d831
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997410"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456993"
 ---
 # <a name="samples-and-faqs"></a>示例和常见问题解答
 
@@ -31,19 +31,19 @@ UWP 语音助手示例是 Windows 上的语音助手，适用于
 随示例应用一起提供的文档通过正确清理的先决条件，演练语音激活和代理管理的代码路径。
 
 > [!div class="nextstepaction"]
-> [访问 UWP 示例的 Github 存储库](https://aka.ms/MVA/sample)
+> [访问 UWP 示例的 GitHub 存储库](https://aka.ms/MVA/sample)
 
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 
 ### <a name="how-do-i-contact-microsoft-for-resources-like-limited-access-feature-tokens-and-keyword-model-files"></a>如何实现与 Microsoft 联系以获取有限的访问功能令牌和关键字模型文件等资源吗？
 
-联系winvoiceassistants@microsoft.com以请求这些资源。
+联系 winvoiceassistants@microsoft.com 以请求这些资源。
 
 ### <a name="my-app-is-showing-in-a-small-window-when-i-activate-it-by-voice-how-can-i-transition-from-the-compact-view-to-a-full-application-window"></a>我的应用程序在通过语音激活时显示在一个小窗口中。 如何从 compact 视图转换到完整应用程序窗口？
 
 当应用程序第一次通过语音激活时，它会在精简视图中启动。 请阅读[语音激活预览版的设计指南](windows-voice-assistants-best-practices.md#design-guidance-for-voice-activation-preview)，以获取有关 Windows 上的语音助手的不同视图和它们之间的转换。
 
-若要将精简视图转换为完整应用视图，请使用 appView API `TryEnterViewModeAsync`：
+若要将精简视图转换为完整应用视图，请使用 appView API `TryEnterViewModeAsync` ：
 
 `var appView = ApplicationView.GetForCurrentView();
  await appView.TryEnterViewModeAsync(ApplicationViewMode.Default);`
