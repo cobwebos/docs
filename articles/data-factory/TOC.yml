@@ -162,6 +162,10 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 集成运行时
       href: concepts-integration-runtime.md
+    - name: 安全性
+      items:
+        - name: 安全基线
+          href: security-baseline.md
     - name: 数据流
       items:
         - name: 使用映射数据流转换数据
