@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 9c54a338e58d2c454c3686fd32de798fd556186d
-  ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+  ms.openlocfilehash: 2bd4075f405e034d15eaec3ac31065e4138c41fb
+  ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/04/2020
-  ms.locfileid: "84433378"
+  ms.lasthandoff: 06/05/2020
+  ms.locfileid: "84447979"
 highlightedContent:
   items:
   - title: Azure 开发人员入门指南
@@ -216,6 +216,12 @@ productDirectory:
     azureCategories:
     - ai-machine-learning
     url: cognitive-services/personalizer/index.yml
+  - title: Bonsai 项目（预览版）
+    summary: 一种机器教学服务，用于使用模拟来创建智能工业控制系统
+    imageSrc: https://static.docs.com/ui/media/product/azure/bonsai.svg
+    azureCategories:
+    - ai-machine-learning
+    url: https://docs.microsoft.com/bonsai/
   - title: QnA Maker
     summary: 提取信息，并将其转化为一目了然的对话式答案
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg

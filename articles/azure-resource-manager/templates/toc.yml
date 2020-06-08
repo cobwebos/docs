@@ -22,6 +22,8 @@
           href: ../../backup/quick-backup-vm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Batch
           href: ../../batch/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: 区块链
+          href: ../../blockchain/service/create-member-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: 认知搜索
           href: ../../search/search-get-started-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: 容器实例
@@ -36,6 +38,8 @@
           href: ../../mysql/quickstart-create-mysql-server-database-using-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Database for PostgreSQL
           href: ../../postgresql/quickstart-create-postgresql-server-database-using-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Databricks
+          href: ../../azure-databricks/quickstart-create-databricks-workspace-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: 事件网格
           href: ../../event-grid/blob-event-quickstart-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: 事件中心
@@ -84,6 +88,8 @@
           href: ../../site-recovery/quickstart-create-vault-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: SQL 数据库
           href: ../../azure-sql/database/single-database-create-arm-template-quickstart.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: 流分析
+          href: ../../stream-analytics/quick-create-azure-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: 虚拟机规模集 - Linux
           href: ../../virtual-machine-scale-sets/quick-create-template-linux.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: 虚拟机规模集 - Windows
@@ -243,6 +249,12 @@
           href: update-visual-studio-deployment-script.md
         - name: IntelliJ IDEA
           href: create-templates-use-intellij.md
+    - name: 查看模板属性
+      items:
+        - name: 导出模板
+          href: export-template-portal.md
+        - name: 查看资源
+          href: view-resources.md
     - name: 部署模板
       items:
         - name: 部署 - 门户
@@ -289,8 +301,6 @@
           href: add-template-to-azure-pipelines.md
         - name: 部署 - GitHub Actions
           href: deploy-github-actions.md
-    - name: 导出模板
-      href: export-template-portal.md
     - name: 查看部署历史记录
       href: deployment-history.md
     - name: 对部署进行故障排除

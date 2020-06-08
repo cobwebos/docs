@@ -23,55 +23,54 @@
       href: storage-sync-files-extend-servers.md
 - name: 概念
   items:
-    - name: 规划 Azure 文件部署
-      href: storage-files-planning.md
-    - name: 规划 Azure 文件同步部署
-      href: storage-sync-files-planning.md
-    - name: 关于直接访问的网络注意事项
-      href: storage-files-networking-overview.md
-    - name: 关于云分层
-      href: storage-sync-cloud-tiering.md
-    - name: 防止意外删除数据
-      href: storage-files-prevent-file-share-deletion.md
-    - name: 关于存储帐户
-      href: ../common/storage-account-options.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: Azure 文件共享快照
-      href: storage-snapshots-files.md
-    - name: 数据冗余
-      href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: 灾难恢复和故障转移
-      href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Azure 文件
+      items:
+        - name: 规划 Azure 文件部署
+          href: storage-files-planning.md
+        - name: 基于标识的身份验证和授权
+          href: storage-files-active-directory-overview.md
+        - name: 关于直接访问的网络注意事项
+          href: storage-files-networking-overview.md
+        - name: 防止意外删除数据
+          href: storage-files-prevent-file-share-deletion.md
+        - name: 静态加密
+          href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: 使用客户管理的密钥进行静态加密
+          href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: 灾难恢复和故障转移
+          href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Azure 文件共享快照
+          href: storage-snapshots-files.md
+        - name: 开发
+          items:
+            - name: 管理并发
+              href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: 共享密钥身份验证
+              href: /rest/api/storageservices/Authorization-for-the-Azure-Storage-Services
+            - name: 共享访问签名 (SAS)
+              href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: 监视和故障排除
+          items:
+            - name: 监视、诊断和故障排除
+              href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: Azure Monitor 中的指标
+              href: ../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: 迁移到新指标
+              href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: 存储分析指标（经典）
+              href: ../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Azure 文件同步
+      items:
+        - name: 规划 Azure 文件同步部署
+          href: storage-sync-files-planning.md
+        - name: 有关混合访问的网络注意事项
+          href: storage-sync-files-networking-overview.md
+        - name: 关于云分层
+          href: storage-sync-cloud-tiering.md
     - name: 可伸缩性和性能目标
       href: storage-files-scale-targets.md
-    - name: 基于标识的身份验证和授权
-      href: storage-files-active-directory-overview.md
-    - name: Azure 存储静态加密
-      href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-      items:
-        - name: 客户管理的密钥和 Azure Key Vault
-          href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: 配置网络路由首选项
-      href: ../common/network-routing-preference.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: 合规性产品
       href: ../common/storage-compliance-offerings.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: 开发
-      items:
-        - name: 管理并发
-          href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: 共享密钥身份验证
-          href: /rest/api/storageservices/Authorization-for-the-Azure-Storage-Services
-        - name: 共享访问签名 (SAS)
-          href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: 监视和故障排除
-      items:
-        - name: 监视、诊断和故障排除
-          href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Azure Monitor 中的指标
-          href: ../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: 迁移到新指标
-          href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: 存储分析指标（经典）
-          href: ../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: 常见问题解答
       href: storage-files-faq.md
 - name: 操作指南
@@ -90,8 +89,6 @@
           href: storage-files-deployment-guide.md
         - name: 部署 Azure 文件同步
           href: storage-sync-files-deployment-guide.md
-        - name: 配置文件同步代理和防火墙设置
-          href: storage-sync-files-firewall-and-proxy.md
         - name: 具有高级文件共享的 SQL Server FCI
           href: ../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: 装载
@@ -104,10 +101,18 @@
           href: storage-how-to-use-files-mac.md
     - name: 网络
       items:
-        - name: 配置 Azure 文件存储网络终结点
-          href: storage-files-networking-endpoints.md
-        - name: 配置 Azure 文件存储的 DNS 转发
-          href: storage-files-networking-dns.md
+        - name: Azure 文件
+          items:
+            - name: 配置 Azure 文件存储网络终结点
+              href: storage-files-networking-endpoints.md
+            - name: 配置 Azure 文件存储的 DNS 转发
+              href: storage-files-networking-dns.md
+        - name: Azure 文件同步
+          items:
+            - name: 配置 Azure 文件同步网络终结点
+              href: storage-sync-files-networking-endpoints.md
+            - name: 配置文件同步代理和防火墙设置
+              href: storage-sync-files-firewall-and-proxy.md
         - name: 配置站点到站点 VPN
           href: storage-files-configure-s2s-vpn.md
         - name: 在 Windows 上配置点到站点 VPN

@@ -14,6 +14,7 @@
         - name: Azure 门户
           href: stream-analytics-quick-create-portal.md
         - name: ARM 模板
+          displayName: Resource Manager
           href: quick-create-azure-resource-manager.md
         - name: PowerShell
           href: stream-analytics-quick-create-powershell.md
@@ -48,6 +49,10 @@
       href: feature-comparison.md
     - name: 本地开发
       href: develop-locally.md
+    - name: 安全性
+      items:
+        - name: 安全基线
+          href: security-baseline.md
     - name: 作业的输入类型
       items:
         - name: 输入概述

@@ -1,38 +1,38 @@
 ---
 title: 实体
-description: Azure 远程呈现 API 范围内实体的定义
+description: Azure 远程渲染 API 范围内实体的定义
 author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: d7b9ecd048b080ae0ec9fd3fb7a4fb35009551b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7981a28db23ab8c0aed05013dd260ffd97a11c07
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681943"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758718"
 ---
 # <a name="entities"></a>实体
 
-*实体*表示空间中的可移动对象，是远程呈现内容的基本构造块。
+实体表示空间中的可移动对象，是远程渲染内容的基本构造块。
 
 ## <a name="entity-properties"></a>实体属性
 
-实体具有由位置、旋转和缩放定义的转换。 本身的实体没有任何可观察的功能。 相反，行为是通过附加到实体的组件添加的。 例如，附加[CutPlaneComponent](../overview/features/cut-planes.md)将在实体位置创建一个切削平面。
+实体具有由位置、旋转和比例定义的转换。 实体本身没有任何可观测的功能。 而行为是通过附加到实体的组件添加的。 例如，附加 [CutPlaneComponent](../overview/features/cut-planes.md) 将在实体位置创建裁切平面。
 
-实体本身的最重要方面是层次结构和生成的分层转换。 例如，将多个实体作为子级附加到共享的父实体时，可以通过更改父实体的转换，协同移动、旋转和缩放所有这些实体。
+实体本身的最重要方面是层次结构和产生的分层转换。 例如，将多个实体作为子级附加到共享的父实体时，可以通过更改父实体的转换，同时移动、旋转和缩放所有这些实体。
 
-实体由其父级唯一拥有，这意味着，当父项被销毁时`Entity.Destroy()`，它的子级和所有连接的[组件](components.md)都是。 因此，从场景中删除模型是通过在模型的`Destroy`根节点上调用来完成的，该节点`AzureSession.Actions.LoadModelAsync()`由或其 SAS `AzureSession.Actions.LoadModelFromSASAsync()`变量返回。
+实体由其父级唯一拥有，这意味着，当父级被 `Entity.Destroy()` 销毁时，其子级和所有连接的[组件](components.md)也会被销毁。 因此，从场景中删除模型（由 `AzureSession.Actions.LoadModelAsync()` 或其 SAS 变体 `AzureSession.Actions.LoadModelFromSASAsync()` 返回）可以通过在模型的根节点上调用 `Destroy` 来实现。
 
-当服务器加载内容或用户要将对象添加到场景中时，将创建实体。 例如，如果用户想要添加一个切削平面来可视化网格的内部，则用户可以创建一个该平面应存在的实体，然后将该平面组件添加到其中。
+当服务器加载内容或用户想要将对象添加到场景中时，会创建实体。 例如，如果用户想要添加裁切平面来可视化网格内部，则用户可以创建应存在平面的实体，然后将该裁切平面组件添加到其中。
 
 ## <a name="query-functions"></a>查询函数
 
-实体上有两种类型的查询函数：同步和异步调用。 同步查询仅可用于在客户端上存在且不涉及大量计算的数据。 例如，查询组件、相对对象转换或父/子关系。 异步查询用于仅驻留在服务器上的数据，或者涉及到在客户端上运行太昂贵的额外计算。 例如，空间边界查询或元数据查询。
+实体上有两种类型的查询函数：同步调用和异步调用。 同步查询只能用于客户端上存在且不涉及大量计算的数据。 例如，查询组件、相对对象转换或父/子关系。 异步查询用于仅驻留在服务器上或涉及成本太高而无法在客户端上运行的额外计算的数据。 例如，空间边界查询或元数据查询。
 
 ### <a name="querying-components"></a>查询组件
 
-若要查找特定类型的组件，请使用`FindComponentOfType`：
+若要查找特定类型的组件，请使用 `FindComponentOfType`：
 
 ```cs
 CutPlaneComponent cutplane = (CutPlaneComponent)entity.FindComponentOfType(ObjectType.CutPlaneComponent);
@@ -41,9 +41,16 @@ CutPlaneComponent cutplane = (CutPlaneComponent)entity.FindComponentOfType(Objec
 CutPlaneComponent cutplane = entity.FindComponentOfType<CutPlaneComponent>();
 ```
 
+```cpp
+ApiHandle<CutPlaneComponent> cutplane = entity->FindComponentOfType(ObjectType::CutPlaneComponent)->as<CutPlaneComponent>();
+
+// or alternatively:
+ApiHandle<CutPlaneComponent> cutplane = *entity->FindComponentOfType<CutPlaneComponent>();
+```
+
 ### <a name="querying-transforms"></a>查询转换
 
-转换查询是对对象的同步调用。 请务必注意，通过 API 查询的转换是相对于对象的父级的本地空间转换。 异常是指本地空间和世界空间相同的根对象。
+转换查询是对对象的同步调用。 请务必注意，通过 API 查询的转换是相对于对象父级的本地空间转换。 例外情况是本地空间和世界空间相同的根对象。
 
 > [!NOTE]
 > 没有专用的 API 来查询任意对象的世界空间转换。
@@ -54,13 +61,20 @@ Double3 translation = entity.Position;
 Quaternion rotation = entity.Rotation;
 ```
 
+```cpp
+// local space transform of the entity
+Double3 translation = *entity->Position();
+Quaternion rotation = *entity->Rotation();
+```
+
+
 ### <a name="querying-spatial-bounds"></a>查询空间边界
 
-界限查询是异步调用，它们使用一个实体作为根在整个对象层次结构上操作。 请参阅有关[对象边界](object-bounds.md)的专用章节。
+边界查询是使用一个实体作为根实体在整个对象层次结构上操作的异步调用。 请参阅有关[对象边界](object-bounds.md)的专用章节。
 
 ### <a name="querying-metadata"></a>查询元数据
 
-元数据是存储在对象中的其他数据，会被服务器忽略。 对象元数据实质上是一组（名称、值）对，其中的值可以为数字、布尔_值_或字符串类型。 可以将元数据与模型一起导出。
+元数据是存储在对象中的其他数据，会被服务器忽略。 对象元数据实质上是一组（名称、值）对，其中值可以是数字、布尔值或字符串类型。 可以将元数据与模型一起导出。
 
 元数据查询是对特定实体的异步调用。 查询仅返回单个实体的元数据，而不返回子图形的合并信息。
 
@@ -79,7 +93,22 @@ metaDataQuery.Completed += (MetadataQueryAsync query) =>
 };
 ```
 
-即使对象不包含任何元数据，该查询也将成功。
+```cpp
+ApiHandle<MetadataQueryAsync> metaDataQuery = *entity->QueryMetaDataAsync();
+metaDataQuery->Completed([](const ApiHandle<MetadataQueryAsync>& query)
+    {
+        if (query->IsRanToCompletion())
+        {
+            ApiHandle<ObjectMetaData> metaData = *query->Result();
+            ApiHandle<ObjectMetaDataEntry> entry = *metaData->GetMetadataByName("MyInt64Value");
+            int64_t intValue = *entry->AsInt64();
+
+            // ...
+        }
+    });
+```
+
+即使对象不包含任何元数据，查询也将成功。
 
 ## <a name="next-steps"></a>后续步骤
 

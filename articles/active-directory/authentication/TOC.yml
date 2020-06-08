@@ -80,6 +80,8 @@
           href: howto-mfa-userstates.md
         - name: 配置身份验证提供程序
           href: concept-mfa-authprovider.md
+        - name: 使用应用密码
+          href: howto-mfa-app-passwords.md
         - name: Directory 联合身份验证
           items:
             - name: Windows Server 2016 AD FS 适配器
@@ -169,6 +171,8 @@
           href: howto-mfaserver-deploy-userportal.md
         - name: 移动应用 Web 服务
           href: howto-mfaserver-deploy-mobileapp.md
+        - name: 配置设置
+          href: howto-mfa-server-settings.md
         - name: 配置高可用性
           href: howto-mfaserver-deploy-ha.md
         - name: 升级 MFA 服务器

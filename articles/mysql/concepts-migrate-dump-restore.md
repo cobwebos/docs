@@ -1,31 +1,33 @@
 ---
-title: 使用转储和还原进行迁移 - Azure Database for MySQL
+title: 使用转储和还原迁移 - Azure Database for MySQL
 description: 本文介绍使用 mysqldump、MySQL Workbench 和 PHPMyAdmin 等工具在 Azure Database for MySQL 中备份和还原数据库的两种常见方式。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
-ms.openlocfilehash: b15da2aa83231bfdc8732995888349b06ab56d15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 158dd5e1f69340e233a0c2392d3f19fd5cf562ea
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78163771"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845540"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>使用转储和还原将 MySQL 数据库迁移到 Azure Database for MySQL
 本文介绍了在 Azure Database for MySQL 中备份和还原数据库的两种常见方式
 - 从命令行转储和还原（使用 mysqldump） 
 - 使用 PHPMyAdmin 转储和还原 
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 若要逐步执行本操作方法指南，需要具备以下条件：
 - [创建 Azure Database for MySQL 服务器 - Azure 门户](quickstart-create-mysql-server-database-using-azure-portal.md)
-- 在计算机上安装[mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html)命令行实用工具。
-- MySQL 工作台[Mysql 工作台下载](https://dev.mysql.com/downloads/workbench/)或其他第三方 mysql 工具来执行转储和还原命令。
+- 已在计算机上安装 [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) 命令行实用程序。
+- 用于执行转储和还原命令的 MySQL Workbench [MySQL Workbench 下载](https://dev.mysql.com/downloads/workbench/)或其他第三方 MySQL 工具。
+
+如果希望迁移数据库大小超过 1 TB 的大型数据库，则可能需要考虑使用支持并行导出和导入的社区工具（如 mydumper/myloader）。 并行转储和还原有助于大幅缩短大型数据库的迁移时间。 可以参考我们的[技术社区博客](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/best-practices-for-migrating-large-databases-to-azure-database/ba-p/1362699)，以获取使用 mydumper/myloader 工具将大型数据库迁移到 Azure Database for MySQL 服务的最佳做法。
 
 ## <a name="use-common-tools"></a>使用常用工具
-使用常见的实用工具和工具（如 MySQL 工作台或 mysqldump）远程连接数据并将其还原到 Azure Database for MySQL。 在具有 Internet 连接的客户端计算机上使用此类工具连接到 Azure Database for MySQL。 使用具有 SSL 加密的连接是最安全的做法，另请参阅[在 Azure Database for MySQL 中配置 SSL 连接](concepts-ssl-connection-security.md)。 迁移到 Azure Database for MySQL 时，无需将转储文件移到任何特殊的云位置。 
+使用常见的实用程序和工具（例如 MySQL Workbench 或 mysqldump）进行远程连接，并将数据还原到 Azure Database for MySQL 中。 在具有 Internet 连接的客户端计算机上使用此类工具连接到 Azure Database for MySQL。 使用具有 SSL 加密的连接是最安全的做法，另请参阅[在 Azure Database for MySQL 中配置 SSL 连接](concepts-ssl-connection-security.md)。 迁移到 Azure Database for MySQL 时，无需将转储文件移到任何特殊的云位置。 
 
 ## <a name="common-uses-for-dump-and-restore"></a>转储和还原的常见用途
 在几个常见方案中，可使用 mysqldump、mysqlpump 等 MySQL 实用程序以将数据库转储和加载到 Azure MySQL 数据库。 在其他方案中，可改用[导入和导出](concepts-migrate-import-export.md)方法。
@@ -49,7 +51,7 @@ ms.locfileid: "78163771"
 -   适当时使用已分区表。
 -   并行加载数据。 避免太多将导致达到资源限制的并行度，并通过使用 Azure 门户中提供的指标监视资源。 
 -   转储数据库时，使用 mysqlpump 中的 `defer-table-indexes` 选项，以便在加载表数据后创建索引。
--   使用 mysqlump 中的 `skip-definer` 选项可以省略视图和存储过程的 CREATE 语句中的 definer 和 SQL SECURITY 子句。  重新加载转储文件时，它会创建使用默认 DEFINER 和 SQL SECURITY 值的对象。
+-   使用 mysqlpump 中的 `skip-definer` 选项，从视图和存储过程的 create 语句中省略 definer 和 SQL SECURITY 子句。  重新加载转储文件时，会创建使用默认 DEFINER 和 SQL SECURITY 值的对象。
 -   将备份文件复制到 Azure blob/存储，并在其中执行还原，这应该比通过 Internet 执行还原要快得多。
 
 ## <a name="create-a-backup-file-from-the-command-line-using-mysqldump"></a>使用 mysqldump 从命令行创建备份文件
@@ -80,9 +82,9 @@ $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sq
 ```
 
 ## <a name="create-a-database-on-the-target-azure-database-for-mysql-server"></a>在 Azure Database for MySQL 目标服务器上创建数据库
-在要迁移数据的 Azure Database for MySQL 目标服务器上创建一个空数据库。 使用 MySQL 工作台等工具来创建数据库。 数据库名称可与包含转储数据的数据库名称相同，或可以创建一个不同名称的数据库。
+在要迁移数据的 Azure Database for MySQL 目标服务器上创建一个空数据库。 使用 MySQL Workbench 等工具创建数据库。 数据库名称可与包含转储数据的数据库名称相同，或可以创建一个不同名称的数据库。
 
-若要获取连接，请在 Azure Database for MySQL 的“概述”中找到连接信息****。
+若要获取连接，请在 Azure Database for MySQL 的“概述”中找到连接信息。
 
 ![在 Azure 门户中找到连接信息](./media/concepts-migrate-dump-restore/1_server-overview-name-login.png)
 
@@ -90,6 +92,16 @@ $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sq
 
 ![MySQL Workbench 连接字符串](./media/concepts-migrate-dump-restore/2_setup-new-connection.png)
 
+## <a name="preparing-the-target-azure-database-for-mysql-server-for-fast-data-loads"></a>准备目标 Azure Database for MySQL 服务器以实现快速数据加载
+若要准备目标 Azure Database for MySQL 服务器以实现快速数据加载，需要更改以下服务器参数和配置。
+- max_allowed_packet – 设置为 1073741824（即 1 GB），以防止由于长行而引起的溢出问题。
+- slow_query_log – 设置为“关闭”以关闭慢速查询日志。 这将消除数据加载过程中由慢速查询日志记录导致的开销。
+- query_store_capture_mode – 设置为“无”以关闭查询存储。 这将消除由查询存储的采样活动导致的开销。
+- innodb_buffer_pool_size – 在迁移期间从门户的定价层纵向扩展服务器到 32 vCore 内存优化 SKU，以增大 innodb_buffer_pool_size。 只能通过纵向扩展 Azure Database for MySQL 服务器的计算来增大 innodb_buffer_pool_size。
+- innodb_write_io_threads 和 innodb_write_io_threads - 从 Azure 门户中的服务器参数更改为 16 以加快迁移速度。
+- 纵向扩展存储层 – 随着存储层的增加，Azure Database for MySQL 服务器的 IOP 会逐渐增加。 为了更快地加载，可能需要增加存储层以增加预配的 IOP。 请记住，存储只能纵向扩展，而不能横向扩展。
+
+迁移完成后，可以将服务器参数和计算层配置还原为以前的值。 
 
 ## <a name="restore-your-mysql-database-using-command-line-or-mysql-workbench"></a>使用命令行或 MySQL Workbench 还原 MySQL 数据库
 创建目标数据库后，可以使用 mysql 命令或 MySQL Workbench 将数据从转储文件还原到新创建的特定数据库。
@@ -100,24 +112,26 @@ mysql -h [hostname] -u [uname] -p[pass] [db_to_restore] < [backupfile.sql]
 ```bash
 $ mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p testdb < testdb_backup.sql
 ```
-
 ## <a name="export-using-phpmyadmin"></a>使用 PHPMyAdmin 进行导出
 若要导出，可以使用可能已安装在本地环境中的常用工具 phpMyAdmin。 使用 PHPMyAdmin 导出 MySQL 数据库：
 1. 打开 phpMyAdmin。
 2. 选择数据库。 单击左侧列表中的数据库名称。 
-3. 单击 "**导出**" 链接。 这将显示一个新页面，可查看数据库转储情况。
-4. 在“导出”区域中，单击“全选”**** 链接，选择数据库中的表。 
+3. 单击“导出”链接。 这将显示一个新页面，可查看数据库转储情况。
+4. 在“导出”区域中，单击“全选”链接，选择数据库中的表。 
 5. 在 SQL 选项区域中，单击适当的选项。 
-6. 单击“另存为文件”**** 选项及相应的压缩选项，然后单击“执行”**** 按钮。 将出现一个对话框，提示在本地保存该文件。
+6. 单击“另存为文件”选项及相应的压缩选项，然后单击“执行”按钮。 将出现一个对话框，提示在本地保存该文件。
 
 ## <a name="import-using-phpmyadmin"></a>使用 PHPMyAdmin 进行导入
 导入数据库的方法与导出类似。 执行以下操作：
 1. 打开 phpMyAdmin。 
-2. 在 phpMyAdmin 设置页中，单击“添加”**** 可添加 Azure Database for MySQL 服务器。 提供连接详细信息和登录信息。
-3. 创建适当命名的数据库，并在屏幕左侧选中该数据库。 若要重写现有数据库，请单击数据库名称，选中所有表名称旁边的复选框，再选择“删除”**** 以删除现有表。 
-4. 单击“SQL”**** 链接，显示可在其中键入 SQL 命令或上传 SQL 文件的页面。 
-5. 使用 "**浏览**" 按钮查找数据库文件。 
-6. 单击“执行”**** 按钮，导出备份、执行 SQL 命令并重新创建数据库。
+2. 在 phpMyAdmin 设置页中，单击“添加”可添加 Azure Database for MySQL 服务器。 提供连接详细信息和登录信息。
+3. 创建适当命名的数据库，并在屏幕左侧选中该数据库。 若要重写现有数据库，请单击数据库名称，选中所有表名称旁边的复选框，再选择“删除”以删除现有表。 
+4. 单击“SQL”链接，显示可在其中键入 SQL 命令或上传 SQL 文件的页面。 
+5. 使用“浏览”按钮查找数据库文件。 
+6. 单击“执行”按钮，导出备份、执行 SQL 命令并重新创建数据库。
+
+## <a name="known-issues"></a>已知问题
+有关已知问题、提示和技巧，我们建议你查看[技术社区博客](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/tips-and-tricks-in-using-mysqldump-and-mysql-restore-to-azure/ba-p/916912)。
 
 ## <a name="next-steps"></a>后续步骤
 - [将应用程序连接到 Azure Database for MySQL](./howto-connection-string.md)。

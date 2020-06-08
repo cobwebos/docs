@@ -59,8 +59,6 @@
           href: ./hdinsight-selecting-vm-size.md
         - name: 群集容量规划
           href: ./hdinsight-capacity-planning.md
-        - name: CPU 核心配额增加请求
-          href: ./quota-increase-request.md
         - name: 群集管理最佳做法
           href: ./cluster-management-best-practices.md
         - name: 可用性和可靠性
@@ -239,6 +237,8 @@
               href: ./cluster-availability-monitor-logs.md
         - name: 疑难解答
           items:
+            - name: CPU 核心配额增加请求
+              href: ./quota-increase-request.md
             - name: 排查脚本操作问题
               href: ./troubleshoot-script-action.md
             - name: 资源创建失败

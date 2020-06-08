@@ -324,24 +324,28 @@
               href: search-dotnet-mgmt-sdk-migration.md
         - name: 升级 REST API
           href: search-api-migration.md
-    - name: 安全
+    - name: 安全性
       items:
-        - name: 安全概述
+        - name: 概述
           href: search-security-overview.md
-        - name: 创建专用终结点
-          href: service-create-private-endpoint.md
-        - name: 配置 IP 防火墙
-          href: service-configure-firewall.md
-        - name: 服务密钥管理
-          href: search-security-api-keys.md
-        - name: 基于角色的管理员访问权限
-          href: search-security-rbac.md
-        - name: 安全筛选器
-          href: search-security-trimming-for-azure-search.md
-        - name: AAD 标识筛选器
-          href: search-security-trimming-for-azure-search-with-aad.md
-        - name: 管理加密密钥
-          href: search-security-manage-encryption-keys.md
+        - name: 数据加密
+          items:
+            - name: 客户管理的密钥
+              href: search-security-manage-encryption-keys.md
+        - name: 入站安全性
+          items:
+            - name: API 访问密钥
+              href: search-security-api-keys.md
+            - name: 配置 IP 防火墙
+              href: service-configure-firewall.md
+            - name: 创建专用终结点
+              href: service-create-private-endpoint.md
+        - name: 基于标识的访问
+          items:
+            - name: 安全筛选器
+              href: search-security-trimming-for-azure-search.md
+            - name: AAD 标识筛选器
+              href: search-security-trimming-for-azure-search-with-aad.md
     - name: 管理
       items:
         - name: 门户
@@ -350,6 +354,8 @@
           href: search-manage-powershell.md
         - name: 跨区域移动服务
           href: search-howto-move-across-regions.md
+        - name: 基于角色的管理员访问权限
+          href: search-security-rbac.md
     - name: 监视
       items:
         - name: 基本
@@ -473,6 +479,8 @@
       href: 'https://azure.microsoft.com/updates/?product=search'
     - name: 反馈论坛 (UserVoice)
       href: 'https://feedback.azure.com/forums/263029-azure-search'
+    - name: 符合性和认证
+      href: 'https://aka.ms/azurecompliance'
     - name: 演示站点
       items:
         - name: 财务文件演示

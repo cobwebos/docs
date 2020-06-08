@@ -106,6 +106,8 @@
       href: train-clustering-model.md
     - name: 训练模型
       href: train-model.md
+    - name: 训练 PyTorch 模型
+      href: train-pytorch-model.md
     - name: 优化模型超参数
       href: tune-model-hyperparameters.md
 - name: 模型评分和评估
@@ -118,6 +120,8 @@
       href: cross-validate-model.md
     - name: 评估模型
       href: evaluate-model.md
+    - name: 为图像模型评分
+      href: score-image-model.md
     - name: 评分模型
       href: score-model.md
 - name: Python 语言
@@ -142,6 +146,20 @@
       href: preprocess-text.md
     - name: 隐性 Dirichlet 分配
       href: latent-dirichlet-allocation.md
+- name: 计算机视觉
+  items:
+    - name: 应用图像转换
+      href: apply-image-transformation.md
+    - name: 转换为图像目录
+      href: convert-to-image-directory.md
+    - name: 初始化图像转换
+      href: init-image-transformation.md
+    - name: 拆分图像目录
+      href: split-to-image-directory.md
+    - name: DenseNet
+      href: densenet.md
+    - name: ResNet
+      href: resnet.md
 - name: 建议
   items:
     - name: 评估推荐器

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 15d9d186ef36ee9181a6ce0386aa9cc5de7838e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c166684484b839ec661ae2e68d5a5e5253d2528f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76718644"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83634514"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>使用 Spark 进行高级数据探索和建模
 
@@ -31,14 +31,14 @@ ms.locfileid: "76718644"
 
 **超参数优化**是为学习算法选择一组超参数的问题，通常目标是优化算法在独立数据集上的性能度量值。 **超参数**是必须在模型训练过程之外指定的值。 关于这些值的假设可能影响模型的灵活性和准确性。 例如，决策树具有超参数，如所需的深度和树中的树叶数量。 支持向量机 (SVM) 需要设置错误分类惩罚项。 
 
-执行此处使用的超参数优化的常用方法是网格搜索或**参数扫描**。 此搜索将经历学习算法的超参数空间子集。 交叉验证可提供性能指标，用于为网格搜索算法生成的最佳结果排序。 与超参数扫描一起使用的 CV 有助于解决极限问题（如使模型过渡拟合训练数据），从而使模型保留适用于一般数据集（从中提取了训练数据）的能力。
+执行此处使用的超参数优化的常用方法是网格搜索或**参数扫描**。 此搜索是指在超参数空间子集中搜索学习算法。 交叉验证可提供性能指标，用于为网格搜索算法生成的最佳结果排序。 与超参数扫描一起使用的 CV 有助于解决极限问题（如使模型过渡拟合训练数据），从而使模型保留适用于一般数据集（从中提取了训练数据）的能力。
 
 我们使用的模型包括逻辑和线性回归、随机林和梯度提升树：
 
 * [使用 SGD 的线性回归](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD)是使用随机梯度下降 (SGD) 方法进行优化和特征缩放的线性回归模型，以预测支付的小费金额。 
 * [使用 LBFGS 的逻辑回归](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS)或“logit”回归，是可在因变量分类时用于执行数据分类的回归模型。 LBFGS 是拟牛顿优化算法，近似于使用有限计算机内存量的 Broyden–Fletcher–Goldfarb–Shanno (BFGS) 算法，在机器学习中广泛使用。
 * [随机林](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests)是决策树的整体。  它们组合了许多决策树以降低过度拟合的风险。 随机林用于回归和分类，并且可处理分类特征，也可扩展到多类分类设置。 它们不需要特征缩放，并且能够捕获非线性和特征交互。 随机林是用于分类和回归的最成功的机器学习模型之一。
-* [梯度提升树](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts)（gbt）是决策树的整体。 GBT 以迭代方式定型决策树，以最大程度地降低损失函数。 GBT 用于回归和分类，可处理分类特征，不需要功能缩放，并且能够捕获非非线性和特征交互。 它们还可以在多类分类设置中使用。
+* [梯度提升树](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS) 是决策树的整体。 GBTS 以迭代方式训练决策树以最大程度减少损失函数。 GBTS 用于回归和分类，并且可处理分类特征，不需要功能缩放，并且能够捕获非线性和特征交互。 它们还可以在多类分类设置中使用。
 
 为二元分类问题显示了使用 CV 和超参数扫描的建模示例。 回归任务的主要主题中显示了更简单的示例（不使用参数扫描）。 但是在附录中，还显示了为线性回归使用弹性网络的验证和为随机林回归使用参数扫描的 CV。 **弹性网络**是用于拟合线性回归模型的正则化回归方法，该方法将 L1 和 L2 指标组合起来，作为 [lasso](https://en.wikipedia.org/wiki/Lasso%20%28statistics%29) 和 [ridge](https://en.wikipedia.org/wiki/Tikhonov_regularization) 方法的惩罚。   
 
@@ -54,11 +54,11 @@ ms.locfileid: "76718644"
 
 ### <a name="spark-16-notebooks"></a>Spark 1.6 笔记本
 
-[pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：包含笔记本 #1 中的主题，以及使用超参数优化和交叉验证进行模型开发的说明。
+[pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure-Samples/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：包括笔记本 #1 中的主题，以及使用超参数优化和交叉验证的模型开发。
 
 ### <a name="spark-20-notebooks"></a>Spark 2.0 笔记本
 
-[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：此文件提供有关如何在 Spark 2.0 群集中执行数据探索、建模和评分的信息。
+[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure-Samples/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：此文件提供有关如何在 Spark 2.0 群集中执行数据探索、建模和评分的信息。
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -116,7 +116,7 @@ datetime.datetime(2016, 4, 18, 17, 36, 27, 832799)
 PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用的特殊命令。 在这些代码示例中使用的此类命令有两个。
 
 * **%%local** 指定本地执行后续行中的代码。 代码必须是有效的 Python 代码。
-* **%%sql -o \<variable name>** 针对 sqlContext 执行 Hive 查询。 如果传递了 -o 参数，则查询的结果以 Pandas 数据帧的形式保存在 %%local Python 上下文中。
+* %%sql -o \<变量名称> 针对 sqlContext 执行 Hive 查询。 如果传递了 -o 参数，则查询的结果以 Pandas 数据帧的形式保存在 %%local Python 上下文中。
 
 有关 Jupyter 笔记本内核和它们提供的预定义“magic”的详细信息，请参阅[适用于装有 HDInsight 上的 HDInsight Spark Linux 群集的 Jupyter 笔记本的内核](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md)。
 
@@ -198,7 +198,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 此代码和后续代码段使用 SQL magic 查询样本，使用本地 magic 绘制数据。
 
 * **SQL magic (`%%sql`)** HDInsight PySpark 内核支持针对 sqlContext 的轻松内联 HiveQL 查询。 (-o VARIABLE_NAME) 参数在 Jupyter 服务器上将 SQL 查询的输出保留为 Pandas 数据帧。 这意味着它在本地模式下可用。
-* **`%%local` magic** 用于在 Jupyter 服务器上本地运行代码，该服务器是 HDInsight 群集的头节点。 通常，在将 `%%local` magic 用于运行查询后，使用 `%%sql -o` magic。 -o 参数会在本地保留 SQL 查询的输出。 然后，`%%local` magic 触发下一组代码片段，以在本地针对已保留在本地的 SQL 查询输出运行。 该输出在运行代码后自动可视化。
+* **`%%local` magic** 用于在 Jupyter 服务器上本地运行代码，该服务器是 HDInsight 群集的头节点。 通常，在将 `%%sql -o` magic 用于运行查询后，使用 `%%local` magic。 -o 参数会在本地保留 SQL 查询的输出。 然后，`%%local` magic 触发下一组代码片段，以在本地针对已保留在本地的 SQL 查询输出运行。 该输出在运行代码后自动可视化。
 
 此查询通过乘客数检索行程。 
 
@@ -245,7 +245,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 
 ![按乘客数的行程频率](./media/spark-advanced-data-exploration-modeling/frequency-of-trips-by-passenger-count.png)
 
-可通过使用笔记本中的“类型”  菜单按钮从多个不同类型的可视化（表、饼图、线图、面积图或条形图）中选择。 此处显示了条形图。
+可通过使用笔记本中的“类型”菜单按钮从多个不同类型的可视化（表、饼图、线图、面积图或条形图）中选择。 此处显示了条形图。
 
 ### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts"></a>绘制小费金额以及小费金额如何随乘客数和车费金额变化的直方图。
 使用 SQL 查询为数据采样。
@@ -308,7 +308,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 * 通过将小时划分到交通时间箱来创建新特征
 * 为分类特征编制索引并进行独热编码
 * 创建标签点对象用于输入到 ML 函数中
-* 创建数据的随机采样，并将其拆分为定型集和测试集
+* 创建数据的随机子采样，并将其拆分为训练集和测试集
 * 特征缩放
 * 在内存中缓存对象
 
@@ -390,7 +390,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 执行以上单元格所花的时间：3.14 秒
 
 ### <a name="create-labeled-point-objects-for-input-into-ml-functions"></a>创建标签点对象用于输入到 ML 函数中
-本节包含的代码演示如何将分类文本数据索引为标签点数据类型以及如何对其进行编码。 此转换准备要用于定型和测试 MLlib 逻辑回归和其他分类模型的文本数据。 标签点对象是弹性分布式数据集 (RDD)，格式化为 MLlib 中的大多数 ML 算法所需的输入数据。 [标签点](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point)是本地向量，可能密集，也可能稀疏，与标签/响应相关联。
+本节包含的代码演示如何将分类文本数据索引为标签点数据类型以及如何对其进行编码。 此转换会准备将文本数据用于训练和测试 MLlib 逻辑回归和其他分类模型。 标签点对象是弹性分布式数据集 (RDD)，格式化为 MLlib 中的大多数 ML 算法所需的输入数据。 [标签点](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point)是本地向量，可能密集，也可能稀疏，与标签/响应相关联。
 
 下面是用于针对二元分类为文本特征编制索引和编码的代码。
 
@@ -438,8 +438,8 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
         return  labPt
 
 
-### <a name="create-a-random-subsampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>创建数据的随机采样，并将其拆分为定型集和测试集
-此代码创建数据的随机采样（此处使用 25%）。 尽管由于数据集的大小，本示例不需要此操作，但我们将演示如何在此处对数据采样。 然后，就会知道如何在需要时针对自己的问题使用它。 当样本较大时，采样可节省大量时间，同时训练模型。 接下来我们将样本拆分为训练部分（此处为 75%）和测试部分（此处为 25%），用于分类和回归建模。
+### <a name="create-a-random-subsampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>创建数据的随机子采样，并将其拆分为训练集和测试集
+此代码创建数据的随机采样（此处使用 25%）。 尽管由于数据集的大小，本示例不需要此操作，但我们将演示如何在此处对数据采样。 然后，就会知道如何在需要时针对自己的问题使用它。 当样本很大时，采样可以在训练模型时节省大量时间。 接下来我们将样本拆分为训练部分（此处为 75%）和测试部分（此处为 25%），用于分类和回归建模。
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -569,8 +569,8 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 
 我们介绍如何通过两种方法使用参数扫描进行交叉验证 (CV)：
 
-1. 使用可应用于 MLlib 中的任何算法和算法中的任何参数集的**泛型**自定义代码。 
-2. 使用 **pySpark CrossValidator 管道函数**。 对于 Spark 1.5.0 的 CrossValidator 有几个限制： 
+1. 使用泛型自定义代码，此代码可应用到 MLlib 中的任何算法以及算法中的任何参数集。 
+2. 使用 **pySpark CrossValidator 管道函数**。 CrossValidator 对于 Spark 1.5.0 有几个限制： 
    
    * 无法保存或保留管道模型以供将来使用。
    * 无法用于模型中的每个参数。
@@ -1426,9 +1426,9 @@ R-sqr = 0.740751197012
 
 **OUTPUT**
 
-PythonRDD[122] at RDD at PythonRDD.scala: 43
+PythonRDD[122] at RDD at PythonRDD.scala:43
 
-* * 要在使用笔记本中使用的模型文件的输出路径。 **若要使用独立数据集和为其评分，则需要在“使用笔记本”中复制并粘贴这些文件名。
+**输出要在使用笔记本中使用的模型文件的路径。 **若要使用独立数据集和为其评分，则需要在“使用笔记本”中复制并粘贴这些文件名。
 
     # PRINT MODEL FILE LOCATIONS FOR CONSUMPTION
     print "logisticRegFileLoc = modelDir + \"" + logisticregressionfilename + "\"";
@@ -1456,5 +1456,5 @@ BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-0
 ## <a name="whats-next"></a>下一步是什么？
 现在已使用 Spark MlLib 创建了回归和分类模型，可了解如何评分和评估这些模型。
 
-**模型使用：** 若要了解如何评分和评估在本主题中创建的分类和回归模型，请参阅[评分和评估 Spark 构建的机器学习模型](spark-model-consumption.md)。
+**使用模型：** 若要了解如何评分和评估在本主题中创建的分类和回归模型，请参阅[评分和评估 Spark 构建的机器学习模型](spark-model-consumption.md)。
 

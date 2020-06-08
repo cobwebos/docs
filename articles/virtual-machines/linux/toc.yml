@@ -13,6 +13,9 @@
       href: quick-create-portal.md
     - name: 创建 VM - Azure PowerShell
       href: quick-create-powershell.md
+    - name: 创建 VM - ARM 模板
+      displayName: 'Resource Manager, template, json'
+      href: quick-create-template.md
 - name: 教程
   items:
     - name: 1 - 创建/管理 VM

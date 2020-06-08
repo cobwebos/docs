@@ -6,21 +6,19 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 02/14/2020
+ms.date: 06/03/2020
 ms.author: diberry
-ms.openlocfilehash: 4d8da7d2bc51c4fc4ebc8d71f230f24f20b3aa24
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a8ac208c77a3c25d03b09e0c70eb5edcd9bd0383
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77368465"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84416345"
 ---
-## <a name="prerequisites"></a>必备条件
+[参考文档](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45) | [示例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/python-model-with-rest/model.py)
 
-* Azure 语言理解 - 创作资源 32 字符密钥和创作终结点 URL。 使用 [Azure 门户](../luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal)或 [Azure CLI](../luis-how-to-azure-subscription.md#create-resources-in-azure-cli) 创建。
-* 从 cognitive-services-language-understanding GitHub 存储库中导入 [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) 应用。
-* 导入的 TravelAgent 应用的 LUIS 应用程序 ID。 应用程序仪表板中显示了应用程序 ID。
-* 接收言语的应用程序中的版本 ID。 默认 ID 为“0.1”。
+## <a name="prerequisites"></a>先决条件
+
 * [Python 3.6](https://www.python.org/downloads/) 或更高版本。
 * [Visual Studio Code](https://code.visualstudio.com/)
 
@@ -28,26 +26,134 @@ ms.locfileid: "77368465"
 
 [!INCLUDE [Quickstart explanation of example utterance JSON file](get-started-get-model-json-example-utterances.md)]
 
+## <a name="create-pizza-app"></a>创建披萨应用
+
+[!INCLUDE [Create pizza app](get-started-get-model-create-pizza-app.md)]
+
 ## <a name="change-model-programmatically"></a>以编程方式更改模型
 
 1. 创建名为 `model.py` 的新文件。 添加以下代码：
 
-    [!code-python[Add example utterances to Language Understanding in python](~/samples-luis/documentation-samples/quickstarts/change-model/python/3.x/add-utterances-3-6.py)]
+    [!code-python[Add example utterances to Language Understanding in python](~/cognitive-services-quickstart-code/python/LUIS/python-model-with-rest/model.py)]
 
 1. 将以 `YOUR-` 开头的值替换为你自己的值。
 
     |信息|目的|
     |--|--|
-    |`YOUR-KEY`|32 字符创作密钥。|
-    |`YOUR-ENDPOINT`| 创作 URL 终结点。 例如，`replace-with-your-resource-name.api.cognitive.microsoft.com` 。 在创建资源时设置资源名称。|
     |`YOUR-APP-ID`| LUIS 应用 ID。 |
+    |`YOUR-AUTHORING-KEY`|32 字符创作密钥。|
+    |`YOUR-AUTHORING-ENDPOINT`| 创作 URL 终结点。 例如，`https://replace-with-your-resource-name.api.cognitive.microsoft.com/`。 在创建资源时设置资源名称。|
 
-    分配的密钥和资源可以在 LUIS 门户的“Azure 资源”  页上的“管理”部分中看到。 应用 ID 可以在“应用程序设置”  页的同一“管理”部分中找到。
+    分配的密钥和资源可以在 LUIS 门户的“Azure 资源”页上的“管理”部分中看到。 应用 ID 可以在“应用程序设置”页的同一“管理”部分中找到。
 
 1. 在创建该文件的同一目录中，在命令提示符下输入以下命令来运行文件：
 
     ```console
     python model.py
+    ```
+
+1. 查看创作响应：
+
+    ```console
+    Add the list of utterances:
+    [{'value': {'ExampleId': 1137150691, 'UtteranceText': 'order a pizza'}, 'hasError': False}, {'value': {'ExampleId': 1137150692, 'UtteranceText': 'order a large pepperoni pizza'}, 'hasError': False}, {'value': {'ExampleId': 1137150693, 'UtteranceText': 'i want two large pepperoni pizzas on thin crust'}, 'hasError': False}]
+    Request training:
+    {'statusId': 9, 'status': 'Queued'}
+    Request training status:
+    [{'modelId': 'edb46abf-0000-41ab-beb2-a41a0fe1630f', 'details': {'statusId': 3, 'status': 'InProgress', 'exampleCount': 0, 'progressSubstatus': 'CollectingData'}}, {'modelId': 'a5030be2-616c-4648-bf2f-380fa9417d37', 'details': {'statusId': 3, 'status': 'InProgress', 'exampleCount': 0, 'progressSubstatus': 'CollectingData'}}, {'modelId': '3f2b1f31-a3c3-4fbd-8182-e9d9dbc120b9', 'details': {'statusId': 3, 'status': 'InProgress', 'exampleCount': 0, 'progressSubstatus': 'CollectingData'}}, {'modelId': 'e4b6704b-1636-474c-9459-fe9ccbeba51c', 'details': {'statusId': 3, 'status': 'InProgress', 'exampleCount': 0, 'progressSubstatus': 'CollectingData'}}, {'modelId': '031d3777-2a00-4a7a-9323-9a3280a30000', 'details': {'statusId': 3, 'status': 'InProgress', 'exampleCount': 0, 'progressSubstatus': 'CollectingData'}}, {'modelId': '9250e7a1-06eb-4413-9432-ae132ed32583', 'details': {'statusId': 3, 'status': 'InProgress', 'exampleCount': 0, 'progressSubstatus': 'CollectingData'}}]
+    ```
+
+    下面是为提高可读性而进行了格式设置的输出：
+
+    ```json
+    Add the list of utterances:
+    [
+      {
+        'value': {
+          'ExampleId': 1137150691,
+          'UtteranceText': 'order a pizza'
+        },
+        'hasError': False
+      },
+      {
+        'value': {
+          'ExampleId': 1137150692,
+          'UtteranceText': 'order a large pepperoni pizza'
+        },
+        'hasError': False
+      },
+      {
+        'value': {
+          'ExampleId': 1137150693,
+          'UtteranceText': 'i want two large pepperoni pizzas on thin crust'
+        },
+        'hasError': False
+      }
+    ]
+
+    Request training:
+    {
+      'statusId': 9,
+      'status': 'Queued'
+    }
+
+    Request training status:
+    [
+      {
+        'modelId': 'edb46abf-0000-41ab-beb2-a41a0fe1630f',
+        'details': {
+          'statusId': 3,
+          'status': 'InProgress',
+          'exampleCount': 0,
+          'progressSubstatus': 'CollectingData'
+        }
+      },
+      {
+        'modelId': 'a5030be2-616c-4648-bf2f-380fa9417d37',
+        'details': {
+          'statusId': 3,
+          'status': 'InProgress',
+          'exampleCount': 0,
+          'progressSubstatus': 'CollectingData'
+        }
+      },
+      {
+        'modelId': '3f2b1f31-a3c3-4fbd-8182-e9d9dbc120b9',
+        'details': {
+          'statusId': 3,
+          'status': 'InProgress',
+          'exampleCount': 0,
+          'progressSubstatus': 'CollectingData'
+        }
+      },
+      {
+        'modelId': 'e4b6704b-1636-474c-9459-fe9ccbeba51c',
+        'details': {
+          'statusId': 3,
+          'status': 'InProgress',
+          'exampleCount': 0,
+          'progressSubstatus': 'CollectingData'
+        }
+      },
+      {
+        'modelId': '031d3777-2a00-4a7a-9323-9a3280a30000',
+        'details': {
+          'statusId': 3,
+          'status': 'InProgress',
+          'exampleCount': 0,
+          'progressSubstatus': 'CollectingData'
+        }
+      },
+      {
+        'modelId': '9250e7a1-06eb-4413-9432-ae132ed32583',
+        'details': {
+          'statusId': 3,
+          'status': 'InProgress',
+          'exampleCount': 0,
+          'progressSubstatus': 'CollectingData'
+        }
+      }
+    ]
     ```
 
 ## <a name="clean-up-resources"></a>清理资源

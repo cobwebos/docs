@@ -1,31 +1,31 @@
 ---
-title: Azure Web 应用程序防火墙（WAF） Geomatch 自定义规则
-description: 本文概述了 Azure 应用程序关上的 Web 应用程序防火墙（WAF） geomatch 自定义规则。
+title: Azure Web 应用程序防火墙 (WAF) Geomatch 自定义规则
+description: 本文概述了 Azure 应用程序网关上的 Web 应用程序防火墙 (WAF) geomatch 自定义规则。
 services: web-application-firewall
 ms.topic: article
 author: vhorne
 ms.service: web-application-firewall
 ms.date: 01/31/2020
 ms.author: victorh
-ms.openlocfilehash: 6725e1de21dbd103850071f7511e2800c6bd7b69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: bdb115cf6d0f0aa2c55f6143015a323df6faa114
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76961083"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744302"
 ---
 # <a name="geomatch-custom-rules-preview"></a>Geomatch 自定义规则（预览版）
 
-自定义规则允许你创建定制的规则，以满足应用程序和安全策略的确切需求。 现在，你可以按国家/地区限制对你的 web 应用程序的访问。 与所有自定义规则一样，此逻辑可以与其他规则组合，以满足应用程序需求。
+自定义规则允许你创建定制的规则，以满足应用程序和安全策略的确切需求。 现在，可以按国家/地区限制对 Web 应用程序的访问。 与所有自定义规则一样，此逻辑可以与其他规则结合，以满足应用程序的需求。
 
-若要创建异地筛选自定义规则，只需选择 "*地理位置*" 作为 "匹配类型"，然后从应用程序中选择要允许/阻止的国家/地区。 有关详细信息，请参阅[如何在 Powershell 中创建自定义规则](configure-waf-custom-rules.md)和更多自定义规则示例（waf-rules.md）。
+若要创建地区筛选自定义规则，只需选择“地理位置”作为匹配类型，然后从应用程序中选择要允许/阻止的一个或多个国家/地区。 有关详细信息，请参阅[如何在 Powershell 中创建自定义规则](configure-waf-custom-rules.md)和更多自定义规则示例 (create-custom-waf-rules.md)。
 
 > [!IMPORTANT]
 > 此公共预览版在提供时没有附带服务级别协议，不应用于生产工作负荷。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="country-codes"></a>国家/地区代码
+## <a name="countryregion-codes"></a>国家/地区代码
 
-如果使用的是 Geomatch 运算符，则选择器可以是以下任何一个两位数国家/地区代码。 
+如果使用的是 Geomatch 运算符，则选择器可以是以下两位数国家/地区代码中的任何一个。 
 
 |国家/地区代码 | 国家/地区名称 |
 | ----- | ----- |
@@ -50,7 +50,7 @@ ms.locfileid: "76961083"
 | BH | 巴林|
 | BI | 布隆迪|
 | BJ | 贝宁|
-| BL | 圣巴泰勒米岛|
+| BL | 圣巴泰勒米|
 | BN | 文莱|
 | BO | 玻利维亚|
 | BR | 巴西|
@@ -133,14 +133,14 @@ ms.locfileid: "76961083"
 | LY | 利比亚 |
 | MA | 摩洛哥|
 | MD | 摩尔多瓦共和国|
-| MG | 马达加斯加|
+| MG | 马达加斯加岛|
 | MK | 北马其顿|
 | ML | 马里|
 | MM | 缅甸|
 | MN | 蒙古|
 | MO | 澳门特别行政区|
-| MQ | 马提尼克|
-| MR | 毛里塔尼亚|
+| MQ | 马提尼克岛|
+| MR | 毛利塔尼亚|
 | MT | 马耳他|
 | MV | 马尔代夫|
 | MW | 马拉维|
@@ -164,7 +164,7 @@ ms.locfileid: "76961083"
 | PL | 波兰|
 | PR | 波多黎各|
 | PT | 葡萄牙|
-| PW | 帕劳|
+| PW | 帕劳群岛|
 | PY | 巴拉圭|
 | QA | 卡塔尔|
 | RE | 留尼汪|
@@ -209,4 +209,4 @@ ms.locfileid: "76961083"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解自定义规则后，可[创建自己的自定义规则](create-custom-waf-rules.md)。
+了解自定义规则后，[创建自己的自定义规则](create-custom-waf-rules.md)。

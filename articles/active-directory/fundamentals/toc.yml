@@ -11,6 +11,8 @@
       href: whats-new.md
     - name: Microsoft 365 政府版中的新增功能
       href: whats-new-microsoft-365-government.md
+    - name: Azure AD 中的新增功能存档
+      href: whats-new-archive.md
 - name: 快速入门
   expanded: true
   items:
@@ -51,6 +53,8 @@
       items:
         - name: 部署 30 天、90 天及之后的时间
           href: active-directory-deployment-checklist-p2.md
+        - name: Azure Active Directory 部署计划
+          href: active-directory-deployment-plans.md
     - name: 数据存储
       items:
         - name: 用于欧洲的标识数据存储
@@ -100,6 +104,8 @@
           href: active-directory-groups-settings-azure-portal.md
         - name: 添加或删除组所有者
           href: active-directory-accessmanagement-managing-group-owners.md
+        - name: 使用组管理对资源的访问
+          href: active-directory-manage-groups.md
     - name: 用户
       items:
         - name: 添加或删除新用户
@@ -114,14 +120,10 @@
           href: license-users-groups.md
         - name: 还原已删除的用户
           href: active-directory-users-restore.md
-- name: 资源
+- name: 疑难解答
   expanded: true
   items:
     - name: 获取对 Azure Active Directory 的支持
       href: active-directory-troubleshooting-support-howto.md
     - name: Azure Active Directory 常见问题
       href: active-directory-faq.md
-    - name: Azure Active Directory 部署计划
-      href: active-directory-deployment-plans.md
-    - name: Azure AD 中的新增功能存档
-      href: whats-new-archive.md

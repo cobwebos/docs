@@ -195,6 +195,19 @@
         - name: 流式处理
           displayName: 'failover, bcdr, HA, high availability'
           href: media-services-high-availability-streaming.md
+    - name: 疑难解答
+      items:
+        - name: 常见问题
+          displayName: faqs
+          href: frequently-asked-questions.md
+        - name: 错误代码
+          items:
+            - name: 流式处理终结点错误代码
+              href: streaming-endpoint-error-codes.md
+            - name: 实时事件错误代码
+              href: live-event-error-codes.md
+            - name: 作业错误代码
+              href: job-error-codes.md
     - name: 从 v2 迁移到 v3
       items:
         - name: v2 与 v3
@@ -340,19 +353,6 @@
           href: download-results-howto.md
         - name: 表示描述性音频
           href: signal-descriptive-audio-howto.md
-    - name: 疑难解答
-      items:
-        - name: 常见问题
-          displayName: faqs
-          href: frequently-asked-questions.md
-        - name: 错误代码
-          items:
-            - name: 流式处理终结点错误代码
-              href: streaming-endpoint-error-codes.md
-            - name: 实时事件错误代码
-              href: live-event-error-codes.md
-            - name: 作业错误代码
-              href: job-error-codes.md
 - name: 参考
   items:
     - name: OpenAPI 规范 (Swagger)

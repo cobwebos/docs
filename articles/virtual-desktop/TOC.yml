@@ -50,8 +50,8 @@
           href: create-fslogix-profile-container.md
         - name: 使用 Azure 文件存储和 Azure AD DS
           href: create-profile-container-adds.md
-    - name: 创建配置文件容器文件共享
-      href: create-file-share.md
+        - name: 使用 Azure 文件存储和 AD DS
+          href: create-file-share.md
     - name: 配置主机池设置
       items:
         - name: RDP 属性
@@ -110,7 +110,7 @@
       href: troubleshoot-set-up-overview.md
     - name: 识别和诊断问题
       href: diagnostics-role-service.md
-    - name: 创建租户和主机池
+    - name: 创建主机池
       href: troubleshoot-set-up-issues.md
     - name: 会话主机虚拟机配置
       href: troubleshoot-vm-configuration.md
