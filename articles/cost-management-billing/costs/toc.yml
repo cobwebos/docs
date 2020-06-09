@@ -35,6 +35,8 @@
           href: manage-automation.md
         - name: 从 EA 迁移到 MCA API
           href: migrate-cost-management-api.md
+        - name: 对选项进行分组和筛选
+          href: group-filter.md
     - name: 操作指南
       items:
         - name: 防止并分析意外费用

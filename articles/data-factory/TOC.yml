@@ -194,6 +194,30 @@
               href: wrangling-data-flow-overview.md
             - name: 支持的函数
               href: wrangling-data-flow-functions.md
+    - name: Data Lake 与 EDW 的数据迁移
+      items:
+        - name: 为什么使用 Azure 数据工厂
+          href: data-migration-guidance-overview.md
+        - name: 将数据从 AWS S3 迁移到 Azure
+          href: data-migration-guidance-s3-azure-storage.md
+        - name: 将数据从本地 Hadoop 群集迁移到 Azure
+          href: data-migration-guidance-hdfs-azure-storage.md
+        - name: 将数据从本地 Netezza 服务器迁移到 Azure
+          href: data-migration-guidance-netezza-azure-sqldw.md
+    - name: 使用映射数据流进行转换
+      items:
+        - name: 处理固定宽度的文本文件
+          href: how-to-fixed-width.md
+        - name: 行处理时出错
+          href: how-to-data-flow-error-rows.md
+        - name: Azure SQL DB 到 CosmosDB
+          href: how-to-sqldb-to-cosmosdb.md
+    - name: 从本地进行 SSIS 迁移
+      items:
+        - name: SSIS 迁移概述
+          href: scenario-ssis-migration-overview.md
+        - name: 将 SSISDB 迁移到 Azure SQL 托管实例
+          href: scenario-ssis-migration-ssisdb-mi.md
     - name: 角色和权限
       href: concepts-roles-permissions.md
     - name: 命名规则
@@ -697,32 +721,6 @@
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: 在 Azure-SSIS IR 中排查包执行问题
           href: ssis-integration-runtime-ssis-activity-faq.md
-- name: 方案
-  items:
-    - name: Data Lake 与 EDW 的数据迁移
-      items:
-        - name: 为什么使用 Azure 数据工厂
-          href: data-migration-guidance-overview.md
-        - name: 将数据从 AWS S3 迁移到 Azure
-          href: data-migration-guidance-s3-azure-storage.md
-        - name: 将数据从本地 Hadoop 群集迁移到 Azure
-          href: data-migration-guidance-hdfs-azure-storage.md
-        - name: 将数据从本地 Netezza 服务器迁移到 Azure
-          href: data-migration-guidance-netezza-azure-sqldw.md
-    - name: 使用映射数据流进行转换
-      items:
-        - name: 处理固定宽度的文本文件
-          href: how-to-fixed-width.md
-        - name: 行处理时出错
-          href: how-to-data-flow-error-rows.md
-        - name: Azure SQL DB 到 CosmosDB
-          href: how-to-sqldb-to-cosmosdb.md
-    - name: 从本地进行 SSIS 迁移
-      items:
-        - name: SSIS 迁移概述
-          href: scenario-ssis-migration-overview.md
-        - name: 将 SSISDB 迁移到 Azure SQL 托管实例
-          href: scenario-ssis-migration-ssisdb-mi.md
 - name: 参考
   items:
     - name: 数据流脚本

@@ -1,78 +1,19 @@
 - name: Azure 数字孪生
   href: index.yml
 - name: 概述
-  items:
-    - name: 关于 Azure 数字孪生
-      href: about-digital-twins.md
 - name: 快速入门
   expanded: true
-  items:
-    - name: 查找可用房间
-      href: quickstart-view-occupancy-dotnet.md
 - name: 教程
   items:
     - name: 使用数字孪生监视建筑
-      items:
-        - name: 部署和配置
-          href: tutorial-facilities-setup.md
-        - name: 预配和监视状况
-          href: tutorial-facilities-udf.md
-        - name: 使用逻辑应用发出通知
-          href: tutorial-facilities-events.md
-        - name: 使用时序见解将事件可视化
-          href: tutorial-facilities-analyze.md
 - name: 概念
   items:
-    - name: 数字孪生对象模型和空间智能图形
-      href: concepts-objectmodel-spatialgraph.md
-    - name: 设备连接与遥测数据入口
-      href: concepts-device-ingress.md
-    - name: 数据处理和用户定义的函数
-      href: concepts-user-defined-functions.md
-    - name: 路由事件和消息
-      href: concepts-events-routing.md
-    - name: 公共预览版服务限制
-      href: concepts-service-limits.md
     - name: 安全性
-      items:
-        - name: 安全最佳做法
-          href: security-best-practices.md
-        - name: 基于角色的访问控制
-          href: security-role-based-access-control.md
-        - name: 创建和管理角色分配
-          href: security-create-manage-role-assignments.md
-        - name: 管理 API 身份验证
-          href: security-authenticating-apis.md
 - name: 操作指南
   items:
-    - name: 启用多租户应用程序
-      href: how-to-multitenant-applications.md
-    - name: 创建用户定义的函数
-      href: how-to-user-defined-functions.md
-    - name: 通过终结点路由事件和消息
-      href: how-to-egress-endpoints.md
-    - name: 将 blob 添加到对象
-      href: how-to-add-blobs.md
-    - name: 使用数字孪生 Swagger
-      href: how-to-use-swagger.md
-    - name: 调试用户定义的函数
-      href: how-to-diagnose-user-defined-functions.md
-    - name: 配置监视
-      href: how-to-configure-monitoring.md
     - name: 查询数字孪生 API
-      items:
-        - name: 设置 Postman
-          href: how-to-configure-postman.md
-        - name: 使用数字孪生 API
-          href: how-to-navigate-apis.md
-        - name: 通用查询模式
-          href: how-to-query-common-apis.md
 - name: 参考
-  items:
-    - name: 用户定义函数客户端库
-      href: reference-user-defined-functions-client-library.md
 - name: 资源
-  expanded: true
   items:
     - name: 开发人员资源
       items:
@@ -116,3 +57,4 @@
       href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
     - name: Azure IoT 更新
       href: 'https://azure.microsoft.com/roadmap/?category=iot'
+  expanded: true

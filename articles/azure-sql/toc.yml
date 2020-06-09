@@ -447,7 +447,7 @@
             - name: 使用资源运行状况排查连接问题
               href: database/resource-health-to-troubleshoot-connectivity.md
             - name: 将 DTU 迁移到 vCore
-              href: database/resource-health-to-troubleshoot-connectivity.md
+              href: database/migrate-dtu-to-vcore.md
             - name: 缩放数据库资源
               href: database/single-database-scale.md
             - name: 缩放池资源
