@@ -10,18 +10,18 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 5f41330836edab647f379eb43130c078c46cce53
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 31bd6a2680d8c71df6b6030187ff44ca10d09440
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685062"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561029"
 ---
 # <a name="learn-text-moderation-concepts"></a>了解文本审查概念
 
 使用内容审查器的文本审核模型来分析文本内容。
 
-您可以根据您的策略和阈值来阻止、批准或查看内容（请参阅[评审、工作流和作业](./review-api.md)了解如何设置人为审阅）。 使用文本审核模型，可以在合作伙伴、员工和消费者生成文本内容的环境中增加人员审核。 这些环境包括聊天室、讨论区、聊天机器人、电子商务目录和文档。 
+您可以根据您的策略和阈值来阻止、批准或查看内容（请参阅[评审、工作流和作业](./review-api.md)了解如何设置人为审阅）。 使用文本审核模型，可以在合作伙伴、员工和消费者生成文本内容的环境中增加人员审核。 这些环境包括聊天室、讨论区、聊天机器人、电子商务目录和文档。
 
 服务响应包含以下信息：
 

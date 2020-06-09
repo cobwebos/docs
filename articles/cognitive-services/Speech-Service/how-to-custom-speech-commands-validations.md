@@ -3,19 +3,19 @@ title: 在自定义命令中添加验证预览-语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何在自定义命令预览应用程序中将验证添加到命令参数。
 services: cognitive-services
-author: don-d-kim
+author: nitinme
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.author: donkim
-ms.openlocfilehash: 6686016f109fad4ee8b7f4e494b1374a6003658c
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.author: nitinme
+ms.openlocfilehash: eb011510a9f636aea9910a4be445cd094acf0c21
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310404"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509570"
 ---
 # <a name="add-validations-to-a-command-parameter-in-a-custom-commands-preview-application"></a>向自定义命令预览应用程序中的命令参数添加验证
 
@@ -43,7 +43,7 @@ ms.locfileid: "84310404"
    | **名称**              | **温度**                       | 参数的描述性名称                                |
    | **必需**          | 已选中                           | 一个复选框，该复选框指示在完成命令之前是否需要此参数的值 |
    | **响应所需的参数**     | **简单编辑器-> 所需的温度？**  | 在未知情况下询问此参数值的提示 |
-   | **类型**              | **数字**                            | 参数的类型，如 Number、String、DateTime 或 Geography   |
+   | 类型              | **数字**                            | 参数的类型，如 Number、String、DateTime 或 Geography   |
 
 1. 添加温度参数的验证。
 
@@ -51,7 +51,7 @@ ms.locfileid: "84310404"
 
     1. 在新的 "**验证**" 弹出窗口中，按如下所示配置验证：
   
-       | 参数配置         | 建议的值                                          | 描述                                                                        |
+       | 参数配置         | 建议的值                                          | 说明                                                                        |
        | ----------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
        | **最小值**        | **60**               | 对于 Number 参数，此参数可以采用的最小值 |
        | **最大值**        | **80**               | 对于 Number 参数，此参数可以采用的最大值 |
@@ -60,7 +60,7 @@ ms.locfileid: "84310404"
        > [!div class="mx-imgBorder"]
        > ![添加范围验证](media/custom-speech-commands/validations-add-temperature.png)
 
-1. 选择“创建”。
+1. 选择“创建” 。
 
 1. 添加一些示例句子。
 
@@ -76,7 +76,7 @@ ms.locfileid: "84310404"
    | 设置    | 建议的值                                           |说明                                     |
    | ---------- | --------------------------------------------------------- |-----|
    | 名称       | 确认消息                                      |描述规则用途的名称 |
-   | **条件** | **必需参数-温度**                       |确定何时可以运行规则的条件    |   
+   | **Conditions** | **必需参数-温度**                       |确定何时可以运行规则的条件    |   
    | **操作**    | **发送语音响应-确定，将温度设置为 {温度} 度** | 规则条件为 true 时要执行的操作 |
 
 > [!TIP]

@@ -3,19 +3,19 @@ title: 快速入门：创建自定义命令预览版应用语音服务
 titleSuffix: Azure Cognitive Services
 description: 本文介绍如何创建和测试托管自定义命令预览应用程序。 应用程序将处理最谈话。
 services: cognitive-services
-author: don-d-kim
+author: nitinme
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.author: donkim
-ms.openlocfilehash: 80111ff370f3a5412b45adc04c82c9dee103c01d
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.author: nitinme
+ms.openlocfilehash: 5b54923bb667053ffc886b335ab9d1b0cf4cb754
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142344"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509349"
 ---
 # <a name="quickstart-create-a-custom-commands-preview-app"></a>快速入门：创建自定义命令预览应用
 
@@ -101,7 +101,7 @@ ms.locfileid: "84142344"
 | 配置            | 说明                                                                                                                 |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | **示例句子** | 最谈话的示例，用户可以说触发命令。                                                                 |
-| **参数**       | 完成命令所需的信息。                                                                                |
+| **Parameters**       | 完成命令所需的信息。                                                                                |
 | **完成规则** | 要执行以执行命令的操作。 例如，响应用户或与其他 web 服务通信。 |
 | **交互规则**   | 用于处理更为具体或复杂的情况的其他规则。                                                              |
 
@@ -133,7 +133,7 @@ ms.locfileid: "84142344"
 | 设置    | 建议的值                          | 描述                                        |
 | ---------- | ---------------------------------------- | -------------------------------------------------- |
 | **名称**  | **ConfirmationResponse**                  | 描述规则用途的名称。          |
-| **条件** | 无                                     | 确定何时可以运行规则的条件。    |
+| **Conditions** | 无                                     | 确定何时可以运行规则的条件。    |
 | **操作**    | **发送语音响应-> 确定，打开电视** | 规则条件为 true 时要执行的操作。 |
 
 1. 通过选择中间窗格顶部的 "**添加**" 来创建新的完成规则。

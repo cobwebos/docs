@@ -3,19 +3,19 @@ title: 快速入门：使用参数创建自定义命令预览应用-语音服务
 titleSuffix: Azure Cognitive Services
 description: 在本文中，你将向自定义命令应用程序添加参数，以便它可以打开和关闭多个设备。
 services: cognitive-services
-author: don-d-kim
+author: nitinme
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.author: donkim
-ms.openlocfilehash: 5461ef9680ab89c8cc9cc2e1166366abb04a6eab
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.author: nitinme
+ms.openlocfilehash: 940b3604487fbef7736c0d8f4f9299563b0b86d5
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142276"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509298"
 ---
 # <a name="quickstart-create-a-custom-commands-preview-application-with-parameters"></a>快速入门：使用参数创建自定义命令预览应用程序
 
@@ -54,7 +54,7 @@ ms.locfileid: "84142276"
     | **为全局**          | 已清除       | 一个复选框，该复选框指示参数的值是否全局应用于应用程序中的所有命令。|
     | **必需**           | 已选定         | 一个复选框，该复选框指示是否需要参数的值。  |
     | **响应所需的参数**      |**简单编辑器-> 打开或关闭？**      | 当未知时询问参数值的提示。 |
-    | **类型**               | **字符串**          | 参数的类型。 例如，Number、String、Date Time、Geography。   |
+    | 类型               | **字符串**          | 参数的类型。 例如，Number、String、Date Time、Geography。   |
     | **配置**      | **接受来自内部目录的预定义输入值** | 对于字符串，此设置将输入限制为一组可能值。 |
     | **预定义的输入值**     | **打开**、**关闭**             | 一组可能的值及其别名。         |
        
@@ -74,7 +74,7 @@ ms.locfileid: "84142276"
        | **为全局**          | 已清除             | 一个复选框，该复选框指示参数的值是否全局应用于应用程序中的所有命令。 |
        | **必需**           | 已选定               | 一个复选框，该复选框指示是否需要参数的值。          |
        | **简单编辑器**      | **哪个设备？**    | 当未知时询问参数值的提示。                                       |
-       | **类型**               | **字符串**                | 参数的类型。 例如，Number、String、Date Time、Geography。                                                |
+       | 类型               | **字符串**                | 参数的类型。 例如，Number、String、Date Time、Geography。                                                |
        | **配置**      | **接受来自内部目录的预定义输入值** | 对于字符串，此设置将输入限制为一组可能值。       |
        | **预定义的输入值** | **电视**、**风扇**               | 一组可能的值及其别名。                               |
        | **别名**（电视）      | **电视**， **telly**     | 每个预定义输入值的可选别名。                                 |

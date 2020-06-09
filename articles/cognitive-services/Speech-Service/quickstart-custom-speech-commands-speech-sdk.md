@@ -3,19 +3,19 @@ title: 快速入门：使用语音 SDK 连接到自定义命令应用-语音服�
 titleSuffix: Azure Cognitive Services
 description: 在本文中，你将使用自定义命令创建一个语音 SDK 客户端应用程序。
 services: cognitive-services
-author: don-d-kim
+author: nitinme
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.author: donkim
-ms.openlocfilehash: 186b684cc7e4442d1a8ce14f06e16c839e117a26
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.author: nitinme
+ms.openlocfilehash: f2e8292ccace38e1a167c3ecdfb924589e4ebf0e
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872486"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84508924"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>快速入门：使用 Speech SDK （预览版）连接到自定义命令应用程序
 
@@ -26,7 +26,7 @@ ms.locfileid: "82872486"
 - 发布自定义命令应用程序并获取应用程序标识符（应用程序 ID）
 - 使用语音 SDK 创建通用 Windows 平台（UWP）客户端应用程序，以便与自定义命令应用程序对话
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 需要自定义命令应用程序才能完成本文。 如果尚未创建自定义命令应用程序，可以在前面的快速入门中执行此操作：
 > [!div class = "checklist"]
@@ -120,7 +120,7 @@ ms.locfileid: "82872486"
 
 添加代码隐藏源，以便应用程序按预期方式工作。 代码隐藏源包括：
 
-- 和命名空间的必需`using` `Speech` `Speech.Dialog`
+- `using` `Speech` 和 `Speech.Dialog` 命名空间的必需语句
 - 一个绑定到按钮处理程序的简单实现，用于确保麦克风访问
 - 基本的 UI 帮助程序，用于在应用程序中提供消息和错误
 - 初始化代码路径的登陆点，稍后将填充
@@ -129,7 +129,7 @@ ms.locfileid: "82872486"
 
 按如下所示添加代码隐藏源：
 
-1. 在**解决方案资源管理器**中，打开代码隐藏源文件`MainPage.xaml.cs` （在下`MainPage.xaml`分组）
+1. 在**解决方案资源管理器**中，打开代码隐藏源文件 `MainPage.xaml.cs` （在下分组 `MainPage.xaml` ）
 
 1. 将文件的内容替换为以下代码： 
 
@@ -321,7 +321,7 @@ ms.locfileid: "82872486"
    connector = new DialogServiceConnector(speechCommandsConfig);
    ```
 
-1. 将字符串`YourApplicationId`、 `YourSpeechSubscriptionKey`和`YourServiceRegion`替换为你自己的应用、语音订阅和[区域](regions.md)的值
+1. 将字符串 `YourApplicationId` 、 `YourSpeechSubscriptionKey` 和替换 `YourServiceRegion` 为你自己的应用、语音订阅和[区域](regions.md)的值
 
 1. 将以下代码片段追加到的方法体末尾`InitializeDialogServiceConnector`
 
@@ -381,7 +381,7 @@ ms.locfileid: "82872486"
    };
    ```
 
-1. 将以下代码片段添加到`ListenButton_ButtonClicked` `MainPage`类中方法的主体
+1. 将以下代码片段添加到 `ListenButton_ButtonClicked` 类中方法的主体 `MainPage`
 
    ```csharp
    // This code sets up `DialogServiceConnector` to listen, since you already established the configuration and
@@ -405,9 +405,9 @@ ms.locfileid: "82872486"
    }
    ```
 
-1. 从菜单栏中，选择 "**文件** > " "**全部保存**" 以保存所做的更改
+1. 从菜单栏中，选择 "**文件**" "  >  **全部保存**" 以保存所做的更改
 
-## <a name="build-and-run-the-application"></a>生成并运行应用程序
+## <a name="build-and-run-the-application"></a>构建并运行应用程序
 
 1. 从菜单栏中，选择“构建”   > “构建解决方案”  以构建应用程序。 编译代码时应不会出错。
 
@@ -424,8 +424,8 @@ ms.locfileid: "82872486"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [如何：在客户端上利用语音 SDK 完成命令（预览）](./how-to-custom-speech-commands-fulfill-sdk.md)
-> [如何：向自定义命令参数添加验证（预览版）](./how-to-custom-speech-commands-validations.md)
+> [如何：在客户端上通过语音 SDK 完成命令（预览）](./how-to-custom-speech-commands-fulfill-sdk.md) 
+> [如何：向自定义命令参数添加验证（预览）](./how-to-custom-speech-commands-validations.md)
 
 ## <a name="sample-source-code"></a>示例源代码
 查看 GitHub 上的客户端示例代码[-VoiceAssistant](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant)

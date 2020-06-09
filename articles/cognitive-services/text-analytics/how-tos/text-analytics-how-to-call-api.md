@@ -10,16 +10,16 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: afb576c265ccdd4a014ed678331f030a0442a197
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c6fbec35920c8afd08ab60fc380c9f816ae599b0
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219298"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561025"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>如何调用文本分析 REST API
 
-对文本分析 API  的调用为 HTTP POST/GET 调用，可以用任何语言表示。 在本文中，我们将使用 REST 和 [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) 来演示这些关键概念。
+对文本分析 API  的调用为 HTTP POST/GET 调用，可以用任何语言表示。 在本文中，我们将使用 REST 和 [Postman](https://www.postman.com/downloads/) 来演示这些关键概念。
 
 每个请求必须包括访问密钥和 HTTP 终结点。 终结点指定你在注册期间选择的区域、服务 URL 和在请求上使用的资源：`sentiment`、`keyphrases`、`languages` 和 `entities`。 
 
@@ -43,7 +43,7 @@ ms.locfileid: "79219298"
 |---------|--------------|-----------|-------|
 |`id` |数据类型为字符串，但实际上文档 ID 往往是整数。 | 必选 | 系统使用你提供的 ID 来构建输出。 为请求中的每个 ID 生成语言代码、关键短语和情绪分数。|
 |`text` | 非结构化原始文本，最多 5,120 个字符。 | 必选 | 对于语言检测，可以使用任何语言来表示文本。 对于情绪分析、关键短语提取和实体标识，此文本必须使用[支持的语言](../text-analytics-supported-languages.md)。 |
-|`language` | [支持语言](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)的 2 字符 [ISO 639-1](../text-analytics-supported-languages.md) 代码 | 不定 | 需要情绪分析、关键短语提取、实体链接；语言检测为可选。 排除语言检测不会有任何错误，但没有它会削弱分析。 语言代码应对应你提供的 `text`。 |
+|`language` | [支持语言](../text-analytics-supported-languages.md)的 2 字符 [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) 代码 | 不定 | 需要情绪分析、关键短语提取、实体链接；语言检测为可选。 排除语言检测不会有任何错误，但没有它会削弱分析。 语言代码应对应你提供的 `text`。 |
 
 有关限制的详细信息，请参阅[文本分析概述 > 数据限制](../overview.md#data-limits)。 
 
