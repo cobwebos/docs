@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 05/19/2020
-ms.openlocfilehash: 6597a8d5f1f8f4aa34ba9f59d4e08b5dc6d66728
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f8ddc3ef56aefc6ea613af19d91cd0122435efd7
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682459"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344197"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 认知搜索中的新增功能
 
@@ -29,7 +29,7 @@ ms.locfileid: "83682459"
 
 + 使用[系统托管标识（预览）](search-howto-managed-identities-data-sources.md)设置与 Azure 数据源的连接以编制索引。 适用于从 Azure 数据源（例如 Azure SQL 数据库、Azure Cosmos DB 和 Azure 存储）引入内容的[索引器](search-indexer-overview.md)。
 
-+ 使用 [scoringStatistics=global query 参数](index-similarity-and-scoring.md#scoring-statistics)将搜索评分的计算方式从每个分片更改为所有分片。
++ 使用 [scoringStatistics=global](index-similarity-and-scoring.md#scoring-statistics) 和 sessionId 查询参数，将搜索评分的计算方式从每个分片更改为所有分片。
 
 ### <a name="march-2020"></a>2020 年 3 月
 

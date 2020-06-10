@@ -14,7 +14,7 @@ ms.locfileid: "68966356"
 <!--
     Separate the generic requirement on Self-hosted Integration Runtime set-up from connector articles.
 -->
-如果数据存储是以下方式之一配置的，则需要设置[自托管集成运行时](../articles/data-factory/create-self-hosted-integration-runtime.md)才能连接到此数据存储：
+如果数据存储是通过以下方式之一配置的，则需要设置[自承载集成运行时](../articles/data-factory/create-self-hosted-integration-runtime.md)，以便连接到此数据存储：
 
 - 数据存储位于本地网络内部、Azure 虚拟网络内部或 Amazon 虚拟私有云内。
-- 数据存储是一种托管云数据服务，在其中访问权限限制为列入防火墙规则允许列表的 IP。
+- 数据存储是一种托管的云数据服务，只有在防火墙规则中列入允许列表的 IP 才能访问该服务。

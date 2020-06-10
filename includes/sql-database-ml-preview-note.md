@@ -3,17 +3,18 @@ author: garyericson
 ms.service: sql-database
 ms.subservice: machine-learning
 ms.topic: include
-ms.date: 11/20/2019
+ms.date: 05/27/2020
 ms.author: garye
-ms.openlocfilehash: 3e8bdafd8f024e7bd2ab0c9f894bb9d714094ab6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 235aa6b50ef413dacb461320e50dceac7cce460d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80345761"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014190"
 ---
 > [!IMPORTANT]
-> Azure SQL 数据库机器学习服务当前为预览版。 注册预览版的功能当前已关闭  。
-> 
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> Azure SQL 数据库机器学习服务当前为预览版。 注册预览版的功能当前已关闭。
+>
+> 截至 2020 年 6 月 30 日为止，支持将不再继续，并且不会发布预览版以用于正式发布。 目前正在使用的 R 脚本在 2020 年 6 月 30 日之后将不起作用。
+>
+> 若要继续使用 Azure SQL 中的机器学习，请参阅 [**Azure SQL 托管实例中的机器学习服务**（预览版）](../articles/azure-sql/managed-instance/machine-learning-services-overview.md)。

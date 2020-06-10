@@ -5,12 +5,12 @@ ms.devlang: r
 ms.topic: tutorial
 ms.date: 01/23/2018
 ms.custom: mvc
-ms.openlocfilehash: c9708360df4a7fb711a3d57b39f33c576c75a0d5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dc5c022b4722f844e0b3c117bb5961843865bd55
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117091"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84418171"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>教程：使用 Azure Batch 运行并行 R 模拟 
 
@@ -24,7 +24,7 @@ ms.locfileid: "82117091"
 > * 创建一个 Batch 池，作为 R 会话的并行后端
 > * 在池中运行示例并行模拟
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 已安装的 [R](https://www.r-project.org/) 发行版，例如 [Microsoft R Open](https://mran.microsoft.com/open)。 使用 R 3.3.1 或更高版。
 
@@ -220,7 +220,7 @@ closingPrices_p <- foreach(i = 1:100, .combine='c', .options.azure = opt) %dopar
 end_p <- Sys.time() 
 ```
 
-此模拟将任务分发到 Batch 池中的节点。 在 Azure 门户中，可以查看池的热度地图中的活动。 转到“Batch 帐户”   >   “myBatchAccount”。 单击“池”   >   “myPoolName”。 
+此模拟将任务分发到 Batch 池中的节点。 在 Azure 门户中，可以查看池的热度地图中的活动。 转到“Batch 帐户” > “myBatchAccount”。 单击“池” > “myPoolName”。 
 
 ![运行并行 R 任务的池的热度地图](media/tutorial-r-doazureparallel/pool.png)
 

@@ -12,4 +12,4 @@ ms.lasthandoff: 04/28/2020
 ms.locfileid: "77580490"
 ---
 > [!WARNING]
-> 为工作区创建 Azure 容器注册表后，请不要将其删除。 删除该注册表将损坏 Azure 机器学习工作区。
+> 为工作区创建 Azure 容器注册表后，请不要将其删除。 删除 Azure 容器注册表会破坏 Azure 机器学习工作区。

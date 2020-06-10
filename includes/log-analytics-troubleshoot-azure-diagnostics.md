@@ -6,7 +6,7 @@ ms.date: 11/09/2018
 ms.author: magoedte
 ms.openlocfilehash: 6890c71ac7c265d46cc77751786fea4d0b228588
 ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/27/2020
 ms.locfileid: "67173343"
@@ -19,11 +19,11 @@ ms.locfileid: "67173343"
 
 若要注册资源提供程序，请在 Azure 门户中执行以下步骤：
 
-1.  在左侧导航窗格中，单击“订阅” 
+1.  在左侧导航窗格中，单击“订阅”
 2.  选择在错误消息中标识的订阅
-3.  单击“资源提供程序” 
+3.  单击“资源提供程序”
 4.  找到 *Microsoft.insights* 提供程序
-5.  单击“注册”  链接
+5.  单击“注册”链接
 
 ![注册 microsoft.insights 资源提供程序](./media/log-analytics-troubleshoot-azure-diagnostics/log-analytics-register-microsoft-diagnostics-resource-provider.png)
 
@@ -34,4 +34,4 @@ ms.locfileid: "67173343"
 
 `Set-AzDiagnosticSetting : A parameter cannot be found that matches parameter name 'WorkspaceId'.`
 
-更新 Azure PowerShell 的版本，按照[安装 Azure PowerShell](/powershell/azure/install-az-ps)一文中的说明进行操作。
+更新 Azure PowerShell 的版本，按照[安装 Azure PowerShell](/powershell/azure/install-az-ps) 一文中的说明进行操作。
