@@ -7,12 +7,13 @@ ms.date: 02/13/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: fc3079d316a252bc5a658017cb6b04fe6ef20c2f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: tracking-python
+ms.openlocfilehash: 439e645369cd063e3084b5d975b3d1672e20a73e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77485822"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554015"
 ---
 # <a name="azure-storage-samples-using-v12-python-client-libraries"></a>使用 v12 Python 客户端库的 Azure 存储示例
 

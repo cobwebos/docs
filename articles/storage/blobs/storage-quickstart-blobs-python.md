@@ -1,18 +1,19 @@
 ---
 title: 快速入门：Azure Blob 存储库 v12 - Python
-description: 本快速入门介绍如何使用适用于 Python 的 Azure Blob 存储客户端库版本 12 在 Blob（对象）存储中创建容器和 blob。 接下来，将介绍如何将 blob 下载到本地计算机，以及如何在容器中列出所有 blob。
+description: 本快速入门介绍如何使用适用于 Python 的 Azure Blob 存储客户端库版本 12 在 Blob（对象）存储中创建容器和 blob。 接下来，介绍如何将 blob 下载到本地计算机，以及如何列出容器中的所有 blob。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 8daf7380e859cd2f9b5890c716f7b7d95e6c3fe4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: c5ab718fdccfebe852c1522a0cb07303a541a3dd
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80061335"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554258"
 ---
 # <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>快速入门：使用 Python v12 SDK 管理 blob
 
@@ -37,7 +38,7 @@ ms.locfileid: "80061335"
 
 ### <a name="create-the-project"></a>创建项目
 
-创建名为 blob-quickstart-v12 的 Python 应用程序  。
+创建名为 blob-quickstart-v12 的 Python 应用程序。
 
 1. 在控制台窗口（例如 cmd、PowerShell 或 Bash）中，为项目创建新目录。
 
@@ -45,13 +46,13 @@ ms.locfileid: "80061335"
     mkdir blob-quickstart-v12
     ```
 
-1. 切换到新创建的 blob-quickstart-v12 目录  。
+1. 切换到新创建的 blob-quickstart-v12 目录。
 
     ```console
     cd blob-quickstart-v12
     ```
 
-1. 在 blob-quickstart-v12 目录中，创建名为 data 的另一个目录   。 将在这里创建和存储 blob 数据文件。
+1. 在 blob-quickstart-v12 目录中，创建名为 data 的另一个目录 。 将在这里创建和存储 blob 数据文件。
 
     ```console
     mkdir data
@@ -89,7 +90,7 @@ pip install azure-storage-blob
         print(ex)
     ```
 
-1. 在 blob-quickstart-v12 目录中，将新文件另存为 blob-quickstart-v12.py   。
+1. 在 blob-quickstart-v12 目录中，将新文件另存为 blob-quickstart-v12.py 。
 
 [!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
@@ -208,7 +209,7 @@ for blob in blob_list:
 
 ### <a name="download-blobs"></a>下载 Blob
 
-通过调用 [download_blob](/python/api/azure-storage-blob/azure.storage.blob.blobclient#download-blob-offset-none--length-none----kwargs-) 方法，下载以前创建的 blob。 示例代码将向文件名添加后缀“DOWNLOAD”，这样你就可以在本地文件系统中看到这两个文件。
+通过调用 [download_blob](/python/api/azure-storage-blob/azure.storage.blob.blobclient#download-blob-offset-none--length-none----kwargs-) 方法，下载上述创建的 blob。 示例代码将向文件名添加后缀“DOWNLOAD”，这样你就可以在本地文件系统中看到这两个文件。
 
 将此代码添加到 `try` 块的末尾：
 
@@ -249,7 +250,7 @@ print("Done")
 
 此应用在本地文件夹中创建测试文件，并将其上传到 Blob 存储。 然后，该示例会列出容器中的 blob，并使用新名称下载文件，这样便可对新旧文件进行对比。
 
-导航到包含 blob-quickstart-v12.py 文件的目录，然后执行以下 `python` 命令来运行应用  。
+导航到包含 blob-quickstart-v12.py 文件的目录，然后执行以下 `python` 命令来运行应用。
 
 ```console
 python blob-quickstart-v12.py
@@ -276,9 +277,9 @@ Deleting the local source and downloaded files...
 Done
 ```
 
-在开始清理过程之前，请在“data”文件夹中查看这两个文件  。 可以打开它们，然后就会观察到它们完全相同。
+在开始清理过程之前，请在“data”文件夹中查看这两个文件。 可以打开它们，然后就会观察到它们完全相同。
 
-验证文件后，按 Enter 键以删除测试文件并完成演示  。
+验证文件后，按 Enter 键以删除测试文件并完成演示。
 
 ## <a name="next-steps"></a>后续步骤
 
