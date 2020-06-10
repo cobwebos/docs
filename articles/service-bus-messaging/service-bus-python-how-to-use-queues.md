@@ -13,13 +13,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.custom: seo-python-october2019
-ms.openlocfilehash: acb0b0e84804ecf6025e05590133dee9b0d54c48
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: seo-python-october2019, tracking-python
+ms.openlocfilehash: 38e4d4a8677ca88cfe4cf8d9fab19cec6a8874d4
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80478649"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560076"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-python"></a>快速入门：通过 Python 使用 Azure 服务总线队列
 
@@ -31,7 +31,7 @@ ms.locfileid: "80478649"
 
 ## <a name="prerequisites"></a>先决条件
 - Azure 订阅。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
-- 遵循以下文章中的步骤创建的服务总线命名空间：[快速入门：使用 Azure 门户创建服务总线主题和订阅](service-bus-quickstart-topics-subscriptions-portal.md)。 复制“共享访问策略”屏幕中的主连接字符串，以便稍后在本文中使用。  
+- 遵循以下文章中的步骤创建的服务总线命名空间：[快速入门：使用 Azure 门户创建服务总线主题和订阅](service-bus-quickstart-topics-subscriptions-portal.md)。 复制“共享访问策略”屏幕中的主连接字符串，以便稍后在本文中使用。 
 - 装有 [Python Azure 服务总线][Python Azure Service Bus package]包的 Python 3.4x 或更高版本。 有关详细信息，请参阅 [Python 安装指南](/azure/developer/python/azure-sdk-install)。 
 
 ## <a name="create-a-queue"></a>创建队列
@@ -42,7 +42,7 @@ ms.locfileid: "80478649"
 from azure.servicebus import ServiceBusClient
 ```
 
-添加以下代码以创建 **ServiceBusClient** 对象。 请将 `<connectionstring>` 替换为服务总线的主连接字符串值。 可以在 [Azure 门户][Azure portal]上服务总线命名空间中的“共享访问策略”下找到此值。 
+添加以下代码以创建 **ServiceBusClient** 对象。 请将 `<connectionstring>` 替换为服务总线的主连接字符串值。 可以在 [Azure 门户][Azure portal]上服务总线命名空间中的“共享访问策略”下找到此值。
 
 ```python
 sb_client = ServiceBusClient.from_connection_string('<connectionstring>')
@@ -114,7 +114,7 @@ with queue_client.get_receiver() as queue_receiver:
 
 队列中锁定的消息还存在超时。 如果应用程序无法在锁定超时期满前处理消息（例如，如果应用程序崩溃），服务总线会自动解锁消息，让它再次可供接收。
 
-如果应用程序在处理消息之后，但在调用 `complete` 方法之前崩溃，则在应用程序重启时会将该消息重新传送给它。 此行为通常称为“至少处理一次”。  每条消息将至少处理一次，但在某些情况下，可能会重新传送同一消息。 如果方案无法容许重复处理，可以使用消息的 **MessageId** 属性（多次尝试传送时，该属性保持不变）来处理重复消息传送。 
+如果应用程序在处理消息之后，但在调用 `complete` 方法之前崩溃，则在应用程序重启时会将该消息重新传送给它。 此行为通常称为“至少处理一次”。 每条消息将至少处理一次，但在某些情况下，可能会重新传送同一消息。 如果方案无法容许重复处理，可以使用消息的 **MessageId** 属性（多次尝试传送时，该属性保持不变）来处理重复消息传送。 
 
 > [!TIP]
 > 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 可以使用服务总线资源管理器连接到服务总线命名空间并轻松管理消息传送实体。 该工具提供高级功能，例如导入/导出功能，以及用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。

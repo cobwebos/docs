@@ -9,12 +9,12 @@ ms.author: magoedte
 keywords: azure automation, DSC, powershell, desired state configuration, update management, change tracking, inventory, runbooks, python, graphical, hybrid
 ms.date: 03/24/2020
 ms.topic: overview
-ms.openlocfilehash: 95a01db7d4d889df4695390bfd0d01510d83a817
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c9e69e221dc21baae96ab814cb9fb0b65ce98126
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648045"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449475"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>什么是 Azure Arc for servers（预览版）
 
@@ -37,9 +37,10 @@ Azure Arc for servers（预览版）支持以下使用联网计算机的方案�
 
 使用 Azure Arc for servers（预览版）时，仅支持特定的区域：
 
+- EastUS
 - 美国西部 2
 - 西欧
-- 西亚
+- SoutheastAsia
 
 在大多数情况下，创建安装脚本时选择的位置应该是在地理位置上最接近你的计算机位置的 Azure 区域。 静态数据将存储在包含你指定区域的 Azure 地理区域中，如果你有数据驻留要求，这可能也会影响你对区域的选择。 如果你的计算机连接到的 Azure 区域受中断影响，则已连接的计算机不受影响，但使用 Azure 的管理操作可能无法完成。 为了在发生区域性中断时具有恢复能力，如果你有提供地理冗余服务的多个位置，最好将每个位置的计算机连接到不同的 Azure 区域。
 

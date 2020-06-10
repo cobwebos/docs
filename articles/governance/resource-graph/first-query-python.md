@@ -3,12 +3,13 @@ title: 快速入门：你的第一个 Python 查询
 description: 本快速入门介绍为 Python 启用 Resource Graph 库并运行第一个查询的步骤。
 ms.date: 05/27/2020
 ms.topic: quickstart
-ms.openlocfilehash: cbc545551c650ad3140cbd6a9b40ab7dee1c0f3f
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.custom: tracking-python
+ms.openlocfilehash: 58ba931f5d222df8d863a11a25af6563192ef453
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996119"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609941"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-python"></a>快速入门：使用 Python 运行你的第一个 Resource Graph 查询
 

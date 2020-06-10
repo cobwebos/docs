@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: 7b81e88fe6f658fdf4c1857c6082100894c6f2f6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f2d0d0517579608a76ccf8c1e63aa993556e8d58
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067724"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608019"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>快速入门：使用简单的 Azure CLI 命令 az mysql up 创建 Azure Database for MySQL（预览）
 
@@ -34,7 +34,7 @@ Azure Database for MySQL 是一种托管服务，可用于在云中运行、管�
 az login
 ```
 
-如果有多个订阅，请选择应计费的资源所在的相应订阅。 使用 [az account set](/cli/azure/account) 命令选择帐户下的特定订阅 ID。 将 az login 输出中的你的订阅的订阅 ID 属性替换到订阅 ID 占位符中   。
+如果有多个订阅，请选择应计费的资源所在的相应订阅。 使用 [az account set](/cli/azure/account) 命令选择帐户下的特定订阅 ID。 将 az login 输出中的你的订阅的订阅 ID 属性替换到订阅 ID 占位符中 。
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -64,7 +64,7 @@ sku-name | GP_Gen5_2 | SKU 的名称。 请遵循简写约定 {pricing tier}\_{c
 backup-retention | 7 | 保留备份的时长。 单位为天。
 geo-redundant-backup | 已禁用 | 是否应该为此服务启用异地冗余备份。
 location | westus2 | 服务器的 Azure 位置。
-ssl-enforcement | 已禁用 | 是否应该为此服务器启用 SSL。
+ssl-enforcement | 已启用 | 是否应该为此服务器启用 SSL。
 storage-size | 5120 | 服务器的存储容量（单位是兆字节）。
 版本 | 5.7 | MySQL 主版本。
 admin-user | 系统生成的 | 用于管理员登录的用户名。

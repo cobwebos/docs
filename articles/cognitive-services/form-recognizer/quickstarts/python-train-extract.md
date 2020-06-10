@@ -9,12 +9,13 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 67674092bd27b85e3e915fe82a7cb7189ff22b02
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.custom: tracking-python
+ms.openlocfilehash: 948c30c641b68f7966831a3324c1bfab5dbd3b03
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141902"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610729"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>快速入门：使用 REST API 和 Python 训练表单识别器模型并提取表单数据
 

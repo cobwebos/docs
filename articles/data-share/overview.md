@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
-ms.openlocfilehash: 363feda1409d2bb54e60d1b2168cba38f2a8a41c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fa90f272a05b7449981ca5d4ccab161fb1e39e9e
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77621851"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636762"
 ---
 # <a name="what-is-azure-data-share"></a>什么是 Azure Data Share？
 
@@ -78,15 +78,6 @@ Azure Data Share 目前提供基于快照的共享和就地共享。
 * 订阅数据共享，以便通过增量快照接收数据的最新副本
 
 可以通过 Azure 门户或 REST API 使用上面列出的所有关键功能。 若要更详细地了解如何通过 REST API 使用 Azure Data Share，请查看我们的参考文档。 
-
-## <a name="security"></a>安全性
-
-Azure Data Share 利用 Azure 提供的基础安全措施来保护静态数据和传输中的数据。 将会对静态数据加密，通过基础数据存储提供支持。 也会对传输中的数据加密。 此外还会对静态的和传输中的数据共享元数据加密。 
-
-可以在 Azure Data Share 资源级别设置访问控制，确保它由那些获得授权的用户访问。 
-
-Azure Data Share 利用 Azure 资源的托管标识（以前称为 MSI）在 Azure Active Directory 中进行自动标识管理。 利用 Azure 资源的托管标识，可以访问用于数据共享的数据存储。 在数据提供者和数据使用者之间没有凭据交换。 有关详细信息，请参阅 [Azure 资源的托管标识页](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)。 
-
 
 ## <a name="supported-regions"></a>支持的区域
 

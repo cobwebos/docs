@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.custom: hdinsightactive,mvc
+ms.custom: hdinsightactive,mvc, tracking-python
 ms.date: 04/07/2020
-ms.openlocfilehash: 963f5bd4dfdd9dda78a437bdb1111c9eec2795dc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0dfdb324013a246010c12d36a50c80b4fbef503e
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80878436"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607085"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中生成 Apache Spark 机器学习应用程序
 
@@ -143,9 +143,9 @@ ms.locfileid: "80878436"
 
     ![Spark 机器学习示例的输出数据快照](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-output-data.png "Spark 机器学习示例的输出数据快照")
 
-    请注意，实际温度比目标温度低的情况表示建筑物处于低温状态。 第一行中的标签值为 0.0，表示建筑物温度不高   。
+    请注意，实际温度比目标温度低的情况表示建筑物处于低温状态。 第一行中的标签值为 0.0，表示建筑物温度不高 。
 
-1. 准备要对其运行已训练模型的数据集。 为此，需要传递系统 ID 和系统年数（在训练输出中以 SystemInfo 表示）  。 模型将预测具有该系统 ID 和系统年数的建筑物温度是更高（由 1.0 表示）还是更低（由 0.0 表示）。
+1. 准备要对其运行已训练模型的数据集。 为此，需要传递系统 ID 和系统年数（在训练输出中以 SystemInfo 表示）。 模型将预测具有该系统 ID 和系统年数的建筑物温度是更高（由 1.0 表示）还是更低（由 0.0 表示）。
 
     ```PySpark
     # SystemInfo here is a combination of system ID followed by system age
@@ -180,13 +180,13 @@ ms.locfileid: "80878436"
     Row(SystemInfo=u'7 22', prediction=0.0, probability=DenseVector([0.5015, 0.4985]))
     ```
 
-   观察预测结果中的第一行。 对于 ID 为 20 且系统年数为 25 年的 HVAC 系统，建筑物温度很高（预测结果=1.0）  。 DenseVector (0.49999) 的第一个值对应于预测 0.0，第二个值 (0.5001) 对应于预测 1.0。 在输出中，即使第二个值只稍高一点，模型也仍旧显示 **prediction=1.0**。
+   观察预测结果中的第一行。 对于 ID 为 20 且系统年数为 25 年的 HVAC 系统，建筑物温度很高（预测结果=1.0）。 DenseVector (0.49999) 的第一个值对应于预测 0.0，第二个值 (0.5001) 对应于预测 1.0。 在输出中，即使第二个值只稍高一点，模型也仍旧显示 **prediction=1.0**。
 
-1. 关闭笔记本以释放资源。 为此，请在 Notebook 的“文件”菜单中选择“关闭并停止”   。 此操作会关闭 Notebook。
+1. 关闭笔记本以释放资源。 为此，请在 Notebook 的“文件”菜单中选择“关闭并停止” 。 此操作会关闭 Notebook。
 
 ## <a name="use-anaconda-scikit-learn-library-for-spark-machine-learning"></a>将 Anaconda scikit-learn 库用于 Spark 机器学习
 
-HDInsight 中的 Apache Spark 群集包含 Anaconda 库。 它还包括适用于机器学习的 scikit-learn 库  。 该库还包含用于直接从 Jupyter 笔记本生成示例应用程序的各种数据集。 有关使用 scikit-learn 库的示例，请参阅 [https://scikit-learn.org/stable/auto_examples/index.html](https://scikit-learn.org/stable/auto_examples/index.html)。
+HDInsight 中的 Apache Spark 群集包含 Anaconda 库。 它还包括适用于机器学习的 scikit-learn 库。 该库还包含用于直接从 Jupyter 笔记本生成示例应用程序的各种数据集。 有关使用 scikit-learn 库的示例，请参阅 [https://scikit-learn.org/stable/auto_examples/index.html](https://scikit-learn.org/stable/auto_examples/index.html)。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -194,13 +194,13 @@ HDInsight 中的 Apache Spark 群集包含 Anaconda 库。 它还包括适用于
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
 
-1. 在顶部的“搜索”框中，键入 **HDInsight**。 
+1. 在顶部的“搜索”框中，键入 **HDInsight**。
 
-1. 选择“服务”下的“HDInsight 群集”   。
+1. 选择“服务”下的“HDInsight 群集” 。
 
-1. 在显示的 HDInsight 群集列表中，选择为本教程创建的群集旁边的“...”。 
+1. 在显示的 HDInsight 群集列表中，选择为本教程创建的群集旁边的“...”。
 
-1. 选择“删除”。  请选择“是”。 
+1. 选择“删除”。 请选择“是”。
 
 ![在 Azure 门户中删除 HDInsight 群集](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "删除 HDInsight 群集")
 

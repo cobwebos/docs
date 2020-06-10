@@ -1,23 +1,23 @@
 ---
 title: DoD 影响级别 4 蓝图示例控制
 description: DoD 影响级别 4 蓝图示例的控制映射。 每个控制都映射到一个或多个协助评估的 Azure 策略。
-ms.date: 03/06/2020
+ms.date: 05/12/2020
 ms.topic: sample
-ms.openlocfilehash: a11a8637618bb42831ccf1a7001e4da40529ba74
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 48734e62f47c38feb8bc34409f9ba41af2648e7a
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82024823"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168975"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>DoD 影响级别 4 蓝图示例的控制映射
 
 以下文章详细介绍了 Azure 蓝图国防部影响级别 4 (DoD IL4) 蓝图示例如何映射到 DoD 影响级别 4 控制。 有关控制的详细信息，请参阅 [DoD 云计算安全要求指南 (SRG)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/pdf/Cloud_Computing_SRG_v1r3.pdf)。 国防情报系统机构 (DISA) 是隶属于美国国防部 (DoD) 的一个机构，负责开发和维护 DoD 云计算安全要求指南 (SRG)。 SRG 定义了对托管 DoD 信息、系统和应用程序的云服务提供商 (CSP) 以及对 DoD 使用云服务的基准安全要求。  
 
-以下映射是到 **DoD 影响级别 4** 控制的映射。 使用右侧的导航栏可直接跳转到特定的控制映射。 许多的映射控制措施都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。   然后，找到并选择“ **\[预览\]：DoD 影响级别 4** 内置策略计划。
+以下映射是到 **DoD 影响级别 4** 控制的映射。 使用右侧的导航栏可直接跳转到特定的控制映射。 许多的映射控制措施都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。  然后，找到并选择“ **\[预览\]：DoD 影响级别 4** 内置策略计划。
 
 > [!IMPORTANT]
-> 下面的每个控件都与一个或多个 [Azure Policy](../../../policy/overview.md) 定义关联。 这些策略可以帮助你[评估控件的符合性](../../../policy/how-to/get-compliance-data.md)；但是，控件与一个或多个策略之间通常不是 1:1 或完全匹配。 因此，Azure Policy 中的符合性  仅引用策略本身；这不确保你完全符合控件的所有要求。 此外，符合性标准包含目前未由任何 Azure Policy 定义处理的控件。 因此，Azure Policy 中的符合性只是整体符合性状态的部分视图。 此符合性蓝图示例的控件和 Azure Policy 定义之间的关联可能会随着时间的推移而发生变化。
+> 下面的每个控件都与一个或多个 [Azure Policy](../../../policy/overview.md) 定义关联。 这些策略可以帮助你[评估控件的符合性](../../../policy/how-to/get-compliance-data.md)；但是，控件与一个或多个策略之间通常不是 1:1 或完全匹配。 因此，Azure Policy 中的符合性仅引用策略本身；这不确保你完全符合控件的所有要求。 此外，符合性标准包含目前未由任何 Azure Policy 定义处理的控件。 因此，Azure Policy 中的符合性只是整体符合性状态的部分视图。 此符合性蓝图示例的控件和 Azure Policy 定义之间的关联可能会随着时间的推移而发生变化。
 > 若要查看更改历史记录，请参阅 [GitHub 提交历史记录](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/dod-impact-level-4/control-mapping.md)。
 
 ## <a name="ac-2-account-management"></a>AC-2 帐户管理
@@ -34,7 +34,7 @@ ms.locfileid: "82024823"
 
 Azure 实施了[基于角色的访问控制](../../../../role-based-access-control/overview.md) (RBAC) 来帮助你管理谁有权访问 Azure 中的资源。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图还分配 [Azure Policy](../../../policy/overview.md) 定义，用于审核 Azure Active Directory 身份验证在 SQL 服务器和 Service Fabric 中的使用。 使用 Azure Active Directory 身份验证可以简化权限管理，以及集中化数据库用户和其他 Microsoft 服务的标识管理。 此外，此蓝图还分配一个 Azure Policy 定义用于审核自定义 RBAC 规则的使用。 了解实施自定义 RBAC 规则的位置有助于验证需求以及实施是否适当，因为自定义 RBAC 规则容易出错。
 
-- 应该为 SQL 服务器预配 Azure Active Directory 管理员
+- 应为 SQL 服务器预配 Azure Active Directory 管理员
 - 审核自定义 RBAC 规则的使用
 - Service Fabric 群集只应使用 Azure Active Directory 进行客户端身份验证
 
@@ -132,9 +132,7 @@ Azure Monitor 收集的日志数据存储在支持集中报告和分析的 Log A
 
 ## <a name="au-6-5-audit-review-analysis-and-reporting--integration--scanning-and-monitoring-capabilities"></a>AU-6 (5) 审核评审、分析和报告 | 集成/扫描和监视功能
 
-此蓝图提供的策略定义用于审核记录，分析虚拟机、虚拟机规模集、SQL 托管实例和 SQL 服务器上的漏洞评估。
-这些策略定义还审核诊断日志配置，以提供对 Azure 资源内执行的操作的见解。 这些见解提供有关已部署资源的安全状态的实时信息，可帮助你指定补救措施的优先级。
-为了实现详细的漏洞扫描和监视，我们建议你同时利用 Azure Sentinel 和 Azure 安全中心。
+此蓝图提供的策略定义用于审核记录，分析虚拟机、虚拟机规模集、SQL 数据服务器和 SQL 托管实例服务器上的漏洞评估。 这些策略定义还审核诊断日志配置，以提供对 Azure 资源内执行的操作的见解。 这些见解提供有关已部署资源的安全状态的实时信息，可帮助你指定补救措施的优先级。 为了实现详细的漏洞扫描和监视，我们建议你同时利用 Azure Sentinel 和 Azure 安全中心。
 
 - \[预览\]：应在虚拟机上启用漏洞评估
 - 应对 SQL Server 启用漏洞评估
@@ -362,7 +360,7 @@ Azure 的分布式拒绝服务 (DDoS) 标准层通过基本服务层提供额外
 
 ## <a name="si-3-malicious-code-protection"></a>SI-3 恶意代码防护
 
-此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义用于监视 Azure 安全中心中虚拟机上缺失的终结点防护并在 Windows 虚拟机上强制执行 Microsoft 反恶意软件解决方案，从而帮助管理终结点防护，包括恶意代码防护。
+此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义用于监视 Azure 安全中心中虚拟机上缺失的终结点防护并在 Windows 虚拟机上强制执行 Microsoft 反恶意软件解决方案，从而帮助管理 Endpoint Protection，包括恶意代码防护。
 
 - 为 Windows Server 部署默认 Microsoft IaaSAntimalware 扩展
 - 应在虚拟机规模集上安装 Endpoint Protection 解决方案
@@ -370,7 +368,7 @@ Azure 的分布式拒绝服务 (DDoS) 标准层通过基本服务层提供额外
 
 ## <a name="si-3-1-malicious-code-protection--central-management"></a>SI-3 (1) 恶意代码防护 | 集中管理
 
-此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义用于监视 Azure 安全中心中虚拟机上缺失的终结点防护，从而帮助管理终结点防护，包括恶意代码防护。 Azure 安全中心提供集中管理和报告功能，用于实时洞察已部署的 Azure 资源的安全状态。
+此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义用于监视 Azure 安全中心中虚拟机上缺失的终结点防护，从而帮助 Endpoint Protection，包括恶意代码防护。 Azure 安全中心提供集中管理和报告功能，用于实时洞察已部署的 Azure 资源的安全状态。
 
 - 应在虚拟机规模集上安装 Endpoint Protection 解决方案
 - 监视 Azure 安全中心 Endpoint Protection 的缺失情况

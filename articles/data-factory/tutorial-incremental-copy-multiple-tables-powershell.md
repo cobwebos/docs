@@ -1,6 +1,6 @@
 ---
 title: 使用 PowerShell 以增量方式复制多个表
-description: 在本教程中，你将创建一个 Azure 数据工厂管道，该管道以递增方式将增量数据从本地 SQL Server 数据库中的多个表复制到 Azure SQL 数据库。
+description: 在本教程中，你将创建一个 Azure 数据工厂管道，该管道以递增方式将增量数据从 SQL Server 数据库中的多个表复制到 Azure SQL 数据库。
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/30/2020
-ms.openlocfilehash: aa4dbfbaff620c25042d2603dab543661ec2cd14
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a3fc4a7fa905e7538199d3b26a0cd8b9791aaac4
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81410012"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194532"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>以递增方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-在本教程中，你将创建一个带管道的 Azure 数据工厂，该管道将增量数据从本地 SQL Server 中的多个表加载到 Azure SQL 数据库。    
+在本教程中，你将创建一个带管道的 Azure 数据工厂，该管道将增量数据从 SQL Server 数据库中的多个表加载到 Azure SQL 数据库。    
 
 在本教程中执行以下步骤：
 
@@ -69,14 +69,14 @@ ms.locfileid: "81410012"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **SQL Server**。 在本教程中，请将本地 SQL Server 数据库用作源数据存储。 
-* **Azure SQL 数据库**。 使用 SQL 数据库作为接收器数据存储。 如果没有 SQL 数据库，请参阅[创建 Azure SQL 数据库](../sql-database/sql-database-get-started-portal.md)，了解创建该数据库的步骤。 
+* **SQL Server**。 在本教程中，请将 SQL Server 数据库用作源数据存储。 
+* **Azure SQL 数据库**。 使用 SQL 数据库作为接收器数据存储。 如果没有 SQL 数据库，请参阅[创建 Azure SQL 数据库](../azure-sql/database/single-database-create-quickstart.md)，了解创建该数据库的步骤。 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>在 SQL Server 数据库中创建源表
 
-1. 打开 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 或 [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)，然后连接到本地 SQL Server 数据库。
+1. 打开 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 或 [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)，然后连接到 SQL Server 数据库。
 
-2. 在**服务器资源管理器 (SSMS)** 或“连接”窗格 (Azure Data Studio)  中，右键单击数据库，然后选择“新建查询”  。
+2. 在**服务器资源管理器 (SSMS)** 或“连接”窗格 (Azure Data Studio) 中，右键单击数据库，然后选择“新建查询”。
 
 3. 对数据库运行以下 SQL 命令，以便创建名为 `customer_table` 和 `project_table` 的表：
 
@@ -113,9 +113,9 @@ ms.locfileid: "81410012"
 
 ### <a name="create-destination-tables-in-your-azure-sql-database"></a>在 Azure SQL 数据库中创建目标表
 
-1. 打开 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 或 [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)，然后连接到本地 SQL Server 数据库。
+1. 打开 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 或 [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)，然后连接到 SQL Server 数据库。
 
-2. 在**服务器资源管理器 (SSMS)** 或“连接”窗格 (Azure Data Studio)  中，右键单击数据库，然后选择“新建查询”  。
+2. 在**服务器资源管理器 (SSMS)** 或“连接”窗格 (Azure Data Studio) 中，右键单击数据库，然后选择“新建查询”。
 
 3. 对 SQL 数据库运行以下 SQL 命令，以便创建名为 `customer_table` 和 `project_table` 的表：  
 
@@ -283,17 +283,17 @@ END
 
 * 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。
 
-* 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、SQL 数据库等）和计算资源（Azure HDInsight 等）可以位于其他区域中。
+* 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、SQL 数据库等）和计算资源（Azure HDInsight 等）可以位于其他区域中。
 
 [!INCLUDE [data-factory-create-install-integration-runtime](../../includes/data-factory-create-install-integration-runtime.md)]
 
 ## <a name="create-linked-services"></a>创建链接服务
 
-可在数据工厂中创建链接服务，将数据存储和计算服务链接到数据工厂。 在本部分中，你将创建本地 SQL Server 数据库和 Azure SQL 数据库的链接服务。 
+可在数据工厂中创建链接服务，将数据存储和计算服务链接到数据工厂。 在本部分中，你将创建指向 SQL Server 数据库和 Azure SQL 数据库的链接服务。 
 
 ### <a name="create-the-sql-server-linked-service"></a>创建 SQL Server 链接服务
 
-在此步骤中，请将本地 SQL Server 数据库链接到数据工厂。
+在此步骤中，请将 SQL Server 数据库链接到数据工厂。
 
 1. 使用以下内容在 C:\ADFTutorials\IncCopyMultiTableTutorial 文件夹中创建一个名为 **SqlServerLinkedService.json** 的 JSON 文件（如果本地文件夹尚不存在，请创建它们）。 根据连接到 SQL Server 时所使用的身份验证选择适当的节。  
 
@@ -814,21 +814,21 @@ END
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 选择“所有服务”，使用关键字“数据工厂”进行搜索，然后选择“数据工厂”。    
+2. 选择“所有服务”，使用关键字“数据工厂”进行搜索，然后选择“数据工厂”。 
 
-3. 在数据工厂列表中搜索你的数据工厂，然后选择它来打开“数据工厂”页。  
+3. 在数据工厂列表中搜索你的数据工厂，然后选择它来打开“数据工厂”页。 
 
-4. 在“数据工厂”  页上，选择“创作和监视”  以在单独的选项卡中启动 Azure 数据工厂。
+4. 在“数据工厂”页上，选择“创作和监视”以在单独的选项卡中启动 Azure 数据工厂。
 
-5. 在“开始使用”  页上，选择左侧的“监视”  。 
+5. 在“开始使用”页上，选择左侧的“监视”。 
 ![管道运行](media/doc-common-process/get-started-page-monitor-button.png)    
 
-6. 可以看到所有管道运行及其状态。 请注意，在以下示例中，管道运行的状态为“成功”。   选择“参数”列中的链接即可查看传递至管道的参数。 如果出现错误，请查看“错误”  列中的链接。
+6. 可以看到所有管道运行及其状态。 请注意，在以下示例中，管道运行的状态为“成功”。 选择“参数”列中的链接即可查看传递至管道的参数。 如果出现错误，请查看“错误”列中的链接。
 
     ![管道运行](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
-7. 在“操作”  列中选择链接时，会看到管道的所有活动运行。 
+7. 在“操作”列中选择链接时，会看到管道的所有活动运行。 
 
-8. 若要回到“管道运行”视图，请选择“所有管道运行”   。 
+8. 若要回到“管道运行”视图，请选择“所有管道运行” 。 
 
 ## <a name="review-the-results"></a>查看结果
 
@@ -907,11 +907,11 @@ VALUES
     ```powershell
     $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupname -dataFactoryName $dataFactoryName -ParameterFile ".\Parameters.json"
     ```
-2. 按照[监视管道](#monitor-the-pipeline)部分的说明监视管道运行。 当管道状态为“正在进行”时，可以在“操作”下看到另一操作链接，用于取消管道运行。   
+2. 按照[监视管道](#monitor-the-pipeline)部分的说明监视管道运行。 当管道状态为“正在进行”时，可以在“操作”下看到另一操作链接，用于取消管道运行。  
 
-3. 选择“刷新”  对列表进行刷新，直到管道运行成功。 
+3. 选择“刷新”对列表进行刷新，直到管道运行成功。 
 
-4. 也可选择“操作”下的“查看活动运行”链接，查看与此管道运行相关联的所有活动运行。   
+4. 也可选择“操作”下的“查看活动运行”链接，查看与此管道运行相关联的所有活动运行。  
 
 ## <a name="review-the-final-results"></a>查看最终结果
 

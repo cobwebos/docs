@@ -7,14 +7,14 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: 70def2584cf8855e8fdf4a74081dc5a9a8c46f68
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 28671484460407efac8798505f630c13ec0b4918
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84205103"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84325076"
 ---
-# <a name="quickstart-use-a-resource-manager-template-to-create-an-azure-database-for-postgresql---single-server"></a>快速入门：使用资源管理器模板创建 Azure Database for PostgreSQL - 单一服务器
+# <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>快速入门：使用 ARM 模板创建 Azure Database for PostgreSQL 单一服务器
 
 用于 PostgreSQL 的 Azure 数据库是一种托管服务，可用于在云中运行、管理和缩放具有高可用性的 PostgreSQL 数据库。 在本快速入门中，你将使用 ARM 模板在 Azure 门户、PowerShell 或 Azure CLI 中创建 Azure Database for PostgreSQL 单一服务器。
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: be5bc8ec4e8f363d9b6079d22f3bba1af2d4d5fb
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: ed533f571ada4cacf053157b397cca07cd65e6f8
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682568"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300566"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>快速入门：使用 Unity 渲染模型
 
@@ -33,6 +33,9 @@ ms.locfileid: "83682568"
 
 * Windows SDK 10.0.18362.0[（下载）](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * Visual Studio 2019 最新版本[（下载）](https://visualstudio.microsoft.com/vs/older-downloads/)
+* [适用于混合现实的 Visual Studio Tools](https://docs.microsoft.com/windows/mixed-reality/install-the-tools)。 具体来说，必须安装以下工作负载：
+  * **使用 C++ 的桌面开发**
+  * **通用 Windows 平台 (UWP) 开发**
 * GIT[（下载）](https://git-scm.com/downloads)。
 * Unity 2019.3.1[（下载）](https://unity3d.com/get-unity/download)
   * 在 Unity 中安装以下模块：

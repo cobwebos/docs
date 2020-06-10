@@ -624,7 +624,7 @@
           href: ../extensions/agent-windows.md
         - name: 缓解推理执行
           href: mitigate-se.md
-        - name: 监视元数据
+        - name: Azure 实例元数据服务
           href: instance-metadata-service.md
         - name: 启用嵌套虚拟化
           href: nested-virtualization.md

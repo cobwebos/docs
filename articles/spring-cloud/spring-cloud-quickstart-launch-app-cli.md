@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: c05e53bd8ad8ade8c1e42729f46c99a0059c4dce
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ab6eb9b516ca30d92437bdc358e3f1f56cfe8e71
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79470854"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457212"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>快速入门：使用 Azure CLI 启动 Java Spring 应用程序
 
@@ -154,16 +154,8 @@ az spring-cloud app update -n gateway --is-public true
 
 2. 查询**网关**应用程序的公共 IP，这样就可以验证该应用程序是否正在运行：
 
-Linux：
-
 ```azurecli
-az spring-cloud app show --name gateway | grep url
-```
-
-Windows：
-
-```azurecli
-az spring-cloud app show -s <service name> -g <resource group> -n gateway -o table
+az spring-cloud app show --name gateway --query properties.url
 ```
 
 3. 导航到上一个命令提供的 URL，以运行 PiggyMetrics 应用程序。
@@ -171,12 +163,12 @@ az spring-cloud app show -s <service name> -g <resource group> -n gateway -o tab
 
 还可以导航 Azure 门户以查找 URL。 
 1. 导航到服务
-2. 选择“应用” 
-3. 选择“网关” 
+2. 选择“应用”
+3. 选择“网关”
 
     ![PiggyMetrics 运行的屏幕截图](media/spring-cloud-quickstart-launch-app-cli/navigate-app1.png)
     
-4. 在“网关概述”  页上查找 URL ![PiggyMetrics 运行的屏幕截图](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
+4. 在“网关概述”页上查找 URL ![PiggyMetrics 运行的屏幕截图](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
 
 > [!div class="nextstepaction"]
 > [我遇到了问题](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=public-endpoint)

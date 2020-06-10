@@ -2,19 +2,19 @@
 title: 使用 Azure 门户部署 Azure SQL Edge（预览）
 description: 了解如何使用 Azure 门户部署 Azure SQL Edge（预览）
 keywords: 部署 SQL Edge
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 0ddfc445ee8bd67b39de4ddd013a25f20fd75315
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 43359b66ba747dba7b3294d022a2c1aa2a3e624c
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681216"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233241"
 ---
 # <a name="deploy-azure-sql-edge-preview"></a>部署 Azure SQL Edge（预览） 
 

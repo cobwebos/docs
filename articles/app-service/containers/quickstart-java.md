@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 1ed7126f2698294ac6706aafcb85e3229a7491bb
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 1bff1e22df1583491bf8d249cdb8752e9a1e4f57
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300057"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485381"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>快速入门：在 Linux 上的 Azure 应用服务中创建 Java 应用
 
@@ -44,7 +44,7 @@ cd helloworld
 
 ## <a name="configure-the-maven-plugin"></a>配置 Maven 插件
 
-部署到 Azure 应用服务的过程会自动从 Azure CLI 选取 Azure 凭据。 如果尚未安装 Azure CLI，Maven 插件将使用 Oauth 或设备登录名登录。 如果需要，请查看[使用 Maven 插件进行身份验证](https://github.com/microsoft/azure-maven-plugins/wiki/Authenticatio)了解详细信息。
+部署到 Azure 应用服务的过程会自动从 Azure CLI 选取 Azure 凭据。 如果尚未安装 Azure CLI，Maven 插件将使用 Oauth 或设备登录名登录。 如果需要，请查看[使用 Maven 插件进行身份验证](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication)了解详细信息。
 
 若要配置部署，请在命令提示符下运行 maven 命令，并在出现“确认(Y/N)”提示前一直按 Enter 来使用默认配置，然后按“Y”完成配置  。 
 ```cmd

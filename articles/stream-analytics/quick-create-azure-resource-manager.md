@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, subject-armqs
 ms.date: 05/28/2020
-ms.openlocfilehash: 0d7dc6e09ba3d045fe48b0e91faf59b50d828253
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 127a8550b7f4ca89b8b3a8e61880b295a806e5d0
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84172394"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449356"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-the-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建 Azure 流分析作业
 
@@ -33,13 +33,13 @@ ms.locfileid: "84172394"
 
 ### <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-streamanalytics-create)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-streamanalytics-create/)。
 
-:::code language="json" source="~/quickstart-templates/101-streamanalytics-create/azuredeploy.json" range="1-66":::
+:::code language="json" source="~/quickstart-templates/101-streamanalytics-create/azuredeploy.json" range="1-66" highlight="41-60":::
 
-模板中定义的 Azure 资源是 [Microsoft.StreamAnalytics/StreamingJobs](https://docs.microsoft.com/azure/templates/microsoft.streamanalytics/2016-03-01/streamingjobs)：创建 Azure 流分析作业。 
+模板中定义的 Azure 资源是 [Microsoft.StreamAnalytics/StreamingJobs](/azure/templates/microsoft.streamanalytics/streamingjobs)：创建 Azure 流分析作业。
 
-## <a name="deploy-the-template"></a>部署模板
+### <a name="deploy-the-template"></a>部署模板
 
 在本部分，我们将使用 Azure 资源管理器模板创建 Azure 流分析作业。
 

@@ -3,17 +3,17 @@ title: 面向合作伙伴的 Azure 成本管理入门
 description: 本文介绍合作伙伴如何使用 Azure 成本管理功能，以及如何为客户启用成本管理访问。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 06/08/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 8dea0da44ebfb35165daa7096296dada55e78e99
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 08037cbd3723604720a273722bd5dbee3fb79b8e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83997122"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554556"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>面向合作伙伴的 Azure 成本管理入门
 
@@ -152,7 +152,7 @@ RBAC 范围内的预留实例的摊销视图和实际成本将显示零费用。
 
 ## <a name="analyze-costs-in-cost-analysis"></a>在成本分析中分析成本
 
-有权访问合作伙伴租户中的计费范围的合作伙伴可以在不同客户的成本分析中，浏览和分析特定客户或发票的开票成本。 在[成本分析](quick-acm-cost-analysis.md)视图中，还可以[保存视图](quick-acm-cost-analysis.md#saving-and-sharing-customized-views)，以及将数据导出到 [CSV 和 PNG 文件](quick-acm-cost-analysis.md#automation-and-offline-analysis)。
+有权访问合作伙伴租户中的计费范围的合作伙伴可以在不同客户的成本分析中，浏览和分析特定客户或发票的开票成本。 在[成本分析](quick-acm-cost-analysis.md)视图中，还可以[保存视图](quick-acm-cost-analysis.md#saving-and-sharing-customized-views)，以及将数据导出到 [CSV 和 PNG 文件](quick-acm-cost-analysis.md#download-usage-data)。
 
 有权访问客户租户中的订阅的 RBAC 用户还可以分析该客户租户中的订阅的零售成本、保存视图，以及将数据导出到 CSV 和 PNG 文件。
 

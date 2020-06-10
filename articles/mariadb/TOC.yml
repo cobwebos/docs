@@ -98,6 +98,8 @@
           href: concepts-query-performance-insight.md
         - name: 性能建议
           href: concepts-performance-recommendations.md
+        - name: 服务器参数
+          href: concepts-server-parameters.md
     - name: 开发
       items:
         - name: 驱动程序和工具兼容性
@@ -144,6 +146,8 @@
           href: howto-configure-ssl.md
         - name: 配置 TLS
           href: howto-tls-configurations.md
+        - name: 通过重定向进行连接
+          href: howto-redirection.md
     - name: 配置服务器参数
       items:
         - name: Azure 门户

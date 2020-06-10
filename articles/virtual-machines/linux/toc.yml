@@ -657,7 +657,7 @@
               href: update-agent.md
         - name: 缓解推理执行
           href: mitigate-se.md
-        - name: 监视元数据
+        - name: Azure 实例元数据服务
           href: instance-metadata-service.md
         - name: 使用 REST 获取使用情况指标
           href: metrics-vm-usage-rest.md

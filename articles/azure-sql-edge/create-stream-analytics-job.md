@@ -2,19 +2,19 @@
 title: 在 Azure SQL Edge（预览版）中创建 T-SQL 流式处理作业
 description: 了解如何在 Azure SQL Edge（预览版）中创建流分析作业
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 7db7f9548a3daa86a53dd37fbe088661e8b7b17e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 323ec00667350917e6b16827f908ac1abeee77d6
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685176"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233309"
 ---
 # <a name="create-stream-analytics-job-in-azure-sql-edge-preview"></a>在 Azure SQL Edge（预览版）中创建流分析作业 
 

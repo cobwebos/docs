@@ -4,18 +4,18 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/13/2020
 ms.author: glenga
-ms.openlocfilehash: 960bbfc82e6cea0b868f93f784103b8ea1743e00
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3fcca11e4e27a8ad291cffeda68d9e32e02a0912
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76964000"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84268769"
 ---
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
 在发布应用之前，必须先登录到 Azure。 
 
-1. 如果你尚未登录，请在活动栏中选择“Azure”图标，然后在“Azure: 函数”  区域中，选择“登录到 Azure...”  。如果没有帐户，可以**创建一个免费 Azure 帐户**。 
+1. 如果你尚未登录，请在活动栏中选择“Azure”图标，然后在“Azure: 函数”区域中，选择“登录到 Azure...”。如果没有帐户，可以[创建一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 学生可单击此处[创建一个免费的面向学生的 Azure 帐户](https://azure.microsoft.com/free/students/)
 
     ![浏览器中的函数 localhost 响应](./media/functions-sign-in-vs-code/functions-sign-into-azure.png)
 

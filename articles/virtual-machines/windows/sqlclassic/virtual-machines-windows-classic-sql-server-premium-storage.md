@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 07e8d2b6bd22029a4b6556ada62985167807eb77
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ca11fce252192cbf8e5f0bc2cfb5fcd38f5d4443
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833925"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020874"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>将 Azure 高级存储用于虚拟机上的 SQL Server
 
@@ -41,7 +41,7 @@ ms.locfileid: "83833925"
 * 可能的迁移方法。
 * 演示迁移现有 Always On 实现的 Azure、Windows 和 SQL Server 步骤的完整端到端示例。
 
-有关 Azure 虚拟机中的 SQL Server 的更多背景信息，请参阅 [Azure 虚拟机中的 SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md)。
+有关 Azure 虚拟机中的 SQL Server 的更多背景信息，请参阅 [Azure 虚拟机中的 SQL Server](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)。
 
 **作者：** Daniel Sol 技术审阅人员：Luis Carlos Vargas Herring、Sanjay Mishra、Pravin Mital、Juergen Thomas、Gonzalo Ruiz。
 
@@ -681,7 +681,7 @@ $destcloudsvc = "danNewSvcAms"
 New-AzureService $destcloudsvc -Location $location
 ```
 
-#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>步骤 2：在资源上增加允许的故障 \<可选>
+#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>步骤 2：在资源上增加允许的故障 \<Optional>
 
 在 AlwaysOn 可用性组中包含的某些资源上，限定了在群集服务尝试重启资源组的固定时间内可出现的失败数。 在完成此过程时，建议增加此限制，因为如果未手动故障转移或通过关闭计算机来触发故障转移，则可能会接近此限制。
 
@@ -691,7 +691,7 @@ New-AzureService $destcloudsvc -Location $location
 
 将最大故障数更改为 6。
 
-#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>步骤 3：为群集组添加 IP 地址资源 \<可选>
+#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>步骤 3：为群集组添加 IP 地址资源 \<Optional>
 
 如果群集组只有一个 IP 地址，而此地址分配给了云子网，则请注意，如果意外地使此玩过上云端的所有群集脱机，群集 IP 资源和群集网络名称将无法再联机。 此情况下，这会阻止更新到其他群集资源。
 
@@ -1250,7 +1250,7 @@ Get-AzureVM –ServiceName $destcloudsvc –Name $vmNameToMigrate  | Add-AzureEn
 
 * [Azure 高级存储](../disks-types.md)
 * [虚拟机](https://azure.microsoft.com/services/virtual-machines/)
-* [Azure 虚拟机中的 SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
+* [Azure 虚拟机中的 SQL Server](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 
 <!-- IMAGES -->
 [1]: ./media/virtual-machines-windows-classic-sql-server-premium-storage/1_VNET_Portal.png

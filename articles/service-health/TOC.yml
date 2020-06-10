@@ -16,7 +16,7 @@
       href: service-health-overview.md
     - name: 资源运行状况
       href: resource-health-overview.md
-- name: 如何
+- name: 操作方式
   items:
     - name: 配置服务运行状况事件的警报
       href: alerts-activity-log-service-notifications.md
@@ -30,8 +30,6 @@
       href: service-health-alert-webhook-pagerduty.md
     - name: 将警报发送给 OpsGenie
       href: service-health-alert-webhook-opsgenie.md
-    - name: 使用 REST 检索运行状况事件
-      href: service-health-rest.md
     - name: 配置资源运行状况事件的警报
       href: resource-health-alert-arm-template-guide.md
 - name: 参考

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 05/04/2020
 ms.topic: tutorial
-ms.openlocfilehash: 9db32912e86079875ad382fb23e521c720fc7fbd
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: b6dceff8b777d09a6f791437eb4aaca70365b518
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83775614"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300711"
 ---
 # <a name="tutorial-integrate-remote-rendering-into-a-hololens-holographic-app"></a>教程：将远程渲染集成到 HoloLens Holographic 应用
 
@@ -33,6 +33,9 @@ ms.locfileid: "83775614"
 * 帐户信息（帐户 ID、帐户密钥、订阅 ID）。 如果你没有帐户，请[创建一个帐户](../../../how-tos/create-an-account.md)。
 * Windows SDK 10.0.18362.0[（下载）](https://developer.microsoft.com/windows/downloads/windows-10-sdk)。
 * Visual Studio 2019 最新版本[（下载）](https://visualstudio.microsoft.com/vs/older-downloads/)。
+* [适用于混合现实的 Visual Studio tools](https://docs.microsoft.com/windows/mixed-reality/install-the-tools)。 具体来说，必须安装以下工作负载：
+  * **使用 C++ 的桌面开发**
+  * **通用 Windows 平台 (UWP) 开发**
 * 适用于 Visual Studio 的 Windows 混合现实应用模板[（下载）](https://marketplace.visualstudio.com/items?itemName=WindowsMixedRealityteam.WindowsMixedRealityAppTemplatesVSIX)。
 
 ## <a name="create-a-new-holographic-app-sample"></a>创建新的全息应用示例

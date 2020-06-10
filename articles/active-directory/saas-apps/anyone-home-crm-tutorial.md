@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f2320f8a005531039a386af9192157c3091f3ac
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 4146e6de2ef23f7e12ee6b59c40045f8a678dc13
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221262"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509179"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-anyone-home-crm"></a>教程：Azure Active Directory 与 Anyone Home CRM 的单一登录 (SSO) 集成
 
@@ -88,7 +88,7 @@ ms.locfileid: "84221262"
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://app.anyonehome.com/webroot/files/simplesamlphp/www/module.php/saml/sp/saml2-acs.php/<Anyone_Home_Provided_Unique_Value>`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Anyone Home CRM 客户端支持团队](mailto:lightson@anyonehome.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Anyone Home CRM 客户端支持团队](mailto:support@anyonehome.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
 
@@ -126,11 +126,11 @@ ms.locfileid: "84221262"
 
 ## <a name="configure-anyone-home-crm-sso"></a>配置 Anyone Home CRM SSO
 
-若要在 Anyone Home CRM 端配置单一登录，需要将“应用联合元数据 URL”发送给 [Anyone Home CRM 支持团队](mailto:lightson@anyonehome.com) 。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Anyone Home CRM 端配置单一登录，需要将“应用联合元数据 URL”发送给 [Anyone Home CRM 支持团队](mailto:support@anyonehome.com) 。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-anyone-home-crm-test-user"></a>创建 Anyone Home CRM 测试用户
 
-在本部分中，会在 Anyone Home CRM 中创建一个名为“Britta Simon”的用户。 与  [Anyone Home CRM 支持团队](mailto:lightson@anyonehome.com)协作，将用户添加到 Anyone Home CRM 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分中，会在 Anyone Home CRM 中创建一个名为“Britta Simon”的用户。 与  [Anyone Home CRM 支持团队](mailto:support@anyonehome.com)协作，将用户添加到 Anyone Home CRM 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 

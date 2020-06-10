@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 05/12/2020
+ms.date: 06/04/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9013fe7b05467400afc300bd08c92eedc95ed0e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d7b8fc62744b8e0f4f088522bdef5fb484aa7a8d
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662185"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465433"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sharevault"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ShareVault 的集成
 
@@ -102,7 +102,7 @@ ms.locfileid: "83662185"
     | ------------- | --------- |
     | sv.svid |  < `svid number` > |
     | sv.firstname | user.givenname |
-    | user.lastname | user.surname |
+    | sv.lastname | user.surname |
     | sv.email | user.userprincipalname |
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
@@ -117,7 +117,7 @@ ms.locfileid: "83662185"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
    1. 单击“创建”。
 
