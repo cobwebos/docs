@@ -4,16 +4,19 @@
   items:
     - name: 什么是 Azure 蓝图？
       displayName: 'templates, policy, definition, assignment, rbac'
-      href: overview.md
+      href: ./overview.md
 - name: 快速入门
   expanded: true
   items:
     - name: 创建蓝图 - 门户
       displayName: 'publish, assign, track, unassign, delete'
-      href: create-blueprint-portal.md
-    - name: 创建蓝图 - PowerShell
+      href: ./create-blueprint-portal.md
+    - name: 创建蓝图 - Azure PowerShell
       displayName: 'publish, assign, track, unassign, delete'
-      href: create-blueprint-powershell.md
+      href: ./create-blueprint-powershell.md
+    - name: 创建蓝图 - Azure CLI
+      displayName: 'publish, assign, track, unassign, delete'
+      href: ./create-blueprint-azurecli.md
     - name: 创建蓝图 - REST API
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-rest-api.md
@@ -268,6 +271,8 @@
   href: ./troubleshoot/general.md
 - name: 参考
   items:
+    - name: Azure CLI
+      href: /cli/azure/ext/blueprint/blueprint
     - name: Azure PowerShell
       href: '/powershell/module/az.blueprint/#blueprint'
     - name: 用于 .NET 的 Azure SDK
@@ -285,7 +290,7 @@
     - name: GitHub - Azure 蓝图示例
       href: 'https://github.com/Azure/azure-blueprints'
     - name: 有关 Azure 蓝图的 Microsoft Q&A
-      href: /answers/topics/azure-blueprints.html.html
+      href: /answers/topics/azure-blueprints.html
     - name: 治理 YouTube 频道
       href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
     - name: Azure Friday - Azure 蓝图概述

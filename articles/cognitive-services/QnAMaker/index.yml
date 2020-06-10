@@ -3,7 +3,7 @@ title: QnA Maker 文档
 summary: 了解 QnA Maker 服务以及如何将此服务的知识库用于你的问题和答案。
 metadata:
   ms.topic: landing-page
-  ms.date: 09/18/2019
+  ms.date: 06/08/2020
   ms.author: nitinme
   author: nitinme
   ms.service: cognitive-services
@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: QnA Maker 文档
   description: QnA Maker 是一种基于云的 API 服务，它创建基于数据的聊天式问答层。 使用 QnA Maker，可以根据常见问题解答文档、URL 和产品手册等半结构化内容打造一项问题与解答服务。 QnA Maker 服务通过将问题与知识库的 QnA 中的最可能答案进行匹配，来回答用户的自然语言问题。
-  ms.openlocfilehash: 189782ca4e8d9c6a098f6080a62be4da0f2be853
-  ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+  ms.openlocfilehash: 09c577368ef6ca9b6bc584601ad018c2a63c7347
+  ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/19/2020
-  ms.locfileid: "83651164"
+  ms.lasthandoff: 06/09/2020
+  ms.locfileid: "84628038"
 landingContent:
 - title: 关于 QnA Maker
   linkLists:
@@ -66,8 +66,8 @@ landingContent:
     links:
     - text: 快速入门：使用 Postman 或 cURL
       url: quickstarts/get-answer-from-knowledge-base-using-url-tool.md
-    - text: 快速入门：使用 REST 和 C#
-      url: quickstarts/get-answer-from-knowledge-base-csharp.md
+    - text: 快速入门：使用 REST 和 cURL
+      url: quickstarts/quickstart-rest-curl.md
     - text: 快速入门：使用 SDK
       url: quickstarts/quickstart-sdk.md
   - linkListType: how-to-guide
@@ -94,8 +94,12 @@ landingContent:
   linkLists:
   - linkListType: get-started
     links:
-    - text: 门户：创建 QnA 机器人
+    - text: 门户：创建 Azure 机器人服务机器人
       url: tutorials/create-qna-bot.md
+    - text: 为应用提供支持：创建 QnA Maker 支持的机器人
+      url: tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
+    - text: Bot Framework：在 LUIS 和 QnA Maker 应用之间调度
+      url: https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=cs
     - text: 其他机器人示例
       url: https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md
 - title: 参考

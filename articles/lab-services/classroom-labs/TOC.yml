@@ -42,6 +42,8 @@
               href: class-type-ethical-hacking.md
             - name: 数据库管理
               href: class-type-database-management.md
+            - name: Azure Sql 数据库管理和开发
+              href: class-type-sql-server.md
             - name: Python 和 Jupyter Notebook
               href: class-type-jupyter-notebook.md
             - name: 使用 Android Studio 进行移动应用开发
@@ -74,6 +76,8 @@
           href: allow-lab-creator-pick-lab-location.md
         - name: 连接到对等虚拟网络
           href: how-to-connect-peer-virtual-network.md
+        - name: 如何创建包含共享资源的实验室
+          href: how-to-create-a-lab-with-shared-resource.md
         - name: 附加或分离共享映像库
           href: how-to-attach-detach-shared-image-gallery.md
         - name: 向教室实验室添加其他所有者

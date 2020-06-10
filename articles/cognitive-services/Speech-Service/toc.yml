@@ -462,6 +462,8 @@
       items:
         - name: 什么是说话人识别？
           href: speaker-recognition-overview.md
+        - name: 说话人识别基础知识
+          href: speaker-recognition-basics.md
     - name: 参考
       items:
         - name: REST API
