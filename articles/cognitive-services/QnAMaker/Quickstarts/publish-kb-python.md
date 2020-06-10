@@ -3,14 +3,14 @@ title: 快速入门：发布知识库、REST、Python QnA Maker
 description: 此基于 Python REST 的快速入门发布你的知识库，并创建可在应用程序或聊天机器人中调用的终结点。
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
-ms.custom: RESTCURL2020FEB27
+ms.custom: RESTCURL2020FEB27, tracking-python
 ms.topic: how-to
-ms.openlocfilehash: 6805ac21ff36e76fd07c3d38b34e7de8d16963a3
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: a5aa5a313a96c12adccf0a1c198dce69661935d6
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342674"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608649"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-python"></a>快速入门：在 QnA Maker 中通过 Python 发布知识库
 

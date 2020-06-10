@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 3a4a68d45d633caf9a318cd17f1e8d94752ecfe9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 64a6bf1fec61871d2787966a5b0af24d4f012032
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673061"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84637431"
 ---
 :::row:::
     :::column span="3":::
-        Java SDK for Android 打包为 <a href="https://developer.android.com/studio/projects/android-library" target="_blank">AAR（Android 库）<span class="docon docon-navigate-external x-hidden-focus"></span></a>，其中包括必要的库以及所需的 Android 权限。 它作为包 `com.microsoft.cognitiveservices.speech:client-sdk:1.12.0` 托管在 `https://csspeechstorage.blob.core.windows.net/maven/` 的 Maven 存储库中。
+        Java SDK for Android 打包为 <a href="https://developer.android.com/studio/projects/android-library" target="_blank">AAR（Android 库）<span class="docon docon-navigate-external x-hidden-focus"></span></a>，其中包括必要的库以及所需的 Android 权限。 它作为包 `com.microsoft.cognitiveservices.speech:client-sdk:1.12.1` 托管在 `https://csspeechstorage.blob.core.windows.net/maven/` 的 Maven 存储库中。
     :::column-end:::
     :::column:::
         <br>
@@ -32,7 +32,7 @@ ms.locfileid: "83673061"
 
 2. 在模块级 build.gradle  文件中，向 `dependencies` 部分添加以下内容：
   ```gradle
-  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.12.0'
+  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.12.1'
   ```
 
 Java SDK 也是[语音设备 SDK](../speech-devices-sdk.md) 的一部分。

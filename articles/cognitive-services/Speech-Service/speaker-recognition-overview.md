@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: trbye
-ms.openlocfilehash: 2d4ce6f274efbd4d8afe2ac48856b0fc312f0a09
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: cc19844c6407a83233c70048e9eb258a742036fb
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261782"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84635163"
 ---
 # <a name="what-is-the-azure-speaker-recognition-service"></a>什么是 Azure 发言人识别服务？
 
@@ -27,7 +27,7 @@ ms.locfileid: "84261782"
 
 ### <a name="how-does-speaker-verification-work"></a>说话人验证是如何工作的？
 
-![扬声器验证的工作原理](media/speaker-recognition/speaker-rec.png)
+:::image type="content" source="media/speaker-recognition/speaker-rec.png" alt-text="说话人验证流程图。":::
 
 扬声器验证可以是文本相关的，也可以是与文本无关的。 **文本从属**验证表示扬声器需要选择要在注册和验证阶段中使用的相同通行短语。 与**文本无关**的验证意味着演讲者可以在注册和验证短语中以日常语言说话。
 
@@ -59,4 +59,5 @@ ms.locfileid: "84261782"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
+> * 完成演讲者识别[基础知识文章](speaker-recognition-basics.md)，了解可在应用程序中使用的常见设计模式。
 > * 请参阅[视频教程](https://azure.microsoft.com/resources/videos/speaker-recognition-text-independent-verification-developer-tutorial/)，了解与文本无关的扬声器验证。
