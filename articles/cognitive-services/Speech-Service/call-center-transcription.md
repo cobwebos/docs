@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: d959f4948d6b848f3b399c1310add06991d72012
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 77573ac4240eeded1f803d88f218aaf4d4c5a929
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74806314"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636120"
 ---
 # <a name="speech-service-for-telephony-data"></a>电话服务数据的语音服务
 
@@ -62,7 +62,7 @@ ms.locfileid: "74806314"
 
 某些公司正在尝试从外国语言支持调用提供翻译的脚本，使交付经理可以了解全球范围内的客户体验。 我们的[翻译](translation.md)功能非常优秀。 我们可以将音频到音频或音频转换为大量区域设置。
 
-### <a name="text-to-speech"></a>文本到语音转换
+### <a name="text-to-speech"></a>文本转语音
 
 在实现可与客户交互的机器人时，[文本转语音](text-to-speech.md)是另一个重要的方面。 典型的流程是客户讲话、将客户的语音转录为文本、分析文本中的意向、基于识别的意向合成响应，然后向客户呈现一个资产，或者生成合成的语音响应。 当然，所有这些都必须快速进行，因此低延迟是这些系统成功的重要组成部分。
 
@@ -97,7 +97,7 @@ ms.locfileid: "74806314"
 - 使用 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) 来为每个录制内容创建共享访问签名 (SAS) URI，以及触发启动听录的 HTTP POST 请求。 此外，Azure Functions 用于创建通过批量听录 API 检索和删除听录内容的请求。
 
 在内部，我们使用上述技术来支持批量模式的 Microsoft 客户呼叫。
-![Batch 体系结构](media/scenarios/call-center-batch-pipeline.png)
+:::image type="content" source="media/scenarios/call-center-batch-pipeline.png" alt-text="用于在批处理模式下支持 Microsoft 客户调用的技术。":::
 
 ## <a name="real-time-transcription-for-call-center-data"></a>呼叫中心数据的实时听录
 
@@ -125,10 +125,10 @@ ms.locfileid: "74806314"
 | -------------- | ----- | ----------- |
 | 语音转文本 | [声学模型](how-to-customize-acoustic-models.md) | 为特定环境（例如汽车或工厂车间）中使用的应用程序、工具或设备创建自定义声学模型，每个模型具有特定的录制条件。 示例包括带有口音的讲话、特定的背景噪音，或使用特定的麦克风录制音频。 |
 |                | [语言模型](how-to-customize-language-model.md) | 创建自定义语言模型来改善行业特定的词汇和语法的听录，例如医疗术语中或 IT 行话。 |
-|                | [发音模型](how-to-customize-pronunciation.md) | 使用自定义发音模型，可以为词或字词定义拼音形式和显示。 它适用于处理自定义术语，如产品名称或首字母缩略词。 只需一个发音文件`.txt`即可开始使用。 |
-| 文本转语音 | [语音字体](how-to-customize-voice-font.md) | 使用自定义语音字体可为自有品牌创建可识别的独一无二的声音。 只需使用少量的数据即可开始创建。 提供的数据越多，语音字体就越自然，且越接近人类语音。 |
+|                | [发音模型](how-to-customize-pronunciation.md) | 使用自定义发音模型，可以为词或字词定义拼音形式和显示。 它适用于处理自定义术语，如产品名称或首字母缩略词。 只需一个发音文件即可开始使用 `.txt` 。 |
+| 文本到语音转换 | [语音字体](how-to-customize-voice-font.md) | 使用自定义语音字体可为自有品牌创建可识别的独一无二的声音。 只需使用少量的数据即可开始创建。 提供的数据越多，语音字体就越自然，且越接近人类语音。 |
 
-## <a name="sample-code"></a>示例代码
+## <a name="sample-code"></a>代码示例
 
 GitHub 上提供了每个语音服务功能的示例代码。 这些示例涵盖了常见方案，例如，从文件或流中读取音频、连续和单次识别，以及使用自定义模型。 使用以下链接查看 SDK 和 REST 示例：
 

@@ -9,12 +9,13 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: dapine
-ms.openlocfilehash: fa0ad8c7f75a977e1a39ff6ffd6fee08d977f57a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: tracking-python
+ms.openlocfilehash: be1f6bd05069024194cb9312b17941c609d544dd
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83202012"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608445"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure 认知服务安全性
 
@@ -200,7 +201,7 @@ NSString* value =
 
 此认知服务提供客户密码箱：
 
-* 转换器
+* 翻译工具
 
 对于语言理解，Microsoft 工程师将无法访问 E0 SKU 中的任何客户数据。 若要请求使用 E0 SKU，请填写并提交 [LUIS 服务请求表单](https://aka.ms/cogsvc-cmk)。 大约需要3-5 个工作日内就会收到请求的状态。 根据需要，你可以将置于队列中并在空间可用时进行批准。 批准将 E0 SKU 用于 LUIS 后，需要从 Azure 门户创建新的语言理解资源，并选择 E0 作为定价层。 用户无法从 F0 升级到新的 E0 SKU。
 

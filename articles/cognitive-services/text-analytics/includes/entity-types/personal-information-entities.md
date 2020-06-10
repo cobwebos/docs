@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/30/2020
 ms.author: aahi
-ms.openlocfilehash: 81ed10f0b3b2a8042f0766f89bb99d7cad950fca
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 04fb080d09b1945add7340db081ab49dd017731d
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84140905"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84637460"
 ---
 > [!NOTE]
 > 若要检测 `PHI` ，请使用 `domain=phi` 参数和模型版本 `2020-04-01` 或更高版本。
@@ -22,7 +22,7 @@ ms.locfileid: "84140905"
  
 将请求发送到终结点时，将返回以下实体类别 `/v3.1-preview.1/entities/recognition/pii` 。
 
-| Category   | 子类别 | 说明                          | 开始模型版本 | 注释 |
+| 类别   | 子类别 | 说明                          | 开始模型版本 | 说明 |
 |------------|-------------|--------------------------------------|------------------------|---|
 | 人员     | 空值         | 人员姓名。  | `2019-10-01`  | 还返回了 `domain=phi` 。 |
 | PersonType | 空值         | 人员持有的作业类型或角色。 | `2020-02-01` | |
@@ -40,8 +40,8 @@ ms.locfileid: "84140905"
 | DateTime | Date | 日历日期。 | `2019-10-01` | 还返回了 `domain=phi` 。 |
 | 数量 | 空值 | 数字和数字。 | `2019-10-01` |  |
 | 数量 | Age | 年龄段. | `2019-10-01` | | |
-| 疾病的国际分类（ICD-10-CM） | 空值 | 与国际分类疾病，第九版相关的实体。   | `2020-04-01` | 还返回了 `domain=phi` 。 |
-| 疾病的国际分类（ICD-10-CM） | 空值 | 与国际分类疾病，第10个版本相关的实体。    | `2020-04-01` | 还返回了 `domain=phi` 。 |
+| 疾病的国际分类（ICD-10-CM） | 空值 | 与国际分类疾病，第九版相关的实体。   | `2020-04-01` | |
+| 疾病的国际分类（ICD-10-CM） | 空值 | 与国际分类疾病，第10个版本相关的实体。    | `2020-04-01` | |
 
 ## <a name="azure-information"></a>Azure 信息
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: yinhew
-ms.openlocfilehash: 7664ce89c01c543544bc576c5eee3fd288d323d5
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: c4eb1419859d4a87e53371a266dcef52e632b6c8
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248509"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636081"
 ---
 # <a name="speech-to-text-rest-api"></a>语音转文本 REST API
 
@@ -88,7 +88,7 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 
 | 参数 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
-| ReferenceText | 将对发音进行计算的文本。 | 必选 |
+| ReferenceText | 将对发音进行计算的文本。 | 必需 |
 | GradingSystem | 用于分数校准的点系统。 接受的值为 `FivePoint` 和 `HundredMark`。 默认设置为 `FivePoint`。 | 可选 |
 | 粒度 | 计算粒度。 接受的值为 `Phoneme` ，其中显示了全文本、单词和音素级别上的分数， `Word` 其中显示了整个文本和 word 级别的分数， `FullText` 只显示了完整文本级别的分数。 默认设置为 `Phoneme`。 | 可选 |
 | 维度 | 定义输出条件。 接受的值为 `Basic` ，只显示精确度评分， `Comprehensive` 显示更多维度上的分数（例如，熟练分数和完整文本级别的完整性分数，word 级别上的错误类型）。 检查[响应参数](#response-parameters)以查看不同分数维度和 word 错误类型的定义。 默认设置为 `Basic`。 | 可选 |
@@ -113,6 +113,8 @@ var pronAssessmentParamsJson = $"{{\"ReferenceText\":\"Good morning.\",\"Grading
 var pronAssessmentParamsBytes = Encoding.UTF8.GetBytes(pronAssessmentParamsJson);
 var pronAssessmentHeader = Convert.ToBase64String(pronAssessmentParamsBytes);
 ```
+
+我们强烈建议在发布音频数据时进行流式处理（分块）上载，这可以显著减少延迟。 有关如何启用流式处理的详细说明，请参阅[不同编程语言的示例代码](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/PronunciationAssessment)。
 
 >[!NOTE]
 >发音评估功能当前仅适用于 `westus` `eastasia` 和 `centralindia` 区域。 此功能目前仅适用于 `en-US` 语言。

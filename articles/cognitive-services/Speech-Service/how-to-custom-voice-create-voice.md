@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: bbe1d651a7d2d2cac1b1aa78b815b2797ad185c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5f087a2880c16218905a4410a2f591511a155ffd
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76717327"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629002"
 ---
 # <a name="create-a-custom-voice"></a>创建自定义语音
 
@@ -62,7 +62,7 @@ ms.locfileid: "76717327"
 
 验证数据集后，可以使用它来生成自定义语音模型。
 
-1.  导航到“文本转语音”>“自定义语音”>“训练”。****
+1.  导航到**文本到语音 > 自定义语音 > [项目名称] > 定型**。
 
 2.  单击 "**训练模型**"。
 
@@ -106,7 +106,7 @@ ms.locfileid: "76717327"
 
 成功生成语音字体以后，可以对其先测试后部署，然后就可以使用了。
 
-1.  导航到“文本转语音”>“自定义语音”>“测试”。****
+1.  导航到**文本到语音 > 自定义语音 > [项目名称] > 测试**。
 
 2.  单击 "**添加测试**"。
 
@@ -117,7 +117,7 @@ ms.locfileid: "76717327"
     > [!NOTE]
     > 文本的语言必须与语音字体的语言相同。 只能测试已成功训练的模型。 此步骤仅支持纯文本。
 
-5.  单击 **“创建”** 。
+5.  单击**创建**。
 
 提交测试请求后，将返回到测试页。 表中现在会有新请求的对应条目以及状态列。 可能需要数分钟来合成语音。 状态列显示“成功”后，你可以播放音频，或下载文本输入（txt 文件）和音频输出（.wav 文件），然后进一步试听后者以检查其质量。****
 

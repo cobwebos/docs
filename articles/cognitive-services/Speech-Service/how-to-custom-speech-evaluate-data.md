@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: f710b8bfdd4dcfd3b7a63aa0b457036ab7037016
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 27229d36dbe9592b6ad6fc2740f7714f99fd6857
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74806090"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629064"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>评估自定义语音识别准确度
 
@@ -52,7 +52,7 @@ ms.locfileid: "74806090"
 若要并排评估模型，请执行以下操作：
 
 1. 登录到[自定义语音识别门户](https://speech.microsoft.com/customspeech)。
-2. 导航到“语音转文本”&gt;“自定义语音识别”&gt;“测试”。 
+2. 导航到 "**语音到文本" > 自定义语音 > [项目名称] > 测试**。
 3. 单击“添加测试”。 
 4. 选择“评估准确度”。  为测试提供名称和说明，然后选择你的音频和人为标记的听录数据集。
 5. 选择最多两个要测试的模型。

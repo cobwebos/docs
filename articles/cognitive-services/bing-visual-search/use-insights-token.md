@@ -10,18 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
-ms.openlocfilehash: 251197c456ece4fe2dbbe264219d52f3502b7492
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: ac704ff7213b08072debf9d56da10a74e8315c68
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67341727"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607027"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>使用见解令牌获取图像的见解
 
-必应视觉搜索 API 将返回有关所提供的图像的信息。 可以通过使用图像的 URL、见解标记或通过上传图像来提供图像。 有关这些选项的信息，请参阅[什么是必应视觉搜索 API？](overview.md)。 本文演示了如何使用见解标记。 有关演示如何上传图像以获取见解的示例，请参阅快速入门（[c #](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)）。
+必应视觉搜索 API 将返回有关所提供的图像的信息。 可以通过使用图像的 URL、见解标记或通过上传图像来提供图像。 有关这些选项的信息，请参阅[什么是必应视觉搜索 API？](overview.md)。 本文演示了如何使用见解标记。 有关演示如何上传图像以获取见解的示例，请参阅快速入门（[c #](quickstarts/csharp.md)  |  [Java](quickstarts/java.md)  |  [node.js](quickstarts/nodejs.md)  |  [Python](quickstarts/python.md)）。
 
-如果发送必应视觉搜索图像令牌或 URL，则以下内容将显示您必须包含在帖子正文中的表单数据。 窗体数据必须包含`Content-Disposition`标头，并且必须将其`name`参数设置为 "knowledgeRequest"。 有关`imageInfo`对象的详细信息，请参阅请求：
+如果发送必应视觉搜索图像令牌或 URL，则以下内容将显示您必须包含在帖子正文中的表单数据。 窗体数据必须包含 `Content-Disposition` 标头，并且必须将其 `name` 参数设置为 "knowledgeRequest"。 有关对象的详细信息 `imageInfo` ，请参阅请求：
 
 ```json
 {
@@ -43,7 +44,7 @@ ms.locfileid: "67341727"
 }
 ```
 
-本文中的示例展示了如何使用见解标记。 可以从/images/search API 响应中的`Image`对象获取见解令牌。 有关获取 insights 令牌的信息，请参阅[什么是必应图像搜索 API？](../Bing-Image-Search/overview.md)。
+本文中的示例展示了如何使用见解标记。 可以从 `Image` /IMAGES/SEARCH API 响应中的对象获取见解令牌。 有关获取 insights 令牌的信息，请参阅[什么是必应图像搜索 API？](../Bing-Image-Search/overview.md)。
 
 ```
 --boundary_1234-abcd
@@ -58,7 +59,7 @@ Content-Disposition: form-data; name="knowledgeRequest"
 --boundary_1234-abcd--
 ```
 
-有关使用 insights 令牌的示例，请参阅[c #](#use-with-c) | [Java](#use-with-java) | [Node.js](#use-with-nodejs) | node.js[Python](#use-with-python)。
+有关使用 insights 令牌的示例，请参阅[c #](#use-with-c)  |  [Java](#use-with-java)  |  [node.js](#use-with-nodejs)  |  [Python](#use-with-python)。
 
 ## <a name="use-with-c"></a>与 C 一起使用#
 

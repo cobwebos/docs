@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 7a8fec876556d943d29756a38ffc27ae8095e3c4
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: e871d2c8e0fe00fa7db3144a787447163c82e62d
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466232"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629035"
 ---
 # <a name="inspect-custom-speech-data"></a>检查自定义语音数据
 
@@ -33,7 +33,7 @@ ms.locfileid: "84466232"
 按这些说明创建测试：
 
 1. 登录到[自定义语音识别门户](https://speech.microsoft.com/customspeech)。
-2. 导航到“语音转文本”&gt;“自定义语音识别”&gt;“测试”。 
+2. 导航到 "**语音到文本" > 自定义语音 > [项目名称] > 测试**。
 3. 单击“添加测试”。 
 4. 选择“检查质量(仅音频数据)”。  为测试提供名称和说明，然后选择你的音频数据集。
 5. 选择最多两个要测试的模型。
