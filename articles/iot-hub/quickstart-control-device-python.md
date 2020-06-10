@@ -11,13 +11,14 @@ ms.topic: quickstart
 ms.custom:
 - mvc
 - mqtt
+- tracking-python
 ms.date: 01/09/2020
-ms.openlocfilehash: ad2c63d1fd5860eaffc2a8c60b6bfa18fc8547d3
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: c03209413235b0d6fca22039756d6c19b643034b
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81769403"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84606473"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>快速入门：控制连接到 IoT 中心的设备 (Python)
 

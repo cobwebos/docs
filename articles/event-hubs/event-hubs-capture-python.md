@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.custom: seodec18
+ms.custom: seodec18, tracking-python
 ms.date: 01/15/2020
 ms.author: shvija
-ms.openlocfilehash: 6c830cf871c2ae650bb61e8b3712a664e9e405d4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c726b0d11759d30730046e635c701cf23d130dfc
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77187287"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561569"
 ---
 # <a name="quickstart-event-hubs-capture-walkthrough-python-azure-eventhub-version-1"></a>快速入门：事件中心捕获演练：Python（azure-eventhub 版本 1）
 
@@ -50,37 +50,37 @@ ms.locfileid: "77187287"
   > 如果已有可用的存储容器，可以在创建事件中心时启用捕获并选择存储容器。 
   > 
   
-- 事件中心共享访问密钥名称和主密钥值。 在“事件中心”页上的“共享访问策略”下查找或创建这些值。  默认访问密钥名称为 **RootManageSharedAccessKey**。 复制访问密钥名称和主密钥值，以便稍后在本演练中使用。 
+- 事件中心共享访问密钥名称和主密钥值。 在“事件中心”页上的“共享访问策略”下查找或创建这些值。 默认访问密钥名称为 **RootManageSharedAccessKey**。 复制访问密钥名称和主密钥值，以便稍后在本演练中使用。 
 
 ## <a name="create-an-azure-blob-storage-account-and-container"></a>创建 Azure Blob 存储帐户和容器
 
 创建用于捕获的存储帐户和容器。 
 
-1. 登录 [Azure 门户][Azure portal]。
-2. 在左侧导航栏中选择“存储帐户”，然后在“存储帐户”屏幕上选择“添加”。   
-3. 在存储帐户创建屏幕上选择订阅和资源组，然后为存储帐户指定名称。 对于其他选项，可以保留默认值。 选择“查看 + 创建”，检查设置，然后选择“创建”。   
+1. 登录到 [Azure 门户][Azure portal]。
+2. 在左侧导航栏中选择“存储帐户”，然后在“存储帐户”屏幕上选择“添加”。  
+3. 在存储帐户创建屏幕上选择订阅和资源组，然后为存储帐户指定名称。 对于其他选项，可以保留默认值。 选择“查看 + 创建”，检查设置，然后选择“创建”。  
    
    ![创建存储帐户][1]
    
-4. 部署完成后，选择“转到资源”，然后在存储帐户的“概述”屏幕上选择“容器”。   
-5. 在“容器”屏幕上，选择“+ 容器”。   
-6. 在“新建容器”屏幕上为容器指定名称，然后选择“确定”。   请记下该容器名称，以便稍后在本演练中使用。 
-7. 在“容器”屏幕的左侧导航栏中，选择“访问密钥”。   复制“存储帐户名称”以及“密钥 1”下的“密钥”值，以便稍后在本演练中使用。   
+4. 部署完成后，选择“转到资源”，然后在存储帐户的“概述”屏幕上选择“容器”。  
+5. 在“容器”屏幕上，选择“+ 容器”。  
+6. 在“新建容器”屏幕上为容器指定名称，然后选择“确定”。  请记下该容器名称，以便稍后在本演练中使用。 
+7. 在“容器”屏幕的左侧导航栏中，选择“访问密钥”。  将“存储帐户名称”以及“密钥 1”下的“密钥”值，以便稍后在本演练中使用。  
  
 ## <a name="enable-event-hubs-capture"></a>启用事件中心捕获
 
-1. 在 Azure 门户中导航到你的事件中心：从“所有资源”中选择其事件中心命名空间，在左侧导航栏中选择“事件中心”，然后选择你的事件中心。   
-2. 在事件中心的“概述”屏幕上，选择“捕获事件”。  
-3. 在“捕获”屏幕上，选择“打开”。   然后，在“Azure 存储容器”下，选择“选择容器”。   
-4. 从“容器”屏幕上选择要使用的存储容器，然后选择“选择”。   
-5. 在“捕获”屏幕上，选择“保存更改”。   
+1. 在 Azure 门户中导航到你的事件中心：从“所有资源”中选择其事件中心命名空间，在左侧导航栏中选择“事件中心”，然后选择你的事件中心。  
+2. 在事件中心的“概述”屏幕上，选择“捕获事件”。 
+3. 在“捕获”屏幕上，选择“打开”。  然后，在“Azure 存储容器”下，选择“选择容器”。  
+4. 从“容器”屏幕上选择要使用的存储容器，然后选择“选择”。  
+5. 在“捕获”屏幕上，选择“保存更改”。  
 
 ## <a name="create-a-python-script-to-send-events-to-event-hub"></a>创建用于将事件发送到事件中心的 Python 脚本
 此脚本将向事件中心发送 200 个事件。 事件是以 JSON 格式发送的简单环境读数。
 
 1. 打开常用的 Python 编辑器，如 [Visual Studio Code][Visual Studio Code]。
 2. 创建名为 *sender.py* 的新文件。 
-3. 将以下代码粘贴到 *sender.py* 中。 将事件中心的 \<namespace>、\<AccessKeyName>、\<primary key value> 和 \<eventhub> 替换为自己的值。
+3. 将以下代码粘贴到 *sender.py* 中。 请将事件中心 \<namespace>、\<AccessKeyName>\<primary key value> 和 \<eventhub> 替换为自己的值。
    
    ```python
    import uuid
@@ -108,7 +108,7 @@ ms.locfileid: "77187287"
 此脚本读取捕获的文件，并为每个设备创建一个文件，用于仅写入该设备的数据。
 
 1. 在 Python 编辑器中，创建名为 *capturereader.py* 的新文件。 
-2. 将以下代码粘贴到 *capturereader.py* 中。 将 \<storageaccount>、\<storage account access key> 和 \<storagecontainer> 替换为保存的值。
+2. 将以下代码粘贴到 *capturereader.py* 中。 请将 \<storageaccount>、\<storage account access key> 和 \<storagecontainer> 替换为已保存的值。
    
    ```python
    import os
