@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 07/02/2019
-ms.openlocfilehash: 7413a32fdddb579bad61c9cfe539be6aaeae9881
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 431cd5efbb1087d99fc8521cec7a5c604856dac5
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313741"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021732"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中使用交互式查询提取、转换和加载数据
 
@@ -30,7 +30,7 @@ ms.locfileid: "81313741"
 
 ## <a name="prerequisites"></a>先决条件
 
-* HDInsight 上的一个交互式查询群集。 请参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，并选择“交互式查询”  作为**群集类型**。
+* HDInsight 上的一个交互式查询群集。 请参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，并选择“交互式查询”作为**群集类型**。
 
 * Azure SQL 数据库。 使用 Azure SQL 数据库作为目标数据存储。 如果没有 SQL 数据库，请参阅[在 Azure 门户中创建 Azure SQL 数据库](/azure/sql-database/sql-database-single-database-get-started)。
 
@@ -48,7 +48,7 @@ ms.locfileid: "81313741"
    | 筛选期间 |1 月 |
    | 字段 |`Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay` 列中的一个值匹配。 |
 
-3. 选择“下载”  。 你将得到一个具有所选数据字段的 zip 文件。
+3. 选择“下载”。 你将得到一个具有所选数据字段的 zip 文件。
 
 ## <a name="upload-data-to-an-hdinsight-cluster"></a>将数据上传到 HDInsight 群集
 
@@ -95,9 +95,9 @@ ms.locfileid: "81313741"
 
 可通过多种方式在 HDInsight 群集上运行 Hive 作业。 本部分使用 [Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline%E2%80%93CommandLineShell) 运行 Hive 作业。 有关以其他方式运行 Hive 作业的信息，请参阅[在 HDInsight 上使用 Apache Hive](../hadoop/hdinsight-use-hive.md)。
 
-在 Hive 作业运行期间，请将 .csv 文件中的数据导入到名为“Delays”的 Hive 表中  。
+在 Hive 作业运行期间，请将 .csv 文件中的数据导入到名为“Delays”的 Hive 表中。
 
-1. 在 HDInsight 群集已有的 SSH 提示符中，使用以下命令创建并编辑名为“flightdelays.hql”的新文件  ：
+1. 在 HDInsight 群集已有的 SSH 提示符中，使用以下命令创建并编辑名为“flightdelays.hql”的新文件：
 
     ```bash
     nano flightdelays.hql
@@ -165,7 +165,7 @@ ms.locfileid: "81313741"
     FROM delays_raw;
     ```
 
-3. 若要保存该文件，请按“Ctrl + X”，然后按“y”，然后输入   。
+3. 若要保存该文件，请按“Ctrl + X”，然后按“y”，然后输入 。
 
 4. 若要启动 Hive 并运行 **flightdelays.hql** 文件，请使用以下命令：
 
@@ -173,7 +173,7 @@ ms.locfileid: "81313741"
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -f flightdelays.hql
     ```
 
-5. flightdelays.hql 脚本完成运行后，使用以下命令打开交互式 Beeline 会话  ：
+5. flightdelays.hql 脚本完成运行后，使用以下命令打开交互式 Beeline 会话：
 
     ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
@@ -205,7 +205,7 @@ ms.locfileid: "81313741"
     sudo apt-get --assume-yes install freetds-dev freetds-bin
     ```
 
-2. 安装完成后，使用以下命令连接到 SQL 数据库服务器。
+2. 安装完成后，使用以下命令连接到 SQL 数据库。
 
     ```bash
     TDSVER=8.0 tsql -H $SQLSERVERNAME.database.windows.net -U $SQLUSER -p 1433 -D $DATABASE -P $SQLPASWORD
@@ -232,7 +232,7 @@ ms.locfileid: "81313741"
     GO
     ```
 
-    输入 `GO` 语句后，将评估前面的语句。 此语句会创建一个名为“delays”且具有聚集索引的表  。
+    输入 `GO` 语句后，将评估前面的语句。 此语句会创建一个名为“delays”且具有聚集索引的表。
 
     使用以下查询验证是否已创建该表：
 

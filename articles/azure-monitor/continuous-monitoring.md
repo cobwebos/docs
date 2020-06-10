@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: b9ca8a703ed8a84148abd23e90114402d8806bd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6df27dde997bd34e86b1bb340817648bfe68f2c4
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77667187"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797606"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>使用 Azure Monitor 进行持续监视
 
@@ -50,7 +50,7 @@ ms.locfileid: "77667187"
 ##  <a name="combine-resources-in-azure-resource-groups"></a>在 Azure 资源组中合并资源
 当今 Azure 中的典型应用程序包含多个资源，例如，托管在云服务、AKS 群集中或 Service Fabric 中的 VM 和应用服务或微服务。 这些应用程序经常利用事件中心、存储、SQL 和服务总线等依赖项。
 
-- 合并 Azure 资源组中的资源，以全面了解构成不同应用程序的所有资源。 使用[用于资源组的 Azure Monitor](../azure-monitor/insights/resource-group-insights.md) 可以方便地跟踪整个全堆栈应用程序的运行状况和性能，并可以出于任何调查或调试目的深入到相关组件。
+- 在 Azure 资源组中合并资源可以全面洞察构成不同应用程序的所有资源。 使用[用于资源组的 Azure Monitor](../azure-monitor/insights/resource-group-insights.md) 可以方便地跟踪整个全堆栈应用程序的运行状况和性能，并可以出于任何调查或调试目的深入到相关组件。
 
 ## <a name="ensure-quality-through-continuous-deployment"></a>通过持续部署确保质量
 使用持续集成/持续部署可以根据自动测试的结果，将代码更改自动集成和部署到应用程序。 它简化了部署过程，并确保任何更改在转移到生产环境之前具有可靠的质量。
@@ -58,13 +58,13 @@ ms.locfileid: "77667187"
 
 - 使用 [Azure Pipelines](/azure/devops/pipelines) 可以实现持续部署，并可以根据 CI/CD 测试，自动化将代码提交到生产环境的整个流程。
 - 使用[质量门限](/azure/devops/pipelines/release/approvals/gates)可将监视功能集成到部署前或部署后的流程。 这可以确保应用程序从开发环境转移到生产环境时可以符合关键的运行状况/性能指标 (KPI)，并且基础结构环境或规模的任何差异不会对 KPI 造成负面影响。
-- 在不同的部署环境之间[维护单独的监视实例](../azure-monitor/app/separate-resources.md)，如开发、测试、未部署和生产。这可确保收集的数据与关联的应用程序和基础结构相关。 如果需要跨环境关联数据，可以使用[指标资源管理器中的多资源图表](../azure-monitor/platform/metrics-charts.md)，或者[在 Azure Monitor 中创建跨资源查询](log-query/cross-workspace-query.md)。
+- 在开发、测试、Canary 和生产等不同的部署环境之间[维护独立的监视实例](../azure-monitor/app/separate-resources.md)。这可以确保收集的数据与关联的应用程序和基础结构相关。 如果需要跨环境关联数据，可以使用[指标资源管理器中的多资源图表](../azure-monitor/platform/metrics-charts.md)，或者[在 Azure Monitor 中创建跨资源查询](log-query/cross-workspace-query.md)。
 
 
 ## <a name="create-actionable-alerts-with-actions"></a>使用操作创建可操作警报
 监视的一个重要方面是将任何当前问题和预测到的问题主动通知给管理员。 
 
-- 基于日志和指标[在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-overview.md)可以识别到可预测的故障状态。 在使所有警报可操作方面应有一个目标，即，这些警报表示实际的关键状况，并且应该尽量减少误报。 使用[动态阈值](platform/alerts-dynamic-thresholds.md)来自动计算指标数据的基线，而不是定义自己的静态阈值。 
+- 基于日志和指标[在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-overview.md)可以识别到可预测的故障状态。 在使所有警报可操作方面应有一个目标，即，这些警报表示实际的关键状况，并且应该尽量减少误报。 使用[动态阈值](platform/alerts-dynamic-thresholds.md)可基于指标数据自动计算基线，而无需定义自己的静态阈值。 
 - 为警报定义操作可以使用最有效的方式来通知管理员。 可用的[通知操作](platform/action-groups.md#create-an-action-group-by-using-the-azure-portal)包括短信、电子邮件、推送通知或语音呼叫。
 - 使用更高级的操作可以通过 [Webhook](platform/activity-log-alerts-webhook.md)[连接到 ITSM 工具](platform/itsmc-overview.md)或其他警报管理系统。
 - 还可以使用 [Azure 自动化 Runbook](../automation/automation-webhooks.md) 或[逻辑应用](/connectors/custom-connectors/create-webhook-trigger)（可以通过 Webhook 从警报启动）来修正警报中识别到的问题。 
@@ -74,7 +74,7 @@ ms.locfileid: "77667187"
 确保开发和运营部门有权访问相同的遥测功能和工具可让他们查看整个环境中的模式，并最大程度地减小平均检测时间 (MTTD) 和平均还原时间 (MTTR)。
 
 - 根据组织中不同角色的通用指标和日志准备[自定义仪表板](../azure-monitor/learn/tutorial-app-dashboards.md)。 仪表板可以合并所有 Azure 资源的数据。
-- 准备[工作簿](../azure-monitor/app/usage-workbooks.md)以确保在开发与运营部门之间分享知识。 可将这些工作簿准备为包含指标图表和日志查询的动态报表，甚至可由开发人员准备为故障排除指南，以帮助客户支持或运营人员处理基本问题。
+- 准备[工作簿](../azure-monitor/platform/workbooks-overview.md)以确保在开发与运营部门之间分享知识。 可将这些工作簿准备为包含指标图表和日志查询的动态报表，甚至可由开发人员准备为故障排除指南，以帮助客户支持或运营人员处理基本问题。
 
 ## <a name="continuously-optimize"></a>持续优化
  监视是热门的“构建-度量-学习”理念的基本方面，该理念鼓励持续跟踪 KPI 和用户行为指标，然后努力通过规划迭代对其进行优化。 Azure Monitor 可以帮助收集业务相关的指标和日志，并在下一次部署中按需添加新的数据点。
@@ -86,4 +86,4 @@ ms.locfileid: "77667187"
 ## <a name="next-steps"></a>后续步骤
 
 - 了解 [Azure Monitor](overview.md) 的不同组件。
-- [将持续监视添加](../azure-monitor/app/continuous-monitoring.md)到发布管道。
+- 向发布管道[添加持续监视](../azure-monitor/app/continuous-monitoring.md)。

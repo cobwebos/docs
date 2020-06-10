@@ -5,22 +5,23 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 83108c056035b16d26343d82c721b275ebcad0c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 69e2b25a16a984445a32f884fab5caec6651df32
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80754324"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018372"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>教程：使用 ARM 模板导入 SQL BACPAC 文件
 
 了解如何使用 Azure SQL 数据库扩展，以通过 Azure 资源管理器 (ARM) 模板导入 BACPAC 文件。 部署项目包括主模板文件以及完成部署所需的任何文件。 BACPAC 文件是一个项目。
 
-在本教程中，你将创建一个模板来部署 Azure SQL Server、SQL 数据库并导入 BACPAC 文件。 要了解如何使用 ARM 模板来部署 Azure 虚拟机扩展，请参阅[教程：使用 ARM 模板部署虚拟机扩展](./template-tutorial-deploy-vm-extensions.md)。
+在本教程中，你将创建一个模板来部署[逻辑 SQL Server](../../azure-sql/database/logical-servers.md)、单个数据库并导入 BACPAC 文件。 要了解如何使用 ARM 模板来部署 Azure 虚拟机扩展，请参阅[教程：使用 ARM 模板部署虚拟机扩展](./template-tutorial-deploy-vm-extensions.md)。
 
 本教程涵盖以下任务：
 
 > [!div class="checklist"]
+>
 > * 准备 BACPAC 文件。
 > * 打开快速入门模板。
 > * 编辑模板。
@@ -34,7 +35,7 @@ ms.locfileid: "80754324"
 若要完成本文，需要做好以下准备：
 
 * 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 ARM 模板](./use-vs-code-to-create-template.md)。
-* 要增强安全性，请使用为 Azure SQL Server 管理员帐户生成的密码。 以下是可用于生成密码的示例：
+* 若要增强安全性，请使用为服务器管理员帐户生成的密码。 以下是可用于生成密码的示例：
 
     ```console
     openssl rand -base64 32
@@ -44,7 +45,7 @@ ms.locfileid: "80754324"
 
 ## <a name="prepare-a-bacpac-file"></a>准备 BACPAC 文件
 
-BACPAC 文件在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac) 中共享。 若要创建自己的文件，请参阅[将 Azure SQL 数据库导出到 BACPAC 文件](../../sql-database/sql-database-export.md)。 如果选择将文件发布到你自己的位置，则必须在教程的后面部分更新模板。
+BACPAC 文件在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac) 中共享。 若要创建自己的文件，请参阅[将 Azure SQL 数据库导出到 BACPAC 文件](../../azure-sql/database/database-export.md)。 如果选择将文件发布到你自己的位置，则必须在教程的后面部分更新模板。
 
 必须先将 BACPAC 文件存储在 Azure 存储帐户中，然后才能使用 ARM 模板导入该文件。 下面的 PowerShell 脚本通过以下步骤准备 BACPAC 文件：
 
@@ -54,7 +55,7 @@ BACPAC 文件在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/m
 * 将 BACPAC 文件上传到该容器。
 * 显示存储帐户密钥和 blob URL。
 
-1. 选择“试用”以打开 Cloud Shell  。 然后，将以下 PowerShell 脚本粘贴到 Shell 窗口中。
+1. 选择“试用”以打开 Cloud Shell。 然后，将以下 PowerShell 脚本粘贴到 Shell 窗口中。
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
@@ -100,14 +101,14 @@ BACPAC 文件在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/m
 
 本教程中使用的模板存储在 [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json) 中。
 
-1. 在 Visual Studio Code 中，选择“文件” > “打开文件”。  
-1. 在“文件名”中粘贴以下 URL： 
+1. 在 Visual Studio Code 中，选择“文件” > “打开文件”。 
+1. 在“文件名”中粘贴以下 URL：
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json
     ```
 
-1. 选择“打开”以打开该文件。 
+1. 选择“打开”以打开该文件。
 
     模板中定义了两个资源：
 
@@ -115,11 +116,11 @@ BACPAC 文件在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/m
    * `Microsoft.SQL.servers/databases` 列中的一个值匹配。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases)。
 
         在自定义模板之前，不妨对其进行一些基本的了解。
-1. 选择“文件” > “另存为”，将该文件的副本保存到名为 *azuredeploy.json* 的本地计算机。  
+1. 选择“文件” > “另存为”，将该文件的副本保存到名为 *azuredeploy.json* 的本地计算机。 
 
 ## <a name="edit-the-template"></a>编辑模板
 
-1. 在“参数”部分的末尾再添加两个参数，以设置存储帐户密钥和 BACPAC URL  。
+1. 在“参数”部分的末尾再添加两个参数，以设置存储帐户密钥和 BACPAC URL。
 
     ```json
         "storageAccountKey": {
@@ -136,13 +137,13 @@ BACPAC 文件在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/m
         }
     ```
 
-    在“adminPassword”后面添加一个逗号  。 要从 Visual Studio Code 设置 JSON 文件的格式，请选择 Shift+Alt+F。
+    在“adminPassword”后面添加一个逗号。 要从 Visual Studio Code 设置 JSON 文件的格式，请选择 Shift+Alt+F。
 
     要获取这两个值，请参阅[准备 BACPAC 文件](#prepare-a-bacpac-file)。
 
 1. 向模板添加两个其他资源。
 
-    * 要允许 SQL 数据库扩展导入 BACPAC 文件，需允许来自 Azure 服务的流量通过。 在 SQL Server 定义下添加以下防火墙规则定义：
+    * 要允许 SQL 数据库扩展导入 BACPAC 文件，需允许来自 Azure 服务的流量通过。 在服务器定义下添加以下防火墙规则定义：
 
         ```json
         "resources": [
@@ -238,9 +239,9 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="verify-the-deployment"></a>验证部署
 
-若要从客户端计算机访问 SQL Server，需要添加其他防火墙规则。 有关详细信息，请参阅[创建和管理 IP 防火墙规则](../../sql-database/sql-database-firewall-configure.md#create-and-manage-ip-firewall-rules)。
+若要从客户端计算机访问服务器，需要添加其他防火墙规则。 有关详细信息，请参阅[创建和管理 IP 防火墙规则](../../azure-sql/database/firewall-configure.md#create-and-manage-ip-firewall-rules)。
 
-在 Azure 门户中，从新部署的资源组中选择 SQL 数据库。 选择“查询编辑器(预览)”，然后输入管理员凭据。  此时会看到两个表导入到数据库中。
+在 Azure 门户中，从新部署的资源组中选择 SQL 数据库。 选择“查询编辑器(预览)”，然后输入管理员凭据。 此时会看到两个表导入到数据库中。
 
 ![查询编辑器（预览）](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-query-editor.png)
 
@@ -248,14 +249,14 @@ Write-Host "Press [ENTER] to continue ..."
 
 不再需要 Azure 资源时，请通过删除资源组来清理部署的资源。
 
-1. 在 Azure 门户上的左侧菜单中，选择“资源组”  。
-1. 在“按名称筛选”字段中输入资源组名称。 
+1. 在 Azure 门户上的左侧菜单中，选择“资源组”。
+1. 在“按名称筛选”字段中输入资源组名称。
 1. 选择资源组名称。 应该会看到，该资源组中总共有六个资源。
-1. 在顶部菜单中选择“删除资源组”。 
+1. 在顶部菜单中选择“删除资源组”。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你部署了 SQL Server、SQL 数据库并导入了 BACPAC 文件。 若要了解如何排查模板部署问题，请参阅：
+在本教程中，你部署了服务器和数据库，并导入了 BACPAC 文件。 若要了解如何排查模板部署问题，请参阅：
 
 > [!div class="nextstepaction"]
 > [排查 ARM 模板部署问题](./template-tutorial-troubleshoot.md)

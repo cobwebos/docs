@@ -7,12 +7,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.openlocfilehash: 5fce5c8de3b2224ef471b0b3eec5ff29a869a9f6
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 10bd2e4722751b290263fc0599890ca92cd743c9
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844516"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995643"
 ---
 # <a name="understand-cost-management-data"></a>了解成本管理数据
 
@@ -24,7 +24,7 @@ ms.locfileid: "83844516"
 
 ## <a name="supported-microsoft-azure-offers"></a>支持的 Microsoft Azure 套餐
 
-以下信息说明了 Azure 成本管理中目前支持的 [Microsoft Azure 套餐](https://azure.microsoft.com/support/legal/offer-details/)。 Azure 套餐是客户拥有的 Azure 订阅类型。 从“数据可用”日期开始，成本管理中会提供数据。  如果订阅更改了套餐，则套餐更改日期之前的成本不可用。
+以下信息说明了 Azure 成本管理中目前支持的 [Microsoft Azure 套餐](https://azure.microsoft.com/support/legal/offer-details/)。 Azure 套餐是客户拥有的 Azure 订阅类型。 从“数据可用”日期开始，成本管理中会提供数据。 如果订阅更改了套餐，则套餐更改日期之前的成本不可用。
 
 | **类别**  | **产品/服务名称** | **配额 ID** | **套餐编号** | **数据可用** |
 | --- | --- | --- | --- | --- |
@@ -47,13 +47,13 @@ ms.locfileid: "83844516"
 | **Visual Studio** | [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p)<sup>4</sup>           | MSDN_2014-09-01 | MS-AZR-0063P | 2018 年 10 月 2 日<sup>2</sup> |
 | **Visual Studio** | [Visual Studio Enterprise：BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p)<sup>4</sup> | MSDN_2014-09-01 | MS-AZR-0064P | 2018 年 10 月 2 日<sup>2</sup> |
 
-<sup>**1**</sup> 对于 2014 年 5 月之前的数据，请访问 [Azure 企业门户](https://ea.azure.com)。 
+<sup>**1**</sup> 对于 2014 年 5 月之前的数据，请访问 [Azure 企业门户](https://ea.azure.com)。
 
-<sup>**2**</sup> 对于 2018 年 10 月 2 日之前的数据，请访问 [Azure 帐户中心](https://account.azure.com/subscriptions)。 
+<sup>**2**</sup> 对于 2018 年 10 月 2 日之前的数据，请访问 [Azure 帐户中心](https://account.azure.com/subscriptions)。
 
-<sup>**3**</sup> Microsoft 客户协议从 2019 年 3 月开始，在此时间点之前没有任何历史数据。 
+<sup>**3**</sup> Microsoft 客户协议从 2019 年 3 月开始，在此时间点之前没有任何历史数据。
 
-<sup>**4**</sup> 基于额度的订阅和提前支付订阅的历史数据可能与发票不匹配。  请参阅下面的[历史数据可能与发票不匹配](#historical-data-might-not-match-invoice)。
+<sup>**4**</sup> 基于额度的订阅和提前支付订阅的历史数据可能与发票不匹配。请参阅下面的[历史数据可能与发票不匹配](#historical-data-might-not-match-invoice)。
 
 目前尚不支持以下套餐：
 
@@ -75,8 +75,13 @@ ms.locfileid: "83844516"
 | **支持计划** | Azure 政府版专业直接支持 | Default_2014-09-01 | MS-AZR-USGOV-0042P |
 | **支持计划** | Azure 政府版开发人员支持  | Default_2014-09-01 | MS-AZR-USGOV-0043P |
 
-## <a name="determine-your-offer-type"></a>确定套餐类型
-如果未看到订阅数据并想要确定你的订阅是否属于受支持的套餐，可以验证你的订阅是否受支持。 若要验证 Azure 订阅是否受支持，请登录到 [Azure 门户](https://portal.azure.com)。 在左窗格中选择“所有服务”  。 在服务列表中选择“订阅”。  在订阅列表菜单中，选择要验证的订阅。 该订阅将显示在“概述”选项卡上，在其中可以看到“套餐”和“套餐 ID”。   下图显示了一个示例。
+### <a name="free-trial-to-pay-as-you-go-upgrade"></a>从免费试用到即用即付的升级
+
+若要了解从免费试用版升级到即用即付定价后免费层服务的可用性，请参阅 [Azure 免费帐户常见问题解答](https://azure.microsoft.com/free/free-account-faq/)。
+
+### <a name="determine-your-offer-type"></a>确定套餐类型
+
+如果未看到订阅数据并想要确定你的订阅是否属于受支持的套餐，可以验证你的订阅是否受支持。 若要验证 Azure 订阅是否受支持，请登录到 [Azure 门户](https://portal.azure.com)。 在左窗格中选择“所有服务”。 在服务列表中选择“订阅”。 在订阅列表菜单中，选择要验证的订阅。 该订阅将显示在“概述”选项卡上，在其中可以看到“套餐”和“套餐 ID”。  下图显示了一个示例。
 
 ![“订阅概述”选项卡的示例，其中显示了“套餐”和“套餐 ID”](./media/understand-cost-mgt-data/offer-and-offer-id.png)
 
@@ -92,11 +97,11 @@ ms.locfileid: "83844516"
 | 预留项购买<sup>7</sup>      |  |
 | 摊销预留项购买<sup>7</sup>      |  |
 
-<sup>5</sup> Azure 服务用量基于预留价格和议价。 __
+<sup>**5**</sup> Azure 服务用量基于预留价格和议价。
 
-<sup>6</sup> 市场购买目前不适用于 MSDN 和 Visual Studio 套餐。 __
+<sup>6</sup> 市场购买目前不适用于 MSDN 和 Visual Studio 套餐。__
 
-<sup>7</sup> 预留项购买目前仅适用于企业协议 (EA) 和 Microsoft 客户协议帐户。 __
+<sup>7</sup> 预留项购买目前仅适用于企业协议 (EA) 和 Microsoft 客户协议帐户。__
 
 ## <a name="how-tags-are-used-in-cost-and-usage-data"></a>如何在成本和使用情况数据中使用标记
 
@@ -106,7 +111,7 @@ Azure 成本管理接收标记，作为各个服务提交的每个使用记录�
 - 只有部署到资源组的资源才支持资源标记。
 - 某些部署的资源可能不支持标记，或者可能在使用情况数据中不包含标记 - 请参阅 [Azure 资源的标记支持](../../azure-resource-manager/tag-support.md)。
 - 应用标记时，资源标记只包含在使用情况数据中 - 标记不应用于历史数据。
-- 资源标记只有在数据刷新后才可用于成本管理 - 请参阅[使用情况数据更新频率可变](#usage-data-update-frequency-varies)。
+- 资源标记只有在数据刷新后才可用于成本管理 - 请参阅[成本和使用情况数据更新和保留](#cost-and-usage-data-updates-and-retention)。
 - 仅当资源处于活动/运行状态并生成使用情况记录时（例如，在 VM 不处于解除分配的情况下），资源标记才可用于成本管理。
 - 若要管理标记，必须有每个资源的参与者访问权限。
 - 若要管理标记策略，必须有管理组、订阅或资源组的所有者或策略参与者访问权限。
@@ -114,7 +119,7 @@ Azure 成本管理接收标记，作为各个服务提交的每个使用记录�
 如果在成本管理中看不到特定标记，请考虑以下事项：
 
 - 是否已将标记直接应用到资源？
-- 标记的应用是否已超出 24 小时？ 请参阅[使用情况数据更新频率可变](#usage-data-update-frequency-varies)
+- 标记的应用是否已超出 24 小时？ 请参阅[成本和使用情况数据更新和保留](#cost-and-usage-data-updates-and-retention)
 - 资源类型是否支持标记？ 以下资源类型在 2019 年 12 月 1 日之前的使用情况数据中不支持标记。 如需所支持功能的完整列表，请参阅 [Azure 资源的标记支持](../../azure-resource-manager/tag-support.md)。
     - Azure Active Directory B2C 目录
     - Azure 防火墙
@@ -134,24 +139,22 @@ Azure 成本管理接收标记，作为各个服务提交的每个使用记录�
 - 将标记 API 与 Query 或 UsageDetails 结合使用，根据当前标记获取所有成本。
 
 
-## <a name="free-trial-to-pay-as-you-go-upgrade"></a>从免费试用到即用即付的升级
+## <a name="cost-and-usage-data-updates-and-retention"></a>成本和使用情况数据更新和保留
 
-若要了解从免费试用版升级到即用即付定价后免费层服务的可用性，请参阅 [Azure 免费帐户常见问题解答](https://azure.microsoft.com/free/free-account-faq/)。
+成本和使用情况数据通常在 Azure 门户上的“成本管理 + 账单”以及[支持 API](../index.yml) 中提供，8-24 小时内可用。 查看成本时，请记住以下几点：
 
-## <a name="rated-usage-data-refresh-schedule"></a>用量计费数据刷新计划
-
-成本和用量数据在 Azure 门户上的“成本管理 + 计费”以及[支持 API](../index.yml) 中提供。 查看成本时，请记住以下几点：
-
+- 每个 Azure 服务（如存储、计算和 SQL）都以不同的时间间隔发出使用情况数据 – 看到某些服务数据的时间可能会早于其他服务。
 - 当前计费周期的估算费用每天更新六次。
 - 由于用量会增大，当前计费周期的估算费用可能会更改。
 - 每次更新都是累积性的，包括前次更新的所有细目和信息。
 - Azure 在当前计费周期结束后的最多 72 小时（三个日历日）内终结或_关闭_该计费周期。
 
-以下示例演示计费周期的结束方式。
+以下示例演示计费周期的结束方式：
 
-企业协议 (EA) 订阅 – 如果计费月在 3 月 31 日结束，则在该日期后的最多 72 小时内更新估算费用。 在此示例中，更新截止时间为 4 月 4 日午夜 (UTC)。
+* 企业协议 (EA) 订阅 – 如果计费月在 3 月 31 日结束，则在该日期后的最多 72 小时内更新估算费用。 在此示例中，更新截止时间为 4 月 4 日午夜 (UTC)。
+* 即用即付订阅 – 如果计费月在 5 月 15 日结束，则在该日期后的最多 72 小时内更新估算费用。 在此示例中，更新截止时间为 5 月 19 日午夜 (UTC)。
 
-即用即付订阅 – 如果计费月在 5 月 15 日结束，则在该日期后的最多 72 小时内更新估算费用。 在此示例中，更新截止时间为 5 月 19 日午夜 (UTC)。
+当“成本管理 + 账单”中可查看成本和使用情况数据后，这些数据至少会保留 7 年。
 
 ### <a name="rerated-data"></a>重新计费数据
 
@@ -166,16 +169,6 @@ Azure 成本管理接收标记，作为各个服务提交的每个使用记录�
   - 费用 2：$0.004
   -    得到的聚合费用：0.004 + 0.004 = 0.008。 显示的费用为 $0.01。
 - 查询 API - 按 8 个小数位数显示费用，不舍入。
-
-
-## <a name="usage-data-update-frequency-varies"></a>用量数据的更新频率存在变化
-
-成本管理中是否显示产生的用量数据取决于多种因素，包括：
-
-- Azure 服务（例如存储、计算、CDN 和 SQL）发出用量数据的频率。
-- 通过计费引擎和成本管理管道处理用量数据所花费的时间。
-
-有些服务比其他服务更频繁地发出用量数据。 因此在成本管理中，某些服务的数据比发送频率更低的其他服务的数据更快出现。 一般情况下，服务用量数据需要在 8-24 小时后才会出现在成本管理中。 请注意，随着用量的增大，未结月份的数据将会更新，因为更新是累积性的。
 
 ## <a name="historical-data-might-not-match-invoice"></a>历史数据可能与发票不匹配
 

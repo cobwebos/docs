@@ -4,12 +4,12 @@ description: 本文提供指向使用 Azure 备份以备份和还原数据的 Po
 ms.topic: sample
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: ebe89a22639e94d8c2ef0e8e5354176f6d04ad8d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3709ad6bcb70d4054b13458188a0638c58d59f3c
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101512"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118211"
 ---
 # <a name="azure-backup-powershell-samples"></a>Azure 备份 PowerShell 示例
 
@@ -19,3 +19,5 @@ ms.locfileid: "82101512"
 |---|---|
 | [将加密的虚拟机备份到 Azure](./scripts/backup-powershell-sample-backup-encrypted-vm.md) | 备份已加密虚拟机上的所有数据。|
 | [查找注册的存储帐户](./scripts/backup-powershell-script-find-recovery-services-vault.md) | 查找在其中注册了存储帐户的恢复服务保管库 |
+| [禁用存储帐户中文件共享的软删除功能](./scripts/disable-soft-delete-for-file-shares.md) | 禁用存储帐户中文件共享的软删除功能|
+| [撤消删除意外删除的文件共享](./scripts/backup-powershell-script-undelete-file-share.md) | 撤消删除意外删除的文件共享 |

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6bdc2eca3bdf02814ee851ff266e04bb57f7978c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 32087b1b2340508f7f868455e2db476046eaa4b5
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658821"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235267"
 ---
 # <a name="connect-to-azure-synapse-link-preview-for-azure-cosmos-db"></a>连接到 Azure Synapse Link for Azure Cosmos DB（预览版）
 
@@ -23,6 +23,9 @@ ms.locfileid: "83658821"
 ## <a name="prerequisites"></a>先决条件
 
 将 Azure Cosmos DB 数据库连接到工作区之前，需要以下各项：
+
+> [!IMPORTANT]
+> 未启用托管虚拟网络的工作区当前支持 Azure Synapse Link for Azure Cosmos DB。 
 
 * 现有的 Azure Cosmos DB 数据库或按照此[快速入门](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-database-account)创建一个新帐户
 * 现有的 Synapse 工作区或按照此[快速入门](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)创建一个新工作区 

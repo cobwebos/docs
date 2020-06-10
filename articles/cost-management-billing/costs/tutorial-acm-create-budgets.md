@@ -3,17 +3,17 @@ title: 教程 - 创建和管理 Azure 预算
 description: 本教程介绍如何对所使用的 Azure 服务进行成本计划和核算。
 author: bandersmsft
 ms.author: banders
-ms.date: 04/22/2020
+ms.date: 05/27/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: e8afa19b6d79ce915ca41f7b0e6b4a203d7daa1b
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: ef165f63ff1f9e45bb3586192146d822e334dc54
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82101750"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142429"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教程：创建和管理 Azure 预算
 
@@ -81,7 +81,7 @@ ms.locfileid: "82101750"
 
 可以按月、按季或按年创建 Azure 订阅预算。
 
-若要创建或查看预算，请在 Azure 门户中打开所需的范围，然后在菜单中选择“预算”  。 例如，导航到“订阅”，从列表中选择订阅，然后在菜单中选择“预算”   。 在“预算”中，请使用“范围”  框切换到另一范围，如某个管理组。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
+若要创建或查看预算，请在 Azure 门户中打开所需的范围，然后在菜单中选择“预算”。 例如，导航到“订阅”，从列表中选择订阅，然后在菜单中选择“预算” 。 在“预算”中，请使用“范围”框切换到另一范围，如某个管理组。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
 
 创建预算后，会显示一个简单的视图，其中说明了当前支出与预算的对比情况。
 
@@ -89,11 +89,11 @@ ms.locfileid: "82101750"
 
 ![示例，显示已创建的预算的列表](./media/tutorial-acm-create-budgets/budgets01.png)
 
-在“创建预算”窗口中，确保显示的范围正确。  选择想要添加的任何筛选器。 使用筛选器可以创建特定成本的预算，例如订阅中的资源组或虚拟机之类的服务。 可以在成本分析中使用的任何筛选器也可以应用于预算。
+在“创建预算”窗口中，确保显示的范围正确。 选择想要添加的任何筛选器。 使用筛选器可以创建特定成本的预算，例如订阅中的资源组或虚拟机之类的服务。 可以在成本分析中使用的任何筛选器也可以应用于预算。
 
 确定范围和筛选器后，请键入预算名称。 然后，选择月、季或年作为预算重置期限。 此重置期限决定了按预算分析的时间范围。 在每个新期限开始时，按预算估算的成本从零开始。 创建季度预算时，其操作方式与每月预算相同。 不同之处在于，季度预算的预算金额是在该季度的三个月中平均分配的。 年度预算金额在日历年的所有 12 个月中平均分配。
 
-如果有即用即付、MSDN 或 Visual Studio 订阅，则发票计费周期可能与日历月不一致。 对于这些订阅类型和资源组，可以创建与发票周期或日历月一致的预算。 若要创建与发票周期相符的预算，请选择“计费月”  、“计费季”  或“计费年”  作为重置期限。 若要创建与日历月相符的预算，请选择“每月”  、“每季”  或“每年”  作为重置期限。
+如果有即用即付、MSDN 或 Visual Studio 订阅，则发票计费周期可能与日历月不一致。 对于这些订阅类型和资源组，可以创建与发票周期或日历月一致的预算。 若要创建与发票周期相符的预算，请选择“计费月”、“计费季”或“计费年”作为重置期限。 若要创建与日历月相符的预算，请选择“每月”、“每季”或“每年”作为重置期限。
 
 接下来，确定预算失效并停止成本估算的到期日期。
 
@@ -101,7 +101,7 @@ ms.locfileid: "82101750"
 
 ![示例，显示通过每月成本数据进行的预算创建操作 ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-配置预算金额后，选择“下一步”  来配置预算警报。 预算需要至少一个成本阈值（预算百分比）和相应的电子邮件地址。 可以选择在单个预算中包括多达五个阈值和五个电子邮件地址。 满足预算阈值时，通常会在 20 小时内收到电子邮件通知。
+配置预算金额后，选择“下一步”来配置预算警报。 预算需要至少一个成本阈值（预算百分比）和相应的电子邮件地址。 可以选择在单个预算中包括多达五个阈值和五个电子邮件地址。 满足预算阈值时，通常会在 20 小时内收到电子邮件通知。
 
 如果要接收电子邮件，请将 azure-noreply@microsoft.com 添加到已批准的发件人列表，使电子邮件不会被发送到垃圾电子邮件文件夹。 有关通知的详细信息，请参阅[使用成本警报](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md)。
 
@@ -113,7 +113,16 @@ ms.locfileid: "82101750"
 
 ![成本分析中显示的预算和支出示例](./media/tutorial-acm-create-budgets/cost-analysis.png)
 
-在上面的示例中，你为订阅创建了一个预算。 还可以为资源组创建预算。 如需为资源组创建预算，请导航到“成本管理 + 计费”  &gt;“订阅”  ，选择一个订阅，然后选择“资源组”，接着选择一个资源组，单击“预算”，然后单击“添加”以添加预算。   
+在上面的示例中，你为订阅创建了一个预算。 还可以为资源组创建预算。 如需为资源组创建预算，请导航到“成本管理 + 计费”&gt;“订阅”，选择一个订阅，然后选择“资源组”，接着选择一个资源组，单击“预算”，然后单击“添加”以添加预算。  
+
+### <a name="create-a-budget-for-combined-azure-and-aws-costs"></a>为合并的 Azure 和 AWS 成本创建预算
+
+可以通过将管理组分配给连接器及其合并和链接帐户，将 Azure 和 AWS 成本组合在一起。 将 Azure 订阅分配到相同的管理组。 然后为合并成本创建预算。
+
+1. 在“成本管理”中选择“预算”。
+1. 选择 **添加** 。
+1. 选择“更改范围”，然后选择相应管理组。
+1. 继续创建预算，直到完成。
 
 ## <a name="costs-in-budget-evaluations"></a>预算估算中的成本
 
@@ -126,16 +135,15 @@ ms.locfileid: "82101750"
 
 预算成本估算基于实际成本。 它们不包括摊销。 有关预算中可用的筛选选项的详细信息，请参阅[了解分组和筛选选项](quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options)。
 
-
 ## <a name="trigger-an-action-group"></a>触发操作组
 
 在为订阅或资源组范围创建或编辑预算时，可以将其配置为调用操作组。 达到预算阈值时，操作组可以执行各种不同的操作。 目前只支持将操作组用于订阅和资源组范围。 有关操作组的详细信息，请参阅[在 Azure 门户中创建和管理操作组](../../azure-monitor/platform/action-groups.md)。 若要详细了解如何将基于预算的自动化与操作组配合使用，请参阅[使用 Azure 预算管理成本](../manage/cost-management-budget-scenario.md)。
 
-若要创建或更新操作组，请在创建或编辑预算时选择“管理操作组”  。
+若要创建或更新操作组，请在创建或编辑预算时选择“管理操作组”。
 
 ![示例，介绍如何创建预算以显示“管理操作组”](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
 
-接下来，选择“添加操作组”  并创建操作组。
+接下来，选择“添加操作组”并创建操作组。
 
 ![“添加操作组”框的图像](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
 

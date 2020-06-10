@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: Kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: e393b653ecb9e9d7b8eff277b91215ccc5bf6342
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 282222aad68df94ea9eff4151d31eb5e488bca81
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83770816"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116983"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建并查询 Synapse SQL 池
 
@@ -37,7 +37,7 @@ ms.locfileid: "83770816"
 
 ## <a name="create-a-sql-pool"></a>创建 SQL 池
 
-数据仓库是使用 Azure Synapse Analytics 中的 SQL 池创建的。 SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创建的。 数据库在 [Azure 资源组](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)和 [Azure SQL 逻辑服务器](../../sql-database/sql-database-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)中创建。
+数据仓库是使用 Azure Synapse Analytics 中的 SQL 池创建的。 SQL 池是使用定义的一组[计算资源](memory-concurrency-limits.md)创建的。 数据库在 [Azure 资源组](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)和[逻辑 SQL 服务器](../../azure-sql/database/logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)中创建。
 
 按照这些步骤创建包含 **AdventureWorksDW** 示例数据的 SQL 池。
 
@@ -64,7 +64,7 @@ ms.locfileid: "83770816"
 
    ![更改数据仓库性能级别](./media/create-data-warehouse-portal/create-sql-pool-performance-level.png)  
 
-   有关性能级别的详细信息，请参阅[管理 Azure SQL 数据仓库中的计算资源](sql-data-warehouse-manage-compute-overview.md)。
+   有关性能级别的详细信息，请参阅[管理 Azure Synapse Analytics 中的计算资源](sql-data-warehouse-manage-compute-overview.md)。
 
 5. 选择“其他设置”，在“使用现有数据”下，选择“示例”，以便将 AdventureWorksDW 创建为示例数据库  。
 
@@ -76,16 +76,16 @@ ms.locfileid: "83770816"
 
    ![选择“创建”](./media/create-data-warehouse-portal/create-sql-pool-create.png)
 
-6. 在工具栏上，选择“通知”监视部署过程。
+7. 在工具栏上，选择“通知”监视部署过程。
 
    ![通知](./media/create-data-warehouse-portal/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>创建服务器级防火墙规则
 
-Azure Synapse 服务将在服务器级别创建防火墙。 此防火墙会阻止外部应用程序和工具连接到服务器或服务器上的任何数据库。 要启用连接，可以添加防火墙规则，为特定 IP 地址启用连接。 按照以下步骤为客户端的 IP 地址创建[服务器级防火墙规则](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+Azure Synapse 服务将在服务器级别创建防火墙。 此防火墙会阻止外部应用程序和工具连接到服务器或服务器上的任何数据库。 要启用连接，可以添加防火墙规则，为特定 IP 地址启用连接。 按照以下步骤为客户端的 IP 地址创建[服务器级防火墙规则](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 > [!NOTE]
-> Azure Synapse 通过端口 1433 进行通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 如果是这样，则无法连接到 Azure SQL 数据库服务器，除非 IT 部门打开了端口 1433。
+> Azure Synapse 通过端口 1433 进行通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 如果是这样，则无法连接到服务器，除非 IT 部门打开了端口 1433。
 
 1. 部署完成后，从左侧菜单中选择“所有服务”。 选择“数据库”，然后选择“Azure Synapse Analytics”旁边的星形图标将 Azure Synapse Analytics 添加到收藏夹。 
 
@@ -99,24 +99,24 @@ Azure Synapse 服务将在服务器级别创建防火墙。 此防火墙会阻�
 
    ![服务器设置](./media/create-data-warehouse-portal/server-settings.png)
 
-5. 此时会打开 SQL 数据库服务器的“防火墙设置”页。
+5. 此时会打开服务器的“防火墙设置”页面。
 
    ![服务器防火墙规则](./media/create-data-warehouse-portal/server-firewall-rule.png)
 
 6. 若要将当前的 IP 地址添加到新的防火墙规则，请在工具栏上选择“添加客户端 IP”。 防火墙规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。
 
-7. 选择“保存”。 此时会针对当前的 IP 地址创建服务器级防火墙规则，在逻辑服务器上打开 端口 1433。
+7. 选择“保存”。 此时会针对当前的 IP 地址创建服务器级防火墙规则，在服务器上打开端口 1433。
 
 8. 选择“确定”，然后关闭“防火墙设置”页。 
 
-现在，可使用此 IP 地址连接到 SQL Server 及其 SQL 池。 可从 SQL Server Management Studio 或另一种所选工具进行连接。 连接时，请使用之前创建的 ServerAdmin 帐户。
+现在，可使用此 IP 地址连接到服务器及其 SQL 池。 可从 SQL Server Management Studio 或另一种所选工具进行连接。 连接时，请使用之前创建的 ServerAdmin 帐户。
 
 > [!IMPORTANT]
 > 默认情况下，所有 Azure 服务都允许通过 SQL 数据库防火墙进行访问。 在此页上选择“关闭”，然后选择“保存”，对所有 Azure 服务禁用防火墙。 
 
 ## <a name="get-the-fully-qualified-server-name"></a>获取完全限定的服务器名称
 
-请在 Azure 门户中获取 SQL Server 的完全限定的服务器名称。 稍后，在连接到服务器时，将使用该完全限定的名称。
+请在 Azure 门户中获取服务器的完全限定的服务器名称。 稍后，在连接到服务器时，将使用该完全限定的名称。
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
 
@@ -128,7 +128,7 @@ Azure Synapse 服务将在服务器级别创建防火墙。 此防火墙会阻�
 
 ## <a name="connect-to-the-server-as-server-admin"></a>以服务器管理员的身份连接到服务器
 
-本部分使用 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) 来建立与 Azure SQL Server 的连接。
+本部分使用 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) 来建立与服务器的连接。
 
 1. 打开 SQL Server Management Studio。
 
@@ -196,7 +196,7 @@ SQL 数据仓库使用 T-SQL 作为查询语言。 打开一个查询窗口并�
 
 3. 若要删除 SQL 池以免产生计算或存储费用，请选择“删除”。
 
-4. 若要删除创建的 SQL 服务器，请选择上图所示的“sqlpoolservername.database.windows.net”，然后选择“删除”。  请谨慎执行此删除操作，因为删除服务器的同时也会删除分配给该服务器的所有数据库。
+4. 若要删除创建的服务器，请选择上图所示的“sqlpoolservername.database.windows.net”，然后选择“删除” 。 请谨慎执行此删除操作，因为删除服务器的同时也会删除分配给该服务器的所有数据库。
 
 5. 若要删除资源组，请选择“myResourceGroup”，然后选择“删除资源组”。
 

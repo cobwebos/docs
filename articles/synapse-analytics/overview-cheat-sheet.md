@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: c49e5f421f88b4d2676204ff0a32a0aa2b808be1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 660e77e130d5546d29730680c5863e25c052e5d2
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652654"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234848"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Azure Synapse Analytics 速查表
 
@@ -27,14 +27,14 @@ Azure Synapse Analytics 速查表引导你了解该服务的基本概念和重�
 > [!div class="mx-imgBorder"]
 >![Synapse 体系结构](media/overview-cheat-sheet/azure-synapse-architecture-cheat-sheet.png)
 
-## <a name="concepts"></a>概念
-| 名词和动词                         | 作用       |
+## <a name="terminology"></a>术语
+| 术语                         | 定义      |
 |:---                                 |:---                 |
 | Synapse 工作区（预览版） | 用于在 Azure 中执行基于云的企业分析的安全协作边界。 工作区部署在特定的区域中，并有关联的 ADLS Gen2 帐户和文件系统（用于存储临时数据）。 工作区位于资源组下。 |
 | Synapse SQL   | 使用池或按需版本功能运行分析。  |
 | SQL 池   | 具有相应数据库的 0:N SQL 预配资源可以部署在工作区中。 每个 SQL 池具有一个关联的数据库。 可以手动或自动缩放、暂停和恢复 SQL 池。 SQL 池可以从 100 DWU 纵向扩展到 30000 DWU。       |
 | SQL 按需版本（预览版）   | 为大规模数据构建的分布式数据处理系统，可用于对 Data Lake 中的数据运行 T-SQL 查询。 它是一个无服务器服务，因此你无需管理基础结构。       |
-|Apache Spark | Spark 池中使用的 Spark 运行时。 当前支持的版本为使用 Python 3.6.1 的 Spark 2.4、Scala 2.11.12、支持 .NET 的 Apache Spark 0.5，以及 Delta Lake 0.3。  | 
+|Apache Spark for Synapse | Spark 池中使用的 Spark 运行时。 当前支持的版本为使用 Python 3.6.1 的 Spark 2.4、Scala 2.11.12、支持 .NET 的 Apache Spark 0.5，以及 Delta Lake 0.3。  | 
 | Apache Spark 池（预览版）  | 具有相应数据库的 0:N Spark 预配资源可以部署在工作区中。 可以自动暂停、恢复和缩放 Spark 池。  |
 | Spark 应用程序  |   由驱动程序进程和一组执行程序进程构成。 Spark 应用程序在 Spark 池中运行。            |
 | Spark 会话  |   Spark 应用程序的统一入口点。 它提供与 Spark 的各项功能进行交互的方式，使用的构造更少。 若要运行笔记本，需要创建会话。 可将会话配置为在特定大小的、特定数目的执行程序中运行。 笔记本会话的默认配置是在 2 个中等大小的执行程序中运行。 |

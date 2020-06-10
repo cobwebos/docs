@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 23531bd4c53dc2fc4851a1e4718fca0e9c3bfc1c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 280a59d8c378de6b3667560a4eb2b1cf95041f8d
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187417"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298782"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>教程：使用 Azure Active Directory B2C 授予对 ASP.NET Web API 的访问权限
 
@@ -40,31 +40,31 @@ ms.locfileid: "78187417"
 
 Web API 资源需要先在租户中注册，然后才能接受并响应通过提供访问令牌的客户端应用程序所提出的受保护资源请求。
 
-若要在 Azure AD B2C 租户中注册应用程序，可以使用当前的“应用程序”体验，  或者使用我们新推出的统一“应用注册(预览版)”体验。  [详细了解此新体验](https://aka.ms/b2cappregintro)。
+要在 Azure AD B2C 租户中注册应用程序，可以使用新的统一“应用注册”体验或旧版“应用程序(旧版)”体验 。 [详细了解此新体验](https://aka.ms/b2cappregtraining)。
 
-#### <a name="applications"></a>[应用程序](#tab/applications/)
+#### <a name="app-registrations"></a>[应用注册](#tab/app-reg-ga/)
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录  。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”   。
-4. 选择“应用程序”，然后选择“添加”   。
-5. 输入应用程序的名称。 例如，“webapi1”  。
-6. 对于“包括 Web 应用/Web API”，请选择“是”。  
-7. 对于“回复 URL”，请输入 Azure AD B2C 要将应用程序请求的任何令牌返回到的终结点  。 本教程中的示例在本地运行并在 `https://localhost:44332` 上进行侦听。
-8. 对于“应用 ID URI”，请输入 Web API 使用的标识符。  包括域在内的完整标识符 URI 是为你生成的。 例如，`https://contosotenant.onmicrosoft.com/api` 。
-9. 单击“创建”。 
+1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
+1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
+1. 选择“应用注册”，然后选择“新建注册” 。
+1. 输入应用程序的“名称”。 例如，“webapi1”。
+1. 在“重定向 URI”下选择“Web”，然后输入 Azure AD B2C 会将应用程序请求的任何令牌返回到其中的终结点。 本教程中的示例在本地运行并在 `https://localhost:44332` 上进行侦听。
+1. 选择“注册”。
+1. 记录“应用程序(客户端) ID”，以便在后续步骤中使用。
+
+#### <a name="applications-legacy"></a>[应用程序（旧版）](#tab/applications-legacy/)
+
+1. 登录 [Azure 门户](https://portal.azure.com)。
+2. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
+3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
+4. 选择“应用程序(旧版)”，然后选择“添加” 。
+5. 输入应用程序的名称。 例如，“webapi1”。
+6. 对于“包括 Web 应用/Web API”，请选择“是”。 
+7. 对于“回复 URL”，请输入 Azure AD B2C 要将应用程序请求的任何令牌返回到的终结点。 本教程中的示例在本地运行并在 `https://localhost:44332` 上进行侦听。
+8. 对于“应用 ID URI”，请输入 Web API 使用的标识符。 包括域在内的完整标识符 URI 是为你生成的。 例如，`https://contosotenant.onmicrosoft.com/api`。
+9. 单击“创建”。
 10. 在属性页上，记录在配置 Web 应用程序时要使用的应用程序 ID。
-
-#### <a name="app-registrations-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
-
-1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在顶部菜单中选择“目录 + 订阅”  筛选器，然后选择包含Azure AD B2C 租户的目录。
-1. 在左侧菜单中，选择“Azure AD B2C”  。 或者，选择“所有服务”  并搜索并选择“Azure AD B2C”  。
-1. 选择“应用注册(预览版)”，然后选择“新建注册”   。
-1. 输入应用程序的“名称”  。 例如，“webapi1”  。
-1. 在“重定向 URI”下选择“Web”，然后输入 Azure AD B2C 会将应用程序请求的任何令牌返回到其中的终结点  。  本教程中的示例在本地运行并在 `https://localhost:44332` 上进行侦听。
-1. 选择“注册”  。
-1. 记录“应用程序(客户端) ID”，以便在后续步骤中使用  。
 
 * * *
 
@@ -119,13 +119,13 @@ Web API 资源需要先在租户中注册，然后才能接受并响应通过提
     <add key="ida:Tenant" value="<Your tenant name>.onmicrosoft.com" />
     ```
 
-1. 将客户端 ID 设置为你注册的 Web API 应用程序的应用程序 ID webapi1  。
+1. 将客户端 ID 设置为你注册的 Web API 应用程序的应用程序 ID webapi1。
 
     ```csharp
     <add key="ida:ClientId" value="<application-ID>"/>
     ```
 
-1. 使用注册和登录用户流的名称 B2C_1_signupsignin1  更新用户流设置。
+1. 使用注册和登录用户流的名称 B2C_1_signupsignin1 更新用户流设置。
 
     ```csharp
     <add key="ida:SignUpSignInPolicyId" value="B2C_1_signupsignin1" />
@@ -142,16 +142,16 @@ Web API 资源需要先在租户中注册，然后才能接受并响应通过提
 
 **TaskWebApp** 和 **TaskService** 项目都需要运行。
 
-1. 在解决方案资源管理器中，右键单击解决方案并选择“设置启动项目...”。 
-1. 选择“多启动项目”。 
-1. 将两个项目的“操作”更改为“启动”。  
-1. 单击“确定”以保存配置。 
+1. 在解决方案资源管理器中，右键单击解决方案并选择“设置启动项目...”。
+1. 选择“多启动项目”。
+1. 将两个项目的“操作”更改为“启动”。 
+1. 单击“确定”以保存配置。
 1. 按 **F5** 运行这两个应用程序。 每个应用程序都会在其自己的浏览器窗口中打开。
     * `https://localhost:44316/` 为 Web 应用程序。
     * `https://localhost:44332/` 为 Web API。
 
-1. 在 Web 应用程序中，选择“注册/登录”以登录到 Web 应用程序。  使用前面创建的帐户。
-1. 登录后，选择“待办事项列表”并创建待办事项列表项。 
+1. 在 Web 应用程序中，选择“注册/登录”以登录到 Web 应用程序。 使用前面创建的帐户。
+1. 登录后，选择“待办事项列表”并创建待办事项列表项。
 
 创建待办事项列表项时，Web 应用程序会向 Web API 发起生成待办事项列表项的请求。 受保护的 Web 应用程序将调用受 Azure AD B2C 保护的 Web API。
 

@@ -1,23 +1,22 @@
 ---
-title: 教程：将 Linux ASP.NET Core 与 SQL DB 配合使用
+title: 教程：将 Linux ASP.NET Core 与 SQL 数据库配合使用
 description: 了解如何在 Azure 应用服务中运行数据驱动型 Linux ASP.NET Core 应用，同时使其连接到 SQL 数据库。
 ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/23/2020
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 6c2ed68c18cc7845d45bebffc31842879353f2c2
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 303177f1ee7a076a5c1756bfbb13a4364f43aca0
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83846881"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020228"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>教程：在 Linux 上的 Azure 应用服务中生成 ASP.NET Core 和 SQL 数据库应用
 
 > [!NOTE]
 > 本文将应用部署到基于 Linux 的应用服务。 若要部署到 _Windows_ 上的应用服务，请参阅[在 Azure 应用服务中构建 .NET Core 和 SQL 数据库应用](../app-service-web-tutorial-dotnetcore-sqldb.md)。
->
 
 [Linux 应用服务](app-service-linux-intro.md)使用 Linux 操作系统，提供高度可缩放的自修补 Web 托管服务。 本教程演示如何创建 .NET Core 应用，并将其连接至 SQL 数据库。 完成操作后，将拥有一个在 Linux 应用服务中运行的 .NET Core MVC 应用。
 
@@ -26,7 +25,8 @@ ms.locfileid: "83846881"
 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
-> * 在 Azure 中创建 SQL 数据库。
+>
+> * 在 Azure SQL 数据库中创建数据库
 > * 将 .NET Core 应用连接到 SQL 数据库
 > * 将应用部署到 Azure
 > * 更新数据模型并重新部署应用
@@ -77,28 +77,25 @@ dotnet run
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-production-sql-database"></a>创建生产环境 SQL 数据库
+## <a name="create-a-database-in-azure-sql-database"></a>在 Azure SQL 数据库中创建数据库
 
-此步骤在 Azure 中创建一个 SQL 数据库。 应用部署到 Azure 后，它将使用该云数据库。
-
-对于 SQL 数据库，本教程使用 [Azure SQL 数据库](/azure/sql-database/)。
+此步骤在 [Azure SQL 数据库](/azure/sql-database/)中创建数据库。 应用部署到 Azure 后，它将使用该数据库。
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)]
 
-### <a name="create-a-sql-database-logical-server"></a>创建 SQL 数据库逻辑服务器
+### <a name="create-a-server-in-azure-sql-database"></a>在 Azure SQL 数据库中创建服务器
 
-在 Cloud Shell 中，使用 [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) 命令创建 SQL 数据库逻辑服务器。
+在 Cloud Shell 中，使用 [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) 命令在 Azure SQL 数据库中创建[服务器](../../azure-sql/database/logical-servers.md)。 服务器是一种逻辑构造，其中包含一组作为组管理的数据库。
 
-将 \<server-name> 占位符替换为唯一的 SQL 数据库名称 。 此名称将用作全局唯一的 SQL 数据库终结点 (`<server-name>.database.windows.net`) 的一部分。 有效字符为 `a`-`z`、`0`-`9` 和 `-`。 此外，将 \<db-username> 和 \< 分别替换为所选用户名和密码 。 
-
+将 \<server-name> 占位符替换为唯一的 SQL 数据库名称 。 此名称将用作全局唯一的 SQL 数据库终结点 (`<server-name>.database.windows.net`) 的一部分。 有效字符为 `a`-`z`、`0`-`9` 和 `-`。 此外，将 \<db-username> 和 \<db-password> 替换为所选的用户名和密码 。
 
 ```azurecli-interactive
 az sql server create --name <server-name> --resource-group myResourceGroup --location "West Europe" --admin-user <db-username> --admin-password <db-password>
 ```
 
-创建 SQL 数据库逻辑服务器后，Azure CLI 会显示类似于以下示例的信息：
+创建服务器后，Azure CLI 会显示类似于以下示例的信息：
 
 <pre>
 {
@@ -120,15 +117,14 @@ az sql server create --name <server-name> --resource-group myResourceGroup --loc
 
 ### <a name="configure-a-server-firewall-rule"></a>配置服务器防火墙规则
 
-使用 [`az sql server firewall create`](/cli/azure/sql/server/firewall-rule?view=azure-cli-latest#az-sql-server-firewall-rule-create) 命令创建 [Azure SQL 数据库服务器级防火墙规则](../../sql-database/sql-database-firewall-configure.md)。 若同时将起始 IP 和结束 IP 设置为 0.0.0.0，防火墙将仅对其他 Azure 资源开启。 
+使用 [`az sql server firewall create`](/cli/azure/sql/server/firewall-rule?view=azure-cli-latest#az-sql-server-firewall-rule-create) 命令创建[服务器级防火墙规则](../../azure-sql/database/firewall-configure.md)。 若同时将起始 IP 和结束 IP 设置为 0.0.0.0，防火墙将仅对其他 Azure 资源开启。
 
 ```azurecli-interactive
 az sql server firewall-rule create --resource-group myResourceGroup --server <server-name> --name AllowAzureIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
 
-> [!TIP] 
+> [!TIP]
 > 你甚至可以让防火墙规则更严格，即[只使用应用所使用的出站 IP 地址](../overview-inbound-outbound-ips.md#find-outbound-ips)。
->
 
 在 Cloud Shell 中再次运行该命令（将 \<your-ip-address> 替换为[本地 IPv4 IP 地址](https://www.whatsmyip.org/)），以便从本地计算机进行访问。
 
@@ -136,9 +132,9 @@ az sql server firewall-rule create --resource-group myResourceGroup --server <se
 az sql server firewall-rule create --name AllowLocalClient --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address>
 ```
 
-### <a name="create-a-database"></a>创建数据库
+### <a name="create-a-database-in-azure-sql-database"></a>在 Azure SQL 数据库中创建数据库
 
-使用 [`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create) 命令在服务器中创建 [S0 性能级别](../../sql-database/sql-database-service-tiers-dtu.md)的数据库。
+使用 [`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create) 命令在服务器中创建 [S0 性能级别](../../azure-sql/database/service-tiers-dtu.md)的数据库。
 
 ```azurecli-interactive
 az sql db create --resource-group myResourceGroup --server <server-name> --name coreDB --service-objective S0
@@ -152,7 +148,7 @@ az sql db create --resource-group myResourceGroup --server <server-name> --name 
 az sql db show-connection-string --client ado.net --server cephalin-core --name coreDB
 ```
 
-在命令输出中，将 \<username> 和 \<password> 替换为你先前使用的数据库管理员凭据。
+在命令输出中，将 \<username> 和 \<password> 替换为你先前使用的数据库管理员凭据 。
 
 这是 .NET Core 应用的连接字符串。 将其进行复制，留待稍后使用。
 
@@ -174,11 +170,10 @@ services.AddDbContext<MyDatabaseContext>(options =>
 
 > [!IMPORTANT]
 > 对于需要横向扩展的生产应用，请遵循[在生产中应用迁移](/aspnet/core/data/ef-rp/migrations#applying-migrations-in-production)中的最佳做法。
-> 
 
 ### <a name="run-database-migrations-to-the-production-database"></a>运行到生产数据库的数据库迁移
 
-应用当前连接到本地 Sqlite 数据库。 配置 Azure SQL 数据库后，请重新创建以其为目标的初始迁移。 
+应用当前连接到本地 Sqlite 数据库。 在 Azure 中配置数据库后，请重新创建以其为目标的初始迁移。
 
 在存储库根目录中运行以下命令。 将 \<connection-string> 替换为之前创建的连接字符串。
 
@@ -210,7 +205,7 @@ dotnet run
 
 在浏览器中导航至 `http://localhost:5000` 。 选择“新建”链接，创建几个待办事项。 应用现在正在读取数据并将数据写入生产数据库。
 
-提交本地更改，然后将其提交到 Git 存储库。 
+提交本地更改，然后将其提交到 Git 存储库。
 
 ```bash
 git add .
@@ -233,7 +228,7 @@ git commit -m "connect to SQLDB in Azure"
 
 ### <a name="create-a-web-app"></a>创建 Web 应用
 
-[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-dotnetcore-linux-no-h.md)] 
+[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-dotnetcore-linux-no-h.md)]
 
 ### <a name="configure-connection-string"></a>配置连接字符串
 
@@ -398,8 +393,8 @@ git push azure master
 
 示例项目已遵循了 [Azure 中的 ASP.NET Core 日志记录](https://docs.microsoft.com/aspnet/core/fundamentals/logging#azure-app-service-provider)中的指南，并且进行了两个配置更改：
 
-- 在 *DotNetCoreSqlDb.csproj* 中包含了对 `Microsoft.Extensions.Logging.AzureAppServices` 的引用。
-- 在 *Program.cs* 中调用 `loggerFactory.AddAzureWebAppDiagnostics()`。
+* 在 *DotNetCoreSqlDb.csproj* 中包含了对 `Microsoft.Extensions.Logging.AzureAppServices` 的引用。
+* 在 *Program.cs* 中调用 `loggerFactory.AddAzureWebAppDiagnostics()`。
 
 若要将应用服务中的 ASP.NET Core [日志级别](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-level)从默认级别 `Error` 设置为 `Information`，请在 Cloud Shell 中使用 [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) 命令。
 
@@ -409,7 +404,6 @@ az webapp log config --name <app-name> --resource-group myResourceGroup --applic
 
 > [!NOTE]
 > 项目的日志级别在 *appsettings.json* 中已设置为 `Information`。
-> 
 
 若要启动日志流式处理，请在 Cloud Shell 中使用 [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) 命令。
 
@@ -438,12 +432,14 @@ az webapp log tail --name <app-name> --resource-group myResourceGroup
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
 <a name="next"></a>
+
 ## <a name="next-steps"></a>后续步骤
 
 你已了解：
 
 > [!div class="checklist"]
-> * 在 Azure 中创建 SQL 数据库。
+>
+> * 在 Azure SQL 数据库中创建数据库
 > * 将 .NET Core 应用连接到 SQL 数据库
 > * 将应用部署到 Azure
 > * 更新数据模型并重新部署应用

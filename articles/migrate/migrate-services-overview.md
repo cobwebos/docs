@@ -4,12 +4,12 @@ description: 了解 Azure Migrate 服务。
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: fe6386346282cf182397f6420c541d629ba0aab3
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: c0fe4293b4e07152ff41ae946faf703aacc42d89
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81768400"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193595"
 ---
 # <a name="about-azure-migrate"></a>关于 Azure Migrate
 
@@ -23,10 +23,10 @@ Azure Migrate 提供以下功能：
 - **工具范围**：用于评估和迁移的一系列工具。 工具包括“Azure Migrate: 服务器评估和 Azure Migrate:服务器迁移。 Azure Migrate 集成了其他 Azure 服务，以及其他工具和独立软件供应商 (ISV) 产品/服务。
 - **评估和迁移**：在 Azure Migrate 中心内，可以评估和迁移以下项目：
     - **服务器**：评估本地服务器并将其迁移到 Azure 虚拟机。
-    - **数据库**：评估本地数据库并将其迁移到 Azure SQL 数据库或 Azure SQL 数据库托管实例。
+    - **数据库**：评估本地数据库，并将其迁移到 Azure SQL 数据库或 SQL 托管实例。
     - **Web 应用程序**：使用 Azure 应用服务迁移助手评估本地 Web 应用程序并将其迁移到 Azure 应用服务。
     - **虚拟桌面**：评估本地虚拟桌面基础结构 (VDI) 并将其迁移到 Azure 中的 Windows 虚拟桌面。
-    - **数据**：使用 Azure Data Box 产品快速且经济高效地将大量数据迁移到 Azure。
+    - **Data**：使用 Azure Data Box 产品快速且经济高效地将大量数据迁移到 Azure。
 
 ## <a name="integrated-tools"></a>集成工具
 
@@ -36,8 +36,8 @@ Azure Migrate 中心包含以下工具：
 --- | --- | ---
 **Azure Migrate:服务器评估** | 评估服务器。 | 在准备迁移到 Azure 时，发现并评估本地 VMware VM、Hyper-V VM 和物理服务器。
 **Azure Migrate:服务器迁移** | 迁移服务器。 | 将 VMware VM、Hyper-V VM、物理服务器、其他虚拟机和公有云 VM 迁移到 Azure。
-**Data Migration Assistant** | 评估本地 SQL Server 数据库，以便迁移到 Azure SQL 数据库、Azure SQL 数据库托管实例或运行 SQL Server 的 Azure VM。 | 数据迁移助手可以帮助找出阻止迁移的潜在问题。 它可以识别不受支持的功能、迁移后可从中受益的新功能，以及正确的数据库迁移路径。 [了解详细信息](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)。
-**Azure 数据库迁移服务** | 将本地数据库迁移到运行 SQL Server 的 Azure VM、Azure SQL 数据库和 Azure SQL 数据库托管实例。 | [详细了解](https://docs.microsoft.com/azure/dms/dms-overview)数据库迁移服务。
+**Data Migration Assistant** | 评估 SQL Server 数据库，以便迁移到 Azure SQL 数据库、Azure SQL 托管实例或运行 SQL Server 的 Azure VM。 | 数据迁移助手可以帮助找出阻止迁移的潜在问题。 它可以识别不受支持的功能、迁移后可从中受益的新功能，以及正确的数据库迁移路径。 [了解详细信息](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)。
+**Azure 数据库迁移服务** | 将本地数据库迁移到运行 SQL Server 的 Azure VM、Azure SQL 数据库或 SQL 托管实例。 | [详细了解](https://docs.microsoft.com/azure/dms/dms-overview)数据库迁移服务。
 **Movere** | 评估服务器。 | [详细了解](#movere) Movere。
 **Web 应用迁移助手** | 评估本地 Web 应用并将其迁移到 Azure。 |  使用 Azure 应用服务迁移助手评估用于迁移到 Azure 应用服务的本地网站。<br/><br/> 使用迁移助手将 .NET 和 PHP Web 应用迁移到 Azure。 [详细了解](https://appmigration.microsoft.com/) Azure 应用服务迁移助手。
 **Azure Data Box** | 迁移脱机数据。 | 使用 Azure Data Box 产品将大量脱机数据迁移到 Azure。 [了解详细信息](https://docs.microsoft.com/azure/databox/)。
@@ -125,7 +125,7 @@ Azure Migrate 内置了 Azure 与合作伙伴的 ISV 工具，可提供丰富的
 - **当前版本**：使用此版本创建 Azure Migrate 项目，发现本地计算机，并安排评估和迁移。 [详细了解](whats-new.md)此版本中的新增功能。
 - **以前版本**：以前的 Azure Migrate 版本只支持评估本地 VMware VM。 如果使用的是旧版，则现在应使用新版。 无法再使用旧版创建 Azure Migrate 项目。 建议不要使用旧版执行新的发现操作。
 
-    若要在 Azure 门户中访问现有项目，请搜索并选择“Azure Migrate”  。 “Azure Migrate”  仪表板有一个通知，还有一个用于访问旧 Azure Migrate 项目的链接。
+    若要在 Azure 门户中访问现有项目，请搜索并选择“Azure Migrate”。 “Azure Migrate”仪表板有一个通知，还有一个用于访问旧 Azure Migrate 项目的链接。
 
 ## <a name="next-steps"></a>后续步骤
 

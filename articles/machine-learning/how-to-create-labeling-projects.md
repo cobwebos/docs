@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 6a2dd84ec091a2e862dd788a740585827b5cbde1
-ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
+ms.openlocfilehash: 40c31d4dd4a6c675691f75d3717f7865d6b847f7
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2020
-ms.locfileid: "83007548"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171543"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>创建数据标记项目并导出标签 
 
@@ -55,8 +55,7 @@ Azure 机器学习可跟踪进度，并维护未完成标记任务的队列。
 
 若要创建项目，请选择“添加项目”。 为项目指定适当的名称，然后选择“标记任务类型”。
 
-![标记项目创建向导](./media/how-to-create-labeling-projects/labeling-creation-wizard.png)
-
+:::image type="content" source="media/how-to-create-labeling-projects/labeling-creation-wizard.png" alt-text="标记项目创建向导":::
 
 * 若要将一组类中的单个类应用到某个图像，请为项目选择“多类图像分类”。
 * 若要将一组类中的一个或多个标签应用到某个图像，请为项目选择“多标签图像分类”。 例如，可以使用“狗”和“白天”标记狗的照片。 

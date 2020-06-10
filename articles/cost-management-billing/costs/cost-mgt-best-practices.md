@@ -3,17 +3,17 @@ title: 使用 Azure 成本管理优化云投资
 description: 本文有助于最大程度利用云投资、减少成本以及对资金使用情况进行评估。
 author: bandersmsft
 ms.author: banders
-ms.date: 05/04/2020
+ms.date: 05/27/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 759c69544c083e95cbd5198eecf9f7bb0e882aa8
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: f328f17b1d64bc9b8f0be35321aecaba0cb85fa6
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791606"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142412"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>如何通过 Azure 成本管理优化云投资
 
@@ -52,7 +52,7 @@ ms.locfileid: "82791606"
 
 #### <a name="visibility"></a>可见性
 
-如果成本管理的结构合理，这将有助于员工了解其所负责的 Azure 成本以及资金使用情况。 Azure 提供的相关服务可让你了解资金使用方向  。 请充分利用这些工具。 它们可以帮助你找到未充分利用的资源、消除浪费并最大程度利用节省成本的机会。
+如果成本管理的结构合理，这将有助于员工了解其所负责的 Azure 成本以及资金使用情况。 Azure 提供的相关服务可让你了解资金使用方向。 请充分利用这些工具。 它们可以帮助你找到未充分利用的资源、消除浪费并最大程度利用节省成本的机会。
 
 #### <a name="accountability"></a>问责制
 
@@ -131,14 +131,39 @@ Azure Migrate 服务可以评估本地数据中心中的组织当前工作负载
 
 及时了解组织的成本变化情况。 使用以下方法以正确理解和管理支出。
 
-### <a name="organize-and-tag-your-resources"></a>组织和标记资源
+### <a name="organize-resources-to-maximize-cost-insights-and-accountability"></a>组织资源，最大限度地提高成本洞察力和责任感
 
-组织资源时考虑成本。 在创建订阅和资源组时，考虑各团队所负责的相关成本。 请确保在报告中考虑组织要求。 订阅和资源组提供了组织和归因组织支出的良好存储桶。 标记是归因成本的好方法。 可将标记用作筛选器。 也可在分析数据和调查成本时，将其作为分组依据。 企业协议客户还可以创建部门并将订阅放置在部门下。 Azure 中的基于成本的组织有助于组织的相关人员对减少团队支出负责。
+在创建云基础结构时，为 Azure 计费和资源层次结构精心规划的组织结构有助于更好地理解和控制成本。 观看视频[设置实体层次结构](https://www.youtube.com/watch?v=n3TLRaYJ1NY)，更好地了解可用的组织工具以及如何利用它们。 若要观看其他视频，请访问[成本管理 YouTube 频道](https://www.youtube.com/c/AzureCostManagement)。
 
-请观看视频[如何使用 Azure 成本管理查看标记策略](https://www.youtube.com/watch?v=nHQYcYGKuyw)，了解在组织中强制实施可缩放资源标记时可用的工具。 若要观看其他视频，请访问[成本管理 YouTube 频道](https://www.youtube.com/c/AzureCostManagement)。
+>[!VIDEO https://www.youtube.com/embed/n3TLRaYJ1NY]
+
+在评估并创建满足需求的层次结构时，请确认以下问题。
+
+我可以使用哪种计费层次结构，可以使用的不同范围有哪些？
+
+通过确定 Azure 套餐类型，确定组织的计费标准。 [了解并使用范围](understand-work-scopes.md)中记录了每个 Azure 计费标准的可用范围。
+
+如果我有多个团队，应如何组织订阅和资源组？
+
+一种常见的做法是为每个团队创建订阅或资源组。 这可帮助你区分成本并让团队各自负起责任。 但是，成本是绑定到订阅或资源组的。
+
+如果你已有包含多个订阅的团队，可考虑将订阅分组到管理组中，以便一同分析成本。 管理组、订阅和资源组都是 Azure RBAC 层次结构的一部分。 将它们共同用于团队中的访问控制。
+
+资源可以跨越多个范围，尤其是当它们由多个团队或工作负载共享时。 考虑使用标记标识资源。 标记将在下一节中进一步讨论。
+
+我是否拥有开发和生产环境？
+
+考虑为开发环境创建开发/测试订阅，可享受更低的定价。 如果工作负载跨越多个团队或 Azure 范围，可考虑使用标记来标识它们。
+
+### <a name="tag-shared-resources"></a>标记共享资源
+
+标记是了解跨多个团队和 Azure 范围的成本的有效方法。 例如，你可能有一个许多团队都在使用的资源（如电子邮件服务器）。 可以将共享资源（如电子邮件服务器）放入专用于共享资源的订阅中，或将其放入现有的订阅中。 如果将其放在现有订阅中，则订阅所有者可能不希望每个月向其团队收取费用。 在此示例中，可以使用标记将资源标识为共享。
+
+同样，你拥有的 Web 应用或环境（如测试环境或生产环境）可能还会跨不同团队拥有的多个订阅使用资源。 为了更好地了解工作负载的全部成本，可标记他们使用的资源。 正确应用标记后，可以在成本分析中将标记作为筛选器，从而更好地理解趋势。
+
+规划资源标记后，可以配置 Azure 策略来强制对资源进行标记。 观看[如何使用 Azure 成本管理查看标记策略](https://www.youtube.com/watch?v=nHQYcYGKuyw)视频，了解有助于强制执行可缩放资源标记的可用工具。 若要观看其他视频，请访问[成本管理 YouTube 频道](https://www.youtube.com/c/AzureCostManagement)。
 
 >[!VIDEO https://www.youtube.com/embed/nHQYcYGKuyw]
-
 
 ### <a name="use-cost-analysis"></a>使用成本分析
 

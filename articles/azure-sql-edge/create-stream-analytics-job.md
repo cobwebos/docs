@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 5e0043ebba1a317dcc6798d6be74aac051d97012
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7db7f9548a3daa86a53dd37fbe088661e8b7b17e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595386"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685176"
 ---
 # <a name="create-stream-analytics-job-in-azure-sql-edge-preview"></a>在 Azure SQL Edge（预览版）中创建流分析作业 
 
@@ -22,6 +22,9 @@ ms.locfileid: "83595386"
 
 1. 创建外部流输入和输出对象
 2. 在流式处理作业创建过程中定义流式处理作业查询。
+
+> [!NOTE]
+> 若要在 Azure SQL Edge 中启用 T-SQL 流式处理功能，请启用 TF 11515 作为启动选项，或使用 [DBCC TRACEON]( https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) 命令。 有关如何使用 mssql.conf 文件启用跟踪标志的详细信息，请参阅[使用 mssql.conf 文件进行配置](configure.md#configure-using-mssqlconf-file)。 Azure SQL Edge（预览版）的未来更新中将删除此要求。
 
 ## <a name="configure-an-external-stream-input-and-output-object"></a>配置外部流输入和输出对象
 

@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 01/08/2020
-ms.openlocfilehash: 3b2a6566322f29870d2376007060acedac62692a
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 7d27d67cfa46eb4554f6ca3d66df76e393b18da0
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873529"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84187542"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure 数据库迁移服务实例
 
-在本快速入门中，你将使用 Azure 门户创建 Azure 数据库迁移服务的实例。  创建实例后，可使用它将数据从本地 SQL Server 迁移到 Azure SQL 数据库。
+在本快速入门中，你将使用 Azure 门户创建 Azure 数据库迁移服务的实例。  创建实例后，可使用它将数据从 SQL Server 迁移到 Azure SQL 数据库。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
@@ -78,4 +78,4 @@ ms.locfileid: "83873529"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [将本地 SQL Server 迁移到 Azure SQL 数据库](tutorial-sql-server-to-azure-sql.md)
+> [将 SQL Server 迁移到 Azure SQL 数据库](tutorial-sql-server-to-azure-sql.md)

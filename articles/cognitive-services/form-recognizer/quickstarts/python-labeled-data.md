@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 02/19/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 0fa6785b2c4029dc5eb3f0397b1144616be357fe
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 482e1bfe14181a59b744efd794a5636a442ce9a4
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594162"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141936"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>使用 REST API 和 Python 通过标签训练表单识别器模型
 
@@ -26,7 +26,10 @@ ms.locfileid: "82594162"
 
 若要完成本快速入门，必须具备以下条件：
 - 安装 [Python](https://www.python.org/downloads/)（若要在本地运行此示例）。
-- 至少有六个相同类型的表单。 我们将使用此数据训练模型并测试表单。 在本快速入门中可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)。 将训练文件上传到 Azure 存储帐户中 blob 存储容器的根目录。
+- 至少有六个相同类型的表单。 你将使用此数据训练模型并测试表单。 在本快速入门中可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)。 将训练文件上传到 Azure 存储帐户中 blob 存储容器的根目录。
+
+> [!NOTE]
+> 此快速入门使用 URL 访问的远程文档。 要改用本地文件，请参阅[参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)。
 
 ## <a name="create-a-form-recognizer-resource"></a>创建表单识别器资源
 
@@ -34,15 +37,15 @@ ms.locfileid: "82594162"
 
 ## <a name="set-up-training-data"></a>设置训练数据
 
-接下来，需要设置所需的输入数据。 标记的数据特征有特殊的输入要求（训练自定义模型所需的输入要求除外）。 
+接下来，需要设置所需的输入数据。 标记的数据特征有特殊的输入要求（而不需要使用标签训练自定义模型所需的输入要求除外）。
 
 确保所有训练文档的格式相同。 如果有多种格式的表单，请根据通用格式将它们组织到子文件夹中。 训练时，需要将 API 定向到子文件夹。
 
 若要使用标记的数据训练模型，需要在子文件夹中将以下文件用作输入。 我们将在下面了解如何创建这些文件。
 
 * **源表单** – 用于从其中提取数据的表单。 支持的类型为 JPEG、PNG、PDF 或 TIFF。
-* **OCR 布局文件** - JSON 文件，描述每个源表单中所有可读文本的大小和位置。 我们将使用表单识别器布局 API 来生成此数据。 
-* **标签文件** - JSON 文件，用于描述用户已手动输入的数据标签。
+* **OCR 布局文件** - 这是 JSON 文件，描述每个源表单中所有可读文本的大小和位置。 我们将使用表单识别器布局 API 来生成此数据。 
+* **标签文件** - 这些是 JSON 文件，用于描述用户已手动输入的数据标签。
 
 所有这些文件都应占用同一子文件夹，并采用以下格式：
 
@@ -116,7 +119,7 @@ ms.locfileid: "82594162"
 
 ### <a name="create-the-label-files"></a>创建标签文件
 
-标签文件包含用户已手动输入的键-值关联。 它们是进行标记数据训练所需的，但并不是每个源文件都需要有相应的标签文件。 没有标签的源文件会被视为普通训练文档。 建议使用至少五个标记的文件进行可靠的训练。
+标签文件包含用户已手动输入的键-值关联。 它们是进行标记数据训练所需的，但并不是每个源文件都需要有相应的标签文件。 没有标签的源文件会被视为普通训练文档。 建议使用至少五个标记的文件进行可靠的训练。 可以使用 UI 工具（如[示例标记工具](./label-tool.md)）生成这些文件。
 
 创建标签文件时，可以选择指定区域&mdash;文档中值的确切位置。 这样甚至会提高训练的准确性。 区域的格式是由八个值组成的一组，对应于四个 X,Y 坐标：左上、右上、右下和左下。 坐标值在零和一之间，按页面尺寸进行缩放。
 
@@ -187,8 +190,8 @@ ms.locfileid: "82594162"
                 ...
 ```
 
-> [!NOTE]
-> 只能对每个文本元素应用一个标签，并且每个标签在每个页面只能应用一次。 当前无法跨多个页面应用标签。
+> [!IMPORTANT]
+> 只能对每个文本元素应用一个标签，并且每个标签在每个页面只能应用一次。 无法跨多个页面应用标签。
 
 
 ## <a name="train-a-model-using-labeled-data"></a>使用标记的数据训练模型
@@ -196,7 +199,7 @@ ms.locfileid: "82594162"
 若要使用标记的数据来训练模型，请运行下面的 python 代码来调用 **[训练自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** API。 运行该代码之前，请进行以下更改：
 
 1. 将 `<Endpoint>` 替换为表单识别器资源的终结点 URL。
-1. 将 `<SAS URL>` 替换为 Azure Blob 存储容器的共享访问签名 (SAS) URL。 若要检索 SAS URL，请打开 Microsoft Azure 存储资源管理器，右键单击容器，然后选择“获取共享访问签名”  。 确保选中“读取”  和“列表”  权限，然后单击“创建”  。 然后复制 **URL** 部分中的值。 它应当采用 `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` 形式。
+1. 将 `<SAS URL>` 替换为 Azure Blob 存储容器的共享访问签名 (SAS) URL。 若要检索 SAS URL，请打开 Microsoft Azure 存储资源管理器，右键单击容器，然后选择“获取共享访问签名”。 确保选中“读取”和“列表”权限，然后单击“创建”。 然后复制 **URL** 部分中的值。 它应当采用 `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` 形式。
 1. 将 `<Blob folder name>` 替换为输入数据所在的 blob 容器中的文件夹名称。 或者，如果数据位于根目录，请将此项留空，并从 HTTP 请求的正文中删除 `"prefix"` 字段。
 
 ```python
@@ -554,4 +557,7 @@ print("Train operation did not complete within the allocated time.")
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你学习了如何使用表单识别器 REST API 和 Python 通过手动标记的数据来训练模型。 接下来，请参阅 [API 参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)来深入了解表单识别器 API。
+在本快速入门中，你学习了如何使用表单识别器 REST API 和 Python 通过手动标记的数据来训练模型。 接下来，请参阅 API 参考文档来深入了解表单识别器 API。
+
+> [!div class="nextstepaction"]
+> [REST API 参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)

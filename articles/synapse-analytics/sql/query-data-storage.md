@@ -9,17 +9,17 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: e18fc765385e6d703e735a1ca15c539c32f36e93
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8501f9d07ffa2d04915d4d1a351317cc145f9844
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82116241"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118269"
 ---
 # <a name="overview-query-data-in-storage"></a>概述：查询存储中的数据
 
 本部分包含可用于在 Azure Synapse Analytics 中试用 SQL 按需版本（预览版）资源的示例查询。
-当前支持的文件为： 
+当前支持的文件格式为：  
 - CSV
 - Parquet
 - JSON
@@ -44,67 +44,13 @@ ms.locfileid: "82116241"
 
 ## <a name="first-time-setup"></a>首次设置
 
-在使用本文稍后提供的示例之前，需要完成两个步骤：
-
-- 为视图创建数据库（若要使用视图）
-- 创建供 SQL 按需版本用来访问存储中的文件的凭据
-
-### <a name="create-database"></a>创建数据库
-
-需使用一个数据库来创建视图。 将对本文档中的某些示例查询使用此数据库。
+第一步是创建将在其中执行查询的数据库。 然后通过对该数据库执行[安装脚本](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)来初始化这些对象。 此安装脚本将创建数据源、数据库范围的凭据和用于读取这些示例中数据的外部文件格式。
 
 > [!NOTE]
 > 数据库仅用于查看元数据，而不用于实际数据。  请记下使用的数据库名称，因为稍后需要用到。
 
 ```sql
 CREATE DATABASE mydbname;
-```
-
-### <a name="create-credentials"></a>创建凭据
-
-必须先创建凭据，然后才能运行查询。 SQL 按需版本服务将使用此凭据访问存储中的文件。
-
-> [!NOTE]
-> 若要成功运行本部分中的操作步骤，必须使用 SAS 令牌。
->
-> 若要开始使用 SAS 令牌，必须删除[此文](develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through)中所述的 UserIdentity。
->
-> 默认情况下，SQL 按需版本始终使用 AAD 直通身份验证。
-
-有关如何管理存储访问控制的详细信息，请查看[此链接](develop-storage-files-storage-access-control.md)。
-
-若要创建 CSV、JSON 和 Parquet 容器的凭据，请运行以下代码：
-
-```sql
--- create credentials for CSV container in our demo storage account
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://sqlondemandstorage.blob.core.windows.net/csv')
-DROP CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/csv];
-GO
-
-CREATE CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/csv]
-WITH IDENTITY='SHARED ACCESS SIGNATURE',  
-SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D';
-GO
-
--- create credentials for JSON container in our demo storage account
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://sqlondemandstorage.blob.core.windows.net/json')
-DROP CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/json];
-GO
-
-CREATE CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/json]
-WITH IDENTITY='SHARED ACCESS SIGNATURE',  
-SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D';
-GO
-
--- create credentials for PARQUET container in our demo storage account
-IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://sqlondemandstorage.blob.core.windows.net/parquet')
-DROP CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/parquet];
-GO
-
-CREATE CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net/parquet]
-WITH IDENTITY='SHARED ACCESS SIGNATURE',  
-SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D';
-GO
 ```
 
 ## <a name="provided-demo-data"></a>提供的演示数据
@@ -132,24 +78,6 @@ GO
 | /json/                                                       | 采用 JSON 格式的数据的父文件夹                        |
 | /json/books/                                                 | 包含书籍数据的 JSON 文件                                   |
 
-## <a name="validation"></a>验证
-
-执行以下三个查询，并检查是否正确创建了凭据。
-
-> [!NOTE]
-> 示例查询中的所有 URI 使用位于“北欧”Azure 区域中的存储帐户。 请确保已创建相应的凭据。 运行以下查询，确保列出了存储帐户。
-
-```sql
-SELECT name
-FROM sys.credentials
-WHERE
-     name IN ( 'https://sqlondemandstorage.blob.core.windows.net/csv',
-     'https://sqlondemandstorage.blob.core.windows.net/parquet',
-     'https://sqlondemandstorage.blob.core.windows.net/json');
-```
-
-如果找不到相应的凭据，请查看[首次设置](#first-time-setup)。
-
 ### <a name="sample-query"></a>示例查询
 
 最后一个验证步骤是执行以下查询：
@@ -159,12 +87,13 @@ SELECT
     COUNT_BIG(*)
 FROM  
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2017/month=9/*.parquet',
+        BULK 'parquet/taxi/year=2017/month=9/*.parquet',
+        DATA_SOURCE = 'sqlondemanddemo',
         FORMAT='PARQUET'
     ) AS nyc;
 ```
 
-上述查询应返回以下数字：8945574。 
+上述查询应返回以下数字：8945574。
 
 ## <a name="next-steps"></a>后续步骤
 

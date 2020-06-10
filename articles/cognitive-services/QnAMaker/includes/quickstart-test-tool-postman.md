@@ -10,24 +10,24 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 97dfe175a609ab336206098948b4e3fcc401d8bc
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a5af58c645720f0643e9245dc106248e36f2658f
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203945"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84237729"
 ---
 此基于 Postman 的快速入门详细介绍如何从知识库获取答案。
 
 ## <a name="prerequisites"></a>先决条件
 
-* 最新 [Postman](https://www.getpostman.com/)  。
+* 最新 [Postman](https://www.getpostman.com/)。
 * 必须具有：
     * 一个 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)
     * 在快速入门中生成的已训练且已发布的[包含问题和答案的知识库](../Quickstarts/add-question-metadata-portal.md)已配置元数据和闲聊内容。
 
 > [!NOTE]
-> 准备好从知识库生成问题的答案后，必须[训练](../Quickstarts/create-publish-knowledge-base.md#save-and-train)并[发布](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)该知识库。 发布知识库后，“发布”页将显示 HTTP 请求设置以生成答案  。 “Postman”选项卡将显示生成答案所需的设置。 
+> 准备好从知识库生成问题的答案后，必须[训练](../Quickstarts/create-publish-knowledge-base.md#save-and-train)并[发布](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)该知识库。 发布知识库后，“发布”页将显示 HTTP 请求设置以生成答案。 “Postman”选项卡将显示生成答案所需的设置。
 
 ## <a name="set-up-postman-for-requests"></a>为请求设置 Postman
 
@@ -35,7 +35,7 @@ ms.locfileid: "82203945"
 
 请使用此过程来配置 Postman，然后阅读每个后续部分来配置 POST 正文 JSON。
 
-1. 在知识库的“设置”页中选择“Postman”选项卡，以查看用于从知识库生成答案的配置。   复制以下信息以便在 Postman 中使用。
+1. 在知识库的“设置”页中选择“Postman”选项卡，以查看用于从知识库生成答案的配置。  复制以下信息以便在 Postman 中使用。
 
     |名称|设置|用途和值|
     |--|--|--|
@@ -64,7 +64,7 @@ ms.locfileid: "82203945"
     }
     ```
 
-    问题只有一个单词 `size`，可以返回两个问答集中的一个。 `strictFilters` 数组告知响应将缩减为仅包含 `qna_maker` 回答。
+    问题只有一个单词 `size`，这可能会返回两对问答中的任意一对。 `strictFilters` 数组告知响应将缩减为仅包含 `qna_maker` 回答。
 
 1. 该响应仅包含符合筛选条件的回答。
 
@@ -103,9 +103,12 @@ ms.locfileid: "82203945"
     }
     ```
 
-    如果某个问题和回答集不符合搜索词但符合筛选器，将不会返回该集， 而是返回常规回答 `No good match found in KB.`。
+    如果某对问答不符合搜索词但符合筛选器，将不会返回该对问答。 而是返回常规回答 `No good match found in KB.`。
 
 ## <a name="use-debug-query-property"></a>使用调试查询属性
+
+> [!NOTE]
+>建议不要将 Debug 属性用于任何依赖项。 添加此属性是为了帮助产品团队进行故障排除。
 
 调试信息可帮助你了解返回的答案是如何确定的。 尽管此信息非常有用，但不是必需的。 若要生成附带调试信息的答案，请添加 `debug` 属性：
 

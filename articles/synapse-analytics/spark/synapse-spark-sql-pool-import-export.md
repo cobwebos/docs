@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 1a2b9c739f3583fb5d842bd9d3834252d542cb7d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 20b030079121104fe7bd75924a63ab0e12be9b19
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739271"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020857"
 ---
 # <a name="introduction"></a>简介
 
@@ -59,7 +59,7 @@ EXEC sp_addrolemember 'db_exporter', 'Mary';
 
 不需要 import 语句，对于笔记本体验，它们是预先导入的。
 
-### <a name="transferring-data-to-or-from-a-sql-pool-in-the-logical-server-dw-instance-attached-with-the-workspace"></a>将数据传输到与工作区相连的逻辑服务器（数据仓库实例）中的 SQL 池，或者从该池向外传输数据
+### <a name="transferring-data-to-or-from-a-sql-pool-attached-with-the-workspace"></a>将数据传输到与工作区相连的 SQL 池，或者从该池向外传输数据
 
 > [!NOTE]
 > **在笔记本体验中，import 不是必需的**
@@ -92,7 +92,7 @@ df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.EXTERNAL)
 
 向 Azure 存储和 SQL Server 进行的身份验证已完成
 
-### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-in-a-logical-server-outside-the-workspace"></a>如果将数据传输到工作区外部的逻辑服务器中的 SQL 池或数据库，或者从该池或数据库向外传输数据
+### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-outside-the-workspace"></a>如果将数据传输到工作区外部的 SQL 池或数据库，或者从该池或数据库向外传输数据
 
 > [!NOTE]
 > 在笔记本体验中，import 不是必需的

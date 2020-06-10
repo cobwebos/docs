@@ -1,6 +1,6 @@
 ---
-title: CLI 示例 - 故障转移组 - Azure SQL 数据库托管实例
-description: Azure CLI 示例脚本，用于创建 Azure SQL 数据库托管实例，将其添加到故障转移组，然后测试故障转移。
+title: CLI 示例 - 故障转移组 - Azure SQL 托管实例
+description: Azure CLI 示例脚本，用于创建 Azure SQL 托管实例，将其添加到故障转移组，然后测试故障转移。
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,14 +11,14 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 8ffe40662ffaf8a1fb35a3d31acfaea78ea0fbeb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e9efb4e222e74f97a4f3d88639b02a86a3a6d660
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80061919"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84115427"
 ---
-# <a name="use-cli-to-add-an-azure-sql-database-managed-instance-to-a-failover-group"></a>使用 CLI 将 Azure SQL 数据库托管实例添加到故障转移组
+# <a name="use-cli-to-add-an-azure-sql-managed-instance-to-a-failover-group"></a>使用 CLI 将 Azure SQL 托管实例添加到故障转移组
 
 此 Azure CLI 示例创建两个托管实例，将其添加到故障转移组，然后测试从主托管实例到辅助托管实例的故障转移。
 
@@ -52,13 +52,13 @@ az group delete --name $resource
 | [az network vnet subnet](/cli/azure/network/vnet/subnet) | 虚拟网络子网命令。 |
 | [az network nsg](/cli/azure/network/nsg) | 网络安全组命令。 |
 | [az network route-table](/cli/azure/network/route-table) | 路由表命令。 |
-| [az sql mi](/cli/azure/sql/mi) | 托管实例命令。 |
+| [az sql mi](/cli/azure/sql/mi) | SQL 托管实例命令。 |
 | [az network public-ip](/cli/azure/network/public-ip) | 网络公共 IP 地址命令。 |
 | [az network vnet-gateway](/cli/azure/network/vnet-gateway) | 虚拟网络网关命令。 |
-| [az sql instance-failover-group](/cli/azure/sql/instance-failover-group) | 托管实例故障转移组命令。 |
+| [az sql instance-failover-group](/cli/azure/sql/instance-failover-group) | SQL 托管实例故障转移组命令。 |
 
 ## <a name="next-steps"></a>后续步骤
 
 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。
 
-其他 SQL 数据库 CLI 脚本示例可以在 [Azure SQL 数据库文档](../sql-database-cli-samples.md)中找到。
+其他 SQL 数据库 CLI 脚本示例可以在 [Azure SQL 数据库文档](../../azure-sql/database/az-cli-script-samples-content-guide.md)中找到。

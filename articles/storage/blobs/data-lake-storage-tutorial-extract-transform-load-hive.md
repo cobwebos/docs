@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: c9ed675dc970b093f6407d15b3db2ac2668c626b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1e408f27d4c9b2686bd9f56ca754f5553a446440
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74327563"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014904"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>教程：使用 Azure HDInsight 提取、转换和加载数据
 
@@ -58,7 +58,7 @@ ms.locfileid: "74327563"
    
    清除所有其他字段。
 
-3. 选择“下载”  。 你将得到一个具有所选数据字段的 zip 文件。
+3. 选择“下载”。 你将得到一个具有所选数据字段的 zip 文件。
 
 ## <a name="extract-and-upload-the-data"></a>提取并上传数据
 
@@ -76,7 +76,7 @@ ms.locfileid: "74327563"
 
    如果使用密码对 SSH 登录名进行身份验证，系统会提示输入密码。
 
-   如果使用公钥，可能需要使用 `-i` 参数并指定匹配私钥的路径。 例如，`scp -i ~/.ssh/id_rsa <file_name>.zip <user-name>@<cluster-name>-ssh.azurehdinsight.net:` 。
+   如果使用公钥，可能需要使用 `-i` 参数并指定匹配私钥的路径。 例如，`scp -i ~/.ssh/id_rsa <file_name>.zip <user-name>@<cluster-name>-ssh.azurehdinsight.net:`。
 
 2. 上传完成后，使用 SSH 连接到群集。 在命令提示符中输入以下命令：
 
@@ -120,9 +120,9 @@ ms.locfileid: "74327563"
 
 本部分使用 Beeline 运行 Apache Hive 作业。
 
-在 Apache Hive 作业运行期间，请将 .csv 文件中的数据导入到名为“delays”的 Apache Hive 表中  。
+在 Apache Hive 作业运行期间，请将 .csv 文件中的数据导入到名为“delays”的 Apache Hive 表中。
 
-1. 在 HDInsight 群集已有的 SSH 提示符中，使用以下命令创建并编辑名为 flightdelays.hql 的新文件  ：
+1. 在 HDInsight 群集已有的 SSH 提示符中，使用以下命令创建并编辑名为 flightdelays.hql 的新文件：
 
    ```bash
    nano flightdelays.hql
@@ -200,7 +200,7 @@ ms.locfileid: "74327563"
    beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -f flightdelays.hql
    ```
 
-5. flightdelays.hql 脚本完成运行后，使用以下命令打开交互式 Beeline 会话  ：
+5. flightdelays.hql 脚本完成运行后，使用以下命令打开交互式 Beeline 会话：
 
    ```bash
    beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
@@ -228,11 +228,11 @@ ms.locfileid: "74327563"
 
 1. 转到 [Azure 门户](https://portal.azure.com)。
 
-2. 选择“SQL 数据库”  。
+2. 选择“SQL 数据库”。
 
-3. 针对选择使用的数据库的名称进行筛选。 服务器名称在“服务器名称”列中列出  。
+3. 针对选择使用的数据库的名称进行筛选。 服务器名称在“服务器名称”列中列出。
 
-4. 针对要使用的数据库的名称进行筛选。 服务器名称在“服务器名称”列中列出  。
+4. 针对要使用的数据库的名称进行筛选。 服务器名称在“服务器名称”列中列出。
 
     ![获取 Azure SQL 服务器详细信息](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "获取 Azure SQL 服务器详细信息")
 
@@ -244,12 +244,12 @@ ms.locfileid: "74327563"
    sudo apt-get --assume-yes install freetds-dev freetds-bin
    ```
 
-6. 安装完成后，使用以下命令连接到 SQL 数据库服务器。
+6. 安装完成后，使用以下命令连接到 SQL 数据库。
 
    ```bash
    TDSVER=8.0 tsql -H '<server-name>.database.windows.net' -U '<admin-login>' -p 1433 -D '<database-name>'
     ```
-   * 将 `<server-name>` 占位符替换为 SQL 数据库服务器名称。
+   * 将 `<server-name>` 占位符替换为逻辑 SQL 服务器名称。
 
    * 使用 SQL 数据库的管理员登录名替换 `<admin-login>` 占位符。
 

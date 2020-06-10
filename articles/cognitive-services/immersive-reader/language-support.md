@@ -10,19 +10,19 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 04/13/2020
 ms.author: metan
-ms.openlocfilehash: c4dae18a5040d475c246d244ea7702ccfdf85cd9
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: cdf21ed85933c2a629c5752659e9cc50107a3762
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538364"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309299"
 ---
 # <a name="language-support-for-immersive-reader"></a>沉浸式阅读器的语言支持
 
 本文列出了沉浸式阅读器功能支持的人类语言。
 
 
-## <a name="text-to-speech"></a>文本转语音
+## <a name="text-to-speech"></a>文本到语音转换
 
 | 语言 | 标记 |
 |----------|-----|
@@ -34,7 +34,7 @@ ms.locfileid: "81538364"
 | 中文 | zh |
 | 中文（中国） | zh-CN |
 | 中文(香港特别行政区) | zh-HK |
-| 中文（澳门） | zh-MO |
+| 中文（澳门特别行政区） | zh-MO |
 | 中文（新加坡） | zh-SG |
 | 中文（台湾） | zh-TW |
 | 简体中文 | zh-Hans |
@@ -42,7 +42,7 @@ ms.locfileid: "81538364"
 | 简体中文（新加坡） | zh-Hans-SG |
 | 中文(繁体) | zh-Hant-CN |
 | 繁体中文（香港特别行政区） | zh-Hant-HK |
-| 繁体中文（澳门） | zh-Hant-MO |
+| 繁体中文（澳门特别行政区） | zh-Hant-MO |
 | 繁体中文（台湾） | zh-Hant-TW |
 | 克罗地亚语 | hr |
 | 克罗地亚语（克罗地亚） | hr-HR |
@@ -136,7 +136,7 @@ ms.locfileid: "81538364"
 | 中文 | zh |
 | 中文（中国） | zh-CN |
 | 中文(香港特别行政区) | zh-HK |
-| 中文（澳门） | zh-MO |
+| 中文（澳门特别行政区） | zh-MO |
 | 中文（新加坡） | zh-SG |
 | 中文（台湾） | zh-TW |
 | 简体中文 | zh-Hans |
@@ -144,7 +144,7 @@ ms.locfileid: "81538364"
 | 简体中文（新加坡） | zh-Hans-SG |
 | 中文(繁体) | zh-Hant-CN |
 | 繁体中文（香港特别行政区） | zh-Hant-HK |
-| 繁体中文（澳门） | zh-Hant-MO |
+| 繁体中文（澳门特别行政区） | zh-Hant-MO |
 | 繁体中文（台湾） | zh-Hant-TW |
 | 克罗地亚语 | hr |
 | 克罗地亚语（克罗地亚） | hr-HR |
@@ -268,7 +268,7 @@ ms.locfileid: "81538364"
 | 简体中文（新加坡） | zh-Hans-SG |
 | 中文(繁体) | zh-Hant-CN |
 | 繁体中文（香港特别行政区） | zh-Hant-HK |
-| 繁体中文（澳门） | zh-Hant-MO |
+| 繁体中文（澳门特别行政区） | zh-Hant-MO |
 | 繁体中文（台湾） | zh-Hant-TW |
 | 克罗地亚语 | hr |
 | 克罗地亚语（克罗地亚） | hr-HR |

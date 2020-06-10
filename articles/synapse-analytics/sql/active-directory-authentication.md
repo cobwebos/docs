@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: db80c11c3b6eab3b7e682878e479729f4787a40b
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 894eecc7746ddb1352708f2dfe5d6d2d53cdd8c9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82086090"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021647"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>结合使用 Azure Active Directory 身份验证与 Synapse SQL 进行身份验证
 
@@ -22,7 +22,7 @@ Azure Active Directory 身份验证是一种使用 Azure Active Directory (Azure
 使用 Azure AD 身份验证，你可以集中管理有权访问 Azure Synapse 的用户标识，以简化权限管理。 包括如下优点：
 
 - 它提供了一种替代常规的用户名和密码身份验证的方法。
-- 帮助阻止用户标识在数据库服务器之间激增。
+- 帮助阻止用户标识在服务器之间激增。
 - 允许在单一位置中轮换密码。
 - 客户可以使用外部 (Azure AD) 组来管理权限。
 - 它可以通过启用集成的 Windows 身份验证和 Azure Active Directory 支持的其他形式的身份验证来消除存储密码。

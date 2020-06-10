@@ -9,57 +9,49 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.date: 05/19/2020
-ms.openlocfilehash: dcad90713227e55437523c91997175242078e9e4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 24a34ae6f00eca7154021162184f5e71503da06b
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836475"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248322"
 ---
 # <a name="getting-started-with-azure-synapse-analytics"></a>Azure Synapse Analytics 入门
 
-本教程将指导你完成设置和使用 Azure Synapse Analytics 所需的所有基本步骤。
+本文档将指导你完成设置和使用 Azure Synapse Analytics 所需的所有基本步骤。
 
 ## <a name="prepare-a-storage-account-for-use-with-a-synapse-workspace"></a>准备用于 Synapse 工作区的存储帐户
 
-1. 打开 [Azure 门户](https://portal.azure.com)
-1. 使用以下设置新建存储帐户：
-    * 在“基本信息”选项卡中
+* 打开 [Azure 门户](https://portal.azure.com)
+* 使用以下设置新建存储帐户：
 
-    |设置 | 建议的值 | 说明 |
-    |---|---|---|
-    |**存储帐户名称**| 可为其指定任意名称。|在本文档中，我们将其称为 `contosolake`。
-    |**帐户种类**|必须设置为 `StorageV2`||
-    |**位置**|可以选择任何位置| 建议 Synapse 工作区和 Azure Data Lake Storage (ADLS) Gen2 帐户位于同一区域。|
-    ||||
-    
-    * 在“高级”选项卡中
-    
-    |设置 | 建议的值 | 说明 |
-    |---|---|---|
-    |**Data Lake Storage Gen2**|`Enabled`| Azure Synapse 仅适用于启用了此设置的存储帐户。|
-    ||||
+    |选项卡|设置 | 建议的值 | 说明 |
+    |---|---|---|---|
+    |基础|**存储帐户名称**| 可为其指定任意名称。|在本文档中，我们将其称为 `contosolake`。|
+    |基础|**帐户种类**|必须设置为 `StorageV2`||
+    |基础|**位置**|可以选择任何位置| 建议 Synapse 工作区和 Azure Data Lake Storage (ADLS) Gen2 帐户位于同一区域。|
+    |高级|**Data Lake Storage Gen2**|`Enabled`| Azure Synapse 仅适用于启用了此设置的存储帐户。|
 
 1. 创建存储帐户后，从左侧导航栏选择“访问控制 (IAM)”。 然后，分配以下角色或确保其已经分配。 
+
     a. * 在存储帐户 b 上为自己分配“所有者”角色。 * 在存储帐户上为自己分配“存储 Blob 数据所有者”角色
+
 1. 从左侧导航栏中选择“容器”并创建容器。 可为其指定任意名称。 接受默认的“公共访问级别”。 在本文档中，我们将该容器称为 `users`。 选择“创建”。 
+
+在下面的步骤中，你将配置 Synapse 工作区以使用此存储帐户作为其“主要”存储帐户，并使用容器来存储工作区数据。 工作区将数据存储在此帐户中名为 `/synapse/workspacename` 的文件夹下的 Apache Spark 表和 Spark 应用程序日志中。
 
 ## <a name="create-a-synapse-workspace"></a>创建 Synapse 工作区
 
-1. 打开 [Azure 门户](https://portal.azure.com)然后在顶部搜索 `Synapse`。
-1. 在“服务”下的搜索结果中，选择“Azure Synapse Analytics (工作区预览版)” 
-1. 选择“+ 添加”
-1. “基本信息”选项卡：
+* 打开 [Azure 门户](https://portal.azure.com)然后在顶部搜索 `Synapse`。
+* 在“服务”下的搜索结果中，选择“Azure Synapse Analytics (工作区预览版)” 
+* 选择“+ 添加”以使用这些设置来创建工作区
 
-    |设置 | 建议的值 | 说明 |
-    |---|---|---|
-    |**工作区名称**|可以随意为其命名。| 在本文档中，我们将使用 `myworkspace`
-    |**区域**|匹配存储帐户的区域||
-    |||
+    |选项卡|设置 | 建议的值 | 说明 |
+    |---|---|---|---|
+    |基础|**工作区名称**|可以随意为其命名。| 在本文档中，我们将使用 `myworkspace`|
+    |基础|**区域**|匹配存储帐户的区域|
 
 1. 在“选择 Data Lake Storage Gen 2”下，选择之前创建的帐户和容器。
-    > [!NOTE]
-    > 我们将在此处选择的存储帐户称为 Synapse 工作区的“主”存储帐户。 此帐户用于在 Apache Spark 表中存储数据，以及用于在创建 Spark 池或运行 Spark 应用程序时创建的日志。
 
 1. 选择“查看 + 创建”。 选择“创建”。 你的工作区将在几分钟内准备就绪。
 
@@ -81,27 +73,17 @@ ms.locfileid: "83836475"
 ## <a name="create-a-sql-pool"></a>创建 SQL 池
 
 1. 在 Synapse Studio 的左侧导航栏中，选择“管理”>“SQL 池”
-
-    > [!NOTE] 
-    > 所有的 Synapse 工作区都具有名为“SQL 按需版本”的预创建池。
-
 1. 选择“+新建”，然后输入以下设置：
 
     |设置 | 建议的值 | 
-    |---|---|---|
+    |---|---|
     |**SQL 池名称**| `SQLDB1`|
     |**性能级别**|`DW100C`|
-    |||
 
 1. 选择“查看+创建”，然后选择“创建” 。
-1. 你的 SQL 池将在几分钟内准备就绪。
+1. 你的 SQL 池将在几分钟内准备就绪。 创建 SQL 池时，该池将与另一个名为“SQLDB1”的 SQL 池数据库相关联。
 
-    > [!NOTE]
-    > Synapse SQL 池对应于曾经所谓的“Azure SQL 数据仓库”
-
-SQL 池只要运行，就会使用计费资源。 因此，可以在需要降低成本停用该池。
-
-创建 SQL 池时，该池将与另一个名为“SQLDB1”的 SQL 池数据库相关联。
+只要 SQL 池处于活动状态，就会使用计费资源。 你可以在稍后暂停池以降低成本。
 
 ## <a name="create-an-apache-spark-pool"></a>创建 Apache Spark 池
 
@@ -109,11 +91,10 @@ SQL 池只要运行，就会使用计费资源。 因此，可以在需要降低
 1. 选择“+新建”，然后输入以下设置：
 
     |设置 | 建议的值 | 
-    |---|---|---|
+    |---|---|
     |**Apache Spark 池名称**|`Spark1`
     |**节点大小**| `Small`|
     |**节点数**| 将最小值设置为 3，最大值设置为 3|
-    |||
 
 1. 选择“查看+创建”，然后选择“创建” 。
 1. 你的 Apache Spark 池将在几秒钟内准备就绪。
@@ -126,7 +107,7 @@ SQL 池只要运行，就会使用计费资源。 因此，可以在需要降低
 在 Synapse 中执行任何 Spark 活动时，指定要使用的 Spark 池。 该池通知 Synapse 要使用的 Spark 资源数量。 只需支付所用资源的费用。 主动停止使用该池时，资源将自动超时并进行回收。
 
 > [!NOTE]
-> Spark 数据库是独立于 Spark 池创建的。 工作区始终具有名为“default”的 Spark DB，你可以创建其他 Spark 数据库。
+> Spark 数据库是独立于 Spark 池创建的。 工作区始终具有名为“default”的 Spark 数据库，你可以创建其他 Spark 数据库。
 
 ## <a name="the-sql-on-demand-pool"></a>SQL 按需版本池
 
@@ -149,7 +130,7 @@ SQL 池只要运行，就会使用计费资源。 因此，可以在需要降低
 1. 导航到“SQLDB1”>“表”。 你将看到多个已加载的表。
 1. 右键单击 dbo.Trip 表，然后选择“新建 SQL 脚本”>“选择前 100 行” 
 1. 这将创建并自动运行新的 SQL 脚本。
-1. 请注意，在 SQL 脚本的顶部，“连接到”自动设置为名为“SQLDB1”的 SQL 池。
+1. 请注意，在 SQL 脚本的顶部，“连接到”自动设置为名为 `SQLDB1` 的 SQL 池。
 1. 将 SQL 脚本的文本替换为此代码并运行。
 
     ```sql
@@ -167,7 +148,7 @@ SQL 池只要运行，就会使用计费资源。 因此，可以在需要降低
 
 ## <a name="load-the-nyc-taxi-sample-data-into-the-spark-nyctaxi-database"></a>将纽约市出租车示例数据加载到 Spark nyctaxi 数据库
 
-`SQLDB1` 的表中有可用数据。 现在，我们将其加载到名为“nyctaxi”的 Spark 数据库。
+`SQLDB1` 的表中有可用数据。 现在，我们将其加载到名为 `nyctaxi` 的 Spark 数据库。
 
 1. 在 Synapse Studio 中，导航到“开发”中心
 1. 依次选择 + 和“Notebook” 
@@ -189,7 +170,7 @@ SQL 池只要运行，就会使用计费资源。 因此，可以在需要降低
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>使用 Spark 和笔记本分析纽约市出租车数据
 
 1. 返回到笔记本
-1. 新建代码单元，输入以下文本，然后运行单元以说明我们加载到 `nyctaxi` Spark DB 中的纽约市出租车数据。
+1. 新建代码单元，输入以下文本，然后运行单元以说明我们加载到 `nyctaxi` Spark 数据库中的纽约市出租车数据。
 
    ```py
    %%pyspark
@@ -299,8 +280,8 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
 1. 选择“已链接”
 1. 导航到“存储帐户”>“我的工作区(主 - contosolake)”
 1. 选择“用户(主)”
-1. 应看到名为“NYCTaxi”的文件夹。 在内部应该看到两个文件夹，“PassengerCountStats.csv”和“PassengerCountStats.parquet”。
-1. 导航到“PassengerCountStats.parquet”文件夹。
+1. 应看到名为 `NYCTaxi` 的文件夹。 在其中，应看到两个文件夹：`PassengerCountStats.csv` 和 `PassengerCountStats.parquet`。
+1. 导航到 `PassengerCountStats.parquet` 文件夹中。
 1. 右键单击内部的 parquet 文件，然后选择“新建笔记本”，这将创建笔记本，其中包含如下所示的单元：
 
     ```py
@@ -342,11 +323,10 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
 1. 选择“+新建”，然后选择“连接到 Power BI”并设置以下字段 ：
 
     |设置 | 建议的值 | 
-    |---|---|---|
+    |---|---|
     |**名称**|`NYCTaxiWorkspace1`|
     |**工作区名称**|`NYCTaxiWorkspace1`|
-    |||
-    
+        
 1. 选择“创建”。
 
 ### <a name="create-a-power-bi-dataset-that-uses-data-in-your-synapse-workspace"></a>创建 Power BI 数据集，该数据集使用 Synapse 工作区中的数据

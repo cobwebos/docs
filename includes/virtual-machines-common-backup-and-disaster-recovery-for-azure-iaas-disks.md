@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: aa7ddb75017a532b436b9a5cfc71d1a7c2832cb6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6981b6acaf0281c1643e2d8ac3933e0fa892e3c2
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77179090"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84124281"
 ---
 本文介绍如何规划 Azure 中的 IaaS 虚拟机 (VM) 和磁盘的备份与灾难恢复 (DR)。 本文档涉及托管磁盘和非托管磁盘。
 
 首先介绍 Azure 平台内置的容错功能，此功能有助于预防本地故障的发生。 然后介绍内置功能未全面涵盖的灾难恢复方案。 此外，本文档演示了几个工作负荷方案示例，它们的备份和 DR 注意事项各不相同。 最后，介绍适用于 IaaS 磁盘 DR 的可行解决方案。
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 Azure 平台使用各种方法实现冗余和容错，以帮助客户避免本地硬件故障。 本地故障可能包括存储部分虚拟磁盘数据的 Azure 存储服务器计算机出现问题，或此服务器上的 SSD 或 HDD 发生故障。 此类隔离的硬件组件故障可能会在正常操作期间发生。
 
@@ -33,7 +33,7 @@ Azure 平台旨在从这些故障中复原。 重大灾难可能会导致大量�
 
 ### <a name="azure-iaas-resiliency"></a>Azure IaaS 复原
 
-复原  是指对硬件组件中发生的常见故障实现容错。 通过复原，可以从故障中恢复，并继续正常运行。 复原并不旨在避免故障发生，而是通过响应故障来避免故障时间或数据丢失。 复原的目标是在故障发生后将应用程序恢复到可完全正常运行的状态。 Azure 虚拟机和磁盘旨在从常见硬件故障中复原。 让我们来看看 Azure IaaS 平台是如何提供这种复原功能的。
+复原是指对硬件组件中发生的常见故障实现容错。 通过复原，可以从故障中恢复，并继续正常运行。 复原并不旨在避免故障发生，而是通过响应故障来避免故障时间或数据丢失。 复原的目标是在故障发生后将应用程序恢复到可完全正常运行的状态。 Azure 虚拟机和磁盘旨在从常见硬件故障中复原。 让我们来看看 Azure IaaS 平台是如何提供这种复原功能的。
 
 虚拟机主要由以下两部分组成：计算服务器和永久性磁盘。 这两部分都会影响虚拟机的容错。
 
@@ -61,7 +61,7 @@ Azure 平台旨在从这些故障中复原。 重大灾难可能会导致大量�
 
 DR 注意事项可能包括以下方面：
 
-- 高可用性：应用程序能够以正常状态继续运行，而没有显著增加故障时间。 “正常状态”是指，应用程序有响应，用户可以连接到应用程序，并与之交互。  某些任务关键型应用程序和数据库可能需要始终可用，即使平台上有故障，也不例外。 对于这些工作负荷，可能需要为应用程序和数据计划冗余。
+- 高可用性：应用程序能够以正常状态继续运行，而没有显著增加停机时间。 “正常状态”是指，应用程序有响应，用户可以连接到应用程序，并与之交互。 某些任务关键型应用程序和数据库可能需要始终可用，即使平台上有故障，也不例外。 对于这些工作负荷，可能需要为应用程序和数据计划冗余。
 
 - 数据持续性：在某些情况下，主要注意事项是确保在灾难发生时保留数据。 因此，可能需要在不同站点中备份数据。 对于此类工作负荷，可能不需要为应用程序计划完全冗余，只需定期备份磁盘即可。
 
@@ -69,7 +69,7 @@ DR 注意事项可能包括以下方面：
 
 让我们来看几个典型的应用程序工作负荷方案示例，以及规划灾难恢复时的注意事项。
 
-### <a name="scenario-1-major-database-solutions"></a>方案 1：主要数据库解决方案
+### <a name="scenario-1-major-database-solutions"></a>应用场景 1：主要数据库解决方案
 
 假设为 SQL Server 或 Oracle 等生产数据库服务器，可以支持高可用性。 关键生产应用程序和用户依赖此类数据库。 此系统的灾难恢复计划可能需要满足以下要求：
 
@@ -80,17 +80,17 @@ DR 注意事项可能包括以下方面：
 
 为了实现冗余，MongoDB 等 NoSQL 数据库也支持[副本](https://docs.mongodb.com/manual/replication/)。 可以使用实现高可用性的副本。
 
-### <a name="scenario-2-a-cluster-of-redundant-vms"></a>方案 2：冗余 VM 群集
+### <a name="scenario-2-a-cluster-of-redundant-vms"></a>应用场景 2：冗余 VM 群集
 
 假设由提供冗余和负载均衡的 VM 群集处理工作负载。 例如，在区域中部署的 Cassandra 群集。 此类体系结构已在相应区域提供了高水平冗余。 不过，为了保护工作负荷免受区域级故障影响，应考虑在两个区域分布群集，或定期备份到另一个区域。
 
-### <a name="scenario-3-iaas-application-workload"></a>方案 3：IaaS 应用程序工作负荷
+### <a name="scenario-3-iaas-application-workload"></a>应用场景 3：IaaS 应用程序工作负荷
 
 让我们探讨一下 IaaS 应用程序工作负荷。 例如，该应用程序可能是 Azure VM 上运行的典型生产工作负荷。 它可能是保存内容和其他站点资源的 Web 服务器或文件服务器。 也可能是在 VM 上运行的专门定制的商业应用程序，将数据、资源和应用程序状态存储到 VM 磁盘上。 在这种情况下，请务必定期进行备份。 应根据 VM 工作负载的性质确定备份频率。 例如，如果应用程序每天都运行，并且修改数据，那么应每小时备份一次。
 
 再例如，报表服务器从其他数据源拉取数据，并生成聚合报表。 如果丢失此 VM 或磁盘，可能导致报表丢失。 不过，可以重新运行报表进程，并重新生成输出。 在这种情况下，即使报表服务器遭遇灾难，也不会真正丢失数据。 因此，可以有高水平的容错，允许报表服务器上丢失部分数据。 在这种情况下，不太频繁地进行备份可以降低成本。
 
-### <a name="scenario-4-iaas-application-data-issues"></a>方案 4：IaaS 应用程序数据问题
+### <a name="scenario-4-iaas-application-data-issues"></a>应用场景 4：IaaS 应用程序数据问题
 
 IaaS 应用程序数据问题是另一种可能的情况。 假设有一个应用程序，用于计算、维护和提供关键商业数据（如定价信息）。 新版应用程序有一个软件 bug，不仅错误地计算了定价，还破坏了平台提供的现有商业数据。 在这种情况下，最好还原到旧版应用程序和数据。 若要能够进行还原，请定期备份系统。
 
@@ -128,7 +128,7 @@ IaaS 应用程序数据问题是另一种可能的情况。 假设有一个应�
 
 [Azure 备份](../articles/backup/backup-azure-vms-introduction.md)可将运行 Windows 或 Linux 的 VM 备份到 Azure 恢复服务保管库中。 必须在生成数据的应用程序仍在运行时备份业务关键型数据，这让备份和还原业务关键型数据变得更加复杂。 
 
-为了解决此问题，Azure 备份为 Microsoft 工作负荷提供应用程序一致性备份。 它使用卷影服务确保将数据正确写入存储中。 对于 Linux VM，默认的备份一致性模式是文件一致性备份，因为 Linux 不像 Windows 那样具有等同于卷影服务的功能。 对于 Linux 计算机，请参阅 [Azure Linux VM 的应用程序一致性备份](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)。
+为了解决此问题，Azure 备份为 Microsoft 工作负荷提供应用程序一致性备份。 它使用卷影服务确保将数据正确写入存储中。 对于 Linux VM，默认的备份一致性模式是文件一致性备份，因为 Linux 不像 Windows 那样具有与卷影服务相当的功能。 对于 Linux 计算机，请参阅 [Azure Linux VM 的应用程序一致性备份](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)。
 
 ![Azure 备份流][1]
 
@@ -142,11 +142,11 @@ IaaS 应用程序数据问题是另一种可能的情况。 假设有一个应�
 
 1.  为 VM 创建恢复服务保管库：
 
-    a. 在 [Azure 门户](https://portal.azure.com/)中，浏览到“所有资源”并找到“恢复服务保管库”。  
+    a. 在 [Azure 门户](https://portal.azure.com/)中，浏览到“所有资源”并找到“恢复服务保管库”。 
 
-    b. 在“恢复服务保管库”菜单上，单击“添加”，并按相关步骤操作，在 VM 所在区域中新建一个保管库。   例如，如果 VM 位于美国西部区域，请为保管库选择“美国西部”。
+    b. 在“恢复服务保管库”菜单上，单击“添加”，并按相关步骤操作，在 VM 所在区域中新建一个保管库。  例如，如果 VM 位于美国西部区域，请为保管库选择“美国西部”。
 
-1.  验证新建保管库的存储复制功能。 访问“恢复服务保管库”下的保管库，并转到“属性” **“备份配置”** “更新”。   >    >   确保“异地冗余存储”选项默认处于选中状态。  该选项可确保保管库自动复制到辅助数据中心。 例如，位于美国西部的保管库会自动复制到美国东部。
+1.  验证新建保管库的存储复制功能。 访问“恢复服务保管库”下的保管库，转到“属性” > “备份配置” > “更新”   。 确保“异地冗余存储”选项默认处于选中状态。 该选项可确保保管库自动复制到辅助数据中心。 例如，位于美国西部的保管库会自动复制到美国东部。
 
 1.  配置备份策略，再从同一 UI 中选择 VM。
 
@@ -168,7 +168,7 @@ IaaS 应用程序数据问题是另一种可能的情况。 假设有一个应�
 
 也可以使用 PowerShell [从还原磁盘中创建新 VM](../articles/backup/backup-azure-vms-automation.md#create-a-vm-from-restored-disks)。
 
-## <a name="alternative-solution-consistent-snapshots"></a>备用解决方案：一致性快照
+## <a name="alternative-solution-consistent-snapshots"></a>替代解决方案：一致性快照
 
 如果无法使用 Azure 备份，可以使用快照实现自己的备份机制。 为 VM 使用的所有磁盘创建一致性快照，再将这些快照复制到另一个区域的过程比较复杂。 因此，Azure 认为相对于生成自定义解决方案，使用备份服务是更好的选择。
 
@@ -188,7 +188,7 @@ IaaS 应用程序数据问题是另一种可能的情况。 假设有一个应�
 
 1.  为所有磁盘[创建 Blob 快照](../articles/storage/blobs/storage-blob-snapshots.md)。
 
-某些 Windows 应用程序（如 SQL Server）通过卷影服务提供协调的备份机制，以创建应用程序一致性备份。 在 Linux 上，可以使用 fsfreeze 等工具来协调磁盘  。 此工具提供文件一致性备份，而不是应用程序一致性快照。 此过程比较复杂。因此，应考虑使用 [Azure 备份](../articles/backup/backup-azure-vms-introduction.md)或已实施此过程的第三方备份解决方案。
+某些 Windows 应用程序（如 SQL Server）通过卷影服务提供协调的备份机制，以创建应用程序一致性备份。 在 Linux 上，可以使用 fsfreeze 等工具来协调磁盘。 此工具提供文件一致性备份，而不是应用程序一致性快照。 此过程比较复杂。因此，应考虑使用 [Azure 备份](../articles/backup/backup-azure-vms-introduction.md)或已实施此过程的第三方备份解决方案。
 
 上述过程会生成所有 VM 磁盘的协调快照集合，用于表示处于特定时间点的 VM。 这就是 VM 的备份还原点。 可以按原定时间间隔重复执行此过程，从而创建定期备份。 请参阅[将备份复制到另一个区域](#copy-the-snapshots-to-another-region)，了解将快照复制到另一个区域进行 DR 的步骤。
 
@@ -231,7 +231,7 @@ IaaS 应用程序数据问题是另一种可能的情况。 假设有一个应�
 
 ### <a name="sql-server"></a>SQL Server
 
-在 VM 中运行的 SQL Server 有自己的内置功能，可将 SQL Server 数据库备份到 Azure Blob 存储或文件共享。 如果存储帐户是异地冗余存储或读取访问权限异地冗余存储，那么在发生灾难时，可以在存储帐户的辅助数据中心内访问这些备份，需要遵循前面所述的相同限制。 有关详细信息，请参阅 [Azure 虚拟机中 SQL Server 的备份和还原](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-backup-recovery.md)。 除了备份和还原外，[SQL Server AlwaysOn 可用性组](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md)还可以维护数据库的次要副本。 这种功能可以大大减少灾难恢复时间。
+在 VM 中运行的 SQL Server 有自己的内置功能，可将 SQL Server 数据库备份到 Azure Blob 存储或文件共享。 如果存储帐户是异地冗余存储或读取访问权限异地冗余存储，那么在发生灾难时，可以在存储帐户的辅助数据中心内访问这些备份，需要遵循前面所述的相同限制。 有关详细信息，请参阅 [Azure 虚拟机中 SQL Server 的备份和还原](../articles/azure-sql/virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md)。 除了备份和还原外，[SQL Server AlwaysOn 可用性组](../articles/azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md)还可以维护数据库的次要副本。 这种功能可以大大减少灾难恢复时间。
 
 ## <a name="other-considerations"></a>其他注意事项
 

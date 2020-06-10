@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 7a60f761e4ee575e3196bb1ccd3baa42f27221f8
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 4c2c02e47059d73e29da705fc9075721e080e636
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588167"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701794"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>管理 Azure 实验室服务中的教室实验室 
 本文介绍如何创建和删除教室实验室。 它还说明如何查看实验室帐户中的所有教室实验室。 
@@ -29,18 +29,18 @@ ms.locfileid: "83588167"
 ## <a name="create-a-classroom-lab"></a>创建课堂实验室
 
 1. 导航到 [Azure 实验室服务网站](https://labs.azure.com)。 尚不支持 Internet Explorer 11。 
-2. 选择“登录”并输入凭据。 选择或输入属于实验室帐户中“实验室创建者”角色成员的“用户 ID”，然后输入密码 。 Azure 实验室服务支持组织帐户和 Microsoft 帐户。 
-3. 选择“新建实验室”。 
+1. 选择“登录”并输入凭据。 选择或输入属于实验室帐户中“实验室创建者”角色成员的“用户 ID”，然后输入密码 。 Azure 实验室服务支持组织帐户和 Microsoft 帐户。 
+1. 选择“新建实验室”。 
     
     ![创建课堂实验室](../media/tutorial-setup-classroom-lab/new-lab-button.png)
-3. 在“新建实验室”窗口中，执行以下操作：： 
+1. 在“新建实验室”窗口中，执行以下操作：： 
     1. 指定实验室的**名称**。 
-    2. 选择类所需的“虚拟机大小”。 有关可用大小列表，请参阅 [VM 大小](#vm-sizes)部分。 
-    3. 选择要用于课堂实验室的“虚拟机映像”。 如果选择 Linux 映像，可以看到一个用来为该映像启用远程桌面连接的选项。 有关详细信息，请参阅[启用适用于 Linux 的远程桌面连接](how-to-enable-remote-desktop-linux.md)。
+    1. 选择类所需的“虚拟机大小”。 有关可用大小列表，请参阅 [VM 大小](#vm-sizes)部分。 
+    1. 选择要用于课堂实验室的“虚拟机映像”。 如果选择 Linux 映像，可以看到一个用于**启用远程桌面连接**的选项。 有关详细信息，请参阅[启用适用于 Linux 的远程桌面连接](how-to-enable-remote-desktop-linux.md)。
 
         如果使用实验室帐户所有者凭据登录，则会看到一个选项，可为实验室启用更多映像。 有关详细信息，请参阅[在创建实验室时启用映像](specify-marketplace-images.md#enable-images-at-the-time-of-lab-creation)。
-    4. 查看页面上显示的“每小时总价”。 
-    6. 选择“保存”。
+    1. 查看页面上显示的“每小时总价”。 
+    1. 选择“保存”。
 
         ![“新建实验室”窗口](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 
@@ -70,24 +70,24 @@ ms.locfileid: "83588167"
     ![模板 VM 的创建状态](../media/tutorial-setup-classroom-lab/create-template-vm-progress.png)
 8. 在“模板”页上执行以下步骤：对于此教程来说，这些步骤是**可选**的。
 
-    2. 选择“连接”以连接到模板 VM。 如果它是 Linux 模板 VM，请选择是要使用 SSH 还是 RDP（如果已启用 RDP）来建立连接。
+    1. 选择“连接”以连接到模板 VM。 如果它是 Linux 模板 VM，请选择是要使用 SSH 还是 GUI 远程桌面来建立连接。  使用 GUI 远程桌面需要附加设置。 有关详细信息，请参阅[为 Linux 虚拟机启用图形远程桌面](how-to-use-remote-desktop-linux-student.md)。
     1. 选择“重置密码”以重置 VM 的密码。 
     1. 在模板 VM 上安装并配置软件。 
     1. **停止** VM。  
     1. 输入模板的**说明**
-10. 在“模板”页上的工具栏中选择“发布”。 
+9.  在“模板”页上的工具栏中选择“发布”。 
 
     ![“发布模板”按钮](../media/tutorial-setup-classroom-lab/template-page-publish-button.png)
 
     > [!WARNING]
     > 发布后无法取消发布。 
-8. 在“发布模板”页上，输入要在实验室中创建的虚拟机的数目，然后选择“发布”。 
+10. 在“发布模板”页上，输入要在实验室中创建的虚拟机的数目，然后选择“发布”。 
 
     ![发布模板 - VM 数](../media/tutorial-setup-classroom-lab/publish-template-number-vms.png)
 11. 可以在页面上查看模板的**发布状态**。 此过程最长可能需要花费一小时。 
 
     ![发布模板 - 进度](../media/tutorial-setup-classroom-lab/publish-template-progress.png)
-4. 选择左侧菜单上的“虚拟机”或选择“虚拟机”磁贴，切换到“虚拟机池”页。 确认看到这些虚拟机处于“未分配”状态。 这些 VM 尚未分配给学生。 它们应该处于“已停止”状态。 可以在此页上启动学生 VM，连接到该 VM，停止该 VM，然后删除该 VM。 你可以在此页中启动这些 VM，也可以让你的学生启动它们。 
+12. 选择左侧菜单上的“虚拟机”或选择“虚拟机”磁贴，切换到“虚拟机池”页。 确认看到这些虚拟机处于“未分配”状态。 这些 VM 尚未分配给学生。 它们应该处于“已停止”状态。 可以在此页上启动学生 VM，连接到该 VM，停止该 VM，然后删除该 VM。 你可以在此页中启动这些 VM，也可以让你的学生启动它们。 
 
     ![处于已停止状态的虚拟机](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 

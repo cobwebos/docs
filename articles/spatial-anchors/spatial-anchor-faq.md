@@ -5,15 +5,15 @@ author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
-ms.date: 02/24/2019
+ms.date: 05/18/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 046e438304991c4af7ea4a208e51b7a695a5bf23
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 4bf55daa64319cfd47efd2e38a368d76f3814b4e
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83004466"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84296663"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>有关 Azure 空间定位点的常见问题解答
 
@@ -72,21 +72,21 @@ Azure 空间定位点遵守 [Azure 服务协议条款](https://go.microsoft.com/
 
 **问：是否提供 SLA？**
 
-**答:** 作为 Azure 服务的标准，我们的目标是高于 99.9% 的可用性。 请注意，Azure 空间定位点当前处于预览版状态，因此会应用[预览版补充条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+**答:** 作为 Azure 服务的标准，我们的目标是高于 99.9% 的可用性。 
 
 **问：是否可以将使用 Azure 空间定位点的应用发布到应用商店？是否可以将 Azure 空间定位点用于任务关键型生产方案？**
 
-**答:** Azure 空间定位点当前处于预览版状态，在此期间我们会邀请你开发应用、针对产品[提供反馈](https://feedback.azure.com/forums/919252-azure-spatial-anchors)以及规划生产部署。
-
-公开上市 (GA) 日期即将宣布。
+**答:** 是的，Azure 空间定位点已正式发布，并具有标准的 Azure 服务 SLA。 我们邀请你开发用于生产部署的应用，并与我们[共享对产品的反馈](https://feedback.azure.com/forums/919252-azure-spatial-anchors)。
 
 **问：是否实施了任何限制？**
 
-**答**：是的，我们实施了限制。  我们预计你不会在典型应用程序开发和测试中达到这些限制。 对于生产部署，我们已准备好支持客户的大规模要求。 请[联系我们](mailto:azuremrs@microsoft.com)以进行讨论。 在此预览版阶段，我们尚未发布分层和定价结构，但我们预计会很快发布。
+**答**：是的，我们实施了限制。  我们预计你不会在典型应用程序开发和测试中达到这些限制。 对于生产部署，我们已准备好支持客户的大规模要求。 请[联系我们](mailto:azuremrs@microsoft.com)以进行讨论。 
 
 **问：Azure 空间定位点在哪些区域可用？**
 
-**答:** 可以在 Azure 美国东部 2 区域中立即创建 Azure 空间定位点帐户。 这意味着为此服务提供支持的计算和存储处于此区域中。 也就是说，对于客户端所处的位置没有限制。 将来，我们会将服务的区域可用性扩展到所有主要 Azure 区域。
+**答:** 目前，美国西部 2、美国东部、美国东部 2、美国中南部、西欧、北欧、英国南部和澳大利亚东部提供 Azure 空间定位点。 今后会在更多的区域中提供该服务。
+
+这意味着为此服务提供支持的计算和存储处于这些区域中。 也就是说，对于客户端所处的位置没有限制。 
 
 **问：是否对 Azure 空间定位点收费？是否会永远收费？**
 

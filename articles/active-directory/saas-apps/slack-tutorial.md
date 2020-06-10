@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 395aa82d47f4f84070af557c2c3b741776fb51ba
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 70caf48163483b449fa2cf3576681b5c9c15f4f2
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834401"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259280"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Slack 集成
 
@@ -40,7 +40,7 @@ ms.locfileid: "83834401"
 * 已启用 Slack 单一登录 (SSO) 的订阅。
 
 > [!NOTE]
-> 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
+> 如果需要在一个租户中与多个 Slack 实例集成，则每个应用程序的标识符可以是变量。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -93,20 +93,24 @@ ms.locfileid: "83834401"
 
     > [!NOTE]
     > “登录 URL”值不是实际值。 请使用实际的登录 URL 更新此值。 请联系 [Slack 客户端支持团队](https://slack.com/help/contact)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    
+    > [!NOTE]
+    > 如果有多个需要与租户进行集成的 Slack 实例，则标识符（实体 ID）的值可以是变量。 使用模式 `https://<DOMAIN NAME>.slack.com`。 在此方案中，还需要使用相同的值与 Slack 中的另一个设置进行配对。
 
 1. Slack 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
     ![image](common/edit-attribute.png)
 
-1. 除了上述属性，Slack 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。 如果用户没有电子邮件地址，请将 emailaddress 映射到 user.userprincipalname 。
+1. 除了上述属性，Slack 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。 还需要添加 `email` 属性。 如果用户没有电子邮件地址，请将 emailaddress 映射到 user.userprincipalname 并将 email 映射到 user.userprincipalname   。
 
     | 名称 | 源属性 |
     | -----|---------|
     | emailaddress | user.userprincipalname |
+    | 电子邮件 | user.userprincipalname |
     | | |
 
-> [!NOTE]
-    > 若要设置服务提供者 (SP) 配置，必须在 SAML 配置页面中单击“高级选项”旁的“展开” 。 在“服务提供者颁发者”框中，输入工作区 URL。 默认值为 slack.com。 
+   > [!NOTE]
+   > 若要设置服务提供者 (SP) 配置，必须在 SAML 配置页面中单击“高级选项”旁的“展开” 。 在“服务提供者颁发者”框中，输入工作区 URL。 默认值为 slack.com。 
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
 
@@ -124,7 +128,7 @@ ms.locfileid: "83834401"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
    1. 单击“创建”。
 
@@ -172,9 +176,12 @@ ms.locfileid: "83834401"
 
     ![在应用端配置单一登录](./media/slack-tutorial/tutorial-slack-004.png)
 
-    e. 单击“展开”并在“标识提供者颁发者”文本框中输入 `https://slack.com`。
+    e. 单击“展开”并在“服务提供者颁发者”文本框中输入 `https://slack.com`。
 
     f.  单击“保存配置”。
+    
+    > [!NOTE]
+    > 如果需要与 Azure AD 集成多个 Slack 实例，请将 `https://<DOMAIN NAME>.slack.com` 设置为“服务提供程序颁发者”，以便它可以与 Azure 应用程序“标识符”设置配对 。
 
 ### <a name="create-slack-test-user"></a>创建 Slack 测试用户
 

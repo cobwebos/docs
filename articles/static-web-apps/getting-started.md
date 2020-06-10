@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 8de6e9cff8149423f4b00b07e3113be6606181b5
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 72a76fb513dc6eb008fcf1d1e19ffc33e713cfdc
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714230"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259246"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>快速入门：生成第一个静态 Web 应用
 
@@ -31,25 +31,25 @@ Azure 静态 Web 应用通过从 GitHub 存储库生成应用来将网站发布�
 
 # <a name="angular"></a>[Angular](#tab/angular)
 
-- 导航到以下位置以创建新存储库
+- 请确保已登录到 GitHub，然后导航到以下位置以创建新存储库
   - https://github.com/staticwebdev/angular-basic/generate
 - 将存储库命名为 my-first-static-web-app
 
 # <a name="react"></a>[React](#tab/react)
 
-- 导航到以下位置以创建新存储库
+- 请确保已登录到 GitHub，然后导航到以下位置以创建新存储库
   - https://github.com/staticwebdev/react-basic/generate
 - 将存储库命名为 my-first-static-web-app
 
 # <a name="vue"></a>[Vue](#tab/vue)
 
-- 导航到以下位置以创建新存储库
+- 请确保已登录到 GitHub，然后导航到以下位置以创建新存储库
   - https://github.com/staticwebdev/vue-basic/generate
 - 将存储库命名为 my-first-static-web-app
 
 # <a name="no-framework"></a>[无框架](#tab/vanilla-javascript)
 
-- 导航到以下位置以创建新存储库
+- 请确保已登录到 GitHub，然后导航到以下位置以创建新存储库
   - https://github.com/staticwebdev/vanilla-basic/generate
 - 将存储库命名为 my-first-static-web-app
 

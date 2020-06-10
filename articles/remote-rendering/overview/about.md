@@ -5,30 +5,34 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: overview
-ms.openlocfilehash: a06c63152cb56be6d94cccc472d2e1d65651d6ce
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: e40109a3c43fa30d70b7a13243723d717b4003c4
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677922"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021427"
 ---
 # <a name="about-azure-remote-rendering"></a>关于 Azure 远程渲染
 
 > [!IMPORTANT]
-> Azure 远程渲染目前为公共预览版。 
+> Azure 远程渲染目前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-使用 Azure 远程渲染 (ARR) 服务可以在云中渲染高质量的交互式 3D 内容，并将其实时流式传输到 HoloLens 2 等设备。 
+使用 Azure 远程渲染 (ARR) 服务可以在云中渲染高质量的交互式 3D 内容，并将其实时流式传输到 HoloLens 2 等设备。
 
 ![示例模型](../media/arr-engine.png)
 
-离线设备的计算能力有限，很难渲染复杂的模型。 同时，在许多应用场合中，视觉保真度出现任何形式的下降都是不可接受的。
+离线设备的计算能力有限，很难渲染复杂的模型。 同时，在许多应用场合中，视觉保真度出现任何形式的下降都是不可接受的。 以下屏幕截图比较的是细节完整的模型以及使用常用的内容创建工具简化后的模型：
 
-远程渲染解决了此问题，因为它可以将渲染工作负载转移到云中的高端 GPU。  云托管的图形引擎可以渲染图像，将图像编码为视频流，然后将编码的内容流式传输到目标设备。
+![示例模型](./media/engine-model-decimated.png)
+
+简化后的模型包含大约 200,000 个三角形（包括详细的内部部分），而原始模型中有超过 1800 万个三角形。
+
+远程渲染解决了此问题，因为它可以将渲染工作负载转移到云中的高端 GPU。 云托管的图形引擎可以渲染图像，将图像编码为视频流，然后将编码的内容流式传输到目标设备。
 
 ## <a name="hybrid-rendering"></a>混合渲染
 
-在大多数应用场合中，只是渲染复杂模型并不足够， 还需要通过自定义的 UI 向用户提供功能。 Azure 远程渲染不强迫你使用专用的 UI 框架，它还支持混合渲染。  这意味着，你可以使用首选的方法（例如 [MRTK](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/GettingStartedWithTheMRTK.html)）在设备上渲染元素。
+在大多数应用场合中，只是渲染复杂模型并不足够， 还需要通过自定义的 UI 向用户提供功能。 Azure 远程渲染不强迫你使用专用的 UI 框架，它还支持混合渲染。 这意味着，你可以使用首选的方法（例如 [MRTK](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/GettingStartedWithTheMRTK.html)）在设备上渲染元素。
 
 在某个帧的末尾，Azure 远程渲染会自动将本地渲染的内容与远程图像合并到一起。 它甚至可以通过适当的闭合来做到这一点。
 

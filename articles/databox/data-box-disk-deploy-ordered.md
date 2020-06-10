@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: e7ab15749ccd4ef2808e9cbb362196e38e3d7f4b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: de481abd82b4fc7dd2eae3763f82b8dd96cc14a9
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746086"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266519"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>教程：订购 Azure Data Box Disk
 
@@ -105,7 +105,7 @@ Azure Data Box Disk 是一个混合云解决方案，可用于快速、方便、
 
 7. 在“寄送地址”选项卡中，提供你的名字和姓氏、公司的名称和邮政地址，以及有效的电话号码。 单击“验证地址”。 服务将验证寄送地址，以确定服务是否在该区域可用。 如果服务在指定的寄送地址可用，则会将结果通知给你。
 
-   处理订单之后，你会收到电子邮件通知。 有关自托管寄送的详细信息，请参阅[使用自托管寄送](data-box-disk-portal-customer-managed-shipping.md)。
+   处理订单之后，你会收到电子邮件通知。 如果你已选择自托管寄送，请参阅[使用自托管寄送](data-box-disk-portal-customer-managed-shipping.md)。
 
     ![提供寄送地址](media/data-box-disk-deploy-ordered/data-box-shipping-address.png)
 8. 在“通知详细信息”中，指定电子邮件地址。 服务会将有关任何订单状态更新的电子邮件通知发送到指定的电子邮件地址。

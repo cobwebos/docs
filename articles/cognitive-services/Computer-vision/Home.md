@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: af49e80766d7ac4bd2d9ed677a2571fb0a5a3189
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 99af09ded8759e7f6e2235ce0c1354982568e19d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80131753"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117516"
 ---
 # <a name="what-is-computer-vision"></a>什么是计算机视觉？
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-使用 Azure 的计算机视觉服务，开发人员可以访问用于处理图像并返回信息的高级算法，具体取决于你感兴趣的视觉功能。 例如，计算机视觉可以确定图像是否包含成人内容，或者查找图像中的所有人脸。
+使用 Azure 的计算机视觉服务，开发人员可以访问高级算法，这些算法根据你感兴趣的视觉功能处理图像并返回信息。 例如，计算机视觉可以确定图像是否包含成人内容、查找特定的品牌或物体或查找人脸。
 
-可以在应用程序中使用计算机视觉，方法是：使用本机 SDK，或者直接调用 REST API。 此页广泛地介绍了计算机视觉的功能。
+可以在应用程序中使用计算机视觉，方法是：使用客户端库 SDK，或者直接调用 REST API。 此页广泛地介绍了计算机视觉的功能。
 
 ## <a name="computer-vision-for-digital-asset-management"></a>用于数字资产管理的计算机视觉
 
@@ -32,7 +32,7 @@ ms.locfileid: "80131753"
 
 ## <a name="analyze-images-for-insight"></a>通过分析图像来获取见解
 
-可以分析图像，以便检测并提供有关视觉特性和特征的见解。 下表中的所有特性由[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 提供。
+可以分析图像，以便提供有关视觉特性和特征的见解。 下表中的所有特性由[分析图像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 提供。
 
 | 操作 | 说明 |
 | ------ | ----------- |
@@ -45,12 +45,12 @@ ms.locfileid: "80131753"
 |**[检测图像类型](concept-detecting-image-types.md)**|检测图像特征，例如图像是否为素描，或者图像是剪贴画的可能性。|
 |**[检测特定领域的内容](concept-detecting-domain-content.md)**|使用域模型来检测和标识图像中特定领域的内容，例如名人和地标。 例如，如果图像中包含人物，则计算机视觉可以使用针对名人的域模型来确定图像中检测到的人物是否为已知名人。|
 |**[检测颜色方案](concept-detecting-color-schemes.md)**|分析图像中的颜色使用情况。 计算机视觉可以确定图像是黑白的还是彩色的，而对于彩色图像，又可以确定主色和主题色。|
-|**[生成缩略图](concept-generating-thumbnails.md)**|分析图像的内容，生成该图像的相应缩略图。 计算机视觉首先生成高质量缩略图，然后通过分析图像中的对象来确定“感兴趣区域”  。 然后，计算机视觉会裁剪图像以满足感兴趣区域的要求。 可以根据用户需求，使用与原始图像的纵横比不同的纵横比显示生成的缩略图。|
-|**[获取感兴趣区域](concept-generating-thumbnails.md#area-of-interest)**|分析图像内容，以返回“感兴趣区域”的坐标  。 计算机视觉并没有裁剪图像和生成缩略图，而是返回该区域的边框坐标，因此，进行调用的应用程序可以根据需要修改原始图像。|
+|**[生成缩略图](concept-generating-thumbnails.md)**|分析图像的内容，生成该图像的相应缩略图。 计算机视觉首先生成高质量缩略图，然后通过分析图像中的对象来确定“感兴趣区域”。 然后，计算机视觉会裁剪图像以满足感兴趣区域的要求。 可以根据用户需求，使用与原始图像的纵横比不同的纵横比显示生成的缩略图。|
+|**[获取感兴趣区域](concept-generating-thumbnails.md#area-of-interest)**|分析图像内容，以返回“感兴趣区域”的坐标。 计算机视觉并没有裁剪图像和生成缩略图，而是返回该区域的边框坐标，因此，进行调用的应用程序可以根据需要修改原始图像。|
 
 ## <a name="extract-text-from-images"></a>从图像中提取文本
 
-可以使用计算机视觉[读取](concept-recognizing-text.md#read-api) API 将印刷文本和手写文本从图像中提取到计算机可读的字符流中。 该读取 API 使用最新的模型，适用于各种表面和背景（如收据、海报、名片、信件和白板）上的文本。 当前，仅支持英语和西班牙语。
+可以使用计算机视觉[读取](concept-recognizing-text.md#read-api) API 将印刷文本和手写文本从图像中提取到计算机可读的字符流中。 该读取 API 使用最新的模型，适用于各种表面和背景（如收据、海报、名片、信件和白板）上的文本。 目前，它适用于七种不同的语言（请参阅[语言支持](./language-support.md)）。
 
 还可以使用[光学字符识别 (OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api) API 提取多种语言的印刷文本。 如果需要，OCR 会校正已识别文本的旋转角度并提供每个词的帧坐标。 OCR 支持 25 种语言，并会自动检测已识别文本的语言。
 

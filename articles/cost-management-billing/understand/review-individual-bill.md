@@ -6,20 +6,22 @@ ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.topic: tutorial
-ms.date: 02/13/2020
+ms.date: 05/28/2020
 ms.author: banders
-ms.openlocfilehash: 8ebda9716df2e9e45050760ee8d0434c12838370
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5a9e21cacb17743cbb8324a06c083c52aa261eb9
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199120"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194154"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>教程：查看个人 Azure 账单
 
 本文将帮助你了解和查看 Azure 账单。 通常情况下，你通过电子邮件接收每个计费周期的发票。 发票代表 Azure 账单。 Azure 门户中提供了发票上的成本信息。 本教程在 Azure 门户中将发票与每日使用情况明细文件和成本分析进行比较。
 
 本教程仅适用于具有个人订阅的 Azure 客户。 常见的个人订阅是直接从 Azure 网站购买的，其费率为即用即付费率。
+
+若想获取相关帮助来理解意外产生的费用，请参阅[分析意外费用](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started#analyze-unexpected-charges)。 或者，如果要取消 Azure 订阅，请参阅[取消 Azure 订阅](../manage/cancel-azure-subscription.md)。
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -29,7 +31,7 @@ ms.locfileid: "77199120"
 
 ## <a name="prerequisites"></a>先决条件
 
-必须有付费的 Microsoft Online Services 计划  计费帐户。 此帐户在你通过 Azure 网站注册获取 Azure 时创建。 例如，如果你有一个[采用即用即付费率的帐户](https://azure.microsoft.com/offers/ms-azr-0003p/)，或者你是 [Visual Studio 订阅者](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)。
+必须有付费的 Microsoft Online Services 计划计费帐户。 此帐户在你通过 Azure 网站注册获取 Azure 时创建。 例如，如果你有一个[采用即用即付费率的帐户](https://azure.microsoft.com/offers/ms-azr-0003p/)，或者你是 [Visual Studio 订阅者](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)。
 
 仅当超过每月信用额度时，才会创建 [Azure 免费帐户](https://azure.microsoft.com/offers/ms-azr-0044p/)的发票。
 
@@ -45,23 +47,23 @@ ms.locfileid: "77199120"
 
 若要比较使用情况和成本，第一步是下载发票和使用情况文件。 使用情况明细 CSV 文件按计费周期和每日使用情况显示费用信息。 它不包含任何税务信息。 若要下载文件，你必须是帐户管理员或拥有“所有者”角色。
 
-在 Azure 门户的搜索框中键入“订阅”  ，然后单击“[订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)”。
+在 Azure 门户的搜索框中键入“订阅”，然后单击“[订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)”。
 
-![导航到订阅](./media/review-individual-bill/navigate-subscriptions.png)
+[![导航到订阅](./media/review-individual-bill/navigate-subscriptions.png)](./media/review-individual-bill/navigate-subscriptions.png#lightbox)
 
 在订阅列表中，单击订阅。
 
-在“计费”下，单击“发票”。  
+在“计费”下，单击“发票”。 
 
 在发票列表中，查找要下载的发票，然后单击下载符号。 可能需要更改时间跨度才能查看较旧的发票。 生成使用情况详细信息文件和发票可能需要几分钟的时间。
 
 ![屏幕快照，显示计费周期、下载选项，以及每个计费周期的总费用](./media/review-individual-bill/download-invoice.png)
 
-在“下载使用情况 + 费用”窗口中，单击“下载 csv”和“下载发票”。  
+在“下载使用情况 + 费用”窗口中，单击“下载 csv”和“下载发票”。 
 
 ![显示“下载发票和使用情况”页的屏幕截图](./media/review-individual-bill/usageandinvoice.png)
 
-如果显示“不可用”，可能有多种原因导致你看不到使用情况详细信息或发票： 
+如果显示“不可用”，可能有多种原因导致你看不到使用情况详细信息或发票：
 
 - 从订阅 Azure 开始算还不到 30 天。
 - 此计费周期没有任何使用量。
@@ -73,11 +75,11 @@ ms.locfileid: "77199120"
 
 ![Azure 发票示例](./media/review-individual-bill/invoice-usage-charge.png)
 
-打开已下载的 CSV 使用情况文件。 在文件的末尾，将“成本”  列中所有项的值求和。
+打开已下载的 CSV 使用情况文件。 在文件的末尾，将“成本”列中所有项的值求和。
 
 ![已将成本求和的使用情况文件示例](./media/review-individual-bill/usage-file-usage-charges.png)
 
- 求和“成本”  值应与发票上的“使用费”成本  精确匹配。
+ 求和“成本”值应与发票上的“使用费”成本精确匹配。
 
 在计量级别显示使用费。 下方的术语在发票和使用情况明细文件中表示同一事物。 例如，发票中的计费周期等同于使用情况明细文件中的计费周期。
 
@@ -94,21 +96,21 @@ ms.locfileid: "77199120"
 |费率 | EffectivePrice|
 | 值 | 成本 |
 
-发票的“使用费”部分显示计费周期内已使用的每种计量的总值（成本）  。 例如，下图显示用于“P10 磁盘”资源的 Azure 存储服务的使用费。 
+发票的“使用费”部分显示计费周期内已使用的每种计量的总值（成本）。 例如，下图显示用于“P10 磁盘”资源的 Azure 存储服务的使用费。
 
 ![发票使用费](./media/review-individual-bill/invoice-usage-charges.png)
 
-在 CSV 使用情况文件中，按发票上显示的相应资源的 *MeterName* 进行筛选。 然后，对列中项的“成本”  值求和。 下面是一个示例。
+在 CSV 使用情况文件中，按发票上显示的相应资源的 *MeterName* 进行筛选。 然后，对列中项的“成本”值求和。 下面是一个示例。
 
 ![MeterName 的使用情况文件求和值](./media/review-individual-bill/usage-file-usage-charge-resource.png)
 
-求和“成本”  值应与发票上已收费的单项资源的“使用费”成本  精确匹配。
+求和“成本”值应与发票上已收费的单项资源的“使用费”成本精确匹配。
 
 有关详细信息，请参阅[了解 Azure 发票](understand-invoice.md)和[了解 Azure 详细使用情况](understand-usage.md)。
 
 ## <a name="compare-charges-and-usage-in-cost-analysis"></a>在成本分析中比较费用和使用情况
 
-还可以通过 Azure 门户中的成本分析验证费用。 若要快速了解已开票的使用情况和费用，请从 Azure 门户中的[“订阅”页面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)选择订阅。 接下来单击“成本分析”  ，然后在“视图”列表中单击“发票详细信息”。 
+还可以通过 Azure 门户中的成本分析验证费用。 若要快速了解已开票的使用情况和费用，请从 Azure 门户中的[“订阅”页面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)选择订阅。 接下来单击“成本分析”，然后在“视图”列表中单击“发票详细信息”。
 
 ![显示发票详细信息选择的示例](./media/review-individual-bill/cost-analysis-select-invoice-details.png)
 
@@ -116,7 +118,7 @@ ms.locfileid: "77199120"
 
 ![显示成本分析中的开票成本详细信息的示例](./media/review-individual-bill/cost-analysis-service-usage-charges.png)
 
-成本分析中显示的成本应与发票上已收费的单项资源的“使用费”成本精确匹配。 
+成本分析中显示的成本应与发票上已收费的单项资源的“使用费”成本精确匹配。
 
 ![发票使用费](./media/review-individual-bill/invoice-usage-charges.png)
 
@@ -147,7 +149,7 @@ Azure 不直接根据资源成本计费。 资源费用按一个或多个计量�
 
 创建 VM 后，每个计量器都会开始发出使用情况记录。 此使用情况和计量的价格在 Azure 计量系统中进行跟踪。
 
-可以在使用情况 CSV 文件中查看用于计算账单的计量。
+可以在使用情况 CSV 文件中查看用于计算账单的计量指标，如前面的示例中所示。
 
 ## <a name="pay-your-bill"></a><a name="payment"></a>支付账单
 

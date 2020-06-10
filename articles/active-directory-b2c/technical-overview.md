@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 09/19/2019
+ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d57bf7fa6d56c1704a78219f8a0af1182ce8a955
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 4a4d52ee3f39daef0e89ccb08cf5ab6a4ebfb735
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739093"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140781"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C 的技术和功能概述
 
@@ -36,7 +36,7 @@ ms.locfileid: "83739093"
   * 要在应用程序中支持的社交标识提供者，例如 Facebook、LinkedIn 或 Twitter。
   * 支持 OAuth 2.0、OpenID Connect 等标准标识协议的外部标识提供者。
   * 可让用户使用用户名（或者电子邮件地址或其他 ID）和密码注册和登录的本地帐户。
-* **密钥** - 添加和管理用于签署与验证令牌的加密密钥。
+* **密钥** - 添加和管理用于签名和验证令牌、客户端密码、证书和密码的加密密钥。
 
 Azure AD B2C 租户是开始使用 Azure AD B2C 之前必须先创建的第一个资源。 有关如何创建该资源，请参阅[教程：创建 Azure Active Directory B2C 租户](tutorial-create-tenant.md)中的步骤创建一个。
 
@@ -69,7 +69,7 @@ Azure AD B2C 定义多种类型的用户帐户。 Azure Active Directory、Azure
 
 ## <a name="external-identity-providers"></a>外部标识提供者
 
-可以配置 Azure AD B2C，以允许用户使用外部社交或企业标识提供者 (IdP) 提供的凭据登录到你的应用程序。 Azure AD B2C 支持 Facebook、Microsoft 帐户、Google、Twitter 等外部标识提供程序，以及支持 OAuth 1.0、OAuth 2.0、OpenID Connect、SAML 或 WS 联合身份验证协议的任何标识提供者。
+可以配置 Azure AD B2C，以允许用户使用外部社交或企业标识提供者 (IdP) 提供的凭据登录到你的应用程序。 Azure AD B2C 支持 Facebook、Microsoft 帐户、Google、Twitter 等外部标识提供程序，以及支持 OAuth 1.0、OAuth 2.0、OpenID Connect 和 SAML 协议的任何标识提供者。
 
 ![外部标识提供者](media/technical-overview/external-idps.png)
 
@@ -134,15 +134,13 @@ Identity Experience Framework 可让你使用步骤的任意组合来构造用�
 
 ## <a name="protocols-and-tokens"></a>协议和令牌
 
-Azure AD B2C 支持对用户旅程使用 [OpenID Connect 和 OAuth 2.0 协议](protocols-overview.md)。 在 OpenID Connect 的 Azure AD B2C 实现中，应用程序通过向 Azure AD B2C 发出身份验证请求，来启动此用户旅程。
+- 对于应用程序，Azure AD B2C 支持对用户旅程使用 [OAuth 2.0](protocols-overview.md)、[OpenID Connect](openid-connect.md) 和 [SAML 协议](connect-with-saml-service-providers.md)。 应用程序通过向 Azure AD B2C 发出身份验证请求，来启动此用户旅程。 向 Azure AD B2C 发出请求后会获得一个安全令牌，例如 [ID 令牌、访问令牌](tokens-overview.md)或 SAML 令牌。 此安全令牌定义应用程序中用户的标识。
 
-向 Azure AD B2C 发出请求后会获得一个安全令牌，例如 [ID 令牌或访问令牌](tokens-overview.md)。 此安全令牌定义用户的标识。 令牌是从 Azure AD B2C 终结点（例如 `/token` 或 `/authorize` 终结点）接收的。 通过这些令牌，可以访问用于验证标识以及允许访问安全资源的声明。
+- 对于外部标识，Azure AD B2C 支持与任何 OAuth 1.0、OAuth 2.0、OpenID Connect、SAML 标识提供者联合。
 
-对于外部标识，Azure AD B2C 支持与任何 OAuth 1.0、OAuth 2.0、OpenID Connect、SAML 和 WS 联合身份验证标识提供者联合。
+下图显示了 Azure AD B2C 如何使用同一身份验证流中的各种协议进行通信：
 
 ![基于 OIDC 的客户端应用与基于 SAML 的 IdP 联合的示意图](media/technical-overview/protocols.png)
-
-上图显示了 Azure AD B2C 如何使用同一身份验证流中的各种协议进行通信：
 
 1. 信赖方应用程序使用 OpenID Connect 向 Azure AD B2C 发起授权请求。
 1. 当应用程序的用户选择通过使用 SAML 协议的外部标识提供者登录时，Azure AD B2C 将调用 SAML 协议来与该标识提供者通信。

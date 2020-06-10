@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 6debf422d0c16a6a2bfe180e6febb4973846e0f0
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 85376e1861108089cd7918b3b261f05433b59217
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870688"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298018"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>教程：将 Hugo 站点发布到 Azure 静态 Web 应用（预览版）
 
@@ -109,7 +109,7 @@ ms.locfileid: "83870688"
 
 1. 在“资源组”中选择“新建”。 在“新资源组名称”中，输入“hugo-static-app”并选择“确定”。
 
-1. 接下来，在“名称”框中提供应用的全局唯一名称。 有效字符包括 `a-z`、`A-Z`、`0-9` 和 `-`。 此值用作静态应用的 URL 前缀，采用 `https://<APP_NAME>....` 格式。
+1. 接下来，在“名称”框中输入应用名称。 有效字符包括 `a-z`、`A-Z`、`0-9` 和 `-`。
 
 1. 对于“区域”，选择靠近你的可用区域。
 
@@ -153,7 +153,7 @@ ms.locfileid: "83870688"
 
 1. 在文本编辑器中打开 Hugo 应用，然后打开 .github/workflows/azure-pages-<WORKFLOW_NAME>.yml 文件。
 
-1. 将行 `- uses: actions/checkout@v2`（第 18 行）替换为以下行，以生成 Hugo 应用程序。
+1. 将行 `- uses: actions/checkout@v2`（第 18 行）替换为以下行，以生成 Hugo 应用程序。 如需扩展 Hugo，请取消注释 `extended: true`。
 
    ```yml
    - uses: actions/checkout@v2
@@ -164,6 +164,7 @@ ms.locfileid: "83870688"
      uses: peaceiris/actions-hugo@v2.4.8
      with:
        hugo-version: "latest"
+       # extended: true
 
    - name: Build
      run: hugo

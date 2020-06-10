@@ -3,14 +3,14 @@ title: 教程 - 在 Azure 中为 VMware 私有云配置网络
 description: 了解如何在 Azure 中创建和配置在部署私有云时所需的网络
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: 5a8086f78f465f52d0f9107932c09c4690f505e8
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 6cac420fb77526746dbdbfef5a88b071c007d555
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873851"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148100"
 ---
-# <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>教程：在 Azure 中为 VMWare 私有云配置网络
+# <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>教程：在 Azure 中为 VMware 私有云配置网络
 
 Azure VMware 解决方案 (AVS) 私有云需要一个虚拟网络。 由于 AVS 在预览版中不支持本地 vCenter，因此需要执行额外的步骤来与本地环境集成。 此外，需要设置 ExpressRoute 线路和虚拟网络网关，本教程将介绍此操作。
 

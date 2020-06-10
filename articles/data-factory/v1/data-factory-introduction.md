@@ -1,6 +1,6 @@
 ---
 title: 数据工厂（数据集成服务）简介
-description: 了解 Azure 数据工厂的定义：一种云数据集成服务，可对数据的移动和转换进行协调和自动化。
+description: 了解什么是 Azure 数据工厂：协调和自动执行数据移动和转换的云数据集成服务。
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 30578f204ff05443de82015627d67d3d4d357dce
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4175214219350620ae44d0249243e23b1a25144a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73666806"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196596"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure 数据工厂简介 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -41,7 +41,7 @@ ms.locfileid: "73666806"
 
 ![数据工厂概述](media/data-factory-introduction/what-is-azure-data-factory.png) 
 
-Azure 数据工厂是适合这些类型的方案的平台。 它是  基于云的数据集成服务，用于在云中创建数据驱动型工作流，以便协调和自动完成数据移动和数据转换。 使用 Azure 数据工厂可执行以下任务： 
+Azure 数据工厂是适合这些类型的方案的平台。 它是基于云的数据集成服务，用于在云中创建数据驱动型工作流，以便协调和自动完成数据移动和数据转换。 使用 Azure 数据工厂可执行以下任务： 
 
 - 创建和计划数据驱动型工作流（称为管道），以便从不同的数据存储引入数据。
 
@@ -51,7 +51,7 @@ Azure 数据工厂是适合这些类型的方案的平台。 它是  基于云�
 
 它更多是一种提取和加载 (EL) 以及转换和加载 (TL) 型平台，而不是一种传统的提取、转换和加载 (ETL) 型平台。 此类转换在处理数据时使用计算服务，而不是添加派生的列、对行计数、对数据排序，等等。 
 
-目前在 Azure 数据工厂中，工作流所使用和生成的数据为  时间切片数据（每小时、每天、每周等）。 例如，管道可能会每天一次地读取输入数据、处理数据以及生成输出数据。 也可一次性运行某个工作流。  
+目前在 Azure 数据工厂中，工作流所使用和生成的数据为时间切片数据（每小时、每天、每周等）。 例如，管道可能会每天一次地读取输入数据、处理数据以及生成输出数据。 也可一次性运行某个工作流。  
   
 
 ## <a name="how-does-it-work"></a>工作原理 
@@ -112,13 +112,13 @@ Azure 数据工厂中的管道（数据驱动型工作流）通常执行以下�
 
 在数据工厂中使用链接服务有两个原因：
 
-* 代表  数据存储。此类存储包括但不限于本地 SQL Server 数据库、Oracle 数据库、文件共享或 Azure Blob 存储帐户。 有关支持的数据存储列表，请参阅[数据移动活动](#data-movement-activities)部分。
+* 代表数据存储，此类存储包括但不限于 SQL Server 数据库、Oracle 数据库、文件共享或 Azure blob 存储帐户。 有关支持的数据存储列表，请参阅[数据移动活动](#data-movement-activities)部分。
 
 * 代表可托管活动执行的*计算资源*。 例如，HDInsightHive 活动在 HDInsight Hadoop 群集上运行。 有关支持的计算环境的列表，请参阅[数据转换活动](#data-transformation-activities)部分。
 
 ### <a name="relationship-between-data-factory-entities"></a>数据工厂实体之间的关系
 
-![示意图：数据工厂（云数据集成服务）- 重要概念](./media/data-factory-introduction/data-integration-service-key-concepts.png)
+![示意图：数据工厂（一种云数据集成服务）- 重要概念](./media/data-factory-introduction/data-integration-service-key-concepts.png)
 
 ## <a name="supported-regions"></a>支持的区域
 目前可在美国西部、美国东部和北欧区域创建数据工厂。 但是，数据工厂可以访问其他 Azure 区域的数据存储和计算数据，在数据存储之间移动数据或使用计算服务处理数据。
@@ -144,4 +144,4 @@ Azure 数据工厂本身不存储任何数据。 它可以用于创建数据驱�
 | --- | --- |
 | [在两个云数据存储之间移动数据](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |创建一个包含管道的数据工厂，将数据从 Blob 存储移到 SQL 数据库。 |
 | [使用 Hadoop 群集转换数据](data-factory-build-your-first-pipeline.md) |构建第一个包含数据管道的 Azure 数据工厂，该数据管道可以通过在 Azure HDInsight (Hadoop) 群集上运行 Hive 脚本来处理数据。 |
-| [使用数据管理网关在本地数据存储与云数据存储之间移动数据](data-factory-move-data-between-onprem-and-cloud.md) |构建一个包含管道的数据工厂，以便将数据从本地 SQL Server 数据库移到 Azure Blob。 在演练过程中，需要在计算机上安装并配置数据管理网关。 |
+| [使用数据管理网关在本地数据存储与云数据存储之间移动数据](data-factory-move-data-between-onprem-and-cloud.md) |构建一个包含管道的数据工厂，以便将数据从 SQL Server 数据库移到 Azure Blob。 在演练过程中，需要在计算机上安装并配置数据管理网关。 |

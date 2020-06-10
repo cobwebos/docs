@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 2224ec64712ff9d1745231f39a1521ae941304ff
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 13b9e67a8bd52fef8439b2b20be3a7e4d28af5fe
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77118769"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141919"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>快速入门：将表单识别器 REST API 与 Python 结合使用来提取回执数据
 
@@ -26,7 +26,10 @@ ms.locfileid: "77118769"
 
 若要完成本快速入门，必须具备以下条件：
 - 安装 [Python](https://www.python.org/downloads/)（若要在本地运行此示例）。
-- 回执图像的 URL。 在本快速入门中，可以使用[示例图像](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg?raw=true)。
+- 回执图像的 URL。 在本快速入门中，可以使用[示例图像](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-allinone.jpg)。
+
+> [!NOTE]
+> 本快速入门使用通过 URL 访问的远程回执。 要改用本地文件，请参阅[参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)。
 
 ## <a name="create-a-form-recognizer-resource"></a>创建表单识别器资源
 
@@ -78,9 +81,9 @@ ms.locfileid: "77118769"
         quit()
     ```
 
-1. 将代码保存在以 .py 为扩展名的文件中。 例如，form-recognizer-receipts.py  。
+1. 将代码保存在以 .py 为扩展名的文件中。 例如，form-recognizer-receipts.py。
 1. 打开命令提示符窗口。
-1. 在提示符处，使用 `python` 命令运行示例。 例如，`python form-recognizer-receipts.py` 。
+1. 在提示符处，使用 `python` 命令运行示例。 例如，`python form-recognizer-receipts.py`。
 
 你将收到 `202 (Success)` 响应，其中包括 **Operation-Location** 标头，脚本会将其输出到控制台。 此标头包含一个可用于查询异步操作状态和获取结果的操作 ID。 在以下示例值中，`operations/` 后面的字符串就是操作 ID。
 
@@ -90,7 +93,7 @@ https://cognitiveservice/formrecognizer/v2.0-preview/prebuilt/receipt/operations
 
 ## <a name="get-the-receipt-results"></a>获取回执结果
 
-调用了“分析回执”API  后，可以调用 **[获取分析收据结果](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeReceiptResult)** API，以获取操作状态和已提取的数据。 将以下代码添加到 Python 脚本的底部。 这将在新的 API 调用中使用操作 ID 值。 此脚本定期调用 API，直到结果可用为止。 我们建议调用间隔为一秒或更长时间。
+调用了“分析回执”API 后，可以调用 **[获取分析收据结果](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeReceiptResult)** API，以获取操作状态和已提取的数据。 将以下代码添加到 Python 脚本的底部。 这将在新的 API 调用中使用操作 ID 值。 此脚本定期调用 API，直到结果可用为止。 我们建议调用间隔为一秒或更长时间。
 
 ```python
 n_tries = 10
@@ -120,7 +123,7 @@ while n_try < n_tries:
 ```
 
 1. 保存脚本。
-1. 再次使用 `python` 命令运行示例。 例如，`python form-recognizer-receipts.py` 。
+1. 再次使用 `python` 命令运行示例。 例如，`python form-recognizer-receipts.py`。
 
 ### <a name="examine-the-response"></a>检查响应
 

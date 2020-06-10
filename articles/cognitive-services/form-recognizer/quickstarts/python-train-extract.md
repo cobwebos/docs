@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 01/27/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 66668f46595c22426984a02c489297e962d061d0
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 67674092bd27b85e3e915fe82a7cb7189ff22b02
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77118088"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141902"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>快速入门：使用 REST API 和 Python 训练表单识别器模型并提取表单数据
 
@@ -28,6 +28,10 @@ ms.locfileid: "77118088"
 - 安装 [Python](https://www.python.org/downloads/)（若要在本地运行此示例）。
 - 至少有五个相同类型的表单。 你将使用这些数据来训练模型。 表单可以是不同的文件类型，但必须是相同的文档类型。 在本快速入门中可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)。 将训练文件上传到 Azure 存储帐户中 blob 存储容器的根目录。
 
+> [!NOTE]
+> 此快速入门使用 URL 访问的远程文档。 要改用本地文件，请参阅[参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)。
+
+
 ## <a name="create-a-form-recognizer-resource"></a>创建表单识别器资源
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
@@ -39,9 +43,9 @@ ms.locfileid: "77118088"
 > [!NOTE]
 > 可以使用标记数据功能来手动预先标记部分或全部训练数据。 这是一个更为复杂的过程，但会生成更好的经过训练的模型。 有关详细信息，请参阅概述的[使用标签进行训练](../overview.md#train-with-labels)部分。
 
-若要使用 Azure Blob 容器中的文档训练表单识别器模型，请运行下面的 python 代码来调用[自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) API  。 运行该代码之前，请进行以下更改：
+若要使用 Azure Blob 容器中的文档训练表单识别器模型，请运行下面的 python 代码来调用[自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) API。 运行该代码之前，请进行以下更改：
 
-1. 将 `<SAS URL>` 替换为 Azure Blob 存储容器的共享访问签名 (SAS) URL。 若要检索 SAS URL，请打开 Microsoft Azure 存储资源管理器，右键单击容器，然后选择“获取共享访问签名”  。 确保选中“读取”  和“列表”  权限，然后单击“创建”  。 然后复制 **URL** 部分中的值。 它应当采用 `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` 形式。
+1. 将 `<SAS URL>` 替换为 Azure Blob 存储容器的共享访问签名 (SAS) URL。 若要检索 SAS URL，请打开 Microsoft Azure 存储资源管理器，右键单击容器，然后选择“获取共享访问签名”。 确保选中“读取”和“列表”权限，然后单击“创建”。 然后复制 **URL** 部分中的值。 它应当采用 `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` 形式。
 1. 将 `<subscription key>` 替换为从上一步复制的订阅密钥。
 1. 将 `<endpoint>` 替换为表单识别器资源的终结点 URL。
 1. 将 `<Blob folder name>` 替换为表单所在的 blob 存储中的文件夹的路径。 如果表单位于容器的根目录，请将此字符串留空。
@@ -66,7 +70,7 @@ ms.locfileid: "77118088"
         'Ocp-Apim-Subscription-Key': '<subsription key>',
     }
     
-    body =  {
+    body =     {
         "source": source,
         "sourceFilter": {
             "prefix": prefix,
@@ -86,9 +90,9 @@ ms.locfileid: "77118088"
         print("POST model failed:\n%s" % str(e))
         quit() 
     ```
-1. 将代码保存在以 .py 为扩展名的文件中。 例如，form-recognizer-train.py  。
+1. 将代码保存在以 .py 为扩展名的文件中。 例如，form-recognizer-train.py。
 1. 打开命令提示符窗口。
-1. 在提示符处，使用 `python` 命令运行示例。 例如，`python form-recognizer-train.py` 。
+1. 在提示符处，使用 `python` 命令运行示例。 例如，`python form-recognizer-train.py`。
 
 ## <a name="get-training-results"></a>获取训练结果
 
@@ -196,7 +200,7 @@ print("Train operation did not complete within the allocated time.")
 
 [!INCLUDE [analyze forms](../includes/python-custom-analyze.md)]
 
-当过程完成以后，你会收到 `200 (Success)` 响应，其中的 JSON 内容采用以下格式。 为了简单起见，响应已缩短。 主键/值对关联和表位于 `"pageResults"` 节点中。 如果还通过 includeTextDetails URL 参数指定了纯文本提取，则 `"readResults"` 节点将显示文档中所有文本的内容和位置  。
+当过程完成以后，你会收到 `200 (Success)` 响应，其中的 JSON 内容采用以下格式。 为了简单起见，响应已缩短。 主键/值对关联和表位于 `"pageResults"` 节点中。 如果还通过 includeTextDetails URL 参数指定了纯文本提取，则 `"readResults"` 节点将显示文档中所有文本的内容和位置。
 
 ```bash
 {

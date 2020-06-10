@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 02/19/2020
+ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: f0c1e9eccda8171ab816d33dac3f1947cea67eea
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: c30374b21c1d95b6b710de10da08391d0af4f538
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714604"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141953"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>快速入门：使用表单识别器 REST API 和 Python 提取文本和布局信息
 
@@ -27,6 +27,10 @@ ms.locfileid: "83714604"
 若要完成本快速入门，必须具备以下条件：
 - 安装 [Python](https://www.python.org/downloads/)（若要在本地运行此示例）。
 - 表单文档。 可以从本快速入门的[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)中下载图像。
+
+> [!NOTE]
+> 此快速入门使用本地存储的文档。 若要了解如何使用通过 URL 访问的远程文件，请参阅[参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)。
+
 
 ## <a name="create-a-form-recognizer-resource"></a>创建表单识别器资源
 
@@ -75,7 +79,7 @@ ms.locfileid: "83714604"
 
 1. 将代码保存在以 .py 为扩展名的文件中。 例如，*form-recognizer-layout.py*。
 1. 打开命令提示符窗口。
-1. 在提示符处，使用 `python` 命令运行示例。 例如，`python form-recognizer-layout.py` 。
+1. 在提示符处，使用 `python` 命令运行示例。 例如，`python form-recognizer-layout.py`。
 
 你将收到 `202 (Success)` 响应，其中包括 **Operation-Location** 标头，脚本会将其输出到控制台。 此标头包含一个可用于查询异步操作状态和获取结果的操作 ID。 在以下示例值中，`operations/` 后面的字符串就是操作 ID。
 
@@ -85,7 +89,7 @@ https://cognitiveservice/formrecognizer/v2.0-preview/layout/operations/54f0b076-
 
 ## <a name="get-the-layout-results"></a>获取布局结果
 
-调用了“分析布局”API  后，可以调用 **[获取分析布局结果](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** API，以获取操作状态和已提取的数据。 将以下代码添加到 Python 脚本的底部。 此代码在新的 API 调用中使用操作 ID 值。 此脚本定期调用 API，直到结果可用为止。 我们建议调用间隔为一秒或更长时间。
+调用了“分析布局”API 后，可以调用 **[获取分析布局结果](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** API，以获取操作状态和已提取的数据。 将以下代码添加到 Python 脚本的底部。 此代码在新的 API 调用中使用操作 ID 值。 此脚本定期调用 API，直到结果可用为止。 我们建议调用间隔为一秒或更长时间。
 
 ```python
 n_tries = 10
@@ -115,11 +119,11 @@ while n_try < n_tries:
 ```
 
 1. 保存脚本。
-1. 再次使用 `python` 命令运行示例。 例如，`python form-recognizer-layout.py` 。
+1. 再次使用 `python` 命令运行示例。 例如，`python form-recognizer-layout.py`。
 
 ### <a name="examine-the-response"></a>检查响应
 
-脚本会向控制台输出响应，直到“分析布局”  操作完成。 然后，它将以 JSON 格式输出已提取的数据。 `"readResults"` 节点包含每一行文本，以及其各自在页面上的边界框位置。 `"pageResults"` 字段显示表中的每个文本段，均带有行-列坐标。
+脚本会向控制台输出响应，直到“分析布局”操作完成。 然后，它将以 JSON 格式输出已提取的数据。 `"readResults"` 节点包含每一行文本，以及其各自在页面上的边界框位置。 `"pageResults"` 字段显示表中的每个文本段，均带有行-列坐标。
 
 请查看以下发票图像及其相应的 JSON 输出。 为了简单起见，已缩短输出。
 

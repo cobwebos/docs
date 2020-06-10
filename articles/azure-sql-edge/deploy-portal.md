@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 7dfc7b680c6b7d6b2a3641b25c0f82665143bde1
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0ddfc445ee8bd67b39de4ddd013a25f20fd75315
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594666"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681216"
 ---
 # <a name="deploy-azure-sql-edge-preview"></a>部署 Azure SQL Edge（预览） 
 
@@ -119,4 +119,4 @@ Azure 市场是一个应用程序和服务在线市场，可在其中浏览各�
 ## <a name="next-steps"></a>后续步骤
 
 - [在 SQL Edge 中将机器学习和人工智能与 ONNX 结合使用](onnx-overview.md)。
-- 使用 IoT Edge 通过 SQL Edge 生成端到端 IoT 解决方案。
+- [使用 IoT Edge 通过 SQL Edge 生成端到端 IoT 解决方案](tutorial-deploy-azure-resources.md)。

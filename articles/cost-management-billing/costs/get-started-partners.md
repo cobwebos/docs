@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: d1425407b9d451a8c35e736c38b8fac059a7c9d8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8dea0da44ebfb35165daa7096296dada55e78e99
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79204879"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83997122"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>面向合作伙伴的 Azure 成本管理入门
 
@@ -48,7 +48,7 @@ CSP 合作伙伴可以使用成本管理来实现以下目的：
 
 Azure 成本管理要求对计费帐户或订阅拥有读取访问权限。
 
-有关为计费帐户启用 Azure 成本管理并分配其访问权限的详细信息，请参阅[分配用户角色和权限](/partner-center/permissions-overview)。 “全局管理员”和“管理员代理”角色可以管理计费帐户的成本。  
+有关为计费帐户启用 Azure 成本管理并分配其访问权限的详细信息，请参阅[分配用户角色和权限](/partner-center/permissions-overview)。 “全局管理员”和“管理员代理”角色可以管理计费帐户的成本。 
 
 若要在订阅范围访问 Azure 成本管理，对某个订阅拥有 RBAC 访问权限的任何用户都可以查看零售（即用即付）费率的成本。 但是，必须为客户租户启用成本可见性策略。 若要查看受支持帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。
 
@@ -61,7 +61,7 @@ Azure 成本管理要求对计费帐户或订阅拥有读取访问权限。
 
 ## <a name="manage-costs-with-partner-tenant-billing-scopes"></a>使用合作伙伴租户计费范围管理成本
 
-将客户加入 Microsoft 客户协议后，可在租户中使用以下计费范围。  在成本管理中使用范围来管理成本。
+将客户加入 Microsoft 客户协议后，可在租户中使用以下计费范围。 在成本管理中使用范围来管理成本。
 
 ### <a name="billing-account-scope"></a>计费帐户范围
 
@@ -69,7 +69,7 @@ Azure 成本管理要求对计费帐户或订阅拥有读取访问权限。
 
 无论使用何种不同的客户计费货币，合作伙伴都可以使用计费帐户范围以美元为货币来为其各个客户、订阅、资源和资源组设置预算和管理成本。
 
-合作伙伴还可以在成本分析视图中，筛选各个客户的采用特定计费货币的成本。 选择“实际成本”列表可以查看采用受支持客户计费货币的成本。 
+合作伙伴还可以在成本分析视图中，筛选各个客户的采用特定计费货币的成本。 选择“实际成本”列表可以查看采用受支持客户计费货币的成本。
 
 ![显示货币的“实际成本”选项的示例](./media/get-started-partners/actual-cost-selector.png)
 
@@ -108,7 +108,7 @@ Azure 成本管理要求对计费帐户或订阅拥有读取访问权限。
 
 ## <a name="partner-access-to-billing-scopes-in-cost-management"></a>合作伙伴在成本管理中访问计费范围
 
-只有具有“全局管理员”和“管理员代理”角色的用户才能直接在合作伙伴的 Azure 租户中管理和查看计费帐户、计费配置文件与客户的成本。   有关合作伙伴中心角色的详细信息，请参阅[分配用户角色和权限](/partner-center/permissions-overview)。
+只有具有“全局管理员”和“管理员代理”角色的用户才能直接在合作伙伴的 Azure 租户中管理和查看计费帐户、计费配置文件与客户的成本。  有关合作伙伴中心角色的详细信息，请参阅[分配用户角色和权限](/partner-center/permissions-overview)。
 
 ## <a name="enable-cost-management-in-the-customer-tenant"></a>在客户租户中启用成本管理
 
@@ -122,27 +122,27 @@ Azure 成本管理要求对计费帐户或订阅拥有读取访问权限。
 
 合作伙伴可以使用以下信息来启用查看其客户的 Azure 使用费的策略。
 
-在 Azure 门户中登录到合作伙伴租户，并选择“成本管理 + 计费”。  选择相关的 Microsoft 合作伙伴协议计费帐户，然后选择“客户”。  客户列表与计费帐户相关联。
+在 Azure 门户中登录到合作伙伴租户，并选择“成本管理 + 计费”。 选择相关的 Microsoft 合作伙伴协议计费帐户，然后选择“客户”。 客户列表与计费帐户相关联。
 
 在客户列表中，选择要允许其查看成本的客户。
 
 ![在成本管理中选择客户](./media/get-started-partners/customer-list.png)
 
-在“设置”下，选择“策略”。  
+在“设置”下，选择“策略”。 
 
-将显示与所选客户的订阅相关联的“Azure 用量”费用的当前成本可见性策略。 
+将显示与所选客户的订阅相关联的“Azure 用量”费用的当前成本可见性策略。
 ![允许客户查看即用即付费用的策略](./media/get-started-partners/cost-management-billing-policies.png)
 
-将策略设置为“否”时，与该客户关联的订阅用户无法使用 Azure 成本管理。  除非已由合作伙伴启用，否则默认会对所有订阅用户禁用成本可见性策略。
+将策略设置为“否”时，与该客户关联的订阅用户无法使用 Azure 成本管理。 除非已由合作伙伴启用，否则默认会对所有订阅用户禁用成本可见性策略。
 
-将成本策略设置为“是”时，与客户租户关联的订阅用户可以查看按即用即付费率计算的使用费。 
+将成本策略设置为“是”时，与客户租户关联的订阅用户可以查看按即用即付费率计算的使用费。
 
 启用成本可见性策略后，具有订阅用量的所有服务都会显示按即用即付费率计算的成本。 对于实际和摊销成本，预留用量会显示零费用。 购买项和权利不与特定的订阅相关联。 因此，不会在订阅范围显示购买项。
 
 
 ### <a name="view-customer-costs"></a>查看客户成本
 
-若要查看客户租户的成本，请打开**成本管理 + 计费**。 选择“成本分析”  ，然后将范围更改为客户租户订阅以开始查看成本。
+若要查看客户租户的成本，请打开**成本管理 + 计费**。 选择“成本分析”，然后将范围更改为客户租户订阅以开始查看成本。
 
 ![以客户身份查看成本分析 ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
 
@@ -234,11 +234,11 @@ RBAC 范围内的预留实例的摊销视图和实际成本将显示零费用。
 
 在 Azure 成本管理中，合作伙伴可以使用成本分析来查看收到了 PEC 权益的成本。
 
-在 Azure 门户中登录到合作伙伴租户，并选择“成本管理 + 计费”。  在“成本管理”下，选择“成本分析”。  
+在 Azure 门户中登录到合作伙伴租户，并选择“成本管理 + 计费”。 在“成本管理”下，选择“成本分析”。 
 
-成本分析视图将显示合作伙伴计费帐户的成本。 根据需要选择合作伙伴、特定客户或计费配置文件的“范围”来核对发票。 
+成本分析视图将显示合作伙伴计费帐户的成本。 根据需要选择合作伙伴、特定客户或计费配置文件的“范围”来核对发票。
 
-在圆环图中选择下拉列表，然后选择“PartnerEarnedCreditApplied”钻取到 PEC 成本。 
+在圆环图中选择下拉列表，然后选择“PartnerEarnedCreditApplied”钻取到 PEC 成本。
 
 ![演示如何查看合作伙伴赚取的返点的示例](./media/get-started-partners/cost-analysis-pec1.png)
 
@@ -246,10 +246,10 @@ RBAC 范围内的预留实例的摊销视图和实际成本将显示零费用。
 
 如果 **PartnerEarnedCreditApplied** 属性为 _False_，则关联的成本不符合所需的返点条件。 或者，购买的服务不符合合作伙伴赚取的返点的条件。
 
-服务使用情况数据通常需要在 8-24 小时后才显示在成本管理中。 有关详细信息，请参阅[使用情况数据的更新频率存在变化](understand-cost-mgt-data.md#usage-data-update-frequency-varies)。 从访问时间开始算起的 48 小时内，PEC 返点将显示在 Azure 成本管理中。
+服务使用情况数据通常需要在 8-24 小时后才显示在成本管理中。 有关详细信息，请参阅[成本和使用情况数据的更新和保留](understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention)。 从访问时间开始算起的 48 小时内，PEC 返点将显示在 Azure 成本管理中。
 
 
-还可以使用“分组依据”选项，按 **PartnerEarnedCreditApplied** 属性进行分组和筛选。  使用这些选项可以检查包含和不包含 PEC 的成本。
+还可以使用“分组依据”选项，按 **PartnerEarnedCreditApplied** 属性进行分组和筛选。 使用这些选项可以检查包含和不包含 PEC 的成本。
 
 ![按合作伙伴赚取的返点进行分组或筛选](./media/get-started-partners/cost-analysis-pec2.png)
 
@@ -261,11 +261,11 @@ RBAC 范围内的预留实例的摊销视图和实际成本将显示零费用。
 
 ### <a name="create-an-export-in-a-partner-tenant-or-customer-tenant"></a>在合作伙伴租户或客户租户中创建导出
 
-在 Azure 门户中登录到合作伙伴租户或客户租户，并选择“成本管理 + 计费”。  选择适当的范围（例如 Microsoft 合作伙伴协议计费帐户），然后选择“成本分析”。  加载页面后，选择“导出”。  选择“计划导出”下的“查看所有导出”。 
+在 Azure 门户中登录到合作伙伴租户或客户租户，并选择“成本管理 + 计费”。 选择适当的范围（例如 Microsoft 合作伙伴协议计费帐户），然后选择“成本分析”。 加载页面后，选择“导出”。 选择“计划导出”下的“查看所有导出”。
 
 ![选择“导出”和“查看所有导出”](./media/get-started-partners/export01.png)
 
-接下来，选择“添加”并键入名称，然后选择导出类型。  选择“存储”选项卡并输入所需的信息。 
+接下来，选择“添加”并键入名称，然后选择导出类型。 选择“存储”选项卡并输入所需的信息。
 
 ![添加新导出并选择“存储”选项卡](./media/get-started-partners/export02.png)
 
@@ -273,9 +273,9 @@ RBAC 范围内的预留实例的摊销视图和实际成本将显示零费用。
 
 对于客户租户中的 RBAC 用户，请选择客户租户中的订阅。 使用该订阅创建 Azure 存储帐户。
 
-查看内容，然后选择“创建”以计划导出。 
+查看内容，然后选择“创建”以计划导出。
 
-若要验证导出列表中的数据，请选择存储帐户名称。 在存储帐户页上选择“容器”，然后选择容器。  导航到相应的文件夹，并选择 CSV 文件。 选择“下载”以获取 CSV 文件并将其打开。  导出的数据类似于 Azure 门户中的成本数据和使用情况详细信息。
+若要验证导出列表中的数据，请选择存储帐户名称。 在存储帐户页上选择“容器”，然后选择容器。 导航到相应的文件夹，并选择 CSV 文件。 选择“下载”以获取 CSV 文件并将其打开。 导出的数据类似于 Azure 门户中的成本数据和使用情况详细信息。
 
 ![导出数据的示例](./media/get-started-partners/example-export-data.png)
 

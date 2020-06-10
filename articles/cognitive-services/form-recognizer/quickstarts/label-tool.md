@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 3c42d520e5e30e57906245b9405b0d445be8ee16
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: cedc400ac6659cf2b2d0e9c499bf8789a6311e32
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871378"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141885"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>使用示例标记工具通过标签来训练表单识别器模型
 
@@ -143,7 +143,8 @@ ms.locfileid: "83871378"
     > * 按照值在窗体中的显示方式标记值；不要尝试使用两个不同的标记将值拆分为两个部分。 例如，即使某个地址字段跨越多行，也应使用单个标记对其进行标记。
     > * 不要在标记的字段中包含键 &mdash; 仅包含值。
     > * 系统应自动检测表数据，最终的输出 JSON 文件中将提供这些数据。 但是，如果模型无法检测所有表数据，你也可以手动标记这些字段。 使用不同的标签标记表中的每个单元格。 如果窗体中的表包含不同的行数，请确保使用可能最大的表标记至少一个窗体。
-    > * 若要删除已应用的标记，请选择文档视图上的矩形，并按 Delete 键。
+    > * 使用 + 右侧的按钮搜索、重命名、重新排序和删除标记。
+    > * 若要在不删除标记本身的情况下删除已应用的标记，请在文档视图上选择带标记的矩形，并按 Delete 键。
 
 ![示例标记工具的主编辑器窗口](../media/label-tool/main-editor.png)
 

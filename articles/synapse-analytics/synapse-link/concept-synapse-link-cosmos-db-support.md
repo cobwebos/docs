@@ -9,22 +9,25 @@ ms.subservice: ''
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2e0b1ee5584420ab38fda8897ef610794b09c29a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9c90bc9527bffff55d7478150cc1f31827bacc46
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658838"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235283"
 ---
 # <a name="azure-synapse-link-preview-for-azure-cosmos-db-supported-features"></a>Azure Synapse Link for Azure Cosmos DB（预览版）支持的特性
 
-本文介绍 Synapse Link for Azure Cosmos DB 当前支持的功能。 
+本文介绍 Synapse Link for Azure Cosmos DB 当前支持的功能。
 
 ## <a name="azure-synapse-support"></a>Azure Synapse 支持
 
 Azure Cosmos DB 中有两种类型的容器：
 * HTAP 容器 - 启用了 Synapse Link 的容器。 此容器具有事务存储和分析存储。 
 * OLTP 容器 - 仅具有事务存储的容器，且未启用 Synapse Link。 
+
+> [!IMPORTANT]
+> 未启用托管虚拟网络的工作区当前支持 Azure Synapse Link for Azure Cosmos DB。 
 
 可以在不启用 Synapse Link 的情况下连接到 Azure Cosmos DB 容器，在这种情况下，只能读取/写入事务存储。 以下是 Synapse Link for Azure Cosmos DB 当前支持功能的列表。 
 

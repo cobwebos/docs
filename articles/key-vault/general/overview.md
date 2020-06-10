@@ -11,12 +11,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9334cd0fa54212eac937742215f9c2e704a8bd9c
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 7ef31a11414fad1b9a3d06d00055c36c995adcce
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81688020"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84216319"
 ---
 # <a name="about-azure-key-vault"></a>关于 Azure Key Vault
 
@@ -73,7 +73,7 @@ Azure Key Vault 有助于解决以下问题：
 
 作为 Azure 中的安全存储，Key Vault 已用于简化如下方案：
 -  [Azure 磁盘加密](../../security/fundamentals/encryption-overview.md)
--  SQL 服务器和 Azure SQL 数据库的[始终加密]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine)功能
+-  SQL 服务器和 Azure SQL 数据库中的[始终加密]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine)和[透明数据加密]( https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-ver15)功能
 - [Azure 应用服务]( https://docs.microsoft.com/azure/app-service/configure-ssl-certificate)。 
 
 Key Vault 本身可以与存储帐户、事件中心和 Log Analytics 集成。

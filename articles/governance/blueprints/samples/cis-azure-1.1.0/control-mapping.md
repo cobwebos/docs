@@ -1,24 +1,24 @@
 ---
 title: CIS Microsoft Azure Foundations Benchmark 蓝图示例控件
 description: CIS Microsoft Azure Foundations Benchmark 蓝图示例到 Azure Policy 的建议映射。
-ms.date: 05/06/2020
+ms.date: 05/12/2020
 ms.topic: sample
-ms.openlocfilehash: 2163162f52eb4ad7f580c01d6539c242bd332645
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: b6029e147af49cfb91078c6228615c32ad2db5fe
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82863954"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167224"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure Foundations Benchmark 蓝图示例的建议映射
 
 以下文章详细说明了 Azure 蓝图 CIS Microsoft Azure Foundations Benchmark 蓝图示例如何映射到 CIS Microsoft Azure Foundations Benchmark 建议。 有关建议的详细信息，请参阅 [CIS Microsoft Azure Foundations Benchmark](https://www.cisecurity.org/benchmark/azure/)。
 
 以下映射适用于 **CIS Microsoft Azure Foundations Benchmark v1.1.0** 建议。 使用右侧的导航栏可直接跳转到特定的建议映射。
-许多的映射建议都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。   然后，找到并选择“\[预览\] 审核 CIS Microsoft Azure Foundations Benchmark v1.1.0 建议并部署特定 VM 扩展以支持审核要求”内置策略计划。 
+许多的映射建议都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。  然后，找到并选择“\[预览\] 审核 CIS Microsoft Azure Foundations Benchmark v1.1.0 建议并部署特定 VM 扩展以支持审核要求”内置策略计划。
 
 > [!IMPORTANT]
-> 下面的每个控件都与一个或多个 [Azure Policy](../../../policy/overview.md) 定义关联。 这些策略可以帮助你[评估控件的符合性](../../../policy/how-to/get-compliance-data.md)；但是，控件与一个或多个策略之间通常不是 1:1 或完全匹配。 因此，Azure Policy 中的符合性  仅引用策略本身；这不确保你完全符合控件的所有要求。 此外，符合性标准包含目前未由任何 Azure Policy 定义处理的控件。 因此，Azure Policy 中的符合性只是整体符合性状态的部分视图。 此符合性蓝图示例的控件和 Azure Policy 定义之间的关联可能会随着时间的推移而发生变化。 若要查看更改历史记录，请参阅 [GitHub 提交历史记录](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/cis-azure-1.1.0/control-mapping.md)。
+> 下面的每个控件都与一个或多个 [Azure Policy](../../../policy/overview.md) 定义关联。 这些策略可以帮助你[评估控件的符合性](../../../policy/how-to/get-compliance-data.md)；但是，控件与一个或多个策略之间通常不是 1:1 或完全匹配。 因此，Azure Policy 中的符合性仅引用策略本身；这不确保你完全符合控件的所有要求。 此外，符合性标准包含目前未由任何 Azure Policy 定义处理的控件。 因此，Azure Policy 中的符合性只是整体符合性状态的部分视图。 此符合性蓝图示例的控件和 Azure Policy 定义之间的关联可能会随着时间的推移而发生变化。 若要查看更改历史记录，请参阅 [GitHub 提交历史记录](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/cis-azure-1.1.0/control-mapping.md)。
 
 ## <a name="11-ensure-that-multi-factor-authentication-is-enabled-for-all-privileged-users"></a>1.1 确保为所有特权用户启用多重身份验证
 
@@ -192,14 +192,14 @@ ms.locfileid: "82863954"
 
 ## <a name="44-ensure-that-advanced-data-security-on-a-sql-server-is-set-to-on"></a>4.4 确保将 SQL 服务器上的“高级数据安全性”设置为“打开”
 
-此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保在 SQL 服务器和 SQL 托管实例上启用高级数据安全性。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保在 SQL 数据库和 SQL 托管实例服务器上启用高级数据安全性。
 
 - 应在 SQL 服务器上启用高级数据安全性
 - 应在 SQL 托管实例上启用高级数据安全性
 
 ## <a name="45-ensure-that-threat-detection-types-is-set-to-all"></a>4.5 确保“威胁检测类型”设置为“所有”
 
-此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保在 SQL 服务器和 SQL 托管实例上正确配置高级威胁防护。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保在 SQL 数据库和 SQL 托管实例服务器上正确配置高级威胁防护。
 
 - 应在 SQL 服务器的“高级数据安全性”设置中将“高级威胁保护类型”设置为“所有”
 - 应在 SQL 托管实例的“高级数据安全性”设置中将“高级威胁保护类型”设置为“所有”
@@ -232,7 +232,7 @@ ms.locfileid: "82863954"
 
 ## <a name="410-ensure-sql-servers-tde-protector-is-encrypted-with-byok-use-your-own-key"></a>4.10 确保使用 BYOK（使用自己的密钥）加密 SQL 服务器的 TDE 保护器
 
-此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保使用自己的密钥加密 SQL 服务器和 SQL 托管实例的透明数据加密保护器。
+此蓝图分配的 [Azure Policy](../../../policy/overview.md) 定义可帮助你确保使用自己的密钥加密 SQL 数据库和 SQL 托管实例服务器的透明数据加密保护器。
 
 - 应使用自己的密钥加密 SQL 服务器的 TDE 保护器
 - 应使用自己的密钥加密 SQL 托管实例的 TDE 保护器

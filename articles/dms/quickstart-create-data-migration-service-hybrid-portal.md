@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 03/13/2020
-ms.openlocfilehash: dd3e77610749eb5d146b0c0b7cf9d307fba0dd83
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e63f073c4f7166cd205b85ef06589f6056b2a70f
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79370230"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195674"
 ---
 # <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>快速入门：使用 Azure 门户和 Azure 数据库迁移服务创建混合模式实例
 
@@ -26,7 +26,7 @@ Azure 数据库迁移服务混合模式使用本地托管的迁移辅助角色�
 >[!NOTE]
 >目前，在混合模式下运行的 Azure 数据库迁移服务支持将 SQL Server 迁移到以下目标：
 >
->- Azure SQL 数据库托管实例，停机时间几乎为零（联机）。
+>- Azure SQL 托管实例，停机时间几乎为零（联机）。
 >- Azure SQL 数据库单一数据库，短暂停机（脱机）。
 >- 从 MongoDb 迁移到 Azure CosmosDB，停机时间几乎为零（联机）。
 >- 从 MongoDb 迁移到 Azure CosmosDB，短暂停机（脱机）。
@@ -51,33 +51,33 @@ Azure 数据库迁移服务混合模式使用本地托管的迁移辅助角色�
 
 在创建 Azure 数据库迁移服务的第一个实例之前，请注册 Microsoft.DataMigration 资源提供程序。
 
-1. 在 Azure 门户，选择“订阅”，选择要在其中创建 Azure 数据库迁移服务实例的订阅，再选择“资源提供程序”   。
+1. 在 Azure 门户，选择“订阅”，选择要在其中创建 Azure 数据库迁移服务实例的订阅，再选择“资源提供程序” 。
 
     ![搜索资源提供程序](media/quickstart-create-data-migration-service-hybrid-portal/dms-portal-search-resource-provider.png)
 
-2. 搜索迁移服务，再选择“Microsoft.DataMigration”右侧的“注册”   。
+2. 搜索迁移服务，再选择“Microsoft.DataMigration”右侧的“注册” 。
 
     ![注册资源提供程序](media/quickstart-create-data-migration-service-hybrid-portal/dms-portal-register-resource-provider.png)
 
 ## <a name="create-an-instance-of-the-service"></a>创建服务的实例
 
-1. 选择“+创建资源”以创建 Azure 数据库迁移服务的实例。 
+1. 选择“+创建资源”以创建 Azure 数据库迁移服务的实例。
 
-2. 在市场中搜索“迁移”，选择“Azure 数据库迁移服务”，并在“Azure 数据库迁移服务”屏幕中选择“创建”。   
+2. 在市场中搜索“迁移”，选择“Azure 数据库迁移服务”，并在“Azure 数据库迁移服务”屏幕中选择“创建”。  
 
-3. 在“创建迁移服务”屏幕中： 
+3. 在“创建迁移服务”屏幕中：
 
-    - 选择一个容易记住且唯一的服务名称，用于标识 Azure 数据库迁移服务的实例  。
+    - 选择一个容易记住且唯一的服务名称，用于标识 Azure 数据库迁移服务的实例。
     - 选择要在其中创建实例的 Azure **订阅**。
     - 选择现有的**资源组**，或创建一个新组。
-    - 选择距离源或目标服务器最近的“位置”  。
-    - 对于“服务模式”，选择“混合（预览版）”   。
+    - 选择距离源或目标服务器最近的“位置”。
+    - 对于“服务模式”，选择“混合（预览版）” 。
 
          ![创建迁移服务 - 基本信息](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-basics.png)
 
-4. 选择“查看 + 创建”  。
+4. 选择“查看 + 创建”。
 
-5. 在“查看 + 创建”选项卡上，查看条款，验证提供的其他信息，然后选择“创建”   。
+5. 在“查看 + 创建”选项卡上，查看条款，验证提供的其他信息，然后选择“创建” 。
 
     ![创建迁移服务 - 查看 + 创建](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-review-and-create.png)
 
@@ -85,7 +85,7 @@ Azure 数据库迁移服务混合模式使用本地托管的迁移辅助角色�
 
     ![Azure 数据库迁移服务混合模式实例](media/quickstart-create-data-migration-service-hybrid-portal/dms-instance-hybrid-mode.png)
 
-6. 创建服务后，选择“属性”，然后复制“资源 ID”框中显示的值，该值将用于安装 Azure 数据库迁移服务混合辅助角色   。
+6. 创建服务后，选择“属性”，然后复制“资源 ID”框中显示的值，该值将用于安装 Azure 数据库迁移服务混合辅助角色 。
 
     ![Azure 数据库迁移服务混合模式属性](media/quickstart-create-data-migration-service-hybrid-portal/dms-copy-resource-id.png)
 
@@ -93,16 +93,16 @@ Azure 数据库迁移服务混合模式使用本地托管的迁移辅助角色�
 
 需要创建 Azure 应用注册 ID，本地混合辅助角色可使用该 ID 与云中的 Azure 数据库迁移服务进行通信。
 
-1. 在 Azure portal，选择“Azure Active Directory”，选择“应用注册”，然后选择“新建注册”    。
-2. 指定应用程序的名称，然后在“支持的帐户类型”下，选择要支持的帐户类型，以指定可使用该应用程序的用户  。
+1. 在 Azure portal，选择“Azure Active Directory”，选择“应用注册”，然后选择“新建注册”  。
+2. 指定应用程序的名称，然后在“支持的帐户类型”下，选择要支持的帐户类型，以指定可使用该应用程序的用户。
 
     ![Azure 数据库迁移服务混合模式注册应用程序](media/quickstart-create-data-migration-service-hybrid-portal/dms-register-application.png)
 
-3. 使用“重定向 URI (可选)”字段的默认值，然后选择“注册”   。
+3. 使用“重定向 URI (可选)”字段的默认值，然后选择“注册” 。
 
-4. 完成应用 ID 注册后，请记下“应用程序(客户端) ID”，安装混合辅助角色时将用到它  。
+4. 完成应用 ID 注册后，请记下“应用程序(客户端) ID”，安装混合辅助角色时将用到它。
 
-5. 在 Azure 门户中，导航到“Azure 数据库迁移服务”，选择“访问控制 (IAM)”，然后选择“添加角色分配”，分配对应用 ID 的参与者访问权限   。
+5. 在 Azure 门户中，导航到“Azure 数据库迁移服务”，选择“访问控制 (IAM)”，然后选择“添加角色分配”，分配对应用 ID 的参与者访问权限 。
 
     ![Azure 数据库迁移服务混合模式分配参与者角色](media/quickstart-create-data-migration-service-hybrid-portal/dms-app-assign-contributor.png)
 
@@ -110,13 +110,13 @@ Azure 数据库迁移服务混合模式使用本地托管的迁移辅助角色�
 
     ![Azure 数据库迁移服务混合模式分配参与者角色详细信息](media/quickstart-create-data-migration-service-hybrid-portal/dms-add-role-assignment.png)
 
-7. 选择“保存”，为 Azure 数据库迁移服务资源上的应用 ID 保存角色分配  。
+7. 选择“保存”，为 Azure 数据库迁移服务资源上的应用 ID 保存角色分配。
 
 ## <a name="download-and-install-the-hybrid-worker"></a>下载并安装混合辅助角色
 
 1. 在 Azure 门户，导航到 Azure 数据库迁移服务的实例。
 
-2. 在“设置”下，选择“混合”，然后选择“安装程序下载”，下载混合辅助角色    。
+2. 在“设置”下，选择“混合”，然后选择“安装程序下载”，下载混合辅助角色  。
 
     ![Azure 数据库迁移服务混合辅助角色下载](media/quickstart-create-data-migration-service-hybrid-portal/dms-installer-download.png)
 
@@ -125,7 +125,7 @@ Azure 数据库迁移服务混合模式使用本地托管的迁移辅助角色�
     > [!IMPORTANT]
     > Azure 数据库迁移服务混合安装程序需要 .NET 4.7.2 或更高版本。 若要查找最新版本的 .NET，请参阅[下载 .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) 页。
 
-4. 在安装文件夹中，找到并打开“dmsSettings.json”文件，指定“ApplicationId”和“resourceId”，然后保存文件    。
+4. 在安装文件夹中，找到并打开“dmsSettings.json”文件，指定“ApplicationId”和“resourceId”，然后保存文件  。
 
     ![Azure 数据库迁移服务混合辅助角色设置](media/quickstart-create-data-migration-service-hybrid-portal/dms-settings.png)
 
@@ -139,7 +139,7 @@ Azure 数据库迁移服务混合模式使用本地托管的迁移辅助角色�
 
     ![Azure 数据库迁移服务混合辅助角色证书](media/quickstart-create-data-migration-service-hybrid-portal/dms-certificate.png)
 
-6. 在 Azure 门户中，导航到“管理”下的“应用 ID”，选择“证书和机密”，然后选择“上传证书”以选择生成的公共证书    。
+6. 在 Azure 门户中，导航到“管理”下的“应用 ID”，选择“证书和机密”，然后选择“上传证书”以选择生成的公共证书  。
 
     ![Azure 数据库迁移服务混合辅助角色证书上传](media/quickstart-create-data-migration-service-hybrid-portal/dms-app-upload-certificate.png)
 
@@ -191,5 +191,5 @@ Azure 数据库迁移服务混合模式使用本地托管的迁移辅助角色�
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [将 SQL Server 联机迁移到 Azure SQL 数据库托管实例](tutorial-sql-server-managed-instance-online.md)
-> [将 SQL Server 脱机迁移到 Azure SQL 数据库中的单一数据库或共用数据库](tutorial-sql-server-to-azure-sql.md)
+> [将 SQL Server 联机迁移到 Azure SQL 托管实例](tutorial-sql-server-managed-instance-online.md)
+> [Migrate SQL Server to Azure SQL Database offline](tutorial-sql-server-to-azure-sql.md)

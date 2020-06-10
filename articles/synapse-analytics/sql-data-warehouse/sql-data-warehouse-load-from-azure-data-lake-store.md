@@ -1,6 +1,6 @@
 ---
-title: 教程从 Azure Data Lake Storage 加载数据
-description: 使用 PolyBase 外部表加载 Synapse SQL Azure Data Lake Storage 的数据。
+title: 从 Azure Data Lake Storage 加载数据的教程
+description: 使用 PolyBase 外部表从适用于 Synapse SQL 的 Azure Data Lake Store 加载数据。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,23 +11,23 @@ ms.date: 04/08/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: f26aafc771998ea73d1a4f97f0e960a94f6775c3
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: MT
+ms.openlocfilehash: 193b1d5ff37eace127c8d5473b102842f4fa2a8c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82626711"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654508"
 ---
-# <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>从 SQL Analytics Azure Data Lake Storage 加载数据
+# <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>从适用于 Synapse SQL 的 Azure Data Lake Storage 加载数据
 
-本指南概述了如何使用 PolyBase 外部表从 Azure Data Lake Storage 中加载数据。 尽管可以对存储在 Data Lake Storage 中的数据运行即席查询，但我们建议导入数据以获得最佳性能。
+本指南概述如何使用 PolyBase 外部表从 Azure Data Lake Store 加载数据。 虽然可以对存储在 Data Lake Storage 中的数据运行 即席查询，但我们建议导入数据以获取最佳性能。
 
 > [!NOTE]  
-> 加载的替代方法是当前在公共预览版中的[复制语句](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。  COPY 语句提供最大的灵活性。 若要提供有关 COPY 语句的反馈，请向以下通讯组列表发送电子sqldwcopypreview@service.microsoft.com邮件：。
+> 进行加载的一种替代方法是 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)（当前提供公共预览版）。  COPY 语句可提供最大灵活性。 若要提供有关 COPY 语句的反馈，请将电子邮件发送到以下通讯组列表：sqldwcopypreview@service.microsoft.com。
 >
 > [!div class="checklist"]
 >
-> * 创建从 Data Lake Storage 加载所需的数据库对象。
+> * 创建需要从 Data Lake Storage 进行加载的数据库对象。
 > * 连接到 Data Lake Storage 目录。
 > * 将数据加载到数据仓库中。
 
@@ -37,20 +37,20 @@ ms.locfileid: "82626711"
 
 开始本教程之前，请下载并安装最新版 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS)。
 
-要运行本教程，需要：
+若要运行本教程，需要：
 
 * SQL 池。 请参阅[创建 SQL 池和查询数据](create-data-warehouse-portal.md)。
-* Data Lake Storage 帐户。 请参阅[Azure Data Lake Storage 入门](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 对于此存储帐户，你将需要配置或指定以下要加载的凭据之一：存储帐户密钥、Azure 目录应用程序用户，或拥有存储帐户的相应 RBAC 角色的 AAD 用户。
+* Data Lake Storage 帐户。 请参阅 [Azure Data Lake Storage 入门](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 对于此存储帐户，需要配置或指定以下凭据之一以进行加载：存储帐户密钥、Azure Directory 应用程序用户或是具有存储帐户的相应 RBAC 角色的 AAD 用户。
 
 ## <a name="create-a-credential"></a>创建凭据
 
-使用 AAD 传递进行身份验证时，可以跳过此部分并继续 "创建外部数据源"。 使用 AAD 传递时，无需创建或指定数据库范围的凭据，但请确保 AAD 用户具有相应的 RBAC 角色（存储 Blob 数据读取器、参与者或所有者角色）到存储帐户。 [此处](https://techcommunity.microsoft.com/t5/Azure-SQL-Data-Warehouse/How-to-use-PolyBase-by-authenticating-via-AAD-pass-through/ba-p/862260)介绍了更多详细信息。
+使用 AAD 直通进行身份验证时，可以跳过此部分并继续“创建外部数据源”。 使用 AAD 直通时，无需创建或指定数据库范围凭据，但需确保 AAD 用户具有存储帐户的相应 RBAC 角色（存储 Blob 数据读取者、参与者或所有者角色）。 [此处](https://techcommunity.microsoft.com/t5/Azure-SQL-Data-Warehouse/How-to-use-PolyBase-by-authenticating-via-AAD-pass-through/ba-p/862260)概述了更多详细信息。
 
-若要访问你的 Data Lake Storage 帐户，你将需要创建一个数据库主密钥来加密凭据机密。 然后创建数据库范围的凭据来存储机密。 使用服务主体（Azure Directory 应用程序用户）进行身份验证时，数据库范围的凭据存储 AAD 中设置的服务主体凭据。 你还可以使用数据库范围凭据来存储 Gen2 的存储帐户密钥。
+若要访问 Data Lake Storage 帐户，需要创建数据库主密钥，以便加密凭据密码。 随后创建数据库范围凭据以存储机密。 使用服务主体（Azure Directory 应用程序用户）进行身份验证时，数据库范围凭据会存储 AAD 中设置的服务主体凭据。 对于 Gen2，还可以使用数据库范围凭据存储的存储帐户密钥。
 
-若要使用服务主体连接到 Data Lake Storage，你必须**首先**创建一个 Azure Active Directory 应用程序，创建一个访问密钥，并授予应用程序对 Data Lake Storage 帐户的访问权限。 有关说明，请参阅[使用 Active Directory 对 Azure Data Lake Storage 进行身份验证](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+若要使用服务主体连接到 Data Lake Storage，必须先创建 Azure Active Directory 应用程序，创建访问密钥，并授予应用程序访问 Data Lake Storage 帐户的权限。 有关说明，请参阅[使用 Active Directory 验证 Azure Data Lake Storage](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
-使用具有控制级别权限的用户登录到 SQL 池中，并对数据库执行以下 SQL 语句：
+使用具有 CONTROL 级别权限的用户登录 SQL 池中，并对数据库执行以下 SQL 语句：
 
 ```sql
 -- A: Create a Database Master Key.
@@ -93,7 +93,7 @@ WITH
 
 ## <a name="create-the-external-data-source"></a>创建外部数据源
 
-使用此 [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 命令存储数据的位置。 如果要使用 AAD 传递进行身份验证，则不需要凭据参数。 如果要使用托管标识为服务终结点进行身份验证，请按照此[文档](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#azure-synapse-analytics-polybase)设置外部数据源。
+使用此 [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 命令存储数据的位置。 如果使用 AAD 直通进行身份验证，则不需要 CREDENTIAL 参数。 如果对服务终结点使用托管标识进行身份验证，请按照此[文档](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#azure-synapse-analytics-polybase)设置外部数据源。
 
 ```sql
 -- C (for Gen1): Create an external data source
@@ -123,7 +123,7 @@ WITH (
 
 ## <a name="configure-data-format"></a>配置数据格式
 
-若要从 Data Lake Storage 导入数据，需要指定外部文件格式。 此对象定义了如何在 Data Lake Storage 中编写文件。
+若要从 Data Lake Storage 导入数据，需要指定外部文件格式。 此对象定义在 Data Lake Storage 中写入文件的方式。
 有关完整列表，请查看我们的 T-SQL 文档 [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)（创建外部文件格式）
 
 ```sql
@@ -187,9 +187,9 @@ Data Lake Storage Gen1 使用基于角色的访问控制 (RBAC) 控制对数据�
 
 ## <a name="load-the-data"></a>加载数据
 
-若要从加载数据 Data Lake Storage 请使用[CREATE TABLE AS SELECT （transact-sql）](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)语句。
+若要从 Data Lake Storage 加载数据，请使用 [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 语句。
 
-CTAS 会创建新表，并在该表中填充 select 语句的结果。 CTAS 将新表定义为包含与 select 语句结果相同的列和数据类型。 如果选择了外部表中的所有列，则新表将是外部表中的列和数据类型的副本。
+CTAS 将创建新表，并在该表中填充 select 语句的结果。 CTAS 将新表定义为包含与 select 语句结果相同的列和数据类型。 如果选择了外部表中的所有列，则新表将是外部表中的列和数据类型的副本。
 
 在此示例中，我们将从外部表 DimProduct_external 创建名为 DimProduct 的哈希分布表。
 
@@ -224,7 +224,7 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 
 ## <a name="achievement-unlocked"></a>大功告成！
 
-已成功将数据加载到数据仓库中。 干得不错！
+已成功地将数据加载到数据仓库中。 干得不错！
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -233,9 +233,9 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 完成了以下操作：
 > [!div class="checklist"]
 >
-> * 已创建从 Data Lake Storage 加载所需的数据库对象。
-> * 已连接到 Data Lake Storage 目录。
-> * 已将数据加载到数据仓库中。
+> * 创建需要从 Data Lake Storage 加载的数据库对象。
+> * 连接到 Data Lake Storage 目录。
+> * 将数据加载到数据仓库中。
 >
 
 加载数据是使用 Azure Synapse Analytics 开发数据仓库解决方案的第一步。 请查看我们的开发资源。

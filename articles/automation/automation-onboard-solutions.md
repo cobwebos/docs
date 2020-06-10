@@ -5,12 +5,12 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 39ebdb6937b03d72365e9d3785af9571ebb66186
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 95370a45b9fce69e5c1d06ac9bb987e1bfcfba4f
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836050"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204066"
 ---
 # <a name="enable-update-management-from-a-runbook"></a>从 runbook 启用“更新管理”
 
@@ -103,9 +103,6 @@ ms.locfileid: "83836050"
 
 * 若要计划 runbook，请参阅[在 Azure 自动化中管理计划](shared-resources/schedules.md)。
 * 若要将更新管理用于 VM，请参阅[管理 Azure VM 的更新和修补程序](automation-tutorial-update-management.md)。
-* 有关作用域配置，请参阅[使用作用域配置](automation-scope-configurations-update-management.md)。
-* 如果不再需要 Log Analytics 工作区，请参阅[为更新管理取消工作区与自动化帐户的链接](automation-unlink-workspace-update-management.md)中的说明。
-* 若要从更新管理中删除 VM，请参阅[从更新管理中删除 VM](automation-remove-vms-from-update-management.md)。
 * 若要对常规更新管理错误进行故障排除，请参阅[更新管理问题故障排除](troubleshoot/update-management.md)。
 * 若要对 Windows 更新代理的问题进行故障排除，请参阅 [Windows 更新代理问题故障排除](troubleshoot/update-agent-issues.md)。
-* 若要对 Linux 更新代理的问题进行故障排除，请参阅 [Linux 更新代理问题故障排除](troubleshoot/update-agent-issues-linux.md)。
+* 若要排查 Linux 更新代理的问题，请参阅[排查 Linux 更新代理问题](troubleshoot/update-agent-issues-linux.md)。

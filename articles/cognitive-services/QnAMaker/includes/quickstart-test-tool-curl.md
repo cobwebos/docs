@@ -10,30 +10,30 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 9b1ee467abcbfb6d91a64abf4e9ad74d7b23e881
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 161dde34a4f459640d262197fd5ccbb16ac51d04
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203944"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84237662"
 ---
 此基于 cURL 的快速入门详细介绍如何从知识库获取答案。
 
 ## <a name="prerequisites"></a>先决条件
 
-* 最新的 [  cURL](https://curl.haxx.se/)。
+* 最新的 [cURL](https://curl.haxx.se/)。
 * 必须具有：
     * 一个 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)
     * 在前一篇[快速入门](../Quickstarts/add-question-metadata-portal.md)中生成的已训练且已发布的知识库，包含问题和答案，并且已配置元数据和闲聊内容。
 
 > [!NOTE]
-> 准备好从知识库生成问题的答案后，必须[训练](../Quickstarts/create-publish-knowledge-base.md#save-and-train)并[发布](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)该知识库。 发布知识库后，“发布”页将显示 HTTP 请求设置以生成答案  。 “cURL”选项卡将显示从命令行工具生成答案所需的设置。 
+> 准备好从知识库生成问题的答案后，必须[训练](../Quickstarts/create-publish-knowledge-base.md#save-and-train)并[发布](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)该知识库。 发布知识库后，“发布”页将显示 HTTP 请求设置以生成答案。 “cURL”选项卡将显示从命令行工具生成答案所需的设置。
 
 ## <a name="use-metadata-to-filter-answer"></a>使用元数据筛选答案
 
 使用上一篇快速入门中的知识库基于元数据查询答案。
 
-1. 在知识库的“设置”页中，选择“CURL”选项卡查看用于从知识库生成答案的示例 cURL 命令。  
+1. 在知识库的“设置”页中，选择“CURL”选项卡查看用于从知识库生成答案的示例 cURL 命令。 
 1. 将该命令复制到可编辑环境（例如文本文件），以便可以编辑该命令。 按如下所示编辑问题，以便将 `service:qna_maker` 的元数据用作 QnA 对的筛选器。
 
     ```bash
@@ -77,9 +77,11 @@ ms.locfileid: "82203944"
     }
     ```
 
-    如果某个问题和回答集不符合搜索词但符合筛选器，将不会返回该集， 而是返回常规回答 `No good match found in KB.`。
+    如果某对问答不符合搜索词但符合筛选器，将不会返回该对问答。 而是返回常规回答 `No good match found in KB.`。
 
 ## <a name="use-debug-query-property"></a>使用调试查询属性
+> [!NOTE]
+>建议不要将 Debug 属性用于任何依赖项。 添加此属性是为了帮助产品团队进行故障排除。
 
 调试信息可帮助你了解返回的答案是如何确定的。 尽管此信息非常有用，但不是必需的。 若要生成附带调试信息的答案，请添加 `debug` 属性：
 

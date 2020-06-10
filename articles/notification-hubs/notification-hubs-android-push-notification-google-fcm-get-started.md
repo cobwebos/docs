@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 通知中心和 Firebase 将推送通知发送到 Android | Microsoft Docs
-description: 本教程介绍如何使用 Azure 通知中心和 Google Firebase Cloud Messaging 将通知推送到 Android 设备。
+title: 使用 Azure 通知中心和 Firebase SDK 版本 0.6 将推送通知发送到 Android | Microsoft Docs
+description: 本教程介绍如何使用 Azure 通知中心和 Google Firebase Cloud Messaging 将推送通知发送到 Android 设备。
 services: notification-hubs
 documentationcenter: android
 keywords: 推送通知, 推送通知, android 推送通知, fcm, firebase cloud messaging
@@ -16,20 +16,20 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/11/2019
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: e6bc4ed94c8b8e62740f81497231a163283ebcb7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7dbe9faabcb7a46ae3862ac7da6504b6b0407d86
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80521552"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170437"
 ---
-# <a name="tutorial-send-push-notifications-to-android-devices-using-firebase"></a>教程：使用 Firebase 将推送通知发送到 Android 设备
+# <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-06"></a>教程：使用 Firebase SDK 版本 0.6 将推送通知发送到 Android 设备
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-本教程介绍如何使用 Azure 通知中心和 Firebase Cloud Messaging (FCM) 将通知推送到 Android 应用程序。 在本教程中，请创建一个空白 Android 应用，以便使用 Firebase Cloud Messaging (FCM) 接收推送通知。
+本教程介绍了如何使用 Azure 通知中心和 Firebase Cloud Messaging (FCM) SDK 版本 0.6 将推送通知发送到 Android 应用程序。 在本教程中，请创建一个空白 Android 应用，以便使用 Firebase Cloud Messaging (FCM) 接收推送通知。
 
 可以[从 GitHub](https://github.com/Azure/azure-notificationhubs-android/tree/master/FCMTutorialApp)下载本教程的已完成代码。
 
@@ -58,12 +58,12 @@ ms.locfileid: "80521552"
 ## <a name="create-an-android-studio-project"></a>创建 Android Studio 项目
 
 1. 启动 Android Studio。
-2. 选择“文件”，指向“新建”，然后选择“新建项目”。    
-2. 在“选择项目”页上选择“空活动”，选择“下一步”。    
-3. 在“配置项目”页上执行以下步骤：  
+2. 选择“文件”，指向“新建”，然后选择“新建项目”。   
+2. 在“选择项目”页上选择“空活动”，选择“下一步”。   
+3. 在“配置项目”页上执行以下步骤： 
     1. 输入应用程序的名称。
     2. 指定项目文件的保存位置。 
-    3. 选择“完成”  。 
+    3. 选择“完成”。 
 
         ![配置项目](./media/notification-hubs-android-push-notification-google-fcm-get-started/configure-project.png)
 
@@ -77,12 +77,12 @@ ms.locfileid: "80521552"
 
 ### <a name="configure-firebase-cloud-messaging-settings-for-the-hub"></a>为中心配置 Firebase Cloud Messaging 设置
 
-1. 在左窗格中的“设置”下，选择“Google (GCM/FCM)”   。 
-2. 输入前面保存的 FCM 项目“服务器密钥”  。 
-3. 在工具栏上选择“保存”。  
+1. 在左窗格中的“设置”下，选择“Google (GCM/FCM)” 。 
+2. 输入前面保存的 FCM 项目“服务器密钥”。 
+3. 在工具栏上选择“保存”。 
 
     ![Azure 通知中心 - Google (FCM)](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
-4. Azure 门户中显示一条警报消息，指出通知中心已成功更新。 “保存”按钮已禁用。  
+4. Azure 门户中显示一条警报消息，指出通知中心已成功更新。 “保存”按钮已禁用。 
 
 现在，中心已配置为使用 Firebase Cloud Messaging。 连接字符串还需要将通知发送到设备并注册应用以接收通知。
 
@@ -90,19 +90,19 @@ ms.locfileid: "80521552"
 
 ### <a name="add-google-play-services-to-the-project"></a>将 Google Play 服务添加到项目
 
-1. 在 Android Studio 中，在菜单上选择“工具”  ，然后选择“SDK 管理器”  。 
-2. 选择项目中使用的 Android SDK 的目标版本。 然后选择“显示包详细信息”  。 
+1. 在 Android Studio 中，在菜单上选择“工具”，然后选择“SDK 管理器”。 
+2. 选择项目中使用的 Android SDK 的目标版本。 然后选择“显示包详细信息”。 
 
     ![Android SDK 管理器 - 选择目标版本](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
-3. 选择“Google API”  （如果尚未安装）。
+3. 选择“Google API”（如果尚未安装）。
 
     ![Android SDK 管理器 - 选择了“Google API”](./media/notification-hubs-android-studio-add-google-play-services/googole-apis-selected.png)
-4. 切换到“SDK 工具”选项卡。  如果尚未安装 Google Play Services，请选择“Google Play Services”，如下图所示。  然后，选择“应用”  以进行安装。 记下 SDK 路径，因为后面的步骤将要用到。
+4. 切换到“SDK 工具”选项卡。如果尚未安装 Google Play Services，请选择“Google Play Services”，如下图所示。 然后，选择“应用”以进行安装。 记下 SDK 路径，因为后面的步骤将要用到。
 
     ![Android SDK 管理器 - 选择了“Google Play 服务”](./media/notification-hubs-android-studio-add-google-play-services/google-play-services-selected.png)
-3. 如果看到了“确认更改”  对话框，请选择“确定”  。 组件安装程序将安装所请求的组件。 在安装组件后，选择“完成”  。
-4. 选择“确定”  以关闭“新项目的设置”  对话框。  
-1. 打开 AndroidManifest.xml 文件，然后将以下标记添加到应用程序  标记。
+3. 如果看到了“确认更改”对话框，请选择“确定”。 组件安装程序将安装所请求的组件。 在安装组件后，选择“完成”。
+4. 选择“确定”以关闭“新项目的设置”对话框。  
+1. 打开 AndroidManifest.xml 文件，然后将以下标记添加到应用程序标记。
 
     ```xml
     <meta-data android:name="com.google.android.gms.version"
@@ -130,7 +130,7 @@ ms.locfileid: "80521552"
 
 ### <a name="add-google-firebase-support"></a>添加 Google Firebase 支持
 
-1. 在应用的 Build.Gradle 文件中，如果她们不存在就添加以下行到“依赖项”部分  。 
+1. 在应用的 Build.Gradle 文件中，如果她们不存在就添加以下行到“依赖项”部分。 
 
     ```gradle
     implementation 'com.google.firebase:firebase-core:16.0.8'
@@ -142,7 +142,7 @@ ms.locfileid: "80521552"
     ```gradle
     apply plugin: 'com.google.gms.google-services'
     ```
-3. 在工具栏上选择“立即同步”。 
+3. 在工具栏上选择“立即同步”。
 
 ### <a name="update-the-androidmanifestxml-file"></a>更新 AndroidManifest.xml 文件
 
@@ -173,11 +173,11 @@ ms.locfileid: "80521552"
 
 ### <a name="add-code"></a>添加代码
 
-1. 在项目视图中，展开 **app** > **src** > **main** > **java** 右键单击“java”下的包文件夹，选择“新建”，然后选择“Java 类”    。 输入 NotificationSettings 作为名称，然后选择“确定”   。
+1. 在项目视图中，展开 **app** > **src** > **main** > **java** 右键单击“java”下的包文件夹，选择“新建”，然后选择“Java 类”  。 输入 NotificationSettings 作为名称，然后选择“确定” 。
 
     确保在 `NotificationSettings` 类的以下代码中更新这三个占位符：
 
-   * **HubListenConnectionString**：中心的 **DefaultListenAccessSignature** 连接字符串。 可以复制此连接字符串，方法是在 [Azure 门户]的中心单击“访问策略”  。
+   * **HubListenConnectionString**：中心的 **DefaultListenAccessSignature** 连接字符串。 可以复制此连接字符串，方法是在 [Azure 门户]的中心单击“访问策略”。
    * **HubName**：使用 [Azure 门户]的中心页中显示的中心的名称。
 
      `NotificationSettings` 代码：
@@ -190,7 +190,7 @@ ms.locfileid: "80521552"
         ```
 
      > [!IMPORTANT]
-     > 输入中心的名称和 DefaultListenSharedAccessSignature，然后继续   。 
+     > 输入中心的名称和 DefaultListenSharedAccessSignature，然后继续 。 
 
 2. 将另一个名为 `RegistrationIntentService`的新类添加到项目。 此类实现 `IntentService` 接口。 它还处理[刷新 FCM 令牌](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens)和[在通知中心注册](notification-hubs-push-notification-registration-management.md)。
 
@@ -407,7 +407,7 @@ ms.locfileid: "80521552"
     }
     ```
 
-9. `ToastNotify` 方法使用“Hello World”`TextView` 控件在应用中持续报告状态和通知  。 在 **res** > **layout** > **activity_main.xml** 布局中，为该控件添加以下 ID。
+9. `ToastNotify` 方法使用“Hello World”`TextView` 控件在应用中持续报告状态和通知。 在 **res** > **layout** > **activity_main.xml** 布局中，为该控件添加以下 ID。
 
     ```java
     android:id="@+id/text_hello"
@@ -522,7 +522,7 @@ ms.locfileid: "80521552"
     }
     ```
 
-13. 在 Android Studio 的菜单栏上，选择“生成” > “重新生成项目”，确保代码中没有任何错误。   如果收到有关 `ic_launcher` 图标的错误，请从 AndroidManifest.xml 文件中删除以下语句： 
+13. 在 Android Studio 的菜单栏上，选择“生成” > “重新生成项目”，确保代码中没有任何错误。  如果收到有关 `ic_launcher` 图标的错误，请从 AndroidManifest.xml 文件中删除以下语句： 
 
     ```
         android:icon="@mipmap/ic_launcher"
@@ -542,9 +542,9 @@ ms.locfileid: "80521552"
 
 可以执行下述步骤，以便从 [Azure 门户]发送推送通知：
 
-1. 在 Azure 门户中通知中心的“中心”页上，选择“故障排除”部分的“测试发送”。  
-3. 对于“平台”，请选择“Android”  。 
-4. 选择“发送”。   目前在 Android 设备上还看不到通知，因为尚未在其上运行移动应用。 运行移动应用以后，再次选择“发送”按钮即可看到通知消息。 
+1. 在 Azure 门户中通知中心的“中心”页上，选择“故障排除”部分的“测试发送”。 
+3. 对于“平台”，请选择“Android”。
+4. 选择“发送”。  目前在 Android 设备上还看不到通知，因为尚未在其上运行移动应用。 运行移动应用以后，再次选择“发送”按钮即可看到通知消息。
 5. 请在底部的列表中查看操作结果。
 
     ![Azure 通知中心 - 测试发送](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-hubs-test-send.png)
@@ -556,9 +556,9 @@ ms.locfileid: "80521552"
 [!INCLUDE [notification-hubs-sending-notifications-from-the-portal](../../includes/notification-hubs-sending-notifications-from-the-portal.md)]
 
 ### <a name="run-the-mobile-app-on-emulator"></a>在仿真器中运行移动应用
-在模拟器中测试推送通知之前，请确保模拟器映像支持你为应用程序选择的 Google API 级别。 如果映像不支持本机 Google API，可能会收到 “SERVICE\_NOT\_AVAILABLE”异常。 
+在模拟器中测试推送通知之前，请确保模拟器映像支持你为应用程序选择的 Google API 级别。 如果映像不支持本机 Google API，可能会收到 “SERVICE\_NOT\_AVAILABLE”异常。
 
-另外，请确保已在“设置”   > “帐户”  下将 Google 帐户添加到正在运行的模拟器中。 否则，尝试向 FCM 注册可能会导致 “AUTHENTICATION\_FAILED” 异常  。
+另外，请确保已在“设置” > “帐户”下将 Google 帐户添加到正在运行的模拟器中。 否则，尝试向 FCM 注册可能会导致 “AUTHENTICATION\_FAILED” 异常。
 
 ## <a name="next-steps"></a>后续步骤
 在本教程中，你已使用 Firebase Cloud Messaging 将通知广播到在该服务中注册的所有 Android 设备。 若要了解如何向特定的设备推送通知，请转到以下教程：

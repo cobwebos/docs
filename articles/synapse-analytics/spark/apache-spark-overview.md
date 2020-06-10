@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 470cc8cc16c8bdb32bac32a7227690899abb9c51
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8ca2a3d55a98f96f704999d888761ea40fc4665f
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644672"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140967"
 ---
 # <a name="what-is-apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 Apache Spark 是什么
 
@@ -39,9 +39,9 @@ Azure Synapse 中的 Spark 池提供完全托管的 Spark 服务。 下面列出
 | 易于使用 |Synapse Analytics 包含派生自 [Nteract](https://nteract.io/) 的自定义笔记本。 可以使用这些笔记本执行交互式数据处理和可视化。|
 | REST API |Synapse Analytics 中的 Spark 包含 [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)（基于 REST-API 的 Spark 作业服务器，用于远程提交和监视作业）。 |
 | 支持 Azure Data Lake Storage Generation 2| Azure Synapse 中的 Spark 池可以使用 Azure Data Lake Storage Generation 2 和 BLOB 存储。 有关 Data Lake Storage 的详细信息，请参阅 [Azure Data Lake Storage 概述](../../data-lake-store/data-lake-store-overview.md)。 |
-| 与第三方 IDE 集成 | Azure Synapse 为 [Jetbrains 的 IntelliJ IDEA](https://www.jetbrains.com/idea/) 提供一个 IDE 插件，该插件可用于创建应用程序并将其提交到 Spark 池。 |
+| 与第三方 IDE 集成 | Azure Synapse 为 [JetBrains 的 IntelliJ IDEA](https://www.jetbrains.com/idea/) 提供一个 IDE 插件，该插件可用于创建应用程序并将其提交到 Spark 池。 |
 | 预先加载的 Anaconda 库 |Azure Synapse 中的 Spark 池预装了 Anaconda 库。 [Anaconda](https://docs.continuum.io/anaconda/) 提供将近 200 个用于机器学习、数据分析、可视化等的库。 |
-| 可伸缩性 | 可为 Azure Synapse 中的 Apache Spark 池启用自动缩放，以根据需要纵向扩展和缩减池。 此外，由于所有数据都存储在 Azure 存储或 Data Lake Storage 中，因此可以关闭 Spark 池而不丢失任何数据。 |
+| 可伸缩性 | Azure Synapse 中的 Apache Spark 池可启用“自动缩放”，由此可根据需要添加或删除节点以缩放池。 此外，由于所有数据都存储在 Azure 存储或 Data Lake Storage 中，因此可以关闭 Spark 池而不丢失任何数据。 |
 
 Azure Synapse 中的 Spark 池默认包含可在这些池中使用的以下组件。
 

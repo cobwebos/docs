@@ -1,23 +1,23 @@
 ---
 title: FedRAMP High 蓝图示例控制
 description: FedRAMP High 蓝图示例的控制映射。 每个控制都映射到一个或多个协助评估的 Azure 策略。
-ms.date: 01/31/2020
+ms.date: 05/12/2020
 ms.topic: sample
-ms.openlocfilehash: cceca23e4bdc749c553eaf41b5f9599be3c9bf7d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f57f753c405e736a4c83dd6f10b6f38184ce74b6
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77150606"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168873"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>FedRAMP High 蓝图示例的控制映射
 
 以下文章详细说明了 Azure 蓝图 FedRAMP High 蓝图示例如何映射到 FedRAMP High 控制。 有关这些控件的详细信息，请参阅 [FedRAMP 安全控件基线](https://www.fedramp.gov/)。
 
-以下映射是到 **FedRAMP High** 控制的映射。 使用右侧的导航栏可直接跳转到特定的控制映射。 许多的映射控制措施都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。   然后，找到并选择“ **\[预览\]：审核 FedRAMP High 控制并部署特定 VM 扩展以支持审核要求**内置策略计划。
+以下映射是到 **FedRAMP High** 控制的映射。 使用右侧的导航栏可直接跳转到特定的控制映射。 许多的映射控制措施都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。  然后，找到并选择“ **\[预览\]：审核 FedRAMP High 控制并部署特定 VM 扩展以支持审核要求**内置策略计划。
 
 > [!IMPORTANT]
-> 下面的每个控件都与一个或多个 [Azure Policy](../../../policy/overview.md) 定义关联。 这些策略可以帮助你[评估控件的符合性](../../../policy/how-to/get-compliance-data.md)；但是，控件与一个或多个策略之间通常不是 1:1 或完全匹配。 因此，Azure Policy 中的符合性  仅引用策略本身；这不确保你完全符合控件的所有要求。 此外，符合性标准包含目前未由任何 Azure Policy 定义处理的控件。 因此，Azure Policy 中的符合性只是整体符合性状态的部分视图。 此符合性蓝图示例的控件和 Azure Policy 定义之间的关联可能会随着时间的推移而发生变化。
+> 下面的每个控件都与一个或多个 [Azure Policy](../../../policy/overview.md) 定义关联。 这些策略可以帮助你[评估控件的符合性](../../../policy/how-to/get-compliance-data.md)；但是，控件与一个或多个策略之间通常不是 1:1 或完全匹配。 因此，Azure Policy 中的符合性仅引用策略本身；这不确保你完全符合控件的所有要求。 此外，符合性标准包含目前未由任何 Azure Policy 定义处理的控件。 因此，Azure Policy 中的符合性只是整体符合性状态的部分视图。 此符合性蓝图示例的控件和 Azure Policy 定义之间的关联可能会随着时间的推移而发生变化。
 > 若要查看更改历史记录，请参阅 [GitHub 提交历史记录](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/fedramp-h/control-mapping.md)。
 
 ## <a name="ac-2-account-management"></a>AC-2 帐户管理
@@ -118,9 +118,7 @@ Azure Monitor 收集的日志数据存储在支持集中报告和分析的 Log A
 
 ## <a name="au-6-5-audit-review-analysis-and-reporting--integration--scanning-and-monitoring-capabilities"></a>AU-6 (5) 审核评审、分析和报告 | 集成/扫描和监视功能
 
-此蓝图提供的策略定义用于审核记录，分析虚拟机、虚拟机规模集、SQL 托管实例和 SQL 服务器上的漏洞评估。
-这些策略定义还审核诊断日志配置，以提供对 Azure 资源内执行的操作的见解。 这些见解提供有关已部署资源的安全状态的实时信息，可帮助你指定补救措施的优先级。
-为了实现详细的漏洞扫描和监视，我们建议你同时利用 Azure Sentinel 和 Azure 安全中心。
+此蓝图提供的策略定义用于审核记录，分析虚拟机、虚拟机规模集、SQL 数据服务器和 SQL 托管实例服务器上的漏洞评估。 这些策略定义还审核诊断日志配置，以提供对 Azure 资源内执行的操作的见解。 这些见解提供有关已部署资源的安全状态的实时信息，可帮助你指定补救措施的优先级。 为了实现详细的漏洞扫描和监视，我们建议你同时利用 Azure Sentinel 和 Azure 安全中心。
 
 - \[预览\]：应在虚拟机上启用漏洞评估
 - \[预览\]：启用用于 VM 的 Azure Monitor
@@ -314,7 +312,7 @@ Azure 的分布式拒绝服务 (DDoS) 标准层通过基本服务层提供额外
 
 ## <a name="si-3-malicious-code-protection"></a>SI-3 恶意代码防护
 
-此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义用于监视 Azure 安全中心中虚拟机上缺失的终结点防护并在 Windows 虚拟机上强制执行 Microsoft 反恶意软件解决方案，从而帮助管理终结点防护，包括恶意代码防护。
+此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义用于监视 Azure 安全中心中虚拟机上缺失的终结点防护并在 Windows 虚拟机上强制执行 Microsoft 反恶意软件解决方案，从而帮助管理 Endpoint Protection，包括恶意代码防护。
 
 - 为 Windows Server 部署默认 Microsoft IaaSAntimalware 扩展
 - 应在虚拟机规模集上安装 Endpoint Protection 解决方案
@@ -322,7 +320,7 @@ Azure 的分布式拒绝服务 (DDoS) 标准层通过基本服务层提供额外
 
 ## <a name="si-3-1-malicious-code-protection--central-management"></a>SI-3 (1) 恶意代码防护 | 集中管理
 
-此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义用于监视 Azure 安全中心中虚拟机上缺失的终结点防护，从而帮助管理终结点防护，包括恶意代码防护。 Azure 安全中心提供集中管理和报告功能，用于实时洞察已部署的 Azure 资源的安全状态。
+此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义用于监视 Azure 安全中心中虚拟机上缺失的终结点防护，从而帮助 Endpoint Protection，包括恶意代码防护。 Azure 安全中心提供集中管理和报告功能，用于实时洞察已部署的 Azure 资源的安全状态。
 
 - 应在虚拟机规模集上安装 Endpoint Protection 解决方案
 - 监视 Azure 安全中心 Endpoint Protection 的缺失情况

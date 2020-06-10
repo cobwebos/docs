@@ -2,15 +2,15 @@
 title: 教程 - 创建和部署模板
 description: 创建第一个 Azure 资源管理器模板。 本教程将介绍模板文件语法，以及如何部署存储帐户。
 author: mumian
-ms.date: 05/20/2020
+ms.date: 05/29/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2180ca80d87643eb885d814318e516b4b3c53f37
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: dff1dd15f7f161f25ef7de54e36fa83e3e0036d2
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714791"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235216"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>教程：创建和部署第一个 ARM 模板
 
@@ -40,14 +40,17 @@ ms.locfileid: "83714791"
 
 安装 Azure PowerShell 或 Azure CLI 后，请务必完成首次登录。 有关帮助，请参阅[登录 - PowerShell](/powershell/azure/install-az-ps#sign-in) 或[登录 - Azure CLI](/cli/azure/get-started-with-azure-cli#sign-in)。
 
+> [!IMPORTANT]
+> 如果使用的是 Azure CLI，请确保安装 2.6 或更高版本。 如果使用的是较低版本，本教程中所示的命令将不起作用。 要查看已安装版本，请使用 `az --version`。
+
 好了，现在可以开始了解模板。
 
 ## <a name="create-your-first-template"></a>创建第一个模板
 
 1. 打开装有资源管理器工具扩展的 Visual Studio Code。
-1. 在“文件”菜单中，选择“新建文件”以创建新的文件。  
-1. 在“文件”菜单中选择“另存为”。  
-1. 将该文件命名为 **azuredeploy**，然后选择“JSON”文件扩展名。  完整的文件名为 **azuredeploy.json**。
+1. 在“文件”菜单中，选择“新建文件”以创建新的文件。 
+1. 在“文件”菜单中选择“另存为”。 
+1. 将该文件命名为 **azuredeploy**，然后选择“JSON”文件扩展名。 完整的文件名为 **azuredeploy.json**。
 1. 将该文件保存到工作站。 选择容易记住的路径，因为稍后在部署模板时需要提供该路径。
 1. 将以下 JSON 内容复制并粘贴到该文件中：
 
@@ -181,15 +184,15 @@ az deployment group create \
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-1. 在左侧菜单中选择“资源组”。 
+1. 在左侧菜单中选择“资源组”。
 
 1. 选择在上一过程中部署的资源组。 默认名称为 **myResourceGroup**。 你应会看到，该资源组中未部署任何资源。
 
-1. 请注意，在概述的右上角显示了部署状态。 选择“1 成功”。 
+1. 请注意，在概述的右上角显示了部署状态。 选择“1 成功”。
 
    ![查看部署状态](./media/template-tutorial-create-first-template/deployment-status.png)
 
-1. 将会看到该资源组的部署历史记录。 选择“blanktemplate”。 
+1. 将会看到该资源组的部署历史记录。 选择“blanktemplate”。
 
    ![选择部署](./media/template-tutorial-create-first-template/select-from-deployment-history.png)
 
@@ -203,10 +206,10 @@ az deployment group create \
 
 如果就此停止学习，请删除该资源组。
 
-1. 在 Azure 门户上的左侧菜单中选择“资源组”  。
-2. 在“按名称筛选”字段中输入资源组名称。 
+1. 在 Azure 门户上的左侧菜单中选择“资源组”。
+2. 在“按名称筛选”字段中输入资源组名称。
 3. 选择资源组名称。
-4. 在顶部菜单中选择“删除资源组”。 
+4. 在顶部菜单中选择“删除资源组”。
 
 ## <a name="next-steps"></a>后续步骤
 

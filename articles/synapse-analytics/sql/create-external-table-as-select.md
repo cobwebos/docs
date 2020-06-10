@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: cbf6d42f3b1d130a6bf89f07bd3a7009ff0e8fa8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d73e895371764d9dd28290648551d84181e022cd
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647513"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117579"
 ---
 # <a name="store-query-results-to-storage-using-sql-on-demand-preview-using-azure-synapse-analytics"></a>通过 Azure Synapse Analytics 使用 SQL 按需版本（预览版）将查询结果存储到存储
 
@@ -22,17 +22,16 @@ ms.locfileid: "83647513"
 
 ## <a name="prerequisites"></a>先决条件
 
-第一步是阅读下面的文章，确保满足先决条件：
+第一步是创建将在其中执行查询的数据库。 然后通过对该数据库执行[安装脚本](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)来初始化这些对象。 此安装脚本将创建数据源、数据库范围的凭据和用于读取这些示例中数据的外部文件格式。
 
-- [首次设置](query-data-storage.md#first-time-setup)
-- [先决条件](query-data-storage.md#prerequisites)
+按照本文中的说明创建数据源、数据库范围的凭据以及用于将数据写入到输出存储的外部文件格式。
 
 ## <a name="create-external-table-as-select"></a>Create external table as select
 
 可以使用 CREATE EXTERNAL TABLE AS SELECT (CETAS) 语句将查询结果存储到存储。
 
 > [!NOTE]
-> 更改查询中的第一行（即 [mydbname]），以便使用你创建的数据库。 如果尚未创建数据库，请阅读[首次设置](query-data-storage.md#first-time-setup)。 需要更改 MyDataSource 外部数据源的 LOCATION，使之指向你有写入权限的位置。 
+> 更改查询中的第一行（即 [mydbname]），以便使用你创建的数据库。
 
 ```sql
 USE [mydbname];
@@ -63,8 +62,9 @@ SELECT
     *
 FROM
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix/population.csv',
-        FORMAT='CSV'
+        BULK 'csv/population-unix/population.csv',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
     ) WITH (
         CountryCode varchar(4),
         CountryName varchar(64),
@@ -79,7 +79,7 @@ FROM
 可以像使用常规外部表一样，使用通过 CETAS 创建的外部表。
 
 > [!NOTE]
-> 更改查询中的第一行（即 [mydbname]），以便使用你创建的数据库。 如果尚未创建数据库，请阅读[首次设置](query-data-storage.md#first-time-setup)。
+> 更改查询中的第一行（即 [mydbname]），以便使用你创建的数据库。
 
 ```sql
 USE [mydbname];

@@ -1,25 +1,27 @@
 ---
 title: 快速入门：将 Cassandra API 与 Python 配合使用 - Azure Cosmos DB
 description: 本快速入门介绍如何配合 Python 使用 Azure Cosmos DB 的 Apache Cassandra API 创建配置文件应用程序。
-author: SnehaGunda
-ms.author: sngun
+author: TheovanKraay
+ms.author: thvankra
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: 0b432653c452b6763e746f61b86e881c9cee62cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/18/2020
+ms.openlocfilehash: f2f09e67c16993696f4f352abf68991ca20f9369
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77134689"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310013"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>快速入门：使用 Python SDK 和 Azure Cosmos DB 构建 Cassandra 应用
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
-> * [Java](create-cassandra-java.md)
+> * [.NET Core](create-cassandra-dotnet-core.md)
+> * [Java v3](create-cassandra-java.md)
+> * [Java v4](create-cassandra-java-v4.md)
 > * [Node.js](create-cassandra-nodejs.md)
 > * [Python](create-cassandra-python.md)
 >  
@@ -63,7 +65,7 @@ ms.locfileid: "77134689"
 
 ## <a name="review-the-code"></a>查看代码
 
-此步骤是可选的。 如果有意了解如何通过代码创建数据库资源，可以查看以下代码片段。 这些代码片段全部摘自 pyquickstart.py  文件。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-string)。 
+此步骤是可选的。 如果有意了解如何通过代码创建数据库资源，可以查看以下代码片段。 这些代码片段全部摘自 pyquickstart.py 文件。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-string)。 
 
 * 用户名和密码值是使用 Azure 门户中的连接字符串页设置的。 `path\to\cert` 提供 X509 证书的路径。 
 
@@ -132,13 +134,13 @@ ms.locfileid: "77134689"
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。 连接字符串使应用能与托管数据库进行通信。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的 Azure Cosmos DB 帐户中，选择“连接字符串”  。 
+1. 在 [Azure 门户](https://portal.azure.com/)的 Azure Cosmos DB 帐户中，选择“连接字符串”。 
 
     使用 ![“复制”按钮](./media/create-cassandra-python/copy.png) 复制最上面的值“联系点”。
 
     ![在 Azure 门户的连接字符串边栏选项卡中查看并复制用户名、密码和联系点](./media/create-cassandra-python/keys.png)
 
-2. 打开 config.py  文件。 
+2. 打开 config.py 文件。 
 
 3. 粘贴门户中的“联系点”值，并覆盖第 10 行中的 `<FILLME>`。
 
@@ -158,17 +160,17 @@ ms.locfileid: "77134689"
 
     `'password' = '2Ggkr662ifxz2Mg==`';`
 
-6. 保存 config.py  文件。
+6. 保存 config.py 文件。
     
 ## <a name="use-the-x509-certificate"></a>使用 X509 证书
 
-1. 从 [https://cacert.omniroot.com/bc2025.crt](https://cacert.omniroot.com/bc2025.crt) 在本地下载 Baltimore CyberTrust 根证书。 使用文件扩展名“.cer”  重命名该文件。
+1. 从 [https://cacert.omniroot.com/bc2025.crt](https://cacert.omniroot.com/bc2025.crt) 在本地下载 Baltimore CyberTrust 根证书。 使用文件扩展名“.cer”重命名该文件。
 
    证书的序列号为 `02:00:00:b9`，SHA1 指纹为 `d4🇩🇪20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74`。
 
-2. 打开 pyquickstart.py  ，并将 `path\to\cert` 更改为指向新证书。
+2. 打开 pyquickstart.py，并将 `path\to\cert` 更改为指向新证书。
 
-3. 保存 pyquickstart.py  。
+3. 保存 pyquickstart.py。
 
 ## <a name="run-the-python-app"></a>运行 Python 应用
 
@@ -195,7 +197,7 @@ ms.locfileid: "77134689"
 
     ![查看并验证输出](./media/create-cassandra-python/output.png)
     
-4. 在 Azure 门户中，打开数据资源管理器  ，以查询、修改和处理这些新数据。 
+4. 在 Azure 门户中，打开数据资源管理器，以查询、修改和处理这些新数据。 
 
     ![在数据资源管理器中查看数据](./media/create-cassandra-python/data-explorer.png)
 

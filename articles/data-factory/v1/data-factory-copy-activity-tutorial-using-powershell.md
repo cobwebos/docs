@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 215ed088b17125e7e41877e3c188a6bf3d77e8bb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f34103bb42999f6d2e9bfe35dbc257db7cecd909
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73682860"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119264"
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>教程：使用 Azure PowerShell 创建移动数据的数据工厂管道
 > [!div class="op_single_selector"]
@@ -54,8 +54,8 @@ ms.locfileid: "73682860"
 ## <a name="steps"></a>步骤
 下面是本教程中要执行的步骤：
 
-1. 创建 Azure“数据工厂”  。 本步骤创建名为 ADFTutorialDataFactoryPSH 的数据工厂。 
-1. 在数据工厂中创建“链接服务”  。 此步骤将创建两个链接服务，其类型分别为：Azure 存储和 Azure SQL 数据库。 
+1. 创建 Azure“数据工厂”。 本步骤创建名为 ADFTutorialDataFactoryPSH 的数据工厂。 
+1. 在数据工厂中创建“链接服务”。 此步骤将创建两个链接服务，其类型分别为：Azure 存储和 Azure SQL 数据库。 
     
     AzureStorageLinkedService 链接将 Azure 存储帐户链接到数据工厂。 根据[先决条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)创建了一个容器并将数据上传到该存储帐户。   
 
@@ -118,7 +118,7 @@ ms.locfileid: "73682860"
     ```
 * 只有 Azure 订阅的参与者或管理员才可以创建数据工厂实例。
 * 数据工厂名称可能在将来被注册为 DNS 名称，因此将公开可见。
-* 可能看到以下错误：“该订阅未注册，无法使用命名空间 Microsoft.DataFactory”  。 请执行以下操作之一，并重试发布：
+* 可能看到以下错误：“该订阅未注册，无法使用命名空间 Microsoft.DataFactory”。 请执行以下操作之一，并重试发布：
 
   * 在 Azure PowerShell 中运行以下命令，注册数据工厂提供程序。
 
@@ -189,7 +189,7 @@ AzureSqlLinkedService 将 Azure SQL 数据库链接到数据工厂。 从 Blob �
 1. 在 C:\ADFGetStartedPSH 文件夹中，创建包含以下内容的名为 AzureSqlLinkedService.json 的 JSON 文件：
 
     > [!IMPORTANT]
-    > 将 &lt;servername&gt;、&lt;databasename&gt;、&lt;username@servername&gt; 和 &lt;password&gt; 分别替换为 Azure SQL 服务器名称、数据库名称、用户帐户名和密码。
+    > 将 &lt;servername&gt;、&lt;databasename&gt;、&lt;username@servername&gt; 和 &lt;password&gt; 分别替换为服务器名称、数据库名称、用户帐户名和密码。
     
     ```json
     {
@@ -218,14 +218,14 @@ AzureSqlLinkedService 将 Azure SQL 数据库链接到数据工厂。 从 Blob �
     ProvisioningState : Succeeded
     ```
 
-   确认为 SQL 数据库服务器启用了“允许访问 Azure 服务”设置。  若要验证并启用此设置，请执行以下步骤：
+   确认为服务器启用了“允许访问 Azure 服务”设置。 若要验证并启用此设置，请执行以下步骤：
 
     1. 登录到 [Azure 门户](https://portal.azure.com)
-    1. 单击左侧的“更多服务”  ，并单击“数据库”类别中的“SQL Server”  。 
+    1. 单击左侧的“更多服务”，并单击“数据库”类别中的“SQL Server”。
     1. 在 SQL Server 列表中选择服务器。
-    1. 在 SQL Server 边栏选项卡上，单击“显示防火墙设置”链接。 
-    1. 在“防火墙设置”边栏选项卡中，单击“允许访问 Azure 服务”旁边的“打开”。   
-    1. 单击工具栏上的“保存”。  
+    1. 在 SQL Server 边栏选项卡上，单击“显示防火墙设置”链接。
+    1. 在“防火墙设置”边栏选项卡中，单击“允许访问 Azure 服务”旁边的“打开”。  
+    1. 单击工具栏上的“保存”。 
 
 ## <a name="create-datasets"></a>创建数据集
 在上一步骤中，已创建用于将 Azure 存储帐户和 Azure SQL 数据库链接到数据工厂的链接服务。 本步骤定义两个名为 InputDataset 和 OutputDataset 的数据集，表示存储在数据存储中的输入和输出数据，这些数据存储分别由 AzureStorageLinkedService 和 AzureSqlLinkedService 引用。
@@ -370,7 +370,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
     ```
 
 ## <a name="create-a-pipeline"></a>创建管道
-本步骤创建管道，其中包含使用 InputDataset  作为输入和使用 OutputDataset  作为输出的复制活动  。
+本步骤创建管道，其中包含使用 InputDataset 作为输入和使用 OutputDataset 作为输出的复制活动。
 
 目前，输出数据集驱动计划。 在本教程中，输出数据集配置为每小时生成一个切片。 管道的开始时间和结束时间相差一天，即 24 小时。 因此，管道会生成 24 个输出数据集切片。 
 
@@ -450,7 +450,7 @@ Azure 存储链接服务指定一个连接字符串，数据工厂服务在运�
     ProvisioningState : Succeeded
     ```
 
-祝贺你！  现已成功创建 Azure 数据工厂，可以使用管道将数据从 Azure Blob 存储复制到 Azure SQL 数据库了。 
+祝贺你！ 现已成功创建 Azure 数据工厂，可以使用管道将数据从 Azure Blob 存储复制到 Azure SQL 数据库了。 
 
 ## <a name="monitor-the-pipeline"></a>监视管道
 本步骤使用 Azure PowerShell 监视 Azure 数据工厂的运行情况。

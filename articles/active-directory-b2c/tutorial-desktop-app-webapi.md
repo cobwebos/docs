@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 59670cda68f54e4c0b20b361f0688e6766acba61
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8ebfbeeb4533f21bc0fa10a5fee7b88ef069c262
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78183360"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298835"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>教程：从桌面应用使用 Azure Active Directory B2C 授予对 Node.js Web API 的访问权限
 
@@ -43,35 +43,37 @@ ms.locfileid: "78183360"
 
 [!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
-记下 `demo.read` 范围对应的“范围”  下的值，以便在稍后的步骤中配置桌面应用程序时使用。 完整范围值类似于 `https://contosob2c.onmicrosoft.com/api/demo.read`。
+记下 `demo.read` 范围对应的“范围”下的值，以便在稍后的步骤中配置桌面应用程序时使用。 完整范围值类似于 `https://contosob2c.onmicrosoft.com/api/demo.read`。
 
 ## <a name="grant-permissions"></a>授予权限
 
 若要从本机客户端应用程序调用受保护的 Web API，需要向在 Azure AD B2C 中注册的 Web API 授予已注册的本机客户端应用程序权限。
 
-在先决条件教程中，你注册了名为“nativeapp1”  的本机客户端应用程序。 以下步骤使用你向上述部分中“webapi1”  公开的 API 范围来配置本机应用程序注册。 这允许桌面应用程序从 Azure AD B2C 获取访问令牌，Web API 可以使用该令牌来验证和提供对其资源的作用域访问。 在本教程的后面部分，你将配置并运行桌面应用程序和 Web API 代码示例。
+在先决条件教程中，你注册了名为“nativeapp1”的本机客户端应用程序。 以下步骤使用你向上述部分中“webapi1”公开的 API 范围来配置本机应用程序注册。 这允许桌面应用程序从 Azure AD B2C 获取访问令牌，Web API 可以使用该令牌来验证和提供对其资源的作用域访问。 在本教程的后面部分，你将配置并运行桌面应用程序和 Web API 代码示例。
 
-#### <a name="applications"></a>[应用程序](#tab/applications/)
+要在 Azure AD B2C 租户中注册应用程序，可以使用新的统一“应用注册”体验或旧版“应用程序(旧版)”体验 。 [详细了解此新体验](https://aka.ms/b2cappregtraining)。
 
-1. 依次选择“应用程序”、“nativeapp1”   。
-1. 选择“API 访问”，然后选择“添加”   。
-1. 在“选择 API”下拉列表中，选择“webapi1”   。
-1. 在“选择范围”  下拉列表中，选择先前定义的范围。 例如，*demo.read* 和 *demo.write*。
-1. 选择“确定”  。
+#### <a name="app-registrations"></a>[应用注册](#tab/app-reg-ga/)
 
-#### <a name="app-registrations-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
+1. 选择“应用注册”，然后选择应该有权访问 API 的 本机客户端应用程序。 例如，“nativeapp1”。
+1. 在“管理”下选择“API 权限”。
+1. 在“已配置权限”下，选择“添加权限”。
+1. 选择“我的 API”选项卡。
+1. 选择应授予本机客户端应用程序访问权限的 API。 例如，“webapi1”。
+1. 在“权限”下展开“演示”，然后选择前面定义的范围。  例如，*demo.read* 和 *demo.write*。
+1. 选择“添加权限”。 按照指示等待几分钟，然后继续下一步。
+1. 选择“向(租户名称)授予管理员许可”。
+1. 选择当前登录的管理员帐户，或者使用至少分配了“云应用程序管理员”角色的 Azure AD B2C 租户中的帐户登录。
+1. 选择“接受”。
+1. 选择“刷新”，然后确认两个范围的“状态”下是否均显示“已授予...”。  传播权限可能需要几分钟时间。
 
-1. 选择“应用注册(预览版)”  ，然后选择应该有权访问 API 的 本机客户端应用程序。 例如，“nativeapp1”  。
-1. 在“管理”下选择“API 权限”  。 
-1. 在“已配置权限”  下，选择“添加权限”  。
-1. 选择“我的 API”  选项卡。
-1. 选择应授予本机客户端应用程序访问权限的 API。 例如，“webapi1”  。
-1. 在“权限”下展开“演示”，然后选择前面定义的范围。   例如，*demo.read* 和 *demo.write*。
-1. 选择“添加权限”  。 按照指示等待几分钟，然后继续下一步。
-1. 选择“向(租户名称)授予管理员许可”  。
-1. 选择当前登录的管理员帐户，或者使用至少分配了“云应用程序管理员”  角色的 Azure AD B2C 租户中的帐户登录。
-1. 选择“接受”  。
-1. 选择“刷新”，然后确认两个范围的“状态”下是否均显示“已授予...”。   传播权限可能需要几分钟时间。
+#### <a name="applications-legacy"></a>[应用程序(旧版)](#tab/applications-legacy/)
+
+1. 选择“应用程序(旧版)”，然后选择“nativeapp1”。
+1. 选择“API 访问”，然后选择“添加” 。
+1. 在“选择 API”下拉列表中，选择“webapi1”。
+1. 在“选择范围”下拉列表中，选择先前定义的范围。 例如，*demo.read* 和 *demo.write*。
+1. 选择“确定”。
 
 * * *
 
@@ -83,12 +85,12 @@ ms.locfileid: "78183360"
 
 ### <a name="update-the-desktop-application"></a>更新桌面应用程序
 
-在本文的先决条件中，你修改了 [WPF 桌面应用程序](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop)以便能够在 Azure AD B2C 租户中使用用户流进行登录。 在本部分中，将更新此同一应用程序以引用之前注册的 Web API，即“webapi1”  。
+在本文的先决条件中，你修改了 [WPF 桌面应用程序](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop)以便能够在 Azure AD B2C 租户中使用用户流进行登录。 在本部分中，将更新此同一应用程序以引用之前注册的 Web API，即“webapi1”。
 
-1. 在 Visual Studio 中打开“active-directory-b2c-wpf”解决方案 (`active-directory-b2c-wpf.sln`)  。
-1. 在“active-directory-b2c-wpf”项目中，打开“App.xaml.cs”文件并查找以下变量定义   。
-    1. 将 `ApiScopes` 变量的值替换为之前你在定义 demo.read  范围时记录的值。
-    1. 将 `ApiEndpoint` 变量的值替换为之前在你的租户中注册 Web API（例如 webapi1  ）时记录的“重定向 URI”  。
+1. 在 Visual Studio 中打开“active-directory-b2c-wpf”解决方案 (`active-directory-b2c-wpf.sln`)。
+1. 在“active-directory-b2c-wpf”项目中，打开“App.xaml.cs”文件并查找以下变量定义。
+    1. 将 `ApiScopes` 变量的值替换为之前你在定义 demo.read 范围时记录的值。
+    1. 将 `ApiEndpoint` 变量的值替换为之前在你的租户中注册 Web API（例如 webapi1）时记录的“重定向 URI”。
 
     下面是一个示例：
 
@@ -110,7 +112,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 该 Node.js Web API 示例使用 Passport.js 库来使得 Azure AD B2C 能够保护对 API 的调用。
 
 1. 打开 `index.js` 文件。
-1. 使用以下值更新这些变量定义。 将 `<web-API-application-ID>` 更改为之前注册的 Web API (webapi1  ) 的“应用程序(客户端) ID”  。 将 `<your-b2c-tenant>` 更改为 Azure AD B2C 租户的名称。
+1. 使用以下值更新这些变量定义。 将 `<web-API-application-ID>` 更改为之前注册的 Web API (webapi1) 的“应用程序(客户端) ID”。 将 `<your-b2c-tenant>` 更改为 Azure AD B2C 租户的名称。
 
     ```nodejs
     var clientID = "<web-API-application-ID>";
@@ -143,7 +145,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 1. 在 Visual Studio 中打开 **active-directory-b2c-wpf** 解决方案。
 2. 按 **F5** 来运行桌面应用。
 3. 使用[在桌面应用中使用 Azure Active Directory B2C 对用户进行身份验证](tutorial-desktop-app.md)教程中使用的电子邮件地址和密码进行登录。
-4. 选择“调用 API”  按钮。
+4. 选择“调用 API”按钮。
 
 桌面应用程序向本地运行的 Web API 发出请求，并在验证有效的访问令牌时显示已登录用户的显示名称。
 

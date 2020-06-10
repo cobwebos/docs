@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e09887b8000a0aeb52879d5306bc0a00da5141f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b50407b3ea7389388577d229f67a4e4baca4296d
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176135"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873581"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Azure 文件的共享快照概述 
 Azure 文件提供了获取文件共享的共享快照的功能。 共享快照可以捕获在某个时间点的共享状态。 本文介绍共享快照提供的功能，以及如何在自定义用例中加以利用。
@@ -37,7 +37,7 @@ Azure 文件提供了获取文件共享的共享快照的功能。 共享快照�
 
 共享快照功能是在文件共享级别提供的。 检索是在单个文件级别提供的，可用于还原单个文件。 可以使用 SMB、REST API、门户、客户端库或 PowerShell/CLI 工具还原整个文件共享。
 
-文件共享的共享快照与其基本文件共享相同。 唯一的差别在于，共享 URI 的后面追加了一个 **DateTime** 值，用于指示共享快照的创建时间。 例如，如果文件共享 URI 是 http：\//storagesample.core.file.windows.net/myshare，则共享快照 uri 类似于：
+文件共享的共享快照与其基本文件共享相同。 唯一的差别在于，共享 URI 的后面追加了一个 **DateTime** 值，用于指示共享快照的创建时间。 例如，如果文件共享 URI 为 http:\//storagesample.core.file.windows.net/myshare，则共享快照 URI 类似于：
 ```
 http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
 ```
@@ -80,7 +80,7 @@ Azure 文件目前允许的共享快照的上限是 200 个。 在 200 个共享
 
 在部署共享快照计划程序之前，仔细考虑共享快照频率和保留设置，以免产生不必要的费用。
 
-共享快照只提供文件级保护。 共享快照无法防止文件共享或存储帐户中的意外删除。 为了帮助防止存储帐户被意外删除，可以锁定存储帐户或资源组。
+共享快照只提供文件级保护。 共享快照无法防止文件共享或存储帐户中的意外删除。 为了帮助防止存储帐户被意外删除，可以[启用软删除](storage-files-prevent-file-share-deletion.md)，或是锁定存储帐户和/或资源组。
 
 ## <a name="next-steps"></a>后续步骤
 - 在以下环境中使用共享快照：

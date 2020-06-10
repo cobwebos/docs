@@ -3,12 +3,12 @@ title: 教程 - 备份 Azure VM 中的 SAP HANA 数据库
 description: 在本教程中，了解如何将 Azure VM 上运行的 SAP HANA 数据库备份到 Azure 备份恢复服务保管库。
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: cb1fc4c1b9bfa2025850f16d175ba83bd5ee1470
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 31958a4d4e3af4f747ab2f9de7b1bc67560e87d7
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747217"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248237"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>教程：备份 Azure VM 中的 SAP HANA 数据库
 
@@ -22,6 +22,9 @@ ms.locfileid: "83747217"
 
 [这里](sap-hana-backup-support-matrix.md#scenario-support)有我们目前支持的所有方案。
 
+>[!NOTE]
+>RHEL（7.4、7.6、7.7 或 8.1）的 SAP HANA 备份预览[入门](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db)。 如需深入咨询，请通过 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) 联系我们。
+
 ## <a name="prerequisites"></a>先决条件
 
 在配置备份之前，请确保执行以下操作：
@@ -34,9 +37,7 @@ ms.locfileid: "83747217"
 * 在安装了 HANA 的虚拟机中，以 root 用户身份运行 SAP HANA 备份配置脚本（注册前脚本）。 [此脚本](https://aka.ms/scriptforpermsonhana)可使 HANA 系统做好备份的准备。 请参阅[注册前脚本的功能](#what-the-pre-registration-script-does)部分来详细了解注册前脚本。
 
 >[!NOTE]
->备份 Azure VM 中运行的 SAP HANA 数据库时，Azure 备份不会针对夏令时更改自动进行调整。
->
->请根据需要手动修改策略。
+>预注册脚本将为 RHEL（7.4、7.6 和 7.7）上运行的 SAP HANA 工作负载安装 compat-unixODBC234，为 RHEL 8.1 上的安装 unixODBC 。 [此包位于 SAP 解决方案 (RPM) 存储库中的 RHEL for SAP HANA（适用于 RHEL 7 服务器）更新服务中](https://access.redhat.com/solutions/5094721)。  对于 Azure 市场 RHEL 映像，存储库应为 rhui-rhel-sap-hana-for-rhel-7-server-rhui-e4s-rpms。
 
 ## <a name="set-up-network-connectivity"></a>设置网络连接
 
@@ -147,11 +148,11 @@ hdbuserstore list
 
    ![创建恢复服务保管库](./media/tutorial-backup-sap-hana-db/create-vault.png)
 
-   * **Name**：此名称用于标识恢复服务保管库，并且必须对于 Azure 订阅是唯一的。 指定的名称应至少包含 2 个字符，最多不超过 50 个字符。 名称必须以字母开头且只能包含字母、数字和连字符。 对于本教程，我们使用了名称“SAPHanaVault”。
-   * **订阅**：选择要使用的订阅。 如果你仅是一个订阅的成员，则会看到该名称。 如果不确定要使用哪个订阅，请使用默认的（建议的）订阅。 仅当工作或学校帐户与多个 Azure 订阅关联时，才会显示多个选项。 本教程中，我们使用了“SAP HANA 解决方案实验室订阅”订阅。
-   * **资源组**：使用现有资源组，或创建一个新的资源组。 本教程中，我们使用了“SAPHANADemo”。<br>
+   * 名称：此名称用于标识恢复服务保管库，并且必须对于 Azure 订阅是唯一的。 指定的名称应至少包含 2 个字符，最多不超过 50 个字符。 名称必须以字母开头且只能包含字母、数字和连字符。 对于本教程，我们使用了名称“SAPHanaVault”。
+   * 订阅：选择要使用的订阅。 如果你仅是一个订阅的成员，则会看到该名称。 如果不确定要使用哪个订阅，请使用默认的（建议的）订阅。 仅当工作或学校帐户与多个 Azure 订阅关联时，才会显示多个选项。 本教程中，我们使用了“SAP HANA 解决方案实验室订阅”订阅。
+   * 资源组：使用现有资源组，或创建一个新的资源组。 本教程中，我们使用了“SAPHANADemo”。<br>
    要查看订阅中可用的资源组列表，请选择“使用现有资源”，然后从下拉列表框中选择一个资源。 若要创建新资源组，请选择“新建”，然后输入名称。 有关资源组的完整信息，请参阅 [Azure 资源管理器概述](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。
-   * **位置**：为保管库选择地理区域。 保管库必须与运行 SAP HANA 的虚拟机位于同一区域中。 我们使用了“美国东部 2”。
+   * 位置：为保管库选择地理区域。 保管库必须与运行 SAP HANA 的虚拟机位于同一区域中。 我们使用了“美国东部 2”。
 
 5. 选择“查看 + 创建”。
 

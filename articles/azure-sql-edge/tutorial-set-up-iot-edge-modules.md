@@ -2,19 +2,19 @@
 title: 在 Azure SQL Edge 中设置 IoT Edge 模块
 description: 本 Azure SQL Edge 铁矿石杂质预测教程由三部分组成，在第二部分中，你将设置 IoT Edge 模块和连接。
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: tutorial
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: bbbbe09aac30165a2f9b7bbe54f58e0c09a6cf09
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a4087ef56712e098443009bd0457029394ea7b51
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593495"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235025"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>设置 IoT Edge 模块和连接
 
@@ -25,7 +25,7 @@ ms.locfileid: "83593495"
 
 ## <a name="create-azure-stream-analytics-module"></a>创建 Azure 流分析模块
 
-创建将在本教程中使用的 Azure 流分析模块。 若要详细了解如何在 SQL Edge 中使用流式处理作业，请参阅[在 SQL Database Edge 中使用流式处理作业 ](https://docs.microsoft.com/azure/sql-database-edge/stream-analytics#using-streaming-jobs-with-sql-database-edge)。
+创建将在本教程中使用的 Azure 流分析模块。 若要详细了解如何在 SQL Edge 中使用流式处理作业，请参阅[在 SQL Edge 中使用流式处理作业](stream-analytics.md)。
 
 创建 Azure 流分析作业，并将托管环境设置为 Edge 后，应设置该教程的输入和输出。
 
@@ -101,7 +101,7 @@ ms.locfileid: "83593495"
 
 ## <a name="deploy-the-azure-sql-edge-module"></a>部署 Azure SQL Edge 模块
 
-1. 按照[部署 Azure SQL Database Edge 预览版](https://docs.microsoft.com/azure/sql-database-edge/deploy-portal#deploy-sql-database-edge)中列出的步骤来部署 Azure SQL Database Edge 模块。
+1. 按照[部署 Azure SQL Edge（预览版）](https://docs.microsoft.com/azure/azure-sql-edge/deploy-portal)中列出的步骤来部署 Azure SQL Edge 模块。
 
 2. 在“设置模块”页面的“指定路由”上，按如下所示为模块指定到 IoT Edge 中心通信的路由。 
 

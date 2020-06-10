@@ -1,6 +1,6 @@
 ---
-title: CLI 示例 - 复制 - Azure SQL 数据库 - 新服务器
-description: 用于将 SQL 数据库复制到新服务器的 Azure CLI 示例脚本
+title: Azure CLI：将 Azure SQL 数据库中的数据库复制到新服务器
+description: 用于将 Azure SQL 数据库中的数据库复制到新服务器的 Azure CLI 示例脚本
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,14 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: b7e04d7b1ed51a45e132d088b0dd29377312027c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e7a83478654b848b8e001dd3fea276c5cc9e125a
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067480"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022686"
 ---
-# <a name="use-cli-to-copy-a-sql-database-to-a-new-server"></a>使用 CLI 将 SQL 数据库复制到新服务器
+# <a name="use-cli-to-copy-a-database-in-azure-sql-database-to-a-new-server"></a>使用 CLI 将 Azure SQL 数据库中的数据库复制到新服务器
 
 以下 Azure CLI 脚本示例在新服务器中创建现有数据库的副本。
 
@@ -42,7 +42,7 @@ az account set -s $subscription # ...or use 'az login'
 
 ### <a name="clean-up-deployment"></a>清理部署
 
-使用以下命令删除资源组以及与其关联的所有资源。
+使用以下命令删除资源组及其相关的所有资源。
 
 ```azurecli-interactive
 az group delete --name $resource
@@ -61,4 +61,4 @@ az group delete --name $targetResource
 
 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。
 
-其他 SQL 数据库 CLI 脚本示例可以在 [Azure SQL 数据库文档](../sql-database-cli-samples.md)中找到。
+其他 SQL 数据库 CLI 脚本示例可以在 [Azure SQL 数据库文档](../../azure-sql/database/az-cli-script-samples-content-guide.md)中找到。

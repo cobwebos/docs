@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 649c9a2e0dd9df21a9a59140d9f2999768aab555
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 1b71e8108ecab0f6d420e404bd602a900ebfcfb2
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745400"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258277"
 ---
 # <a name="tutorial-use-sql-on-demand-preview-with-power-bi-desktop--create-a-report"></a>教程：在 Power BI Desktop 中使用 SQL 按需版本（预览版）并创建报表
 
@@ -29,10 +29,14 @@ ms.locfileid: "83745400"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本教程，需要拥有以下软件：
+若要完成本教程，需要具备以下先决条件：
+
+- [Power BI Desktop](https://powerbi.microsoft.com/downloads/) - 用于可视化数据和创建报表。
+- [Azure Synapse 工作区](https://docs.microsoft.com/azure/synapse-analytics/quickstart-synapse-studio) - 用于创建数据库、外部数据源和视图。
+
+可选：
 
 - 一个 SQL 查询工具，例如 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) 或 [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)。
-- [Power BI Desktop](https://powerbi.microsoft.com/downloads/)。
 
 以下参数的值：
 

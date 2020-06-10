@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 8f2e99ffc9f9ee5c5553e8d933d82f83999c8ab2
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 1ed7126f2698294ac6706aafcb85e3229a7491bb
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732896"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300057"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>快速入门：在 Linux 上的 Azure 应用服务中创建 Java 应用
 
@@ -34,7 +34,7 @@ ms.locfileid: "81732896"
 在 Cloud Shell 提示符下，执行以下 Maven 命令来创建一个名为 `helloworld` 的新应用：
 
 ```bash
-mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp"
+mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp" -Dversion=1.0-SNAPSHOT
 ```
 然后，将工作目录更改为项目文件夹：
 
@@ -44,13 +44,9 @@ cd helloworld
 
 ## <a name="configure-the-maven-plugin"></a>配置 Maven 插件
 
-部署到 Azure 应用服务的过程中会使用 Azure CLI 中的帐户凭据。 在继续操作之前[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)。
+部署到 Azure 应用服务的过程会自动从 Azure CLI 选取 Azure 凭据。 如果尚未安装 Azure CLI，Maven 插件将使用 Oauth 或设备登录名登录。 如果需要，请查看[使用 Maven 插件进行身份验证](https://github.com/microsoft/azure-maven-plugins/wiki/Authenticatio)了解详细信息。
 
-```azurecli
-az login
-```
-
-然后，可以配置部署，在命令提示符下运行 maven 命令，并在出现“确认(Y/N)”  提示前一直按 **ENTER** 来使用默认配置，然后按“y”  完成配置。 
+若要配置部署，请在命令提示符下运行 maven 命令，并在出现“确认(Y/N)”提示前一直按 Enter 来使用默认配置，然后按“Y”完成配置  。 
 ```cmd
 mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 ```
@@ -93,14 +89,20 @@ Confirm (Y/N)? : Y
 > [!NOTE]
 > 在本文中，我们仅使用在 WAR 文件中打包的 Java 应用。 该插件还支持 JAR Web 应用程序。若要试用，请访问[在 Linux 上将 Java SE JAR 文件部署到应用服务](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)。
 
-再次导航到 `pom.xml` 以查看插件配置是否已更新。如果需要，可以直接在 pom 文件中修改应用服务的其他配置，下面列出了一些常见配置：
+打开 `pom.xml`，查看更新后的配置。
+
+```bash
+code pom.xml
+```
+
+如果需要，可以直接在 pom 文件中修改应用服务的配置，下面列出了一些常见配置：
 
  properties | 必选 | 说明 | 版本
 ---|---|---|---
 `<schemaVersion>` | false | 指定配置架构的版本。 支持的值是：`v1`、`v2`。 | 1.5.2
 `<resourceGroup>` | true | 用于 Web 应用的 Azure 资源组。 | 0.1.0+
 `<appName>` | true | Web 应用的名称。 | 0.1.0+
-`<region>` | true | 指定将托管 Web 应用的区域；默认值为“westeurope”  。 [支持的区域](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)部分中列出了所有有效区域。 | 0.1.0+
+`<region>` | true | 指定将托管 Web 应用的区域；默认值为“westeurope”。 [支持的区域](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)部分中列出了所有有效区域。 | 0.1.0+
 `<pricingTier>` | false | Web 应用的定价层。 默认值为 **P1V2**。| 0.1.0+
 `<runtime>` | true | 运行时环境配置，可以在[此处](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)查看详细信息。 | 0.1.0+
 `<deployment>` | true | 部署配置，可以在[此处](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)查看详细信息。 | 0.1.0+
@@ -120,7 +122,7 @@ mvn package azure-webapp:deploy
 
 ![在 Azure 应用服务中运行的示例应用](media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
-祝贺你！  现已将第一个 Java 应用部署到 Linux 应用服务。
+祝贺你！ 现已将第一个 Java 应用部署到 Linux 应用服务。
 
 > [!div class="nextstepaction"]
 > [我遇到了问题](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=deploy)
@@ -147,7 +149,7 @@ az group delete --name <your resource group name; for example: helloworld-155840
 > [使用 Java 连接到 Azure DB for PostgreSQL](/azure/postgresql/connect-java)
 
 > [!div class="nextstepaction"]
-> [配置 Java 应用](configure-custom-container.md)
+> [配置 Java 应用](configure-language-java.md)
 
 > [!div class="nextstepaction"]
 > [将 CI/CD 与 Jenkins 配合使用](/azure/jenkins/deploy-jenkins-app-service-plugin)

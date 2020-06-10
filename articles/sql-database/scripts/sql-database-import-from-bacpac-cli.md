@@ -1,6 +1,6 @@
 ---
-title: 将 BACPAC 文件导入 Azure SQL 数据库的 CLI 示例
-description: 用于将 BACPAC 文件导入 SQL 数据库的 Azure CLI 示例脚本
+title: Azure CLI：将 BACPAC 文件导入到 Azure SQL 数据库中的数据库
+description: 将 BACPAC 文件导入 Azure SQL 数据库中的数据库的 Azure CLI 示例脚本
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,16 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 05/24/2019
-ms.openlocfilehash: f47d0ec2edf54aaa708c176e92a9e1026b446882
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9e3638c9823ed0fbae61a0dc5a93dff2e211d3f3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80061838"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022635"
 ---
-# <a name="use-cli-to-import-a-bacpac-file-into-an-azure-sql-database"></a>使用 CLI 将 BACPAC 文件导入 Azure SQL 数据库
+# <a name="use-cli-to-import-a-bacpac-file-into-a-database-in-sql-database"></a>使用 CLI 将 BACPAC 文件导入 SQL 数据库中的数据库
 
-以下 Azure CLI 脚本示例将数据库从 *.bacpac* 文件导入 Azure SQL 数据库。  
+以下 Azure CLI 脚本示例将数据库从 .bacpac 文件导入 SQL 数据库中的数据库。  
 
 如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
@@ -36,7 +36,7 @@ ms.locfileid: "80061838"
 
 ### <a name="clean-up-deployment"></a>清理部署
 
-使用以下命令删除资源组以及与其关联的所有资源。
+使用以下命令删除资源组及其相关的所有资源。
 
 ```azurecli-interactive
 az group delete --name $resource
@@ -55,4 +55,4 @@ az group delete --name $resource
 
 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。
 
-其他 SQL 数据库 CLI 脚本示例可以在 [Azure SQL 数据库文档](../sql-database-cli-samples.md)中找到。
+其他 SQL 数据库 CLI 脚本示例可以在 [Azure SQL 数据库文档](../../azure-sql/database/az-cli-script-samples-content-guide.md)中找到。

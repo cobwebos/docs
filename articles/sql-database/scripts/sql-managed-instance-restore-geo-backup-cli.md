@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 07/03/2019
-ms.openlocfilehash: 1a46cb537892d4255fd274b5754ab8e8c0278308
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: c6ae8d79ee40729f47a906561d6c8ae586765f5d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774463"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019837"
 ---
 # <a name="use-cli-to-restore-a-managed-instance-database-to-another-geo-region"></a>使用 CLI 将托管实例数据库还原到另一个地理区域
 
@@ -28,7 +28,7 @@ ms.locfileid: "83774463"
 
 ### <a name="prerequisites"></a>先决条件
 
-现有的一对托管实例，请参阅[使用 Azure CLI 创建 Azure SQL 数据库托管实例](sql-database-create-configure-managed-instance-cli.md)。
+现有的一对托管实例，请参阅[使用 Azure CLI 创建 Azure SQL 托管实例](sql-database-create-configure-managed-instance-cli.md)。
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -64,4 +64,4 @@ az sql midb restore -g $resource --mi $instance -n $managedDatabase --dest-name 
 
 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。
 
-其他 SQL 数据库 CLI 脚本示例可以在 [Azure SQL 数据库文档](../sql-database-cli-samples.md)中找到。
+其他 SQL 数据库 CLI 脚本示例可以在 [Azure SQL 数据库文档](../../azure-sql/database/az-cli-script-samples-content-guide.md)中找到。
