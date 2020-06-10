@@ -1,14 +1,14 @@
 ---
 title: 快速入门：使用成批的问题测试知识库
 description: 使用 QnA Maker 批量测试工具在 QnA Maker 资源中测试知识库，以获取预期的解答、置信度分数和多轮提示。
-ms.topic: quickstart
+ms.topic: tutorial
 ms.date: 05/26/2020
-ms.openlocfilehash: 9845b7c7cc19550c450a1eb00ec02731ef2d9d44
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 01c767a6fbea5061f644052234f7462857dd342b
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873675"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84337727"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>快速入门：使用成批的问题和预期的解答测试知识库
 

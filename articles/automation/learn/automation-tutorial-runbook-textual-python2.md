@@ -5,13 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.custom: has-adal-ref
-ms.openlocfilehash: 4e3edc9819fc3a282cc707db636c8bb213b13776
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.custom: has-adal-ref, tracking-python
+ms.openlocfilehash: 1203feaf6b400e91e6ab5381df0af245db0a2973
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714468"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559559"
 ---
 # <a name="tutorial-create-a-python-runbook"></a>教程：创建 Python Runbook
 
@@ -244,9 +244,9 @@ except Exception as detail:
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建 PowerShell Runbook](automation-tutorial-runbook-textual-powershell.md)
-- [创建图形 Runbook](automation-tutorial-runbook-graphical.md)
-- [创建 PowerShell 工作流 Runbook](automation-tutorial-runbook-textual.md)
-- [Azure 自动化 Runbook 类型](../automation-runbook-types.md)
-- [面向 Python 开发人员的 Azure](/azure/python/)
-- [Azure 自动化 GitHub](https://github.com/azureautomation/runbooks/tree/master/Utility/Python)
+- 若要开始使用 PowerShell Runbook，请参阅[创建 PowerShell Runbook](automation-tutorial-runbook-textual-powershell.md)。
+- 若要开始使用图形 Runbook，请参阅[创建图形 Runbook](automation-tutorial-runbook-graphical.md)。
+- 若要开始使用 PowerShell 工作流 Runbook，请参阅[创建 PowerShell 工作流 Runbook](automation-tutorial-runbook-textual.md)。
+- 若要了解有关 Runbook 类型、其优点和限制的详细信息，请参阅 [Azure 自动化 Runbook 类型](../automation-runbook-types.md)。
+- 若要了解如何使用 Python 进行 Azure 开发，请参阅[适用于 Python 开发人员的 Azure](/azure/python/)。
+- 若要查看 Python 2 runbook 示例，请参阅 [Azure 自动化 GitHub](https://github.com/azureautomation/runbooks/tree/master/Utility/Python)。

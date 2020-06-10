@@ -9,12 +9,13 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 01/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 22f6b2aba36e560e9bd335baa92925fe9846c670
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: tracking-python
+ms.openlocfilehash: 96c95efdc8f2154e0586fec59d1af66496acb101
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77162593"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558965"
 ---
 # <a name="quickstart-send-and-receive-events-with-event-hubs-using-python-azure-eventhub-version-1"></a>快速入门：使用 Python（azure-eventhub 版本 1）向/从事件中心发送/接收事件
 本快速入门介绍如何使用 **azure-eventhub 版本 1** Python 包向事件中心发送事件以及从事件中心接收事件。 
@@ -28,26 +29,26 @@ ms.locfileid: "77162593"
 
 若要完成本快速入门，需要具备以下先决条件：
 
-- **Microsoft Azure 订阅**。 若要使用 Azure 服务（包括 Azure 事件中心），需要一个订阅。  如果没有现有的 Azure 帐户，可以注册[免费试用](https://azure.microsoft.com/free/)帐户，或者在[创建帐户](https://azure.microsoft.com)时使用 MSDN 订阅者权益。
+- Microsoft Azure 订阅。 若要使用 Azure 服务（包括 Azure 事件中心），需要一个订阅。  如果没有现有的 Azure 帐户，可以注册[免费试用](https://azure.microsoft.com/free/)帐户，或者在[创建帐户](https://azure.microsoft.com)时使用 MSDN 订阅者权益。
 - Python 3.4 或更高版本，其中已安装并更新 `pip`。
-- 事件中心的 Python 包。 若要安装该包，请在包路径中包含 Python 的命令提示符中运行以下命令： 
+- 事件中心的 Python 包。 若要安装此包，请在路径中包含 Python 的命令提示符中运行以下命令： 
   
   ```cmd
   pip install azure-eventhub==1.3.*
   ```
-- **创建事件中心命名空间和事件中心**。 第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 然后，按照以下文章中的说明获取事件中心访问密钥的值：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 你将在本快速入门中稍后编写的代码中使用访问密钥。 默认密钥名称为：RootManageSharedAccessKey  。 
+- **创建事件中心命名空间和事件中心**。 第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 然后，按照文章中的以下说明获取事件中心访问密钥的值：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 你将在本快速入门中稍后编写的代码中使用访问密钥。 默认密钥名称为：RootManageSharedAccessKey。 
 
 
 ## <a name="send-events"></a>发送事件
 
-若要创建将事件发送到事件中心的 Python 应用程序：
+若要创建将事件发送到事件中心的 Python 应用程序，请执行以下操作：
 
 > [!NOTE]
-> 如果你不想要学习本快速入门，可以从 GitHub 下载并运行[示例应用](https://github.com/Azure/azure-event-hubs-python/tree/master/examples)。 请将 `EventHubConnectionString` 和 `EventHubName` 字符串替换为你的事件中心值。
+> 可以从 GitHub 下载并运行[示例应用](https://github.com/Azure/azure-event-hubs-python/tree/master/examples)，不需通过本快速入门来进行。 将 `EventHubConnectionString` 和 `EventHubName` 字符串替换为事件中心的值。
 
-1. 打开偏好的 Python 编辑器，例如 [Visual Studio Code](https://code.visualstudio.com/)。
+1. 打开你常用的 Python 编辑器，例如 [Visual Studio Code](https://code.visualstudio.com/)
 2. 创建名为 *send.py* 的新文件。 此脚本将向事件中心发送 100 个事件。
-3. 将以下代码粘贴到 *send.py*中（请将事件中心的 \<namespace>、\<eventhub>、\<AccessKeyName> 和 \<primary key value> 替换为自己的值）： 
+3. 将下列代码粘贴到“send.py”，将事件中心 \<namespace>、\<eventhub>、\<AccessKeyName> 和 \<primary key value> 替换为你的值： 
    
    ```python
    import sys
@@ -97,20 +98,20 @@ ms.locfileid: "77162593"
    
 4. 保存文件。 
 
-若要运行该脚本，请从 *send.py* 保存到的目录运行以下命令：
+若要运行脚本，请从保存 *send.py* 的目录运行以下命令：
 
 ```cmd
 start python send.py
 ```
 
-祝贺你！ 现在已向事件中心发送消息。
+祝贺！ 现在已向事件中心发送消息。
 
 ## <a name="receive-events"></a>接收事件
 
-若要创建从事件中心接收事件的 Python 应用程序：
+若要创建从事件中心接收事件的 Python 应用程序，请执行以下操作：
 
 1. 在 Python 编辑器中，创建名为 *recv.py* 的文件。
-2. 将以下代码粘贴到 *recv.py*中（请将事件中心的 \<namespace>、\<eventhub>、\<AccessKeyName> 和 \<primary key value> 替换为自己的值）： 
+2. 将下列代码粘贴到“recv.py”，将事件中心 \<namespace>、\<eventhub>、\<AccessKeyName> 和 \<primary key value> 替换为你的值： 
    
    ```python
    import os
@@ -161,7 +162,7 @@ start python send.py
    
 4. 保存文件。
 
-若要运行该脚本，请从 *recv.py* 保存到的目录运行以下命令：
+若要运行脚本，请从保存 *recv.py* 的目录运行以下命令：
 
 ```cmd
 start python recv.py
@@ -172,5 +173,5 @@ start python recv.py
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)
 - [Azure 事件中心的功能和术语](event-hubs-features.md)
-- [事件中心常见问题解答](event-hubs-faq.md)
+- [事件中心常见问题](event-hubs-faq.md)
 

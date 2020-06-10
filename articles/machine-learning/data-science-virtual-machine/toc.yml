@@ -15,8 +15,6 @@
       href: provision-vm.md
     - name: 创建 Ubuntu Data Science Virtual Machine
       href: dsvm-ubuntu-intro.md
-- name: 教程
-  items:
     - name: 使用 ARM 模板创建 DSVM
       displayName: Resource Manager
       href: dsvm-tutorial-resource-manager.md

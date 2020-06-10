@@ -3,17 +3,17 @@ title: 快速入门：将自定义事件发送到 Azure 函数 - 事件网格
 description: 快速入门：使用 Azure 事件网格和 Azure CLI 或门户发布一个主题，然后订阅该事件。 Azure 函数用于终结点。
 services: event-grid
 keywords: ''
-author: banisadr
-ms.author: babanisa
+author: femila
+ms.author: femila
 ms.date: 11/15/2019
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 5e38571cf84537fd722093b96cd277743e8ce80c
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.openlocfilehash: cc429fd38fc3322887affb72e71e0f583823c297
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80292153"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84557861"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>快速入门：使用事件网格将自定义事件路由到 Azure 函数
 

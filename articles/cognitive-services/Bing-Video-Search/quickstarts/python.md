@@ -10,12 +10,13 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 28d9726bfa1e195fa87b41914841083c56dbc844
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.custom: tracking-python
+ms.openlocfilehash: 33a4e31be04e5a205322bb3040d3694525c4515c
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849580"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605980"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>快速入门：使用必应视频搜索 REST API 和 Python 来搜索视频
 

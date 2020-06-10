@@ -6,12 +6,13 @@ ms.date: 11/27/2018
 ms.custom:
 - seo-python-october2019
 - mvc
-ms.openlocfilehash: 07ad9115f6cb602b4df5adbe9a7acdc0425bbf86
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+- tracking-python
+ms.openlocfilehash: 5c4f8a90a43d19f3bc94da04681d9d690dc33e70
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117193"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561778"
 ---
 # <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>快速入门：使用 Python API 运行 Azure Batch 作业
 

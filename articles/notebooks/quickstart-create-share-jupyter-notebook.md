@@ -3,12 +3,13 @@ title: 在 Azure Notebooks 预览版上创建并共享 Jupyter 笔记本
 description: 在 Azure Notebooks 预览版上快速创建并运行 Jupyter 笔记本，然后与他人共享该笔记本。
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: d3310444fa28240b8fb1344199514a9601a2c615
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: tracking-python
+ms.openlocfilehash: 01d1035f794287e679b6ebc84fa9498b184b4791
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77064438"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561094"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>快速入门：在 Azure Notebooks 预览版中创建和共享笔记本
 

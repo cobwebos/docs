@@ -4,13 +4,13 @@ description: 教程 - 在 Azure Batch 中使用 Batch Python 客户端库通过 
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
-ms.custom: mvc
-ms.openlocfilehash: 32e42fe04ad8ce55bbbbb90e5aca6356fd1c6f22
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: 63515012d10739bb018de34e040465fbe337aa02
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117108"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561280"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>教程：使用 Python API 通过 Azure Batch 运行并行工作负荷
 
