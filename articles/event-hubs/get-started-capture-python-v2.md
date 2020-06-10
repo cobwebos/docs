@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 191a2246afdc60953d8c353f9ccdc2339130f910
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: 67bf19c08d9a9309d8d4b731bf30a6db1091ebf1
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82159329"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558952"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>使用 Python 在 Azure 存储中捕获事件中心数据并读取该数据（azure-eventhub 版本 5）
 
@@ -55,7 +56,7 @@ ms.locfileid: "82159329"
 在本部分，你将创建一个向事件中心发送 200 个事件（10 个设备 * 20 个事件）的 Python 脚本。 这些事件是以 JSON 格式发送的示例环境读数。 
 
 1. 打开常用的 Python 编辑器，如 [Visual Studio Code][Visual Studio Code]。
-2. 创建名为 *sender.py* 的脚本。 
+2. 创建名为 *sender.py*的脚本。 
 3. 将以下代码粘贴到 *sender.py* 中。 
    
     ```python

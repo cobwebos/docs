@@ -15,12 +15,12 @@ ms.date: 11/17/2019
 ms.author: zhenlwa
 ms.custom: azure-functions
 ms.tgt_pltfrm: Azure Functions
-ms.openlocfilehash: ba70d5f186c1424b2019716ab7a87aeae85f8913
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0cd86aa647655f92f4ae1b5de50f506e9aad0f4e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74187291"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558144"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-azure-functions-app"></a>教程：在 Azure Functions 应用中使用动态配置
 
@@ -67,7 +67,7 @@ ms.locfileid: "74187291"
     }
     ```
 
-3. 更新 `Run` 方法，并在 Functions 调用开始时通知使用 `Refresh` 方法刷新配置。 如果未到达缓存过期时间范围，则将不会进行操作。 如果希望在不受阻止的情况下刷新配置，请删除 `await` 运算符。
+3. 更新 `Run` 方法，并在 Functions 调用开始时通知使用 `TryRefreshAsync` 方法刷新配置。 如果未到达缓存过期时间范围，则将不会进行操作。 如果希望在不受阻止的情况下刷新配置，请删除 `await` 运算符。
 
     ```csharp
     public static async Task<IActionResult> Run(
@@ -75,7 +75,7 @@ ms.locfileid: "74187291"
     {
         log.LogInformation("C# HTTP trigger function processed a request.");
 
-        await ConfigurationRefresher.Refresh();
+        await ConfigurationRefresher.TryRefreshAsync(); 
 
         string keyName = "TestApp:Settings:Message";
         string message = Configuration[keyName];
