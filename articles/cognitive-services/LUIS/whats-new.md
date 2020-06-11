@@ -3,18 +3,24 @@ title: 新增功能 - 语言理解 (LUIS)
 description: 本文会定期更新有关 Azure 认知服务语言理解 API 的资讯。
 ms.topic: overview
 ms.date: 05/19/2020
-ms.openlocfilehash: b4d287c8d1ddbeeee63390fb397718de1234c93e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: 45bfe4e703942a7fa38329bd0905833e904e0ab1
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83675952"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678743"
 ---
 # <a name="whats-new-in-language-understanding"></a>语言理解中的新增功能
 
 了解服务中的新增功能。 这些项包括发布说明、视频、博客文章和其他类型的信息。 请将本页加入书签，以随时了解该服务的最新信息。
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="june-2020"></a>2020 年 6 月
+
+* [预览版3.0 创作](luis-migration-authoring-entities.md)SDK
+    * 版本 3.2.0- [.net-NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)
+    * 版本 4.0.0- [NPM](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)
 
 ### <a name="may-2020---build"></a>2020 年 5 月 - //Build
 

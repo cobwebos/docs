@@ -2,13 +2,13 @@
 title: 实体类型 - LUIS
 description: 实体在预测运行时从用户查询文本中提取数据。 一个_可选_的辅助目的是通过使用实体作为功能来提高意图或其他实体的预测。
 ms.topic: conceptual
-ms.date: 05/17/2020
-ms.openlocfilehash: a5e4812eab84650401dd19b0f8d7b361a5135dd3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 06/10/2020
+ms.openlocfilehash: 61dc0688cd304a672321f846a3ae5798c271345d
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682170"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676482"
 ---
 # <a name="extract-data-with-entities"></a>用实体提取数据
 
@@ -41,7 +41,9 @@ ms.locfileid: "83682170"
 
 以后随着应用程序的开发以及确定新的数据需求，可以在 LUIS 模型中添加相应的实体。
 
-## <a name="entity-compared-to-intent"></a>实体与意向
+<a name="entity-compared-to-intent"></a>
+
+## <a name="entity-represents-data-extraction"></a>实体表示数据提取
 
 实体表示_查询文本中_的数据概念。 目的是将_整个查询文本_分类。
 
@@ -49,10 +51,14 @@ ms.locfileid: "83682170"
 
 |话语|预测的意向|提取的实体|说明|
 |--|--|--|--|
-|帮助|帮助|-|没有要提取的内容。|
+|帮助|help|-|没有要提取的内容。|
 |Send something|sendSomething|-|没有要提取的内容。 该模型没有要 `something` 在此上下文中提取的必需功能，并且没有指定任何接收方。|
 |Send Bob a present|sendSomething|`Bob`, `present`|模型 `Bob` 通过添加预先生成的实体的所需功能来提取 `personName` 。 计算机学习实体已用于提取 `present` 。|
 |Send Bob a box of chocolates|sendSomething|`Bob`, `box of chocolates`|`Bob` `box of chocolates` 计算机学习实体已提取两个重要的数据段和。|
+
+## <a name="label-entities-in-all-intents"></a>标签实体
+
+实体提取数据，而不考虑预测的意图。 请确保在所有方法中标记_所有_示例最谈话。 `None`缺少实体标签会导致混淆，即使对于其他方法还有太多定型最谈话也是如此。
 
 ## <a name="design-entities-for-decomposition"></a>设计分解实体
 
@@ -85,7 +91,7 @@ ms.locfileid: "83682170"
 
 请根据数据的提取方式以及提取后的数据表示方式，来选择实体。
 
-|实体类型|目标|
+|实体类型|目的|
 |--|--|
 |[**计算机学习**](tutorial-machine-learned-entity.md)|提取从标记的示例中学习的嵌套的复杂数据。 |
 |[**成员列表**](reference-entity-list.md)|用**精确文本匹配**提取的项及其同义词的列表。|

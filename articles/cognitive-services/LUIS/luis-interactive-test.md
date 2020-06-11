@@ -1,14 +1,14 @@
 ---
 title: 在 LUIS 门户中测试应用
 description: 使用语言理解 (LUIS) 持续优化应用程序并改进其语言理解能力。
-ms.topic: how-to
-ms.date: 05/20/2020
-ms.openlocfilehash: 86ee90e2d3bb322a4f55439d105941cf43462d3e
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.topic: conceptual
+ms.date: 06/02/2020
+ms.openlocfilehash: 574bacdb5e1f167c9c9174d4a119552391059004
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344146"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677724"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>在 LUIS 门户中测试 LUIS 应用
 
@@ -65,9 +65,25 @@ ms.locfileid: "84344146"
 
 ## <a name="disable-required-features"></a>禁用所需的功能
 
-如果实体的功能不是必需的，则选择此开关可以查看预测的含义。
+此切换可帮助你确定经过训练的应用是否根据所需功能正确预测你的实体。 默认设置是在预测过程中应用该功能。 如果子实体的功能不是必需的，则选择此开关可以查看预测的情况。
 
-此切换可帮助你确定经过训练的应用是否根据所需功能正确预测你的实体。 经过训练的应用可能会根据示例最谈话的错误标签或所需功能与文本不匹配，误预测机器学习的实体。
+### <a name="when-to-disable-required-features"></a>何时禁用所需的功能
+
+训练的应用可能会根据以下其中一项误预测计算机学习的实体：
+* 示例最谈话的标记错误。
+* 所需的功能与文本不匹配。
+
+例如，具有人员姓名子实体的机器学习的实体。
+
+:::image type="content" source="media/luis-how-to-interactive-test/disable-required-feature.png" alt-text="具有所需功能的 LUIS 门户计算机学习实体架构的屏幕截图":::
+
+此计算机了解的实体的示例查询文本为： `Assign Bob Jones to work on the new security feature` 。
+
+提取应 `security feature` 作为票据说明 `Bob Jones` ，并作为工程师，两子实体 `Assign ticket` 实体。
+
+为了帮助子实体成功预测，请将预生成的实体[PersonName](luis-reference-prebuilt-person.md) aa a 功能添加到 `engineer` 子实体。 如果你设置了所需的功能，这意味着，如果为文本预测了 PersonName 预生成的实体，则子实体将被提取。 这意味着文本中不使用 PersonName 子实体进行预测的任何名称都不会作为标记的子实体返回 `engineer` 。
+
+使用 "交互式测试" 窗格，并查看具有所需功能的子实体，不会进行预测，请切换此设置，以查看是否预测子实体，而不需要该功能。 由于示例最谈话的正确标记，子实体可以在不需要功能的情况下正确预测。
 
 ## <a name="view-sentiment-results"></a>查看情绪结果
 

@@ -13,6 +13,7 @@
     - name: 创建专用终结点 - Azure CLI
       href: create-private-endpoint-cli.md
     - name: 创建专用终结点 - ARM 模板
+      displayName: Resource Manager
       href: create-private-endpoint-template.md
     - name: 创建专用链接服务 - 门户
       href: create-private-link-service-portal.md
@@ -21,6 +22,7 @@
     - name: 创建专用链接服务 - Azure CLI
       href: create-private-link-service-cli.md
     - name: 创建专用链接服务 - ARM 模板
+      displayName: Resource Manager
       href: create-private-link-service-template.md
 - name: 概念
   items:

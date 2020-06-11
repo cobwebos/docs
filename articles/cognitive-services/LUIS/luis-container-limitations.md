@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 2061d69fdfd13683ee722951cc7aaedcb1e1750a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5c76e45f09a0f432d2775eb19d3dcaa668294e6f
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745367"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672657"
 ---
 # <a name="language-understanding-luis-container-limitations"></a>语言理解（LUIS）容器限制
 
@@ -49,6 +49,7 @@ LUIS 容器支持 LUIS[支持的语言](luis-language-support.md#languages-suppo
 | 语言 | 区域设置 | 预生成域 | 预生成实体 | 短语列表建议 | **[文本分析](../text-analytics/language-support.md)<br>（情绪和<br>关键字）|
 |--|--|:--:|:--:|:--:|:--:|
 | 英语（美国） | `en-US` | ✔️ | ✔️ | ✔️ | ✔️ |
+| 阿拉伯语（预览版 - 现代标准阿拉伯语） |`ar-AR`|❌|❌|❌|❌|
 | *[中文](#chinese-support-notes) |`zh-CN` | ✔️ | ✔️ | ✔️ | ❌ |
 | 法语（法国） |`fr-FR` | ✔️ | ✔️ | ✔️ | ✔️ |
 | 法语（加拿大） |`fr-CA` | ❌ | ❌ | ❌ | ✔️ |
@@ -56,9 +57,12 @@ LUIS 容器支持 LUIS[支持的语言](luis-language-support.md#languages-suppo
 | Hindi | `hi-IN`| ❌ | ❌ | ❌ | ❌ |
 | 意大利语 |`it-IT` | ✔️ | ✔️ | ✔️ | ✔️ |
 | 韩语 |`ko-KR` | ✔️ | ❌ | ❌ | 仅限*关键短语* |
-| 葡萄牙语(巴西) |`pt-BR` | ✔️ | ✔️ | ✔️ | 并非所有亚区域性 |
-| 西班牙语（西班牙） |`es-ES` | ✔️ | ✔️ |✔️|✔️|
-| 西班牙语(墨西哥)|`es-MX` | ❌ | ❌ |✔️|✔️|
+| 马拉地语 | `mr-IN`|❌|❌|❌|❌|
+| 葡萄牙语（巴西） |`pt-BR` | ✔️ | ✔️ | ✔️ | 并非所有亚区域性 |
+| 西班牙语(西班牙) |`es-ES` | ✔️ | ✔️ |✔️|✔️|
+| 西班牙语（墨西哥）|`es-MX` | ❌ | ❌ |✔️|✔️|
+| 泰米尔语 | `ta-IN`|❌|❌|❌|❌|
+| 泰卢固语 | `te-IN`|❌|❌|❌|❌|
 | 土耳其语 | `tr-TR` |✔️| ❌ | ❌ | 仅*情绪* |
 
 [!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]
