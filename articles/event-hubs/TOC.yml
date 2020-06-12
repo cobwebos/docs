@@ -213,8 +213,12 @@
           href: configure-customer-managed-key.md
     - name: 疑难解答
       items:
-        - name: 故障排除指南
+        - name: 解决连接问题
           href: troubleshooting-guide.md
+        - name: 排查身份验证和授权问题
+          href: troubleshoot-authentication-authorization.md
+        - name: 针对事件中心的 Kafka 故障排除指南
+          href: apache-kafka-troubleshooting-guide.md
         - name: .NET 异常
           href: event-hubs-messaging-exceptions.md
         - name: 资源管理器异常
