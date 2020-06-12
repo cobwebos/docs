@@ -1072,6 +1072,8 @@
               maintainContext: true
         - name: GDPR 最佳做法
           href: /azure/databricks/security/privacy/gdpr-delta
+        - name: IP 访问列表
+          href: /azure/databricks/security/network/ip-access-list
         - name: 加密群集工作器节点之间的流量
           href: /azure/databricks/security/encryption/encrypt-otw
         - name: 为笔记本启用客户管理的密钥
@@ -1160,10 +1162,13 @@
             - name: 管理对笔记本功能的访问
               href: /azure/databricks/administration-guide/workspace/notebooks
               maintainContext: true
-        - name: 启用群集配置
+        - name: 管理群集
           items:
-            - name: 群集配置概述
+            - name: 管理群集配置选项
               href: /azure/databricks/administration-guide/clusters/index
+              maintainContext: true
+            - name: 管理群集策略
+              href: /azure/databricks/administration-guide/clusters/policies
               maintainContext: true
             - name: 启用容器服务
               href: /azure/databricks/administration-guide/clusters/container-services
@@ -1191,9 +1196,7 @@
             - name: 用户定义的路由设置
               href: /azure/databricks/administration-guide/cloud-configurations/azure/udr
               maintainContext: true
-            - name: MySQL IP 地址
-              href: mysql-ip-address.md
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 常见问题
           href: /azure/azure-databricks/frequently-asked-questions-databricks
@@ -1256,6 +1259,18 @@
               maintainContext: true
             - name: Apache Spark UI 显示的节点内存少于总计
               href: /azure/databricks/kb/clusters/spark-shows-less-memory
+              maintainContext: true
+            - name: CPU 内核限制阻止创建群集
+              href: /azure/databricks/kb/clusters/azure-core-limit
+              maintainContext: true
+            - name: IP 地址限制阻止创建群集
+              href: /azure/databricks/kb/clusters/azure-ip-limit
+              maintainContext: true
+            - name: 群集启动缓慢，缺少节点
+              href: /azure/databricks/kb/clusters/azure-nodes-not-acquired
+              maintainContext: true
+            - name: 将群集配置为使用自定义 NTP 服务器
+              href: /azure/databricks/kb/clusters/use-internal-ntp
               maintainContext: true
         - name: 数据管理
           items:
@@ -1332,6 +1347,9 @@
               maintainContext: true
             - name: 优化从 JDBC 数据源进行读取的性能
               href: /azure/databricks/kb/data-sources/jdbc-optimize-read
+              maintainContext: true
+            - name: 已阻止 ADLS 和 WASB 写入
+              href: /azure/databricks/kb/data-sources/azure-storage-throttling
               maintainContext: true
         - name: DBFS
           items:
@@ -1500,6 +1518,9 @@
             - name: 排查取消命令问题
               href: /azure/databricks/kb/notebooks/troubleshoot-cancel-command
               maintainContext: true
+            - name: 检索笔记本的当前用户名
+              href: /azure/databricks/kb/notebooks/get-notebook-username
+              maintainContext: true
         - name: 安全和权限
           items:
             - name: 表创建失败，出现安全异常
@@ -1642,28 +1663,31 @@
                     - name: 排查 Azure AD 访问令牌问题
                       href: /azure/databricks/dev-tools/api/latest/aad/troubleshoot-aad-token
                       maintainContext: true
-            - name: 群集
+            - name: 群集 API
               href: /azure/databricks/dev-tools/api/latest/clusters
               maintainContext: true
-            - name: DBFS
+            - name: 群集策略 API
+              href: /azure/databricks/dev-tools/api/latest/policies
+              maintainContext: true
+            - name: DBFS API
               href: /azure/databricks/dev-tools/api/latest/dbfs
               maintainContext: true
-            - name: 组
+            - name: 组 API
               href: /azure/databricks/dev-tools/api/latest/groups
               maintainContext: true
             - name: 实例池 API
               href: /azure/databricks/dev-tools/api/latest/instance-pools
               maintainContext: true
-            - name: 作业
+            - name: 作业 API
               href: /azure/databricks/dev-tools/api/latest/jobs
               maintainContext: true
-            - name: 库
+            - name: 库 API
               href: /azure/databricks/dev-tools/api/latest/libraries
               maintainContext: true
-            - name: MLflow
+            - name: MLflow API
               href: /azure/databricks/dev-tools/api/latest/mlflow
               maintainContext: true
-            - name: SCIM
+            - name: SCIM API
               items:
                 - name: SCIM API 概述
                   href: /azure/databricks/dev-tools/api/latest/scim/index
@@ -1674,17 +1698,14 @@
                 - name: SCIM API（组）
                   href: /azure/databricks/dev-tools/api/latest/scim/scim-group
               maintainContext: true
-            - name: 机密
+            - name: 机密 API
               href: /azure/databricks/dev-tools/api/latest/secrets
               maintainContext: true
-            - name: 令牌
+            - name: 令牌 API
               href: /azure/databricks/dev-tools/api/latest/tokens
               maintainContext: true
-            - name: 工作区
+            - name: 工作区 API
               href: /azure/databricks/dev-tools/api/latest/workspace
-              maintainContext: true
-            - name: REST API 调用的运行时版本字符串
-              href: /azure/databricks/dev-tools/api/latest/runtime-version-string
               maintainContext: true
         - name: REST API 1.2
           href: /azure/databricks/dev-tools/api/1.2/index
@@ -1767,6 +1788,9 @@
           items:
             - name: 平台发行说明
               href: /azure/databricks/release-notes/product/index
+              maintainContext: true
+            - name: 2020 年 6 月
+              href: /azure/databricks/release-notes/product/2020/june
               maintainContext: true
             - name: 2020 年 5 月
               href: /azure/databricks/release-notes/product/2020/may

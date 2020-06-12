@@ -30,6 +30,10 @@
       href: tutorial-url-redirect-cli.md
     - name: 自动缩放和区域冗余
       href: tutorial-autoscale-ps.md
+    - name: AKS 的入口控制器外接程序（绿地）
+      href: tutorial-ingress-controller-add-on-new.md
+    - name: AKS 的入口控制器外接程序（棕地）
+      href: tutorial-ingress-controller-add-on-existing.md
 - name: 示例
   items:
     - name: Azure PowerShell
@@ -136,10 +140,12 @@
               href: application-gateway-configure-ssl-policy-powershell.md
     - name: 用于 AKS 的入口
       items:
-        - name: 使用现有应用程序网关进行安装
+        - name: 经由 Helm 的 AKS 入口（棕地）
           href: ingress-controller-install-existing.md
-        - name: 使用新应用程序网关进行安装
+        - name: 经由 Helm 的 AKS 入口（绿地）
           href: ingress-controller-install-new.md
+        - name: 禁用并重新启用 AKS 入口控制器外接程序
+          href: ingress-controller-disable-addon.md
         - name: 启用 Cookie 关联
           href: ingress-controller-cookie-affinity.md
         - name: 启用多命名空间支持
@@ -274,5 +280,5 @@
       href: 'https://azure.microsoft.com/pricing/details/application-gateway/'
     - name: 区域可用性
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-application-gateway'

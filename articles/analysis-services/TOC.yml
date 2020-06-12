@@ -31,7 +31,7 @@
       href: analysis-services-service-principal.md
     - name: 客户端库
       href: analysis-services-data-providers.md
-    - name: 兼容级别
+    - name: 兼容性级别
       href: 'https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services'
     - name: 连接到本地数据源
       href: analysis-services-gateway.md
@@ -71,6 +71,8 @@
           href: ../active-directory/develop/howto-authenticate-service-principal-powershell.md
         - name: 将服务主体添加到服务器管理员角色
           href: analysis-services-addservprinc-admins.md
+        - name: 在区域之间移动
+          href: move-between-regions.md
     - name: “模型”
       items:
         - name: 表格建模

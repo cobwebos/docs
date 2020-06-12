@@ -115,7 +115,7 @@
   items:
     - name: 时序见解
       items:
-        - name: Azure Time Series Insights
+        - name: Azure 时序见解
           href: /rest/api/time-series-insights/index
         - name: 数据访问正式发行版
           href: /rest/api/time-series-insights/ga
@@ -138,6 +138,8 @@
 - name: 资源
   expanded: true
   items:
+    - name: 支持和帮助选项
+      href: /azure/iot-fundamentals/iot-support-help
     - name: 客户数据请求
       href: time-series-insights-customer-data-requests.md
     - name: 开发人员资源
@@ -158,22 +160,6 @@
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: 上市区域
           href: 'https://azure.microsoft.com/regions/services/'
-    - name: 支持和帮助选项
-      items:
-        - name: Azure 支持选项
-          href: 'https://azure.microsoft.com/support/options/'
-        - name: Azure IoT 支持和帮助选项
-          href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
-        - name: Microsoft Q&A 问题页面
-          href: 'https://docs.microsoft.com/answers/topics/azure-time-series-insights.html'
-    - name: 反馈和论坛
-      items:
-        - name: Microsoft Q&A 问题页面
-          href: 'https://docs.microsoft.com/answers/topics/azure-time-series-insights.html'
-        - name: 产品请求和建议
-          href: 'https://feedback.azure.com/forums/906859-azure-time-series-insights'
     - name: Azure 视频
       href: 'https://azure.microsoft.com/resources/videos/index/?services=time-series-insights'
     - name: Channel 9 视频

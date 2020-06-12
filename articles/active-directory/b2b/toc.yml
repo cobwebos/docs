@@ -52,6 +52,8 @@
           href: identity-providers.md
         - name: 自助注册用户流（预览版）
           href: self-service-sign-up-overview.md
+        - name: 自助注册 API 连接器（预览版）
+          href: api-connectors-overview.md
         - name: Azure AD 权利管理
           href: self-service-portal.md
         - name: 当前限制
@@ -95,6 +97,10 @@
               href: user-flow-add-custom-attributes.md
             - name: 自定义用户流语言
               href: user-flow-customize-language.md
+            - name: 添加 API 连接器
+              href: self-service-sign-up-add-api-connector.md
+            - name: 添加自定义审批系统
+              href: self-service-sign-up-add-approvals.md
         - name: 管理来宾帐户
           items:
             - name: 将 B2B 用户添加到角色

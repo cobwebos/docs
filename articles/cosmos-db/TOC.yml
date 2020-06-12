@@ -977,41 +977,40 @@
           href: how-to-manage-indexing-policy.md
         - name: 定义唯一键
           href: how-to-define-unique-keys.md
-    - name: 最佳做法
+    - name: 性能和故障排除
       items:
-        - name: 性能提示
+        - name: 查询
           items:
             - name: 获取查询执行指标
-              displayName: 'query profile, profile'
               href: profile-sql-api-query.md
             - name: 调整查询性能
               href: sql-api-query-metrics.md
-            - name: .NET SDK 性能提示
+            - name: 查询性能故障排除
+              href: troubleshoot-query-performance.md
+        - name: .NET
+          items:
+            - name: .NET SDK v3 性能提示
+              href: performance-tips-dotnet-sdk-v3-sql.md
+            - name: .NET SDK v2 性能提示
               href: performance-tips.md
+            - name: 排查 .NET SDK 问题
+              href: troubleshoot-dot-net-sdk.md
+        - name: Java
+          items:
             - name: 适用于 Java SDK v4 的性能提示
               href: performance-tips-java-sdk-v4-sql.md
-            - name: 适用于早期 Java SDK 的性能提示
-              items:
-                - name: Async Java SDK v2
-                  href: performance-tips-async-java.md
-                - name: Sync Java SDK v2
-                  href: performance-tips-java.md
-            - name: 性能测试 - 示例应用
-              href: performance-testing.md
-        - name: 以经济高效的方式读取和写入
-          href: key-value-store-cost.md
-    - name: 疑难解答
-      items:
-        - name: 查询性能故障排除
-          href: troubleshoot-query-performance.md
-        - name: 排查 Java SDK v4 问题
-          href: troubleshoot-java-sdk-v4-sql.md
-        - name: 排查早期 Java SDK 的问题
-          items:
+            - name: 排查 Java SDK v4 问题
+              href: troubleshoot-java-sdk-v4-sql.md
+            - name: Async Java SDK v2
+              href: performance-tips-async-java.md
+            - name: Sync Java SDK v2
+              href: performance-tips-java.md
             - name: Async Java SDK v2
               href: troubleshoot-java-async-sdk.md
-        - name: 排查 .NET SDK 问题
-          href: troubleshoot-dot-net-sdk.md
+        - name: 性能测试 - 示例应用
+          href: performance-testing.md
+        - name: 以经济高效的方式读取和写入
+          href: key-value-store-cost.md
     - name: 迁移到更新的 SDK
       items:
         - name: 迁移到 Java V4 SDK
@@ -1194,28 +1193,30 @@
           href: how-to-migrate-from-bulk-executor-library.md
         - name: 批量执行程序 - Java 库
           href: bulk-executor-java.md
-- name: 参考
+- name: SQL API SDK 的引用
   items:
-    - name: .NET
-      href: sql-api-sdk-dotnet.md
-    - name: .NET Core
-      href: sql-api-sdk-dotnet-core.md
-    - name: .NET Standard
-      href: sql-api-sdk-dotnet-standard.md
-    - name: .NET 更改源库
-      href: sql-api-sdk-dotnet-changefeed.md
-    - name: .NET 批量执行程序库
-      href: sql-api-sdk-bulk-executor-dot-net.md
-    - name: Java 批量执行程序库
-      href: sql-api-sdk-bulk-executor-java.md
-    - name: Java SDK v4 for Core
-      href: sql-api-sdk-java-v4.md
-    - name: 旧版 Java SDK for Core
+    - name: .NET SDK
       items:
+        - name: .NET SDK v3
+          href: sql-api-sdk-dotnet-standard.md
+        - name: .NET SDK v2
+          href: sql-api-sdk-dotnet.md
+        - name: .NET Core SDK v2
+          href: sql-api-sdk-dotnet-core.md
+        - name: .NET 更改源库 v2
+          href: sql-api-sdk-dotnet-changefeed.md
+        - name: .NET 批量执行程序库 v2
+          href: sql-api-sdk-bulk-executor-dot-net.md
+    - name: Java SDK
+      items:
+        - name: Java SDK v4
+          href: sql-api-sdk-java-v4.md
         - name: Async Java SDK v2
           href: sql-api-sdk-async-java.md
         - name: Sync Java SDK v2
           href: sql-api-sdk-java.md
+        - name: Java 批量执行程序库 v2
+          href: sql-api-sdk-bulk-executor-java.md
     - name: Node.js
       href: sql-api-sdk-node.md
     - name: Python
