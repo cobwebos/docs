@@ -1,14 +1,14 @@
 ---
 title: 蓝图示例的索引
 description: 用于通过 Azure 蓝图部署环境、策略和云采用框架基础的符合性和标准示例的索引。
-ms.date: 02/26/2020
+ms.date: 06/02/2020
 ms.topic: sample
-ms.openlocfilehash: 582a4bbc1ec21e231d2a9f1feb1cfef34b3cce37
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 0ed5af98644f116622aa44a2503161ce2fd6225b
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594264"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84729993"
 ---
 # <a name="azure-blueprints-samples"></a>Azure 蓝图示例
 
@@ -19,8 +19,9 @@ ms.locfileid: "82594264"
 |  |  |
 |---------|---------|
 | [澳大利亚政府 ISM PROTECTED](./ism-protected/control-mapping.md) | 提供用于符合澳大利亚政府 ISM PROTECTED 的规范措施。 |
+| [Azure 安全基准](./azure-security-benchmark.md) | 提供可帮助符合 [Azure 安全基准](../../../security/benchmarks/overview.md)的规范措施。 |
 | [加拿大联邦 PBMM](./canada-federal-pbmm/index.md) | 提供防护措施，以便符合加拿大联邦受保护的 B、中等完整性、中等可用性 (PBMM)。 |
-| [CIS Microsoft Azure 基础基准](./cis-azure-1.1.0/index.md)| 提供一组策略以帮助符合 CIS Microsoft Azure 基础基准建议。 |
+| [CIS Microsoft Azure 基础基准](./cis-azure-1-1-0.md)| 提供一组策略以帮助符合 CIS Microsoft Azure 基础基准建议。 |
 | [DoD 影响级别 4](./dod-impact-level-4/index.md) | 提供了一组策略以帮助符合 DoD 影响级别 4。 |
 | [FedRAMP Moderate](./fedramp-m/index.md) | 提供了一组策略以帮助符合 FedRAMP Moderate。 |
 | [FedRAMP High](./fedramp-h/index.md) | 提供了一组策略以帮助符合 FedRAMP High。 |
@@ -30,7 +31,7 @@ ms.locfileid: "82594264"
 | [ISO 27001 共享服务](./iso27001-shared/index.md) | 提供了一组符合标准的基础结构模式和策略防护机制，以便帮助通过 ISO 27001 认证。 |
 | [ISO 27001 应用服务环境/SQL 数据库工作负荷](./iso27001-ase-sql-workload/index.md) | 为 [ISO 27001 共享服务](./iso27001-shared/index.md)蓝图示例提供了其他基础结构。 |
 | [介质](./media/index.md) | 提供了一组策略以帮助符合媒体 MPAA。 |
-| [NIST SP 800-53 R4](./nist-sp-800-53-rev4/index.md) | 提供用于符合 NIST SP 800-53 R4 的规范措施。 |
+| [NIST SP 800-53 R4](./nist-sp-800-53-r4.md) | 提供用于符合 NIST SP 800-53 R4 的规范措施。 |
 | [PCI-DSS v3.2.1](./pci-dss-3.2.1/index.md) | 提供一组策略以帮助用户符合 PCI-DSS v3.2.1。 |
 | [SWIFT CSP-CSCF v2020](./swift-2020/index.md) | 帮助用户符合 SWIFT CSP-CSCF v2020。 |
 | [英国官方和英国 NHS 监管](./ukofficial/index.md) | 提供了一组符合标准的基础结构模式和策略防护措施，以便帮助用户通过英国官方和英国 NHS 认证。 |

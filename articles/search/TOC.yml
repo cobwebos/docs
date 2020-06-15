@@ -222,12 +222,12 @@
               href: cognitive-search-create-custom-skill-example.md
             - name: 示例 - Azure 表单识别器
               href: cognitive-search-custom-skill-form.md
+            - name: 示例 - Azure 机器学习
+              href: cognitive-search-tutorial-aml-custom-skill.md
             - name: 示例 - 容器
               href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
         - name: 设计提示
           href: cognitive-search-concept-troubleshooting.md
-        - name: 文档链接
-          href: cognitive-search-resources-documentation.md
         - name: 知识存储
           items:
             - name: 使用 REST 和 Postman 创建
@@ -464,6 +464,8 @@
               href: cognitive-search-skill-text-translation.md
         - name: 自定义技能
           items:
+            - name: Azure 机器学习 (AML)
+              href: cognitive-search-aml-skill.md
             - name: 自定义 Web API
               href: cognitive-search-custom-skill-web-api.md
         - name: 弃用的技能
@@ -481,6 +483,8 @@
       href: 'https://feedback.azure.com/forums/263029-azure-search'
     - name: 符合性和认证
       href: 'https://aka.ms/azurecompliance'
+    - name: 文档链接（知识挖掘）
+      href: cognitive-search-resources-documentation.md
     - name: 演示站点
       items:
         - name: 财务文件演示

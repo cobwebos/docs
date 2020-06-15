@@ -86,6 +86,8 @@
           href: add-custom-domain.md
         - name: 添加公司品牌
           href: customize-branding.md
+        - name: 配置“保持登录状态?”
+          href: keep-me-signed-in.md
         - name: 关联 Azure 订阅
           href: active-directory-how-subscriptions-associated-directory.md
         - name: 添加隐私信息

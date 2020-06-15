@@ -166,8 +166,12 @@
       href: evaluate-recommender.md
     - name: 为 SVD 推荐器评分
       href: score-svd-recommender.md
+    - name: 为 Wide and Deep 推荐器评分
+      href: score-wide-and-deep-recommender.md
     - name: 训练 SVD 推荐器
       href: train-svd-recommender.md
+    - name: 训练 Wide and Deep 推荐器
+      href: train-wide-and-deep-recommender.md
 - name: 异常检测
   items:
     - name: 基于 PCA 的异常情况检测

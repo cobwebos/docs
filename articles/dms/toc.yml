@@ -5,82 +5,137 @@
     - name: 什么是 Azure 数据库迁移服务？
       href: dms-overview.md
 - name: 快速入门
+  expanded: true
   items:
     - name: 创建服务 - 门户
       href: quickstart-create-data-migration-service-portal.md
     - name: 以混合模式创建服务 - 门户
       href: quickstart-create-data-migration-service-hybrid-portal.md
-- name: 教程
+- name: 概念
   items:
-    - name: 将 SQL Server 脱机迁移到 Azure SQL DB 单一数据库
-      href: tutorial-sql-server-to-azure-sql.md
-    - name: 将 SQL Server 联机迁移到 Azure SQL DB 单一数据库
-      href: tutorial-sql-server-azure-sql-online.md
-    - name: 将 SQL Server 脱机迁移到 Azure SQL DB 托管实例
-      href: tutorial-sql-server-to-managed-instance.md
-    - name: 将 SQL Server 联机迁移到 Azure SQL DB 托管实例
-      href: tutorial-sql-server-managed-instance-online.md
-    - name: 将 RDS SQL Server 联机迁移到 Azure SQL DB 单一数据库或 Azure SQL DB 托管实例
-      href: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
-    - name: 以联机方式将 MySQL 迁移到 Azure DB for MySQL
-      href: tutorial-mysql-azure-mysql-online.md
-    - name: 以联机方式将 RDS MySQL 迁移到 Azure DB for MySQL
-      href: tutorial-rds-mysql-server-azure-db-for-mysql-online.md
-    - name: 通过门户将 PostgreSQL 迁移到 Azure DB for PostgreSQL
-      href: tutorial-postgresql-azure-postgresql-online-portal.md
-    - name: 通过 CLI 将 PostgreSQL 迁移到 Azure DB for PostgreSQL
-      href: tutorial-postgresql-azure-postgresql-online.md
-    - name: 以联机方式将 RDS PostgreSQL 迁移到 Azure DB for PostgreSQL
-      href: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
-    - name: 以脱机方式将 MongoDB 迁移到 Azure Cosmos DB Mongo API
-      href: tutorial-mongodb-cosmos-db.md
-    - name: 以联机方式将 MongoDB 迁移到 Azure Cosmos DB Mongo API
-      href: tutorial-mongodb-cosmos-db-online.md
-    - name: 将 Oracle 联机迁移到 Azure DB for PostgreSQL – 单一服务器
-      href: tutorial-oracle-azure-postgresql-online.md
-- name: 操作方法指南
-  items:
-    - name: 使用 PowerShell 将 SQL Server 迁移到 Azure SQL DB 单一数据库
-      href: howto-sql-server-to-azure-sql-powershell.md
-    - name: 使用 PowerShell 将 SQL Server 迁移到 Azure SQL DB 托管实例
-      href: howto-sql-server-to-azure-sql-mi-powershell.md
-    - name: 监视迁移活动
-      href: how-to-monitor-migration-activity.md
-    - name: 将 SSIS 包重新部署到 Azure SQL DB 单一数据库
-      href: how-to-migrate-ssis-packages.md
-    - name: 将 SSIS 包重新部署到 Azure SQL DB 托管实例
-      href: how-to-migrate-ssis-packages-managed-instance.md
-- name: 资源
-  expanded: true
-  items:
+    - name: 先决条件
+      href: pre-reqs.md
     - name: 数据库迁移方案状态
       href: resource-scenario-status.md
-    - name: 先决条件概述
-      href: pre-reqs.md
-    - name: 用于 Azure SQL DB MI 迁移的网络拓扑
-      href: resource-network-topologies.md
-    - name: 用于从 SQL Server 联机迁移到 Azure SQL DB MI 的自定义角色
-      href: resource-custom-roles-sql-db-managed-instance.md
+    - name: 迁移到 SQL 托管实例
+      items:
+        - name: 网络拓扑
+          href: resource-network-topologies.md
+        - name: 自定义角色
+          href: resource-custom-roles-sql-db-managed-instance.md
+- name: 教程
+  expanded: true
+  items:
+    - name: 迁移 SQL Server
+      items:
+        - name: 到 Azure SQL 数据库（脱机）
+          href: tutorial-sql-server-to-azure-sql.md
+        - name: 到 Azure SQL 数据库（联机）
+          href: tutorial-sql-server-azure-sql-online.md
+        - name: 到 Azure SQL 托管实例（脱机）
+          href: tutorial-sql-server-to-managed-instance.md
+        - name: 到 Azure SQL 托管实例（联机）
+          href: tutorial-sql-server-managed-instance-online.md
+    - name: 迁移 RDS SQL Server
+      items:
+        - name: 到 Azure SQL 数据库或 SQL 托管实例
+          href: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
+    - name: 迁移 MySQL
+      items:
+        - name: 到 Azure Database for MySQL
+          href: tutorial-mysql-azure-mysql-online.md
+    - name: 迁移 RDS MySQL
+      items:
+        - name: 到 Azure Database for MySQL
+          href: tutorial-rds-mysql-server-azure-db-for-mysql-online.md
+    - name: 迁移 PostgreSQL
+      items:
+        - name: 到 Azure DB for PostgreSQL（门户）
+          href: tutorial-postgresql-azure-postgresql-online-portal.md
+        - name: 到 Azure DB for PostgreSQL (Az CLI)
+          href: tutorial-postgresql-azure-postgresql-online.md
+    - name: 迁移 RDS PostgreSQL
+      items:
+        - name: 到 Azure DB for PostgreSQL
+          href: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
+    - name: 迁移 MongoDB
+      items:
+        - name: 到 Azure Cosmos DB Mongo API（脱机）
+          href: tutorial-mongodb-cosmos-db.md
+        - name: 到 Azure Cosmos DB Mongo API（联机）
+          href: tutorial-mongodb-cosmos-db-online.md
+    - name: 迁移 Oracle
+      items:
+        - name: 到 Azure DB for PostgreSQL - 单一服务器（联机）
+          href: tutorial-oracle-azure-postgresql-online.md
+- name: 操作指南
+  items:
+    - name: 监视迁移活动
+      href: how-to-monitor-migration-activity.md
+    - name: 使用 PowerShell 迁移
+      items:
+        - name: 将 SQL Server 到 SQL 数据库
+          href: howto-sql-server-to-azure-sql-powershell.md
+        - name: 将 SQL Server 到 SQL 托管实例
+          href: howto-sql-server-to-azure-sql-mi-powershell.md
+    - name: 将 SSIS 包重新部署到
+      items:
+        - name: Azure SQL Database
+          href: how-to-migrate-ssis-packages.md
+        - name: Azure SQL 托管实例
+          href: how-to-migrate-ssis-packages-managed-instance.md
+- name: 资源
+  items:
+    - name: 常见问题
+      href: faq.md
+    - name: 反馈
+      href: 'https://feedback.azure.com/forums/906100-azure-database-migration-service'
+    - name: 定价
+      href: 'https://aka.ms/dms-pricing'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=database-migration'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 工具和指南
+      items:
+        - name: 可用于数据迁移方案的服务和工具
+          href: dms-tools-matrix.md
+        - name: Azure 数据库迁移指南
+          href: 'https://aka.ms/datamigration'
+        - name: 数据迁移助手
+          href: 'https://aka.ms/dma'
+        - name: SQL Server Migration Assistant
+          href: 'https://aka.ms/ssma'
+        - name: 数据库实验助手
+          href: 'https://aka.ms/dea-docs'
+        - name: 数据访问迁移工具包
+          href: 'https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit'
     - name: 故障排除和已知问题
       items:
-        - name: 排查源数据库连接问题
-          href: known-issues-troubleshooting-dms-source-connectivity.md
-        - name: 排查常见问题和错误
-          href: known-issues-troubleshooting-dms.md
-        - name: 已知问题 - 联机迁移到 Azure SQL DB 单一数据库
-          href: known-issues-azure-sql-online.md
-        - name: 已知问题 - 联机迁移到 Azure SQL DB 托管实例
-          href: known-issues-azure-sql-db-managed-instance-online.md
-        - name: 已知问题 - 联机迁移到 Azure DB for MySQL
-          href: known-issues-azure-mysql-online.md
-        - name: 已知问题 - 从 PostgreSQL 联机迁移到 Azure DB for PostgreSQL
-          href: known-issues-azure-postgresql-online.md
-        - name: 已知问题 - 从 Oracle 联机迁移到 Azure DB for PostgreSQL 单一服务器
-          href: known-issues-oracle-azure-postgresql-online.md
-        - name: 已知问题 - 从 MongoDB 迁移到 Azure Cosmos DB API for MongoDB
-          href: known-issues-mongo-cosmos-db.md
-        - name: 已知问题 - 使用混合模式
-          href: known-issues-dms-hybrid-mode.md
+        - name: 疑难解答
+          items:
+            - name: 常见错误
+              href: known-issues-troubleshooting-dms.md
+            - name: 源数据库连接
+              href: known-issues-troubleshooting-dms-source-connectivity.md
+        - name: 已知问题
+          items:
+            - name: 使用混合模式
+              href: known-issues-dms-hybrid-mode.md
+        - name: 已知迁移问题
+          items:
+            - name: 到 SQL 数据库
+              href: known-issues-azure-sql-online.md
+            - name: SQL 托管实例
+              href: known-issues-azure-sql-db-managed-instance-online.md
+            - name: 到 Azure DB for MySQL
+              href: known-issues-azure-mysql-online.md
+            - name: 从 PostgreSQL 到 Azure DB for PostgreSQL
+              href: known-issues-azure-postgresql-online.md
+            - name: 从 Oracle 到 Azure DB for PostgreSQL
+              href: known-issues-oracle-azure-postgresql-online.md
+            - name: 从 MongoDB 到 Azure Cosmos DB API for MongoDB
+              href: known-issues-mongo-cosmos-db.md
     - name: 视频
       items:
         - name: 使用数据库迁移指南
@@ -99,27 +154,3 @@
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-oracle-to-sqldb-online/'
         - name: 将 MongoDB 迁移到 Azure Cosmos DB
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/'
-    - name: 工具和指南
-      items:
-        - name: 可用于数据迁移方案的服务和工具
-          href: dms-tools-matrix.md
-        - name: Azure 数据库迁移指南
-          href: 'https://aka.ms/datamigration'
-        - name: 数据迁移助手
-          href: 'https://aka.ms/dma'
-        - name: SQL Server Migration Assistant
-          href: 'https://aka.ms/ssma'
-        - name: 数据库实验助手
-          href: 'https://aka.ms/dea-docs'
-        - name: 数据访问迁移工具包
-          href: 'https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit'
-    - name: 常见问题
-      href: faq.md
-    - name: User Voice 反馈
-      href: 'https://feedback.azure.com/forums/906100-azure-database-migration-service'
-    - name: 定价
-      href: 'https://aka.ms/dms-pricing'
-    - name: 服务更新
-      href: 'https://azure.microsoft.com/updates/?product=database-migration'
-    - name: Azure 路线图
-      href: 'https://azure.microsoft.com/roadmap/'
