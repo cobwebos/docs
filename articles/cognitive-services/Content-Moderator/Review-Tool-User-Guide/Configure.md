@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
 ms.openlocfilehash: 2d685683bdc359b31a5a6c550c19e8c0d858f12a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220123"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84689837"
 ---
 # <a name="configure-the-review-tool"></a>配置审阅工具
 
@@ -25,7 +25,7 @@ ms.locfileid: "79220123"
 
 ## <a name="manage-team-and-subteams"></a>管理团队和子团队
 
-利用 "**团队**" 选项卡，你可以管理&mdash;你的团队和子团队用户组，这些用户可以在启动某些[人审查](../review-api.md#reviews)时获得通知。 你只能有一个团队（在使用审阅工具注册时创建），但你可以创建多个子组。 团队管理员可以邀请成员、设置其权限，并将其分配给不同的子组。
+利用 "**团队**" 选项卡，你可以管理你的团队和子团队 &mdash; 用户组，这些用户可以在启动某些[人审查](../review-api.md#reviews)时获得通知。 你只能有一个团队（在使用审阅工具注册时创建），但你可以创建多个子组。 团队管理员可以邀请成员、设置其权限，并将其分配给不同的子组。
 
 ![查看工具团队设置](images/settings-2-team.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "79220123"
 
 ## <a name="tags"></a>Tags
 
-使用 "**标记**" 选项卡，可以定义自定义审核标记，还可以定义两个默认审核标记&mdash;**isadult** （**a**）和**isracy** （**r**）。 当创建自定义标记时，它将在默认标记旁边的审阅中可用。 可以通过切换其可见性设置来更改中显示的标记。
+使用 "**标记**" 选项卡，可以定义自定义审核标记，还可以定义两个默认审核标记 &mdash; **isadult** （**a**）和**isracy** （**r**）。 当创建自定义标记时，它将在默认标记旁边的审阅中可用。 可以通过切换其可见性设置来更改中显示的标记。
 
 !["标记" 视图，包括 "显示" 复选框](images/tags-4-disable.png)
 

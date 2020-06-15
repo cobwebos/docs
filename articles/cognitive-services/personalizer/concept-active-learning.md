@@ -4,11 +4,11 @@ description: 学习设置确定模型定型的*超参数*。 对于在不同学�
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: abe6a2a2ec9b9978230d894c69193469f6e932e6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219342"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84700726"
 ---
 # <a name="learning-policy-and-settings"></a>了解策略和设置
 
@@ -28,7 +28,7 @@ ms.locfileid: "79219342"
 
 Personalizer 使用[vowpalwabbit](https://github.com/VowpalWabbit)来定型和评分事件。 请参阅[vowpalwabbit 文档](https://github.com/VowpalWabbit/vowpal_wabbit/wiki/Command-line-arguments)，了解如何使用 vowpalwabbit 编辑学习设置。 使用正确的命令行参数后，请使用以下格式将命令保存到文件（使用所需的命令替换 arguments 属性值），并上传该文件，以便在 Personalizer 资源的 Azure 门户中的 "**模型和学习设置**" 窗格中导入学习设置。
 
-下面`.json`是学习策略的一个示例。
+下面 `.json` 是学习策略的一个示例。
 
 ```json
 {

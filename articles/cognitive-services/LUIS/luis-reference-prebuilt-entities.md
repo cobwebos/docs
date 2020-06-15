@@ -12,11 +12,11 @@ ms.topic: reference
 ms.date: 10/03/2019
 ms.author: diberry
 ms.openlocfilehash: a49452653f8ac4bcc62758d801a235be0929d314
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219716"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84686624"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>LUIS 模型中每个区域性的实体
 
@@ -49,14 +49,14 @@ ms.locfileid: "79219716"
 [Age](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    V2、V3   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>时间范围   |    V2、V3   |
-[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    V2、V3   |
+[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>area<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    V2、V3   |
 [电子邮件](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    -   |
+[关键短语](luis-reference-prebuilt-keyphrase.md)   |    -   |
 [数字](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[Ordinal](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[序号](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[一定](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
+[百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    V2、V3   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [温度](luis-reference-prebuilt-temperature.md)：<br>华氏温度<br>开氏温度<br>兰金温度<br>德利尔温度<br>摄氏温度   |    V2、V3   |
@@ -71,14 +71,14 @@ ms.locfileid: "79219716"
 [Age](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    V2、V3   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    V2、V3   |
 [型](luis-reference-prebuilt-deprecated.md)   |    -   |
-[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    V2、V3   |
+[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>area<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    V2、V3   |
 [电子邮件](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
+[关键短语](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [数字](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[Ordinal](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[序号](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[一定](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
+[百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [温度](luis-reference-prebuilt-temperature.md)：<br>华氏温度<br>开氏温度<br>兰金温度<br>德利尔温度<br>摄氏温度   |    V2、V3   |
@@ -93,14 +93,14 @@ ms.locfileid: "79219716"
 [Age](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    V2、V3   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>时间范围   |    V2、V3   |
-[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    V2、V3   |
+[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>area<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    V2、V3   |
 [电子邮件](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    V2、V3   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
+[关键短语](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [数字](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[Ordinal](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[序号](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    V2、V3   |
-[一定](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
+[百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    V2、V3   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [温度](luis-reference-prebuilt-temperature.md)：<br>华氏温度<br>开氏温度<br>兰金温度<br>德利尔温度<br>摄氏温度   |    V2、V3   |
@@ -115,14 +115,14 @@ ms.locfileid: "79219716"
 [Age](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    V2、V3   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>时间范围   |    V2、V3   |
-[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    V2、V3   |
+[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>area<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    V2、V3   |
 [电子邮件](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
+[关键短语](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [数字](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[Ordinal](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[序号](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[一定](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
+[百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |   -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [温度](luis-reference-prebuilt-temperature.md)：<br>华氏温度<br>开氏温度<br>兰金温度<br>德利尔温度<br>摄氏温度   |    V2、V3   |
@@ -137,14 +137,14 @@ ms.locfileid: "79219716"
 [Age](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    V2、V3   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>时间范围   |    V2、V3   |
-[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    V2、V3   |
+[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>area<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    V2、V3   |
 [电子邮件](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
+[关键短语](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [数字](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[Ordinal](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[序号](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[一定](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
+[百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [温度](luis-reference-prebuilt-temperature.md)：<br>华氏温度<br>开氏温度<br>兰金温度<br>德利尔温度<br>摄氏温度   |    V2、V3   |
@@ -159,14 +159,14 @@ ms.locfileid: "79219716"
 [Age](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    V2、V3   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>时间范围   |    V2、V3   |
-[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    V2、V3   |
+[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>area<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    V2、V3   |
 [电子邮件](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
+[关键短语](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [数字](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[Ordinal](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[序号](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[一定](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
+[百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [温度](luis-reference-prebuilt-temperature.md)：<br>华氏温度<br>开氏温度<br>兰金温度<br>德利尔温度<br>摄氏温度   |    V2、V3   |
@@ -183,14 +183,14 @@ ms.locfileid: "79219716"
 [Age](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    V2、V3   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    V2、V3   |
 [型](luis-reference-prebuilt-deprecated.md)   |    -   |
-[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    V2、V3   |
+[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>area<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    V2、V3   |
 [电子邮件](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
+[关键短语](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [数字](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[Ordinal](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[序号](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[一定](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
+[百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [温度](luis-reference-prebuilt-temperature.md)：<br>华氏温度<br>开氏温度<br>兰金温度<br>德利尔温度<br>摄氏温度   |    V2、V3   |
@@ -205,14 +205,14 @@ ms.locfileid: "79219716"
 [Age](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    V2、-   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    V2、-   |
 [型](luis-reference-prebuilt-deprecated.md)   |    -   |
-[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    V2、-   |
+[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>area<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    V2、-   |
 [电子邮件](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
+[关键短语](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [数字](luis-reference-prebuilt-number.md)   |    V2、-   |
-[Ordinal](luis-reference-prebuilt-ordinal.md)   |    V2、-   |
+[序号](luis-reference-prebuilt-ordinal.md)   |    V2、-   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[一定](luis-reference-prebuilt-percentage.md)   |    V2、-   |
+[百分比](luis-reference-prebuilt-percentage.md)   |    V2、-   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [温度](luis-reference-prebuilt-temperature.md)：<br>华氏温度<br>开氏温度<br>兰金温度<br>德利尔温度<br>摄氏温度   |    V2、-   |
@@ -227,14 +227,14 @@ ms.locfileid: "79219716"
 [Age](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    -   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    -   |
 [型](luis-reference-prebuilt-deprecated.md)   |    -   |
-[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    -   |
+[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>area<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    -   |
 [电子邮件](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
+[关键短语](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [数字](luis-reference-prebuilt-number.md)   |    -   |
-[Ordinal](luis-reference-prebuilt-ordinal.md)   |    -   |
+[序号](luis-reference-prebuilt-ordinal.md)   |    -   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[一定](luis-reference-prebuilt-percentage.md)   |    -   |
+[百分比](luis-reference-prebuilt-percentage.md)   |    -   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [温度](luis-reference-prebuilt-temperature.md)：<br>华氏温度<br>开氏温度<br>兰金温度<br>德利尔温度<br>摄氏温度   |    -   |
@@ -249,14 +249,14 @@ ms.locfileid: "79219716"
 [Age](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    V2、V3   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>时间范围   |    V2、V3   |
-[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    V2、V3   |
+[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>area<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    V2、V3   |
 [电子邮件](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
+[关键短语](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [数字](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[Ordinal](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[序号](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[一定](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
+[百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [温度](luis-reference-prebuilt-temperature.md)：<br>华氏温度<br>开氏温度<br>兰金温度<br>德利尔温度<br>摄氏温度   |    V2、V3   |
@@ -271,14 +271,14 @@ ms.locfileid: "79219716"
 [Age](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    V2、V3   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    V2、V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>时间范围   |    V2、V3   |
-[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    V2、V3   |
+[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>area<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    V2、V3   |
 [电子邮件](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
+[关键短语](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [数字](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[Ordinal](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
+[序号](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[一定](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
+[百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [温度](luis-reference-prebuilt-temperature.md)：<br>华氏温度<br>开氏温度<br>兰金温度<br>德利尔温度<br>摄氏温度   |    V2、V3   |
@@ -293,14 +293,14 @@ ms.locfileid: "79219716"
 [Age](luis-reference-prebuilt-age.md)：<br>year<br>月份<br>week<br>day   |    -   |
 [货币（金钱）](luis-reference-prebuilt-currency.md)：<br>美元<br>分数单位（示例：便士）  |    -   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md)：<br>date<br>daterange<br>time<br>时间范围   |    -   |
-[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>面积<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    -   |
+[维度](luis-reference-prebuilt-dimension.md)：<br>卷<br>area<br>重量<br>信息（示例：位/字节）<br>长度（示例：米）<br>速度（示例：英里每小时）  |    -   |
 [电子邮件](luis-reference-prebuilt-email.md)   |    V2、V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
-[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
+[关键短语](luis-reference-prebuilt-keyphrase.md)   |    V2、V3   |
 [数字](luis-reference-prebuilt-number.md)   |    V2、V3   |
-[Ordinal](luis-reference-prebuilt-ordinal.md)   |    -   |
+[序号](luis-reference-prebuilt-ordinal.md)   |    -   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[一定](luis-reference-prebuilt-percentage.md)   |    -   |
+[百分比](luis-reference-prebuilt-percentage.md)   |    -   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [温度](luis-reference-prebuilt-temperature.md)：<br>华氏温度<br>开氏温度<br>兰金温度<br>德利尔温度<br>摄氏温度   |    -   |

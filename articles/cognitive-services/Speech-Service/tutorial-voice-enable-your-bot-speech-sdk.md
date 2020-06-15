@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: 69046772b81f0b5b597cce8e86aca9cbf27c49f8
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: a96ddfe2023fbddd6a4a25c97001875e0dddc7f3
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457093"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753186"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>教程：使用语音 SDK 实现机器人的语音
 
@@ -50,7 +50,7 @@ ms.locfileid: "84457093"
 > * 添加自定义关键字激活
 > * 了解如何更改识别语音的语言
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 下面是完成本教程所需的操作：
 
@@ -59,7 +59,7 @@ ms.locfileid: "84457093"
 - [.NET Framework 运行时 4.6.1](https://dotnet.microsoft.com/download)或更高版本
 - 一个 Azure 帐户。 [免费注册](https://azure.microsoft.com/free/ai/)。
 - 一个[GitHub](https://github.com/)帐户
-- [适用于 Windows 的 Git](https://git-scm.com/download/win)
+- [用于 Windows 的 Git](https://git-scm.com/download/win)
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -222,7 +222,7 @@ ms.locfileid: "84457093"
 2. 在**Azure 服务**导航中的 "**设置**" 下，单击 "**配置**"。
 3. 选择 "**常规设置**" 选项卡。
 4. 找到 " **Web 套接字**" 的切换，并将其设置为 **"开**"。
-5. 单击“ **保存**”。
+5. 单击 **“保存”** 。
 
 > [!TIP]
 > 您可以使用 Azure App Service 页顶部的控件来停止或重新启动该服务。 故障排除时，这可能很方便。
@@ -265,7 +265,7 @@ ms.locfileid: "84457093"
 
 1. 在[Azure 门户](https://portal.azure.com)中找到并打开**EchoBotTutorial-BotRegistration-#** # # # 资源
 1. 从**机器人管理**导航中，选择 "**设置**"。 复制**Microsoft 应用 ID**下的值
-1. 打开 Visual Studio EchoBot 解决方案。 在解决方案资源管理器中，找到并双击 " **appsettings** "
+1. 打开 Visual Studio EchoBot 解决方案。 在 "解决方案资源管理器" 中，找到并双击**appsettings.js**
 1. 将 JSON 文件中 " **MicrosoftAppId** " 旁边的空字符串替换为复制的 ID 值
 1. 返回 Azure 门户，在**机器人管理**导航中，选择 "**设置**"，然后单击 " **Microsoft App ID** " 旁边的 " **（管理）** "
 1. 单击 "**新建客户端密钥**"。 添加说明（如 "web 聊天"），然后单击 "**添加**"。 复制新机密
@@ -290,11 +290,11 @@ ms.locfileid: "84457093"
    * 查看标题为 "**配置直接线路语音**" 的页面上的文本，然后展开标记为 "认知服务帐户" 的下拉菜单。
    * 从菜单中选择先前创建的语音资源（例如**SpeechEchoBotTutorial**），将机器人关联到语音订阅密钥。
    * 忽略其余的可选字段
-   * 单击“ **保存**”。
+   * 单击 **“保存”** 。
 
 1. 在**机器人管理**导航中，单击 "**设置**"。
    * 选中标记为**启用流式处理终结点**的框。 这是在机器人和直接线路语音通道之间启用基于 web 套接字构建的通信协议所必需的。
-   * 单击“ **保存**”。
+   * 单击 **“保存”** 。
 
 > [!TIP]
 > 若要了解详细信息，请参阅[连接机器人以定向语音](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0)。 此页包含其他信息和已知问题。
@@ -323,13 +323,16 @@ Windows 语音助手客户端具有一个简单的 UI，可用于配置与机器
 
 | 错误 | 该怎么办？ |
 |-------|----------------------|
-|错误 AuthenticationFailure： WebSocket 升级失败，出现身份验证错误（401）。 检查正确的订阅密钥（或授权令牌）和区域名称| 在应用的 "设置" 页中，确保已正确输入语音订阅密钥及其区域。<br>请确保正确输入了语音密钥和密钥区域。 |
-|错误 ConnectionFailure：远程主机关闭了连接。 错误代码：1011。 错误详细信息：无法在发送消息之前连接到机器人 | 请确保[已选中 "启用流式处理终结点"](#register-the-direct-line-speech-channel)框和/或将[ **Web 套接字**切换](#enable-web-sockets)到 "打开"。<br>请确保 Azure App Service 正在运行。 如果已启动，请尝试重新启动应用服务。|
-|错误 ConnectionFailure：远程主机关闭了连接。 错误代码：1011。 错误详细信息：响应状态代码不指示成功：500（InternalServerError）| 机器人在其输出活动的 "[朗读](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak)" 字段中指定了一个神经声音，但与您的语音订阅密钥关联的 Azure 区域不支持神经语音。 请参阅[标准和神经声音](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)。|
-|错误 ConnectionFailure：远程主机关闭了连接。 错误代码：1000。 错误详细信息：超出最大 web 套接字连接空闲持续时间（> 300000 ms）| 如果到通道的连接处于打开状态且处于非活动状态的时间超过五分钟，则会出现此错误。 |
+|错误（AuthenticationFailure）： WebSocket 升级失败，出现身份验证错误（401）。 检查正确的订阅密钥（或授权令牌）和区域名称| 在应用的 "设置" 页中，确保已正确输入语音订阅密钥及其区域。<br>请确保正确输入了语音密钥和密钥区域。 |
+|错误（ConnectionFailure）：连接已被远程主机关闭。 错误代码：1011。 错误详细信息：无法在发送消息之前连接到机器人 | 请确保[已选中 "启用流式处理终结点"](#register-the-direct-line-speech-channel)框和/或将[ **Web 套接字**切换](#enable-web-sockets)到 "打开"。<br>请确保 Azure App Service 正在运行。 如果已启动，请尝试重新启动应用服务。|
+|错误（ConnectionFailure）：连接已被远程主机关闭。 错误代码：1002。 错误详细信息：当需要状态代码 "101" 时，服务器返回了状态代码 "503" | 请确保[已选中 "启用流式处理终结点"](#register-the-direct-line-speech-channel)框和/或将[ **Web 套接字**切换](#enable-web-sockets)到 "打开"。<br>请确保 Azure App Service 正在运行。 如果已启动，请尝试重新启动应用服务。|
+|错误（ConnectionFailure）：连接已被远程主机关闭。 错误代码：1011。 错误详细信息：响应状态代码不指示成功：500（InternalServerError）| 机器人在其输出活动的 "[朗读](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak)" 字段中指定了一个神经声音，但与您的语音订阅密钥关联的 Azure 区域不支持神经语音。 请参阅[标准和神经声音](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)。|
 
-如果未在表中解决问题，请参阅[语音助手：常见问题解答](faq-voice-assistants.md)。
+如果未在表中解决问题，请参阅[语音助手：常见问题解答](faq-voice-assistants.md)。 如果在执行本教程中的所有步骤后仍无法解决问题，请在 "[语音助手 GitHub" 页](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/issues)中输入新问题。
 
+#### <a name="a-note-on-connection-time-out"></a>有关连接超时的说明
+
+如果你已连接到 bot，而在过去5分钟内未发生任何活动，则该服务将使用客户端和机器人自动关闭 websocket 连接。 这是设计使然。 底部栏中会出现一条消息： *"活动连接已超时，但可以按需重新连接"*。 不需要按 "重新连接" 按钮，只需按下麦克风按钮并开始对话，键入短信或说出关键字（如果已启用）。 将自动重新建立连接。  
 ### <a name="view-bot-activities"></a>查看机器人活动
 
 每个机器人发送和接收**活动**消息。 在 Windows 语音助手客户端的 "**活动日志**" 窗口中，你将看到带时间戳的日志，其中包含客户端从机器人接收的每个活动。 还可以查看客户端使用方法发送到机器人的活动 [`DialogServiceConnector.SendActivityAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.sendactivityasync) 。 选择日志项时，它会将关联活动的详细信息显示为 JSON。

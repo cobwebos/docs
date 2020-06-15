@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
 ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220189"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710552"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>必应新闻搜索 API 的语言和区域支持
 
@@ -38,8 +38,8 @@ ms.locfileid: "79220189"
 |瑞士|德语|de-CH|
 |德国|德语|de-DE|
 |澳大利亚|英语|en-AU|
-|Canada|英语|en-CA|
-|United Kingdom|英语|en-GB|
+|加拿大|英语|en-CA|
+|英国|英语|en-GB|
 |印度尼西亚|英语|en-ID|
 |爱尔兰|英语|en-IE|
 |印度|英语|en-IN|
@@ -47,7 +47,7 @@ ms.locfileid: "79220189"
 |新西兰|英语|en-NZ|
 |菲律宾共和国|英语|en-PH|
 |新加坡|英语|en-SG|
-|United States|英语|zh-CN|
+|美国|英语|zh-CN|
 |英语|常规|en-WW|
 |英语|常规|en-XA|
 |南非|英语|en-ZA|
@@ -55,17 +55,17 @@ ms.locfileid: "79220189"
 |智利|西班牙语|es-CL|
 |西班牙|西班牙语|es-ES|
 |墨西哥|西班牙语|es-MX|
-|United States|西班牙语|es-US|
+|美国|西班牙语|es-US|
 |西班牙语|常规|es-XL|
 |芬兰|芬兰语|fi-FI|  
 |法国|法语|fr-BE|
-|Canada|法语|fr-CA|
+|加拿大|法语|fr-CA|
 |比利时|荷兰语|nl-BE|
 |瑞士|法语|fr-CH|
 |法国|法语|fr-FR|  
 |意大利|意大利语|it-IT|
 |香港特别行政区|繁体中文|zh-HK|  
-|中国台湾|繁体中文|zh-TW|
+|台湾|繁体中文|zh-TW|
 |日本|日语|ja-JP|  
 |韩国|韩语|ko-KR|  
 |荷兰|荷兰语|nl-NL|  
@@ -85,14 +85,14 @@ ms.locfileid: "79220189"
 |丹麦|丹麦语|da-DK|
 |德国|德语|de-DE|
 |澳大利亚|英语|en-AU|
-|United Kingdom|英语|en-GB|
-|United States|英语|zh-CN|
+|英国|英语|en-GB|
+|美国|英语|zh-CN|
 |英语|常规|en-WW|
 |智利|西班牙语|es-CL|
 |墨西哥|西班牙语|es-MX|
-|United States|西班牙语|es-US|
+|美国|西班牙语|es-US|
 |芬兰|芬兰语|fi-FI|  
-|Canada|法语|fr-CA|
+|加拿大|法语|fr-CA|
 |法国|法语|fr-FR|  
 |意大利|意大利语|it-IT|
 |巴西|葡萄牙语|pt-BR|
@@ -107,12 +107,12 @@ ms.locfileid: "79220189"
 |---------------------|--------------|-----------------|
 |德国|德语|de-DE|
 |澳大利亚|英语|en-AU|
-|United Kingdom|英语|en-GB|
-|United States|英语|zh-CN|
-|Canada|英语|en-CA|
+|英国|英语|en-GB|
+|美国|英语|zh-CN|
+|加拿大|英语|en-CA|
 |印度|英语|en-IN|
 |法国|法语|fr-FR|
-|Canada|法语|fr-CA|
+|加拿大|法语|fr-CA|
 |巴西|葡萄牙语|pt-BR|
 |中华人民共和国|中文|zh-CN|
 
@@ -129,7 +129,7 @@ ms.locfileid: "79220189"
 |奥地利|AT|  
 |比利时|BE|  
 |巴西|BR|  
-|Canada|CA|  
+|加拿大|CA|  
 |智利|CL|  
 |丹麦|DK|  
 |芬兰|FI|  
@@ -156,10 +156,10 @@ ms.locfileid: "79220189"
 |西班牙|ES|  
 |瑞典|SE|  
 |瑞士|CH|  
-|中国台湾|TW|  
+|台湾|TW|  
 |土耳其|TR|  
-|United Kingdom|GB|  
-|United States|美国|
+|英国|GB|  
+|美国|美国|
 
 ## <a name="next-steps"></a>后续步骤
 有关必应新闻搜索终结点的详细信息，请参阅[新闻搜索 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)。
