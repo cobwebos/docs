@@ -59,6 +59,8 @@
           href: drawing-conversion-error-codes.md
     - name: 覆盖率
       items:
+        - name: 覆盖率
+          href: geographic-coverage.md
         - name: 地理编码覆盖区域
           href: geocoding-coverage.md
         - name: 交通覆盖区域

@@ -36,8 +36,12 @@
           href: virtual-wan-locations-partners.md
         - name: 面向合作伙伴的自动化指南
           href: virtual-wan-configure-automation-providers.md
-    - name: IPsec 策略
-      href: virtual-wan-ipsec.md
+    - name: 站点到站点
+      items:
+        - name: 关于 IPsec 策略
+          href: virtual-wan-ipsec.md
+        - name: 多个 ISP 链接 - Azure 路径选择
+          href: path-selection-multiple-links.md
 - name: 操作指南
   items:
     - name: 将虚拟网络网关连接到虚拟 WAN
@@ -58,8 +62,6 @@
       items:
         - name: 创建站点到站点连接
           href: virtual-wan-site-to-site-portal.md
-        - name: 多个 ISP 链接 - Azure 路径选择
-          href: path-selection-multiple-links.md
     - name: 用户 VPN（点到站点）
       items:
         - name: 创建用户 VPN 连接

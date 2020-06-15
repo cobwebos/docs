@@ -10,9 +10,9 @@
     - name: 在 Azure 上创建 CF
       href: /azure/cloudfoundry/create-cloud-foundry-on-azure
     - name: 将 CF 应用部署到 Azure
-      href: /azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app
+      href: /azure/cloudfoundry/cloudfoundry-deploy-your-first-app
     - name: Azure 上的 CloudFoundry
-      href: /azure/virtual-machines/linux/cloudfoundry-get-started
+      href: /azure/cloudfoundry/cloudfoundry-get-started
     - name: 部署 CF OMS Nozzle
       href: /azure/cloudfoundry/cloudfoundry-oms-nozzle
     - name: 将 Cloud Foundry 与 Azure 集成
