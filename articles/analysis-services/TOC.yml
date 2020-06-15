@@ -122,11 +122,9 @@
     - name: 示例
       href: analysis-services-samples.md
     - name: Analysis Services 团队博客
-      href: 'https://blogs.msdn.microsoft.com/analysisservices/'
-    - name: 有关 Azure Analysis Services 的 Microsoft Q&A 问题页面
-      href: 'https://docs.microsoft.com/answers/topics/azure-analysis-services.html'
-    - name: Azure 路线图
-      href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
+      href: 'https://powerbi.microsoft.com/blog/category/analysis-services/'
+    - name: Azure 更新
+      href: 'https://azure.microsoft.com/updates/?query=Analysis%20Services'
     - name: Azure 状态
       href: 'https://azure.microsoft.com/status/'
     - name: 反馈

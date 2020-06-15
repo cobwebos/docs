@@ -97,6 +97,8 @@
           href: budget.md
         - name: 对 Batch 帐户使用专用终结点
           href: private-connectivity.md
+        - name: 配置客户管理的密钥
+          href: batch-customer-managed-key.md
     - name: 使用 Azure AD 进行身份验证
       items:
         - name: 将 Azure AD 与 Batch 服务配合使用
