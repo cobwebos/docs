@@ -20,7 +20,7 @@
       href: pim-email-notifications.md
     - name: Microsoft 图形 API
       href: pim-apis.md
-- name: 操作方法指南
+- name: 操作指南
   expanded: true
   items:
     - name: 部署 PIM
@@ -107,3 +107,13 @@
               href: pim-resource-roles-perform-access-review.md
             - name: 完成访问评审
               href: pim-resource-roles-complete-access-review.md
+- name: 参考
+  items:
+    - name: 图形 API
+      href: 'https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/azure_ad_overview'
+    - name: Azure AD CLI
+      href: 'https://docs.microsoft.com/cli/azure/ad'
+    - name: 用于 Graph 的 Azure AD PowerShell
+      href: 'https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0'
+    - name: Azure AD 服务限制
+      href: ../users-groups-roles/directory-service-limits-restrictions.md
