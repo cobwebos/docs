@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
-ms.openlocfilehash: 9b78c0d93b57a3e3f4963088d0b93f121f57483c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: eeeb60cc41f96edbf8733468ca0cfd18d2939af7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78945108"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652533"
 ---
 # <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>如何使用 FreeBSD 的数据包筛选器在 Azure 中创建安全防火墙
 本文介绍如何通过 Azure 资源管理器模板使用 FreeBSD 的数据包筛选器为通用 Web 服务器方案部署 NAT 防火墙。
@@ -28,13 +28,13 @@ Azure 资源管理器模板设置一个使用 PF 执行 NAT/重定向的 FreeBSD
 ![pf_topology](./media/freebsd-pf-nat/pf_topology.jpg)
     
 ### <a name="deploy-through-azure-cli"></a>通过 Azure CLI 进行部署
-需要安装最新版 [Azure CLI](/cli/azure/install-az-cli2)，并已使用 [az login](/cli/azure/reference-index) 登录 Azure 帐户。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在 `myResourceGroup` 位置创建名为 `West US` 的资源组。
+需要安装最新版 [Azure CLI](/cli/azure/install-az-cli2)，并已使用 [az login](/cli/azure/reference-index) 登录 Azure 帐户。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在 `West US` 位置创建名为 `myResourceGroup` 的资源组。
 
 ```azurecli
 az group create --name myResourceGroup --location westus
 ```
 
-接下来，使用 [az group deployment create](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup) 部署模板 [pf-freebsd-setup](/cli/azure/group/deployment)。 在相同路径下下载 [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/pf-freebsd-setup/azuredeploy.parameters.json)，并定义自己的资源值，如 `adminPassword`、`networkPrefix` 和 `domainNamePrefix`。 
+接下来，运行 [az group deployment create](/cli/azure/group/deployment) 来部署模板 pf-freebsd-setup。 在相同的路径下面下载 azuredeploy.parameters.json，然后定义你自己的资源值（如 `adminPassword`、`networkPrefix` 和 `domainNamePrefix`）。 
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup --name myDeploymentName \
@@ -49,7 +49,7 @@ az network public-ip list --resource-group myResourceGroup
 ```
     
 ## <a name="next-steps"></a>后续步骤
-是否要在 Azure 中设置自己的 NAT？ 是否开源、免费，但功能强大？ 那么 PF 是一个不错的选择。 通过使用模板 [pf-freebsd-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup)，只需要五分钟即可在 Azure 中使用 FreeBSD 的 PF 为通用 Web 服务器方案设置具有轮循机制负载均衡的 NAT 防火墙。 
+是否要在 Azure 中设置自己的 NAT？ 是否开源、免费，但功能强大？ 那么 PF 是一个不错的选择。 通过使用模板 pf-freebsd-setup，只需要五分钟，即可在 Azure 中使用 FreeBSD 的 PF 为通用 Web 服务器方案创建具有轮循机制负载均衡的 NAT 防火墙。 
 
 如果想要了解 Azure 中的 FreeBSD 产品，请参阅 [Azure FreeBSD 简介](freebsd-intro-on-azure.md)。
 

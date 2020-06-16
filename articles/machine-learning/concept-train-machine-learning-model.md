@@ -8,13 +8,13 @@ author: Blackmist
 ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 03/05/2020
-ms.openlocfilehash: 593ca5d63245ed664b5f63373d1d651129055544
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/13/2020
+ms.openlocfilehash: 99e2c878443b9a4256eec495429dbe57a88557d0
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592383"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683009"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure 机器学习训练模型
 
@@ -111,6 +111,18 @@ R SDK 使你能够将 R 语言与 Azure 机器学习结合使用。 SDK 使用�
 + [分类：预测客户流失、购买欲和追加销售](how-to-designer-sample-classification-churn.md)
 + [使用自定义 R 脚本的分类：预测航班延误](how-to-designer-sample-classification-flight-delay.md)
 + [文本分类：维基百科 SP 500 数据集](how-to-designer-sample-text-classification.md)
+
+## <a name="many-models-solution-accelerator"></a>多模型解决方案加速器
+
+[多模型解决方案加速器](https://aka.ms/many-models)（预览）是在 Azure 机器学习的基础之上构建而成，可便于你训练、操作和管理成百上千的机器学习模型。
+
+例如，在下面的方案中为每个实例或个体生成模型可以改善结果：
+
+* 预测每家店铺的销售额
+* 对数百口油井进行预测性维护
+* 为个人用户定制体验。
+
+有关详细信息，请参阅 GitHub 上的[多模型解决方案加速器](https://aka.ms/many-models)。
 
 ## <a name="cli"></a>CLI
 

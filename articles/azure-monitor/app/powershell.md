@@ -3,20 +3,20 @@ title: 使用 PowerShell 自动化 Azure Application Insights | Microsoft Docs
 description: 使用 Azure 资源管理器模板在 PowerShell 中自动创建和管理资源、警报和可用性测试。
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: fba85981f32611164c328945e45de4032ad949eb
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
-ms.translationtype: MT
+ms.openlocfilehash: a6653582a990b97775976b757198f11b2a46c46b
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780481"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697921"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>使用 PowerShell 管理 Application Insights 资源
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-本文演示如何通过 Azure 资源管理自动创建和更新 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 资源。 例如，可能在生成过程中执行此操作。 除了基本的 Application Insights 资源，还可创建[可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)、设置[警报](../../azure-monitor/app/alerts.md)、设置[定价方案](pricing.md)和创建其他 Azure 资源。
+本文演示如何通过 Azure 资源管理自动创建和更新 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 资源。 例如，可能在生成过程中执行此操作。 除了基本的 Application Insights 资源，还可创建[可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)、设置[警报](../../azure-monitor/platform/alerts-log.md)、设置[定价方案](pricing.md)和创建其他 Azure 资源。
 
-创建这些资源的关键是用于 [Azure 资源管理器](../../azure-resource-manager/management/manage-resources-powershell.md) 的 JSON 模板。 基本过程如下：下载现有资源的 JSON 定义，参数化某些值（如名称），然后在需要创建新资源时运行模板。 可以将多个资源打包在一起，以便一次性创建它们，例如具有可用性测试、警报和连续导出的存储的应用监视器。 某些参数化有一些微妙之处，此处我们将进行介绍。
+创建这些资源的关键是用于 [Azure 资源管理器](../../azure-resource-manager/management/manage-resources-powershell.md) 的 JSON 模板。 基本过程如下：下载现有资源的 JSON 定义；将特定值（如名称）参数化；然后在需要新建资源时运行模板。 可以将多个资源打包在一起，以便一次性创建它们，例如具有可用性测试、警报和连续导出的存储的应用监视器。 某些参数化有一些微妙之处，此处我们将进行介绍。
 
 ## <a name="one-time-setup"></a>一次性设置
 如果之前尚未将 PowerShell 与 Azure 订阅结合使用：
@@ -24,20 +24,20 @@ ms.locfileid: "82780481"
 在要运行脚本的计算机上安装 Azure PowerShell 模块：
 
 1. 安装 [Microsoft Web 平台安装程序（v5 或更高版本）](https://www.microsoft.com/web/downloads/platform.aspx)。
-2. 使用它安装 Microsoft Azure PowerShell。
+2. 使用它来安装 Microsoft Azure PowerShell。
 
-除了使用资源管理器模板，还可以使用许多 [Application Insights PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights)，以编程方式轻松地配置 Application Insights 资源。 通过这些 cmdlet 启用的功能包括：
+除了可以使用资源管理器模板以外，还有一组丰富的 [Application Insights PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights)，可用于轻松地以编程方式配置 Application Insights 资源。 cmdlet 启用的功能包括：
 
 * 创建和删除 Application Insights 资源
 * 获取 Application Insights 资源及其属性的列表
-* 创建并管理连续导出
-* 创建并管理应用程序密钥
+* 创建和管理连续导出
+* 创建和管理应用程序密钥
 * 设置每日上限
 * 设置定价计划
 
 ## <a name="create-application-insights-resources-using-a-powershell-cmdlet"></a>使用 PowerShell cmdlet 创建 Application Insights 资源
 
-下面演示了如何使用 [New-AzApplicationInsights](https://docs.microsoft.com/powershell/module/az.applicationinsights/New-AzApplicationInsights) cmdlet 在 Azure 的“美国东部”数据中心创建新的 Application Insights 资源：
+下面展示了如何使用 [New-AzApplicationInsights](https://docs.microsoft.com/powershell/module/az.applicationinsights/New-AzApplicationInsights) cmdlet 在 Azure 美国东部数据中心内新建 Application Insights 资源：
 
 ```PS
 New-AzApplicationInsights -ResourceGroupName <resource group> -Name <resource name> -location eastus
@@ -46,7 +46,7 @@ New-AzApplicationInsights -ResourceGroupName <resource group> -Name <resource na
 
 ## <a name="create-application-insights-resources-using-a-resource-manager-template"></a>使用资源管理器模板创建 Application Insights 资源
 
-下面演示了如何使用资源管理器模板创建新的 Application Insights 资源。
+下面展示了如何使用资源管理器模板新建 Application Insights 资源。
 
 ### <a name="create-the-azure-resource-manager-template"></a>创建 Azure 资源管理器模板
 
@@ -186,11 +186,11 @@ New-AzApplicationInsights -ResourceGroupName <resource group> -Name <resource na
     }
 ```
 
-### <a name="use-the-resource-manager-template-to-create-a-new-application-insights-resource"></a>使用资源管理器模板创建新的 Application Insights 资源
+### <a name="use-the-resource-manager-template-to-create-a-new-application-insights-resource"></a>使用资源管理器模板新建 Application Insights 资源
 
-1. 在 PowerShell 中，使用 `$Connect-AzAccount` 登录到 Azure
-2. 使用 `Set-AzContext "<subscription ID>"` 将上下文设置为某个订阅
-2. 运行新的部署，以便创建新的 Application Insights 资源：
+1. 在 PowerShell 中，使用 `$Connect-AzAccount` 登录 Azure
+2. 使用 `Set-AzContext "<subscription ID>"` 将上下文设置为订阅
+2. 运行新的部署来新建 Application Insights 资源：
    
     ```PS
         New-AzResourceGroupDeployment -ResourceGroupName Fabrikam `
@@ -215,27 +215,27 @@ New-AzApplicationInsights -ResourceGroupName <resource group> -Name <resource na
 4. `$details = Get-AzResource -ResourceId $resource.ResourceId`
 5. `$details.Properties.InstrumentationKey`
 
-若要查看 Application Insights 资源的一系列其他属性，请使用：
+若要查看 Application Insights 资源的其他多个属性的列表，请运行以下代码：
 
 ```PS
 Get-AzApplicationInsights -ResourceGroupName Fabrikam -Name FabrikamProd | Format-List
 ```
 
-其他属性可通过以下 cmdlet 获取：
+可通过以下 cmdlet 获取其他属性：
 * `Set-AzApplicationInsightsDailyCap`
 * `Set-AzApplicationInsightsPricingPlan`
 * `Get-AzApplicationInsightsApiKey`
 * `Get-AzApplicationInsightsContinuousExport`
 
-请参阅此[详细文档](https://docs.microsoft.com/powershell/module/az.applicationinsights)以获取这些 cmdlet 的参数。  
+有关这些 cmdlet 的参数，请参阅[详细文档](https://docs.microsoft.com/powershell/module/az.applicationinsights)。  
 
 ## <a name="set-the-data-retention"></a>设置数据保留期
 
-以下三种方法可通过编程方式设置 Application Insights 资源上的数据保留。
+下面是三种以编程方式设置 Application Insights 资源的数据保留期的方法。
 
-### <a name="setting-data-retention-using-a-powershell-commands"></a>使用 PowerShell 命令设置数据保留
+### <a name="setting-data-retention-using-a-powershell-commands"></a>使用 PowerShell 命令设置数据保留期
 
-下面是一组简单的 PowerShell 命令，用于设置 Application Insights 资源的数据保留：
+下面是一组简单的 PowerShell 命令，用于设置 Application Insights 资源的数据保留期：
 
 ```PS
 $Resource = Get-AzResource -ResourceType Microsoft.Insights/components -ResourceGroupName MyResourceGroupName -ResourceName MyResourceName
@@ -243,21 +243,21 @@ $Resource.Properties.RetentionInDays = 365
 $Resource | Set-AzResource -Force
 ```
 
-### <a name="setting-data-retention-using-rest"></a>使用 REST 设置数据保留
+### <a name="setting-data-retention-using-rest"></a>使用 REST 设置数据保留期
 
-若要获取 Application Insights 资源的当前数据保留期，可以使用 OSS 工具 [ARMClient](https://github.com/projectkudu/ARMClient)。  （了解有关 ARMClient 的详细信息，请参阅[David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html)和[Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/)。） 下面是使用`ARMClient`的一个示例，用于获取当前的保留期：
+若要获取 Application Insights 资源的当前数据保留期，可以使用 OSS 工具 [ARMClient](https://github.com/projectkudu/ARMClient)。  （若要详细了解 ARMClient，请参阅 [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) 和 [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/) 撰写的文章。）下面的示例使用 `ARMClient` 获取当前的数据保留期：
 
 ```PS
 armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName?api-version=2018-05-01-preview
 ```
 
-用于设置保留期的命令是一个类似的 PUT：
+若要设置数据保留期，可以使用类似 PUT 的命令：
 
 ```PS
 armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName?api-version=2018-05-01-preview "{location: 'eastus', properties: {'retentionInDays': 365}}"
 ```
 
-若要使用上面的模板将数据保留期设置为 365 天，请运行以下代码：
+若要使用上述模板将数据保留期设置为 365 天，请运行：
 
 ```PS
 New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
@@ -266,9 +266,9 @@ New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
        -appName myApp
 ```
 
-### <a name="setting-data-retention-using-a-powershell-script"></a>使用 PowerShell 脚本设置数据保留
+### <a name="setting-data-retention-using-a-powershell-script"></a>使用 PowerShell 脚本设置数据保留期
 
-也可使用以下脚本来更改保留期。 请复制此脚本，将其另存为 `Set-ApplicationInsightsRetention.ps1`。
+以下脚本还可用于更改数据保留期。 复制此脚本，并将它另存为 `Set-ApplicationInsightsRetention.ps1`。
 
 ```PS
 Param(
@@ -318,7 +318,7 @@ $PutResponse = Invoke-RestMethod -Method "PUT" -Uri "$($RequestUri)" -Headers $H
 $PutResponse
 ```
 
-然后，可以下述形式使用此脚本：
+然后，可以将此脚本用作：
 
 ```PS
 Set-ApplicationInsightsRetention `
@@ -330,19 +330,19 @@ Set-ApplicationInsightsRetention `
 
 ## <a name="set-the-daily-cap"></a>设置每日上限
 
-若要获取每日上限属性，请使用 [Set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) cmdlet： 
+若要获取每日上限属性，请运行 [Set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) cmdlet： 
 
 ```PS
 Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> | Format-List
 ```
 
-若要设置每日上限属性，请使用同一 cmdlet。 例如，若要将上限设置为 300 GB/天，请使用以下代码：
+若要设置每日上限属性，请运行相同的 cmdlet。 例如，要将上限设置为 300GB/天。
 
 ```PS
 Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> -DailyCapGB 300
 ```
 
-还可以使用[ARMClient](https://github.com/projectkudu/ARMClient)来获取和设置每日上限参数。  若要获取当前值，请使用：
+也可以使用 [ARMClient](https://github.com/projectkudu/ARMClient) 来获取和设置每日上限参数。  若要获取当前值，请运行：
 
 ```PS
 armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
@@ -350,7 +350,7 @@ armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 ## <a name="set-the-daily-cap-reset-time"></a>设置每日上限重置时间
 
-若要设置每日上限重置时间，可以使用[ARMClient](https://github.com/projectkudu/ARMClient)。 下面是使用`ARMClient`的一个示例，用于将重置时间设置为新小时（在此示例中为 12:00 UTC）：
+若要设置每日上限重置时间，可以使用 [ARMClient](https://github.com/projectkudu/ARMClient)。 下面的示例使用 `ARMClient` 将重置时间设置为一个新的整点（在此示例中为 12:00 UTC）：
 
 ```PS
 armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview "{'CurrentBillingFeatures':['Basic'],'DataVolumeCap':{'ResetTime':12}}"
@@ -359,19 +359,19 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 <a id="price"></a>
 ## <a name="set-the-pricing-plan"></a>设置定价计划 
 
-若要获取当前定价计划，请使用 [Set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) cmdlet：
+若要获取当前的定价计划，请运行 [Set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) cmdlet：
 
 ```PS
 Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <resource name> | Format-List
 ```
 
-若要设置定价计划，请使用同一 cmdlet 并指定 `-PricingPlan`：  
+若要设置定价计划，请运行指定了 `-PricingPlan` 的相同 cmdlet：  
 
 ```PS
 Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <resource name> -PricingPlan Basic
 ```
 
-也可使用上面的资源管理器模板在现有的 Application Insights 资源上设置定价计划，省略“microsoft.insights/components”资源以及计费资源中的 `dependsOn` 节点。 例如，若要将它设置为“每 GB”计划（以前称为“基本”计划），请运行以下代码：
+还可以使用上面的资源管理器模板对现有的 Application Insights 资源设置定价计划，同时从计费资源中省略“microsoft.insights/components”资源和 `dependsOn` 节点。 例如，若要将定价计划设置为“每 GB”计划（旧称为“基本计划”），请运行：
 
 ```PS
         New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
@@ -380,36 +380,36 @@ Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <
                -appName myApp
 ```
 
-`priceCode`定义为：
+`priceCode` 定义为：
 
-|价格代码|plan|
+|价格代码|计划|
 |---|---|
-|1|“每 GB”计划（以前名为“基本”计划）|
-|2|“每节点”计划（以前名为“企业”计划）|
+|1|每 GB（旧称为“基本计划”）|
+|2|每节点（旧称为“企业计划”）|
 
-最后，你可以使用[ARMClient](https://github.com/projectkudu/ARMClient)来获取和设置定价计划和每日上限参数。  若要获取当前值，请使用：
+最后，可以使用 [ARMClient](https://github.com/projectkudu/ARMClient) 来获取和设置定价计划和每日上限参数。  若要获取当前值，请运行：
 
 ```PS
 armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
 ```
 
-您可以使用设置所有这些参数：
+可以运行下面的代码来设置所有这些参数：
 
 ```PS
 armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
 "{'CurrentBillingFeatures':['Basic'],'DataVolumeCap':{'Cap':200,'ResetTime':12,'StopSendNotificationWhenHitCap':true,'WarningThreshold':90,'StopSendNotificationWhenHitThreshold':true}}"
 ```
 
-这会将每日上限设置为 200 GB/天，将每日上限重置时间配置为 12:00 UTC，当达到上限并达到警告级别时发送电子邮件，并将警告阈值设置为达到 cap 的90%。  
+这会将每日上限设置为 200GB/天，并将每日上限重置时间配置为 12:00 UTC，同时在达到上限和警告等级时发送电子邮件，并将警告阈值设置为上限的 90%。  
 
 ## <a name="add-a-metric-alert"></a>添加指标警报
 
-若要自动创建指标警报，请参阅[指标警报模板一文](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-a-simple-static-threshold-metric-alert)
+若要自动创建指标警报，请参阅[指标警报模板](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-a-simple-static-threshold-metric-alert)一文
 
 
 ## <a name="add-an-availability-test"></a>添加可用性测试
 
-若要自动执行可用性测试，请参阅[指标警报模板一文](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-an-availability-test-along-with-a-metric-alert)。
+若要自动执行可用性测试，请参阅[指标警报模板](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-an-availability-test-along-with-a-metric-alert)一文。
 
 ## <a name="add-more-resources"></a>添加更多资源
 
@@ -427,7 +427,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
    * `InstrumentationKey`
    * `CreationDate`
    * `TenantId`
-4. 打开 `webtests` 和 `alertrules` 节并将各项的 JSON 复制到模板中。 （不要从 `webtests` 或 `alertrules` 节点复制：请进入其下的项中。）
+4. 打开 `webtests` 和 `alertrules` 部分，并将各项的 JSON 复制到模板中。 （不要从 `webtests` 或 `alertrules` 节点复制，而是转到它们下面的项。）
    
     每个 Web 测试都有关联的警报规则，因此必须复制这两者。
    
