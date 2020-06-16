@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 43476f3e3f125bc338ba25e8cce0e96baa76262b
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 36b653fb3c3a24f3d19408aa2c87b3b764d04ec1
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636098"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84730316"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>对语音服务的语言和语音支持
 
@@ -27,8 +27,6 @@ ms.locfileid: "84636098"
 Microsoft 语音 SDK 和 REST API 都支持以下语言（区域设置）。 
 
 为了提高准确性，已为一部分语言提供了自定义功能，你可通过上传音频和人工标记的脚本或相关文本（语句）进行自定义。 若要了解有关自定义的详细信息，请参阅[自定义语音识别入门](how-to-custom-speech.md)。
-
-有关如何改进发音的详细信息，请参阅[改进自定义语音识别模型](how-to-custom-speech-improve-accuracy.md#add-new-words-with-pronunciation)。
 
 <!--
 To get the AM and ML bits:
