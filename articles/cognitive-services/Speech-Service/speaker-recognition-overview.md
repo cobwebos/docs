@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: trbye
-ms.openlocfilehash: cc19844c6407a83233c70048e9eb258a742036fb
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: a333a61a28fabddc2e8101fdf3290c52f3db59ae
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84635163"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84780879"
 ---
 # <a name="what-is-the-azure-speaker-recognition-service"></a>什么是 Azure 发言人识别服务？
 
@@ -55,6 +55,20 @@ ms.locfileid: "84635163"
 您可以控制保留数据的时间长度。 可以通过 API 调用创建、更新和删除各个扬声器的注册数据。 删除订阅后，与该订阅关联的所有说话人注册数据也会一并删除。 
 
 与所有认知服务资源一样，使用扬声器识别服务的开发人员必须了解 Microsoft 针对客户数据的策略。 你应确保已收到用户的相应权限，可以识别扬声器。 有关详细信息，请参阅 Microsoft 信任中心上的 [认知服务页](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)   。 
+
+## <a name="common-questions-and-solutions"></a>常见问题和解决方案
+
+| 问题 | 解决方案 |
+|---------|----------|
+| 演讲者识别可以使用哪些方案？ | 呼叫中心客户验证，基于语音的患者签入，会议脚本，多用户设备个性化|
+| 标识与验证之间有何区别？ | 标识是指检测一组扬声器中哪个成员正在说话的过程。 验证是确认扬声器与已知的或已**注册**的语音的操作。|
+| 依赖文本和与文本无关的验证之间有何区别？ | 与文本相关的验证需要使用特定的传递短语进行注册和识别。 与文本无关的验证需要更长的语音示例进行注册，但可以说出任何内容，包括识别期间。|
+| 支持哪些语言？ | 英语、法语、西班牙语、中文、德语、意大利语、日语和葡萄牙语 |
+| 支持哪些 Azure 区域？ | 演讲者识别为预览版服务，目前仅在美国西部地区可用。|
+| 支持哪些音频格式？ | Mono 16 位，16kHz PCM-编码的 WAV |
+| **接受**和**拒绝**响应不准确，如何调整阈值？ | 由于最佳阈值因情况而异，因此 API 决定是根据默认阈值 0.5 "接受" 还是 "拒绝"。 建议高级用户覆盖默认决策，并根据自己的方案对结果进行微调。 |
+| 是否可以多次注册一个扬声器？ | 是的，对于文本相关验证，最多可注册50次扬声器。 对于与文本无关的验证或发言人标识，最多可注册300秒的音频。 |
+| Azure 中存储了哪些数据？ | 注册音频存储在服务中，直到[删除](speaker-recognition-basics.md#deleting-voice-profile-enrollments)语音配置文件。 不保留或存储识别音频示例。 |
 
 ## <a name="next-steps"></a>后续步骤
 

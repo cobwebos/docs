@@ -1,6 +1,6 @@
 ---
 title: 对 Azure 存储进行监视、诊断和故障排除 | Microsoft Docs
-description: 使用存储分析、客户端日志记录等功能及其他第三方工具，确定、诊断和排查与 Azure 存储相关的问题。
+description: 使用存储分析、客户端日志记录等功能及其他第三方工具来确定、诊断和排查与 Azure 存储相关的问题。
 author: normesta
 ms.service: storage
 ms.topic: conceptual
@@ -8,12 +8,13 @@ ms.date: 09/23/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 0bbffacc0a8c47950b8637e826d1d5db9fbdb234
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: monitoring
+ms.openlocfilehash: 71f2acfc7c1d227d89f96f753572f4631f4cad65
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605071"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684654"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>监视、诊断和排查 Microsoft Azure 存储问题
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -21,15 +22,15 @@ ms.locfileid: "81605071"
 ## <a name="overview"></a>概述
 诊断和排查在云环境中托管的分布式应用程序中的问题可能会比在传统环境中更复杂。 应用程序可以部署在 PaaS 或 IaaS 基础结构、本地、移动设备，或这些环境的某种组合中。 通常，应用程序的网络流量可能会经过公用和专用网络，应用程序可以使用多种存储技术（如 Microsoft Azure 存储表、Blob、队列或文件）以及其他数据存储（如关系数据库和文档数据库）。
 
-若要成功管理此类应用程序，应主动监视这些应用程序，并了解如何诊断和排查这些应用程序及其相关技术的所有方面的问题。 作为 Azure 存储服务的用户，应持续监视应用程序所用的存储服务是否出现任何意外的行为更改（如比正常响应时间慢），并使用日志记录收集更详细的数据并深入分析问题。 从监视和日志记录获取的诊断信息将有助于确定应用程序所遇到问题的根本原因。 然后，用户可以排查该问题，并确定可以执行以更正该问题的相应步骤。 Azure 存储是一项核心 Azure 服务，它是客户部署到 Azure 基础结构的大多数解决方案的重要组成部分。 Azure 存储提供的功能可以简化监视、诊断和排查基于云的应用程序中的存储问题的过程。
+若要成功管理此类应用程序，应主动监视这些应用程序，并了解如何诊断和排查这些应用程序及其相关技术的所有方面的问题。 作为 Azure 存储服务的用户，应持续监视应用程序所用的存储服务是否出现任何意外的行为更改（如比正常响应时间慢），并使用日志记录收集更详细的数据并深入地分析问题。 从监视和日志记录获取的诊断信息将有助于确定应用程序所遇到问题的根本原因。 然后，可以排查该问题，并确定可以执行以更正该问题的相应步骤。 Azure 存储是一项核心 Azure 服务，它是客户部署到 Azure 基础结构的大多数解决方案的重要组成部分。 Azure 存储提供的功能可以简化监视、诊断和排查基于云的应用程序中的存储问题的过程。
 
 > [!NOTE]
 > Azure 文件目前不支持日志记录。
 >
 
-有关 Azure 存储应用程序中端到端故障排除的动手指南，请参阅[端到端故障排除 - 使用 Azure 存储指标和日志记录、AzCopy 和 Message Analyzer](../storage-e2e-troubleshooting.md)。
+有关 Azure 存储应用程序中端到端故障排除的动手指南，请参阅[端到端故障排除 - 使用 Azure 存储度量值和日志记录、AzCopy 和 Message Analyzer](../storage-e2e-troubleshooting.md)。
 
-* [介绍]
+* [简介]
   * [本指南的组织方式]
 * [监视存储服务]
   * [监视服务运行状况]
@@ -50,9 +51,9 @@ ms.locfileid: "81605071"
   * [时间戳]
 * [故障排除指南]
   * [度量值显示高 AverageE2ELatency 和低 AverageServerLatency]
-  * [度量值显示低 AverageE2ELatency 和低 AverageServerLatency，但客户端遇到高延迟]
+  * [度量值显示低 AverageE2ELatency 和低 AverageServerLatency，但客户端出现高延迟]
   * [度量值显示高 AverageServerLatency]
-  * [队列上的消息传递出现意外延迟]
+  * [队列中的消息传递出现意外延迟]
   * [度量值显示 PercentThrottlingError 增加]
   * [度量值显示 PercentTimeoutError 增加]
   * [度量值显示 PercentNetworkError 增加]
@@ -61,9 +62,9 @@ ms.locfileid: "81605071"
   * [客户端正在接收“HTTP 409 (冲突)”消息]
   * [度量值显示低 PercentSuccess，或者分析日志项包含事务状态为 ClientOtherErrors 的操作]
   * [容量度量值显示存储容量使用量意外增加]
-  * [问题是由于使用存储模拟器进行开发或测试而导致]
-  * [安装用于 .NET 的 Azure SDK 时遇到问题]
-  * [你遇到了其他存储服务问题]
+  * [该问题是由于使用存储模拟器进行开发或测试而导致]
+  * [安装 Azure SDK for .NET 时遇到问题]
+  * [遇到了其他存储服务问题]
   * [Windows 虚拟机上的 VHD 故障排除](../../virtual-machines/windows/troubleshoot-vhds.md)   
   * [Linux 虚拟机上的 VHD 故障排除](../../virtual-machines/linux/troubleshoot-vhds.md)
   * [排查 Windows 的 Azure 文件问题](../files/storage-troubleshoot-windows-file-connection-problems.md)   
@@ -76,7 +77,7 @@ ms.locfileid: "81605071"
   * [附录 5：使用 Application Insights for Azure DevOps 进行监视]
 
 ## <a name="introduction"></a><a name="introduction"></a>介绍
-本指南演示如何使用 Azure 存储客户端库中的 Azure 存储分析、客户端日志记录等功能及其他第三方工具，确定、诊断和排查与 Azure 存储相关的问题。
+本指南演示如何使用 Azure 存储客户端库中的 Azure 存储分析、客户端日志记录等功能及其他第三方工具来确定、诊断和排查与 Azure 存储相关的问题。
 
 ![][1]
 
@@ -91,18 +92,18 @@ ms.locfileid: "81605071"
 
 “[诊断存储问题]”一节介绍如何使用 Azure 存储分析日志记录（存储日志记录）诊断问题。 它还介绍了如何使用其中一个客户端库（如 .NET 存储客户端库或 Azure SDK for Java）中的工具启用客户端日志记录。
 
-“[端到端跟踪]”一节介绍了如何关联各种日志文件中包含的信息和指标数据。
+“[端到端跟踪]”一节介绍了如何关联各种日志文件中包含的信息和度量值数据。
 
-“[故障排除指南]”一节针对可能会遇到的一些与存储相关的常见问题，提供了故障排除指南。
+“[故障排除指南]”一节针对可能遇到的一些与存储相关的常见问题，提供了故障排除指南。
 
 “[附录]”提供了有关如何使用其他工具的信息，例如如何使用 Wireshark 和 Netmon 分析网络数据包数据，如何使用 Fiddler 分析 HTTP/HTTPS 消息，以及如何使用 Microsoft Message Analyzer 关联日志数据等。
 
 ## <a name="monitoring-your-storage-service"></a><a name="monitoring-your-storage-service"></a>监视存储服务
 如果熟悉 Windows 性能监视，则可以将存储度量值视为 Windows 性能监视器计数器的 Azure 存储等效项。 在“存储指标”中，可找到一组综合指标（相当于 Windows 性能监视器术语中的计数器），例如服务可用性、向服务发送的请求总数或向服务发出的成功请求的百分比。 有关可用度量值的完整列表，请参阅[存储分析度量值表架构](https://msdn.microsoft.com/library/azure/hh343264.aspx)。 可以指定希望存储服务每隔一小时还是每隔一分钟收集和聚合一次度量值。 有关如何启用度量值和监视存储帐户的详细信息，请参阅 [Enabling storage metrics and viewing metrics data](https://go.microsoft.com/fwlink/?LinkId=510865)（启用存储度量值并查看度量值数据）。
 
-可以选择要将哪些每小时指标显示在 [Azure 门户](https://portal.azure.com)中，并配置规则以便在每小时指标超过特定阈值时，通过电子邮件通知管理员。 有关详细信息，请参阅[接收警报通知](/azure/monitoring-and-diagnostics/monitoring-overview-alerts)。
+可以选择要在 [Azure 门户](https://portal.azure.com)中显示哪些每小时度量值，并配置规则以便在每小时度量值超过特定阈值时，通过电子邮件通知管理员。 有关详细信息，请参阅[接收警报通知](/azure/monitoring-and-diagnostics/monitoring-overview-alerts)。
 
-建议查看存储（预览版） [Azure Monitor](../../azure-monitor/insights/storage-insights-overview.md) 。 它是 Azure Monitor 的一项功能，通过提供 Azure 存储服务性能、容量和可用性的统一视图，提供对 Azure 存储帐户的全面监视。 它不要求你启用或配置任何内容，你可以立即从预定义的交互式图表和包含的其他可视化效果中查看这些度量值。
+建议查看[用于存储的 Azure Monitor](../../azure-monitor/insights/storage-insights-overview.md)（预览版）。 它是 Azure Monitor 的一项功能，通过提供 Azure 存储服务性能、容量和可用性的统一视图，提供对 Azure 存储帐户的全面监视。 它不要求你启用或配置任何内容，你可以立即从预定义的交互式图表和包含的其他可视化效果中查看这些指标。
 
 存储服务将尽最大努力收集度量值，但可能无法记录每个存储操作。
 
@@ -140,11 +141,11 @@ ms.locfileid: "81605071"
 若要帮助估算各种存储对象（如 Blob）的大小，请参阅博客文章[了解 Microsoft Azure 存储计费 - 带宽、事务和容量](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)。
 
 ### <a name="monitoring-availability"></a><a name="monitoring-availability"></a>监视可用性
-应通过监视以下每小时或每分钟度量值表中的“可用性”**** 列中的值来监视存储帐户中存储服务的可用性：**$MetricsHourPrimaryTransactionsBlob**、**$MetricsHourPrimaryTransactionsTable**、**$MetricsHourPrimaryTransactionsQueue**、**$MetricsMinutePrimaryTransactionsBlob**、**$MetricsMinutePrimaryTransactionsTable**、**$MetricsMinutePrimaryTransactionsQueue**、**$MetricsCapacityBlob**。 **可用性**列包含一个百分比值，指示该服务的可用性或该行所表示的 API 操作的可用性（**RowKey** 显示行是包含整体服务的度量值还是包含特定 API 操作的度量值）。
+应通过监视以下每小时或每分钟度量值表中的“可用性”列中的值来监视存储帐户中存储服务的可用性： **$MetricsHourPrimaryTransactionsBlob**、 **$MetricsHourPrimaryTransactionsTable**、 **$MetricsHourPrimaryTransactionsQueue**、 **$MetricsMinutePrimaryTransactionsBlob**、 **$MetricsMinutePrimaryTransactionsTable**、 **$MetricsMinutePrimaryTransactionsQueue**、 **$MetricsCapacityBlob**。 **可用性**列包含一个百分比值，指示该服务的可用性或该行所表示的 API 操作的可用性（**RowKey** 显示行是包含整体服务的度量值还是包含特定 API 操作的度量值）。
 
-任何小于 100% 的值指示某些存储请求会失败。 可以通过检查度量值数据中显示具有不同错误类型（如 **ServerTimeoutError**）的请求数的其他列来了解失败原因。 由于以下原因，应该会看到“可用性”**** 暂时低于 100%：比如在该服务移动分区以更好地负载均衡请求时，出现暂时性服务器超时；客户端应用程序中的重试逻辑应处理此类间歇性情况。 [Storage Analytics Logged Operations and Status Messages](https://msdn.microsoft.com/library/azure/hh343260.aspx)（存储分析记录的操作和状态消息）一文列出了存储度量值纳入其“可用性”**** 计算中的事务类型。
+任何小于 100% 的值指示某些存储请求会失败。 可以通过检查度量值数据中显示具有不同错误类型（如 **ServerTimeoutError**）的请求数的其他列来了解失败原因。 由于以下原因，应该会看到“可用性”暂时低于 100%：比如在该服务移动分区以更好地负载均衡请求时，出现暂时性服务器超时；客户端应用程序中的重试逻辑应处理此类间歇性情况。 [Storage Analytics Logged Operations and Status Messages](https://msdn.microsoft.com/library/azure/hh343260.aspx)（存储分析记录的操作和状态消息）一文列出了存储度量值纳入其“可用性”计算中的事务类型。
 
-在 [Azure 门户](https://portal.azure.com)中，可以添加警报规则，以便在某项服务的“可用性”**** 低于指定阈值时通知用户。
+在 [Azure 门户](https://portal.azure.com)中，可以添加警报规则，以便在某项服务的“可用性”低于指定阈值时通知用户。
 
 本指南的[故障排除指南]部分介绍与可用性相关的一些常见存储服务问题。
 
@@ -202,7 +203,7 @@ ms.locfileid: "81605071"
 * [Blob 服务错误代码](https://msdn.microsoft.com/library/azure/dd179439.aspx)
 * [队列服务错误代码](https://msdn.microsoft.com/library/azure/dd179446.aspx)
 * [表服务错误代码](https://msdn.microsoft.com/library/azure/dd179438.aspx)
-* [文件服务错误代码](https://msdn.microsoft.com/library/azure/dn690119.aspx)
+* [File Service Error Codes](https://msdn.microsoft.com/library/azure/dn690119.aspx)（文件服务错误代码）
 
 ### <a name="storage-emulator-issues"></a><a name="storage-emulator-issues"></a>存储模拟器问题
 Azure SDK 提供了一个存储模拟器，可以在开发工作站上运行它。 此模拟器模拟 Azure 存储服务的大部分行为，并可在开发和测试期间使用，能够实现运行使用 Azure 存储服务的应用程序，而无需 Azure 订阅和 Azure 存储帐户。
@@ -222,14 +223,14 @@ Azure SDK 提供了一个存储模拟器，可以在开发工作站上运行它�
 ### <a name="using-network-logging-tools"></a><a name="using-network-logging-tools"></a>使用网络日志记录工具
 可以捕获客户端和服务器之间的流量，以便提供有关客户端和服务器正在交换的数据以及底层网络状况的详细信息。 有用的网络日志记录工具包括：
 
-* [Fiddler](https://www.telerik.com/fiddler) 是一个免费 Web 调试代理，使用它可以检查 HTTP 与 HTTPS 请求和响应消息的标头和有效负载数据。 有关详细信息，请参阅 "[附录1：使用 Fiddler 捕获 HTTP 和 HTTPS 流量](#appendix-1)"。
+* [Fiddler](https://www.telerik.com/fiddler) 是一个免费 Web 调试代理，使用它可以检查 HTTP 与 HTTPS 请求和响应消息的标头和有效负载数据。 有关详细信息，请参阅[附录 1：使用 Fiddler 捕获 HTTP 和 HTTPS 流量](#appendix-1)。
 * [Microsoft 网络监视器 (Netmon)](https://www.microsoft.com/download/details.aspx?id=4865) 和 [Wireshark](https://www.wireshark.org/) 是免费的网络协议分析器，使用它们可以查看各种网络协议的详细数据包信息。 有关 Wireshark 的详细信息，请参阅“[附录 2：使用 Wireshark 捕获网络流量](#appendix-2)”。
 * Microsoft Message Analyzer 是 Microsoft 提供的用于取代 Netmon 的工具，它除了捕获网络数据包数据外，还可帮助查看和分析其他工具捕获的日志数据。 有关详细信息，请参阅“[附录 3：使用 Microsoft Message Analyzer 捕获网络流量](#appendix-3)”。
-* 如果要执行基本连接测试，以检查客户端计算机是否能够通过网络连接到 Azure 存储服务，则不能在客户端上使用标准 **ping** 工具来执行此操作。 但是，可以使用[ **tcping**工具](https://www.elifulkerson.com/projects/tcping.php)来检查连接性。
+* 如果要执行基本连接测试，以检查客户端计算机是否能够通过网络连接到 Azure 存储服务，则不能在客户端上使用标准 **ping** 工具来执行此操作。 但是，可以使用 [**tcping** 工具](https://www.elifulkerson.com/projects/tcping.php)来检查连接性。
 
 在许多情况下，通过存储日志记录和存储客户端库记录的日志数据已足以诊断问题，但在某些情况下，可能需要更详细的信息，而这些网络日志记录工具可以提供这些信息。 例如，使用 Fiddler 查看 HTTP 和 HTTPS 消息时，可以查看发往和来自存储服务的标头和负载数据，这使你能够检查客户端应用程序如何重试存储操作。 协议分析器（例如 Wireshark）运行在数据包级别，这使你能够查看 TCP 数据，从而可以排查丢失的数据包和连接问题。 Message Analyzer 可以在 HTTP 和 TCP 层上运行。
 
-## <a name="end-to-end-tracing"></a><a name="end-to-end-tracing"></a>端对端跟踪
+## <a name="end-to-end-tracing"></a><a name="end-to-end-tracing"></a>端到端跟踪
 使用各种日志文件的端到端跟踪是一项有用的技术，用于调查潜在的问题。 可以使用度量数据中的日期/时间信息来指示在日志文件中查找有助于排查问题的详细信息的起始位置。
 
 ### <a name="correlating-log-data"></a><a name="correlating-log-data"></a>关联日志数据
@@ -238,8 +239,8 @@ Azure SDK 提供了一个存储模拟器，可以在开发工作站上运行它�
 ### <a name="client-request-id"></a><a name="client-request-id"></a>客户端请求 ID
 存储客户端库自动为每个请求生成唯一的客户端请求 ID。
 
-* 在存储客户端库创建的客户端日志中，客户端请求 ID 显示在与请求相关的每个日志项的“客户端请求 ID”字段中****。
-* 在网络跟踪（如 Fiddler 捕获的跟踪）中，客户端请求 ID 在请求消息中显示为 x-ms-client-request-id HTTP 标头值****。
+* 在存储客户端库创建的客户端日志中，客户端请求 ID 显示在与请求相关的每个日志项的“客户端请求 ID”字段中。
+* 在网络跟踪（如 Fiddler 捕获的跟踪）中，客户端请求 ID 在请求消息中显示为 x-ms-client-request-id HTTP 标头值。
 * 在服务器端存储日志记录日志中，客户端请求 ID 显示在“客户端请求 ID”列中。
 
 > [!NOTE]
@@ -250,9 +251,9 @@ Azure SDK 提供了一个存储模拟器，可以在开发工作站上运行它�
 ### <a name="server-request-id"></a><a name="server-request-id"></a>服务器请求 ID
 存储服务会自动生成服务器请求 ID。
 
-* 在服务器端存储日志记录日志中，服务器请求 ID 显示在“请求 ID 标头”列中****。
-* 在网络跟踪（如 Fiddler 捕获的跟踪）中，服务器请求 ID 在响应消息中显示为 x-ms-request-id HTTP 标头值****。
-* 在存储客户端库创建的客户端日志中，服务器请求 ID 出现在显示服务器响应详细信息的日志项的“操作文本”列中****。
+* 在服务器端存储日志记录日志中，服务器请求 ID 显示在“请求 ID 标头”列中。
+* 在网络跟踪（如 Fiddler 捕获的跟踪）中，服务器请求 ID 在响应消息中显示为 x-ms-request-id HTTP 标头值。
+* 在存储客户端库创建的客户端日志中，服务器请求 ID 出现在显示服务器响应详细信息的日志项的“操作文本”列中。
 
 > [!NOTE]
 > 存储服务始终为它接收的每个请求分配唯一的服务器请求 ID，因此客户端进行的每次重试尝试和批处理中包含的每个操作均使用唯一的服务器请求 ID。
@@ -306,8 +307,8 @@ catch (StorageException storageException)
 ---
 问题是否与其中一个存储服务的性能相关？
 
-* [指标显示 AverageE2ELatency 较高且 AverageServerLatency 较低]
-* [指标显示 AverageE2ELatency 和 AverageServerLatency 都较低，但客户端出现高延迟]
+* [度量值显示高 AverageE2ELatency 和低 AverageServerLatency]
+* [度量值显示低 AverageE2ELatency 和低 AverageServerLatency，但客户端出现高延迟]
 * [度量值显示高 AverageServerLatency]
 * [队列中的消息传递出现意外延迟]
 
@@ -322,8 +323,8 @@ catch (StorageException storageException)
  客户端应用程序是否从存储服务收到 HTTP 4XX（如 404）响应？
 
 * [客户端正在接收“HTTP 403 (禁止访问)”消息]
-* [客户端正在接收 "HTTP 404 （未找到）" 消息]
-* [客户端正在接收 HTTP 409 （冲突）消息]
+* [客户端正在接收“HTTP 404 (未找到)”消息]
+* [客户端正在接收“HTTP 409 (冲突)”消息]
 
 ---
 [度量值显示低 PercentSuccess，或者分析日志项包含事务状态为 ClientOtherErrors 的操作]
@@ -341,10 +342,10 @@ catch (StorageException storageException)
 [安装 Azure SDK for .NET 时遇到问题]
 
 ---
-[存储服务存在不同的问题]
+[遇到了其他存储服务问题]
 
 ---
-### <a name="metrics-show-high-averagee2elatency-and-low-averageserverlatency"></a><a name="metrics-show-high-AverageE2ELatency-and-low-AverageServerLatency"></a>指标显示 AverageE2ELatency 较高且 AverageServerLatency 较低
+### <a name="metrics-show-high-averagee2elatency-and-low-averageserverlatency"></a><a name="metrics-show-high-AverageE2ELatency-and-low-AverageServerLatency"></a>指标显示高 AverageE2ELatency 和低 AverageServerLatency
 下面来自 [Azure 门户](https://portal.azure.com)监视工具的插图显示了一个示例，其中 **AverageE2ELatency** 明显高于 **AverageServerLatency**。
 
 ![][4]
@@ -359,7 +360,7 @@ catch (StorageException storageException)
 #### <a name="investigating-client-performance-issues"></a>调查客户端的性能问题
 客户端响应速度慢的可能原因包括：可用连接数或可用线程数有限，或者 CPU、内存或网络带宽等资源不足。 可以通过以下方式解决此问题：修改客户端代码使其更高效（例如，对存储服务使用异步调用），或者使用更大的虚拟机（包含更多内核和更多内存）。
 
-对于表和队列服务，Nagle 算法也可能导致高**AverageE2ELatency** ，与**AverageServerLatency**相比：有关详细信息，请参阅 post [Nagle 的算法对于小型请求不友好](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx)。 可以通过使用 **System.Net** 命名空间中的 **ServicePointManager** 类在代码中禁用 Nagle 算法。 应在应用程序中调用表或队列服务之前执行此操作，因为这样做不会影响已打开的连接。 下面的示例来自辅助角色中的 **Application_Start** 方法。
+对于表和队列服务，Nagle 算法也可能会导致高 **AverageE2ELatency**（与 **AverageServerLatency** 相比）：有关详细信息，请参阅博客文章 [Nagle’s Algorithm is Not Friendly towards Small Requests](https://docs.microsoft.com/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests)（Nagle 算法对小型请求不友好）。 可以通过使用 **System.Net** 命名空间中的 **ServicePointManager** 类在代码中禁用 Nagle 算法。 应在应用程序中调用表或队列服务之前执行此操作，因为这样做不会影响已打开的连接。 下面的示例来自辅助角色中的 **Application_Start** 方法。
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);
@@ -378,7 +379,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 
 有关使用 Microsoft Message Analyzer 排查网络问题的详细信息，请参阅“[附录 3：使用 Microsoft Message Analyzer 捕获网络流量]”。
 
-### <a name="metrics-show-low-averagee2elatency-and-low-averageserverlatency-but-the-client-is-experiencing-high-latency"></a><a name="metrics-show-low-AverageE2ELatency-and-low-AverageServerLatency"></a>指标显示 AverageE2ELatency 和 AverageServerLatency 都较低，但客户端出现高延迟
+### <a name="metrics-show-low-averagee2elatency-and-low-averageserverlatency-but-the-client-is-experiencing-high-latency"></a><a name="metrics-show-low-AverageE2ELatency-and-low-AverageServerLatency"></a>指标显示低 AverageE2ELatency 和低 AverageServerLatency，但客户端遇到高延迟
 在这种情况下，最可能的原因是到达存储服务的存储请求出现延迟。 应调查来自客户端的请求为什么未到达 Blob 服务。
 
 客户端延迟发送请求的一个可能原因是，可用连接数或可用线程数有限。
@@ -387,7 +388,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 
 * 检查存储分析日志。 如果发生多次重试，会看到多个操作具有相同的客户端请求 ID，但却具有不同的服务器请求 ID。
 * 检查客户端日志。 详细日志记录会指示重试已发生过。
-* 对代码进行调试，并查看与请求关联的 **OperationContext** 对象的属性。 如果该操作已重试过，则 **RequestResults** 属性将包括多个唯一的服务器请求 ID。 此外，还可以检查每个请求的开始和结束时间。 有关详细信息，请参阅 "[服务器请求 ID]" 部分中的代码示例。
+* 对代码进行调试，并查看与请求关联的 **OperationContext** 对象的属性。 如果该操作已重试过，则 **RequestResults** 属性将包括多个唯一的服务器请求 ID。 此外，还可以检查每个请求的开始和结束时间。 有关详细信息，请参阅[服务器请求 ID] 部分中的代码示例。
 
 如果客户端没有问题，则应调查潜在的网络问题，例如数据包丢失。 可以使用工具（如 Wireshark 或 Microsoft Message Analyzer）调查网络问题。
 
@@ -395,7 +396,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 
 有关使用 Microsoft Message Analyzer 排查网络问题的详细信息，请参阅“[附录 3：使用 Microsoft Message Analyzer 捕获网络流量]”。
 
-### <a name="metrics-show-high-averageserverlatency"></a><a name="metrics-show-high-AverageServerLatency"></a>度量值显示高 AverageServerLatency
+### <a name="metrics-show-high-averageserverlatency"></a><a name="metrics-show-high-AverageServerLatency"></a>指标显示高 AverageServerLatency
 如果 blob 下载请求出现高 **AverageServerLatency**，则应使用存储日志记录日志来了解对于同一 blob（或一组 blob）是否存在重复的请求。 对于 Blob 上传请求，应调查客户端正在使用的数据块大小（例如，小于 64 K 的数据块大小可能会导致开销，除非读取操作也在小于 64 K 的区块中进行），以及是否有多个客户端正在并行将数据块上传到同一 Blob。 还应检查每分钟度量值以了解导致超出每秒可伸缩性目标的请求数峰值：另请参阅“[度量值显示 PercentTimeoutError 增加]”。
 
 如果当对于同一 Blob（或一组 Blob）存在重复的请求时，会看到 Blob 下载请求显示高 **AverageServerLatency**，则应考虑使用 Azure 缓存或 Azure 内容分发网络 (CDN) 缓存这些 Blob。 对于上传请求，你可以通过使用较大的数据块大小来提高吞吐量。 对于表查询，也可以在执行相同的查询操作并且数据不会频繁更改的客户端上实施客户端缓存。
@@ -407,7 +408,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 >
 >
 
-### <a name="you-are-experiencing-unexpected-delays-in-message-delivery-on-a-queue"></a><a name="you-are-experiencing-unexpected-delays-in-message-delivery"></a>队列中的消息传递出现意外延迟
+### <a name="you-are-experiencing-unexpected-delays-in-message-delivery-on-a-queue"></a><a name="you-are-experiencing-unexpected-delays-in-message-delivery"></a>队列上的消息传递出现意外的延迟
 如果在应用程序将某一消息添加到队列的时间与可从队列中读取该消息的时间之间出现延迟，应采取以下步骤来诊断此问题：
 
 * 验证应用程序是否成功地将该消息添加到队列。 检查应用程序在成功添加前是否未多次重试 **AddMessage** 方法。 存储客户端库日志会显示存储操作的任何重复重试。
@@ -417,17 +418,17 @@ queueServicePoint.UseNagleAlgorithm = false;
 * 检查存储日志记录日志以查找在长于平常的时间段内具有高于预期的 **E2ELatency** 和 **ServerLatency** 值的任何队列操作。
 
 ### <a name="metrics-show-an-increase-in-percentthrottlingerror"></a><a name="metrics-show-an-increase-in-PercentThrottlingError"></a>度量值显示 PercentThrottlingError 增加
-当超出存储服务的可伸缩性目标时，会发生限制错误。 存储服务进行限制是为了确保没有单个客户端或租户可以在损害其他客户端或租户的情况下使用服务。 有关存储帐户的可伸缩性目标和存储帐户中分区的性能目标的详细信息，请参阅[标准存储帐户的可伸缩性和性能目标](scalability-targets-standard-account.md)。
+当超出存储服务的可伸缩性目标时，会发生限制错误。 存储服务进行限制是为了确保没有单个客户端或租户可以在损害其他客户端或租户的情况下使用服务。 若要详细了解存储帐户的可伸缩性目标和存储帐户中分区的性能目标，请参阅[标准存储帐户的可伸缩性和性能目标](scalability-targets-standard-account.md)。
 
 如果 **PercentThrottlingError** 度量值显示失败并出现限制错误的请求百分比增加，则需要调查以下两种情况之一：
 
-* [PercentThrottlingError 中的暂时性增长]
-* [永久性增加 PercentThrottlingError 错误]
+* [PercentThrottlingError 暂时增加]
+* [PercentThrottlingError 错误永久增加]
 
 通常在存储请求数增加时，或者在最初对应用程序进行负载测试时，会出现 **PercentThrottlingError** 增加的情况。 这也可能表现为在客户端中进行存储操作时出现“503 服务器忙”或“500 操作超时”HTTP 状态消息。
 
 #### <a name="transient-increase-in-percentthrottlingerror"></a><a name="transient-increase-in-PercentThrottlingError"></a>PercentThrottlingError 暂时增加
-如果看到 **PercentThrottlingError** 的值达到峰值的时间与应用程序活动的高峰期保持一致，则应在客户端中对重试实施指数（而非线性）回退策略。 回退重试会减少分区上的即时负载，并帮助应用程序消除流量峰值。 有关如何使用存储客户端库实现重试策略的详细信息，请参阅 [Microsoft.Azure.Storage.RetryPolicies 命名空间](/dotnet/api/microsoft.azure.storage.retrypolicies)。
+如果看到 **PercentThrottlingError** 的值达到峰值的时间与应用程序活动的高峰期保持一致，则应在客户端中对重试实施指数（而非线性）回退策略。 回退重试会减少分区上的即时负载，并帮助应用程序消除流量峰值。 若要详细了解如何使用存储客户端库实现重试策略，请参阅 [Microsoft.Azure.Storage.RetryPolicies 命名空间](/dotnet/api/microsoft.azure.storage.retrypolicies)。
 
 > [!NOTE]
 > 可能也会看到 **PercentThrottlingError** 的值达到峰值的时间与应用程序活动的高峰期不一致：出现此情况最可能的原因是存储服务正在移动分区以改进负载均衡。
@@ -446,7 +447,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 >
 >
 
-### <a name="metrics-show-an-increase-in-percenttimeouterror"></a><a name="metrics-show-an-increase-in-PercentTimeoutError"></a>度量值显示 PercentTimeoutError 增加
+### <a name="metrics-show-an-increase-in-percenttimeouterror"></a><a name="metrics-show-an-increase-in-PercentTimeoutError"></a>指标显示 PercentTimeoutError 增加
 度量值显示其中一个存储服务的 **PercentTimeoutError** 增加。 同时，客户端将收到存储操作发出的大量“500 操作超时”HTTP 状态消息。
 
 > [!NOTE]
@@ -454,14 +455,14 @@ queueServicePoint.UseNagleAlgorithm = false;
 >
 >
 
-**PercentTimeoutError** 度量值是以下度量值的聚合：**ClientTimeoutError**、**AnonymousClientTimeoutError**、**SASClientTimeoutError**、**ServerTimeoutError**、**AnonymousServerTimeoutError** 和 **SASServerTimeoutError**。
+PercentTimeoutError 度量值是以下指标的度量值：ClientTimeoutError、AnonymousClientTimeoutError、SASClientTimeoutError、ServerTimeoutError、AnonymousServerTimeoutError 和 SASServerTimeoutError     。
 
 服务器超时是由于服务器上的错误导致的。 客户端超时之所以发生是因为服务器上的操作已超出客户端指定的超时值；例如，使用存储客户端库的客户端可以使用 **QueueRequestOptions** 类的 **ServerTimeout** 属性为操作设置超时值。
 
 服务器超时指示存储服务存在需要进一步调查的问题。 可以使用度量值来了解是否已达到该服务的伸缩性限制，并确定可能会导致此问题的流量峰值。 如果问题是间歇性的，则可能是由于服务中的负载均衡活动导致的。 如果问题是持久性的，并且不是由于应用程序达到服务的伸缩性限制而导致的，则应提出支持问题。 对于客户端超时，必须确定在客户端中超时是否设为适当的值，可更改客户端中设置的超时值，或者调查如何改善存储服务中的操作性能，例如通过优化表查询或缩小消息的大小。
 
-### <a name="metrics-show-an-increase-in-percentnetworkerror"></a><a name="metrics-show-an-increase-in-PercentNetworkError"></a>度量值显示 PercentNetworkError 增加
-度量值显示其中一个存储服务的 **PercentNetworkError** 增加。 **PercentNetworkError** 度量值是以下度量值的聚合：**NetworkError**、**AnonymousNetworkError** 和 **SASNetworkError**。 如果存储服务在客户端发出存储请求时检测到网络错误，则会出现这些错误。
+### <a name="metrics-show-an-increase-in-percentnetworkerror"></a><a name="metrics-show-an-increase-in-PercentNetworkError"></a>指标显示 PercentNetworkError 增加
+度量值显示其中一个存储服务的 **PercentNetworkError** 增加。 PercentNetworkError 度量值是以下指标的度量值：NetworkError、AnonymousNetworkError 和 SASNetworkError  。 如果存储服务在客户端发出存储请求时检测到网络错误，则会出现这些错误。
 
 出现此错误的最常见原因是客户端在存储服务超时到期之前断开连接。 应调查客户端中的代码，以了解客户端断开与存储服务的连接的原因和时间。 可以还使用 Wireshark、Microsoft Message Analyzer 或 Tcping 调查客户端的网络连接问题。 这些工具在[附录]中进行了说明。
 
@@ -471,12 +472,12 @@ queueServicePoint.UseNagleAlgorithm = false;
 | 源 | 详细程度 | 详细程度 | 客户端请求 ID | 操作文本 |
 | --- | --- | --- | --- | --- |
 | Microsoft.Azure.Storage |信息 |3 |85d077ab-... |正在按位置模式 PrimaryOnly 使用主位置启动操作。 |
-| Microsoft.Azure.Storage |信息 |3 |85d077ab -… |开始将同步请求发送到 <https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
+| Microsoft.Azure.Storage |信息 |3 |85d077ab -… |开始向 <https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> 发出同步请求 |
 | Microsoft.Azure.Storage |信息 |3 |85d077ab -… |正在等待响应。 |
-| Microsoft.Azure.Storage |警告 |2 |85d077ab -… |在等待响应时引发了异常：远程服务器返回了错误：(403) 禁止访问。 |
+| Microsoft.Azure.Storage |警告 |2 |85d077ab -… |等待响应时引发异常：远程服务器返回了错误：(403) 禁止访问。 |
 | Microsoft.Azure.Storage |信息 |3 |85d077ab -… |收到响应。 状态代码 = 403，请求 ID = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d，Content-MD5 =，ETag = 。 |
-| Microsoft.Azure.Storage |警告 |2 |85d077ab -… |在操作期间引发的异常：远程服务器返回了错误：(403) 禁止访问... |
-| Microsoft.Azure.Storage |信息 |3 |85d077ab -… |正在检查是否应重试该操作。 重试次数 = 0，HTTP 状态代码 = 403，异常 = 远程服务器返回了一个错误：(403) 禁止访问... |
+| Microsoft.Azure.Storage |警告 |2 |85d077ab -… |操作过程中引发异常：远程服务器返回了错误：(403) 禁止访问。 |
+| Microsoft.Azure.Storage |信息 |3 |85d077ab -… |正在检查是否应重试该操作。 重试次数 = 0，HTTP 状态代码 = 403，异常 = 远程服务器返回了一个错误：(403) 禁止访问。 |
 | Microsoft.Azure.Storage |信息 |3 |85d077ab -… |已根据位置模式将下一个位置设为主位置。 |
 | Microsoft.Azure.Storage |错误 |1 |85d077ab -… |重试策略不允许重试。 操作失败，远程服务器返回了一个错误：(403) 禁止访问。 |
 
@@ -484,7 +485,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 
 * 通常，创建 SAS 供客户端立即使用时，不应设置开始时间。 如果使用当前时间生成 SAS 的主机与存储服务之间存在较小的时钟差异，则存储服务有可能收到尚未生效的 SAS。
 * 不要在 SAS 上设置太短的到期时间。 同样，生成 SAS 的主机与存储服务之间的较小时钟差异可能会导致 SAS 似乎早于预期到期。
-* SAS 密钥中的版本参数（例如**sv = 2015-04-05**）是否与正在使用的存储客户端库的版本匹配？ 建议你始终使用最新版本的[存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)。
+* SAS 密钥中的版本参数（例如 **sv=2015-04-05**）是否与正在使用的存储客户端库的版本匹配？ 建议始终使用最新版的[存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)。
 * 如果重新生成存储访问密钥，可能会使任何现有的 SAS 令牌无效。 如果生成的 SAS 令牌具有较长的到期时间供客户端应用程序缓存，可能会出现此问题。
 
 如果使用存储客户端库生成 SAS 令牌，则可轻松生成有效令牌。 但是，如果使用的是存储 REST API 并手动构造 SAS 令牌，请参阅 [Delegating Access with a Shared Access Signature](https://msdn.microsoft.com/library/azure/ee395415.aspx)（使用共享访问签名委派访问权限）。
@@ -493,7 +494,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 如果客户端应用程序从服务器收到“HTTP 404 (未找到)”消息，这意味着客户端正在尝试使用的对象（如实体、表、Blob、容器或队列）在存储服务中不存在。 有多种原因可能会导致此问题，例如：
 
 * [客户端或其他进程以前删除了该对象]
-* [共享访问签名（SAS）授权问题]
+* [共享访问签名 (SAS) 授权问题]
 * [客户端 JavaScript 代码无权访问该对象]
 * [网络故障]
 
@@ -536,7 +537,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 | de8b1c3c-... |开始向 `https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt` 发出同步请求。 |
 | de8b1c3c-... |StringToSign = PUT...64.qCmF+TQLPhq/YYK50mP9ZQ==........x-ms-blob-type:BlockBlob.x-ms-client-request-id:de8b1c3c-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer/blobCreated.txt. |
 | de8b1c3c-... |正在准备写入请求数据。 |
-| e2d06d78-... |在等待响应时引发的异常：远程服务器返回了错误：(404) 未找到... |
+| e2d06d78-... |等待响应时引发异常：远程服务器返回了错误：(404) 未找到. |
 | e2d06d78-... |收到响应。 状态代码 = 404，请求 ID = 353ae3bc-...，Content-MD5 = ，ETag = 。 |
 | e2d06d78-... |响应标头已成功处理，继续执行该操作的剩余部分。 |
 | e2d06d78-... |正在下载响应正文。 |
@@ -546,16 +547,16 @@ queueServicePoint.UseNagleAlgorithm = false;
 | e2d06d78-... |正在等待响应。 |
 | de8b1c3c-... |正在写入请求数据。 |
 | de8b1c3c-... |正在等待响应。 |
-| e2d06d78-... |在等待响应时引发的异常：远程服务器返回了错误：(409) 冲突... |
+| e2d06d78-... |等待响应时引发异常：远程服务器返回了错误：(409) 冲突. |
 | e2d06d78-... |收到响应。 状态代码 = 409，请求 ID = c27da20e-...，Content-MD5 = ，ETag = 。 |
 | e2d06d78-... |正在下载错误响应正文。 |
-| de8b1c3c-... |在等待响应时引发的异常：远程服务器返回了错误：(404) 未找到... |
+| de8b1c3c-... |等待响应时引发异常：远程服务器返回了错误：(404) 未找到. |
 | de8b1c3c-... |收到响应。 状态代码 = 404，请求 ID = 0eaeab3e-...，Content-MD5 = ，ETag = 。 |
-| de8b1c3c-... |在操作期间引发的异常: 远程服务器返回了错误： (404) 未找到... |
-| de8b1c3c-... |重试策略不允许重试。 操作失败，远程服务器返回了一个错误：(404) 未找到... |
-| e2d06d78-... |重试策略不允许重试。 操作失败，远程服务器返回了一个错误 ：(409) 冲突... |
+| de8b1c3c-... |操作过程中引发异常：远程服务器返回了错误：(404) 未找到. |
+| de8b1c3c-... |重试策略不允许重试。 操作失败，远程服务器返回了一个错误：(404) 未找到. |
+| e2d06d78-... |重试策略不允许重试。 操作失败，远程服务器返回了一个错误：(409) 冲突. |
 
-在此示例中，此日志显示客户端正在从**CreateIfNotExists**方法（request ID e2d06d78-....x-ms-date ...）向**UploadFromStream**方法（de8b1c3c-...）发出请求。发生这种交错的原因是客户端应用程序以异步方式调用了这些方法。 应修改客户端中的异步代码，以确保客户端在尝试将任何数据上传到该容器中的 Blob 之前已创建该容器。 理想情况下，应该提前创建所有容器。
+在此示例中，该日志显示客户端正在交错执行 **CreateIfNotExists** 方法发出的请求（请求 ID e2d06d78…）与 **UploadFromStream** 方法发出的请求 (de8b1c3c-...)。之所以发生此交错执行是因为客户端应用程序正在以异步方式调用这两个方法。 应修改客户端中的异步代码，以确保客户端在尝试将任何数据上传到该容器中的 Blob 之前已创建该容器。 理想情况下，应该提前创建所有容器。
 
 #### <a name="a-shared-access-signature-sas-authorization-issue"></a><a name="SAS-authorization-issue"></a>共享访问签名 (SAS) 授权问题
 如果客户端应用程序尝试使用不包括必要的操作权限的 SAS 密钥，则存储服务向客户端返回“HTTP 404 (未找到)”消息。 同时，还会在度量值中看到 **SASAuthorizationError** 为非零值。
@@ -625,7 +626,7 @@ client.SetServiceProperties(sp);
 如果此问题频繁出现，应该调查为什么客户端无法从表服务收到确认消息。 如果此问题是间歇性的，则应捕获“HTTP (404) 未找到”错误并在客户端中记录它，但允许客户端继续执行。
 
 ### <a name="the-client-is-receiving-http-409-conflict-messages"></a><a name="the-client-is-receiving-409-messages"></a>客户端正在接收“HTTP 409 (冲突)”消息
-下表显示了服务器端日志中针对两个客户端操作的摘录：**DeleteIfExists** 后跟使用相同 blob 容器名称的 **CreateIfNotExists**。 每个客户端操作会导致将两个请求发送到服务器，先是 **GetContainerProperties** 请求（用于检查容器是否存在），后跟 **DeleteContainer** 或 **CreateContainer** 请求。
+下表显示了两个客户端操作的服务器端日志的摘录：DeleteIfExists，后面紧跟使用相同 blob 容器名称的 CreateIfNotExists 。 每个客户端操作会导致将两个请求发送到服务器，先是 **GetContainerProperties** 请求（用于检查容器是否存在），后跟 **DeleteContainer** 或 **CreateContainer** 请求。
 
 | 时间戳 | Operation | 结果 | 容器名称 | 客户端请求 ID |
 | --- | --- | --- | --- | --- |
@@ -638,7 +639,7 @@ client.SetServiceProperties(sp);
 
 客户端应用程序在创建新容器时应使用唯一的容器名称（如果“删除/重新创建”模式很常见）。
 
-### <a name="metrics-show-low-percentsuccess-or-analytics-log-entries-have-operations-with-transaction-status-of-clientothererrors"></a><a name="metrics-show-low-percent-success"></a>度量值显示低 PercentSuccess，或者分析日志项包含事务状态为 ClientOtherErrors 的操作
+### <a name="metrics-show-low-percentsuccess-or-analytics-log-entries-have-operations-with-transaction-status-of-clientothererrors"></a><a name="metrics-show-low-percent-success"></a>指标显示低 PercentSuccess，或者分析日志项包含事务状态为 ClientOtherErrors 的操作
 **PercentSuccess** 度量值根据操作的 HTTP 状态代码捕获已成功操作的百分比。 状态代码为 2XX 的操作将计为成功，而状态代码在 3XX、4XX 和 5XX 范围内的操作将计为失败并降低 **PercentSuccess** 指标值。 在服务器端存储日志文件中，这些操作将使用事务状态 **ClientOtherErrors** 进行记录。
 
 请务必注意，这些操作已成功完成，因此不会影响其他度量值，如可用性。 成功执行但可能会导致失败的 HTTP 状态代码的一些操作示例包括：
@@ -655,17 +656,17 @@ client.SetServiceProperties(sp);
 ### <a name="your-issue-arises-from-using-the-storage-emulator-for-development-or-test"></a><a name="your-issue-arises-from-using-the-storage-emulator"></a>该问题是由于使用存储模拟器进行开发或测试而导致
 通常，在开发和测试过程中使用存储模拟器以避免需要 Azure 存储帐户。 使用存储模拟器时可能发生的常见问题包括：
 
-* [功能 "X" 在存储模拟器中无法正常工作]
-* [使用存储模拟器时出现错误 "其中一个 HTTP 标头的值的格式不正确"]
+* [功能“X”在存储模拟器中无法正常工作]
+* [使用存储模拟器时出现错误“其中一个 HTTP 标头值的格式不正确”]
 * [运行存储模拟器需要管理权限]
 
 #### <a name="feature-x-is-not-working-in-the-storage-emulator"></a><a name="feature-X-is-not-working"></a>功能“X”在存储模拟器中无法正常工作
-存储模拟器并非支持 Azure 存储服务的所有功能，如文件服务。 有关详细信息，请参阅[使用 Azure 存储模拟器进行开发和测试](storage-use-emulator.md)。
+存储模拟器并非支持 Azure 存储服务的所有功能，如文件服务。 有关详细信息，请参阅 [使用 Azure 存储模拟器进行开发和测试](storage-use-emulator.md)。
 
 对于存储模拟器不支持的这些功能，请使用云中的 Azure 存储服务。
 
 #### <a name="error-the-value-for-one-of-the-http-headers-is-not-in-the-correct-format-when-using-the-storage-emulator"></a><a name="error-HTTP-header-not-correct-format"></a>使用存储模拟器时出现错误“其中一个 HTTP 标头的值的格式不正确”
-正在针对本地存储模拟器测试使用存储客户端库的应用程序，方法调用（如 CreateIfNotExists）失败并显示错误消息“其中一个 HTTP 标头值的格式不正确”****。 这指示你所用的存储模拟器版本不支持你所用的存储客户端库版本。 存储客户端库会为它发出的所有请求添加标头 **x-ms-version**。 如果存储模拟器无法识别 **x-ms-version** 标头中的值，则将拒绝该请求。
+正在针对本地存储模拟器测试使用存储客户端库的应用程序，方法调用（如 CreateIfNotExists）失败并显示错误消息“其中一个 HTTP 标头值的格式不正确”。 这指示你所用的存储模拟器版本不支持你所用的存储客户端库版本。 存储客户端库会为它发出的所有请求添加标头 **x-ms-version**。 如果存储模拟器无法识别 **x-ms-version** 标头中的值，则将拒绝该请求。
 
 可以使用存储库客户端日志来查看其发送的 **x-ms-version header** 值。 如果使用 Fiddler 跟踪客户端应用程序发出的请求，也可以查看 **x-ms-version header** 的值。
 
@@ -674,9 +675,9 @@ client.SetServiceProperties(sp);
 #### <a name="running-the-storage-emulator-requires-administrative-privileges"></a><a name="storage-emulator-requires-administrative-privileges"></a>运行存储模拟器需要管理权限
 运行存储模拟器时，系统提示提供管理员凭据。 仅首次初始化存储模拟器时，才会出现这种情况。 初始化存储模拟器后，将无需管理权限即可再次运行。
 
-有关详细信息，请参阅[使用 Azure 存储模拟器进行开发和测试](storage-use-emulator.md)。 也可以在 Visual Studio 中初始化存储模拟器，但这也需要管理特权。
+有关详细信息，请参阅 [使用 Azure 存储模拟器进行开发和测试](storage-use-emulator.md)。 也可以在 Visual Studio 中初始化存储模拟器，但这也需要管理特权。
 
-### <a name="you-are-encountering-problems-installing-the-azure-sdk-for-net"></a><a name="you-are-encountering-problems-installing-the-Windows-Azure-SDK"></a>安装 Azure SDK for .NET 时遇到问题
+### <a name="you-are-encountering-problems-installing-the-azure-sdk-for-net"></a><a name="you-are-encountering-problems-installing-the-Windows-Azure-SDK"></a>安装用于 .NET 的 Azure SDK 时遇到问题
 尝试安装 SDK 时，它尝试在本地计算机上安装存储模拟器时失败。 安装日志包含以下消息之一：
 
 * CAQuietExec：错误：无法访问 SQL 实例
@@ -721,10 +722,10 @@ sqllocaldb create v11.0
 
 启动 Fiddler 后，它将开始捕获本地计算机上的 HTTP 和 HTTPS 通信。 以下是一些用于控制 Fiddler 的有用命令：
 
-* 停止和启动捕获流量。 在主菜单上，转到“文件”****，并可单击“捕获流量”**** 在打开和关闭捕获之间进行切换。
-* 保存捕获的通信数据。 在主菜单上，转到“文件”****，单击“保存”****，并单击“所有会话”****：可以将流量保存在一个会话存档文件中。 以后可以重新加载会话存档以进行分析，或者将其发送到 Microsoft 技术支持（如有需要）。
+* 停止和启动捕获流量。 在主菜单上，转到“文件”，并可单击“捕获流量”在打开和关闭捕获之间进行切换。
+* 保存捕获的通信数据。 在主菜单上，转到“文件”，单击“保存”，并单击“所有会话”：可以将流量保存在一个会话存档文件中。 以后可以重新加载会话存档以进行分析，或者将其发送到 Microsoft 技术支持（如有需要）。
 
-若要限制 Fiddler 捕获的流量量，可以使用在 "**筛选器**" 选项卡中配置的筛选器。以下屏幕截图显示了只捕获发送到**contosoemaildist.table.core.windows.net**存储终结点的流量的筛选器：
+若要限制 Fiddler 捕获的通信量，可以使用在“筛选器”选项卡中配置的筛选器。下面的屏幕截图显示了只捕获发送到 **contosoemaildist.table.core.windows.net** 存储终结点流量的筛选器：
 
 ![][5]
 
@@ -734,20 +735,20 @@ sqllocaldb create v11.0
 以下过程演示，对于从安装 Wireshark 的本地计算机到 Azure 存储帐户中的表服务的流量，如何捕获其详细数据包信息。
 
 1. 在本地计算机上启动 Wireshark。
-2. 在“启动”**** 部分中，选择本地网络接口或连接到 Internet 的接口。
-3. 单击“捕获选项”****。
-4. 将一个筛选器添加到“捕获筛选器”**** 文本框中。 例如，**host contosoemaildist.table.core.windows.net** 会将 Wireshark 配置为只捕获发送到 **contosoemaildist** 存储帐户中的表服务终结点或从该终结点发送的数据包。 请查看[捕获筛选器的完整列表](https://wiki.wireshark.org/CaptureFilters)。
+2. 在“启动”部分中，选择本地网络接口或连接到 Internet 的接口。
+3. 单击“捕获选项”。
+4. 将一个筛选器添加到“捕获筛选器”文本框中。 例如，**host contosoemaildist.table.core.windows.net** 会将 Wireshark 配置为只捕获发送到 **contosoemaildist** 存储帐户中的表服务终结点或从该终结点发送的数据包。 请查看[捕获筛选器的完整列表](https://wiki.wireshark.org/CaptureFilters)。
 
    ![][6]
-5. 单击“启动”  。 现在，当在本地计算机上使用客户端应用程序时，Wireshark 将捕获发送到表服务终结点或从该终结点发送的所有数据包。
-6. 完成后，在主菜单上，依次单击“捕获”**** 和“停止”****。
-7. 要将捕获的数据保存到 Wireshark 捕获文件中，请在主菜单上依次单击“文件”**** 和“保存”****。
+5. 单击“启动”。 现在，当在本地计算机上使用客户端应用程序时，Wireshark 将捕获发送到表服务终结点或从该终结点发送的所有数据包。
+6. 完成后，在主菜单上，依次单击“捕获”和“停止”。
+7. 要将捕获的数据保存到 Wireshark 捕获文件中，请在主菜单上依次单击“文件”和“保存”。
 
-WireShark 会在 **packetlist** 窗口中突出显示存在的任何错误。 还可以使用“专家信息”**** 窗口（依次单击“分析”**** 和“专家信息”****）来查看错误和警告的摘要。
+WireShark 会在 **packetlist** 窗口中突出显示存在的任何错误。 还可以使用“专家信息”窗口（依次单击“分析”和“专家信息”）来查看错误和警告的摘要。
 
 ![][7]
 
-还可选择查看 TCP 数据（如果应用程序层看到该数据），方法是右键单击 TCP 数据，并选择“跟踪 TCP 流”****。 在不使用捕获筛选器捕获了转储时，此方法很有用。 有关详细信息，请参阅 [Following TCP Streams](https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html)（跟踪 TCP 流）。
+还可选择查看 TCP 数据（如果应用程序层看到该数据），方法是右键单击 TCP 数据，并选择“跟踪 TCP 流”。 在不使用捕获筛选器捕获了转储时，此方法很有用。 有关详细信息，请参阅 [Following TCP Streams](https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html)（跟踪 TCP 流）。
 
 ![][8]
 
@@ -760,7 +761,7 @@ WireShark 会在 **packetlist** 窗口中突出显示存在的任何错误。 �
 可以使用 Microsoft Message Analyzer 以与 Fiddler 类似的方式捕获 HTTP 和 HTTPS 通信，并以与 Wireshark 类似的方式捕获网络流量。
 
 #### <a name="configure-a-web-tracing-session-using-microsoft-message-analyzer"></a>使用 Microsoft Message Analyzer 配置 Web 跟踪会话
-要使用 Microsoft Message Analyzer 为 HTTP 和 HTTPS 通信配置 Web 跟踪会话，请运行 Microsoft Message Analyzer 应用程序的，并在“文件”**** 菜单上单击“捕获/跟踪”****。 在可用的跟踪方案列表中，选择“Web 代理”****。 然后在“跟踪方案配置”**** 面板的“HostnameFilter”**** 文本框中，添加存储终结点的名称（可以在 [Azure 门户](https://portal.azure.com)中查找这些名称）。 例如，如果 Azure 存储帐户的名称是 **contosodata**，则应将以下内容添加到 **HostnameFilter** 文本框：
+要使用 Microsoft Message Analyzer 为 HTTP 和 HTTPS 通信配置 Web 跟踪会话，请运行 Microsoft Message Analyzer 应用程序的，并在“文件”菜单上单击“捕获/跟踪”。 在可用的跟踪方案列表中，选择“Web 代理”。 然后在“跟踪方案配置”面板的“HostnameFilter”文本框中，添加存储终结点的名称（可以在 [Azure 门户](https://portal.azure.com)中查找这些名称）。 例如，如果 Azure 存储帐户的名称是 **contosodata**，则应将以下内容添加到 **HostnameFilter** 文本框：
 
 ```
 contosodata.blob.core.windows.net contosodata.table.core.windows.net contosodata.queue.core.windows.net
@@ -771,7 +772,7 @@ contosodata.blob.core.windows.net contosodata.table.core.windows.net contosodata
 >
 >
 
-准备好开始收集跟踪数据时，请单击“就此开始”**** 按钮。
+准备好开始收集跟踪数据时，请单击“就此开始”按钮。
 
 有关 Microsoft Message Analyzer **Web 代理**跟踪的详细信息，请参阅 [Microsoft-PEF-WebProxy Provider](https://technet.microsoft.com/library/jj674814.aspx)（Microsoft-PEF-WebProxy 提供程序）。
 
@@ -784,7 +785,7 @@ Microsoft Message Analyzer 中内置的 **Web 代理**跟踪基于 Fiddler；它
 
 ![][9]
 
-当在 Microsoft Message Analyzer 中创建跟踪会话时，可以指定筛选器，以减少跟踪中的干扰项量。 在定义跟踪的“捕获/跟踪”**** 页上，单击 **Microsoft-Windows-NDIS-PacketCapture** 旁边的“配置”**** 链接。 下面的屏幕截图显示了筛选三个存储服务的 IP 地址的 TCP 通信的配置：
+当在 Microsoft Message Analyzer 中创建跟踪会话时，可以指定筛选器，以减少跟踪中的干扰项量。 在定义跟踪的“捕获/跟踪”页上，单击 **Microsoft-Windows-NDIS-PacketCapture** 旁边的“配置”链接。 下面的屏幕截图显示了筛选三个存储服务的 IP 地址的 TCP 通信的配置：
 
 ![][10]
 
@@ -795,11 +796,11 @@ Microsoft Message Analyzer 中内置的 **Web 代理**跟踪基于 Fiddler；它
 
 要将存储日志记录数据导入 Excel（从 Blob 存储下载后），请执行以下操作：
 
-* 在“数据”**** 菜单上，单击“从文本”****。
-* 浏览到要查看的日志文件，并单击“导入”****。
-* 在“文本导入向导”**** 的第 1 步中，选择“带分隔符”****。
+* 在“数据”菜单上，单击“从文本”。
+* 浏览到要查看的日志文件，并单击“导入”。
+* 在“文本导入向导”的第 1 步中，选择“带分隔符”。
 
-在“文本导入向导”**** 的第 1 步中，选择“分号”**** 作为唯一的分隔符，并选择双引号作为“文本限定符”****。 然后单击“完成”****，并选择将数据放入工作簿中的位置。
+在“文本导入向导”的第 1 步中，选择“分号”作为唯一的分隔符，并选择双引号作为“文本限定符”。 然后单击“完成”，并选择将数据放入工作簿中的位置。
 
 ### <a name="appendix-5-monitoring-with-application-insights-for-azure-devops"></a><a name="appendix-5"></a>附录 5：使用 Application Insights for Azure DevOps 进行监视
 在性能和可用性监视过程中，还可以使用用于 Azure DevOps 的 Application Insights 功能。 此工具可以：
@@ -811,12 +812,12 @@ Microsoft Message Analyzer 中内置的 **Web 代理**跟踪基于 Fiddler；它
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure 存储中的分析的详细信息，请参阅以下资源：
+有关 Azure 存储中分析的详细信息，请参阅以下资源：
 
-* [监视 Azure 门户中的存储帐户](storage-monitor-storage-account.md)
+* [在 Azure 门户中监视存储帐户](storage-monitor-storage-account.md)
 * [存储分析](storage-analytics.md)
 * [存储分析指标](storage-analytics-metrics.md)
-* [存储分析度量值表架构](/rest/api/storageservices/storage-analytics-metrics-table-schema)
+* [存储分析指标表架构](/rest/api/storageservices/storage-analytics-metrics-table-schema)
 * [存储分析日志](storage-analytics-logging.md)
 * [存储分析日志格式](/rest/api/storageservices/storage-analytics-log-format)
 
@@ -838,46 +839,46 @@ Microsoft Message Analyzer 中内置的 **Web 代理**跟踪基于 Fiddler；它
 [存储日志记录工具]: #storage-logging-tools
 [使用网络日志记录工具]: #using-network-logging-tools
 
-[端对端跟踪]: #end-to-end-tracing
+[端到端跟踪]: #end-to-end-tracing
 [关联日志数据]: #correlating-log-data
 [客户端请求 ID]: #client-request-id
 [服务器请求 ID]: #server-request-id
 [时间戳]: #timestamps
 
 [故障排除指南]: #troubleshooting-guidance
-[指标显示 AverageE2ELatency 较高且 AverageServerLatency 较低]: #metrics-show-high-AverageE2ELatency-and-low-AverageServerLatency
-[指标显示 AverageE2ELatency 和 AverageServerLatency 都较低，但客户端出现高延迟]: #metrics-show-low-AverageE2ELatency-and-low-AverageServerLatency
+[度量值显示高 AverageE2ELatency 和低 AverageServerLatency]: #metrics-show-high-AverageE2ELatency-and-low-AverageServerLatency
+[度量值显示低 AverageE2ELatency 和低 AverageServerLatency，但客户端出现高延迟]: #metrics-show-low-AverageE2ELatency-and-low-AverageServerLatency
 [度量值显示高 AverageServerLatency]: #metrics-show-high-AverageServerLatency
 [队列中的消息传递出现意外延迟]: #you-are-experiencing-unexpected-delays-in-message-delivery
 
 [度量值显示 PercentThrottlingError 增加]: #metrics-show-an-increase-in-PercentThrottlingError
-[PercentThrottlingError 中的暂时性增长]: #transient-increase-in-PercentThrottlingError
-[永久性增加 PercentThrottlingError 错误]: #permanent-increase-in-PercentThrottlingError
+[PercentThrottlingError 暂时增加]: #transient-increase-in-PercentThrottlingError
+[PercentThrottlingError 错误永久增加]: #permanent-increase-in-PercentThrottlingError
 [度量值显示 PercentTimeoutError 增加]: #metrics-show-an-increase-in-PercentTimeoutError
 [度量值显示 PercentNetworkError 增加]: #metrics-show-an-increase-in-PercentNetworkError
 
 [客户端正在接收“HTTP 403 (禁止访问)”消息]: #the-client-is-receiving-403-messages
-[客户端正在接收 "HTTP 404 （未找到）" 消息]: #the-client-is-receiving-404-messages
+[客户端正在接收“HTTP 404 (未找到)”消息]: #the-client-is-receiving-404-messages
 [客户端或其他进程以前删除了该对象]: #client-previously-deleted-the-object
-[共享访问签名（SAS）授权问题]: #SAS-authorization-issue
+[共享访问签名 (SAS) 授权问题]: #SAS-authorization-issue
 [客户端 JavaScript 代码无权访问该对象]: #JavaScript-code-does-not-have-permission
 [网络故障]: #network-failure
-[客户端正在接收 HTTP 409 （冲突）消息]: #the-client-is-receiving-409-messages
+[客户端正在接收“HTTP 409 (冲突)”消息]: #the-client-is-receiving-409-messages
 
 [度量值显示低 PercentSuccess，或者分析日志项包含事务状态为 ClientOtherErrors 的操作]: #metrics-show-low-percent-success
 [容量度量值显示存储容量使用量意外增加]: #capacity-metrics-show-an-unexpected-increase
 [该问题是由于使用存储模拟器进行开发或测试而导致]: #your-issue-arises-from-using-the-storage-emulator
-[功能 "X" 在存储模拟器中无法正常工作]: #feature-X-is-not-working
-[使用存储模拟器时出现错误 "其中一个 HTTP 标头的值的格式不正确"]: #error-HTTP-header-not-correct-format
+[功能“X”在存储模拟器中无法正常工作]: #feature-X-is-not-working
+[使用存储模拟器时出现错误“其中一个 HTTP 标头值的格式不正确”]: #error-HTTP-header-not-correct-format
 [运行存储模拟器需要管理权限]: #storage-emulator-requires-administrative-privileges
 [安装 Azure SDK for .NET 时遇到问题]: #you-are-encountering-problems-installing-the-Windows-Azure-SDK
-[存储服务存在不同的问题]: #you-have-a-different-issue-with-a-storage-service
+[遇到了其他存储服务问题]: #you-have-a-different-issue-with-a-storage-service
 
 [附录]: #appendices
-[附录1：使用 Fiddler 捕获 HTTP 和 HTTPS 流量]: #appendix-1
-[附录2：使用 Wireshark 捕获网络流量]: #appendix-2
+[附录 1：使用 Fiddler 捕获 HTTP 和 HTTPS 流量]: #appendix-1
+[附录 2：使用 Wireshark 捕获网络流量]: #appendix-2
 [附录 3：使用 Microsoft Message Analyzer 捕获网络流量]: #appendix-3
-[附录4：使用 Excel 查看度量值和日志数据]: #appendix-4
+[附录 4：使用 Excel 查看指标和日志数据]: #appendix-4
 [附录 5：使用 Application Insights for Azure DevOps 进行监视]: #appendix-5
 
 <!--Image references-->

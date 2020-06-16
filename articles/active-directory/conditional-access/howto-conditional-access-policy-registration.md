@@ -4,19 +4,19 @@ description: 创建用于安全信息注册的自定义条件访问策略
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 03/25/2020
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d9eb3c8f34308271eb216cad25a5db4a62d03cb
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: acf17f4cef43fe4221781deedb130ef587208550
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845367"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993739"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>条件访问：保护安全信息注册
 
