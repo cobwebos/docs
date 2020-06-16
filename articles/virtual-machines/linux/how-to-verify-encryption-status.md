@@ -1,89 +1,73 @@
 ---
-title: 如何验证 Linux 的加密状态
-description: 本文提供了有关验证平台和操作系统级别的加密状态的说明。
+title: 验证 Linux 的加密状态 -Azure 磁盘加密
+description: 本文提供了从平台和 OS 级别验证加密状态的说明。
 author: kailashmsft
 ms.service: security
 ms.topic: article
 ms.author: kaib
 ms.date: 03/11/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0aaa32c46d915eafffcfac9d95cfdd3a24d4086d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e2916a71f167c415f6bf1dde8ff82a38b0e0557c
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80123421"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873986"
 ---
-# <a name="how-to-verify-encryption-status-for-linux"></a>如何验证 Linux 的加密状态 
+# <a name="verify-encryption-status-for-linux"></a>验证 Linux 的加密状态 
 
-**此方案适用于 ADE 双重传递和单步扩展。**  
-此文档作用域是使用不同方法验证虚拟机的加密状态。
+本文介绍了如何使用不同的方法来验证虚拟机的加密状态：Azure 门户、PowerShell、Azure CLI 或虚拟机 (VM) 的操作系统。 
 
-### <a name="environment"></a>环境
+可以通过以下任一方法在加密期间或之后验证加密状态：
 
-- Linux 分布
+- 检查附加到特定 VM 的磁盘。 
+- 查询每个磁盘上的加密设置，无论是否已附加该磁盘。
 
-### <a name="procedure"></a>过程
-
-虚拟机已使用双通道或单步进行了加密。
-
-加密状态可以在使用不同方法加密期间或之后进行验证。
+此方案适用于 Azure 磁盘加密双重传递和单次传递扩展。 此方案下的唯一环境是 Linux 发行版。
 
 >[!NOTE] 
->我们将在整个文档中使用变量，并相应地替换值。
+>我们将在本文中使用变量。 请相应地替换值。
 
-### <a name="verification"></a>验证
+## <a name="portal"></a>门户
 
-可以通过门户、PowerShell、AZ CLI 和或 VM OS 端完成验证。 
+在 Azure 门户的“扩展”部分中，选择列表中的 Azure 磁盘加密扩展。 “状态消息”信息指示当前加密状态：
 
-可以通过检查附加到特定 VM 的磁盘来执行此验证。 
+![门户检查（突出显示状态、版本和状态消息）](./media/disk-encryption/verify-encryption-linux/portal-check-001.png)
 
-或通过查询每个单独磁盘上的加密设置，无论磁盘是附加磁盘还是未附加磁盘。
+在扩展列表中，可以看到相应的 Azure 磁盘加密扩展版本。 版本 0.x 对应于 Azure 磁盘加密双重传递，版本 1.x 对应于 Azure 磁盘加密单次传递。
 
-以下不同的验证方法：
+选择扩展，然后选择“查看详细状态”，可获取更多详细信息。 加密过程的详细状态以 JSON 格式显示。
 
-## <a name="using-the-portal"></a>使用门户
+![门户检查（突出显示“查看详细状态”链接）](./media/disk-encryption/verify-encryption-linux/portal-check-002.png)
 
-通过检查 Azure 门户上的扩展部分来验证加密状态。
+![JSON 格式的详细状态](./media/disk-encryption/verify-encryption-linux/portal-check-003.png)
 
-在**扩展**部分中，你将看到列出的 ADE 扩展。 
+验证加密状态的另一种方法是查看“磁盘设置”部分。
 
-单击它并查看**状态消息**，它将指示当前加密状态：
-
-![门户第1号](./media/disk-encryption/verify-encryption-linux/portal-check-001.png)
-
-在扩展列表中，你将看到相应的 ADE 扩展版本。 版本 0. x 对应于 ADE 双通道，版本1.x 对应于 ADE 单步。
-
-可以获取更多详细信息，单击扩展，然后单击 "*查看详细状态*"。
-
-你将看到 json 格式的加密过程的更详细状态：
-
-![门户第2号](./media/disk-encryption/verify-encryption-linux/portal-check-002.png)
-
-![门户第3号](./media/disk-encryption/verify-encryption-linux/portal-check-003.png)
-
-验证加密状态的另一种方法是查看**磁盘**部分。
-
-![门户第4号](./media/disk-encryption/verify-encryption-linux/portal-check-004.png)
+![OS 磁盘和数据磁盘的加密状态](./media/disk-encryption/verify-encryption-linux/portal-check-004.png)
 
 >[!NOTE] 
-> 此状态意味着磁盘具有标记的加密设置，但不是在 OS 级别对它们进行了加密。 按照设计，磁盘会先进行标记，以后再加密。 如果加密过程失败，则磁盘可能最终已标记但未加密。 若要确认磁盘是否确实已加密，可以在 OS 级别仔细检查每个磁盘的加密。
+> 此状态表示磁盘已标记加密设置，而不是在 OS 级别已对其进行加密。
+>
+> 根据设计，先标记磁盘，再加密磁盘。 如果加密过程失败，则磁盘可能被标记，但未被加密。 
+>
+> 若要确认磁盘是否已真正加密，可以在 OS 级别仔细检查每个磁盘的加密状态。
 
-## <a name="using-powershell"></a>使用 PowerShell
+## <a name="powershell"></a>PowerShell
 
-你可以使用以下 PowerShell 命令验证加密 VM 的**一般**加密状态：
+可以使用以下 PowerShell 命令验证已加密 VM 的“常规”加密状态：
 
 ```azurepowershell
    $VMNAME="VMNAME"
    $RGNAME="RGNAME"
    Get-AzVmDiskEncryptionStatus -ResourceGroupName  ${RGNAME} -VMName ${VMNAME}
 ```
-![检查 PowerShell 1](./media/disk-encryption/verify-encryption-linux/verify-status-ps-01.png)
+![PowerShell 中的常规加密状态](./media/disk-encryption/verify-encryption-linux/verify-status-ps-01.png)
 
-你可以使用以下 PowerShell 命令从每个单独的磁盘捕获加密设置：
+可以使用以下 PowerShell 命令捕获每个磁盘的加密设置。
 
-### <a name="single-pass"></a>单步
-如果是单步执行，则加密设置是每个磁盘（OS 和数据）上的戳记，可以按如下方式捕获单个传递中的 OS 磁盘加密设置：
+### <a name="single-pass"></a>单次传递
+在单次传递中，将在每个磁盘（OS 和数据）上标记加密设置。 可以按如下方式在单次传递中捕获 OS 磁盘的加密设置：
 
 ``` powershell
 $RGNAME = "RGNAME"
@@ -101,13 +85,13 @@ $VM = Get-AzVM -Name ${VMNAME} -ResourceGroupName ${RGNAME}
  Write-Host "Key URL:" $Sourcedisk.EncryptionSettingsCollection.EncryptionSettings.KeyEncryptionKey.KeyUrl
  Write-Host "============================================================================================================================================================="
 ```
-![验证 OS 单步处理01](./media/disk-encryption/verify-encryption-linux/verify-os-single-ps-001.png)
+![OS 磁盘的加密设置](./media/disk-encryption/verify-encryption-linux/verify-os-single-ps-001.png)
 
-如果磁盘未标记加密设置，则输出将为空，如下所示：
+如果磁盘未标记加密设置，则输出将为空：
 
-![OS 加密设置2](./media/disk-encryption/verify-encryption-linux/os-encryption-settings-2.png)
+![输出为空](./media/disk-encryption/verify-encryption-linux/os-encryption-settings-2.png)
 
-捕获数据磁盘加密设置：
+使用以下命令捕获数据磁盘的加密设置：
 
 ```azurepowershell
 $RGNAME = "RGNAME"
@@ -128,12 +112,12 @@ $VM = Get-AzVM -Name ${VMNAME} -ResourceGroupName ${RGNAME}
  Write-Host "============================================================================================================================================================="
  }
 ```
-![验证数据单个 ps 001](./media/disk-encryption/verify-encryption-linux/verify-data-single-ps-001.png)
+![数据磁盘的加密设置](./media/disk-encryption/verify-encryption-linux/verify-data-single-ps-001.png)
 
 ### <a name="dual-pass"></a>双重传递
-在双重传递中，加密设置在 VM 模型中标记，而不是在每个单独的磁盘上。
+在双重传递中，将在 VM 模型中标记加密设置，而不是在每个单独的磁盘上进行标记。
 
-若要验证加密设置是否已在双重通过中加盖标记，可以使用以下命令：
+若要验证是否已在双重传递中标记了加密设置，请使用以下命令：
 
 ```azurepowershell
 $RGNAME = "RGNAME"
@@ -152,11 +136,11 @@ Write-Host "Secret URL:" $Sourcedisk.EncryptionSettingsCollection.EncryptionSett
 Write-Host "Key URL:" $Sourcedisk.EncryptionSettingsCollection.EncryptionSettings.KeyEncryptionKey.KeyUrl
 Write-Host "============================================================================================================================================================="
 ```
-![验证双重 pass PowerShell 1](./media/disk-encryption/verify-encryption-linux/verify-dual-ps-001.png)
+![双重传递中的加密设置](./media/disk-encryption/verify-encryption-linux/verify-dual-ps-001.png)
 
-### <a name="unattached-disks"></a>未附加磁盘
+### <a name="unattached-disks"></a>未附加的磁盘
 
-检查未连接到 VM 的磁盘的加密设置。
+检查未附加到 VM 的磁盘的加密设置。
 
 ### <a name="managed-disks"></a>托管磁盘
 ```powershell
@@ -171,19 +155,19 @@ Write-Host "Secret URL:" $Sourcedisk.EncryptionSettingsCollection.EncryptionSett
 Write-Host "Key URL:" $Sourcedisk.EncryptionSettingsCollection.EncryptionSettings.KeyEncryptionKey.KeyUrl
 Write-Host "============================================================================================================================================================="
 ```
-## <a name="using-az-cli"></a>使用 AZ CLI
+## <a name="azure-cli"></a>Azure CLI
 
-可以使用以下 AZ CLI 命令验证加密 VM 的**一般**加密状态：
+可以使用以下 Azure CLI 命令验证已加密 VM 的“常规”加密状态：
 
 ```bash
 VMNAME="VMNAME"
 RGNAME="RGNAME"
 az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} --query "substatus"
 ```
-![使用 CLI 验证常规 ](./media/disk-encryption/verify-encryption-linux/verify-gen-cli.png)
+![Azure CLI 中的常规加密状态 ](./media/disk-encryption/verify-encryption-linux/verify-gen-cli.png)
 
-### <a name="single-pass"></a>单个阶段
-你可以使用以下 AZ CLI 命令从每个单独的磁盘验证加密设置：
+### <a name="single-pass"></a>单次传递
+可以使用以下 Azure CLI 命令验证每个磁盘的加密设置：
 
 ```bash
 az vm encryption show -g ${RGNAME} -n ${VMNAME} --query "disks[*].[name, statuses[*].displayStatus]"  -o table
@@ -192,9 +176,9 @@ az vm encryption show -g ${RGNAME} -n ${VMNAME} --query "disks[*].[name, statuse
 ![数据加密设置](./media/disk-encryption/verify-encryption-linux/data-encryption-settings-2.png)
 
 >[!IMPORTANT]
-> 如果磁盘没有标记加密设置，它将显示为 "未加密磁盘"
+> 如果磁盘未标记加密设置，将显示文本“磁盘未加密”。
 
-详细状态和加密设置：
+可使用以下命令获取详细状态和加密设置。
 
 OS 磁盘：
 
@@ -214,7 +198,7 @@ echo "==========================================================================
 done
 ```
 
-![OSSingleCLI](./media/disk-encryption/verify-encryption-linux/os-single-cli.png)
+![OS 磁盘的详细状态和加密设置](./media/disk-encryption/verify-encryption-linux/os-single-cli.png)
 
 数据磁盘：
 
@@ -234,7 +218,7 @@ echo "==========================================================================
 done
 ```
 
-![单数据 CLI ](./media/disk-encryption/verify-encryption-linux/data-single-cli.png)
+![数据磁盘的详细状态和加密设置](./media/disk-encryption/verify-encryption-linux/data-single-cli.png)
 
 ### <a name="dual-pass"></a>双重传递
 
@@ -242,7 +226,9 @@ done
 az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} -o table
 ```
 
-![使用 CLI ](./media/disk-encryption/verify-encryption-linux/verify-gen-dual-cli.png)验证常规双重，还可以在 OS 磁盘的 VM 模型存储配置文件中检查加密设置：
+![通过 Azure CLI 进行双重传递的常规加密设置](./media/disk-encryption/verify-encryption-linux/verify-gen-dual-cli.png)
+
+还可在 OS 磁盘的 VM 模型存储配置文件上检查加密设置：
 
 ```bash
 disk=`az vm show -g ${RGNAME} -n ${VMNAME} --query storageProfile.osDisk.name -o tsv`
@@ -257,11 +243,11 @@ echo "==========================================================================
 done
 ```
 
-![使用 CLI 验证虚拟机配置文件双重 ](./media/disk-encryption/verify-encryption-linux/verify-vm-profile-dual-cli.png)
+![通过 Azure CLI 进行双重传递的 VM 配置文件](./media/disk-encryption/verify-encryption-linux/verify-vm-profile-dual-cli.png)
 
-### <a name="unattached-disks"></a>未附加磁盘
+### <a name="unattached-disks"></a>未附加的磁盘
 
-检查未连接到 VM 的磁盘的加密设置。
+检查未附加到 VM 的磁盘的加密设置。
 
 ### <a name="managed-disks"></a>托管磁盘
 
@@ -282,83 +268,76 @@ echo "==========================================================================
 
 若要获取特定磁盘的详细信息，需要提供：
 
-包含磁盘的存储帐户的 ID。
-该特定存储帐户的连接字符串。
-存储磁盘的容器的名称。
-磁盘名称。
+- 内含磁盘的存储帐户的 ID。
+- 该特定存储帐户的连接字符串。
+- 存储该磁盘的容器的名称。
+- 磁盘名称。
 
-此命令将列出所有存储帐户的所有 Id：
+此命令可列出所有存储帐户的所有 ID：
 
 ```bash
 az storage account list --query [].[id] -o tsv
 ```
-存储帐户 Id 按以下形式列出：
+存储帐户 ID 采用以下格式列出：
 
-/subscriptions/\<订阅 id>/resourcegroups/\<资源组名称>/providers/microsoft.storage/storageaccounts/\<存储帐户名称>
+/subscriptions/\<订阅 ID>/resourceGroups/\<资源组名称>/providers/Microsoft.Storage/storageAccounts/\<存储帐户名称>
 
 选择相应的 ID，并将其存储在变量上：
 ```bash
 id="/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/<storage account name>"
 ```
-连接字符串。
 
-此命令将获取一个特定存储帐户的连接字符串，并将其存储在变量上：
+此命令可获取某个特定存储帐户的连接字符串，并将其存储在变量上：
 
 ```bash
 ConnectionString=$(az storage account show-connection-string --ids $id --query connectionString -o tsv)
 ```
 
-容器名称。
-
-以下命令列出存储帐户下的所有容器：
+以下命令可列出存储帐户下的所有容器：
 ```bash
 az storage container list --connection-string $ConnectionString --query [].[name] -o tsv
 ```
-用于磁盘的容器通常命名为 "vhd"
+用于磁盘的容器通常命名为“vhds”。
 
-将容器名称存储在变量上 
+将容器名称存储在变量上： 
 ```bash
 ContainerName="name of the container"
 ```
 
-磁盘名称。
-
-使用此命令列出特定容器中的所有 blob
+此命令可列出特定容器上的所有 blob：
 ```bash 
 az storage blob list -c ${ContainerName} --connection-string $ConnectionString --query [].[name] -o tsv
 ```
-选择要查询的磁盘，并将其名称存储在变量上。
+选择要查询的磁盘，并将其名称存储在变量上：
 ```bash
 DiskName="diskname.vhd"
 ```
-查询磁盘加密设置
+查询磁盘加密设置：
 ```bash
 az storage blob show -c ${ContainerName} --connection-string ${ConnectionString} -n ${DiskName} --query metadata.DiskEncryptionSettings
 ```
 
-## <a name="from-the-os"></a>从操作系统
-验证数据磁盘分区是否已加密（并且 OS 磁盘不是）
+## <a name="operating-system"></a>操作系统
+验证数据磁盘分区是否已加密（而 OS 磁盘未加密）。
 
-分区/磁盘经过加密后，它将显示为**dm-crypt**类型，在未加密时，它将显示为**部分/磁盘**类型
+如果分区或磁盘已加密，它将显示为 crypt 类型。 如果未加密，它将显示为 part/disk 类型。
 
 ``` bash
 lsblk
 ```
 
-![Os Dm-crypt 层 ](./media/disk-encryption/verify-encryption-linux/verify-os-crypt-layer.png)
+![分区的 OS crypt 层](./media/disk-encryption/verify-encryption-linux/verify-os-crypt-layer.png)
 
-你可以使用以下 "lsblk" 变体获取更多详细信息。 
+可以使用以下 lsblk 变体获取更多详细信息。 
 
-你将看到一个由扩展插件装载的**dm-crypt**类型层。
-
-以下示例显示了逻辑卷和具有 "**\_加密 LUKS FSTYPE**" 的正常磁盘。
+你将看到一个由扩展装载的 crypt 类型层。 以下示例显示了类型为 crypto\_LUKS FSTYPE 的逻辑卷和普通磁盘。
 
 ```bash
 lsblk -o NAME,TYPE,FSTYPE,LABEL,SIZE,RO,MOUNTPOINT
 ```
-![Os Dm-crypt 层2](./media/disk-encryption/verify-encryption-linux/verify-os-crypt-layer-2.png)
+![逻辑卷和普通磁盘的 OS crypt 层](./media/disk-encryption/verify-encryption-linux/verify-os-crypt-layer-2.png)
 
-作为额外步骤，还可以验证数据磁盘是否已加载任何密钥
+作为额外步骤，可以验证数据磁盘是否已加载任何密钥：
 
 ``` bash
 cryptsetup luksDump /dev/VGNAME/LVNAME
@@ -368,7 +347,7 @@ cryptsetup luksDump /dev/VGNAME/LVNAME
 cryptsetup luksDump /dev/sdd1
 ```
 
-以及哪些 dm 设备列为 dm-crypt
+可以检查哪些 dm 设备作为 crypt 列出：
 
 ```bash
 dmsetup ls --target crypt

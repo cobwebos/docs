@@ -4,12 +4,12 @@ description: 了解如何针对门户开发安装 Azure Functions 的 Durable Fu
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 6416ae4aba8b045c6c4fb0fe6557bdcd1efb3a9b
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7aa283480d95693e2630e24d5642fc7cb909b34b
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83120128"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848754"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>使用 Azure 门户创建 Durable Functions
 
@@ -57,6 +57,8 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 4. 上传你的 `package.json` 后，从 Kudu 远程执行控制台中运行 `npm install` 命令。
 
    ![Kudu 运行 npm install](./media/durable-functions-create-portal/kudu-npm-install.png)
+   
+5. 最后，通过添加值为 `true` 的应用设置 `FUNCTIONS_V2_COMPATIBILITY_MODE`（启用兼容模式）[https://docs.microsoft.com/en-us/azure/azure-functions/durable/quickstart-js-vscode#enable-compatibility-mode-1 ]。
 
 ## <a name="create-an-orchestrator-function"></a>创建一个业务流程协调程序函数
 

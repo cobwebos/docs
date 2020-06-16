@@ -1,6 +1,6 @@
 ---
-title: Azure Vm 的公共终结点连接&标准 ILB 在 SAP HA 方案中
-description: 在 SAP 高可用性方案中使用 Azure 标准负载均衡器虚拟机的公共终结点连接
+title: SAP HA 方案中的 Azure VM 公共终结点连接和标准 ILB
+description: SAP 高可用性方案中使用 Azure 标准负载均衡器的虚拟机的公共终结点连接
 services: virtual-machines-windows,virtual-network,storage,
 documentationcenter: saponazure
 author: rdeltcheva
@@ -13,182 +13,182 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/07/2020
+ms.date: 05/12/2020
 ms.author: radeltch
-ms.openlocfilehash: 4fd01764c183098a8bd78d502eea7ab173fa22cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a89c848f5c6e57aba01c7156cdc61f9e69c30d0b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80293917"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660176"
 ---
-# <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>在 SAP 高可用性方案中使用 Azure 标准负载均衡器虚拟机的公共终结点连接
+# <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>SAP 高可用性方案中使用 Azure 标准负载均衡器的虚拟机的公共终结点连接
 
-本文的作用是介绍配置，这些配置将启用到公共终结点的出站连接。 这些配置主要在高可用性环境中，Pacemaker 用于 SUSE/RHEL。  
+本文的范围是介绍配置，这些配置启用出站连接到一个或多个公共终结点。 这些配置主要位于使用适用于 SUSE/RHEL 的 Pacemaker 的高可用性环境中。  
 
-如果你在高可用性解决方案中将 Pacemaker 与 Azure 隔离代理配合使用，则 Vm 必须与 Azure 管理 API 建立出站连接。  
-本文提供了一些选项，使你能够选择最适合你的方案的选项。  
+如果在高可用性解决方案中结合使用 Pacemaker 与 Azure 围墙代理，VM 必须出站连接到 Azure 管理 API。  
+本文介绍了多种方式，可便于你选择最适合自己方案的方式。  
 
 ## <a name="overview"></a>概述
 
-通过群集实现 SAP 解决方案的高可用性时，必需的组件之一是[Azure 负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)。 Azure 提供两个负载均衡器 Sku：标准版和基本版。
+通过群集实现 SAP 高可用性解决方案时，一个必要的组件是 [Azure 负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)。 Azure 提供了两种负载均衡器 SKU：标准 SKU 和基本 SKU。
 
-标准 Azure 负载均衡器与基本负载均衡器相比具有一些优势。 例如，它跨 Azure 可用性区域工作，它具有更好的监视和日志记录功能，可更轻松地进行故障排除，减少延迟。 "HA 端口" 功能涵盖所有端口，也就是说，不再需要列出所有单个端口。  
+与基本负载均衡器相比，标准 Azure 负载均衡器具有一些优势。 例如，它可以跨 Azure 可用性区域工作，它有更好的监视和日志记录功能，可便于更轻松地进行故障排除，从而减少了延迟。 “HA 端口”功能涵盖所有端口；也就是说，不再需要列出所有单独的端口。  
 
-Azure 负载均衡器的基本 SKU 和标准 SKU 之间存在一些重要的差异。 其中之一是处理到公共终结点的出站流量。 有关完整的基本和标准 SKU 负载均衡器比较，请参阅[负载均衡器 SKU 比较](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)。  
+Azure 负载均衡器的基本 SKU 和标准 SKU 之间有一些重要的区别。 其中之一是处理流向公共终结点的出站流量。 有关基本与标准 SKU 负载均衡器的完整比较，请参阅[负载均衡器 SKU 比较](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)。  
  
-如果没有公共 IP 地址的 Vm 放在内部（无公共 IP 地址）的后端池（无公共 IP 地址）标准 Azure 负载均衡器中，则没有到公共终结点的出站连接，除非完成了其他配置。  
+如果没有公共 IP 地址的 VM 被放在内部（无公共 IP 地址）标准 Azure 负载均衡器的后端池中，就不会出站连接到公共终结点，除非完成了额外的配置。  
 
-如果为 VM 分配了公共 IP 地址，或者 VM 位于具有公共 IP 地址的负载均衡器的后端池，则它将与公共终结点建立出站连接。  
+如果 VM 分配有公共 IP 地址，或者 VM 位于具有公共 IP 地址的负载均衡器的后端池中，它就会出站连接到公共终结点。  
 
-SAP 系统通常包含敏感的业务数据。 对于托管 SAP 系统的 Vm 具有公共 IP 地址，很少被接受。 同时，还有一些方案需要从 VM 到公共终结点的出站连接。  
+SAP 系统通常包含敏感的业务数据。 托管 SAP 系统的 VM 具有公共 IP 地址是很难接受的。 同时，有一些方案需要从 VM 出站连接到公共终结点。  
 
 需要访问 Azure 公共终结点的方案示例包括：  
-- 在 Pacemaker 群集中使用 Azure 隔离代理作为防护机制
+- 在 Pacemaker 群集中使用 Azure 围墙代理作为围墙机制
 - Azure 备份
 - Azure Site Recovery  
 - 使用公共存储库修补操作系统
-- SAP 应用程序数据流可能需要到公共终结点的出站连接
+- SAP 应用程序数据流可能需要出站连接到公共终结点
 
-如果 SAP 部署不需要与公共终结点建立出站连接，则无需执行其他配置。 为实现高可用性方案创建内部标准 SKU Azure 负载均衡器已经足够了，前提是也不需要来自公共终结点的入站连接。  
+如果 SAP 部署不需要出站连接到公共终结点，则无需实现额外的配置。 假设也不需要来自公共终结点的入站连接，那么为高可用性方案创建内部标准 SKU Azure 负载均衡器就足够了。  
 
 > [!Note]
-> 如果没有公共 IP 地址的 Vm 放在内部（无公共 IP 地址）标准 Azure 负载均衡器的后端池中，则不会有出站 internet 连接，除非执行其他配置以允许路由到公共终结点。  
->如果 Vm 具有公共 IP 地址，或已在具有公共 IP 地址的 Azure 负载均衡器的后端池中，则 VM 将已具有到公共终结点的出站连接。
+> 如果没有公共 IP 地址的 VM 被放在内部（无公共 IP 地址）标准 Azure 负载均衡器的后端池中，就不会有出站 Internet 连接，除非执行额外的配置来允许路由到公共终结点。  
+>如果 VM 具有公共 IP 地址，或者 VM 已位于具有公共 IP 地址的负载均衡器的后端池中，那么 VM 就已出站连接到公共终结点。
 
 
-首先阅读以下文章：
+请先阅读以下文章：
 
 * Azure 标准负载均衡器
-  * [Azure 标准负载均衡器概述](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)-Azure 标准负载均衡器、重要原则、概念和教程的全面概述 
-  * [Azure 中的出站连接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#scenarios)-如何实现 azure 中的出站连接的方案
-  * [负载均衡器出站规则](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)-说明负载均衡器出站规则的概念以及如何创建出站规则
+  * [Azure 标准负载均衡器概述](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) - 全面概述了 Azure 标准负载均衡器、重要原则、概念和教程 
+  * [Azure 中的出站连接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#scenarios) - 关于如何在 Azure 中实现出站连接的方案
+  * [负载均衡器出站规则](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview) - 解释了负载均衡器出站规则的概念，以及如何创建出站规则
 * Azure 防火墙
-  * [Azure 防火墙概述](https://docs.microsoft.com/azure/firewall/overview)-azure 防火墙概述
-  * [教程：部署和配置 Azure 防火墙](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)-有关如何配置 azure 防火墙的说明，请 Azure 门户
-* [虚拟网络-用户定义的规则](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined)-Azure 路由概念和规则  
-* [安全组服务标记](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)-如何简化网络安全组和防火墙配置的服务标记
+  * [Azure 防火墙概述](https://docs.microsoft.com/azure/firewall/overview) - 概述了 Azure 防火墙
+  * [教程：部署和配置 Azure 防火墙](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal) - 介绍了如何通过 Azure 门户配置 Azure 防火墙
+* [虚拟网络 - 用户定义规则](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined) - Azure 路由概念和规则  
+* [安全组服务标记](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) - 如何使用服务标记来简化网络安全组和防火墙配置
 
-## <a name="additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>Internet 的出站连接的其他外部 Azure 标准负载均衡器
+## <a name="additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>用于出站连接到 Internet 的其他外部 Azure 标准负载均衡器
 
-若要实现到公共终结点的出站连接，而不允许从公共端点到 VM 的入站连接，一种选择是创建具有公共 IP 地址的第二个负载均衡器，将 Vm 添加到第二个负载均衡器的后端池，并仅定义[出站规则](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)。  
-使用[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview)控制可从 VM 出站调用访问的公共终结点。  
-有关详细信息，请参阅文档[出站连接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#scenarios)中的方案2。  
-此配置如下所示：  
+若要在不允许从公共终结点入站连接到 VM 的情况下实现出站连接到公共终结点，一种方式是创建具有公共 IP 地址的第二个负载均衡器，将 VM 添加到第二个负载均衡器的后端池，并且只定义[出站规则](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)。  
+使用[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview)来控制可供来自 VM 的出站调用进行访问的公共终结点。  
+有关详细信息，请参阅[出站连接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#scenarios)文档中的“方案 2”。  
+配置如下所示：  
 
-![控制与具有网络安全组的公共终结点的连接](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-public.png)
+![使用网络安全组控制与公共终结点的连接](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-public.png)
 
 ### <a name="important-considerations"></a>重要注意事项
 
-- 对于同一子网中的多个 Vm，可以使用一个额外的公共负载均衡器来实现到公共终结点的出站连接，并优化成本  
-- 使用[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview)控制哪些公共终结点可从 vm 中访问。 可以将网络安全组分配给子网，也可以分配给每个虚拟机。 如果可能，请使用[服务标记](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)降低安全规则的复杂性。  
-- 使用公共 IP 地址和出站规则的 Azure 标准负载均衡器可直接访问公共终结点。 如果你有公司安全要求，通过集中式公司解决方案实现审核和日志记录，则你可能无法在此方案中满足此要求。  
+- 可以为同一子网中的多个 VM 使用一个额外的公共负载均衡器，以实现出站连接到公共终结点并优化成本  
+- 使用[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview)来控制可以从 VM 访问哪些公共终结点。 可以将网络安全组分配给子网，也可以分配给每个 VM。 尽可能使用[服务标记](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)，以降低安全规则的复杂度。  
+- 使用具有公共 IP 地址和出站规则的 Azure 标准负载均衡器，可以直接访问公共终结点。 如果你有企业安全要求，即所有出站流量都必须通过集中式企业解决方案以供进行审核和日志记录，那么此方案可能无法满足要求。  
 
 >[!TIP]
->如果可能，请使用[服务标记](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)降低网络安全组的复杂性。 
+>尽可能使用[服务标记](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)，以降低网络安全组的复杂度。 
 
 ### <a name="deployment-steps"></a>部署步骤
 
 1. 创建负载均衡器  
-   1. 在[Azure 门户](https://portal.azure.com)中，单击 "所有资源"、"添加"，然后搜索 "**负载均衡器**"  
+   1. 在 [Azure 门户](https://portal.azure.com)中，依次单击“所有资源”和“添加”，然后搜索“负载均衡器”  
    1. 单击“创建”  
-   1. 负载均衡器名称**MyPublicILB**  
-   1. 选择 "**公共**" 作为类型，"**标准**" 作为 SKU  
-   1. 选择 "**创建公共 IP 地址**" 并指定为名称**MyPublicILBFrondEndIP**  
-   1. 选择**区域冗余**作为可用性区域  
-   1. 单击 "查看和创建"，然后单击 "创建"  
-2. 创建后端池**MyBackendPoolOfPublicILB**并添加 vm。  
+   1. 负载均衡器名称 MyPublicILB  
+   1. 选择“公共”作为类型，并选择“标准”作为 SKU  
+   1. 选择“创建公共 IP 地址”，并将名称指定为“MyPublicILBFrondEndIP”  
+   1. 选择“区域冗余”作为可用性区域  
+   1. 依次单击“审阅 + 创建”和“创建”  
+2. 创建后端池 MyBackendPoolOfPublicILB，然后添加 VM。  
    1. 选择虚拟网络  
-   1. 选择 Vm 及其 IP 地址，并将其添加到后端池  
-3. [创建出站规则](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-cli#create-outbound-rule)。 目前不能从 Azure 门户创建出站规则。 您可以[Azure CLI](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)创建出站规则。  
+   1. 选择 VM 及其 IP 地址，然后将它们添加到后端池  
+3. [创建出站规则](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-cli#create-outbound-rule)。 暂无法在 Azure 门户中创建出站规则。 可以使用 [Azure CLI](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) 创建出站规则。  
 
    ```azurecli
     az network lb outbound-rule create --address-pool MyBackendPoolOfPublicILB --frontend-ip-configs MyPublicILBFrondEndIP --idle-timeout 30 --lb-name MyPublicILB --name MyOutBoundRules  --outbound-ports 10000 --enable-tcp-reset true --protocol All --resource-group MyResourceGroup
    ```
 
-4. 创建网络安全组规则，以限制对特定公用终结点的访问。 如果存在现有的网络安全组，则可以对其进行调整。 下面的示例演示如何启用对 Azure 管理 API 的访问权限： 
-   1. 导航到网络安全组
-   1. 单击 "出站安全规则"
-   1. 添加规则以**拒绝**对**Internet**的所有出站访问。
-   1. 添加一个规则以**允许**访问**AzureCloud**，优先级低于规则的优先级，拒绝所有 internet 访问。
+4. 创建网络安全组规则，以限制对特定公共终结点的访问。 如果现有网络安全组，可以对它进行调整。 下面的示例展示了如何启用对 Azure 管理 API 的访问： 
+   1. 转到“网络安全组”
+   1. 单击“出站安全规则”
+   1. 添加规则来拒绝所有对 Internet 的出站访问。
+   1. 添加规则来允许对 AzureCloud 的访问，此规则的优先级低于拒绝所有对 Internet 的访问的规则。
 
 
    出站安全规则如下所示： 
 
-   ![具有公共 IP 的第二个负载均衡器的出站连接](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-network-security-groups.png)
+   ![使用具有公共 IP 的第二个负载均衡器进行出站连接](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-network-security-groups.png)
 
-   有关 Azure 网络安全组的详细信息，请参阅[安全组](https://docs.microsoft.com/azure/virtual-network/security-overview)。 
+   若要详细了解 Azure 网络安全组，请参阅[安全组](https://docs.microsoft.com/azure/virtual-network/security-overview)。 
 
-## <a name="azure-firewall-for-outbound-connections-to-internet"></a>用于与 internet 建立出站连接的 Azure 防火墙
+## <a name="azure-firewall-for-outbound-connections-to-internet"></a>用于出站连接到 Internet 的 Azure 防火墙
 
-若要实现到公共终结点的出站连接，而不允许从公共终结点到 VM 的入站连接，另一个选项是通过 Azure 防火墙。 Azure 防火墙是一种托管服务，具有内置的高可用性，可跨多个可用性区域。  
-还需要部署[用户定义的路由](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes)，该路由与部署 Vm 和 azure 负载均衡器的子网相关联，指向 azure 防火墙，通过 azure 防火墙路由流量。  
-有关如何部署 Azure 防火墙的详细信息，请参阅[部署和配置 Azure 防火墙](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)。  
+若要在不允许从公共终结点入站连接到 VM 的情况下实现出站连接到公共终结点，另一种方式是使用 Azure 防火墙。 Azure 防火墙是一种托管服务，具有内置的高可用性，可以跨越多个可用性区域。  
+还需要部署[用户定义路由](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes)，它与其中部署 VM 和 Azure 负载均衡器的子网相关联，同时指向 Azure 防火墙，以便通过 Azure 防火墙路由流量。  
+若要详细了解如何部署 Azure 防火墙，请参阅[部署和配置 Azure 防火墙](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)。  
 
 体系结构如下所示：
 
-![与 Azure 防火墙的出站连接](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall.png)
+![使用 Azure 防火墙进行出站连接](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall.png)
 
 ### <a name="important-considerations"></a>重要注意事项
 
-- Azure 防火墙是云本机服务，具有内置的高可用性，它支持区域部署。
-- 需要其他必须命名为 AzureFirewallSubnet 的子网。 
-- 如果将较大的数据集传输到 SAP Vm 所在的虚拟网络的出站、其他虚拟网络中的 VM 或公用终结点，则它可能不是经济高效的解决方案。 其中一个示例是跨虚拟网络复制较大的备份。 有关详细信息，请参阅 Azure 防火墙定价。  
-- 如果企业防火墙解决方案不是 Azure 防火墙，并且您有安全要求，使所有出站流量通过集中式公司解决方案，则此解决方案可能不可行。  
+- Azure 防火墙是云原生服务，具有内置的高可用性，并且支持区域部署。
+- 需要其他子网，子网必须命名为 AzureFirewallSubnet。 
+- 若要将大型数据集从 SAP VM 所在虚拟网络出站传输到另一个虚拟网络中的 VM 或公共终结点，那么这可能不是一种经济高效的解决方案。 其中一个例子就是跨虚拟网络复制大型备份。 有关详细信息，请参阅“Azure 防火墙定价”。  
+- 如果企业防火墙解决方案不是 Azure 防火墙，并且你有安全要求（即所有出站流量都必须通过集中式企业解决方案），那么此解决方案可能不可行。  
 
 >[!TIP]
->如果可能，请使用[服务标记](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)降低 Azure 防火墙规则的复杂性。  
+>尽可能使用[服务标记](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)，以降低 Azure 防火墙规则的复杂度。  
 
 ### <a name="deployment-steps"></a>部署步骤
 
-1. 部署步骤假设已为 Vm 定义虚拟网络和子网。  
-2. 在部署 VM 和标准负载均衡器的同一虚拟网络中创建子网**AzureFirewallSubnet** 。  
-   1. 在 Azure 门户中，导航到虚拟网络：单击 "所有资源"，搜索虚拟网络，单击虚拟网络，然后选择 "子网"。  
-   1. 单击 "添加子网"。 输入**AzureFirewallSubnet**作为名称。 输入相应的地址范围。 保存。  
+1. 执行部署步骤的前提是，你已为 VM 定义虚拟网络和子网。  
+2. 在其中部署 VM 和标准负载均衡器的同一虚拟网络中，创建子网 AzureFirewallSubnet。  
+   1. 在 Azure 门户中，转到“虚拟网络”：单击“所有资源”，搜索“虚拟网络”，单击“虚拟网络”，然后选择“子网”。  
+   1. 单击“添加子网”。 输入“AzureFirewallSubnet”作为名称。 输入相应的地址范围。 保存。  
 3. 创建 Azure 防火墙。  
-   1. 在 Azure 门户选择 "所有资源"，单击 "添加"、"防火墙"、"创建"。 选择 "资源组" （选择虚拟网络所在的同一资源组）。  
-   1. 输入 Azure 防火墙资源的名称。 例如， **MyAzureFirewall**。  
-   1. 选择 "区域"，并至少选择两个可用性区域，并将其与部署 Vm 的可用性区域对齐。  
-   1. 选择虚拟网络，其中部署了 SAP Vm 和 Azure 标准负载均衡器。  
-   1. "公共 IP 地址"：单击 "创建"，然后输入名称。 例如**MyFirewallPublicIP**。  
-4. 创建 Azure 防火墙规则以允许到指定的公共终结点的出站连接。 此示例演示如何允许访问 Azure 管理 API 公共终结点。  
-   1. 依次选择 "规则"、"网络规则集合" 和 "添加网络规则集合"。  
-   1. 名称： **MyOutboundRule**，输入 "优先级"，然后选择 "操作**允许**"。  
-   1. 服务：名称**ToAzureAPI**。  协议：选择**任何**。 源地址：输入子网的范围，其中部署了 Vm 和标准负载均衡器实例： **11.97.0.0/24**。 目标端口：输入<b>*</b>。  
+   1. 在 Azure 门户中，选择“所有资源”，然后依次单击“添加”、“防火墙”和“创建”。 选择“资源组”（选择虚拟网络所在的同一资源组）。  
+   1. 输入 Azure 防火墙资源的名称。 例如，“MyAzureFirewall”。  
+   1. 选择“区域”，并至少选择两个可用性区域（与其中部署 VM 的可用性区域保持一致）。  
+   1. 选择其中部署 SAP VM 和 Azure 标准负载均衡器的虚拟网络。  
+   1. 公共 IP 地址：单击“创建”，然后输入名称。 例如，“MyFirewallPublicIP”。  
+4. 创建 Azure 防火墙规则，以允许出站连接到指定的公共终结点。 下面的示例展示了如何允许对 Azure 管理 API 公共终结点的访问。  
+   1. 依次选择“规则”和“网络规则集合”，然后单击“添加网络规则集合”。  
+   1. 姓名：“MyOutboundRule”，输入“优先级”，选择操作“允许”。  
+   1. 服务：命名“ToAzureAPI”。  协议：选择“任何”。 源地址：输入其中部署 VM 和标准负载均衡器的子网的范围；例如，“11.97.0.0/24”。 目标端口：输入“*”<b></b>。  
    1. 保存
-   1. 如果仍位于 Azure 防火墙上，请选择 "概述"。 记下 Azure 防火墙的专用 IP 地址。  
-5. 创建到 Azure 防火墙的路由  
-   1. 在 Azure 门户选择 "所有资源"，然后单击 "添加"、"路由表"、"创建"。  
-   1. 输入名称 Myroutetable-public，选择 "订阅"、"资源组" 和 "位置" （与虚拟网络和防火墙的位置匹配）。  
+   1. 当你仍在“Azure 防火墙”上时，选择“概述”。 记下 Azure 防火墙的专用 IP 地址。  
+5. 创建指向 Azure 防火墙的路由  
+   1. 在 Azure 门户中，选择“所有资源”，然后依次单击“添加”、“路由表”和“创建”。  
+   1. 输入名称“MyRouteTable”，依次选择“订阅”、“资源组”和“位置”（与虚拟网络和防火墙的位置匹配）。  
    1. 保存  
 
-   防火墙规则如下所示： ![与 Azure 防火墙的出站连接](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall-rule.png)
+   防火墙规则如下所示：![使用 Azure 防火墙进行出站连接](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall-rule.png)
 
-6. 创建从 Vm 子网到**MyAzureFirewall**专用 IP 的用户定义路由。
-   1. 在路由表中，单击 "路由"。 选择“添加”。 
-   1. 路由名称： ToMyAzureFirewall，地址前缀： **0.0.0.0/0**。 下一跃点类型：选择 "虚拟设备"。 下一个跃点地址：输入配置的防火墙的专用 IP 地址： **11.97.1.4**。  
+6. 创建从 VM 的子网指向 MyAzureFirewall 的专用 IP 的用户定义路由。
+   1. 当你在“路由表”上时，单击“路由”。 选择“添加”。 
+   1. 路由名称：ToMyAzureFirewall，地址前缀：0.0.0.0/0。 下一个跃点类型：选择“虚拟设备”。 下一个跃点地址：输入你配置的防火墙的专用 IP 地址，即11.97.1.4。  
    1. 保存
 
-## <a name="using-proxy-for-pacemaker-calls-to-azure-management-api"></a>使用代理进行 Pacemaker 调用 Azure 管理 API
+## <a name="using-proxy-for-pacemaker-calls-to-azure-management-api"></a>使用代理实现对 Azure 管理 API 的 Pacemaker 调用
 
-你可以使用代理允许对 Azure 管理 API 公共终结点进行 Pacemaker 调用。  
+可以使用代理允许对 Azure 管理 API 公共终结点进行 Pacemaker 调用。  
 
 ### <a name="important-considerations"></a>重要注意事项
 
-  - 如果已经有了公司代理，则可以通过它将出站调用路由到公共终结点。 对公共终结点的出站调用将经历公司控制点。  
-  - 请确保代理配置允许与 Azure 管理 API 建立出站连接：`https://management.azure.com`  
-  - 请确保有从 Vm 到代理的路由  
-  - 代理将仅处理 HTTP/HTTPS 调用。 如果需要对不同协议（如 RFC）的公共终结点进行出站调用，则需要替代解决方案  
-  - 代理解决方案必须高度可用，以避免 Pacemaker 群集的不稳定  
-  - 根据代理的位置，可能会在从 Azure 隔离代理到 Azure 管理 API 的调用中引入额外的延迟。 如果你的公司代理仍在本地，而你的 Pacemaker 群集在 Azure 中，则需要衡量延迟并考虑，如果此解决方案适合你  
-  - 如果尚未部署高可用的企业代理，我们不建议使用此选项，因为客户会产生额外的成本和复杂性。 尽管如此，如果你决定部署附加的代理解决方案，以允许从 Pacemaker 到 Azure 管理公共 API 的出站连接，请确保该代理高度可用，并且 Vm 到代理的延迟较低。  
+  - 如果已有企业代理，可以通过它将出站调用路由到公共终结点。 对公共终结点的出站调用将通过企业控制点。  
+  - 请确保代理配置允许出站连接到 Azure 管理 API：`https://management.azure.com` 和 `https://login.microsoftonline.com`  
+  - 请确保有从 VM 指向代理的路由  
+  - 代理只会处理 HTTP/HTTPS 调用。 如果需要通过不同的协议（如 RFC）对公共终结点进行出站调用，则需要使用替换解决方案  
+  - 代理解决方案必须高度可用，以避免 Pacemaker 群集中的不稳定性  
+  - 可能会在从 Azure 围墙代理到 Azure 管理 API 的调用中引入额外的延迟，具体视代理位置而定。 如果企业代理仍在本地，而 Pacemaker 群集在 Azure 中，则需要度量延迟，并考虑此解决方案是否适合你  
+  - 如果还没有高度可用的企业代理，不建议使用这种方式，因为这样会给客户带来额外的成本和复杂度。 然而，如果你决定部署附加的代理解决方案，以允许从 Pacemaker 出站连接到 Azure 管理公共 API，请确保代理是高度可用的，并且从 VM 到代理的延迟低。  
 
-### <a name="pacemaker-configuration-with-proxy"></a>Pacemaker 配置与代理 
+### <a name="pacemaker-configuration-with-proxy"></a>包含代理的 Pacemaker 配置 
 
-行业中提供了许多不同的代理选项。 代理部署的分步说明不在本文档的讨论范围内。 在下面的示例中，我们假定代理正在响应**MyProxyService** ，并正在侦听端口**MyProxyPort**。  
-若要允许 pacemaker 与 Azure 管理 API 通信，请在所有群集节点上执行以下步骤：  
+行业中有许多不同的代理选项。 关于代理部署的分步说明超出了本文档的范围。 在下面的示例中，假设代理正在响应 MyProxyService，并侦听端口 MyProxyPort。  
+若要允许 Pacemaker 与 Azure 管理 API 进行通信，请在所有群集节点上执行以下步骤：  
 
-1. 编辑 pacemaker 配置文件/etc/sysconfig/pacemaker 并添加以下行（所有群集节点）：
+1. 编辑 Pacemaker 配置文件 /etc/sysconfig/pacemaker，并添加以下行（所有群集节点）：
 
    ```console
    sudo vi /etc/sysconfig/pacemaker
@@ -197,7 +197,7 @@ SAP 系统通常包含敏感的业务数据。 对于托管 SAP 系统的 Vm 具
    https_proxy=http://MyProxyService:MyProxyPort
    ```
 
-2. 在**所有**群集节点上重新启动 pacemaker 服务。  
+2. 在所有群集节点上，重启 Pacemaker 服务。  
   - SUSE
  
      ```console
@@ -220,7 +220,11 @@ SAP 系统通常包含敏感的业务数据。 对于托管 SAP 系统的 Vm 具
      sudo pcs property set maintenance-mode=false
      ```
 
+## <a name="other-solutions"></a>其他解决方案
+
+如果出站流量是通过第三方防火墙路由的，请确保防火墙配置允许出站连接到 Azure 管理 API：`https://management.azure.com` 和 `https://login.microsoftonline.com`。  
+
 ## <a name="next-steps"></a>后续步骤
 
-* [了解如何在 Azure 中的 SUSE 上配置 Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)
-* [了解如何在 Azure 中的 Red Hat 上配置 Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker)
+* [了解如何在 Azure 中配置 SUSE 上的 Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)
+* [了解如何在 Azure 中配置 Red Hat 上的 Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker)

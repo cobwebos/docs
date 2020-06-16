@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 746cef8dfe026c731a677cbf77f729d36342f007
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6c485c1612df526e813119239fd2202b7657db9c
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78969359"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774185"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>使用门户将数据磁盘附加到 Linux VM 
 本文介绍如何通过 Azure 门户将新磁盘和现有磁盘附加到 Linux 虚拟机。 也可以[在 Azure 门户中将数据磁盘附加到 Windows VM](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
@@ -25,43 +25,43 @@ ms.locfileid: "78969359"
 
 
 ## <a name="find-the-virtual-machine"></a>查找虚拟机
-1. 若要查找 VM，请转到 [Azure 门户](https://portal.azure.com/)。 搜索并选择“虚拟机”。 
+1. 转到 [Azure 门户](https://portal.azure.com/)以找到 VM。 搜索并选择“虚拟机”。
 2. 从列表中选择 VM。
-3. 在“虚拟机”页面边栏的“设置”下，选择“磁盘”  。  
+3. 在“虚拟机”页面边栏的“设置”下，选择“磁盘”。
    
     ![打开磁盘设置](./media/attach-disk-portal/find-disk-settings.png)
 
 
 ## <a name="attach-a-new-disk"></a>附加新磁盘
 
-1. 在“磁盘”窗格上，单击“+ 添加数据磁盘”   。
-2. 单击“名称”  的下拉列表菜单，并选择“创建磁盘”  ：
+1. 在“磁盘”窗格上，单击“+ 添加数据磁盘” 。
+2. 单击“名称”的下拉列表菜单，并选择“创建磁盘”：
 
     ![创建 Azure 托管磁盘](./media/attach-disk-portal/create-new-md.png)
 
-3. 输入托管磁盘的名称。 查看默认设置，根据需要更新，并单击“创建”  。
+3. 输入托管磁盘的名称。 查看默认设置，根据需要更新，并单击“创建”。
    
    ![检查磁盘设置](./media/attach-disk-portal/create-new-md-settings.png)
 
-4. 单击“保存”  以创建托管磁盘并更新 VM 配置：
+4. 单击“保存”以创建托管磁盘并更新 VM 配置：
 
    ![保存新的 Azure 托管磁盘](./media/attach-disk-portal/confirm-create-new-md.png)
 
-5. 在 Azure 创建磁盘并将磁盘附加到虚拟机之后，新磁盘将出现在“数据磁盘”下的虚拟机磁盘设置中。  托管磁盘是顶级资源，因此磁盘会显示在资源组的根部：
+5. 在 Azure 创建磁盘并将磁盘附加到虚拟机之后，新磁盘将出现在“数据磁盘”下的虚拟机磁盘设置中。 托管磁盘是顶级资源，因此磁盘会显示在资源组的根部：
 
    ![资源组中的 Azure 托管磁盘](./media/attach-disk-portal/view-md-resource-group.png)
 
 ## <a name="attach-an-existing-disk"></a>附加现有磁盘
-1. 在“磁盘”窗格上，单击“+ 添加数据磁盘”   。
-2. 单击“名称”  的下拉列表菜单，查看 Azure 订阅可访问的现有托管磁盘列表。 选择要附加的托管磁盘：
+1. 在“磁盘”窗格上，单击“+ 添加数据磁盘” 。
+2. 单击“名称”的下拉列表菜单，查看 Azure 订阅可访问的现有托管磁盘列表。 选择要附加的托管磁盘：
 
    ![附加现有 Azure 管理磁盘](./media/attach-disk-portal/select-existing-md.png)
 
-3. 单击“保存”  以附加现有托管磁盘并更新 VM 配置：
+3. 单击“保存”以附加现有托管磁盘并更新 VM 配置：
    
    ![保存 Azure 托管磁盘更新](./media/attach-disk-portal/confirm-attach-existing-md.png)
 
-4. 在 Azure 将磁盘附加到虚拟机之后，磁盘将出现在“数据磁盘”下的虚拟机磁盘设置中。 
+4. 在 Azure 将磁盘附加到虚拟机之后，磁盘将出现在“数据磁盘”下的虚拟机磁盘设置中。
 
 ## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>连接到 Linux VM 以装入新磁盘
 若要对新磁盘进行分区、格式化和装载，以便 Linux VM 可以使用它，请通过 SSH 登录到 VM。 有关详细信息，请参阅[如何在 Azure 中将 SSH 用于 Linux](mac-create-ssh-keys.md)。 以下示例使用公共 DNS 条目 *mypublicdns.westus.cloudapp.azure.com* 和用户名 *azureuser* 连接到一个 VM： 
@@ -92,9 +92,9 @@ dmesg | grep SCSI
 如果使用包含数据的现有磁盘，请跳到装载磁盘。 如果附加新磁盘，需要对磁盘进行分区。
 
 > [!NOTE]
-> 建议你使用适用于你的发行版的最新版 fdisk 或 parted。
+> 建议使用可用于你的 distro 的最新版本 fdisk 或 parted。
 
-使用 `fdisk` 对磁盘进行分区。 如果磁盘大小为 2 太字节 (TiB) 或更大，则必须使用 GPT 分区；可以使用 `parted` 来执行 GPT 分区。 如果磁盘大小在 2 TiB 以下，则可以使用 MBR 或 GPT 分区。 将其设置为分区 1 中的主磁盘，并接受其他默认值。 以下示例在 `fdisk`/dev/sdc*上启动* 进程：
+使用 `fdisk` 对磁盘进行分区。 如果磁盘大小为 2 太字节 (TiB) 或更大，则必须使用 GPT 分区；可以使用 `parted` 来执行 GPT 分区。 如果磁盘大小在 2 TiB 以下，则可以使用 MBR 或 GPT 分区。 将其设置为分区 1 中的主磁盘，并接受其他默认值。 以下示例在 */dev/sdc* 上启动 `fdisk` 进程：
 
 ```bash
 sudo fdisk /dev/sdc
@@ -175,13 +175,14 @@ Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
 
-#### <a name="alternate-method-using-parted"></a>使用 parted 的替代方法
-fdisk 实用程序需要交互式输入，因此不适合在自动化脚本中使用。 不过，[parted](https://www.gnu.org/software/parted/) 实用程序可以编写脚本，因此在自动化方案中更适合。 parted 实用程序可用于对数据磁盘进行分区和格式化。 在下面的演练中，我们将使用新的数据磁盘 /dev/sdc，并使用 [XFS](https://xfs.wiki.kernel.org/) 文件系统将其格式化。
+#### <a name="alternate-method-using-parted"></a>使用 parted 的备用方法
+fdisk 实用工具需要交互式输入，因此不适合在自动化脚本中使用。 不过，[parted](https://www.gnu.org/software/parted/) 实用工具可以编写为脚本，因此在自动化方案中也更适合。 parted 实用程序可用于对数据磁盘进行分区和格式化。 在下面的演练中，我们将使用新的数据磁盘 /dev/sdc，并使用 [XFS](https://xfs.wiki.kernel.org/) 文件系统对其进行格式化。
 ```bash
 sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
+sudo mkfs.xfs /dev/sdc1
 partprobe /dev/sdc1
 ```
-如上所示，我们使用 [partprobe](https://linux.die.net/man/8/partprobe) 实用程序来确保内核即时了解新的分区和文件系统。 无法使用 partprobe 可能导致 blkid 或 lslbk 命令不即时返回新文件系统的 UUID。
+如上所示，我们使用 [partprobe](https://linux.die.net/man/8/partprobe) 实用工具来确保内核立即了解新的分区和文件系统。 如果无法使用 partprobe，则可能导致 blkid 或 lslbk 命令不立即返回新文件系统的 UUID。
 
 ### <a name="mount-the-disk"></a>装载磁盘
 使用 `mkdir` 创建一个目录来装载文件系统。 以下示例在 */datadrive* 处创建一个目录：
@@ -219,12 +220,12 @@ sudo -i blkid
 sudo vi /etc/fstab
 ```
 
-在此示例中，使用在之前的步骤中创建的 /dev/sdc1  设备的 UUID 值并使用装入点 /datadrive  。 将以下行添加到 */etc/fstab* 文件的末尾：
+在此示例中，使用在之前的步骤中创建的 /dev/sdc1 设备的 UUID 值并使用装入点 /datadrive。 将以下行添加到 */etc/fstab* 文件的末尾：
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
-完成后，保存 /etc/fstab  文件并重新启动系统。
+完成后，保存 /etc/fstab 文件，然后重新启动系统。
 > [!NOTE]
 > 之后，在不编辑 fstab 的情况下删除数据磁盘可能会导致 VM 无法启动。 大多数分发版都提供 *nofail* 和/或 *nobootwait* fstab 选项。 这些选项使系统在磁盘无法装载的情况下也能启动。 有关这些参数的详细信息，请查阅分发文档。
 > 
@@ -235,7 +236,7 @@ UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail 
 
 在 Linux VM 中有两种方法可以启用 TRIM 支持。 与往常一样，有关建议的方法，请参阅分发：
 
-* 在 `discard`/etc/fstab*中使用* 装载选项，例如：
+* 在 */etc/fstab* 中使用 `discard` 装载选项，例如：
 
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2

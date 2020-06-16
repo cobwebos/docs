@@ -1,19 +1,19 @@
 ---
-title: 任务和节点的计数状态
+title: 对任务和节点的状态进行计数
 description: 对 Azure Batch 任务和计算节点的状态进行计数，以便管理和监视 Batch 解决方案。
 ms.date: 09/07/2018
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
-ms.openlocfilehash: 1abff4c1a07ba0c5375228995330646204d33cd7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d75ff1806f61b54bd058926f95c7c53b66aaf243
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116088"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780154"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>通过按状态对任务和节点计数来监视 Batch 解决方案
 
-若要监视和管理大规模的 Azure Batch 解决方案，需对各种状态的资源进行准确的计数。 Azure Batch 提供有效的操作来获取 Batch  任务和  计算节点的这些计数。 请使用以下操作而不是可能非常耗时的列表查询来返回大型任务或节点集合的详细信息。
+若要监视和管理大规模的 Azure Batch 解决方案，需对各种状态的资源进行准确的计数。 Azure Batch 提供有效的操作来获取 Batch 任务和计算节点的这些计数。 请使用以下操作而不是可能非常耗时的列表查询来返回大型任务或节点集合的详细信息。
 
 * [获取任务计数][rest_get_task_counts]可以获取一个作业中处于“活动”、“正在运行”和“已完成”状态的任务以及处于“已成功”或“已失败”状态的任务的聚合计数。 
 
@@ -30,12 +30,12 @@ ms.locfileid: "82116088"
 “获取任务计数”操作按以下状态进行任务计数：
 
 - **活动** - 任务已排队且能够运行，但目前没有分配到计算节点。 如果任务所[依赖的父任务](batch-task-dependencies.md)尚未完成，则该任务也处于`active`状态。 
-- **正在运行** - 任务已分配到计算节点但尚未完成。 当任务状态为 `preparing` 或 `running` 时，会将它视为 `running`，如[获取有关任务的信息][rest_get_task]操作所示。
+- **正在运行** - 任务已分配到计算节点但尚未完成。 当任务状态为`preparing`或`running`时，将它视为`running`，正如[获取有关任务的信息][rest_get_task]操作所示。
 - **已完成** - 任务不再有资格运行，因为已成功完成，或者虽未成功完成但已达到其重试次数限制。 
 - **已成功** - 执行结果为`success`的任务。 Batch 通过检查 [executionInfo][rest_get_exec_info] 属性的 `TaskExecutionResult` 属性来确定任务是已成功还是已失败。
 - **已失败** - 执行结果为`failure`的任务。
 
-以下 .NET 代码示例演示如何按状态检索任务计数： 
+下方的 .NET 代码示例演示如何按状态检索任务计数： 
 
 ```csharp
 var taskCounts = await batchClient.JobOperations.GetJobTaskCountsAsync("job-1");
@@ -66,7 +66,7 @@ Console.WriteLine("Failed task count: {0}", taskCounts.Failed);
 - **正在重置映像** - 操作系统正在节点上重新安装。
 - **正在运行** - 节点正在运行一个或多个任务（不是启动任务）。
 - **正在启动** - Batch 服务正在节点上启动。 
-- **启动任务已失败** - 节点上的[启动任务][rest_start_task]已失败，已达到重试次数限制，并且已在启动任务上设置 `waitForSuccess`。 此节点不可用于运行任务。
+- 启动任务已失败 - 节点上的[启动任务][rest_start_task]已失败，已达到重试次数限制，并且已在启动任务上设置 `waitForSuccess`。 此节点不可用于运行任务。
 - **未知** - 节点失去与 Batch 服务的联系，其状态未知。
 - **不可使用** - 节点因错误而不能用于执行任务。
 - **等待启动任务** - 节点上的启动任务已开始运行，但是设置了 `waitForSuccess`，启动任务尚未完成。
@@ -111,12 +111,12 @@ foreach (var nodeCounts in batchClient.PoolOperations.ListPoolNodeCounts(new ODA
     Console.WriteLine("Low-priority node count in Preempted state: {0}", nodeCounts.LowPriority.Preempted);
 }
 ```
+
 可以对 REST 和支持的其他语言使用类似的模式获取池的节点计数。
  
 ## <a name="next-steps"></a>后续步骤
 
-* 请参阅[批处理功能概述](batch-api-basics.md)，详细了解处理服务的概念和功能。 本文讨论主要 Batch 资源（例如池、计算节点、作业和任务）并提供该服务的功能概述。
-
+* 了解 [Batch 服务工作流和主要资源](batch-service-workflow-features.md)，例如池、节点、作业和任务。
 * 若要了解如何将筛选器应用于可以列出 Batch 资源的查询，请参阅[创建可高效列出 Batch 资源的查询](batch-efficient-list-queries.md)。
 
 

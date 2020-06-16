@@ -1,23 +1,23 @@
 ---
 title: Azure Monitor 中的 Azure 网络分析解决方案 | Microsoft Docs
-description: 可以使用 Azure Monitor 中的 Azure 网络分析解决方案来查看 Azure 网络安全组日志和 Azure 应用程序网关日志。
+description: 可以使用 Azure Monitor 中的 Azure 网络分析解决方案来审阅 Azure 网络安全组日志和 Azure 应用程序网关日志。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 1045f86db5e1a9ed1979a266937974045e401e27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 1084be9a63e023257326de824ea200dcc1be74d9
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275563"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684642"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure Monitor 中的 Azure 网络监视解决方案
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Azure Monitor 提供了用于监视网络的以下解决方案：
+Azure Monitor 提供了以下用于监视网络的解决方案：
 * 网络性能监视器 (NPM)
     * 监视网络的运行状况
 * 要查看的 Azure 应用程序网关分析
@@ -39,15 +39,15 @@ Azure Monitor 提供了用于监视网络的以下解决方案：
 
 ## <a name="azure-application-gateway-and-network-security-group-analytics"></a>Azure 应用程序网关和网络安全组分析
 若要使用解决方案，请执行以下操作：
-1. 将管理解决方案添加到 Azure Monitor，并且
+1. 将管理解决方案添加到 Azure Monitor；并且
 2. 启用诊断以将诊断信息定向到 Azure Monitor 中的 Log Analytics 工作区。 不需要将日志写入 Azure Blob 存储。
 
 可为应用程序网关和/或网络安全组启用诊断和相应的解决方案。
 
-如果没有为特定资源类型启用诊断资源日志记录，但安装解决方案，该资源的仪表板边栏选项卡将为空，并显示一条错误消息。
+如果你没有为特定资源类型启用诊断资源日志记录，但安装了解决方案，相应资源的仪表板边栏选项卡为空白，并显示错误消息。
 
 > [!NOTE]
-> 2017 年 1 月，将应用程序网关和网络安全组中的日志发送到 Log Analytics 工作区的受支持方式已发生更改。 如果看到了“Azure 网络分析(已弃用)”解决方案，请参阅 [migrating from the old Networking Analytics solution](#migrating-from-the-old-networking-analytics-solution)（从旧的网络分析解决方案迁移）了解需要执行的步骤。 
+> 2017 年 1 月，将应用程序网关和网络安全组中的日志发送到 Log Analytics 工作区的受支持方式已发生更改。 如果看到了“Azure 网络分析(已弃用)”解决方案，请参阅 [migrating from the old Networking Analytics solution](#migrating-from-the-old-networking-analytics-solution)（从旧的网络分析解决方案迁移）了解需要执行的步骤。
 >
 >
 
@@ -79,27 +79,27 @@ Azure 应用程序网关分析和网络安全组分析管理解决方案直接�
 ### <a name="install-and-configure-the-solution"></a>安装和配置解决方案
 使用以下说明安装并配置 Azure 应用程序网关分析解决方案：
 
-1. 从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview)或者使用[从解决方案库中添加 Azure Monitor 解决方案](../../azure-monitor/insights/solutions.md)中所述的过程，启用 Azure 应用程序网关分析解决方案。
+1. 在 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview)中或使用[从解决方案库中添加 Azure Monitor 解决方案](../../azure-monitor/insights/solutions.md)中所述的流程，启用 Azure 应用程序网关分析解决方案。
 2. 为需要监视的[应用程序网关](../../application-gateway/application-gateway-diagnostics.md)启用诊断日志记录。
 
 #### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>在门户中启用 Azure 应用程序网关诊断
 
-1. 在 Azure 门户中，导航到要监视的应用程序网关资源。
-2. 选择“诊断日志”打开以下页  。
+1. 在 Azure 门户中，转到要监视的应用程序网关资源。
+2. 选择“诊断日志”，以打开下面的页面。
 
    ![Azure 应用程序网关资源图像](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics01.png)
-3. 单击“启用诊断”打开以下页  。
+3. 单击“启用诊断”，以打开下面的页面。
 
    ![Azure 应用程序网关资源图像](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics02.png)
-4. 若要启用诊断，请单击“状态”下面的“打开”   。
-5. 单击“发送到 Log Analytics”所对应的复选框  。
-6. 选择现有的 Log Analytics 工作区，或创建一个工作区。
-7. 对于要收集的每种日志类型，请单击“日志”下面的复选框  。
-8. 单击“保存”，启用在 Azure Monitor 中记录诊断日志  。
+4. 若要启用诊断，请单击“状态”下面的“开”。
+5. 单击选中“发送到 Log Analytics”复选框。
+6. 选择现有 Log Analytics 工作区，或创建一个工作区。
+7. 在“日志”下，单击选中要收集的每种类型日志的复选框。
+8. 单击“保存”，以启用在 Azure Monitor 中记录诊断日志。
 
 #### <a name="enable-azure-network-diagnostics-using-powershell"></a>使用 PowerShell 启用 Azure 网络诊断
 
-以下 PowerShell 脚本提供如何为应用程序网关启用资源日志记录的示例。
+下面的 PowerShell 脚本示例展示了如何为应用程序网关启用资源日志记录。
 
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
@@ -112,7 +112,7 @@ Set-AzDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspace
 ### <a name="use-azure-application-gateway-analytics"></a>使用 Azure 应用程序网关分析
 ![Azure 应用程序网关分析磁贴图像](media/azure-networking-analytics/log-analytics-appgateway-tile.png)
 
-在“概述”中单击“Azure 应用程序网关分析”磁贴后，可以查看日志摘要，并钻取以下类别的详细信息： 
+在“概述”中单击“Azure 应用程序网关分析”磁贴后，可以查看日志摘要，并钻取以下类别的详细信息：
 
 * 应用程序网关访问日志
   * 应用程序网关访问日志的客户端和服务器错误
@@ -127,7 +127,7 @@ Set-AzDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspace
 
 ![Azure 应用程序网关分析仪表板图像](media/azure-networking-analytics/log-analytics-appgateway02.png)
 
-在“Azure 应用程序网关分析”  仪表板上，查看其中一个边栏选项卡中的摘要信息，然后单击一项摘要，在日志搜索页查看其详细信息。
+在“Azure 应用程序网关分析”仪表板上，查看其中一个边栏选项卡中的摘要信息，然后单击一项摘要，在日志搜索页查看其详细信息。
 
 在任何日志搜索页上，都可以按时间、详细结果和日志搜索历史记录查看结果。 也可以按方面进行筛选以缩减搜索结果。
 
@@ -140,7 +140,7 @@ Set-AzDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspace
 > 网络安全组分析解决方案正迁往社区支持，因为其功能已被[流量分析](../../network-watcher/traffic-analytics.md)取代。
 > - [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/oms-azurensg-solution/)目前提供该解决方案，但该解决方案很快将从 Azure 市场下架。
 > - 对于已向其工作区添加该解决方案的现有客户，它将继续运行，不会有任何变化。
-> - Microsoft 将继续支持使用诊断设置将 NSG 资源日志发送到你的工作区。
+> - Microsoft 将继续支持使用“诊断设置”将 NSG 资源日志发送到你的工作区。
 
 网络安全组支持以下日志：
 
@@ -150,27 +150,27 @@ Set-AzDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspace
 ### <a name="install-and-configure-the-solution"></a>安装和配置解决方案
 使用以下说明安装和配置 Azure 网络分析解决方案：
 
-1. 从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview)或者使用[从解决方案库中添加 Azure Monitor 解决方案](../../azure-monitor/insights/solutions.md)中所述的过程，启用 Azure 网关安全组分析解决方案。
+1. 使用[从解决方案库中添加 Azure Monitor 解决方案](../../azure-monitor/insights/solutions.md)中所述的流程，启用 Azure 网络安全组分析解决方案。
 2. 为想要监视的[网络安全组](../../virtual-network/virtual-network-nsg-manage-log.md)资源启用诊断日志记录。
 
 ### <a name="enable-azure-network-security-group-diagnostics-in-the-portal"></a>在门户中启用 Azure 网络安全组诊断
 
 1. 在 Azure 门户中，导航到要监视的网络安全组资源
-2. 选择“诊断日志”打开以下页面**
+2. 选择“诊断日志”打开以下页面
 
    ![Azure 网络安全组资源图像](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics01.png)
-3. 单击“打开诊断”打开以下页面**
+3. 单击“打开诊断”打开以下页面
 
    ![Azure 网络安全组资源图像](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics02.png)
-4. 若要打开诊断，请单击“状态”下面的“打开”****
-5. 单击“发送到 Log Analytics”对应的复选框**
+4. 若要打开诊断，请单击“状态”下面的“打开” 
+5. 单击“发送到 Log Analytics”对应的复选框
 6. 选择现有的 Log Analytics 工作区，或创建一个工作区
-7. 对于要收集的每种日志类型，请单击“日志”下面的复选框****
-8. 单击“保存”，启用在 Log Analytics 中记录诊断日志**
+7. 对于要收集的每种日志类型，请单击“日志”下面的复选框
+8. 单击“保存”，启用在 Log Analytics 中记录诊断日志
 
 ### <a name="enable-azure-network-diagnostics-using-powershell"></a>使用 PowerShell 启用 Azure 网络诊断
 
-下面的 PowerShell 脚本提供如何为网络安全组启用资源日志记录的示例
+下面的 PowerShell 脚本示例展示了如何为网络安全组启用资源日志记录
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
@@ -180,7 +180,7 @@ Set-AzDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspaceId -
 ```
 
 ### <a name="use-azure-network-security-group-analytics"></a>使用 Azure 网络安全组分析
-在“概述”中单击“Azure 网络安全组分析”磁贴后，可以查看日志摘要，并钻取以下类别的详细信息：****
+在“概述”中单击“Azure 网络安全组分析”磁贴后，可以查看日志摘要，并钻取以下类别的详细信息：
 
 * 网络安全组阻止的流
   * 具有阻止流的网络安全组规则
@@ -193,14 +193,14 @@ Set-AzDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspaceId -
 
 ![Azure 网络安全组分析仪表板图像](media/azure-networking-analytics/log-analytics-nsg02.png)
 
-在“Azure 网络安全组分析”仪表板上，查看其中一个边栏选项卡中的摘要信息，并单击一项摘要，在日志搜索页查看其详细信息。****
+在“Azure 网络安全组分析”仪表板上，查看其中一个边栏选项卡中的摘要信息，并单击一项摘要，在日志搜索页查看其详细信息。
 
 在任何日志搜索页上，都可以按时间、详细结果和日志搜索历史记录查看结果。 也可以按方面进行筛选以缩减搜索结果。
 
 ## <a name="migrating-from-the-old-networking-analytics-solution"></a>从旧的网络分析解决方案迁移
 2017 年 1 月，将 Azure 应用程序网关和 Azure 网络安全组中的日志发送到 Log Analytics 工作区的受支持方式已发生更改。 这些更改带来了以下优势：
-+ 日志将直接写入 Azure Monitor，无需使用存储帐户
-+ 从生成日志到在 Azure Monitor 中显示日志的延迟时间已缩短
++ 日志是直接写入到 Azure Monitor，而无需使用存储帐户
++ 从日志生成到在 Azure Monitor 中可用的延迟时间已缩短
 + 配置步骤更少
 + 所有类型的 Azure 诊断的通用格式
 
@@ -208,11 +208,11 @@ Set-AzDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspaceId -
 
 1. [将诊断配置为直接从 Azure 应用程序网关发送到 Azure Monitor](#enable-azure-application-gateway-diagnostics-in-the-portal)
 2. [将诊断配置为直接从 Azure 网络安全组发送到 Azure Monitor](#enable-azure-network-security-group-diagnostics-in-the-portal)
-2. 使用[从解决方案库中添加 Azure Monitor 解决方案](solutions.md)中所述的过程，启用 *Azure 应用程序网关分析*和 *Azure 网络安全组分析*解决方案
+2. 使用[从解决方案库中添加 Azure Monitor 解决方案](solutions.md)中所述的流程，启用 Azure 应用程序网关分析和 Azure 网络安全组分析解决方案
 3. 更新所有已保存的查询、仪表板或警报，以使用的新数据类型
    + 新类型为 AzureDiagnostics。 可以使用 ResourceType 筛选 Azure 网络日志。
 
-     | 而不是： | 使用： |
+     | 不是： | 使用： |
      | --- | --- |
      | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayAccess" | AzureDiagnostics &#124; where ResourceType=="APPLICATIONGATEWAYS" and OperationName=="ApplicationGatewayAccess" |
      | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayPerformance" | AzureDiagnostics &#124; where ResourceType=="APPLICATIONGATEWAYS" and OperationName=="ApplicationGatewayPerformance" |
@@ -220,7 +220,7 @@ Set-AzDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspaceId -
 
    + 对于名称中包含 \_s、\_d 或 \_g 后缀的任何字段，请将第一个字符更改为小写
    + 对于名称中包含 \_o 后缀的任何字段，数据会根据嵌套的字段名称拆分为单个字段。
-4. 删除“Azure 网络分析(已弃用)”解决方案。**
+4. 删除“Azure 网络分析(已弃用)”解决方案。
    + 如果使用的是 PowerShell，请使用 `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`
 
 在发生此项更改之前收集的数据不会显示在新解决方案中。 可以继续使用旧类型和字段名称查询此数据。

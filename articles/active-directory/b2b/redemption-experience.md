@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0e3a2ddda4529cee584f5eabf6677af940d2bdd
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d6bf5d40262c5991504d3dc62490fb50f6a20592
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585889"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826088"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B 协作邀请兑换
 
@@ -42,9 +42,9 @@ ms.locfileid: "83585889"
 
 > [!IMPORTANT]
 > 直接链接必须特定于租户。 换句话说，它必须包含租户 ID 或已验证的域，以便可以在共享应用所在的租户中对来宾进行身份验证。 常见的 URL（如 https://myapps.microsoft.com ）对来宾不起作用，因为它将重定向到其主租户进行身份验证。 下面是包含租户上下文的直接链接的一些示例：
- > - 应用访问面板： https://myapps.microsoft.com/?tenantid=&lt;tenant id&gt; 
- > - 已验证域的应用访问面板： https://myapps.microsoft.com/&lt;verified domain&gt;
- > - Azure 门户： https://portal.azure.com/&lt;tenant id&gt;
+ > - 应用访问面板：`https://myapps.microsoft.com/?tenantid=<tenant id>`
+ > - 已验证域的应用访问面板：`https://myapps.microsoft.com/<;verified domain>`
+ > - Azure 门户：`https://portal.azure.com/<tenant id>`
  > - 单个应用：了解如何使用[直接登录链接](../manage-apps/end-user-experiences.md#direct-sign-on-links)
 
 在某些情况下，建议通过直接链接发送邀请电子邮件。 如果这些特殊情况对贵组织而言很重要，我们建议使用仍会发送邀请电子邮件的方法来邀请用户：
