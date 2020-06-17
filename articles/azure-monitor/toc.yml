@@ -197,7 +197,7 @@
             - name: 概述
               href: platform/agents-overview.md
             - name: 常见问题解答
-              href: 'faq.md#agents'
+              href: faq.md#agents
             - name: Azure 诊断扩展
               items:
                 - name: 概述
@@ -905,7 +905,7 @@
         - name: 正式版常见问题解答
           href: insights/vminsights-ga-release-faq.md
         - name: 常见问题解答
-          href: 'faq.md#azure-monitor-for-vms'
+          href: faq.md#azure-monitor-for-vms
         - name: 启用监视
           items:
             - name: 启用监视概述
@@ -937,7 +937,7 @@
         - name: 概述
           href: insights/container-insights-overview.md
         - name: 常见问题解答
-          href: 'faq.md#azure-monitor-for-containers'
+          href: faq.md#azure-monitor-for-containers
         - name: 启用监视
           items:
             - name: 启用监视概述
@@ -952,6 +952,8 @@
               href: insights/container-insights-azure-redhat-setup.md
             - name: 为 Azure Red Hat OpenShift v4 启用
               href: insights/container-insights-azure-redhat4-setup.md
+            - name: 为已启用 Arc 的群集启用
+              href: insights/container-insights-enable-arc-enabled-clusters.md
             - name: 区域映射
               href: insights/container-insights-region-mapping.md
         - name: 监视性能

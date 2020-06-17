@@ -52,7 +52,7 @@
           href: luis-tutorial-pattern.md
     - name: 用于机器人
       items:
-        - name: '利用 C#'
+        - name: 利用 C#
           href: luis-csharp-tutorial-bf-v4.md
           displayName: 'bot framework, framework, sdk, abs'
         - name: 利用 Node.js
@@ -125,6 +125,14 @@
         - name: 设计策略
           href: luis-concept-enterprise.md
           displayName: import
+    - name: 通过 LUIS 应用 DevOps 实践
+      items:
+        - name: LUIS 的源代码管理和分支策略
+          href: luis-concept-devops-sourcecontrol.md
+        - name: DevOps 测试
+          href: luis-concept-devops-testing.md
+        - name: CI/CD 工作流
+          href: luis-concept-devops-automation.md
 - name: 操作指南
   items:
     - name: 创建新应用
@@ -238,11 +246,13 @@
         - name: 容器限制
           href: luis-container-limitations.md
           displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+    - name: 使用 DevOps
+      href: luis-how-to-devops-with-github.md
     - name: 相关服务
       items:
         - name: Azure 机器人服务
           href: 'https://dev.botframework.com/'
-        - name: 'Bot Builder 4.x SDK C#'
+        - name: Bot Builder 4.x SDK C#
           href: 'https://github.com/Microsoft/botbuilder-dotnet'
         - name: QnA maker
           href: 'https://qnamaker.ai/'
@@ -284,7 +294,7 @@
               href: luis-reference-response-codes.md
         - name: SDK
           items:
-            - name: 'C#'
+            - name: C#
               items:
                 - name: NuGet - 创作
                   href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/'

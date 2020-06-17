@@ -3,7 +3,7 @@ title: 语言理解 (LUIS) 文档
 summary: 了解语言理解如何使应用程序能够理解用户希望使用自己的词语表达的内容。
 metadata:
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 06/15/2020
   ms.author: nitinme
   author: nitinme
   ms.service: cognitive-services
@@ -12,12 +12,12 @@ metadata:
   title: 语言理解 (LUIS) 文档
   titleSuffix: Azure Cognitive Services
   description: 使用语言理解 (LUIS) 服务，应用程序可以理解用户希望使用自己的词语表达的内容。 LUIS 使用机器学习，使开发人员可以构建应用程序，以便接收采用自然语言的用户输入并从中提取含义。
-  ms.openlocfilehash: f1fab99692fbd02cf3a8b659aad0069ac73ce8e6
-  ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+  ms.openlocfilehash: 0d941872670a5bdd559a2760f73cda72773fc887
+  ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/23/2020
-  ms.locfileid: "82101665"
+  ms.lasthandoff: 06/15/2020
+  ms.locfileid: "84791582"
 landingContent:
 - title: 关于语言理解 (LUIS)
   linkLists:
@@ -33,6 +33,8 @@ landingContent:
       url: luis-how-plan-your-app.md
     - text: 迭代应用设计
       url: luis-concept-app-iteration.md
+    - text: DevOps 实践
+      url: luis-concept-devops-sourcecontrol.md
   - linkListType: whats-new
     links:
     - text: 新增功能

@@ -10,6 +10,10 @@
       href: overview-iot-central-developer.md
     - name: 最新更新
       items:
+        - name: 2020 年 5 月更新
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-may-2020-updates/'
+        - name: 2020 年 5 月仪表板更新
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-may-2020-dashboard-updates/'
         - name: 2020 年 4 月新功能
           href: 'https://azure.microsoft.com/updates/azure-iot-central-april-2020-new-features/'
         - name: 2020 年 4 月更新
@@ -182,9 +186,9 @@
     - name: Azure IoT SDK
       items:
         - name: IoT 服务 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT 设备 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: IoT Central API 参考
       href: 'https://docs.microsoft.com/rest/api/iotcentral/'
     - name: 客户数据请求
