@@ -493,6 +493,8 @@
               href: ../linux/image-builder-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: 使用 Azure CLI
               href: image-builder.md
+            - name: 使用 Azure PowerShell
+              href: image-builder-powershell.md
             - name: 在映像库中生成映像
               href: image-builder-gallery.md
             - name: 更新现有映像

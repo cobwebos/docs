@@ -155,7 +155,7 @@
     - name: 初始化图像转换
       href: init-image-transformation.md
     - name: 拆分图像目录
-      href: split-to-image-directory.md
+      href: split-image-directory.md
     - name: DenseNet
       href: densenet.md
     - name: ResNet

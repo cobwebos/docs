@@ -1,3 +1,5 @@
+- name: VM 大小
+  href: vm-sizes.md
 - name: 模型格式的材料映射
   href: material-mapping.md
 - name: 区域
