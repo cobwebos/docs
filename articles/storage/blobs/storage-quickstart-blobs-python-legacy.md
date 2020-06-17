@@ -7,13 +7,13 @@ ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.custom: seo-python-october2019
-ms.openlocfilehash: 4b0248604b6e9189d5275177a4960e4c352e8215
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: seo-python-october2019, tracking-python
+ms.openlocfilehash: 513e3bc2e8625f8ce255f479301b2ed5115708bb
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76906436"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561341"
 ---
 # <a name="quickstart-manage-blobs-with-python-v21-sdk"></a>快速入门：使用 Python v2.1 SDK 管理 blob
 
@@ -127,11 +127,11 @@ block_blob_service.set_container_acl(
 
 首先，请创建对用于访问和管理 Blob 存储的对象的引用。 这些对象相互关联，并且每个对象被列表中的下一个对象使用。
 
-* 实例化 BlockBlobService 对象，该对象指向存储帐户中的 Blob 服务  。 
+* 实例化 BlockBlobService 对象，该对象指向存储帐户中的 Blob 服务。 
 
-* 实例化 CloudBlobContainer 对象，该对象代表你正在访问的容器  。 系统使用容器来组织 Blob，就像使用计算机上的文件夹组织文件一样。
+* 实例化 CloudBlobContainer 对象，该对象代表你正在访问的容器。 系统使用容器来组织 Blob，就像使用计算机上的文件夹组织文件一样。
 
-有了云 Blob 容器后，请实例化 CloudBlockBlob 对象（该对象指向你感兴趣的特定 Blob）  。 然后即可根据需要上传、下载和复制 Blob。
+有了云 Blob 容器后，请实例化 CloudBlockBlob 对象（该对象指向你感兴趣的特定 Blob）。 然后即可根据需要上传、下载和复制 Blob。
 
 > [!IMPORTANT]
 > 容器名称必须为小写。 有关容器名称和 Blob 名称的详细信息，请参阅 [Naming and Referencing Containers, Blobs, and Metadata](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)（命名和引用容器、Blob 和元数据）。
@@ -142,7 +142,7 @@ Blob 存储支持块 blob、追加 blob 和页 blob。 块 blob 最大可以为 
 
 若要将文件上传到 Blob，请通过将本地驱动器上的目录名称和文件名称联接在一起来获取完整的文件路径。 然后可以使用 `create_blob_from_path` 方法将文件上传到指定的路径。 
 
-示例代码将创建一个本地文件，供系统用于上传和下载，并将系统要上传的此文件存储为 full_path_to_file  ，将 blob 的名称存储为 local_file_name  。 此示例将文件上传到名为 `quickstartblobs` 的容器：
+示例代码将创建一个本地文件，供系统用于上传和下载，并将系统要上传的此文件存储为 full_path_to_file，将 blob 的名称存储为 local_file_name。 此示例将文件上传到名为 `quickstartblobs` 的容器：
 
 ```python
 # Create a file in Documents to test the upload and download.
@@ -181,7 +181,7 @@ for blob in generator:
 
 
 使用 `get_blob_to_path` 方法将 Blob 下载到本地磁盘。
-以下代码下载以前上传的 Blob。 系统将“_DOWNLOADED”  追加到 Blob 名称，因此可以在本地磁盘上看到这两个文件。
+以下代码下载以前上传的 Blob。 系统将“_DOWNLOADED”追加到 Blob 名称，因此可以在本地磁盘上看到这两个文件。
 
 ```python
 # Download the blob(s).

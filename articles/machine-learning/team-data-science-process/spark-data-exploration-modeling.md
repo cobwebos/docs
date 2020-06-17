@@ -1,95 +1,55 @@
 ---
 title: 使用 Spark 进行数据探索和建模 - Team Data Science Process
-description: 展示 Azure 上的 Spark MLlib 工具包的数据浏览和建模功能。
+description: 展示 HDInsight Spark 上的 Spark MLlib 工具包的数据探索和建模功能。
 services: machine-learning
 author: marktab
 manager: marktab
 editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
-ms.topic: article
-ms.date: 01/10/2020
+ms.topic: sample
+ms.date: 06/03/2020
 ms.author: tdsp
-ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 208f176ca942fb382ff2ed81d872602f7229b0a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
+ms.openlocfilehash: d3761977d3234e19f0df24aec45451b234a569e8
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76718627"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84332012"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>使用 Spark 进行数据探索和建模
 
-此演练对 NYC 出租车行程和车费 2013 数据集的样本使用 HDInsight Spark 进行数据浏览以及二元分类和回归建模任务。  它端到端演练[数据科学过程](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)的步骤，使用 HDInsight Spark 群集进行处理并使用 Azure blob 存储数据和模型。 此过程探索并可视化从 Azure 存储 Blob 引入的数据，并使数据为生成预测模型做好准备。 这些模型使用 Spark MLlib 工具包生成，用于执行二元分类和回归建模任务。
+了解如何使用 HDInsight Spark 训练机器学习模型以使用 Spark MLlib 预测出租车费用。
 
-* **二元分类**任务用于预测某个行程是否会支付小费。 
-* **回归**任务用于根据其他小费特征预测小费的金额。 
+本示例展示了 [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 中的各个步骤。 NYC 出租车行程和车费 2013 数据集的一个子集用于加载、探索和准备数据。 然后，使用 Spark MLlib，对二元分类和回归模型进行训练，以预测是否将为行程支付小费并估算小费金额。
 
-我们使用的模型包括逻辑和线性回归、随机林和梯度提升树：
+## <a name="prerequisites"></a>先决条件
 
-* [使用 SGD 的线性回归](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD)是使用随机梯度下降 (SGD) 方法进行优化和特征缩放的线性回归模型，以预测支付的小费金额。 
-* [使用 LBFGS 的逻辑回归](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS)或“logit”回归，是可在因变量分类时用于执行数据分类的回归模型。 LBFGS 是拟牛顿优化算法，近似于使用有限计算机内存量的 Broyden–Fletcher–Goldfarb–Shanno (BFGS) 算法，在机器学习中广泛使用。
-* [随机林](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests)是决策树的整体。  它们组合了许多决策树以降低过度拟合的风险。 随机林用于回归和分类，并且可处理分类特征，也可扩展到多类分类设置。 它们不需要特征缩放，并且能够捕获非线性和特征交互。 随机林是用于分类和回归的最成功的机器学习模型之一。
-* [梯度提升树](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts)（gbt）是决策树的整体。 GBT 以迭代方式定型决策树，以最大程度地降低损失函数。 GBT 用于回归和分类，可处理分类特征，不需要功能缩放，并且能够捕获非非线性和特征交互。 它们还可以在多类分类设置中使用。
-
-建模步骤还包含显示如何训练、评估和保存每个模型类型的代码。 已使用 Python 编写解决方案并显示相关绘图。   
-
-> [!NOTE]
-> 尽管 Spark MLlib 工具包设计用于处理大型数据集，但为方便起见，此处使用相对较小的样本（约 30 Mb，使用 170K 行，大约原始 NYC 数据集的 0.1%）。 此处提供的练习在带有 2 个辅助节点的 HDInsight 群集中高效运行（在大约 10 分钟内）。 相同的代码（带有少量修改）可用于处理更大的数据集，前提是进行相应的修改以在内存中缓存数据和更改群集大小。
-> 
-> 
-
-## <a name="prerequisites"></a>必备条件
 需要一个 Azure 帐户和一个 Spark 1.6（或 Spark 2.0）HDInsight 群集来完成本演练。 有关如何满足这些要求的说明，请参阅[在 Azure HDInsight 上使用 Spark 的数据科学的概述](spark-overview.md)。 该主题还包含此处使用的 NYC 2013 出租车数据的说明以及有关如何在 Spark 群集上执行来自 Jupyter 笔记本的代码的说明。 
 
-## <a name="spark-clusters-and-notebooks"></a>Spark 群集和笔记本
+### <a name="spark-clusters-and-notebooks"></a>Spark 群集和笔记本
+
 本演练中提供的设置步骤和代码适用于 HDInsight Spark 1.6。 但是，Jupyter 笔记本是针对 HDInsight Spark 1.6 和 Spark 2.0 群集提供的。 包含这些笔记本的 GitHub 存储库的 [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) 中提供了这些笔记本的说明和链接。 而且，此处和位于链接笔记本中的代码是泛型代码，应适用于任何 Spark 群集。 如果不使用 HDInsight Spark，群集设置和管理步骤可能与此处所示内容稍有不同。 为方便起见，下面提供了适用于 Spark 1.6 的 Jupyter 笔记本的链接（要在 Jupyter 笔记本服务器的 pySpark 内核中运行）和适用于 Spark 2.0 的 Jupyter 笔记本的链接（要在 Jupyter 笔记本服务器的 pySpark3 内核中运行）：
 
-### <a name="spark-16-notebooks"></a>Spark 1.6 笔记本
-
-[pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb)：提供有关如何执行数据探索、建模和评分与多种不同算法的信息。
-
-### <a name="spark-20-notebooks"></a>Spark 2.0 笔记本
-使用 Spark 2.0 群集实现的回归和分类任务在单独的笔记本中，并且分类笔记本使用不同的数据集：
-
-- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：此文件提供有关如何在 Spark 2.0 群集中使用[此处](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data)所述的 NYC 出租车行程和费用数据集执行数据探索、建模和评分的信息。 对于快速浏览我们为 Spark 2.0 提供的代码而言，此笔记本可能是一个很好的起点。 如需用于分析 NYC 出租车数据的更详细笔记本，请参阅此列表中的下一个笔记本。 请参阅此列表中对这些笔记本进行比较的注释。 
-- [Spark2.0 pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb)：此文件说明如何使用[此处](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data)所述的纽约市出租车里程与收费数据集执行数据整理（Spark SQL 和数据帧操作）、探索、建模和评分。
-- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb)：此文件说明如何使用 2011 到 2012 年的已知航班准时出发数据集执行数据整理（Spark SQL 和数据帧操作）、探索、建模和评分。 在建模之前，我们将航空公司数据集与机场天气数据（例如，windspeed、温度、海拔等）集成，因此这些天气功能可以包含在模型中。
-
-<!-- -->
-
-> [!NOTE]
-> 航班数据集已添加到 Spark 2.0 笔记本，以方便演示分类算法的用法。 有关航班准时出发数据集和天气数据集的信息，请参阅以下链接：
-> 
-> - 航班准时出发数据：[https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
-> 
-> - 机场天气数据：[https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/) 
-
-<!-- -->
-
-<!-- -->
-
-> [!NOTE]
-> 有关 NYC 出租车和飞机航班延迟数据集的 Spark 2.0 笔记本可能需要 10 分钟或更长时间运行（具体取决于 HDI 群集大小）。 以上列表中的第一个笔记本显示了一个笔记本中数据浏览、可视化和 ML 模型训练的许多方面，该笔记本使用向下采样的 NYC 数据集（其中已预先联接出租车和费用文件）运行，其运行所花费的时间更短：[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) 此笔记本完成运行的时间短得多（2-3 分钟），对于快速浏览我们为 Spark 2.0 提供的代码而言，此笔记本可能是一个很好的起点。 
-
-<!-- -->
+- [Spark 1.6 笔记本](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/)：提供有关如何使用多种不同算法执行数据探索、建模和评分的信息。
+- [Spark 2.0 笔记本](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/)：提供有关如何执行回归和分类任务的信息。 数据集可能有所不同，但步骤和概念适用于各种数据集。
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
-
-<!-- -->
 
 > [!NOTE]
 > 下面的说明与使用 Spark 1.6 相关。 对于 Spark 2.0 版本，请使用上面所述和链接的笔记本。 
 
-<!-- -->
+## <a name="setup"></a>设置
 
-## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>设置：存储位置、库和预设 Spark 上下文
 Spark 能够读取和写入 Azure 存储 Blob（也称为 WASB）。 因此，存储在该处的任何现有数据都可以使用 Spark 处理，并将结果再次存储在 WASB 中。
 
 若要在 WASB 中保存模型或文件，需要正确指定路径。 可使用开头为以下内容的路径，引用附加到 Spark 群集的默认容器：“wasb:///”。 其他位置通过“wasb://”引用。
 
 ### <a name="set-directory-paths-for-storage-locations-in-wasb"></a>在 WASB 中为存储位置设置目录路径
+
 以下代码示例指定要读取的数据位置，以及用于保存模型输出的模型存储目录的路径：
+
 
     # SET PATHS TO FILE LOCATIONS: DATA AND MODEL STORAGE
 
@@ -102,6 +62,7 @@ Spark 能够读取和写入 Azure 存储 Blob（也称为 WASB）。 因此，�
 
 
 ### <a name="import-libraries"></a>导入库
+
 设置还要求导入必需的库。 设置 Spark 上下文并使用以下代码导入必要的库：
 
     # IMPORT LIBRARIES
@@ -121,6 +82,7 @@ Spark 能够读取和写入 Azure 存储 Blob（也称为 WASB）。 因此，�
 
 
 ### <a name="preset-spark-context-and-pyspark-magics"></a>预设 Spark 上下文和 PySpark magic
+
 与 Jupyter 笔记本一起提供的 PySpark 内核具有预设上下文。 因此在开始处理正在开发的应用程序前无需显式设置 Spark 或 Hive 上下文。 这些上下文默认可用。 这些上下文包括：
 
 * sc - 用于 Spark 
@@ -131,9 +93,10 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 * **%%local** 指定本地执行后续行中的代码。 代码必须是有效的 Python 代码。
 * **%%sql -o \<variable name>** 针对 sqlContext 执行 Hive 查询。 如果传递了 -o 参数，则查询的结果以 Pandas 数据帧的形式保存在 %%local Python 上下文中。
 
-有关 Jupyter 笔记本内核和预定义的 "magic" 的详细信息，请参阅[适用于 hdinsight 上的 Hdinsight Spark Linux 群集的 Jupyter 笔记本可用的内核](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md)。
+有关 Jupyter 笔记本内核和预定义“magic”的详细信息，请参阅[适用于装有 HDInsight 上的 HDInsight Spark Linux 群集的 Jupyter 笔记本的内核](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md)。
 
-## <a name="data-ingestion-from-public-blob"></a>来自公共 blob 的数据引入
+## <a name="load-the-data"></a>加载数据
+
 数据科学过程的第一步是从源引入数据以供分析，使其驻留在数据探索和建模环境中。 在本演练中环境为 Spark。 本部分包含要完成一系列任务的代码：
 
 * 引入数据样本以供建模
@@ -206,10 +169,12 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 
 执行以上单元格所花的时间：51.72 秒
 
-## <a name="data-exploration--visualization"></a>数据探索和可视化
+## <a name="explore-the-data"></a>浏览数据
+
 将数据引入到 Spark 中后，数据科学过程的下一步是通过探索和可视化更深入地了解数据。 在本部分中，我们使用 SQL 查询检查出租车数据，并绘制目标变量和预期特征以供视觉检查。 具体而言，我们绘制出租车行程中乘客数的频率、小费金额的频率以及小费如何随支付金额和类型而变化。
 
 ### <a name="plot-a-histogram-of-passenger-count-frequencies-in-the-sample-of-taxi-trips"></a>绘制出租车小费样本中乘客数频率的直方图
+
 此代码和后续代码段使用 SQL magic 查询样本，使用本地 magic 绘制数据。
 
 * **SQL magic (`%%sql`)** HDInsight PySpark 内核支持针对 sqlContext 的轻松内联 HiveQL 查询。 (-o VARIABLE_NAME) 参数在 Jupyter 服务器上将 SQL 查询的输出保留为 Pandas 数据帧。 此设置使输出在本地模式下可用。
@@ -232,8 +197,6 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 
 > [!NOTE]
 > 此 PySpark magic 在本演练中多次使用。 如果数据量很大，应采样以创建本地内存可容纳的数据帧。
-> 
-> 
 
     #CREATE LOCAL DATA-FRAME AND USE FOR MATPLOTLIB PLOTTING
 
@@ -263,9 +226,10 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 
 ![按乘客数的行程频率](./media/spark-data-exploration-modeling/trip-freqency-by-passenger-count.png)
 
-可通过使用笔记本中的“类型”  菜单按钮从多个不同类型的可视化（表、饼图、线图、面积图或条形图）中选择。 此处显示了条形图。
+可通过使用笔记本中的“类型”菜单按钮从多个不同类型的可视化（表、饼图、线图、面积图或条形图）中选择。 此处显示了条形图。
 
 ### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts"></a>绘制小费金额以及小费金额如何随乘客数和车费金额变化的直方图。
+
 使用 SQL 查询采样数据。
 
     #PLOT HISTOGRAM OF TIP AMOUNTS AND VARIATION BY PASSENGER COUNT AND PAYMENT TYPE
@@ -281,7 +245,6 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     AND payment_type in ('CSH', 'CRD') 
     AND tip_amount > 0 
     AND tip_amount < 25
-
 
 此代码单元格使用 SQL 查询创建三个数据图。
 
@@ -321,17 +284,19 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 
 ![按车费金额的小费金额](./media/spark-data-exploration-modeling/tip-amount-by-fare-amount.png)
 
-## <a name="feature-engineering-transformation-and-data-preparation-for-modeling"></a>用于建模的特征工程、转换和数据准备
+## <a name="prepare-the-data"></a>准备数据
+
 本部分介绍并提供使数据准备好在 ML 建模中使用的过程的代码。 它介绍如何执行以下任务：
 
 * 通过将小时装入交通时间存储桶来创建新特征
 * 为分类特征编制索引并进行编码
 * 创建标签点对象用于输入到 ML 函数中
-* 创建数据的随机采样，并将其拆分为定型集和测试集
+* 创建数据的随机子采样，并将其拆分为训练集和测试集
 * 特征缩放
 * 在内存中缓存对象
 
 ### <a name="create-a-new-feature-by-binning-hours-into-traffic-time-buckets"></a>通过将小时装入交通时间存储桶来创建新特征
+
 此代码显示如何通过将小时装入交通时间存储桶创建新特征，以及如何在内存中缓存生成的数据帧。 当重复使用弹性分布式数据集 (RDD) 和数据帧时，缓存导致执行时间改善。 相应地，我们在演练中的多个阶段缓存 RDD 和数据帧。 
 
     # CREATE FOUR BUCKETS FOR TRAFFIC TIMES
@@ -353,14 +318,15 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     taxi_df_train_with_newFeatures.cache()
     taxi_df_train_with_newFeatures.count()
 
-**输出：** 
+**输出：**
 
 126050
 
 ### <a name="index-and-encode-categorical-features-for-input-into-modeling-functions"></a>为分类特征编制索引并进行编码以输入到建模函数中
+
 本部分介绍如何为分类特征编制索引或进行编码以输入到建模函数中。 MLlib 的建模和预测函数需要带有分类输入数据的特征在使用前编制索引或进行编码。 根据模型，需要以不同方式为它们编制索引或进行编码：  
 
-* **基于树的建模**需要将类别编码为数值（例如，具有三个类别的特征可能会使用 0、1、2 进行编码）。 此算法由 MLlib 的[StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer)函数提供。 此函数将标签的字符串列编码为标签索引列，它们将按标签频率进行排序。 虽然使用输入和数据处理的数值编制索引，但可指定基于树的算法，将其视为类别进行相应处理。 
+* **基于树的建模**需要将类别编码为数值（例如，具有三个类别的特征可能会使用 0、1、2 进行编码）。 此算法由 MLlib 的 [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) 函数提供。 此函数将标签的字符串列编码为标签索引列，它们将按标签频率进行排序。 虽然使用输入和数据处理的数值编制索引，但可指定基于树的算法，将其视为类别进行相应处理。 
 * **逻辑和线性回归模型**需要独热编码，例如，具有三个类别的特征可扩展为三个特征列，每个根据观察的类别包含 0 或 1。 MLlib 提供 [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) 函数用于执行独热编码。 此编码器将标签索引列映射到二元向量列，该列最多只有单个值。 此编码允许将预期数值特征的算法（如逻辑回归）应用到分类特征。
 
 下面是用于为分类特征编制索引和编码的代码：
@@ -411,6 +377,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 执行以上单元格所花的时间：1.28 秒
 
 ### <a name="create-labeled-point-objects-for-input-into-ml-functions"></a>创建标签点对象用于输入到 ML 函数中
+
 本部分包含的代码显示如何将分类文本数据编制索引为标签点数据类型，并对其编码，以便它可用于训练和测试 MLlib 逻辑回归和其他分类模型。 标签点对象是弹性分布式数据集 (RDD)，格式化为 MLlib 中的大多数 ML 算法所需的输入数据。 [标签点](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point)是本地向量，可能密集，也可能稀疏，与标签/响应相关联。  
 
 本部分包含的代码显示如何将分类文本数据编制索引为[标签点](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point)数据类型，并对其编码，以便它可用于训练并测试 MLlib 逻辑回归和其他分类模型。 标签点对象是弹性分布式数据集 (RDD)，它们包含标签（目标/响应变量）和特征向量。 此格式是 MLlib 中许多 ML 算法输入时所需的格式。
@@ -464,8 +431,9 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
         return  labPt
 
 
-### <a name="create-a-random-subsampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>创建数据的随机采样，并将其拆分为定型集和测试集
-此代码创建数据的随机采样（此处使用 25%）。 尽管由于数据集的大小，本示例不需要此操作，但我们演示了如何在此处采样，以便你知道如何在需要时针对自己的问题使用它。 当样本较大时，采样可节省大量时间，同时训练模型。 接下来我们将样本拆分为训练部分（此处为 75%）和测试部分（此处为 25%），用于分类和回归建模。
+### <a name="create-a-random-subsampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>创建数据的随机子采样，并将其拆分为训练集和测试集
+
+此代码创建数据的随机采样（此处使用 25%）。 尽管由于数据集的大小，本示例不需要此操作，但我们演示了如何在此处采样，以便你知道如何在需要时针对自己的问题使用它。 当样本很大时，采样可以在训练模型时节省大量时间。 接下来我们将样本拆分为训练部分（此处为 75%）和测试部分（此处为 25%），用于分类和回归建模。
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -506,12 +474,11 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 执行以上单元格所花的时间：0.24 秒
 
 ### <a name="feature-scaling"></a>特征缩放
+
 特征缩放（也称为数据规范化）确保具有广泛分散的值的特征不在目标函数中得到过多权重。 用于特征缩放的代码使用 [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) 将特征缩放为单位差异。 它由 MLlib 提供，用于使用随机梯度下降 (SGD) 的线性回归，随机梯度下降是一种用于训练范围广泛的其他机器学习模型（如正则化回归或支持向量机 (SVM)）的流行算法。
 
 > [!NOTE]
 > 我们发现，LinearRegressionWithSGD 算法对特征缩放很敏感。
-> 
-> 
 
 下面是用于缩放变量以用于正则化线性 SGD 算法的代码。
 
@@ -549,6 +516,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 执行以上单元格所花的时间：13.17 秒
 
 ### <a name="cache-objects-in-memory"></a>在内存中缓存对象
+
 可通过缓存用于分类、回归和缩放特征的输入数据时间帧来缩短训练和测试 ML 算法所需的时间。
 
     # RECORD START TIME
@@ -579,7 +547,8 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 
 执行以上单元格所花的时间：0.15 秒
 
-## <a name="predict-whether-or-not-a-tip-is-paid-with-binary-classification-models"></a>通过二元分类模型预测是否支付小费
+## <a name="train-a-binary-classification-model"></a>训练二元分类模型
+
 本部分介绍如何将二元分类任务的三个模型用于预测是否为某个出租车行程支付小费。 显示的模型包括：
 
 * 正则化逻辑回归 
@@ -593,6 +562,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 3. 在 blob 中**保存模型**以供将来使用
 
 ### <a name="classification-using-logistic-regression"></a>使用逻辑回归的分类
+
 本部分中的代码显示如何使用 [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) 训练、评估和保存逻辑回归模型，该模型在 NYC 出租车行程和车费数据集中预测某个行程是否支付小费。
 
 **使用 CV 和超参数扫描训练逻辑回归模型**
@@ -740,6 +710,7 @@ F1 分数 = 0.984304060189
 ![Logistic regression ROC curve.png](./media/spark-data-exploration-modeling/logistic-regression-roc-curve.png)
 
 ### <a name="random-forest-classification"></a>随机林分类
+
 本部分中的代码显示如何训练、评估和保存随机林模型，该模型在 NYC 出租车行程和车费数据集中预测某个行程是否支付小费。
 
     #PREDICT WHETHER A TIP IS PAID OR NOT USING RANDOM FOREST
@@ -792,6 +763,7 @@ ROC 下的面积 = 0.985297691373
 执行以上单元格所花的时间：31.09 秒
 
 ### <a name="gradient-boosting-trees-classification"></a>梯度提升树分类
+
 本部分中的代码显示如何训练、评估和保存渐变提升树模型，该模型在 NYC 出租车行程和车费数据集中预测某个行程是否支付小费。
 
     #PREDICT WHETHER A TIP IS PAID OR NOT USING GRADIENT BOOSTING TREES
@@ -837,7 +809,8 @@ ROC 下的面积 = 0.985297691373
 
 执行以上单元格所花的时间：19.76 秒
 
-## <a name="predict-tip-amounts-for-taxi-trips-with-regression-models"></a>使用回归模型预测出租车行程的小费金额
+## <a name="train-a-regression-model"></a>训练回归模型
+
 本部分介绍如何针对基于其他小费特征预测某个出租车行程支付的小费金额的回归任务使用三个模型。 显示的模型包括：
 
 * 正则化线性回归
@@ -851,12 +824,11 @@ ROC 下的面积 = 0.985297691373
 3. 在 blob 中**保存模型**以供将来使用
 
 ### <a name="linear-regression-with-sgd"></a>使用 SGD 的线性回归
+
 本部分中的代码显示如何使用缩放特征训练使用随机梯度下降线性回归 (SGD) 进行优化的线性回归，以及如何在 Azure Blob 存储 (WASB) 中评分、评估和保存模型。
 
 > [!TIP]
-> 根据我们的经验，LinearRegressionWithSGD 模型的收敛可能出现问题，需要仔细更改/优化参数以获取有效的模型。 变量的缩放对收敛帮助很大。 
-> 
-> 
+> 根据我们的经验，LinearRegressionWithSGD 模型的收敛可能出现问题，需要仔细更改/优化参数以获取有效的模型。 变量的缩放对收敛帮助很大。
 
     #PREDICT TIP AMOUNTS USING LINEAR REGRESSION WITH SGD
 
@@ -910,6 +882,7 @@ R-sqr = 0.608017146081
 执行以上单元格所花的时间：58.42 秒
 
 ### <a name="random-forest-regression"></a>随机林回归
+
 本部分中的代码显示如何训练、评估和保存随机林回归，它将预测 NYC 出租车行程数据的小费金额。
 
     #PREDICT TIP AMOUNTS USING RANDOM FOREST
@@ -962,6 +935,7 @@ R-sqr = 0.759661334921
 执行以上单元格所花的时间：49.21 秒
 
 ### <a name="gradient-boosting-trees-regression"></a>梯度提升树回归
+
 本部分中的代码显示如何训练、评估和保存梯度提升树模型，该模型预测 NYC 出租车行程数据的小费金额。
 
 **训练和评估**
@@ -1045,6 +1019,7 @@ R-sqr = 0.753835096681
 ![Actual-vs-predicted-tip-amounts](./media/spark-data-exploration-modeling/actual-vs-predicted-tips.png)
 
 ## <a name="clean-up-objects-from-memory"></a>从内存中清理对象
+
 使用 `unpersist()` 删除内存中缓存的对象。
 
     # REMOVE ORIGINAL DFs
@@ -1067,8 +1042,8 @@ R-sqr = 0.753835096681
     oneHotTRAINregScaled.unpersist()
     oneHotTESTregScaled.unpersist()
 
+## <a name="save-the-models"></a>保存模型
 
-## <a name="record-storage-locations-of-the-models-for-consumption-and-scoring"></a>记录模型的存储位置以供使用和计分
 要按照[对 Spark 生成的机器学习模型评分和评估](spark-model-consumption.md)主题中所述内容使用和评分独立数据集，必须复制此处所创建的保存模型的这些文件名，并将其粘贴到 Consumption Jupyter 笔记本。 下面是打印该处所需模型文件的路径的代码。
 
     # MODEL FILE LOCATIONS FOR CONSUMPTION
@@ -1078,7 +1053,6 @@ R-sqr = 0.753835096681
     print "randomForestRegFileLoc = modelDir + \"" + rfregressionfilename + "\"";
     print "BoostedTreeClassificationFileLoc = modelDir + \"" + btclassificationfilename + "\"";
     print "BoostedTreeRegressionFileLoc = modelDir + \"" + btregressionfilename + "\"";
-
 
 **OUTPUT**
 
@@ -1095,9 +1069,9 @@ BoostedTreeClassificationFileLoc = modelDir + "GradientBoostingTreeClassificatio
 BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-05-0317_06_51.737282"
 
 ## <a name="whats-next"></a>下一步是什么？
+
 现在已使用 Spark MlLib 创建了回归和分类模型，可了解如何评分和评估这些模型。 高级数据浏览和建模笔记本深入探讨到包括交叉验证、超参数扫描和模型评估。 
 
-**模型使用：** 若要了解如何评分和评估在本主题中创建的分类和回归模型，请参阅[评分和评估 Spark 构建的机器学习模型](spark-model-consumption.md)。
+**使用模型：** 若要了解如何评分和评估在本主题中创建的分类和回归模型，请参阅[评分和评估 Spark 构建的机器学习模型](spark-model-consumption.md)。
 
 **交叉验证和超参数扫描**：请参阅[使用 Spark 进行高级数据探索和建模](spark-advanced-data-exploration-modeling.md)，了解如何使用交叉验证和超参数扫描训练模型
-

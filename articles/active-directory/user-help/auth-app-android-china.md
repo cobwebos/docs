@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 05/20/2020
 ms.author: curtand
-ms.openlocfilehash: 6d6d32a7a340ef4b07138d5ec12c561e958cf739
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 795c68fc063d98bdee6ccf59dba6ee718dc92d03
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739492"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323019"
 ---
 # <a name="microsoft-authenticator-for-android-in-the-public-cloud-in-china"></a>中国公有云中的适用于 Android 的 Microsoft Authenticator
 
@@ -44,7 +44,7 @@ ms.locfileid: "83739492"
 
 ## <a name="multi-factor-authentication-workaround"></a>多重身份验证解决方案
 
-用户可以将自己的 MFA 设置为在设备上接收可用于验证其身份的验证码，而不是使用推送通知进行多重身份验证。 这些验证码的有效期为 30 秒。若要使用它们，管理员必须让租户能够使用基于时间的一次性密码 (TOTP) 验证码执行验证。
+用户可以在可用于 MFA 以验证身份的设备上[设置 Authenticator 应用接收验证码](multi-factor-authentication-setup-auth-app.md#set-up-the-microsoft-authenticator-app-to-use-verification-codes)，而不是使用推送通知进行多重身份验证。 这些验证码的有效期为 30 秒。若要使用它们，管理员必须让租户能够使用基于时间的一次性密码 (TOTP) 验证码执行验证。
 
 ## <a name="availability"></a>可用性
 

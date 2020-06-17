@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: d29420d14a716e5a45e42dd681faa01f518f713a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: aa442e15dbc95709ecf3c818f69301d2f02e9b5b
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83665788"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417015"
 ---
 # <a name="iot-central-device-development-overview"></a>IoT Central 设备开发概述
 
@@ -85,7 +85,9 @@ Azure IoT Central 使用 [Azure IoT 中心设备预配服务 (DPS)](../../iot-dp
 - 同步设备和 IoT Central 之间的属性值。 设备模板指定属性名称和数据类型，以便 IoT Central 可以显示信息。
 - 为设备模板中指定的命令实现命令处理程序。 设备模板指定设备应使用的命令名称和参数。
 
-有关详细信息，请参阅[创建并连接 Node.js 客户端应用程序](./tutorial-connect-device-nodejs.md)或[创建并连接 Python 客户端应用程序](./tutorial-connect-device-python.md)。
+有关设备模板的角色的详细信息，请参阅[什么是设备模板？](./concepts-device-templates.md)。
+
+有关一些示例代码，请参阅[创建并连接 Node.js 客户端应用程序](./tutorial-connect-device-nodejs.md)或[创建并连接 Python 客户端应用程序](./tutorial-connect-device-python.md)。
 
 ### <a name="languages-and-sdks"></a>语言和 SDK
 

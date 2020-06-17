@@ -6,14 +6,14 @@ ms.author: sngun
 tags: azure-resource-manager
 ms.service: cosmos-db
 ms.topic: quickstart
-ms.date: 02/27/2020
+ms.date: 06/01/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: f524a1e1db426b9b9dafb2fb95d77538a34b04ec
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 273305894e05b397d0f48acd7a483a9fdfc247ef
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605467"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324024"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建 Azure Cosmos DB 和容器
 
@@ -35,9 +35,9 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 
 ### <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/101-cosmosdb-create/)。
+本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/)。
 
-:::code language="json" source="~/quickstart-templates/101-cosmosdb-create/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json":::
 
 该模板中定义了三个 Azure 资源：
 
@@ -53,7 +53,7 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 
 1. 选择下图登录到 Azure 并打开一个模板。 该模板将创建 Azure Cosmos 帐户、数据库和容器。
 
-   [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-create%2Fazuredeploy.json)
+   [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
 
 2. 选择或输入以下值。
 
@@ -61,19 +61,22 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 
     除非另有指定，否则请使用默认值创建 Azure Cosmos 资源。
 
-    * **订阅**：选择一个 Azure 订阅。
-    * **资源组**：选择“新建”，输入资源组的唯一名称，然后单击“确定”。  
-    * **位置**：选择一个位置。  例如“美国中部”。 
+    * 订阅：选择一个 Azure 订阅。
+    * 资源组：选择“新建”，输入资源组的唯一名称，然后单击“确定”。 
+    * 位置：选择一个位置。  例如“美国中部”。
     * **帐户名称**：输入 Azure Cosmos 帐户的名称。 它必须全局唯一。
     * **位置**：输入要在其中创建 Azure Cosmos 帐户的位置。 Azure Cosmos 帐户必须与资源组处于同一位置。
     * **主要区域**：Azure Cosmos 帐户的主要副本区域。
     * **次要区域**：Azure Cosmos 帐户的次要副本区域。
+    * **默认一致性级别**：Azure Cosmos 帐户的默认一致性级别。
+    * **最大过期前缀**：最大过时请求数。 对于 BoundedStaleness 是必需的。
+    * **以秒为单位的最大间隔**：最大延迟时间。 对于 BoundedStaleness 是必需的。
     * **数据库名称**：Azure Cosmos 数据库的名称。
     * **容器名称**：Azure Cosmos 容器的名称。
     * **吞吐量**：容器的吞吐量，最小吞吐量值为 400 RU/秒。
     * **我同意上述条款和条件**：选中。
 
-3. 选择“购买”。  成功部署 Azure Cosmos 帐户后，你会收到通知：
+3. 选择“购买”。 成功部署 Azure Cosmos 帐户后，你会收到通知：
 
    ![资源管理器模板, Cosmos DB 集成, 部署门户通知](./media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
 

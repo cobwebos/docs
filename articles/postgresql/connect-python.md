@@ -4,16 +4,16 @@ description: 本快速入门提供了可用于从 Azure Database for PostgreSQL 
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.custom: mvc, devcenter
+ms.custom: mvc, devcenter, tracking-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: 3694c0b74393068538a0c8f496444a1541d88fee
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 174c11ba65ccba6389bf3e62d233b1ee56943b97
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76769067"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560940"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>快速入门：使用 Python 连接到 Azure Database for PostgreSQL 并查询其中的数据 - 单一服务器
 
@@ -38,7 +38,7 @@ ms.locfileid: "76769067"
 连接到 Azure Database for PostgreSQL 数据库需要完全限定的服务器名称和登录凭据。 可以从 Azure 门户获取此信息。
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，搜索 Azure Database for PostgreSQL 服务器名称并选择该名称。 
-1. 在服务器的“概述”页上，复制完全限定的“服务器名称”和“管理员用户名”    。 完全限定的“服务器名称”始终为“\<我的服务器名>.postgres.database.azure.com”的格式，“管理员用户名”始终为“\<我的管理员用户名>@\<我的服务器名>”的格式     。 
+1. 在服务器的“概述”页上，复制完全限定的“服务器名称”和“管理员用户名”  。 完全限定的“服务器名称”始终为“\<my-server-name>.postgres.database.azure.com”的格式，“管理员用户名”始终为“\<my-admin-username>@\<my-server-name>”的格式。 
    
    你还需要管理员密码。 如果忘记，可以从此页重置它。 
    
@@ -53,14 +53,14 @@ ms.locfileid: "76769067"
 1. 将代码示例添加到文件。 在代码中，进行以下替换：
    - `<server-name>` 和 `<admin-username>` 替换为从 Azure 门户复制的值。
    - `<admin-password>` 替换为服务器密码。
-   - `<database-name>` 替换为 Azure Database for PostgreSQL 数据库的名称。 创建服务器时，会自动创建一个名为 postgres  的默认数据库。 你可以重命名该数据库，或使用 SQL 命令创建新的数据库。 
+   - `<database-name>` 替换为 Azure Database for PostgreSQL 数据库的名称。 创建服务器时，会自动创建一个名为 postgres 的默认数据库。 你可以重命名该数据库，或使用 SQL 命令创建新的数据库。 
    
-1. 将文件保存在具有 .py 扩展名的项目文件夹（如 postgres-insert.py）中   。 对于 Windows，确保在保存文件时选择 UTF-8 编码。 
+1. 将文件保存在具有 .py 扩展名的项目文件夹（如 postgres-insert.py）中 。 对于 Windows，确保在保存文件时选择 UTF-8 编码。 
    
 1. 若要运行该文件，请在命令行界面中切换到项目文件夹，然后键入 `python` 后跟文件名，例如 `python postgres-insert.py`。
 
 ## <a name="create-a-table-and-insert-data"></a>创建表并插入数据
-下面的代码示例使用 [psycopg2.connect](http://initd.org/psycopg/docs/connection.html) 函数连接到 Azure Database for PostgreSQL 数据库，并使用 SQL INSERT  语句加载数据。 [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) 函数对数据库执行 SQL 查询。 
+下面的代码示例使用 [psycopg2.connect](http://initd.org/psycopg/docs/connection.html) 函数连接到 Azure Database for PostgreSQL 数据库，并使用 SQL INSERT 语句加载数据。 [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) 函数对数据库执行 SQL 查询。 
 
 ```Python
 import psycopg2
@@ -104,7 +104,7 @@ conn.close()
 ![命令行输出](media/connect-python/2-example-python-output.png)
 
 ## <a name="read-data"></a>读取数据
-下面的代码示例连接到 Azure Database for PostgreSQL 数据库，并使用 [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) 和 SQL SELECT  语句来读取数据。 此函数可接受查询，并返回可使用 [cursor.fetchall()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall) 循环访问的结果集。 
+下面的代码示例连接到 Azure Database for PostgreSQL 数据库，并使用 [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) 和 SQL SELECT 语句来读取数据。 此函数可接受查询，并返回可使用 [cursor.fetchall()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall) 循环访问的结果集。 
 
 ```Python
 import psycopg2
@@ -138,7 +138,7 @@ conn.close()
 ```
 
 ## <a name="update-data"></a>更新数据
-下面的代码示例连接到 Azure Database for PostgreSQL 数据库，并使用 [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) 和 SQL UPDATE  语句来更新数据。 
+下面的代码示例连接到 Azure Database for PostgreSQL 数据库，并使用 [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) 和 SQL UPDATE 语句来更新数据。 
 
 ```Python
 import psycopg2
@@ -168,7 +168,7 @@ conn.close()
 ```
 
 ## <a name="delete-data"></a>删除数据
-下面的代码示例连接到 Azure Database for PostgreSQL 数据库，并使用 [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) 和 SQL DELETE  语句来删除以前插入的库存项。 
+下面的代码示例连接到 Azure Database for PostgreSQL 数据库，并使用 [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) 和 SQL DELETE 语句来删除以前插入的库存项。 
 
 ```Python
 import psycopg2

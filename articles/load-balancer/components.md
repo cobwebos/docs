@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/30/2020
+ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: 84857315e4b6b4375ed5b78520b4c6ff0d66751a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: b696cdf2d54c42d3967041c5d10b1bd9bb5a3065
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684981"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84448676"
 ---
 # <a name="azure-load-balancer-components"></a>Azure 负载均衡器组件
 
@@ -39,6 +39,8 @@ IP 地址的性质决定了所创建的负载均衡器的类型。 选择“专�
 
 ![分层的负载均衡器示例](./media/load-balancer-overview/load-balancer.png)
 
+负载均衡器可以具有多个前端 IP。 详细了解[多个前端](load-balancer-multivip-overview.md)。
+
 ## <a name="backend-pool"></a>后端池
 
 虚拟机规模集中用于处理传入请求的虚拟机组或实例组。 为了经济高效地扩展以满足大量传入流量，计算准则通常建议向后端池添加更多实例。
@@ -57,7 +59,7 @@ IP 地址的性质决定了所创建的负载均衡器的类型。 选择“专�
 - 出现空闲超时
 - VM 关闭
 
-负载均衡器为终结点提供了不同的运行状况探测类型：TCP、HTTP 和 HTTPS。
+负载均衡器为终结点提供了不同的运行状况探测类型：TCP、HTTP 和 HTTPS。 [详细了解负载均衡器运行状况探测](load-balancer-custom-probe-overview.md)。
 
 基本负载均衡器不支持 HTTPS 探测。 基本负载均衡器会关闭所有 TCP 连接（包括已建立的连接）。
 
@@ -67,15 +69,32 @@ IP 地址的性质决定了所创建的负载均衡器的类型。 选择“专�
 
 例如，如果想要将前端 IP 的端口 80（或其他端口）上的流量路由到所有后端实例的端口 80，则需使用负载均衡规则。
 
+### <a name="high-availability-ports"></a>高可用性端口
+
+使用“协议 - 全部”和“端口 - 0”配置的负载均衡器规则。 这允许提供单个规则对到达内部标准负载均衡器的所有端口的所有 TCP 和 UDP 流进行负载均衡。 按流进行负载均衡决策。 此操作基于以下五个元组连接： 
+1. 源 IP 地址
+2. 源端口
+3. 目标 IP 地址
+4. 目标端口
+5. protocol
+
+HA 端口负载均衡规则可帮助实现关键方案，如虚拟网络内部网络虚拟设备 (NVA) 的高可用性和缩放。 当大量端口必须进行负载均衡时，此功能也可以帮助完成。
+
+可以详细了解 [HA 端口](load-balancer-ha-ports-overview.md)。
+
 ## <a name="inbound-nat-rules"></a>入站 NAT 规则
 
 入站 NAT 规则将发送到选定前端 IP 地址和端口组合的传入流量转发到后端池中的特定虚拟机或实例。 可以通过与负载均衡相同的基于哈希的分配来实现此端口转发。
 
 例如需要让远程桌面协议 (RDP) 或安全外壳 (SSH) 会话对后端池中的 VM 实例进行分隔。 可将多个内部终结点映射到同一前端 IP 地址上的多个端口。 可以使用前端 IP 地址来远程管理 VM，无需额外配置跳转盒。
 
+虚拟机规模集 (VMSS) 的上下文中的入站的 NAT 规则是入站 NAT 池。 详细了解[负载均衡器组件和 VMSS](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#azure-virtual-machine-scale-sets-with-azure-load-balancer)。
+
 ## <a name="outbound-rules"></a>出站规则
 
 出站规则为后端池所标识的所有虚拟机或实例配置出站网络地址转换 (NAT)。 这使后端中的实例能够与 Internet 或其他终结点进行通信（出站）。
+
+详细了解[出站连接和规则](load-balancer-outbound-connections.md)。
 
 基本负载均衡器不支持出站规则。
 
@@ -89,9 +108,6 @@ IP 地址的性质决定了所创建的负载均衡器的类型。 选择“专�
 - 了解有关[标准负载均衡器诊断](load-balancer-standard-diagnostics.md)的信息。
 - 了解如何[在空闲时重置 TCP](load-balancer-tcp-reset.md)。
 - 了解[具有 HA 端口负载均衡规则的标准负载均衡器](load-balancer-ha-ports-overview.md)。
-- 了解如何使用[具有多个前端 IP 配置的负载均衡器](load-balancer-multivip-overview.md)。
 - 详细了解[网络安全组](../virtual-network/security-overview.md)。
-- 了解[探测类型](load-balancer-custom-probe-overview.md#types)。
 - 详细了解[负载均衡器限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer)。
 - 了解如何使用[端口转发](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-port-forwarding-portal)。
-- 详细了解[负载均衡器出站规则](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)。

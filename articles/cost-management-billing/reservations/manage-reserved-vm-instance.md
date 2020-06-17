@@ -5,14 +5,14 @@ ms.service: cost-management-billing
 author: bandersmsft
 ms.reviewer: yashesvi
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 06/04/2020
 ms.author: banders
-ms.openlocfilehash: 1084e8687cc709b5e31a9ef2c903638dd3d8f62c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 187bfeb7f9e4be47fb44a1ad0cf97be757865ab9
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84019990"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434177"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>管理 Azure 资源的预留
 
@@ -20,6 +20,7 @@ ms.locfileid: "84019990"
 
 如果购买了 Azure 虚拟机预留实例，则可以更改预留的优化设置。 预留折扣可以应用于同一系列中的 VM，也可以为特定的 VM 大小保留数据中心容量。 另外，你应该尝试优化预留，使之充分发挥作用。
 
+*管理预留所需的权限不同于订阅权限。*
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -27,9 +28,9 @@ ms.locfileid: "84019990"
 
 购买预留时，会创建两个对象：**预留订单**和**预留**。
 
-在购买时，预留订单下有一个预留。 拆分、合并、部分退款或交换之类的操作会在“预留订单”下创建新的预留。 
+在购买时，预留订单下有一个预留。 拆分、合并、部分退款或交换之类的操作会在“预留订单”下创建新的预留。
 
-若要查看预留订单，请转到“预留”，  选择预留，然后单击“预留订单 ID”。 
+若要查看预留订单，请转到“预留”，选择预留，然后单击“预留订单 ID”。
 
 ![预留订单详细信息的示例，显示预留订单 ID ](./media/manage-reserved-vm-instance/reservation-order-details.png)
 
@@ -42,9 +43,9 @@ ms.locfileid: "84019990"
 若要更新预订范围，请执行以下操作：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 选择“所有服务”   > “预订”  。
+2. 选择“所有服务” > “预订”。
 3. 选择该预订。
-4. 选择“设置”   > “配置”  。
+4. 选择“设置” > “配置”。
 5. 更改范围。
 
 如果要从“共享”更改为单个范围，只能选择自己是其所有者的订阅。 只能选择与该预订相同的计费上下文中的订阅。
@@ -55,20 +56,19 @@ ms.locfileid: "84019990"
 
 可以通过将用户添加到预留订单或预留的角色来委托预留管理。 默认情况下，下预留订单的人员和帐户管理员拥有该预留订单或预留的所有者角色。
 
-可以独立于获取预留折扣的订阅来管理对预留订单和预留的访问权限。 为某人提供管理预留订单或预留的权限时，不会向其提供管理订阅的权限。 同样，为某人提供管理预留范围内的订阅的权限时，不会向其提供管理预留订单或预留的权限。
+可以*独立于获取预留折扣的订阅*来管理对预留订单和预留的访问权限。 为某人提供管理预留订单或预留的权限时，不会向其提供管理订阅的权限。 同样，为某人提供管理预留范围内的订阅的权限时，不会向其提供管理预留订单或预留的权限。
 
 若要执行交换或退款操作，用户必须有权访问预留订单。 为某人授予权限时，最好是授予预留订单的权限，而不是预留的权限。
-
 
 若要委托预订的访问管理，请执行以下操作：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 选择“所有服务”   > “预订”  以列出自己有权访问的预订。
+2. 选择“所有服务” > “预订”以列出自己有权访问的预订。
 3. 选择要将访问权限委托给其他用户的预订。
-4. 选择“访问控制 (IAM)”  。
-5. 选择“添加角色分配”   > “角色”   > “所有者”  。 或者，如果希望提供有限的访问权限，请选择其他角色。
+4. 选择“访问控制 (IAM)”。
+5. 选择“添加角色分配” > “角色” > “所有者”。 或者，如果希望提供有限的访问权限，请选择其他角色。
 6. 键入要添加为“所有者”的用户的电子邮件地址。
-7. 选择用户，再选择“保存”  。
+7. 选择用户，再选择“保存”。
 
 ## <a name="split-a-single-reservation-into-two-reservations"></a>将一个预订拆分为两个预订
 
@@ -118,11 +118,11 @@ ms.locfileid: "84019990"
 若要更新预留的优化设置，请执行以下操作：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 选择“所有服务”   > “预订”  。
+2. 选择“所有服务” > “预订”。
 3. 选择该预订。
-4. 选择“设置”   > “配置”  。  
+4. 选择“设置” > “配置”。  
   ![显示配置项目的示例](./media/manage-reserved-vm-instance/add-product03.png)
-5. 更改“优化对象”  设置。  
+5. 更改“优化对象”设置。  
   ![显示“针对设置进行优化”的示例](./media/manage-reserved-vm-instance/instance-size-flexibility-option.png)
 
 ## <a name="optimize-reservation-use"></a>优化预留的使用
@@ -134,7 +134,7 @@ ms.locfileid: "84019990"
 查看预留使用的一种方式是使用 Azure 门户。
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-2. 选择“所有服务” > [ **“预留”** ](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)，记下某个预留的“利用率(%)”。    
+2. 选择“所有服务” > [ **“预留”** ](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)，记下某个预留的“利用率(%)”。   
   ![显示预留列表的图像](./media/manage-reserved-vm-instance/reservation-list.png)
 3. 选择一个预留。
 4. 查看一段时间的预留使用趋势。  
@@ -152,7 +152,7 @@ ms.locfileid: "84019990"
 
 - 确保组织创建的虚拟机数与预留的 VM 大小相匹配。
 - 确保已启用实例大小灵活性。 有关详细信息，请参阅[管理预留 - 更改预留 VM 实例的优化设置](#change-optimize-setting-for-reserved-vm-instances)。
-- 将预留范围更改为“共享”，使其应用得更广。  有关详细信息，请参阅[更改预留的范围](#change-the-reservation-scope)。
+- 将预留范围更改为“共享”，使其应用得更广。 有关详细信息，请参阅[更改预留的范围](#change-the-reservation-scope)。
 - 考虑交换未使用的数量。 有关详细信息，请参阅[取消和交换](#cancel-exchange-or-refund-reservations)。
 
 
