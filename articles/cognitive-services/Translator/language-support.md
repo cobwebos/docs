@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 7ddf556be584603ce3e7cb4a97eb4cc9ff63ec68
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: 4e4200e291db81ff759e21eac5b1a9b785b5657f
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718438"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888308"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>文本和语音翻译的语言和区域支持
 
@@ -183,10 +183,10 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 [查看直译操作参考文档](reference/v3-0-translate.md)
 
 
-| 语言    | 语言代码 | 脚本 | 到/从 | 脚本|
+| 语言    | 语言代码 | Script | 到/从 | Script|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | 阿拉伯语 | `ar` | 阿拉伯语 `Arab` | <--> | 拉丁语 `Latn` |
-|Bangla  | `bn` | 孟加拉语 `Beng` | <--> | 拉丁语 `Latn` |
+| Bangla  | `bn` | 孟加拉语 `Beng` | <--> | 拉丁语 `Latn` |
 | 中文(简体) | `zh-Hans` | 简体中文 `Hans`| <--> | 拉丁语 `Latn` |
 | 中文(简体) | `zh-Hans` | 简体中文 `Hans`| <--> | 繁体中文 `Hant`|
 | 中文(繁体) | `zh-Hant` | 繁体中文 `Hant`| <--> | 拉丁语 `Latn` |
@@ -198,7 +198,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 卡纳达语 | `kn` | 卡纳达语 `Knda` | --> | 拉丁语 `Latn` |
 | 马拉雅拉姆语 | `ml` | 马拉雅拉姆语 `Mlym` | --> | 拉丁语 `Latn` |
 | 马拉地语 | `mr` | 梵语 `Deva` | --> | 拉丁语 `Latn` |
-| 奥里雅语 | `or` | 奥里雅语 `Orya` | <--> | 拉丁语 `Latn` |
+| 奥里亚语 | `or` | 奥里雅语 `Orya` | <--> | 拉丁语 `Latn` |
 | 旁遮普语 | `pa` | 果鲁穆奇语 `Guru`  | <--> | 拉丁语 `Latn`  |
 | 塞尔维亚语（西里尔） | `sr-Cyrl` | 西里尔语 `Cyrl`  | --> | 拉丁语 `Latn` |
 | 塞尔维亚语（拉丁） | `sr-Latn` | 拉丁语 `Latn` | --> | 西里尔语 `Cyrl`|

@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 879834567b6905a070aada3dae2a41a672635c6c
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 5b1471cc43fc506ca798e81ac8e35a5051278ee0
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267233"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84907374"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>沉浸式读者 SDK 参考指南
 
@@ -111,7 +111,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ### <a name="launchresponse"></a>LaunchResponse
 
-包含对的调用的响应 `ImmersiveReader.launchAsync` 。
+包含对的调用的响应 `ImmersiveReader.launchAsync` 。 请注意， `iframe` 可以通过访问包含沉浸式读取器的的引用 `container.firstChild` 。
 
 ```typescript
 {
@@ -135,7 +135,7 @@ enum CookiePolicy { Disable, Enable }
 | text/plain | 纯文本。 |
 | text/html | HTML 内容。 [了解详细信息](#html-support)|
 | application/mathml + xml | 数学标记语言（MathML）。 [了解详细信息](./how-to/display-math.md)。
-| application/vnd.apple.mpegurl. vnd.openxmlformats-officedocument.spreadsheetml.sheet. wordprocessingml | Microsoft Word .docx 格式的文档。
+| 应用程序/vnd.openxmlformats-officedocument.wordprocessingml.docargumentable | Microsoft Word .docx 格式的文档。
 
 ### <a name="html-support"></a>HTML 支持
 
@@ -207,10 +207,10 @@ SDK 为启动沉浸式阅读器的按钮提供默认样式。 使用 `immersive-
 
 使用以下属性来配置按钮的外观。
 
-| 特性 | 说明 |
+| Attribute | 说明 |
 | --------- | ----------- |
 | `data-button-style` | 设置按钮的样式。 可以是 `icon`、`text` 或 `iconAndText`。 默认为 `icon`。 |
-| `data-locale` | 设置区域设置。 例如，`en-US` 或 `fr-FR`。 默认为英语 `en` 。 |
+| `data-locale` | 设置区域设置。  例如 `en-US` 或 `fr-FR`。 默认为英语 `en` 。 |
 | `data-icon-px-size` | 设置图标的大小（以像素为单位）。 默认值为20px。 |
 
 ## <a name="browser-support"></a>浏览器支持

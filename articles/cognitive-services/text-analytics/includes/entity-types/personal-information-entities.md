@@ -8,17 +8,17 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/30/2020
 ms.author: aahi
-ms.openlocfilehash: 04fb080d09b1945add7340db081ab49dd017731d
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 637c2bb1bc37d26dcdf1a169b2f5d20766d0a27f
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84637460"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84902489"
 ---
 > [!NOTE]
 > 若要检测 `PHI` ，请使用 `domain=phi` 参数和模型版本 `2020-04-01` 或更高版本。
 >
-> 例如：`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/entities/recognition/pii?domain=phi&model-version=2020-04-01`
+> 例如： `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/entities/recognition/pii?domain=phi&model-version=2020-04-01`
  
 将请求发送到终结点时，将返回以下实体类别 `/v3.1-preview.1/entities/recognition/pii` 。
 
@@ -40,7 +40,7 @@ ms.locfileid: "84637460"
 | DateTime | Date | 日历日期。 | `2019-10-01` | 还返回了 `domain=phi` 。 |
 | 数量 | 空值 | 数字和数字。 | `2019-10-01` |  |
 | 数量 | Age | 年龄段. | `2019-10-01` | | |
-| 疾病的国际分类（ICD-10-CM） | 空值 | 与国际分类疾病，第九版相关的实体。   | `2020-04-01` | |
+| 疾病的国际分类（ICD-9-CM） | 空值 | 与国际分类疾病，第九版相关的实体。   | `2020-04-01` | |
 | 疾病的国际分类（ICD-10-CM） | 空值 | 与国际分类疾病，第10个版本相关的实体。    | `2020-04-01` | |
 
 ## <a name="azure-information"></a>Azure 信息
