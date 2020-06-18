@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 36b653fb3c3a24f3d19408aa2c87b3b764d04ec1
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: HT
+ms.openlocfilehash: 3e32c7d7da918eb58de47d8fc9b7688a189cb022
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84730316"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783089"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>对语音服务的语言和语音支持
 
@@ -312,6 +312,27 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | 越南语              | `vi`          |
 | 威尔士语                   | `cy`          |
 | 尤卡坦玛雅语            | `yua`         |
+
+## <a name="speaker-recognition"></a>说话人识别
+
+请参阅下表，了解各种说话人识别 API 支持的语言。 请参阅[概述](speaker-recognition-overview.md)，了解有关说话人识别的其他信息。
+
+| Locale | 语言 | 依赖于文本的验证 | 独立于文本的验证 | 独立于文本的识别 |
+|----|----|----|----|----|
+| zh-CN | 英语(美国) | 是 | 是 | 是 |
+|zh-CN  |中文(普通话，简体)|    不适用|    是|    是|
+|de-DE  |德语（德国）   |不适用    |是    |是|
+|en-GB  |英语(英国)   |不适用    |是    |是|
+|fr-FR  |法语（法国）    |不适用    |是    |是|
+|en-AU  |英语（澳大利亚）    |不适用    |是    |是|
+|en-CA  |英语（加拿大）   |不适用|   是|    是|
+|fr-CA  |法语（加拿大）    |不适用    |是|   是|
+|it-IT  |意大利语|   不适用 |是|   是|
+|es-ES| 西班牙语(西班牙) |不适用    |是|   是|
+|es-MX  |西班牙语（墨西哥）   |不适用|   是|    是|
+|ja-JP| 日语    |不适用    |是    |是|
+|pt-BR| 葡萄牙语（巴西）|    不适用|    是|    是|
+|ko-KR| 韩语  |不适用    |是|   是|
 
 ## <a name="next-steps"></a>后续步骤
 

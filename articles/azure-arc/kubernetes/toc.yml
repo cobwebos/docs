@@ -4,6 +4,10 @@
   items:
     - name: 关于已启用 Azure Arc 的 Kubernetes
       href: overview.md
+- name: 示例
+  items:
+    - name: Azure Policy 内置策略定义
+      href: ./policy-samples.md
 - name: 操作指南
   items:
     - name: 群集操作

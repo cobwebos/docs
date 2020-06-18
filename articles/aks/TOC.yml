@@ -24,27 +24,6 @@
       items:
         - name: 使用 Helm 进行开发
           href: quickstart-helm.md
-        - name: Azure Dev Spaces
-          expanded: true
-          items:
-            - name: 使用 Azure Dev Spaces 进行团队开发
-              href: ../dev-spaces/quickstart-team-development.md
-              maintainContext: true
-            - name: 使用 Visual Studio Code
-              href: ../dev-spaces/quickstart-netcore.md
-              maintainContext: true
-            - name: 使用 Visual Studio
-              href: ../dev-spaces/quickstart-netcore-visualstudio.md
-              maintainContext: true
-            - name: 使用 CLI
-              href: ../dev-spaces/quickstart-cli.md
-              maintainContext: true
-            - name: 将 Azure Dev Spaces 与 Java 配合使用
-              href: ../dev-spaces/quickstart-java.md
-              maintainContext: true
-            - name: 使用 Azure Dev Spaces Node.js
-              href: ../dev-spaces/quickstart-nodejs.md
-              maintainContext: true
 - name: 教程
   items:
     - name: 1 - 为 AKS 准备应用程序
@@ -302,54 +281,10 @@
           href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context'
     - name: 开发和运行应用程序
       items:
-        - name: 使用 Dev Spaces 进行开发
-          href: ../dev-spaces/azure-dev-spaces.md
-          maintainContext: true
-          items:
-            - name: Java（VS Code 和 CLI）
-              items:
-                - name: 1 - 入门
-                  href: ../dev-spaces/get-started-java.md
-                  maintainContext: true
-                - name: 2 - 多服务开发
-                  href: ../dev-spaces/multi-service-java.md
-                  maintainContext: true
-                - name: 3 - 团队开发
-                  href: ../dev-spaces/team-development-java.md
-                  maintainContext: true
-            - name: .NET Core（VS Code 和 CLI）
-              items:
-                - name: 1 - 入门
-                  href: ../dev-spaces/get-started-netcore.md
-                  maintainContext: true
-                - name: 2 - 多服务开发
-                  href: ../dev-spaces/multi-service-netcore.md
-                  maintainContext: true
-                - name: 3 - 团队开发
-                  href: ../dev-spaces/team-development-netcore.md
-                  maintainContext: true
-            - name: .NET Core (Visual Studio 2017)
-              items:
-                - name: 1 - 入门
-                  href: ../dev-spaces/get-started-netcore-visualstudio.md
-                  maintainContext: true
-                - name: 2 - 多服务开发
-                  href: ../dev-spaces/multi-service-netcore-visualstudio.md
-                  maintainContext: true
-                - name: 3 - 团队开发
-                  href: ../dev-spaces/team-development-netcore-visualstudio.md
-                  maintainContext: true
-            - name: Node.js（VS Code 和 CLI）
-              items:
-                - name: 1 - 入门
-                  href: ../dev-spaces/get-started-nodejs.md
-                  maintainContext: true
-                - name: 2 - 多服务开发
-                  href: ../dev-spaces/multi-service-nodejs.md
-                  maintainContext: true
-                - name: 3 - 团队开发
-                  href: ../dev-spaces/team-development-nodejs.md
-                  maintainContext: true
+        - name: 在 Visual Studio Code 中使用 Local Process with Kubernetes（预览版）
+          href: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
+        - name: 在 Visual Studio 中使用 Local Process with Kubernetes（预览版）
+          href: ../dev-spaces/how-to/local-process-kubernetes-visual-studio.md
         - name: 通过 Helm 安装现有应用程序
           href: kubernetes-helm.md
         - name: 使用 OpenFaaS
