@@ -1,6 +1,6 @@
 ---
-title: 排查更改跟踪和清单问题
-description: 了解如何通过 Azure 自动化更改跟踪和清单解决方案排查和解决问题。
+title: 排查 Azure 自动化更改跟踪和库存的问题
+description: 本文介绍了如何排查和解决 Azure 自动化更改跟踪和库存功能的问题。
 services: automation
 ms.service: automation
 ms.subservice: change-inventory-management
@@ -9,40 +9,37 @@ ms.author: magoedte
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4f230cd0965d58f690d333cd62f2c7c1d499e8d1
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
-ms.translationtype: MT
+ms.openlocfilehash: 3fe28ba0871009785b1bb8b263b42f453c2918be
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582147"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684862"
 ---
-# <a name="troubleshoot-change-tracking-and-inventory-issues"></a>排查更改跟踪和清单问题
+# <a name="troubleshoot-change-tracking-and-inventory-issues"></a>排查更改跟踪和库存问题
 
-本文介绍如何排查 Azure 自动化更改跟踪和清单问题。
-
->[!NOTE]
->本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az 模块安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于你的自动化帐户，你可以通过使用[如何在 Azure 自动化中更新 Azure PowerShell 模块](../automation-update-azure-modules.md)，将模块更新到最新版本。
+本文介绍了如何排查和解决 Azure 自动化更改跟踪和库存的问题。 有关更改跟踪和库存的一般信息，请参阅[更改跟踪和库存概述](../change-tracking.md)。
 
 ## <a name="windows"></a>Windows
 
-### <a name="scenario-change-tracking-and-inventory-records-arent-showing-for-windows-machines"></a><a name="records-not-showing-windows"></a>方案：不显示 Windows 计算机的更改跟踪和清单记录
+### <a name="scenario-change-tracking-and-inventory-records-arent-showing-for-windows-machines"></a><a name="records-not-showing-windows"></a>场景：未显示 Windows 计算机的更改跟踪和库存记录
 
 #### <a name="issue"></a>问题
 
-对于载入的 Windows 计算机，看不到任何更改跟踪和清单结果。
+对于已启用更改跟踪和库存功能的 Windows 计算机，你未看到任何更改跟踪和库存结果。
 
 #### <a name="cause"></a>原因
 
-此错误可能有以下原因：
+此错误的可能原因如下：
 
 * 适用于 Windows 的 Azure Log Analytics 代理未运行。
-* 正在阻止回发到自动化帐户的通信。
-* 不会下载更改跟踪和库存管理包。
-* 要载入的 VM 可能来自克隆的计算机，该计算机未与安装的 Windows 的 Log Analytics 代理经过系统准备。
+* 与自动化帐户的通信被阻止。
+* 未下载更改跟踪和库存管理包。
+* 要启用的 VM 可能来自某台克隆的计算机，但尚未通过系统准备工具 (sysprep) 准备该计算机以使其安装有适用于 Windows 的 Log Analytics 代理。
 
 #### <a name="resolution"></a>解决方法
 
-在 Log Analytics 代理计算机上，请参阅**C:\Program Files\Microsoft Monitoring Agent\Agent\Tools** ，并运行以下命令：
+在 Log Analytics 代理计算机上，转到 **C:\Program Files\Microsoft Monitoring Agent\Agent\Tools** 并运行以下命令：
 
 ```cmd
 net stop healthservice
@@ -51,76 +48,76 @@ StartTracing.cmd VER
 net start healthservice
 ```
 
-如果仍需要帮助，可以收集诊断信息并联系支持人员。
+如果仍需帮助，可以收集诊断信息并联系支持人员。
 
 > [!NOTE]
-> 默认情况下，Log Analytics 代理启用错误跟踪。 若要启用如前面的示例所示的详细错误消息`VER` ，请使用参数。 对于信息跟踪，请`INF`在调用`StartTracing.cmd`时使用。
+> 默认情况下，Log Analytics 代理会启用错误跟踪。 若要如上例所示启用详细错误消息，请使用 `VER` 参数。 要进行信息跟踪，请在调用 `StartTracing.cmd` 时使用 `INF`。
 
 ##### <a name="log-analytics-agent-for-windows-not-running"></a>适用于 Windows 的 Log Analytics 代理未运行
 
-验证 Windows 的 Log Analytics 代理（**运行状况服务**）是否正在计算机上运行。
+验证适用于 Windows 的 Log Analytics 代理 (**HealthService.exe**) 是否正在计算机上运行。
 
-##### <a name="communication-to-automation-account-blocked"></a>已阻止与自动化帐户通信
+##### <a name="communication-to-automation-account-blocked"></a>与自动化帐户的通信被阻止
 
-检查计算机上的事件查看器，并查找其中包含单词`changetracking`的任何事件。
+检查计算机上的事件查看器，查看是否有任何事件包含 `changetracking` 一词。
 
-若要了解更改跟踪和清单工作时必须允许的地址和端口，请参阅[使用混合 Runbook 辅助角色自动执行数据中心或云中的资源](../automation-hybrid-runbook-worker.md#network-planning)。
+若要了解必须允许哪些地址和端口才能让更改跟踪和库存正常运行，请参阅[网络规划](../automation-hybrid-runbook-worker.md#network-planning)。
 
 ##### <a name="management-packs-not-downloaded"></a>未下载管理包
 
-验证以下更改跟踪和清单管理包是否已在本地安装：
+验证是否在本地安装了以下更改跟踪和库存管理包：
 
 * `Microsoft.IntelligencePacks.ChangeTrackingDirectAgent.*`
 * `Microsoft.IntelligencePacks.InventoryChangeTracking.*`
 * `Microsoft.IntelligencePacks.SingletonInventoryCollection.*`
 
-##### <a name="vm-from-cloned-machine-that-has-not-been-sysprepped"></a>尚未经过系统准备的克隆计算机上的 VM
+##### <a name="vm-from-cloned-machine-that-has-not-been-sysprepped"></a>VM 来自尚未使用 sysprep 进行配置的克隆计算机
 
-如果使用克隆的映像，请先对映像执行 sysprep，然后安装适用于 Windows 的 Log Analytics 代理。
+如果使用克隆的映像，请先使用 sysprep 配置该映像，然后安装适用于 Windows 的 Log Analytics 代理。
 
 ## <a name="linux"></a>Linux
 
-### <a name="scenario-no-change-tracking-and-inventory-results-on-linux-machines"></a>方案： Linux 计算机上无更改跟踪和清单结果
+### <a name="scenario-no-change-tracking-and-inventory-results-on-linux-machines"></a>方案：Linux 计算机上未显示更改跟踪和库存结果
 
 #### <a name="issue"></a>问题
 
-对于载入解决方案的 Linux 计算机，不会看到任何更改跟踪和清单结果。 
+对于已启用更改跟踪和库存功能的 Linux 计算机，你未看到任何更改跟踪和库存结果。 
 
 #### <a name="cause"></a>原因
-下面是特定于此问题的可能原因：
+下面是此问题的具体可能原因：
 * 适用于 Linux 的 Log Analytics 代理未运行。
 * 适用于 Linux 的 Log Analytics 代理未正确配置。
-* 存在文件完整性监视（FIM）冲突。
+* 发生了文件完整性监视 (FIM) 冲突。
 
 #### <a name="resolution"></a>解决方法 
 
 ##### <a name="log-analytics-agent-for-linux-not-running"></a>适用于 Linux 的 Log Analytics 代理未运行
 
-验证适用于 Linux 的 Log Analytics agent （**omsagent**）的守护程序是否正在计算机上运行。 在链接到自动化帐户的 Log Analytics 工作区中运行以下查询。
+验证适用于 Linux 的 Log Analytics 代理 (**omsagent**) 的守护程序是否正在计算机上运行。 在链接到自动化帐户的 Log Analytics 工作区中运行以下查询。
 
 ```loganalytics Copy
 Heartbeat
 | summarize by Computer, Solutions
 ```
 
-如果未在查询结果中看到您的计算机，则该计算机最近未签入。 可能存在本地配置问题，应重新安装代理。 有关安装和配置的详细信息，请参阅[用 Log Analytics Agent 收集日志数据](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)。
+如果查询结果中未显示你的计算机，则表示该计算机最近未签入。 可能存在本地配置问题，应重新安装代理。 有关安装和配置的信息，请参阅[使用 Log Analytics 代理收集日志数据](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)。
 
-如果计算机显示在查询结果中，请验证作用域配置。 请参阅将[监视解决方案定位到 Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting)。
+如果你的计算机显示在查询结果中，请验证作用域配置。 参阅[在 Azure Monitor 中设定监视解决方案的目标](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting)。
 
-有关此问题的详细疑难解答，请参阅[问题：你未看到任何 Linux 数据](https://docs.microsoft.com/azure/azure-monitor/platform/agent-linux-troubleshoot#issue-you-are-not-seeing-any-linux-data)。
+有关此问题的更多排查方法，请参阅[问题：看不到任何 Linux 数据](https://docs.microsoft.com/azure/azure-monitor/platform/agent-linux-troubleshoot#issue-you-are-not-seeing-any-linux-data)。
 
-##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>适用于 Linux 的 Log Analytics 代理配置不正确
+##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>适用于 Linux 的 Log Analytics 代理未正确配置
 
-对于使用 OMS 日志收集器工具进行日志和命令行输出收集，可能未正确配置适用于 Linux 的 Log Analytics 代理。 请参阅[跟踪环境中的更改，并提供更改跟踪和清单解决方案](../change-tracking.md)。
+适用于 Linux 的 Log Analytics 代理可能未正确配置，因此无法使用 OMS 日志收集器工具来收集日志和命令行输出。 请参阅[更改跟踪和库存概述](../change-tracking.md)。
 
 ##### <a name="fim-conflicts"></a>FIM 冲突
 
-Azure 安全中心的 FIM 功能可能会不正确地验证 Linux 文件的完整性。 验证 FIM 是否正常运行且已正确配置 Linux 文件监视。 请参阅[跟踪环境中的更改，并提供更改跟踪和清单解决方案](../change-tracking.md)。
+Azure 安全中心的 FIM 功能可能错误地验证了 Linux 文件的完整性。 请验证 FIM 是否正常运行，以及是否针对 Linux 文件监视进行了正确配置。 请参阅[更改跟踪和库存概述](../change-tracking.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-如果在此处看不到你的问题，或者无法解决你的问题，请尝试以下通道之一以获取其他支持：
+如果你的问题未在本文中列出，或者你无法解决问题，请尝试通过以下渠道之一获取更多支持：
 
-* 通过[Azure 论坛](https://azure.microsoft.com/support/forums/)获取 azure 专家的解答。
-* 与[@AzureSupport](https://twitter.com/azuresupport)官方 Microsoft Azure 帐户联系，以改善客户体验。 Azure 支持将 Azure 社区连接到答案、支持和专家。
-* 提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 "**获取支持**"。
+* 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答。
+* 联系 [@AzureSupport](https://twitter.com/azuresupport)，这是用于改进客户体验的官方 Microsoft Azure 帐户。 Azure 支持人员会将你连接到 Azure 社区，从中可获得解答、支持和专家建议。
+* 提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。

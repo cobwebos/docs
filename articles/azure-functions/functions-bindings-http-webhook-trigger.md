@@ -5,21 +5,21 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 045f3ccdc8dc09bf657ab39ce15a0d0524c73fcb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ce40a46d4c1da627930ef8de8813936b71dcc281
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277591"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648969"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions HTTP 触发器
 
 借助 HTTP 触发器，可以使用 HTTP 请求调用函数。 可以使用 HTTP 触发器生成无服务器 API 和响应 Webhook。
 
-HTTP 触发函数的默认返回值如下：
+HTTP 触发的函数的默认返回值为：
 
-- `HTTP 204 No Content`，在 Functions 2.x 及更高版本中为空主体
-- `HTTP 200 OK`，在 Functions 1.x 中为空主体
+- `HTTP 204 No Content`，在 Functions 2.x 和更高版本中正文为空
+- `HTTP 200 OK`，在 Functions 1.x 中正文为空
 
 若要修改 HTTP 响应，请配置[输出绑定](./functions-bindings-http-webhook-output.md)。
 
@@ -55,9 +55,9 @@ public static async Task<IActionResult> Run(
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-以下示例演示 function.json  文件中的一个触发器绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 该函数在查询字符串或 HTTP 请求的正文中查找 `name` 参数。
+以下示例演示 function.json 文件中的一个触发器绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 该函数在查询字符串或 HTTP 请求的正文中查找 `name` 参数。
 
-function.json  文件如下所示：
+function.json 文件如下所示：
 
 ```json
 {
@@ -131,9 +131,9 @@ public class Person {
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-以下示例演示 function.json  文件中的一个触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数在查询字符串或 HTTP 请求的正文中查找 `name` 参数。
+以下示例演示 function.json 文件中的一个触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数在查询字符串或 HTTP 请求的正文中查找 `name` 参数。
 
-function.json  文件如下所示：
+function.json 文件如下所示：
 
 ```json
 {
@@ -180,9 +180,9 @@ module.exports = function(context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-以下示例演示 function.json** 文件中的一个触发器绑定以及使用该绑定的 [Python 函数](functions-reference-python.md)。 该函数在查询字符串或 HTTP 请求的正文中查找 `name` 参数。
+以下示例演示 function.json 文件中的一个触发器绑定以及使用该绑定的 [Python 函数](functions-reference-python.md)。 该函数在查询字符串或 HTTP 请求的正文中查找 `name` 参数。
 
-下面是*函数 json*文件：
+function.json 文件如下所示：
 
 ```json
 {
@@ -241,7 +241,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 * [从路由中读取参数](#read-parameter-from-a-route)
 * [从 POST 请求中读取 POJO 正文](#read-pojo-body-from-a-post-request)
 
-下面的示例演示 HTTP 触发器绑定。
+以下示例显示了 HTTP 触发器绑定。
 
 #### <a name="read-parameter-from-the-query-string"></a>从查询字符串中读取参数
 
@@ -424,13 +424,13 @@ public HttpResponseMessage run(
 
 ## <a name="attributes-and-annotations"></a>特性和注释
 
-在 [C# 类库](functions-dotnet-class-library.md) 和 Java 中，`HttpTrigger` 属性可用于配置函数。
+在 [C# 类库](functions-dotnet-class-library.md)和 Java 中，`HttpTrigger` 特性可用于配置函数。
 
-可以在特性构造函数参数中设置授权级别和允许的 HTTP 方法、Webhook 类型和路由模板。 有关这些设置的详细信息，请参阅[配置](#configuration)。
+可以在特性构造函数参数、Webhook 类型与路由模板中设置授权级别和允许的 HTTP 方法。 有关这些设置的详细信息，请参阅[配置](#configuration)。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-此示例演示如何使用 [HttpTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs) 特性。
+此示例演示了如何使用 [HttpTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs) 特性。
 
 ```csharp
 [FunctionName("HttpTriggerCSharp")]
@@ -443,7 +443,7 @@ public static Task<IActionResult> Run(
 
 有关完整示例，请参阅[触发器示例](#example)。
 
-# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 C# 脚本不支持特性。
 
@@ -457,7 +457,7 @@ Python 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-此示例演示如何使用 [HttpTrigger](https://github.com/Azure/azure-functions-java-library/blob/dev/src/main/java/com/microsoft/azure/functions/annotation/HttpTrigger.java) 特性。
+此示例演示了如何使用 [HttpTrigger](https://github.com/Azure/azure-functions-java-library/blob/dev/src/main/java/com/microsoft/azure/functions/annotation/HttpTrigger.java) 特性。
 
 ```java
 @FunctionName("HttpTriggerJava")
@@ -477,17 +477,17 @@ public HttpResponseMessage<String> HttpTrigger(
 
 ## <a name="configuration"></a>配置
 
-下表说明了在*函数 json*文件和`HttpTrigger`属性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `HttpTrigger` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-| type  | n/a| 必需 - 必须设置为 `httpTrigger`。 |
-| **方向键** | n/a| 必需 - 必须设置为 `in`。 |
-| **name** | n/a| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 |
-| <a name="http-auth"></a>**authLevel** |  AuthLevel**** |确定请求中需要提供的密钥（如果有），以便调用此函数。 授权级别可以是以下值之一： <ul><li><code>anonymous</code>&mdash;无需 API 密钥。</li><li><code>function</code>&mdash;特定于函数的 API 密钥是必需的。 如果未提供任何值，该值为默认值。</li><li><code>admin</code>&mdash;无需主密钥。</li></ul> 有关详细信息，请参阅有关[授权密钥](#authorization-keys)的部分。 |
-| **方法** |**方法** | HTTP 方法的数组，该函数将响应此方法。 如果未指定，该函数将响应所有 HTTP 方法。 请参阅[自定义 HTTP 终结点](#customize-the-http-endpoint)。 |
-| **路由** | **Route** | 定义路由模板，控制函数将响应的请求 URL。 如果未提供任何值，则默认值为 `<functionname>`。 有关详细信息，请参阅[自定义 HTTP 终结点](#customize-the-http-endpoint)。 |
-| **webHookType** | WebHookType**** | 仅支持 1.x 版运行时。__<br/><br/>将 HTTP 触发器配置为充当指定提供程序的 [webhook](https://en.wikipedia.org/wiki/Webhook) 接收器。 如果未设置此属性，请不要设置 `methods` 属性。 Webhook 类型可以是以下值之一：<ul><li><code>genericJson</code>&mdash;不包含特定提供程序逻辑的常规用途 webhook 终结点。 此设置会将请求限制为仅请求使用 HTTP POST 以及内容类型为 `application/json`。</li><li><code>github</code>&mdash;该函数响应 [GitHub Webhook](https://developer.github.com/webhooks/)。 不要对 GitHub Webhook 使用 authLevel__ 属性。 有关详细信息，请参阅本文后面的“GitHub Webhook”部分。</li><li><code>slack</code>&mdash;该函数响应 [Slack Webhook](https://api.slack.com/outgoing-webhooks)。 不要对 Slack Webhook 使用 authLevel__ 属性。 有关详细信息，请参阅本文后面的“Slack Webhook”部分。</li></ul>|
+| type | 不适用| 必需 - 必须设置为 `httpTrigger`。 |
+| direction | 不适用| 必需 - 必须设置为 `in`。 |
+| name | 不适用| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 |
+| <a name="http-auth"></a>**authLevel** |  AuthLevel |确定请求中需要提供的密钥（如果有），以便调用此函数。 授权级别可以是以下值之一： <ul><li><code>anonymous</code>&mdash;无需 API 密钥。</li><li><code>function</code>&mdash;特定于函数的 API 密钥是必需的。 如果未提供任何值，该值为默认值。</li><li><code>admin</code>&mdash;无需主密钥。</li></ul> 有关详细信息，请参阅有关[授权密钥](#authorization-keys)的部分。 |
+| methods |**方法** | HTTP 方法的数组，该函数将响应此方法。 如果未指定，该函数将响应所有 HTTP 方法。 请参阅[自定义 HTTP 终结点](#customize-the-http-endpoint)。 |
+| route | **Route** | 定义路由模板，控制函数将响应的请求 URL。 如果未提供任何值，则默认值为 `<functionname>`。 有关详细信息，请参阅[自定义 HTTP 终结点](#customize-the-http-endpoint)。 |
+| webHookType | WebHookType | 仅支持 1.x 版运行时。<br/><br/>将 HTTP 触发器配置为充当指定提供程序的 [webhook](https://en.wikipedia.org/wiki/Webhook) 接收器。 如果未设置此属性，请不要设置 `methods` 属性。 Webhook 类型可以是以下值之一：<ul><li><code>genericJson</code>&mdash;不包含特定提供程序逻辑的常规用途 webhook 终结点。 此设置会将请求限制为仅请求使用 HTTP POST 以及内容类型为 `application/json`。</li><li><code>github</code>&mdash;该函数响应 [GitHub Webhook](https://developer.github.com/webhooks/)。 不要对 GitHub Webhook 使用 authLevel 属性。 有关详细信息，请参阅本文后面的“GitHub Webhook”部分。</li><li><code>slack</code>&mdash;该函数响应 [Slack Webhook](https://api.slack.com/outgoing-webhooks)。 不要对 Slack Webhook 使用 authLevel 属性。 有关详细信息，请参阅本文后面的“Slack Webhook”部分。</li></ul>|
 
 ## <a name="payload"></a>有效负载
 
@@ -499,7 +499,7 @@ public HttpResponseMessage<String> HttpTrigger(
 
     http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>
 
-在 HTTP 触发器的输入绑定中，可以使用可选 `route` 属性自定义此路由。 例如，以下 function.json** 文件定义了 HTTP 触发器的 `route` 属性：
+在 HTTP 触发器的输入绑定中，可以使用可选 `route` 属性自定义此路由。 例如，以下 function.json 文件定义了 HTTP 触发器的 `route` 属性：
 
 ```json
 {
@@ -526,7 +526,7 @@ public HttpResponseMessage<String> HttpTrigger(
 http://<APP_NAME>.azurewebsites.net/api/products/electronics/357
 ```
 
-此配置允许函数代码支持地址、_类别_和_id_中的两个参数。
+此配置使得函数代码在地址中支持两个参数：_category_ 和 _id_。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -544,7 +544,7 @@ public static IActionResult Run(HttpRequest req, string category, int? id, ILogg
 }
 ```
 
-# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 可以将任何 [Web API 路由约束](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints)与参数配合使用。 以下 C# 函数代码使用了这两个参数。
 
@@ -564,9 +564,9 @@ public static IActionResult Run(HttpRequest req, string category, int? id, ILogg
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-在 Node 中，Functions 运行时提供来自 `context` 对象的请求正文。 有关详细信息，请参阅 [JavaScript 触发器示例](#example)。
+在 Node 中，Functions 运行时通过 `context` 对象提供请求正文。 有关详细信息，请参阅 [JavaScript 触发器示例](#example)。
 
-以下示例显示如何从 `context.bindingData` 读取路由参数。
+以下示例显示了如何从 `context.bindingData` 读取路由参数。
 
 ```javascript
 module.exports = function (context, req) {
@@ -585,9 +585,9 @@ module.exports = function (context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-函数执行上下文通过声明为`func.HttpRequest`的参数公开。 此实例允许函数访问数据路由参数、查询字符串值和允许返回 HTTP 响应的方法。
+函数执行上下文是通过声明为 `func.HttpRequest` 的参数公开的。 此实例允许函数访问数据路由参数、查询字符串值和允许返回 HTTP 响应的方法。
 
-定义后，可以通过调用`route_params`方法将路由参数提供给函数。
+定义后，可以通过调用 `route_params` 方法将路由参数提供给函数。
 
 ```python
 import logging
@@ -605,9 +605,9 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-函数执行上下文是 `HttpTrigger` 特性中声明的属性。 使用特性可以定义路由参数、授权级别、HTTP 谓词和传入请求实例。
+函数执行上下文是在 `HttpTrigger` 特性中声明的属性。 使用特性可以定义路由参数、授权级别、HTTP 谓词和传入请求实例。
 
-路由参数通过 `HttpTrigger` 特性定义。
+路由参数是通过 `HttpTrigger` 特性定义的。
 
 ```java
 package com.function;
@@ -634,7 +634,7 @@ public class HttpTriggerJava {
 
 ---
 
-默认情况下，所有函数路由的前缀均为 api**。 还可以使用 [host.json](functions-host-json.md) 文件中的 `http.routePrefix` 属性自定义或删除前缀。 以下示例通过将空字符串用于 host.json** 文件中的前缀删除 api** 路由前缀。
+默认情况下，所有函数路由的前缀均为 api。 还可以使用 [host.json](functions-host-json.md) 文件中的 `http.routePrefix` 属性自定义或删除前缀。 以下示例通过将空字符串用于 host.json 文件中的前缀删除 api 路由前缀。
 
 ```json
 {
@@ -646,9 +646,9 @@ public class HttpTriggerJava {
 
 ## <a name="using-route-parameters"></a>使用路由参数
 
-定义了函数的 `route` 模式的路由参数可用于每个绑定。 例如，如果将某个路由定义为 `"route": "products/{id}"`，则表存储绑定可以使用绑定配置中 `{id}` 参数的值。
+定义了函数的 `route` 模式的路由参数可用于每个绑定。 例如，如果将某个路由定义为 `"route": "products/{id}"`，则表存储绑定可以在绑定配置中使用 `{id}` 参数的值。
 
-下面的配置演示如何将 `{id}` 参数传递到绑定的 `rowKey`。
+以下配置展示了如何将 `{id}` 参数传递到绑定的 `rowKey`。
 
 ```json
 {
@@ -665,7 +665,7 @@ public class HttpTriggerJava {
 
 如果函数应用使用[应用服务身份验证/授权](../app-service/overview-authentication-authorization.md)，则可通过代码查看有关已验证身份的客户端的信息。 此信息以[平台注入的请求标头](../app-service/app-service-authentication-how-to.md#access-user-claims)的形式提供。 
 
-还可从绑定数据中读取此信息。 此功能仅适用于 2.x 及更高版本的 Functions 运行时。 而且它目前仅可用于 .NET 语言。
+还可从绑定数据中读取此信息。 此功能仅适用于 2.x 和更高版本的 Functions 运行时。 而且它目前仅可用于 .NET 语言。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -699,7 +699,7 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 }
 ```
 
-# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 有关经过身份验证的客户端的信息以 [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal) 的形式提供。 ClaimsPrincipal 作为请求上下文的一部分提供，如以下示例中所示：
 
@@ -735,48 +735,28 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-经过身份验证的用户通过 [HTTP 标头](../app-service/app-service-authentication-how-to.md#access-user-claims)获得。
+经过身份验证的用户通过 [HTTP 标头](../app-service/app-service-authentication-how-to.md#access-user-claims)提供。
 
 # <a name="python"></a>[Python](#tab/python)
 
-经过身份验证的用户通过 [HTTP 标头](../app-service/app-service-authentication-how-to.md#access-user-claims)获得。
+经过身份验证的用户通过 [HTTP 标头](../app-service/app-service-authentication-how-to.md#access-user-claims)提供。
 
 # <a name="java"></a>[Java](#tab/java)
 
-经过身份验证的用户通过 [HTTP 标头](../app-service/app-service-authentication-how-to.md#access-user-claims)获得。
+经过身份验证的用户通过 [HTTP 标头](../app-service/app-service-authentication-how-to.md#access-user-claims)提供。
 
 ---
 
-## <a name="authorization-keys"></a>授权密钥
-
-Functions 允许使用密钥使其难以在开发过程中访问 HTTP 函数终结点。  除非 HTTP 触发的函数上的 HTTP 授权级别设置为`anonymous`，否则请求中必须包含 API 密钥。 
+## <a name="function-access-keys"></a><a name="authorization-keys"></a>函数访问密钥
 
 > [!IMPORTANT]
 > 虽然密钥可以帮助你在开发过程中对 HTTP 终结点进行模糊处理，它们不应作为一种方法来保护生产环境中的 HTTP 触发器。 若要了解详细信息，请参阅[在生产环境中保护 HTTP 终结点](#secure-an-http-endpoint-in-production)。
 
-> [!NOTE]
-> 在 Functions 1.x 运行时中，Webhook 提供程序可以使用密钥以多种方式对请求授权，具体取决于提供程序支持何种方式。 [Webhook 和密钥](#webhooks-and-keys)对此进行了说明。 2.x 及更高版本的 Functions 运行时不包括对 Webhook 提供程序的内置支持。
-
-#### <a name="authorization-scopes-function-level"></a>授权范围（函数级别）
-
-有两个用于函数级别键的授权作用域：
-
-* **函数**：这些键仅适用于在其上定义它们的特定函数。 这些密钥用作 API 密钥时，只允许访问该函数。
-
-* **Host**：具有主机作用域的密钥可用于访问函数应用中的所有函数。 这些密钥用作 API 密钥时，可以访问 Function App 中的任何函数。 
-
-命名每个密钥方便引用，并且在函数和主机级别存在名为“default”的默认密钥。 函数密钥优先于主机密钥。 如果为两个密钥定义的名称相同，则使用函数密钥。
-
-#### <a name="master-key-admin-level"></a>主密钥（管理员级别） 
-
-每个函数应用还具有一个名为`_master`的管理员级别主机密钥。 除了为应用中的所有函数提供主机级别的访问权限外，主密钥还提供对运行时 REST Api 的管理访问权限。 无法撤消此密钥。 当设置 `admin` 授权级别，请求必须使用主密钥；任何其他密钥会导致授权失败。
-
-> [!CAUTION]  
-> 由于函数应用中提升的权限由主密钥所授予，因此不应与第三方共享此密钥或在本机客户端应用程序中分发此密钥。 选择管理员授权级别时，请务必审慎行事。
+[!INCLUDE [functions-authorization-keys](../../includes/functions-authorization-keys.md)]
 
 ## <a name="obtaining-keys"></a>获取密钥
 
-密钥作为 Function App 的一部分存储在 Azure 中，并进行了静态加密。 若要查看密钥，请创建新的密钥或将密钥滚动到新值，导航到 [Azure 门户](https://portal.azure.com)中的某个 HTTP 触发函数并选择“管理”****。
+密钥作为 Function App 的一部分存储在 Azure 中，并进行了静态加密。 若要查看密钥，请创建新的密钥或将密钥滚动到新值，导航到 [Azure 门户](https://portal.azure.com)中的某个 HTTP 触发函数并选择“管理”。
 
 ![在门户中管理函数密钥。](./media/functions-bindings-http-webhook/manage-function-keys.png)
 
@@ -790,34 +770,32 @@ Functions 允许使用密钥使其难以在开发过程中访问 HTTP 函数终�
 
 该密钥可以包含在名为 `code` 的查询字符串变量中（如上所示）。 也可以包含在 `x-functions-key` HTTP 头中。 密钥的值可以为任意为函数定义的函数密钥，也可以为任意主机密钥。
 
-可以允许匿名请求，它不需要密钥。 还可以要求使用主密钥。 可使用绑定 JSON 中的 `authLevel` 属性更改默认授权级别。 有关详细信息，请参阅[触发器 - 配置](#configuration)。
+可以允许匿名请求，它不需要密钥。 你还可以要求使用主密钥。 可使用绑定 JSON 中的 `authLevel` 属性更改默认授权级别。 有关详细信息，请参阅[触发器 - 配置](#configuration)。
 
 > [!NOTE]
-> 在本地运行函数时，不管指定的授权级别设置为何，都会禁用授权。 发布到 Azure 后，将强制执行触发器中的 `authLevel` 设置。 [在容器中本地](functions-create-function-linux-custom-image.md#build-the-container-image-and-test-locally)运行时，仍然需要使用密钥。
+> 在本地运行函数时，将禁用授权，而不考虑指定的授权级别设置。 发布到 Azure 后，将强制执行触发器中的 `authLevel` 设置。 在[容器中本地](functions-create-function-linux-custom-image.md#build-the-container-image-and-test-locally)运行时，仍然需要使用密钥。
 
 
 ## <a name="secure-an-http-endpoint-in-production"></a>在生产环境中保护 HTTP 终结点
 
-若要全面保护生产环境中的函数终结点，应考虑实现以下函数应用级别的安全选项之一：
+若要全面保护生产环境中的函数终结点，应考虑实现以下函数应用级别的安全选项之一。 在使用这些函数应用级别的安全方法之一时，应将 HTTP 触发的函数授权级别设置为 `anonymous`。
 
-* 打开函数应用的“应用服务身份验证/授权”。 应用服务平台允许使用 Azure Active Directory (AAD) 和多个第三方标识提供者对客户端进行身份验证。 您可以使用此策略来实现函数的自定义授权规则，并且可以使用函数代码中的用户信息。 若要了解详细信息，请参阅 [Azure 应用服务中的身份验证和授权](../app-service/overview-authentication-authorization.md)以及[使用客户端标识](#working-with-client-identities)。
+[!INCLUDE [functions-enable-auth](../../includes/functions-enable-auth.md)]
 
-* 使用 Azure API 管理 (APIM) 对请求进行身份验证。 APIM 为传入请求提供了各种 API 安全选项。 若要了解详细信息，请参阅 [API 管理身份验证策略](../api-management/api-management-authentication-policies.md)。 有了 APIM，可以配置函数应用以接受仅来自 APIM 实例 IP 地址的请求。 若要了解详细信息，请参阅 [IP 地址限制](ip-addresses.md#ip-address-restrictions)。
+#### <a name="deploy-your-function-app-in-isolation"></a>在隔离环境中部署函数应用
 
-* 将函数应用部署到 Azure 应用服务环境 (ASE)。 ASE 提供要在其中运行函数的专用托管环境。 ASE 允许配置单个前端网关，可以使用它对所有传入请求进行身份验证。 有关详细信息，请参阅[为应用服务环境配置 Web 应用程序防火墙 (WAF)](../app-service/environment/app-service-app-service-environment-web-application-firewall.md)。
-
-使用其中的某个函数应用级安全方法时，应将 HTTP 触发的函数授权级别设置为 `anonymous`。
+[!INCLUDE [functions-deploy-isolation](../../includes/functions-deploy-isolation.md)]
 
 ## <a name="webhooks"></a>Webhook
 
 > [!NOTE]
-> Webhook 模式仅适用于 1.x 版 Functions 运行时。 进行此更改是为了提高 2.x 及更高版本中 HTTP 触发器的性能。
+> Webhook 模式仅适用于 1.x 版 Functions 运行时。 进行此更改是为了提高 2.x 和更高版本中 HTTP 触发器的性能。
 
-在 1.x 版中，Webhook 模板为 Webhook 有效负载提供了额外的验证。 在 2.x 及更高版本中，基本 HTTP 触发器仍正常工作，且是针对 Webhook 的推荐方法。 
+在 1.x 版中，Webhook 模板为 Webhook 有效负载提供了额外的验证。 在 2.x 和更高版本中，基本 HTTP 触发器仍正常工作，且是推荐用于 Webhook 的方法。 
 
 ### <a name="github-webhooks"></a>GitHub Webhook
 
-要响应 GitHub webhook，首先请创建包含 HTTP 触发器的函数，并将 webHookType 属性设置为 `github`****。 然后将其 URL 和 API 密钥复制到 GitHub 存储库的“添加 Webhook”页。**** 
+要响应 GitHub webhook，首先请创建包含 HTTP 触发器的函数，并将 webHookType 属性设置为 `github`。 然后将其 URL 和 API 密钥复制到 GitHub 存储库的“添加 Webhook”页。 
 
 ![](./media/functions-bindings-http-webhook/github-add-webhook.png)
 
@@ -830,13 +808,13 @@ Slack webhook 为用户生成令牌，而非让用户指定它，所以必须使
 Webhook 授权由属于 HTTP 触发器的 webhook 接收器组件处理，其机制因 webhook 类型而异。 每种机制都依赖于一个密钥。 默认情况下，使用名为“default”的函数密钥。 要使用其他密钥，请将 webhook 提供程序配置为使用以下方式之一的请求发送密钥名称：
 
 * **查询字符串**：提供程序通过 `clientid` 查询字符串参数（例如，`https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?clientid=<KEY_NAME>`）传递密钥名称。
-* **请求头**：提供程序通过 `x-functions-clientid` 头传递密钥名称。
+* **请求标头**：提供程序通过 `x-functions-clientid` 标头传递密钥名称。
 
 ## <a name="limits"></a>限制
 
 HTTP 请求长度限制为 100 MB（104,857,600 字节），并且 URL 长度限制为 4 KB（4,096 字节）。 这些限制由运行时的 [Web.config 文件](https://github.com/Azure/azure-functions-host/blob/3.x/src/WebJobs.Script.WebHost/web.config)的 `httpRuntime` 元素指定。
 
-如果使用 HTTP 触发器的函数未在 230 秒内完成，[Azure 负载均衡器](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds)将超时并返回 HTTP 502 错误。 该函数将继续运行，但将无法返回 HTTP 响应。 对于长时间运行的函数，我们建议你遵循异步模式，并返回可以 ping 通请求状态的位置。 有关函数可以运行多长时间的信息，请参阅[缩放和托管 - 消耗计划](functions-scale.md#timeout)。
+如果使用 HTTP 触发器的函数在 230 秒内未完成，则 [Azure 负载均衡器](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds)将超时并返回 HTTP 502 错误。 该函数将继续运行，但将无法返回 HTTP 响应。 对于长时间运行的函数，我们建议你遵循异步模式，并返回可以 ping 通请求状态的位置。 有关函数可以运行多长时间的信息，请参阅[缩放和托管 - 消耗计划](functions-scale.md#timeout)。
 
 
 ## <a name="next-steps"></a>后续步骤

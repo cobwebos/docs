@@ -6,20 +6,21 @@ author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 01/29/2020
-ms.openlocfilehash: 73905483850a47a9d036bef1b9e1ee60d3484555
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8d68c36e7d6603cb8cdc906ad2a0280094e6e0e5
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77484581"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698255"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>在 Azure 流分析中分析 JSON 和 Avro 数据
 
 Azure 流分析支持处理采用 CSV、JSON 和 Avro 数据格式的事件。 JSON 和 Avro 数据都可以结构化，并包含一些复杂类型，例如嵌套对象（记录）和数组。 
 
 >[!NOTE]
->事件中心捕获创建的 AVRO 文件使用特定的格式，该格式要求你使用*自定义反序列*化功能。 有关详细信息，请参阅[使用 .net 自定义反以任意格式读取输入](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples)。
-
+>事件中心捕获创建的 AVRO 文件使用特定的格式，该格式要求使用自定义反序列化功能。 有关详细信息，请参阅[使用 .NET 自定义反序列化程序读取任何格式的输入](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples)。
+>
+>流分析 AVRO 反序列化不支持“映射”类型。 流分析无法读取事件中心捕获 Blob，因为事件中心捕获使用映射。
 
 
 ## <a name="record-data-types"></a>记录数据类型
@@ -49,7 +50,7 @@ Azure 流分析支持处理采用 CSV、JSON 和 Avro 数据格式的事件。 J
 ```
 
 ### <a name="access-nested-fields-in-known-schema"></a>访问已知架构中的嵌套字段
-使用点表示法 (.) 可以轻松地直接从查询访问嵌套字段。 例如，此查询选择上述 JSON 数据中 Location 属性下的纬度和经度坐标。 点表示法可用于浏览多个级别，如下所示。
+使用点表示法 (.) 可以轻松地直接从查询中访问嵌套字段。 例如，此查询选择上述 JSON 数据中 Location 属性下的纬度和经度坐标。 点表示法可用于浏览多个级别，如下所示。
 
 ```SQL
 SELECT
@@ -69,7 +70,7 @@ FROM input
 
 
 ### <a name="select-all-properties"></a>选择所有属性
-可以使用“*”通配符选择嵌套记录的所有属性。 请看下面的示例：
+可以使用“*”通配符选择嵌套记录的所有属性。 请考虑以下示例：
 
 ```SQL
 SELECT
@@ -87,9 +88,9 @@ FROM input
 
 ### <a name="access-nested-fields-when-property-name-is-a-variable"></a>当属性名称是变量时访问嵌套字段
 
-如果属性名称是变量，请使用[GetRecordPropertyValue](https://docs.microsoft.com/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics)函数。 这允许在不硬编码属性名称的情况下生成动态查询。
+如果属性名称是变量，请使用 [GetRecordPropertyValue](https://docs.microsoft.com/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics) 函数。 这样可以构建动态查询，无需对属性名称进行硬编码。
 
-例如，假设示例数据流需要**与包含各设备传感器阈值的参考数据联接**。 下面显示了此类参考数据的片段。
+例如，假设示例数据流需要与包含每个设备传感器阈值的**参考数据相联接**： 下面显示了此类参考数据的代码片段。
 
 ```json
 {
@@ -104,7 +105,7 @@ FROM input
 }
 ```
 
-此处的目标是将本文顶部的示例数据集联接到该参考数据，并针对高于其阈值的每个传感器度量值输出一个事件。 这意味着，如果有多个传感器超出其各自的阈值，借助于联接，上述单个事件可以生成多个输出事件。 若要在不使用联接的情况下实现类似结果，请参阅下面的部分。
+此处的目标是将本文顶部的示例数据集联接到该参考数据，并针对超出其阈值的每个传感器度量值输出一个事件。 这意味着，如果有多个传感器超出其各自的阈值，借助于联接，上述单个事件可以生成多个输出事件。 若要在不使用联接的情况下实现类似结果，请参阅下面的部分。
 
 ```SQL
 SELECT
@@ -119,7 +120,7 @@ WHERE
     GetRecordPropertyValue(input.SensorReadings, thresholds.SensorName) > thresholds.Value
 ```
 
-**GetRecordPropertyValue** 选择 *SensorReadings* 中名称与来自参考数据的属性名称匹配的属性。 然后从 *SensorReadings* 中提取关联的值。
+**GetRecordPropertyValue** 选择 *SensorReadings* 中的属性，该属性的名称与来自参考数据的属性名称匹配。 然后提取 *SensorReadings* 中的关联值。
 
 结果为：
 
@@ -152,7 +153,7 @@ CROSS APPLY GetRecordProperties(event.SensorReadings) AS sensorReading
 |12345|CustomSensor02|99|
 |12345|SensorMetadata|[object Object]|
 
-使用 [WITH](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics)，可以将这些事件路由到不同的目标：
+然后，可以使用 [WITH](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics) 将这些事件路由到不同的目标：
 
 ```SQL
 WITH Stage0 AS
@@ -169,15 +170,15 @@ SELECT DeviceID, PropertyValue AS Temperature INTO TemperatureOutput FROM Stage0
 SELECT DeviceID, PropertyValue AS Humidity INTO HumidityOutput FROM Stage0 WHERE PropertyName = 'Humidity'
 ```
 
-### <a name="parse-json-record-in-sql-reference-data"></a>分析 SQL 引用数据中的 JSON 记录
-使用 Azure SQL 数据库作为作业中的引用数据时，可能会有一个数据采用 JSON 格式的列。 下面显示了一个示例。
+### <a name="parse-json-record-in-sql-reference-data"></a>分析 SQL 参考数据中的 JSON 记录
+在作业中使用 Azure SQL 数据库作为参考数据时，可能会有一个列包含 JSON 格式的数据。 下面显示了一个示例。
 
 |DeviceID|数据|
 |-|-|
-|12345|{"key"： "value1"}|
-|54321|{"key"： "value2"}|
+|12345|{"key" : "value1"}|
+|54321|{"key" : "value2"}|
 
-可以通过编写简单的 JavaScript 用户定义函数来分析*数据*列中的 JSON 记录。
+可以通过编写简单的 JavaScript 用户定义函数来分析 *Data* 列中的 JSON 记录。
 
 ```javascript
 function parseJson(string) {
@@ -185,7 +186,7 @@ return JSON.parse(string);
 }
 ```
 
-然后，你可以在流分析查询中创建一个步骤，如下所示，访问 JSON 记录的字段。
+然后，可以如下所示在流分析查询中创建一个步骤，以访问 JSON 记录的字段。
 
  ```SQL
  WITH parseJson as
@@ -205,7 +206,7 @@ return JSON.parse(string);
 
 数组数据类型是按顺序排列的值集合。 下面详细介绍一些针对数组值执行的典型操作。 这些事例使用函数 [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics)、[GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics)、[GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics) 和 [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) 运算符。
 
-下面是单一事件的示例。 `CustomSensor03` 和 `SensorMetadata` 都是**数组**类型的：
+下面是单个事件的示例。 `CustomSensor03` 和 `SensorMetadata` 的类型均为 **array**：
 
 ```json
 {
@@ -231,7 +232,7 @@ return JSON.parse(string);
 }
 ```
 
-### <a name="working-with-a-specific-array-element"></a>使用特定数组元素
+### <a name="working-with-a-specific-array-element"></a>处理特定的数组元素
 
 选择指定索引中的数组元素（选择第一个数组元素）：
 
@@ -299,7 +300,7 @@ CROSS APPLY GetArrayElements(SensorMetadata) AS SensorMetadataRecords
 |12345|制造商|ABC|
 |12345|版本|1.2.45|
 
-如果提取的字段需要显示在列中，则除了 [JOIN](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) 操作外，还可以使用 [WITH](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics) 语法来透视数据集。 该联接需要一个[时间边界](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics#BKMK_DateDiff)条件来防止重复：
+如果提取的字段需要在列中显示，则除了使用 [JOIN](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) 操作以外，还可以使用 [WITH](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics) 语法来透视数据集。 该联接需要一个[时间边界](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics#BKMK_DateDiff)条件来防止重复：
 
 ```SQL
 WITH DynamicCTE AS (
