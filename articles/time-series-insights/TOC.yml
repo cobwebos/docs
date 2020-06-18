@@ -41,9 +41,9 @@
           items:
             - name: 身份验证和授权
               href: time-series-insights-authentication-and-authorization.md
-            - name: '使用 C# 查询数据'
+            - name: 使用 C# 查询数据
               href: time-series-insights-query-data-csharp.md
-            - name: '使用 C# 管理参考数据'
+            - name: 使用 C# 管理参考数据
               href: time-series-insights-manage-reference-data-csharp.md
             - name: 共享自定义视图
               href: time-series-insights-parameterized-urls.md
@@ -65,7 +65,7 @@
           items:
             - name: 身份验证和授权
               href: time-series-insights-authentication-and-authorization.md
-            - name: '使用 C# 查询数据'
+            - name: 使用 C# 查询数据
               href: time-series-insights-update-query-data-csharp.md
             - name: Power BI 集成
               href: concepts-power-bi.md
@@ -111,6 +111,12 @@
           href: time-series-insights-update-how-to-shape-events.md
         - name: 连接到 Power BI
           href: how-to-connect-power-bi.md
+- name: 重大更改
+  items:
+    - name: Azure 时序见解预览版
+      items:
+        - name: 添加对 Long 数据类型的支持
+          href: time-series-insights-long-data-type.md
 - name: 参考
   items:
     - name: 时序见解

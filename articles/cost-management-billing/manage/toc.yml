@@ -41,10 +41,10 @@
           href: mca-section-invoice.md
         - name: 设置 Microsoft 客户协议计费帐户
           href: mca-setup-account.md
-        - name: 使用 Office 365 帐户注册
-          href: office-365-account-for-azure-subscription.md
-        - name: 使用 Azure 帐户注册 Office 365
-          href: azure-account-for-office-365-subscription.md
+        - name: 使用 Microsoft 365 帐户注册
+          href: microsoft-365-account-for-azure-subscription.md
+        - name: 使用 Azure 帐户注册 Microsoft 365
+          href: azure-account-for-microsoft-365-subscription.md
         - name: 使用强客户身份验证支付费用
           href: open-banking-strong-customer-authentication.md
     - name: 管理订阅

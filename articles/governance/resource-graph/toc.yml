@@ -10,19 +10,22 @@
   items:
     - name: 运行自己的第一个查询 - Azure 门户
       displayName: 'portal, resource, graph, explorer'
-      href: first-query-portal.md
+      href: ./first-query-portal.md
     - name: 运行自己的第一个查询 - Azure CLI
       displayName: 'extension, docker'
-      href: first-query-azurecli.md
-    - name: 运行自己的第一个查询 - PowerShell
+      href: ./first-query-azurecli.md
+    - name: 运行自己的第一个查询 - Azure PowerShell
       displayName: 'module, docker, Az.ResourceGraph'
-      href: first-query-powershell.md
+      href: ./first-query-powershell.md
+    - name: 运行自己的第一个查询 - Go
+      displayName: 'package, sdk, golang'
+      href: ./first-query-go.md
     - name: 运行自己的第一个查询 - Python
       displayName: 'library, azure-mgmt, cli'
-      href: first-query-python.md
+      href: ./first-query-python.md
     - name: 部署共享查询 - ARM 模板
       displayName: 'resource manager, queries'
-      href: shared-query-template.md
+      href: ./shared-query-template.md
 - name: 教程
   items:
     - name: 在 Azure 门户中创建和共享查询

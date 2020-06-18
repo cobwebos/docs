@@ -1,8 +1,14 @@
-- name: 使用 Unity 渲染模型
-  href: render-model.md
-- name: 将 Unity 示例部署到 HoloLens
-  href: deploy-to-hololens.md
-- name: 将 Unity 示例部署到桌面
-  href: deploy-to-desktop.md
+- name: Unity
+  items:
+    - name: 使用 Unity 渲染模型
+      href: render-model.md
+    - name: 将 Unity 示例部署到 HoloLens
+      href: deploy-to-hololens.md
+    - name: 将 Unity 示例部署到桌面
+      href: deploy-to-desktop.md
+- name: 本机 C++
+  items:
+    - name: 将原生 C++ 示例部署到 HoloLens
+      href: native-cpp/hololens/deploy-native-cpp-tutorial.md
 - name: 转换用于渲染的模型
   href: convert-model.md

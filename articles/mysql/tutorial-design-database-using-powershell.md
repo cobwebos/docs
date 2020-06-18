@@ -38,7 +38,7 @@ Azure Database for MySQL 是 Microsoft 云中基于 MySQL Community Edition 数�
 > 尽管 Az.MySql PowerShell 模块为预览版，但必须使用以下命令从 Az PowerShell 模块单独安装它：`Install-Module -Name Az.MySql -AllowPrerelease`。
 > Az.MySql PowerShell 模块正式版推出后，它会包含在将来的 Az PowerShell 模块发行版中，并在 Azure Cloud Shell 中原生提供。
 
-如果这是你第一次使用 Azure Database for MySQL 服务，必须注册 Microsoft.DBforMySQL 资源提供程序  。
+如果这是你第一次使用 Azure Database for MySQL 服务，必须注册 Microsoft.DBforMySQL 资源提供程序。
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.DBforMySQL
@@ -56,7 +56,7 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet 创建 [Azure 资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。
 
-以下示例在“美国西部”区域中创建名为“myresourcegroup”   的资源组。
+以下示例在“美国西部”区域中创建名为“myresourcegroup” 的资源组。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myresourcegroup -Location westus
@@ -66,7 +66,7 @@ New-AzResourceGroup -Name myresourcegroup -Location westus
 
 使用 `New-AzMySqlServer` cmdlet 创建 Azure Database for MySQL 服务器。 一个服务器可以管理多个数据库。 通常，每个项目或每个用户使用一个单独的数据库。
 
-以下示例使用服务器管理员登录名 myadmin 在“美国西部”区域中的“myresourcegroup”资源组内创建名为“mydemoserver”的 MySQL 服务器     。 此服务器是常规用途定价层中的第 5 代服务器，其中启用了 2 个 vCore 和异地冗余备份。 记下示例的第一行中使用的密码，因为这是 MySQL 服务器管理员帐户的密码。
+以下示例使用服务器管理员登录名 myadmin 在“美国西部”区域中的“myresourcegroup”资源组内创建名为“mydemoserver”的 MySQL 服务器   。 此服务器是常规用途定价层中的第 5 代服务器，其中启用了 2 个 vCore 和异地冗余备份。 记下示例的第一行中使用的密码，因为这是 MySQL 服务器管理员帐户的密码。
 
 > [!TIP]
 > 服务器名称映射到 DNS 名称，必须在 Azure 中全局唯一。
@@ -76,13 +76,13 @@ $Password = Read-Host -Prompt 'Please enter your password' -AsSecureString
 New-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup -Sku GP_Gen5_2 -GeoRedundantBackup Enabled -Location westus -AdministratorUsername myadmin -AdministratorLoginPassword $Password
 ```
 
-Sku 参数值遵循 pricing-tier\_compute-generation\_vCores 约定，如以下示例所示   。
+Sku 参数值遵循 pricing-tier\_compute-generation\_vCores 约定，如以下示例所示 。
 
 - `-Sku B_Gen5_1` 映射到基本、第 5 代和 1 个 vCore。 此选项是可用的最小 SKU。
 - `-Sku GP_Gen5_32` 映射到常规用途、第 5 层和 32 个 vCore。
 - `-Sku MO_Gen5_2` 映射到内存优化、第 5 层和 2 个 vCore。
 
-有关各区域和层级的有效 Sku 值的信息，请参阅 [Azure Database for MySQL 定价层](./concepts-pricing-tiers.md)  。
+有关各区域和层级的有效 Sku 值的信息，请参阅 [Azure Database for MySQL 定价层](./concepts-pricing-tiers.md)。
 
 如果轻量级计算和 I/O 足以满足工作负载要求，请考虑使用基本定价层。
 
@@ -93,7 +93,7 @@ Sku 参数值遵循 pricing-tier\_compute-generation\_vCores 约定，如以下�
 
 使用 `New-AzMySqlFirewallRule` cmdlet 创建 Azure Database for MySQL 服务器级防火墙规则。 服务器级防火墙规则允许外部应用程序（如 `mysql` 命令行工具或 MySQL Workbench）穿过 Azure Database for MySQL 服务防火墙连接到服务器。
 
-以下示例创建名为 AllowMyIP 的防火墙规则，该规则允许从特定的 IP 地址 (192.168.0.1) 进行连接  。 替换与要从中进行连接的位置相对应的 IP 地址或 IP 地址范围。
+以下示例创建名为 AllowMyIP 的防火墙规则，该规则允许从特定的 IP 地址 (192.168.0.1) 进行连接。 替换与要从中进行连接的位置相对应的 IP 地址或 IP 地址范围。
 
 ```azurepowershell-interactive
 New-AzMySqlFirewallRule -Name AllowMyIP -ResourceGroupName myresourcegroup -ServerName mydemoserver -StartIPAddress 192.168.0.1 -EndIPAddress 192.168.0.1
@@ -104,7 +104,7 @@ New-AzMySqlFirewallRule -Name AllowMyIP -ResourceGroupName myresourcegroup -Serv
 
 ## <a name="get-the-connection-information"></a>获取连接信息
 
-若要连接到服务器，需要提供主机信息和访问凭据。 使用以下示例来确定连接信息。 记下 FullyQualifiedDomainName  和 AdministratorLogin  的值。
+若要连接到服务器，需要提供主机信息和访问凭据。 使用以下示例来确定连接信息。 记下 FullyQualifiedDomainName 和 AdministratorLogin 的值。
 
 ```azurepowershell-interactive
 Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
@@ -119,7 +119,7 @@ mydemoserver.mysql.database.azure.com       myadmin
 
 ## <a name="connect-to-the-server-using-the-mysql-command-line-tool"></a>使用 mysql 命令行工具连接到服务器
 
-使用 `mysql` 命令行工具连接到服务器。 若要下载并安装该命令行工具，请参阅 [MySQL 社区下载](https://dev.mysql.com/downloads/shell/)。 还可以通过在本文的代码示例中选择“试用”按钮，在 Azure Cloud Shell 中访问预装版本的 `mysql` 命令行工具  。 访问 Azure Cloud Shell 的其他方式包括：在 Azure 门户右上角的工具栏上选择“>_”按钮，或访问 [shell.azure.com](https://shell.azure.com/)  。
+使用 `mysql` 命令行工具连接到服务器。 若要下载并安装该命令行工具，请参阅 [MySQL 社区下载](https://dev.mysql.com/downloads/shell/)。 还可以通过在本文的代码示例中选择“试用”按钮，在 Azure Cloud Shell 中访问预装版本的 `mysql` 命令行工具。 访问 Azure Cloud Shell 的其他方式包括：在 Azure 门户右上角的工具栏上选择“>_”按钮，或访问 [shell.azure.com](https://shell.azure.com/)。
 
 ```azurepowershell-interactive
 mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p
@@ -204,7 +204,7 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 还原的服务器的位置值和定价层值与原始服务器保持相同。
 
-还原过程完成后，找到新服务器，验证数据是否已按预期还原。 新服务器具有相同的服务器管理员登录名和密码，该登录名和密码在开始还原时对现有服务器有效。 可以从新服务器的“概述”  页更改密码。
+还原过程完成后，找到新服务器，验证数据是否已按预期还原。 新服务器具有相同的服务器管理员登录名和密码，该登录名和密码在开始还原时对现有服务器有效。 可以从新服务器的“概述”页更改密码。
 
 还原期间创建的新服务器没有原始服务器上存在的 VNet 服务终结点。 必须单独为新服务器设置这些规则。 将还原原始服务器中的防火墙规则。
 

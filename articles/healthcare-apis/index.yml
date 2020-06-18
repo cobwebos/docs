@@ -1,48 +1,53 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure API for FHIR 预览版文档
+### YamlMime:Landing
+title: Azure API for FHIR 文档
+summary: Azure API for FHIR 是一种托管的 API，它基于标准、符合法规且适合临床健康数据，实现解决方案用于可执行相关操作的分析和机器学习。
 metadata:
-  title: Azure API for FHIR 预览版文档
-  meta.description: Learn how Azure API for FHIR can power healthcare iteroperability in Azure.
+  title: Azure API for FHIR 文档 - 教程和操作指南
+  description: Azure API for FHIR 是一种托管的 API，它基于标准、符合法规且适合临床健康数据，实现解决方案用于可执行相关操作的分析和机器学习。
   services: healthcare-apis
-  author: hansenms
-  manager: dougseven
-  ms.author: mihansen
   ms.service: healthcare-apis
   ms.subservice: fhir
   ms.topic: landing-page
-  ms.date: 02/07/2019
-abstract:
-  description: Azure API for FHIR® 预览版是完全托管的、基于标准的、符合法规的临床健康数据 API，可用于创建通过健康数据实现分析、机器学习和可操作智能的新系统。
-sections:
-  - title: null
-    items:
-      - type: paragraph
-        text: FHIR&reg; 是 HL7 的注册商标，经 HL7 许可使用。
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 通过选择箭头链接，了解 Azure API for FHIR 预览版如何在 Azure 中提供医疗保健方面的互操作性 <img src="media/index/link.jpg" height="15" width="15"></img>.
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/portal.svg
-            title: Azure 门户
-          - image:
-              src: media/index/powershell.svg
-            title: Azure PowerShell
-          - image:
-              src: media/index/cli.svg
-            title: Azure CLI
-        rows:
-          - title: 部署 Azure API for FHIR
-            values:
-              - href: fhir-paas-portal-quickstart.md
-              - href: fhir-paas-powershell-quickstart.md
-              - href: fhir-paas-cli-quickstart.md
-          - title: 部署开放源代码 FHIR 服务器
-            values:
-              - href: fhir-oss-portal-quickstart.md
-              - href: fhir-oss-powershell-quickstart.md
-              - href: fhir-oss-cli-quickstart.md
+  ms.collection: collection
+  author: hansenms
+  ms.author: mihansen
+  ms.date: 11/06/2019
+  ms.openlocfilehash: f4572a38073a929d00bcccce94d9e73634b92633
+  ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 01/24/2020
+  ms.locfileid: "84819749"
+landingContent:
+- title: Azure API for FHIR 入门
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure API for FHIR？
+      url: overview.md
+  - linkListType: quickstart
+    links:
+    - text: 部署适用于 FHIR 的 API 服务器
+      url: fhir-paas-portal-quickstart.md
+- title: 设置教程
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 部署 JavaScript 应用，从 FHIR 服务读取数据
+      url: tutorial-web-app-fhir-server.md
+    - text: 使用 Postman 访问 FHIR API
+      url: access-fhir-postman-tutorial.md
+    - text: 智能集成来获取第三方应用和病历卡
+      url: use-smart-on-fhir-proxy.md
+- title: 注册应用进行 AD 身份验证
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 注册资源应用
+      url: register-resource-azure-ad-client-app.md
+    - text: 注册机密客户端应用
+      url: register-confidential-azure-ad-client-app.md
+    - text: 注册公共客户端应用
+      url: register-public-azure-ad-client-app.md
+    - text: 注册服务客户端应用
+      url: register-service-azure-ad-client-app.md

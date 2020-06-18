@@ -379,6 +379,8 @@
       items:
         - name: 设备断开连接
           href: iot-hub-troubleshoot-connectivity.md
+        - name: 消息路由疑难解答
+          href: troubleshoot-message-routing.md
         - name: 问题解决方法
           items:
             - name: 400027 ConnectionForcefullyClosedOnNewConnection
@@ -416,7 +418,7 @@
     - name: Azure CLI
       href: /cli/azure/iot
     - name: Azure PowerShell
-      href: '/powershell/module/az.iothub#iot'
+      href: /powershell/module/az.iothub#iot
     - name: .NET（设备）
       href: /dotnet/api/microsoft.azure.devices.client
     - name: .NET（服务）
@@ -474,12 +476,12 @@
     - name: Azure IoT SDK
       items:
         - name: IoT 服务 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT 设备 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: Azure IoT 示例
       items:
-        - name: 'C# (.NET)'
+        - name: C# (.NET)
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
         - name: Node.js
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
