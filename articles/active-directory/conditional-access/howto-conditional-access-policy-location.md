@@ -4,19 +4,19 @@ description: 创建自定义条件访问策略以按 IP 位置阻止访问资源
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 03/25/2020
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10b0f86447436b8bf08874daf472b1223bff7d0a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5350e728ad9c30a6e9258ce9c7615baf020473a8
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737650"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995116"
 ---
 # <a name="conditional-access-block-access-by-location"></a>条件访问：按位置阻止访问
 
@@ -40,7 +40,7 @@ ms.locfileid: "83737650"
 1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 Azure 门户。
 1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”。
 1. 选择“新策略”。
-1. 为策略命名。 建议组织创建一有意义的策略名称标准。
+1. 为策略指定一个名称。 建议组织创建一个有意义的策略名称标准。
 1. 在“分配”下，选择“用户和组”
    1. 在“包括”下，选择“所有用户”。
    1. 选择“完成”。

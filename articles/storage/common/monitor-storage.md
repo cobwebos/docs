@@ -9,12 +9,12 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: c8125001b5960a0bf770e8e015ad757a277629ea
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 3ede22b5af942c3f0c0cd88d86b56a625c7656c0
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684902"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267607"
 ---
 # <a name="monitor-azure-storage"></a>监视 Azure 存储
 
@@ -407,4 +407,3 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 - 如需查看 Azure 存储创建的日志和指标的参考，请参阅 [Azure 存储监视数据参考](monitor-storage-reference.md)。
 - 要了解如何监视 Azure 资源，请参阅[使用 Azure Monitor 监视 Azure 资源](../../azure-monitor/insights/monitor-azure-resource.md)。
 - 要详细了解指标迁移，请参阅 [Azure 存储指标迁移](./storage-metrics-migration.md)。
-

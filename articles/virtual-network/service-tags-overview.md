@@ -4,21 +4,21 @@ titlesuffix: Azure Virtual Network
 description: 了解服务标记。 服务标记可帮助尽量简化安全规则的创建。
 services: virtual-network
 documentationcenter: na
-author: jispar
+author: allegradomel
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
-ms.author: jispar
+ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: bfeded391f582ab0ac6f3c15d2086789228f1494
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ea756b965a2539886e695585c9b5f5034eac7684
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660599"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263178"
 ---
 # <a name="virtual-network-service-tags"></a>虚拟网络服务标记
 <a name="network-service-tags"></a>
@@ -62,7 +62,7 @@ ms.locfileid: "83660599"
 | **AzureDataExplorerManagement** | Azure 数据资源管理器管理。 | 入站 | 否 | 否 |
 | **AzureDataLake** | Azure Data Lake Storage Gen1。 | 出站 | 否 | 是 |
 | **AzureDevSpaces** | Azure Dev Spaces。 | 出站 | 否 | 否 |
-| **AzureEventGrid** | Azure 事件网格。 <br/><br/>*注意：* 此标记仅盖美国中南部、美国东部、美国东部 2、美国西部 2 和美国中部区域中的 Azure 事件网格终结点。 | 推送、请求和匿名 | 否 | 否 |
+| **AzureEventGrid** | Azure 事件网格。 | 推送、请求和匿名 | 否 | 否 |
 | **AzureFrontDoor.Frontend** <br/> **AzureFrontDoor.Backend** <br/> **AzureFrontDoor.FirstParty**  | Azure Front Door。 | 推送、请求和匿名 | 否 | 否 |
 | **AzureInformationProtection** | Azure 信息保护。<br/><br/>*注意：* 此标记依赖于 AzureActiveDirectory、AzureFrontDoor.Frontend 和 AzureFrontDoor.FirstParty 标记  。 | 出站 | 否 | 否 |
 | **AzureIoTHub** | Azure IoT 中心。 | 出站 | 否 | 否 |

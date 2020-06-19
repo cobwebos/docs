@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 40078d33d2b89c2fcf3b90cd8a19405b1a29c5d7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 894f3002e292466a460c8f96bb7f35b590cb9552
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660082"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015822"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>保护 Synapse 工作区（预览）
 
@@ -130,7 +130,7 @@ Synapse 工作区需要访问 STG1 和 CNT1，以便能够运行管道并执行�
 
 ## <a name="step-8-network-security"></a>第 8 步：网络安全
 
-配置工作区防火墙、虚拟网络和[专用链接](../../sql-database/sql-database-private-endpoint-overview.md)。
+配置工作区防火墙、虚拟网络和[专用链接](../../azure-sql/database/private-endpoint-overview.md)。
 
 ## <a name="step-9-completion"></a>第 9 步：Completion
 

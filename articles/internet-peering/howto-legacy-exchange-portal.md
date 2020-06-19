@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: article
 ms.date: 5/21/2020
 ms.author: derekol
-ms.openlocfilehash: f9f93bc434a2eea34e8c0d1256cd72fa5527204f
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: e4f9f5b59b61065c300b58fb1cdb88e12b7ddbe0
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849495"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247217"
 ---
 # <a name="convert-a-legacy-exchange-peering-to-an-azure-resource-by-using-the-azure-portal"></a>使用 Azure 门户将旧版 Exchange 对等互连转换为 Azure 资源
 
@@ -28,35 +28,9 @@ ms.locfileid: "83849495"
 
 作为 Internet Exchange 提供程序，可以通过[创建对等互连]( https://go.microsoft.com/fwlink/?linkid=2129593)来创建 Exchange 对等互连请求。
 
-1. 在“创建对等互连”页面的“基本”选项卡上，按如下所示填写框：
+1. 在“创建对等互连”页面的“基本信息”选项卡上，按如下所示填写相应的框 ：
 
-
->   ![注册对等互连服务](./media/setup-basics-tab.png)
-
-* 选择 Azure 订阅。
-
-* 对于“资源组”，可以从下拉列表中选择现有资源组，也可以通过选择“新建”创建新组。 对于本示例，我们将创建新的资源组。
-
-* “名称”对应于资源名称，可以是所选择的任何内容。
-
-* 如果选择现有的资源组，则会自动选择区域。 如果选择创建新的资源组，则还需要选择要在其中驻留资源的 Azure 区域。
-
->[!NOTE]
->资源组所在的区域独立于要与 Microsoft 创建对等互连的位置。 但是，最佳实践是在驻留在最近的 Azure 区域的资源组内组织对等互连资源。 例如，对于阿什本中的对等互连，可以在美国东部或东部 2 创建资源组。
-
-* 在”PeerASN”框中选择你的 ASN。
-
->[!IMPORTANT]  
->在提交对等互连请求之前，只能选择 ValidationState 为“已批准”的 ASN。 如果刚刚提交了 PeerAsn 请求，请等待 12 小时，或等待 ASN 关联获得批准。 如果选择的 ASN 正在等待验证，你将看到一条错误消息。 如果看不到需要选择的 ASN，请检查是否选择了正确的订阅。 如果订阅正确，请检查是否已使用[将对等 ASN 关联到 Azure 订阅](https://go.microsoft.com/fwlink/?linkid=2129592)创建了 PeerAsn。
-
-* 在完成时选择“下一步:配置”以继续。
-
-### <a name="convert-legacy-exchange-peering"></a><a name=create></a>转换旧版 Exchange 对等互连
-
-可以使用[创建对等互连]( https://go.microsoft.com/fwlink/?linkid=2129593)来转换旧版对等互连连接。
-
-####  <a name="configure-basic-settings"></a>配置基本设置
->   ![注册对等互连服务](./media/setup-basics-tab.png)
+   ![注册对等互连服务](./media/setup-basics-tab.png)
 
 * 选择 Azure 订阅。
 
@@ -66,13 +40,15 @@ ms.locfileid: "83849495"
 
 * 如果选择现有的资源组，则会自动选择区域。 如果选择创建新的资源组，则还需要选择要在其中驻留资源的 Azure 区域。
 
->[!NOTE]
-    资源组所在的区域独立于要与 Microsoft 创建对等互连的位置。 但是，最佳实践是在驻留在最近的 Azure 区域的资源组内组织对等互连资源。 例如，对于阿什本中的对等互连，可以在美国东部或东部 2 创建资源组。
+  >[!NOTE]
+  >资源组所在的区域独立于要与 Microsoft 创建对等互连的位置。 但是，最佳做法是在位于最近的 Azure 区域的资源组内组织对等互连资源。 例如，对于阿什本中的对等互连，可以在美国东部或东部 2 创建资源组。
 
 * 在”PeerASN”框中选择你的 ASN。
 
->[!IMPORTANT]  
-    在提交对等互连请求之前，只能选择 ValidationState 为“已批准”的 ASN。 如果刚刚提交了 PeerAsn 请求，请等待 12 小时，或等待 ASN 关联获得批准。 如果选择的 ASN 正在等待验证，你将看到一条错误消息。 如果看不到需要选择的 ASN，请检查是否选择了正确的订阅。 如果订阅正确，请检查是否已使用[将对等 ASN 关联到 Azure 订阅](https://go.microsoft.com/fwlink/?linkid=2129592)创建了 PeerAsn。
+  >[!IMPORTANT]  
+  >在提交对等互连请求之前，只能选择 ValidationState 为“已批准”的 ASN。 如果刚刚提交了 PeerAsn 请求，请等待 12 小时，或等待 ASN 关联获得批准。 如果选择的 ASN 正在等待验证，你将看到一条错误消息。 如果看不到需要选择的 ASN，请检查是否选择了正确的订阅。 如果订阅正确，请检查是否已使用[将对等 ASN 关联到 Azure 订阅](https://go.microsoft.com/fwlink/?linkid=2129592)创建了 PeerAsn。
+
+* 在完成时选择“下一步:**配置以继续**。
 
 
 #### <a name="configure-connections-and-submit"></a>配置连接并提交

@@ -4,19 +4,19 @@ description: 创建自定义条件访问策略，以要求对 Azure 管理任务
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 04/02/2020
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54ec1392dab19491ba8c041d0342f0fe82e671fe
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 09d07717895c6faa506d692becb261e834e44890
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758191"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995344"
 ---
 # <a name="conditional-access-require-mfa-for-azure-management"></a>条件访问：要求将 MFA 用于 Azure 管理
 
@@ -53,7 +53,7 @@ ms.locfileid: "83758191"
 1. 在“条件” > “客户端应用(预览)”下，将“配置”设置为“是”，然后选择“完成”。
 1. 在“访问控制” > “授予”下，依次选择“"授予访问权限”、“需要多重身份验证”和“选择”。
 1. 确认设置并将“启用策略”设置为“开启”。
-1. 选择“创建”进行创建并启用策略。
+1. 选择“创建”以创建并启用策略。
 
 ## <a name="next-steps"></a>后续步骤
 

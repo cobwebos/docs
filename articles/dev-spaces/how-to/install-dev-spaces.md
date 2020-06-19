@@ -5,12 +5,12 @@ ms.date: 07/24/2019
 ms.topic: conceptual
 description: 了解如何在 AKS 群集上启用 Azure Dev Spaces 并安装客户端工具。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
-ms.openlocfilehash: 3666eeb995c73615c522200a3619d785814ea0b5
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: b62c4a4861529c19363f159b8cc64a32a0ba11e8
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873522"
+ms.locfileid: "83996255"
 ---
 # <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>在 AKS 群集上启用 Azure Dev Spaces 并安装客户端工具
 
@@ -60,24 +60,6 @@ Deleting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup'
 
 上述命令将从 MyResourceGroup 中的 MyAKS 群集中删除 Azure Dev Spaces 。 使用 Azure Dev Spaces 创建的所有命名空间仍将与其工作负载一起保留，但这些命名空间中新的工作负载将不使用 Azure Dev Spaces 进行检测。 此外，如果你重启已使用 Azure Dev Spaces 检测的任何现有 Pod，可能会看到错误。 必须在没有 Azure Dev Spaces 工具的情况下重新部署这些 Pod。 若要从群集中完全删除 Azure Dev Spaces，请在已启用 Azure Dev Spaces 的所有命名空间中删除所有 Pod。
 
-## <a name="enable-or-remove-azure-dev-spaces-using-the-azure-portal"></a>通过 Azure 门户启用或删除 Azure Dev Spaces
-
-需具备以下项，才可通过 Azure 门户启用 Dev Spaces：
-* Azure 订阅。 如果没有 Azure 订阅，可以创建一个[免费帐户][az-portal-create-account]。
-* [支持的区域][supported-regions]中的 [AKS 群集][create-aks-portal]。
-
-若要通过 Azure 门户启用或删除 Azure Dev Spaces：
-1. 登录 [Azure 门户][az-portal]。
-1. 导航到 AKS 群集。
-1. 选择“Dev Spaces”菜单项。
-1. 将“启用 Dev Spaces”更改为“是”，然后单击“保存”。  
-
-![在 Azure 门户中启用 Dev Spaces](../media/how-to-setup-dev-spaces/enable-dev-spaces-portal.png)
-
-如果通过 Azure 门户启用 Azure Dev Spaces，则不会安装 Azure Dev Spaces 的任何客户端工具。
-
-若要从 AKS 群集删除 Azure Dev Spaces，请将“启用 Dev Spaces”更改为“否”，然后单击“保存”  。 使用 Azure Dev Spaces 创建的所有命名空间仍将与其工作负载一起保留，但这些命名空间中新的工作负载将不使用 Azure Dev Spaces 进行检测。 此外，如果你重启已使用 Azure Dev Spaces 检测的任何现有 Pod，可能会看到错误。 必须在没有 Azure Dev Spaces 工具的情况下重新部署这些 Pod。 若要从群集中完全删除 Azure Dev Spaces，请在已启用 Azure Dev Spaces 的所有命名空间中删除所有 Pod。
-
 ## <a name="install-the-client-side-tools"></a>安装客户端工具
 
 可使用 Azure Dev Spaces 客户端工具与本地计算机上 AKS 群集中的开发空间进行交互。 可采用多种方法安装客户端工具：
@@ -94,7 +76,6 @@ Deleting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup'
 > [Azure Dev Spaces 中的团队开发][team-development-qs]
 
 [create-aks-cli]: ../../aks/kubernetes-walkthrough.md#create-a-resource-group
-[create-aks-portal]: ../../aks/kubernetes-walkthrough-portal.md#create-an-aks-cluster
 [install-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [team-development-qs]: ../quickstart-team-development.md

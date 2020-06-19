@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 6fc14bd41faf6a86953b82f8a7ea7bd75b746cf9
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: b200aabff1231cdf383d30ad2e671c4b46ca91bb
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801510"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196210"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>教程：为 8x8 配置自动用户预配
 
@@ -72,13 +72,13 @@ ms.locfileid: "83801510"
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步骤 4. 定义谁在预配范围中
 
-Azure AD 预配服务允许你根据对应用程序的分配或用户/组的属性来查看谁在预配范围中。 如果选择根据分配来查看要将谁预配到应用，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 这一选项较为简单，大多数人都在使用。
+使用 Azure AD 预配服务，可以根据对应用程序的分配和/或用户/组的属性来限定谁在预配范围内。 如果选择根据分配来查看要将谁预配到应用，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 这一选项较为简单，大多数人都在使用。
 
 如果选择仅根据用户或组的属性来定义谁在预配范围内，则可以使用[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的范围筛选器。 
 
 * 将用户和组分配到 8x8 时，必须选择“默认访问”以外的角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以添加其他角色。 
 
-* 先小部分测试。 在向全员推出之前，请对少量的用户和组进行测试。 如果预配范围设置为分配的用户和组，则可以先尝试将一两个用户或组分配到应用。 当预配范围设置为所有用户和组时，可以指定[基于属性的范围筛选器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
+* 先小部分测试。 在向全员推出之前，请先使用少量的用户和组进行测试。 如果预配范围设置为分配的用户和组，则可以先尝试将一两个用户或组分配到应用。 当预配范围设置为所有用户和组时，可以指定[基于属性的范围筛选器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-8x8"></a>步骤 5。 配置到 8x8 的自动用户预配 
 
@@ -98,9 +98,9 @@ Azure AD 预配服务允许你根据对应用程序的分配或用户/组的属�
 
 3. 选择“预配”选项卡。单击“入门”。
 
-    ![“预配”选项卡](common/provisioning.png)
+    ![预配选项卡](common/provisioning.png)
 
-   ![“入门”边栏选项卡](./media/8x8-provisioning-tutorial/get-started.png)
+   ![“开始”边栏选项卡](./media/8x8-provisioning-tutorial/get-started.png)
 
 4. 将“预配模式”设置为“自动”。
 
@@ -116,7 +116,7 @@ Azure AD 预配服务允许你根据对应用程序的分配或用户/组的属�
 
 7. 选择“保存”。
 
-8. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 8x8” 。
+8. 在“映射”部分下，选择“预配 Azure Active Directory 用户” 。
 
 9. 在“属性映射”部分中，查看从 Azure AD 同步到 8x8 的用户属性。 选为“匹配”属性的特性用于匹配 8x8 中的用户帐户以执行更新操作。 如果选择更改[匹配目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，则需要确保 8x8 API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
 
@@ -150,7 +150,7 @@ Azure AD 预配服务允许你根据对应用程序的分配或用户/组的属�
 
     ![保存预配配置](common/provisioning-configuration-save.png)
 
-此操作会对“设置”部分的“范围”中定义的所有用户和组启动初始同步周期 。 初始周期执行的时间比后续周期长，只要 Azure AD 预配服务处于运行状态，大约每隔 40 分钟就会进行一次。 
+此操作会对“设置”部分的“范围”中定义的所有用户和组启动初始同步周期 。 初始周期执行的时间比后续周期长，只要 Azure AD 预配服务正在运行，后续周期大约每隔 40 分钟就会进行一次。 
 
 ## <a name="step-6-monitor-your-deployment"></a>步骤 6. 监视部署
 配置预配后，请使用以下资源来监视部署：

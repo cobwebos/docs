@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 58f5d2e641cfe4913d6a06621b663d8a61cd00bb
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: f9ed611ae530e49ad8e776c47450bc9b7ece3190
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800292"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266757"
 ---
 # <a name="develop-secure-applications-on-azure"></a>在 Azure 上开发安全的应用程序
 本文介绍开发云应用程序时要考虑的安全活动和控制措施， 并涵盖 Microsoft [安全开发生命周期 (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) 的实现和验证阶段要考虑的安全问题和概念。 目标在于帮助定义可用于开发更安全的应用程序的活动和 Azure 服务。
@@ -128,7 +128,7 @@ Server、X-Powered-By 和 X-AspNet-Version 等标头会透露有关服务器和�
 
 DAST 与静态应用程序安全测试 (SAST) 不同。 SAST 工具在代码未在执行时分析源代码或代码的编译版本，以发现安全漏洞。
 
-最好在安全专业人员（[渗透测试人员](../fundamentals/pen-testing.md)或漏洞评估员）的协助下执行 DAST。 如果没有安全专业人员，则可以在接受一些培训后借助 Web 代理扫描程序自己执行 DAST。 在早期阶段插入 DAST 扫描程序可确保不会在代码中引入明显的安全问题。 有关 Web 应用漏洞扫描程序的列表，请访问 [OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools) 站点。
+最好在安全专业人员（[渗透测试人员](../fundamentals/pen-testing.md)或漏洞评估员）的协助下执行 DAST。 如果没有安全专业人员，则可以在接受一些培训后借助 Web 代理扫描程序自己执行 DAST。 在早期阶段插入 DAST 扫描程序可确保不会在代码中引入明显的安全问题。 有关 Web 应用漏洞扫描程序的列表，请访问 [OWASP](https://owasp.org/www-community/Vulnerability_Scanning_Tools) 站点。
 
 ### <a name="perform-fuzz-testing"></a>执行模糊测试
 

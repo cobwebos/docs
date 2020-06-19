@@ -16,12 +16,12 @@ ms.workload: data-services
 ms.custom: seodec18
 ms.date: 04/28/2020
 ms.author: shvija
-ms.openlocfilehash: b9dcf35b3ea178894a0387e650b6814c0f920926
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: cb47119fdddad70f8b7d5de94f9a2d35efd80d76
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649801"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259297"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>设置 Azure 事件中心的诊断日志
 
@@ -247,7 +247,7 @@ Kafka 用户错误日志 JSON 包括下表列出的元素：
 
 ## <a name="next-steps"></a>后续步骤
 - [事件中心简介](event-hubs-what-is-event-hubs.md)
-- [事件中心 API 概述](event-hubs-api-overview.md)
+- [事件中心示例](sdks.md)
 - 事件中心入门
     - [.NET Core](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)

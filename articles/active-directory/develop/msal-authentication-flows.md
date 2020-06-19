@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: ce81af90baeeda519f1b56d1e10a46923ebd22c2
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 47978317b1ae914e952b764def854d8a011293e0
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772125"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266604"
 ---
 # <a name="authentication-flows"></a>身份验证流
 
@@ -43,7 +43,7 @@ ms.locfileid: "83772125"
 |-----|----------|----------|--------------|---------------|--------------------|
 |[授权代码流](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
 |[隐式流](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
-|[混合 OIDC 流](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
+|[混合 OIDC 流](v2-protocols-oidc.md#protocol-diagram-access-token-acquisition)| | x  | |          |            x   |
 |[刷新令牌兑换](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | 刷新令牌 | x | x | x| |
 |[代理流](v2-oauth2-on-behalf-of-flow.md) | 访问令牌| x| x| x| |
 |[设备代码流](v2-oauth2-device-code.md) | | x| x| x| |
